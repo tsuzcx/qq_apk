@@ -33,7 +33,10 @@ public class MiniSDK
   
   public static void notifyPeriodicCacheUpdate(Context paramContext, MiniAppInfo paramMiniAppInfo)
   {
-    QMLog.i("minisdk-start_MiniSDK", "notifyPeriodicCacheUpdate, MiniAppInfo = " + paramMiniAppInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("notifyPeriodicCacheUpdate, MiniAppInfo = ");
+    localStringBuilder.append(paramMiniAppInfo);
+    QMLog.i("minisdk-start_MiniSDK", localStringBuilder.toString());
     sMiniSDKImpl.init(paramContext);
     sMiniSDKImpl.notifyPeriodicCacheUpdate(paramMiniAppInfo);
   }
@@ -45,7 +48,10 @@ public class MiniSDK
   
   public static void notifyShareResult(Context paramContext, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver)
   {
-    QMLog.i("minisdk-start_MiniSDK", "notifyShareResult, MiniAppInfo = " + paramMiniAppInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("notifyShareResult, MiniAppInfo = ");
+    localStringBuilder.append(paramMiniAppInfo);
+    QMLog.i("minisdk-start_MiniSDK", localStringBuilder.toString());
     sMiniSDKImpl.init(paramContext);
     sMiniSDKImpl.notifyShareResult(paramMiniAppInfo, paramBundle, paramResultReceiver);
   }
@@ -82,15 +88,18 @@ public class MiniSDK
   
   public static void startMiniApp(Activity paramActivity, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver)
   {
-    QMLog.i("minisdk-start_MiniSDK", "startMiniApp miniappInfo:" + paramMiniAppInfo);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("startMiniApp miniappInfo:");
+    ((StringBuilder)localObject).append(paramMiniAppInfo);
+    QMLog.i("minisdk-start_MiniSDK", ((StringBuilder)localObject).toString());
     MiniSDKImpl localMiniSDKImpl = sMiniSDKImpl;
-    if (paramActivity != null) {}
-    for (Context localContext = paramActivity.getApplicationContext();; localContext = null)
-    {
-      localMiniSDKImpl.init(localContext);
-      sMiniSDKImpl.startMiniApp(paramActivity, paramMiniAppInfo, paramBundle, paramResultReceiver);
-      return;
+    if (paramActivity != null) {
+      localObject = paramActivity.getApplicationContext();
+    } else {
+      localObject = null;
     }
+    localMiniSDKImpl.init((Context)localObject);
+    sMiniSDKImpl.startMiniApp(paramActivity, paramMiniAppInfo, paramBundle, paramResultReceiver);
   }
   
   public static void startMiniApp(Activity paramActivity, String paramString)
@@ -115,25 +124,30 @@ public class MiniSDK
   
   public static void startMiniApp(Activity paramActivity, String paramString1, int paramInt1, int paramInt2, String paramString2, ResultReceiver paramResultReceiver)
   {
-    QMLog.i("minisdk-start_MiniSDK", "startMiniApp link: " + paramString1 + ", linkType: " + paramInt1);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("startMiniApp link: ");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(", linkType: ");
+    ((StringBuilder)localObject).append(paramInt1);
+    QMLog.i("minisdk-start_MiniSDK", ((StringBuilder)localObject).toString());
     MiniSDKImpl localMiniSDKImpl = sMiniSDKImpl;
-    if (paramActivity != null) {}
-    for (Object localObject = paramActivity.getApplicationContext();; localObject = null)
-    {
-      localMiniSDKImpl.init((Context)localObject);
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("mini_link", paramString1);
-      ((Intent)localObject).putExtra("mini_link_type", paramInt1);
-      ((Intent)localObject).putExtra("mini_customInfo", paramString2);
-      paramString1 = new LaunchParam();
-      paramString1.scene = paramInt2;
-      ((Intent)localObject).putExtra("mini_launch_param", paramString1);
-      ((Intent)localObject).putExtra("mini_receiver", paramResultReceiver);
-      ((Intent)localObject).putExtra("public_fragment_window_feature", 1);
-      MiniFragmentLauncher.startTranslucent(paramActivity, (Intent)localObject, MiniFragmentLauncher.FragmentType.FRAGMENT_APPINFO_LOADING);
-      paramActivity.overridePendingTransition(0, 0);
-      return;
+    if (paramActivity != null) {
+      localObject = paramActivity.getApplicationContext();
+    } else {
+      localObject = null;
     }
+    localMiniSDKImpl.init((Context)localObject);
+    localObject = new Intent();
+    ((Intent)localObject).putExtra("mini_link", paramString1);
+    ((Intent)localObject).putExtra("mini_link_type", paramInt1);
+    ((Intent)localObject).putExtra("mini_customInfo", paramString2);
+    paramString1 = new LaunchParam();
+    paramString1.scene = paramInt2;
+    ((Intent)localObject).putExtra("mini_launch_param", paramString1);
+    ((Intent)localObject).putExtra("mini_receiver", paramResultReceiver);
+    ((Intent)localObject).putExtra("public_fragment_window_feature", 1);
+    MiniFragmentLauncher.startTranslucent(paramActivity, (Intent)localObject, MiniFragmentLauncher.FragmentType.FRAGMENT_APPINFO_LOADING);
+    paramActivity.overridePendingTransition(0, 0);
   }
   
   public static void startMiniApp(Activity paramActivity, String paramString, int paramInt, ResultReceiver paramResultReceiver)
@@ -148,24 +162,27 @@ public class MiniSDK
   
   public static void startMiniApp(Activity paramActivity, String paramString1, int paramInt, String paramString2, String paramString3, LaunchParam paramLaunchParam, ResultReceiver paramResultReceiver)
   {
-    QMLog.i("minisdk-start_MiniSDK", "startMiniApp appId:" + paramString1);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("startMiniApp appId:");
+    ((StringBuilder)localObject).append(paramString1);
+    QMLog.i("minisdk-start_MiniSDK", ((StringBuilder)localObject).toString());
     MiniSDKImpl localMiniSDKImpl = sMiniSDKImpl;
-    if (paramActivity != null) {}
-    for (Object localObject = paramActivity.getApplicationContext();; localObject = null)
-    {
-      localMiniSDKImpl.init((Context)localObject);
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("key_appid", paramString1);
-      paramLaunchParam.scene = paramInt;
-      ((Intent)localObject).putExtra("mini_entryPath", paramString2);
-      ((Intent)localObject).putExtra("mini_envVersion", paramString3);
-      ((Intent)localObject).putExtra("mini_launch_param", paramLaunchParam);
-      ((Intent)localObject).putExtra("public_fragment_window_feature", 1);
-      ((Intent)localObject).putExtra("mini_receiver", paramResultReceiver);
-      MiniFragmentLauncher.startTranslucent(paramActivity, (Intent)localObject, MiniFragmentLauncher.FragmentType.FRAGMENT_APPINFO_LOADING);
-      paramActivity.overridePendingTransition(0, 0);
-      return;
+    if (paramActivity != null) {
+      localObject = paramActivity.getApplicationContext();
+    } else {
+      localObject = null;
     }
+    localMiniSDKImpl.init((Context)localObject);
+    localObject = new Intent();
+    ((Intent)localObject).putExtra("key_appid", paramString1);
+    paramLaunchParam.scene = paramInt;
+    ((Intent)localObject).putExtra("mini_entryPath", paramString2);
+    ((Intent)localObject).putExtra("mini_envVersion", paramString3);
+    ((Intent)localObject).putExtra("mini_launch_param", paramLaunchParam);
+    ((Intent)localObject).putExtra("public_fragment_window_feature", 1);
+    ((Intent)localObject).putExtra("mini_receiver", paramResultReceiver);
+    MiniFragmentLauncher.startTranslucent(paramActivity, (Intent)localObject, MiniFragmentLauncher.FragmentType.FRAGMENT_APPINFO_LOADING);
+    paramActivity.overridePendingTransition(0, 0);
   }
   
   public static void stopAllMiniApp(Context paramContext)
@@ -177,14 +194,17 @@ public class MiniSDK
   
   public static void stopMiniApp(Context paramContext, MiniAppInfo paramMiniAppInfo)
   {
-    QMLog.i("minisdk-start_MiniSDK", "stopMiniApp " + paramMiniAppInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("stopMiniApp ");
+    localStringBuilder.append(paramMiniAppInfo);
+    QMLog.i("minisdk-start_MiniSDK", localStringBuilder.toString());
     sMiniSDKImpl.init(paramContext);
     sMiniSDKImpl.stopMiniApp(paramMiniAppInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.MiniSDK
  * JD-Core Version:    0.7.0.1
  */

@@ -13,71 +13,89 @@ class AuthDialog$2
   
   public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    QLog.d("AuthDialog", 2, "doOnActivityResult : " + paramInt1);
-    if (paramInt1 == 1089) {
-      if (paramInt2 == -1) {
-        if (paramIntent == null) {}
-      }
-    }
-    for (;;)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("doOnActivityResult : ");
+    ((StringBuilder)localObject).append(paramInt1);
+    QLog.d("AuthDialog", 2, ((StringBuilder)localObject).toString());
+    if (paramInt1 == 1089)
     {
-      try
-      {
-        paramIntent = new JSONArray(paramIntent.getStringExtra("phoneNumberArray"));
-        if (AuthDialog.access$700(this.this$0) != null)
-        {
-          AuthDialog.access$700(this.this$0).setPhoneNumberList(paramIntent);
-          AuthDialog.access$800(this.this$0, AuthDialog.access$700(this.this$0).getPhoneNumberList());
-        }
-        return true;
-      }
-      catch (Throwable paramIntent)
-      {
-        QLog.e("AuthDialog", 1, "REQUEST_CODE_PHONE_MANAGER error, ", paramIntent);
-        return true;
-      }
-      QLog.e("AuthDialog", 1, "REQUEST_CODE_PHONE_MANAGER " + paramInt2);
-      return true;
-      if (paramInt1 != 1088) {
-        break label331;
-      }
       if (paramInt2 == -1)
       {
-        if (paramIntent == null) {
-          continue;
-        }
-        try
-        {
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("phoneType", 1);
-          localJSONObject.put("purePhoneNumber", paramIntent.getStringExtra("phoneNumber"));
-          localJSONObject.put("countryCode", "+86");
-          localJSONObject.put("iv", paramIntent.getStringExtra("iv"));
-          localJSONObject.put("encryptedData", paramIntent.getStringExtra("encryptedData"));
-          QLog.d("AuthDialog", 1, "REQUEST_CODE_ADD_PHONENUMBER stPhoneNumberObj : " + localJSONObject);
-          if (AuthDialog.access$700(this.this$0) != null)
+        if (paramIntent != null) {
+          try
           {
-            AuthDialog.access$700(this.this$0).getPhoneNumberList().put(localJSONObject);
+            paramIntent = new JSONArray(paramIntent.getStringExtra("phoneNumberArray"));
+            if (AuthDialog.access$700(this.this$0) == null) {
+              break label149;
+            }
+            AuthDialog.access$700(this.this$0).setPhoneNumberList(paramIntent);
             AuthDialog.access$800(this.this$0, AuthDialog.access$700(this.this$0).getPhoneNumberList());
             return true;
           }
-        }
-        catch (Throwable paramIntent)
-        {
-          QLog.e("AuthDialog", 1, "REQUEST_CODE_ADD_PHONENUMBER error, ", paramIntent);
-          return true;
+          catch (Throwable paramIntent)
+          {
+            QLog.e("AuthDialog", 1, "REQUEST_CODE_PHONE_MANAGER error, ", paramIntent);
+            return true;
+          }
         }
       }
+      else
+      {
+        paramIntent = new StringBuilder();
+        paramIntent.append("REQUEST_CODE_PHONE_MANAGER ");
+        paramIntent.append(paramInt2);
+        QLog.e("AuthDialog", 1, paramIntent.toString());
+      }
+      label149:
+      return true;
     }
-    QLog.e("AuthDialog", 1, "REQUEST_CODE_ADD_PHONENUMBER " + paramInt2);
-    return true;
-    label331:
+    if (paramInt1 == 1088)
+    {
+      if (paramInt2 == -1)
+      {
+        if (paramIntent != null) {
+          try
+          {
+            localObject = new JSONObject();
+            ((JSONObject)localObject).put("phoneType", 1);
+            ((JSONObject)localObject).put("purePhoneNumber", paramIntent.getStringExtra("phoneNumber"));
+            ((JSONObject)localObject).put("countryCode", "+86");
+            ((JSONObject)localObject).put("iv", paramIntent.getStringExtra("iv"));
+            ((JSONObject)localObject).put("encryptedData", paramIntent.getStringExtra("encryptedData"));
+            paramIntent = new StringBuilder();
+            paramIntent.append("REQUEST_CODE_ADD_PHONENUMBER stPhoneNumberObj : ");
+            paramIntent.append(localObject);
+            QLog.d("AuthDialog", 1, paramIntent.toString());
+            if (AuthDialog.access$700(this.this$0) == null) {
+              break label357;
+            }
+            AuthDialog.access$700(this.this$0).getPhoneNumberList().put(localObject);
+            AuthDialog.access$800(this.this$0, AuthDialog.access$700(this.this$0).getPhoneNumberList());
+            return true;
+          }
+          catch (Throwable paramIntent)
+          {
+            QLog.e("AuthDialog", 1, "REQUEST_CODE_ADD_PHONENUMBER error, ", paramIntent);
+            return true;
+          }
+        }
+      }
+      else
+      {
+        paramIntent = new StringBuilder();
+        paramIntent.append("REQUEST_CODE_ADD_PHONENUMBER ");
+        paramIntent.append(paramInt2);
+        QLog.e("AuthDialog", 1, paramIntent.toString());
+      }
+      label357:
+      return true;
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.AuthDialog.2
  * JD-Core Version:    0.7.0.1
  */

@@ -11,19 +11,29 @@ public final class op
     try
     {
       System.loadLibrary(paramString);
-      or.a("loadLibary:" + paramString + "  successful");
+      StringBuilder localStringBuilder = new StringBuilder("loadLibary:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("  successful");
+      or.a(localStringBuilder.toString());
       return;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      boolean bool = oq.a(paramContext, paramString);
-      or.a("loadLibary:" + paramString + " result:" + bool);
+      label35:
+      boolean bool;
+      break label35;
     }
+    bool = oq.a(paramContext, paramString);
+    paramContext = new StringBuilder("loadLibary:");
+    paramContext.append(paramString);
+    paramContext.append(" result:");
+    paramContext.append(bool);
+    or.a(paramContext.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.op
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,7 @@ class SingleViewPresentation$FakeWindowViewGroup
     return View.MeasureSpec.makeMeasureSpec(View.MeasureSpec.getSize(paramInt), -2147483648);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int i = 0;
     while (i < getChildCount())
@@ -38,7 +38,7 @@ class SingleViewPresentation$FakeWindowViewGroup
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     int i = 0;
     while (i < getChildCount())
@@ -51,7 +51,7 @@ class SingleViewPresentation$FakeWindowViewGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.platform.SingleViewPresentation.FakeWindowViewGroup
  * JD-Core Version:    0.7.0.1
  */

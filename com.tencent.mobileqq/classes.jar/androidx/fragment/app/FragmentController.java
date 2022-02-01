@@ -38,7 +38,9 @@ public class FragmentController
   
   public void attachHost(@Nullable Fragment paramFragment)
   {
-    this.mHost.mFragmentManager.attachController(this.mHost, this.mHost, paramFragment);
+    FragmentManager localFragmentManager = this.mHost.mFragmentManager;
+    FragmentHostCallback localFragmentHostCallback = this.mHost;
+    localFragmentManager.attachController(localFragmentHostCallback, localFragmentHostCallback, paramFragment);
   }
   
   public void dispatchActivityCreated()
@@ -210,10 +212,13 @@ public class FragmentController
   
   public void restoreSaveState(@Nullable Parcelable paramParcelable)
   {
-    if (!(this.mHost instanceof ViewModelStoreOwner)) {
-      throw new IllegalStateException("Your FragmentHostCallback must implement ViewModelStoreOwner to call restoreSaveState(). Call restoreAllState()  if you're still using retainNestedNonConfig().");
+    FragmentHostCallback localFragmentHostCallback = this.mHost;
+    if ((localFragmentHostCallback instanceof ViewModelStoreOwner))
+    {
+      localFragmentHostCallback.mFragmentManager.restoreSaveState(paramParcelable);
+      return;
     }
-    this.mHost.mFragmentManager.restoreSaveState(paramParcelable);
+    throw new IllegalStateException("Your FragmentHostCallback must implement ViewModelStoreOwner to call restoreSaveState(). Call restoreAllState()  if you're still using retainNestedNonConfig().");
   }
   
   @Deprecated
@@ -249,7 +254,7 @@ public class FragmentController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.fragment.app.FragmentController
  * JD-Core Version:    0.7.0.1
  */

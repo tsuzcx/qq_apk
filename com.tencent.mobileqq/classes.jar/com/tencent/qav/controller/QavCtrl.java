@@ -28,37 +28,41 @@ public class QavCtrl
   
   public static int a()
   {
-    int i;
-    if (AppNetConnInfo.isWifiConn()) {
+    boolean bool = AppNetConnInfo.isWifiConn();
+    int i = 3;
+    if (bool)
+    {
       i = 1;
     }
-    for (;;)
+    else if (AppNetConnInfo.isMobileConn())
     {
-      AVLog.c("QavCtrl", String.format("getApn networkType=%s", new Object[] { Integer.valueOf(i) }));
-      return i;
-      if (AppNetConnInfo.isMobileConn()) {
-        switch (AppNetConnInfo.getMobileInfo())
+      int j = AppNetConnInfo.getMobileInfo();
+      if (j != 1) {
+        if (j != 2)
         {
-        default: 
-          i = 100;
-          break;
-        case 1: 
-          i = 3;
-          break;
-        case 2: 
-          i = 9;
-          break;
-        case 3: 
-          i = 11;
-          break;
-        case 4: 
-          i = 14;
-          break;
+          if (j != 3)
+          {
+            if (j != 4) {
+              i = 100;
+            } else {
+              i = 14;
+            }
+          }
+          else {
+            i = 11;
+          }
         }
-      } else {
-        i = 0;
+        else {
+          i = 9;
+        }
       }
     }
+    else
+    {
+      i = 0;
+    }
+    AVLog.c("QavCtrl", String.format("getApn networkType=%s", new Object[] { Integer.valueOf(i) }));
+    return i;
   }
   
   public static void a(VideoChannelInterface paramVideoChannelInterface)
@@ -82,9 +86,10 @@ public class QavCtrl
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentQavControllerMultiMultiOperatorImpl != null)
+    MultiOperatorImpl localMultiOperatorImpl = this.jdField_a_of_type_ComTencentQavControllerMultiMultiOperatorImpl;
+    if (localMultiOperatorImpl != null)
     {
-      this.jdField_a_of_type_ComTencentQavControllerMultiMultiOperatorImpl.g();
+      localMultiOperatorImpl.g();
       this.jdField_a_of_type_ComTencentQavControllerMultiMultiOperatorImpl = null;
     }
     this.jdField_a_of_type_AndroidContentContext = null;
@@ -98,7 +103,7 @@ public class QavCtrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qav.controller.QavCtrl
  * JD-Core Version:    0.7.0.1
  */

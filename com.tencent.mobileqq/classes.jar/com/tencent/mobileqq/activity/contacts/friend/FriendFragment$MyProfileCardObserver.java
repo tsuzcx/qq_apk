@@ -7,7 +7,7 @@ class FriendFragment$MyProfileCardObserver
 {
   private FriendFragment$MyProfileCardObserver(FriendFragment paramFriendFragment) {}
   
-  public void onGetProfileCard(boolean paramBoolean, Object paramObject)
+  protected void onGetProfileCard(boolean paramBoolean, Object paramObject)
   {
     if ((paramBoolean) && (FriendFragment.b(this.a))) {
       FriendFragment.a(this.a, 1400L, true);
@@ -16,7 +16,7 @@ class FriendFragment$MyProfileCardObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.friend.FriendFragment.MyProfileCardObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -8,14 +8,15 @@ import android.os.Parcelable;
 import android.text.TextUtils;
 import com.tencent.biz.troop.TroopMemberApiClient;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 import com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity;
+import com.tencent.mobileqq.profilecard.api.IProfileCardApi;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.troop.utils.TroopInfoUIUtil;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -44,19 +45,28 @@ public class TroopAssistantFeedsJsHandler
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopAssistantFeedsJsHandler", 2, "openTroopFeeds:" + paramString);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("openTroopFeeds:");
+        localStringBuilder.append(paramString);
+        QLog.d("TroopAssistantFeedsJsHandler", 2, localStringBuilder.toString());
       }
       if (TextUtils.isEmpty(new JSONObject(paramString).getString("url"))) {
         return;
       }
-      QQToast.a(this.mRuntime.a(), 0, HardCodeUtil.a(2131715064), 0).a();
+      QQToast.a(this.mRuntime.a(), 0, HardCodeUtil.a(2131714987), 0).a();
       return;
     }
     catch (Exception paramString)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopAssistantFeedsJsHandler", 2, "openTroopFeeds:" + paramString.toString());
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("openTroopFeeds:");
+        localStringBuilder.append(paramString.toString());
+        QLog.d("TroopAssistantFeedsJsHandler", 2, localStringBuilder.toString());
       }
     }
   }
@@ -79,35 +89,45 @@ public class TroopAssistantFeedsJsHandler
   
   public void c(String paramString)
   {
+    Object localObject1 = "?";
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopAssistantFeedsJsHandler", 2, "openVideoInBrowserActivity:" + paramString);
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("openVideoInBrowserActivity:");
+        ((StringBuilder)localObject2).append(paramString);
+        QLog.d("TroopAssistantFeedsJsHandler", 2, ((StringBuilder)localObject2).toString());
       }
-      Activity localActivity = this.mRuntime.a();
+      Object localObject2 = this.mRuntime.a();
       paramString = paramString.trim();
       String str = this.mRuntime.a().getCurrentAccountUin();
-      Intent localIntent = new Intent(localActivity, QQBrowserDelegationActivity.class);
+      Intent localIntent = new Intent((Context)localObject2, QQBrowserDelegationActivity.class);
       StringBuilder localStringBuilder = new StringBuilder(paramString);
-      if (paramString.indexOf("?") > 0) {}
-      for (paramString = "";; paramString = "?")
-      {
-        paramString = localStringBuilder.append(paramString).append("&from=androidqq");
-        localIntent.putExtra("param_force_internal_browser", true);
-        localIntent.putExtra("injectrecommend", false);
-        localIntent.putExtra("key_isReadModeEnabled", true);
-        localIntent.putExtra("url", paramString.toString().trim());
-        localIntent.putExtra("uin", str);
-        localIntent.putExtra("friendUin", "");
-        localActivity.startActivity(localIntent);
-        return;
+      int i = paramString.indexOf("?");
+      paramString = (String)localObject1;
+      if (i > 0) {
+        paramString = "";
       }
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("&from=androidqq");
+      localIntent.putExtra("param_force_internal_browser", true);
+      localIntent.putExtra("injectrecommend", false);
+      localIntent.putExtra("key_isReadModeEnabled", true);
+      localIntent.putExtra("url", localStringBuilder.toString().trim());
+      localIntent.putExtra("uin", str);
+      localIntent.putExtra("friendUin", "");
+      ((Activity)localObject2).startActivity(localIntent);
       return;
     }
     catch (Exception paramString)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopAssistantFeedsJsHandler", 2, "openVideoInBrowserActivity:" + paramString.toString());
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("openVideoInBrowserActivity:");
+        ((StringBuilder)localObject1).append(paramString.toString());
+        QLog.d("TroopAssistantFeedsJsHandler", 2, ((StringBuilder)localObject1).toString());
       }
     }
   }
@@ -116,10 +136,14 @@ public class TroopAssistantFeedsJsHandler
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopAssistantFeedsJsHandler", 2, "openTroopCard:" + paramString);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("openTroopCard:");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("TroopAssistantFeedsJsHandler", 2, ((StringBuilder)localObject).toString());
       }
-      Object localObject = new JSONObject(paramString);
+      localObject = new JSONObject(paramString);
       paramString = ((JSONObject)localObject).getString("guin");
       localObject = ((JSONObject)localObject).getString("gcode");
       if (!TextUtils.isEmpty(paramString))
@@ -128,18 +152,24 @@ public class TroopAssistantFeedsJsHandler
           return;
         }
         Activity localActivity = this.mRuntime.a();
-        Bundle localBundle = TroopInfoActivity.a(String.valueOf(localObject), 6);
+        Bundle localBundle = TroopInfoUIUtil.a(String.valueOf(localObject), 6);
         localBundle.putString("troop_code", paramString);
         localBundle.putString("troop_uin", (String)localObject);
         localBundle.putInt("troop_uin", 6);
         TroopUtils.a(localActivity, localBundle, 2);
         return;
       }
+      return;
     }
     catch (Exception paramString)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopAssistantFeedsJsHandler", 2, "openTroopCard:" + paramString.toString());
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("openTroopCard:");
+        ((StringBuilder)localObject).append(paramString.toString());
+        QLog.d("TroopAssistantFeedsJsHandler", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
@@ -148,33 +178,43 @@ public class TroopAssistantFeedsJsHandler
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopAssistantFeedsJsHandler", 2, "openTroopMemberCard:" + paramString);
-      }
-      Object localObject1 = new JSONObject(paramString);
-      paramString = ((JSONObject)localObject1).getString("guin");
-      String str = ((JSONObject)localObject1).getString("gcode");
-      localObject1 = ((JSONObject)localObject1).getString("muin");
-      Object localObject2 = this.mRuntime.a().getCurrentAccountUin();
-      if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+      if (QLog.isColorLevel())
       {
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("openTroopMemberCard:");
+        ((StringBuilder)localObject1).append(paramString);
+        QLog.d("TroopAssistantFeedsJsHandler", 2, ((StringBuilder)localObject1).toString());
+      }
+      Object localObject2 = new JSONObject(paramString);
+      paramString = ((JSONObject)localObject2).getString("guin");
+      localObject1 = ((JSONObject)localObject2).getString("gcode");
+      localObject2 = ((JSONObject)localObject2).getString("muin");
+      Object localObject3 = this.mRuntime.a().getCurrentAccountUin();
+      if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
+      {
+        if (TextUtils.isEmpty((CharSequence)localObject3)) {
           return;
         }
-        localObject2 = this.mRuntime.a();
-        Intent localIntent = new Intent((Context)localObject2, FriendProfileCardActivity.class);
-        localIntent.putExtra("troopUin", str);
+        localObject3 = this.mRuntime.a();
+        Intent localIntent = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getProfileCardIntentOnly((Context)localObject3, null);
+        localIntent.putExtra("troopUin", (String)localObject1);
         localIntent.putExtra("troopCode", paramString);
-        localIntent.putExtra("memberUin", (String)localObject1);
+        localIntent.putExtra("memberUin", (String)localObject2);
         localIntent.putExtra("fromFlag", 3);
-        ((Activity)localObject2).startActivity(localIntent);
+        ((Activity)localObject3).startActivity(localIntent);
         return;
       }
+      return;
     }
     catch (Exception paramString)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopAssistantFeedsJsHandler", 2, "openTroopMemberCard:" + paramString.toString());
+      Object localObject1;
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("openTroopMemberCard:");
+        ((StringBuilder)localObject1).append(paramString.toString());
+        QLog.d("TroopAssistantFeedsJsHandler", 2, ((StringBuilder)localObject1).toString());
       }
     }
   }
@@ -183,90 +223,117 @@ public class TroopAssistantFeedsJsHandler
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopAssistantFeedsJsHandler", 2, "openTroopAIO:" + paramString);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("openTroopAIO:");
+        ((StringBuilder)localObject1).append(paramString);
+        QLog.d("TroopAssistantFeedsJsHandler", 2, ((StringBuilder)localObject1).toString());
       }
-      Object localObject = new JSONObject(paramString);
-      paramString = ((JSONObject)localObject).getString("guin");
-      String str = ((JSONObject)localObject).getString("gcode");
-      localObject = ((JSONObject)localObject).getString("gname");
+      Object localObject2 = new JSONObject(paramString);
+      paramString = ((JSONObject)localObject2).getString("guin");
+      localObject1 = ((JSONObject)localObject2).getString("gcode");
+      localObject2 = ((JSONObject)localObject2).getString("gname");
       if (!TextUtils.isEmpty(paramString))
       {
-        if (TextUtils.isEmpty(str)) {
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
           return;
         }
         Activity localActivity = this.mRuntime.a();
         Intent localIntent = AIOUtils.a(new Intent(localActivity, SplashActivity.class), null);
-        localIntent.putExtra("uin", str);
+        localIntent.putExtra("uin", (String)localObject1);
         localIntent.putExtra("troop_uin", paramString);
         localIntent.putExtra("uintype", 1);
-        localIntent.putExtra("uinname", (String)localObject);
+        localIntent.putExtra("uinname", (String)localObject2);
         localActivity.startActivity(localIntent);
         return;
       }
+      return;
     }
     catch (Exception paramString)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopAssistantFeedsJsHandler", 2, "openTroopAIO:" + paramString.toString());
+      Object localObject1;
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("openTroopAIO:");
+        ((StringBuilder)localObject1).append(paramString.toString());
+        QLog.d("TroopAssistantFeedsJsHandler", 2, ((StringBuilder)localObject1).toString());
       }
     }
   }
   
   protected void g(String paramString)
   {
-    try
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopAssistantFeedsJsHandler", 2, "openFile:" + paramString);
-      }
-      Object localObject2 = new JSONObject(paramString);
-      paramString = ((JSONObject)localObject2).getString("uuid");
+      long l1;
       try
       {
-        l1 = ((JSONObject)localObject2).getLong("fileSize");
-        l2 = ((JSONObject)localObject2).getLong("gcode");
-        String str1 = ((JSONObject)localObject2).getString("fileName");
-        String str2 = ((JSONObject)localObject2).getString("url");
-        int i = ((JSONObject)localObject2).getInt("bisID");
-        Object localObject1 = ((JSONObject)localObject2).optString("senderUin");
-        long l3 = ((JSONObject)localObject2).optLong("lastTime");
-        localObject2 = this.mRuntime.a();
-        Intent localIntent = new Intent((Context)localObject2, TroopFileDetailBrowserActivity.class);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("openFile:");
+          localStringBuilder.append(paramString);
+          QLog.d("TroopAssistantFeedsJsHandler", 2, localStringBuilder.toString());
+        }
+        localObject3 = new JSONObject(paramString);
+        paramString = ((JSONObject)localObject3).getString("uuid");
+        l1 = 0L;
+        try
+        {
+          l3 = ((JSONObject)localObject3).getLong("fileSize");
+          l2 = ((JSONObject)localObject3).getLong("gcode");
+          l1 = l3;
+        }
+        catch (Exception localException)
+        {
+          if (!QLog.isColorLevel()) {
+            break label371;
+          }
+        }
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("openFile:");
+        ((StringBuilder)localObject2).append(localException.toString());
+        QLog.d("TroopAssistantFeedsJsHandler", 2, ((StringBuilder)localObject2).toString());
+      }
+      catch (Exception paramString) {}
+      Object localObject1 = ((JSONObject)localObject3).getString("fileName");
+      Object localObject2 = ((JSONObject)localObject3).getString("url");
+      int i = ((JSONObject)localObject3).getInt("bisID");
+      Object localObject4 = ((JSONObject)localObject3).optString("senderUin");
+      long l3 = ((JSONObject)localObject3).optLong("lastTime");
+      Object localObject3 = this.mRuntime.a();
+      Intent localIntent = new Intent((Context)localObject3, TroopFileDetailBrowserActivity.class);
+      try
+      {
         localIntent.putExtra("from_webview", true);
         localIntent.putExtra("bisId", i);
-        localIntent.putExtra("sender_uin", (String)localObject1);
+        localIntent.putExtra("sender_uin", (String)localObject4);
         localIntent.putExtra("last_time", l3);
-        localObject1 = new ForwardFileInfo();
-        ((ForwardFileInfo)localObject1).d(4);
-        ((ForwardFileInfo)localObject1).b(10006);
-        ((ForwardFileInfo)localObject1).d(str1);
-        ((ForwardFileInfo)localObject1).d(l1);
-        ((ForwardFileInfo)localObject1).a(l2);
-        ((ForwardFileInfo)localObject1).b(paramString);
-        ((ForwardFileInfo)localObject1).e(str2);
-        localIntent.putExtra("fileinfo", (Parcelable)localObject1);
-        ((Activity)localObject2).startActivity(localIntent);
+        localObject4 = new ForwardFileInfo();
+        ((ForwardFileInfo)localObject4).d(4);
+        ((ForwardFileInfo)localObject4).b(10006);
+        ((ForwardFileInfo)localObject4).d((String)localObject1);
+        ((ForwardFileInfo)localObject4).d(l1);
+        ((ForwardFileInfo)localObject4).a(l2);
+        ((ForwardFileInfo)localObject4).b(paramString);
+        ((ForwardFileInfo)localObject4).e((String)localObject2);
+        localIntent.putExtra("fileinfo", (Parcelable)localObject4);
+        ((Activity)localObject3).startActivity(localIntent);
         return;
       }
-      catch (Exception localException)
+      catch (Exception paramString) {}
+      if (QLog.isColorLevel())
       {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopAssistantFeedsJsHandler", 2, "openFile:" + localException.toString());
-          }
-          long l1 = 0L;
-          long l2 = 0L;
-        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("openFile:");
+        ((StringBuilder)localObject1).append(paramString.toString());
+        QLog.d("TroopAssistantFeedsJsHandler", 2, ((StringBuilder)localObject1).toString());
       }
       return;
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopAssistantFeedsJsHandler", 2, "openFile:" + paramString.toString());
-      }
+      label371:
+      long l2 = 0L;
     }
   }
   
@@ -279,30 +346,39 @@ public class TroopAssistantFeedsJsHandler
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopAssistantFeedsJsHandler", 2, "openQZoneAlbumDetail:" + paramString);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("openQZoneAlbumDetail:");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("TroopAssistantFeedsJsHandler", 2, ((StringBuilder)localObject).toString());
       }
       paramString = new JSONObject(paramString).getString("url");
       if (TextUtils.isEmpty(paramString)) {
         return;
       }
-      AppInterface localAppInterface = this.mRuntime.a();
+      localObject = this.mRuntime.a();
       Activity localActivity = this.mRuntime.a();
       QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
-      localUserInfo.qzone_uin = localAppInterface.getCurrentAccountUin();
+      localUserInfo.qzone_uin = ((AppInterface)localObject).getCurrentAccountUin();
       localUserInfo.nickname = "";
       QZoneHelper.forwardToQunAlbumDetail(localActivity, localUserInfo, paramString, "mqqChat.QzoneCard", -1);
       return;
     }
     catch (Exception paramString)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopAssistantFeedsJsHandler", 2, "openQZoneAlbumDetail:" + paramString.toString());
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("openQZoneAlbumDetail:");
+        ((StringBuilder)localObject).append(paramString.toString());
+        QLog.d("TroopAssistantFeedsJsHandler", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if ("troopAssistantFeeds".equals(paramString2))
     {
@@ -346,49 +422,46 @@ public class TroopAssistantFeedsJsHandler
   }
   
   /* Error */
-  public void onDestroy()
+  protected void onDestroy()
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 353	com/tencent/mobileqq/webview/swift/WebViewPlugin:onDestroy	()V
+    //   1: invokespecial 363	com/tencent/mobileqq/webview/swift/WebViewPlugin:onDestroy	()V
     //   4: aload_0
     //   5: getfield 13	com/tencent/mobileqq/troop/jsp/TroopAssistantFeedsJsHandler:jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient	Lcom/tencent/biz/troop/TroopMemberApiClient;
-    //   8: ifnull +10 -> 18
+    //   8: ifnull +24 -> 32
     //   11: aload_0
     //   12: getfield 13	com/tencent/mobileqq/troop/jsp/TroopAssistantFeedsJsHandler:jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient	Lcom/tencent/biz/troop/TroopMemberApiClient;
-    //   15: invokevirtual 357	com/tencent/biz/troop/TroopMemberApiClient:b	()V
-    //   18: aload_0
-    //   19: getfield 20	com/tencent/mobileqq/troop/jsp/TroopAssistantFeedsJsHandler:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   22: iconst_0
-    //   23: invokevirtual 360	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   26: return
-    //   27: astore_1
-    //   28: aload_0
-    //   29: getfield 20	com/tencent/mobileqq/troop/jsp/TroopAssistantFeedsJsHandler:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   32: iconst_0
-    //   33: invokevirtual 360	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   36: return
-    //   37: astore_1
-    //   38: aload_0
-    //   39: getfield 20	com/tencent/mobileqq/troop/jsp/TroopAssistantFeedsJsHandler:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   42: iconst_0
-    //   43: invokevirtual 360	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   46: aload_1
-    //   47: athrow
+    //   15: invokevirtual 367	com/tencent/biz/troop/TroopMemberApiClient:b	()V
+    //   18: goto +14 -> 32
+    //   21: astore_1
+    //   22: aload_0
+    //   23: getfield 20	com/tencent/mobileqq/troop/jsp/TroopAssistantFeedsJsHandler:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   26: iconst_0
+    //   27: invokevirtual 370	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   30: aload_1
+    //   31: athrow
+    //   32: aload_0
+    //   33: getfield 20	com/tencent/mobileqq/troop/jsp/TroopAssistantFeedsJsHandler:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   36: iconst_0
+    //   37: invokevirtual 370	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   40: return
+    //   41: astore_1
+    //   42: goto -10 -> 32
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	48	0	this	TroopAssistantFeedsJsHandler
-    //   27	1	1	localException	Exception
-    //   37	10	1	localObject	Object
+    //   0	45	0	this	TroopAssistantFeedsJsHandler
+    //   21	10	1	localObject	Object
+    //   41	1	1	localException	Exception
     // Exception table:
     //   from	to	target	type
-    //   4	18	27	java/lang/Exception
-    //   4	18	37	finally
+    //   4	18	21	finally
+    //   4	18	41	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.jsp.TroopAssistantFeedsJsHandler
  * JD-Core Version:    0.7.0.1
  */

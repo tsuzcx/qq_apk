@@ -59,8 +59,9 @@ public class SoftKeyboardStateHelper
   public void a()
   {
     this.jdField_a_of_type_JavaUtilList.clear();
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (localView != null) {
+      localView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
   }
   
@@ -79,24 +80,33 @@ public class SoftKeyboardStateHelper
     Rect localRect = new Rect();
     this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
     int i = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight() - (localRect.bottom - localRect.top) - ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidViewView.getContext());
-    if (QLog.isColorLevel()) {
-      QLog.d("SoftKeyboardStateHelper", 2, "onGlobalLayout , activityRootView.Height = " + this.jdField_a_of_type_AndroidViewView.getRootView().getHeight() + " heightDiff = " + i + " (r.bottom - r.top) = " + (localRect.bottom - localRect.top));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGlobalLayout , activityRootView.Height = ");
+      localStringBuilder.append(this.jdField_a_of_type_AndroidViewView.getRootView().getHeight());
+      localStringBuilder.append(" heightDiff = ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" (r.bottom - r.top) = ");
+      localStringBuilder.append(localRect.bottom - localRect.top);
+      QLog.d("SoftKeyboardStateHelper", 2, localStringBuilder.toString());
     }
     if ((!this.jdField_a_of_type_Boolean) && (i > this.b))
     {
       this.jdField_a_of_type_Boolean = true;
       a(i);
-    }
-    while ((!this.jdField_a_of_type_Boolean) || (i >= this.b)) {
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
-    b();
+    if ((this.jdField_a_of_type_Boolean) && (i < this.b))
+    {
+      this.jdField_a_of_type_Boolean = false;
+      b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.util.SoftKeyboardStateHelper
  * JD-Core Version:    0.7.0.1
  */

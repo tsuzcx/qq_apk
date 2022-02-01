@@ -25,9 +25,17 @@ class NowLiveFragment$3
         QLog.i("NowLiveFragment", 2, "preGetKeyInPreloadService : Done");
       }
       String str = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
-      this.a.jdField_a_of_type_ComTencentSmttSdkCookieManager.setCookie("now.qq.com", "p_skey=" + str);
+      Object localObject = this.a.jdField_a_of_type_ComTencentSmttSdkCookieManager;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("p_skey=");
+      localStringBuilder.append(str);
+      ((CookieManager)localObject).setCookie("now.qq.com", localStringBuilder.toString());
       CookieSyncManager.getInstance().sync();
-      this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit().putString("pskey", "" + str).commit();
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(str);
+      ((SharedPreferences.Editor)localObject).putString("pskey", localStringBuilder.toString()).commit();
       this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit().putLong("pskey_t", System.currentTimeMillis()).commit();
       NowLiveFragment.b = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
     }
@@ -36,23 +44,31 @@ class NowLiveFragment$3
   
   public void Failed(ErrMsg paramErrMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NowLiveFragment", 2, "preGetKeyInPreloadService failed " + paramErrMsg);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("preGetKeyInPreloadService failed ");
+      localStringBuilder.append(paramErrMsg);
+      QLog.i("NowLiveFragment", 2, localStringBuilder.toString());
     }
     this.a.jdField_a_of_type_AndroidOsHandler.post(new NowLiveFragment.3.2(this));
   }
   
   public void Timeout(ErrMsg paramErrMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NowLiveFragment", 2, "preGetKeyInPreloadService timeout!" + paramErrMsg);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("preGetKeyInPreloadService timeout!");
+      localStringBuilder.append(paramErrMsg);
+      QLog.i("NowLiveFragment", 2, localStringBuilder.toString());
     }
     this.a.jdField_a_of_type_AndroidOsHandler.post(new NowLiveFragment.3.3(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NowLiveFragment.3
  * JD-Core Version:    0.7.0.1
  */

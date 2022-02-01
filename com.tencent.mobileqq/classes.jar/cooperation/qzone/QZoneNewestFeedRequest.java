@@ -31,29 +31,25 @@ public class QZoneNewestFeedRequest
   public static AIONewestFeedRsp onResponse(byte[] paramArrayOfByte, QQAppInterface paramQQAppInterface)
   {
     if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
+      return null;
     }
-    do
-    {
-      return paramArrayOfByte;
-      paramQQAppInterface = (AIONewestFeedRsp)decode(paramArrayOfByte, "getAIONewestFeed");
-      paramArrayOfByte = paramQQAppInterface;
-    } while (paramQQAppInterface != null);
-    return null;
+    paramArrayOfByte = (AIONewestFeedRsp)decode(paramArrayOfByte, "getAIONewestFeed");
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    return paramArrayOfByte;
   }
   
   public static AIONewestFeedRsp onResponse(byte[] paramArrayOfByte, QQAppInterface paramQQAppInterface, int[] paramArrayOfInt)
   {
     if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
+      return null;
     }
-    do
-    {
-      return paramArrayOfByte;
-      paramQQAppInterface = (AIONewestFeedRsp)decode(paramArrayOfByte, "getAIONewestFeed", paramArrayOfInt);
-      paramArrayOfByte = paramQQAppInterface;
-    } while (paramQQAppInterface != null);
-    return null;
+    paramArrayOfByte = (AIONewestFeedRsp)decode(paramArrayOfByte, "getAIONewestFeed", paramArrayOfInt);
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    return paramArrayOfByte;
   }
   
   public String getCmdString()
@@ -73,7 +69,7 @@ public class QZoneNewestFeedRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.QZoneNewestFeedRequest
  * JD-Core Version:    0.7.0.1
  */

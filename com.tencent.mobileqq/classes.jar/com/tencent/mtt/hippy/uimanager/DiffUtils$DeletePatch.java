@@ -16,12 +16,15 @@ public class DiffUtils$DeletePatch
   
   public String toString()
   {
-    return "DeletePatch  Id " + this.mId;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeletePatch  Id ");
+    localStringBuilder.append(this.mId);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.DiffUtils.DeletePatch
  * JD-Core Version:    0.7.0.1
  */

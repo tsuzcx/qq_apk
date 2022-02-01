@@ -11,66 +11,73 @@ public class CUOpenCardGuideMng$GuideEntry
   
   public static GuideEntry a(JSONObject paramJSONObject)
   {
-    if (paramJSONObject != null) {
-      for (;;)
+    JSONObject localJSONObject;
+    if (paramJSONObject != null)
+    {
+      try
       {
+        Object localObject = new GuideEntry();
         try
         {
-          localObject = new GuideEntry();
-          try
-          {
-            if (paramJSONObject.has("tip"))
-            {
-              ((GuideEntry)localObject).a = paramJSONObject.getString("tip");
-              if (!paramJSONObject.has("key_word")) {
-                continue;
-              }
-              ((GuideEntry)localObject).b = paramJSONObject.getString("key_word");
-              if (!paramJSONObject.has("jump_url")) {
-                continue;
-              }
-              ((GuideEntry)localObject).c = paramJSONObject.getString("jump_url");
-              return localObject;
-            }
+          boolean bool = paramJSONObject.has("tip");
+          if (bool) {
+            ((GuideEntry)localObject).a = paramJSONObject.getString("tip");
+          } else {
             ((GuideEntry)localObject).a = "";
-            continue;
-            localObject = paramJSONObject;
           }
-          catch (Exception localException1)
+          if (paramJSONObject.has("key_word")) {
+            ((GuideEntry)localObject).b = paramJSONObject.getString("key_word");
+          } else {
+            ((GuideEntry)localObject).b = "";
+          }
+          if (paramJSONObject.has("jump_url"))
           {
-            paramJSONObject = (JSONObject)localObject;
+            ((GuideEntry)localObject).c = paramJSONObject.getString("jump_url");
+            return localObject;
           }
+          ((GuideEntry)localObject).c = "";
+          return localObject;
         }
         catch (Exception localException2)
         {
-          paramJSONObject = null;
-          continue;
+          paramJSONObject = (JSONObject)localObject;
+          localObject = localException2;
         }
-        if (!QLog.isColorLevel()) {
-          return localObject;
-        }
+        localJSONObject = paramJSONObject;
+      }
+      catch (Exception localException1)
+      {
+        paramJSONObject = null;
+      }
+      if (QLog.isColorLevel())
+      {
         QLog.i("CUOpenCardGuideMng", 2, "GuideEntry-parse", localException1);
         return paramJSONObject;
-        ((GuideEntry)localObject).b = "";
-        continue;
-        ((GuideEntry)localObject).c = "";
-        return localObject;
       }
     }
-    Object localObject = null;
-    return localObject;
+    else
+    {
+      localJSONObject = null;
+    }
+    return localJSONObject;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("[tip:").append(this.a).append(", key_word:").append(this.b).append(", jump_url:").append(this.c).append("]");
+    localStringBuilder.append("[tip:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", key_word:");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", jump_url:");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.managers.CUOpenCardGuideMng.GuideEntry
  * JD-Core Version:    0.7.0.1
  */

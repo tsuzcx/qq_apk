@@ -18,20 +18,17 @@ public class IdentityUtils
   private static Context a(Dialog paramDialog)
   {
     if (paramDialog == null) {
-      paramDialog = null;
+      return null;
     }
-    Context localContext;
-    do
-    {
-      do
-      {
-        return paramDialog;
-        localContext = paramDialog.getContext();
-        paramDialog = localContext;
-      } while ((localContext instanceof Activity));
-      paramDialog = localContext;
-    } while (!(localContext instanceof ContextThemeWrapper));
-    return ((ContextThemeWrapper)localContext).getBaseContext();
+    Context localContext = paramDialog.getContext();
+    if ((localContext instanceof Activity)) {
+      return localContext;
+    }
+    paramDialog = localContext;
+    if ((localContext instanceof ContextThemeWrapper)) {
+      paramDialog = ((ContextThemeWrapper)localContext).getBaseContext();
+    }
+    return paramDialog;
   }
   
   public static QQCustomDialog a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2)
@@ -48,18 +45,15 @@ public class IdentityUtils
         return paramString1;
       }
     }
+    catch (ClassCastException paramString1)
+    {
+      QLog.e("IdentityUtils", 1, new Object[] { "getValueFromPayload ClassCastException : ", paramString1.getMessage() });
+    }
     catch (JSONException paramString1)
     {
       QLog.e("IdentityUtils", 1, new Object[] { "getValueFromPayload JSONException : ", paramString1.getMessage() });
-      return null;
     }
-    catch (ClassCastException paramString1)
-    {
-      for (;;)
-      {
-        QLog.e("IdentityUtils", 1, new Object[] { "getValueFromPayload ClassCastException : ", paramString1.getMessage() });
-      }
-    }
+    return null;
   }
   
   public static String a(String paramString)
@@ -83,11 +77,19 @@ public class IdentityUtils
   
   public static boolean a(Dialog paramDialog, Activity paramActivity)
   {
-    if ((paramDialog == null) || (paramActivity == null)) {}
-    while (a(paramDialog) != paramActivity) {
-      return false;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramDialog != null)
+    {
+      if (paramActivity == null) {
+        return false;
+      }
+      bool1 = bool2;
+      if (a(paramDialog) == paramActivity) {
+        bool1 = true;
+      }
     }
-    return true;
+    return bool1;
   }
   
   public static boolean a(String paramString)
@@ -101,33 +103,32 @@ public class IdentityUtils
   
   public static boolean a(String paramString, long paramLong)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      paramString = a(paramString);
-      if (paramString != null) {
-        try
-        {
-          paramString = new JSONObject(paramString);
-          long l1 = paramString.optLong("iat");
-          long l2 = paramString.optLong("exp");
-          if ((paramLong > l1) && (paramLong < l2)) {
-            return true;
-          }
-        }
-        catch (JSONException paramString)
-        {
-          QLog.e("IdentityUtils", 1, new Object[] { "parse payload error : ", paramString.getMessage() });
-        }
+    }
+    paramString = a(paramString);
+    if (paramString == null) {
+      return false;
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      long l1 = paramString.optLong("iat");
+      long l2 = paramString.optLong("exp");
+      if ((paramLong > l1) && (paramLong < l2)) {
+        return true;
       }
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("IdentityUtils", 1, new Object[] { "parse payload error : ", paramString.getMessage() });
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.IdentityUtils
  * JD-Core Version:    0.7.0.1
  */

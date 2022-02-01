@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +17,7 @@ import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivityForTool;
 import com.tencent.mobileqq.activity.qwallet.utils.OSUtils;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
@@ -26,7 +26,7 @@ import com.tencent.mobileqq.qqvideoplatform.api.QQVideoPlaySDKManager;
 import com.tencent.mobileqq.vas.VasStatisticCollector;
 import com.tencent.mobileqq.videoplatform.util.LoadSoUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import com.tencent.shadow.dynamic.host.EnterCallback;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import cooperation.ilive.plugin.IlivePluginCallback;
@@ -84,43 +84,34 @@ public class IliveLaunchFragment
   private void initData()
   {
     ElapseStat.a("IliveLaunch initData");
-    if (getActivity() == null) {}
-    Object localObject1;
-    Object localObject2;
-    do
-    {
-      do
-      {
-        return;
-        localObject1 = getActivity().getIntent();
-      } while (localObject1 == null);
-      localObject2 = ((Intent)localObject1).getBundleExtra("KEY_EXTRAS");
-    } while (localObject2 == null);
+    if (getBaseActivity() == null) {
+      return;
+    }
+    Object localObject1 = getBaseActivity().getIntent();
+    if (localObject1 == null) {
+      return;
+    }
+    Object localObject2 = ((Intent)localObject1).getBundleExtra("KEY_EXTRAS");
+    if (localObject2 == null) {
+      return;
+    }
     long l = ((Bundle)localObject2).getLong("start_time", 0L);
-    int i;
     if (l > 0L)
     {
       localObject1 = ((Bundle)localObject2).getString("source");
-      i = ((Bundle)localObject2).getInt("page_type", 0);
-      if (i != 1) {
-        break label138;
+      int i = ((Bundle)localObject2).getInt("page_type", 0);
+      if (i == 1) {
+        TimeMonitorManager.a().b("ANCHOR_ENTER_ROOM");
+      } else if (i == 3) {
+        TimeMonitorManager.a().b("WATCH_ENTER_ROOM");
       }
-      TimeMonitorManager.a().b("ANCHOR_ENTER_ROOM");
-    }
-    for (;;)
-    {
       l = System.currentTimeMillis() - l;
       localObject2 = new HashMap();
       ((HashMap)localObject2).put("source", localObject1);
       ((HashMap)localObject2).put("process_start_time", String.valueOf(l));
       VasStatisticCollector.a("launcher", (Map)localObject2, l);
-      ElapseStat.b("IliveLaunch initData");
-      return;
-      label138:
-      if (i == 3) {
-        TimeMonitorManager.a().b("WATCH_ENTER_ROOM");
-      }
     }
+    ElapseStat.b("IliveLaunch initData");
   }
   
   private void initTransparentStateBar(Activity paramActivity)
@@ -170,9 +161,9 @@ public class IliveLaunchFragment
   
   private void runOnUiThread(Runnable paramRunnable)
   {
-    FragmentActivity localFragmentActivity = getActivity();
-    if (localFragmentActivity != null) {
-      localFragmentActivity.runOnUiThread(paramRunnable);
+    BaseActivity localBaseActivity = getBaseActivity();
+    if (localBaseActivity != null) {
+      localBaseActivity.runOnUiThread(paramRunnable);
     }
   }
   
@@ -190,18 +181,18 @@ public class IliveLaunchFragment
   
   public static void startSelf(Context paramContext, Intent paramIntent)
   {
-    if (!IliveEntranceUtil.b()) {
-      ThreadManagerV2.getUIHandlerV2().post(new IliveLaunchFragment.1());
-    }
-    Intent localIntent;
-    do
+    if (!IliveEntranceUtil.b())
     {
+      ThreadManagerV2.getUIHandlerV2().post(new IliveLaunchFragment.1());
       return;
-      localIntent = paramIntent;
-      if (paramIntent == null) {
-        localIntent = new Intent();
-      }
-    } while (!IliveEntranceUtil.a(localIntent.getBooleanExtra("KEY_IS_START_LIVE", false)));
+    }
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
+    }
+    if (!IliveEntranceUtil.a(localIntent.getBooleanExtra("KEY_IS_START_LIVE", false))) {
+      return;
+    }
     if (!IliveEntranceUtil.a(500))
     {
       QLog.e("IliveLaunchActivity", 1, "startSelf isClickEnable = false");
@@ -239,20 +230,25 @@ public class IliveLaunchFragment
   
   public void doLoading(boolean paramBoolean, Context paramContext)
   {
-    int i = 0;
     ElapseStat.a("IliveLaunch doLoading");
     if (paramBoolean) {
       startPreloadRecord();
     }
-    Bundle localBundle = getArguments();
-    if (localBundle != null) {
-      i = localBundle.getInt("source", 0);
+    Object localObject = getArguments();
+    int i = 0;
+    if (localObject != null) {
+      i = ((Bundle)localObject).getInt("source", 0);
     }
     IlivePluginManager.getInstance().refreshToken(i);
     IlivePreloadHelper.b = true;
     initVideoSDK();
     IlivePluginManager.getInstance().setIlivePluginCallback(this);
-    QLog.i("IliveLaunchActivity", 1, "doLoading isPreload = " + paramBoolean + " sPreload = " + IlivePreloadHelper.a);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("doLoading isPreload = ");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append(" sPreload = ");
+    ((StringBuilder)localObject).append(IlivePreloadHelper.a);
+    QLog.i("IliveLaunchActivity", 1, ((StringBuilder)localObject).toString());
     if ((!paramBoolean) && (IlivePreloadHelper.a))
     {
       QLog.i("IliveLaunchActivity", 1, "wait fo preload");
@@ -268,7 +264,12 @@ public class IliveLaunchFragment
   {
     if (!this.mIsPluginFileExist)
     {
-      QLog.e("IliveLaunchActivity", 1, "start enterPlugin error , isLoginSuccess = " + this.mIsPluginFileExist + " isSoLoadSucess = " + this.mIsSoLoadSuccess);
+      paramContext = new StringBuilder();
+      paramContext.append("start enterPlugin error , isLoginSuccess = ");
+      paramContext.append(this.mIsPluginFileExist);
+      paramContext.append(" isSoLoadSucess = ");
+      paramContext.append(this.mIsSoLoadSuccess);
+      QLog.e("IliveLaunchActivity", 1, paramContext.toString());
       return;
     }
     QLog.e("IliveLaunchActivity", 1, "start enterPlugin");
@@ -281,11 +282,14 @@ public class IliveLaunchFragment
       paramIntent.putExtra("KEY_EXTRAS", paramIntent.getBundleExtra("KEY_EXTRAS"));
     }
     TimeMonitorManager.a().b("PLUGIN_LOAD");
-    paramContext = "com.tencent.ilivesdk.demo.LauncherActivity";
     if (IlivePreloadHelper.a)
     {
       QLog.i("IliveLaunchActivity", 1, "preload shadow");
       paramContext = "preload";
+    }
+    else
+    {
+      paramContext = "com.tencent.ilivesdk.demo.LauncherActivity";
     }
     IlivePluginHelper.a(BaseApplicationImpl.getContext(), paramIntent, paramContext, mEnterCallback);
   }
@@ -302,15 +306,12 @@ public class IliveLaunchFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = null;
     QLog.e("IliveLaunchActivity", 1, "onCreateView");
     ElapseStat.a("IliveLaunch totalLaunch");
-    paramViewGroup = getActivity();
-    if (paramViewGroup == null) {}
-    for (;;)
+    paramViewGroup = getBaseActivity();
+    paramLayoutInflater = null;
+    if (paramViewGroup != null)
     {
-      V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
-      return paramLayoutInflater;
       if (Build.VERSION.SDK_INT >= 21)
       {
         paramViewGroup.getWindow().addFlags(67108864);
@@ -329,11 +330,13 @@ public class IliveLaunchFragment
         TimeMonitorManager.a().b("PLUGIN_ENTER_TOTAL_TIME");
         TimeMonitorConfig.a();
         this.mParentLayout = new FrameLayout(paramViewGroup);
-        doLoading(false, getActivity());
+        doLoading(false, getBaseActivity());
         ElapseStat.b("IliveLaunchActivity");
         paramLayoutInflater = this.mParentLayout;
       }
     }
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroyView()
@@ -342,8 +345,9 @@ public class IliveLaunchFragment
     IlivePluginDownloadManager.a().a(null);
     IlivePluginDownloadManager.a().a();
     IlivePluginManager.getInstance().onDestory();
-    if (this.mIliveShareHelper != null) {
-      this.mIliveShareHelper.onDestroy();
+    IliveShareHelper localIliveShareHelper = this.mIliveShareHelper;
+    if (localIliveShareHelper != null) {
+      localIliveShareHelper.onDestroy();
     }
     super.onDestroyView();
   }
@@ -357,9 +361,17 @@ public class IliveLaunchFragment
     }
     paramString = new HashMap();
     paramString.put("status", "fail");
-    paramString.put("errorCode", paramInt + str);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(str);
+    paramString.put("errorCode", localStringBuilder.toString());
     TimeMonitorManager.a().a("PLUGIN_DOWNLOAD").a("plugin_download_result", paramString);
-    QLog.e("IliveLaunchActivity", 1, "onFail code = " + paramInt + " msg = " + str);
+    paramString = new StringBuilder();
+    paramString.append("onFail code = ");
+    paramString.append(paramInt);
+    paramString.append(" msg = ");
+    paramString.append(str);
+    QLog.e("IliveLaunchActivity", 1, paramString.toString());
     runOnUiThread(new IliveLaunchFragment.10(this, paramInt, str));
   }
   
@@ -367,11 +379,11 @@ public class IliveLaunchFragment
   {
     ElapseStat.b("IliveLaunch onPluginLaunch");
     QLog.e("IliveLaunchActivity", 1, "onPluginActivityCreate");
-    TimeMonitorManager.a().a("PLUGIN_ENTER_TOTAL_TIME").a("ilive_plugin_launch_total_time");
+    TimeMonitorManager.a().a("PLUGIN_ENTER_TOTAL_TIME").b("ilive_plugin_launch_total_time");
     TimeMonitorConfig.b();
     ElapseStat.b("IliveLaunch totalLaunch");
-    if (getActivity() != null) {
-      getActivity().finish();
+    if (getBaseActivity() != null) {
+      getBaseActivity().finish();
     }
   }
   
@@ -384,7 +396,12 @@ public class IliveLaunchFragment
     try
     {
       cancelPreload();
-      QLog.e("IliveLaunchActivity", 1, "onPluginLoginFail code = " + paramInt + " msg = " + str);
+      paramString = new StringBuilder();
+      paramString.append("onPluginLoginFail code = ");
+      paramString.append(paramInt);
+      paramString.append(" msg = ");
+      paramString.append(str);
+      QLog.e("IliveLaunchActivity", 1, paramString.toString());
       runOnUiThread(new IliveLaunchFragment.13(this, paramInt));
       return;
     }
@@ -412,12 +429,12 @@ public class IliveLaunchFragment
   
   public void onPreloadEnd()
   {
-    FragmentActivity localFragmentActivity = getActivity();
+    BaseActivity localBaseActivity = getBaseActivity();
     QLog.e("IliveLaunchActivity", 1, "onPreloadEnd");
-    if (localFragmentActivity == null) {
+    if (localBaseActivity == null) {
       return;
     }
-    doLoading(false, localFragmentActivity);
+    doLoading(false, localBaseActivity);
   }
   
   public void onProgress(float paramFloat)
@@ -427,10 +444,13 @@ public class IliveLaunchFragment
   
   public void onSuccess()
   {
-    QLog.e("IliveLaunchActivity", 1, "shadow onSuccess sPreload = " + IlivePreloadHelper.a);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("status", "success");
-    TimeMonitorManager.a().a("PLUGIN_DOWNLOAD").a("plugin_download_result", localHashMap);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("shadow onSuccess sPreload = ");
+    ((StringBuilder)localObject).append(IlivePreloadHelper.a);
+    QLog.e("IliveLaunchActivity", 1, ((StringBuilder)localObject).toString());
+    localObject = new HashMap();
+    ((HashMap)localObject).put("status", "success");
+    TimeMonitorManager.a().a("PLUGIN_DOWNLOAD").a("plugin_download_result", (HashMap)localObject);
     if (!IlivePluginDownloadManager.a().b())
     {
       onFail(101, "download success but local apk file is not exist");
@@ -438,22 +458,17 @@ public class IliveLaunchFragment
     }
     ElapseStat.a("enterPlugin");
     this.mIsPluginFileExist = true;
-    if (getActivity() != null) {
-      enterPlugin(getActivity(), getActivity().getIntent());
+    if (getBaseActivity() != null) {
+      enterPlugin(getBaseActivity(), getBaseActivity().getIntent());
+    } else if (IlivePreloadHelper.a) {
+      enterPlugin(BaseApplicationImpl.getContext(), new Intent());
     }
-    for (;;)
-    {
-      ElapseStat.b("enterPlugin");
-      return;
-      if (IlivePreloadHelper.a) {
-        enterPlugin(BaseApplicationImpl.getContext(), new Intent());
-      }
-    }
+    ElapseStat.b("enterPlugin");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.IliveLaunchFragment
  * JD-Core Version:    0.7.0.1
  */

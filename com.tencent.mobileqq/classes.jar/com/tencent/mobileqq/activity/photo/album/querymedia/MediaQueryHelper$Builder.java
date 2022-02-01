@@ -24,7 +24,8 @@ public class MediaQueryHelper$Builder
     if ((this.cursors == null) && (paramContext != null) && (MediaQueryHelper.isHasStorageReadAndWritePermission(paramContext)))
     {
       this.cursors = new ArrayList();
-      if ((this.albumId != null) && (this.albumId.equals("$VideoAlbumId"))) {
+      String str = this.albumId;
+      if ((str != null) && (str.equals("$VideoAlbumId"))) {
         this.needImage = false;
       }
       if (this.needImage) {
@@ -87,7 +88,7 @@ public class MediaQueryHelper$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.querymedia.MediaQueryHelper.Builder
  * JD-Core Version:    0.7.0.1
  */

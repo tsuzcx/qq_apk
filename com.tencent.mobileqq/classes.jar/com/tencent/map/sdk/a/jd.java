@@ -16,9 +16,10 @@ public final class jd
   public jd(pn parampn)
   {
     this.b = parampn;
-    if (this.b != null)
+    parampn = this.b;
+    if (parampn != null)
     {
-      jc.a(this.b.ay);
+      jc.a(parampn.ay);
       parampn = new jf(this.b.ay, this);
       new jf.b(parampn, (byte)0).execute(new Context[] { parampn.a });
     }
@@ -26,58 +27,61 @@ public final class jd
   
   public final void a()
   {
-    int i = 0;
-    if ((this.a != null) || (this.b == null) || (this.b.az == null)) {}
-    for (;;)
+    if (this.a == null)
     {
-      return;
-      pm localpm = this.b.az;
-      Object localObject;
-      if (this.c == null)
+      Object localObject1 = this.b;
+      if (localObject1 != null)
       {
-        this.c = new TileOverlayOptions();
-        localObject = new je(this.c);
-        this.c.tileProvider((TileProvider)localObject).diskCacheDir("rastermap/handdraw").zIndex(2);
-      }
-      localpm.e(19);
-      this.a = localpm.a(this.c);
-      if (this.a != null)
-      {
-        localObject = this.a.getClass().getDeclaredFields();
-        int j = localObject.length;
-        while (i < j)
+        if (((pt)localObject1).az == null) {
+          return;
+        }
+        localObject1 = this.b.az;
+        Object localObject2;
+        if (this.c == null)
         {
-          localpm = localObject[i];
-          if (localpm.getType() == ix.class) {
-            for (;;)
-            {
+          this.c = new TileOverlayOptions();
+          localObject2 = new je(this.c);
+          this.c.tileProvider((TileProvider)localObject2).diskCacheDir("rastermap/handdraw").zIndex(2);
+        }
+        ((pm)localObject1).e(19);
+        this.a = ((pm)localObject1).a(this.c);
+        localObject1 = this.a;
+        if (localObject1 != null)
+        {
+          localObject2 = localObject1.getClass().getDeclaredFields();
+          int j = localObject2.length;
+          int i = 0;
+          while (i < j)
+          {
+            localObject1 = localObject2[i];
+            if (((Field)localObject1).getType() == ix.class) {
               try
               {
-                localpm.setAccessible(true);
-                localObject = (ix)localpm.get(this.a);
-                if ((((ix)localObject).k == null) || (((ix)localObject).i < 0))
+                ((Field)localObject1).setAccessible(true);
+                localObject2 = (ix)((Field)localObject1).get(this.a);
+                if ((((ix)localObject2).k != null) && (((ix)localObject2).i >= 0))
                 {
-                  localpm.setAccessible(false);
-                  return;
+                  iy localiy = ((ix)localObject2).k;
+                  i = ((ix)localObject2).i;
+                  if (localiy.a != null)
+                  {
+                    localObject2 = localiy.a;
+                    if ((((pf)localObject2).b != 0L) && (((pf)localObject2).f != null)) {
+                      ((pf)localObject2).f.a(new pf.25((pf)localObject2, i));
+                    }
+                  }
                 }
+                ((Field)localObject1).setAccessible(false);
+                return;
               }
               catch (IllegalAccessException localIllegalAccessException)
               {
                 or.b("SketchOverlayManager set data level with reflect", localIllegalAccessException);
                 return;
               }
-              iy localiy = ((ix)localObject).k;
-              i = ((ix)localObject).i;
-              if (localiy.a != null)
-              {
-                localObject = localiy.a;
-                if ((((pf)localObject).b != 0L) && (((pf)localObject).f != null)) {
-                  ((pf)localObject).f.a(new pf.25((pf)localObject, i));
-                }
-              }
             }
+            i += 1;
           }
-          i += 1;
         }
       }
     }
@@ -85,24 +89,26 @@ public final class jd
   
   public final void b()
   {
-    if (this.c != null)
+    Object localObject = this.c;
+    if (localObject != null)
     {
-      je localje = (je)this.c.getTileProvider();
+      localObject = (je)((TileOverlayOptions)localObject).getTileProvider();
       je.a = jc.a();
-      if (localje.b != null) {
-        localje.b.versionInfo(je.a());
+      if (((je)localObject).b != null) {
+        ((je)localObject).b.versionInfo(je.a());
       }
     }
-    if (this.a != null)
+    localObject = this.a;
+    if (localObject != null)
     {
-      this.a.clearTileCache();
+      ((TileOverlay)localObject).clearTileCache();
       this.a.reload();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.jd
  * JD-Core Version:    0.7.0.1
  */

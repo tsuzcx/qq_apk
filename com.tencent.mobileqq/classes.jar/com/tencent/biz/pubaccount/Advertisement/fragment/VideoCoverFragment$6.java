@@ -12,44 +12,52 @@ class VideoCoverFragment$6
   
   public void run()
   {
-    if (VideoCoverFragment.a(this.this$0) == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (!VideoCoverFragment.b(this.this$0)) {
-            break;
-          }
-          VideoCoverFragment.a(this.this$0).setStreamVolume(3, this.a, 0);
-        } while (!QLog.isColorLevel());
-        QLog.d("VideoCoverFragment", 2, "is broken by user click");
-        return;
-        if (!PublicAccountAdvertisementActivity.a) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("VideoCoverFragment", 2, "is broken by user slip");
+    if (VideoCoverFragment.a(this.this$0) == null) {
       return;
-      int i = VideoCoverFragment.a(this.this$0).getStreamVolume(3);
+    }
+    if (VideoCoverFragment.b(this.this$0))
+    {
+      VideoCoverFragment.a(this.this$0).setStreamVolume(3, this.a, 0);
       if (QLog.isColorLevel()) {
-        QLog.d("VideoCoverFragment", 2, "change volume is " + i);
+        QLog.d("VideoCoverFragment", 2, "is broken by user click");
       }
-      if (i < this.a)
-      {
-        VideoCoverFragment.a(this.this$0).adjustStreamVolume(3, 1, 0);
-        VideoCoverFragment.a(this.this$0).postDelayed(this, this.b);
-        return;
+      return;
+    }
+    if (PublicAccountAdvertisementActivity.a)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoCoverFragment", 2, "is broken by user slip");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("VideoCoverFragment", 2, "smoothAdjustVolume() mTargetMusicVolume = " + this.a + ", SET mIsSmoothRaiseFinished = true, FINISHED");
+      return;
+    }
+    int i = VideoCoverFragment.a(this.this$0).getStreamVolume(3);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("change volume is ");
+      localStringBuilder.append(i);
+      QLog.d("VideoCoverFragment", 2, localStringBuilder.toString());
+    }
+    if (i < this.a)
+    {
+      VideoCoverFragment.a(this.this$0).adjustStreamVolume(3, 1, 0);
+      VideoCoverFragment.a(this.this$0).postDelayed(this, this.b);
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("smoothAdjustVolume() mTargetMusicVolume = ");
+      localStringBuilder.append(this.a);
+      localStringBuilder.append(", SET mIsSmoothRaiseFinished = true, FINISHED");
+      QLog.d("VideoCoverFragment", 2, localStringBuilder.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.6
  * JD-Core Version:    0.7.0.1
  */

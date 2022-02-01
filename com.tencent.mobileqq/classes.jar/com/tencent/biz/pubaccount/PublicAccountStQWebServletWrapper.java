@@ -4,14 +4,15 @@ import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
 import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.api.impl.PublicAccountStQWebServletImpl;
-import com.tencent.biz.pubaccount.util.NetDebugUtils;
 import com.tencent.biz.subscribe.servlet.CertifiedAccountAbstractServlet;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.kandian.base.utils.api.IRIJNetworkUtils;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.pb.oac.OACProfilePb.ProfileDataReq;
 import com.tencent.pb.oac.OACProfilePb.ProfileDataRsp;
@@ -59,7 +60,7 @@ public class PublicAccountStQWebServletWrapper
   {
     byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
     paramIntent = paramIntent.getStringExtra("cmd");
-    NetDebugUtils.a(arrayOfByte, paramIntent);
+    ((IRIJNetworkUtils)QRoute.api(IRIJNetworkUtils.class)).debugSendPb(arrayOfByte, paramIntent);
     paramPacket.setSSOCommand(paramIntent);
     if (arrayOfByte != null) {
       paramPacket.putSendData(WupUtil.a(arrayOfByte));
@@ -68,7 +69,7 @@ public class PublicAccountStQWebServletWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.PublicAccountStQWebServletWrapper
  * JD-Core Version:    0.7.0.1
  */

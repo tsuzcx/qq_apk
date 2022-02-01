@@ -14,17 +14,22 @@ class PublicAccountChatPie$61
   
   public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.b, 2, "mQidianClickListener ... mQidianKefu = " + this.a.aj);
+    if (QLog.isColorLevel())
+    {
+      String str = this.a.b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mQidianClickListener ... mQidianKefu = ");
+      localStringBuilder.append(this.a.Z);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
-    this.a.v(2131695271);
-    this.a.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountManager.requestQidiKefu(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.j, this.a.k, this.a.l, new PublicAccountChatPie.61.1(this));
+    this.a.l(2131695275);
+    this.a.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountManager.requestQidiKefu(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.h, this.a.i, this.a.j, new PublicAccountChatPie.61.1(this));
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.61
  * JD-Core Version:    0.7.0.1
  */

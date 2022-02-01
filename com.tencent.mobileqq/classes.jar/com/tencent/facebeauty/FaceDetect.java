@@ -20,62 +20,61 @@ public abstract class FaceDetect
   
   public static Rect boundingRect(int[][] paramArrayOfInt, int paramInt1, int paramInt2)
   {
-    int k = paramArrayOfInt[paramInt1][0];
+    int i1 = paramArrayOfInt[paramInt1][0];
     int j = paramArrayOfInt[paramInt1][1];
     paramInt1 += 1;
-    int i = j;
-    int i1 = k;
-    if (paramInt1 <= paramInt2)
+    int k = i1;
+    int i2;
+    for (int i = j; paramInt1 <= paramInt2; i = i2)
     {
-      int n;
       int m;
-      label51:
-      int i3;
-      int i2;
-      if (paramArrayOfInt[paramInt1][0] < k)
+      int n;
+      if (paramArrayOfInt[paramInt1][0] < i1)
       {
-        n = paramArrayOfInt[paramInt1][0];
-        m = i1;
-        if (paramArrayOfInt[paramInt1][1] >= i) {
-          break label125;
-        }
-        i3 = paramArrayOfInt[paramInt1][1];
-        i2 = j;
-      }
-      for (;;)
-      {
-        paramInt1 += 1;
-        i1 = m;
-        k = n;
-        j = i2;
-        i = i3;
-        break;
-        m = i1;
-        n = k;
-        if (paramArrayOfInt[paramInt1][0] <= i1) {
-          break label51;
-        }
         m = paramArrayOfInt[paramInt1][0];
         n = k;
-        break label51;
-        label125:
-        i2 = j;
-        i3 = i;
-        if (paramArrayOfInt[paramInt1][1] > j)
+      }
+      else
+      {
+        m = i1;
+        n = k;
+        if (paramArrayOfInt[paramInt1][0] > k)
         {
-          i2 = paramArrayOfInt[paramInt1][1];
-          i3 = i;
+          n = paramArrayOfInt[paramInt1][0];
+          m = i1;
         }
       }
+      if (paramArrayOfInt[paramInt1][1] < j)
+      {
+        k = paramArrayOfInt[paramInt1][1];
+        i2 = i;
+      }
+      else
+      {
+        k = j;
+        i2 = i;
+        if (paramArrayOfInt[paramInt1][1] > i)
+        {
+          i2 = paramArrayOfInt[paramInt1][1];
+          k = j;
+        }
+      }
+      paramInt1 += 1;
+      i1 = m;
+      j = k;
+      k = n;
     }
-    return new Rect(k, i, i1, j);
+    return new Rect(i1, j, k, i);
   }
   
   public final void detectFace(Bitmap paramBitmap)
   {
     long l = System.currentTimeMillis();
     doDetectFace(paramBitmap);
-    LogUtils.d("FaceDetect", "detectFace() :" + (System.currentTimeMillis() - l));
+    paramBitmap = new StringBuilder();
+    paramBitmap.append("detectFace() :");
+    paramBitmap.append(System.currentTimeMillis() - l);
+    LogUtils.d("FaceDetect", paramBitmap.toString());
   }
   
   public final boolean detectedFace()
@@ -201,7 +200,7 @@ public abstract class FaceDetect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.facebeauty.FaceDetect
  * JD-Core Version:    0.7.0.1
  */

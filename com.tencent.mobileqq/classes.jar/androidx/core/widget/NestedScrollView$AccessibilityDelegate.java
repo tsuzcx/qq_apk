@@ -17,16 +17,17 @@ class NestedScrollView$AccessibilityDelegate
     super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
     paramView = (NestedScrollView)paramView;
     paramAccessibilityEvent.setClassName(ScrollView.class.getName());
-    if (paramView.getScrollRange() > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramAccessibilityEvent.setScrollable(bool);
-      paramAccessibilityEvent.setScrollX(paramView.getScrollX());
-      paramAccessibilityEvent.setScrollY(paramView.getScrollY());
-      AccessibilityRecordCompat.setMaxScrollX(paramAccessibilityEvent, paramView.getScrollX());
-      AccessibilityRecordCompat.setMaxScrollY(paramAccessibilityEvent, paramView.getScrollRange());
-      return;
+    boolean bool;
+    if (paramView.getScrollRange() > 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    paramAccessibilityEvent.setScrollable(bool);
+    paramAccessibilityEvent.setScrollX(paramView.getScrollX());
+    paramAccessibilityEvent.setScrollY(paramView.getScrollY());
+    AccessibilityRecordCompat.setMaxScrollX(paramAccessibilityEvent, paramView.getScrollX());
+    AccessibilityRecordCompat.setMaxScrollY(paramAccessibilityEvent, paramView.getScrollRange());
   }
   
   public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
@@ -63,24 +64,31 @@ class NestedScrollView$AccessibilityDelegate
     if (!paramView.isEnabled()) {
       return false;
     }
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    case 4096: 
-    case 16908346: 
-      paramInt = Math.min(paramView.getHeight() - paramView.getPaddingBottom() - paramView.getPaddingTop() + paramView.getScrollY(), paramView.getScrollRange());
-      if (paramInt != paramView.getScrollY())
+    if (paramInt != 4096) {
+      if ((paramInt != 8192) && (paramInt != 16908344))
       {
-        paramView.smoothScrollTo(0, paramInt, true);
-        return true;
+        if (paramInt != 16908346) {
+          return false;
+        }
       }
-      return false;
+      else
+      {
+        paramInt = paramView.getHeight();
+        i = paramView.getPaddingBottom();
+        j = paramView.getPaddingTop();
+        paramInt = Math.max(paramView.getScrollY() - (paramInt - i - j), 0);
+        if (paramInt != paramView.getScrollY())
+        {
+          paramView.smoothScrollTo(0, paramInt, true);
+          return true;
+        }
+        return false;
+      }
     }
     paramInt = paramView.getHeight();
     int i = paramView.getPaddingBottom();
     int j = paramView.getPaddingTop();
-    paramInt = Math.max(paramView.getScrollY() - (paramInt - i - j), 0);
+    paramInt = Math.min(paramView.getScrollY() + (paramInt - i - j), paramView.getScrollRange());
     if (paramInt != paramView.getScrollY())
     {
       paramView.smoothScrollTo(0, paramInt, true);
@@ -91,7 +99,7 @@ class NestedScrollView$AccessibilityDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.widget.NestedScrollView.AccessibilityDelegate
  * JD-Core Version:    0.7.0.1
  */

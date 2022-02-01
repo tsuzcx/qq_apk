@@ -8,7 +8,7 @@ import kotlin.jvm.JvmField;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ReqSetSettingItem;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "fieldId", "", "fromState", "toState", "(III)V", "getFieldId", "()I", "setFieldId", "(I)V", "getFromState", "setFromState", "getToState", "setToState", "describeContents", "toString", "", "writeToParcel", "", "flags", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ReqSetSettingItem;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "fieldId", "", "fromState", "toState", "(III)V", "getFieldId", "()I", "setFieldId", "(I)V", "getFromState", "setFromState", "getToState", "setToState", "describeContents", "toString", "", "writeToParcel", "", "flags", "Companion", "profilecard-temp-api_release"}, k=1, mv={1, 1, 16})
 public final class ReqSetSettingItem
   implements Parcelable
 {
@@ -60,7 +60,15 @@ public final class ReqSetSettingItem
   @NotNull
   public String toString()
   {
-    return '[' + this.jdField_a_of_type_Int + ", from=" + this.b + ", to=" + this.c + ']';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append('[');
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", from=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", to=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(']');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(@NotNull Parcel paramParcel, int paramInt)
@@ -73,7 +81,7 @@ public final class ReqSetSettingItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.ReqSetSettingItem
  * JD-Core Version:    0.7.0.1
  */

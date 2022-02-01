@@ -17,11 +17,13 @@ public final class ProfileBasePrivacySettingAdapter$ProfileTitleHolder
   public ProfileBasePrivacySettingAdapter$ProfileTitleHolder(@NotNull View paramView)
   {
     super(paramView);
-    paramView = paramView.findViewById(2131373539);
-    if (paramView == null) {
-      throw new TypeCastException("null cannot be cast to non-null type android.widget.TextView");
+    paramView = paramView.findViewById(2131373118);
+    if (paramView != null)
+    {
+      this.a = ((TextView)paramView);
+      return;
     }
-    this.a = ((TextView)paramView);
+    throw new TypeCastException("null cannot be cast to non-null type android.widget.TextView");
   }
   
   @NotNull
@@ -32,7 +34,7 @@ public final class ProfileBasePrivacySettingAdapter$ProfileTitleHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.ProfileBasePrivacySettingAdapter.ProfileTitleHolder
  * JD-Core Version:    0.7.0.1
  */

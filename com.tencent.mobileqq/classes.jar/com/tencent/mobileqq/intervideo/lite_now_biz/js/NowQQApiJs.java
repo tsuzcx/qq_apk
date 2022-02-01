@@ -12,12 +12,11 @@ import com.tencent.ilive.litepages.room.webmodule.jsmodule.NewJavascriptInterfac
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.intervideo.now.ShareToQQActivity;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.litelivesdk.framework.businessmgr.BusinessManager;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
 import java.util.Map;
@@ -46,30 +45,30 @@ public class NowQQApiJs
   
   private void shareToQQ(Bundle paramBundle)
   {
-    Intent localIntent = new Intent(BaseApplicationImpl.getContext(), ShareToQQActivity.class);
+    Intent localIntent = new Intent();
     localIntent.addFlags(268435456);
     if (paramBundle != null) {
       localIntent.putExtras(paramBundle);
     }
     localIntent.putExtra("uin", getUin());
-    BaseApplicationImpl.getContext().startActivity(localIntent);
+    RouteUtils.a(BaseApplicationImpl.getContext(), localIntent, "/share/toqq/activity");
   }
   
   private void shareToWX(String paramString1, String paramString2, Bitmap paramBitmap, String paramString3, int paramInt)
   {
     if (!WXShareHelper.a().a())
     {
-      QRUtils.a(0, 2131720753);
+      QRUtils.a(0, 2131720478);
       return;
     }
     if (!WXShareHelper.a().b())
     {
-      QRUtils.a(0, 2131720754);
+      QRUtils.a(0, 2131720479);
       return;
     }
     String str = String.valueOf(System.currentTimeMillis());
     WXShareHelper.a().a(new NowQQApiJs.1(this, str));
-    WXShareHelper.a().b(str, paramString1, paramBitmap, paramString2, paramString3, paramInt);
+    WXShareHelper.a().a(str, paramString1, paramBitmap, paramString2, paramString3, paramInt);
   }
   
   @NewJavascriptInterface
@@ -85,62 +84,62 @@ public class NowQQApiJs
   {
     for (;;)
     {
-      Object localObject1;
       try
       {
         QLog.i("NowQQApiJs", 1, "AppJavascriptInterface doShare js fun");
-        Object localObject3 = new JSONObject((String)paramMap.get("p"));
-        localObject1 = ((JSONObject)localObject3).getString("share_type");
-        paramMap = ((JSONObject)localObject3).getString("share_url");
-        String str1 = ((JSONObject)localObject3).getString("title");
-        String str2 = ((JSONObject)localObject3).getString("desc");
-        Object localObject2 = ((JSONObject)localObject3).getString("image_url");
-        if (("2".equals(localObject1)) || ("3".equals(localObject1)))
+        Object localObject4 = new JSONObject((String)paramMap.get("p"));
+        Object localObject2 = ((JSONObject)localObject4).getString("share_type");
+        paramMap = ((JSONObject)localObject4).getString("share_url");
+        localObject1 = ((JSONObject)localObject4).getString("title");
+        String str = ((JSONObject)localObject4).getString("desc");
+        Object localObject3 = ((JSONObject)localObject4).getString("image_url");
+        if ((!"2".equals(localObject2)) && (!"3".equals(localObject2)))
         {
-          localObject3 = URLDrawable.URLDrawableOptions.obtain();
-          ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = 300;
-          ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = 300;
-          localObject2 = ImageUtil.b(URLDrawable.getDrawable((String)localObject2, (URLDrawable.URLDrawableOptions)localObject3));
-          if (!"2".equals(localObject1)) {
-            break label312;
+          if ("0".equals(localObject2))
+          {
+            localObject2 = new Bundle();
+            ((Bundle)localObject2).putString("title", (String)localObject1);
+            ((Bundle)localObject2).putString("imageurl", (String)localObject3);
+            ((Bundle)localObject2).putString("imageUrl", (String)localObject3);
+            ((Bundle)localObject2).putString("targeturl", paramMap);
+            ((Bundle)localObject2).putString("targetUrl", paramMap);
+            ((Bundle)localObject2).putString("summary", str);
+            if (((JSONObject)localObject4).has("sourceName")) {
+              ((Bundle)localObject2).putString("sourcename", ((JSONObject)localObject4).getString("sourceName"));
+            }
+            shareToQQ((Bundle)localObject2);
+            return;
           }
-          i = 0;
-          shareToWX(str1, str2, (Bitmap)localObject2, paramMap, i);
+          "1".equals(localObject2);
           return;
         }
-        if ("0".equals(localObject1))
+        localObject4 = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject4).mRequestWidth = 300;
+        ((URLDrawable.URLDrawableOptions)localObject4).mRequestHeight = 300;
+        localObject3 = ImageUtil.b(URLDrawable.getDrawable((String)localObject3, (URLDrawable.URLDrawableOptions)localObject4));
+        if ("2".equals(localObject2))
         {
-          localObject1 = new Bundle();
-          ((Bundle)localObject1).putString("title", str1);
-          ((Bundle)localObject1).putString("imageurl", (String)localObject2);
-          ((Bundle)localObject1).putString("imageUrl", (String)localObject2);
-          ((Bundle)localObject1).putString("targeturl", paramMap);
-          ((Bundle)localObject1).putString("targetUrl", paramMap);
-          ((Bundle)localObject1).putString("summary", str2);
-          if (((JSONObject)localObject3).has("sourceName")) {
-            ((Bundle)localObject1).putString("sourcename", ((JSONObject)localObject3).getString("sourceName"));
-          }
-          shareToQQ((Bundle)localObject1);
+          i = 0;
+          shareToWX((String)localObject1, str, (Bitmap)localObject3, paramMap, i);
           return;
         }
       }
       catch (Exception paramMap)
       {
-        QLog.e("NowQQApiJs", 1, "share err " + paramMap.getMessage());
-        QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131719153), 0).a();
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("share err ");
+        ((StringBuilder)localObject1).append(paramMap.getMessage());
+        QLog.e("NowQQApiJs", 1, ((StringBuilder)localObject1).toString());
+        QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131718871), 0).a();
         return;
       }
-      boolean bool = "1".equals(localObject1);
-      if (bool) {}
-      return;
-      label312:
       int i = 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.js.NowQQApiJs
  * JD-Core Version:    0.7.0.1
  */

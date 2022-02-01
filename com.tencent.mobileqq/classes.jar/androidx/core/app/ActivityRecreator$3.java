@@ -3,7 +3,7 @@ package androidx.core.app;
 import android.util.Log;
 import java.lang.reflect.Method;
 
-final class ActivityRecreator$3
+class ActivityRecreator$3
   implements Runnable
 {
   ActivityRecreator$3(Object paramObject1, Object paramObject2) {}
@@ -20,21 +20,26 @@ final class ActivityRecreator$3
       ActivityRecreator.performStopActivity2ParamsMethod.invoke(this.val$activityThread, new Object[] { this.val$token, Boolean.valueOf(false) });
       return;
     }
-    catch (RuntimeException localRuntimeException)
-    {
-      if ((localRuntimeException.getClass() == RuntimeException.class) && (localRuntimeException.getMessage() != null) && (localRuntimeException.getMessage().startsWith("Unable to stop"))) {
-        throw localRuntimeException;
-      }
-    }
     catch (Throwable localThrowable)
     {
       Log.e("ActivityRecreator", "Exception while invoking performStopActivity", localThrowable);
+      return;
+    }
+    catch (RuntimeException localRuntimeException)
+    {
+      if ((localRuntimeException.getClass() == RuntimeException.class) && (localRuntimeException.getMessage() != null))
+      {
+        if (!localRuntimeException.getMessage().startsWith("Unable to stop")) {
+          return;
+        }
+        throw localRuntimeException;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.ActivityRecreator.3
  * JD-Core Version:    0.7.0.1
  */

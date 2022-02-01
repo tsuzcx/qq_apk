@@ -15,12 +15,12 @@ public class WSGridTitleAvatarPlayInnerHolder
   
   public IWSItemView<stSimpleMetaFeed> a(int paramInt)
   {
-    return new WSGridTitleAvatarPlayInnerItemView(a(), this.itemView, a());
+    return new WSGridTitleAvatarPlayInnerItemView(getContext(), this.itemView, a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.WSGridTitleAvatarPlayInnerHolder
  * JD-Core Version:    0.7.0.1
  */

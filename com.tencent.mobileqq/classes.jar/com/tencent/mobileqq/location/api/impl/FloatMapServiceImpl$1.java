@@ -7,6 +7,7 @@ import com.tencent.mobileqq.location.data.LocationRoom.RoomKey;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 class FloatMapServiceImpl$1
   implements View.OnClickListener
@@ -17,8 +18,8 @@ class FloatMapServiceImpl$1
   {
     int i = this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a();
     String str = this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a();
-    ILocationShareService localILocationShareService = (ILocationShareService)this.jdField_a_of_type_ComTencentMobileqqLocationApiImplFloatMapServiceImpl.app.getRuntimeService(ILocationShareService.class, "");
-    localILocationShareService.requestOperateShareState(3, i, str);
+    ILocationShareService localILocationShareService = (ILocationShareService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(ILocationShareService.class, "");
+    localILocationShareService.requestOperateRoom(3, i, str);
     localILocationShareService.stopLocationSharing(i, str, false);
     ReportController.b(null, "CliOper", "", "", "0X800A979", "0X800A979", 0, 0, "", "0", "0", "");
     EventCollector.getInstance().onViewClicked(paramView);
@@ -26,7 +27,7 @@ class FloatMapServiceImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.api.impl.FloatMapServiceImpl.1
  * JD-Core Version:    0.7.0.1
  */

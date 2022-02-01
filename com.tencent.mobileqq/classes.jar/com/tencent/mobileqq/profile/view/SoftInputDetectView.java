@@ -28,51 +28,55 @@ public class SoftInputDetectView
     super(paramContext, paramAttributeSet);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
     int i = this.c;
-    if (this.jdField_a_of_type_Boolean)
-    {
+    if (this.jdField_a_of_type_Boolean) {
       paramInt2 = this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top;
-      if (this.b == 0) {
-        this.b = paramInt2;
-      }
-      if (this.d < 0) {
+    } else {
+      paramInt2 = this.jdField_a_of_type_AndroidGraphicsRect.bottom;
+    }
+    if (this.b == 0) {
+      this.b = paramInt2;
+    }
+    if (this.d < 0) {
+      this.d = this.jdField_a_of_type_AndroidGraphicsRect.top;
+    }
+    this.c = paramInt2;
+    if ((paramInt2 != 0) && (i != 0) && (paramInt2 != i))
+    {
+      if (this.d != this.jdField_a_of_type_AndroidGraphicsRect.top)
+      {
+        if (this.jdField_a_of_type_Boolean) {
+          this.b -= this.jdField_a_of_type_AndroidGraphicsRect.top - this.d;
+        }
         this.d = this.jdField_a_of_type_AndroidGraphicsRect.top;
       }
-      this.c = paramInt2;
-      if ((paramInt2 != 0) && (i != 0) && (paramInt2 != i))
-      {
-        if (this.d != this.jdField_a_of_type_AndroidGraphicsRect.top)
-        {
-          if (this.jdField_a_of_type_Boolean) {
-            this.b -= this.jdField_a_of_type_AndroidGraphicsRect.top - this.d;
-          }
-          this.d = this.jdField_a_of_type_AndroidGraphicsRect.top;
-        }
-        if (paramInt2 >= this.b) {
-          break label255;
-        }
+      boolean bool;
+      if (paramInt2 < this.b) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label255:
-    for (boolean bool = true;; bool = false)
-    {
       if (bool) {
         this.jdField_a_of_type_Int = (this.b - paramInt2);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("SoftInputDetectView", 2, "Detected layout change. Input Method is showing? " + bool + " Input Method Height is " + this.jdField_a_of_type_Int);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Detected layout change. Input Method is showing? ");
+        ((StringBuilder)localObject).append(bool);
+        ((StringBuilder)localObject).append(" Input Method Height is ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        QLog.d("SoftInputDetectView", 2, ((StringBuilder)localObject).toString());
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqProfileViewSoftInputDetectView$OnImStateChangedListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewSoftInputDetectView$OnImStateChangedListener.a(bool, this.jdField_a_of_type_Int);
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqProfileViewSoftInputDetectView$OnImStateChangedListener;
+      if (localObject != null) {
+        ((SoftInputDetectView.OnImStateChangedListener)localObject).a(bool, this.jdField_a_of_type_Int);
       }
-      super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(this.b, 1073741824));
-      return;
-      paramInt2 = this.jdField_a_of_type_AndroidGraphicsRect.bottom;
-      break;
     }
+    super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(this.b, 1073741824));
   }
   
   public void setExcludeStatusBar(boolean paramBoolean)
@@ -87,7 +91,7 @@ public class SoftInputDetectView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.SoftInputDetectView
  * JD-Core Version:    0.7.0.1
  */

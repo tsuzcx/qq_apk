@@ -10,12 +10,12 @@ class AssistantSettingFragment$41
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a();
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.AssistantSettingFragment.41
  * JD-Core Version:    0.7.0.1
  */

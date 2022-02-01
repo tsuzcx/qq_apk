@@ -8,10 +8,12 @@ import android.text.TextUtils;
 import android.text.style.ClickableSpan;
 import android.view.View;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.managers.PasswdRedBagFoldManager;
+import com.tencent.mobileqq.qwallet.hb.aio.passwd.IPasswdRedBagService;
 import java.util.HashMap;
+import java.util.Map;
 import org.json.JSONObject;
 
 class MessageForFoldMsgGrayTips$1
@@ -21,23 +23,34 @@ class MessageForFoldMsgGrayTips$1
   
   public void onClick(View paramView)
   {
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname();
-    String str = this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.frienduin;
+    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname();
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.frienduin;
     Object localObject1 = new JSONObject();
     paramView = new JSONObject();
     try
     {
-      ((JSONObject)localObject1).put("name", localObject2);
-      ((JSONObject)localObject1).put("grouptype", 1 + "");
-      ((JSONObject)localObject1).put("groupid", str);
-      localObject2 = (PasswdRedBagManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.PASSWD_RED_BAG_MANAGER);
+      ((JSONObject)localObject1).put("name", localObject3);
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(1);
+      ((StringBuilder)localObject3).append("");
+      ((JSONObject)localObject1).put("grouptype", ((StringBuilder)localObject3).toString());
+      ((JSONObject)localObject1).put("groupid", localObject2);
+      localObject2 = (IPasswdRedBagService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPasswdRedBagService.class);
+      localObject3 = (PasswdRedBagFoldManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.PASSWD_RED_BAG_FOLD_MANAGER);
       if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagId)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagIndex))) {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagId = ((String)((PasswdRedBagManager)localObject2).h.get(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagIndex));
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagId = ((String)((PasswdRedBagFoldManager)localObject3).d.get(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagIndex));
       }
       if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagId)) {
         return;
       }
-      localObject2 = (String)((PasswdRedBagManager)localObject2).d.get(((PasswdRedBagManager)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.istroop) + "_" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.frienduin + "_" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagId);
+      localObject3 = ((IPasswdRedBagService)localObject2).getAuthKeyCache();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(((IPasswdRedBagService)localObject2).transType(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.istroop));
+      localStringBuilder.append("_");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.frienduin);
+      localStringBuilder.append("_");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagId);
+      localObject2 = (String)((Map)localObject3).get(localStringBuilder.toString());
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
         return;
       }
@@ -51,8 +64,8 @@ class MessageForFoldMsgGrayTips$1
     }
     catch (Exception localException)
     {
-      label296:
-      break label296;
+      label351:
+      break label351;
     }
     localObject1 = new Bundle();
     ((Bundle)localObject1).putString("json", paramView.toString());
@@ -61,7 +74,6 @@ class MessageForFoldMsgGrayTips$1
     paramView.putExtras((Bundle)localObject1);
     paramView.putExtra("pay_requestcode", 5);
     this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-    return;
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
@@ -74,7 +86,7 @@ class MessageForFoldMsgGrayTips$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForFoldMsgGrayTips.1
  * JD-Core Version:    0.7.0.1
  */

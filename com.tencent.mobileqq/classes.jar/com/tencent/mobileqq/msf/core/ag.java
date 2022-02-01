@@ -10,9 +10,7 @@ class ag
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1000) {
       return;
     }
     paramMessage = (String)paramMessage.obj;
@@ -21,7 +19,7 @@ class ag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.ag
  * JD-Core Version:    0.7.0.1
  */

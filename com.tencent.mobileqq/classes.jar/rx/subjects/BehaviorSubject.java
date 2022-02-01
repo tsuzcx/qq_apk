@@ -76,27 +76,31 @@ public final class BehaviorSubject<T>
   @Beta
   public T[] getValues(T[] paramArrayOfT)
   {
-    Object localObject = this.state.getLatest();
-    if (this.nl.isNext(localObject))
+    Object localObject2 = this.state.getLatest();
+    if (this.nl.isNext(localObject2))
     {
-      if (paramArrayOfT.length != 0) {
-        break label76;
+      Object localObject1 = paramArrayOfT;
+      if (paramArrayOfT.length == 0) {
+        localObject1 = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), 1);
       }
-      paramArrayOfT = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), 1);
+      localObject1[0] = this.nl.getValue(localObject2);
+      localObject2 = localObject1;
+      if (localObject1.length > 1)
+      {
+        localObject1[1] = null;
+        return localObject1;
+      }
     }
-    label76:
-    for (;;)
+    else
     {
-      paramArrayOfT[0] = this.nl.getValue(localObject);
-      if (paramArrayOfT.length > 1) {
-        paramArrayOfT[1] = null;
-      }
-      return paramArrayOfT;
-      if (paramArrayOfT.length > 0) {
+      localObject2 = paramArrayOfT;
+      if (paramArrayOfT.length > 0)
+      {
         paramArrayOfT[0] = null;
+        localObject2 = paramArrayOfT;
       }
-      return paramArrayOfT;
     }
+    return localObject2;
   }
   
   @Beta
@@ -146,33 +150,27 @@ public final class BehaviorSubject<T>
     if ((this.state.getLatest() == null) || (this.state.active))
     {
       Object localObject2 = this.nl.error(paramThrowable);
+      paramThrowable = null;
       SubjectSubscriptionManager.SubjectObserver[] arrayOfSubjectObserver = this.state.terminate(localObject2);
       int j = arrayOfSubjectObserver.length;
       int i = 0;
-      paramThrowable = null;
-      for (;;)
+      while (i < j)
       {
-        if (i < j)
+        Object localObject1 = arrayOfSubjectObserver[i];
+        try
         {
-          Object localObject1 = arrayOfSubjectObserver[i];
-          try
-          {
-            ((SubjectSubscriptionManager.SubjectObserver)localObject1).emitNext(localObject2, this.state.nl);
-            i += 1;
-          }
-          catch (Throwable localThrowable)
-          {
-            for (;;)
-            {
-              localObject1 = paramThrowable;
-              if (paramThrowable == null) {
-                localObject1 = new ArrayList();
-              }
-              ((List)localObject1).add(localThrowable);
-              paramThrowable = (Throwable)localObject1;
-            }
-          }
+          ((SubjectSubscriptionManager.SubjectObserver)localObject1).emitNext(localObject2, this.state.nl);
         }
+        catch (Throwable localThrowable)
+        {
+          localObject1 = paramThrowable;
+          if (paramThrowable == null) {
+            localObject1 = new ArrayList();
+          }
+          ((List)localObject1).add(localThrowable);
+          paramThrowable = (Throwable)localObject1;
+        }
+        i += 1;
       }
       Exceptions.throwIfAny(paramThrowable);
     }
@@ -201,7 +199,7 @@ public final class BehaviorSubject<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.subjects.BehaviorSubject
  * JD-Core Version:    0.7.0.1
  */

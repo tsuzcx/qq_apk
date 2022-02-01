@@ -5,30 +5,29 @@ import android.view.View;
 public class ControlUIObserver$CPreEventInfo
   extends ControlUIObserver.BaseParameter
 {
-  private View a = null;
+  private View a;
+  public boolean a;
   public String b;
-  public boolean b = false;
   
   public ControlUIObserver$CPreEventInfo(int paramInt, View paramView)
   {
     super(paramInt);
-    this.a = paramView;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidViewView = null;
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
   public ControlUIObserver$CPreEventInfo(View paramView)
   {
     super(0);
-    this.a = paramView;
-  }
-  
-  public View a()
-  {
-    return this.a;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidViewView = null;
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.ControlUIObserver.CPreEventInfo
  * JD-Core Version:    0.7.0.1
  */

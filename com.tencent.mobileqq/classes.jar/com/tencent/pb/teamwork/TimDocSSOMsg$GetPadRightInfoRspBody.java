@@ -21,14 +21,15 @@ public final class TimDocSSOMsg$GetPadRightInfoRspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40, 50 }, new String[] { "uint32_retcode", "bytes_pad_url", "uint32_pad_right", "rpt_msg_uin_right_info", "uint32_domainid", "bytes_localpadid" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), null, Integer.valueOf(0), localByteStringMicro2 }, GetPadRightInfoRspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40, 50 }, new String[] { "uint32_retcode", "bytes_pad_url", "uint32_pad_right", "rpt_msg_uin_right_info", "uint32_domainid", "bytes_localpadid" }, new Object[] { localInteger, localByteStringMicro1, localInteger, null, localInteger, localByteStringMicro2 }, GetPadRightInfoRspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.teamwork.TimDocSSOMsg.GetPadRightInfoRspBody
  * JD-Core Version:    0.7.0.1
  */

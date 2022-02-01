@@ -16,19 +16,19 @@ class ProfileFeedPlayPageLoader$1
   
   public void a(@NonNull GetProfileFeedIdListRequest paramGetProfileFeedIdListRequest, @Nullable GetProfileFeedIdListRequest.GetProfileFeedIdListResponse paramGetProfileFeedIdListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if ((paramErrorMessage.isFail()) || (paramGetProfileFeedIdListResponse == null))
+    if ((!paramErrorMessage.isFail()) && (paramGetProfileFeedIdListResponse != null))
     {
-      SLog.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIGroupPageLoader$CallBack.a(paramErrorMessage, null, false);
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderProfileFeedPlayPageLoader.a.a(paramGetProfileFeedIdListResponse.jdField_a_of_type_JavaUtilList, paramGetProfileFeedIdListResponse.jdField_a_of_type_JavaLangString, paramGetProfileFeedIdListResponse.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIGroupPageLoader$CallBack.a(paramErrorMessage, FeedIdBasePlayPageLoader.b(paramGetProfileFeedIdListResponse.jdField_a_of_type_JavaUtilList), paramGetProfileFeedIdListResponse.jdField_a_of_type_Boolean);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderProfileFeedPlayPageLoader.a.a(paramGetProfileFeedIdListResponse.jdField_a_of_type_JavaUtilList, paramGetProfileFeedIdListResponse.jdField_a_of_type_JavaLangString, paramGetProfileFeedIdListResponse.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIGroupPageLoader$CallBack.a(paramErrorMessage, FeedIdBasePlayPageLoader.b(paramGetProfileFeedIdListResponse.jdField_a_of_type_JavaUtilList), paramGetProfileFeedIdListResponse.jdField_a_of_type_Boolean);
+    SLog.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIGroupPageLoader$CallBack.a(paramErrorMessage, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.ProfileFeedPlayPageLoader.1
  * JD-Core Version:    0.7.0.1
  */

@@ -24,8 +24,8 @@ public class ToothWhitenFilter
   private static final String FRAGMENT_SHADER = "varying highp vec2 textureCoordinate;\nvarying highp vec2 textureCoordinate2;\n\nuniform sampler2D inputImageTexture;\nuniform sampler2D inputMaskTexture;\nuniform sampler2D inputWhiteTeethLutTexture;\n\nuniform lowp float whiteTeeth;\nvoid main()\n{\n    lowp vec4 color = texture2D(inputImageTexture, textureCoordinate);\n    lowp vec4 maskColor = texture2D(inputMaskTexture, textureCoordinate2);\n    lowp vec4 resultColor = color;\n    if(maskColor.a < 0.995)\n    {\n        mediump vec2 quad1;\n        mediump vec2 quad2;\n        mediump vec2 texPos1;\n        mediump vec2 texPos2;\n        mediump float blueColor = color.b * 63.0;\n        quad1.y = floor(floor(blueColor) / 8.0);\n        quad1.x = floor(blueColor) - (quad1.y * 8.0);\n        quad2.y = floor(ceil(blueColor)  / 8.0);\n        quad2.x = ceil(blueColor) - (quad2.y * 8.0);\n        texPos1.x = (quad1.x * 0.125) + 0.5/512.0 + ((0.125 - 1.0/512.0) * color.r);\n        texPos1.y = (quad1.y * 0.125) + 0.5/512.0 + ((0.125 - 1.0/512.0) * color.g);\n        texPos2.x = (quad2.x * 0.125) + 0.5/512.0 + ((0.125 - 1.0/512.0) * color.r);\n        texPos2.y = (quad2.y * 0.125) + 0.5/512.0 + ((0.125 - 1.0/512.0) * color.g);\n        lowp vec3 newColor1 = texture2D(inputWhiteTeethLutTexture, texPos1).rgb;\n        lowp vec3 newColor2 = texture2D(inputWhiteTeethLutTexture, texPos2).rgb;\n        lowp vec3 newColor = mix(newColor1, newColor2, fract(blueColor));\n        resultColor = vec4(mix(color.rgb, newColor, whiteTeeth * (1.0 - maskColor.a)), 1.0);\n    }\n    gl_FragColor = resultColor;\n}\n";
   private static String LUT_FILE = "assets://luts/teethLUT.png";
   private static final String MASK_COORDS = "assets://mask/coords/toothwhite.tsv";
-  private static String MASK_FILE;
-  private static final String TAG = ToothWhitenFilter.class.getSimpleName();
+  private static String MASK_FILE = "assets://mask/images/toothmask.png";
+  private static final String TAG = "ToothWhitenFilter";
   private static final String VERTEX_SHADER = "attribute vec4 position;\nattribute vec4 inputTextureCoordinate;\n\nvarying vec2 textureCoordinate;\nvarying vec2 textureCoordinate2;\nvoid main()\n{\n    gl_Position = position;\n    textureCoordinate = position.xy * 0.5 + 0.5;\n    textureCoordinate2 = inputTextureCoordinate.xy;\n}\n";
   private FaceParam faceParam;
   private float[] faceVertices = new float[1380];
@@ -35,11 +35,6 @@ public class ToothWhitenFilter
   private float[] maskTexCoords = new float[1380];
   private int maskWidth;
   private float whiteTeeth = 0.0F;
-  
-  static
-  {
-    MASK_FILE = "assets://mask/images/toothmask.png";
-  }
   
   public ToothWhitenFilter(FaceParam paramFaceParam)
   {
@@ -52,9 +47,10 @@ public class ToothWhitenFilter
   private void initBitmaps()
   {
     this.maskBitmap = BitmapUtils.decodeSampledBitmapFromAssets(AEModule.getContext(), FileUtils.getRealPath(MASK_FILE), 2147483647, 2147483647);
-    if (this.maskBitmap != null)
+    Bitmap localBitmap = this.maskBitmap;
+    if (localBitmap != null)
     {
-      this.maskWidth = this.maskBitmap.getWidth();
+      this.maskWidth = localBitmap.getWidth();
       this.maskHeight = this.maskBitmap.getHeight();
     }
     this.inputWhiteBitmap = BitmapUtils.decodeSampledBitmapFromAssets(AEModule.getContext(), FileUtils.getRealPath(LUT_FILE), 2147483647, 2147483647);
@@ -118,7 +114,7 @@ public class ToothWhitenFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.ToothWhitenFilter
  * JD-Core Version:    0.7.0.1
  */

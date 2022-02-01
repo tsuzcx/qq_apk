@@ -12,10 +12,8 @@ import android.os.Build.VERSION;
 import android.os.Looper;
 import android.os.Parcelable;
 import android.support.annotation.FloatRange;
-import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.annotation.RawRes;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -24,10 +22,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import com.tencent.mobileqq.R.styleable;
+import androidx.annotation.MainThread;
+import androidx.annotation.RawRes;
 import com.tencent.mobileqq.dinifly.model.KeyPath;
 import com.tencent.mobileqq.dinifly.value.LottieValueCallback;
 import com.tencent.mobileqq.dinifly.value.SimpleLottieValueCallback;
+import com.tencent.xaction.log.QLog;
 import java.io.StringReader;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -37,7 +37,7 @@ import java.util.Set;
 public class DiniFlyAnimationView
   extends ImageView
 {
-  private static final String TAG = DiniFlyAnimationView.class.getSimpleName();
+  private static final String TAG = "DiniFlyAnimationView";
   public static int inDensity = 320;
   public static int inTargetDensity;
   private String animationName;
@@ -77,9 +77,10 @@ public class DiniFlyAnimationView
   
   private void cancelLoaderTask()
   {
-    if (this.compositionTask != null)
+    LottieTask localLottieTask = this.compositionTask;
+    if (localLottieTask != null)
     {
-      this.compositionTask.removeListener(this.loadedListener);
+      localLottieTask.removeListener(this.loadedListener);
       this.compositionTask.removeFailureListener(this.failureListener);
     }
   }
@@ -92,118 +93,84 @@ public class DiniFlyAnimationView
   
   private void enableOrDisableHardwareLayer()
   {
-    int j = 2;
+    boolean bool = this.fobiddenLayer;
     int i = 0;
-    if (this.fobiddenLayer) {
+    if (bool)
+    {
       setLayerType(0, null);
     }
-    for (;;)
+    else
     {
-      if (getLayerType() == 1) {
-        DiniFlyLog.i("DiniFlyAnimationView", 1, "enableOrDisableHardwareLayer software", null);
-      }
-      return;
-      switch (DiniFlyAnimationView.4.$SwitchMap$com$tencent$mobileqq$dinifly$RenderMode[this.renderMode.ordinal()])
+      int k = DiniFlyAnimationView.4.$SwitchMap$com$tencent$mobileqq$dinifly$RenderMode[this.renderMode.ordinal()];
+      int j = 2;
+      if (k != 1)
       {
-      default: 
-        break;
-      case 1: 
+        if (k != 2)
+        {
+          if (k == 3)
+          {
+            LottieComposition localLottieComposition = this.composition;
+            if ((localLottieComposition == null) || (!localLottieComposition.hasDashPattern()) || (Build.VERSION.SDK_INT >= 28))
+            {
+              localLottieComposition = this.composition;
+              if ((localLottieComposition == null) || (localLottieComposition.getMaskAndMatteCount() <= 4)) {
+                i = 1;
+              }
+            }
+            if (i != 0) {
+              i = j;
+            } else {
+              i = 1;
+            }
+            setLayerType(i, null);
+          }
+        }
+        else {
+          setLayerType(1, null);
+        }
+      }
+      else {
         setLayerType(2, null);
-        break;
-      case 2: 
-        setLayerType(1, null);
       }
     }
-    if ((this.composition != null) && (this.composition.hasDashPattern()) && (Build.VERSION.SDK_INT < 28)) {
-      label118:
-      if (i == 0) {
-        break label156;
-      }
-    }
-    label156:
-    for (i = j;; i = 1)
-    {
-      setLayerType(i, null);
-      break;
-      if ((this.composition != null) && (this.composition.getMaskAndMatteCount() > 4)) {
-        break label118;
-      }
-      i = 1;
-      break label118;
+    if (getLayerType() == 1) {
+      QLog.c("DiniFlyAnimationView", 1, "enableOrDisableHardwareLayer software", null);
     }
   }
   
   private void init(@Nullable AttributeSet paramAttributeSet)
   {
-    DiniFlyLog.i("DiniFlyAnimationView", 1, getContext().toString(), null);
+    QLog.c("DiniFlyAnimationView", 1, getContext().toString(), null);
     inTargetDensity = getContext().getResources().getDisplayMetrics().densityDpi;
-    if (getContext().getResources().getDisplayMetrics().density < 320.0F) {}
-    boolean bool1;
-    boolean bool2;
-    boolean bool3;
-    for (inDensity = 160;; inDensity = 320)
-    {
-      inTargetDensity = getContext().getResources().getDisplayMetrics().densityDpi;
-      if (inDensity < inTargetDensity) {
-        inDensity = inTargetDensity;
-      }
-      paramAttributeSet = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.DiniFlyAnimationView);
-      if (isInEditMode()) {
-        break label181;
-      }
-      bool1 = paramAttributeSet.hasValue(R.styleable.DiniFlyAnimationView_dinifly_rawRes);
-      bool2 = paramAttributeSet.hasValue(R.styleable.DiniFlyAnimationView_dinifly_fileName);
-      bool3 = paramAttributeSet.hasValue(R.styleable.DiniFlyAnimationView_dinifly_url);
-      if ((!bool1) || (!bool2)) {
-        break;
-      }
-      throw new IllegalArgumentException("lottie_rawRes and lottie_fileName cannot be used at the same time. Please use only one at once.");
+    if (getContext().getResources().getDisplayMetrics().density < 320.0F) {
+      inDensity = 160;
+    } else {
+      inDensity = 320;
     }
-    if (bool1)
-    {
-      int i = paramAttributeSet.getResourceId(R.styleable.DiniFlyAnimationView_dinifly_rawRes, 0);
-      if (i != 0) {
-        setAnimation(i);
-      }
+    inTargetDensity = getContext().getResources().getDisplayMetrics().densityDpi;
+    int i = inDensity;
+    int j = inTargetDensity;
+    if (i < j) {
+      inDensity = j;
     }
-    for (;;)
+    paramAttributeSet = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.DiniFlyAnimationView);
+    Object localObject1;
+    if (!isInEditMode())
     {
-      label181:
-      if (paramAttributeSet.getBoolean(R.styleable.DiniFlyAnimationView_dinifly_autoPlay, false))
+      boolean bool1 = paramAttributeSet.hasValue(R.styleable.DiniFlyAnimationView_dinifly_rawRes);
+      boolean bool2 = paramAttributeSet.hasValue(R.styleable.DiniFlyAnimationView_dinifly_fileName);
+      boolean bool3 = paramAttributeSet.hasValue(R.styleable.DiniFlyAnimationView_dinifly_url);
+      if ((bool1) && (bool2)) {
+        throw new IllegalArgumentException("lottie_rawRes and lottie_fileName cannot be used at the same time. Please use only one at once.");
+      }
+      if (bool1)
       {
-        this.wasAnimatingWhenDetached = true;
-        this.autoPlay = true;
+        i = paramAttributeSet.getResourceId(R.styleable.DiniFlyAnimationView_dinifly_rawRes, 0);
+        if (i != 0) {
+          setAnimation(i);
+        }
       }
-      if (paramAttributeSet.getBoolean(R.styleable.DiniFlyAnimationView_dinifly_loop, false)) {
-        this.lottieDrawable.setRepeatCount(-1);
-      }
-      if (paramAttributeSet.hasValue(R.styleable.DiniFlyAnimationView_dinifly_repeatMode)) {
-        setRepeatMode(paramAttributeSet.getInt(R.styleable.DiniFlyAnimationView_dinifly_repeatMode, 1));
-      }
-      if (paramAttributeSet.hasValue(R.styleable.DiniFlyAnimationView_dinifly_repeatCount)) {
-        setRepeatCount(paramAttributeSet.getInt(R.styleable.DiniFlyAnimationView_dinifly_repeatCount, -1));
-      }
-      if (paramAttributeSet.hasValue(R.styleable.DiniFlyAnimationView_dinifly_speed)) {
-        setSpeed(paramAttributeSet.getFloat(R.styleable.DiniFlyAnimationView_dinifly_speed, 1.0F));
-      }
-      setImageAssetsFolder(paramAttributeSet.getString(R.styleable.DiniFlyAnimationView_dinifly_imageAssetsFolder));
-      setProgress(paramAttributeSet.getFloat(R.styleable.DiniFlyAnimationView_dinifly_progress, 0.0F));
-      enableMergePathsForKitKatAndAbove(paramAttributeSet.getBoolean(R.styleable.DiniFlyAnimationView_dinifly_enableMergePathsForKitKatAndAbove, false));
-      Object localObject1;
-      if (paramAttributeSet.hasValue(R.styleable.DiniFlyAnimationView_dinifly_colorFilter))
-      {
-        Object localObject2 = new SimpleColorFilter(paramAttributeSet.getColor(R.styleable.DiniFlyAnimationView_dinifly_colorFilter, 0));
-        localObject1 = new KeyPath(new String[] { "**" });
-        localObject2 = new LottieValueCallback(localObject2);
-        addValueCallback((KeyPath)localObject1, LottieProperty.COLOR_FILTER, (LottieValueCallback)localObject2);
-      }
-      if (paramAttributeSet.hasValue(R.styleable.DiniFlyAnimationView_dinifly_scale)) {
-        this.lottieDrawable.setScale(paramAttributeSet.getFloat(R.styleable.DiniFlyAnimationView_dinifly_scale, 1.0F), paramAttributeSet.getFloat(R.styleable.DiniFlyAnimationView_dinifly_scale, 1.0F));
-      }
-      paramAttributeSet.recycle();
-      enableOrDisableHardwareLayer();
-      return;
-      if (bool2)
+      else if (bool2)
       {
         localObject1 = paramAttributeSet.getString(R.styleable.DiniFlyAnimationView_dinifly_fileName);
         if (localObject1 != null) {
@@ -218,6 +185,38 @@ public class DiniFlyAnimationView
         }
       }
     }
+    if (paramAttributeSet.getBoolean(R.styleable.DiniFlyAnimationView_dinifly_autoPlay, false))
+    {
+      this.wasAnimatingWhenDetached = true;
+      this.autoPlay = true;
+    }
+    if (paramAttributeSet.getBoolean(R.styleable.DiniFlyAnimationView_dinifly_loop, false)) {
+      this.lottieDrawable.setRepeatCount(-1);
+    }
+    if (paramAttributeSet.hasValue(R.styleable.DiniFlyAnimationView_dinifly_repeatMode)) {
+      setRepeatMode(paramAttributeSet.getInt(R.styleable.DiniFlyAnimationView_dinifly_repeatMode, 1));
+    }
+    if (paramAttributeSet.hasValue(R.styleable.DiniFlyAnimationView_dinifly_repeatCount)) {
+      setRepeatCount(paramAttributeSet.getInt(R.styleable.DiniFlyAnimationView_dinifly_repeatCount, -1));
+    }
+    if (paramAttributeSet.hasValue(R.styleable.DiniFlyAnimationView_dinifly_speed)) {
+      setSpeed(paramAttributeSet.getFloat(R.styleable.DiniFlyAnimationView_dinifly_speed, 1.0F));
+    }
+    setImageAssetsFolder(paramAttributeSet.getString(R.styleable.DiniFlyAnimationView_dinifly_imageAssetsFolder));
+    setProgress(paramAttributeSet.getFloat(R.styleable.DiniFlyAnimationView_dinifly_progress, 0.0F));
+    enableMergePathsForKitKatAndAbove(paramAttributeSet.getBoolean(R.styleable.DiniFlyAnimationView_dinifly_enableMergePathsForKitKatAndAbove, false));
+    if (paramAttributeSet.hasValue(R.styleable.DiniFlyAnimationView_dinifly_colorFilter))
+    {
+      Object localObject2 = new SimpleColorFilter(paramAttributeSet.getColor(R.styleable.DiniFlyAnimationView_dinifly_colorFilter, 0));
+      localObject1 = new KeyPath(new String[] { "**" });
+      localObject2 = new LottieValueCallback(localObject2);
+      addValueCallback((KeyPath)localObject1, LottieProperty.COLOR_FILTER, (LottieValueCallback)localObject2);
+    }
+    if (paramAttributeSet.hasValue(R.styleable.DiniFlyAnimationView_dinifly_scale)) {
+      this.lottieDrawable.setScale(paramAttributeSet.getFloat(R.styleable.DiniFlyAnimationView_dinifly_scale, 1.0F), paramAttributeSet.getFloat(R.styleable.DiniFlyAnimationView_dinifly_scale, 1.0F));
+    }
+    paramAttributeSet.recycle();
+    enableOrDisableHardwareLayer();
   }
   
   private void setCompositionTask(LottieTask<LottieComposition> paramLottieTask)
@@ -289,8 +288,9 @@ public class DiniFlyAnimationView
   
   public long getDuration()
   {
-    if (this.composition != null) {
-      return this.composition.getDuration();
+    LottieComposition localLottieComposition = this.composition;
+    if (localLottieComposition != null) {
+      return localLottieComposition.getDuration();
     }
     return 0L;
   }
@@ -367,14 +367,15 @@ public class DiniFlyAnimationView
   {
     if (Looper.getMainLooper() == Looper.myLooper())
     {
-      if (getDrawable() == this.lottieDrawable) {
-        super.invalidateDrawable(this.lottieDrawable);
+      Drawable localDrawable = getDrawable();
+      LottieDrawable localLottieDrawable = this.lottieDrawable;
+      if (localDrawable == localLottieDrawable)
+      {
+        super.invalidateDrawable(localLottieDrawable);
+        return;
       }
+      super.invalidateDrawable(paramDrawable);
     }
-    else {
-      return;
-    }
-    super.invalidateDrawable(paramDrawable);
   }
   
   public boolean isAnimating()
@@ -391,24 +392,28 @@ public class DiniFlyAnimationView
   public void loop(boolean paramBoolean)
   {
     LottieDrawable localLottieDrawable = this.lottieDrawable;
-    if (paramBoolean) {}
-    for (int i = -1;; i = 0)
-    {
-      localLottieDrawable.setRepeatCount(i);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = -1;
+    } else {
+      i = 0;
     }
+    localLottieDrawable.setRepeatCount(i);
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     if ((this.autoPlay) && (this.wasAnimatingWhenDetached)) {
       playAnimation();
     }
-    DiniFlyLog.i("DiniFlyAnimationView", 1, "onAttachedToWindow playAnimation" + getContext().toString(), null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onAttachedToWindow playAnimation");
+    localStringBuilder.append(getContext().toString());
+    QLog.c("DiniFlyAnimationView", 1, localStringBuilder.toString(), null);
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     if (isAnimating())
     {
@@ -416,10 +421,13 @@ public class DiniFlyAnimationView
       this.wasAnimatingWhenDetached = true;
     }
     super.onDetachedFromWindow();
-    DiniFlyLog.i("DiniFlyAnimationView", 1, "onDetachedFromWindow cancelAnimation" + getContext().toString(), null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDetachedFromWindow cancelAnimation");
+    localStringBuilder.append(getContext().toString());
+    QLog.c("DiniFlyAnimationView", 1, localStringBuilder.toString(), null);
   }
   
-  public void onRestoreInstanceState(Parcelable paramParcelable)
+  protected void onRestoreInstanceState(Parcelable paramParcelable)
   {
     if (!(paramParcelable instanceof DiniFlyAnimationView.SavedState))
     {
@@ -433,8 +441,9 @@ public class DiniFlyAnimationView
       setAnimation(this.animationName);
     }
     this.animationResId = paramParcelable.animationResId;
-    if (this.animationResId != 0) {
-      setAnimation(this.animationResId);
+    int i = this.animationResId;
+    if (i != 0) {
+      setAnimation(i);
     }
     setProgress(paramParcelable.progress);
     if (paramParcelable.isAnimating) {
@@ -445,7 +454,7 @@ public class DiniFlyAnimationView
     setRepeatCount(paramParcelable.repeatCount);
   }
   
-  public Parcelable onSaveInstanceState()
+  protected Parcelable onSaveInstanceState()
   {
     DiniFlyAnimationView.SavedState localSavedState = new DiniFlyAnimationView.SavedState(super.onSaveInstanceState());
     localSavedState.animationName = this.animationName;
@@ -458,23 +467,24 @@ public class DiniFlyAnimationView
     return localSavedState;
   }
   
-  public void onVisibilityChanged(@NonNull View paramView, int paramInt)
+  protected void onVisibilityChanged(@NonNull View paramView, int paramInt)
   {
-    if (this.lottieDrawable == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if (paramInt != 0) {
-          break;
-        }
-      } while (!this.wasAnimatingWhenVisibilityChanged);
-      resumeAnimation();
+    if (this.lottieDrawable == null) {
       return;
+    }
+    if (paramInt == 0)
+    {
+      if (this.wasAnimatingWhenVisibilityChanged) {
+        resumeAnimation();
+      }
+    }
+    else
+    {
       this.wasAnimatingWhenVisibilityChanged = isAnimating();
-    } while (!isAnimating());
-    pauseAnimation();
+      if (isAnimating()) {
+        pauseAnimation();
+      }
+    }
   }
   
   @MainThread
@@ -547,7 +557,10 @@ public class DiniFlyAnimationView
   
   public void setAnimation(JsonReader paramJsonReader, @Nullable String paramString)
   {
-    DiniFlyLog.i("DiniFlyAnimationView", 1, "setAnimation cacheKey:" + paramString, null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setAnimation cacheKey:");
+    localStringBuilder.append(paramString);
+    QLog.c("DiniFlyAnimationView", 1, localStringBuilder.toString(), null);
     setCompositionTask(LottieCompositionFactory.fromJsonReader(paramJsonReader, paramString));
   }
   
@@ -571,14 +584,24 @@ public class DiniFlyAnimationView
   
   public void setAnimationFromUrl(String paramString)
   {
-    DiniFlyLog.i("DiniFlyAnimationView", 1, "setAnimation url:" + paramString.split(""), null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setAnimation url:");
+    localStringBuilder.append(paramString.split(""));
+    QLog.c("DiniFlyAnimationView", 1, localStringBuilder.toString(), null);
     setCompositionTask(LottieCompositionFactory.fromUrl(getContext(), paramString));
   }
   
   public void setComposition(@NonNull LottieComposition paramLottieComposition)
   {
-    if (L.DBG) {
-      Log.v(TAG, "Set Composition \n" + paramLottieComposition);
+    Object localObject;
+    StringBuilder localStringBuilder;
+    if (L.DBG)
+    {
+      localObject = TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Set Composition \n");
+      localStringBuilder.append(paramLottieComposition);
+      Log.v((String)localObject, localStringBuilder.toString());
     }
     try
     {
@@ -592,15 +615,18 @@ public class DiniFlyAnimationView
       setImageDrawable(null);
       setImageDrawable(this.lottieDrawable);
       requestLayout();
-      Iterator localIterator = this.lottieOnCompositionLoadedListeners.iterator();
-      while (localIterator.hasNext()) {
-        ((LottieOnCompositionLoadedListener)localIterator.next()).onCompositionLoaded(paramLottieComposition);
+      localObject = this.lottieOnCompositionLoadedListeners.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((LottieOnCompositionLoadedListener)((Iterator)localObject).next()).onCompositionLoaded(paramLottieComposition);
       }
       return;
     }
     catch (Exception localException)
     {
-      DiniFlyLog.i("DiniFlyAnimationView", 1, "setComposition url:" + paramLottieComposition.toString(), localException);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setComposition url:");
+      localStringBuilder.append(paramLottieComposition.toString());
+      QLog.c("DiniFlyAnimationView", 1, localStringBuilder.toString(), localException);
     }
   }
   
@@ -751,7 +777,7 @@ public class DiniFlyAnimationView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.DiniFlyAnimationView
  * JD-Core Version:    0.7.0.1
  */

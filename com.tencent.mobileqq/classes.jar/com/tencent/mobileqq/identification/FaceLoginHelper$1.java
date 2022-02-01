@@ -1,50 +1,37 @@
 package com.tencent.mobileqq.identification;
 
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.app.utils.RouteUtils;
-import com.tencent.mobileqq.observer.LoginVerifyObserver;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.oidb_0x87a.RspBody;
+import com.tencent.youtu.ytagreflectlivecheck.YTAGReflectLiveCheckInterface.GetLiveStyleResult;
+import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleRequester.YTLiveStyleReq;
+import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleResponse;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 final class FaceLoginHelper$1
-  extends LoginVerifyObserver
+  implements YTAGReflectLiveCheckInterface.GetLiveStyleResult
 {
-  FaceLoginHelper$1(String paramString, Activity paramActivity, Runnable paramRunnable) {}
+  FaceLoginHelper$1(AtomicBoolean paramAtomicBoolean, FaceConf paramFaceConf, FaceLoginHelper.IConfInterface paramIConfInterface) {}
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void onFailed(int paramInt, String paramString1, String paramString2)
   {
-    QLog.e("FaceLoginHelper", 1, new Object[] { "cmd : ", paramString1, " code : ", Integer.valueOf(paramInt), " message : ", paramString2 });
-    if (paramInt == 89) {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131698848), 0).a();
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_JavaLangRunnable != null) {
-        this.jdField_a_of_type_JavaLangRunnable.run();
-      }
-      return;
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, paramString2, 0).a();
-    }
+    QLog.d("FaceLoginHelper", 1, new Object[] { "getLightInfo Failed code=", Integer.valueOf(paramInt), " tips=", paramString1, " howtofix=", paramString2 });
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    FaceLoginHelper.a(this.jdField_a_of_type_ComTencentMobileqqIdentificationFaceConf, this.jdField_a_of_type_ComTencentMobileqqIdentificationFaceLoginHelper$IConfInterface);
   }
   
-  public void a(oidb_0x87a.RspBody paramRspBody)
+  public void onSuccess(LiveStyleRequester.YTLiveStyleReq paramYTLiveStyleReq, LiveStyleResponse paramLiveStyleResponse)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("keyFrom", "f_SetFaceData");
-    if (this.jdField_a_of_type_JavaLangString == null) {}
-    for (paramRspBody = "";; paramRspBody = this.jdField_a_of_type_JavaLangString)
+    QLog.d("FaceLoginHelper", 1, "getLightInfo success");
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, true))
     {
-      localIntent.putExtra("phone_num", paramRspBody);
-      RouteUtils.a(this.jdField_a_of_type_AndroidAppActivity, localIntent, "/base/login/authDevVerifyCode", 11);
+      QLog.d("FaceLoginHelper", 1, "sendPacket isLoading now");
       return;
     }
+    FaceLoginHelper.a(paramYTLiveStyleReq, this.jdField_a_of_type_ComTencentMobileqqIdentificationFaceConf, this.jdField_a_of_type_ComTencentMobileqqIdentificationFaceLoginHelper$IConfInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.identification.FaceLoginHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -34,8 +34,9 @@ public class SdkBizAbilityImpl
   
   public ExecutorService getFixedThreadPool(int paramInt)
   {
-    if (this.mThreadPoolProvider != null) {
-      return this.mThreadPoolProvider.getFixedThreadPool(paramInt);
+    NowThreadPool.ThreadPoolProvider localThreadPoolProvider = this.mThreadPoolProvider;
+    if (localThreadPoolProvider != null) {
+      return localThreadPoolProvider.getFixedThreadPool(paramInt);
     }
     return null;
   }
@@ -47,8 +48,9 @@ public class SdkBizAbilityImpl
   
   public void getRecordInfo(Bundle paramBundle, CommonCallback<Bundle> paramCommonCallback)
   {
-    if (this.mCustomRecord != null) {
-      this.mCustomRecord.getRecordInfo(paramBundle, paramCommonCallback);
+    CustomizedRecord localCustomizedRecord = this.mCustomRecord;
+    if (localCustomizedRecord != null) {
+      localCustomizedRecord.getRecordInfo(paramBundle, paramCommonCallback);
     }
   }
   
@@ -59,8 +61,9 @@ public class SdkBizAbilityImpl
   
   public void notifyLoadingCancel()
   {
-    if (this.mHostCallBack != null) {
-      this.mHostCallBack.notifyLoadingActivityBackPress();
+    IHostCallback localIHostCallback = this.mHostCallBack;
+    if (localIHostCallback != null) {
+      localIHostCallback.notifyLoadingActivityBackPress();
     }
   }
   
@@ -133,7 +136,7 @@ public class SdkBizAbilityImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.ability.SdkBizAbilityImpl
  * JD-Core Version:    0.7.0.1
  */

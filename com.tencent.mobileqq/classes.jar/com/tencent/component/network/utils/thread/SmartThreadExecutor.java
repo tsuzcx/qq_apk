@@ -48,7 +48,10 @@ public class SmartThreadExecutor
   
   public SmartThreadExecutor(Executor paramExecutor)
   {
-    Log.i("SmartThreadExecutor", "SmartThreadExecutor: " + this.id);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SmartThreadExecutor: ");
+    localStringBuilder.append(this.id);
+    Log.i("SmartThreadExecutor", localStringBuilder.toString());
     this.normExecutor = paramExecutor;
     try
     {
@@ -67,9 +70,14 @@ public class SmartThreadExecutor
         Thread.yield();
       }
       this.handler = new Handler(paramExecutor, this);
+      this.handler.sendEmptyMessageDelayed(this.msgWhat, FIRST_CHECK_PERIOD);
+      return;
     }
     finally {}
-    this.handler.sendEmptyMessageDelayed(this.msgWhat, FIRST_CHECK_PERIOD);
+    for (;;)
+    {
+      throw paramExecutor;
+    }
   }
   
   public void execute(Runnable paramRunnable)
@@ -82,67 +90,74 @@ public class SmartThreadExecutor
   
   public boolean handleMessage(Message paramMessage)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if (paramMessage.what != this.msgWhat) {
-      bool1 = false;
+    int i = paramMessage.what;
+    int j = this.msgWhat;
+    boolean bool = false;
+    if (i != j) {
+      return false;
     }
-    do
-    {
-      return bool1;
-      bool1 = bool2;
-    } while (!this.isAlive);
-    Log.i("SmartThreadExecutor", "handleMessage: start check " + this.id);
+    if (!this.isAlive) {
+      return true;
+    }
+    paramMessage = new StringBuilder();
+    paramMessage.append("handleMessage: start check ");
+    paramMessage.append(this.id);
+    Log.i("SmartThreadExecutor", paramMessage.toString());
     paramMessage = (Runnable)this.taskQueue.peek();
-    if ((paramMessage instanceof SmartThreadExecutor.IdTask)) {}
-    for (paramMessage = SmartThreadExecutor.IdTask.access$300((SmartThreadExecutor.IdTask)paramMessage);; paramMessage = null)
+    if ((paramMessage instanceof SmartThreadExecutor.IdTask)) {
+      paramMessage = SmartThreadExecutor.IdTask.access$300((SmartThreadExecutor.IdTask)paramMessage);
+    } else {
+      paramMessage = null;
+    }
+    if ((this.isAlive) && (paramMessage != null) && (paramMessage.equals(this.lastTaskId)))
     {
-      for (;;)
+      this.isNeedTempWorker.set(true);
+      this.antiJitterTempWorkerSize = 2;
+      synchronized (this.tempThreads)
       {
-        if ((this.isAlive) && (paramMessage != null) && (paramMessage.equals(this.lastTaskId)))
+        if ((this.isAlive) && (this.tempThreads.size() < 2))
         {
-          this.isNeedTempWorker.set(true);
-          this.antiJitterTempWorkerSize = 2;
-          synchronized (this.tempThreads)
-          {
-            if ((this.isAlive) && (this.tempThreads.size() < 2))
-            {
-              Log.i("SmartThreadExecutor", "handleMessage: start temp task " + this.id);
-              Object localObject2 = new SmartThreadExecutor.TempTask(this, null);
-              this.factory.newThread((Runnable)localObject2).start();
-              this.tempThreads.add(localObject2);
-              localObject2 = new Properties();
-              ((Properties)localObject2).put("start", Integer.valueOf(1));
-              Config.reportToMta("qzone_downloader_smart_thread_event_temp_thread", (Properties)localObject2);
-            }
-            Log.i("SmartThreadExecutor", "handleMessage: check end " + this.id + " " + this.antiJitterTempWorkerSize + " " + this.isNeedTempWorker.get());
-            this.lastTaskId = paramMessage;
-            bool1 = bool2;
-            if (!this.isAlive) {
-              break;
-            }
-            this.handler.sendEmptyMessageDelayed(this.msgWhat, CHECK_PERIOD);
-            return true;
-          }
+          Object localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("handleMessage: start temp task ");
+          ((StringBuilder)localObject2).append(this.id);
+          Log.i("SmartThreadExecutor", ((StringBuilder)localObject2).toString());
+          localObject2 = new SmartThreadExecutor.TempTask(this, null);
+          this.factory.newThread((Runnable)localObject2).start();
+          this.tempThreads.add(localObject2);
+          localObject2 = new Properties();
+          ((Properties)localObject2).put("start", Integer.valueOf(1));
+          Config.reportToMta("qzone_downloader_smart_thread_event_temp_thread", (Properties)localObject2);
         }
       }
-      ??? = this.isNeedTempWorker;
-      int i = this.antiJitterTempWorkerSize - 1;
-      this.antiJitterTempWorkerSize = i;
-      if (i > 0) {}
-      for (bool1 = true;; bool1 = false)
-      {
-        ((AtomicBoolean)???).compareAndSet(true, bool1);
-        break;
-      }
     }
+    ??? = this.isNeedTempWorker;
+    i = this.antiJitterTempWorkerSize - 1;
+    this.antiJitterTempWorkerSize = i;
+    if (i > 0) {
+      bool = true;
+    }
+    ((AtomicBoolean)???).compareAndSet(true, bool);
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("handleMessage: check end ");
+    ((StringBuilder)???).append(this.id);
+    ((StringBuilder)???).append(" ");
+    ((StringBuilder)???).append(this.antiJitterTempWorkerSize);
+    ((StringBuilder)???).append(" ");
+    ((StringBuilder)???).append(this.isNeedTempWorker.get());
+    Log.i("SmartThreadExecutor", ((StringBuilder)???).toString());
+    this.lastTaskId = paramMessage;
+    if (this.isAlive) {
+      this.handler.sendEmptyMessageDelayed(this.msgWhat, CHECK_PERIOD);
+    }
+    return true;
   }
   
   public void shutdown()
   {
     this.isAlive = false;
-    if ((this.normExecutor instanceof ExecutorService)) {
-      ((ExecutorService)this.normExecutor).shutdownNow();
+    ??? = this.normExecutor;
+    if ((??? instanceof ExecutorService)) {
+      ((ExecutorService)???).shutdownNow();
     }
     this.handler.removeMessages(this.msgWhat);
     synchronized (this.tempThreads)
@@ -155,23 +170,27 @@ public class SmartThreadExecutor
           localThread.interrupt();
         }
       }
-    }
-    this.tempThreads.clear();
-    try
-    {
-      int i = sAliveCnt - 1;
-      sAliveCnt = i;
-      if (i < 1) {
-        sChkThread.quit();
+      this.tempThreads.clear();
+      try
+      {
+        int i = sAliveCnt - 1;
+        sAliveCnt = i;
+        if (i < 1) {
+          sChkThread.quit();
+        }
+        return;
       }
-      return;
+      finally {}
     }
-    finally {}
+    for (;;)
+    {
+      throw localObject3;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.utils.thread.SmartThreadExecutor
  * JD-Core Version:    0.7.0.1
  */

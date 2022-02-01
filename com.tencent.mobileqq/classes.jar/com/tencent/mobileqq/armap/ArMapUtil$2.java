@@ -10,38 +10,34 @@ final class ArMapUtil$2
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      str = "1";
-      localHashMap.put("isMapShow", str);
-      if (!this.b) {
-        break label106;
-      }
-      str = "1";
-      label36:
-      localHashMap.put("isFelxMap", str);
-      if (!this.c) {
-        break label112;
-      }
+    boolean bool = this.jdField_a_of_type_Boolean;
+    String str2 = "1";
+    String str1;
+    if (bool) {
+      str1 = "1";
+    } else {
+      str1 = "0";
     }
-    label106:
-    label112:
-    for (String str = "1";; str = "0")
-    {
-      localHashMap.put("isFelxMapClick", str);
-      localHashMap.put("operatorMapCount", String.valueOf(this.jdField_a_of_type_Int));
-      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "ARMAP_DETAIL_GRID_MAP", this.c, 0L, 0L, localHashMap, "", false);
-      return;
-      str = "0";
-      break;
-      str = "0";
-      break label36;
+    localHashMap.put("isMapShow", str1);
+    if (this.b) {
+      str1 = "1";
+    } else {
+      str1 = "0";
     }
+    localHashMap.put("isFelxMap", str1);
+    if (this.c) {
+      str1 = str2;
+    } else {
+      str1 = "0";
+    }
+    localHashMap.put("isFelxMapClick", str1);
+    localHashMap.put("operatorMapCount", String.valueOf(this.jdField_a_of_type_Int));
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "ARMAP_DETAIL_GRID_MAP", this.c, 0L, 0L, localHashMap, "", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ArMapUtil.2
  * JD-Core Version:    0.7.0.1
  */

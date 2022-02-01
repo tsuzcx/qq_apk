@@ -19,14 +19,15 @@ public final class pbenterroom$VoiceInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34 }, new String[] { "ip", "port", "voiceConnKey", "bytes_voice_urls" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2 }, VoiceInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34 }, new String[] { "ip", "port", "voiceConnKey", "bytes_voice_urls" }, new Object[] { localInteger, localInteger, localByteStringMicro1, localByteStringMicro2 }, VoiceInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.room.protocol.pbenterroom.pbenterroom.VoiceInfo
  * JD-Core Version:    0.7.0.1
  */

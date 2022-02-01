@@ -12,19 +12,8 @@ class SystemAndEmojiUniversalPanel$3
   
   public void afterTextChanged(Editable paramEditable)
   {
-    ImageButton localImageButton;
-    if (SystemAndEmojiUniversalPanel.access$600(this.this$0) != null)
-    {
-      localImageButton = SystemAndEmojiUniversalPanel.access$600(this.this$0);
-      if (TextUtils.isEmpty(paramEditable)) {
-        break label33;
-      }
-    }
-    label33:
-    for (boolean bool = true;; bool = false)
-    {
-      localImageButton.setEnabled(bool);
-      return;
+    if (SystemAndEmojiUniversalPanel.access$600(this.this$0) != null) {
+      SystemAndEmojiUniversalPanel.access$600(this.this$0).setEnabled(TextUtils.isEmpty(paramEditable) ^ true);
     }
   }
   
@@ -34,7 +23,7 @@ class SystemAndEmojiUniversalPanel$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel.3
  * JD-Core Version:    0.7.0.1
  */

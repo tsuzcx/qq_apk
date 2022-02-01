@@ -14,22 +14,20 @@ class ExcitingTransferEngine$2
     if (((ExcitingTransferEngine.ExcitingSendJobContent)localObject).mListener != null)
     {
       localObject = ((ExcitingTransferEngine.ExcitingSendJobContent)localObject).mListener;
-      if (this.jdField_a_of_type_Int != 0) {
-        break label65;
+      boolean bool;
+      if (this.jdField_a_of_type_Int == 0) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label65:
-    for (boolean bool = true;; bool = false)
-    {
       ((IExcitingTransferSendListener)localObject).onExcitingSendResult(bool, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp);
-      ExcitingTransferEngine.access$100(this.this$0, this.jdField_a_of_type_Long);
-      return;
     }
+    ExcitingTransferEngine.access$100(this.this$0, this.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferEngine.2
  * JD-Core Version:    0.7.0.1
  */

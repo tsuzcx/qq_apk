@@ -64,6 +64,7 @@ public abstract interface StyleContants$Name
   public static final String LEFT = "left";
   public static final String LETTER_SPACING = "letterSpacing";
   public static final String LINES = "lines";
+  public static final String LINE_BREAK_MARGIN = "lineBreakMargin";
   public static final String LINE_HEIGHT = "lineHeight";
   public static final String LINE_SPACING = "lineSpacing";
   public static final String MARGIN = "margin";
@@ -104,7 +105,7 @@ public abstract interface StyleContants$Name
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.dom.StyleContants.Name
  * JD-Core Version:    0.7.0.1
  */

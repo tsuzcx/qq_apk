@@ -5,9 +5,9 @@ import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
-import com.tencent.mobileqq.apollo.api.handler.IApolloExtensionObserver;
+import com.tencent.mobileqq.apollo.handler.IApolloExtensionObserver;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
 
 class PokePanel$4
@@ -21,84 +21,70 @@ class PokePanel$4
     if (((Bundle)localObject).getInt("fromType") != 0) {
       return;
     }
-    int j = ((Bundle)localObject).getInt("id");
-    int i = ((Bundle)localObject).getInt("feeType");
-    String str1 = "free";
-    if (i == 4)
+    int i = ((Bundle)localObject).getInt("id");
+    int j = ((Bundle)localObject).getInt("feeType");
+    if (j == 4) {
+      paramObject = "vip";
+    } else if (j == 5) {
+      paramObject = "svip";
+    } else {
+      paramObject = "free";
+    }
+    String str;
+    if (paramBoolean)
     {
-      str1 = "vip";
-      label47:
-      if (!paramBoolean) {
-        break label160;
-      }
-      paramObject = ((Bundle)localObject).getString("name");
+      str = ((Bundle)localObject).getString("name");
       localObject = ((Bundle)localObject).getString("minVersion");
-      ChatActivityFacade.a(PokePanel.a(this.a), BaseApplicationImpl.getContext(), PokePanel.a(this.a), 126, j, paramObject, (String)localObject);
+      ChatActivityFacade.a(PokePanel.a(this.a), BaseApplicationImpl.getContext(), PokePanel.a(this.a), 126, i, str, (String)localObject);
       if (true == PokeItemHelper.a) {
         PokeItemHelper.a = false;
       }
-      label106:
-      if (!paramBoolean) {
-        break label421;
-      }
     }
-    label160:
-    label419:
-    label421:
-    for (i = 0;; i = 1)
+    for (;;)
     {
-      VasWebviewUtil.reportCommercialDrainage("", "poke", "send", "", 0, i, 0, "", String.valueOf(j), str1, "", "", "", "", 0, 0, 0, 0);
-      return;
-      if (i != 5) {
-        break label47;
-      }
-      str1 = "svip";
-      break label47;
+      break;
       long l = ((Bundle)localObject).getLong("result");
-      localObject = ((Bundle)localObject).getString("msg");
-      paramObject = (Bundle)paramObject;
-      this.a.a = paramObject.getInt("id", 0);
-      String str2 = HardCodeUtil.a(2131708309);
+      str = ((Bundle)localObject).getString("msg");
+      this.a.a = ((Bundle)localObject).getInt("id", 0);
+      localObject = HardCodeUtil.a(2131708318);
       if (l == 0L)
       {
         this.a.b = 1;
-        if (true != PokeItemHelper.a) {
-          break;
+        if (true == PokeItemHelper.a) {
+          PokeItemHelper.a = false;
         }
-        PokeItemHelper.a = false;
         return;
       }
       if (l == 4002L)
       {
         this.a.b = 2;
-        paramObject = HardCodeUtil.a(2131708312);
-        localObject = str2;
+        str = HardCodeUtil.a(2131708321);
       }
       for (;;)
       {
-        if (l == 0L) {
-          break label419;
-        }
-        PokeItemHelper.a(PokePanel.a(this.a), (Activity)this.a.getContext(), paramObject, (String)localObject, this.a.a, this.a.b);
-        VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTip", "", 0, 0, 0, "", String.valueOf(j), str1, "", "", "", "", 0, 0, 0, 0);
         break;
         if (l == 5002L)
         {
           this.a.b = 4;
-          paramObject = HardCodeUtil.a(2131708311);
-          localObject = str2;
+          str = HardCodeUtil.a(2131708320);
         }
         else
         {
           this.a.b = 1;
-          str2 = HardCodeUtil.a(2131708310);
-          QLog.e("Q.aio.PokePanel", 1, "vas poke auth fail, result: " + l);
-          paramObject = localObject;
-          localObject = str2;
+          localObject = HardCodeUtil.a(2131708319);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("vas poke auth fail, result: ");
+          localStringBuilder.append(l);
+          QLog.e("Q.aio.PokePanel", 1, localStringBuilder.toString());
         }
       }
-      break label106;
+      if (l != 0L)
+      {
+        PokeItemHelper.a(PokePanel.a(this.a), (Activity)this.a.getContext(), str, (String)localObject, this.a.a, this.a.b);
+        VasWebviewUtil.a("", "poke", "vipTip", "", 0, 0, 0, "", String.valueOf(i), paramObject, "", "", "", "", 0, 0, 0, 0);
+      }
     }
+    VasWebviewUtil.a("", "poke", "send", "", 0, paramBoolean ^ true, 0, "", String.valueOf(i), paramObject, "", "", "", "", 0, 0, 0, 0);
   }
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
@@ -110,7 +96,7 @@ class PokePanel$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.PokePanel.4
  * JD-Core Version:    0.7.0.1
  */

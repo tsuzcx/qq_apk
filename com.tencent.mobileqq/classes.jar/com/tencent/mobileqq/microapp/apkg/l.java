@@ -8,33 +8,28 @@ public final class l
   
   public l a()
   {
+    l locall;
     try
     {
       locall = (l)super.clone();
-      localThrowable1.printStackTrace();
-    }
-    catch (Throwable localThrowable1)
-    {
       try
       {
         locall.a = this.a.a();
         return locall;
       }
-      catch (Throwable localThrowable2)
-      {
-        l locall;
-        break label24;
-      }
-      localThrowable1 = localThrowable1;
+      catch (Throwable localThrowable1) {}
+      localThrowable2.printStackTrace();
+    }
+    catch (Throwable localThrowable2)
+    {
       locall = null;
     }
-    label24:
     return locall;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.apkg.l
  * JD-Core Version:    0.7.0.1
  */

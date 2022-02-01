@@ -55,13 +55,10 @@ public class StarEffectFilter
       return 1.0F;
     }
     paramLong = (paramLong - this.mStartTime) % paramStarParam.starBlurScalePeriod;
-    if (paramLong < paramStarParam.starBlurScalePeriod / 2L)
-    {
-      f = (paramStarParam.starBlurMinScale - paramStarParam.starBlurMaxScale) / (float)(paramStarParam.starBlurScalePeriod / 2L);
-      return (float)paramLong * f + paramStarParam.starBlurMaxScale;
+    if (paramLong < paramStarParam.starBlurScalePeriod / 2L) {
+      return (paramStarParam.starBlurMinScale - paramStarParam.starBlurMaxScale) / (float)(paramStarParam.starBlurScalePeriod / 2L) * (float)paramLong + paramStarParam.starBlurMaxScale;
     }
-    float f = (paramStarParam.starBlurMaxScale - paramStarParam.starBlurMinScale) / (float)(paramStarParam.starBlurScalePeriod / 2L);
-    return (float)paramLong * f + (2.0F * paramStarParam.starBlurMinScale - paramStarParam.starBlurMaxScale);
+    return (paramStarParam.starBlurMaxScale - paramStarParam.starBlurMinScale) / (float)(paramStarParam.starBlurScalePeriod / 2L) * (float)paramLong + (paramStarParam.starBlurMinScale * 2.0F - paramStarParam.starBlurMaxScale);
   }
   
   private float getFilterThreshold(StarParam paramStarParam)
@@ -72,7 +69,7 @@ public class StarEffectFilter
   private int getStarPointsNum(float paramFloat)
   {
     if (paramFloat >= 0.0F) {
-      return Math.max(10, Math.min(40, (int)(30.0F * paramFloat + 10.0F)));
+      return Math.max(10, Math.min(40, (int)(paramFloat * 30.0F + 10.0F)));
     }
     return 0;
   }
@@ -102,42 +99,50 @@ public class StarEffectFilter
     this.result2.clear();
     this.result3.clear();
     this.resultRotateFrame.clear();
-    GLES20.glDeleteTextures(this.mStarColorTex.length, this.mStarColorTex, 0);
+    int[] arrayOfInt = this.mStarColorTex;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
     BitmapUtils.recycle(this.mStarMaskBitmap);
     this.mStarMaskBitmap = null;
   }
   
   public Frame getMaskFrame(Frame paramFrame, StarParam paramStarParam, int paramInt)
   {
-    if ((paramFrame.width * paramFrame.height == 0) || (!VideoMaterial.needRenderStar(paramStarParam))) {
-      return null;
-    }
-    long l = System.currentTimeMillis();
-    if (this.mStartTime < 0L) {
-      this.mStartTime = l;
-    }
-    float f = getCurrentScale(l, paramStarParam);
-    int i;
-    if ((paramInt == 90) || (paramInt == 270))
+    if ((paramFrame.width * paramFrame.height != 0) && (VideoMaterial.needRenderStar(paramStarParam)))
     {
-      i = 1;
-      if (paramInt == 0) {
-        break label1009;
+      long l = System.currentTimeMillis();
+      if (this.mStartTime < 0L) {
+        this.mStartTime = l;
       }
-    }
-    label1009:
-    for (int j = 1;; j = 0)
-    {
-      int k = 180;
-      int m = paramFrame.height * 180 / paramFrame.width;
-      if (i != 0)
+      float f1 = getCurrentScale(l, paramStarParam);
+      int j;
+      if ((paramInt != 90) && (paramInt != 270)) {
+        j = 0;
+      } else {
+        j = 1;
+      }
+      int i;
+      if (paramInt != 0) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      int k = paramFrame.height * 180 / paramFrame.width;
+      if (j != 0)
       {
-        m = 180;
-        k = paramFrame.width * 180 / paramFrame.height;
+        j = paramFrame.width * 180 / paramFrame.height;
+        k = 180;
       }
-      this.mCopyFilter.RenderProcess(paramFrame.getTextureId(), k, m, -1, 0.0D, this.mResizeFrame);
-      this.mGaussianBlurFilter.updateTexelSize(0.5F / k, 0.5F / m);
-      this.mGaussianBlurFilter.RenderProcess(this.mResizeFrame.getTextureId(), k, m, -1, 0.0D, this.mGaussianSrcFrame);
+      else
+      {
+        j = 180;
+      }
+      this.mCopyFilter.RenderProcess(paramFrame.getTextureId(), j, k, -1, 0.0D, this.mResizeFrame);
+      paramFrame = this.mGaussianBlurFilter;
+      float f2 = j;
+      float f3 = 0.5F / f2;
+      float f4 = k;
+      paramFrame.updateTexelSize(f3, 0.5F / f4);
+      this.mGaussianBlurFilter.RenderProcess(this.mResizeFrame.getTextureId(), j, k, -1, 0.0D, this.mGaussianSrcFrame);
       this.mThreshFilterForMask.setTexture2(this.mGaussianSrcFrame.getLastRenderTextureId());
       this.mThreshFilterForMask.setThreshold(getFilterThreshold(paramStarParam));
       this.mThreshFilterForMask.updatePattern();
@@ -150,162 +155,155 @@ public class StarEffectFilter
           this.mThreshFilterForMask.setColorTex(this.mStarColorTex[0], paramStarParam.starBlurColorImage.getWidth());
         }
       }
-      this.mThreshFilterForMask.RenderProcess(this.mResizeFrame.getTextureId(), k, m, -1, 0.0D, this.mThreshFrame);
-      this.mGaussianBlurFilter.updateTexelSize(0.15F / k, 0.15F / m);
-      this.mGaussianBlurFilter.RenderProcess(this.mThreshFrame.getTextureId(), k, m, -1, 0.0D, this.mGaussianThreshFrame);
-      this.mDrawFilter.setScale(f);
-      this.mDrawFilter.setTexSize(k, m);
+      this.mThreshFilterForMask.RenderProcess(this.mResizeFrame.getTextureId(), j, k, -1, 0.0D, this.mThreshFrame);
+      this.mGaussianBlurFilter.updateTexelSize(0.15F / f2, 0.15F / f4);
+      this.mGaussianBlurFilter.RenderProcess(this.mThreshFrame.getTextureId(), j, k, -1, 0.0D, this.mGaussianThreshFrame);
+      this.mDrawFilter.setScale(f1);
+      this.mDrawFilter.setTexSize(f2, f4);
       this.mDrawFilter.setIteration(1);
       this.mDrawFilter.setDirection(1.5F, 1.5F);
-      this.mDrawFilter.RenderProcess(this.mGaussianThreshFrame.getLastRenderTextureId(), k, m, -1, 0.0D, this.mDrawFrameTemp1);
-      this.mDrawFilter.setTexSize(k, m);
+      this.mDrawFilter.RenderProcess(this.mGaussianThreshFrame.getLastRenderTextureId(), j, k, -1, 0.0D, this.mDrawFrameTemp1);
+      this.mDrawFilter.setTexSize(f2, f4);
       this.mDrawFilter.setIteration(0);
       this.mDrawFilter.setDirection(1.5F, 1.5F);
-      this.mDrawFilter.RenderProcess(this.mDrawFrameTemp1.getTextureId(), k, m, -1, 0.0D, this.mDrawFrame1);
-      this.mDrawFilter.setTexSize(k, m);
+      this.mDrawFilter.RenderProcess(this.mDrawFrameTemp1.getTextureId(), j, k, -1, 0.0D, this.mDrawFrame1);
+      this.mDrawFilter.setTexSize(f2, f4);
       this.mDrawFilter.setIteration(1);
       this.mDrawFilter.setDirection(-1.5F, 1.5F);
-      this.mDrawFilter.RenderProcess(this.mGaussianThreshFrame.getLastRenderTextureId(), k, m, -1, 0.0D, this.mDrawFrameTemp2);
-      this.mDrawFilter.setTexSize(k, m);
+      this.mDrawFilter.RenderProcess(this.mGaussianThreshFrame.getLastRenderTextureId(), j, k, -1, 0.0D, this.mDrawFrameTemp2);
+      this.mDrawFilter.setTexSize(f2, f4);
       this.mDrawFilter.setIteration(0);
       this.mDrawFilter.setDirection(-1.5F, 1.5F);
-      this.mDrawFilter.RenderProcess(this.mDrawFrameTemp2.getTextureId(), k, m, -1, 0.0D, this.mDrawFrame2);
-      this.mDrawFilter.setTexSize(k, m);
+      this.mDrawFilter.RenderProcess(this.mDrawFrameTemp2.getTextureId(), j, k, -1, 0.0D, this.mDrawFrame2);
+      this.mDrawFilter.setTexSize(f2, f4);
       this.mDrawFilter.setIteration(1);
       this.mDrawFilter.setDirection(1.5F, -1.5F);
-      this.mDrawFilter.RenderProcess(this.mGaussianThreshFrame.getLastRenderTextureId(), k, m, -1, 0.0D, this.mDrawFrameTemp3);
-      this.mDrawFilter.setTexSize(k, m);
+      this.mDrawFilter.RenderProcess(this.mGaussianThreshFrame.getLastRenderTextureId(), j, k, -1, 0.0D, this.mDrawFrameTemp3);
+      this.mDrawFilter.setTexSize(f2, f4);
       this.mDrawFilter.setIteration(0);
       this.mDrawFilter.setDirection(1.5F, -1.5F);
-      this.mDrawFilter.RenderProcess(this.mDrawFrameTemp3.getTextureId(), k, m, -1, 0.0D, this.mDrawFrame3);
-      this.mDrawFilter.setTexSize(k, m);
+      this.mDrawFilter.RenderProcess(this.mDrawFrameTemp3.getTextureId(), j, k, -1, 0.0D, this.mDrawFrame3);
+      this.mDrawFilter.setTexSize(f2, f4);
       this.mDrawFilter.setIteration(1);
       this.mDrawFilter.setDirection(-1.5F, -1.5F);
-      this.mDrawFilter.RenderProcess(this.mGaussianThreshFrame.getLastRenderTextureId(), k, m, -1, 0.0D, this.mDrawFrameTemp4);
-      this.mDrawFilter.setTexSize(k, m);
+      this.mDrawFilter.RenderProcess(this.mGaussianThreshFrame.getLastRenderTextureId(), j, k, -1, 0.0D, this.mDrawFrameTemp4);
+      this.mDrawFilter.setTexSize(f2, f4);
       this.mDrawFilter.setIteration(0);
       this.mDrawFilter.setDirection(-1.5F, -1.5F);
-      this.mDrawFilter.RenderProcess(this.mDrawFrameTemp4.getTextureId(), k, m, -1, 0.0D, this.mDrawFrame4);
+      this.mDrawFilter.RenderProcess(this.mDrawFrameTemp4.getTextureId(), j, k, -1, 0.0D, this.mDrawFrame4);
       this.mOverlayFilter.setTexture2(this.mDrawFrame2.getTextureId());
-      this.mOverlayFilter.RenderProcess(this.mDrawFrame1.getTextureId(), k, m, -1, 0.0D, this.result1);
+      this.mOverlayFilter.RenderProcess(this.mDrawFrame1.getTextureId(), j, k, -1, 0.0D, this.result1);
       this.mOverlayFilter.setTexture2(this.mDrawFrame3.getTextureId());
-      this.mOverlayFilter.RenderProcess(this.result1.getTextureId(), k, m, -1, 0.0D, this.result2);
+      this.mOverlayFilter.RenderProcess(this.result1.getTextureId(), j, k, -1, 0.0D, this.result2);
       this.mOverlayFilter.setTexture2(this.mDrawFrame4.getTextureId());
-      this.mOverlayFilter.RenderProcess(this.result2.getTextureId(), k, m, -1, 0.0D, this.result3);
-      if (j == 0) {
-        break label1015;
+      this.mOverlayFilter.RenderProcess(this.result2.getTextureId(), j, k, -1, 0.0D, this.result3);
+      if (i != 0)
+      {
+        this.mCopyFilter.setRotationAndFlip(-paramInt, 0, 0);
+        this.mCopyFilter.RenderProcess(this.result3.getTextureId(), k, j, -1, 0.0D, this.resultRotateFrame);
+        this.mCopyFilter.setRotationAndFlip(0, 0, 0);
+        return this.resultRotateFrame;
       }
-      this.mCopyFilter.setRotationAndFlip(-paramInt, 0, 0);
-      this.mCopyFilter.RenderProcess(this.result3.getTextureId(), m, k, -1, 0.0D, this.resultRotateFrame);
-      this.mCopyFilter.setRotationAndFlip(0, 0, 0);
-      return this.resultRotateFrame;
-      i = 0;
-      break;
+      return this.result3;
     }
-    label1015:
-    return this.result3;
+    return null;
   }
   
   public List<PointF> getStarPoints(Frame paramFrame, StarParam paramStarParam, int paramInt)
   {
-    if ((paramFrame.width * paramFrame.height == 0) || (!VideoMaterial.needRenderStar(paramStarParam))) {
-      return new ArrayList();
-    }
-    int j;
-    label50:
-    int k;
-    if ((paramInt == 90) || (paramInt == 270))
+    if ((paramFrame.width * paramFrame.height != 0) && (VideoMaterial.needRenderStar(paramStarParam)))
     {
-      j = 1;
-      if (paramInt == 0) {
-        break label403;
+      int j;
+      if ((paramInt != 90) && (paramInt != 270)) {
+        j = 0;
+      } else {
+        j = 1;
       }
-      i = 1;
-      int m = 180;
-      k = paramFrame.height * 180 / paramFrame.width;
+      if (paramInt != 0) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      int k = paramFrame.height * 180 / paramFrame.width;
       if (j != 0)
       {
-        k = 180;
-        m = paramFrame.width * 180 / paramFrame.height;
-      }
-      this.mCopyFilter.RenderProcess(paramFrame.getTextureId(), m, k, -1, 0.0D, this.mResizeFrame);
-      this.mGaussianBlurFilter.updateTexelSize(0.5F / m, 0.5F / k);
-      this.mGaussianBlurFilter.RenderProcess(this.mResizeFrame.getTextureId(), m, k, -1, 0.0D, this.mGaussianSrcFrame);
-      this.mThreshFilter.setTexture2(this.mGaussianSrcFrame.getLastRenderTextureId());
-      this.mThreshFilter.setThreshold(getFilterThreshold(paramStarParam));
-      this.mThreshFilter.RenderProcess(this.mResizeFrame.getTextureId(), m, k, -1, 0.0D, this.mThreshFrame);
-      j = m / 2;
-      k /= 2;
-      if (i == 0) {
-        break label409;
-      }
-      this.mCopyFilter.setRotationAndFlip(-paramInt, 0, 0);
-      this.mCopyFilter.RenderProcess(this.mThreshFrame.getTextureId(), k, j, -1, 0.0D, this.mThreshResizeFrame);
-      this.mCopyFilter.setRotationAndFlip(0, 0, 0);
-      label273:
-      if ((!BitmapUtils.isLegal(this.mStarMaskBitmap)) || (this.mStarMaskBitmap.getWidth() != this.mThreshResizeFrame.width) || (this.mStarMaskBitmap.getHeight() != this.mThreshResizeFrame.height)) {
-        break label436;
-      }
-      RendererUtils.saveTextureToBitmap(this.mThreshResizeFrame.getTextureId(), this.mThreshResizeFrame.width, this.mThreshResizeFrame.height, this.mStarMaskBitmap);
-    }
-    HashMap localHashMap;
-    for (;;)
-    {
-      paramFrame = new ArrayList();
-      localHashMap = new HashMap();
-      paramInt = 0;
-      while (paramInt < 256)
-      {
-        localHashMap.put(Integer.valueOf(paramInt), new LinkedList());
-        paramInt += 1;
-      }
-      j = 0;
-      break;
-      label403:
-      i = 0;
-      break label50;
-      label409:
-      this.mCopyFilter.RenderProcess(this.mThreshFrame.getTextureId(), j, k, -1, 0.0D, this.mThreshResizeFrame);
-      break label273;
-      label436:
-      BitmapUtils.recycle(this.mStarMaskBitmap);
-      this.mStarMaskBitmap = RendererUtils.saveTexture(this.mThreshResizeFrame.getTextureId(), this.mThreshResizeFrame.width, this.mThreshResizeFrame.height);
-    }
-    paramInt = 5;
-    while (paramInt < this.mStarMaskBitmap.getWidth() - 5)
-    {
-      i = 5;
-      while (i < this.mStarMaskBitmap.getHeight() - 5)
-      {
-        ((LinkedList)localHashMap.get(Integer.valueOf(Color.red(this.mStarMaskBitmap.getPixel(paramInt, i))))).addLast(new PointF(paramInt / (this.mStarMaskBitmap.getWidth() - 1), i / (this.mStarMaskBitmap.getHeight() - 1)));
-        i += 1;
-      }
-      paramInt += 1;
-    }
-    int i = getStarPointsNum(paramStarParam.starStrength);
-    paramInt = 255;
-    for (;;)
-    {
-      if (paramInt > 1)
-      {
-        paramStarParam = (LinkedList)localHashMap.get(Integer.valueOf(paramInt));
-        if (!paramStarParam.isEmpty())
-        {
-          Collections.shuffle(paramStarParam);
-          paramFrame.addAll(paramStarParam);
-        }
-        if (paramFrame.size() < i) {}
+        k = paramFrame.width * 180 / paramFrame.height;
+        j = 180;
       }
       else
       {
-        if (paramFrame.size() <= i) {
+        int m = 180;
+        j = k;
+        k = m;
+      }
+      this.mCopyFilter.RenderProcess(paramFrame.getTextureId(), k, j, -1, 0.0D, this.mResizeFrame);
+      this.mGaussianBlurFilter.updateTexelSize(0.5F / k, 0.5F / j);
+      this.mGaussianBlurFilter.RenderProcess(this.mResizeFrame.getTextureId(), k, j, -1, 0.0D, this.mGaussianSrcFrame);
+      this.mThreshFilter.setTexture2(this.mGaussianSrcFrame.getLastRenderTextureId());
+      this.mThreshFilter.setThreshold(getFilterThreshold(paramStarParam));
+      this.mThreshFilter.RenderProcess(this.mResizeFrame.getTextureId(), k, j, -1, 0.0D, this.mThreshFrame);
+      k /= 2;
+      j /= 2;
+      if (i != 0)
+      {
+        this.mCopyFilter.setRotationAndFlip(-paramInt, 0, 0);
+        this.mCopyFilter.RenderProcess(this.mThreshFrame.getTextureId(), j, k, -1, 0.0D, this.mThreshResizeFrame);
+        this.mCopyFilter.setRotationAndFlip(0, 0, 0);
+      }
+      else
+      {
+        this.mCopyFilter.RenderProcess(this.mThreshFrame.getTextureId(), k, j, -1, 0.0D, this.mThreshResizeFrame);
+      }
+      if ((BitmapUtils.isLegal(this.mStarMaskBitmap)) && (this.mStarMaskBitmap.getWidth() == this.mThreshResizeFrame.width) && (this.mStarMaskBitmap.getHeight() == this.mThreshResizeFrame.height))
+      {
+        RendererUtils.saveTextureToBitmap(this.mThreshResizeFrame.getTextureId(), this.mThreshResizeFrame.width, this.mThreshResizeFrame.height, this.mStarMaskBitmap);
+      }
+      else
+      {
+        BitmapUtils.recycle(this.mStarMaskBitmap);
+        this.mStarMaskBitmap = RendererUtils.saveTexture(this.mThreshResizeFrame.getTextureId(), this.mThreshResizeFrame.width, this.mThreshResizeFrame.height);
+      }
+      ArrayList localArrayList = new ArrayList();
+      paramFrame = new HashMap();
+      paramInt = 0;
+      while (paramInt < 256)
+      {
+        paramFrame.put(Integer.valueOf(paramInt), new LinkedList());
+        paramInt += 1;
+      }
+      paramInt = 5;
+      while (paramInt < this.mStarMaskBitmap.getWidth() - 5)
+      {
+        i = 5;
+        while (i < this.mStarMaskBitmap.getHeight() - 5)
+        {
+          ((LinkedList)paramFrame.get(Integer.valueOf(Color.red(this.mStarMaskBitmap.getPixel(paramInt, i))))).addLast(new PointF(paramInt / (this.mStarMaskBitmap.getWidth() - 1), i / (this.mStarMaskBitmap.getHeight() - 1)));
+          i += 1;
+        }
+        paramInt += 1;
+      }
+      paramInt = 255;
+      int i = getStarPointsNum(paramStarParam.starStrength);
+      do
+      {
+        if (paramInt <= 1) {
           break;
         }
-        return paramFrame.subList(0, i);
+        paramStarParam = (LinkedList)paramFrame.get(Integer.valueOf(paramInt));
+        if (!paramStarParam.isEmpty())
+        {
+          Collections.shuffle(paramStarParam);
+          localArrayList.addAll(paramStarParam);
+        }
+        paramInt -= 1;
+      } while (localArrayList.size() < i);
+      paramFrame = localArrayList;
+      if (localArrayList.size() > i) {
+        paramFrame = localArrayList.subList(0, i);
       }
-      paramInt -= 1;
+      return paramFrame;
     }
-    return paramFrame;
+    return new ArrayList();
   }
   
   public void initial()
@@ -316,12 +314,13 @@ public class StarEffectFilter
     this.mDrawFilter.apply();
     this.mOverlayFilter.apply();
     this.mCopyFilter.apply();
-    GLES20.glGenTextures(this.mStarColorTex.length, this.mStarColorTex, 0);
+    int[] arrayOfInt = this.mStarColorTex;
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.StarEffectFilter
  * JD-Core Version:    0.7.0.1
  */

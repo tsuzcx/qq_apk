@@ -6,13 +6,14 @@ import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class RespSearch
   extends JceStruct
   implements Cloneable
 {
   static int cache_eEimKeyType;
-  static ArrayList<SearchInfo> cache_vRecords;
+  static ArrayList<SearchInfo> cache_vRecords = new ArrayList();
   static byte[] cache_vSecureSig;
   static ArrayList<byte[]> cache_vvRespServices;
   static byte[] cache_weiguang;
@@ -25,24 +26,17 @@ public final class RespSearch
   
   static
   {
-    if (!RespSearch.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      cache_vRecords = new ArrayList();
-      Object localObject = new SearchInfo();
-      cache_vRecords.add(localObject);
-      cache_vSecureSig = (byte[])new byte[1];
-      ((byte[])cache_vSecureSig)[0] = 0;
-      cache_vvRespServices = new ArrayList();
-      localObject = (byte[])new byte[1];
-      ((byte[])localObject)[0] = 0;
-      cache_vvRespServices.add(localObject);
-      cache_eEimKeyType = 0;
-      cache_weiguang = (byte[])new byte[1];
-      ((byte[])cache_weiguang)[0] = 0;
-      return;
-    }
+    Object localObject = new SearchInfo();
+    cache_vRecords.add(localObject);
+    cache_vSecureSig = (byte[])new byte[1];
+    ((byte[])cache_vSecureSig)[0] = 0;
+    cache_vvRespServices = new ArrayList();
+    localObject = (byte[])new byte[1];
+    ((byte[])localObject)[0] = 0;
+    cache_vvRespServices.add(localObject);
+    cache_eEimKeyType = 0;
+    cache_weiguang = (byte[])new byte[1];
+    ((byte[])cache_weiguang)[0] = 0;
   }
   
   public RespSearch() {}
@@ -64,18 +58,17 @@ public final class RespSearch
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -102,13 +95,36 @@ public final class RespSearch
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (RespSearch)paramObject;
-    } while ((!JceUtil.equals(this.vRecords, paramObject.vRecords)) || (!JceUtil.equals(this.vSecureSig, paramObject.vSecureSig)) || (!JceUtil.equals(this.vvRespServices, paramObject.vvRespServices)) || (!JceUtil.equals(this.eEimKeyType, paramObject.eEimKeyType)) || (!JceUtil.equals(this.result, paramObject.result)) || (!JceUtil.equals(this.weiguang, paramObject.weiguang)));
-    return true;
+    }
+    paramObject = (RespSearch)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.vRecords, paramObject.vRecords))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.vSecureSig, paramObject.vSecureSig))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.vvRespServices, paramObject.vvRespServices))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.eEimKeyType, paramObject.eEimKeyType))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.result, paramObject.result))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.weiguang, paramObject.weiguang)) {
+                bool1 = true;
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -202,16 +218,19 @@ public final class RespSearch
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.vRecords, 0);
-    if (this.vSecureSig != null) {
-      paramJceOutputStream.write(this.vSecureSig, 1);
+    Object localObject = this.vSecureSig;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 1);
     }
-    if (this.vvRespServices != null) {
-      paramJceOutputStream.write(this.vvRespServices, 2);
+    localObject = this.vvRespServices;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
     paramJceOutputStream.write(this.eEimKeyType, 3);
     paramJceOutputStream.write(this.result, 4);
-    if (this.weiguang != null) {
-      paramJceOutputStream.write(this.weiguang, 5);
+    localObject = this.weiguang;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 5);
     }
   }
 }

@@ -6,6 +6,8 @@ import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.friend.handler.FriendHandler;
 import com.tencent.mobileqq.friend.servlet.coder.BaseJCECoder;
+import com.tencent.mobileqq.friend.servlet.coder.FriendAddJCECoder;
+import com.tencent.mobileqq.friend.servlet.coder.FriendListJCECoder;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -42,69 +44,38 @@ public final class FriendService
     if (!this.jdField_a_of_type_Boolean) {
       a();
     }
-    BaseJCECoder localBaseJCECoder1 = (BaseJCECoder)null;
+    BaseJCECoder localBaseJCECoder2 = (BaseJCECoder)null;
     Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
-    while (localIterator.hasNext())
+    BaseJCECoder localBaseJCECoder1;
+    do
     {
-      BaseJCECoder localBaseJCECoder2 = (BaseJCECoder)localIterator.next();
-      if (localBaseJCECoder2.a(paramString)) {
-        return localBaseJCECoder2;
+      localBaseJCECoder1 = localBaseJCECoder2;
+      if (!localIterator.hasNext()) {
+        break;
       }
-    }
+      localBaseJCECoder1 = (BaseJCECoder)localIterator.next();
+    } while (!localBaseJCECoder1.a(paramString));
     return localBaseJCECoder1;
   }
   
-  /* Error */
   private final void a()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc 106
-    //   4: iconst_1
-    //   5: new 108	java/lang/StringBuilder
-    //   8: dup
-    //   9: invokespecial 109	java/lang/StringBuilder:<init>	()V
-    //   12: ldc 111
-    //   14: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   17: aload_0
-    //   18: getfield 83	com/tencent/mobileqq/friend/servlet/FriendService:jdField_a_of_type_Boolean	Z
-    //   21: invokevirtual 118	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   24: invokevirtual 122	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   27: invokestatic 128	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   30: aload_0
-    //   31: getfield 83	com/tencent/mobileqq/friend/servlet/FriendService:jdField_a_of_type_Boolean	Z
-    //   34: istore_1
-    //   35: iload_1
-    //   36: ifeq +6 -> 42
-    //   39: aload_0
-    //   40: monitorexit
-    //   41: return
-    //   42: aload_0
-    //   43: getfield 72	com/tencent/mobileqq/friend/servlet/FriendService:jdField_a_of_type_JavaUtilHashSet	Ljava/util/HashSet;
-    //   46: new 130	com/tencent/mobileqq/friend/servlet/coder/FriendListJCECoder
-    //   49: dup
-    //   50: invokespecial 131	com/tencent/mobileqq/friend/servlet/coder/FriendListJCECoder:<init>	()V
-    //   53: invokevirtual 135	java/util/HashSet:add	(Ljava/lang/Object;)Z
-    //   56: pop
-    //   57: aload_0
-    //   58: iconst_1
-    //   59: putfield 83	com/tencent/mobileqq/friend/servlet/FriendService:jdField_a_of_type_Boolean	Z
-    //   62: goto -23 -> 39
-    //   65: astore_2
-    //   66: aload_0
-    //   67: monitorexit
-    //   68: aload_2
-    //   69: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	70	0	this	FriendService
-    //   34	2	1	bool	boolean
-    //   65	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	35	65	finally
-    //   42	62	65	finally
+    try
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initJCECoder: ");
+      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      QLog.d("IMCore.friend.FriendService", 1, localStringBuilder.toString());
+      boolean bool = this.jdField_a_of_type_Boolean;
+      if (bool) {
+        return;
+      }
+      this.jdField_a_of_type_JavaUtilHashSet.add(new FriendListJCECoder());
+      this.jdField_a_of_type_JavaUtilHashSet.add(new FriendAddJCECoder());
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    finally {}
   }
   
   private final void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -131,29 +102,38 @@ public final class FriendService
   {
     Intrinsics.checkParameterIsNotNull(paramToServiceMsg, "request");
     Intrinsics.checkParameterIsNotNull(paramFromServiceMsg, "response");
-    Object localObject1 = null;
     if (paramFromServiceMsg.isSuccess())
     {
-      Object localObject2 = paramFromServiceMsg.getServiceCmd();
-      Intrinsics.checkExpressionValueIsNotNull(localObject2, "response.serviceCmd");
-      localObject2 = a((String)localObject2);
-      if (localObject2 != null) {
-        localObject1 = ((BaseJCECoder)localObject2).a(paramToServiceMsg, paramFromServiceMsg);
+      localObject = paramFromServiceMsg.getServiceCmd();
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "response.serviceCmd");
+      localObject = a((String)localObject);
+      if (localObject != null)
+      {
+        localObject = ((BaseJCECoder)localObject).a(paramToServiceMsg, paramFromServiceMsg);
+        break label137;
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onReceive[");
+      ((StringBuilder)localObject).append(paramFromServiceMsg.getServiceCmd());
+      ((StringBuilder)localObject).append("]: coder is null");
+      QLog.d("IMCore.friend.FriendServlet", 1, ((StringBuilder)localObject).toString());
     }
-    for (;;)
+    else
     {
-      a(paramToServiceMsg, paramFromServiceMsg, localObject1);
-      return;
-      QLog.d("IMCore.friend.FriendServlet", 1, "onReceive[" + paramFromServiceMsg.getServiceCmd() + "]: coder is null");
-      continue;
-      QLog.d("IMCore.friend.FriendServlet", 1, "onReceive[" + paramFromServiceMsg.getServiceCmd() + "]: response is fail");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onReceive[");
+      ((StringBuilder)localObject).append(paramFromServiceMsg.getServiceCmd());
+      ((StringBuilder)localObject).append("]: response is fail");
+      QLog.d("IMCore.friend.FriendServlet", 1, ((StringBuilder)localObject).toString());
     }
+    Object localObject = null;
+    label137:
+    a(paramToServiceMsg, paramFromServiceMsg, localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.friend.servlet.FriendService
  * JD-Core Version:    0.7.0.1
  */

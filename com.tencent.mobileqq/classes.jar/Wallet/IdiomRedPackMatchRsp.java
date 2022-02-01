@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class IdiomRedPackMatchRsp
   extends JceStruct
 {
-  static int cache_subchannel = 0;
+  static int cache_subchannel;
   public String billno = "";
   public int fromType = 0;
   public long grabUin = 0L;
@@ -44,36 +44,42 @@ public final class IdiomRedPackMatchRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.grabUin, 0);
-    if (this.billno != null) {
-      paramJceOutputStream.write(this.billno, 1);
+    String str = this.billno;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.makeUin, 2);
     paramJceOutputStream.write(this.status, 3);
     paramJceOutputStream.write(this.timeInterval, 4);
-    if (this.strErr != null) {
-      paramJceOutputStream.write(this.strErr, 5);
+    str = this.strErr;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.hbIdiom != null) {
-      paramJceOutputStream.write(this.hbIdiom, 6);
+    str = this.hbIdiom;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
     paramJceOutputStream.write(this.idiomSeq, 7);
     paramJceOutputStream.write(this.fromType, 8);
-    if (this.groupid != null) {
-      paramJceOutputStream.write(this.groupid, 9);
+    str = this.groupid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
     paramJceOutputStream.write(this.isFinished, 10);
-    if (this.hbIdiomLastPY != null) {
-      paramJceOutputStream.write(this.hbIdiomLastPY, 11);
+    str = this.hbIdiomLastPY;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
     paramJceOutputStream.write(this.subchannel, 12);
-    if (this.hbPoemRule != null) {
-      paramJceOutputStream.write(this.hbPoemRule, 13);
+    str = this.hbPoemRule;
+    if (str != null) {
+      paramJceOutputStream.write(str, 13);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.IdiomRedPackMatchRsp
  * JD-Core Version:    0.7.0.1
  */

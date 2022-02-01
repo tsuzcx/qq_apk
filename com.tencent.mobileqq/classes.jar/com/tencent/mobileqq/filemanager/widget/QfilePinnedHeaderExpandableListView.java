@@ -6,8 +6,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import com.tencent.mobileqq.filemanager.activity.adapter.DelDownloadHolder;
 import com.tencent.mobileqq.filemanager.activity.adapter.ImageHolder;
-import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QFileDelDownloadAdapter.Holder;
 import com.tencent.mobileqq.fpsreport.FPSPinnedHeaderExpandableListView;
 
 public class QfilePinnedHeaderExpandableListView
@@ -50,7 +50,7 @@ public class QfilePinnedHeaderExpandableListView
   
   private void a(Context paramContext)
   {
-    setSelector(2131167305);
+    setSelector(2131167333);
     setGroupIndicator(null);
   }
   
@@ -62,20 +62,18 @@ public class QfilePinnedHeaderExpandableListView
       return null;
     }
     paramInt2 = ((ViewGroup)localObject).getChildCount();
-    if (this.e == 0) {
+    i = this.e;
+    if (i == 0) {
       return null;
     }
-    if (paramInt1 > this.e * paramInt2) {
+    if (paramInt1 > i * paramInt2) {
       paramInt1 = paramInt2 - 1;
+    } else {
+      paramInt1 /= i;
     }
-    for (;;)
-    {
-      localObject = ((ViewGroup)localObject).getChildAt(paramInt1);
-      if (localObject != null) {
-        break;
-      }
+    localObject = ((ViewGroup)localObject).getChildAt(paramInt1);
+    if (localObject == null) {
       return null;
-      paramInt1 /= this.e;
     }
     localObject = ((View)localObject).getTag();
     if (localObject != null)
@@ -85,10 +83,10 @@ public class QfilePinnedHeaderExpandableListView
         localObject = (ImageHolder)localObject;
         return new int[] { ((ImageHolder)localObject).jdField_b_of_type_Int, ((ImageHolder)localObject).jdField_a_of_type_Int };
       }
-      if (QFileDelDownloadAdapter.Holder.class.isInstance(localObject))
+      if (DelDownloadHolder.class.isInstance(localObject))
       {
-        localObject = (QFileDelDownloadAdapter.Holder)localObject;
-        return new int[] { ((QFileDelDownloadAdapter.Holder)localObject).jdField_b_of_type_Int, ((QFileDelDownloadAdapter.Holder)localObject).jdField_a_of_type_Int };
+        localObject = (DelDownloadHolder)localObject;
+        return new int[] { ((DelDownloadHolder)localObject).jdField_b_of_type_Int, ((DelDownloadHolder)localObject).jdField_a_of_type_Int };
       }
     }
     return null;
@@ -96,83 +94,89 @@ public class QfilePinnedHeaderExpandableListView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i;
     if (this.jdField_b_of_type_Boolean)
     {
-      i = paramMotionEvent.getAction();
-      if ((i != 2) || (!this.jdField_c_of_type_Boolean)) {}
-    }
-    boolean bool;
-    do
-    {
-      for (;;)
-      {
+      int i = paramMotionEvent.getAction();
+      if ((i == 2) && (this.jdField_c_of_type_Boolean)) {
         return true;
-        float f1 = paramMotionEvent.getX();
-        float f2 = paramMotionEvent.getY();
-        switch (i & 0xFF)
-        {
-        default: 
-        case 2: 
-        case 0: 
-          while (!this.jdField_c_of_type_Boolean)
+      }
+      float f1 = paramMotionEvent.getX();
+      float f2 = paramMotionEvent.getY();
+      i &= 0xFF;
+      if (i != 0)
+      {
+        if (i != 1) {
+          if (i != 2)
           {
-            return super.onInterceptTouchEvent(paramMotionEvent);
-            float f3 = Math.abs(f1 - this.jdField_a_of_type_Float);
-            if ((f3 > Math.abs(f2 - this.jdField_b_of_type_Float) * 1.73F) && (f3 > this.jdField_c_of_type_Float))
-            {
-              this.jdField_c_of_type_Boolean = true;
-              this.jdField_a_of_type_Float = f1;
-              this.jdField_b_of_type_Float = f2;
-              continue;
-              this.jdField_a_of_type_Float = f1;
-              this.jdField_b_of_type_Float = f2;
-              int[] arrayOfInt = a((int)f1, (int)f2);
-              if (arrayOfInt != null)
-              {
-                i = arrayOfInt[0];
-                this.jdField_c_of_type_Int = i;
-                this.jdField_a_of_type_Int = i;
-                i = arrayOfInt[1];
-                this.d = i;
-                this.jdField_b_of_type_Int = i;
-              }
+            if (i != 3) {
+              break label233;
             }
           }
+          else
+          {
+            float f3 = Math.abs(f1 - this.jdField_a_of_type_Float);
+            if ((f3 <= Math.abs(f2 - this.jdField_b_of_type_Float) * 1.73F) || (f3 <= this.jdField_c_of_type_Float)) {
+              break label233;
+            }
+            this.jdField_c_of_type_Boolean = true;
+            this.jdField_a_of_type_Float = f1;
+            this.jdField_b_of_type_Float = f2;
+            break label233;
+          }
+        }
+        boolean bool = this.jdField_c_of_type_Boolean;
+        this.jdField_c_of_type_Boolean = false;
+        this.jdField_c_of_type_Int = -1;
+        this.jdField_a_of_type_Int = -1;
+        this.d = -1;
+        this.jdField_b_of_type_Int = -1;
+        this.jdField_a_of_type_Boolean = false;
+        if (bool) {
+          return true;
         }
       }
-      bool = this.jdField_c_of_type_Boolean;
-      this.jdField_c_of_type_Boolean = false;
-      this.jdField_c_of_type_Int = -1;
-      this.jdField_a_of_type_Int = -1;
-      this.d = -1;
-      this.jdField_b_of_type_Int = -1;
-      this.jdField_a_of_type_Boolean = false;
-    } while (!bool);
-    return true;
+      else
+      {
+        this.jdField_a_of_type_Float = f1;
+        this.jdField_b_of_type_Float = f2;
+        int[] arrayOfInt = a((int)f1, (int)f2);
+        if (arrayOfInt != null)
+        {
+          i = arrayOfInt[0];
+          this.jdField_c_of_type_Int = i;
+          this.jdField_a_of_type_Int = i;
+          i = arrayOfInt[1];
+          this.d = i;
+          this.jdField_b_of_type_Int = i;
+        }
+      }
+      label233:
+      if (this.jdField_c_of_type_Boolean) {
+        return true;
+      }
+    }
+    return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i;
-    float f1;
-    float f2;
-    label130:
-    int j;
     if (this.jdField_b_of_type_Boolean)
     {
-      i = paramMotionEvent.getAction();
-      f1 = paramMotionEvent.getX();
-      f2 = paramMotionEvent.getY();
-      switch (i & 0xFF)
+      int i = paramMotionEvent.getAction();
+      float f1 = paramMotionEvent.getX();
+      float f2 = paramMotionEvent.getY();
+      i &= 0xFF;
+      if (i != 0)
       {
-      default: 
-      case 2: 
-        for (;;)
-        {
-          if (this.jdField_c_of_type_Boolean)
+        if (i != 1) {
+          if (i != 2)
           {
-            return true;
+            if (i != 3) {
+              break label461;
+            }
+          }
+          else
+          {
             if (!this.jdField_c_of_type_Boolean)
             {
               float f3 = Math.abs(f1 - this.jdField_a_of_type_Float);
@@ -182,82 +186,101 @@ public class QfilePinnedHeaderExpandableListView
                 this.jdField_a_of_type_Float = f1;
                 this.jdField_b_of_type_Float = f2;
               }
+              else
+              {
+                localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView$OnSelectListener;
+                if (localObject != null) {
+                  ((QfilePinnedHeaderExpandableListView.OnSelectListener)localObject).a(true);
+                }
+              }
+            }
+            if (!this.jdField_c_of_type_Boolean) {
+              break label461;
+            }
+            int j;
+            if (!this.jdField_a_of_type_Boolean)
+            {
+              i = this.jdField_a_of_type_Int;
+              if (i != -1)
+              {
+                j = this.jdField_b_of_type_Int;
+                if (j != -1)
+                {
+                  localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView$OnSelectListener;
+                  if (localObject != null) {
+                    ((QfilePinnedHeaderExpandableListView.OnSelectListener)localObject).a(i, j);
+                  }
+                  this.jdField_a_of_type_Boolean = true;
+                }
+              }
+            }
+            localObject = a((int)f1, (int)f2);
+            if (localObject != null)
+            {
+              j = localObject[0];
+              i = localObject[1];
             }
             else
             {
-              if (!this.jdField_c_of_type_Boolean) {
-                continue;
-              }
-              if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int != -1) && (this.jdField_b_of_type_Int != -1))
-              {
-                if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView$OnSelectListener != null) {
-                  this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView$OnSelectListener.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-                }
-                this.jdField_a_of_type_Boolean = true;
-              }
-              int[] arrayOfInt = a((int)f1, (int)f2);
-              if (arrayOfInt == null) {
-                break label461;
-              }
-              j = arrayOfInt[0];
-              i = arrayOfInt[1];
+              i = -1;
+              j = -1;
             }
+            if ((j == -1) || (i == -1)) {
+              break label461;
+            }
+            if (!this.jdField_a_of_type_Boolean)
+            {
+              this.jdField_c_of_type_Int = j;
+              this.jdField_a_of_type_Int = j;
+              this.d = i;
+              this.jdField_b_of_type_Int = i;
+              localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView$OnSelectListener;
+              if (localObject != null) {
+                ((QfilePinnedHeaderExpandableListView.OnSelectListener)localObject).a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+              }
+              this.jdField_a_of_type_Boolean = true;
+              break label461;
+            }
+            this.jdField_c_of_type_Int = j;
+            this.d = i;
+            localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView$OnSelectListener;
+            if (localObject == null) {
+              break label461;
+            }
+            ((QfilePinnedHeaderExpandableListView.OnSelectListener)localObject).a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.d);
+            break label461;
           }
         }
+        boolean bool = this.jdField_c_of_type_Boolean;
+        Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView$OnSelectListener;
+        if (localObject != null)
+        {
+          if (bool) {
+            ((QfilePinnedHeaderExpandableListView.OnSelectListener)localObject).b(this.jdField_c_of_type_Int, this.d);
+          }
+          this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView$OnSelectListener.a(false);
+        }
+        this.jdField_c_of_type_Int = -1;
+        this.jdField_a_of_type_Int = -1;
+        this.d = -1;
+        this.jdField_b_of_type_Int = -1;
+        this.jdField_c_of_type_Boolean = false;
+        this.jdField_a_of_type_Boolean = false;
+        if (bool) {
+          return true;
+        }
       }
-    }
-    while ((j != -1) && (i != -1))
-    {
-      if (!this.jdField_a_of_type_Boolean)
+      else
       {
-        this.jdField_c_of_type_Int = j;
-        this.jdField_a_of_type_Int = j;
-        this.d = i;
-        this.jdField_b_of_type_Int = i;
-        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView$OnSelectListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView$OnSelectListener.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-        }
-        this.jdField_a_of_type_Boolean = true;
-        break;
-        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView$OnSelectListener == null) {
-          break label130;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView$OnSelectListener.a(true);
-        break label130;
+        this.jdField_a_of_type_Float = f1;
+        this.jdField_b_of_type_Float = f2;
       }
-      this.jdField_c_of_type_Int = j;
-      this.d = i;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView$OnSelectListener == null) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView$OnSelectListener.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.d);
-      break;
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f2;
-      break;
-      boolean bool = this.jdField_c_of_type_Boolean;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView$OnSelectListener != null)
-      {
-        if (this.jdField_c_of_type_Boolean) {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView$OnSelectListener.b(this.jdField_c_of_type_Int, this.d);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView$OnSelectListener.a(false);
-      }
-      this.jdField_c_of_type_Int = -1;
-      this.jdField_a_of_type_Int = -1;
-      this.d = -1;
-      this.jdField_b_of_type_Int = -1;
-      this.jdField_c_of_type_Boolean = false;
-      this.jdField_a_of_type_Boolean = false;
-      if (!bool) {
-        break;
-      }
-      return true;
-      return super.onTouchEvent(paramMotionEvent);
       label461:
-      i = -1;
-      j = -1;
+      if (this.jdField_c_of_type_Boolean) {
+        return true;
+      }
     }
+    return super.onTouchEvent(paramMotionEvent);
   }
   
   public void setGridSize(int paramInt)
@@ -282,7 +305,7 @@ public class QfilePinnedHeaderExpandableListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView
  * JD-Core Version:    0.7.0.1
  */

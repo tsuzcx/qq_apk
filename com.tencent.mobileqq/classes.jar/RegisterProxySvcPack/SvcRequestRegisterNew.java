@@ -39,6 +39,7 @@ public final class SvcRequestRegisterNew
   public long uEndSeq = 0L;
   public long ulLastFilterListTime = 0L;
   public long ulMaxDisGrpMsgTime = 0L;
+  public long ulReportFlag = 0L;
   public long ulRequestOptional = 0L;
   public long ulSyncTime = 0L;
   public byte[] vCookies = null;
@@ -47,7 +48,7 @@ public final class SvcRequestRegisterNew
   
   public SvcRequestRegisterNew() {}
   
-  public SvcRequestRegisterNew(long paramLong1, SvcRequestGetMsgV2 paramSvcRequestGetMsgV2, SvcRequestPullGroupMsgSeq paramSvcRequestPullGroupMsgSeq, SvcRequestPullDisMsgSeq paramSvcRequestPullDisMsgSeq, SvcReqRegister paramSvcReqRegister, byte paramByte1, byte paramByte2, byte paramByte3, long paramLong2, SvcRequestPullDisGroupSeq paramSvcRequestPullDisGroupSeq, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, SvcReqGet paramSvcReqGet, byte paramByte4, byte paramByte5, long paramLong3, byte paramByte6, long paramLong4, long paramLong5, byte[] paramArrayOfByte4, long paramLong6)
+  public SvcRequestRegisterNew(long paramLong1, SvcRequestGetMsgV2 paramSvcRequestGetMsgV2, SvcRequestPullGroupMsgSeq paramSvcRequestPullGroupMsgSeq, SvcRequestPullDisMsgSeq paramSvcRequestPullDisMsgSeq, SvcReqRegister paramSvcReqRegister, byte paramByte1, byte paramByte2, byte paramByte3, long paramLong2, SvcRequestPullDisGroupSeq paramSvcRequestPullDisGroupSeq, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, SvcReqGet paramSvcReqGet, byte paramByte4, byte paramByte5, long paramLong3, byte paramByte6, long paramLong4, long paramLong5, byte[] paramArrayOfByte4, long paramLong6, long paramLong7)
   {
     this.ulRequestOptional = paramLong1;
     this.c2cmsg = paramSvcRequestGetMsgV2;
@@ -71,6 +72,7 @@ public final class SvcRequestRegisterNew
     this.ulMaxDisGrpMsgTime = paramLong5;
     this.bytes_0x769_reqbody = paramArrayOfByte4;
     this.ulLastFilterListTime = paramLong6;
+    this.ulReportFlag = paramLong7;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -135,41 +137,51 @@ public final class SvcRequestRegisterNew
     }
     this.bytes_0x769_reqbody = ((byte[])paramJceInputStream.read(cache_bytes_0x769_reqbody, 20, false));
     this.ulLastFilterListTime = paramJceInputStream.read(this.ulLastFilterListTime, 23, false);
+    this.ulReportFlag = paramJceInputStream.read(this.ulReportFlag, 25, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ulRequestOptional, 0);
-    if (this.c2cmsg != null) {
-      paramJceOutputStream.write(this.c2cmsg, 1);
+    Object localObject = this.c2cmsg;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.groupmsg != null) {
-      paramJceOutputStream.write(this.groupmsg, 2);
+    localObject = this.groupmsg;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.confmsg != null) {
-      paramJceOutputStream.write(this.confmsg, 3);
+    localObject = this.confmsg;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.regist != null) {
-      paramJceOutputStream.write(this.regist, 4);
+    localObject = this.regist;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
     paramJceOutputStream.write(this.cSubCmd, 5);
     paramJceOutputStream.write(this.cGetGroupPttUrl, 6);
     paramJceOutputStream.write(this.cGetDisPttUrl, 7);
     paramJceOutputStream.write(this.badge, 8);
-    if (this.disgroupmsg != null) {
-      paramJceOutputStream.write(this.disgroupmsg, 9);
+    localObject = this.disgroupmsg;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
-    if (this.vSaveTraffic != null) {
-      paramJceOutputStream.write(this.vSaveTraffic, 10);
+    localObject = this.vSaveTraffic;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 10);
     }
-    if (this.vCookies != null) {
-      paramJceOutputStream.write(this.vCookies, 11);
+    localObject = this.vCookies;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 11);
     }
-    if (this.vSig != null) {
-      paramJceOutputStream.write(this.vSig, 12);
+    localObject = this.vSig;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 12);
     }
-    if (this.heartbeat != null) {
-      paramJceOutputStream.write(this.heartbeat, 13);
+    localObject = this.heartbeat;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 13);
     }
     paramJceOutputStream.write(this.cDisgroupMsgFilter, 14);
     paramJceOutputStream.write(this.cGroupMask, 15);
@@ -177,15 +189,17 @@ public final class SvcRequestRegisterNew
     paramJceOutputStream.write(this.cOptGroupMsgFlag, 17);
     paramJceOutputStream.write(this.ulSyncTime, 18);
     paramJceOutputStream.write(this.ulMaxDisGrpMsgTime, 19);
-    if (this.bytes_0x769_reqbody != null) {
-      paramJceOutputStream.write(this.bytes_0x769_reqbody, 20);
+    localObject = this.bytes_0x769_reqbody;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 20);
     }
     paramJceOutputStream.write(this.ulLastFilterListTime, 23);
+    paramJceOutputStream.write(this.ulReportFlag, 25);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     RegisterProxySvcPack.SvcRequestRegisterNew
  * JD-Core Version:    0.7.0.1
  */

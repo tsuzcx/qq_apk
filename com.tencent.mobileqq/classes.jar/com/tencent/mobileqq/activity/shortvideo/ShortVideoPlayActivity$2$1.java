@@ -14,14 +14,21 @@ class ShortVideoPlayActivity$2$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a.jdField_b_of_type_JavaLangRefWeakReference.get() != null) {
-      ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.a.a.jdField_b_of_type_JavaLangString, (MqqHandler)this.a.a.jdField_b_of_type_JavaLangRefWeakReference.get(), this.a.a.g + ".mp4", true));
+    if (this.a.a.mHandler.get() != null)
+    {
+      paramDialogInterface = ThreadManager.getFileThreadHandler();
+      String str = this.a.a.mVideoPath;
+      MqqHandler localMqqHandler = (MqqHandler)this.a.a.mHandler.get();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.a.a.mMd5);
+      localStringBuilder.append(".mp4");
+      paramDialogInterface.post(new ShortVideoUtils.VideoFileSaveRunnable(str, localMqqHandler, localStringBuilder.toString(), true));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -107,42 +107,49 @@ public class ActionSheetDialog
     int j = 0;
     Object localObject1;
     Object localObject2;
-    if (j < k)
+    while (j < k)
     {
       localObject1 = (Button)this.buttonsList.get(j);
       int i = ((Integer)((Button)localObject1).getTag()).intValue();
       int m = R.drawable.mini_sdk_actionsheet_single;
       m = getBackgroundId(k, j);
-      switch (i)
+      if (i != 1)
       {
-      default: 
-        i = this.mContext.getResources().getColor(R.color.mini_sdk_action_sheet_button_blue);
-      }
-      for (;;)
-      {
-        ((Button)localObject1).setBackgroundResource(m);
-        ((Button)localObject1).setTextColor(i);
-        j += 1;
-        break;
-        i = -16777216;
-        ((Button)localObject1).setTextSize(0, this.mContext.getResources().getDimension(R.dimen.mini_sdk_textSizeS3));
-        ((Button)localObject1).setClickable(false);
-        ((Button)localObject1).setVisibility(8);
-        addTitle(((Button)localObject1).getText().toString());
-        continue;
-        i = this.mContext.getResources().getColor(R.color.mini_sdk_action_sheet_button_red);
-        continue;
-        DisplayUtil.dip2px(getContext(), 8.0F);
-        i = this.mContext.getResources().getColor(R.color.mini_sdk_action_sheet_button_blue);
-        localObject2 = new SpannableString(((Button)localObject1).getText());
-        Object localObject3 = this.mContext.getResources().getDrawable(R.drawable.mini_sdk_ys_huangzuan);
-        ((Drawable)localObject3).setBounds(0, 0, ((Drawable)localObject3).getIntrinsicWidth(), ((Drawable)localObject3).getIntrinsicHeight());
-        localObject3 = new ImageSpan((Drawable)localObject3, 1);
-        if ((((SpannableString)localObject2).length() >= 1) && (((SpannableString)localObject2).charAt(((SpannableString)localObject2).length() - 1) == '@')) {
-          ((SpannableString)localObject2).setSpan(localObject3, ((SpannableString)localObject2).length() - 1, ((SpannableString)localObject2).length(), 33);
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            i = this.mContext.getResources().getColor(R.color.mini_sdk_action_sheet_button_blue);
+          }
+          else
+          {
+            i = -16777216;
+            ((Button)localObject1).setTextSize(0, this.mContext.getResources().getDimension(R.dimen.mini_sdk_textSizeS3));
+            ((Button)localObject1).setClickable(false);
+            ((Button)localObject1).setVisibility(8);
+            addTitle(((Button)localObject1).getText().toString());
+          }
         }
-        ((Button)localObject1).setText((CharSequence)localObject2);
+        else
+        {
+          DisplayUtil.dip2px(getContext(), 8.0F);
+          i = this.mContext.getResources().getColor(R.color.mini_sdk_action_sheet_button_blue);
+          localObject2 = new SpannableString(((Button)localObject1).getText());
+          Object localObject3 = this.mContext.getResources().getDrawable(R.drawable.mini_sdk_ys_huangzuan);
+          ((Drawable)localObject3).setBounds(0, 0, ((Drawable)localObject3).getIntrinsicWidth(), ((Drawable)localObject3).getIntrinsicHeight());
+          localObject3 = new ImageSpan((Drawable)localObject3, 1);
+          if ((((SpannableString)localObject2).length() >= 1) && (((SpannableString)localObject2).charAt(((SpannableString)localObject2).length() - 1) == '@')) {
+            ((SpannableString)localObject2).setSpan(localObject3, ((SpannableString)localObject2).length() - 1, ((SpannableString)localObject2).length(), 33);
+          }
+          ((Button)localObject1).setText((CharSequence)localObject2);
+        }
       }
+      else {
+        i = this.mContext.getResources().getColor(R.color.mini_sdk_action_sheet_button_red);
+      }
+      ((Button)localObject1).setBackgroundResource(m);
+      ((Button)localObject1).setTextColor(i);
+      j += 1;
     }
     if (!this.mCancelButtonHasAdd)
     {
@@ -188,31 +195,37 @@ public class ActionSheetDialog
   
   public Button addButton(String paramString, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener)
   {
-    if ((paramInt2 < 0) || (paramInt2 > this.buttonCount)) {
-      return null;
-    }
-    try
+    if (paramInt2 >= 0)
     {
-      Button localButton = new Button(this.mContext);
-      this.customButtonContainer.addView(localButton, paramInt2);
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localButton.getLayoutParams();
-      localLayoutParams.width = -1;
-      localLayoutParams.height = ((int)this.mContext.getResources().getDimension(R.dimen.mini_sdk_common_action_sheet_layout_height));
-      localButton.setLayoutParams(localLayoutParams);
-      localButton.setTextSize(0, this.mContext.getResources().getDimension(R.dimen.mini_sdk_textSizeS2));
-      localButton.setText(paramString);
-      localButton.setOnClickListener(paramOnClickListener);
-      this.buttonCount += 1;
-      localButton.setTag(Integer.valueOf(paramInt1));
-      if ((paramInt2 >= 0) && (paramInt2 <= this.buttonsList.size())) {
-        this.buttonsList.add(paramInt2, localButton);
+      if (paramInt2 > this.buttonCount) {
+        return null;
       }
-      this.mNeedInitContentView = true;
-      return localButton;
-    }
-    catch (Exception paramString)
-    {
-      QMLog.e("ActionSheetDialog", "e:" + paramString.toString());
+      try
+      {
+        Button localButton = new Button(this.mContext);
+        this.customButtonContainer.addView(localButton, paramInt2);
+        LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localButton.getLayoutParams();
+        localLayoutParams.width = -1;
+        localLayoutParams.height = ((int)this.mContext.getResources().getDimension(R.dimen.mini_sdk_common_action_sheet_layout_height));
+        localButton.setLayoutParams(localLayoutParams);
+        localButton.setTextSize(0, this.mContext.getResources().getDimension(R.dimen.mini_sdk_textSizeS2));
+        localButton.setText(paramString);
+        localButton.setOnClickListener(paramOnClickListener);
+        this.buttonCount += 1;
+        localButton.setTag(Integer.valueOf(paramInt1));
+        if ((paramInt2 >= 0) && (paramInt2 <= this.buttonsList.size())) {
+          this.buttonsList.add(paramInt2, localButton);
+        }
+        this.mNeedInitContentView = true;
+        return localButton;
+      }
+      catch (Exception paramString)
+      {
+        paramOnClickListener = new StringBuilder();
+        paramOnClickListener.append("e:");
+        paramOnClickListener.append(paramString.toString());
+        QMLog.e("ActionSheetDialog", paramOnClickListener.toString());
+      }
     }
     return null;
   }
@@ -239,7 +252,10 @@ public class ActionSheetDialog
     }
     catch (Exception paramString)
     {
-      QMLog.e("ActionSheetDialog", "e:" + paramString.toString());
+      paramOnClickListener = new StringBuilder();
+      paramOnClickListener.append("e:");
+      paramOnClickListener.append(paramString.toString());
+      QMLog.e("ActionSheetDialog", paramOnClickListener.toString());
     }
     return null;
   }
@@ -248,32 +264,36 @@ public class ActionSheetDialog
   {
     try
     {
-      Button localButton = new Button(this.mContext);
-      this.customButtonContainer.addView(localButton, 0);
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localButton.getLayoutParams();
+      localObject = new Button(this.mContext);
+      this.customButtonContainer.addView((View)localObject, 0);
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)((TextView)localObject).getLayoutParams();
       localLayoutParams.width = -1;
       localLayoutParams.height = ((int)this.mContext.getResources().getDimension(R.dimen.mini_sdk_common_action_sheet_layout_height));
       localLayoutParams.gravity = 17;
-      localButton.setLayoutParams(localLayoutParams);
-      localButton.setTextSize(0, this.mContext.getResources().getDimension(R.dimen.mini_sdk_textSizeS3));
-      localButton.setText(paramString);
-      localButton.setTextColor(-16777216);
-      localButton.setBackgroundResource(R.drawable.mini_sdk_actionsheet_top);
-      localButton.setClickable(false);
-      return localButton;
+      ((TextView)localObject).setLayoutParams(localLayoutParams);
+      ((TextView)localObject).setTextSize(0, this.mContext.getResources().getDimension(R.dimen.mini_sdk_textSizeS3));
+      ((TextView)localObject).setText(paramString);
+      ((TextView)localObject).setTextColor(-16777216);
+      ((TextView)localObject).setBackgroundResource(R.drawable.mini_sdk_actionsheet_top);
+      ((TextView)localObject).setClickable(false);
+      return localObject;
     }
     catch (Exception paramString)
     {
-      QMLog.e("ActionSheetDialog", "e:" + paramString.toString());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("e:");
+      ((StringBuilder)localObject).append(paramString.toString());
+      QMLog.e("ActionSheetDialog", ((StringBuilder)localObject).toString());
     }
     return null;
   }
   
   public void clear()
   {
-    if (this.customButtonContainer != null)
+    LinearLayout localLinearLayout = this.customButtonContainer;
+    if (localLinearLayout != null)
     {
-      this.customButtonContainer.removeAllViews();
+      localLinearLayout.removeAllViews();
       this.mCancelButtonHasAdd = false;
     }
   }
@@ -290,10 +310,10 @@ public class ActionSheetDialog
   public Button getButtonById(int paramInt)
   {
     View localView = this.customButtonContainer.findViewById(paramInt);
-    if ((localView == null) || (!(localView instanceof Button))) {
-      return null;
+    if ((localView != null) && ((localView instanceof Button))) {
+      return (Button)localView;
     }
-    return (Button)localView;
+    return null;
   }
   
   public Button getButtonByIndex(int paramInt)
@@ -337,10 +357,11 @@ public class ActionSheetDialog
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.cancelListener != null) {}
+    paramDialogInterface = this.cancelListener;
+    if (paramDialogInterface != null) {}
     try
     {
-      this.cancelListener.onClick(null);
+      paramDialogInterface.onClick(null);
       return;
     }
     catch (Exception paramDialogInterface) {}
@@ -391,7 +412,7 @@ public class ActionSheetDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.ActionSheetDialog
  * JD-Core Version:    0.7.0.1
  */

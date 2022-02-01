@@ -3,11 +3,14 @@ package com.qq.wx.voice.embedqqegg.recognizer;
 public class InnerAudioList
 {
   private b[] a = new b[4096];
-  private volatile int b = 0;
-  private volatile int c = 0;
+  private volatile int b;
+  private volatile int c;
   
   protected InnerAudioList()
   {
+    int i = 0;
+    this.b = 0;
+    this.c = 0;
     for (;;)
     {
       if (i >= 4096) {

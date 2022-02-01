@@ -108,12 +108,20 @@ public final class GroupRequestData
   @NotNull
   public String toString()
   {
-    return "GroupRequestData(reqType=" + this.reqType + ", groupId=" + this.groupId + ", name='" + this.name + "')";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GroupRequestData(reqType=");
+    localStringBuilder.append(this.reqType);
+    localStringBuilder.append(", groupId=");
+    localStringBuilder.append(this.groupId);
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append("')");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.friend.data.GroupRequestData
  * JD-Core Version:    0.7.0.1
  */

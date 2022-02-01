@@ -12,6 +12,7 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -20,7 +21,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class ai
 {
   private static final String a = "WeakNetworkStat";
-  private static ai.a b = null;
+  private static ai.a b;
   private static final ConcurrentHashMap c = new ConcurrentHashMap(100);
   private static final ConcurrentLinkedQueue d = new ConcurrentLinkedQueue();
   private static final int e = 100;
@@ -30,7 +31,8 @@ public class ai
   
   public static void a(MsfCore paramMsfCore, ToServiceMsg paramToServiceMsg)
   {
-    if ((b == null) || (TextUtils.isEmpty(b.a)) || (!b.a.equals(paramToServiceMsg.getUin())))
+    paramMsfCore = b;
+    if ((paramMsfCore == null) || (TextUtils.isEmpty(paramMsfCore.a)) || (!b.a.equals(paramToServiceMsg.getUin())))
     {
       b = new ai.a(null);
       b.a = paramToServiceMsg.getUin();
@@ -46,25 +48,33 @@ public class ai
   
   private static void a(ai.a parama, boolean paramBoolean, long paramLong)
   {
-    if ((parama != null) && (parama.e.length() > 0)) {
-      if (paramLong != -1L) {
-        break label141;
-      }
-    }
-    for (parama.d = (SystemClock.elapsedRealtime() - parama.c);; parama.d = (paramLong - parama.c))
+    if ((parama != null) && (parama.e.length() > 0))
     {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("uin", parama.a);
-      localHashMap.put("ssoSeq", "" + parama.b);
-      localHashMap.put("closeConnReason", parama.e.toString());
-      localHashMap.put("infoVersion", "6.2.0");
-      if (MsfService.core.getStatReporter() != null) {
-        MsfService.core.getStatReporter().a("dim.Msf.WEAKNET_INFOLOGIN4", paramBoolean, parama.d, 0L, localHashMap, false, false);
+      if (paramLong == -1L)
+      {
+        parama.d = (SystemClock.elapsedRealtime() - parama.c);
       }
-      return;
-      label141:
-      if (QLog.isColorLevel()) {
-        QLog.d("WeakNetworkStat", 2, "report infologin start timestamp:" + parama.c);
+      else
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("report infologin start timestamp:");
+          ((StringBuilder)localObject).append(parama.c);
+          QLog.d("WeakNetworkStat", 2, ((StringBuilder)localObject).toString());
+        }
+        parama.d = (paramLong - parama.c);
+      }
+      Object localObject = new HashMap();
+      ((HashMap)localObject).put("uin", parama.a);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(parama.b);
+      ((HashMap)localObject).put("ssoSeq", localStringBuilder.toString());
+      ((HashMap)localObject).put("closeConnReason", parama.e.toString());
+      ((HashMap)localObject).put("infoVersion", "6.2.0");
+      if (MsfService.core.getStatReporter() != null) {
+        MsfService.core.getStatReporter().a("dim.Msf.WEAKNET_INFOLOGIN4", paramBoolean, parama.d, 0L, (Map)localObject, false, false);
       }
     }
   }
@@ -76,14 +86,26 @@ public class ai
       parama.d = (SystemClock.elapsedRealtime() - parama.c);
       HashMap localHashMap = new HashMap();
       localHashMap.put("uin", parama.a);
-      localHashMap.put("ssoSeq", "" + parama.b);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(parama.b);
+      localHashMap.put("ssoSeq", localStringBuilder.toString());
       localHashMap.put("closeConnReason", parama.e.toString());
-      localHashMap.put("msgSeq", "" + parama.f);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(parama.f);
+      localHashMap.put("msgSeq", localStringBuilder.toString());
       localHashMap.put("fromUin", parama.g);
       localHashMap.put("toUin", parama.h);
       localHashMap.put("sendFailReason", parama.i.toString());
-      localHashMap.put("quickSend", "" + paramBoolean2);
-      localHashMap.put("quickSuccTime", "" + parama.j);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramBoolean2);
+      localHashMap.put("quickSend", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(parama.j);
+      localHashMap.put("quickSuccTime", localStringBuilder.toString());
       if (MsfService.core.getStatReporter() != null) {
         MsfService.core.getStatReporter().a("dim.Msf.WEAKNET_SENDCHATMSG4", paramBoolean1, parama.d, 0L, localHashMap, false, false);
       }
@@ -92,51 +114,52 @@ public class ai
   
   public static void a(a parama)
   {
-    Iterator localIterator;
-    if (b != null)
-    {
-      if (b.e.length() < 100) {
-        b.e.append(parama.ordinal()).append(",");
-      }
-    }
-    else
-    {
-      if ((c == null) || (c.size() <= 0)) {
-        break label164;
-      }
-      localIterator = c.entrySet().iterator();
-    }
-    ai.a locala;
-    for (;;)
-    {
-      if (!localIterator.hasNext()) {
-        break label164;
-      }
-      locala = (ai.a)((Map.Entry)localIterator.next()).getValue();
-      if (locala.e.length() < 100)
+    Object localObject1 = b;
+    if (localObject1 != null) {
+      if (((ai.a)localObject1).e.length() < 100)
       {
-        locala.e.append(parama.ordinal()).append(",");
-        continue;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("WeakNetworkStat", 2, "onCloseConn, fail to append closeConnQueue by max size limit.");
-        break;
+        localObject1 = b.e;
+        ((StringBuilder)localObject1).append(parama.ordinal());
+        ((StringBuilder)localObject1).append(",");
       }
-      if (QLog.isColorLevel()) {
+      else if (QLog.isColorLevel())
+      {
         QLog.d("WeakNetworkStat", 2, "onCloseConn, fail to append closeConnQueue by max size limit.");
       }
     }
-    label164:
-    if ((d != null) && (d.size() > 0))
+    localObject1 = c;
+    Object localObject2;
+    if ((localObject1 != null) && (((ConcurrentHashMap)localObject1).size() > 0))
+    {
+      localObject1 = c.entrySet().iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (ai.a)((Map.Entry)((Iterator)localObject1).next()).getValue();
+        if (((ai.a)localObject2).e.length() < 100)
+        {
+          localObject2 = ((ai.a)localObject2).e;
+          ((StringBuilder)localObject2).append(parama.ordinal());
+          ((StringBuilder)localObject2).append(",");
+        }
+        else if (QLog.isColorLevel())
+        {
+          QLog.d("WeakNetworkStat", 2, "onCloseConn, fail to append closeConnQueue by max size limit.");
+        }
+      }
+    }
+    localObject1 = d;
+    if ((localObject1 != null) && (((ConcurrentLinkedQueue)localObject1).size() > 0))
     {
       long l = SystemClock.elapsedRealtime();
-      localIterator = d.iterator();
-      while (localIterator.hasNext())
+      localObject1 = d.iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        locala = (ai.a)localIterator.next();
-        if ((l - locala.j <= 10000L) && (parama == a.A)) {
-          locala.e.append(parama.ordinal()).append(",");
+        localObject2 = (ai.a)((Iterator)localObject1).next();
+        if ((l - ((ai.a)localObject2).j <= 10000L) && (parama == a.A))
+        {
+          localObject2 = ((ai.a)localObject2).e;
+          ((StringBuilder)localObject2).append(parama.ordinal());
+          ((StringBuilder)localObject2).append(",");
         }
       }
     }
@@ -144,7 +167,8 @@ public class ai
   
   public static void a(FromServiceMsg paramFromServiceMsg)
   {
-    if ((b != null) && (!TextUtils.isEmpty(b.a)) && (b.a.equals(paramFromServiceMsg.getUin())) && (b.c > 0L))
+    ai.a locala = b;
+    if ((locala != null) && (!TextUtils.isEmpty(locala.a)) && (b.a.equals(paramFromServiceMsg.getUin())) && (b.c > 0L))
     {
       a(b, true, -1L);
       b = null;
@@ -156,90 +180,100 @@ public class ai
     if (paramToServiceMsg != null) {}
     for (;;)
     {
-      boolean bool;
-      int i;
-      long l;
-      String str;
       try
       {
-        if ((!TextUtils.isEmpty(paramFromServiceMsg.getUin())) && (!"0".equals(paramFromServiceMsg.getUin())))
+        if ((!TextUtils.isEmpty(paramFromServiceMsg.getUin())) && (!"0".equals(paramFromServiceMsg.getUin())) && ("MessageSvc.PbSendMsg".equals(paramFromServiceMsg.getServiceCmd())))
         {
-          bool = "MessageSvc.PbSendMsg".equals(paramFromServiceMsg.getServiceCmd());
-          if (bool) {}
-        }
-        else
-        {
+          int i = -1;
+          boolean bool1 = false;
+          long l = -1L;
+          if (paramToServiceMsg.getAttributes().containsKey("msgtype")) {
+            i = ((Integer)paramToServiceMsg.getAttributes().get("msgtype")).intValue();
+          }
+          if (paramToServiceMsg.getAttributes().containsKey("resend_by_user")) {
+            bool1 = ((Boolean)paramToServiceMsg.getAttributes().get("resend_by_user")).booleanValue();
+          }
+          if (paramToServiceMsg.getAttributes().containsKey("retryIndex")) {
+            ((Integer)paramToServiceMsg.getAttributes().get("retryIndex")).intValue();
+          }
+          if (paramToServiceMsg.getAttributes().containsKey("msgSeq")) {
+            l = ((Long)paramToServiceMsg.getAttributes().get("msgSeq")).longValue();
+          }
+          boolean bool2 = paramToServiceMsg.getAttributes().containsKey("fromUin");
+          String str2 = null;
+          if (!bool2) {
+            break label526;
+          }
+          str1 = (String)paramToServiceMsg.getAttributes().get("fromUin");
+          if (paramToServiceMsg.getAttributes().containsKey("uin")) {
+            str2 = (String)paramToServiceMsg.getAttributes().get("uin");
+          }
+          if ((i == -1000) && (!bool1) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
+          {
+            paramToServiceMsg = c;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(str1);
+            localStringBuilder.append(str2);
+            localStringBuilder.append(l);
+            if (paramToServiceMsg.containsKey(localStringBuilder.toString()))
+            {
+              if (paramFromServiceMsg.isSuccess())
+              {
+                paramToServiceMsg = c;
+                paramFromServiceMsg = new StringBuilder();
+                paramFromServiceMsg.append(str1);
+                paramFromServiceMsg.append(str2);
+                paramFromServiceMsg.append(l);
+                paramToServiceMsg = (ai.a)paramToServiceMsg.remove(paramFromServiceMsg.toString());
+                if ((paramBoolean) && (paramToServiceMsg.e.length() <= 0))
+                {
+                  paramToServiceMsg.j = SystemClock.elapsedRealtime();
+                  d.offer(paramToServiceMsg);
+                }
+                else
+                {
+                  a(paramToServiceMsg, true, paramBoolean);
+                }
+              }
+              else
+              {
+                paramToServiceMsg = c;
+                localStringBuilder = new StringBuilder();
+                localStringBuilder.append(str1);
+                localStringBuilder.append(str2);
+                localStringBuilder.append(l);
+                paramToServiceMsg = (ai.a)paramToServiceMsg.get(localStringBuilder.toString());
+                if ((paramToServiceMsg != null) && (paramToServiceMsg.i != null) && (paramToServiceMsg.i.length() < 100))
+                {
+                  paramToServiceMsg = paramToServiceMsg.i;
+                  paramToServiceMsg.append(paramFromServiceMsg.getBusinessFailCode());
+                  paramToServiceMsg.append(",");
+                }
+              }
+              return;
+            }
+          }
           return;
         }
-        if (!paramToServiceMsg.getAttributes().containsKey("msgtype")) {
-          break label472;
-        }
-        i = ((Integer)paramToServiceMsg.getAttributes().get("msgtype")).intValue();
-        if (!paramToServiceMsg.getAttributes().containsKey("resend_by_user")) {
-          break label466;
-        }
-        bool = ((Boolean)paramToServiceMsg.getAttributes().get("resend_by_user")).booleanValue();
-        if (paramToServiceMsg.getAttributes().containsKey("retryIndex")) {
-          ((Integer)paramToServiceMsg.getAttributes().get("retryIndex")).intValue();
-        }
-        if (!paramToServiceMsg.getAttributes().containsKey("msgSeq")) {
-          break label458;
-        }
-        l = ((Long)paramToServiceMsg.getAttributes().get("msgSeq")).longValue();
-        if (!paramToServiceMsg.getAttributes().containsKey("fromUin")) {
-          break label452;
-        }
-        str = (String)paramToServiceMsg.getAttributes().get("fromUin");
-        if (!paramToServiceMsg.getAttributes().containsKey("uin")) {
-          break label447;
-        }
-        paramToServiceMsg = (String)paramToServiceMsg.getAttributes().get("uin");
-        if ((i != -1000) || (bool) || (TextUtils.isEmpty(str)) || (TextUtils.isEmpty(paramToServiceMsg)) || (!c.containsKey(str + paramToServiceMsg + l))) {
-          continue;
-        }
-        if (!paramFromServiceMsg.isSuccess()) {
-          break label370;
-        }
-        paramToServiceMsg = (ai.a)c.remove(str + paramToServiceMsg + l);
-        if ((!paramBoolean) || (paramToServiceMsg.e.length() > 0))
-        {
-          a(paramToServiceMsg, true, paramBoolean);
-          continue;
-        }
-        paramToServiceMsg.j = SystemClock.elapsedRealtime();
       }
       finally {}
-      d.offer(paramToServiceMsg);
-      continue;
-      label370:
-      paramToServiceMsg = (ai.a)c.get(str + paramToServiceMsg + l);
-      if ((paramToServiceMsg != null) && (paramToServiceMsg.i != null) && (paramToServiceMsg.i.length() < 100))
-      {
-        paramToServiceMsg.i.append(paramFromServiceMsg.getBusinessFailCode()).append(",");
-        continue;
-        label447:
-        paramToServiceMsg = null;
-        continue;
-        label452:
-        str = null;
-        continue;
-        label458:
-        l = -1L;
-        continue;
-        label466:
-        bool = false;
-        continue;
-        label472:
-        i = -1;
-      }
+      return;
+      label526:
+      String str1 = null;
     }
   }
   
   public static void a(String paramString, long paramLong)
   {
-    if ((b != null) && (!TextUtils.isEmpty(b.a)) && (b.a.equals(paramString)) && (b.c > 0L))
+    Object localObject = b;
+    if ((localObject != null) && (!TextUtils.isEmpty(((ai.a)localObject).a)) && (b.a.equals(paramString)) && (b.c > 0L))
     {
-      QLog.d("WeakNetworkStat", 1, "start to report info login uin:" + paramString + ", timeEnd:" + paramLong);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("start to report info login uin:");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(", timeEnd:");
+      ((StringBuilder)localObject).append(paramLong);
+      QLog.d("WeakNetworkStat", 1, ((StringBuilder)localObject).toString());
       a(b, true, paramLong);
       b = null;
     }
@@ -247,17 +281,23 @@ public class ai
   
   public static void b(MsfCore paramMsfCore, ToServiceMsg paramToServiceMsg)
   {
-    int j = -1;
-    if ((TextUtils.isEmpty(paramToServiceMsg.getUin())) || ("0".equals(paramToServiceMsg.getUin())) || (c.containsKey(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()))) || (!"MessageSvc.PbSendMsg".equals(paramToServiceMsg.getServiceCmd()))) {
-      return;
-    }
-    boolean bool = false;
-    long l = -1L;
-    if (paramToServiceMsg.getAttributes().containsKey("msgtype")) {}
-    for (int i = ((Integer)paramToServiceMsg.getAttributes().get("msgtype")).intValue();; i = -1)
+    if ((!TextUtils.isEmpty(paramToServiceMsg.getUin())) && (!"0".equals(paramToServiceMsg.getUin())) && (!c.containsKey(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()))))
     {
+      if (!"MessageSvc.PbSendMsg".equals(paramToServiceMsg.getServiceCmd())) {
+        return;
+      }
+      boolean bool1 = false;
+      long l = -1L;
+      boolean bool2 = paramToServiceMsg.getAttributes().containsKey("msgtype");
+      int j = -1;
+      int i;
+      if (bool2) {
+        i = ((Integer)paramToServiceMsg.getAttributes().get("msgtype")).intValue();
+      } else {
+        i = -1;
+      }
       if (paramToServiceMsg.getAttributes().containsKey("resend_by_user")) {
-        bool = ((Boolean)paramToServiceMsg.getAttributes().get("resend_by_user")).booleanValue();
+        bool1 = ((Boolean)paramToServiceMsg.getAttributes().get("resend_by_user")).booleanValue();
       }
       if (paramToServiceMsg.getAttributes().containsKey("retryIndex")) {
         j = ((Integer)paramToServiceMsg.getAttributes().get("retryIndex")).intValue();
@@ -265,25 +305,37 @@ public class ai
       if (paramToServiceMsg.getAttributes().containsKey("msgSeq")) {
         l = ((Long)paramToServiceMsg.getAttributes().get("msgSeq")).longValue();
       }
-      if (paramToServiceMsg.getAttributes().containsKey("fromUin")) {}
-      for (paramMsfCore = (String)paramToServiceMsg.getAttributes().get("fromUin");; paramMsfCore = null)
+      if (paramToServiceMsg.getAttributes().containsKey("fromUin")) {
+        paramMsfCore = (String)paramToServiceMsg.getAttributes().get("fromUin");
+      } else {
+        paramMsfCore = null;
+      }
+      String str;
+      if (paramToServiceMsg.getAttributes().containsKey("uin")) {
+        str = (String)paramToServiceMsg.getAttributes().get("uin");
+      } else {
+        str = null;
+      }
+      if ((i == -1000) && (!bool1) && (j <= 0) && (!TextUtils.isEmpty(paramMsfCore)))
       {
-        if (paramToServiceMsg.getAttributes().containsKey("uin")) {}
-        for (String str = (String)paramToServiceMsg.getAttributes().get("uin"); (i == -1000) && (!bool) && (j <= 0) && (!TextUtils.isEmpty(paramMsfCore)) && (!TextUtils.isEmpty(str)); str = null)
-        {
-          ai.a locala = new ai.a(null);
-          locala.a = paramToServiceMsg.getUin();
-          locala.b = paramToServiceMsg.getRequestSsoSeq();
-          locala.c = SystemClock.elapsedRealtime();
-          locala.e = new StringBuilder();
-          locala.f = l;
-          locala.g = paramMsfCore;
-          locala.h = str;
-          locala.i = new StringBuilder();
-          c.put(paramMsfCore + str + l, locala);
+        if (TextUtils.isEmpty(str)) {
           return;
         }
-        break;
+        ai.a locala = new ai.a(null);
+        locala.a = paramToServiceMsg.getUin();
+        locala.b = paramToServiceMsg.getRequestSsoSeq();
+        locala.c = SystemClock.elapsedRealtime();
+        locala.e = new StringBuilder();
+        locala.f = l;
+        locala.g = paramMsfCore;
+        locala.h = str;
+        locala.i = new StringBuilder();
+        paramToServiceMsg = c;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramMsfCore);
+        localStringBuilder.append(str);
+        localStringBuilder.append(l);
+        paramToServiceMsg.put(localStringBuilder.toString(), locala);
       }
     }
   }
@@ -298,39 +350,40 @@ public class ai
       a(b, false, -1L);
       b = null;
     }
-    Iterator localIterator;
-    Object localObject;
-    if ((c != null) && (c.size() > 0))
+    Object localObject1 = c;
+    Object localObject2;
+    if ((localObject1 != null) && (((ConcurrentHashMap)localObject1).size() > 0))
     {
-      localIterator = c.entrySet().iterator();
-      while (localIterator.hasNext())
+      localObject1 = c.entrySet().iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject = (Map.Entry)localIterator.next();
-        ai.a locala = (ai.a)((Map.Entry)localObject).getValue();
+        localObject2 = (Map.Entry)((Iterator)localObject1).next();
+        ai.a locala = (ai.a)((Map.Entry)localObject2).getValue();
         if (SystemClock.elapsedRealtime() - locala.c >= 3600000L)
         {
           if (QLog.isColorLevel()) {
             QLog.d("WeakNetworkStat", 2, "clean, clean SendMsgItem by interval check.");
           }
           a(locala, false, false);
-          c.remove(((Map.Entry)localObject).getKey());
+          c.remove(((Map.Entry)localObject2).getKey());
         }
       }
     }
-    if ((d != null) && (d.size() > 0))
+    localObject1 = d;
+    if ((localObject1 != null) && (((ConcurrentLinkedQueue)localObject1).size() > 0))
     {
       long l = SystemClock.elapsedRealtime();
-      localIterator = d.iterator();
-      while (localIterator.hasNext())
+      localObject1 = d.iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject = (ai.a)localIterator.next();
-        if (l - ((ai.a)localObject).c >= 3600000L)
+        localObject2 = (ai.a)((Iterator)localObject1).next();
+        if (l - ((ai.a)localObject2).c >= 3600000L)
         {
           if (QLog.isColorLevel()) {
             QLog.d("WeakNetworkStat", 2, "clean, clean QuickSendedMsg by interval check.");
           }
-          a((ai.a)localObject, true, true);
-          d.remove(localObject);
+          a((ai.a)localObject2, true, true);
+          d.remove(localObject2);
         }
       }
     }
@@ -338,7 +391,7 @@ public class ai
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.ai
  * JD-Core Version:    0.7.0.1
  */

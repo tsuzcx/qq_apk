@@ -2,8 +2,8 @@ package com.tencent.avgame.gameroom.video;
 
 import android.os.Handler;
 import com.tencent.avgame.qav.AVGameCameraAssistant.CameraEventListener;
+import com.tencent.avgame.report.AVGameQualityCameraReportUtil;
 import com.tencent.avgame.ui.AVGameHandler;
-import com.tencent.avgame.util.AVGameQualityCameraReportUtil;
 
 class AVGameControlUIImpl$3
   implements AVGameCameraAssistant.CameraEventListener
@@ -37,7 +37,7 @@ class AVGameControlUIImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.AVGameControlUIImpl.3
  * JD-Core Version:    0.7.0.1
  */

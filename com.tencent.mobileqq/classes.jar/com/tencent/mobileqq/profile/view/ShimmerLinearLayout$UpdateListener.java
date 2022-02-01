@@ -28,15 +28,15 @@ class ShimmerLinearLayout$UpdateListener
     paramValueAnimator = (ShimmerLinearLayout)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (paramValueAnimator != null)
     {
-      int i = (int)(this.jdField_a_of_type_Int * (1.0F - f1) + this.c * f1);
-      float f2 = this.b;
-      paramValueAnimator.a(i, (int)(f1 * this.d + f2 * (1.0F - f1)));
+      float f2 = this.jdField_a_of_type_Int;
+      float f3 = 1.0F - f1;
+      paramValueAnimator.a((int)(f2 * f3 + this.c * f1), (int)(this.b * f3 + this.d * f1));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.ShimmerLinearLayout.UpdateListener
  * JD-Core Version:    0.7.0.1
  */

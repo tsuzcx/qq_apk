@@ -49,9 +49,10 @@ public class TextureDanmakuView
   public void b()
   {
     this.jdField_a_of_type_ComTencentMobileqqDanmakuRenderIDanmakuView$CallBack = null;
-    if (this.jdField_a_of_type_AndroidViewTextureView != null)
+    TextureView localTextureView = this.jdField_a_of_type_AndroidViewTextureView;
+    if (localTextureView != null)
     {
-      this.jdField_a_of_type_AndroidViewTextureView.setOnTouchListener(null);
+      localTextureView.setOnTouchListener(null);
       this.jdField_a_of_type_AndroidViewTextureView = null;
     }
   }
@@ -59,25 +60,28 @@ public class TextureDanmakuView
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     this.jdField_a_of_type_AndroidViewTextureView.setOpaque(false);
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuRenderIDanmakuView$CallBack != null)
+    paramSurfaceTexture = this.jdField_a_of_type_ComTencentMobileqqDanmakuRenderIDanmakuView$CallBack;
+    if (paramSurfaceTexture != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuRenderIDanmakuView$CallBack.i();
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuRenderIDanmakuView$CallBack.j();
+      paramSurfaceTexture.l();
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuRenderIDanmakuView$CallBack.m();
     }
   }
   
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuRenderIDanmakuView$CallBack != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuRenderIDanmakuView$CallBack.k();
+    paramSurfaceTexture = this.jdField_a_of_type_ComTencentMobileqqDanmakuRenderIDanmakuView$CallBack;
+    if (paramSurfaceTexture != null) {
+      paramSurfaceTexture.n();
     }
     return false;
   }
   
   public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuRenderIDanmakuView$CallBack != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuRenderIDanmakuView$CallBack.j();
+    paramSurfaceTexture = this.jdField_a_of_type_ComTencentMobileqqDanmakuRenderIDanmakuView$CallBack;
+    if (paramSurfaceTexture != null) {
+      paramSurfaceTexture.m();
     }
   }
   
@@ -85,7 +89,7 @@ public class TextureDanmakuView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.render.TextureDanmakuView
  * JD-Core Version:    0.7.0.1
  */

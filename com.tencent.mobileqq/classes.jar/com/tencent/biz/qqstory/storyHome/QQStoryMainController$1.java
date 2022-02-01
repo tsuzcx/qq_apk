@@ -16,8 +16,12 @@ final class QQStoryMainController$1
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "iconDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
+    if (QLog.isColorLevel())
+    {
+      paramURLDrawable = new StringBuilder();
+      paramURLDrawable.append("iconDrawable onLoadFialed, exception: ");
+      paramURLDrawable.append(QLog.getStackTraceString(paramThrowable));
+      QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, paramURLDrawable.toString());
     }
   }
   
@@ -27,7 +31,7 @@ final class QQStoryMainController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.QQStoryMainController.1
  * JD-Core Version:    0.7.0.1
  */

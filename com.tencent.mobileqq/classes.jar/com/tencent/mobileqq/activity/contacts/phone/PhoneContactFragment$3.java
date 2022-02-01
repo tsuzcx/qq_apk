@@ -18,12 +18,12 @@ class PhoneContactFragment$3
       this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneContactStatusCheckView.a(PhoneContactFragment.f(this.this$0));
     }
     this.this$0.jdField_a_of_type_AndroidOsHandler.removeCallbacks(PhoneContactFragment.a(this.this$0));
-    this.this$0.jdField_a_of_type_AndroidOsHandler.post(PhoneContactFragment.a(this.this$0));
+    this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(PhoneContactFragment.a(this.this$0), 500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.phone.PhoneContactFragment.3
  * JD-Core Version:    0.7.0.1
  */

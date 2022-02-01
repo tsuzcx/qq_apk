@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
 import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
 import android.view.accessibility.AccessibilityManager;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 
 class UserGuideWeishiFragment$1
@@ -13,50 +13,56 @@ class UserGuideWeishiFragment$1
   
   public void run()
   {
-    try
+    for (;;)
     {
-      FragmentActivity localFragmentActivity = this.this$0.getActivity();
-      if (localFragmentActivity == null) {
-        return;
-      }
-      if (localFragmentActivity.isFinishing()) {
-        return;
-      }
-      if (AppSetting.d)
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("UserGuideWeishiFragment", 2, "needAutoFinishForTalkBack|true ");
+        BaseActivity localBaseActivity = this.this$0.getBaseActivity();
+        if (localBaseActivity != null)
+        {
+          if (localBaseActivity.isFinishing()) {
+            return;
+          }
+          bool1 = AppSetting.d;
+          if (bool1)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("UserGuideWeishiFragment", 2, "needAutoFinishForTalkBack|true ");
+            }
+            localBaseActivity.finish();
+            return;
+          }
+          AccessibilityManager localAccessibilityManager = (AccessibilityManager)localBaseActivity.getSystemService("accessibility");
+          bool1 = localAccessibilityManager.isEnabled();
+          boolean bool2 = localAccessibilityManager.isTouchExplorationEnabled();
+          if ((!bool1) || (!bool2)) {
+            break label122;
+          }
+          bool1 = true;
+          AppSetting.d = bool1;
+          if ((AppSetting.d) && (localBaseActivity != null))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("UserGuideWeishiFragment", 2, "needAutoFinishForTalkBack:true");
+            }
+            localBaseActivity.finish();
+            return;
+          }
         }
-        localFragmentActivity.finish();
-        return;
       }
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+      }
       return;
-    }
-    AccessibilityManager localAccessibilityManager = (AccessibilityManager)localThrowable.getSystemService("accessibility");
-    boolean bool1 = localAccessibilityManager.isEnabled();
-    boolean bool2 = localAccessibilityManager.isTouchExplorationEnabled();
-    if ((bool1) && (bool2)) {}
-    for (bool1 = true;; bool1 = false)
-    {
-      AppSetting.d = bool1;
-      if ((!AppSetting.d) || (localThrowable == null)) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("UserGuideWeishiFragment", 2, "needAutoFinishForTalkBack:true");
-      }
-      localThrowable.finish();
-      return;
+      label122:
+      boolean bool1 = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.UserGuideWeishiFragment.1
  * JD-Core Version:    0.7.0.1
  */

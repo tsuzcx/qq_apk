@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.profilecard.bussiness.anonymous.utils;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.utils.RouteUtils;
+import com.tencent.mobileqq.profilecard.api.IProfileCardApi;
 import com.tencent.mobileqq.profilecard.bussiness.anonymous.bean.AnonymousQuestion;
 import com.tencent.mobileqq.profilecard.bussiness.anonymous.handler.AnonymousHandler;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qphone.base.util.QLog;
 
 public class AnonymousViewHelper
 {
@@ -29,72 +30,71 @@ public class AnonymousViewHelper
   private static final String WEB_URL_QUES_DETAIL = "https://ti.qq.com/v2/anonymous/detail?_wv=16777218&_wwv=129&uin=%s&qid=%s&cid=%s&from=%d&qtime=%d";
   private static final String WEB_URL_QUES_LIST_AND_ANSWER = "https://ti.qq.com/v2/anonymous/answer?_wv=16777218&_wwv=129&uin=%s&from=%d";
   
-  public static void jumpToAnonymousDetail(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong)
+  public static void jumpToAnonymousDetail(Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong)
   {
-    Intent localIntent = new Intent(paramBaseActivity, QQBrowserActivity.class);
+    Intent localIntent = new Intent();
     String str = paramString3;
     if (TextUtils.isEmpty(paramString3)) {
       str = "0";
     }
     paramString3 = String.format("https://ti.qq.com/v2/anonymous/detail?_wv=16777218&_wwv=129&uin=%s&qid=%s&cid=%s&from=%d&qtime=%d", new Object[] { paramString1, paramString2, str, Integer.valueOf(paramInt), Long.valueOf(paramLong) });
     localIntent.putExtra("url", paramString3);
-    paramBaseActivity.startActivityForResult(localIntent, 4660);
+    RouteUtils.a(paramActivity, localIntent, "/base/browser", 4660);
     if (QLog.isColorLevel()) {
-      QLog.d("AnonymousViewHelper", 0, String.format("jumpToAnonymousDetail() uin=%s qId=%s cId=%s form=%d url =%s", new Object[] { paramString1, paramString2, str, Integer.valueOf(paramInt), paramString3 }));
+      QLog.d("AnonymousViewHelper", 2, String.format("jumpToAnonymousDetail() uin=%s qId=%s cId=%s form=%d url =%s", new Object[] { paramString1, paramString2, str, Integer.valueOf(paramInt), paramString3 }));
     }
   }
   
-  public static void jumpToAskQuestion(BaseActivity paramBaseActivity, String paramString, int paramInt)
+  public static void jumpToAskQuestion(Activity paramActivity, String paramString, int paramInt)
   {
-    Intent localIntent = new Intent(paramBaseActivity, QQBrowserActivity.class);
+    Intent localIntent = new Intent();
     String str = String.format("https://ti.qq.com/v2/anonymous/question?_wv=16777218&_wwv=129&uin=%s&from=%d", new Object[] { paramString, Integer.valueOf(paramInt) });
     localIntent.putExtra("url", str);
-    paramBaseActivity.startActivityForResult(localIntent, 4660);
+    RouteUtils.a(paramActivity, localIntent, "/base/browser", 4660);
     if (QLog.isColorLevel()) {
-      QLog.d("AnonymousViewHelper", 0, String.format("jumpToAskQuestion() uin=%s from=%d url =%s", new Object[] { paramString, Integer.valueOf(paramInt), str }));
+      QLog.d("AnonymousViewHelper", 2, String.format("jumpToAskQuestion() uin=%s from=%d url =%s", new Object[] { paramString, Integer.valueOf(paramInt), str }));
     }
   }
   
-  public static void jumpToComment(BaseActivity paramBaseActivity, String paramString1, String paramString2, long paramLong)
+  public static void jumpToComment(Activity paramActivity, String paramString1, String paramString2, long paramLong)
   {
-    jumpToAnonymousDetail(paramBaseActivity, paramString1, paramString2, "", 7, paramLong);
+    jumpToAnonymousDetail(paramActivity, paramString1, paramString2, "", 7, paramLong);
   }
   
-  public static void jumpToQuestionListAndAnswer(BaseActivity paramBaseActivity, String paramString, int paramInt)
+  public static void jumpToQuestionListAndAnswer(Activity paramActivity, String paramString, int paramInt)
   {
-    Intent localIntent = new Intent(paramBaseActivity, QQBrowserActivity.class);
+    Intent localIntent = new Intent();
     String str = String.format("https://ti.qq.com/v2/anonymous/answer?_wv=16777218&_wwv=129&uin=%s&from=%d", new Object[] { paramString, Integer.valueOf(paramInt) });
     localIntent.putExtra("url", str);
-    paramBaseActivity.startActivityForResult(localIntent, 4660);
+    RouteUtils.a(paramActivity, localIntent, "/base/browser", 4660);
     if (QLog.isColorLevel()) {
-      QLog.d("AnonymousViewHelper", 0, String.format("jumpToQuestionListAndAnswer() uin=%s from=%d url =%s", new Object[] { paramString, Integer.valueOf(paramInt), str }));
+      QLog.d("AnonymousViewHelper", 2, String.format("jumpToQuestionListAndAnswer() uin=%s from=%d url =%s", new Object[] { paramString, Integer.valueOf(paramInt), str }));
     }
   }
   
-  public static void jumpToReqFriendAskQuestion(BaseActivity paramBaseActivity)
+  public static void jumpToReqFriendAskQuestion(Activity paramActivity)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AnonymousViewHelper", 0, "jumpToReqFriendAskQuestion()");
+      QLog.d("AnonymousViewHelper", 2, "jumpToReqFriendAskQuestion()");
     }
-    AskAnonymouslyUtil.Companion.inviteAskAnonymously(paramBaseActivity, true);
+    ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).inviteAskAnonymously(paramActivity, true);
   }
   
-  public static void onClickLike(QQAppInterface paramQQAppInterface, AnonymousQuestion paramAnonymousQuestion)
+  public static void onClickLike(AppInterface paramAppInterface, AnonymousQuestion paramAnonymousQuestion)
   {
-    boolean bool = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("AnonymousViewHelper", 0, "before onClickLike() question.mPraised = " + paramAnonymousQuestion.mPraised);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("before onClickLike() question.mPraised = ");
+      localStringBuilder.append(paramAnonymousQuestion.mPraised);
+      QLog.d("AnonymousViewHelper", 2, localStringBuilder.toString());
     }
-    paramQQAppInterface = (AnonymousHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.ANONYMOUS_ANSWER_HANDLER);
-    if (!paramAnonymousQuestion.mPraised) {
-      bool = true;
-    }
-    paramQQAppInterface.likeAnonymousAnswer(paramAnonymousQuestion, bool);
+    ((AnonymousHandler)paramAppInterface.getBusinessHandler(AnonymousHandler.class.getName())).likeAnonymousAnswer(paramAnonymousQuestion, paramAnonymousQuestion.mPraised ^ true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.anonymous.utils.AnonymousViewHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -18,11 +18,6 @@ public class PanoramaEffectDPC
   public boolean a;
   public int b = 0;
   
-  static
-  {
-    jdField_a_of_type_ComTencentAvBusinessManagerPanoramaPanoramaEffectDPC = null;
-  }
-  
   public PanoramaEffectDPC()
   {
     this.jdField_a_of_type_Int = 0;
@@ -41,7 +36,8 @@ public class PanoramaEffectDPC
   
   public static PanoramaEffectDPC a()
   {
-    if ((jdField_a_of_type_ComTencentAvBusinessManagerPanoramaPanoramaEffectDPC == null) || (jdField_a_of_type_ComTencentAvBusinessManagerPanoramaPanoramaEffectDPC.jdField_a_of_type_Boolean)) {
+    PanoramaEffectDPC localPanoramaEffectDPC = jdField_a_of_type_ComTencentAvBusinessManagerPanoramaPanoramaEffectDPC;
+    if ((localPanoramaEffectDPC == null) || (localPanoramaEffectDPC.jdField_a_of_type_Boolean)) {
       jdField_a_of_type_ComTencentAvBusinessManagerPanoramaPanoramaEffectDPC = b();
     }
     return jdField_a_of_type_ComTencentAvBusinessManagerPanoramaPanoramaEffectDPC;
@@ -64,212 +60,213 @@ public class PanoramaEffectDPC
   
   private static PanoramaEffectDPC b()
   {
-    int i1 = 3;
-    boolean bool = false;
     if (QLog.isColorLevel()) {
       QLog.d("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC!");
     }
     String str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.AVPanCfg.name());
-    QLog.i("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC dpcValue: " + str);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("loadPanoramaEffectDPC dpcValue: ");
+    ((StringBuilder)localObject1).append(str);
+    QLog.i("PanoramaEffectDPC", 2, ((StringBuilder)localObject1).toString());
     ArrayList localArrayList = new ArrayList();
-    int i;
-    int j;
-    int k;
-    int m;
-    if (!TextUtils.isEmpty(str))
+    boolean bool1 = TextUtils.isEmpty(str);
+    int i1 = 3;
+    boolean bool2 = true;
+    if (!bool1) {}
+    for (;;)
     {
+      int j;
       try
       {
         localObject1 = str.split("\\|");
+        Object localObject3;
         if ((localObject1 != null) && (localObject1.length >= 3))
         {
           i = HotVideoDPC.a(localObject1[0], 0);
-          localObject2 = localObject1[1];
-        }
-      }
-      catch (Exception localException1)
-      {
-        for (;;)
-        {
-          Object localObject1;
-          Object localObject2;
-          Object localObject3;
-          label194:
-          label222:
-          label235:
-          label237:
-          i = 0;
+          localObject3 = localObject1[1];
           j = i;
-          k = i1;
-          if (QLog.isColorLevel())
+          try
           {
-            QLog.e("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC exception:", localException1);
+            if (!TextUtils.isEmpty((CharSequence)localObject3))
+            {
+              j = i;
+              localObject3 = ((String)localObject3).split("-");
+              k = 0;
+              j = i;
+              if (k < localObject3.length)
+              {
+                Object localObject4 = localObject3[k];
+                j = i;
+                if (TextUtils.isEmpty((CharSequence)localObject4)) {
+                  break label650;
+                }
+                j = i;
+                localObject4 = ((String)localObject4).split("_");
+                j = i;
+                if (localObject4.length < 2) {
+                  break label642;
+                }
+                j = i;
+                n = HotVideoDPC.a(localObject4[0], 0);
+                j = i;
+                m = HotVideoDPC.a(localObject4[1], 0);
+                if ((n <= 0) || (m <= 0)) {
+                  break label650;
+                }
+                j = i;
+                localArrayList.add(new PanoramaEffectDPC.DeviceCPUinfo(m, n));
+                break label650;
+              }
+            }
             j = i;
+            k = HotVideoDPC.a(localObject1[2], 3);
+          }
+          catch (Exception localException1)
+          {
+            continue;
+          }
+        }
+        else if ((localException1 != null) && (localException1.length == 1))
+        {
+          i = HotVideoDPC.a(localException1[0], 0);
+          try
+          {
+            QLog.i("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC configs.length == 1");
             k = i1;
           }
-        }
-      }
-      try
-      {
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          break label222;
-        }
-        localObject2 = ((String)localObject2).split("-");
-        j = 0;
-        if (j >= localObject2.length) {
-          break label222;
-        }
-        localObject3 = localObject2[j];
-        if (TextUtils.isEmpty((CharSequence)localObject3)) {
-          break label620;
-        }
-        localObject3 = ((String)localObject3).split("_");
-        if (localObject3.length < 2) {
-          break label605;
-        }
-        k = HotVideoDPC.a(localObject3[0], 0);
-        m = HotVideoDPC.a(localObject3[1], 0);
-      }
-      catch (Exception localException2)
-      {
-        break label549;
-        break label235;
-        k = 0;
-        m = 0;
-        break label194;
-      }
-      if ((k <= 0) || (m <= 0)) {
-        break label620;
-      }
-      localArrayList.add(new PanoramaEffectDPC.DeviceCPUinfo(m, k));
-      break label620;
-      k = HotVideoDPC.a(localObject1[2], 3);
-      j = i;
-      i = k;
-      for (;;)
-      {
-        k = i;
-        if (localArrayList.size() == 0)
-        {
-          localArrayList.add(new PanoramaEffectDPC.DeviceCPUinfo(215, 4));
-          localArrayList.add(new PanoramaEffectDPC.DeviceCPUinfo(150, 8));
-        }
-        localObject1 = new PanoramaEffectDPC();
-        ((PanoramaEffectDPC)localObject1).jdField_a_of_type_Int = j;
-        ((PanoramaEffectDPC)localObject1).b = k;
-        ((PanoramaEffectDPC)localObject1).jdField_a_of_type_JavaUtilList = localArrayList;
-        if ((str == null) || (str.isEmpty())) {
-          bool = true;
-        }
-        ((PanoramaEffectDPC)localObject1).jdField_a_of_type_Boolean = bool;
-        return localObject1;
-        if ((localObject1 != null) && (localObject1.length == 1))
-        {
-          i = HotVideoDPC.a(localObject1[0], 0);
-          j = i;
-        }
-        try
-        {
-          QLog.i("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC configs.length == 1");
-          j = i;
-          i = 3;
-        }
-        catch (Exception localException3)
-        {
-          for (;;)
+          catch (Exception localException2)
           {
-            i = j;
+            j = i;
             continue;
-            m = 0;
-            n = 0;
           }
-          i = 3;
-          j = 0;
         }
-      }
-      if ((localObject1 != null) && (localObject1.length == 2))
-      {
-        i = HotVideoDPC.a(localObject1[0], 0);
-        localObject1 = localObject1[1];
-        j = i;
-        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        else
         {
+          if ((localException2 == null) || (localException2.length != 2)) {
+            break label523;
+          }
+          i = HotVideoDPC.a(localException2[0], 0);
+          Object localObject2 = localException2[1];
           j = i;
-          localObject1 = ((String)localObject1).split("-");
-          k = 0;
-        }
-      }
-    }
-    for (;;)
-    {
-      j = i;
-      int n;
-      if (k < localObject1.length)
-      {
-        localObject2 = localObject1[k];
-        j = i;
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          break label627;
-        }
-        j = i;
-        localObject2 = ((String)localObject2).split("_");
-        j = i;
-        if (localObject2.length >= 2)
-        {
-          j = i;
-          m = HotVideoDPC.a(localObject2[0], 0);
-          j = i;
-          n = HotVideoDPC.a(localObject2[1], 0);
-          if ((m <= 0) || (n <= 0)) {
-            break label627;
+          if (!TextUtils.isEmpty((CharSequence)localObject2))
+          {
+            j = i;
+            localObject2 = ((String)localObject2).split("-");
+            k = 0;
+            j = i;
+            if (k < localObject2.length)
+            {
+              localObject3 = localObject2[k];
+              j = i;
+              if (TextUtils.isEmpty((CharSequence)localObject3)) {
+                break label665;
+              }
+              j = i;
+              localObject3 = ((String)localObject3).split("_");
+              j = i;
+              if (localObject3.length < 2) {
+                break label657;
+              }
+              j = i;
+              n = HotVideoDPC.a(localObject3[0], 0);
+              j = i;
+              m = HotVideoDPC.a(localObject3[1], 0);
+              if ((n <= 0) || (m <= 0)) {
+                break label665;
+              }
+              j = i;
+              localArrayList.add(new PanoramaEffectDPC.DeviceCPUinfo(m, n));
+              break label665;
+            }
           }
           j = i;
-          localArrayList.add(new PanoramaEffectDPC.DeviceCPUinfo(n, m));
-          break label627;
+          QLog.i("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC configs.length == 2");
+          k = i1;
         }
       }
-      else
+      catch (Exception localException3)
       {
-        j = i;
-        QLog.i("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC configs.length == 2");
-        j = i;
-        i = 3;
-        break label235;
+        j = 0;
+        k = i1;
+        i = j;
+        if (!QLog.isColorLevel()) {
+          break label528;
+        }
       }
-      label549:
-      label605:
-      j = 0;
+      QLog.e("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC exception:", localException3);
+      int k = i1;
+      int i = j;
+      break label528;
+      label523:
+      i = 0;
       k = i1;
-      break label237;
-      label620:
-      j += 1;
-      break;
-      label627:
+      label528:
+      if (localArrayList.size() == 0)
+      {
+        localArrayList.add(new PanoramaEffectDPC.DeviceCPUinfo(215, 4));
+        localArrayList.add(new PanoramaEffectDPC.DeviceCPUinfo(150, 8));
+      }
+      PanoramaEffectDPC localPanoramaEffectDPC = new PanoramaEffectDPC();
+      localPanoramaEffectDPC.jdField_a_of_type_Int = i;
+      localPanoramaEffectDPC.b = k;
+      localPanoramaEffectDPC.jdField_a_of_type_JavaUtilList = localArrayList;
+      bool1 = bool2;
+      if (str != null) {
+        if (str.isEmpty()) {
+          bool1 = bool2;
+        } else {
+          bool1 = false;
+        }
+      }
+      localPanoramaEffectDPC.jdField_a_of_type_Boolean = bool1;
+      return localPanoramaEffectDPC;
+      label642:
+      int m = 0;
+      int n = 0;
+      continue;
+      label650:
+      k += 1;
+      continue;
+      label657:
+      m = 0;
+      n = 0;
+      continue;
+      label665:
       k += 1;
     }
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("hotVideoSwitch: ").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" mPanoramaEffectMemory: ").append(this.b);
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("hotVideoSwitch: ");
+    localStringBuilder1.append(this.jdField_a_of_type_Int);
+    localStringBuilder1.append(" mPanoramaEffectMemory: ");
+    localStringBuilder1.append(this.b);
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     String str = "";
     while (localIterator.hasNext())
     {
       PanoramaEffectDPC.DeviceCPUinfo localDeviceCPUinfo = (PanoramaEffectDPC.DeviceCPUinfo)localIterator.next();
-      if (localDeviceCPUinfo != null) {
-        str = str + localDeviceCPUinfo.b + "_" + localDeviceCPUinfo.jdField_a_of_type_Int + "-";
+      if (localDeviceCPUinfo != null)
+      {
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append(str);
+        localStringBuilder2.append(localDeviceCPUinfo.b);
+        localStringBuilder2.append("_");
+        localStringBuilder2.append(localDeviceCPUinfo.jdField_a_of_type_Int);
+        localStringBuilder2.append("-");
+        str = localStringBuilder2.toString();
       }
     }
-    localStringBuilder.append(" hotVideoBlurMemory: ").append(str);
-    return localStringBuilder.toString();
+    localStringBuilder1.append(" hotVideoBlurMemory: ");
+    localStringBuilder1.append(str);
+    return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.panorama.PanoramaEffectDPC
  * JD-Core Version:    0.7.0.1
  */

@@ -17,42 +17,42 @@ public class FriendNodeViewHolder
 {
   public FriendNodeViewHolder(ViewGroup paramViewGroup)
   {
-    super(paramViewGroup, 2131561863);
+    super(paramViewGroup, 2131561714);
   }
   
   public void a(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
     SLog.a("FriendNodeViewHolder", "bindData %s", paramMsgTabNodeInfo);
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    QQAppInterface localQQAppInterface;
-    String str;
-    if ((localObject instanceof QQAppInterface))
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject1 instanceof QQAppInterface))
     {
-      localQQAppInterface = (QQAppInterface)localObject;
-      str = String.valueOf(paramMsgTabNodeInfo.b);
+      QQAppInterface localQQAppInterface = (QQAppInterface)localObject1;
+      Object localObject2 = String.valueOf(paramMsgTabNodeInfo.b);
       b(ThumbnailUrlHelper.b(paramMsgTabNodeInfo.g));
-      if (!MsgTabStoryNodeListManager.h) {
-        break label180;
+      if (MsgTabStoryNodeListManager.h) {
+        localObject1 = ContactUtils.f(localQQAppInterface, (String)localObject2);
+      } else {
+        localObject1 = localObject2;
       }
-    }
-    label180:
-    for (localObject = ContactUtils.m(localQQAppInterface, str);; localObject = str)
-    {
-      this.a.setNodeName((String)localObject, false);
-      ThreadManager.post(new FriendNodeViewHolder.1(this, localQQAppInterface, str), 8, null, true);
+      this.a.setNodeName((String)localObject1, false);
+      ThreadManager.post(new FriendNodeViewHolder.1(this, localQQAppInterface, (String)localObject2), 8, null, true);
       if (QLog.isColorLevel())
       {
-        QLog.e("FriendNodeViewHolder", 2, new Object[] { "userItem = " + paramMsgTabNodeInfo.b + ", name = " + (String)localObject, " list: ", String.valueOf(paramMsgTabNodeInfo.a) });
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("userItem = ");
+        ((StringBuilder)localObject2).append(paramMsgTabNodeInfo.b);
+        ((StringBuilder)localObject2).append(", name = ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QLog.e("FriendNodeViewHolder", 2, new Object[] { ((StringBuilder)localObject2).toString(), " list: ", String.valueOf(paramMsgTabNodeInfo.a) });
         QLog.e("FriendNodeViewHolder", 2, new Object[] { "data: ", String.valueOf(paramMsgTabNodeInfo) });
       }
-      super.a(paramMsgTabNodeInfo);
-      return;
     }
+    super.a(paramMsgTabNodeInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.viewholder.FriendNodeViewHolder
  * JD-Core Version:    0.7.0.1
  */

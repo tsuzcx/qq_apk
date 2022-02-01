@@ -35,24 +35,36 @@ public final class WebSocketProtocol
   
   public static String acceptHeader(String paramString)
   {
-    return ByteString.encodeUtf8(paramString + "258EAFA5-E914-47DA-95CA-C5AB0DC85B11").sha1().base64();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("258EAFA5-E914-47DA-95CA-C5AB0DC85B11");
+    return ByteString.encodeUtf8(localStringBuilder.toString()).sha1().base64();
   }
   
   static String closeCodeExceptionMessage(int paramInt)
   {
-    if ((paramInt < 1000) || (paramInt >= 5000)) {
-      return "Code must be in range [1000,5000): " + paramInt;
+    if ((paramInt >= 1000) && (paramInt < 5000))
+    {
+      if (((paramInt >= 1004) && (paramInt <= 1006)) || ((paramInt >= 1012) && (paramInt <= 2999)))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Code ");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(" is reserved and may not be used.");
+        return localStringBuilder.toString();
+      }
+      return null;
     }
-    if (((paramInt >= 1004) && (paramInt <= 1006)) || ((paramInt >= 1012) && (paramInt <= 2999))) {
-      return "Code " + paramInt + " is reserved and may not be used.";
-    }
-    return null;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Code must be in range [1000,5000): ");
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
   
   static void toggleMask(Buffer.UnsafeCursor paramUnsafeCursor, byte[] paramArrayOfByte)
   {
-    int j = 0;
     int k = paramArrayOfByte.length;
+    int j = 0;
     do
     {
       byte[] arrayOfByte = paramUnsafeCursor.data;
@@ -62,8 +74,8 @@ public final class WebSocketProtocol
       {
         j %= k;
         arrayOfByte[i] = ((byte)(arrayOfByte[i] ^ paramArrayOfByte[j]));
-        j += 1;
         i += 1;
+        j += 1;
       }
     } while (paramUnsafeCursor.next() != -1);
   }
@@ -71,14 +83,15 @@ public final class WebSocketProtocol
   static void validateCloseCode(int paramInt)
   {
     String str = closeCodeExceptionMessage(paramInt);
-    if (str != null) {
-      throw new IllegalArgumentException(str);
+    if (str == null) {
+      return;
     }
+    throw new IllegalArgumentException(str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.ws.WebSocketProtocol
  * JD-Core Version:    0.7.0.1
  */

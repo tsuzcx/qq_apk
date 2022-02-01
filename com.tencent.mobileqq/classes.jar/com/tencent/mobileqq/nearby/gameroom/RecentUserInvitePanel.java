@@ -27,7 +27,7 @@ public class RecentUserInvitePanel
 {
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   RecentUserInvitePanel.OnClickListener jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel$OnClickListener;
-  List<WerewolvesDataManager.InviteUser> jdField_a_of_type_JavaUtilList;
+  List<InviteUser> jdField_a_of_type_JavaUtilList;
   boolean jdField_a_of_type_Boolean = false;
   
   public RecentUserInvitePanel(Context paramContext, AttributeSet paramAttributeSet)
@@ -45,68 +45,61 @@ public class RecentUserInvitePanel
   private View a()
   {
     int i = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    View localView = inflate(getContext(), 2131561345, null);
-    ((ImageView)localView.findViewById(2131368336)).setImageResource(2130841505);
-    ((ImageView)localView.findViewById(2131368367)).setVisibility(8);
-    TextView localTextView = (TextView)localView.findViewById(2131372115);
+    View localView = inflate(getContext(), 2131561184, null);
+    ((ImageView)localView.findViewById(2131368087)).setImageResource(2130841386);
+    ((ImageView)localView.findViewById(2131368118)).setVisibility(8);
+    TextView localTextView = (TextView)localView.findViewById(2131371697);
     if (i == 0) {
-      localTextView.setText(HardCodeUtil.a(2131713169));
+      localTextView.setText(HardCodeUtil.a(2131713144));
+    } else {
+      localTextView.setText(HardCodeUtil.a(2131713145));
     }
-    for (;;)
-    {
-      localTextView.setMaxLines(2);
-      localTextView.setSingleLine(false);
-      localTextView.setGravity(1);
-      ((Button)localView.findViewById(2131369216)).setVisibility(8);
-      localView.setOnClickListener(new RecentUserInvitePanel.2(this));
-      return localView;
-      localTextView.setText(HardCodeUtil.a(2131713170));
-    }
+    localTextView.setMaxLines(2);
+    localTextView.setSingleLine(false);
+    localTextView.setGravity(1);
+    ((Button)localView.findViewById(2131368946)).setVisibility(8);
+    localView.setOnClickListener(new RecentUserInvitePanel.2(this));
+    return localView;
   }
   
-  private View a(WerewolvesDataManager.InviteUser paramInviteUser)
+  private View a(InviteUser paramInviteUser)
   {
-    Object localObject1 = null;
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    View localView = inflate(getContext(), 2131561345, null);
-    Object localObject2 = (ImageView)localView.findViewById(2131368336);
-    ImageView localImageView = (ImageView)localView.findViewById(2131368367);
-    int i;
+    Object localObject2 = getContext();
+    Object localObject1 = null;
+    localObject2 = inflate((Context)localObject2, 2131561184, null);
+    Object localObject3 = (ImageView)((View)localObject2).findViewById(2131368087);
+    ImageView localImageView = (ImageView)((View)localObject2).findViewById(2131368118);
     if (paramInviteUser.jdField_a_of_type_Int == 0)
     {
       localObject1 = FaceDrawable.getFaceDrawable(localQQAppInterface, 1, paramInviteUser.jdField_a_of_type_JavaLangString);
-      i = -1;
     }
-    for (;;)
+    else if (paramInviteUser.jdField_a_of_type_Int == 1)
     {
-      ((ImageView)localObject2).setImageDrawable((Drawable)localObject1);
-      if (i != -1) {
-        localImageView.setImageResource(i);
-      }
-      for (;;)
-      {
-        localObject2 = (TextView)localView.findViewById(2131372115);
-        localObject1 = "";
-        if (paramInviteUser.b != null) {
-          localObject1 = (String)TextUtils.ellipsize(paramInviteUser.b, ((TextView)localObject2).getPaint(), DisplayUtil.a(getContext(), 65.0F), TextUtils.TruncateAt.END);
-        }
-        ((TextView)localObject2).setText((CharSequence)localObject1);
-        localObject1 = (Button)localView.findViewById(2131369216);
-        ((Button)localObject1).setOnClickListener(new RecentUserInvitePanel.1(this, paramInviteUser));
-        a((View)localObject1, paramInviteUser.jdField_a_of_type_Boolean);
-        localView.setTag(paramInviteUser);
-        return localView;
-        if (paramInviteUser.jdField_a_of_type_Int != 1) {
-          break label220;
-        }
-        localObject1 = FaceDrawable.getFaceDrawable(localQQAppInterface, 4, paramInviteUser.jdField_a_of_type_JavaLangString);
-        i = 2130841503;
-        break;
-        localImageView.setVisibility(8);
-      }
-      label220:
-      i = -1;
+      localObject1 = FaceDrawable.getFaceDrawable(localQQAppInterface, 4, paramInviteUser.jdField_a_of_type_JavaLangString);
+      i = 2130841384;
+      break label101;
     }
+    int i = -1;
+    label101:
+    ((ImageView)localObject3).setImageDrawable((Drawable)localObject1);
+    if (i != -1) {
+      localImageView.setImageResource(i);
+    } else {
+      localImageView.setVisibility(8);
+    }
+    localObject3 = (TextView)((View)localObject2).findViewById(2131371697);
+    if (paramInviteUser.b != null) {
+      localObject1 = (String)TextUtils.ellipsize(paramInviteUser.b, ((TextView)localObject3).getPaint(), DisplayUtil.a(getContext(), 65.0F), TextUtils.TruncateAt.END);
+    } else {
+      localObject1 = "";
+    }
+    ((TextView)localObject3).setText((CharSequence)localObject1);
+    localObject1 = (Button)((View)localObject2).findViewById(2131368946);
+    ((Button)localObject1).setOnClickListener(new RecentUserInvitePanel.1(this, paramInviteUser));
+    a((View)localObject1, paramInviteUser.jdField_a_of_type_Boolean);
+    ((View)localObject2).setTag(paramInviteUser);
+    return localObject2;
   }
   
   public void a()
@@ -125,35 +118,32 @@ public class RecentUserInvitePanel
       paramView = (Button)paramView;
       if (paramBoolean)
       {
-        paramView.setText(HardCodeUtil.a(2131713172));
+        paramView.setText(HardCodeUtil.a(2131713147));
         paramView.setAlpha(0.5F);
+        return;
       }
+      paramView.setText(HardCodeUtil.a(2131713146));
     }
-    else
-    {
-      return;
-    }
-    paramView.setText(HardCodeUtil.a(2131713171));
   }
   
-  public void a(WerewolvesDataManager.InviteUser paramInviteUser)
+  public void a(InviteUser paramInviteUser)
   {
     int i = 0;
     while (i < this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount())
     {
       View localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-      if ((localView.getTag() instanceof WerewolvesDataManager.InviteUser))
+      if ((localView.getTag() instanceof InviteUser))
       {
-        WerewolvesDataManager.InviteUser localInviteUser = (WerewolvesDataManager.InviteUser)localView.getTag();
+        InviteUser localInviteUser = (InviteUser)localView.getTag();
         if ((localInviteUser.jdField_a_of_type_Int == paramInviteUser.jdField_a_of_type_Int) && (localInviteUser.jdField_a_of_type_JavaLangString.equals(paramInviteUser.jdField_a_of_type_JavaLangString))) {
-          a((Button)localView.findViewById(2131369216), paramInviteUser.jdField_a_of_type_Boolean);
+          a((Button)localView.findViewById(2131368946), paramInviteUser.jdField_a_of_type_Boolean);
         }
       }
       i += 1;
     }
   }
   
-  public void a(List<WerewolvesDataManager.InviteUser> paramList, boolean paramBoolean)
+  public void a(List<InviteUser> paramList, boolean paramBoolean)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_Boolean = paramBoolean;
@@ -162,7 +152,7 @@ public class RecentUserInvitePanel
     Object localObject;
     while (paramList.hasNext())
     {
-      localObject = a((WerewolvesDataManager.InviteUser)paramList.next());
+      localObject = a((InviteUser)paramList.next());
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
       localLayoutParams.leftMargin = DisplayUtil.a(getContext(), 16.0F);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject, localLayoutParams);
@@ -184,7 +174,7 @@ public class RecentUserInvitePanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel
  * JD-Core Version:    0.7.0.1
  */

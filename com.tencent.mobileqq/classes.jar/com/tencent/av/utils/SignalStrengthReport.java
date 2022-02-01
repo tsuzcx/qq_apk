@@ -8,11 +8,11 @@ import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
+import android.telephony.PhoneStateListener;
 import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import com.tencent.av.AVLog;
-import com.tencent.av.business.manager.EffectConfigBase;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
@@ -50,15 +50,16 @@ public class SignalStrengthReport
   
   public static SignalStrengthReport a(Context paramContext)
   {
-    if (jdField_a_of_type_ComTencentAvUtilsSignalStrengthReport == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentAvUtilsSignalStrengthReport == null) {
-        jdField_a_of_type_ComTencentAvUtilsSignalStrengthReport = new SignalStrengthReport(paramContext);
+    if (jdField_a_of_type_ComTencentAvUtilsSignalStrengthReport == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentAvUtilsSignalStrengthReport == null) {
+          jdField_a_of_type_ComTencentAvUtilsSignalStrengthReport = new SignalStrengthReport(paramContext);
+        }
       }
-      return jdField_a_of_type_ComTencentAvUtilsSignalStrengthReport;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentAvUtilsSignalStrengthReport;
   }
   
   private String a(long paramLong)
@@ -76,91 +77,95 @@ public class SignalStrengthReport
   
   private String b()
   {
-    String str2 = "";
-    String str1 = str2;
     try
     {
       if (this.jdField_a_of_type_AndroidNetWifiWifiManager != null)
       {
-        DhcpInfo localDhcpInfo = this.jdField_a_of_type_AndroidNetWifiWifiManager.getDhcpInfo();
-        str1 = str2;
-        if (localDhcpInfo != null) {
-          str1 = a(localDhcpInfo.gateway);
+        Object localObject = this.jdField_a_of_type_AndroidNetWifiWifiManager.getDhcpInfo();
+        if (localObject != null)
+        {
+          localObject = a(((DhcpInfo)localObject).gateway);
+          return localObject;
         }
       }
-      return str1;
     }
     catch (Exception localException)
     {
-      AVLog.printColorLog("SignalStrengthReport", "getGateway e:" + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getGateway e:");
+      localStringBuilder.append(localException);
+      AVLog.printColorLog("SignalStrengthReport", localStringBuilder.toString());
     }
     return "";
   }
   
   private static int f()
   {
-    int i = 0;
-    if (AppNetConnInfo.isWifiConn()) {
-      i = 1;
+    boolean bool = AppNetConnInfo.isWifiConn();
+    int i = 4;
+    if (bool) {
+      return 1;
     }
-    while (!AppNetConnInfo.isMobileConn()) {
-      return i;
-    }
-    switch (AppNetConnInfo.getMobileInfo())
+    if (AppNetConnInfo.isMobileConn())
     {
-    default: 
-      return 0;
-    case 1: 
-      return 2;
-    case 2: 
-      return 3;
-    case 3: 
-      return 4;
+      int j = AppNetConnInfo.getMobileInfo();
+      if (j != 1)
+      {
+        if (j != 2)
+        {
+          if (j == 3) {
+            return i;
+          }
+          if (j == 4) {
+            return 5;
+          }
+        }
+        else
+        {
+          return 3;
+        }
+      }
+      else {
+        return 2;
+      }
     }
-    return 5;
+    i = 0;
+    return i;
   }
   
   private int g()
   {
-    int j = -1;
-    int i = j;
     try
     {
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+      if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
       {
-        i = j;
-        if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+        Object localObject = QAVConfigUtils.a(218, QAVConfigUtils.b);
+        if (!TextUtils.isEmpty((CharSequence)localObject))
         {
-          Object localObject = EffectConfigBase.b(218, EffectConfigBase.c);
-          i = j;
-          if (!TextUtils.isEmpty((CharSequence)localObject))
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getPingInterval config:");
+          localStringBuilder.append((String)localObject);
+          AVLog.printColorLog("SignalStrengthReport", localStringBuilder.toString());
+          localObject = new JSONObject((String)localObject);
+          if (((JSONObject)localObject).has("pingInterval"))
           {
-            AVLog.printColorLog("SignalStrengthReport", "getPingInterval config:" + (String)localObject);
-            localObject = new JSONObject((String)localObject);
-            i = j;
-            if (((JSONObject)localObject).has("pingInterval"))
-            {
-              i = ((JSONObject)localObject).getInt("pingInterval");
-              j = i;
-              i = j;
-              if (j >= 0)
-              {
-                i = j;
-                if (j < 2000) {
-                  return 2000;
-                }
-              }
+            int i = ((JSONObject)localObject).getInt("pingInterval");
+            if ((i >= 0) && (i < 2000)) {
+              return 2000;
             }
+            return i;
           }
         }
       }
     }
     catch (Exception localException)
     {
-      AVLog.printColorLog("SignalStrengthReport", "getPingInterval e:" + localException);
-      i = j;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getPingInterval e:");
+      localStringBuilder.append(localException);
+      AVLog.printColorLog("SignalStrengthReport", localStringBuilder.toString());
     }
-    return i;
+    return -1;
   }
   
   int a()
@@ -170,34 +175,28 @@ public class SignalStrengthReport
   
   int a(SignalStrength paramSignalStrength)
   {
-    int j = 100;
-    int k = 0;
-    int i = 0;
     if (paramSignalStrength != null) {
-      i = k;
-    }
-    for (;;)
-    {
       try
       {
         if (Build.VERSION.SDK_INT >= 23)
         {
-          i = Integer.parseInt(Class.forName(SignalStrength.class.getName()).getDeclaredMethod("getLevel", new Class[0]).invoke(paramSignalStrength, new Object[0]).toString());
-          k = i * 25;
-          i = k;
-          if (k > 100)
-          {
-            i = j;
-            return i;
+          int i = Integer.parseInt(Class.forName(SignalStrength.class.getName()).getDeclaredMethod("getLevel", new Class[0]).invoke(paramSignalStrength, new Object[0]).toString());
+          i *= 25;
+          if (i > 100) {
+            return 100;
           }
+          return i;
         }
       }
       catch (Exception paramSignalStrength)
       {
-        AVLog.printColorLog("SignalStrengthReport", "getLevelPercentBySignalStrength reflect getLevel e:" + paramSignalStrength);
-        return 0;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getLevelPercentBySignalStrength reflect getLevel e:");
+        localStringBuilder.append(paramSignalStrength);
+        AVLog.printColorLog("SignalStrengthReport", localStringBuilder.toString());
       }
     }
+    return 0;
   }
   
   public String a()
@@ -207,24 +206,35 @@ public class SignalStrengthReport
   
   public void a()
   {
-    if ((this.jdField_a_of_type_AndroidOsHandlerThread != null) && (this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {}
-    do
-    {
+    Object localObject = this.jdField_a_of_type_AndroidOsHandlerThread;
+    if ((localObject != null) && (((HandlerThread)localObject).isAlive())) {
       return;
-      AVLog.printColorLog("SignalStrengthReport", "report start");
-      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("SignalStrengthReportThread" + (int)(Math.random() * 100.0D));
-      this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-      this.jdField_a_of_type_Int = g();
-      this.jdField_a_of_type_JavaLangString = "";
-      if (this.jdField_a_of_type_JavaLangRunnable != null) {
-        this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
+    }
+    AVLog.printColorLog("SignalStrengthReport", "report start");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("SignalStrengthReportThread");
+    ((StringBuilder)localObject).append((int)(Math.random() * 100.0D));
+    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread(((StringBuilder)localObject).toString());
+    this.jdField_a_of_type_AndroidOsHandlerThread.start();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    this.jdField_a_of_type_Int = g();
+    this.jdField_a_of_type_JavaLangString = "";
+    localObject = this.jdField_a_of_type_JavaLangRunnable;
+    if (localObject != null) {
+      this.jdField_a_of_type_AndroidOsHandler.post((Runnable)localObject);
+    }
+    localObject = this.jdField_b_of_type_JavaLangRunnable;
+    if (localObject != null) {
+      this.jdField_a_of_type_AndroidOsHandler.post((Runnable)localObject);
+    }
+    localObject = this.jdField_a_of_type_ComTencentAvUtilsSignalStrengthReport$QavPhoneStateListener;
+    if (localObject != null)
+    {
+      TelephonyManager localTelephonyManager = this.jdField_a_of_type_AndroidTelephonyTelephonyManager;
+      if (localTelephonyManager != null) {
+        localTelephonyManager.listen((PhoneStateListener)localObject, 256);
       }
-      if (this.jdField_b_of_type_JavaLangRunnable != null) {
-        this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_b_of_type_JavaLangRunnable);
-      }
-    } while ((this.jdField_a_of_type_ComTencentAvUtilsSignalStrengthReport$QavPhoneStateListener == null) || (this.jdField_a_of_type_AndroidTelephonyTelephonyManager == null));
-    this.jdField_a_of_type_AndroidTelephonyTelephonyManager.listen(this.jdField_a_of_type_ComTencentAvUtilsSignalStrengthReport$QavPhoneStateListener, 256);
+    }
   }
   
   int b()
@@ -232,145 +242,106 @@ public class SignalStrengthReport
     return this.c;
   }
   
-  /* Error */
   int b(SignalStrength paramSignalStrength)
   {
-    // Byte code:
-    //   0: iconst_m1
-    //   1: istore 4
-    //   3: iload 4
-    //   5: istore_2
-    //   6: aload_1
-    //   7: ifnull +78 -> 85
-    //   10: ldc 211
-    //   12: invokevirtual 216	java/lang/Class:getName	()Ljava/lang/String;
-    //   15: invokestatic 220	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   18: ldc_w 288
-    //   21: iconst_0
-    //   22: anewarray 213	java/lang/Class
-    //   25: invokevirtual 226	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   28: aload_1
-    //   29: iconst_0
-    //   30: anewarray 4	java/lang/Object
-    //   33: invokevirtual 232	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   36: invokevirtual 233	java/lang/Object:toString	()Ljava/lang/String;
-    //   39: invokestatic 238	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   42: istore_2
-    //   43: iload_2
-    //   44: iconst_m1
-    //   45: if_icmpne +143 -> 188
-    //   48: aload_1
-    //   49: invokevirtual 291	android/telephony/SignalStrength:isGsm	()Z
-    //   52: ifeq +68 -> 120
-    //   55: aload_1
-    //   56: invokevirtual 294	android/telephony/SignalStrength:getGsmSignalStrength	()I
-    //   59: istore_2
-    //   60: iload_2
-    //   61: istore_3
-    //   62: iload_2
-    //   63: bipush 99
-    //   65: if_icmpne +5 -> 70
-    //   68: iconst_m1
-    //   69: istore_3
-    //   70: iload 4
-    //   72: istore_2
-    //   73: iload_3
-    //   74: iconst_m1
-    //   75: if_icmpeq +10 -> 85
-    //   78: iload_3
-    //   79: iconst_2
-    //   80: imul
-    //   81: bipush 113
-    //   83: isub
-    //   84: istore_2
-    //   85: iload_2
-    //   86: ireturn
-    //   87: astore 5
-    //   89: ldc 131
-    //   91: new 133	java/lang/StringBuilder
-    //   94: dup
-    //   95: invokespecial 134	java/lang/StringBuilder:<init>	()V
-    //   98: ldc_w 296
-    //   101: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   104: aload 5
-    //   106: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   109: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   112: invokestatic 149	com/tencent/av/AVLog:printColorLog	(Ljava/lang/String;Ljava/lang/String;)V
-    //   115: iconst_m1
-    //   116: istore_2
-    //   117: goto -74 -> 43
-    //   120: aload_1
-    //   121: invokevirtual 299	android/telephony/SignalStrength:getCdmaDbm	()I
-    //   124: istore 4
-    //   126: aload_1
-    //   127: invokevirtual 302	android/telephony/SignalStrength:getEvdoDbm	()I
-    //   130: istore_3
-    //   131: iload_3
-    //   132: bipush 136
-    //   134: if_icmpne +6 -> 140
-    //   137: iload 4
-    //   139: ireturn
-    //   140: iload_3
-    //   141: istore_2
-    //   142: iload 4
-    //   144: bipush 136
-    //   146: if_icmpeq -61 -> 85
-    //   149: iload_3
-    //   150: istore_2
-    //   151: iload 4
-    //   153: iload_3
-    //   154: if_icmpge -69 -> 85
-    //   157: iload 4
-    //   159: ireturn
-    //   160: astore_1
-    //   161: ldc 131
-    //   163: new 133	java/lang/StringBuilder
-    //   166: dup
-    //   167: invokespecial 134	java/lang/StringBuilder:<init>	()V
-    //   170: ldc_w 304
-    //   173: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   176: aload_1
-    //   177: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   180: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   183: invokestatic 149	com/tencent/av/AVLog:printColorLog	(Ljava/lang/String;Ljava/lang/String;)V
-    //   186: iconst_m1
-    //   187: ireturn
-    //   188: iload_2
-    //   189: ireturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	190	0	this	SignalStrengthReport
-    //   0	190	1	paramSignalStrength	SignalStrength
-    //   5	184	2	i	int
-    //   61	94	3	j	int
-    //   1	157	4	k	int
-    //   87	18	5	localException	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   10	43	87	java/lang/Exception
-    //   48	60	160	java/lang/Exception
-    //   120	131	160	java/lang/Exception
+    int k = -1;
+    int j = k;
+    int i;
+    if (paramSignalStrength != null)
+    {
+      try
+      {
+        i = Integer.parseInt(Class.forName(SignalStrength.class.getName()).getDeclaredMethod("getDbm", new Class[0]).invoke(paramSignalStrength, new Object[0]).toString());
+      }
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("getDbmBySignalStrength reflect getDbm e1:");
+        localStringBuilder2.append(localException);
+        AVLog.printColorLog("SignalStrengthReport", localStringBuilder2.toString());
+        i = -1;
+      }
+      if (i == -1) {
+        try
+        {
+          if (paramSignalStrength.isGsm())
+          {
+            j = paramSignalStrength.getGsmSignalStrength();
+            i = j;
+            if (j != 99) {
+              break label204;
+            }
+            i = -1;
+            break label204;
+          }
+          j = paramSignalStrength.getCdmaDbm();
+          k = paramSignalStrength.getEvdoDbm();
+          if (k != -120)
+          {
+            if (j == -120)
+            {
+              i = k;
+            }
+            else
+            {
+              i = k;
+              if (j >= k) {}
+            }
+          }
+          else {
+            i = j;
+          }
+          return i;
+        }
+        catch (Exception paramSignalStrength)
+        {
+          StringBuilder localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("getDbmBySignalStrength e2:");
+          localStringBuilder1.append(paramSignalStrength);
+          AVLog.printColorLog("SignalStrengthReport", localStringBuilder1.toString());
+          return -1;
+        }
+      }
+      j = i;
+    }
+    label204:
+    do
+    {
+      return j;
+      j = k;
+    } while (i == -1);
+    return i * 2 - 113;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    Object localObject1 = this.jdField_a_of_type_AndroidOsHandler;
+    Object localObject2;
+    if (localObject1 != null)
     {
-      if (this.jdField_a_of_type_JavaLangRunnable != null) {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      localObject2 = this.jdField_a_of_type_JavaLangRunnable;
+      if (localObject2 != null) {
+        ((Handler)localObject1).removeCallbacks((Runnable)localObject2);
       }
-      if (this.jdField_b_of_type_JavaLangRunnable != null) {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+      localObject1 = this.jdField_b_of_type_JavaLangRunnable;
+      if (localObject1 != null) {
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks((Runnable)localObject1);
       }
       this.jdField_a_of_type_AndroidOsHandler = null;
     }
     this.jdField_a_of_type_Int = -1;
-    if ((this.jdField_a_of_type_ComTencentAvUtilsSignalStrengthReport$QavPhoneStateListener != null) && (this.jdField_a_of_type_AndroidTelephonyTelephonyManager != null)) {
-      this.jdField_a_of_type_AndroidTelephonyTelephonyManager.listen(this.jdField_a_of_type_ComTencentAvUtilsSignalStrengthReport$QavPhoneStateListener, 0);
-    }
-    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+    localObject1 = this.jdField_a_of_type_ComTencentAvUtilsSignalStrengthReport$QavPhoneStateListener;
+    if (localObject1 != null)
     {
-      this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+      localObject2 = this.jdField_a_of_type_AndroidTelephonyTelephonyManager;
+      if (localObject2 != null) {
+        ((TelephonyManager)localObject2).listen((PhoneStateListener)localObject1, 0);
+      }
+    }
+    localObject1 = this.jdField_a_of_type_AndroidOsHandlerThread;
+    if (localObject1 != null)
+    {
+      ((HandlerThread)localObject1).quit();
       this.jdField_a_of_type_AndroidOsHandlerThread = null;
     }
     this.jdField_a_of_type_JavaLangString = "";
@@ -400,7 +371,10 @@ public class SignalStrengthReport
     }
     catch (Exception localException)
     {
-      AVLog.printColorLog("SignalStrengthReport", "getWifiLevelPercent e:" + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getWifiLevelPercent e:");
+      localStringBuilder.append(localException);
+      AVLog.printColorLog("SignalStrengthReport", localStringBuilder.toString());
       i = j;
     }
     return i;
@@ -408,34 +382,31 @@ public class SignalStrengthReport
   
   int d()
   {
-    int j = -1;
-    int i = j;
     try
     {
       if (this.jdField_a_of_type_AndroidNetWifiWifiManager != null)
       {
         WifiInfo localWifiInfo = this.jdField_a_of_type_AndroidNetWifiWifiManager.getConnectionInfo();
-        i = j;
-        if (localWifiInfo != null)
+        if ((localWifiInfo != null) && (localWifiInfo.getBSSID() != null))
         {
-          i = j;
-          if (localWifiInfo.getBSSID() != null) {
-            i = localWifiInfo.getRssi();
-          }
+          int i = localWifiInfo.getRssi();
+          return i;
         }
       }
-      return i;
     }
     catch (Exception localException)
     {
-      AVLog.printColorLog("SignalStrengthReport", "getWifiDbm e:" + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getWifiDbm e:");
+      localStringBuilder.append(localException);
+      AVLog.printColorLog("SignalStrengthReport", localStringBuilder.toString());
     }
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.SignalStrengthReport
  * JD-Core Version:    0.7.0.1
  */

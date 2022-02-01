@@ -1,7 +1,7 @@
-package com.tencent.biz.pubaccount.AccountDetail.adapter;
+package com.tencent.biz.pubaccount.accountdetail.adapter;
 
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView;
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView.OnEndScrollListener;
+import com.tencent.biz.pubaccount.accountdetail.view.AccountDetailXListView;
+import com.tencent.biz.pubaccount.accountdetail.view.AccountDetailXListView.OnEndScrollListener;
 import com.tencent.qphone.base.util.QLog;
 
 class AccountDetailBaseAdapter$7
@@ -11,41 +11,44 @@ class AccountDetailBaseAdapter$7
   
   public void a(int paramInt)
   {
-    float f;
-    if ((this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.getFirstVisiblePosition() == 0) && (this.a.b))
+    if ((this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailXListView.getFirstVisiblePosition() == 0) && (this.a.b))
     {
       paramInt = -this.a.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailBaseAdapter", 2, "onEndScroll scrollY = " + paramInt + " ,isScrollUp = " + this.a.e);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onEndScroll scrollY = ");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(" ,isScrollUp = ");
+        localStringBuilder.append(this.a.e);
+        QLog.d("AccountDetailBaseAdapter", 2, localStringBuilder.toString());
       }
-      f = 150.0F * this.a.jdField_a_of_type_Float;
+      float f = this.a.jdField_a_of_type_Float * 150.0F;
       if (paramInt != 0)
       {
-        if (!this.a.e) {
-          break label127;
+        if (this.a.e)
+        {
+          if (paramInt > f)
+          {
+            this.a.d(paramInt);
+            return;
+          }
+          this.a.e();
+          return;
         }
-        if (paramInt <= f) {
-          break label119;
+        if (paramInt > this.a.q - f)
+        {
+          this.a.d(paramInt);
+          return;
         }
-        this.a.d(paramInt);
+        this.a.e();
       }
     }
-    return;
-    label119:
-    this.a.e();
-    return;
-    label127:
-    if (paramInt > this.a.q - f)
-    {
-      this.a.d(paramInt);
-      return;
-    }
-    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter.7
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.adapter.AccountDetailBaseAdapter.7
  * JD-Core Version:    0.7.0.1
  */

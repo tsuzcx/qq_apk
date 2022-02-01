@@ -13,27 +13,29 @@ import java.lang.ref.WeakReference;
 
 public class LiveRoomPluginInstaller
 {
-  private static LiveRoomPluginInstaller INSTANCE = null;
+  private static LiveRoomPluginInstaller INSTANCE;
   private static final String TAG = "LiveRoomPluginInstaller";
   private WeakReference<OnPluginInstallListener> mInstallistener = null;
   private boolean pluginDownloading = false;
   
   public static LiveRoomPluginInstaller getInstance()
   {
-    if (INSTANCE == null) {}
-    try
-    {
-      if (INSTANCE == null) {
-        INSTANCE = new LiveRoomPluginInstaller();
+    if (INSTANCE == null) {
+      try
+      {
+        if (INSTANCE == null) {
+          INSTANCE = new LiveRoomPluginInstaller();
+        }
       }
-      return INSTANCE;
+      finally {}
     }
-    finally {}
+    return INSTANCE;
   }
   
   private boolean hasInstallListener()
   {
-    return (this.mInstallistener != null) && (this.mInstallistener.get() != null);
+    WeakReference localWeakReference = this.mInstallistener;
+    return (localWeakReference != null) && (localWeakReference.get() != null);
   }
   
   public static void release()
@@ -44,20 +46,20 @@ public class LiveRoomPluginInstaller
   public void installFromQQ(OnPluginInstallListener paramOnPluginInstallListener, String paramString)
   {
     this.mInstallistener = new WeakReference(paramOnPluginInstallListener);
-    if (this.pluginDownloading) {}
-    PluginInfo localPluginInfo;
-    do
-    {
+    if (this.pluginDownloading) {
       return;
-      QLog.i("LiveRoomPluginInstaller", 1, "start download LiveRoomPlugin in QQ");
-      paramOnPluginInstallListener = LiveRoomHelper.getPluginManagerInQQ();
-      if (paramOnPluginInstallListener == null)
-      {
-        QLog.e("LiveRoomPluginInstaller", 1, "PluginManager is NOT ready");
-        return;
-      }
-      localPluginInfo = LiveRoomHelper.getPluginInfoInQQ();
-    } while ((localPluginInfo != null) && (localPluginInfo.mState != 0) && (localPluginInfo.mState != -2) && (localPluginInfo.mState != -1));
+    }
+    QLog.i("LiveRoomPluginInstaller", 1, "start download LiveRoomPlugin in QQ");
+    paramOnPluginInstallListener = LiveRoomHelper.getPluginManagerInQQ();
+    if (paramOnPluginInstallListener == null)
+    {
+      QLog.e("LiveRoomPluginInstaller", 1, "PluginManager is NOT ready");
+      return;
+    }
+    PluginInfo localPluginInfo = LiveRoomHelper.getPluginInfoInQQ();
+    if ((localPluginInfo != null) && (localPluginInfo.mState != 0) && (localPluginInfo.mState != -2) && (localPluginInfo.mState != -1)) {
+      return;
+    }
     LiveRoomHelper.startTime = NetConnInfoCenter.getServerTimeMillis();
     LiveRoomHelper.report(paramString, "install", "start", 0L);
     this.pluginDownloading = true;
@@ -86,7 +88,7 @@ public class LiveRoomPluginInstaller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomPluginInstaller
  * JD-Core Version:    0.7.0.1
  */

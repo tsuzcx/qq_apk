@@ -31,7 +31,11 @@ public class WeiboSsoSdkConfig
       paramString = URLEncoder.encode(paramString, "utf-8");
       return paramString;
     }
-    catch (UnsupportedEncodingException paramString) {}
+    catch (UnsupportedEncodingException paramString)
+    {
+      label9:
+      break label9;
+    }
     return "";
   }
   
@@ -55,7 +59,11 @@ public class WeiboSsoSdkConfig
       localWeiboSsoSdkConfig.extra = localHashMap;
       return localWeiboSsoSdkConfig;
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      label78:
+      break label78;
+    }
     return null;
   }
   
@@ -79,22 +87,23 @@ public class WeiboSsoSdkConfig
     }
     JSONObject localJSONObject = new JSONObject();
     Iterator localIterator = this.extra.entrySet().iterator();
-    while (localIterator.hasNext())
+    for (;;)
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      Map.Entry localEntry;
+      if (localIterator.hasNext()) {
+        localEntry = (Map.Entry)localIterator.next();
+      }
       try
       {
         localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
       }
-      catch (JSONException localJSONException)
-      {
-        return "";
-      }
+      catch (JSONException localJSONException) {}
     }
     if (paramBoolean) {
-      return urlEncode(localJSONException.toString());
+      return urlEncode(localJSONObject.toString());
     }
-    return localJSONException.toString();
+    return localJSONObject.toString();
+    return "";
   }
   
   public String getFrom(boolean paramBoolean)
@@ -189,7 +198,7 @@ public class WeiboSsoSdkConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.weibo.ssosdk.WeiboSsoSdkConfig
  * JD-Core Version:    0.7.0.1
  */

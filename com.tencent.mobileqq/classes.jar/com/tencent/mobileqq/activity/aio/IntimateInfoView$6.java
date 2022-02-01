@@ -12,13 +12,13 @@ class IntimateInfoView$6
   public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
     IntimateInfoView.d(this.a);
-    QQToast.a(this.a.a, 0, 2131693510, 1).a();
+    QQToast.a(this.a.a, 0, 2131693465, 1).a();
   }
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
     IntimateInfoView.d(this.a);
-    QQToast.a(this.a.a, 0, 2131693510, 1).a();
+    QQToast.a(this.a.a, 0, 2131693465, 1).a();
   }
   
   public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
@@ -26,12 +26,13 @@ class IntimateInfoView$6
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
     IntimateInfoView.d(this.a);
-    IntimateInfoView.a(this.a, IntimateInfoView.a(this.a));
+    paramURLDrawable = this.a;
+    IntimateInfoView.a(paramURLDrawable, IntimateInfoView.a(paramURLDrawable));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoView.6
  * JD-Core Version:    0.7.0.1
  */

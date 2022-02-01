@@ -1,5 +1,6 @@
 package com.tencent.ttpic.filter;
 
+import android.content.Context;
 import android.graphics.PointF;
 import android.text.TextUtils;
 import com.tencent.aekit.api.standard.AEModule;
@@ -63,8 +64,14 @@ public class FabbyFilters
   
   private void createAudioPlayer()
   {
-    if ((!TextUtils.isEmpty(this.audioFile)) && (this.mPlayer == null) && (!VideoPrefsUtil.getMaterialMute())) {
-      this.mPlayer = PlayerUtil.createPlayer(AEModule.getContext(), this.dataPath + File.separator + this.audioFile, true);
+    if ((!TextUtils.isEmpty(this.audioFile)) && (this.mPlayer == null) && (!VideoPrefsUtil.getMaterialMute()))
+    {
+      Context localContext = AEModule.getContext();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.dataPath);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(this.audioFile);
+      this.mPlayer = PlayerUtil.createPlayer(localContext, localStringBuilder.toString(), true);
     }
   }
   
@@ -107,33 +114,37 @@ public class FabbyFilters
   
   private void updateAndRenderDoodlerMaskFrame(Frame paramFrame)
   {
-    if ((this.mBrushMaskFilter != null) && (this.mTouchPoints != null) && (this.mTouchPoints.size() > 0))
+    if (this.mBrushMaskFilter != null)
     {
-      this.mBrushMaskFilter.setTouchPoints(this.mTouchPoints, paramFrame.width, paramFrame.height);
-      this.mDoodlerMaskFrame = this.mBrushMaskFilter.render(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
+      List localList = this.mTouchPoints;
+      if ((localList != null) && (localList.size() > 0))
+      {
+        this.mBrushMaskFilter.setTouchPoints(this.mTouchPoints, paramFrame.width, paramFrame.height);
+        this.mDoodlerMaskFrame = this.mBrushMaskFilter.render(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
+      }
     }
   }
   
   private void updateCurrentPartIndex(Set<Integer> paramSet, long paramLong, AIAttr paramAIAttr)
   {
-    int k = 1;
+    boolean bool1 = isCurrentPartActionTrigger();
     int j = 0;
-    boolean bool;
     int i;
-    if (isCurrentPartActionTrigger())
+    if (bool1)
     {
       paramSet = (FabbyMvFilter)this.fabbyMvFilters.get(this.mMvPartIndex);
-      bool = this.isCurrentTriggered;
+      boolean bool2 = this.isCurrentTriggered;
       i = paramSet.mvPart.transitionItem.getTriggerTypeInt();
       this.mCurMvPartTriggerDelay = paramSet.mvPart.triggerDelay;
-      if (i == PTFaceAttr.PTExpression.ALL_VIEWER_ITEM_FRAME_FROZEN.value) {
-        break label354;
+      bool1 = bool2;
+      if (i != PTFaceAttr.PTExpression.ALL_VIEWER_ITEM_FRAME_FROZEN.value) {
+        if ((bool2) && (isRightTimeInActionTrigger(paramLong))) {
+          bool1 = true;
+        } else {
+          bool1 = false;
+        }
       }
-      if ((!bool) || (!isRightTimeInActionTrigger(paramLong))) {}
-    }
-    for (;;)
-    {
-      if (k != 0)
+      if (bool1)
       {
         this.mLastTriggerTime = paramLong;
         this.mOffsetTimeFromTrigger = (paramLong - (((Long)this.mBaseOffsetTimeList.get(this.mMvPartIndex)).longValue() + this.mStartTime));
@@ -143,39 +154,38 @@ public class FabbyFilters
           reset(paramLong);
         }
       }
-      this.mLastRenderPartIndex = this.mMvPartIndex;
-      return;
-      k = 0;
-      continue;
+    }
+    else
+    {
       long l1 = this.mStartTime;
       long l2 = this.mOffsetTimeFromTrigger;
       i = 0;
-      label198:
-      if (i < this.fabbyMvFilters.size()) {
-        if (((Long)this.mBaseOffsetTimeList.get(i)).longValue() >= paramLong - l1 - l2) {
-          this.mMvPartIndex = i;
-        }
-      }
-      for (i = j;; i = 1)
+      while (i < this.fabbyMvFilters.size())
       {
-        if (i != 0)
+        if (((Long)this.mBaseOffsetTimeList.get(i)).longValue() >= paramLong - l1 - l2)
         {
-          reset(paramLong);
-          break;
-          i += 1;
-          break label198;
+          this.mMvPartIndex = i;
+          i = j;
+          break label267;
         }
-        if (this.mMvPartIndex == this.mLastRenderPartIndex) {
-          break;
-        }
-        paramLong = this.mStartTime;
-        l1 = ((Long)this.mBaseOffsetTimeList.get(this.mLastRenderPartIndex)).longValue();
-        updateTransitionParam(((FabbyMvFilter)this.fabbyMvFilters.get(this.mLastRenderPartIndex)).mvPart.transitionDuration + (paramLong + l1) + this.mOffsetTimeFromTrigger);
-        break;
+        i += 1;
       }
-      label354:
-      k = bool;
+      i = 1;
+      label267:
+      if (i != 0)
+      {
+        reset(paramLong);
+      }
+      else
+      {
+        i = this.mMvPartIndex;
+        j = this.mLastRenderPartIndex;
+        if (i != j) {
+          updateTransitionParam(this.mStartTime + ((Long)this.mBaseOffsetTimeList.get(j)).longValue() + ((FabbyMvFilter)this.fabbyMvFilters.get(this.mLastRenderPartIndex)).mvPart.transitionDuration + this.mOffsetTimeFromTrigger);
+        }
+      }
     }
+    this.mLastRenderPartIndex = this.mMvPartIndex;
   }
   
   private void updateTransitionParam(long paramLong)
@@ -199,8 +209,9 @@ public class FabbyFilters
     }
     this.transitionFilter.ApplyGLSLFilter(paramString);
     this.mCopyFilter.apply();
-    if (this.mBrushMaskFilter != null) {
-      this.mBrushMaskFilter.ApplyGLSLFilter();
+    paramString = this.mBrushMaskFilter;
+    if (paramString != null) {
+      paramString.ApplyGLSLFilter();
     }
   }
   
@@ -211,25 +222,29 @@ public class FabbyFilters
   
   public void clear()
   {
-    Iterator localIterator = this.fabbyMvFilters.iterator();
-    while (localIterator.hasNext())
+    Object localObject = this.fabbyMvFilters.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      FabbyMvFilter localFabbyMvFilter = (FabbyMvFilter)localIterator.next();
+      FabbyMvFilter localFabbyMvFilter = (FabbyMvFilter)((Iterator)localObject).next();
       if (localFabbyMvFilter != null) {
         localFabbyMvFilter.clear();
       }
     }
-    if (this.mTransitionFrame != null) {
-      this.mTransitionFrame.clear();
+    localObject = this.mTransitionFrame;
+    if (localObject != null) {
+      ((Frame)localObject).clear();
     }
-    if (this.transitionFilter != null) {
-      this.transitionFilter.clearGLSL();
+    localObject = this.transitionFilter;
+    if (localObject != null) {
+      ((TransitionFilter)localObject).clearGLSL();
     }
-    if (this.mCopyFilter != null) {
-      this.mCopyFilter.clearGLSLSelf();
+    localObject = this.mCopyFilter;
+    if (localObject != null) {
+      ((BaseFilter)localObject).clearGLSLSelf();
     }
-    if (this.mDoodlerMaskFrame != null) {
-      this.mDoodlerMaskFrame.clear();
+    localObject = this.mDoodlerMaskFrame;
+    if (localObject != null) {
+      ((Frame)localObject).clear();
     }
   }
   
@@ -247,11 +262,13 @@ public class FabbyFilters
   public void reset()
   {
     this.mStartTime = 0L;
-    if (this.mBrushMaskFilter != null)
+    Object localObject = this.mBrushMaskFilter;
+    if (localObject != null)
     {
-      this.mBrushMaskFilter.reset();
-      if (this.mDoodlerMaskFrame != null) {
-        FrameUtil.clearFrame(this.mDoodlerMaskFrame, 0.0F, 0.0F, 0.0F, 0.0F, this.mDoodlerMaskFrame.width, this.mDoodlerMaskFrame.height);
+      ((BrushMaskFilter)localObject).reset();
+      localObject = this.mDoodlerMaskFrame;
+      if (localObject != null) {
+        FrameUtil.clearFrame((Frame)localObject, 0.0F, 0.0F, 0.0F, 0.0F, ((Frame)localObject).width, this.mDoodlerMaskFrame.height);
       }
     }
   }
@@ -295,9 +312,10 @@ public class FabbyFilters
   
   public void setDoodlerMaskType()
   {
-    if (this.mBrushMaskFilter != null)
+    BrushMaskFilter localBrushMaskFilter = this.mBrushMaskFilter;
+    if (localBrushMaskFilter != null)
     {
-      this.mergeType = this.mBrushMaskFilter.getMaskType();
+      this.mergeType = localBrushMaskFilter.getMaskType();
       if (this.fabbyMvFilters != null)
       {
         int i = 0;
@@ -332,26 +350,26 @@ public class FabbyFilters
   public Frame updateAndRender(Frame paramFrame, Map<Integer, Frame> paramMap, Map<Integer, FaceActionCounter> paramMap1, Set<Integer> paramSet, long paramLong)
   {
     paramMap1 = (FabbyMvFilter)this.fabbyMvFilters.get(this.mMvPartIndex);
-    if ((VideoPrefsUtil.getMaterialMute()) || (this.mAudioPause)) {
-      destroyAudio();
-    }
-    for (;;)
+    if ((!VideoPrefsUtil.getMaterialMute()) && (!this.mAudioPause))
     {
-      updateAndRenderDoodlerMaskFrame(paramFrame);
-      setDoodlerMaskFrame();
-      setDoodlerMaskType();
-      paramFrame = paramMap1.updateAndRender(paramFrame, paramMap, paramLong);
-      if ((paramLong > this.mTransitionDeadLine) || (!this.transitionFilter.needRender())) {
-        break;
-      }
-      this.transitionFilter.updatePreview(paramLong);
-      this.transitionFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.mTransitionFrame);
-      return this.mTransitionFrame;
       if (this.mPlayer == null)
       {
         createAudioPlayer();
         PlayerUtil.seekPlayer(this.mPlayer, (int)((paramLong - this.mStartTime) % 16843160L));
       }
+    }
+    else {
+      destroyAudio();
+    }
+    updateAndRenderDoodlerMaskFrame(paramFrame);
+    setDoodlerMaskFrame();
+    setDoodlerMaskType();
+    paramFrame = paramMap1.updateAndRender(paramFrame, paramMap, paramLong);
+    if ((paramLong <= this.mTransitionDeadLine) && (this.transitionFilter.needRender()))
+    {
+      this.transitionFilter.updatePreview(paramLong);
+      this.transitionFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.mTransitionFrame);
+      return this.mTransitionFrame;
     }
     this.transitionFilter.reset();
     this.mTransitionDeadLine = 0L;
@@ -378,14 +396,16 @@ public class FabbyFilters
       paramSet = new FabbyFaceActionCounter(this.mMvPartIndex, paramLong);
       paramSet.scaleMap = ((FabbyMvFilter)this.fabbyMvFilters.get(this.mMvPartIndex)).getGridScaleMap();
       paramMap.put(Integer.valueOf(PTFaceAttr.PTExpression.MV_PART_INDEX.value), paramSet);
-    }
-    while (!(paramSet instanceof FabbyFaceActionCounter)) {
       return;
     }
-    paramMap = (FabbyFaceActionCounter)paramSet;
-    paramMap.count = this.mMvPartIndex;
-    paramMap.updateTime = paramLong;
-    paramMap.scaleMap = ((FabbyMvFilter)this.fabbyMvFilters.get(this.mMvPartIndex)).getGridScaleMap();
+    if ((paramSet instanceof FabbyFaceActionCounter))
+    {
+      paramMap = (FabbyFaceActionCounter)paramSet;
+      int i = this.mMvPartIndex;
+      paramMap.count = i;
+      paramMap.updateTime = paramLong;
+      paramMap.scaleMap = ((FabbyMvFilter)this.fabbyMvFilters.get(i)).getGridScaleMap();
+    }
   }
   
   public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
@@ -398,7 +418,7 @@ public class FabbyFilters
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.FabbyFilters
  * JD-Core Version:    0.7.0.1
  */

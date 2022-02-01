@@ -6,7 +6,7 @@ import android.util.DisplayMetrics;
 
 public class HeartAnimator$Config
 {
-  public static float b;
+  public static float b = 1.0F;
   public float a;
   public int a;
   public boolean a;
@@ -23,11 +23,6 @@ public class HeartAnimator$Config
   public int j = 3000;
   public int k;
   public int l;
-  
-  static
-  {
-    jdField_b_of_type_Float = 1.0F;
-  }
   
   private HeartAnimator$Config()
   {
@@ -48,19 +43,21 @@ public class HeartAnimator$Config
     this.jdField_c_of_type_Float = 1.0F;
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_Float = paramHeartLayout.getContext().getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_Int = ((int)((paramHeartLayout.getWidth() - this.jdField_a_of_type_Float * 32.0F) / 2.0F));
-    this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Float * 27.0F));
-    this.h = ((int)(this.jdField_a_of_type_Float * 32.0F));
-    this.i = ((int)(this.jdField_a_of_type_Float * 27.0F));
-    this.jdField_c_of_type_Int = ((int)(this.jdField_a_of_type_Float * 20.0F));
-    this.d = ((int)(this.jdField_a_of_type_Float * 10.0F));
-    this.f = ((int)(this.jdField_a_of_type_Float * 150.0F));
-    this.g = ((int)(this.jdField_a_of_type_Float * 300.0F));
+    float f1 = paramHeartLayout.getWidth();
+    float f2 = this.jdField_a_of_type_Float;
+    this.jdField_a_of_type_Int = ((int)((f1 - f2 * 32.0F) / 2.0F));
+    this.jdField_b_of_type_Int = ((int)(f2 * 27.0F));
+    this.h = ((int)(32.0F * f2));
+    this.i = ((int)(27.0F * f2));
+    this.jdField_c_of_type_Int = ((int)(20.0F * f2));
+    this.d = ((int)(10.0F * f2));
+    this.f = ((int)(150.0F * f2));
+    this.g = ((int)(f2 * 300.0F));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.anim.HeartAnimator.Config
  * JD-Core Version:    0.7.0.1
  */

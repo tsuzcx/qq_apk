@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.apollo.script;
 
-import com.tencent.mobileqq.apollo.api.script.ISpriteBridge;
-import com.tencent.mobileqq.apollo.api.script.SpriteTaskParam;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.BlockingDeque;
 
@@ -17,7 +15,7 @@ class SpriteTaskHandler$1
     if ((localISpriteBridge != null) && (localSpriteTaskParam != null))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("cmshow_scripted_SpriteTaskHandler", 2, new Object[] { "[addTask] not play current task, actionId:", Integer.valueOf(localSpriteTaskParam.f), ",but delay play" });
+        QLog.d("[cmshow][scripted]SpriteTaskHandler", 2, new Object[] { "[addTask] not play current task, actionId:", Integer.valueOf(localSpriteTaskParam.f), ",but delay play" });
       }
       localISpriteBridge.b(localSpriteTaskParam);
     }
@@ -25,7 +23,7 @@ class SpriteTaskHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteTaskHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -22,14 +22,16 @@ final class OperatorMerge$MergeProducer<T>
   
   public void request(long paramLong)
   {
-    if (paramLong > 0L) {
-      if (get() != 9223372036854775807L) {}
-    }
-    while (paramLong >= 0L)
+    if (paramLong > 0L)
     {
-      return;
+      if (get() == 9223372036854775807L) {
+        return;
+      }
       BackpressureUtils.getAndAddRequest(this, paramLong);
       this.subscriber.emit();
+      return;
+    }
+    if (paramLong >= 0L) {
       return;
     }
     throw new IllegalArgumentException("n >= 0 required");
@@ -37,7 +39,7 @@ final class OperatorMerge$MergeProducer<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorMerge.MergeProducer
  * JD-Core Version:    0.7.0.1
  */

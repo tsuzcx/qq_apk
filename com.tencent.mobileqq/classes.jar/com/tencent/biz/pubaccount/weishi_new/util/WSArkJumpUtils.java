@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import com.google.gson.Gson;
 import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageOpenParams;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.report.WSArkBeaconReport;
 import com.tencent.biz.qqstory.utils.WeishiGuideUtils;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -24,46 +25,42 @@ public class WSArkJumpUtils
 {
   private static stSimpleMetaFeed a(String paramString)
   {
-    stSimpleMetaFeed localstSimpleMetaFeed = null;
     try
     {
       paramString = new JSONObject(paramString);
-      Gson localGson = new Gson();
-      localstSimpleMetaFeed = new stSimpleMetaFeed();
-      if (paramString != null)
-      {
-        localstSimpleMetaFeed.id = paramString.optString("id");
-        localstSimpleMetaFeed.ding_count = paramString.optInt("dingCount");
-        localstSimpleMetaFeed.is_ding = paramString.optInt("isDing");
-        localstSimpleMetaFeed.total_comment_num = paramString.optInt("commentNum");
-        localstSimpleMetaFeed.material_desc = paramString.optString("materialDesc");
-        localstSimpleMetaFeed.material_thumburl = paramString.optString("materialThumburl");
-        localstSimpleMetaFeed.feed_desc = paramString.optString("feedDesc");
-        localstSimpleMetaFeed.video = ((stMetaUgcVideoSeg)localGson.fromJson(paramString.optJSONObject("video").toString(), stMetaUgcVideoSeg.class));
-        localstSimpleMetaFeed.video_url = paramString.optString("videoUrl");
-        ArrayList localArrayList = new ArrayList();
-        stMetaUgcImage localstMetaUgcImage = new stMetaUgcImage();
-        localstMetaUgcImage.url = paramString.optString("coverUrl");
-        localstMetaUgcImage.height = paramString.optInt("coverHeight");
-        localstMetaUgcImage.width = paramString.optInt("coverWidth");
-        localArrayList.add(localstMetaUgcImage);
-        localstSimpleMetaFeed.images = localArrayList;
-        localstSimpleMetaFeed.poster_id = paramString.optString("posterId");
-        localstSimpleMetaFeed.poster = ((stSimpleMetaPerson)localGson.fromJson(paramString.optJSONObject("poster").toString(), stSimpleMetaPerson.class));
-        paramString = new stFloatingLayerCardStyle();
-        paramString.cardType = 3;
-        localstSimpleMetaFeed.floatingLayerCardStyle = paramString;
-      }
-      return localstSimpleMetaFeed;
     }
     catch (JSONException paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = localstSimpleMetaFeed;
-      }
+      paramString.printStackTrace();
+      paramString = null;
     }
+    Gson localGson = new Gson();
+    stSimpleMetaFeed localstSimpleMetaFeed = new stSimpleMetaFeed();
+    if (paramString != null)
+    {
+      localstSimpleMetaFeed.id = paramString.optString("id");
+      localstSimpleMetaFeed.ding_count = paramString.optInt("dingCount");
+      localstSimpleMetaFeed.is_ding = paramString.optInt("isDing");
+      localstSimpleMetaFeed.total_comment_num = paramString.optInt("commentNum");
+      localstSimpleMetaFeed.material_desc = paramString.optString("materialDesc");
+      localstSimpleMetaFeed.material_thumburl = paramString.optString("materialThumburl");
+      localstSimpleMetaFeed.feed_desc = paramString.optString("feedDesc");
+      localstSimpleMetaFeed.video = ((stMetaUgcVideoSeg)localGson.fromJson(paramString.optJSONObject("video").toString(), stMetaUgcVideoSeg.class));
+      localstSimpleMetaFeed.video_url = paramString.optString("videoUrl");
+      ArrayList localArrayList = new ArrayList();
+      stMetaUgcImage localstMetaUgcImage = new stMetaUgcImage();
+      localstMetaUgcImage.url = paramString.optString("coverUrl");
+      localstMetaUgcImage.height = paramString.optInt("coverHeight");
+      localstMetaUgcImage.width = paramString.optInt("coverWidth");
+      localArrayList.add(localstMetaUgcImage);
+      localstSimpleMetaFeed.images = localArrayList;
+      localstSimpleMetaFeed.poster_id = paramString.optString("posterId");
+      localstSimpleMetaFeed.poster = ((stSimpleMetaPerson)localGson.fromJson(paramString.optJSONObject("poster").toString(), stSimpleMetaPerson.class));
+      paramString = new stFloatingLayerCardStyle();
+      paramString.cardType = 3;
+      localstSimpleMetaFeed.floatingLayerCardStyle = paramString;
+    }
+    return localstSimpleMetaFeed;
   }
   
   @Nullable
@@ -76,12 +73,11 @@ public class WSArkJumpUtils
       return null;
     }
     paramJSONObject = a(paramJSONObject);
-    if ((paramJSONObject == null) || (TextUtils.isEmpty(paramJSONObject.id)) || (TextUtils.isEmpty(paramJSONObject.poster_id)))
-    {
-      WSLog.d("ArkJumpUtils", "[ArkJumpUtils.java][getStSimpleMetaFeed] err, feed is err!");
-      return null;
+    if ((paramJSONObject != null) && (!TextUtils.isEmpty(paramJSONObject.id)) && (!TextUtils.isEmpty(paramJSONObject.poster_id))) {
+      return paramJSONObject;
     }
-    return paramJSONObject;
+    WSLog.d("ArkJumpUtils", "[ArkJumpUtils.java][getStSimpleMetaFeed] err, feed is err!");
+    return null;
   }
   
   private static ArrayList<stSimpleMetaFeed> a(stSimpleMetaFeed paramstSimpleMetaFeed)
@@ -105,54 +101,60 @@ public class WSArkJumpUtils
     }
     catch (JSONException paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = null;
-      }
+      paramString.printStackTrace();
     }
+    return null;
   }
   
   private static void a(stSimpleMetaFeed paramstSimpleMetaFeed, Context paramContext)
   {
-    if ((paramContext == null) || (paramstSimpleMetaFeed == null)) {
-      return;
+    if (paramContext != null)
+    {
+      if (paramstSimpleMetaFeed == null) {
+        return;
+      }
+      paramstSimpleMetaFeed = a(paramstSimpleMetaFeed);
+      WSVerticalPageFragment.a(new WSVerticalPageOpenParams(paramContext, "qqchat", "qqchat").a(paramstSimpleMetaFeed).a(true));
     }
-    WSVerticalPageFragment.a(paramContext, "qqchat", "qqchat", a(paramstSimpleMetaFeed), 0, true);
   }
   
   public static void a(String paramString1, String paramString2)
   {
-    WSLog.e("ArkJumpUtils", "[ArkJumpUtils.java][handleArkJump] path:" + paramString1 + ", metaJson:" + paramString2);
-    Object localObject = a(paramString2);
-    if (localObject != null)
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("[ArkJumpUtils.java][handleArkJump] path:");
+    ((StringBuilder)localObject1).append(paramString1);
+    ((StringBuilder)localObject1).append(", metaJson:");
+    ((StringBuilder)localObject1).append(paramString2);
+    WSLog.e("ArkJumpUtils", ((StringBuilder)localObject1).toString());
+    Object localObject2 = a(paramString2);
+    if (localObject2 != null)
     {
-      paramString1 = a((JSONObject)localObject);
-      if (paramString1 != null) {}
+      paramString1 = a((JSONObject)localObject2);
+      if (paramString1 != null)
+      {
+        WSInitializeHelper.a().a();
+        WSInitializeHelper.a().c();
+        paramString2 = ((JSONObject)localObject2).optString("groupNum");
+        localObject1 = ((JSONObject)localObject2).optString("jumpType");
+        localObject2 = ((JSONObject)localObject2).optString("schema");
+        if ((TextUtils.equals((CharSequence)localObject1, "jumpApp")) && (!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).startsWith("weishi://")) && (WeishiGuideUtils.a(BaseApplicationImpl.getContext())))
+        {
+          WeishiScehmeUtil.a(QBaseActivity.sTopActivity, "biz_src_jc_gzh_weishi", (String)localObject2);
+          WSArkBeaconReport.a(paramString2, 1000003, paramString1);
+          return;
+        }
+        a(paramString1, QBaseActivity.sTopActivity);
+        WSArkBeaconReport.a(paramString2, 1000001, paramString1);
+        WSPublicAccReport.getInstance().enterPublicAccReport(null, 2, "from_qq_chat", null);
+        return;
+      }
     }
-    else
-    {
-      ToastUtil.a().a("请求失败，请稍后再试");
-      return;
-    }
-    WSInitializeHelper.a().a();
-    paramString2 = ((JSONObject)localObject).optString("groupNum");
-    String str = ((JSONObject)localObject).optString("jumpType");
-    localObject = ((JSONObject)localObject).optString("schema");
-    if ((TextUtils.equals(str, "jumpApp")) && (!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).startsWith("weishi://")) && (WeishiGuideUtils.a(BaseApplicationImpl.getContext())))
-    {
-      WeishiScehmeUtil.a(QBaseActivity.sTopActivity, "biz_src_jc_gzh_weishi", (String)localObject);
-      WSArkBeaconReport.a(paramString2, 1000003, paramString1);
-      return;
-    }
-    a(paramString1, QBaseActivity.sTopActivity);
-    WSArkBeaconReport.a(paramString2, 1000001, paramString1);
-    WSPublicAccReport.getInstance().enterPublicAccReport(null, 2, "from_qq_chat");
+    ToastUtil.a().a("请求失败，请稍后再试");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WSArkJumpUtils
  * JD-Core Version:    0.7.0.1
  */

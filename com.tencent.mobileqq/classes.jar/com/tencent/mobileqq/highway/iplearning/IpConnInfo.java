@@ -35,12 +35,21 @@ public class IpConnInfo
   
   public String toString()
   {
-    return "_IpConnInfo_ Host:" + this.mHost + " Succ:" + this.isConnSucc + " Fail:" + this.iFailCount + " Time:" + this.lLastSuccTimeMills;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("_IpConnInfo_ Host:");
+    localStringBuilder.append(this.mHost);
+    localStringBuilder.append(" Succ:");
+    localStringBuilder.append(this.isConnSucc);
+    localStringBuilder.append(" Fail:");
+    localStringBuilder.append(this.iFailCount);
+    localStringBuilder.append(" Time:");
+    localStringBuilder.append(this.lLastSuccTimeMills);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.iplearning.IpConnInfo
  * JD-Core Version:    0.7.0.1
  */

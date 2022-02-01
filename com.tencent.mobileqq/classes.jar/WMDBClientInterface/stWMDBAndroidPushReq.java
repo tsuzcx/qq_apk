@@ -34,17 +34,19 @@ public final class stWMDBAndroidPushReq
   {
     paramJceOutputStream.write(this.pushVersion, 0);
     paramJceOutputStream.write(this.richFlagMask, 1);
-    if (this.province != null) {
-      paramJceOutputStream.write(this.province, 2);
+    String str = this.province;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.city != null) {
-      paramJceOutputStream.write(this.city, 3);
+    str = this.city;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     WMDBClientInterface.stWMDBAndroidPushReq
  * JD-Core Version:    0.7.0.1
  */

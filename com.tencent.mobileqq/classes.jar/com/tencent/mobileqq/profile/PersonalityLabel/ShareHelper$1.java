@@ -22,56 +22,52 @@ class ShareHelper$1
       this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.getActionSheet().dismiss();
     }
     int i;
-    if ((paramLong == 2L) || (paramLong == 3L)) {
+    if ((paramLong == 2L) || (paramLong == 3L))
+    {
       if (!WXShareHelper.a().a()) {
-        i = 2131720753;
+        i = 2131720478;
+      } else if (!WXShareHelper.a().b()) {
+        i = 2131720479;
+      } else {
+        i = -1;
+      }
+      if (i != -1)
+      {
+        QRUtils.a(1, i);
+        break label223;
       }
     }
-    for (;;)
+    if ((this.a.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.a.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
     {
-      if (i != -1) {
-        QRUtils.a(1, i);
-      }
-      for (;;)
+      this.a.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$OnUseResListener.a(true);
+      i = (int)paramLong;
+      if (i != 0)
       {
-        EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-        return;
-        if (WXShareHelper.a().b()) {
-          break label233;
-        }
-        i = 2131720754;
-        break;
-        if ((this.a.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.a.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+        if (i != 1)
         {
-          QRUtils.a(1, 2131699029);
-        }
-        else
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$OnUseResListener.a(true);
-          switch ((int)paramLong)
-          {
-          default: 
-            break;
-          case 0: 
-            ThreadManager.postImmediately(new ShareHelper.1.1(this), null, true);
-            break;
-          case 1: 
-            ThreadManager.postImmediately(new ShareHelper.1.2(this), null, true);
-            break;
-          case 2: 
-          case 3: 
+          if ((i == 2) || (i == 3)) {
             ThreadManager.postImmediately(new ShareHelper.1.3(this, paramLong), null, true);
           }
         }
+        else {
+          ThreadManager.postImmediately(new ShareHelper.1.2(this), null, true);
+        }
       }
-      label233:
-      i = -1;
+      else {
+        ThreadManager.postImmediately(new ShareHelper.1.1(this), null, true);
+      }
     }
+    else
+    {
+      QRUtils.a(1, 2131699133);
+    }
+    label223:
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1
  * JD-Core Version:    0.7.0.1
  */

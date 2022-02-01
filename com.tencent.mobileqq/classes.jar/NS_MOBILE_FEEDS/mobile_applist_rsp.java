@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -99,37 +100,45 @@ public final class mobile_applist_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.all_applist_data != null) {
-      paramJceOutputStream.write(this.all_applist_data, 0);
+    Object localObject = this.all_applist_data;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
     paramJceOutputStream.write(this.hasmore, 1);
     paramJceOutputStream.write(this.remain_count, 2);
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 3);
+    localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.auto_load, 4);
-    if (this.share_album != null) {
-      paramJceOutputStream.write(this.share_album, 5);
+    localObject = this.share_album;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
     paramJceOutputStream.write(this.lossy_service, 7);
-    if (this.extend_info != null) {
-      paramJceOutputStream.write(this.extend_info, 8);
+    localObject = this.extend_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 8);
     }
     paramJceOutputStream.write(this.album_count, 9);
     paramJceOutputStream.write(this.photo_count, 10);
     paramJceOutputStream.write(this.video_count, 11);
-    if (this.stMemoryInfo != null) {
-      paramJceOutputStream.write(this.stMemoryInfo, 12);
+    localObject = this.stMemoryInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 12);
     }
-    if (this.mapEx != null) {
-      paramJceOutputStream.write(this.mapEx, 13);
+    localObject = this.mapEx;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 13);
     }
     paramJceOutputStream.write(this.shuoshuo_timer_unpublished_count, 14);
-    if (this.life_moment_info != null) {
-      paramJceOutputStream.write(this.life_moment_info, 15);
+    localObject = this.life_moment_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 15);
     }
-    if (this.album_area_info != null) {
-      paramJceOutputStream.write(this.album_area_info, 16);
+    localObject = this.album_area_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 16);
     }
     paramJceOutputStream.write(this.kantu_album_count, 17);
     paramJceOutputStream.write(this.dailyShuoShuoCount, 18);
@@ -137,7 +146,7 @@ public final class mobile_applist_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_applist_rsp
  * JD-Core Version:    0.7.0.1
  */

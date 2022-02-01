@@ -33,15 +33,16 @@ public final class ProtocolVideoState$GameCircleSetVideoSwitchResp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 48, 56, 64, 74 }, new String[] { "Result", "uuid", "sessionid", "OperType", "LiveType", "VideoChanel", "VideoID", "session_groupid", "ErrMsg" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3 }, GameCircleSetVideoSwitchResp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 48, 56, 64, 74 }, new String[] { "Result", "uuid", "sessionid", "OperType", "LiveType", "VideoChanel", "VideoID", "session_groupid", "ErrMsg" }, new Object[] { localInteger, localByteStringMicro1, localByteStringMicro2, localInteger, localInteger, localInteger, localInteger, localInteger, localByteStringMicro3 }, GameCircleSetVideoSwitchResp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avplayerservice.push.ProtocolVideoState.GameCircleSetVideoSwitchResp
  * JD-Core Version:    0.7.0.1
  */

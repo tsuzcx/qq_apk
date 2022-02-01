@@ -22,12 +22,13 @@ public final class value$HwCommentInfo
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 48 }, new String[] { "id", "text", "multi_media", "createts", "modifyts", "uin" }, new Object[] { "", localByteStringMicro, null, Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L) }, HwCommentInfo.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 48 }, new String[] { "id", "text", "multi_media", "createts", "modifyts", "uin" }, new Object[] { "", localByteStringMicro, null, localLong, localLong, localLong }, HwCommentInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protofile.group_homework.value.HwCommentInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -52,37 +52,50 @@ public class SearchRecommendAdapter
   {
     if (this.appList.size() == 0)
     {
-      QLog.e("SearchRecommendAdapter", 1, "onBindViewHolder, size = " + this.appList.size());
+      paramViewHolder = new StringBuilder();
+      paramViewHolder.append("onBindViewHolder, size = ");
+      paramViewHolder.append(this.appList.size());
+      QLog.e("SearchRecommendAdapter", 1, paramViewHolder.toString());
       return;
     }
-    switch (getItemViewType(paramInt))
+    int i = getItemViewType(paramInt);
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      ((SearchRecommendAdapter.TitleViewHolder)paramViewHolder).update((TitleInfo)this.appList.get(paramInt));
-      return;
-    case 2: 
-    case 4: 
+      if (i != 2) {
+        if (i != 3)
+        {
+          if (i == 4) {}
+        }
+        else
+        {
+          ((SearchRecommendAdapter.LiveViewHolder)paramViewHolder).update((LiveInfo)this.appList.get(paramInt), this.mRefer);
+          return;
+        }
+      }
       ((SearchRecommendAdapter.PlayingViewHolder)paramViewHolder).update((SearchInfo)this.appList.get(paramInt), (Activity)this.mActivityReference.get(), this.mRefer);
       return;
     }
-    ((SearchRecommendAdapter.LiveViewHolder)paramViewHolder).update((LiveInfo)this.appList.get(paramInt), this.mRefer);
+    ((SearchRecommendAdapter.TitleViewHolder)paramViewHolder).update((TitleInfo)this.appList.get(paramInt));
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return null;
-    case 1: 
-      return new SearchRecommendAdapter.TitleViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559520, paramViewGroup, false));
-    case 2: 
-    case 4: 
-      return new SearchRecommendAdapter.PlayingViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559518, paramViewGroup, false));
+      if (paramInt != 2) {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4) {
+            return null;
+          }
+        }
+        else {
+          return new SearchRecommendAdapter.LiveViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559391, paramViewGroup, false));
+        }
+      }
+      return new SearchRecommendAdapter.PlayingViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559392, paramViewGroup, false));
     }
-    return new SearchRecommendAdapter.LiveViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559517, paramViewGroup, false));
+    return new SearchRecommendAdapter.TitleViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559394, paramViewGroup, false));
   }
   
   public void onHotSearchDataChanged()
@@ -99,7 +112,7 @@ public class SearchRecommendAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.ui.SearchRecommendAdapter
  * JD-Core Version:    0.7.0.1
  */

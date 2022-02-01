@@ -6,22 +6,23 @@ import com.tencent.mobileqq.transfile.api.impl.HttpEngineServiceImpl;
 
 public class AVNetEngine
 {
-  private static IHttpEngineService a = null;
+  private static IHttpEngineService a;
   
   public static IHttpEngineService a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null)
+    if (a == null) {
+      try
       {
-        HttpCommunicator localHttpCommunicator = new HttpCommunicator(128);
-        localHttpCommunicator.start();
-        a = new HttpEngineServiceImpl(localHttpCommunicator, true);
+        if (a == null)
+        {
+          HttpCommunicator localHttpCommunicator = new HttpCommunicator(128);
+          localHttpCommunicator.start();
+          a = new HttpEngineServiceImpl(localHttpCommunicator, true);
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
 }
 

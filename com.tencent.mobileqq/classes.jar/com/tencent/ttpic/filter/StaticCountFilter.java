@@ -20,23 +20,19 @@ public class StaticCountFilter
   
   protected void updateTextureParam(int paramInt, long paramLong)
   {
-    paramInt = 0;
     if (this.item.id.equals("shi")) {
       paramInt = this.shooKCount / 10;
+    } else if (this.item.id.equals("ge")) {
+      paramInt = this.shooKCount % 10;
+    } else {
+      paramInt = 0;
     }
-    for (;;)
-    {
-      super.updateTextureParam(paramInt, paramLong);
-      return;
-      if (this.item.id.equals("ge")) {
-        paramInt = this.shooKCount % 10;
-      }
-    }
+    super.updateTextureParam(paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.StaticCountFilter
  * JD-Core Version:    0.7.0.1
  */

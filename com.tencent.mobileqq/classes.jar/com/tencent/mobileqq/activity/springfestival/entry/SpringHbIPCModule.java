@@ -30,95 +30,99 @@ public class SpringHbIPCModule
   
   public static SpringHbIPCModule a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new SpringHbIPCModule();
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new SpringHbIPCModule();
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   private static EIPCResult a(AppRuntime paramAppRuntime)
   {
     try
     {
-      if ((paramAppRuntime instanceof QQAppInterface)) {}
-      for (boolean bool = ((QQAppInterface)paramAppRuntime).isVideoChatting();; bool = false)
+      boolean bool;
+      if ((paramAppRuntime instanceof QQAppInterface))
       {
-        paramAppRuntime = new Bundle();
-        paramAppRuntime.putBoolean("isVideoChatting", bool);
-        return EIPCResult.createSuccessResult(paramAppRuntime);
-        QLog.e("SpringHbIPCModule", 1, "doGetIsVideoChatting appRuntime is not QQAppInterface");
+        bool = ((QQAppInterface)paramAppRuntime).isVideoChatting();
       }
-      return EIPCResult.createSuccessResult(paramAppRuntime);
+      else
+      {
+        QLog.e("SpringHbIPCModule", 1, "doGetIsVideoChatting appRuntime is not QQAppInterface");
+        bool = false;
+      }
+      paramAppRuntime = new Bundle();
+      paramAppRuntime.putBoolean("isVideoChatting", bool);
+      paramAppRuntime = EIPCResult.createSuccessResult(paramAppRuntime);
+      return paramAppRuntime;
     }
     catch (Exception paramAppRuntime)
     {
-      paramAppRuntime = new Bundle();
-      paramAppRuntime.putBoolean("isVideoChatting", false);
+      label50:
+      break label50;
     }
+    paramAppRuntime = new Bundle();
+    paramAppRuntime.putBoolean("isVideoChatting", false);
+    return EIPCResult.createSuccessResult(paramAppRuntime);
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    Object localObject2 = null;
-    Bundle localBundle = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("SpringHbIPCModule", 2, "action = " + paramString + ", params = " + paramBundle);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("action = ");
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append(", params = ");
+      ((StringBuilder)localObject1).append(paramBundle);
+      QLog.d("SpringHbIPCModule", 2, ((StringBuilder)localObject1).toString());
     }
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    Object localObject1 = localBundle;
+    Object localObject1 = null;
+    Object localObject2 = null;
     if (localAppRuntime != null)
     {
-      if ((localAppRuntime instanceof QQAppInterface)) {
-        break label78;
+      if (!(localAppRuntime instanceof QQAppInterface)) {
+        return null;
       }
-      localObject1 = localBundle;
-    }
-    label78:
-    label362:
-    do
-    {
-      do
+      if ("ReportData".equals(paramString))
       {
-        do
+        paramString = (SpringHbReportManager.ReportInfo)paramBundle.getSerializable("key1");
+        paramBundle = (SpringHbReportManager)((QQAppInterface)localAppRuntime).getManager(QQManagerFactory.SPRING_HB_REPORT_MANAGER);
+        if (paramBundle != null)
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                return localObject1;
-                if (!"ReportData".equals(paramString)) {
-                  break;
-                }
-                paramString = (SpringHbReportManager.ReportInfo)paramBundle.getSerializable("key1");
-                paramBundle = (SpringHbReportManager)((QQAppInterface)localAppRuntime).getManager(QQManagerFactory.SPRING_HB_REPORT_MANAGER);
-                localObject1 = localBundle;
-              } while (paramBundle == null);
-              paramBundle.a(paramString);
-              return null;
-              localObject1 = localBundle;
-            } while ("GetDomain".equals(paramString));
-            localObject1 = localBundle;
-          } while ("GetEmergencyInfo".equals(paramString));
-          localObject1 = localBundle;
-        } while ("GetHtmlOffline".equals(paramString));
+          paramBundle.a(paramString);
+          return null;
+        }
+      }
+      else
+      {
+        if ("GetDomain".equals(paramString)) {
+          return null;
+        }
+        if ("GetEmergencyInfo".equals(paramString)) {
+          return null;
+        }
+        if ("GetHtmlOffline".equals(paramString)) {
+          return null;
+        }
         if ("GetCfgInfo".equals(paramString))
         {
           paramString = (SpringFestivalRedpacketConfigManager)localAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_RED_PACKET_MANAGER);
-          if (paramString == null) {}
-          for (paramString = null;; paramString = paramString.a())
+          if (paramString == null) {
+            paramString = (String)localObject2;
+          } else {
+            paramString = paramString.a();
+          }
+          paramBundle = new EIPCResult();
+          localObject1 = new Bundle();
+          if (paramString != null)
           {
-            paramBundle = new EIPCResult();
-            localObject1 = new Bundle();
-            if (paramString == null) {
-              break;
-            }
             ((Bundle)localObject1).putInt("task_id", paramString.taskId);
             ((Bundle)localObject1).putInt("cfg_version", paramString.version);
             ((Bundle)localObject1).putSerializable("cfg_data", paramString);
@@ -133,25 +137,22 @@ public class SpringHbIPCModule
         {
           paramString = paramBundle.getString("url", "");
           paramBundle = (IPreloadRes)localAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER);
-          if (paramBundle == null)
+          if (paramBundle == null) {
+            paramString = (String)localObject1;
+          } else {
+            paramString = paramBundle.b(paramString);
+          }
+          paramBundle = new EIPCResult();
+          localObject1 = new Bundle();
+          if (!TextUtils.isEmpty(paramString))
           {
-            paramString = localObject2;
-            paramBundle = new EIPCResult();
-            localObject1 = new Bundle();
-            if (TextUtils.isEmpty(paramString)) {
-              break label362;
-            }
             ((Bundle)localObject1).putString("file_path", paramString);
             paramBundle.data = ((Bundle)localObject1);
-          }
-          for (;;)
-          {
             return paramBundle;
-            paramString = paramBundle.b(paramString);
-            break;
-            paramBundle.data = ((Bundle)localObject1);
-            paramBundle.code = -102;
           }
+          paramBundle.data = ((Bundle)localObject1);
+          paramBundle.code = -102;
+          return paramBundle;
         }
         if ("removeEntryLoadingAnimationView".equals(paramString))
         {
@@ -159,73 +160,88 @@ public class SpringHbIPCModule
           ThreadManager.getUIHandler().postDelayed(new SpringHbIPCModule.1(this), 1000L);
           return EIPCResult.createSuccessResult(new Bundle());
         }
-        if (!"GetActivityPref".equals(paramString)) {
-          break;
-        }
-        localObject1 = (SpringFestivalEntryManager)localAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER);
-        paramString = new EIPCResult();
-        paramBundle = new Bundle();
-        if (((SpringFestivalEntryManager)localObject1).a() != null)
+        if ("GetActivityPref".equals(paramString))
         {
-          localObject1 = ((SpringFestivalEntryManager)localObject1).a().commonData.activityUrlPrefix;
-          if (QLog.isColorLevel()) {
-            QLog.d("SpringHbIPCModule onCall ACTION_GET_ACTIVITY_PREF_INFO ", 2, "activityPrefix " + (String)localObject1);
+          localObject1 = (SpringFestivalEntryManager)localAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER);
+          paramString = new EIPCResult();
+          paramBundle = new Bundle();
+          if (((SpringFestivalEntryManager)localObject1).a() != null)
+          {
+            localObject1 = ((SpringFestivalEntryManager)localObject1).a().commonData.activityUrlPrefix;
+            if (QLog.isColorLevel())
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("activityPrefix ");
+              ((StringBuilder)localObject2).append((String)localObject1);
+              QLog.d("SpringHbIPCModule onCall ACTION_GET_ACTIVITY_PREF_INFO ", 2, ((StringBuilder)localObject2).toString());
+            }
+            paramBundle.putString("activity_pref", (String)localObject1);
+            paramString.data = paramBundle;
           }
-          paramBundle.putString("activity_pref", (String)localObject1);
-          paramString.data = paramBundle;
+          if (QLog.isColorLevel())
+          {
+            paramBundle = new StringBuilder();
+            paramBundle.append("result.data ");
+            paramBundle.append(paramString.data);
+            QLog.d("SpringHbIPCModule onCall ", 2, paramBundle.toString());
+          }
+          return paramString;
         }
-        localObject1 = paramString;
-      } while (!QLog.isColorLevel());
-      QLog.d("SpringHbIPCModule onCall ", 2, "result.data " + paramString.data);
-      return paramString;
-      if ("GetServerTime".equals(paramString)) {
-        return new EIPCResult();
+        if ("GetServerTime".equals(paramString)) {
+          return new EIPCResult();
+        }
+        if ("getIsVideoChatting".equals(paramString)) {
+          return a(localAppRuntime);
+        }
+        if ("getAward".equals(paramString))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("SpringHbIPCModule", 2, "onCall ACTION_GET_AWARD = getAward");
+          }
+          paramBundle = (SpringFestivalEntryManager)localAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER);
+          localObject1 = paramBundle.a();
+          paramString = new EIPCResult();
+          if (localObject1 != null)
+          {
+            localObject2 = new Bundle();
+            ((Bundle)localObject2).putInt("k_c_time", ((RedPacketResultData)localObject1).jdField_c_of_type_Int);
+            ((Bundle)localObject2).putInt("key_mtime", ((RedPacketResultData)localObject1).jdField_f_of_type_Int);
+            ((Bundle)localObject2).putInt("k_money", ((RedPacketResultData)localObject1).jdField_d_of_type_Int);
+            ((Bundle)localObject2).putInt("key_award_type", ((RedPacketResultData)localObject1).jdField_b_of_type_Int);
+            ((Bundle)localObject2).putInt("key_promotion_id", ((RedPacketResultData)localObject1).jdField_g_of_type_Int);
+            ((Bundle)localObject2).putInt("key_business_id", ((RedPacketResultData)localObject1).jdField_e_of_type_Int);
+            ((Bundle)localObject2).putInt("k_state", ((RedPacketResultData)localObject1).jdField_a_of_type_Int);
+            ((Bundle)localObject2).putInt("cardStyle", paramBundle.a().commonData.cardStyle);
+            ((Bundle)localObject2).putString("key_signature", ((RedPacketResultData)localObject1).jdField_b_of_type_JavaLangString);
+            ((Bundle)localObject2).putString("key_req_id", ((RedPacketResultData)localObject1).jdField_f_of_type_JavaLangString);
+            ((Bundle)localObject2).putString("k_pack_id", ((RedPacketResultData)localObject1).jdField_a_of_type_JavaLangString);
+            ((Bundle)localObject2).putString("key_wishing", ((RedPacketResultData)localObject1).jdField_e_of_type_JavaLangString);
+            ((Bundle)localObject2).putString("key_order", ((RedPacketResultData)localObject1).jdField_d_of_type_JavaLangString);
+            ((Bundle)localObject2).putString("key_url", ((RedPacketResultData)localObject1).jdField_c_of_type_JavaLangString);
+            ((Bundle)localObject2).putString("key_business_name", ((RedPacketResultData)localObject1).jdField_g_of_type_JavaLangString);
+            ((Bundle)localObject2).putString("key_business_logo", ((RedPacketResultData)localObject1).h);
+            ((Bundle)localObject2).putString("key_business_cover", ((RedPacketResultData)localObject1).j);
+            ((Bundle)localObject2).putString("key_business_video", ((RedPacketResultData)localObject1).i);
+            ((Bundle)localObject2).putString("key_business_video_cover", ((RedPacketResultData)localObject1).k);
+            paramString.data = ((Bundle)localObject2);
+          }
+          if (QLog.isColorLevel())
+          {
+            paramBundle = new StringBuilder();
+            paramBundle.append("onCall result.data = ");
+            paramBundle.append(paramString.data.toString());
+            QLog.i("SpringHbIPCModule", 2, paramBundle.toString());
+          }
+          callbackResult(paramInt, paramString);
+        }
       }
-      if ("getIsVideoChatting".equals(paramString)) {
-        return a(localAppRuntime);
-      }
-      localObject1 = localBundle;
-    } while (!"getAward".equals(paramString));
-    if (QLog.isColorLevel()) {
-      QLog.i("SpringHbIPCModule", 2, "onCall ACTION_GET_AWARD = getAward");
     }
-    paramString = (SpringFestivalEntryManager)localAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER);
-    paramBundle = paramString.a();
-    localObject1 = new EIPCResult();
-    if (paramBundle != null)
-    {
-      localBundle = new Bundle();
-      localBundle.putInt("k_c_time", paramBundle.jdField_c_of_type_Int);
-      localBundle.putInt("key_mtime", paramBundle.jdField_f_of_type_Int);
-      localBundle.putInt("k_money", paramBundle.jdField_d_of_type_Int);
-      localBundle.putInt("key_award_type", paramBundle.jdField_b_of_type_Int);
-      localBundle.putInt("key_promotion_id", paramBundle.jdField_g_of_type_Int);
-      localBundle.putInt("key_business_id", paramBundle.jdField_e_of_type_Int);
-      localBundle.putInt("k_state", paramBundle.jdField_a_of_type_Int);
-      localBundle.putInt("cardStyle", paramString.a().commonData.cardStyle);
-      localBundle.putString("key_signature", paramBundle.jdField_b_of_type_JavaLangString);
-      localBundle.putString("key_req_id", paramBundle.jdField_f_of_type_JavaLangString);
-      localBundle.putString("k_pack_id", paramBundle.jdField_a_of_type_JavaLangString);
-      localBundle.putString("key_wishing", paramBundle.jdField_e_of_type_JavaLangString);
-      localBundle.putString("key_order", paramBundle.jdField_d_of_type_JavaLangString);
-      localBundle.putString("key_url", paramBundle.jdField_c_of_type_JavaLangString);
-      localBundle.putString("key_business_name", paramBundle.jdField_g_of_type_JavaLangString);
-      localBundle.putString("key_business_logo", paramBundle.h);
-      localBundle.putString("key_business_cover", paramBundle.j);
-      localBundle.putString("key_business_video", paramBundle.i);
-      localBundle.putString("key_business_video_cover", paramBundle.k);
-      ((EIPCResult)localObject1).data = localBundle;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("SpringHbIPCModule", 2, "onCall result.data = " + ((EIPCResult)localObject1).data.toString());
-    }
-    callbackResult(paramInt, (EIPCResult)localObject1);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.SpringHbIPCModule
  * JD-Core Version:    0.7.0.1
  */

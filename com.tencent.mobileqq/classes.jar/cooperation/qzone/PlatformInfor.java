@@ -5,25 +5,17 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Build.VERSION;
-import android.os.Environment;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.beacon.event.UserAction;
-import com.tencent.gdtad.util.GdtDeviceInfoHelper;
-import com.tencent.gdtad.util.GdtDeviceInfoHelper.Params;
-import com.tencent.gdtad.util.GdtDeviceInfoHelper.Result;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.util.QQDeviceInfo;
 import cooperation.qzone.util.NetworkState;
-import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
 
 public class PlatformInfor
 {
@@ -59,51 +51,17 @@ public class PlatformInfor
     }
   }
   
-  private void appendGdtDeviceInfo(StringBuilder paramStringBuilder)
-  {
-    if ((this.mContext == null) || (paramStringBuilder == null)) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        Object localObject = new GdtDeviceInfoHelper.Params();
-        ((GdtDeviceInfoHelper.Params)localObject).a = "23c763";
-        localObject = GdtDeviceInfoHelper.a(this.mContext, (GdtDeviceInfoHelper.Params)localObject);
-        if ((localObject != null) && (((GdtDeviceInfoHelper.Result)localObject).a != null))
-        {
-          localObject = ((GdtDeviceInfoHelper.Result)localObject).a;
-          if (localObject != null)
-          {
-            paramStringBuilder.append("qadid=").append(((qq_ad_get.QQAdGet.DeviceInfo)localObject).qadid.get());
-            paramStringBuilder.append('&').append("md5_android_id=").append(((qq_ad_get.QQAdGet.DeviceInfo)localObject).md5_android_id.get());
-            paramStringBuilder.append('&').append("md5_mac=").append(((qq_ad_get.QQAdGet.DeviceInfo)localObject).md5_mac.get());
-            paramStringBuilder.append('&').append("client_ipv4=").append(((qq_ad_get.QQAdGet.DeviceInfo)localObject).client_ipv4.get());
-            paramStringBuilder.append('&').append("aid_ticket=").append(((qq_ad_get.QQAdGet.DeviceInfo)localObject).aid_ticket.get());
-            paramStringBuilder.append('&').append("taid_ticket=").append(((qq_ad_get.QQAdGet.DeviceInfo)localObject).taid_ticket.get());
-            paramStringBuilder.append('&');
-            QLog.e("PlatformInfor", 1, "wesley: userip:" + ((qq_ad_get.QQAdGet.DeviceInfo)localObject).client_ipv4.get());
-            return;
-          }
-        }
-      }
-      catch (Exception paramStringBuilder)
-      {
-        QLog.e("PlatformInfor", 1, "appendGdtDeviceInfo exception", paramStringBuilder);
-      }
-    }
-  }
-  
   public static PlatformInfor g()
   {
-    if (instance == null) {}
-    synchronized (lock)
-    {
-      if (instance == null) {
-        instance = new PlatformInfor();
+    if (instance == null) {
+      synchronized (lock)
+      {
+        if (instance == null) {
+          instance = new PlatformInfor();
+        }
       }
-      return instance;
     }
+    return instance;
   }
   
   public static String getDeviceName()
@@ -131,12 +89,13 @@ public class PlatformInfor
   
   private int isSupportSharpP(Context paramContext)
   {
-    if (this.mSupportSharpP == -1)
+    int i = this.mSupportSharpP;
+    if (i == -1)
     {
       ThreadManager.executeOnSubThread(new PlatformInfor.1(this, paramContext));
       return 0;
     }
-    return this.mSupportSharpP;
+    return i;
   }
   
   public String getAPNString()
@@ -151,41 +110,7 @@ public class PlatformInfor
   
   public String getDeviceInfor()
   {
-    if ((this.mDeviceInfo != null) && (this.mDeviceInfo.length() > 0))
-    {
-      localObject1 = new StringBuilder(this.mDeviceInfo);
-      ((StringBuilder)localObject1).append("sharpP=").append(isSupportSharpP(this.mContext)).append('&');
-      ((StringBuilder)localObject1).append("n=").append(getNetworkType());
-      return ((StringBuilder)localObject1).toString();
-    }
-    Object localObject2 = (WindowManager)this.mContext.getSystemService("window");
-    Object localObject1 = new DisplayMetrics();
-    ((WindowManager)localObject2).getDefaultDisplay().getMetrics((DisplayMetrics)localObject1);
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("i=").append(getIMEI()).append('&');
-    ((StringBuilder)localObject2).append("imsi=").append(getIMSI()).append('&');
-    ((StringBuilder)localObject2).append("mac=").append(getLocalMacAddress()).append('&');
-    ((StringBuilder)localObject2).append("m=").append(getDeviceName()).append('&');
-    ((StringBuilder)localObject2).append("o=").append(Build.VERSION.RELEASE).append('&');
-    ((StringBuilder)localObject2).append("a=").append(Build.VERSION.SDK_INT).append('&');
-    StringBuilder localStringBuilder = ((StringBuilder)localObject2).append("sc=");
-    if (Environment.getExternalStorageState().equals("mounted")) {}
-    for (int i = 1;; i = 0)
-    {
-      localStringBuilder.append(i).append('&');
-      ((StringBuilder)localObject2).append("sd=").append("0").append('&');
-      ((StringBuilder)localObject2).append("p=").append(((DisplayMetrics)localObject1).widthPixels).append('*').append(((DisplayMetrics)localObject1).heightPixels).append('&');
-      ((StringBuilder)localObject2).append("f=").append(Build.MANUFACTURER).append('&');
-      ((StringBuilder)localObject2).append("mm=").append(DeviceInfoUtil.a() / 1048576L).append('&');
-      ((StringBuilder)localObject2).append("cf=").append(DeviceInfoUtil.b()).append('&');
-      ((StringBuilder)localObject2).append("cc=").append(DeviceInfoUtil.b()).append('&');
-      ((StringBuilder)localObject2).append("aid=").append(DeviceInfoUtil.f()).append('&');
-      ((StringBuilder)localObject2).append("qimei=").append(UserAction.getQIMEI()).append('&');
-      this.mDeviceInfo = ((StringBuilder)localObject2).toString();
-      ((StringBuilder)localObject2).append("sharpP=").append(isSupportSharpP(this.mContext)).append('&');
-      ((StringBuilder)localObject2).append("n=").append(getNetworkType());
-      return ((StringBuilder)localObject2).toString();
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public String getIMEI()
@@ -215,31 +140,60 @@ public class PlatformInfor
   public String getMachineInfor()
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append("MANUFACTURER=" + Build.MANUFACTURER + ",SDK=" + Build.VERSION.SDK_INT + ",board=" + Build.BOARD);
-    localStringBuffer.append(",device=" + Build.DEVICE);
-    localStringBuffer.append(",brand=" + Build.BRAND);
-    localStringBuffer.append(",display=" + Build.DISPLAY);
-    localStringBuffer.append(",model=" + Build.MODEL);
-    localStringBuffer.append(",product=" + Build.PRODUCT);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MANUFACTURER=");
+    localStringBuilder.append(Build.MANUFACTURER);
+    localStringBuilder.append(",SDK=");
+    localStringBuilder.append(Build.VERSION.SDK_INT);
+    localStringBuilder.append(",board=");
+    localStringBuilder.append(Build.BOARD);
+    localStringBuffer.append(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(",device=");
+    localStringBuilder.append(Build.DEVICE);
+    localStringBuffer.append(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(",brand=");
+    localStringBuilder.append(Build.BRAND);
+    localStringBuffer.append(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(",display=");
+    localStringBuilder.append(Build.DISPLAY);
+    localStringBuffer.append(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(",model=");
+    localStringBuilder.append(Build.MODEL);
+    localStringBuffer.append(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(",product=");
+    localStringBuilder.append(Build.PRODUCT);
+    localStringBuffer.append(localStringBuilder.toString());
     return localStringBuffer.toString();
   }
   
   public String getNetworkType()
   {
-    switch ()
+    int i = NetworkState.getNetworkType();
+    if (i != 1)
     {
-    default: 
-      return "wan";
-    case 1: 
-      return "wifi";
-    case 3: 
-      return "3g";
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4)
+          {
+            if (i != 5) {
+              return "wan";
+            }
+            return "5g";
+          }
+          return "4g";
+        }
+        return "3g";
+      }
       return "2g";
-    case 4: 
-      return "4g";
     }
-    return "5g";
+    return "wifi";
   }
   
   public String getSimpleDeviceInfor()
@@ -248,21 +202,41 @@ public class PlatformInfor
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
     ((WindowManager)localObject).getDefaultDisplay().getMetrics(localDisplayMetrics);
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("m=").append(Build.MODEL).append('&');
-    ((StringBuilder)localObject).append("o=").append(Build.VERSION.RELEASE).append('&');
-    ((StringBuilder)localObject).append("a=").append(Build.VERSION.SDK_INT).append('&');
-    ((StringBuilder)localObject).append("p=").append(localDisplayMetrics.widthPixels).append('*').append(localDisplayMetrics.heightPixels).append('&');
-    ((StringBuilder)localObject).append("f=").append(Build.MANUFACTURER).append('&');
-    ((StringBuilder)localObject).append("mm=").append(DeviceInfoUtil.a() / 1048576L).append('&');
-    ((StringBuilder)localObject).append("cf=").append(DeviceInfoUtil.b()).append('&');
-    ((StringBuilder)localObject).append("cc=").append(DeviceInfoUtil.b()).append('&');
-    ((StringBuilder)localObject).append("qqversion=").append("8.5.5");
+    ((StringBuilder)localObject).append("m=");
+    ((StringBuilder)localObject).append(Build.MODEL);
+    ((StringBuilder)localObject).append('&');
+    ((StringBuilder)localObject).append("o=");
+    ((StringBuilder)localObject).append(Build.VERSION.RELEASE);
+    ((StringBuilder)localObject).append('&');
+    ((StringBuilder)localObject).append("a=");
+    ((StringBuilder)localObject).append(Build.VERSION.SDK_INT);
+    ((StringBuilder)localObject).append('&');
+    ((StringBuilder)localObject).append("p=");
+    ((StringBuilder)localObject).append(localDisplayMetrics.widthPixels);
+    ((StringBuilder)localObject).append('*');
+    ((StringBuilder)localObject).append(localDisplayMetrics.heightPixels);
+    ((StringBuilder)localObject).append('&');
+    ((StringBuilder)localObject).append("f=");
+    ((StringBuilder)localObject).append(Build.MANUFACTURER);
+    ((StringBuilder)localObject).append('&');
+    ((StringBuilder)localObject).append("mm=");
+    ((StringBuilder)localObject).append(DeviceInfoUtil.a() / 1048576L);
+    ((StringBuilder)localObject).append('&');
+    ((StringBuilder)localObject).append("cf=");
+    ((StringBuilder)localObject).append(DeviceInfoUtil.b());
+    ((StringBuilder)localObject).append('&');
+    ((StringBuilder)localObject).append("cc=");
+    ((StringBuilder)localObject).append(DeviceInfoUtil.b());
+    ((StringBuilder)localObject).append('&');
+    ((StringBuilder)localObject).append("qqversion=");
+    ((StringBuilder)localObject).append("8.7.0");
     return ((StringBuilder)localObject).toString();
   }
   
   public String getVersionName()
   {
-    if ((versionName == null) || (versionName.length() == 0)) {
+    String str = versionName;
+    if ((str == null) || (str.length() == 0)) {
       getVersion();
     }
     return versionName;
@@ -270,7 +244,7 @@ public class PlatformInfor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.PlatformInfor
  * JD-Core Version:    0.7.0.1
  */

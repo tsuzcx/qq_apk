@@ -31,8 +31,13 @@ public class SPlayerPreLoaderImpl
         PreloadPlayerMgr.getInstance().stopPreloadTask(localInteger.intValue());
       }
       this.mTaskQueue.clear();
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public int startPreloadTask(Activity paramActivity, SuperPlayerVideoInfo paramSuperPlayerVideoInfo)
@@ -73,7 +78,7 @@ public class SPlayerPreLoaderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.preload.SPlayerPreLoaderImpl
  * JD-Core Version:    0.7.0.1
  */

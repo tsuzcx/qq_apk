@@ -76,7 +76,7 @@ public final class template_gift_item
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_TEMPLATE_GIFT.template_gift_item
  * JD-Core Version:    0.7.0.1
  */

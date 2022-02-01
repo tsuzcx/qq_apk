@@ -13,18 +13,19 @@ final class AdMiniGameGuideManager$miniAppNotifyListener$1
   
   public final void onNotify(String paramString1, int paramInt, String paramString2, String paramString3, long paramLong)
   {
-    if (Intrinsics.areEqual("onResume", paramString3)) {
+    if (Intrinsics.areEqual("onResume", paramString3))
+    {
       AdMiniGameGuideManager.a.a(Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
-    }
-    while (!Intrinsics.areEqual("onPause", paramString3)) {
       return;
     }
-    AdMiniGameGuideManager.a.b(paramString1);
+    if (Intrinsics.areEqual("onPause", paramString3)) {
+      AdMiniGameGuideManager.a.b(paramString1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.AdMiniGameGuideManager.miniAppNotifyListener.1
  * JD-Core Version:    0.7.0.1
  */

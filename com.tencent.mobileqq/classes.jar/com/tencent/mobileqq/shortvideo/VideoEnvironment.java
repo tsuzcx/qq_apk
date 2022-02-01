@@ -33,12 +33,15 @@ public class VideoEnvironment
   
   static
   {
-    debugDecodeFilePath = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_ROOT + "/Tencent/com/tencent/mobileqq/debugDecodeShortVideo");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(AppConstants.SDCARD_ROOT);
+    ((StringBuilder)localObject).append("/Tencent/com/tencent/mobileqq/debugDecodeShortVideo");
+    debugDecodeFilePath = VFSAssistantUtils.getSDKPrivatePath(((StringBuilder)localObject).toString());
     mLockLoadStatus = new Object();
-    File localFile = new File(ShortVideoSoLoad.getShortVideoSoPath(getContext()));
-    if (!localFile.exists())
+    localObject = new File(ShortVideoSoLoad.getShortVideoSoPath(getContext()));
+    if (!((File)localObject).exists())
     {
-      localFile.mkdirs();
+      ((File)localObject).mkdirs();
       LogDownLoad("VideoEnvironment:[static]loadPathFile not exist");
     }
   }
@@ -73,8 +76,12 @@ public class VideoEnvironment
     }
     String str = ShortVideoSoLoad.getShortVideoSoPath(getContext());
     String[] arrayOfString = new String[1];
-    if (judgeCurrentSpVideoNameValidate(arrayOfString) == 255) {
-      return new File(str + arrayOfString[0]).exists();
+    if (judgeCurrentSpVideoNameValidate(arrayOfString) == 255)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(arrayOfString[0]);
+      return new File(localStringBuilder.toString()).exists();
     }
     return false;
   }
@@ -124,13 +131,18 @@ public class VideoEnvironment
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      for (;;)
-      {
-        int i = -1;
-      }
+      int i;
+      label29:
+      StringBuilder localStringBuilder;
+      break label29;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoEnvironment", 2, "getAVCodecVersion: AVCodec_version=" + i);
+    i = -1;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getAVCodecVersion: AVCodec_version=");
+      localStringBuilder.append(i);
+      QLog.i("VideoEnvironment", 2, localStringBuilder.toString());
     }
     return i;
   }
@@ -144,7 +156,12 @@ public class VideoEnvironment
   {
     String[] arrayOfString = new String[1];
     int i = judgeCurrentSpVideoNameValidate(arrayOfString);
-    LogDownLoad("getShortVideoSoLibName: errCode=" + i + " soNameValue=" + arrayOfString[0]);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getShortVideoSoLibName: errCode=");
+    localStringBuilder.append(i);
+    localStringBuilder.append(" soNameValue=");
+    localStringBuilder.append(arrayOfString[0]);
+    LogDownLoad(localStringBuilder.toString());
     if (i == 255) {
       return arrayOfString[0];
     }
@@ -153,19 +170,31 @@ public class VideoEnvironment
   
   public static boolean isBeautySupported()
   {
-    if (isX86Platform()) {}
-    boolean bool1;
-    boolean bool2;
-    do
-    {
+    boolean bool1 = isX86Platform();
+    boolean bool2 = false;
+    if (bool1) {
       return false;
-      bool1 = AVCoreSystemInfo.isBeautySupported();
-      bool2 = getAVCodecSupportRTBeauty();
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoEnvironment", 2, "isX86Platform: isBeautySupported=" + bool1 + " isSoSupportBeauty=" + bool2);
+    }
+    boolean bool3 = AVCoreSystemInfo.isBeautySupported();
+    boolean bool4 = getAVCodecSupportRTBeauty();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isX86Platform: isBeautySupported=");
+      localStringBuilder.append(bool3);
+      localStringBuilder.append(" isSoSupportBeauty=");
+      localStringBuilder.append(bool4);
+      QLog.d("VideoEnvironment", 2, localStringBuilder.toString());
+    }
+    bool1 = bool2;
+    if (bool3)
+    {
+      bool1 = bool2;
+      if (bool4) {
+        bool1 = true;
       }
-    } while ((!bool1) || (!bool2));
-    return true;
+    }
+    return bool1;
   }
   
   public static boolean isShortVideoSoLibLoaded()
@@ -175,23 +204,34 @@ public class VideoEnvironment
   
   public static boolean isX86Platform()
   {
-    return DeviceInfoUtil.i();
+    return DeviceInfoUtil.k();
   }
   
   private static int judgeCurrentSpVideoNameValidate(String[] paramArrayOfString)
   {
     String str = ShortVideoSoManager.a();
-    LogDownLoad("LoadPathSo: currentSoName=" + str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("LoadPathSo: currentSoName=");
+    ((StringBuilder)localObject).append(str);
+    LogDownLoad(((StringBuilder)localObject).toString());
     if (str.equals("d000_1")) {
       return -11;
     }
-    Object localObject = ShortVideoSoManager.a(str);
+    localObject = ShortVideoSoManager.a(str);
     int i = ((ShortVideoSoManager.CfgParser)localObject).a();
-    LogDownLoad("LoadPathSo: CfgParser err=" + i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LoadPathSo: CfgParser err=");
+    localStringBuilder.append(i);
+    LogDownLoad(localStringBuilder.toString());
     if (i == 0)
     {
       localObject = ((ShortVideoSoManager.CfgParser)localObject).b();
-      LogDownLoad("LoadPathSo: currentVersion=" + (String)localObject + " dymAVCodecVersion=" + 65);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("LoadPathSo: currentVersion=");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(" dymAVCodecVersion=");
+      localStringBuilder.append(65);
+      LogDownLoad(localStringBuilder.toString());
       if (Integer.parseInt((String)localObject) >= 65)
       {
         paramArrayOfString[0] = str;
@@ -208,115 +248,166 @@ public class VideoEnvironment
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: invokestatic 129	com/tencent/video/decode/ShortVideoSoLoad:getShortVideoSoLoadStatus	()I
+    //   3: invokestatic 127	com/tencent/video/decode/ShortVideoSoLoad:getShortVideoSoLoadStatus	()I
     //   6: istore_0
     //   7: iload_0
-    //   8: ifne +30 -> 38
-    //   11: new 47	java/lang/StringBuilder
+    //   8: ifne +36 -> 44
+    //   11: new 45	java/lang/StringBuilder
     //   14: dup
-    //   15: invokespecial 50	java/lang/StringBuilder:<init>	()V
-    //   18: ldc 232
-    //   20: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   23: iload_0
-    //   24: invokevirtual 154	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   27: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   30: invokestatic 103	com/tencent/mobileqq/shortvideo/VideoEnvironment:LogDownLoad	(Ljava/lang/String;)V
-    //   33: ldc 2
-    //   35: monitorexit
-    //   36: iload_0
-    //   37: ireturn
-    //   38: getstatic 76	com/tencent/mobileqq/shortvideo/VideoEnvironment:mLockLoadStatus	Ljava/lang/Object;
-    //   41: astore_1
-    //   42: aload_1
-    //   43: monitorenter
-    //   44: invokestatic 235	com/tencent/mobileqq/shortvideo/VideoEnvironment:realDoLoadSo	()I
-    //   47: istore_0
-    //   48: new 47	java/lang/StringBuilder
-    //   51: dup
-    //   52: invokespecial 50	java/lang/StringBuilder:<init>	()V
-    //   55: ldc 237
-    //   57: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   60: iload_0
-    //   61: invokevirtual 154	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   64: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   67: invokestatic 103	com/tencent/mobileqq/shortvideo/VideoEnvironment:LogDownLoad	(Ljava/lang/String;)V
-    //   70: aload_1
-    //   71: monitorexit
-    //   72: goto -39 -> 33
-    //   75: astore_2
-    //   76: aload_1
-    //   77: monitorexit
-    //   78: aload_2
-    //   79: athrow
-    //   80: astore_1
-    //   81: ldc 2
+    //   15: invokespecial 48	java/lang/StringBuilder:<init>	()V
+    //   18: astore_1
+    //   19: aload_1
+    //   20: ldc 233
+    //   22: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: pop
+    //   26: aload_1
+    //   27: iload_0
+    //   28: invokevirtual 154	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   31: pop
+    //   32: aload_1
+    //   33: invokevirtual 63	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   36: invokestatic 101	com/tencent/mobileqq/shortvideo/VideoEnvironment:LogDownLoad	(Ljava/lang/String;)V
+    //   39: ldc 2
+    //   41: monitorexit
+    //   42: iload_0
+    //   43: ireturn
+    //   44: getstatic 74	com/tencent/mobileqq/shortvideo/VideoEnvironment:mLockLoadStatus	Ljava/lang/Object;
+    //   47: astore_1
+    //   48: aload_1
+    //   49: monitorenter
+    //   50: invokestatic 236	com/tencent/mobileqq/shortvideo/VideoEnvironment:realDoLoadSo	()I
+    //   53: istore_0
+    //   54: new 45	java/lang/StringBuilder
+    //   57: dup
+    //   58: invokespecial 48	java/lang/StringBuilder:<init>	()V
+    //   61: astore_2
+    //   62: aload_2
+    //   63: ldc 238
+    //   65: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   68: pop
+    //   69: aload_2
+    //   70: iload_0
+    //   71: invokevirtual 154	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   74: pop
+    //   75: aload_2
+    //   76: invokevirtual 63	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   79: invokestatic 101	com/tencent/mobileqq/shortvideo/VideoEnvironment:LogDownLoad	(Ljava/lang/String;)V
+    //   82: aload_1
     //   83: monitorexit
-    //   84: aload_1
-    //   85: athrow
+    //   84: ldc 2
+    //   86: monitorexit
+    //   87: iload_0
+    //   88: ireturn
+    //   89: astore_2
+    //   90: aload_1
+    //   91: monitorexit
+    //   92: aload_2
+    //   93: athrow
+    //   94: astore_1
+    //   95: ldc 2
+    //   97: monitorexit
+    //   98: aload_1
+    //   99: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   6	55	0	i	int
-    //   80	5	1	localObject2	Object
-    //   75	4	2	localObject3	Object
+    //   6	82	0	i	int
+    //   94	5	1	localObject2	Object
+    //   61	15	2	localStringBuilder	StringBuilder
+    //   89	4	2	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   44	72	75	finally
-    //   76	78	75	finally
-    //   3	7	80	finally
-    //   11	33	80	finally
-    //   38	44	80	finally
-    //   78	80	80	finally
+    //   50	84	89	finally
+    //   90	92	89	finally
+    //   3	7	94	finally
+    //   11	39	94	finally
+    //   44	50	94	finally
+    //   92	94	94	finally
   }
   
   public static boolean needDownloadCurrentServerVersion(int paramInt)
   {
-    if (paramInt >= 65) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (!bool) {
-        LogDownLoad("needDownloadCurrentServerVersion, serverVersion=" + paramInt + " dymAVCodecVersion=" + 65);
-      }
-      return bool;
+    boolean bool;
+    if (paramInt >= 65) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    if (!bool)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("needDownloadCurrentServerVersion, serverVersion=");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" dymAVCodecVersion=");
+      localStringBuilder.append(65);
+      LogDownLoad(localStringBuilder.toString());
+    }
+    return bool;
   }
   
   private static int realDoLoadSo()
   {
     String str = ShortVideoSoLoad.getShortVideoSoPath(getContext());
-    String[] arrayOfString = new String[1];
-    int i = judgeCurrentSpVideoNameValidate(arrayOfString);
+    Object localObject = new String[1];
+    int i = judgeCurrentSpVideoNameValidate((String[])localObject);
     if (i == 255)
     {
-      str = str + arrayOfString[0];
-      LogDownLoad("Before LoadPath so. loadSoPath=" + str + " soNameValue[0]=" + arrayOfString[0]);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(localObject[0]);
+      str = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Before LoadPath so. loadSoPath=");
+      localStringBuilder.append(str);
+      localStringBuilder.append(" soNameValue[0]=");
+      localStringBuilder.append(localObject[0]);
+      LogDownLoad(localStringBuilder.toString());
       i = ShortVideoSoLoad.LoadExtractedShortVideo(str);
-      LogDownLoad("After LoadPath so. errCode=" + i);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("After LoadPath so. errCode=");
+      ((StringBuilder)localObject).append(i);
+      LogDownLoad(((StringBuilder)localObject).toString());
       return i;
     }
-    LogDownLoad("realDoLoadSo[errCode=" + i + "]");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("realDoLoadSo[errCode=");
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append("]");
+    LogDownLoad(((StringBuilder)localObject).toString());
     return i;
   }
   
   public static boolean supportShortVideoRecordAndPlay()
   {
-    if (Build.VERSION.SDK_INT < 18) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoEnvironment", 2, "supportShortVideoRecordAndPlay:SDK_INT=" + Build.VERSION.SDK_INT);
-      }
-    }
-    String str;
-    do
+    if (Build.VERSION.SDK_INT < 18)
     {
-      return false;
-      str = Build.CPU_ABI;
-      if (!isX86Platform()) {
-        break;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("supportShortVideoRecordAndPlay:SDK_INT=");
+        ((StringBuilder)localObject).append(Build.VERSION.SDK_INT);
+        QLog.d("VideoEnvironment", 2, ((StringBuilder)localObject).toString());
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("VideoEnvironment", 2, "supportShortVideoRecordAndPlay:isX86Platform, don't support, Build.CPU_ABI=" + str);
-    return false;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoEnvironment", 2, "supportShortVideoRecordAndPlay: support, Build.CPU_ABI=" + str);
+      return false;
+    }
+    Object localObject = Build.CPU_ABI;
+    StringBuilder localStringBuilder;
+    if (isX86Platform())
+    {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("supportShortVideoRecordAndPlay:isX86Platform, don't support, Build.CPU_ABI=");
+        localStringBuilder.append((String)localObject);
+        QLog.d("VideoEnvironment", 2, localStringBuilder.toString());
+      }
+      return false;
+    }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("supportShortVideoRecordAndPlay: support, Build.CPU_ABI=");
+      localStringBuilder.append((String)localObject);
+      QLog.d("VideoEnvironment", 2, localStringBuilder.toString());
     }
     return true;
   }
@@ -325,15 +416,21 @@ public class VideoEnvironment
   {
     int i = getAVCodecVersion();
     boolean bool = getAVCodecSupportFeature(2);
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoEnvironment", 2, "supportSubmitCallback: soVersion =" + i + ", result = " + bool);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("supportSubmitCallback: soVersion =");
+      localStringBuilder.append(i);
+      localStringBuilder.append(", result = ");
+      localStringBuilder.append(bool);
+      QLog.d("VideoEnvironment", 2, localStringBuilder.toString());
     }
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.VideoEnvironment
  * JD-Core Version:    0.7.0.1
  */

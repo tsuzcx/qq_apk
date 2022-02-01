@@ -14,15 +14,23 @@ class ARMusicController$1
     if (paramInt2 != 0) {}
     try
     {
-      QLog.e("ARMusicController", 2, "load fire music failed. " + ARMusicController.a(this.a));
+      paramSoundPool = new StringBuilder();
+      paramSoundPool.append("load fire music failed. ");
+      paramSoundPool.append(ARMusicController.a(this.a));
+      QLog.e("ARMusicController", 2, paramSoundPool.toString());
       return;
     }
     catch (Exception paramSoundPool)
     {
+      StringBuilder localStringBuilder;
       paramSoundPool.printStackTrace();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMusicController", 2, "load fire music success. : " + ARMusicController.a(this.a));
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("load fire music success. : ");
+      localStringBuilder.append(ARMusicController.a(this.a));
+      QLog.d("ARMusicController", 2, localStringBuilder.toString());
     }
     ARMusicController.a(this.a, true);
     if (ARMusicController.a(this.a))
@@ -34,7 +42,7 @@ class ARMusicController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARMusicController.1
  * JD-Core Version:    0.7.0.1
  */

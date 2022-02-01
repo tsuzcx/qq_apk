@@ -9,12 +9,12 @@ class AnimationHandler$FrameCallbackProvider16$1
   
   public void doFrame(long paramLong)
   {
-    this.a.a.a();
+    this.this$0.mDispatcher.dispatchAnimationFrame();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.dynamicanimation.animation.AnimationHandler.FrameCallbackProvider16.1
  * JD-Core Version:    0.7.0.1
  */

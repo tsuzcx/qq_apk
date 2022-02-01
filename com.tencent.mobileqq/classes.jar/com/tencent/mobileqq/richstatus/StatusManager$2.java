@@ -12,10 +12,17 @@ class StatusManager$2
 {
   StatusManager$2(StatusManager paramStatusManager) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "onUpdateStatusActions " + paramBoolean + ", " + paramInt);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onUpdateStatusActions ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(", ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("Q.richstatus.xml", 2, ((StringBuilder)localObject).toString());
     }
     StatusManager.a(this.a, 0L);
     if (paramBoolean)
@@ -29,23 +36,24 @@ class StatusManager$2
     }
     if (StatusManager.a(this.a) != null)
     {
-      Iterator localIterator = StatusManager.a(this.a).iterator();
-      if (localIterator.hasNext())
+      localObject = StatusManager.a(this.a).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        IActionListener localIActionListener = (IActionListener)localIterator.next();
-        if (paramBoolean) {}
-        for (int i = 300;; i = 301)
-        {
-          localIActionListener.a(paramInt, i);
-          break;
+        IActionListener localIActionListener = (IActionListener)((Iterator)localObject).next();
+        int i;
+        if (paramBoolean) {
+          i = 300;
+        } else {
+          i = 301;
         }
+        localIActionListener.a(paramInt, i);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.StatusManager.2
  * JD-Core Version:    0.7.0.1
  */

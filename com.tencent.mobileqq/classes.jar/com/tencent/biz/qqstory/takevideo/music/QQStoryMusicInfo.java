@@ -35,8 +35,8 @@ public class QQStoryMusicInfo
   
   static
   {
-    jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo = new QQStoryMusicInfo(0, HardCodeUtil.a(2131710912));
-    jdField_b_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo = new QQStoryMusicInfo(1, HardCodeUtil.a(2131710909));
+    jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo = new QQStoryMusicInfo(0, HardCodeUtil.a(2131710889));
+    jdField_b_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo = new QQStoryMusicInfo(1, HardCodeUtil.a(2131710886));
     jdField_c_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo = new QQStoryMusicInfo(2, "QQ音乐曲库");
   }
   
@@ -72,26 +72,6 @@ public class QQStoryMusicInfo
     this.jdField_f_of_type_Int = 0;
     this.jdField_b_of_type_Int = paramInt;
     this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public QQStoryMusicInfo(int paramInt1, String paramString, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_d_of_type_JavaLangString = null;
-    this.jdField_e_of_type_JavaLangString = null;
-    this.jdField_f_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
   }
   
   public QQStoryMusicInfo(qqstory_struct.MusicConfigInfo paramMusicConfigInfo)
@@ -133,12 +113,12 @@ public class QQStoryMusicInfo
       paramString = new JSONObject(paramString);
       this.jdField_b_of_type_JavaLangString = paramString.optString("title");
       this.jdField_d_of_type_JavaLangString = paramString.optString("audio_url");
-      if (paramString.has("type")) {}
-      for (this.jdField_b_of_type_Int = paramString.optInt("type");; this.jdField_b_of_type_Int = 2)
-      {
-        this.jdField_a_of_type_JavaLangString = paramString.optString("id");
-        return;
+      if (paramString.has("type")) {
+        this.jdField_b_of_type_Int = paramString.optInt("type");
+      } else {
+        this.jdField_b_of_type_Int = 2;
       }
+      this.jdField_a_of_type_JavaLangString = paramString.optString("id");
       return;
     }
     catch (JSONException paramString)
@@ -149,102 +129,67 @@ public class QQStoryMusicInfo
     }
   }
   
-  /* Error */
   public static final ArrayList<QQStoryMusicInfo> a(Context paramContext)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: ldc 143
-    //   3: invokestatic 148	com/tencent/mobileqq/util/SharePreferenceUtils:a	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
-    //   6: astore_0
-    //   7: new 150	org/json/JSONArray
-    //   10: dup
-    //   11: aload_0
-    //   12: invokespecial 151	org/json/JSONArray:<init>	(Ljava/lang/String;)V
-    //   15: astore 4
-    //   17: aload 4
-    //   19: invokevirtual 154	org/json/JSONArray:length	()I
-    //   22: istore_2
-    //   23: new 156	java/util/ArrayList
-    //   26: dup
-    //   27: iload_2
-    //   28: invokespecial 159	java/util/ArrayList:<init>	(I)V
-    //   31: astore_0
-    //   32: iconst_0
-    //   33: istore_1
-    //   34: aload_0
-    //   35: astore_3
-    //   36: iload_1
-    //   37: iload_2
-    //   38: if_icmpge +53 -> 91
-    //   41: aload_0
-    //   42: new 2	com/tencent/biz/qqstory/takevideo/music/QQStoryMusicInfo
-    //   45: dup
-    //   46: aload 4
-    //   48: iload_1
-    //   49: invokevirtual 161	org/json/JSONArray:optString	(I)Ljava/lang/String;
-    //   52: invokespecial 162	com/tencent/biz/qqstory/takevideo/music/QQStoryMusicInfo:<init>	(Ljava/lang/String;)V
-    //   55: invokevirtual 166	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   58: pop
-    //   59: iload_1
-    //   60: iconst_1
-    //   61: iadd
-    //   62: istore_1
-    //   63: goto -29 -> 34
-    //   66: astore 4
-    //   68: aconst_null
-    //   69: astore_0
-    //   70: aload_0
-    //   71: astore_3
-    //   72: invokestatic 131	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   75: ifeq +16 -> 91
-    //   78: ldc 133
-    //   80: iconst_2
-    //   81: aload 4
-    //   83: invokestatic 137	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   86: invokestatic 140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   89: aload_0
-    //   90: astore_3
-    //   91: aload_3
-    //   92: areturn
-    //   93: astore 4
-    //   95: goto -25 -> 70
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	98	0	paramContext	Context
-    //   33	30	1	i	int
-    //   22	17	2	j	int
-    //   35	57	3	localContext	Context
-    //   15	32	4	localJSONArray	JSONArray
-    //   66	16	4	localJSONException1	JSONException
-    //   93	1	4	localJSONException2	JSONException
-    // Exception table:
-    //   from	to	target	type
-    //   7	32	66	org/json/JSONException
-    //   41	59	93	org/json/JSONException
+    paramContext = SharePreferenceUtils.a(paramContext, "qqstory_savedMusicList");
+    Context localContext;
+    try
+    {
+      JSONArray localJSONArray = new JSONArray(paramContext);
+      int j = localJSONArray.length();
+      paramContext = new ArrayList(j);
+      int i = 0;
+      for (;;)
+      {
+        localContext = paramContext;
+        if (i >= j) {
+          return localContext;
+        }
+        try
+        {
+          paramContext.add(new QQStoryMusicInfo(localJSONArray.optString(i)));
+          i += 1;
+        }
+        catch (JSONException localJSONException1) {}
+      }
+      localContext = paramContext;
+    }
+    catch (JSONException localJSONException2)
+    {
+      paramContext = null;
+    }
+    if (QLog.isColorLevel())
+    {
+      QLog.e("MusicInfo", 2, QLog.getStackTraceString(localJSONException2));
+      localContext = paramContext;
+    }
+    return localContext;
   }
   
   public static final void a(Context paramContext, ArrayList<QQStoryMusicInfo> paramArrayList)
   {
-    Object localObject = null;
     if (paramArrayList != null)
     {
       int j = paramArrayList.size();
-      localObject = new JSONArray();
+      JSONArray localJSONArray = new JSONArray();
       int i = 0;
       while (i < j)
       {
-        ((JSONArray)localObject).put(((QQStoryMusicInfo)paramArrayList.get(i)).a());
+        localJSONArray.put(((QQStoryMusicInfo)paramArrayList.get(i)).a());
         i += 1;
       }
-      localObject = ((JSONArray)localObject).toString();
+      paramArrayList = localJSONArray.toString();
     }
-    if (TextUtils.isEmpty((CharSequence)localObject))
+    else
+    {
+      paramArrayList = null;
+    }
+    if (TextUtils.isEmpty(paramArrayList))
     {
       SharePreferenceUtils.a(paramContext, "qqstory_savedMusicList");
       return;
     }
-    SharePreferenceUtils.a(paramContext, "qqstory_savedMusicList", (String)localObject);
+    SharePreferenceUtils.a(paramContext, "qqstory_savedMusicList", paramArrayList);
   }
   
   public String a()
@@ -256,17 +201,14 @@ public class QQStoryMusicInfo
       localJSONObject.put("audio_url", this.jdField_d_of_type_JavaLangString);
       localJSONObject.put("type", 3);
       localJSONObject.put("id", this.jdField_a_of_type_JavaLangString);
-      return localJSONObject.toString();
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("MusicInfo", 2, QLog.getStackTraceString(localJSONException));
-        }
+      if (QLog.isColorLevel()) {
+        QLog.e("MusicInfo", 2, QLog.getStackTraceString(localJSONException));
       }
     }
+    return localJSONObject.toString();
   }
   
   public void a(QQStoryMusicInfo paramQQStoryMusicInfo)
@@ -288,30 +230,39 @@ public class QQStoryMusicInfo
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    if (paramObject == null) {
       return false;
-      if (paramObject == this) {
-        return true;
+    }
+    if (paramObject == this) {
+      return true;
+    }
+    if (paramObject.getClass() != getClass()) {
+      return false;
+    }
+    Object localObject = (QQStoryMusicInfo)paramObject;
+    if ((((QQStoryMusicInfo)localObject).jdField_b_of_type_Int == 0) && (this.jdField_b_of_type_Int == 0)) {
+      return true;
+    }
+    if ((((QQStoryMusicInfo)localObject).jdField_b_of_type_Int == 1) && (this.jdField_b_of_type_Int == 1)) {
+      return true;
+    }
+    if (((QQStoryMusicInfo)localObject).jdField_b_of_type_Int == this.jdField_b_of_type_Int)
+    {
+      String str = ((QQStoryMusicInfo)localObject).jdField_b_of_type_JavaLangString;
+      if ((str != null) && (str.equals(this.jdField_b_of_type_JavaLangString)))
+      {
+        localObject = ((QQStoryMusicInfo)localObject).jdField_d_of_type_JavaLangString;
+        if ((localObject != null) && (((String)localObject).equals(this.jdField_d_of_type_JavaLangString))) {
+          return true;
+        }
       }
-    } while (paramObject.getClass() != getClass());
-    QQStoryMusicInfo localQQStoryMusicInfo = (QQStoryMusicInfo)paramObject;
-    if ((localQQStoryMusicInfo.jdField_b_of_type_Int == 0) && (this.jdField_b_of_type_Int == 0)) {
-      return true;
-    }
-    if ((localQQStoryMusicInfo.jdField_b_of_type_Int == 1) && (this.jdField_b_of_type_Int == 1)) {
-      return true;
-    }
-    if ((localQQStoryMusicInfo.jdField_b_of_type_Int == this.jdField_b_of_type_Int) && (localQQStoryMusicInfo.jdField_b_of_type_JavaLangString != null) && (localQQStoryMusicInfo.jdField_b_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString)) && (localQQStoryMusicInfo.jdField_d_of_type_JavaLangString != null) && (localQQStoryMusicInfo.jdField_d_of_type_JavaLangString.equals(this.jdField_d_of_type_JavaLangString))) {
-      return true;
     }
     return super.equals(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.music.QQStoryMusicInfo
  * JD-Core Version:    0.7.0.1
  */

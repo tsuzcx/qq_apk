@@ -36,43 +36,45 @@ public class DisplayUtil
   private static final String SHOW_NAV_BAR_RES_NAME = "config_showNavigationBar";
   public static final String STATUS_BAR_HEIGHT = "status_bar_height";
   public static final String TAG = "DisplayUtil";
-  private static float density;
-  public static final boolean isImmersiveSupported;
-  private static boolean mInPortrait;
-  private static int mhasNavBar;
+  private static float density = 0.0F;
+  public static final boolean isImmersiveSupported = false;
+  private static boolean mInPortrait = true;
+  private static int mhasNavBar = -1;
   private static String sNavBarOverride;
   public static int statusHeight = -1;
   
   static
   {
-    mInPortrait = true;
-    mhasNavBar = -1;
     if (VersionUtil.isKITKAT()) {}
     try
     {
-      Method localMethod = Class.forName("android.os.SystemProperties").getDeclaredMethod("get", new Class[] { String.class });
-      localMethod.setAccessible(true);
-      sNavBarOverride = (String)localMethod.invoke(null, new Object[] { "qemu.hw.mainkeys" });
-      if (Build.VERSION.SDK_INT < 19)
-      {
-        isImmersiveSupported = false;
-        return;
-      }
+      localObject1 = Class.forName("android.os.SystemProperties").getDeclaredMethod("get", new Class[] { String.class });
+      ((Method)localObject1).setAccessible(true);
+      sNavBarOverride = (String)((Method)localObject1).invoke(null, new Object[] { "qemu.hw.mainkeys" });
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        sNavBarOverride = null;
-      }
-      String str1 = Build.MANUFACTURER.toUpperCase();
-      String str2 = str1 + "-" + Build.MODEL;
-      if ((str1.endsWith("BBK")) || ((str1.endsWith("VIVO")) && (Build.VERSION.SDK_INT < 20)) || (str2.equals("OPPO-3007")))
-      {
-        isImmersiveSupported = false;
-        return;
-      }
+      Object localObject1;
+      label54:
+      Object localObject2;
+      break label54;
+    }
+    sNavBarOverride = null;
+    if (Build.VERSION.SDK_INT < 19)
+    {
+      isImmersiveSupported = false;
+      return;
+    }
+    localObject1 = Build.MANUFACTURER.toUpperCase();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("-");
+    ((StringBuilder)localObject2).append(Build.MODEL);
+    localObject2 = ((StringBuilder)localObject2).toString();
+    if ((!((String)localObject1).endsWith("BBK")) && ((!((String)localObject1).endsWith("VIVO")) || (Build.VERSION.SDK_INT >= 20)) && (!((String)localObject2).equals("OPPO-3007")))
+    {
       isImmersiveSupported = true;
+      return;
     }
   }
   
@@ -85,11 +87,12 @@ public class DisplayUtil
         paramWindow.clearFlags(67108864);
         paramWindow.getDecorView().setSystemUiVisibility(1280);
         paramWindow.addFlags(-2147483648);
-        if (Build.VERSION.SDK_INT >= 21) {
+        if (Build.VERSION.SDK_INT >= 21)
+        {
           paramWindow.setStatusBarColor(0);
+          return;
         }
       }
-      return;
     }
     catch (Exception paramWindow)
     {
@@ -101,54 +104,60 @@ public class DisplayUtil
   {
     Object localObject = paramContext.getResources();
     int i = ((Resources)localObject).getIdentifier("config_showNavigationBar", "bool", "android");
-    if (i > 0) {}
-    for (boolean bool1 = ((Resources)localObject).getBoolean(i);; bool1 = false)
+    boolean bool1;
+    if (i > 0) {
+      bool1 = ((Resources)localObject).getBoolean(i);
+    } else {
+      bool1 = false;
+    }
+    try
     {
-      try
+      localObject = Class.forName("android.os.SystemProperties");
+      localObject = (String)((Class)localObject).getMethod("get", new Class[] { String.class }).invoke(localObject, new Object[] { "qemu.hw.mainkeys" });
+      i = Build.VERSION.SDK_INT;
+      if (i < 21) {
+        i = Settings.System.getInt(paramContext.getContentResolver(), "navigationbar_is_min", 0);
+      } else {
+        i = Settings.Global.getInt(paramContext.getContentResolver(), "navigationbar_is_min", 0);
+      }
+      if ((!"1".equals(localObject)) && (1 != i))
       {
-        localObject = Class.forName("android.os.SystemProperties");
-        localObject = (String)((Class)localObject).getMethod("get", new Class[] { String.class }).invoke(localObject, new Object[] { "qemu.hw.mainkeys" });
-        if (Build.VERSION.SDK_INT < 21) {}
-        for (i = Settings.System.getInt(paramContext.getContentResolver(), "navigationbar_is_min", 0);; i = Settings.Global.getInt(paramContext.getContentResolver(), "navigationbar_is_min", 0))
-        {
-          if ("1".equals(localObject)) {
-            break label146;
-          }
-          if (1 != i) {
-            break;
-          }
-          break label146;
-        }
         boolean bool2 = "0".equals(localObject);
         if (bool2) {
           return true;
         }
       }
-      catch (Exception paramContext)
+      else
       {
-        return bool1;
+        bool1 = false;
       }
       return bool1;
     }
-    label146:
-    return false;
+    catch (Exception paramContext) {}
+    return bool1;
   }
   
   public static void clearCoverForStatus(Window paramWindow, boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      String str = Build.MANUFACTURER + Build.MODEL;
-      QMLog.i("DisplayUtil", "MANUFACTURER = " + Build.MANUFACTURER + ", MODEL = " + Build.MODEL);
-      if ((str != null) && ((str.equals("MeizuPRO 7-S")) || (str.equalsIgnoreCase("MeizuM711C")))) {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(Build.MANUFACTURER);
+      ((StringBuilder)localObject).append(Build.MODEL);
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("MANUFACTURER = ");
+      localStringBuilder.append(Build.MANUFACTURER);
+      localStringBuilder.append(", MODEL = ");
+      localStringBuilder.append(Build.MODEL);
+      QMLog.i("DisplayUtil", localStringBuilder.toString());
+      if ((localObject != null) && ((((String)localObject).equals("MeizuPRO 7-S")) || (((String)localObject).equalsIgnoreCase("MeizuM711C"))))
+      {
         setTranslucentStatus(paramWindow);
+        return;
       }
+      checkImmersiveStatusBar(paramWindow);
     }
-    else
-    {
-      return;
-    }
-    checkImmersiveStatusBar(paramWindow);
   }
   
   @TargetApi(23)
@@ -166,28 +175,32 @@ public class DisplayUtil
   private static boolean compatLowMIUI(Window paramWindow, boolean paramBoolean)
   {
     Object localObject = paramWindow.getClass();
-    try
+    for (;;)
     {
-      Class localClass = Class.forName("android.view.MiuiWindowManager$LayoutParams");
-      int j = localClass.getField("EXTRA_FLAG_STATUS_BAR_DARK_MODE").getInt(localClass);
-      localObject = ((Class)localObject).getMethod("setExtraFlags", new Class[] { Integer.TYPE, Integer.TYPE });
-      if (paramBoolean) {}
-      for (int i = j;; i = 0)
+      try
       {
-        ((Method)localObject).invoke(paramWindow, new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-        return true;
+        Class localClass = Class.forName("android.view.MiuiWindowManager$LayoutParams");
+        int j = localClass.getField("EXTRA_FLAG_STATUS_BAR_DARK_MODE").getInt(localClass);
+        localObject = ((Class)localObject).getMethod("setExtraFlags", new Class[] { Integer.TYPE, Integer.TYPE });
+        if (paramBoolean)
+        {
+          i = j;
+          ((Method)localObject).invoke(paramWindow, new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+          return true;
+        }
       }
-      return false;
-    }
-    catch (Exception paramWindow)
-    {
-      paramWindow.printStackTrace();
+      catch (Exception paramWindow)
+      {
+        paramWindow.printStackTrace();
+        return false;
+      }
+      int i = 0;
     }
   }
   
   public static int dip2px(Context paramContext, float paramFloat)
   {
-    return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+    return (int)(paramFloat * paramContext.getResources().getDisplayMetrics().density + 0.5F);
   }
   
   private static boolean enableXiaoMiNotch(Activity paramActivity)
@@ -212,15 +225,17 @@ public class DisplayUtil
   
   public static float getDensity(Context paramContext)
   {
-    if (density != 0.0F) {
-      return density;
+    float f = density;
+    if (f != 0.0F) {
+      return f;
     }
-    if (paramContext == null) {
-      throw new IllegalArgumentException("");
+    if (paramContext != null)
+    {
+      paramContext = paramContext.getResources().getDisplayMetrics();
+      density = paramContext.density;
+      return paramContext.density;
     }
-    paramContext = paramContext.getResources().getDisplayMetrics();
-    density = paramContext.density;
-    return paramContext.density;
+    throw new IllegalArgumentException("");
   }
   
   public static DisplayMetrics getDisplayMetrics(Context paramContext)
@@ -236,29 +251,26 @@ public class DisplayUtil
   
   private static int getInternalDimensionSize(Resources paramResources, String paramString)
   {
-    int i = 0;
-    int j = paramResources.getIdentifier(paramString, "dimen", "android");
-    if (j > 0) {
-      i = paramResources.getDimensionPixelSize(j);
+    int i = paramResources.getIdentifier(paramString, "dimen", "android");
+    if (i > 0) {
+      return paramResources.getDimensionPixelSize(i);
     }
-    return i;
+    return 0;
   }
   
   public static int getNavigationBarHeight(Context paramContext)
   {
     Resources localResources = paramContext.getResources();
-    int i = 0;
-    if (Build.VERSION.SDK_INT >= 14) {
-      if (!mInPortrait) {
-        break label32;
-      }
-    }
-    label32:
-    for (paramContext = "navigation_bar_height";; paramContext = "navigation_bar_height_landscape")
+    if (Build.VERSION.SDK_INT >= 14)
     {
-      i = getInternalDimensionSize(localResources, paramContext);
-      return i;
+      if (mInPortrait) {
+        paramContext = "navigation_bar_height";
+      } else {
+        paramContext = "navigation_bar_height_landscape";
+      }
+      return getInternalDimensionSize(localResources, paramContext);
     }
+    return 0;
   }
   
   public static int getRealHeight(Context paramContext)
@@ -267,40 +279,42 @@ public class DisplayUtil
     paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
     try
     {
+      int i;
       if (Build.VERSION.SDK_INT >= 17)
       {
         paramContext.getRealMetrics((DisplayMetrics)localObject);
-        return ((DisplayMetrics)localObject).heightPixels;
+        i = ((DisplayMetrics)localObject).heightPixels;
       }
-      localObject = Display.class.getMethod("getRawHeight", new Class[0]);
-      try
+      else
       {
-        int i = ((Integer)((Method)localObject).invoke(paramContext, new Object[0])).intValue();
-        return i;
+        localObject = Display.class.getMethod("getRawHeight", new Class[0]);
+        try
+        {
+          i = ((Integer)((Method)localObject).invoke(paramContext, new Object[0])).intValue();
+        }
+        catch (InvocationTargetException paramContext)
+        {
+          QMLog.e("DisplayUtil", paramContext.getMessage());
+          return -1;
+        }
+        catch (IllegalAccessException paramContext)
+        {
+          QMLog.e("DisplayUtil", paramContext.getMessage());
+          return -1;
+        }
+        catch (IllegalArgumentException paramContext)
+        {
+          QMLog.e("DisplayUtil", paramContext.getMessage());
+          return -1;
+        }
       }
-      catch (IllegalArgumentException paramContext)
-      {
-        QMLog.e("DisplayUtil", paramContext.getMessage());
-        return -1;
-      }
-      catch (IllegalAccessException paramContext)
-      {
-        QMLog.e("DisplayUtil", paramContext.getMessage());
-        return -1;
-      }
-      catch (InvocationTargetException paramContext)
-      {
-        QMLog.e("DisplayUtil", paramContext.getMessage());
-      }
+      return i;
     }
     catch (NoSuchMethodException paramContext)
     {
-      for (;;)
-      {
-        QMLog.e("DisplayUtil", paramContext.getMessage());
-      }
+      QMLog.e("DisplayUtil", paramContext.getMessage());
+      return -1;
     }
-    return -1;
   }
   
   public static int getScreenHeight(Activity paramActivity)
@@ -310,22 +324,23 @@ public class DisplayUtil
     {
       localDisplayMetrics = new DisplayMetrics();
       ((WindowManager)paramActivity.getSystemService("window")).getDefaultDisplay().getRealMetrics(localDisplayMetrics);
-      if (((!hasNavBar(paramActivity)) || (!isNavigationBarExist(paramActivity))) && (!isFlymeOS7NavBarShow())) {
-        break label92;
-      }
     }
-    label92:
-    for (int i = 1;; i = 0)
+    else
     {
-      int k = localDisplayMetrics.heightPixels;
-      int j = k;
-      if (i != 0) {
-        j = k - getNavigationBarHeight(paramActivity);
-      }
-      return j;
       localDisplayMetrics = paramActivity.getResources().getDisplayMetrics();
-      break;
     }
+    int i;
+    if (((hasNavBar(paramActivity)) && (isNavigationBarExist(paramActivity))) || (isFlymeOS7NavBarShow())) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    int k = localDisplayMetrics.heightPixels;
+    int j = k;
+    if (i != 0) {
+      j = k - getNavigationBarHeight(paramActivity);
+    }
+    return j;
   }
   
   public static int getScreenRefreshRate(Context paramContext)
@@ -350,32 +365,28 @@ public class DisplayUtil
   
   public static int getStatusBarHeight(Context paramContext)
   {
-    float f3;
-    float f1;
     if (statusHeight == -1)
     {
-      i = 0;
+      int i = 0;
       paramContext = paramContext.getResources();
       int j = paramContext.getIdentifier("status_bar_height", "dimen", "android");
       if (j > 0) {
         i = paramContext.getDimensionPixelSize(j);
       }
-      f3 = paramContext.getDisplayMetrics().density;
+      float f3 = paramContext.getDisplayMetrics().density;
       float f2 = f3 / paramContext.getDisplayMetrics().density;
-      f1 = f2;
+      float f1 = f2;
       if (f2 <= 0.0F) {
         f1 = 1.0F;
       }
-      if (i > 0) {
-        break label95;
+      if (i <= 0) {
+        i = Math.round(f1 * 25.0F * f3);
+      } else {
+        i = (int)Math.ceil(i * f1 + 0.5F);
       }
-    }
-    label95:
-    for (int i = Math.round(25.0F * f1 * f3);; i = (int)Math.ceil(i * f1 + 0.5F))
-    {
       statusHeight = i;
-      return statusHeight;
     }
+    return statusHeight;
   }
   
   public static String getSystemProperty(String paramString1, String paramString2)
@@ -395,45 +406,42 @@ public class DisplayUtil
   
   public static boolean hasNavBar(Context paramContext)
   {
-    if (mhasNavBar != -1) {
-      return mhasNavBar == 1;
+    int i = mhasNavBar;
+    if (i != -1) {
+      return i == 1;
     }
     Resources localResources = paramContext.getResources();
-    int i = localResources.getIdentifier("config_showNavigationBar", "bool", "android");
-    boolean bool;
+    i = localResources.getIdentifier("config_showNavigationBar", "bool", "android");
     if (i != 0)
     {
       bool = localResources.getBoolean(i);
-      if ("1".equals(sNavBarOverride)) {
-        bool = false;
-      }
-    }
-    for (;;)
-    {
-      QMLog.d("XPanelContainer", "hasNavbar=" + bool);
-      if (bool) {}
-      for (mhasNavBar = 1;; mhasNavBar = 0)
+      if (!"1".equals(sNavBarOverride))
       {
-        return bool;
         if (!"0".equals(sNavBarOverride)) {
-          break;
+          break label97;
         }
         bool = true;
-        break;
-        if (Build.VERSION.SDK_INT < 14) {
-          break label144;
-        }
-        if (!ViewConfiguration.get(paramContext).hasPermanentMenuKey())
-        {
-          bool = true;
-          break;
-        }
-        bool = false;
-        break;
+        break label97;
       }
-      label144:
-      bool = false;
     }
+    else if (Build.VERSION.SDK_INT >= 14)
+    {
+      bool = ViewConfiguration.get(paramContext).hasPermanentMenuKey() ^ true;
+      break label97;
+    }
+    boolean bool = false;
+    label97:
+    paramContext = new StringBuilder();
+    paramContext.append("hasNavbar=");
+    paramContext.append(bool);
+    QMLog.d("XPanelContainer", paramContext.toString());
+    if (bool)
+    {
+      mhasNavBar = 1;
+      return bool;
+    }
+    mhasNavBar = 0;
+    return bool;
   }
   
   public static boolean isFlymeOS7NavBarShow()
@@ -441,8 +449,10 @@ public class DisplayUtil
     String str = getSystemProperty("ro.build.display.id", "");
     if (("Flyme 7.1.1.4A".equals(str)) || ("Flyme 7.3.0.0A".equals(str)))
     {
-      if (("1".equals(getSystemProperty("persist.sys.mz_mback_nav", "0"))) && ("0".equals(getSystemProperty("persist.sys.mz_mainkeys", "0")))) {}
-      while (("0".equals(getSystemProperty("persist.sys.mz_mback_nav", "0"))) && ("0".equals(getSystemProperty("persist.sys.mz_mback_nav", "0")))) {
+      if (("1".equals(getSystemProperty("persist.sys.mz_mback_nav", "0"))) && ("0".equals(getSystemProperty("persist.sys.mz_mainkeys", "0")))) {
+        return true;
+      }
+      if (("0".equals(getSystemProperty("persist.sys.mz_mback_nav", "0"))) && ("0".equals(getSystemProperty("persist.sys.mz_mback_nav", "0")))) {
         return true;
       }
     }
@@ -451,29 +461,20 @@ public class DisplayUtil
   
   public static boolean isNavigationBarExist(Activity paramActivity)
   {
-    boolean bool2 = false;
     ViewGroup localViewGroup = (ViewGroup)paramActivity.getWindow().getDecorView();
-    boolean bool1 = bool2;
-    int i;
-    if (localViewGroup != null) {
-      i = 0;
-    }
-    for (;;)
+    if (localViewGroup != null)
     {
-      bool1 = bool2;
-      if (i < localViewGroup.getChildCount())
+      int i = 0;
+      while (i < localViewGroup.getChildCount())
       {
         localViewGroup.getChildAt(i).getContext().getPackageName();
         if ((localViewGroup.getChildAt(i).getId() != -1) && ("navigationBarBackground".equals(paramActivity.getResources().getResourceEntryName(localViewGroup.getChildAt(i).getId())))) {
-          bool1 = true;
+          return true;
         }
+        i += 1;
       }
-      else
-      {
-        return bool1;
-      }
-      i += 1;
     }
+    return false;
   }
   
   public static boolean isNavigationBarShow(Activity paramActivity)
@@ -485,17 +486,13 @@ public class DisplayUtil
       Point localPoint2 = new Point();
       paramActivity.getSize(localPoint1);
       paramActivity.getRealSize(localPoint2);
-      if (localPoint2.y == localPoint1.y) {}
+      return localPoint2.y != localPoint1.y;
     }
-    boolean bool1;
-    boolean bool2;
-    do
-    {
-      return true;
-      return false;
-      bool1 = ViewConfiguration.get(paramActivity).hasPermanentMenuKey();
-      bool2 = KeyCharacterMap.deviceHasKey(4);
-    } while ((!bool1) && (!bool2));
+    boolean bool1 = ViewConfiguration.get(paramActivity).hasPermanentMenuKey();
+    boolean bool2 = KeyCharacterMap.deviceHasKey(4);
+    if (!bool1) {
+      return !bool2;
+    }
     return false;
   }
   
@@ -506,12 +503,16 @@ public class DisplayUtil
   
   public static float mpx2px(double paramDouble)
   {
-    return (float)(density * paramDouble);
+    double d = density;
+    Double.isNaN(d);
+    return (float)(paramDouble * d);
   }
   
   public static int mpx2pxInt(double paramDouble)
   {
-    return (int)(density * paramDouble + 0.5D);
+    double d = density;
+    Double.isNaN(d);
+    return (int)(paramDouble * d + 0.5D);
   }
   
   public static int parseColor(String paramString)
@@ -527,7 +528,15 @@ public class DisplayUtil
           str1 = paramString.substring(1, 2);
           String str2 = paramString.substring(2, 3);
           paramString = paramString.substring(3, 4);
-          str1 = "#" + str1 + str1 + str2 + str2 + paramString + paramString;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("#");
+          localStringBuilder.append(str1);
+          localStringBuilder.append(str1);
+          localStringBuilder.append(str2);
+          localStringBuilder.append(str2);
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(paramString);
+          str1 = localStringBuilder.toString();
         }
       }
       int i = Color.parseColor(str1);
@@ -554,7 +563,9 @@ public class DisplayUtil
   
   public static float px2mpx(double paramDouble)
   {
-    return (float)(paramDouble / density);
+    double d = density;
+    Double.isNaN(d);
+    return (float)(paramDouble / d);
   }
   
   public static void setActivityFullScreen(Activity paramActivity)
@@ -575,67 +586,73 @@ public class DisplayUtil
     LiuHaiUtils.initLiuHaiProperty(paramActivity);
     if (LiuHaiUtils.isLiuHaiUseValid())
     {
-      if ((Build.MANUFACTURER.equalsIgnoreCase("xiaomi")) && ((Build.VERSION.SDK_INT == 26) || (Build.VERSION.SDK_INT == 27))) {
+      if ((Build.MANUFACTURER.equalsIgnoreCase("xiaomi")) && ((Build.VERSION.SDK_INT == 26) || (Build.VERSION.SDK_INT == 27)))
+      {
         enableXiaoMiNotch(paramActivity);
+        return;
       }
+      LiuHaiUtils.enableNotch(paramActivity);
     }
-    else {
-      return;
-    }
-    LiuHaiUtils.enableNotch(paramActivity);
   }
   
   private static boolean setStatusBarDarkModeForFlyme(Window paramWindow, boolean paramBoolean)
   {
-    boolean bool = true;
-    if (paramWindow != null) {
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (paramWindow != null) {}
+    try
+    {
+      localLayoutParams = paramWindow.getAttributes();
+      Field localField1 = WindowManager.LayoutParams.class.getDeclaredField("MEIZU_FLAG_DARK_STATUS_BAR_ICON");
+      localField2 = WindowManager.LayoutParams.class.getDeclaredField("meizuFlags");
+      localField1.setAccessible(true);
+      localField2.setAccessible(true);
+      i = localField1.getInt(null);
+      j = localField2.getInt(localLayoutParams);
+      if (!paramBoolean) {
+        break label179;
+      }
+      i |= j;
+    }
+    catch (Exception localException)
+    {
       for (;;)
       {
-        try
-        {
-          WindowManager.LayoutParams localLayoutParams = paramWindow.getAttributes();
-          Field localField1 = WindowManager.LayoutParams.class.getDeclaredField("MEIZU_FLAG_DARK_STATUS_BAR_ICON");
-          Field localField2 = WindowManager.LayoutParams.class.getDeclaredField("meizuFlags");
-          localField1.setAccessible(true);
-          localField2.setAccessible(true);
-          i = localField1.getInt(null);
-          j = localField2.getInt(localLayoutParams);
-          if (!paramBoolean) {
-            continue;
-          }
-          i |= j;
-          localField2.setInt(localLayoutParams, i);
-          paramWindow.setAttributes(localLayoutParams);
-        }
-        catch (Exception localException)
-        {
-          int j;
-          QMLog.e("DisplayUtil", "setStatusBarDarkModeForFlyme: failed");
-          bool = false;
-          continue;
-          int i = j & 0xFFFFDFFF;
-          continue;
-        }
-        if (Build.VERSION.SDK_INT >= 23)
-        {
-          paramWindow = paramWindow.getDecorView();
-          if (paramWindow != null)
-          {
-            j = paramWindow.getSystemUiVisibility();
-            if (!paramBoolean) {
-              continue;
-            }
-            i = j | 0x2000;
-            if (i != j) {
-              paramWindow.setSystemUiVisibility(i);
-            }
-          }
-        }
-        return bool;
-        i = (i ^ 0xFFFFFFFF) & j;
+        WindowManager.LayoutParams localLayoutParams;
+        Field localField2;
+        int j;
+        continue;
+        int i = (i ^ 0xFFFFFFFF) & j;
       }
     }
-    return false;
+    localField2.setInt(localLayoutParams, i);
+    paramWindow.setAttributes(localLayoutParams);
+    bool1 = true;
+    break label104;
+    QMLog.e("DisplayUtil", "setStatusBarDarkModeForFlyme: failed");
+    label104:
+    bool2 = bool1;
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      paramWindow = paramWindow.getDecorView();
+      bool2 = bool1;
+      if (paramWindow != null)
+      {
+        j = paramWindow.getSystemUiVisibility();
+        if (paramBoolean) {
+          i = j | 0x2000;
+        } else {
+          i = j & 0xFFFFDFFF;
+        }
+        bool2 = bool1;
+        if (i != j)
+        {
+          paramWindow.setSystemUiVisibility(i);
+          bool2 = bool1;
+        }
+      }
+    }
+    return bool2;
   }
   
   public static boolean setStatusTextColor(boolean paramBoolean, Window paramWindow)
@@ -680,20 +697,14 @@ public class DisplayUtil
       }
     }
     LiuHaiUtils.initLiuHaiProperty(paramActivity);
-    if (LiuHaiUtils.isLiuHaiUseValid())
-    {
-      if ((!Build.MANUFACTURER.equalsIgnoreCase("xiaomi")) || ((Build.VERSION.SDK_INT != 26) && (Build.VERSION.SDK_INT != 27))) {
-        break label111;
+    if (LiuHaiUtils.isLiuHaiUseValid()) {
+      if ((Build.MANUFACTURER.equalsIgnoreCase("xiaomi")) && ((Build.VERSION.SDK_INT == 26) || (Build.VERSION.SDK_INT == 27))) {
+        enableXiaoMiNotch(paramActivity);
+      } else {
+        LiuHaiUtils.enableNotch(paramActivity);
       }
-      enableXiaoMiNotch(paramActivity);
     }
-    for (;;)
-    {
-      paramActivity.getWindow().setFlags(1024, 1024);
-      return;
-      label111:
-      LiuHaiUtils.enableNotch(paramActivity);
-    }
+    paramActivity.getWindow().setFlags(1024, 1024);
   }
   
   public static void setTranslucentStatus(Window paramWindow)
@@ -708,35 +719,33 @@ public class DisplayUtil
     }
     catch (Exception paramWindow)
     {
-      QMLog.i("DisplayUtil", "反射修改状态栏颜色失败");
+      label36:
+      break label36;
     }
+    QMLog.i("DisplayUtil", "反射修改状态栏颜色失败");
   }
   
   public static int sp2px(Context paramContext, float paramFloat)
   {
-    return (int)(paramContext.getResources().getDisplayMetrics().scaledDensity * paramFloat + 0.5F);
+    return (int)(paramFloat * paramContext.getResources().getDisplayMetrics().scaledDensity + 0.5F);
   }
   
   public static void updatePortrait(Activity paramActivity)
   {
-    boolean bool = true;
-    if (paramActivity != null) {
-      if (paramActivity.getWindow().getContext().getResources().getConfiguration().orientation != 1) {
-        break label31;
-      }
-    }
-    for (;;)
+    if (paramActivity != null)
     {
+      int i = paramActivity.getWindow().getContext().getResources().getConfiguration().orientation;
+      boolean bool = true;
+      if (i != 1) {
+        bool = false;
+      }
       mInPortrait = bool;
-      return;
-      label31:
-      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.utils.DisplayUtil
  * JD-Core Version:    0.7.0.1
  */

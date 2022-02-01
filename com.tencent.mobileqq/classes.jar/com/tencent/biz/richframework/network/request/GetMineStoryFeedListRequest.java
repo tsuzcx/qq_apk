@@ -37,15 +37,18 @@ public class GetMineStoryFeedListRequest
       setErrorLog("storyData is null");
       return null;
     }
-    CLIENT.StGetStoryFeedListRsp localStGetStoryFeedListRsp = new CLIENT.StGetStoryFeedListRsp();
+    Object localObject = new CLIENT.StGetStoryFeedListRsp();
     try
     {
-      localStGetStoryFeedListRsp.mergeFrom(paramArrayOfByte);
-      return localStGetStoryFeedListRsp;
+      ((CLIENT.StGetStoryFeedListRsp)localObject).mergeFrom(paramArrayOfByte);
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      setErrorLog("onResponse fail." + paramArrayOfByte);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onResponse fail.");
+      ((StringBuilder)localObject).append(paramArrayOfByte);
+      setErrorLog(((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -64,7 +67,7 @@ public class GetMineStoryFeedListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.network.request.GetMineStoryFeedListRequest
  * JD-Core Version:    0.7.0.1
  */

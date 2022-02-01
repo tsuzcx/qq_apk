@@ -20,18 +20,19 @@ class TagCloudView$RectRandomDescComp
   
   public int a(Tag paramTag1, Tag paramTag2)
   {
-    if ((paramTag1.b.y > this.jdField_a_of_type_Int) || (paramTag2.b.y > this.jdField_a_of_type_Int)) {
-      return -(paramTag1.b.y - paramTag2.b.y);
-    }
-    if ((paramTag1.b.x > this.b) || (paramTag2.b.x > this.b)) {
+    if ((paramTag1.b.y <= this.jdField_a_of_type_Int) && (paramTag2.b.y <= this.jdField_a_of_type_Int))
+    {
+      if ((paramTag1.b.x <= this.b) && (paramTag2.b.x <= this.b)) {
+        return this.jdField_a_of_type_JavaUtilRandom.nextInt(3) - 2;
+      }
       return -(paramTag1.b.x - paramTag2.b.x);
     }
-    return this.jdField_a_of_type_JavaUtilRandom.nextInt(3) - 2;
+    return -(paramTag1.b.y - paramTag2.b.y);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView.RectRandomDescComp
  * JD-Core Version:    0.7.0.1
  */

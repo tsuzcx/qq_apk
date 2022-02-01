@@ -26,16 +26,24 @@ public class ImportantMsgEntryConfig$EntryConfig
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("iconUrl").append("=").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", appid").append("=").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(", titleType").append("=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", defTitle").append("=").append(this.b);
+    localStringBuilder.append("iconUrl");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", appid");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", titleType");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", defTitle");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.b);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMsgEntryConfig.EntryConfig
  * JD-Core Version:    0.7.0.1
  */

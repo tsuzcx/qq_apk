@@ -23,9 +23,11 @@ class TransitionAnimHelper$MatrixEvaluator
     int i = 0;
     while (i < 9)
     {
-      float f1 = this.b[i];
-      float f2 = this.jdField_a_of_type_ArrayOfFloat[i];
-      this.b[i] = ((f1 - f2) * paramFloat + this.jdField_a_of_type_ArrayOfFloat[i]);
+      paramMatrix1 = this.b;
+      float f1 = paramMatrix1[i];
+      paramMatrix2 = this.jdField_a_of_type_ArrayOfFloat;
+      float f2 = paramMatrix2[i];
+      paramMatrix2[i] += (f1 - f2) * paramFloat;
       i += 1;
     }
     this.jdField_a_of_type_AndroidGraphicsMatrix.setValues(this.b);
@@ -34,7 +36,7 @@ class TransitionAnimHelper$MatrixEvaluator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.transition.TransitionAnimHelper.MatrixEvaluator
  * JD-Core Version:    0.7.0.1
  */

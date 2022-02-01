@@ -18,12 +18,13 @@ class SDKEmotionSettingManager$4
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     QLog.i("SDKEmotionSettingManager", 1, "setEmotion user grant");
-    SDKEmotionSettingManager.a(this.a, SDKEmotionSettingManager.b(this.a));
+    paramArrayOfString = this.a;
+    SDKEmotionSettingManager.a(paramArrayOfString, SDKEmotionSettingManager.b(paramArrayOfString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.SDKEmotionSettingManager.4
  * JD-Core Version:    0.7.0.1
  */

@@ -41,7 +41,7 @@ public abstract class TAVBaseMixFilter
     Rect localRect = paramFrameInfo.frame;
     float f1 = paramCGSize.width / paramFrameInfo.sourceWidth;
     float f2 = paramCGSize.height / paramFrameInfo.sourceHeight;
-    return new Rect((int)(localRect.left * f1), (int)(localRect.top * f2), (int)(f1 * localRect.right), (int)(localRect.bottom * f2));
+    return new Rect((int)(localRect.left * f1), (int)(localRect.top * f2), (int)(localRect.right * f1), (int)(localRect.bottom * f2));
   }
   
   public CIImage apply(TAVVideoMixEffect paramTAVVideoMixEffect, ImageCollection paramImageCollection, RenderInfo paramRenderInfo)
@@ -69,46 +69,49 @@ public abstract class TAVBaseMixFilter
       paramTrackImagePair.imageByCroppingToRect(new CGRect(localRect.left, paramCGSize.height - localRect.bottom, localRect.right - localRect.left, localRect.bottom - localRect.top));
       paramCGSize = paramTrackImagePair.getSize();
     }
-    for (;;)
+    else if ((isTAVClip(paramTrackImagePair.getTrack())) && (TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill.equals(getContentMode(paramTrackImagePair.getTrack()))))
     {
-      return new Pair(paramTrackImagePair, paramCGSize);
-      if ((isTAVClip(paramTrackImagePair.getTrack())) && (TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill.equals(getContentMode(paramTrackImagePair.getTrack()))))
-      {
-        paramTrackImagePair = paramTrackImagePair.getImage().clone();
-        paramTrackImagePair.applyFillInFrame(new CGRect(new PointF(), paramCGSize), TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill);
-      }
-      else
-      {
-        paramTrackImagePair = paramTrackImagePair.getImage();
-        paramCGSize = paramTrackImagePair.getSize();
-      }
+      paramTrackImagePair = paramTrackImagePair.getImage().clone();
+      paramTrackImagePair.applyFillInFrame(new CGRect(new PointF(), paramCGSize), TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill);
     }
+    else
+    {
+      paramTrackImagePair = paramTrackImagePair.getImage();
+      paramCGSize = paramTrackImagePair.getSize();
+    }
+    return new Pair(paramTrackImagePair, paramCGSize);
   }
   
   public TextureInfo getCachedTexture(CIImage paramCIImage, CGSize paramCGSize, RenderInfo paramRenderInfo)
   {
     int i = (int)paramCGSize.width;
     int j = (int)paramCGSize.height;
-    paramCGSize = i + "_" + j;
+    paramCGSize = new StringBuilder();
+    paramCGSize.append(i);
+    paramCGSize.append("_");
+    paramCGSize.append(j);
+    paramCGSize = paramCGSize.toString();
     Object localObject = (Integer)this.sizeKeys.get(paramCGSize);
     if (localObject == null) {
       this.sizeKeys.put(paramCGSize, Integer.valueOf(1));
-    }
-    for (;;)
-    {
-      String str = paramCGSize + "_" + this.sizeKeys.get(paramCGSize);
-      localObject = (TextureInfo)this.textureMap.get(str);
-      paramCGSize = (CGSize)localObject;
-      if (localObject == null)
-      {
-        this.renderContext.makeCurrent();
-        paramCGSize = CIContext.newTextureInfo(i, j);
-        this.textureMap.put(str, paramCGSize);
-      }
-      paramRenderInfo.getCiContext().convertImageToTexture(paramCIImage, paramCGSize);
-      return paramCGSize;
+    } else {
       this.sizeKeys.put(paramCGSize, Integer.valueOf(((Integer)localObject).intValue() + 1));
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramCGSize);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(this.sizeKeys.get(paramCGSize));
+    String str = ((StringBuilder)localObject).toString();
+    localObject = (TextureInfo)this.textureMap.get(str);
+    paramCGSize = (CGSize)localObject;
+    if (localObject == null)
+    {
+      this.renderContext.makeCurrent();
+      paramCGSize = CIContext.newTextureInfo(i, j);
+      this.textureMap.put(str, paramCGSize);
+    }
+    paramRenderInfo.getCiContext().convertImageToTexture(paramCIImage, paramCGSize);
+    return paramCGSize;
   }
   
   public TAVVideoConfiguration.TAVVideoConfigurationContentMode getContentMode(TAVVideoCompositionTrack paramTAVVideoCompositionTrack)
@@ -118,46 +121,36 @@ public abstract class TAVBaseMixFilter
   
   public Rect getFrameCropRect(TAVVideoCompositionTrack paramTAVVideoCompositionTrack, CGSize paramCGSize)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (isTAVClip(paramTAVVideoCompositionTrack))
-    {
-      localObject1 = localObject2;
-      if (paramTAVVideoCompositionTrack.getExtraTrackInfo("extra_frame_info") != null) {
-        localObject1 = transform((FrameInfo)paramTAVVideoCompositionTrack.getExtraTrackInfo("extra_frame_info"), paramCGSize);
-      }
+    if ((isTAVClip(paramTAVVideoCompositionTrack)) && (paramTAVVideoCompositionTrack.getExtraTrackInfo("extra_frame_info") != null)) {
+      return transform((FrameInfo)paramTAVVideoCompositionTrack.getExtraTrackInfo("extra_frame_info"), paramCGSize);
     }
-    return localObject1;
+    return null;
   }
   
   public int getPAGLayerIndex(ImageCollection.TrackImagePair paramTrackImagePair)
   {
-    if ((paramTrackImagePair == null) || (paramTrackImagePair.getTrack() == null)) {
-      return -1;
+    int j = -1;
+    int i = j;
+    if (paramTrackImagePair != null)
+    {
+      if (paramTrackImagePair.getTrack() == null) {
+        return -1;
+      }
+      paramTrackImagePair = paramTrackImagePair.getTrack().getExtraTrackInfo("pag_layer_index");
+      i = j;
+      if ((paramTrackImagePair instanceof String)) {
+        i = Integer.parseInt((String)paramTrackImagePair);
+      }
     }
-    paramTrackImagePair = paramTrackImagePair.getTrack().getExtraTrackInfo("pag_layer_index");
-    if ((paramTrackImagePair instanceof String)) {
-      return Integer.parseInt((String)paramTrackImagePair);
-    }
-    return -1;
+    return i;
   }
   
   public int getTrackIndex(ImageCollection.TrackImagePair paramTrackImagePair)
   {
-    int j = 0;
-    int i = j;
-    if (paramTrackImagePair != null)
-    {
-      i = j;
-      if (paramTrackImagePair.getTrack() != null)
-      {
-        i = j;
-        if ((paramTrackImagePair.getTrack().getExtraTrackInfo("trackIndex") instanceof Integer)) {
-          i = ((Integer)paramTrackImagePair.getTrack().getExtraTrackInfo("trackIndex")).intValue();
-        }
-      }
+    if ((paramTrackImagePair != null) && (paramTrackImagePair.getTrack() != null) && ((paramTrackImagePair.getTrack().getExtraTrackInfo("trackIndex") instanceof Integer))) {
+      return ((Integer)paramTrackImagePair.getTrack().getExtraTrackInfo("trackIndex")).intValue();
     }
-    return i;
+    return 0;
   }
   
   public boolean isTAVClip(TAVVideoCompositionTrack paramTAVVideoCompositionTrack)
@@ -167,19 +160,22 @@ public abstract class TAVBaseMixFilter
   
   public void release()
   {
-    if (this.renderContext != null) {
-      this.renderContext.makeCurrent();
+    Object localObject = this.renderContext;
+    if (localObject != null) {
+      ((RenderContext)localObject).makeCurrent();
     }
-    if (this.textureMap != null)
+    localObject = this.textureMap;
+    if (localObject != null)
     {
-      Iterator localIterator = this.textureMap.values().iterator();
-      while (localIterator.hasNext()) {
-        ((TextureInfo)localIterator.next()).release();
+      localObject = ((HashMap)localObject).values().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((TextureInfo)((Iterator)localObject).next()).release();
       }
       this.textureMap.clear();
     }
-    if (this.sizeKeys != null) {
-      this.sizeKeys.clear();
+    localObject = this.sizeKeys;
+    if (localObject != null) {
+      ((HashMap)localObject).clear();
     }
   }
   

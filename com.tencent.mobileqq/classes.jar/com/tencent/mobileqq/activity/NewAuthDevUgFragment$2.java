@@ -23,7 +23,11 @@ class NewAuthDevUgFragment$2
       QLog.e("NewAuthDevUgFragment", 1, "mBroadcastReceiver.onReceive: PhoneNum is not valid.");
       return;
     }
-    paramContext = paramContext.substring(0, 3) + "******" + paramContext.substring(paramContext.length() - 2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.substring(0, 3));
+    localStringBuilder.append("******");
+    localStringBuilder.append(paramContext.substring(paramContext.length() - 2));
+    paramContext = localStringBuilder.toString();
     NewAuthDevUgFragment.a(this.a).Mobile = paramContext;
     if (!TextUtils.isEmpty(paramIntent)) {
       NewAuthDevUgFragment.a(this.a).CountryCode = paramIntent;
@@ -33,7 +37,7 @@ class NewAuthDevUgFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NewAuthDevUgFragment.2
  * JD-Core Version:    0.7.0.1
  */

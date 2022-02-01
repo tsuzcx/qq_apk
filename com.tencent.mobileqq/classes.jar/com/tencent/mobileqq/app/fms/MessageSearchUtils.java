@@ -31,186 +31,193 @@ public class MessageSearchUtils
   
   public static FullMessageSearchResult.SearchResultItem a(QQAppInterface paramQQAppInterface, EntityManager paramEntityManager, Cursor paramCursor, String paramString1, int paramInt, String paramString2, FullMessageSearchTask paramFullMessageSearchTask)
   {
-    if ((paramCursor == null) || (paramCursor.getCount() == 0) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      paramEntityManager = null;
-    }
-    ArrayList localArrayList1;
-    ArrayList localArrayList2;
-    do
+    paramQQAppInterface = null;
+    Object localObject2 = null;
+    Object localObject1 = paramQQAppInterface;
+    if (paramCursor != null)
     {
-      return paramEntityManager;
-      String str = paramString2.toLowerCase(Locale.US);
-      localArrayList1 = new ArrayList();
-      localArrayList2 = new ArrayList();
-      if (paramCursor.isBeforeFirst()) {
-        paramCursor.moveToFirst();
-      }
-      if (!paramCursor.isAfterLast())
+      localObject1 = paramQQAppInterface;
+      if (paramCursor.getCount() != 0)
       {
-        if ((paramFullMessageSearchTask.c == 3) || (paramFullMessageSearchTask.c == 2)) {
-          return null;
-        }
-        paramInt = 0;
-        byte[] arrayOfByte = paramCursor.getBlob(paramCursor.getColumnIndex("msgData"));
-        int i = paramCursor.getInt(paramCursor.getColumnIndex("msgtype"));
-        paramString2 = "";
-        paramQQAppInterface = paramString2;
-        if (arrayOfByte != null)
+        localObject1 = paramQQAppInterface;
+        if (!TextUtils.isEmpty(paramString1))
         {
-          paramQQAppInterface = paramString2;
-          paramString1 = paramString2;
-        }
-        for (;;)
-        {
-          try
-          {
-            if (arrayOfByte.length > 0)
+          if (TextUtils.isEmpty(paramString2)) {
+            return null;
+          }
+          localObject1 = paramString2.toLowerCase(Locale.US);
+          paramString2 = new ArrayList();
+          ArrayList localArrayList = new ArrayList();
+          if (paramCursor.isBeforeFirst()) {
+            paramCursor.moveToFirst();
+          }
+          while (!paramCursor.isAfterLast()) {
+            if (paramFullMessageSearchTask.c != 3)
             {
-              if (i != -1000) {
-                continue;
+              if (paramFullMessageSearchTask.c == 2) {
+                return null;
               }
-              paramString1 = paramString2;
-              paramQQAppInterface = new String(arrayOfByte, "utf-8");
-            }
-            paramString2 = paramQQAppInterface;
-            if (paramQQAppInterface == null)
-            {
-              paramString1 = paramQQAppInterface;
-              paramString2 = new String("");
-            }
-            paramString1 = paramString2;
-            paramQQAppInterface = paramString2.toLowerCase(Locale.US);
-            paramString1 = paramQQAppInterface;
-            boolean bool = paramQQAppInterface.contains(str);
-            paramString1 = paramQQAppInterface;
-            if (bool)
-            {
-              paramInt = 1;
-              paramString1 = paramQQAppInterface;
-            }
-          }
-          catch (Exception paramQQAppInterface)
-          {
-            paramQQAppInterface.printStackTrace();
-            paramInt = 0;
-            continue;
-          }
-          if (paramInt != 0)
-          {
-            if (localArrayList1.size() < 1)
-            {
-              paramQQAppInterface = (MessageRecord)paramEntityManager.cursor2Entity(MessageRecord.class, null, paramCursor);
-              if (paramQQAppInterface != null)
+              byte[] arrayOfByte = paramCursor.getBlob(paramCursor.getColumnIndex("msgData"));
+              paramInt = paramCursor.getInt(paramCursor.getColumnIndex("msgtype"));
+              paramString1 = "";
+              if (arrayOfByte != null)
               {
-                paramQQAppInterface.msg = paramString1;
-                localArrayList1.add(paramQQAppInterface);
+                paramQQAppInterface = paramString1;
+                try
+                {
+                  if (arrayOfByte.length > 0) {
+                    if (paramInt == -1000)
+                    {
+                      paramQQAppInterface = paramString1;
+                      paramString1 = new String(arrayOfByte, "utf-8");
+                      paramQQAppInterface = paramString1;
+                    }
+                    else if (paramInt == -1035)
+                    {
+                      paramQQAppInterface = paramString1;
+                      MessageForMixedMsg localMessageForMixedMsg = new MessageForMixedMsg();
+                      paramQQAppInterface = paramString1;
+                      localMessageForMixedMsg.msgData = arrayOfByte;
+                      paramQQAppInterface = paramString1;
+                      localMessageForMixedMsg.doParse();
+                      paramQQAppInterface = paramString1;
+                      paramString1 = localMessageForMixedMsg.msg;
+                      paramQQAppInterface = paramString1;
+                    }
+                    else if (paramInt == -2011)
+                    {
+                      paramQQAppInterface = paramString1;
+                      paramString1 = a(arrayOfByte);
+                      paramQQAppInterface = paramString1;
+                    }
+                  }
+                }
+                catch (Exception paramString1)
+                {
+                  break label316;
+                }
               }
+              paramQQAppInterface = "";
+              if (paramQQAppInterface == null) {
+                try
+                {
+                  paramString1 = new String("");
+                }
+                catch (Exception paramString1)
+                {
+                  break label316;
+                }
+              } else {
+                paramString1 = paramQQAppInterface;
+              }
+              paramQQAppInterface = paramString1;
+              paramString1 = paramString1.toLowerCase(Locale.US);
+              paramQQAppInterface = paramString1;
+              boolean bool = paramString1.contains((CharSequence)localObject1);
+              paramQQAppInterface = paramString1;
+              break label323;
+              label316:
+              paramString1.printStackTrace();
+              bool = false;
+              label323:
+              if (bool)
+              {
+                if (paramString2.size() < 1)
+                {
+                  paramString1 = (MessageRecord)paramEntityManager.cursor2Entity(MessageRecord.class, null, paramCursor);
+                  if (paramString1 != null)
+                  {
+                    paramString1.msg = paramQQAppInterface;
+                    paramString2.add(paramString1);
+                  }
+                }
+                localArrayList.add(Long.valueOf(paramCursor.getLong(paramCursor.getColumnIndex("uniseq"))));
+              }
+              paramCursor.moveToNext();
             }
-            localArrayList2.add(Long.valueOf(paramCursor.getLong(paramCursor.getColumnIndex("uniseq"))));
-          }
-          paramCursor.moveToNext();
-          break;
-          if (i == -1035)
-          {
-            paramString1 = paramString2;
-            paramQQAppInterface = new MessageForMixedMsg();
-            paramString1 = paramString2;
-            paramQQAppInterface.msgData = arrayOfByte;
-            paramString1 = paramString2;
-            paramQQAppInterface.doParse();
-            paramString1 = paramString2;
-            paramQQAppInterface = paramQQAppInterface.msg;
-          }
-          else
-          {
-            paramQQAppInterface = paramString2;
-            if (i == -2011)
+            else
             {
-              paramString1 = paramString2;
-              paramQQAppInterface = a(arrayOfByte);
+              return null;
             }
+          }
+          paramQQAppInterface = localObject2;
+          if (paramString2.size() > 0)
+          {
+            paramQQAppInterface = new FullMessageSearchResult.SearchResultItem();
+            paramQQAppInterface.secondPageList = paramString2;
+            paramQQAppInterface.secondPageMessageUniseq = localArrayList;
+          }
+          paramEntityManager = paramFullMessageSearchTask.a;
+          localObject1 = paramQQAppInterface;
+          if (paramEntityManager != null)
+          {
+            paramEntityManager.a += paramCursor.getCount();
+            paramEntityManager.c += paramString2.size();
+            paramEntityManager.c += localArrayList.size();
+            localObject1 = paramQQAppInterface;
           }
         }
       }
-      paramQQAppInterface = null;
-      if (localArrayList1.size() > 0)
-      {
-        paramQQAppInterface = new FullMessageSearchResult.SearchResultItem();
-        paramQQAppInterface.secondPageList = localArrayList1;
-        paramQQAppInterface.secondPageMessageUniseq = localArrayList2;
-      }
-      paramString1 = paramFullMessageSearchTask.a;
-      paramEntityManager = paramQQAppInterface;
-    } while (paramString1 == null);
-    paramString1.a += paramCursor.getCount();
-    paramString1.c += localArrayList1.size();
-    paramString1.c += localArrayList2.size();
-    return paramQQAppInterface;
+    }
+    return localObject1;
   }
   
   private static String a(byte[] paramArrayOfByte)
   {
-    String str = "";
-    Object localObject = str;
-    if (paramArrayOfByte != null)
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
     {
-      localObject = str;
-      if (paramArrayOfByte.length > 0)
+      AbsStructMsg localAbsStructMsg = StructMsgFactory.a(paramArrayOfByte);
+      if (localAbsStructMsg != null)
       {
-        AbsStructMsg localAbsStructMsg = StructMsgFactory.a(paramArrayOfByte);
-        localObject = str;
-        if (localAbsStructMsg != null)
+        boolean bool = a(String.valueOf(localAbsStructMsg.mMsgServiceID));
+        if (((localAbsStructMsg instanceof AbsShareMsg)) && (bool))
         {
-          boolean bool = a(String.valueOf(localAbsStructMsg.mMsgServiceID));
-          localObject = str;
-          if ((localAbsStructMsg instanceof AbsShareMsg))
-          {
-            localObject = str;
-            if (bool)
-            {
-              paramArrayOfByte = ((AbsShareMsg)localAbsStructMsg).mContentTitle;
-              localObject = paramArrayOfByte;
-              if (TextUtils.isEmpty(paramArrayOfByte))
-              {
-                localObject = paramArrayOfByte;
-                if ((localAbsStructMsg instanceof AbsStructMsg)) {
-                  localObject = ((AbsShareMsg)localAbsStructMsg).mMsgBrief;
-                }
-              }
-            }
+          AbsShareMsg localAbsShareMsg = (AbsShareMsg)localAbsStructMsg;
+          String str = localAbsShareMsg.mContentTitle;
+          paramArrayOfByte = str;
+          if (!TextUtils.isEmpty(str)) {
+            return paramArrayOfByte;
           }
+          paramArrayOfByte = str;
+          if (!(localAbsStructMsg instanceof AbsStructMsg)) {
+            return paramArrayOfByte;
+          }
+          return localAbsShareMsg.mMsgBrief;
         }
       }
     }
-    return localObject;
+    paramArrayOfByte = "";
+    return paramArrayOfByte;
   }
   
   public static boolean a(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramString.equals("0"))) {}
-    for (;;)
+    if (!TextUtils.isEmpty(paramString))
     {
-      return false;
-      if (a != null)
+      if (paramString.equals("0")) {
+        return false;
+      }
+      String[] arrayOfString = a;
+      if (arrayOfString == null) {
+        return false;
+      }
+      int i = arrayOfString.length;
+      int j = arrayOfString.length;
+      i = 0;
+      while (i < j)
       {
-        int i = a.length;
-        String[] arrayOfString = a;
-        int j = arrayOfString.length;
-        i = 0;
-        while (i < j)
-        {
-          if (paramString.equals(arrayOfString[i])) {
-            return true;
-          }
-          i += 1;
+        if (paramString.equals(arrayOfString[i])) {
+          return true;
         }
+        i += 1;
       }
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.fms.MessageSearchUtils
  * JD-Core Version:    0.7.0.1
  */

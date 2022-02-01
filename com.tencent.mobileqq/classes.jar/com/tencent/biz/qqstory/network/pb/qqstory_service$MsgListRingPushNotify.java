@@ -18,13 +18,14 @@ public final class qqstory_service$MsgListRingPushNotify
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32 }, new String[] { "msglist_head_notify_node_info", "uint32_msglist_notify_type", "bytes_msglist_current_seq", "uint32_is_test_env" }, new Object[] { null, Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, MsgListRingPushNotify.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32 }, new String[] { "msglist_head_notify_node_info", "uint32_msglist_notify_type", "bytes_msglist_current_seq", "uint32_is_test_env" }, new Object[] { null, localInteger, localByteStringMicro, localInteger }, MsgListRingPushNotify.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.MsgListRingPushNotify
  * JD-Core Version:    0.7.0.1
  */

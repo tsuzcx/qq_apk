@@ -9,15 +9,25 @@ class ShareChat$SharePanel$3
 {
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QLog.w("ShareChat", 1, "ActionSheet.onDismiss, mChoosedLinkType[" + this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.b + "], mIHandle[" + this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel$IHandle + "], seq[" + this.jdField_a_of_type_Long + "]");
-    if ((this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.b == -1) && (this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel$IHandle != null)) {
-      this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.a(this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.b, 1);
+    paramDialogInterface = new StringBuilder();
+    paramDialogInterface.append("ActionSheet.onDismiss, mChoosedLinkType[");
+    paramDialogInterface.append(this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.b);
+    paramDialogInterface.append("], mIHandle[");
+    paramDialogInterface.append(this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel$IHandle);
+    paramDialogInterface.append("], seq[");
+    paramDialogInterface.append(this.jdField_a_of_type_Long);
+    paramDialogInterface.append("]");
+    QLog.w("ShareChat", 1, paramDialogInterface.toString());
+    if ((this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.b == -1) && (this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel$IHandle != null))
+    {
+      paramDialogInterface = this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel;
+      paramDialogInterface.a(paramDialogInterface.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.b, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.share.ShareChat.SharePanel.3
  * JD-Core Version:    0.7.0.1
  */

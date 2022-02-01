@@ -20,8 +20,10 @@ public class MessageRecordCallback
   
   public boolean a(MessageRecord paramMessageRecord)
   {
-    if ((AnonymousChatHelper.a(paramMessageRecord)) && (AnonymousChatHelper.b(paramMessageRecord))) {}
-    while ((TroopConfessUtil.a(paramMessageRecord)) && (TroopConfessUtil.b(paramMessageRecord))) {
+    if ((AnonymousChatHelper.a(paramMessageRecord)) && (AnonymousChatHelper.b(paramMessageRecord))) {
+      return true;
+    }
+    if ((TroopConfessUtil.a(paramMessageRecord)) && (TroopConfessUtil.b(paramMessageRecord))) {
       return true;
     }
     if (TextUtils.equals(AppConstants.FILE_ASSISTANT_UIN, paramMessageRecord.frienduin)) {
@@ -32,7 +34,7 @@ public class MessageRecordCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageRecordCallback
  * JD-Core Version:    0.7.0.1
  */

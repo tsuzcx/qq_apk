@@ -15,46 +15,51 @@ class ReceiptMessageDetailFragment$DiscussionSendReadReportCallback
     super(paramReceiptMessageDetailFragment);
   }
   
-  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      QLog.d("ReceiptMessageDetailFragment", 1, "getDiscussionSendReadReportCallback error on code: " + paramInt);
-      return;
-    }
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
     try
     {
       paramBundle = new oidb_0x984.RspBody();
       paramBundle.mergeFrom(paramArrayOfByte);
-      if (paramBundle.uint32_code.get() == 0) {
-        break label148;
-      }
-      QLog.d("ReceiptMessageDetailFragment", 1, "getDiscussionSendReadReportCallback fail on code: " + paramBundle.uint32_code.get());
-      if (paramBundle.uint32_code.get() == 20)
+      if (paramBundle.uint32_code.get() != 0)
       {
-        ReceiptMessageDetailFragment.n((ReceiptMessageDetailFragment)this.a);
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("getDiscussionSendReadReportCallback fail on code: ");
+        paramArrayOfByte.append(paramBundle.uint32_code.get());
+        QLog.d("ReceiptMessageDetailFragment", 1, paramArrayOfByte.toString());
+        if (paramBundle.uint32_code.get() == 20)
+        {
+          ReceiptMessageDetailFragment.n((ReceiptMessageDetailFragment)this.a);
+          return;
+        }
+        ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(5);
         return;
       }
+      if (QLog.isColorLevel()) {
+        QLog.d("ReceiptMessageDetailFragment", 2, "getDiscussionSendReadReportCallback succ");
+      }
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, 0, 0, false);
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(4);
+      return;
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      QLog.d("ReceiptMessageDetailFragment", 1, "Report read status fail on invalid data");
-      ReceiptMessageDetailFragment.n((ReceiptMessageDetailFragment)this.a);
-      return;
+      label154:
+      break label154;
     }
-    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(5);
+    QLog.d("ReceiptMessageDetailFragment", 1, "Report read status fail on invalid data");
+    ReceiptMessageDetailFragment.n((ReceiptMessageDetailFragment)this.a);
     return;
-    label148:
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "getDiscussionSendReadReportCallback succ");
-    }
-    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, 0, 0, false);
-    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(4);
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("getDiscussionSendReadReportCallback error on code: ");
+    paramArrayOfByte.append(paramInt);
+    QLog.d("ReceiptMessageDetailFragment", 1, paramArrayOfByte.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.DiscussionSendReadReportCallback
  * JD-Core Version:    0.7.0.1
  */

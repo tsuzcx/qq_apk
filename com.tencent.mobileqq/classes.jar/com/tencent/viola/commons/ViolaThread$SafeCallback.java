@@ -18,29 +18,30 @@ class ViolaThread$SafeCallback
   
   public boolean handleMessage(Message paramMessage)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
     try
     {
-      if (this.mCallback != null) {
-        bool1 = this.mCallback.handleMessage(paramMessage);
+      if (this.mCallback != null)
+      {
+        boolean bool = this.mCallback.handleMessage(paramMessage);
+        return bool;
       }
-      return bool1;
     }
     catch (Throwable paramMessage)
     {
-      do
-      {
-        bool1 = bool2;
-      } while (!ViolaEnvironment.isDebugable());
-      ViolaLogUtils.e("SafeCallback", "SafeCallback handleMessage throw expection:" + paramMessage.getMessage());
+      if (!ViolaEnvironment.isDebugable()) {
+        return false;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("SafeCallback handleMessage throw expection:");
+      localStringBuilder.append(paramMessage.getMessage());
+      ViolaLogUtils.e("SafeCallback", localStringBuilder.toString());
       throw paramMessage;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.commons.ViolaThread.SafeCallback
  * JD-Core Version:    0.7.0.1
  */

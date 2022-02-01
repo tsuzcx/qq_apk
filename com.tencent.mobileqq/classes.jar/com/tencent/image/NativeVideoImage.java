@@ -5,8 +5,12 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.media.AudioTrack;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -14,6 +18,7 @@ import android.os.Looper;
 import android.os.SystemClock;
 import com.tencent.image.api.ILog;
 import com.tencent.image.api.URLDrawableDepWrap;
+import com.tencent.qqlive.module.videoreport.dtreport.audio.playback.ReportAudioTrack;
 import com.tencent.video.decode.AVAudioParam;
 import com.tencent.video.decode.AVDecodeFactory;
 import com.tencent.video.decode.AVDecodeOption;
@@ -31,14 +36,14 @@ public class NativeVideoImage
 {
   static final int DEFAULT_AUDIO_FORMAT = 65281;
   public static final Bitmap.Config DEFAULT_CONFIG = Bitmap.Config.ARGB_8888;
-  public static String TAG = "URLDrawable_" + NativeVideoImage.class.getSimpleName() + "_";
-  static final String TAG_AUDIO = TAG + "_Audio";
+  public static String TAG;
+  static final String TAG_AUDIO;
   private static int TIME_BASE = 12;
   static Handler sDecodeHander;
   static HandlerThread sDecodeThread;
   static boolean sLibLoaded;
   static Handler sReleaseHandler;
-  protected static Handler sUIHandler = new Handler(Looper.getMainLooper());
+  protected static Handler sUIHandler;
   static boolean sVideoEngineAvaliable;
   static HandlerThread sWorkThread;
   private int ID = -1;
@@ -83,6 +88,16 @@ public class NativeVideoImage
   
   static
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("URLDrawable_");
+    localStringBuilder.append(NativeVideoImage.class.getSimpleName());
+    localStringBuilder.append("_");
+    TAG = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(TAG);
+    localStringBuilder.append("_Audio");
+    TAG_AUDIO = localStringBuilder.toString();
+    sUIHandler = new Handler(Looper.getMainLooper());
     sLibLoaded = false;
     sVideoEngineAvaliable = true;
     sWorkThread = new HandlerThread("Video-Release-Task");
@@ -102,339 +117,250 @@ public class NativeVideoImage
   {
     this.mSrcVideoFile = paramFile.getAbsolutePath();
     this.ID = this.mSrcVideoFile.hashCode();
-    if ((URLDrawable.depImp.mLog.isColorLevel()) && (paramObject != null)) {
-      URLDrawable.depImp.mLog.d(TAG + this.ID, 2, "NativeVideoImage(): cacheFirstFrame=" + paramBoolean + ", maxWidth= " + paramInt1 + ", maxHeight= " + paramInt2 + ", videoParams= " + paramObject.toString());
+    Object localObject1;
+    Object localObject2;
+    if ((URLDrawable.depImp.mLog.isColorLevel()) && (paramObject != null))
+    {
+      localObject1 = URLDrawable.depImp.mLog;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(TAG);
+      ((StringBuilder)localObject2).append(this.ID);
+      localObject2 = ((StringBuilder)localObject2).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("NativeVideoImage(): cacheFirstFrame=");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(", maxWidth= ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(", maxHeight= ");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(", videoParams= ");
+      localStringBuilder.append(paramObject.toString());
+      ((ILog)localObject1).d((String)localObject2, 2, localStringBuilder.toString());
     }
     if ((paramObject != null) && (VideoDrawable.VideoDrawableParams.class.isInstance(paramObject))) {
       this.mVideoParams = ((VideoDrawable.VideoDrawableParams)paramObject);
+    } else {
+      if (paramObject != null) {
+        break label1336;
+      }
     }
-    for (;;)
+    boolean bool = this.mVideoParams.mPlayAudioFrame;
+    this.mPlayAudioFrame = bool;
+    this.debug = bool;
+    this.mDefaultRoundCorner = this.mVideoParams.mVideoRoundCorner;
+    this.mEnableAntiAlias = this.mVideoParams.mEnableAntiAlias;
+    this.mEnableFilter = this.mVideoParams.mEnableFilter;
+    this.mOption = new AVDecodeOption();
+    bool = loopEnable;
+    if (this.mPlayAudioFrame) {
+      bool = false;
+    }
+    paramObject = this.mOption;
+    paramObject.cycle = bool;
+    paramObject.ignore_audio = (this.mPlayAudioFrame ^ true);
+    paramObject = this.mOption;
+    paramObject.only_keyframe = false;
+    paramObject.filename = this.mSrcVideoFile;
+    paramObject.audioFormat = 65281;
+    paramObject.wantedFps = this.mVideoParams.mRequestedFPS;
+    this.mOption.mDecodeType = this.mVideoParams.mDecodeType;
+    this.mOption.mVfPath = this.mVideoParams.mVfPath;
+    this.mOption.mAfPath = this.mVideoParams.mAfPath;
+    this.mOption.mTotalTime = this.mVideoParams.mTotalTime;
+    this.mOption.mVideoFrames = this.mVideoParams.mVideoFrames;
+    try
     {
-      boolean bool = this.mVideoParams.mPlayAudioFrame;
-      this.mPlayAudioFrame = bool;
-      this.debug = bool;
-      this.mDefaultRoundCorner = this.mVideoParams.mVideoRoundCorner;
-      this.mEnableAntiAlias = this.mVideoParams.mEnableAntiAlias;
-      this.mEnableFilter = this.mVideoParams.mEnableFilter;
-      this.mOption = new AVDecodeOption();
-      bool = loopEnable;
-      if (this.mPlayAudioFrame) {
-        bool = false;
-      }
-      this.mOption.cycle = bool;
-      paramObject = this.mOption;
-      if (!this.mPlayAudioFrame)
+      this.mAVDecode = AVDecodeFactory.newDecodeUncatched(this.mOption);
+    }
+    catch (AVideoException paramObject)
+    {
+      paramObject.printStackTrace();
+      if (URLDrawable.depImp.mLog.isColorLevel())
       {
-        bool = true;
-        paramObject.ignore_audio = bool;
-        this.mOption.only_keyframe = false;
-        this.mOption.filename = this.mSrcVideoFile;
-        this.mOption.audioFormat = 65281;
-        this.mOption.wantedFps = this.mVideoParams.mRequestedFPS;
-        this.mOption.mDecodeType = this.mVideoParams.mDecodeType;
-        this.mOption.mVfPath = this.mVideoParams.mVfPath;
-        this.mOption.mAfPath = this.mVideoParams.mAfPath;
-        this.mOption.mTotalTime = this.mVideoParams.mTotalTime;
-        this.mOption.mVideoFrames = this.mVideoParams.mVideoFrames;
+        localObject1 = URLDrawable.depImp.mLog;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(TAG);
+        ((StringBuilder)localObject2).append(this.ID);
+        ((ILog)localObject1).e(((StringBuilder)localObject2).toString(), 2, "NativeVideoImage()[newDecodeUncatched]", paramObject);
       }
-      try
+    }
+    if ((this.mAVDecode == null) && (URLDrawable.depImp.mLog.isColorLevel()))
+    {
+      paramObject = URLDrawable.depImp.mLog;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(TAG);
+      ((StringBuilder)localObject1).append(this.ID);
+      paramObject.e(((StringBuilder)localObject1).toString(), 2, "NativeVideoImage()[mAVDecode == null]....");
+    }
+    this.mRotation = this.mAVDecode.videoParam.rotation;
+    int n = this.mAVDecode.videoParam.fps_den;
+    int i1 = this.mAVDecode.videoParam.fps_num;
+    float f3 = i1 * 1.0F / n;
+    if (this.mAVDecode.audioParam.errcode == -106)
+    {
+      this.mPlayAudioFrame = false;
+      if (URLDrawable.depImp.mLog.isColorLevel())
       {
-        this.mAVDecode = AVDecodeFactory.newDecodeUncatched(this.mOption);
-        if ((this.mAVDecode == null) && (URLDrawable.depImp.mLog.isColorLevel())) {
-          URLDrawable.depImp.mLog.e(TAG + this.ID, 2, "NativeVideoImage()[mAVDecode == null]....");
-        }
-        this.mRotation = this.mAVDecode.videoParam.rotation;
-        int n = this.mAVDecode.videoParam.fps_den;
-        int i1 = this.mAVDecode.videoParam.fps_num;
-        float f3 = i1 * 1.0F / n;
-        if (this.mAVDecode.audioParam.errcode == -106)
-        {
-          this.mPlayAudioFrame = false;
-          if (URLDrawable.depImp.mLog.isColorLevel()) {
-            URLDrawable.depImp.mLog.e(TAG + this.ID, 2, "NativeVideoImage() => VIDEO_NO_MEDIA_DATA_ERR, 不存在音频数据, mSrcVideoFile=" + this.mSrcVideoFile);
-          }
-        }
-        paramFile = getFrameSize(paramFile);
-        int m = paramFile.width();
-        int k = paramFile.height();
-        int j = k;
-        int i = m;
-        if (paramInt1 > 0)
-        {
-          j = k;
-          i = m;
-          if (paramInt2 > 0)
-          {
-            f1 = paramInt1 / m;
-            f2 = paramInt2 / k;
-            if (f1 >= f2) {
-              break label1212;
-            }
-            j = k;
-            i = m;
-            if (f1 < 1.0F)
-            {
-              i = (int)(m * f1);
-              j = (int)(k * f1);
-            }
-          }
-        }
-        this.mReqWidth = i;
-        this.mReqHeight = j;
-        if (URLDrawable.depImp.mLog.isColorLevel())
-        {
-          paramFile = new StringBuilder();
-          paramFile.append("videoParams[ frame_count:").append(this.mAVDecode.videoParam.frame_count);
-          paramFile.append("\n mSrcVideoFile:").append(this.mSrcVideoFile);
-          paramFile.append("\n duration:").append(this.mAVDecode.videoParam.duration);
-          paramFile.append("\n fps_den:").append(n);
-          paramFile.append("\n fps_num:").append(i1);
-          paramFile.append("\n fps:").append(f3);
-          paramFile.append("\n mReqWidth:").append(this.mReqWidth);
-          paramFile.append("\n mReqHeight:").append(this.mReqHeight);
-          paramFile.append("\n mRotation:").append(this.mRotation);
-          URLDrawable.depImp.mLog.d(TAG + this.ID, 2, " NativeVideoImage(): " + paramFile.toString());
-        }
-        init(paramBoolean);
-        this.mDataReport = new DataReport();
-        return;
-        if (paramObject == null) {
-          continue;
-        }
-        throw new RuntimeException(" NativeVideoImage(): videoParams is illegal, not VideoDrawableParams, " + paramObject.toString());
-        bool = false;
+        paramObject = URLDrawable.depImp.mLog;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(TAG);
+        ((StringBuilder)localObject1).append(this.ID);
+        localObject1 = ((StringBuilder)localObject1).toString();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("NativeVideoImage() => VIDEO_NO_MEDIA_DATA_ERR, 不存在音频数据, mSrcVideoFile=");
+        ((StringBuilder)localObject2).append(this.mSrcVideoFile);
+        paramObject.e((String)localObject1, 2, ((StringBuilder)localObject2).toString());
       }
-      catch (AVideoException paramObject)
+    }
+    paramFile = getFrameSize(paramFile);
+    int k = paramFile.width();
+    int m = paramFile.height();
+    int j = k;
+    int i = m;
+    if (paramInt1 > 0)
+    {
+      j = k;
+      i = m;
+      if (paramInt2 > 0)
       {
-        for (;;)
+        float f1 = paramInt1;
+        float f4 = k;
+        f1 /= f4;
+        float f2 = paramInt2;
+        float f5 = m;
+        f2 /= f5;
+        if (f1 >= f2) {
+          f1 = f2;
+        }
+        j = k;
+        i = m;
+        if (f1 < 1.0F)
         {
-          float f1;
-          float f2;
-          paramObject.printStackTrace();
-          if (URLDrawable.depImp.mLog.isColorLevel())
-          {
-            URLDrawable.depImp.mLog.e(TAG + this.ID, 2, "NativeVideoImage()[newDecodeUncatched]", paramObject);
-            continue;
-            label1212:
-            f1 = f2;
-          }
+          j = (int)(f4 * f1);
+          i = (int)(f5 * f1);
         }
       }
     }
+    this.mReqWidth = j;
+    this.mReqHeight = i;
+    if (URLDrawable.depImp.mLog.isColorLevel())
+    {
+      paramFile = new StringBuilder();
+      paramFile.append("videoParams[ frame_count:");
+      paramFile.append(this.mAVDecode.videoParam.frame_count);
+      paramFile.append("\n mSrcVideoFile:");
+      paramFile.append(this.mSrcVideoFile);
+      paramFile.append("\n duration:");
+      paramFile.append(this.mAVDecode.videoParam.duration);
+      paramFile.append("\n fps_den:");
+      paramFile.append(n);
+      paramFile.append("\n fps_num:");
+      paramFile.append(i1);
+      paramFile.append("\n fps:");
+      paramFile.append(f3);
+      paramFile.append("\n mReqWidth:");
+      paramFile.append(this.mReqWidth);
+      paramFile.append("\n mReqHeight:");
+      paramFile.append(this.mReqHeight);
+      paramFile.append("\n mRotation:");
+      paramFile.append(this.mRotation);
+      paramObject = URLDrawable.depImp.mLog;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(TAG);
+      ((StringBuilder)localObject1).append(this.ID);
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(" NativeVideoImage(): ");
+      ((StringBuilder)localObject2).append(paramFile.toString());
+      paramObject.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+    }
+    init(paramBoolean);
+    this.mDataReport = new DataReport();
+    return;
+    label1336:
+    paramFile = new StringBuilder();
+    paramFile.append(" NativeVideoImage(): videoParams is illegal, not VideoDrawableParams, ");
+    paramFile.append(paramObject.toString());
+    throw new RuntimeException(paramFile.toString());
   }
   
   static void loadLibrary(Context paramContext)
   {
-    if (!sLibLoaded) {}
-    for (;;)
+    if (!sLibLoaded)
     {
       try
       {
         int i = ShortVideoSoLoad.LoadExtractedShortVideo("AVCodec");
-        if (i != 0) {
-          continue;
+        if (i == 0) {
+          sVideoEngineAvaliable = true;
+        } else if (URLDrawable.depImp.mLog.isColorLevel()) {
+          URLDrawable.depImp.mLog.e(TAG, 2, "loadLibrary() failure....");
         }
-        sVideoEngineAvaliable = true;
-        if (URLDrawable.depImp.mLog.isColorLevel()) {
-          URLDrawable.depImp.mLog.d(TAG, 2, "loadLibrary(): status=" + i);
+        if (URLDrawable.depImp.mLog.isColorLevel())
+        {
+          paramContext = URLDrawable.depImp.mLog;
+          String str = TAG;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("loadLibrary(): status=");
+          localStringBuilder.append(i);
+          paramContext.d(str, 2, localStringBuilder.toString());
         }
       }
       catch (Throwable paramContext)
       {
-        if (!URLDrawable.depImp.mLog.isColorLevel()) {
-          continue;
+        if (URLDrawable.depImp.mLog.isColorLevel()) {
+          URLDrawable.depImp.mLog.e(TAG, 2, "System.loadLibrary(AVCodec) failed");
         }
-        URLDrawable.depImp.mLog.e(TAG, 2, "System.loadLibrary(AVCodec) failed");
         paramContext.printStackTrace();
-        continue;
       }
       sLibLoaded = true;
-      return;
-      if (URLDrawable.depImp.mLog.isColorLevel()) {
-        URLDrawable.depImp.mLog.e(TAG, 2, "loadLibrary() failure....");
-      }
     }
   }
   
-  /* Error */
   protected void applyNextFrame()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: invokestatic 487	java/lang/System:currentTimeMillis	()J
-    //   5: lstore_1
-    //   6: new 489	android/graphics/Canvas
-    //   9: dup
-    //   10: aload_0
-    //   11: getfield 491	com/tencent/image/NativeVideoImage:mCurFrameBitmap	Landroid/graphics/Bitmap;
-    //   14: invokespecial 494	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
-    //   17: astore 5
-    //   19: aload_0
-    //   20: getfield 491	com/tencent/image/NativeVideoImage:mCurFrameBitmap	Landroid/graphics/Bitmap;
-    //   23: iconst_0
-    //   24: invokevirtual 499	android/graphics/Bitmap:eraseColor	(I)V
-    //   27: new 501	android/graphics/Paint
-    //   30: dup
-    //   31: invokespecial 502	android/graphics/Paint:<init>	()V
-    //   34: astore 6
-    //   36: aload_0
-    //   37: getfield 165	com/tencent/image/NativeVideoImage:mDefaultRoundCorner	F
-    //   40: fconst_0
-    //   41: fcmpl
-    //   42: ifle +71 -> 113
-    //   45: aload 6
-    //   47: iconst_1
-    //   48: invokevirtual 505	android/graphics/Paint:setAntiAlias	(Z)V
-    //   51: aload 6
-    //   53: iconst_1
-    //   54: invokevirtual 508	android/graphics/Paint:setFilterBitmap	(Z)V
-    //   57: aload 5
-    //   59: new 510	android/graphics/RectF
-    //   62: dup
-    //   63: fconst_0
-    //   64: fconst_0
-    //   65: aload_0
-    //   66: getfield 491	com/tencent/image/NativeVideoImage:mCurFrameBitmap	Landroid/graphics/Bitmap;
-    //   69: invokevirtual 513	android/graphics/Bitmap:getWidth	()I
-    //   72: i2f
-    //   73: aload_0
-    //   74: getfield 491	com/tencent/image/NativeVideoImage:mCurFrameBitmap	Landroid/graphics/Bitmap;
-    //   77: invokevirtual 516	android/graphics/Bitmap:getHeight	()I
-    //   80: i2f
-    //   81: invokespecial 519	android/graphics/RectF:<init>	(FFFF)V
-    //   84: aload_0
-    //   85: getfield 165	com/tencent/image/NativeVideoImage:mDefaultRoundCorner	F
-    //   88: aload_0
-    //   89: getfield 165	com/tencent/image/NativeVideoImage:mDefaultRoundCorner	F
-    //   92: aload 6
-    //   94: invokevirtual 523	android/graphics/Canvas:drawRoundRect	(Landroid/graphics/RectF;FFLandroid/graphics/Paint;)V
-    //   97: aload 6
-    //   99: new 525	android/graphics/PorterDuffXfermode
-    //   102: dup
-    //   103: getstatic 531	android/graphics/PorterDuff$Mode:SRC_IN	Landroid/graphics/PorterDuff$Mode;
-    //   106: invokespecial 534	android/graphics/PorterDuffXfermode:<init>	(Landroid/graphics/PorterDuff$Mode;)V
-    //   109: invokevirtual 538	android/graphics/Paint:setXfermode	(Landroid/graphics/Xfermode;)Landroid/graphics/Xfermode;
-    //   112: pop
-    //   113: aload_0
-    //   114: getfield 364	com/tencent/image/NativeVideoImage:mRotation	I
-    //   117: ifeq +189 -> 306
-    //   120: new 540	android/graphics/Matrix
-    //   123: dup
-    //   124: invokespecial 541	android/graphics/Matrix:<init>	()V
-    //   127: astore 7
-    //   129: aload 7
-    //   131: aload_0
-    //   132: getfield 364	com/tencent/image/NativeVideoImage:mRotation	I
-    //   135: i2f
-    //   136: aload_0
-    //   137: getfield 543	com/tencent/image/NativeVideoImage:mCurFrameBitmapBuffer	Landroid/graphics/Bitmap;
-    //   140: invokevirtual 513	android/graphics/Bitmap:getWidth	()I
-    //   143: iconst_2
-    //   144: idiv
-    //   145: i2f
-    //   146: aload_0
-    //   147: getfield 543	com/tencent/image/NativeVideoImage:mCurFrameBitmapBuffer	Landroid/graphics/Bitmap;
-    //   150: invokevirtual 516	android/graphics/Bitmap:getHeight	()I
-    //   153: iconst_2
-    //   154: idiv
-    //   155: i2f
-    //   156: invokevirtual 547	android/graphics/Matrix:postRotate	(FFF)Z
-    //   159: pop
-    //   160: aload 7
-    //   162: aload_0
-    //   163: getfield 491	com/tencent/image/NativeVideoImage:mCurFrameBitmap	Landroid/graphics/Bitmap;
-    //   166: invokevirtual 513	android/graphics/Bitmap:getWidth	()I
-    //   169: aload_0
-    //   170: getfield 543	com/tencent/image/NativeVideoImage:mCurFrameBitmapBuffer	Landroid/graphics/Bitmap;
-    //   173: invokevirtual 513	android/graphics/Bitmap:getWidth	()I
-    //   176: isub
-    //   177: i2f
-    //   178: fconst_2
-    //   179: fdiv
-    //   180: aload_0
-    //   181: getfield 491	com/tencent/image/NativeVideoImage:mCurFrameBitmap	Landroid/graphics/Bitmap;
-    //   184: invokevirtual 516	android/graphics/Bitmap:getHeight	()I
-    //   187: aload_0
-    //   188: getfield 543	com/tencent/image/NativeVideoImage:mCurFrameBitmapBuffer	Landroid/graphics/Bitmap;
-    //   191: invokevirtual 516	android/graphics/Bitmap:getHeight	()I
-    //   194: isub
-    //   195: i2f
-    //   196: fconst_2
-    //   197: fdiv
-    //   198: invokevirtual 551	android/graphics/Matrix:postTranslate	(FF)Z
-    //   201: pop
-    //   202: aload 5
-    //   204: aload_0
-    //   205: getfield 543	com/tencent/image/NativeVideoImage:mCurFrameBitmapBuffer	Landroid/graphics/Bitmap;
-    //   208: aload 7
-    //   210: aload 6
-    //   212: invokevirtual 555	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Matrix;Landroid/graphics/Paint;)V
-    //   215: getstatic 244	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
-    //   218: getfield 250	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
-    //   221: invokeinterface 256 1 0
-    //   226: ifeq +77 -> 303
-    //   229: aload_0
-    //   230: getfield 163	com/tencent/image/NativeVideoImage:debug	Z
-    //   233: ifeq +70 -> 303
-    //   236: invokestatic 487	java/lang/System:currentTimeMillis	()J
-    //   239: lstore_3
-    //   240: getstatic 244	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
-    //   243: getfield 250	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
-    //   246: new 85	java/lang/StringBuilder
-    //   249: dup
-    //   250: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   253: getstatic 107	com/tencent/image/NativeVideoImage:TAG	Ljava/lang/String;
-    //   256: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   259: aload_0
-    //   260: getfield 203	com/tencent/image/NativeVideoImage:ID	I
-    //   263: invokevirtual 259	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   266: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   269: iconst_2
-    //   270: new 85	java/lang/StringBuilder
-    //   273: dup
-    //   274: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   277: ldc_w 557
-    //   280: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   283: lload_3
-    //   284: lload_1
-    //   285: lsub
-    //   286: invokevirtual 560	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   289: ldc_w 562
-    //   292: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   295: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   298: invokeinterface 275 4 0
-    //   303: aload_0
-    //   304: monitorexit
-    //   305: return
-    //   306: aload 5
-    //   308: aload_0
-    //   309: getfield 543	com/tencent/image/NativeVideoImage:mCurFrameBitmapBuffer	Landroid/graphics/Bitmap;
-    //   312: fconst_0
-    //   313: fconst_0
-    //   314: aload 6
-    //   316: invokevirtual 565	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
-    //   319: goto -104 -> 215
-    //   322: astore 5
-    //   324: aload_0
-    //   325: monitorexit
-    //   326: aload 5
-    //   328: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	329	0	this	NativeVideoImage
-    //   5	280	1	l1	long
-    //   239	45	3	l2	long
-    //   17	290	5	localCanvas	Canvas
-    //   322	5	5	localObject	Object
-    //   34	281	6	localPaint	Paint
-    //   127	82	7	localMatrix	android.graphics.Matrix
-    // Exception table:
-    //   from	to	target	type
-    //   2	113	322	finally
-    //   113	215	322	finally
-    //   215	303	322	finally
-    //   306	319	322	finally
+    try
+    {
+      long l1 = System.currentTimeMillis();
+      Object localObject1 = new Canvas(this.mCurFrameBitmap);
+      this.mCurFrameBitmap.eraseColor(0);
+      Object localObject3 = new Paint();
+      if (this.mDefaultRoundCorner > 0.0F)
+      {
+        ((Paint)localObject3).setAntiAlias(true);
+        ((Paint)localObject3).setFilterBitmap(true);
+        ((Canvas)localObject1).drawRoundRect(new RectF(0.0F, 0.0F, this.mCurFrameBitmap.getWidth(), this.mCurFrameBitmap.getHeight()), this.mDefaultRoundCorner, this.mDefaultRoundCorner, (Paint)localObject3);
+        ((Paint)localObject3).setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+      }
+      Object localObject4;
+      if (this.mRotation != 0)
+      {
+        localObject4 = new Matrix();
+        ((Matrix)localObject4).postRotate(this.mRotation, this.mCurFrameBitmapBuffer.getWidth() / 2, this.mCurFrameBitmapBuffer.getHeight() / 2);
+        ((Matrix)localObject4).postTranslate((this.mCurFrameBitmap.getWidth() - this.mCurFrameBitmapBuffer.getWidth()) / 2.0F, (this.mCurFrameBitmap.getHeight() - this.mCurFrameBitmapBuffer.getHeight()) / 2.0F);
+        ((Canvas)localObject1).drawBitmap(this.mCurFrameBitmapBuffer, (Matrix)localObject4, (Paint)localObject3);
+      }
+      else
+      {
+        ((Canvas)localObject1).drawBitmap(this.mCurFrameBitmapBuffer, 0.0F, 0.0F, (Paint)localObject3);
+      }
+      if ((URLDrawable.depImp.mLog.isColorLevel()) && (this.debug))
+      {
+        long l2 = System.currentTimeMillis();
+        localObject1 = URLDrawable.depImp.mLog;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(TAG);
+        ((StringBuilder)localObject3).append(this.ID);
+        localObject3 = ((StringBuilder)localObject3).toString();
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("applyNextFrame, cost=");
+        ((StringBuilder)localObject4).append(l2 - l1);
+        ((StringBuilder)localObject4).append("ms");
+        ((ILog)localObject1).d((String)localObject3, 2, ((StringBuilder)localObject4).toString());
+      }
+      return;
+    }
+    finally {}
   }
   
   public void disableGlobalPause()
@@ -451,8 +377,17 @@ public class NativeVideoImage
   {
     this.mDecodeNextFrameEnd = true;
     super.doApplyNextFrame(paramInt);
-    if ((URLDrawable.depImp.mLog.isColorLevel()) && (this.debug)) {
-      URLDrawable.depImp.mLog.d(TAG + this.ID, 2, "doApplyNextFrame: invalidateSelf, index:" + paramInt);
+    if ((URLDrawable.depImp.mLog.isColorLevel()) && (this.debug))
+    {
+      ILog localILog = URLDrawable.depImp.mLog;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(TAG);
+      ((StringBuilder)localObject).append(this.ID);
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doApplyNextFrame: invalidateSelf, index:");
+      localStringBuilder.append(paramInt);
+      localILog.d((String)localObject, 2, localStringBuilder.toString());
     }
     this.refreshTime = SystemClock.uptimeMillis();
   }
@@ -466,8 +401,13 @@ public class NativeVideoImage
     if (this.mAccumulativeRunnable == null) {
       this.mAccumulativeRunnable = new NativeVideoImage.DoAccumulativeRunnable();
     }
-    if ((URLDrawable.depImp.mLog.isColorLevel()) && (this.debug)) {
-      URLDrawable.depImp.mLog.d(TAG + this.ID, 2, "======>draw():start");
+    if ((URLDrawable.depImp.mLog.isColorLevel()) && (this.debug))
+    {
+      localObject = URLDrawable.depImp.mLog;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(TAG);
+      localStringBuilder.append(this.ID);
+      ((ILog)localObject).d(localStringBuilder.toString(), 2, "======>draw():start");
     }
     this.drawTime = SystemClock.uptimeMillis();
     if (paramPaint != null)
@@ -475,182 +415,321 @@ public class NativeVideoImage
       paramPaint.setAntiAlias(this.mEnableAntiAlias);
       paramPaint.setFilterBitmap(this.mEnableFilter);
     }
-    if (this.mCurFrameBitmap != null) {
-      paramCanvas.drawBitmap(this.mCurFrameBitmap, null, paramRect, paramPaint);
+    Object localObject = this.mCurFrameBitmap;
+    if (localObject != null) {
+      paramCanvas.drawBitmap((Bitmap)localObject, null, paramRect, paramPaint);
     }
     long l1 = SystemClock.uptimeMillis() - this.drawTime;
     if (!paramBoolean)
     {
-      if (URLDrawable.depImp.mLog.isColorLevel()) {
-        URLDrawable.depImp.mLog.d(TAG + this.ID, 2, "draw(): No animation");
+      if (URLDrawable.depImp.mLog.isColorLevel())
+      {
+        paramCanvas = URLDrawable.depImp.mLog;
+        paramRect = new StringBuilder();
+        paramRect.append(TAG);
+        paramRect.append(this.ID);
+        paramCanvas.d(paramRect.toString(), 2, "draw(): No animation");
       }
       return;
     }
-    if (this.mSupportGlobalPause) {
+    if (this.mSupportGlobalPause)
+    {
       if (!sPaused)
       {
         executeNewTask(l1);
-        if ((this.mPlayAudioFrame) && (this.mOption != null) && (!this.mOption.ignore_audio)) {
+        if (this.mPlayAudioFrame)
+        {
+          paramCanvas = this.mOption;
+          if ((paramCanvas != null) && (!paramCanvas.ignore_audio)) {
+            startPlayAudio();
+          }
+        }
+      }
+      else if (!this.mIsInPendingAction)
+      {
+        sPendingActions.add(new WeakReference(this));
+        this.mIsInPendingAction = true;
+      }
+    }
+    else
+    {
+      executeNewTask(l1);
+      if (this.mPlayAudioFrame)
+      {
+        paramCanvas = this.mOption;
+        if ((paramCanvas != null) && (!paramCanvas.ignore_audio)) {
           startPlayAudio();
         }
       }
     }
-    for (;;)
+    l2 = System.currentTimeMillis() - l2;
+    if ((URLDrawable.depImp.mLog.isColorLevel()) && ((this.debug) || (l2 > TIME_BASE)))
     {
-      l2 = System.currentTimeMillis() - l2;
-      if ((!URLDrawable.depImp.mLog.isColorLevel()) || ((!this.debug) && (l2 <= TIME_BASE))) {
-        break;
-      }
-      URLDrawable.depImp.mLog.d(TAG + this.ID, 2, "<======draw() end, cost: " + l2 + " ms, drawCost:" + l1);
-      return;
-      if (!this.mIsInPendingAction)
-      {
-        sPendingActions.add(new WeakReference(this));
-        this.mIsInPendingAction = true;
-        continue;
-        executeNewTask(l1);
-        if ((this.mPlayAudioFrame) && (this.mOption != null) && (!this.mOption.ignore_audio)) {
-          startPlayAudio();
-        }
-      }
+      paramCanvas = URLDrawable.depImp.mLog;
+      paramRect = new StringBuilder();
+      paramRect.append(TAG);
+      paramRect.append(this.ID);
+      paramRect = paramRect.toString();
+      paramPaint = new StringBuilder();
+      paramPaint.append("<======draw() end, cost: ");
+      paramPaint.append(l2);
+      paramPaint.append(" ms, drawCost:");
+      paramPaint.append(l1);
+      paramCanvas.d(paramRect, 2, paramPaint.toString());
     }
   }
   
   protected void executeNewTask(long paramLong)
   {
+    ILog localILog;
+    Object localObject;
     if (this.mDecodeNextFrameEnd)
     {
+      int j = 0;
       this.mDecodeNextFrameEnd = false;
       this.mVideoDecodeFinish = false;
-      l2 = 0L;
-      l1 = l2;
-      if (this.drawTime > this.refreshTime)
+      long l2 = 0L;
+      long l3 = this.drawTime;
+      long l4 = this.refreshTime;
+      long l1 = l2;
+      if (l3 > l4)
       {
         l1 = l2;
-        if (this.refreshTime != -1L) {
-          l1 = this.drawTime - this.refreshTime;
+        if (l4 != -1L) {
+          l1 = l3 - l4;
         }
       }
+      int i;
+      StringBuilder localStringBuilder;
       if (this.mVideoFrameDuration < 0)
       {
-        k = this.mAVDecode.videoParam.fps_den;
-        m = this.mAVDecode.videoParam.fps_num;
-        j = 0;
+        int k = this.mAVDecode.videoParam.fps_den;
+        int m = this.mAVDecode.videoParam.fps_num;
         if (m > 0)
         {
           this.mTotalDeviation = (k * 1000.0F / m);
-          i = (int)this.mTotalDeviation;
-          this.mTotalDeviation -= i;
-          f = m * 1.0F / k;
-          if (URLDrawable.depImp.mLog.isColorLevel()) {
-            URLDrawable.depImp.mLog.d(TAG + this.ID, 1, "executeNewTask(), fps_den = " + k + ",fps_num = " + m + ",fpsDuration = " + i + ",fps = " + f + " ,mTotalDeviation=" + this.mTotalDeviation + " ,totalFrame=" + this.mAVDecode.videoParam.frame_count);
+          f1 = this.mTotalDeviation;
+          i = (int)f1;
+          this.mTotalDeviation = (f1 - i);
+        }
+        else
+        {
+          i = j;
+          if (URLDrawable.depImp.mLog.isColorLevel())
+          {
+            localILog = URLDrawable.depImp.mLog;
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(TAG);
+            ((StringBuilder)localObject).append(this.ID);
+            localObject = ((StringBuilder)localObject).toString();
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("executeNewTask(), error!!  mAVDecode.videoParam.fps_num = ");
+            localStringBuilder.append(this.mAVDecode.videoParam.fps_num);
+            localStringBuilder.append(", srcFilePath = ");
+            localStringBuilder.append(this.mSrcVideoFile);
+            localILog.e((String)localObject, 1, localStringBuilder.toString());
+            i = j;
           }
-          if (URLDrawable.depImp.mLog.isColorLevel()) {
-            URLDrawable.depImp.mLog.d(TAG + this.ID, 1, "executeNewTask()[], mOption.wantedFps = " + this.mOption.wantedFps + " fps=" + f);
-          }
+        }
+        float f1 = m * 1.0F / k;
+        if (URLDrawable.depImp.mLog.isColorLevel())
+        {
+          localILog = URLDrawable.depImp.mLog;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(TAG);
+          ((StringBuilder)localObject).append(this.ID);
+          localObject = ((StringBuilder)localObject).toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("executeNewTask(), fps_den = ");
+          localStringBuilder.append(k);
+          localStringBuilder.append(",fps_num = ");
+          localStringBuilder.append(m);
+          localStringBuilder.append(",fpsDuration = ");
+          localStringBuilder.append(i);
+          localStringBuilder.append(",fps = ");
+          localStringBuilder.append(f1);
+          localStringBuilder.append(" ,mTotalDeviation=");
+          localStringBuilder.append(this.mTotalDeviation);
+          localStringBuilder.append(" ,totalFrame=");
+          localStringBuilder.append(this.mAVDecode.videoParam.frame_count);
+          localILog.d((String)localObject, 1, localStringBuilder.toString());
+        }
+        if (URLDrawable.depImp.mLog.isColorLevel())
+        {
+          localILog = URLDrawable.depImp.mLog;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(TAG);
+          ((StringBuilder)localObject).append(this.ID);
+          localObject = ((StringBuilder)localObject).toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("executeNewTask()[], mOption.wantedFps = ");
+          localStringBuilder.append(this.mOption.wantedFps);
+          localStringBuilder.append(" fps=");
+          localStringBuilder.append(f1);
+          localILog.d((String)localObject, 1, localStringBuilder.toString());
+        }
+        j = i;
+        if (this.mOption.wantedFps != 0.0F)
+        {
           j = i;
-          if (this.mOption.wantedFps != 0.0F)
+          if (this.mOption.wantedFps >= f1 / 2.0F)
           {
             j = i;
-            if (this.mOption.wantedFps >= f / 2.0F)
+            if (this.mOption.wantedFps <= f1)
             {
-              j = i;
-              if (this.mOption.wantedFps <= f)
+              this.mTotalDeviation = (1000.0F / this.mOption.wantedFps);
+              float f2 = this.mTotalDeviation;
+              j = (int)f2;
+              this.mTotalDeviation = (f2 - j);
+              if (URLDrawable.depImp.mLog.isColorLevel())
               {
-                this.mTotalDeviation = (1000.0F / this.mOption.wantedFps);
-                i = (int)this.mTotalDeviation;
-                this.mTotalDeviation -= i;
-                j = i;
-                if (URLDrawable.depImp.mLog.isColorLevel())
-                {
-                  URLDrawable.depImp.mLog.d(TAG + this.ID, 1, "executeNewTask(), mOption.wantedFps = " + this.mOption.wantedFps + ",fpsDuration = " + i + ",fps = " + f + ",mVideoParams.mRequestedFPS = " + this.mVideoParams.mRequestedFPS + " ,mTotalDeviation=" + this.mTotalDeviation);
-                  j = i;
-                }
+                localILog = URLDrawable.depImp.mLog;
+                localObject = new StringBuilder();
+                ((StringBuilder)localObject).append(TAG);
+                ((StringBuilder)localObject).append(this.ID);
+                localObject = ((StringBuilder)localObject).toString();
+                localStringBuilder = new StringBuilder();
+                localStringBuilder.append("executeNewTask(), mOption.wantedFps = ");
+                localStringBuilder.append(this.mOption.wantedFps);
+                localStringBuilder.append(",fpsDuration = ");
+                localStringBuilder.append(j);
+                localStringBuilder.append(",fps = ");
+                localStringBuilder.append(f1);
+                localStringBuilder.append(",mVideoParams.mRequestedFPS = ");
+                localStringBuilder.append(this.mVideoParams.mRequestedFPS);
+                localStringBuilder.append(" ,mTotalDeviation=");
+                localStringBuilder.append(this.mTotalDeviation);
+                localILog.d((String)localObject, 1, localStringBuilder.toString());
               }
             }
           }
-          if (j <= 0) {
-            break label1059;
-          }
-          this.mVideoFrameDuration = j;
-          if (URLDrawable.depImp.mLog.isColorLevel()) {
-            URLDrawable.depImp.mLog.e(TAG + this.ID, 1, "executeNewTask(),1 mVideoFrameDuration = " + this.mVideoFrameDuration);
-          }
-          l2 = l1;
-          if (l1 > 100L) {
-            l2 = 100L;
-          }
-          l3 = paramLong + l2;
-          l1 = l3;
-          if (l3 >= this.mVideoFrameDuration)
-          {
-            if ((URLDrawable.depImp.mLog.isColorLevel()) && (this.debug)) {
-              URLDrawable.depImp.mLog.e(TAG + this.ID, 1, "executeNewTask(), overhead:" + l3 + ", >= frameDuration overhead=" + l3 + " mVideoFrameDuration=" + this.mVideoFrameDuration);
-            }
-            l1 = this.mVideoFrameDuration;
-          }
-          l3 = SystemClock.uptimeMillis();
-          l4 = this.mVideoFrameDuration;
-          sDecodeHander.post(new NativeVideoImage.DecodeFrameJob(this, l3 + l4 - l1));
-          if ((URLDrawable.depImp.mLog.isColorLevel()) && (this.debug)) {
-            URLDrawable.depImp.mLog.d(TAG + this.ID, 2, "executeNewTask(), duration: " + this.mVideoFrameDuration + ", drawCost: " + paramLong + ",refreshCost:" + l2 + ",sync:" + true);
-          }
         }
-      }
-    }
-    label1059:
-    while (!URLDrawable.depImp.mLog.isColorLevel()) {
-      for (;;)
-      {
-        long l2;
-        long l1;
-        int k;
-        int m;
-        int j;
-        float f;
-        long l3;
-        long l4;
-        return;
-        int i = j;
-        if (URLDrawable.depImp.mLog.isColorLevel())
+        if (j > 0)
         {
-          URLDrawable.depImp.mLog.e(TAG + this.ID, 1, "executeNewTask(), error!!  mAVDecode.videoParam.fps_num = " + this.mAVDecode.videoParam.fps_num + ", srcFilePath = " + this.mSrcVideoFile);
-          i = j;
-          continue;
-          if (this.mAVDecode.videoParam.duration > 0)
+          this.mVideoFrameDuration = j;
+          if (URLDrawable.depImp.mLog.isColorLevel())
           {
-            this.mVideoFrameDuration = this.mAVDecode.videoParam.duration;
-            if (URLDrawable.depImp.mLog.isColorLevel()) {
-              URLDrawable.depImp.mLog.e(TAG + this.ID, 1, "executeNewTask(),2 mVideoFrameDuration = " + this.mVideoFrameDuration);
-            }
-          }
-          else
-          {
-            this.mVideoFrameDuration = 50;
-            URLDrawable.depImp.mLog.e(TAG, 1, "executeNewTask(), error... mVideoFrameDuration: " + this.mVideoFrameDuration + ", mAVDecode.videoParam.duration " + this.mAVDecode.videoParam.duration + ", fpsDuration: " + j);
-            continue;
-            if ((this.mAVDecode == null) || (this.mAVDecode.videoParam == null) || (this.mAVDecode.videoParam.duration <= 0) || (this.mVideoFrameDuration == this.mAVDecode.videoParam.duration)) {}
+            localILog = URLDrawable.depImp.mLog;
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(TAG);
+            ((StringBuilder)localObject).append(this.ID);
+            localObject = ((StringBuilder)localObject).toString();
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("executeNewTask(),1 mVideoFrameDuration = ");
+            localStringBuilder.append(this.mVideoFrameDuration);
+            localILog.e((String)localObject, 1, localStringBuilder.toString());
           }
         }
+        else if (this.mAVDecode.videoParam.duration > 0)
+        {
+          this.mVideoFrameDuration = this.mAVDecode.videoParam.duration;
+          if (URLDrawable.depImp.mLog.isColorLevel())
+          {
+            localILog = URLDrawable.depImp.mLog;
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(TAG);
+            ((StringBuilder)localObject).append(this.ID);
+            localObject = ((StringBuilder)localObject).toString();
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("executeNewTask(),2 mVideoFrameDuration = ");
+            localStringBuilder.append(this.mVideoFrameDuration);
+            localILog.e((String)localObject, 1, localStringBuilder.toString());
+          }
+        }
+        else
+        {
+          this.mVideoFrameDuration = 50;
+          localILog = URLDrawable.depImp.mLog;
+          localObject = TAG;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("executeNewTask(), error... mVideoFrameDuration: ");
+          localStringBuilder.append(this.mVideoFrameDuration);
+          localStringBuilder.append(", mAVDecode.videoParam.duration ");
+          localStringBuilder.append(this.mAVDecode.videoParam.duration);
+          localStringBuilder.append(", fpsDuration: ");
+          localStringBuilder.append(j);
+          localILog.e((String)localObject, 1, localStringBuilder.toString());
+        }
+      }
+      else if ((this.mAVDecode != null) && (this.mAVDecode.videoParam != null) && (this.mAVDecode.videoParam.duration > 0))
+      {
+        i = this.mVideoFrameDuration;
+        i = this.mAVDecode.videoParam.duration;
+      }
+      l2 = 100L;
+      if (l1 > 100L) {
+        l1 = l2;
+      }
+      l3 = paramLong + l1;
+      l2 = l3;
+      if (l3 >= this.mVideoFrameDuration)
+      {
+        if ((URLDrawable.depImp.mLog.isColorLevel()) && (this.debug))
+        {
+          localILog = URLDrawable.depImp.mLog;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(TAG);
+          ((StringBuilder)localObject).append(this.ID);
+          localObject = ((StringBuilder)localObject).toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("executeNewTask(), overhead:");
+          localStringBuilder.append(l3);
+          localStringBuilder.append(", >= frameDuration overhead=");
+          localStringBuilder.append(l3);
+          localStringBuilder.append(" mVideoFrameDuration=");
+          localStringBuilder.append(this.mVideoFrameDuration);
+          localILog.e((String)localObject, 1, localStringBuilder.toString());
+        }
+        l2 = this.mVideoFrameDuration;
+      }
+      l3 = SystemClock.uptimeMillis();
+      l4 = this.mVideoFrameDuration;
+      sDecodeHander.post(new NativeVideoImage.DecodeFrameJob(this, l3 + l4 - l2));
+      if ((URLDrawable.depImp.mLog.isColorLevel()) && (this.debug))
+      {
+        localILog = URLDrawable.depImp.mLog;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(TAG);
+        ((StringBuilder)localObject).append(this.ID);
+        localObject = ((StringBuilder)localObject).toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("executeNewTask(), duration: ");
+        localStringBuilder.append(this.mVideoFrameDuration);
+        localStringBuilder.append(", drawCost: ");
+        localStringBuilder.append(paramLong);
+        localStringBuilder.append(",refreshCost:");
+        localStringBuilder.append(l1);
+        localStringBuilder.append(",sync:");
+        localStringBuilder.append(true);
+        localILog.d((String)localObject, 2, localStringBuilder.toString());
       }
     }
-    URLDrawable.depImp.mLog.e(TAG + this.ID, 1, "executeNewTask(): mDecodeNextFrameEnd false");
+    else if (URLDrawable.depImp.mLog.isColorLevel())
+    {
+      localILog = URLDrawable.depImp.mLog;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(TAG);
+      ((StringBuilder)localObject).append(this.ID);
+      localILog.e(((StringBuilder)localObject).toString(), 1, "executeNewTask(): mDecodeNextFrameEnd false");
+    }
   }
   
   protected void finalize()
   {
-    if (sReleaseHandler != null) {
-      sReleaseHandler.post(new NativeVideoImage.ReleaseTask(this.mAVDecode));
+    Handler localHandler = sReleaseHandler;
+    if (localHandler != null) {
+      localHandler.post(new NativeVideoImage.ReleaseTask(this.mAVDecode));
     }
   }
   
   @TargetApi(12)
   public int getByteSize()
   {
-    long l2 = 0L + Utils.getBitmapSize(this.mCurFrameBitmap) + Utils.getBitmapSize(this.mCurFrameBitmapBuffer) + Utils.getBitmapSize(this.mFirstFrameBitmap);
+    long l2 = Utils.getBitmapSize(this.mCurFrameBitmap) + 0L + Utils.getBitmapSize(this.mCurFrameBitmapBuffer) + Utils.getBitmapSize(this.mFirstFrameBitmap);
+    Bitmap localBitmap = this.mCompatibleBitmap;
     long l1 = l2;
-    if (this.mCompatibleBitmap != null) {
-      l1 = l2 + Utils.getBitmapSize(this.mCompatibleBitmap);
+    if (localBitmap != null) {
+      l1 = l2 + Utils.getBitmapSize(localBitmap);
     }
     return (int)l1;
   }
@@ -669,8 +748,9 @@ public class NativeVideoImage
   
   public int getHeight()
   {
-    if (this.mCurFrameBitmap != null) {
-      return this.mCurFrameBitmap.getHeight();
+    Bitmap localBitmap = this.mCurFrameBitmap;
+    if (localBitmap != null) {
+      return localBitmap.getHeight();
     }
     return 0;
   }
@@ -679,670 +759,791 @@ public class NativeVideoImage
   protected boolean getNextFrame()
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore 4
-    //   3: iconst_0
-    //   4: istore_3
-    //   5: aload_0
-    //   6: monitorenter
-    //   7: invokestatic 487	java/lang/System:currentTimeMillis	()J
-    //   10: lstore 5
-    //   12: aload_0
-    //   13: getfield 346	com/tencent/image/NativeVideoImage:mAVDecode	Lcom/tencent/video/decode/AbstractAVDecode;
-    //   16: astore 9
-    //   18: aload 9
-    //   20: getfield 357	com/tencent/video/decode/AbstractAVDecode:videoParam	Lcom/tencent/video/decode/AVVideoParam;
-    //   23: getfield 715	com/tencent/video/decode/AVVideoParam:width	I
-    //   26: istore_1
-    //   27: aload 9
-    //   29: getfield 357	com/tencent/video/decode/AbstractAVDecode:videoParam	Lcom/tencent/video/decode/AVVideoParam;
-    //   32: getfield 717	com/tencent/video/decode/AVVideoParam:height	I
-    //   35: istore_2
-    //   36: invokestatic 487	java/lang/System:currentTimeMillis	()J
-    //   39: lstore 7
-    //   41: aload_0
-    //   42: getfield 183	com/tencent/image/NativeVideoImage:mResetFlag	Z
-    //   45: ifeq +454 -> 499
-    //   48: aload_0
-    //   49: iconst_0
-    //   50: putfield 183	com/tencent/image/NativeVideoImage:mResetFlag	Z
-    //   53: new 160	com/tencent/video/decode/AVideoException
-    //   56: dup
-    //   57: bipush 146
-    //   59: iconst_m1
-    //   60: ldc_w 728
-    //   63: invokespecial 731	com/tencent/video/decode/AVideoException:<init>	(IILjava/lang/String;)V
-    //   66: athrow
-    //   67: astore 9
-    //   69: getstatic 244	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
-    //   72: getfield 250	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
-    //   75: invokeinterface 256 1 0
-    //   80: ifeq +59 -> 139
-    //   83: getstatic 244	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
-    //   86: getfield 250	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
-    //   89: new 85	java/lang/StringBuilder
-    //   92: dup
-    //   93: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   96: getstatic 107	com/tencent/image/NativeVideoImage:TAG	Ljava/lang/String;
-    //   99: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: invokestatic 487	java/lang/System:currentTimeMillis	()J
+    //   5: lstore_3
+    //   6: iconst_0
+    //   7: istore 8
+    //   9: aload_0
+    //   10: getfield 346	com/tencent/image/NativeVideoImage:mAVDecode	Lcom/tencent/video/decode/AbstractAVDecode;
+    //   13: astore 9
+    //   15: aload 9
+    //   17: getfield 365	com/tencent/video/decode/AbstractAVDecode:videoParam	Lcom/tencent/video/decode/AVVideoParam;
+    //   20: getfield 715	com/tencent/video/decode/AVVideoParam:width	I
+    //   23: istore_1
+    //   24: aload 9
+    //   26: getfield 365	com/tencent/video/decode/AbstractAVDecode:videoParam	Lcom/tencent/video/decode/AVVideoParam;
+    //   29: getfield 717	com/tencent/video/decode/AVVideoParam:height	I
+    //   32: istore_2
+    //   33: invokestatic 487	java/lang/System:currentTimeMillis	()J
+    //   36: lstore 5
+    //   38: aload_0
+    //   39: getfield 183	com/tencent/image/NativeVideoImage:mResetFlag	Z
+    //   42: ifne +358 -> 400
+    //   45: iload_1
+    //   46: aload_0
+    //   47: getfield 173	com/tencent/image/NativeVideoImage:mReqWidth	I
+    //   50: if_icmpne +1038 -> 1088
+    //   53: iload_2
+    //   54: aload_0
+    //   55: getfield 175	com/tencent/image/NativeVideoImage:mReqHeight	I
+    //   58: if_icmpne +1030 -> 1088
+    //   61: aload 9
+    //   63: aload_0
+    //   64: getfield 543	com/tencent/image/NativeVideoImage:mCurFrameBitmapBuffer	Landroid/graphics/Bitmap;
+    //   67: invokevirtual 729	com/tencent/video/decode/AbstractAVDecode:seekToNextFrame	(Landroid/graphics/Bitmap;)V
+    //   70: goto +52 -> 122
+    //   73: aload_0
+    //   74: getfield 189	com/tencent/image/NativeVideoImage:mCompatibleBitmap	Landroid/graphics/Bitmap;
+    //   77: ifnonnull +16 -> 93
+    //   80: aload_0
+    //   81: iload_1
+    //   82: iload_2
+    //   83: aload_0
+    //   84: getfield 169	com/tencent/image/NativeVideoImage:mCurrentConfig	Landroid/graphics/Bitmap$Config;
+    //   87: invokestatic 733	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   90: putfield 189	com/tencent/image/NativeVideoImage:mCompatibleBitmap	Landroid/graphics/Bitmap;
+    //   93: aload 9
+    //   95: aload_0
+    //   96: getfield 189	com/tencent/image/NativeVideoImage:mCompatibleBitmap	Landroid/graphics/Bitmap;
+    //   99: invokevirtual 729	com/tencent/video/decode/AbstractAVDecode:seekToNextFrame	(Landroid/graphics/Bitmap;)V
     //   102: aload_0
-    //   103: getfield 203	com/tencent/image/NativeVideoImage:ID	I
-    //   106: invokevirtual 259	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   109: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   112: iconst_2
-    //   113: new 85	java/lang/StringBuilder
-    //   116: dup
-    //   117: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   120: ldc_w 733
-    //   123: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   126: aload 9
-    //   128: invokevirtual 736	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   131: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   134: invokeinterface 275 4 0
-    //   139: aload 9
-    //   141: getfield 739	com/tencent/video/decode/AVideoException:mErrCode	I
-    //   144: bipush 146
-    //   146: if_icmpne +827 -> 973
-    //   149: aload_0
-    //   150: iconst_1
-    //   151: putfield 195	com/tencent/image/NativeVideoImage:mVideoDecodeFinish	Z
-    //   154: getstatic 244	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
-    //   157: getfield 250	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
-    //   160: invokeinterface 256 1 0
-    //   165: ifeq +41 -> 206
-    //   168: getstatic 244	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
-    //   171: getfield 250	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
-    //   174: new 85	java/lang/StringBuilder
-    //   177: dup
-    //   178: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   181: getstatic 107	com/tencent/image/NativeVideoImage:TAG	Ljava/lang/String;
-    //   184: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   187: aload_0
-    //   188: getfield 203	com/tencent/image/NativeVideoImage:ID	I
-    //   191: invokevirtual 259	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   194: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   197: iconst_2
-    //   198: ldc_w 741
-    //   201: invokeinterface 275 4 0
-    //   206: aload_0
-    //   207: getfield 187	com/tencent/image/NativeVideoImage:mPlayAudioOnceFinished	Z
-    //   210: ifne +48 -> 258
-    //   213: aload_0
-    //   214: iconst_1
-    //   215: putfield 187	com/tencent/image/NativeVideoImage:mPlayAudioOnceFinished	Z
-    //   218: aload_0
-    //   219: getfield 283	com/tencent/image/NativeVideoImage:mVideoParams	Lcom/tencent/image/VideoDrawable$VideoDrawableParams;
-    //   222: astore 9
-    //   224: aload_0
-    //   225: iconst_0
-    //   226: putfield 185	com/tencent/image/NativeVideoImage:mPlayAudioFrame	Z
-    //   229: aload 9
-    //   231: iconst_0
-    //   232: putfield 284	com/tencent/image/VideoDrawable$VideoDrawableParams:mPlayAudioFrame	Z
-    //   235: aload_0
-    //   236: getfield 294	com/tencent/image/NativeVideoImage:mOption	Lcom/tencent/video/decode/AVDecodeOption;
-    //   239: iconst_1
-    //   240: putfield 303	com/tencent/video/decode/AVDecodeOption:ignore_audio	Z
-    //   243: getstatic 124	com/tencent/image/NativeVideoImage:sUIHandler	Landroid/os/Handler;
-    //   246: new 743	com/tencent/image/NativeVideoImage$2
-    //   249: dup
-    //   250: aload_0
-    //   251: invokespecial 746	com/tencent/image/NativeVideoImage$2:<init>	(Lcom/tencent/image/NativeVideoImage;)V
-    //   254: invokevirtual 671	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   257: pop
-    //   258: aload_0
-    //   259: getfield 283	com/tencent/image/NativeVideoImage:mVideoParams	Lcom/tencent/image/VideoDrawable$VideoDrawableParams;
-    //   262: getfield 284	com/tencent/image/VideoDrawable$VideoDrawableParams:mPlayAudioFrame	Z
-    //   265: ifeq +662 -> 927
-    //   268: aload_0
-    //   269: getfield 208	com/tencent/image/NativeVideoImage:mLock	Ljava/lang/Object;
-    //   272: astore 9
-    //   274: aload 9
-    //   276: monitorenter
-    //   277: getstatic 145	com/tencent/image/NativeVideoImage:sReleaseHandler	Landroid/os/Handler;
-    //   280: ifnull +21 -> 301
-    //   283: getstatic 145	com/tencent/image/NativeVideoImage:sReleaseHandler	Landroid/os/Handler;
-    //   286: new 696	com/tencent/image/NativeVideoImage$ReleaseTask
-    //   289: dup
-    //   290: aload_0
-    //   291: getfield 346	com/tencent/image/NativeVideoImage:mAVDecode	Lcom/tencent/video/decode/AbstractAVDecode;
-    //   294: invokespecial 699	com/tencent/image/NativeVideoImage$ReleaseTask:<init>	(Lcom/tencent/video/decode/AbstractAVDecode;)V
-    //   297: invokevirtual 671	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   300: pop
-    //   301: aload_0
-    //   302: aload_0
-    //   303: getfield 294	com/tencent/image/NativeVideoImage:mOption	Lcom/tencent/video/decode/AVDecodeOption;
-    //   306: invokestatic 749	com/tencent/video/decode/AVDecodeFactory:newDecode	(Lcom/tencent/video/decode/AVDecodeOption;)Lcom/tencent/video/decode/AbstractAVDecode;
-    //   309: putfield 346	com/tencent/image/NativeVideoImage:mAVDecode	Lcom/tencent/video/decode/AbstractAVDecode;
-    //   312: aload 9
-    //   314: monitorexit
-    //   315: aload_0
-    //   316: getfield 225	com/tencent/image/NativeVideoImage:mAudioLock	Ljava/lang/Object;
-    //   319: astore 9
-    //   321: aload 9
-    //   323: monitorenter
-    //   324: aload_0
-    //   325: iconst_1
-    //   326: putfield 195	com/tencent/image/NativeVideoImage:mVideoDecodeFinish	Z
-    //   329: aload_0
-    //   330: getfield 225	com/tencent/image/NativeVideoImage:mAudioLock	Ljava/lang/Object;
-    //   333: invokevirtual 575	java/lang/Object:notifyAll	()V
-    //   336: aload 9
-    //   338: monitorexit
-    //   339: aload_0
-    //   340: aload_0
-    //   341: getfield 177	com/tencent/image/NativeVideoImage:sImageIndex	I
-    //   344: iconst_1
-    //   345: iadd
-    //   346: putfield 177	com/tencent/image/NativeVideoImage:sImageIndex	I
-    //   349: iconst_1
-    //   350: istore_3
-    //   351: aload_0
-    //   352: getfield 221	com/tencent/image/NativeVideoImage:mCount	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   355: iconst_1
-    //   356: invokevirtual 753	java/util/concurrent/atomic/AtomicInteger:addAndGet	(I)I
-    //   359: pop
-    //   360: invokestatic 487	java/lang/System:currentTimeMillis	()J
-    //   363: lload 5
-    //   365: lsub
-    //   366: lstore 5
-    //   368: iload_3
-    //   369: istore 4
-    //   371: getstatic 244	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
-    //   374: getfield 250	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
-    //   377: invokeinterface 256 1 0
-    //   382: ifeq +112 -> 494
-    //   385: aload_0
-    //   386: getfield 163	com/tencent/image/NativeVideoImage:debug	Z
-    //   389: ifne +20 -> 409
-    //   392: lload 5
-    //   394: getstatic 153	com/tencent/image/NativeVideoImage:TIME_BASE	I
-    //   397: i2l
-    //   398: lcmp
-    //   399: ifgt +10 -> 409
-    //   402: iload_3
-    //   403: istore 4
-    //   405: iload_3
-    //   406: ifne +88 -> 494
-    //   409: getstatic 244	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
-    //   412: getfield 250	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
-    //   415: new 85	java/lang/StringBuilder
-    //   418: dup
-    //   419: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   422: getstatic 107	com/tencent/image/NativeVideoImage:TAG	Ljava/lang/String;
-    //   425: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   428: aload_0
-    //   429: getfield 203	com/tencent/image/NativeVideoImage:ID	I
-    //   432: invokevirtual 259	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   435: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   438: iconst_2
-    //   439: new 85	java/lang/StringBuilder
-    //   442: dup
-    //   443: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   446: ldc_w 755
-    //   449: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   452: lload 5
-    //   454: invokevirtual 560	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   457: ldc_w 757
-    //   460: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   103: aload_0
+    //   104: getfield 189	com/tencent/image/NativeVideoImage:mCompatibleBitmap	Landroid/graphics/Bitmap;
+    //   107: aload_0
+    //   108: getfield 173	com/tencent/image/NativeVideoImage:mReqWidth	I
+    //   111: aload_0
+    //   112: getfield 175	com/tencent/image/NativeVideoImage:mReqHeight	I
+    //   115: iconst_1
+    //   116: invokestatic 737	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
+    //   119: putfield 543	com/tencent/image/NativeVideoImage:mCurFrameBitmapBuffer	Landroid/graphics/Bitmap;
+    //   122: invokestatic 487	java/lang/System:currentTimeMillis	()J
+    //   125: lload 5
+    //   127: lsub
+    //   128: lstore 5
+    //   130: getstatic 244	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   133: getfield 250	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   136: invokeinterface 256 1 0
+    //   141: ifeq +112 -> 253
+    //   144: aload_0
+    //   145: getfield 163	com/tencent/image/NativeVideoImage:debug	Z
+    //   148: ifne +12 -> 160
+    //   151: lload 5
+    //   153: ldc2_w 738
+    //   156: lcmp
+    //   157: ifle +96 -> 253
+    //   160: getstatic 244	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   163: getfield 250	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   166: astore 10
+    //   168: new 85	java/lang/StringBuilder
+    //   171: dup
+    //   172: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   175: astore 11
+    //   177: aload 11
+    //   179: getstatic 107	com/tencent/image/NativeVideoImage:TAG	Ljava/lang/String;
+    //   182: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   185: pop
+    //   186: aload 11
+    //   188: aload_0
+    //   189: getfield 203	com/tencent/image/NativeVideoImage:ID	I
+    //   192: invokevirtual 259	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   195: pop
+    //   196: aload 11
+    //   198: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   201: astore 11
+    //   203: new 85	java/lang/StringBuilder
+    //   206: dup
+    //   207: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   210: astore 12
+    //   212: aload 12
+    //   214: ldc_w 741
+    //   217: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   220: pop
+    //   221: aload 12
+    //   223: lload 5
+    //   225: invokevirtual 563	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   228: pop
+    //   229: aload 12
+    //   231: ldc_w 743
+    //   234: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   237: pop
+    //   238: aload 10
+    //   240: aload 11
+    //   242: iconst_2
+    //   243: aload 12
+    //   245: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   248: invokeinterface 275 4 0
+    //   253: aload 9
+    //   255: getfield 365	com/tencent/video/decode/AbstractAVDecode:videoParam	Lcom/tencent/video/decode/AVVideoParam;
+    //   258: getfield 746	com/tencent/video/decode/AVVideoParam:frame_index	I
+    //   261: istore_2
+    //   262: iload_2
+    //   263: iconst_1
+    //   264: if_icmpne +96 -> 360
+    //   267: aload_0
+    //   268: getfield 179	com/tencent/image/NativeVideoImage:mlastVideoFrameIndex	I
+    //   271: iload_2
+    //   272: if_icmple +88 -> 360
+    //   275: aload_0
+    //   276: aload_0
+    //   277: getfield 181	com/tencent/image/NativeVideoImage:mPlayRepeatCount	I
+    //   280: iconst_1
+    //   281: iadd
+    //   282: putfield 181	com/tencent/image/NativeVideoImage:mPlayRepeatCount	I
+    //   285: aload_0
+    //   286: getfield 749	com/tencent/image/NativeVideoImage:mListener	Ljava/util/ArrayList;
+    //   289: astore 9
+    //   291: aload 9
+    //   293: monitorenter
+    //   294: aload_0
+    //   295: getfield 749	com/tencent/image/NativeVideoImage:mListener	Ljava/util/ArrayList;
+    //   298: invokevirtual 752	java/util/ArrayList:size	()I
+    //   301: iconst_1
+    //   302: isub
+    //   303: istore_1
+    //   304: iload_1
+    //   305: iflt +41 -> 346
+    //   308: aload_0
+    //   309: getfield 749	com/tencent/image/NativeVideoImage:mListener	Ljava/util/ArrayList;
+    //   312: iload_1
+    //   313: invokevirtual 756	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   316: checkcast 619	java/lang/ref/WeakReference
+    //   319: invokevirtual 759	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   322: checkcast 761	com/tencent/image/VideoDrawable$OnPlayRepeatListener
+    //   325: astore 10
+    //   327: aload 10
+    //   329: ifnull +770 -> 1099
+    //   332: aload 10
+    //   334: aload_0
+    //   335: getfield 181	com/tencent/image/NativeVideoImage:mPlayRepeatCount	I
+    //   338: invokeinterface 764 2 0
+    //   343: goto +756 -> 1099
+    //   346: aload 9
+    //   348: monitorexit
+    //   349: goto +11 -> 360
+    //   352: astore 10
+    //   354: aload 9
+    //   356: monitorexit
+    //   357: aload 10
+    //   359: athrow
+    //   360: aload_0
+    //   361: iload_2
+    //   362: putfield 179	com/tencent/image/NativeVideoImage:mlastVideoFrameIndex	I
+    //   365: aload_0
+    //   366: aload_0
+    //   367: getfield 177	com/tencent/image/NativeVideoImage:sImageIndex	I
+    //   370: iconst_1
+    //   371: iadd
+    //   372: putfield 177	com/tencent/image/NativeVideoImage:sImageIndex	I
+    //   375: goto +731 -> 1106
+    //   378: getstatic 244	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   381: getfield 250	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   384: getstatic 107	com/tencent/image/NativeVideoImage:TAG	Ljava/lang/String;
+    //   387: iconst_2
+    //   388: ldc_w 766
+    //   391: invokeinterface 359 4 0
+    //   396: aload_0
+    //   397: monitorexit
+    //   398: iconst_0
+    //   399: ireturn
+    //   400: aload_0
+    //   401: iconst_0
+    //   402: putfield 183	com/tencent/image/NativeVideoImage:mResetFlag	Z
+    //   405: new 160	com/tencent/video/decode/AVideoException
+    //   408: dup
+    //   409: bipush 146
+    //   411: iconst_m1
+    //   412: ldc_w 768
+    //   415: invokespecial 771	com/tencent/video/decode/AVideoException:<init>	(IILjava/lang/String;)V
+    //   418: athrow
+    //   419: astore 9
+    //   421: getstatic 244	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   424: getfield 250	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   427: invokeinterface 256 1 0
+    //   432: ifeq +87 -> 519
+    //   435: getstatic 244	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   438: getfield 250	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   441: astore 10
+    //   443: new 85	java/lang/StringBuilder
+    //   446: dup
+    //   447: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   450: astore 11
+    //   452: aload 11
+    //   454: getstatic 107	com/tencent/image/NativeVideoImage:TAG	Ljava/lang/String;
+    //   457: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   460: pop
+    //   461: aload 11
     //   463: aload_0
-    //   464: getfield 221	com/tencent/image/NativeVideoImage:mCount	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   467: invokevirtual 760	java/util/concurrent/atomic/AtomicInteger:get	()I
-    //   470: invokevirtual 259	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   473: ldc_w 762
-    //   476: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   479: iload_3
-    //   480: invokevirtual 264	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   483: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   486: invokeinterface 275 4 0
-    //   491: iload_3
-    //   492: istore 4
-    //   494: aload_0
-    //   495: monitorexit
-    //   496: iload 4
-    //   498: ireturn
-    //   499: iload_1
-    //   500: aload_0
-    //   501: getfield 173	com/tencent/image/NativeVideoImage:mReqWidth	I
-    //   504: if_icmpne +217 -> 721
-    //   507: iload_2
-    //   508: aload_0
-    //   509: getfield 175	com/tencent/image/NativeVideoImage:mReqHeight	I
-    //   512: if_icmpne +209 -> 721
-    //   515: aload 9
-    //   517: aload_0
-    //   518: getfield 543	com/tencent/image/NativeVideoImage:mCurFrameBitmapBuffer	Landroid/graphics/Bitmap;
-    //   521: invokevirtual 765	com/tencent/video/decode/AbstractAVDecode:seekToNextFrame	(Landroid/graphics/Bitmap;)V
-    //   524: invokestatic 487	java/lang/System:currentTimeMillis	()J
-    //   527: lload 7
-    //   529: lsub
-    //   530: lstore 7
-    //   532: getstatic 244	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
-    //   535: getfield 250	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
-    //   538: invokeinterface 256 1 0
-    //   543: ifeq +81 -> 624
-    //   546: aload_0
-    //   547: getfield 163	com/tencent/image/NativeVideoImage:debug	Z
-    //   550: ifne +12 -> 562
-    //   553: lload 7
-    //   555: ldc2_w 766
-    //   558: lcmp
-    //   559: ifle +65 -> 624
-    //   562: getstatic 244	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
-    //   565: getfield 250	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
-    //   568: new 85	java/lang/StringBuilder
-    //   571: dup
-    //   572: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   575: getstatic 107	com/tencent/image/NativeVideoImage:TAG	Ljava/lang/String;
-    //   578: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   581: aload_0
-    //   582: getfield 203	com/tencent/image/NativeVideoImage:ID	I
-    //   585: invokevirtual 259	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   588: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   591: iconst_2
-    //   592: new 85	java/lang/StringBuilder
-    //   595: dup
-    //   596: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   599: ldc_w 769
-    //   602: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   605: lload 7
-    //   607: invokevirtual 560	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   610: ldc_w 771
-    //   613: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   616: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   619: invokeinterface 275 4 0
-    //   624: aload 9
-    //   626: getfield 357	com/tencent/video/decode/AbstractAVDecode:videoParam	Lcom/tencent/video/decode/AVVideoParam;
-    //   629: getfield 774	com/tencent/video/decode/AVVideoParam:frame_index	I
-    //   632: istore_2
-    //   633: iload_2
-    //   634: iconst_1
-    //   635: if_icmpne +248 -> 883
-    //   638: aload_0
-    //   639: getfield 179	com/tencent/image/NativeVideoImage:mlastVideoFrameIndex	I
-    //   642: iload_2
-    //   643: if_icmple +240 -> 883
-    //   646: aload_0
-    //   647: aload_0
-    //   648: getfield 181	com/tencent/image/NativeVideoImage:mPlayRepeatCount	I
-    //   651: iconst_1
-    //   652: iadd
-    //   653: putfield 181	com/tencent/image/NativeVideoImage:mPlayRepeatCount	I
+    //   464: getfield 203	com/tencent/image/NativeVideoImage:ID	I
+    //   467: invokevirtual 259	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   470: pop
+    //   471: aload 11
+    //   473: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   476: astore 11
+    //   478: new 85	java/lang/StringBuilder
+    //   481: dup
+    //   482: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   485: astore 12
+    //   487: aload 12
+    //   489: ldc_w 773
+    //   492: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   495: pop
+    //   496: aload 12
+    //   498: aload 9
+    //   500: invokevirtual 776	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   503: pop
+    //   504: aload 10
+    //   506: aload 11
+    //   508: iconst_2
+    //   509: aload 12
+    //   511: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   514: invokeinterface 275 4 0
+    //   519: iload 8
+    //   521: istore 7
+    //   523: aload 9
+    //   525: getfield 779	com/tencent/video/decode/AVideoException:mErrCode	I
+    //   528: bipush 146
+    //   530: if_icmpne +363 -> 893
+    //   533: aload_0
+    //   534: iconst_1
+    //   535: putfield 195	com/tencent/image/NativeVideoImage:mVideoDecodeFinish	Z
+    //   538: getstatic 244	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   541: getfield 250	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   544: invokeinterface 256 1 0
+    //   549: ifeq +55 -> 604
+    //   552: getstatic 244	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   555: getfield 250	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   558: astore 9
+    //   560: new 85	java/lang/StringBuilder
+    //   563: dup
+    //   564: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   567: astore 10
+    //   569: aload 10
+    //   571: getstatic 107	com/tencent/image/NativeVideoImage:TAG	Ljava/lang/String;
+    //   574: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   577: pop
+    //   578: aload 10
+    //   580: aload_0
+    //   581: getfield 203	com/tencent/image/NativeVideoImage:ID	I
+    //   584: invokevirtual 259	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   587: pop
+    //   588: aload 9
+    //   590: aload 10
+    //   592: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   595: iconst_2
+    //   596: ldc_w 781
+    //   599: invokeinterface 275 4 0
+    //   604: aload_0
+    //   605: getfield 187	com/tencent/image/NativeVideoImage:mPlayAudioOnceFinished	Z
+    //   608: ifne +48 -> 656
+    //   611: aload_0
+    //   612: iconst_1
+    //   613: putfield 187	com/tencent/image/NativeVideoImage:mPlayAudioOnceFinished	Z
+    //   616: aload_0
+    //   617: getfield 283	com/tencent/image/NativeVideoImage:mVideoParams	Lcom/tencent/image/VideoDrawable$VideoDrawableParams;
+    //   620: astore 9
+    //   622: aload_0
+    //   623: iconst_0
+    //   624: putfield 185	com/tencent/image/NativeVideoImage:mPlayAudioFrame	Z
+    //   627: aload 9
+    //   629: iconst_0
+    //   630: putfield 284	com/tencent/image/VideoDrawable$VideoDrawableParams:mPlayAudioFrame	Z
+    //   633: aload_0
+    //   634: getfield 294	com/tencent/image/NativeVideoImage:mOption	Lcom/tencent/video/decode/AVDecodeOption;
+    //   637: iconst_1
+    //   638: putfield 303	com/tencent/video/decode/AVDecodeOption:ignore_audio	Z
+    //   641: getstatic 124	com/tencent/image/NativeVideoImage:sUIHandler	Landroid/os/Handler;
+    //   644: new 783	com/tencent/image/NativeVideoImage$2
+    //   647: dup
+    //   648: aload_0
+    //   649: invokespecial 786	com/tencent/image/NativeVideoImage$2:<init>	(Lcom/tencent/image/NativeVideoImage;)V
+    //   652: invokevirtual 683	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   655: pop
     //   656: aload_0
-    //   657: getfield 777	com/tencent/image/NativeVideoImage:mListener	Ljava/util/ArrayList;
-    //   660: astore 9
-    //   662: aload 9
-    //   664: monitorenter
-    //   665: aload_0
-    //   666: getfield 777	com/tencent/image/NativeVideoImage:mListener	Ljava/util/ArrayList;
-    //   669: invokevirtual 780	java/util/ArrayList:size	()I
-    //   672: iconst_1
-    //   673: isub
-    //   674: istore_1
-    //   675: iload_1
-    //   676: iflt +204 -> 880
-    //   679: aload_0
-    //   680: getfield 777	com/tencent/image/NativeVideoImage:mListener	Ljava/util/ArrayList;
-    //   683: iload_1
-    //   684: invokevirtual 783	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   687: checkcast 623	java/lang/ref/WeakReference
-    //   690: invokevirtual 786	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   693: checkcast 788	com/tencent/image/VideoDrawable$OnPlayRepeatListener
-    //   696: astore 10
-    //   698: aload 10
-    //   700: ifnull +14 -> 714
-    //   703: aload 10
-    //   705: aload_0
-    //   706: getfield 181	com/tencent/image/NativeVideoImage:mPlayRepeatCount	I
-    //   709: invokeinterface 791 2 0
-    //   714: iload_1
-    //   715: iconst_1
-    //   716: isub
-    //   717: istore_1
-    //   718: goto -43 -> 675
-    //   721: iload_2
-    //   722: ifeq +7 -> 729
-    //   725: iload_1
-    //   726: ifne +97 -> 823
-    //   729: getstatic 244	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
-    //   732: getfield 250	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
-    //   735: getstatic 107	com/tencent/image/NativeVideoImage:TAG	Ljava/lang/String;
-    //   738: iconst_2
-    //   739: ldc_w 793
-    //   742: invokeinterface 351 4 0
-    //   747: goto -253 -> 494
-    //   750: astore 9
-    //   752: getstatic 244	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
-    //   755: getfield 250	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
-    //   758: invokeinterface 256 1 0
-    //   763: ifeq +10 -> 773
-    //   766: aload_0
-    //   767: ldc_w 794
-    //   770: invokevirtual 797	com/tencent/image/NativeVideoImage:showOOM	(Ljava/lang/String;)V
-    //   773: getstatic 244	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
-    //   776: getfield 250	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
-    //   779: new 85	java/lang/StringBuilder
-    //   782: dup
-    //   783: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   786: getstatic 107	com/tencent/image/NativeVideoImage:TAG	Ljava/lang/String;
-    //   789: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   792: aload_0
-    //   793: getfield 203	com/tencent/image/NativeVideoImage:ID	I
-    //   796: invokevirtual 259	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   799: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   802: iconst_1
-    //   803: ldc_w 799
-    //   806: aload 9
-    //   808: invokeinterface 444 5 0
-    //   813: goto -462 -> 351
-    //   816: astore 9
-    //   818: aload_0
-    //   819: monitorexit
-    //   820: aload 9
-    //   822: athrow
-    //   823: aload_0
-    //   824: getfield 189	com/tencent/image/NativeVideoImage:mCompatibleBitmap	Landroid/graphics/Bitmap;
-    //   827: ifnonnull +16 -> 843
-    //   830: aload_0
-    //   831: iload_1
-    //   832: iload_2
-    //   833: aload_0
-    //   834: getfield 169	com/tencent/image/NativeVideoImage:mCurrentConfig	Landroid/graphics/Bitmap$Config;
-    //   837: invokestatic 803	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-    //   840: putfield 189	com/tencent/image/NativeVideoImage:mCompatibleBitmap	Landroid/graphics/Bitmap;
-    //   843: aload 9
-    //   845: aload_0
-    //   846: getfield 189	com/tencent/image/NativeVideoImage:mCompatibleBitmap	Landroid/graphics/Bitmap;
-    //   849: invokevirtual 765	com/tencent/video/decode/AbstractAVDecode:seekToNextFrame	(Landroid/graphics/Bitmap;)V
-    //   852: aload_0
-    //   853: aload_0
-    //   854: getfield 189	com/tencent/image/NativeVideoImage:mCompatibleBitmap	Landroid/graphics/Bitmap;
-    //   857: aload_0
-    //   858: getfield 173	com/tencent/image/NativeVideoImage:mReqWidth	I
-    //   861: aload_0
-    //   862: getfield 175	com/tencent/image/NativeVideoImage:mReqHeight	I
-    //   865: iconst_1
-    //   866: invokestatic 807	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
-    //   869: putfield 543	com/tencent/image/NativeVideoImage:mCurFrameBitmapBuffer	Landroid/graphics/Bitmap;
-    //   872: goto -348 -> 524
-    //   875: astore 10
-    //   877: goto -353 -> 524
-    //   880: aload 9
-    //   882: monitorexit
-    //   883: aload_0
-    //   884: iload_2
-    //   885: putfield 179	com/tencent/image/NativeVideoImage:mlastVideoFrameIndex	I
-    //   888: aload_0
-    //   889: aload_0
-    //   890: getfield 177	com/tencent/image/NativeVideoImage:sImageIndex	I
-    //   893: iconst_1
-    //   894: iadd
-    //   895: putfield 177	com/tencent/image/NativeVideoImage:sImageIndex	I
-    //   898: iconst_1
-    //   899: istore_3
-    //   900: goto -549 -> 351
-    //   903: astore 10
-    //   905: aload 9
-    //   907: monitorexit
-    //   908: aload 10
-    //   910: athrow
-    //   911: astore 10
-    //   913: aload 9
-    //   915: monitorexit
-    //   916: aload 10
-    //   918: athrow
-    //   919: astore 10
-    //   921: aload 9
-    //   923: monitorexit
-    //   924: aload 10
-    //   926: athrow
-    //   927: getstatic 145	com/tencent/image/NativeVideoImage:sReleaseHandler	Landroid/os/Handler;
-    //   930: ifnull +21 -> 951
-    //   933: getstatic 145	com/tencent/image/NativeVideoImage:sReleaseHandler	Landroid/os/Handler;
-    //   936: new 696	com/tencent/image/NativeVideoImage$ReleaseTask
-    //   939: dup
-    //   940: aload_0
-    //   941: getfield 346	com/tencent/image/NativeVideoImage:mAVDecode	Lcom/tencent/video/decode/AbstractAVDecode;
-    //   944: invokespecial 699	com/tencent/image/NativeVideoImage$ReleaseTask:<init>	(Lcom/tencent/video/decode/AbstractAVDecode;)V
-    //   947: invokevirtual 671	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   950: pop
-    //   951: aload_0
-    //   952: getfield 294	com/tencent/image/NativeVideoImage:mOption	Lcom/tencent/video/decode/AVDecodeOption;
-    //   955: iconst_1
-    //   956: putfield 300	com/tencent/video/decode/AVDecodeOption:cycle	Z
-    //   959: aload_0
-    //   960: aload_0
-    //   961: getfield 294	com/tencent/image/NativeVideoImage:mOption	Lcom/tencent/video/decode/AVDecodeOption;
-    //   964: invokestatic 749	com/tencent/video/decode/AVDecodeFactory:newDecode	(Lcom/tencent/video/decode/AVDecodeOption;)Lcom/tencent/video/decode/AbstractAVDecode;
-    //   967: putfield 346	com/tencent/image/NativeVideoImage:mAVDecode	Lcom/tencent/video/decode/AbstractAVDecode;
-    //   970: goto -631 -> 339
-    //   973: iconst_0
-    //   974: istore_3
-    //   975: goto -624 -> 351
+    //   657: getfield 283	com/tencent/image/NativeVideoImage:mVideoParams	Lcom/tencent/image/VideoDrawable$VideoDrawableParams;
+    //   660: getfield 284	com/tencent/image/VideoDrawable$VideoDrawableParams:mPlayAudioFrame	Z
+    //   663: ifeq +93 -> 756
+    //   666: aload_0
+    //   667: getfield 208	com/tencent/image/NativeVideoImage:mLock	Ljava/lang/Object;
+    //   670: astore 9
+    //   672: aload 9
+    //   674: monitorenter
+    //   675: getstatic 145	com/tencent/image/NativeVideoImage:sReleaseHandler	Landroid/os/Handler;
+    //   678: ifnull +21 -> 699
+    //   681: getstatic 145	com/tencent/image/NativeVideoImage:sReleaseHandler	Landroid/os/Handler;
+    //   684: new 696	com/tencent/image/NativeVideoImage$ReleaseTask
+    //   687: dup
+    //   688: aload_0
+    //   689: getfield 346	com/tencent/image/NativeVideoImage:mAVDecode	Lcom/tencent/video/decode/AbstractAVDecode;
+    //   692: invokespecial 699	com/tencent/image/NativeVideoImage$ReleaseTask:<init>	(Lcom/tencent/video/decode/AbstractAVDecode;)V
+    //   695: invokevirtual 683	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   698: pop
+    //   699: aload_0
+    //   700: aload_0
+    //   701: getfield 294	com/tencent/image/NativeVideoImage:mOption	Lcom/tencent/video/decode/AVDecodeOption;
+    //   704: invokestatic 789	com/tencent/video/decode/AVDecodeFactory:newDecode	(Lcom/tencent/video/decode/AVDecodeOption;)Lcom/tencent/video/decode/AbstractAVDecode;
+    //   707: putfield 346	com/tencent/image/NativeVideoImage:mAVDecode	Lcom/tencent/video/decode/AbstractAVDecode;
+    //   710: aload 9
+    //   712: monitorexit
+    //   713: aload_0
+    //   714: getfield 225	com/tencent/image/NativeVideoImage:mAudioLock	Ljava/lang/Object;
+    //   717: astore 9
+    //   719: aload 9
+    //   721: monitorenter
+    //   722: aload_0
+    //   723: iconst_1
+    //   724: putfield 195	com/tencent/image/NativeVideoImage:mVideoDecodeFinish	Z
+    //   727: aload_0
+    //   728: getfield 225	com/tencent/image/NativeVideoImage:mAudioLock	Ljava/lang/Object;
+    //   731: invokevirtual 575	java/lang/Object:notifyAll	()V
+    //   734: aload 9
+    //   736: monitorexit
+    //   737: goto +62 -> 799
+    //   740: astore 10
+    //   742: aload 9
+    //   744: monitorexit
+    //   745: aload 10
+    //   747: athrow
+    //   748: astore 10
+    //   750: aload 9
+    //   752: monitorexit
+    //   753: aload 10
+    //   755: athrow
+    //   756: getstatic 145	com/tencent/image/NativeVideoImage:sReleaseHandler	Landroid/os/Handler;
+    //   759: ifnull +21 -> 780
+    //   762: getstatic 145	com/tencent/image/NativeVideoImage:sReleaseHandler	Landroid/os/Handler;
+    //   765: new 696	com/tencent/image/NativeVideoImage$ReleaseTask
+    //   768: dup
+    //   769: aload_0
+    //   770: getfield 346	com/tencent/image/NativeVideoImage:mAVDecode	Lcom/tencent/video/decode/AbstractAVDecode;
+    //   773: invokespecial 699	com/tencent/image/NativeVideoImage$ReleaseTask:<init>	(Lcom/tencent/video/decode/AbstractAVDecode;)V
+    //   776: invokevirtual 683	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   779: pop
+    //   780: aload_0
+    //   781: getfield 294	com/tencent/image/NativeVideoImage:mOption	Lcom/tencent/video/decode/AVDecodeOption;
+    //   784: iconst_1
+    //   785: putfield 300	com/tencent/video/decode/AVDecodeOption:cycle	Z
+    //   788: aload_0
+    //   789: aload_0
+    //   790: getfield 294	com/tencent/image/NativeVideoImage:mOption	Lcom/tencent/video/decode/AVDecodeOption;
+    //   793: invokestatic 789	com/tencent/video/decode/AVDecodeFactory:newDecode	(Lcom/tencent/video/decode/AVDecodeOption;)Lcom/tencent/video/decode/AbstractAVDecode;
+    //   796: putfield 346	com/tencent/image/NativeVideoImage:mAVDecode	Lcom/tencent/video/decode/AbstractAVDecode;
+    //   799: aload_0
+    //   800: aload_0
+    //   801: getfield 177	com/tencent/image/NativeVideoImage:sImageIndex	I
+    //   804: iconst_1
+    //   805: iadd
+    //   806: putfield 177	com/tencent/image/NativeVideoImage:sImageIndex	I
+    //   809: goto +297 -> 1106
+    //   812: astore 9
+    //   814: getstatic 244	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   817: getfield 250	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   820: invokeinterface 256 1 0
+    //   825: ifeq +10 -> 835
+    //   828: aload_0
+    //   829: ldc_w 790
+    //   832: invokevirtual 793	com/tencent/image/NativeVideoImage:showOOM	(Ljava/lang/String;)V
+    //   835: getstatic 244	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   838: getfield 250	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   841: astore 10
+    //   843: new 85	java/lang/StringBuilder
+    //   846: dup
+    //   847: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   850: astore 11
+    //   852: aload 11
+    //   854: getstatic 107	com/tencent/image/NativeVideoImage:TAG	Ljava/lang/String;
+    //   857: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   860: pop
+    //   861: aload 11
+    //   863: aload_0
+    //   864: getfield 203	com/tencent/image/NativeVideoImage:ID	I
+    //   867: invokevirtual 259	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   870: pop
+    //   871: aload 10
+    //   873: aload 11
+    //   875: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   878: iconst_1
+    //   879: ldc_w 795
+    //   882: aload 9
+    //   884: invokeinterface 355 5 0
+    //   889: iload 8
+    //   891: istore 7
+    //   893: aload_0
+    //   894: getfield 221	com/tencent/image/NativeVideoImage:mCount	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   897: iconst_1
+    //   898: invokevirtual 799	java/util/concurrent/atomic/AtomicInteger:addAndGet	(I)I
+    //   901: pop
+    //   902: invokestatic 487	java/lang/System:currentTimeMillis	()J
+    //   905: lload_3
+    //   906: lsub
+    //   907: lstore_3
+    //   908: getstatic 244	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   911: getfield 250	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   914: invokeinterface 256 1 0
+    //   919: ifeq +146 -> 1065
+    //   922: aload_0
+    //   923: getfield 163	com/tencent/image/NativeVideoImage:debug	Z
+    //   926: ifne +17 -> 943
+    //   929: lload_3
+    //   930: getstatic 153	com/tencent/image/NativeVideoImage:TIME_BASE	I
+    //   933: i2l
+    //   934: lcmp
+    //   935: ifgt +8 -> 943
+    //   938: iload 7
+    //   940: ifne +125 -> 1065
+    //   943: getstatic 244	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   946: getfield 250	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   949: astore 9
+    //   951: new 85	java/lang/StringBuilder
+    //   954: dup
+    //   955: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   958: astore 10
+    //   960: aload 10
+    //   962: getstatic 107	com/tencent/image/NativeVideoImage:TAG	Ljava/lang/String;
+    //   965: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   968: pop
+    //   969: aload 10
+    //   971: aload_0
+    //   972: getfield 203	com/tencent/image/NativeVideoImage:ID	I
+    //   975: invokevirtual 259	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   978: pop
+    //   979: aload 10
+    //   981: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   984: astore 10
+    //   986: new 85	java/lang/StringBuilder
+    //   989: dup
+    //   990: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   993: astore 11
+    //   995: aload 11
+    //   997: ldc_w 801
+    //   1000: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1003: pop
+    //   1004: aload 11
+    //   1006: lload_3
+    //   1007: invokevirtual 563	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1010: pop
+    //   1011: aload 11
+    //   1013: ldc_w 803
+    //   1016: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1019: pop
+    //   1020: aload 11
+    //   1022: aload_0
+    //   1023: getfield 221	com/tencent/image/NativeVideoImage:mCount	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   1026: invokevirtual 805	java/util/concurrent/atomic/AtomicInteger:get	()I
+    //   1029: invokevirtual 259	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1032: pop
+    //   1033: aload 11
+    //   1035: ldc_w 807
+    //   1038: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1041: pop
+    //   1042: aload 11
+    //   1044: iload 7
+    //   1046: invokevirtual 264	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1049: pop
+    //   1050: aload 9
+    //   1052: aload 10
+    //   1054: iconst_2
+    //   1055: aload 11
+    //   1057: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1060: invokeinterface 275 4 0
+    //   1065: aload_0
+    //   1066: monitorexit
+    //   1067: iload 7
+    //   1069: ireturn
+    //   1070: astore 9
+    //   1072: aload_0
+    //   1073: monitorexit
+    //   1074: goto +6 -> 1080
+    //   1077: aload 9
+    //   1079: athrow
+    //   1080: goto -3 -> 1077
+    //   1083: astore 10
+    //   1085: goto -963 -> 122
+    //   1088: iload_2
+    //   1089: ifeq -711 -> 378
+    //   1092: iload_1
+    //   1093: ifne -1020 -> 73
+    //   1096: goto -718 -> 378
+    //   1099: iload_1
+    //   1100: iconst_1
+    //   1101: isub
+    //   1102: istore_1
+    //   1103: goto -799 -> 304
+    //   1106: iconst_1
+    //   1107: istore 7
+    //   1109: goto -216 -> 893
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	978	0	this	NativeVideoImage
-    //   26	806	1	i	int
-    //   35	850	2	j	int
-    //   4	971	3	bool1	boolean
-    //   1	496	4	bool2	boolean
-    //   10	443	5	l1	long
-    //   39	567	7	l2	long
-    //   16	12	9	localAbstractAVDecode	AbstractAVDecode
-    //   67	73	9	localAVideoException	AVideoException
-    //   750	57	9	localOutOfMemoryError	OutOfMemoryError
-    //   816	106	9	localObject2	Object
-    //   696	8	10	localOnPlayRepeatListener	VideoDrawable.OnPlayRepeatListener
-    //   875	1	10	localNullPointerException	java.lang.NullPointerException
-    //   903	6	10	localObject3	Object
-    //   911	6	10	localObject4	Object
-    //   919	6	10	localObject5	Object
+    //   0	1112	0	this	NativeVideoImage
+    //   23	1080	1	i	int
+    //   32	1057	2	j	int
+    //   5	1002	3	l1	long
+    //   36	188	5	l2	long
+    //   521	587	7	bool1	boolean
+    //   7	883	8	bool2	boolean
+    //   419	105	9	localAVideoException	AVideoException
+    //   812	71	9	localOutOfMemoryError	OutOfMemoryError
+    //   949	102	9	localILog	ILog
+    //   1070	8	9	localObject3	Object
+    //   166	167	10	localObject4	Object
+    //   352	6	10	localObject5	Object
+    //   441	150	10	localObject6	Object
+    //   740	6	10	localObject7	Object
+    //   748	6	10	localObject8	Object
+    //   841	212	10	localObject9	Object
+    //   1083	1	10	localNullPointerException	java.lang.NullPointerException
+    //   175	881	11	localObject10	Object
+    //   210	300	12	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   36	67	67	com/tencent/video/decode/AVideoException
-    //   499	524	67	com/tencent/video/decode/AVideoException
-    //   524	553	67	com/tencent/video/decode/AVideoException
-    //   562	624	67	com/tencent/video/decode/AVideoException
-    //   624	633	67	com/tencent/video/decode/AVideoException
-    //   638	665	67	com/tencent/video/decode/AVideoException
-    //   729	747	67	com/tencent/video/decode/AVideoException
-    //   823	843	67	com/tencent/video/decode/AVideoException
-    //   843	852	67	com/tencent/video/decode/AVideoException
-    //   852	872	67	com/tencent/video/decode/AVideoException
-    //   883	898	67	com/tencent/video/decode/AVideoException
-    //   908	911	67	com/tencent/video/decode/AVideoException
-    //   12	36	750	java/lang/OutOfMemoryError
-    //   36	67	750	java/lang/OutOfMemoryError
-    //   69	139	750	java/lang/OutOfMemoryError
-    //   139	206	750	java/lang/OutOfMemoryError
-    //   206	258	750	java/lang/OutOfMemoryError
-    //   258	277	750	java/lang/OutOfMemoryError
-    //   315	324	750	java/lang/OutOfMemoryError
-    //   339	349	750	java/lang/OutOfMemoryError
-    //   499	524	750	java/lang/OutOfMemoryError
-    //   524	553	750	java/lang/OutOfMemoryError
-    //   562	624	750	java/lang/OutOfMemoryError
-    //   624	633	750	java/lang/OutOfMemoryError
-    //   638	665	750	java/lang/OutOfMemoryError
-    //   729	747	750	java/lang/OutOfMemoryError
-    //   823	843	750	java/lang/OutOfMemoryError
-    //   843	852	750	java/lang/OutOfMemoryError
-    //   852	872	750	java/lang/OutOfMemoryError
-    //   883	898	750	java/lang/OutOfMemoryError
-    //   908	911	750	java/lang/OutOfMemoryError
-    //   916	919	750	java/lang/OutOfMemoryError
-    //   924	927	750	java/lang/OutOfMemoryError
-    //   927	951	750	java/lang/OutOfMemoryError
-    //   951	970	750	java/lang/OutOfMemoryError
-    //   7	12	816	finally
-    //   12	36	816	finally
-    //   36	67	816	finally
-    //   69	139	816	finally
-    //   139	206	816	finally
-    //   206	258	816	finally
-    //   258	277	816	finally
-    //   315	324	816	finally
-    //   339	349	816	finally
-    //   351	368	816	finally
-    //   371	402	816	finally
-    //   409	491	816	finally
-    //   499	524	816	finally
-    //   524	553	816	finally
-    //   562	624	816	finally
-    //   624	633	816	finally
-    //   638	665	816	finally
-    //   729	747	816	finally
-    //   752	773	816	finally
-    //   773	813	816	finally
-    //   823	843	816	finally
-    //   843	852	816	finally
-    //   852	872	816	finally
-    //   883	898	816	finally
-    //   908	911	816	finally
-    //   916	919	816	finally
-    //   924	927	816	finally
-    //   927	951	816	finally
-    //   951	970	816	finally
-    //   852	872	875	java/lang/NullPointerException
-    //   665	675	903	finally
-    //   679	698	903	finally
-    //   703	714	903	finally
-    //   880	883	903	finally
-    //   905	908	903	finally
-    //   277	301	911	finally
-    //   301	315	911	finally
-    //   913	916	911	finally
-    //   324	339	919	finally
-    //   921	924	919	finally
+    //   294	304	352	finally
+    //   308	327	352	finally
+    //   332	343	352	finally
+    //   346	349	352	finally
+    //   354	357	352	finally
+    //   33	70	419	com/tencent/video/decode/AVideoException
+    //   73	93	419	com/tencent/video/decode/AVideoException
+    //   93	102	419	com/tencent/video/decode/AVideoException
+    //   102	122	419	com/tencent/video/decode/AVideoException
+    //   122	151	419	com/tencent/video/decode/AVideoException
+    //   160	253	419	com/tencent/video/decode/AVideoException
+    //   253	262	419	com/tencent/video/decode/AVideoException
+    //   267	294	419	com/tencent/video/decode/AVideoException
+    //   357	360	419	com/tencent/video/decode/AVideoException
+    //   360	375	419	com/tencent/video/decode/AVideoException
+    //   378	396	419	com/tencent/video/decode/AVideoException
+    //   400	419	419	com/tencent/video/decode/AVideoException
+    //   722	737	740	finally
+    //   742	745	740	finally
+    //   675	699	748	finally
+    //   699	713	748	finally
+    //   750	753	748	finally
+    //   9	33	812	java/lang/OutOfMemoryError
+    //   33	70	812	java/lang/OutOfMemoryError
+    //   73	93	812	java/lang/OutOfMemoryError
+    //   93	102	812	java/lang/OutOfMemoryError
+    //   102	122	812	java/lang/OutOfMemoryError
+    //   122	151	812	java/lang/OutOfMemoryError
+    //   160	253	812	java/lang/OutOfMemoryError
+    //   253	262	812	java/lang/OutOfMemoryError
+    //   267	294	812	java/lang/OutOfMemoryError
+    //   357	360	812	java/lang/OutOfMemoryError
+    //   360	375	812	java/lang/OutOfMemoryError
+    //   378	396	812	java/lang/OutOfMemoryError
+    //   400	419	812	java/lang/OutOfMemoryError
+    //   421	519	812	java/lang/OutOfMemoryError
+    //   523	604	812	java/lang/OutOfMemoryError
+    //   604	656	812	java/lang/OutOfMemoryError
+    //   656	675	812	java/lang/OutOfMemoryError
+    //   713	722	812	java/lang/OutOfMemoryError
+    //   745	748	812	java/lang/OutOfMemoryError
+    //   753	756	812	java/lang/OutOfMemoryError
+    //   756	780	812	java/lang/OutOfMemoryError
+    //   780	799	812	java/lang/OutOfMemoryError
+    //   799	809	812	java/lang/OutOfMemoryError
+    //   2	6	1070	finally
+    //   9	33	1070	finally
+    //   33	70	1070	finally
+    //   73	93	1070	finally
+    //   93	102	1070	finally
+    //   102	122	1070	finally
+    //   122	151	1070	finally
+    //   160	253	1070	finally
+    //   253	262	1070	finally
+    //   267	294	1070	finally
+    //   357	360	1070	finally
+    //   360	375	1070	finally
+    //   378	396	1070	finally
+    //   400	419	1070	finally
+    //   421	519	1070	finally
+    //   523	604	1070	finally
+    //   604	656	1070	finally
+    //   656	675	1070	finally
+    //   713	722	1070	finally
+    //   745	748	1070	finally
+    //   753	756	1070	finally
+    //   756	780	1070	finally
+    //   780	799	1070	finally
+    //   799	809	1070	finally
+    //   814	835	1070	finally
+    //   835	889	1070	finally
+    //   893	938	1070	finally
+    //   943	1065	1070	finally
+    //   102	122	1083	java/lang/NullPointerException
   }
   
   public int getWidth()
   {
-    if (this.mCurFrameBitmap != null) {
-      return this.mCurFrameBitmap.getWidth();
+    Bitmap localBitmap = this.mCurFrameBitmap;
+    if (localBitmap != null) {
+      return localBitmap.getWidth();
     }
     return 0;
   }
   
   void init(boolean paramBoolean)
   {
-    boolean bool = false;
     if (sVideoEngineAvaliable) {}
     try
     {
       this.mCurFrameBitmapBuffer = Bitmap.createBitmap(this.mReqWidth, this.mReqHeight, this.mCurrentConfig);
     }
+    catch (OutOfMemoryError localOutOfMemoryError1)
+    {
+      label28:
+      break label28;
+    }
+    if (URLDrawable.depImp.mLog.isColorLevel()) {
+      showOOM("create mCurFrameBitmapBuffer");
+    }
+    if (this.mCurrentConfig == Bitmap.Config.ARGB_8888) {}
+    try
+    {
+      this.mCurrentConfig = Bitmap.Config.RGB_565;
+      this.mCurFrameBitmapBuffer = Bitmap.createBitmap(this.mReqWidth, this.mReqHeight, this.mCurrentConfig);
+    }
+    catch (OutOfMemoryError localOutOfMemoryError2)
+    {
+      label88:
+      break label88;
+    }
+    if (URLDrawable.depImp.mLog.isColorLevel()) {
+      showOOM("create mCurFrameBitmapBuffer");
+    }
+    URLDrawable.clearMemoryCache();
+    this.mCurFrameBitmapBuffer = Bitmap.createBitmap(this.mReqWidth, this.mReqHeight, this.mCurrentConfig);
+    break label156;
+    URLDrawable.clearMemoryCache();
+    this.mCurFrameBitmapBuffer = Bitmap.createBitmap(this.mReqWidth, this.mReqHeight, this.mCurrentConfig);
+    try
+    {
+      label156:
+      if ((this.mRotation != 0) && (this.mRotation != 180)) {
+        this.mCurFrameBitmap = Bitmap.createBitmap(this.mReqHeight, this.mReqWidth, this.mCurrentConfig);
+      } else {
+        this.mCurFrameBitmap = Bitmap.createBitmap(this.mReqWidth, this.mReqHeight, this.mCurrentConfig);
+      }
+    }
     catch (OutOfMemoryError localOutOfMemoryError3)
     {
-      try
-      {
-        if ((this.mRotation != 0) && (this.mRotation != 180))
-        {
-          this.mCurFrameBitmap = Bitmap.createBitmap(this.mReqHeight, this.mReqWidth, this.mCurrentConfig);
-          if (URLDrawable.depImp.mLog.isColorLevel())
-          {
-            ILog localILog = URLDrawable.depImp.mLog;
-            String str = TAG + this.ID;
-            StringBuilder localStringBuilder = new StringBuilder().append("use mCurFrameBitmapBuffer: ");
-            if (this.mCurFrameBitmapBuffer != null) {
-              bool = true;
-            }
-            localILog.d(str, 2, bool);
-          }
-          getNextFrame();
-          applyNextFrame();
-          if (!paramBoolean) {}
-        }
+      label217:
+      ILog localILog;
+      Object localObject;
+      StringBuilder localStringBuilder;
+      boolean bool;
+      break label217;
+    }
+    if (URLDrawable.depImp.mLog.isColorLevel()) {
+      showOOM("create mCurFrameBitmap");
+    }
+    if (URLDrawable.depImp.mLog.isColorLevel())
+    {
+      localILog = URLDrawable.depImp.mLog;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(TAG);
+      ((StringBuilder)localObject).append(this.ID);
+      localObject = ((StringBuilder)localObject).toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("use mCurFrameBitmapBuffer: ");
+      if (this.mCurFrameBitmapBuffer != null) {
+        bool = true;
+      } else {
+        bool = false;
       }
-      catch (OutOfMemoryError localOutOfMemoryError3)
-      {
-        try
-        {
-          do
-          {
-            for (;;)
-            {
-              this.mFirstFrameBitmap = this.mCurFrameBitmap.copy(this.mCurFrameBitmap.getConfig(), false);
-              return;
-              localOutOfMemoryError1 = localOutOfMemoryError1;
-              if (URLDrawable.depImp.mLog.isColorLevel()) {
-                showOOM("create mCurFrameBitmapBuffer");
-              }
-              if (this.mCurrentConfig == Bitmap.Config.ARGB_8888)
-              {
-                try
-                {
-                  this.mCurrentConfig = Bitmap.Config.RGB_565;
-                  this.mCurFrameBitmapBuffer = Bitmap.createBitmap(this.mReqWidth, this.mReqHeight, this.mCurrentConfig);
-                }
-                catch (OutOfMemoryError localOutOfMemoryError2)
-                {
-                  if (URLDrawable.depImp.mLog.isColorLevel()) {
-                    showOOM("create mCurFrameBitmapBuffer");
-                  }
-                  URLDrawable.clearMemoryCache();
-                  this.mCurFrameBitmapBuffer = Bitmap.createBitmap(this.mReqWidth, this.mReqHeight, this.mCurrentConfig);
-                }
-              }
-              else
-              {
-                URLDrawable.clearMemoryCache();
-                this.mCurFrameBitmapBuffer = Bitmap.createBitmap(this.mReqWidth, this.mReqHeight, this.mCurrentConfig);
-                continue;
-                this.mCurFrameBitmap = Bitmap.createBitmap(this.mReqWidth, this.mReqHeight, this.mCurrentConfig);
-              }
-            }
-            localOutOfMemoryError3 = localOutOfMemoryError3;
-          } while (!URLDrawable.depImp.mLog.isColorLevel());
-          showOOM("create mCurFrameBitmap");
-        }
-        catch (OutOfMemoryError localOutOfMemoryError4)
-        {
-          while (!URLDrawable.depImp.mLog.isColorLevel()) {}
-          showOOM("create mFirstFrameBitmap");
-        }
-      }
+      localStringBuilder.append(bool);
+      localILog.d((String)localObject, 2, localStringBuilder.toString());
+    }
+    getNextFrame();
+    applyNextFrame();
+    if (paramBoolean) {}
+    try
+    {
+      this.mFirstFrameBitmap = this.mCurFrameBitmap.copy(this.mCurFrameBitmap.getConfig(), false);
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError4)
+    {
+      label380:
+      break label380;
+    }
+    if (URLDrawable.depImp.mLog.isColorLevel()) {
+      showOOM("create mFirstFrameBitmap");
     }
   }
   
   void initAudioTrack()
   {
-    int k = 1024;
-    if (this.mAVDecode.audioParam.channels <= 1) {}
-    int n;
-    for (int j = 2;; j = 3)
+    int j;
+    if (this.mAVDecode.audioParam.channels <= 1) {
+      j = 2;
+    } else {
+      j = 3;
+    }
+    int m = this.mAVDecode.audioParam.sample_rate;
+    ILog localILog;
+    Object localObject;
+    StringBuilder localStringBuilder;
+    if (m <= 0)
     {
-      n = this.mAVDecode.audioParam.sample_rate;
-      if (n > 0) {
-        break;
-      }
-      if (URLDrawable.depImp.mLog.isColorLevel()) {
-        URLDrawable.depImp.mLog.e(TAG + this.ID, 2, "initAudioTrack(), sampleRateInHz=" + n + ", <= 0, return...");
+      if (URLDrawable.depImp.mLog.isColorLevel())
+      {
+        localILog = URLDrawable.depImp.mLog;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(TAG);
+        ((StringBuilder)localObject).append(this.ID);
+        localObject = ((StringBuilder)localObject).toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("initAudioTrack(), sampleRateInHz=");
+        localStringBuilder.append(m);
+        localStringBuilder.append(", <= 0, return...");
+        localILog.e((String)localObject, 2, localStringBuilder.toString());
       }
       return;
     }
-    int m = AudioTrack.getMinBufferSize(n, j, 2);
-    int i = m;
-    if (m < 1024)
+    int k = AudioTrack.getMinBufferSize(m, j, 2);
+    int i = k;
+    if (k < 1024)
     {
-      if (URLDrawable.depImp.mLog.isColorLevel()) {
-        URLDrawable.depImp.mLog.d(TAG + this.ID, 2, "initAudioTrack(), minBufSize=" + m + " < 1024, so mutiply 2");
+      if (URLDrawable.depImp.mLog.isColorLevel())
+      {
+        localILog = URLDrawable.depImp.mLog;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(TAG);
+        ((StringBuilder)localObject).append(this.ID);
+        localObject = ((StringBuilder)localObject).toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("initAudioTrack(), minBufSize=");
+        localStringBuilder.append(k);
+        localStringBuilder.append(" < 1024, so mutiply 2");
+        localILog.d((String)localObject, 2, localStringBuilder.toString());
       }
-      m *= 2;
-      i = m;
-      if (m < 1024) {
-        i = k;
+      k *= 2;
+      i = k;
+      if (k < 1024) {
+        i = 1024;
       }
     }
-    for (;;)
+    k = i * 2;
+    if (URLDrawable.depImp.mLog.isColorLevel())
     {
-      k = i * 2;
-      if (URLDrawable.depImp.mLog.isColorLevel()) {
-        URLDrawable.depImp.mLog.d(TAG + this.ID, 2, "initAudioTrack(): cost=channelConfig: " + j + ", sampleRateInHz: " + n + ", minBufSize: " + i + ", primePlaySize: " + k);
-      }
-      this.mAudioTrack = new AudioTrack(3, n, j, 2, k, 1);
-      return;
+      localILog = URLDrawable.depImp.mLog;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(TAG);
+      ((StringBuilder)localObject).append(this.ID);
+      localObject = ((StringBuilder)localObject).toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initAudioTrack(): cost=channelConfig: ");
+      localStringBuilder.append(j);
+      localStringBuilder.append(", sampleRateInHz: ");
+      localStringBuilder.append(m);
+      localStringBuilder.append(", minBufSize: ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(", primePlaySize: ");
+      localStringBuilder.append(k);
+      localILog.d((String)localObject, 2, localStringBuilder.toString());
     }
+    this.mAudioTrack = new ReportAudioTrack(3, m, j, 2, k, 1);
   }
   
   public boolean isAudioPlaying()
@@ -1352,33 +1553,24 @@ public class NativeVideoImage
   
   public void resetAndPlayAudioCircle()
   {
-    boolean bool = false;
     if (URLDrawable.depImp.mLog.isColorLevel()) {
       URLDrawable.depImp.mLog.d(TAG, 2, "resetAndPlayAudioOnce >>>");
     }
     this.mPlayAudioOnceFinished = false;
-    Object localObject = this.mVideoParams;
+    VideoDrawable.VideoDrawableParams localVideoDrawableParams = this.mVideoParams;
     this.mPlayAudioFrame = true;
-    ((VideoDrawable.VideoDrawableParams)localObject).mPlayAudioFrame = true;
-    localObject = this.mOption;
-    if (!this.mPlayAudioFrame) {
-      bool = true;
-    }
-    ((AVDecodeOption)localObject).ignore_audio = bool;
+    localVideoDrawableParams.mPlayAudioFrame = true;
+    this.mOption.ignore_audio = (this.mPlayAudioFrame ^ true);
     this.mOption.cycle = true;
     try
     {
       this.mAVDecode.resetVideoPlayer(this.mOption);
-      reDraw();
-      return;
     }
     catch (AVideoException localAVideoException)
     {
-      for (;;)
-      {
-        URLDrawable.depImp.mLog.e(TAG, 1, "AVideoException happens resetAndPlayAudioOnce...", localAVideoException);
-      }
+      URLDrawable.depImp.mLog.e(TAG, 1, "AVideoException happens resetAndPlayAudioOnce...", localAVideoException);
     }
+    reDraw();
   }
   
   public void resetAndPlayAudioOnce()
@@ -1387,33 +1579,20 @@ public class NativeVideoImage
       URLDrawable.depImp.mLog.d(TAG, 2, "resetAndPlayAudioOnce >>>");
     }
     this.mPlayAudioOnceFinished = false;
-    Object localObject = this.mVideoParams;
+    VideoDrawable.VideoDrawableParams localVideoDrawableParams = this.mVideoParams;
     this.mPlayAudioFrame = true;
-    ((VideoDrawable.VideoDrawableParams)localObject).mPlayAudioFrame = true;
-    localObject = this.mOption;
-    boolean bool;
-    if (!this.mPlayAudioFrame) {
-      bool = true;
-    }
-    for (;;)
+    localVideoDrawableParams.mPlayAudioFrame = true;
+    this.mOption.ignore_audio = (this.mPlayAudioFrame ^ true);
+    this.mOption.cycle = false;
+    try
     {
-      ((AVDecodeOption)localObject).ignore_audio = bool;
-      this.mOption.cycle = false;
-      try
-      {
-        this.mAVDecode.resetVideoPlayer(this.mOption);
-        reDraw();
-        return;
-        bool = false;
-      }
-      catch (AVideoException localAVideoException)
-      {
-        for (;;)
-        {
-          URLDrawable.depImp.mLog.e(TAG, 1, "AVideoException happens resetAndPlayAudioOnce...", localAVideoException);
-        }
-      }
+      this.mAVDecode.resetVideoPlayer(this.mOption);
     }
+    catch (AVideoException localAVideoException)
+    {
+      URLDrawable.depImp.mLog.e(TAG, 1, "AVideoException happens resetAndPlayAudioOnce...", localAVideoException);
+    }
+    reDraw();
   }
   
   public void showOOM(String paramString)
@@ -1435,15 +1614,20 @@ public class NativeVideoImage
   
   public void stopPlayAudio()
   {
-    if (URLDrawable.depImp.mLog.isColorLevel()) {
-      URLDrawable.depImp.mLog.d(TAG + this.ID, 2, "stopPlayAudio()");
+    if (URLDrawable.depImp.mLog.isColorLevel())
+    {
+      ILog localILog = URLDrawable.depImp.mLog;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(TAG);
+      localStringBuilder.append(this.ID);
+      localILog.d(localStringBuilder.toString(), 2, "stopPlayAudio()");
     }
     this.mPlayAudioFrame = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.image.NativeVideoImage
  * JD-Core Version:    0.7.0.1
  */

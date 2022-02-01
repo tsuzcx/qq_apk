@@ -57,12 +57,16 @@ public class GetVideoFullInfoListResponse
   
   public String toString()
   {
-    return "GetVideoBasicInfoListResponse{mVideoItemList=" + this.a + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetVideoBasicInfoListResponse{mVideoItemList=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetVideoFullInfoListResponse
  * JD-Core Version:    0.7.0.1
  */

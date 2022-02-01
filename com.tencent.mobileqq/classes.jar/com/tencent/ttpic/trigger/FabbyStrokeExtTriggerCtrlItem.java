@@ -41,13 +41,17 @@ public class FabbyStrokeExtTriggerCtrlItem
   
   public void initCtrItems(long paramLong)
   {
-    if ((!this.mIsCtrInit) && (this.triggerCtrlItems != null))
+    if (!this.mIsCtrInit)
     {
-      Iterator localIterator = this.triggerCtrlItems.iterator();
-      while (localIterator.hasNext()) {
-        ((TriggerCtrlItem)localIterator.next()).updateFrameIndex(paramLong);
+      Object localObject = this.triggerCtrlItems;
+      if (localObject != null)
+      {
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          ((TriggerCtrlItem)((Iterator)localObject).next()).updateFrameIndex(paramLong);
+        }
+        this.mIsCtrInit = true;
       }
-      this.mIsCtrInit = true;
     }
   }
   
@@ -77,10 +81,11 @@ public class FabbyStrokeExtTriggerCtrlItem
     this.model = null;
     initCtrItems(paramPTDetectInfo.timestamp);
     this.model = new FabbyStrokeExtTriggerCtrlItem.FabbyExtModel(this);
-    Iterator localIterator = this.triggerCtrlItems.iterator();
-    while (localIterator.hasNext())
+    Object localObject = this.triggerCtrlItems.iterator();
+    TriggerCtrlItem localTriggerCtrlItem;
+    while (((Iterator)localObject).hasNext())
     {
-      TriggerCtrlItem localTriggerCtrlItem = (TriggerCtrlItem)localIterator.next();
+      localTriggerCtrlItem = (TriggerCtrlItem)((Iterator)localObject).next();
       if (localTriggerCtrlItem.isCurrentFrameTriggered(paramPTDetectInfo))
       {
         StickerItem localStickerItem = (StickerItem)this.stickerItemMap.get(localTriggerCtrlItem.getStickerItemID());
@@ -95,7 +100,8 @@ public class FabbyStrokeExtTriggerCtrlItem
           }
           else
           {
-            if ((this.trigger != null) && (this.trigger != localTriggerCtrlItem) && (this.item.getTriggerTypeInt() != PTFaceAttr.PTExpression.TIME_TRIGGER.value)) {
+            localObject = this.trigger;
+            if ((localObject != null) && (localObject != localTriggerCtrlItem) && (this.item.getTriggerTypeInt() != PTFaceAttr.PTExpression.TIME_TRIGGER.value)) {
               this.trigger.reset();
             }
             this.trigger = localTriggerCtrlItem;
@@ -104,46 +110,45 @@ public class FabbyStrokeExtTriggerCtrlItem
         }
       }
     }
-    boolean bool;
-    if ((this.item != null) && (this.trigger != null)) {
-      if (!this.mNeedDrawStroke)
+    if (this.item != null)
+    {
+      localTriggerCtrlItem = this.trigger;
+      if (localTriggerCtrlItem != null)
       {
-        bool = true;
-        this.isFirstTriggered = bool;
+        this.isFirstTriggered = (this.mNeedDrawStroke ^ true);
         this.mNeedDrawStroke = true;
-        if (!this.trigger.isTriggered()) {
-          break label307;
-        }
-        if (this.item.strokeType == VideoFilterFactory.SEGMENT_STROKE_TRIGGER_TYPE.MASK_LINE_STROKE.type)
+        if (localTriggerCtrlItem.isTriggered())
         {
+          if (this.item.strokeType != VideoFilterFactory.SEGMENT_STROKE_TRIGGER_TYPE.MASK_LINE_STROKE.type) {
+            break label286;
+          }
           this.trigger.getTriggeredStatus(paramPTDetectInfo);
           this.trigger.updateFrameIndex(paramPTDetectInfo.timestamp);
+          break label286;
         }
+        this.trigger.reset();
+        this.trigger = null;
+        this.item = null;
+        this.model.renderEnded = true;
+        break label286;
       }
     }
-    for (;;)
+    this.mNeedDrawStroke = false;
+    label286:
+    if (this.mNeedDrawStroke)
     {
-      if ((this.mNeedDrawStroke) && (this.trigger != null))
+      paramPTDetectInfo = this.trigger;
+      if (paramPTDetectInfo != null)
       {
-        this.model.frameIndex = this.trigger.getFrameIndex();
+        this.model.frameIndex = paramPTDetectInfo.getFrameIndex();
         this.model.itemId = this.trigger.getStickerItemID();
       }
-      return;
-      bool = false;
-      break;
-      label307:
-      this.trigger.reset();
-      this.trigger = null;
-      this.item = null;
-      this.model.renderEnded = true;
-      continue;
-      this.mNeedDrawStroke = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.trigger.FabbyStrokeExtTriggerCtrlItem
  * JD-Core Version:    0.7.0.1
  */

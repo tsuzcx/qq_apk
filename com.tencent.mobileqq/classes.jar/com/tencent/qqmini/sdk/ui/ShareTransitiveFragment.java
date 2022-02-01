@@ -41,40 +41,39 @@ public class ShareTransitiveFragment
   
   private void moveTaskToFront(int paramInt, boolean paramBoolean)
   {
-    if ((paramBoolean) || (paramInt == -1))
-    {
-      QMLog.w("ShareTransitiveFragment", "Invalid task id, restart mini app");
-      MiniSDK.startMiniApp(getActivity(), this.mShareData.getMiniAppId());
-      return;
+    if ((!paramBoolean) && (paramInt != -1)) {
+      try
+      {
+        ((ActivityManager)getActivity().getSystemService("activity")).moveTaskToFront(paramInt, 1);
+        return;
+      }
+      catch (Exception localException)
+      {
+        QMLog.w("ShareTransitiveFragment", "Failed to moveTaskToFront", localException);
+        QMLog.i("ShareTransitiveFragment", "Restart mini app");
+        MiniSDK.startMiniApp(getActivity(), this.mShareData.getMiniAppId());
+        return;
+      }
     }
-    try
-    {
-      ((ActivityManager)getActivity().getSystemService("activity")).moveTaskToFront(paramInt, 1);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QMLog.w("ShareTransitiveFragment", "Failed to moveTaskToFront", localException);
-      QMLog.i("ShareTransitiveFragment", "Restart mini app");
-      MiniSDK.startMiniApp(getActivity(), this.mShareData.getMiniAppId());
-    }
+    QMLog.w("ShareTransitiveFragment", "Invalid task id, restart mini app");
+    MiniSDK.startMiniApp(getActivity(), this.mShareData.getMiniAppId());
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    QMLog.i("ShareTransitiveFragment", "onActivityResult() requestCode=" + paramInt1 + " ,resultCode=" + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onActivityResult() requestCode=");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" ,resultCode=");
+    localStringBuilder.append(paramInt2);
+    QMLog.i("ShareTransitiveFragment", localStringBuilder.toString());
     this.mShareProxy.onShareActivityResult(paramInt1, paramInt2, paramIntent);
     if (paramInt2 == -1) {
       moveTaskToFront(this.mOriginTaskId, true);
+    } else if ((paramInt1 == 10104) && (paramInt2 == 0)) {
+      moveTaskToFront(this.mOriginTaskId, true);
     }
-    for (;;)
-    {
-      finish();
-      return;
-      if ((paramInt1 == 10104) && (paramInt2 == 0)) {
-        moveTaskToFront(this.mOriginTaskId, true);
-      }
-    }
+    finish();
   }
   
   public void onCreate(@Nullable Bundle paramBundle)
@@ -113,7 +112,7 @@ public class ShareTransitiveFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.ShareTransitiveFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
-package com.tencent.biz.pubaccount.AccountDetail.model;
+package com.tencent.biz.pubaccount.accountdetail.model;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.biz.pubaccount.api.impl.PublicAccountObserverImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import mqq.observer.BusinessObserver;
@@ -9,30 +9,39 @@ import mqq.observer.BusinessObserver;
 final class AccountDetailDynamicListModel$1
   implements BusinessObserver
 {
-  AccountDetailDynamicListModel$1(QQAppInterface paramQQAppInterface, boolean paramBoolean, PublicAccountObserver paramPublicAccountObserver) {}
+  AccountDetailDynamicListModel$1(QQAppInterface paramQQAppInterface, boolean paramBoolean, PublicAccountObserverImpl paramPublicAccountObserverImpl) {}
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList isSuccess:" + String.valueOf(paramBoolean));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getAccountDetailDynamicList isSuccess:");
+      localStringBuilder.append(String.valueOf(paramBoolean));
+      QLog.d("AccountDetailDynamicListModel", 2, localStringBuilder.toString());
     }
     paramBundle = paramBundle.getByteArray("data");
-    if ((paramBoolean) && (paramBundle != null)) {}
-    for (paramInt = AccountDetailDynamicListModel.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Boolean, paramBundle, false);; paramInt = 1)
+    if ((paramBoolean) && (paramBundle != null)) {
+      paramInt = AccountDetailDynamicListModel.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Boolean, paramBundle, false);
+    } else {
+      paramInt = 1;
+    }
+    paramBundle = this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountObserverImpl;
+    if (paramBundle != null) {
+      paramBundle.onDynamicListGet(paramBoolean, paramInt);
+    }
+    if (QLog.isColorLevel())
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onDynamicListGet(paramBoolean, paramInt);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList onReceiveerrCode:" + paramInt);
-      }
-      return;
+      paramBundle = new StringBuilder();
+      paramBundle.append("getAccountDetailDynamicList onReceiveerrCode:");
+      paramBundle.append(paramInt);
+      QLog.d("AccountDetailDynamicListModel", 2, paramBundle.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailDynamicListModel.1
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.model.AccountDetailDynamicListModel.1
  * JD-Core Version:    0.7.0.1
  */

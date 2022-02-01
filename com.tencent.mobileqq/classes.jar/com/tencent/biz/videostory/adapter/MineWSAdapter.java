@@ -11,9 +11,9 @@ import com.tencent.biz.qqstory.utils.ThumbnailUrlHelper;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.biz.videostory.widget.view.MineWSPanel.OnItemClickListener;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,13 +22,13 @@ public class MineWSAdapter
   extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
   private MineWSPanel.OnItemClickListener jdField_a_of_type_ComTencentBizVideostoryWidgetViewMineWSPanel$OnItemClickListener;
-  private final BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private final QBaseActivity jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
   private List<MineWSAdapter.NewFeedItemData> jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
   
-  public MineWSAdapter(BaseActivity paramBaseActivity)
+  public MineWSAdapter(QBaseActivity paramQBaseActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = paramQBaseActivity;
   }
   
   private void a(RecyclerView.ViewHolder paramViewHolder, WEISHI.stMetaFeed paramstMetaFeed, int paramInt)
@@ -55,27 +55,20 @@ public class MineWSAdapter
   {
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_Boolean = paramBoolean;
-    int i;
-    MineWSAdapter.NewFeedItemData localNewFeedItemData;
-    int j;
     if ((paramList != null) && (paramList.size() > 0))
     {
-      i = 3;
+      int i = 3;
+      MineWSAdapter.NewFeedItemData localNewFeedItemData;
       if (paramBoolean)
       {
         i = 2;
         localNewFeedItemData = new MineWSAdapter.NewFeedItemData(null, 100);
         this.jdField_a_of_type_JavaUtilList.add(localNewFeedItemData);
       }
-      j = paramList.size();
-      if (j >= i) {
-        break label133;
+      int j = paramList.size();
+      if (j < i) {
+        i = j;
       }
-      i = j;
-    }
-    label133:
-    for (;;)
-    {
       j = 0;
       while (j < i)
       {
@@ -83,14 +76,14 @@ public class MineWSAdapter
         this.jdField_a_of_type_JavaUtilList.add(localNewFeedItemData);
         j += 1;
       }
-      notifyDataSetChanged();
-      return;
     }
+    notifyDataSetChanged();
   }
   
   public int getItemCount()
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if ((localList != null) && (localList.size() > 0))
     {
       if (this.jdField_a_of_type_JavaUtilList.size() > 3) {
         return 3;
@@ -111,41 +104,33 @@ public class MineWSAdapter
     MineWSAdapter.NewFeedItemData localNewFeedItemData = (MineWSAdapter.NewFeedItemData)this.jdField_a_of_type_JavaUtilList.get(i);
     int j = localNewFeedItemData.jdField_a_of_type_Int;
     WEISHI.stMetaFeed localstMetaFeed = localNewFeedItemData.jdField_a_of_type_WEISHI_USER_GROWTHWEISHI$stMetaFeed;
-    switch (j)
+    if (j != 100)
     {
-    }
-    for (;;)
-    {
-      paramViewHolder.itemView.setOnClickListener(new MineWSAdapter.1(this, localNewFeedItemData));
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-      return;
-      if (j == 101)
-      {
+      if ((j == 101) && (j == 101)) {
         a(paramViewHolder, localstMetaFeed, i);
-        continue;
-        if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
-          ((MineWSAdapter.FeedItemViewHolder)paramViewHolder).a.setImageResource(2130850713);
-        } else {
-          ((MineWSAdapter.FeedItemViewHolder)paramViewHolder).a.setImageResource(2130846201);
-        }
       }
     }
+    else if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
+      ((MineWSAdapter.FeedItemViewHolder)paramViewHolder).a.setImageResource(2130850639);
+    } else {
+      ((MineWSAdapter.FeedItemViewHolder)paramViewHolder).a.setImageResource(2130846077);
+    }
+    paramViewHolder.itemView.setOnClickListener(new MineWSAdapter.1(this, localNewFeedItemData));
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
     LayoutInflater localLayoutInflater = LayoutInflater.from(paramViewGroup.getContext());
-    switch (paramInt)
-    {
-    default: 
+    if ((paramInt != 100) && (paramInt != 101)) {
       return null;
     }
-    return new MineWSAdapter.FeedItemViewHolder(localLayoutInflater.inflate(2131561549, paramViewGroup, false));
+    return new MineWSAdapter.FeedItemViewHolder(localLayoutInflater.inflate(2131561390, paramViewGroup, false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.adapter.MineWSAdapter
  * JD-Core Version:    0.7.0.1
  */

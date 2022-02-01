@@ -49,17 +49,19 @@ public final class event_cloud_card
   {
     paramJceOutputStream.write(this.photos, 0);
     paramJceOutputStream.write(this.type, 1);
-    if (this.desc != null) {
-      paramJceOutputStream.write(this.desc, 2);
+    Object localObject = this.desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.ext != null) {
-      paramJceOutputStream.write(this.ext, 3);
+    localObject = this.ext;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.event_cloud_card
  * JD-Core Version:    0.7.0.1
  */

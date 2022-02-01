@@ -19,15 +19,20 @@ class MainPageFragment$3$1
     }
     if (MiniAppConfProcessor.c())
     {
-      QQToast.a(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131706444) + MiniAppConfProcessor.a() + HardCodeUtil.a(2131706440), 0).a();
+      BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(HardCodeUtil.a(2131706491));
+      localStringBuilder.append(MiniAppConfProcessor.a());
+      localStringBuilder.append(HardCodeUtil.a(2131706487));
+      QQToast.a(localBaseApplicationImpl, localStringBuilder.toString(), 0).a();
       return;
     }
-    QQToast.a(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131694212), 0).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131694176), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.mainpage.MainPageFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

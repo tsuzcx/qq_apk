@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.qassistant.audio;
 
 import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qassistant.api.IVoiceAssistantCore;
 import com.tencent.mobileqq.qassistant.core.AssistantUtils;
-import com.tencent.mobileqq.qassistant.core.VoiceAssistantManager;
+import com.tencent.mobileqq.qassistant.data.VoiceBean;
 import com.tencent.mobileqq.qassistant.setting.QassistantConfig;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.widget.QQToast;
@@ -33,132 +32,231 @@ public class VoiceTimeTraceUtil
   
   private String a(int paramInt)
   {
-    String str2 = String.valueOf(paramInt).trim();
-    String str1;
-    if (str2.startsWith("0")) {
-      str1 = "请求成功-" + str2;
-    }
-    do
+    String str = String.valueOf(paramInt).trim();
+    if (str.startsWith("0"))
     {
-      return str1;
-      if (str2.startsWith("3010")) {
-        return "参数非法-" + str2;
-      }
-      if (str2.startsWith("3020")) {
-        return "不支持类型或VoiceId非法-" + str2;
-      }
-      if (str2.startsWith("3030")) {
-        return "语音包太大或空片-" + str2;
-      }
-      if (str2.startsWith("3040")) {
-        return "解压缩失败-" + str2;
-      }
-      if (str2.startsWith("3050")) {
-        return "资源不足拒绝服务-" + str2;
-      }
-      str1 = str2;
-    } while (!str2.startsWith("3060"));
-    return "引擎内部失败-" + str2;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("请求成功-");
+      ((StringBuilder)localObject).append(str);
+      return ((StringBuilder)localObject).toString();
+    }
+    if (str.startsWith("3010"))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("参数非法-");
+      ((StringBuilder)localObject).append(str);
+      return ((StringBuilder)localObject).toString();
+    }
+    if (str.startsWith("3020"))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("不支持类型或VoiceId非法-");
+      ((StringBuilder)localObject).append(str);
+      return ((StringBuilder)localObject).toString();
+    }
+    if (str.startsWith("3030"))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("语音包太大或空片-");
+      ((StringBuilder)localObject).append(str);
+      return ((StringBuilder)localObject).toString();
+    }
+    if (str.startsWith("3040"))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("解压缩失败-");
+      ((StringBuilder)localObject).append(str);
+      return ((StringBuilder)localObject).toString();
+    }
+    if (str.startsWith("3050"))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("资源不足拒绝服务-");
+      ((StringBuilder)localObject).append(str);
+      return ((StringBuilder)localObject).toString();
+    }
+    Object localObject = str;
+    if (str.startsWith("3060"))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("引擎内部失败-");
+      ((StringBuilder)localObject).append(str);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    return localObject;
   }
   
   private String b(int paramInt)
   {
-    String str2 = String.valueOf(paramInt).trim();
-    String str1;
-    if (str2.startsWith("0")) {
-      str1 = "请求成功-" + str2;
-    }
-    do
+    String str = String.valueOf(paramInt).trim();
+    if (str.startsWith("0"))
     {
-      return str1;
-      if (str2.startsWith("100")) {
-        return "后台失败-" + str2;
-      }
-      if (str2.startsWith("101")) {
-        return "微信消息体为空-" + str2;
-      }
-      if (str2.startsWith("102")) {
-        return "微信错误-" + str2;
-      }
-      str1 = str2;
-    } while (!str2.startsWith("103"));
-    return "参数错误-" + str2;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("请求成功-");
+      ((StringBuilder)localObject).append(str);
+      return ((StringBuilder)localObject).toString();
+    }
+    if (str.startsWith("100"))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("后台失败-");
+      ((StringBuilder)localObject).append(str);
+      return ((StringBuilder)localObject).toString();
+    }
+    if (str.startsWith("101"))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("微信消息体为空-");
+      ((StringBuilder)localObject).append(str);
+      return ((StringBuilder)localObject).toString();
+    }
+    if (str.startsWith("102"))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("微信错误-");
+      ((StringBuilder)localObject).append(str);
+      return ((StringBuilder)localObject).toString();
+    }
+    Object localObject = str;
+    if (str.startsWith("103"))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("参数错误-");
+      ((StringBuilder)localObject).append(str);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    return localObject;
   }
   
   public String a(String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder == null) || (this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder.a())) {
-      return "";
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramString = AssistantUtils.a(paramString);
-    int i = 0;
-    while (i < this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder.a())
+    if (this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder.a(i);
-      if ((((VoiceBean)localObject).b()) && (((VoiceBean)localObject).jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString))) {
-        localArrayList.add(this.jdField_a_of_type_JavaUtilMap.get(localObject));
+      if (this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder.a()) {
+        return "";
       }
-      i += 1;
+      ArrayList localArrayList = new ArrayList();
+      paramString = AssistantUtils.a(paramString);
+      int i = 0;
+      while (i < this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder.a())
+      {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder.a(i);
+        if ((((VoiceBean)localObject).d()) && (((VoiceBean)localObject).jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString))) {
+          localArrayList.add(this.jdField_a_of_type_JavaUtilMap.get(localObject));
+        }
+        i += 1;
+      }
+      if (localArrayList.isEmpty())
+      {
+        paramString = new StringBuilder();
+        paramString.append("summaryTraceInfo, traceInfoList empty, cacheSize:");
+        paramString.append(this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder.a());
+        AssistantUtils.a("VoiceTimeTraceUtil", paramString.toString());
+        return "";
+      }
+      long l1 = 0L;
+      paramString = localArrayList.iterator();
+      while (paramString.hasNext())
+      {
+        localObject = (VoiceTimeTraceInfo)paramString.next();
+        ((VoiceTimeTraceInfo)localObject).a();
+        l1 += ((VoiceTimeTraceInfo)localObject).j;
+      }
+      l1 /= localArrayList.size();
+      paramString = (VoiceTimeTraceInfo)localArrayList.get(localArrayList.size() - 1);
+      Object localObject = (VoiceTimeTraceInfo)localArrayList.get(0);
+      long l2 = paramString.g - ((VoiceTimeTraceInfo)localObject).jdField_a_of_type_Long;
+      localObject = new StringBuilder("\n");
+      ((StringBuilder)localObject).append("指令总耗时：");
+      ((StringBuilder)localObject).append(l2);
+      ((StringBuilder)localObject).append("\n");
+      ((StringBuilder)localObject).append("指令分片数：");
+      ((StringBuilder)localObject).append(localArrayList.size());
+      ((StringBuilder)localObject).append("\n");
+      ((StringBuilder)localObject).append("分片平均耗时：");
+      ((StringBuilder)localObject).append(l1);
+      ((StringBuilder)localObject).append("\n");
+      ((StringBuilder)localObject).append("ASR耗时：");
+      ((StringBuilder)localObject).append(paramString.h);
+      ((StringBuilder)localObject).append("\n");
+      ((StringBuilder)localObject).append("NLP耗时：");
+      ((StringBuilder)localObject).append(paramString.i);
+      ((StringBuilder)localObject).append("\n");
+      ((StringBuilder)localObject).append("尾分片总耗时：");
+      ((StringBuilder)localObject).append(paramString.j);
+      ((StringBuilder)localObject).append("\n");
+      ((StringBuilder)localObject).append("尾包本地耗时：");
+      ((StringBuilder)localObject).append(paramString.k);
+      ((StringBuilder)localObject).append("\n");
+      ((StringBuilder)localObject).append("尾包网络耗时：");
+      ((StringBuilder)localObject).append(paramString.l);
+      ((StringBuilder)localObject).append("\n");
+      AssistantUtils.a("VoiceTimeTraceUtil", ((StringBuilder)localObject).toString().replace("\n", "， "));
+      StringBuilder localStringBuilder = new StringBuilder("\n");
+      localStringBuilder.append("语音指令ID：");
+      localStringBuilder.append(paramString.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append("\n");
+      localStringBuilder.append("后台错误码：");
+      localStringBuilder.append(b(paramString.jdField_a_of_type_Int));
+      localStringBuilder.append("\n");
+      localStringBuilder.append("微信错误码：");
+      localStringBuilder.append(a(paramString.jdField_b_of_type_Int));
+      localStringBuilder.append("\n");
+      localStringBuilder.append("语音转文本：");
+      localStringBuilder.append(paramString.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append("\n");
+      localStringBuilder.append("技能树意图：");
+      localStringBuilder.append(paramString.jdField_c_of_type_JavaLangString);
+      localStringBuilder.append("\n");
+      AssistantUtils.a("VoiceTimeTraceUtil", localStringBuilder.toString().replace("\n", "， "));
+      AssistantUtils.a(paramString.a(), paramString.jdField_a_of_type_JavaLangString, paramString.jdField_b_of_type_JavaLangString, paramString.jdField_c_of_type_JavaLangString, localArrayList.size(), paramString.jdField_d_of_type_Int, l2, l1, paramString.h, paramString.i, paramString.j, paramString.k, paramString.l);
+      paramString = new StringBuilder();
+      paramString.append(localStringBuilder.toString().trim());
+      paramString.append("\n");
+      paramString.append(((StringBuilder)localObject).toString().trim());
+      return paramString.toString();
     }
-    if (localArrayList.isEmpty())
-    {
-      AssistantUtils.a("VoiceTimeTraceUtil", "summaryTraceInfo, traceInfoList empty, cacheSize:" + this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder.a());
-      return "";
-    }
-    paramString = localArrayList.iterator();
-    for (long l1 = 0L; paramString.hasNext(); l1 = ((VoiceTimeTraceInfo)localObject).j + l1)
-    {
-      localObject = (VoiceTimeTraceInfo)paramString.next();
-      ((VoiceTimeTraceInfo)localObject).a();
-    }
-    l1 /= localArrayList.size();
-    paramString = (VoiceTimeTraceInfo)localArrayList.get(localArrayList.size() - 1);
-    Object localObject = (VoiceTimeTraceInfo)localArrayList.get(0);
-    long l2 = paramString.g - ((VoiceTimeTraceInfo)localObject).jdField_a_of_type_Long;
-    localObject = new StringBuilder("\n");
-    ((StringBuilder)localObject).append("指令总耗时：").append(l2).append("\n");
-    ((StringBuilder)localObject).append("指令分片数：").append(localArrayList.size()).append("\n");
-    ((StringBuilder)localObject).append("分片平均耗时：").append(l1).append("\n");
-    ((StringBuilder)localObject).append("ASR耗时：").append(paramString.h).append("\n");
-    ((StringBuilder)localObject).append("NLP耗时：").append(paramString.i).append("\n");
-    ((StringBuilder)localObject).append("尾分片总耗时：").append(paramString.j).append("\n");
-    ((StringBuilder)localObject).append("尾包本地耗时：").append(paramString.k).append("\n");
-    ((StringBuilder)localObject).append("尾包网络耗时：").append(paramString.l).append("\n");
-    AssistantUtils.a("VoiceTimeTraceUtil", ((StringBuilder)localObject).toString().replace("\n", "， "));
-    StringBuilder localStringBuilder = new StringBuilder("\n");
-    localStringBuilder.append("语音指令ID：").append(paramString.jdField_a_of_type_JavaLangString).append("\n");
-    localStringBuilder.append("后台错误码：").append(b(paramString.jdField_a_of_type_Int)).append("\n");
-    localStringBuilder.append("微信错误码：").append(a(paramString.jdField_b_of_type_Int)).append("\n");
-    localStringBuilder.append("语音转文本：").append(paramString.jdField_b_of_type_JavaLangString).append("\n");
-    localStringBuilder.append("技能树意图：").append(paramString.jdField_c_of_type_JavaLangString).append("\n");
-    AssistantUtils.a("VoiceTimeTraceUtil", localStringBuilder.toString().replace("\n", "， "));
-    AssistantUtils.a(paramString.a(), paramString.jdField_a_of_type_JavaLangString, paramString.jdField_b_of_type_JavaLangString, paramString.jdField_c_of_type_JavaLangString, localArrayList.size(), paramString.jdField_d_of_type_Int, l2, l1, paramString.h, paramString.i, paramString.j, paramString.k, paramString.l);
-    return localStringBuilder.toString().trim() + "\n" + ((StringBuilder)localObject).toString().trim();
+    return "";
   }
   
   public void a() {}
   
   public void a(Activity paramActivity)
   {
-    if ((!QassistantConfig.a()) || (paramActivity == null))
+    if ((QassistantConfig.a()) && (paramActivity != null))
     {
-      QQToast.a(paramActivity, "转发环境错误", 0).a();
+      Object localObject = AssistantUtils.a();
+      if ((localObject != null) && (((IVoiceAssistantCore)localObject).isVoicePanelShow())) {
+        ((IVoiceAssistantCore)localObject).quiteVoicePanel(true, false);
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("snapshotList:");
+      ((StringBuilder)localObject).append(this.b.toString());
+      AssistantUtils.a("VoiceTimeTraceUtil", ((StringBuilder)localObject).toString());
+      if (this.b.isEmpty())
+      {
+        QQToast.a(paramActivity, "快照文件为空", 0).a();
+        return;
+      }
+      if (this.b.get("SLK") != null) {
+        FileUtils.isEmptyFile((String)this.b.get("SLK"));
+      }
+      if (this.b.get("PCM") != null) {
+        FileUtils.isEmptyFile((String)this.b.get("PCM"));
+      }
+      if (this.b.get("BUF") != null) {
+        FileUtils.isEmptyFile((String)this.b.get("BUF"));
+      }
+      localObject = new ArrayList(this.b.values().size());
+      ThreadManager.getFileThreadHandler().post(new VoiceTimeTraceUtil.1(this, (List)localObject, paramActivity));
       return;
     }
-    Object localObject = (VoiceAssistantManager)AssistantUtils.a().getManager(QQManagerFactory.VOICE_ASSISTANT_MANAGER);
-    if ((localObject != null) && (((VoiceAssistantManager)localObject).c())) {
-      ((VoiceAssistantManager)localObject).a(true, false);
-    }
-    AssistantUtils.a("VoiceTimeTraceUtil", "snapshotList:" + this.b.toString());
-    if (this.b.isEmpty())
-    {
-      QQToast.a(paramActivity, "快照文件为空", 0).a();
-      return;
-    }
-    if (((this.b.get("SLK") == null) || (!FileUtils.d((String)this.b.get("SLK")))) || (((this.b.get("PCM") == null) || (!FileUtils.d((String)this.b.get("PCM")))) || ((this.b.get("BUF") != null) && (FileUtils.d((String)this.b.get("BUF")))))) {}
-    localObject = new ArrayList(this.b.values().size());
-    ThreadManager.getFileThreadHandler().post(new VoiceTimeTraceUtil.1(this, (List)localObject, paramActivity));
+    QQToast.a(paramActivity, "转发环境错误", 0).a();
+  }
+  
+  public void a(VoiceCacheHolder paramVoiceCacheHolder)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder = paramVoiceCacheHolder;
   }
   
   public void a(VoiceBean paramVoiceBean)
@@ -212,17 +310,17 @@ public class VoiceTimeTraceUtil
     this.jdField_a_of_type_JavaUtilMap.put(paramVoiceBean, localVoiceTimeTraceInfo1);
   }
   
-  public void a(VoiceCacheHolder paramVoiceCacheHolder)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder = paramVoiceCacheHolder;
-  }
-  
   public void a(String paramString1, String paramString2)
   {
-    File localFile = new File(paramString2);
-    if ((localFile.exists()) && (localFile.length() > 0L) && (!this.b.containsKey(paramString1)))
+    Object localObject = new File(paramString2);
+    if ((((File)localObject).exists()) && (((File)localObject).length() > 0L) && (!this.b.containsKey(paramString1)))
     {
-      AssistantUtils.a("VoiceTimeTraceUtil", "put snapshot key: " + paramString1 + ", path: " + paramString2);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("put snapshot key: ");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(", path: ");
+      ((StringBuilder)localObject).append(paramString2);
+      AssistantUtils.a("VoiceTimeTraceUtil", ((StringBuilder)localObject).toString());
       this.b.put(paramString1, paramString2);
     }
   }
@@ -236,7 +334,7 @@ public class VoiceTimeTraceUtil
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
       if (!((String)localEntry.getKey()).equalsIgnoreCase("SLK")) {
-        FileUtils.e((String)localEntry.getValue());
+        FileUtils.deleteFile((String)localEntry.getValue());
       }
     }
     this.b.clear();
@@ -271,10 +369,10 @@ public class VoiceTimeTraceUtil
   
   public void d()
   {
-    VoiceAssistantManager localVoiceAssistantManager = (VoiceAssistantManager)AssistantUtils.a().getManager(QQManagerFactory.VOICE_ASSISTANT_MANAGER);
-    if ((localVoiceAssistantManager != null) && (localVoiceAssistantManager.a() != null))
+    IVoiceAssistantCore localIVoiceAssistantCore = AssistantUtils.a();
+    if ((localIVoiceAssistantCore != null) && (localIVoiceAssistantCore.getActivity() != null))
     {
-      a(localVoiceAssistantManager.a());
+      a(localIVoiceAssistantCore.getActivity());
       return;
     }
     AssistantUtils.a("VoiceTimeTraceUtil", "traceSnapshot, env Error");
@@ -315,7 +413,7 @@ public class VoiceTimeTraceUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.audio.VoiceTimeTraceUtil
  * JD-Core Version:    0.7.0.1
  */

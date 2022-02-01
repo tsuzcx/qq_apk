@@ -3,7 +3,8 @@ package com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.report_action
 import com.tencent.biz.pubaccount.NativeAd.report.constant.ReportAction;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.soft_component.SoftAdReportData;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.FastWeqAdUtils;
+import com.tencent.mobileqq.kandian.ad.api.IRIJFastWebAdService;
+import com.tencent.mobileqq.qroute.QRoute;
 
 final class ReadInJoyAdReportUtils$1
   implements Runnable
@@ -12,7 +13,7 @@ final class ReadInJoyAdReportUtils$1
   
   public void run()
   {
-    if (FastWeqAdUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo))
+    if (((IRIJFastWebAdService)QRoute.api(IRIJFastWebAdService.class)).isGameComponentType(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo))
     {
       ReadInJoyAdReportUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangInteger, this.jdField_a_of_type_ComTencentBizPubaccountNativeAdReportConstantReportAction);
       return;
@@ -27,7 +28,7 @@ final class ReadInJoyAdReportUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.report_action.ReadInJoyAdReportUtils.1
  * JD-Core Version:    0.7.0.1
  */

@@ -34,7 +34,7 @@ public class WSVerticalForHomePresenter
 {
   private static final int b = ScreenUtil.dip2px(48.0F);
   protected long a;
-  private boolean d = true;
+  private boolean f = true;
   
   public WSVerticalForHomePresenter(WSVerticalPageContract.View paramView)
   {
@@ -44,7 +44,7 @@ public class WSVerticalForHomePresenter
   private Object a()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("key_should_clear_data_on_refresh", Boolean.valueOf(this.d));
+    localHashMap.put("key_should_clear_data_on_refresh", Boolean.valueOf(this.f));
     return new JSONObject(localHashMap).toString();
   }
   
@@ -63,24 +63,26 @@ public class WSVerticalForHomePresenter
   
   private void a(WSVerticalItemData paramWSVerticalItemData, WSVerticalPageAdapter paramWSVerticalPageAdapter)
   {
-    if (paramWSVerticalItemData == null) {}
-    WSVerticalItemData localWSVerticalItemData;
-    do
+    if (paramWSVerticalItemData == null) {
+      return;
+    }
+    WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)paramWSVerticalPageAdapter.getItem(0);
+    if (localWSVerticalItemData == null) {
+      return;
+    }
+    a(localWSVerticalItemData, paramWSVerticalItemData, paramWSVerticalPageAdapter);
+    paramWSVerticalItemData = paramWSVerticalPageAdapter.a();
+    if (paramWSVerticalItemData != null)
     {
-      do
-      {
-        do
-        {
-          return;
-          localWSVerticalItemData = (WSVerticalItemData)paramWSVerticalPageAdapter.a(0);
-        } while (localWSVerticalItemData == null);
-        a(localWSVerticalItemData, paramWSVerticalItemData, paramWSVerticalPageAdapter);
-        paramWSVerticalItemData = paramWSVerticalPageAdapter.a();
-      } while (paramWSVerticalItemData == null);
-      WSLog.a("WSVerticalForHomePresenter", "onSuccess getItemCount: " + paramWSVerticalPageAdapter.getItemCount());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSuccess getItemCount: ");
+      localStringBuilder.append(paramWSVerticalPageAdapter.getItemCount());
+      WSLog.a("WSVerticalForHomePresenter", localStringBuilder.toString());
       paramWSVerticalItemData = paramWSVerticalItemData.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView;
-    } while (!(paramWSVerticalItemData instanceof AbsWSVideoItemView));
-    ((AbsWSVideoItemView)paramWSVerticalItemData).b(localWSVerticalItemData);
+      if ((paramWSVerticalItemData instanceof AbsWSVideoItemView)) {
+        ((AbsWSVideoItemView)paramWSVerticalItemData).b(localWSVerticalItemData);
+      }
+    }
   }
   
   private void a(WSVerticalItemData paramWSVerticalItemData1, WSVerticalItemData paramWSVerticalItemData2, WSVerticalPageAdapter paramWSVerticalPageAdapter)
@@ -99,138 +101,149 @@ public class WSVerticalForHomePresenter
   private void a(List<WSVerticalItemData> paramList)
   {
     Object localObject1 = a();
-    if ((paramList == null) || (paramList.size() <= 1))
+    if ((paramList != null) && (paramList.size() > 1))
     {
-      WSLog.a("WSVerticalForHomePresenter", "data from cache or pushMsg");
-      return;
-    }
-    if (localObject1 != null)
-    {
-      localObject1 = ((WSVerticalPageContract.View)localObject1).a();
-      if ((localObject1 != null) && (((WSVerticalPageAdapter)localObject1).getItemCount() > 0)) {}
-    }
-    else
-    {
+      if (localObject1 != null)
+      {
+        localObject1 = ((WSVerticalPageContract.View)localObject1).a();
+        if ((localObject1 != null) && (((WSVerticalPageAdapter)localObject1).getItemCount() > 0))
+        {
+          Object localObject2 = (WSVerticalItemData)((WSVerticalPageAdapter)localObject1).getItem(0);
+          WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)paramList.get(0);
+          if ((localObject2 != null) && (localWSVerticalItemData != null))
+          {
+            localObject2 = ((WSVerticalItemData)localObject2).a();
+            stSimpleMetaFeed localstSimpleMetaFeed = localWSVerticalItemData.a();
+            if ((localObject2 != null) && (localstSimpleMetaFeed != null))
+            {
+              if (TextUtils.equals(((stSimpleMetaFeed)localObject2).id, localstSimpleMetaFeed.id))
+              {
+                WSLog.a("WSVerticalForHomePresenter", "updateFirstItem");
+                paramList.remove(localWSVerticalItemData);
+                a(localWSVerticalItemData, (WSVerticalPageAdapter)localObject1);
+                return;
+              }
+              paramList = new StringBuilder();
+              paramList.append("data not equip，feedInScreen.id = ");
+              paramList.append(((stSimpleMetaFeed)localObject2).id);
+              paramList.append("，feedFromServer.id = ");
+              paramList.append(localstSimpleMetaFeed.id);
+              WSLog.a("WSVerticalForHomePresenter", paramList.toString());
+              return;
+            }
+            WSLog.a("WSVerticalForHomePresenter", "data type is incorrect");
+            return;
+          }
+          WSLog.a("WSVerticalForHomePresenter", "data could be null");
+          return;
+        }
+      }
       WSLog.a("WSVerticalForHomePresenter", "not data in screen");
       return;
     }
-    Object localObject2 = (WSVerticalItemData)((WSVerticalPageAdapter)localObject1).a(0);
-    WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)paramList.get(0);
-    if ((localObject2 == null) || (localWSVerticalItemData == null))
-    {
-      WSLog.a("WSVerticalForHomePresenter", "data could be null");
-      return;
-    }
-    localObject2 = ((WSVerticalItemData)localObject2).a();
-    stSimpleMetaFeed localstSimpleMetaFeed = localWSVerticalItemData.a();
-    if ((localObject2 == null) || (localstSimpleMetaFeed == null))
-    {
-      WSLog.a("WSVerticalForHomePresenter", "data type is incorrect");
-      return;
-    }
-    if (TextUtils.equals(((stSimpleMetaFeed)localObject2).id, localstSimpleMetaFeed.id))
-    {
-      WSLog.a("WSVerticalForHomePresenter", "updateFirstItem");
-      paramList.remove(localWSVerticalItemData);
-      a(localWSVerticalItemData, (WSVerticalPageAdapter)localObject1);
-      return;
-    }
-    WSLog.a("WSVerticalForHomePresenter", "data not equip，feedInScreen.id = " + ((stSimpleMetaFeed)localObject2).id + "，feedFromServer.id = " + localstSimpleMetaFeed.id);
+    WSLog.a("WSVerticalForHomePresenter", "data from cache or pushMsg");
   }
   
   private void a(List<WSVerticalItemData> paramList, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramBoolean1) {
+    if (paramBoolean1)
+    {
       a(paramList);
-    }
-    while (!paramBoolean2) {
       return;
     }
-    b();
+    if (paramBoolean2) {
+      l();
+    }
   }
   
   private void a(boolean paramBoolean, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    if ((!paramBoolean) && (TextUtils.isEmpty("")) && (paramstSimpleMetaFeed != null)) {}
-    for (paramstSimpleMetaFeed = paramstSimpleMetaFeed.id;; paramstSimpleMetaFeed = "")
+    String str2 = "";
+    String str1 = str2;
+    if (!paramBoolean)
     {
-      if (paramBoolean) {}
-      for (int i = 1;; i = 2)
+      str1 = str2;
+      if (TextUtils.isEmpty(""))
       {
-        WSReportDc00898.a(301, new Object[] { Integer.valueOf(paramInt), "0", paramstSimpleMetaFeed, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(2) });
-        return;
+        str1 = str2;
+        if (paramstSimpleMetaFeed != null) {
+          str1 = paramstSimpleMetaFeed.id;
+        }
       }
     }
+    int i;
+    if (paramBoolean) {
+      i = 1;
+    } else {
+      i = 2;
+    }
+    WSReportDc00898.a(301, new Object[] { Integer.valueOf(paramInt), "0", str1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(2) });
   }
   
   private void a(boolean paramBoolean, stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt)
   {
-    if (!paramBoolean) {}
-    do
-    {
+    if (!paramBoolean) {
       return;
-      localObject = a();
-    } while (!(localObject instanceof WSVerticalPageFragment));
-    Object localObject = ((WSVerticalPageFragment)localObject).getActivity();
+    }
+    Object localObject = a();
+    if (!(localObject instanceof WSVerticalPageFragment)) {
+      return;
+    }
+    localObject = ((WSVerticalPageFragment)localObject).getBaseActivity();
     WSFallKeyPicMonitor.a().a((Activity)localObject, paramInt, paramstSimpleMetaFeed);
   }
   
   private boolean a(Object paramObject)
   {
-    boolean bool = true;
-    if ((paramObject instanceof String)) {}
-    try
-    {
-      bool = new JSONObject((String)paramObject).optBoolean("key_should_clear_data_on_refresh", true);
-      return bool;
-    }
-    catch (JSONException paramObject)
-    {
-      paramObject.printStackTrace();
+    if ((paramObject instanceof String)) {
+      try
+      {
+        boolean bool = new JSONObject((String)paramObject).optBoolean("key_should_clear_data_on_refresh", true);
+        return bool;
+      }
+      catch (JSONException paramObject)
+      {
+        paramObject.printStackTrace();
+      }
     }
     return true;
   }
   
-  private void b()
-  {
-    WSVerticalPageContract.View localView = a();
-    Object localObject;
-    if (localView != null)
-    {
-      localObject = localView.a();
-      if (localObject != null) {
-        break label21;
-      }
-    }
-    label21:
-    int i;
-    do
-    {
-      return;
-      i = ((WSVerticalPageAdapter)localObject).a();
-      localObject = ((WSVerticalPageAdapter)localObject).b();
-    } while (i > ((List)localObject).size());
-    ((List)localObject).removeAll(((List)localObject).subList(i, ((List)localObject).size()));
-    localView.a().notifyItemMoved(i, ((List)localObject).size());
-    WSVerticalUtils.a("[WSVerticalForHomePresenter.java][preFilterDataForRefresh] firstVideo", (List)localObject);
-  }
-  
-  private boolean h()
+  private boolean e()
   {
     WSVerticalPageContract.View localView = a();
     if ((localView != null) && (localView.a() != null))
     {
-      localObject = localView.a().a();
-      if ((localObject != null) && (((List)localObject).size() != 0)) {}
+      Object localObject = localView.a().a();
+      if ((localObject != null) && (((List)localObject).size() != 0))
+      {
+        localObject = new ArrayList((Collection)localObject);
+        localView.a((List)localObject);
+        WSVerticalUtils.a("[WSVerticalForHomePresenter.java][fillFirstDataOnRefresh]", (List)localObject);
+        return true;
+      }
     }
-    else
+    return false;
+  }
+  
+  private void l()
+  {
+    WSVerticalPageContract.View localView = a();
+    if (localView != null)
     {
-      return false;
+      Object localObject = localView.a();
+      if (localObject == null) {
+        return;
+      }
+      int i = ((WSVerticalPageAdapter)localObject).a();
+      localObject = ((WSVerticalPageAdapter)localObject).getDataList();
+      if (i > ((List)localObject).size()) {
+        return;
+      }
+      ((List)localObject).removeAll(((List)localObject).subList(i, ((List)localObject).size()));
+      localView.a().notifyItemMoved(i, ((List)localObject).size());
+      WSVerticalUtils.a("[WSVerticalForHomePresenter.java][preFilterDataForRefresh] firstVideo", (List)localObject);
     }
-    Object localObject = new ArrayList((Collection)localObject);
-    localView.a((List)localObject);
-    WSVerticalUtils.a("[WSVerticalForHomePresenter.java][fillFirstDataOnRefresh]", (List)localObject);
-    return true;
   }
   
   public long a()
@@ -241,24 +254,9 @@ public class WSVerticalForHomePresenter
   public void a(@NonNull WSVerticalPageContract.View paramView)
   {
     super.a(paramView);
-    if (d()) {
+    if (i()) {
       WSReportUtils.b(String.valueOf(System.currentTimeMillis()));
     }
-  }
-  
-  public void a(String paramString)
-  {
-    WSVerticalPageContract.View localView = a();
-    if (localView == null) {
-      return;
-    }
-    this.d = true;
-    if (h())
-    {
-      this.d = false;
-      localView.e();
-    }
-    super.a(paramString);
   }
   
   public void a(List<WSVerticalItemData> paramList, boolean paramBoolean1, boolean paramBoolean2, Object paramObject)
@@ -266,28 +264,35 @@ public class WSVerticalForHomePresenter
     a(paramList, paramBoolean2, paramBoolean1);
     super.a(paramList, paramBoolean1, paramBoolean2, paramObject);
     WSVerticalUtils.a("[WSVerticalForHomePresenter.java][onSuccess] >>>>>", paramList);
-    if (paramObject == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if (paramBoolean2) {
-          this.a = (System.currentTimeMillis() - this.a);
-        }
-      } while ((paramList == null) || (paramList.size() <= 0));
-      paramList = ((WSVerticalItemData)paramList.get(0)).a();
-    } while (!(paramList instanceof stSimpleMetaFeed));
-    paramList = (stSimpleMetaFeed)paramList;
-    int i = 1;
-    paramObject = WSGlobalConfig.a().a(12);
-    if (paramObject != null)
-    {
-      WSLog.d("WSVerticalForHomePresenter", "RockDownloader:" + paramObject.download);
-      i = paramObject.link_strategy_type;
+    if (paramObject == null) {
+      return;
     }
-    a(false, i, paramList);
-    a(paramBoolean2, paramList, i);
+    if (paramBoolean2) {
+      this.a = (System.currentTimeMillis() - this.a);
+    }
+    if (paramList != null)
+    {
+      if (paramList.size() <= 0) {
+        return;
+      }
+      paramList = ((WSVerticalItemData)paramList.get(0)).a();
+      if (!(paramList instanceof stSimpleMetaFeed)) {
+        return;
+      }
+      paramList = (stSimpleMetaFeed)paramList;
+      int i = 1;
+      paramObject = WSGlobalConfig.a().a(12);
+      if (paramObject != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("RockDownloader:");
+        localStringBuilder.append(paramObject.download);
+        WSLog.d("WSVerticalForHomePresenter", localStringBuilder.toString());
+        i = paramObject.link_strategy_type;
+      }
+      a(false, i, paramList);
+      a(paramBoolean2, paramList, i);
+    }
   }
   
   public boolean a()
@@ -307,7 +312,7 @@ public class WSVerticalForHomePresenter
   public boolean a(boolean paramBoolean1, boolean paramBoolean2, List<WSVerticalItemData> paramList, Object paramObject)
   {
     if (paramBoolean2) {
-      return c();
+      return h();
     }
     return (a(paramObject)) && (paramBoolean1);
   }
@@ -317,26 +322,41 @@ public class WSVerticalForHomePresenter
     return b;
   }
   
-  protected boolean b()
+  public void b(String paramString)
+  {
+    WSVerticalPageContract.View localView = a();
+    if (localView == null) {
+      return;
+    }
+    this.f = true;
+    if (e())
+    {
+      this.f = false;
+      localView.e();
+    }
+    super.b(paramString);
+  }
+  
+  public void g()
+  {
+    super.g();
+    k();
+  }
+  
+  protected boolean g()
   {
     return true;
   }
   
-  public boolean d()
+  public boolean i()
   {
     WSVerticalPageContract.View localView = a();
     return (localView != null) && (localView.b());
   }
-  
-  public void h()
-  {
-    super.h();
-    a();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.presenter.WSVerticalForHomePresenter
  * JD-Core Version:    0.7.0.1
  */

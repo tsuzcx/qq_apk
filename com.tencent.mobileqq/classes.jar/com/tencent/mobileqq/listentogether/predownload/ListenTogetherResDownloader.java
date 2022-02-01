@@ -57,7 +57,10 @@ public class ListenTogetherResDownloader
     if (!jdField_a_of_type_JavaIoFile.exists())
     {
       boolean bool = jdField_a_of_type_JavaIoFile.mkdir();
-      QLog.d("ListenTogether.downloader", 1, "mkdir cache dir, result: " + bool);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mkdir cache dir, result: ");
+      localStringBuilder.append(bool);
+      QLog.d("ListenTogether.downloader", 1, localStringBuilder.toString());
     }
     return new File(ListenTogetherConstants.a, MD5Utils.toMD5(paramString)).getAbsolutePath();
   }
@@ -65,183 +68,151 @@ public class ListenTogetherResDownloader
   private void a(MusicInfo paramMusicInfo)
   {
     if (paramMusicInfo != null) {}
-    int i;
-    label116:
-    Object localObject1;
-    for (;;)
+    try
     {
-      try
-      {
-        if (TextUtils.isEmpty(paramMusicInfo.a))
-        {
-          QLog.d("ListenTogether.downloader", 1, "musicInfo or id is empty");
-          return;
-        }
-        if (!a(ListenTogetherDPC.a().b)) {
-          continue;
-        }
-        i = ListenTogetherDPC.a().a;
-        if (i <= 0)
-        {
-          QLog.d("ListenTogether.downloader", 2, String.format("download, maxCacheCount <= 0: %s", new Object[] { Integer.valueOf(i) }));
-          c();
-          b();
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          break label116;
-        }
+      if (TextUtils.isEmpty(paramMusicInfo.a)) {
+        break label579;
       }
-      finally {}
-      QLog.d("ListenTogether.downloader", 2, String.format("download, musicId: %s", new Object[] { paramMusicInfo.a }));
+      bool = a(ListenTogetherDPC.a().b);
+      if (!bool) {
+        return;
+      }
+      i = ListenTogetherDPC.a().a;
+      if (i <= 0)
+      {
+        QLog.d("ListenTogether.downloader", 2, String.format("download, maxCacheCount <= 0: %s", new Object[] { Integer.valueOf(i) }));
+        c();
+        b();
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ListenTogether.downloader", 2, String.format("download, musicId: %s", new Object[] { paramMusicInfo.a }));
+      }
       if (a(paramMusicInfo.a))
       {
         QLog.d("ListenTogether.downloader", 1, "download, cache file is exist");
+        return;
       }
-      else
+      localObject2 = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramMusicInfo.a);
+      localObject1 = localObject2;
+      if (localObject2 == null)
       {
-        localObject2 = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramMusicInfo.a);
-        localObject1 = localObject2;
-        if (localObject2 != null) {
-          break label320;
-        }
         localObject1 = localObject2;
         if (paramMusicInfo.b != null)
         {
           localObject1 = localObject2;
           if (paramMusicInfo.b.size() > 0)
           {
-            localObject1 = new ArrayList();
-            localObject2 = paramMusicInfo.b.iterator();
-            while (((Iterator)localObject2).hasNext())
+            localObject2 = new ArrayList();
+            localIterator1 = paramMusicInfo.b.iterator();
+            for (;;)
             {
-              str = (String)((Iterator)localObject2).next();
-              if (!TextUtils.isEmpty(str)) {
-                ((List)localObject1).add(new ListenTogetherResDownloader.MusicReqInfo(paramMusicInfo.a, str));
+              localObject1 = localObject2;
+              if (!localIterator1.hasNext()) {
+                break;
+              }
+              localObject1 = (String)localIterator1.next();
+              if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+                ((List)localObject2).add(new ListenTogetherResDownloader.MusicReqInfo(paramMusicInfo.a, (String)localObject1));
               }
             }
           }
         }
-        label263:
-        if ((localObject1 != null) && (((List)localObject1).size() != 0)) {
-          break;
-        }
-        QLog.d("ListenTogether.downloader", 1, "musicReqInfoList is empty!, " + paramMusicInfo);
-      }
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramMusicInfo.a, localObject1);
-    label320:
-    Iterator localIterator = null;
-    String str = null;
-    Object localObject2 = localIterator;
-    if (localObject1 != null)
-    {
-      localObject2 = localIterator;
-      if (((List)localObject1).size() > 0)
-      {
-        localIterator = ((List)localObject1).iterator();
-        localObject1 = str;
-      }
-    }
-    label402:
-    label581:
-    label591:
-    label593:
-    for (;;)
-    {
-      localObject2 = localObject1;
-      boolean bool;
-      if (localIterator.hasNext())
-      {
-        localObject2 = (ListenTogetherResDownloader.MusicReqInfo)localIterator.next();
-        if (((ListenTogetherResDownloader.MusicReqInfo)localObject2).a == 1)
+        if ((localObject1 != null) && (((List)localObject1).size() != 0))
         {
-          bool = true;
-          break label581;
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramMusicInfo.a, localObject1);
+        }
+        else
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("musicReqInfoList is empty!, ");
+          ((StringBuilder)localObject1).append(paramMusicInfo);
+          QLog.d("ListenTogether.downloader", 1, ((StringBuilder)localObject1).toString());
+          return;
         }
       }
-      for (;;)
-      {
-        if (!QLog.isColorLevel()) {
-          break label591;
-        }
-        QLog.d("ListenTogether.downloader", 2, String.format("musicReqInfo not found, isDownloading: %s", new Object[] { Boolean.valueOf(bool) }));
-        break;
-        if ((((ListenTogetherResDownloader.MusicReqInfo)localObject2).a == 0) && (localObject1 == null))
-        {
-          localObject1 = localObject2;
-          break label593;
-        }
+      Iterator localIterator2 = null;
+      Iterator localIterator1 = null;
+      localObject2 = localIterator2;
+      if (localObject1 == null) {
+        break label602;
+      }
+      localObject2 = localIterator2;
+      if (((List)localObject1).size() <= 0) {
+        break label602;
+      }
+      localIterator2 = ((List)localObject1).iterator();
+      for (localObject1 = localIterator1;; localObject1 = localObject2) {
         do
         {
-          if (!b(i))
-          {
-            QLog.d("ListenTogether.downloader", 1, "download, over cache count");
+          localObject2 = localObject1;
+          if (!localIterator2.hasNext()) {
             break;
           }
-          localObject2 = new HttpNetReq();
-          ((HttpNetReq)localObject2).mCallback = this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngineListener;
-          ((HttpNetReq)localObject2).mReqUrl = ((ListenTogetherResDownloader.MusicReqInfo)localObject1).b;
-          ((HttpNetReq)localObject2).mHttpMethod = 0;
-          ((HttpNetReq)localObject2).mOutPath = ((ListenTogetherResDownloader.MusicReqInfo)localObject1).d;
-          ((HttpNetReq)localObject2).mPrioty = 1;
-          ((HttpNetReq)localObject2).setUserData(new Object[] { paramMusicInfo, localObject1 });
-          ((HttpNetReq)localObject2).mSupportBreakResume = true;
-          this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService.sendReq((NetReq)localObject2);
-          ((ListenTogetherResDownloader.MusicReqInfo)localObject1).a = 1;
-          break;
-          break label593;
-          bool = false;
-          localObject1 = localObject2;
-          break label581;
-          break label263;
-          if (bool) {
-            break label402;
+          localObject2 = (ListenTogetherResDownloader.MusicReqInfo)localIterator2.next();
+          if (((ListenTogetherResDownloader.MusicReqInfo)localObject2).a == 1)
+          {
+            bool = true;
+            break label608;
           }
-        } while (localObject1 != null);
+        } while ((((ListenTogetherResDownloader.MusicReqInfo)localObject2).a != 0) || (localObject1 != null));
       }
-      break;
     }
+    finally
+    {
+      for (;;)
+      {
+        int i;
+        Object localObject2;
+        for (;;)
+        {
+          throw paramMusicInfo;
+        }
+        boolean bool = false;
+        Object localObject1 = localObject2;
+        if (!bool) {
+          if (localObject1 != null) {}
+        }
+      }
+    }
+    if (!b(i))
+    {
+      QLog.d("ListenTogether.downloader", 1, "download, over cache count");
+      return;
+    }
+    localObject2 = new HttpNetReq();
+    ((HttpNetReq)localObject2).mCallback = this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngineListener;
+    ((HttpNetReq)localObject2).mReqUrl = ((ListenTogetherResDownloader.MusicReqInfo)localObject1).b;
+    ((HttpNetReq)localObject2).mHttpMethod = 0;
+    ((HttpNetReq)localObject2).mOutPath = ((ListenTogetherResDownloader.MusicReqInfo)localObject1).d;
+    ((HttpNetReq)localObject2).mPrioty = 1;
+    ((HttpNetReq)localObject2).setUserData(new Object[] { paramMusicInfo, localObject1 });
+    ((HttpNetReq)localObject2).mSupportBreakResume = true;
+    this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService.sendReq((NetReq)localObject2);
+    ((ListenTogetherResDownloader.MusicReqInfo)localObject1).a = 1;
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ListenTogether.downloader", 2, String.format("musicReqInfo not found, isDownloading: %s", new Object[] { Boolean.valueOf(bool) }));
+    }
+    return;
+    label579:
+    QLog.d("ListenTogether.downloader", 1, "musicInfo or id is empty");
   }
   
   private boolean a(int paramInt)
   {
     int i = NetUtil.a(BaseApplicationImpl.getContext());
-    boolean bool;
-    if (paramInt == 0) {
-      bool = true;
-    }
-    for (;;)
+    if (paramInt == 0) {}
+    while (paramInt == 1 ? i == 1 : paramInt == 2 ? (i == 1) && (i == 4) : paramInt == 3 ? (i == 1) && (i == 4) && (i == 3) : (paramInt == 4) && ((i == 1) || (i == 4) || (i == 3) || (i == 2)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ListenTogether.downloader", 2, String.format("netTypeNeedDownload, requestNetType: %s, netType: %s, needDownload: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Boolean.valueOf(bool) }));
-      }
-      return bool;
-      if (paramInt == 1)
-      {
-        if (i == 1) {
-          bool = true;
-        }
-      }
-      else if (paramInt == 2)
-      {
-        if ((i == 1) || (i == 4)) {
-          bool = true;
-        }
-      }
-      else if (paramInt == 3)
-      {
-        if ((i == 1) || (i == 4) || (i == 3)) {
-          bool = true;
-        }
-      }
-      else if ((paramInt == 4) && ((i == 1) || (i == 4) || (i == 3) || (i == 2)))
-      {
-        bool = true;
-        continue;
-      }
-      bool = false;
+      bool = true;
+      break;
     }
+    boolean bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("ListenTogether.downloader", 2, String.format("netTypeNeedDownload, requestNetType: %s, netType: %s, needDownload: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Boolean.valueOf(bool) }));
+    }
+    return bool;
   }
   
   public static boolean a(String paramString)
@@ -260,82 +231,89 @@ public class ListenTogetherResDownloader
       {
         int j = localObject1.length;
         int i = 0;
-        if (i < j)
+        while (i < j)
         {
           Object localObject2 = localObject1[i];
           if (localObject2.isFile())
           {
             String str1 = a(QQMusicPlayService.a());
             String str2 = localObject2.getAbsolutePath();
-            if ((TextUtils.isEmpty(str1)) || (!str1.equals(str2))) {
-              break label128;
+            if ((!TextUtils.isEmpty(str1)) && (str1.equals(str2))) {
+              QLog.d("ListenTogether.downloader", 1, String.format("removeAllCacheFiles, %s is playing", new Object[] { str2 }));
+            } else {
+              localObject2.delete();
             }
-            QLog.d("ListenTogether.downloader", 1, String.format("removeAllCacheFiles, %s is playing", new Object[] { str2 }));
           }
-          for (;;)
-          {
-            i += 1;
-            break;
-            label128:
-            localObject2.delete();
-          }
+          i += 1;
         }
       }
     }
-    QLog.d("ListenTogether.downloader", 1, "removeAllCacheFiles, costTime: " + (System.currentTimeMillis() - l));
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("removeAllCacheFiles, costTime: ");
+    ((StringBuilder)localObject1).append(System.currentTimeMillis() - l);
+    QLog.d("ListenTogether.downloader", 1, ((StringBuilder)localObject1).toString());
   }
   
   private boolean b(int paramInt)
   {
-    boolean bool = false;
     String str = a(QQMusicPlayService.a());
-    File localFile1 = new File(ListenTogetherConstants.a);
-    Object localObject;
-    int i;
-    if (localFile1.exists())
+    File localFile = new File(ListenTogetherConstants.a);
+    boolean bool2 = localFile.exists();
+    boolean bool1 = false;
+    if (bool2)
     {
-      localObject = localFile1.listFiles();
-      if ((localObject == null) || (localObject.length < paramInt)) {
+      Object localObject1 = localFile.listFiles();
+      if (localObject1 != null)
+      {
+        if (localObject1.length < paramInt) {
+          return true;
+        }
+        localObject1 = Arrays.asList((Object[])localObject1);
+        Collections.sort((List)localObject1, jdField_a_of_type_JavaUtilComparator);
+        int j = ((List)localObject1).size() - paramInt + 1;
+        i = j;
+        if (j > ((List)localObject1).size()) {
+          i = ((List)localObject1).size();
+        }
+        j = 0;
+        while (j < i)
+        {
+          Object localObject2 = (File)((List)localObject1).get(j);
+          if ((!TextUtils.isEmpty(str)) && (str.equals(((File)localObject2).getAbsolutePath())))
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("checkCacheStorage, ");
+            ((StringBuilder)localObject2).append(str);
+            ((StringBuilder)localObject2).append(" is playing...");
+            QLog.d("ListenTogether.downloader", 1, ((StringBuilder)localObject2).toString());
+          }
+          else
+          {
+            ((File)localObject2).delete();
+            QLog.d("ListenTogether.downloader", 1, String.format("checkCacheStorage, del index: %s, file: %s", new Object[] { Integer.valueOf(j), ((File)localObject2).getAbsolutePath() }));
+          }
+          j += 1;
+        }
+        if (localFile.listFiles() != null)
+        {
+          i = localFile.listFiles().length;
+          break label260;
+        }
+      }
+      else
+      {
         return true;
       }
-      localObject = Arrays.asList((Object[])localObject);
-      Collections.sort((List)localObject, jdField_a_of_type_JavaUtilComparator);
-      i = ((List)localObject).size() - paramInt + 1;
-      if (i <= ((List)localObject).size()) {
-        break label286;
-      }
-      i = ((List)localObject).size();
     }
-    label286:
-    for (;;)
-    {
-      int j = 0;
-      if (j < i)
-      {
-        File localFile2 = (File)((List)localObject).get(j);
-        if ((!TextUtils.isEmpty(str)) && (str.equals(localFile2.getAbsolutePath()))) {
-          QLog.d("ListenTogether.downloader", 1, "checkCacheStorage, " + str + " is playing...");
-        }
-        for (;;)
-        {
-          j += 1;
-          break;
-          localFile2.delete();
-          QLog.d("ListenTogether.downloader", 1, String.format("checkCacheStorage, del index: %s, file: %s", new Object[] { Integer.valueOf(j), localFile2.getAbsolutePath() }));
-        }
-      }
-      if (localFile1.listFiles() != null) {}
-      for (i = localFile1.listFiles().length;; i = 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ListenTogether.downloader", 2, String.format("checkCacheCount, %s / %s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) }));
-        }
-        if (i < paramInt) {
-          bool = true;
-        }
-        return bool;
-      }
+    int i = 0;
+    label260:
+    if (QLog.isColorLevel()) {
+      QLog.d("ListenTogether.downloader", 2, String.format("checkCacheCount, %s / %s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) }));
     }
+    if (i < paramInt) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   private void c()
@@ -356,13 +334,16 @@ public class ListenTogetherResDownloader
           }
         }
       }
-      if (!QLog.isColorLevel()) {
-        break label123;
+      if (QLog.isColorLevel()) {
+        QLog.d("ListenTogether.downloader", 2, "cancelAllRequests...");
       }
+      return;
     }
     finally {}
-    QLog.d("ListenTogether.downloader", 2, "cancelAllRequests...");
-    label123:
+    for (;;)
+    {
+      throw localObject1;
+    }
   }
   
   public void a()
@@ -373,89 +354,48 @@ public class ListenTogetherResDownloader
     }
   }
   
-  /* Error */
   public void a(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: invokestatic 65	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   6: ifeq +15 -> 21
-    //   9: ldc 81
-    //   11: iconst_1
-    //   12: ldc_w 364
-    //   15: invokestatic 115	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   18: aload_0
-    //   19: monitorexit
-    //   20: return
-    //   21: aload_0
-    //   22: getfield 57	com/tencent/mobileqq/listentogether/predownload/ListenTogetherResDownloader:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   25: aload_1
-    //   26: invokevirtual 367	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   29: checkcast 353	com/tencent/mobileqq/transfile/NetReq
-    //   32: astore_2
-    //   33: aload_2
-    //   34: ifnull +13 -> 47
-    //   37: aload_0
-    //   38: getfield 50	com/tencent/mobileqq/listentogether/predownload/ListenTogetherResDownloader:jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService	Lcom/tencent/mobileqq/transfile/api/IHttpEngineService;
-    //   41: aload_2
-    //   42: invokeinterface 356 2 0
-    //   47: aload_0
-    //   48: getfield 55	com/tencent/mobileqq/listentogether/predownload/ListenTogetherResDownloader:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   51: aload_1
-    //   52: invokevirtual 367	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   55: pop
-    //   56: invokestatic 167	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   59: ifeq -41 -> 18
-    //   62: ldc 81
-    //   64: iconst_2
-    //   65: new 98	java/lang/StringBuilder
-    //   68: dup
-    //   69: invokespecial 99	java/lang/StringBuilder:<init>	()V
-    //   72: ldc_w 369
-    //   75: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   78: aload_1
-    //   79: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   82: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   85: invokestatic 115	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   88: goto -70 -> 18
-    //   91: astore_1
-    //   92: aload_0
-    //   93: monitorexit
-    //   94: aload_1
-    //   95: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	96	0	this	ListenTogetherResDownloader
-    //   0	96	1	paramString	String
-    //   32	10	2	localNetReq	NetReq
-    // Exception table:
-    //   from	to	target	type
-    //   2	18	91	finally
-    //   21	33	91	finally
-    //   37	47	91	finally
-    //   47	88	91	finally
+    try
+    {
+      if (TextUtils.isEmpty(paramString))
+      {
+        QLog.d("ListenTogether.downloader", 1, "musicId is empty");
+        return;
+      }
+      Object localObject = (NetReq)this.b.remove(paramString);
+      if (localObject != null) {
+        this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService.cancelReq((NetReq)localObject);
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("cancel music id: ");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("ListenTogether.downloader", 2, ((StringBuilder)localObject).toString());
+      }
+      return;
+    }
+    finally {}
   }
   
   public void a(List<MusicInfo> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      QLog.d("ListenTogether.downloader", 1, "downloadMusicRes, musicList is empty!");
-    }
-    for (;;)
+    if ((paramList != null) && (paramList.size() != 0))
     {
-      return;
       paramList = paramList.iterator();
       while (paramList.hasNext()) {
         a((MusicInfo)paramList.next());
       }
+      return;
     }
+    QLog.d("ListenTogether.downloader", 1, "downloadMusicRes, musicList is empty!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.predownload.ListenTogetherResDownloader
  * JD-Core Version:    0.7.0.1
  */

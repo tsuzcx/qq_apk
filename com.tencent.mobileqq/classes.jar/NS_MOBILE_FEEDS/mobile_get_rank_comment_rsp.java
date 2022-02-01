@@ -32,14 +32,15 @@ public final class mobile_get_rank_comment_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vcComments != null) {
-      paramJceOutputStream.write(this.vcComments, 0);
+    ArrayList localArrayList = this.vcComments;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_get_rank_comment_rsp
  * JD-Core Version:    0.7.0.1
  */

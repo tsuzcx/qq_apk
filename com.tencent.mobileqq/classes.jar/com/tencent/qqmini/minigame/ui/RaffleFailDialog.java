@@ -96,27 +96,27 @@ public class RaffleFailDialog
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    if (this.isHorizontal) {}
-    for (paramBundle = LayoutInflater.from(this.context).inflate(R.layout.mini_sdk_raffle_fail_dialog_landscape, null);; paramBundle = LayoutInflater.from(this.context).inflate(R.layout.mini_sdk_raffle_fail_dialog, null))
-    {
-      setCancelable(false);
-      if (getWindow() != null)
-      {
-        getWindow().requestFeature(1);
-        getWindow().setBackgroundDrawableResource(17170445);
-      }
-      ((ImageView)paramBundle.findViewById(R.id.mini_sdk_raffle_fail_image)).setImageDrawable(this.failDrawable);
-      this.commonImageView = ((ImageView)paramBundle.findViewById(R.id.mini_sdk_raffle_fail_common_button_image));
-      this.firstImageView = ((ImageView)paramBundle.findViewById(R.id.mini_sdk_raffle_fail_fisrt_button_image));
-      this.secondImageView = ((ImageView)paramBundle.findViewById(R.id.mini_sdk_raffle_fail_second_button_image));
-      Object localObject = (TextView)paramBundle.findViewById(R.id.mini_sdk_raffle_fail_again_text);
-      ((TextView)localObject).setOnClickListener(new RaffleFailDialog.1(this, (TextView)localObject));
-      localObject = (ImageView)paramBundle.findViewById(R.id.mini_sdk_raffle_fail_close_button);
-      ((ImageView)localObject).setOnClickListener(new RaffleFailDialog.2(this, (ImageView)localObject));
-      initButton();
-      setContentView(paramBundle, new ViewGroup.LayoutParams(-1, -1));
-      return;
+    if (this.isHorizontal) {
+      paramBundle = LayoutInflater.from(this.context).inflate(R.layout.mini_sdk_raffle_fail_dialog_landscape, null);
+    } else {
+      paramBundle = LayoutInflater.from(this.context).inflate(R.layout.mini_sdk_raffle_fail_dialog, null);
     }
+    setCancelable(false);
+    if (getWindow() != null)
+    {
+      getWindow().requestFeature(1);
+      getWindow().setBackgroundDrawableResource(17170445);
+    }
+    ((ImageView)paramBundle.findViewById(R.id.mini_sdk_raffle_fail_image)).setImageDrawable(this.failDrawable);
+    this.commonImageView = ((ImageView)paramBundle.findViewById(R.id.mini_sdk_raffle_fail_common_button_image));
+    this.firstImageView = ((ImageView)paramBundle.findViewById(R.id.mini_sdk_raffle_fail_fisrt_button_image));
+    this.secondImageView = ((ImageView)paramBundle.findViewById(R.id.mini_sdk_raffle_fail_second_button_image));
+    Object localObject = (TextView)paramBundle.findViewById(R.id.mini_sdk_raffle_fail_again_text);
+    ((TextView)localObject).setOnClickListener(new RaffleFailDialog.1(this, (TextView)localObject));
+    localObject = (ImageView)paramBundle.findViewById(R.id.mini_sdk_raffle_fail_close_button);
+    ((ImageView)localObject).setOnClickListener(new RaffleFailDialog.2(this, (ImageView)localObject));
+    initButton();
+    setContentView(paramBundle, new ViewGroup.LayoutParams(-1, -1));
   }
   
   public void setCanShare(boolean paramBoolean)
@@ -142,7 +142,7 @@ public class RaffleFailDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.ui.RaffleFailDialog
  * JD-Core Version:    0.7.0.1
  */

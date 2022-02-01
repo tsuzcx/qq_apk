@@ -61,20 +61,14 @@ public class GameRuntimeLoader
   
   private boolean isGamePkgReady(MiniAppInfo paramMiniAppInfo)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
     if (paramMiniAppInfo != null)
     {
-      bool1 = bool2;
-      if (this.miniGamePkg != null)
-      {
-        bool1 = bool2;
-        if (TextUtils.equals(this.miniGamePkg.appId, paramMiniAppInfo.appId)) {
-          bool1 = true;
-        }
+      MiniGamePkg localMiniGamePkg = this.miniGamePkg;
+      if ((localMiniGamePkg != null) && (TextUtils.equals(localMiniGamePkg.appId, paramMiniAppInfo.appId))) {
+        return true;
       }
     }
-    return bool1;
+    return false;
   }
   
   private void onGameRuntimeCreateTask(GameRuntimeCreateTask paramGameRuntimeCreateTask)
@@ -97,35 +91,35 @@ public class GameRuntimeLoader
       if (this.mMiniAppInfo != null)
       {
         localObject = new ApkgInfo(ApkgManager.getApkgFolderPath(this.mMiniAppInfo), this.mMiniAppInfo);
-        if (this.miniGamePkg != null) {
-          ((ApkgInfo)localObject).mConfigStr = this.miniGamePkg.mConfigStr;
+        MiniGamePkg localMiniGamePkg = this.miniGamePkg;
+        if (localMiniGamePkg != null) {
+          ((ApkgInfo)localObject).mConfigStr = localMiniGamePkg.mConfigStr;
         }
         this.mMiniAppInfo.apkgInfo = ((ApkgBaseInfo)localObject);
         updateMiniGameInfo(this.mMiniAppInfo);
       }
       this.mGameInfoManager.setLaunchOptions();
-      if (!paramGpkgLoadAsyncTask.isSucceed()) {
-        break label160;
-      }
     }
-    label160:
-    for (int i = 2002;; i = 2003)
+    else
     {
-      notifyRuntimeEvent(i, new Object[] { paramGpkgLoadAsyncTask.msg });
-      return;
       this.miniGamePkg = null;
       localObject = paramGpkgLoadAsyncTask.getMiniAppInfo();
-      if (localObject == null) {
-        break;
+      if (localObject != null)
+      {
+        SDKMiniProgramLpReportDC04239.reportForSDK((MiniAppInfo)localObject, "1", null, "page_view", "load_fail", "pkg_task_fail", "");
+        MiniAppReportManager2.reportPageView("2launch_fail", "pkg_task_fail", null, (MiniAppInfo)localObject);
+        if (localObject != null) {
+          localObject = ((MiniAppInfo)localObject).appId;
+        }
       }
-      SDKMiniProgramLpReportDC04239.reportForSDK((MiniAppInfo)localObject, "1", null, "page_view", "load_fail", "pkg_task_fail", "");
-      MiniAppReportManager2.reportPageView("2launch_fail", "pkg_task_fail", null, (MiniAppInfo)localObject);
-      if (localObject == null) {
-        break;
-      }
-      localObject = ((MiniAppInfo)localObject).appId;
-      break;
     }
+    int i;
+    if (paramGpkgLoadAsyncTask.isSucceed()) {
+      i = 2002;
+    } else {
+      i = 2003;
+    }
+    notifyRuntimeEvent(i, new Object[] { paramGpkgLoadAsyncTask.msg });
   }
   
   private void onInitGameRuntimeTaskDone(InitGameRuntimeTask paramInitGameRuntimeTask)
@@ -151,7 +145,7 @@ public class GameRuntimeLoader
   {
     if (!paramTritonEngineInitTask.isSucceed())
     {
-      Object localObject = paramTritonEngineInitTask.getMiniAppInfo();
+      localObject = paramTritonEngineInitTask.getMiniAppInfo();
       if (localObject != null)
       {
         SDKMiniProgramLpReportDC04239.reportForSDK((MiniAppInfo)localObject, "1", null, "page_view", "load_fail", "baselib_task_fail", "");
@@ -160,39 +154,43 @@ public class GameRuntimeLoader
           localObject = ((MiniAppInfo)localObject).appId;
         }
       }
-      localObject = paramTritonEngineInitTask.getEnginePackage();
-      ((GameRuntime)getRuntime()).setEnginePackage((MiniEnginePackage)localObject);
-      QMLog.i("BaseRuntimeLoader", "TritonEngine 初始化配置:" + localObject);
-      if (!paramTritonEngineInitTask.isSucceed()) {
-        break label137;
-      }
     }
-    label137:
-    for (int i = 2012;; i = 2013)
+    else if (getAppStateManager().isFromPreload)
     {
-      notifyRuntimeEvent(i, new Object[] { Integer.valueOf(paramTritonEngineInitTask.retCode) });
-      return;
-      if (!getAppStateManager().isFromPreload) {
-        break;
-      }
       sendPreloadBaseLibVersion();
-      break;
     }
+    Object localObject = paramTritonEngineInitTask.getEnginePackage();
+    ((GameRuntime)getRuntime()).setEnginePackage((MiniEnginePackage)localObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TritonEngine 初始化配置:");
+    localStringBuilder.append(localObject);
+    QMLog.i("BaseRuntimeLoader", localStringBuilder.toString());
+    int i;
+    if (paramTritonEngineInitTask.isSucceed()) {
+      i = 2012;
+    } else {
+      i = 2013;
+    }
+    notifyRuntimeEvent(i, new Object[] { Integer.valueOf(paramTritonEngineInitTask.retCode) });
   }
   
   private void sendPreloadBaseLibVersion()
   {
     String str = this.mTritonEngineInitTask.getEnginePackage().getVersion().getVersion();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("bundle_key_process_name", AppLoaderFactory.g().getProcessName());
-    localBundle.putString("bundle_key_preload_game_baselib_version", str);
-    AppBrandCmdProxy.g().sendCmd("cmd_on_preload_game_baselib", localBundle, null);
-    if (QMLog.isColorLevel()) {
-      QMLog.i("BaseRuntimeLoader", "[MiniEng]preload jsLib version:" + str);
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putString("bundle_key_process_name", AppLoaderFactory.g().getProcessName());
+    ((Bundle)localObject).putString("bundle_key_preload_game_baselib_version", str);
+    AppBrandCmdProxy.g().sendCmd("cmd_on_preload_game_baselib", (Bundle)localObject, null);
+    if (QMLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[MiniEng]preload jsLib version:");
+      ((StringBuilder)localObject).append(str);
+      QMLog.i("BaseRuntimeLoader", ((StringBuilder)localObject).toString());
     }
   }
   
-  public BaseRuntime createRuntime(Context paramContext)
+  protected BaseRuntime createRuntime(Context paramContext)
   {
     paramContext = new GameRuntime(paramContext);
     paramContext.setRuntimeMsgObserver(this);
@@ -290,32 +288,36 @@ public class GameRuntimeLoader
   
   public void onTaskDone(BaseTask paramBaseTask)
   {
-    if (paramBaseTask == null) {}
-    do
-    {
+    if (paramBaseTask == null) {
       return;
-      QMLog.i("GameRuntimeLoader", "[MiniEng]" + paramBaseTask + " done! succ:" + paramBaseTask.isSucceed());
-      if ((paramBaseTask instanceof GameRuntimeCreateTask)) {
-        onGameRuntimeCreateTask((GameRuntimeCreateTask)paramBaseTask);
-      }
-      while (!paramBaseTask.isSucceed())
-      {
-        markHasTaskFailed(true);
-        notifyRuntimeEvent(12, new Object[0]);
-        onRuntimeLoadResult(paramBaseTask.retCode, paramBaseTask.msg);
-        return;
-        if ((paramBaseTask instanceof GpkgLoadAsyncTask)) {
-          onGpkgLoadAsyncTaskDone((GpkgLoadAsyncTask)paramBaseTask);
-        } else if ((paramBaseTask instanceof TritonEngineInitTask)) {
-          onTritonEngineInitTask((TritonEngineInitTask)paramBaseTask);
-        } else if ((paramBaseTask instanceof MiniAppInfoLoadTask)) {
-          onMiniAppInfoLoadTaskDone((MiniAppInfoLoadTask)paramBaseTask);
-        } else if ((paramBaseTask instanceof InitGameRuntimeTask)) {
-          onInitGameRuntimeTaskDone((InitGameRuntimeTask)paramBaseTask);
-        }
-      }
-    } while (!paramBaseTask.isDone());
-    updateFlow(paramBaseTask);
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[MiniEng]");
+    localStringBuilder.append(paramBaseTask);
+    localStringBuilder.append(" done! succ:");
+    localStringBuilder.append(paramBaseTask.isSucceed());
+    QMLog.i("GameRuntimeLoader", localStringBuilder.toString());
+    if ((paramBaseTask instanceof GameRuntimeCreateTask)) {
+      onGameRuntimeCreateTask((GameRuntimeCreateTask)paramBaseTask);
+    } else if ((paramBaseTask instanceof GpkgLoadAsyncTask)) {
+      onGpkgLoadAsyncTaskDone((GpkgLoadAsyncTask)paramBaseTask);
+    } else if ((paramBaseTask instanceof TritonEngineInitTask)) {
+      onTritonEngineInitTask((TritonEngineInitTask)paramBaseTask);
+    } else if ((paramBaseTask instanceof MiniAppInfoLoadTask)) {
+      onMiniAppInfoLoadTaskDone((MiniAppInfoLoadTask)paramBaseTask);
+    } else if ((paramBaseTask instanceof InitGameRuntimeTask)) {
+      onInitGameRuntimeTaskDone((InitGameRuntimeTask)paramBaseTask);
+    }
+    if (!paramBaseTask.isSucceed())
+    {
+      markHasTaskFailed(true);
+      notifyRuntimeEvent(12, new Object[0]);
+      onRuntimeLoadResult(paramBaseTask.retCode, paramBaseTask.msg);
+      return;
+    }
+    if (paramBaseTask.isDone()) {
+      updateFlow(paramBaseTask);
+    }
   }
   
   public void setMiniAppInfo(MiniAppInfo paramMiniAppInfo)
@@ -328,7 +330,7 @@ public class GameRuntimeLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.GameRuntimeLoader
  * JD-Core Version:    0.7.0.1
  */

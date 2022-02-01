@@ -5,7 +5,6 @@ import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager;
 import com.tencent.biz.pubaccount.weishi_new.event.WSFriendFeedExposureEvent;
 import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleEventBus;
 import com.tencent.biz.pubaccount.weishi_new.follow.data.WSFriendItemData;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageAdapter;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageContract.View;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSFriendFeedDataManager;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalItemData;
@@ -43,33 +42,26 @@ public class WSVerticalForFriendFeedPresenter
   {
     super.a(paramViewHolder, paramInt);
     paramViewHolder = WeiShiCacheManager.a().a();
-    WSVerticalPageContract.View localView = a();
-    int i;
-    if (localView != null)
+    if (a() != null)
     {
-      i = paramInt;
-      if (paramInt >= this.b) {
-        i = this.b - 1;
+      int j = this.b;
+      int i = paramInt;
+      if (paramInt >= j) {
+        i = j - 1;
       }
       paramInt = 0;
-    }
-    for (;;)
-    {
-      if (paramInt < paramViewHolder.size())
+      while (paramInt < paramViewHolder.size())
       {
         WSFriendItemData localWSFriendItemData = (WSFriendItemData)paramViewHolder.get(paramInt);
         if ((localWSFriendItemData.b() <= i) && (localWSFriendItemData.b() + localWSFriendItemData.a() > i))
         {
           localWSFriendItemData.a(true);
-          paramViewHolder = new WSFriendFeedExposureEvent(((WSVerticalItemData)localView.a().a(i)).a(), paramInt);
+          paramViewHolder = new WSFriendFeedExposureEvent(a(i), paramInt);
           WSSimpleEventBus.a().a(paramViewHolder);
+          return;
         }
+        paramInt += 1;
       }
-      else
-      {
-        return;
-      }
-      paramInt += 1;
     }
   }
   
@@ -79,15 +71,15 @@ public class WSVerticalForFriendFeedPresenter
     return true;
   }
   
-  public void d()
+  public void b()
   {
-    super.d();
+    super.b();
     WSFriendFeedDataManager.a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.presenter.WSVerticalForFriendFeedPresenter
  * JD-Core Version:    0.7.0.1
  */

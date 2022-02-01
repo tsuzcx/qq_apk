@@ -18,12 +18,20 @@ class QQServiceProxy$IQQServiceCallbackStub
   
   public Bundle a(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQServiceProxy", 2, "getDataFromVideoProcess cmd = " + paramInt1 + ",subCmd = " + paramInt2 + ",request = " + paramBundle + ",callbackCookie = " + paramString);
-    }
-    switch (paramInt1)
+    if (QLog.isColorLevel())
     {
-    default: 
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDataFromVideoProcess cmd = ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(",subCmd = ");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(",request = ");
+      localStringBuilder.append(paramBundle);
+      localStringBuilder.append(",callbackCookie = ");
+      localStringBuilder.append(paramString);
+      QLog.d("QQServiceProxy", 2, localStringBuilder.toString());
+    }
+    if (paramInt1 != 1) {
       return null;
     }
     paramString = new Bundle();
@@ -42,58 +50,62 @@ class QQServiceProxy$IQQServiceCallbackStub
   
   public void a(String paramString, int paramInt, byte[] paramArrayOfByte)
   {
-    int j = 0;
     QLog.i("QQServiceProxy", 2, "onReceivePushMsg");
-    Object localObject;
-    int i;
     if (TextUtils.equals(paramString, "avChatRoom"))
     {
       localObject = this.a.a.a();
       if (localObject != null) {
         ((ChatRoomMng)localObject).a(paramInt, paramArrayOfByte);
       }
-      if (QLog.isDevelopLevel())
-      {
-        localObject = new StringBuilder().append("onReceivePushMsg , key[").append(paramString).append("], msgType[").append(paramInt).append("], bytes[");
-        if (paramArrayOfByte != null) {
-          break label259;
-        }
-        i = 0;
-        label89:
-        QLog.i("ChatRoomMng", 4, i + "]");
-      }
-      paramString = new StringBuilder().append("onReceivePushMsg  , key[").append(paramString).append("], msgType[").append(paramInt).append("], bytes[");
-      if (paramArrayOfByte != null) {
-        break label266;
-      }
     }
-    label259:
-    label266:
-    for (paramInt = j;; paramInt = paramArrayOfByte.length)
+    else if (TextUtils.equals(paramString, "avWatchTogether"))
     {
-      QLog.i("ChatRoomMng", 4, paramInt + "]");
-      return;
-      if (TextUtils.equals(paramString, "avWatchTogether"))
-      {
-        localObject = (WTogetherMng)this.a.a.a(15);
-        if (localObject == null) {
-          break;
-        }
+      localObject = (WTogetherMng)this.a.a.a(16);
+      if (localObject != null) {
         ((WTogetherMng)localObject).a(paramInt, paramArrayOfByte);
-        break;
       }
-      if ((!TextUtils.equals(paramString, "avScreenShareAsk")) && (!TextUtils.equals(paramString, "avScreenShareAnswer"))) {
-        break;
-      }
-      localObject = (ScreenShareManager)this.a.a.a(16);
-      if (localObject == null) {
-        break;
-      }
-      ((ScreenShareManager)localObject).a(paramInt, paramArrayOfByte);
-      break;
-      i = paramArrayOfByte.length;
-      break label89;
     }
+    else if ((TextUtils.equals(paramString, "avScreenShareAsk")) || (TextUtils.equals(paramString, "avScreenShareAnswer")))
+    {
+      localObject = (ScreenShareManager)this.a.a.a(17);
+      if (localObject != null) {
+        ((ScreenShareManager)localObject).a(paramInt, paramArrayOfByte);
+      }
+    }
+    boolean bool = QLog.isDevelopLevel();
+    int j = 0;
+    if (bool)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onReceivePushMsg , key[");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("], msgType[");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("], bytes[");
+      int i;
+      if (paramArrayOfByte == null) {
+        i = 0;
+      } else {
+        i = paramArrayOfByte.length;
+      }
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("ChatRoomMng", 4, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onReceivePushMsg  , key[");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("], msgType[");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("], bytes[");
+    if (paramArrayOfByte == null) {
+      paramInt = j;
+    } else {
+      paramInt = paramArrayOfByte.length;
+    }
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("]");
+    QLog.i("ChatRoomMng", 4, ((StringBuilder)localObject).toString());
   }
   
   public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
@@ -110,7 +122,7 @@ class QQServiceProxy$IQQServiceCallbackStub
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.QQServiceProxy.IQQServiceCallbackStub
  * JD-Core Version:    0.7.0.1
  */

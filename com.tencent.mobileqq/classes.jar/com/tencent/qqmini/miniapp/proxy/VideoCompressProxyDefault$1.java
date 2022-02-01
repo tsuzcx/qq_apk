@@ -13,10 +13,13 @@ class VideoCompressProxyDefault$1
   
   public void run()
   {
-    QMLog.i("VideoCompress", "start compress " + VideoCompressProxyDefault.access$000(this.this$0).path);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("start compress ");
+    ((StringBuilder)localObject).append(VideoCompressProxyDefault.access$000(this.this$0).path);
+    QMLog.i("VideoCompress", ((StringBuilder)localObject).toString());
     VideoCompressProxyDefault.access$100(this.this$0).onStart();
-    File localFile1 = new File(VideoCompressProxyDefault.access$200(this.this$0).path);
-    File localFile2 = new File(VideoCompressProxyDefault.access$300(this.this$0));
+    localObject = new File(VideoCompressProxyDefault.access$200(this.this$0).path);
+    File localFile = new File(VideoCompressProxyDefault.access$300(this.this$0));
     int i = 1;
     boolean bool = false;
     for (;;)
@@ -25,33 +28,31 @@ class VideoCompressProxyDefault$1
       try
       {
         Thread.sleep(Math.round(Math.random() * 200.0D));
-        label102:
+        label108:
         if (i == 50) {
-          bool = FileUtils.copyFile(localFile1, localFile2);
+          bool = FileUtils.copyFile((File)localObject, localFile);
         }
         VideoCompressProxyDefault.access$400(this.this$0).onProgress(String.format("progress:%s", new Object[] { Integer.valueOf(i) }), i / 100.0F);
         i += 1;
         continue;
         if (bool) {
           VideoCompressProxyDefault.access$500(this.this$0).onSuccess("compress success");
-        }
-        for (;;)
-        {
-          VideoCompressProxyDefault.access$700(this.this$0).onFinish(bool);
-          return;
+        } else {
           VideoCompressProxyDefault.access$600(this.this$0).onFailure("compress failed");
         }
+        VideoCompressProxyDefault.access$700(this.this$0).onFinish(bool);
+        return;
       }
       catch (InterruptedException localInterruptedException)
       {
-        break label102;
+        break label108;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.proxy.VideoCompressProxyDefault.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,24 @@
 package com.tencent.mobileqq.jsp;
 
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.app.Activity;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 
 class UiApiPlugin$26
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  UiApiPlugin$26(UiApiPlugin paramUiApiPlugin, View paramView, int paramInt1, int paramInt2) {}
+  UiApiPlugin$26(UiApiPlugin paramUiApiPlugin, Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.jdField_a_of_type_AndroidViewView.layout(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView.getRight(), this.b);
+    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
+    boolean bool = UiApiPlugin.a(localActivity, UiApiPlugin.a(localActivity, null, this.jdField_a_of_type_JavaLangString, "qqbrowser_float_shortcut"), this.b, this.c);
+    ThreadManagerV2.getUIHandlerV2().post(new UiApiPlugin.26.1(this, bool));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.26
  * JD-Core Version:    0.7.0.1
  */

@@ -7,51 +7,54 @@ class GestureSelectGridView$MyScrollListener
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.a.jdField_a_of_type_Boolean)
+    if (this.this$0.mIsScrolling)
     {
       int i = paramInt1 + paramInt2;
-      if ((!this.a.jdField_b_of_type_Boolean) || (Math.abs(i - this.a.c) < 3) || (Math.abs(i - this.a.c) > 5)) {
-        break label161;
-      }
-      if (this.a.c + 3 <= paramInt3 - 1) {
-        break label140;
-      }
-      this.a.c = (paramInt3 - 1);
-      this.a.jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener.a(this.a.jdField_b_of_type_Int, this.a.c);
-    }
-    label140:
-    GestureSelectGridView localGestureSelectGridView;
-    label161:
-    while ((this.a.jdField_b_of_type_Boolean) || (Math.abs(paramInt1 - this.a.c) < 3) || (Math.abs(paramInt1 - this.a.c) > 5)) {
-      for (;;)
+      GestureSelectGridView localGestureSelectGridView;
+      if ((this.this$0.mIsScrollingFromTop) && (Math.abs(i - this.this$0.mEndSelectPosition) >= 3) && (Math.abs(i - this.this$0.mEndSelectPosition) <= 5))
       {
-        if (this.a.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener != null) {
-          this.a.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+        i = this.this$0.mEndSelectPosition;
+        int j = paramInt3 - 1;
+        if (i + 3 > j)
+        {
+          this.this$0.mEndSelectPosition = j;
         }
-        return;
-        localGestureSelectGridView = this.a;
-        localGestureSelectGridView.c += 3;
+        else
+        {
+          localGestureSelectGridView = this.this$0;
+          localGestureSelectGridView.mEndSelectPosition += 3;
+        }
+        this.this$0.mOnSelectChangedListener.onSelectChanged(this.this$0.mBeginSelectPosition, this.this$0.mEndSelectPosition);
+      }
+      else if ((!this.this$0.mIsScrollingFromTop) && (Math.abs(paramInt1 - this.this$0.mEndSelectPosition) >= 3) && (Math.abs(paramInt1 - this.this$0.mEndSelectPosition) <= 5))
+      {
+        if (this.this$0.mEndSelectPosition - 3 < 0)
+        {
+          this.this$0.mEndSelectPosition = 0;
+        }
+        else
+        {
+          localGestureSelectGridView = this.this$0;
+          localGestureSelectGridView.mEndSelectPosition -= 3;
+        }
+        this.this$0.mOnSelectChangedListener.onSelectChanged(this.this$0.mBeginSelectPosition, this.this$0.mEndSelectPosition);
       }
     }
-    if (this.a.c - 3 < 0) {}
-    for (this.a.c = 0;; localGestureSelectGridView.c -= 3)
-    {
-      this.a.jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener.a(this.a.jdField_b_of_type_Int, this.a.c);
-      break;
-      localGestureSelectGridView = this.a;
+    if (this.this$0.mSubOnScrollListener != null) {
+      this.this$0.mSubOnScrollListener.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener != null) {
-      this.a.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener.onScrollStateChanged(paramAbsListView, paramInt);
+    if (this.this$0.mSubOnScrollListener != null) {
+      this.this$0.mSubOnScrollListener.onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.GestureSelectGridView.MyScrollListener
  * JD-Core Version:    0.7.0.1
  */

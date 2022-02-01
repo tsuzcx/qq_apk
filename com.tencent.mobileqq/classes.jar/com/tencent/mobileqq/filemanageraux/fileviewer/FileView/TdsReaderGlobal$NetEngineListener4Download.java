@@ -19,35 +19,27 @@ final class TdsReaderGlobal$NetEngineListener4Download
   
   public void onResp(NetResp paramNetResp)
   {
-    int i = 0;
-    if (paramNetResp.mResult == 3) {}
-    label74:
-    label80:
-    for (;;)
-    {
+    if (paramNetResp.mResult == 3) {
       return;
-      boolean bool;
-      if (paramNetResp.mResult == 0)
-      {
-        bool = true;
-        if (!bool) {
-          break label74;
-        }
+    }
+    int j = paramNetResp.mResult;
+    int i = 0;
+    boolean bool;
+    if (j == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if (!bool) {
+      i = paramNetResp.mErrCode;
+    }
+    IHostInterface.IDownloadListener localIDownloadListener = this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener;
+    if (localIDownloadListener != null)
+    {
+      if (bool) {
+        localIDownloadListener.onDownloadProgress(this.jdField_a_of_type_JavaLangString, paramNetResp.mTotalFileLen, 1.0F);
       }
-      for (;;)
-      {
-        if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener == null) {
-          break label80;
-        }
-        if (bool) {
-          this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadProgress(this.jdField_a_of_type_JavaLangString, paramNetResp.mTotalFileLen, 1.0F);
-        }
-        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadFinished(this.jdField_a_of_type_JavaLangString, bool, i);
-        return;
-        bool = false;
-        break;
-        i = paramNetResp.mErrCode;
-      }
+      this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadFinished(this.jdField_a_of_type_JavaLangString, bool, i);
     }
   }
   
@@ -56,15 +48,16 @@ final class TdsReaderGlobal$NetEngineListener4Download
     if (paramLong2 != 0L)
     {
       float f = (float)paramLong1 / (float)paramLong2;
-      if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener != null) {
-        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener.onDownloadProgress(this.jdField_a_of_type_JavaLangString, paramLong2, f);
+      paramNetReq = this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IDownloadListener;
+      if (paramNetReq != null) {
+        paramNetReq.onDownloadProgress(this.jdField_a_of_type_JavaLangString, paramLong2, f);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsReaderGlobal.NetEngineListener4Download
  * JD-Core Version:    0.7.0.1
  */

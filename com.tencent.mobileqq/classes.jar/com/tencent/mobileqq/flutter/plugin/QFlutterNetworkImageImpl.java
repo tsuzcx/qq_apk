@@ -23,14 +23,25 @@ public class QFlutterNetworkImageImpl
   
   public String getLibPath()
   {
-    QLog.d("QFlutterNetworkImageImpl", 2, "[getLibPath] libPath=" + jdField_a_of_type_JavaLangString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[getLibPath] libPath=");
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    QLog.d("QFlutterNetworkImageImpl", 2, localStringBuilder.toString());
     return jdField_a_of_type_JavaLangString;
   }
   
   public void loadBitmap(String paramString, int paramInt1, int paramInt2, LoadBitmapCallback paramLoadBitmapCallback)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutterNetworkImageImpl", 2, "[loadBitmap] url=" + paramString + ", decodeWidth=" + paramInt1 + ", decodeHeight=" + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[loadBitmap] url=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", decodeWidth=");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(", decodeHeight=");
+      localStringBuilder.append(paramInt2);
+      QLog.d("QFlutterNetworkImageImpl", 2, localStringBuilder.toString());
     }
     paramString = new Option().setUrl(paramString).setPredecode(true);
     if ((paramInt1 > 0) && (paramInt2 > 0)) {
@@ -41,8 +52,12 @@ public class QFlutterNetworkImageImpl
   
   public void releaseBitmap(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutterNetworkImageImpl", 2, "[releaseBitmap] url=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[releaseBitmap] url=");
+      localStringBuilder.append(paramString);
+      QLog.d("QFlutterNetworkImageImpl", 2, localStringBuilder.toString());
     }
     paramString = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
     if ((paramString == null) || (paramString.isRecycled())) {
@@ -52,7 +67,7 @@ public class QFlutterNetworkImageImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.plugin.QFlutterNetworkImageImpl
  * JD-Core Version:    0.7.0.1
  */

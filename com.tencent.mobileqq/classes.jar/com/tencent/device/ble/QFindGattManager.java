@@ -26,7 +26,7 @@ import mqq.os.MqqHandler;
 public class QFindGattManager
 {
   static int jdField_a_of_type_Int = 1000;
-  private static QFindGattManager jdField_a_of_type_ComTencentDeviceBleQFindGattManager = null;
+  private static QFindGattManager jdField_a_of_type_ComTencentDeviceBleQFindGattManager;
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new QFindGattManager.3(this);
   private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
   private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new QFindGattManager.2(this);
@@ -76,30 +76,32 @@ public class QFindGattManager
   
   public static void b()
   {
-    if (jdField_a_of_type_ComTencentDeviceBleQFindGattManager != null) {
-      jdField_a_of_type_ComTencentDeviceBleQFindGattManager.a();
+    QFindGattManager localQFindGattManager = jdField_a_of_type_ComTencentDeviceBleQFindGattManager;
+    if (localQFindGattManager != null) {
+      localQFindGattManager.a();
     }
   }
   
   public PeerInfo a(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo != null) && (this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo.jdField_a_of_type_Int == paramInt)) {
+    Object localObject = this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo;
+    if ((localObject != null) && (((PeerInfo)localObject).a == paramInt)) {
       return this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    localObject = this.jdField_a_of_type_JavaUtilList.iterator();
     PeerInfo localPeerInfo;
-    while (localIterator.hasNext())
+    while (((Iterator)localObject).hasNext())
     {
-      localPeerInfo = (PeerInfo)localIterator.next();
-      if (localPeerInfo.jdField_a_of_type_Int == paramInt) {
+      localPeerInfo = (PeerInfo)((Iterator)localObject).next();
+      if (localPeerInfo.a == paramInt) {
         return localPeerInfo;
       }
     }
-    localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-    while (localIterator.hasNext())
+    localObject = this.jdField_a_of_type_JavaUtilSet.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      localPeerInfo = (PeerInfo)localIterator.next();
-      if (localPeerInfo.jdField_a_of_type_Int == paramInt) {
+      localPeerInfo = (PeerInfo)((Iterator)localObject).next();
+      if (localPeerInfo.a == paramInt) {
         return localPeerInfo;
       }
     }
@@ -108,30 +110,31 @@ public class QFindGattManager
   
   public PeerInfo a(String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo != null) && (this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo.a().equals(paramString))) {
+    Object localObject = this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo;
+    if ((localObject != null) && (((PeerInfo)localObject).a().equals(paramString))) {
       return this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    localObject = this.jdField_a_of_type_JavaUtilList.iterator();
     PeerInfo localPeerInfo;
-    while (localIterator.hasNext())
+    while (((Iterator)localObject).hasNext())
     {
-      localPeerInfo = (PeerInfo)localIterator.next();
+      localPeerInfo = (PeerInfo)((Iterator)localObject).next();
       if (localPeerInfo.a().equals(paramString)) {
         return localPeerInfo;
       }
     }
-    localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-    while (localIterator.hasNext())
+    localObject = this.jdField_a_of_type_JavaUtilSet.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      localPeerInfo = (PeerInfo)localIterator.next();
+      localPeerInfo = (PeerInfo)((Iterator)localObject).next();
       if (localPeerInfo.a().equals(paramString)) {
         return localPeerInfo;
       }
     }
-    localIterator = this.c.iterator();
-    while (localIterator.hasNext())
+    localObject = this.c.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      localPeerInfo = (PeerInfo)localIterator.next();
+      localPeerInfo = (PeerInfo)((Iterator)localObject).next();
       if (localPeerInfo.a().equals(paramString)) {
         return localPeerInfo;
       }
@@ -154,44 +157,46 @@ public class QFindGattManager
   
   public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_ComTencentDeviceQfindBluetoothLeService != null) {
-      this.jdField_a_of_type_ComTencentDeviceQfindBluetoothLeService.a(paramInt, paramArrayOfByte);
+    Object localObject = this.jdField_a_of_type_ComTencentDeviceQfindBluetoothLeService;
+    if (localObject != null) {
+      ((BluetoothLeService)localObject).a(paramInt, paramArrayOfByte);
     }
     paramArrayOfByte = a(paramInt);
-    if ((this.jdField_a_of_type_MqqOsMqqHandler != null) && (paramArrayOfByte != null))
+    localObject = this.jdField_a_of_type_MqqOsMqqHandler;
+    if ((localObject != null) && (paramArrayOfByte != null))
     {
-      Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(100);
-      localMessage.arg1 = paramInt;
-      localMessage.obj = paramArrayOfByte.a();
-      this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(localMessage, 100000L);
+      localObject = ((MqqHandler)localObject).obtainMessage(100);
+      ((Message)localObject).arg1 = paramInt;
+      ((Message)localObject).obj = paramArrayOfByte.a();
+      this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed((Message)localObject, 100000L);
     }
   }
   
   public void a(PeerInfo paramPeerInfo)
   {
-    QLog.i("DeviceBLE2", 2, "disConnectPeer " + paramPeerInfo.a());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("disConnectPeer ");
+    localStringBuilder.append(paramPeerInfo.a());
+    QLog.i("DeviceBLE2", 2, localStringBuilder.toString());
     if (this.jdField_a_of_type_JavaUtilList.contains(paramPeerInfo))
     {
       this.jdField_a_of_type_JavaUtilSet.add(paramPeerInfo);
       this.jdField_a_of_type_JavaUtilList.remove(paramPeerInfo);
-      this.jdField_a_of_type_ComTencentDeviceQfindBluetoothLeService.a(paramPeerInfo.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentDeviceQfindBluetoothLeService.a(paramPeerInfo.a);
     }
-    for (;;)
+    else if (paramPeerInfo == this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo)
     {
-      if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
-        this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(100);
-      }
-      return;
-      if (paramPeerInfo == this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo)
-      {
-        this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo = null;
-        this.jdField_a_of_type_JavaUtilSet.add(paramPeerInfo);
-        this.jdField_a_of_type_ComTencentDeviceQfindBluetoothLeService.a(paramPeerInfo.jdField_a_of_type_Int);
-      }
-      else if (this.c.contains(paramPeerInfo))
-      {
-        this.c.remove(paramPeerInfo);
-      }
+      this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo = null;
+      this.jdField_a_of_type_JavaUtilSet.add(paramPeerInfo);
+      this.jdField_a_of_type_ComTencentDeviceQfindBluetoothLeService.a(paramPeerInfo.a);
+    }
+    else if (this.c.contains(paramPeerInfo))
+    {
+      this.c.remove(paramPeerInfo);
+    }
+    paramPeerInfo = this.jdField_a_of_type_MqqOsMqqHandler;
+    if (paramPeerInfo != null) {
+      paramPeerInfo.removeMessages(100);
     }
   }
   
@@ -205,37 +210,39 @@ public class QFindGattManager
   
   public boolean a(PeerInfo paramPeerInfo)
   {
-    boolean bool = false;
-    if (((this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo != null) && (this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo.b.equals(paramPeerInfo.b))) || (this.jdField_a_of_type_JavaUtilList.contains(paramPeerInfo))) {
-      bool = true;
+    Object localObject = this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo;
+    if (((localObject != null) && (((PeerInfo)localObject).b.equals(paramPeerInfo.b))) || (this.jdField_a_of_type_JavaUtilList.contains(paramPeerInfo))) {
+      return true;
     }
-    do
+    if (this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo != null)
     {
-      do
+      if (!this.c.contains(paramPeerInfo))
       {
-        do
-        {
-          return bool;
-          if (this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo == null) {
-            break;
-          }
-        } while (this.c.contains(paramPeerInfo));
         this.c.add(paramPeerInfo);
         return false;
-        if (this.jdField_a_of_type_ComTencentDeviceQfindBluetoothLeService == null) {
-          break;
+      }
+    }
+    else
+    {
+      localObject = this.jdField_a_of_type_ComTencentDeviceQfindBluetoothLeService;
+      if (localObject != null)
+      {
+        if (((BluetoothLeService)localObject).a(paramPeerInfo.a, paramPeerInfo.b))
+        {
+          this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo = paramPeerInfo;
+          return true;
         }
-      } while (!this.jdField_a_of_type_ComTencentDeviceQfindBluetoothLeService.a(paramPeerInfo.jdField_a_of_type_Int, paramPeerInfo.b));
-      this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo = paramPeerInfo;
-      return true;
-    } while (this.c.contains(paramPeerInfo));
-    this.c.add(paramPeerInfo);
+      }
+      else if (!this.c.contains(paramPeerInfo)) {
+        this.c.add(paramPeerInfo);
+      }
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.ble.QFindGattManager
  * JD-Core Version:    0.7.0.1
  */

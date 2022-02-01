@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.config.business.tendoc;
 
-import android.text.TextUtils;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
@@ -13,32 +12,33 @@ public class TencentDocUserConfigBean
   
   public static TencentDocUserConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length <= 0)) {
-      paramArrayOfQConfItem = null;
-    }
-    TencentDocUserConfigBean localTencentDocUserConfigBean;
-    for (;;)
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      return paramArrayOfQConfItem;
-      localTencentDocUserConfigBean = new TencentDocUserConfigBean();
+      TencentDocUserConfigBean localTencentDocUserConfigBean = new TencentDocUserConfigBean();
       try
       {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfQConfItem[0].a);
-        if (localJSONObject.has("AndroidDrawerJumpURL"))
+        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].a);
+        boolean bool = paramArrayOfQConfItem.has("AndroidDrawerJumpURL");
+        if (bool)
         {
-          localTencentDocUserConfigBean.a = localJSONObject.getString("AndroidDrawerJumpURL");
-          if (QLog.isColorLevel()) {
-            QLog.d("TencentDocUserConfigBean", 2, "handleTencentDocUserConfigCmd AndroidDrawerJumpURL = " + localTencentDocUserConfigBean.a);
-          }
-        }
-        paramArrayOfQConfItem = localTencentDocUserConfigBean;
-        if (localJSONObject.has("AndroidAioJumpURL"))
-        {
-          localTencentDocUserConfigBean.b = localJSONObject.getString("AndroidAioJumpURL");
-          paramArrayOfQConfItem = localTencentDocUserConfigBean;
+          localTencentDocUserConfigBean.a = paramArrayOfQConfItem.getString("AndroidDrawerJumpURL");
           if (QLog.isColorLevel())
           {
-            QLog.d("TencentDocUserConfigBean", 2, "handleTencentDocUserConfigCmd AndroidAioJumpURL = " + localTencentDocUserConfigBean.b);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("handleTencentDocUserConfigCmd AndroidDrawerJumpURL = ");
+            localStringBuilder.append(localTencentDocUserConfigBean.a);
+            QLog.d("TencentDocUserConfigBean", 2, localStringBuilder.toString());
+          }
+        }
+        if (paramArrayOfQConfItem.has("AndroidAioJumpURL"))
+        {
+          localTencentDocUserConfigBean.b = paramArrayOfQConfItem.getString("AndroidAioJumpURL");
+          if (QLog.isColorLevel())
+          {
+            paramArrayOfQConfItem = new StringBuilder();
+            paramArrayOfQConfItem.append("handleTencentDocUserConfigCmd AndroidAioJumpURL = ");
+            paramArrayOfQConfItem.append(localTencentDocUserConfigBean.b);
+            QLog.d("TencentDocUserConfigBean", 2, paramArrayOfQConfItem.toString());
             return localTencentDocUserConfigBean;
           }
         }
@@ -47,21 +47,14 @@ public class TencentDocUserConfigBean
       {
         paramArrayOfQConfItem.printStackTrace();
       }
+      return localTencentDocUserConfigBean;
     }
-    return localTencentDocUserConfigBean;
-  }
-  
-  public String a()
-  {
-    if (TextUtils.isEmpty(this.a)) {
-      return null;
-    }
-    return this.a;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocUserConfigBean
  * JD-Core Version:    0.7.0.1
  */

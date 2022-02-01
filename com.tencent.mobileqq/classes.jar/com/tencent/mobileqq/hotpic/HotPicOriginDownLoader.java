@@ -34,49 +34,68 @@ public class HotPicOriginDownLoader
   
   public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    paramDownloadParams = (HotPicData)paramDownloadParams.mExtraInfo;
-    String str = a(paramDownloadParams);
-    File localFile = a(str);
+    HotPicData localHotPicData = (HotPicData)paramDownloadParams.mExtraInfo;
+    paramDownloadParams = a(localHotPicData);
+    File localFile = a(paramDownloadParams);
     if (localFile.exists())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "loadImageFile file exist:" + localFile.getAbsolutePath());
+      if (QLog.isColorLevel())
+      {
+        paramDownloadParams = new StringBuilder();
+        paramDownloadParams.append("loadImageFile file exist:");
+        paramDownloadParams.append(localFile.getAbsolutePath());
+        QLog.d("HotPicManager.HotPicOriginDownLoader", 2, paramDownloadParams.toString());
       }
       return localFile;
     }
     localFile.getParentFile().mkdirs();
-    if ((Utils.a()) && (Utils.b() < 20971520L)) {
-      throw new IOException("SD card free space is " + Utils.b());
+    if ((Utils.a()) && (Utils.b() < 31457280L))
+    {
+      paramDownloadParams = new StringBuilder();
+      paramDownloadParams.append("SD card free space is ");
+      paramDownloadParams.append(Utils.b());
+      throw new IOException(paramDownloadParams.toString());
     }
     Object localObject = new File(a);
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdir();
     }
-    int i = a(str, localFile);
+    int i = a(paramDownloadParams, localFile);
     if (i == 0)
     {
       localObject = PortalUtils.a(localFile.getAbsolutePath());
-      if (!paramDownloadParams.originalMD5.equalsIgnoreCase((String)localObject))
+      if (!localHotPicData.originalMD5.equalsIgnoreCase((String)localObject))
       {
         localFile.delete();
         paramURLDrawableHandler.onFileDownloadFailed(0);
         return null;
       }
       paramURLDrawableHandler.onFileDownloadSucceed(localFile.length());
-      if (QLog.isColorLevel()) {
-        QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "url->" + str + " result->0");
+      if (QLog.isColorLevel())
+      {
+        paramURLDrawableHandler = new StringBuilder();
+        paramURLDrawableHandler.append("url->");
+        paramURLDrawableHandler.append(paramDownloadParams);
+        paramURLDrawableHandler.append(" result->0");
+        QLog.d("HotPicManager.HotPicOriginDownLoader", 2, paramURLDrawableHandler.toString());
       }
       return localFile;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "url->" + str + " result->" + i);
+    if (QLog.isColorLevel())
+    {
+      paramURLDrawableHandler = new StringBuilder();
+      paramURLDrawableHandler.append("url->");
+      paramURLDrawableHandler.append(paramDownloadParams);
+      paramURLDrawableHandler.append(" result->");
+      paramURLDrawableHandler.append(i);
+      QLog.d("HotPicManager.HotPicOriginDownLoader", 2, paramURLDrawableHandler.toString());
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicOriginDownLoader
  * JD-Core Version:    0.7.0.1
  */

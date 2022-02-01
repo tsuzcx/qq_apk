@@ -85,43 +85,50 @@ public class DanmakuDataSource
   public void a(BaseDanmaku paramBaseDanmaku)
   {
     c();
-    Logger.c("DanmakuDataSource", "addNow: danmaku = " + paramBaseDanmaku);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("addNow: danmaku = ");
+    localStringBuilder.append(paramBaseDanmaku);
+    Logger.c("DanmakuDataSource", localStringBuilder.toString());
     this.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList.b(paramBaseDanmaku);
     d();
   }
   
   public boolean a()
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {}
-    while ((this.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList != null) && (this.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList.a() > 0)) {
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if ((localObject != null) && (((List)localObject).size() > 0)) {
       return true;
     }
-    return false;
+    localObject = this.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList;
+    return (localObject != null) && (((SortedLinkedList)localObject).a() > 0);
   }
   
   public void b()
   {
     c();
     BaseDanmaku localBaseDanmaku = (BaseDanmaku)this.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList.b();
-    if (localBaseDanmaku == null) {}
-    for (this.jdField_a_of_type_Long = -1L;; this.jdField_a_of_type_Long = localBaseDanmaku.d())
-    {
-      d();
-      return;
+    if (localBaseDanmaku == null) {
+      this.jdField_a_of_type_Long = -1L;
+    } else {
+      this.jdField_a_of_type_Long = localBaseDanmaku.d();
     }
+    d();
   }
   
   public void b(BaseDanmaku paramBaseDanmaku)
   {
     c();
-    Logger.c("DanmakuDataSource", "addLast: danmaku = " + paramBaseDanmaku);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("addLast: danmaku = ");
+    localStringBuilder.append(paramBaseDanmaku);
+    Logger.c("DanmakuDataSource", localStringBuilder.toString());
     this.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList.a(paramBaseDanmaku);
     d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.core.DanmakuDataSource
  * JD-Core Version:    0.7.0.1
  */

@@ -20,35 +20,39 @@ class JsVirtualMachine$a
   
   public void a()
   {
-    if (this.a == null) {
+    WebView localWebView = this.a;
+    if (localWebView == null) {
       return;
     }
-    this.a.onPause();
+    localWebView.onPause();
   }
   
   public void addJavascriptInterface(Object paramObject, String paramString)
   {
-    if (this.a == null) {
+    WebView localWebView = this.a;
+    if (localWebView == null) {
       return;
     }
-    this.a.addJavascriptInterface(paramObject, paramString);
+    localWebView.addJavascriptInterface(paramObject, paramString);
     this.a.loadUrl("about:blank");
   }
   
   public void b()
   {
-    if (this.a == null) {
+    WebView localWebView = this.a;
+    if (localWebView == null) {
       return;
     }
-    this.a.onResume();
+    localWebView.onResume();
   }
   
   public void destroy()
   {
-    if (this.a == null) {
+    WebView localWebView = this.a;
+    if (localWebView == null) {
       return;
     }
-    this.a.clearHistory();
+    localWebView.clearHistory();
     this.a.clearCache(true);
     this.a.loadUrl("about:blank");
     this.a.freeMemory();
@@ -59,39 +63,40 @@ class JsVirtualMachine$a
   
   public void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback, URL paramURL)
   {
-    if (this.a == null) {
-      return;
-    }
     paramURL = this.a;
-    if (paramValueCallback == null) {}
-    for (paramValueCallback = null;; paramValueCallback = new JsVirtualMachine.a.1(this, paramValueCallback))
-    {
-      paramURL.evaluateJavascript(paramString, paramValueCallback);
+    if (paramURL == null) {
       return;
     }
+    if (paramValueCallback == null) {
+      paramValueCallback = null;
+    } else {
+      paramValueCallback = new JsVirtualMachine.a.1(this, paramValueCallback);
+    }
+    paramURL.evaluateJavascript(paramString, paramValueCallback);
   }
   
   public IX5JsValue evaluateScript(String paramString, URL paramURL)
   {
-    if (this.a == null) {
+    paramURL = this.a;
+    if (paramURL == null) {
       return null;
     }
-    this.a.evaluateJavascript(paramString, null);
+    paramURL.evaluateJavascript(paramString, null);
     return null;
   }
   
   public void evaluateScriptAsync(String paramString, ValueCallback<IX5JsValue> paramValueCallback, URL paramURL)
   {
-    if (this.a == null) {
-      return;
-    }
     paramURL = this.a;
-    if (paramValueCallback == null) {}
-    for (paramValueCallback = null;; paramValueCallback = new JsVirtualMachine.a.2(this, paramValueCallback))
-    {
-      paramURL.evaluateJavascript(paramString, paramValueCallback);
+    if (paramURL == null) {
       return;
     }
+    if (paramValueCallback == null) {
+      paramValueCallback = null;
+    } else {
+      paramValueCallback = new JsVirtualMachine.a.2(this, paramValueCallback);
+    }
+    paramURL.evaluateJavascript(paramString, paramValueCallback);
   }
   
   public byte[] getNativeBuffer(int paramInt)
@@ -106,10 +111,11 @@ class JsVirtualMachine$a
   
   public void removeJavascriptInterface(String paramString)
   {
-    if (this.a == null) {
+    WebView localWebView = this.a;
+    if (localWebView == null) {
       return;
     }
-    this.a.removeJavascriptInterface(paramString);
+    localWebView.removeJavascriptInterface(paramString);
   }
   
   public void setExceptionHandler(ValueCallback<IX5JsError> paramValueCallback) {}
@@ -127,7 +133,7 @@ class JsVirtualMachine$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.JsVirtualMachine.a
  * JD-Core Version:    0.7.0.1
  */

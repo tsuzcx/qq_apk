@@ -30,7 +30,7 @@ class AbsListView$RecycleBin
       int k = 0;
       while (k < i1 - m)
       {
-        AbsListView.access$4500(this.this$0, (View)localArrayList.remove(j), false);
+        AbsListView.access$3600(this.this$0, (View)localArrayList.remove(j), false);
         k += 1;
         j -= 1;
       }
@@ -40,55 +40,54 @@ class AbsListView$RecycleBin
   
   void addScrapView(View paramView, int paramInt)
   {
-    AbsListView.LayoutParams localLayoutParams = (AbsListView.LayoutParams)paramView.getLayoutParams();
-    if (localLayoutParams == null) {}
-    for (;;)
-    {
+    Object localObject = (AbsListView.LayoutParams)paramView.getLayoutParams();
+    if (localObject == null) {
       return;
-      int i = localLayoutParams.viewType;
-      if (!shouldRecycleViewType(i))
-      {
-        if (i != -2) {
-          AbsListView.access$4200(this.this$0, paramView, false);
-        }
+    }
+    int i = ((AbsListView.LayoutParams)localObject).viewType;
+    if (!shouldRecycleViewType(i))
+    {
+      if (i != -2) {
+        AbsListView.access$3300(this.this$0, paramView, false);
       }
-      else
-      {
-        localLayoutParams.scrappedFromPosition = paramInt;
-        if (this.mViewTypeCount == 1)
-        {
-          AbsListView.access$4300(this.this$0, paramView);
-          this.mCurrentScrap.add(paramView);
-        }
-        while (this.mRecyclerListener != null)
-        {
-          this.mRecyclerListener.onMovedToScrapHeap(paramView);
-          return;
-          AbsListView.access$4300(this.this$0, paramView);
-          if (i < this.mScrapViews.length) {
-            this.mScrapViews[i].add(paramView);
-          }
-        }
+      return;
+    }
+    ((AbsListView.LayoutParams)localObject).scrappedFromPosition = paramInt;
+    if (this.mViewTypeCount == 1)
+    {
+      AbsListView.access$3400(this.this$0, paramView);
+      this.mCurrentScrap.add(paramView);
+    }
+    else
+    {
+      AbsListView.access$3400(this.this$0, paramView);
+      localObject = this.mScrapViews;
+      if (i < localObject.length) {
+        localObject[i].add(paramView);
       }
+    }
+    localObject = this.mRecyclerListener;
+    if (localObject != null) {
+      ((AbsListView.RecyclerListener)localObject).onMovedToScrapHeap(paramView);
     }
   }
   
   void clear()
   {
+    int k = this.mViewTypeCount;
     ArrayList localArrayList;
     int j;
-    if (this.mViewTypeCount == 1)
+    if (k == 1)
     {
       localArrayList = this.mCurrentScrap;
       j = localArrayList.size();
       i = 0;
       while (i < j)
       {
-        AbsListView.access$4000(this.this$0, (View)localArrayList.remove(j - 1 - i), false);
+        AbsListView.access$3100(this.this$0, (View)localArrayList.remove(j - 1 - i), false);
         i += 1;
       }
     }
-    int k = this.mViewTypeCount;
     int i = 0;
     while (i < k)
     {
@@ -97,7 +96,7 @@ class AbsListView$RecycleBin
       j = 0;
       while (j < m)
       {
-        AbsListView.access$4100(this.this$0, (View)localArrayList.remove(m - 1 - j), false);
+        AbsListView.access$3200(this.this$0, (View)localArrayList.remove(m - 1 - j), false);
         j += 1;
       }
       i += 1;
@@ -142,18 +141,23 @@ class AbsListView$RecycleBin
       return AbsListView.retrieveFromScrap(this.mCurrentScrap, paramInt);
     }
     int i = this.this$0.mAdapter.getItemViewType(paramInt);
-    if ((i >= 0) && (this.mScrapViews != null) && (i < this.mScrapViews.length)) {
-      return AbsListView.retrieveFromScrap(this.mScrapViews[i], paramInt);
+    if (i >= 0)
+    {
+      ArrayList[] arrayOfArrayList = this.mScrapViews;
+      if ((arrayOfArrayList != null) && (i < arrayOfArrayList.length)) {
+        return AbsListView.retrieveFromScrap(arrayOfArrayList[i], paramInt);
+      }
     }
     return null;
   }
   
   public void markChildrenDirty()
   {
+    int k = this.mViewTypeCount;
     int i = 0;
     ArrayList localArrayList;
     int j;
-    if (this.mViewTypeCount == 1)
+    if (k == 1)
     {
       localArrayList = this.mCurrentScrap;
       j = localArrayList.size();
@@ -163,7 +167,6 @@ class AbsListView$RecycleBin
         i += 1;
       }
     }
-    int k = this.mViewTypeCount;
     i = 0;
     while (i < k)
     {
@@ -181,20 +184,18 @@ class AbsListView$RecycleBin
   
   void reclaimScrapViews(List<View> paramList)
   {
-    if (this.mViewTypeCount == 1) {
-      paramList.addAll(this.mCurrentScrap);
-    }
-    for (;;)
+    int j = this.mViewTypeCount;
+    if (j == 1)
     {
+      paramList.addAll(this.mCurrentScrap);
       return;
-      int j = this.mViewTypeCount;
-      ArrayList[] arrayOfArrayList = this.mScrapViews;
-      int i = 0;
-      while (i < j)
-      {
-        paramList.addAll(arrayOfArrayList[i]);
-        i += 1;
-      }
+    }
+    ArrayList[] arrayOfArrayList = this.mScrapViews;
+    int i = 0;
+    while (i < j)
+    {
+      paramList.addAll(arrayOfArrayList[i]);
+      i += 1;
     }
   }
   
@@ -202,75 +203,64 @@ class AbsListView$RecycleBin
   {
     View[] arrayOfView = this.mActiveViews;
     int i;
-    int j;
-    label25:
-    Object localObject1;
-    int k;
-    label37:
-    View localView;
-    Object localObject2;
-    int m;
-    if (this.mRecyclerListener != null)
-    {
+    if (this.mRecyclerListener != null) {
       i = 1;
-      if (this.mViewTypeCount <= 1) {
-        break label128;
-      }
+    } else {
+      i = 0;
+    }
+    int j;
+    if (this.mViewTypeCount > 1) {
       j = 1;
-      localObject1 = this.mCurrentScrap;
-      k = arrayOfView.length - 1;
-      if (k < 0) {
-        break label200;
-      }
-      localView = arrayOfView[k];
-      localObject2 = localObject1;
+    } else {
+      j = 0;
+    }
+    Object localObject1 = this.mCurrentScrap;
+    int k = arrayOfView.length - 1;
+    while (k >= 0)
+    {
+      View localView = arrayOfView[k];
+      Object localObject2 = localObject1;
       if (localView != null)
       {
         localObject2 = (AbsListView.LayoutParams)localView.getLayoutParams();
-        m = ((AbsListView.LayoutParams)localObject2).viewType;
+        int m = ((AbsListView.LayoutParams)localObject2).viewType;
         arrayOfView[k] = null;
-        if (shouldRecycleViewType(m)) {
-          break label133;
-        }
-        localObject2 = localObject1;
-        if (m != -2)
+        if (!shouldRecycleViewType(m))
         {
-          AbsListView.access$4400(this.this$0, localView, false);
           localObject2 = localObject1;
+          if (m != -2)
+          {
+            AbsListView.access$3500(this.this$0, localView, false);
+            localObject2 = localObject1;
+          }
+        }
+        else
+        {
+          if (j != 0) {
+            localObject1 = this.mScrapViews[m];
+          }
+          AbsListView.access$3400(this.this$0, localView);
+          ((AbsListView.LayoutParams)localObject2).scrappedFromPosition = (this.mFirstActivePosition + k);
+          ((ArrayList)localObject1).add(localView);
+          localObject2 = localObject1;
+          if (i != 0)
+          {
+            this.mRecyclerListener.onMovedToScrapHeap(localView);
+            localObject2 = localObject1;
+          }
         }
       }
-    }
-    for (;;)
-    {
       k -= 1;
       localObject1 = localObject2;
-      break label37;
-      i = 0;
-      break;
-      label128:
-      j = 0;
-      break label25;
-      label133:
-      if (j != 0) {
-        localObject1 = this.mScrapViews[m];
-      }
-      AbsListView.access$4300(this.this$0, localView);
-      ((AbsListView.LayoutParams)localObject2).scrappedFromPosition = (this.mFirstActivePosition + k);
-      ((ArrayList)localObject1).add(localView);
-      localObject2 = localObject1;
-      if (i != 0)
-      {
-        this.mRecyclerListener.onMovedToScrapHeap(localView);
-        localObject2 = localObject1;
-      }
     }
-    label200:
     pruneScrapViews();
   }
   
   void setCacheColorHint(int paramInt)
   {
-    if (this.mViewTypeCount == 1)
+    int m = this.mViewTypeCount;
+    int k = 0;
+    if (m == 1)
     {
       localObject1 = this.mCurrentScrap;
       j = ((ArrayList)localObject1).size();
@@ -281,14 +271,13 @@ class AbsListView$RecycleBin
         i += 1;
       }
     }
-    int k = this.mViewTypeCount;
     int i = 0;
-    while (i < k)
+    while (i < m)
     {
       localObject1 = this.mScrapViews[i];
-      int m = ((ArrayList)localObject1).size();
+      int n = ((ArrayList)localObject1).size();
       j = 0;
-      while (j < m)
+      while (j < n)
       {
         ((View)((ArrayList)localObject1).get(j)).setDrawingCacheBackgroundColor(paramInt);
         j += 1;
@@ -297,7 +286,7 @@ class AbsListView$RecycleBin
     }
     Object localObject1 = this.mActiveViews;
     int j = localObject1.length;
-    i = 0;
+    i = k;
     while (i < j)
     {
       Object localObject2 = localObject1[i];
@@ -310,19 +299,25 @@ class AbsListView$RecycleBin
   
   public void setViewTypeCount(int paramInt)
   {
-    if (paramInt < 1) {
-      throw new IllegalArgumentException("Can't have a viewTypeCount < 1");
-    }
-    ArrayList[] arrayOfArrayList = new ArrayList[paramInt];
-    int i = 0;
-    while (i < paramInt)
+    if (paramInt >= 1)
     {
-      arrayOfArrayList[i] = new ArrayList();
-      i += 1;
+      localObject = new ArrayList[paramInt];
+      int i = 0;
+      while (i < paramInt)
+      {
+        localObject[i] = new ArrayList();
+        i += 1;
+      }
+      this.mViewTypeCount = paramInt;
+      this.mCurrentScrap = localObject[0];
+      this.mScrapViews = ((ArrayList[])localObject);
+      return;
     }
-    this.mViewTypeCount = paramInt;
-    this.mCurrentScrap = arrayOfArrayList[0];
-    this.mScrapViews = arrayOfArrayList;
+    Object localObject = new IllegalArgumentException("Can't have a viewTypeCount < 1");
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
   
   public boolean shouldRecycleViewType(int paramInt)
@@ -332,7 +327,7 @@ class AbsListView$RecycleBin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.AbsListView.RecycleBin
  * JD-Core Version:    0.7.0.1
  */

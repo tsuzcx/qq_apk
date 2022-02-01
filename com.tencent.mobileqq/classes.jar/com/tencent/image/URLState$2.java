@@ -19,10 +19,11 @@ class URLState$2
     try
     {
       Object localObject = this.this$0.loadImage(this.this$0.mUrl, this.val$handler);
-      if (localObject != URLState.DOWNLOAD_ASYNC) {
+      if (localObject != URLState.DOWNLOAD_ASYNC)
+      {
         URLState.access$000(this.this$0, localObject);
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -32,7 +33,7 @@ class URLState$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.image.URLState.2
  * JD-Core Version:    0.7.0.1
  */

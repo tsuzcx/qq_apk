@@ -28,35 +28,59 @@ public class DittoFormulaField
   {
     try
     {
-      double d1 = this.ratio;
-      double d2 = Double.parseDouble(this.value.getValue(paramObject).toString());
-      if ("-".equals(this.operator)) {}
-      for (int i = -1;; i = 1)
-      {
-        double d3 = i * this.offset;
-        return Double.valueOf((d3 + d2) * d1);
+      d1 = this.ratio;
+      d2 = Double.parseDouble(this.value.getValue(paramObject).toString());
+      if (!"-".equals(this.operator)) {
+        break label121;
       }
-      return "0";
+      i = -1;
     }
     catch (Throwable paramObject)
     {
-      DittoLog.e("DittoFormulaField", "err parse value " + this.formula);
+      for (;;)
+      {
+        double d1;
+        double d2;
+        float f1;
+        float f2;
+        double d3;
+        continue;
+        label121:
+        int i = 1;
+      }
     }
+    f1 = i;
+    f2 = this.offset;
+    d3 = f1 * f2;
+    Double.isNaN(d3);
+    Double.isNaN(d1);
+    return Double.valueOf(d1 * (d2 + d3));
+    paramObject = new StringBuilder();
+    paramObject.append("err parse value ");
+    paramObject.append(this.formula);
+    DittoLog.e("DittoFormulaField", paramObject.toString());
+    return "0";
   }
   
   public void setValue(Object paramObject, String paramString)
   {
-    DittoLog.e("DITTO_UI", "cannot set a value of formula:" + this.formula, new RuntimeException());
+    paramObject = new StringBuilder();
+    paramObject.append("cannot set a value of formula:");
+    paramObject.append(this.formula);
+    DittoLog.e("DITTO_UI", paramObject.toString(), new RuntimeException());
   }
   
   public void setValue(Object paramObject, boolean paramBoolean)
   {
-    DittoLog.e("DITTO_UI", "cannot set a value of formula:" + this.formula, new RuntimeException());
+    paramObject = new StringBuilder();
+    paramObject.append("cannot set a value of formula:");
+    paramObject.append(this.formula);
+    DittoLog.e("DITTO_UI", paramObject.toString(), new RuntimeException());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ditto.reflect.DittoFormulaField
  * JD-Core Version:    0.7.0.1
  */

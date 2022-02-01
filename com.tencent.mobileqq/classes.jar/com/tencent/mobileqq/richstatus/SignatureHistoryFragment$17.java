@@ -1,24 +1,52 @@
 package com.tencent.mobileqq.richstatus;
 
-import android.widget.RelativeLayout;
-import com.tencent.widget.XListView;
+import android.graphics.drawable.Drawable;
+import android.widget.EditText;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.text.TextUtils;
 
-class SignatureHistoryFragment$17
-  implements Runnable
+final class SignatureHistoryFragment$17
+  implements EmoticonCallback
 {
-  SignatureHistoryFragment$17(SignatureHistoryFragment paramSignatureHistoryFragment, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean) {}
+  SignatureHistoryFragment$17(EditText paramEditText, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
   
-  public void run()
+  public void delete()
   {
-    this.this$0.jdField_a_of_type_ComTencentWidgetXListView.smoothScrollBy(this.jdField_a_of_type_Int - (this.b - this.c), 100);
-    if (this.jdField_a_of_type_Boolean) {
-      SignatureHistoryFragment.a(this.this$0).addOnLayoutChangeListener(this.this$0.jdField_a_of_type_AndroidViewView$OnLayoutChangeListener);
-    }
+    TextUtils.backspace(this.jdField_a_of_type_AndroidWidgetEditText);
   }
+  
+  public void emoticonMall() {}
+  
+  public void onHidePopup(EmoticonInfo paramEmoticonInfo) {}
+  
+  public boolean onLongClick(EmoticonInfo paramEmoticonInfo)
+  {
+    return false;
+  }
+  
+  public void onShowPopup(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
+  
+  public void send() {}
+  
+  public void send(EmoticonInfo paramEmoticonInfo)
+  {
+    if (paramEmoticonInfo != null) {}
+    try
+    {
+      paramEmoticonInfo.send(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
+      return;
+    }
+    catch (Throwable paramEmoticonInfo) {}
+  }
+  
+  public void setting() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureHistoryFragment.17
  * JD-Core Version:    0.7.0.1
  */

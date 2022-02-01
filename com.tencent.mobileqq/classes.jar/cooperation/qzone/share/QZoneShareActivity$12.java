@@ -2,7 +2,6 @@ package cooperation.qzone.share;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class QZoneShareActivity$12
   implements View.OnClickListener
@@ -11,21 +10,18 @@ class QZoneShareActivity$12
   
   public void onClick(View paramView)
   {
-    if (!this.this$0.emoShow) {
-      this.this$0.showEmoView();
-    }
-    for (;;)
+    if (!this.this$0.emoShow)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.this$0.showEmoView();
       return;
-      this.this$0.showKeyboard();
-      this.this$0.hideEmoView();
     }
+    this.this$0.showKeyboard();
+    this.this$0.hideEmoView();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.12
  * JD-Core Version:    0.7.0.1
  */

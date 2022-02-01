@@ -56,30 +56,26 @@ public class MiniAppReportManager2$AppLaunchState
   public String hasPkgAndX5()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    if (this.flutterMode)
-    {
-      str = "flutterMode_";
-      localStringBuilder = localStringBuilder.append(str);
-      if (!hasX5) {
-        break label64;
-      }
-      str = "hasX5";
-      label33:
-      localStringBuilder = localStringBuilder.append(str);
-      if (!this.hasPkg) {
-        break label70;
-      }
+    boolean bool = this.flutterMode;
+    String str2 = "";
+    if (bool) {
+      str1 = "flutterMode_";
+    } else {
+      str1 = "";
     }
-    label64:
-    label70:
-    for (String str = "_hasPkg";; str = "")
-    {
-      return str;
-      str = "";
-      break;
-      str = "";
-      break label33;
+    localStringBuilder.append(str1);
+    if (hasX5) {
+      str1 = "hasX5";
+    } else {
+      str1 = "";
     }
+    localStringBuilder.append(str1);
+    String str1 = str2;
+    if (this.hasPkg) {
+      str1 = "_hasPkg";
+    }
+    localStringBuilder.append(str1);
+    return localStringBuilder.toString();
   }
   
   public void reset()
@@ -120,20 +116,27 @@ public class MiniAppReportManager2$AppLaunchState
       localObject = ((JSONObject)localObject).toString();
       return localObject;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label202:
+      break label202;
+    }
     return null;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("launchId: ").append(this.launchId).append(", appId: ").append(0);
+    localStringBuilder.append("launchId: ");
+    localStringBuilder.append(this.launchId);
+    localStringBuilder.append(", appId: ");
+    localStringBuilder.append(0);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniAppReportManager2.AppLaunchState
  * JD-Core Version:    0.7.0.1
  */

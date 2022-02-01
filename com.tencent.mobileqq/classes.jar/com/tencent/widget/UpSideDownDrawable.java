@@ -21,152 +21,100 @@ public class UpSideDownDrawable
   extends Drawable
   implements Handler.Callback
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private UpSideDownDrawable.State jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
-  private int c = 0;
-  private int d = 0;
-  private int e;
-  private int f;
-  private int g;
-  private int h;
+  private static final int DEFAULT_DURATION_MS = 12000;
+  private static final int DEFAULT_TIME_SLOT_MS = 20;
+  private static final int MSG_DEFAULT = 0;
+  private static final int MSG_SCROLLER_DOWN = 2;
+  private static final int MSG_SCROLLER_UP = 3;
+  private static final int MSG_START = 1;
+  private boolean isResume = false;
+  private Bitmap mBitmap;
+  private int mBottom;
+  private int mCurX = 0;
+  private int mCurY = 0;
+  Rect mDesRect = new Rect();
+  private int mDisplayHeight;
+  private int mDisplayWidth;
+  private int mHeight;
+  private Paint mPaint = new Paint();
+  private Scroller mScroller;
+  private Handler mScrollerHandler;
+  Rect mSrcRect = new Rect();
+  private UpSideDownDrawable.State mState;
+  private int mTop;
+  private int mWidth;
   
   public UpSideDownDrawable(Context paramContext, Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramBitmap.getWidth();
-    this.jdField_b_of_type_Int = paramBitmap.getHeight();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.e = paramInt1;
-    if (this.e <= 0) {
-      if ((paramContext == null) || (paramContext.getResources() == null)) {
-        break label307;
+    this.mWidth = paramBitmap.getWidth();
+    this.mHeight = paramBitmap.getHeight();
+    this.mBitmap = paramBitmap;
+    this.mDisplayWidth = paramInt1;
+    if (this.mDisplayWidth <= 0) {
+      if ((paramContext != null) && (paramContext.getResources() != null)) {
+        this.mDisplayWidth = ScreenUtil.getInstantScreenWidth(paramContext);
+      } else {
+        this.mDisplayWidth = ScreenUtil.SCREEN_WIDTH;
       }
     }
-    label307:
-    for (this.e = ScreenUtil.getInstantScreenWidth(paramContext);; this.e = ScreenUtil.SCREEN_WIDTH)
-    {
-      int i = paramInt2;
-      if (paramInt2 <= 0) {
-        i = ScreenUtil.dip2px(170.0F);
-      }
-      this.f = (this.jdField_a_of_type_Int * i / this.e);
-      this.g = (this.jdField_b_of_type_Int * 15 / 100);
-      this.h = (this.jdField_b_of_type_Int * 85 / 100);
-      if (QLog.isColorLevel()) {
-        QLog.i("UpSideDownDrawable", 2, String.format("UpSideDownDrawable bw=%d bh=%d dw=%d dh=%d mDisplayHeight=%d mTop=%d mBot=%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(paramInt1), Integer.valueOf(i), Integer.valueOf(this.f), Integer.valueOf(this.g), Integer.valueOf(this.h) }));
-      }
-      this.jdField_a_of_type_AndroidOsHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
-      this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new AccelerateDecelerateInterpolator());
-      this.d = this.g;
-      this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State = new UpSideDownDrawable.State(this);
-      return;
+    int i = paramInt2;
+    if (paramInt2 <= 0) {
+      i = ScreenUtil.dip2px(170.0F);
     }
-  }
-  
-  private void e()
-  {
-    this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State.jdField_a_of_type_Int = (this.h - this.f);
-    this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State.jdField_b_of_type_Int = (-(this.h - this.g - this.f));
-    this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State.c = 12000;
-    this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State.d = 3;
-  }
-  
-  private void f()
-  {
-    this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State.jdField_a_of_type_Int = this.g;
-    this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State.jdField_b_of_type_Int = (this.h - this.g - this.f);
-    this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State.c = 12000;
-    this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State.d = 2;
-  }
-  
-  public Bitmap a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
+    this.mDisplayHeight = (this.mWidth * i / this.mDisplayWidth);
+    paramInt2 = this.mHeight;
+    this.mTop = (paramInt2 * 15 / 100);
+    this.mBottom = (paramInt2 * 85 / 100);
+    if (QLog.isColorLevel()) {
+      QLog.i("UpSideDownDrawable", 2, String.format("UpSideDownDrawable bw=%d bh=%d dw=%d dh=%d mDisplayHeight=%d mTop=%d mBot=%d", new Object[] { Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight), Integer.valueOf(paramInt1), Integer.valueOf(i), Integer.valueOf(this.mDisplayHeight), Integer.valueOf(this.mTop), Integer.valueOf(this.mBottom) }));
     }
-    this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State.jdField_a_of_type_Int = this.g;
-    this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State.jdField_b_of_type_Int = (this.h - this.g - this.f);
-    this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State.c = 12000;
-    this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State.d = 2;
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    this.mScrollerHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
+    this.mScroller = new Scroller(paramContext, new AccelerateDecelerateInterpolator());
+    this.mCurY = this.mTop;
+    this.mState = new UpSideDownDrawable.State(this);
   }
   
-  public void b()
+  private void initMoveDown()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-    this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State.jdField_a_of_type_Int = this.g;
-    this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State.jdField_b_of_type_Int = (this.h - this.g - this.f);
-    this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State.c = 12000;
-    this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State.d = 2;
-    this.d = this.g;
-    this.jdField_a_of_type_Boolean = false;
-    invalidateSelf();
+    UpSideDownDrawable.State localState = this.mState;
+    int i = this.mBottom;
+    int j = this.mDisplayHeight;
+    localState.fromY = (i - j);
+    localState.toY = (-(i - this.mTop - j));
+    localState.leftDurtion = 12000;
+    localState.derection = 3;
   }
   
-  public void c()
+  private void initMoveUp()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(2))
-    {
-      this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State.d = 2;
-      this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State.jdField_b_of_type_Int = (this.h - this.g - this.f);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State.jdField_a_of_type_Int = this.d;
-      this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State.c = (this.jdField_a_of_type_AndroidWidgetScroller.getDuration() - this.jdField_a_of_type_AndroidWidgetScroller.timePassed());
-      this.jdField_a_of_type_AndroidWidgetScroller.abortAnimation();
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-      this.jdField_a_of_type_Boolean = false;
-      return;
-      if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(3))
-      {
-        this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State.d = 3;
-        this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State.jdField_b_of_type_Int = (-(this.h - this.g - this.f));
-      }
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    UpSideDownDrawable.State localState = this.mState;
+    int i = this.mTop;
+    localState.fromY = i;
+    localState.toY = (this.mBottom - i - this.mDisplayHeight);
+    localState.leftDurtion = 12000;
+    localState.derection = 2;
   }
   
   public void draw(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect.set(0, this.d, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.d + this.f);
-    this.jdField_b_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.f);
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.mSrcRect.set(0, this.mCurY, this.mBitmap.getWidth(), this.mCurY + this.mDisplayHeight);
+    this.mDesRect.set(0, 0, this.mBitmap.getWidth(), this.mDisplayHeight);
+    paramCanvas.drawBitmap(this.mBitmap, this.mSrcRect, this.mDesRect, this.mPaint);
+  }
+  
+  public Bitmap getBitmap()
+  {
+    return this.mBitmap;
   }
   
   public int getIntrinsicHeight()
   {
-    return this.f;
+    return this.mDisplayHeight;
   }
   
   public int getIntrinsicWidth()
   {
-    return this.jdField_a_of_type_Int;
+    return this.mWidth;
   }
   
   public int getOpacity()
@@ -176,71 +124,155 @@ public class UpSideDownDrawable
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return false;
-    case 1: 
-      this.jdField_a_of_type_AndroidWidgetScroller.startScroll(0, this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State.jdField_a_of_type_Int, 0, this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State.c);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable$State.d);
-      this.jdField_a_of_type_Boolean = true;
-      return false;
-    case 2: 
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-      if (this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
+      if (i != 2)
       {
-        this.d = this.jdField_a_of_type_AndroidWidgetScroller.getCurrY();
-        if (this.d <= this.h - this.f)
+        if (i == 3)
         {
-          invalidateSelf();
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 20L);
-          return false;
+          this.mScrollerHandler.removeMessages(3);
+          if (this.mScroller.computeScrollOffset())
+          {
+            this.mCurY = this.mScroller.getCurrY();
+            if (this.mCurY >= this.mTop)
+            {
+              invalidateSelf();
+              this.mScrollerHandler.sendEmptyMessageDelayed(3, 20L);
+            }
+            else
+            {
+              initMoveUp();
+              this.mScrollerHandler.sendEmptyMessage(1);
+            }
+          }
+          else
+          {
+            initMoveUp();
+            this.mScrollerHandler.sendEmptyMessage(1);
+          }
         }
-        e();
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-        return false;
       }
-      e();
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-      return false;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-    if (this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
-    {
-      this.d = this.jdField_a_of_type_AndroidWidgetScroller.getCurrY();
-      if (this.d >= this.g)
+      else
       {
-        invalidateSelf();
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 20L);
-        return false;
+        this.mScrollerHandler.removeMessages(2);
+        if (this.mScroller.computeScrollOffset())
+        {
+          this.mCurY = this.mScroller.getCurrY();
+          if (this.mCurY <= this.mBottom - this.mDisplayHeight)
+          {
+            invalidateSelf();
+            this.mScrollerHandler.sendEmptyMessageDelayed(2, 20L);
+          }
+          else
+          {
+            initMoveDown();
+            this.mScrollerHandler.sendEmptyMessage(1);
+          }
+        }
+        else
+        {
+          initMoveDown();
+          this.mScrollerHandler.sendEmptyMessage(1);
+        }
       }
-      f();
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-      return false;
     }
-    f();
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    else
+    {
+      this.mScroller.startScroll(0, this.mState.fromY, 0, this.mState.toY, this.mState.leftDurtion);
+      this.mScrollerHandler.sendEmptyMessage(this.mState.derection);
+      this.isResume = true;
+    }
     return false;
+  }
+  
+  public void pause()
+  {
+    if (!this.isResume) {
+      return;
+    }
+    if (this.mScrollerHandler.hasMessages(2))
+    {
+      localState = this.mState;
+      localState.derection = 2;
+      localState.toY = (this.mBottom - this.mTop - this.mDisplayHeight);
+    }
+    else if (this.mScrollerHandler.hasMessages(3))
+    {
+      localState = this.mState;
+      localState.derection = 3;
+      localState.toY = (-(this.mBottom - this.mTop - this.mDisplayHeight));
+    }
+    UpSideDownDrawable.State localState = this.mState;
+    localState.fromY = this.mCurY;
+    localState.leftDurtion = (this.mScroller.getDuration() - this.mScroller.timePassed());
+    this.mScroller.abortAnimation();
+    this.mScrollerHandler.removeMessages(2);
+    this.mScrollerHandler.removeMessages(3);
+    this.isResume = false;
+  }
+  
+  public void resume()
+  {
+    if (this.isResume) {
+      return;
+    }
+    this.mScrollerHandler.sendEmptyMessage(1);
   }
   
   public void setAlpha(int paramInt)
   {
-    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
+    if (paramInt != this.mPaint.getAlpha())
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+      this.mPaint.setAlpha(paramInt);
       super.invalidateSelf();
     }
   }
   
+  public void setBitmap(Bitmap paramBitmap)
+  {
+    this.mBitmap = paramBitmap;
+  }
+  
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    this.mPaint.setColorFilter(paramColorFilter);
     super.invalidateSelf();
+  }
+  
+  public void start()
+  {
+    if (this.isResume) {
+      return;
+    }
+    UpSideDownDrawable.State localState = this.mState;
+    int i = this.mTop;
+    localState.fromY = i;
+    localState.toY = (this.mBottom - i - this.mDisplayHeight);
+    localState.leftDurtion = 12000;
+    localState.derection = 2;
+    this.mScrollerHandler.sendEmptyMessage(1);
+  }
+  
+  public void stop()
+  {
+    this.mScrollerHandler.removeMessages(1);
+    this.mScrollerHandler.removeMessages(3);
+    this.mScrollerHandler.removeMessages(2);
+    UpSideDownDrawable.State localState = this.mState;
+    int i = this.mTop;
+    localState.fromY = i;
+    localState.toY = (this.mBottom - i - this.mDisplayHeight);
+    localState.leftDurtion = 12000;
+    localState.derection = 2;
+    this.mCurY = i;
+    this.isResume = false;
+    invalidateSelf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.UpSideDownDrawable
  * JD-Core Version:    0.7.0.1
  */

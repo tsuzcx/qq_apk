@@ -47,18 +47,21 @@ public class LivePlayerEmbeddedWidgetClient
   
   private void evaluateCallbackJs(int paramInt, String paramString)
   {
-    if (this.callBackWebview != null) {
-      this.callBackWebview.evaluateCallbackJs(paramInt, paramString);
+    IJsService localIJsService = this.callBackWebview;
+    if (localIJsService != null) {
+      localIJsService.evaluateCallbackJs(paramInt, paramString);
     }
   }
   
   private void evaluateSubscribeJS(String paramString1, String paramString2, int paramInt)
   {
-    if (this.mMiniAppContext != null) {
-      this.mMiniAppContext.performAction(ServiceSubscribeEvent.obtain(paramString1, paramString2, paramInt));
+    Object localObject = this.mMiniAppContext;
+    if (localObject != null) {
+      ((IMiniAppContext)localObject).performAction(ServiceSubscribeEvent.obtain(paramString1, paramString2, paramInt));
     }
-    if (this.callBackWebview != null) {
-      this.callBackWebview.evaluateSubscribeJS(paramString1, paramString2, this.curPageWebviewId);
+    localObject = this.callBackWebview;
+    if (localObject != null) {
+      ((IJsService)localObject).evaluateSubscribeJS(paramString1, paramString2, this.curPageWebviewId);
     }
   }
   
@@ -76,84 +79,97 @@ public class LivePlayerEmbeddedWidgetClient
   private static void saveJpeg(android.graphics.Bitmap paramBitmap, java.io.File paramFile)
   {
     // Byte code:
-    //   0: new 115	java/io/BufferedOutputStream
-    //   3: dup
-    //   4: new 117	java/io/FileOutputStream
-    //   7: dup
-    //   8: aload_1
-    //   9: invokespecial 120	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   12: invokespecial 123	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   15: astore_1
-    //   16: aload_0
-    //   17: getstatic 129	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   20: bipush 100
+    //   0: aconst_null
+    //   1: astore_2
+    //   2: new 114	java/io/BufferedOutputStream
+    //   5: dup
+    //   6: new 116	java/io/FileOutputStream
+    //   9: dup
+    //   10: aload_1
+    //   11: invokespecial 119	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   14: invokespecial 122	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   17: astore_1
+    //   18: aload_0
+    //   19: getstatic 128	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   22: bipush 100
-    //   24: invokestatic 135	java/lang/Math:min	(II)I
-    //   27: aload_1
-    //   28: invokevirtual 141	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   31: pop
-    //   32: aload_1
-    //   33: invokevirtual 144	java/io/BufferedOutputStream:flush	()V
-    //   36: aload_1
-    //   37: ifnull +7 -> 44
-    //   40: aload_1
-    //   41: invokevirtual 147	java/io/BufferedOutputStream:close	()V
-    //   44: return
-    //   45: astore_0
-    //   46: aconst_null
-    //   47: astore_1
-    //   48: aload_1
-    //   49: ifnull +7 -> 56
-    //   52: aload_1
-    //   53: invokevirtual 147	java/io/BufferedOutputStream:close	()V
-    //   56: aload_0
-    //   57: athrow
-    //   58: astore_0
-    //   59: return
-    //   60: astore_1
-    //   61: goto -5 -> 56
-    //   64: astore_0
-    //   65: goto -17 -> 48
+    //   24: bipush 100
+    //   26: invokestatic 134	java/lang/Math:min	(II)I
+    //   29: aload_1
+    //   30: invokevirtual 140	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   33: pop
+    //   34: aload_1
+    //   35: invokevirtual 143	java/io/BufferedOutputStream:flush	()V
+    //   38: aload_1
+    //   39: invokevirtual 146	java/io/BufferedOutputStream:close	()V
+    //   42: return
+    //   43: astore_0
+    //   44: goto +6 -> 50
+    //   47: astore_0
+    //   48: aload_2
+    //   49: astore_1
+    //   50: aload_1
+    //   51: ifnull +7 -> 58
+    //   54: aload_1
+    //   55: invokevirtual 146	java/io/BufferedOutputStream:close	()V
+    //   58: aload_0
+    //   59: athrow
+    //   60: astore_0
+    //   61: return
+    //   62: astore_1
+    //   63: goto -5 -> 58
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	68	0	paramBitmap	android.graphics.Bitmap
-    //   0	68	1	paramFile	java.io.File
+    //   0	66	0	paramBitmap	android.graphics.Bitmap
+    //   0	66	1	paramFile	java.io.File
+    //   1	48	2	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   0	16	45	finally
-    //   40	44	58	java/lang/Exception
-    //   52	56	60	java/lang/Exception
-    //   16	36	64	finally
+    //   18	38	43	finally
+    //   2	18	47	finally
+    //   38	42	60	java/lang/Exception
+    //   54	58	62	java/lang/Exception
   }
   
   public boolean enterBackground()
   {
-    if (this.livePlayerJSAdapter == null) {}
-    TXJSAdapterError localTXJSAdapterError;
-    do
-    {
+    Object localObject = this.livePlayerJSAdapter;
+    boolean bool = false;
+    if (localObject == null) {
       return false;
-      localTXJSAdapterError = this.livePlayerJSAdapter.enterBackground(2);
-      if (QMLog.isColorLevel()) {
-        QMLog.d("miniapp-embedded-live-player", "enterBackground: " + localTXJSAdapterError);
-      }
-    } while (localTXJSAdapterError.errorCode != 0);
-    return true;
+    }
+    localObject = ((TXLivePlayerJSAdapter)localObject).enterBackground(2);
+    if (QMLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("enterBackground: ");
+      localStringBuilder.append(localObject);
+      QMLog.d("miniapp-embedded-live-player", localStringBuilder.toString());
+    }
+    if (((TXJSAdapterError)localObject).errorCode == 0) {
+      bool = true;
+    }
+    return bool;
   }
   
   public boolean enterForeground()
   {
-    if (this.livePlayerJSAdapter == null) {}
-    TXJSAdapterError localTXJSAdapterError;
-    do
-    {
+    Object localObject = this.livePlayerJSAdapter;
+    boolean bool = false;
+    if (localObject == null) {
       return false;
-      localTXJSAdapterError = this.livePlayerJSAdapter.enterForeground();
-      if (QMLog.isColorLevel()) {
-        QMLog.d("miniapp-embedded-live-player", "enterForeground: " + localTXJSAdapterError);
-      }
-    } while (localTXJSAdapterError.errorCode != 0);
-    return true;
+    }
+    localObject = ((TXLivePlayerJSAdapter)localObject).enterForeground();
+    if (QMLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("enterForeground: ");
+      localStringBuilder.append(localObject);
+      QMLog.d("miniapp-embedded-live-player", localStringBuilder.toString());
+    }
+    if (((TXJSAdapterError)localObject).errorCode == 0) {
+      bool = true;
+    }
+    return bool;
   }
   
   public IMiniAppContext getMiniAppContext()
@@ -169,59 +185,67 @@ public class LivePlayerEmbeddedWidgetClient
   public void handleInsertXWebLivePlayer(JSONObject paramJSONObject, IJsService paramIJsService)
   {
     this.callBackWebview = paramIJsService;
-    if ((paramIJsService instanceof BrandPageWebview)) {
+    if ((paramIJsService instanceof BrandPageWebview))
+    {
       this.curPageWebviewId = ((BrandPageWebview)paramIJsService).getWebViewId();
     }
-    for (;;)
+    else
     {
-      if (paramJSONObject != null)
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("cant get webviewId from ");
+      localStringBuilder.append(paramIJsService);
+      QMLog.e("miniapp-embedded-live-player", localStringBuilder.toString());
+    }
+    if (paramJSONObject != null)
+    {
+      paramIJsService = new StringBuilder();
+      paramIJsService.append("handleInsertXWebLivePlayer : ");
+      paramIJsService.append(paramJSONObject.toString());
+      QMLog.d("miniapp-embedded-live-player", paramIJsService.toString());
+      this.viewId = paramJSONObject.optInt("viewId");
+      if (paramJSONObject.has("position"))
       {
-        QMLog.d("miniapp-embedded-live-player", "handleInsertXWebLivePlayer : " + paramJSONObject.toString());
-        this.viewId = paramJSONObject.optInt("viewId");
-        if (paramJSONObject.has("position"))
-        {
-          paramIJsService = paramJSONObject.optJSONObject("position");
-          this.width = ((int)(DisplayUtil.getDensity(AppLoaderFactory.g().getContext()) * paramIJsService.optInt("width", -1) + 0.5F));
-          float f = DisplayUtil.getDensity(AppLoaderFactory.g().getContext());
-          this.height = ((int)(paramIJsService.optInt("height", -1) * f + 0.5F));
-        }
-        this.livePlayerJSAdapter = new TXLivePlayerJSAdapter(AppLoaderFactory.g().getContext());
-        this.livePlayerJSAdapter.initEmbeddedLivePlayer(paramJSONObject);
-        this.livePlayerJSAdapter.setPlayListener(getPlayerListener());
-        this.livePlayerJSAdapter.setItxAudioVolumeEvaluationOuterListener(getAudioVolumeEvaluationListener());
-        this.livePlayerJSAdapter.setSurface(this.mSurface);
-        this.livePlayerJSAdapter.setSurfaceSize(this.width, this.height);
+        paramIJsService = paramJSONObject.optJSONObject("position");
+        this.width = ((int)(DisplayUtil.getDensity(AppLoaderFactory.g().getContext()) * paramIJsService.optInt("width", -1) + 0.5F));
+        this.height = ((int)(DisplayUtil.getDensity(AppLoaderFactory.g().getContext()) * paramIJsService.optInt("height", -1) + 0.5F));
       }
-      return;
-      QMLog.e("miniapp-embedded-live-player", "cant get webviewId from " + paramIJsService);
+      this.livePlayerJSAdapter = new TXLivePlayerJSAdapter(AppLoaderFactory.g().getContext());
+      this.livePlayerJSAdapter.initEmbeddedLivePlayer(paramJSONObject);
+      this.livePlayerJSAdapter.setPlayListener(getPlayerListener());
+      this.livePlayerJSAdapter.setItxAudioVolumeEvaluationOuterListener(getAudioVolumeEvaluationListener());
+      this.livePlayerJSAdapter.setSurface(this.mSurface);
+      this.livePlayerJSAdapter.setSurfaceSize(this.width, this.height);
     }
   }
   
   public void handleOperateXWebLivePlayer(JSONObject paramJSONObject, int paramInt)
   {
-    QMLog.d("miniapp-embedded-live-player", "handleOperateXWebLivePlayer : " + paramJSONObject.toString());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handleOperateXWebLivePlayer : ");
+    ((StringBuilder)localObject).append(paramJSONObject.toString());
+    QMLog.d("miniapp-embedded-live-player", ((StringBuilder)localObject).toString());
     if ((paramJSONObject.optInt("viewId", -1) == this.viewId) && (paramJSONObject.has("type")))
     {
-      String str1 = paramJSONObject.optString("type");
-      if ("snapshot".equalsIgnoreCase(str1))
+      localObject = paramJSONObject.optString("type");
+      if ("snapshot".equalsIgnoreCase((String)localObject))
       {
         boolean bool2 = false;
         boolean bool1 = bool2;
         if (paramJSONObject != null)
         {
-          String str2 = paramJSONObject.optString("quality");
+          String str = paramJSONObject.optString("quality");
           bool1 = bool2;
-          if (str2 != null)
+          if (str != null)
           {
             bool1 = bool2;
-            if (str2.equalsIgnoreCase("compressed")) {
+            if (str.equalsIgnoreCase("compressed")) {
               bool1 = true;
             }
           }
         }
         takePhoto("operateXWebLivePlayer", bool1, paramInt);
       }
-      this.livePlayerJSAdapter.operateLivePlayer(str1, paramJSONObject);
+      this.livePlayerJSAdapter.operateLivePlayer((String)localObject, paramJSONObject);
       evaluateCallbackJs(paramInt, ApiUtil.wrapCallbackOk("operateXWebLivePlayer", new JSONObject()).toString());
     }
   }
@@ -235,30 +259,39 @@ public class LivePlayerEmbeddedWidgetClient
   {
     if (paramJSONObject != null)
     {
-      QMLog.d("miniapp-embedded-live-player", "handleUpdateXWebLivePlayer : " + paramJSONObject.toString());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleUpdateXWebLivePlayer : ");
+      ((StringBuilder)localObject).append(paramJSONObject.toString());
+      QMLog.d("miniapp-embedded-live-player", ((StringBuilder)localObject).toString());
       if (paramJSONObject.has("position"))
       {
-        JSONObject localJSONObject = paramJSONObject.optJSONObject("position");
-        this.width = ((int)(DisplayUtil.getDensity(AppLoaderFactory.g().getContext()) * localJSONObject.optInt("width", -1) + 0.5F));
-        float f = DisplayUtil.getDensity(AppLoaderFactory.g().getContext());
-        this.height = ((int)(localJSONObject.optInt("height", -1) * f + 0.5F));
+        localObject = paramJSONObject.optJSONObject("position");
+        this.width = ((int)(DisplayUtil.getDensity(AppLoaderFactory.g().getContext()) * ((JSONObject)localObject).optInt("width", -1) + 0.5F));
+        this.height = ((int)(DisplayUtil.getDensity(AppLoaderFactory.g().getContext()) * ((JSONObject)localObject).optInt("height", -1) + 0.5F));
         this.livePlayerJSAdapter.setSurfaceSize(this.width, this.height);
       }
-      if (this.livePlayerJSAdapter != null) {
-        this.livePlayerJSAdapter.updateLivePlayer(paramJSONObject);
+      localObject = this.livePlayerJSAdapter;
+      if (localObject != null) {
+        ((TXLivePlayerJSAdapter)localObject).updateLivePlayer(paramJSONObject);
       }
     }
   }
   
   public void nativeDestroy()
   {
-    QMLog.i("miniapp-embedded-live-player", "LivePlayerEmbeddedWidgetClient.nativeDestroy " + this);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LivePlayerEmbeddedWidgetClient.nativeDestroy ");
+    localStringBuilder.append(this);
+    QMLog.i("miniapp-embedded-live-player", localStringBuilder.toString());
     release();
   }
   
   public void nativePause()
   {
-    QMLog.i("miniapp-embedded-live-player", "LivePlayerEmbeddedWidgetClient.nativePause " + this);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LivePlayerEmbeddedWidgetClient.nativePause ");
+    localStringBuilder.append(this);
+    QMLog.i("miniapp-embedded-live-player", localStringBuilder.toString());
     if (!this.isPageBackground) {
       this.isPageBackground = enterBackground();
     }
@@ -266,17 +299,12 @@ public class LivePlayerEmbeddedWidgetClient
   
   public void nativeResume()
   {
-    QMLog.i("miniapp-embedded-live-player", "LivePlayerEmbeddedWidgetClient.nativeResume " + this);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LivePlayerEmbeddedWidgetClient.nativeResume ");
+    localStringBuilder.append(this);
+    QMLog.i("miniapp-embedded-live-player", localStringBuilder.toString());
     if (this.isPageBackground) {
-      if (enterForeground()) {
-        break label47;
-      }
-    }
-    label47:
-    for (boolean bool = true;; bool = false)
-    {
-      this.isPageBackground = bool;
-      return;
+      this.isPageBackground = (enterForeground() ^ true);
     }
   }
   
@@ -298,7 +326,14 @@ public class LivePlayerEmbeddedWidgetClient
   
   public void onRectChanged(Rect paramRect)
   {
-    QMLog.i("miniapp-embedded-live-player", "LivePlayerEmbeddedWidgetClient.onRectChanged, rect:" + paramRect.toString() + "； size : " + (paramRect.right - paramRect.left) + "," + (paramRect.bottom - paramRect.top));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LivePlayerEmbeddedWidgetClient.onRectChanged, rect:");
+    localStringBuilder.append(paramRect.toString());
+    localStringBuilder.append("； size : ");
+    localStringBuilder.append(paramRect.right - paramRect.left);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramRect.bottom - paramRect.top);
+    QMLog.i("miniapp-embedded-live-player", localStringBuilder.toString());
   }
   
   public void onRequestRedraw()
@@ -308,24 +343,28 @@ public class LivePlayerEmbeddedWidgetClient
   
   public void onSurfaceCreated(Surface paramSurface)
   {
-    QMLog.d("miniapp-embedded-live-player", "onSurfaceCreated: " + paramSurface);
-    if ((paramSurface == null) || (!paramSurface.isValid()))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onSurfaceCreated: ");
+    localStringBuilder.append(paramSurface);
+    QMLog.d("miniapp-embedded-live-player", localStringBuilder.toString());
+    if ((paramSurface != null) && (paramSurface.isValid()))
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("onSurfaceCreated isValid() : ");
-      if (paramSurface != null)
-      {
-        paramSurface = Boolean.valueOf(paramSurface.isValid());
-        QMLog.e("miniapp-embedded-live-player", paramSurface);
-      }
-    }
-    do
-    {
-      return;
-      paramSurface = null;
-      break;
       this.mSurface = paramSurface;
-    } while (this.livePlayerJSAdapter == null);
-    this.livePlayerJSAdapter.setSurface(this.mSurface);
+      paramSurface = this.livePlayerJSAdapter;
+      if (paramSurface != null) {
+        paramSurface.setSurface(this.mSurface);
+      }
+      return;
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onSurfaceCreated isValid() : ");
+    if (paramSurface != null) {
+      paramSurface = Boolean.valueOf(paramSurface.isValid());
+    } else {
+      paramSurface = null;
+    }
+    localStringBuilder.append(paramSurface);
+    QMLog.e("miniapp-embedded-live-player", localStringBuilder.toString());
   }
   
   public void onSurfaceDestroyed(Surface paramSurface)
@@ -335,20 +374,27 @@ public class LivePlayerEmbeddedWidgetClient
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    QMLog.i("miniapp-embedded-live-player", "LivePlayerEmbeddedWidgetClient.onTouchEvent, rect:" + paramMotionEvent.toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LivePlayerEmbeddedWidgetClient.onTouchEvent, rect:");
+    localStringBuilder.append(paramMotionEvent.toString());
+    QMLog.i("miniapp-embedded-live-player", localStringBuilder.toString());
     return false;
   }
   
   public void onVisibilityChanged(boolean paramBoolean)
   {
-    QMLog.i("miniapp-embedded-live-player", "LivePlayerEmbeddedWidgetClient.onVisibilityChanged ： " + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LivePlayerEmbeddedWidgetClient.onVisibilityChanged ： ");
+    localStringBuilder.append(paramBoolean);
+    QMLog.i("miniapp-embedded-live-player", localStringBuilder.toString());
   }
   
   public void release()
   {
-    if (this.livePlayerJSAdapter != null)
+    TXLivePlayerJSAdapter localTXLivePlayerJSAdapter = this.livePlayerJSAdapter;
+    if (localTXLivePlayerJSAdapter != null)
     {
-      this.livePlayerJSAdapter.uninitLivePlayer();
+      localTXLivePlayerJSAdapter.uninitLivePlayer();
       this.livePlayerJSAdapter.setSurface(null);
     }
   }
@@ -365,13 +411,19 @@ public class LivePlayerEmbeddedWidgetClient
   
   public void webViewDestroy()
   {
-    QMLog.i("miniapp-embedded-live-player", "LivePlayerEmbeddedWidgetClient.webViewDestroy " + this);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LivePlayerEmbeddedWidgetClient.webViewDestroy ");
+    localStringBuilder.append(this);
+    QMLog.i("miniapp-embedded-live-player", localStringBuilder.toString());
     release();
   }
   
   public void webViewPause()
   {
-    QMLog.i("miniapp-embedded-live-player", "LivePlayerEmbeddedWidgetClient.webviewPause " + this);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LivePlayerEmbeddedWidgetClient.webviewPause ");
+    localStringBuilder.append(this);
+    QMLog.i("miniapp-embedded-live-player", localStringBuilder.toString());
     if (!this.isPageBackground) {
       this.isPageBackground = enterBackground();
     }
@@ -379,23 +431,18 @@ public class LivePlayerEmbeddedWidgetClient
   
   public void webViewResume()
   {
-    QMLog.i("miniapp-embedded-live-player", "LivePlayerEmbeddedWidgetClient.webviewResume " + this);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LivePlayerEmbeddedWidgetClient.webviewResume ");
+    localStringBuilder.append(this);
+    QMLog.i("miniapp-embedded-live-player", localStringBuilder.toString());
     if (this.isPageBackground) {
-      if (enterForeground()) {
-        break label47;
-      }
-    }
-    label47:
-    for (boolean bool = true;; bool = false)
-    {
-      this.isPageBackground = bool;
-      return;
+      this.isPageBackground = (enterForeground() ^ true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.LivePlayerEmbeddedWidgetClient
  * JD-Core Version:    0.7.0.1
  */

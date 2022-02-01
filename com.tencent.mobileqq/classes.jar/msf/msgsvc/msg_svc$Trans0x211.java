@@ -23,13 +23,14 @@ public final class msg_svc$Trans0x211
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 48, 56 }, new String[] { "to_uin", "cc_cmd", "inst_ctrl", "sig", "c2c_type", "service_type", "dataline_flag" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), null, localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, Trans0x211.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 48, 56 }, new String[] { "to_uin", "cc_cmd", "inst_ctrl", "sig", "c2c_type", "service_type", "dataline_flag" }, new Object[] { Long.valueOf(0L), localInteger, null, localByteStringMicro, localInteger, localInteger, localInteger }, Trans0x211.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     msf.msgsvc.msg_svc.Trans0x211
  * JD-Core Version:    0.7.0.1
  */

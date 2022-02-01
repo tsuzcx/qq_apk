@@ -16,22 +16,27 @@ public class PreloadProcHitMgr
   {
     synchronized (a)
     {
-      HashSet localHashSet = new HashSet();
-      Iterator localIterator2 = a.values().iterator();
-      while (localIterator2.hasNext())
+      Object localObject1 = new HashSet();
+      Iterator localIterator1 = a.values().iterator();
+      while (localIterator1.hasNext())
       {
-        Iterator localIterator3 = ((ArrayList)localIterator2.next()).iterator();
-        if (localIterator3.hasNext())
+        Iterator localIterator2 = ((ArrayList)localIterator1.next()).iterator();
+        while (localIterator2.hasNext())
         {
-          PreloadProcHitSession localPreloadProcHitSession = (PreloadProcHitSession)localIterator3.next();
+          PreloadProcHitSession localPreloadProcHitSession = (PreloadProcHitSession)localIterator2.next();
           localPreloadProcHitSession.d();
-          localHashSet.add(localPreloadProcHitSession.d);
+          ((HashSet)localObject1).add(localPreloadProcHitSession.d);
         }
       }
+      localObject1 = ((HashSet)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext()) {
+        c((String)((Iterator)localObject1).next());
+      }
+      return;
     }
-    Iterator localIterator1 = localObject.iterator();
-    while (localIterator1.hasNext()) {
-      c((String)localIterator1.next());
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
@@ -47,10 +52,11 @@ public class PreloadProcHitMgr
         localArrayList.add(paramPreloadProcHitSession);
         a.put(str, localArrayList);
       }
-      while (localArrayList.contains(paramPreloadProcHitSession)) {
-        return;
+      else if (!localArrayList.contains(paramPreloadProcHitSession))
+      {
+        localArrayList.add(paramPreloadProcHitSession);
       }
-      localArrayList.add(paramPreloadProcHitSession);
+      return;
     }
   }
   
@@ -58,26 +64,29 @@ public class PreloadProcHitMgr
   {
     synchronized (a)
     {
-      PreloadProcHitSession localPreloadProcHitSession;
-      do
+      Iterator localIterator = a.keySet().iterator();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = a.keySet().iterator();
-        Object localObject;
-        while (!((Iterator)localObject).hasNext())
+        Object localObject = (String)localIterator.next();
+        if (((String)localObject).endsWith("plugin"))
         {
-          do
-          {
-            if (!localIterator.hasNext()) {
-              break;
-            }
-            localObject = (String)localIterator.next();
-          } while (!((String)localObject).endsWith("plugin"));
           localObject = ((ArrayList)a.get(localObject)).iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            PreloadProcHitSession localPreloadProcHitSession = (PreloadProcHitSession)((Iterator)localObject).next();
+            if (((PreloadProcHitPluginSession)localPreloadProcHitSession).a.equals(paramString))
+            {
+              localPreloadProcHitSession.b();
+              localPreloadProcHitSession.d();
+            }
+          }
         }
-        localPreloadProcHitSession = (PreloadProcHitSession)((Iterator)localObject).next();
-      } while (!((PreloadProcHitPluginSession)localPreloadProcHitSession).a.equals(paramString));
-      localPreloadProcHitSession.b();
-      localPreloadProcHitSession.d();
+      }
+      return;
+    }
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
@@ -92,13 +101,18 @@ public class PreloadProcHitMgr
         if (((String)localObject).startsWith(paramString))
         {
           localObject = ((ArrayList)a.get(localObject)).iterator();
-          if (((Iterator)localObject).hasNext()) {
+          while (((Iterator)localObject).hasNext()) {
             ((PreloadProcHitSession)((Iterator)localObject).next()).d();
           }
         }
       }
+      c(paramString);
+      return;
     }
-    c(paramString);
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public static void c(String paramString)
@@ -143,7 +157,7 @@ public class PreloadProcHitMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.hitrate.PreloadProcHitMgr
  * JD-Core Version:    0.7.0.1
  */

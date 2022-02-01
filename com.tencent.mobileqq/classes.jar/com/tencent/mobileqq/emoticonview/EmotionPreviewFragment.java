@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,13 +17,16 @@ import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.emoticonview.api.IEmotionPreviewService;
 import com.tencent.mobileqq.emotionintegrate.EmotionGallery;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.NumberCheckBox;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemSelectedListener;
 import com.tencent.widget.HorizontalListView;
@@ -34,14 +36,14 @@ import java.util.Iterator;
 
 public class EmotionPreviewFragment
   extends PublicBaseFragment
-  implements View.OnClickListener, PreviewThumbAdapter.IThumbItemClickListener, AdapterView.OnItemSelectedListener
+  implements View.OnClickListener, IPreviewThumbAdapter.IThumbItemClickListener, AdapterView.OnItemSelectedListener
 {
   public static final String PREVIEW_DATA = "preview_data";
   private static final String TAG = "EmotionPreviewFragment";
   private TextView leftText;
   private EmotionPreviewAdapter mAdapter;
   private EmotionGallery mGallery;
-  private PreviewThumbAdapter mThumbAdapter;
+  private IPreviewThumbAdapter mThumbAdapter;
   private NumberCheckBox numberCheckBox;
   private ArrayList<EmotionPreviewInfo> previewDataList;
   private RelativeLayout rightView;
@@ -53,12 +55,12 @@ public class EmotionPreviewFragment
   
   private void back()
   {
-    Intent localIntent = getActivity().getIntent();
-    localIntent.setClass(getActivity(), NewPhotoListActivity.class);
+    Intent localIntent = getBaseActivity().getIntent();
+    localIntent.setClass(getBaseActivity(), NewPhotoListActivity.class);
     localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", this.mThumbAdapter.getDataList());
     localIntent.addFlags(603979776);
     startActivity(localIntent);
-    getActivity().finish();
+    getBaseActivity().finish();
   }
   
   public static void enterEmotionPreview(Activity paramActivity, Intent paramIntent, ArrayList<String> paramArrayList)
@@ -76,22 +78,26 @@ public class EmotionPreviewFragment
         localArrayList.add(localEmotionPreviewInfo);
       }
       paramIntent.putParcelableArrayListExtra("preview_data", localArrayList);
-      PublicFragmentActivity.Launcher.a(paramActivity, paramIntent, PublicFragmentActivity.class, EmotionPreviewFragment.class, 100015);
+      PublicFragmentActivity.Launcher.a(paramActivity, paramIntent, PublicFragmentActivity.class, EmotionPreviewFragment.class, 10015);
     }
   }
   
   private int getPositionByPath(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (this.previewDataList != null) && (this.previewDataList.size() > 0))
+    if (!TextUtils.isEmpty(paramString))
     {
-      int j = this.previewDataList.size();
-      int i = 0;
-      while (i < j)
+      ArrayList localArrayList = this.previewDataList;
+      if ((localArrayList != null) && (localArrayList.size() > 0))
       {
-        if (((EmotionPreviewInfo)this.previewDataList.get(i)).path.equals(paramString)) {
-          return i;
+        int j = this.previewDataList.size();
+        int i = 0;
+        while (i < j)
+        {
+          if (((EmotionPreviewInfo)this.previewDataList.get(i)).path.equals(paramString)) {
+            return i;
+          }
+          i += 1;
         }
-        i += 1;
       }
     }
     return -1;
@@ -99,48 +105,48 @@ public class EmotionPreviewFragment
   
   private int getSelectItemCount()
   {
-    int j = 0;
-    int i = j;
-    if (this.previewDataList != null)
+    Object localObject = this.previewDataList;
+    int k = 0;
+    int i = 0;
+    int j = k;
+    if (localObject != null)
     {
-      i = j;
-      if (this.previewDataList.size() > 0)
+      j = k;
+      if (((ArrayList)localObject).size() > 0)
       {
-        Iterator localIterator = this.previewDataList.iterator();
-        i = 0;
-        if (localIterator.hasNext())
+        localObject = this.previewDataList.iterator();
+        for (;;)
         {
-          if (!((EmotionPreviewInfo)localIterator.next()).isCheck) {
-            break label66;
+          j = i;
+          if (!((Iterator)localObject).hasNext()) {
+            break;
           }
-          i += 1;
+          if (((EmotionPreviewInfo)((Iterator)localObject).next()).isCheck) {
+            i += 1;
+          }
         }
       }
     }
-    label66:
-    for (;;)
-    {
-      break;
-      return i;
-    }
+    return j;
   }
   
   private void initData()
   {
-    this.previewDataList = getActivity().getIntent().getParcelableArrayListExtra("preview_data");
+    this.previewDataList = getBaseActivity().getIntent().getParcelableArrayListExtra("preview_data");
     this.mAdapter.refreshData(this.previewDataList);
-    if ((this.previewDataList != null) && (this.previewDataList.size() > 0))
+    ArrayList localArrayList = this.previewDataList;
+    if ((localArrayList != null) && (localArrayList.size() > 0))
     {
-      ArrayList localArrayList = new ArrayList(this.previewDataList.size());
+      localArrayList = new ArrayList(this.previewDataList.size());
       Iterator localIterator = this.previewDataList.iterator();
       while (localIterator.hasNext()) {
         localArrayList.add(((EmotionPreviewInfo)localIterator.next()).path);
       }
-      this.mThumbAdapter = new PreviewThumbAdapter(getActivity(), this);
+      this.mThumbAdapter = ((IEmotionPreviewService)QRoute.api(IEmotionPreviewService.class)).createPreviewThumbAdapter(getBaseActivity(), this);
       this.selectedPhotoListView.setAdapter(this.mThumbAdapter);
       this.selectedPhotoListView.setVisibility(0);
       this.selectedPhotoListView.setOnItemClickListener(this.mThumbAdapter);
-      this.selectedPhotoListView.setDividerWidth(AIOUtils.a(14.0F, getResources()));
+      this.selectedPhotoListView.setDividerWidth(AIOUtils.b(14.0F, getResources()));
       this.mThumbAdapter.setData(localArrayList);
       this.mThumbAdapter.setCurrentPath(((EmotionPreviewInfo)this.previewDataList.get(0)).path);
     }
@@ -151,73 +157,87 @@ public class EmotionPreviewFragment
   
   private void refreshNumberCheckBox(int paramInt1, int paramInt2)
   {
-    if ((this.numberCheckBox != null) && (this.previewDataList != null))
+    if (this.numberCheckBox != null)
     {
-      EmotionPreviewInfo localEmotionPreviewInfo = (EmotionPreviewInfo)this.previewDataList.get(paramInt1);
-      this.numberCheckBox.setChecked(localEmotionPreviewInfo.isCheck);
-      if ((localEmotionPreviewInfo.isCheck) && (paramInt2 >= 0)) {
-        this.numberCheckBox.setCheckedNumber(paramInt2 + 1);
+      Object localObject = this.previewDataList;
+      if (localObject != null)
+      {
+        localObject = (EmotionPreviewInfo)((ArrayList)localObject).get(paramInt1);
+        this.numberCheckBox.setChecked(((EmotionPreviewInfo)localObject).isCheck);
+        if ((((EmotionPreviewInfo)localObject).isCheck) && (paramInt2 >= 0)) {
+          this.numberCheckBox.setCheckedNumber(paramInt2 + 1);
+        }
       }
     }
   }
   
   private void refreshSendButton()
   {
-    int i;
-    StringBuffer localStringBuffer;
     if (this.sendButton != null)
     {
-      i = getSelectItemCount();
-      localStringBuffer = new StringBuffer(getResources().getString(2131694898));
-      if (i < 1) {
+      int i = getSelectItemCount();
+      StringBuffer localStringBuffer = new StringBuffer(getResources().getString(2131694887));
+      if (i < 1)
+      {
         this.sendButton.setText(localStringBuffer.toString());
+        return;
       }
+      Button localButton = this.sendButton;
+      localStringBuffer.append("(");
+      localStringBuffer.append(i);
+      localStringBuffer.append(")");
+      localButton.setText(localStringBuffer.toString());
     }
-    else
-    {
-      return;
-    }
-    this.sendButton.setText("(" + i + ")");
   }
   
   private void refreshTitleView(int paramInt)
   {
-    if ((this.titleText != null) && (this.previewDataList != null) && (this.previewDataList.size() > 1)) {
-      this.titleText.setText(paramInt + "/" + this.previewDataList.size());
+    if (this.titleText != null)
+    {
+      Object localObject = this.previewDataList;
+      if ((localObject != null) && (((ArrayList)localObject).size() > 1))
+      {
+        localObject = this.titleText;
+        StringBuffer localStringBuffer = new StringBuffer();
+        localStringBuffer.append(paramInt);
+        localStringBuffer.append("/");
+        localStringBuffer.append(this.previewDataList.size());
+        ((TextView)localObject).setText(localStringBuffer.toString());
+      }
     }
   }
   
   public View generateRootView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup)
   {
-    return paramLayoutInflater.inflate(2131559212, paramViewGroup, false);
+    return paramLayoutInflater.inflate(2131559090, paramViewGroup, false);
   }
   
   protected void initTitleBar(View paramView)
   {
-    this.leftText = ((TextView)paramView.findViewById(2131369487));
-    this.titleText = ((TextView)paramView.findViewById(2131369534));
-    this.rightView = ((RelativeLayout)paramView.findViewById(2131377723));
-    this.numberCheckBox = ((NumberCheckBox)paramView.findViewById(2131377747));
+    this.leftText = ((TextView)paramView.findViewById(2131369202));
+    this.titleText = ((TextView)paramView.findViewById(2131369249));
+    this.rightView = ((RelativeLayout)paramView.findViewById(2131377151));
+    this.numberCheckBox = ((NumberCheckBox)paramView.findViewById(2131377175));
     this.leftText.setOnClickListener(this);
     this.rightView.setOnClickListener(this);
   }
   
   protected void initViewWithBusiness(View paramView)
   {
-    this.sendButton = ((Button)paramView.findViewById(2131377769));
+    this.sendButton = ((Button)paramView.findViewById(2131377197));
     this.sendButton.setOnClickListener(this);
-    this.topLineView = paramView.findViewById(2131367251);
-    this.titleBar = ((RelativeLayout)paramView.findViewById(2131379451));
-    ((RelativeLayout.LayoutParams)this.titleBar.getLayoutParams()).topMargin = ImmersiveUtils.getStatusBarHeight(getActivity());
-    this.mGallery = ((EmotionGallery)paramView.findViewById(2131367677));
-    this.mAdapter = new EmotionPreviewAdapter(getActivity());
+    this.topLineView = paramView.findViewById(2131367035);
+    this.titleBar = ((RelativeLayout)paramView.findViewById(2131378803));
+    ((RelativeLayout.LayoutParams)this.titleBar.getLayoutParams()).topMargin = ImmersiveUtils.getStatusBarHeight(getBaseActivity());
+    this.mGallery = ((EmotionGallery)paramView.findViewById(2131367431));
+    this.mAdapter = new EmotionPreviewAdapter(getBaseActivity());
     this.mGallery.setAdapter(this.mAdapter);
-    this.mGallery.setSpacing(getActivity().getResources().getDimensionPixelSize(2131297168));
+    this.mGallery.setSpacing(getBaseActivity().getResources().getDimensionPixelSize(2131297150));
     this.mGallery.setOnItemSelectedListener(this);
     this.mGallery.setOnNoBlankListener(this.mAdapter);
-    this.mGallery.b(false);
-    this.mGallery.a(false);
-    this.selectedPhotoListView = ((HorizontalListView)paramView.findViewById(2131367252));
+    this.mGallery.enableDoubleTap(false);
+    this.mGallery.enableScaleGesture(false);
+    this.selectedPhotoListView = ((HorizontalListView)paramView.findViewById(2131367036));
     initData();
   }
   
@@ -239,93 +259,97 @@ public class EmotionPreviewFragment
   
   public void onClick(View paramView)
   {
-    int i;
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131369202)
     {
-    default: 
-    case 2131369487: 
-    case 2131377723: 
-      EmotionPreviewInfo localEmotionPreviewInfo;
-      boolean bool;
-      do
+      Object localObject1;
+      Object localObject2;
+      if (i != 2131377151)
       {
-        do
+        if (i == 2131377197)
         {
-          for (;;)
+          localObject1 = new ArrayList();
+          localObject2 = this.mThumbAdapter;
+          if (localObject2 != null) {
+            localObject1 = ((IPreviewThumbAdapter)localObject2).getDataList();
+          }
+          if (((ArrayList)localObject1).size() == 0)
           {
-            EventCollector.getInstance().onViewClicked(paramView);
-            return;
-            back();
+            i = this.mGallery.getSelectedItemPosition();
+            localObject2 = this.previewDataList;
+            if ((localObject2 != null) && (i < ((ArrayList)localObject2).size()))
+            {
+              localObject2 = (EmotionPreviewInfo)this.previewDataList.get(i);
+              if (!TextUtils.isEmpty(((EmotionPreviewInfo)localObject2).path)) {
+                ((ArrayList)localObject1).add(((EmotionPreviewInfo)localObject2).path);
+              }
+            }
           }
-          i = this.mGallery.getSelectedItemPosition();
-        } while ((this.previewDataList == null) || (i >= this.previewDataList.size()));
-        localEmotionPreviewInfo = (EmotionPreviewInfo)this.previewDataList.get(i);
-        if (localEmotionPreviewInfo.isCheck) {
-          break;
+          ReportController.b(null, "dc00898", "", "", "0X800A6DE", "0X800A6DE", 0, 0, String.valueOf(((ArrayList)localObject1).size()), "", "", "");
+          localObject2 = new Intent();
+          ((Intent)localObject2).putStringArrayListExtra("PhotoConst.SELECTED_PATHS", (ArrayList)localObject1);
+          getBaseActivity().setResult(-1, (Intent)localObject2);
+          getBaseActivity().finish();
         }
-        bool = true;
-        localEmotionPreviewInfo.isCheck = bool;
-        this.numberCheckBox.setChecked(localEmotionPreviewInfo.isCheck);
-        refreshSendButton();
-      } while (this.mThumbAdapter == null);
-      this.mThumbAdapter.setCurrentPath(localEmotionPreviewInfo.path);
-      localArrayList = this.mThumbAdapter.getDataList();
-      if (localEmotionPreviewInfo.isCheck) {
-        localArrayList.add(localEmotionPreviewInfo.path);
       }
-      for (;;)
-      {
-        try
-        {
-          refreshNumberCheckBox(i, localArrayList.indexOf(localEmotionPreviewInfo.path));
-          if (localArrayList.size() != 0) {
-            break label286;
-          }
-          this.topLineView.setVisibility(8);
-          this.selectedPhotoListView.setVisibility(8);
-          this.mThumbAdapter.setData(localArrayList);
-          break;
-          bool = false;
-        }
-        catch (Exception localException)
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("EmotionPreviewFragment", 2, "onClick exception = " + localException.getMessage());
-          continue;
-        }
-        localArrayList.remove(localException.path);
-        continue;
-        label286:
-        this.topLineView.setVisibility(0);
-        this.selectedPhotoListView.setVisibility(0);
-      }
-    }
-    ArrayList localArrayList = new ArrayList();
-    if (this.mThumbAdapter != null) {
-      localArrayList = this.mThumbAdapter.getDataList();
-    }
-    for (;;)
-    {
-      if (localArrayList.size() == 0)
+      else
       {
         i = this.mGallery.getSelectedItemPosition();
-        if ((this.previewDataList != null) && (i < this.previewDataList.size()))
+        localObject1 = this.previewDataList;
+        if ((localObject1 != null) && (i < ((ArrayList)localObject1).size()))
         {
-          localObject = (EmotionPreviewInfo)this.previewDataList.get(i);
-          if (!TextUtils.isEmpty(((EmotionPreviewInfo)localObject).path)) {
-            localArrayList.add(((EmotionPreviewInfo)localObject).path);
+          localObject2 = (EmotionPreviewInfo)this.previewDataList.get(i);
+          ((EmotionPreviewInfo)localObject2).isCheck ^= true;
+          this.numberCheckBox.setChecked(((EmotionPreviewInfo)localObject2).isCheck);
+          refreshSendButton();
+          localObject1 = this.mThumbAdapter;
+          if (localObject1 != null)
+          {
+            ((IPreviewThumbAdapter)localObject1).setCurrentPath(((EmotionPreviewInfo)localObject2).path);
+            localObject1 = this.mThumbAdapter.getDataList();
+            if (((EmotionPreviewInfo)localObject2).isCheck)
+            {
+              ((ArrayList)localObject1).add(((EmotionPreviewInfo)localObject2).path);
+              try
+              {
+                refreshNumberCheckBox(i, ((ArrayList)localObject1).indexOf(((EmotionPreviewInfo)localObject2).path));
+              }
+              catch (Exception localException)
+              {
+                if (!QLog.isColorLevel()) {
+                  break label393;
+                }
+              }
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("onClick exception = ");
+              localStringBuilder.append(localException.getMessage());
+              QLog.d("EmotionPreviewFragment", 2, localStringBuilder.toString());
+            }
+            else
+            {
+              ((ArrayList)localObject1).remove(localException.path);
+            }
+            label393:
+            if (((ArrayList)localObject1).size() == 0)
+            {
+              this.topLineView.setVisibility(8);
+              this.selectedPhotoListView.setVisibility(8);
+            }
+            else
+            {
+              this.topLineView.setVisibility(0);
+              this.selectedPhotoListView.setVisibility(0);
+            }
+            this.mThumbAdapter.setData((ArrayList)localObject1);
           }
         }
       }
-      ReportController.b(null, "dc00898", "", "", "0X800A6DE", "0X800A6DE", 0, 0, String.valueOf(localArrayList.size()), "", "", "");
-      Object localObject = new Intent();
-      ((Intent)localObject).putStringArrayListExtra("PhotoConst.SELECTED_PATHS", localArrayList);
-      getActivity().setResult(-1, (Intent)localObject);
-      getActivity().finish();
-      break;
     }
+    else
+    {
+      back();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -333,60 +357,54 @@ public class EmotionPreviewFragment
     paramLayoutInflater = generateRootView(paramLayoutInflater, paramViewGroup);
     initTitleBar(paramLayoutInflater);
     initViewWithBusiness(paramLayoutInflater);
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
   public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    int i;
-    if ((this.mThumbAdapter != null) && (this.previewDataList != null) && (paramInt < this.previewDataList.size()))
+    if (this.mThumbAdapter != null)
     {
-      paramAdapterView = (EmotionPreviewInfo)this.previewDataList.get(paramInt);
-      if (paramAdapterView.path.equals(this.mThumbAdapter.getCurrentPath())) {
-        break label132;
-      }
-      i = 1;
-      this.mThumbAdapter.setCurrentPath(paramAdapterView.path);
-      if (i != 0) {
-        this.mThumbAdapter.notifyDataSetChanged();
-      }
-      paramView = this.mThumbAdapter.getDataList();
-      if ((paramView != null) && (!TextUtils.isEmpty(paramAdapterView.path)))
+      paramAdapterView = this.previewDataList;
+      if ((paramAdapterView != null) && (paramInt < paramAdapterView.size()))
       {
-        i = paramView.indexOf(paramAdapterView.path);
-        if (i < 0) {
-          break label138;
+        paramAdapterView = (EmotionPreviewInfo)this.previewDataList.get(paramInt);
+        boolean bool = paramAdapterView.path.equals(this.mThumbAdapter.getCurrentPath());
+        this.mThumbAdapter.setCurrentPath(paramAdapterView.path);
+        if ((bool ^ true)) {
+          this.mThumbAdapter.notifyDataSetChanged();
         }
-        refreshNumberCheckBox(paramInt, i);
+        paramView = this.mThumbAdapter.getDataList();
+        if ((paramView != null) && (!TextUtils.isEmpty(paramAdapterView.path)))
+        {
+          int i = paramView.indexOf(paramAdapterView.path);
+          if (i >= 0) {
+            refreshNumberCheckBox(paramInt, i);
+          } else {
+            refreshNumberCheckBox(paramInt, -1);
+          }
+        }
       }
     }
-    for (;;)
-    {
-      refreshTitleView(paramInt + 1);
-      return;
-      label132:
-      i = 0;
-      break;
-      label138:
-      refreshNumberCheckBox(paramInt, -1);
-    }
+    refreshTitleView(paramInt + 1);
   }
   
   public void onNothingSelected(AdapterView<?> paramAdapterView) {}
   
   public void onThumbClick(int paramInt)
   {
-    if (this.mThumbAdapter != null)
+    Object localObject = this.mThumbAdapter;
+    if (localObject != null)
     {
-      ArrayList localArrayList = this.mThumbAdapter.getDataList();
-      if ((localArrayList != null) && (paramInt < localArrayList.size()))
+      localObject = ((IPreviewThumbAdapter)localObject).getDataList();
+      if ((localObject != null) && (paramInt < ((ArrayList)localObject).size()))
       {
-        int i = getPositionByPath((String)localArrayList.get(paramInt));
+        int i = getPositionByPath((String)((ArrayList)localObject).get(paramInt));
         if (i >= 0)
         {
-          if (this.mGallery != null) {
-            this.mGallery.setSelection(i);
+          localObject = this.mGallery;
+          if (localObject != null) {
+            ((EmotionGallery)localObject).setSelection(i);
           }
           refreshTitleView(i + 1);
           refreshNumberCheckBox(i, paramInt);
@@ -397,7 +415,7 @@ public class EmotionPreviewFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionPreviewFragment
  * JD-Core Version:    0.7.0.1
  */

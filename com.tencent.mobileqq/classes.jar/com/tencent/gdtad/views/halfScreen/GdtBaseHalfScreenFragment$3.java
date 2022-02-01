@@ -27,7 +27,10 @@ class GdtBaseHalfScreenFragment$3
   public void onReceivedTitle(WebView paramWebView, String paramString)
   {
     super.onReceivedTitle(paramWebView, paramString);
-    GdtLog.b("AbsWebView", "GdtBaseHalfScreenFragment onReceivedTitle" + paramString);
+    paramWebView = new StringBuilder();
+    paramWebView.append("GdtBaseHalfScreenFragment onReceivedTitle");
+    paramWebView.append(paramString);
+    GdtLog.b("AbsWebView", paramWebView.toString());
     if (GdtBaseHalfScreenFragment.a(this.a) != null) {
       GdtBaseHalfScreenFragment.a(this.a).setText(paramString);
     }
@@ -35,23 +38,22 @@ class GdtBaseHalfScreenFragment$3
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
-    for (;;)
-    {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {
       return true;
-      Object localObject = ((CustomWebView)paramWebView).getPluginEngine();
-      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
-      {
-        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
-        for (boolean bool = true;; bool = false) {
-          return bool;
-        }
+    }
+    Object localObject2 = ((CustomWebView)paramWebView).getPluginEngine();
+    boolean bool = paramString.startsWith("file://");
+    Object localObject1 = null;
+    if ((!bool) && (!paramString.startsWith("data:")) && (!paramString.startsWith("http://")) && (!paramString.startsWith("https://")))
+    {
+      localObject2 = AdUriUtil.parse(paramString);
+      paramString = localObject1;
+      if (localObject2 != null) {
+        paramString = ((Uri)localObject2).getScheme();
       }
-      localObject = AdUriUtil.parse(paramString);
-      if (localObject != null) {}
-      for (paramString = ((Uri)localObject).getScheme(); AuthorizeConfig.a().a(paramWebView.getUrl(), paramString).booleanValue(); paramString = null)
+      if (AuthorizeConfig.a().a(paramWebView.getUrl(), paramString).booleanValue())
       {
-        paramWebView = new Intent("android.intent.action.VIEW", (Uri)localObject);
+        paramWebView = new Intent("android.intent.action.VIEW", (Uri)localObject2);
         paramWebView.addFlags(268435456);
         try
         {
@@ -61,15 +63,16 @@ class GdtBaseHalfScreenFragment$3
         catch (ActivityNotFoundException paramWebView)
         {
           GdtLog.d("AbsWebView", paramWebView.toString());
-          return true;
         }
       }
+      return true;
     }
+    return (localObject2 != null) && (((WebViewPluginEngine)localObject2).a(paramString, 16L, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.halfScreen.GdtBaseHalfScreenFragment.3
  * JD-Core Version:    0.7.0.1
  */

@@ -13,8 +13,16 @@ class ImaxAdVideoPreloadManager$PreloadCompleteCallback
     synchronized (ImaxAdVideoPreloadManager.a(this.a))
     {
       String str = ImaxAdVideoPreloadManager.a(paramString1);
-      ImaxAdUtil.b("onComplete path:" + str);
-      ImaxAdUtil.b("onComplete vid:" + paramString1 + ", detail:" + paramString2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onComplete path:");
+      localStringBuilder.append(str);
+      ImaxAdUtil.b(localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onComplete vid:");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", detail:");
+      localStringBuilder.append(paramString2);
+      ImaxAdUtil.b(localStringBuilder.toString());
       ImaxAdVideoPreloadManager.a(this.a, paramString1);
       paramString2 = new File(ImaxAdVideoPreloadManager.b(paramString1));
       if (paramString2.exists()) {
@@ -29,7 +37,7 @@ class ImaxAdVideoPreloadManager$PreloadCompleteCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager.PreloadCompleteCallback
  * JD-Core Version:    0.7.0.1
  */

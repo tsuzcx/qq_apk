@@ -17,12 +17,16 @@ final class XAEngine$initAsync$1$1
     if (!XAEngine.access$compareVersion(this.this$0.this$0))
     {
       localObject = this.this$0.this$0;
-      StringBuilder localStringBuilder = new StringBuilder().append("init faild versionMin:");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("init faild versionMin:");
       AnimData localAnimData = XAEngine.access$getAnimData$p(this.this$0.this$0);
       if (localAnimData == null) {
         Intrinsics.throwNpe();
       }
-      ((XAEngine)localObject).logi("XAEngine", 1, localAnimData.getVersionMin() + " VERSION_CODE:" + this.this$0.this$0.getVERSION_CODE());
+      localStringBuilder.append(localAnimData.getVersionMin());
+      localStringBuilder.append(" VERSION_CODE:");
+      localStringBuilder.append(this.this$0.this$0.getVERSION_CODE());
+      ((XAEngine)localObject).logi("XAEngine", 1, localStringBuilder.toString());
       return;
     }
     Object localObject = XAEngine.access$getAnimData$p(this.this$0.this$0);
@@ -38,7 +42,7 @@ final class XAEngine$initAsync$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.impl.XAEngine.initAsync.1.1
  * JD-Core Version:    0.7.0.1
  */

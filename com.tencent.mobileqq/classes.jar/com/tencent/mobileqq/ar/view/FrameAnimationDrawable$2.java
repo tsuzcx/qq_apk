@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ar.view;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class FrameAnimationDrawable$2
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   FrameAnimationDrawable$2(FrameAnimationDrawable paramFrameAnimationDrawable) {}
   
@@ -18,7 +18,7 @@ class FrameAnimationDrawable$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.FrameAnimationDrawable.2
  * JD-Core Version:    0.7.0.1
  */

@@ -50,13 +50,14 @@ public class WSFriendItemData
   
   public boolean a(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    if ((paramstSimpleMetaFeed == null) || (!b(paramstSimpleMetaFeed))) {
-      return false;
+    if ((paramstSimpleMetaFeed != null) && (b(paramstSimpleMetaFeed)))
+    {
+      this.jdField_a_of_type_JavaLangString = paramstSimpleMetaFeed.poster_id;
+      this.jdField_a_of_type_JavaLangStringBuilder.append(paramstSimpleMetaFeed.id);
+      ((ArrayList)this.jdField_a_of_type_JavaLangObject).add(paramstSimpleMetaFeed);
+      return true;
     }
-    this.jdField_a_of_type_JavaLangString = paramstSimpleMetaFeed.poster_id;
-    this.jdField_a_of_type_JavaLangStringBuilder.append(paramstSimpleMetaFeed.id);
-    ((ArrayList)this.jdField_a_of_type_JavaLangObject).add(paramstSimpleMetaFeed);
-    return true;
+    return false;
   }
   
   public int b()
@@ -66,7 +67,7 @@ public class WSFriendItemData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.follow.data.WSFriendItemData
  * JD-Core Version:    0.7.0.1
  */

@@ -17,8 +17,11 @@ public class CommonUtils
 {
   public static String a(String paramString)
   {
-    LogUtility.b("CommonUtils_", "genExistedAPKFileNameByUrl url = " + paramString);
-    Object localObject2 = null;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("genExistedAPKFileNameByUrl url = ");
+    ((StringBuilder)localObject1).append(paramString);
+    LogUtility.b("CommonUtils_", ((StringBuilder)localObject1).toString());
+    Object localObject2;
     if (paramString.contains(".apk"))
     {
       localObject2 = paramString.trim().substring(paramString.lastIndexOf("/") + 1).trim();
@@ -30,11 +33,18 @@ public class CommonUtils
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
         paramString = c(b((String)localObject1));
-        LogUtility.b("CommonUtils_", "genExistedAPKFileNameByUrl  fileName = " + paramString);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("genExistedAPKFileNameByUrl  fileName = ");
+        ((StringBuilder)localObject1).append(paramString);
+        LogUtility.b("CommonUtils_", ((StringBuilder)localObject1).toString());
         return paramString;
       }
     }
-    Object localObject1 = localObject2;
+    else
+    {
+      localObject2 = null;
+    }
+    localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject2 = GlobalUtil.calcMD5AsString(paramString);
@@ -42,9 +52,15 @@ public class CommonUtils
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
         localObject1 = Integer.toString(Math.abs(paramString.hashCode()));
       }
-      localObject1 = (String)localObject1 + ".apk";
+      paramString = new StringBuilder();
+      paramString.append((String)localObject1);
+      paramString.append(".apk");
+      localObject1 = paramString.toString();
     }
-    LogUtility.b("CommonUtils_", "genExistedAPKFileNameByUrl fileName == null, return fileName = " + (String)localObject1);
+    paramString = new StringBuilder();
+    paramString.append("genExistedAPKFileNameByUrl fileName == null, return fileName = ");
+    paramString.append((String)localObject1);
+    LogUtility.b("CommonUtils_", paramString.toString());
     return localObject1;
   }
   
@@ -56,8 +72,8 @@ public class CommonUtils
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mRequestHeight = 234;
       localURLDrawableOptions.mRequestWidth = 234;
-      localURLDrawableOptions.mFailedDrawable = BaseApplication.getContext().getResources().getDrawable(2130842025);
-      localURLDrawableOptions.mLoadingDrawable = BaseApplication.getContext().getResources().getDrawable(2130842025);
+      localURLDrawableOptions.mFailedDrawable = BaseApplication.getContext().getResources().getDrawable(2130841922);
+      localURLDrawableOptions.mLoadingDrawable = BaseApplication.getContext().getResources().getDrawable(2130841922);
       paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
       paramString.setAutoDownload(true);
       paramString.setURLDrawableListener(new CommonUtils.1(paramImageView));
@@ -73,7 +89,8 @@ public class CommonUtils
   
   public static boolean a()
   {
-    return MyAppApi.a().b();
+    MyAppApi.a();
+    return MyAppApi.b();
   }
   
   private static String b(String paramString)
@@ -91,7 +108,7 @@ public class CommonUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.filedownload.CommonUtils
  * JD-Core Version:    0.7.0.1
  */

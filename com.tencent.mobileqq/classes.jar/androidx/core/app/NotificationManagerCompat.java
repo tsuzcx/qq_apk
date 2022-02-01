@@ -70,38 +70,46 @@ public final class NotificationManagerCompat
     Object localObject1 = Settings.Secure.getString(paramContext.getContentResolver(), "enabled_notification_listeners");
     paramContext = sEnabledNotificationListenersLock;
     if (localObject1 != null) {}
-    for (;;)
+    try
     {
-      int i;
-      try
-      {
-        if (!((String)localObject1).equals(sEnabledNotificationListeners))
-        {
-          String[] arrayOfString = ((String)localObject1).split(":", -1);
-          HashSet localHashSet = new HashSet(arrayOfString.length);
-          int j = arrayOfString.length;
-          i = 0;
-          if (i < j)
-          {
-            ComponentName localComponentName = ComponentName.unflattenFromString(arrayOfString[i]);
-            if (localComponentName != null) {
-              localHashSet.add(localComponentName.getPackageName());
-            }
-          }
-          else
-          {
-            sEnabledNotificationListenerPackages = localHashSet;
-            sEnabledNotificationListeners = (String)localObject1;
-          }
-        }
-        else
-        {
-          localObject1 = sEnabledNotificationListenerPackages;
-          return localObject1;
-        }
+      if (((String)localObject1).equals(sEnabledNotificationListeners)) {
+        break label101;
       }
-      finally {}
-      i += 1;
+      arrayOfString = ((String)localObject1).split(":", -1);
+      localHashSet = new HashSet(arrayOfString.length);
+      j = arrayOfString.length;
+      i = 0;
+    }
+    finally
+    {
+      for (;;)
+      {
+        String[] arrayOfString;
+        HashSet localHashSet;
+        int j;
+        int i;
+        ComponentName localComponentName;
+        for (;;)
+        {
+          label101:
+          throw localObject2;
+        }
+        i += 1;
+      }
+    }
+    if (i < j)
+    {
+      localComponentName = ComponentName.unflattenFromString(arrayOfString[i]);
+      if (localComponentName != null) {
+        localHashSet.add(localComponentName.getPackageName());
+      }
+    }
+    else
+    {
+      sEnabledNotificationListenerPackages = localHashSet;
+      sEnabledNotificationListeners = (String)localObject1;
+      localObject1 = sEnabledNotificationListenerPackages;
+      return localObject1;
     }
   }
   
@@ -125,48 +133,33 @@ public final class NotificationManagerCompat
   
   public boolean areNotificationsEnabled()
   {
-    boolean bool = true;
     if (Build.VERSION.SDK_INT >= 24) {
-      bool = this.mNotificationManager.areNotificationsEnabled();
+      return this.mNotificationManager.areNotificationsEnabled();
     }
-    while (Build.VERSION.SDK_INT < 19) {
-      return bool;
+    int i = Build.VERSION.SDK_INT;
+    boolean bool = true;
+    AppOpsManager localAppOpsManager;
+    Object localObject;
+    String str;
+    if (i >= 19)
+    {
+      localAppOpsManager = (AppOpsManager)this.mContext.getSystemService("appops");
+      localObject = this.mContext.getApplicationInfo();
+      str = this.mContext.getApplicationContext().getPackageName();
+      i = ((ApplicationInfo)localObject).uid;
     }
-    AppOpsManager localAppOpsManager = (AppOpsManager)this.mContext.getSystemService("appops");
-    Object localObject = this.mContext.getApplicationInfo();
-    String str = this.mContext.getApplicationContext().getPackageName();
-    int i = ((ApplicationInfo)localObject).uid;
     try
     {
       localObject = Class.forName(AppOpsManager.class.getName());
       i = ((Integer)((Class)localObject).getMethod("checkOpNoThrow", new Class[] { Integer.TYPE, Integer.TYPE, String.class }).invoke(localAppOpsManager, new Object[] { Integer.valueOf(((Integer)((Class)localObject).getDeclaredField("OP_POST_NOTIFICATION").get(Integer.class)).intValue()), Integer.valueOf(i), str })).intValue();
-      if (i == 0) {}
-      for (bool = true;; bool = false) {
-        return bool;
+      if (i == 0) {
+        return true;
       }
-      return true;
+      bool = false;
+      return bool;
     }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      return true;
-    }
-    catch (RuntimeException localRuntimeException)
-    {
-      return true;
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      return true;
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      return true;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      return true;
-    }
-    catch (InvocationTargetException localInvocationTargetException) {}
+    catch (ClassNotFoundException|NoSuchMethodException|NoSuchFieldException|InvocationTargetException|IllegalAccessException|RuntimeException localClassNotFoundException) {}
+    return true;
   }
   
   public void cancel(int paramInt)
@@ -265,7 +258,6 @@ public final class NotificationManagerCompat
           return localNotificationChannelGroup;
         }
       }
-      return null;
     }
     return null;
   }
@@ -306,7 +298,7 @@ public final class NotificationManagerCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.NotificationManagerCompat
  * JD-Core Version:    0.7.0.1
  */

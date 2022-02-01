@@ -39,7 +39,11 @@ public class l
   
   private static long a(String paramString)
   {
-    return BaseApplication.getContext().getSharedPreferences("sp_report_login", 4).getLong("key_report_login_time_millis_today_zero_" + paramString, 0L);
+    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("sp_report_login", 4);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_report_login_time_millis_today_zero_");
+    localStringBuilder.append(paramString);
+    return localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
   }
   
   private static void a(long paramLong)
@@ -50,112 +54,148 @@ public class l
   public static void a(Handler paramHandler)
   {
     if (paramHandler != null) {}
-    for (;;)
+    try
     {
-      SimpleAccount localSimpleAccount;
-      try
-      {
-        if (paramHandler.hasMessages(10500)) {
-          paramHandler.removeMessages(10500);
-        }
-        long l1 = System.currentTimeMillis();
-        long l2 = ((TimeZone.getDefault().getRawOffset() + l1) / 86400000L + 1L) * 86400000L - TimeZone.getDefault().getRawOffset() + new Random().nextInt(3600000) + 1800000L;
-        paramHandler.sendEmptyMessageDelayed(10500, l2 - l1);
-        if (QLog.isColorLevel()) {
-          QLog.d(b, 2, "timeZone=" + TimeZone.getDefault().getRawOffset() + ",nextTime=" + l2 + ",nowTime=" + l1);
-        }
-        if ((MsfCore.sCore == null) || (!MsfService.core.sender.b.l().c())) {
-          break label386;
-        }
-        a("SP_MSF_ALIVE_TODAY_ZERO_TIME", 0);
-        if ((MsfSdkUtils.getLoginedAccountList() == null) || (MsfSdkUtils.getLoginedAccountList().size() <= 0)) {
-          break;
-        }
-        paramHandler = MsfSdkUtils.getLoginedAccountList().iterator();
-        if (!paramHandler.hasNext()) {
-          break label381;
-        }
-        localSimpleAccount = (SimpleAccount)paramHandler.next();
-        if (localSimpleAccount.getUin().equals(MsfCore.sCore.getAccountCenter().i()))
-        {
-          a(localSimpleAccount.getUin() + "_Background", 2);
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d(b, 2, "MAIN UIN=" + localSimpleAccount.getUin() + " status=" + localSimpleAccount.isLogined());
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
+      if (paramHandler.hasMessages(10500)) {
+        paramHandler.removeMessages(10500);
       }
-      catch (Exception paramHandler)
+      long l1 = System.currentTimeMillis();
+      long l2 = ((TimeZone.getDefault().getRawOffset() + l1) / 86400000L + 1L) * 86400000L - TimeZone.getDefault().getRawOffset() + new Random().nextInt(3600000) + 1800000L;
+      paramHandler.sendEmptyMessageDelayed(10500, l2 - l1);
+      Object localObject1;
+      if (QLog.isColorLevel())
       {
-        paramHandler.printStackTrace();
+        paramHandler = b;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("timeZone=");
+        ((StringBuilder)localObject1).append(TimeZone.getDefault().getRawOffset());
+        ((StringBuilder)localObject1).append(",nextTime=");
+        ((StringBuilder)localObject1).append(l2);
+        ((StringBuilder)localObject1).append(",nowTime=");
+        ((StringBuilder)localObject1).append(l1);
+        QLog.d(paramHandler, 2, ((StringBuilder)localObject1).toString());
+      }
+      if ((MsfCore.sCore != null) && (MsfService.core.sender.b.l().c()))
+      {
+        a("SP_MSF_ALIVE_TODAY_ZERO_TIME", 0);
+        if ((MsfSdkUtils.getLoginedAccountList() != null) && (MsfSdkUtils.getLoginedAccountList().size() > 0)) {
+          paramHandler = MsfSdkUtils.getLoginedAccountList().iterator();
+        }
+        while (paramHandler.hasNext())
+        {
+          localObject1 = (SimpleAccount)paramHandler.next();
+          boolean bool = ((SimpleAccount)localObject1).getUin().equals(MsfCore.sCore.getAccountCenter().i());
+          Object localObject2;
+          StringBuilder localStringBuilder;
+          if (bool)
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append(((SimpleAccount)localObject1).getUin());
+            ((StringBuilder)localObject2).append("_Background");
+            a(((StringBuilder)localObject2).toString(), 2);
+            if (QLog.isColorLevel())
+            {
+              localObject2 = b;
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("MAIN UIN=");
+              localStringBuilder.append(((SimpleAccount)localObject1).getUin());
+              localStringBuilder.append(" status=");
+              localStringBuilder.append(((SimpleAccount)localObject1).isLogined());
+              QLog.d((String)localObject2, 2, localStringBuilder.toString());
+            }
+          }
+          else if (QLog.isColorLevel())
+          {
+            localObject2 = b;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("UIN=");
+            localStringBuilder.append(((SimpleAccount)localObject1).getUin());
+            localStringBuilder.append(" status=");
+            localStringBuilder.append(((SimpleAccount)localObject1).isLogined());
+            QLog.d((String)localObject2, 2, localStringBuilder.toString());
+            continue;
+            if (QLog.isColorLevel()) {
+              QLog.d(b, 2, "no login account list");
+            }
+          }
+        }
+        a = false;
         return;
       }
-      QLog.d(b, 2, "UIN=" + localSimpleAccount.getUin() + " status=" + localSimpleAccount.isLogined());
+      a = true;
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(b, 2, "no login account list");
+    catch (Exception paramHandler)
+    {
+      paramHandler.printStackTrace();
     }
-    label381:
-    a = false;
-    return;
-    label386:
-    a = true;
   }
   
   private static void a(String paramString, int paramInt)
   {
     long l1 = System.currentTimeMillis();
-    if (!d.containsKey(paramString)) {}
-    switch (paramInt)
-    {
-    case 1: 
-    default: 
-      if (l1 - ((Long)d.get(paramString)).longValue() >= 86400000L) {
-        break;
+    if (!d.containsKey(paramString)) {
+      if (paramInt != 0)
+      {
+        if ((paramInt != 1) && (paramInt == 2)) {
+          d.put(paramString, Long.valueOf(a(paramString)));
+        }
+      }
+      else {
+        d.put(paramString, Long.valueOf(a()));
       }
     }
-    for (;;)
-    {
+    if (l1 - ((Long)d.get(paramString)).longValue() < 86400000L) {
       return;
-      d.put(paramString, Long.valueOf(a()));
-      break;
-      d.put(paramString, Long.valueOf(a(paramString)));
-      break;
-      Calendar localCalendar = Calendar.getInstance();
-      localCalendar.setTimeInMillis(l1 / 1000L * 1000L);
-      localCalendar.set(11, 0);
-      localCalendar.set(12, 0);
-      localCalendar.set(13, 0);
-      long l2 = localCalendar.getTimeInMillis();
-      d.put(paramString, Long.valueOf(l2));
-      switch (paramInt)
+    }
+    Object localObject = Calendar.getInstance();
+    ((Calendar)localObject).setTimeInMillis(l1 / 1000L * 1000L);
+    ((Calendar)localObject).set(11, 0);
+    ((Calendar)localObject).set(12, 0);
+    ((Calendar)localObject).set(13, 0);
+    long l2 = ((Calendar)localObject).getTimeInMillis();
+    d.put(paramString, Long.valueOf(l2));
+    if (paramInt != 0)
+    {
+      if ((paramInt != 1) && (paramInt == 2))
       {
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.d(b, 2, "Daily Report info key=" + paramString + " timeMillisInTodayZero=" + l2 + " nowTime=" + l1 + "sNeedReportMSFAlive=" + a);
-        return;
-        a(l2);
-        a.a(MsfCore.sCore, "start_up", "backstage", "device_cnt", "", 1, "");
-        continue;
         a(paramString, l2);
         a.a(MsfCore.sCore, "login", "msf", "login", "", 1, "");
       }
+    }
+    else
+    {
+      a(l2);
+      a.a(MsfCore.sCore, "start_up", "backstage", "device_cnt", "", 1, "");
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Daily Report info key=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" timeMillisInTodayZero=");
+      localStringBuilder.append(l2);
+      localStringBuilder.append(" nowTime=");
+      localStringBuilder.append(l1);
+      localStringBuilder.append("sNeedReportMSFAlive=");
+      localStringBuilder.append(a);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
   }
   
   private static void a(String paramString, long paramLong)
   {
-    BaseApplication.getContext().getSharedPreferences("sp_report_login", 4).edit().putLong("key_report_login_time_millis_today_zero_" + paramString, paramLong).apply();
+    SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("sp_report_login", 4).edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_report_login_time_millis_today_zero_");
+    localStringBuilder.append(paramString);
+    localEditor.putLong(localStringBuilder.toString(), paramLong).apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.service.l
  * JD-Core Version:    0.7.0.1
  */

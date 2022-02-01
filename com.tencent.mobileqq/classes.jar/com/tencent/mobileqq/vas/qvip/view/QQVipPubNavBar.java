@@ -20,7 +20,7 @@ import com.tencent.qphone.base.util.QLog;
 public class QQVipPubNavBar
   extends NavBarCommon
 {
-  private static final String jdField_a_of_type_JavaLangString = QQVipPubNavBar.class.getSimpleName();
+  private static final String jdField_a_of_type_JavaLangString = "QQVipPubNavBar";
   private int jdField_a_of_type_Int = 0;
   protected ImageView a;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
@@ -54,15 +54,15 @@ public class QQVipPubNavBar
     ((RelativeLayout.LayoutParams)localObject).addRule(11);
     ((RelativeLayout.LayoutParams)localObject).addRule(15);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
-    ((RelativeLayout.LayoutParams)localObject).rightMargin = AIOUtils.a(40.0F, getResources());
+    ((RelativeLayout.LayoutParams)localObject).rightMargin = AIOUtils.b(40.0F, getResources());
     addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, (ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(getContext());
-    localObject = new LinearLayout.LayoutParams(AIOUtils.a(30.0F, getResources()), AIOUtils.a(64.0F, getResources()));
+    localObject = new LinearLayout.LayoutParams(AIOUtils.b(30.0F, getResources()), AIOUtils.b(64.0F, getResources()));
     ((LinearLayout.LayoutParams)localObject).gravity = 17;
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, (ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_a_of_type_AndroidWidgetImageView.setId(2131369501);
-    localObject = new RelativeLayout.LayoutParams(AIOUtils.a(24.0F, getResources()), AIOUtils.a(24.0F, getResources()));
+    this.jdField_a_of_type_AndroidWidgetImageView.setId(2131369216);
+    localObject = new RelativeLayout.LayoutParams(AIOUtils.b(24.0F, getResources()), AIOUtils.b(24.0F, getResources()));
     ((RelativeLayout.LayoutParams)localObject).addRule(15);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
     this.jdField_b_of_type_AndroidWidgetTextView = new TextView(getContext());
@@ -91,7 +91,7 @@ public class QQVipPubNavBar
   public TextView a()
   {
     if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369534));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369249));
     }
     if (this.jdField_a_of_type_AndroidWidgetTextView == null)
     {
@@ -103,10 +103,11 @@ public class QQVipPubNavBar
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    if (localImageView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847290);
+      localImageView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847159);
       this.jdField_b_of_type_AndroidWidgetTextView.setText("");
       this.jdField_b_of_type_JavaLangString = paramString;
       setCurType(4);
@@ -126,7 +127,7 @@ public class QQVipPubNavBar
   
   public void setTitle(String paramString)
   {
-    TextView localTextView = (TextView)findViewById(2131379432);
+    TextView localTextView = (TextView)findViewById(2131378784);
     if (localTextView != null) {
       localTextView.setText(paramString);
     }
@@ -134,7 +135,7 @@ public class QQVipPubNavBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.view.QQVipPubNavBar
  * JD-Core Version:    0.7.0.1
  */

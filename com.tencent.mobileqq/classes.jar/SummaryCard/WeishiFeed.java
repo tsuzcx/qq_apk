@@ -14,16 +14,6 @@ public final class WeishiFeed
   public String strDynamicCover = "";
   public String strVideoUrl = "";
   
-  static
-  {
-    if (!WeishiFeed.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public WeishiFeed() {}
   
   public WeishiFeed(String paramString1, String paramString2, String paramString3)
@@ -40,18 +30,17 @@ public final class WeishiFeed
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -72,13 +61,24 @@ public final class WeishiFeed
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (WeishiFeed)paramObject;
-    } while ((!JceUtil.equals(this.strVideoUrl, paramObject.strVideoUrl)) || (!JceUtil.equals(this.strCoverUrl, paramObject.strCoverUrl)) || (!JceUtil.equals(this.strDynamicCover, paramObject.strDynamicCover)));
-    return true;
+    }
+    paramObject = (WeishiFeed)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.strVideoUrl, paramObject.strVideoUrl))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.strCoverUrl, paramObject.strCoverUrl))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.strDynamicCover, paramObject.strDynamicCover)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -138,14 +138,17 @@ public final class WeishiFeed
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strVideoUrl != null) {
-      paramJceOutputStream.write(this.strVideoUrl, 0);
+    String str = this.strVideoUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.strCoverUrl != null) {
-      paramJceOutputStream.write(this.strCoverUrl, 1);
+    str = this.strCoverUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strDynamicCover != null) {
-      paramJceOutputStream.write(this.strDynamicCover, 2);
+    str = this.strDynamicCover;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }

@@ -10,8 +10,16 @@ class MultiVideoCtrlLayerUI4NewGroupChat$1
   
   protected void a(QAVGroupConfig.GroupInviteFlag paramGroupInviteFlag)
   {
-    if ((QLog.isDevelopLevel()) || (this.a.a != paramGroupInviteFlag.a)) {
-      QLog.w(this.a.d, 1, "onGroupInviteFlagChanged, mCanAutoInviteMemIntoTroop[" + this.a.a + "->" + paramGroupInviteFlag.a + "]");
+    if ((QLog.isDevelopLevel()) || (this.a.a != paramGroupInviteFlag.a))
+    {
+      String str = this.a.d;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGroupInviteFlagChanged, mCanAutoInviteMemIntoTroop[");
+      localStringBuilder.append(this.a.a);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramGroupInviteFlag.a);
+      localStringBuilder.append("]");
+      QLog.w(str, 1, localStringBuilder.toString());
     }
     if (this.a.a != paramGroupInviteFlag.a)
     {
@@ -22,7 +30,7 @@ class MultiVideoCtrlLayerUI4NewGroupChat$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUI4NewGroupChat.1
  * JD-Core Version:    0.7.0.1
  */

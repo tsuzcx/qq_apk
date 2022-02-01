@@ -21,14 +21,15 @@ public final class RichTitleElement
   
   public static RichTitleElement[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new RichTitleElement[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new RichTitleElement[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static RichTitleElement parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -50,12 +51,13 @@ public final class RichTitleElement
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    int k = this.type;
     int i = j;
-    if (this.type != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(1, this.type);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeUInt32Size(1, k);
     }
     j = i;
     if (!this.text.equals("")) {
@@ -73,29 +75,39 @@ public final class RichTitleElement
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.type = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 18: 
-        this.text = paramCodedInputByteBufferNano.readString();
+      if (i == 0) {
         break;
       }
-      this.url = paramCodedInputByteBufferNano.readString();
+      if (i != 8)
+      {
+        if (i != 18)
+        {
+          if (i != 26)
+          {
+            if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+              return this;
+            }
+          }
+          else {
+            this.url = paramCodedInputByteBufferNano.readString();
+          }
+        }
+        else {
+          this.text = paramCodedInputByteBufferNano.readString();
+        }
+      }
+      else {
+        this.type = paramCodedInputByteBufferNano.readUInt32();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.type != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(1, this.type);
+    int i = this.type;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(1, i);
     }
     if (!this.text.equals("")) {
       paramCodedOutputByteBufferNano.writeString(2, this.text);
@@ -108,7 +120,7 @@ public final class RichTitleElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.roomAccess.roomAccess.nano.RichTitleElement
  * JD-Core Version:    0.7.0.1
  */

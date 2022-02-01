@@ -4,6 +4,7 @@ public abstract interface BaseCode
 {
   public static final int ACTIVITY_NULL = -3;
   public static final int DATA_NULL_IN_INTENT = -7;
+  public static final int KPMS_UPDATE_FAILED = -10;
   public static final int NO_AVAILABLE_LIB_ERROR = -9;
   public static final int NO_SOLUTION = -4;
   public static final int OK = 0;
@@ -15,7 +16,7 @@ public abstract interface BaseCode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.adapter.internal.BaseCode
  * JD-Core Version:    0.7.0.1
  */

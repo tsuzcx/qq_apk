@@ -32,18 +32,22 @@ public class AppleEmojiHandler
   
   public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppleMojiHandler", 2, "doOnDownloadSuccess:" + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("doOnDownloadSuccess:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("AppleMojiHandler", 2, ((StringBuilder)localObject).toString());
     }
-    File localFile = new File(paramString);
-    if (!localFile.exists())
+    Object localObject = new File(paramString);
+    if (!((File)localObject).exists())
     {
       if (QLog.isColorLevel()) {
         QLog.d("AppleMojiHandler", 2, "doOnDownloadSuccess sorse not exists");
       }
       return;
     }
-    ThreadManager.excute(new AppleEmojiHandler.1(this, localFile, paramString), 64, null, true);
+    ThreadManager.excute(new AppleEmojiHandler.1(this, (File)localObject, paramString), 64, null, true);
   }
   
   public boolean a()
@@ -58,7 +62,7 @@ public class AppleEmojiHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.AppleEmojiHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -75,14 +75,15 @@ public final class get_photo_list_ex_rsp
     paramJceOutputStream.write(this.appid, 6);
     paramJceOutputStream.write(this.indexInVec, 7);
     paramJceOutputStream.write(this.lossy_service, 8);
-    if (this.features != null) {
-      paramJceOutputStream.write(this.features, 10);
+    Map localMap = this.features;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 10);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.get_photo_list_ex_rsp
  * JD-Core Version:    0.7.0.1
  */

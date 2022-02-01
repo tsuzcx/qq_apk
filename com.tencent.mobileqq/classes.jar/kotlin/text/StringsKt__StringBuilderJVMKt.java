@@ -8,7 +8,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"appendRange", "Ljava/lang/StringBuilder;", "Lkotlin/text/StringBuilder;", "value", "", "startIndex", "", "endIndex", "", "appendln", "Ljava/lang/Appendable;", "Lkotlin/text/Appendable;", "", "Ljava/lang/StringBuffer;", "", "", "", "", "", "", "", "", "clear", "deleteAt", "index", "deleteRange", "insertRange", "set", "", "setRange", "toCharArray", "destination", "destinationOffset", "kotlin-stdlib"}, k=5, mv={1, 1, 16}, xi=1, xs="kotlin/text/StringsKt")
-public class StringsKt__StringBuilderJVMKt
+class StringsKt__StringBuilderJVMKt
   extends StringsKt__RegexExtensionsKt
 {
   @ExperimentalStdlibApi
@@ -16,7 +16,7 @@ public class StringsKt__StringBuilderJVMKt
   @InlineOnly
   private static final StringBuilder appendRange(@NotNull StringBuilder paramStringBuilder, CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    paramStringBuilder = paramStringBuilder.append(paramCharSequence, paramInt1, paramInt2);
+    paramStringBuilder.append(paramCharSequence, paramInt1, paramInt2);
     Intrinsics.checkExpressionValueIsNotNull(paramStringBuilder, "this.append(value, startIndex, endIndex)");
     return paramStringBuilder;
   }
@@ -26,7 +26,7 @@ public class StringsKt__StringBuilderJVMKt
   @InlineOnly
   private static final StringBuilder appendRange(@NotNull StringBuilder paramStringBuilder, char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
-    paramStringBuilder = paramStringBuilder.append(paramArrayOfChar, paramInt1, paramInt2 - paramInt1);
+    paramStringBuilder.append(paramArrayOfChar, paramInt1, paramInt2 - paramInt1);
     Intrinsics.checkExpressionValueIsNotNull(paramStringBuilder, "this.append(value, start…x, endIndex - startIndex)");
     return paramStringBuilder;
   }
@@ -60,7 +60,7 @@ public class StringsKt__StringBuilderJVMKt
   public static final StringBuilder appendln(@NotNull StringBuilder paramStringBuilder)
   {
     Intrinsics.checkParameterIsNotNull(paramStringBuilder, "$this$appendln");
-    paramStringBuilder = paramStringBuilder.append(SystemProperties.LINE_SEPARATOR);
+    paramStringBuilder.append(SystemProperties.LINE_SEPARATOR);
     Intrinsics.checkExpressionValueIsNotNull(paramStringBuilder, "append(SystemProperties.LINE_SEPARATOR)");
     return paramStringBuilder;
   }
@@ -68,7 +68,7 @@ public class StringsKt__StringBuilderJVMKt
   @InlineOnly
   private static final StringBuilder appendln(@NotNull StringBuilder paramStringBuilder, byte paramByte)
   {
-    paramStringBuilder = paramStringBuilder.append(paramByte);
+    paramStringBuilder.append(paramByte);
     Intrinsics.checkExpressionValueIsNotNull(paramStringBuilder, "append(value.toInt())");
     return StringsKt.appendln(paramStringBuilder);
   }
@@ -76,7 +76,7 @@ public class StringsKt__StringBuilderJVMKt
   @InlineOnly
   private static final StringBuilder appendln(@NotNull StringBuilder paramStringBuilder, char paramChar)
   {
-    paramStringBuilder = paramStringBuilder.append(paramChar);
+    paramStringBuilder.append(paramChar);
     Intrinsics.checkExpressionValueIsNotNull(paramStringBuilder, "append(value)");
     return StringsKt.appendln(paramStringBuilder);
   }
@@ -84,7 +84,7 @@ public class StringsKt__StringBuilderJVMKt
   @InlineOnly
   private static final StringBuilder appendln(@NotNull StringBuilder paramStringBuilder, double paramDouble)
   {
-    paramStringBuilder = paramStringBuilder.append(paramDouble);
+    paramStringBuilder.append(paramDouble);
     Intrinsics.checkExpressionValueIsNotNull(paramStringBuilder, "append(value)");
     return StringsKt.appendln(paramStringBuilder);
   }
@@ -92,7 +92,7 @@ public class StringsKt__StringBuilderJVMKt
   @InlineOnly
   private static final StringBuilder appendln(@NotNull StringBuilder paramStringBuilder, float paramFloat)
   {
-    paramStringBuilder = paramStringBuilder.append(paramFloat);
+    paramStringBuilder.append(paramFloat);
     Intrinsics.checkExpressionValueIsNotNull(paramStringBuilder, "append(value)");
     return StringsKt.appendln(paramStringBuilder);
   }
@@ -100,7 +100,7 @@ public class StringsKt__StringBuilderJVMKt
   @InlineOnly
   private static final StringBuilder appendln(@NotNull StringBuilder paramStringBuilder, int paramInt)
   {
-    paramStringBuilder = paramStringBuilder.append(paramInt);
+    paramStringBuilder.append(paramInt);
     Intrinsics.checkExpressionValueIsNotNull(paramStringBuilder, "append(value)");
     return StringsKt.appendln(paramStringBuilder);
   }
@@ -108,7 +108,7 @@ public class StringsKt__StringBuilderJVMKt
   @InlineOnly
   private static final StringBuilder appendln(@NotNull StringBuilder paramStringBuilder, long paramLong)
   {
-    paramStringBuilder = paramStringBuilder.append(paramLong);
+    paramStringBuilder.append(paramLong);
     Intrinsics.checkExpressionValueIsNotNull(paramStringBuilder, "append(value)");
     return StringsKt.appendln(paramStringBuilder);
   }
@@ -116,7 +116,7 @@ public class StringsKt__StringBuilderJVMKt
   @InlineOnly
   private static final StringBuilder appendln(@NotNull StringBuilder paramStringBuilder, CharSequence paramCharSequence)
   {
-    paramStringBuilder = paramStringBuilder.append(paramCharSequence);
+    paramStringBuilder.append(paramCharSequence);
     Intrinsics.checkExpressionValueIsNotNull(paramStringBuilder, "append(value)");
     return StringsKt.appendln(paramStringBuilder);
   }
@@ -124,7 +124,7 @@ public class StringsKt__StringBuilderJVMKt
   @InlineOnly
   private static final StringBuilder appendln(@NotNull StringBuilder paramStringBuilder, Object paramObject)
   {
-    paramStringBuilder = paramStringBuilder.append(paramObject);
+    paramStringBuilder.append(paramObject);
     Intrinsics.checkExpressionValueIsNotNull(paramStringBuilder, "append(value)");
     return StringsKt.appendln(paramStringBuilder);
   }
@@ -132,7 +132,7 @@ public class StringsKt__StringBuilderJVMKt
   @InlineOnly
   private static final StringBuilder appendln(@NotNull StringBuilder paramStringBuilder, String paramString)
   {
-    paramStringBuilder = paramStringBuilder.append(paramString);
+    paramStringBuilder.append(paramString);
     Intrinsics.checkExpressionValueIsNotNull(paramStringBuilder, "append(value)");
     return StringsKt.appendln(paramStringBuilder);
   }
@@ -140,7 +140,7 @@ public class StringsKt__StringBuilderJVMKt
   @InlineOnly
   private static final StringBuilder appendln(@NotNull StringBuilder paramStringBuilder, StringBuffer paramStringBuffer)
   {
-    paramStringBuilder = paramStringBuilder.append(paramStringBuffer);
+    paramStringBuilder.append(paramStringBuffer);
     Intrinsics.checkExpressionValueIsNotNull(paramStringBuilder, "append(value)");
     return StringsKt.appendln(paramStringBuilder);
   }
@@ -148,7 +148,7 @@ public class StringsKt__StringBuilderJVMKt
   @InlineOnly
   private static final StringBuilder appendln(@NotNull StringBuilder paramStringBuilder1, StringBuilder paramStringBuilder2)
   {
-    paramStringBuilder1 = paramStringBuilder1.append((CharSequence)paramStringBuilder2);
+    paramStringBuilder1.append((CharSequence)paramStringBuilder2);
     Intrinsics.checkExpressionValueIsNotNull(paramStringBuilder1, "append(value)");
     return StringsKt.appendln(paramStringBuilder1);
   }
@@ -156,7 +156,7 @@ public class StringsKt__StringBuilderJVMKt
   @InlineOnly
   private static final StringBuilder appendln(@NotNull StringBuilder paramStringBuilder, short paramShort)
   {
-    paramStringBuilder = paramStringBuilder.append(paramShort);
+    paramStringBuilder.append(paramShort);
     Intrinsics.checkExpressionValueIsNotNull(paramStringBuilder, "append(value.toInt())");
     return StringsKt.appendln(paramStringBuilder);
   }
@@ -164,7 +164,7 @@ public class StringsKt__StringBuilderJVMKt
   @InlineOnly
   private static final StringBuilder appendln(@NotNull StringBuilder paramStringBuilder, boolean paramBoolean)
   {
-    paramStringBuilder = paramStringBuilder.append(paramBoolean);
+    paramStringBuilder.append(paramBoolean);
     Intrinsics.checkExpressionValueIsNotNull(paramStringBuilder, "append(value)");
     return StringsKt.appendln(paramStringBuilder);
   }
@@ -172,7 +172,7 @@ public class StringsKt__StringBuilderJVMKt
   @InlineOnly
   private static final StringBuilder appendln(@NotNull StringBuilder paramStringBuilder, char[] paramArrayOfChar)
   {
-    paramStringBuilder = paramStringBuilder.append(paramArrayOfChar);
+    paramStringBuilder.append(paramArrayOfChar);
     Intrinsics.checkExpressionValueIsNotNull(paramStringBuilder, "append(value)");
     return StringsKt.appendln(paramStringBuilder);
   }
@@ -253,7 +253,7 @@ public class StringsKt__StringBuilderJVMKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.text.StringsKt__StringBuilderJVMKt
  * JD-Core Version:    0.7.0.1
  */

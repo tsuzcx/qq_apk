@@ -30,23 +30,23 @@ public class LoadingMoreWidget
     return "LoadingMoreWidget";
   }
   
-  public void a(View paramView) {}
+  protected void a(View paramView) {}
   
-  public void a(@NonNull StoryPlayerVideoData paramStoryPlayerVideoData, @NonNull StoryVideoItem paramStoryVideoItem) {}
+  protected void a(@NonNull StoryPlayerVideoData paramStoryPlayerVideoData, @NonNull StoryVideoItem paramStoryVideoItem) {}
   
-  public void a(@NonNull Map<Subscriber, String> paramMap)
+  protected void a(@NonNull Map<Subscriber, String> paramMap)
   {
     paramMap.put(new LoadingMoreWidget.PlayVideoChangeReceiver(this), "");
   }
   
-  public boolean a(@NonNull StoryPlayerVideoData paramStoryPlayerVideoData, @NonNull StoryVideoItem paramStoryVideoItem)
+  protected boolean a(@NonNull StoryPlayerVideoData paramStoryPlayerVideoData, @NonNull StoryVideoItem paramStoryVideoItem)
   {
     return this.f;
   }
   
-  public int b()
+  protected int b()
   {
-    return 2131561972;
+    return 2131561814;
   }
   
   public void d()
@@ -63,13 +63,13 @@ public class LoadingMoreWidget
     SLog.b("Q.qqstory.playernew.LoadingMoreWidget", "hideLoadMore");
   }
   
-  public void f() {}
+  protected void f() {}
   
-  public void g() {}
+  protected void g() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.LoadingMoreWidget
  * JD-Core Version:    0.7.0.1
  */

@@ -8,24 +8,26 @@ class ForwardTroopListFragment$5
 {
   ForwardTroopListFragment$5(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void a(int paramInt)
+  protected void a(int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
+    if (paramInt != 2) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("contacts.fragment.TroopFragment", 2, "onCacheInited " + paramInt);
-      }
-    } while (this.a.a == null);
-    this.a.a.c();
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCacheInited ");
+      localStringBuilder.append(paramInt);
+      QLog.d("contacts.fragment.TroopFragment", 2, localStringBuilder.toString());
+    }
+    if (this.a.a != null) {
+      this.a.a.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardTroopListFragment.5
  * JD-Core Version:    0.7.0.1
  */

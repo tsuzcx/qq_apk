@@ -8,6 +8,7 @@ import android.widget.FrameLayout;
 import com.tencent.mtt.hippy.a.e;
 import com.tencent.mtt.hippy.adapter.monitor.HippyEngineMonitorAdapter;
 import com.tencent.mtt.hippy.common.HippyMap;
+import com.tencent.mtt.hippy.common.HippyTag;
 import com.tencent.mtt.hippy.modules.HippyModuleManager;
 import com.tencent.mtt.hippy.modules.javascriptmodules.EventDispatcher;
 import com.tencent.mtt.hippy.utils.PixelUtil;
@@ -21,15 +22,24 @@ public class HippyRootView
   private static final int ROOT_VIEW_TAG_INCREMENT = 10;
   private HippyEngineContext mEngineContext;
   private HippyRootView.GlobalLayoutListener mGlobalLayoutListener;
-  private int mInstanceId;
-  protected boolean mLoadCompleted;
+  private int mInstanceId = 0;
+  protected boolean mLoadCompleted = false;
   private HippyEngine.ModuleLoadParams mLoadParams;
   private HippyRootView.OnLoadCompleteListener mOnLoadCompleteListener;
   private HippyRootView.OnResumeAndPauseListener mOnResumeAndPauseListener;
   HippyRootView.OnSizeChangedListener mSizeChangListener;
   private TimeMonitor mTimeMonitor;
   
-  public HippyRootView(HippyEngine.ModuleLoadParams paramModuleLoadParams) {}
+  public HippyRootView(HippyEngine.ModuleLoadParams paramModuleLoadParams)
+  {
+    super(localHippyInstanceContext);
+    this.mLoadParams = paramModuleLoadParams;
+    this.mInstanceId = ID_COUNTER.addAndGet(10);
+    setId(this.mInstanceId);
+    setTag(HippyTag.createTagMap("RootNode", null));
+    getViewTreeObserver().addOnGlobalLayoutListener(getGlobalLayoutListener());
+    setOnSystemUiVisibilityChangeListener(getGlobalLayoutListener());
+  }
   
   private HippyRootView.GlobalLayoutListener getGlobalLayoutListener()
   {
@@ -88,25 +98,21 @@ public class HippyRootView
     return this.mTimeMonitor;
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     try
     {
       getViewTreeObserver().removeGlobalOnLayoutListener(getGlobalLayoutListener());
-      getViewTreeObserver().addOnGlobalLayoutListener(getGlobalLayoutListener());
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      localThrowable.printStackTrace();
     }
+    getViewTreeObserver().addOnGlobalLayoutListener(getGlobalLayoutListener());
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     try
@@ -120,48 +126,52 @@ public class HippyRootView
     }
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), View.MeasureSpec.getSize(paramInt2));
   }
   
   public void onPause()
   {
-    if (this.mOnResumeAndPauseListener != null) {
-      this.mOnResumeAndPauseListener.onInstancePause(getId());
+    HippyRootView.OnResumeAndPauseListener localOnResumeAndPauseListener = this.mOnResumeAndPauseListener;
+    if (localOnResumeAndPauseListener != null) {
+      localOnResumeAndPauseListener.onInstancePause(getId());
     }
   }
   
   public void onResume()
   {
-    if (this.mOnResumeAndPauseListener != null) {
-      this.mOnResumeAndPauseListener.onInstanceResume(getId());
+    HippyRootView.OnResumeAndPauseListener localOnResumeAndPauseListener = this.mOnResumeAndPauseListener;
+    if (localOnResumeAndPauseListener != null) {
+      localOnResumeAndPauseListener.onInstanceResume(getId());
     }
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if ((paramInt1 != paramInt3) || (paramInt2 != paramInt4))
     {
       HippyRootView.GlobalLayoutListener.access$000(getGlobalLayoutListener(), paramInt1, paramInt2, false, false);
-      if (this.mEngineContext != null)
+      Object localObject = this.mEngineContext;
+      if (localObject != null)
       {
-        HippyModuleManager localHippyModuleManager = this.mEngineContext.getModuleManager();
-        if (localHippyModuleManager != null)
+        localObject = ((HippyEngineContext)localObject).getModuleManager();
+        if (localObject != null)
         {
           HippyMap localHippyMap = new HippyMap();
           localHippyMap.pushDouble("width", PixelUtil.px2dp(paramInt1));
           localHippyMap.pushDouble("height", PixelUtil.px2dp(paramInt2));
           localHippyMap.pushDouble("oldWidth", PixelUtil.px2dp(paramInt3));
           localHippyMap.pushDouble("oldHeight", PixelUtil.px2dp(paramInt4));
-          ((EventDispatcher)localHippyModuleManager.getJavaScriptModule(EventDispatcher.class)).receiveNativeEvent("onSizeChanged", localHippyMap);
+          ((EventDispatcher)((HippyModuleManager)localObject).getJavaScriptModule(EventDispatcher.class)).receiveNativeEvent("onSizeChanged", localHippyMap);
         }
       }
-      if (this.mSizeChangListener != null) {
-        this.mSizeChangListener.onSizeChanged(this, paramInt1, paramInt2, paramInt3, paramInt4);
+      localObject = this.mSizeChangListener;
+      if (localObject != null) {
+        ((HippyRootView.OnSizeChangedListener)localObject).onSizeChanged(this, paramInt1, paramInt2, paramInt3, paramInt4);
       }
     }
   }
@@ -171,11 +181,13 @@ public class HippyRootView
     if ((!this.mLoadCompleted) && (!(paramView instanceof e)))
     {
       this.mLoadCompleted = true;
-      if (this.mTimeMonitor != null)
+      paramView = this.mTimeMonitor;
+      if (paramView != null)
       {
-        this.mTimeMonitor.end();
-        if (this.mOnLoadCompleteListener != null) {
-          this.mOnLoadCompleteListener.onLoadComplete(this.mTimeMonitor.getTotalTime(), this.mTimeMonitor.getEvents());
+        paramView.end();
+        paramView = this.mOnLoadCompleteListener;
+        if (paramView != null) {
+          paramView.onLoadComplete(this.mTimeMonitor.getTotalTime(), this.mTimeMonitor.getEvents());
         }
         this.mEngineContext.getGlobalConfigs().getEngineMonitorAdapter().reportModuleLoadComplete(this, this.mTimeMonitor.getTotalTime(), this.mTimeMonitor.getEvents());
       }
@@ -204,7 +216,7 @@ public class HippyRootView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippyRootView
  * JD-Core Version:    0.7.0.1
  */

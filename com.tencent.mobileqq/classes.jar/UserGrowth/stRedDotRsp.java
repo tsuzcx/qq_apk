@@ -4,14 +4,15 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class stRedDotRsp
   extends JceStruct
 {
   static ArrayList<stRedDotMenu> cache_menu;
   static stNewsRedDot cache_newsReddot;
-  static ArrayList<stNotificationRedDot> cache_notificationReddot;
-  static int cache_reddotAction = 0;
+  static ArrayList<stNotificationRedDot> cache_notificationReddot = new ArrayList();
+  static int cache_reddotAction;
   static stSimpleMetaPerson cache_user;
   public ArrayList<stRedDotMenu> menu = null;
   public stNewsRedDot newsReddot = null;
@@ -21,7 +22,6 @@ public final class stRedDotRsp
   
   static
   {
-    cache_notificationReddot = new ArrayList();
     Object localObject = new stNotificationRedDot();
     cache_notificationReddot.add(localObject);
     cache_newsReddot = new stNewsRedDot();
@@ -54,23 +54,27 @@ public final class stRedDotRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.reddotAction, 0);
-    if (this.notificationReddot != null) {
-      paramJceOutputStream.write(this.notificationReddot, 1);
+    Object localObject = this.notificationReddot;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.newsReddot != null) {
-      paramJceOutputStream.write(this.newsReddot, 2);
+    localObject = this.newsReddot;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.user != null) {
-      paramJceOutputStream.write(this.user, 3);
+    localObject = this.user;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.menu != null) {
-      paramJceOutputStream.write(this.menu, 4);
+    localObject = this.menu;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stRedDotRsp
  * JD-Core Version:    0.7.0.1
  */

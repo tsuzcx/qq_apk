@@ -17,31 +17,29 @@ class ProgressResponseBody$1
   {
     long l1 = super.read(paramBuffer, paramLong);
     paramBuffer = this.this$0;
-    long l2 = ProgressResponseBody.access$000(this.this$0);
-    if (l1 != -1L)
-    {
+    long l2 = ProgressResponseBody.access$000(paramBuffer);
+    if (l1 != -1L) {
       paramLong = l1;
-      ProgressResponseBody.access$002(paramBuffer, paramLong + l2);
-      paramBuffer = ProgressResponseBody.access$200(this.this$0);
-      paramLong = ProgressResponseBody.access$000(this.this$0);
-      l2 = ProgressResponseBody.access$100(this.this$0).contentLength();
-      if (l1 != -1L) {
-        break label102;
-      }
-    }
-    label102:
-    for (boolean bool = true;; bool = false)
-    {
-      paramBuffer.onProgress(paramLong, l2, bool);
-      return l1;
+    } else {
       paramLong = 0L;
-      break;
     }
+    ProgressResponseBody.access$002(paramBuffer, l2 + paramLong);
+    paramBuffer = ProgressResponseBody.access$200(this.this$0);
+    paramLong = ProgressResponseBody.access$000(this.this$0);
+    l2 = ProgressResponseBody.access$100(this.this$0).contentLength();
+    boolean bool;
+    if (l1 == -1L) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    paramBuffer.onProgress(paramLong, l2, bool);
+    return l1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.plato.mqq.network.ProgressResponseBody.1
  * JD-Core Version:    0.7.0.1
  */

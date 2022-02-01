@@ -4,12 +4,13 @@ import android.widget.TextView;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
+import com.tencent.mobileqq.nearby.api.INearbySPUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
@@ -30,98 +31,121 @@ class GameRoomInviteActivity$13
   
   public void a(int paramInt)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView == null) || (this.a.isFinishing())) {}
-    do
+    if (this.a.mLoadingView != null)
     {
-      return;
-      if (paramInt == 0)
-      {
-        this.a.jdField_d_of_type_Boolean = false;
-        this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.c();
-        this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setComplete(new GameRoomInviteActivity.13.1(this));
-        this.a.a("load_page", "suc_cnt");
+      if (this.a.isFinishing()) {
         return;
       }
-    } while (paramInt == 4);
-    if (this.a.jdField_d_of_type_Int > 3)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.a.setText(HardCodeUtil.a(2131705122));
-      this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.c();
-      this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setProgress(0);
-      this.a.jdField_d_of_type_Boolean = false;
-      return;
+      GameRoomInviteActivity localGameRoomInviteActivity;
+      if (paramInt == 0)
+      {
+        localGameRoomInviteActivity = this.a;
+        localGameRoomInviteActivity.isLoading = false;
+        localGameRoomInviteActivity.mLoadingView.c();
+        this.a.mLoadingView.setComplete(new GameRoomInviteActivity.13.1(this));
+        this.a.report("load_page", "suc_cnt");
+        return;
+      }
+      if (paramInt != 4)
+      {
+        if (this.a.retryTimes > 3)
+        {
+          this.a.mLoadingView.a.setText(HardCodeUtil.a(2131705199));
+          this.a.mLoadingView.c();
+          this.a.mLoadingView.setProgress(0);
+          this.a.isLoading = false;
+          return;
+        }
+        localGameRoomInviteActivity = this.a;
+        localGameRoomInviteActivity.isLoading = true;
+        localGameRoomInviteActivity.mWwPluginManager.a();
+        localGameRoomInviteActivity = this.a;
+        localGameRoomInviteActivity.retryTimes += 1;
+      }
     }
-    this.a.jdField_d_of_type_Boolean = true;
-    this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a();
-    GameRoomInviteActivity localGameRoomInviteActivity = this.a;
-    localGameRoomInviteActivity.jdField_d_of_type_Int += 1;
   }
   
   public void a(submsgtype0xdd.MsgBody paramMsgBody)
   {
+    int i = paramMsgBody.uint32_msg_type.get();
     Object localObject;
-    switch (paramMsgBody.uint32_msg_type.get())
+    if (i != 1)
     {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("GameRoomInviteActivity", 2, "the 0xdd push type is wrong:" + paramMsgBody.uint32_msg_type.get());
-      }
-    case 1: 
-      do
+      if (i != 2)
       {
-        return;
-        localObject = this.a;
-        int i;
-        if ((!paramMsgBody.uint64_invite_leader.has()) || (paramMsgBody.uint64_invite_leader.get() == this.a.app.getLongAccountUin()))
+        if (i != 3)
         {
-          bool = true;
-          ((GameRoomInviteActivity)localObject).jdField_a_of_type_Boolean = bool;
-          this.a.jdField_a_of_type_JavaUtilList = new ArrayList();
-          i = 0;
-          if (i >= paramMsgBody.rpt_msg_player_state.size()) {
-            continue;
+          if (i != 4)
+          {
+            if (QLog.isColorLevel())
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("the 0xdd push type is wrong:");
+              ((StringBuilder)localObject).append(paramMsgBody.uint32_msg_type.get());
+              QLog.d("GameRoomInviteActivity", 2, ((StringBuilder)localObject).toString());
+            }
           }
-          localObject = new GameRoomInviteActivity.GameRoomUser(this.a);
-          submsgtype0xdd.MsgBody.PlayerState localPlayerState = (submsgtype0xdd.MsgBody.PlayerState)paramMsgBody.rpt_msg_player_state.get(i);
-          ((GameRoomInviteActivity.GameRoomUser)localObject).jdField_a_of_type_JavaLangString = (localPlayerState.uint64_uin.get() + "");
-          if (localPlayerState.uint32_state.get() != 1) {
-            break label250;
+          else {
+            this.a.showCreateNewTeamDialog(null, HardCodeUtil.a(2131705201), true);
           }
         }
-        for (boolean bool = true;; bool = false)
+        else
         {
-          ((GameRoomInviteActivity.GameRoomUser)localObject).jdField_a_of_type_Boolean = bool;
-          this.a.jdField_a_of_type_JavaUtilList.add(localObject);
-          i += 1;
-          break label135;
-          bool = false;
-          break;
+          QQToast.a(this.a, HardCodeUtil.a(2131705224), 0).a();
+          this.a.finish();
+          paramMsgBody = this.a;
+          paramMsgBody.mUsers = null;
+          SharedPreUtils.a(paramMsgBody, paramMsgBody.app.getCurrentAccountUin(), false, System.currentTimeMillis());
         }
-      } while (this.a.jdField_d_of_type_Boolean);
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity$UserGridAdapter.notifyDataSetChanged();
-      this.a.a();
-      return;
-    case 2: 
-      paramMsgBody = (submsgtype0xdd.MsgBody.WifiPOIInfo)paramMsgBody.msg_poi_info.get();
-      localObject = paramMsgBody.bytes_uid.get().toStringUtf8();
-      this.a.a(HotChatInfo.createHotChat(paramMsgBody, false, 0), paramMsgBody.uint32_group_code.get(), (String)localObject, paramMsgBody.bytes_name.get().toStringUtf8());
-      NearbySPUtil.a(this.a.app.getCurrentAccountUin(), "game_room_last_time", Long.valueOf(MessageCache.a()));
-      return;
-    case 3: 
-      label135:
-      label250:
-      QQToast.a(this.a, HardCodeUtil.a(2131705147), 0).a();
-      this.a.finish();
-      this.a.jdField_a_of_type_JavaUtilList = null;
-      SharedPreUtils.a(this.a, this.a.app.getCurrentAccountUin(), false, System.currentTimeMillis());
-      return;
+      }
+      else
+      {
+        paramMsgBody = (submsgtype0xdd.MsgBody.WifiPOIInfo)paramMsgBody.msg_poi_info.get();
+        localObject = paramMsgBody.bytes_uid.get().toStringUtf8();
+        this.a.gotoGameChatPie(HotChatInfo.createHotChat(paramMsgBody, false, 0), paramMsgBody.uint32_group_code.get(), (String)localObject, paramMsgBody.bytes_name.get().toStringUtf8());
+        ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(this.a.app.getCurrentAccountUin(), "game_room_last_time", Long.valueOf(MessageCache.a()));
+      }
     }
-    this.a.a(null, HardCodeUtil.a(2131705124), true);
+    else
+    {
+      localObject = this.a;
+      boolean bool;
+      if ((paramMsgBody.uint64_invite_leader.has()) && (paramMsgBody.uint64_invite_leader.get() != this.a.app.getLongAccountUin())) {
+        bool = false;
+      } else {
+        bool = true;
+      }
+      ((GameRoomInviteActivity)localObject).mIsOwner = bool;
+      this.a.mUsers = new ArrayList();
+      i = 0;
+      while (i < paramMsgBody.rpt_msg_player_state.size())
+      {
+        localObject = new GameRoomInviteActivity.GameRoomUser(this.a);
+        submsgtype0xdd.MsgBody.PlayerState localPlayerState = (submsgtype0xdd.MsgBody.PlayerState)paramMsgBody.rpt_msg_player_state.get(i);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localPlayerState.uint64_uin.get());
+        localStringBuilder.append("");
+        ((GameRoomInviteActivity.GameRoomUser)localObject).jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+        if (localPlayerState.uint32_state.get() == 1) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        ((GameRoomInviteActivity.GameRoomUser)localObject).jdField_a_of_type_Boolean = bool;
+        this.a.mUsers.add(localObject);
+        i += 1;
+      }
+      if (!this.a.isLoading)
+      {
+        this.a.mAdapter.notifyDataSetChanged();
+        this.a.refreshUI();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.13
  * JD-Core Version:    0.7.0.1
  */

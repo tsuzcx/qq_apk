@@ -9,7 +9,12 @@ class ShortVideoResourceManager$2$1
   
   public void onDownloadFinish(String paramString1, int paramInt, String paramString2)
   {
-    VideoEnvironment.LogDownLoad("QuicResDownload", "doUserDownloadQuicResourceAsync: [onDownloadFinish]name=" + paramString1 + " filepath=" + paramString2, null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doUserDownloadQuicResourceAsync: [onDownloadFinish]name=");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" filepath=");
+    localStringBuilder.append(paramString2);
+    VideoEnvironment.LogDownLoad("QuicResDownload", localStringBuilder.toString(), null);
   }
   
   public void onNetWorkNone()
@@ -26,7 +31,7 @@ class ShortVideoResourceManager$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.2.1
  * JD-Core Version:    0.7.0.1
  */

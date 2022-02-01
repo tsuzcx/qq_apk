@@ -13,13 +13,13 @@ class RegisterNewBaseActivity$2
     QQCustomDialog localQQCustomDialog = DialogUtil.a(this.this$0, 230);
     localQQCustomDialog.setTitle(this.a);
     localQQCustomDialog.setMessage(this.b);
-    localQQCustomDialog.setPositiveButton(2131699691, new RegisterNewBaseActivity.2.1(this));
+    localQQCustomDialog.setPositiveButton(2131699824, new RegisterNewBaseActivity.2.1(this));
     localQQCustomDialog.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterNewBaseActivity.2
  * JD-Core Version:    0.7.0.1
  */

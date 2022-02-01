@@ -25,22 +25,21 @@ public class DanmakuMeasureManager
   
   private Handler a()
   {
-    if ((this.jdField_a_of_type_AndroidOsHandlerThread == null) || (!this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {}
-    try
-    {
-      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("DanmakuMeasureThread");
-      this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandlerThread.setUncaughtExceptionHandler(new DanmakuUncaughtExceptionHandler());
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-      return this.jdField_a_of_type_AndroidOsHandler;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+    HandlerThread localHandlerThread = this.jdField_a_of_type_AndroidOsHandlerThread;
+    if ((localHandlerThread == null) || (!localHandlerThread.isAlive())) {
+      try
+      {
+        this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("DanmakuMeasureThread");
+        this.jdField_a_of_type_AndroidOsHandlerThread.start();
+        this.jdField_a_of_type_AndroidOsHandlerThread.setUncaughtExceptionHandler(new DanmakuUncaughtExceptionHandler());
+        this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+      }
+      catch (Throwable localThrowable)
       {
         Logger.d("DanmakuMeasureManager", new Object[] { localThrowable });
       }
     }
+    return this.jdField_a_of_type_AndroidOsHandler;
   }
   
   public static void a(DanmakuContext paramDanmakuContext, BaseDanmaku paramBaseDanmaku)
@@ -56,15 +55,19 @@ public class DanmakuMeasureManager
   
   public void a()
   {
-    if ((this.jdField_a_of_type_AndroidOsHandlerThread == null) || (!this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {
-      return;
-    }
-    if (DanmakuUtils.a())
+    HandlerThread localHandlerThread = this.jdField_a_of_type_AndroidOsHandlerThread;
+    if (localHandlerThread != null)
     {
-      this.jdField_a_of_type_AndroidOsHandlerThread.quitSafely();
-      return;
+      if (!localHandlerThread.isAlive()) {
+        return;
+      }
+      if (DanmakuUtils.a())
+      {
+        this.jdField_a_of_type_AndroidOsHandlerThread.quitSafely();
+        return;
+      }
+      this.jdField_a_of_type_AndroidOsHandlerThread.quit();
     }
-    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
   }
   
   public void a(BaseDanmaku paramBaseDanmaku, DanmakuMeasureManager.IMeasureCallback paramIMeasureCallback)
@@ -77,19 +80,21 @@ public class DanmakuMeasureManager
   
   public void a(List<BaseDanmaku> paramList, DanmakuMeasureManager.IMeasureCallback paramIMeasureCallback)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    Handler localHandler;
-    do
+    if (paramList != null)
     {
-      return;
-      localHandler = a();
-    } while (localHandler == null);
-    localHandler.post(new DanmakuMeasureManager.2(this, paramList, paramIMeasureCallback));
+      if (paramList.size() == 0) {
+        return;
+      }
+      Handler localHandler = a();
+      if (localHandler != null) {
+        localHandler.post(new DanmakuMeasureManager.2(this, paramList, paramIMeasureCallback));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.core.DanmakuMeasureManager
  * JD-Core Version:    0.7.0.1
  */

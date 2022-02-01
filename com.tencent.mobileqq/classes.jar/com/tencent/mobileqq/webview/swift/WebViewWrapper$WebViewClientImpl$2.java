@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.swift;
 
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtilss;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
 import com.tencent.qphone.base.util.QLog;
 
 class WebViewWrapper$WebViewClientImpl$2
@@ -12,13 +12,13 @@ class WebViewWrapper$WebViewClientImpl$2
   {
     boolean bool = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(this.jdField_a_of_type_JavaLangString);
     if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewWrapper", 2, new Object[] { "post intercept:", Boolean.valueOf(bool), " ", SwiftWebViewUtilss.b(this.jdField_a_of_type_JavaLangString) });
+      QLog.d("WebLog_WebViewWrapper", 2, new Object[] { "post intercept:", Boolean.valueOf(bool), " ", SwiftWebViewUtils.a(this.jdField_a_of_type_JavaLangString) });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewWrapper.WebViewClientImpl.2
  * JD-Core Version:    0.7.0.1
  */

@@ -14,15 +14,15 @@ class SessionClearFragment$6
   
   public void onClick(View paramView)
   {
-    Object localObject = HardCodeUtil.a(2131713792);
-    localObject = DialogUtil.a(SessionClearFragment.a(this.a), 230, HardCodeUtil.a(2131713794), (String)localObject, 2131694495, 2131720765, new SessionClearFragment.6.1(this), new SessionClearFragment.6.2(this));
+    Object localObject = HardCodeUtil.a(2131713720);
+    localObject = DialogUtil.a(SessionClearFragment.a(this.a), 230, HardCodeUtil.a(2131713722), (String)localObject, 2131694460, 2131720490, new SessionClearFragment.6.1(this), new SessionClearFragment.6.2(this));
     SessionClearFragment.a(this.a, (Dialog)localObject);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.weather.SessionClearFragment.6
  * JD-Core Version:    0.7.0.1
  */

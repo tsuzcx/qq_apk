@@ -12,12 +12,12 @@ final class TogetherWatchFloatingUtil$4
     if (QLog.isColorLevel()) {
       QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "ACTION_QUIT_WATCH_FLOATING_WINDOWS result=", Integer.valueOf(paramEIPCResult.code) });
     }
-    if (paramEIPCResult.code != 0) {}
+    int i = paramEIPCResult.code;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.TogetherWatchFloatingUtil.4
  * JD-Core Version:    0.7.0.1
  */

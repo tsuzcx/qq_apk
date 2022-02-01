@@ -1,22 +1,22 @@
 package com.tencent.av.business.manager.pendant;
 
-import android.text.TextUtils;
 import com.tencent.av.tips.TipsUtil;
 
 class EffectPendantTipsImpl$3
   implements Runnable
 {
-  EffectPendantTipsImpl$3(EffectPendantTipsImpl paramEffectPendantTipsImpl, int paramInt) {}
+  EffectPendantTipsImpl$3(EffectPendantTipsImpl paramEffectPendantTipsImpl, EffectPendantTips.ClearErrorTipsCallback paramClearErrorTipsCallback) {}
   
   public void run()
   {
     try
     {
-      String str = this.this$0.a(EffectPendantTipsImpl.a(this.this$0), this.a);
-      if (!TextUtils.isEmpty(str)) {
-        TipsUtil.a(EffectPendantTipsImpl.a(this.this$0), 1016, str);
+      TipsUtil.a(EffectPendantTipsImpl.a(this.this$0), 1016);
+      if (this.a != null)
+      {
+        this.a.a();
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -26,7 +26,7 @@ class EffectPendantTipsImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.pendant.EffectPendantTipsImpl.3
  * JD-Core Version:    0.7.0.1
  */

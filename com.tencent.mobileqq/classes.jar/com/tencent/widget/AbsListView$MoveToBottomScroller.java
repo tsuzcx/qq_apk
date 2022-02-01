@@ -29,42 +29,62 @@ class AbsListView$MoveToBottomScroller
   
   public void run()
   {
-    int i = 0;
     AdapterView.traceBegin("AbsListView.MoveToBottomScroller.run");
-    for (;;)
+    try
     {
-      int j;
-      try
+      j = (int)(AnimationUtils.currentAnimationTimeMillis() - this.mStartTime);
+      i = this.mStatus;
+      if (i != 0)
       {
-        j = (int)(AnimationUtils.currentAnimationTimeMillis() - this.mStartTime);
-        switch (this.mStatus)
+        if (i != 1)
         {
-        case 0: 
-          i -= this.lastMotionY;
-          if (this.this$0.trackMotionScroll(-i, -i)) {
-            break label564;
+          if (i != 2)
+          {
+            if (i != 3)
+            {
+              i = 0;
+            }
+            else
+            {
+              if (j > this.mDuration)
+              {
+                i = this.mDistance;
+                j = this.lastMotionY;
+                localAbsListView = this.this$0;
+                i = -(i - j);
+                localAbsListView.trackMotionScroll(i, i);
+                AdapterView.traceEnd();
+                return;
+              }
+              f1 = j;
+              f1 = AnimateUtils.a(f1 / this.mDuration) * this.mDistance;
+              break label604;
+            }
           }
-          i = this.this$0.getChildCount();
-          int k = this.this$0.mFirstPosition;
-          if ((this.mStatus == 3) || (this.mStatus == 1) || (k + i - 1 < this.mTargetPosition)) {
-            break label524;
+          else
+          {
+            f1 = this.mMaxVeloctiy * j - this.mMaxVeloctiy * 400.0F / 8.0F;
+            break label604;
           }
-          k = AbsListView.access$2900(this.this$0);
-          int m = AbsListView.access$3000(this.this$0);
-          int n = this.this$0.mListPadding.bottom;
-          this.mDistance = (this.this$0.getChildAt(i - 1).getBottom() - (k - m - n));
-          if (this.mDistance != 0) {
-            break label426;
+        }
+        else
+        {
+          if (j > this.mDuration)
+          {
+            i = this.mDistance;
+            j = this.lastMotionY;
+            localAbsListView = this.this$0;
+            i = -(i - j);
+            localAbsListView.trackMotionScroll(i, i);
+            AdapterView.traceEnd();
+            return;
           }
-          stop();
-          return;
+          this.mCurrVelocity -= this.mAccerleration * j;
+          f1 = this.mDistance - this.mCurrVelocity * (this.mDuration - j) / 2.0F;
+          break label604;
         }
       }
-      finally
-      {
-        AdapterView.traceEnd();
-      }
-      if (j > 100)
+      else if (j > 100)
       {
         this.mCurrVelocity = this.mMaxVeloctiy;
         i = (int)(this.mMaxVeloctiy * j - this.mMaxVeloctiy * 400.0F / 8.0F);
@@ -73,32 +93,49 @@ class AbsListView$MoveToBottomScroller
       }
       else
       {
-        this.mCurrVelocity = (this.mAccerleration * j);
-        i = (int)(this.mCurrVelocity * j / 2.0F);
-        continue;
-        i = (int)(this.mMaxVeloctiy * j - this.mMaxVeloctiy * 400.0F / 8.0F);
-        continue;
-        if (j > this.mDuration)
+        f1 = this.mAccerleration;
+        float f2 = j;
+        this.mCurrVelocity = (f1 * f2);
+        f1 = this.mCurrVelocity * f2 / 2.0F;
+      }
+    }
+    finally
+    {
+      for (;;)
+      {
+        int j;
+        AbsListView localAbsListView;
+        float f1;
+        int k;
+        int m;
+        int n;
+        AdapterView.traceEnd();
+        for (;;)
         {
-          i = this.mDistance - this.lastMotionY;
-          this.this$0.trackMotionScroll(-i, -i);
+          throw localObject;
+        }
+        int i = (int)f1;
+      }
+    }
+    k = this.lastMotionY;
+    localAbsListView = this.this$0;
+    i = -(i - k);
+    if (!localAbsListView.trackMotionScroll(i, i))
+    {
+      i = this.this$0.getChildCount();
+      k = this.this$0.mFirstPosition;
+      if ((this.mStatus != 3) && (this.mStatus != 1) && (k + i - 1 >= this.mTargetPosition))
+      {
+        k = this.this$0.getBottom();
+        m = this.this$0.getTop();
+        n = this.this$0.mListPadding.bottom;
+        this.mDistance = (this.this$0.getChildAt(i - 1).getBottom() - (k - m - n));
+        if (this.mDistance == 0)
+        {
+          stop();
           AdapterView.traceEnd();
           return;
         }
-        this.mCurrVelocity -= this.mAccerleration * j;
-        i = (int)(this.mDistance - this.mCurrVelocity * (this.mDuration - j) / 2.0F);
-        continue;
-        if (j > this.mDuration)
-        {
-          i = this.mDistance - this.lastMotionY;
-          this.this$0.trackMotionScroll(-i, -i);
-          AdapterView.traceEnd();
-          return;
-        }
-        float f = j;
-        i = (int)(AnimateUtils.a(f / this.mDuration) * this.mDistance);
-        continue;
-        label426:
         this.mDuration = (400 - j);
         if (this.mDuration < 100) {
           this.mDuration = 100;
@@ -110,40 +147,38 @@ class AbsListView$MoveToBottomScroller
           this.mStatus = 1;
           this.mCurrVelocity = (this.mDistance * 2.0F / this.mDuration);
           this.mAccerleration = (this.mCurrVelocity / this.mDuration);
-          label524:
-          if (Build.VERSION.SDK_INT < 16) {
-            break label552;
-          }
-          this.this$0.postOnAnimation(this);
         }
-        for (;;)
+        else
         {
-          AdapterView.traceEnd();
-          return;
           this.mStatus = 3;
-          break;
-          label552:
-          this.this$0.post(this);
-          continue;
-          label564:
-          stop();
         }
       }
+      if (Build.VERSION.SDK_INT >= 16) {
+        this.this$0.postOnAnimation(this);
+      } else {
+        this.this$0.post(this);
+      }
     }
+    else
+    {
+      stop();
+    }
+    AdapterView.traceEnd();
   }
   
   void start()
   {
-    boolean bool = true;
     int i = this.this$0.mFirstPosition;
     int j = this.this$0.getChildCount();
+    boolean bool = true;
     i = this.this$0.mItemCount - (i + j - 1) - 1;
     if (i == 0)
     {
-      i = AbsListView.access$2700(this.this$0);
-      j = AbsListView.access$2800(this.this$0);
+      i = this.this$0.getBottom();
+      j = this.this$0.getTop();
       int k = this.this$0.mListPadding.bottom;
-      this.mDistance = (this.this$0.getChildAt(this.this$0.getChildCount() - 1).getBottom() - (i - j - k));
+      AbsListView localAbsListView = this.this$0;
+      this.mDistance = (localAbsListView.getChildAt(localAbsListView.getChildCount() - 1).getBottom() - (i - j - k));
       if (this.mDistance == 0)
       {
         stop();
@@ -168,16 +203,14 @@ class AbsListView$MoveToBottomScroller
     this.mStatus = 0;
     this.lastMotionY = 0;
     this.mTargetPosition = (this.this$0.mItemCount - 1);
-    if (i == 1) {}
-    for (;;)
+    if (i != 1) {
+      bool = false;
+    }
+    this.mUseViscousFluid = bool;
+    if (Build.VERSION.SDK_INT >= 16)
     {
-      this.mUseViscousFluid = bool;
-      if (Build.VERSION.SDK_INT < 16) {
-        break;
-      }
       this.this$0.postOnAnimation(this);
       return;
-      bool = false;
     }
     this.this$0.post(this);
   }
@@ -190,7 +223,7 @@ class AbsListView$MoveToBottomScroller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.AbsListView.MoveToBottomScroller
  * JD-Core Version:    0.7.0.1
  */

@@ -19,30 +19,27 @@ class TextPreviewTranslateActivity$2
       TextPreviewTranslateActivity.a(this.a, paramTranslateResult);
       return;
     }
-    String str2 = this.a.getResources().getString(2131699010);
+    String str2 = this.a.getResources().getString(2131699088);
     String str1 = str2;
-    if (paramTranslateResult != null)
-    {
-      if (TextUtils.isEmpty(paramTranslateResult.e)) {
-        break label92;
+    if (paramTranslateResult != null) {
+      if (!TextUtils.isEmpty(paramTranslateResult.e))
+      {
+        str1 = paramTranslateResult.e;
       }
-      str1 = paramTranslateResult.e;
-    }
-    for (;;)
-    {
-      QQToast.a(this.a, 1, str1, 0).a();
-      return;
-      label92:
-      str1 = str2;
-      if (paramTranslateResult.a()) {
-        str1 = this.a.getResources().getString(2131698997);
+      else
+      {
+        str1 = str2;
+        if (paramTranslateResult.a()) {
+          str1 = this.a.getResources().getString(2131699075);
+        }
       }
     }
+    QQToast.a(this.a, 1, str1, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TextPreviewTranslateActivity.2
  * JD-Core Version:    0.7.0.1
  */

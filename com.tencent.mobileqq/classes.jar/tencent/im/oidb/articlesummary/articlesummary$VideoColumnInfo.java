@@ -38,6 +38,7 @@ public final class articlesummary$VideoColumnInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -48,12 +49,12 @@ public final class articlesummary$VideoColumnInfo
     ByteStringMicro localByteStringMicro8 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro9 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro10 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 48, 56, 66, 74, 82, 90, 98, 106, 114, 122, 130, 136, 146, 154, 160, 170, 178 }, new String[] { "uint32_column_id", "bytes_column_name", "bytes_column_icon_url", "uint64_last_update_time", "uint32_video_count", "uint32_subscribe_count", "uint32_is_subscribed", "bytes_column_card_bg_url", "bytes_column_card_bg_color", "bytes_column_card_icon_url", "bytes_app_name", "bytes_app_icon_url", "default_jump_info", "video_jump_info", "subscribe_jump_info", "app_jump_info", "uin32_column_card_bg_style", "rpt_sub_video_info", "bytes_sub_title", "uint32_update_count", "bytes_from_txt", "bytes_column_name_color" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, localByteStringMicro7, null, null, null, null, Integer.valueOf(0), null, localByteStringMicro8, Integer.valueOf(0), localByteStringMicro9, localByteStringMicro10 }, VideoColumnInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 48, 56, 66, 74, 82, 90, 98, 106, 114, 122, 130, 136, 146, 154, 160, 170, 178 }, new String[] { "uint32_column_id", "bytes_column_name", "bytes_column_icon_url", "uint64_last_update_time", "uint32_video_count", "uint32_subscribe_count", "uint32_is_subscribed", "bytes_column_card_bg_url", "bytes_column_card_bg_color", "bytes_column_card_icon_url", "bytes_app_name", "bytes_app_icon_url", "default_jump_info", "video_jump_info", "subscribe_jump_info", "app_jump_info", "uin32_column_card_bg_style", "rpt_sub_video_info", "bytes_sub_title", "uint32_update_count", "bytes_from_txt", "bytes_column_name_color" }, new Object[] { localInteger, localByteStringMicro1, localByteStringMicro2, Long.valueOf(0L), localInteger, localInteger, localInteger, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, localByteStringMicro7, null, null, null, null, localInteger, null, localByteStringMicro8, localInteger, localByteStringMicro9, localByteStringMicro10 }, VideoColumnInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.articlesummary.articlesummary.VideoColumnInfo
  * JD-Core Version:    0.7.0.1
  */

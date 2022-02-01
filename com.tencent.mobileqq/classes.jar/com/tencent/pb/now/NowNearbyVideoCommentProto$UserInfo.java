@@ -22,14 +22,15 @@ public final class NowNearbyVideoCommentProto$UserInfo
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48 }, new String[] { "uid", "head_img_url", "anchor_name", "userExtraInfo", "user_type", "now_id" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, null, Integer.valueOf(0), Long.valueOf(0L) }, UserInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48 }, new String[] { "uid", "head_img_url", "anchor_name", "userExtraInfo", "user_type", "now_id" }, new Object[] { localLong, localByteStringMicro1, localByteStringMicro2, null, Integer.valueOf(0), localLong }, UserInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.now.NowNearbyVideoCommentProto.UserInfo
  * JD-Core Version:    0.7.0.1
  */

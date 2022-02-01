@@ -22,13 +22,15 @@ class VideoViewVideoHolder$6
   public void onError(@NonNull Error paramError)
   {
     super.onError(paramError);
-    SLog.d(this.a.a, "VideoPrepareSegment error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
-    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
+    String str = this.a.a;
+    paramError = (ErrorMessage)paramError;
+    SLog.d(str, "VideoPrepareSegment error=%s", new Object[] { paramError.getErrorMessage() });
+    VideoViewVideoHolder.a(this.a, paramError);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.6
  * JD-Core Version:    0.7.0.1
  */

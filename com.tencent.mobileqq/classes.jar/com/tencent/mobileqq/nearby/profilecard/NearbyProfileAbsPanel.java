@@ -19,8 +19,9 @@ public abstract class NearbyProfileAbsPanel
   
   public View a()
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      return this.jdField_a_of_type_AndroidViewView;
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (localView != null) {
+      return localView;
     }
     int i = a();
     if (i > 0)
@@ -28,11 +29,11 @@ public abstract class NearbyProfileAbsPanel
       this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(i, null);
       a(this.jdField_a_of_type_AndroidViewView);
     }
-    for (;;)
+    else
     {
-      return this.jdField_a_of_type_AndroidViewView;
       this.jdField_a_of_type_AndroidViewView = null;
     }
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
   protected void a(View paramView) {}
@@ -41,7 +42,7 @@ public abstract class NearbyProfileAbsPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileAbsPanel
  * JD-Core Version:    0.7.0.1
  */

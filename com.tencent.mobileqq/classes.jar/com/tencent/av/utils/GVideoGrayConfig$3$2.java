@@ -11,12 +11,13 @@ class GVideoGrayConfig$3$2
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    GVideoGrayConfig.3.a(this.a, this.a.a);
+    paramDialogInterface = this.a;
+    GVideoGrayConfig.3.a(paramDialogInterface, paramDialogInterface.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.GVideoGrayConfig.3.2
  * JD-Core Version:    0.7.0.1
  */

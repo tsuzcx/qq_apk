@@ -17,8 +17,14 @@ class InterestSwitchEditActivity$1
   
   public void onGetCardDisplaySetting(boolean paramBoolean, String paramString, Card paramCard)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("InterestSwitchEditActivity", 2, "onGetCardDisplaySetting isSuccess=" + paramBoolean + " uin=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetCardDisplaySetting isSuccess=");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" uin=");
+      localStringBuilder.append(paramString);
+      QLog.i("InterestSwitchEditActivity", 2, localStringBuilder.toString());
     }
     if (!TextUtils.equals(this.a.app.getCurrentAccountUin(), paramString)) {
       return;
@@ -26,30 +32,34 @@ class InterestSwitchEditActivity$1
     if (paramBoolean)
     {
       paramString = this.a;
-      if (paramCard != null) {}
-      for (;;)
-      {
-        InterestSwitchEditActivity.a(paramString, paramCard);
-        ProfileSettingUtils.a.a(this.a.app, InterestSwitchEditActivity.a(this.a), InterestSwitchEditActivity.a(this.a), InterestSwitchEditActivity.a(this.a));
-        InterestSwitchEditActivity.a(this.a);
-        return;
-        paramCard = InterestSwitchEditActivity.a(this.a);
+      if (paramCard == null) {
+        paramCard = InterestSwitchEditActivity.a(paramString);
       }
+      InterestSwitchEditActivity.a(paramString, paramCard);
+      ProfileSettingUtils.a.a(this.a.app, InterestSwitchEditActivity.a(this.a), InterestSwitchEditActivity.a(this.a), InterestSwitchEditActivity.a(this.a));
+      InterestSwitchEditActivity.a(this.a);
+      return;
     }
-    QQToast.a(this.a, HardCodeUtil.a(2131705823), 0).b(this.a.getTitleBarHeight());
+    QQToast.a(this.a, HardCodeUtil.a(2131705875), 0).b(this.a.getTitleBarHeight());
   }
   
   public void onSetCardDisplaySetting(boolean paramBoolean, String paramString, Card paramCard, ArrayList<ReqSetSettingItem> paramArrayList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("InterestSwitchEditActivity", 2, "onSetCardDisplaySetting isSuccess=" + paramBoolean + " uin=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      paramCard = new StringBuilder();
+      paramCard.append("onSetCardDisplaySetting isSuccess=");
+      paramCard.append(paramBoolean);
+      paramCard.append(" uin=");
+      paramCard.append(paramString);
+      QLog.i("InterestSwitchEditActivity", 2, paramCard.toString());
     }
     if (!TextUtils.equals(this.a.app.getCurrentAccountUin(), paramString)) {
       return;
     }
     if (!paramBoolean)
     {
-      QQToast.a(BaseApplicationImpl.sApplication, 2131719697, 0).b(this.a.getTitleBarHeight());
+      QQToast.a(BaseApplicationImpl.sApplication, 2131719418, 0).b(this.a.getTitleBarHeight());
       if (paramArrayList != null)
       {
         paramString = paramArrayList.iterator();
@@ -65,7 +75,7 @@ class InterestSwitchEditActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.InterestSwitchEditActivity.1
  * JD-Core Version:    0.7.0.1
  */

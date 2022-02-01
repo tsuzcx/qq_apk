@@ -53,39 +53,54 @@ public class Emoticon
   
   public boolean equals(Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof Emoticon))) {}
-    do
+    if (paramObject != null)
     {
-      return false;
+      if (!(paramObject instanceof Emoticon)) {
+        return false;
+      }
       paramObject = (Emoticon)paramObject;
-    } while ((paramObject.eId == null) || (!paramObject.eId.equals(this.eId)) || (paramObject.epId == null) || (!paramObject.epId.equals(this.epId)));
-    return true;
+      String str = paramObject.eId;
+      if ((str != null) && (str.equals(this.eId)))
+      {
+        paramObject = paramObject.epId;
+        if ((paramObject != null) && (paramObject.equals(this.epId))) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
   
   public String getMapKey()
   {
-    return this.epId + "_" + this.eId;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.epId);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.eId);
+    return localStringBuilder.toString();
   }
   
   public boolean hasEncryptKey()
   {
-    return !TextUtils.isEmpty(this.encryptKey);
+    return TextUtils.isEmpty(this.encryptKey) ^ true;
   }
   
   public void increaseClickNum()
   {
-    if (this.clickNum == 2147483647) {
+    int i = this.clickNum;
+    if (i == 2147483647) {
       return;
     }
-    this.clickNum += 1;
+    this.clickNum = (i + 1);
   }
   
   public void increaseExposeNum()
   {
-    if (this.exposeNum == 2147483647) {
+    int i = this.exposeNum;
+    if (i == 2147483647) {
       return;
     }
-    this.exposeNum += 1;
+    this.exposeNum = (i + 1);
   }
   
   public boolean isNewSoundEmoticon()
@@ -95,12 +110,12 @@ public class Emoticon
   
   public List<Integer> parseSoundPrintString()
   {
-    Object localObject = null;
-    if (this.voicePrintItems != null) {
-      localObject = this.voicePrintItems;
-    }
-    while (TextUtils.isEmpty(this.voicePrint)) {
+    Object localObject = this.voicePrintItems;
+    if (localObject != null) {
       return localObject;
+    }
+    if (TextUtils.isEmpty(this.voicePrint)) {
+      return null;
     }
     try
     {
@@ -129,26 +144,28 @@ public class Emoticon
     if (!TextUtils.isEmpty(this.voicePrint)) {
       return this.voicePrint;
     }
-    if ((this.voicePrintItems == null) || (this.voicePrintItems.isEmpty())) {
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < this.voicePrintItems.size())
+    Object localObject = this.voicePrintItems;
+    if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
-      localStringBuilder.append(this.voicePrintItems.get(i));
-      if (i != this.voicePrintItems.size() - 1) {
-        localStringBuilder.append("|");
+      localObject = new StringBuilder();
+      int i = 0;
+      while (i < this.voicePrintItems.size())
+      {
+        ((StringBuilder)localObject).append(this.voicePrintItems.get(i));
+        if (i != this.voicePrintItems.size() - 1) {
+          ((StringBuilder)localObject).append("|");
+        }
+        i += 1;
       }
-      i += 1;
+      this.voicePrint = ((StringBuilder)localObject).toString();
+      return this.voicePrint;
     }
-    this.voicePrint = localStringBuilder.toString();
-    return this.voicePrint;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.Emoticon
  * JD-Core Version:    0.7.0.1
  */

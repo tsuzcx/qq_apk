@@ -30,13 +30,13 @@ public class QQAnonymousDialog
   
   public QQAnonymousDialog(Context paramContext)
   {
-    super(paramContext, 2131755842);
+    super(paramContext, 2131756189);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(new QQAnonymousDialog.1(this));
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560726, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370738));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370751));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560614, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370374));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370386));
   }
   
   public void a()
@@ -50,30 +50,34 @@ public class QQAnonymousDialog
   
   public void a(int paramInt, String paramString)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-    case 1: 
-    case 3: 
-      do
+      if (paramInt != 2)
       {
-        do
-        {
+        if (paramInt != 3) {
           return;
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843899);
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-        } while (!AppSetting.d);
-        QQAppInterface.speak(paramString);
-        return;
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843893);
+        }
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843813);
         this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-      } while (!AppSetting.d);
-      QQAppInterface.speak(paramString);
-      return;
+        if (AppSetting.d) {
+          QQAppInterface.speak(paramString);
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_Int = 0;
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843818);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131696054));
+      }
     }
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843898);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131696039));
+    else
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843819);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+      if (AppSetting.d) {
+        QQAppInterface.speak(paramString);
+      }
+    }
   }
   
   public void dismiss()
@@ -101,7 +105,7 @@ public class QQAnonymousDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.anonymous.QQAnonymousDialog
  * JD-Core Version:    0.7.0.1
  */

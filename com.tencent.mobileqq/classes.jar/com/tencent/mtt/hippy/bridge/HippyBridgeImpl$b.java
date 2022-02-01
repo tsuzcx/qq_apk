@@ -17,31 +17,29 @@ public class HippyBridgeImpl$b
   
   public void a(File paramFile)
   {
-    if ((paramFile == null) || (!paramFile.exists()) || (!paramFile.isDirectory())) {
-      return;
-    }
-    File[] arrayOfFile = paramFile.listFiles();
-    if (arrayOfFile != null)
+    if ((paramFile != null) && (paramFile.exists()))
     {
-      int j = arrayOfFile.length;
-      int i = 0;
-      if (i < j)
+      if (!paramFile.isDirectory()) {
+        return;
+      }
+      File[] arrayOfFile = paramFile.listFiles();
+      if (arrayOfFile != null)
       {
-        File localFile = arrayOfFile[i];
-        if (localFile.isFile()) {
-          localFile.delete();
-        }
-        for (;;)
+        int j = arrayOfFile.length;
+        int i = 0;
+        while (i < j)
         {
-          i += 1;
-          break;
-          if (localFile.isDirectory()) {
+          File localFile = arrayOfFile[i];
+          if (localFile.isFile()) {
+            localFile.delete();
+          } else if (localFile.isDirectory()) {
             a(localFile);
           }
+          i += 1;
         }
       }
+      paramFile.delete();
     }
-    paramFile.delete();
   }
   
   public void run()
@@ -55,7 +53,7 @@ public class HippyBridgeImpl$b
       a(localFile);
       localFile.mkdirs();
       new File(this.b).createNewFile();
-      this.a.runNativeRunnable(this.b, this.c, HippyBridgeImpl.access$100(this.a), null);
+      this.a.runNativeRunnable(this.b, this.c, HippyBridgeImpl.access$200(this.a), null);
       return;
     }
     catch (Throwable localThrowable)
@@ -66,7 +64,7 @@ public class HippyBridgeImpl$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.bridge.HippyBridgeImpl.b
  * JD-Core Version:    0.7.0.1
  */

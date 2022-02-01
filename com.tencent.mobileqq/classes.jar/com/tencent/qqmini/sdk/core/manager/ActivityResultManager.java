@@ -41,7 +41,10 @@ public class ActivityResultManager
   
   public void addActivityResultListener(IActivityResultListener paramIActivityResultListener)
   {
-    QMLog.d("ActivityResultManager", "addActivityResultListener " + paramIActivityResultListener);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("addActivityResultListener ");
+    localStringBuilder.append(paramIActivityResultListener);
+    QMLog.d("ActivityResultManager", localStringBuilder.toString());
     if (paramIActivityResultListener == null) {
       return;
     }
@@ -61,7 +64,10 @@ public class ActivityResultManager
   
   public void addRequestPermissionResultListener(IRequestPermissionsResultListener paramIRequestPermissionsResultListener)
   {
-    QMLog.d("ActivityResultManager", "addRequestPermissionResultListener " + paramIRequestPermissionsResultListener);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("addRequestPermissionResultListener ");
+    localStringBuilder.append(paramIRequestPermissionsResultListener);
+    QMLog.d("ActivityResultManager", localStringBuilder.toString());
     if (paramIRequestPermissionsResultListener == null) {
       return;
     }
@@ -81,69 +87,88 @@ public class ActivityResultManager
   
   public void notifyActivityResultListener(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    QMLog.d("ActivityResultManager", "notifyActivityResultListener requestCode:" + paramInt1 + " resultCode:" + paramInt2);
-    if ((this.mActivityResultListenerList == null) || (this.mActivityResultListenerList.size() == 0))
-    {
-      QMLog.e("ActivityResultManager", "mActivityResultListenerList == null || mActivityResultListenerList.size() == 0");
-      return;
-    }
-    try
-    {
-      synchronized (this.mActivityResultListenerList)
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("notifyActivityResultListener requestCode:");
+    ((StringBuilder)???).append(paramInt1);
+    ((StringBuilder)???).append(" resultCode:");
+    ((StringBuilder)???).append(paramInt2);
+    QMLog.d("ActivityResultManager", ((StringBuilder)???).toString());
+    ??? = this.mActivityResultListenerList;
+    if ((??? != null) && (((ArrayList)???).size() != 0)) {
+      try
       {
-        Iterator localIterator = this.mActivityResultListenerList.iterator();
-        while (localIterator.hasNext())
+        synchronized (this.mActivityResultListenerList)
         {
-          IActivityResultListener localIActivityResultListener = (IActivityResultListener)localIterator.next();
-          if (localIActivityResultListener.doOnActivityResult(paramInt1, paramInt2, paramIntent))
+          Iterator localIterator = this.mActivityResultListenerList.iterator();
+          while (localIterator.hasNext())
           {
-            QMLog.d("ActivityResultManager", "triggerListener " + localIActivityResultListener);
-            return;
+            IActivityResultListener localIActivityResultListener = (IActivityResultListener)localIterator.next();
+            if (localIActivityResultListener.doOnActivityResult(paramInt1, paramInt2, paramIntent))
+            {
+              paramIntent = new StringBuilder();
+              paramIntent.append("triggerListener ");
+              paramIntent.append(localIActivityResultListener);
+              QMLog.d("ActivityResultManager", paramIntent.toString());
+              return;
+            }
           }
+          return;
         }
+        QMLog.e("ActivityResultManager", "mActivityResultListenerList == null || mActivityResultListenerList.size() == 0");
       }
-    }
-    catch (Throwable paramIntent)
-    {
-      QMLog.e("ActivityResultManager", paramIntent.getMessage(), paramIntent);
-      return;
+      catch (Throwable paramIntent)
+      {
+        QMLog.e("ActivityResultManager", paramIntent.getMessage(), paramIntent);
+        return;
+      }
     }
   }
   
   public void notifyRequestPermissionResultListener(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    QMLog.d("ActivityResultManager", "notifyRequestPermissionResultListener requestCode:" + paramInt + " permission:" + paramArrayOfString);
-    if ((this.mRequestPermissionsResultListenerList == null) || (this.mRequestPermissionsResultListenerList.size() == 0))
-    {
-      QMLog.e("ActivityResultManager", "mActivityResultListenerList == null || mActivityResultListenerList.size() == 0");
-      return;
-    }
-    try
-    {
-      synchronized (this.mRequestPermissionsResultListenerList)
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("notifyRequestPermissionResultListener requestCode:");
+    ((StringBuilder)???).append(paramInt);
+    ((StringBuilder)???).append(" permission:");
+    ((StringBuilder)???).append(paramArrayOfString);
+    QMLog.d("ActivityResultManager", ((StringBuilder)???).toString());
+    ??? = this.mRequestPermissionsResultListenerList;
+    if ((??? != null) && (((ArrayList)???).size() != 0)) {
+      try
       {
-        Iterator localIterator = this.mRequestPermissionsResultListenerList.iterator();
-        while (localIterator.hasNext())
+        synchronized (this.mRequestPermissionsResultListenerList)
         {
-          IRequestPermissionsResultListener localIRequestPermissionsResultListener = (IRequestPermissionsResultListener)localIterator.next();
-          if (localIRequestPermissionsResultListener.doOnRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt))
+          Iterator localIterator = this.mRequestPermissionsResultListenerList.iterator();
+          while (localIterator.hasNext())
           {
-            QMLog.d("ActivityResultManager", "triggerListener " + localIRequestPermissionsResultListener);
-            return;
+            IRequestPermissionsResultListener localIRequestPermissionsResultListener = (IRequestPermissionsResultListener)localIterator.next();
+            if (localIRequestPermissionsResultListener.doOnRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt))
+            {
+              paramArrayOfString = new StringBuilder();
+              paramArrayOfString.append("triggerListener ");
+              paramArrayOfString.append(localIRequestPermissionsResultListener);
+              QMLog.d("ActivityResultManager", paramArrayOfString.toString());
+              return;
+            }
           }
+          return;
         }
+        QMLog.e("ActivityResultManager", "mActivityResultListenerList == null || mActivityResultListenerList.size() == 0");
       }
-    }
-    catch (Throwable paramArrayOfString)
-    {
-      QMLog.e("ActivityResultManager", paramArrayOfString.getMessage(), paramArrayOfString);
-      return;
+      catch (Throwable paramArrayOfString)
+      {
+        QMLog.e("ActivityResultManager", paramArrayOfString.getMessage(), paramArrayOfString);
+        return;
+      }
     }
   }
   
   public void removeActivityResultListener(IActivityResultListener paramIActivityResultListener)
   {
-    QMLog.d("ActivityResultManager", "removeActivityResultListener " + paramIActivityResultListener);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("removeActivityResultListener ");
+    localStringBuilder.append(paramIActivityResultListener);
+    QMLog.d("ActivityResultManager", localStringBuilder.toString());
     if (paramIActivityResultListener != null) {
       try
       {
@@ -162,7 +187,10 @@ public class ActivityResultManager
   
   public void removeRequestPermissionResultListener(IRequestPermissionsResultListener paramIRequestPermissionsResultListener)
   {
-    QMLog.d("ActivityResultManager", "removeRequestPermissionResultListener " + paramIRequestPermissionsResultListener);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("removeRequestPermissionResultListener ");
+    localStringBuilder.append(paramIRequestPermissionsResultListener);
+    QMLog.d("ActivityResultManager", localStringBuilder.toString());
     if (paramIRequestPermissionsResultListener != null) {
       try
       {
@@ -181,7 +209,7 @@ public class ActivityResultManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.ActivityResultManager
  * JD-Core Version:    0.7.0.1
  */

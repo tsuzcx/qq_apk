@@ -7,7 +7,7 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.util.Utils;
 
 public class ColorView
   extends View
@@ -16,31 +16,36 @@ public class ColorView
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private ColorView.ColorViewListener jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorView$ColorViewListener;
-  private int b = AIOUtils.a(4.0F, getResources());
+  private int b = Utils.a(4.0F, getResources());
   
   public ColorView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, new RectF(0.0F, 0.0F, getWidth(), getHeight()), null);
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (localObject != null)
+    {
+      paramCanvas.drawBitmap((Bitmap)localObject, null, new RectF(0.0F, 0.0F, getWidth(), getHeight()), null);
+      return;
     }
-    while (this.jdField_a_of_type_AndroidGraphicsPaint == null) {
+    if (this.jdField_a_of_type_AndroidGraphicsPaint == null) {
       return;
     }
     int j = getWidth();
     int k = getHeight();
-    if (j > k) {}
-    for (int i = j;; i = k)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(i);
-      paramCanvas.drawRoundRect(new RectF(0.0F, 0.0F, j, k), this.b, this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
+    if (j > k) {
+      i = j;
+    } else {
+      i = k;
     }
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(i);
+    localObject = new RectF(0.0F, 0.0F, j, k);
+    int i = this.b;
+    paramCanvas.drawRoundRect((RectF)localObject, i, i, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
   public void setBtmap(Bitmap paramBitmap)
@@ -71,7 +76,7 @@ public class ColorView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.control.ColorView
  * JD-Core Version:    0.7.0.1
  */

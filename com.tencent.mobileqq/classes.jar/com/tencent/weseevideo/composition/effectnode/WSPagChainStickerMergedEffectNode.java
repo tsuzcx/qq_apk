@@ -22,11 +22,15 @@ public class WSPagChainStickerMergedEffectNode
   private List<VideoEffectModel> mVideoEffectModels;
   private VideoEndModel mVideoEndModel;
   private VideoFenWeiModel mVideoFenWeiModel;
-  private final String sEffectId = "WSPagChainStickerMergedEffectNode" + Integer.toHexString(hashCode());
+  private final String sEffectId;
   
   public WSPagChainStickerMergedEffectNode(TAVAutomaticRenderContext paramTAVAutomaticRenderContext)
   {
     super(paramTAVAutomaticRenderContext);
+    paramTAVAutomaticRenderContext = new StringBuilder();
+    paramTAVAutomaticRenderContext.append("WSPagChainStickerMergedEffectNode");
+    paramTAVAutomaticRenderContext.append(Integer.toHexString(hashCode()));
+    this.sEffectId = paramTAVAutomaticRenderContext.toString();
     this.reportKey = "WSPagChainStickerMergedEffectNode";
   }
   
@@ -34,34 +38,29 @@ public class WSPagChainStickerMergedEffectNode
   {
     ArrayList localArrayList = new ArrayList();
     if (isAvailable()) {
-      for (;;)
+      synchronized (getStickerContext().getStickers())
       {
-        TAVSticker localTAVSticker;
-        synchronized (getStickerContext().getStickers())
+        Iterator localIterator = getStickerContext().getStickers().iterator();
+        while (localIterator.hasNext())
         {
-          Iterator localIterator = getStickerContext().getStickers().iterator();
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localTAVSticker = (TAVSticker)localIterator.next();
-          if (localTAVSticker == null) {
-            continue;
-          }
-          if ((paramInt == VideoEffectType.TYPE_STICKER.value) && ("blur".equals(TAVStickerExKt.getExtraStickerType(localTAVSticker)))) {
-            localArrayList.add(localTAVSticker);
+          TAVSticker localTAVSticker = (TAVSticker)localIterator.next();
+          if (localTAVSticker != null) {
+            if ((paramInt == VideoEffectType.TYPE_STICKER.value) && ("blur".equals(TAVStickerExKt.getExtraStickerType(localTAVSticker)))) {
+              localArrayList.add(localTAVSticker);
+            } else if ((paramInt == VideoEffectType.TYPE_VIDEO_END.value) && ("sticker_video_end".equals(TAVStickerExKt.getExtraStickerType(localTAVSticker)))) {
+              localArrayList.add(localTAVSticker);
+            } else if ((paramInt == VideoEffectType.TYPE_FEN_WEI.value) && ("sticker_fen_wei".equals(TAVStickerExKt.getExtraStickerType(localTAVSticker)))) {
+              localArrayList.add(localTAVSticker);
+            } else if ((paramInt == VideoEffectType.TYPE_VIDEO_BEGIN.value) && ("sticker_video_begin".equals(TAVStickerExKt.getExtraStickerType(localTAVSticker)))) {
+              localArrayList.add(localTAVSticker);
+            } else if ((paramInt == VideoEffectType.TYPE_SPECIAL_EFFECT.value) && ("sticker_video_special".equals(TAVStickerExKt.getExtraStickerType(localTAVSticker)))) {
+              localArrayList.add(localTAVSticker);
+            } else if ((paramInt == VideoEffectType.TYPE_SUBTITLE.value) && ("sticker_lyric".equals(TAVStickerExKt.getExtraStickerType(localTAVSticker)))) {
+              localArrayList.add(localTAVSticker);
+            }
           }
         }
-        if ((paramInt == VideoEffectType.TYPE_VIDEO_END.value) && ("sticker_video_end".equals(TAVStickerExKt.getExtraStickerType(localTAVSticker)))) {
-          localList1.add(localTAVSticker);
-        } else if ((paramInt == VideoEffectType.TYPE_FEN_WEI.value) && ("sticker_fen_wei".equals(TAVStickerExKt.getExtraStickerType(localTAVSticker)))) {
-          localList1.add(localTAVSticker);
-        } else if ((paramInt == VideoEffectType.TYPE_VIDEO_BEGIN.value) && ("sticker_video_begin".equals(TAVStickerExKt.getExtraStickerType(localTAVSticker)))) {
-          localList1.add(localTAVSticker);
-        } else if ((paramInt == VideoEffectType.TYPE_SPECIAL_EFFECT.value) && ("sticker_video_special".equals(TAVStickerExKt.getExtraStickerType(localTAVSticker)))) {
-          localList1.add(localTAVSticker);
-        } else if ((paramInt == VideoEffectType.TYPE_SUBTITLE.value) && ("sticker_lyric".equals(TAVStickerExKt.getExtraStickerType(localTAVSticker)))) {
-          localList1.add(localTAVSticker);
-        }
+        return localArrayList;
       }
     }
     return localList1;
@@ -95,7 +94,8 @@ public class WSPagChainStickerMergedEffectNode
     if (isAvailable())
     {
       removeStickers(findStickerByType(VideoEffectType.TYPE_VIDEO_BEGIN.value));
-      if ((this.mVideoBeginModel != null) && (!TextUtils.isEmpty(this.mVideoBeginModel.getFilePath()))) {
+      VideoBeginModel localVideoBeginModel = this.mVideoBeginModel;
+      if ((localVideoBeginModel != null) && (!TextUtils.isEmpty(localVideoBeginModel.getFilePath()))) {
         VideoEffectNodeFactory.addPagChainEffectNode(this.mVideoBeginModel, getStickerContext());
       }
     }
@@ -117,7 +117,8 @@ public class WSPagChainStickerMergedEffectNode
     if (isAvailable())
     {
       removeStickers(findStickerByType(VideoEffectType.TYPE_VIDEO_END.value));
-      if ((this.mVideoEndModel != null) && (!TextUtils.isEmpty(this.mVideoEndModel.getFilePath()))) {
+      VideoEndModel localVideoEndModel = this.mVideoEndModel;
+      if ((localVideoEndModel != null) && (!TextUtils.isEmpty(localVideoEndModel.getFilePath()))) {
         VideoEffectNodeFactory.addPagChainEffectNode(this.mVideoEndModel, getStickerContext());
       }
     }
@@ -128,7 +129,8 @@ public class WSPagChainStickerMergedEffectNode
     if (isAvailable())
     {
       removeStickers(findStickerByType(VideoEffectType.TYPE_FEN_WEI.value));
-      if ((this.mVideoFenWeiModel != null) && (!TextUtils.isEmpty(this.mVideoFenWeiModel.getFilePath()))) {
+      VideoFenWeiModel localVideoFenWeiModel = this.mVideoFenWeiModel;
+      if ((localVideoFenWeiModel != null) && (!TextUtils.isEmpty(localVideoFenWeiModel.getFilePath()))) {
         VideoEffectNodeFactory.addPagChainEffectNode(this.mVideoFenWeiModel, getStickerContext());
       }
     }
@@ -189,7 +191,7 @@ public class WSPagChainStickerMergedEffectNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.composition.effectnode.WSPagChainStickerMergedEffectNode
  * JD-Core Version:    0.7.0.1
  */

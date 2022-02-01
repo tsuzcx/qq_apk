@@ -102,100 +102,64 @@ public final class ResultObject
   
   public boolean equals(@Nullable Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (this != paramObject)
     {
-      bool1 = bool2;
-      if (!(paramObject instanceof ResultObject)) {
-        break label198;
-      }
-      paramObject = (ResultObject)paramObject;
-      if (this.reportType != paramObject.reportType) {
-        break label200;
-      }
-      i = 1;
-      bool1 = bool2;
-      if (i == 0) {
-        break label198;
-      }
-      bool1 = bool2;
-      if (!Intrinsics.areEqual(this.eventName, paramObject.eventName)) {
-        break label198;
-      }
-      if (this.isSucceed != paramObject.isSucceed) {
-        break label205;
-      }
-      i = 1;
-      label73:
-      bool1 = bool2;
-      if (i == 0) {
-        break label198;
-      }
-      if (this.elapse != paramObject.elapse) {
-        break label210;
-      }
-      i = 1;
-      label94:
-      bool1 = bool2;
-      if (i == 0) {
-        break label198;
-      }
-      if (this.size != paramObject.size) {
-        break label215;
-      }
-      i = 1;
-      label115:
-      bool1 = bool2;
-      if (i == 0) {
-        break label198;
-      }
-      bool1 = bool2;
-      if (!Intrinsics.areEqual(this.params, paramObject.params)) {
-        break label198;
-      }
-      if (this.isRealTime != paramObject.isRealTime) {
-        break label220;
-      }
-      i = 1;
-      label152:
-      bool1 = bool2;
-      if (i == 0) {
-        break label198;
-      }
-      if (this.isMerge != paramObject.isMerge) {
-        break label225;
-      }
-    }
-    label198:
-    label200:
-    label205:
-    label210:
-    label215:
-    label220:
-    label225:
-    for (int i = 1;; i = 0)
-    {
-      bool1 = bool2;
-      if (i != 0)
+      if ((paramObject instanceof ResultObject))
       {
-        bool1 = bool2;
-        if (Intrinsics.areEqual(this.uin, paramObject.uin)) {
-          bool1 = true;
+        paramObject = (ResultObject)paramObject;
+        int i;
+        if (this.reportType == paramObject.reportType) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        if ((i != 0) && (Intrinsics.areEqual(this.eventName, paramObject.eventName)))
+        {
+          if (this.isSucceed == paramObject.isSucceed) {
+            i = 1;
+          } else {
+            i = 0;
+          }
+          if (i != 0)
+          {
+            if (this.elapse == paramObject.elapse) {
+              i = 1;
+            } else {
+              i = 0;
+            }
+            if (i != 0)
+            {
+              if (this.size == paramObject.size) {
+                i = 1;
+              } else {
+                i = 0;
+              }
+              if ((i != 0) && (Intrinsics.areEqual(this.params, paramObject.params)))
+              {
+                if (this.isRealTime == paramObject.isRealTime) {
+                  i = 1;
+                } else {
+                  i = 0;
+                }
+                if (i != 0)
+                {
+                  if (this.isMerge == paramObject.isMerge) {
+                    i = 1;
+                  } else {
+                    i = 0;
+                  }
+                  if ((i != 0) && (Intrinsics.areEqual(this.uin, paramObject.uin))) {
+                    return true;
+                  }
+                }
+              }
+            }
+          }
         }
       }
-      return bool1;
-      i = 0;
-      break;
-      i = 0;
-      break label73;
-      i = 0;
-      break label94;
-      i = 0;
-      break label115;
-      i = 0;
-      break label152;
+      return false;
     }
+    return true;
   }
   
   public final int getDbId()
@@ -312,12 +276,32 @@ public final class ResultObject
   @NotNull
   public String toString()
   {
-    return "ResultObject(reportType=" + this.reportType + ", eventName=" + this.eventName + ", isSucceed=" + this.isSucceed + ", elapse=" + this.elapse + ", size=" + this.size + ", params=" + this.params + ", isRealTime=" + this.isRealTime + ", isMerge=" + this.isMerge + ", uin=" + this.uin + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ResultObject(reportType=");
+    localStringBuilder.append(this.reportType);
+    localStringBuilder.append(", eventName=");
+    localStringBuilder.append(this.eventName);
+    localStringBuilder.append(", isSucceed=");
+    localStringBuilder.append(this.isSucceed);
+    localStringBuilder.append(", elapse=");
+    localStringBuilder.append(this.elapse);
+    localStringBuilder.append(", size=");
+    localStringBuilder.append(this.size);
+    localStringBuilder.append(", params=");
+    localStringBuilder.append(this.params);
+    localStringBuilder.append(", isRealTime=");
+    localStringBuilder.append(this.isRealTime);
+    localStringBuilder.append(", isMerge=");
+    localStringBuilder.append(this.isMerge);
+    localStringBuilder.append(", uin=");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.base.reporter.uploaddata.data.ResultObject
  * JD-Core Version:    0.7.0.1
  */

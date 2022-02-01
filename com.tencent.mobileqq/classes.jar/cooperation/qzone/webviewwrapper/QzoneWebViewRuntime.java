@@ -53,20 +53,20 @@ public class QzoneWebViewRuntime
   public EntityManagerFactory getEntityManagerFactory(String paramString)
   {
     paramString = getAccount();
-    if (paramString == null) {
-      throw new IllegalStateException("Can not create a entity factory, the account is null.");
-    }
-    try
-    {
-      if (this.emFactory == null)
+    if (paramString != null) {
+      try
       {
-        paramString = QQEntityManagerFactoryProxy.a(paramString, super.getEntityManagerFactory());
-        paramString.verifyAuthentication();
-        this.emFactory = paramString;
+        if (this.emFactory == null)
+        {
+          paramString = QQEntityManagerFactoryProxy.a(paramString, super.getEntityManagerFactory());
+          paramString.verifyAuthentication();
+          this.emFactory = paramString;
+        }
+        return this.emFactory;
       }
-      return this.emFactory;
+      finally {}
     }
-    finally {}
+    throw new IllegalStateException("Can not create a entity factory, the account is null.");
   }
   
   public Manager getManager(int paramInt)
@@ -95,7 +95,7 @@ public class QzoneWebViewRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewwrapper.QzoneWebViewRuntime
  * JD-Core Version:    0.7.0.1
  */

@@ -32,16 +32,14 @@ public class PrivacyPolicyHelper$MyLinkMovementMethod
         {
           localObject[0].onClick(paramTextView);
           paramSpannable.setSpan(new ForegroundColorSpan(-12541697), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
-        }
-        for (;;)
-        {
           return true;
-          if (i == 0)
-          {
-            paramSpannable.setSpan(new ForegroundColorSpan(2134941951), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
-            Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]));
-          }
         }
+        if (i == 0)
+        {
+          paramSpannable.setSpan(new ForegroundColorSpan(2134941951), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
+          Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]));
+        }
+        return true;
       }
       Selection.removeSelection(paramSpannable);
     }
@@ -50,7 +48,7 @@ public class PrivacyPolicyHelper$MyLinkMovementMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.PrivacyPolicyHelper.MyLinkMovementMethod
  * JD-Core Version:    0.7.0.1
  */

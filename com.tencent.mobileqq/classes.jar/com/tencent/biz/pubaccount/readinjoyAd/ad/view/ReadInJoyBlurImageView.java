@@ -9,11 +9,11 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.kandian.biz.common.widget.NativeReadInjoyImageView;
 import com.tencent.mobileqq.utils.CommonImageCacheHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
@@ -25,8 +25,8 @@ public class ReadInJoyBlurImageView
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#E9E9E9"));
   private Handler jdField_a_of_type_AndroidOsHandler = new ReadInJoyBlurImageView.1(this, Looper.getMainLooper());
   private View jdField_a_of_type_AndroidViewView;
-  private NativeReadInjoyImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView;
   private AdvertisementInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
+  private NativeReadInjoyImageView jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView;
   private Drawable b = new ColorDrawable(Color.parseColor("#00000000"));
   
   public ReadInJoyBlurImageView(VafContext paramVafContext)
@@ -38,22 +38,22 @@ public class ReadInJoyBlurImageView
   
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null)
+    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
+    if (localObject != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.getVideoCoverUrlWithSmartCut(false);
-      if (localObject == null) {
-        break label39;
+      localObject = ((AdvertisementInfo)localObject).getVideoCoverUrlWithSmartCut(false);
+      if (localObject != null) {
+        localObject = ((URL)localObject).getFile();
+      } else {
+        localObject = null;
       }
-    }
-    for (Object localObject = ((URL)localObject).getFile();; localObject = null) {
       try
       {
-        a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView, (String)localObject, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView, (String)localObject, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
         return;
       }
       catch (Exception localException)
       {
-        label39:
         localException.printStackTrace();
       }
     }
@@ -61,35 +61,49 @@ public class ReadInJoyBlurImageView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560169, null);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView = ((NativeReadInjoyImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369591));
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560055, null);
+    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView = ((NativeReadInjoyImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369301));
   }
   
   private void b()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo == null)) {}
-    Bitmap localBitmap;
-    do
+    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView != null)
     {
-      return;
-      localBitmap = CommonImageCacheHelper.a(String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAid));
-    } while (localBitmap == null);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageBitmap(localBitmap);
+      Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
+      if (localObject == null) {
+        return;
+      }
+      localObject = CommonImageCacheHelper.a(String.valueOf(((AdvertisementInfo)localObject).mAdAid));
+      if (localObject == null) {
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.setImageBitmap((Bitmap)localObject);
+    }
   }
   
   public void a(NativeReadInjoyImageView paramNativeReadInjoyImageView, String paramString, Drawable paramDrawable)
   {
-    QLog.d("ReadInjoyBlurImageView", 2, "loadImage: path is " + paramString);
-    if ((paramString == null) || (paramString.equals("-1")) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView == null)) {
-      return;
-    }
-    paramNativeReadInjoyImageView = String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAid);
-    if (CommonImageCacheHelper.a(paramNativeReadInjoyImageView) == null)
+    paramNativeReadInjoyImageView = new StringBuilder();
+    paramNativeReadInjoyImageView.append("loadImage: path is ");
+    paramNativeReadInjoyImageView.append(paramString);
+    QLog.d("ReadInjoyBlurImageView", 2, paramNativeReadInjoyImageView.toString());
+    if ((paramString != null) && (!paramString.equals("-1")))
     {
-      ThreadManagerV2.excute(new ReadInJoyBlurImageView.2(this, paramString, paramNativeReadInjoyImageView), 128, null, false);
-      return;
+      paramNativeReadInjoyImageView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
+      if (paramNativeReadInjoyImageView != null)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView == null) {
+          return;
+        }
+        paramNativeReadInjoyImageView = String.valueOf(paramNativeReadInjoyImageView.mAdAid);
+        if (CommonImageCacheHelper.a(paramNativeReadInjoyImageView) == null)
+        {
+          ThreadManagerV2.excute(new ReadInJoyBlurImageView.2(this, paramString, paramNativeReadInjoyImageView), 128, null, false);
+          return;
+        }
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      }
     }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
   }
   
   public int getComMeasuredHeight()
@@ -127,38 +141,30 @@ public class ReadInJoyBlurImageView
   public void reset()
   {
     super.reset();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageSrc(null);
+    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.setImageSrc(null);
   }
   
-  public boolean setAttribute(int paramInt, Object paramObject)
+  protected boolean setAttribute(int paramInt, Object paramObject)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    switch (paramInt)
-    {
-    default: 
-      bool1 = super.setAttribute(paramInt, paramObject);
+    if (paramInt != 1042) {
+      return super.setAttribute(paramInt, paramObject);
     }
-    for (;;)
-    {
-      return bool1;
-      bool1 = bool2;
-      if (paramObject != null)
+    if (paramObject != null) {
+      try
       {
-        bool1 = bool2;
-        try
+        if ((paramObject instanceof AdvertisementInfo))
         {
-          if ((paramObject instanceof AdvertisementInfo))
-          {
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = ((AdvertisementInfo)paramObject);
-            return true;
-          }
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = ((AdvertisementInfo)paramObject);
+          return true;
         }
-        catch (Exception paramObject)
-        {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = null;
-          QLog.d("ReadInjoyBlurImageView", 1, "setAttribute STR_ID_SET_AD_BANNER exception " + paramObject.toString());
-        }
+      }
+      catch (Exception paramObject)
+      {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = null;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setAttribute STR_ID_SET_AD_BANNER exception ");
+        localStringBuilder.append(paramObject.toString());
+        QLog.d("ReadInjoyBlurImageView", 1, localStringBuilder.toString());
       }
     }
     return true;
@@ -166,7 +172,7 @@ public class ReadInJoyBlurImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyBlurImageView
  * JD-Core Version:    0.7.0.1
  */

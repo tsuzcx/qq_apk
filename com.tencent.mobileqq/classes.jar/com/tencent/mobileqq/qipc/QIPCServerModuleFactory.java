@@ -1,88 +1,85 @@
 package com.tencent.mobileqq.qipc;
 
 import com.etrump.mixlayout.VasFontIPCModule;
+import com.tencent.aelight.camera.cmsshow.api.IAECMSShow;
+import com.tencent.aelight.camera.entry.api.IAECameraLaunchServer;
+import com.tencent.aelight.camera.qipc.api.IAECameraGetInfoServer;
+import com.tencent.aelight.camera.qipc.api.IAEEditorEffectIpc;
+import com.tencent.aelight.camera.qqstory.api.IPeakIpcModuleServer;
 import com.tencent.aiosharemusic.AioShareMusicIPCMainClient;
+import com.tencent.avbiz.AVBizServerQIPCModule;
 import com.tencent.avgame.ipc.AVGameServerIPCModule;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopIPCModule;
-import com.tencent.biz.pubaccount.readinjoy.ipc.ReadInJoyIPCModule;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsIPCServer;
-import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterModule;
+import com.tencent.biz.pubaccount.weishi_new.api.IWSManager;
+import com.tencent.comic.api.IQQComicUtil;
 import com.tencent.common.app.QRouteIPCModule;
 import com.tencent.gamecenter.wadl.biz.ipc.WadlQIPCModule;
 import com.tencent.gdtad.adapter.GdtIPCAdapter.ClientToServerIPCAsyncModule;
 import com.tencent.gdtad.adapter.GdtIPCAdapter.ClientToServerIPCSyncModule;
-import com.tencent.gdtad.ipc.GdtIpc;
-import com.tencent.hippy.qq.ipc.HippyIpcModule;
+import com.tencent.hippy.qq.api.IHippyIPC;
 import com.tencent.mm.hardcoder.HardCoderManager.HardCoderIPCModule;
 import com.tencent.mobileqq.activity.activateFriend.QQNotifyIPCModule;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgIPCServer;
-import com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCModule;
 import com.tencent.mobileqq.activity.springfestival.entry.SpringHbIPCModule;
-import com.tencent.mobileqq.apollo.ApolloClientQIPCModule;
+import com.tencent.mobileqq.apollo.utils.api.IApolloIPCHelper;
 import com.tencent.mobileqq.app.BabyQIPCModule;
 import com.tencent.mobileqq.app.CommonModule;
 import com.tencent.mobileqq.app.ExtendFriendQIPCModule;
 import com.tencent.mobileqq.app.FriendQIPCModule;
 import com.tencent.mobileqq.app.SignInModule;
 import com.tencent.mobileqq.applets.PublicAccountModule;
-import com.tencent.mobileqq.ark.API.ArkQQAPIIPCModule;
+import com.tencent.mobileqq.ark.api.IArkIPCService;
 import com.tencent.mobileqq.ark.image.ChooseImageIPCModule;
 import com.tencent.mobileqq.avatar.ipc.AvatarServerIPCModule;
 import com.tencent.mobileqq.campuscircle.CampusCircleIpcServer;
 import com.tencent.mobileqq.colornote.ColorNoteIPCServer;
-import com.tencent.mobileqq.comment.DanmuDataIPCServer;
 import com.tencent.mobileqq.download.unite.util.UniteDownloadIPCModule;
-import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoIpcServer;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonIPCModule;
-import com.tencent.mobileqq.emoticonview.ipc.EmoticonMainPanelIpcModule;
-import com.tencent.mobileqq.extendfriend.ipc.ExpandFlutterIPCServer;
-import com.tencent.mobileqq.filemanageraux.core.WeiyunDownloadService;
+import com.tencent.mobileqq.ecshop.api.IEcshopUtilApi;
+import com.tencent.mobileqq.emoticonview.api.IEmoticonPanelIpcService;
 import com.tencent.mobileqq.flutter.channel.zanranking.ZanRankingIpcServer;
 import com.tencent.mobileqq.flutter.ipc.FlutterMainQIPCModule;
 import com.tencent.mobileqq.gamecenter.gameBuddy.GameBuddyModule;
-import com.tencent.mobileqq.gamecenter.web.QQGameIPCModule;
 import com.tencent.mobileqq.identification.DeviceProtectQIPCModule;
-import com.tencent.mobileqq.identification.IdentificationIpcServer;
 import com.tencent.mobileqq.intervideo.yiqikan.TogetherBusinessIPCModule;
 import com.tencent.mobileqq.intimate.IntimateQIPCModule;
 import com.tencent.mobileqq.jubao.JubaoIPCServer;
+import com.tencent.mobileqq.kandian.biz.common.ipc.api.IReadInJoyIPCModuleFactory;
+import com.tencent.mobileqq.kandian.biz.video.constants.VideoFeedsIPCServer;
 import com.tencent.mobileqq.listentogether.ipc.ListenTogetherIPCModuleMainServer;
 import com.tencent.mobileqq.litelivesdk.sdkimpl.ipc.LiteSDKForCrossProcess;
 import com.tencent.mobileqq.mini.api.IMiniAppService;
 import com.tencent.mobileqq.pic.PicSTWXQIPCModule;
 import com.tencent.mobileqq.pluginsdk.QIPCServerModulePlugin;
-import com.tencent.mobileqq.precover.ipc.PrecoverIPCServer;
+import com.tencent.mobileqq.qqconnectface.IIdentificationApi;
+import com.tencent.mobileqq.qqexpand.ipc.IExpandFlutterIPCServerHelper;
+import com.tencent.mobileqq.qqgamepub.api.IQQGameHelper;
 import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qrscan.api.IQRScanIpcApi;
+import com.tencent.mobileqq.qwallet.IQWalletApi;
 import com.tencent.mobileqq.realname.RealNameModule;
+import com.tencent.mobileqq.richmediabrowser.api.IDanmuDataIPCServer;
 import com.tencent.mobileqq.shortvideo.redbag.VideoPlayIPCServer;
 import com.tencent.mobileqq.soload.biz.SoLoadIPCModule;
 import com.tencent.mobileqq.soso.location.SosoInterfaceModule;
 import com.tencent.mobileqq.teamwork.TeamWorkModule;
-import com.tencent.mobileqq.teamwork.TeamWorkUtils;
-import com.tencent.mobileqq.theme.ThemeIPCModule;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkUtils;
 import com.tencent.mobileqq.transfile.dns.InnerDns;
 import com.tencent.mobileqq.troopcheckin.CheckInServer;
-import com.tencent.mobileqq.vas.QuickUpdateIPCModule;
 import com.tencent.mobileqq.vas.VasApngIPCModule;
 import com.tencent.mobileqq.vas.VasCommonIPCModule;
 import com.tencent.mobileqq.vas.VasMonitorIPCModule;
 import com.tencent.mobileqq.vas.api.VasIPCModule;
+import com.tencent.mobileqq.vas.ipc.QuickUpdateIPCModule;
 import com.tencent.mobileqq.vas.ipc.VasLiveIPCModule;
+import com.tencent.mobileqq.vas.theme.ThemeIPCModule;
 import com.tencent.mobileqq.wbapi.WBQIPCModule;
+import com.tencent.mobileqq.weiyun.api.IWeiyunUploadDownloadService;
 import com.tencent.open.OpenSdkQIPCModule;
 import com.tencent.open.downloadnew.DownloaderGetCodeServer;
 import com.tencent.qqperf.monitor.network.NetworkMonitorIPCModule;
-import cooperation.comic.ipc.QQComicIPCModule;
 import cooperation.photoplus.PhotoPlusModule;
 import cooperation.qqfav.ipc.QfavMainQIPCModule;
-import cooperation.qqreader.ipc.ReaderIPCModule;
+import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QzoneIPCModule;
-import cooperation.qzone.QzoneVideoSoDownloadModule;
-import dov.com.qq.im.ae.cmshow.AECMShowQipcModule;
-import dov.com.qq.im.ae.entry.AECameraLaunchServer;
-import dov.com.qq.im.ae.qipc.AECameraGetInfoServer;
-import dov.com.qq.im.aeeditor.manage.AEEditorEffectIpcModule;
-import dov.com.qq.im.editipc.PeakIpcModuleServer;
 import mqq.app.SecurityFileModule;
 
 public class QIPCServerModuleFactory
@@ -103,12 +100,6 @@ public class QIPCServerModuleFactory
     if ("PhotoPlusModule".equals(paramString)) {
       return PhotoPlusModule.a();
     }
-    if ("PrecoverIPCServer_MODEL".equals(paramString)) {
-      return PrecoverIPCServer.a().a();
-    }
-    if ("ArtFilterModule".equals(paramString)) {
-      return ArtFilterModule.a();
-    }
     if ("Module_VideoFeedsIPCServer".equals(paramString)) {
       return VideoFeedsIPCServer.a().a();
     }
@@ -119,10 +110,10 @@ public class QIPCServerModuleFactory
       return SignInModule.a();
     }
     if ("QQComicIPCModule".equals(paramString)) {
-      return QQComicIPCModule.a();
+      return ((IQQComicUtil)QRoute.api(IQQComicUtil.class)).getIpcModule();
     }
     if ("QWalletIPCModule".equals(paramString)) {
-      return QWalletIPCModule.a();
+      return ((IQWalletApi)QRoute.api(IQWalletApi.class)).getQWalletIPCModule();
     }
     if ("WadlQIPCModule".equals(paramString)) {
       return WadlQIPCModule.a();
@@ -137,7 +128,7 @@ public class QIPCServerModuleFactory
       return RealNameModule.a();
     }
     if ("QzoneVideoSoDownloadModule".equals(paramString)) {
-      return QzoneVideoSoDownloadModule.getInstance();
+      return QZoneHelper.getQzoneVideoSoDownloadModule();
     }
     if ("QzoneIPCModule".equals(paramString)) {
       return QzoneIPCModule.getInstance();
@@ -147,9 +138,6 @@ public class QIPCServerModuleFactory
     }
     if ("Module_VideoPlayIPCServer".equals(paramString)) {
       return VideoPlayIPCServer.a().a();
-    }
-    if ("gdt_ipc".equals(paramString)) {
-      return GdtIpc.a();
     }
     if ("gdt_ipc_sync_module_client_to_server".equals(paramString)) {
       return GdtIPCAdapter.ClientToServerIPCSyncModule.a();
@@ -161,7 +149,7 @@ public class QIPCServerModuleFactory
       return VasFontIPCModule.a();
     }
     if ("EmoticonIPCModule".equals(paramString)) {
-      return EmoticonIPCModule.a();
+      return ((IEmoticonPanelIpcService)QRoute.api(IEmoticonPanelIpcService.class)).onCreateModule(paramString);
     }
     if ("BabyQIPCModule".equals(paramString)) {
       return BabyQIPCModule.a();
@@ -176,7 +164,7 @@ public class QIPCServerModuleFactory
       return VasIPCModule.a();
     }
     if ("QuickUpdateIPCModule".equals(paramString)) {
-      return QuickUpdateIPCModule.a();
+      return QuickUpdateIPCModule.getInstance();
     }
     if ("HardCoderModule".equals(paramString)) {
       return HardCoderManager.HardCoderIPCModule.a();
@@ -188,10 +176,10 @@ public class QIPCServerModuleFactory
       return ChooseImageIPCModule.a();
     }
     if ("ArkQQAPIIPCModule".equals(paramString)) {
-      return ArkQQAPIIPCModule.a();
+      return ((IArkIPCService)QRoute.api(IArkIPCService.class)).getModule();
     }
     if ("IdentificationIpcServer_Model".equals(paramString)) {
-      return IdentificationIpcServer.a();
+      return ((IIdentificationApi)QRoute.api(IIdentificationApi.class)).getIdentityIpcServer();
     }
     if ("MiniAppTransferModule".equals(paramString)) {
       return ((IMiniAppService)QRoute.api(IMiniAppService.class)).getMiniAppTransferModule();
@@ -209,16 +197,16 @@ public class QIPCServerModuleFactory
       return SecurityFileModule.getInstance();
     }
     if ("AEEditorEffectIpcModule".equals(paramString)) {
-      return AEEditorEffectIpcModule.a();
+      return ((IAEEditorEffectIpc)QRoute.api(IAEEditorEffectIpc.class)).getAEEditorEffectQIPCModule();
     }
     if ("PublicAccountModule".equals(paramString)) {
       return PublicAccountModule.a();
     }
     if ("Module_WeiyunDownloadService".equals(paramString)) {
-      return WeiyunDownloadService.a().a();
+      return ((IWeiyunUploadDownloadService)QRoute.api(IWeiyunUploadDownloadService.class)).getIPCModule();
     }
     if ("Module_TDFileChangeNameQIPCModule".equals(paramString)) {
-      return TeamWorkUtils.a();
+      return ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).getTDIPCModule();
     }
     if ("NetworkMonitorIPCModule".equals(paramString)) {
       return NetworkMonitorIPCModule.a();
@@ -227,7 +215,7 @@ public class QIPCServerModuleFactory
       return ((IMiniAppService)QRoute.api(IMiniAppService.class)).getMiniAppBannerIPCModule();
     }
     if ("AECameraLaunchServer".equals(paramString)) {
-      return AECameraLaunchServer.a();
+      return ((IAECameraLaunchServer)QRoute.api(IAECameraLaunchServer.class)).getAECameraLaunchServerQIPCModule();
     }
     if ("VasCommonIPCModule".equals(paramString)) {
       return VasCommonIPCModule.a();
@@ -239,16 +227,16 @@ public class QIPCServerModuleFactory
       return ZanRankingIpcServer.a();
     }
     if ("CameraEmoIpcServer".equals(paramString)) {
-      return CameraEmoIpcServer.a();
+      return ((IEmoticonPanelIpcService)QRoute.api(IEmoticonPanelIpcService.class)).onCreateModule(paramString);
     }
     if ("Module_CheckInServer".equals(paramString)) {
       return CheckInServer.a();
     }
     if ("PeakIpcModuleServer".equals(paramString)) {
-      return PeakIpcModuleServer.a();
+      return ((IPeakIpcModuleServer)QRoute.api(IPeakIpcModuleServer.class)).getPeakIpcModuleServerModule();
     }
     if ("AECameraGetInfoServer".equals(paramString)) {
-      return AECameraGetInfoServer.a();
+      return ((IAECameraGetInfoServer)QRoute.api(IAECameraGetInfoServer.class)).getAECameraGetInfoServerQIPCModule();
     }
     if ("FriendQIPCModule".equals(paramString)) {
       return FriendQIPCModule.a();
@@ -266,25 +254,25 @@ public class QIPCServerModuleFactory
       return PicSTWXQIPCModule.a();
     }
     if ("ReadInJoyIPCModule".equals(paramString)) {
-      return ReadInJoyIPCModule.a();
+      return ((IReadInJoyIPCModuleFactory)QRoute.api(IReadInJoyIPCModuleFactory.class)).getReadInJoyIPCModule();
     }
     if ("DanmuDataIPCServer".equals(paramString)) {
-      return DanmuDataIPCServer.a();
+      return ((IDanmuDataIPCServer)QRoute.api(IDanmuDataIPCServer.class)).getDanmuIPCServer();
     }
     if ("AioShareMusicIPCMainClient".equals(paramString)) {
       return AioShareMusicIPCMainClient.a();
     }
-    if ("QQGameIPCModule".equals(paramString)) {
-      return QQGameIPCModule.a();
+    if (((IQQGameHelper)QRoute.api(IQQGameHelper.class)).getQQGameIPCModuleName().equals(paramString)) {
+      return ((IQQGameHelper)QRoute.api(IQQGameHelper.class)).getQQGameIPCModule();
     }
     if ("TogetherBusinessIPCModule".equals(paramString)) {
       return TogetherBusinessIPCModule.a();
     }
-    if ("ReaderIPCModule".equals(paramString)) {
-      return ReaderIPCModule.a();
-    }
     if ("FlutterMainQIPCModule".equals(paramString)) {
       return FlutterMainQIPCModule.a();
+    }
+    if ("QRScanMainQIPCModule".equals(paramString)) {
+      return ((IQRScanIpcApi)QRoute.api(IQRScanIpcApi.class)).getModule("QRScanMainQIPCModule");
     }
     if ("DeviceProtectQIPCModule".equals(paramString)) {
       return DeviceProtectQIPCModule.a();
@@ -305,7 +293,7 @@ public class QIPCServerModuleFactory
       return QRouteIPCModule.a();
     }
     if ("EcshopIPCModule".equals(paramString)) {
-      return EcshopIPCModule.a();
+      return ((IEcshopUtilApi)QRoute.api(IEcshopUtilApi.class)).getEcshopIPCModule();
     }
     if ("AVGameServerIPCModule".equals(paramString)) {
       return AVGameServerIPCModule.a();
@@ -314,25 +302,25 @@ public class QIPCServerModuleFactory
       return QQNotifyIPCModule.a();
     }
     if ("module_hippy".equals(paramString)) {
-      return HippyIpcModule.getInstance();
+      return ((IHippyIPC)QRoute.api(IHippyIPC.class)).getIPCModule();
     }
     if ("apollo_client_module".equals(paramString)) {
-      return ApolloClientQIPCModule.a();
+      return ((IApolloIPCHelper)QRoute.api(IApolloIPCHelper.class)).getIPCModule();
     }
     if ("AECMShowQipcModule".equals(paramString)) {
-      return AECMShowQipcModule.a();
+      return ((IAECMSShow)QRoute.api(IAECMSShow.class)).getCMSShowModule();
     }
     if ("UniteDownloadIPCModule".equals(paramString)) {
       return UniteDownloadIPCModule.a();
     }
     if ("ExpandFlutterIPCServer".equals(paramString)) {
-      return ExpandFlutterIPCServer.a();
+      return ((IExpandFlutterIPCServerHelper)QRoute.api(IExpandFlutterIPCServerHelper.class)).getIPCServer();
     }
     if ("LiteSDKServerModuleName".equals(paramString)) {
       return LiteSDKForCrossProcess.a();
     }
     if ("module_emoticon_mainpanel".equals(paramString)) {
-      return EmoticonMainPanelIpcModule.getInstance();
+      return ((IEmoticonPanelIpcService)QRoute.api(IEmoticonPanelIpcService.class)).onCreateModule(paramString);
     }
     if ("IntimateQIPCModule".equals(paramString)) {
       return IntimateQIPCModule.a();
@@ -341,17 +329,23 @@ public class QIPCServerModuleFactory
       return AvatarServerIPCModule.a();
     }
     if ("SoLoadIPCModule".equals(paramString)) {
-      return SoLoadIPCModule.a();
+      return SoLoadIPCModule.getInstance();
     }
     if ("qipc_plugin_module".equals(paramString)) {
       return QIPCServerModulePlugin.getInstance();
+    }
+    if ("AVBizServerQIPCModule".equals(paramString)) {
+      return AVBizServerQIPCModule.a();
+    }
+    if ("WSIPCModule".equals(paramString)) {
+      return ((IWSManager)QRoute.api(IWSManager.class)).getIPCModule();
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qipc.QIPCServerModuleFactory
  * JD-Core Version:    0.7.0.1
  */

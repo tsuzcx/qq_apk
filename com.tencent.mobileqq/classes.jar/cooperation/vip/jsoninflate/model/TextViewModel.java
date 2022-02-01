@@ -33,24 +33,23 @@ public class TextViewModel
   
   private int b(String paramString)
   {
-    int j = 3;
-    if (TextUtils.isEmpty(paramString)) {
-      throw new RuntimeException(getClass().getName() + " setGravity value can not be null");
-    }
-    int i;
-    if ("center".equals(paramString)) {
-      i = 17;
-    }
-    do
+    if (!TextUtils.isEmpty(paramString))
     {
-      do
-      {
-        return i;
-        i = j;
-      } while ("left".equals(paramString));
-      i = j;
-    } while (!"right".equals(paramString));
-    return 5;
+      if ("center".equals(paramString)) {
+        return 17;
+      }
+      if ("left".equals(paramString)) {
+        return 3;
+      }
+      if ("right".equals(paramString)) {
+        return 5;
+      }
+      return 3;
+    }
+    paramString = new StringBuilder();
+    paramString.append(getClass().getName());
+    paramString.append(" setGravity value can not be null");
+    throw new RuntimeException(paramString.toString());
   }
   
   private void b(String paramString)
@@ -64,52 +63,52 @@ public class TextViewModel
   protected void a(String paramString1, String paramString2)
   {
     super.a(paramString1, paramString2);
-    if (!(this.jdField_a_of_type_AndroidViewView instanceof TextView)) {}
-    do
-    {
+    if (!(this.jdField_a_of_type_AndroidViewView instanceof TextView)) {
       return;
-      if ("content".equals(paramString1))
-      {
-        ((TextView)this.jdField_a_of_type_AndroidViewView).setText(paramString2);
-        return;
-      }
-      if ("text_color".equals(paramString1))
-      {
-        b(paramString2);
-        return;
-      }
-      if ("text_align".equals(paramString1))
-      {
-        ((TextView)this.jdField_a_of_type_AndroidViewView).setGravity(b(paramString2));
-        return;
-      }
-      if ("max_lines".equals(paramString1))
-      {
-        ((TextView)this.jdField_a_of_type_AndroidViewView).setMaxLines(Integer.parseInt(paramString2));
-        return;
-      }
-      if ("shadow_color".equals(paramString1))
-      {
-        this.jdField_c_of_type_Int = Color.parseColor(paramString2);
-        return;
-      }
-      if ("shadow_x".equals(paramString1))
-      {
-        this.jdField_a_of_type_Float = Float.parseFloat(paramString2);
-        return;
-      }
-      if ("shadow_y".equals(paramString1))
-      {
-        this.b = Float.parseFloat(paramString2);
-        return;
-      }
-      if ("shadow_radius".equals(paramString1))
-      {
-        this.jdField_c_of_type_Float = Float.parseFloat(paramString2);
-        return;
-      }
-    } while (!"text_size".equals(paramString1));
-    a(paramString2);
+    }
+    if ("content".equals(paramString1))
+    {
+      ((TextView)this.jdField_a_of_type_AndroidViewView).setText(paramString2);
+      return;
+    }
+    if ("text_color".equals(paramString1))
+    {
+      b(paramString2);
+      return;
+    }
+    if ("text_align".equals(paramString1))
+    {
+      ((TextView)this.jdField_a_of_type_AndroidViewView).setGravity(b(paramString2));
+      return;
+    }
+    if ("max_lines".equals(paramString1))
+    {
+      ((TextView)this.jdField_a_of_type_AndroidViewView).setMaxLines(Integer.parseInt(paramString2));
+      return;
+    }
+    if ("shadow_color".equals(paramString1))
+    {
+      this.jdField_c_of_type_Int = Color.parseColor(paramString2);
+      return;
+    }
+    if ("shadow_x".equals(paramString1))
+    {
+      this.jdField_a_of_type_Float = Float.parseFloat(paramString2);
+      return;
+    }
+    if ("shadow_y".equals(paramString1))
+    {
+      this.b = Float.parseFloat(paramString2);
+      return;
+    }
+    if ("shadow_radius".equals(paramString1))
+    {
+      this.jdField_c_of_type_Float = Float.parseFloat(paramString2);
+      return;
+    }
+    if ("text_size".equals(paramString1)) {
+      a(paramString2);
+    }
   }
   
   protected void b()
@@ -120,7 +119,7 @@ public class TextViewModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.jsoninflate.model.TextViewModel
  * JD-Core Version:    0.7.0.1
  */

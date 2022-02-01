@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class cell_count
   extends JceStruct
@@ -51,22 +52,25 @@ public final class cell_count
   {
     paramJceOutputStream.write(this.type, 0);
     paramJceOutputStream.write(this.num, 1);
-    if (this.icon != null) {
-      paramJceOutputStream.write(this.icon, 2);
+    Object localObject = this.icon;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.desc != null) {
-      paramJceOutputStream.write(this.desc, 3);
+    localObject = this.desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.icon_width, 4);
     paramJceOutputStream.write(this.icon_height, 5);
-    if (this.mulcount != null) {
-      paramJceOutputStream.write(this.mulcount, 6);
+    localObject = this.mulcount;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_count
  * JD-Core Version:    0.7.0.1
  */

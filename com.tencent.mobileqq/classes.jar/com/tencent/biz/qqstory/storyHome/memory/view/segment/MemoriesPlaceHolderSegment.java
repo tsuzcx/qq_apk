@@ -33,7 +33,7 @@ public class MemoriesPlaceHolderSegment
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    return new BaseViewHolder(LayoutInflater.from(this.a).inflate(2131561856, paramViewGroup, false));
+    return new BaseViewHolder(LayoutInflater.from(this.a).inflate(2131561707, paramViewGroup, false));
   }
   
   public String a()
@@ -43,7 +43,7 @@ public class MemoriesPlaceHolderSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.view.segment.MemoriesPlaceHolderSegment
  * JD-Core Version:    0.7.0.1
  */

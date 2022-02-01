@@ -32,35 +32,34 @@ public class PayLikeFloatViewBuilder
   
   private static Bitmap a(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    DownloadTask localDownloadTask = null;
-    String str = Environment.getExternalStorageDirectory().getAbsolutePath() + "/tencent/MobileQQ/.nearby/nearby_pay_zan_anim.png";
-    if (new File(str).exists())
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(Environment.getExternalStorageDirectory().getAbsolutePath());
+    ((StringBuilder)localObject1).append("/tencent/MobileQQ/.nearby/nearby_pay_zan_anim.png");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    if (new File((String)localObject1).exists())
     {
       paramQQAppInterface = new BitmapFactory.Options();
       paramQQAppInterface.inDensity = 320;
       paramQQAppInterface.inTargetDensity = paramContext.getResources().getDisplayMetrics().densityDpi;
     }
-    do
+    try
     {
-      try
-      {
-        paramContext = ImageUtil.a(str, paramQQAppInterface);
-        return paramContext;
-      }
-      catch (OutOfMemoryError paramContext)
-      {
-        for (;;)
-        {
-          paramContext = null;
-        }
-      }
-      paramContext = localDownloadTask;
-    } while (jdField_a_of_type_Boolean);
-    jdField_a_of_type_Boolean = true;
-    paramContext = new Bundle();
-    localDownloadTask = new DownloadTask("https://pub.idqqimg.com/pc/misc/nearby_pay_zan_anim.png", new File(str + ".tmp"));
-    localDownloadTask.b = 2;
-    ((DownloaderFactory)paramQQAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1).a(localDownloadTask, new PayLikeFloatViewBuilder.1(str), paramContext);
+      paramContext = ImageUtil.a((String)localObject1, paramQQAppInterface);
+      return paramContext;
+    }
+    catch (OutOfMemoryError paramContext) {}
+    if (!jdField_a_of_type_Boolean)
+    {
+      jdField_a_of_type_Boolean = true;
+      paramContext = new Bundle();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(".tmp");
+      localObject2 = new DownloadTask("https://pub.idqqimg.com/pc/misc/nearby_pay_zan_anim.png", new File(((StringBuilder)localObject2).toString()));
+      ((DownloadTask)localObject2).b = 2;
+      ((DownloaderFactory)paramQQAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1).startDownload((DownloadTask)localObject2, new PayLikeFloatViewBuilder.1((String)localObject1), paramContext);
+    }
+    return null;
     return null;
   }
   
@@ -71,10 +70,14 @@ public class PayLikeFloatViewBuilder
     try
     {
       this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_Int);
-      return this.jdField_a_of_type_AndroidGraphicsBitmap;
     }
-    catch (OutOfMemoryError localOutOfMemoryError) {}
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      label33:
+      break label33;
+    }
     return null;
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
   }
   
   public Drawable[] a(QQAppInterface paramQQAppInterface)
@@ -101,7 +104,7 @@ public class PayLikeFloatViewBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.ui.PayLikeFloatViewBuilder
  * JD-Core Version:    0.7.0.1
  */

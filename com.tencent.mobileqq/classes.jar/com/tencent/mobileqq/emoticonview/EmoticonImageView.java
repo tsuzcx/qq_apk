@@ -51,42 +51,48 @@ public class EmoticonImageView
     return this.mNewIconVisible;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if ((sDisableNewIcon) || (!this.mNewIconVisible)) {}
-    for (;;)
+    if (!sDisableNewIcon)
     {
-      return;
-      if (sNewIcon == null) {}
-      try
-      {
-        sNewIcon = BitmapFactory.decodeResource(super.getResources(), 2130850949);
-        label37:
-        if (sNewIcon == null) {
-          continue;
-        }
-        if (sSrcRect == null)
-        {
-          int i = sNewIcon.getWidth();
-          int j = sNewIcon.getHeight();
-          int m = super.getWidth();
-          int k = super.getHeight();
-          sSrcRect = new Rect(0, 0, i, j);
-          m = (m - i) / 2;
-          k = (int)(k - super.getResources().getDisplayMetrics().density * 13.0F);
-          sDstRect = new Rect(m, k, i + m, j + k);
-        }
-        if (this.mPaint == null) {
-          this.mPaint = new Paint();
-        }
-        paramCanvas.drawBitmap(sNewIcon, sSrcRect, sDstRect, this.mPaint);
+      if (!this.mNewIconVisible) {
         return;
       }
-      catch (Exception localException)
+      if (sNewIcon != null) {}
+    }
+    try
+    {
+      sNewIcon = BitmapFactory.decodeResource(super.getResources(), 2130850889);
+    }
+    catch (Exception localException)
+    {
+      label40:
+      Bitmap localBitmap;
+      int i;
+      int j;
+      int m;
+      int k;
+      break label40;
+    }
+    localBitmap = sNewIcon;
+    if (localBitmap != null)
+    {
+      if (sSrcRect == null)
       {
-        break label37;
+        i = localBitmap.getWidth();
+        j = sNewIcon.getHeight();
+        m = super.getWidth();
+        k = super.getHeight();
+        sSrcRect = new Rect(0, 0, i, j);
+        m = (m - i) / 2;
+        k = (int)(k - super.getResources().getDisplayMetrics().density * 13.0F);
+        sDstRect = new Rect(m, k, i + m, j + k);
       }
+      if (this.mPaint == null) {
+        this.mPaint = new Paint();
+      }
+      paramCanvas.drawBitmap(sNewIcon, sSrcRect, sDstRect, this.mPaint);
     }
   }
   
@@ -97,7 +103,7 @@ public class EmoticonImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonImageView
  * JD-Core Version:    0.7.0.1
  */

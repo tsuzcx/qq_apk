@@ -28,14 +28,15 @@ public final class stCardInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.cardType, 0);
-    if (this.collectionCardInfo != null) {
-      paramJceOutputStream.write(this.collectionCardInfo, 1);
+    stCollectionCardInfo localstCollectionCardInfo = this.collectionCardInfo;
+    if (localstCollectionCardInfo != null) {
+      paramJceOutputStream.write(localstCollectionCardInfo, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stCardInfo
  * JD-Core Version:    0.7.0.1
  */

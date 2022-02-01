@@ -4,7 +4,7 @@ import android.content.Context;
 
 public class VoiceRecognizer
 {
-  private static VoiceRecognizer a = null;
+  private static VoiceRecognizer a;
   private c b = new c();
   
   public static VoiceRecognizer shareInstance()

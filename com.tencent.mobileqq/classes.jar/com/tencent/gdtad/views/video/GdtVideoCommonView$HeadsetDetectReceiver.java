@@ -12,30 +12,30 @@ class GdtVideoCommonView$HeadsetDetectReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int i;
     if (("android.intent.action.HEADSET_PLUG".equals(paramIntent.getAction())) && (paramIntent.hasExtra("state")))
     {
-      i = paramIntent.getIntExtra("state", 0);
-      if (i != 1) {
-        break label43;
-      }
-      QLog.i("GdtVideoCommonView", 1, "ACTION_HEADSET_PLUG HEADSET on");
-    }
-    label43:
-    do
-    {
-      do
+      int i = paramIntent.getIntExtra("state", 0);
+      if (i == 1)
       {
+        QLog.i("GdtVideoCommonView", 1, "ACTION_HEADSET_PLUG HEADSET on");
         return;
-      } while (i != 0);
-      QLog.i("GdtVideoCommonView", 1, "ACTION_HEADSET_PLUG HEADSET off " + this.a.a);
-    } while (!this.a.a);
-    GdtVideoCommonView.d(this.a);
+      }
+      if (i == 0)
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("ACTION_HEADSET_PLUG HEADSET off ");
+        paramContext.append(this.a.a);
+        QLog.i("GdtVideoCommonView", 1, paramContext.toString());
+        if (this.a.a) {
+          GdtVideoCommonView.d(this.a);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.video.GdtVideoCommonView.HeadsetDetectReceiver
  * JD-Core Version:    0.7.0.1
  */

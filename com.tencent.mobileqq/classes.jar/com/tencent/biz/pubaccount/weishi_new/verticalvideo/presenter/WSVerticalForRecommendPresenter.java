@@ -1,15 +1,19 @@
 package com.tencent.biz.pubaccount.weishi_new.verticalvideo.presenter;
 
 import NS_KING_SOCIALIZE_META.stMetaUgcImage;
+import UserGrowth.stCollection;
+import UserGrowth.stDrama;
+import UserGrowth.stDramaFall;
+import UserGrowth.stDramaInfo;
 import UserGrowth.stImgReplacement;
 import UserGrowth.stSimpleMetaFeed;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager;
 import com.tencent.biz.pubaccount.weishi_new.config.WSGlobalConfig;
 import com.tencent.biz.pubaccount.weishi_new.event.WSCommentEvent;
 import com.tencent.biz.pubaccount.weishi_new.report.WSReportUtils;
-import com.tencent.biz.pubaccount.weishi_new.util.WSInitializeHelper;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageAdapter;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageContract.View;
@@ -21,8 +25,9 @@ import com.tencent.biz.qqstory.base.StoryDispatcher;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tribe.async.dispatch.Dispatcher;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import org.jetbrains.annotations.Nullable;
+import java.util.Map;
 
 public class WSVerticalForRecommendPresenter
   extends AbsWSVerticalPagePresenter
@@ -30,66 +35,6 @@ public class WSVerticalForRecommendPresenter
   public WSVerticalForRecommendPresenter(WSVerticalPageContract.View paramView)
   {
     super(paramView);
-  }
-  
-  @Nullable
-  private stSimpleMetaFeed a()
-  {
-    WSVerticalPageContract.View localView = a();
-    Object localObject2;
-    if (localView == null) {
-      localObject2 = null;
-    }
-    Object localObject3;
-    Object localObject1;
-    int i;
-    do
-    {
-      do
-      {
-        WSVerticalItemData localWSVerticalItemData;
-        do
-        {
-          return localObject2;
-          localWSVerticalItemData = localView.a().a();
-          WSLog.a("WSVerticalForRecommendPresenter", "handleOnBackEvent");
-          localObject3 = WSInitializeHelper.a().a();
-          localObject2 = localObject3;
-        } while (localObject3 != null);
-        localObject1 = localObject3;
-        if (localWSVerticalItemData != null)
-        {
-          localObject1 = localObject3;
-          if ((localWSVerticalItemData.a() instanceof stSimpleMetaFeed)) {
-            localObject1 = localWSVerticalItemData.a();
-          }
-        }
-        if ((localObject1 == null) || (TextUtils.isEmpty(((stSimpleMetaFeed)localObject1).feed_desc))) {
-          break;
-        }
-        localObject2 = localObject1;
-      } while (((stSimpleMetaFeed)localObject1).video_type != 2);
-      i = localView.a().a();
-      localObject3 = localView.a().b();
-      localObject2 = localObject1;
-    } while (i >= ((List)localObject3).size() - 2);
-    i += 1;
-    if (i < ((List)localObject3).size())
-    {
-      localObject2 = ((WSVerticalItemData)((List)localObject3).get(i)).a();
-      if (((stSimpleMetaFeed)localObject2).video_type == 2) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        localObject1 = localObject2;
-        if (!TextUtils.isEmpty(((stSimpleMetaFeed)localObject2).feed_desc)) {
-          return localObject1;
-        }
-        localObject1 = localObject2;
-      }
-    }
-    return localObject1;
   }
   
   private ArrayList a(ArrayList paramArrayList)
@@ -107,59 +52,62 @@ public class WSVerticalForRecommendPresenter
     return paramArrayList;
   }
   
+  private void l()
+  {
+    WSVerticalPageContract.View localView = a();
+    if (localView != null) {
+      WSVerticalBeaconReport.b(localView.c());
+    }
+  }
+  
   public List<WSVerticalItemData> a(ArrayList paramArrayList)
   {
     return WSVerticalDataUtil.a(a(paramArrayList));
   }
   
-  protected void a()
+  public void a(Bundle paramBundle)
   {
-    WSLog.e("WSVerticalForRecommendPresenter", "[doOnPause][cacheRecommendFeed] saveFeed and cache");
-    Object localObject = a();
-    if (localObject != null)
+    super.a(paramBundle);
+    if (paramBundle != null)
     {
-      localObject = ((WSVerticalPageContract.View)localObject).a();
-      if (localObject != null)
-      {
-        localList = ((WSVerticalPageAdapter)localObject).b();
-        if ((localList != null) && (localList.size() > 0)) {
-          break label53;
-        }
-      }
+      int i = paramBundle.getInt("key_fall_list_index");
+      String str = paramBundle.getString("key_fall_list_feed_id");
+      paramBundle = paramBundle.getString("key_page_session");
+      WSVerticalBeaconReport.a(i);
+      WSVerticalBeaconReport.a(str);
+      WSReportUtils.b(paramBundle);
     }
-    WSLog.a("WSVerticalForRecommendPresenter", "[doOnPause][cacheRecommendFeed] view == null");
-    return;
-    label53:
-    localObject = a();
-    List localList = WSVerticalDataUtil.b(localList);
-    localList.remove(localObject);
-    WeiShiCacheManager.a().a(localList, (stSimpleMetaFeed)localObject, localList.size());
   }
   
   public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
     super.a(paramViewHolder, paramInt);
-    WSLog.d("WSVerticalForRecommendPresenter", "WSVerticalForRecommendPresenter onPageSelected: " + paramInt);
-    WSVerticalPageContract.View localView = a();
-    if (localView == null) {}
-    do
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("WSVerticalForRecommendPresenter onPageSelected: ");
+    ((StringBuilder)localObject).append(paramInt);
+    WSLog.d("WSVerticalForRecommendPresenter", ((StringBuilder)localObject).toString());
+    localObject = a();
+    if (localObject == null) {
+      return;
+    }
+    if ((paramViewHolder instanceof WSVerticalVideoHolder))
     {
-      do
-      {
-        return;
-        if ((paramViewHolder instanceof WSVerticalVideoHolder))
-        {
-          paramViewHolder = new WSCommentEvent(4, new Object[] { Integer.valueOf(paramInt), ((WSVerticalVideoHolder)paramViewHolder).a });
-          StoryDispatcher.a().dispatch(paramViewHolder);
-        }
-      } while (paramInt <= 0);
+      paramViewHolder = (WSVerticalVideoHolder)paramViewHolder;
+      com.tencent.biz.pubaccount.weishi_new.WSHomeFragment.a = 1;
+      paramViewHolder = new WSCommentEvent(4, new Object[] { Integer.valueOf(paramInt), paramViewHolder.a });
+      StoryDispatcher.a().dispatch(paramViewHolder);
+    }
+    if (paramInt > 0)
+    {
       if (WSGlobalConfig.a().a(paramInt, 2))
       {
-        localView.a(paramInt, 2);
+        ((WSVerticalPageContract.View)localObject).a(paramInt, 2);
         return;
       }
-    } while (WSGlobalConfig.a().d(2) != paramInt);
-    localView.a(WSGlobalConfig.a().a(2));
+      if (WSGlobalConfig.a().d(2) == paramInt) {
+        ((WSVerticalPageContract.View)localObject).a(WSGlobalConfig.a().a(2));
+      }
+    }
   }
   
   public boolean a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
@@ -172,21 +120,77 @@ public class WSVerticalForRecommendPresenter
     return true;
   }
   
-  protected boolean b()
+  public Map<String, String> b()
+  {
+    HashMap localHashMap = new HashMap();
+    Object localObject = a(this.a);
+    if (localObject != null)
+    {
+      localObject = ((WSVerticalItemData)localObject).a();
+      if (localObject == null) {
+        return localHashMap;
+      }
+      stCollection localstCollection = ((stSimpleMetaFeed)localObject).collection;
+      if ((localstCollection != null) && (!TextUtils.isEmpty(localstCollection.cid)))
+      {
+        localHashMap.put("collection_id", localstCollection.cid);
+        localHashMap.put("collection_type", String.valueOf(localstCollection.collectionType));
+        return localHashMap;
+      }
+      if ((((stSimpleMetaFeed)localObject).dramaInfo != null) && (((stSimpleMetaFeed)localObject).dramaInfo.dramaInfo != null))
+      {
+        localObject = ((stSimpleMetaFeed)localObject).dramaInfo.dramaInfo.dramaInfo;
+        localHashMap.put("micro_drama_id", ((stDramaInfo)localObject).id);
+        localHashMap.put("micro_drama_num", String.valueOf(((stDramaInfo)localObject).curPublishedFeedNum));
+      }
+    }
+    return localHashMap;
+  }
+  
+  public void b()
+  {
+    super.b();
+    WSReportUtils.b();
+    WSVerticalBeaconReport.b("");
+  }
+  
+  public void e()
+  {
+    super.e();
+    l();
+  }
+  
+  protected boolean g()
   {
     return true;
   }
   
-  public void d()
+  protected void k()
   {
-    super.d();
-    WSReportUtils.b();
-    WSVerticalBeaconReport.b("");
+    WSLog.e("WSVerticalForRecommendPresenter", "[doOnPause][cacheRecommendFeed] saveFeed and cache");
+    Object localObject = a();
+    if (localObject != null)
+    {
+      localObject = ((WSVerticalPageContract.View)localObject).a();
+      if (localObject != null)
+      {
+        List localList = ((WSVerticalPageAdapter)localObject).getDataList();
+        if ((localList != null) && (localList.size() > 0))
+        {
+          localObject = a();
+          localList = WSVerticalDataUtil.b(localList);
+          localList.remove(localObject);
+          WeiShiCacheManager.a().a(localList, (stSimpleMetaFeed)localObject, localList.size(), WSVerticalBeaconReport.a(a().a()));
+          return;
+        }
+      }
+    }
+    WSLog.a("WSVerticalForRecommendPresenter", "[doOnPause][cacheRecommendFeed] view == null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.presenter.WSVerticalForRecommendPresenter
  * JD-Core Version:    0.7.0.1
  */

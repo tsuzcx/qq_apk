@@ -72,56 +72,86 @@ public class DragImageView
   
   private float getLimitX(float paramFloat)
   {
-    float f2;
     float f1;
+    int i;
+    float f2;
+    int j;
     if (this.mOnTouch)
     {
-      f2 = this.mScaleWidth - this.mOriginViewWidth;
-      if (this.mScaleWidth + paramFloat + this.mMarginRight - f2 / 2.0F > this.mScreenWidth) {
-        f1 = this.mScreenWidth - this.mScaleWidth - this.mMarginRight + f2 / 2.0F;
+      f1 = this.mScaleWidth;
+      float f3 = this.mOriginViewWidth;
+      i = this.mMarginRight;
+      f2 = i;
+      f3 = (f1 - f3) / 2.0F;
+      j = this.mScreenWidth;
+      if (paramFloat + f1 + f2 - f3 > j) {
+        return j - f1 - i + f3;
+      }
+      i = this.mMarginLeft;
+      f1 = paramFloat;
+      if (paramFloat < i) {
+        return i - f3;
       }
     }
-    do
+    else
     {
-      do
-      {
-        return f1;
-        f1 = paramFloat;
-      } while (paramFloat >= this.mMarginLeft);
-      return this.mMarginLeft - f2 / 2.0F;
-      if (this.mOriginViewWidth + paramFloat + this.mMarginRight > this.mScreenWidth) {
-        return this.mScreenWidth - this.mOriginViewWidth - this.mMarginRight;
+      i = this.mOriginViewWidth;
+      f1 = i;
+      j = this.mMarginRight;
+      f2 = j;
+      int k = this.mScreenWidth;
+      if (f1 + paramFloat + f2 > k) {
+        return k - i - j;
       }
+      i = this.mMarginLeft;
       f1 = paramFloat;
-    } while (paramFloat >= this.mMarginLeft);
-    return this.mMarginLeft;
+      if (paramFloat < i) {
+        f1 = i;
+      }
+    }
+    return f1;
   }
   
   private float getLimitY(float paramFloat)
   {
-    float f2;
     float f1;
+    int i;
+    float f2;
+    int j;
     if (this.mOnTouch)
     {
-      f2 = this.mScaleHeight - this.mOriginViewHeight;
-      if (this.mMarginBottom + paramFloat + this.mScaleHeight - f2 / 2.0F > this.mScreenHeight) {
-        f1 = this.mScreenHeight - this.mMarginBottom - this.mScaleHeight + f2 / 2.0F;
+      f1 = this.mScaleHeight;
+      float f3 = this.mOriginViewHeight;
+      i = this.mMarginBottom;
+      f2 = i;
+      f3 = (f1 - f3) / 2.0F;
+      j = this.mScreenHeight;
+      if (f2 + paramFloat + f1 - f3 > j) {
+        return j - i - f1 + f3;
+      }
+      i = this.mMarginTop;
+      f1 = paramFloat;
+      if (paramFloat < i) {
+        return i - f3;
       }
     }
-    do
+    else
     {
-      do
-      {
-        return f1;
-        f1 = paramFloat;
-      } while (paramFloat >= this.mMarginTop);
-      return this.mMarginTop - f2 / 2.0F;
-      if (this.mMarginBottom + paramFloat + this.mOriginViewHeight > this.mScreenHeight) {
-        return this.mScreenHeight - this.mMarginBottom - this.mOriginViewHeight;
+      i = this.mMarginBottom;
+      f1 = i;
+      j = this.mOriginViewHeight;
+      f2 = j;
+      int k = this.mScreenHeight;
+      if (f1 + paramFloat + f2 > k) {
+        return k - i - j;
       }
+      i = this.mMarginTop;
       f1 = paramFloat;
-    } while (paramFloat >= this.mMarginTop);
-    return this.mMarginTop;
+      if (paramFloat < i) {
+        f1 = i;
+      }
+    }
+    return f1;
   }
   
   private void getOriginSize()
@@ -134,25 +164,29 @@ public class DragImageView
   private void getScreenConfig()
   {
     Object localObject = (WindowManager)getContext().getSystemService("window");
-    Point localPoint;
     if (localObject != null)
     {
       localObject = ((WindowManager)localObject).getDefaultDisplay();
-      localPoint = new Point();
-      if (Build.VERSION.SDK_INT >= 17)
-      {
+      Point localPoint = new Point();
+      if (Build.VERSION.SDK_INT >= 17) {
         ((Display)localObject).getRealSize(localPoint);
-        this.mScreenWidth = localPoint.x;
+      } else {
+        ((Display)localObject).getSize(localPoint);
       }
+      this.mScreenWidth = localPoint.x;
+      this.mScreenHeight = localPoint.y;
     }
-    for (this.mScreenHeight = localPoint.y;; this.mScreenHeight = getContext().getResources().getDisplayMetrics().heightPixels)
+    else
     {
-      QMLog.i("DragImageView", "getScreenConfig mScreenWidth: " + this.mScreenWidth + ", mScreenHeight: " + this.mScreenHeight);
-      return;
-      ((Display)localObject).getSize(localPoint);
-      break;
       this.mScreenWidth = getContext().getResources().getDisplayMetrics().widthPixels;
+      this.mScreenHeight = getContext().getResources().getDisplayMetrics().heightPixels;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getScreenConfig mScreenWidth: ");
+    ((StringBuilder)localObject).append(this.mScreenWidth);
+    ((StringBuilder)localObject).append(", mScreenHeight: ");
+    ((StringBuilder)localObject).append(this.mScreenHeight);
+    QMLog.i("DragImageView", ((StringBuilder)localObject).toString());
   }
   
   private boolean handleActionDown(MotionEvent paramMotionEvent)
@@ -168,27 +202,26 @@ public class DragImageView
   
   private boolean handleActionMove(MotionEvent paramMotionEvent)
   {
-    if (this.mDraggableMode == 1) {
+    int i = this.mDraggableMode;
+    if (i == 1)
+    {
       moveX(paramMotionEvent);
     }
-    for (;;)
+    else if (i == 0)
     {
-      this.mHasMove = isMovingOrNot(this.mDownPosX, this.mDownPosY, paramMotionEvent.getRawX(), paramMotionEvent.getRawY());
-      if (this.mHasMove)
-      {
-        resetColorFilter();
-        if (this.mDraggableMode == 0) {
-          scaleView();
-        }
-      }
-      bringToFront();
-      return true;
-      if (this.mDraggableMode == 0)
-      {
-        moveX(paramMotionEvent);
-        moveY(paramMotionEvent);
+      moveX(paramMotionEvent);
+      moveY(paramMotionEvent);
+    }
+    this.mHasMove = isMovingOrNot(this.mDownPosX, this.mDownPosY, paramMotionEvent.getRawX(), paramMotionEvent.getRawY());
+    if (this.mHasMove)
+    {
+      resetColorFilter();
+      if (this.mDraggableMode == 0) {
+        scaleView();
       }
     }
+    bringToFront();
+    return true;
   }
   
   private boolean handleActionUp()
@@ -197,13 +230,12 @@ public class DragImageView
     if (this.mDraggableMode == 0) {
       restoreScale();
     }
-    if (this.mLastAction == 0) {
+    if (this.mLastAction == 0)
+    {
       performClick();
     }
-    for (;;)
+    else
     {
-      this.mHasMove = false;
-      return false;
       if (!this.mHasMove) {
         performClick();
       }
@@ -211,6 +243,8 @@ public class DragImageView
         landSide();
       }
     }
+    this.mHasMove = false;
+    return false;
   }
   
   private boolean isMovingOrNot(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
@@ -220,12 +254,12 @@ public class DragImageView
   
   private void landSide()
   {
-    if (getX() > this.mScreenWidth / 2.0F) {}
-    for (int i = this.mScreenWidth;; i = 0)
-    {
-      animate().setInterpolator(new DecelerateInterpolator()).x(getLimitX(i)).setDuration(300L).start();
-      return;
+    float f = getX();
+    int i = this.mScreenWidth;
+    if (f <= i / 2.0F) {
+      i = 0;
     }
+    animate().setInterpolator(new DecelerateInterpolator()).x(getLimitX(i)).setDuration(300L).start();
   }
   
   private void moveX(MotionEvent paramMotionEvent)
@@ -282,23 +316,26 @@ public class DragImageView
   
   private void scaleView()
   {
-    if (this.mHasScale) {}
-    do
-    {
+    if (this.mHasScale) {
       return;
-      this.mHasScale = true;
-    } while ((this.mScaleHeight <= 0.0F) || (this.mScaleWidth <= 0.0F));
-    float f1 = this.mScaleWidth;
-    float f2 = this.mOriginViewWidth;
-    float f3 = this.mScaleHeight;
-    float f4 = this.mOriginViewHeight;
-    float f5 = getX();
-    setX((f1 - f2) / 2.0F + f5);
-    setY(getY() + (f3 - f4) / 2.0F);
-    this.mScaleX = (this.mScaleWidth / this.mViewWidth);
-    this.mScaleY = (this.mScaleHeight / this.mViewHeight);
-    this.mOnTouch = true;
-    requestLayout();
+    }
+    this.mHasScale = true;
+    float f1 = this.mScaleHeight;
+    if (f1 > 0.0F)
+    {
+      float f2 = this.mScaleWidth;
+      if (f2 > 0.0F)
+      {
+        float f3 = this.mOriginViewWidth;
+        float f4 = this.mOriginViewHeight;
+        setX(getX() + (f2 - f3) / 2.0F);
+        setY(getY() + (f1 - f4) / 2.0F);
+        this.mScaleX = (this.mScaleWidth / this.mViewWidth);
+        this.mScaleY = (this.mScaleHeight / this.mViewHeight);
+        this.mOnTouch = true;
+        requestLayout();
+      }
+    }
   }
   
   private void setColorFilter()
@@ -306,50 +343,51 @@ public class DragImageView
     setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
   }
   
-  public void onConfigurationChanged(Configuration paramConfiguration)
+  protected void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
     getScreenConfig();
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     resetMargin();
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     if (this.mOnTouch) {
       setMeasuredDimension((int)this.mScaleWidth, (int)this.mScaleHeight);
-    }
-    for (;;)
-    {
-      resetViewSize();
-      return;
+    } else {
       super.onMeasure(paramInt1, paramInt2);
     }
+    resetViewSize();
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     int i = paramMotionEvent.getActionMasked();
     boolean bool;
-    switch (i)
+    if (i != 0)
     {
-    default: 
-      return false;
-    case 0: 
+      if (i != 1)
+      {
+        if (i != 2) {
+          return false;
+        }
+        bool = handleActionMove(paramMotionEvent);
+      }
+      else
+      {
+        bool = handleActionUp();
+      }
+    }
+    else {
       bool = handleActionDown(paramMotionEvent);
     }
-    for (;;)
-    {
-      this.mLastAction = i;
-      return bool;
-      bool = handleActionMove(paramMotionEvent);
-      continue;
-      bool = handleActionUp();
-    }
+    this.mLastAction = i;
+    return bool;
   }
   
   public void setScaleSize(float paramFloat1, float paramFloat2)
@@ -360,7 +398,7 @@ public class DragImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.widget.DragImageView
  * JD-Core Version:    0.7.0.1
  */

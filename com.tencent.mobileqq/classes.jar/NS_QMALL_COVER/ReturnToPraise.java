@@ -32,21 +32,24 @@ public final class ReturnToPraise
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strRightHandUrl != null) {
-      paramJceOutputStream.write(this.strRightHandUrl, 0);
+    String str = this.strRightHandUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.strLeftHandUrl != null) {
-      paramJceOutputStream.write(this.strLeftHandUrl, 1);
+    str = this.strLeftHandUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strText != null) {
-      paramJceOutputStream.write(this.strText, 2);
+    str = this.strText;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.iItemId, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.ReturnToPraise
  * JD-Core Version:    0.7.0.1
  */

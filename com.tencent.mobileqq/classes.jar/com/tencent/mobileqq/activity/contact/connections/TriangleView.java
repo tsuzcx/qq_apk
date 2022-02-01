@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.mobileqq.utils.ViewUtils;
@@ -25,12 +24,12 @@ public class TriangleView
     this(paramContext, null);
   }
   
-  public TriangleView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
+  public TriangleView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.drawColor(0);
@@ -39,25 +38,30 @@ public class TriangleView
     localPaint.setColor(this.e);
     localPaint.setStyle(Paint.Style.FILL);
     Path localPath = new Path();
-    int i = getMeasuredWidth();
-    int j = getMeasuredHeight();
+    int j = getMeasuredWidth();
+    int i = getMeasuredHeight();
+    float f1;
     if (this.d == 0)
     {
-      localPath.moveTo(i / 2, 0.0F);
-      localPath.lineTo(i / 2 - a, j);
-      localPath.lineTo(i / 2 + a, j);
+      j /= 2;
+      localPath.moveTo(j, 0.0F);
+      f1 = j - a;
+      float f2 = i;
+      localPath.lineTo(f1, f2);
+      localPath.lineTo(j + a, f2);
     }
-    for (;;)
+    else
     {
-      localPath.close();
-      paramCanvas.drawPath(localPath, localPaint);
-      return;
-      localPath.moveTo(i / 2, 0.0F);
-      localPath.lineTo(i / 2 - a, 0.0F);
-      localPath.lineTo(i / 2 - b, j - c);
-      localPath.quadTo(i / 2, j, i / 2 + b, j - c);
-      localPath.lineTo(i / 2 + a, 0.0F);
+      j /= 2;
+      f1 = j;
+      localPath.moveTo(f1, 0.0F);
+      localPath.lineTo(j - a, 0.0F);
+      localPath.lineTo(j - b, i - c);
+      localPath.quadTo(f1, i, b + j, i - c);
+      localPath.lineTo(j + a, 0.0F);
     }
+    localPath.close();
+    paramCanvas.drawPath(localPath, localPaint);
   }
   
   public void setDirection(int paramInt)
@@ -72,7 +76,7 @@ public class TriangleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.connections.TriangleView
  * JD-Core Version:    0.7.0.1
  */

@@ -10,13 +10,17 @@ class OutputSurface$1
   
   public void onReleased()
   {
-    LogUtils.d("OutputSurface", "mSurfaceTexture:" + this.this$0.mSurfaceTexture + " onReleased, release OutputSurface");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mSurfaceTexture:");
+    localStringBuilder.append(this.this$0.mSurfaceTexture);
+    localStringBuilder.append(" onReleased, release OutputSurface");
+    LogUtils.d("OutputSurface", localStringBuilder.toString());
     this.this$0.release();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmediacodec.preload.glrender.OutputSurface.1
  * JD-Core Version:    0.7.0.1
  */

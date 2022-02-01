@@ -22,23 +22,25 @@ public class SimpleFloatViewManager
   
   public View a(int paramInt)
   {
-    View localView = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetXListView.getHeaderViewsCount() + paramInt - this.jdField_a_of_type_ComTencentWidgetXListView.getFirstVisiblePosition());
-    if (localView == null) {}
-    do
-    {
+    Object localObject = this.jdField_a_of_type_ComTencentWidgetXListView;
+    localObject = ((XListView)localObject).getChildAt(paramInt + ((XListView)localObject).getHeaderViewsCount() - this.jdField_a_of_type_ComTencentWidgetXListView.getFirstVisiblePosition());
+    if (localObject == null) {
       return null;
-      localView.setPressed(false);
-      localView.setDrawingCacheEnabled(true);
-    } while (localView.getDrawingCache() == null);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(localView.getDrawingCache());
-    localView.setDrawingCacheEnabled(false);
+    }
+    ((View)localObject).setPressed(false);
+    ((View)localObject).setDrawingCacheEnabled(true);
+    if (((View)localObject).getDrawingCache() == null) {
+      return null;
+    }
+    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(((View)localObject).getDrawingCache());
+    ((View)localObject).setDrawingCacheEnabled(false);
     if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_ComTencentWidgetXListView.getContext());
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundColor(this.jdField_a_of_type_Int);
     this.jdField_a_of_type_AndroidWidgetImageView.setPadding(0, 0, 0, 0);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(new ViewGroup.LayoutParams(localView.getWidth(), localView.getHeight()));
+    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(new ViewGroup.LayoutParams(((View)localObject).getWidth(), ((View)localObject).getHeight()));
     return this.jdField_a_of_type_AndroidWidgetImageView;
   }
   
@@ -58,7 +60,7 @@ public class SimpleFloatViewManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.view.SimpleFloatViewManager
  * JD-Core Version:    0.7.0.1
  */

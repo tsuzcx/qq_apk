@@ -33,7 +33,7 @@ public class QQStoryLoadingView
     int i = 0;
     while (i < 29)
     {
-      paramContext.getResources().getDrawable(2130846923 + i);
+      paramContext.getResources().getDrawable(2130846801 + i);
       i += 1;
     }
   }
@@ -54,16 +54,18 @@ public class QQStoryLoadingView
   
   public void a()
   {
-    super.setCompoundDrawablesWithIntrinsicBounds(null, super.getResources().getDrawable(2130846923), null, null);
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable != null)
+    super.setCompoundDrawablesWithIntrinsicBounds(null, super.getResources().getDrawable(2130846801), null, null);
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
+      ((AnimationDrawable)localObject).stop();
       int i = 0;
       while (i < this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.getNumberOfFrames())
       {
-        Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.getFrame(i);
-        if ((!(localDrawable instanceof BitmapDrawable)) || (localDrawable != null)) {
-          localDrawable.setCallback(null);
+        localObject = this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.getFrame(i);
+        boolean bool = localObject instanceof BitmapDrawable;
+        if (localObject != null) {
+          ((Drawable)localObject).setCallback(null);
         }
         i += 1;
       }
@@ -74,15 +76,15 @@ public class QQStoryLoadingView
   
   public void b()
   {
-    int i = 0;
     try
     {
       if ((this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable == null) || (this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.getNumberOfFrames() != 29))
       {
         this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = new AnimationDrawable();
+        int i = 0;
         while (i < 29)
         {
-          this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.addFrame(super.getResources().getDrawable(2130846923 + i), 50);
+          this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.addFrame(super.getResources().getDrawable(2130846801 + i), 50);
           i += 1;
         }
         this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.setOneShot(false);
@@ -94,7 +96,10 @@ public class QQStoryLoadingView
     catch (OutOfMemoryError localOutOfMemoryError)
     {
       this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = null;
-      SLog.e("Q.qqstory.QQStoryLoadingView", "start animation error:" + localOutOfMemoryError);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("start animation error:");
+      localStringBuilder.append(localOutOfMemoryError);
+      SLog.e("Q.qqstory.QQStoryLoadingView", localStringBuilder.toString());
     }
   }
   
@@ -104,31 +109,26 @@ public class QQStoryLoadingView
       SLog.b("QQStoryLoadingView", "ignore VISIBLE");
     }
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    String str2;
-    String str1;
     if (super.getVisibility() != paramInt)
     {
       super.setVisibility(paramInt);
-      str2 = "QQStoryLoadingView" + System.identityHashCode(this);
-      if (paramInt != 8) {
-        break label87;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("QQStoryLoadingView");
+      ((StringBuilder)localObject).append(System.identityHashCode(this));
+      String str = ((StringBuilder)localObject).toString();
+      if (paramInt == 8) {
+        localObject = "GONE";
+      } else if (paramInt == 0) {
+        localObject = "VISIBLE";
+      } else {
+        localObject = "INVISIBLE";
       }
-      str1 = "GONE";
+      SLog.a(str, "setVisibility => %s", localObject);
     }
-    for (;;)
+    if (paramInt == 0)
     {
-      SLog.a(str2, "setVisibility => %s", str1);
-      if (paramInt != 0) {
-        break;
-      }
       b();
       return;
-      label87:
-      if (paramInt == 0) {
-        str1 = "VISIBLE";
-      } else {
-        str1 = "INVISIBLE";
-      }
     }
     a();
   }
@@ -136,12 +136,13 @@ public class QQStoryLoadingView
   public void setVisibilityDelay(int paramInt, long paramLong, String paramString)
   {
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, paramInt, paramString), paramLong);
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    localHandler.sendMessageDelayed(Message.obtain(localHandler, paramInt, paramString), paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.QQStoryLoadingView
  * JD-Core Version:    0.7.0.1
  */

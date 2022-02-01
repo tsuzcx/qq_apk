@@ -13,22 +13,32 @@ class AppV8JsService$1
   public void onJsStateEnd(JsStatMachine.JsState paramJsState)
   {
     paramJsState = paramJsState.getJsPath();
-    if ((!TextUtils.isEmpty(paramJsState)) && (paramJsState.contains("QLogic.js"))) {
-      SpeedUtil.DEFAULT.event("runQLogicJs finish " + this);
+    if ((!TextUtils.isEmpty(paramJsState)) && (paramJsState.contains("QLogic.js")))
+    {
+      paramJsState = SpeedUtil.DEFAULT;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("runQLogicJs finish ");
+      localStringBuilder.append(this);
+      paramJsState.event(localStringBuilder.toString());
     }
   }
   
   public void onJsStateStart(JsStatMachine.JsState paramJsState)
   {
     paramJsState = paramJsState.getJsPath();
-    if ((!TextUtils.isEmpty(paramJsState)) && (paramJsState.contains("QLogic.js"))) {
-      SpeedUtil.DEFAULT.event("runQLogicJs start " + this);
+    if ((!TextUtils.isEmpty(paramJsState)) && (paramJsState.contains("QLogic.js")))
+    {
+      paramJsState = SpeedUtil.DEFAULT;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("runQLogicJs start ");
+      localStringBuilder.append(this);
+      paramJsState.event(localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.service.AppV8JsService.1
  * JD-Core Version:    0.7.0.1
  */

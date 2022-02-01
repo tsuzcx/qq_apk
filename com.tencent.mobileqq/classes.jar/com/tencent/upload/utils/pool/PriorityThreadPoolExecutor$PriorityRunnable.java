@@ -21,27 +21,29 @@ class PriorityThreadPoolExecutor$PriorityRunnable
   
   public void run()
   {
-    if (System.currentTimeMillis() - this.mPostTime > 30000L) {
-      Log.w("PriorityThreadPoolExecutor", "this job hangury too long. job:" + this + ". job:" + this.mR);
+    if (System.currentTimeMillis() - this.mPostTime > 30000L)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("this job hangury too long. job:");
+      localStringBuilder.append(this);
+      localStringBuilder.append(". job:");
+      localStringBuilder.append(this.mR);
+      Log.w("PriorityThreadPoolExecutor", localStringBuilder.toString());
     }
     try
     {
       this.mR.run();
-      this.mR = null;
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        Log.w("PriorityThreadPoolExecutor", localThrowable);
-      }
+      Log.w("PriorityThreadPoolExecutor", localThrowable);
     }
+    this.mR = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.utils.pool.PriorityThreadPoolExecutor.PriorityRunnable
  * JD-Core Version:    0.7.0.1
  */

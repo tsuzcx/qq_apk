@@ -36,17 +36,19 @@ public final class CUploadDownstream
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.retcode, 0);
-    if (this.serverID != null) {
-      paramJceOutputStream.write(this.serverID, 1);
+    Object localObject = this.serverID;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.extra != null) {
-      paramJceOutputStream.write(this.extra, 2);
+    localObject = this.extra;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_COMM_UPLOAD_PROTOCOL.CUploadDownstream
  * JD-Core Version:    0.7.0.1
  */

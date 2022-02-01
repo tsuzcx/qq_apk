@@ -24,14 +24,15 @@ public final class stSimpleGetFeedDetailRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.feed != null) {
-      paramJceOutputStream.write(this.feed, 0);
+    stSimpleMetaFeed localstSimpleMetaFeed = this.feed;
+    if (localstSimpleMetaFeed != null) {
+      paramJceOutputStream.write(localstSimpleMetaFeed, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stSimpleGetFeedDetailRsp
  * JD-Core Version:    0.7.0.1
  */

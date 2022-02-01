@@ -21,13 +21,18 @@ class AddPhoneNumberFragment$9
     }
     AddPhoneNumberFragment.mSecond -= 1;
     AddPhoneNumberFragment.access$600(this.this$0).setClickable(false);
-    AddPhoneNumberFragment.access$600(this.this$0).setText("有效期(" + AddPhoneNumberFragment.mSecond + ")");
+    Button localButton = AddPhoneNumberFragment.access$600(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("有效期(");
+    localStringBuilder.append(AddPhoneNumberFragment.mSecond);
+    localStringBuilder.append(")");
+    localButton.setText(localStringBuilder.toString());
     AddPhoneNumberFragment.access$500(this.this$0).postDelayed(this, 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.mainpage.AddPhoneNumberFragment.9
  * JD-Core Version:    0.7.0.1
  */

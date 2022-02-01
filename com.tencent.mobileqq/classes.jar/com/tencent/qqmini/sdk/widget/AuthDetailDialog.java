@@ -61,10 +61,10 @@ public class AuthDetailDialog
         }
       }
     }
-    while (2 != paramInt3) {
-      return;
+    else if (2 == paramInt3)
+    {
+      initCenterDialog(paramActivity);
     }
-    initCenterDialog(paramActivity);
   }
   
   private void initBottomDialog(@NonNull Context paramContext)
@@ -107,29 +107,24 @@ public class AuthDetailDialog
   
   public void show()
   {
-    if ((this.mCurSubMsg != null) && (this.mCurSubMsg.example != null))
+    INTERFACE.StSubscribeMessage localStSubscribeMessage = this.mCurSubMsg;
+    if ((localStSubscribeMessage != null) && (localStSubscribeMessage.example != null))
     {
       this.tvTitle.setText(this.mCurSubMsg.example.title.get());
       initDetailList();
-      if (2 != this.dialogType) {
-        break label62;
-      }
-      this.tvCenterConfirm.setOnClickListener(this);
-    }
-    for (;;)
-    {
-      super.show();
-      return;
-      label62:
-      if (1 == this.dialogType) {
+      int i = this.dialogType;
+      if (2 == i) {
+        this.tvCenterConfirm.setOnClickListener(this);
+      } else if (1 == i) {
         this.ivBack.setOnClickListener(this);
       }
     }
+    super.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.AuthDetailDialog
  * JD-Core Version:    0.7.0.1
  */

@@ -14,42 +14,47 @@ class VACDReportServiceImpl$6
   
   public void run()
   {
-    if ((this.a == null) || (this.a.isEmpty()))
+    ??? = this.a;
+    if ((??? != null) && (!((List)???).isEmpty()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("VACDReport", 2, "handleReponse headers is null or empty");
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("handleReponse, headers= ");
+        ((StringBuilder)???).append(this.a);
+        QLog.d("VACDReport", 2, ((StringBuilder)???).toString());
       }
-      return;
+      synchronized (VACDReportServiceImpl.access$000())
+      {
+        ArrayList localArrayList = new ArrayList(8);
+        Iterator localIterator = this.a.iterator();
+        while (localIterator.hasNext())
+        {
+          ReportHeader localReportHeader = (ReportHeader)localIterator.next();
+          if (localReportHeader != null)
+          {
+            if (localReportHeader.result == 0)
+            {
+              localArrayList.add(Long.valueOf(localReportHeader.seqno));
+              VACDReportServiceImpl.access$100(this.this$0).remove(Long.valueOf(localReportHeader.seqno));
+            }
+            VACDReportServiceImpl.access$1200(this.this$0).remove(Long.valueOf(localReportHeader.seqno));
+          }
+        }
+        if (!localArrayList.isEmpty()) {
+          VACDReportServiceImpl.access$200(this.this$0).a(localArrayList);
+        }
+        return;
+      }
     }
     if (QLog.isColorLevel()) {
-      QLog.d("VACDReport", 2, "handleReponse, headers= " + this.a);
-    }
-    synchronized (VACDReportServiceImpl.access$000())
-    {
-      ArrayList localArrayList = new ArrayList(8);
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
-      {
-        ReportHeader localReportHeader = (ReportHeader)localIterator.next();
-        if (localReportHeader != null)
-        {
-          if (localReportHeader.result == 0)
-          {
-            localArrayList.add(Long.valueOf(localReportHeader.seqno));
-            VACDReportServiceImpl.access$100(this.this$0).remove(Long.valueOf(localReportHeader.seqno));
-          }
-          VACDReportServiceImpl.access$1200(this.this$0).remove(Long.valueOf(localReportHeader.seqno));
-        }
-      }
-    }
-    if (!localList.isEmpty()) {
-      VACDReportServiceImpl.access$200(this.this$0).a(localList);
+      QLog.i("VACDReport", 2, "handleReponse headers is null or empty");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.report.impl.VACDReportServiceImpl.6
  * JD-Core Version:    0.7.0.1
  */

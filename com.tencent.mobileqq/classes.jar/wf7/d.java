@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class d
   extends JceStruct
@@ -111,116 +112,149 @@ public final class d
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.u != null) {
-      paramJceOutputStream.write(this.u, 0);
+    Object localObject = this.u;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 0);
     }
-    if (this.v != 0) {
-      paramJceOutputStream.write(this.v, 1);
+    int i = this.v;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
-    if (this.w != null) {
-      paramJceOutputStream.write(this.w, 2);
+    localObject = this.w;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.x != 0) {
-      paramJceOutputStream.write(this.x, 3);
+    i = this.x;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 3);
     }
-    if (this.y != null) {
-      paramJceOutputStream.write(this.y, 4);
+    localObject = this.y;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.z != 0) {
-      paramJceOutputStream.write(this.z, 5);
+    i = this.z;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 5);
     }
-    if (this.score != 0) {
-      paramJceOutputStream.write(this.score, 6);
+    i = this.score;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 6);
     }
-    if (this.A != null) {
-      paramJceOutputStream.write(this.A, 7);
+    localObject = this.A;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 7);
     }
-    if (this.B != null) {
-      paramJceOutputStream.write(this.B, 8);
+    localObject = this.B;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.ssid != null) {
-      paramJceOutputStream.write(this.ssid, 9);
+    localObject = this.ssid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.C != 0) {
-      paramJceOutputStream.write(this.C, 10);
+    i = this.C;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 10);
     }
     paramJceOutputStream.write(this.D, 11);
-    if (this.E != null) {
-      paramJceOutputStream.write(this.E, 12);
+    localObject = this.E;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
-    if (this.F != 0) {
-      paramJceOutputStream.write(this.F, 13);
+    i = this.F;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 13);
     }
-    if (this.G != 3) {
-      paramJceOutputStream.write(this.G, 14);
+    i = this.G;
+    if (i != 3) {
+      paramJceOutputStream.write(i, 14);
     }
-    if (this.H != -1) {
-      paramJceOutputStream.write(this.H, 15);
+    i = this.H;
+    if (i != -1) {
+      paramJceOutputStream.write(i, 15);
     }
-    if (this.I != -1) {
-      paramJceOutputStream.write(this.I, 16);
+    i = this.I;
+    if (i != -1) {
+      paramJceOutputStream.write(i, 16);
     }
     paramJceOutputStream.write(this.J, 17);
     paramJceOutputStream.write(this.K, 18);
     paramJceOutputStream.write(this.L, 19);
-    if (this.M != null) {
-      paramJceOutputStream.write(this.M, 20);
+    localObject = this.M;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 20);
     }
-    if (this.N != 0) {
-      paramJceOutputStream.write(this.N, 21);
+    i = this.N;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 21);
     }
     paramJceOutputStream.write(this.O, 22);
-    if (this.P != null) {
-      paramJceOutputStream.write(this.P, 23);
+    localObject = this.P;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 23);
     }
-    if (this.Q != 6.0F) {
-      paramJceOutputStream.write(this.Q, 24);
+    float f = this.Q;
+    if (f != 6.0F) {
+      paramJceOutputStream.write(f, 24);
     }
-    if (this.R != 4.0F) {
-      paramJceOutputStream.write(this.R, 25);
+    f = this.R;
+    if (f != 4.0F) {
+      paramJceOutputStream.write(f, 25);
     }
-    if (this.S != 0) {
-      paramJceOutputStream.write(this.S, 26);
+    i = this.S;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 26);
     }
-    if (this.T != 0.0F) {
-      paramJceOutputStream.write(this.T, 27);
+    f = this.T;
+    if (f != 0.0F) {
+      paramJceOutputStream.write(f, 27);
     }
-    if (this.U != -1.0F) {
-      paramJceOutputStream.write(this.U, 28);
+    f = this.U;
+    if (f != -1.0F) {
+      paramJceOutputStream.write(f, 28);
     }
-    if (this.V != null) {
-      paramJceOutputStream.write(this.V, 29);
+    localObject = this.V;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 29);
     }
-    if (this.W != 0) {
-      paramJceOutputStream.write(this.W, 30);
+    i = this.W;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 30);
     }
     paramJceOutputStream.write(this.isBestWiFi, 31);
-    if (this.X != null) {
-      paramJceOutputStream.write(this.X, 32);
+    localObject = this.X;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 32);
     }
-    if (this.Y != 0) {
-      paramJceOutputStream.write(this.Y, 33);
+    i = this.Y;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 33);
     }
-    if (this.Z != 0) {
-      paramJceOutputStream.write(this.Z, 34);
+    i = this.Z;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 34);
     }
-    if (1 != this.aa) {
-      paramJceOutputStream.write(this.aa, 35);
+    i = this.aa;
+    if (1 != i) {
+      paramJceOutputStream.write(i, 35);
     }
-    if (this.ab != null) {
-      paramJceOutputStream.write(this.ab, 36);
+    localObject = this.ab;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 36);
     }
-    if (this.ac != null) {
-      paramJceOutputStream.write(this.ac, 37);
+    localObject = this.ac;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 37);
     }
-    if (this.ad != 0) {
-      paramJceOutputStream.write(this.ad, 38);
+    i = this.ad;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 38);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.d
  * JD-Core Version:    0.7.0.1
  */

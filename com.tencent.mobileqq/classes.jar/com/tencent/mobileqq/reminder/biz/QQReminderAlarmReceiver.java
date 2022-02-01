@@ -23,19 +23,25 @@ public class QQReminderAlarmReceiver
     {
       paramContext = paramIntent.getStringExtra("msg");
       paramIntent = paramIntent.getStringExtra("msg_id");
-      if (QLog.isColorLevel()) {
-        QLog.d("QQReminderAlarmReceiver", 2, "---" + paramContext + "---msgId---" + paramIntent);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("---");
+        ((StringBuilder)localObject).append(paramContext);
+        ((StringBuilder)localObject).append("---msgId---");
+        ((StringBuilder)localObject).append(paramIntent);
+        QLog.d("QQReminderAlarmReceiver", 2, ((StringBuilder)localObject).toString());
       }
-      IQQReminderDataService localIQQReminderDataService = (IQQReminderDataService)this.a.getRuntimeService(IQQReminderDataService.class, "");
-      if (localIQQReminderDataService != null) {
-        localIQQReminderDataService.doNotifaction(paramContext, paramIntent);
+      Object localObject = (IQQReminderDataService)this.a.getRuntimeService(IQQReminderDataService.class, "");
+      if (localObject != null) {
+        ((IQQReminderDataService)localObject).doNotifaction(paramContext, paramIntent);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.reminder.biz.QQReminderAlarmReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -38,40 +38,39 @@ public class TencentExtraKeys
   
   public static void addTencentLog(TencentLog paramTencentLog)
   {
-    for (;;)
+    try
     {
-      try
+      Iterator localIterator = sTencentLogs.iterator();
+      TencentLog localTencentLog;
+      do
       {
-        Iterator localIterator = sTencentLogs.iterator();
-        int i;
-        if (localIterator.hasNext())
-        {
-          TencentLog localTencentLog = (TencentLog)localIterator.next();
-          if ((localTencentLog.getDirString() != null) && (localTencentLog.getDirString().equals(paramTencentLog.getDirString())))
-          {
-            i = 1;
-            if (i == 0)
-            {
-              sTencentLogs.add(paramTencentLog);
-              if (paramTencentLog == null)
-              {
-                paramTencentLog = null;
-                dh.a(paramTencentLog);
-              }
-            }
-            else
-            {
-              return;
-            }
-            paramTencentLog = new TencentExtraKeys.a((byte)0);
-          }
+        if (!localIterator.hasNext()) {
+          break;
         }
-        else
+        localTencentLog = (TencentLog)localIterator.next();
+      } while ((localTencentLog.getDirString() == null) || (!localTencentLog.getDirString().equals(paramTencentLog.getDirString())));
+      i = 1;
+    }
+    finally
+    {
+      for (;;)
+      {
+        for (;;)
         {
-          i = 0;
+          throw paramTencentLog;
         }
+        int i = 0;
       }
-      finally {}
+    }
+    if (i == 0)
+    {
+      sTencentLogs.add(paramTencentLog);
+      if (paramTencentLog == null) {
+        paramTencentLog = null;
+      } else {
+        paramTencentLog = new TencentExtraKeys.a((byte)0);
+      }
+      dh.a(paramTencentLog);
     }
   }
   
@@ -147,20 +146,10 @@ public class TencentExtraKeys
   
   public static boolean isAllowedLevel(int paramInt)
   {
-    switch (paramInt)
-    {
-    case 2: 
-    default: 
-      if (paramInt != 7) {
-        break;
-      }
-    case 0: 
-    case 1: 
-    case 3: 
-    case 4: 
-      return true;
+    if ((paramInt != 0) && (paramInt != 1) && (paramInt != 3) && (paramInt != 4)) {
+      return paramInt == 7;
     }
-    return false;
+    return true;
   }
   
   /* Error */
@@ -170,7 +159,7 @@ public class TencentExtraKeys
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 187	com/tencent/map/geolocation/internal/TencentExtraKeys:sTencentLog	Lcom/tencent/map/geolocation/internal/TencentLog;
+    //   3: getstatic 183	com/tencent/map/geolocation/internal/TencentExtraKeys:sTencentLog	Lcom/tencent/map/geolocation/internal/TencentLog;
     //   6: astore_1
     //   7: aload_1
     //   8: ifnull +10 -> 18
@@ -186,13 +175,15 @@ public class TencentExtraKeys
     //   23: astore_1
     //   24: ldc 2
     //   26: monitorexit
-    //   27: aload_1
-    //   28: athrow
+    //   27: goto +5 -> 32
+    //   30: aload_1
+    //   31: athrow
+    //   32: goto -2 -> 30
     // Local variable table:
     //   start	length	slot	name	signature
     //   12	8	0	bool	boolean
     //   6	2	1	localTencentLog	TencentLog
-    //   23	5	1	localObject	Object
+    //   23	8	1	localObject	Object
     // Exception table:
     //   from	to	target	type
     //   3	7	23	finally
@@ -272,7 +263,7 @@ public class TencentExtraKeys
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.geolocation.internal.TencentExtraKeys
  * JD-Core Version:    0.7.0.1
  */

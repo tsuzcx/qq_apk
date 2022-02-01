@@ -12,7 +12,14 @@ class PhoneNumberManagementFragment$3$1
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QMLog.d("PhoneNumberManagementFragment", "isSuccess : " + paramBoolean + "; result : " + paramJSONObject + "; purePhoneNumber : " + this.val$purePhoneNumber);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isSuccess : ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("; result : ");
+    localStringBuilder.append(paramJSONObject);
+    localStringBuilder.append("; purePhoneNumber : ");
+    localStringBuilder.append(this.val$purePhoneNumber);
+    QMLog.d("PhoneNumberManagementFragment", localStringBuilder.toString());
     if (paramBoolean)
     {
       AppBrandTask.runTaskOnUiThread(new PhoneNumberManagementFragment.3.1.1(this));
@@ -23,7 +30,7 @@ class PhoneNumberManagementFragment$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.PhoneNumberManagementFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

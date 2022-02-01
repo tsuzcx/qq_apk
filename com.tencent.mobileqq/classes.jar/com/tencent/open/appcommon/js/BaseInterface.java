@@ -42,13 +42,20 @@ public abstract class BaseInterface
   
   public void addResult(WebView paramWebView, long paramLong1, String paramString, long paramLong2, int paramInt)
   {
-    LogUtility.c("BaseInterface", "callBatch addResult result : " + paramString + ", timeout : " + paramLong2 + ", queueLimit : " + paramInt);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("callBatch addResult result : ");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(", timeout : ");
+    ((StringBuilder)localObject).append(paramLong2);
+    ((StringBuilder)localObject).append(", queueLimit : ");
+    ((StringBuilder)localObject).append(paramInt);
+    LogUtility.c("BaseInterface", ((StringBuilder)localObject).toString());
     if (this.firstIn)
     {
-      Timer localTimer = ThreadManager.getTimer();
+      localObject = ThreadManager.getTimer();
       BaseInterface.1 local1 = new BaseInterface.1(this, paramWebView, paramLong1);
       this.mTask = local1;
-      localTimer.schedule(local1, paramLong2, paramLong2);
+      ((Timer)localObject).schedule(local1, paramLong2, paramLong2);
       this.firstIn = false;
     }
     try
@@ -81,339 +88,379 @@ public abstract class BaseInterface
         }
       }
       this.batchCallbackQueue.clear();
-    }
-    finally {}
-    if (localArrayList.size() > 0)
-    {
-      new Handler(Looper.getMainLooper()).post(new BaseInterface.2(this, paramLong, localArrayList, paramWebView));
+      if (localArrayList.size() > 0)
+      {
+        new Handler(Looper.getMainLooper()).post(new BaseInterface.2(this, paramLong, localArrayList, paramWebView));
+        return;
+      }
+      LogUtility.c("BaseInterface", "Response<callBatch> AsyncInterface no need response");
       return;
     }
-    LogUtility.c("BaseInterface", "Response<callBatch> AsyncInterface no need response");
+    finally {}
+    for (;;)
+    {
+      throw paramWebView;
+    }
   }
   
   protected void batchCallbackError(WebView paramWebView, long paramLong, String paramString)
   {
-    LogUtility.c("BaseInterface", "batchCallbackError guid : " + paramLong + ", msg : " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("batchCallbackError guid : ");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(", msg : ");
+    localStringBuilder.append(paramString);
+    LogUtility.c("BaseInterface", localStringBuilder.toString());
     new Handler(Looper.getMainLooper()).post(new BaseInterface.3(this, paramLong, paramString, paramWebView));
   }
   
   public void call(String paramString, List<String> paramList, JsBridge.JsBridgeListener paramJsBridgeListener)
   {
-    int j = 0;
     long l2 = System.currentTimeMillis();
-    Object localObject3 = getClass().getMethods();
-    int k = localObject3.length;
+    Object localObject2 = getClass().getMethods();
+    int j = localObject2.length;
     int i = 0;
-    Object localObject1;
-    if (i < k)
+    while (i < j)
     {
-      localObject1 = localObject3[i];
-      if ((!((Method)localObject1).getName().equals(paramString)) || (((Method)localObject1).getParameterTypes().length != paramList.size())) {}
+      localObject1 = localObject2[i];
+      if ((((Method)localObject1).getName().equals(paramString)) && (((Method)localObject1).getParameterTypes().length == paramList.size())) {
+        break label78;
+      }
+      i += 1;
     }
-    label646:
-    for (;;)
+    Object localObject1 = null;
+    label78:
+    localObject2 = localObject1;
+    Object localObject3;
+    if (localObject1 == null)
     {
-      if (localObject1 == null) {}
-      label427:
-      label493:
-      for (;;)
+      try
       {
-        try
+        localObject4 = Class.forName("com.tencent.open.appcommon.js.BaseJsCallBack");
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+        localObject4 = null;
+      }
+      localObject3 = localObject1;
+      if (localObject4 != null)
+      {
+        localObject4 = ((Class)localObject4).getMethods();
+        localObject3 = localObject1;
+        if (localObject4 != null)
         {
-          localObject3 = Class.forName("com.tencent.open.appcommon.js.BaseJsCallBack");
-          if (localObject3 != null)
+          localObject3 = localObject1;
+          if (localObject4.length > 0)
           {
-            localObject5 = ((Class)localObject3).getMethods();
-            if ((localObject5 != null) && (localObject5.length > 0))
+            j = localObject4.length;
+            i = 0;
+            for (;;)
             {
-              k = localObject5.length;
-              i = j;
-              if (i < k)
+              localObject3 = localObject1;
+              if (i >= j) {
+                break;
+              }
+              localObject3 = localObject4[i];
+              if ((((Method)localObject3).getName().equals(paramString)) && (((Method)localObject3).getParameterTypes().length == paramList.size())) {
+                break;
+              }
+              i += 1;
+            }
+          }
+        }
+      }
+    }
+    long l1 = System.currentTimeMillis();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AsyncInterface:[");
+    Object localObject4 = "";
+    if (localObject3 == null) {
+      localObject1 = "";
+    } else {
+      localObject1 = ((Method)localObject3).getName();
+    }
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append("]:Reflct find method cost::time6-time5=");
+    localStringBuilder.append(l1 - l2);
+    LogUtility.b("TIME", localStringBuilder.toString());
+    if (localObject3 != null) {}
+    try
+    {
+      if (paramList.size() == 0) {
+        localObject1 = ((Method)localObject3).invoke(this, new Object[0]);
+      } else {
+        localObject1 = ((Method)localObject3).invoke(this, paramList.toArray());
+      }
+      l2 = System.currentTimeMillis();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("AsyncInterface:[");
+      if (localObject3 != null) {
+        localObject4 = ((Method)localObject3).getName();
+      }
+      localStringBuilder.append((String)localObject4);
+      localStringBuilder.append("]:Invoke find method cost:time7-time6=");
+      localStringBuilder.append(l2 - l1);
+      LogUtility.b("TIME", localStringBuilder.toString());
+      localObject3 = ((Method)localObject3).getReturnType();
+      if ((localObject3 != Void.TYPE) && (localObject3 != Void.class))
+      {
+        if (paramJsBridgeListener != null)
+        {
+          if (customCallback())
+          {
+            if ((paramJsBridgeListener instanceof OpenJsBridge.OpenJsBridgeListener)) {
+              return;
+            }
+            paramJsBridgeListener.a(localObject1.toString());
+            return;
+          }
+          if ((paramJsBridgeListener instanceof OpenJsBridge.OpenJsBridgeListener))
+          {
+            ((OpenJsBridge.OpenJsBridgeListener)paramJsBridgeListener).a(paramString, localObject1);
+            return;
+          }
+          paramJsBridgeListener.a(localObject1);
+        }
+      }
+      else
+      {
+        if ((paramJsBridgeListener instanceof OpenJsBridge.OpenJsBridgeListener))
+        {
+          ((OpenJsBridge.OpenJsBridgeListener)paramJsBridgeListener).a(paramString, null);
+          return;
+        }
+        paramJsBridgeListener.a(null);
+      }
+      return;
+    }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      break label596;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      break label567;
+    }
+    catch (InvocationTargetException localInvocationTargetException)
+    {
+      label538:
+      label567:
+      label596:
+      break label538;
+    }
+    catch (Exception localException1)
+    {
+      label509:
+      break label509;
+    }
+    if (paramJsBridgeListener != null) {
+      if ((paramJsBridgeListener instanceof OpenJsBridge.OpenJsBridgeListener))
+      {
+        ((OpenJsBridge.OpenJsBridgeListener)paramJsBridgeListener).b(paramString);
+      }
+      else
+      {
+        paramJsBridgeListener.a();
+        break label622;
+        if (paramJsBridgeListener != null) {
+          if ((paramJsBridgeListener instanceof OpenJsBridge.OpenJsBridgeListener))
+          {
+            ((OpenJsBridge.OpenJsBridgeListener)paramJsBridgeListener).b(paramString);
+          }
+          else
+          {
+            paramJsBridgeListener.a();
+            break label622;
+            if (paramJsBridgeListener != null) {
+              if ((paramJsBridgeListener instanceof OpenJsBridge.OpenJsBridgeListener))
               {
-                localObject3 = localObject5[i];
-                long l1;
-                if ((((Method)localObject3).getName().equals(paramString)) && (((Method)localObject3).getParameterTypes().length == paramList.size()))
-                {
-                  localObject1 = localObject3;
-                  l1 = System.currentTimeMillis();
-                  localObject5 = new StringBuilder().append("AsyncInterface:[");
-                  if (localObject1 != null) {
-                    continue;
-                  }
-                  localObject3 = "";
-                  LogUtility.b("TIME", (String)localObject3 + "]:Reflct find method cost::time6-time5=" + (l1 - l2));
-                  if (localObject1 == null) {
-                    break label427;
-                  }
-                }
-                try
-                {
-                  if (paramList.size() != 0) {
-                    continue;
-                  }
-                  localObject3 = ((Method)localObject1).invoke(this, new Object[0]);
-                  l2 = System.currentTimeMillis();
-                  StringBuilder localStringBuilder = new StringBuilder().append("AsyncInterface:[");
-                  if (localObject1 != null) {
-                    continue;
-                  }
-                  localObject5 = "";
-                  LogUtility.b("TIME", (String)localObject5 + "]:Invoke find method cost:time7-time6=" + (l2 - l1));
-                  localObject1 = ((Method)localObject1).getReturnType();
-                  if ((localObject1 != Void.TYPE) && (localObject1 != Void.class)) {
-                    break label493;
-                  }
-                  if (!(paramJsBridgeListener instanceof OpenJsBridge.OpenJsBridgeListener)) {
-                    continue;
-                  }
-                  ((OpenJsBridge.OpenJsBridgeListener)paramJsBridgeListener).a(paramString, null);
-                  return;
-                }
-                catch (IllegalAccessException localIllegalAccessException)
-                {
-                  if (paramJsBridgeListener == null) {
-                    break label427;
-                  }
-                  if (!(paramJsBridgeListener instanceof OpenJsBridge.OpenJsBridgeListener)) {
-                    break label618;
-                  }
-                  ((OpenJsBridge.OpenJsBridgeListener)paramJsBridgeListener).b(paramString);
-                  QLog.d("BaseInterface", 4, "cannot found match method,maybe your method using args type is NO String? request method:class:" + getClass().getSimpleName() + paramString + " args:" + paramList);
-                  if (paramJsBridgeListener == null) {
-                    continue;
-                  }
-                  if (!(paramJsBridgeListener instanceof OpenJsBridge.OpenJsBridgeListener)) {
-                    break label646;
-                  }
-                  ((OpenJsBridge.OpenJsBridgeListener)paramJsBridgeListener).b(paramString);
-                  return;
-                  if (paramJsBridgeListener == null) {
-                    continue;
-                  }
-                  if (!customCallback()) {
-                    break label545;
-                  }
+                ((OpenJsBridge.OpenJsBridgeListener)paramJsBridgeListener).b(paramString);
+              }
+              else
+              {
+                paramJsBridgeListener.a();
+                break label622;
+                if (paramJsBridgeListener != null) {
                   if ((paramJsBridgeListener instanceof OpenJsBridge.OpenJsBridgeListener)) {
-                    continue;
+                    ((OpenJsBridge.OpenJsBridgeListener)paramJsBridgeListener).b(paramString);
+                  } else {
+                    paramJsBridgeListener.a();
                   }
-                  paramJsBridgeListener.a(localObject4.toString());
-                  return;
                 }
-                catch (IllegalArgumentException localIllegalArgumentException)
-                {
-                  for (;;)
-                  {
-                    if (paramJsBridgeListener != null)
-                    {
-                      if (!(paramJsBridgeListener instanceof OpenJsBridge.OpenJsBridgeListener)) {
-                        break;
-                      }
-                      ((OpenJsBridge.OpenJsBridgeListener)paramJsBridgeListener).b(paramString);
-                    }
-                  }
-                  if (!(paramJsBridgeListener instanceof OpenJsBridge.OpenJsBridgeListener)) {
-                    break label587;
-                  }
-                  ((OpenJsBridge.OpenJsBridgeListener)paramJsBridgeListener).a(paramString, localObject4);
-                  return;
-                }
-                catch (InvocationTargetException localInvocationTargetException)
-                {
-                  Object localObject4;
-                  for (;;)
-                  {
-                    if (paramJsBridgeListener != null)
-                    {
-                      if (!(paramJsBridgeListener instanceof OpenJsBridge.OpenJsBridgeListener)) {
-                        break;
-                      }
-                      ((OpenJsBridge.OpenJsBridgeListener)paramJsBridgeListener).b(paramString);
-                    }
-                  }
-                  paramJsBridgeListener.a(localObject4);
-                  return;
-                }
-                catch (Exception localException1)
-                {
-                  for (;;)
-                  {
-                    if (paramJsBridgeListener != null) {
-                      if ((paramJsBridgeListener instanceof OpenJsBridge.OpenJsBridgeListener))
-                      {
-                        ((OpenJsBridge.OpenJsBridgeListener)paramJsBridgeListener).b(paramString);
-                        continue;
-                        paramJsBridgeListener.a();
-                        continue;
-                        paramJsBridgeListener.a();
-                        continue;
-                        paramJsBridgeListener.a();
-                      }
-                      else
-                      {
-                        paramJsBridgeListener.a();
-                      }
-                    }
-                  }
-                  paramJsBridgeListener.a();
-                  return;
-                }
-                i += 1;
               }
             }
           }
         }
-        catch (Exception localException2)
-        {
-          localException2.printStackTrace();
-          localObject4 = null;
-          continue;
-          i += 1;
-          continue;
-          localObject4 = ((Method)localObject1).getName();
-          continue;
-          localObject4 = ((Method)localObject1).invoke(this, paramList.toArray());
-          continue;
-          Object localObject5 = ((Method)localObject1).getName();
-          continue;
-          paramJsBridgeListener.a(null);
-          return;
-        }
       }
-      label545:
-      label587:
-      label618:
-      Object localObject2 = null;
+    }
+    label622:
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("cannot found match method,maybe your method using args type is NO String? request method:class:");
+    ((StringBuilder)localObject1).append(getClass().getSimpleName());
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append(" args:");
+    ((StringBuilder)localObject1).append(paramList);
+    QLog.d("BaseInterface", 4, ((StringBuilder)localObject1).toString());
+    if (paramJsBridgeListener != null)
+    {
+      if ((paramJsBridgeListener instanceof OpenJsBridge.OpenJsBridgeListener))
+      {
+        ((OpenJsBridge.OpenJsBridgeListener)paramJsBridgeListener).b(paramString);
+        return;
+      }
+      paramJsBridgeListener.a();
     }
   }
   
   public void callBatch(WebView paramWebView, HashMap<String, JsBridge.JsHandler> paramHashMap, long paramLong1, String paramString, long paramLong2, int paramInt)
   {
-    label102:
-    String str3;
-    String str1;
-    String str2;
-    ArrayList localArrayList;
-    int j;
-    label300:
-    do
+    try
     {
-      do
+      JSONArray localJSONArray = new JSONArray(URLDecoder.decode(paramString, "UTF-8"));
+      this.optLef = localJSONArray.length();
+      int i = 0;
+      while (i < localJSONArray.length())
       {
-        for (;;)
-        {
-          try
+        paramString = localJSONArray.optJSONObject(i);
+        if (paramString != null) {
+          for (;;)
           {
-            JSONArray localJSONArray = new JSONArray(URLDecoder.decode(paramString, "UTF-8"));
-            this.optLef = localJSONArray.length();
-            int i = 0;
-            if (i < localJSONArray.length())
+            Object localObject2 = paramString.optString("ns");
+            String str1 = paramString.optString("method");
+            String str2 = paramString.optString("guid");
+            paramString = paramString.optString("args");
+            ArrayList localArrayList = new ArrayList();
+            try
             {
-              paramString = localJSONArray.optJSONObject(i);
-              if (paramString != null) {
-                break label102;
+              paramString = new JSONArray(paramString);
+              int j = 0;
+              while (j < paramString.length())
+              {
+                localArrayList.add(paramString.getString(j));
+                j += 1;
               }
-              i += 1;
+              if (AsyncMethodMap.jdField_a_of_type_JavaUtilArrayList.contains(str1)) {
+                localArrayList.add(str2);
+              }
+              paramString = (Class)AsyncMethodMap.jdField_a_of_type_JavaUtilHashMap.get(localObject2);
+              if (paramString != null)
+              {
+                paramString = paramString.getMethods();
+                int k = paramString.length;
+                j = 0;
+                while (j < k)
+                {
+                  localObject1 = paramString[j];
+                  if ((((Method)localObject1).getName().equals(str1)) && (((Method)localObject1).getParameterTypes().length == localArrayList.size()))
+                  {
+                    paramString = (String)localObject1;
+                    break label272;
+                  }
+                  j += 1;
+                }
+                paramString = null;
+                label272:
+                if (paramString != null)
+                {
+                  localObject1 = paramHashMap.get(localObject2);
+                  try
+                  {
+                    localObject2 = new StringBuilder();
+                    ((StringBuilder)localObject2).append("callBatch <call> class : ");
+                    ((StringBuilder)localObject2).append(localObject1.getClass().getName());
+                    ((StringBuilder)localObject2).append(" , method : ");
+                    ((StringBuilder)localObject2).append(str1);
+                    ((StringBuilder)localObject2).append("\n , args : ");
+                    ((StringBuilder)localObject2).append(localArrayList.toString());
+                    LogUtility.b("BaseInterface", ((StringBuilder)localObject2).toString());
+                    if (localArrayList.size() == 0) {
+                      localObject1 = paramString.invoke(localObject1, new Object[0]);
+                    } else {
+                      localObject1 = paramString.invoke(localObject1, localArrayList.toArray());
+                    }
+                    paramString = paramString.getReturnType();
+                    if ((paramString != Void.TYPE) && (paramString != Void.class))
+                    {
+                      paramString = "'undefined'";
+                      if ((localObject1 instanceof String))
+                      {
+                        paramString = ((String)localObject1).replace("\\", "\\\\").replace("'", "\\'");
+                        localObject1 = new StringBuilder();
+                        ((StringBuilder)localObject1).append("'");
+                        ((StringBuilder)localObject1).append(paramString);
+                        ((StringBuilder)localObject1).append("'");
+                        paramString = ((StringBuilder)localObject1).toString();
+                      }
+                      else if ((!(localObject1 instanceof Number)) && (!(localObject1 instanceof Long)) && (!(localObject1 instanceof Integer)) && (!(localObject1 instanceof Double)) && (!(localObject1 instanceof Float)))
+                      {
+                        if ((localObject1 instanceof Boolean)) {
+                          paramString = localObject1.toString();
+                        }
+                      }
+                      else
+                      {
+                        paramString = localObject1.toString();
+                      }
+                      localObject1 = new StringBuilder();
+                      ((StringBuilder)localObject1).append("['interface.");
+                      ((StringBuilder)localObject1).append(str1);
+                      ((StringBuilder)localObject1).append("',{'guid':");
+                      ((StringBuilder)localObject1).append(str2);
+                      ((StringBuilder)localObject1).append(",'r':0,'data':");
+                      ((StringBuilder)localObject1).append(paramString);
+                      ((StringBuilder)localObject1).append("}]");
+                      paramString = ((StringBuilder)localObject1).toString();
+                    }
+                    try
+                    {
+                      addResult(paramWebView, paramLong1, paramString, paramLong2, paramInt);
+                    }
+                    catch (Exception paramString)
+                    {
+                      break label696;
+                    }
+                    addResult(paramWebView, paramLong1, "void", paramLong2, paramInt);
+                  }
+                  catch (Exception paramString) {}
+                  label696:
+                  LogUtility.c("BaseInterface", "callBatch error", paramString);
+                }
+              }
             }
-            str3 = paramString.optString("ns");
-          }
-          catch (JSONException paramHashMap)
-          {
-            LogUtility.b("BaseInterface", "callBatch request params format err", paramHashMap);
-            batchCallbackError(paramWebView, paramLong1, "callBatch request params format err");
-            return;
-          }
-          catch (UnsupportedEncodingException paramHashMap)
-          {
-            LogUtility.b("BaseInterface", "callBatch decode params format err", paramHashMap);
-            batchCallbackError(paramWebView, paramLong1, "callBatch callBatch decode params format err");
-            return;
-          }
-          str1 = paramString.optString("method");
-          str2 = paramString.optString("guid");
-          paramString = paramString.optString("args");
-          localArrayList = new ArrayList();
-          try
-          {
-            paramString = new JSONArray(paramString);
-            j = 0;
-            while (j < paramString.length())
+            catch (Exception paramString)
             {
-              localArrayList.add(paramString.getString(j));
-              j += 1;
+              Object localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("callBatch args error : ");
+              ((StringBuilder)localObject1).append(paramString.toString());
+              LogUtility.e("BaseInterface", ((StringBuilder)localObject1).toString());
+              this.optLef -= 1;
             }
           }
-          catch (Exception paramString)
-          {
-            LogUtility.e("BaseInterface", "callBatch args error : " + paramString.toString());
-            this.optLef -= 1;
-          }
         }
-        if (AsyncMethodMap.jdField_a_of_type_JavaUtilArrayList.contains(str1)) {
-          localArrayList.add(str2);
-        }
-        paramString = (Class)AsyncMethodMap.jdField_a_of_type_JavaUtilHashMap.get(str3);
-      } while (paramString == null);
-      Method[] arrayOfMethod = paramString.getMethods();
-      localObject = null;
-      int k = arrayOfMethod.length;
-      j = 0;
-      paramString = localObject;
-      if (j < k)
-      {
-        paramString = arrayOfMethod[j];
-        if ((!paramString.getName().equals(str1)) || (paramString.getParameterTypes().length != localArrayList.size())) {
-          break;
-        }
+        i += 1;
       }
-    } while (paramString == null);
-    for (Object localObject = paramHashMap.get(str3);; localObject = paramString.invoke(localObject, localArrayList.toArray()))
-    {
-      try
-      {
-        LogUtility.b("BaseInterface", "callBatch <call> class : " + localObject.getClass().getName() + " , method : " + str1 + "\n , args : " + localArrayList.toString());
-        if (localArrayList.size() != 0) {
-          continue;
-        }
-        localObject = paramString.invoke(localObject, new Object[0]);
-        paramString = paramString.getReturnType();
-        if ((paramString != Void.TYPE) && (paramString != Void.class)) {
-          break label520;
-        }
-        addResult(paramWebView, paramLong1, "void", paramLong2, paramInt);
-      }
-      catch (Exception paramString)
-      {
-        LogUtility.c("BaseInterface", "callBatch error", paramString);
-      }
-      break;
-      j += 1;
-      break label300;
+      return;
     }
-    label520:
-    if ((localObject instanceof String))
+    catch (UnsupportedEncodingException paramHashMap)
     {
-      paramString = ((String)localObject).replace("\\", "\\\\").replace("'", "\\'");
-      paramString = "'" + paramString + "'";
+      LogUtility.b("BaseInterface", "callBatch decode params format err", paramHashMap);
+      batchCallbackError(paramWebView, paramLong1, "callBatch callBatch decode params format err");
+      return;
     }
-    for (;;)
+    catch (JSONException paramHashMap)
     {
-      addResult(paramWebView, paramLong1, "['interface." + str1 + "',{'guid':" + str2 + ",'r':0,'data':" + paramString + "}]", paramLong2, paramInt);
-      break;
-      if (((localObject instanceof Number)) || ((localObject instanceof Long)) || ((localObject instanceof Integer)) || ((localObject instanceof Double)) || ((localObject instanceof Float))) {
-        paramString = localObject.toString();
-      } else if ((localObject instanceof Boolean)) {
-        paramString = localObject.toString();
-      } else {
-        paramString = "'undefined'";
-      }
+      LogUtility.b("BaseInterface", "callBatch request params format err", paramHashMap);
+      batchCallbackError(paramWebView, paramLong1, "callBatch request params format err");
     }
   }
   
   public void destroy()
   {
-    if (this.mTask != null)
+    TimerTask localTimerTask = this.mTask;
+    if (localTimerTask != null)
     {
-      this.mTask.cancel();
+      localTimerTask.cancel();
       this.mTask = null;
     }
   }
@@ -430,8 +477,12 @@ public abstract class BaseInterface
   
   public boolean hasRight()
   {
-    if (!this.jsRight) {
-      LogUtility.e("AppStore", " js interface has no permission, " + this.currentUrl);
+    if (!this.jsRight)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" js interface has no permission, ");
+      localStringBuilder.append(this.currentUrl);
+      LogUtility.e("AppStore", localStringBuilder.toString());
     }
     return this.jsRight;
   }
@@ -441,33 +492,35 @@ public abstract class BaseInterface
     this.currentUrl = paramString.toLowerCase();
     try
     {
-      if ((StringAddition.a(this.currentUrl)) || (this.currentUrl.startsWith("file://")))
+      if ((!StringAddition.a(this.currentUrl)) && (!this.currentUrl.startsWith("file://")))
       {
-        this.jsRight = true;
+        if (qqPattern.matcher(this.currentUrl).find())
+        {
+          this.jsRight = true;
+          return;
+        }
+        if (HTTPS_PATTERN.matcher(this.currentUrl).find())
+        {
+          this.jsRight = true;
+          return;
+        }
+        this.jsRight = false;
         return;
       }
-      if (qqPattern.matcher(this.currentUrl).find())
-      {
-        this.jsRight = true;
-        return;
-      }
+      this.jsRight = true;
+      return;
     }
     catch (Exception paramString)
     {
-      this.jsRight = true;
-      return;
+      label90:
+      break label90;
     }
-    if (HTTPS_PATTERN.matcher(this.currentUrl).find())
-    {
-      this.jsRight = true;
-      return;
-    }
-    this.jsRight = false;
+    this.jsRight = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcommon.js.BaseInterface
  * JD-Core Version:    0.7.0.1
  */

@@ -85,8 +85,10 @@ public class PadInfo
   
   public boolean equals(Object paramObject)
   {
-    if ((paramObject instanceof PadInfo)) {
-      return (this.pad_url != null) && (this.pad_url.equalsIgnoreCase(((PadInfo)paramObject).pad_url));
+    if ((paramObject instanceof PadInfo))
+    {
+      String str = this.pad_url;
+      return (str != null) && (str.equalsIgnoreCase(((PadInfo)paramObject).pad_url));
     }
     return super.equals(paramObject);
   }
@@ -104,13 +106,46 @@ public class PadInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(" == padInfo == \n");
-    localStringBuilder.append("domainId: ").append(this.domainId).append(",padId: ").append(this.padId).append(",lastUnPinnedTime: ").append(this.lastUnPinnedTime).append(",itemDeleteFlag: ").append(this.itemDeleteFlag).append(",itemLateDeleteTime: ").append(this.itemLateDeleteTime).append(",thumbUrl: ").append(this.thumbUrl).append(",pad_url: ").append(this.pad_url).append(",type: ").append(this.type).append(",title: ").append(this.title).append(",createTime: ").append(this.createTime).append(",creatorUin: ").append(this.creatorUin).append(",creatorNick: ").append(this.creatorNick).append(",lastEditorUin: ").append(this.lastEditorUin).append(",lastEditorNick: ").append(this.lastEditorNick).append(",lastEditTime: ").append(this.lastEditTime).append(",pinedFlag: ").append(this.pinedFlag).append(",policy: ").append(this.policy);
+    localStringBuilder.append("domainId: ");
+    localStringBuilder.append(this.domainId);
+    localStringBuilder.append(",padId: ");
+    localStringBuilder.append(this.padId);
+    localStringBuilder.append(",lastUnPinnedTime: ");
+    localStringBuilder.append(this.lastUnPinnedTime);
+    localStringBuilder.append(",itemDeleteFlag: ");
+    localStringBuilder.append(this.itemDeleteFlag);
+    localStringBuilder.append(",itemLateDeleteTime: ");
+    localStringBuilder.append(this.itemLateDeleteTime);
+    localStringBuilder.append(",thumbUrl: ");
+    localStringBuilder.append(this.thumbUrl);
+    localStringBuilder.append(",pad_url: ");
+    localStringBuilder.append(this.pad_url);
+    localStringBuilder.append(",type: ");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(",title: ");
+    localStringBuilder.append(this.title);
+    localStringBuilder.append(",createTime: ");
+    localStringBuilder.append(this.createTime);
+    localStringBuilder.append(",creatorUin: ");
+    localStringBuilder.append(this.creatorUin);
+    localStringBuilder.append(",creatorNick: ");
+    localStringBuilder.append(this.creatorNick);
+    localStringBuilder.append(",lastEditorUin: ");
+    localStringBuilder.append(this.lastEditorUin);
+    localStringBuilder.append(",lastEditorNick: ");
+    localStringBuilder.append(this.lastEditorNick);
+    localStringBuilder.append(",lastEditTime: ");
+    localStringBuilder.append(this.lastEditTime);
+    localStringBuilder.append(",pinedFlag: ");
+    localStringBuilder.append(this.pinedFlag);
+    localStringBuilder.append(",policy: ");
+    localStringBuilder.append(this.policy);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.PadInfo
  * JD-Core Version:    0.7.0.1
  */

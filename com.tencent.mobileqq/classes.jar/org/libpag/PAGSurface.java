@@ -39,28 +39,24 @@ public class PAGSurface
     if (paramSurface == null) {
       return null;
     }
-    long l;
-    if ((paramEGLContext != null) && (paramEGLContext != EGL14.EGL_NO_CONTEXT)) {
+    if ((paramEGLContext != null) && (paramEGLContext != EGL14.EGL_NO_CONTEXT))
+    {
       if (Build.VERSION.SDK_INT >= 21) {
         l = paramEGLContext.getNativeHandle();
-      }
-    }
-    for (;;)
-    {
-      l = SetupFromSurfaceWithGLContext(paramSurface, l);
-      if (l == 0L)
-      {
-        return null;
+      } else {
         l = paramEGLContext.getHandle();
       }
-      else
-      {
-        paramEGLContext = new PAGSurface(l);
-        paramEGLContext.surface = paramSurface;
-        return paramEGLContext;
-        l = 0L;
-      }
     }
+    else {
+      l = 0L;
+    }
+    long l = SetupFromSurfaceWithGLContext(paramSurface, l);
+    if (l == 0L) {
+      return null;
+    }
+    paramEGLContext = new PAGSurface(l);
+    paramEGLContext.surface = paramSurface;
+    return paramEGLContext;
   }
   
   public static PAGSurface FromSurfaceTexture(SurfaceTexture paramSurfaceTexture)
@@ -94,10 +90,13 @@ public class PAGSurface
   
   public static void OnReportData(HashMap<String, String> paramHashMap)
   {
-    if ((paramHashMap == null) || (paramHashMap.isEmpty())) {
-      return;
+    if (paramHashMap != null)
+    {
+      if (paramHashMap.isEmpty()) {
+        return;
+      }
+      AVReportCenter.getInstance().commit(paramHashMap);
     }
-    AVReportCenter.getInstance().commit(paramHashMap);
   }
   
   private static native long SetupFromSurfaceWithGLContext(Surface paramSurface, long paramLong);
@@ -134,7 +133,7 @@ public class PAGSurface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.libpag.PAGSurface
  * JD-Core Version:    0.7.0.1
  */

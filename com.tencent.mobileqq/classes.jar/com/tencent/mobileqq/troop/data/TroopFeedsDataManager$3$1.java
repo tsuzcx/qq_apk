@@ -13,18 +13,22 @@ class TroopFeedsDataManager$3$1
   
   public void run()
   {
-    Object localObject = TroopFeedParserHelper.a(this.jdField_a_of_type_OrgJsonJSONObject, "" + this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$3.a.jdField_a_of_type_JavaLangLong, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$3.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    List localList = (List)localObject[0];
-    localObject = (List)localObject[1];
-    ((List)localObject).addAll(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$3.a.jdField_a_of_type_JavaUtilList);
+    Object localObject1 = this.jdField_a_of_type_OrgJsonJSONObject;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$3.a.jdField_a_of_type_JavaLangLong);
+    localObject2 = TroopFeedParserHelper.a((JSONObject)localObject1, ((StringBuilder)localObject2).toString(), this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$3.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    localObject1 = (List)localObject2[0];
+    localObject2 = (List)localObject2[1];
+    ((List)localObject2).addAll(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$3.a.jdField_a_of_type_JavaUtilList);
     Message localMessage = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$3.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);
-    localMessage.obj = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$3.a.a(localList, (List)localObject);
+    localMessage.obj = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$3.a.a((List)localObject1, (List)localObject2);
     this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$3.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFeedsDataManager.3.1
  * JD-Core Version:    0.7.0.1
  */

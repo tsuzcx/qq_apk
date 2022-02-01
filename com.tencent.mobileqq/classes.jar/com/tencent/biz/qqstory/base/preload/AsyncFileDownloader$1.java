@@ -14,7 +14,7 @@ class AsyncFileDownloader$1
     super(paramString);
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
     this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerDownloader.a(this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadDownloadTask);
     this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadDownloadTask.jdField_a_of_type_JavaLangString;
@@ -29,7 +29,7 @@ class AsyncFileDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.AsyncFileDownloader.1
  * JD-Core Version:    0.7.0.1
  */

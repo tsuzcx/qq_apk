@@ -22,47 +22,40 @@ class CommentBottomBar$5
   public void a(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoLikeRsp paramStDoLikeRsp)
   {
     CommentBottomBar.a(this.a, true);
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoLikeRsp == null)) {
-      QQToast.a(this.a.getContext(), 1, paramString, 0).a();
-    }
-    label286:
-    label290:
-    for (;;)
+    int j = 0;
+    if ((paramBoolean) && (paramLong == 0L) && (paramStDoLikeRsp != null))
     {
-      return;
-      if (paramStDoLikeRsp.like.status.get() == 1)
-      {
+      if (paramStDoLikeRsp.like.status.get() == 1) {
         i = CommentBottomBar.a(this.a).likeInfo.count.get() + 1;
-        if (CommentBottomBar.a(this.a) != null)
-        {
-          CommentBottomBar.a(this.a).likeInfo.status.set(paramStDoLikeRsp.like.status.get());
-          CommentBottomBar.a(this.a).likeInfo.count.set(i);
-        }
-        SimpleEventBus.getInstance().dispatchEvent(new PraisedUpdateEvents(CommentBottomBar.a(this.a).id.get(), paramStDoLikeRsp.like.status.get(), i));
-        if (BaseApplicationImpl.sProcessId != 1) {
-          break label286;
-        }
+      } else {
+        i = CommentBottomBar.a(this.a).likeInfo.count.get() - 1;
       }
-      for (int i = 1;; i = 0)
+      if (CommentBottomBar.a(this.a) != null)
       {
-        if (i != 0) {
-          break label290;
-        }
+        CommentBottomBar.a(this.a).likeInfo.status.set(paramStDoLikeRsp.like.status.get());
+        CommentBottomBar.a(this.a).likeInfo.count.set(i);
+      }
+      SimpleEventBus.getInstance().dispatchEvent(new PraisedUpdateEvents(CommentBottomBar.a(this.a).id.get(), paramStDoLikeRsp.like.status.get(), i));
+      int i = j;
+      if (BaseApplicationImpl.sProcessId == 1) {
+        i = 1;
+      }
+      if (i == 0)
+      {
         paramBaseRequest = new Bundle();
         paramBaseRequest.putString("feed_id", CommentBottomBar.a(this.a).id.get());
         paramBaseRequest.putInt("feed_like_status", paramStDoLikeRsp.like.status.get());
         paramBaseRequest.putInt("feed_like_num", paramStDoLikeRsp.like.count.get());
         QIPCClientHelper.getInstance().callServer(SimpleEventBus.IPC_SERVICE_MODULE_NAME, SimpleEventBus.ACTION_PRAISED_UPDATE, paramBaseRequest, null);
-        return;
-        i = CommentBottomBar.a(this.a).likeInfo.count.get() - 1;
-        break;
       }
+      return;
     }
+    QQToast.a(this.a.getContext(), 1, paramString, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.CommentBottomBar.5
  * JD-Core Version:    0.7.0.1
  */

@@ -34,7 +34,8 @@ class CommentFloatDialog$OnCommentListViewStateChangeListener
     {
       CommentFloatDialog.a(this.a, paramDetailFeedItem);
       CommentFloatDialog.a(this.a).setVisibility(0);
-      CommentFloatDialog.a(this.a, new DetailCommentHelper(this.a.getContext(), CommentFloatDialog.b(this.a), paramDetailFeedItem, false, 4444, new CommentFloatDialog.OnCommentHelperCallback(this.a, null)));
+      paramErrorMessage = this.a;
+      CommentFloatDialog.a(paramErrorMessage, new DetailCommentHelper(paramErrorMessage.getContext(), CommentFloatDialog.b(this.a), paramDetailFeedItem, false, 4444, new CommentFloatDialog.OnCommentHelperCallback(this.a, null)));
       if (CommentFloatDialog.a(this.a).a != null) {
         CommentFloatDialog.a(this.a).a.setText(CommentFloatDialog.a(this.a).a);
       }
@@ -43,9 +44,11 @@ class CommentFloatDialog$OnCommentListViewStateChangeListener
         CommentFloatDialog.a(this.a, false);
         CommentFloatDialog.a(this.a).postDelayed(new CommentFloatDialog.OnCommentListViewStateChangeListener.1(this), 100);
       }
-      return;
     }
-    CommentFloatDialog.a(this.a).setVisibility(8);
+    else
+    {
+      CommentFloatDialog.a(this.a).setVisibility(8);
+    }
   }
   
   public boolean a(MotionEvent paramMotionEvent)
@@ -67,7 +70,7 @@ class CommentFloatDialog$OnCommentListViewStateChangeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.OnCommentListViewStateChangeListener
  * JD-Core Version:    0.7.0.1
  */

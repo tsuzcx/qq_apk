@@ -2,12 +2,11 @@ package com.tencent.mobileqq.armap.sensor.rotation;
 
 class MathUtils$Cos
 {
-  static final float[] a;
+  static final float[] a = new float[8192];
   
   static
   {
     int k = 0;
-    a = new float[8192];
     int i = 0;
     int j;
     for (;;)
@@ -21,14 +20,16 @@ class MathUtils$Cos
     }
     while (j < 360)
     {
-      a[((int)(j * 22.755556F) & 0x1FFF)] = ((float)Math.cos(j * 0.01745329F));
+      float[] arrayOfFloat = a;
+      float f = j;
+      arrayOfFloat[((int)(22.755556F * f) & 0x1FFF)] = ((float)Math.cos(f * 0.01745329F));
       j += 90;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.sensor.rotation.MathUtils.Cos
  * JD-Core Version:    0.7.0.1
  */

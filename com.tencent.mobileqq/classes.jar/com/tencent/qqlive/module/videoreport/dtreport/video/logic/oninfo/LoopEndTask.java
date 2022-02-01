@@ -13,7 +13,12 @@ public class LoopEndTask
   
   public void doTask(Object paramObject, int paramInt, long paramLong1, long paramLong2)
   {
-    Log.i("LoopEndTask", "loopEnd, ptr=" + paramObject + " ,playerState=" + this.playerState);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("loopEnd, ptr=");
+    localStringBuilder.append(paramObject);
+    localStringBuilder.append(" ,playerState=");
+    localStringBuilder.append(this.playerState);
+    Log.i("LoopEndTask", localStringBuilder.toString());
     if ((this.playerState == 2) && (!this.flowInfo.isLoopEnd()))
     {
       VideoReportManager.getInstance().loopEnd(paramObject);
@@ -29,7 +34,7 @@ public class LoopEndTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.video.logic.oninfo.LoopEndTask
  * JD-Core Version:    0.7.0.1
  */

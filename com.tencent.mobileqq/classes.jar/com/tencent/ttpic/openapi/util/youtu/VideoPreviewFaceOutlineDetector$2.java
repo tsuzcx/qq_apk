@@ -11,9 +11,11 @@ class VideoPreviewFaceOutlineDetector$2
   public void run()
   {
     BenchUtil.benchStart("only faceDetect");
-    long l1 = 0L;
+    long l1;
     if (BenchUtil.ENABLE_PERFORMANCE_RECORD) {
       l1 = System.currentTimeMillis();
+    } else {
+      l1 = 0L;
     }
     if (this.this$0.doFaceDetect(this.val$rgba, this.val$w, this.val$h)) {
       VideoPreviewFaceOutlineDetector.access$002(this.this$0, this.val$phoneRotation);
@@ -21,7 +23,11 @@ class VideoPreviewFaceOutlineDetector$2
     if (BenchUtil.ENABLE_PERFORMANCE_RECORD)
     {
       long l2 = System.currentTimeMillis();
-      LogUtils.e("PERFORMANCE_RECORD", "人脸追踪耗时： " + (l2 - l1) + " ms.");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("人脸追踪耗时： ");
+      localStringBuilder.append(l2 - l1);
+      localStringBuilder.append(" ms.");
+      LogUtils.e("PERFORMANCE_RECORD", localStringBuilder.toString());
     }
     BenchUtil.benchEnd("only faceDetect");
     VideoPreviewFaceOutlineDetector.access$102(this.this$0, false);
@@ -30,7 +36,7 @@ class VideoPreviewFaceOutlineDetector$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.youtu.VideoPreviewFaceOutlineDetector.2
  * JD-Core Version:    0.7.0.1
  */

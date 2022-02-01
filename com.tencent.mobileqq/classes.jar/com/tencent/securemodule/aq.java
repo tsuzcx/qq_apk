@@ -14,30 +14,27 @@ public class aq
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a) {}
-    for (;;)
-    {
+    if (this.a) {
       try
       {
         paramDialogInterface = new Intent();
         paramDialogInterface.addFlags(268435456);
         paramDialogInterface.setAction("com.tencent.action.virus_scan");
         this.b.startActivity(paramDialogInterface);
-        this.b.finish();
-        return;
       }
       catch (Throwable paramDialogInterface)
       {
         paramDialogInterface.printStackTrace();
-        continue;
       }
+    } else {
       SecureService.a(TransparentActivity.b(this.b).getApplicationContext(), "1000011");
     }
+    this.b.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.securemodule.aq
  * JD-Core Version:    0.7.0.1
  */

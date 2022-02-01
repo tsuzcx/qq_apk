@@ -11,7 +11,8 @@ class VsMediaPlayer$1
   
   public void run()
   {
-    VsMediaPlayer.a(this.this$0, VsMediaPlayer.a(this.this$0) + 1000);
+    VsMediaPlayer localVsMediaPlayer = this.this$0;
+    VsMediaPlayer.a(localVsMediaPlayer, VsMediaPlayer.a(localVsMediaPlayer) + 1000);
     if (VsMediaPlayer.a(this.this$0) != null) {
       VideoPlayStatusDispatcher.a().a(VsMediaPlayer.a(this.this$0).getCurrentPosition());
     }
@@ -22,7 +23,7 @@ class VsMediaPlayer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.video.VsMediaPlayer.1
  * JD-Core Version:    0.7.0.1
  */

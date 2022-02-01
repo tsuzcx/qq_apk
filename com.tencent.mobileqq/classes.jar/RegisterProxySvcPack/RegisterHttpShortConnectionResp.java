@@ -58,15 +58,16 @@ public final class RegisterHttpShortConnectionResp
     paramJceOutputStream.write(this.vCookies, 0);
     paramJceOutputStream.write(this.vBusiPacks, 1);
     paramJceOutputStream.write(this.uInterval, 2);
-    if (this.vSig != null) {
-      paramJceOutputStream.write(this.vSig, 3);
+    byte[] arrayOfByte = this.vSig;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 3);
     }
     paramJceOutputStream.write(this.bReloadSvrlist, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     RegisterProxySvcPack.RegisterHttpShortConnectionResp
  * JD-Core Version:    0.7.0.1
  */

@@ -25,16 +25,18 @@ public final class dp
   {
     try
     {
-      if ((b != null) && (b.getApplicationContext() != null)) {
-        break label52;
+      if ((b == null) || (b.getApplicationContext() == null))
+      {
+        if ((paramContext != null) && (paramContext.getApplicationContext() != null)) {
+          b = paramContext.getApplicationContext();
+        }
       }
-      if ((paramContext == null) || (paramContext.getApplicationContext() == null)) {
-        throw new NullPointerException("context cannot be null.");
+      else {
+        return;
       }
+      throw new NullPointerException("context cannot be null.");
     }
     finally {}
-    b = paramContext.getApplicationContext();
-    label52:
   }
   
   public static final void b()
@@ -44,7 +46,7 @@ public final class dp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.dp
  * JD-Core Version:    0.7.0.1
  */

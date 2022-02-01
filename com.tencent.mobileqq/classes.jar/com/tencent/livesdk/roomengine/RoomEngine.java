@@ -2,11 +2,14 @@ package com.tencent.livesdk.roomengine;
 
 import android.content.Context;
 import com.tencent.falco.base.libapi.ServiceBaseInterface;
-import com.tencent.ilive.uicomponent.luxurygiftcomponent_interface.LottieServiceInterface;
+import com.tencent.ilivesdk.anchorchangerateservice.AnchorChangeRateInterface;
+import com.tencent.ilivesdk.anchorfinishpageserviceinterface.AnchorFinishPageServiceInterface;
+import com.tencent.ilivesdk.avmediaservice_interface.MediaPlayerInterface;
 import com.tencent.ilivesdk.avplayerbuilderservice_interface.AVPlayerBuilderServiceInterface;
 import com.tencent.ilivesdk.balanceservice_interface.BalanceServiceInterface;
 import com.tencent.ilivesdk.changevideorateservice_interface.ChangeVideoRateServiceInterface;
 import com.tencent.ilivesdk.charmservice_interface.CharmServiceInterface;
+import com.tencent.ilivesdk.coredataserviceinterface.CoreDataServiceInterface;
 import com.tencent.ilivesdk.ecommerceservice_interface.ECommerceServiceInterface;
 import com.tencent.ilivesdk.floatheartservice_interface.FloatHeartServiceInterface;
 import com.tencent.ilivesdk.giftservice_interface.GiftServiceInterface;
@@ -14,6 +17,7 @@ import com.tencent.ilivesdk.harvestservice_interface.HarvestServiceInterface;
 import com.tencent.ilivesdk.linkmicavservice_interface.LinkMicAvServiceInterface;
 import com.tencent.ilivesdk.linkmicbizserviceinterface.LinkMicBizServiceInterface;
 import com.tencent.ilivesdk.liveoverservice_interface.LiveOverServiceInterface;
+import com.tencent.ilivesdk.messagefilterserviceinterface.MessageFilterServiceInterface;
 import com.tencent.ilivesdk.messageservice_interface.MessageServiceInterface;
 import com.tencent.ilivesdk.minicardservice_interface.MiniCardServiceInterface;
 import com.tencent.ilivesdk.musicmanagerservice_interface.MusicManagerServiceInterface;
@@ -86,8 +90,12 @@ public class RoomEngine
     this.scopeServices.add(LinkMicAvServiceInterface.class);
     this.scopeServices.add(LinkMicBizServiceInterface.class);
     this.scopeServices.add(ChangeVideoRateServiceInterface.class);
-    this.scopeServices.add(LottieServiceInterface.class);
     this.scopeServices.add(RoomComponentHiderServiceInterface.class);
+    this.scopeServices.add(CoreDataServiceInterface.class);
+    this.scopeServices.add(AnchorChangeRateInterface.class);
+    this.scopeServices.add(AnchorFinishPageServiceInterface.class);
+    this.scopeServices.add(MessageFilterServiceInterface.class);
+    this.scopeServices.add(MediaPlayerInterface.class);
     initNewServiceScope(ServiceEnginScope.Room);
   }
   
@@ -154,6 +162,7 @@ public class RoomEngine
   
   public void unint()
   {
+    getEnginLogic().setReWatchEnterRoomListener(null);
     if (this.serviceManager.getAllAvailableService().size() > 0)
     {
       Iterator localIterator = this.serviceManager.getAllAvailableService().values().iterator();
@@ -168,7 +177,7 @@ public class RoomEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.roomengine.RoomEngine
  * JD-Core Version:    0.7.0.1
  */

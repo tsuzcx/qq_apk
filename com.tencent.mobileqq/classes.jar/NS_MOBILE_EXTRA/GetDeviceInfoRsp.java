@@ -40,14 +40,15 @@ public final class GetDeviceInfoRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.vecDeviceInfo, 0);
-    if (this.user_yellow_info != null) {
-      paramJceOutputStream.write(this.user_yellow_info, 1);
+    yellow_info localyellow_info = this.user_yellow_info;
+    if (localyellow_info != null) {
+      paramJceOutputStream.write(localyellow_info, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_EXTRA.GetDeviceInfoRsp
  * JD-Core Version:    0.7.0.1
  */

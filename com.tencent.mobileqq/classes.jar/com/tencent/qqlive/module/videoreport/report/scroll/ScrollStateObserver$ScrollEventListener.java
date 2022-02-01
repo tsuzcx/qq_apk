@@ -14,8 +14,12 @@ class ScrollStateObserver$ScrollEventListener
   
   public void onListScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("ScrollStateObserver", "onListScrollStateChanged: scrollState=" + paramInt);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onListScrollStateChanged: scrollState=");
+      localStringBuilder.append(paramInt);
+      Log.d("ScrollStateObserver", localStringBuilder.toString());
     }
     this.this$0.onScrollStateChanged(paramAbsListView, paramInt);
   }
@@ -32,7 +36,7 @@ class ScrollStateObserver$ScrollEventListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.scroll.ScrollStateObserver.ScrollEventListener
  * JD-Core Version:    0.7.0.1
  */

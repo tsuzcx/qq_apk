@@ -15,18 +15,23 @@ public class CaptureRedDotConfig$CategoryRedConfig
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("{");
-    localStringBuilder.append("categoryId=").append(this.categoryId);
-    localStringBuilder.append(", version=").append(this.version);
-    localStringBuilder.append(", showRedDot=").append(this.showRedDot);
-    localStringBuilder.append(", hasShow=").append(this.hasShow);
-    localStringBuilder.append(", firstShowTime=").append(this.firstShowTime);
+    localStringBuilder.append("categoryId=");
+    localStringBuilder.append(this.categoryId);
+    localStringBuilder.append(", version=");
+    localStringBuilder.append(this.version);
+    localStringBuilder.append(", showRedDot=");
+    localStringBuilder.append(this.showRedDot);
+    localStringBuilder.append(", hasShow=");
+    localStringBuilder.append(this.hasShow);
+    localStringBuilder.append(", firstShowTime=");
+    localStringBuilder.append(this.firstShowTime);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.data.CaptureRedDotConfig.CategoryRedConfig
  * JD-Core Version:    0.7.0.1
  */

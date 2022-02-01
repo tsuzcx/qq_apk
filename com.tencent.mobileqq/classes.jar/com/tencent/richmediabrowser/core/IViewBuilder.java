@@ -1,7 +1,6 @@
 package com.tencent.richmediabrowser.core;
 
 import android.content.Intent;
-import android.view.ViewGroup;
 
 public abstract interface IViewBuilder
 {
@@ -11,11 +10,11 @@ public abstract interface IViewBuilder
   
   public abstract void buildParams(Intent paramIntent);
   
-  public abstract void buildView(ViewGroup paramViewGroup);
+  public abstract void buildView();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmediabrowser.core.IViewBuilder
  * JD-Core Version:    0.7.0.1
  */

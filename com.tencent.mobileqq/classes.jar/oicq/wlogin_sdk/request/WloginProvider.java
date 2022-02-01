@@ -28,14 +28,16 @@ public class WloginProvider
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
   {
-    switch (this.i.match(paramUri))
+    if (this.i.match(paramUri) == 1)
     {
-    default: 
-      throw new IllegalArgumentException("Unnown URI" + paramUri);
+      int k = this.b.delete("rsa_pubkey", paramString, paramArrayOfString);
+      this.h.getContentResolver().notifyChange(paramUri, null);
+      return k;
     }
-    int k = this.b.delete("rsa_pubkey", paramString, paramArrayOfString);
-    this.h.getContentResolver().notifyChange(paramUri, null);
-    return k;
+    paramString = new StringBuilder();
+    paramString.append("Unnown URI");
+    paramString.append(paramUri);
+    throw new IllegalArgumentException(paramString.toString());
   }
   
   public String getType(Uri paramUri)
@@ -45,24 +47,36 @@ public class WloginProvider
   
   public Uri insert(Uri paramUri, ContentValues paramContentValues)
   {
-    if (this.i.match(paramUri) != 1) {
-      throw new IllegalArgumentException("Unknown URI " + paramUri);
-    }
-    long l = this.b.insert("rsa_pubkey", null, paramContentValues);
-    if (l > 0L)
+    if (this.i.match(paramUri) == 1)
     {
-      paramUri = ContentUris.withAppendedId(this.j, l);
-      this.h.getContentResolver().notifyChange(paramUri, null);
-      return paramUri;
+      long l = this.b.insert("rsa_pubkey", null, paramContentValues);
+      if (l > 0L)
+      {
+        paramUri = ContentUris.withAppendedId(this.j, l);
+        this.h.getContentResolver().notifyChange(paramUri, null);
+        return paramUri;
+      }
+      paramContentValues = new StringBuilder();
+      paramContentValues.append("Failed to insert row into ");
+      paramContentValues.append(paramUri);
+      throw new SQLException(paramContentValues.toString());
     }
-    throw new SQLException("Failed to insert row into " + paramUri);
+    paramContentValues = new StringBuilder();
+    paramContentValues.append("Unknown URI ");
+    paramContentValues.append(paramUri);
+    throw new IllegalArgumentException(paramContentValues.toString());
   }
   
   public boolean onCreate()
   {
     this.h = getContext();
     this.f = "oicq.wlogin_sdk.WloginProvider";
-    this.j = Uri.parse("content://" + this.f + "/" + "rsa_pubkey");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("content://");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append("/");
+    localStringBuilder.append("rsa_pubkey");
+    this.j = Uri.parse(localStringBuilder.toString());
     this.i.addURI(this.f, "rsa_pubkey", 1);
     util.LOGI("oncreated!");
     this.a = new WloginProvider.a(this, this.h, "wlogin_provider.db", null, 4);
@@ -72,29 +86,32 @@ public class WloginProvider
   
   public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    switch (this.i.match(paramUri))
+    if (this.i.match(paramUri) == 1)
     {
-    default: 
-      throw new IllegalArgumentException("Unnown URI" + paramUri);
+      paramArrayOfString1 = this.b.query("rsa_pubkey", paramArrayOfString1, paramString1, paramArrayOfString2, null, null, paramString2);
+      paramArrayOfString1.setNotificationUri(this.h.getContentResolver(), paramUri);
+      return paramArrayOfString1;
     }
-    paramArrayOfString1 = this.b.query("rsa_pubkey", paramArrayOfString1, paramString1, paramArrayOfString2, null, null, paramString2);
-    paramArrayOfString1.setNotificationUri(this.h.getContentResolver(), paramUri);
-    return paramArrayOfString1;
+    paramArrayOfString1 = new StringBuilder();
+    paramArrayOfString1.append("Unnown URI");
+    paramArrayOfString1.append(paramUri);
+    throw new IllegalArgumentException(paramArrayOfString1.toString());
   }
   
   public int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString)
   {
-    switch (this.i.match(paramUri))
-    {
-    default: 
-      throw new IllegalArgumentException("Unnown URI" + paramUri);
+    if (this.i.match(paramUri) == 1) {
+      return this.b.update("rsa_pubkey", paramContentValues, paramString, paramArrayOfString);
     }
-    return this.b.update("rsa_pubkey", paramContentValues, paramString, paramArrayOfString);
+    paramContentValues = new StringBuilder();
+    paramContentValues.append("Unnown URI");
+    paramContentValues.append(paramUri);
+    throw new IllegalArgumentException(paramContentValues.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.request.WloginProvider
  * JD-Core Version:    0.7.0.1
  */

@@ -24,51 +24,57 @@ public class DoodleElemDecoder
   private void a(List<im_msg_body.Elem> paramList, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, msg_comm.Msg paramMsg)
   {
     paramList = paramList.iterator();
-    do
+    while (paramList.hasNext())
     {
-      if (!paramList.hasNext()) {
-        break;
-      }
       paramMsg = (im_msg_body.Elem)paramList.next();
-    } while (!paramMsg.common_elem.has());
-    for (paramList = (im_msg_body.CommonElem)paramMsg.common_elem.get();; paramList = null)
+      if (paramMsg.common_elem.has())
+      {
+        paramList = (im_msg_body.CommonElem)paramMsg.common_elem.get();
+        break label55;
+      }
+    }
+    paramList = null;
+    label55:
+    if (paramList == null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      paramStringBuilder.append("decodePBMsgElems_ScribbleMsg;\n");
+    }
+    paramStringBuilder = new hummer_commelem.MsgElemInfo_servtype11();
+    try
     {
-      if (paramList == null) {
-        return;
+      paramStringBuilder.mergeFrom(paramList.bytes_pb_elem.get().toByteArray());
+      paramList = (MessageForScribble)MessageRecordFactory.a(-7001);
+      paramList.msgtype = -7001;
+      if (paramStringBuilder.bytes_Doodle_md5.has()) {
+        paramList.combineFileMd5 = new String(paramStringBuilder.bytes_Doodle_md5.get().toByteArray());
       }
-      if (QLog.isColorLevel()) {
-        paramStringBuilder.append("decodePBMsgElems_ScribbleMsg;\n");
+      if (paramStringBuilder.bytes_Doodle_url.has()) {
+        paramList.combineFileUrl = new String(paramStringBuilder.bytes_Doodle_url.get().toByteArray());
       }
-      paramStringBuilder = new hummer_commelem.MsgElemInfo_servtype11();
-      try
+      if (paramStringBuilder.uint32_doodleData_offset.has()) {
+        paramList.offSet = paramStringBuilder.uint32_doodleData_offset.get();
+      }
+      if (paramStringBuilder.uint32_doodle_gif_id.has()) {
+        paramList.gifId = paramStringBuilder.uint32_doodle_gif_id.get();
+      }
+      if (QLog.isColorLevel())
       {
-        paramStringBuilder.mergeFrom(paramList.bytes_pb_elem.get().toByteArray());
-        paramList = (MessageForScribble)MessageRecordFactory.a(-7001);
-        paramList.msgtype = -7001;
-        if (paramStringBuilder.bytes_Doodle_md5.has()) {
-          paramList.combineFileMd5 = new String(paramStringBuilder.bytes_Doodle_md5.get().toByteArray());
-        }
-        if (paramStringBuilder.bytes_Doodle_url.has()) {
-          paramList.combineFileUrl = new String(paramStringBuilder.bytes_Doodle_url.get().toByteArray());
-        }
-        if (paramStringBuilder.uint32_doodleData_offset.has()) {
-          paramList.offSet = paramStringBuilder.uint32_doodleData_offset.get();
-        }
-        if (paramStringBuilder.uint32_doodle_gif_id.has()) {
-          paramList.gifId = paramStringBuilder.uint32_doodle_gif_id.get();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("DoodleElemDecoderscribble msg", 1, " decodePBMsgElems_ScribbleMsg " + paramList.combineFileMd5 + " " + paramList.combineFileUrl);
-        }
-        paramList.prewrite();
-        paramList1.add(paramList);
-        return;
+        paramStringBuilder = new StringBuilder();
+        paramStringBuilder.append(" decodePBMsgElems_ScribbleMsg ");
+        paramStringBuilder.append(paramList.combineFileMd5);
+        paramStringBuilder.append(" ");
+        paramStringBuilder.append(paramList.combineFileUrl);
+        QLog.i("DoodleElemDecoderscribble msg", 1, paramStringBuilder.toString());
       }
-      catch (InvalidProtocolBufferMicroException paramList)
-      {
-        QLog.e("DoodleElemDecoderscribble msg", 1, paramList, new Object[0]);
-        return;
-      }
+      paramList.prewrite();
+      paramList1.add(paramList);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramList)
+    {
+      QLog.e("DoodleElemDecoderscribble msg", 1, paramList, new Object[0]);
     }
   }
   
@@ -90,7 +96,7 @@ public class DoodleElemDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.pbelement.DoodleElemDecoder
  * JD-Core Version:    0.7.0.1
  */

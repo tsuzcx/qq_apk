@@ -16,44 +16,49 @@ public class QGameApp$QGameLibsDownloadReceiver
   
   public void a(@NonNull QGameApp paramQGameApp, @NonNull MiniAppEvent paramMiniAppEvent)
   {
-    if (!TextUtils.equals(paramMiniAppEvent.jdField_a_of_type_JavaLangString, "QGameApp")) {}
-    String str;
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QGameApp", 2, "receive event:" + paramMiniAppEvent.toString());
-      }
-      str = (String)paramMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject[0];
-      switch (paramMiniAppEvent.jdField_a_of_type_Int)
-      {
-      default: 
-        return;
-      }
-    } while (!TextUtils.equals(str, "ak:3214"));
-    if (paramMiniAppEvent.jdField_a_of_type_Boolean)
-    {
-      str = (String)paramMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject[3];
-      if (TextUtils.isEmpty(str))
-      {
-        QGameApp.a(paramQGameApp, 1002);
-        return;
-      }
-      switch (((Integer)paramMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject[2]).intValue())
-      {
-      default: 
-        return;
-      case 1: 
-        QGameApp.a(paramQGameApp, true, str);
-        return;
-      case 2: 
-        QGameApp.jdField_a_of_type_Boolean = false;
-        return;
-      }
-      QGameApp.a(paramQGameApp, false, str);
+    if (!TextUtils.equals(paramMiniAppEvent.jdField_a_of_type_JavaLangString, "QGameApp")) {
       return;
     }
-    QGameApp.a(paramQGameApp, 1002);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("receive event:");
+      ((StringBuilder)localObject).append(paramMiniAppEvent.toString());
+      QLog.d("QGameApp", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = (String)paramMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject[0];
+    if (paramMiniAppEvent.jdField_a_of_type_Int != 5) {
+      return;
+    }
+    if (TextUtils.equals((CharSequence)localObject, "ak:3214"))
+    {
+      if (paramMiniAppEvent.jdField_a_of_type_Boolean)
+      {
+        localObject = (String)paramMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject[3];
+        if (TextUtils.isEmpty((CharSequence)localObject))
+        {
+          QGameApp.a(paramQGameApp, 1002);
+          return;
+        }
+        int i = ((Integer)paramMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject[2]).intValue();
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i != 3) {
+              return;
+            }
+            QGameApp.a(paramQGameApp, false, (String)localObject);
+            return;
+          }
+          QGameApp.jdField_a_of_type_Boolean = false;
+          return;
+        }
+        QGameApp.a(paramQGameApp, true, (String)localObject);
+        return;
+      }
+      QGameApp.a(paramQGameApp, 1002);
+    }
   }
   
   public Class acceptEventClass()
@@ -63,7 +68,7 @@ public class QGameApp$QGameLibsDownloadReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qg.qq.QGameApp.QGameLibsDownloadReceiver
  * JD-Core Version:    0.7.0.1
  */

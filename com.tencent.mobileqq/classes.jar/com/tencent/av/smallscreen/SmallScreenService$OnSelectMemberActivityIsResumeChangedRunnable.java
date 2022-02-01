@@ -11,14 +11,14 @@ class SmallScreenService$OnSelectMemberActivityIsResumeChangedRunnable
   
   public void run()
   {
-    if ((this.this$0.a != null) && (!this.this$0.a.o())) {
+    if ((this.this$0.a != null) && (!this.this$0.a.n())) {
       this.this$0.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenService.OnSelectMemberActivityIsResumeChangedRunnable
  * JD-Core Version:    0.7.0.1
  */

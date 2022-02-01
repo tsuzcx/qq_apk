@@ -1,0 +1,33 @@
+{
+    "ReadInjoy_native_author_article_bottom": {
+        "view_type": "container",
+        "view_id": "id_native_author_article_bottom_container",
+        "height": {
+            "type": "relative",
+            "value": "21"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews":[
+            {
+                "view_type": "UIView",
+                "view_id": "id_native_author_article_bottom",
+                "event_type": "cmd_avatar_click",
+                "default_visible" : "YES",
+                "height": {
+                    "type": "relative",
+                    "value": "21"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "375"
+                },
+                "attributes": {
+                    "setBackgroundColorString:": "#EEF2F6"
+                }
+            }
+        ]
+    }
+}

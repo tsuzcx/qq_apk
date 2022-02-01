@@ -14,11 +14,13 @@ public abstract class BaseLayer
   public BaseLayer(DoodleView paramDoodleView)
   {
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    if (paramDoodleView == null) {
-      throw new IllegalStateException("DoodleView can not be null.");
+    if (paramDoodleView != null)
+    {
+      this.jdField_a_of_type_AndroidContentContext = paramDoodleView.getContext();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView = paramDoodleView;
+      return;
     }
-    this.jdField_a_of_type_AndroidContentContext = paramDoodleView.getContext();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView = paramDoodleView;
+    throw new IllegalStateException("DoodleView can not be null.");
   }
   
   public void a()
@@ -28,10 +30,13 @@ public abstract class BaseLayer
   
   public void a(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
-      return;
+    if (paramInt1 > 0)
+    {
+      if (paramInt2 <= 0) {
+        return;
+      }
+      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
     }
-    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
   }
   
   public final void a(Canvas paramCanvas)
@@ -52,8 +57,9 @@ public abstract class BaseLayer
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView.invalidate();
+    DoodleView localDoodleView = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView;
+    if (localDoodleView != null) {
+      localDoodleView.invalidate();
     }
   }
   
@@ -70,7 +76,7 @@ public abstract class BaseLayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.BaseLayer
  * JD-Core Version:    0.7.0.1
  */

@@ -14,36 +14,38 @@ class NearbyJsInterface$6
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramBoolean) {
-      try
+    if (paramBoolean) {}
+    try
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-          localWebSsoResponseBody.mergeFrom(paramBundle);
-          paramBundle = new JSONObject(localWebSsoResponseBody.data.get());
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.callJs(new JSONObject(this.jdField_a_of_type_JavaLangString).getString("callback"), new String[] { paramBundle.toString() });
-          return;
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.w("followUser js api", 2, " no data!");
-          return;
-        }
+        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        paramBundle = new JSONObject(localWebSsoResponseBody.data.get());
+        this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.callJs(new JSONObject(this.jdField_a_of_type_JavaLangString).getString("callback"), new String[] { paramBundle.toString() });
+        return;
       }
-      catch (Exception paramBundle)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("followUser js api", 2, " no data! error");
-        }
+      if (!QLog.isColorLevel()) {
+        break label111;
       }
+      QLog.w("followUser js api", 2, " no data!");
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      label97:
+      label111:
+      break label97;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w("followUser js api", 2, " no data! error");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyJsInterface.6
  * JD-Core Version:    0.7.0.1
  */

@@ -5,13 +5,11 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
 import com.tencent.biz.pubaccount.weishi_new.event.LikeRspEvent;
 import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleEventBus;
-import com.tencent.biz.pubaccount.weishi_new.net.WeishiBusinessLooper;
-import com.tencent.biz.pubaccount.weishi_new.net.WeishiTask;
-import com.tencent.biz.pubaccount.weishi_new.request.PostFeedDingRequest;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
+import com.tencent.mobileqq.kandian.biz.video.api.IVideoFeedsHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,7 +49,10 @@ public class WSLikeAnimationManger
   
   private void a(stSimpleMetaFeed paramstSimpleMetaFeed, String paramString, boolean paramBoolean, int paramInt1, int paramInt2, TextView paramTextView, View paramView1, View paramView2)
   {
-    WSLog.a("WSLikeAnimationManger", "doClickLike" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doClickLike");
+    localStringBuilder.append(paramBoolean);
+    WSLog.a("WSLikeAnimationManger", localStringBuilder.toString());
     if (TextUtils.isEmpty(paramString))
     {
       WSLog.a("WSLikeAnimationManger", "feedId：is null");
@@ -73,11 +74,15 @@ public class WSLikeAnimationManger
   
   private void a(String paramString, LikeRspEvent paramLikeRspEvent, int paramInt)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (this.a != null) && (this.a.size() > 0))
+    if (!TextUtils.isEmpty(paramString))
     {
-      paramString = (WsSingleClickLikeAnimation)this.a.get(paramString);
-      if (paramString != null) {
-        a(paramString.a(), paramString.a(), paramString.a(), paramString.b());
+      Map localMap = this.a;
+      if ((localMap != null) && (localMap.size() > 0))
+      {
+        paramString = (WsSingleClickLikeAnimation)this.a.get(paramString);
+        if (paramString != null) {
+          a(paramString.a(), paramString.a(), paramString.a(), paramString.b());
+        }
       }
     }
     paramLikeRspEvent.setRpsStatus(4302);
@@ -86,35 +91,18 @@ public class WSLikeAnimationManger
   
   private void a(String paramString, boolean paramBoolean, int paramInt)
   {
-    int j = 1;
-    int i;
-    if (!paramBoolean)
-    {
-      i = 2;
-      WSLog.a("WSLikeAnimationManger", "此次是取消点赞：---------------");
-    }
-    for (;;)
-    {
-      if (paramBoolean) {}
-      for (;;)
-      {
-        a(paramString, paramInt, j);
-        paramString = new WeishiTask(new PostFeedDingRequest(paramString, i), null, new WSLikeAnimationManger.1(this, paramString, paramInt, paramBoolean), 4001);
-        WeishiBusinessLooper.a().a(paramString);
-        return;
-        j = 0;
-      }
-      i = 1;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s2stmt(TypeTransformer.java:820)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:843)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void a()
   {
-    if (this.a != null) {
-      this.a.clear();
+    Map localMap = this.a;
+    if (localMap != null) {
+      localMap.clear();
     }
-    if (this.b != null) {
-      this.b.clear();
+    localMap = this.b;
+    if (localMap != null) {
+      localMap.clear();
     }
   }
   
@@ -131,138 +119,111 @@ public class WSLikeAnimationManger
       WSLog.d("WSLikeAnimationManger", "feedId：is null");
       return;
     }
-    if (paramstSimpleMetaFeed.is_ding == 1) {}
-    for (int i = 1;; i = 0)
+    int i;
+    if (paramstSimpleMetaFeed.is_ding == 1) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0)
     {
-      if (i == 0)
-      {
-        paramstSimpleMetaFeed.ding_count += 1;
-        paramstSimpleMetaFeed.is_ding = 1;
-      }
-      if (paramViewGroup != null) {
-        a(str).a(paramViewGroup, paramInt2, paramInt3);
-      }
-      if (i != 0) {
-        break;
-      }
+      paramstSimpleMetaFeed.ding_count += 1;
+      paramstSimpleMetaFeed.is_ding = 1;
+    }
+    if (paramViewGroup != null) {
+      a(str).a(paramViewGroup, paramInt2, paramInt3);
+    }
+    if (i == 0) {
       a(paramstSimpleMetaFeed, str, true, paramstSimpleMetaFeed.ding_count, paramInt1, paramTextView, paramView1, paramView2);
-      return;
     }
   }
   
   public void a(stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt, TextView paramTextView, View paramView1, View paramView2, ViewGroup paramViewGroup)
   {
-    int j = 1;
-    label29:
-    boolean bool;
-    if (paramstSimpleMetaFeed.is_ding == 1)
-    {
+    int i = paramstSimpleMetaFeed.is_ding;
+    int j = 0;
+    if (i == 1) {
       i = 1;
-      if (i == 0) {
-        break label117;
-      }
-      paramstSimpleMetaFeed.ding_count -= 1;
-      if (i != 0) {
-        break label130;
-      }
-      bool = true;
-      label37:
-      if (!bool) {
-        break label136;
-      }
-    }
-    label130:
-    label136:
-    for (int i = j;; i = 0)
-    {
-      paramstSimpleMetaFeed.is_ding = i;
-      a(paramstSimpleMetaFeed, paramstSimpleMetaFeed.id, bool, paramstSimpleMetaFeed.ding_count, paramInt, paramTextView, paramView1, paramView2);
-      if ((bool) && (paramViewGroup != null)) {
-        a(paramstSimpleMetaFeed.id).a(paramViewGroup, paramViewGroup.getMeasuredWidth() / 2, paramViewGroup.getMeasuredHeight() / 2);
-      }
-      return;
+    } else {
       i = 0;
-      break;
-      label117:
+    }
+    if (i != 0) {
+      paramstSimpleMetaFeed.ding_count -= 1;
+    } else {
       paramstSimpleMetaFeed.ding_count += 1;
-      break label29;
-      bool = false;
-      break label37;
+    }
+    boolean bool = i ^ 0x1;
+    i = j;
+    if (bool) {
+      i = 1;
+    }
+    paramstSimpleMetaFeed.is_ding = i;
+    a(paramstSimpleMetaFeed, paramstSimpleMetaFeed.id, bool, paramstSimpleMetaFeed.ding_count, paramInt, paramTextView, paramView1, paramView2);
+    if ((bool) && (paramViewGroup != null))
+    {
+      a(paramstSimpleMetaFeed.id).a(paramViewGroup, paramViewGroup.getMeasuredWidth() / 2, paramViewGroup.getMeasuredHeight() / 2);
+      return;
     }
   }
   
   public void a(stSimpleMetaFeed paramstSimpleMetaFeed, TextView paramTextView, View paramView1, View paramView2)
   {
-    int j = 1;
     if (paramstSimpleMetaFeed == null)
     {
       WSLog.d("WSLikeAnimationManger", "resetLikeSate：is null");
       return;
     }
-    label26:
-    label41:
-    boolean bool;
-    if (paramstSimpleMetaFeed.is_ding == 1)
-    {
+    int i = paramstSimpleMetaFeed.is_ding;
+    int j = 0;
+    if (i == 1) {
       i = 1;
-      if (i == 0) {
-        break label114;
-      }
-      paramstSimpleMetaFeed.ding_count -= 1;
-      if (i != 0) {
-        break label127;
-      }
-      bool = true;
-      label49:
-      if (!bool) {
-        break label133;
-      }
-    }
-    label133:
-    for (int i = j;; i = 0)
-    {
-      paramstSimpleMetaFeed.is_ding = i;
-      if (paramView1 != null) {
-        paramView1.setSelected(bool);
-      }
-      if (paramView2 != null) {
-        paramView2.setVisibility(8);
-      }
-      if (paramTextView == null) {
-        break;
-      }
-      if (paramstSimpleMetaFeed.ding_count <= 0) {
-        break label139;
-      }
-      VideoFeedsHelper.a(paramTextView, paramstSimpleMetaFeed.ding_count, "0");
-      return;
+    } else {
       i = 0;
-      break label26;
-      label114:
-      paramstSimpleMetaFeed.ding_count += 1;
-      break label41;
-      label127:
-      bool = false;
-      break label49;
     }
-    label139:
-    paramTextView.setText("赞");
+    if (i != 0) {
+      paramstSimpleMetaFeed.ding_count -= 1;
+    } else {
+      paramstSimpleMetaFeed.ding_count += 1;
+    }
+    boolean bool = i ^ 0x1;
+    i = j;
+    if (bool) {
+      i = 1;
+    }
+    paramstSimpleMetaFeed.is_ding = i;
+    if (paramView1 != null) {
+      paramView1.setSelected(bool);
+    }
+    if (paramView2 != null) {
+      paramView2.setVisibility(8);
+    }
+    if (paramTextView != null)
+    {
+      if (paramstSimpleMetaFeed.ding_count > 0)
+      {
+        ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).commonSetCountToTextView(paramTextView, paramstSimpleMetaFeed.ding_count, "0");
+        return;
+      }
+      paramTextView.setText("赞");
+    }
   }
   
   public void a(String paramString)
   {
-    if (this.a != null)
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      WsSingleClickLikeAnimation localWsSingleClickLikeAnimation = (WsSingleClickLikeAnimation)this.a.get(paramString);
-      if (localWsSingleClickLikeAnimation != null)
+      localObject = (WsSingleClickLikeAnimation)((Map)localObject).get(paramString);
+      if (localObject != null)
       {
-        localWsSingleClickLikeAnimation.a();
-        this.a.remove(localWsSingleClickLikeAnimation);
+        ((WsSingleClickLikeAnimation)localObject).a();
+        this.a.remove(localObject);
       }
     }
-    if (this.b != null)
+    localObject = this.b;
+    if (localObject != null)
     {
-      paramString = (WSDoubleLikeAnimation)this.b.get(paramString);
+      paramString = (WSDoubleLikeAnimation)((Map)localObject).get(paramString);
       if (paramString != null)
       {
         paramString.a();
@@ -273,7 +234,7 @@ public class WSLikeAnimationManger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.like.WSLikeAnimationManger
  * JD-Core Version:    0.7.0.1
  */

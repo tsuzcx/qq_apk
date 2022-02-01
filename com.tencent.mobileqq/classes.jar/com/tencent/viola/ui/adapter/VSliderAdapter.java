@@ -80,21 +80,25 @@ public class VSliderAdapter
   
   public void setAdapterData(ArrayList<VComponent> paramArrayList)
   {
-    if ((paramArrayList != null) && (this.mVComponents != null))
+    if (paramArrayList != null)
     {
-      this.mVComponents.clear();
-      int i = 0;
-      while (i < paramArrayList.size())
+      ArrayList localArrayList = this.mVComponents;
+      if (localArrayList != null)
       {
-        this.mVComponents.add(paramArrayList.get(i));
-        i += 1;
+        localArrayList.clear();
+        int i = 0;
+        while (i < paramArrayList.size())
+        {
+          this.mVComponents.add(paramArrayList.get(i));
+          i += 1;
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.adapter.VSliderAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -23,77 +23,93 @@ public class SubTitleProtocoDataCodec
   
   public boolean a(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length > 60))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PeakAudioTransHandler", 2, "decodeS2CData data error");
-      }
-      return false;
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length <= 60)) {
+      localObject1 = null;
     }
-    Object localObject = null;
-    for (;;)
+    try
     {
-      try
+      paramArrayOfByte = AudioTrans.a(paramArrayOfByte);
+    }
+    catch (OutOfMemoryError paramArrayOfByte)
+    {
+      for (;;)
       {
-        for (;;)
+        Object localObject2;
+        continue;
+        int i = 0;
+        continue;
+        int j = 0;
+      }
+    }
+    QLog.e("SubTitleProtocoDataCodec", 2, "decodeS2CData OOM!!");
+    paramArrayOfByte = (byte[])localObject1;
+    localObject2 = paramArrayOfByte.a;
+    Object localObject1 = paramArrayOfByte.b;
+    paramArrayOfByte = new AudioTransClientTransInfo.IntHead();
+    try
+    {
+      paramArrayOfByte = (AudioTransClientTransInfo.IntHead)paramArrayOfByte.mergeFrom((byte[])localObject2);
+      if (!paramArrayOfByte.uint32_error_no.has()) {
+        break label411;
+      }
+      i = paramArrayOfByte.uint32_error_no.get();
+      if (!paramArrayOfByte.enum_body_type.has()) {
+        break label416;
+      }
+      j = paramArrayOfByte.enum_body_type.get();
+      long l = 0L;
+      if (paramArrayOfByte.str_session_id.has()) {
+        l = Long.valueOf(paramArrayOfByte.str_session_id.get()).longValue();
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onReceive result:");
+      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append(" sessionid:");
+      ((StringBuilder)localObject2).append(l);
+      ((StringBuilder)localObject2).append(" bodyType:");
+      ((StringBuilder)localObject2).append(j);
+      QLog.d("SubTitleProtocoDataCodec", 2, ((StringBuilder)localObject2).toString());
+      localObject1 = (AudioTransClientTransInfo.IntRspBody)new AudioTransClientTransInfo.IntRspBody().mergeFrom((byte[])localObject1);
+      if (i == 0)
+      {
+        if ((j == 10) && (QLog.isColorLevel()))
         {
-          paramArrayOfByte = AudioTrans.a(paramArrayOfByte);
-          localObject = paramArrayOfByte.a;
-          paramArrayOfByte = paramArrayOfByte.b;
-          AudioTransClientTransInfo.IntHead localIntHead = new AudioTransClientTransInfo.IntHead();
-          try
-          {
-            localObject = (AudioTransClientTransInfo.IntHead)localIntHead.mergeFrom((byte[])localObject);
-            if (!((AudioTransClientTransInfo.IntHead)localObject).uint32_error_no.has()) {
-              break label353;
-            }
-            i = ((AudioTransClientTransInfo.IntHead)localObject).uint32_error_no.get();
-            if (((AudioTransClientTransInfo.IntHead)localObject).enum_body_type.has())
-            {
-              j = ((AudioTransClientTransInfo.IntHead)localObject).enum_body_type.get();
-              long l = 0L;
-              if (((AudioTransClientTransInfo.IntHead)localObject).str_session_id.has()) {
-                l = Long.valueOf(((AudioTransClientTransInfo.IntHead)localObject).str_session_id.get()).longValue();
-              }
-              QLog.d("SubTitleProtocoDataCodec", 2, "onReceive result:" + i + " sessionid:" + l + " bodyType:" + j);
-              paramArrayOfByte = (AudioTransClientTransInfo.IntRspBody)new AudioTransClientTransInfo.IntRspBody().mergeFrom(paramArrayOfByte);
-              if (i == 0)
-              {
-                if ((j != 10) || (!QLog.isColorLevel())) {
-                  break;
-                }
-                QLog.d("PeakAudioTransHandler", 2, "decodeS2CData INT_C2S_HEART_BEAT_RSP heartbeat !");
-                return false;
-              }
-            }
-          }
-          catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-          {
-            paramArrayOfByte.printStackTrace();
-            QLog.e("SubTitleProtocoDataCodec", 2, "decodeS2CData exception = " + paramArrayOfByte.getMessage(), paramArrayOfByte);
-            return false;
-          }
+          QLog.d("PeakAudioTransHandler", 2, "decodeS2CData INT_C2S_HEART_BEAT_RSP heartbeat !");
+          return false;
         }
       }
-      catch (OutOfMemoryError paramArrayOfByte)
+      else
       {
-        QLog.e("SubTitleProtocoDataCodec", 2, "decodeS2CData OOM!!");
-        paramArrayOfByte = (byte[])localObject;
-        continue;
-        paramArrayOfByte = (AudioTransClientTransInfo.IntC2SFailedRsp)paramArrayOfByte.msg_failed_rsp.get();
-        QLog.d("SubTitleProtocoDataCodec", 2, "create session rsp fail msg: " + ((AudioTransClientTransInfo.IntHead)localObject).uint32_error_no.get() + " uint32_errcode = " + paramArrayOfByte.uint32_errcode.get() + " str_errmsg = " + paramArrayOfByte.str_errmsg.get());
+        localObject1 = (AudioTransClientTransInfo.IntC2SFailedRsp)((AudioTransClientTransInfo.IntRspBody)localObject1).msg_failed_rsp.get();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("create session rsp fail msg: ");
+        ((StringBuilder)localObject2).append(paramArrayOfByte.uint32_error_no.get());
+        ((StringBuilder)localObject2).append(" uint32_errcode = ");
+        ((StringBuilder)localObject2).append(((AudioTransClientTransInfo.IntC2SFailedRsp)localObject1).uint32_errcode.get());
+        ((StringBuilder)localObject2).append(" str_errmsg = ");
+        ((StringBuilder)localObject2).append(((AudioTransClientTransInfo.IntC2SFailedRsp)localObject1).str_errmsg.get());
+        QLog.d("SubTitleProtocoDataCodec", 2, ((StringBuilder)localObject2).toString());
         return false;
       }
-      int j = 0;
-      continue;
-      label353:
-      int i = 0;
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("decodeS2CData exception = ");
+      ((StringBuilder)localObject1).append(paramArrayOfByte.getMessage());
+      QLog.e("SubTitleProtocoDataCodec", 2, ((StringBuilder)localObject1).toString(), paramArrayOfByte);
+    }
+    return false;
+    if (QLog.isColorLevel()) {
+      QLog.e("PeakAudioTransHandler", 2, "decodeS2CData data error");
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.conn.SubTitleProtocoDataCodec
  * JD-Core Version:    0.7.0.1
  */

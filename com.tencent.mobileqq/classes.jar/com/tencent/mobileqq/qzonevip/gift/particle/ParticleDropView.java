@@ -35,22 +35,19 @@ public class ParticleDropView
   
   protected void a()
   {
-    for (;;)
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      ParticleObject localParticleObject;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localParticleObject = (ParticleObject)localIterator.next();
-        if (localParticleObject == null) {
-          continue;
-        }
-        if (localParticleObject.d > 0.75F)
+        ParticleObject localParticleObject = (ParticleObject)localIterator.next();
+        if (localParticleObject != null)
         {
-          localParticleObject.jdField_b_of_type_Float += 13.0F;
+          if (localParticleObject.d > 0.75F) {
+            localParticleObject.jdField_b_of_type_Float += 13.0F;
+          } else {
+            localParticleObject.jdField_b_of_type_Float += 8.0F;
+          }
           if (!localParticleObject.jdField_a_of_type_Boolean)
           {
             localParticleObject.jdField_b_of_type_Int = a(-1, 1);
@@ -61,95 +58,96 @@ public class ParticleDropView
           }
           localParticleObject.jdField_a_of_type_Float += localParticleObject.jdField_b_of_type_Int;
           a(localParticleObject);
-          if ((localParticleObject.jdField_a_of_type_Int != 0) && (localParticleObject.jdField_b_of_type_Float < this.jdField_b_of_type_Int)) {
-            continue;
+          if ((localParticleObject.jdField_a_of_type_Int == 0) || (localParticleObject.jdField_b_of_type_Float >= this.jdField_b_of_type_Int)) {
+            localIterator.remove();
           }
-          localIterator.remove();
         }
       }
-      localParticleObject.jdField_b_of_type_Float += 8.0F;
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
   public void a(ParticleObject paramParticleObject)
   {
-    int j = 255;
     long l1 = System.currentTimeMillis() - paramParticleObject.jdField_a_of_type_Long;
     long l2 = paramParticleObject.jdField_b_of_type_Long;
-    int i;
-    if (l1 <= paramParticleObject.jdField_b_of_type_Long / 4L)
-    {
-      i = (int)((float)(l1 - l2 / 4L) * 255.0F / (float)(l2 / 4L) + 255.0F);
-      if (i <= 255) {
-        break label159;
-      }
-      i = j;
+    if (l1 <= paramParticleObject.jdField_b_of_type_Long / 4L) {
+      l2 /= 4L;
     }
-    label159:
-    for (;;)
+    for (l1 -= l2;; l1 = l2 - l1)
     {
-      j = i;
-      if (i < 0) {
-        j = 0;
-      }
-      paramParticleObject.jdField_a_of_type_Int = j;
-      return;
+      j = (int)((float)l1 * 255.0F / (float)l2 + 255.0F);
+      break;
       if ((l1 >= paramParticleObject.jdField_b_of_type_Long / 4L) && (l1 < paramParticleObject.jdField_b_of_type_Long * 3L / 4L))
       {
-        i = 255;
+        j = 255;
         break;
       }
-      i = (int)((float)(l2 * 3L / 4L - l1) * 255.0F / (float)(l2 * 3L / 4L) + 255.0F);
-      break;
+      l2 = l2 * 3L / 4L;
     }
+    int i = j;
+    if (j > 255) {
+      i = 255;
+    }
+    int j = i;
+    if (i < 0) {
+      j = 0;
+    }
+    paramParticleObject.jdField_a_of_type_Int = j;
   }
   
   protected void a(Bitmap[] paramArrayOfBitmap)
   {
-    int i = 4;
-    int j = 0;
-    if ((paramArrayOfBitmap == null) || (paramArrayOfBitmap.length == 0) || (this.jdField_a_of_type_Int == 0) || (this.jdField_b_of_type_Int == 0))
+    if ((paramArrayOfBitmap != null) && (paramArrayOfBitmap.length != 0) && (this.jdField_a_of_type_Int != 0) && (this.jdField_b_of_type_Int != 0))
     {
-      QLog.e("ParticleDropView", 1, "addData: bitmap = null error");
-      return;
-    }
-    Bitmap localBitmap = paramArrayOfBitmap[0];
-    this.d += 1;
-    if (this.d < 3) {
-      i = a(2, 4);
-    }
-    paramArrayOfBitmap = this.jdField_a_of_type_JavaLangObject;
-    for (;;)
-    {
-      if (j < i) {}
-      ParticleObject localParticleObject;
-      try
+      Bitmap localBitmap = paramArrayOfBitmap[0];
+      this.d += 1;
+      int i;
+      if (this.d < 3) {
+        i = a(2, 4);
+      } else {
+        i = 4;
+      }
+      paramArrayOfBitmap = this.jdField_a_of_type_JavaLangObject;
+      int j = 0;
+      for (;;)
+      {
+        if (j < i) {}
+        ParticleObject localParticleObject;
+        try
+        {
+          localParticleObject = new ParticleObject();
+          localParticleObject.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
+          localParticleObject.jdField_b_of_type_Long = a(2000, 3500);
+          localParticleObject.jdField_a_of_type_Float = (a(0, this.jdField_a_of_type_Int + 100) - 100);
+          localParticleObject.jdField_b_of_type_Float = (a(0, this.jdField_b_of_type_Int * 4 / 5) - 200);
+          localParticleObject.jdField_a_of_type_Int = 0;
+          localParticleObject.d = a(0.15F, 0.75F);
+          localParticleObject.jdField_b_of_type_Float -= 300.0F;
+          localParticleObject.c = a(0, 360);
+          this.jdField_a_of_type_JavaUtilArrayList.add(localParticleObject);
+          j += 1;
+        }
+        finally {}
+      }
+      if (this.d % 2 == 0)
       {
         localParticleObject = new ParticleObject();
         localParticleObject.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
         localParticleObject.jdField_b_of_type_Long = a(2000, 3500);
         localParticleObject.jdField_a_of_type_Float = (a(0, this.jdField_a_of_type_Int + 100) - 100);
-        localParticleObject.jdField_b_of_type_Float = (a(0, this.jdField_b_of_type_Int * 4 / 5) - 200);
+        localParticleObject.jdField_b_of_type_Float = (a(0, 100) - 300);
         localParticleObject.jdField_a_of_type_Int = 0;
-        localParticleObject.d = a(0.15F, 0.75F);
-        localParticleObject.jdField_b_of_type_Float -= 300.0F;
         localParticleObject.c = a(0, 360);
         this.jdField_a_of_type_JavaUtilArrayList.add(localParticleObject);
-        j += 1;
       }
-      finally {}
+      return;
     }
-    if (this.d % 2 == 0)
-    {
-      localParticleObject = new ParticleObject();
-      localParticleObject.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
-      localParticleObject.jdField_b_of_type_Long = a(2000, 3500);
-      localParticleObject.jdField_a_of_type_Float = (a(0, this.jdField_a_of_type_Int + 100) - 100);
-      localParticleObject.jdField_b_of_type_Float = (a(0, 100) - 300);
-      localParticleObject.jdField_a_of_type_Int = 0;
-      localParticleObject.c = a(0, 360);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localParticleObject);
-    }
+    QLog.e("ParticleDropView", 1, "addData: bitmap = null error");
   }
   
   protected boolean a()
@@ -185,7 +183,7 @@ public class ParticleDropView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qzonevip.gift.particle.ParticleDropView
  * JD-Core Version:    0.7.0.1
  */

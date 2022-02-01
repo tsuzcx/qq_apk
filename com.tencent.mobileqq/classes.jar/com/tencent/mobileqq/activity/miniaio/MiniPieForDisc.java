@@ -17,18 +17,20 @@ public class MiniPieForDisc
   
   private void A()
   {
-    if (!this.d) {}
-    while (this.jdField_a_of_type_AndroidWidgetImageView == null) {
+    if (!this.d) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(null);
-    if (AIOTopRightButtonConfig.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698538));
-      return;
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(null);
+      if (AIOTopRightButtonConfig.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698604));
+        return;
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
   }
   
   protected boolean b()
@@ -49,7 +51,7 @@ public class MiniPieForDisc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniPieForDisc
  * JD-Core Version:    0.7.0.1
  */

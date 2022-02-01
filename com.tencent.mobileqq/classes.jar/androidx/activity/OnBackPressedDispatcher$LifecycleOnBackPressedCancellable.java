@@ -26,36 +26,37 @@ class OnBackPressedDispatcher$LifecycleOnBackPressedCancellable
   {
     this.mLifecycle.removeObserver(this);
     this.mOnBackPressedCallback.removeCancellable(this);
-    if (this.mCurrentCancellable != null)
+    Cancellable localCancellable = this.mCurrentCancellable;
+    if (localCancellable != null)
     {
-      this.mCurrentCancellable.cancel();
+      localCancellable.cancel();
       this.mCurrentCancellable = null;
     }
   }
   
   public void onStateChanged(@NonNull LifecycleOwner paramLifecycleOwner, @NonNull Lifecycle.Event paramEvent)
   {
-    if (paramEvent == Lifecycle.Event.ON_START) {
-      this.mCurrentCancellable = this.this$0.addCancellableCallback(this.mOnBackPressedCallback);
-    }
-    do
+    if (paramEvent == Lifecycle.Event.ON_START)
     {
-      do
-      {
-        return;
-        if (paramEvent != Lifecycle.Event.ON_STOP) {
-          break;
-        }
-      } while (this.mCurrentCancellable == null);
-      this.mCurrentCancellable.cancel();
+      this.mCurrentCancellable = this.this$0.addCancellableCallback(this.mOnBackPressedCallback);
       return;
-    } while (paramEvent != Lifecycle.Event.ON_DESTROY);
-    cancel();
+    }
+    if (paramEvent == Lifecycle.Event.ON_STOP)
+    {
+      paramLifecycleOwner = this.mCurrentCancellable;
+      if (paramLifecycleOwner != null) {
+        paramLifecycleOwner.cancel();
+      }
+    }
+    else if (paramEvent == Lifecycle.Event.ON_DESTROY)
+    {
+      cancel();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.activity.OnBackPressedDispatcher.LifecycleOnBackPressedCancellable
  * JD-Core Version:    0.7.0.1
  */

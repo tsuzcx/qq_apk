@@ -1,20 +1,26 @@
 package com.tencent.mobileqq.troop.utils;
 
-import android.os.Handler;
-import java.util.ArrayList;
+import android.content.Context;
+import com.tencent.mobileqq.widget.QQToast;
 
 class TroopGagMgr$1
   implements Runnable
 {
+  TroopGagMgr$1(TroopGagMgr paramTroopGagMgr, boolean paramBoolean, Context paramContext, String paramString, int paramInt) {}
+  
   public void run()
   {
-    ArrayList localArrayList = this.this$0.a(this.jdField_a_of_type_JavaLangString, false);
-    this.jdField_a_of_type_AndroidOsHandler.post(new TroopGagMgr.1.1(this, localArrayList));
+    if (this.jdField_a_of_type_Boolean)
+    {
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2130839590, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopGagMgr.1
  * JD-Core Version:    0.7.0.1
  */

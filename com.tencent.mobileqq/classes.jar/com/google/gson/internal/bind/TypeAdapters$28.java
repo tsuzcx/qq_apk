@@ -12,46 +12,50 @@ final class TypeAdapters$28
 {
   public Locale read(JsonReader paramJsonReader)
   {
-    if (paramJsonReader.peek() == JsonToken.NULL)
+    Object localObject1 = paramJsonReader.peek();
+    Object localObject2 = JsonToken.NULL;
+    String str = null;
+    if (localObject1 == localObject2)
     {
       paramJsonReader.nextNull();
       return null;
     }
-    Object localObject = new StringTokenizer(paramJsonReader.nextString(), "_");
-    if (((StringTokenizer)localObject).hasMoreElements()) {}
-    for (paramJsonReader = ((StringTokenizer)localObject).nextToken();; paramJsonReader = null)
-    {
-      if (((StringTokenizer)localObject).hasMoreElements()) {}
-      for (String str = ((StringTokenizer)localObject).nextToken();; str = null)
-      {
-        if (((StringTokenizer)localObject).hasMoreElements()) {}
-        for (localObject = ((StringTokenizer)localObject).nextToken();; localObject = null)
-        {
-          if ((str == null) && (localObject == null)) {
-            return new Locale(paramJsonReader);
-          }
-          if (localObject == null) {
-            return new Locale(paramJsonReader, str);
-          }
-          return new Locale(paramJsonReader, str, (String)localObject);
-        }
-      }
+    localObject2 = new StringTokenizer(paramJsonReader.nextString(), "_");
+    if (((StringTokenizer)localObject2).hasMoreElements()) {
+      paramJsonReader = ((StringTokenizer)localObject2).nextToken();
+    } else {
+      paramJsonReader = null;
     }
+    if (((StringTokenizer)localObject2).hasMoreElements()) {
+      localObject1 = ((StringTokenizer)localObject2).nextToken();
+    } else {
+      localObject1 = null;
+    }
+    if (((StringTokenizer)localObject2).hasMoreElements()) {
+      str = ((StringTokenizer)localObject2).nextToken();
+    }
+    if ((localObject1 == null) && (str == null)) {
+      return new Locale(paramJsonReader);
+    }
+    if (str == null) {
+      return new Locale(paramJsonReader, (String)localObject1);
+    }
+    return new Locale(paramJsonReader, (String)localObject1, str);
   }
   
   public void write(JsonWriter paramJsonWriter, Locale paramLocale)
   {
-    if (paramLocale == null) {}
-    for (paramLocale = null;; paramLocale = paramLocale.toString())
-    {
-      paramJsonWriter.value(paramLocale);
-      return;
+    if (paramLocale == null) {
+      paramLocale = null;
+    } else {
+      paramLocale = paramLocale.toString();
     }
+    paramJsonWriter.value(paramLocale);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal.bind.TypeAdapters.28
  * JD-Core Version:    0.7.0.1
  */

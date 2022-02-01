@@ -27,72 +27,68 @@ public class IntimateInfo$MutualMarkInfo
   
   public static MutualMarkInfo copyFrom(oidb_0xcf4.MutualMarkInfo paramMutualMarkInfo)
   {
-    int j = 0;
     if (paramMutualMarkInfo == null) {
       return null;
     }
     MutualMarkInfo localMutualMarkInfo = new MutualMarkInfo();
-    int i;
-    if (paramMutualMarkInfo.eMutualMarkNewType.has()) {
+    boolean bool = paramMutualMarkInfo.eMutualMarkNewType.has();
+    int j = 0;
+    if (bool) {
       i = paramMutualMarkInfo.eMutualMarkNewType.get();
+    } else {
+      i = 0;
     }
-    for (;;)
-    {
-      localMutualMarkInfo.type = i;
-      label59:
-      long l;
-      if (paramMutualMarkInfo.uint32_level.has())
-      {
-        i = paramMutualMarkInfo.uint32_level.get();
-        localMutualMarkInfo.level = i;
-        i = j;
-        if (paramMutualMarkInfo.uint32_days.has()) {
-          i = paramMutualMarkInfo.uint32_days.get();
-        }
-        localMutualMarkInfo.days = i;
-        if (!paramMutualMarkInfo.uint64_sub_level.has()) {
-          break label389;
-        }
-        l = paramMutualMarkInfo.uint64_sub_level.get();
-        localMutualMarkInfo.subLevel = l;
-        if (!paramMutualMarkInfo.bytes_grade_resource_info.has()) {}
-      }
+    localMutualMarkInfo.type = i;
+    if (paramMutualMarkInfo.uint32_level.has()) {
+      i = paramMutualMarkInfo.uint32_level.get();
+    } else {
+      i = 0;
+    }
+    localMutualMarkInfo.level = i;
+    int i = j;
+    if (paramMutualMarkInfo.uint32_days.has()) {
+      i = paramMutualMarkInfo.uint32_days.get();
+    }
+    localMutualMarkInfo.days = i;
+    long l;
+    if (paramMutualMarkInfo.uint64_sub_level.has()) {
+      l = paramMutualMarkInfo.uint64_sub_level.get();
+    } else {
+      l = 0L;
+    }
+    localMutualMarkInfo.subLevel = l;
+    if (paramMutualMarkInfo.bytes_grade_resource_info.has()) {
       try
       {
         localMutualMarkInfo.gradeResourceInfo.mergeFrom(paramMutualMarkInfo.bytes_grade_resource_info.get().toByteArray());
-        if ((paramMutualMarkInfo.msg_special_word_info.has()) && (((oidb_0xcf4.SpecialWordInfo)paramMutualMarkInfo.msg_special_word_info.get()).bytes_static_url.has())) {
-          localMutualMarkInfo.iconStaticUrl = ((oidb_0xcf4.SpecialWordInfo)paramMutualMarkInfo.msg_special_word_info.get()).bytes_static_url.get().toStringUtf8();
-        }
-        if ((localMutualMarkInfo.gradeResourceInfo != null) && (localMutualMarkInfo.gradeResourceInfo.bytes_static_url.has()) && (!TextUtils.isEmpty(localMutualMarkInfo.gradeResourceInfo.bytes_static_url.get().toStringUtf8()))) {
-          localMutualMarkInfo.iconStaticUrl = localMutualMarkInfo.gradeResourceInfo.bytes_static_url.get().toStringUtf8();
-        }
-        localMutualMarkInfo.iconStaticUrl = MutualMarkUtils.b(localMutualMarkInfo.iconStaticUrl);
-        if ((paramMutualMarkInfo.bytes_min_ver.has()) && (!TextUtils.isEmpty(paramMutualMarkInfo.bytes_min_ver.get().toStringUtf8()))) {
-          localMutualMarkInfo.minVersion = paramMutualMarkInfo.bytes_min_ver.get().toStringUtf8();
-        }
-        if ((paramMutualMarkInfo.bytes_max_ver.has()) && (!TextUtils.isEmpty(paramMutualMarkInfo.bytes_max_ver.get().toStringUtf8()))) {
-          localMutualMarkInfo.maxVersion = paramMutualMarkInfo.bytes_max_ver.get().toStringUtf8();
-        }
-        if (!MutualMarkUtils.a(localMutualMarkInfo.minVersion, localMutualMarkInfo.maxVersion))
-        {
-          QLog.i("IntimateInfo", 1, "oidb_0xcf4.MutualMarkInfo，isCurrentVersionShouldShow=false");
-          return null;
-          i = 0;
-          continue;
-          i = 0;
-          break label59;
-          label389:
-          l = 0L;
-        }
       }
       catch (Throwable localThrowable)
       {
-        for (;;)
-        {
-          QLog.i("IntimateInfo", 1, "parseFrom error:" + localThrowable.getMessage());
-          localMutualMarkInfo.gradeResourceInfo = null;
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("parseFrom error:");
+        localStringBuilder.append(localThrowable.getMessage());
+        QLog.i("IntimateInfo", 1, localStringBuilder.toString());
+        localMutualMarkInfo.gradeResourceInfo = null;
       }
+    }
+    if ((paramMutualMarkInfo.msg_special_word_info.has()) && (((oidb_0xcf4.SpecialWordInfo)paramMutualMarkInfo.msg_special_word_info.get()).bytes_static_url.has())) {
+      localMutualMarkInfo.iconStaticUrl = ((oidb_0xcf4.SpecialWordInfo)paramMutualMarkInfo.msg_special_word_info.get()).bytes_static_url.get().toStringUtf8();
+    }
+    mutualmark.ResourceInfo localResourceInfo = localMutualMarkInfo.gradeResourceInfo;
+    if ((localResourceInfo != null) && (localResourceInfo.bytes_static_url.has()) && (!TextUtils.isEmpty(localMutualMarkInfo.gradeResourceInfo.bytes_static_url.get().toStringUtf8()))) {
+      localMutualMarkInfo.iconStaticUrl = localMutualMarkInfo.gradeResourceInfo.bytes_static_url.get().toStringUtf8();
+    }
+    localMutualMarkInfo.iconStaticUrl = MutualMarkUtils.b(localMutualMarkInfo.iconStaticUrl);
+    if ((paramMutualMarkInfo.bytes_min_ver.has()) && (!TextUtils.isEmpty(paramMutualMarkInfo.bytes_min_ver.get().toStringUtf8()))) {
+      localMutualMarkInfo.minVersion = paramMutualMarkInfo.bytes_min_ver.get().toStringUtf8();
+    }
+    if ((paramMutualMarkInfo.bytes_max_ver.has()) && (!TextUtils.isEmpty(paramMutualMarkInfo.bytes_max_ver.get().toStringUtf8()))) {
+      localMutualMarkInfo.maxVersion = paramMutualMarkInfo.bytes_max_ver.get().toStringUtf8();
+    }
+    if (!MutualMarkUtils.a(localMutualMarkInfo.minVersion, localMutualMarkInfo.maxVersion))
+    {
+      QLog.i("IntimateInfo", 1, "oidb_0xcf4.MutualMarkInfo，isCurrentVersionShouldShow=false");
+      return null;
     }
     return localMutualMarkInfo;
   }
@@ -133,12 +129,28 @@ public class IntimateInfo$MutualMarkInfo
   
   public String toString()
   {
-    return "MutualMarkInfo{type=" + this.type + ", level=" + this.level + ", days=" + this.days + ", subLevel=" + this.subLevel + ", iconStaticUrl=" + this.iconStaticUrl + ", minVersion=" + this.minVersion + ", maxVersion=" + this.maxVersion + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MutualMarkInfo{type=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(", level=");
+    localStringBuilder.append(this.level);
+    localStringBuilder.append(", days=");
+    localStringBuilder.append(this.days);
+    localStringBuilder.append(", subLevel=");
+    localStringBuilder.append(this.subLevel);
+    localStringBuilder.append(", iconStaticUrl=");
+    localStringBuilder.append(this.iconStaticUrl);
+    localStringBuilder.append(", minVersion=");
+    localStringBuilder.append(this.minVersion);
+    localStringBuilder.append(", maxVersion=");
+    localStringBuilder.append(this.maxVersion);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.IntimateInfo.MutualMarkInfo
  * JD-Core Version:    0.7.0.1
  */

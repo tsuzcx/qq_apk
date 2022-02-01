@@ -12,21 +12,17 @@ final class aw
     try
     {
       this.a[0] = av.b();
-      this.b.countDown();
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
+    this.b.countDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.aw
  * JD-Core Version:    0.7.0.1
  */

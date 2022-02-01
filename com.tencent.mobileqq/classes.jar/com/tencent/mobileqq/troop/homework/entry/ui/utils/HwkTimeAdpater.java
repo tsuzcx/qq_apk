@@ -75,7 +75,7 @@ public class HwkTimeAdpater
     {
       paramHwkTimePicker = (HwkTimeAdpater)paramHwkTimePicker.a();
       Calendar localCalendar = Calendar.getInstance();
-      localCalendar.setTimeInMillis(paramHwkTimePicker.jdField_a_of_type_Long + 86400000L * paramInt);
+      localCalendar.setTimeInMillis(paramHwkTimePicker.jdField_a_of_type_Long + paramInt * 86400000L);
       return localCalendar.getTime();
     }
     return null;
@@ -109,44 +109,58 @@ public class HwkTimeAdpater
   
   public int getRowCount(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return 0;
-    case 0: 
-      return this.jdField_a_of_type_Int - this.b + 1;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          return 0;
+        }
+        return 60;
+      }
       return 24;
     }
-    return 60;
+    return this.jdField_a_of_type_Int - this.b + 1;
   }
   
   public String getText(int paramInt1, int paramInt2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    switch (paramInt1)
+    if (paramInt1 != 0)
     {
+      if (paramInt1 != 1)
+      {
+        if (paramInt1 == 2)
+        {
+          localStringBuilder.append(paramInt2);
+          this.jdField_a_of_type_JavaUtilCalendar.set(12, paramInt2);
+        }
+      }
+      else
+      {
+        localStringBuilder.append(paramInt2);
+        this.jdField_a_of_type_JavaUtilCalendar.set(11, paramInt2);
+      }
     }
-    for (;;)
+    else
     {
-      return localStringBuilder.toString();
-      this.jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(this.jdField_a_of_type_Long + 86400000L * paramInt2);
+      this.jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(this.jdField_a_of_type_Long + paramInt2 * 86400000L);
       paramInt1 = this.jdField_a_of_type_JavaUtilCalendar.get(1);
       paramInt2 = this.jdField_a_of_type_JavaUtilCalendar.get(2);
       int i = this.jdField_a_of_type_JavaUtilCalendar.get(5);
-      localStringBuilder.append(paramInt1).append("年").append(String.valueOf(paramInt2 + 1)).append("月").append(i).append("日");
-      continue;
-      localStringBuilder.append(paramInt2);
-      this.jdField_a_of_type_JavaUtilCalendar.set(11, paramInt2);
-      continue;
-      localStringBuilder.append(paramInt2);
-      this.jdField_a_of_type_JavaUtilCalendar.set(12, paramInt2);
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append("年");
+      localStringBuilder.append(String.valueOf(paramInt2 + 1));
+      localStringBuilder.append("月");
+      localStringBuilder.append(i);
+      localStringBuilder.append("日");
     }
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.utils.HwkTimeAdpater
  * JD-Core Version:    0.7.0.1
  */

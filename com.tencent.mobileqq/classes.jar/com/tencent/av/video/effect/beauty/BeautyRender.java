@@ -22,16 +22,20 @@ public class BeautyRender
   {
     this.mContextReference = new WeakReference(paramContext);
     this.mFilterFactory = new FilterFactory(paramContext);
-    Log.d("BeautyRender", "new BeautyRender resPath = " + paramString);
+    paramContext = new StringBuilder();
+    paramContext.append("new BeautyRender resPath = ");
+    paramContext.append(paramString);
+    Log.d("BeautyRender", paramContext.toString());
     addTaskBeforeProcess(new BeautyRender.1(this, paramString));
   }
   
   public void destroy()
   {
     super.destroy();
-    if (this.mBeautyFilter != null)
+    QQAVImageBeautyFilter localQQAVImageBeautyFilter = this.mBeautyFilter;
+    if (localQQAVImageBeautyFilter != null)
     {
-      this.mBeautyFilter.destroy();
+      localQQAVImageBeautyFilter.destroy();
       this.mBeautyFilter = null;
     }
   }
@@ -39,47 +43,62 @@ public class BeautyRender
   public void preProcess(int paramInt1, int paramInt2)
   {
     baseProcess(paramInt1, paramInt2);
-    if (this.mBeautyFilter != null) {
-      this.mBeautyFilter.onOutputSizeChanged(paramInt1, paramInt2);
+    QQAVImageBeautyFilter localQQAVImageBeautyFilter = this.mBeautyFilter;
+    if (localQQAVImageBeautyFilter != null) {
+      localQQAVImageBeautyFilter.onOutputSizeChanged(paramInt1, paramInt2);
     }
   }
   
   public EffectTexture process(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     EffectTexture localEffectTexture = super.process(paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.mBeautyFilter == null) || ((!this.mBeautyFilter.isUseMultiParams()) && (this.mBeautyFilter.getAmount() == 0.0F)) || ((this.mBeautyFilter.isUseMultiParams()) && (this.mBeautyFilter.getMixPercent() == 0.0F) && (this.mBeautyFilter.getSharpness() == 0.0F) && (this.mBeautyFilter.getExposure() == 0.0F)))
+    QQAVImageBeautyFilter localQQAVImageBeautyFilter = this.mBeautyFilter;
+    if ((localQQAVImageBeautyFilter != null) && ((localQQAVImageBeautyFilter.isUseMultiParams()) || (this.mBeautyFilter.getAmount() != 0.0F)) && ((!this.mBeautyFilter.isUseMultiParams()) || (this.mBeautyFilter.getMixPercent() != 0.0F) || (this.mBeautyFilter.getSharpness() != 0.0F) || (this.mBeautyFilter.getExposure() != 0.0F)))
     {
-      Log.d("BeautyRender", "need not process beauty.");
+      this.mBeautyFilter.onOutputSizeChanged(this.mWidth, this.mHeight);
+      this.mBeautyFilter.onDraw2(localEffectTexture.getTextureId(), this.mOutFbo);
       CommonUtils.glCheckError();
-      return localEffectTexture;
+      return new EffectTexture(this.mOutTextureId, this.mOutFbo, this.mWidth, this.mHeight);
     }
-    this.mBeautyFilter.onOutputSizeChanged(this.mWidth, this.mHeight);
-    this.mBeautyFilter.onDraw2(localEffectTexture.getTextureId(), this.mOutFbo);
+    Log.d("BeautyRender", "need not process beauty.");
     CommonUtils.glCheckError();
-    return new EffectTexture(this.mOutTextureId, this.mOutFbo, this.mWidth, this.mHeight);
+    return localEffectTexture;
   }
   
   public void setBeautyLevel(float paramFloat)
   {
-    Log.d("BeautyRender", "setBeautyLevel level = " + paramFloat);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setBeautyLevel level = ");
+    localStringBuilder.append(paramFloat);
+    Log.d("BeautyRender", localStringBuilder.toString());
     addTaskBeforeProcess(new BeautyRender.2(this, paramFloat));
   }
   
   public void setBeautyLevel(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    Log.d("BeautyRender", "setBeautyLevel mixPercent = " + paramFloat1 + " | sharpen =" + paramFloat2 + " | exposure = " + paramFloat3);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setBeautyLevel mixPercent = ");
+    localStringBuilder.append(paramFloat1);
+    localStringBuilder.append(" | sharpen =");
+    localStringBuilder.append(paramFloat2);
+    localStringBuilder.append(" | exposure = ");
+    localStringBuilder.append(paramFloat3);
+    Log.d("BeautyRender", localStringBuilder.toString());
     addTaskBeforeProcess(new BeautyRender.3(this, paramFloat1, paramFloat2, paramFloat3));
   }
   
   public void setNeedSkinColor(boolean paramBoolean)
   {
-    Log.d("BeautyRender", "setNeedSkinColor isNeed = " + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setNeedSkinColor isNeed = ");
+    localStringBuilder.append(paramBoolean);
+    Log.d("BeautyRender", localStringBuilder.toString());
     addTaskBeforeProcess(new BeautyRender.4(this, paramBoolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.beauty.BeautyRender
  * JD-Core Version:    0.7.0.1
  */

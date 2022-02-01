@@ -31,88 +31,98 @@ public class RecentInteractAndFollowItem
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if ((paramQQAppInterface == null) || (paramContext == null)) {
-      return;
-    }
-    Object localObject1 = paramQQAppInterface.getMessageFacade().b(this.mData.senderuin, this.mData.istroop);
-    if ((localObject1 instanceof MessageForInteractAndFollow)) {}
-    for (localObject1 = (MessageForInteractAndFollow)localObject1;; localObject1 = null)
+    if (paramQQAppInterface != null)
     {
-      if (localObject1 == null)
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("Q.msg_box.RecentInteractAndFollowItem", 2, "messageForInteractAndFollow == null");
+      if (paramContext == null) {
         return;
       }
-      ((MessageForInteractAndFollow)localObject1).parse();
-      this.messageType = ((MessageForInteractAndFollow)localObject1).type;
-      if (((MessageForInteractAndFollow)localObject1).type == 1)
+      Object localObject = paramQQAppInterface.getMessageFacade().b(this.mData.senderuin, this.mData.istroop);
+      MessageForInteractAndFollow localMessageForInteractAndFollow = null;
+      if ((localObject instanceof MessageForInteractAndFollow)) {
+        localMessageForInteractAndFollow = (MessageForInteractAndFollow)localObject;
+      }
+      if (localMessageForInteractAndFollow == null)
       {
-        this.mTitleName = paramContext.getString(2131694334);
-        label92:
-        this.mUnreadFlag = 3;
-        this.mDisplayTime = ((MessageForInteractAndFollow)localObject1).timeStamp;
-        Object localObject2 = paramQQAppInterface.getConversationFacade();
-        if (localObject2 == null) {
-          break label329;
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.msg_box.RecentInteractAndFollowItem", 2, "messageForInteractAndFollow == null");
         }
-        this.mUnreadNum = ((ConversationFacade)localObject2).a(((MessageForInteractAndFollow)localObject1).frienduin, ((MessageForInteractAndFollow)localObject1).istroop);
-        label133:
-        localObject2 = getMsgSummaryTemp();
-        ((MsgSummary)localObject2).strContent = ((MessageForInteractAndFollow)localObject1).context;
-        extraUpdate(paramQQAppInterface, paramContext, (MsgSummary)localObject2);
-        if (!AppSetting.d) {
-          break;
+        return;
+      }
+      localMessageForInteractAndFollow.parse();
+      this.messageType = localMessageForInteractAndFollow.type;
+      if (localMessageForInteractAndFollow.type == 1)
+      {
+        this.mTitleName = paramContext.getString(2131694299);
+      }
+      else if (localMessageForInteractAndFollow.type == 2)
+      {
+        this.mTitleName = paramContext.getString(2131694298);
+      }
+      else
+      {
+        if (localMessageForInteractAndFollow.type != 3) {
+          break label386;
         }
+        this.mTitleName = paramContext.getString(2131694300);
+      }
+      this.mUnreadFlag = 3;
+      this.mDisplayTime = localMessageForInteractAndFollow.timeStamp;
+      localObject = paramQQAppInterface.getConversationFacade();
+      if (localObject != null) {
+        this.mUnreadNum = ((ConversationFacade)localObject).a(localMessageForInteractAndFollow.frienduin, localMessageForInteractAndFollow.istroop);
+      } else {
+        this.mUnreadNum = 0;
+      }
+      localObject = getMsgSummaryTemp();
+      ((MsgSummary)localObject).strContent = localMessageForInteractAndFollow.context;
+      extraUpdate(paramQQAppInterface, paramContext, (MsgSummary)localObject);
+      if (AppSetting.d)
+      {
         paramQQAppInterface = new StringBuilder(24);
         paramQQAppInterface.append(this.mTitleName);
         if (this.mUnreadNum != 0) {
-          break label337;
+          if (this.mUnreadNum == 1)
+          {
+            paramQQAppInterface.append("有一条未读");
+          }
+          else if (this.mUnreadNum == 2)
+          {
+            paramQQAppInterface.append("有两条未读");
+          }
+          else if (this.mUnreadNum > 0)
+          {
+            paramQQAppInterface.append("有");
+            paramQQAppInterface.append(this.mUnreadNum);
+            paramQQAppInterface.append("条未读");
+          }
         }
-      }
-      for (;;)
-      {
-        if (this.mMsgExtroInfo != null) {
-          paramQQAppInterface.append(this.mMsgExtroInfo + ",");
+        if (this.mMsgExtroInfo != null)
+        {
+          paramContext = new StringBuilder();
+          paramContext.append(this.mMsgExtroInfo);
+          paramContext.append(",");
+          paramQQAppInterface.append(paramContext.toString());
         }
-        paramQQAppInterface.append(this.mLastMsg).append(' ').append(this.mShowTime);
+        paramQQAppInterface.append(this.mLastMsg);
+        paramQQAppInterface.append(' ');
+        paramQQAppInterface.append(this.mShowTime);
         this.mContentDesc = paramQQAppInterface.toString();
-        return;
-        if (((MessageForInteractAndFollow)localObject1).type == 2)
-        {
-          this.mTitleName = paramContext.getString(2131694333);
-          break label92;
-        }
-        if (((MessageForInteractAndFollow)localObject1).type == 3)
-        {
-          this.mTitleName = paramContext.getString(2131694335);
-          break label92;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("Q.msg_box.RecentInteractAndFollowItem", 2, "RecentInteractAndFollowItem, type  =" + ((MessageForInteractAndFollow)localObject1).type);
-        return;
-        label329:
-        this.mUnreadNum = 0;
-        break label133;
-        label337:
-        if (this.mUnreadNum == 1) {
-          paramQQAppInterface.append("有一条未读");
-        } else if (this.mUnreadNum == 2) {
-          paramQQAppInterface.append("有两条未读");
-        } else if (this.mUnreadNum > 0) {
-          paramQQAppInterface.append("有").append(this.mUnreadNum).append("条未读");
-        }
+      }
+      return;
+      label386:
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("RecentInteractAndFollowItem, type  =");
+        paramQQAppInterface.append(localMessageForInteractAndFollow.type);
+        QLog.i("Q.msg_box.RecentInteractAndFollowItem", 2, paramQQAppInterface.toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentInteractAndFollowItem
  * JD-Core Version:    0.7.0.1
  */

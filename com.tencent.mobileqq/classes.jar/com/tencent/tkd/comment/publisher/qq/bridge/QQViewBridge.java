@@ -10,6 +10,10 @@ import com.tencent.tkd.comment.publisher.qq.util.QQViewCallback;
 
 public abstract interface QQViewBridge
 {
+  public static final QQViewBridge EMPTY = new QQViewBridge.1();
+  
+  public abstract void bindAt(Activity paramActivity, View paramView);
+  
   public abstract void bindCallback(QQViewCallback paramQQViewCallback);
   
   public abstract void bindInput(EditText paramEditText);
@@ -21,8 +25,6 @@ public abstract interface QQViewBridge
   public abstract Editable.Factory getEditFactory();
   
   public abstract View getEmotionPanel(Activity paramActivity);
-  
-  public abstract String getEmotionText(String paramString);
   
   public abstract View getGifPanel(Activity paramActivity);
   
@@ -42,7 +44,7 @@ public abstract interface QQViewBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.bridge.QQViewBridge
  * JD-Core Version:    0.7.0.1
  */

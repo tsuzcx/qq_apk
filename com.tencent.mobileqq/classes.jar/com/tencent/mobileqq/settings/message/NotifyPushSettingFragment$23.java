@@ -18,28 +18,27 @@ class NotifyPushSettingFragment$23
     {
       paramContext = paramIntent.getStringExtra("uin");
       NotifyPushSettingFragment.a(this.a, paramContext);
-    }
-    boolean bool;
-    do
-    {
-      do
-      {
-        return;
-      } while (!"com.tencent.mobileqq.activity.NotifyPushSettingActivity.ConfigPCActive".equals(paramContext));
-      paramContext = paramIntent.getStringExtra("uin");
-      bool = paramIntent.getBooleanExtra("configPCActive", false);
-    } while (!NotifyPushSettingFragment.a(this.a).getAccount().equals(paramContext));
-    if (bool)
-    {
-      NotifyPushSettingFragment.f(this.a).setVisibility(0);
       return;
     }
-    NotifyPushSettingFragment.f(this.a).setVisibility(8);
+    if ("com.tencent.mobileqq.activity.NotifyPushSettingActivity.ConfigPCActive".equals(paramContext))
+    {
+      paramContext = paramIntent.getStringExtra("uin");
+      boolean bool = paramIntent.getBooleanExtra("configPCActive", false);
+      if (NotifyPushSettingFragment.a(this.a).getAccount().equals(paramContext))
+      {
+        if (bool)
+        {
+          NotifyPushSettingFragment.f(this.a).setVisibility(0);
+          return;
+        }
+        NotifyPushSettingFragment.f(this.a).setVisibility(8);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.NotifyPushSettingFragment.23
  * JD-Core Version:    0.7.0.1
  */

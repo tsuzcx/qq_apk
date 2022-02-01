@@ -24,49 +24,34 @@ class WebInputHandler$MyOnEditorActionListener
   
   public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    switch (paramInt)
-    {
-    default: 
-      bool1 = false;
+    if ((paramInt != 2) && (paramInt != 3) && (paramInt != 4) && (paramInt != 5) && (paramInt != 6)) {
+      return false;
     }
-    for (;;)
+    try
     {
-      return bool1;
-      try
-      {
-        paramTextView = new JSONObject();
-        paramTextView.put("inputId", WebInputHandler.access$300(this.this$0));
-        paramTextView.put("value", this.webEditText.getText().toString());
-        this.req.jsService.evaluateSubscribeJS("onKeyboardConfirm", paramTextView.toString(), 0);
-        if (!this.webEditText.isConfirmHold()) {
-          this.this$0.hideCurrentInput();
-        }
-        bool1 = bool2;
-        if (WebInputHandler.access$200(this.this$0) == null) {
-          continue;
-        }
-        bool1 = bool2;
-        if (WebInputHandler.access$200(this.this$0).getPageWebviewContainer() == null) {
-          continue;
-        }
-        WebInputHandler.access$400(this.this$0, new float[] { WebInputHandler.access$200(this.this$0).getPageWebviewContainer().getTranslationY(), 0.0F });
-        return true;
-      }
-      catch (JSONException paramTextView)
-      {
-        for (;;)
-        {
-          paramTextView.printStackTrace();
-        }
-      }
+      paramTextView = new JSONObject();
+      paramTextView.put("inputId", WebInputHandler.access$300(this.this$0));
+      paramTextView.put("value", this.webEditText.getText().toString());
+      this.req.jsService.evaluateSubscribeJS("onKeyboardConfirm", paramTextView.toString(), 0);
     }
+    catch (JSONException paramTextView)
+    {
+      paramTextView.printStackTrace();
+    }
+    if (!this.webEditText.isConfirmHold()) {
+      this.this$0.hideCurrentInput();
+    }
+    if ((WebInputHandler.access$200(this.this$0) != null) && (WebInputHandler.access$200(this.this$0).getPageWebviewContainer() != null))
+    {
+      paramTextView = this.this$0;
+      WebInputHandler.access$400(paramTextView, new float[] { WebInputHandler.access$200(paramTextView).getPageWebviewContainer().getTranslationY(), 0.0F });
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.widget.WebInputHandler.MyOnEditorActionListener
  * JD-Core Version:    0.7.0.1
  */

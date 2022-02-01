@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.qassistant.wake.WakeManager;
+import com.tencent.mobileqq.qassistant.api.IVoiceAssistantMain;
 import com.tencent.mobileqq.qassistant.wake.WakeServiceCallBack;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.QQToast;
 import mqq.app.QQPermissionCallback;
 
@@ -12,17 +13,17 @@ class AssistantSettingActivity$4$2
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity$4.a, 2131695314, 1).a();
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity$4.a, 2131695323, 1).a();
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    WakeManager.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity$4.a, "AssistantSettingActivity", this.jdField_a_of_type_ComTencentMobileqqQassistantWakeWakeServiceCallBack);
+    ((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).startRecord(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity$4.a, "AssistantSettingActivity", this.jdField_a_of_type_ComTencentMobileqqQassistantWakeWakeServiceCallBack);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssistantSettingActivity.4.2
  * JD-Core Version:    0.7.0.1
  */

@@ -24,16 +24,7 @@ public class GestureFilterManager$AnimationWrapper
   
   public static boolean compareGestureInfo(GestureKeyInfo paramGestureKeyInfo1, GestureKeyInfo paramGestureKeyInfo2, float paramFloat)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (Math.abs(paramGestureKeyInfo1.hotPoints[0].x - paramGestureKeyInfo2.hotPoints[0].x) <= paramFloat)
-    {
-      bool1 = bool2;
-      if (Math.abs(paramGestureKeyInfo1.hotPoints[0].y - paramGestureKeyInfo2.hotPoints[0].y) <= paramFloat) {
-        bool1 = true;
-      }
-    }
-    return bool1;
+    return (Math.abs(paramGestureKeyInfo1.hotPoints[0].x - paramGestureKeyInfo2.hotPoints[0].x) <= paramFloat) && (Math.abs(paramGestureKeyInfo1.hotPoints[0].y - paramGestureKeyInfo2.hotPoints[0].y) <= paramFloat);
   }
   
   public void clearGLSLSelf()
@@ -110,7 +101,7 @@ public class GestureFilterManager$AnimationWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ptvfilter.gesture.GestureFilterManager.AnimationWrapper
  * JD-Core Version:    0.7.0.1
  */

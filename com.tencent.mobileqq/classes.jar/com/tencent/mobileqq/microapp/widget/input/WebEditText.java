@@ -67,99 +67,88 @@ public class WebEditText
   
   public boolean a(f paramf, AbsAppBrandPage paramAbsAppBrandPage, String paramString)
   {
-    int j = 2;
-    if ((TextUtils.isEmpty(paramString)) || (paramAbsAppBrandPage == null)) {
-      return false;
-    }
-    Object localObject = super.getContext();
-    paramAbsAppBrandPage = new JSONObject(paramString);
-    paramString = paramAbsAppBrandPage.optString("type");
-    boolean bool = paramAbsAppBrandPage.optBoolean("isPassword");
-    int i;
-    if (("number".equals(paramString)) || ("digit".equals(paramString)) || ("idcard".equals(paramString))) {
-      i = 2;
-    }
-    for (;;)
+    if (!TextUtils.isEmpty(paramString))
     {
+      if (paramAbsAppBrandPage == null) {
+        return false;
+      }
+      Object localObject = super.getContext();
+      paramAbsAppBrandPage = new JSONObject(paramString);
+      paramString = paramAbsAppBrandPage.optString("type");
+      boolean bool1 = paramAbsAppBrandPage.optBoolean("isPassword");
+      boolean bool2 = "number".equals(paramString);
+      int j = 2;
+      if ((!bool2) && (!"digit".equals(paramString)) && (!"idcard".equals(paramString)))
+      {
+        if (bool1) {
+          i = 129;
+        } else {
+          i = 1;
+        }
+      }
+      else {
+        i = 2;
+      }
       super.setInputType(i);
       paramString = paramAbsAppBrandPage.optString("confirmType");
-      if ("send".equals(paramString))
-      {
+      if ("send".equals(paramString)) {
         i = 4;
-        label101:
-        setImeOptions(i);
-        i = paramAbsAppBrandPage.optInt("maxLength", -1);
-        if (i != -1) {
-          super.setFilters(new InputFilter[] { new InputFilter.LengthFilter(i) });
-        }
-        paramString = paramAbsAppBrandPage.optJSONObject("style");
-        if (paramString != null)
-        {
-          float f1 = DisplayUtil.getDensity((Context)localObject);
-          this.c = ((int)(paramString.optInt("width") * f1));
-          this.d = ((int)(paramString.optInt("height") * f1));
-          this.f = ((int)(f1 * paramString.optInt("left")));
-          super.setTextSize(paramString.optInt("fontSize", 16));
-          paramString.optString("fontWeight", "normal");
-          this.a = paramString.optString("color", "#FFFFFFFF");
-          this.b = paramString.optString("backgroundColor", "#FFFFFFFF");
-          paramString.optInt("marginBottom");
-          paramString.optString("textAlign", "left");
-        }
-        paramString = paramAbsAppBrandPage.optString("placeholder");
-        localObject = paramAbsAppBrandPage.optJSONObject("placeholderStyle");
-        if (localObject != null) {
-          super.setHintTextColor(Color.parseColor(((JSONObject)localObject).optString("color", "#FFFFFFFF")));
-        }
-        if (paramAbsAppBrandPage.optBoolean("adjustPosition")) {
-          paramf.b().getWindow().setSoftInputMode(32);
-        }
-        paramf = paramAbsAppBrandPage.optString("defaultValue");
-        if (TextUtils.isEmpty(paramf)) {
-          break label441;
-        }
-        super.setText(paramf);
-      }
-      for (;;)
-      {
-        super.setTextColor(c.p(this.a));
-        super.setBackgroundColor(c.p(this.b));
-        super.setGravity(19);
-        super.setHint(paramString);
-        return true;
-        if (!bool) {
-          break label450;
-        }
-        i = 129;
-        break;
-        if ("search".equals(paramString))
-        {
-          i = 3;
-          break label101;
-        }
-        if ("next".equals(paramString))
-        {
-          i = 5;
-          break label101;
-        }
+      } else if ("search".equals(paramString)) {
+        i = 3;
+      } else if ("next".equals(paramString)) {
+        i = 5;
+      } else if ("go".equals(paramString)) {
         i = j;
-        if ("go".equals(paramString)) {
-          break label101;
-        }
+      } else {
         i = 6;
-        break label101;
-        label441:
+      }
+      setImeOptions(i);
+      int i = paramAbsAppBrandPage.optInt("maxLength", -1);
+      if (i != -1) {
+        super.setFilters(new InputFilter[] { new InputFilter.LengthFilter(i) });
+      }
+      paramString = paramAbsAppBrandPage.optJSONObject("style");
+      if (paramString != null)
+      {
+        float f1 = DisplayUtil.getDensity((Context)localObject);
+        this.c = ((int)(paramString.optInt("width") * f1));
+        this.d = ((int)(paramString.optInt("height") * f1));
+        this.f = ((int)(paramString.optInt("left") * f1));
+        super.setTextSize(paramString.optInt("fontSize", 16));
+        paramString.optString("fontWeight", "normal");
+        this.a = paramString.optString("color", "#FFFFFFFF");
+        this.b = paramString.optString("backgroundColor", "#FFFFFFFF");
+        paramString.optInt("marginBottom");
+        paramString.optString("textAlign", "left");
+      }
+      paramString = paramAbsAppBrandPage.optString("placeholder");
+      localObject = paramAbsAppBrandPage.optJSONObject("placeholderStyle");
+      if (localObject != null) {
+        super.setHintTextColor(Color.parseColor(((JSONObject)localObject).optString("color", "#FFFFFFFF")));
+      }
+      if (paramAbsAppBrandPage.optBoolean("adjustPosition")) {
+        paramf.b().getWindow().setSoftInputMode(32);
+      }
+      paramf = paramAbsAppBrandPage.optString("defaultValue");
+      if (!TextUtils.isEmpty(paramf)) {
+        super.setText(paramf);
+      } else {
         super.setText("");
       }
-      label450:
-      i = 1;
+      super.setTextColor(c.p(this.a));
+      super.setBackgroundColor(c.p(this.b));
+      super.setGravity(19);
+      super.setHint(paramString);
+      return true;
     }
+    return false;
   }
   
   public PageWebview b()
   {
-    if (this.h != null) {
-      return (PageWebview)this.h.get();
+    WeakReference localWeakReference = this.h;
+    if (localWeakReference != null) {
+      return (PageWebview)localWeakReference.get();
     }
     return null;
   }
@@ -194,12 +183,16 @@ public class WebEditText
     if (a.a().a(this.g))
     {
       super.requestFocus();
-      if (QLog.isColorLevel()) {
-        QLog.d("WebEditText", 2, "showSoftInput for inputId=" + this.g);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("showSoftInput for inputId=");
+        ((StringBuilder)localObject).append(this.g);
+        QLog.d("WebEditText", 2, ((StringBuilder)localObject).toString());
       }
-      InputMethodManager localInputMethodManager = (InputMethodManager)super.getContext().getSystemService("input_method");
-      if (localInputMethodManager != null) {
-        localInputMethodManager.showSoftInput(this, 2);
+      Object localObject = (InputMethodManager)super.getContext().getSystemService("input_method");
+      if (localObject != null) {
+        ((InputMethodManager)localObject).showSoftInput(this, 2);
       }
     }
   }
@@ -217,18 +210,23 @@ public class WebEditText
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("WebEditText{");
-    localStringBuilder.append("mWebInputWidth=").append(this.c);
-    localStringBuilder.append(", mWebInputHeight=").append(this.d);
-    localStringBuilder.append(", mWebInputTop=").append(this.e);
-    localStringBuilder.append(", mWebInputLeft=").append(this.f);
-    localStringBuilder.append(", mInputId=").append(this.g);
+    localStringBuilder.append("mWebInputWidth=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", mWebInputHeight=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", mWebInputTop=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", mWebInputLeft=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", mInputId=");
+    localStringBuilder.append(this.g);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.input.WebEditText
  * JD-Core Version:    0.7.0.1
  */

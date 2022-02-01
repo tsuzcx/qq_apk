@@ -7,117 +7,120 @@ import java.util.ArrayList;
 
 class AnimationHandler
 {
-  public static final ThreadLocal<AnimationHandler> a;
-  long jdField_a_of_type_Long = 0L;
-  private final SimpleArrayMap<AnimationHandler.AnimationFrameCallback, Long> jdField_a_of_type_AndroidxCollectionSimpleArrayMap = new SimpleArrayMap();
-  private final AnimationHandler.AnimationCallbackDispatcher jdField_a_of_type_AndroidxDynamicanimationAnimationAnimationHandler$AnimationCallbackDispatcher = new AnimationHandler.AnimationCallbackDispatcher(this);
-  private AnimationHandler.AnimationFrameCallbackProvider jdField_a_of_type_AndroidxDynamicanimationAnimationAnimationHandler$AnimationFrameCallbackProvider;
-  final ArrayList<AnimationHandler.AnimationFrameCallback> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
+  private static final long FRAME_DELAY_MS = 10L;
+  public static final ThreadLocal<AnimationHandler> sAnimatorHandler = new ThreadLocal();
+  final ArrayList<AnimationHandler.AnimationFrameCallback> mAnimationCallbacks = new ArrayList();
+  private final AnimationHandler.AnimationCallbackDispatcher mCallbackDispatcher = new AnimationHandler.AnimationCallbackDispatcher(this);
+  long mCurrentFrameTime = 0L;
+  private final SimpleArrayMap<AnimationHandler.AnimationFrameCallback, Long> mDelayedCallbackStartTime = new SimpleArrayMap();
+  private boolean mListDirty = false;
+  private AnimationHandler.AnimationFrameCallbackProvider mProvider;
   
-  static
+  private void cleanUpList()
   {
-    jdField_a_of_type_JavaLangThreadLocal = new ThreadLocal();
-  }
-  
-  public static AnimationHandler a()
-  {
-    if (jdField_a_of_type_JavaLangThreadLocal.get() == null) {
-      jdField_a_of_type_JavaLangThreadLocal.set(new AnimationHandler());
-    }
-    return (AnimationHandler)jdField_a_of_type_JavaLangThreadLocal.get();
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.mListDirty)
     {
-      int i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+      int i = this.mAnimationCallbacks.size() - 1;
       while (i >= 0)
       {
-        if (this.jdField_a_of_type_JavaUtilArrayList.get(i) == null) {
-          this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+        if (this.mAnimationCallbacks.get(i) == null) {
+          this.mAnimationCallbacks.remove(i);
         }
         i -= 1;
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.mListDirty = false;
     }
   }
   
-  private boolean a(AnimationHandler.AnimationFrameCallback paramAnimationFrameCallback, long paramLong)
+  public static long getFrameTime()
   {
-    Long localLong = (Long)this.jdField_a_of_type_AndroidxCollectionSimpleArrayMap.get(paramAnimationFrameCallback);
+    if (sAnimatorHandler.get() == null) {
+      return 0L;
+    }
+    return ((AnimationHandler)sAnimatorHandler.get()).mCurrentFrameTime;
+  }
+  
+  public static AnimationHandler getInstance()
+  {
+    if (sAnimatorHandler.get() == null) {
+      sAnimatorHandler.set(new AnimationHandler());
+    }
+    return (AnimationHandler)sAnimatorHandler.get();
+  }
+  
+  private boolean isCallbackDue(AnimationHandler.AnimationFrameCallback paramAnimationFrameCallback, long paramLong)
+  {
+    Long localLong = (Long)this.mDelayedCallbackStartTime.get(paramAnimationFrameCallback);
     if (localLong == null) {
       return true;
     }
     if (localLong.longValue() < paramLong)
     {
-      this.jdField_a_of_type_AndroidxCollectionSimpleArrayMap.remove(paramAnimationFrameCallback);
+      this.mDelayedCallbackStartTime.remove(paramAnimationFrameCallback);
       return true;
     }
     return false;
   }
   
-  AnimationHandler.AnimationFrameCallbackProvider a()
+  public void addAnimationFrameCallback(AnimationHandler.AnimationFrameCallback paramAnimationFrameCallback, long paramLong)
   {
-    if (this.jdField_a_of_type_AndroidxDynamicanimationAnimationAnimationHandler$AnimationFrameCallbackProvider == null) {
-      if (Build.VERSION.SDK_INT < 16) {
-        break label35;
-      }
+    if (this.mAnimationCallbacks.size() == 0) {
+      getProvider().postFrameCallback();
     }
-    label35:
-    for (this.jdField_a_of_type_AndroidxDynamicanimationAnimationAnimationHandler$AnimationFrameCallbackProvider = new AnimationHandler.FrameCallbackProvider16(this.jdField_a_of_type_AndroidxDynamicanimationAnimationAnimationHandler$AnimationCallbackDispatcher);; this.jdField_a_of_type_AndroidxDynamicanimationAnimationAnimationHandler$AnimationFrameCallbackProvider = new AnimationHandler.FrameCallbackProvider14(this.jdField_a_of_type_AndroidxDynamicanimationAnimationAnimationHandler$AnimationCallbackDispatcher)) {
-      return this.jdField_a_of_type_AndroidxDynamicanimationAnimationAnimationHandler$AnimationFrameCallbackProvider;
+    if (!this.mAnimationCallbacks.contains(paramAnimationFrameCallback)) {
+      this.mAnimationCallbacks.add(paramAnimationFrameCallback);
+    }
+    if (paramLong > 0L) {
+      this.mDelayedCallbackStartTime.put(paramAnimationFrameCallback, Long.valueOf(SystemClock.uptimeMillis() + paramLong));
     }
   }
   
-  void a(long paramLong)
+  void doAnimationFrame(long paramLong)
   {
     long l = SystemClock.uptimeMillis();
     int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.mAnimationCallbacks.size())
     {
-      AnimationHandler.AnimationFrameCallback localAnimationFrameCallback = (AnimationHandler.AnimationFrameCallback)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (localAnimationFrameCallback == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (a(localAnimationFrameCallback, l)) {
-          localAnimationFrameCallback.a(paramLong);
-        }
+      AnimationHandler.AnimationFrameCallback localAnimationFrameCallback = (AnimationHandler.AnimationFrameCallback)this.mAnimationCallbacks.get(i);
+      if ((localAnimationFrameCallback != null) && (isCallbackDue(localAnimationFrameCallback, l))) {
+        localAnimationFrameCallback.doAnimationFrame(paramLong);
+      }
+      i += 1;
+    }
+    cleanUpList();
+  }
+  
+  AnimationHandler.AnimationFrameCallbackProvider getProvider()
+  {
+    if (this.mProvider == null) {
+      if (Build.VERSION.SDK_INT >= 16) {
+        this.mProvider = new AnimationHandler.FrameCallbackProvider16(this.mCallbackDispatcher);
+      } else {
+        this.mProvider = new AnimationHandler.FrameCallbackProvider14(this.mCallbackDispatcher);
       }
     }
-    a();
+    return this.mProvider;
   }
   
-  public void a(AnimationHandler.AnimationFrameCallback paramAnimationFrameCallback)
+  public void removeCallback(AnimationHandler.AnimationFrameCallback paramAnimationFrameCallback)
   {
-    this.jdField_a_of_type_AndroidxCollectionSimpleArrayMap.remove(paramAnimationFrameCallback);
-    int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramAnimationFrameCallback);
+    this.mDelayedCallbackStartTime.remove(paramAnimationFrameCallback);
+    int i = this.mAnimationCallbacks.indexOf(paramAnimationFrameCallback);
     if (i >= 0)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.set(i, null);
-      this.jdField_a_of_type_Boolean = true;
+      this.mAnimationCallbacks.set(i, null);
+      this.mListDirty = true;
     }
   }
   
-  public void a(AnimationHandler.AnimationFrameCallback paramAnimationFrameCallback, long paramLong)
+  public void setProvider(AnimationHandler.AnimationFrameCallbackProvider paramAnimationFrameCallbackProvider)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
-      a().a();
-    }
-    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramAnimationFrameCallback)) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramAnimationFrameCallback);
-    }
-    if (paramLong > 0L) {
-      this.jdField_a_of_type_AndroidxCollectionSimpleArrayMap.put(paramAnimationFrameCallback, Long.valueOf(SystemClock.uptimeMillis() + paramLong));
-    }
+    this.mProvider = paramAnimationFrameCallbackProvider;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.dynamicanimation.animation.AnimationHandler
  * JD-Core Version:    0.7.0.1
  */

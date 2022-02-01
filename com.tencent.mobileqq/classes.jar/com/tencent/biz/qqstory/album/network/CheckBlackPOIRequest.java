@@ -45,24 +45,29 @@ public class CheckBlackPOIRequest
     this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      throw new QQStoryCmdHandler.IllegalUinException("req gps list is null");
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      localObject = new qqstory_service.ReqCheckBlackList();
+      ArrayList localArrayList = new ArrayList();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.add(((GeoHashUtils.Gps)localIterator.next()).a());
+      }
+      ((qqstory_service.ReqCheckBlackList)localObject).gps_list.addAll(localArrayList);
+      return ((qqstory_service.ReqCheckBlackList)localObject).toByteArray();
     }
-    qqstory_service.ReqCheckBlackList localReqCheckBlackList = new qqstory_service.ReqCheckBlackList();
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(((GeoHashUtils.Gps)localIterator.next()).a());
+    Object localObject = new QQStoryCmdHandler.IllegalUinException("req gps list is null");
+    for (;;)
+    {
+      throw ((Throwable)localObject);
     }
-    localReqCheckBlackList.gps_list.addAll(localArrayList);
-    return localReqCheckBlackList.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.network.CheckBlackPOIRequest
  * JD-Core Version:    0.7.0.1
  */

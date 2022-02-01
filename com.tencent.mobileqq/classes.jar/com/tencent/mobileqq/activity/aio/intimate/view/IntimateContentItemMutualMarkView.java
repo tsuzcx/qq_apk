@@ -14,7 +14,6 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -28,6 +27,7 @@ import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.intimate.BaseIntimateView;
 import com.tencent.mobileqq.activity.aio.intimate.info.EmptyStatusInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -46,6 +46,7 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.vas.VasApngUtil;
+import com.tencent.mobileqq.webview.util.WebViewComUtils;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
@@ -118,7 +119,7 @@ public class IntimateContentItemMutualMarkView
     if (paramPrefetchMutualMarkInfo.days > 0) {
       i = j * paramPrefetchMutualMarkInfo.currentDays / paramPrefetchMutualMarkInfo.days;
     }
-    i = 16 + localBitmap1.getHeight() - i;
+    i = localBitmap1.getHeight() + 16 - i;
     paramPrefetchMutualMarkInfo = new Rect(0, 0, localBitmap1.getWidth(), i);
     localCanvas.drawBitmap(localBitmap1, paramPrefetchMutualMarkInfo, paramPrefetchMutualMarkInfo, localPaint);
     paramPrefetchMutualMarkInfo = new Rect(0, i, localBitmap1.getWidth(), localBitmap1.getHeight());
@@ -128,30 +129,42 @@ public class IntimateContentItemMutualMarkView
   
   private Bitmap a(String paramString)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      localObject1 = PushUtil.a.a(paramString);
-      return localObject1;
-    }
-    catch (Exception paramString)
-    {
-      do
+    if (!TextUtils.isEmpty(paramString)) {
+      try
       {
-        localObject1 = localObject2;
-      } while (!QLog.isColorLevel());
-      QLog.e("intimate_relationship", 2, "PushUtil.INSTANCE.getBitmapFromUrl() error = " + paramString);
+        paramString = PushUtil.a.a(paramString);
+        return paramString;
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("PushUtil.INSTANCE.getBitmapFromUrl() error = ");
+          localStringBuilder.append(paramString);
+          QLog.e("intimate_relationship", 2, localStringBuilder.toString());
+        }
+      }
     }
     return null;
   }
   
   private String a(IntimateInfo.PrefetchMutualMarkInfo paramPrefetchMutualMarkInfo, boolean paramBoolean)
   {
-    paramPrefetchMutualMarkInfo = "intimate_" + paramPrefetchMutualMarkInfo.type + paramPrefetchMutualMarkInfo.level + paramPrefetchMutualMarkInfo.days + paramPrefetchMutualMarkInfo.currentDays + paramBoolean;
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "cacheName" + paramPrefetchMutualMarkInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("intimate_");
+    localStringBuilder.append(paramPrefetchMutualMarkInfo.type);
+    localStringBuilder.append(paramPrefetchMutualMarkInfo.level);
+    localStringBuilder.append(paramPrefetchMutualMarkInfo.days);
+    localStringBuilder.append(paramPrefetchMutualMarkInfo.currentDays);
+    localStringBuilder.append(paramBoolean);
+    paramPrefetchMutualMarkInfo = localStringBuilder.toString();
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("cacheName");
+      localStringBuilder.append(paramPrefetchMutualMarkInfo);
+      QLog.d("intimate_relationship", 2, localStringBuilder.toString());
     }
     return paramPrefetchMutualMarkInfo;
   }
@@ -182,68 +195,76 @@ public class IntimateContentItemMutualMarkView
   
   private boolean a(IntimateInfo.MutualMarkInfo paramMutualMarkInfo)
   {
-    if (paramMutualMarkInfo == null) {}
-    for (;;)
-    {
+    if (paramMutualMarkInfo == null) {
       return false;
-      if ((paramMutualMarkInfo == null) || (MutualMarkConfigHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), paramMutualMarkInfo.type)))
-      {
-        int i = MutualMarkConfigHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), paramMutualMarkInfo.type, paramMutualMarkInfo.level);
-        if (paramMutualMarkInfo.type == 5) {
-          paramMutualMarkInfo.iconStaticUrl = MutualMarkAlienationHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), paramMutualMarkInfo.type, paramMutualMarkInfo.level, paramMutualMarkInfo.subLevel, paramMutualMarkInfo.iconStaticUrl);
-        }
-        MutualMarkConfigIRType localMutualMarkConfigIRType = MutualMarkConfigHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), paramMutualMarkInfo.type);
-        if ((localMutualMarkConfigIRType != null) && (localMutualMarkConfigIRType.b)) {
-          i = 0;
-        }
-        while ((!TextUtils.isEmpty(paramMutualMarkInfo.iconStaticUrl)) || (i != 0)) {
-          return true;
-        }
+    }
+    if ((paramMutualMarkInfo != null) && (!MutualMarkConfigHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), paramMutualMarkInfo.type))) {
+      return false;
+    }
+    int j = MutualMarkConfigHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), paramMutualMarkInfo.type, paramMutualMarkInfo.level);
+    if (paramMutualMarkInfo.type == 5) {
+      paramMutualMarkInfo.iconStaticUrl = MutualMarkAlienationHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), paramMutualMarkInfo.type, paramMutualMarkInfo.level, paramMutualMarkInfo.subLevel, paramMutualMarkInfo.iconStaticUrl);
+    }
+    MutualMarkConfigIRType localMutualMarkConfigIRType = MutualMarkConfigHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), paramMutualMarkInfo.type);
+    int i = j;
+    if (localMutualMarkConfigIRType != null)
+    {
+      i = j;
+      if (localMutualMarkConfigIRType.b) {
+        i = 0;
       }
     }
+    return (!TextUtils.isEmpty(paramMutualMarkInfo.iconStaticUrl)) || (i != 0);
   }
   
   private Bitmap b(IntimateInfo.PrefetchMutualMarkInfo paramPrefetchMutualMarkInfo)
   {
-    int j = AIOUtils.a(56.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int j = AIOUtils.b(56.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     Bitmap localBitmap = Bitmap.createBitmap(j, j, Bitmap.Config.ARGB_8888);
     Canvas localCanvas1 = new Canvas(localBitmap);
-    Object localObject = new RectF(0.0F, 0.0F, j, j);
-    RectF localRectF = new RectF(2, 2, j - 2, j - 2);
+    float f1 = j;
+    Object localObject = new RectF(0.0F, 0.0F, f1, f1);
+    f1 = 2;
+    float f2 = j - 2;
+    RectF localRectF = new RectF(f1, f1, f2, f2);
     Paint localPaint = new Paint(1);
     localPaint.setColor(Color.parseColor("#E8E9F3"));
-    localCanvas1.drawRoundRect((RectF)localObject, 14, 14, localPaint);
+    f1 = 14;
+    localCanvas1.drawRoundRect((RectF)localObject, f1, f1, localPaint);
     localPaint.setColor(-1);
-    localCanvas1.drawRoundRect(localRectF, 12, 12, localPaint);
+    f1 = 12;
+    localCanvas1.drawRoundRect(localRectF, f1, f1, localPaint);
     localObject = Bitmap.createBitmap(j, j, Bitmap.Config.ARGB_8888);
     Canvas localCanvas2 = new Canvas((Bitmap)localObject);
     localPaint.setColor(Color.parseColor("#F2F4F9"));
-    localCanvas2.drawRoundRect(localRectF, 12, 12, localPaint);
-    if (paramPrefetchMutualMarkInfo.days > 0) {}
-    for (int i = paramPrefetchMutualMarkInfo.currentDays * j / paramPrefetchMutualMarkInfo.days;; i = j)
-    {
-      paramPrefetchMutualMarkInfo = new Rect(0, j - i, j, j);
-      localCanvas1.drawBitmap((Bitmap)localObject, paramPrefetchMutualMarkInfo, paramPrefetchMutualMarkInfo, null);
-      return localBitmap;
+    localCanvas2.drawRoundRect(localRectF, f1, f1, localPaint);
+    int i;
+    if (paramPrefetchMutualMarkInfo.days > 0) {
+      i = paramPrefetchMutualMarkInfo.currentDays * j / paramPrefetchMutualMarkInfo.days;
+    } else {
+      i = j;
     }
+    paramPrefetchMutualMarkInfo = new Rect(0, j - i, j, j);
+    localCanvas1.drawBitmap((Bitmap)localObject, paramPrefetchMutualMarkInfo, paramPrefetchMutualMarkInfo, null);
+    return localBitmap;
   }
   
   private void m()
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a())) && (NetworkUtil.g(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a()))) {
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a())) && (NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a()))) {
       ((IntimateInfoHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a().getBusinessHandler(BusinessHandlerFactory.INTIMATE_INFO_HANDLER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a());
     }
   }
   
   protected void a()
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559383, this, true);
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131367583);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)localView.findViewById(2131367584));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369207));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131368662));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131368666));
-    this.jdField_a_of_type_ComTencentWidgetRoundRectImageView = ((RoundRectImageView)localView.findViewById(2131368667));
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559258, this, true);
+    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131367341);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)localView.findViewById(2131367342));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368937));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131368397));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131368401));
+    this.jdField_a_of_type_ComTencentWidgetRoundRectImageView = ((RoundRectImageView)localView.findViewById(2131368402));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidViewView.setOnTouchListener(this);
@@ -258,12 +279,28 @@ public class IntimateContentItemMutualMarkView
   
   protected void a(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131367341)
     {
+      if (i != 2131368401) {
+        return;
+      }
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.emptyStatusInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.emptyStatusInfo.a)))
+      {
+        if (WebViewComUtils.a(1000L))
+        {
+          ReportController.b(null, "dc00898", "", "", "0X800B68D", "0X800B68D", 0, 0, "", "", "", "");
+          paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+          paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.emptyStatusInfo.a);
+          paramView.putExtra("startOpenPageTime", System.currentTimeMillis());
+          this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+          return;
+        }
+        QQToast.a(getContext(), 1, this.jdField_a_of_type_AndroidContentContext.getString(2131693435), 0).a();
+      }
     }
-    do
+    else
     {
-      return;
       paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), QQBrowserActivity.class);
       String str = MutualMarkConfProcessor.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a());
       if (QLog.isColorLevel()) {
@@ -292,42 +329,37 @@ public class IntimateContentItemMutualMarkView
         return;
       }
       ReportController.b(null, "dc00898", "", "", "0X8009F50", "0X8009F50", this.c, 0, "", "", "", "");
-      return;
-    } while ((this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.emptyStatusInfo == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.emptyStatusInfo.a)));
-    if (QQBrowserActivity.checkNotFrequentlyThenEnter(1000L))
-    {
-      ReportController.b(null, "dc00898", "", "", "0X800B68D", "0X800B68D", 0, 0, "", "", "", "");
-      paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.emptyStatusInfo.a);
-      paramView.putExtra("startOpenPageTime", System.currentTimeMillis());
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      return;
     }
-    QQToast.a(getContext(), 1, this.jdField_a_of_type_AndroidContentContext.getString(2131693480), 0).a();
   }
   
   protected void a(IntimateInfo paramIntimateInfo, int paramInt)
   {
-    paramInt = 8;
+    int i = 0;
     setVisibility(0);
     if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemMutualMarkView$FriendMaskAdapter.a(this.jdField_a_of_type_JavaUtilArrayList);
       this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      this.f = false;
     }
-    for (this.f = false;; this.f = true)
+    else
     {
-      this.jdField_d_of_type_Boolean = MutualMarkBusinessLogicHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a());
-      ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-      if ((paramIntimateInfo.isShowRedPoint) || (this.jdField_d_of_type_Boolean)) {
-        paramInt = 0;
-      }
-      localImageView.setVisibility(paramInt);
-      return;
       this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      this.f = true;
     }
+    this.jdField_d_of_type_Boolean = MutualMarkBusinessLogicHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a());
+    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    paramInt = i;
+    if (!paramIntimateInfo.isShowRedPoint) {
+      if (this.jdField_d_of_type_Boolean) {
+        paramInt = i;
+      } else {
+        paramInt = 8;
+      }
+    }
+    localImageView.setVisibility(paramInt);
   }
   
   protected boolean a()
@@ -382,7 +414,7 @@ public class IntimateContentItemMutualMarkView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemMutualMarkView
  * JD-Core Version:    0.7.0.1
  */

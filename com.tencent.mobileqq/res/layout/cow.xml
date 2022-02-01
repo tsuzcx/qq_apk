@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/mun" android:background="@drawable/e6v" android:layout_width="280.0dip" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/ayo" android:textColor="@color/bp" android:gravity="center" android:layout_width="192.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n9" android:text="公众号会根据你的浏览兴趣推荐更多优质内容" />
-    <TextView android:textSize="@dimen/ayk" android:textColor="@color/bp" android:id="@id/ony" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="0.0dip" android:text="暂不需要，去设置 >" android:alpha="0.4082" />
-    <View android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="@dimen/n2" android:alpha="0.19" />
-    <TextView android:textSize="@dimen/ayq" android:textColor="#ff1b1b1b" android:gravity="center" android:id="@id/onx" android:background="@drawable/common_dialog_btn_right" android:layout_width="fill_parent" android:layout_height="55.0dip" android:text="好的" />
+    <TextView android:textSize="@dimen/aym" android:textColor="@color/bp" android:gravity="center" android:id="@id/opb" android:background="@drawable/iin" android:paddingLeft="@dimen/mw" android:paddingRight="@dimen/mw" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <ImageView android:layout_gravity="right" android:id="@id/opa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ihw" />
 </LinearLayout>

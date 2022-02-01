@@ -112,29 +112,26 @@ public class SliderView
     if (!this.mShowDuration) {
       return;
     }
-    Object localObject = new Rect();
-    this.mDurationTextPaint.getTextBounds(this.mDuration, 0, this.mDuration.length(), (Rect)localObject);
-    int i = ((Rect)localObject).width();
-    int j = ((Rect)localObject).height();
+    Object localObject1 = new Rect();
+    Object localObject2 = this.mDurationTextPaint;
+    String str = this.mDuration;
+    ((Paint)localObject2).getTextBounds(str, 0, str.length(), (Rect)localObject1);
+    int i = ((Rect)localObject1).width();
+    int j = ((Rect)localObject1).height();
     float f1 = (int)Util.dp2px(getContext(), 4.5F);
     f1 = i + f1 * 2.0F;
-    float f2 = j + 0.0F * 2.0F;
-    localObject = new RectF();
+    float f2 = j + 0.0F;
+    localObject1 = new RectF();
     if (f1 < this.mSelectAreaRect.width()) {
-      ((RectF)localObject).set(this.mSelectAreaRect.left + Util.dp2px(getContext(), 3.0F), this.mSelectAreaRect.bottom - Util.dp2px(getContext(), 5.0F) - f2, f1 + (this.mSelectAreaRect.left + Util.dp2px(getContext(), 3.0F)), this.mSelectAreaRect.bottom - Util.dp2px(getContext(), 5.0F));
+      ((RectF)localObject1).set(this.mSelectAreaRect.left + Util.dp2px(getContext(), 3.0F), this.mSelectAreaRect.bottom - Util.dp2px(getContext(), 5.0F) - f2, this.mSelectAreaRect.left + Util.dp2px(getContext(), 3.0F) + f1, this.mSelectAreaRect.bottom - Util.dp2px(getContext(), 5.0F));
+    } else if (this.mSelectAreaRect.centerX() * 2 < getWidth()) {
+      ((RectF)localObject1).set(this.mSelectAreaRect.right + this.mBarWidth, this.mSelectAreaRect.bottom - Util.dp2px(getContext(), 5.0F) - f2, this.mSelectAreaRect.right + this.mBarWidth + f1, this.mSelectAreaRect.bottom - Util.dp2px(getContext(), 5.0F));
+    } else {
+      ((RectF)localObject1).set(this.mSelectAreaRect.left - this.mBarWidth - f1, this.mSelectAreaRect.bottom - Util.dp2px(getContext(), 5.0F) - f2, this.mSelectAreaRect.left - this.mBarWidth, this.mSelectAreaRect.bottom - Util.dp2px(getContext(), 5.0F));
     }
-    for (;;)
-    {
-      Paint.FontMetrics localFontMetrics = this.mDurationTextPaint.getFontMetrics();
-      f1 = (((RectF)localObject).bottom + ((RectF)localObject).top - localFontMetrics.bottom - localFontMetrics.top) / 2.0F;
-      paramCanvas.drawText(this.mDuration, ((RectF)localObject).centerX(), f1, this.mDurationTextPaint);
-      return;
-      if (this.mSelectAreaRect.centerX() * 2 < getWidth()) {
-        ((RectF)localObject).set(this.mSelectAreaRect.right + this.mBarWidth, this.mSelectAreaRect.bottom - Util.dp2px(getContext(), 5.0F) - f2, f1 + (this.mSelectAreaRect.right + this.mBarWidth), this.mSelectAreaRect.bottom - Util.dp2px(getContext(), 5.0F));
-      } else {
-        ((RectF)localObject).set(this.mSelectAreaRect.left - this.mBarWidth - f1, this.mSelectAreaRect.bottom - Util.dp2px(getContext(), 5.0F) - f2, this.mSelectAreaRect.left - this.mBarWidth, this.mSelectAreaRect.bottom - Util.dp2px(getContext(), 5.0F));
-      }
-    }
+    localObject2 = this.mDurationTextPaint.getFontMetrics();
+    f1 = (((RectF)localObject1).bottom + ((RectF)localObject1).top - ((Paint.FontMetrics)localObject2).bottom - ((Paint.FontMetrics)localObject2).top) / 2.0F;
+    paramCanvas.drawText(this.mDuration, ((RectF)localObject1).centerX(), f1, this.mDurationTextPaint);
   }
   
   private void drawFrame(Canvas paramCanvas)
@@ -158,22 +155,22 @@ public class SliderView
     this.mSelectAreaRect.set(getPaddingLeft(), this.mPaddingTop, getMeasuredWidth() - getPaddingRight(), getMeasuredHeight() - this.mPaddingBottom);
     RectF localRectF = new RectF();
     localRectF.set(this.mSelectAreaRect.left, this.mSelectAreaRect.top, this.mSelectAreaRect.right, this.mSelectAreaRect.bottom);
-    paramCanvas.drawRoundRect(localRectF, this.mFrameRadius, this.mFrameRadius, this.mFramePaint);
+    int i = this.mFrameRadius;
+    paramCanvas.drawRoundRect(localRectF, i, i, this.mFramePaint);
   }
   
   private void drawIndicator(Canvas paramCanvas)
   {
-    float f1 = this.mSelectAreaRect.left;
-    float f2 = Util.dp2px(getContext(), 8.0F);
-    f1 = (this.mSelectAreaRect.width() - Util.dp2px(getContext(), 4.0F)) * this.mIndicatorProgress + (f1 - f2);
-    if (this.mIndicatorBitmap != null)
+    float f = this.mSelectAreaRect.left - Util.dp2px(getContext(), 8.0F) + (this.mSelectAreaRect.width() - Util.dp2px(getContext(), 4.0F)) * this.mIndicatorProgress;
+    Object localObject = this.mIndicatorBitmap;
+    if (localObject != null)
     {
-      Rect localRect1 = new Rect(0, 0, this.mIndicatorBitmap.getWidth(), this.mIndicatorBitmap.getHeight());
-      Rect localRect2 = new Rect((int)f1, 0, (int)(f1 + this.mIndicatorWidth), getMeasuredHeight());
-      paramCanvas.drawBitmap(this.mIndicatorBitmap, localRect1, localRect2, this.mIndicatorPaint);
+      localObject = new Rect(0, 0, ((Bitmap)localObject).getWidth(), this.mIndicatorBitmap.getHeight());
+      Rect localRect = new Rect((int)f, 0, (int)(f + this.mIndicatorWidth), getMeasuredHeight());
+      paramCanvas.drawBitmap(this.mIndicatorBitmap, (Rect)localObject, localRect, this.mIndicatorPaint);
       return;
     }
-    paramCanvas.drawRect(f1, 0.0F, f1 + this.mIndicatorWidth, getMeasuredHeight(), this.mIndicatorPaint);
+    paramCanvas.drawRect(f, 0.0F, f + this.mIndicatorWidth, getMeasuredHeight(), this.mIndicatorPaint);
   }
   
   private void init()
@@ -195,47 +192,41 @@ public class SliderView
     this.mFramePaint = new Paint();
     Object localObject = this.mFramePaint;
     int i;
-    if (this.mSliderBarMode)
-    {
+    if (this.mSliderBarMode) {
       i = Color.parseColor("#FFFFFFFF");
-      ((Paint)localObject).setColor(i);
-      Paint localPaint = this.mFramePaint;
-      if (!this.mSliderBarMode) {
-        break label360;
-      }
-      localObject = Paint.Style.FILL;
-      label164:
-      localPaint.setStyle((Paint.Style)localObject);
-      localObject = this.mFramePaint;
-      if (!this.mSliderBarMode) {
-        break label367;
-      }
-    }
-    label360:
-    label367:
-    for (float f = 0.0F;; f = this.mFrameStrokeWidth)
-    {
-      ((Paint)localObject).setStrokeWidth(f);
-      this.mIndicatorPaint = new Paint();
-      this.mIndicatorPaint.setColor(Color.parseColor("#FFFFFFFF"));
-      this.mMaxDurationTips = "已达到模板最大时长";
-      this.mDurationTextSize = ((int)Util.sp2px(getContext(), 12.0F));
-      this.mDurationTextPaint = new Paint();
-      this.mDurationTextPaint.setColor(Color.parseColor("#FFFFFFFF"));
-      this.mDurationTextPaint.setAntiAlias(true);
-      this.mDurationTextPaint.setTextAlign(Paint.Align.CENTER);
-      this.mDurationTextPaint.setTextSize(this.mDurationTextSize);
-      this.mDurationBgRadius = ((int)Util.dp2px(getContext(), 1.0F));
-      this.mDurationBgPaint = new Paint();
-      this.mDurationBgPaint.setColor(Color.parseColor("#80000000"));
-      this.mDurationBgPaint.setAntiAlias(true);
-      this.mTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-      return;
+    } else {
       i = Color.parseColor("#66FFFFFF");
-      break;
-      localObject = Paint.Style.STROKE;
-      break label164;
     }
+    ((Paint)localObject).setColor(i);
+    Paint localPaint = this.mFramePaint;
+    if (this.mSliderBarMode) {
+      localObject = Paint.Style.FILL;
+    } else {
+      localObject = Paint.Style.STROKE;
+    }
+    localPaint.setStyle((Paint.Style)localObject);
+    localObject = this.mFramePaint;
+    float f;
+    if (this.mSliderBarMode) {
+      f = 0.0F;
+    } else {
+      f = this.mFrameStrokeWidth;
+    }
+    ((Paint)localObject).setStrokeWidth(f);
+    this.mIndicatorPaint = new Paint();
+    this.mIndicatorPaint.setColor(Color.parseColor("#FFFFFFFF"));
+    this.mMaxDurationTips = "已达到模板最大时长";
+    this.mDurationTextSize = ((int)Util.sp2px(getContext(), 12.0F));
+    this.mDurationTextPaint = new Paint();
+    this.mDurationTextPaint.setColor(Color.parseColor("#FFFFFFFF"));
+    this.mDurationTextPaint.setAntiAlias(true);
+    this.mDurationTextPaint.setTextAlign(Paint.Align.CENTER);
+    this.mDurationTextPaint.setTextSize(this.mDurationTextSize);
+    this.mDurationBgRadius = ((int)Util.dp2px(getContext(), 1.0F));
+    this.mDurationBgPaint = new Paint();
+    this.mDurationBgPaint.setColor(Color.parseColor("#80000000"));
+    this.mDurationBgPaint.setAntiAlias(true);
+    this.mTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
   }
   
   private void initSliderBar()
@@ -269,29 +260,36 @@ public class SliderView
     Rect localRect = new Rect();
     if (paramBoolean) {
       this.mLeftBarIv.getHitRect(localRect);
-    }
-    for (;;)
-    {
-      localRect.left -= this.mTouchSlop;
-      localRect.top -= this.mTouchSlop;
-      localRect.right += this.mTouchSlop;
-      localRect.bottom += this.mTouchSlop;
-      return localRect.contains(paramInt1, paramInt2);
+    } else {
       this.mRightBarIv.getHitRect(localRect);
     }
+    localRect.left -= this.mTouchSlop;
+    localRect.top -= this.mTouchSlop;
+    localRect.right += this.mTouchSlop;
+    localRect.bottom += this.mTouchSlop;
+    return localRect.contains(paramInt1, paramInt2);
   }
   
   private boolean isPressIndicator(int paramInt)
   {
-    float f = this.mSelectAreaRect.left + this.mSelectAreaRect.width() * this.mIndicatorProgress - this.mIndicatorWidth / 2.0F;
-    return (paramInt >= f - this.mIndicatorWidth * 2.0F) && (paramInt <= f + this.mIndicatorWidth * 2.0F);
+    float f2 = this.mSelectAreaRect.left;
+    float f3 = this.mSelectAreaRect.width();
+    float f4 = this.mIndicatorProgress;
+    float f1 = this.mIndicatorWidth;
+    f2 = f2 + f3 * f4 - f1 / 2.0F;
+    f3 = paramInt;
+    return (f3 >= f2 - f1 * 2.0F) && (f3 <= f2 + f1 * 2.0F);
   }
   
   private void moveIndicator(int paramInt)
   {
-    float f2 = this.mSelectAreaRect.left + this.mSelectAreaRect.width() * this.mIndicatorProgress - this.mIndicatorWidth / 2.0F + paramInt;
-    float f1 = f2;
-    if (this.mIndicatorWidth / 2.0F + f2 > this.mSelectAreaRect.left + this.mSelectAreaRect.width()) {
+    float f1 = this.mSelectAreaRect.left;
+    float f2 = this.mSelectAreaRect.width();
+    float f4 = this.mIndicatorProgress;
+    float f3 = this.mIndicatorWidth;
+    f2 = f1 + f2 * f4 - f3 / 2.0F + paramInt;
+    f1 = f2;
+    if (f3 / 2.0F + f2 > this.mSelectAreaRect.left + this.mSelectAreaRect.width()) {
       f1 = this.mSelectAreaRect.left + this.mSelectAreaRect.width() - this.mIndicatorWidth / 2.0F;
     }
     this.mIndicatorProgress = Math.max(0.0F, (f1 - this.mSelectAreaRect.left + this.mIndicatorWidth / 2.0F) / this.mSelectAreaRect.width());
@@ -300,25 +298,25 @@ public class SliderView
   
   private void moveLeftBar(int paramInt)
   {
-    if ((!this.canAdjust) && (paramInt > 0)) {}
-    float f1;
-    do
-    {
+    if ((!this.canAdjust) && (paramInt > 0)) {
       return;
-      float f2 = this.mLeftBarIv.getX() + paramInt;
-      f1 = f2;
-      if (f2 < 0.0F) {
-        f1 = 0.0F;
-      }
-      f2 = f1;
-      if (this.mRightBarIv.getX() - f1 - this.mBarWidth < this.mMinSelectAreaWidth) {
-        f2 = this.mRightBarIv.getX() - this.mBarWidth - this.mMinSelectAreaWidth;
-      }
-      f1 = f2;
-      if (this.mRightBarIv.getX() - f2 - this.mBarWidth > this.mMaxSelectAreaWidth) {
-        f1 = this.mRightBarIv.getX() - this.mBarWidth - this.mMaxSelectAreaWidth;
-      }
-    } while (FloatUtils.isEquals(f1, this.mLeftBarIv.getX()));
+    }
+    float f2 = this.mLeftBarIv.getX() + paramInt;
+    float f1 = f2;
+    if (f2 < 0.0F) {
+      f1 = 0.0F;
+    }
+    f2 = f1;
+    if (this.mRightBarIv.getX() - f1 - this.mBarWidth < this.mMinSelectAreaWidth) {
+      f2 = this.mRightBarIv.getX() - this.mBarWidth - this.mMinSelectAreaWidth;
+    }
+    f1 = f2;
+    if (this.mRightBarIv.getX() - f2 - this.mBarWidth > this.mMaxSelectAreaWidth) {
+      f1 = this.mRightBarIv.getX() - this.mBarWidth - this.mMaxSelectAreaWidth;
+    }
+    if (FloatUtils.isEquals(f1, this.mLeftBarIv.getX())) {
+      return;
+    }
     this.mLeftBarIv.setX(f1);
     this.mLeftBarMoved = true;
     this.mIndicatorProgress = 0.0F;
@@ -330,154 +328,130 @@ public class SliderView
     if ((!this.canAdjust) && (paramInt < 0)) {
       return;
     }
-    float f1 = this.mRightBarIv.getX();
-    float f2 = paramInt + f1;
-    f1 = getMeasuredWidth() - this.mBarWidth;
+    float f2 = this.mRightBarIv.getX() + paramInt;
+    float f1 = getMeasuredWidth() - this.mBarWidth;
     if (f2 > f1) {
       f2 = f1;
     }
-    for (;;)
-    {
-      f1 = f2;
-      if (f2 - this.mLeftBarIv.getX() - this.mBarWidth < this.mMinSelectAreaWidth) {
-        f1 = this.mLeftBarIv.getX() + this.mBarWidth + this.mMinSelectAreaWidth;
-      }
-      f2 = f1;
-      if (f1 - this.mLeftBarIv.getX() - this.mBarWidth > this.mMaxSelectAreaWidth) {
-        f2 = this.mLeftBarIv.getX() + this.mBarWidth + this.mMaxSelectAreaWidth;
-      }
-      if (FloatUtils.isEquals(f2, this.mRightBarIv.getX())) {
-        break;
-      }
-      this.mRightBarIv.setX(f2);
-      this.mRightBarMoved = true;
-      this.mIndicatorProgress = 1.0F;
-      notifySliderBarMove();
+    f1 = f2;
+    if (f2 - this.mLeftBarIv.getX() - this.mBarWidth < this.mMinSelectAreaWidth) {
+      f1 = this.mLeftBarIv.getX() + this.mBarWidth + this.mMinSelectAreaWidth;
+    }
+    f2 = f1;
+    if (f1 - this.mLeftBarIv.getX() - this.mBarWidth > this.mMaxSelectAreaWidth) {
+      f2 = this.mLeftBarIv.getX() + this.mBarWidth + this.mMaxSelectAreaWidth;
+    }
+    if (FloatUtils.isEquals(f2, this.mRightBarIv.getX())) {
       return;
     }
+    this.mRightBarIv.setX(f2);
+    this.mRightBarMoved = true;
+    this.mIndicatorProgress = 1.0F;
+    notifySliderBarMove();
   }
   
   private void notifyIndicatorMove()
   {
     if (this.mSliderChangeListener != null)
     {
-      Logger.d("SliderView", "notifyIndicatorMove: indicatorProgress is " + this.mIndicatorProgress);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("notifyIndicatorMove: indicatorProgress is ");
+      localStringBuilder.append(this.mIndicatorProgress);
+      Logger.d("SliderView", localStringBuilder.toString());
       this.mSliderChangeListener.onIndicatorMove(this.mIndicatorProgress);
     }
   }
   
   private void notifyIndicatorPress()
   {
-    if (this.mSliderChangeListener != null) {
-      this.mSliderChangeListener.onIndicatorPress();
+    SliderChangeListener localSliderChangeListener = this.mSliderChangeListener;
+    if (localSliderChangeListener != null) {
+      localSliderChangeListener.onIndicatorPress();
     }
   }
   
   private void notifyIndicatorRelease()
   {
-    if (this.mSliderChangeListener != null) {
-      this.mSliderChangeListener.onIndicatorRelease();
+    SliderChangeListener localSliderChangeListener = this.mSliderChangeListener;
+    if (localSliderChangeListener != null) {
+      localSliderChangeListener.onIndicatorRelease();
     }
   }
   
   private void notifySliderBarMove()
   {
-    if (this.mSliderChangeListener != null) {
-      this.mSliderChangeListener.onSliderBarMove(this.mLeftBarHandle, this.mLeftBarIv.getX() + this.mLeftBarIv.getWidth(), this.mRightBarIv.getX());
+    SliderChangeListener localSliderChangeListener = this.mSliderChangeListener;
+    if (localSliderChangeListener != null) {
+      localSliderChangeListener.onSliderBarMove(this.mLeftBarHandle, this.mLeftBarIv.getX() + this.mLeftBarIv.getWidth(), this.mRightBarIv.getX());
     }
   }
   
   private void notifySliderBarRelease()
   {
-    if (this.mSliderChangeListener != null) {
-      this.mSliderChangeListener.onSliderBarRelease(this.mLeftBarHandle);
+    SliderChangeListener localSliderChangeListener = this.mSliderChangeListener;
+    if (localSliderChangeListener != null) {
+      localSliderChangeListener.onSliderBarRelease(this.mLeftBarHandle);
     }
   }
   
   private String translateDuration(long paramLong)
   {
-    double d = Math.round((float)paramLong / 100.0F) / 10.0D;
+    double d = Math.round((float)paramLong / 100.0F);
+    Double.isNaN(d);
+    d /= 10.0D;
     return String.format(Locale.US, "%.1fs", new Object[] { Double.valueOf(d) });
   }
   
   private void updateSliderBarSource()
   {
-    boolean bool2 = true;
-    ImageView localImageView;
-    Object localObject;
-    if (this.mLeftBarIv != null)
+    ImageView localImageView = this.mLeftBarIv;
+    Drawable localDrawable;
+    if (localImageView != null)
     {
-      localImageView = this.mLeftBarIv;
-      if (this.mLockMode)
-      {
-        localObject = this.mImgLockLeft;
-        localImageView.setImageDrawable((Drawable)localObject);
-        localObject = this.mLeftBarIv;
-        if (this.mLockMode) {
-          break label111;
-        }
-        bool1 = true;
-        label47:
-        ((ImageView)localObject).setEnabled(bool1);
-      }
-    }
-    else if (this.mRightBarIv != null)
-    {
-      localImageView = this.mRightBarIv;
-      if (!this.mLockMode) {
-        break label116;
-      }
-      localObject = this.mImgLockRight;
-      label77:
-      localImageView.setImageDrawable((Drawable)localObject);
-      localObject = this.mRightBarIv;
       if (this.mLockMode) {
-        break label124;
+        localDrawable = this.mImgLockLeft;
+      } else {
+        localDrawable = this.mImgRangeLeft;
       }
+      localImageView.setImageDrawable(localDrawable);
+      this.mLeftBarIv.setEnabled(this.mLockMode ^ true);
     }
-    label111:
-    label116:
-    label124:
-    for (boolean bool1 = bool2;; bool1 = false)
+    localImageView = this.mRightBarIv;
+    if (localImageView != null)
     {
-      ((ImageView)localObject).setEnabled(bool1);
-      return;
-      localObject = this.mImgRangeLeft;
-      break;
-      bool1 = false;
-      break label47;
-      localObject = this.mImgRangeRight;
-      break label77;
+      if (this.mLockMode) {
+        localDrawable = this.mImgLockRight;
+      } else {
+        localDrawable = this.mImgRangeRight;
+      }
+      localImageView.setImageDrawable(localDrawable);
+      this.mRightBarIv.setEnabled(this.mLockMode ^ true);
     }
   }
   
   private void updateSliderBarVisible()
   {
+    ImageView localImageView = this.mLeftBarIv;
     int j = 0;
-    ImageView localImageView;
-    if (this.mLeftBarIv != null)
+    int i;
+    if (localImageView != null)
     {
-      localImageView = this.mLeftBarIv;
-      if (this.mSliderBarMode)
-      {
+      if (this.mSliderBarMode) {
         i = 0;
-        localImageView.setVisibility(i);
+      } else {
+        i = 8;
       }
-    }
-    else if (this.mRightBarIv != null)
-    {
-      localImageView = this.mRightBarIv;
-      if (!this.mSliderBarMode) {
-        break label61;
-      }
-    }
-    label61:
-    for (int i = j;; i = 8)
-    {
       localImageView.setVisibility(i);
-      return;
-      i = 8;
-      break;
+    }
+    localImageView = this.mRightBarIv;
+    if (localImageView != null)
+    {
+      if (this.mSliderBarMode) {
+        i = j;
+      } else {
+        i = 8;
+      }
+      localImageView.setVisibility(i);
     }
   }
   
@@ -503,12 +477,10 @@ public class SliderView
     }
     if (this.mSliderBarMode) {
       this.mSelectAreaRect.set(this.mLeftBarIv.getWidth(), this.mPaddingTop, getMeasuredWidth() - this.mRightBarIv.getWidth(), getMeasuredHeight() - this.mPaddingBottom);
-    }
-    for (;;)
-    {
-      return this.mSelectAreaRect.width();
+    } else {
       this.mSelectAreaRect.set(getPaddingLeft(), this.mPaddingTop, getMeasuredWidth() - getPaddingRight(), getMeasuredHeight() - this.mPaddingBottom);
     }
+    return this.mSelectAreaRect.width();
   }
   
   public boolean isDragging()
@@ -521,7 +493,7 @@ public class SliderView
     return this.mIndicatorMoved;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.save();
@@ -536,95 +508,90 @@ public class SliderView
   @SuppressLint({"ClickableViewAccessibility"})
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
+    int i = paramMotionEvent.getAction();
     boolean bool = true;
-    int i;
     int j;
-    switch (paramMotionEvent.getAction())
+    if (i != 0)
     {
-    default: 
-    case 0: 
-      do
-      {
-        return false;
-        i = (int)paramMotionEvent.getX();
-        j = (int)paramMotionEvent.getY();
-        this.mLeftBarPressed = false;
-        this.mRightBarPressed = false;
-        this.mIndicatorPressed = false;
-        this.mOriginX = i;
-        this.mLastX = i;
-        this.mDragging = false;
-        if ((isPressBar(true, i, j)) && (this.mLeftBarIv.isEnabled()))
+      if (i != 1) {
+        if (i != 2)
         {
-          this.mLeftBarPressed = true;
-          return true;
-        }
-        if ((isPressBar(false, i, j)) && (this.mRightBarIv.isEnabled()))
-        {
-          this.mRightBarPressed = true;
-          return true;
-        }
-      } while (!isPressIndicator(i));
-      this.mIndicatorPressed = true;
-      notifyIndicatorPress();
-      return true;
-    case 2: 
-      this.mLeftBarMoved = false;
-      this.mRightBarMoved = false;
-      this.mIndicatorMoved = false;
-      i = (int)paramMotionEvent.getX();
-      if ((!this.mDragging) && (Math.abs(i - this.mOriginX) > this.mTouchSlop)) {
-        this.mDragging = true;
-      }
-      if (this.mDragging)
-      {
-        j = i - this.mLastX;
-        if ((this.mLeftBarPressed) || (this.mRightBarPressed))
-        {
-          getParent().requestDisallowInterceptTouchEvent(true);
-          if (this.mLeftBarPressed)
-          {
-            this.mLeftBarMoved = true;
-            this.mLeftBarHandle = true;
-            moveLeftBar(j);
-            invalidate();
+          if (i != 3) {
+            break label480;
           }
         }
-      }
-      break;
-    }
-    for (;;)
-    {
-      label266:
-      if ((this.mLeftBarMoved) || (this.mRightBarMoved)) {
-        notifySliderBarMove();
-      }
-      for (;;)
-      {
-        this.mLastX = i;
-        return bool;
-        if (!this.mRightBarPressed) {
-          break;
-        }
-        this.mRightBarMoved = true;
-        this.mLeftBarHandle = false;
-        moveRightBar(j);
-        break;
-        if (!this.mIndicatorPressed) {
-          break label473;
-        }
-        getParent().requestDisallowInterceptTouchEvent(true);
-        moveIndicator(j);
-        invalidate();
-        break label266;
-        if (this.mIndicatorMoved) {
-          notifyIndicatorMove();
+        else
+        {
+          this.mLeftBarMoved = false;
+          this.mRightBarMoved = false;
+          this.mIndicatorMoved = false;
+          i = (int)paramMotionEvent.getX();
+          if ((!this.mDragging) && (Math.abs(i - this.mOriginX) > this.mTouchSlop)) {
+            this.mDragging = true;
+          }
+          if (this.mDragging)
+          {
+            j = i - this.mLastX;
+            if ((!this.mLeftBarPressed) && (!this.mRightBarPressed))
+            {
+              if (this.mIndicatorPressed)
+              {
+                getParent().requestDisallowInterceptTouchEvent(true);
+                moveIndicator(j);
+                invalidate();
+                break label206;
+              }
+            }
+            else
+            {
+              getParent().requestDisallowInterceptTouchEvent(true);
+              if (this.mLeftBarPressed)
+              {
+                this.mLeftBarMoved = true;
+                this.mLeftBarHandle = true;
+                moveLeftBar(j);
+              }
+              else if (this.mRightBarPressed)
+              {
+                this.mRightBarMoved = true;
+                this.mLeftBarHandle = false;
+                moveRightBar(j);
+              }
+              invalidate();
+              break label206;
+            }
+          }
+          bool = false;
+          label206:
+          if ((!this.mLeftBarMoved) && (!this.mRightBarMoved))
+          {
+            if (this.mIndicatorMoved) {
+              notifyIndicatorMove();
+            }
+          }
+          else {
+            notifySliderBarMove();
+          }
+          this.mLastX = i;
+          return bool;
         }
       }
       this.mDragging = false;
       this.mOriginX = 0;
       this.mLastX = 0;
-      if ((this.mLeftBarMoved) || (this.mRightBarMoved))
+      if ((!this.mLeftBarMoved) && (!this.mRightBarMoved))
+      {
+        if ((this.mIndicatorMoved) || (this.mIndicatorPressed))
+        {
+          this.mIndicatorPressed = false;
+          this.mIndicatorMoved = false;
+          getParent().requestDisallowInterceptTouchEvent(false);
+          invalidate();
+          notifyIndicatorRelease();
+          return true;
+        }
+      }
+      else
       {
         this.mLeftBarMoved = false;
         this.mRightBarMoved = false;
@@ -635,18 +602,36 @@ public class SliderView
         notifySliderBarRelease();
         return true;
       }
-      if ((!this.mIndicatorMoved) && (!this.mIndicatorPressed)) {
-        break;
-      }
-      this.mIndicatorPressed = false;
-      this.mIndicatorMoved = false;
-      getParent().requestDisallowInterceptTouchEvent(false);
-      invalidate();
-      notifyIndicatorRelease();
-      return true;
-      label473:
-      bool = false;
     }
+    else
+    {
+      i = (int)paramMotionEvent.getX();
+      j = (int)paramMotionEvent.getY();
+      this.mLeftBarPressed = false;
+      this.mRightBarPressed = false;
+      this.mIndicatorPressed = false;
+      this.mOriginX = i;
+      this.mLastX = i;
+      this.mDragging = false;
+      if ((isPressBar(true, i, j)) && (this.mLeftBarIv.isEnabled()))
+      {
+        this.mLeftBarPressed = true;
+        return true;
+      }
+      if ((isPressBar(false, i, j)) && (this.mRightBarIv.isEnabled()))
+      {
+        this.mRightBarPressed = true;
+        return true;
+      }
+      if (isPressIndicator(i))
+      {
+        this.mIndicatorPressed = true;
+        notifyIndicatorPress();
+        return true;
+      }
+    }
+    label480:
+    return false;
   }
   
   public void release()
@@ -717,15 +702,16 @@ public class SliderView
       return;
     }
     this.mDuration = translateDuration(paramLong.longValue());
-    if ((paramLong.equals(Long.valueOf(this.mMaxSelectDurationMs))) && ((this.mLeftBarMoved) || (this.mRightBarMoved)) && (this.mTotalDurationMs != this.mMaxSelectDurationMs) && (!TextUtils.isEmpty(this.mMaxDurationTips))) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        this.mDuration = this.mMaxDurationTips;
-      }
-      invalidate();
-      return;
+    int i;
+    if ((paramLong.equals(Long.valueOf(this.mMaxSelectDurationMs))) && ((this.mLeftBarMoved) || (this.mRightBarMoved)) && (this.mTotalDurationMs != this.mMaxSelectDurationMs) && (!TextUtils.isEmpty(this.mMaxDurationTips))) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    if (i != 0) {
+      this.mDuration = this.mMaxDurationTips;
+    }
+    invalidate();
   }
   
   @Deprecated
@@ -735,15 +721,16 @@ public class SliderView
       return;
     }
     this.mDuration = translateDuration(Long.parseLong(paramString));
-    if ((Long.parseLong(paramString) == this.mMaxSelectDurationMs) && ((this.mLeftBarMoved) || (this.mRightBarMoved)) && (this.mTotalDurationMs != this.mMaxSelectDurationMs) && (!TextUtils.isEmpty(this.mMaxDurationTips))) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        this.mDuration = this.mMaxDurationTips;
-      }
-      invalidate();
-      return;
+    int i;
+    if ((Long.parseLong(paramString) == this.mMaxSelectDurationMs) && ((this.mLeftBarMoved) || (this.mRightBarMoved)) && (this.mTotalDurationMs != this.mMaxSelectDurationMs) && (!TextUtils.isEmpty(this.mMaxDurationTips))) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    if (i != 0) {
+      this.mDuration = this.mMaxDurationTips;
+    }
+    invalidate();
   }
   
   public void setShowDuration(boolean paramBoolean)
@@ -765,11 +752,13 @@ public class SliderView
   
   public void setSliderBarPosition(float paramFloat1, float paramFloat2)
   {
-    if (this.mLeftBarIv != null) {
-      this.mLeftBarIv.setX(paramFloat1);
+    ImageView localImageView = this.mLeftBarIv;
+    if (localImageView != null) {
+      localImageView.setX(paramFloat1);
     }
-    if (this.mRightBarIv != null) {
-      this.mRightBarIv.setX(paramFloat2);
+    localImageView = this.mRightBarIv;
+    if (localImageView != null) {
+      localImageView.setX(paramFloat2);
     }
   }
   
@@ -790,7 +779,7 @@ public class SliderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.timeline.SliderView
  * JD-Core Version:    0.7.0.1
  */

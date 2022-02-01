@@ -22,8 +22,13 @@ class Reflect$1
       if (this.val$isMap)
       {
         Map localMap = (Map)Reflect.access$000(this.this$0);
-        if (paramArrayOfObject == null) {}
-        for (int i = 0; (i == 0) && (paramObject.startsWith("get")); i = paramArrayOfObject.length) {
+        int i;
+        if (paramArrayOfObject == null) {
+          i = 0;
+        } else {
+          i = paramArrayOfObject.length;
+        }
+        if ((i == 0) && (paramObject.startsWith("get"))) {
           return localMap.get(Reflect.access$100(paramObject.substring(3)));
         }
         if ((i == 0) && (paramObject.startsWith("is"))) {
@@ -41,7 +46,7 @@ class Reflect$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.dynamic.Reflect.1
  * JD-Core Version:    0.7.0.1
  */

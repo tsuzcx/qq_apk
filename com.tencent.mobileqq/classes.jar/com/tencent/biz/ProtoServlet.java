@@ -20,18 +20,20 @@ public class ProtoServlet
       return;
     }
     Bundle localBundle = paramIntent.getExtras();
-    if (paramFromServiceMsg.isSuccess()) {}
-    for (byte[] arrayOfByte = WupUtil.b(paramFromServiceMsg.getWupBuffer());; arrayOfByte = null)
+    byte[] arrayOfByte = null;
+    if (paramFromServiceMsg.isSuccess())
     {
-      localBundle.putByteArray("data", arrayOfByte);
-      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("MSFServlet", 2, "onReceive exit");
-      return;
+      arrayOfByte = WupUtil.b(paramFromServiceMsg.getWupBuffer());
+    }
+    else
+    {
       localBundle.putString("data_error_msg", paramFromServiceMsg.getBusinessFailMsg());
       localBundle.putInt("data_error_code", paramFromServiceMsg.getBusinessFailCode());
+    }
+    localBundle.putByteArray("data", arrayOfByte);
+    notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
+    if (QLog.isColorLevel()) {
+      QLog.i("MSFServlet", 2, "onReceive exit");
     }
   }
   
@@ -51,7 +53,7 @@ public class ProtoServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.ProtoServlet
  * JD-Core Version:    0.7.0.1
  */

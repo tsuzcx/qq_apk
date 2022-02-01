@@ -31,7 +31,10 @@ public abstract class ResolvingResultCallbacks<R extends Result>
     }
     catch (Exception paramStatus)
     {
-      HMSLog.e("ResolvingResultCallbacks", "Failed to start resolution: " + paramStatus);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Failed to start resolution: ");
+      localStringBuilder.append(paramStatus);
+      HMSLog.e("ResolvingResultCallbacks", localStringBuilder.toString());
       onUnresolvableFailure(Status.RESULT_INTERNAL_ERROR);
     }
   }
@@ -42,7 +45,7 @@ public abstract class ResolvingResultCallbacks<R extends Result>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.support.api.client.ResolvingResultCallbacks
  * JD-Core Version:    0.7.0.1
  */

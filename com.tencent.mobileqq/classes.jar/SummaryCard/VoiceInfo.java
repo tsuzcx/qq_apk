@@ -38,13 +38,15 @@ public final class VoiceInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vVoiceId != null) {
-      paramJceOutputStream.write(this.vVoiceId, 0);
+    Object localObject = this.vVoiceId;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 0);
     }
     paramJceOutputStream.write(this.shDuration, 1);
     paramJceOutputStream.write(this.bRead, 2);
-    if (this.strUrl != null) {
-      paramJceOutputStream.write(this.strUrl, 3);
+    localObject = this.strUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
   }
 }

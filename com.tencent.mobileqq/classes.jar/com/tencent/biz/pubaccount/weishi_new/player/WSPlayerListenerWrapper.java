@@ -23,12 +23,24 @@ public class WSPlayerListenerWrapper
   
   public void onCaptureImageFailed(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2)
   {
-    WSLog.e("WS_VIDEO_LISTENER", "[WSPlayerListenerWrapper.java][onCaptureImageFailed] id:" + paramInt1 + ", errCode:" + paramInt2);
+    paramTVK_IMediaPlayer = new StringBuilder();
+    paramTVK_IMediaPlayer.append("[WSPlayerListenerWrapper.java][onCaptureImageFailed] id:");
+    paramTVK_IMediaPlayer.append(paramInt1);
+    paramTVK_IMediaPlayer.append(", errCode:");
+    paramTVK_IMediaPlayer.append(paramInt2);
+    WSLog.e("WS_VIDEO_LISTENER", paramTVK_IMediaPlayer.toString());
   }
   
   public void onCaptureImageSucceed(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap)
   {
-    WSLog.e("WS_VIDEO_LISTENER", "[WSPlayerListenerWrapper.java][onCaptureImageSucceed] id:" + paramInt1 + ", width:" + paramInt2 + ", height:" + paramInt3);
+    paramTVK_IMediaPlayer = new StringBuilder();
+    paramTVK_IMediaPlayer.append("[WSPlayerListenerWrapper.java][onCaptureImageSucceed] id:");
+    paramTVK_IMediaPlayer.append(paramInt1);
+    paramTVK_IMediaPlayer.append(", width:");
+    paramTVK_IMediaPlayer.append(paramInt2);
+    paramTVK_IMediaPlayer.append(", height:");
+    paramTVK_IMediaPlayer.append(paramInt3);
+    WSLog.e("WS_VIDEO_LISTENER", paramTVK_IMediaPlayer.toString());
   }
   
   public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
@@ -38,19 +50,38 @@ public class WSPlayerListenerWrapper
   
   public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    WSLog.e("WS_VIDEO_LISTENER", "[WSPlayerListenerWrapper.java][onError] model:" + paramInt1 + ", what:" + paramInt2 + ", position:" + paramInt3 + ", detailInfo:" + paramString);
+    paramTVK_IMediaPlayer = new StringBuilder();
+    paramTVK_IMediaPlayer.append("[WSPlayerListenerWrapper.java][onError] model:");
+    paramTVK_IMediaPlayer.append(paramInt1);
+    paramTVK_IMediaPlayer.append(", what:");
+    paramTVK_IMediaPlayer.append(paramInt2);
+    paramTVK_IMediaPlayer.append(", position:");
+    paramTVK_IMediaPlayer.append(paramInt3);
+    paramTVK_IMediaPlayer.append(", detailInfo:");
+    paramTVK_IMediaPlayer.append(paramString);
+    WSLog.e("WS_VIDEO_LISTENER", paramTVK_IMediaPlayer.toString());
     return false;
   }
   
   public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
-    WSLog.e("WS_VIDEO_LISTENER", "[WSPlayerListenerWrapper.java][onInfo] what:" + paramInt + ", extra:" + paramObject);
+    paramTVK_IMediaPlayer = new StringBuilder();
+    paramTVK_IMediaPlayer.append("[WSPlayerListenerWrapper.java][onInfo] what:");
+    paramTVK_IMediaPlayer.append(paramInt);
+    paramTVK_IMediaPlayer.append(", extra:");
+    paramTVK_IMediaPlayer.append(paramObject);
+    WSLog.e("WS_VIDEO_LISTENER", paramTVK_IMediaPlayer.toString());
     return false;
   }
   
   public void onNetVideoInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, TVK_NetVideoInfo paramTVK_NetVideoInfo)
   {
-    WSLog.e("WS_VIDEO_LISTENER", "[WSPlayerListenerWrapper.java][onNetVideoInfo] player:" + paramTVK_IMediaPlayer + ", videoInfo:" + paramTVK_NetVideoInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSPlayerListenerWrapper.java][onNetVideoInfo] player:");
+    localStringBuilder.append(paramTVK_IMediaPlayer);
+    localStringBuilder.append(", videoInfo:");
+    localStringBuilder.append(paramTVK_NetVideoInfo);
+    WSLog.e("WS_VIDEO_LISTENER", localStringBuilder.toString());
   }
   
   public void onPreAdPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer, long paramLong) {}
@@ -59,7 +90,10 @@ public class WSPlayerListenerWrapper
   
   public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    WSLog.e("WS_VIDEO_LISTENER", "[WSPlayerListenerWrapper.java][onSeekComplete] mediaPlayer:" + paramTVK_IMediaPlayer);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSPlayerListenerWrapper.java][onSeekComplete] mediaPlayer:");
+    localStringBuilder.append(paramTVK_IMediaPlayer);
+    WSLog.e("WS_VIDEO_LISTENER", localStringBuilder.toString());
   }
   
   public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
@@ -70,12 +104,15 @@ public class WSPlayerListenerWrapper
   
   public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    WSLog.e("WS_VIDEO_LISTENER", "[WSPlayerListenerWrapper.java][onVideoPrepared] mediaPlayer:" + paramTVK_IMediaPlayer);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSPlayerListenerWrapper.java][onVideoPrepared] mediaPlayer:");
+    localStringBuilder.append(paramTVK_IMediaPlayer);
+    WSLog.e("WS_VIDEO_LISTENER", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerListenerWrapper
  * JD-Core Version:    0.7.0.1
  */

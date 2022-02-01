@@ -2,14 +2,13 @@ package com.tencent.thumbplayer.api.report;
 
 import java.util.Properties;
 
-public class TPDefaultReportInfo
+public abstract class TPDefaultReportInfo
 {
   public String appVersion;
   public int cdnId;
   public String cdnIp;
   public String cdnUip;
   public int cdnUrlIndex;
-  public int configId;
   public int dlType;
   public boolean enableP2p;
   public int freeType;
@@ -32,14 +31,11 @@ public class TPDefaultReportInfo
   public String vid;
   public String wxOpenId;
   
-  public int getPlayType()
-  {
-    return -1;
-  }
+  public abstract int getPlayType();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.api.report.TPDefaultReportInfo
  * JD-Core Version:    0.7.0.1
  */

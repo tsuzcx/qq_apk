@@ -33,7 +33,7 @@ public class VipGeneralAdvPopWindow$DropDownMenuAdapter
   
   private View a()
   {
-    return a().inflate(2131563212, null);
+    return a().inflate(2131563036, null);
   }
   
   private void a(VipGeneralAdvPopWindow.MenuData paramMenuData, VipGeneralAdvPopWindow.ViewHolder paramViewHolder)
@@ -70,69 +70,60 @@ public class VipGeneralAdvPopWindow$DropDownMenuAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    View localView;
+    VipGeneralAdvPopWindow.ViewHolder localViewHolder;
     if (paramView == null)
     {
-      paramView = new VipGeneralAdvPopWindow.ViewHolder(this.jdField_a_of_type_CooperationVipWidgetVipGeneralAdvPopWindow);
-      localView = a();
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371182));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131370283));
-      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131366070);
-      localView.setTag(paramView);
-      if (paramView != null) {
-        break label107;
-      }
+      localViewHolder = new VipGeneralAdvPopWindow.ViewHolder(this.jdField_a_of_type_CooperationVipWidgetVipGeneralAdvPopWindow);
+      paramView = a();
+      localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370807));
+      localViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369951));
+      localViewHolder.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365987);
+      paramView.setTag(localViewHolder);
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      Object localObject = (VipGeneralAdvPopWindow.ViewHolder)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label107:
+      localViewHolder = (VipGeneralAdvPopWindow.ViewHolder)paramView.getTag();
+    }
+    if (localViewHolder != null)
+    {
       if (getCount() <= 1)
       {
-        paramView.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        localView.setBackgroundResource(2130849675);
+        localViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        paramView.setBackgroundResource(2130849572);
       }
-      for (;;)
+      else if (paramInt <= 0)
       {
-        localObject = (VipGeneralAdvPopWindow.MenuData)getItem(paramInt);
-        if (localObject != null) {
-          break label218;
-        }
-        break;
-        if (paramInt <= 0)
-        {
-          paramView.jdField_a_of_type_AndroidViewView.setVisibility(0);
-          localView.setBackgroundResource(2130849675);
-        }
-        else if (paramInt < getCount() - 1)
-        {
-          paramView.jdField_a_of_type_AndroidViewView.setVisibility(0);
-          localView.setBackgroundResource(2130849674);
-        }
-        else
-        {
-          paramView.jdField_a_of_type_AndroidViewView.setVisibility(8);
-          localView.setBackgroundResource(2130849673);
-        }
+        localViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        paramView.setBackgroundResource(2130849572);
       }
-      label218:
-      paramView.jdField_a_of_type_CooperationVipWidgetVipGeneralAdvPopWindow$MenuData = ((VipGeneralAdvPopWindow.MenuData)localObject);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((VipGeneralAdvPopWindow.MenuData)localObject).a);
-      if (TextUtils.isEmpty(((VipGeneralAdvPopWindow.MenuData)localObject).b)) {
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      else if (paramInt < getCount() - 1)
+      {
+        localViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        paramView.setBackgroundResource(2130849571);
       }
-      a((VipGeneralAdvPopWindow.MenuData)localObject, paramView);
+      else
+      {
+        localViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        paramView.setBackgroundResource(2130849570);
+      }
+      VipGeneralAdvPopWindow.MenuData localMenuData = (VipGeneralAdvPopWindow.MenuData)getItem(paramInt);
+      if (localMenuData != null)
+      {
+        localViewHolder.jdField_a_of_type_CooperationVipWidgetVipGeneralAdvPopWindow$MenuData = localMenuData;
+        localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localMenuData.a);
+        if (TextUtils.isEmpty(localMenuData.b)) {
+          localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        }
+        a(localMenuData, localViewHolder);
+      }
     }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.widget.VipGeneralAdvPopWindow.DropDownMenuAdapter
  * JD-Core Version:    0.7.0.1
  */

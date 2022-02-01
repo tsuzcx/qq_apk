@@ -13,14 +13,15 @@ class MsgTabStoryNodeListManager$15
       if (MsgTabStoryNodeListManager.a(this.this$0)) {
         this.this$0.jdField_a_of_type_JavaLangRunnable = null;
       }
-      return;
     }
-    ThreadManager.getUIHandler().post(this.this$0.jdField_a_of_type_JavaLangRunnable);
+    else {
+      ThreadManager.getUIHandler().post(this.this$0.jdField_a_of_type_JavaLangRunnable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.15
  * JD-Core Version:    0.7.0.1
  */

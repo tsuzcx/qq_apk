@@ -27,71 +27,70 @@ public class AnimatablePathValueParser
       paramJsonReader.endArray();
       KeyframesParser.setEndFrames(localArrayList);
     }
-    for (;;)
+    else
     {
-      return new AnimatablePathValue(localArrayList);
       localArrayList.add(new Keyframe(JsonUtils.jsonToPoint(paramJsonReader, Utils.dpScale())));
     }
+    return new AnimatablePathValue(localArrayList);
   }
   
   static AnimatableValue<PointF, PointF> parseSplitPath(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
-    AnimatableFloatValue localAnimatableFloatValue2 = null;
     paramJsonReader.beginObject();
-    int j = 0;
-    AnimatableFloatValue localAnimatableFloatValue1 = null;
     AnimatablePathValue localAnimatablePathValue = null;
-    label15:
+    Object localObject1 = localAnimatablePathValue;
+    Object localObject2 = localObject1;
+    int j = 0;
     while (paramJsonReader.peek() != JsonToken.END_OBJECT)
     {
       String str = paramJsonReader.nextName();
       int i = -1;
-      switch (str.hashCode())
+      int k = str.hashCode();
+      if (k != 107)
       {
-      }
-      for (;;)
-      {
-        switch (i)
+        if (k != 120)
         {
-        default: 
-          paramJsonReader.skipValue();
-          break label15;
-          if (str.equals("k"))
-          {
-            i = 0;
-            continue;
-            if (str.equals("x"))
-            {
-              i = 1;
-              continue;
-              if (str.equals("y")) {
-                i = 2;
-              }
-            }
+          if ((k == 121) && (str.equals("y"))) {
+            i = 2;
           }
-          break;
+        }
+        else if (str.equals("x")) {
+          i = 1;
         }
       }
-      localAnimatablePathValue = parse(paramJsonReader, paramLottieComposition);
-      continue;
-      if (paramJsonReader.peek() == JsonToken.STRING)
-      {
-        paramJsonReader.skipValue();
-        j = 1;
+      else if (str.equals("k")) {
+        i = 0;
       }
-      else
+      if (i != 0)
       {
-        localAnimatableFloatValue1 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
-        continue;
-        if (paramJsonReader.peek() == JsonToken.STRING)
+        if (i != 1)
         {
-          paramJsonReader.skipValue();
-          j = 1;
+          if (i != 2)
+          {
+            paramJsonReader.skipValue();
+            continue;
+          }
+          if (paramJsonReader.peek() == JsonToken.STRING) {
+            paramJsonReader.skipValue();
+          } else {
+            localObject2 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
+          }
         }
         else
         {
-          localAnimatableFloatValue2 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
+          if (paramJsonReader.peek() != JsonToken.STRING) {
+            break label175;
+          }
+          paramJsonReader.skipValue();
         }
+        j = 1;
+        continue;
+        label175:
+        localObject1 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
+      }
+      else
+      {
+        localAnimatablePathValue = parse(paramJsonReader, paramLottieComposition);
       }
     }
     paramJsonReader.endObject();
@@ -101,12 +100,12 @@ public class AnimatablePathValueParser
     if (localAnimatablePathValue != null) {
       return localAnimatablePathValue;
     }
-    return new AnimatableSplitDimensionPathValue(localAnimatableFloatValue1, localAnimatableFloatValue2);
+    return new AnimatableSplitDimensionPathValue((AnimatableFloatValue)localObject1, (AnimatableFloatValue)localObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.AnimatablePathValueParser
  * JD-Core Version:    0.7.0.1
  */

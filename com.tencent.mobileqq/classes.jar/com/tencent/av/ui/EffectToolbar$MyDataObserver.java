@@ -7,7 +7,7 @@ import java.util.Observer;
 class EffectToolbar$MyDataObserver
   implements Observer
 {
-  private WeakReference<EffectToolbar> a;
+  private final WeakReference<EffectToolbar> a;
   
   EffectToolbar$MyDataObserver(EffectToolbar paramEffectToolbar)
   {
@@ -25,7 +25,7 @@ class EffectToolbar$MyDataObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.EffectToolbar.MyDataObserver
  * JD-Core Version:    0.7.0.1
  */

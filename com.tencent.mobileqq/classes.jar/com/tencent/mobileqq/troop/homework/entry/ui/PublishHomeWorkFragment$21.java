@@ -1,41 +1,55 @@
 package com.tencent.mobileqq.troop.homework.entry.ui;
 
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.util.TroopReportor;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
 class PublishHomeWorkFragment$21
-  implements View.OnClickListener
+  implements HttpWebCgiAsyncTask.Callback
 {
   PublishHomeWorkFragment$21(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void onClick(View paramView)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(4) >= 6) {
-      QQToast.a(this.a.getActivity(), String.format(HardCodeUtil.a(2131708826), new Object[] { Integer.valueOf(6) }), 0).a();
-    }
-    for (;;)
+    this.a.p();
+    if (paramJSONObject != null) {}
+    try
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      if (paramJSONObject.has("retcode"))
+      {
+        paramInt = paramJSONObject.optInt("retcode");
+        if (paramInt == 0)
+        {
+          this.a.k();
+          return;
+        }
+        boolean bool = paramJSONObject.has("wording");
+        paramBundle = "";
+        if (bool) {
+          paramBundle = paramJSONObject.optString("wording", "");
+        }
+        if (!TextUtils.isEmpty(paramBundle))
+        {
+          QQToast.a(this.a.getActivity(), paramBundle, 0).a();
+          return;
+        }
+        if (paramInt == 111000)
+        {
+          QQToast.a(this.a.getActivity(), 2131697451, 0).a();
+          return;
+        }
+        QQToast.a(this.a.getActivity(), 2131697501, 0).a();
+      }
       return;
-      ((InputMethodManager)this.a.getActivity().getSystemService("input_method")).hideSoftInputFromWindow(this.a.jdField_a_of_type_AndroidViewViewGroup.getWindowToken(), 0);
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.b();
-      SearchReciteArticleFragment.a(this.a.getActivity(), this.a.b);
-      TroopReportor.a("Grp_edu", "Grp_recite", "Assign_Clk", 0, 0, new String[] { this.a.b });
     }
+    catch (Exception paramJSONObject) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment.21
  * JD-Core Version:    0.7.0.1
  */

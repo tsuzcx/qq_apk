@@ -50,9 +50,9 @@ public class StreamDecodeGifTask
   
   private void decoding(ImageKey paramImageKey, String paramString1, String paramString2)
   {
-    localObject = (NewGifDrawable)ImageManager.getInstance().getDrawbleFromCache(paramImageKey);
-    if (localObject == null) {}
-    for (;;)
+    Object localObject = (NewGifDrawable)ImageManager.getInstance().getDrawbleFromCache(paramImageKey);
+    StringBuilder localStringBuilder;
+    if (localObject == null)
     {
       try
       {
@@ -60,90 +60,101 @@ public class StreamDecodeGifTask
         localOptions.inPreferHeight = paramImageKey.options.clipHeight;
         localOptions.inPreferWidth = paramImageKey.options.clipWidth;
         paramString2 = new NewGifDrawable(paramString2, 4, localOptions, paramImageKey.hashCodeEx());
-        if (paramString2 == null) {
-          return;
-        }
-        paramString2.printStackTrace();
-      }
-      catch (IOException paramString2)
-      {
         try
         {
           paramString2.setUrl(paramImageKey.url);
-          localObject = paramString2;
-          this.mBaseImageCount = ((NewGifDrawable)localObject).getImageCount();
-          ImageManagerEnv.getLogger().d("StreamDecodeGifTask-decoding-thread", new Object[] { "RESULT_ON_STREAM_APPLY_IMAGE newFile count:" + this.mBaseImageCount + " hashcode:" + paramImageKey.hashCodeEx() + " url:" + paramString1 });
-          setResult(15, new Object[] { localObject });
-          this.beginTime = System.currentTimeMillis();
-          ImageManagerEnv.getLogger().d("StreamDecodeGifTask-performance", new Object[] { "First time:" + System.currentTimeMillis() + " hashcode:" + paramImageKey.hashCodeEx() + " url:" + paramString1 });
-          paramString1 = (String)localObject;
-          paramString2 = paramString1;
-          if (paramImageKey != null)
-          {
-            paramString2 = paramString1;
-            if (paramImageKey.options != null)
-            {
-              paramString2 = paramString1;
-              if ((paramImageKey.options.extraProcessor instanceof NewGifDrawableSpecifiedRegionProcessor)) {
-                paramString2 = (NewGifDrawable)paramImageKey.options.extraProcessor.doProcess(paramString1);
-              }
-            }
-          }
-          ImageManager.getInstance().putDrawableInMemoryCache(paramImageKey, paramImageKey.hashCodeEx(), null, paramString2, paramImageKey.options);
-          return;
         }
-        catch (IOException localIOException)
-        {
-          for (;;)
-          {
-            localObject = paramString2;
-            paramString2 = localIOException;
-          }
-        }
-        paramString2 = paramString2;
+        catch (IOException localIOException1) {}
+        localIOException2.printStackTrace();
       }
-      continue;
-      if (this.mControlTimes != 0)
+      catch (IOException localIOException2)
       {
-        this.mControlTimes -= 1;
-        paramString1 = (String)localObject;
+        paramString2 = (String)localObject;
+      }
+      this.mBaseImageCount = paramString2.getImageCount();
+      localObject = ImageManagerEnv.getLogger();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("RESULT_ON_STREAM_APPLY_IMAGE newFile count:");
+      localStringBuilder.append(this.mBaseImageCount);
+      localStringBuilder.append(" hashcode:");
+      localStringBuilder.append(paramImageKey.hashCodeEx());
+      localStringBuilder.append(" url:");
+      localStringBuilder.append(paramString1);
+      ((ILog)localObject).d("StreamDecodeGifTask-decoding-thread", new Object[] { localStringBuilder.toString() });
+      setResult(15, new Object[] { paramString2 });
+      this.beginTime = System.currentTimeMillis();
+      localObject = ImageManagerEnv.getLogger();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("First time:");
+      localStringBuilder.append(System.currentTimeMillis());
+      localStringBuilder.append(" hashcode:");
+      localStringBuilder.append(paramImageKey.hashCodeEx());
+      localStringBuilder.append(" url:");
+      localStringBuilder.append(paramString1);
+      ((ILog)localObject).d("StreamDecodeGifTask-performance", new Object[] { localStringBuilder.toString() });
+    }
+    else if (this.mControlTimes != 0)
+    {
+      this.mControlTimes -= 1;
+      paramString2 = (String)localObject;
+    }
+    else
+    {
+      ((NewGifDrawable)localObject).updateFile(paramString2);
+      if (((NewGifDrawable)localObject).getImageCount() > this.mBaseImageCount)
+      {
+        this.mControlTimes = this.mControlLimitTimes;
+        paramString2 = ImageManagerEnv.getLogger();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("updateFile mControlLimitTimes:");
+        localStringBuilder.append(this.mControlLimitTimes);
+        localStringBuilder.append(" hashcode:");
+        localStringBuilder.append(paramImageKey.hashCodeEx());
+        localStringBuilder.append(" url:");
+        localStringBuilder.append(paramString1);
+        paramString2.d("StreamDecodeGifTask-decoding-thread", new Object[] { localStringBuilder.toString() });
+        paramString2 = (String)localObject;
       }
       else
       {
-        ((NewGifDrawable)localObject).updateFile(paramString2);
-        if (((NewGifDrawable)localObject).getImageCount() > this.mBaseImageCount)
-        {
-          this.mControlTimes = this.mControlLimitTimes;
-          ImageManagerEnv.getLogger().d("StreamDecodeGifTask-decoding-thread", new Object[] { "updateFile mControlLimitTimes:" + this.mControlLimitTimes + " hashcode:" + paramImageKey.hashCodeEx() + " url:" + paramString1 });
-          paramString1 = (String)localObject;
-        }
-        else
-        {
-          this.mControlTimes = this.mControlLimitTimes;
-          this.mControlLimitTimes *= 2;
-          this.mControlTimes = (this.mControlLimitTimes - this.mControlTimes);
-          paramString1 = (String)localObject;
+        this.mControlTimes = this.mControlLimitTimes;
+        this.mControlLimitTimes *= 2;
+        this.mControlTimes = (this.mControlLimitTimes - this.mControlTimes);
+        paramString2 = (String)localObject;
+      }
+    }
+    paramString1 = paramString2;
+    if (paramImageKey != null)
+    {
+      paramString1 = paramString2;
+      if (paramImageKey.options != null)
+      {
+        paramString1 = paramString2;
+        if ((paramImageKey.options.extraProcessor instanceof NewGifDrawableSpecifiedRegionProcessor)) {
+          paramString1 = (NewGifDrawable)paramImageKey.options.extraProcessor.doProcess(paramString2);
         }
       }
     }
+    ImageManager.getInstance().putDrawableInMemoryCache(paramImageKey, paramImageKey.hashCodeEx(), null, paramString1, paramImageKey.options);
   }
   
   public static StreamDecodeGifTask obtain(ImageTask paramImageTask)
   {
-    if (needRecycle) {}
-    synchronized (sPoolSync)
-    {
-      if (sPool != null)
+    if (needRecycle) {
+      synchronized (sPoolSync)
       {
-        StreamDecodeGifTask localStreamDecodeGifTask = sPool;
-        sPool = sPool.next;
-        localStreamDecodeGifTask.next = null;
-        mObjectPoolSize -= 1;
-        localStreamDecodeGifTask.setImageTask(paramImageTask);
-        return localStreamDecodeGifTask;
+        if (sPool != null)
+        {
+          StreamDecodeGifTask localStreamDecodeGifTask = sPool;
+          sPool = sPool.next;
+          localStreamDecodeGifTask.next = null;
+          mObjectPoolSize -= 1;
+          localStreamDecodeGifTask.setImageTask(paramImageTask);
+          return localStreamDecodeGifTask;
+        }
       }
-      return new StreamDecodeGifTask(paramImageTask);
     }
+    return new StreamDecodeGifTask(paramImageTask);
   }
   
   public void excuteTask()
@@ -154,48 +165,63 @@ public class StreamDecodeGifTask
   
   protected void onResult(int paramInt, Object... paramVarArgs)
   {
-    String str;
-    switch (paramInt)
+    Object localObject;
+    if (paramInt != 2)
     {
-    default: 
-      super.setResult(paramInt, paramVarArgs);
-    case 14: 
-      do
+      if (paramInt != 3)
       {
-        return;
-        str = (String)paramVarArgs[0];
+        if (paramInt != 14)
+        {
+          super.setResult(paramInt, paramVarArgs);
+          return;
+        }
+        localObject = (String)paramVarArgs[0];
         paramVarArgs = (String)paramVarArgs[1];
-      } while (this.executorService.isShutdown());
-      if (this.executorService.getQueue().contains(this.mDecodetask))
-      {
-        ImageManagerEnv.getLogger().d("StreamDecodeGifTask", new Object[] { "onResult RESULT_ON_STREAM_PROGRESS | contains | hashcode:" + this.mImageKey.hashCodeEx() });
-        return;
+        if (!this.executorService.isShutdown())
+        {
+          if (this.executorService.getQueue().contains(this.mDecodetask))
+          {
+            paramVarArgs = ImageManagerEnv.getLogger();
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("onResult RESULT_ON_STREAM_PROGRESS | contains | hashcode:");
+            ((StringBuilder)localObject).append(this.mImageKey.hashCodeEx());
+            paramVarArgs.d("StreamDecodeGifTask", new Object[] { ((StringBuilder)localObject).toString() });
+            return;
+          }
+          this.mDecodetask = new StreamDecodeGifTask.DecodeStreamTask(this, this.mImageKey, (String)localObject, paramVarArgs);
+          this.mProgressRes = this.executorService.submit(this.mDecodetask);
+        }
       }
-      this.mDecodetask = new StreamDecodeGifTask.DecodeStreamTask(this, this.mImageKey, str, paramVarArgs);
-      this.mProgressRes = this.executorService.submit(this.mDecodetask);
-      return;
-    case 2: 
+      else
+      {
+        if (this.isFirstCallback)
+        {
+          ImageTaskBuilder.stampMap2.put(this.mImageKey.url, Long.valueOf(System.currentTimeMillis()));
+          this.isFirstCallback = false;
+        }
+        super.setResult(paramInt, paramVarArgs);
+      }
+    }
+    else
+    {
       paramVarArgs = (String)paramVarArgs[0];
-      str = this.mImageKey.filePath;
+      localObject = this.mImageKey.filePath;
       if (!this.executorService.isShutdown())
       {
         if (this.executorService.getQueue().contains(this.mEndTask))
         {
-          ImageManagerEnv.getLogger().d("StreamDecodeGifTask", new Object[] { "onResult RESULT_ON_DONWNLOAD_SUCCEED contains | hashcode:" + this.mImageKey.hashCodeEx() });
+          paramVarArgs = ImageManagerEnv.getLogger();
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("onResult RESULT_ON_DONWNLOAD_SUCCEED contains | hashcode:");
+          ((StringBuilder)localObject).append(this.mImageKey.hashCodeEx());
+          paramVarArgs.d("StreamDecodeGifTask", new Object[] { ((StringBuilder)localObject).toString() });
           return;
         }
-        this.mEndTask = new StreamDecodeGifTask.EndCloseStreamTask(this, this.mImageKey, paramVarArgs, str);
+        this.mEndTask = new StreamDecodeGifTask.EndCloseStreamTask(this, this.mImageKey, paramVarArgs, (String)localObject);
         this.mEndRes = this.executorService.submit(this.mEndTask);
       }
       this.executorService.shutdown();
-      return;
     }
-    if (this.isFirstCallback)
-    {
-      ImageTaskBuilder.stampMap2.put(this.mImageKey.url, Long.valueOf(System.currentTimeMillis()));
-      this.isFirstCallback = false;
-    }
-    super.setResult(paramInt, paramVarArgs);
   }
   
   public void recycle()
@@ -204,7 +230,8 @@ public class StreamDecodeGifTask
       return;
     }
     reset();
-    if ((this.executorService != null) && (!this.executorService.isShutdown()))
+    ??? = this.executorService;
+    if ((??? != null) && (!((ThreadPoolExecutor)???).isShutdown()))
     {
       ImageManagerEnv.getLogger().d("StreamDecodeGifTask", new Object[] { "executorService shutdown" });
       this.executorService.shutdown();
@@ -225,48 +252,56 @@ public class StreamDecodeGifTask
   
   protected void removeRecord(String paramString)
   {
+    paramString = this.mDecodetask;
     boolean bool;
-    if (this.mDecodetask != null)
+    StringBuilder localStringBuilder;
+    if (paramString != null)
     {
-      bool = this.executorService.remove(this.mDecodetask);
-      ImageManagerEnv.getLogger().d("StreamDecodeGifTask", new Object[] { "mDecodetask remove:" + bool });
+      bool = this.executorService.remove(paramString);
+      paramString = ImageManagerEnv.getLogger();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mDecodetask remove:");
+      localStringBuilder.append(bool);
+      paramString.d("StreamDecodeGifTask", new Object[] { localStringBuilder.toString() });
     }
-    if (this.mProgressRes != null) {}
-    try
-    {
-      this.mProgressRes.get();
-      if (this.mEndTask != null)
+    paramString = this.mProgressRes;
+    if (paramString != null) {
+      try
       {
-        bool = this.executorService.remove(this.mEndTask);
-        ImageManagerEnv.getLogger().d("kaedelin", new Object[] { "mEndTask remove:" + bool });
+        paramString.get();
       }
-      if (this.mEndRes == null) {}
-    }
-    catch (InterruptedException paramString)
-    {
-      for (;;)
+      catch (ExecutionException paramString)
       {
-        try
-        {
-          this.mEndRes.get();
-          return;
-        }
-        catch (InterruptedException paramString)
-        {
-          paramString.printStackTrace();
-          return;
-        }
-        catch (ExecutionException paramString)
-        {
-          paramString.printStackTrace();
-        }
-        paramString = paramString;
+        paramString.printStackTrace();
+      }
+      catch (InterruptedException paramString)
+      {
         paramString.printStackTrace();
       }
     }
-    catch (ExecutionException paramString)
+    paramString = this.mEndTask;
+    if (paramString != null)
     {
-      for (;;)
+      bool = this.executorService.remove(paramString);
+      paramString = ImageManagerEnv.getLogger();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mEndTask remove:");
+      localStringBuilder.append(bool);
+      paramString.d("kaedelin", new Object[] { localStringBuilder.toString() });
+    }
+    paramString = this.mEndRes;
+    if (paramString != null) {
+      try
+      {
+        paramString.get();
+        return;
+      }
+      catch (ExecutionException paramString)
+      {
+        paramString.printStackTrace();
+        return;
+      }
+      catch (InterruptedException paramString)
       {
         paramString.printStackTrace();
       }
@@ -275,7 +310,7 @@ public class StreamDecodeGifTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.StreamDecodeGifTask
  * JD-Core Version:    0.7.0.1
  */

@@ -24,9 +24,14 @@ public class HippyViewPagerController
   private static final String FUNC_SET_PAGE_WITHOUT_ANIM = "setPageWithoutAnimation";
   private static final String TAG = "HippyViewPagerController";
   
-  public void addView(ViewGroup paramViewGroup, View paramView, int paramInt)
+  protected void addView(ViewGroup paramViewGroup, View paramView, int paramInt)
   {
-    LogUtils.d("HippyViewPagerController", "addView: " + paramViewGroup.hashCode() + ", index=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("addView: ");
+    localStringBuilder.append(paramViewGroup.hashCode());
+    localStringBuilder.append(", index=");
+    localStringBuilder.append(paramInt);
+    LogUtils.d("HippyViewPagerController", localStringBuilder.toString());
     if (((paramViewGroup instanceof HippyViewPager)) && ((paramView instanceof HippyViewPagerItem)))
     {
       ((HippyViewPager)paramViewGroup).addViewToAdapter((HippyViewPagerItem)paramView, paramInt);
@@ -35,32 +40,28 @@ public class HippyViewPagerController
     LogUtils.e("HippyViewPagerController", "add view got invalid params");
   }
   
-  public View createViewImpl(Context paramContext)
+  protected View createViewImpl(Context paramContext)
   {
     return new HippyViewPager(paramContext);
   }
   
-  public View createViewImpl(Context paramContext, HippyMap paramHippyMap)
+  protected View createViewImpl(Context paramContext, HippyMap paramHippyMap)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramHippyMap != null) {
-      if ((!paramHippyMap.containsKey("direction")) || (!paramHippyMap.getString("direction").equals("vertical")))
-      {
-        bool1 = bool2;
-        if (!paramHippyMap.containsKey("vertical")) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
+    boolean bool;
+    if ((paramHippyMap != null) && (((paramHippyMap.containsKey("direction")) && (paramHippyMap.getString("direction").equals("vertical"))) || (paramHippyMap.containsKey("vertical")))) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    return new HippyViewPager(paramContext, bool1);
+    return new HippyViewPager(paramContext, bool);
   }
   
-  public void deleteChild(ViewGroup paramViewGroup, View paramView)
+  protected void deleteChild(ViewGroup paramViewGroup, View paramView)
   {
-    LogUtils.d("HippyViewPagerController", "deleteChild: " + paramViewGroup.hashCode());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("deleteChild: ");
+    localStringBuilder.append(paramViewGroup.hashCode());
+    LogUtils.d("HippyViewPagerController", localStringBuilder.toString());
     if (((paramViewGroup instanceof HippyViewPager)) && ((paramView instanceof HippyViewPagerItem)))
     {
       ((HippyViewPager)paramViewGroup).removeViewFromAdapter((HippyViewPagerItem)paramView);
@@ -71,133 +72,133 @@ public class HippyViewPagerController
   
   public void dispatchFunction(HippyViewPager paramHippyViewPager, String paramString, HippyArray paramHippyArray)
   {
-    if (paramHippyViewPager == null) {}
-    label4:
-    int j;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-                j = paramHippyViewPager.getCurrentItem();
-                i = -1;
-                switch (paramString.hashCode())
-                {
-                }
-                for (;;)
-                {
-                  switch (i)
-                  {
-                  default: 
-                    return;
-                  case 0: 
-                    if (paramHippyArray == null) {
-                      break label4;
-                    }
-                    paramString = paramHippyArray.get(0);
-                    if (!(paramString instanceof Integer)) {
-                      break label4;
-                    }
-                    paramHippyViewPager.switchToPage(((Integer)paramString).intValue(), true);
-                    return;
-                    if (paramString.equals("setPage"))
-                    {
-                      i = 0;
-                      continue;
-                      if (paramString.equals("setPageWithoutAnimation"))
-                      {
-                        i = 1;
-                        continue;
-                        if (paramString.equals("setIndex"))
-                        {
-                          i = 2;
-                          continue;
-                          if (paramString.equals("next"))
-                          {
-                            i = 3;
-                            continue;
-                            if (paramString.equals("prev")) {
-                              i = 4;
-                            }
-                          }
-                        }
-                      }
-                    }
-                    break;
-                  }
-                }
-              } while (paramHippyArray == null);
-              paramString = paramHippyArray.get(0);
-            } while (!(paramString instanceof Integer));
-            paramHippyViewPager.switchToPage(((Integer)paramString).intValue(), false);
-            return;
-          } while ((paramHippyArray == null) || (paramHippyArray.size() <= 0));
-          paramString = paramHippyArray.getMap(0);
-        } while ((paramString == null) || (paramString.size() <= 0) || (!paramString.containsKey("index")));
-        int i = paramString.getInt("index");
-        if (paramString.containsKey("animated")) {}
-        for (boolean bool = paramString.getBoolean("animated");; bool = true)
-        {
-          paramHippyViewPager.switchToPage(i, bool);
-          return;
-        }
-      } while (j >= paramHippyViewPager.getAdapter().getCount() - 1);
-      paramHippyViewPager.switchToPage(j + 1, true);
+    if (paramHippyViewPager == null) {
       return;
-    } while (j <= 0);
-    paramHippyViewPager.switchToPage(j - 1, true);
+    }
+    int j = paramHippyViewPager.getCurrentItem();
+    int i = -1;
+    int k = paramString.hashCode();
+    boolean bool = true;
+    switch (k)
+    {
+    default: 
+      break;
+    case 1984860689: 
+      if (paramString.equals("setPage")) {
+        i = 0;
+      }
+      break;
+    case 1395059088: 
+      if (paramString.equals("setIndex")) {
+        i = 2;
+      }
+      break;
+    case 3449395: 
+      if (paramString.equals("prev")) {
+        i = 4;
+      }
+      break;
+    case 3377907: 
+      if (paramString.equals("next")) {
+        i = 3;
+      }
+      break;
+    case -445763635: 
+      if (paramString.equals("setPageWithoutAnimation")) {
+        i = 1;
+      }
+      break;
+    }
+    if (i != 0)
+    {
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i != 4) {
+              return;
+            }
+            if (j <= 0) {
+              return;
+            }
+            i = j - 1;
+          }
+          else
+          {
+            if (j >= paramHippyViewPager.getAdapter().getCount() - 1) {
+              return;
+            }
+            i = j + 1;
+          }
+          paramHippyViewPager.switchToPage(i, true);
+        }
+        else if ((paramHippyArray != null) && (paramHippyArray.size() > 0))
+        {
+          paramString = paramHippyArray.getMap(0);
+          if ((paramString != null) && (paramString.size() > 0) && (paramString.containsKey("index")))
+          {
+            i = paramString.getInt("index");
+            if (paramString.containsKey("animated")) {
+              bool = paramString.getBoolean("animated");
+            }
+            paramHippyViewPager.switchToPage(i, bool);
+          }
+        }
+      }
+      else if (paramHippyArray != null)
+      {
+        paramString = paramHippyArray.get(0);
+        if ((paramString instanceof Integer)) {
+          paramHippyViewPager.switchToPage(((Integer)paramString).intValue(), false);
+        }
+      }
+    }
+    else if (paramHippyArray != null)
+    {
+      paramString = paramHippyArray.get(0);
+      if ((paramString instanceof Integer)) {
+        paramHippyViewPager.switchToPage(((Integer)paramString).intValue(), true);
+      }
+    }
   }
   
   public void dispatchFunction(HippyViewPager paramHippyViewPager, String paramString, HippyArray paramHippyArray, Promise paramPromise)
   {
-    if (paramHippyViewPager == null) {}
-    do
-    {
+    if (paramHippyViewPager == null) {
       return;
-      int i = -1;
-      switch (paramString.hashCode())
+    }
+    int i = -1;
+    if ((paramString.hashCode() == 1395059088) && (paramString.equals("setIndex"))) {
+      i = 0;
+    }
+    if (i != 0) {
+      return;
+    }
+    if ((paramHippyArray != null) && (paramHippyArray.size() > 0))
+    {
+      paramString = paramHippyArray.getMap(0);
+      if ((paramString != null) && (paramString.size() > 0) && (paramString.containsKey("index")))
       {
-      default: 
-        switch (i)
-        {
-        default: 
-          return;
-        }
-        if ((paramHippyArray == null) || (paramHippyArray.size() <= 0)) {
-          continue;
-        }
-        paramString = paramHippyArray.getMap(0);
-        if ((paramString == null) || (paramString.size() <= 0) || (!paramString.containsKey("index"))) {
-          continue;
-        }
         i = paramString.getInt("index");
-        if (!paramString.containsKey("animated")) {
-          break;
+        boolean bool;
+        if (paramString.containsKey("animated")) {
+          bool = paramString.getBoolean("animated");
+        } else {
+          bool = true;
         }
-      }
-      for (boolean bool = paramString.getBoolean("animated");; bool = true)
-      {
         paramHippyViewPager.setCallBackPromise(paramPromise);
         paramHippyViewPager.switchToPage(i, bool);
         return;
-        if (!paramString.equals("setIndex")) {
-          break;
-        }
-        i = 0;
-        break;
       }
-    } while (paramPromise == null);
-    paramHippyViewPager = new HippyMap();
-    paramHippyViewPager.pushString("msg", "invalid parameter!");
-    paramPromise.resolve(paramHippyViewPager);
+    }
+    if (paramPromise != null)
+    {
+      paramHippyViewPager = new HippyMap();
+      paramHippyViewPager.pushString("msg", "invalid parameter!");
+      paramPromise.resolve(paramHippyViewPager);
+    }
   }
   
   public View getChildAt(HippyViewPager paramHippyViewPager, int paramInt)
@@ -241,7 +242,7 @@ public class HippyViewPagerController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.viewpager.HippyViewPagerController
  * JD-Core Version:    0.7.0.1
  */

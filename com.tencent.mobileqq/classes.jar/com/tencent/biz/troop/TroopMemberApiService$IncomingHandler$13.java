@@ -2,8 +2,6 @@ package com.tencent.biz.troop;
 
 import android.os.Bundle;
 import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.biz.pubaccount.readinjoy.plugin.jsMethodAction.OpenTKPublisherAction;
-import com.tencent.biz.pubaccount.readinjoy.plugin.jsMethodAction.OpenTKPublisherAction.Companion;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -19,7 +17,7 @@ class TroopMemberApiService$IncomingHandler$13
     super(paramBoolean);
   }
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     if ((paramInt == 0) && (paramArrayOfByte != null))
     {
@@ -32,11 +30,11 @@ class TroopMemberApiService$IncomingHandler$13
         }
         if ((paramBundle.msg_judge_topic_video_num_rsp.uint32_is_overtimes.has()) && (paramBundle.msg_judge_topic_video_num_rsp.uint32_is_overtimes.get() > 0))
         {
-          TroopMemberApiService.IncomingHandler.a(this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler, 161, this.jdField_a_of_type_AndroidOsBundle, 1, HardCodeUtil.a(2131707844));
-          OpenTKPublisherAction.a.a(false);
+          TroopMemberApiService.IncomingHandler.a(this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler, 161, this.jdField_a_of_type_AndroidOsBundle, 1, HardCodeUtil.a(2131707867));
+          TroopMemberApiService.a(false);
           return;
         }
-        OpenTKPublisherAction.a.a(true);
+        TroopMemberApiService.a(true);
         TroopMemberApiService.IncomingHandler.a(this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler, this.jdField_a_of_type_AndroidOsBundle);
         return;
       }
@@ -48,15 +46,18 @@ class TroopMemberApiService$IncomingHandler$13
     }
     else
     {
-      TroopMemberApiService.IncomingHandler.a(this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler, 161, this.jdField_a_of_type_AndroidOsBundle, 1, HardCodeUtil.a(2131710781));
-      OpenTKPublisherAction.a.a(false);
-      QLog.e("TroopMemberApiService", 1, "oidb_0xe2a request failed: errorCode = " + paramInt);
+      TroopMemberApiService.IncomingHandler.a(this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler, 161, this.jdField_a_of_type_AndroidOsBundle, 1, HardCodeUtil.a(2131710758));
+      TroopMemberApiService.a(false);
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("oidb_0xe2a request failed: errorCode = ");
+      paramArrayOfByte.append(paramInt);
+      QLog.e("TroopMemberApiService", 1, paramArrayOfByte.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiService.IncomingHandler.13
  * JD-Core Version:    0.7.0.1
  */

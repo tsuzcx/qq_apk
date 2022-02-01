@@ -18,8 +18,12 @@ class TroopNewGuidePopWindow$6
     this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidViewView.getLayoutParams();
     int i = this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.b - this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_Int - this.jdField_a_of_type_Int * 2;
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopTipsPopWindow", 2, "maxHeight = " + i);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("maxHeight = ");
+      localStringBuilder.append(i);
+      QLog.d("TroopTipsPopWindow", 2, localStringBuilder.toString());
     }
     if (this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidViewView.getMeasuredHeight() > i)
     {
@@ -33,7 +37,7 @@ class TroopNewGuidePopWindow$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.feeds.TroopNewGuidePopWindow.6
  * JD-Core Version:    0.7.0.1
  */

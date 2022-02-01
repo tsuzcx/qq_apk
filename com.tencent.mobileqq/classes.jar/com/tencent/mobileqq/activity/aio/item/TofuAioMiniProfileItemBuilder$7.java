@@ -10,14 +10,18 @@ class TofuAioMiniProfileItemBuilder$7
   
   public void onBrowseAskAnonymouslyReport(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TofuAioMiniProfileItemBuilder", 2, "onBrowseAskAnonymouslyReport() success = " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onBrowseAskAnonymouslyReport() success = ");
+      localStringBuilder.append(paramBoolean);
+      QLog.i("TofuAioMiniProfileItemBuilder", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TofuAioMiniProfileItemBuilder.7
  * JD-Core Version:    0.7.0.1
  */

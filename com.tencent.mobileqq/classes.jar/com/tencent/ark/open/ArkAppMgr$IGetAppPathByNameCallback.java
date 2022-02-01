@@ -2,7 +2,7 @@ package com.tencent.ark.open;
 
 public abstract interface ArkAppMgr$IGetAppPathByNameCallback
 {
-  public abstract void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject);
+  public abstract void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo);
 }
 
 

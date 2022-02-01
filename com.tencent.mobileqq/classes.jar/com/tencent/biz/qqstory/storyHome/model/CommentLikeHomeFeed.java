@@ -39,42 +39,44 @@ public abstract class CommentLikeHomeFeed<T extends CommentLikeFeedItem>
   private BatchGetFeedCommentRequest.FeedCommentInfo a(int paramInt, CommentLikeHomeFeed paramCommentLikeHomeFeed, BatchGetFeedCommentRequest.BatchGetFeedCommentResp paramBatchGetFeedCommentResp)
   {
     List localList = paramBatchGetFeedCommentResp.jdField_a_of_type_JavaUtilList;
-    if (paramInt < localList.size()) {}
-    for (paramBatchGetFeedCommentResp = (BatchGetFeedCommentRequest.FeedCommentInfo)localList.get(paramInt);; paramBatchGetFeedCommentResp = null)
-    {
-      if ((paramBatchGetFeedCommentResp != null) && (paramBatchGetFeedCommentResp.jdField_a_of_type_JavaLangString.equals(paramCommentLikeHomeFeed.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId))) {
-        return paramBatchGetFeedCommentResp;
-      }
-      paramBatchGetFeedCommentResp = new BatchGetFeedCommentRequest.FeedCommentInfo();
-      paramBatchGetFeedCommentResp.jdField_a_of_type_JavaLangString = paramCommentLikeHomeFeed.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId;
-      paramInt = localList.indexOf(paramBatchGetFeedCommentResp);
-      if (paramInt >= 0) {
-        return (BatchGetFeedCommentRequest.FeedCommentInfo)localList.get(paramInt);
-      }
-      SLog.d("Q.qqstory.home.data.CommentLikeHomeFeed", "can't not find feed comment for id:%s", new Object[] { paramCommentLikeHomeFeed.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId });
-      return null;
+    if (paramInt < localList.size()) {
+      paramBatchGetFeedCommentResp = (BatchGetFeedCommentRequest.FeedCommentInfo)localList.get(paramInt);
+    } else {
+      paramBatchGetFeedCommentResp = null;
     }
+    if ((paramBatchGetFeedCommentResp != null) && (paramBatchGetFeedCommentResp.jdField_a_of_type_JavaLangString.equals(paramCommentLikeHomeFeed.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId))) {
+      return paramBatchGetFeedCommentResp;
+    }
+    paramBatchGetFeedCommentResp = new BatchGetFeedCommentRequest.FeedCommentInfo();
+    paramBatchGetFeedCommentResp.jdField_a_of_type_JavaLangString = paramCommentLikeHomeFeed.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId;
+    paramInt = localList.indexOf(paramBatchGetFeedCommentResp);
+    if (paramInt >= 0) {
+      return (BatchGetFeedCommentRequest.FeedCommentInfo)localList.get(paramInt);
+    }
+    SLog.d("Q.qqstory.home.data.CommentLikeHomeFeed", "can't not find feed comment for id:%s", new Object[] { paramCommentLikeHomeFeed.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId });
+    return null;
   }
   
   @Nullable
   private BatchGetFeedLikeRequest.FeedLikeInfo a(int paramInt, CommentLikeHomeFeed paramCommentLikeHomeFeed, BatchGetFeedLikeRequest.BatchGetFeedLikeResp paramBatchGetFeedLikeResp)
   {
     List localList = paramBatchGetFeedLikeResp.jdField_a_of_type_JavaUtilList;
-    if (paramInt < localList.size()) {}
-    for (paramBatchGetFeedLikeResp = (BatchGetFeedLikeRequest.FeedLikeInfo)localList.get(paramInt);; paramBatchGetFeedLikeResp = null)
-    {
-      if ((paramBatchGetFeedLikeResp != null) && (paramBatchGetFeedLikeResp.jdField_a_of_type_JavaLangString.equals(paramCommentLikeHomeFeed.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId))) {
-        return paramBatchGetFeedLikeResp;
-      }
-      paramBatchGetFeedLikeResp = new BatchGetFeedLikeRequest.FeedLikeInfo();
-      paramBatchGetFeedLikeResp.jdField_a_of_type_JavaLangString = paramCommentLikeHomeFeed.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId;
-      paramInt = localList.indexOf(paramBatchGetFeedLikeResp);
-      if (paramInt >= 0) {
-        return (BatchGetFeedLikeRequest.FeedLikeInfo)localList.get(paramInt);
-      }
-      SLog.d("Q.qqstory.home.data.CommentLikeHomeFeed", "can't not find feed like for id:%s", new Object[] { paramCommentLikeHomeFeed.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId });
-      return null;
+    if (paramInt < localList.size()) {
+      paramBatchGetFeedLikeResp = (BatchGetFeedLikeRequest.FeedLikeInfo)localList.get(paramInt);
+    } else {
+      paramBatchGetFeedLikeResp = null;
     }
+    if ((paramBatchGetFeedLikeResp != null) && (paramBatchGetFeedLikeResp.jdField_a_of_type_JavaLangString.equals(paramCommentLikeHomeFeed.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId))) {
+      return paramBatchGetFeedLikeResp;
+    }
+    paramBatchGetFeedLikeResp = new BatchGetFeedLikeRequest.FeedLikeInfo();
+    paramBatchGetFeedLikeResp.jdField_a_of_type_JavaLangString = paramCommentLikeHomeFeed.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId;
+    paramInt = localList.indexOf(paramBatchGetFeedLikeResp);
+    if (paramInt >= 0) {
+      return (BatchGetFeedLikeRequest.FeedLikeInfo)localList.get(paramInt);
+    }
+    SLog.d("Q.qqstory.home.data.CommentLikeHomeFeed", "can't not find feed like for id:%s", new Object[] { paramCommentLikeHomeFeed.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId });
+    return null;
   }
   
   public T a()
@@ -124,18 +126,15 @@ public abstract class CommentLikeHomeFeed<T extends CommentLikeFeedItem>
       this.jdField_a_of_type_JavaUtilHashSet.clear();
     }
     paramList = paramList.iterator();
-    if (paramList.hasNext())
+    while (paramList.hasNext())
     {
       CommentEntry localCommentEntry = (CommentEntry)paramList.next();
       if (this.jdField_a_of_type_JavaUtilHashSet.contains(Integer.valueOf(localCommentEntry.commentId))) {
         this.jdField_a_of_type_JavaUtilList.remove(localCommentEntry);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_JavaUtilList.add(localCommentEntry);
-        break;
+      } else {
         this.jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(localCommentEntry.commentId));
       }
+      this.jdField_a_of_type_JavaUtilList.add(localCommentEntry);
     }
   }
   
@@ -160,18 +159,15 @@ public abstract class CommentLikeHomeFeed<T extends CommentLikeFeedItem>
       this.jdField_b_of_type_JavaUtilHashSet.clear();
     }
     paramList = paramList.iterator();
-    if (paramList.hasNext())
+    while (paramList.hasNext())
     {
       LikeEntry localLikeEntry = (LikeEntry)paramList.next();
       if (this.jdField_b_of_type_JavaUtilHashSet.contains(localLikeEntry.unionId)) {
         this.jdField_b_of_type_JavaUtilList.remove(localLikeEntry);
-      }
-      for (;;)
-      {
-        this.jdField_b_of_type_JavaUtilList.add(localLikeEntry);
-        break;
+      } else {
         this.jdField_b_of_type_JavaUtilHashSet.add(localLikeEntry.unionId);
       }
+      this.jdField_b_of_type_JavaUtilList.add(localLikeEntry);
     }
   }
   
@@ -182,7 +178,7 @@ public abstract class CommentLikeHomeFeed<T extends CommentLikeFeedItem>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.CommentLikeHomeFeed
  * JD-Core Version:    0.7.0.1
  */

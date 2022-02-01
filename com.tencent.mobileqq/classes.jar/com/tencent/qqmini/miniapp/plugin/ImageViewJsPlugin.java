@@ -53,64 +53,50 @@ public class ImageViewJsPlugin
     if (localObject == null)
     {
       localObject = new CoverImageView(this.mContext);
-      ((CoverView)localObject).setContentDescription(paramInt2 + "_" + paramInt1);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramInt1);
+      ((CoverView)localObject).setContentDescription(localStringBuilder.toString());
       ((CoverView)localObject).setParentId(paramInt1);
       ((CoverView)localObject).setFixed(paramBoolean1);
+      paramBoolean1 = CoverViewAction.obtain(this.mMiniAppContext).add(paramInt1, paramInt2, (CoverView)localObject, paramBoolean1);
     }
-    for (paramBoolean1 = CoverViewAction.obtain(this.mMiniAppContext).add(paramInt1, paramInt2, (CoverView)localObject, paramBoolean1);; paramBoolean1 = true)
+    else
     {
-      if ((localObject instanceof CoverImageView))
+      paramBoolean1 = true;
+    }
+    if ((localObject instanceof CoverImageView))
+    {
+      if (paramJSONObject1 != null)
+      {
+        paramInt1 = (int)(this.density * paramJSONObject1.optInt("width") + 0.5F);
+        paramInt2 = (int)(this.density * paramJSONObject1.optInt("height") + 0.5F);
+        setPosition(paramJSONObject1, paramJSONObject2, (CoverView)localObject, paramInt1, paramInt2);
+      }
+      else
       {
         paramInt1 = 0;
         paramInt2 = 0;
-        if (paramJSONObject1 != null)
-        {
-          paramInt1 = (int)(this.density * paramJSONObject1.optInt("width") + 0.5F);
-          paramInt2 = (int)(this.density * paramJSONObject1.optInt("height") + 0.5F);
-          setPosition(paramJSONObject1, paramJSONObject2, (CoverView)localObject, paramInt1, paramInt2);
-        }
-        setStyle(paramJSONObject2, (CoverView)localObject);
-        setImageDrawable(paramString2, (CoverImageView)localObject, paramInt1, paramInt2);
-        setOnClickListener(paramRequestEvent, paramString1, paramBoolean, (CoverView)localObject);
       }
-      return paramBoolean1;
+      setStyle(paramJSONObject2, (CoverView)localObject);
+      setImageDrawable(paramString2, (CoverImageView)localObject, paramInt1, paramInt2);
+      setOnClickListener(paramRequestEvent, paramString1, paramBoolean, (CoverView)localObject);
     }
+    return paramBoolean1;
   }
   
   private void setIconPath(JSONObject paramJSONObject, String paramString, CoverImageView paramCoverImageView)
   {
-    int j = 0;
-    if ((paramString.startsWith("http")) || (paramString.startsWith("https"))) {
-      if (paramJSONObject == null) {
-        break label154;
-      }
-    }
-    for (;;)
+    if ((!paramString.startsWith("http")) && (!paramString.startsWith("https")))
     {
-      int i;
-      try
-      {
-        i = (int)(this.density * paramJSONObject.optInt("width") + 0.5F);
-        j = (int)(this.density * paramJSONObject.optInt("height") + 0.5F);
-        paramJSONObject = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getDrawable(this.mContext, paramString, i, j, null);
-        if (paramJSONObject != null) {
-          paramCoverImageView.setImageDrawable(paramJSONObject);
-        }
-        return;
-      }
-      catch (Throwable paramJSONObject)
-      {
-        QMLog.e("ImageViewJsPlugin", "URLDrawable error.", paramJSONObject);
-        return;
-      }
       paramJSONObject = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(paramString);
-      if (!StringUtil.isEmpty(paramJSONObject))
-      {
+      if (!StringUtil.isEmpty(paramJSONObject)) {
         try
         {
           paramJSONObject = ImageUtil.getLocalBitmap(paramJSONObject);
           if (paramJSONObject == null) {
-            continue;
+            break label156;
           }
           paramCoverImageView.setImageBitmap(paramJSONObject);
           return;
@@ -120,44 +106,76 @@ public class ImageViewJsPlugin
           QMLog.e("ImageViewJsPlugin", "getLocalBitmap error.", paramJSONObject);
           return;
         }
-        label154:
-        i = 0;
       }
+    }
+    else
+    {
+      if (paramJSONObject == null) {
+        break label157;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        i = (int)(this.density * paramJSONObject.optInt("width") + 0.5F);
+        j = (int)(this.density * paramJSONObject.optInt("height") + 0.5F);
+        paramJSONObject = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getDrawable(this.mContext, paramString, i, j, null);
+        if (paramJSONObject != null)
+        {
+          paramCoverImageView.setImageDrawable(paramJSONObject);
+          return;
+        }
+      }
+      catch (Throwable paramJSONObject)
+      {
+        QMLog.e("ImageViewJsPlugin", "URLDrawable error.", paramJSONObject);
+      }
+      label156:
+      return;
+      label157:
+      int i = 0;
+      int j = 0;
     }
   }
   
   private void setImageDrawable(String paramString, CoverImageView paramCoverImageView, int paramInt1, int paramInt2)
   {
-    if ((StringUtil.isEmpty(paramString)) || ((paramString.startsWith("http")) || (paramString.startsWith("https")))) {}
-    for (;;)
-    {
-      try
+    if (!StringUtil.isEmpty(paramString)) {
+      if ((!paramString.startsWith("http")) && (!paramString.startsWith("https")))
       {
-        paramString = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getDrawable(this.mContext, paramString, paramInt1, paramInt2, null);
-        if (paramString != null) {
-          paramCoverImageView.setImageDrawable(paramString);
+        paramString = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(paramString);
+        if (!StringUtil.isEmpty(paramString)) {
+          try
+          {
+            paramString = ImageUtil.getLocalBitmap(paramString);
+            if (paramString == null) {
+              return;
+            }
+            paramCoverImageView.setImageBitmap(paramString);
+            return;
+          }
+          catch (Throwable paramString)
+          {
+            QMLog.e("ImageViewJsPlugin", "getLocalBitmap error.", paramString);
+            return;
+          }
         }
-        return;
       }
-      catch (Throwable paramString)
+      else
       {
-        QMLog.e("ImageViewJsPlugin", "URLDrawable error.", paramString);
-        return;
-      }
-      paramString = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(paramString);
-      if (!StringUtil.isEmpty(paramString)) {
         try
         {
-          paramString = ImageUtil.getLocalBitmap(paramString);
+          paramString = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getDrawable(this.mContext, paramString, paramInt1, paramInt2, null);
           if (paramString != null)
           {
-            paramCoverImageView.setImageBitmap(paramString);
+            paramCoverImageView.setImageDrawable(paramString);
             return;
           }
         }
         catch (Throwable paramString)
         {
-          QMLog.e("ImageViewJsPlugin", "getLocalBitmap error.", paramString);
+          QMLog.e("ImageViewJsPlugin", "URLDrawable error.", paramString);
         }
       }
     }
@@ -193,65 +211,68 @@ public class ImageViewJsPlugin
   
   private void setStyle(JSONObject paramJSONObject, CoverView paramCoverView)
   {
-    Object localObject;
     if (paramJSONObject != null)
     {
-      if (!paramJSONObject.has("bgColor")) {
-        break label161;
-      }
-      localObject = ColorUtils.getActualColor(paramJSONObject.optString("bgColor"));
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break label161;
-      }
-    }
-    for (;;)
-    {
-      try
+      if (paramJSONObject.has("bgColor"))
       {
-        i = Color.parseColor((String)localObject);
-        paramCoverView.setBackgroundColor(i);
-        paramCoverView.setAlpha((float)paramJSONObject.optDouble("opacity", 0.0D));
-        localObject = paramJSONObject.optJSONArray("padding");
-        if ((localObject != null) && (((JSONArray)localObject).length() == 4)) {
-          paramCoverView.setPadding(((JSONArray)localObject).optInt(3, 0), ((JSONArray)localObject).optInt(0, 0), ((JSONArray)localObject).optInt(1, 0), ((JSONArray)localObject).optInt(2, 0));
+        localObject = ColorUtils.getActualColor(paramJSONObject.optString("bgColor"));
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          try
+          {
+            i = Color.parseColor((String)localObject);
+          }
+          catch (Exception localException)
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("insertImageView: failed to parse color ");
+            localStringBuilder.append((String)localObject);
+            Log.w("ImageViewJsPlugin", localStringBuilder.toString(), localException);
+          }
         }
-        paramCoverView.setBorderRadius((float)paramJSONObject.optDouble("borderRadius", 0.0D) * this.density);
-        return;
       }
-      catch (Exception localException)
-      {
-        Log.w("ImageViewJsPlugin", "insertImageView: failed to parse color " + (String)localObject, localException);
-      }
-      label161:
       int i = 0;
+      paramCoverView.setBackgroundColor(i);
+      paramCoverView.setAlpha((float)paramJSONObject.optDouble("opacity", 0.0D));
+      Object localObject = paramJSONObject.optJSONArray("padding");
+      if ((localObject != null) && (((JSONArray)localObject).length() == 4)) {
+        paramCoverView.setPadding(((JSONArray)localObject).optInt(3, 0), ((JSONArray)localObject).optInt(0, 0), ((JSONArray)localObject).optInt(1, 0), ((JSONArray)localObject).optInt(2, 0));
+      }
+      paramCoverView.setBorderRadius((float)paramJSONObject.optDouble("borderRadius", 0.0D) * this.density);
     }
   }
   
   @JsEvent({"insertImageView"})
   public void insertImageView(RequestEvent paramRequestEvent)
   {
-    try
+    for (;;)
     {
-      JSONObject localJSONObject1 = new JSONObject(paramRequestEvent.jsonParams);
-      int i = localJSONObject1.optInt("viewId");
-      int j = localJSONObject1.optInt("parentId");
-      String str1 = localJSONObject1.optString("iconPath");
-      String str2 = localJSONObject1.optString("data");
-      JSONObject localJSONObject2 = localJSONObject1.optJSONObject("position");
-      if (localJSONObject1.has("clickable")) {}
-      for (Boolean localBoolean = Boolean.valueOf(localJSONObject1.optBoolean("clickable"));; localBoolean = null)
+      try
       {
-        JSONObject localJSONObject3 = localJSONObject1.optJSONObject("style");
-        boolean bool = localJSONObject1.optBoolean("fixed", false);
-        new JSONObject().put("viewId", i);
-        AppBrandTask.runTaskOnUiThread(new ImageViewJsPlugin.1(this, paramRequestEvent, localJSONObject2, str2, j, i, str1, localBoolean, localJSONObject3, bool));
+        localObject2 = new JSONObject(paramRequestEvent.jsonParams);
+        int i = ((JSONObject)localObject2).optInt("viewId");
+        int j = ((JSONObject)localObject2).optInt("parentId");
+        String str1 = ((JSONObject)localObject2).optString("iconPath");
+        String str2 = ((JSONObject)localObject2).optString("data");
+        JSONObject localJSONObject1 = ((JSONObject)localObject2).optJSONObject("position");
+        if (((JSONObject)localObject2).has("clickable"))
+        {
+          Boolean localBoolean = Boolean.valueOf(((JSONObject)localObject2).optBoolean("clickable"));
+          JSONObject localJSONObject2 = ((JSONObject)localObject2).optJSONObject("style");
+          boolean bool = ((JSONObject)localObject2).optBoolean("fixed", false);
+          new JSONObject().put("viewId", i);
+          AppBrandTask.runTaskOnUiThread(new ImageViewJsPlugin.1(this, paramRequestEvent, localJSONObject1, str2, j, i, str1, localBoolean, localJSONObject2, bool));
+          return;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(paramRequestEvent.event);
+        ((StringBuilder)localObject2).append(" error.");
+        QMLog.e("ImageViewJsPlugin", ((StringBuilder)localObject2).toString(), localJSONException);
         return;
       }
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      QMLog.e("ImageViewJsPlugin", paramRequestEvent.event + " error.", localJSONException);
+      Object localObject1 = null;
     }
   }
   
@@ -271,33 +292,43 @@ public class ImageViewJsPlugin
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("ImageViewJsPlugin", paramRequestEvent.event + " error.", localJSONException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramRequestEvent.event);
+      localStringBuilder.append(" error.");
+      QMLog.e("ImageViewJsPlugin", localStringBuilder.toString(), localJSONException);
     }
   }
   
   @JsEvent({"updateImageView"})
   public void updateImageView(RequestEvent paramRequestEvent)
   {
-    try
+    for (;;)
     {
-      Object localObject = new JSONObject(paramRequestEvent.jsonParams);
-      int i = ((JSONObject)localObject).optInt("viewId");
-      String str = ((JSONObject)localObject).optString("iconPath");
-      JSONObject localJSONObject1 = ((JSONObject)localObject).optJSONObject("position");
-      if (((JSONObject)localObject).has("clickable")) {}
-      for (Boolean localBoolean = Boolean.valueOf(((JSONObject)localObject).optBoolean("clickable"));; localBoolean = null)
+      try
       {
-        JSONObject localJSONObject2 = ((JSONObject)localObject).optJSONObject("style");
-        localObject = ((JSONObject)localObject).optString("data");
-        new JSONObject().put("viewId", i);
-        AppBrandTask.runTaskOnUiThread(new ImageViewJsPlugin.2(this, localJSONObject1, (String)localObject, i, str, localBoolean, localJSONObject2, paramRequestEvent));
+        Object localObject3 = new JSONObject(paramRequestEvent.jsonParams);
+        int i = ((JSONObject)localObject3).optInt("viewId");
+        localObject2 = ((JSONObject)localObject3).optString("iconPath");
+        JSONObject localJSONObject1 = ((JSONObject)localObject3).optJSONObject("position");
+        if (((JSONObject)localObject3).has("clickable"))
+        {
+          Boolean localBoolean = Boolean.valueOf(((JSONObject)localObject3).optBoolean("clickable"));
+          JSONObject localJSONObject2 = ((JSONObject)localObject3).optJSONObject("style");
+          localObject3 = ((JSONObject)localObject3).optString("data");
+          new JSONObject().put("viewId", i);
+          AppBrandTask.runTaskOnUiThread(new ImageViewJsPlugin.2(this, localJSONObject1, (String)localObject3, i, (String)localObject2, localBoolean, localJSONObject2, paramRequestEvent));
+          return;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(paramRequestEvent.event);
+        ((StringBuilder)localObject2).append(" error.");
+        QMLog.e("ImageViewJsPlugin", ((StringBuilder)localObject2).toString(), localJSONException);
         return;
       }
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      QMLog.e("ImageViewJsPlugin", paramRequestEvent.event + " error.", localJSONException);
+      Object localObject1 = null;
     }
   }
   
@@ -345,7 +376,7 @@ public class ImageViewJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.ImageViewJsPlugin
  * JD-Core Version:    0.7.0.1
  */

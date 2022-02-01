@@ -10,42 +10,47 @@ class PublicAccountChatPie$58
 {
   PublicAccountChatPie$58(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void f(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  protected void f(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    if ((!paramBoolean) || (paramHashMap == null))
+    if ((paramBoolean) && (paramHashMap != null))
     {
-      this.a.x(2);
-      this.a.a.sendEmptyMessageDelayed(10, 3000L);
+      if (((Integer)paramHashMap.get("result")).intValue() == 0)
+      {
+        this.a.n(1);
+        this.a.a.sendEmptyMessageDelayed(10, 3000L);
+        return;
+      }
+      paramHashMap = this.a;
+      paramHashMap.Y = true;
+      paramHashMap.aC();
+      if ((PublicAccountChatPie.a(this.a) != null) && (PublicAccountChatPie.a(this.a).isShowing())) {
+        PublicAccountChatPie.a(this.a).dismiss();
+      }
+      this.a.aD();
       return;
     }
-    if (((Integer)paramHashMap.get("result")).intValue() == 0)
-    {
-      this.a.x(1);
-      this.a.a.sendEmptyMessageDelayed(10, 3000L);
-      return;
-    }
-    this.a.ai = true;
-    this.a.bw();
-    if ((PublicAccountChatPie.a(this.a) != null) && (PublicAccountChatPie.a(this.a).isShowing())) {
-      PublicAccountChatPie.a(this.a).dismiss();
-    }
-    this.a.bx();
+    this.a.n(2);
+    this.a.a.sendEmptyMessageDelayed(10, 3000L);
   }
   
-  public void g(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  protected void g(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    if ((!paramBoolean) || (paramHashMap == null)) {
-      return;
+    if (paramBoolean)
+    {
+      if (paramHashMap == null) {
+        return;
+      }
+      PublicAccountChatPie localPublicAccountChatPie = this.a;
+      localPublicAccountChatPie.ab = true;
+      localPublicAccountChatPie.aa = ((Boolean)paramHashMap.get("result")).booleanValue();
+      this.a.aC();
+      this.a.aD();
     }
-    this.a.al = true;
-    this.a.ak = ((Boolean)paramHashMap.get("result")).booleanValue();
-    this.a.bw();
-    this.a.bx();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.58
  * JD-Core Version:    0.7.0.1
  */

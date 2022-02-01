@@ -13,14 +13,17 @@ public class DatalineFileControlReq
   
   public DatalineFileControlReq(DataLineMsgRecord paramDataLineMsgRecord)
   {
-    if (paramDataLineMsgRecord != null) {}
-    for (this.jdField_a_of_type_Long = paramDataLineMsgRecord.sessionid;; this.jdField_a_of_type_Long = 0L)
+    if (paramDataLineMsgRecord != null)
     {
-      this.jdField_a_of_type_Int = 6000;
-      this.jdField_a_of_type_JavaLangString = AppConstants.DATALINE_PC_UIN;
-      return;
-      QLog.i("DatalineFileControlReq", 1, "init: dataline file data is null");
+      this.jdField_a_of_type_Long = paramDataLineMsgRecord.sessionid;
     }
+    else
+    {
+      QLog.i("DatalineFileControlReq", 1, "init: dataline file data is null");
+      this.jdField_a_of_type_Long = 0L;
+    }
+    this.jdField_a_of_type_Int = 6000;
+    this.jdField_a_of_type_JavaLangString = AppConstants.DATALINE_PC_UIN;
   }
   
   public String a()
@@ -30,12 +33,20 @@ public class DatalineFileControlReq
       QLog.e("DatalineFileControlReq", 1, "key params is null");
       return "";
     }
-    return a(this.jdField_a_of_type_Int + "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long + "");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append("");
+    localObject = ((StringBuilder)localObject).toString();
+    String str = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("");
+    return a((String)localObject, str, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multisave.DatalineFileControlReq
  * JD-Core Version:    0.7.0.1
  */

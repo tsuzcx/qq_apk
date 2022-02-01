@@ -23,49 +23,54 @@ public class MiniWxPayCheckUrlServlet
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    localBundle = new Bundle();
-    for (;;)
+    Bundle localBundle = new Bundle();
+    try
     {
-      try
+      localBundle.putInt("key_index", paramIntent.getIntExtra("key_index", -1));
+      if (paramFromServiceMsg != null)
       {
-        localBundle.putInt("key_index", paramIntent.getIntExtra("key_index", -1));
-        if (paramFromServiceMsg == null) {
-          continue;
+        Object localObject1 = new PROTOCAL.StQWebRsp();
+        localObject2 = WupUtil.b(paramFromServiceMsg.getWupBuffer());
+        ((PROTOCAL.StQWebRsp)localObject1).mergeFrom((byte[])localObject2);
+        if (paramFromServiceMsg.isSuccess())
+        {
+          localBundle.putInt("retCode", (int)((PROTOCAL.StQWebRsp)localObject1).retCode.get());
+          localBundle.putString("errMsg", ((PROTOCAL.StQWebRsp)localObject1).errMsg.get().toStringUtf8());
+          localObject1 = WxPayCheckUrlRequest.onResponse((byte[])localObject2);
+          if (localObject1 != null) {
+            localBundle.putInt("key_url_valid", ((MiniAppMidasPay.StWxpayCheckMWebURLRsp)localObject1).is_valid.get());
+          }
+          notifyObserver(paramIntent, 1077, true, localBundle, MiniAppObserver.class);
         }
-        localObject = new PROTOCAL.StQWebRsp();
-        byte[] arrayOfByte = WupUtil.b(paramFromServiceMsg.getWupBuffer());
-        ((PROTOCAL.StQWebRsp)localObject).mergeFrom(arrayOfByte);
-        if (!paramFromServiceMsg.isSuccess()) {
-          continue;
+        else
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("onReceive. MiniWxPayCheckUrlServlet rsp = ");
+            ((StringBuilder)localObject2).append(localObject1);
+            QLog.d("MiniWxPayCheckUrlServlet", 2, ((StringBuilder)localObject2).toString());
+          }
+          notifyObserver(paramIntent, 1077, false, localBundle, MiniAppObserver.class);
         }
-        localBundle.putInt("retCode", (int)((PROTOCAL.StQWebRsp)localObject).retCode.get());
-        localBundle.putString("errMsg", ((PROTOCAL.StQWebRsp)localObject).errMsg.get().toStringUtf8());
-        localObject = WxPayCheckUrlRequest.onResponse(arrayOfByte);
-        if (localObject != null) {
-          localBundle.putInt("key_url_valid", ((MiniAppMidasPay.StWxpayCheckMWebURLRsp)localObject).is_valid.get());
-        }
-        notifyObserver(paramIntent, 1077, true, localBundle, MiniAppObserver.class);
       }
-      catch (Throwable localThrowable)
+      else
       {
-        Object localObject;
-        QLog.e("MiniWxPayCheckUrlServlet", 1, localThrowable + "onReceive error");
-        notifyObserver(paramIntent, 1077, false, localBundle, MiniAppObserver.class);
-        continue;
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("MiniWxPayCheckUrlServlet", 2, "onReceive. inform MiniWxPayCheckUrlServlet resultcode fail.");
         }
-        QLog.d("MiniWxPayCheckUrlServlet", 2, "onReceive. inform MiniWxPayCheckUrlServlet resultcode fail.");
         notifyObserver(paramIntent, 1077, false, localBundle, MiniAppObserver.class);
-        continue;
       }
-      doReport(paramIntent, paramFromServiceMsg);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniWxPayCheckUrlServlet", 2, "onReceive. MiniWxPayCheckUrlServlet rsp = " + localObject);
-      }
+    }
+    catch (Throwable localThrowable)
+    {
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(localThrowable);
+      ((StringBuilder)localObject2).append("onReceive error");
+      QLog.e("MiniWxPayCheckUrlServlet", 1, ((StringBuilder)localObject2).toString());
       notifyObserver(paramIntent, 1077, false, localBundle, MiniAppObserver.class);
     }
+    doReport(paramIntent, paramFromServiceMsg);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -86,7 +91,7 @@ public class MiniWxPayCheckUrlServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniWxPayCheckUrlServlet
  * JD-Core Version:    0.7.0.1
  */

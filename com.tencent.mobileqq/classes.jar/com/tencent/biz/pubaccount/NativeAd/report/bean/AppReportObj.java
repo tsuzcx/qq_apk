@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/NativeAd/report/bean/AppReportObj;", "Lcom/tencent/biz/pubaccount/NativeAd/report/IReportObj;", "()V", "appInstallStatus", "", "getKey", "", "parseAdReportData", "", "adReportData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;", "toJsonObject", "Lorg/json/JSONObject;", "valid", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/NativeAd/report/bean/AppReportObj;", "Lcom/tencent/biz/pubaccount/NativeAd/report/IReportObj;", "()V", "appInstallStatus", "", "getKey", "", "parseAdReportData", "", "adReportData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;", "toJsonObject", "Lorg/json/JSONObject;", "valid", "", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class AppReportObj
   extends IReportObj
 {
@@ -36,24 +36,26 @@ public final class AppReportObj
   public void a(@NotNull AdReportData paramAdReportData)
   {
     Intrinsics.checkParameterIsNotNull(paramAdReportData, "adReportData");
-    if (paramAdReportData.a() == null) {}
-    for (;;)
-    {
+    if (paramAdReportData.a() == null) {
       return;
-      String str = paramAdReportData.a().packageName;
-      Intrinsics.checkExpressionValueIsNotNull(str, "adReportData.advertisementInfo.packageName");
-      if (((CharSequence)str).length() > 0) {}
-      for (int i = 1; i != 0; i = 0)
+    }
+    String str = paramAdReportData.a().packageName;
+    Intrinsics.checkExpressionValueIsNotNull(str, "adReportData.advertisementInfo.packageName");
+    int i;
+    if (((CharSequence)str).length() > 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
+    {
+      if (AdReportUtil.a((Context)BaseApplication.context, paramAdReportData.a().getPackageName()))
       {
-        if (!AdReportUtil.a((Context)BaseApplication.context, paramAdReportData.a().getPackageName())) {
-          break label76;
-        }
         this.a = 1;
         return;
       }
+      this.a = 2;
     }
-    label76:
-    this.a = 2;
   }
   
   public boolean a()
@@ -63,7 +65,7 @@ public final class AppReportObj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.report.bean.AppReportObj
  * JD-Core Version:    0.7.0.1
  */

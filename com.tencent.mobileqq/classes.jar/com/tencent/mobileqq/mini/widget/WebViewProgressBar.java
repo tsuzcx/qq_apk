@@ -37,45 +37,47 @@ public class WebViewProgressBar
   public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    int j;
-    int i;
-    if ((this.mController != null) && (this.mController.getLoadingStep() != 6))
+    Object localObject = this.mController;
+    if ((localObject != null) && (((WebViewProgressBarController)localObject).getLoadingStep() != 6))
     {
-      if ((this.mContrastDrawable == null) || (this.mProgressDrawable == null)) {
-        break label164;
-      }
-      j = (int)this.mController.getCurrWidth();
-      if (j >= this.mProgressDrawable.getIntrinsicWidth()) {
-        break label324;
-      }
-      i = j - this.mProgressDrawable.getIntrinsicWidth();
-      j = this.mProgressDrawable.getIntrinsicWidth();
-    }
-    for (;;)
-    {
-      if (i + j > 0)
+      int i;
+      if ((this.mContrastDrawable != null) && (this.mProgressDrawable != null))
       {
-        this.mContrastDrawable.setBounds(0, 0, getWidth(), getHeight());
-        this.mContrastDrawable.draw(paramCanvas);
-        if (this.mBackgroundDrawable != null)
+        j = (int)this.mController.getCurrWidth();
+        if (j < this.mProgressDrawable.getIntrinsicWidth())
         {
-          this.mBackgroundDrawable.setBounds(0, 0, getWidth(), getHeight());
-          this.mBackgroundDrawable.draw(paramCanvas);
+          i = j - this.mProgressDrawable.getIntrinsicWidth();
+          j = this.mProgressDrawable.getIntrinsicWidth();
         }
+        else
+        {
+          i = 0;
+        }
+        j += i;
+        if (j > 0)
+        {
+          this.mContrastDrawable.setBounds(0, 0, getWidth(), getHeight());
+          this.mContrastDrawable.draw(paramCanvas);
+          localObject = this.mBackgroundDrawable;
+          if (localObject != null)
+          {
+            ((Drawable)localObject).setBounds(0, 0, getWidth(), getHeight());
+            this.mBackgroundDrawable.draw(paramCanvas);
+          }
+        }
+        this.mProgressDrawable.setBounds(i, 0, j, getHeight());
+        this.mProgressDrawable.draw(paramCanvas);
+        return;
       }
-      this.mProgressDrawable.setBounds(i, 0, j + i, getHeight());
-      this.mProgressDrawable.draw(paramCanvas);
-      return;
-      label164:
       if (this.mBackgroundDrawable == null) {
-        this.mBackgroundDrawable = getContext().getResources().getDrawable(2130850484);
+        this.mBackgroundDrawable = getContext().getResources().getDrawable(2130850411);
       }
       this.mBackgroundDrawable.setBounds(0, 0, getWidth(), getHeight());
       this.mBackgroundDrawable.draw(paramCanvas);
       if (this.mProgressDrawable == null) {
-        this.mProgressDrawable = getContext().getResources().getDrawable(2130850485);
+        this.mProgressDrawable = getContext().getResources().getDrawable(2130850412);
       }
-      j = (int)this.mController.getCurrWidth();
+      int j = (int)this.mController.getCurrWidth();
       if (this.mEnableAlpha) {
         this.mProgressDrawable.setAlpha(this.mController.getAlpha());
       }
@@ -84,23 +86,21 @@ public class WebViewProgressBar
         i = j - this.mProgressDrawable.getIntrinsicWidth();
         j = this.mProgressDrawable.getIntrinsicWidth();
       }
-      for (;;)
+      else
       {
-        this.mProgressDrawable.setBounds(i, 0, j + i, getHeight());
-        this.mProgressDrawable.draw(paramCanvas);
-        return;
         i = 0;
       }
-      label324:
-      i = 0;
+      this.mProgressDrawable.setBounds(i, 0, j + i, getHeight());
+      this.mProgressDrawable.draw(paramCanvas);
     }
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.mController != null) {
-      this.mController.setProgressBarWidth(getWidth());
+    WebViewProgressBarController localWebViewProgressBarController = this.mController;
+    if (localWebViewProgressBarController != null) {
+      localWebViewProgressBarController.setProgressBarWidth(getWidth());
     }
   }
   
@@ -114,16 +114,18 @@ public class WebViewProgressBar
   
   public void setController(WebViewProgressBarController paramWebViewProgressBarController)
   {
-    if (this.mController == paramWebViewProgressBarController) {
+    WebViewProgressBarController localWebViewProgressBarController = this.mController;
+    if (localWebViewProgressBarController == paramWebViewProgressBarController) {
       return;
     }
-    if (this.mController != null) {
-      this.mController.setProgressBar(null);
+    if (localWebViewProgressBarController != null) {
+      localWebViewProgressBarController.setProgressBar(null);
     }
     this.mController = paramWebViewProgressBarController;
-    if (this.mController != null)
+    paramWebViewProgressBarController = this.mController;
+    if (paramWebViewProgressBarController != null)
     {
-      this.mController.setProgressBar(this);
+      paramWebViewProgressBarController.setProgressBar(this);
       this.mController.setProgressBarWidth(getWidth());
     }
     invalidate();
@@ -131,18 +133,23 @@ public class WebViewProgressBar
   
   public void setCustomColor(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebViewProgressBar", 2, "setCustomColor color=" + Integer.toHexString(paramInt));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setCustomColor color=");
+      localStringBuilder.append(Integer.toHexString(paramInt));
+      QLog.d("WebViewProgressBar", 2, localStringBuilder.toString());
     }
     this.mContrastDrawable = new ColorDrawable(-1);
-    this.mBackgroundDrawable = new ColorDrawable(paramInt & 0x7FFFFFFF);
-    this.mProgressDrawable = new ColorDrawable(paramInt & 0x7FFFFFFF);
+    paramInt &= 0x7FFFFFFF;
+    this.mBackgroundDrawable = new ColorDrawable(paramInt);
+    this.mProgressDrawable = new ColorDrawable(paramInt);
     this.mEnableAlpha = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.WebViewProgressBar
  * JD-Core Version:    0.7.0.1
  */

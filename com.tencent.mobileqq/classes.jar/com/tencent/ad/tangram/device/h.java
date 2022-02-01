@@ -25,7 +25,13 @@ import java.lang.ref.WeakReference;
   
   private static AdFile createFile(Context paramContext, boolean paramBoolean)
   {
-    return new AdFile(paramContext.getDir("ams", 0).getAbsolutePath() + File.separator + "tangram" + File.separator + "cache", "metadata.dat", "UTF-8", paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getDir("ams", 0).getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("tangram");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("cache");
+    return new AdFile(localStringBuilder.toString(), "metadata.dat", "UTF-8", paramBoolean);
   }
   
   private void flush(Context paramContext)
@@ -38,46 +44,48 @@ import java.lang.ref.WeakReference;
       if (this.status != 2) {
         return;
       }
-    }
-    finally {}
-    setStatus(3);
-    if (paramContext != null) {}
-    for (paramContext = paramContext.getApplicationContext();; paramContext = null)
-    {
+      setStatus(3);
+      if (paramContext != null) {
+        paramContext = paramContext.getApplicationContext();
+      } else {
+        paramContext = null;
+      }
       paramContext = new WeakReference(paramContext);
       AdThreadManager.INSTANCE.post(new h.2(this, paramContext), 5);
       return;
     }
+    finally {}
   }
   
   private static h.a readFile(Context paramContext)
   {
-    if (Looper.myLooper() == Looper.getMainLooper()) {
-      AdLog.e("AdDeviceInfoCache", "readFile on main thread");
-    }
-    String str;
-    do
+    if (Looper.myLooper() == Looper.getMainLooper())
     {
-      AdFile localAdFile;
-      do
+      AdLog.e("AdDeviceInfoCache", "readFile on main thread");
+      return null;
+    }
+    AdLog.i("AdDeviceInfoCache", "readFile");
+    String str;
+    if (paramContext == null)
+    {
+      paramContext = null;
+    }
+    else
+    {
+      paramContext = createFile(paramContext, false);
+      if (paramContext.open())
       {
-        while (paramContext == null)
-        {
-          return null;
-          AdLog.i("AdDeviceInfoCache", "readFile");
-          if (paramContext != null) {
-            break;
-          }
-          paramContext = null;
+        str = paramContext.readFully();
+        if (!TextUtils.isEmpty(str)) {
+          break label72;
         }
-        paramContext.close();
-        return null;
-        localAdFile = createFile(paramContext, false);
-        paramContext = localAdFile;
-      } while (!localAdFile.open());
-      str = localAdFile.readFully();
-      paramContext = localAdFile;
-    } while (TextUtils.isEmpty(str));
+      }
+    }
+    if (paramContext != null) {
+      paramContext.close();
+    }
+    return null;
+    label72:
     return h.a.fromString(str);
   }
   
@@ -93,46 +101,48 @@ import java.lang.ref.WeakReference;
   
   private boolean writeFile(Context paramContext, h.a parama)
   {
-    String str = null;
-    boolean bool2;
-    if (Looper.myLooper() == Looper.getMainLooper())
+    Object localObject = Looper.myLooper();
+    Looper localLooper = Looper.getMainLooper();
+    boolean bool = false;
+    if (localObject == localLooper)
     {
       AdLog.e("AdDeviceInfoCache", "writeFile on main thread");
-      bool2 = false;
-      return bool2;
+      return false;
     }
     AdLog.i("AdDeviceInfoCache", "writeFile");
-    boolean bool1;
+    localLooper = null;
     if (paramContext == null)
     {
-      bool1 = false;
       paramContext = null;
     }
-    for (;;)
+    else
     {
-      bool2 = bool1;
-      if (paramContext == null) {
-        break;
-      }
-      paramContext.close();
-      return bool1;
-      paramContext = createFile(paramContext, true);
-      if (!paramContext.open())
+      localObject = createFile(paramContext, true);
+      if (!((AdFile)localObject).open())
       {
-        bool1 = false;
+        paramContext = (Context)localObject;
       }
       else
       {
+        paramContext = localLooper;
         if (parama != null) {
-          str = parama.toString();
+          paramContext = parama.toString();
         }
-        if (TextUtils.isEmpty(str)) {
-          bool1 = false;
-        } else {
-          bool1 = paramContext.writeFully(str);
+        if (TextUtils.isEmpty(paramContext))
+        {
+          paramContext = (Context)localObject;
+        }
+        else
+        {
+          bool = ((AdFile)localObject).writeFully(paramContext);
+          paramContext = (Context)localObject;
         }
       }
     }
+    if (paramContext != null) {
+      paramContext.close();
+    }
+    return bool;
   }
   
   public h.a getCache()
@@ -150,16 +160,17 @@ import java.lang.ref.WeakReference;
       if (this.status != 0) {
         return;
       }
-    }
-    finally {}
-    setStatus(1);
-    if (paramContext != null) {}
-    for (paramContext = paramContext.getApplicationContext();; paramContext = null)
-    {
+      setStatus(1);
+      if (paramContext != null) {
+        paramContext = paramContext.getApplicationContext();
+      } else {
+        paramContext = null;
+      }
       paramContext = new WeakReference(paramContext);
       AdThreadManager.INSTANCE.post(new h.1(this, paramContext), 5);
       return;
     }
+    finally {}
   }
   
   public void update(Context paramContext, h.a parama)

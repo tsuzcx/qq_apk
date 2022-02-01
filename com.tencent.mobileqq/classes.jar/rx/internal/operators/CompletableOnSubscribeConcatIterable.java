@@ -20,28 +20,28 @@ public final class CompletableOnSubscribeConcatIterable
   {
     try
     {
-      Iterator localIterator = this.sources.iterator();
-      if (localIterator == null)
+      Object localObject = this.sources.iterator();
+      if (localObject == null)
       {
         paramCompletableSubscriber.onSubscribe(Subscriptions.unsubscribed());
         paramCompletableSubscriber.onError(new NullPointerException("The iterator returned is null"));
         return;
       }
+      localObject = new CompletableOnSubscribeConcatIterable.ConcatInnerSubscriber(paramCompletableSubscriber, (Iterator)localObject);
+      paramCompletableSubscriber.onSubscribe(((CompletableOnSubscribeConcatIterable.ConcatInnerSubscriber)localObject).sd);
+      ((CompletableOnSubscribeConcatIterable.ConcatInnerSubscriber)localObject).next();
+      return;
     }
     catch (Throwable localThrowable)
     {
       paramCompletableSubscriber.onSubscribe(Subscriptions.unsubscribed());
       paramCompletableSubscriber.onError(localThrowable);
-      return;
     }
-    CompletableOnSubscribeConcatIterable.ConcatInnerSubscriber localConcatInnerSubscriber = new CompletableOnSubscribeConcatIterable.ConcatInnerSubscriber(paramCompletableSubscriber, localThrowable);
-    paramCompletableSubscriber.onSubscribe(localConcatInnerSubscriber.sd);
-    localConcatInnerSubscriber.next();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.CompletableOnSubscribeConcatIterable
  * JD-Core Version:    0.7.0.1
  */

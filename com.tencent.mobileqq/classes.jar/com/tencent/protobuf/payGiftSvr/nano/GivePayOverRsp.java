@@ -25,14 +25,15 @@ public final class GivePayOverRsp
   
   public static GivePayOverRsp[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new GivePayOverRsp[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new GivePayOverRsp[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static GivePayOverRsp parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -58,36 +59,42 @@ public final class GivePayOverRsp
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    int k = this.result;
     int i = j;
-    if (this.result != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(1, this.result);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeUInt32Size(1, k);
     }
     j = i;
     if (!this.errMsg.equals("")) {
       j = i + CodedOutputByteBufferNano.computeStringSize(2, this.errMsg);
     }
+    long l = this.uin;
     i = j;
-    if (this.uin != 0L) {
-      i = j + CodedOutputByteBufferNano.computeUInt64Size(3, this.uin);
+    if (l != 0L) {
+      i = j + CodedOutputByteBufferNano.computeUInt64Size(3, l);
     }
+    k = this.balance;
     j = i;
-    if (this.balance != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(4, this.balance);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeUInt32Size(4, k);
     }
+    l = this.u64Balance;
     i = j;
-    if (this.u64Balance != 0L) {
-      i = j + CodedOutputByteBufferNano.computeUInt64Size(5, this.u64Balance);
+    if (l != 0L) {
+      i = j + CodedOutputByteBufferNano.computeUInt64Size(5, l);
     }
+    l = this.roomId;
     j = i;
-    if (this.roomId != 0L) {
-      j = i + CodedOutputByteBufferNano.computeUInt64Size(6, this.roomId);
+    if (l != 0L) {
+      j = i + CodedOutputByteBufferNano.computeUInt64Size(6, l);
     }
+    l = this.subRoomId;
     i = j;
-    if (this.subRoomId != 0L) {
-      i = j + CodedOutputByteBufferNano.computeUInt64Size(7, this.subRoomId);
+    if (l != 0L) {
+      i = j + CodedOutputByteBufferNano.computeUInt64Size(7, l);
     }
     return i;
   }
@@ -97,66 +104,93 @@ public final class GivePayOverRsp
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.result = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 18: 
-        this.errMsg = paramCodedInputByteBufferNano.readString();
-        break;
-      case 24: 
-        this.uin = paramCodedInputByteBufferNano.readUInt64();
-        break;
-      case 32: 
-        this.balance = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 40: 
-        this.u64Balance = paramCodedInputByteBufferNano.readUInt64();
-        break;
-      case 48: 
-        this.roomId = paramCodedInputByteBufferNano.readUInt64();
+      if (i == 0) {
         break;
       }
-      this.subRoomId = paramCodedInputByteBufferNano.readUInt64();
+      if (i != 8)
+      {
+        if (i != 18)
+        {
+          if (i != 24)
+          {
+            if (i != 32)
+            {
+              if (i != 40)
+              {
+                if (i != 48)
+                {
+                  if (i != 56)
+                  {
+                    if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+                      return this;
+                    }
+                  }
+                  else {
+                    this.subRoomId = paramCodedInputByteBufferNano.readUInt64();
+                  }
+                }
+                else {
+                  this.roomId = paramCodedInputByteBufferNano.readUInt64();
+                }
+              }
+              else {
+                this.u64Balance = paramCodedInputByteBufferNano.readUInt64();
+              }
+            }
+            else {
+              this.balance = paramCodedInputByteBufferNano.readUInt32();
+            }
+          }
+          else {
+            this.uin = paramCodedInputByteBufferNano.readUInt64();
+          }
+        }
+        else {
+          this.errMsg = paramCodedInputByteBufferNano.readString();
+        }
+      }
+      else {
+        this.result = paramCodedInputByteBufferNano.readUInt32();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.result != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(1, this.result);
+    int i = this.result;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(1, i);
     }
     if (!this.errMsg.equals("")) {
       paramCodedOutputByteBufferNano.writeString(2, this.errMsg);
     }
-    if (this.uin != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(3, this.uin);
+    long l = this.uin;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(3, l);
     }
-    if (this.balance != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(4, this.balance);
+    i = this.balance;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(4, i);
     }
-    if (this.u64Balance != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(5, this.u64Balance);
+    l = this.u64Balance;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(5, l);
     }
-    if (this.roomId != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(6, this.roomId);
+    l = this.roomId;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(6, l);
     }
-    if (this.subRoomId != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(7, this.subRoomId);
+    l = this.subRoomId;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(7, l);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.payGiftSvr.nano.GivePayOverRsp
  * JD-Core Version:    0.7.0.1
  */

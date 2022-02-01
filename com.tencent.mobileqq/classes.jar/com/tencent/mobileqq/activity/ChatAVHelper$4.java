@@ -5,8 +5,9 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyProxy;
-import com.tencent.mobileqq.nearby.NearbyRelevantHandler;
+import com.tencent.mobileqq.nearby.INearbyRelevantHandler;
+import com.tencent.mobileqq.nearby.NearbyManagerHelper;
+import com.tencent.mobileqq.nearby.api.INearbyProxy;
 import com.tencent.mobileqq.statistics.ReportController;
 
 final class ChatAVHelper$4
@@ -16,16 +17,17 @@ final class ChatAVHelper$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    NearbyRelevantHandler localNearbyRelevantHandler = (NearbyRelevantHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.NEARBY_RELEVANT_HANDLER);
-    if (localNearbyRelevantHandler != null) {
-      localNearbyRelevantHandler.a((byte)0);
+    Object localObject = (INearbyRelevantHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.NEARBY_RELEVANT_HANDLER);
+    if (localObject != null) {
+      ((INearbyRelevantHandler)localObject).a((byte)0);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNearbyProxy().a(true);
+    NearbyManagerHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(true);
     if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag.a) {
       ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "1", "", "", "");
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag.e = false;
-    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag;
+    ((ChatActivityUtils.VideoCheckFlag)localObject).e = false;
+    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, (ChatActivityUtils.VideoCheckFlag)localObject);
     if (paramDialogInterface != null) {
       paramDialogInterface.dismiss();
     }
@@ -33,7 +35,7 @@ final class ChatAVHelper$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatAVHelper.4
  * JD-Core Version:    0.7.0.1
  */

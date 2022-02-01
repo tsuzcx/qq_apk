@@ -2,36 +2,44 @@ package com.tencent.mtt.hippy.a;
 
 import android.app.ProgressDialog;
 import java.io.File;
+import java.io.InputStream;
 import java.util.Stack;
 
 class k$2
   implements a
 {
-  k$2(k paramk) {}
+  k$2(k paramk, g paramg) {}
   
-  public void a(File paramFile)
+  public void a(File paramFile) {}
+  
+  public void a(InputStream paramInputStream)
   {
-    if (this.a.c != null) {
-      this.a.c.dismiss();
+    if (this.b.c != null) {
+      this.b.c.dismiss();
     }
-    if (this.a.b != null) {
-      this.a.b.onDevBundleLoadReady(paramFile);
+    g localg = this.a;
+    if (localg != null) {
+      localg.onDevBundleLoadReady(paramInputStream);
     }
   }
   
   public void a(Exception paramException)
   {
-    if (k.b(this.a).isEmpty())
+    g localg = this.a;
+    if (localg != null) {
+      localg.onInitDevError(paramException);
+    }
+    if (k.b(this.b).isEmpty())
     {
-      this.a.b.onInitDevError(paramException);
+      this.b.b.onInitDevError(paramException);
       return;
     }
-    this.a.a(paramException);
+    this.b.a(paramException);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.a.k.2
  * JD-Core Version:    0.7.0.1
  */

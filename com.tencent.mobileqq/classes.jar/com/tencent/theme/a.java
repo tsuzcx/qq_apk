@@ -8,9 +8,16 @@ class a
   static final void a(ByteBuffer paramByteBuffer, int paramInt)
   {
     int i = paramByteBuffer.getInt();
-    if (i != paramInt) {
-      throw new IOException("Expected chunk of type 0x" + Integer.toHexString(paramInt) + ", read 0x" + Integer.toHexString(i) + ".");
+    if (i == paramInt) {
+      return;
     }
+    paramByteBuffer = new StringBuilder();
+    paramByteBuffer.append("Expected chunk of type 0x");
+    paramByteBuffer.append(Integer.toHexString(paramInt));
+    paramByteBuffer.append(", read 0x");
+    paramByteBuffer.append(Integer.toHexString(i));
+    paramByteBuffer.append(".");
+    throw new IOException(paramByteBuffer.toString());
   }
   
   static final void b(ByteBuffer paramByteBuffer, int paramInt)
@@ -39,7 +46,7 @@ class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.theme.a
  * JD-Core Version:    0.7.0.1
  */

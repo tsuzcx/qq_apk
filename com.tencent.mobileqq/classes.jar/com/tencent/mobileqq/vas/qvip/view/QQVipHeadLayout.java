@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import com.tencent.mobileqq.gamecenter.web.view.BaseNestHeaderLayout;
+import com.tencent.mobileqq.qqgamepub.web.view.BaseNestHeaderLayout;
 
 public class QQVipHeadLayout
   extends BaseNestHeaderLayout
@@ -23,9 +23,9 @@ public class QQVipHeadLayout
   
   private void a() {}
   
-  public int getLayoutId()
+  protected int getLayoutId()
   {
-    return 2131562012;
+    return 2131561845;
   }
   
   public boolean isPined()
@@ -40,7 +40,7 @@ public class QQVipHeadLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.view.QQVipHeadLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -65,47 +65,51 @@ public class TouchController
       this.touchMoveScaleRate = (this.touchScaleSensitivityLow / this.touchMoveSensitivityLow);
       this.currentTouchSensitivity = 0.162F;
     }
-    while (this.showType == 1) {
+    else
+    {
+      this.touchScaleSensitivityLow = 0.122F;
+      this.touchMoveSensitivityLow = 0.01F;
+      this.touchMoveScaleRate = (this.touchScaleSensitivityLow / this.touchMoveSensitivityLow);
+      this.currentTouchSensitivity = 0.08F;
+    }
+    if (this.showType == 1)
+    {
       if (this.modeType == 0)
       {
         this.mCurrentScale = 0.4142652F;
         return;
-        this.touchScaleSensitivityLow = 0.122F;
-        this.touchMoveSensitivityLow = 0.01F;
-        this.touchMoveScaleRate = (this.touchScaleSensitivityLow / this.touchMoveSensitivityLow);
-        this.currentTouchSensitivity = 0.08F;
       }
-      else
-      {
-        this.mCurrentScale = 0.5228754F;
-        return;
-      }
+      this.mCurrentScale = 0.5228754F;
+      return;
     }
     this.mCurrentScale = 1.0F;
   }
   
   private void onTouchMove(float paramFloat1, float paramFloat2)
   {
-    if (this.panoramaTouchListener != null) {
-      this.panoramaTouchListener.onTouchMove(paramFloat1, paramFloat2);
+    PanoramaTouchListener localPanoramaTouchListener = this.panoramaTouchListener;
+    if (localPanoramaTouchListener != null) {
+      localPanoramaTouchListener.onTouchMove(paramFloat1, paramFloat2);
     }
     this.rotateX += paramFloat1;
     this.rotateY += paramFloat2;
-    if (this.rotateX > 90.0F) {
+    paramFloat1 = this.rotateX;
+    if (paramFloat1 > 90.0F)
+    {
       this.rotateX = 90.0F;
-    }
-    while (this.rotateX >= -90.0F) {
       return;
     }
-    this.rotateX = -90.0F;
+    if (paramFloat1 < -90.0F) {
+      this.rotateX = -90.0F;
+    }
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = 40;
+    paramView = this.parent;
     int j = 1;
-    if (this.parent != null) {
-      this.parent.getParent().requestDisallowInterceptTouchEvent(true);
+    if (paramView != null) {
+      paramView.getParent().requestDisallowInterceptTouchEvent(true);
     }
     if (this.mVelocityTracker == null) {
       this.mVelocityTracker = VelocityTracker.obtain();
@@ -115,88 +119,91 @@ public class TouchController
     if (paramMotionEvent.getActionMasked() == 6) {
       this.isTouchMove = true;
     }
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
+    float f2 = paramMotionEvent.getX();
+    float f1 = paramMotionEvent.getY();
+    float f3;
+    int k;
+    int i;
     if ((!this.scaleGestureDetector.isInProgress()) && (paramMotionEvent.getPointerCount() == 1) && (!this.isTouchMove))
     {
-      if (paramMotionEvent.getAction() != 0) {
-        break label341;
-      }
-      this.downX = f1;
-      this.downY = f2;
-      if (this.timer != null) {
-        this.timer.cancel();
-      }
-      if (this.timerTask != null) {
-        this.timerTask.cancel();
-      }
-    }
-    int k;
-    label278:
-    label283:
-    label341:
-    while (paramMotionEvent.getAction() != 2)
-    {
-      this.mPreviousY = f2;
-      this.mPreviousX = f1;
-      if (paramMotionEvent.getAction() == 1)
+      if (paramMotionEvent.getAction() == 0)
       {
-        this.isTouchMove = false;
-        i = ViewConfiguration.get(this.context).getScaledTouchSlop();
-        if ((Math.abs(f1 - this.downX) <= i) && (Math.abs(f2 - this.downY) <= i) && (this.panoramaTouchListener != null)) {
-          this.panoramaTouchListener.onClickListener();
+        this.downX = f2;
+        this.downY = f1;
+        paramView = this.timer;
+        if (paramView != null) {
+          paramView.cancel();
         }
-        this.mVelocityTracker.computeCurrentVelocity(10);
-        k = (int)this.mVelocityTracker.getXVelocity();
-        int m = (int)this.mVelocityTracker.getYVelocity();
-        if (k <= 0) {
-          break;
+        paramView = this.timerTask;
+        if (paramView != null) {
+          paramView.cancel();
         }
+      }
+      else if (paramMotionEvent.getAction() == 2)
+      {
+        f3 = this.mPreviousX;
+        float f4 = this.mPreviousY;
+        if (this.panoramaType != 4)
+        {
+          float f6 = f1 - this.downY;
+          f5 = f2 - this.downX;
+          k = ViewConfiguration.get(this.context).getScaledTouchSlop() * 2;
+          i = k;
+          if (k < 40) {
+            i = 40;
+          }
+          float f7 = f6 / f5;
+          if ((f7 >= 1.0F) || (f7 <= -1.0F))
+          {
+            f6 = Math.abs(f6);
+            f7 = i;
+            if ((f6 <= f7) && (Math.abs(f5) <= f7))
+            {
+              this.parent.getParent().requestDisallowInterceptTouchEvent(false);
+              return true;
+            }
+          }
+        }
+        float f5 = this.currentTouchSensitivity;
+        onTouchMove((f1 - f4) * f5, (f2 - f3) * f5);
+      }
+      this.mPreviousY = f1;
+      this.mPreviousX = f2;
+    }
+    if (paramMotionEvent.getAction() == 1)
+    {
+      this.isTouchMove = false;
+      i = ViewConfiguration.get(this.context).getScaledTouchSlop();
+      f2 = Math.abs(f2 - this.downX);
+      f3 = i;
+      if ((f2 <= f3) && (Math.abs(f1 - this.downY) <= f3))
+      {
+        paramView = this.panoramaTouchListener;
+        if (paramView != null) {
+          paramView.onClickListener();
+        }
+      }
+      this.mVelocityTracker.computeCurrentVelocity(10);
+      k = (int)this.mVelocityTracker.getXVelocity();
+      int m = (int)this.mVelocityTracker.getYVelocity();
+      if (k > 0) {
         i = 1;
-        if (m <= 0) {
-          break label500;
-        }
-        this.timer = new Timer();
-        this.timerTask = new TouchController.1(this, i, new int[] { k, m }, j);
-        this.timer.schedule(this.timerTask, 0L, 15L);
+      } else {
+        i = 0;
       }
-      return bool;
-    }
-    float f3 = this.mPreviousX;
-    float f4 = this.mPreviousY;
-    float f5;
-    float f6;
-    if (this.panoramaType != 4)
-    {
-      f5 = f2 - this.downY;
-      f6 = f1 - this.downX;
-      k = ViewConfiguration.get(this.context).getScaledTouchSlop() * 2;
-      if (k >= 40) {
-        break label506;
+      if (m <= 0) {
+        j = 0;
       }
+      this.timer = new Timer();
+      this.timerTask = new TouchController.1(this, i, new int[] { k, m }, j);
+      this.timer.schedule(this.timerTask, 0L, 15L);
     }
-    for (;;)
-    {
-      if (((f5 / f6 >= 1.0F) || (f5 / f6 <= -1.0F)) && (Math.abs(f5) <= i) && (Math.abs(f6) <= i))
-      {
-        this.parent.getParent().requestDisallowInterceptTouchEvent(false);
-        return true;
-      }
-      onTouchMove(this.currentTouchSensitivity * (f2 - f4), this.currentTouchSensitivity * (f1 - f3));
-      break;
-      i = 0;
-      break label278;
-      label500:
-      j = 0;
-      break label283;
-      label506:
-      i = k;
-    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.panorama.controller.TouchController
  * JD-Core Version:    0.7.0.1
  */

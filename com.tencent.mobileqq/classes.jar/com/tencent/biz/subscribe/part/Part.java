@@ -5,8 +5,8 @@ import android.app.Application.ActivityLifecycleCallbacks;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -33,15 +33,19 @@ public abstract class Part
   
   protected void a(View paramView)
   {
-    QLog.d(a(), 1, a() + "->onInitView");
+    paramView = a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a());
+    localStringBuilder.append("->onInitView");
+    QLog.d(paramView, 1, localStringBuilder.toString());
   }
   
   public void a(BasePartFragment paramBasePartFragment, View paramView, PartManager paramPartManager)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramBasePartFragment.getActivity();
+    this.jdField_a_of_type_AndroidAppActivity = paramBasePartFragment.getBaseActivity();
     this.jdField_a_of_type_ComTencentBizSubscribePartBasePartFragment = paramBasePartFragment;
     this.jdField_a_of_type_ComTencentBizSubscribePartPartManager = paramPartManager;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBasePartFragment.getActivity().app;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBasePartFragment.getBaseActivity().app;
     this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
@@ -66,7 +70,7 @@ public abstract class Part
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.part.Part
  * JD-Core Version:    0.7.0.1
  */

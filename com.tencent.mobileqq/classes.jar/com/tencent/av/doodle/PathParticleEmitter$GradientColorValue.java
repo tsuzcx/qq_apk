@@ -22,68 +22,85 @@ public class PathParticleEmitter$GradientColorValue
   
   public void a(BufferedReader paramBufferedReader)
   {
-    int j = 0;
     super.a(paramBufferedReader);
-    if (!this.jdField_a_of_type_Boolean) {}
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.c = new float[PathParticleEmitter.a(paramBufferedReader, "colorsCount")];
+    int j = 0;
+    int i = 0;
+    float[] arrayOfFloat;
+    StringBuilder localStringBuilder;
     for (;;)
     {
-      return;
-      this.c = new float[PathParticleEmitter.a(paramBufferedReader, "colorsCount")];
-      int i = 0;
-      while (i < this.c.length)
-      {
-        this.c[i] = PathParticleEmitter.a(paramBufferedReader, "colors" + i);
-        i += 1;
+      arrayOfFloat = this.c;
+      if (i >= arrayOfFloat.length) {
+        break;
       }
-      this.jdField_a_of_type_ArrayOfFloat = new float[PathParticleEmitter.a(paramBufferedReader, "timelineCount")];
-      i = j;
-      while (i < this.jdField_a_of_type_ArrayOfFloat.length)
-      {
-        this.jdField_a_of_type_ArrayOfFloat[i] = PathParticleEmitter.a(paramBufferedReader, "timeline" + i);
-        i += 1;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("colors");
+      localStringBuilder.append(i);
+      arrayOfFloat[i] = PathParticleEmitter.a(paramBufferedReader, localStringBuilder.toString());
+      i += 1;
+    }
+    this.jdField_a_of_type_ArrayOfFloat = new float[PathParticleEmitter.a(paramBufferedReader, "timelineCount")];
+    i = j;
+    for (;;)
+    {
+      arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+      if (i >= arrayOfFloat.length) {
+        break;
       }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("timeline");
+      localStringBuilder.append(i);
+      arrayOfFloat[i] = PathParticleEmitter.a(paramBufferedReader, localStringBuilder.toString());
+      i += 1;
     }
   }
   
   public float[] a(float paramFloat)
   {
-    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
-    int k = arrayOfFloat.length;
+    float[] arrayOfFloat2 = this.jdField_a_of_type_ArrayOfFloat;
+    int k = arrayOfFloat2.length;
     int i = 1;
     int j = 0;
-    if (i < k) {
-      if (arrayOfFloat[i] <= paramFloat) {}
-    }
-    for (;;)
+    while (i < k)
     {
-      float f4 = arrayOfFloat[j];
-      j *= 3;
-      float f1 = this.c[j];
-      float f2 = this.c[(j + 1)];
-      float f3 = this.c[(j + 2)];
-      if (i == -1)
-      {
-        jdField_b_of_type_ArrayOfFloat[0] = f1;
-        jdField_b_of_type_ArrayOfFloat[1] = f2;
-        jdField_b_of_type_ArrayOfFloat[2] = f3;
-        return jdField_b_of_type_ArrayOfFloat;
-        j = i;
-        i += 1;
-        break;
+      if (arrayOfFloat2[i] > paramFloat) {
+        break label53;
       }
-      paramFloat = (paramFloat - f4) / (arrayOfFloat[i] - f4);
-      i *= 3;
-      jdField_b_of_type_ArrayOfFloat[0] = ((this.c[i] - f1) * paramFloat + f1);
-      jdField_b_of_type_ArrayOfFloat[1] = ((this.c[(i + 1)] - f2) * paramFloat + f2);
-      jdField_b_of_type_ArrayOfFloat[2] = ((this.c[(i + 2)] - f3) * paramFloat + f3);
-      return jdField_b_of_type_ArrayOfFloat;
-      i = -1;
+      j = i;
+      i += 1;
     }
+    i = -1;
+    label53:
+    float f4 = arrayOfFloat2[j];
+    j *= 3;
+    float[] arrayOfFloat1 = this.c;
+    float f1 = arrayOfFloat1[j];
+    float f2 = arrayOfFloat1[(j + 1)];
+    float f3 = arrayOfFloat1[(j + 2)];
+    if (i == -1)
+    {
+      arrayOfFloat1 = jdField_b_of_type_ArrayOfFloat;
+      arrayOfFloat1[0] = f1;
+      arrayOfFloat1[1] = f2;
+      arrayOfFloat1[2] = f3;
+      return arrayOfFloat1;
+    }
+    paramFloat = (paramFloat - f4) / (arrayOfFloat2[i] - f4);
+    i *= 3;
+    arrayOfFloat2 = jdField_b_of_type_ArrayOfFloat;
+    arrayOfFloat2[0] = (f1 + (arrayOfFloat1[i] - f1) * paramFloat);
+    arrayOfFloat2[1] = (f2 + (arrayOfFloat1[(i + 1)] - f2) * paramFloat);
+    arrayOfFloat2[2] = (f3 + (arrayOfFloat1[(i + 2)] - f3) * paramFloat);
+    return arrayOfFloat2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.doodle.PathParticleEmitter.GradientColorValue
  * JD-Core Version:    0.7.0.1
  */

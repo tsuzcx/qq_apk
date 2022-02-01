@@ -21,13 +21,15 @@ public final class submsgtype0x10f$MsgBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 48 }, new String[] { "uint32_is_open_coin_entry", "uint32_can_get_coin_count", "bytes_coin_icon_url", "msg_setting_wording", "uint64_last_completed_task_stamp", "uint64_dst_uin" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, null, Long.valueOf(0L), Long.valueOf(0L) }, MsgBody.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 48 }, new String[] { "uint32_is_open_coin_entry", "uint32_can_get_coin_count", "bytes_coin_icon_url", "msg_setting_wording", "uint64_last_completed_task_stamp", "uint64_dst_uin" }, new Object[] { localInteger, localInteger, localByteStringMicro, null, localLong, localLong }, MsgBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x210.submsgtype0x10f.submsgtype0x10f.MsgBody
  * JD-Core Version:    0.7.0.1
  */

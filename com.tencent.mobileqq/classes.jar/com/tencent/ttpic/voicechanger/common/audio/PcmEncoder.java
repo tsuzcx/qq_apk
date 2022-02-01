@@ -16,7 +16,7 @@ public class PcmEncoder
 {
   private static final int CODEC_TIMEOUT = 5000;
   private static final String COMPRESSED_AUDIO_FILE_MIME_TYPE = "audio/mp4a-latm";
-  private static final String TAG = PcmEncoder.class.getSimpleName();
+  private static final String TAG = "PcmEncoder";
   private int audioTrackId;
   private int bitrate;
   private MediaCodec.BufferInfo bufferInfo;
@@ -58,48 +58,44 @@ public class PcmEncoder
   private void writeOutputs()
   {
     int i = 0;
-    for (;;)
+    while (i != -1)
     {
-      if (i != -1)
+      int j = this.mediaCodec.dequeueOutputBuffer(this.bufferInfo, 5000L);
+      if (j >= 0)
       {
-        i = this.mediaCodec.dequeueOutputBuffer(this.bufferInfo, 5000L);
-        if (i >= 0)
-        {
-          ByteBuffer localByteBuffer;
-          if (!isLollipop())
-          {
-            localByteBuffer = this.codecOutputBuffers[i];
-            label40:
-            if (isKitkat())
-            {
-              localByteBuffer.position(this.bufferInfo.offset);
-              localByteBuffer.limit(this.bufferInfo.offset + this.bufferInfo.size);
-            }
-            if (((this.bufferInfo.flags & 0x2) == 0) || (this.bufferInfo.size == 0)) {
-              break label125;
-            }
-            this.mediaCodec.releaseOutputBuffer(i, false);
-          }
-          for (;;)
-          {
-            break;
-            localByteBuffer = this.mediaCodec.getOutputBuffer(i);
-            break label40;
-            label125:
-            this.mediaMuxer.writeSampleData(this.audioTrackId, this.codecOutputBuffers[i], this.bufferInfo);
-            this.mediaCodec.releaseOutputBuffer(i, false);
-          }
+        ByteBuffer localByteBuffer;
+        if (!isLollipop()) {
+          localByteBuffer = this.codecOutputBuffers[j];
+        } else {
+          localByteBuffer = this.mediaCodec.getOutputBuffer(j);
         }
-        if (i == -2)
+        if (isKitkat())
         {
-          this.mediaFormat = this.mediaCodec.getOutputFormat();
-          this.audioTrackId = this.mediaMuxer.addTrack(this.mediaFormat);
-          this.mediaMuxer.start();
+          localByteBuffer.position(this.bufferInfo.offset);
+          localByteBuffer.limit(this.bufferInfo.offset + this.bufferInfo.size);
+        }
+        if (((this.bufferInfo.flags & 0x2) != 0) && (this.bufferInfo.size != 0))
+        {
+          this.mediaCodec.releaseOutputBuffer(j, false);
+          i = j;
+        }
+        else
+        {
+          this.mediaMuxer.writeSampleData(this.audioTrackId, this.codecOutputBuffers[j], this.bufferInfo);
+          this.mediaCodec.releaseOutputBuffer(j, false);
+          i = j;
         }
       }
       else
       {
-        return;
+        i = j;
+        if (j == -2)
+        {
+          this.mediaFormat = this.mediaCodec.getOutputFormat();
+          this.audioTrackId = this.mediaMuxer.addTrack(this.mediaFormat);
+          this.mediaMuxer.start();
+          i = j;
+        }
       }
     }
   }
@@ -109,53 +105,40 @@ public class PcmEncoder
     LogUtils.d(TAG, "Starting encoding of InputStream");
     long l = System.currentTimeMillis();
     byte[] arrayOfByte = new byte[paramInt * 2];
+    int i = 0;
     int j = 1;
-    int k = 0;
-    while (k == 0)
+    while (i == 0)
     {
       int m = 0;
-      int i = 0;
-      while ((m != -1) && (j != 0) && (i <= paramInt * 50))
+      int k = 0;
+      while ((m != -1) && (j != 0) && (k <= paramInt * 50))
       {
-        int i1 = this.mediaCodec.dequeueInputBuffer(5000L);
-        m = i1;
-        if (i1 >= 0)
+        int n = this.mediaCodec.dequeueInputBuffer(5000L);
+        m = n;
+        if (n >= 0)
         {
-          ByteBuffer localByteBuffer;
-          if (!isLollipop())
-          {
-            localByteBuffer = this.codecInputBuffers[i1];
-            label92:
-            localByteBuffer.clear();
-            m = paramInputStream.read(arrayOfByte, 0, localByteBuffer.limit());
-            if (m != -1) {
-              break label182;
-            }
-            this.mediaCodec.queueInputBuffer(i1, 0, 0, this.presentationTimeUs, 0);
-            m = 0;
-            j = 1;
-            k = i;
+          if (!isLollipop()) {
+            localObject = this.codecInputBuffers[n];
+          } else {
+            localObject = this.mediaCodec.getInputBuffer(n);
           }
-          for (i = m;; i = m)
+          ((ByteBuffer)localObject).clear();
+          m = paramInputStream.read(arrayOfByte, 0, ((ByteBuffer)localObject).limit());
+          if (m == -1)
           {
-            int n = i;
-            m = i1;
-            i = k;
-            k = j;
-            j = n;
-            break;
-            localByteBuffer = this.mediaCodec.getInputBuffer(i1);
-            break label92;
-            label182:
+            this.mediaCodec.queueInputBuffer(n, 0, 0, this.presentationTimeUs, 0);
+            j = 0;
+            i = 1;
+            m = n;
+          }
+          else
+          {
             this.totalBytesRead += m;
-            localByteBuffer.put(arrayOfByte, 0, m);
-            this.mediaCodec.queueInputBuffer(i1, 0, m, this.presentationTimeUs, 0);
-            this.presentationTimeUs = (1000000L * (this.totalBytesRead / 2) / paramInt);
-            n = i + m;
-            i = k;
-            m = j;
-            k = n;
-            j = i;
+            k += m;
+            ((ByteBuffer)localObject).put(arrayOfByte, 0, m);
+            this.mediaCodec.queueInputBuffer(n, 0, m, this.presentationTimeUs, 0);
+            this.presentationTimeUs = (this.totalBytesRead / 2 * 1000000L / paramInt);
+            m = n;
           }
         }
       }
@@ -163,34 +146,40 @@ public class PcmEncoder
     }
     paramInputStream.close();
     LogUtils.d(TAG, "Finished encoding of InputStream");
-    LogUtils.d(TAG, "pcm 2 m4a: " + (System.currentTimeMillis() - l) + " ms");
+    paramInputStream = TAG;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("pcm 2 m4a: ");
+    ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+    ((StringBuilder)localObject).append(" ms");
+    LogUtils.d(paramInputStream, ((StringBuilder)localObject).toString());
   }
   
   public void prepare()
   {
-    if (this.outputPath == null) {
-      throw new IllegalStateException("The output path must be set first!");
+    if (this.outputPath != null) {
+      try
+      {
+        this.mediaFormat = MediaFormat.createAudioFormat("audio/mp4a-latm", this.sampleRate, this.channelCount);
+        this.mediaFormat.setInteger("aac-profile", 2);
+        this.mediaFormat.setInteger("bitrate", this.bitrate);
+        this.mediaCodec = MediaCodec.createEncoderByType("audio/mp4a-latm");
+        this.mediaCodec.configure(this.mediaFormat, null, null, 1);
+        this.mediaCodec.start();
+        this.codecInputBuffers = this.mediaCodec.getInputBuffers();
+        this.codecOutputBuffers = this.mediaCodec.getOutputBuffers();
+        this.bufferInfo = new MediaCodec.BufferInfo();
+        this.mediaMuxer = new MediaMuxer(this.outputPath, 0);
+        this.totalBytesRead = 0;
+        this.presentationTimeUs = 0.0D;
+        return;
+      }
+      catch (IOException localIOException)
+      {
+        LogUtils.e(TAG, "Exception while initializing PCMEncoder", localIOException, new Object[0]);
+        return;
+      }
     }
-    try
-    {
-      this.mediaFormat = MediaFormat.createAudioFormat("audio/mp4a-latm", this.sampleRate, this.channelCount);
-      this.mediaFormat.setInteger("aac-profile", 2);
-      this.mediaFormat.setInteger("bitrate", this.bitrate);
-      this.mediaCodec = MediaCodec.createEncoderByType("audio/mp4a-latm");
-      this.mediaCodec.configure(this.mediaFormat, null, null, 1);
-      this.mediaCodec.start();
-      this.codecInputBuffers = this.mediaCodec.getInputBuffers();
-      this.codecOutputBuffers = this.mediaCodec.getOutputBuffers();
-      this.bufferInfo = new MediaCodec.BufferInfo();
-      this.mediaMuxer = new MediaMuxer(this.outputPath, 0);
-      this.totalBytesRead = 0;
-      this.presentationTimeUs = 0.0D;
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      LogUtils.e(TAG, "Exception while initializing PCMEncoder", localIOException, new Object[0]);
-    }
+    throw new IllegalStateException("The output path must be set first!");
   }
   
   public void setOutputPath(String paramString)
@@ -210,7 +199,7 @@ public class PcmEncoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.voicechanger.common.audio.PcmEncoder
  * JD-Core Version:    0.7.0.1
  */

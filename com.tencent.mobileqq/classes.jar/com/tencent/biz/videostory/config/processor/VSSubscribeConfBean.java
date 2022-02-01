@@ -15,10 +15,18 @@ public class VSSubscribeConfBean
   public static VSSubscribeConfBean a(String paramString)
   {
     VSSubscribeConfBean localVSSubscribeConfBean = new VSSubscribeConfBean();
-    if (paramString != null) {}
-    try
+    if (paramString != null)
     {
-      paramString = new JSONObject(paramString);
+      Object localObject = null;
+      try
+      {
+        paramString = new JSONObject(paramString);
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+        paramString = localObject;
+      }
       if (paramString != null)
       {
         localVSSubscribeConfBean.a = paramString.optString("subscribe_entrance_enable", "1");
@@ -27,16 +35,8 @@ public class VSSubscribeConfBean
         localVSSubscribeConfBean.d = paramString.optString("newfollowlist", "1");
         localVSSubscribeConfBean.e = paramString.optString("subscribe_publish_entrance_enable", "1");
       }
-      return localVSSubscribeConfBean;
     }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = null;
-      }
-    }
+    return localVSSubscribeConfBean;
   }
   
   public String a()
@@ -66,12 +66,23 @@ public class VSSubscribeConfBean
   
   public String toString()
   {
-    return "k =subscribe_entrance_enable , value = " + this.a + ",k =is_open_sharing , value = " + this.b + ",k =subscribe_account_title , value = " + this.c + ",k =subscribeAccountNewFollowListSwitch , value = " + this.d + ",k =subscribeAccountPublishEntranceSwitch , value = " + this.e;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("k =subscribe_entrance_enable , value = ");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(",k =is_open_sharing , value = ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",k =subscribe_account_title , value = ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(",k =subscribeAccountNewFollowListSwitch , value = ");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(",k =subscribeAccountPublishEntranceSwitch , value = ");
+    localStringBuilder.append(this.e);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.config.processor.VSSubscribeConfBean
  * JD-Core Version:    0.7.0.1
  */

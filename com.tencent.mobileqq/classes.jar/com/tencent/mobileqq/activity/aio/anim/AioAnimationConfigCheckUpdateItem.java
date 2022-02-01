@@ -31,12 +31,13 @@ public class AioAnimationConfigCheckUpdateItem
   
   public ReqItem a(int paramInt)
   {
-    Object localObject2 = null;
     if (QLog.isColorLevel()) {
       QLog.d("AioAnimationConfigCheckUpdateItem", 2, "getCheckUpdateItemData:");
     }
-    a(null, new GetResourceReqInfo[] { a() });
-    Object localObject1 = localObject2;
+    Object localObject1 = a();
+    Object localObject2 = null;
+    a(null, new GetResourceReqInfo[] { localObject1 });
+    localObject1 = localObject2;
     if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg != null)
     {
       BaseProtocolCoder localBaseProtocolCoder = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.mqqService.lookupCoder(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getServiceCmd());
@@ -63,8 +64,14 @@ public class AioAnimationConfigCheckUpdateItem
     {
       int i = paramRespItem.cResult;
       Object localObject = paramRespItem.vecUpdate;
-      if (QLog.isColorLevel()) {
-        QLog.d("AioAnimationConfigCheckUpdateItem", 2, "handleCheckUpdateItemData: item.cResult = " + i + ", dataLen = " + localObject.length);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleCheckUpdateItemData: item.cResult = ");
+        localStringBuilder.append(i);
+        localStringBuilder.append(", dataLen = ");
+        localStringBuilder.append(localObject.length);
+        QLog.d("AioAnimationConfigCheckUpdateItem", 2, localStringBuilder.toString());
       }
       if ((paramRespItem.eServiceID == 120) && (paramRespItem.cResult == 2))
       {
@@ -83,7 +90,7 @@ public class AioAnimationConfigCheckUpdateItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.AioAnimationConfigCheckUpdateItem
  * JD-Core Version:    0.7.0.1
  */

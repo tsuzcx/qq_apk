@@ -17,21 +17,29 @@ final class SwiftBrowserCookieMonster$4
   
   public void Failed(ErrMsg paramErrMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SwiftBrowserCookieMonster", 2, "preGetKeyInPreloadService failed " + paramErrMsg);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("preGetKeyInPreloadService failed ");
+      localStringBuilder.append(paramErrMsg);
+      QLog.i("SwiftBrowserCookieMonster", 2, localStringBuilder.toString());
     }
   }
   
   public void Timeout(ErrMsg paramErrMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SwiftBrowserCookieMonster", 2, "preGetKeyInPreloadService timeout!" + paramErrMsg);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("preGetKeyInPreloadService timeout!");
+      localStringBuilder.append(paramErrMsg);
+      QLog.i("SwiftBrowserCookieMonster", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster.4
  * JD-Core Version:    0.7.0.1
  */

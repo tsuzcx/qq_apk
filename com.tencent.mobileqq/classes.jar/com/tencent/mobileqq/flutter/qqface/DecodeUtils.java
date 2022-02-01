@@ -6,8 +6,8 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.widget.ThemeImageWrapper;
 
 public class DecodeUtils
@@ -29,48 +29,50 @@ public class DecodeUtils
   private static Bitmap a(Bitmap paramBitmap, float paramFloat)
   {
     int i = paramBitmap.getWidth();
-    float f = paramFloat;
+    float f1 = paramFloat;
     if (i > 0)
     {
-      f = paramFloat;
-      if (i < 50 * paramFloat) {
-        f = i / 50;
+      float f2 = i;
+      float f3 = 50;
+      f1 = paramFloat;
+      if (f2 < paramFloat * f3) {
+        f1 = f2 / f3;
       }
     }
-    i = (int)(50 * f);
-    int j = (int)(50 * f);
-    return ImageUtil.a(paramBitmap, i, i, j);
+    i = (int)(50 * f1);
+    return ImageUtil.a(paramBitmap, i, i, i);
   }
   
   public static Bitmap a(String paramString, int paramInt, float paramFloat)
   {
-    Bitmap localBitmap = BitmapFactory.decodeFile(paramString);
-    paramString = null;
-    if (localBitmap != null)
+    paramString = BitmapFactory.decodeFile(paramString);
+    if (paramString != null)
     {
-      if (paramInt != 1) {
-        break label23;
+      if (paramInt == 1) {
+        return a(paramString);
       }
-      paramString = a(localBitmap);
-    }
-    label23:
-    do
-    {
-      return paramString;
-      localBitmap = a(localBitmap, paramFloat);
+      Bitmap localBitmap = a(paramString, paramFloat);
       paramString = localBitmap;
-    } while (!ThemeImageWrapper.isNightMode());
-    paramString = new Paint();
-    paramString.setAntiAlias(true);
-    paramString.setColor(ThemeUtil.NIGHTMODE_MASKCOLOR);
-    Canvas localCanvas = new Canvas(localBitmap);
-    localCanvas.drawCircle(localCanvas.getWidth() / 2, localCanvas.getHeight() / 2, localCanvas.getWidth() / 2, paramString);
-    return localBitmap;
+      if (ThemeImageWrapper.isNightMode())
+      {
+        paramString = new Paint();
+        paramString.setAntiAlias(true);
+        paramString.setColor(ThemeUtil.NIGHTMODE_MASKCOLOR);
+        Canvas localCanvas = new Canvas(localBitmap);
+        localCanvas.drawCircle(localCanvas.getWidth() / 2, localCanvas.getHeight() / 2, localCanvas.getWidth() / 2, paramString);
+        return localBitmap;
+      }
+    }
+    else
+    {
+      paramString = null;
+    }
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.qqface.DecodeUtils
  * JD-Core Version:    0.7.0.1
  */

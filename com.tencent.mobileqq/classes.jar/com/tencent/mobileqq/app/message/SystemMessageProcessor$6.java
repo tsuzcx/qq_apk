@@ -20,21 +20,32 @@ class SystemMessageProcessor$6
       paramProtoReq = new structmsg.RspSystemMsgRead();
       paramProtoReq.mergeFrom(paramProtoResp);
       int i = paramProtoReq.head.result.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.systemmsg.", 2, "clearFriendSystemMsgResp reqSeq=" + this.a + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
+      if (QLog.isColorLevel())
+      {
+        paramProtoResp = new StringBuilder();
+        paramProtoResp.append("clearFriendSystemMsgResp reqSeq=");
+        paramProtoResp.append(this.a);
+        paramProtoResp.append(";resultCode=");
+        paramProtoResp.append(i);
+        paramProtoResp.append(";latestFriendSeq=");
+        paramProtoResp.append(this.b);
+        paramProtoResp.append(";latestGroupSeq=");
+        paramProtoResp.append(this.c);
+        QLog.d("Q.systemmsg.", 2, paramProtoResp.toString());
+        return;
       }
-      return;
     }
     catch (Exception paramProtoResp)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.systemmsg.", 2, "clearFriendSystemMsgResp exception", paramProtoResp);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.systemmsg.", 2, "clearFriendSystemMsgResp exception", paramProtoResp);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.SystemMessageProcessor.6
  * JD-Core Version:    0.7.0.1
  */

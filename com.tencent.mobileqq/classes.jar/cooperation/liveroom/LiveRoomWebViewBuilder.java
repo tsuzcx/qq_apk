@@ -24,8 +24,8 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.StartAppCheckHandler;
 import com.tencent.mobileqq.haoliyou.JefsClass;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.webview.build.WebViewBaseBuilder;
-import com.tencent.mobileqq.webview.build.WebViewBaseBuilder.ImmersiveParam;
+import com.tencent.mobileqq.webview.WebViewBaseBuilder;
+import com.tencent.mobileqq.webview.WebViewBaseBuilder.ImmersiveParam;
 import com.tencent.mobileqq.webview.swift.CommonJsPluginFactory;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
@@ -70,8 +70,12 @@ public class LiveRoomWebViewBuilder
   
   public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
   {
-    if ((paramArrayList != null) && (this.mBussinessPluginList != null) && (this.mBussinessPluginList.size() > 0)) {
-      paramArrayList.addAll(this.mBussinessPluginList);
+    if (paramArrayList != null)
+    {
+      ArrayList localArrayList = this.mBussinessPluginList;
+      if ((localArrayList != null) && (localArrayList.size() > 0)) {
+        paramArrayList.addAll(this.mBussinessPluginList);
+      }
     }
   }
   
@@ -83,44 +87,51 @@ public class LiveRoomWebViewBuilder
   @TargetApi(14)
   public View buildLayoutOnly()
   {
-    View localView = LayoutInflater.from(this.mContext).inflate(2131563224, null);
-    this.mViewRoot = localView.findViewById(2131381847);
+    View localView = LayoutInflater.from(this.mContext).inflate(2131563048, null);
+    this.mViewRoot = localView.findViewById(2131381061);
     if (this.mViewRoot == null) {
       return localView;
     }
-    if ((this.bNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1) && (Build.VERSION.SDK_INT >= 14)) {
+    boolean bool2 = this.bNeedStatusTrans;
+    boolean bool1 = true;
+    if ((bool2) && (ImmersiveUtils.isSupporImmersive() == 1) && (Build.VERSION.SDK_INT >= 14)) {
       this.mViewRoot.setFitsSystemWindows(this.bFitSystemWindow);
     }
-    this.titleContainer = ((FrameLayout)this.mViewRoot.findViewById(2131379471));
-    this.bottomContainer = ((FrameLayout)this.mViewRoot.findViewById(2131363804));
-    this.webviewContainer = ((RelativeLayout)this.mViewRoot.findViewById(2131381866));
-    this.mLoadProgress = ((ProgressBar)this.mViewRoot.findViewById(2131376854));
-    this.maskView = this.mViewRoot.findViewById(2131381869);
-    this.contentContainer = ((LinearLayout)this.mViewRoot.findViewById(2131365304));
+    this.titleContainer = ((FrameLayout)this.mViewRoot.findViewById(2131378823));
+    this.bottomContainer = ((FrameLayout)this.mViewRoot.findViewById(2131363733));
+    this.webviewContainer = ((RelativeLayout)this.mViewRoot.findViewById(2131381078));
+    this.mLoadProgress = ((ProgressBar)this.mViewRoot.findViewById(2131376345));
+    this.maskView = this.mViewRoot.findViewById(2131381081);
+    this.contentContainer = ((LinearLayout)this.mViewRoot.findViewById(2131365179));
     if ((this.mIntent != null) && (!this.mIntent.getBooleanExtra("webview_hide_progress", false)))
     {
-      this.mLoadingProgressBar = ((WebViewProgressBar)this.mViewRoot.findViewById(2131373555));
+      this.mLoadingProgressBar = ((WebViewProgressBar)this.mViewRoot.findViewById(2131373133));
       this.mProgressBarController = new WebViewProgressBarController();
       this.mLoadingProgressBar.setController(this.mProgressBarController);
-      if ((this.mIsFirstOnPageStart) && (this.mProgressBarController != null) && (this.mProgressBarController.b() != 0)) {
+      if ((isIsFirstOnPageStart()) && (this.mProgressBarController != null) && (this.mProgressBarController.b() != 0)) {
         this.mProgressBarController.a((byte)0);
       }
     }
     this.mWebview = new TouchWebView(this.mContext);
-    this.mWebview.setId(2131381863);
+    this.mWebview.setId(2131381075);
     WebSettings localWebSettings = this.mWebview.getSettings();
-    String str1 = " gflive/" + this.sdkVersion;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(" gflive/");
+    ((StringBuilder)localObject).append(this.sdkVersion);
+    localObject = ((StringBuilder)localObject).toString();
     StringBuilder localStringBuilder = new StringBuilder();
-    String str2 = localWebSettings.getUserAgentString();
-    String str3 = getUAMark();
-    if (this.mWebview.getX5WebViewExtension() != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localWebSettings.setUserAgentString(SwiftWebViewUtils.a(str2, str3, bool) + " gflivesdk" + str1);
-      localWebSettings.setMixedContentMode(0);
-      this.webviewContainer.addView(this.mWebview, new RelativeLayout.LayoutParams(-1, -1));
-      return localView;
+    String str1 = localWebSettings.getUserAgentString();
+    String str2 = getUAMark();
+    if (this.mWebview.getX5WebViewExtension() == null) {
+      bool1 = false;
     }
+    localStringBuilder.append(SwiftWebViewUtils.a(str1, str2, bool1));
+    localStringBuilder.append(" gflivesdk");
+    localStringBuilder.append((String)localObject);
+    localWebSettings.setUserAgentString(localStringBuilder.toString());
+    localWebSettings.setMixedContentMode(0);
+    this.webviewContainer.addView(this.mWebview, new RelativeLayout.LayoutParams(-1, -1));
+    return localView;
   }
   
   public void buildTitleBar()
@@ -134,8 +145,9 @@ public class LiveRoomWebViewBuilder
   
   public Object doInterceptRequest(WebView paramWebView, String paramString)
   {
-    if (this.mWebviewCallback != null) {
-      return this.mWebviewCallback.doInterceptRequest(paramString);
+    LiveRoomWebViewBuilder.WebviewCallback localWebviewCallback = this.mWebviewCallback;
+    if (localWebviewCallback != null) {
+      return localWebviewCallback.doInterceptRequest(paramString);
     }
     return super.doInterceptRequest(paramWebView, paramString);
   }
@@ -153,17 +165,17 @@ public class LiveRoomWebViewBuilder
     return null;
   }
   
-  public String getUAMark()
+  protected String getUAMark()
   {
     return "LiveRoom";
   }
   
-  public CommonJsPluginFactory myCommonJsPlugins()
+  protected CommonJsPluginFactory myCommonJsPlugins()
   {
     return this.LIVEROOM_COMMON_JS;
   }
   
-  public void onImmersive(boolean paramBoolean, WebViewBaseBuilder.ImmersiveParam paramImmersiveParam)
+  protected void onImmersive(boolean paramBoolean, WebViewBaseBuilder.ImmersiveParam paramImmersiveParam)
   {
     if (QLog.isColorLevel()) {
       QLog.d("LiveRoomWebViewBuilder", 2, "onImmersive");
@@ -177,17 +189,18 @@ public class LiveRoomWebViewBuilder
         paramImmersiveParam.b.getBackground().setAlpha(0);
       }
     }
-    do
+    else
     {
-      return;
       if (this.mSystemBarComp != null) {
         this.mSystemBarComp.setgetStatusBarVisible(true, 0);
       }
       if (paramImmersiveParam.b != null) {
-        paramImmersiveParam.b.setBackgroundResource(2130850507);
+        paramImmersiveParam.b.setBackgroundResource(2130850433);
       }
-    } while (this.mTitleBar == null);
-    this.mTitleBar.a(255, 0);
+      if (this.mTitleBar != null) {
+        this.mTitleBar.a(255, 0);
+      }
+    }
   }
   
   public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
@@ -210,7 +223,7 @@ public class LiveRoomWebViewBuilder
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    setmTimeBeforeLoadUrl(System.currentTimeMillis());
+    setTimeBeforeLoadUrl(System.currentTimeMillis());
     super.onPageStarted(paramWebView, paramString, paramBitmap);
     this.loading = true;
     LiveRoomHelper.report("webViewBuilder", "webView", "pageStart", NetConnInfoCenter.getServerTimeMillis() - LiveRoomHelper.startTime);
@@ -234,27 +247,19 @@ public class LiveRoomWebViewBuilder
     {
       localObject2 = new Intent("android.intent.action.VIEW", (Uri)localObject1);
       ((Intent)localObject2).addFlags(268435456);
-      for (;;)
+      try
       {
-        try
-        {
-          localObject1 = this.mInActivity.getPackageManager();
-          if (localObject1 == null) {
-            return false;
-          }
-          Object localObject3 = ((Intent)localObject2).resolveActivityInfo((PackageManager)localObject1, 0);
-          localObject1 = "";
-          if (localObject3 != null) {
-            localObject1 = ((ActivityInfo)localObject3).packageName;
-          }
-          localObject3 = this.mInActivity.getClass().getName();
-          StartAppCheckHandler.a("scheme", paramWebView.getUrl(), (String)localObject1, "1", "web", (String)localObject3);
+        localObject1 = this.mInActivity.getPackageManager();
+        if (localObject1 == null) {
+          return false;
         }
-        catch (Exception paramWebView)
-        {
-          QLog.e("LiveRoomWebViewBuilder", 1, "afterWebViewEngineHandleOverrideUrl error!", paramWebView);
-          continue;
+        Object localObject3 = ((Intent)localObject2).resolveActivityInfo((PackageManager)localObject1, 0);
+        localObject1 = "";
+        if (localObject3 != null) {
+          localObject1 = ((ActivityInfo)localObject3).packageName;
         }
+        localObject3 = this.mInActivity.getClass().getName();
+        StartAppCheckHandler.a("scheme", paramWebView.getUrl(), (String)localObject1, "1", "web", (String)localObject3);
         try
         {
           JefsClass.getInstance().a(this.mInActivity, (Intent)localObject2, paramString, new LiveRoomWebViewBuilder.2(this, (Intent)localObject2));
@@ -263,15 +268,21 @@ public class LiveRoomWebViewBuilder
         catch (Throwable paramWebView)
         {
           QLog.e("LiveRoomWebViewBuilder", 1, paramWebView, new Object[0]);
+          return true;
         }
+        return false;
+      }
+      catch (Exception paramWebView)
+      {
+        QLog.e("LiveRoomWebViewBuilder", 1, "afterWebViewEngineHandleOverrideUrl error!", paramWebView);
+        return true;
       }
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomWebViewBuilder
  * JD-Core Version:    0.7.0.1
  */

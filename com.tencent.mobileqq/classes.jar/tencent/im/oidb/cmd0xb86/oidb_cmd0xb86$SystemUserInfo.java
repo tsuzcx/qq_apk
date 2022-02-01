@@ -28,14 +28,16 @@ public final class oidb_cmd0xb86$SystemUserInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 56, 66, 74, 80, 88, 96, 104, 1624 }, new String[] { "uint32_user_type", "uint32_mp_auth", "uint64_id_create_time", "bytes_3t_bid", "msg_bind_user", "uint64_registered_type", "bytes_platfrom_ext", "msg_openid", "uint32_home_page_type", "uint32_account_sysid", "uint32_cc_account_level", "uint32_unowned_user", "uint32_upgc_flag" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro1, null, Long.valueOf(0L), localByteStringMicro2, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, SystemUserInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 56, 66, 74, 80, 88, 96, 104, 1624 }, new String[] { "uint32_user_type", "uint32_mp_auth", "uint64_id_create_time", "bytes_3t_bid", "msg_bind_user", "uint64_registered_type", "bytes_platfrom_ext", "msg_openid", "uint32_home_page_type", "uint32_account_sysid", "uint32_cc_account_level", "uint32_unowned_user", "uint32_upgc_flag" }, new Object[] { localInteger, localInteger, localLong, localByteStringMicro1, null, localLong, localByteStringMicro2, null, localInteger, localInteger, localInteger, localInteger, localInteger }, SystemUserInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb86.oidb_cmd0xb86.SystemUserInfo
  * JD-Core Version:    0.7.0.1
  */

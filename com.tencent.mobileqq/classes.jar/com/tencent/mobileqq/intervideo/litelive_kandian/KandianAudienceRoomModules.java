@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import com.tencent.ilive.litepages.room.bizmodule.LiteLuxuryGiftModule;
+import com.tencent.mobileqq.intervideo.litelive_kandian.customized.roombizmodules.audiofocus.CustomAudioFocusListenerModule;
 import com.tencent.mobileqq.intervideo.litelive_kandian.customized.roombizmodules.datareport.KandianCustomDataReportModule;
 import com.tencent.mobileqq.intervideo.litelive_kandian.customized.roombizmodules.webmodule.KandianWebBizModule;
 import com.tencent.mobileqq.litelivesdk.api.customized.BaseSDKPageBizBootModules;
@@ -24,11 +25,12 @@ public class KandianAudienceRoomModules
     a(SDKPageBizModuleType.Normal, new CustomSwitchRoomModule());
     a(SDKPageBizModuleType.Normal, new KandianCustomDataReportModule(localKandianWebBizModule));
     a(SDKPageBizModuleType.Normal, new LiteLuxuryGiftModule());
+    a(SDKPageBizModuleType.Normal, new CustomAudioFocusListenerModule());
   }
   
   public void a(Context paramContext)
   {
-    a((ViewGroup)LayoutInflater.from(paramContext).inflate(2131559355, (ViewGroup)null));
+    a((ViewGroup)LayoutInflater.from(paramContext).inflate(2131559230, (ViewGroup)null));
   }
   
   public void b() {}
@@ -42,7 +44,7 @@ public class KandianAudienceRoomModules
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.litelive_kandian.KandianAudienceRoomModules
  * JD-Core Version:    0.7.0.1
  */

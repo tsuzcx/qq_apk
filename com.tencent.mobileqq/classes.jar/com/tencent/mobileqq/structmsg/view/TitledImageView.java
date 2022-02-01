@@ -51,7 +51,7 @@ public class TitledImageView
     this.jdField_a_of_type_AndroidTextMethodTransformationMethod = SingleLineTransformationMethod.getInstance();
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence))
@@ -61,49 +61,58 @@ public class TitledImageView
       float f = getMeasuredHeight() - this.jdField_a_of_type_AndroidTextTextPaint.getTextSize() - this.c * 2;
       paramCanvas.save();
       paramCanvas.clipRect(0.0F, f, getMeasuredWidth(), getMeasuredHeight());
-      if (this.jdField_a_of_type_AndroidGraphicsPath != null) {
-        paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidTextTextPaint);
+      Object localObject = this.jdField_a_of_type_AndroidGraphicsPath;
+      if (localObject != null) {
+        paramCanvas.drawPath((Path)localObject, this.jdField_a_of_type_AndroidTextTextPaint);
       }
-      paramCanvas.translate(0.0F + this.c, f + this.c);
+      int i = this.c;
+      paramCanvas.translate(0.0F + i, f + i);
       this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.b);
-      if (this.jdField_a_of_type_AndroidTextLayout != null) {
-        this.jdField_a_of_type_AndroidTextLayout.draw(paramCanvas);
+      localObject = this.jdField_a_of_type_AndroidTextLayout;
+      if (localObject != null) {
+        ((Layout)localObject).draw(paramCanvas);
       }
       paramCanvas.restore();
     }
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt1 = getMeasuredHeight();
     paramInt2 = getMeasuredWidth();
-    if ((paramInt1 < 1) || (paramInt2 < 1)) {}
-    float f2;
-    do
+    if (paramInt1 >= 1)
     {
-      do
-      {
+      if (paramInt2 < 1) {
         return;
-      } while (!paramBoolean);
-      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-      float f1 = paramInt1 - this.c * 2 - this.jdField_a_of_type_AndroidTextTextPaint.getTextSize();
-      f2 = paramInt2;
-      float f3 = paramInt1;
-      this.jdField_a_of_type_AndroidGraphicsPath.moveTo(0.0F, f1);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f2, f1);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f2, f3 - this.d);
-      localObject = new RectF(f2 - this.d * 2, f3 - this.d * 2, f2, f3);
-      this.jdField_a_of_type_AndroidGraphicsPath.arcTo((RectF)localObject, 0.0F, 90.0F, false);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.d + 0.0F, f3);
-      localObject = new RectF(0.0F, f3 - this.d * 2, this.d * 2 + 0.0F, f3);
-      this.jdField_a_of_type_AndroidGraphicsPath.arcTo((RectF)localObject, 90.0F, 90.0F, true);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(0.0F, f1);
-      this.jdField_a_of_type_AndroidGraphicsPath.close();
-    } while (this.jdField_a_of_type_JavaLangCharSequence == null);
-    Object localObject = this.jdField_a_of_type_AndroidTextMethodTransformationMethod.getTransformation(this.jdField_a_of_type_JavaLangCharSequence, this);
-    paramInt1 = (int)Layout.getDesiredWidth(this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_AndroidTextTextPaint);
-    this.jdField_a_of_type_AndroidTextLayout = new DynamicLayout(this.jdField_a_of_type_JavaLangCharSequence, (CharSequence)localObject, this.jdField_a_of_type_AndroidTextTextPaint, paramInt1, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.5F, false, TextUtils.TruncateAt.END, (int)(f2 - this.c * 2));
+      }
+      if (paramBoolean)
+      {
+        this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+        float f1 = paramInt1 - this.c * 2 - this.jdField_a_of_type_AndroidTextTextPaint.getTextSize();
+        float f2 = paramInt2;
+        float f3 = paramInt1;
+        this.jdField_a_of_type_AndroidGraphicsPath.moveTo(0.0F, f1);
+        this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f2, f1);
+        this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f2, f3 - this.d);
+        paramInt1 = this.d;
+        Object localObject = new RectF(f2 - paramInt1 * 2, f3 - paramInt1 * 2, f2, f3);
+        this.jdField_a_of_type_AndroidGraphicsPath.arcTo((RectF)localObject, 0.0F, 90.0F, false);
+        this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.d + 0.0F, f3);
+        paramInt1 = this.d;
+        localObject = new RectF(0.0F, f3 - paramInt1 * 2, paramInt1 * 2 + 0.0F, f3);
+        this.jdField_a_of_type_AndroidGraphicsPath.arcTo((RectF)localObject, 90.0F, 90.0F, true);
+        this.jdField_a_of_type_AndroidGraphicsPath.lineTo(0.0F, f1);
+        this.jdField_a_of_type_AndroidGraphicsPath.close();
+        localObject = this.jdField_a_of_type_JavaLangCharSequence;
+        if (localObject != null)
+        {
+          localObject = this.jdField_a_of_type_AndroidTextMethodTransformationMethod.getTransformation((CharSequence)localObject, this);
+          paramInt1 = (int)Layout.getDesiredWidth(this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_AndroidTextTextPaint);
+          this.jdField_a_of_type_AndroidTextLayout = new DynamicLayout(this.jdField_a_of_type_JavaLangCharSequence, (CharSequence)localObject, this.jdField_a_of_type_AndroidTextTextPaint, paramInt1, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.5F, false, TextUtils.TruncateAt.END, (int)(f2 - this.c * 2));
+        }
+      }
+    }
   }
   
   public void setTextBackground(int paramInt)
@@ -143,7 +152,7 @@ public class TitledImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.TitledImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -141,16 +141,17 @@ public class MiniAppStartState
       paramString.baseLibDownload = 1;
       paramString.baselibLoad = 1;
       paramString.apkgDownload = 1;
+      paramString.processLoad = 1;
     }
-    for (paramString.processLoad = 1;; paramString.processLoad = 0)
+    else
     {
-      if (paramString.pageSwitch == -1) {
-        paramString.pageSwitch = 0;
-      }
-      return;
       paramString.baseLibDownload = 0;
       paramString.baselibLoad = 0;
       paramString.apkgDownload = 0;
+      paramString.processLoad = 0;
+    }
+    if (paramString.pageSwitch == -1) {
+      paramString.pageSwitch = 0;
     }
   }
   
@@ -223,7 +224,7 @@ public class MiniAppStartState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniAppStartState
  * JD-Core Version:    0.7.0.1
  */

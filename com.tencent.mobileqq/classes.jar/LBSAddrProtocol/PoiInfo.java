@@ -63,14 +63,15 @@ public final class PoiInfo
     paramJceOutputStream.write(this.iLon, 7);
     paramJceOutputStream.write(this.iDistance, 8);
     paramJceOutputStream.write(this.iHotValue, 9);
-    if (this.strPhone != null) {
-      paramJceOutputStream.write(this.strPhone, 10);
+    String str = this.strPhone;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     LBSAddrProtocol.PoiInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -9,13 +9,14 @@ import android.os.Build;
 import android.os.Handler;
 import android.view.Surface;
 import android.view.SurfaceHolder;
+import com.tencent.qqlive.module.videoreport.dtreport.audio.playback.ReportMediaPlayer;
 import com.tencent.thumbplayer.utils.TPLogUtil;
 import java.io.FileDescriptor;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public class TPMediaPlayer
-  extends MediaPlayer
+  extends ReportMediaPlayer
 {
   private static final String TAG = "TPThumbPlayer[TPMediaPlayer.java]";
   
@@ -144,31 +145,23 @@ public class TPMediaPlayer
         super.setOnVideoSizeChangedListener(null);
         ((Handler)super.getClass().getDeclaredField("mA2dpHandler").get(this)).removeCallbacksAndMessages(null);
       }
-      return;
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      for (;;)
-      {
-        try
-        {
-          super.release();
-          return;
-        }
-        catch (Exception localException)
-        {
-          TPLogUtil.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
-        }
-        localNoSuchFieldException = localNoSuchFieldException;
-        TPLogUtil.e("TPThumbPlayer[TPMediaPlayer.java]", localNoSuchFieldException);
-      }
     }
     catch (IllegalAccessException localIllegalAccessException)
     {
-      for (;;)
-      {
-        TPLogUtil.e("TPThumbPlayer[TPMediaPlayer.java]", localIllegalAccessException);
-      }
+      TPLogUtil.e("TPThumbPlayer[TPMediaPlayer.java]", localIllegalAccessException);
+    }
+    catch (NoSuchFieldException localNoSuchFieldException)
+    {
+      TPLogUtil.e("TPThumbPlayer[TPMediaPlayer.java]", localNoSuchFieldException);
+    }
+    try
+    {
+      super.release();
+      return;
+    }
+    catch (Exception localException)
+    {
+      TPLogUtil.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
     }
   }
   
@@ -304,7 +297,7 @@ public class TPMediaPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.systemplayer.TPMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

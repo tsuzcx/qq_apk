@@ -11,11 +11,11 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.Window;
 import com.tencent.av.smallscreen.SmallScreenUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.activity.QPublicFragmentActivity.Launcher;
+import com.tencent.mobileqq.activity.QPublicTransFragmentActivity;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.app.BaseActivity;
@@ -29,32 +29,36 @@ public class PopupDialog
   
   public static QQCustomDialog a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    QQCustomDialog localQQCustomDialog2;
+    QQCustomDialog localQQCustomDialog2 = null;
+    QQCustomDialog localQQCustomDialog1 = null;
     try
     {
-      if (paramContext != BaseApplicationImpl.getApplication()) {
-        localQQCustomDialog1 = DialogUtil.a(paramContext, 230, paramString1, paramString2, paramInt2, paramInt3, paramOnClickListener1, paramOnClickListener2);
+      BaseApplication localBaseApplication = BaseApplication.getContext();
+      if (paramContext != localBaseApplication) {
+        localQQCustomDialog1 = localQQCustomDialog2;
       }
     }
     catch (Exception localException1)
     {
-      QQCustomDialog localQQCustomDialog1;
-      localQQCustomDialog2 = null;
+      break label73;
     }
     try
     {
-      localQQCustomDialog1.show();
-      return localQQCustomDialog1;
+      localQQCustomDialog2 = DialogUtil.a(paramContext, 230, paramString1, paramString2, paramInt2, paramInt3, paramOnClickListener1, paramOnClickListener2);
+      localQQCustomDialog1 = localQQCustomDialog2;
+      localQQCustomDialog2.show();
+      return localQQCustomDialog2;
     }
     catch (Exception localException2)
     {
-      break label56;
+      break label73;
     }
+    localQQCustomDialog1 = localQQCustomDialog2;
     a(paramContext, paramInt1, paramString1, paramString2, paramInt2, paramInt3, paramOnClickListener1, paramOnClickListener2);
     return null;
-    label56:
+    label73:
     a(paramContext, paramInt1, paramString1, paramString2, paramInt2, paramInt3, paramOnClickListener1, paramOnClickListener2);
-    return localQQCustomDialog2;
+    return localQQCustomDialog1;
   }
   
   public static void a()
@@ -63,10 +67,9 @@ public class PopupDialog
       QLog.d("PopupDialog", 2, "hideCustomDialog");
     }
     jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.jdField_a_of_type_Boolean = false;
-    PopupDialog.Cache localCache = jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache;
     if (PopupDialog.Cache.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
     {
-      localCache = jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache;
+      PopupDialog.Cache localCache = jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache;
       PopupDialog.Cache.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
       localCache = jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache;
       PopupDialog.Cache.jdField_a_of_type_ComTencentAvUtilsPopupDialog = null;
@@ -75,92 +78,80 @@ public class PopupDialog
   
   public static void a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    boolean bool2 = false;
     Bundle localBundle = new Bundle();
     localBundle.putInt("type", paramInt1);
     localBundle.putString("titleText", paramString1);
     localBundle.putString("contentText", paramString2);
     localBundle.putInt("leftBtnText", paramInt2);
     localBundle.putInt("rightBtnText", paramInt3);
-    if (paramOnClickListener2 != null) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      localBundle.putBoolean("leftBtnVisiable", bool1);
-      bool1 = bool2;
-      if (paramOnClickListener1 != null) {
-        bool1 = true;
-      }
-      localBundle.putBoolean("rightBtnVisiable", bool1);
-      if ((paramOnClickListener1 != null) || (paramOnClickListener2 != null)) {
-        localBundle.putParcelable("resultReceiver", new PopupDialog.1(new Handler(), paramOnClickListener2, paramOnClickListener1));
-      }
-      paramString1 = new Intent();
-      paramString1.putExtra("public_fragment_window_feature", 1);
-      paramString1.putExtra("request", localBundle);
-      paramString1.addFlags(268435456);
-      PublicFragmentActivity.Launcher.a(paramContext, paramString1, PublicTransFragmentActivity.class, PopupDialogQQSide.class);
-      return;
+    boolean bool2 = false;
+    if (paramOnClickListener2 != null) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PopupDialog", 2, "changeDialogText");
+    localBundle.putBoolean("leftBtnVisiable", bool1);
+    boolean bool1 = bool2;
+    if (paramOnClickListener1 != null) {
+      bool1 = true;
     }
-    Object localObject = jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache;
-    if (PopupDialog.Cache.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
-    {
-      paramContext = jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache;
-      PopupDialog.Cache.jdField_a_of_type_ComTencentAvUtilsPopupDialog.a(paramString1, paramString2);
-      return;
+    localBundle.putBoolean("rightBtnVisiable", bool1);
+    if ((paramOnClickListener1 != null) || (paramOnClickListener2 != null)) {
+      localBundle.putParcelable("resultReceiver", new PopupDialog.1(new Handler(), paramOnClickListener2, paramOnClickListener1));
     }
-    localObject = new Intent(paramContext, PopupDialog.class);
-    ((Intent)localObject).putExtra("invoke_type", "changeText");
-    ((Intent)localObject).addFlags(268435456);
-    jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.jdField_a_of_type_JavaLangString = paramString1;
-    jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.jdField_b_of_type_JavaLangString = paramString2;
-    paramContext.startActivity((Intent)localObject);
+    paramString1 = new Intent();
+    paramString1.putExtra("public_fragment_window_feature", 1);
+    paramString1.putExtra("request", localBundle);
+    paramString1.addFlags(268435456);
+    QPublicFragmentActivity.Launcher.a(paramContext, paramString1, QPublicTransFragmentActivity.class, PopupDialogQQSide.class);
   }
   
   private void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PopupDialog", 2, "sendIsResumeBroadcast isResume = " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sendIsResumeBroadcast isResume = ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("PopupDialog", 2, localStringBuilder.toString());
     }
     if (this.jdField_a_of_type_Boolean) {
-      SmallScreenUtils.a(BaseApplicationImpl.getContext(), paramBoolean);
+      SmallScreenUtils.a(BaseApplication.getContext(), paramBoolean);
     }
   }
   
   public static QQCustomDialog b(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    QQCustomDialog localQQCustomDialog2;
+    QQCustomDialog localQQCustomDialog2 = null;
+    QQCustomDialog localQQCustomDialog1 = null;
     try
     {
-      if (paramContext != BaseApplicationImpl.getApplication()) {
-        localQQCustomDialog1 = DialogUtil.a(paramContext, 230, paramString1, paramString2, paramInt2, paramInt3, paramOnClickListener1, paramOnClickListener2);
+      BaseApplication localBaseApplication = BaseApplication.getContext();
+      if (paramContext != localBaseApplication) {
+        localQQCustomDialog1 = localQQCustomDialog2;
       }
     }
     catch (Exception localException1)
     {
-      QQCustomDialog localQQCustomDialog1;
-      localQQCustomDialog2 = null;
+      break label73;
     }
     try
     {
-      localQQCustomDialog1.show();
-      return localQQCustomDialog1;
+      localQQCustomDialog2 = DialogUtil.a(paramContext, 230, paramString1, paramString2, paramInt2, paramInt3, paramOnClickListener1, paramOnClickListener2);
+      localQQCustomDialog1 = localQQCustomDialog2;
+      localQQCustomDialog2.show();
+      return localQQCustomDialog2;
     }
     catch (Exception localException2)
     {
-      break label56;
+      break label73;
     }
+    localQQCustomDialog1 = localQQCustomDialog2;
     b(paramContext, paramInt1, paramString1, paramString2, paramInt2, paramInt3, paramOnClickListener1, paramOnClickListener2);
     return null;
-    label56:
+    label73:
     b(paramContext, paramInt1, paramString1, paramString2, paramInt2, paramInt3, paramOnClickListener1, paramOnClickListener2);
-    return localQQCustomDialog2;
+    return localQQCustomDialog1;
   }
   
   public static void b(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
@@ -172,74 +163,75 @@ public class PopupDialog
     if (QLog.isColorLevel()) {
       QLog.d("PopupDialog", 2, "showCustomDialog");
     }
-    jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.jdField_a_of_type_Int = paramInt1;
-    jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.jdField_a_of_type_JavaLangString = paramString1;
-    jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.jdField_b_of_type_JavaLangString = paramString2;
-    jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.jdField_b_of_type_Int = paramInt2;
-    jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.c = paramInt3;
-    jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener2;
-    jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener1;
+    PopupDialog.Cache localCache = jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache;
+    localCache.jdField_a_of_type_Boolean = true;
+    localCache.jdField_a_of_type_Int = paramInt1;
+    localCache.jdField_a_of_type_JavaLangString = paramString1;
+    localCache.jdField_b_of_type_JavaLangString = paramString2;
+    localCache.jdField_b_of_type_Int = paramInt2;
+    localCache.c = paramInt3;
+    localCache.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener2;
+    localCache.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener1;
     paramContext.startActivity(localIntent);
-  }
-  
-  void a(String paramString1, String paramString2)
-  {
-    jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.jdField_a_of_type_JavaLangString = paramString1;
-    jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(paramString1);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(paramString2);
-    if (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-    }
   }
   
   void b()
   {
     Object localObject1 = super.getIntent().getStringExtra("invoke_type");
-    if ((TextUtils.equals((CharSequence)localObject1, "reshow")) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)) {
-      if (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
+    Object localObject2;
+    if (TextUtils.equals((CharSequence)localObject1, "reshow"))
+    {
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+      if (localObject2 != null)
+      {
+        if (((QQCustomDialog)localObject2).isShowing()) {
+          return;
+        }
         this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+        return;
       }
     }
-    do
+    if ((TextUtils.equals((CharSequence)localObject1, "changeText")) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null))
     {
-      return;
-      if ((!TextUtils.equals((CharSequence)localObject1, "changeText")) || (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)) {
-        break;
-      }
       localObject1 = jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.jdField_a_of_type_JavaLangString;
       localObject2 = jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.jdField_b_of_type_JavaLangString;
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle((String)localObject1);
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage((CharSequence)localObject2);
-    } while (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing());
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-    return;
-    int k = jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.jdField_a_of_type_Int;
-    String str1 = jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.jdField_a_of_type_JavaLangString;
-    String str2 = jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.jdField_b_of_type_JavaLangString;
-    int i = jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.jdField_b_of_type_Int;
-    int j = jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.c;
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
+      if (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+      }
     }
-    localObject1 = new PopupDialog.2(this);
-    Object localObject2 = new PopupDialog.3(this);
-    if ((i == 0) || (jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener == null))
+    else
     {
+      int k = jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.jdField_a_of_type_Int;
+      String str1 = jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.jdField_a_of_type_JavaLangString;
+      String str2 = jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.jdField_b_of_type_JavaLangString;
+      int i = jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.jdField_b_of_type_Int;
+      int j = jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.c;
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+      if (localObject1 != null)
+      {
+        ((QQCustomDialog)localObject1).dismiss();
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
+      }
+      localObject1 = new PopupDialog.2(this);
+      localObject2 = new PopupDialog.3(this);
+      if ((i != 0) && (jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)) {
+        break label222;
+      }
       localObject1 = null;
-      i = 2131720534;
-    }
-    if ((j == 0) || (jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener == null))
-    {
+      i = 2131720247;
+      label222:
+      if ((j != 0) && (jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener != null)) {
+        break label247;
+      }
       localObject2 = null;
-      j = 2131720534;
+      j = 2131720247;
+      label247:
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, k, str1, str2, i, j, (DialogInterface.OnClickListener)localObject2, (DialogInterface.OnClickListener)localObject1);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, k, str1, str2, i, j, (DialogInterface.OnClickListener)localObject2, (DialogInterface.OnClickListener)localObject1);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
   
   @Override
@@ -266,7 +258,7 @@ public class PopupDialog
     if (QLog.isColorLevel()) {
       QLog.d("PopupDialog", 2, "onCreate");
     }
-    getWindow().setBackgroundDrawableResource(2130851165);
+    getWindow().setBackgroundDrawableResource(2130851081);
     paramBundle = jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache;
     if (PopupDialog.Cache.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
     {
@@ -281,26 +273,25 @@ public class PopupDialog
     PopupDialog.Cache.jdField_a_of_type_ComTencentAvUtilsPopupDialog = this;
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     if (QLog.isColorLevel()) {
       QLog.d("PopupDialog", 2, "onDestroy");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      ((QQCustomDialog)localObject).dismiss();
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     }
-    PopupDialog.Cache localCache = jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache;
+    localObject = jdField_a_of_type_ComTencentAvUtilsPopupDialog$Cache;
     PopupDialog.Cache.jdField_a_of_type_ComTencentAvUtilsPopupDialog = null;
     super.onDestroy();
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 4) {
       return super.onKeyDown(paramInt, paramKeyEvent);
     }
     return true;
@@ -327,13 +318,13 @@ public class PopupDialog
     PopupDialog.Cache.jdField_a_of_type_ComTencentAvUtilsPopupDialog = this;
   }
   
-  public void onPause()
+  protected void onPause()
   {
     super.onPause();
     a(false);
   }
   
-  public void onResume()
+  protected void onResume()
   {
     super.onResume();
     b();
@@ -358,7 +349,7 @@ public class PopupDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.PopupDialog
  * JD-Core Version:    0.7.0.1
  */

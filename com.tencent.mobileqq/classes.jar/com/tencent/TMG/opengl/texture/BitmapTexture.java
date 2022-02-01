@@ -10,13 +10,14 @@ public class BitmapTexture
   
   public BitmapTexture(Bitmap paramBitmap)
   {
-    if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.assertTrue(bool);
-      this.mContentBitmap = paramBitmap;
-      return;
+    boolean bool;
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assert.assertTrue(bool);
+    this.mContentBitmap = paramBitmap;
   }
   
   public Bitmap getBitmap()

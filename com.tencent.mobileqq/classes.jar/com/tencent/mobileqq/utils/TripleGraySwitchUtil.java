@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.io.Writer;
 import java.util.concurrent.ConcurrentHashMap;
 import javax.annotation.Nullable;
 
@@ -21,6 +22,7 @@ public final class TripleGraySwitchUtil
     try
     {
       paramContext = paramContext.getSharedPreferences("BootOptimize", 0).edit();
+      Object localObject;
       if (paramBoolean)
       {
         paramContext.putLong("_last_crash_time_", System.currentTimeMillis());
@@ -29,21 +31,30 @@ public final class TripleGraySwitchUtil
         while (i < j)
         {
           paramThrowable = paramString[i];
-          paramContext.putBoolean("8.5.5" + paramThrowable, true);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("8.7.0");
+          ((StringBuilder)localObject).append(paramThrowable);
+          paramContext.putBoolean(((StringBuilder)localObject).toString(), true);
           i += 1;
         }
       }
       if (TextUtils.isEmpty(paramString))
       {
-        paramContext.putBoolean("8.5.5" + paramString, true);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("8.7.0");
+        ((StringBuilder)localObject).append(paramString);
+        paramContext.putBoolean(((StringBuilder)localObject).toString(), true);
         if (paramThrowable != null)
         {
           while (paramThrowable.getCause() != null) {
             paramThrowable = paramThrowable.getCause();
           }
-          StringWriter localStringWriter = new StringWriter();
-          paramThrowable.printStackTrace(new PrintWriter(localStringWriter));
-          paramContext.putString("8.5.5_crash_because_" + paramString, localStringWriter.getBuffer().toString());
+          localObject = new StringWriter();
+          paramThrowable.printStackTrace(new PrintWriter((Writer)localObject));
+          paramThrowable = new StringBuilder();
+          paramThrowable.append("8.7.0_crash_because_");
+          paramThrowable.append(paramString);
+          paramContext.putString(paramThrowable.toString(), ((StringWriter)localObject).getBuffer().toString());
         }
       }
       paramContext.apply();
@@ -59,78 +70,83 @@ public final class TripleGraySwitchUtil
   
   public static boolean a(Context paramContext, String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      if (paramContext == null) {
-        break label69;
-      }
-    }
-    label69:
-    for (boolean bool = true;; bool = false)
+    if (QLog.isColorLevel())
     {
-      QLog.d("TripleGraySwitchUtil", 2, new Object[] { "call setSwitch, Context=", Boolean.valueOf(bool), " ,key=", paramString, " ,value=", Boolean.valueOf(paramBoolean) });
-      if ((paramContext != null) && (!TextUtils.isEmpty(paramString))) {
-        break;
+      boolean bool;
+      if (paramContext != null) {
+        bool = true;
+      } else {
+        bool = false;
       }
-      return false;
+      QLog.d("TripleGraySwitchUtil", 2, new Object[] { "call setSwitch, Context=", Boolean.valueOf(bool), " ,key=", paramString, " ,value=", Boolean.valueOf(paramBoolean) });
     }
-    paramContext.getSharedPreferences("BootOptimize", 0).edit().putBoolean(paramString, paramBoolean).apply();
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(paramBoolean));
-    return true;
+    if (paramContext != null)
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
+      }
+      paramContext.getSharedPreferences("BootOptimize", 0).edit().putBoolean(paramString, paramBoolean).apply();
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(paramBoolean));
+      return true;
+    }
+    return false;
   }
   
   private static boolean b(Context paramContext, String paramString)
   {
-    if (paramContext == null) {}
-    long l;
-    do
-    {
+    if (paramContext == null) {
       return true;
-      paramContext = paramContext.getSharedPreferences("BootOptimize", 0);
-      if ((!TextUtils.isEmpty(paramString)) && (paramContext.getBoolean("8.5.5" + paramString, false))) {
+    }
+    paramContext = paramContext.getSharedPreferences("BootOptimize", 0);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("8.7.0");
+      localStringBuilder.append(paramString);
+      if (paramContext.getBoolean(localStringBuilder.toString(), false)) {
         return false;
       }
-      l = paramContext.getLong("_last_crash_time_", 0L);
-    } while (System.currentTimeMillis() - l > 1800000L);
-    return false;
+    }
+    long l = paramContext.getLong("_last_crash_time_", 0L);
+    return System.currentTimeMillis() - l > 1800000L;
   }
   
   public static boolean b(Context paramContext, String paramString, boolean paramBoolean)
   {
-    boolean bool;
     if (QLog.isColorLevel())
     {
-      if (paramContext != null)
-      {
+      boolean bool;
+      if (paramContext != null) {
         bool = true;
-        QLog.d("TripleGraySwitchUtil", 2, new Object[] { "call getSwitch, Context=", Boolean.valueOf(bool), " ,key=", paramString, " judgeSafeMode=", Boolean.valueOf(paramBoolean) });
+      } else {
+        bool = false;
       }
+      QLog.d("TripleGraySwitchUtil", 2, new Object[] { "call getSwitch, Context=", Boolean.valueOf(bool), " ,key=", paramString, " judgeSafeMode=", Boolean.valueOf(paramBoolean) });
     }
-    else {
-      if ((paramContext != null) && (!TextUtils.isEmpty(paramString))) {
-        break label74;
-      }
-    }
-    label74:
-    do
+    if (paramContext != null)
     {
-      return false;
-      bool = false;
-      break;
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
+      }
       if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
         return ((Boolean)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).booleanValue();
       }
-    } while ((paramBoolean) && (!b(paramContext, paramString)));
-    paramBoolean = paramContext.getSharedPreferences("BootOptimize", 0).getBoolean(paramString, false);
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(paramBoolean));
-    if (QLog.isColorLevel()) {
-      QLog.d("TripleGraySwitchUtil", 2, new Object[] { "key=", paramString, " value=", Boolean.valueOf(paramBoolean) });
+      if ((paramBoolean) && (!b(paramContext, paramString))) {
+        return false;
+      }
+      paramBoolean = paramContext.getSharedPreferences("BootOptimize", 0).getBoolean(paramString, false);
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(paramBoolean));
+      if (QLog.isColorLevel()) {
+        QLog.d("TripleGraySwitchUtil", 2, new Object[] { "key=", paramString, " value=", Boolean.valueOf(paramBoolean) });
+      }
+      return paramBoolean;
     }
-    return paramBoolean;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.TripleGraySwitchUtil
  * JD-Core Version:    0.7.0.1
  */

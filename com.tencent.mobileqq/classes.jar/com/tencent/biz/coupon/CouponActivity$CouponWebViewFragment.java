@@ -3,16 +3,15 @@ package com.tencent.biz.coupon;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.biz.ProtoServlet;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.utils.WebViewKernelCallBack;
 import com.tencent.protofile.coupon.CouponProto.MarkBusinessFavourUpdateReq;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.Iterator;
@@ -30,50 +29,29 @@ public class CouponActivity$CouponWebViewFragment
   
   private void a()
   {
-    NewIntent localNewIntent = new NewIntent(super.getActivity(), ProtoServlet.class);
+    NewIntent localNewIntent = new NewIntent(super.getQBaseActivity(), ProtoServlet.class);
     localNewIntent.putExtra("cmd", "CouponSvr.coup_markBizupdate");
     localNewIntent.putExtra("data", new CouponProto.MarkBusinessFavourUpdateReq().toByteArray());
-    if (this.mApp == null) {
+    if (getAppRuntime() == null) {
       this.mApp = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
     }
-    this.mApp.startServlet(localNewIntent);
-  }
-  
-  public int doCreateLoopStep_Final(Bundle paramBundle)
-  {
-    int i = super.doCreateLoopStep_Final(paramBundle);
-    if (!this.intent.hasExtra("source"))
-    {
-      this.mSwiftTitleUI.a.setVisibility(8);
-      this.mSwiftTitleUI.c.setVisibility(0);
-      this.mSwiftTitleUI.c.setText(2131696073);
-      this.mSwiftTitleUI.c.setOnClickListener(this);
-      return i;
-    }
-    this.intent.removeExtra("source");
-    this.mSwiftTitleUI.a.setVisibility(8);
-    this.mSwiftTitleUI.c.setVisibility(8);
-    return i;
+    getAppRuntime().startServlet(localNewIntent);
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
-    paramInt2 = 0;
-    paramInt1 = paramInt2;
-    if (paramIntent != null)
-    {
-      paramInt1 = paramInt2;
-      if (paramIntent.getExtras() != null) {
-        paramInt1 = paramIntent.getExtras().getInt("toPage");
-      }
+    if ((paramIntent != null) && (paramIntent.getExtras() != null)) {
+      paramInt1 = paramIntent.getExtras().getInt("toPage");
+    } else {
+      paramInt1 = 0;
     }
     if ((paramInt1 != 0) && ((this.jdField_a_of_type_Int & paramInt1) == 0))
     {
       paramIntent = new Intent();
       paramIntent.putExtra("toPage", paramInt1);
-      super.getActivity().setResult(-1, paramIntent);
-      super.getActivity().finish();
+      super.getQBaseActivity().setResult(-1, paramIntent);
+      super.getQBaseActivity().finish();
     }
   }
   
@@ -84,96 +62,101 @@ public class CouponActivity$CouponWebViewFragment
     this.intent.putExtra("webStyle", "noBottomBar");
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      this.intent.putExtra("title", super.getResources().getString(2131696076));
+      this.intent.putExtra("title", super.getResources().getString(2131696091));
       this.jdField_a_of_type_Boolean = true;
-      super.doOnCreate(paramBundle);
-      if (this.jdField_a_of_type_Boolean)
+    }
+    else
+    {
+      this.intent.removeExtra("title");
+    }
+    super.doOnCreate(paramBundle);
+    if (this.jdField_a_of_type_Boolean) {
+      paramBundle = new StringBuffer();
+    }
+    try
+    {
+      localObject1 = this.intent.getStringExtra("jsonParams");
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        paramBundle = new StringBuffer();
-        try
+        localObject1 = new JSONObject((String)localObject1);
+        Iterator localIterator = ((JSONObject)localObject1).keys();
+        while (localIterator.hasNext())
         {
-          localObject1 = this.intent.getStringExtra("jsonParams");
-          if (!TextUtils.isEmpty((CharSequence)localObject1))
-          {
-            localObject1 = new JSONObject((String)localObject1);
-            Iterator localIterator = ((JSONObject)localObject1).keys();
-            while (localIterator.hasNext())
-            {
-              String str = (String)localIterator.next();
-              Object localObject2 = ((JSONObject)localObject1).get(str);
-              paramBundle.append("&" + str + "=" + localObject2.toString());
-            }
-          }
-          if ((this.jdField_a_of_type_Int & 0x5) != 0) {}
+          String str = (String)localIterator.next();
+          Object localObject2 = ((JSONObject)localObject1).get(str);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("&");
+          localStringBuilder.append(str);
+          localStringBuilder.append("=");
+          localStringBuilder.append(localObject2.toString());
+          paramBundle.append(localStringBuilder.toString());
         }
-        catch (JSONException localJSONException) {}
       }
     }
-    for (paramBundle = CouponActivity.a + "&stype=2" + paramBundle.toString();; paramBundle = CouponActivity.a + paramBundle.toString())
+    catch (JSONException localJSONException)
     {
-      this.intent.putExtra("url", paramBundle);
-      this.intent.putExtra("from", this.jdField_a_of_type_Int & 0x1C | 0x10);
-      a();
-      ReportController.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "coupon.activity.show", 0, 0, "", "", "", "");
-      return true;
-      this.intent.removeExtra("title");
-      break;
+      label220:
+      break label220;
     }
+    if ((this.jdField_a_of_type_Int & 0x5) == 0)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(CouponActivity.a);
+      ((StringBuilder)localObject1).append("&stype=2");
+      ((StringBuilder)localObject1).append(paramBundle.toString());
+      paramBundle = ((StringBuilder)localObject1).toString();
+    }
+    else
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(CouponActivity.a);
+      ((StringBuilder)localObject1).append(paramBundle.toString());
+      paramBundle = ((StringBuilder)localObject1).toString();
+    }
+    this.intent.putExtra("url", paramBundle);
+    this.intent.putExtra("from", this.jdField_a_of_type_Int & 0x1C | 0x10);
+    a();
+    ReportController.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "coupon.activity.show", 0, 0, "", "", "", "");
+    return true;
   }
   
-  public String getUAMark()
+  public WebViewKernelCallBack getWebViewKernelCallBack()
   {
-    if (this.intent.hasExtra("source")) {
-      return "PA MyCoupon";
-    }
-    return "PA Coupon";
-  }
-  
-  public void initTitleBar(Intent paramIntent, String paramString)
-  {
-    super.initTitleBar(this.intent, this.mUrl);
-    if (!this.intent.hasExtra("source"))
-    {
-      this.mSwiftTitleUI.a.setVisibility(8);
-      this.mSwiftTitleUI.c.setVisibility(0);
-      this.mSwiftTitleUI.c.setText(2131696073);
-      this.mSwiftTitleUI.c.setClickable(false);
-      return;
-    }
-    this.mSwiftTitleUI.a.setVisibility(8);
-    this.mSwiftTitleUI.c.setVisibility(8);
+    return new CouponActivity.CouponWebViewFragment.1(this, this.webViewSurface);
   }
   
   public void onClick(View paramView)
   {
-    Intent localIntent;
-    if (paramView == this.mSwiftTitleUI.c) {
+    if (paramView == getSwiftTitleUI().c)
+    {
+      Intent localIntent;
       if ((this.jdField_a_of_type_Int & 0x4) != 0)
       {
         localIntent = new Intent();
         localIntent.putExtra("isNeedFinish", true);
         localIntent.putExtra("toPage", 1);
-        super.getActivity().setResult(-1, localIntent);
-        super.getActivity().finish();
+        super.getQBaseActivity().setResult(-1, localIntent);
+        super.getQBaseActivity().finish();
+      }
+      else
+      {
+        localIntent = new Intent(super.getQBaseActivity(), CouponActivity.class);
+        localIntent.putExtra("url", "https://web.p.qq.com/qqmpmobile/coupon/mycoupons.html?_bid=108");
+        localIntent.putExtra("source", "2");
+        localIntent.putExtra("from", this.jdField_a_of_type_Int & 0xC | 0x5);
+        super.getQBaseActivity().startActivityForResult(localIntent, 100);
       }
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localIntent = new Intent(super.getActivity(), CouponActivity.class);
-      localIntent.putExtra("url", "https://web.p.qq.com/qqmpmobile/coupon/mycoupons.html?_bid=108");
-      localIntent.putExtra("source", "2");
-      localIntent.putExtra("from", this.jdField_a_of_type_Int & 0xC | 0x5);
-      super.getActivity().startActivityForResult(localIntent, 100);
-      continue;
       super.onClick(paramView);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.coupon.CouponActivity.CouponWebViewFragment
  * JD-Core Version:    0.7.0.1
  */

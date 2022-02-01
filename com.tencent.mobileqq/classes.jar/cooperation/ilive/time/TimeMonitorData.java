@@ -14,11 +14,17 @@ public class TimeMonitorData
   
   public TimeMonitorData(String paramString)
   {
-    QLog.e("IliveTimeMonitorData", 1, "init TimeMonitor id：" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("init TimeMonitor id：");
+      localStringBuilder.append(paramString);
+      QLog.i("LiteMonitorTag", 1, localStringBuilder.toString());
+    }
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  private void a(HashMap<String, String> paramHashMap)
+  private void b(HashMap<String, String> paramHashMap)
   {
     Object localObject = paramHashMap;
     if (paramHashMap == null) {}
@@ -26,20 +32,32 @@ public class TimeMonitorData
     {
       localObject = new HashMap();
       if (this.jdField_a_of_type_JavaUtilHashMap.size() <= 0) {
-        QLog.e("IliveTimeMonitorData", 1, "mTimeTag is empty");
+        QLog.e("LiteMonitorTag", 1, "mTimeTag is empty");
       }
       paramHashMap = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
       while (paramHashMap.hasNext())
       {
         String str = (String)paramHashMap.next();
-        QLog.e("IliveTimeMonitorData", 1, str + "：" + (String)this.jdField_a_of_type_JavaUtilHashMap.get(str) + " params = " + ((HashMap)localObject).toString());
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str);
+          localStringBuilder.append(" 执行耗时：");
+          localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilHashMap.get(str));
+          localStringBuilder.append(" params = ");
+          localStringBuilder.append(((HashMap)localObject).toString());
+          QLog.e("LiteMonitorTag", 1, localStringBuilder.toString());
+        }
       }
       return;
     }
     catch (Throwable paramHashMap)
     {
       paramHashMap.printStackTrace();
-      QLog.e("IliveTimeMonitorData", 1, "showDataToQLogcat msg = " + paramHashMap.getMessage(), paramHashMap);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("showDataToQLogcat msg = ");
+      ((StringBuilder)localObject).append(paramHashMap.getMessage());
+      QLog.e("LiteMonitorTag", 1, ((StringBuilder)localObject).toString(), paramHashMap);
     }
   }
   
@@ -51,15 +69,30 @@ public class TimeMonitorData
     this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
   public void a(String paramString)
   {
-    a(paramString, null);
+    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, String.valueOf(l));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("tickTimeTag tag = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" time = ");
+      localStringBuilder.append(l);
+      QLog.i("LiteMonitorTag", 2, localStringBuilder.toString());
+    }
   }
   
   public void a(String paramString, long paramLong, HashMap<String, String> paramHashMap)
   {
-    a(paramHashMap);
-    ThreadManagerV2.postImmediately(new TimeMonitorData.1(this, paramString, paramHashMap, paramLong), null, false);
+    b(paramHashMap);
+    ThreadManagerV2.postImmediately(new TimeMonitorData.2(this, paramHashMap, paramString, paramLong), null, false);
   }
   
   public void a(String paramString, HashMap<String, String> paramHashMap)
@@ -71,10 +104,24 @@ public class TimeMonitorData
     this.jdField_a_of_type_JavaUtilHashMap.put(paramString, String.valueOf(l));
     a(paramString, l, paramHashMap);
   }
+  
+  public void a(HashMap<String, String> paramHashMap)
+  {
+    if (paramHashMap != null) {
+      paramHashMap.put("frame_time", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    }
+    b(paramHashMap);
+    ThreadManagerV2.postImmediately(new TimeMonitorData.1(this, paramHashMap), null, false);
+  }
+  
+  public void b(String paramString)
+  {
+    a(paramString, null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.time.TimeMonitorData
  * JD-Core Version:    0.7.0.1
  */

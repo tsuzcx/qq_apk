@@ -12,29 +12,41 @@ class AIOShakeHelper$1$2
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie.AIOShakeHelper", 2, "animSet onAnimationEnd is called,time is:" + System.currentTimeMillis());
+    if (QLog.isColorLevel())
+    {
+      paramAnimation = new StringBuilder();
+      paramAnimation.append("animSet onAnimationEnd is called,time is:");
+      paramAnimation.append(System.currentTimeMillis());
+      QLog.d("Q.aio.BaseChatPie.AIOShakeHelper", 2, paramAnimation.toString());
     }
     AIOShakeHelper.a(this.a.this$0).post(new AIOShakeHelper.1.2.1(this));
   }
   
   public void onAnimationRepeat(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie.AIOShakeHelper", 2, "animSet onAnimationRepeat is called,time is:" + System.currentTimeMillis());
+    if (QLog.isColorLevel())
+    {
+      paramAnimation = new StringBuilder();
+      paramAnimation.append("animSet onAnimationRepeat is called,time is:");
+      paramAnimation.append(System.currentTimeMillis());
+      QLog.d("Q.aio.BaseChatPie.AIOShakeHelper", 2, paramAnimation.toString());
     }
   }
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie.AIOShakeHelper", 2, "animSet onAnimationStart is called,time is:" + System.currentTimeMillis());
+    if (QLog.isColorLevel())
+    {
+      paramAnimation = new StringBuilder();
+      paramAnimation.append("animSet onAnimationStart is called,time is:");
+      paramAnimation.append(System.currentTimeMillis());
+      QLog.d("Q.aio.BaseChatPie.AIOShakeHelper", 2, paramAnimation.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOShakeHelper.1.2
  * JD-Core Version:    0.7.0.1
  */

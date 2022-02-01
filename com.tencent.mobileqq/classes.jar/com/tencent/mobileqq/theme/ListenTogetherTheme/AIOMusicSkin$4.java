@@ -14,19 +14,20 @@ class AIOMusicSkin$4
       if (this.a)
       {
         this.this$0.b(false);
-        AIOMusicSkin.a(this.this$0, AIOMusicSkin.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout);
-        this.this$0.a(AIOMusicSkin.a(this.this$0).jdField_a_of_type_AndroidContentContext, AIOMusicSkin.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout);
+        localAIOMusicSkin = this.this$0;
+        AIOMusicSkin.a(localAIOMusicSkin, AIOMusicSkin.a(localAIOMusicSkin).jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout);
+        localAIOMusicSkin = this.this$0;
+        localAIOMusicSkin.a(AIOMusicSkin.a(localAIOMusicSkin).jdField_a_of_type_AndroidContentContext, AIOMusicSkin.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout);
+        return;
       }
+      AIOMusicSkin localAIOMusicSkin = this.this$0;
+      localAIOMusicSkin.a(AIOMusicSkin.a(localAIOMusicSkin), AIOMusicSkin.a(this.this$0));
     }
-    else {
-      return;
-    }
-    this.this$0.a(AIOMusicSkin.a(this.this$0), AIOMusicSkin.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ListenTogetherTheme.AIOMusicSkin.4
  * JD-Core Version:    0.7.0.1
  */

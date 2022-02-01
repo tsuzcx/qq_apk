@@ -8,74 +8,74 @@ import com.tencent.gdtad.json.GdtJsonPbUtil;
 import com.tencent.mtt.hippy.common.HippyArray;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.Promise;
-import java.lang.ref.WeakReference;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class GdtTangramModule$GdtTangramModuleAdLoaderListener
   implements GdtAdLoader.Listener
 {
-  WeakReference<Promise> promise;
+  Promise promise;
   
-  GdtTangramModule$GdtTangramModuleAdLoaderListener(WeakReference<Promise> paramWeakReference)
+  GdtTangramModule$GdtTangramModuleAdLoaderListener(Promise paramPromise)
   {
-    this.promise = paramWeakReference;
+    this.promise = paramPromise;
   }
   
   public void onResponse(GdtAdLoader paramGdtAdLoader)
   {
-    if (this.promise != null) {}
-    for (Promise localPromise = (Promise)this.promise.get(); localPromise == null; localPromise = null) {
+    if (this.promise == null) {
       return;
     }
     HippyMap localHippyMap = new HippyMap();
-    if ((paramGdtAdLoader == null) || (paramGdtAdLoader.a() == null))
+    JSONObject localJSONObject;
+    if ((paramGdtAdLoader != null) && (paramGdtAdLoader.a() != null))
     {
-      localPromise.resolve(null);
-      return;
-    }
-    Object localObject = GdtJsonPbUtil.a(paramGdtAdLoader.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet);
-    paramGdtAdLoader = GdtJsonPbUtil.a(paramGdtAdLoader.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp);
-    AdLog.i("GdtTangramModule", "loadAd onResponse");
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("request", localObject);
-      localJSONObject.put("response", paramGdtAdLoader);
-      if (paramGdtAdLoader == null) {
-        try
-        {
-          localHippyMap.pushInt("code", 999);
-          localPromise.resolve(localHippyMap);
-          return;
-        }
-        catch (Throwable paramGdtAdLoader)
-        {
-          AdLog.e("GdtTangramModule", "onResponse:", paramGdtAdLoader);
-          localPromise.resolve(null);
-          return;
-        }
+      Object localObject = GdtJsonPbUtil.a(paramGdtAdLoader.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet);
+      paramGdtAdLoader = GdtJsonPbUtil.a(paramGdtAdLoader.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp);
+      AdLog.i("GdtTangramModule", "loadAd onResponse");
+      localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("request", localObject);
+        localJSONObject.put("response", paramGdtAdLoader);
       }
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      catch (JSONException localJSONException)
       {
         localJSONException.printStackTrace();
-        continue;
-        localHippyMap.pushInt("code", localJSONObject.getJSONObject("response").getInt("ret"));
-        localHippyMap.pushString("gdt_cookie", localJSONObject.getJSONObject("response").getString("gdt_cookie"));
-        paramGdtAdLoader = localJSONObject.getJSONObject("response").getJSONArray("pos_ads_info");
-        HippyArray localHippyArray = new HippyArray();
-        localHippyArray.pushJSONArray(paramGdtAdLoader);
-        localHippyMap.pushArray("pos_ads_info", localHippyArray);
       }
+      if (paramGdtAdLoader != null) {}
     }
+    try
+    {
+      localHippyMap.pushInt("code", 999);
+      break label179;
+      localHippyMap.pushInt("code", localJSONObject.getJSONObject("response").getInt("ret"));
+      localHippyMap.pushString("gdt_cookie", localJSONObject.getJSONObject("response").getString("gdt_cookie"));
+      paramGdtAdLoader = localJSONObject.getJSONObject("response").getJSONArray("pos_ads_info");
+      HippyArray localHippyArray = new HippyArray();
+      localHippyArray.pushJSONArray(paramGdtAdLoader);
+      localHippyMap.pushArray("pos_ads_info", localHippyArray);
+      label179:
+      this.promise.resolve(localHippyMap);
+      GdtTangramModule.removeRequest(this.promise.getCallId());
+      return;
+    }
+    catch (Throwable paramGdtAdLoader)
+    {
+      label202:
+      break label202;
+    }
+    AdLog.e("GdtTangramModule", "onResponse:", paramGdtAdLoader);
+    this.promise.resolve(null);
+    GdtTangramModule.removeRequest(this.promise.getCallId());
+    return;
+    this.promise.resolve(null);
+    GdtTangramModule.removeRequest(this.promise.getCallId());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.hippy.GdtTangramModule.GdtTangramModuleAdLoaderListener
  * JD-Core Version:    0.7.0.1
  */

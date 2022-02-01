@@ -10,6 +10,7 @@ import android.util.Log;
 import com.tencent.falco.base.libapi.generalinfo.AppGeneralInfoService;
 import com.tencent.falco.base.libapi.generalinfo.InfoConfiguration;
 import com.tencent.falco.utils.DevOptUtil;
+import com.tencent.falco.utils.ThreadCenter;
 import java.lang.reflect.Field;
 import java.util.UUID;
 
@@ -34,6 +35,7 @@ public class AppGeneralInfoServiceImpl
   private boolean jdField_e_of_type_Boolean = false;
   private int jdField_f_of_type_Int;
   private String jdField_f_of_type_JavaLangString;
+  private boolean jdField_f_of_type_Boolean = false;
   private String g;
   private String h;
   private String i;
@@ -42,25 +44,43 @@ public class AppGeneralInfoServiceImpl
   
   private String a()
   {
-    Object localObject = "";
-    String str2 = "35" + Build.BOARD.length() % 10 + Build.BRAND.length() % 10 + Build.CPU_ABI.length() % 10 + Build.DEVICE.length() % 10 + Build.DISPLAY.length() % 10 + Build.HOST.length() % 10 + Build.ID.length() % 10 + Build.MANUFACTURER.length() % 10 + Build.MODEL.length() % 10 + Build.PRODUCT.length() % 10 + Build.TAGS.length() % 10 + Build.TYPE.length() % 10 + Build.USER.length() % 10;
+    Object localObject1 = "";
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("35");
+    ((StringBuilder)localObject2).append(Build.BOARD.length() % 10);
+    ((StringBuilder)localObject2).append(Build.BRAND.length() % 10);
+    ((StringBuilder)localObject2).append(Build.CPU_ABI.length() % 10);
+    ((StringBuilder)localObject2).append(Build.DEVICE.length() % 10);
+    ((StringBuilder)localObject2).append(Build.DISPLAY.length() % 10);
+    ((StringBuilder)localObject2).append(Build.HOST.length() % 10);
+    ((StringBuilder)localObject2).append(Build.ID.length() % 10);
+    ((StringBuilder)localObject2).append(Build.MANUFACTURER.length() % 10);
+    ((StringBuilder)localObject2).append(Build.MODEL.length() % 10);
+    ((StringBuilder)localObject2).append(Build.PRODUCT.length() % 10);
+    ((StringBuilder)localObject2).append(Build.TAGS.length() % 10);
+    ((StringBuilder)localObject2).append(Build.TYPE.length() % 10);
+    ((StringBuilder)localObject2).append(Build.USER.length() % 10);
+    String str = ((StringBuilder)localObject2).toString();
     try
     {
-      String str1 = Build.class.getField("SERIAL").get(null).toString();
-      localObject = str1;
-      str1 = new UUID(str2.hashCode(), str1.hashCode()).toString();
-      return str1;
+      localObject2 = Build.class.getField("SERIAL").get(null).toString();
+      localObject1 = localObject2;
+      localObject2 = new UUID(str.hashCode(), ((String)localObject2).hashCode()).toString();
+      return localObject2;
     }
-    catch (Exception localException) {}
-    return new UUID(str2.hashCode(), ((String)localObject).hashCode()).toString();
+    catch (Exception localException)
+    {
+      label245:
+      break label245;
+    }
+    return new UUID(str.hashCode(), ((String)localObject1).hashCode()).toString();
   }
   
   private void a(Context paramContext)
   {
     paramContext = paramContext.getApplicationContext().getSharedPreferences("BuglySdkInfos", 0).edit();
-    paramContext.putString("9bbfb5eb37", "1.5.4.117-release_qq_8.5.5");
-    paramContext.commit();
-    Log.d("AppGeneralInfoService", "initShareBugly end");
+    paramContext.putString("9bbfb5eb37", "1.8.0.158-release_qq_8.6.5");
+    ThreadCenter.postLogicTask(new AppGeneralInfoServiceImpl.1(this, paramContext));
   }
   
   public void clearEventOutput() {}
@@ -118,7 +138,12 @@ public class AppGeneralInfoServiceImpl
   
   public int getOpenSdkAppid()
   {
-    Log.d("AppGeneralInfoService", "get opensdk_appid=" + this.jdField_c_of_type_Int + "this=" + this);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("get opensdk_appid=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append("this=");
+    localStringBuilder.append(this);
+    Log.d("AppGeneralInfoService", localStringBuilder.toString());
     return this.jdField_c_of_type_Int;
   }
   
@@ -161,7 +186,7 @@ public class AppGeneralInfoServiceImpl
   public int getVersionCode()
   {
     if (this.jdField_a_of_type_Int <= 0) {
-      this.jdField_a_of_type_Int = 10305;
+      this.jdField_a_of_type_Int = 10800;
     }
     return this.jdField_a_of_type_Int;
   }
@@ -169,7 +194,7 @@ public class AppGeneralInfoServiceImpl
   public String getVersionName()
   {
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = "1.5.4.117-release_qq_8.5.5";
+      this.jdField_a_of_type_JavaLangString = "1.8.0.158-release_qq_8.6.5";
     }
     return this.jdField_a_of_type_JavaLangString;
   }
@@ -182,6 +207,11 @@ public class AppGeneralInfoServiceImpl
   public boolean isDebug()
   {
     return false;
+  }
+  
+  public boolean isHoldPlayerLog()
+  {
+    return this.jdField_f_of_type_Boolean;
   }
   
   public boolean isLiteSdk()
@@ -263,6 +293,11 @@ public class AppGeneralInfoServiceImpl
     this.h = paramString;
   }
   
+  public void setIsHoldPlayerLog(boolean paramBoolean)
+  {
+    this.jdField_f_of_type_Boolean = paramBoolean;
+  }
+  
   public void setLiteSdk(boolean paramBoolean)
   {
     this.jdField_d_of_type_Boolean = paramBoolean;
@@ -275,7 +310,12 @@ public class AppGeneralInfoServiceImpl
   
   public void setOpenSdkAppId(int paramInt)
   {
-    Log.d("AppGeneralInfoService", "opensdk_appid=" + paramInt + "this=" + this);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("opensdk_appid=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("this=");
+    localStringBuilder.append(this);
+    Log.d("AppGeneralInfoService", localStringBuilder.toString());
     this.jdField_c_of_type_Int = paramInt;
   }
   
@@ -322,7 +362,7 @@ public class AppGeneralInfoServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.appinfo.AppGeneralInfoServiceImpl
  * JD-Core Version:    0.7.0.1
  */

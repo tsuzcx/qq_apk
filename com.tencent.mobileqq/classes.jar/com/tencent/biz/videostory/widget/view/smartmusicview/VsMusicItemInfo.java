@@ -15,7 +15,7 @@ public class VsMusicItemInfo
   public String a;
   public boolean a;
   public String b;
-  public String c = HardCodeUtil.a(2131716696);
+  public String c = HardCodeUtil.a(2131716347);
   
   public VsMusicItemInfo()
   {
@@ -52,32 +52,30 @@ public class VsMusicItemInfo
   
   public void a(META.StMusic paramStMusic)
   {
-    boolean bool = true;
     this.mSongMid = paramStMusic.strSongMid.get();
     this.mType = 5;
     this.mUrl = paramStMusic.strPlayUrl.get();
-    if (paramStMusic.copyright.get() == 1) {}
-    for (;;)
-    {
-      this.mHasCopyright = bool;
-      this.mSingername = paramStMusic.strSingerName.get();
-      this.mMusicName = paramStMusic.strSongName.get();
-      this.mAlbumUrl = paramStMusic.strAlbumPic.get();
-      this.b = paramStMusic.strLyric.get();
-      this.musicStart = ((int)paramStMusic.iStartPos.get());
-      this.musicEnd = 0;
-      this.jdField_a_of_type_JavaLangString = paramStMusic.strFormat.get();
-      this.mItemId = ((int)paramStMusic.uiSongId.get());
-      this.musicDuration = (paramStMusic.iPlayTime.get() * 1000);
-      this.fileSize = paramStMusic.iSize.get();
-      return;
+    int i = paramStMusic.copyright.get();
+    boolean bool = true;
+    if (i != 1) {
       bool = false;
     }
+    this.mHasCopyright = bool;
+    this.mSingername = paramStMusic.strSingerName.get();
+    this.mMusicName = paramStMusic.strSongName.get();
+    this.mAlbumUrl = paramStMusic.strAlbumPic.get();
+    this.b = paramStMusic.strLyric.get();
+    this.musicStart = ((int)paramStMusic.iStartPos.get());
+    this.musicEnd = 0;
+    this.jdField_a_of_type_JavaLangString = paramStMusic.strFormat.get();
+    this.mItemId = ((int)paramStMusic.uiSongId.get());
+    this.musicDuration = (paramStMusic.iPlayTime.get() * 1000);
+    this.fileSize = paramStMusic.iSize.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo
  * JD-Core Version:    0.7.0.1
  */

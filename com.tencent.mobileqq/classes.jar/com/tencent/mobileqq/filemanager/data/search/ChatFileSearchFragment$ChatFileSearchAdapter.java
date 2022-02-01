@@ -4,11 +4,11 @@ import android.view.ViewGroup;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.face.IFaceDecoder;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.search.adapter.BaseMvpFaceAdapter;
+import com.tencent.mobileqq.search.base.adapter.BaseMvpFaceAdapter;
+import com.tencent.mobileqq.search.base.presenter.IPresenter;
+import com.tencent.mobileqq.search.base.view.ISearchResultView;
+import com.tencent.mobileqq.search.base.view.IView;
 import com.tencent.mobileqq.search.model.ISearchResultModel;
-import com.tencent.mobileqq.search.presenter.IPresenter;
-import com.tencent.mobileqq.search.view.ISearchResultView;
-import com.tencent.mobileqq.search.view.IView;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -45,19 +45,19 @@ class ChatFileSearchFragment$ChatFileSearchAdapter
     a(paramString);
   }
   
-  public IPresenter<ISearchResultModel, ISearchResultView> a(int paramInt)
+  protected IPresenter<ISearchResultModel, ISearchResultView> a(int paramInt)
   {
     return new FileSearchResultPresenter(ChatFileSearchFragment.a(this.a));
   }
   
-  public IView a(int paramInt, ViewGroup paramViewGroup)
+  protected IView a(int paramInt, ViewGroup paramViewGroup)
   {
     return new ChatFileSearchResultView(paramViewGroup);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.ChatFileSearchFragment.ChatFileSearchAdapter
  * JD-Core Version:    0.7.0.1
  */

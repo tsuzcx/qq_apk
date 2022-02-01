@@ -25,40 +25,60 @@ public class ConversationDataFactory
   
   public static RecentBaseData a(RecentUser paramRecentUser, BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, boolean paramBoolean)
   {
-    if ((paramRecentUser == null) || (paramBaseQQAppInterface == null) || (paramContext == null)) {}
-    do
+    if ((paramRecentUser != null) && (paramBaseQQAppInterface != null))
     {
-      do
-      {
+      if (paramContext == null) {
         return null;
-        if (!TextUtils.isEmpty(paramRecentUser.uin)) {
-          break;
+      }
+      if (TextUtils.isEmpty(paramRecentUser.uin))
+      {
+        if (QLog.isColorLevel())
+        {
+          paramBaseQQAppInterface = new StringBuilder();
+          paramBaseQQAppInterface.append("buildRecentItemData, uin is null, ");
+          paramBaseQQAppInterface.append(paramRecentUser);
+          QLog.i("Q.recent", 2, paramBaseQQAppInterface.toString());
         }
-      } while (!QLog.isColorLevel());
-      QLog.i("Q.recent", 2, "buildRecentItemData, uin is null, " + paramRecentUser);
-      return null;
+        return null;
+      }
       paramRecentUser = RecentListConfig.a().a(paramBaseQQAppInterface, paramRecentUser);
-    } while (paramRecentUser == null);
-    long l1 = System.currentTimeMillis();
-    if (paramBoolean) {}
-    try
-    {
-      paramRecentUser.update(paramBaseQQAppInterface, paramContext);
+      if (paramRecentUser == null) {
+        return null;
+      }
+      long l1 = System.currentTimeMillis();
+      if (paramBoolean) {
+        try
+        {
+          paramRecentUser.update(paramBaseQQAppInterface, paramContext);
+        }
+        catch (Throwable paramRecentUser)
+        {
+          RecentParcelUtil.a(paramBaseQQAppInterface.getApp(), false, paramRecentUser);
+          throw new RuntimeException(paramRecentUser);
+        }
+      }
       if (QLog.isColorLevel())
       {
         long l2 = System.currentTimeMillis();
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.recent.cost", 4, "[" + (l2 - l1) + ", " + paramRecentUser.getRecentUserUin() + "," + paramRecentUser.getClass().getName() + "," + paramBoolean + "]");
+        if (QLog.isColorLevel())
+        {
+          paramBaseQQAppInterface = new StringBuilder();
+          paramBaseQQAppInterface.append("[");
+          paramBaseQQAppInterface.append(l2 - l1);
+          paramBaseQQAppInterface.append(", ");
+          paramBaseQQAppInterface.append(paramRecentUser.getRecentUserUin());
+          paramBaseQQAppInterface.append(",");
+          paramBaseQQAppInterface.append(paramRecentUser.getClass().getName());
+          paramBaseQQAppInterface.append(",");
+          paramBaseQQAppInterface.append(paramBoolean);
+          paramBaseQQAppInterface.append("]");
+          QLog.i("Q.recent.cost", 4, paramBaseQQAppInterface.toString());
         }
         paramRecentUser.printDataItem();
       }
       return paramRecentUser;
     }
-    catch (Throwable paramRecentUser)
-    {
-      RecentParcelUtil.a(paramBaseQQAppInterface.getApp(), false, paramRecentUser);
-      throw new RuntimeException(paramRecentUser);
-    }
+    return null;
   }
   
   @Nullable
@@ -80,57 +100,57 @@ public class ConversationDataFactory
   
   public static void a(List<RecentUser> paramList, BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, List<RecentBaseData> paramList1, int paramInt)
   {
-    if ((paramList == null) || (paramList1 == null)) {
-      return;
-    }
+    if ((paramList != null) && (paramList1 != null)) {}
     for (;;)
     {
       int j;
+      Object localObject1;
       int i;
       try
       {
         paramList1.clear();
         j = ConversationDataFactoryProxy.a(paramBaseQQAppInterface, paramList.size());
         if (!QLog.isColorLevel()) {
-          break label438;
+          break label508;
         }
-        QLog.d("Q.recent", 2, "convertToRecentBaseDataList limit:" + paramInt + ",size:" + j);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("convertToRecentBaseDataList limit:");
+        ((StringBuilder)localObject1).append(paramInt);
+        ((StringBuilder)localObject1).append(",size:");
+        ((StringBuilder)localObject1).append(j);
+        QLog.d("Q.recent", 2, ((StringBuilder)localObject1).toString());
       }
       finally {}
-      if ((i >= paramInt) || (i >= j)) {
-        break;
-      }
-      Object localObject2 = (RecentUser)paramList.get(i);
-      if ((localObject2 != null) && (!RecentListConfig.a().a((RecentUser)localObject2, j, paramInt)))
+      if ((i < paramInt) && (i < j))
       {
-        TraceUtils.traceBegin(((RecentUser)localObject2).uin);
-        StartupTracker.a(null, "Recent_LoadData_conv_uin_record");
-        String str = RecentDataListManager.a(((RecentUser)localObject2).uin, ((RecentUser)localObject2).getType());
-        Object localObject1 = RecentDataListManager.a().a(str);
-        if (localObject1 == null)
+        Object localObject2 = (RecentUser)paramList.get(i);
+        if ((localObject2 != null) && (!RecentListConfig.a().a((RecentUser)localObject2, j, paramInt)))
         {
-          StartupTracker.a(null, "Recent_LoadData_build_item");
-          localObject2 = a((RecentUser)localObject2, paramBaseQQAppInterface, paramContext);
-          StartupTracker.a("Recent_LoadData_build_item", null);
-          localObject1 = localObject2;
-          if (localObject2 != null)
+          TraceUtils.traceBegin(((RecentUser)localObject2).uin);
+          StartupTracker.a(null, "Recent_LoadData_conv_uin_record");
+          String str = RecentDataListManager.a(((RecentUser)localObject2).uin, ((RecentUser)localObject2).getType());
+          localObject1 = RecentDataListManager.a().a(str);
+          long l;
+          if (localObject1 == null)
           {
-            RecentDataListManager.a().a((RecentBaseData)localObject2, str);
+            StartupTracker.a(null, "Recent_LoadData_build_item");
+            localObject2 = a((RecentUser)localObject2, paramBaseQQAppInterface, paramContext);
+            StartupTracker.a("Recent_LoadData_build_item", null);
             localObject1 = localObject2;
+            if (localObject2 != null)
+            {
+              RecentDataListManager.a().a((RecentBaseData)localObject2, str);
+              localObject1 = localObject2;
+            }
           }
-          StartupTracker.a("Recent_LoadData_conv_uin_record", null);
-          if (localObject1 != null) {
-            paramList1.add(localObject1);
+          else
+          {
+            l = System.currentTimeMillis();
+            if ((localObject1 instanceof RecentUserBaseData)) {
+              ((RecentUserBaseData)localObject1).a((RecentUser)localObject2);
+            }
+            StartupTracker.a(null, "Recent_LoadData_update");
           }
-          TraceUtils.traceEnd();
-        }
-        else
-        {
-          long l = System.currentTimeMillis();
-          if ((localObject1 instanceof RecentUserBaseData)) {
-            ((RecentUserBaseData)localObject1).a((RecentUser)localObject2);
-          }
-          StartupTracker.a(null, "Recent_LoadData_update");
           try
           {
             ((RecentBaseData)localObject1).update(paramBaseQQAppInterface, paramContext);
@@ -138,21 +158,47 @@ public class ConversationDataFactory
             l = System.currentTimeMillis() - l;
             if (QLog.isColorLevel())
             {
-              QLog.i("Q.recent.cost", 2, "[" + l + ", " + ((RecentBaseData)localObject1).getRecentUserUin() + "," + localObject1.getClass().getName() + "]");
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("[");
+              ((StringBuilder)localObject2).append(l);
+              ((StringBuilder)localObject2).append(", ");
+              ((StringBuilder)localObject2).append(((RecentBaseData)localObject1).getRecentUserUin());
+              ((StringBuilder)localObject2).append(",");
+              ((StringBuilder)localObject2).append(localObject1.getClass().getName());
+              ((StringBuilder)localObject2).append("]");
+              QLog.i("Q.recent.cost", 2, ((StringBuilder)localObject2).toString());
               ((RecentBaseData)localObject1).printDataItem();
             }
+            else
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("[");
+              ((StringBuilder)localObject2).append(l);
+              ((StringBuilder)localObject2).append(",");
+              ((StringBuilder)localObject2).append(localObject1.getClass().getName());
+              ((StringBuilder)localObject2).append("]");
+              QLog.d("Q.recent.cost", 1, ((StringBuilder)localObject2).toString());
+            }
+            StartupTracker.a("Recent_LoadData_conv_uin_record", null);
+            if (localObject1 != null) {
+              paramList1.add(localObject1);
+            }
+            TraceUtils.traceEnd();
           }
           catch (Throwable paramList)
           {
             RecentParcelUtil.a(paramContext, false, paramList);
             throw new RuntimeException(paramList);
           }
-          QLog.d("Q.recent.cost", 1, "[" + l + "," + localObject1.getClass().getName() + "]");
-          continue;
-          label438:
-          i = 0;
-          continue;
         }
+      }
+      else
+      {
+        return;
+        return;
+        label508:
+        i = 0;
+        continue;
       }
       i += 1;
     }
@@ -160,7 +206,7 @@ public class ConversationDataFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.ConversationDataFactory
  * JD-Core Version:    0.7.0.1
  */

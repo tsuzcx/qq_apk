@@ -20,12 +20,17 @@ class VideoThumbProviderManager$2
     long l = this.this$0.getCacheSize();
     int i = VideoThumbProviderManager.access$200(this.this$0).size();
     VideoThumbProviderManager.access$300(this.this$0).trimToSize(VideoThumbProviderManager.access$300(this.this$0).maxSize() / 2);
-    Logger.e("VideoThumbProviderManager", "runnableFailAndReleaseCache currentCacheSize:" + l + ",size:" + i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("runnableFailAndReleaseCache currentCacheSize:");
+    localStringBuilder.append(l);
+    localStringBuilder.append(",size:");
+    localStringBuilder.append(i);
+    Logger.e("VideoThumbProviderManager", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weishi.module.edit.widget.playtrack.provider.VideoThumbProviderManager.2
  * JD-Core Version:    0.7.0.1
  */

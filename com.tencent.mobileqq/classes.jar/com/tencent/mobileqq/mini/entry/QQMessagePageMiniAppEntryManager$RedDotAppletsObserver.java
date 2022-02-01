@@ -14,29 +14,34 @@ class QQMessagePageMiniAppEntryManager$RedDotAppletsObserver
     this.miniAppEntryManagerWeakReference = new WeakReference(paramQQMessagePageMiniAppEntryManager);
   }
   
-  public void onAppletsSettingSwitchChange(int paramInt)
+  protected void onAppletsSettingSwitchChange(int paramInt)
   {
     updateAppletsSettingSwitchState(paramInt);
   }
   
   protected void updateAppletsSettingSwitchState(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQMessagePageMicroAppEntryManager", 2, "updateAppletsSettingSwitchState:  switchState: " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateAppletsSettingSwitchState:  switchState: ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("QQMessagePageMicroAppEntryManager", 2, ((StringBuilder)localObject).toString());
     }
-    QQMessagePageMiniAppEntryManager localQQMessagePageMiniAppEntryManager = (QQMessagePageMiniAppEntryManager)this.miniAppEntryManagerWeakReference.get();
-    if (localQQMessagePageMiniAppEntryManager != null) {
-      localQQMessagePageMiniAppEntryManager.onChangeRedDotSwitch(paramInt, false);
-    }
-    while (!QLog.isColorLevel()) {
+    Object localObject = (QQMessagePageMiniAppEntryManager)this.miniAppEntryManagerWeakReference.get();
+    if (localObject != null)
+    {
+      ((QQMessagePageMiniAppEntryManager)localObject).onChangeRedDotSwitch(paramInt, false);
       return;
     }
-    QLog.d("QQMessagePageMicroAppEntryManager", 2, "updateAppletsSettingSwitchState failed! miniAppEntryManager is null! ");
+    if (QLog.isColorLevel()) {
+      QLog.d("QQMessagePageMicroAppEntryManager", 2, "updateAppletsSettingSwitchState failed! miniAppEntryManager is null! ");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.QQMessagePageMiniAppEntryManager.RedDotAppletsObserver
  * JD-Core Version:    0.7.0.1
  */

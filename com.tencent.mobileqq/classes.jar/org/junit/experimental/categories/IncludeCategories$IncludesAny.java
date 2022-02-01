@@ -19,12 +19,15 @@ class IncludeCategories$IncludesAny
   
   public String describe()
   {
-    return "includes " + super.describe();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("includes ");
+    localStringBuilder.append(super.describe());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.experimental.categories.IncludeCategories.IncludesAny
  * JD-Core Version:    0.7.0.1
  */

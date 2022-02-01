@@ -1,8 +1,8 @@
 package com.huawei.hms.push.utils.ha;
 
-class PushAnalyticsCenter$a
+public class PushAnalyticsCenter$a
 {
-  private static PushAnalyticsCenter a = new PushAnalyticsCenter();
+  public static PushAnalyticsCenter a = new PushAnalyticsCenter();
 }
 
 

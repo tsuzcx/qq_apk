@@ -16,54 +16,56 @@ public class InternalBaselibLoader
   
   public void loadBaselib(Context paramContext, BaselibLoader.OnLoadBaselibListener paramOnLoadBaselibListener)
   {
-    for (;;)
+    try
     {
-      BaselibLoader.BaselibContent localBaselibContent;
-      try
+      if (isBaseLibInit())
       {
-        if (isBaseLibInit())
-        {
-          if (paramOnLoadBaselibListener != null) {
-            paramOnLoadBaselibListener.onResult(0, "", this.mBaselibContent.clone());
-          }
-          return;
-        }
-        localBaselibContent = new BaselibLoader.BaselibContent();
-        localBaselibContent.waWebviewJsStr = FileUtils.readFileFromAssets(paramContext, "mini/QView.js");
-        File localFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator, "QLogic.js");
-        if ((localFile.exists()) && (localFile.isFile()))
-        {
-          Log.i("InternalBaselibLoader", "load ServiceJs from " + localFile.getAbsolutePath());
-          localBaselibContent.waServiceJsStr = FileUtils.readFileToStr(localFile);
-          localBaselibContent.waServicePath = localFile.getAbsolutePath();
-          localBaselibContent.waConsoleJsStr = FileUtils.readFileFromAssets(paramContext, "mini/QVConsole.js");
-          localBaselibContent.waRemoteDebugStr = FileUtils.readFileFromAssets(paramContext, "mini/QRemoteDebug.js");
-          localBaselibContent.miniappWebviewStr = FileUtils.readFileFromAssets(paramContext, "mini/QWebview.js");
-          localBaselibContent.waWorkerStr = FileUtils.readFileFromAssets(paramContext, "mini/QWorker.js");
-          setBaselib(localBaselibContent);
-          if (paramOnLoadBaselibListener == null) {
-            continue;
-          }
-          if (!isBaseLibInit()) {
-            break label256;
-          }
+        if (paramOnLoadBaselibListener != null) {
           paramOnLoadBaselibListener.onResult(0, "", this.mBaselibContent.clone());
-          continue;
         }
-        Log.i("InternalBaselibLoader", "load ServiceJs from assets");
+        return;
       }
-      finally {}
-      localBaselibContent.waServiceJsStr = FileUtils.readFileFromAssets(paramContext, "mini/QLogic.js");
-      localBaselibContent.waServicePath = "assets://mini/QLogic.js";
-      continue;
-      label256:
-      paramOnLoadBaselibListener.onResult(-1, "基础库加载失败", null);
+      BaselibLoader.BaselibContent localBaselibContent = new BaselibLoader.BaselibContent();
+      localBaselibContent.waWebviewJsStr = FileUtils.readFileFromAssets(paramContext, "mini/QView.js");
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(Environment.getExternalStorageDirectory().getAbsolutePath());
+      ((StringBuilder)localObject).append(File.separator);
+      localObject = new File(((StringBuilder)localObject).toString(), "QLogic.js");
+      if ((((File)localObject).exists()) && (((File)localObject).isFile()))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("load ServiceJs from ");
+        localStringBuilder.append(((File)localObject).getAbsolutePath());
+        Log.i("InternalBaselibLoader", localStringBuilder.toString());
+        localBaselibContent.waServiceJsStr = FileUtils.readFileToStr((File)localObject);
+        localBaselibContent.waServicePath = ((File)localObject).getAbsolutePath();
+      }
+      else
+      {
+        Log.i("InternalBaselibLoader", "load ServiceJs from assets");
+        localBaselibContent.waServiceJsStr = FileUtils.readFileFromAssets(paramContext, "mini/QLogic.js");
+        localBaselibContent.waServicePath = "assets://mini/QLogic.js";
+      }
+      localBaselibContent.waConsoleJsStr = FileUtils.readFileFromAssets(paramContext, "mini/QVConsole.js");
+      localBaselibContent.waRemoteDebugStr = FileUtils.readFileFromAssets(paramContext, "mini/QRemoteDebug.js");
+      localBaselibContent.miniappWebviewStr = FileUtils.readFileFromAssets(paramContext, "mini/QWebview.js");
+      localBaselibContent.waWorkerStr = FileUtils.readFileFromAssets(paramContext, "mini/QWorker.js");
+      setBaselib(localBaselibContent);
+      if (paramOnLoadBaselibListener != null) {
+        if (isBaseLibInit()) {
+          paramOnLoadBaselibListener.onResult(0, "", this.mBaselibContent.clone());
+        } else {
+          paramOnLoadBaselibListener.onResult(-1, "基础库加载失败", null);
+        }
+      }
+      return;
     }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.impl.InternalBaselibLoader
  * JD-Core Version:    0.7.0.1
  */

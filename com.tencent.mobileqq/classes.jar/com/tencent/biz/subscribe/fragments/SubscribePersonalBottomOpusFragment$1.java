@@ -19,27 +19,26 @@ class SubscribePersonalBottomOpusFragment$1
   
   public void a(View paramView, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    if (paramStFeed != null) {
-      if (!paramStFeed.id.get().startsWith("fakeid_")) {
-        break label40;
+    if (paramStFeed != null)
+    {
+      if (paramStFeed.id.get().startsWith("fakeid_"))
+      {
+        QQToast.a(this.a.getBaseActivity(), HardCodeUtil.a(2131714443), 0).a();
+        return;
+      }
+      if ((paramView instanceof RelativeFeedItemView))
+      {
+        paramView = (RelativeFeedItemView)paramView;
+        if (paramView.a != null) {
+          SubscribeLaucher.a(this.a.getBaseActivity(), paramStFeed, 0, TransitionAnimHelper.a(paramView.a, paramStFeed.cover.width.get(), paramStFeed.cover.height.get()));
+        }
       }
     }
-    label40:
-    do
-    {
-      QQToast.a(this.a.getActivity(), HardCodeUtil.a(2131714522), 0).a();
-      do
-      {
-        return;
-      } while (!(paramView instanceof RelativeFeedItemView));
-      paramView = (RelativeFeedItemView)paramView;
-    } while (paramView.a == null);
-    SubscribeLaucher.a(this.a.getActivity(), paramStFeed, 0, TransitionAnimHelper.a(paramView.a, paramStFeed.cover.width.get(), paramStFeed.cover.height.get()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment.1
  * JD-Core Version:    0.7.0.1
  */

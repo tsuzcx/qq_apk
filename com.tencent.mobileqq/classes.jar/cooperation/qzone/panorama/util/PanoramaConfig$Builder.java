@@ -37,12 +37,13 @@ public class PanoramaConfig$Builder
     {
       this.isNeedPieceLoad = false;
       this.shapeModel = new SphereModel(this.isNeedPieceLoad);
-    }
-    while (paramInt != 2) {
       return;
     }
-    this.isNeedPieceLoad = true;
-    this.shapeModel = new CylinderModel(this.isNeedPieceLoad);
+    if (paramInt == 2)
+    {
+      this.isNeedPieceLoad = true;
+      this.shapeModel = new CylinderModel(this.isNeedPieceLoad);
+    }
   }
   
   public int getModeType()
@@ -57,10 +58,14 @@ public class PanoramaConfig$Builder
   
   public String getPanoramaExtraValue(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.panoramaExtra == null)) {
-      return null;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      HashMap localHashMap = this.panoramaExtra;
+      if (localHashMap != null) {
+        return (String)localHashMap.get(paramString);
+      }
     }
-    return (String)this.panoramaExtra.get(paramString);
+    return null;
   }
   
   public PanoramaPieceManager getPanoramaPieceManager()
@@ -147,8 +152,9 @@ public class PanoramaConfig$Builder
   
   public Builder setOnRotateListener(ShapeModel.OnRotateListener paramOnRotateListener)
   {
-    if ((this.shapeModel != null) && (paramOnRotateListener != null)) {
-      this.shapeModel.setOnRotateListener(paramOnRotateListener);
+    ShapeModel localShapeModel = this.shapeModel;
+    if ((localShapeModel != null) && (paramOnRotateListener != null)) {
+      localShapeModel.setOnRotateListener(paramOnRotateListener);
     }
     return this;
   }
@@ -173,21 +179,25 @@ public class PanoramaConfig$Builder
   
   public Builder setPanoramaExtra(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return this;
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      if (TextUtils.isEmpty(paramString2)) {
+        return this;
+      }
+      if (this.panoramaExtra == null) {
+        this.panoramaExtra = new HashMap();
+      }
+      this.panoramaExtra.put(paramString1, paramString2);
     }
-    if (this.panoramaExtra == null) {
-      this.panoramaExtra = new HashMap();
-    }
-    this.panoramaExtra.put(paramString1, paramString2);
     return this;
   }
   
   public void setPanoramaPieceManager(PanoramaPieceManager paramPanoramaPieceManager)
   {
     this.panoramaPieceManager = paramPanoramaPieceManager;
-    if (this.shapeModel != null) {
-      this.shapeModel.setPanoramaTouchListener(paramPanoramaPieceManager);
+    ShapeModel localShapeModel = this.shapeModel;
+    if (localShapeModel != null) {
+      localShapeModel.setPanoramaTouchListener(paramPanoramaPieceManager);
     }
   }
   
@@ -224,8 +234,9 @@ public class PanoramaConfig$Builder
   public Builder setShowType(int paramInt)
   {
     this.showType = paramInt;
-    if (this.shapeModel != null) {
-      this.shapeModel.setShowType(paramInt);
+    ShapeModel localShapeModel = this.shapeModel;
+    if (localShapeModel != null) {
+      localShapeModel.setShowType(paramInt);
     }
     return this;
   }
@@ -245,8 +256,12 @@ public class PanoramaConfig$Builder
   {
     this.textureDrawable = paramDrawable;
     this.isTextureChange = true;
-    if ((paramDrawable != null) && (this.shapeModel != null)) {
-      this.shapeModel.setImageSize(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight());
+    if (paramDrawable != null)
+    {
+      ShapeModel localShapeModel = this.shapeModel;
+      if (localShapeModel != null) {
+        localShapeModel.setImageSize(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight());
+      }
     }
     return this;
   }
@@ -259,7 +274,7 @@ public class PanoramaConfig$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.panorama.util.PanoramaConfig.Builder
  * JD-Core Version:    0.7.0.1
  */

@@ -20,18 +20,22 @@ class StrictLineReader
   
   public StrictLineReader(InputStream paramInputStream, int paramInt, Charset paramCharset)
   {
-    if ((paramInputStream == null) || (paramCharset == null)) {
-      throw new NullPointerException();
-    }
-    if (paramInt < 0) {
+    if ((paramInputStream != null) && (paramCharset != null))
+    {
+      if (paramInt >= 0)
+      {
+        if (paramCharset.equals(DiskLruCacheUtil.US_ASCII))
+        {
+          this.in = paramInputStream;
+          this.charset = paramCharset;
+          this.buf = new byte[paramInt];
+          return;
+        }
+        throw new IllegalArgumentException("Unsupported encoding");
+      }
       throw new IllegalArgumentException("capacity <= 0");
     }
-    if (!paramCharset.equals(DiskLruCacheUtil.US_ASCII)) {
-      throw new IllegalArgumentException("Unsupported encoding");
-    }
-    this.in = paramInputStream;
-    this.charset = paramCharset;
-    this.buf = new byte[paramInt];
+    throw new NullPointerException();
   }
   
   public StrictLineReader(InputStream paramInputStream, Charset paramCharset)
@@ -41,12 +45,16 @@ class StrictLineReader
   
   private void fillBuf()
   {
-    int i = this.in.read(this.buf, 0, this.buf.length);
-    if (i == -1) {
-      throw new EOFException();
+    InputStream localInputStream = this.in;
+    byte[] arrayOfByte = this.buf;
+    int i = localInputStream.read(arrayOfByte, 0, arrayOfByte.length);
+    if (i != -1)
+    {
+      this.pos = 0;
+      this.end = i;
+      return;
     }
-    this.pos = 0;
-    this.end = i;
+    throw new EOFException();
   }
   
   public void close()
@@ -69,63 +77,67 @@ class StrictLineReader
   
   public String readLine()
   {
+    int i;
+    int j;
+    label276:
+    label283:
     synchronized (this.in)
     {
-      if (this.buf == null) {
-        throw new IOException("LineReader is closed");
-      }
-    }
-    if (this.pos >= this.end) {
-      fillBuf();
-    }
-    int i = this.pos;
-    for (;;)
-    {
-      if (i != this.end)
+      if (this.buf != null)
       {
-        if (this.buf[i] != 10) {
-          break label272;
-        }
-        if ((i == this.pos) || (this.buf[(i - 1)] != 13)) {
-          break label267;
-        }
-      }
-      label267:
-      for (int j = i - 1;; j = i)
-      {
-        Object localObject2 = new String(this.buf, this.pos, j - this.pos, this.charset.name());
-        this.pos = (i + 1);
-        return localObject2;
-        localObject2 = new StrictLineReader.1(this, this.end - this.pos + 80);
-        for (;;)
-        {
-          ((ByteArrayOutputStream)localObject2).write(this.buf, this.pos, this.end - this.pos);
-          this.end = -1;
+        if (this.pos >= this.end) {
           fillBuf();
-          i = this.pos;
-          while (i != this.end)
+        }
+        i = this.pos;
+        Object localObject1;
+        if (i != this.end)
+        {
+          if (this.buf[i] != 10) {
+            break label276;
+          }
+          if (i != this.pos)
           {
-            if (this.buf[i] == 10)
+            localObject1 = this.buf;
+            j = i - 1;
+            if (localObject1[j] == 13)
             {
-              if (i != this.pos) {
-                ((ByteArrayOutputStream)localObject2).write(this.buf, this.pos, i - this.pos);
-              }
+              localObject1 = new String(this.buf, this.pos, j - this.pos, this.charset.name());
               this.pos = (i + 1);
-              localObject2 = ((ByteArrayOutputStream)localObject2).toString();
-              return localObject2;
+              return localObject1;
             }
-            i += 1;
           }
         }
+        else
+        {
+          localObject1 = new StrictLineReader.1(this, this.end - this.pos + 80);
+          do
+          {
+            ((ByteArrayOutputStream)localObject1).write(this.buf, this.pos, this.end - this.pos);
+            this.end = -1;
+            fillBuf();
+            i = this.pos;
+          } while (i == this.end);
+          if (this.buf[i] != 10) {
+            break label283;
+          }
+          if (i != this.pos) {
+            ((ByteArrayOutputStream)localObject1).write(this.buf, this.pos, i - this.pos);
+          }
+          this.pos = (i + 1);
+          localObject1 = ((ByteArrayOutputStream)localObject1).toString();
+          return localObject1;
+        }
       }
-      label272:
-      i += 1;
+      else
+      {
+        throw new IOException("LineReader is closed");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.cache.StrictLineReader
  * JD-Core Version:    0.7.0.1
  */

@@ -13,16 +13,19 @@ class FilePreviewActivity$9$3
     this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     try
     {
-      String str = (String)this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.a.getText();
-      if ((str == null) || (str.length() == 0)) {
-        return;
-      }
+      str = (String)this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.a.getText();
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Object localObject = null;
+      String str;
+      label31:
+      break label31;
+    }
+    str = null;
+    if (str != null)
+    {
+      if (str.length() == 0) {
+        return;
       }
       this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.a.clearAnimation();
       this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.a.setVisibility(0);
@@ -31,7 +34,7 @@ class FilePreviewActivity$9$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.9.3
  * JD-Core Version:    0.7.0.1
  */

@@ -8,21 +8,28 @@ class GdtMvWebReportServerAntiHandler
 {
   public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
   {
-    if (paramGdtAdWebPlugin != null) {}
-    for (paramString = paramGdtAdWebPlugin.a(); (paramGdtAdWebPlugin == null) || (paramString == null); paramString = null)
+    if (paramGdtAdWebPlugin != null) {
+      paramString = paramGdtAdWebPlugin.a();
+    } else {
+      paramString = null;
+    }
+    if ((paramGdtAdWebPlugin != null) && (paramString != null))
     {
-      QLog.i("WebGdtMvWebReportServerAntiHandler", 1, "webPlugin == null || activity == null");
+      paramGdtAdWebPlugin = new StringBuilder();
+      paramGdtAdWebPlugin.append("args=");
+      paramGdtAdWebPlugin.append(Arrays.toString(paramVarArgs));
+      QLog.i("WebGdtMvWebReportServerAntiHandler", 1, paramGdtAdWebPlugin.toString());
+      paramGdtAdWebPlugin = paramVarArgs[0];
+      a(paramGdtAdWebPlugin);
       return true;
     }
-    QLog.i("WebGdtMvWebReportServerAntiHandler", 1, "args=" + Arrays.toString(paramVarArgs));
-    paramGdtAdWebPlugin = paramVarArgs[0];
-    a(paramGdtAdWebPlugin);
+    QLog.i("WebGdtMvWebReportServerAntiHandler", 1, "webPlugin == null || activity == null");
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtMvWebReportServerAntiHandler
  * JD-Core Version:    0.7.0.1
  */

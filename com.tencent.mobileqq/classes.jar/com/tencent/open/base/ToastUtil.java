@@ -13,11 +13,6 @@ public class ToastUtil
   protected Toast a;
   protected Toast b = null;
   
-  static
-  {
-    jdField_a_of_type_ComTencentOpenBaseToastUtil = null;
-  }
-  
   public ToastUtil()
   {
     this.jdField_a_of_type_AndroidWidgetToast = null;
@@ -62,7 +57,7 @@ public class ToastUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.base.ToastUtil
  * JD-Core Version:    0.7.0.1
  */

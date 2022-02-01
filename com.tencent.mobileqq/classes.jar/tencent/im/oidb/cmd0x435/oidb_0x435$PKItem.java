@@ -23,13 +23,14 @@ public final class oidb_0x435$PKItem
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50, 56, 64 }, new String[] { "uint32_pk_item_id", "bytes_pk_description", "uint32_start_time", "uint32_end_time", "uint32_valid_time", "rpt_msg_vote", "uint32_interval_time", "uint32_pk_is_over" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0) }, PKItem.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50, 56, 64 }, new String[] { "uint32_pk_item_id", "bytes_pk_description", "uint32_start_time", "uint32_end_time", "uint32_valid_time", "rpt_msg_vote", "uint32_interval_time", "uint32_pk_is_over" }, new Object[] { localInteger, localByteStringMicro, localInteger, localInteger, localInteger, null, localInteger, localInteger }, PKItem.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x435.oidb_0x435.PKItem
  * JD-Core Version:    0.7.0.1
  */

@@ -19,29 +19,35 @@ public abstract class a<T>
   
   public final void a(int paramInt)
   {
-    int k = 0;
     synchronized (this.b)
     {
       if (paramInt - this.f > 2)
       {
         int m = this.f;
         this.f = paramInt;
-        l[] arrayOfl = (l[])this.c.toArray(new l[0]);
-        int n = arrayOfl.length;
+        Object localObject2 = this.c;
+        int k = 0;
+        localObject2 = (l[])((ArrayList)localObject2).toArray(new l[0]);
+        int n = localObject2.length;
         while (k < n)
         {
-          arrayOfl[k].a(m, paramInt);
+          localObject2[k].a(m, paramInt);
           k += 1;
         }
       }
       return;
     }
+    for (;;)
+    {
+      throw localObject3;
+    }
   }
   
   public void a(int paramInt, String paramString, Throwable paramThrowable)
   {
+    Object localObject = this.b;
     int k = 0;
-    synchronized (this.b)
+    try
     {
       this.d = false;
       this.f = 0;
@@ -57,6 +63,11 @@ public abstract class a<T>
         k += 1;
       }
       return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
@@ -80,23 +91,25 @@ public abstract class a<T>
         }
         return;
       }
-    }
-    if (paraml != null)
-    {
-      paraml.a(0, this.f);
-      this.c.add(paraml);
-    }
-    if (this.d) {
+      if (paraml != null)
+      {
+        paraml.a(0, this.f);
+        this.c.add(paraml);
+      }
+      if (this.d) {
+        return;
+      }
+      this.d = true;
+      a();
       return;
     }
-    this.d = true;
-    a();
   }
   
   public void a(T paramT)
   {
+    Object localObject = this.b;
     int k = 0;
-    synchronized (this.b)
+    try
     {
       this.d = false;
       this.e = true;
@@ -115,6 +128,11 @@ public abstract class a<T>
       }
       return;
     }
+    finally {}
+    for (;;)
+    {
+      throw paramT;
+    }
   }
   
   public void b()
@@ -124,7 +142,7 @@ public abstract class a<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.a.a
  * JD-Core Version:    0.7.0.1
  */

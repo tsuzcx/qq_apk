@@ -59,51 +59,65 @@ public class Mp4ReEncoder
   
   public void a(long paramLong)
   {
-    TLog.b("Mp4ReEncoder", "onDecodeFrame wait timestamp = " + paramLong);
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("onDecodeFrame wait timestamp = ");
+    ((StringBuilder)???).append(paramLong);
+    TLog.b("Mp4ReEncoder", ((StringBuilder)???).toString());
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
       if (this.jdField_a_of_type_Long >= paramLong)
       {
         this.jdField_b_of_type_Boolean = true;
-        TLog.d("Mp4ReEncoder", "mLastDecodeTimestamp >= timestampNanos; mLastDecodeTimestamp = " + this.jdField_a_of_type_Long + " timestampNanos = " + paramLong);
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("mLastDecodeTimestamp >= timestampNanos; mLastDecodeTimestamp = ");
+        ((StringBuilder)???).append(this.jdField_a_of_type_Long);
+        ((StringBuilder)???).append(" timestampNanos = ");
+        ((StringBuilder)???).append(paramLong);
+        TLog.d("Mp4ReEncoder", ((StringBuilder)???).toString());
         return;
       }
       this.jdField_b_of_type_Boolean = false;
       this.jdField_a_of_type_Long = paramLong;
-    }
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      this.jdField_b_of_type_JavaLangObject.notifyAll();
-      TLog.b("Mp4ReEncoder", "onDecodeFrame start timestamp = " + paramLong);
-      try
+      synchronized (this.jdField_b_of_type_JavaLangObject)
       {
-        this.jdField_a_of_type_JavaLangObject.wait(2000L);
-        if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int == 0) && (!this.c)) {
-          b(3, new RuntimeException("frame wait timed out"));
+        this.jdField_b_of_type_JavaLangObject.notifyAll();
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("onDecodeFrame start timestamp = ");
+        ((StringBuilder)???).append(paramLong);
+        TLog.b("Mp4ReEncoder", ((StringBuilder)???).toString());
+        try
+        {
+          this.jdField_a_of_type_JavaLangObject.wait(2000L);
+          if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int == 0) && (!this.c)) {
+            b(3, new RuntimeException("frame wait timed out"));
+          }
+          ??? = new StringBuilder();
+          ((StringBuilder)???).append("onDecodeFrame end timestamp = ");
+          ((StringBuilder)???).append(paramLong);
+          TLog.b("Mp4ReEncoder", ((StringBuilder)???).toString());
+          this.jdField_a_of_type_Boolean = false;
+          return;
         }
-        TLog.b("Mp4ReEncoder", "onDecodeFrame end timestamp = " + paramLong);
-        this.jdField_a_of_type_Boolean = false;
-        return;
+        catch (InterruptedException localInterruptedException)
+        {
+          TLog.b("Mp4ReEncoder", "onDecodeFrame InterruptedException");
+          this.jdField_a_of_type_Boolean = false;
+          throw localInterruptedException;
+        }
       }
-      catch (InterruptedException localInterruptedException)
-      {
-        TLog.b("Mp4ReEncoder", "onDecodeFrame InterruptedException");
-        this.jdField_a_of_type_Boolean = false;
-        throw localInterruptedException;
-      }
-      localObject3 = finally;
-      throw localObject3;
     }
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeListener != null) {
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeListener.a(paramString);
+    HWEncodeListener localHWEncodeListener = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeListener;
+    if (localHWEncodeListener != null) {
+      localHWEncodeListener.a(paramString);
     }
-    if (this.jdField_b_of_type_Int != -1)
+    int i = this.jdField_b_of_type_Int;
+    if (i != -1)
     {
-      GlUtil.a(this.jdField_b_of_type_Int);
+      GlUtil.a(i);
       this.jdField_b_of_type_Int = -1;
     }
     GlUtil.a(this.jdField_b_of_type_Int);
@@ -127,8 +141,9 @@ public class Mp4ReEncoder
   {
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecDecoderHWVideoDecoder.a();
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeListener != null) {
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeListener.b(paramInt, paramThrowable);
+    HWEncodeListener localHWEncodeListener = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeListener;
+    if (localHWEncodeListener != null) {
+      localHWEncodeListener.b(paramInt, paramThrowable);
     }
   }
   
@@ -155,30 +170,43 @@ public class Mp4ReEncoder
       this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecTtpicGPUBaseFilter.a(this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEncodeConfig.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEncodeConfig.jdField_b_of_type_Int);
       this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecTtpicGPUBaseFilter.d();
       this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecDecoderHWVideoDecoder.a(this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecDecoderDecodeConfig, this.jdField_b_of_type_Int, this, this);
-      if (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeListener != null) {
+      if (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeListener != null)
+      {
         this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeListener.e();
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
       b(4, localException);
-      TLog.d("Mp4ReEncoder", "onEncodeStart ex=" + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onEncodeStart ex=");
+      localStringBuilder.append(localException);
+      TLog.d("Mp4ReEncoder", localStringBuilder.toString());
     }
   }
   
   public void f()
   {
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeListener != null) {
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeListener.f();
+    HWEncodeListener localHWEncodeListener = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeListener;
+    if (localHWEncodeListener != null) {
+      localHWEncodeListener.f();
     }
   }
   
   public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
-    if ((this.jdField_b_of_type_Long >= this.jdField_a_of_type_Long) && (!this.jdField_b_of_type_Boolean) && (!this.d))
+    for (;;)
     {
-      TLog.b("Mp4ReEncoder", "onFrameAvailable wait onDecodeFrame. mLastAvailableTimestamp = " + this.jdField_b_of_type_Long + " , mLastDecodeTimestamp " + this.jdField_a_of_type_Long);
+      if ((this.jdField_b_of_type_Long < this.jdField_a_of_type_Long) || (this.jdField_b_of_type_Boolean) || (this.d)) {
+        break label113;
+      }
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("onFrameAvailable wait onDecodeFrame. mLastAvailableTimestamp = ");
+      ((StringBuilder)???).append(this.jdField_b_of_type_Long);
+      ((StringBuilder)???).append(" , mLastDecodeTimestamp ");
+      ((StringBuilder)???).append(this.jdField_a_of_type_Long);
+      TLog.b("Mp4ReEncoder", ((StringBuilder)???).toString());
       try
       {
         synchronized (this.jdField_b_of_type_JavaLangObject)
@@ -188,12 +216,11 @@ public class Mp4ReEncoder
       }
       catch (InterruptedException localInterruptedException)
       {
-        for (;;)
-        {
-          localInterruptedException.printStackTrace();
-        }
+        localInterruptedException.printStackTrace();
       }
     }
+    throw paramSurfaceTexture;
+    label113:
     if (this.jdField_b_of_type_Boolean)
     {
       TLog.d("Mp4ReEncoder", "onFrameAvailable skipDecode");
@@ -202,50 +229,70 @@ public class Mp4ReEncoder
     TLog.b("Mp4ReEncoder", "onFrameAvailable wait");
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      if ((this.c) || (this.jdField_a_of_type_Int != 0) || (this.d))
+      if ((!this.c) && (this.jdField_a_of_type_Int == 0) && (!this.d))
       {
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_JavaLangObject.notifyAll();
-        TLog.c("Mp4ReEncoder", "onFrameAvailable error=" + this.jdField_a_of_type_Int + " ; canceled=" + this.c + "; stopped=" + this.d);
-        return;
+        TLog.b("Mp4ReEncoder", "onFrameAvailable start");
+        if (this.jdField_a_of_type_Boolean) {
+          b(5, new RuntimeException("mFrameAvailable already set, frame could be dropped"));
+        }
+        try
+        {
+          paramSurfaceTexture.updateTexImage();
+          this.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("onFrameAvailable timestap = ");
+          ((StringBuilder)localObject2).append(this.jdField_b_of_type_Long);
+          TLog.b("Mp4ReEncoder", ((StringBuilder)localObject2).toString());
+          localObject2 = new float[16];
+          paramSurfaceTexture.getTransformMatrix((float[])localObject2);
+          this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecTtpicRenderBuffer.a();
+          this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecTtpicGPUOESBaseFilter.a(this.jdField_b_of_type_Int, null, null);
+          if (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderMp4ReEncoder$EncodeFilterRender != null) {
+            this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderMp4ReEncoder$EncodeFilterRender.a();
+          }
+          paramSurfaceTexture = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecTtpicRenderBuffer;
+          paramSurfaceTexture.b();
+          this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecTtpicGPUBaseFilter.a(paramSurfaceTexture.a(), (float[])localObject2, null);
+          this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWVideoRecorder.a(3553, paramSurfaceTexture.a(), (float[])localObject2, null, this.jdField_b_of_type_Long);
+          this.jdField_a_of_type_Boolean = true;
+          this.jdField_a_of_type_JavaLangObject.notifyAll();
+          TLog.b("Mp4ReEncoder", "onFrameAvailable end");
+          return;
+        }
+        catch (Exception paramSurfaceTexture)
+        {
+          this.jdField_a_of_type_Boolean = true;
+          this.jdField_a_of_type_JavaLangObject.notifyAll();
+          Object localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("onFrameAvailable error=");
+          ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+          ((StringBuilder)localObject2).append(" ; canceled=");
+          ((StringBuilder)localObject2).append(this.c);
+          TLog.a("Mp4ReEncoder", ((StringBuilder)localObject2).toString(), paramSurfaceTexture);
+          return;
+        }
       }
-    }
-    TLog.b("Mp4ReEncoder", "onFrameAvailable start");
-    if (this.jdField_a_of_type_Boolean) {
-      b(5, new RuntimeException("mFrameAvailable already set, frame could be dropped"));
-    }
-    try
-    {
-      paramSurfaceTexture.updateTexImage();
-      this.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
-      TLog.b("Mp4ReEncoder", "onFrameAvailable timestap = " + this.jdField_b_of_type_Long);
-      float[] arrayOfFloat = new float[16];
-      paramSurfaceTexture.getTransformMatrix(arrayOfFloat);
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecTtpicRenderBuffer.a();
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecTtpicGPUOESBaseFilter.a(this.jdField_b_of_type_Int, null, null);
-      if (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderMp4ReEncoder$EncodeFilterRender != null) {
-        this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderMp4ReEncoder$EncodeFilterRender.a();
-      }
-      paramSurfaceTexture = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecTtpicRenderBuffer;
-      paramSurfaceTexture.b();
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecTtpicGPUBaseFilter.a(paramSurfaceTexture.a(), arrayOfFloat, null);
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWVideoRecorder.a(3553, paramSurfaceTexture.a(), arrayOfFloat, null, this.jdField_b_of_type_Long);
       this.jdField_a_of_type_Boolean = true;
       this.jdField_a_of_type_JavaLangObject.notifyAll();
-      TLog.b("Mp4ReEncoder", "onFrameAvailable end");
+      paramSurfaceTexture = new StringBuilder();
+      paramSurfaceTexture.append("onFrameAvailable error=");
+      paramSurfaceTexture.append(this.jdField_a_of_type_Int);
+      paramSurfaceTexture.append(" ; canceled=");
+      paramSurfaceTexture.append(this.c);
+      paramSurfaceTexture.append("; stopped=");
+      paramSurfaceTexture.append(this.d);
+      TLog.c("Mp4ReEncoder", paramSurfaceTexture.toString());
       return;
     }
-    catch (Exception paramSurfaceTexture)
+    for (;;)
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_JavaLangObject.notifyAll();
-      TLog.b("Mp4ReEncoder", "onFrameAvailable error=" + this.jdField_a_of_type_Int + " ; canceled=" + this.c, paramSurfaceTexture);
+      throw paramSurfaceTexture;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.mediacodec.encoder.Mp4ReEncoder
  * JD-Core Version:    0.7.0.1
  */

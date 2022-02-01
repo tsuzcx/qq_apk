@@ -19,15 +19,19 @@ public class LoadExtraStickerParserManager
   protected final int RENDER_OLD_TEXT = 0;
   protected String mDataPath;
   protected int mHeight;
-  protected boolean mIsPrepared = false;
+  protected boolean mIsPrepared;
   protected String mStickerFileName;
-  protected float mStickerFrames = 1.0F;
+  protected float mStickerFrames;
   protected IExtraStickerParser mStickerParser;
-  protected int mStickerType = 0;
+  protected int mStickerType;
   protected int mWidth;
   
   public LoadExtraStickerParserManager(String paramString, StickerItem paramStickerItem)
   {
+    float f = 1.0F;
+    this.mStickerFrames = 1.0F;
+    this.mIsPrepared = false;
+    this.mStickerType = 0;
     if (paramStickerItem == null) {
       return;
     }
@@ -39,43 +43,58 @@ public class LoadExtraStickerParserManager
     }
     this.mStickerFrames = f;
     this.mDataPath = paramString;
-    if ((paramStickerItem.extarTypeHeight <= 0) || (paramStickerItem.extraTypeWidth <= 0)) {
-      this.mWidth = paramStickerItem.width;
-    }
-    for (this.mHeight = paramStickerItem.height;; this.mHeight = paramStickerItem.extarTypeHeight)
+    if ((paramStickerItem.extarTypeHeight > 0) && (paramStickerItem.extraTypeWidth > 0))
     {
-      this.mIsPrepared = true;
-      if (this.mStickerParser == null) {
-        break;
-      }
-      this.mStickerParser.setSize(this.mWidth, this.mHeight);
-      return;
       this.mWidth = paramStickerItem.extraTypeWidth;
+      this.mHeight = paramStickerItem.extarTypeHeight;
+    }
+    else
+    {
+      this.mWidth = paramStickerItem.width;
+      this.mHeight = paramStickerItem.height;
+    }
+    this.mIsPrepared = true;
+    paramString = this.mStickerParser;
+    if (paramString != null) {
+      paramString.setSize(this.mWidth, this.mHeight);
     }
   }
   
   public void clear()
   {
-    if (this.mStickerParser != null) {
-      this.mStickerParser.clear();
+    IExtraStickerParser localIExtraStickerParser = this.mStickerParser;
+    if (localIExtraStickerParser != null) {
+      localIExtraStickerParser.clear();
     }
   }
   
   public void initInGLThread(int paramInt)
   {
-    if ((!this.mIsPrepared) || (paramInt <= 0)) {}
-    while (this.mStickerParser == null) {
-      return;
+    if (this.mIsPrepared)
+    {
+      if (paramInt <= 0) {
+        return;
+      }
+      IExtraStickerParser localIExtraStickerParser = this.mStickerParser;
+      if (localIExtraStickerParser != null) {
+        localIExtraStickerParser.initInGLThread(paramInt, this.mDataPath, this.mStickerFileName);
+      }
     }
-    this.mStickerParser.initInGLThread(paramInt, this.mDataPath, this.mStickerFileName);
   }
   
   public boolean isBitmap()
   {
-    if (this.mStickerParser != null) {
-      return this.mStickerParser.getResultType() == 1;
+    IExtraStickerParser localIExtraStickerParser = this.mStickerParser;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localIExtraStickerParser != null)
+    {
+      bool1 = bool2;
+      if (localIExtraStickerParser.getResultType() == 1) {
+        bool1 = true;
+      }
     }
-    return false;
+    return bool1;
   }
   
   public ETC1Util.ETC1Texture loadETCAlphaTexture(int paramInt)
@@ -90,16 +109,18 @@ public class LoadExtraStickerParserManager
   
   public int loadImage(int paramInt1, int paramInt2)
   {
-    if (this.mStickerParser != null) {
-      return this.mStickerParser.updateTexture(paramInt1, paramInt2 / this.mStickerFrames, EGL14.eglGetCurrentContext());
+    IExtraStickerParser localIExtraStickerParser = this.mStickerParser;
+    if (localIExtraStickerParser != null) {
+      return localIExtraStickerParser.updateTexture(paramInt1, paramInt2 / this.mStickerFrames, EGL14.eglGetCurrentContext());
     }
     return -1;
   }
   
   public int loadImage(int paramInt1, int paramInt2, EGLContext paramEGLContext)
   {
-    if (this.mStickerParser != null) {
-      return this.mStickerParser.updateTexture(paramInt1, paramInt2 / this.mStickerFrames, paramEGLContext);
+    IExtraStickerParser localIExtraStickerParser = this.mStickerParser;
+    if (localIExtraStickerParser != null) {
+      return localIExtraStickerParser.updateTexture(paramInt1, paramInt2 / this.mStickerFrames, paramEGLContext);
     }
     return -1;
   }
@@ -116,28 +137,34 @@ public class LoadExtraStickerParserManager
   
   public void prepareImages()
   {
-    if (!this.mIsPrepared) {}
-    do
-    {
+    if (!this.mIsPrepared) {
       return;
-      if (this.mStickerParser == null) {
-        this.mStickerParser = ExtraStickerParserAgent.getInstance().creatExtraParser(this.mStickerType);
-      }
-    } while ((this.mStickerParser == null) || (this.mStickerParser == null));
-    this.mStickerParser.setSize(this.mWidth, this.mHeight);
-    this.mIsPrepared = this.mStickerParser.prepare(this.mDataPath, this.mStickerFileName);
+    }
+    if (this.mStickerParser == null) {
+      this.mStickerParser = ExtraStickerParserAgent.getInstance().creatExtraParser(this.mStickerType);
+    }
+    IExtraStickerParser localIExtraStickerParser = this.mStickerParser;
+    if (localIExtraStickerParser == null) {
+      return;
+    }
+    if (localIExtraStickerParser != null)
+    {
+      localIExtraStickerParser.setSize(this.mWidth, this.mHeight);
+      this.mIsPrepared = this.mStickerParser.prepare(this.mDataPath, this.mStickerFileName);
+    }
   }
   
   public void reset()
   {
-    if (this.mStickerParser != null) {
-      this.mStickerParser.reset();
+    IExtraStickerParser localIExtraStickerParser = this.mStickerParser;
+    if (localIExtraStickerParser != null) {
+      localIExtraStickerParser.reset();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.cache.LoadExtraStickerParserManager
  * JD-Core Version:    0.7.0.1
  */

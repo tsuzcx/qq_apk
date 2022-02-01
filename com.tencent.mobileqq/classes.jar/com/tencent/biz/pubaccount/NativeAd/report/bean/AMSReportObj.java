@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/NativeAd/report/bean/AMSReportObj;", "Lcom/tencent/biz/pubaccount/NativeAd/report/IReportObj;", "()V", "amsClickUrl", "", "amsConvUrl", "amsExpUrl", "amsNFBUrl", "getKey", "parseAdReportData", "", "adReportData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;", "toJsonObject", "Lorg/json/JSONObject;", "valid", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/NativeAd/report/bean/AMSReportObj;", "Lcom/tencent/biz/pubaccount/NativeAd/report/IReportObj;", "()V", "amsClickUrl", "", "amsConvUrl", "amsExpUrl", "amsNFBUrl", "getKey", "parseAdReportData", "", "adReportData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;", "toJsonObject", "Lorg/json/JSONObject;", "valid", "", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class AMSReportObj
   extends IReportObj
 {
@@ -42,25 +42,30 @@ public final class AMSReportObj
   {
     Intrinsics.checkParameterIsNotNull(paramAdReportData, "adReportData");
     ReportAction localReportAction = AdReportUtil.a(paramAdReportData);
-    if (localReportAction == null) {}
-    do
+    if (localReportAction == null) {
+      return;
+    }
+    int i = AMSReportObj.WhenMappings.a[localReportAction.ordinal()];
+    if ((i != 1) && (i != 2))
     {
-      do
+      if (i != 3)
       {
-        return;
-        switch (AMSReportObj.WhenMappings.a[localReportAction.ordinal()])
-        {
-        default: 
+        if (i != 4) {
           return;
         }
-      } while (paramAdReportData.a() == null);
+        this.d = AdReportUtil.c(paramAdReportData);
+        return;
+      }
+      if (paramAdReportData.a() != null)
+      {
+        this.b = paramAdReportData.a().mAdRl;
+        this.c = paramAdReportData.a().mAdEffectUrl;
+      }
+    }
+    else if (paramAdReportData.a() != null)
+    {
       this.a = paramAdReportData.a().mAdApurl;
-      return;
-    } while (paramAdReportData.a() == null);
-    this.b = paramAdReportData.a().mAdRl;
-    this.c = paramAdReportData.a().mAdEffectUrl;
-    return;
-    this.d = AdReportUtil.c(paramAdReportData);
+    }
   }
   
   public boolean a()
@@ -70,7 +75,7 @@ public final class AMSReportObj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.report.bean.AMSReportObj
  * JD-Core Version:    0.7.0.1
  */

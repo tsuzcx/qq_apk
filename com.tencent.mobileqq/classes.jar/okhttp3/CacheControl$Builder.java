@@ -26,44 +26,59 @@ public final class CacheControl$Builder
   
   public Builder maxAge(int paramInt, TimeUnit paramTimeUnit)
   {
-    if (paramInt < 0) {
-      throw new IllegalArgumentException("maxAge < 0: " + paramInt);
-    }
-    long l = paramTimeUnit.toSeconds(paramInt);
-    if (l > 2147483647L) {}
-    for (paramInt = 2147483647;; paramInt = (int)l)
+    if (paramInt >= 0)
     {
+      long l = paramTimeUnit.toSeconds(paramInt);
+      if (l > 2147483647L) {
+        paramInt = 2147483647;
+      } else {
+        paramInt = (int)l;
+      }
       this.maxAgeSeconds = paramInt;
       return this;
     }
+    paramTimeUnit = new StringBuilder();
+    paramTimeUnit.append("maxAge < 0: ");
+    paramTimeUnit.append(paramInt);
+    throw new IllegalArgumentException(paramTimeUnit.toString());
   }
   
   public Builder maxStale(int paramInt, TimeUnit paramTimeUnit)
   {
-    if (paramInt < 0) {
-      throw new IllegalArgumentException("maxStale < 0: " + paramInt);
-    }
-    long l = paramTimeUnit.toSeconds(paramInt);
-    if (l > 2147483647L) {}
-    for (paramInt = 2147483647;; paramInt = (int)l)
+    if (paramInt >= 0)
     {
+      long l = paramTimeUnit.toSeconds(paramInt);
+      if (l > 2147483647L) {
+        paramInt = 2147483647;
+      } else {
+        paramInt = (int)l;
+      }
       this.maxStaleSeconds = paramInt;
       return this;
     }
+    paramTimeUnit = new StringBuilder();
+    paramTimeUnit.append("maxStale < 0: ");
+    paramTimeUnit.append(paramInt);
+    throw new IllegalArgumentException(paramTimeUnit.toString());
   }
   
   public Builder minFresh(int paramInt, TimeUnit paramTimeUnit)
   {
-    if (paramInt < 0) {
-      throw new IllegalArgumentException("minFresh < 0: " + paramInt);
-    }
-    long l = paramTimeUnit.toSeconds(paramInt);
-    if (l > 2147483647L) {}
-    for (paramInt = 2147483647;; paramInt = (int)l)
+    if (paramInt >= 0)
     {
+      long l = paramTimeUnit.toSeconds(paramInt);
+      if (l > 2147483647L) {
+        paramInt = 2147483647;
+      } else {
+        paramInt = (int)l;
+      }
       this.minFreshSeconds = paramInt;
       return this;
     }
+    paramTimeUnit = new StringBuilder();
+    paramTimeUnit.append("minFresh < 0: ");
+    paramTimeUnit.append(paramInt);
+    throw new IllegalArgumentException(paramTimeUnit.toString());
   }
   
   public Builder noCache()
@@ -92,7 +107,7 @@ public final class CacheControl$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.CacheControl.Builder
  * JD-Core Version:    0.7.0.1
  */

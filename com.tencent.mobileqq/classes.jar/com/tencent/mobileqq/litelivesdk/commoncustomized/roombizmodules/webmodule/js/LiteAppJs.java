@@ -21,14 +21,14 @@ import com.tencent.ilive.litepages.room.webmodule.model.RoomExtInfo;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.intervideo.litelive_kandian.customized.roombizmodules.datareport.DataReportMgr;
-import com.tencent.mobileqq.intervideo.now.ShareToQQActivity;
+import com.tencent.mobileqq.app.utils.RouteUtils;
+import com.tencent.mobileqq.intervideo.litelive_kandian.customized.roombizmodules.datareport.IDataReportMgr;
 import com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.dialog.HalfSizeWebviewDialog;
 import com.tencent.mobileqq.litelivesdk.framework.businessmgr.BusinessManager;
-import com.tencent.mobileqq.vip.CUKingCardHelper;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.vip.CUKingCardUtils;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneShareManager;
 import java.util.ArrayList;
@@ -74,13 +74,13 @@ public class LiteAppJs
   
   private void shareToQQ(Bundle paramBundle)
   {
-    Intent localIntent = new Intent(BaseApplicationImpl.getContext(), ShareToQQActivity.class);
+    Intent localIntent = new Intent();
     localIntent.addFlags(268435456);
     if (paramBundle != null) {
       localIntent.putExtras(paramBundle);
     }
     localIntent.putExtra("uin", getUin());
-    BaseApplicationImpl.getContext().startActivity(localIntent);
+    RouteUtils.a(BaseApplicationImpl.getContext(), localIntent, "/share/toqq/activity");
   }
   
   private void shareToQzone(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
@@ -101,31 +101,32 @@ public class LiteAppJs
   {
     if (!WXShareHelper.a().a())
     {
-      QRUtils.a(0, 2131720753);
+      QRUtils.a(0, 2131720478);
       return;
     }
     if (!WXShareHelper.a().b())
     {
-      QRUtils.a(0, 2131720754);
+      QRUtils.a(0, 2131720479);
       return;
     }
     String str = String.valueOf(System.currentTimeMillis());
     WXShareHelper.a().a(new LiteAppJs.3(this, str));
-    WXShareHelper.a().b(str, paramString1, paramBitmap, paramString2, paramString3, paramInt);
+    WXShareHelper.a().a(str, paramString1, paramBitmap, paramString2, paramString3, paramInt);
   }
   
   @NewJavascriptInterface
   public void closePendantWebview(Map<String, String> paramMap)
   {
     Log.d("AppJavascriptInterface", "AppJavascriptInterface closePendantWebview js fun");
-    if (this.halfSizeWebviewDialog != null) {
-      this.halfSizeWebviewDialog.dismiss();
+    Object localObject = this.halfSizeWebviewDialog;
+    if (localObject != null) {
+      ((HalfSizeWebviewDialog)localObject).dismiss();
     }
-    JSONObject localJSONObject = new JSONObject();
+    localObject = new JSONObject();
     try
     {
-      localJSONObject.put("url", paramMap.get("url"));
-      callJsFunctionByNative("__PENDANT_WEBVIEW_CLOSE", localJSONObject);
+      ((JSONObject)localObject).put("url", paramMap.get("url"));
+      callJsFunctionByNative("__PENDANT_WEBVIEW_CLOSE", (JSONObject)localObject);
       return;
     }
     catch (JSONException paramMap)
@@ -137,7 +138,6 @@ public class LiteAppJs
   @NewJavascriptInterface
   public void contentLoaded(Map<String, String> paramMap)
   {
-    int j = 1;
     Log.d("LiteAppJs", "AppJavascriptInterface contentLoaded js fun");
     Object localObject1 = new ContentLoadedEvent();
     ((ContentLoadedEvent)localObject1).mContentLoaded = true;
@@ -150,33 +150,47 @@ public class LiteAppJs
       String str1 = (String)paramMap.get("ilive_type");
       String str2 = (String)paramMap.get("followed");
       String str3 = (String)paramMap.get("anchor_uid");
-      logI("LiteAppJs", "AppJavascriptInterface contentLoaded programId = " + (String)localObject1 + ", state = " + (String)localObject2 + ", ilive_type = " + str1 + ", followed = " + str2 + ", anchor_uid = " + str3);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("AppJavascriptInterface contentLoaded programId = ");
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append(", state = ");
+      localStringBuilder.append((String)localObject2);
+      localStringBuilder.append(", ilive_type = ");
+      localStringBuilder.append(str1);
+      localStringBuilder.append(", followed = ");
+      localStringBuilder.append(str2);
+      localStringBuilder.append(", anchor_uid = ");
+      localStringBuilder.append(str3);
+      logI("LiteAppJs", localStringBuilder.toString());
       localObject1 = new RoomExtInfo((String)localObject1, (String)localObject2, str1, str2, str3);
       if (getJsBizAdapter() != null) {
         getJsBizAdapter().onGetRoomInfo((RoomExtInfo)localObject1);
       }
     }
-    paramMap = (String)paramMap.get("callback");
-    int i;
-    if (CUKingCardHelper.a() == 1) {
+    if (paramMap != null) {
+      paramMap = (String)paramMap.get("callback");
+    } else {
+      paramMap = "";
+    }
+    int i = CUKingCardUtils.a();
+    int j = 0;
+    if (i == 1) {
       i = 1;
+    } else {
+      i = 0;
     }
     try
     {
       localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("ab_token", DataReportMgr.a().a().get("ab_token"));
-      if (i != 0) {}
-      for (i = j;; i = 0)
-      {
-        ((JSONObject)localObject1).put("kingCard", i);
-        ((JSONObject)localObject1).put("statusBarHeight", UIUtil.getStatusBarHeight(this.mContext));
-        localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("result", localObject1);
-        callJsFunctionByNative(paramMap, (JSONObject)localObject2);
-        return;
-        i = 0;
-        break;
+      ((JSONObject)localObject1).put("ab_token", ((IDataReportMgr)QRoute.api(IDataReportMgr.class)).getCurrentRoomReportInfo().get("ab_token"));
+      if (i != 0) {
+        j = 1;
       }
+      ((JSONObject)localObject1).put("kingCard", j);
+      ((JSONObject)localObject1).put("statusBarHeight", UIUtil.getStatusBarHeight(this.mContext));
+      localObject2 = new JSONObject();
+      ((JSONObject)localObject2).put("result", localObject1);
+      callJsFunctionByNative(paramMap, (JSONObject)localObject2);
       return;
     }
     catch (JSONException paramMap)
@@ -188,62 +202,56 @@ public class LiteAppJs
   @NewJavascriptInterface
   public void doShare(Map<String, String> paramMap)
   {
-    Object localObject;
-    String str1;
-    String str2;
-    String str3;
-    String str4;
-    for (;;)
+    try
     {
-      try
+      QLog.i("LiteAppJs", 1, "AppJavascriptInterface doShare js fun");
+      localObject = (String)paramMap.get("type");
+      String str1 = (String)paramMap.get("url");
+      String str2 = (String)paramMap.get("title");
+      String str3 = (String)paramMap.get("desc");
+      String str4 = (String)paramMap.get("image");
+      if ((!"0".equals(localObject)) && (!"1".equals(localObject)))
       {
-        QLog.i("LiteAppJs", 1, "AppJavascriptInterface doShare js fun");
-        localObject = (String)paramMap.get("type");
-        str1 = (String)paramMap.get("url");
-        str2 = (String)paramMap.get("title");
-        str3 = (String)paramMap.get("desc");
-        str4 = (String)paramMap.get("image");
-        if (("0".equals(localObject)) || ("1".equals(localObject)))
+        if ("2".equals(localObject))
         {
-          ThreadManager.getSubThreadHandler().post(new LiteAppJs.1(this, str4, str2, str3, str1, (String)localObject));
-          return;
-        }
-        if (!"2".equals(localObject)) {
-          break;
-        }
-        localObject = new Bundle();
-        ((Bundle)localObject).putString("title", str2);
-        ((Bundle)localObject).putString("imageurl", str4);
-        ((Bundle)localObject).putString("imageUrl", str4);
-        ((Bundle)localObject).putString("targeturl", str1);
-        ((Bundle)localObject).putString("targetUrl", str1);
-        ((Bundle)localObject).putString("summary", str3);
-        if (BusinessManager.a.b())
-        {
-          ((Bundle)localObject).putString("sourcename", "看点直播");
-          ((Bundle)localObject).putString("sourceIcon", "https://nowpic.gtimg.com/feeds_pic/PiajxSqBRaELBTuqnBHfumzaZXAdm0GuZb8C6VaAZIdCEsprHohWPbA/0");
-          if (paramMap.get("actionData") == null)
+          localObject = new Bundle();
+          ((Bundle)localObject).putString("title", str2);
+          ((Bundle)localObject).putString("imageurl", str4);
+          ((Bundle)localObject).putString("imageUrl", str4);
+          ((Bundle)localObject).putString("targeturl", str1);
+          ((Bundle)localObject).putString("targetUrl", str1);
+          ((Bundle)localObject).putString("summary", str3);
+          if (BusinessManager.a.b())
           {
-            paramMap = "";
+            ((Bundle)localObject).putString("sourcename", "看点直播");
+            ((Bundle)localObject).putString("sourceIcon", "https://nowpic.gtimg.com/feeds_pic/PiajxSqBRaELBTuqnBHfumzaZXAdm0GuZb8C6VaAZIdCEsprHohWPbA/0");
+            if (paramMap.get("actionData") == null) {
+              paramMap = "";
+            } else {
+              paramMap = (String)paramMap.get("actionData");
+            }
             ((Bundle)localObject).putString("liveActionData", paramMap);
           }
-        }
-        else
-        {
           shareToQQ((Bundle)localObject);
           return;
         }
+        if ("3".equals(localObject)) {
+          shareToQzone(this.mContext, str2, str3, str4, str1);
+        }
       }
-      catch (Exception paramMap)
+      else
       {
-        QLog.e("LiteAppJs", 1, "share err " + paramMap.getMessage());
-        QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131719153), 0).a();
+        ThreadManager.getSubThreadHandler().post(new LiteAppJs.1(this, str4, str2, str3, str1, (String)localObject));
         return;
       }
-      paramMap = (String)paramMap.get("actionData");
     }
-    if ("3".equals(localObject)) {
-      shareToQzone(this.mContext, str2, str3, str4, str1);
+    catch (Exception paramMap)
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("share err ");
+      ((StringBuilder)localObject).append(paramMap.getMessage());
+      QLog.e("LiteAppJs", 1, ((StringBuilder)localObject).toString());
+      QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131718871), 0).a();
     }
   }
   
@@ -265,12 +273,22 @@ public class LiteAppJs
     }
   }
   
+  public void onJsDestroy()
+  {
+    super.onJsDestroy();
+    HalfSizeWebviewDialog localHalfSizeWebviewDialog = this.halfSizeWebviewDialog;
+    if (localHalfSizeWebviewDialog != null) {
+      localHalfSizeWebviewDialog.dismiss();
+    }
+  }
+  
   @NewJavascriptInterface
   public void openLoginPage(Map<String, String> paramMap)
   {
     QLog.i("LiteAppJs", 1, "AppJavascriptInterface openLoginPage js fun");
-    if (this.onRefreshTokenListener != null) {
-      this.onRefreshTokenListener.a();
+    paramMap = this.onRefreshTokenListener;
+    if (paramMap != null) {
+      paramMap.a();
     }
   }
   
@@ -279,6 +297,7 @@ public class LiteAppJs
   {
     Log.d("AppJavascriptInterface", "AppJavascriptInterface openPendantWebview js fun");
     Bundle localBundle = new Bundle();
+    int i = 0;
     localBundle.putBoolean("showTitleBar", false);
     localBundle.putString("url", (String)paramMap.get("url"));
     localBundle.putBoolean("isLandscape", false);
@@ -287,28 +306,24 @@ public class LiteAppJs
     localBundle.putBoolean("plantCookieWhenResume", true);
     try
     {
-      i = Integer.valueOf((String)paramMap.get("height")).intValue();
-      if (i == 0)
-      {
-        i = (int)(UIUtil.getScreenHeight(this.mContext) * 0.6F);
-        localBundle.putInt("height", i);
-        this.halfSizeWebviewDialog = new HalfSizeWebviewDialog();
-        this.halfSizeWebviewDialog.setArguments(localBundle);
-        this.halfSizeWebviewDialog.a(new LiteAppJs.2(this, paramMap));
-        this.halfSizeWebviewDialog.show(((FragmentActivity)this.mContext).getSupportFragmentManager(), "");
-        return;
-      }
+      int j = Integer.valueOf((String)paramMap.get("height")).intValue();
+      i = j;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-        int i = 0;
-        continue;
-        i = i * UIUtil.getScreenHeight(this.mContext) / 100;
-      }
+      localException.printStackTrace();
     }
+    if (i == 0) {
+      i = (int)(UIUtil.getScreenHeight(this.mContext) * 0.6F);
+    } else {
+      i = UIUtil.getScreenHeight(this.mContext) * i / 100;
+    }
+    localBundle.putInt("height", i);
+    this.halfSizeWebviewDialog = new HalfSizeWebviewDialog();
+    this.halfSizeWebviewDialog.setArguments(localBundle);
+    this.halfSizeWebviewDialog.a(getJsBizAdapter().getModuleEvent());
+    this.halfSizeWebviewDialog.a(new LiteAppJs.2(this, paramMap));
+    this.halfSizeWebviewDialog.show(((FragmentActivity)this.mContext).getSupportFragmentManager(), "");
   }
   
   public LiteAppJs setOnRefreshTokenListener(LiteAppJs.OnRefreshTokenListener paramOnRefreshTokenListener)
@@ -319,7 +334,7 @@ public class LiteAppJs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.js.LiteAppJs
  * JD-Core Version:    0.7.0.1
  */

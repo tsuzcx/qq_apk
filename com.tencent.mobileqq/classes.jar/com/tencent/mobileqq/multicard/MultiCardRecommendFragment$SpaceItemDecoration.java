@@ -10,7 +10,7 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 class MultiCardRecommendFragment$SpaceItemDecoration
   extends RecyclerView.ItemDecoration
 {
-  private final int jdField_a_of_type_Int = AIOUtils.a(12.0F, this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRecommendFragment.getResources());
+  private final int jdField_a_of_type_Int = AIOUtils.b(12.0F, this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRecommendFragment.getResources());
   
   private MultiCardRecommendFragment$SpaceItemDecoration(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
   
@@ -21,7 +21,7 @@ class MultiCardRecommendFragment$SpaceItemDecoration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardRecommendFragment.SpaceItemDecoration
  * JD-Core Version:    0.7.0.1
  */

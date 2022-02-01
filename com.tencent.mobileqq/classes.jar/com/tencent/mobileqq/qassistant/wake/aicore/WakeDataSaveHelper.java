@@ -2,6 +2,7 @@ package com.tencent.mobileqq.qassistant.wake.aicore;
 
 import android.os.Environment;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.qassistant.wake.QQAssistantGuiderUtil;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.nio.ByteBuffer;
@@ -23,7 +24,7 @@ public class WakeDataSaveHelper
   
   static
   {
-    jdField_a_of_type_JavaLangString = Environment.getExternalStorageDirectory().getPath() + "/tencent/MobileQQ/HelloQQCache/";
+    jdField_a_of_type_JavaLangString = QQAssistantGuiderUtil.jdField_a_of_type_JavaLangString;
   }
   
   WakeDataSaveHelper()
@@ -40,66 +41,70 @@ public class WakeDataSaveHelper
   
   private void a(LinkedList<short[]> paramLinkedList, Float paramFloat, int paramInt)
   {
-    if (paramLinkedList != null) {}
-    for (;;)
-    {
+    if (paramLinkedList != null) {
       try
       {
         boolean bool = paramLinkedList.isEmpty();
-        if (bool) {
+        if (!bool)
+        {
+          try
+          {
+            Object localObject1 = new SimpleDateFormat();
+            ((SimpleDateFormat)localObject1).applyPattern("yyyy_MM_dd_HH_mm_ss");
+            Object localObject2 = new Date();
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(jdField_a_of_type_JavaLangString);
+            localStringBuilder.append(((SimpleDateFormat)localObject1).format((Date)localObject2));
+            localStringBuilder.append("__");
+            localStringBuilder.append((int)(paramFloat.floatValue() * 1000.0F));
+            localStringBuilder.append("_");
+            localStringBuilder.append(paramInt);
+            localStringBuilder.append(".pcm");
+            paramFloat = new File(localStringBuilder.toString());
+            paramFloat.createNewFile();
+            paramFloat = new FileOutputStream(paramFloat);
+            localObject1 = new byte[((short[])paramLinkedList.get(0)).length * 2];
+            paramLinkedList = paramLinkedList.iterator();
+            while (paramLinkedList.hasNext())
+            {
+              localObject2 = (short[])paramLinkedList.next();
+              ByteBuffer.wrap((byte[])localObject1).order(ByteOrder.LITTLE_ENDIAN).asShortBuffer().put((short[])localObject2);
+              paramFloat.write((byte[])localObject1);
+            }
+            paramFloat.flush();
+            paramFloat.close();
+          }
+          catch (Exception paramLinkedList)
+          {
+            paramLinkedList.printStackTrace();
+          }
           return;
         }
-        try
-        {
-          Object localObject1 = new SimpleDateFormat();
-          ((SimpleDateFormat)localObject1).applyPattern("yyyy_MM_dd_HH_mm_ss");
-          Object localObject2 = new Date();
-          paramFloat = new File(jdField_a_of_type_JavaLangString + ((SimpleDateFormat)localObject1).format((Date)localObject2) + "__" + (int)(paramFloat.floatValue() * 1000.0F) + "_" + paramInt + ".pcm");
-          paramFloat.createNewFile();
-          paramFloat = new FileOutputStream(paramFloat);
-          localObject1 = new byte[((short[])paramLinkedList.get(0)).length * 2];
-          paramLinkedList = paramLinkedList.iterator();
-          if (paramLinkedList.hasNext())
-          {
-            localObject2 = (short[])paramLinkedList.next();
-            ByteBuffer.wrap((byte[])localObject1).order(ByteOrder.LITTLE_ENDIAN).asShortBuffer().put((short[])localObject2);
-            paramFloat.write((byte[])localObject1);
-            continue;
-          }
-        }
-        catch (Exception paramLinkedList)
-        {
-          paramLinkedList.printStackTrace();
-        }
-        paramFloat.flush();
       }
       finally {}
-      paramFloat.close();
     }
   }
   
   public void a(float paramFloat)
   {
     int i = 0;
-    for (;;)
+    while (i < 5)
     {
-      if (i < 5)
+      if ((!((AtomicBoolean)this.b.get(i)).get()) && (((Queue)this.jdField_a_of_type_JavaUtilArrayList.get(i)).size() == 20))
       {
-        if ((!((AtomicBoolean)this.b.get(i)).get()) && (((Queue)this.jdField_a_of_type_JavaUtilArrayList.get(i)).size() == 20))
-        {
-          ((AtomicBoolean)this.b.get(i)).set(true);
-          LinkedList localLinkedList = new LinkedList();
-          while (!((Queue)this.jdField_a_of_type_JavaUtilArrayList.get(i)).isEmpty()) {
-            localLinkedList.add(((Queue)this.jdField_a_of_type_JavaUtilArrayList.get(i)).poll());
-          }
-          File localFile = new File(Environment.getExternalStorageDirectory().getPath() + "/tencent/MobileQQ/HelloQQCache/");
-          if (!localFile.exists()) {
-            localFile.mkdirs();
-          }
-          ThreadManagerV2.excute(new WakeDataSaveHelper.1(this, localLinkedList, paramFloat, i), 64, null, false);
+        ((AtomicBoolean)this.b.get(i)).set(true);
+        LinkedList localLinkedList = new LinkedList();
+        while (!((Queue)this.jdField_a_of_type_JavaUtilArrayList.get(i)).isEmpty()) {
+          localLinkedList.add(((Queue)this.jdField_a_of_type_JavaUtilArrayList.get(i)).poll());
         }
-      }
-      else {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(Environment.getExternalStorageDirectory().getPath());
+        ((StringBuilder)localObject).append("/tencent/MobileQQ/HelloQQCache/");
+        localObject = new File(((StringBuilder)localObject).toString());
+        if (!((File)localObject).exists()) {
+          ((File)localObject).mkdirs();
+        }
+        ThreadManagerV2.excute(new WakeDataSaveHelper.1(this, localLinkedList, paramFloat, i), 64, null, false);
         return;
       }
       i += 1;
@@ -124,7 +129,7 @@ public class WakeDataSaveHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.wake.aicore.WakeDataSaveHelper
  * JD-Core Version:    0.7.0.1
  */

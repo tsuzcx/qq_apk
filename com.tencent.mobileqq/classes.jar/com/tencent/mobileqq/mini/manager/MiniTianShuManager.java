@@ -14,18 +14,24 @@ public class MiniTianShuManager
   
   public static void requestAdv(List<TianShuAdPosItemData> paramList, TianShuGetAdvCallback paramTianShuGetAdvCallback)
   {
-    if ((paramList == null) || (paramList.size() <= 0) || (paramTianShuGetAdvCallback == null)) {
-      return;
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      if (paramTianShuGetAdvCallback == null) {
+        return;
+      }
+      paramTianShuGetAdvCallback = new MiniTianShuManager.1(paramTianShuGetAdvCallback);
+      mCallbackList.add(paramTianShuGetAdvCallback);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("add callback ");
+      localStringBuilder.append(mCallbackList.size());
+      QLog.i("MiniTianShuManager", 1, localStringBuilder.toString());
+      TianShuManager.getInstance().requestAdv(paramList, paramTianShuGetAdvCallback);
     }
-    paramTianShuGetAdvCallback = new MiniTianShuManager.1(paramTianShuGetAdvCallback);
-    mCallbackList.add(paramTianShuGetAdvCallback);
-    QLog.i("MiniTianShuManager", 1, "add callback " + mCallbackList.size());
-    TianShuManager.getInstance().requestAdv(paramList, paramTianShuGetAdvCallback);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.manager.MiniTianShuManager
  * JD-Core Version:    0.7.0.1
  */

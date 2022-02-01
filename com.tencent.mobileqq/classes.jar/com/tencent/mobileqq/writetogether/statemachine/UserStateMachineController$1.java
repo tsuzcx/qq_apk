@@ -17,18 +17,13 @@ class UserStateMachineController$1
   public void a(UserState paramUserState)
   {
     paramUserState = this.a;
-    if (!WriteTogetherUtils.a(UserStateMachineController.a(this.a))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      UserStateMachineController.a(paramUserState, bool);
-      ThreadManagerV2.getUIHandlerV2().postDelayed(new UserStateMachineController.1.1(this), 3000L);
-      return;
-    }
+    UserStateMachineController.a(paramUserState, WriteTogetherUtils.a(UserStateMachineController.a(paramUserState)) ^ true);
+    ThreadManagerV2.getUIHandlerV2().postDelayed(new UserStateMachineController.1.1(this), 3000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.statemachine.UserStateMachineController.1
  * JD-Core Version:    0.7.0.1
  */

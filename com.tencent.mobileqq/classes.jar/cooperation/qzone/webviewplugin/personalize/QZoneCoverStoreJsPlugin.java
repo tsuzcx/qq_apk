@@ -14,8 +14,8 @@ import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebUiBaseInterface;
@@ -29,9 +29,9 @@ import cooperation.qzone.QZoneHelper.UserInfo;
 import cooperation.qzone.QZoneVideoCommonUtils;
 import cooperation.qzone.QzonePluginProxyActivity;
 import cooperation.qzone.model.BaseBusinessAlbumInfo;
+import cooperation.qzone.model.Size;
 import cooperation.qzone.util.QZonePermission;
 import cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin;
-import cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin.Size;
 import cooperation.vip.manager.MonitorManager;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -104,45 +104,60 @@ public class QZoneCoverStoreJsPlugin
   
   private String getAid()
   {
-    switch (this.mFrom)
+    int i = this.mFrom;
+    String str = "jhan-cover1";
+    if (i != 1)
     {
-    case 4: 
-    default: 
-      return "jhan-cover1";
-    case 1: 
-      return "jhan-cover1";
-    case 5: 
-      return "jhan-cover1b";
-    case 2: 
-      return "jhan-cover2";
-    case 6: 
-      return "jhan-cover2b";
-    case 3: 
-      return "jhan-ziliaocover";
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 5)
+          {
+            if (i != 6)
+            {
+              if (i != 7) {
+                return "jhan-cover1";
+              }
+              return "jhan-ziliaocoverb";
+            }
+            return "jhan-cover2b";
+          }
+          return "jhan-cover1b";
+        }
+        return "jhan-ziliaocover";
+      }
+      str = "jhan-cover2";
     }
-    return "jhan-ziliaocoverb";
+    return str;
   }
   
   private void lauchVideoCover(int paramInt)
   {
-    if ((this.mRuntime.a() == null) || (this.mRuntime.a() == null)) {}
-    int j;
-    do
+    if (this.mRuntime.a() != null)
     {
-      return;
-      j = this.mRuntime.a().getResources().getDimensionPixelSize(2131299166);
-      if (!QZoneHelper.isBestPerformanceDevice()) {}
-      for (int i = 1; i != 0; i = 0)
+      if (this.mRuntime.a() == null) {
+        return;
+      }
+      int i = this.mRuntime.a().getResources().getDimensionPixelSize(2131299168);
+      if ((QZoneHelper.isBestPerformanceDevice() ^ true))
       {
-        QQToast.a(this.mRuntime.a(), 2131718011, 0).b(j);
+        QQToast.a(this.mRuntime.a(), 2131717670, 0).b(i);
         return;
       }
       registerBroadcast();
-      switch (paramInt)
+      if (paramInt != 1)
       {
-      default: 
-        return;
-      case 1: 
+        if (paramInt != 2) {
+          return;
+        }
+        QLog.i("CoverStore", 1, "VIDEO_COVER click select record video.");
+        if (QZonePermission.requestStoragePermission(this.mRuntime.a(), new QZoneCoverStoreJsPlugin.2(this, i), 1)) {
+          forwardInstallAndStartUpVideoActivity(i);
+        }
+      }
+      else
+      {
         QLog.i("CoverStore", 1, "VIDEO_COVER click select qzone video.");
         QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
         localUserInfo.qzone_uin = this.mRuntime.a().getCurrentAccountUin();
@@ -151,234 +166,379 @@ public class QZoneCoverStoreJsPlugin
         localBaseBusinessAlbumInfo.mUin = this.mRuntime.a().getLongAccountUin();
         localBaseBusinessAlbumInfo.mAlbumType = 10;
         localBaseBusinessAlbumInfo.mAnonymity = 10;
-        localBaseBusinessAlbumInfo.mTitle = this.mRuntime.a().getString(2131717504);
+        localBaseBusinessAlbumInfo.mTitle = this.mRuntime.a().getString(2131717163);
         QZoneHelper.forwardToPersonalAlbumVideoList(this.mRuntime.a(), localUserInfo, localBaseBusinessAlbumInfo, -1, "cover_mall_record_video");
-        return;
       }
-      QLog.i("CoverStore", 1, "VIDEO_COVER click select record video.");
-    } while (!QZonePermission.requestStoragePermission(this.mRuntime.a(), new QZoneCoverStoreJsPlugin.2(this, j), 1));
-    forwardInstallAndStartUpVideoActivity(j);
+    }
   }
   
   private void launchCustom(String paramString)
   {
-    if ("MobileAlbum".equals(paramString)) {
-      if ((this.mRuntime.a() != null) && (this.mRuntime.a() != null)) {}
-    }
-    while ((!"QzoneAlbum".equals(paramString)) || (this.mRuntime.a() == null))
+    Object localObject;
+    if ("MobileAlbum".equals(paramString))
     {
-      return;
-      paramString = new Intent(this.mRuntime.a(), NewPhotoListActivity.class);
-      localObject = new Bundle();
-      ((Bundle)localObject).putInt("PhotoConst.MAXUM_SELECTED_NUM", 1);
-      ((Bundle)localObject).putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", QQBrowserActivity.class.getName());
-      ((Bundle)localObject).putString("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
-      ((Bundle)localObject).putBoolean("PhotoConst.IS_SINGLE_MODE", true);
-      ((Bundle)localObject).putBoolean("PhotoConst.IS_SINGLE_DERECTBACK_MODE", true);
-      paramString.putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
-      ((Bundle)localObject).putBoolean("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
-      ((Bundle)localObject).putInt("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 1);
-      ((Bundle)localObject).putInt("uintype", 0);
-      QZoneHelper.addSource(paramString);
-      paramString.putExtras((Bundle)localObject);
-      ((AbsBaseWebViewActivity)this.mRuntime.a()).gotoSelectPicture(this, paramString, (byte)2);
+      if (this.mRuntime.a() != null)
+      {
+        if (this.mRuntime.a() == null) {
+          return;
+        }
+        paramString = new ActivityURIRequest(this.mRuntime.a(), "/base/album/photolist");
+        localObject = new Bundle();
+        ((Bundle)localObject).putInt("PhotoConst.MAXUM_SELECTED_NUM", 1);
+        ((Bundle)localObject).putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", QQBrowserActivity.class.getName());
+        ((Bundle)localObject).putString("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
+        ((Bundle)localObject).putBoolean("PhotoConst.IS_SINGLE_MODE", true);
+        ((Bundle)localObject).putBoolean("PhotoConst.IS_SINGLE_DERECTBACK_MODE", true);
+        paramString.extra().putBoolean("PhotoConst.HANDLE_DEST_RESULT", true);
+        ((Bundle)localObject).putBoolean("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
+        ((Bundle)localObject).putInt("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 1);
+        ((Bundle)localObject).putInt("uintype", 0);
+        QZoneHelper.addSource(paramString);
+        paramString.extra().putAll((Bundle)localObject);
+        ((AbsBaseWebViewActivity)this.mRuntime.a()).gotoSelectPicture(this, paramString, (byte)2);
+        return;
+      }
       return;
     }
-    paramString = new Bundle();
-    paramString.putInt("key_personal_album_enter_model", 2);
-    Object localObject = QZoneHelper.UserInfo.getInstance();
-    ((QZoneHelper.UserInfo)localObject).qzone_uin = this.mRuntime.a().getAccount();
-    paramString.putString("keyAction", "actionSelectPicture");
-    paramString.putBoolean("key_need_change_to_jpg", false);
-    QZoneHelper.forwardToPersonalAlbumSelect(this.mRuntime.a(), (QZoneHelper.UserInfo)localObject, paramString, generateRequestCode(3));
+    if ("QzoneAlbum".equals(paramString))
+    {
+      if (this.mRuntime.a() == null) {
+        return;
+      }
+      paramString = new Bundle();
+      paramString.putInt("key_personal_album_enter_model", 2);
+      localObject = QZoneHelper.UserInfo.getInstance();
+      ((QZoneHelper.UserInfo)localObject).qzone_uin = this.mRuntime.a().getAccount();
+      paramString.putString("keyAction", "actionSelectPicture");
+      paramString.putBoolean("key_need_change_to_jpg", false);
+      QZoneHelper.forwardToPersonalAlbumSelect(this.mRuntime.a(), (QZoneHelper.UserInfo)localObject, paramString, generateRequestCode(3));
+    }
   }
   
   private void notifyH5(Intent paramIntent)
   {
-    if (paramIntent == null) {}
-    label487:
-    label497:
-    do
-    {
-      int i;
-      do
-      {
-        do
-        {
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.i("CoverStore", 2, "video cover setting start,notify to h5");
-          }
-          for (;;)
-          {
-            try
-            {
-              i = paramIntent.getIntExtra("intent_cover_setting_type", 0);
-              if (i != 0) {
-                break label497;
-              }
-              i = paramIntent.getIntExtra("PhotoConst.VIDEO_TYPE", -1);
-              str = paramIntent.getStringExtra("thumbnail_path");
-              if (TextUtils.isEmpty(str)) {
-                break;
-              }
-              localJSONObject = new JSONObject();
-              if (i == 2)
-              {
-                localJSONObject.put("type", 1);
-                localJSONObject.put("picurl", str);
-                localJSONObject.put("videoid", paramIntent.getStringExtra("PhotoConst.QZONE_ALBUM_VIDEO_ID"));
-                localJSONObject.put("videowidth", paramIntent.getIntExtra("thumbnail_width", 0));
-                localJSONObject.put("videoheight", paramIntent.getIntExtra("thumbnail_height", 0));
-                localJSONObject.put("videourl", paramIntent.getStringExtra("file_send_path"));
-                paramIntent = "window.QZVideoCoverJSInterface.onSetCover(" + localJSONObject.toString() + ")";
-                if (QLog.isColorLevel()) {
-                  QLog.i("CoverStore", 2, "video cover notify h5:" + paramIntent);
-                }
-                callJs(paramIntent);
-                return;
-              }
-            }
-            catch (Exception paramIntent)
-            {
-              MonitorManager.a().a(2, 5, " exception notify H5 " + paramIntent, false);
-              QLog.e("CoverStore", 2, " handle exception " + paramIntent);
-              return;
-            }
-            if ((i != 0) && (1 != i)) {
-              break label487;
-            }
-            Object localObject = QzoneDynamicAlbumPlugin.getBitmapSize(str);
-            if (localObject == null) {
-              break;
-            }
-            double d = QzoneDynamicAlbumPlugin.getRatio((QzoneDynamicAlbumPlugin.Size)localObject);
-            if (d > 0.0D)
-            {
-              ((QzoneDynamicAlbumPlugin.Size)localObject).width = ((int)(((QzoneDynamicAlbumPlugin.Size)localObject).width / d));
-              ((QzoneDynamicAlbumPlugin.Size)localObject).height = ((int)(((QzoneDynamicAlbumPlugin.Size)localObject).height / d));
-            }
-            localObject = QzoneDynamicAlbumPlugin.encodeBase64File(str, ((QzoneDynamicAlbumPlugin.Size)localObject).width, ((QzoneDynamicAlbumPlugin.Size)localObject).height);
-            if (TextUtils.isEmpty((CharSequence)localObject))
-            {
-              QLog.w("CoverStore", 1, "video cover pic not exist,imageBase64 empty. path=" + str);
-              return;
-            }
-            String str = "data:image/jpg;base64," + (String)localObject;
-            localJSONObject.put("type", 0);
-            localJSONObject.put("data", str);
-            localJSONObject.put("videowidth", paramIntent.getIntExtra("thumbnail_width", 0));
-            localJSONObject.put("videoheight", paramIntent.getIntExtra("thumbnail_height", 0));
-          }
-          QLog.w("CoverStore", 1, "unknown video type");
-          return;
-          if (i != 2) {
-            break;
-          }
-          localJSONObject = new JSONObject();
-          localJSONObject.put("coverid", paramIntent.getStringExtra("cover_id"));
-          paramIntent = "window.QZVideoCoverJSInterface.CancelVideoCover(" + localJSONObject.toString() + ")";
-          callJs(paramIntent);
-        } while (!QLog.isColorLevel());
-        QLog.i("CoverStore", 2, "video cover notify h5:" + paramIntent);
-        return;
-      } while (i != 1);
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("coverid", paramIntent.getStringExtra("cover_id"));
-      paramIntent = "window.QZVideoCoverJSInterface.onSetVideoCover(" + localJSONObject.toString() + ")";
-      callJs(paramIntent);
-    } while (!QLog.isColorLevel());
-    QLog.i("CoverStore", 2, "video cover notify h5:" + paramIntent);
-  }
-  
-  private void parseSourceAndFrom(String paramString)
-  {
+    if (paramIntent == null) {
+      return;
+    }
+    boolean bool = QLog.isColorLevel();
+    Object localObject2 = "CoverStore";
+    if (bool) {
+      QLog.i("CoverStore", 2, "video cover setting start,notify to h5");
+    }
+    Object localObject1 = localObject2;
+    label1091:
+    label1092:
+    label1106:
     for (;;)
     {
-      String str;
+      int i;
       try
       {
-        paramString = new JSONObject(paramString);
-        str = paramString.getString("from");
-        if ((str.equals("qzone")) || (str.equals("userhome")))
+        i = paramIntent.getIntExtra("intent_cover_setting_type", 0);
+        if (i == 0)
         {
-          this.mSource = 0;
-          this.mFrom = Integer.parseInt(paramString.getString("page"));
-          this.mAid = paramString.getString("aid");
-          str = paramString.optString("viptype", "COMMON_VIP");
-          if ("STAR_VIP".equals(str))
+          localObject1 = localObject2;
+          i = paramIntent.getIntExtra("PhotoConst.VIDEO_TYPE", -1);
+          localObject1 = localObject2;
+          Object localObject4 = paramIntent.getStringExtra("thumbnail_path");
+          localObject1 = localObject2;
+          if (TextUtils.isEmpty((CharSequence)localObject4)) {
+            return;
+          }
+          localObject1 = localObject2;
+          localObject3 = new JSONObject();
+          if (i != 2) {
+            break label1092;
+          }
+          localObject1 = localObject2;
+          ((JSONObject)localObject3).put("type", 1);
+          localObject1 = localObject2;
+          ((JSONObject)localObject3).put("picurl", localObject4);
+          localObject1 = localObject2;
+          ((JSONObject)localObject3).put("videoid", paramIntent.getStringExtra("PhotoConst.QZONE_ALBUM_VIDEO_ID"));
+          localObject1 = localObject2;
+          ((JSONObject)localObject3).put("videowidth", paramIntent.getIntExtra("thumbnail_width", 0));
+          localObject1 = localObject2;
+          ((JSONObject)localObject3).put("videoheight", paramIntent.getIntExtra("thumbnail_height", 0));
+          localObject1 = localObject2;
+          ((JSONObject)localObject3).put("videourl", paramIntent.getStringExtra("file_send_path"));
+          paramIntent = (Intent)localObject2;
+          continue;
+          localObject1 = localObject2;
+          QLog.w("CoverStore", 1, "unknown video type");
+          return;
+          localObject1 = localObject2;
+          Object localObject5 = QzoneDynamicAlbumPlugin.getBitmapSize((String)localObject4);
+          if (localObject5 == null) {
+            return;
+          }
+          localObject1 = localObject2;
+          double d1 = QzoneDynamicAlbumPlugin.getRatio((Size)localObject5);
+          if (d1 <= 0.0D) {
+            break label1106;
+          }
+          localObject1 = localObject2;
+          i = ((Size)localObject5).width;
+          double d2 = i;
+          Double.isNaN(d2);
+          i = (int)(d2 / d1);
+          try
           {
-            this.mVipType = 3;
-            this.mOpenMouth = paramString.optInt("openmonth", 0);
+            ((Size)localObject5).width = i;
+            i = ((Size)localObject5).height;
+            d2 = i;
+            Double.isNaN(d2);
+            i = (int)(d2 / d1);
+            ((Size)localObject5).height = i;
+            localObject5 = QzoneDynamicAlbumPlugin.encodeBase64File((String)localObject4, ((Size)localObject5).width, ((Size)localObject5).height);
+            if (TextUtils.isEmpty((CharSequence)localObject5))
+            {
+              paramIntent = new StringBuilder();
+              paramIntent.append("video cover pic not exist,imageBase64 empty. path=");
+              paramIntent.append((String)localObject4);
+              localObject2 = paramIntent.toString();
+              paramIntent = "CoverStore";
+              localObject1 = paramIntent;
+              QLog.w(paramIntent, 1, (String)localObject2);
+              return;
+            }
+            localObject2 = "CoverStore";
+            localObject1 = localObject2;
+            localObject4 = new StringBuilder();
+            localObject1 = localObject2;
+            ((StringBuilder)localObject4).append("data:image/jpg;base64,");
+            localObject1 = localObject2;
+            ((StringBuilder)localObject4).append((String)localObject5);
+            localObject1 = localObject2;
+            localObject4 = ((StringBuilder)localObject4).toString();
+            localObject1 = localObject2;
+            ((JSONObject)localObject3).put("type", 0);
+            localObject1 = localObject2;
+            ((JSONObject)localObject3).put("data", localObject4);
+            localObject1 = localObject2;
+            ((JSONObject)localObject3).put("videowidth", paramIntent.getIntExtra("thumbnail_width", 0));
+            localObject1 = localObject2;
+            ((JSONObject)localObject3).put("videoheight", paramIntent.getIntExtra("thumbnail_height", 0));
+            paramIntent = (Intent)localObject2;
+            localObject1 = paramIntent;
+            localObject2 = new StringBuilder();
+            localObject1 = paramIntent;
+            ((StringBuilder)localObject2).append("window.QZVideoCoverJSInterface.onSetCover(");
+            localObject1 = paramIntent;
+            ((StringBuilder)localObject2).append(((JSONObject)localObject3).toString());
+            localObject1 = paramIntent;
+            ((StringBuilder)localObject2).append(")");
+            localObject1 = paramIntent;
+            localObject2 = ((StringBuilder)localObject2).toString();
+            localObject1 = paramIntent;
+            if (QLog.isColorLevel())
+            {
+              localObject1 = paramIntent;
+              localObject3 = new StringBuilder();
+              localObject1 = paramIntent;
+              ((StringBuilder)localObject3).append("video cover notify h5:");
+              localObject1 = paramIntent;
+              ((StringBuilder)localObject3).append((String)localObject2);
+              localObject1 = paramIntent;
+              QLog.i(paramIntent, 2, ((StringBuilder)localObject3).toString());
+            }
+            localObject1 = paramIntent;
+            callJs((String)localObject2);
+            return;
+          }
+          catch (Exception paramIntent)
+          {
+            localObject1 = "CoverStore";
           }
         }
         else
         {
-          this.mSource = 1;
-          continue;
-        }
-        if (!"COMMON_VIP".equals(str)) {
-          break label189;
+          if (i == 2)
+          {
+            localObject1 = localObject2;
+            localObject3 = new JSONObject();
+            localObject1 = localObject2;
+            ((JSONObject)localObject3).put("coverid", paramIntent.getStringExtra("cover_id"));
+            localObject1 = localObject2;
+            paramIntent = new StringBuilder();
+            localObject1 = localObject2;
+            paramIntent.append("window.QZVideoCoverJSInterface.CancelVideoCover(");
+            localObject1 = localObject2;
+            paramIntent.append(((JSONObject)localObject3).toString());
+            localObject1 = localObject2;
+            paramIntent.append(")");
+            localObject1 = localObject2;
+            paramIntent = paramIntent.toString();
+            localObject1 = localObject2;
+            callJs(paramIntent);
+            localObject1 = localObject2;
+            if (!QLog.isColorLevel()) {
+              break label1091;
+            }
+            localObject1 = localObject2;
+            localObject3 = new StringBuilder();
+            localObject1 = localObject2;
+            ((StringBuilder)localObject3).append("video cover notify h5:");
+            localObject1 = localObject2;
+            ((StringBuilder)localObject3).append(paramIntent);
+            localObject1 = localObject2;
+            QLog.i("CoverStore", 2, ((StringBuilder)localObject3).toString());
+            return;
+          }
+          if (i != 1) {
+            break label1091;
+          }
+          localObject1 = localObject2;
+          localObject3 = new JSONObject();
+          localObject1 = localObject2;
+          ((JSONObject)localObject3).put("coverid", paramIntent.getStringExtra("cover_id"));
+          localObject1 = localObject2;
+          paramIntent = new StringBuilder();
+          localObject1 = localObject2;
+          paramIntent.append("window.QZVideoCoverJSInterface.onSetVideoCover(");
+          localObject1 = localObject2;
+          paramIntent.append(((JSONObject)localObject3).toString());
+          localObject1 = localObject2;
+          paramIntent.append(")");
+          localObject1 = localObject2;
+          paramIntent = paramIntent.toString();
+          localObject1 = localObject2;
+          callJs(paramIntent);
+          localObject1 = localObject2;
+          if (!QLog.isColorLevel()) {
+            break label1091;
+          }
+          localObject1 = localObject2;
+          localObject3 = new StringBuilder();
+          localObject1 = localObject2;
+          ((StringBuilder)localObject3).append("video cover notify h5:");
+          localObject1 = localObject2;
+          ((StringBuilder)localObject3).append(paramIntent);
+          localObject1 = localObject2;
+          QLog.i("CoverStore", 2, ((StringBuilder)localObject3).toString());
+          return;
         }
       }
-      catch (JSONException paramString)
+      catch (Exception paramIntent)
       {
-        MonitorManager.a().a(1, 4, " parse json error " + paramString, false);
-        QLog.e("CoverStore", 2, " handle exception " + paramString);
-        return;
+        localObject2 = MonitorManager.a();
+        Object localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(" exception notify H5 ");
+        ((StringBuilder)localObject3).append(paramIntent);
+        ((MonitorManager)localObject2).a(2, 5, ((StringBuilder)localObject3).toString(), false);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(" handle exception ");
+        ((StringBuilder)localObject2).append(paramIntent);
+        QLog.e((String)localObject1, 2, ((StringBuilder)localObject2).toString());
       }
-      this.mVipType = 1;
-      continue;
-      label189:
-      if ("NOBLE_VIP".equals(str)) {
+      return;
+      if (i != 0) {
+        if (1 == i) {}
+      }
+    }
+  }
+  
+  private void parseSourceAndFrom(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString);
+      localObject = paramString.getString("from");
+      if ((!((String)localObject).equals("qzone")) && (!((String)localObject).equals("userhome"))) {
+        this.mSource = 1;
+      } else {
+        this.mSource = 0;
+      }
+      this.mFrom = Integer.parseInt(paramString.getString("page"));
+      this.mAid = paramString.getString("aid");
+      localObject = paramString.optString("viptype", "COMMON_VIP");
+      if ("STAR_VIP".equals(localObject)) {
+        this.mVipType = 3;
+      } else if ("COMMON_VIP".equals(localObject)) {
+        this.mVipType = 1;
+      } else if ("NOBLE_VIP".equals(localObject)) {
         this.mVipType = 2;
       }
+      this.mOpenMouth = paramString.optInt("openmonth", 0);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      Object localObject = MonitorManager.a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" parse json error ");
+      localStringBuilder.append(paramString);
+      ((MonitorManager)localObject).a(1, 4, localStringBuilder.toString(), false);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" handle exception ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.e("CoverStore", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   private String parseUserDefineType(String paramString)
   {
+    Object localObject2 = "";
+    Object localObject1 = localObject2;
     try
     {
       JSONObject localJSONObject = new JSONObject(paramString);
+      localObject1 = localObject2;
       paramString = localJSONObject.getString("type");
-      try
+      localObject1 = paramString;
+      localObject2 = localJSONObject.getString("from");
+      localObject1 = paramString;
+      if (!((String)localObject2).equals("qzone"))
       {
-        String str = localJSONObject.getString("from");
-        if ((str.equals("qzone")) || (str.equals("userhome"))) {}
-        for (this.mSource = 0;; this.mSource = 1)
+        localObject1 = paramString;
+        if (!((String)localObject2).equals("userhome"))
         {
-          this.mFrom = Integer.parseInt(localJSONObject.getString("page"));
-          return paramString;
+          localObject1 = paramString;
+          this.mSource = 1;
+          break label81;
         }
-        QLog.e("CoverStore", 2, " handle exception " + localJSONException1);
       }
-      catch (JSONException localJSONException1) {}
+      localObject1 = paramString;
+      this.mSource = 0;
+      label81:
+      localObject1 = paramString;
+      this.mFrom = Integer.parseInt(localJSONObject.getString("page"));
+      return paramString;
     }
-    catch (JSONException localJSONException2)
+    catch (JSONException paramString)
     {
-      for (;;)
-      {
-        paramString = "";
-      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(" handle exception ");
+      ((StringBuilder)localObject2).append(paramString);
+      QLog.e("CoverStore", 2, ((StringBuilder)localObject2).toString());
     }
-    return paramString;
+    return localObject1;
   }
   
   private void parseVideoCoverData(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return;
-    }
-    try
+    if (paramString != null)
     {
-      this.mVideoCoverFrom = new JSONObject(paramString).optInt("source", 0);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      MonitorManager.a().a(2, 4, " parse json error " + paramString, false);
-      QLog.e("CoverStore", 2, " handle exception " + paramString);
+      if (paramString.length() == 0) {
+        return;
+      }
+      try
+      {
+        this.mVideoCoverFrom = new JSONObject(paramString).optInt("source", 0);
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        Object localObject = MonitorManager.a();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" parse json error ");
+        localStringBuilder.append(paramString);
+        ((MonitorManager)localObject).a(2, 4, localStringBuilder.toString(), false);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(" handle exception ");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.e("CoverStore", 2, ((StringBuilder)localObject).toString());
+      }
     }
   }
   
@@ -391,8 +551,15 @@ public class QZoneCoverStoreJsPlugin
     }
     catch (JSONException paramString)
     {
-      MonitorManager.a().a(2, 4, " parse json error " + paramString, false);
-      QLog.e("CoverStore", 2, " handle exception " + paramString);
+      Object localObject = MonitorManager.a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" parse json error ");
+      localStringBuilder.append(paramString);
+      ((MonitorManager)localObject).a(2, 4, localStringBuilder.toString(), false);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" handle exception ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.e("CoverStore", 2, ((StringBuilder)localObject).toString());
     }
     return false;
   }
@@ -406,39 +573,47 @@ public class QZoneCoverStoreJsPlugin
     }
     catch (JSONException paramString)
     {
-      MonitorManager.a().a(2, 4, " parse json error " + paramString, false);
-      QLog.e("CoverStore", 2, " handle exception " + paramString);
+      Object localObject = MonitorManager.a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" parse json error ");
+      localStringBuilder.append(paramString);
+      ((MonitorManager)localObject).a(2, 4, localStringBuilder.toString(), false);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" handle exception ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.e("CoverStore", 2, ((StringBuilder)localObject).toString());
     }
     return 0;
   }
   
   private void registerBroadcast()
   {
-    if (this.mReceiverRegistered) {}
-    IntentFilter localIntentFilter;
-    Activity localActivity;
-    do
-    {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.i("CoverStore", 2, "video cover registerBroadcast start");
-        }
-        localIntentFilter = new IntentFilter();
-        localIntentFilter.addAction("com.tencent.mobileqq.action.ACTION_VIDEO_COVER_SETTING");
-      } while (this.mRuntime == null);
-      localActivity = this.mRuntime.a();
-    } while ((localActivity == null) || (this.mReceiverRegistered));
-    try
-    {
-      localActivity.registerReceiver(this.mReceiver, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
-      this.mReceiverRegistered = true;
+    if (this.mReceiverRegistered) {
       return;
     }
-    catch (Exception localException)
+    if (QLog.isColorLevel()) {
+      QLog.i("CoverStore", 2, "video cover registerBroadcast start");
+    }
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.tencent.mobileqq.action.ACTION_VIDEO_COVER_SETTING");
+    if (this.mRuntime != null)
     {
-      QLog.e("CoverStore", 2, "regist receiver error:" + localException.toString());
+      Object localObject = this.mRuntime.a();
+      if ((localObject != null) && (!this.mReceiverRegistered)) {
+        try
+        {
+          ((Activity)localObject).registerReceiver(this.mReceiver, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
+          this.mReceiverRegistered = true;
+          return;
+        }
+        catch (Exception localException)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("regist receiver error:");
+          ((StringBuilder)localObject).append(localException.toString());
+          QLog.e("CoverStore", 2, ((StringBuilder)localObject).toString());
+        }
+      }
     }
   }
   
@@ -447,63 +622,88 @@ public class QZoneCoverStoreJsPlugin
     int i = 0;
     for (;;)
     {
-      Object localObject1;
       try
       {
+        Object localObject1;
         if (i < paramArrayList.size())
         {
           long l1 = System.currentTimeMillis();
           localObject1 = (String)paramArrayList.get(i);
-          if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            break label339;
-          }
-          Object localObject2 = QzoneDynamicAlbumPlugin.getBitmapSize((String)localObject1);
-          if (localObject2 == null) {
-            break label339;
-          }
-          double d = QzoneDynamicAlbumPlugin.getRatio((QzoneDynamicAlbumPlugin.Size)localObject2);
-          if (d > 0.0D)
+          if (!TextUtils.isEmpty((CharSequence)localObject1))
           {
-            ((QzoneDynamicAlbumPlugin.Size)localObject2).width = ((int)(((QzoneDynamicAlbumPlugin.Size)localObject2).width / d));
-            ((QzoneDynamicAlbumPlugin.Size)localObject2).height = ((int)(((QzoneDynamicAlbumPlugin.Size)localObject2).height / d));
+            Object localObject2 = QzoneDynamicAlbumPlugin.getBitmapSize((String)localObject1);
+            if (localObject2 != null)
+            {
+              double d1 = QzoneDynamicAlbumPlugin.getRatio((Size)localObject2);
+              if (d1 > 0.0D)
+              {
+                j = ((Size)localObject2).width;
+                double d2 = j;
+                Double.isNaN(d2);
+                j = (int)(d2 / d1);
+                ((Size)localObject2).width = j;
+                j = ((Size)localObject2).height;
+                d2 = j;
+                Double.isNaN(d2);
+                j = (int)(d2 / d1);
+                ((Size)localObject2).height = j;
+              }
+              localObject2 = QzoneDynamicAlbumPlugin.encodeBase64File((String)localObject1, ((Size)localObject2).width, ((Size)localObject2).height);
+              boolean bool;
+              if (!TextUtils.isEmpty((CharSequence)localObject2))
+              {
+                localObject1 = new JSONObject();
+                ((JSONObject)localObject1).put("type", this.type);
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append("");
+                localStringBuilder.append("data:image/jpg;base64,");
+                localStringBuilder.append((String)localObject2);
+                ((JSONObject)localObject1).put("data", localStringBuilder.toString());
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append("window.QZImagePickerJSInterface.onReceive(");
+                ((StringBuilder)localObject2).append(((JSONObject)localObject1).toString());
+                ((StringBuilder)localObject2).append(")");
+                callJs(((StringBuilder)localObject2).toString());
+                bool = true;
+              }
+              else
+              {
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append("toBase64 fail. path:");
+                ((StringBuilder)localObject2).append((String)localObject1);
+                QLog.e("CoverStore", 1, ((StringBuilder)localObject2).toString());
+                bool = false;
+              }
+              long l2 = System.currentTimeMillis();
+              localObject1 = new HashMap();
+              if (!bool) {
+                break label424;
+              }
+              j = 1;
+              ((HashMap)localObject1).put("isSucc", Integer.valueOf(j));
+              StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(null, "Qzone.EventTransformPhotoBase64", bool, l2 - l1, 0L, (HashMap)localObject1, null);
+            }
           }
-          localObject2 = QzoneDynamicAlbumPlugin.encodeBase64File((String)localObject1, ((QzoneDynamicAlbumPlugin.Size)localObject2).width, ((QzoneDynamicAlbumPlugin.Size)localObject2).height);
-          if (TextUtils.isEmpty((CharSequence)localObject2)) {
-            break label300;
-          }
-          localObject1 = new JSONObject();
-          ((JSONObject)localObject1).put("type", this.type);
-          ((JSONObject)localObject1).put("data", "" + "data:image/jpg;base64," + (String)localObject2);
-          callJs("window.QZImagePickerJSInterface.onReceive(" + ((JSONObject)localObject1).toString() + ")");
-          bool = true;
-          long l2 = System.currentTimeMillis();
-          localObject1 = new HashMap();
-          if (!bool) {
-            break label333;
-          }
-          j = 1;
-          ((HashMap)localObject1).put("isSucc", Integer.valueOf(j));
-          StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(null, "Qzone.EventTransformPhotoBase64", bool, l2 - l1, 0L, (HashMap)localObject1, null);
+          i += 1;
+        }
+        else
+        {
+          return;
         }
       }
       catch (Exception paramArrayList)
       {
-        QLog.e("CoverStore", 1, "toBase64: " + paramArrayList);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("toBase64: ");
+        ((StringBuilder)localObject1).append(paramArrayList);
+        QLog.e("CoverStore", 1, ((StringBuilder)localObject1).toString());
       }
-      return;
-      label300:
-      QLog.e("CoverStore", 1, "toBase64 fail. path:" + (String)localObject1);
-      boolean bool = false;
-      continue;
-      label333:
+      label424:
       int j = 0;
-      continue;
-      label339:
-      i += 1;
     }
   }
   
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  protected boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     if (paramLong == 8589934600L)
     {
@@ -529,288 +729,278 @@ public class QZoneCoverStoreJsPlugin
     return super.handleEvent(paramString, paramLong, paramMap);
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    boolean bool2 = true;
-    boolean bool1;
     if (!"QzCover".equals(paramString2)) {
-      bool1 = false;
+      return false;
     }
-    do
-    {
-      return bool1;
-      bool1 = bool2;
-    } while (paramString3.equals("goToPhotoWall"));
+    if (paramString3.equals("goToPhotoWall")) {
+      return true;
+    }
     if (paramString3.equals("showStoreButton"))
     {
       if (this.mRuntime.a() == null) {
         return false;
       }
-      paramJsBridgeListener = (TextView)this.mRuntime.a().findViewById(2131369518);
+      paramJsBridgeListener = (TextView)this.mRuntime.a().findViewById(2131369233);
       if (paramJsBridgeListener != null)
       {
         paramJsBridgeListener.setVisibility(0);
         paramJsBridgeListener.setTextColor(-1);
-        paramJsBridgeListener.setText(HardCodeUtil.a(2131711606));
+        paramJsBridgeListener.setText(HardCodeUtil.a(2131711581));
         paramJsBridgeListener.setOnClickListener(new QZoneCoverStoreJsPlugin.1(this));
+        return false;
       }
     }
-    label801:
-    do
+    else
     {
-      for (;;)
+      if (paramString3.equals("goToUserDefine"))
       {
-        return false;
-        if (paramString3.equals("goToUserDefine"))
-        {
-          this.type = parseUserDefineType(paramVarArgs[0]);
-          launchCustom(this.type);
-          return true;
+        this.type = parseUserDefineType(paramVarArgs[0]);
+        launchCustom(this.type);
+        return true;
+      }
+      if ("forwardSelectVideoCover".equals(paramString3))
+      {
+        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+          parseVideoCoverData(paramVarArgs[0]);
         }
-        if ("forwardSelectVideoCover".equals(paramString3))
+        lauchVideoCover(this.mVideoCoverFrom);
+        return true;
+      }
+      if (paramString3.equals("setWidgetEnable"))
+      {
+        boolean bool = parseWidgetEnable(paramVarArgs[0]);
+        paramJsBridgeListener = new Intent();
+        QzonePluginProxyActivity.setActivityNameToIntent(paramJsBridgeListener, "com.qzone.cover.ui.activity.QZoneCoverSetCustomActivity");
+        paramJsBridgeListener.putExtra("open_what", 3);
+        paramJsBridgeListener.putExtra("widgetEnable", bool);
+        if ((this.mRuntime.a() != null) && (this.mRuntime.a() != null))
         {
-          if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-            parseVideoCoverData(paramVarArgs[0]);
-          }
-          lauchVideoCover(this.mVideoCoverFrom);
-          return true;
+          QzonePluginProxyActivity.launchPluingActivityForResult(this.mRuntime.a(), this.mRuntime.a().getAccount(), paramJsBridgeListener, generateRequestCode(6));
+          return false;
         }
-        if (paramString3.equals("setWidgetEnable"))
+      }
+      else if (paramString3.equals("setWidget"))
+      {
+        int i = parseWidgetId(paramVarArgs[0]);
+        paramJsBridgeListener = new Intent();
+        QzonePluginProxyActivity.setActivityNameToIntent(paramJsBridgeListener, "com.qzone.cover.ui.activity.QZoneCoverSetCustomActivity");
+        paramJsBridgeListener.putExtra("open_what", 2);
+        paramJsBridgeListener.putExtra("widgetId", i);
+        if ((this.mRuntime.a() != null) && (this.mRuntime.a() != null))
         {
-          bool1 = parseWidgetEnable(paramVarArgs[0]);
-          paramJsBridgeListener = new Intent();
-          QzonePluginProxyActivity.setActivityNameToIntent(paramJsBridgeListener, "com.qzone.cover.ui.activity.QZoneCoverSetCustomActivity");
-          paramJsBridgeListener.putExtra("open_what", 3);
-          paramJsBridgeListener.putExtra("widgetEnable", bool1);
-          if ((this.mRuntime.a() != null) && (this.mRuntime.a() != null)) {
-            QzonePluginProxyActivity.launchPluingActivityForResult(this.mRuntime.a(), this.mRuntime.a().getAccount(), paramJsBridgeListener, generateRequestCode(6));
-          }
+          QzonePluginProxyActivity.launchPluingActivityForResult(this.mRuntime.a(), this.mRuntime.a().getAccount(), paramJsBridgeListener, generateRequestCode(5));
+          return false;
         }
-        else if (paramString3.equals("setWidget"))
-        {
-          int i = parseWidgetId(paramVarArgs[0]);
-          paramJsBridgeListener = new Intent();
-          QzonePluginProxyActivity.setActivityNameToIntent(paramJsBridgeListener, "com.qzone.cover.ui.activity.QZoneCoverSetCustomActivity");
-          paramJsBridgeListener.putExtra("open_what", 2);
-          paramJsBridgeListener.putExtra("widgetId", i);
-          if ((this.mRuntime.a() != null) && (this.mRuntime.a() != null)) {
-            QzonePluginProxyActivity.launchPluingActivityForResult(this.mRuntime.a(), this.mRuntime.a().getAccount(), paramJsBridgeListener, generateRequestCode(5));
-          }
-        }
-        else if (paramString3.equals("openYellowDiamond"))
+      }
+      else
+      {
+        if (paramString3.equals("openYellowDiamond"))
         {
           if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
             parseSourceAndFrom(paramVarArgs[0]);
           }
-          if ((this.mRuntime.a() == null) || (this.mRuntime.a() == null)) {
+          if (this.mRuntime.a() != null)
+          {
+            if (this.mRuntime.a() == null) {
+              return false;
+            }
+            paramJsBridgeListener = this.mRuntime.a().getAccount();
+            paramString1 = new Intent();
+            paramString2 = HardCodeUtil.a(2131711579);
+            QzonePluginProxyActivity.setActivityNameToIntent(paramString1, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
+            if (TextUtils.isEmpty(this.mAid)) {
+              this.mAid = getAid();
+            }
+            paramString1.putExtra("aid", this.mAid);
+            paramString1.putExtra("success_tips", paramString2);
+            paramString1.putExtra("direct_go", true);
+            paramString1.putExtra("viptype", this.mVipType);
+            paramString1.putExtra("month", this.mOpenMouth);
+            QzonePluginProxyActivity.launchPluingActivityForResult(this.mRuntime.a(), paramJsBridgeListener, paramString1, generateRequestCode(4), null, false, null, true);
             return false;
           }
-          paramJsBridgeListener = this.mRuntime.a().getAccount();
-          paramString1 = new Intent();
-          paramString2 = HardCodeUtil.a(2131711604);
-          QzonePluginProxyActivity.setActivityNameToIntent(paramString1, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
-          if (TextUtils.isEmpty(this.mAid)) {
-            this.mAid = getAid();
-          }
-          paramString1.putExtra("aid", this.mAid);
-          paramString1.putExtra("success_tips", paramString2);
-          paramString1.putExtra("direct_go", true);
-          paramString1.putExtra("viptype", this.mVipType);
-          paramString1.putExtra("month", this.mOpenMouth);
-          QzonePluginProxyActivity.launchPluingActivityForResult(this.mRuntime.a(), paramJsBridgeListener, paramString1, generateRequestCode(4), null, false, null, true);
+          return false;
         }
-        else
+        if (paramString3.equals("setCover"))
         {
-          if (!paramString3.equals("setCover")) {
-            break label801;
-          }
-          bool1 = bool2;
-          if (paramVarArgs == null) {
-            break;
-          }
-          bool1 = bool2;
-          if (TextUtils.isEmpty(paramVarArgs[0])) {
-            break;
-          }
-        }
-        try
-        {
-          if (("PhotoWallCover".equals(new JSONObject(paramVarArgs[0]).getString("coverType"))) && (this.mRuntime.a() != null))
-          {
-            paramJsBridgeListener = this.mRuntime.a();
-            bool1 = bool2;
-            if (paramJsBridgeListener != null) {
-              break;
+          if ((paramVarArgs != null) && (!TextUtils.isEmpty(paramVarArgs[0]))) {
+            try
+            {
+              if (("PhotoWallCover".equals(new JSONObject(paramVarArgs[0]).getString("coverType"))) && (this.mRuntime.a() != null))
+              {
+                paramJsBridgeListener = this.mRuntime.a();
+                if (paramJsBridgeListener != null) {
+                  return true;
+                }
+              }
+            }
+            catch (JSONException paramJsBridgeListener)
+            {
+              paramString1 = new StringBuilder();
+              paramString1.append(" handle exception ");
+              paramString1.append(paramJsBridgeListener);
+              QLog.e("CoverStore", 2, paramString1.toString());
+              paramString1 = MonitorManager.a();
+              paramString2 = new StringBuilder();
+              paramString2.append("set cover data exception ");
+              paramString2.append(paramJsBridgeListener);
+              paramString1.a(2, 4, paramString2.toString(), false);
+              paramJsBridgeListener = new Intent();
+              QzonePluginProxyActivity.setActivityNameToIntent(paramJsBridgeListener, "com.qzone.cover.ui.activity.QZoneCoverSetCustomActivity");
+              paramJsBridgeListener.putExtra("open_what", 4);
+              paramJsBridgeListener.putExtra("cover", paramVarArgs[0]);
+              if ((this.mRuntime.a() != null) && (this.mRuntime.a() != null)) {
+                QzonePluginProxyActivity.launchPluingActivityForResult(this.mRuntime.a(), this.mRuntime.a().getAccount(), paramJsBridgeListener, generateRequestCode(7));
+              }
             }
           }
+          return true;
         }
-        catch (JSONException paramJsBridgeListener)
+        if ("setLocalCover".equals(paramString3))
         {
-          for (;;)
+          if (paramVarArgs != null)
           {
-            QLog.e("CoverStore", 2, " handle exception " + paramJsBridgeListener);
-            MonitorManager.a().a(2, 4, "set cover data exception " + paramJsBridgeListener, false);
+            if (TextUtils.isEmpty(paramVarArgs[0])) {
+              return true;
+            }
+            paramJsBridgeListener = new Intent();
+            QzonePluginProxyActivity.setActivityNameToIntent(paramJsBridgeListener, "com.qzone.cover.ui.activity.QZoneCoverSetCustomActivity");
+            paramJsBridgeListener.putExtra("open_what", 6);
+            paramJsBridgeListener.putExtra("cover", paramVarArgs[0]);
+            if ((this.mRuntime.a() != null) && (this.mRuntime.a() != null)) {
+              QzonePluginProxyActivity.launchPluingActivityForResult(this.mRuntime.a(), this.mRuntime.a().getAccount(), paramJsBridgeListener, generateRequestCode(8));
+            }
           }
+          return true;
         }
-      }
-      paramJsBridgeListener = new Intent();
-      QzonePluginProxyActivity.setActivityNameToIntent(paramJsBridgeListener, "com.qzone.cover.ui.activity.QZoneCoverSetCustomActivity");
-      paramJsBridgeListener.putExtra("open_what", 4);
-      paramJsBridgeListener.putExtra("cover", paramVarArgs[0]);
-      bool1 = bool2;
-      if (this.mRuntime.a() == null) {
-        break;
-      }
-      bool1 = bool2;
-      if (this.mRuntime.a() == null) {
-        break;
-      }
-      QzonePluginProxyActivity.launchPluingActivityForResult(this.mRuntime.a(), this.mRuntime.a().getAccount(), paramJsBridgeListener, generateRequestCode(7));
-      return true;
-      if ("setLocalCover".equals(paramString3))
-      {
-        bool1 = bool2;
-        if (paramVarArgs == null) {
-          break;
-        }
-        bool1 = bool2;
-        if (TextUtils.isEmpty(paramVarArgs[0])) {
-          break;
-        }
-        paramJsBridgeListener = new Intent();
-        QzonePluginProxyActivity.setActivityNameToIntent(paramJsBridgeListener, "com.qzone.cover.ui.activity.QZoneCoverSetCustomActivity");
-        paramJsBridgeListener.putExtra("open_what", 6);
-        paramJsBridgeListener.putExtra("cover", paramVarArgs[0]);
-        bool1 = bool2;
-        if (this.mRuntime.a() == null) {
-          break;
-        }
-        bool1 = bool2;
-        if (this.mRuntime.a() == null) {
-          break;
-        }
-        QzonePluginProxyActivity.launchPluingActivityForResult(this.mRuntime.a(), this.mRuntime.a().getAccount(), paramJsBridgeListener, generateRequestCode(8));
-        return true;
-      }
-      if (paramString3.equals("getWidgetEnable"))
-      {
-        if ((this.mRuntime.a() == null) || (this.mRuntime.a() == null)) {
+        if (paramString3.equals("getWidgetEnable"))
+        {
+          if (this.mRuntime.a() != null)
+          {
+            if (this.mRuntime.a() == null) {
+              return false;
+            }
+            paramString1 = new StringBuilder();
+            paramString1.append("Widget_");
+            paramString1.append(this.mRuntime.a().getCurrentAccountUin());
+            paramString1 = paramString1.toString();
+            paramJsBridgeListener.a(Boolean.valueOf(this.mRuntime.a().getSharedPreferences(paramString1, 4).getBoolean("WidgetShow", true)));
+            return true;
+          }
           return false;
         }
-        paramString1 = "Widget_" + this.mRuntime.a().getCurrentAccountUin();
-        paramJsBridgeListener.a(Boolean.valueOf(this.mRuntime.a().getSharedPreferences(paramString1, 4).getBoolean("WidgetShow", true)));
-        return true;
-      }
-      if (paramString3.equals("leftButtonClick"))
-      {
-        if (this.mRuntime.a() == null) {
-          return false;
+        if (paramString3.equals("leftButtonClick"))
+        {
+          if (this.mRuntime.a() == null) {
+            return false;
+          }
+          ((TextView)this.mRuntime.a().findViewById(2131369202)).performClick();
+          return true;
         }
-        ((TextView)this.mRuntime.a().findViewById(2131369487)).performClick();
-        return true;
+        if ("Init".equals(paramString3))
+        {
+          QLog.i("CoverStore", 2, "QzCover.Init called.");
+          return true;
+        }
       }
-    } while (!"Init".equals(paramString3));
-    QLog.i("CoverStore", 2, "QzCover.Init called.");
-    return true;
+    }
+    return false;
   }
   
   public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
   {
-    if (paramInt == -1) {}
-    Object localObject;
-    switch (paramByte)
+    if (paramInt == -1)
     {
-    case 1: 
-    case 5: 
-    case 6: 
-    case 9: 
-    case 10: 
-    default: 
-    case 7: 
-    case 8: 
-    case 4: 
-      for (;;)
+      Object localObject;
+      switch (paramByte)
       {
-        return;
+      case 9: 
+      default: 
+      case 8: 
+        if ((paramIntent != null) && (paramIntent.getBooleanExtra("needJump", false)) && (this.mRuntime.a() != null))
+        {
+          this.mRuntime.a().finish();
+          return;
+        }
+        break;
+      case 7: 
         if ((paramIntent != null) && (paramIntent.getBooleanExtra("need_jump", false)) && (this.mRuntime.a() != null))
         {
           this.mRuntime.a().finish();
           return;
-          if ((paramIntent != null) && (paramIntent.getBooleanExtra("needJump", false)) && (this.mRuntime.a() != null))
+        }
+        break;
+      case 4: 
+        if (paramInt == -1)
+        {
+          localObject = this.mRuntime.a();
+          if (localObject != null)
           {
-            this.mRuntime.a().finish();
-            return;
-            if (paramInt == -1)
-            {
-              localObject = this.mRuntime.a();
-              if (localObject != null)
+            ((CustomWebView)localObject).callJs("window.QzCoverJSInterface.onReceive({type:\"YellowInfo\",data:{vipType:\"normalVip\"}});");
+            if (paramIntent != null) {
+              try
               {
-                ((CustomWebView)localObject).callJs("window.QzCoverJSInterface.onReceive({type:\"YellowInfo\",data:{vipType:\"normalVip\"}});");
-                if (paramIntent != null) {
-                  try
-                  {
-                    paramIntent = paramIntent.getExtras().getString("qzone_vip_open_succ_str");
-                    if (!TextUtils.isEmpty(paramIntent))
-                    {
-                      paramIntent = new JSONObject(paramIntent);
-                      dispatchJsEvent("openVipInfo", paramIntent, paramIntent);
-                      return;
-                    }
-                  }
-                  catch (Exception paramIntent)
-                  {
-                    QLog.e("CoverStore", 2, paramIntent.getMessage());
-                    return;
-                  }
+                paramIntent = paramIntent.getExtras().getString("qzone_vip_open_succ_str");
+                if (!TextUtils.isEmpty(paramIntent))
+                {
+                  paramIntent = new JSONObject(paramIntent);
+                  dispatchJsEvent("openVipInfo", paramIntent, paramIntent);
+                  return;
                 }
+              }
+              catch (Exception paramIntent)
+              {
+                QLog.e("CoverStore", 2, paramIntent.getMessage());
+                return;
               }
             }
           }
         }
+        break;
+      case 3: 
+        callJs("window.QZImagePickerJSInterface.doSelectPhoto");
+        toBase64(paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS"));
+        return;
+      case 2: 
+        callJs("window.QZImagePickerJSInterface.doSelectPhoto");
+        localObject = new ArrayList();
+        paramIntent = paramIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
+        if (!TextUtils.isEmpty(paramIntent)) {
+          ((ArrayList)localObject).add(paramIntent);
+        }
+        toBase64((ArrayList)localObject);
       }
-    case 2: 
-      callJs("window.QZImagePickerJSInterface.doSelectPhoto");
-      localObject = new ArrayList();
-      paramIntent = paramIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
-      if (!TextUtils.isEmpty(paramIntent)) {
-        ((ArrayList)localObject).add(paramIntent);
-      }
-      toBase64((ArrayList)localObject);
-      return;
     }
-    callJs("window.QZImagePickerJSInterface.doSelectPhoto");
-    toBase64(paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS"));
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
     registerBroadcast();
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     Activity localActivity = this.mRuntime.a();
-    if ((localActivity != null) && (this.mReceiverRegistered)) {}
-    try
-    {
-      localActivity.unregisterReceiver(this.mReceiver);
-      this.mReceiverRegistered = false;
-      super.onDestroy();
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+    if ((localActivity != null) && (this.mReceiverRegistered)) {
+      try
+      {
+        localActivity.unregisterReceiver(this.mReceiver);
+        this.mReceiverRegistered = false;
+      }
+      catch (Exception localException)
       {
         QLog.e("CoverStore", 2, localException, new Object[] { "unregisterReceiver exception" });
       }
     }
+    super.onDestroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.personalize.QZoneCoverStoreJsPlugin
  * JD-Core Version:    0.7.0.1
  */

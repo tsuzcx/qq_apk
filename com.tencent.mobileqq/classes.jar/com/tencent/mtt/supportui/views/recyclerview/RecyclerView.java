@@ -4,15 +4,14 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.view.View;
 import com.tencent.mtt.supportui.views.ScrollChecker.IScrollCheck;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class RecyclerView
   extends RecyclerViewBase
   implements ScrollChecker.IScrollCheck, RecyclerViewBase.OnScrollListener
 {
-  public List<RecyclerView.OnListScrollListener> mListScrollListeners = null;
+  public CopyOnWriteArrayList<RecyclerView.OnListScrollListener> mListScrollListeners = null;
   public RecyclerAdapter mRecyclerViewAdapter;
   
   public RecyclerView(Context paramContext)
@@ -28,7 +27,7 @@ public class RecyclerView
   public void addOnListScrollListener(RecyclerView.OnListScrollListener paramOnListScrollListener)
   {
     if (this.mListScrollListeners == null) {
-      this.mListScrollListeners = new ArrayList();
+      this.mListScrollListeners = new CopyOnWriteArrayList();
     }
     if (!this.mListScrollListeners.contains(paramOnListScrollListener)) {
       this.mListScrollListeners.add(paramOnListScrollListener);
@@ -79,17 +78,19 @@ public class RecyclerView
   
   public int getHeightBefore(int paramInt)
   {
-    if (this.mRecyclerViewAdapter != null) {
-      return this.mRecyclerViewAdapter.getHeightBefore(paramInt);
+    RecyclerAdapter localRecyclerAdapter = this.mRecyclerViewAdapter;
+    if (localRecyclerAdapter != null) {
+      return localRecyclerAdapter.getHeightBefore(paramInt);
     }
     return 0;
   }
   
   public boolean horizontalCanScroll(int paramInt)
   {
+    RecyclerViewBase.LayoutManager localLayoutManager = this.mLayout;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.mLayout != null)
+    if (localLayoutManager != null)
     {
       bool1 = bool2;
       if (this.mHorizontalCanScroll)
@@ -108,7 +109,7 @@ public class RecyclerView
     return false;
   }
   
-  public void onConfigurationChanged(Configuration paramConfiguration)
+  protected void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
     onOrientationChanged();
@@ -135,84 +136,91 @@ public class RecyclerView
   
   public void onScrollStateChanged(int paramInt1, int paramInt2)
   {
-    switch (paramInt2)
+    Object localObject;
+    if (paramInt2 != 0)
     {
-    }
-    do
-    {
-      for (;;)
+      if (paramInt2 != 1)
       {
-        return;
-        Iterator localIterator;
-        if (paramInt1 == 2)
-        {
-          onScrollFlingEnded();
-          if (this.mListScrollListeners != null)
-          {
-            localIterator = this.mListScrollListeners.iterator();
-            while (localIterator.hasNext()) {
-              ((RecyclerView.OnListScrollListener)localIterator.next()).onScrollEnd();
-            }
-          }
+        if (paramInt2 != 2) {
+          return;
         }
-        else if (paramInt1 == 1)
+        if (paramInt1 == 1)
         {
           onScrollDragEnded();
-          if (this.mListScrollListeners != null)
+          onScrollFlingStarted();
+          localObject = this.mListScrollListeners;
+          if (localObject != null)
           {
-            localIterator = this.mListScrollListeners.iterator();
-            while (localIterator.hasNext()) {
-              ((RecyclerView.OnListScrollListener)localIterator.next()).onDragEnd();
-            }
-            continue;
-            if (paramInt1 == 1)
-            {
-              onScrollDragEnded();
-              onScrollFlingStarted();
-              if (this.mListScrollListeners != null)
-              {
-                localIterator = this.mListScrollListeners.iterator();
-                while (localIterator.hasNext()) {
-                  ((RecyclerView.OnListScrollListener)localIterator.next()).onStartFling();
-                }
-                continue;
-                if (paramInt1 != 0) {
-                  break;
-                }
-                onScrollDragStarted();
-                if (this.mListScrollListeners != null)
-                {
-                  localIterator = this.mListScrollListeners.iterator();
-                  while (localIterator.hasNext()) {
-                    ((RecyclerView.OnListScrollListener)localIterator.next()).onStartDrag();
-                  }
-                }
-              }
+            localObject = ((CopyOnWriteArrayList)localObject).iterator();
+            while (((Iterator)localObject).hasNext()) {
+              ((RecyclerView.OnListScrollListener)((Iterator)localObject).next()).onStartFling();
             }
           }
         }
       }
-    } while (paramInt1 != 2);
-    onScrollFlingEnded();
-    onScrollDragStarted();
+      else if (paramInt1 == 0)
+      {
+        onScrollDragStarted();
+        localObject = this.mListScrollListeners;
+        if (localObject != null)
+        {
+          localObject = ((CopyOnWriteArrayList)localObject).iterator();
+          while (((Iterator)localObject).hasNext()) {
+            ((RecyclerView.OnListScrollListener)((Iterator)localObject).next()).onStartDrag();
+          }
+        }
+      }
+      else if (paramInt1 == 2)
+      {
+        onScrollFlingEnded();
+        onScrollDragStarted();
+      }
+    }
+    else if (paramInt1 == 2)
+    {
+      onScrollFlingEnded();
+      localObject = this.mListScrollListeners;
+      if (localObject != null)
+      {
+        localObject = ((CopyOnWriteArrayList)localObject).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          ((RecyclerView.OnListScrollListener)((Iterator)localObject).next()).onScrollEnd();
+        }
+      }
+    }
+    else if (paramInt1 == 1)
+    {
+      onScrollDragEnded();
+      localObject = this.mListScrollListeners;
+      if (localObject != null)
+      {
+        localObject = ((CopyOnWriteArrayList)localObject).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          ((RecyclerView.OnListScrollListener)((Iterator)localObject).next()).onDragEnd();
+        }
+      }
+    }
   }
   
   public void onScrolled(int paramInt1, int paramInt2)
   {
-    if ((this.mListScrollListeners == null) || (this.mListScrollListeners.size() == 0)) {}
-    for (;;)
+    Object localObject = this.mListScrollListeners;
+    if (localObject != null)
     {
-      return;
-      Iterator localIterator = this.mListScrollListeners.iterator();
-      while (localIterator.hasNext()) {
-        ((RecyclerView.OnListScrollListener)localIterator.next()).onScroll(paramInt1, paramInt2);
+      if (((CopyOnWriteArrayList)localObject).size() == 0) {
+        return;
+      }
+      localObject = this.mListScrollListeners.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((RecyclerView.OnListScrollListener)((Iterator)localObject).next()).onScroll(paramInt1, paramInt2);
       }
     }
   }
   
   public void removeOnListScrollListener(RecyclerView.OnListScrollListener paramOnListScrollListener)
   {
-    if ((this.mListScrollListeners != null) && (this.mListScrollListeners.contains(paramOnListScrollListener))) {
+    CopyOnWriteArrayList localCopyOnWriteArrayList = this.mListScrollListeners;
+    if ((localCopyOnWriteArrayList != null) && (localCopyOnWriteArrayList.contains(paramOnListScrollListener))) {
       this.mListScrollListeners.remove(paramOnListScrollListener);
     }
   }
@@ -236,9 +244,10 @@ public class RecyclerView
   
   public boolean verticalCanScroll(int paramInt)
   {
+    RecyclerViewBase.LayoutManager localLayoutManager = this.mLayout;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.mLayout != null)
+    if (localLayoutManager != null)
     {
       bool1 = bool2;
       if (this.mVerticalCanScroll)
@@ -254,7 +263,7 @@ public class RecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.views.recyclerview.RecyclerView
  * JD-Core Version:    0.7.0.1
  */

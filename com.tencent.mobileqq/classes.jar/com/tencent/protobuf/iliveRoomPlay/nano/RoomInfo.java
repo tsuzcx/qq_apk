@@ -32,14 +32,15 @@ public final class RoomInfo
   
   public static RoomInfo[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new RoomInfo[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new RoomInfo[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static RoomInfo parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -71,56 +72,61 @@ public final class RoomInfo
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    long l = this.id;
     int i = j;
-    if (this.id != 0L) {
-      i = j + CodedOutputByteBufferNano.computeUInt64Size(1, this.id);
+    if (l != 0L) {
+      i = j + CodedOutputByteBufferNano.computeUInt64Size(1, l);
     }
     j = i;
     if (!this.name.equals("")) {
       j = i + CodedOutputByteBufferNano.computeStringSize(2, this.name);
     }
-    i = j;
+    int k = j;
     if (!this.logo.equals("")) {
-      i = j + CodedOutputByteBufferNano.computeStringSize(3, this.logo);
+      k = j + CodedOutputByteBufferNano.computeStringSize(3, this.logo);
     }
-    j = i;
+    i = k;
     if (!this.programId.equals("")) {
-      j = i + CodedOutputByteBufferNano.computeStringSize(4, this.programId);
+      i = k + CodedOutputByteBufferNano.computeStringSize(4, this.programId);
+    }
+    k = this.giftFlag;
+    j = i;
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeInt32Size(5, k);
     }
     i = j;
-    if (this.giftFlag != 0) {
-      i = j + CodedOutputByteBufferNano.computeInt32Size(5, this.giftFlag);
-    }
-    j = i;
     if (!this.goodsUrl.equals("")) {
-      j = i + CodedOutputByteBufferNano.computeStringSize(6, this.goodsUrl);
+      i = j + CodedOutputByteBufferNano.computeStringSize(6, this.goodsUrl);
     }
+    k = this.goodsNum;
+    j = i;
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeInt32Size(7, k);
+    }
+    RoomRichTitle localRoomRichTitle = this.tags;
     i = j;
-    if (this.goodsNum != 0) {
-      i = j + CodedOutputByteBufferNano.computeInt32Size(7, this.goodsNum);
+    if (localRoomRichTitle != null) {
+      i = j + CodedOutputByteBufferNano.computeMessageSize(8, localRoomRichTitle);
     }
     j = i;
-    if (this.tags != null) {
-      j = i + CodedOutputByteBufferNano.computeMessageSize(8, this.tags);
-    }
-    i = j;
     if (!this.coverUrl169.equals("")) {
-      i = j + CodedOutputByteBufferNano.computeStringSize(9, this.coverUrl169);
+      j = i + CodedOutputByteBufferNano.computeStringSize(9, this.coverUrl169);
     }
-    j = i;
+    k = j;
     if (!this.coverUrl34.equals("")) {
-      j = i + CodedOutputByteBufferNano.computeStringSize(10, this.coverUrl34);
+      k = j + CodedOutputByteBufferNano.computeStringSize(10, this.coverUrl34);
     }
-    i = j;
+    i = k;
     if (!Arrays.equals(this.roomPrepareNotify, WireFormatNano.EMPTY_BYTES)) {
-      i = j + CodedOutputByteBufferNano.computeBytesSize(11, this.roomPrepareNotify);
+      i = k + CodedOutputByteBufferNano.computeBytesSize(11, this.roomPrepareNotify);
     }
+    k = this.roomGameType;
     j = i;
-    if (this.roomGameType != 0) {
-      j = i + CodedOutputByteBufferNano.computeInt32Size(12, this.roomGameType);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeInt32Size(12, k);
     }
     i = j;
     if (!this.systemNotice.equals("")) {
@@ -137,31 +143,24 @@ public final class RoomInfo
       switch (i)
       {
       default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
+        if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+          return this;
         }
-      case 0: 
-        return this;
-      case 8: 
-        this.id = paramCodedInputByteBufferNano.readUInt64();
         break;
-      case 18: 
-        this.name = paramCodedInputByteBufferNano.readString();
+      case 106: 
+        this.systemNotice = paramCodedInputByteBufferNano.readString();
         break;
-      case 26: 
-        this.logo = paramCodedInputByteBufferNano.readString();
+      case 96: 
+        this.roomGameType = paramCodedInputByteBufferNano.readInt32();
         break;
-      case 34: 
-        this.programId = paramCodedInputByteBufferNano.readString();
+      case 90: 
+        this.roomPrepareNotify = paramCodedInputByteBufferNano.readBytes();
         break;
-      case 40: 
-        this.giftFlag = paramCodedInputByteBufferNano.readInt32();
+      case 82: 
+        this.coverUrl34 = paramCodedInputByteBufferNano.readString();
         break;
-      case 50: 
-        this.goodsUrl = paramCodedInputByteBufferNano.readString();
-        break;
-      case 56: 
-        this.goodsNum = paramCodedInputByteBufferNano.readInt32();
+      case 74: 
+        this.coverUrl169 = paramCodedInputByteBufferNano.readString();
         break;
       case 66: 
         if (this.tags == null) {
@@ -169,27 +168,36 @@ public final class RoomInfo
         }
         paramCodedInputByteBufferNano.readMessage(this.tags);
         break;
-      case 74: 
-        this.coverUrl169 = paramCodedInputByteBufferNano.readString();
+      case 56: 
+        this.goodsNum = paramCodedInputByteBufferNano.readInt32();
         break;
-      case 82: 
-        this.coverUrl34 = paramCodedInputByteBufferNano.readString();
+      case 50: 
+        this.goodsUrl = paramCodedInputByteBufferNano.readString();
         break;
-      case 90: 
-        this.roomPrepareNotify = paramCodedInputByteBufferNano.readBytes();
+      case 40: 
+        this.giftFlag = paramCodedInputByteBufferNano.readInt32();
         break;
-      case 96: 
-        this.roomGameType = paramCodedInputByteBufferNano.readInt32();
+      case 34: 
+        this.programId = paramCodedInputByteBufferNano.readString();
         break;
+      case 26: 
+        this.logo = paramCodedInputByteBufferNano.readString();
+        break;
+      case 18: 
+        this.name = paramCodedInputByteBufferNano.readString();
+        break;
+      case 8: 
+        this.id = paramCodedInputByteBufferNano.readUInt64();
       }
-      this.systemNotice = paramCodedInputByteBufferNano.readString();
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.id != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(1, this.id);
+    long l = this.id;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(1, l);
     }
     if (!this.name.equals("")) {
       paramCodedOutputByteBufferNano.writeString(2, this.name);
@@ -200,17 +208,20 @@ public final class RoomInfo
     if (!this.programId.equals("")) {
       paramCodedOutputByteBufferNano.writeString(4, this.programId);
     }
-    if (this.giftFlag != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(5, this.giftFlag);
+    int i = this.giftFlag;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(5, i);
     }
     if (!this.goodsUrl.equals("")) {
       paramCodedOutputByteBufferNano.writeString(6, this.goodsUrl);
     }
-    if (this.goodsNum != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(7, this.goodsNum);
+    i = this.goodsNum;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(7, i);
     }
-    if (this.tags != null) {
-      paramCodedOutputByteBufferNano.writeMessage(8, this.tags);
+    RoomRichTitle localRoomRichTitle = this.tags;
+    if (localRoomRichTitle != null) {
+      paramCodedOutputByteBufferNano.writeMessage(8, localRoomRichTitle);
     }
     if (!this.coverUrl169.equals("")) {
       paramCodedOutputByteBufferNano.writeString(9, this.coverUrl169);
@@ -221,8 +232,9 @@ public final class RoomInfo
     if (!Arrays.equals(this.roomPrepareNotify, WireFormatNano.EMPTY_BYTES)) {
       paramCodedOutputByteBufferNano.writeBytes(11, this.roomPrepareNotify);
     }
-    if (this.roomGameType != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(12, this.roomGameType);
+    i = this.roomGameType;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(12, i);
     }
     if (!this.systemNotice.equals("")) {
       paramCodedOutputByteBufferNano.writeString(13, this.systemNotice);
@@ -232,7 +244,7 @@ public final class RoomInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.iliveRoomPlay.nano.RoomInfo
  * JD-Core Version:    0.7.0.1
  */

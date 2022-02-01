@@ -42,19 +42,19 @@ public class LiveRoomDownloadManager
           localObject = new DownloadTask((String)localObject, (File)paramMap.get(localObject));
           ((DownloadTask)localObject).j = true;
           ((DownloadTask)localObject).p = false;
-          localDownloaderInterface.a((DownloadTask)localObject, paramDownloadCallback, localBundle);
+          localDownloaderInterface.startDownload((DownloadTask)localObject, paramDownloadCallback, localBundle);
         }
       }
       paramList = new DownloadTask(paramList, paramMap, "LiveRoomDownloadManager");
       paramList.j = true;
       paramList.p = false;
-      localDownloaderInterface.a(paramList, paramDownloadCallback, localBundle);
+      localDownloaderInterface.startDownload(paramList, paramDownloadCallback, localBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomDownloadManager
  * JD-Core Version:    0.7.0.1
  */

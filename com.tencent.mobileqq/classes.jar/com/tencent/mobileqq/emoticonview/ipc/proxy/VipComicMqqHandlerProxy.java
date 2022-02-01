@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.emoticonview.ipc.proxy;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.emosm.vipcomic.VipComicMqqHandler;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
@@ -15,14 +14,14 @@ public class VipComicMqqHandlerProxy
   public static final String ACTION_VIPCOMICM_FAVOREMOTICONS = "vipcomicm_favoremoticons";
   public static final String TAG = "VipComicMqqHandlerProxy";
   
-  public VipComicMqqHandlerProxy(QQAppInterface paramQQAppInterface)
+  public VipComicMqqHandlerProxy(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    super(paramQQAppInterface, BusinessHandlerFactory.MQQ_COMIC_HANDLER);
+    super(paramBaseQQAppInterface, VipComicMqqHandler.a);
   }
   
-  public static EIPCResult onGetMyComicFavorEmotIcons(QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
+  public static EIPCResult onGetMyComicFavorEmotIcons(BaseQQAppInterface paramBaseQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
   {
-    ((VipComicMqqHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MQQ_COMIC_HANDLER)).a();
+    ((VipComicMqqHandler)paramBaseQQAppInterface.getBusinessHandler(VipComicMqqHandler.a)).a();
     return EIPCResult.createSuccessResult(null);
   }
   
@@ -34,23 +33,23 @@ public class VipComicMqqHandlerProxy
         QLog.d("VipComicMqqHandlerProxy", 4, "do myComicFavorEmotIcons.");
       }
       ((VipComicMqqHandler)this.businessHandler).a();
-    }
-    do
-    {
       return;
-      EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("module_emoticon_mainpanel", "vipcomicm_favoremoticons", null);
-      if ((localEIPCResult == null) || (!localEIPCResult.isSuccess())) {
-        break;
+    }
+    EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("module_emoticon_mainpanel", "vipcomicm_favoremoticons", null);
+    if ((localEIPCResult != null) && (localEIPCResult.isSuccess()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VipComicMqqHandlerProxy", 4, "getMyComicFavorEmotIcons suc.");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("VipComicMqqHandlerProxy", 4, "getMyComicFavorEmotIcons suc.");
-    return;
-    QLog.e("VipComicMqqHandlerProxy", 4, "getMyComicFavorEmotIcons fail.");
+    }
+    else {
+      QLog.e("VipComicMqqHandlerProxy", 4, "getMyComicFavorEmotIcons fail.");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.ipc.proxy.VipComicMqqHandlerProxy
  * JD-Core Version:    0.7.0.1
  */

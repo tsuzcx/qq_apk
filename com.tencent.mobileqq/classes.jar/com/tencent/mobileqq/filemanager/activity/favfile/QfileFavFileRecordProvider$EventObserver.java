@@ -14,19 +14,19 @@ public class QfileFavFileRecordProvider$EventObserver
     paramObject = (Object[])paramObject;
     int i = ((Integer)paramObject[0]).intValue();
     paramObject = (Object[])paramObject[1];
-    if (i == 1) {
-      a(((Integer)paramObject[0]).intValue());
-    }
-    do
+    if (i == 1)
     {
+      a(((Integer)paramObject[0]).intValue());
       return;
-      if (i == 2)
-      {
-        a((Bundle)paramObject[0]);
-        return;
-      }
-    } while (i != 3);
-    a(((Boolean)paramObject[0]).booleanValue(), (Bundle)paramObject[1]);
+    }
+    if (i == 2)
+    {
+      a((Bundle)paramObject[0]);
+      return;
+    }
+    if (i == 3) {
+      a(((Boolean)paramObject[0]).booleanValue(), (Bundle)paramObject[1]);
+    }
   }
   
   public void a(int paramInt) {}
@@ -51,7 +51,7 @@ public class QfileFavFileRecordProvider$EventObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileRecordProvider.EventObserver
  * JD-Core Version:    0.7.0.1
  */

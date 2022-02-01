@@ -26,17 +26,19 @@ public final class v
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.bW, 0);
-    if (this.bX != null) {
-      paramJceOutputStream.write(this.bX, 1);
+    String str = this.bX;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.bR != null) {
-      paramJceOutputStream.write(this.bR, 2);
+    str = this.bR;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.v
  * JD-Core Version:    0.7.0.1
  */

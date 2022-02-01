@@ -19,11 +19,13 @@ class ShimPluginRegistry$ShimRegistrarAggregate
   public void addPlugin(@NonNull ShimRegistrar paramShimRegistrar)
   {
     this.shimRegistrars.add(paramShimRegistrar);
-    if (this.flutterPluginBinding != null) {
-      paramShimRegistrar.onAttachedToEngine(this.flutterPluginBinding);
+    Object localObject = this.flutterPluginBinding;
+    if (localObject != null) {
+      paramShimRegistrar.onAttachedToEngine((FlutterPlugin.FlutterPluginBinding)localObject);
     }
-    if (this.activityPluginBinding != null) {
-      paramShimRegistrar.onAttachedToActivity(this.activityPluginBinding);
+    localObject = this.activityPluginBinding;
+    if (localObject != null) {
+      paramShimRegistrar.onAttachedToActivity((ActivityPluginBinding)localObject);
     }
   }
   
@@ -84,7 +86,7 @@ class ShimPluginRegistry$ShimRegistrarAggregate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.plugins.shim.ShimPluginRegistry.ShimRegistrarAggregate
  * JD-Core Version:    0.7.0.1
  */

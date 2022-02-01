@@ -43,39 +43,37 @@ class d
   
   public float getInterpolation(float paramFloat)
   {
-    float f = 1.0F;
     if (paramFloat <= 0.0F) {
-      f = 0.0F;
+      return 0.0F;
     }
-    while (paramFloat >= 1.0F) {
-      return f;
+    if (paramFloat >= 1.0F) {
+      return 1.0F;
     }
     int j = 0;
     int i = this.a.length - 1;
-    if (i - j > 1)
+    while (i - j > 1)
     {
       int k = (j + i) / 2;
       if (paramFloat < this.a[k]) {
         i = k;
-      }
-      for (;;)
-      {
-        break;
+      } else {
         j = k;
       }
     }
-    f = this.a[i] - this.a[j];
+    float[] arrayOfFloat = this.a;
+    float f = arrayOfFloat[i] - arrayOfFloat[j];
     if (f == 0.0F) {
       return this.b[j];
     }
-    paramFloat = (paramFloat - this.a[j]) / f;
-    f = this.b[j];
-    return paramFloat * (this.b[i] - f) + f;
+    paramFloat = (paramFloat - arrayOfFloat[j]) / f;
+    arrayOfFloat = this.b;
+    f = arrayOfFloat[j];
+    return f + paramFloat * (arrayOfFloat[i] - f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.animation.d
  * JD-Core Version:    0.7.0.1
  */

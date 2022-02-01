@@ -21,9 +21,10 @@ public class b
   private void a(String paramString, Throwable paramThrowable)
   {
     a();
-    if (this.d != null)
+    paramString = this.d;
+    if (paramString != null)
     {
-      this.d.a(paramThrowable);
+      paramString.a(paramThrowable);
       this.d = null;
     }
     paramString = this.c.values().iterator();
@@ -35,8 +36,9 @@ public class b
   
   public void a()
   {
-    if (this.a != null) {
-      this.a.b();
+    d locald = this.a;
+    if (locald != null) {
+      locald.b();
     }
   }
   
@@ -57,12 +59,13 @@ public class b
   
   public void a(String paramString)
   {
-    if (this.a == null)
+    d locald = this.a;
+    if (locald == null)
     {
       LogUtils.e("sendMessage", "mWebSocket is null");
       return;
     }
-    this.a.a(paramString);
+    locald.a(paramString);
   }
   
   public void a(String paramString, b.a parama)
@@ -76,8 +79,9 @@ public class b
   
   public void b()
   {
-    if (this.d != null) {
-      this.d.a(null);
+    b.a locala = this.d;
+    if (locala != null) {
+      locala.a(null);
     }
     this.d = null;
   }
@@ -89,7 +93,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.a.b
  * JD-Core Version:    0.7.0.1
  */

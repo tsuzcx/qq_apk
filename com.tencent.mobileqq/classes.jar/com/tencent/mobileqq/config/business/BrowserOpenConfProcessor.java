@@ -25,8 +25,12 @@ public final class BrowserOpenConfProcessor
     if ((paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
       BrowserOpenBean localBrowserOpenBean = BrowserOpenConfProcessorKt.a(paramArrayOfQConfItem[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("[BrowserOpt] H5BrowserOpenConfProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("[BrowserOpt] H5BrowserOpenConfProcessor", 2, localStringBuilder.toString());
       }
       return localBrowserOpenBean;
     }
@@ -39,8 +43,12 @@ public final class BrowserOpenConfProcessor
   public void a(@NotNull BrowserOpenBean paramBrowserOpenBean)
   {
     Intrinsics.checkParameterIsNotNull(paramBrowserOpenBean, "newConf");
-    if (QLog.isColorLevel()) {
-      QLog.d("[BrowserOpt] H5BrowserOpenConfProcessor", 2, "onUpdate " + paramBrowserOpenBean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      localStringBuilder.append(paramBrowserOpenBean);
+      QLog.d("[BrowserOpt] H5BrowserOpenConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -74,7 +82,7 @@ public final class BrowserOpenConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.BrowserOpenConfProcessor
  * JD-Core Version:    0.7.0.1
  */

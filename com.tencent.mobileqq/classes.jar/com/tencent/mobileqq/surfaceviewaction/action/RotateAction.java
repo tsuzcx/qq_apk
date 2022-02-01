@@ -17,26 +17,39 @@ public class RotateAction
   
   protected void a(int paramInt, float paramFloat)
   {
-    System.out.println("time = " + paramInt + ", percent = " + paramFloat);
-    this.b = ((int)(this.f + (this.g - this.f) * paramFloat));
-    if (this.g - this.f > 0) {
-      if (this.b >= this.g) {
-        this.b = this.g;
-      }
-    }
-    for (;;)
+    PrintStream localPrintStream = System.out;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("time = ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", percent = ");
+    localStringBuilder.append(paramFloat);
+    localPrintStream.println(localStringBuilder.toString());
+    int i = this.f;
+    float f1 = i;
+    int j = this.g;
+    this.b = ((int)(f1 + (j - i) * paramFloat));
+    if (j - i > 0)
     {
-      super.a(paramInt, paramFloat);
-      return;
-      if (this.b <= this.g) {
-        this.b = this.g;
+      i = this.b;
+      j = this.g;
+      if (i >= j) {
+        this.b = j;
       }
     }
+    else
+    {
+      i = this.b;
+      j = this.g;
+      if (i <= j) {
+        this.b = j;
+      }
+    }
+    super.a(paramInt, paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.action.RotateAction
  * JD-Core Version:    0.7.0.1
  */

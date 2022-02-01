@@ -37,14 +37,15 @@ public final class Pack2021$Pack
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 58, 66, 72, 82, 88, 96, 106, 112, 122, 130, 138, 146, 154, 162, 170 }, new String[] { "pack_id", "state", "type", "ctime", "money", "business_id", "signature", "url", "mtime", "order", "uin", "send_uin", "wishing", "promotion_id", "req_id", "business_name", "business_logo", "business_cover", "business_video_cover", "business_video", "business_name_pic" }, new Object[] { localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, "", Integer.valueOf(0), "", Long.valueOf(0L), Long.valueOf(0L), "", Integer.valueOf(0), "", "", "", "", "", "", "" }, Pack.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 58, 66, 72, 82, 88, 96, 106, 112, 122, 130, 138, 146, 154, 162, 170 }, new String[] { "pack_id", "state", "type", "ctime", "money", "business_id", "signature", "url", "mtime", "order", "uin", "send_uin", "wishing", "promotion_id", "req_id", "business_name", "business_logo", "business_cover", "business_video_cover", "business_video", "business_name_pic" }, new Object[] { localByteStringMicro1, localInteger, localInteger, localInteger, localInteger, localInteger, localByteStringMicro2, "", localInteger, "", Long.valueOf(0L), Long.valueOf(0L), "", localInteger, "", "", "", "", "", "", "" }, Pack.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.new_year_2021.Pack2021.Pack
  * JD-Core Version:    0.7.0.1
  */

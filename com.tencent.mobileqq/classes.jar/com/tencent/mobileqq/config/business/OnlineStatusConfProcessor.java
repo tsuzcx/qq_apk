@@ -2,13 +2,15 @@ package com.tencent.mobileqq.config.business;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusManager;
+import com.tencent.mobileqq.onlinestatus.api.IOnlineStatusManagerService;
+import com.tencent.mobileqq.onlinestatus.api.IOnlineStatusService;
+import com.tencent.mobileqq.onlinestatus.manager.IOnlineStatusDataManager;
+import com.tencent.mobileqq.onlinestatus.manager.OnlineStatusDataManager;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class OnlineStatusConfProcessor
   extends IQConfigProcessor<OnlineStatusBean>
@@ -25,8 +27,12 @@ public class OnlineStatusConfProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
       OnlineStatusBean localOnlineStatusBean = OnlineStatusBean.a(paramArrayOfQConfItem[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("OnlineStatusConfProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("OnlineStatusConfProcessor", 2, localStringBuilder.toString());
       }
       return localOnlineStatusBean;
     }
@@ -38,14 +44,16 @@ public class OnlineStatusConfProcessor
   
   public void a(OnlineStatusBean paramOnlineStatusBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("OnlineStatusConfProcessor", 2, "onUpdate " + paramOnlineStatusBean.toString());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onUpdate ");
+      ((StringBuilder)localObject).append(paramOnlineStatusBean.toString());
+      QLog.d("OnlineStatusConfProcessor", 2, ((StringBuilder)localObject).toString());
     }
-    paramOnlineStatusBean = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (paramOnlineStatusBean == null) {
-      return;
-    }
-    ((OnlineStatusManager)paramOnlineStatusBean.getManager(QQManagerFactory.ONLINE_STATUS_MANAGER)).d(paramOnlineStatusBean.getExtOnlineStatus());
+    paramOnlineStatusBean = MobileQQ.sMobileQQ.peekAppRuntime();
+    Object localObject = (IOnlineStatusService)paramOnlineStatusBean.getRuntimeService(IOnlineStatusService.class, "");
+    ((OnlineStatusDataManager)((IOnlineStatusManagerService)paramOnlineStatusBean.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineStatusDataManager.class)).f(((IOnlineStatusService)localObject).getExtOnlineStatus());
   }
   
   public Class<OnlineStatusBean> clazz()
@@ -91,7 +99,7 @@ public class OnlineStatusConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.OnlineStatusConfProcessor
  * JD-Core Version:    0.7.0.1
  */

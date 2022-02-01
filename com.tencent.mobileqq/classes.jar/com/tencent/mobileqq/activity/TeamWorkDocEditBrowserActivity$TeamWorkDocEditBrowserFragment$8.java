@@ -1,42 +1,40 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.teamwork.TeamWorkHttpUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.webviewplugin.Share;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$8
-  implements Runnable
+  implements View.OnClickListener
 {
-  TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$8(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment, String paramString) {}
+  TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$8(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.this$0.mApp == null) {
-      return;
+    int i = TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).getIntExtra("key_team_work_edit_type", -1);
+    if ((i != 1) && (i != 2)) {
+      i = this.a.a;
     }
-    Object localObject = new JSONObject();
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("WebLog_WebViewFragment", 2, "saveTempPadFromQQ: prvurl " + this.a);
-      }
-      ((JSONObject)localObject).put("prvurl", this.a);
-      String str = String.format("https://%s.docs.qq.com/preview/imp/save_to_mylist", new Object[] { this.this$0.mApp.getCurrentAccountUin() });
-      localObject = TeamWorkHttpUtils.b((JSONObject)localObject, this.this$0.mApp.getCurrentAccountUin(), str, "docs.qq.com");
-      this.this$0.c((String)localObject);
-      return;
+    String str1 = this.a.getShareUrl();
+    String str2 = ((Share)this.a.getShare()).a();
+    Intent localIntent = new Intent(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a), TeamWorkAuthorizeSettingFragment.class);
+    if (!TextUtils.isEmpty(str2)) {
+      localIntent.putExtra("team_work_name", str2);
     }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
+    localIntent.putExtra("team_work_pad_url", str1);
+    localIntent.putExtra("team_work_pad_list_type", this.a.d);
+    PublicFragmentActivity.a(this.a.getQBaseActivity(), localIntent, TeamWorkAuthorizeSettingFragment.class);
+    this.a.a(14);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.8
  * JD-Core Version:    0.7.0.1
  */

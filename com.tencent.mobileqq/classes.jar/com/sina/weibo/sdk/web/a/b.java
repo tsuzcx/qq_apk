@@ -77,9 +77,9 @@ public abstract class b
   public void onReceivedError(WebView paramWebView, WebResourceRequest paramWebResourceRequest, WebResourceError paramWebResourceError)
   {
     super.onReceivedError(paramWebView, paramWebResourceRequest, paramWebResourceError);
-    if (this.aF != null)
+    paramWebView = this.aF;
+    if (paramWebView != null)
     {
-      paramWebView = this.aF;
       paramWebResourceError.getErrorCode();
       paramWebResourceError.getDescription().toString();
       paramWebResourceRequest.getUrl().toString();

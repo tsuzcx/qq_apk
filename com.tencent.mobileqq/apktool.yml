@@ -1,5 +1,5 @@
 !!brut.androlib.meta.MetaInfo
-apkFileName: QQ-8.5.5-1630-3834.apk
+apkFileName: QQ-8.7.0-1718-3834.apk
 compressionType: false
 doNotCompress:
 - resources.arsc
@@ -9,6 +9,9 @@ doNotCompress:
 - assets/classes12.dex.MD5
 - assets/classes13.dex.MD5
 - assets/classes14.dex.MD5
+- assets/classes15.dex.MD5
+- assets/classes16.dex.MD5
+- assets/classes17.dex.MD5
 - assets/classes2.dex.MD5
 - assets/classes3.dex.MD5
 - assets/classes4.dex.MD5
@@ -27,15 +30,19 @@ doNotCompress:
 - assets/revision.txt
 - jpg
 - assets/txlib
+- assets/benchmark/high/lenovo.json
 - assets/benchmark/high/nubia.json
+- assets/benchmark/mhigh/smartisan.json
+- assets/benchmark/middle/meitu.json
+- assets/benchmark/middle/meizu.json
 - assets/benchmark/middle/samsung.json
-- assets/benchmark/vlow/meizu.json
 - assets/camera/template/template.json
 - gif
 - assets/plugins/PluginManifest
 - assets/proteus/comment_feeds/manifest
 - assets/proteus/commercialAd_feeds/manifest
 - assets/proteus/daily_dynamic_header/manifest
+- assets/proteus/default_feeds/pages/ReadInJoy_double_row_cell_no_padding/manifest
 - assets/proteus/default_feeds/pages/account_data_card/manifest
 - assets/proteus/default_feeds/pages/bili_double_items/manifest
 - assets/proteus/default_feeds/pages/bili_double_items_white/manifest
@@ -45,6 +52,7 @@ doNotCompress:
 - assets/proteus/default_feeds/pages/daily_triple_img_card/manifest
 - assets/proteus/default_feeds/pages/horizontal_avatars/manifest
 - assets/proteus/default_feeds/pages/hot_news_sogou/manifest
+- assets/proteus/default_feeds/pages/social_attract_traffic_large/manifest
 - assets/proteus/default_feeds/pages/ugc_account_popup/manifest
 - assets/proteus/default_feeds/styles/globalVar/manifest
 - assets/proteus/native_article/pages/book/manifest
@@ -236,13 +244,17 @@ sdkInfo:
 sharedLibrary: false
 sparseResources: false
 unknownFiles:
+  HMSCore-base.properties: '0'
+  HMSCore-device.properties: '0'
+  HMSCore-hatool.properties: '0'
+  HMSCore-log.properties: '0'
+  HMSCore-stats.properties: '0'
+  HMSCore-ui.properties: '0'
   LICENSE-junit.txt: '8'
   agconnect-core.properties: '0'
+  doraemon_module_inject.yml: '8'
   txsfcfg.dat: '8'
   com/qq/jce/wup/wup.properties: '8'
-  com/steadystate/css/parser/SACParserMessages.properties: '8'
-  com/steadystate/css/parser/SACParserMessages_de.properties: '8'
-  com/steadystate/css/parser/SACParserMessages_en.properties: '8'
   com/tencent/mobileqq/engineering/preload/META-INF/MANIFEST.MF: '0'
   com/tencent/mobileqq/pluginsdk/OnPluginInstallListener.aidl: '8'
   com/tencent/mobileqq/pluginsdk/PluginBaseInfo.aidl: '8'
@@ -261,5 +273,5 @@ usesFramework:
   tag: null
 version: 2.6.0
 versionInfo:
-  versionCode: '1630'
-  versionName: 8.5.5
+  versionCode: '1718'
+  versionName: 8.7.0

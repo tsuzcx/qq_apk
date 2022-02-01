@@ -15,54 +15,54 @@ public final class w
   
   public final u a(String paramString, byte[] paramArrayOfByte)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      throw new IllegalArgumentException("url is empty");
+    if (!TextUtils.isEmpty(paramString)) {
+      return new y(paramString, paramArrayOfByte);
     }
-    return new y(paramString, paramArrayOfByte);
+    throw new IllegalArgumentException("url is empty");
   }
   
   public final v a(u paramu)
   {
-    int i = 0;
-    if (paramu == null) {
-      throw new RuntimeException("execute...IHttpRequest is null");
-    }
-    if (!(paramu instanceof y)) {
+    if (paramu != null)
+    {
+      if ((paramu instanceof y))
+      {
+        y localy = (y)paramu;
+        localy.h = null;
+        boolean bool = false;
+        as.a("app_http_use_proxy", 0, 1, 1);
+        paramu = new ab(localy);
+        localy.i = paramu;
+        if (localy.k <= 0)
+        {
+          localy.a(paramu.a());
+        }
+        else
+        {
+          as.a.a().a.execute(new x(paramu, localy));
+          bool = localy.b() ^ true;
+        }
+        bh localbh = localy.c();
+        if (bool) {
+          localy.n = true;
+        }
+        paramu = localbh;
+        if (localbh == null)
+        {
+          paramu = new StringBuilder("force return timeout:");
+          paramu.append(localy.k);
+          paramu = new bh(-14, paramu.toString());
+        }
+        return new z(paramu);
+      }
       throw new RuntimeException("execute...IHttpRequest should be create by API:createRequest");
     }
-    y localy = (y)paramu;
-    localy.h = null;
-    as.a("app_http_use_proxy", 0, 1, 1);
-    paramu = new ab(localy);
-    localy.i = paramu;
-    if (localy.k <= 0)
-    {
-      localy.a(paramu.a());
-      paramu = localy.c();
-      if (i != 0) {
-        localy.n = true;
-      }
-      if (paramu != null) {
-        break label167;
-      }
-      paramu = new bh(-14, "force return timeout:" + localy.k);
-    }
-    label167:
-    for (;;)
-    {
-      return new z(paramu);
-      as.a.a().a.execute(new x(paramu, localy));
-      if (localy.b()) {
-        break;
-      }
-      i = 1;
-      break;
-    }
+    throw new RuntimeException("execute...IHttpRequest is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.w
  * JD-Core Version:    0.7.0.1
  */

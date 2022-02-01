@@ -12,15 +12,16 @@ final class AccessibilityUtil$7
   public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
     super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
-    if (this.jdField_a_of_type_JavaLangCharSequence != null) {
-      paramAccessibilityNodeInfo.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
+    paramView = this.jdField_a_of_type_JavaLangCharSequence;
+    if (paramView != null) {
+      paramAccessibilityNodeInfo.setContentDescription(paramView);
     }
     paramAccessibilityNodeInfo.setClassName(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.AccessibilityUtil.7
  * JD-Core Version:    0.7.0.1
  */

@@ -25,11 +25,8 @@ class DatalineFilesAdapter$1
   public void onClick(View paramView)
   {
     Object localObject1 = (DatalineFilesAdapter.ItemHolder)paramView.getTag();
-    if (((DatalineFilesAdapter.ItemHolder)localObject1).a == null) {}
-    for (;;)
+    if (((DatalineFilesAdapter.ItemHolder)localObject1).a != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       int i = DataLineMsgRecord.getDevTypeBySeId(((DatalineFilesAdapter.ItemHolder)localObject1).a.a);
       Object localObject2 = DatalineFilesAdapter.a(this.a).getMessageFacade().a(i).a(((DatalineFilesAdapter.ItemHolder)localObject1).a.a);
       if (localObject2 != null)
@@ -54,11 +51,12 @@ class DatalineFilesAdapter$1
         DatalineFilesAdapter.a(this.a).startActivityForResult((Intent)localObject2, 102);
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.util.DatalineFilesAdapter.1
  * JD-Core Version:    0.7.0.1
  */

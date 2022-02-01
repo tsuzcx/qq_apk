@@ -15,24 +15,25 @@ class DataReportSettingFragment$3$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    EditText localEditText = (EditText)((QQCustomDialog)paramDialogInterface).findViewById(2131372122);
-    paramDialogInterface = (EditText)((QQCustomDialog)paramDialogInterface).findViewById(2131361955);
-    if ((TextUtils.isEmpty(localEditText.getText().toString())) || (TextUtils.isEmpty(paramDialogInterface.getText().toString())))
+    Object localObject = (QQCustomDialog)paramDialogInterface;
+    paramDialogInterface = (EditText)((QQCustomDialog)localObject).findViewById(2131371704);
+    localObject = (EditText)((QQCustomDialog)localObject).findViewById(2131361968);
+    if ((!TextUtils.isEmpty(paramDialogInterface.getText().toString())) && (!TextUtils.isEmpty(((EditText)localObject).getText().toString())))
     {
-      QQToast.a(this.a.a.getActivity(), 1, HardCodeUtil.a(2131702809), 0).a();
+      ReportDataConfig localReportDataConfig = new ReportDataConfig();
+      localReportDataConfig.a = paramDialogInterface.getText().toString();
+      localReportDataConfig.jdField_b_of_type_JavaLangString = ((EditText)localObject).getText().toString();
+      localReportDataConfig.jdField_b_of_type_Boolean = true;
+      DataReportViewerFloatViewHelper.a().a(localReportDataConfig);
+      this.a.a.a.notifyDataSetChanged();
       return;
     }
-    ReportDataConfig localReportDataConfig = new ReportDataConfig();
-    localReportDataConfig.a = localEditText.getText().toString();
-    localReportDataConfig.jdField_b_of_type_JavaLangString = paramDialogInterface.getText().toString();
-    localReportDataConfig.jdField_b_of_type_Boolean = true;
-    DataReportViewerFloatViewHelper.a().a(localReportDataConfig);
-    this.a.a.a.notifyDataSetChanged();
+    QQToast.a(this.a.a.getBaseActivity(), 1, HardCodeUtil.a(2131702941), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.DataReportSettingFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

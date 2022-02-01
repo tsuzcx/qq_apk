@@ -13,15 +13,17 @@ public class LogImpl
   
   public void d(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (this.logProxy != null) {
-      this.logProxy.log(2, paramString1, paramString2, paramThrowable);
+    LogProxy localLogProxy = this.logProxy;
+    if (localLogProxy != null) {
+      localLogProxy.log(2, paramString1, paramString2, paramThrowable);
     }
   }
   
   public void e(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (this.logProxy != null) {
-      this.logProxy.log(5, paramString1, paramString2, paramThrowable);
+    LogProxy localLogProxy = this.logProxy;
+    if (localLogProxy != null) {
+      localLogProxy.log(5, paramString1, paramString2, paramThrowable);
     }
   }
   
@@ -32,21 +34,23 @@ public class LogImpl
   
   public void i(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (this.logProxy != null) {
-      this.logProxy.log(3, paramString1, paramString2, paramThrowable);
+    LogProxy localLogProxy = this.logProxy;
+    if (localLogProxy != null) {
+      localLogProxy.log(3, paramString1, paramString2, paramThrowable);
     }
   }
   
   public void w(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (this.logProxy != null) {
-      this.logProxy.log(4, paramString1, paramString2, paramThrowable);
+    LogProxy localLogProxy = this.logProxy;
+    if (localLogProxy != null) {
+      localLogProxy.log(4, paramString1, paramString2, paramThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.log.LogImpl
  * JD-Core Version:    0.7.0.1
  */

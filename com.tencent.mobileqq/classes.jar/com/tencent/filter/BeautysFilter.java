@@ -25,100 +25,111 @@ public class BeautysFilter
       return;
     }
     this.glslProgramShader = "precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n";
-    Object localObject;
-    BaseFilter localBaseFilter;
+    Object localObject2;
+    Object localObject1;
     if (this.usesmooth == 1)
     {
-      localObject = new BaseFilter(BaseFilter.getFragmentShader(15));
-      ((BaseFilter)localObject).addParam(new UniformParam.FloatParam("radius", 2.0F));
-      setNextFilter((BaseFilter)localObject, null);
-      localBaseFilter = new BaseFilter(BaseFilter.getFragmentShader(16));
-      localBaseFilter.addParam(new UniformParam.FloatParam("radius", 2.0F));
-      ((BaseFilter)localObject).setNextFilter(localBaseFilter, null);
-      localObject = new BaseFilter(BaseFilter.getFragmentShader(17));
-      ((BaseFilter)localObject).addParam(new TextureFloatsParam("inputImageTexture2", this.curveStatic, 33986));
-      localBaseFilter.setNextFilter((BaseFilter)localObject, null);
-      ((BaseFilter)localObject).setNextFilter(new BaseFilter(BaseFilter.getFragmentShader(18)), new int[] { this.srcTextureIndex + 1 });
+      localObject2 = new BaseFilter(BaseFilter.getFragmentShader(15));
+      ((BaseFilter)localObject2).addParam(new UniformParam.FloatParam("radius", 2.0F));
+      setNextFilter((BaseFilter)localObject2, null);
+      localObject1 = new BaseFilter(BaseFilter.getFragmentShader(16));
+      ((BaseFilter)localObject1).addParam(new UniformParam.FloatParam("radius", 2.0F));
+      ((BaseFilter)localObject2).setNextFilter((BaseFilter)localObject1, null);
+      localObject2 = new BaseFilter(BaseFilter.getFragmentShader(17));
+      ((BaseFilter)localObject2).addParam(new TextureFloatsParam("inputImageTexture2", this.curveStatic, 33986));
+      ((BaseFilter)localObject1).setNextFilter((BaseFilter)localObject2, null);
+      ((BaseFilter)localObject2).setNextFilter(new BaseFilter(BaseFilter.getFragmentShader(18)), new int[] { this.srcTextureIndex + 1 });
     }
-    for (;;)
+    else
     {
-      switch (this.flag)
+      localObject2 = this;
+    }
+    int i = this.flag;
+    if (i != 1002)
+    {
+      switch (i)
       {
       default: 
-        localBaseFilter = null;
-        ((BaseFilter)localObject).setNextFilter(localBaseFilter, null);
-        localObject = localBaseFilter;
-        if (this.flag != 1)
+        switch (i)
         {
-          localObject = localBaseFilter;
-          if (this.flag != 8)
-          {
-            localObject = localBaseFilter;
-            if (this.flag >= 1)
-            {
-              localObject = new BaseFilter(BaseFilter.getFragmentShader(19));
-              ((BaseFilter)localObject).addParam(new TextureResParam("inputImageTexture2", "glowcenter.jpg", 33986));
-              localBaseFilter.setNextFilter((BaseFilter)localObject, null);
-            }
-          }
+        default: 
+          localObject1 = null;
+          break;
+        case 103: 
+          localObject1 = new BaseFilter(BaseFilter.getFragmentShader(40));
+          ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "tianmei.png", 33986));
+          break;
+        case 102: 
+          localObject1 = new BaseFilter(BaseFilter.getFragmentShader(42));
+          ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "hongrun.png", 33986));
+          break;
+        case 101: 
+          localObject1 = new BaseFilter(BaseFilter.getFragmentShader(41));
+          ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "yangguang.png", 33986));
         }
-        if (this.flag == 9)
-        {
-          localBaseFilter = new BaseFilter(BaseFilter.getFragmentShader(4));
-          localBaseFilter.addParam(new UniformParam.FloatParam("filterAdjustParam", 0.6400001F));
-          ((BaseFilter)localObject).setNextFilter(localBaseFilter, new int[] { this.srcTextureIndex + 1 });
-        }
+        break;
+      case 9: 
+        localObject1 = new BaseFilter(BaseFilter.getFragmentShader(43));
+        ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "portraitbeauty.png", 33986));
+        break;
+      case 8: 
+        localObject1 = new BaseFilter(BaseFilter.getFragmentShader(12));
+        ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "gradient.jpg", 33986));
+        break;
+      case 7: 
+        localObject1 = new BaseFilter(BaseFilter.getFragmentShader(26));
+        ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "fennen.png", 33986));
+        break;
+      case 6: 
+        localObject1 = new BaseFilter(BaseFilter.getFragmentShader(25));
+        ((BaseFilter)localObject1).addParam(new TextureFloatsParam("inputImageTexture2", this.globalWhiten, 33986));
+        break;
+      case 5: 
+        localObject1 = new BaseFilter(BaseFilter.getFragmentShader(24));
+        ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "portraitbeauty.png", 33986));
+        break;
+      case 4: 
+        localObject1 = new BaseFilter(BaseFilter.getFragmentShader(23));
+        ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "portraitbeauty.png", 33986));
+        break;
+      case 3: 
+        localObject1 = new BaseFilter(BaseFilter.getFragmentShader(22));
+        ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "portraitbeauty.png", 33986));
+        break;
+      case 1: 
+        localObject1 = new BaseFilter(BaseFilter.getFragmentShader(20));
+        ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "portraitbeauty.png", 33986));
         break;
       }
-      for (;;)
-      {
-        super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
-        return;
-        localBaseFilter = new BaseFilter(BaseFilter.getFragmentShader(20));
-        localBaseFilter.addParam(new TextureResParam("inputImageTexture2", "portraitbeauty.png", 33986));
-        break;
-        localBaseFilter = new BaseFilter(BaseFilter.getFragmentShader(21));
-        localBaseFilter.addParam(new TextureResParam("inputImageTexture2", "portraitbeauty.png", 33986));
-        break;
-        localBaseFilter = new BaseFilter(BaseFilter.getFragmentShader(22));
-        localBaseFilter.addParam(new TextureResParam("inputImageTexture2", "portraitbeauty.png", 33986));
-        break;
-        localBaseFilter = new BaseFilter(BaseFilter.getFragmentShader(43));
-        localBaseFilter.addParam(new TextureResParam("inputImageTexture2", "portraitbeauty.png", 33986));
-        break;
-        localBaseFilter = new BaseFilter(BaseFilter.getFragmentShader(23));
-        localBaseFilter.addParam(new TextureResParam("inputImageTexture2", "portraitbeauty.png", 33986));
-        break;
-        localBaseFilter = new BaseFilter(BaseFilter.getFragmentShader(24));
-        localBaseFilter.addParam(new TextureResParam("inputImageTexture2", "portraitbeauty.png", 33986));
-        break;
-        localBaseFilter = new BaseFilter(BaseFilter.getFragmentShader(25));
-        localBaseFilter.addParam(new TextureFloatsParam("inputImageTexture2", this.globalWhiten, 33986));
-        break;
-        localBaseFilter = new BaseFilter(BaseFilter.getFragmentShader(26));
-        localBaseFilter.addParam(new TextureResParam("inputImageTexture2", "fennen.png", 33986));
-        break;
-        localBaseFilter = new BaseFilter(BaseFilter.getFragmentShader(12));
-        localBaseFilter.addParam(new TextureResParam("inputImageTexture2", "gradient.jpg", 33986));
-        break;
-        localBaseFilter = new BaseFilter(BaseFilter.getFragmentShader(41));
-        localBaseFilter.addParam(new TextureResParam("inputImageTexture2", "yangguang.png", 33986));
-        break;
-        localBaseFilter = new BaseFilter(BaseFilter.getFragmentShader(42));
-        localBaseFilter.addParam(new TextureResParam("inputImageTexture2", "hongrun.png", 33986));
-        break;
-        localBaseFilter = new BaseFilter(BaseFilter.getFragmentShader(40));
-        localBaseFilter.addParam(new TextureResParam("inputImageTexture2", "tianmei.png", 33986));
-        break;
-        if (this.flag == 1002)
-        {
-          localBaseFilter = new BaseFilter(BaseFilter.getFragmentShader(4));
-          localBaseFilter.addParam(new UniformParam.FloatParam("filterAdjustParam", 0.56F));
-          ((BaseFilter)localObject).setNextFilter(localBaseFilter, new int[] { this.srcTextureIndex + 1 });
-        }
-      }
-      localObject = this;
     }
+    else
+    {
+      localObject1 = new BaseFilter(BaseFilter.getFragmentShader(21));
+      ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "portraitbeauty.png", 33986));
+    }
+    ((BaseFilter)localObject2).setNextFilter((BaseFilter)localObject1, null);
+    i = this.flag;
+    if ((i != 1) && (i != 8) && (i >= 1))
+    {
+      localObject2 = new BaseFilter(BaseFilter.getFragmentShader(19));
+      ((BaseFilter)localObject2).addParam(new TextureResParam("inputImageTexture2", "glowcenter.jpg", 33986));
+      ((BaseFilter)localObject1).setNextFilter((BaseFilter)localObject2, null);
+      localObject1 = localObject2;
+    }
+    i = this.flag;
+    if (i == 9)
+    {
+      localObject2 = new BaseFilter(BaseFilter.getFragmentShader(4));
+      ((BaseFilter)localObject2).addParam(new UniformParam.FloatParam("filterAdjustParam", 0.6400001F));
+      ((BaseFilter)localObject1).setNextFilter((BaseFilter)localObject2, new int[] { this.srcTextureIndex + 1 });
+    }
+    else if (i == 1002)
+    {
+      localObject2 = new BaseFilter(BaseFilter.getFragmentShader(4));
+      ((BaseFilter)localObject2).addParam(new UniformParam.FloatParam("filterAdjustParam", 0.56F));
+      ((BaseFilter)localObject1).setNextFilter((BaseFilter)localObject2, new int[] { this.srcTextureIndex + 1 });
+    }
+    super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
   }
   
   public void setEffectIndex(int paramInt)
@@ -135,7 +146,7 @@ public class BeautysFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.filter.BeautysFilter
  * JD-Core Version:    0.7.0.1
  */

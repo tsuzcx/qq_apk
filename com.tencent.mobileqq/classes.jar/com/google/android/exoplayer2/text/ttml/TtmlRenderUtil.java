@@ -37,18 +37,21 @@ final class TtmlRenderUtil
     if (paramTtmlStyle.getTextAlign() != null) {
       paramSpannableStringBuilder.setSpan(new AlignmentSpan.Standard(paramTtmlStyle.getTextAlign()), paramInt1, paramInt2, 33);
     }
-    switch (paramTtmlStyle.getFontSizeUnit())
+    int i = paramTtmlStyle.getFontSizeUnit();
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      paramSpannableStringBuilder.setSpan(new AbsoluteSizeSpan((int)paramTtmlStyle.getFontSize(), true), paramInt1, paramInt2, 33);
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3) {
+          return;
+        }
+        paramSpannableStringBuilder.setSpan(new RelativeSizeSpan(paramTtmlStyle.getFontSize() / 100.0F), paramInt1, paramInt2, 33);
+        return;
+      }
       paramSpannableStringBuilder.setSpan(new RelativeSizeSpan(paramTtmlStyle.getFontSize()), paramInt1, paramInt2, 33);
       return;
     }
-    paramSpannableStringBuilder.setSpan(new RelativeSizeSpan(paramTtmlStyle.getFontSize() / 100.0F), paramInt1, paramInt2, 33);
+    paramSpannableStringBuilder.setSpan(new AbsoluteSizeSpan((int)paramTtmlStyle.getFontSize(), true), paramInt1, paramInt2, 33);
   }
   
   static String applyTextElementSpacePolicy(String paramString)
@@ -69,60 +72,44 @@ final class TtmlRenderUtil
   
   public static TtmlStyle resolveStyle(TtmlStyle paramTtmlStyle, String[] paramArrayOfString, Map<String, TtmlStyle> paramMap)
   {
-    TtmlStyle localTtmlStyle;
     if ((paramTtmlStyle == null) && (paramArrayOfString == null)) {
-      localTtmlStyle = null;
+      return null;
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return localTtmlStyle;
-          if ((paramTtmlStyle == null) && (paramArrayOfString.length == 1)) {
-            return (TtmlStyle)paramMap.get(paramArrayOfString[0]);
-          }
-          if ((paramTtmlStyle == null) && (paramArrayOfString.length > 1))
-          {
-            paramTtmlStyle = new TtmlStyle();
-            j = paramArrayOfString.length;
-            i = 0;
-            for (;;)
-            {
-              localTtmlStyle = paramTtmlStyle;
-              if (i >= j) {
-                break;
-              }
-              paramTtmlStyle.chain((TtmlStyle)paramMap.get(paramArrayOfString[i]));
-              i += 1;
-            }
-          }
-          if ((paramTtmlStyle != null) && (paramArrayOfString != null) && (paramArrayOfString.length == 1)) {
-            return paramTtmlStyle.chain((TtmlStyle)paramMap.get(paramArrayOfString[0]));
-          }
-          localTtmlStyle = paramTtmlStyle;
-        } while (paramTtmlStyle == null);
-        localTtmlStyle = paramTtmlStyle;
-      } while (paramArrayOfString == null);
-      localTtmlStyle = paramTtmlStyle;
-    } while (paramArrayOfString.length <= 1);
-    int j = paramArrayOfString.length;
+    int j = 0;
     int i = 0;
-    for (;;)
-    {
-      localTtmlStyle = paramTtmlStyle;
-      if (i >= j) {
-        break;
-      }
-      paramTtmlStyle.chain((TtmlStyle)paramMap.get(paramArrayOfString[i]));
-      i += 1;
+    if ((paramTtmlStyle == null) && (paramArrayOfString.length == 1)) {
+      return (TtmlStyle)paramMap.get(paramArrayOfString[0]);
     }
+    if ((paramTtmlStyle == null) && (paramArrayOfString.length > 1))
+    {
+      paramTtmlStyle = new TtmlStyle();
+      j = paramArrayOfString.length;
+      while (i < j)
+      {
+        paramTtmlStyle.chain((TtmlStyle)paramMap.get(paramArrayOfString[i]));
+        i += 1;
+      }
+      return paramTtmlStyle;
+    }
+    if ((paramTtmlStyle != null) && (paramArrayOfString != null) && (paramArrayOfString.length == 1)) {
+      return paramTtmlStyle.chain((TtmlStyle)paramMap.get(paramArrayOfString[0]));
+    }
+    if ((paramTtmlStyle != null) && (paramArrayOfString != null) && (paramArrayOfString.length > 1))
+    {
+      int k = paramArrayOfString.length;
+      i = j;
+      while (i < k)
+      {
+        paramTtmlStyle.chain((TtmlStyle)paramMap.get(paramArrayOfString[i]));
+        i += 1;
+      }
+    }
+    return paramTtmlStyle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.text.ttml.TtmlRenderUtil
  * JD-Core Version:    0.7.0.1
  */

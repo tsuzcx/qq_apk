@@ -31,19 +31,21 @@ public class ARFacePreviewResample
     this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
     this.c = paramInt3;
-    if (this.b > 480)
+    paramInt1 = this.b;
+    if (paramInt1 > 480)
     {
-      this.e = (this.b / 2 / 4 * 4);
-      this.d = ((this.jdField_a_of_type_Int * this.e / this.b + 3) / 4 * 4);
+      this.e = (paramInt1 / 2 / 4 * 4);
+      this.d = ((this.jdField_a_of_type_Int * this.e / paramInt1 + 3) / 4 * 4);
+      this.jdField_a_of_type_Boolean = true;
     }
-    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
+    else
     {
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ArrayOfByte = new byte[this.d * this.e * 3 >> 1];
-      }
-      return;
-      this.e = this.b;
+      this.e = paramInt1;
       this.d = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Boolean = false;
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ArrayOfByte = new byte[this.d * this.e * 3 >> 1];
     }
   }
   
@@ -72,7 +74,7 @@ public class ARFacePreviewResample
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARFacePreviewResample
  * JD-Core Version:    0.7.0.1
  */

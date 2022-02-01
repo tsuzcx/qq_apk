@@ -19,17 +19,27 @@ final class Completable$13
     try
     {
       Object localObject = this.val$resourceFunc0.call();
-      Completable localCompletable;
-      localThrowable4.subscribe(new Completable.13.1(this, new AtomicBoolean(), localThrowable3, paramCompletableSubscriber));
-    }
-    catch (Throwable localThrowable1)
-    {
       try
       {
-        localCompletable = (Completable)this.val$completableFunc1.call(localObject);
-        if (localCompletable != null) {
-          break label211;
+        Completable localCompletable = (Completable)this.val$completableFunc1.call(localObject);
+        if (localCompletable == null) {
+          try
+          {
+            this.val$disposer.call(localObject);
+            paramCompletableSubscriber.onSubscribe(Subscriptions.unsubscribed());
+            paramCompletableSubscriber.onError(new NullPointerException("The completable supplied is null"));
+            return;
+          }
+          catch (Throwable localThrowable1)
+          {
+            Exceptions.throwIfFatal(localThrowable1);
+            paramCompletableSubscriber.onSubscribe(Subscriptions.unsubscribed());
+            paramCompletableSubscriber.onError(new CompositeException(Arrays.asList(new Throwable[] { new NullPointerException("The completable supplied is null"), localThrowable1 })));
+            return;
+          }
         }
+        localCompletable.subscribe(new Completable.13.1(this, new AtomicBoolean(), localThrowable1, paramCompletableSubscriber));
+        return;
       }
       catch (Throwable localThrowable4)
       {
@@ -50,31 +60,18 @@ final class Completable$13
           return;
         }
       }
-      try
-      {
-        this.val$disposer.call(localObject);
-        paramCompletableSubscriber.onSubscribe(Subscriptions.unsubscribed());
-        paramCompletableSubscriber.onError(new NullPointerException("The completable supplied is null"));
-        return;
-      }
-      catch (Throwable localThrowable3)
-      {
-        Exceptions.throwIfFatal(localThrowable3);
-        paramCompletableSubscriber.onSubscribe(Subscriptions.unsubscribed());
-        paramCompletableSubscriber.onError(new CompositeException(Arrays.asList(new Throwable[] { new NullPointerException("The completable supplied is null"), localThrowable3 })));
-        return;
-      }
-      localThrowable1 = localThrowable1;
-      paramCompletableSubscriber.onSubscribe(Subscriptions.unsubscribed());
-      paramCompletableSubscriber.onError(localThrowable1);
       return;
     }
-    label211:
+    catch (Throwable localThrowable3)
+    {
+      paramCompletableSubscriber.onSubscribe(Subscriptions.unsubscribed());
+      paramCompletableSubscriber.onError(localThrowable3);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.Completable.13
  * JD-Core Version:    0.7.0.1
  */

@@ -21,8 +21,12 @@ public class WVWhiteListConfProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
       WVWhiteListConfBean localWVWhiteListConfBean = WVWhiteListConfBean.a(paramArrayOfQConfItem[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("WVWhiteListConfProcessor", 2, "onParsed  " + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed  ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("WVWhiteListConfProcessor", 2, localStringBuilder.toString());
       }
       return localWVWhiteListConfBean;
     }
@@ -31,8 +35,12 @@ public class WVWhiteListConfProcessor
   
   public void a(WVWhiteListConfBean paramWVWhiteListConfBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVWhiteListConfProcessor", 2, "onUpdate " + paramWVWhiteListConfBean.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      localStringBuilder.append(paramWVWhiteListConfBean.toString());
+      QLog.d("WVWhiteListConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -70,7 +78,7 @@ public class WVWhiteListConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.WVWhiteListConfProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -57,132 +57,129 @@ public class WifiSdkService
   
   private CSGet3rdCloudCheck a(Context paramContext, ToServiceMsg paramToServiceMsg)
   {
-    Object localObject4 = null;
-    Object localObject1 = null;
     int i = WifiSdkUtil.b(paramContext);
-    if (i == 0) {
+    Object localObject4 = null;
+    if (i == 0)
+    {
       if (QLog.isColorLevel()) {
         QLog.i("WifiSdk", 2, "encodeReqMsg, networkType is none");
       }
-    }
-    CSGet3rdCloudCheck localCSGet3rdCloudCheck;
-    Object localObject3;
-    Object localObject2;
-    do
-    {
-      do
-      {
-        do
-        {
-          return null;
-          localCSGet3rdCloudCheck = new CSGet3rdCloudCheck();
-          if (i != 1) {
-            break label470;
-          }
-          paramContext = (WifiManager)paramContext.getSystemService("wifi");
-          if (paramContext != null) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i("WifiSdk", 2, "encodeReqMsg, systmeWifiMgr is null");
-        return null;
-        localObject3 = paramContext.getConnectionInfo();
-        if (localObject3 != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("WifiSdk", 2, "encodeReqMsg, currentWifi is null");
       return null;
-      localObject2 = ((android.net.wifi.WifiInfo)localObject3).getSSID();
-      localObject3 = ((android.net.wifi.WifiInfo)localObject3).getBSSID();
-      if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty((CharSequence)localObject3))) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("WifiSdk", 2, "encodeReqMsg, ssid or bssid is null");
-    return null;
-    paramToServiceMsg.addAttribute("bssid", localObject3);
-    paramToServiceMsg.addAttribute("ssid", localObject2);
-    localCSGet3rdCloudCheck.networkType = 1;
-    localCSGet3rdCloudCheck.wifiInfo = new MWIFI.WifiInfo();
-    localCSGet3rdCloudCheck.wifiInfo.ssid = ((String)localObject2);
-    localCSGet3rdCloudCheck.wifiInfo.bssid = ((String)localObject3);
-    for (;;)
+    }
+    CSGet3rdCloudCheck localCSGet3rdCloudCheck = new CSGet3rdCloudCheck();
+    if (i == 1)
     {
-      try
+      paramContext = (WifiManager)paramContext.getSystemService("wifi");
+      if (paramContext == null)
       {
-        localObject2 = paramContext.getDhcpInfo();
-        if (localObject2 == null) {
-          break label493;
+        if (QLog.isColorLevel()) {
+          QLog.i("WifiSdk", 2, "encodeReqMsg, systmeWifiMgr is null");
         }
-        paramContext = WifiSdkUtil.a(((DhcpInfo)localObject2).dns1);
-        localObject3 = paramContext;
+        return null;
       }
-      catch (Exception localException1)
+      Object localObject2 = paramContext.getConnectionInfo();
+      if (localObject2 == null)
       {
+        if (QLog.isColorLevel()) {
+          QLog.i("WifiSdk", 2, "encodeReqMsg, currentWifi is null");
+        }
+        return null;
+      }
+      Object localObject1 = ((android.net.wifi.WifiInfo)localObject2).getSSID();
+      localObject2 = ((android.net.wifi.WifiInfo)localObject2).getBSSID();
+      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
+      {
+        paramToServiceMsg.addAttribute("bssid", localObject2);
+        paramToServiceMsg.addAttribute("ssid", localObject1);
+        localCSGet3rdCloudCheck.networkType = 1;
+        localCSGet3rdCloudCheck.wifiInfo = new MWIFI.WifiInfo();
+        localCSGet3rdCloudCheck.wifiInfo.ssid = ((String)localObject1);
+        localCSGet3rdCloudCheck.wifiInfo.bssid = ((String)localObject2);
+        Object localObject3;
         try
         {
-          localObject2 = WifiSdkUtil.a(((DhcpInfo)localObject2).dns2);
-          localObject1 = paramContext;
-          paramContext = (Context)localObject2;
-          localObject3 = localObject1;
-          localObject1 = paramContext;
-          localCSGet3rdCloudCheck.vecDns = new ArrayList(2);
-          if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-            localCSGet3rdCloudCheck.vecDns.add(localObject3);
+          localObject1 = paramContext.getDhcpInfo();
+          if (localObject1 != null)
+          {
+            paramContext = WifiSdkUtil.a(((DhcpInfo)localObject1).dns1);
+            try
+            {
+              localObject3 = WifiSdkUtil.a(((DhcpInfo)localObject1).dns2);
+              localObject1 = paramContext;
+            }
+            catch (Exception localException1)
+            {
+              break label245;
+            }
           }
-          if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-            localCSGet3rdCloudCheck.vecDns.add(localObject1);
+          else
+          {
+            localObject1 = null;
+            localObject3 = localObject4;
           }
-          paramContext = QQDeviceInfo.getIMEI("f5cc92");
-          if (!TextUtils.isEmpty(paramContext)) {
-            localCSGet3rdCloudCheck.imei = paramContext;
-          }
-          localCSGet3rdCloudCheck.mac = WifiSdkUtil.a();
-          localCSGet3rdCloudCheck.vid = WifiSdkUtil.b();
-          paramToServiceMsg.addAttribute("network_type", Integer.valueOf(localCSGet3rdCloudCheck.networkType));
-          if (QLog.isColorLevel()) {
-            QLog.i("WifiSdk", 2, "encodeReqMsg, imei: " + localCSGet3rdCloudCheck.imei + " mac: " + localCSGet3rdCloudCheck.mac + " vid: " + localCSGet3rdCloudCheck.vid);
-          }
-          return localCSGet3rdCloudCheck;
         }
         catch (Exception localException2)
         {
-          break label418;
+          paramContext = null;
+          label245:
+          localObject1 = paramContext;
+          localObject3 = localObject4;
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("encodeReqMsg, get dns info exception: ");
+            ((StringBuilder)localObject1).append(localException2.getMessage());
+            QLog.i("WifiSdk", 2, ((StringBuilder)localObject1).toString());
+            localObject3 = localObject4;
+            localObject1 = paramContext;
+          }
         }
-        localException1 = localException1;
-        paramContext = null;
+        localCSGet3rdCloudCheck.vecDns = new ArrayList(2);
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          localCSGet3rdCloudCheck.vecDns.add(localObject1);
+        }
+        if (!TextUtils.isEmpty((CharSequence)localObject3)) {
+          localCSGet3rdCloudCheck.vecDns.add(localObject3);
+        }
       }
-      label418:
-      localObject1 = localObject4;
-      if (QLog.isColorLevel())
+      else
       {
-        QLog.i("WifiSdk", 2, "encodeReqMsg, get dns info exception: " + localException1.getMessage());
-        localObject3 = paramContext;
-        localObject1 = localObject4;
-        continue;
-        label470:
-        localCSGet3rdCloudCheck.networkType = i;
-        localCSGet3rdCloudCheck.operType = WifiSdkUtil.a(paramContext);
-        continue;
-        label493:
-        paramContext = null;
+        if (QLog.isColorLevel()) {
+          QLog.i("WifiSdk", 2, "encodeReqMsg, ssid or bssid is null");
+        }
+        return null;
       }
     }
+    else
+    {
+      localCSGet3rdCloudCheck.networkType = i;
+      localCSGet3rdCloudCheck.operType = WifiSdkUtil.a(paramContext);
+    }
+    paramContext = QQDeviceInfo.getIMEI("f5cc92");
+    if (!TextUtils.isEmpty(paramContext)) {
+      localCSGet3rdCloudCheck.imei = paramContext;
+    }
+    localCSGet3rdCloudCheck.mac = WifiSdkUtil.a();
+    localCSGet3rdCloudCheck.vid = WifiSdkUtil.b();
+    paramToServiceMsg.addAttribute("network_type", Integer.valueOf(localCSGet3rdCloudCheck.networkType));
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("encodeReqMsg, imei: ");
+      paramContext.append(localCSGet3rdCloudCheck.imei);
+      paramContext.append(" mac: ");
+      paramContext.append(localCSGet3rdCloudCheck.mac);
+      paramContext.append(" vid: ");
+      paramContext.append(localCSGet3rdCloudCheck.vid);
+      QLog.i("WifiSdk", 2, paramContext.toString());
+    }
+    return localCSGet3rdCloudCheck;
   }
   
   private SCGet3rdCloudCheck a(ToServiceMsg paramToServiceMsg, SCGet3rdCloudCheck paramSCGet3rdCloudCheck)
   {
-    if ((paramSCGet3rdCloudCheck == null) || (paramToServiceMsg == null))
+    if ((paramSCGet3rdCloudCheck != null) && (paramToServiceMsg != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("WifiSdk", 2, "handleWifiSecurityCheckInfo, response or request is null");
-      }
-      paramToServiceMsg = null;
-    }
-    do
-    {
-      return paramToServiceMsg;
       if (((Integer)paramToServiceMsg.getAttribute("network_type", Integer.valueOf(-1))).intValue() == 1)
       {
         Object localObject1 = this.a.getApplication().getApplicationContext();
@@ -206,10 +203,17 @@ public class WifiSdkService
           return null;
         }
       }
-      paramToServiceMsg = paramSCGet3rdCloudCheck;
-    } while (!TextUtils.isEmpty(paramSCGet3rdCloudCheck.tips));
+      if (TextUtils.isEmpty(paramSCGet3rdCloudCheck.tips))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("WifiSdk", 2, "handleWifiSecurityCheckInfo, tips is null");
+        }
+        return null;
+      }
+      return paramSCGet3rdCloudCheck;
+    }
     if (QLog.isColorLevel()) {
-      QLog.i("WifiSdk", 2, "handleWifiSecurityCheckInfo, tips is null");
+      QLog.i("WifiSdk", 2, "handleWifiSecurityCheckInfo, response or request is null");
     }
     return null;
   }
@@ -242,135 +246,171 @@ public class WifiSdkService
   
   public Object decode(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    int j = 0;
-    if (QLog.isColorLevel()) {
-      QLog.i("WifiSdk", 2, "decode, serviceCmd: " + paramToServiceMsg.getServiceCmd());
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("decode, serviceCmd: ");
+      ((StringBuilder)localObject1).append(paramToServiceMsg.getServiceCmd());
+      QLog.i("WifiSdk", 2, ((StringBuilder)localObject1).toString());
     }
     try
     {
-      if (!"WifiCloudCheckSvc.req".equals(paramToServiceMsg.getServiceCmd())) {
-        break label492;
-      }
-      k = ((Integer)paramToServiceMsg.getAttribute("request_type", Integer.valueOf(-1))).intValue();
-      localObject1 = paramFromServiceMsg.getWupBuffer();
-      paramFromServiceMsg = new byte[localObject1.length - 4];
-      System.arraycopy(localObject1, 4, paramFromServiceMsg, 0, localObject1.length - 4);
-      if (!QLog.isColorLevel()) {
-        break label463;
-      }
-      localObject1 = WupHexUtil.bytes2HexStr(paramFromServiceMsg);
-      QLog.i("WifiSdk", 2, "decode, full data: " + (String)localObject1);
-      QLog.i("WifiSdk", 2, "decode, requestType: " + k);
-      if (localObject1 == null) {
-        break label463;
-      }
-      localObject1 = ((String)localObject1).toLowerCase();
-      int m = ((String)localObject1).length();
-      localObject2 = new StringBuilder();
-      for (int i = 0; (i < m) && (j < m); i = j)
+      if ("WifiCloudCheckSvc.req".equals(paramToServiceMsg.getServiceCmd()))
       {
-        j = i + 2;
-        ((StringBuilder)localObject2).append(((String)localObject1).substring(i, j)).append(" ");
+        int k = ((Integer)paramToServiceMsg.getAttribute("request_type", Integer.valueOf(-1))).intValue();
+        localObject1 = paramFromServiceMsg.getWupBuffer();
+        paramFromServiceMsg = new byte[localObject1.length - 4];
+        int j = localObject1.length;
+        int i = 0;
+        System.arraycopy(localObject1, 4, paramFromServiceMsg, 0, j - 4);
+        if (QLog.isColorLevel())
+        {
+          localObject1 = WupHexUtil.bytes2HexStr(paramFromServiceMsg);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("decode, full data: ");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          QLog.i("WifiSdk", 2, ((StringBuilder)localObject2).toString());
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("decode, requestType: ");
+          ((StringBuilder)localObject2).append(k);
+          QLog.i("WifiSdk", 2, ((StringBuilder)localObject2).toString());
+          if (localObject1 != null)
+          {
+            localObject2 = ((String)localObject1).toLowerCase();
+            int m = ((String)localObject2).length();
+            localObject1 = new StringBuilder();
+            j = 0;
+            while ((i < m) && (j < m))
+            {
+              j = i + 2;
+              ((StringBuilder)localObject1).append(((String)localObject2).substring(i, j));
+              ((StringBuilder)localObject1).append(" ");
+              i = j;
+            }
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("decode, full data: ");
+            ((StringBuilder)localObject2).append(((StringBuilder)localObject1).toString());
+            QLog.i("WifiSdk", 2, ((StringBuilder)localObject2).toString());
+          }
+        }
+        if (k != 1)
+        {
+          if (k != 2)
+          {
+            if (k != 3) {
+              return null;
+            }
+            paramToServiceMsg = new UniPacket(true);
+            paramToServiceMsg.setEncodeName("utf-8");
+            paramToServiceMsg.decode(paramFromServiceMsg);
+            return (SCPullConchs)paramToServiceMsg.get("SCPullConchs", null);
+          }
+          paramToServiceMsg = new UniPacket(true);
+          paramToServiceMsg.setEncodeName("utf-8");
+          paramToServiceMsg.decode(paramFromServiceMsg);
+          paramToServiceMsg = (SCGUIDRegist)paramToServiceMsg.get("SCGUIDRegist", null);
+          if (paramToServiceMsg == null) {
+            return null;
+          }
+          return paramToServiceMsg.guid;
+        }
+        localObject1 = new UniPacket(true);
+        ((UniPacket)localObject1).setEncodeName("utf-8");
+        ((UniPacket)localObject1).decode(paramFromServiceMsg);
+        paramFromServiceMsg = (SCGet3rdCloudCheck)((UniPacket)localObject1).get("SCGet3rdCloudCheck", null);
+        Object localObject2 = new WifiSecurityCheckInfo();
+        ((WifiSecurityCheckInfo)localObject2).jdField_a_of_type_MConchSCPullConchs = ((SCPullConchs)((UniPacket)localObject1).get("SCPullConchs", null));
+        ((WifiSecurityCheckInfo)localObject2).jdField_a_of_type_MWIFISCGet3rdCloudCheck = a(paramToServiceMsg, paramFromServiceMsg);
+        return localObject2;
       }
-      QLog.i("WifiSdk", 2, "decode, full data: " + ((StringBuilder)localObject2).toString());
     }
     catch (Throwable paramToServiceMsg)
     {
-      int k;
-      Object localObject1;
-      Object localObject2;
-      if (!QLog.isColorLevel()) {
-        break label492;
-      }
-      QLog.i("WifiSdk", 2, "decode exception: " + paramToServiceMsg.getMessage());
-      break label492;
-      switch (k)
+      if (QLog.isColorLevel())
       {
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("decode exception: ");
+        paramFromServiceMsg.append(paramToServiceMsg.getMessage());
+        QLog.i("WifiSdk", 2, paramFromServiceMsg.toString());
       }
     }
-    paramToServiceMsg = new UniPacket(true);
-    paramToServiceMsg.setEncodeName("utf-8");
-    paramToServiceMsg.decode(paramFromServiceMsg);
-    return (SCPullConchs)paramToServiceMsg.get("SCPullConchs", null);
-    paramToServiceMsg = new UniPacket(true);
-    paramToServiceMsg.setEncodeName("utf-8");
-    paramToServiceMsg.decode(paramFromServiceMsg);
-    paramToServiceMsg = (SCGUIDRegist)paramToServiceMsg.get("SCGUIDRegist", null);
-    if (paramToServiceMsg == null) {
-      return null;
-    }
-    return paramToServiceMsg.guid;
-    localObject1 = new UniPacket(true);
-    ((UniPacket)localObject1).setEncodeName("utf-8");
-    ((UniPacket)localObject1).decode(paramFromServiceMsg);
-    paramFromServiceMsg = (SCGet3rdCloudCheck)((UniPacket)localObject1).get("SCGet3rdCloudCheck", null);
-    localObject2 = new WifiSecurityCheckInfo();
-    ((WifiSecurityCheckInfo)localObject2).jdField_a_of_type_MConchSCPullConchs = ((SCPullConchs)((UniPacket)localObject1).get("SCPullConchs", null));
-    ((WifiSecurityCheckInfo)localObject2).jdField_a_of_type_MWIFISCGet3rdCloudCheck = a(paramToServiceMsg, paramFromServiceMsg);
-    return localObject2;
-    label463:
-    label492:
     return null;
   }
   
   public boolean encodeReqMsg(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WifiSdk", 2, "encodeReqMsg, serviceCmd: " + paramToServiceMsg.getServiceCmd());
-    }
-    for (;;)
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      Context localContext;
-      int i;
-      try
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("encodeReqMsg, serviceCmd: ");
+      ((StringBuilder)localObject).append(paramToServiceMsg.getServiceCmd());
+      QLog.i("WifiSdk", 2, ((StringBuilder)localObject).toString());
+    }
+    try
+    {
+      if ("WifiCloudCheckSvc.req".equals(paramToServiceMsg.getServiceCmd()))
       {
-        if (!"WifiCloudCheckSvc.req".equals(paramToServiceMsg.getServiceCmd())) {
-          break label241;
+        localObject = this.a.getApplication().getApplicationContext();
+        int i = ((Integer)paramToServiceMsg.getAttribute("request_type", Integer.valueOf(-1))).intValue();
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("encodeReqMsg, requestType: ");
+          localStringBuilder.append(i);
+          QLog.i("WifiSdk", 2, localStringBuilder.toString());
         }
-        localContext = this.a.getApplication().getApplicationContext();
-        i = ((Integer)paramToServiceMsg.getAttribute("request_type", Integer.valueOf(-1))).intValue();
-        if (!QLog.isColorLevel()) {
-          break label293;
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i == 3) {
+              paramUniPacket.put("CSPullConchs", a());
+            }
+          }
+          else {
+            paramUniPacket.put("CSGUIDRegist", a((Context)localObject));
+          }
         }
-        QLog.i("WifiSdk", 2, "encodeReqMsg, requestType: " + i);
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        if (!QLog.isColorLevel()) {
-          break label241;
+        else
+        {
+          paramToServiceMsg = a((Context)localObject, paramToServiceMsg);
+          if (paramToServiceMsg != null) {
+            paramUniPacket.put("CSGet3rdCloudCheck", paramToServiceMsg);
+          }
+          paramUniPacket.put("CSPullConchs", a());
         }
-        QLog.i("WifiSdk", 2, "encodeReqMsg exception: " + paramToServiceMsg.getMessage());
-      }
-      paramUniPacket.setServantName("WifiSdkObj");
-      paramUniPacket.setFuncName("req");
-      paramToServiceMsg = WifiSdkSharedPreUtils.a(this.a.getApp(), this.a.getCurrentAccountUin());
-      if (QLog.isColorLevel()) {
-        QLog.i("WifiSdk", 1, "encodeReqMsg, guid: " + paramToServiceMsg);
-      }
-      paramUniPacket.put("Sharkfin", a(paramToServiceMsg));
-      return true;
-      paramUniPacket.put("CSPullConchs", a());
-      continue;
-      label241:
-      return false;
-      paramUniPacket.put("CSGUIDRegist", a(localContext));
-      continue;
-      paramToServiceMsg = a(localContext, paramToServiceMsg);
-      if (paramToServiceMsg != null) {
-        paramUniPacket.put("CSGet3rdCloudCheck", paramToServiceMsg);
-      }
-      paramUniPacket.put("CSPullConchs", a());
-      continue;
-      label293:
-      switch (i)
-      {
+        paramUniPacket.setServantName("WifiSdkObj");
+        paramUniPacket.setFuncName("req");
+        paramToServiceMsg = WifiSdkSharedPreUtils.a(this.a.getApp(), this.a.getCurrentAccountUin());
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("encodeReqMsg, guid: ");
+          ((StringBuilder)localObject).append(paramToServiceMsg);
+          QLog.i("WifiSdk", 1, ((StringBuilder)localObject).toString());
+        }
+        paramUniPacket.put("Sharkfin", a(paramToServiceMsg));
+        return true;
       }
     }
+    catch (Exception paramToServiceMsg)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramUniPacket = new StringBuilder();
+        paramUniPacket.append("encodeReqMsg exception: ");
+        paramUniPacket.append(paramToServiceMsg.getMessage());
+        QLog.i("WifiSdk", 2, paramUniPacket.toString());
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.wifisdk.WifiSdkService
  * JD-Core Version:    0.7.0.1
  */

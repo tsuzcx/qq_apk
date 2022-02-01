@@ -161,7 +161,11 @@ public class AppCloseDialog
       return this;
     }
     this.lBtn.setText(paramString);
-    this.lBtn.setContentDescription(paramString + getContext().getString(R.string.mini_sdk_content_desc_button));
+    TextView localTextView = this.lBtn;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(getContext().getString(R.string.mini_sdk_content_desc_button));
+    localTextView.setContentDescription(localStringBuilder.toString());
     this.lBtn.setVisibility(0);
     this.lBtn.setOnClickListener(new AppCloseDialog.1(this, paramOnClickListener));
     return this;
@@ -186,7 +190,11 @@ public class AppCloseDialog
       return this;
     }
     this.rBtn.setText(paramString);
-    this.rBtn.setContentDescription(paramString + getContext().getString(R.string.mini_sdk_content_desc_button));
+    TextView localTextView = this.rBtn;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(getContext().getString(R.string.mini_sdk_content_desc_button));
+    localTextView.setContentDescription(localStringBuilder.toString());
     this.rBtn.setVisibility(0);
     this.rBtn.setOnClickListener(new AppCloseDialog.2(this, paramOnClickListener));
     return this;
@@ -236,7 +244,7 @@ public class AppCloseDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.widget.AppCloseDialog
  * JD-Core Version:    0.7.0.1
  */

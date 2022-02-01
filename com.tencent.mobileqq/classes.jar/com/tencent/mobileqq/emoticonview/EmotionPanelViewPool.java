@@ -19,15 +19,16 @@ public class EmotionPanelViewPool
   
   public static EmotionPanelViewPool getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new EmotionPanelViewPool();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new EmotionPanelViewPool();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public void destory()
@@ -35,12 +36,13 @@ public class EmotionPanelViewPool
     if (QLog.isColorLevel()) {
       QLog.d("EmotionPanelViewPool", 2, "destory");
     }
-    if ((this.views != null) && (this.views.size() > 0))
+    Object localObject = this.views;
+    if ((localObject != null) && (((Map)localObject).size() > 0))
     {
-      Iterator localIterator = this.views.entrySet().iterator();
-      while (localIterator.hasNext())
+      localObject = this.views.entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        ArrayList localArrayList = (ArrayList)((Map.Entry)localIterator.next()).getValue();
+        ArrayList localArrayList = (ArrayList)((Map.Entry)((Iterator)localObject).next()).getValue();
         if (localArrayList != null) {
           localArrayList.clear();
         }
@@ -51,14 +53,19 @@ public class EmotionPanelViewPool
   
   public View getView(int paramInt)
   {
-    if ((this.views != null) && (this.views.containsKey(Integer.valueOf(paramInt))))
+    Object localObject = this.views;
+    if ((localObject != null) && (((Map)localObject).containsKey(Integer.valueOf(paramInt))))
     {
-      Object localObject = (ArrayList)this.views.get(Integer.valueOf(paramInt));
+      localObject = (ArrayList)this.views.get(Integer.valueOf(paramInt));
       if ((localObject != null) && (((ArrayList)localObject).size() > 0))
       {
         localObject = (View)((ArrayList)localObject).remove(0);
-        if (QLog.isColorLevel()) {
-          Log.d("EmotionPanelViewPool", "getView from pool : paneyType = " + paramInt);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getView from pool : paneyType = ");
+          localStringBuilder.append(paramInt);
+          Log.d("EmotionPanelViewPool", localStringBuilder.toString());
         }
         return localObject;
       }
@@ -68,40 +75,43 @@ public class EmotionPanelViewPool
   
   public void release(int paramInt, View paramView)
   {
-    if (paramView == null) {}
-    for (;;)
-    {
+    if (paramView == null) {
       return;
-      ArrayList localArrayList;
-      if (this.views == null)
-      {
-        this.views = new ConcurrentHashMap();
-        localArrayList = new ArrayList();
-        localArrayList.add(paramView);
-        this.views.put(Integer.valueOf(paramInt), localArrayList);
-        return;
+    }
+    Object localObject = this.views;
+    if (localObject == null)
+    {
+      this.views = new ConcurrentHashMap();
+      localObject = new ArrayList();
+      ((ArrayList)localObject).add(paramView);
+      this.views.put(Integer.valueOf(paramInt), localObject);
+      return;
+    }
+    if (((Map)localObject).containsKey(Integer.valueOf(paramInt)))
+    {
+      localObject = (ArrayList)this.views.get(Integer.valueOf(paramInt));
+      if ((localObject != null) && (!((ArrayList)localObject).contains(paramView))) {
+        ((ArrayList)localObject).add(0, paramView);
       }
-      if (this.views.containsKey(Integer.valueOf(paramInt)))
-      {
-        localArrayList = (ArrayList)this.views.get(Integer.valueOf(paramInt));
-        if ((localArrayList != null) && (!localArrayList.contains(paramView))) {
-          localArrayList.add(0, paramView);
-        }
-      }
-      while (QLog.isColorLevel())
-      {
-        Log.d("EmotionPanelViewPool", "relase view panelType = " + paramInt);
-        return;
-        localArrayList = new ArrayList();
-        localArrayList.add(0, paramView);
-        this.views.put(Integer.valueOf(paramInt), localArrayList);
-      }
+    }
+    else
+    {
+      localObject = new ArrayList();
+      ((ArrayList)localObject).add(0, paramView);
+      this.views.put(Integer.valueOf(paramInt), localObject);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramView = new StringBuilder();
+      paramView.append("relase view panelType = ");
+      paramView.append(paramInt);
+      Log.d("EmotionPanelViewPool", paramView.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionPanelViewPool
  * JD-Core Version:    0.7.0.1
  */

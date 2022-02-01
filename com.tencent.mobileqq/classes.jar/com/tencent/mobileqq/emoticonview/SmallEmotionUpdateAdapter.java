@@ -9,7 +9,6 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.core.SystemEmotionPanelManager;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.widget.ProgressButton;
 import com.tencent.qphone.base.util.QLog;
@@ -20,7 +19,7 @@ public class SmallEmotionUpdateAdapter
   extends EmotionDownloadOrUpdateAdapter
 {
   public static final String TAG = "SmallEmotionUpdateAdapter";
-  protected int emojiWidth = (this.widthPixels - (int)(18.0F * this.density) * 8) / 7;
+  protected int emojiWidth = (this.widthPixels - (int)(this.density * 18.0F) * 8) / 7;
   
   public SmallEmotionUpdateAdapter(IEmoticonMainPanelApp paramIEmoticonMainPanelApp, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonPackage paramEmoticonPackage, EmoticonCallback paramEmoticonCallback, int paramInt4)
   {
@@ -33,124 +32,152 @@ public class SmallEmotionUpdateAdapter
     paramViewGroup = (SmallEmotionUpdateAdapter.SmallEmotionUpdateViewHolder)paramViewHolder;
     this.holder = paramViewGroup;
     int i = getItemViewType(paramInt);
+    Object localObject;
     if (i == 0)
     {
-      if (paramView != null) {
-        break label762;
-      }
-      paramViewHolder = EmotionPanelViewPool.getInstance().getView(7);
-      paramView = new AbsListView.LayoutParams(-1, -2);
-      if (paramViewHolder == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SmallEmotionUpdateAdapter", 2, "getEmotionView position = " + paramInt + ";itemType = " + i + ";view from infalter");
-        }
-        paramViewHolder = LayoutInflater.from(this.mContext).inflate(2131561740, null);
-        paramViewHolder.setLayoutParams(paramView);
-        paramViewHolder.setPadding(0, (int)(10.0F * this.density), 0, 0);
-        recycleView(7, paramViewHolder);
-        paramViewGroup.cover = ((URLImageView)paramViewHolder.findViewById(2131365419));
-        paramViewGroup.name = ((TextView)paramViewHolder.findViewById(2131365521));
-        paramViewGroup.downloadBtn = ((ProgressButton)paramViewHolder.findViewById(2131365519));
-        paramViewHolder.setTag(paramViewGroup);
-      }
-    }
-    for (;;)
-    {
-      updateDownloadUI(paramViewGroup);
-      paramView = paramViewHolder;
-      return paramView;
-      if (QLog.isColorLevel()) {
-        QLog.d("SmallEmotionUpdateAdapter", 2, "getEmotionView position = " + paramInt + ";itemType = " + i + ";view from cache");
-      }
-      break;
-      Object localObject;
       if (paramView == null)
       {
-        paramView = EmotionPanelViewPool.getInstance().getView(2);
+        paramView = EmotionPanelViewPool.getInstance().getView(7);
+        localObject = new AbsListView.LayoutParams(-1, -2);
         if (paramView == null)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("SmallEmotionUpdateAdapter", 2, "getEmotionView position = " + paramInt + ";itemType = " + i + ";view from infalter");
-          }
-          paramView = new EmoticonPanelLinearLayout(this.mContext, SystemEmotionPanelManager.a().a(this.mContext, false));
-          paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
-          paramView.setOrientation(0);
-          paramView.setPadding(0, (int)(this.density * 18.0F), 0, 0);
-          i = 0;
-          for (;;)
+          if (QLog.isColorLevel())
           {
+            paramViewHolder = new StringBuilder();
+            paramViewHolder.append("getEmotionView position = ");
+            paramViewHolder.append(paramInt);
+            paramViewHolder.append(";itemType = ");
+            paramViewHolder.append(i);
+            paramViewHolder.append(";view from infalter");
+            QLog.d("SmallEmotionUpdateAdapter", 2, paramViewHolder.toString());
+          }
+          paramViewHolder = LayoutInflater.from(this.mContext).inflate(2131561589, null);
+        }
+        else
+        {
+          paramViewHolder = paramView;
+          if (QLog.isColorLevel())
+          {
+            paramViewHolder = new StringBuilder();
+            paramViewHolder.append("getEmotionView position = ");
+            paramViewHolder.append(paramInt);
+            paramViewHolder.append(";itemType = ");
+            paramViewHolder.append(i);
+            paramViewHolder.append(";view from cache");
+            QLog.d("SmallEmotionUpdateAdapter", 2, paramViewHolder.toString());
             paramViewHolder = paramView;
-            if (i >= this.columnNum) {
-              break;
-            }
-            paramViewHolder = new URLImageView(this.mContext);
-            localObject = new LinearLayout.LayoutParams(this.emojiWidth, this.emojiWidth);
-            ((LinearLayout.LayoutParams)localObject).leftMargin = ((int)(this.density * 18.0F));
-            paramViewHolder.setLayoutParams((ViewGroup.LayoutParams)localObject);
-            paramViewHolder.setVisibility(8);
-            paramViewHolder.setScaleType(ImageView.ScaleType.FIT_XY);
-            paramViewHolder.setAdjustViewBounds(false);
-            paramView.addView(paramViewHolder);
-            i += 1;
           }
         }
+        paramViewHolder.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        paramViewHolder.setPadding(0, (int)(this.density * 10.0F), 0, 0);
+        recycleView(7, paramViewHolder);
+        paramViewGroup.cover = ((URLImageView)paramViewHolder.findViewById(2131365284));
+        paramViewGroup.name = ((TextView)paramViewHolder.findViewById(2131365367));
+        paramViewGroup.downloadBtn = ((ProgressButton)paramViewHolder.findViewById(2131365365));
+        paramViewHolder.setTag(paramViewGroup);
+      }
+      else
+      {
         paramViewHolder = paramView;
+      }
+      updateDownloadUI(paramViewGroup);
+      return paramViewHolder;
+    }
+    int j;
+    if (paramView == null)
+    {
+      paramView = EmotionPanelViewPool.getInstance().getView(2);
+      if (paramView == null)
+      {
         if (QLog.isColorLevel())
         {
-          QLog.d("SmallEmotionUpdateAdapter", 2, "getEmotionView position = " + paramInt + ";itemType = " + i + ";view from cache");
-          paramViewHolder = paramView;
+          paramViewHolder = new StringBuilder();
+          paramViewHolder.append("getEmotionView position = ");
+          paramViewHolder.append(paramInt);
+          paramViewHolder.append(";itemType = ");
+          paramViewHolder.append(i);
+          paramViewHolder.append(";view from infalter");
+          QLog.d("SmallEmotionUpdateAdapter", 2, paramViewHolder.toString());
         }
-        ((EmoticonPanelLinearLayout)paramViewHolder).setCallBack(this.callback);
-        recycleView(2, paramViewHolder);
-        paramView = (ViewGroup)paramViewHolder;
-        paramViewGroup.contentViews = new URLImageView[this.columnNum];
+        paramViewHolder = new EmoticonPanelLinearLayout(this.mContext, new QQEmoticonPanelLinearLayoutHelper(this.mContext, null));
+        paramViewHolder.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
+        paramViewHolder.setOrientation(0);
+        paramViewHolder.setPadding(0, (int)(this.density * 18.0F), 0, 0);
         i = 0;
         while (i < this.columnNum)
         {
-          paramViewGroup.contentViews[i] = ((URLImageView)paramView.getChildAt(i));
+          paramView = new URLImageView(this.mContext);
+          j = this.emojiWidth;
+          localObject = new LinearLayout.LayoutParams(j, j);
+          ((LinearLayout.LayoutParams)localObject).leftMargin = ((int)(this.density * 18.0F));
+          paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+          paramView.setVisibility(8);
+          paramView.setScaleType(ImageView.ScaleType.FIT_XY);
+          paramView.setAdjustViewBounds(false);
+          paramViewHolder.addView(paramView);
           i += 1;
         }
-        paramViewHolder.setTag(paramViewGroup);
       }
-      for (;;)
+      else
       {
-        i = 0;
-        paramView = paramViewHolder;
-        if (i >= this.columnNum) {
-          break;
-        }
-        int j = this.columnNum * paramInt + i;
-        if (j > this.data.size() - 1)
-        {
-          paramViewGroup.contentViews[i].setTag(null);
-          paramViewGroup.contentViews[i].setVisibility(8);
-        }
-        label755:
-        for (;;)
-        {
-          i += 1;
-          break;
-          localObject = paramViewGroup.contentViews[i];
-          paramView = (EmotionPanelData)this.data.get(j);
-          if ((paramView instanceof EmoticonInfo)) {}
-          for (paramView = (EmoticonInfo)paramView;; paramView = null)
-          {
-            if (paramView == null) {
-              break label755;
-            }
-            paramViewGroup.contentViews[i].setTag(paramView);
-            paramViewGroup.contentViews[i].setOnClickListener(this);
-            ((URLImageView)localObject).setImageDrawable(paramView.getDrawable(this.mContext, this.density));
-            ((URLImageView)localObject).setVisibility(0);
-            break;
-          }
-        }
         paramViewHolder = paramView;
+        if (QLog.isColorLevel())
+        {
+          paramViewHolder = new StringBuilder();
+          paramViewHolder.append("getEmotionView position = ");
+          paramViewHolder.append(paramInt);
+          paramViewHolder.append(";itemType = ");
+          paramViewHolder.append(i);
+          paramViewHolder.append(";view from cache");
+          QLog.d("SmallEmotionUpdateAdapter", 2, paramViewHolder.toString());
+          paramViewHolder = paramView;
+        }
       }
-      label762:
+      ((EmoticonPanelLinearLayout)paramViewHolder).setCallBack(this.callback);
+      recycleView(2, paramViewHolder);
+      paramView = (ViewGroup)paramViewHolder;
+      paramViewGroup.contentViews = new URLImageView[this.columnNum];
+      i = 0;
+      while (i < this.columnNum)
+      {
+        paramViewGroup.contentViews[i] = ((URLImageView)paramView.getChildAt(i));
+        i += 1;
+      }
+      paramViewHolder.setTag(paramViewGroup);
+    }
+    else
+    {
       paramViewHolder = paramView;
     }
+    i = 0;
+    while (i < this.columnNum)
+    {
+      j = this.columnNum * paramInt + i;
+      if (j > this.data.size() - 1)
+      {
+        paramViewGroup.contentViews[i].setTag(null);
+        paramViewGroup.contentViews[i].setVisibility(8);
+      }
+      else
+      {
+        localObject = paramViewGroup.contentViews[i];
+        paramView = (EmotionPanelData)this.data.get(j);
+        if ((paramView instanceof EmoticonInfo)) {
+          paramView = (EmoticonInfo)paramView;
+        } else {
+          paramView = null;
+        }
+        if (paramView != null)
+        {
+          paramViewGroup.contentViews[i].setTag(paramView);
+          paramViewGroup.contentViews[i].setOnClickListener(this);
+          ((URLImageView)localObject).setImageDrawable(paramView.getDrawable(this.mContext, this.density));
+          ((URLImageView)localObject).setVisibility(0);
+        }
+      }
+      i += 1;
+    }
+    return paramViewHolder;
   }
   
   public BaseEmotionAdapter.ViewHolder newHolder()
@@ -160,7 +187,7 @@ public class SmallEmotionUpdateAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SmallEmotionUpdateAdapter
  * JD-Core Version:    0.7.0.1
  */

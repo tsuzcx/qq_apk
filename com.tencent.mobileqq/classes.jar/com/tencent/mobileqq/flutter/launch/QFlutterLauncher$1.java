@@ -10,7 +10,10 @@ class QFlutterLauncher$1
   
   public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    QLog.d("QFlutter.launcher", 1, "onQuickInstallResult suc=" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onQuickInstallResult suc=");
+    localStringBuilder.append(paramBoolean);
+    QLog.d("QFlutter.launcher", 1, localStringBuilder.toString());
     if (paramBoolean)
     {
       QFlutterLauncher.a().a(QFlutterLauncher.InstallResult.a(paramBundle));
@@ -21,7 +24,7 @@ class QFlutterLauncher$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.launch.QFlutterLauncher.1
  * JD-Core Version:    0.7.0.1
  */

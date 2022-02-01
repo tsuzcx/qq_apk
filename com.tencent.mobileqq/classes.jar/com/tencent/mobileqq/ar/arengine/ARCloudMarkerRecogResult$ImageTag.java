@@ -24,21 +24,38 @@ public class ARCloudMarkerRecogResult$ImageTag
   {
     try
     {
-      String str1 = new String(this.jdField_a_of_type_ArrayOfByte, "utf-8");
-      return "ImageTag{imageId = " + this.jdField_a_of_type_JavaLangString + ", tagName = " + this.jdField_b_of_type_JavaLangString + ", tagConfidence = " + this.jdField_a_of_type_Int + ", tagConfidence_f = " + this.jdField_a_of_type_Float + ", need_check_lbs = " + this.jdField_b_of_type_Int + ", cdbRetCode = " + this.c + ", cdbRes = " + str1 + '}';
+      str = new String(this.jdField_a_of_type_ArrayOfByte, "utf-8");
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        String str2 = "";
-      }
+      String str;
+      label17:
+      StringBuilder localStringBuilder;
+      break label17;
     }
+    str = "";
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ImageTag{imageId = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", tagName = ");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", tagConfidence = ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", tagConfidence_f = ");
+    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(", need_check_lbs = ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", cdbRetCode = ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", cdbRes = ");
+    localStringBuilder.append(str);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudMarkerRecogResult.ImageTag
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 
 public abstract class VideoJsProxy
 {
-  public VideoJsProxy.Bridge mBridge;
+  protected VideoJsProxy.Bridge mBridge;
   
   public abstract void chooseVideo(Activity paramActivity, String paramString1, String paramString2, int paramInt);
   
@@ -25,7 +25,7 @@ public abstract class VideoJsProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.proxy.VideoJsProxy
  * JD-Core Version:    0.7.0.1
  */

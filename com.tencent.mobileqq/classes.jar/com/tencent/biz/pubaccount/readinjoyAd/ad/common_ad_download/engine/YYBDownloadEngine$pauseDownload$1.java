@@ -13,38 +13,37 @@ final class YYBDownloadEngine$pauseDownload$1
   
   public final void run()
   {
-    Object localObject2 = null;
-    Object localObject3 = new StringBuilder().append("pauseDownload: pkg = ");
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("pauseDownload: pkg = ");
     Object localObject1 = this.a;
-    if (localObject1 != null)
-    {
+    Object localObject2 = null;
+    if (localObject1 != null) {
       localObject1 = ((ADVideoAppDownloadData)localObject1).d;
-      localObject3 = ((StringBuilder)localObject3).append((String)localObject1).append("  url = ");
-      localObject1 = this.a;
-      if (localObject1 == null) {
-        break label102;
-      }
-    }
-    label102:
-    for (localObject1 = ((ADVideoAppDownloadData)localObject1).c;; localObject1 = null)
-    {
-      ReadInJoyAdLog.a("AD_DOWNLOAD_TAG", (String)localObject1);
-      localObject3 = DownloadManagerV2.a();
-      ADVideoAppDownloadData localADVideoAppDownloadData = this.a;
-      localObject1 = localObject2;
-      if (localADVideoAppDownloadData != null) {
-        localObject1 = localADVideoAppDownloadData.c;
-      }
-      ((DownloadManagerV2)localObject3).a((String)localObject1);
-      return;
+    } else {
       localObject1 = null;
-      break;
     }
+    ((StringBuilder)localObject3).append((String)localObject1);
+    ((StringBuilder)localObject3).append("  url = ");
+    localObject1 = this.a;
+    if (localObject1 != null) {
+      localObject1 = ((ADVideoAppDownloadData)localObject1).c;
+    } else {
+      localObject1 = null;
+    }
+    ((StringBuilder)localObject3).append((String)localObject1);
+    ReadInJoyAdLog.a("AD_DOWNLOAD_TAG", ((StringBuilder)localObject3).toString());
+    localObject3 = DownloadManagerV2.a();
+    ADVideoAppDownloadData localADVideoAppDownloadData = this.a;
+    localObject1 = localObject2;
+    if (localADVideoAppDownloadData != null) {
+      localObject1 = localADVideoAppDownloadData.c;
+    }
+    ((DownloadManagerV2)localObject3).a((String)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.engine.YYBDownloadEngine.pauseDownload.1
  * JD-Core Version:    0.7.0.1
  */

@@ -37,7 +37,11 @@ public class QGameApp
     if (TextUtils.isEmpty(paramString)) {
       return paramContext.getCacheDir().getAbsolutePath();
     }
-    return paramContext.getCacheDir().getAbsolutePath() + File.separator + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getCacheDir().getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   public static String a(Context paramContext, String paramString1, String paramString2)
@@ -45,38 +49,52 @@ public class QGameApp
     if (TextUtils.isEmpty(paramString2)) {
       return a(paramContext, paramString1);
     }
-    return a(paramContext, paramString1) + File.separator + paramString2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a(paramContext, paramString1));
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString2);
+    return localStringBuilder.toString();
   }
   
   private String a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return "";
-      paramString = new File(paramString);
-    } while ((!paramString.exists()) || (paramString.length() <= 0L));
-    try
-    {
-      paramString = new JSONObject(FileUtils.b(paramString)).optString("version");
-      return paramString;
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
+    paramString = new File(paramString);
+    if ((paramString.exists()) && (paramString.length() > 0L)) {
+      try
+      {
+        paramString = new JSONObject(FileUtils.readFileToString(paramString)).optString("version");
+        return paramString;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
     return "";
   }
   
   public static String a(String paramString1, String paramString2, String paramString3)
   {
-    String str = paramString1;
-    if (!TextUtils.isEmpty(paramString2)) {
-      str = paramString1 + File.separator + paramString2;
+    Object localObject = paramString1;
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append(paramString2);
+      localObject = ((StringBuilder)localObject).toString();
     }
-    paramString1 = str;
-    if (!TextUtils.isEmpty(paramString3)) {
-      paramString1 = str + File.separator + paramString3;
+    paramString1 = (String)localObject;
+    if (!TextUtils.isEmpty(paramString3))
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append((String)localObject);
+      paramString1.append(File.separator);
+      paramString1.append(paramString3);
+      paramString1 = paramString1.toString();
     }
     return paramString1;
   }
@@ -97,35 +115,34 @@ public class QGameApp
   
   private boolean a(boolean paramBoolean, String paramString)
   {
-    boolean bool = false;
-    String str1;
-    String str2;
     if (!paramBoolean)
     {
-      str1 = a(a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs", "libsconfig.json"));
-      str2 = a(a(paramString, "", "libsconfig.json"));
-      if ((!TextUtils.isEmpty(str2)) && (str2.equals(str1))) {
-        paramBoolean = true;
+      str = a(a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs", "libsconfig.json"));
+      localObject = a(a(paramString, "", "libsconfig.json"));
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(str))) {
+        return true;
       }
     }
-    do
-    {
-      return paramBoolean;
-      str1 = a(paramString, "qgamelibs", "");
-      str2 = a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs") + File.separator;
-      FileUtils.b(str2);
-      paramBoolean = bool;
-    } while (FileUtils.a(str1, str2, false) < 0);
-    return FileUtils.d(a(paramString, "", "libsconfig.json"), a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs", "libsconfig.json"));
+    String str = a(paramString, "qgamelibs", "");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs"));
+    ((StringBuilder)localObject).append(File.separator);
+    localObject = ((StringBuilder)localObject).toString();
+    FileUtils.deleteFilesInDirectory((String)localObject);
+    if (FileUtils.copyDirectory(str, (String)localObject, false) >= 0) {
+      return FileUtils.copyFile(a(paramString, "", "libsconfig.json"), a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs", "libsconfig.json"));
+    }
+    return false;
   }
   
   private String[] a()
   {
-    String str3 = this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo.a.getString("unzipped_path");
+    String str1 = this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo.a.getString("unzipped_path");
     String str2 = a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs", "ejecta.js");
-    String str1 = null;
-    if (!TextUtils.isEmpty(str3)) {
-      str1 = a(str3, this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo.h, "index.js");
+    if (!TextUtils.isEmpty(str1)) {
+      str1 = a(str1, this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo.h, "index.js");
+    } else {
+      str1 = null;
     }
     return new String[] { str2, str1 };
   }
@@ -133,23 +150,30 @@ public class QGameApp
   @SuppressLint({"UnsafeDynamicallyLoadedCode"})
   private boolean b()
   {
-    int i = 0;
     if (!jdField_a_of_type_Boolean)
     {
       Object localObject = new File(a(this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity, "qgamelibs"));
-      if (!((File)localObject).isDirectory()) {}
-      do
-      {
+      boolean bool = ((File)localObject).isDirectory();
+      int i = 0;
+      if (!bool) {
         return false;
-        localObject = ((File)localObject).listFiles(new QGameApp.2(this));
-      } while ((localObject == null) || (localObject.length == 0));
-      int j = localObject.length;
-      while (i < j)
-      {
-        System.load(localObject[i].getAbsolutePath());
-        i += 1;
       }
-      jdField_a_of_type_Boolean = true;
+      localObject = ((File)localObject).listFiles(new QGameApp.2(this));
+      if (localObject != null)
+      {
+        if (localObject.length == 0) {
+          return false;
+        }
+        int j = localObject.length;
+        while (i < j)
+        {
+          System.load(localObject[i].getAbsolutePath());
+          i += 1;
+        }
+        jdField_a_of_type_Boolean = true;
+        return true;
+      }
+      return false;
     }
     return true;
   }
@@ -199,7 +223,7 @@ public class QGameApp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qg.qq.QGameApp
  * JD-Core Version:    0.7.0.1
  */

@@ -18,12 +18,32 @@ public class MovieMaterial
   
   public String toString()
   {
-    return "MovieInfo{isTouchable='" + this.isTouchable + '\'' + ", hasAtmosphere='" + this.hasAtmosphere + '\'' + ", loopAtmosphere='" + this.loopAtmosphere + '\'' + ", loopDoodle='" + this.loopDoodle + '\'' + ", doodleName='" + this.doodleName + '\'' + ", atmosphereName='" + this.atmosphereName + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MovieInfo{isTouchable='");
+    localStringBuilder.append(this.isTouchable);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", hasAtmosphere='");
+    localStringBuilder.append(this.hasAtmosphere);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", loopAtmosphere='");
+    localStringBuilder.append(this.loopAtmosphere);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", loopDoodle='");
+    localStringBuilder.append(this.loopDoodle);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", doodleName='");
+    localStringBuilder.append(this.doodleName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", atmosphereName='");
+    localStringBuilder.append(this.atmosphereName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ptvfilter.material.MovieMaterial
  * JD-Core Version:    0.7.0.1
  */

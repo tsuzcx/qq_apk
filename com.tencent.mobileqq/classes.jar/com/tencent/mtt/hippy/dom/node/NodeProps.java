@@ -52,7 +52,9 @@ public class NodeProps
   public static final float FONT_SIZE_SP = 14.0F;
   public static final String FONT_STYLE = "fontStyle";
   public static final String FONT_WEIGHT = "fontWeight";
+  public static final String GAUSSIAN_BLUR = "gaussianBlur";
   public static final String HEIGHT = "height";
+  public static final String IMAGE_CLASS_NAME = "Image";
   public static final String JUSTIFY_CONTENT = "justifyContent";
   private static final HashSet<String> JUST_LAYOUT_PROPS = new HashSet(Arrays.asList(new String[] { "alignSelf", "alignItems", "collapsable", "flex", "flexDirection", "flexWrap", "justifyContent", "position", "right", "top", "bottom", "left", "width", "height", "minWidth", "maxWidth", "minHeight", "maxHeight", "margin", "marginVertical", "marginHorizontal", "marginLeft", "marginRight", "marginTop", "marginBottom", "padding", "paddingVertical", "paddingHorizontal", "paddingLeft", "paddingRight", "paddingTop", "paddingBottom" }));
   public static final String LEFT = "left";
@@ -105,6 +107,13 @@ public class NodeProps
   public static final String RESIZE_MODE = "resizeMode";
   public static final String RIGHT = "right";
   public static final String ROOT_NODE = "RootNode";
+  public static final String SHADOW_COLOR = "shadowColor";
+  public static final String SHADOW_OFFSET = "shadowOffset";
+  public static final String SHADOW_OFFSET_X = "shadowOffsetX";
+  public static final String SHADOW_OFFSET_Y = "shadowOffsetY";
+  public static final String SHADOW_OPACITY = "shadowOpacity";
+  public static final String SHADOW_RADIUS = "shadowRadius";
+  public static final String SHADOW_SPREAD = "shadowSpread";
   public static final String STYLE = "style";
   public static final String TEXT_ALIGN = "textAlign";
   public static final String TEXT_ALIGN_VERTICAL = "textAlignVertical";
@@ -120,177 +129,191 @@ public class NodeProps
   
   public static boolean isJustLayout(HippyMap paramHippyMap, String paramString)
   {
-    boolean bool3 = true;
-    boolean bool4 = true;
-    boolean bool5 = true;
-    boolean bool1 = true;
-    boolean bool2 = false;
     if (JUST_LAYOUT_PROPS.contains(paramString)) {
+      return true;
+    }
+    int i = paramString.hashCode();
+    boolean bool2 = false;
+    boolean bool3 = false;
+    boolean bool4 = false;
+    boolean bool5 = false;
+    boolean bool6 = false;
+    boolean bool7 = false;
+    boolean bool8 = false;
+    boolean bool9 = false;
+    boolean bool10 = false;
+    boolean bool11 = false;
+    boolean bool1 = false;
+    switch (i)
+    {
+    default: 
+      break;
+    case 1349188574: 
+      if (paramString.equals("borderRadius")) {
+        i = 1;
+      }
+      break;
+    case 741115130: 
+      if (paramString.equals("borderWidth")) {
+        i = 6;
+      }
+      break;
+    case 529642498: 
+      if (paramString.equals("overflow")) {
+        i = 11;
+      }
+      break;
+    case -223992013: 
+      if (paramString.equals("borderLeftWidth")) {
+        i = 7;
+      }
+      break;
+    case -242276144: 
+      if (paramString.equals("borderLeftColor")) {
+        i = 2;
+      }
+      break;
+    case -1267206133: 
+      if (paramString.equals("opacity")) {
+        i = 0;
+      }
+      break;
+    case -1290574193: 
+      if (paramString.equals("borderBottomWidth")) {
+        i = 10;
+      }
+      break;
+    case -1308858324: 
+      if (paramString.equals("borderBottomColor")) {
+        i = 5;
+      }
+      break;
+    case -1452542531: 
+      if (paramString.equals("borderTopWidth")) {
+        i = 8;
+      }
+      break;
+    case -1470826662: 
+      if (paramString.equals("borderTopColor")) {
+        i = 4;
+      }
+      break;
+    case -1971292586: 
+      if (paramString.equals("borderRightWidth")) {
+        i = 9;
+      }
+      break;
+    case -1989576717: 
+      if (paramString.equals("borderRightColor")) {
+        i = 3;
+      }
+      break;
+    }
+    i = -1;
+    switch (i)
+    {
+    default: 
+      return false;
+    case 11: 
+      if ((paramHippyMap.isNull("overflow")) || ("visible".equals(paramHippyMap.getString("overflow")))) {
+        bool1 = true;
+      }
+      return bool1;
+    case 10: 
+      if (!paramHippyMap.isNull("borderBottomWidth"))
+      {
+        bool1 = bool2;
+        if (paramHippyMap.getDouble("borderBottomWidth") != 0.0D) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+      return bool1;
+    case 9: 
+      if (!paramHippyMap.isNull("borderRightWidth"))
+      {
+        bool1 = bool3;
+        if (paramHippyMap.getDouble("borderRightWidth") != 0.0D) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+      return bool1;
+    case 8: 
+      if (!paramHippyMap.isNull("borderTopWidth"))
+      {
+        bool1 = bool4;
+        if (paramHippyMap.getDouble("borderTopWidth") != 0.0D) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+      return bool1;
+    case 7: 
+      if (!paramHippyMap.isNull("borderLeftWidth"))
+      {
+        bool1 = bool5;
+        if (paramHippyMap.getDouble("borderLeftWidth") != 0.0D) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+      return bool1;
+    case 6: 
+      if (!paramHippyMap.isNull("borderWidth"))
+      {
+        bool1 = bool6;
+        if (paramHippyMap.getDouble("borderWidth") != 0.0D) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+      return bool1;
+    case 5: 
+      bool1 = bool7;
+      if (paramHippyMap.getInt("borderBottomColor") == 0) {
+        bool1 = true;
+      }
+      return bool1;
+    case 4: 
+      bool1 = bool8;
+      if (paramHippyMap.getInt("borderTopColor") == 0) {
+        bool1 = true;
+      }
+      return bool1;
+    case 3: 
+      bool1 = bool9;
+      if (paramHippyMap.getInt("borderRightColor") == 0) {
+        bool1 = true;
+      }
+      return bool1;
+    case 2: 
+      bool1 = bool10;
+      if (paramHippyMap.getInt("borderLeftColor") == 0) {
+        bool1 = true;
+      }
+      return bool1;
+    case 1: 
+      if ((paramHippyMap.containsKey("backgroundColor")) && (paramHippyMap.getInt("backgroundColor") != 0)) {
+        return false;
+      }
+      return (!paramHippyMap.containsKey("borderWidth")) || (paramHippyMap.isNull("borderWidth")) || (paramHippyMap.getDouble("borderWidth") == 0.0D);
+    }
+    if (!paramHippyMap.isNull("opacity"))
+    {
+      bool1 = bool11;
+      if (paramHippyMap.getDouble("opacity") != 1.0D) {}
+    }
+    else
+    {
       bool1 = true;
     }
-    label26:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    return bool1;
-                    int i = -1;
-                    switch (paramString.hashCode())
-                    {
-                    }
-                    for (;;)
-                    {
-                      switch (i)
-                      {
-                      default: 
-                        return false;
-                      case 0: 
-                        if (!paramHippyMap.isNull("opacity"))
-                        {
-                          bool1 = bool2;
-                          if (paramHippyMap.getDouble("opacity") != 1.0D) {
-                            break label26;
-                          }
-                        }
-                        return true;
-                        if (paramString.equals("opacity"))
-                        {
-                          i = 0;
-                          continue;
-                          if (paramString.equals("borderRadius"))
-                          {
-                            i = 1;
-                            continue;
-                            if (paramString.equals("borderLeftColor"))
-                            {
-                              i = 2;
-                              continue;
-                              if (paramString.equals("borderRightColor"))
-                              {
-                                i = 3;
-                                continue;
-                                if (paramString.equals("borderTopColor"))
-                                {
-                                  i = 4;
-                                  continue;
-                                  if (paramString.equals("borderBottomColor"))
-                                  {
-                                    i = 5;
-                                    continue;
-                                    if (paramString.equals("borderWidth"))
-                                    {
-                                      i = 6;
-                                      continue;
-                                      if (paramString.equals("borderLeftWidth"))
-                                      {
-                                        i = 7;
-                                        continue;
-                                        if (paramString.equals("borderTopWidth"))
-                                        {
-                                          i = 8;
-                                          continue;
-                                          if (paramString.equals("borderRightWidth"))
-                                          {
-                                            i = 9;
-                                            continue;
-                                            if (paramString.equals("borderBottomWidth"))
-                                            {
-                                              i = 10;
-                                              continue;
-                                              if (paramString.equals("overflow")) {
-                                                i = 11;
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                        break;
-                      }
-                    }
-                    if (!paramHippyMap.containsKey("backgroundColor")) {
-                      break;
-                    }
-                    bool1 = bool2;
-                  } while (paramHippyMap.getInt("backgroundColor") != 0);
-                  if ((!paramHippyMap.containsKey("borderWidth")) || (paramHippyMap.isNull("borderWidth"))) {
-                    break;
-                  }
-                  bool1 = bool2;
-                } while (paramHippyMap.getDouble("borderWidth") != 0.0D);
-                return true;
-                if (paramHippyMap.getInt("borderLeftColor") == 0) {}
-                for (;;)
-                {
-                  return bool1;
-                  bool1 = false;
-                }
-                if (paramHippyMap.getInt("borderRightColor") == 0) {}
-                for (bool1 = bool3;; bool1 = false) {
-                  return bool1;
-                }
-                if (paramHippyMap.getInt("borderTopColor") == 0) {}
-                for (bool1 = bool4;; bool1 = false) {
-                  return bool1;
-                }
-                if (paramHippyMap.getInt("borderBottomColor") == 0) {}
-                for (bool1 = bool5;; bool1 = false) {
-                  return bool1;
-                }
-                if (paramHippyMap.isNull("borderWidth")) {
-                  break;
-                }
-                bool1 = bool2;
-              } while (paramHippyMap.getDouble("borderWidth") != 0.0D);
-              return true;
-              if (paramHippyMap.isNull("borderLeftWidth")) {
-                break;
-              }
-              bool1 = bool2;
-            } while (paramHippyMap.getDouble("borderLeftWidth") != 0.0D);
-            return true;
-            if (paramHippyMap.isNull("borderTopWidth")) {
-              break;
-            }
-            bool1 = bool2;
-          } while (paramHippyMap.getDouble("borderTopWidth") != 0.0D);
-          return true;
-          if (paramHippyMap.isNull("borderRightWidth")) {
-            break;
-          }
-          bool1 = bool2;
-        } while (paramHippyMap.getDouble("borderRightWidth") != 0.0D);
-        return true;
-        if (paramHippyMap.isNull("borderBottomWidth")) {
-          break;
-        }
-        bool1 = bool2;
-      } while (paramHippyMap.getDouble("borderBottomWidth") != 0.0D);
-      return true;
-      if (paramHippyMap.isNull("overflow")) {
-        break;
-      }
-      bool1 = bool2;
-    } while (!"visible".equals(paramHippyMap.getString("overflow")));
-    return true;
+    return bool1;
   }
   
   public static boolean isTouchEventProp(String paramString)
@@ -300,7 +323,7 @@ public class NodeProps
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.node.NodeProps
  * JD-Core Version:    0.7.0.1
  */

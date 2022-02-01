@@ -15,13 +15,16 @@ class FriendShipViewManager$1
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseIDirector.a();
       return;
     }
-    QLog.e("FriendShipViewManager", 1, "director.prepare not ready, cannot play anim, type = " + this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseIDirector.a());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("director.prepare not ready, cannot play anim, type = ");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseIDirector.a());
+    QLog.e("FriendShipViewManager", 1, localStringBuilder.toString());
     FriendShipViewManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBaseFriendShipViewManager, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.friendship.impl.base.FriendShipViewManager.1
  * JD-Core Version:    0.7.0.1
  */

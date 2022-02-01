@@ -11,23 +11,27 @@ class QRDisplayActivity$18
   
   public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if ((this.a.g == null) || (!this.a.g.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
+    if (this.a.g != null)
     {
-    case -2: 
-    case -1: 
-    default: 
-      QRUtils.a(1, 2131719291);
-      return;
+      if (!this.a.g.equals(paramBaseResp.transaction)) {
+        return;
+      }
+      int i = paramBaseResp.errCode;
+      if (i != -2)
+      {
+        if (i != 0)
+        {
+          QRUtils.a(1, 2131719009);
+          return;
+        }
+        QRUtils.a(2, 2131719027);
+      }
     }
-    QRUtils.a(2, 2131719309);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.18
  * JD-Core Version:    0.7.0.1
  */

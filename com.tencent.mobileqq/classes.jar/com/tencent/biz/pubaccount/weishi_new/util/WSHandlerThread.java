@@ -19,23 +19,18 @@ public class WSHandlerThread
   {
     if (this.a != null)
     {
-      if (Build.VERSION.SDK_INT < 18) {
-        break label29;
+      if (Build.VERSION.SDK_INT >= 18) {
+        this.a.quitSafely();
+      } else {
+        this.a.quit();
       }
-      this.a.quitSafely();
-    }
-    for (;;)
-    {
       this.a = null;
-      return;
-      label29:
-      this.a.quit();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WSHandlerThread
  * JD-Core Version:    0.7.0.1
  */

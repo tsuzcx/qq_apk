@@ -29,13 +29,14 @@ public final class SerializationPB$TagFeed
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 48, 56, 66, 74, 82, 90, 96, 106 }, new String[] { "video_list_feed", "video_count", "tag_id", "tag_name", "tag_desc", "tag_type", "join_count", "wording", "schema", "content", "blur", "recommend_id", "title_wording" }, new Object[] { null, Integer.valueOf(0), Long.valueOf(0L), "", "", Integer.valueOf(0), Integer.valueOf(0), "", "", "", "", Long.valueOf(0L), localByteStringMicro }, TagFeed.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 48, 56, 66, 74, 82, 90, 96, 106 }, new String[] { "video_list_feed", "video_count", "tag_id", "tag_name", "tag_desc", "tag_type", "join_count", "wording", "schema", "content", "blur", "recommend_id", "title_wording" }, new Object[] { null, localInteger, Long.valueOf(0L), "", "", localInteger, localInteger, "", "", "", "", Long.valueOf(0L), localByteStringMicro }, TagFeed.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.SerializationPB.TagFeed
  * JD-Core Version:    0.7.0.1
  */

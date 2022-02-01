@@ -9,21 +9,26 @@ final class VasCommonJsPlugin$5
   
   public void run()
   {
-    if (this.val$webView != null) {}
-    try
-    {
-      this.val$webView.loadUrl("javascript:" + this.val$script);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    WebView localWebView = this.val$webView;
+    if (localWebView != null) {
+      try
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("javascript:");
+        localStringBuilder.append(this.val$script);
+        localWebView.loadUrl(localStringBuilder.toString());
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin.5
  * JD-Core Version:    0.7.0.1
  */

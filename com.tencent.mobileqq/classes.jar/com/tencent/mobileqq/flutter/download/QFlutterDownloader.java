@@ -4,10 +4,13 @@ import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.business.qflutter.ExpandModuleKey;
 import com.tencent.mobileqq.config.business.qflutter.QFlutterResConfig;
 import com.tencent.mobileqq.config.business.qflutter.QFlutterResConfigProcessor;
 import com.tencent.mobileqq.earlydownload.EarlyDataFactory;
 import com.tencent.mobileqq.earlydownload.handler.EarlyHandler;
+import com.tencent.mobileqq.earlydownload.xmldata.QFlutterAppData;
+import com.tencent.mobileqq.earlydownload.xmldata.QFlutterEngineData;
 import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -34,17 +37,28 @@ public class QFlutterDownloader<T extends XmlData>
   {
     String str = QFlutterResConfigProcessor.a().a(this.jdField_b_of_type_JavaLangString);
     XmlData localXmlData = a();
+    StringBuilder localStringBuilder;
     if (!TextUtils.equals(this.c, str))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QFlutter.QFlutterDownloader", 2, new Object[] { "[" + this.c + "]", " data pkg name updated! ", this.c, " -> ", str });
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[");
+        localStringBuilder.append(this.c);
+        localStringBuilder.append("]");
+        QLog.d("QFlutter.QFlutterDownloader", 2, new Object[] { localStringBuilder.toString(), " data pkg name updated! ", this.c, " -> ", str });
       }
       this.c = str;
     }
     if (!TextUtils.equals(localXmlData.strPkgName, str))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QFlutter.QFlutterDownloader", 2, new Object[] { "[" + this.c + "]", " data pkg name updated! ", localXmlData.strPkgName, " -> ", str, " clear loadState" });
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[");
+        localStringBuilder.append(this.c);
+        localStringBuilder.append("]");
+        QLog.d("QFlutter.QFlutterDownloader", 2, new Object[] { localStringBuilder.toString(), " data pkg name updated! ", localXmlData.strPkgName, " -> ", str, " clear loadState" });
       }
       localXmlData.strPkgName = str;
       localXmlData.loadState = 0;
@@ -58,26 +72,53 @@ public class QFlutterDownloader<T extends XmlData>
     Object localObject = BaseApplicationImpl.sApplication.getFilesDir();
     if (localObject == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QFlutter.QFlutterDownloader", 2, "[" + this.c + "]getFilesDir is null");
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[");
+        ((StringBuilder)localObject).append(this.c);
+        ((StringBuilder)localObject).append("]getFilesDir is null");
+        QLog.i("QFlutter.QFlutterDownloader", 2, ((StringBuilder)localObject).toString());
       }
-      localObject = "";
+      return "";
     }
-    String str;
-    do
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localObject);
+    localStringBuilder.append("/pddata/prd/");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localObject = localStringBuilder.toString();
+    if (QLog.isColorLevel())
     {
-      return localObject;
-      str = localObject + "/pddata/prd/" + this.jdField_b_of_type_JavaLangString;
-      localObject = str;
-    } while (!QLog.isColorLevel());
-    QLog.i("QFlutter.QFlutterDownloader", 2, "[" + this.c + "]getLibDir ,path = " + str);
-    return str;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[");
+      localStringBuilder.append(this.c);
+      localStringBuilder.append("]getLibDir ,path = ");
+      localStringBuilder.append((String)localObject);
+      QLog.i("QFlutter.QFlutterDownloader", 2, localStringBuilder.toString());
+    }
+    return localObject;
   }
   
-  private void g()
+  public static void g()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterDownloader", 2, new Object[] { "[" + this.c + "]restoreState() res:", this.jdField_b_of_type_JavaLangString });
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (QQAppInterface)localObject;
+      QFlutterEngineData.createDownloader((QQAppInterface)localObject).f();
+      QFlutterAppData.createDownloader((QQAppInterface)localObject).f();
+    }
+  }
+  
+  private void h()
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[");
+      localStringBuilder.append(this.c);
+      localStringBuilder.append("]restoreState() res:");
+      QLog.d("QFlutter.QFlutterDownloader", 2, new Object[] { localStringBuilder.toString(), this.jdField_b_of_type_JavaLangString });
     }
     a().loadState = 0;
     a().Version = 0;
@@ -119,8 +160,20 @@ public class QFlutterDownloader<T extends XmlData>
   {
     super.a(paramLong1, paramLong2);
     int i = (int)(100L * paramLong1 / paramLong2);
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterDownloader", 2, new Object[] { "[" + this.c + "]", "download progress: (" + paramLong1 + "/" + paramLong2 + ") progress = ", Integer.valueOf(i) });
+    if (QLog.isColorLevel())
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[");
+      ((StringBuilder)localObject).append(this.c);
+      ((StringBuilder)localObject).append("]");
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("download progress: (");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append("/");
+      localStringBuilder.append(paramLong2);
+      localStringBuilder.append(") progress = ");
+      QLog.d("QFlutter.QFlutterDownloader", 2, new Object[] { localObject, localStringBuilder.toString(), Integer.valueOf(i) });
     }
     QFlutterInstaller.a(this.a.jdField_b_of_type_Int, paramLong1, paramLong2);
   }
@@ -128,7 +181,11 @@ public class QFlutterDownloader<T extends XmlData>
   public void a(XmlData paramXmlData, boolean paramBoolean, int paramInt, String paramString)
   {
     super.a(paramXmlData, paramBoolean, paramInt, paramString);
-    QLog.d("QFlutter.QFlutterDownloader", 1, String.format("[" + this.c + "]onDownloadFinish, result: %s, errCode: %s, filepath: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramString }));
+    paramXmlData = new StringBuilder();
+    paramXmlData.append("[");
+    paramXmlData.append(this.c);
+    paramXmlData.append("]onDownloadFinish, result: %s, errCode: %s, filepath: %s");
+    QLog.d("QFlutter.QFlutterDownloader", 1, String.format(paramXmlData.toString(), new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramString }));
     if (!paramBoolean) {
       QFlutterInstaller.a(this.a.jdField_b_of_type_Int, false);
     }
@@ -138,16 +195,30 @@ public class QFlutterDownloader<T extends XmlData>
   {
     boolean bool = QFlutterInstaller.a(paramString, a());
     if (!bool) {
-      g();
+      h();
     }
-    QLog.d("QFlutter.QFlutterDownloader", 1, new Object[] { "[" + this.c + "]", "download success: " + paramString + " " + bool });
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[");
+    ((StringBuilder)localObject).append(this.c);
+    ((StringBuilder)localObject).append("]");
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("download success: ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(bool);
+    QLog.d("QFlutter.QFlutterDownloader", 1, new Object[] { localObject, localStringBuilder.toString() });
     QFlutterInstaller.a(this.a.jdField_b_of_type_Int, bool);
     super.a(paramString);
   }
   
   public void a(boolean paramBoolean)
   {
-    QLog.d("QFlutter.QFlutterDownloader", 1, String.format("[" + this.c + "]restartDownload userClick: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("]restartDownload userClick: %s");
+    QLog.d("QFlutter.QFlutterDownloader", 1, String.format(localStringBuilder.toString(), new Object[] { Boolean.valueOf(paramBoolean) }));
     super.a(paramBoolean);
     if (!this.d) {
       this.d = paramBoolean;
@@ -164,12 +235,20 @@ public class QFlutterDownloader<T extends XmlData>
     if (paramBoolean) {
       QFlutterInstaller.a(a());
     }
-    boolean bool = QFlutterResConfigProcessor.a().a(this.jdField_b_of_type_JavaLangString);
-    QLog.d("QFlutter.QFlutterDownloader", 1, String.format("[" + this.c + "] downloadResource, mHadRequestedByUser = %s, resCanPreload = %s needClearData = %s", new Object[] { Boolean.valueOf(this.d), Boolean.valueOf(bool), Boolean.valueOf(paramBoolean) }));
+    boolean bool = QFlutterResConfigProcessor.a(ExpandModuleKey.QFlutterEngine);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("] downloadResource, mHadRequestedByUser = %s, resCanPreload = %s needClearData = %s");
+    QLog.d("QFlutter.QFlutterDownloader", 1, String.format(localStringBuilder.toString(), new Object[] { Boolean.valueOf(this.d), Boolean.valueOf(bool), Boolean.valueOf(paramBoolean) }));
     if ((!this.d) && (!bool)) {
       return false;
     }
-    QLog.d("QFlutter.QFlutterDownloader", 1, String.format("[" + this.c + "]start download... url = %s", new Object[] { a().strResURL_big }));
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("]start download... url = %s");
+    QLog.d("QFlutter.QFlutterDownloader", 1, String.format(localStringBuilder.toString(), new Object[] { a().strResURL_big }));
     return super.e();
   }
   
@@ -182,33 +261,49 @@ public class QFlutterDownloader<T extends XmlData>
   {
     String str = f();
     boolean bool = FileUtil.a(new File(str));
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterDownloader", 2, new Object[] { "[" + this.c + "]", String.format("delete unzipFile: %s, ret: %s", new Object[] { str, Boolean.valueOf(bool) }) });
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[");
+      localStringBuilder.append(this.c);
+      localStringBuilder.append("]");
+      QLog.d("QFlutter.QFlutterDownloader", 2, new Object[] { localStringBuilder.toString(), String.format("delete unzipFile: %s, ret: %s", new Object[] { str, Boolean.valueOf(bool) }) });
     }
   }
   
   public void b(XmlData paramXmlData)
   {
     super.b(paramXmlData);
-    if (paramXmlData != null) {}
-    for (long l = paramXmlData.totalSize;; l = 0L)
+    long l;
+    if (paramXmlData != null) {
+      l = paramXmlData.totalSize;
+    } else {
+      l = 0L;
+    }
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QFlutter.QFlutterDownloader", 2, new Object[] { "[" + this.c + "]", "download begin, totalLen: ", Long.valueOf(l) });
-      }
-      return;
+      paramXmlData = new StringBuilder();
+      paramXmlData.append("[");
+      paramXmlData.append(this.c);
+      paramXmlData.append("]");
+      QLog.d("QFlutter.QFlutterDownloader", 2, new Object[] { paramXmlData.toString(), "download begin, totalLen: ", Long.valueOf(l) });
     }
   }
   
-  public boolean b()
+  public boolean c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterDownloader", 2, String.format("[" + this.c + "]isNetValid2Download mHadRequestedByUser: %s", new Object[] { Boolean.valueOf(this.d) }));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[");
+      localStringBuilder.append(this.c);
+      localStringBuilder.append("]isNetValid2Download mHadRequestedByUser: %s");
+      QLog.d("QFlutter.QFlutterDownloader", 2, String.format(localStringBuilder.toString(), new Object[] { Boolean.valueOf(this.d) }));
     }
     if (this.d) {
       return true;
     }
-    return super.b();
+    return super.c();
   }
   
   public boolean e()
@@ -219,18 +314,30 @@ public class QFlutterDownloader<T extends XmlData>
   public void f()
   {
     boolean bool = QFlutterInstaller.a(a());
-    QLog.d("QFlutter.QFlutterDownloader", 1, new Object[] { "onQFlutterResConfigChanged [" + this.c + "]", "success: " + bool });
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onQFlutterResConfigChanged [");
+    ((StringBuilder)localObject).append(this.c);
+    ((StringBuilder)localObject).append("]");
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("success: ");
+    localStringBuilder.append(bool);
+    QLog.d("QFlutter.QFlutterDownloader", 1, new Object[] { localObject, localStringBuilder.toString() });
   }
   
   @NotNull
   public String toString()
   {
-    return "QFlutterDownloader{res=" + this.a.jdField_a_of_type_JavaLangClass.getSimpleName() + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QFlutterDownloader{res=");
+    localStringBuilder.append(this.a.jdField_a_of_type_JavaLangClass.getSimpleName());
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.download.QFlutterDownloader
  * JD-Core Version:    0.7.0.1
  */

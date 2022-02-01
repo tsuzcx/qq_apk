@@ -31,9 +31,10 @@ public class RtcRoomEnterParams
   public void clear()
   {
     this.mAVCoreEventCallback = null;
-    if (this.openSdkParams != null)
+    OpenSdkParams localOpenSdkParams = this.openSdkParams;
+    if (localOpenSdkParams != null)
     {
-      this.openSdkParams.clear();
+      localOpenSdkParams.clear();
       this.openSdkParams = null;
     }
   }
@@ -183,7 +184,7 @@ public class RtcRoomEnterParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.opensdk.params.RtcRoomEnterParams
  * JD-Core Version:    0.7.0.1
  */

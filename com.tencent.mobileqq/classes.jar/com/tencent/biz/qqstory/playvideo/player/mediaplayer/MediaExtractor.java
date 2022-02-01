@@ -44,8 +44,9 @@ public class MediaExtractor
   @TargetApi(16)
   protected void a()
   {
-    if (this.a != null) {
-      this.a.release();
+    android.media.MediaExtractor localMediaExtractor = this.a;
+    if (localMediaExtractor != null) {
+      localMediaExtractor.release();
     }
     this.a = new android.media.MediaExtractor();
   }
@@ -97,7 +98,7 @@ public class MediaExtractor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaExtractor
  * JD-Core Version:    0.7.0.1
  */

@@ -15,8 +15,9 @@ public class PicInfoInterface
     if (this.a == null) {
       this.a = new PicInfoInterface.ErrInfo();
     }
-    this.a.a = paramString1;
-    this.a.b = paramString2;
+    PicInfoInterface.ErrInfo localErrInfo = this.a;
+    localErrInfo.a = paramString1;
+    localErrInfo.b = paramString2;
   }
   
   protected boolean a()
@@ -26,7 +27,7 @@ public class PicInfoInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicInfoInterface
  * JD-Core Version:    0.7.0.1
  */

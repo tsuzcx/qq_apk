@@ -55,20 +55,22 @@ public final class mobile_applist_req
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.appid, 1);
     paramJceOutputStream.write(this.count, 2);
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 3);
+    Object localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.album_show_type, 4);
     paramJceOutputStream.write(this.refresh_type, 5);
     paramJceOutputStream.write(this.extrance_type, 6);
-    if (this.mapEx != null) {
-      paramJceOutputStream.write(this.mapEx, 7);
+    localObject = this.mapEx;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_applist_req
  * JD-Core Version:    0.7.0.1
  */

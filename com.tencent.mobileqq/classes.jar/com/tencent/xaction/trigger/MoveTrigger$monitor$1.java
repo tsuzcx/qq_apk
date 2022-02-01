@@ -1,14 +1,12 @@
 package com.tencent.xaction.trigger;
 
-import android.graphics.PointF;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import com.tencent.xaction.api.IDecorView;
 import com.tencent.xaction.api.IView;
+import com.tencent.xaction.trigger.helper.CurrentState;
 import com.tencent.xaction.trigger.touch.VelocityTrackerHelper;
-import com.tencent.xaction.trigger.touch.VelocityTrackerHelper.ScrollCallback;
-import java.util.concurrent.atomic.AtomicInteger;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
@@ -23,50 +21,68 @@ final class MoveTrigger$monitor$1
   {
     Intrinsics.checkParameterIsNotNull(paramView, "v");
     Intrinsics.checkParameterIsNotNull(paramMotionEvent, "event");
-    Object localObject = this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getTrackerHelper();
-    if (localObject != null) {
-      ((VelocityTrackerHelper)localObject).a(paramMotionEvent);
-    }
-    int i = (int)paramMotionEvent.getX();
-    int j = (int)paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
+    Object localObject;
+    if (this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getVts() > 0.0F)
     {
-    default: 
-    case 0: 
-    case 2: 
-      do
+      localObject = this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getTrackerHelper();
+      if (localObject != null) {
+        ((VelocityTrackerHelper)localObject).a(paramMotionEvent);
+      }
+    }
+    float f1 = paramMotionEvent.getRawX();
+    float f2 = paramMotionEvent.getRawY();
+    this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().setCx(f1);
+    this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().setCy(f2);
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
+    {
+      if (i != 1)
       {
-        return true;
-        this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getLastEventX().set(i);
-        this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getLastEventY().set(j);
-        paramView = this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger;
-        localObject = this.jdField_a_of_type_ComTencentXactionApiIView.a().a();
+        if (i != 2) {
+          return true;
+        }
+        this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().setDx(f1 - this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().getLastX());
+        this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().setDy(f2 - this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().getLastY());
+        this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().setMovedX(f1 - this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().getLastDownX());
+        this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().setMovedY(f2 - this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().getLastDownY());
+        paramMotionEvent = this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger;
+        localObject = this.jdField_a_of_type_ComTencentXactionApiIView.getDecor().getProxy();
         if (localObject == null) {
           Intrinsics.throwNpe();
         }
-        paramView.updateStatus((View)localObject, "movedown");
-        this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getPointEvent().set(paramMotionEvent.getX(), paramMotionEvent.getY());
+        paramMotionEvent.updateProgress((View)localObject, "move");
+        paramMotionEvent = this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger;
+        MoveTrigger.access$actionMove(paramMotionEvent, paramView, paramMotionEvent.getState().getDx(), this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().getDy());
+        this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().setLastX(f1);
+        this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().setLastY(f2);
         return true;
-      } while ((Math.abs(paramMotionEvent.getX() - this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getPointEvent().x) > 100) || (Math.abs(paramMotionEvent.getY() - this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getPointEvent().y) > 100));
-      localObject = this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getMoveXY(i, j, paramView);
-      float f1 = localObject[0];
-      float f2 = localObject[1];
-      MoveTrigger.access$actionMove(this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger, paramView, f1, f2);
-      this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getPointEvent().set(paramMotionEvent.getX(), paramMotionEvent.getY());
+      }
+      MoveTrigger.access$trackerActionUp(this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger, this.jdField_a_of_type_AndroidViewView, paramView);
       return true;
     }
-    paramMotionEvent = this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getMoveXY(i, j, paramView);
-    localObject = this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getTrackerHelper();
-    if (localObject == null) {
+    if (this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getVts() > 0.0F)
+    {
+      paramView = this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getTrackerHelper();
+      if (paramView != null) {
+        paramView.a();
+      }
+    }
+    this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().setLastDownX(f1);
+    this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().setLastDownY(f2);
+    this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().setLastX(f1);
+    this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().setLastY(f2);
+    paramView = this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger;
+    paramMotionEvent = this.jdField_a_of_type_ComTencentXactionApiIView.getDecor().getProxy();
+    if (paramMotionEvent == null) {
       Intrinsics.throwNpe();
     }
-    ((VelocityTrackerHelper)localObject).a(paramView, 0, 0, this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getVts(), (VelocityTrackerHelper.ScrollCallback)new MoveTrigger.monitor.1.1(this, paramView, paramMotionEvent));
+    paramView.updateStatus(paramMotionEvent, "movedown");
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.trigger.MoveTrigger.monitor.1
  * JD-Core Version:    0.7.0.1
  */

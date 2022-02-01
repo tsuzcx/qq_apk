@@ -18,27 +18,31 @@ public class LinkedArrayList
   
   public void add(Object paramObject)
   {
+    Object[] arrayOfObject;
     if (this.size == 0)
     {
       this.head = new Object[this.capacityHint + 1];
-      this.tail = this.head;
-      this.head[0] = paramObject;
+      arrayOfObject = this.head;
+      this.tail = arrayOfObject;
+      arrayOfObject[0] = paramObject;
       this.indexInTail = 1;
       this.size = 1;
       return;
     }
-    if (this.indexInTail == this.capacityHint)
+    int i = this.indexInTail;
+    int j = this.capacityHint;
+    if (i == j)
     {
-      Object[] arrayOfObject = new Object[this.capacityHint + 1];
+      arrayOfObject = new Object[j + 1];
       arrayOfObject[0] = paramObject;
-      this.tail[this.capacityHint] = arrayOfObject;
+      this.tail[j] = arrayOfObject;
       this.tail = arrayOfObject;
       this.indexInTail = 1;
       this.size += 1;
       return;
     }
-    this.tail[this.indexInTail] = paramObject;
-    this.indexInTail += 1;
+    this.tail[i] = paramObject;
+    this.indexInTail = (i + 1);
     this.size += 1;
   }
   
@@ -73,21 +77,23 @@ public class LinkedArrayList
     int i1 = this.size;
     ArrayList localArrayList = new ArrayList(i1 + 1);
     Object[] arrayOfObject = head();
-    int j = 0;
-    int i = 0;
-    while (j < i1)
+    int k;
+    for (int i = 0;; i = k)
     {
-      localArrayList.add(arrayOfObject[i]);
-      int k = j + 1;
-      int m = i + 1;
-      i = m;
-      j = k;
-      if (m == n)
+      int j = 0;
+      int m;
+      do
       {
-        arrayOfObject = (Object[])arrayOfObject[n];
-        i = 0;
-        j = k;
-      }
+        if (i >= i1) {
+          break;
+        }
+        localArrayList.add(arrayOfObject[j]);
+        k = i + 1;
+        m = j + 1;
+        i = k;
+        j = m;
+      } while (m != n);
+      arrayOfObject = (Object[])arrayOfObject[n];
     }
     return localArrayList;
   }
@@ -99,7 +105,7 @@ public class LinkedArrayList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.util.LinkedArrayList
  * JD-Core Version:    0.7.0.1
  */

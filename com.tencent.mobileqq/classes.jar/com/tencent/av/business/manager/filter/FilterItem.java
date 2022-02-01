@@ -1,9 +1,9 @@
 package com.tencent.av.business.manager.filter;
 
-import com.tencent.av.business.manager.EffectConfigBase.ItemBase;
+import com.tencent.av.business.manager.pendant.ItemBase;
 
 public class FilterItem
-  extends EffectConfigBase.ItemBase
+  extends ItemBase
 {
   private String desc;
   private String filterid;
@@ -36,7 +36,7 @@ public class FilterItem
     return this.iconmd5;
   }
   
-  public String getIconurl()
+  public String getIconUrl()
   {
     return this.iconurl;
   }
@@ -61,21 +61,24 @@ public class FilterItem
     return this.predownload;
   }
   
-  public String getResurl()
+  public String getResUrl()
   {
     return this.resurl;
   }
   
+  public String getVersion()
+  {
+    return "";
+  }
+  
   public boolean isEmptyFilter()
   {
-    boolean bool = false;
     try
     {
       int i = Integer.valueOf(getFilterId()).intValue();
       if ((i == -1) || (i == 0)) {
-        bool = true;
+        return true;
       }
-      return bool;
     }
     catch (Exception localException)
     {
@@ -96,12 +99,24 @@ public class FilterItem
   
   public String toString()
   {
-    return "filterid[" + this.filterid + "], desc[" + this.desc + "], name[" + this.name + "], isDownloading[" + this.isDownloading + "], filtertype[" + this.filtertype + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("filterid[");
+    localStringBuilder.append(this.filterid);
+    localStringBuilder.append("], desc[");
+    localStringBuilder.append(this.desc);
+    localStringBuilder.append("], name[");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append("], isDownloading[");
+    localStringBuilder.append(this.isDownloading);
+    localStringBuilder.append("], filtertype[");
+    localStringBuilder.append(this.filtertype);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.filter.FilterItem
  * JD-Core Version:    0.7.0.1
  */

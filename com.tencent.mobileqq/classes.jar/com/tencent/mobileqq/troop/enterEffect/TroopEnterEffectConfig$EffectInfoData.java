@@ -1,4 +1,4 @@
-package com.tencent.mobileqq.troop.enterEffect;
+package com.tencent.mobileqq.troop.entereffect;
 
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -30,13 +30,15 @@ public class TroopEnterEffectConfig$EffectInfoData
     ((group_effect.UserConfig)localObject).effect_id.set(this.jdField_a_of_type_Int);
     ((group_effect.UserConfig)localObject).group_code.set(this.jdField_a_of_type_Long);
     localObject = ((group_effect.UserConfig)localObject).status;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (long l = 1L;; l = 0L)
-    {
-      ((PBUInt64Field)localObject).set(l);
-      new group_effect.EffectInfo().name.set(this.jdField_a_of_type_JavaLangString);
-      return localTEffectDetail;
+    long l;
+    if (this.jdField_a_of_type_Boolean) {
+      l = 1L;
+    } else {
+      l = 0L;
     }
+    ((PBUInt64Field)localObject).set(l);
+    new group_effect.EffectInfo().name.set(this.jdField_a_of_type_JavaLangString);
+    return localTEffectDetail;
   }
   
   public void a(group_effect_commu.TEffectDetail paramTEffectDetail)
@@ -46,22 +48,31 @@ public class TroopEnterEffectConfig$EffectInfoData
     this.jdField_a_of_type_Int = localUserConfig.effect_id.get();
     this.jdField_a_of_type_JavaLangString = paramTEffectDetail.name.get();
     this.jdField_a_of_type_Long = localUserConfig.group_code.get();
-    if (localUserConfig.status.get() != 0L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
+    boolean bool;
+    if (localUserConfig.status.get() != 0L) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.jdField_a_of_type_Boolean = bool;
   }
   
   public String toString()
   {
-    return "{groupCode: " + this.jdField_a_of_type_Long + ", effectId: " + this.jdField_a_of_type_Int + ", isOn: " + this.jdField_a_of_type_Boolean + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{groupCode: ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", effectId: ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", isOn: ");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectConfig.EffectInfoData
  * JD-Core Version:    0.7.0.1
  */

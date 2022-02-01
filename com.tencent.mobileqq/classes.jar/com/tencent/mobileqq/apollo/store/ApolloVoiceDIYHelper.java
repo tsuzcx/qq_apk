@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.store;
 
-import com.tencent.mobileqq.apollo.ApolloRenderInterfaceImpl;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.api.uitls.impl.ApolloActionHelperImpl;
+import com.tencent.mobileqq.apollo.utils.api.impl.ApolloActionHelperImpl;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloRenderInterfaceImpl;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloTextureView;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -39,22 +39,26 @@ public class ApolloVoiceDIYHelper
   
   public void a(double paramDouble)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloVoiceDIYHelper", 2, "[renderFrame], curSec:" + paramDouble + ",lastDur:" + this.jdField_a_of_type_Double);
-    }
-    ApolloTextureView localApolloTextureView = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localApolloTextureView == null) {
-      return;
-    }
-    if (paramDouble <= this.jdField_a_of_type_Double) {
-      b(paramDouble);
-    }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_Double = paramDouble;
-      return;
-      localApolloTextureView.queueEvent(new ApolloVoiceDIYHelper.1(this, localApolloTextureView, paramDouble - this.jdField_a_of_type_Double));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[renderFrame], curSec:");
+      ((StringBuilder)localObject).append(paramDouble);
+      ((StringBuilder)localObject).append(",lastDur:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Double);
+      QLog.d("[cmshow]ApolloVoiceDIYHelper", 2, ((StringBuilder)localObject).toString());
     }
+    Object localObject = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject == null) {
+      return;
+    }
+    double d1 = this.jdField_a_of_type_Double;
+    if (paramDouble <= d1) {
+      b(paramDouble);
+    } else {
+      ((ApolloTextureView)localObject).queueEvent(new ApolloVoiceDIYHelper.1(this, (ApolloTextureView)localObject, paramDouble - d1));
+    }
+    this.jdField_a_of_type_Double = paramDouble;
   }
   
   public void a(ApolloTextureView paramApolloTextureView, int paramInt1, int paramInt2, int paramInt3)
@@ -71,7 +75,7 @@ public class ApolloVoiceDIYHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloVoiceDIYHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -19,12 +19,22 @@ public class NotificationController$LimitEntry
   
   public String toString()
   {
-    return this.jdField_a_of_type_JavaLangString + "," + this.jdField_a_of_type_Int + "," + this.b + "," + this.jdField_a_of_type_Long + "," + this.c;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.c);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.notification.NotificationController.LimitEntry
  * JD-Core Version:    0.7.0.1
  */

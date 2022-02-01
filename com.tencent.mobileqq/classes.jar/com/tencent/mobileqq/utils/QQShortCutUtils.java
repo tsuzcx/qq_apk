@@ -18,18 +18,27 @@ public class QQShortCutUtils
     if (jdField_a_of_type_JavaLangString == null)
     {
       jdField_a_of_type_JavaLangString = a(paramContext, jdField_a_of_type_ArrayOfJavaLangString);
-      if (jdField_a_of_type_JavaLangString == null) {
-        break label88;
+      if (jdField_a_of_type_JavaLangString != null)
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("content://");
+        paramContext.append(jdField_a_of_type_JavaLangString);
+        paramContext.append("/favorites?notify=true");
+        jdField_a_of_type_JavaLangString = paramContext.toString();
+      }
+      else
+      {
+        jdField_a_of_type_JavaLangString = "empty";
       }
     }
-    label88:
-    for (jdField_a_of_type_JavaLangString = "content://" + jdField_a_of_type_JavaLangString + "/favorites?notify=true";; jdField_a_of_type_JavaLangString = "empty")
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.shortcut", 2, "getShortcutUri.shortcutUri=" + jdField_a_of_type_JavaLangString);
-      }
-      return jdField_a_of_type_JavaLangString;
+      paramContext = new StringBuilder();
+      paramContext.append("getShortcutUri.shortcutUri=");
+      paramContext.append(jdField_a_of_type_JavaLangString);
+      QLog.d("Q.shortcut", 2, paramContext.toString());
     }
+    return jdField_a_of_type_JavaLangString;
   }
   
   private static String a(Context paramContext, String[] paramArrayOfString)
@@ -79,7 +88,7 @@ public class QQShortCutUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQShortCutUtils
  * JD-Core Version:    0.7.0.1
  */

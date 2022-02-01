@@ -32,18 +32,20 @@ public class BasicLocation
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (BasicLocation)paramObject;
       if (this.a != paramObject.a) {
         return false;
       }
-    } while (this.b == paramObject.b);
+      return this.b == paramObject.b;
+    }
     return false;
   }
   
@@ -54,12 +56,18 @@ public class BasicLocation
   
   public String toString()
   {
-    return "GpsMsg{latitude=" + this.a + ", longitude=" + this.b + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GpsMsg{latitude=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", longitude=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.lbs.BasicLocation
  * JD-Core Version:    0.7.0.1
  */

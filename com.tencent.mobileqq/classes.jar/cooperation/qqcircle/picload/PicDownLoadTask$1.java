@@ -20,7 +20,17 @@ class PicDownLoadTask$1
       if (this.mOption.isPreDecode()) {
         QCircleFeedPicLoader.g().decodeFile(this.mOption, this.this$0.mListener);
       }
-      RFLog.d("QCircleFeedPicLoader", RFLog.USR, "seq = " + this.mOption.getSeq() + " cacheKey = " + this.mOption.getCacheKey() + " download by ImageDownLoader success cost: " + (System.currentTimeMillis() - this.val$time) + " ifFromPreload:" + this.mOption.isFromPreload());
+      paramInt = RFLog.USR;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("seq = ");
+      localStringBuilder.append(this.mOption.getSeq());
+      localStringBuilder.append(" cacheKey = ");
+      localStringBuilder.append(this.mOption.getCacheKey());
+      localStringBuilder.append(" download by ImageDownLoader success cost: ");
+      localStringBuilder.append(System.currentTimeMillis() - this.val$time);
+      localStringBuilder.append(" ifFromPreload:");
+      localStringBuilder.append(this.mOption.isFromPreload());
+      RFLog.d("QCircleFeedPicLoader", paramInt, localStringBuilder.toString());
       QCirclePicDownLoader.g().tryGetIp(this.mOption);
       if (this.this$0.mListener != null) {
         this.this$0.mListener.onStateChang(3, this.mOption);
@@ -36,12 +46,22 @@ class PicDownLoadTask$1
     QCirclePicDownLoader.g().tryGetIp(this.mOption);
     this.this$0.reportDownloadResult(this.mOption, paramInt);
     QCircleFeedPicLoader.g().reportLoadResult(this.mOption, 1);
-    RFLog.d("QCircleFeedPicLoader", RFLog.USR, "seq = " + this.mOption.getSeq() + " cacheKey = " + this.mOption.getCacheKey() + " download failed " + (System.currentTimeMillis() - this.val$time) + " ifFromPreload:" + this.mOption.isFromPreload());
+    paramInt = RFLog.USR;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("seq = ");
+    localStringBuilder.append(this.mOption.getSeq());
+    localStringBuilder.append(" cacheKey = ");
+    localStringBuilder.append(this.mOption.getCacheKey());
+    localStringBuilder.append(" download failed ");
+    localStringBuilder.append(System.currentTimeMillis() - this.val$time);
+    localStringBuilder.append(" ifFromPreload:");
+    localStringBuilder.append(this.mOption.isFromPreload());
+    RFLog.d("QCircleFeedPicLoader", paramInt, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.picload.PicDownLoadTask.1
  * JD-Core Version:    0.7.0.1
  */

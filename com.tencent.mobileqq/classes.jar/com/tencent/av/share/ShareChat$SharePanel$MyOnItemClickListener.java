@@ -22,79 +22,123 @@ class ShareChat$SharePanel$MyOnItemClickListener
   public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
     paramShareActionSheet = this.jdField_a_of_type_AndroidContentContext;
-    if (this.jdField_a_of_type_AndroidContentContext == null) {}
-    do
-    {
+    if (paramShareActionSheet == null) {
       return;
-      if (this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-        this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.dismiss();
-      }
-    } while (this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel$IHandle == null);
-    int i;
-    int j;
-    switch (paramActionSheetItem.action)
-    {
-    default: 
+    }
+    if (this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
+      this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.dismiss();
+    }
+    if (this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel$IHandle == null) {
       return;
-    case 1: 
-      i = 4;
-      this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.jdField_a_of_type_Int = i;
-      if ((i == 2) || (i == 3)) {
-        if (!WXShareHelper.a().a()) {
-          j = 2131720753;
+    }
+    int i = paramActionSheetItem.action;
+    if (i != 1)
+    {
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 6)
+          {
+            if (i != 24)
+            {
+              if (i != 26)
+              {
+                if (i != 123)
+                {
+                  if (i != 9)
+                  {
+                    if (i != 10)
+                    {
+                      if (i != 72)
+                      {
+                        if (i != 73) {
+                          return;
+                        }
+                        i = 73;
+                      }
+                      else
+                      {
+                        i = 72;
+                      }
+                    }
+                    else {
+                      i = 3;
+                    }
+                  }
+                  else {
+                    i = 2;
+                  }
+                }
+                else {
+                  i = 5;
+                }
+              }
+              else {
+                i = 26;
+              }
+            }
+            else {
+              i = 7;
+            }
+          }
+          else {
+            i = 6;
+          }
+        }
+        else {
+          i = 1;
         }
       }
-      break;
+      else {
+        i = 0;
+      }
     }
-    for (;;)
+    else {
+      i = 4;
+    }
+    this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.jdField_a_of_type_Int = i;
+    if ((i == 2) || (i == 3))
     {
+      int j;
+      if (!WXShareHelper.a().a()) {
+        j = 2131720478;
+      } else if (!WXShareHelper.a().b()) {
+        j = 2131720479;
+      } else {
+        j = -1;
+      }
       if (j != -1)
       {
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getString(j), 0).a();
-        this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.a(this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.b, 3);
-        return;
-        i = 0;
-        break;
-        i = 72;
-        break;
-        i = 73;
-        break;
-        i = 1;
-        break;
-        i = 3;
-        break;
-        i = 2;
-        break;
-        i = 5;
-        break;
-        i = 7;
-        break;
-        i = 26;
-        break;
-        i = 6;
-        break;
-        if (WXShareHelper.a().b()) {
-          break label414;
-        }
-        j = 2131720754;
-        continue;
-      }
-      QLog.w("ShareChat", 1, "onItemClick, mChoosedChannel[" + this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.jdField_a_of_type_Int + "], position[], id[" + i + "], seq[" + this.jdField_a_of_type_Long + "], mChoosedLinkType[" + this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.b + "]");
-      if (this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.b == -1)
-      {
-        this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.b(this.jdField_a_of_type_Long, paramShareActionSheet, paramActionSheetItem);
+        paramActionSheetItem = this.jdField_a_of_type_AndroidContentContext;
+        QQToast.a(paramActionSheetItem, paramActionSheetItem.getString(j), 0).a();
+        paramActionSheetItem = this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel;
+        paramActionSheetItem.a(paramActionSheetItem.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.b, 3);
         return;
       }
-      this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.a(this.jdField_a_of_type_Long, paramShareActionSheet, paramActionSheetItem);
-      return;
-      label414:
-      j = -1;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onItemClick, mChoosedChannel[");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.jdField_a_of_type_Int);
+    localStringBuilder.append("], position[], id[");
+    localStringBuilder.append(i);
+    localStringBuilder.append("], seq[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("], mChoosedLinkType[");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.b);
+    localStringBuilder.append("]");
+    QLog.w("ShareChat", 1, localStringBuilder.toString());
+    if (this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.b == -1)
+    {
+      this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.b(this.jdField_a_of_type_Long, paramShareActionSheet, paramActionSheetItem);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.a(this.jdField_a_of_type_Long, paramShareActionSheet, paramActionSheetItem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.share.ShareChat.SharePanel.MyOnItemClickListener
  * JD-Core Version:    0.7.0.1
  */

@@ -23,7 +23,6 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.util.ArrayList;
@@ -55,19 +54,17 @@ public class MiniAppUserAppInfoListManager
   
   public MiniAppUserAppInfoListManager(QQAppInterface paramQQAppInterface)
   {
+    int i = 1;
     QLog.d("MiniAppUserAppInfoListManager", 1, "MiniAppUserAppInfoListManager init.");
-    if (QzoneConfig.getInstance().getConfig("qqminiapp", "oldEntryCloseRedDot", 0) == 0) {}
-    for (;;)
-    {
-      if (i != 0)
-      {
-        paramQQAppInterface = MiniAppUtils.getAppInterface();
-        if (paramQQAppInterface != null) {
-          paramQQAppInterface.addObserver(this.redDotObserver);
-        }
-      }
-      return;
+    if (QzoneConfig.getInstance().getConfig("qqminiapp", "oldEntryCloseRedDot", 0) != 0) {
       i = 0;
+    }
+    if (i != 0)
+    {
+      paramQQAppInterface = MiniAppUtils.getAppInterface();
+      if (paramQQAppInterface != null) {
+        paramQQAppInterface.addObserver(this.redDotObserver);
+      }
     }
   }
   
@@ -75,16 +72,13 @@ public class MiniAppUserAppInfoListManager
   {
     this.mPublicAccountRedDotMap.clear();
     Object localObject1 = new ArrayList();
-    for (;;)
+    try
     {
-      try
+      ((List)localObject1).addAll(this.mTopAppList);
+      ((List)localObject1).addAll(this.mUsedAppList);
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        ((List)localObject1).addAll(this.mTopAppList);
-        ((List)localObject1).addAll(this.mUsedAppList);
-        localObject1 = ((List)localObject1).iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          break;
-        }
         MiniAppInfo localMiniAppInfo = (MiniAppInfo)((Iterator)localObject1).next();
         if ((localMiniAppInfo != null) && (!TextUtils.isEmpty(localMiniAppInfo.appId)))
         {
@@ -96,87 +90,116 @@ public class MiniAppUserAppInfoListManager
           }
         }
       }
-      finally {}
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
   private void compareServerAndDbDataAsync(AppInterface paramAppInterface, List<MiniAppInfo> paramList)
   {
     paramAppInterface = paramAppInterface.getEntityManagerFactory().createEntityManager().query(MiniAppEntity.class, MiniAppEntity.class.getSimpleName(), false, null, null, null, null, null, null);
-    if ((paramList == null) || (paramList.size() == 0) || (paramAppInterface == null) || (paramAppInterface.size() == 0)) {
-      return;
-    }
-    paramAppInterface = paramAppInterface.iterator();
-    label59:
-    label204:
-    for (;;)
+    if ((paramList != null) && (paramList.size() != 0) && (paramAppInterface != null))
     {
-      Object localObject;
-      if (paramAppInterface.hasNext())
+      if (paramAppInterface.size() == 0) {
+        return;
+      }
+      paramAppInterface = paramAppInterface.iterator();
+      while (paramAppInterface.hasNext())
       {
-        localObject = (MiniAppEntity)paramAppInterface.next();
+        Object localObject = (MiniAppEntity)paramAppInterface.next();
         if ((localObject != null) && (((MiniAppEntity)localObject).appInfo != null))
         {
           localObject = ((MiniAppEntity)localObject).createFromBuffer(((MiniAppEntity)localObject).appInfo);
+          int j = 0;
           Iterator localIterator = paramList.iterator();
           MiniAppInfo localMiniAppInfo;
           do
           {
+            i = j;
             if (!localIterator.hasNext()) {
               break;
             }
             localMiniAppInfo = (MiniAppInfo)localIterator.next();
           } while ((localObject == null) || (((MiniAppInfo)localObject).appId == null) || (localMiniAppInfo == null) || (!((MiniAppInfo)localObject).appId.equals(localMiniAppInfo.appId)) || (((MiniAppInfo)localObject).verType != localMiniAppInfo.verType));
-        }
-      }
-      else
-      {
-        for (int i = 1;; i = 0)
-        {
-          if ((i != 0) || (localObject == null)) {
-            break label204;
+          int i = 1;
+          if ((i == 0) && (localObject != null)) {
+            deleteMiniAppFromDB((MiniAppInfo)localObject);
           }
-          deleteMiniAppFromDB((MiniAppInfo)localObject);
-          break label59;
-          break;
         }
       }
     }
   }
   
+  /* Error */
   private void deleteDB(AppInterface paramAppInterface)
   {
-    if (paramAppInterface == null) {
-      QLog.e("MiniAppUserAppInfoListManager", 1, "clear DB, app is null.");
-    }
-    EntityManager localEntityManager;
-    do
-    {
-      return;
-      localEntityManager = paramAppInterface.getEntityManagerFactory().createEntityManager();
-    } while (localEntityManager == null);
-    paramAppInterface = localEntityManager.getTransaction();
-    try
-    {
-      paramAppInterface.begin();
-      localEntityManager.execSQL(" DELETE FROM MiniAppEntity ");
-      localEntityManager.execSQL("delete from sqlite_sequence where name='MiniAppEntity'");
-      localEntityManager.execSQL("update sqlite_sequence SET seq = 0 where name = 'MiniAppEntity'");
-      paramAppInterface.commit();
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-        paramAppInterface.end();
-      }
-    }
-    finally
-    {
-      paramAppInterface.end();
-    }
-    QLog.i("MiniAppUserAppInfoListManager", 2, "clear mini app List DB");
+    // Byte code:
+    //   0: aload_1
+    //   1: ifnonnull +13 -> 14
+    //   4: ldc 10
+    //   6: iconst_1
+    //   7: ldc_w 261
+    //   10: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   13: return
+    //   14: aload_1
+    //   15: invokevirtual 212	com/tencent/common/app/AppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
+    //   18: invokevirtual 218	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   21: astore_2
+    //   22: aload_2
+    //   23: ifnonnull +4 -> 27
+    //   26: return
+    //   27: aload_2
+    //   28: invokevirtual 268	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   31: astore_1
+    //   32: aload_1
+    //   33: invokevirtual 273	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   36: aload_2
+    //   37: ldc_w 275
+    //   40: invokevirtual 279	com/tencent/mobileqq/persistence/EntityManager:execSQL	(Ljava/lang/String;)Z
+    //   43: pop
+    //   44: aload_2
+    //   45: ldc_w 281
+    //   48: invokevirtual 279	com/tencent/mobileqq/persistence/EntityManager:execSQL	(Ljava/lang/String;)Z
+    //   51: pop
+    //   52: aload_2
+    //   53: ldc_w 283
+    //   56: invokevirtual 279	com/tencent/mobileqq/persistence/EntityManager:execSQL	(Ljava/lang/String;)Z
+    //   59: pop
+    //   60: aload_1
+    //   61: invokevirtual 286	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   64: goto +12 -> 76
+    //   67: astore_2
+    //   68: goto +22 -> 90
+    //   71: astore_2
+    //   72: aload_2
+    //   73: invokevirtual 289	java/lang/Exception:printStackTrace	()V
+    //   76: aload_1
+    //   77: invokevirtual 292	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   80: ldc 10
+    //   82: iconst_2
+    //   83: ldc_w 294
+    //   86: invokestatic 297	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   89: return
+    //   90: aload_1
+    //   91: invokevirtual 292	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   94: aload_2
+    //   95: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	96	0	this	MiniAppUserAppInfoListManager
+    //   0	96	1	paramAppInterface	AppInterface
+    //   21	32	2	localEntityManager	EntityManager
+    //   67	1	2	localObject	Object
+    //   71	24	2	localException	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   32	64	67	finally
+    //   72	76	67	finally
+    //   32	64	71	java/lang/Exception
   }
   
   private void deleteMiniAppFromDB(MiniAppInfo paramMiniAppInfo)
@@ -202,30 +225,36 @@ public class MiniAppUserAppInfoListManager
   
   private void handleGetUserAppListData(INTERFACE.StGetUserAppListRsp paramStGetUserAppListRsp)
   {
-    Object localObject2;
-    LinkedList localLinkedList1;
-    LinkedList localLinkedList2;
-    StringBuilder localStringBuilder;
-    Object localObject3;
     if (paramStGetUserAppListRsp != null)
     {
       Object localObject1 = paramStGetUserAppListRsp.userAppList.get();
-      localObject2 = paramStGetUserAppListRsp.fixApps.get();
+      Object localObject2 = paramStGetUserAppListRsp.fixApps.get();
       if ((localObject1 == null) && (localObject2 == null))
       {
-        QLog.e("MiniAppUserAppInfoListManager", 1, "handleGetUserAppListData, userAppInfoList = " + localObject1 + ", fixApps = " + localObject2);
+        paramStGetUserAppListRsp = new StringBuilder();
+        paramStGetUserAppListRsp.append("handleGetUserAppListData, userAppInfoList = ");
+        paramStGetUserAppListRsp.append(localObject1);
+        paramStGetUserAppListRsp.append(", fixApps = ");
+        paramStGetUserAppListRsp.append(localObject2);
+        QLog.e("MiniAppUserAppInfoListManager", 1, paramStGetUserAppListRsp.toString());
         return;
       }
       if ((localObject1 != null) && (localObject2 != null) && (((List)localObject1).size() == 0) && (((List)localObject2).size() == 0))
       {
         removeAllMiniAppInfo();
-        QLog.e("MiniAppUserAppInfoListManager", 1, "handleGetUserAppListData, userAppInfoList = " + localObject1 + ", fixApps = " + localObject2);
+        paramStGetUserAppListRsp = new StringBuilder();
+        paramStGetUserAppListRsp.append("handleGetUserAppListData, userAppInfoList = ");
+        paramStGetUserAppListRsp.append(localObject1);
+        paramStGetUserAppListRsp.append(", fixApps = ");
+        paramStGetUserAppListRsp.append(localObject2);
+        QLog.e("MiniAppUserAppInfoListManager", 1, paramStGetUserAppListRsp.toString());
         return;
       }
-      localLinkedList1 = new LinkedList();
-      localLinkedList2 = new LinkedList();
+      LinkedList localLinkedList1 = new LinkedList();
+      LinkedList localLinkedList2 = new LinkedList();
       List localList = getOldRecommendMiniAppList();
-      localStringBuilder = new StringBuilder();
+      StringBuilder localStringBuilder = new StringBuilder();
+      Object localObject3;
       if ((localObject2 != null) && (((List)localObject2).size() != 0))
       {
         localObject2 = ((List)localObject2).iterator();
@@ -236,56 +265,56 @@ public class MiniAppUserAppInfoListManager
           {
             localObject3 = MiniAppInfo.from((INTERFACE.StUserAppInfo)localObject3);
             localLinkedList1.add(localObject3);
-            localStringBuilder.append(((MiniAppInfo)localObject3).name).append("(fixApp), ");
+            localStringBuilder.append(((MiniAppInfo)localObject3).name);
+            localStringBuilder.append("(fixApp), ");
           }
         }
       }
       if (localObject1 != null)
       {
         localObject1 = ((List)localObject1).iterator();
-        for (;;)
+        while (((Iterator)localObject1).hasNext())
         {
-          if (((Iterator)localObject1).hasNext())
+          localObject2 = (INTERFACE.StUserAppInfo)((Iterator)localObject1).next();
+          if ((localObject2 != null) && (((INTERFACE.StUserAppInfo)localObject2).appInfo != null))
           {
-            localObject2 = (INTERFACE.StUserAppInfo)((Iterator)localObject1).next();
-            if ((localObject2 != null) && (((INTERFACE.StUserAppInfo)localObject2).appInfo != null))
+            localObject3 = MiniAppInfo.from((INTERFACE.StUserAppInfo)localObject2);
+            if ((!((MiniAppInfo)localObject3).isEngineTypeMiniGame()) || (GameWnsUtils.gameEnable()))
             {
-              localObject2 = MiniAppInfo.from((INTERFACE.StUserAppInfo)localObject2);
-              if ((!((MiniAppInfo)localObject2).isEngineTypeMiniGame()) || (GameWnsUtils.gameEnable())) {
-                if ((((MiniAppInfo)localObject2).recommend == 1) && (localList != null))
+              if ((((MiniAppInfo)localObject3).recommend == 1) && (localList != null))
+              {
+                localObject2 = new RecommendMiniAppEntity(((MiniAppInfo)localObject3).appId, ((MiniAppInfo)localObject3).name, ((MiniAppInfo)localObject3).recommend);
+                int j = 0;
+                Iterator localIterator = localList.iterator();
+                RecommendMiniAppEntity localRecommendMiniAppEntity;
+                do
                 {
-                  localObject3 = new RecommendMiniAppEntity(((MiniAppInfo)localObject2).appId, ((MiniAppInfo)localObject2).name, ((MiniAppInfo)localObject2).recommend);
-                  Iterator localIterator = localList.iterator();
-                  RecommendMiniAppEntity localRecommendMiniAppEntity;
-                  do
-                  {
-                    if (!localIterator.hasNext()) {
-                      break;
-                    }
-                    localRecommendMiniAppEntity = (RecommendMiniAppEntity)localIterator.next();
-                  } while ((((MiniAppInfo)localObject2).appId == null) || (!((MiniAppInfo)localObject2).appId.equals(localRecommendMiniAppEntity.appId)));
+                  i = j;
+                  if (!localIterator.hasNext()) {
+                    break;
+                  }
+                  localRecommendMiniAppEntity = (RecommendMiniAppEntity)localIterator.next();
+                } while ((((MiniAppInfo)localObject3).appId == null) || (!((MiniAppInfo)localObject3).appId.equals(localRecommendMiniAppEntity.appId)));
+                int i = 1;
+                if (i != 0)
+                {
+                  localObject3 = new StringBuilder();
+                  ((StringBuilder)localObject3).append("handleGetUserAppListData, filter recommend mini app: ");
+                  ((StringBuilder)localObject3).append(localObject2);
+                  QLog.d("MiniAppUserAppInfoListManager", 2, ((StringBuilder)localObject3).toString());
+                  continue;
                 }
               }
+              if (((MiniAppInfo)localObject3).topType == 0) {
+                localLinkedList2.add(localObject3);
+              } else {
+                localLinkedList1.add(localObject3);
+              }
+              localStringBuilder.append(((MiniAppInfo)localObject3).name);
+              localStringBuilder.append(", ");
             }
           }
         }
-      }
-    }
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        QLog.d("MiniAppUserAppInfoListManager", 2, "handleGetUserAppListData, filter recommend mini app: " + localObject3);
-        break;
-      }
-      if (((MiniAppInfo)localObject2).topType == 0) {
-        localLinkedList2.add(localObject2);
-      }
-      for (;;)
-      {
-        localStringBuilder.append(((MiniAppInfo)localObject2).name).append(", ");
-        break;
-        localLinkedList1.add(localObject2);
       }
       this.mExtInfo = paramStGetUserAppListRsp.extInfo;
       if ((localLinkedList2.size() > 0) || (localLinkedList1.size() > 0))
@@ -293,11 +322,13 @@ public class MiniAppUserAppInfoListManager
         removeAllMiniAppInfo();
         saveMiniAppInfoList(localLinkedList1, localLinkedList2);
       }
-      QLog.d("MiniAppUserAppInfoListManager", 1, "handleGetUserAppListData, app List = " + localStringBuilder.toString());
-      return;
-      QLog.e("MiniAppUserAppInfoListManager", 2, "handleGetUserAppListData, rsp = null");
+      paramStGetUserAppListRsp = new StringBuilder();
+      paramStGetUserAppListRsp.append("handleGetUserAppListData, app List = ");
+      paramStGetUserAppListRsp.append(localStringBuilder.toString());
+      QLog.d("MiniAppUserAppInfoListManager", 1, paramStGetUserAppListRsp.toString());
       return;
     }
+    QLog.e("MiniAppUserAppInfoListManager", 2, "handleGetUserAppListData, rsp = null");
   }
   
   private void insertRecommendMiniAppToDB(MiniAppInfo paramMiniAppInfo)
@@ -307,18 +338,25 @@ public class MiniAppUserAppInfoListManager
   
   public static void recordMiniAppStart(MiniAppInfo paramMiniAppInfo)
   {
-    if (paramMiniAppInfo == null) {}
-    AppRuntime localAppRuntime;
-    do
-    {
+    if (paramMiniAppInfo == null) {
       return;
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    } while (localAppRuntime == null);
-    MiniAppUserAppInfoListManager localMiniAppUserAppInfoListManager = (MiniAppUserAppInfoListManager)localAppRuntime.getManager(QQManagerFactory.MINI_APP_ITEM_MANAGER);
-    if (localMiniAppUserAppInfoListManager != null) {
-      localMiniAppUserAppInfoListManager.updateMiniAppStartRecord(paramMiniAppInfo);
     }
-    QLog.d("MiniAppUserAppInfoListManager", 1, "recordMiniAppStart, appInfo = " + paramMiniAppInfo + ", appRuntime = " + localAppRuntime + "， manager = " + localMiniAppUserAppInfoListManager);
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime != null)
+    {
+      MiniAppUserAppInfoListManager localMiniAppUserAppInfoListManager = (MiniAppUserAppInfoListManager)localAppRuntime.getManager(QQManagerFactory.MINI_APP_ITEM_MANAGER);
+      if (localMiniAppUserAppInfoListManager != null) {
+        localMiniAppUserAppInfoListManager.updateMiniAppStartRecord(paramMiniAppInfo);
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("recordMiniAppStart, appInfo = ");
+      localStringBuilder.append(paramMiniAppInfo);
+      localStringBuilder.append(", appRuntime = ");
+      localStringBuilder.append(localAppRuntime);
+      localStringBuilder.append("， manager = ");
+      localStringBuilder.append(localMiniAppUserAppInfoListManager);
+      QLog.d("MiniAppUserAppInfoListManager", 1, localStringBuilder.toString());
+    }
   }
   
   private void saveDataToDBWithBatch(List<MiniAppInfo> paramList, boolean paramBoolean)
@@ -331,190 +369,130 @@ public class MiniAppUserAppInfoListManager
     ThreadManagerV2.excute(new MiniAppUserAppInfoListManager.9(this, paramEntity), 32, null, true);
   }
   
-  /* Error */
   private void updateAppInfoTopRecord(MiniAppInfo paramMiniAppInfo)
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: ifnull +13 -> 14
-    //   4: aload_1
-    //   5: getfield 180	com/tencent/mobileqq/mini/apkg/MiniAppInfo:appId	Ljava/lang/String;
-    //   8: invokestatic 186	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   11: ifeq +30 -> 41
-    //   14: ldc 10
-    //   16: iconst_1
-    //   17: new 334	java/lang/StringBuilder
-    //   20: dup
-    //   21: invokespecial 335	java/lang/StringBuilder:<init>	()V
-    //   24: ldc_w 461
-    //   27: invokevirtual 341	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: aload_1
-    //   31: invokevirtual 344	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   34: invokevirtual 349	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   37: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   40: return
-    //   41: new 154	java/util/ArrayList
-    //   44: dup
-    //   45: invokespecial 155	java/util/ArrayList:<init>	()V
-    //   48: astore_2
-    //   49: ldc 2
-    //   51: monitorenter
-    //   52: aload_0
-    //   53: getfield 37	com/tencent/mobileqq/mini/entry/MiniAppUserAppInfoListManager:mTopAppList	Ljava/util/LinkedList;
-    //   56: aload_1
-    //   57: invokevirtual 300	java/util/LinkedList:contains	(Ljava/lang/Object;)Z
-    //   60: ifeq +12 -> 72
-    //   63: aload_0
-    //   64: getfield 37	com/tencent/mobileqq/mini/entry/MiniAppUserAppInfoListManager:mTopAppList	Ljava/util/LinkedList;
-    //   67: aload_1
-    //   68: invokevirtual 303	java/util/LinkedList:remove	(Ljava/lang/Object;)Z
-    //   71: pop
-    //   72: aload_0
-    //   73: getfield 39	com/tencent/mobileqq/mini/entry/MiniAppUserAppInfoListManager:mUsedAppList	Ljava/util/LinkedList;
-    //   76: aload_1
-    //   77: invokevirtual 300	java/util/LinkedList:contains	(Ljava/lang/Object;)Z
-    //   80: ifeq +12 -> 92
-    //   83: aload_0
-    //   84: getfield 39	com/tencent/mobileqq/mini/entry/MiniAppUserAppInfoListManager:mUsedAppList	Ljava/util/LinkedList;
-    //   87: aload_1
-    //   88: invokevirtual 303	java/util/LinkedList:remove	(Ljava/lang/Object;)Z
-    //   91: pop
-    //   92: aload_1
-    //   93: getfield 394	com/tencent/mobileqq/mini/apkg/MiniAppInfo:topType	I
-    //   96: ifne +43 -> 139
-    //   99: aload_0
-    //   100: getfield 39	com/tencent/mobileqq/mini/entry/MiniAppUserAppInfoListManager:mUsedAppList	Ljava/util/LinkedList;
-    //   103: aload_1
-    //   104: invokevirtual 465	java/util/LinkedList:addFirst	(Ljava/lang/Object;)V
-    //   107: aload_2
-    //   108: aload_0
-    //   109: getfield 37	com/tencent/mobileqq/mini/entry/MiniAppUserAppInfoListManager:mTopAppList	Ljava/util/LinkedList;
-    //   112: invokeinterface 161 2 0
-    //   117: pop
-    //   118: aload_2
-    //   119: aload_0
-    //   120: getfield 39	com/tencent/mobileqq/mini/entry/MiniAppUserAppInfoListManager:mUsedAppList	Ljava/util/LinkedList;
-    //   123: invokeinterface 161 2 0
-    //   128: pop
-    //   129: ldc 2
-    //   131: monitorexit
-    //   132: aload_0
-    //   133: aload_2
-    //   134: iconst_0
-    //   135: invokespecial 467	com/tencent/mobileqq/mini/entry/MiniAppUserAppInfoListManager:saveDataToDBWithBatch	(Ljava/util/List;Z)V
-    //   138: return
-    //   139: aload_1
-    //   140: getfield 394	com/tencent/mobileqq/mini/apkg/MiniAppInfo:topType	I
-    //   143: iconst_1
-    //   144: if_icmpne -37 -> 107
-    //   147: aload_0
-    //   148: getfield 37	com/tencent/mobileqq/mini/entry/MiniAppUserAppInfoListManager:mTopAppList	Ljava/util/LinkedList;
-    //   151: aload_1
-    //   152: invokevirtual 465	java/util/LinkedList:addFirst	(Ljava/lang/Object;)V
-    //   155: goto -48 -> 107
-    //   158: astore_1
-    //   159: ldc 2
-    //   161: monitorexit
-    //   162: aload_1
-    //   163: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	164	0	this	MiniAppUserAppInfoListManager
-    //   0	164	1	paramMiniAppInfo	MiniAppInfo
-    //   48	86	2	localArrayList	ArrayList
-    // Exception table:
-    //   from	to	target	type
-    //   52	72	158	finally
-    //   72	92	158	finally
-    //   92	107	158	finally
-    //   107	132	158	finally
-    //   139	155	158	finally
-    //   159	162	158	finally
+    if ((paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId)))
+    {
+      localObject = new ArrayList();
+      try
+      {
+        if (this.mTopAppList.contains(paramMiniAppInfo)) {
+          this.mTopAppList.remove(paramMiniAppInfo);
+        }
+        if (this.mUsedAppList.contains(paramMiniAppInfo)) {
+          this.mUsedAppList.remove(paramMiniAppInfo);
+        }
+        if (paramMiniAppInfo.topType == 0) {
+          this.mUsedAppList.addFirst(paramMiniAppInfo);
+        } else if (paramMiniAppInfo.topType == 1) {
+          this.mTopAppList.addFirst(paramMiniAppInfo);
+        }
+        ((List)localObject).addAll(this.mTopAppList);
+        ((List)localObject).addAll(this.mUsedAppList);
+        saveDataToDBWithBatch((List)localObject, false);
+        return;
+      }
+      finally {}
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("insertAppInfo error app info is invalid, appInfo = ");
+    ((StringBuilder)localObject).append(paramMiniAppInfo);
+    QLog.e("MiniAppUserAppInfoListManager", 1, ((StringBuilder)localObject).toString());
   }
   
   private boolean updateEntity(EntityManager paramEntityManager, Entity paramEntity)
   {
-    boolean bool2 = false;
+    boolean bool2 = paramEntityManager.isOpen();
     boolean bool1 = false;
-    if (paramEntityManager.isOpen()) {
+    if (bool2)
+    {
       if (paramEntity.getStatus() == 1000)
       {
         paramEntityManager.persistOrReplace(paramEntity);
         if (paramEntity.getStatus() == 1001) {
           bool1 = true;
         }
-        paramEntityManager.close();
       }
-    }
-    do
-    {
+      else if ((paramEntity.getStatus() == 1001) || (paramEntity.getStatus() == 1002))
+      {
+        bool1 = paramEntityManager.update(paramEntity);
+      }
+      paramEntityManager.close();
       return bool1;
-      if ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
-        break;
-      }
-      bool1 = paramEntityManager.update(paramEntity);
-      break;
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("MiniAppUserAppInfoListManager", 2, "updateEntity em closed e=" + paramEntity.getTableName());
+    }
+    if (QLog.isColorLevel())
+    {
+      paramEntityManager = new StringBuilder();
+      paramEntityManager.append("updateEntity em closed e=");
+      paramEntityManager.append(paramEntity.getTableName());
+      QLog.d("MiniAppUserAppInfoListManager", 2, paramEntityManager.toString());
+    }
     return false;
   }
   
   private void updateMiniAppStartRecord(MiniAppInfo paramMiniAppInfo)
   {
     int j = 1;
-    if ((paramMiniAppInfo == null) || (TextUtils.isEmpty(paramMiniAppInfo.appId)))
-    {
-      QLog.e("MiniAppUserAppInfoListManager", 1, "insertAppInfo error app info is invalid, appInfo = " + paramMiniAppInfo);
-      return;
+    Object localObject;
+    if ((paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId))) {
+      localObject = new ArrayList();
     }
-    ArrayList localArrayList = new ArrayList();
-    try
+    for (;;)
     {
-      if (this.mTopAppList.contains(paramMiniAppInfo)) {
-        return;
-      }
-    }
-    finally {}
-    MiniAppInfo localMiniAppInfo;
-    if (this.mUsedAppList.contains(paramMiniAppInfo))
-    {
-      this.mUsedAppList.remove(paramMiniAppInfo);
-      i = 1;
-      if (i != 0) {
-        break label253;
-      }
-      localMiniAppInfo = findMiniApp(paramMiniAppInfo.appId, paramMiniAppInfo.verType);
-      if (this.mTopAppList.contains(localMiniAppInfo))
+      try
       {
-        i = this.mTopAppList.indexOf(localMiniAppInfo);
-        this.mTopAppList.set(i, paramMiniAppInfo);
-      }
-    }
-    label253:
-    for (int i = j;; i = 0)
-    {
-      if (i == 0)
-      {
-        i = this.mTopAppList.size();
-        while (this.mUsedAppList.size() + i >= 20)
+        if (this.mTopAppList.contains(paramMiniAppInfo)) {
+          return;
+        }
+        if (!this.mUsedAppList.contains(paramMiniAppInfo)) {
+          break label267;
+        }
+        this.mUsedAppList.remove(paramMiniAppInfo);
+        i = 1;
+        if (i != 0) {
+          break label272;
+        }
+        MiniAppInfo localMiniAppInfo = findMiniApp(paramMiniAppInfo.appId, paramMiniAppInfo.verType);
+        if (this.mTopAppList.contains(localMiniAppInfo))
         {
-          this.mUsedAppList.removeLast();
-          continue;
+          i = this.mTopAppList.indexOf(localMiniAppInfo);
+          this.mTopAppList.set(i, paramMiniAppInfo);
+          i = j;
+        }
+        else
+        {
           if (localMiniAppInfo == null) {
-            break label253;
+            break label272;
           }
           this.mUsedAppList.remove(localMiniAppInfo);
-          break label253;
+          break label272;
         }
-        this.mUsedAppList.addFirst(paramMiniAppInfo);
+        if (i == 0)
+        {
+          i = this.mTopAppList.size();
+          if (this.mUsedAppList.size() + i >= 20)
+          {
+            this.mUsedAppList.removeLast();
+            continue;
+          }
+          this.mUsedAppList.addFirst(paramMiniAppInfo);
+        }
+        ((List)localObject).addAll(this.mTopAppList);
+        ((List)localObject).addAll(this.mUsedAppList);
+        saveDataToDBWithBatch((List)localObject, false);
+        return;
       }
-      localArrayList.addAll(this.mTopAppList);
-      localArrayList.addAll(this.mUsedAppList);
-      saveDataToDBWithBatch(localArrayList, false);
+      finally {}
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("insertAppInfo error app info is invalid, appInfo = ");
+      ((StringBuilder)localObject).append(paramMiniAppInfo);
+      QLog.e("MiniAppUserAppInfoListManager", 1, ((StringBuilder)localObject).toString());
       return;
+      label267:
+      int i = 0;
+      continue;
+      label272:
       i = 0;
-      break;
     }
   }
   
@@ -528,29 +506,31 @@ public class MiniAppUserAppInfoListManager
   
   private boolean updateRedDotData(EntityManager paramEntityManager, Entity paramEntity)
   {
-    boolean bool2 = false;
+    boolean bool2 = paramEntityManager.isOpen();
     boolean bool1 = false;
-    if (paramEntityManager.isOpen()) {
+    if (bool2)
+    {
       if (paramEntity.getStatus() == 1000)
       {
         paramEntityManager.persistOrReplace(paramEntity);
         if (paramEntity.getStatus() == 1001) {
           bool1 = true;
         }
-        paramEntityManager.close();
       }
-    }
-    do
-    {
+      else if ((paramEntity.getStatus() == 1001) || (paramEntity.getStatus() == 1002))
+      {
+        bool1 = paramEntityManager.update(paramEntity);
+      }
+      paramEntityManager.close();
       return bool1;
-      if ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
-        break;
-      }
-      bool1 = paramEntityManager.update(paramEntity);
-      break;
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("MiniAppUserAppInfoListManager", 2, "updateEntity em closed e=" + paramEntity.getTableName());
+    }
+    if (QLog.isColorLevel())
+    {
+      paramEntityManager = new StringBuilder();
+      paramEntityManager.append("updateEntity em closed e=");
+      paramEntityManager.append(paramEntity.getTableName());
+      QLog.d("MiniAppUserAppInfoListManager", 2, paramEntityManager.toString());
+    }
     return false;
   }
   
@@ -566,19 +546,19 @@ public class MiniAppUserAppInfoListManager
       try
       {
         if (this.mTopAppList.size() > 0) {
-          break label37;
+          break label42;
         }
         if (this.mUsedAppList.size() <= 0) {
-          break label42;
+          break label37;
         }
       }
       finally {}
       return bool;
       label37:
-      boolean bool = true;
+      boolean bool = false;
       continue;
       label42:
-      bool = false;
+      bool = true;
     }
   }
   
@@ -587,30 +567,42 @@ public class MiniAppUserAppInfoListManager
     try
     {
       Iterator localIterator = this.mTopAppList.iterator();
-      MiniAppInfo localMiniAppInfo;
       while (localIterator.hasNext())
       {
-        localMiniAppInfo = (MiniAppInfo)localIterator.next();
-        if ((localMiniAppInfo != null) && (paramString.equals(localMiniAppInfo.appId)))
+        localObject = (MiniAppInfo)localIterator.next();
+        if ((localObject != null) && (paramString.equals(((MiniAppInfo)localObject).appId)))
         {
-          QLog.d("MiniAppUserAppInfoListManager", 1, "findMiniApp, appInfo = " + localMiniAppInfo);
-          return localMiniAppInfo;
+          paramString = new StringBuilder();
+          paramString.append("findMiniApp, appInfo = ");
+          paramString.append(localObject);
+          QLog.d("MiniAppUserAppInfoListManager", 1, paramString.toString());
+          return localObject;
         }
       }
       localIterator = this.mUsedAppList.iterator();
       while (localIterator.hasNext())
       {
-        localMiniAppInfo = (MiniAppInfo)localIterator.next();
-        if ((localMiniAppInfo != null) && (paramString.equals(localMiniAppInfo.appId)))
+        localObject = (MiniAppInfo)localIterator.next();
+        if ((localObject != null) && (paramString.equals(((MiniAppInfo)localObject).appId)))
         {
-          QLog.d("MiniAppUserAppInfoListManager", 1, "findMiniApp, appInfo = " + localMiniAppInfo);
-          return localMiniAppInfo;
+          paramString = new StringBuilder();
+          paramString.append("findMiniApp, appInfo = ");
+          paramString.append(localObject);
+          QLog.d("MiniAppUserAppInfoListManager", 1, paramString.toString());
+          return localObject;
         }
       }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("findMiniApp, failed to find Miniapp, appId = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("MiniAppUserAppInfoListManager", 1, ((StringBuilder)localObject).toString());
+      return null;
     }
     finally {}
-    QLog.d("MiniAppUserAppInfoListManager", 1, "findMiniApp, failed to find Miniapp, appId = " + paramString);
-    return null;
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public MiniAppInfo findMiniApp(String paramString, int paramInt)
@@ -618,30 +610,42 @@ public class MiniAppUserAppInfoListManager
     try
     {
       Iterator localIterator = this.mTopAppList.iterator();
-      MiniAppInfo localMiniAppInfo;
       while (localIterator.hasNext())
       {
-        localMiniAppInfo = (MiniAppInfo)localIterator.next();
-        if ((localMiniAppInfo != null) && (paramString.equals(localMiniAppInfo.appId)) && (paramInt == localMiniAppInfo.verType))
+        localObject = (MiniAppInfo)localIterator.next();
+        if ((localObject != null) && (paramString.equals(((MiniAppInfo)localObject).appId)) && (paramInt == ((MiniAppInfo)localObject).verType))
         {
-          QLog.d("MiniAppUserAppInfoListManager", 1, "findMiniApp, appInfo = " + localMiniAppInfo);
-          return localMiniAppInfo;
+          paramString = new StringBuilder();
+          paramString.append("findMiniApp, appInfo = ");
+          paramString.append(localObject);
+          QLog.d("MiniAppUserAppInfoListManager", 1, paramString.toString());
+          return localObject;
         }
       }
       localIterator = this.mUsedAppList.iterator();
       while (localIterator.hasNext())
       {
-        localMiniAppInfo = (MiniAppInfo)localIterator.next();
-        if ((localMiniAppInfo != null) && (paramString.equals(localMiniAppInfo.appId)) && (paramInt == localMiniAppInfo.verType))
+        localObject = (MiniAppInfo)localIterator.next();
+        if ((localObject != null) && (paramString.equals(((MiniAppInfo)localObject).appId)) && (paramInt == ((MiniAppInfo)localObject).verType))
         {
-          QLog.d("MiniAppUserAppInfoListManager", 1, "findMiniApp, appInfo = " + localMiniAppInfo);
-          return localMiniAppInfo;
+          paramString = new StringBuilder();
+          paramString.append("findMiniApp, appInfo = ");
+          paramString.append(localObject);
+          QLog.d("MiniAppUserAppInfoListManager", 1, paramString.toString());
+          return localObject;
         }
       }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("findMiniApp, failed to find Miniapp, appId = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("MiniAppUserAppInfoListManager", 1, ((StringBuilder)localObject).toString());
+      return null;
     }
     finally {}
-    QLog.d("MiniAppUserAppInfoListManager", 1, "findMiniApp, failed to find Miniapp, appId = " + paramString);
-    return null;
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public MiniAppInfo findTopMiniApp(String paramString)
@@ -654,7 +658,10 @@ public class MiniAppUserAppInfoListManager
         MiniAppInfo localMiniAppInfo = (MiniAppInfo)localIterator.next();
         if ((localMiniAppInfo != null) && (paramString.equals(localMiniAppInfo.appId)))
         {
-          QLog.d("MiniAppUserAppInfoListManager", 1, "findMiniApp, appInfo = " + localMiniAppInfo);
+          paramString = new StringBuilder();
+          paramString.append("findMiniApp, appInfo = ");
+          paramString.append(localMiniAppInfo);
+          QLog.d("MiniAppUserAppInfoListManager", 1, paramString.toString());
           return localMiniAppInfo;
         }
       }
@@ -662,6 +669,10 @@ public class MiniAppUserAppInfoListManager
       return null;
     }
     finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public List<MiniAppInfo> getMiniAppInfoData()
@@ -678,9 +689,15 @@ public class MiniAppUserAppInfoListManager
       if (localLinkedList.size() <= 0)
       {
         localLinkedList.addAll(this.mDbCacheAppList);
-        QLog.e("MiniAppUserAppInfoListManager", 1, "getMiniAppInfoData, user DB cache data. size = " + localLinkedList.size());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getMiniAppInfoData, user DB cache data. size = ");
+        localStringBuilder.append(localLinkedList.size());
+        QLog.e("MiniAppUserAppInfoListManager", 1, localStringBuilder.toString());
       }
-      QLog.d("MiniAppUserAppInfoListManager", 2, "getMiniAppInfoData, size = " + localLinkedList.size());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getMiniAppInfoData, size = ");
+      localStringBuilder.append(localLinkedList.size());
+      QLog.d("MiniAppUserAppInfoListManager", 2, localStringBuilder.toString());
       return localLinkedList;
     }
     finally {}
@@ -689,15 +706,17 @@ public class MiniAppUserAppInfoListManager
   public List<RecommendMiniAppEntity> getOldRecommendMiniAppList()
   {
     Object localObject = MiniAppUtils.getAppInterface();
-    if (localObject == null) {
-      QLog.e("MiniAppUserAppInfoListManager", 1, "getOldRecommendMiniAppList, app is null.");
-    }
-    do
+    List localList = null;
+    if (localObject == null)
     {
+      QLog.e("MiniAppUserAppInfoListManager", 1, "getOldRecommendMiniAppList, app is null.");
       return null;
-      localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
-    } while (localObject == null);
-    return ((EntityManager)localObject).query(RecommendMiniAppEntity.class, RecommendMiniAppEntity.class.getSimpleName(), false, null, null, null, null, null, null);
+    }
+    localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
+    if (localObject != null) {
+      localList = ((EntityManager)localObject).query(RecommendMiniAppEntity.class, RecommendMiniAppEntity.class.getSimpleName(), false, null, null, null, null, null, null);
+    }
+    return localList;
   }
   
   public COMM.StCommonExt getPullDownEntryExtInfo()
@@ -708,47 +727,53 @@ public class MiniAppUserAppInfoListManager
   public Map<String, Integer> getRedDotData()
   {
     HashMap localHashMap = new HashMap();
-    Object localObject = new ArrayList();
+    Object localObject2 = new ArrayList();
     try
     {
-      ((List)localObject).addAll(this.mTopAppList);
-      ((List)localObject).addAll(this.mUsedAppList);
-      if ((localObject == null) || (((List)localObject).size() <= 0)) {
+      ((List)localObject2).addAll(this.mTopAppList);
+      ((List)localObject2).addAll(this.mUsedAppList);
+      if (((List)localObject2).size() <= 0) {
         return localHashMap;
       }
+      boolean bool = MiniAppConfProcessor.e();
+      localObject2 = ((List)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        MiniAppInfo localMiniAppInfo = (MiniAppInfo)((Iterator)localObject2).next();
+        if ((localMiniAppInfo != null) && (!TextUtils.isEmpty(localMiniAppInfo.appId)))
+        {
+          int j = 0;
+          Integer localInteger1 = (Integer)this.mPublicAccountRedDotMap.get(localMiniAppInfo.appId);
+          Integer localInteger2 = (Integer)this.mPushRedDotMap.get(localMiniAppInfo.appId);
+          int i = j;
+          if (localInteger1 != null)
+          {
+            i = j;
+            if (localInteger1.intValue() > 0)
+            {
+              i = j;
+              if (bool) {
+                i = 0 + localInteger1.intValue();
+              }
+            }
+          }
+          j = i;
+          if (localInteger2 != null)
+          {
+            j = i;
+            if (localInteger2.intValue() > 0) {
+              j = i + localInteger2.intValue();
+            }
+          }
+          localHashMap.put(localMiniAppInfo.appId, Integer.valueOf(j));
+        }
+      }
+      return localHashMap;
     }
     finally {}
-    boolean bool = MiniAppConfProcessor.e();
-    localObject = ((List)localObject).iterator();
-    MiniAppInfo localMiniAppInfo;
-    Integer localInteger1;
-    Integer localInteger2;
-    while (((Iterator)localObject).hasNext())
+    for (;;)
     {
-      localMiniAppInfo = (MiniAppInfo)((Iterator)localObject).next();
-      if ((localMiniAppInfo != null) && (!TextUtils.isEmpty(localMiniAppInfo.appId)))
-      {
-        localInteger1 = (Integer)this.mPublicAccountRedDotMap.get(localMiniAppInfo.appId);
-        localInteger2 = (Integer)this.mPushRedDotMap.get(localMiniAppInfo.appId);
-        if ((localInteger1 == null) || (localInteger1.intValue() <= 0) || (!bool)) {
-          break label232;
-        }
-      }
-    }
-    label232:
-    for (int i = localInteger1.intValue() + 0;; i = 0)
-    {
-      int j = i;
-      if (localInteger2 != null)
-      {
-        j = i;
-        if (localInteger2.intValue() > 0) {
-          j = i + localInteger2.intValue();
-        }
-      }
-      localMap.put(localMiniAppInfo.appId, Integer.valueOf(j));
-      break;
-      return localMap;
+      throw localObject1;
     }
   }
   
@@ -822,20 +847,23 @@ public class MiniAppUserAppInfoListManager
   {
     QLog.d("MiniAppUserAppInfoListManager", 1, "sendUserAppListRequest");
     MiniAppCmdUtil.getInstance().getUserAppList(paramLong1, paramLong2, null, new MiniAppUserAppInfoListManager.2(this));
-    Object localObject = MiniAppUtils.getAppInterface();
-    if (localObject != null)
+    Object localObject1 = MiniAppUtils.getAppInterface();
+    if (localObject1 != null)
     {
-      SharedPreferences localSharedPreferences = ((AppInterface)localObject).getPreferences();
-      String str = ((AppInterface)localObject).getCurrentAccountUin() + "key_update_applets_notification_setting_time";
-      paramLong1 = localSharedPreferences.getLong(str, 0L);
+      SharedPreferences localSharedPreferences = ((AppInterface)localObject1).getPreferences();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(((AppInterface)localObject1).getCurrentAccountUin());
+      ((StringBuilder)localObject2).append("key_update_applets_notification_setting_time");
+      localObject2 = ((StringBuilder)localObject2).toString();
+      paramLong1 = localSharedPreferences.getLong((String)localObject2, 0L);
       paramLong2 = System.currentTimeMillis();
       if (paramLong2 - paramLong1 > QzoneConfig.getInstance().getConfig("qqminiapp", "getappletsnotificationsettinginterval", 1L) * 1000L)
       {
-        localObject = (AppletsHandler)((AppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.APPLET_PUSH_HANDLER);
-        if (localObject != null)
+        localObject1 = (AppletsHandler)((AppInterface)localObject1).getBusinessHandler(BusinessHandlerFactory.APPLET_PUSH_HANDLER);
+        if (localObject1 != null)
         {
-          ((AppletsHandler)localObject).a();
-          localSharedPreferences.edit().putLong(str, paramLong2).commit();
+          ((AppletsHandler)localObject1).a();
+          localSharedPreferences.edit().putLong((String)localObject2, paramLong2).commit();
         }
       }
     }
@@ -843,55 +871,61 @@ public class MiniAppUserAppInfoListManager
   
   public void setMiniAppNoticeRedDotData(Map<String, Integer> paramMap)
   {
-    if ((paramMap == null) || (paramMap.size() <= 0))
+    if ((paramMap != null) && (paramMap.size() > 0))
     {
-      QLog.d("MiniAppUserAppInfoListManager", 1, "setMiniAppNoticeRedDotData, data is null or data size = 0");
-      clearNoticeRedDotData();
+      Iterator localIterator = paramMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        paramMap = (Map.Entry)localIterator.next();
+        String str = (String)paramMap.getKey();
+        Integer localInteger2 = (Integer)paramMap.getValue();
+        if ((!TextUtils.isEmpty(str)) && (localInteger2 != null) && (localInteger2.intValue() > 0))
+        {
+          this.mPublicAccountRedDotMap.put(str, localInteger2);
+          Integer localInteger1 = (Integer)this.mPushRedDotMap.get(str);
+          paramMap = localInteger1;
+          if (localInteger1 == null) {
+            paramMap = Integer.valueOf(0);
+          }
+          updateRedDotData(new MiniAppRedDotEntity(str, localInteger2.intValue(), paramMap.intValue()));
+        }
+      }
       MiniAppUtils.updateMiniAppList(101);
       return;
     }
-    Iterator localIterator = paramMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      paramMap = (Map.Entry)localIterator.next();
-      String str = (String)paramMap.getKey();
-      Integer localInteger2 = (Integer)paramMap.getValue();
-      if ((!TextUtils.isEmpty(str)) && (localInteger2 != null) && (localInteger2.intValue() > 0))
-      {
-        this.mPublicAccountRedDotMap.put(str, localInteger2);
-        Integer localInteger1 = (Integer)this.mPushRedDotMap.get(str);
-        paramMap = localInteger1;
-        if (localInteger1 == null) {
-          paramMap = Integer.valueOf(0);
-        }
-        updateRedDotData(new MiniAppRedDotEntity(str, localInteger2.intValue(), paramMap.intValue()));
-      }
-    }
+    QLog.d("MiniAppUserAppInfoListManager", 1, "setMiniAppNoticeRedDotData, data is null or data size = 0");
+    clearNoticeRedDotData();
     MiniAppUtils.updateMiniAppList(101);
   }
   
   public void setMiniAppPushRedDotData(MiniAppRedDotEntity paramMiniAppRedDotEntity)
   {
-    QLog.d("MiniAppUserAppInfoListManager", 1, "setMiniAppPushRedDotData, data: " + paramMiniAppRedDotEntity);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setMiniAppPushRedDotData, data: ");
+    ((StringBuilder)localObject).append(paramMiniAppRedDotEntity);
+    QLog.d("MiniAppUserAppInfoListManager", 1, ((StringBuilder)localObject).toString());
     if ((paramMiniAppRedDotEntity != null) && (!TextUtils.isEmpty(paramMiniAppRedDotEntity.appId)))
     {
-      if (findMiniApp(paramMiniAppRedDotEntity.appId) != null) {
-        break label67;
+      if (findMiniApp(paramMiniAppRedDotEntity.appId) == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MiniAppUserAppInfoListManager", 1, "setMiniAppPushRedDotData, current app is not opened");
+        }
+        return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniAppUserAppInfoListManager", 1, "setMiniAppPushRedDotData, current app is not opened");
+      this.mPushRedDotMap.put(paramMiniAppRedDotEntity.appId, Integer.valueOf(paramMiniAppRedDotEntity.wnsPushRedDotNum));
+      localObject = (Integer)this.mPublicAccountRedDotMap.get(paramMiniAppRedDotEntity.appId);
+      int j = 0;
+      int i = j;
+      if (localObject != null)
+      {
+        i = j;
+        if (((Integer)localObject).intValue() > 0) {
+          i = ((Integer)localObject).intValue();
+        }
       }
-    }
-    return;
-    label67:
-    this.mPushRedDotMap.put(paramMiniAppRedDotEntity.appId, Integer.valueOf(paramMiniAppRedDotEntity.wnsPushRedDotNum));
-    Integer localInteger = (Integer)this.mPublicAccountRedDotMap.get(paramMiniAppRedDotEntity.appId);
-    if ((localInteger != null) && (localInteger.intValue() > 0)) {}
-    for (int i = localInteger.intValue();; i = 0)
-    {
       updateRedDotData(new MiniAppRedDotEntity(paramMiniAppRedDotEntity.appId, i, paramMiniAppRedDotEntity.wnsPushRedDotNum));
       MiniAppUtils.updateMiniAppList(101);
-      return;
     }
   }
   
@@ -902,7 +936,7 @@ public class MiniAppUserAppInfoListManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUserAppInfoListManager
  * JD-Core Version:    0.7.0.1
  */

@@ -17,19 +17,23 @@ class GridListAdapter$1
     new Paint().setTextSize(DisplayUtil.a(this.this$0.a, 11.0F));
     int j = this.a.a.getWidth();
     int k = this.a.a.getHeight();
-    if ((j == 0) || (k == 0)) {
-      return;
+    if (j != 0)
+    {
+      if (k == 0) {
+        return;
+      }
+      GradientDrawable localGradientDrawable = new GradientDrawable();
+      localGradientDrawable.setShape(0);
+      float f = i;
+      localGradientDrawable.setCornerRadii(new float[] { f, f, f, f, f, f, f, f });
+      localGradientDrawable.setColor(Color.argb(35, 0, 0, 0));
+      this.a.a.setBackgroundDrawable(localGradientDrawable);
     }
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setShape(0);
-    localGradientDrawable.setCornerRadii(new float[] { i, i, i, i, i, i, i, i });
-    localGradientDrawable.setColor(Color.argb(35, 0, 0, 0));
-    this.a.a.setBackgroundDrawable(localGradientDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troopgift.GridListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

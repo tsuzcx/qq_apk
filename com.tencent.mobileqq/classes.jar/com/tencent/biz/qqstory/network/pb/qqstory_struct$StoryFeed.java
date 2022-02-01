@@ -25,13 +25,14 @@ public final class qqstory_struct$StoryFeed
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 66, 74, 80, 88 }, new String[] { "type", "feed_id", "general_feed", "share_group_feed", "general_recommend_feed", "share_group_recommend_feed", "banner_feed", "tag_feed", "multi_recommend_feed", "additional_feed", "feed_source_tag_type" }, new Object[] { Integer.valueOf(0), localByteStringMicro, null, null, null, null, null, null, null, Integer.valueOf(0), Integer.valueOf(0) }, StoryFeed.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 66, 74, 80, 88 }, new String[] { "type", "feed_id", "general_feed", "share_group_feed", "general_recommend_feed", "share_group_recommend_feed", "banner_feed", "tag_feed", "multi_recommend_feed", "additional_feed", "feed_source_tag_type" }, new Object[] { localInteger, localByteStringMicro, null, null, null, null, null, null, null, localInteger, localInteger }, StoryFeed.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed
  * JD-Core Version:    0.7.0.1
  */

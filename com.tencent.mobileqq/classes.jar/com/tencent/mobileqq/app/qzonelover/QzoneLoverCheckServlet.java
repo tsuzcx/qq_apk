@@ -32,39 +32,38 @@ public class QzoneLoverCheckServlet
     Object localObject;
     if (QLog.isColorLevel())
     {
-      localObject = new StringBuilder().append("receive QzoneLoverCheckRequest, code: ");
-      if (paramFromServiceMsg == null) {
-        break label163;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("receive QzoneLoverCheckRequest, code: ");
+      int i;
+      if (paramFromServiceMsg != null) {
+        i = paramFromServiceMsg.getResultCode();
+      } else {
+        i = -1;
       }
+      ((StringBuilder)localObject).append(i);
+      QLog.d("QzoneLoverCheckServlet", 2, ((StringBuilder)localObject).toString());
     }
-    label163:
-    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
     {
-      QLog.d("QzoneLoverCheckServlet", 2, i);
-      if ((paramFromServiceMsg == null) || (paramFromServiceMsg.getResultCode() != 1000)) {
-        break label193;
-      }
       paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
       localObject = QzoneLoverCheckRequest.a();
       if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break;
+        return;
       }
       paramIntent.putInt("rsp_code", 0);
       paramFromServiceMsg = QzoneLoverCheckRequest.a(paramFromServiceMsg, (String)localObject);
-      if (paramFromServiceMsg == null) {
-        break label168;
+      if (paramFromServiceMsg != null)
+      {
+        paramIntent.putSerializable("rsp_data", paramFromServiceMsg);
+        notifyObserver(null, 1, true, paramIntent, QzoneLoverService.class);
+        return;
       }
-      paramIntent.putSerializable("rsp_data", paramFromServiceMsg);
-      notifyObserver(null, 1, true, paramIntent, QzoneLoverService.class);
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneLoverCheckServlet", 2, "inform QzoneLoverCheckServlet isSuccess false");
+      }
+      notifyObserver(null, 1, false, paramIntent, QzoneLoverService.class);
       return;
     }
-    label168:
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneLoverCheckServlet", 2, "inform QzoneLoverCheckServlet isSuccess false");
-    }
-    notifyObserver(null, 1, false, paramIntent, QzoneLoverService.class);
-    return;
-    label193:
     if (QLog.isColorLevel()) {
       QLog.d("QzoneLoverCheckServlet", 2, "inform QzoneLoverCheckServlet resultcode fail.");
     }
@@ -73,25 +72,31 @@ public class QzoneLoverCheckServlet
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if (paramIntent == null) {}
-    long l;
-    do
-    {
+    if (paramIntent == null) {
       return;
-      l = paramIntent.getLongExtra("hostUin", 0L);
-      byte[] arrayOfByte = new QzoneLoverCheckRequest(l).encode();
-      paramIntent = arrayOfByte;
-      if (arrayOfByte == null) {
-        paramIntent = new byte[4];
-      }
-      paramPacket.setTimeout(60000L);
-      paramPacket.setSSOCommand("SQQzoneSvc." + QzoneLoverCheckRequest.a());
-      paramPacket.putSendData(paramIntent);
-    } while (!QLog.isColorLevel());
-    QLog.d("QzoneLoverCheckServlet", 2, "send req QzoneLoverCheckRequest: " + l);
+    }
+    long l = paramIntent.getLongExtra("hostUin", 0L);
+    Object localObject = new QzoneLoverCheckRequest(l).encode();
+    paramIntent = (Intent)localObject;
+    if (localObject == null) {
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(60000L);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("SQQzoneSvc.");
+    ((StringBuilder)localObject).append(QzoneLoverCheckRequest.a());
+    paramPacket.setSSOCommand(((StringBuilder)localObject).toString());
+    paramPacket.putSendData(paramIntent);
+    if (QLog.isColorLevel())
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("send req QzoneLoverCheckRequest: ");
+      paramIntent.append(l);
+      QLog.d("QzoneLoverCheckServlet", 2, paramIntent.toString());
+    }
   }
   
-  public void sendToMSF(Intent paramIntent, ToServiceMsg paramToServiceMsg)
+  protected void sendToMSF(Intent paramIntent, ToServiceMsg paramToServiceMsg)
   {
     this.a = paramToServiceMsg;
     super.sendToMSF(paramIntent, paramToServiceMsg);
@@ -99,7 +104,7 @@ public class QzoneLoverCheckServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.qzonelover.QzoneLoverCheckServlet
  * JD-Core Version:    0.7.0.1
  */

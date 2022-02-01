@@ -19,36 +19,54 @@ public class EffectFilterTools$DataReport
     {
       paramVideoAppInterface = (FilterItem)((EffectFilterTools)paramVideoAppInterface.a(1)).a();
       a(paramVideoAppInterface);
-      AVLog.printColorLog(jdField_a_of_type_JavaLangString, "DataReport onUserdFilter:" + paramVideoAppInterface + "|" + jdField_a_of_type_Boolean);
-      if (!jdField_a_of_type_Boolean) {
-        break label77;
+      String str = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("DataReport onUserdFilter:");
+      localStringBuilder.append(paramVideoAppInterface);
+      localStringBuilder.append("|");
+      localStringBuilder.append(jdField_a_of_type_Boolean);
+      AVLog.printColorLog(str, localStringBuilder.toString());
+      if (jdField_a_of_type_Boolean) {
+        paramVideoAppInterface = "0X80076B2";
+      } else {
+        paramVideoAppInterface = "0X80076B1";
       }
-    }
-    label77:
-    for (paramVideoAppInterface = "0X80076B2";; paramVideoAppInterface = "0X80076B1")
-    {
       a(paramVideoAppInterface);
-      return;
     }
   }
   
   static void a(FilterItem paramFilterItem)
   {
     long l1 = System.currentTimeMillis();
-    AVLog.printColorLog(jdField_a_of_type_JavaLangString, "DataReport onUserdFilter:" + paramFilterItem + "|" + jdField_a_of_type_Long);
+    Object localObject = jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DataReport onUserdFilter:");
+    localStringBuilder.append(paramFilterItem);
+    localStringBuilder.append("|");
+    localStringBuilder.append(jdField_a_of_type_Long);
+    AVLog.printColorLog((String)localObject, localStringBuilder.toString());
     if ((paramFilterItem != null) && (!paramFilterItem.isEmptyFilter()))
     {
-      if (jdField_a_of_type_Long != 0L)
+      long l2 = jdField_a_of_type_Long;
+      if (l2 != 0L)
       {
-        long l2 = l1 - jdField_a_of_type_Long;
-        AVLog.printColorLog(jdField_a_of_type_JavaLangString, "DataReport onUserdFilter:" + l2);
+        l2 = l1 - l2;
+        localObject = jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("DataReport onUserdFilter:");
+        localStringBuilder.append(l2);
+        AVLog.printColorLog((String)localObject, localStringBuilder.toString());
         if (l2 > 5000L)
         {
           jdField_a_of_type_Boolean = true;
           a(paramFilterItem, l2 / 1000L);
         }
       }
-      AVLog.printColorLog(jdField_a_of_type_JavaLangString, "DataReport onUserdFilter 33:" + jdField_a_of_type_Long);
+      paramFilterItem = jdField_a_of_type_JavaLangString;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("DataReport onUserdFilter 33:");
+      ((StringBuilder)localObject).append(jdField_a_of_type_Long);
+      AVLog.printColorLog(paramFilterItem, ((StringBuilder)localObject).toString());
     }
     jdField_a_of_type_Long = l1;
   }
@@ -56,11 +74,17 @@ public class EffectFilterTools$DataReport
   public static void a(FilterItem paramFilterItem, long paramLong)
   {
     paramFilterItem = paramFilterItem.getId();
-    AVLog.printColorLog(jdField_a_of_type_JavaLangString, "DataReport onStateReport:" + paramFilterItem + "|" + paramLong);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("filterName", paramFilterItem);
-    localHashMap.put("duration", String.valueOf(paramLong));
-    UserAction.onUserAction("actAVFunChatFilter", true, -1L, -1L, localHashMap, true);
+    Object localObject = jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DataReport onStateReport:");
+    localStringBuilder.append(paramFilterItem);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramLong);
+    AVLog.printColorLog((String)localObject, localStringBuilder.toString());
+    localObject = new HashMap();
+    ((Map)localObject).put("filterName", paramFilterItem);
+    ((Map)localObject).put("duration", String.valueOf(paramLong));
+    UserAction.onUserAction("actAVFunChatFilter", true, -1L, -1L, (Map)localObject, true);
     try
     {
       UserAction.flushObjectsToDB(true);
@@ -79,18 +103,22 @@ public class EffectFilterTools$DataReport
   
   public static void a(boolean paramBoolean)
   {
-    AVLog.printColorLog(jdField_a_of_type_JavaLangString, "DataReport onSupport:" + paramBoolean);
-    if (paramBoolean) {}
-    for (String str = "0X80076AF";; str = "0X80076B0")
-    {
-      a(str);
-      return;
+    String str = jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DataReport onSupport:");
+    localStringBuilder.append(paramBoolean);
+    AVLog.printColorLog(str, localStringBuilder.toString());
+    if (paramBoolean) {
+      str = "0X80076AF";
+    } else {
+      str = "0X80076B0";
     }
+    a(str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.filter.EffectFilterTools.DataReport
  * JD-Core Version:    0.7.0.1
  */

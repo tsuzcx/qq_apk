@@ -51,11 +51,11 @@ public class GdtGifImageView
     {
       this.jdField_a_of_type_Boolean = true;
       setImageDrawable(paramURLDrawable);
-    }
-    while ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (!paramString.equals(this.jdField_b_of_type_JavaLangString)) || (this.jdField_a_of_type_Boolean)) {
       return;
     }
-    setImageDrawable(paramURLDrawable);
+    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (paramString.equals(this.jdField_b_of_type_JavaLangString)) && (!this.jdField_a_of_type_Boolean)) {
+      setImageDrawable(paramURLDrawable);
+    }
   }
   
   public void a(String paramString, WeakReference<GdtGifImageView.LoadListener> paramWeakReference)
@@ -66,24 +66,27 @@ public class GdtGifImageView
     paramWeakReference.a();
     setImageDrawable(paramWeakReference.a());
     this.jdField_b_of_type_Boolean = true;
-    GdtLog.a("GdtImageView", "GdtGifImageView update completed " + paramString);
+    paramWeakReference = new StringBuilder();
+    paramWeakReference.append("GdtGifImageView update completed ");
+    paramWeakReference.append(paramString);
+    GdtLog.a("GdtImageView", paramWeakReference.toString());
     URLDrawable.resume();
     AbstractGifImage.resumeAll();
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.image.GdtGifImageView
  * JD-Core Version:    0.7.0.1
  */

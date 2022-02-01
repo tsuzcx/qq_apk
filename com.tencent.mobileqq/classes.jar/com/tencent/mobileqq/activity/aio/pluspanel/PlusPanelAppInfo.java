@@ -31,7 +31,6 @@ public abstract class PlusPanelAppInfo
   public String iconPress;
   public String iconUrl;
   public String iconYouth;
-  public int identifyMask = 31;
   public boolean isGray;
   public String minVersion;
   public String name;
@@ -75,11 +74,14 @@ public abstract class PlusPanelAppInfo
   
   private boolean a(Context paramContext, String paramString1, String paramString2)
   {
-    QLog.i("PlusPanelAppInfo", 2, "onMiniAppJump jumpUrl:" + paramString1);
-    IMiniAppService localIMiniAppService = (IMiniAppService)QRoute.api(IMiniAppService.class);
-    if ((!TextUtils.isEmpty(paramString1)) && (localIMiniAppService.isMiniAppUrl(paramString1)))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onMiniAppJump jumpUrl:");
+    ((StringBuilder)localObject).append(paramString1);
+    QLog.i("PlusPanelAppInfo", 2, ((StringBuilder)localObject).toString());
+    localObject = (IMiniAppService)QRoute.api(IMiniAppService.class);
+    if ((!TextUtils.isEmpty(paramString1)) && (((IMiniAppService)localObject).isMiniAppUrl(paramString1)))
     {
-      localIMiniAppService.startMiniApp(paramContext, a(paramString1, paramString2), 2053, null);
+      ((IMiniAppService)localObject).startMiniApp(paramContext, a(paramString1, paramString2), 2053, null);
       return true;
     }
     return false;
@@ -124,9 +126,11 @@ public abstract class PlusPanelAppInfo
   
   public void handlePanelClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    boolean bool1 = false;
+    boolean bool1;
     if ("miniapp".equals(this.actionType)) {
       bool1 = a(paramBaseChatPie.a(), this.action, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    } else {
+      bool1 = false;
     }
     boolean bool2 = bool1;
     if (!bool1)
@@ -148,7 +152,6 @@ public abstract class PlusPanelAppInfo
     this.enableGroup = 0;
     this.sort = 0;
     this.groupType = 0;
-    this.identifyMask = 0;
     this.uinType = 0;
     this.name = "";
     this.enName = "";
@@ -192,13 +195,13 @@ public abstract class PlusPanelAppInfo
     if (paramInt == 10) {
       QAVGroupConfig.Report.b(paramBoolean);
     }
-    VideoItemBuilder.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramSessionInfo, paramInt, paramBoolean, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), paramString);
-    paramBaseChatPie.an();
+    VideoItemBuilder.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramSessionInfo, paramInt, paramBoolean, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), paramString);
+    paramBaseChatPie.Q();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo
  * JD-Core Version:    0.7.0.1
  */

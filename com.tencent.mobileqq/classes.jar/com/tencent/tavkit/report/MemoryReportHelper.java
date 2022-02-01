@@ -126,20 +126,26 @@ public class MemoryReportHelper
   
   public void tick(String paramString, long paramLong)
   {
-    MemoryReportHelper.Consumer localConsumer2 = (MemoryReportHelper.Consumer)this.consumerHashMap.get(paramString);
-    MemoryReportHelper.Consumer localConsumer1 = localConsumer2;
-    if (localConsumer2 == null)
+    MemoryReportHelper.Consumer localConsumer = (MemoryReportHelper.Consumer)this.consumerHashMap.get(paramString);
+    Object localObject = localConsumer;
+    if (localConsumer == null)
     {
-      localConsumer1 = new MemoryReportHelper.Consumer(paramString);
-      this.consumerHashMap.put(MemoryReportHelper.Consumer.access$100(localConsumer1), localConsumer1);
+      localObject = new MemoryReportHelper.Consumer(paramString);
+      this.consumerHashMap.put(MemoryReportHelper.Consumer.access$100((MemoryReportHelper.Consumer)localObject), localObject);
     }
-    MemoryReportHelper.Consumer.access$200(localConsumer1, paramLong);
-    Log.d("MemoryReportHelper", "tick() called with: key = [" + paramString + "], MB = [" + paramLong + "]");
+    MemoryReportHelper.Consumer.access$200((MemoryReportHelper.Consumer)localObject, paramLong);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("tick() called with: key = [");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("], MB = [");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append("]");
+    Log.d("MemoryReportHelper", ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavkit.report.MemoryReportHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -28,15 +28,18 @@ public class FeedCommentDataProvider$GetCommentListRequest
   
   public LegoResponseBase a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspGetCommentList localRspGetCommentList = new qqstory_service.RspGetCommentList();
+    Object localObject = new qqstory_service.RspGetCommentList();
     try
     {
-      localRspGetCommentList.mergeFrom(paramArrayOfByte);
-      return new FeedCommentDataProvider.GetCommentListResponse(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentDataProvider, localRspGetCommentList);
+      ((qqstory_service.RspGetCommentList)localObject).mergeFrom(paramArrayOfByte);
+      return new FeedCommentDataProvider.GetCommentListResponse(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentDataProvider, (qqstory_service.RspGetCommentList)localObject);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      SLog.d("Q.qqstory:GetCommentListRequest", "" + paramArrayOfByte);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(paramArrayOfByte);
+      SLog.d("Q.qqstory:GetCommentListRequest", ((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -46,25 +49,35 @@ public class FeedCommentDataProvider$GetCommentListRequest
     return this.jdField_a_of_type_JavaLangString;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqGetCommentList localReqGetCommentList = new qqstory_service.ReqGetCommentList();
     localReqGetCommentList.vid.set(ByteStringMicro.copyFromUtf8(this.b));
     localReqGetCommentList.latest_comment_id.set(this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory:GetCommentListRequest", 2, "getCommentListData by latest_comment_id: " + this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getCommentListData by latest_comment_id: ");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      QLog.d("Q.qqstory:GetCommentListRequest", 2, localStringBuilder.toString());
     }
     return localReqGetCommentList.toByteArray();
   }
   
   public String toString()
   {
-    return "GetCommentListRequest{ vid=" + this.b + ", startCommentID=" + this.jdField_a_of_type_Int + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetCommentListRequest{ vid=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", startCommentID=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedCommentDataProvider.GetCommentListRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -30,14 +30,16 @@ public final class pbexit_heart_list_room$UserInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50, 74 }, new String[] { "uin", "face_url", "version", "tinyid", "client_type", "nick_name", "logo_full_url" }, new Object[] { Long.valueOf(0L), "", Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2 }, UserInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50, 74 }, new String[] { "uin", "face_url", "version", "tinyid", "client_type", "nick_name", "logo_full_url" }, new Object[] { localLong, "", localInteger, localLong, localInteger, localByteStringMicro1, localByteStringMicro2 }, UserInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.roomservice.pb.pbexit_heart_list_room.UserInfo
  * JD-Core Version:    0.7.0.1
  */

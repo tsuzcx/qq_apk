@@ -17,56 +17,61 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.gallery.picocr.PicOcrManager.OCRReqContext;
+import com.tencent.mobileqq.dov.edit.api.IStartDovEditPic;
 import com.tencent.mobileqq.gallery.picocr.PicOcrResultBean;
 import com.tencent.mobileqq.gallery.picocr.PicOcrRspResult;
 import com.tencent.mobileqq.gallery.picocr.PicOrcUtils;
 import com.tencent.mobileqq.ocr.data.OcrConfig;
 import com.tencent.mobileqq.ocr.data.TranslateResult;
+import com.tencent.mobileqq.ocr.req.OCRReqContext;
 import com.tencent.mobileqq.ocr.view.OcrImageTextView;
-import com.tencent.mobileqq.screendetect.ScreenShotHelper;
+import com.tencent.mobileqq.qqforward.api.IForwardOption;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.share.api.IShareActivityStartup;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.text.QQText;
-import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.utils.BaseFileUtil;
+import com.tencent.mobileqq.utils.BaseImageUtil;
 import com.tencent.qphone.base.util.BaseApplication;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.MobileQQ;
 
 public class OCRPerformUtil
 {
-  public static PicOcrManager.OCRReqContext a;
   public static PicOcrRspResult a;
   public static OCRPerformUtil.OCRLanHolder a;
   public static TranslateResult a;
+  public static OCRReqContext a;
   public static CharSequence a;
   static final HashMap<String, Integer> a;
-  public static boolean a;
+  public static boolean a = false;
   public static OCRPerformUtil.OCRLanHolder b;
   public static CharSequence b;
   
   static
   {
-    jdField_a_of_type_Boolean = false;
     jdField_a_of_type_JavaLangCharSequence = "";
     jdField_b_of_type_JavaLangCharSequence = "";
     jdField_a_of_type_JavaUtilHashMap = new HashMap();
     jdField_a_of_type_JavaUtilHashMap.put("zh", Integer.valueOf(1));
     jdField_a_of_type_JavaUtilHashMap.put("en", Integer.valueOf(2));
-    jdField_a_of_type_JavaUtilHashMap.put("ja", Integer.valueOf(3));
-    jdField_a_of_type_JavaUtilHashMap.put("jp", Integer.valueOf(3));
-    jdField_a_of_type_JavaUtilHashMap.put("ko", Integer.valueOf(4));
-    jdField_a_of_type_JavaUtilHashMap.put("kr", Integer.valueOf(4));
+    HashMap localHashMap = jdField_a_of_type_JavaUtilHashMap;
+    Integer localInteger = Integer.valueOf(3);
+    localHashMap.put("ja", localInteger);
+    jdField_a_of_type_JavaUtilHashMap.put("jp", localInteger);
+    localHashMap = jdField_a_of_type_JavaUtilHashMap;
+    localInteger = Integer.valueOf(4);
+    localHashMap.put("ko", localInteger);
+    jdField_a_of_type_JavaUtilHashMap.put("kr", localInteger);
     jdField_a_of_type_JavaUtilHashMap.put("fr", Integer.valueOf(5));
     jdField_a_of_type_JavaUtilHashMap.put("es", Integer.valueOf(6));
     jdField_a_of_type_JavaUtilHashMap.put("it", Integer.valueOf(7));
@@ -82,13 +87,12 @@ public class OCRPerformUtil
   
   public static int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
   {
-    int j = paramOptions.outHeight;
+    int i = paramOptions.outHeight;
     paramInt2 = paramOptions.outWidth;
-    int i = 1;
     if (paramInt2 > paramInt1 * 1.2F)
     {
-      i = j / 2;
-      j = paramInt2 / 2;
+      i /= 2;
+      int j = paramInt2 / 2;
       paramInt2 = 2;
       for (;;)
       {
@@ -99,8 +103,13 @@ public class OCRPerformUtil
         paramInt2 *= 2;
       }
     }
-    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-      com.tencent.qphone.base.util.QLog.i("OCRPerformUtil", 2, "calculateInSampleSize:" + i);
+    i = 1;
+    if (QLog.isColorLevel())
+    {
+      paramOptions = new StringBuilder();
+      paramOptions.append("calculateInSampleSize:");
+      paramOptions.append(i);
+      QLog.i("OCRPerformUtil", 2, paramOptions.toString());
     }
     return i;
   }
@@ -124,11 +133,12 @@ public class OCRPerformUtil
   {
     if (paramDrawable == null)
     {
-      if (com.tencent.TMG.utils.QLog.isColorLevel()) {
-        com.tencent.TMG.utils.QLog.i("OCRPerformUtil", 0, "drawable2Bitmap, drawable is null");
+      if (QLog.isColorLevel()) {
+        QLog.i("OCRPerformUtil", 2, "drawable2Bitmap, drawable is null");
       }
       return null;
     }
+    Object localObject;
     if ((paramDrawable instanceof BitmapDrawable))
     {
       localObject = (BitmapDrawable)paramDrawable;
@@ -136,14 +146,15 @@ public class OCRPerformUtil
         return ((BitmapDrawable)localObject).getBitmap();
       }
     }
-    if ((paramDrawable.getIntrinsicWidth() <= 0) || (paramDrawable.getIntrinsicHeight() <= 0)) {}
-    for (Object localObject = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);; localObject = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888))
-    {
-      Canvas localCanvas = new Canvas((Bitmap)localObject);
-      paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
-      paramDrawable.draw(localCanvas);
-      return localObject;
+    if ((paramDrawable.getIntrinsicWidth() > 0) && (paramDrawable.getIntrinsicHeight() > 0)) {
+      localObject = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+    } else {
+      localObject = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
     }
+    Canvas localCanvas = new Canvas((Bitmap)localObject);
+    paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
+    paramDrawable.draw(localCanvas);
+    return localObject;
   }
   
   public static Bitmap a(String paramString, DisplayMetrics paramDisplayMetrics)
@@ -160,15 +171,19 @@ public class OCRPerformUtil
     paramDisplayMetrics = localBitmap;
     if (localBitmap != null)
     {
-      i = ImageUtil.c(paramString);
+      i = BaseImageUtil.c(paramString);
       paramDisplayMetrics = localBitmap;
       if (i != 0)
       {
         paramDisplayMetrics = localBitmap;
         if (i % 90 == 0)
         {
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("OCRPerformUtil", 2, "decodeBitmapForOcr rotate:" + i);
+          if (QLog.isColorLevel())
+          {
+            paramString = new StringBuilder();
+            paramString.append("decodeBitmapForOcr rotate:");
+            paramString.append(i);
+            QLog.d("OCRPerformUtil", 2, paramString.toString());
           }
           j = localBitmap.getWidth();
           int k = localBitmap.getHeight();
@@ -199,20 +214,19 @@ public class OCRPerformUtil
     if (paramOCRLanHolder == null) {
       localOCRLanHolder = new OCRPerformUtil.OCRLanHolder();
     }
-    if (TextUtils.isEmpty(paramString))
-    {
+    if (TextUtils.isEmpty(paramString)) {
       paramOCRLanHolder = "";
-      localOCRLanHolder.jdField_a_of_type_JavaLangString = paramOCRLanHolder;
-      if ((paramList == null) || (paramList.isEmpty())) {
-        break label149;
-      }
-      if (localOCRLanHolder.jdField_a_of_type_JavaUtilList != null) {
-        break label136;
-      }
-      localOCRLanHolder.jdField_a_of_type_JavaUtilList = new ArrayList();
+    } else {
+      paramOCRLanHolder = paramString.toLowerCase();
     }
-    for (;;)
+    localOCRLanHolder.jdField_a_of_type_JavaLangString = paramOCRLanHolder;
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
+      if (localOCRLanHolder.jdField_a_of_type_JavaUtilList == null) {
+        localOCRLanHolder.jdField_a_of_type_JavaUtilList = new ArrayList();
+      } else {
+        localOCRLanHolder.jdField_a_of_type_JavaUtilList.clear();
+      }
       paramOCRLanHolder = paramList.iterator();
       while (paramOCRLanHolder.hasNext())
       {
@@ -222,20 +236,16 @@ public class OCRPerformUtil
           localOCRLanHolder.jdField_a_of_type_JavaUtilList.add(paramString.toLowerCase());
         }
       }
-      paramOCRLanHolder = paramString.toLowerCase();
-      break;
-      label136:
-      localOCRLanHolder.jdField_a_of_type_JavaUtilList.clear();
     }
-    label149:
     localOCRLanHolder.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
     localOCRLanHolder.jdField_b_of_type_JavaLangString = localOCRLanHolder.jdField_a_of_type_JavaLangString;
     localOCRLanHolder.jdField_c_of_type_JavaUtilList = a(localOCRLanHolder.jdField_b_of_type_JavaLangString);
-    localOCRLanHolder.jdField_c_of_type_JavaLangString = ((String)localOCRLanHolder.jdField_c_of_type_JavaUtilList.get(0));
+    paramOCRLanHolder = localOCRLanHolder.jdField_c_of_type_JavaUtilList;
+    int i = 0;
+    localOCRLanHolder.jdField_c_of_type_JavaLangString = ((String)paramOCRLanHolder.get(0));
     localOCRLanHolder.jdField_b_of_type_JavaUtilList = a(localOCRLanHolder.jdField_c_of_type_JavaLangString);
     paramOCRLanHolder = "en/ja/ko/fr/es/it/de/tr/ru/pt/vi/id/ms/th".trim().split("/");
     int j = paramOCRLanHolder.length;
-    int i = 0;
     while (i < j)
     {
       paramString = paramOCRLanHolder[i];
@@ -244,8 +254,12 @@ public class OCRPerformUtil
       }
       i += 1;
     }
-    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-      com.tencent.qphone.base.util.QLog.d("OCRPerformUtil", 2, "recordOcrLanInfo:ocrLanHolder:" + localOCRLanHolder.a());
+    if (QLog.isColorLevel())
+    {
+      paramOCRLanHolder = new StringBuilder();
+      paramOCRLanHolder.append("recordOcrLanInfo:ocrLanHolder:");
+      paramOCRLanHolder.append(localOCRLanHolder.a());
+      QLog.d("OCRPerformUtil", 2, paramOCRLanHolder.toString());
     }
     return localOCRLanHolder;
   }
@@ -255,16 +269,17 @@ public class OCRPerformUtil
     StringBuilder localStringBuilder = new StringBuilder();
     paramArrayList = paramArrayList.iterator();
     int i = 1;
-    if (paramArrayList.hasNext())
+    while (paramArrayList.hasNext())
     {
       PicOcrResultBean localPicOcrResultBean = (PicOcrResultBean)paramArrayList.next();
-      if (localPicOcrResultBean.b == i) {
+      if (localPicOcrResultBean.b == i)
+      {
         localStringBuilder.append(localPicOcrResultBean.jdField_a_of_type_JavaLangString.trim());
       }
-      for (;;)
+      else
       {
-        break;
-        localStringBuilder.append("\n\n").append(localPicOcrResultBean.jdField_a_of_type_JavaLangString.trim());
+        localStringBuilder.append("\n\n");
+        localStringBuilder.append(localPicOcrResultBean.jdField_a_of_type_JavaLangString.trim());
         i = localPicOcrResultBean.b;
       }
     }
@@ -273,40 +288,28 @@ public class OCRPerformUtil
   
   public static String a(TextView paramTextView)
   {
-    String str1 = null;
     if (paramTextView == null) {
-      paramTextView = str1;
+      return null;
     }
-    do
+    int i = paramTextView.getSelectionStart();
+    int j = paramTextView.getSelectionEnd();
+    paramTextView = paramTextView.getText().toString();
+    if ((!TextUtils.isEmpty(paramTextView)) && (i < j) && (i >= 0))
     {
-      int i;
-      int j;
-      String str2;
-      do
+      if (j > paramTextView.length()) {
+        return null;
+      }
+      paramTextView = paramTextView.substring(i, j);
+      if (QLog.isColorLevel())
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              return paramTextView;
-              i = paramTextView.getSelectionStart();
-              j = paramTextView.getSelectionEnd();
-              str2 = paramTextView.getText().toString();
-              paramTextView = str1;
-            } while (TextUtils.isEmpty(str2));
-            paramTextView = str1;
-          } while (i >= j);
-          paramTextView = str1;
-        } while (i < 0);
-        paramTextView = str1;
-      } while (j > str2.length());
-      str1 = str2.substring(i, j);
-      paramTextView = str1;
-    } while (!com.tencent.qphone.base.util.QLog.isColorLevel());
-    com.tencent.qphone.base.util.QLog.d("OCRPerformUtil", 2, "collectSelectedText " + str1);
-    return str1;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("collectSelectedText ");
+        localStringBuilder.append(paramTextView);
+        QLog.d("OCRPerformUtil", 2, localStringBuilder.toString());
+      }
+      return paramTextView;
+    }
+    return null;
   }
   
   public static String a(String paramString)
@@ -321,8 +324,8 @@ public class OCRPerformUtil
   
   public static void a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrManager$OCRReqContext != null) {
-      jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrManager$OCRReqContext = null;
+    if (jdField_a_of_type_ComTencentMobileqqOcrReqOCRReqContext != null) {
+      jdField_a_of_type_ComTencentMobileqqOcrReqOCRReqContext = null;
     }
     if (jdField_a_of_type_ComTencentMobileqqOcrOCRPerformUtil$OCRLanHolder != null) {
       jdField_a_of_type_ComTencentMobileqqOcrOCRPerformUtil$OCRLanHolder = null;
@@ -348,7 +351,10 @@ public class OCRPerformUtil
   public static void a(int paramInt, String paramString1, String paramString2)
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("param_succ_flag", paramInt + "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("");
+    localHashMap.put("param_succ_flag", localStringBuilder.toString());
     localHashMap.put("param_err_msg", paramString2);
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, paramString1, true, 0L, 0L, localHashMap, null);
   }
@@ -356,7 +362,10 @@ public class OCRPerformUtil
   public static void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("param_succ_flag", paramInt + "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("");
+    localHashMap.put("param_succ_flag", localStringBuilder.toString());
     localHashMap.put("param_md5", paramString1);
     localHashMap.put("param_text", paramString2);
     localHashMap.put("param_errMsg", paramString4);
@@ -365,32 +374,44 @@ public class OCRPerformUtil
   
   public static void a(Activity paramActivity, OcrImageTextView paramOcrImageTextView)
   {
-    if ((paramActivity == null) || (paramOcrImageTextView == null)) {
-      return;
-    }
-    try
+    if (paramActivity != null)
     {
-      Bitmap localBitmap = Bitmap.createBitmap(paramOcrImageTextView.getWidth(), paramOcrImageTextView.getHeight(), Bitmap.Config.RGB_565);
-      Canvas localCanvas = new Canvas(localBitmap);
-      paramOcrImageTextView.layout(paramOcrImageTextView.getLeft(), paramOcrImageTextView.getTop(), paramOcrImageTextView.getRight(), paramOcrImageTextView.getBottom());
-      Drawable localDrawable = paramOcrImageTextView.getBackground();
-      if (localDrawable != null) {
-        localDrawable.draw(localCanvas);
+      if (paramOcrImageTextView == null) {
+        return;
       }
-      paramOcrImageTextView.draw(localCanvas);
-      paramOcrImageTextView = BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath();
-      paramOcrImageTextView = paramOcrImageTextView + "/" + SystemClock.uptimeMillis() + ".jpg";
-      if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-        com.tencent.qphone.base.util.QLog.d("OCRPerformUtil", 2, "forwardDrawable:" + paramOcrImageTextView);
+      try
+      {
+        Bitmap localBitmap = Bitmap.createBitmap(paramOcrImageTextView.getWidth(), paramOcrImageTextView.getHeight(), Bitmap.Config.RGB_565);
+        Object localObject = new Canvas(localBitmap);
+        paramOcrImageTextView.layout(paramOcrImageTextView.getLeft(), paramOcrImageTextView.getTop(), paramOcrImageTextView.getRight(), paramOcrImageTextView.getBottom());
+        Drawable localDrawable = paramOcrImageTextView.getBackground();
+        if (localDrawable != null) {
+          localDrawable.draw((Canvas)localObject);
+        }
+        paramOcrImageTextView.draw((Canvas)localObject);
+        paramOcrImageTextView = MobileQQ.sMobileQQ.getFilesDir().getAbsolutePath();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramOcrImageTextView);
+        ((StringBuilder)localObject).append("/");
+        ((StringBuilder)localObject).append(SystemClock.uptimeMillis());
+        ((StringBuilder)localObject).append(".jpg");
+        paramOcrImageTextView = ((StringBuilder)localObject).toString();
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("forwardDrawable:");
+          ((StringBuilder)localObject).append(paramOcrImageTextView);
+          QLog.d("OCRPerformUtil", 2, ((StringBuilder)localObject).toString());
+        }
+        BaseFileUtil.a(localBitmap, paramOcrImageTextView);
+        localBitmap.recycle();
+        ((IShareActivityStartup)QRoute.api(IShareActivityStartup.class)).gotoShareActivity(paramActivity, paramOcrImageTextView);
+        return;
       }
-      FileUtil.a(localBitmap, paramOcrImageTextView);
-      localBitmap.recycle();
-      ScreenShotHelper.a(paramActivity, paramOcrImageTextView, false);
-      return;
-    }
-    catch (IOException paramActivity)
-    {
-      paramActivity.printStackTrace();
+      catch (IOException paramActivity)
+      {
+        paramActivity.printStackTrace();
+      }
     }
   }
   
@@ -398,8 +419,8 @@ public class OCRPerformUtil
   {
     if (TextUtils.isEmpty(paramString))
     {
-      if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-        com.tencent.qphone.base.util.QLog.e("OCRPerformUtil", 2, "forwardContent error, content is empty");
+      if (QLog.isColorLevel()) {
+        QLog.e("OCRPerformUtil", 2, "forwardContent error, content is empty");
       }
       return;
     }
@@ -409,7 +430,7 @@ public class OCRPerformUtil
     paramString = new Intent();
     paramString.putExtra("isFromShare", true);
     paramString.putExtras(localBundle);
-    ForwardBaseOption.a(paramActivity, paramString, 21);
+    ((IForwardOption)QRoute.api(IForwardOption.class)).startForwardActivityForResult(paramActivity, paramString, 21);
   }
   
   public static void a(String paramString, int paramInt)
@@ -424,26 +445,12 @@ public class OCRPerformUtil
   
   public static void b(Activity paramActivity, String paramString)
   {
-    if ((paramActivity == null) || (TextUtils.isEmpty(paramString)))
-    {
-      if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-        com.tencent.qphone.base.util.QLog.e("OCRPerformUtil", 2, "enterCropActivity error, picture path is empty");
-      }
-      return;
-    }
-    Intent localIntent = EditPicActivity.a(paramActivity, paramString, false, false, false, true, false, 2, 99, 9);
-    localIntent.putExtra("babyq_ability", 2L);
-    localIntent.putExtra("sub_business_id", 103);
-    paramActivity.startActivity(localIntent);
-    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-      com.tencent.qphone.base.util.QLog.d("OCRPerformUtil", 2, String.format("enterCropActivity, path: %s", new Object[] { paramString }));
-    }
-    ReportController.b(null, "dc00898", "", "", "0X80082DB", "0X80082DB", 0, 0, "", "", "", "");
+    ((IStartDovEditPic)QRoute.api(IStartDovEditPic.class)).enterCropActivity(paramActivity, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRPerformUtil
  * JD-Core Version:    0.7.0.1
  */

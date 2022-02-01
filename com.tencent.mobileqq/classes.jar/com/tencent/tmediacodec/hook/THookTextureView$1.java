@@ -19,29 +19,42 @@ class THookTextureView$1
   
   public boolean onSurfaceTextureDestroyed(@Nullable SurfaceTexture paramSurfaceTexture)
   {
-    boolean bool2 = true;
+    Object localObject = THookTextureView.access$000(this.this$0);
+    boolean bool3 = false;
     boolean bool1;
-    if ((THookTextureView.access$000(this.this$0) == null) || (THookTextureView.access$000(this.this$0).onSurfaceTextureDestroyed(paramSurfaceTexture)))
-    {
-      bool1 = true;
-      if (THookTextureView.access$100() == null) {
-        break label110;
-      }
-      if ((!bool1) || (!THookTextureView.access$100().onSurfaceTextureDestroyedCalled(paramSurfaceTexture))) {
-        break label105;
-      }
-    }
-    for (;;)
-    {
-      LogUtils.d("THookTextureView", this + "onSurfaceTextureDestroyed surfaceTexture:" + paramSurfaceTexture + " hookResult:" + bool2 + "result:" + bool1);
-      return bool2;
+    if ((localObject != null) && (!THookTextureView.access$000(this.this$0).onSurfaceTextureDestroyed(paramSurfaceTexture))) {
       bool1 = false;
-      break;
-      label105:
-      bool2 = false;
+    } else {
+      bool1 = true;
     }
-    label110:
-    LogUtils.d("THookTextureView", this + ", onSurfaceTextureDestroyed surfaceTexture:" + paramSurfaceTexture + " result:" + bool1);
+    if (THookTextureView.access$100() != null)
+    {
+      boolean bool2 = bool3;
+      if (bool1)
+      {
+        bool2 = bool3;
+        if (THookTextureView.access$100().onSurfaceTextureDestroyedCalled(paramSurfaceTexture)) {
+          bool2 = true;
+        }
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this);
+      ((StringBuilder)localObject).append("onSurfaceTextureDestroyed surfaceTexture:");
+      ((StringBuilder)localObject).append(paramSurfaceTexture);
+      ((StringBuilder)localObject).append(" hookResult:");
+      ((StringBuilder)localObject).append(bool2);
+      ((StringBuilder)localObject).append("result:");
+      ((StringBuilder)localObject).append(bool1);
+      LogUtils.d("THookTextureView", ((StringBuilder)localObject).toString());
+      return bool2;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this);
+    ((StringBuilder)localObject).append(", onSurfaceTextureDestroyed surfaceTexture:");
+    ((StringBuilder)localObject).append(paramSurfaceTexture);
+    ((StringBuilder)localObject).append(" result:");
+    ((StringBuilder)localObject).append(bool1);
+    LogUtils.d("THookTextureView", ((StringBuilder)localObject).toString());
     return bool1;
   }
   
@@ -61,7 +74,7 @@ class THookTextureView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmediacodec.hook.THookTextureView.1
  * JD-Core Version:    0.7.0.1
  */

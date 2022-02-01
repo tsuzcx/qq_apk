@@ -17,19 +17,22 @@ import com.tencent.ilive.litepages.room.webmodule.js.UIJavascriptInterface;
 import com.tencent.ilive.litepages.room.webmodule.jsmodule.JsBizAdapter;
 import com.tencent.livesdk.accountengine.UserEngine;
 import com.tencent.livesdk.accountengine.UserInitStateCallback;
+import com.tencent.mobileqq.litelivesdk.api.business.BusinessConfig;
 import com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.LiteLiveJsProvider;
 import com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.WebCookieManager;
 import com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.js.LiteAppJs;
 import com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.js.LiteAppJs.OnRefreshTokenListener;
 import com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.js.LiteUIJs;
+import com.tencent.mobileqq.litelivesdk.framework.businessmgr.BusinessManager;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.utils.WebViewKernelCallBack;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebSettings;
-import com.tencent.smtt.sdk.WebView;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -51,10 +54,11 @@ public class LiteLiveWebViewFragment
   
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentLivesdkAccountengineUserEngine == null) {
+    UserEngine localUserEngine = this.jdField_a_of_type_ComTencentLivesdkAccountengineUserEngine;
+    if (localUserEngine == null) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentLivesdkAccountengineUserEngine.loginSuccess())
+    if (localUserEngine.loginSuccess())
     {
       QLog.i("LiteLiveWebViewFragment", 1, "initLogin has loginSuccess");
       b();
@@ -69,17 +73,14 @@ public class LiteLiveWebViewFragment
     Object localObject1 = Uri.parse(paramString);
     HashMap localHashMap = new HashMap();
     Object localObject2 = ((Uri)localObject1).getQueryParameterNames().iterator();
-    if (((Iterator)localObject2).hasNext())
+    while (((Iterator)localObject2).hasNext())
     {
       String str = (String)((Iterator)localObject2).next();
       paramString = ((Uri)localObject1).getQueryParameter(str);
-      if (paramString != null) {}
-      for (;;)
-      {
-        localHashMap.put(str, paramString);
-        break;
+      if (paramString == null) {
         paramString = "";
       }
+      localHashMap.put(str, paramString);
     }
     localObject2 = ((Uri)localObject1).getAuthority();
     localObject1 = ((Uri)localObject1).getPath();
@@ -95,54 +96,55 @@ public class LiteLiveWebViewFragment
     WebCookieManager.a().a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString);
     WebCookieManager.a().a(BaseApplicationImpl.getContext(), "https://yutang.qq.com/");
     WebCookieManager.a().a(BaseApplicationImpl.getContext(), "https://ilive.qq.com/");
-    WebCookieManager.a().a(BaseApplicationImpl.getContext(), "https://now.qq.com/");
+    if ((BusinessManager.a.a() != null) && (BusinessManager.a.a().a != null))
+    {
+      Iterator localIterator = BusinessManager.a.a().a.iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        WebCookieManager.a().a(BaseApplicationImpl.getContext(), str);
+      }
+    }
     this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter.callJsFunctionByNative("__WEBVIEW_RELOADCOOKIES", null, null);
   }
   
-  public boolean beforeWebViewEngineHandleOverrideUrl(WebView paramWebView, String paramString)
-  {
-    QLog.d("LiteLiveWebViewFragment", 1, "shouldOverrideUrlLoading: url = " + paramString);
-    if (a(paramString)) {
-      return true;
-    }
-    return super.beforeWebViewEngineHandleOverrideUrl(this.webView, paramString);
-  }
-  
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    paramBundle = new AppJavascriptInterface(getActivity(), this.contentView, this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter);
-    RecordJavascriptInterface localRecordJavascriptInterface = new RecordJavascriptInterface(getActivity(), this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter);
-    UIJavascriptInterface localUIJavascriptInterface = new UIJavascriptInterface(getActivity(), this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter);
-    MiscJavascriptInterface localMiscJavascriptInterface = new MiscJavascriptInterface(getActivity(), this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter);
+    paramBundle = new AppJavascriptInterface(getQBaseActivity(), this.contentView, this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter);
+    RecordJavascriptInterface localRecordJavascriptInterface = new RecordJavascriptInterface(getQBaseActivity(), this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter);
+    UIJavascriptInterface localUIJavascriptInterface = new UIJavascriptInterface(getQBaseActivity(), this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter);
+    MiscJavascriptInterface localMiscJavascriptInterface = new MiscJavascriptInterface(getQBaseActivity(), this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter);
     this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(localRecordJavascriptInterface);
     this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(localUIJavascriptInterface);
     this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(localMiscJavascriptInterface);
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(new LiteAppJs(getActivity(), this.contentView, this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter).setOnRefreshTokenListener(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleJsLiteAppJs$OnRefreshTokenListener));
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(new LiteUIJs(getActivity(), this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter));
+    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(new LiteAppJs(getQBaseActivity(), this.contentView, this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter).setOnRefreshTokenListener(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleJsLiteAppJs$OnRefreshTokenListener));
+    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(new LiteUIJs(getQBaseActivity(), this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter));
     if ((this.intent != null) && (this.intent.getExtras() != null))
     {
       this.jdField_a_of_type_JavaLangString = this.intent.getExtras().getString("url", "");
       paramBundle = Uri.parse(this.jdField_a_of_type_JavaLangString);
-    }
-    try
-    {
-      paramBundle = paramBundle.getQueryParameter("_wv");
-      if ((!TextUtils.isEmpty(paramBundle)) && ((Long.parseLong(paramBundle, 10) & 0x1000000) != 0L)) {
-        this.mSwiftTitleUI.a.setVisibility(8);
+      try
+      {
+        paramBundle = paramBundle.getQueryParameter("_wv");
+        if ((!TextUtils.isEmpty(paramBundle)) && ((Long.parseLong(paramBundle, 10) & 0x1000000) != 0L)) {
+          getSwiftTitleUI().a.setVisibility(8);
+        }
       }
-      this.jdField_a_of_type_ComTencentLivesdkAccountengineUserEngine = BizEngineMgr.getInstance().getUserEngine();
-      a();
-      return bool;
-    }
-    catch (Exception paramBundle)
-    {
-      for (;;)
+      catch (Exception paramBundle)
       {
         paramBundle.printStackTrace();
       }
     }
+    this.jdField_a_of_type_ComTencentLivesdkAccountengineUserEngine = BizEngineMgr.getInstance().getUserEngine();
+    a();
+    return bool;
+  }
+  
+  public WebViewKernelCallBack getWebViewKernelCallBack()
+  {
+    return new LiteLiveWebViewFragment.4(this, this.webViewSurface);
   }
   
   public void onActivityCreated(Bundle paramBundle)
@@ -160,7 +162,16 @@ public class LiteLiveWebViewFragment
       }
       else
       {
-        paramBundle = str1 + " NowLive/" + 10305 + "_" + str2 + " NetType/" + i + " NowSDK/18_10.20";
+        paramBundle = new StringBuilder();
+        paramBundle.append(str1);
+        paramBundle.append(" NowLive/");
+        paramBundle.append(10800);
+        paramBundle.append("_");
+        paramBundle.append(str2);
+        paramBundle.append(" NetType/");
+        paramBundle.append(i);
+        paramBundle.append(" NowSDK/18_10.20");
+        paramBundle = paramBundle.toString();
       }
       this.webView.getSettings().setUserAgentString(paramBundle);
     }
@@ -169,14 +180,15 @@ public class LiteLiveWebViewFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    if (this.jdField_a_of_type_ComTencentLivesdkAccountengineUserEngine != null) {
-      this.jdField_a_of_type_ComTencentLivesdkAccountengineUserEngine.removeUserInitCallback(this.jdField_a_of_type_ComTencentLivesdkAccountengineUserInitStateCallback);
+    UserEngine localUserEngine = this.jdField_a_of_type_ComTencentLivesdkAccountengineUserEngine;
+    if (localUserEngine != null) {
+      localUserEngine.removeUserInitCallback(this.jdField_a_of_type_ComTencentLivesdkAccountengineUserInitStateCallback);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.fragment.LiteLiveWebViewFragment
  * JD-Core Version:    0.7.0.1
  */

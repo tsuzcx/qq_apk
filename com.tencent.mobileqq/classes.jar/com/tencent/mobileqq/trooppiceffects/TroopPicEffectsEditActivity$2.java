@@ -20,20 +20,26 @@ class TroopPicEffectsEditActivity$2
       return;
     }
     paramString = (TroopGiftManager.ShowPicPrice)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(this.a.jdField_a_of_type_Int);
-    if ((paramString == null) || (paramString.jdField_a_of_type_Int == 0)) {}
-    for (paramInt2 = 30; paramInt1 >= paramInt2; paramInt2 = paramString.jdField_a_of_type_Int)
+    if ((paramString != null) && (paramString.jdField_a_of_type_Int != 0)) {
+      paramInt2 = paramString.jdField_a_of_type_Int;
+    } else {
+      paramInt2 = 30;
+    }
+    if (paramInt1 >= paramInt2)
     {
-      this.a.a(this.a.jdField_a_of_type_JavaLangString);
+      paramString = this.a;
+      paramString.a(paramString.jdField_a_of_type_JavaLangString);
       return;
     }
     this.a.c();
-    DialogUtil.a(this.a, 230, this.a.getResources().getString(2131697750), this.a.getResources().getString(2131697749), this.a.getResources().getString(2131690800), this.a.getResources().getString(2131697752), new TroopPicEffectsEditActivity.2.1(this), new TroopPicEffectsEditActivity.2.2(this)).show();
+    paramString = this.a;
+    DialogUtil.a(paramString, 230, paramString.getResources().getString(2131697756), this.a.getResources().getString(2131697755), this.a.getResources().getString(2131690728), this.a.getResources().getString(2131697758), new TroopPicEffectsEditActivity.2.1(this), new TroopPicEffectsEditActivity.2.2(this)).show();
     TroopPicEffectsController.a("gold_bean", "gap");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity.2
  * JD-Core Version:    0.7.0.1
  */

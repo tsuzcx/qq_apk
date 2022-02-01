@@ -50,40 +50,36 @@ public class FavoritesRemoteCommand
     int i = paramBundle.getInt("com.tencent.qqfav.favoritesremotecommand.id", -1);
     if (-1 != i)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("FavoritesRemoteCommand", 4, "invoke: dataInvoke=" + paramBundle.toString());
+      if (QLog.isDevelopLevel())
+      {
+        paramOnInvokeFinishLinstener = new StringBuilder();
+        paramOnInvokeFinishLinstener.append("invoke: dataInvoke=");
+        paramOnInvokeFinishLinstener.append(paramBundle.toString());
+        QLog.i("FavoritesRemoteCommand", 4, paramOnInvokeFinishLinstener.toString());
       }
       paramOnInvokeFinishLinstener = (List)this.a.get(i);
-      if (paramOnInvokeFinishLinstener == null) {
-        break label100;
-      }
-      paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.iterator();
-      do
+      if (paramOnInvokeFinishLinstener != null)
       {
-        if (!paramOnInvokeFinishLinstener.hasNext()) {
-          break;
-        }
-      } while (!((FavoritesRemoteCommand.IRemoteCommandHandler)paramOnInvokeFinishLinstener.next()).a(i, paramBundle));
-    }
-    label100:
-    do
-    {
-      while (!paramOnInvokeFinishLinstener.hasNext())
-      {
-        do
-        {
-          return paramBundle;
-          paramOnInvokeFinishLinstener = (List)this.a.get(0);
-        } while (paramOnInvokeFinishLinstener == null);
         paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.iterator();
+        while (paramOnInvokeFinishLinstener.hasNext()) {
+          if (((FavoritesRemoteCommand.IRemoteCommandHandler)paramOnInvokeFinishLinstener.next()).a(i, paramBundle)) {
+            return paramBundle;
+          }
+        }
       }
-    } while (!((FavoritesRemoteCommand.IRemoteCommandHandler)paramOnInvokeFinishLinstener.next()).a(i, paramBundle));
+      paramOnInvokeFinishLinstener = (List)this.a.get(0);
+      if (paramOnInvokeFinishLinstener != null)
+      {
+        paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.iterator();
+        while ((paramOnInvokeFinishLinstener.hasNext()) && (!((FavoritesRemoteCommand.IRemoteCommandHandler)paramOnInvokeFinishLinstener.next()).a(i, paramBundle))) {}
+      }
+    }
     return paramBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cooperation.qqfav.ipc.FavoritesRemoteCommand
  * JD-Core Version:    0.7.0.1
  */

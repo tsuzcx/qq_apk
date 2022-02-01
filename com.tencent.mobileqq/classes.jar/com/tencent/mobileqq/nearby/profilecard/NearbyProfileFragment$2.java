@@ -9,16 +9,18 @@ class NearbyProfileFragment$2
 {
   NearbyProfileFragment$2(NearbyProfileFragment paramNearbyProfileFragment) {}
   
-  public void a(FaceScoreConfig paramFaceScoreConfig)
+  public void a(Object paramObject)
   {
-    ThreadManager.post(new NearbyProfileFragment.2.1(this, paramFaceScoreConfig), 8, null, false);
-    this.a.a = paramFaceScoreConfig;
-    this.a.a(paramFaceScoreConfig);
+    ThreadManager.post(new NearbyProfileFragment.2.1(this, paramObject), 8, null, false);
+    NearbyProfileFragment localNearbyProfileFragment = this.a;
+    paramObject = (FaceScoreConfig)paramObject;
+    localNearbyProfileFragment.a = paramObject;
+    localNearbyProfileFragment.a(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment.2
  * JD-Core Version:    0.7.0.1
  */

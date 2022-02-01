@@ -14,7 +14,10 @@ public class LoadingStatus
   
   public String getProcessInPercentage()
   {
-    return (int)(this.progress * 100.0F) + "%";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((int)(this.progress * 100.0F));
+    localStringBuilder.append("%");
+    return localStringBuilder.toString();
   }
   
   public float getProgress()
@@ -24,18 +27,22 @@ public class LoadingStatus
   
   public boolean isInProgress()
   {
-    return (this.progress > 0.0F) && (this.progress < 1.0F);
+    float f = this.progress;
+    return (f > 0.0F) && (f < 1.0F);
   }
   
   @NonNull
   public String toString()
   {
-    return "LoadingStatus {progress=" + this.progress + "} ";
+    StringBuilder localStringBuilder = new StringBuilder("LoadingStatus {progress=");
+    localStringBuilder.append(this.progress);
+    localStringBuilder.append("} ");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.ui.LoadingStatus
  * JD-Core Version:    0.7.0.1
  */

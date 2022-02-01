@@ -23,14 +23,15 @@ public final class PrepareRsp
   
   public static PrepareRsp[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new PrepareRsp[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new PrepareRsp[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static PrepareRsp parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -54,30 +55,33 @@ public final class PrepareRsp
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    int k = this.ret;
     int i = j;
-    if (this.ret != 0) {
-      i = j + CodedOutputByteBufferNano.computeInt32Size(1, this.ret);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeInt32Size(1, k);
     }
     j = i;
     if (!this.msg.equals("")) {
       j = i + CodedOutputByteBufferNano.computeStringSize(2, this.msg);
     }
-    i = j;
-    if (this.info != null) {
-      i = j + CodedOutputByteBufferNano.computeMessageSize(3, this.info);
+    RoomInfo localRoomInfo = this.info;
+    k = j;
+    if (localRoomInfo != null) {
+      k = j + CodedOutputByteBufferNano.computeMessageSize(3, localRoomInfo);
     }
-    j = i;
+    i = k;
     if (!this.defaultRoomName.equals("")) {
-      j = i + CodedOutputByteBufferNano.computeStringSize(4, this.defaultRoomName);
+      i = k + CodedOutputByteBufferNano.computeStringSize(4, this.defaultRoomName);
     }
-    i = j;
-    if (this.logoNum != 0) {
-      i = j + CodedOutputByteBufferNano.computeInt32Size(5, this.logoNum);
+    k = this.logoNum;
+    j = i;
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeInt32Size(5, k);
     }
-    return i;
+    return j;
   }
   
   public PrepareRsp mergeFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -85,57 +89,76 @@ public final class PrepareRsp
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.ret = paramCodedInputByteBufferNano.readInt32();
-        break;
-      case 18: 
-        this.msg = paramCodedInputByteBufferNano.readString();
-        break;
-      case 26: 
-        if (this.info == null) {
-          this.info = new RoomInfo();
-        }
-        paramCodedInputByteBufferNano.readMessage(this.info);
-        break;
-      case 34: 
-        this.defaultRoomName = paramCodedInputByteBufferNano.readString();
+      if (i == 0) {
         break;
       }
-      this.logoNum = paramCodedInputByteBufferNano.readInt32();
+      if (i != 8)
+      {
+        if (i != 18)
+        {
+          if (i != 26)
+          {
+            if (i != 34)
+            {
+              if (i != 40)
+              {
+                if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+                  return this;
+                }
+              }
+              else {
+                this.logoNum = paramCodedInputByteBufferNano.readInt32();
+              }
+            }
+            else {
+              this.defaultRoomName = paramCodedInputByteBufferNano.readString();
+            }
+          }
+          else
+          {
+            if (this.info == null) {
+              this.info = new RoomInfo();
+            }
+            paramCodedInputByteBufferNano.readMessage(this.info);
+          }
+        }
+        else {
+          this.msg = paramCodedInputByteBufferNano.readString();
+        }
+      }
+      else {
+        this.ret = paramCodedInputByteBufferNano.readInt32();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.ret != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(1, this.ret);
+    int i = this.ret;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(1, i);
     }
     if (!this.msg.equals("")) {
       paramCodedOutputByteBufferNano.writeString(2, this.msg);
     }
-    if (this.info != null) {
-      paramCodedOutputByteBufferNano.writeMessage(3, this.info);
+    RoomInfo localRoomInfo = this.info;
+    if (localRoomInfo != null) {
+      paramCodedOutputByteBufferNano.writeMessage(3, localRoomInfo);
     }
     if (!this.defaultRoomName.equals("")) {
       paramCodedOutputByteBufferNano.writeString(4, this.defaultRoomName);
     }
-    if (this.logoNum != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(5, this.logoNum);
+    i = this.logoNum;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(5, i);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.iliveRoomPlay.nano.PrepareRsp
  * JD-Core Version:    0.7.0.1
  */

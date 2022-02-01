@@ -1,6 +1,7 @@
 package cooperation.qzone.util;
 
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.IQzoneModuleManageApi;
 
 class XMPCoreUtil$2
   implements Runnable
@@ -9,19 +10,20 @@ class XMPCoreUtil$2
   
   public void run()
   {
-    if ((XMPCoreUtil.access$400(this.this$0)) || (!XMPCoreUtil.access$500(this.this$0))) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        QzoneModuleManager.getInstance().downloadModule("xmpcore.jar", new XMPCoreUtil.2.1(this));
-      }
-      return;
+    int i;
+    if ((!XMPCoreUtil.access$400(this.this$0)) && (XMPCoreUtil.access$500(this.this$0))) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    if (i != 0) {
+      ((IQzoneModuleManageApi)QRoute.api(IQzoneModuleManageApi.class)).downloadModule("xmpcore.jar", new XMPCoreUtil.2.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.XMPCoreUtil.2
  * JD-Core Version:    0.7.0.1
  */

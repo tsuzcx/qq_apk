@@ -6,8 +6,6 @@ import android.os.Bundle;
 import com.tencent.tkd.comment.panel.bridge.emoji.IEmoJiEmotionBridge;
 import com.tencent.tkd.comment.panel.emoji.EmoJiEmotionPanelManager;
 import com.tencent.tkd.topicsdk.bean.TopicInfo;
-import com.tencent.tkd.topicsdk.debug.DebugViewController;
-import com.tencent.tkd.topicsdk.entry.EntryViewController;
 import com.tencent.tkd.topicsdk.framework.Account;
 import com.tencent.tkd.topicsdk.framework.BizConfig;
 import com.tencent.tkd.topicsdk.framework.DataTransferManager;
@@ -22,7 +20,6 @@ import com.tencent.tkd.topicsdk.interfaces.IStorageConfig;
 import com.tencent.tkd.topicsdk.managetopic.CreateTopicPage;
 import com.tencent.tkd.topicsdk.managetopic.EditTopicPage;
 import com.tencent.tkd.topicsdk.managetopic.TopicEventDispatcher;
-import com.tencent.tkd.topicsdk.publisharticle.PublishArticlePage;
 import java.io.File;
 import java.io.PrintStream;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -34,14 +31,12 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/TopicSDK;", "", "()V", "debugViewController", "Lcom/tencent/tkd/topicsdk/debug/DebugViewController;", "entryViewController", "Lcom/tencent/tkd/topicsdk/entry/EntryViewController;", "hasInited", "Ljava/util/concurrent/atomic/AtomicBoolean;", "mTopicSDKConfig", "Lcom/tencent/tkd/topicsdk/TopicSDKConfig;", "topicSDKConfig", "getTopicSDKConfig", "()Lcom/tencent/tkd/topicsdk/TopicSDKConfig;", "addBaseReportListener", "", "clazz", "Ljava/lang/Class;", "Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/BaseReportEvent;", "observer", "Lcom/tencent/tkd/topicsdk/framework/eventdispatch/IEventObserver;", "addCreateTopicListener", "listener", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "errorCode", "Lcom/tencent/tkd/topicsdk/bean/TopicInfo;", "topicInfo", "Lcom/tencent/tkd/topicsdk/managetopic/CreateTopicListener;", "addEditTopicListener", "Lcom/tencent/tkd/topicsdk/managetopic/EditTopicListener;", "addEntryView", "innerBundle", "Landroid/os/Bundle;", "outerBundle", "callback", "Lkotlin/Function1;", "", "viewId", "addPublishArticleListener", "Lcom/tencent/tkd/topicsdk/publisharticle/PublishManager$IPublishArticleListener;", "assertInited", "checkDir", "", "hideEntryView", "initEmotionSDK", "initial", "openCreateTopicPage", "context", "Landroid/content/Context;", "openCreateTopicPageForResult", "activity", "Landroid/app/Activity;", "requestCode", "openEditTopicPage", "openEditTopicPageForResult", "openPublishArticlePage", "openPublishArticlePageForResult", "release", "removeBaseReportListener", "removeCreateTopicListener", "removeEditTopicListener", "removeEntryView", "removePublishArticleListener", "showEntryView", "updateEntryViewData", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/TopicSDK;", "", "()V", "hasInited", "Ljava/util/concurrent/atomic/AtomicBoolean;", "mTopicSDKConfig", "Lcom/tencent/tkd/topicsdk/TopicSDKConfig;", "topicSDKConfig", "getTopicSDKConfig", "()Lcom/tencent/tkd/topicsdk/TopicSDKConfig;", "addBaseReportListener", "", "clazz", "Ljava/lang/Class;", "Lcom/tencent/tkd/topicsdk/framework/eventdispatch/report/BaseReportEvent;", "observer", "Lcom/tencent/tkd/topicsdk/framework/eventdispatch/IEventObserver;", "addCreateTopicListener", "listener", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "errorCode", "Lcom/tencent/tkd/topicsdk/bean/TopicInfo;", "topicInfo", "Lcom/tencent/tkd/topicsdk/managetopic/CreateTopicListener;", "addEditTopicListener", "Lcom/tencent/tkd/topicsdk/managetopic/EditTopicListener;", "addPublishArticleListener", "Lcom/tencent/tkd/topicsdk/publisharticle/PublishManager$IPublishArticleListener;", "assertInited", "checkDir", "", "initEmotionSDK", "initial", "openCreateTopicPage", "context", "Landroid/content/Context;", "innerBundle", "Landroid/os/Bundle;", "outerBundle", "openCreateTopicPageForResult", "activity", "Landroid/app/Activity;", "requestCode", "openEditTopicPage", "openEditTopicPageForResult", "release", "removeBaseReportListener", "removeCreateTopicListener", "removeEditTopicListener", "removePublishArticleListener", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
 public final class TopicSDK
 {
   public static final TopicSDK.Companion a;
   private static final TopicSDK jdField_a_of_type_ComTencentTkdTopicsdkTopicSDK = new TopicSDK();
   private TopicSDKConfig jdField_a_of_type_ComTencentTkdTopicsdkTopicSDKConfig;
-  private DebugViewController jdField_a_of_type_ComTencentTkdTopicsdkDebugDebugViewController;
-  private EntryViewController jdField_a_of_type_ComTencentTkdTopicsdkEntryEntryViewController;
   private final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   
   static
@@ -56,7 +51,13 @@ public final class TopicSDK
     return jdField_a_of_type_ComTencentTkdTopicsdkTopicSDK$Companion.a();
   }
   
-  private final void b()
+  private final void b(TopicSDKConfig paramTopicSDKConfig)
+  {
+    paramTopicSDKConfig = (IEmoJiEmotionBridge)new TopicSDK.initEmotionSDK.emotionBridge.1(new TopicSDK.initEmotionSDK.emoJiEmotionImpl.1(paramTopicSDKConfig));
+    EmoJiEmotionPanelManager.a().a(paramTopicSDKConfig);
+  }
+  
+  private final void c()
   {
     Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkTopicSDKConfig;
     if (localObject == null) {
@@ -76,12 +77,6 @@ public final class TopicSDK
     }
   }
   
-  private final void b(TopicSDKConfig paramTopicSDKConfig)
-  {
-    paramTopicSDKConfig = (IEmoJiEmotionBridge)new TopicSDK.initEmotionSDK.emotionBridge.1(new TopicSDK.initEmotionSDK.emoJiEmotionImpl.1(paramTopicSDKConfig));
-    EmoJiEmotionPanelManager.a().a(paramTopicSDKConfig);
-  }
-  
   @NotNull
   public final TopicSDKConfig a()
   {
@@ -94,22 +89,24 @@ public final class TopicSDK
   
   public final void a()
   {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      throw ((Throwable)new IllegalStateException("Check failed.".toString()));
+    TopicSDKConfig localTopicSDKConfig = this.jdField_a_of_type_ComTencentTkdTopicsdkTopicSDKConfig;
+    if (localTopicSDKConfig == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mTopicSDKConfig");
     }
+    localTopicSDKConfig.a();
   }
   
   public final void a(@NotNull Activity paramActivity, int paramInt, @Nullable Bundle paramBundle1, @Nullable Bundle paramBundle2)
   {
     Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
-    a();
+    b();
     TopicSDKHelperKt.a(paramActivity, CreateTopicPage.class, paramInt, paramBundle1, paramBundle2, null, 32, null);
   }
   
   public final void a(@NotNull Context paramContext, @Nullable Bundle paramBundle1, @Nullable Bundle paramBundle2)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    a();
+    b();
     TopicSDKHelperKt.a(paramContext, CreateTopicPage.class, paramBundle1, paramBundle2, null, 16, null);
   }
   
@@ -128,9 +125,7 @@ public final class TopicSDK
     StorageManager.a.a(paramTopicSDKConfig.a());
     DataTransferManager.a.a(paramTopicSDKConfig.a());
     ThreadManager.a.a(paramTopicSDKConfig.a());
-    this.jdField_a_of_type_ComTencentTkdTopicsdkEntryEntryViewController = new EntryViewController(paramTopicSDKConfig.a(), paramTopicSDKConfig.a());
-    this.jdField_a_of_type_ComTencentTkdTopicsdkDebugDebugViewController = new DebugViewController(paramTopicSDKConfig.a(), paramTopicSDKConfig.a());
-    b();
+    c();
     b(paramTopicSDKConfig);
   }
   
@@ -147,17 +142,18 @@ public final class TopicSDK
     TopicEventDispatcher.a.a(paramFunction2);
   }
   
-  public final void b(@NotNull Activity paramActivity, int paramInt, @Nullable Bundle paramBundle1, @Nullable Bundle paramBundle2)
+  public final void b()
   {
-    Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
-    a();
-    TopicSDKHelperKt.a(paramActivity, PublishArticlePage.class, paramInt, paramBundle1, paramBundle2, null, 32, null);
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      return;
+    }
+    throw ((Throwable)new IllegalStateException("Check failed.".toString()));
   }
   
   public final void b(@NotNull Context paramContext, @Nullable Bundle paramBundle1, @Nullable Bundle paramBundle2)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    a();
+    b();
     TopicSDKHelperKt.a(paramContext, EditTopicPage.class, paramBundle1, paramBundle2, null, 16, null);
   }
   
@@ -166,17 +162,10 @@ public final class TopicSDK
     Intrinsics.checkParameterIsNotNull(paramFunction2, "listener");
     TopicEventDispatcher.a.b(paramFunction2);
   }
-  
-  public final void c(@NotNull Context paramContext, @Nullable Bundle paramBundle1, @Nullable Bundle paramBundle2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    a();
-    TopicSDKHelperKt.a(paramContext, PublishArticlePage.class, paramBundle1, paramBundle2, null, 16, null);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.TopicSDK
  * JD-Core Version:    0.7.0.1
  */

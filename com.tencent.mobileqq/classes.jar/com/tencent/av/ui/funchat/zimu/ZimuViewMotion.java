@@ -30,17 +30,18 @@ public abstract class ZimuViewMotion
     int j = a();
     int i = (this.c - paramInt2) / 2 + paramInt1;
     if (i < 0) {
-      i = 0;
+      return 0;
     }
-    while (paramInt1 + paramInt2 <= j) {
-      return i;
+    if (paramInt1 + paramInt2 > j) {
+      i = j - paramInt2;
     }
-    return j - paramInt2;
+    return i;
   }
   
   public void b()
   {
-    this.c = ((int)(0.48F * this.jdField_a_of_type_Float * this.c));
+    float f = this.jdField_a_of_type_Float;
+    this.c = ((int)(this.c * (f * 0.48F)));
     super.b();
   }
   
@@ -51,7 +52,7 @@ public abstract class ZimuViewMotion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.funchat.zimu.ZimuViewMotion
  * JD-Core Version:    0.7.0.1
  */

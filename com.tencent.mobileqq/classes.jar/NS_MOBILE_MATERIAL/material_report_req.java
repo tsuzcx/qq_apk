@@ -39,14 +39,15 @@ public final class material_report_req
     paramJceOutputStream.write(this.iOperType, 1);
     paramJceOutputStream.write(this.iSource, 2);
     paramJceOutputStream.write(this.iBannerType, 3);
-    if (this.strQbossTraceinfo != null) {
-      paramJceOutputStream.write(this.strQbossTraceinfo, 4);
+    String str = this.strQbossTraceinfo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.material_report_req
  * JD-Core Version:    0.7.0.1
  */

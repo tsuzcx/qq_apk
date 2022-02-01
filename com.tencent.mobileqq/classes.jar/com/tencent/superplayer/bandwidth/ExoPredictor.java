@@ -25,7 +25,10 @@ public class ExoPredictor
   
   private void resetMaxWeight()
   {
-    int i = (int)(Math.sqrt(this.mAvgPredictor.prediction) * this.weightFactor);
+    double d1 = Math.sqrt(this.mAvgPredictor.prediction);
+    double d2 = this.weightFactor;
+    Double.isNaN(d2);
+    int i = (int)(d1 * d2);
     if (i > 0) {
       this.maxWeight = i;
     }
@@ -39,24 +42,34 @@ public class ExoPredictor
   
   public long onSample(long paramLong)
   {
-    long l2 = 0L;
-    double d = Math.sqrt(paramLong);
+    double d1 = Math.sqrt(paramLong);
     long l1;
-    while ((this.currentWeight + d > this.maxWeight) && (this.samples.size() > 0))
+    for (;;)
     {
+      d2 = this.currentWeight;
+      Double.isNaN(d2);
+      if ((d2 + d1 <= this.maxWeight) || (this.samples.size() <= 0)) {
+        break;
+      }
       l1 = ((Long)this.samples.remove(0)).longValue();
-      this.currentWeight = ((int)(this.currentWeight - Math.sqrt(l1)));
+      d2 = this.currentWeight;
+      double d3 = Math.sqrt(l1);
+      Double.isNaN(d2);
+      this.currentWeight = ((int)(d2 - d3));
     }
     this.samples.add(Long.valueOf(paramLong));
-    this.currentWeight = ((int)(this.currentWeight + d));
+    double d2 = this.currentWeight;
+    Double.isNaN(d2);
+    this.currentWeight = ((int)(d2 + d1));
     int i = this.maxWeight / 2;
     Object localObject = (List)this.samples.clone();
     Collections.sort((List)localObject);
-    Long localLong;
     if (this.currentWeight > i)
     {
       localObject = ((List)localObject).iterator();
+      long l2 = 0L;
       l1 = 0L;
+      Long localLong;
       do
       {
         paramLong = l2;
@@ -64,17 +77,22 @@ public class ExoPredictor
           break;
         }
         localLong = (Long)((Iterator)localObject).next();
-        paramLong = (l1 + Math.sqrt(localLong.longValue()));
+        d1 = l1;
+        d2 = Math.sqrt(localLong.longValue());
+        Double.isNaN(d1);
+        paramLong = (d1 + d2);
         l1 = paramLong;
       } while (paramLong <= i);
+      paramLong = localLong.longValue();
     }
-    for (paramLong = localLong.longValue();; paramLong = ((Long)((List)localObject).get(((List)localObject).size() - 1)).longValue())
+    else
     {
-      if (this.samples.size() >= this.weightFactor) {
-        resetMaxWeight();
-      }
-      return paramLong;
+      paramLong = ((Long)((List)localObject).get(((List)localObject).size() - 1)).longValue();
     }
+    if (this.samples.size() >= this.weightFactor) {
+      resetMaxWeight();
+    }
+    return paramLong;
   }
   
   public void reset()
@@ -86,12 +104,16 @@ public class ExoPredictor
   
   public String toString()
   {
-    return "ExoPredictor(" + this.maxWeight + ')';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ExoPredictor(");
+    localStringBuilder.append(this.maxWeight);
+    localStringBuilder.append(')');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.bandwidth.ExoPredictor
  * JD-Core Version:    0.7.0.1
  */

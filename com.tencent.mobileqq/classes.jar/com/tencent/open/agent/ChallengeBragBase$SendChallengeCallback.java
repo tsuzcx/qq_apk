@@ -26,7 +26,13 @@ public class ChallengeBragBase$SendChallengeCallback
     if (i != 0)
     {
       Toast.makeText(this.a, paramIntent.getStringExtra("key_error_msg"), 0).show();
-      LogUtility.e("qqBaseActivity", "onSendChallengeComplete error:{KEY_ERROR_CODE:" + i + "; KEY_ERROR_MSG:" + paramIntent.getStringExtra("key_error_msg") + "}");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSendChallengeComplete error:{KEY_ERROR_CODE:");
+      localStringBuilder.append(i);
+      localStringBuilder.append("; KEY_ERROR_MSG:");
+      localStringBuilder.append(paramIntent.getStringExtra("key_error_msg"));
+      localStringBuilder.append("}");
+      LogUtility.e("qqBaseActivity", localStringBuilder.toString());
     }
     this.a.setResult(-1, paramIntent);
     this.a.finish();
@@ -35,74 +41,79 @@ public class ChallengeBragBase$SendChallengeCallback
   public void a(Exception paramException)
   {
     this.a.d();
-    LogUtility.c("qqBaseActivity", "SendChallenge exception." + paramException.getMessage(), paramException);
-    Intent localIntent = new Intent();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("SendChallenge exception.");
+    ((StringBuilder)localObject).append(paramException.getMessage());
+    LogUtility.c("qqBaseActivity", ((StringBuilder)localObject).toString(), paramException);
+    localObject = new Intent();
     if ((paramException instanceof ConnectTimeoutException))
     {
-      localIntent.putExtra("key_error_code", -7);
-      localIntent.putExtra("key_error_msg", Constants.e);
+      ((Intent)localObject).putExtra("key_error_code", -7);
+      ((Intent)localObject).putExtra("key_error_msg", Constants.e);
     }
-    for (;;)
+    else if ((paramException instanceof SocketTimeoutException))
     {
-      a(localIntent);
-      return;
-      if ((paramException instanceof SocketTimeoutException))
-      {
-        localIntent.putExtra("key_error_code", -8);
-        localIntent.putExtra("key_error_msg", Constants.f);
-      }
-      else if ((paramException instanceof MalformedURLException))
-      {
-        localIntent.putExtra("key_error_code", -3);
-        localIntent.putExtra("key_error_msg", "访问url有误!");
-      }
-      else if ((paramException instanceof HttpBaseUtil.HttpStatusException))
-      {
-        localIntent.putExtra("key_error_code", -10);
-        localIntent.putExtra("key_error_msg", "Http返回码异常!");
-      }
-      else if ((paramException instanceof HttpBaseUtil.NetworkUnavailableException))
-      {
-        localIntent.putExtra("key_error_code", -9);
-        localIntent.putExtra("key_error_msg", Constants.g);
-      }
-      else if ((paramException instanceof IOException))
-      {
-        localIntent.putExtra("key_error_code", -2);
-        localIntent.putExtra("key_error_msg", Constants.a);
-      }
-      else
-      {
-        localIntent.putExtra("key_error_code", -6);
-        localIntent.putExtra("key_error_msg", Constants.d);
-      }
+      ((Intent)localObject).putExtra("key_error_code", -8);
+      ((Intent)localObject).putExtra("key_error_msg", Constants.f);
     }
+    else if ((paramException instanceof MalformedURLException))
+    {
+      ((Intent)localObject).putExtra("key_error_code", -3);
+      ((Intent)localObject).putExtra("key_error_msg", "访问url有误!");
+    }
+    else if ((paramException instanceof HttpBaseUtil.HttpStatusException))
+    {
+      ((Intent)localObject).putExtra("key_error_code", -10);
+      ((Intent)localObject).putExtra("key_error_msg", "Http返回码异常!");
+    }
+    else if ((paramException instanceof HttpBaseUtil.NetworkUnavailableException))
+    {
+      ((Intent)localObject).putExtra("key_error_code", -9);
+      ((Intent)localObject).putExtra("key_error_msg", Constants.g);
+    }
+    else if ((paramException instanceof IOException))
+    {
+      ((Intent)localObject).putExtra("key_error_code", -2);
+      ((Intent)localObject).putExtra("key_error_msg", Constants.a);
+    }
+    else
+    {
+      ((Intent)localObject).putExtra("key_error_code", -6);
+      ((Intent)localObject).putExtra("key_error_msg", Constants.d);
+    }
+    a((Intent)localObject);
   }
   
   public void a(JSONObject paramJSONObject)
   {
-    int i = 0;
-    try
+    for (;;)
     {
-      this.a.d();
-      int j = paramJSONObject.getInt("ret");
-      String str = paramJSONObject.getString("msg");
-      Object localObject;
-      if (j == 0)
+      try
       {
-        localObject = null;
-        if (!"action_brag".equals(this.a.p)) {
-          break label132;
-        }
-        localObject = "ANDROIDQQ.BRAG.ASSISTANT";
-        i = 2131691058;
-      }
-      for (;;)
-      {
-        if (localObject != null)
+        this.a.d();
+        int j = paramJSONObject.getInt("ret");
+        String str = paramJSONObject.getString("msg");
+        if (j == 0)
         {
-          StaticAnalyz.a("400", (String)localObject, this.a.c, true);
-          Toast.makeText(this.a, i, 0).show();
+          localObject = null;
+          if ("action_brag".equals(this.a.p))
+          {
+            localObject = "ANDROIDQQ.BRAG.ASSISTANT";
+            i = 2131690978;
+          }
+          else
+          {
+            if (!"action_challenge".equals(this.a.p)) {
+              break label237;
+            }
+            localObject = "ANDROIDQQ.PK.ASSISTANT";
+            i = 2131690979;
+          }
+          if (localObject != null)
+          {
+            StaticAnalyz.a("400", (String)localObject, this.a.c, true);
+            Toast.makeText(this.a, i, 0).show();
+          }
         }
         localObject = new Intent();
         ((Intent)localObject).putExtra("key_error_code", j);
@@ -110,33 +121,32 @@ public class ChallengeBragBase$SendChallengeCallback
         ((Intent)localObject).putExtra("key_response", paramJSONObject.toString());
         a((Intent)localObject);
         return;
-        label132:
-        if ("action_challenge".equals(this.a.p))
-        {
-          localObject = "ANDROIDQQ.PK.ASSISTANT";
-          i = 2131691059;
-        }
       }
-      return;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      LogUtility.c("qqBaseActivity", "SendChallenge exception." + paramJSONObject.getMessage(), paramJSONObject);
-      paramJSONObject = new Intent();
-      paramJSONObject.putExtra("key_error_code", -4);
-      paramJSONObject.putExtra("key_error_msg", Constants.b);
-      a(paramJSONObject);
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      a(paramJSONObject);
+      catch (Exception paramJSONObject)
+      {
+        a(paramJSONObject);
+        return;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("SendChallenge exception.");
+        ((StringBuilder)localObject).append(paramJSONObject.getMessage());
+        LogUtility.c("qqBaseActivity", ((StringBuilder)localObject).toString(), paramJSONObject);
+        paramJSONObject = new Intent();
+        paramJSONObject.putExtra("key_error_code", -4);
+        paramJSONObject.putExtra("key_error_msg", Constants.b);
+        a(paramJSONObject);
+        return;
+      }
+      label237:
+      int i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.ChallengeBragBase.SendChallengeCallback
  * JD-Core Version:    0.7.0.1
  */

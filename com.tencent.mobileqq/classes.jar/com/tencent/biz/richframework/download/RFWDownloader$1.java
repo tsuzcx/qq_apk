@@ -23,12 +23,21 @@ class RFWDownloader$1
     long l1 = SystemClock.uptimeMillis();
     RFWDownloader.access$000(this.this$0, this.val$downloadInfo, paramResponse);
     long l2 = SystemClock.uptimeMillis();
-    RFLog.e("RFWDownloader", RFLog.USR, "download [timeCost=" + (SystemClock.uptimeMillis() - this.val$beginEnqueue) + "][receiveData=" + (l2 - l1) + "] [url=" + this.val$downloadInfo.getUrl() + "]");
+    int i = RFLog.USR;
+    paramCall = new StringBuilder();
+    paramCall.append("download [timeCost=");
+    paramCall.append(SystemClock.uptimeMillis() - this.val$beginEnqueue);
+    paramCall.append("][receiveData=");
+    paramCall.append(l2 - l1);
+    paramCall.append("] [url=");
+    paramCall.append(this.val$downloadInfo.getUrl());
+    paramCall.append("]");
+    RFLog.e("RFWDownloader", i, paramCall.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.download.RFWDownloader.1
  * JD-Core Version:    0.7.0.1
  */

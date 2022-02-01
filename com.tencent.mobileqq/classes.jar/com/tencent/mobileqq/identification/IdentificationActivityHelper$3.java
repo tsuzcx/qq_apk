@@ -6,17 +6,21 @@ import com.tencent.qphone.base.util.QLog;
 class IdentificationActivityHelper$3
   implements Runnable
 {
-  IdentificationActivityHelper$3(IdentificationActivityHelper paramIdentificationActivityHelper) {}
+  IdentificationActivityHelper$3(IdentificationActivityHelper paramIdentificationActivityHelper, boolean paramBoolean, int paramInt) {}
   
   public void run()
   {
-    QLog.d("qq_Identification.Helper", 1, "download res fail");
-    IdentificationActivityHelper.a(this.this$0).a(false, 214);
+    if (IdentificationActivityHelper.a(this.this$0))
+    {
+      QLog.e("qq_Identification.Helper", 1, "postResult2UI, context invalid");
+      return;
+    }
+    IdentificationActivityHelper.a(this.this$0).showYTInitFinish(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.identification.IdentificationActivityHelper.3
  * JD-Core Version:    0.7.0.1
  */

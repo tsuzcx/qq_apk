@@ -12,95 +12,90 @@ public class AnimatableTextPropertiesParser
   {
     paramJsonReader.beginObject();
     AnimatableTextProperties localAnimatableTextProperties = null;
-    label6:
     while (paramJsonReader.hasNext())
     {
       String str = paramJsonReader.nextName();
       int i = -1;
-      switch (str.hashCode())
-      {
+      if ((str.hashCode() == 97) && (str.equals("a"))) {
+        i = 0;
       }
-      for (;;)
-      {
-        switch (i)
-        {
-        default: 
-          paramJsonReader.skipValue();
-          break label6;
-          if (str.equals("a")) {
-            i = 0;
-          }
-          break;
-        }
+      if (i != 0) {
+        paramJsonReader.skipValue();
+      } else {
+        localAnimatableTextProperties = parseAnimatableTextProperties(paramJsonReader, paramLottieComposition);
       }
-      localAnimatableTextProperties = parseAnimatableTextProperties(paramJsonReader, paramLottieComposition);
     }
     paramJsonReader.endObject();
-    paramJsonReader = localAnimatableTextProperties;
     if (localAnimatableTextProperties == null) {
-      paramJsonReader = new AnimatableTextProperties(null, null, null, null);
+      return new AnimatableTextProperties(null, null, null, null);
     }
-    return paramJsonReader;
+    return localAnimatableTextProperties;
   }
   
   private static AnimatableTextProperties parseAnimatableTextProperties(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
-    AnimatableFloatValue localAnimatableFloatValue2 = null;
     paramJsonReader.beginObject();
-    AnimatableFloatValue localAnimatableFloatValue1 = null;
     AnimatableColorValue localAnimatableColorValue2 = null;
     AnimatableColorValue localAnimatableColorValue1 = null;
-    label15:
+    Object localObject1 = localAnimatableColorValue1;
+    Object localObject2 = localObject1;
     while (paramJsonReader.hasNext())
     {
       String str = paramJsonReader.nextName();
       int i = -1;
-      switch (str.hashCode())
+      int j = str.hashCode();
+      if (j != 116)
       {
-      }
-      for (;;)
-      {
-        switch (i)
+        if (j != 3261)
         {
-        default: 
-          paramJsonReader.skipValue();
-          break label15;
-          if (str.equals("fc"))
+          if (j != 3664)
           {
-            i = 0;
-            continue;
-            if (str.equals("sc"))
-            {
-              i = 1;
-              continue;
-              if (str.equals("sw"))
-              {
-                i = 2;
-                continue;
-                if (str.equals("t")) {
-                  i = 3;
-                }
-              }
+            if ((j == 3684) && (str.equals("sw"))) {
+              i = 2;
             }
           }
-          break;
+          else if (str.equals("sc")) {
+            i = 1;
+          }
+        }
+        else if (str.equals("fc")) {
+          i = 0;
         }
       }
-      localAnimatableColorValue1 = AnimatableValueParser.parseColor(paramJsonReader, paramLottieComposition);
-      continue;
-      localAnimatableColorValue2 = AnimatableValueParser.parseColor(paramJsonReader, paramLottieComposition);
-      continue;
-      localAnimatableFloatValue1 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
-      continue;
-      localAnimatableFloatValue2 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
+      else if (str.equals("t")) {
+        i = 3;
+      }
+      if (i != 0)
+      {
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i != 3) {
+              paramJsonReader.skipValue();
+            } else {
+              localObject2 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
+            }
+          }
+          else {
+            localObject1 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
+          }
+        }
+        else {
+          localAnimatableColorValue1 = AnimatableValueParser.parseColor(paramJsonReader, paramLottieComposition);
+        }
+      }
+      else {
+        localAnimatableColorValue2 = AnimatableValueParser.parseColor(paramJsonReader, paramLottieComposition);
+      }
     }
     paramJsonReader.endObject();
-    return new AnimatableTextProperties(localAnimatableColorValue1, localAnimatableColorValue2, localAnimatableFloatValue1, localAnimatableFloatValue2);
+    return new AnimatableTextProperties(localAnimatableColorValue2, localAnimatableColorValue1, (AnimatableFloatValue)localObject1, (AnimatableFloatValue)localObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.AnimatableTextPropertiesParser
  * JD-Core Version:    0.7.0.1
  */

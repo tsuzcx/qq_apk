@@ -8,13 +8,19 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 public final class YTOpenBase$point
   extends MessageMicro<point>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "x", "y" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }, point.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field x = PBField.initInt32(0);
   public final PBInt32Field y = PBField.initInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "x", "y" }, new Object[] { localInteger, localInteger }, point.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.YTOpenBase.point
  * JD-Core Version:    0.7.0.1
  */

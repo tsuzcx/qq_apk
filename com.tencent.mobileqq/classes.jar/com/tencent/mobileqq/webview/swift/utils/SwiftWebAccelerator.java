@@ -7,20 +7,23 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.util.ArrayMap;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.webarticle.RIJWebArticlePreloadUtil;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics;
+import com.tencent.mobileqq.webview.swift.injector.ISwiftWebAcceleratorInjector;
+import com.tencent.mobileqq.webview.swift.injector.SwiftWebAcceleratorInjectorUtil;
 import com.tencent.mobileqq.webview.swift.scheduler.SwiftBrowserStateMachineScheduler;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class SwiftWebAccelerator
 {
+  private static ISwiftWebAcceleratorInjector jdField_a_of_type_ComTencentMobileqqWebviewSwiftInjectorISwiftWebAcceleratorInjector;
   private static SwiftWebAccelerator jdField_a_of_type_ComTencentMobileqqWebviewSwiftUtilsSwiftWebAccelerator;
   public static final Object a;
   public int a;
@@ -37,59 +40,72 @@ public class SwiftWebAccelerator
   {
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = false;
+    jdField_a_of_type_ComTencentMobileqqWebviewSwiftInjectorISwiftWebAcceleratorInjector = SwiftWebAcceleratorInjectorUtil.a();
   }
   
   public static SwiftWebAccelerator a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqWebviewSwiftUtilsSwiftWebAccelerator == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqWebviewSwiftUtilsSwiftWebAccelerator == null) {
-        jdField_a_of_type_ComTencentMobileqqWebviewSwiftUtilsSwiftWebAccelerator = new SwiftWebAccelerator();
+    if (jdField_a_of_type_ComTencentMobileqqWebviewSwiftUtilsSwiftWebAccelerator == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqWebviewSwiftUtilsSwiftWebAccelerator == null) {
+          jdField_a_of_type_ComTencentMobileqqWebviewSwiftUtilsSwiftWebAccelerator = new SwiftWebAccelerator();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqWebviewSwiftUtilsSwiftWebAccelerator;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqWebviewSwiftUtilsSwiftWebAccelerator;
   }
   
   public static void b()
   {
     long l = System.currentTimeMillis();
-    if (WebViewPluginEngine.a == null) {
+    if (WebViewPluginEngine.a == null)
+    {
       ThreadManager.postImmediately(new SwiftWebAccelerator.7(l), null, false);
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("WebLog_SwiftWebAccelerator", 2, "preCreateWebViewPluginEngine preload success");
-  }
-  
-  public int a()
-  {
-    return this.b;
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_SwiftWebAccelerator", 2, "preCreateWebViewPluginEngine preload success");
+    }
   }
   
   public int a(Bundle paramBundle)
   {
     this.jdField_a_of_type_Int |= 0x1;
-    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-    if (localObject != null) {
-      localObject = ((AppRuntime)localObject).getAccount();
-    }
-    for (boolean bool = BaseApplicationImpl.sApplication.getSharedPreferences("sp_x5_config_" + (String)localObject, 4).getBoolean("key_x5_init_sub_thread", true);; bool = true)
+    Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    boolean bool;
+    if (localObject != null)
     {
-      long l = System.currentTimeMillis();
-      QLog.i("WebLog_SwiftWebAccelerator", 1, "initX5Environment start! " + bool);
-      if (bool)
-      {
-        ThreadManager.postImmediately(new SwiftWebAccelerator.3(this, l, paramBundle), null, false);
-        return -1;
-      }
-      SwiftWebAccelerator.TbsAccelerator.b();
-      SwiftBrowserStatistics.Y = System.currentTimeMillis() - l;
-      QLog.i("WebLog_SwiftWebAccelerator", 1, "initX5Environment on main thread, cost " + SwiftBrowserStatistics.Y + "ms.");
-      return 1;
+      localObject = ((AppRuntime)localObject).getAccount();
+      BaseApplication localBaseApplication = MobileQQ.getContext();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sp_x5_config_");
+      localStringBuilder.append((String)localObject);
+      bool = localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 4).getBoolean("key_x5_init_sub_thread", true);
     }
+    else
+    {
+      bool = true;
+    }
+    long l = System.currentTimeMillis();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("initX5Environment start! ");
+    ((StringBuilder)localObject).append(bool);
+    QLog.i("WebLog_SwiftWebAccelerator", 1, ((StringBuilder)localObject).toString());
+    if (bool)
+    {
+      ThreadManager.postImmediately(new SwiftWebAccelerator.3(this, l, paramBundle), null, false);
+      return -1;
+    }
+    SwiftWebAccelerator.TbsAccelerator.b();
+    SwiftBrowserStatistics.Y = System.currentTimeMillis() - l;
+    paramBundle = new StringBuilder();
+    paramBundle.append("initX5Environment on main thread, cost ");
+    paramBundle.append(SwiftBrowserStatistics.Y);
+    paramBundle.append("ms.");
+    QLog.i("WebLog_SwiftWebAccelerator", 1, paramBundle.toString());
+    return 1;
   }
   
   public void a()
@@ -115,7 +131,11 @@ public class SwiftWebAccelerator
         this.b = localBundle.getInt("_accelerator_mode_", 0);
         this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSchedulerSwiftBrowserStateMachineScheduler.b();
         this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSchedulerSwiftBrowserStateMachineScheduler.a(localBundle);
-        QLog.i("WebLog_SwiftWebAccelerator", 1, "smartSchedule restart and new mode is " + this.b + ".");
+        paramBundle = new StringBuilder();
+        paramBundle.append("smartSchedule restart and new mode is ");
+        paramBundle.append(this.b);
+        paramBundle.append(".");
+        QLog.i("WebLog_SwiftWebAccelerator", 1, paramBundle.toString());
         return;
       }
       QLog.i("WebLog_SwiftWebAccelerator", 1, "smartSchedule say no because is in real world now.");
@@ -128,9 +148,13 @@ public class SwiftWebAccelerator
   {
     this.jdField_a_of_type_Int |= 0x2;
     long l = System.currentTimeMillis();
-    SwiftReuseTouchWebView.a(BaseApplicationImpl.sApplication).a(true);
+    SwiftReuseTouchWebView.a(MobileQQ.getContext()).a(true);
     SwiftBrowserStatistics.Z = System.currentTimeMillis() - l;
-    QLog.i("WebLog_SwiftWebAccelerator", 1, "doMainStep_CreateWebView:create webview cost " + SwiftBrowserStatistics.Z + "ms.");
+    paramBundle = new StringBuilder();
+    paramBundle.append("doMainStep_CreateWebView:create webview cost ");
+    paramBundle.append(SwiftBrowserStatistics.Z);
+    paramBundle.append("ms.");
+    QLog.i("WebLog_SwiftWebAccelerator", 1, paramBundle.toString());
     return 1;
   }
   
@@ -144,45 +168,54 @@ public class SwiftWebAccelerator
   {
     this.jdField_a_of_type_Int |= 0x4;
     long l = System.currentTimeMillis();
-    Object localObject = (String)WebAccelerateHelper.getInstance().getWebViewFeatureConfigs().get("preloadUrl");
-    paramBundle = (Bundle)localObject;
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      if (!((String)localObject).startsWith("http:"))
+    Object localObject2 = (String)WebAccelerateHelper.getInstance().getWebViewFeatureConfigs().get("preloadUrl");
+    Object localObject1 = localObject2;
+    if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+      if (!((String)localObject2).startsWith("http:"))
       {
-        paramBundle = (Bundle)localObject;
-        if (!((String)localObject).startsWith("https:")) {}
+        localObject1 = localObject2;
+        if (!((String)localObject2).startsWith("https:")) {}
       }
       else
       {
-        paramBundle = (Bundle)localObject;
-        if (((String)localObject).startsWith("http:"))
+        localObject1 = localObject2;
+        if (((String)localObject2).startsWith("http:"))
         {
-          localObject = ((String)localObject).replace("http:", "https:");
-          paramBundle = (Bundle)localObject;
+          localObject2 = ((String)localObject2).replace("http:", "https:");
+          localObject1 = localObject2;
           if (QLog.isColorLevel())
           {
             QLog.d("WebLog_SwiftWebAccelerator", 2, "WarnUpWebView replace https");
-            paramBundle = (Bundle)localObject;
+            localObject1 = localObject2;
           }
         }
-        localObject = SwiftReuseTouchWebView.a(BaseApplicationImpl.sApplication);
+        localObject2 = SwiftReuseTouchWebView.a(MobileQQ.getContext());
         Intent localIntent = new Intent();
         localIntent.putExtra("ignoreLoginWeb", true);
-        ((SwiftReuseTouchWebView)localObject).setIntent(localIntent);
-        ((SwiftReuseTouchWebView)localObject).loadUrlOriginal(paramBundle);
-        new Handler(Looper.getMainLooper()).postDelayed(new SwiftWebAccelerator.4(this, (SwiftReuseTouchWebView)localObject), 300L);
+        ((SwiftReuseTouchWebView)localObject2).setIntent(localIntent);
+        ((SwiftReuseTouchWebView)localObject2).loadUrlOriginal((String)localObject1);
+        new Handler(Looper.getMainLooper()).postDelayed(new SwiftWebAccelerator.4(this, (SwiftReuseTouchWebView)localObject2), 300L);
       }
     }
     SwiftBrowserStatistics.aa = System.currentTimeMillis() - l;
-    QLog.i("WebLog_SwiftWebAccelerator", 1, "tendocpreload doMainStep_WarnUpWebView:load " + paramBundle + ", cost " + SwiftBrowserStatistics.aa + "ms.");
-    RIJWebArticlePreloadUtil.a.a();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("tendocpreload doMainStep_WarnUpWebView:load ");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(", cost ");
+    ((StringBuilder)localObject2).append(SwiftBrowserStatistics.aa);
+    ((StringBuilder)localObject2).append("ms.");
+    QLog.i("WebLog_SwiftWebAccelerator", 1, ((StringBuilder)localObject2).toString());
+    localObject1 = jdField_a_of_type_ComTencentMobileqqWebviewSwiftInjectorISwiftWebAcceleratorInjector;
+    if (localObject1 != null) {
+      ((ISwiftWebAcceleratorInjector)localObject1).a(paramBundle);
+    }
     return 1;
   }
   
   public void c(Bundle paramBundle)
   {
     this.jdField_a_of_type_Int |= 0x800;
-    ThreadManager.postImmediately(new SwiftWebAccelerator.6(this, System.currentTimeMillis()), null, false);
+    ThreadManager.postImmediately(new SwiftWebAccelerator.6(this, System.currentTimeMillis(), paramBundle), null, false);
   }
   
   public int d(Bundle paramBundle)
@@ -219,7 +252,13 @@ public class SwiftWebAccelerator
         }
       }
     }
-    QLog.i("WebLog_SwiftWebAccelerator", 1, "doMainStep_SetCookie:pre set cookie(" + (String)localObject1 + "), cost " + (System.currentTimeMillis() - l) + "ms.");
+    paramBundle = new StringBuilder();
+    paramBundle.append("doMainStep_SetCookie:pre set cookie(");
+    paramBundle.append((String)localObject1);
+    paramBundle.append("), cost ");
+    paramBundle.append(System.currentTimeMillis() - l);
+    paramBundle.append("ms.");
+    QLog.i("WebLog_SwiftWebAccelerator", 1, paramBundle.toString());
     return 1;
   }
   
@@ -237,7 +276,11 @@ public class SwiftWebAccelerator
     {
       WebAccelerateHelper.preInflaterBrowserView();
       SwiftBrowserStatistics.ab = System.currentTimeMillis() - l;
-      QLog.i("WebLog_SwiftWebAccelerator", 1, "doMainStep_CreateBrowserView, cost = " + SwiftBrowserStatistics.ab + "ms.");
+      paramBundle = new StringBuilder();
+      paramBundle.append("doMainStep_CreateBrowserView, cost = ");
+      paramBundle.append(SwiftBrowserStatistics.ab);
+      paramBundle.append("ms.");
+      QLog.i("WebLog_SwiftWebAccelerator", 1, paramBundle.toString());
       return 1;
     }
     return 0;
@@ -245,7 +288,7 @@ public class SwiftWebAccelerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator
  * JD-Core Version:    0.7.0.1
  */

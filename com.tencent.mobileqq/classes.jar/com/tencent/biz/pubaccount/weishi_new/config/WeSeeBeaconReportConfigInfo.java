@@ -29,12 +29,16 @@ public class WeSeeBeaconReportConfigInfo
   
   public String toString()
   {
-    return "WeSeeBeaconReportConfigInfo{mIsImmediatelyUpload=" + this.a + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WeSeeBeaconReportConfigInfo{mIsImmediatelyUpload=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.config.WeSeeBeaconReportConfigInfo
  * JD-Core Version:    0.7.0.1
  */

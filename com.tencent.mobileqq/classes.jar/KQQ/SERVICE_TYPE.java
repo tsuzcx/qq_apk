@@ -9,7 +9,7 @@ public final class SERVICE_TYPE
   public static final SERVICE_TYPE ST_APP_SDK_UPGRADE;
   public static final SERVICE_TYPE ST_DISGROUP_LIST;
   public static final SERVICE_TYPE ST_FMT_SERVERLIST;
-  public static final SERVICE_TYPE ST_GAME_PLUGIN;
+  public static final SERVICE_TYPE ST_GAME_PLUGIN = new SERVICE_TYPE(15, 22, "ST_GAME_PLUGIN");
   public static final SERVICE_TYPE ST_GENERAL_SETTINGS;
   public static final SERVICE_TYPE ST_GROUP_MASK;
   public static final SERVICE_TYPE ST_HELLO_BLACK_LIST;
@@ -37,35 +37,27 @@ public final class SERVICE_TYPE
   public static final int _ST_SIGNATURE = 8;
   public static final int _ST_TOKEN = 17;
   public static final int _ST_USER_DEFINED_FACEID = 7;
-  private static SERVICE_TYPE[] a;
+  private static SERVICE_TYPE[] a = new SERVICE_TYPE[16];
   private String __T = new String();
   private int __value;
   
   static
   {
-    if (!SERVICE_TYPE.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      a = new SERVICE_TYPE[16];
-      ST_PLGUIN_LIST = new SERVICE_TYPE(0, 1, "ST_PLGUIN_LIST");
-      ST_SELF_CARD = new SERVICE_TYPE(1, 2, "ST_SELF_CARD");
-      ST_HELLO_BLACK_LIST = new SERVICE_TYPE(2, 3, "ST_HELLO_BLACK_LIST");
-      ST_DISGROUP_LIST = new SERVICE_TYPE(3, 4, "ST_DISGROUP_LIST");
-      ST_SELF_SIMPLE_INFO = new SERVICE_TYPE(4, 5, "ST_SELF_SIMPLE_INFO");
-      ST_GROUP_MASK = new SERVICE_TYPE(5, 6, "ST_GROUP_MASK");
-      ST_USER_DEFINED_FACEID = new SERVICE_TYPE(6, 7, "ST_USER_DEFINED_FACEID");
-      ST_SIGNATURE = new SERVICE_TYPE(7, 8, "ST_SIGNATURE");
-      ST_APP_SDK_UPGRADE = new SERVICE_TYPE(8, 9, "ST_APP_SDK_UPGRADE");
-      ST_FMT_SERVERLIST = new SERVICE_TYPE(9, 16, "ST_FMT_SERVERLIST");
-      ST_TOKEN = new SERVICE_TYPE(10, 17, "ST_TOKEN");
-      ST_QZONE_FEED = new SERVICE_TYPE(11, 18, "ST_QZONE_FEED");
-      ST_ADDRESS_LIST_STATE = new SERVICE_TYPE(12, 19, "ST_ADDRESS_LIST_STATE");
-      ST_NEIGHBOR_FEED = new SERVICE_TYPE(13, 20, "ST_NEIGHBOR_FEED");
-      ST_GENERAL_SETTINGS = new SERVICE_TYPE(14, 21, "ST_GENERAL_SETTINGS");
-      ST_GAME_PLUGIN = new SERVICE_TYPE(15, 22, "ST_GAME_PLUGIN");
-      return;
-    }
+    ST_PLGUIN_LIST = new SERVICE_TYPE(0, 1, "ST_PLGUIN_LIST");
+    ST_SELF_CARD = new SERVICE_TYPE(1, 2, "ST_SELF_CARD");
+    ST_HELLO_BLACK_LIST = new SERVICE_TYPE(2, 3, "ST_HELLO_BLACK_LIST");
+    ST_DISGROUP_LIST = new SERVICE_TYPE(3, 4, "ST_DISGROUP_LIST");
+    ST_SELF_SIMPLE_INFO = new SERVICE_TYPE(4, 5, "ST_SELF_SIMPLE_INFO");
+    ST_GROUP_MASK = new SERVICE_TYPE(5, 6, "ST_GROUP_MASK");
+    ST_USER_DEFINED_FACEID = new SERVICE_TYPE(6, 7, "ST_USER_DEFINED_FACEID");
+    ST_SIGNATURE = new SERVICE_TYPE(7, 8, "ST_SIGNATURE");
+    ST_APP_SDK_UPGRADE = new SERVICE_TYPE(8, 9, "ST_APP_SDK_UPGRADE");
+    ST_FMT_SERVERLIST = new SERVICE_TYPE(9, 16, "ST_FMT_SERVERLIST");
+    ST_TOKEN = new SERVICE_TYPE(10, 17, "ST_TOKEN");
+    ST_QZONE_FEED = new SERVICE_TYPE(11, 18, "ST_QZONE_FEED");
+    ST_ADDRESS_LIST_STATE = new SERVICE_TYPE(12, 19, "ST_ADDRESS_LIST_STATE");
+    ST_NEIGHBOR_FEED = new SERVICE_TYPE(13, 20, "ST_NEIGHBOR_FEED");
+    ST_GENERAL_SETTINGS = new SERVICE_TYPE(14, 21, "ST_GENERAL_SETTINGS");
   }
   
   private SERVICE_TYPE(int paramInt1, int paramInt2, String paramString)
@@ -78,15 +70,16 @@ public final class SERVICE_TYPE
   public static SERVICE_TYPE convert(int paramInt)
   {
     int i = 0;
-    while (i < a.length)
+    for (;;)
     {
-      if (a[i].value() == paramInt) {
+      SERVICE_TYPE[] arrayOfSERVICE_TYPE = a;
+      if (i >= arrayOfSERVICE_TYPE.length) {
+        break;
+      }
+      if (arrayOfSERVICE_TYPE[i].value() == paramInt) {
         return a[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -94,15 +87,16 @@ public final class SERVICE_TYPE
   public static SERVICE_TYPE convert(String paramString)
   {
     int i = 0;
-    while (i < a.length)
+    for (;;)
     {
-      if (a[i].toString().equals(paramString)) {
+      SERVICE_TYPE[] arrayOfSERVICE_TYPE = a;
+      if (i >= arrayOfSERVICE_TYPE.length) {
+        break;
+      }
+      if (arrayOfSERVICE_TYPE[i].toString().equals(paramString)) {
         return a[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -119,7 +113,7 @@ public final class SERVICE_TYPE
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.SERVICE_TYPE
  * JD-Core Version:    0.7.0.1
  */

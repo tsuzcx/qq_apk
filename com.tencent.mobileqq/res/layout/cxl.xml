@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.module.feedcomponent.ui.common.SuperLikeView android:id="@id/c7p" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/i9z" android:scaleType="fitXY" android:layout_centerVertical="true" />
-</LinearLayout>
+    <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2" android:id="@id/lpu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="16.0dip" android:includeFontPadding="false" />
+    <com.tencent.mobileqq.fpsreport.FPSXListView android:scrollbarStyle="outsideOverlay" android:id="@id/ldz" android:paddingBottom="54.0dip" android:fadingEdge="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="8.0dip" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0px" android:layout_below="@id/lpu" android:foregroundGravity="fill_horizontal|center|top" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/skin_black" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/bww" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/iyt" android:includeFontPadding="false" android:layout_centerInParent="true" />
+</RelativeLayout>

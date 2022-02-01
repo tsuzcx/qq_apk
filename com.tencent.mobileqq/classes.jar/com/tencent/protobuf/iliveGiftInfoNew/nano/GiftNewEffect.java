@@ -23,14 +23,15 @@ public final class GiftNewEffect
   
   public static GiftNewEffect[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new GiftNewEffect[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new GiftNewEffect[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static GiftNewEffect parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -53,22 +54,23 @@ public final class GiftNewEffect
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
-    int j = super.computeSerializedSize() + CodedOutputByteBufferNano.computeUInt32Size(1, this.effectNum);
-    int i = j;
+    int i = super.computeSerializedSize() + CodedOutputByteBufferNano.computeUInt32Size(1, this.effectNum);
+    int j = i;
     if (!Arrays.equals(this.effectId, WireFormatNano.EMPTY_BYTES)) {
-      i = j + CodedOutputByteBufferNano.computeBytesSize(2, this.effectId);
-    }
-    j = i;
-    if (!Arrays.equals(this.effectWord, WireFormatNano.EMPTY_BYTES)) {
-      j = i + CodedOutputByteBufferNano.computeBytesSize(3, this.effectWord);
+      j = i + CodedOutputByteBufferNano.computeBytesSize(2, this.effectId);
     }
     i = j;
-    if (this.effectType != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(4, this.effectType);
+    if (!Arrays.equals(this.effectWord, WireFormatNano.EMPTY_BYTES)) {
+      i = j + CodedOutputByteBufferNano.computeBytesSize(3, this.effectWord);
     }
-    return i;
+    int k = this.effectType;
+    j = i;
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeUInt32Size(4, k);
+    }
+    return j;
   }
   
   public GiftNewEffect mergeFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -76,26 +78,38 @@ public final class GiftNewEffect
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.effectNum = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 18: 
-        this.effectId = paramCodedInputByteBufferNano.readBytes();
-        break;
-      case 26: 
-        this.effectWord = paramCodedInputByteBufferNano.readBytes();
+      if (i == 0) {
         break;
       }
-      this.effectType = paramCodedInputByteBufferNano.readUInt32();
+      if (i != 8)
+      {
+        if (i != 18)
+        {
+          if (i != 26)
+          {
+            if (i != 32)
+            {
+              if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+                return this;
+              }
+            }
+            else {
+              this.effectType = paramCodedInputByteBufferNano.readUInt32();
+            }
+          }
+          else {
+            this.effectWord = paramCodedInputByteBufferNano.readBytes();
+          }
+        }
+        else {
+          this.effectId = paramCodedInputByteBufferNano.readBytes();
+        }
+      }
+      else {
+        this.effectNum = paramCodedInputByteBufferNano.readUInt32();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
@@ -107,15 +121,16 @@ public final class GiftNewEffect
     if (!Arrays.equals(this.effectWord, WireFormatNano.EMPTY_BYTES)) {
       paramCodedOutputByteBufferNano.writeBytes(3, this.effectWord);
     }
-    if (this.effectType != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(4, this.effectType);
+    int i = this.effectType;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(4, i);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.iliveGiftInfoNew.nano.GiftNewEffect
  * JD-Core Version:    0.7.0.1
  */

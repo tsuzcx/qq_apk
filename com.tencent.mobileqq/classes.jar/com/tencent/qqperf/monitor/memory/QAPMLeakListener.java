@@ -22,19 +22,22 @@ class QAPMLeakListener
   
   public void onFinishDump(boolean paramBoolean, @NotNull String paramString1, @NotNull String paramString2)
   {
-    QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "finishDump" + paramString1 + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("finishDump");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(paramString2);
+    QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, localStringBuilder.toString());
   }
   
   public void onHprofDumped(@NotNull String paramString) {}
   
   public boolean onLeaked(@NotNull InspectUUID paramInspectUUID)
   {
-    if (paramInspectUUID == null) {}
-    do
-    {
+    if (paramInspectUUID == null) {
       return false;
-      paramInspectUUID.toString();
-    } while (AppSetting.e);
+    }
+    paramInspectUUID.toString();
+    boolean bool = AppSetting.e;
     return false;
   }
   
@@ -45,13 +48,16 @@ class QAPMLeakListener
     localArrayList.add(DumpMemInfoHandler.b());
     localArrayList.add(DumpMemInfoHandler.a());
     localArrayList.addAll(DumpMemInfoHandler.b());
-    QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "leakDump" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("leakDump");
+    localStringBuilder.append(paramString);
+    QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, localStringBuilder.toString());
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.monitor.memory.QAPMLeakListener
  * JD-Core Version:    0.7.0.1
  */

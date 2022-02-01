@@ -22,29 +22,31 @@ public class ImageLoader
   @Public
   public static ImageLoader getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new ImageLoader();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new ImageLoader();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   @Public
   public static ImageLoader getInstance(Context paramContext)
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new ImageLoader();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new ImageLoader();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public static void onListViewIdle()
@@ -181,24 +183,26 @@ public class ImageLoader
   
   public void loadImageAsync(ImageUrl paramImageUrl, String paramString, ImageLoader.ImageLoadListener paramImageLoadListener, ImageLoader.Options paramOptions)
   {
-    if ((paramImageUrl != null) && (!TextUtils.isEmpty(paramImageUrl.url))) {}
-    for (Drawable localDrawable = ImageManager.getInstance().getImage(paramImageUrl, paramImageLoadListener, paramOptions, (byte)2, null);; localDrawable = ImageManager.getInstance().getImage(paramString, paramImageLoadListener, paramOptions, (byte)2, null))
+    Drawable localDrawable;
+    if ((paramImageUrl != null) && (!TextUtils.isEmpty(paramImageUrl.url))) {
+      localDrawable = ImageManager.getInstance().getImage(paramImageUrl, paramImageLoadListener, paramOptions, (byte)2, null);
+    } else {
+      localDrawable = ImageManager.getInstance().getImage(paramString, paramImageLoadListener, paramOptions, (byte)2, null);
+    }
+    if ((localDrawable != null) && (paramImageLoadListener != null))
     {
-      if ((localDrawable != null) && (paramImageLoadListener != null))
+      if ((paramOptions != null) && (paramOptions.useMainThread))
       {
-        if ((paramOptions == null) || (!paramOptions.useMainThread)) {
-          break;
-        }
         this.mMainHandler.post(new ImageLoader.1(this, paramImageUrl, paramImageLoadListener, localDrawable, paramOptions, paramString));
+        return;
       }
-      return;
+      if (paramImageUrl != null)
+      {
+        paramImageLoadListener.onImageLoaded(paramImageUrl.url, localDrawable, paramOptions);
+        return;
+      }
+      paramImageLoadListener.onImageLoaded(paramString, localDrawable, paramOptions);
     }
-    if (paramImageUrl != null)
-    {
-      paramImageLoadListener.onImageLoaded(paramImageUrl.url, localDrawable, paramOptions);
-      return;
-    }
-    paramImageLoadListener.onImageLoaded(paramString, localDrawable, paramOptions);
   }
   
   @Public
@@ -261,7 +265,7 @@ public class ImageLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.ImageLoader
  * JD-Core Version:    0.7.0.1
  */

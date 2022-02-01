@@ -14,53 +14,45 @@ import java.util.List;
 
 public class ha
 {
-  private static final String TAG = ha.class.getSimpleName();
+  private static final String TAG = "ha";
   private static final WifiManager sD;
   
   static
   {
     Context localContext = gv.dE();
     WifiManager localWifiManager = gu.G(localContext);
-    if (localWifiManager != null) {}
-    for (;;)
-    {
-      sD = localWifiManager;
-      return;
+    if (localWifiManager == null) {
       localWifiManager = (WifiManager)localContext.getSystemService("wifi");
     }
+    sD = localWifiManager;
   }
   
   private static boolean W(String paramString)
   {
     paramString = j(paramString);
-    if (!Y(paramString)) {}
-    do
-    {
+    boolean bool2 = Y(paramString);
+    boolean bool1 = false;
+    if (!bool2) {
       return false;
-      localObject = sD.getConfiguredNetworks();
-    } while (localObject == null);
+    }
+    Object localObject = sD.getConfiguredNetworks();
+    if (localObject == null) {
+      return false;
+    }
     int i = dk.bJ();
-    Object localObject = ((List)localObject).iterator();
-    boolean bool = false;
-    WifiConfiguration localWifiConfiguration;
-    if (((Iterator)localObject).hasNext())
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      localWifiConfiguration = (WifiConfiguration)((Iterator)localObject).next();
-      if (!TextUtils.equals(j(localWifiConfiguration.SSID), paramString)) {
-        break label105;
-      }
-      if (i < 23) {
-        bool = removeNetwork(localWifiConfiguration.networkId);
+      WifiConfiguration localWifiConfiguration = (WifiConfiguration)((Iterator)localObject).next();
+      if (TextUtils.equals(j(localWifiConfiguration.SSID), paramString)) {
+        if (i < 23) {
+          bool1 = removeNetwork(localWifiConfiguration.networkId);
+        } else {
+          bool1 = disableNetwork(localWifiConfiguration.networkId);
+        }
       }
     }
-    label105:
-    for (;;)
-    {
-      break;
-      bool = disableNetwork(localWifiConfiguration.networkId);
-      continue;
-      return bool;
-    }
+    return bool1;
   }
   
   @Nullable
@@ -96,23 +88,17 @@ public class ha
       int i = 0;
       while (i < j)
       {
-        int k = paramString[i];
-        if ((k & 0xFF) < 16) {
+        int k = paramString[i] & 0xFF;
+        if (k < 16) {
           localStringBuilder.append("0");
         }
-        localStringBuilder.append(Integer.toHexString(k & 0xFF));
+        localStringBuilder.append(Integer.toHexString(k));
         i += 1;
       }
       return localStringBuilder.toString();
     }
-    catch (NoSuchAlgorithmException paramString)
-    {
-      return "";
-    }
-    catch (UnsupportedEncodingException paramString)
-    {
-      return "";
-    }
+    catch (NoSuchAlgorithmException|UnsupportedEncodingException paramString) {}
+    return "";
   }
   
   public static boolean disableNetwork(int paramInt)
@@ -122,7 +108,11 @@ public class ha
       boolean bool = sD.disableNetwork(paramInt);
       return bool;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label10:
+      break label10;
+    }
     return false;
   }
   
@@ -152,7 +142,11 @@ public class ha
       List localList = sD.getConfiguredNetworks();
       return localList;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label9:
+      break label9;
+    }
     return null;
   }
   
@@ -163,7 +157,11 @@ public class ha
       WifiInfo localWifiInfo = sD.getConnectionInfo();
       return localWifiInfo;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label9:
+      break label9;
+    }
     return null;
   }
   
@@ -174,32 +172,34 @@ public class ha
       boolean bool = sD.isWifiEnabled();
       return bool;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label9:
+      break label9;
+    }
     return false;
   }
   
   public static String j(String paramString)
   {
-    String str;
     if (paramString == null) {
-      str = "";
+      return "";
     }
-    int i;
-    do
+    int i = paramString.length();
+    String str = paramString;
+    if (i > 1)
     {
-      do
-      {
-        do
-        {
-          return str;
-          i = paramString.length();
-          str = paramString;
-        } while (i <= 1);
-        str = paramString;
-      } while (paramString.charAt(0) != '"');
       str = paramString;
-    } while (paramString.charAt(i - 1) != '"');
-    return paramString.substring(1, i - 1);
+      if (paramString.charAt(0) == '"')
+      {
+        i -= 1;
+        str = paramString;
+        if (paramString.charAt(i) == '"') {
+          str = paramString.substring(1, i);
+        }
+      }
+    }
+    return str;
   }
   
   public static boolean removeNetwork(int paramInt)
@@ -209,7 +209,11 @@ public class ha
       boolean bool = sD.removeNetwork(paramInt);
       return bool;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label10:
+      break label10;
+    }
     return false;
   }
   
@@ -220,13 +224,17 @@ public class ha
       boolean bool = sD.startScan();
       return bool;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label9:
+      break label9;
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.ha
  * JD-Core Version:    0.7.0.1
  */

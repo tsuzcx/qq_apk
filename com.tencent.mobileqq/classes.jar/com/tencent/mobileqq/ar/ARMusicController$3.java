@@ -11,15 +11,21 @@ class ARMusicController$3
   
   public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ARMusicController", 2, "ARMusicController, onError, what=" + paramInt1 + ", extra=" + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      paramMediaPlayer = new StringBuilder();
+      paramMediaPlayer.append("ARMusicController, onError, what=");
+      paramMediaPlayer.append(paramInt1);
+      paramMediaPlayer.append(", extra=");
+      paramMediaPlayer.append(paramInt2);
+      QLog.e("ARMusicController", 2, paramMediaPlayer.toString());
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARMusicController.3
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -153,91 +154,112 @@ public final class cell_recomm_action
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.s_app_rank != null) {
-      paramJceOutputStream.write(this.s_app_rank, 0);
+    Object localObject = this.s_app_rank;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.remark != null) {
-      paramJceOutputStream.write(this.remark, 1);
+    localObject = this.remark;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.userlist != null) {
-      paramJceOutputStream.write(this.userlist, 2);
+    localObject = this.userlist;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
     paramJceOutputStream.write(this.actiontype, 3);
     paramJceOutputStream.write(this.btn_type, 4);
     paramJceOutputStream.write(this.is_hide_action_area, 5);
     paramJceOutputStream.write(this.is_report, 6);
-    if (this.report_url != null) {
-      paramJceOutputStream.write(this.report_url, 7);
+    localObject = this.report_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
     paramJceOutputStream.write(this.allcount, 8);
-    if (this.button_text != null) {
-      paramJceOutputStream.write(this.button_text, 9);
+    localObject = this.button_text;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
     paramJceOutputStream.write(this.button_actiontype, 10);
-    if (this.button_url != null) {
-      paramJceOutputStream.write(this.button_url, 11);
+    localObject = this.button_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
     paramJceOutputStream.write(this.button_style, 12);
-    if (this.detail_text != null) {
-      paramJceOutputStream.write(this.detail_text, 13);
+    localObject = this.detail_text;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
     paramJceOutputStream.write(this.detail_actiontype, 14);
-    if (this.detail_url != null) {
-      paramJceOutputStream.write(this.detail_url, 15);
+    localObject = this.detail_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 15);
     }
-    if (this.tips_icon != null) {
-      paramJceOutputStream.write(this.tips_icon, 17);
+    localObject = this.tips_icon;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 17);
     }
     paramJceOutputStream.write(this.adv_pos, 18);
     paramJceOutputStream.write(this.multi_adv_offset, 19);
-    if (this.interact_left_text != null) {
-      paramJceOutputStream.write(this.interact_left_text, 20);
+    localObject = this.interact_left_text;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 20);
     }
-    if (this.installed_buttontxt != null) {
-      paramJceOutputStream.write(this.installed_buttontxt, 21);
+    localObject = this.installed_buttontxt;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 21);
     }
-    if (this.alternate_ad_identification != null) {
-      paramJceOutputStream.write(this.alternate_ad_identification, 22);
+    localObject = this.alternate_ad_identification;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 22);
     }
-    if (this.relation_chain != null) {
-      paramJceOutputStream.write(this.relation_chain, 23);
+    localObject = this.relation_chain;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 23);
     }
     paramJceOutputStream.write(this.relation_total_number, 24);
     paramJceOutputStream.write(this.count_down_timer, 25);
-    if (this.extend_info != null) {
-      paramJceOutputStream.write(this.extend_info, 26);
+    localObject = this.extend_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 26);
     }
-    if (this.left_bottom_button != null) {
-      paramJceOutputStream.write(this.left_bottom_button, 28);
+    localObject = this.left_bottom_button;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 28);
     }
-    if (this.currency_pass_field != null) {
-      paramJceOutputStream.write(this.currency_pass_field, 29);
+    localObject = this.currency_pass_field;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 29);
     }
-    if (this.via != null) {
-      paramJceOutputStream.write(this.via, 30);
+    localObject = this.via;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 30);
     }
-    if (this.channel != null) {
-      paramJceOutputStream.write(this.channel, 31);
+    localObject = this.channel;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 31);
     }
     paramJceOutputStream.write(this.productid, 32);
     paramJceOutputStream.write(this.templ_layout, 33);
     paramJceOutputStream.write(this.dest_type, 34);
     paramJceOutputStream.write(this.product_type, 35);
-    if (this.dest_url != null) {
-      paramJceOutputStream.write(this.dest_url, 36);
+    localObject = this.dest_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 36);
     }
-    if (this.rl != null) {
-      paramJceOutputStream.write(this.rl, 37);
+    localObject = this.rl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 37);
     }
     paramJceOutputStream.write(this.style, 38);
-    if (this.add_group_url != null) {
-      paramJceOutputStream.write(this.add_group_url, 39);
+    localObject = this.add_group_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 39);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_recomm_action
  * JD-Core Version:    0.7.0.1
  */

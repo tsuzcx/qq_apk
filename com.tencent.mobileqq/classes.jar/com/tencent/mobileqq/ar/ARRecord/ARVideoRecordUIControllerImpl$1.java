@@ -9,30 +9,29 @@ class ARVideoRecordUIControllerImpl$1
   
   public void run()
   {
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("showVideoRecordButton inner run +");
-      if (ARVideoRecordUIControllerImpl.a(this.this$0) == null) {
-        break label81;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showVideoRecordButton inner run +");
+      boolean bool;
+      if (ARVideoRecordUIControllerImpl.a(this.this$0) != null) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      localStringBuilder.append(bool);
+      QLog.i("ARVideoRecordUIControllerImpl", 2, localStringBuilder.toString());
     }
-    label81:
-    for (boolean bool = true;; bool = false)
+    if (ARVideoRecordUIControllerImpl.a(this.this$0) != null)
     {
-      QLog.i("ARVideoRecordUIControllerImpl", 2, bool);
-      if (ARVideoRecordUIControllerImpl.a(this.this$0) != null)
-      {
-        ARVideoRecordUIControllerImpl.a(this.this$0).a();
-        ARVideoRecordUIControllerImpl.a(this.this$0).a(0);
-      }
-      return;
+      ARVideoRecordUIControllerImpl.a(this.this$0).a();
+      ARVideoRecordUIControllerImpl.a(this.this$0).a(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl.1
  * JD-Core Version:    0.7.0.1
  */

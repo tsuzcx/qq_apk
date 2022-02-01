@@ -25,16 +25,17 @@ public final class MultiMsg$MultiMsgApplyDownRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 50, 58, 66, 72, 80 }, new String[] { "uint32_result", "bytes_thumb_down_para", "bytes_msg_key", "rpt_uint32_down_ip", "rpt_uint32_down_port", "bytes_msg_resid", "msg_extern_info", "rpt_bytes_down_ip_v6", "rpt_uint32_down_v6_port", "uint32_apply_id" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3, null, localByteStringMicro4, Integer.valueOf(0), Integer.valueOf(0) }, MultiMsgApplyDownRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 50, 58, 66, 72, 80 }, new String[] { "uint32_result", "bytes_thumb_down_para", "bytes_msg_key", "rpt_uint32_down_ip", "rpt_uint32_down_port", "bytes_msg_resid", "msg_extern_info", "rpt_bytes_down_ip_v6", "rpt_uint32_down_v6_port", "uint32_apply_id" }, new Object[] { localInteger, localByteStringMicro1, localByteStringMicro2, localInteger, localInteger, localByteStringMicro3, null, localByteStringMicro4, localInteger, localInteger }, MultiMsgApplyDownRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.longconn.multimsg.MultiMsg.MultiMsgApplyDownRsp
  * JD-Core Version:    0.7.0.1
  */

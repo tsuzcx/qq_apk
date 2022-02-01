@@ -95,24 +95,23 @@ public class ProbeChain
   
   public void onSubItemsFinish()
   {
-    ProbeChain.ProbeChainResult localProbeChainResult = (ProbeChain.ProbeChainResult)this.mResult;
+    Object localObject = (ProbeChain.ProbeChainResult)this.mResult;
     this.mResult.success = true;
     int j = this.chain.size();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j)
+      ProbeItem localProbeItem = (ProbeItem)this.chain.get(i);
+      ((ProbeChain.ProbeChainResult)localObject).subResults.add(localProbeItem.mResult);
+      if (!localProbeItem.mResult.success)
       {
-        ProbeItem localProbeItem = (ProbeItem)this.chain.get(i);
-        localProbeChainResult.subResults.add(localProbeItem.mResult);
-        if (!localProbeItem.mResult.success)
-        {
-          this.mResult.success = false;
-          this.mResult.errDesc = (localProbeItem.getProbeName() + ":" + localProbeItem.mResult.errDesc);
-        }
-      }
-      else
-      {
+        this.mResult.success = false;
+        localObject = this.mResult;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localProbeItem.getProbeName());
+        localStringBuilder.append(":");
+        localStringBuilder.append(localProbeItem.mResult.errDesc);
+        ((ProbeItem.ProbeResult)localObject).errDesc = localStringBuilder.toString();
         return;
       }
       i += 1;
@@ -121,7 +120,7 @@ public class ProbeChain
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.netprobe.ProbeChain
  * JD-Core Version:    0.7.0.1
  */

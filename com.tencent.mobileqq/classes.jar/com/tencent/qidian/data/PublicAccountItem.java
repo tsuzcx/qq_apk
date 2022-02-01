@@ -65,39 +65,52 @@ public class PublicAccountItem
   
   public boolean equals(Object paramObject)
   {
-    boolean bool = true;
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      if (paramObject == this) {
-        return true;
-      }
-    } while (paramObject.getClass() != getClass());
-    paramObject = (PublicAccountItem)paramObject;
-    if ((paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) && (paramObject.jdField_b_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString)) && (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (paramObject.jdField_b_of_type_Int == this.jdField_b_of_type_Int) && (paramObject.c.equals(this.c)) && (paramObject.d.equals(this.d))) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
     }
+    if (paramObject == this) {
+      return true;
+    }
+    if (paramObject.getClass() != getClass()) {
+      return false;
+    }
+    paramObject = (PublicAccountItem)paramObject;
+    boolean bool1 = bool2;
+    if (paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))
+    {
+      bool1 = bool2;
+      if (paramObject.jdField_b_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString))
+      {
+        bool1 = bool2;
+        if (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int)
+        {
+          bool1 = bool2;
+          if (paramObject.jdField_b_of_type_Int == this.jdField_b_of_type_Int)
+          {
+            bool1 = bool2;
+            if (paramObject.c.equals(this.c))
+            {
+              bool1 = bool2;
+              if (paramObject.d.equals(this.d)) {
+                bool1 = true;
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public int hashCode()
   {
-    int j = this.jdField_a_of_type_JavaLangString.hashCode();
-    int k = this.jdField_b_of_type_JavaLangString.hashCode();
-    int m = this.jdField_a_of_type_Int;
-    int n = this.jdField_b_of_type_Int;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 0;; i = 1) {
-      return ((i + ((((j + 403) * 31 + k) * 31 + m) * 31 + n) * 31) * 31 + this.c.hashCode()) * 31 + this.d.hashCode();
-    }
+    return ((((((403 + this.jdField_a_of_type_JavaLangString.hashCode()) * 31 + this.jdField_b_of_type_JavaLangString.hashCode()) * 31 + this.jdField_a_of_type_Int) * 31 + this.jdField_b_of_type_Int) * 31 + (this.jdField_a_of_type_Boolean ^ true)) * 31 + this.c.hashCode()) * 31 + this.d.hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.data.PublicAccountItem
  * JD-Core Version:    0.7.0.1
  */

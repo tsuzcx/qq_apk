@@ -23,6 +23,9 @@ public class RouteUtils
       }
       localBundle.putAll(paramContext);
       localActivityURIRequest.setFlags(paramIntent.getFlags());
+      localActivityURIRequest.setData(paramIntent.getData());
+      localActivityURIRequest.setType(paramIntent.getType());
+      localActivityURIRequest.setIntentAction(paramIntent.getAction());
     }
     QRoute.startUri(localActivityURIRequest, null);
   }
@@ -41,6 +44,9 @@ public class RouteUtils
       }
       localBundle.putAll(paramContext);
       localActivityURIRequest.setFlags(paramIntent.getFlags());
+      localActivityURIRequest.setData(paramIntent.getData());
+      localActivityURIRequest.setType(paramIntent.getType());
+      localActivityURIRequest.setIntentAction(paramIntent.getAction());
     }
     localActivityURIRequest.setRequestCode(paramInt);
     QRoute.startUri(localActivityURIRequest, null);
@@ -48,7 +54,7 @@ public class RouteUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.RouteUtils
  * JD-Core Version:    0.7.0.1
  */

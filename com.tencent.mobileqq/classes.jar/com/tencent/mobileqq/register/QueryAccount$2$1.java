@@ -14,16 +14,21 @@ class QueryAccount$2$1
   public void run()
   {
     Object localObject2 = this.jdField_a_of_type_JavaLangString;
-    if ((localObject2 == null) || (((String)localObject2).length() <= 0)) {}
-    do
+    if (localObject2 != null)
     {
-      return;
+      if (((String)localObject2).length() <= 0) {
+        return;
+      }
       Object localObject1 = localObject2;
       if (!((String)localObject2).startsWith("http://"))
       {
         localObject1 = localObject2;
-        if (!((String)localObject2).startsWith("https://")) {
-          localObject1 = "https://" + (String)localObject2;
+        if (!((String)localObject2).startsWith("https://"))
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("https://");
+          ((StringBuilder)localObject1).append((String)localObject2);
+          localObject1 = ((StringBuilder)localObject1).toString();
         }
       }
       localObject2 = new Intent();
@@ -35,15 +40,21 @@ class QueryAccount$2$1
       ((Intent)localObject2).putExtra("register_uin_class", this.jdField_a_of_type_ComTencentMobileqqRegisterQueryAccount$2.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getClass().getName());
       ((Intent)localObject2).putExtra("url", (String)localObject1);
       LoginUtils.a(this.jdField_a_of_type_ComTencentMobileqqRegisterQueryAccount$2.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, (Intent)localObject2, "/base/browser");
-      ((Intent)localObject2).putExtra("selfSet_leftViewText", HardCodeUtil.a(2131711195));
+      ((Intent)localObject2).putExtra("selfSet_leftViewText", HardCodeUtil.a(2131711171));
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqRegisterQueryAccount$2.a.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "0X800665A", "0X800665A", 0, 0, "", "", "", "");
-    } while (!QLog.isColorLevel());
-    QLog.d("QueryAccount", 2, "class name is " + this.jdField_a_of_type_ComTencentMobileqqRegisterQueryAccount$2.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getClass().getName());
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("class name is ");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqRegisterQueryAccount$2.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getClass().getName());
+        QLog.d("QueryAccount", 2, ((StringBuilder)localObject1).toString());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.register.QueryAccount.2.1
  * JD-Core Version:    0.7.0.1
  */

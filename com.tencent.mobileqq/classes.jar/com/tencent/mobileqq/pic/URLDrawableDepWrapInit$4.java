@@ -11,11 +11,10 @@ final class URLDrawableDepWrapInit$4
 {
   private ThreadExcutor.IThreadListener a(IThreadListener paramIThreadListener)
   {
-    URLDrawableDepWrapInit.4.1 local1 = null;
     if (paramIThreadListener != null) {
-      local1 = new URLDrawableDepWrapInit.4.1(this, paramIThreadListener);
+      return new URLDrawableDepWrapInit.4.1(this, paramIThreadListener);
     }
-    return local1;
+    return null;
   }
   
   public void executeOnFileThreadExcutor(Runnable paramRunnable, IThreadListener paramIThreadListener, boolean paramBoolean)
@@ -40,7 +39,7 @@ final class URLDrawableDepWrapInit$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.URLDrawableDepWrapInit.4
  * JD-Core Version:    0.7.0.1
  */

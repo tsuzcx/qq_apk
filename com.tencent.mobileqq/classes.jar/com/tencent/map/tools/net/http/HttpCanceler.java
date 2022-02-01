@@ -11,11 +11,13 @@ public class HttpCanceler
   
   public void cancel()
   {
-    if ((this.a != null) && (this.a.cancel())) {
+    Object localObject = this.a;
+    if ((localObject != null) && (((NetAdapter)localObject).cancel())) {
       this.c = true;
     }
-    if (this.b != null) {
-      this.b.a(Boolean.valueOf(this.c));
+    localObject = this.b;
+    if (localObject != null) {
+      ((ft)localObject).a(Boolean.valueOf(this.c));
     }
   }
   
@@ -32,7 +34,7 @@ public class HttpCanceler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.tools.net.http.HttpCanceler
  * JD-Core Version:    0.7.0.1
  */

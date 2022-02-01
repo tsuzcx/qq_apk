@@ -35,8 +35,16 @@ public class MagicFaceGLView
   
   public void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicFaceGLView", 2, "func [gl] frameDataGL begins, srcwidth:" + paramInt1 + ",srcheight:" + paramInt2 + ",degree:" + paramFloat);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("func [gl] frameDataGL begins, srcwidth:");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(",srcheight:");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(",degree:");
+      localStringBuilder.append(paramFloat);
+      QLog.d("MagicFaceGLView", 2, localStringBuilder.toString());
     }
     b(paramArrayOfByte1, paramArrayOfByte2, paramInt1, paramInt2, paramFloat);
     if (QLog.isColorLevel()) {
@@ -53,10 +61,11 @@ public class MagicFaceGLView
   
   public void b(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, float paramFloat)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewGLRender == null) {
+    GLRender localGLRender = this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewGLRender;
+    if (localGLRender == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewGLRender.a(paramArrayOfByte1, paramArrayOfByte2, paramInt1, paramInt2, getWidth(), getHeight(), paramFloat, this.b);
+    localGLRender.a(paramArrayOfByte1, paramArrayOfByte2, paramInt1, paramInt2, getWidth(), getHeight(), paramFloat, this.b);
     requestRender();
   }
   
@@ -77,8 +86,9 @@ public class MagicFaceGLView
     }
     super.surfaceCreated(paramSurfaceHolder);
     this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceView$SurfaceCreateListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceView$SurfaceCreateListener.a();
+    paramSurfaceHolder = this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceView$SurfaceCreateListener;
+    if (paramSurfaceHolder != null) {
+      paramSurfaceHolder.a();
     }
     if (QLog.isColorLevel()) {
       QLog.d("MagicFaceGLView", 2, "func [gl] surfaceCreated ends");
@@ -87,7 +97,7 @@ public class MagicFaceGLView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.view.MagicFaceGLView
  * JD-Core Version:    0.7.0.1
  */

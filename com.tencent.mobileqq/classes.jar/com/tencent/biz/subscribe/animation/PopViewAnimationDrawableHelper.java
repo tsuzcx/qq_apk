@@ -33,43 +33,50 @@ public class PopViewAnimationDrawableHelper
       }
       i += 1;
     }
-    if (this.jdField_a_of_type_Int > 1000) {
-      return 1000;
+    int j = this.jdField_a_of_type_Int;
+    i = j;
+    if (j > 1000) {
+      i = 1000;
     }
-    return this.jdField_a_of_type_Int;
+    return i;
   }
   
   private void c()
   {
-    if ((this.jdField_a_of_type_JavaLangRunnable != null) && (this.jdField_a_of_type_AndroidOsHandler != null))
-    {
-      if (this.b > 0) {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.b);
-      }
-    }
-    else {
-      return;
-    }
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
     Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
-    if (this.b == 0) {}
-    for (long l = a();; l = this.jdField_a_of_type_Int)
+    if (localRunnable != null)
     {
-      localHandler.postDelayed(localRunnable, l);
-      return;
+      Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+      if (localHandler != null)
+      {
+        int i = this.b;
+        if (i > 0)
+        {
+          localHandler.postDelayed(localRunnable, i);
+          return;
+        }
+        if (i == 0) {
+          i = a();
+        } else {
+          i = this.jdField_a_of_type_Int;
+        }
+        localHandler.postDelayed(localRunnable, i);
+      }
     }
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable == null) {}
-    do
-    {
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable;
+    if (localObject == null) {
       return;
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.start();
-      c();
-    } while (this.jdField_a_of_type_ComTencentBizSubscribeAnimationPopViewAnimationDrawableHelper$OnFrameAnimationListener == null);
-    this.jdField_a_of_type_ComTencentBizSubscribeAnimationPopViewAnimationDrawableHelper$OnFrameAnimationListener.a();
+    }
+    ((AnimationDrawable)localObject).start();
+    c();
+    localObject = this.jdField_a_of_type_ComTencentBizSubscribeAnimationPopViewAnimationDrawableHelper$OnFrameAnimationListener;
+    if (localObject != null) {
+      ((PopViewAnimationDrawableHelper.OnFrameAnimationListener)localObject).a();
+    }
   }
   
   public void a(PopViewAnimationDrawableHelper.OnFrameAnimationListener paramOnFrameAnimationListener)
@@ -79,16 +86,17 @@ public class PopViewAnimationDrawableHelper
   
   public void b()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (localHandler != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      localHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_AndroidOsHandler = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.animation.PopViewAnimationDrawableHelper
  * JD-Core Version:    0.7.0.1
  */

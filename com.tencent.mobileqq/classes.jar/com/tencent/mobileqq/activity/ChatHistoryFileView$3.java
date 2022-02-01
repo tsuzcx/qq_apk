@@ -14,11 +14,8 @@ class ChatHistoryFileView$3
   
   public void onClick(View paramView)
   {
-    if ((paramView.getTag() instanceof String)) {}
-    for (;;)
+    if (!(paramView.getTag() instanceof String))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       Object localObject = (ChatHistoryFileAdapter.HistoryFileItemHolder)paramView.getTag();
       if ((((ChatHistoryFileAdapter.HistoryFileItemHolder)localObject).a instanceof FileManagerEntity))
       {
@@ -31,11 +28,12 @@ class ChatHistoryFileView$3
         this.a.a((TencentDocData)localObject);
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryFileView.3
  * JD-Core Version:    0.7.0.1
  */

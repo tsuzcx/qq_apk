@@ -13,16 +13,21 @@ public class ChatPanelDisplayManager
   
   static
   {
-    a.put(Integer.valueOf(2131362384), Boolean.valueOf(false));
-    b.put(Integer.valueOf(2131362384), Boolean.valueOf(false));
+    Map localMap = a;
+    Integer localInteger = Integer.valueOf(2131362340);
+    Boolean localBoolean = Boolean.valueOf(false);
+    localMap.put(localInteger, localBoolean);
+    b.put(localInteger, localBoolean);
   }
   
   public static void a()
   {
     boolean bool1 = BaseChatPanelBarConfProcessor.C2CChatPanelBarConfProcessor.a().a();
     boolean bool2 = BaseChatPanelBarConfProcessor.GroupChatPanelBarConfProcessor.b().a();
-    a.put(Integer.valueOf(2131362384), Boolean.valueOf(bool1));
-    b.put(Integer.valueOf(2131362384), Boolean.valueOf(bool2));
+    Map localMap = a;
+    Integer localInteger = Integer.valueOf(2131362340);
+    localMap.put(localInteger, Boolean.valueOf(bool1));
+    b.put(localInteger, Boolean.valueOf(bool2));
   }
   
   public static boolean a(AIOPanelIconItem paramAIOPanelIconItem)
@@ -30,15 +35,14 @@ public class ChatPanelDisplayManager
     if (!a.containsKey(Integer.valueOf(paramAIOPanelIconItem.e))) {
       return true;
     }
-    if ((StudyModeManager.a()) || (SimpleUIUtil.a())) {}
-    for (int i = 1;; i = 0)
-    {
-      paramAIOPanelIconItem = (Boolean)a.get(Integer.valueOf(paramAIOPanelIconItem.e));
-      if ((paramAIOPanelIconItem != null) && (paramAIOPanelIconItem.booleanValue()) && (i == 0)) {
-        break;
-      }
-      return false;
+    int i;
+    if ((!StudyModeManager.a()) && (!SimpleUIUtil.a())) {
+      i = 0;
+    } else {
+      i = 1;
     }
+    paramAIOPanelIconItem = (Boolean)a.get(Integer.valueOf(paramAIOPanelIconItem.e));
+    return (paramAIOPanelIconItem != null) && (paramAIOPanelIconItem.booleanValue()) && (i == 0);
   }
   
   public static boolean b(AIOPanelIconItem paramAIOPanelIconItem)
@@ -46,15 +50,14 @@ public class ChatPanelDisplayManager
     if (!b.containsKey(Integer.valueOf(paramAIOPanelIconItem.e))) {
       return true;
     }
-    if ((StudyModeManager.a()) || (SimpleUIUtil.a())) {}
-    for (int i = 1;; i = 0)
-    {
-      paramAIOPanelIconItem = (Boolean)b.get(Integer.valueOf(paramAIOPanelIconItem.e));
-      if ((paramAIOPanelIconItem != null) && (paramAIOPanelIconItem.booleanValue()) && (i == 0)) {
-        break;
-      }
-      return false;
+    int i;
+    if ((!StudyModeManager.a()) && (!SimpleUIUtil.a())) {
+      i = 0;
+    } else {
+      i = 1;
     }
+    paramAIOPanelIconItem = (Boolean)b.get(Integer.valueOf(paramAIOPanelIconItem.e));
+    return (paramAIOPanelIconItem != null) && (paramAIOPanelIconItem.booleanValue()) && (i == 0);
   }
   
   public static boolean c(AIOPanelIconItem paramAIOPanelIconItem)
@@ -64,7 +67,7 @@ public class ChatPanelDisplayManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.chatpanelbar.config.ChatPanelDisplayManager
  * JD-Core Version:    0.7.0.1
  */

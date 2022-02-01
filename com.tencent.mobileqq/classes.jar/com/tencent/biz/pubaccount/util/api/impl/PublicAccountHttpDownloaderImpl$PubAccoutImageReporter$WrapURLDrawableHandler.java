@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.util.api.impl;
 
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.RunningJob.RIJImageRequestHandler;
 import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.kandian.base.image.RIJImageRequestHandler;
 import com.tencent.mobileqq.transfile.ServerAddr;
 import com.tencent.mobileqq.transfile.dns.BaseInnerDns;
 import com.tencent.mobileqq.transfile.dns.InnerDns;
@@ -28,32 +28,42 @@ public class PublicAccountHttpDownloaderImpl$PubAccoutImageReporter$WrapURLDrawa
   
   protected void a()
   {
-    QLog.d(PublicAccountHttpDownloaderImpl.PubAccoutImageReporter.b(this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountHttpDownloaderImpl$PubAccoutImageReporter), 1, "image download start: " + PublicAccountHttpDownloaderImpl.PubAccoutImageReporter.c(this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountHttpDownloaderImpl$PubAccoutImageReporter) + " supportInnerIp: " + PublicAccountHttpDownloaderImpl.access$400(this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountHttpDownloaderImpl$PubAccoutImageReporter.a));
+    Object localObject1 = PublicAccountHttpDownloaderImpl.PubAccoutImageReporter.b(this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountHttpDownloaderImpl$PubAccoutImageReporter);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("image download start: ");
+    ((StringBuilder)localObject2).append(PublicAccountHttpDownloaderImpl.PubAccoutImageReporter.c(this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountHttpDownloaderImpl$PubAccoutImageReporter));
+    ((StringBuilder)localObject2).append(" supportInnerIp: ");
+    ((StringBuilder)localObject2).append(PublicAccountHttpDownloaderImpl.access$400(this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountHttpDownloaderImpl$PubAccoutImageReporter.a));
+    QLog.d((String)localObject1, 1, ((StringBuilder)localObject2).toString());
     if (PublicAccountHttpDownloaderImpl.access$500(this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountHttpDownloaderImpl$PubAccoutImageReporter.a))
     {
-      Object localObject1 = InnerDns.getHostFromUrl(PublicAccountHttpDownloaderImpl.PubAccoutImageReporter.c(this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountHttpDownloaderImpl$PubAccoutImageReporter));
-      Object localObject2 = InnerDns.getInstance().reqSerAddrList((String)localObject1, 1002);
+      localObject1 = InnerDns.getHostFromUrl(PublicAccountHttpDownloaderImpl.PubAccoutImageReporter.c(this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountHttpDownloaderImpl$PubAccoutImageReporter));
+      localObject2 = InnerDns.getInstance().reqSerAddrList((String)localObject1, 1002);
       if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0))
       {
         localObject1 = new StringBuilder();
         localObject2 = ((ArrayList)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext()) {
-          ((StringBuilder)localObject1).append(((ServerAddr)((Iterator)localObject2).next()).toString()).append(" ");
+        while (((Iterator)localObject2).hasNext())
+        {
+          ((StringBuilder)localObject1).append(((ServerAddr)((Iterator)localObject2).next()).toString());
+          ((StringBuilder)localObject1).append(" ");
         }
-        QLog.d(PublicAccountHttpDownloaderImpl.PubAccoutImageReporter.b(this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountHttpDownloaderImpl$PubAccoutImageReporter), 1, "InnerIp address " + localObject1);
+        localObject2 = PublicAccountHttpDownloaderImpl.PubAccoutImageReporter.b(this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountHttpDownloaderImpl$PubAccoutImageReporter);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("InnerIp address ");
+        localStringBuilder.append(localObject1);
+        QLog.d((String)localObject2, 1, localStringBuilder.toString());
+        return;
       }
+      QLog.d(PublicAccountHttpDownloaderImpl.PubAccoutImageReporter.b(this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountHttpDownloaderImpl$PubAccoutImageReporter), 1, "InnerIp address empty");
     }
-    else
-    {
-      return;
-    }
-    QLog.d(PublicAccountHttpDownloaderImpl.PubAccoutImageReporter.b(this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountHttpDownloaderImpl$PubAccoutImageReporter), 1, "InnerIp address empty");
   }
   
   public void a(String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentImageURLDrawableHandler instanceof RunningJob.RIJImageRequestHandler)) {
-      ((RunningJob.RIJImageRequestHandler)this.jdField_a_of_type_ComTencentImageURLDrawableHandler).a(paramString);
+    URLDrawableHandler localURLDrawableHandler = this.jdField_a_of_type_ComTencentImageURLDrawableHandler;
+    if ((localURLDrawableHandler instanceof RIJImageRequestHandler)) {
+      ((RIJImageRequestHandler)localURLDrawableHandler).a(paramString);
     }
   }
   
@@ -93,7 +103,7 @@ public class PublicAccountHttpDownloaderImpl$PubAccoutImageReporter$WrapURLDrawa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountHttpDownloaderImpl.PubAccoutImageReporter.WrapURLDrawableHandler
  * JD-Core Version:    0.7.0.1
  */

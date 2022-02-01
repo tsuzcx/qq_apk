@@ -30,12 +30,30 @@ public class BubbleInfo$CommonAttrs
   
   public String toString()
   {
-    return "CommonAttrs [key=" + this.jdField_b_of_type_JavaLangString + ", mRect=" + this.jdField_a_of_type_AndroidGraphicsRect + ", count=" + this.jdField_a_of_type_Int + ", duration=" + this.c + ", align=" + this.d + ", mBigImgPath=" + this.jdField_a_of_type_JavaLangString + ", repeatCount=" + this.jdField_b_of_type_Int + ", mAnimationPath=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CommonAttrs [key=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", mRect=");
+    localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsRect);
+    localStringBuilder.append(", count=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", duration=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", align=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", mBigImgPath=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", repeatCount=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mAnimationPath=");
+    localStringBuilder.append(Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString));
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleInfo.CommonAttrs
  * JD-Core Version:    0.7.0.1
  */

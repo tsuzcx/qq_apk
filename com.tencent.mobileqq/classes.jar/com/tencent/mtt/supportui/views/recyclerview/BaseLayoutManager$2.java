@@ -13,24 +13,19 @@ class BaseLayoutManager$2
       return 0;
     }
     RecyclerViewBase.LayoutParams localLayoutParams = (RecyclerViewBase.LayoutParams)paramView.getLayoutParams();
-    int i = this.this$0.getDecoratedBottom(paramView);
-    return localLayoutParams.bottomMargin + i;
+    return this.this$0.getDecoratedBottom(paramView) + localLayoutParams.bottomMargin;
   }
   
   public int getDecoratedMeasurement(View paramView)
   {
     RecyclerViewBase.LayoutParams localLayoutParams = (RecyclerViewBase.LayoutParams)paramView.getLayoutParams();
-    int i = this.this$0.getDecoratedMeasuredHeight(paramView);
-    int j = localLayoutParams.topMargin;
-    return localLayoutParams.bottomMargin + (i + j);
+    return this.this$0.getDecoratedMeasuredHeight(paramView) + localLayoutParams.topMargin + localLayoutParams.bottomMargin;
   }
   
   public int getDecoratedMeasurementInOther(View paramView)
   {
     RecyclerViewBase.LayoutParams localLayoutParams = (RecyclerViewBase.LayoutParams)paramView.getLayoutParams();
-    int i = this.this$0.getDecoratedMeasuredWidth(paramView);
-    int j = localLayoutParams.leftMargin;
-    return localLayoutParams.rightMargin + (i + j);
+    return this.this$0.getDecoratedMeasuredWidth(paramView) + localLayoutParams.leftMargin + localLayoutParams.rightMargin;
   }
   
   public int getDecoratedStart(View paramView)
@@ -64,7 +59,7 @@ class BaseLayoutManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.views.recyclerview.BaseLayoutManager.2
  * JD-Core Version:    0.7.0.1
  */

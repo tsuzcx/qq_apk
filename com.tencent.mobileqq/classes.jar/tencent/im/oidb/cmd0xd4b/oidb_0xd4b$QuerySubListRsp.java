@@ -18,13 +18,14 @@ public final class oidb_0xd4b$QuerySubListRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "rpt_uint32_column_id", "uint32_is_end", "bytes_page_cookies" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, QuerySubListRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "rpt_uint32_column_id", "uint32_is_end", "bytes_page_cookies" }, new Object[] { localInteger, localInteger, localByteStringMicro }, QuerySubListRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xd4b.oidb_0xd4b.QuerySubListRsp
  * JD-Core Version:    0.7.0.1
  */

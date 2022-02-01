@@ -30,13 +30,17 @@ public class RecentTroopIconUtil
   
   private static void a(QQAppInterface paramQQAppInterface, String paramString, byte paramByte, ArrayList<SingleLineTextView.IconDrawableInfo> paramArrayList)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramArrayList == null)) {}
-    for (;;)
+    if (!TextUtils.isEmpty(paramString))
     {
-      return;
+      if (paramArrayList == null) {
+        return;
+      }
       paramQQAppInterface = ((ITroopHonorService)paramQQAppInterface.getRuntimeService(ITroopHonorService.class, "")).convertToHonorList(paramString, Byte.valueOf(paramByte));
-      if ((paramQQAppInterface != null) && (!paramQQAppInterface.isEmpty()))
+      if (paramQQAppInterface != null)
       {
+        if (paramQQAppInterface.isEmpty()) {
+          return;
+        }
         Collections.sort(paramQQAppInterface);
         paramQQAppInterface = paramQQAppInterface.iterator();
         while (paramQQAppInterface.hasNext())
@@ -52,18 +56,19 @@ public class RecentTroopIconUtil
   
   private static boolean a(String paramString, ArrayList<SingleLineTextView.IconDrawableInfo> paramArrayList)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramArrayList == null)) {
-      return false;
+    if ((!TextUtils.isEmpty(paramString)) && (paramArrayList != null))
+    {
+      SingleLineTextView.IconDrawableInfo localIconDrawableInfo = new SingleLineTextView.IconDrawableInfo();
+      localIconDrawableInfo.icon_static_url = paramString;
+      paramArrayList.add(localIconDrawableInfo);
+      return true;
     }
-    SingleLineTextView.IconDrawableInfo localIconDrawableInfo = new SingleLineTextView.IconDrawableInfo();
-    localIconDrawableInfo.icon_static_url = paramString;
-    paramArrayList.add(localIconDrawableInfo);
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.RecentTroopIconUtil
  * JD-Core Version:    0.7.0.1
  */

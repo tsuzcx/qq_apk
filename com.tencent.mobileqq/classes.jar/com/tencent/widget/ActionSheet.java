@@ -138,7 +138,7 @@ public class ActionSheet
   @TargetApi(14)
   protected ActionSheet(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
   {
-    super(paramContext, 2131755235);
+    super(paramContext, 2131755400);
     Window localWindow = getWindow();
     if (Build.VERSION.SDK_INT >= 14) {
       localWindow.setDimAmount(0.5F);
@@ -155,39 +155,41 @@ public class ActionSheet
     {
       requestWindowFeature(1);
       localWindow.setFlags(1024, 1024);
+      if (Build.VERSION.SDK_INT >= 28)
+      {
+        paramContext = localWindow.getAttributes();
+        paramContext.layoutInDisplayCutoutMode = 1;
+        localWindow.setAttributes(paramContext);
+      }
     }
     ImmersiveUtils.clearCoverForStatus(localWindow, true);
     paramContext = this.mInflater;
-    if (paramInt != -1)
-    {
-      this.mRootView = ((ViewGroup)paramContext.inflate(paramInt, null));
-      if (paramLayoutParams == null) {
-        break label424;
-      }
-      super.setContentView(this.mRootView, paramLayoutParams);
+    if (paramInt == -1) {
+      paramInt = 2131558465;
     }
-    for (;;)
-    {
-      this.mActionView = ((RelativeLayout)this.mRootView.findViewById(2131361968));
-      this.mContentContainer = ((LinearLayout)this.mRootView.findViewById(2131361976));
-      this.mRootView.getChildAt(0).setOnClickListener(this.mDefaultDismissListener);
-      this.mActionView.setOnClickListener(null);
-      this.onBottomCancelListener = this.mDefaultDismissListener;
-      return;
-      paramInt = 2131558437;
-      break;
-      label424:
+    this.mRootView = ((ViewGroup)paramContext.inflate(paramInt, null));
+    if (paramLayoutParams != null) {
+      super.setContentView(this.mRootView, paramLayoutParams);
+    } else {
       super.setContentView(this.mRootView);
     }
+    this.mActionView = ((RelativeLayout)this.mRootView.findViewById(2131361984));
+    this.mContentContainer = ((LinearLayout)this.mRootView.findViewById(2131361992));
+    this.mRootView.getChildAt(0).setOnClickListener(this.mDefaultDismissListener);
+    this.mActionView.setOnClickListener(null);
+    this.onBottomCancelListener = this.mDefaultDismissListener;
   }
   
   private CharSequence buildLeftUrlIconCharSequence(CharSequence paramCharSequence, Drawable paramDrawable)
   {
-    paramCharSequence = new SpannableStringBuilder("icon" + paramCharSequence);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("icon");
+    localStringBuilder.append(paramCharSequence);
+    paramCharSequence = new SpannableStringBuilder(localStringBuilder.toString());
     paramDrawable.setBounds(0, 0, QQUIDelegate.a(getContext(), 20.0F), QQUIDelegate.a(getContext(), 20.0F));
     paramDrawable = new VerticalCenterImageSpan(paramDrawable, 0);
     paramDrawable.setPadding(QQUIDelegate.a(getContext(), 6.5F), QQUIDelegate.a(getContext(), 6.5F));
-    paramCharSequence.setSpan(paramDrawable, 0, "icon".length(), 18);
+    paramCharSequence.setSpan(paramDrawable, 0, 4, 18);
     return paramCharSequence;
   }
   
@@ -195,7 +197,7 @@ public class ActionSheet
   {
     paramContext = new ActionSheet(paramContext, false, false);
     if (Build.VERSION.SDK_INT != 23) {
-      paramContext.getWindow().setWindowAnimations(2131755014);
+      paramContext.getWindow().setWindowAnimations(2131755012);
     }
     return paramContext;
   }
@@ -204,7 +206,7 @@ public class ActionSheet
   {
     paramContext = new ActionSheet(paramContext, false, false, true, paramInt, paramLayoutParams);
     if (Build.VERSION.SDK_INT != 23) {
-      paramContext.getWindow().setWindowAnimations(2131755014);
+      paramContext.getWindow().setWindowAnimations(2131755012);
     }
     return paramContext;
   }
@@ -213,7 +215,7 @@ public class ActionSheet
   {
     paramContext = new ActionSheet(paramContext, false, false, paramBoolean, -1, null);
     if (Build.VERSION.SDK_INT != 23) {
-      paramContext.getWindow().setWindowAnimations(2131755014);
+      paramContext.getWindow().setWindowAnimations(2131755012);
     }
     return paramContext;
   }
@@ -222,7 +224,7 @@ public class ActionSheet
   {
     paramContext = new ActionSheet(paramContext, false, true);
     if (Build.VERSION.SDK_INT != 23) {
-      paramContext.getWindow().setWindowAnimations(2131755014);
+      paramContext.getWindow().setWindowAnimations(2131755012);
     }
     return paramContext;
   }
@@ -231,7 +233,7 @@ public class ActionSheet
   {
     paramContext = new ActionSheet(paramContext, false, true, paramBoolean, -1, null);
     if (Build.VERSION.SDK_INT != 23) {
-      paramContext.getWindow().setWindowAnimations(2131755014);
+      paramContext.getWindow().setWindowAnimations(2131755012);
     }
     return paramContext;
   }
@@ -240,7 +242,7 @@ public class ActionSheet
   {
     paramContext = new ActionSheet(paramContext, true, true);
     if (Build.VERSION.SDK_INT != 23) {
-      paramContext.getWindow().setWindowAnimations(2131755014);
+      paramContext.getWindow().setWindowAnimations(2131755012);
     }
     return paramContext;
   }
@@ -249,53 +251,66 @@ public class ActionSheet
   {
     paramContext = new ActionSheet(paramContext, true, false);
     if (Build.VERSION.SDK_INT != 23) {
-      paramContext.getWindow().setWindowAnimations(2131755014);
+      paramContext.getWindow().setWindowAnimations(2131755012);
     }
     return paramContext;
   }
   
   private void handleLeftUrlButtonStyle(Pair<CharSequence, Integer> paramPair, TextView paramTextView)
   {
-    if ((paramPair == null) || (paramTextView == null)) {}
-    URLDrawable localURLDrawable;
-    do
+    if (paramPair != null)
     {
-      do
+      if (paramTextView == null) {
+        return;
+      }
+      if ((((Integer)paramPair.second).intValue() == 10) && (paramPair.first != null))
       {
-        do
-        {
-          return;
-        } while ((((Integer)paramPair.second).intValue() != 10) || (paramPair.first == null));
         setOnTextImageFetched((CharSequence)paramPair.first, new ActionSheet.2(this, paramTextView));
-      } while (!this.mFetchDrawableMap.containsKey(Integer.valueOf(((CharSequence)paramPair.first).hashCode())));
-      localURLDrawable = (URLDrawable)this.mFetchDrawableMap.get(Integer.valueOf(((CharSequence)paramPair.first).hashCode()));
-    } while (localURLDrawable == null);
-    QLog.i("ActionSheet", 1, "prepareContentViews " + localURLDrawable);
-    if (localURLDrawable.getStatus() == 1)
-    {
-      paramTextView.setText(buildLeftUrlIconCharSequence((CharSequence)paramPair.first, localURLDrawable));
-      return;
+        if (this.mFetchDrawableMap.containsKey(Integer.valueOf(((CharSequence)paramPair.first).hashCode())))
+        {
+          URLDrawable localURLDrawable = (URLDrawable)this.mFetchDrawableMap.get(Integer.valueOf(((CharSequence)paramPair.first).hashCode()));
+          if (localURLDrawable != null)
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("prepareContentViews ");
+            localStringBuilder.append(localURLDrawable);
+            QLog.i("ActionSheet", 1, localStringBuilder.toString());
+            if (localURLDrawable.getStatus() == 1)
+            {
+              paramTextView.setText(buildLeftUrlIconCharSequence((CharSequence)paramPair.first, localURLDrawable));
+              return;
+            }
+            handleLeftUrlDrawable(localURLDrawable, paramPair, paramTextView);
+          }
+        }
+      }
     }
-    handleLeftUrlDrawable(localURLDrawable, paramPair, paramTextView);
   }
   
   private void handleLeftUrlDrawable(URLDrawable paramURLDrawable, Pair<CharSequence, Integer> paramPair, TextView paramTextView)
   {
-    if ((paramURLDrawable == null) || (paramPair == null) || (paramTextView == null)) {
-      return;
+    if ((paramURLDrawable != null) && (paramPair != null))
+    {
+      if (paramTextView == null) {
+        return;
+      }
+      paramURLDrawable.setURLDrawableListener(new ActionSheet.3(this, paramTextView, paramPair));
+      paramURLDrawable.setDownloadListener(new ActionSheet.4(this));
+      ThreadManagerV2.executeOnSubThread(new ActionSheet.5(this, paramURLDrawable));
     }
-    paramURLDrawable.setURLDrawableListener(new ActionSheet.3(this, paramTextView, paramPair));
-    paramURLDrawable.setDownloadListener(new ActionSheet.4(this));
-    ThreadManagerV2.executeOnSubThread(new ActionSheet.5(this, paramURLDrawable));
   }
   
   private void handlePublicAccountButtonStyle(Pair<CharSequence, Integer> paramPair, TextView paramTextView)
   {
-    if ((paramPair == null) || (paramTextView == null)) {}
-    while (((Integer)paramPair.second).intValue() != 11) {
-      return;
+    if (paramPair != null)
+    {
+      if (paramTextView == null) {
+        return;
+      }
+      if (((Integer)paramPair.second).intValue() == 11) {
+        paramTextView.setTextSize(12.0F);
+      }
     }
-    paramTextView.setTextSize(12.0F);
   }
   
   private void prepareContentViews()
@@ -303,225 +318,224 @@ public class ActionSheet
     if (this.mIsReady) {
       return;
     }
-    Object localObject1;
     Object localObject2;
+    int i;
     if (this.mMainTitle != null)
     {
       localObject1 = this.mInflater.inflate(getActionSheetTitleLayoutId(), null);
-      ((View)localObject1).setBackgroundDrawable(this.mContext.getResources().getDrawable(2130837572));
+      ((View)localObject1).setBackgroundDrawable(this.mContext.getResources().getDrawable(2130837659));
       ((View)localObject1).setOnClickListener(new ActionSheet.1(this));
-      this.mainTitleText = ((TextView)((View)localObject1).findViewById(2131361987));
+      this.mainTitleText = ((TextView)((View)localObject1).findViewById(2131362003));
       this.mainTitleText.setVisibility(0);
       this.mainTitleText.setMaxLines(2147483647);
       this.mainTitleText.setText(this.mMainTitle);
       this.mainTitleText.setContentDescription(this.mMainTitle);
       if (this.mSecondaryTitle != null)
       {
-        localObject2 = (TextView)((View)localObject1).findViewById(2131361984);
+        localObject2 = (TextView)((View)localObject1).findViewById(2131362000);
         ((TextView)localObject2).setVisibility(0);
         ((TextView)localObject2).setText(this.mSecondaryTitle);
         ((TextView)localObject2).setContentDescription(this.mSecondaryTitle);
       }
       this.mContentContainer.addView((View)localObject1, 0);
+      i = 1;
     }
-    for (int i = 1;; i = 0)
+    else
     {
-      if (this.mHasCustomeHeader) {
-        i = 1;
-      }
-      if (this.mContents != null)
-      {
-        int j = i + this.mContents.size();
-        int k = this.mContents.size();
-        if ((k != this.mIds.size()) && (this.mIds.size() != 0)) {
-          throw new IllegalArgumentException("buttons size and custom ids size not match");
-        }
-        i = 0;
-        if (i < k)
-        {
-          Pair localPair = (Pair)this.mContents.get(i);
-          Object localObject3;
-          if (((Integer)localPair.second).intValue() == 65537)
-          {
-            localObject3 = this.mInflater.inflate(getActionSheetCommonButtonLayoutId(), null);
-            localObject2 = (TextView)((View)localObject3).findViewById(2131361973);
-            localObject1 = (TextView)((View)localObject3).findViewById(2131378719);
-            Object localObject4 = ((CharSequence)localPair.first).toString();
-            int m = ((String)localObject4).indexOf('\n');
-            if ((m >= 0) && (m < ((CharSequence)localPair.first).length()))
-            {
-              ((TextView)localObject2).setText(((String)localObject4).substring(0, m));
-              ((TextView)localObject1).setText(((String)localObject4).substring(m + 1));
-              ((View)localObject3).findViewById(2131364252).setContentDescription(((TextView)localObject2).getText());
-              label407:
-              localObject4 = (Integer)this.mSubTextColorArray.get(i);
-              if (localObject4 != null) {
-                ((TextView)localObject1).setTextColor(((Integer)localObject4).intValue());
-              }
-              AccessibilityUtil.b(((View)localObject3).findViewById(2131364252), LinearLayout.class.getName());
-              label452:
-              if ((this.mActionMenuMap != null) && (this.mActionMenuMap.size() > 0))
-              {
-                localObject1 = (ActionMenuItem)this.mActionMenuMap.get(localPair.first);
-                if ((localObject1 != null) && (((ActionMenuItem)localObject1).viewid != 0)) {
-                  ((TextView)localObject2).setId(((ActionMenuItem)localObject1).viewid);
-                }
-              }
-              localObject1 = (ImageView)((View)localObject3).findViewById(2131361985);
-              localObject4 = (RelativeLayout.LayoutParams)((ImageView)localObject1).getLayoutParams();
-              ((RelativeLayout.LayoutParams)localObject4).rightMargin = QQUIDelegate.a(this.mContext, 15.0F);
-              ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject4);
-              if (!this.mIconsMap.containsKey(Integer.valueOf(i))) {
-                break label1089;
-              }
-              ((ImageView)localObject1).setVisibility(0);
-              ((ImageView)localObject1).setImageDrawable((Drawable)this.mIconsMap.get(Integer.valueOf(i)));
-              label593:
-              localObject1 = (ImageView)((View)localObject3).findViewById(2131361986);
-              localObject4 = (RelativeLayout.LayoutParams)((ImageView)localObject1).getLayoutParams();
-              if ((this.mIconsLayoutLeftMap.containsKey(Integer.valueOf(i))) && (((Integer)this.mIconsLayoutLeftMap.get(Integer.valueOf(i))).intValue() == 0))
-              {
-                ((RelativeLayout.LayoutParams)localObject4).width = QQUIDelegate.a(this.mContext, 28.0F);
-                ((RelativeLayout.LayoutParams)localObject4).height = QQUIDelegate.a(this.mContext, 28.0F);
-                ((RelativeLayout.LayoutParams)localObject4).addRule(15);
-              }
-              ((RelativeLayout.LayoutParams)localObject4).rightMargin = QQUIDelegate.a(this.mContext, 5.0F);
-              ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject4);
-              if (!this.mIconsLeftMap.containsKey(Integer.valueOf(i))) {
-                break label1105;
-              }
-              ((ImageView)localObject1).setVisibility(0);
-              ((ImageView)localObject1).setImageDrawable((Drawable)this.mIconsLeftMap.get(Integer.valueOf(i)));
-              label748:
-              if (((Integer)localPair.second).intValue() != 9) {
-                break label1121;
-              }
-              if (this.mTextColorMap.containsKey(Integer.valueOf(i))) {
-                ((TextView)localObject2).setTextColor(Color.parseColor((String)this.mTextColorMap.get(Integer.valueOf(i))));
-              }
-              label800:
-              if ((!this.mSupportBottomRadius) || (j <= 1) || (i != k - 1) || (this.mCancelText != null)) {
-                break label1144;
-              }
-              localObject1 = getSelectorByType(4);
-              label833:
-              ((View)localObject3).setBackgroundDrawable((Drawable)localObject1);
-              if (i >= this.mIds.size()) {
-                break label1241;
-              }
-              ((View)localObject3).setId(((Integer)this.mIds.get(i)).intValue());
-              label874:
-              ((View)localObject3).setOnClickListener(this.mBtnClickListener);
-              this.mContentContainer.addView((View)localObject3);
-              if (this.mRadioGroupMode)
-              {
-                if (this.mRadioButtonMap == null) {
-                  this.mRadioButtonMap = new SparseArray();
-                }
-                this.mRadioButtonMap.append(i, localObject3);
-                if (i != this.mCurrentSelectedViewId) {
-                  break label1250;
-                }
-                ((View)localObject3).findViewById(2131361974).setVisibility(0);
-                updateRadioGroupButtonDesc((TextView)localObject2, true);
-              }
-            }
-          }
-          for (;;)
-          {
-            i += 1;
-            break;
-            ((TextView)localObject2).setText((CharSequence)localPair.first);
-            break label407;
-            localObject1 = this.mInflater.inflate(2131558440, null);
-            localObject2 = (TextView)((View)localObject1).findViewById(2131361973);
-            ((TextView)localObject2).setText((CharSequence)localPair.first);
-            AccessibilityUtil.b((View)localObject2, Button.class.getName());
-            if (((Integer)localPair.second).intValue() == 11)
-            {
-              handlePublicAccountButtonStyle(localPair, (TextView)localObject2);
-              localObject3 = localObject1;
-              break label452;
-            }
-            if (((Integer)localPair.second).intValue() == 10) {
-              handleLeftUrlButtonStyle(localPair, (TextView)localObject2);
-            }
-            localObject3 = localObject1;
-            break label452;
-            label1089:
-            ((ImageView)localObject1).setImageDrawable(null);
-            ((ImageView)localObject1).setVisibility(8);
-            break label593;
-            label1105:
-            ((ImageView)localObject1).setImageDrawable(null);
-            ((ImageView)localObject1).setVisibility(8);
-            break label748;
-            label1121:
-            ((TextView)localObject2).setTextColor(getActionButtonColorByType(((Integer)localPair.second).intValue()));
-            break label800;
-            label1144:
-            if ((i == 0) && (j == k) && (j == 1))
-            {
-              localObject1 = getSelectorByType(0);
-              break label833;
-            }
-            if ((i == 0) && (j == k) && (j > 1))
-            {
-              if (this.mIsRoundCornerTop)
-              {
-                localObject1 = getSelectorByType(1);
-                break label833;
-              }
-              localObject1 = getSelectorByType(3);
-              break label833;
-            }
-            if ((i == k - 1) && (j > 1))
-            {
-              localObject1 = getSelectorByType(0);
-              break label833;
-            }
-            localObject1 = getSelectorByType(3);
-            break label833;
-            label1241:
-            ((View)localObject3).setId(i);
-            break label874;
-            label1250:
-            updateRadioGroupButtonDesc((TextView)localObject2, false);
-          }
-        }
-      }
-      if (this.mCancelText != null)
-      {
-        localObject1 = this.mInflater.inflate(getActionSheetCancelButtonLayoutId(), null);
-        if (this.mAccuseText != 0)
-        {
-          localObject2 = (Button)((View)localObject1).findViewById(2131361971);
-          ((Button)localObject2).setVisibility(0);
-          ((Button)localObject2).setText(this.mAccuseText);
-          ((Button)localObject2).setTextColor(this.mAccuseIconColor);
-          ((Button)localObject2).setContentDescription(this.mCancelText);
-          if (this.onBottomAccuseListener != null) {
-            ((Button)localObject2).setOnClickListener(this.onBottomAccuseListener);
-          }
-        }
-        localObject2 = (Button)((View)localObject1).findViewById(2131361972);
-        ((Button)localObject2).setOnClickListener(this.onBottomCancelListener);
-        ((Button)localObject2).setText(this.mCancelText);
-        ((Button)localObject2).setContentDescription(this.mCancelText);
-        this.mContentContainer.addView((View)localObject1);
-      }
-      this.mIsReady = true;
-      return;
+      i = 0;
     }
+    if (this.mHasCustomeHeader) {
+      i = 1;
+    }
+    Object localObject1 = this.mContents;
+    Object localObject3;
+    if (localObject1 != null)
+    {
+      int j = i + ((ArrayList)localObject1).size();
+      int k = this.mContents.size();
+      if ((k != this.mIds.size()) && (this.mIds.size() != 0)) {
+        throw new IllegalArgumentException("buttons size and custom ids size not match");
+      }
+      i = 0;
+      while (i < k)
+      {
+        Pair localPair = (Pair)this.mContents.get(i);
+        if (((Integer)localPair.second).intValue() == 65537)
+        {
+          localObject2 = this.mInflater.inflate(getActionSheetCommonButtonLayoutId(), null);
+          localObject3 = (TextView)((View)localObject2).findViewById(2131361989);
+          localObject1 = (TextView)((View)localObject2).findViewById(2131378114);
+          localObject4 = ((CharSequence)localPair.first).toString();
+          int m = ((String)localObject4).indexOf('\n');
+          if ((m >= 0) && (m < ((CharSequence)localPair.first).length()))
+          {
+            ((TextView)localObject3).setText(((String)localObject4).substring(0, m));
+            ((TextView)localObject1).setText(((String)localObject4).substring(m + 1));
+            ((View)localObject2).findViewById(2131364170).setContentDescription(((TextView)localObject3).getText());
+          }
+          else
+          {
+            ((TextView)localObject3).setText((CharSequence)localPair.first);
+          }
+          localObject4 = (Integer)this.mSubTextColorArray.get(i);
+          if (localObject4 != null) {
+            ((TextView)localObject1).setTextColor(((Integer)localObject4).intValue());
+          }
+          AccessibilityUtil.b(((View)localObject2).findViewById(2131364170), LinearLayout.class.getName());
+        }
+        else
+        {
+          localObject1 = this.mInflater.inflate(2131558468, null);
+          localObject4 = (TextView)((View)localObject1).findViewById(2131361989);
+          ((TextView)localObject4).setText((CharSequence)localPair.first);
+          AccessibilityUtil.b((View)localObject4, Button.class.getName());
+          if (((Integer)localPair.second).intValue() == 11)
+          {
+            handlePublicAccountButtonStyle(localPair, (TextView)localObject4);
+            localObject2 = localObject1;
+            localObject3 = localObject4;
+          }
+          else
+          {
+            localObject2 = localObject1;
+            localObject3 = localObject4;
+            if (((Integer)localPair.second).intValue() == 10)
+            {
+              handleLeftUrlButtonStyle(localPair, (TextView)localObject4);
+              localObject3 = localObject4;
+              localObject2 = localObject1;
+            }
+          }
+        }
+        localObject1 = this.mActionMenuMap;
+        if ((localObject1 != null) && (((HashMap)localObject1).size() > 0))
+        {
+          localObject1 = (ActionMenuItem)this.mActionMenuMap.get(localPair.first);
+          if ((localObject1 != null) && (((ActionMenuItem)localObject1).viewid != 0)) {
+            ((TextView)localObject3).setId(((ActionMenuItem)localObject1).viewid);
+          }
+        }
+        localObject1 = (ImageView)((View)localObject2).findViewById(2131362001);
+        Object localObject4 = (RelativeLayout.LayoutParams)((ImageView)localObject1).getLayoutParams();
+        ((RelativeLayout.LayoutParams)localObject4).rightMargin = QQUIDelegate.a(this.mContext, 15.0F);
+        ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject4);
+        if (this.mIconsMap.containsKey(Integer.valueOf(i)))
+        {
+          ((ImageView)localObject1).setVisibility(0);
+          ((ImageView)localObject1).setImageDrawable((Drawable)this.mIconsMap.get(Integer.valueOf(i)));
+        }
+        else
+        {
+          ((ImageView)localObject1).setImageDrawable(null);
+          ((ImageView)localObject1).setVisibility(8);
+        }
+        localObject1 = (ImageView)((View)localObject2).findViewById(2131362002);
+        localObject4 = (RelativeLayout.LayoutParams)((ImageView)localObject1).getLayoutParams();
+        if ((this.mIconsLayoutLeftMap.containsKey(Integer.valueOf(i))) && (((Integer)this.mIconsLayoutLeftMap.get(Integer.valueOf(i))).intValue() == 0))
+        {
+          ((RelativeLayout.LayoutParams)localObject4).width = QQUIDelegate.a(this.mContext, 28.0F);
+          ((RelativeLayout.LayoutParams)localObject4).height = QQUIDelegate.a(this.mContext, 28.0F);
+          ((RelativeLayout.LayoutParams)localObject4).addRule(15);
+        }
+        ((RelativeLayout.LayoutParams)localObject4).rightMargin = QQUIDelegate.a(this.mContext, 5.0F);
+        ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject4);
+        if (this.mIconsLeftMap.containsKey(Integer.valueOf(i)))
+        {
+          ((ImageView)localObject1).setVisibility(0);
+          ((ImageView)localObject1).setImageDrawable((Drawable)this.mIconsLeftMap.get(Integer.valueOf(i)));
+        }
+        else
+        {
+          ((ImageView)localObject1).setImageDrawable(null);
+          ((ImageView)localObject1).setVisibility(8);
+        }
+        if (((Integer)localPair.second).intValue() == 9)
+        {
+          if (this.mTextColorMap.containsKey(Integer.valueOf(i))) {
+            ((TextView)localObject3).setTextColor(Color.parseColor((String)this.mTextColorMap.get(Integer.valueOf(i))));
+          }
+        }
+        else {
+          ((TextView)localObject3).setTextColor(getActionButtonColorByType(((Integer)localPair.second).intValue()));
+        }
+        if ((this.mSupportBottomRadius) && (j > 1) && (i == k - 1) && (this.mCancelText == null)) {
+          localObject1 = getSelectorByType(4);
+        } else if ((i == 0) && (j == k) && (j == 1)) {
+          localObject1 = getSelectorByType(0);
+        } else if ((i == 0) && (j == k) && (j > 1))
+        {
+          if (this.mIsRoundCornerTop) {
+            localObject1 = getSelectorByType(1);
+          } else {
+            localObject1 = getSelectorByType(3);
+          }
+        }
+        else if ((i == k - 1) && (j > 1)) {
+          localObject1 = getSelectorByType(0);
+        } else {
+          localObject1 = getSelectorByType(3);
+        }
+        ((View)localObject2).setBackgroundDrawable((Drawable)localObject1);
+        if (i < this.mIds.size()) {
+          ((View)localObject2).setId(((Integer)this.mIds.get(i)).intValue());
+        } else {
+          ((View)localObject2).setId(i);
+        }
+        ((View)localObject2).setOnClickListener(this.mBtnClickListener);
+        this.mContentContainer.addView((View)localObject2);
+        if (this.mRadioGroupMode)
+        {
+          if (this.mRadioButtonMap == null) {
+            this.mRadioButtonMap = new SparseArray();
+          }
+          this.mRadioButtonMap.append(i, localObject2);
+          if (i == this.mCurrentSelectedViewId)
+          {
+            ((View)localObject2).findViewById(2131361990).setVisibility(0);
+            updateRadioGroupButtonDesc((TextView)localObject3, true);
+          }
+          else
+          {
+            updateRadioGroupButtonDesc((TextView)localObject3, false);
+          }
+        }
+        i += 1;
+      }
+    }
+    if (this.mCancelText != null)
+    {
+      localObject1 = this.mInflater.inflate(getActionSheetCancelButtonLayoutId(), null);
+      if (this.mAccuseText != 0)
+      {
+        localObject2 = (Button)((View)localObject1).findViewById(2131361987);
+        ((Button)localObject2).setVisibility(0);
+        ((Button)localObject2).setText(this.mAccuseText);
+        ((Button)localObject2).setTextColor(this.mAccuseIconColor);
+        ((Button)localObject2).setContentDescription(this.mCancelText);
+        localObject3 = this.onBottomAccuseListener;
+        if (localObject3 != null) {
+          ((Button)localObject2).setOnClickListener((View.OnClickListener)localObject3);
+        }
+      }
+      localObject2 = (Button)((View)localObject1).findViewById(2131361988);
+      ((Button)localObject2).setOnClickListener(this.onBottomCancelListener);
+      ((Button)localObject2).setText(this.mCancelText);
+      ((Button)localObject2).setContentDescription(this.mCancelText);
+      this.mContentContainer.addView((View)localObject1);
+    }
+    this.mIsReady = true;
   }
   
   private void setOnTextImageFetched(CharSequence paramCharSequence, ActionSheet.OnTextImageFetchedListener paramOnTextImageFetchedListener)
   {
-    if ((paramCharSequence == null) || (paramOnTextImageFetchedListener == null)) {
-      return;
+    if (paramCharSequence != null)
+    {
+      if (paramOnTextImageFetchedListener == null) {
+        return;
+      }
+      int i = paramCharSequence.hashCode();
+      this.mFetchListenerMap.put(Integer.valueOf(i), paramOnTextImageFetchedListener);
     }
-    int i = paramCharSequence.hashCode();
-    this.mFetchListenerMap.put(Integer.valueOf(i), paramOnTextImageFetchedListener);
   }
   
   private void updateRadioGroupButtonDesc(TextView paramTextView, boolean paramBoolean)
@@ -531,10 +545,16 @@ public class ActionSheet
     }
     if (paramBoolean)
     {
-      paramTextView.setContentDescription(getContext().getString(2131691209) + paramTextView.getText());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getContext().getString(2131691130));
+      localStringBuilder.append(paramTextView.getText());
+      paramTextView.setContentDescription(localStringBuilder.toString());
       return;
     }
-    paramTextView.setContentDescription(getContext().getString(2131691211) + paramTextView.getText());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getContext().getString(2131691132));
+    localStringBuilder.append(paramTextView.getText());
+    paramTextView.setContentDescription(localStringBuilder.toString());
   }
   
   public void addAccuseButton(int paramInt1, int paramInt2)
@@ -573,9 +593,10 @@ public class ActionSheet
       if (!this.mContents.contains(paramCharSequence)) {
         this.mContents.add(paramInt1, paramCharSequence);
       }
-      if (this.mRadioGroupMode) {
-        throw new UnsupportedOperationException("ActionSheet is in radio group mode,shouldn't call addButton!");
+      if (!this.mRadioGroupMode) {
+        return;
       }
+      throw new UnsupportedOperationException("ActionSheet is in radio group mode,shouldn't call addButton!");
     }
   }
   
@@ -604,15 +625,16 @@ public class ActionSheet
       if (!this.mContents.contains(paramCharSequence)) {
         this.mContents.add(paramCharSequence);
       }
-      if (this.mRadioGroupMode) {
-        throw new UnsupportedOperationException("ActionSheet is in radio group mode,shouldn't call addButton!");
+      if (!this.mRadioGroupMode) {
+        return;
       }
+      throw new UnsupportedOperationException("ActionSheet is in radio group mode,shouldn't call addButton!");
     }
   }
   
   public void addButton(CharSequence paramCharSequence, int paramInt1, @IdRes int paramInt2)
   {
-    addButton(paramCharSequence, paramInt1, paramInt2, Integer.valueOf(this.mResources.getColor(2131165205)));
+    addButton(paramCharSequence, paramInt1, paramInt2, Integer.valueOf(this.mResources.getColor(2131165231)));
   }
   
   public void addButton(CharSequence paramCharSequence, int paramInt1, @IdRes int paramInt2, Integer paramInteger)
@@ -639,9 +661,10 @@ public class ActionSheet
       if (paramInt == 9) {
         this.mTextColorMap.put(Integer.valueOf(this.mContents.size() - 1), paramString);
       }
-      if (this.mRadioGroupMode) {
-        throw new UnsupportedOperationException("ActionSheet is in radio group mode,shouldn't call addButton!");
+      if (!this.mRadioGroupMode) {
+        return;
       }
+      throw new UnsupportedOperationException("ActionSheet is in radio group mode,shouldn't call addButton!");
     }
   }
   
@@ -663,18 +686,21 @@ public class ActionSheet
       this.mContents = new ArrayList();
     }
     Object localObject = this.mResources.getDrawable(paramInt1);
-    if (localObject == null) {}
-    do
-    {
+    if (localObject == null) {
       return;
-      paramString = new SpannableStringBuilder("icon" + paramString);
-      ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight());
-      localObject = new VerticalCenterImageSpan((Drawable)localObject, 0);
-      ((VerticalCenterImageSpan)localObject).setPadding(0, QQUIDelegate.a(getContext(), 10.0F));
-      paramString.setSpan(localObject, 0, "icon".length(), 18);
-      paramString = new Pair(paramString, Integer.valueOf(paramInt2));
-    } while (this.mContents.contains(paramString));
-    this.mContents.add(paramString);
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("icon");
+    localStringBuilder.append(paramString);
+    paramString = new SpannableStringBuilder(localStringBuilder.toString());
+    ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight());
+    localObject = new VerticalCenterImageSpan((Drawable)localObject, 0);
+    ((VerticalCenterImageSpan)localObject).setPadding(0, QQUIDelegate.a(getContext(), 10.0F));
+    paramString.setSpan(localObject, 0, 4, 18);
+    paramString = new Pair(paramString, Integer.valueOf(paramInt2));
+    if (!this.mContents.contains(paramString)) {
+      this.mContents.add(paramString);
+    }
   }
   
   public void addButtonWithLeftIcon(String paramString1, Drawable paramDrawable, int paramInt1, int paramInt2, String paramString2)
@@ -701,35 +727,37 @@ public class ActionSheet
   
   public void addButtonWithLeftUrlIcon(String paramString1, String paramString2)
   {
-    if (paramString2 == null) {}
-    for (;;)
-    {
+    if (paramString2 == null) {
       return;
-      if (this.mContents == null) {
-        this.mContents = new ArrayList();
-      }
-      Object localObject1 = new ColorDrawable(0);
-      Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
-      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject1);
-      ((URLDrawable.URLDrawableOptions)localObject2).mUseAutoScaleParams = false;
-      localObject2 = URLDrawable.getDrawable(paramString2, (URLDrawable.URLDrawableOptions)localObject2);
-      if (localObject2 != null) {
-        ThreadManagerV2.executeOnSubThread(new ActionSheet.10(this, (URLDrawable)localObject2));
-      }
-      if ((localObject2 == null) || (((URLDrawable)localObject2).getStatus() != 1))
+    }
+    if (this.mContents == null) {
+      this.mContents = new ArrayList();
+    }
+    Object localObject1 = new ColorDrawable(0);
+    Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
+    ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject1);
+    ((URLDrawable.URLDrawableOptions)localObject2).mUseAutoScaleParams = false;
+    localObject2 = URLDrawable.getDrawable(paramString2, (URLDrawable.URLDrawableOptions)localObject2);
+    if (localObject2 != null) {
+      ThreadManagerV2.executeOnSubThread(new ActionSheet.10(this, (URLDrawable)localObject2));
+    }
+    if ((localObject2 != null) && (((URLDrawable)localObject2).getStatus() == 1))
+    {
+      paramString2 = new Pair(buildLeftUrlIconCharSequence(paramString1, (Drawable)localObject2), Integer.valueOf(10));
+    }
+    else
+    {
+      localObject1 = new Pair(paramString1, Integer.valueOf(10));
+      paramString2 = (String)localObject1;
+      if (localObject2 != null)
       {
-        localObject1 = new Pair(paramString1, Integer.valueOf(10));
+        this.mFetchDrawableMap.put(Integer.valueOf(paramString1.hashCode()), localObject2);
         paramString2 = (String)localObject1;
-        if (localObject2 != null) {
-          this.mFetchDrawableMap.put(Integer.valueOf(paramString1.hashCode()), localObject2);
-        }
       }
-      for (paramString2 = (String)localObject1; !this.mContents.contains(paramString2); paramString2 = new Pair(buildLeftUrlIconCharSequence(paramString1, (Drawable)localObject2), Integer.valueOf(10)))
-      {
-        this.mContents.add(paramString2);
-        return;
-      }
+    }
+    if (!this.mContents.contains(paramString2)) {
+      this.mContents.add(paramString2);
     }
   }
   
@@ -738,19 +766,22 @@ public class ActionSheet
     if (this.mContents == null) {
       this.mContents = new ArrayList();
     }
-    Object localObject = this.mResources.getDrawable(paramInt1);
-    if (localObject == null) {}
-    do
-    {
+    Object localObject1 = this.mResources.getDrawable(paramInt1);
+    if (localObject1 == null) {
       return;
-      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramString + "icon");
-      ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight());
-      localObject = new VerticalCenterImageSpan((Drawable)localObject, 0);
-      ((VerticalCenterImageSpan)localObject).setPadding(QQUIDelegate.a(getContext(), 10.0F), 0);
-      localSpannableStringBuilder.setSpan(localObject, paramString.length(), localSpannableStringBuilder.length(), 18);
-      paramString = new Pair(localSpannableStringBuilder, Integer.valueOf(paramInt2));
-    } while (this.mContents.contains(paramString));
-    this.mContents.add(paramString);
+    }
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(paramString);
+    ((StringBuilder)localObject2).append("icon");
+    localObject2 = new SpannableStringBuilder(((StringBuilder)localObject2).toString());
+    ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
+    localObject1 = new VerticalCenterImageSpan((Drawable)localObject1, 0);
+    ((VerticalCenterImageSpan)localObject1).setPadding(QQUIDelegate.a(getContext(), 10.0F), 0);
+    ((SpannableStringBuilder)localObject2).setSpan(localObject1, paramString.length(), ((SpannableStringBuilder)localObject2).length(), 18);
+    paramString = new Pair(localObject2, Integer.valueOf(paramInt2));
+    if (!this.mContents.contains(paramString)) {
+      this.mContents.add(paramString);
+    }
   }
   
   public void addCancelButton(int paramInt)
@@ -784,8 +815,12 @@ public class ActionSheet
   {
     if (paramCharSequence != null)
     {
-      if ((!this.mRadioGroupMode) && (this.mContents != null) && (this.mContents.size() > 0)) {
-        throw new UnsupportedOperationException("ActionSheet is in normal button mode,shouldn't call addRadioButton!");
+      if (!this.mRadioGroupMode)
+      {
+        ArrayList localArrayList = this.mContents;
+        if ((localArrayList != null) && (localArrayList.size() > 0)) {
+          throw new UnsupportedOperationException("ActionSheet is in normal button mode,shouldn't call addRadioButton!");
+        }
       }
       if (this.mContents == null) {
         this.mContents = new ArrayList();
@@ -794,22 +829,18 @@ public class ActionSheet
       if (!this.mContents.contains(paramCharSequence)) {
         this.mContents.add(paramCharSequence);
       }
-      if (paramBoolean2) {
-        break label139;
+      if (!paramBoolean2)
+      {
+        if (this.mUncheckeable == null) {
+          this.mUncheckeable = new HashSet();
+        }
+        this.mUncheckeable.add(Integer.valueOf(this.mContents.size() - 1));
       }
-      if (this.mUncheckeable == null) {
-        this.mUncheckeable = new HashSet();
-      }
-      this.mUncheckeable.add(Integer.valueOf(this.mContents.size() - 1));
-    }
-    for (;;)
-    {
-      this.mRadioGroupMode = true;
-      return;
-      label139:
-      if (paramBoolean1) {
+      else if (paramBoolean1)
+      {
         this.mCurrentSelectedViewId = (this.mContents.size() - 1);
       }
+      this.mRadioGroupMode = true;
     }
   }
   
@@ -844,22 +875,21 @@ public class ActionSheet
   public void clearAllRadioBtnCheckStatus()
   {
     this.mCurrentSelectedViewId = -1;
-    if (this.mRadioButtonMap == null) {}
-    for (;;)
-    {
+    Object localObject = this.mRadioButtonMap;
+    if (localObject == null) {
       return;
-      int j = this.mRadioButtonMap.size();
-      int i = 0;
-      while (i < j)
+    }
+    int j = ((SparseArray)localObject).size();
+    int i = 0;
+    while (i < j)
+    {
+      localObject = (View)this.mRadioButtonMap.valueAt(i);
+      if (localObject != null)
       {
-        View localView = (View)this.mRadioButtonMap.valueAt(i);
-        if (localView != null)
-        {
-          localView.findViewById(2131361974).setVisibility(8);
-          updateRadioGroupButtonDesc((TextView)localView.findViewById(2131361973), false);
-        }
-        i += 1;
+        ((View)localObject).findViewById(2131361990).setVisibility(8);
+        updateRadioGroupButtonDesc((TextView)((View)localObject).findViewById(2131361989), false);
       }
+      i += 1;
     }
   }
   
@@ -871,8 +901,9 @@ public class ActionSheet
   
   public void dismiss()
   {
-    if (this.mWatchDismissListener != null) {
-      this.mWatchDismissListener.onDismissOperations();
+    ActionSheet.WatchDismissActions localWatchDismissActions = this.mWatchDismissListener;
+    if (localWatchDismissActions != null) {
+      localWatchDismissActions.onDismissOperations();
     }
     if (this.mDismissFinish)
     {
@@ -893,32 +924,33 @@ public class ActionSheet
   
   protected int getActionButtonColorByType(int paramInt)
   {
-    switch (0xFFFF & paramInt)
+    paramInt &= 0xFFFF;
+    if (paramInt != 11)
     {
-    case 9: 
-    case 10: 
-    default: 
-      return this.mResources.getColor(2131165200);
-    case 0: 
-      return this.mResources.getColor(2131165200);
-    case 1: 
-      return this.mResources.getColor(2131165200);
-    case 2: 
-      return this.mResources.getColor(2131165200);
-    case 4: 
-      return this.mResources.getColor(2131165200);
-    case 3: 
-      return this.mResources.getColor(2131165204);
-    case 5: 
-      return this.mResources.getColor(2131165200);
-    case 6: 
-      return this.mResources.getColor(2131165200);
-    case 7: 
-      return this.mResources.getColor(2131165200);
-    case 8: 
-      return this.mResources.getColor(2131165750);
+      switch (paramInt)
+      {
+      default: 
+        return this.mResources.getColor(2131165226);
+      case 8: 
+        return this.mResources.getColor(2131165741);
+      case 7: 
+        return this.mResources.getColor(2131165226);
+      case 6: 
+        return this.mResources.getColor(2131165226);
+      case 5: 
+        return this.mResources.getColor(2131165226);
+      case 4: 
+        return this.mResources.getColor(2131165226);
+      case 3: 
+        return this.mResources.getColor(2131165230);
+      case 2: 
+        return this.mResources.getColor(2131165226);
+      case 1: 
+        return this.mResources.getColor(2131165226);
+      }
+      return this.mResources.getColor(2131165226);
     }
-    return this.mResources.getColor(2131165206);
+    return this.mResources.getColor(2131165232);
   }
   
   public RelativeLayout getActionContentView()
@@ -933,34 +965,36 @@ public class ActionSheet
   
   public ActionMenuItem getActionMenuItem(CharSequence paramCharSequence)
   {
-    if (this.mActionMenuMap == null) {
+    HashMap localHashMap = this.mActionMenuMap;
+    if (localHashMap == null) {
       return null;
     }
-    return (ActionMenuItem)this.mActionMenuMap.get(paramCharSequence);
+    return (ActionMenuItem)localHashMap.get(paramCharSequence);
   }
   
   protected int getActionSheetCancelButtonLayoutId()
   {
-    return 2131558439;
+    return 2131558467;
   }
   
   protected int getActionSheetCommonButtonLayoutId()
   {
-    return 2131558442;
+    return 2131558470;
   }
   
   protected int getActionSheetTitleLayoutId()
   {
-    return 2131558441;
+    return 2131558469;
   }
   
   public String getContent(int paramInt)
   {
-    if ((this.mContents != null) && (paramInt < this.mContents.size()))
+    Object localObject = this.mContents;
+    if ((localObject != null) && (paramInt < ((ArrayList)localObject).size()))
     {
-      Pair localPair = (Pair)this.mContents.get(paramInt);
-      if (localPair != null) {
-        return ((CharSequence)localPair.first).toString();
+      localObject = (Pair)this.mContents.get(paramInt);
+      if (localObject != null) {
+        return ((CharSequence)((Pair)localObject).first).toString();
       }
     }
     return null;
@@ -973,19 +1007,22 @@ public class ActionSheet
   
   public Drawable getSelectorByType(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    case 2: 
-    default: 
-      return this.mResources.getDrawable(2130837571);
-    case 1: 
-      return this.mResources.getDrawable(2130837590);
-    case 0: 
-      return this.mResources.getDrawable(2130837568);
-    case 3: 
-      return this.mResources.getDrawable(2130837571);
+      if (paramInt != 1)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4) {
+            return this.mResources.getDrawable(2130837658);
+          }
+          return this.mResources.getDrawable(2130837662);
+        }
+        return this.mResources.getDrawable(2130837658);
+      }
+      return this.mResources.getDrawable(2130837677);
     }
-    return this.mResources.getDrawable(2130837575);
+    return this.mResources.getDrawable(2130837655);
   }
   
   public boolean onPrepareOptionsMenu(Menu paramMenu)
@@ -1127,30 +1164,35 @@ public class ActionSheet
   
   public void setOutsideDismissEnableCompat(boolean paramBoolean)
   {
-    if ((this.mRootView != null) && (this.mRootView.getChildAt(0) != null))
+    ViewGroup localViewGroup = this.mRootView;
+    if ((localViewGroup != null) && (localViewGroup.getChildAt(0) != null))
     {
-      if (paramBoolean) {
+      if (paramBoolean)
+      {
         this.mRootView.getChildAt(0).setOnClickListener(this.mDefaultDismissListener);
+        return;
       }
+      this.mRootView.getChildAt(0).setOnClickListener(null);
     }
-    else {
-      return;
-    }
-    this.mRootView.getChildAt(0).setOnClickListener(null);
   }
   
   public void setRadioButtonChecked(int paramInt)
   {
-    if ((paramInt >= 0) && (this.mContents != null) && (paramInt < this.mContents.size()))
+    if (paramInt >= 0)
     {
-      this.mCurrentSelectedViewId = paramInt;
-      if (this.mRadioButtonMap != null)
+      Object localObject = this.mContents;
+      if ((localObject != null) && (paramInt < ((ArrayList)localObject).size()))
       {
-        View localView = (View)this.mRadioButtonMap.get(this.mCurrentSelectedViewId);
-        if (localView != null)
+        this.mCurrentSelectedViewId = paramInt;
+        localObject = this.mRadioButtonMap;
+        if (localObject != null)
         {
-          localView.findViewById(2131361974).setVisibility(0);
-          updateRadioGroupButtonDesc((TextView)localView.findViewById(2131361973), true);
+          localObject = (View)((SparseArray)localObject).get(this.mCurrentSelectedViewId);
+          if (localObject != null)
+          {
+            ((View)localObject).findViewById(2131361990).setVisibility(0);
+            updateRadioGroupButtonDesc((TextView)((View)localObject).findViewById(2131361989), true);
+          }
         }
       }
     }
@@ -1190,9 +1232,10 @@ public class ActionSheet
   
   public void setTitleEllipsize(TextUtils.TruncateAt paramTruncateAt)
   {
-    if (this.mainTitleText != null)
+    TextView localTextView = this.mainTitleText;
+    if (localTextView != null)
     {
-      this.mainTitleText.setMaxLines(1);
+      localTextView.setMaxLines(1);
       this.mainTitleText.setEllipsize(paramTruncateAt);
       int i = QQUIDelegate.a(this.mContext, 18.0F);
       this.mainTitleText.setPadding(i, 0, i, 0);
@@ -1212,28 +1255,26 @@ public class ActionSheet
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 1007	android/app/Dialog:dismiss	()V
+    //   1: invokespecial 1020	android/app/Dialog:dismiss	()V
     //   4: aload_0
-    //   5: invokestatic 1012	com/tencent/qqperf/monitor/memory/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
+    //   5: invokestatic 1025	com/tencent/qqperf/monitor/memory/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
     //   8: return
     //   9: astore_1
     //   10: aload_0
-    //   11: invokestatic 1012	com/tencent/qqperf/monitor/memory/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
-    //   14: return
-    //   15: astore_1
-    //   16: aload_0
-    //   17: invokestatic 1012	com/tencent/qqperf/monitor/memory/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
-    //   20: aload_1
-    //   21: athrow
+    //   11: invokestatic 1025	com/tencent/qqperf/monitor/memory/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
+    //   14: aload_1
+    //   15: athrow
+    //   16: astore_1
+    //   17: goto -13 -> 4
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	22	0	this	ActionSheet
-    //   9	1	1	localException	Exception
-    //   15	6	1	localObject	Object
+    //   0	20	0	this	ActionSheet
+    //   9	6	1	localObject	Object
+    //   16	1	1	localException	Exception
     // Exception table:
     //   from	to	target	type
-    //   0	4	9	java/lang/Exception
-    //   0	4	15	finally
+    //   0	4	9	finally
+    //   0	4	16	java/lang/Exception
   }
   
   public void updateAllButton()
@@ -1250,19 +1291,23 @@ public class ActionSheet
   
   public void updateButton(int paramInt1, CharSequence paramCharSequence, int paramInt2)
   {
-    if ((paramInt1 >= 0) && (this.mContents != null) && (paramInt1 < this.mContents.size()))
+    if (paramInt1 >= 0)
     {
-      Object localObject = this.mContentContainer.findViewById(paramInt1);
-      if (localObject != null)
+      Object localObject = this.mContents;
+      if ((localObject != null) && (paramInt1 < ((ArrayList)localObject).size()))
       {
-        localObject = ((View)localObject).findViewById(2131361973);
-        if ((localObject != null) && (TextView.class.isInstance(localObject)))
+        localObject = this.mContentContainer.findViewById(paramInt1);
+        if (localObject != null)
         {
-          localObject = (TextView)localObject;
-          ((TextView)localObject).setText(paramCharSequence);
-          ((TextView)localObject).setTextColor(getActionButtonColorByType(paramInt2));
-          paramCharSequence = new Pair(paramCharSequence, Integer.valueOf(paramInt2));
-          this.mContents.set(paramInt1, paramCharSequence);
+          localObject = ((View)localObject).findViewById(2131361989);
+          if ((localObject != null) && (TextView.class.isInstance(localObject)))
+          {
+            localObject = (TextView)localObject;
+            ((TextView)localObject).setText(paramCharSequence);
+            ((TextView)localObject).setTextColor(getActionButtonColorByType(paramInt2));
+            paramCharSequence = new Pair(paramCharSequence, Integer.valueOf(paramInt2));
+            this.mContents.set(paramInt1, paramCharSequence);
+          }
         }
       }
     }
@@ -1281,7 +1326,7 @@ public class ActionSheet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ActionSheet
  * JD-Core Version:    0.7.0.1
  */

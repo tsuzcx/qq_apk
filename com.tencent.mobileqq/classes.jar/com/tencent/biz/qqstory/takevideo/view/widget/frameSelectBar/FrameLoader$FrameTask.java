@@ -49,95 +49,84 @@ public class FrameLoader$FrameTask
   {
     SLog.d("Q.qqstory.frameWidget.FrameLoader", "runOnBackGround:%s", new Object[] { a() });
     long l3 = System.currentTimeMillis();
-    if ((UIUtils.a()) && (this.jdField_c_of_type_Boolean)) {
-      SLog.d("Q.qqstory.frameWidget.FrameLoader", "runOnBackGround: TrimNative:%s", new Object[] { a() });
-    }
-    long l1;
-    Object localObject;
-    Bitmap localBitmap2;
-    for (;;)
+    if ((UIUtils.a()) && (this.jdField_c_of_type_Boolean))
     {
+      SLog.d("Q.qqstory.frameWidget.FrameLoader", "runOnBackGround: TrimNative:%s", new Object[] { a() });
       try
       {
         Bitmap localBitmap1;
-        if (this.jdField_b_of_type_Boolean)
-        {
+        if (this.jdField_b_of_type_Boolean) {
           localBitmap1 = Bitmap.createBitmap(this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, Bitmap.Config.ARGB_8888);
-          l1 = this.jdField_a_of_type_JavaLangInteger.intValue() * this.d;
-          long l2 = (this.jdField_a_of_type_JavaLangInteger.intValue() + 1) * this.d;
-          l1 = l2;
-          if (l2 > this.jdField_a_of_type_Long) {
-            l1 = this.jdField_a_of_type_Long;
-          }
-          if (TrimNative.getThumbnail(0L, l1, localBitmap1) == 0)
-          {
-            Bitmap localBitmap3 = localBitmap1.copy(Bitmap.Config.RGB_565, true);
-            localObject = localBitmap3;
-            if (this.jdField_b_of_type_Boolean) {
-              localObject = UIUtils.a(localBitmap3, 90.0F);
-            }
-            a(new BitmapDrawable((Bitmap)localObject));
-            localBitmap1.recycle();
-            l1 = System.currentTimeMillis() - l3;
-            SLog.d("Q.qqstory.frameWidget.FrameLoader", "runOnBackGround: TrimNative 完成时间:%s,key=%s", new Object[] { Long.valueOf(l1), a() });
-            this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameLoader$GetFrameReport.a(this.jdField_a_of_type_JavaLangInteger.intValue(), l1);
-          }
-        }
-        else
-        {
+        } else {
           localBitmap1 = Bitmap.createBitmap(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, Bitmap.Config.ARGB_8888);
-          continue;
         }
-        if ((localBitmap1 == null) || (localBitmap1.isRecycled())) {
-          continue;
+        this.jdField_a_of_type_JavaLangInteger.intValue();
+        int i = this.d;
+        long l2 = (this.jdField_a_of_type_JavaLangInteger.intValue() + 1) * this.d;
+        l1 = l2;
+        if (l2 > this.jdField_a_of_type_Long) {
+          l1 = this.jdField_a_of_type_Long;
         }
-        localBitmap1.recycle();
+        if (TrimNative.getThumbnail(0L, l1, localBitmap1) == 0)
+        {
+          Bitmap localBitmap2 = localBitmap1.copy(Bitmap.Config.RGB_565, true);
+          localObject2 = localBitmap2;
+          if (this.jdField_b_of_type_Boolean) {
+            localObject2 = UIUtils.a(localBitmap2, 90.0F);
+          }
+          a(new BitmapDrawable((Bitmap)localObject2));
+          localBitmap1.recycle();
+          l1 = System.currentTimeMillis() - l3;
+          SLog.d("Q.qqstory.frameWidget.FrameLoader", "runOnBackGround: TrimNative 完成时间:%s,key=%s", new Object[] { Long.valueOf(l1), a() });
+          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameLoader$GetFrameReport.a(this.jdField_a_of_type_JavaLangInteger.intValue(), l1);
+          return;
+        }
+        if ((localBitmap1 != null) && (!localBitmap1.isRecycled())) {
+          localBitmap1.recycle();
+        } else {
+          SLog.e("Q.qqstory.frameWidget.FrameLoader", "TrimNative return error!");
+        }
       }
       catch (Exception localException)
       {
         SLog.e("Q.qqstory.frameWidget.FrameLoader", "create bitmap width=%s,height=%s,error:%s", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_c_of_type_Int), localException });
-        continue;
-        localBitmap2 = this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever.getFrameAtTime(this.jdField_a_of_type_JavaLangInteger.intValue() * this.d * 1000L);
-        if (localBitmap2 != null) {
-          continue;
-        }
-        SLog.e("Q.qqstory.frameWidget.FrameLoader", "mRetriever return null!");
-        return;
-        localObject = new Matrix();
-        if (!this.jdField_b_of_type_Boolean) {
-          break;
-        }
-      }
-      if (this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever == null)
-      {
-        SLog.e("Q.qqstory.frameWidget.FrameLoader", "mRetriever is null!");
-        return;
-        SLog.e("Q.qqstory.frameWidget.FrameLoader", "TrimNative return error!");
-      }
-      else
-      {
-        float f1 = this.jdField_b_of_type_Int / localBitmap2.getHeight();
-        float f2 = this.jdField_c_of_type_Int / localBitmap2.getWidth();
-        ((Matrix)localObject).postRotate(90.0F);
-        ((Matrix)localObject).postScale(f1, f2);
       }
     }
-    for (;;)
+    Object localObject1 = this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever;
+    if (localObject1 == null)
     {
-      localObject = Bitmap.createBitmap(localBitmap2, 0, 0, localBitmap2.getWidth(), localBitmap2.getHeight(), (Matrix)localObject, true);
-      localBitmap2.recycle();
-      a(new BitmapDrawable((Bitmap)localObject));
-      l1 = System.currentTimeMillis() - l3;
-      SLog.d("Q.qqstory.frameWidget.FrameLoader", "runOnBackGround: mRetriever 完成时间:%s,key=%s", new Object[] { Long.valueOf(l1), a() });
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameLoader$GetFrameReport.a(this.jdField_a_of_type_JavaLangInteger.intValue(), l1);
+      SLog.e("Q.qqstory.frameWidget.FrameLoader", "mRetriever is null!");
       return;
-      ((Matrix)localObject).postScale(this.jdField_b_of_type_Int / localBitmap2.getWidth(), this.jdField_c_of_type_Int / localBitmap2.getHeight());
     }
+    localObject1 = ((MediaMetadataRetriever)localObject1).getFrameAtTime(this.jdField_a_of_type_JavaLangInteger.intValue() * this.d * 1000L);
+    if (localObject1 == null)
+    {
+      SLog.e("Q.qqstory.frameWidget.FrameLoader", "mRetriever return null!");
+      return;
+    }
+    Object localObject2 = new Matrix();
+    if (this.jdField_b_of_type_Boolean)
+    {
+      float f1 = this.jdField_b_of_type_Int / ((Bitmap)localObject1).getHeight();
+      float f2 = this.jdField_c_of_type_Int / ((Bitmap)localObject1).getWidth();
+      ((Matrix)localObject2).postRotate(90.0F);
+      ((Matrix)localObject2).postScale(f1, f2);
+    }
+    else
+    {
+      ((Matrix)localObject2).postScale(this.jdField_b_of_type_Int / ((Bitmap)localObject1).getWidth(), this.jdField_c_of_type_Int / ((Bitmap)localObject1).getHeight());
+    }
+    localObject2 = Bitmap.createBitmap((Bitmap)localObject1, 0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), (Matrix)localObject2, true);
+    ((Bitmap)localObject1).recycle();
+    a(new BitmapDrawable((Bitmap)localObject2));
+    long l1 = System.currentTimeMillis() - l3;
+    SLog.d("Q.qqstory.frameWidget.FrameLoader", "runOnBackGround: mRetriever 完成时间:%s,key=%s", new Object[] { Long.valueOf(l1), a() });
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameLoader$GetFrameReport.a(this.jdField_a_of_type_JavaLangInteger.intValue(), l1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.FrameLoader.FrameTask
  * JD-Core Version:    0.7.0.1
  */

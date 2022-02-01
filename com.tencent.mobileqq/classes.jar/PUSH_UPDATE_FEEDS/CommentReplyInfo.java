@@ -6,6 +6,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class CommentReplyInfo
   extends JceStruct
@@ -43,11 +44,13 @@ public final class CommentReplyInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.all_commont_list != null) {
-      paramJceOutputStream.write(this.all_commont_list, 0);
+    Object localObject = this.all_commont_list;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.cur_comment_reply != null) {
-      paramJceOutputStream.write(this.cur_comment_reply, 1);
+    localObject = this.cur_comment_reply;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
     paramJceOutputStream.write(this.total_num, 2);
     paramJceOutputStream.write(this.real_num, 3);
@@ -55,7 +58,7 @@ public final class CommentReplyInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PUSH_UPDATE_FEEDS.CommentReplyInfo
  * JD-Core Version:    0.7.0.1
  */

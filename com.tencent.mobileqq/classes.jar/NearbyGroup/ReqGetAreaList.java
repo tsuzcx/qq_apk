@@ -44,15 +44,16 @@ public final class ReqGetAreaList
     paramJceOutputStream.write(this.iLat, 0);
     paramJceOutputStream.write(this.iLon, 1);
     paramJceOutputStream.write(this.iRadius, 2);
-    if (this.vClientVersion != null) {
-      paramJceOutputStream.write(this.vClientVersion, 3);
+    byte[] arrayOfByte = this.vClientVersion;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 3);
     }
     paramJceOutputStream.write(this.uiClientType, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NearbyGroup.ReqGetAreaList
  * JD-Core Version:    0.7.0.1
  */

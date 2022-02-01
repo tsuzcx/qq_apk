@@ -77,14 +77,15 @@ public final class SvcReqGet
     paramJceOutputStream.write(this.iClientIp, 9);
     paramJceOutputStream.write(this.iClientPort, 10);
     paramJceOutputStream.write(this.iClientId, 11);
-    if (this.vecGuid != null) {
-      paramJceOutputStream.write(this.vecGuid, 12);
+    byte[] arrayOfByte = this.vecGuid;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 12);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.SvcReqGet
  * JD-Core Version:    0.7.0.1
  */

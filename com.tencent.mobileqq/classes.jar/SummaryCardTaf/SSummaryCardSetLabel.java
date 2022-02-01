@@ -45,8 +45,9 @@ public final class SSummaryCardSetLabel
   {
     paramJceOutputStream.write(this.cmd, 0);
     paramJceOutputStream.write(this.uin, 1);
-    if (this.version != null) {
-      paramJceOutputStream.write(this.version, 2);
+    String str = this.version;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.platform, 3);
     paramJceOutputStream.write(this.labels, 4);

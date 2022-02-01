@@ -6,7 +6,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/style/AnimStyle;", "", "scaleX", "", "scaleY", "translationX", "translationY", "rotateX", "rotateY", "opacity", "bgColor", "", "(FFFFFFFLjava/lang/String;)V", "getBgColor", "()Ljava/lang/String;", "setBgColor", "(Ljava/lang/String;)V", "getOpacity", "()F", "setOpacity", "(F)V", "getRotateX", "setRotateX", "getRotateY", "setRotateY", "getScaleX", "setScaleX", "getScaleY", "setScaleY", "getTranslationX", "setTranslationX", "getTranslationY", "setTranslationY", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "copy", "equals", "", "other", "hashCode", "", "toString", "XActionEngine_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/style/AnimStyle;", "", "scaleX", "", "scaleY", "translationX", "translationY", "rotateX", "rotateY", "opacity", "bgColor", "", "(FFFFFFFLjava/lang/String;)V", "getBgColor", "()Ljava/lang/String;", "setBgColor", "(Ljava/lang/String;)V", "getOpacity", "()F", "setOpacity", "(F)V", "getRotateX", "setRotateX", "getRotateY", "setRotateY", "getScaleX", "setScaleX", "getScaleY", "setScaleY", "getTranslationX", "setTranslationX", "getTranslationY", "setTranslationY", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "copy", "equals", "", "other", "hashCode", "", "toString", "XActionCore_release"}, k=1, mv={1, 1, 16})
 @Keep
 public final class AnimStyle
 {
@@ -86,18 +86,18 @@ public final class AnimStyle
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof AnimStyle))
       {
         paramObject = (AnimStyle)paramObject;
-        if ((Float.compare(this.scaleX, paramObject.scaleX) != 0) || (Float.compare(this.scaleY, paramObject.scaleY) != 0) || (Float.compare(this.translationX, paramObject.translationX) != 0) || (Float.compare(this.translationY, paramObject.translationY) != 0) || (Float.compare(this.rotateX, paramObject.rotateX) != 0) || (Float.compare(this.rotateY, paramObject.rotateY) != 0) || (Float.compare(this.opacity, paramObject.opacity) != 0) || (!Intrinsics.areEqual(this.bgColor, paramObject.bgColor))) {}
+        if ((Float.compare(this.scaleX, paramObject.scaleX) == 0) && (Float.compare(this.scaleY, paramObject.scaleY) == 0) && (Float.compare(this.translationX, paramObject.translationX) == 0) && (Float.compare(this.translationY, paramObject.translationY) == 0) && (Float.compare(this.rotateX, paramObject.rotateX) == 0) && (Float.compare(this.rotateY, paramObject.rotateY) == 0) && (Float.compare(this.opacity, paramObject.opacity) == 0) && (Intrinsics.areEqual(this.bgColor, paramObject.bgColor))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @Nullable
@@ -151,10 +151,13 @@ public final class AnimStyle
     int i2 = Float.floatToIntBits(this.rotateY);
     int i3 = Float.floatToIntBits(this.opacity);
     String str = this.bgColor;
-    if (str != null) {}
-    for (int i = str.hashCode();; i = 0) {
-      return i + ((((((j * 31 + k) * 31 + m) * 31 + n) * 31 + i1) * 31 + i2) * 31 + i3) * 31;
+    int i;
+    if (str != null) {
+      i = str.hashCode();
+    } else {
+      i = 0;
     }
+    return ((((((j * 31 + k) * 31 + m) * 31 + n) * 31 + i1) * 31 + i2) * 31 + i3) * 31 + i;
   }
   
   public final void setBgColor(@Nullable String paramString)
@@ -200,12 +203,30 @@ public final class AnimStyle
   @NotNull
   public String toString()
   {
-    return "AnimStyle(scaleX=" + this.scaleX + ", scaleY=" + this.scaleY + ", translationX=" + this.translationX + ", translationY=" + this.translationY + ", rotateX=" + this.rotateX + ", rotateY=" + this.rotateY + ", opacity=" + this.opacity + ", bgColor=" + this.bgColor + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AnimStyle(scaleX=");
+    localStringBuilder.append(this.scaleX);
+    localStringBuilder.append(", scaleY=");
+    localStringBuilder.append(this.scaleY);
+    localStringBuilder.append(", translationX=");
+    localStringBuilder.append(this.translationX);
+    localStringBuilder.append(", translationY=");
+    localStringBuilder.append(this.translationY);
+    localStringBuilder.append(", rotateX=");
+    localStringBuilder.append(this.rotateX);
+    localStringBuilder.append(", rotateY=");
+    localStringBuilder.append(this.rotateY);
+    localStringBuilder.append(", opacity=");
+    localStringBuilder.append(this.opacity);
+    localStringBuilder.append(", bgColor=");
+    localStringBuilder.append(this.bgColor);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.api.style.AnimStyle
  * JD-Core Version:    0.7.0.1
  */

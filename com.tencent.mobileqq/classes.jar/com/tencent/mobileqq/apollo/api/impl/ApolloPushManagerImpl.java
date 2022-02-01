@@ -7,53 +7,46 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.apollo.api.IApolloManagerService;
 import com.tencent.mobileqq.apollo.api.IApolloPushManager;
 import com.tencent.mobileqq.apollo.api.IApolloPushManager.OnActionPushListener;
-import com.tencent.mobileqq.apollo.api.IApolloPushManager.OnPushObserver;
 import com.tencent.mobileqq.apollo.api.ISpriteScriptManager;
-import com.tencent.mobileqq.apollo.api.data.IApolloDaoManagerService;
-import com.tencent.mobileqq.apollo.api.data.impl.ApolloDaoManagerServiceImpl;
-import com.tencent.mobileqq.apollo.api.model.ApolloActionData;
-import com.tencent.mobileqq.apollo.api.model.ApolloActionPush;
-import com.tencent.mobileqq.apollo.api.model.ApolloGameRedDot;
-import com.tencent.mobileqq.apollo.api.res.IApolloResDownloader;
-import com.tencent.mobileqq.apollo.api.script.ISpriteBridge;
-import com.tencent.mobileqq.apollo.api.script.SpriteTaskParam;
-import com.tencent.mobileqq.apollo.api.store.webview.IApolloSSOConfigHelper;
-import com.tencent.mobileqq.apollo.api.uitls.ApolloConstant;
-import com.tencent.mobileqq.apollo.api.uitls.IApolloUtil;
-import com.tencent.mobileqq.apollo.api.uitls.impl.ApolloActionHelperImpl;
-import com.tencent.mobileqq.apollo.api.uitls.impl.ApolloUtilImpl;
 import com.tencent.mobileqq.apollo.handler.ApolloContentUpdateHandler;
 import com.tencent.mobileqq.apollo.handler.ApolloContentUpdateHandler.ApolloDownloadListener;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.apollo.model.ApolloActionData;
+import com.tencent.mobileqq.apollo.model.ApolloActionPush;
+import com.tencent.mobileqq.apollo.persistence.api.IApolloDaoManagerService;
+import com.tencent.mobileqq.apollo.persistence.api.impl.ApolloDaoManagerServiceImpl;
+import com.tencent.mobileqq.apollo.res.api.IApolloResDownloader;
+import com.tencent.mobileqq.apollo.res.api.IApolloResManager;
+import com.tencent.mobileqq.apollo.res.api.impl.ApolloResManagerImpl;
+import com.tencent.mobileqq.apollo.script.ISpriteBridge;
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+import com.tencent.mobileqq.apollo.store.webview.api.IApolloSSOConfigHelper;
+import com.tencent.mobileqq.apollo.utils.ApolloConstant;
+import com.tencent.mobileqq.apollo.utils.api.IApolloUtil;
+import com.tencent.mobileqq.apollo.utils.api.impl.ApolloActionHelperImpl;
+import com.tencent.mobileqq.apollo.utils.api.impl.ApolloUtilImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.HotChatCenterManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.AioPushData;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.util.WeakReference;
 import tencent.im.apollo_push_msgInfo.STPushMsgElem;
 import tencent.im.apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x1;
 import tencent.im.apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x2;
-import tencent.im.apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x3;
 import tencent.im.apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x4;
 
 public class ApolloPushManagerImpl
@@ -63,21 +56,208 @@ public class ApolloPushManagerImpl
   private static final int MSG_SHOW_PLACE_AT_AIO = 1;
   private static final int MSG_SHOW_PLACE_DRAWER = 3;
   private static final int RED_PACK_ACTION_PUSH = 1;
-  public static final String TAG = "ApolloPushManager";
+  public static final String TAG = "[cmshow]ApolloPushManager";
   private WeakReference<IApolloPushManager.OnActionPushListener> mActionPushLisRef;
   private QQAppInterface mApp;
-  private WeakReference<IApolloPushManager.OnPushObserver> mOnPushObserverRef;
+  
+  private void handleUpdateBaseRes(int paramInt1, int paramInt2, String paramString)
+  {
+    if (!isNeedPushBySwitch()) {
+      return;
+    }
+    Object localObject = (ApolloContentUpdateHandler)this.mApp.getBusinessHandler(BusinessHandlerFactory.APOLLO_CONTENT_UPDATE_HANDLER);
+    if (!TextUtils.equals(((ApolloContentUpdateHandler)localObject).a(), paramString)) {
+      return;
+    }
+    paramString = new File(ApolloConstant.N);
+    boolean bool2 = paramString.exists();
+    boolean bool1 = false;
+    if (!bool2) {}
+    while ((paramString.list() == null) || (paramString.list().length == 0))
+    {
+      i = 1;
+      break;
+    }
+    int i = 0;
+    int j = (int)((ApolloContentUpdateHandler)localObject).b();
+    if (paramInt2 > j) {
+      i = 1;
+    } else {
+      QLog.e("[cmshow]ApolloPushManager", 1, "onReceiveApolloPush not newVersion < localVersion");
+    }
+    paramString = new StringBuilder();
+    paramString.append(ApolloConstant.N);
+    paramString.append("base.zip");
+    paramString = paramString.toString();
+    if (i != 0)
+    {
+      localObject = new Bundle();
+      ((Bundle)localObject).putLong("version", paramInt2);
+      ((IApolloResDownloader)QRoute.api(IApolloResDownloader.class)).downLoadCmshowRes(this.mApp, paramString, ApolloConstant.L, (Bundle)localObject, new ApolloContentUpdateHandler.ApolloDownloadListener());
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("appId:");
+      paramString.append(paramInt1);
+      paramString.append(" version:");
+      paramString.append(paramInt2);
+      paramString.append(" localVersion:");
+      paramString.append(j);
+      paramString.append(" update:");
+      if (paramInt2 > j) {
+        bool1 = true;
+      }
+      paramString.append(bool1);
+      QLog.d("[cmshow]ApolloPushManager", 2, paramString.toString());
+    }
+  }
+  
+  private void handleUpdateDressRes(int paramInt1, int paramInt2, String paramString)
+  {
+    if (!isNeedPushBySwitch()) {
+      return;
+    }
+    try
+    {
+      Object localObject = (IApolloManagerService)this.mApp.getRuntimeService(IApolloManagerService.class, "all");
+      if ((((IApolloManagerService)localObject).isApolloSupport(this.mApp.getApp())) && (1 == ((IApolloManagerService)localObject).getApolloStatus(this.mApp.getCurrentUin())))
+      {
+        int i = Integer.parseInt(paramString);
+        long l1 = ((IApolloManagerService)localObject).getApolloResLocalTimestamp(2, i) / 1000L;
+        long l2 = paramInt2;
+        boolean bool = false;
+        if (l1 != l2) {
+          ((IApolloResDownloader)QRoute.api(IApolloResDownloader.class)).downloadApolloRes(this.mApp, this.mApp.getCurrentUin(), null, -1, new int[] { i }, -1, -1, true);
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("appId:");
+          ((StringBuilder)localObject).append(paramInt1);
+          ((StringBuilder)localObject).append(" version:");
+          ((StringBuilder)localObject).append(paramInt2);
+          ((StringBuilder)localObject).append(" localVersion:");
+          ((StringBuilder)localObject).append(l1);
+          ((StringBuilder)localObject).append(" update:");
+          if (l2 > l1) {
+            bool = true;
+          }
+          ((StringBuilder)localObject).append(bool);
+          QLog.d("[cmshow]ApolloPushManager", 2, ((StringBuilder)localObject).toString());
+          return;
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("apollo dress real time update id:");
+      localStringBuilder.append(paramString);
+      QLog.e("[cmshow]ApolloPushManager", 2, localStringBuilder.toString(), localException);
+    }
+  }
+  
+  private void handleUpdatePanelJsonCfg(int paramInt1, int paramInt2, String paramString)
+  {
+    if (!isNeedPushBySwitch()) {
+      return;
+    }
+    if (!"tab_list_android_json_v665".equals(paramString)) {
+      return;
+    }
+    paramString = (IApolloUtil)QRoute.api(IApolloUtil.class);
+    boolean bool = true;
+    int i = paramString.getApolloPanelJsonVer(1);
+    if (paramInt2 > i) {
+      ((ApolloResManagerImpl)this.mApp.getRuntimeService(IApolloResManager.class, "all")).checkApolloPanelJsonCfg(true, "onLinePush", 1);
+    } else {
+      QLog.e("[cmshow]ApolloPushManager", 1, "onReceiveApolloPush not newVersion < localVersion");
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("appId:");
+      paramString.append(paramInt1);
+      paramString.append(" version:");
+      paramString.append(paramInt2);
+      paramString.append(" jsonVersion:");
+      paramString.append(i);
+      paramString.append(" update:");
+      if (paramInt2 <= i) {
+        bool = false;
+      }
+      paramString.append(bool);
+      QLog.d("[cmshow]ApolloPushManager", 2, paramString.toString());
+    }
+  }
+  
+  private void handleUpdateRoleRes(int paramInt1, int paramInt2, String paramString)
+  {
+    if (!isNeedPushBySwitch()) {
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        int i = Integer.parseInt(paramString);
+        long l1 = ((IApolloManagerService)this.mApp.getRuntimeService(IApolloManagerService.class, "all")).getApolloResLocalTimestamp(1, i) / 1000L;
+        long l2 = paramInt2;
+        if (l1 == l2) {
+          break label194;
+        }
+        ((IApolloResDownloader)QRoute.api(IApolloResDownloader.class)).downloadApolloResOrder(this.mApp, this.mApp.getCurrentAccountUin(), null, i, null, -1, -1, true);
+        if (QLog.isColorLevel())
+        {
+          paramString = new StringBuilder();
+          paramString.append("appId:");
+          paramString.append(paramInt1);
+          paramString.append(" version:");
+          paramString.append(paramInt2);
+          paramString.append(" roleLocalVersion:");
+          paramString.append(l1);
+          paramString.append(" update:");
+          if (l2 <= l1) {
+            break label197;
+          }
+          bool = true;
+          paramString.append(bool);
+          QLog.d("[cmshow]ApolloPushManager", 2, paramString.toString());
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("[cmshow]ApolloPushManager", 1, paramString, new Object[0]);
+      }
+      return;
+      label194:
+      continue;
+      label197:
+      boolean bool = false;
+    }
+  }
+  
+  private void handleUpdateWebView(int paramInt, String paramString)
+  {
+    if (!"apollo_thunder_json_v670".equals(paramString)) {
+      return;
+    }
+    ((IApolloSSOConfigHelper)QRoute.api(IApolloSSOConfigHelper.class)).checkUpdateApolloWebViewConfig(this.mApp, paramInt, false);
+  }
   
   private boolean isNeedPushBySwitch()
   {
-    if (this.mApp == null) {
+    Object localObject = this.mApp;
+    if (localObject == null) {
       return false;
     }
-    IApolloManagerService localIApolloManagerService = (IApolloManagerService)this.mApp.getRuntimeService(IApolloManagerService.class, "all");
-    if ((localIApolloManagerService != null) && (localIApolloManagerService.isApolloFuncOpen(this.mApp.getApp())) && (1 == localIApolloManagerService.getApolloStatus(this.mApp.getCurrentUin()))) {
+    localObject = (IApolloManagerService)((QQAppInterface)localObject).getRuntimeService(IApolloManagerService.class, "all");
+    if ((((IApolloManagerService)localObject).isApolloSupport(this.mApp.getApp())) && (1 == ((IApolloManagerService)localObject).getApolloStatus(this.mApp.getCurrentUin()))) {
       return true;
     }
-    QLog.i("ApolloPushManager", 1, "isNeedPushBySwitch false");
+    QLog.i("[cmshow]ApolloPushManager", 1, "isNeedPushBySwitch false");
     return false;
   }
   
@@ -91,384 +271,246 @@ public class ApolloPushManagerImpl
   public void onDestroy()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ApolloPushManager", 2, "[onDestroy]");
+      QLog.d("[cmshow]ApolloPushManager", 2, "[onDestroy]");
     }
     this.mApp = null;
   }
   
-  public void onReceiveAioPush(apollo_push_msgInfo.STPushMsgElem paramSTPushMsgElem)
+  public void onReceiveAioPush(Object paramObject)
   {
-    if ((paramSTPushMsgElem == null) || (!paramSTPushMsgElem.pm3.has()) || (this.mApp == null))
-    {
-      QLog.e("ApolloPushManager", 1, "[onReceiveAioPush] msg null or pms none");
+    if (!(paramObject instanceof apollo_push_msgInfo.STPushMsgElem)) {
       return;
     }
-    Object localObject2 = paramSTPushMsgElem.pm3.get();
-    Object localObject1 = this.mApp.getEntityManagerFactory().createEntityManager();
-    if ((localObject2 != null) && (((List)localObject2).size() > 0))
+    paramObject = (apollo_push_msgInfo.STPushMsgElem)paramObject;
+    if ((paramObject.pm3.has()) && (this.mApp != null))
     {
-      paramSTPushMsgElem = new ArrayList(((List)localObject2).size());
-      localObject2 = ((List)localObject2).iterator();
-      int i = 1;
-      if (((Iterator)localObject2).hasNext())
+      paramObject = paramObject.pm3.get();
+      if ((paramObject != null) && (paramObject.size() > 0))
       {
-        apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x3 localSTPushMsgElem0x3 = (apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x3)((Iterator)localObject2).next();
-        Object localObject3;
-        if (localSTPushMsgElem0x3.dotId.get() != 1003)
-        {
-          localObject3 = new ApolloGameRedDot();
-          ((ApolloGameRedDot)localObject3).mDotId = localSTPushMsgElem0x3.dotId.get();
-          ((ApolloGameRedDot)localObject3).mStartTime = localSTPushMsgElem0x3.begTs.get();
-          ((ApolloGameRedDot)localObject3).mEndTime = localSTPushMsgElem0x3.endTs.get();
-          ((ApolloGameRedDot)localObject3).mTipsWording = localSTPushMsgElem0x3.wording.get();
-          ((ApolloGameRedDot)localObject3).mGameId = localSTPushMsgElem0x3.busId.get();
-          ((ApolloGameRedDot)localObject3).mUrl = localSTPushMsgElem0x3.url.get();
-          ((ApolloGameRedDot)localObject3).mActId = localSTPushMsgElem0x3.actId.get();
-          ((ApolloGameRedDot)localObject3).mPriority = localSTPushMsgElem0x3.priority.get();
-          ((ApolloGameRedDot)localObject3).mSpRegion = localSTPushMsgElem0x3.spRegion.get();
-          ((EntityManager)localObject1).persistOrReplace((Entity)localObject3);
-          VipUtils.a(this.mApp, "cmshow", "Apollo", "get_notice", ((ApolloGameRedDot)localObject3).mDotId, 1, new String[] { String.valueOf(((ApolloGameRedDot)localObject3).mGameId), "", ((ApolloGameRedDot)localObject3).mActId });
-          ApolloGameUtil.a((EntityManager)localObject1);
+        paramObject = new ArrayList(paramObject.size());
+        ApolloDaoManagerServiceImpl localApolloDaoManagerServiceImpl = (ApolloDaoManagerServiceImpl)this.mApp.getRuntimeService(IApolloDaoManagerService.class, "all");
+        if (localApolloDaoManagerServiceImpl != null) {
+          localApolloDaoManagerServiceImpl.saveAioPushData(paramObject, 1);
+        } else {
+          QLog.e("[cmshow]ApolloPushManager", 1, "[onReceiveAioPush] dao manager is null ");
         }
-        for (;;)
-        {
-          break;
-          localObject3 = new AioPushData();
-          ((AioPushData)localObject3).begTs = localSTPushMsgElem0x3.begTs.get();
-          ((AioPushData)localObject3).busId = localSTPushMsgElem0x3.busId.get();
-          ((AioPushData)localObject3).busType = localSTPushMsgElem0x3.busType.get();
-          ((AioPushData)localObject3).dotId = localSTPushMsgElem0x3.dotId.get();
-          ((AioPushData)localObject3).endTs = localSTPushMsgElem0x3.endTs.get();
-          ((AioPushData)localObject3).priority = localSTPushMsgElem0x3.priority.get();
-          ((AioPushData)localObject3).them = localSTPushMsgElem0x3.theme.get();
-          ((AioPushData)localObject3).wording = localSTPushMsgElem0x3.wording.get();
-          ((AioPushData)localObject3).url = localSTPushMsgElem0x3.url.get();
-          ((AioPushData)localObject3).actId = localSTPushMsgElem0x3.actId.get();
-          ((AioPushData)localObject3).spRegion = localSTPushMsgElem0x3.spRegion.get();
-          ((AioPushData)localObject3).folderIconUrl = localSTPushMsgElem0x3.folderIconUrl.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloPushManager", 2, "[onReceiveAioPush] receive " + localObject3);
-          }
-          int j = i;
-          if (this.mOnPushObserverRef != null)
-          {
-            j = i;
-            if (this.mOnPushObserverRef.get() != null)
-            {
-              j = i;
-              if (((AioPushData)localObject3).isShow)
-              {
-                j = 2;
-                ((IApolloPushManager.OnPushObserver)this.mOnPushObserverRef.get()).a(1, localObject3);
-              }
-            }
-          }
-          i = j;
-        }
-      }
-      localObject1 = (ApolloDaoManagerServiceImpl)this.mApp.getRuntimeService(IApolloDaoManagerService.class, "all");
-      if (localObject1 != null) {
-        ((ApolloDaoManagerServiceImpl)localObject1).saveAioPushData(paramSTPushMsgElem, i);
-      }
-      for (;;)
-      {
         ((HotChatCenterManager)this.mApp.getManager(QQManagerFactory.HOTCHAT_CENTER_MANAGER)).a(NetConnInfoCenter.getServerTimeMillis());
         return;
-        QLog.e("ApolloPushManager", 1, "[onReceiveAioPush] dao manager is null ");
       }
+      QLog.e("[cmshow]ApolloPushManager", 1, "[onReceiveAioPush] pb list is null or empty");
+      return;
     }
-    QLog.e("ApolloPushManager", 1, "[onReceiveAioPush] pb list is null or empty");
+    QLog.e("[cmshow]ApolloPushManager", 1, "[onReceiveAioPush] msg null or pms none");
   }
   
-  public void onReceiveApolloPush(apollo_push_msgInfo.STPushMsgElem paramSTPushMsgElem)
+  public void onReceiveApolloPush(Object paramObject)
   {
-    if ((paramSTPushMsgElem == null) || (!paramSTPushMsgElem.pm4.has()) || (this.mApp == null)) {
-      QLog.e("ApolloPushManager", 1, "[onReceiveApolloPush] msg null or pms none");
+    if (!(paramObject instanceof apollo_push_msgInfo.STPushMsgElem)) {
+      return;
     }
-    int j;
-    do
+    paramObject = (apollo_push_msgInfo.STPushMsgElem)paramObject;
+    if ((paramObject.pm4.has()) && (this.mApp != null))
     {
-      do
+      paramObject = paramObject.pm4.get();
+      if (paramObject == null)
       {
+        QLog.e("[cmshow]ApolloPushManager", 1, "[onReceiveApolloPush] pushMsgElem0x4List is null");
         return;
-        paramSTPushMsgElem = paramSTPushMsgElem.pm4.get();
-      } while (paramSTPushMsgElem == null);
-      j = 0;
-    } while (j >= paramSTPushMsgElem.size());
-    Object localObject1 = (apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x4)paramSTPushMsgElem.get(j);
-    int k;
-    int m;
-    if (localObject1 != null)
-    {
-      k = ((apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x4)localObject1).appid.get();
-      m = ((apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x4)localObject1).newVer.get();
-      localObject1 = ((apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x4)localObject1).name.get();
-      QLog.i("ApolloPushManager", 1, "appId:" + k + " newVersion:" + m + " name:" + (String)localObject1);
-      switch (k)
-      {
-      case 204: 
-      default: 
-        QLog.e("ApolloPushManager", 1, "onReceiveApolloPush unRecognition appId:" + k);
       }
-    }
-    int i;
-    label290:
-    boolean bool;
-    label383:
-    Object localObject2;
-    label431:
-    label446:
-    label631:
-    long l;
-    label643:
-    label866:
-    do
-    {
-      do
+      int i = 0;
+      while (i < paramObject.size())
       {
-        for (;;)
+        Object localObject = (apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x4)paramObject.get(i);
+        if (localObject != null)
         {
-          j += 1;
-          break;
-          if ((isNeedPushBySwitch()) && ("tab_list_android_json_v665".equals(localObject1)))
+          int j = ((apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x4)localObject).appid.get();
+          int k = ((apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x4)localObject).newVer.get();
+          localObject = ((apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x4)localObject).name.get();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("appId:");
+          localStringBuilder.append(j);
+          localStringBuilder.append(" newVersion:");
+          localStringBuilder.append(k);
+          localStringBuilder.append(" name:");
+          localStringBuilder.append((String)localObject);
+          QLog.i("[cmshow]ApolloPushManager", 1, localStringBuilder.toString());
+          switch (j)
           {
-            i = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloPanelJsonVer(1);
-            if (m > i)
-            {
-              ((IApolloManagerService)this.mApp.getRuntimeService(IApolloManagerService.class, "all")).checkApolloPanelJsonCfg(true, "onLinePush", 1);
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              localObject1 = new StringBuilder().append("appId:").append(k).append(" version:").append(m).append(" jsonVersion:").append(i).append(" update:");
-              if (m <= i) {
-                break label383;
-              }
-            }
-            for (bool = true;; bool = false)
-            {
-              QLog.d("ApolloPushManager", 2, bool);
-              break;
-              QLog.e("ApolloPushManager", 1, "onReceiveApolloPush not newVersion < localVersion");
-              break label290;
-            }
-            if ((isNeedPushBySwitch()) && (ApolloContentUpdateHandler.a().equals(localObject1)))
-            {
-              i = 0;
-              localObject1 = new File(ApolloConstant.I);
-              if (!((File)localObject1).exists())
-              {
-                i = 1;
-                int n = (int)ApolloContentUpdateHandler.b();
-                if (m <= n) {
-                  break label631;
-                }
-                i = 1;
-                localObject1 = ApolloConstant.I + "base.zip";
-                if (i != 0)
-                {
-                  localObject2 = new Bundle();
-                  ((Bundle)localObject2).putLong("version", m);
-                  ((IApolloResDownloader)QRoute.api(IApolloResDownloader.class)).downLoadCmshowRes(this.mApp, (String)localObject1, ApolloConstant.G, (Bundle)localObject2, new ApolloContentUpdateHandler.ApolloDownloadListener());
-                }
-                if (!QLog.isColorLevel()) {
-                  continue;
-                }
-                localObject1 = new StringBuilder().append("appId:").append(k).append(" version:").append(m).append(" localVersion:").append(n).append(" update:");
-                if (m <= n) {
-                  break label643;
-                }
-              }
-              for (bool = true;; bool = false)
-              {
-                QLog.d("ApolloPushManager", 2, bool);
-                break;
-                if ((((File)localObject1).list() != null) && (((File)localObject1).list().length != 0)) {
-                  break label431;
-                }
-                i = 1;
-                break label431;
-                QLog.e("ApolloPushManager", 1, "onReceiveApolloPush not newVersion < localVersion");
-                break label446;
-              }
-              if ("apollo_thunder_json_v670".equals(localObject1)) {
-                ((IApolloSSOConfigHelper)QRoute.api(IApolloSSOConfigHelper.class)).checkUpdateApolloWebViewConfig(this.mApp, m, false);
-              }
-            }
-          }
-        }
-      } while (!isNeedPushBySwitch());
-      for (;;)
-      {
-        try
-        {
-          i = Integer.parseInt((String)localObject1);
-          l = ((IApolloManagerService)this.mApp.getRuntimeService(IApolloManagerService.class, "all")).getApolloResLocalTimestamp(1, i) / 1000L;
-          if (l != m) {
-            ((IApolloResDownloader)QRoute.api(IApolloResDownloader.class)).downloadApolloResOrder(this.mApp, this.mApp.getCurrentAccountUin(), null, i, null, -1, -1, true);
-          }
-          if (!QLog.isColorLevel()) {
+          case 204: 
+          default: 
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("onReceiveApolloPush unRecognition appId:");
+            ((StringBuilder)localObject).append(j);
+            QLog.e("[cmshow]ApolloPushManager", 1, ((StringBuilder)localObject).toString());
             break;
+          case 206: 
+            handleUpdateBaseRes(j, k, (String)localObject);
+            break;
+          case 205: 
+            handleUpdateWebView(k, (String)localObject);
+            break;
+          case 203: 
+            handleUpdateDressRes(j, k, (String)localObject);
+            break;
+          case 202: 
+            handleUpdateRoleRes(j, k, (String)localObject);
+            break;
+          case 201: 
+            handleUpdatePanelJsonCfg(j, k, (String)localObject);
           }
-          localObject1 = new StringBuilder().append("appId:").append(k).append(" version:").append(m).append(" roleLocalVersion:").append(l).append(" update:");
-          if (m <= l) {
-            break label866;
-          }
-          bool = true;
-          QLog.d("ApolloPushManager", 2, bool);
         }
-        catch (Exception localException1)
-        {
-          QLog.e("ApolloPushManager", 1, localException1, new Object[0]);
-        }
-        break;
-        bool = false;
+        i += 1;
       }
-    } while (!isNeedPushBySwitch());
-    for (;;)
-    {
-      try
-      {
-        localObject2 = (IApolloManagerService)this.mApp.getRuntimeService(IApolloManagerService.class, "all");
-        if ((!((IApolloManagerService)localObject2).isApolloFuncOpen(this.mApp.getApp())) || (localObject2 == null) || (1 != ((IApolloManagerService)localObject2).getApolloStatus(this.mApp.getCurrentUin()))) {
-          break;
-        }
-        i = Integer.parseInt(localException1);
-        l = ((IApolloManagerService)localObject2).getApolloResLocalTimestamp(2, i) / 1000L;
-        if (l != m) {
-          ((IApolloResDownloader)QRoute.api(IApolloResDownloader.class)).downloadApolloRes(this.mApp, this.mApp.getCurrentUin(), null, -1, new int[] { i }, -1, -1, true);
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        localObject2 = new StringBuilder().append("appId:").append(k).append(" version:").append(m).append(" localVersion:").append(l).append(" update:");
-        if (m <= l) {
-          break label1121;
-        }
-        bool = true;
-        QLog.d("ApolloPushManager", 2, bool);
-      }
-      catch (Exception localException2)
-      {
-        QLog.e("ApolloPushManager", 2, "apollo dress real time update id:" + localException1, localException2);
-      }
-      break;
-      label1121:
-      bool = false;
-    }
-  }
-  
-  public void onReceiveDrawerHirePush(apollo_push_msgInfo.STPushMsgElem paramSTPushMsgElem)
-  {
-    if ((paramSTPushMsgElem == null) || (this.mApp == null)) {}
-    label70:
-    apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x2 localSTPushMsgElem0x2;
-    do
-    {
-      do
-      {
-        for (;;)
-        {
-          return;
-          try
-          {
-            int i = paramSTPushMsgElem.showPlace.get();
-            if ((2 == paramSTPushMsgElem.type.get()) && (3 == i)) {
-              break label70;
-            }
-            if (QLog.isColorLevel())
-            {
-              QLog.i("ApolloPushManager", 2, "onReceiveDrawerHirePush incompatible type");
-              return;
-            }
-          }
-          catch (Exception paramSTPushMsgElem) {}
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("ApolloPushManager", 2, "onReceiveDrawerHirePush error:", paramSTPushMsgElem);
-      return;
-      localSTPushMsgElem0x2 = (apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x2)paramSTPushMsgElem.pm2.get();
-      this.mApp.getApp().getSharedPreferences("apollo_sp" + this.mApp.getCurrentUin(), 0).edit().putLong("hire_for", localSTPushMsgElem0x2.toUin.get()).putInt("hire_action", localSTPushMsgElem0x2.actionId.get()).putLong("hire_end", localSTPushMsgElem0x2.endTs.get()).putString("hire_word", localSTPushMsgElem0x2.diyWords.get()).putInt("hire_priority", paramSTPushMsgElem.priority.get()).putBoolean("hire_bubble_click", false).commit();
-    } while (!QLog.isColorLevel());
-    QLog.i("ApolloPushManager", 2, "receive drawerHirePush:" + localSTPushMsgElem0x2.actionId.get() + "," + localSTPushMsgElem0x2.endTs.get() + "," + localSTPushMsgElem0x2.diyWords.get() + "," + paramSTPushMsgElem.priority.get());
-  }
-  
-  public void onRecvActionPush(int paramInt, apollo_push_msgInfo.STPushMsgElem paramSTPushMsgElem)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPushManager", 2, "[onRecvActionPush], aioType:" + paramInt);
-    }
-    if (paramSTPushMsgElem == null) {
       return;
     }
+    QLog.e("[cmshow]ApolloPushManager", 1, "[onReceiveApolloPush] msg null or pms none");
+  }
+  
+  public void onReceiveDrawerHirePush(Object paramObject)
+  {
+    if (this.mApp == null) {
+      return;
+    }
+    if (!(paramObject instanceof apollo_push_msgInfo.STPushMsgElem)) {
+      return;
+    }
+    paramObject = (apollo_push_msgInfo.STPushMsgElem)paramObject;
     try
     {
-      int i = paramSTPushMsgElem.showPlace.get();
-      int j = paramSTPushMsgElem.type.get();
-      if ((1 != j) || (1 != i))
+      int i = paramObject.showPlace.get();
+      if ((2 == paramObject.type.get()) && (3 == i))
       {
-        QLog.i("ApolloPushManager", 1, "[onRecvActionPush], It doesn't meet show conditions, type:" + j + ",showPlace:" + i);
+        apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x2 localSTPushMsgElem0x2 = (apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x2)paramObject.pm2.get();
+        Object localObject = this.mApp.getApp();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("apollo_sp");
+        localStringBuilder.append(this.mApp.getCurrentUin());
+        ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit().putLong("hire_for", localSTPushMsgElem0x2.toUin.get()).putInt("hire_action", localSTPushMsgElem0x2.actionId.get()).putLong("hire_end", localSTPushMsgElem0x2.endTs.get()).putString("hire_word", localSTPushMsgElem0x2.diyWords.get()).putInt("hire_priority", paramObject.priority.get()).putBoolean("hire_bubble_click", false).commit();
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("receive drawerHirePush:");
+          ((StringBuilder)localObject).append(localSTPushMsgElem0x2.actionId.get());
+          ((StringBuilder)localObject).append(",");
+          ((StringBuilder)localObject).append(localSTPushMsgElem0x2.endTs.get());
+          ((StringBuilder)localObject).append(",");
+          ((StringBuilder)localObject).append(localSTPushMsgElem0x2.diyWords.get());
+          ((StringBuilder)localObject).append(",");
+          ((StringBuilder)localObject).append(paramObject.priority.get());
+          QLog.i("[cmshow]ApolloPushManager", 2, ((StringBuilder)localObject).toString());
+        }
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("[cmshow]ApolloPushManager", 2, "onReceiveDrawerHirePush incompatible type");
+        }
         return;
       }
     }
-    catch (Exception paramSTPushMsgElem)
+    catch (Exception paramObject)
     {
-      paramSTPushMsgElem.printStackTrace();
-      QLog.e("ApolloPushManager", 1, "errInfo->" + paramSTPushMsgElem.getMessage());
+      if (QLog.isColorLevel()) {
+        QLog.e("[cmshow]ApolloPushManager", 2, "onReceiveDrawerHirePush error:", paramObject);
+      }
+    }
+  }
+  
+  public void onRecvActionPush(int paramInt, Object paramObject)
+  {
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[onRecvActionPush], aioType:");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("[cmshow]ApolloPushManager", 2, ((StringBuilder)localObject).toString());
+    }
+    if (!(paramObject instanceof apollo_push_msgInfo.STPushMsgElem)) {
       return;
     }
-    Object localObject = (apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x1)paramSTPushMsgElem.pm1.get();
-    paramSTPushMsgElem = new ApolloActionPush();
-    paramSTPushMsgElem.mId = NetConnInfoCenter.getServerTimeMillis();
-    paramSTPushMsgElem.mActionId = ((apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x1)localObject).actionId.get();
-    paramSTPushMsgElem.mActionType = ((apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x1)localObject).actionType.get();
-    paramSTPushMsgElem.mAioType = ApolloUtilImpl.getQAioType(((apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x1)localObject).aioType.get());
-    paramSTPushMsgElem.mContent = ((apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x1)localObject).diyWords.get();
-    paramSTPushMsgElem.mRcvUin = ((apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x1)localObject).rcvUin.get();
-    paramSTPushMsgElem.mSendUin = ((apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x1)localObject).sendUin.get();
-    if (!ApolloGameUtil.a(this.mApp))
+    paramObject = (apollo_push_msgInfo.STPushMsgElem)paramObject;
+    try
     {
-      QLog.w("ApolloPushManager", 1, "NOT apollo user, return.");
-      return;
-    }
-    paramSTPushMsgElem.mWordShowType = ((apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x1)localObject).wordType.get();
-    String str1;
-    if (paramInt == 0)
-    {
-      str1 = this.mApp.getCurrentAccountUin();
-      if ((!TextUtils.isEmpty(str1)) && (str1.equals(Long.toString(((apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x1)localObject).sessionId.get())))) {
-        if ((str1.equals(Long.toString(paramSTPushMsgElem.mRcvUin))) || (0L == paramSTPushMsgElem.mRcvUin)) {
-          paramSTPushMsgElem.mSessionId = paramSTPushMsgElem.mSendUin;
+      int i = paramObject.showPlace.get();
+      int j = paramObject.type.get();
+      if ((1 == j) && (1 == i))
+      {
+        localObject = (apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x1)paramObject.pm1.get();
+        paramObject = new ApolloActionPush();
+        paramObject.mId = NetConnInfoCenter.getServerTimeMillis();
+        paramObject.mActionId = ((apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x1)localObject).actionId.get();
+        paramObject.mActionType = ((apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x1)localObject).actionType.get();
+        paramObject.mAioType = ApolloUtilImpl.getQAioType(((apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x1)localObject).aioType.get());
+        paramObject.mContent = ((apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x1)localObject).diyWords.get();
+        paramObject.mRcvUin = ((apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x1)localObject).rcvUin.get();
+        paramObject.mSendUin = ((apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x1)localObject).sendUin.get();
+        if (!ApolloUtilImpl.isApolloUser(this.mApp))
+        {
+          QLog.w("[cmshow]ApolloPushManager", 1, "NOT apollo user, return.");
+          return;
+        }
+        paramObject.mWordShowType = ((apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x1)localObject).wordType.get();
+        String str1;
+        if (paramInt == 0)
+        {
+          str1 = this.mApp.getCurrentAccountUin();
+          if ((!TextUtils.isEmpty(str1)) && (str1.equals(Long.toString(((apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x1)localObject).sessionId.get()))))
+          {
+            if ((!str1.equals(Long.toString(paramObject.mRcvUin))) && (0L != paramObject.mRcvUin)) {
+              paramObject.mSessionId = paramObject.mRcvUin;
+            } else {
+              paramObject.mSessionId = paramObject.mSendUin;
+            }
+          }
+          else {
+            paramObject.mSessionId = ((apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x1)localObject).sessionId.get();
+          }
+        }
+        else
+        {
+          paramObject.mSessionId = ((apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x1)localObject).sessionId.get();
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("[cmshow]ApolloPushManager", 2, new Object[] { "[onRecvActionPush]  actionPush = ", paramObject });
+        }
+        if (this.mApp == null) {
+          return;
+        }
+        ((ApolloDaoManagerServiceImpl)this.mApp.getRuntimeService(IApolloDaoManagerService.class, "all")).saveActionPushData(paramObject);
+        ThreadManager.post(new ApolloPushManagerImpl.1(this, paramInt, paramObject), 5, null, true);
+        if (paramInt != 0)
+        {
+          localObject = (ApolloManagerServiceImpl)this.mApp.getRuntimeService(IApolloManagerService.class, "all");
+          str1 = String.valueOf(paramObject.mSendUin);
+          paramObject = String.valueOf(paramObject.mRcvUin);
+          String str2 = this.mApp.getCurrentAccountUin();
+          boolean bool = TextUtils.isEmpty(str2);
+          if ((!bool) && (!str2.equals(str1))) {
+            ((ApolloManagerServiceImpl)localObject).checkUserDress(this.mApp, str1, "apllo_redPack_action");
+          }
+          if ((!TextUtils.isEmpty(str2)) && (!str2.equals(paramObject))) {
+            ((ApolloManagerServiceImpl)localObject).checkUserDress(this.mApp, paramObject, "apllo_redPack_action");
+          }
         }
       }
+      else
+      {
+        paramObject = new StringBuilder();
+        paramObject.append("[onRecvActionPush], It doesn't meet show conditions, type:");
+        paramObject.append(j);
+        paramObject.append(",showPlace:");
+        paramObject.append(i);
+        QLog.i("[cmshow]ApolloPushManager", 1, paramObject.toString());
+        return;
+      }
     }
-    for (;;)
+    catch (Exception paramObject)
     {
-      paramSTPushMsgElem.print();
-      if (this.mApp == null) {
-        break;
-      }
-      ((ApolloDaoManagerServiceImpl)this.mApp.getRuntimeService(IApolloDaoManagerService.class, "all")).saveActionPushData(paramSTPushMsgElem);
-      ThreadManager.post(new ApolloPushManagerImpl.1(this, paramInt, paramSTPushMsgElem), 5, null, true);
-      if (paramInt == 0) {
-        break;
-      }
-      localObject = (ApolloManagerServiceImpl)this.mApp.getRuntimeService(IApolloManagerService.class, "all");
-      str1 = String.valueOf(paramSTPushMsgElem.mSendUin);
-      paramSTPushMsgElem = String.valueOf(paramSTPushMsgElem.mRcvUin);
-      String str2 = this.mApp.getCurrentAccountUin();
-      if ((!TextUtils.isEmpty(str2)) && (!str2.equals(str1))) {
-        ((ApolloManagerServiceImpl)localObject).checkUserDress(this.mApp, str1, "apllo_redPack_action");
-      }
-      if ((TextUtils.isEmpty(str2)) || (str2.equals(paramSTPushMsgElem))) {
-        break;
-      }
-      ((ApolloManagerServiceImpl)localObject).checkUserDress(this.mApp, paramSTPushMsgElem, "apllo_redPack_action");
-      return;
-      paramSTPushMsgElem.mSessionId = paramSTPushMsgElem.mRcvUin;
-      continue;
-      paramSTPushMsgElem.mSessionId = ((apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x1)localObject).sessionId.get();
-      continue;
-      paramSTPushMsgElem.mSessionId = ((apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x1)localObject).sessionId.get();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("errInfo->");
+      ((StringBuilder)localObject).append(paramObject.getMessage());
+      QLog.e("[cmshow]ApolloPushManager", 1, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -482,25 +524,11 @@ public class ApolloPushManagerImpl
     this.mActionPushLisRef = new WeakReference(paramOnActionPushListener);
   }
   
-  public void setOnPushObserver(IApolloPushManager.OnPushObserver paramOnPushObserver)
-  {
-    if (paramOnPushObserver == null)
-    {
-      this.mOnPushObserverRef = null;
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPushManager", 2, "[setOnPushObserver]");
-    }
-    this.mOnPushObserverRef = new WeakReference(paramOnPushObserver);
-  }
-  
   public void triggerAction(ApolloActionPush paramApolloActionPush)
   {
-    boolean bool = false;
     if (paramApolloActionPush == null)
     {
-      QLog.e("ApolloPushManager", 1, "[tiggerAction] pushData is null,return.");
+      QLog.e("[cmshow]ApolloPushManager", 1, "[tiggerAction] pushData is null,return.");
       return;
     }
     SpriteTaskParam localSpriteTaskParam = new SpriteTaskParam();
@@ -513,51 +541,44 @@ public class ApolloPushManagerImpl
     localSpriteTaskParam.jdField_a_of_type_Float = 0.0F;
     localSpriteTaskParam.e = paramApolloActionPush.mActionType;
     localSpriteTaskParam.jdField_c_of_type_JavaLangString = paramApolloActionPush.mContent;
-    Object localObject1;
-    Object localObject2;
-    if (paramApolloActionPush.mWordShowType == 1)
-    {
+    if (paramApolloActionPush.mWordShowType == 1) {
       localSpriteTaskParam.jdField_b_of_type_Boolean = true;
-      localSpriteTaskParam.jdField_a_of_type_JavaLangString = String.valueOf(paramApolloActionPush.mSendUin);
-      localSpriteTaskParam.jdField_b_of_type_JavaLangString = String.valueOf(paramApolloActionPush.mRcvUin);
-      if (this.mApp != null)
+    } else {
+      localSpriteTaskParam.jdField_b_of_type_Boolean = false;
+    }
+    localSpriteTaskParam.jdField_a_of_type_JavaLangString = String.valueOf(paramApolloActionPush.mSendUin);
+    localSpriteTaskParam.jdField_b_of_type_JavaLangString = String.valueOf(paramApolloActionPush.mRcvUin);
+    Object localObject1 = this.mApp;
+    if (localObject1 != null)
+    {
+      localSpriteTaskParam.jdField_a_of_type_Boolean = ((QQAppInterface)localObject1).getCurrentAccountUin().equals(String.valueOf(paramApolloActionPush.mSendUin));
+      localObject1 = (ApolloDaoManagerServiceImpl)this.mApp.getRuntimeService(IApolloDaoManagerService.class, "all");
+      Object localObject2 = ((ApolloDaoManagerServiceImpl)localObject1).findActionById(localSpriteTaskParam.f);
+      if (localObject2 != null)
       {
-        if (this.mApp.getCurrentAccountUin().equals(String.valueOf(paramApolloActionPush.mSendUin))) {
-          bool = true;
-        }
-        localSpriteTaskParam.jdField_a_of_type_Boolean = bool;
-        localObject1 = (ApolloDaoManagerServiceImpl)this.mApp.getRuntimeService(IApolloDaoManagerService.class, "all");
-        localObject2 = ((ApolloDaoManagerServiceImpl)localObject1).findActionById(localSpriteTaskParam.f);
-        if (localObject2 == null) {
-          break label267;
-        }
         if (TextUtils.isEmpty(localSpriteTaskParam.jdField_c_of_type_JavaLangString)) {
           localSpriteTaskParam.jdField_c_of_type_JavaLangString = ApolloActionHelperImpl.getRandomBubbleText(((ApolloActionData)localObject2).bubbleText);
         }
       }
-    }
-    for (;;)
-    {
-      localObject1 = (ISpriteScriptManager)this.mApp.getRuntimeService(ISpriteScriptManager.class, "all");
-      if (localObject1 != null) {
-        ((ISpriteScriptManager)localObject1).getSpriteBridge().b(localSpriteTaskParam);
+      else
+      {
+        localObject2 = Collections.synchronizedList(new ArrayList());
+        ApolloActionData localApolloActionData = new ApolloActionData();
+        localApolloActionData.actionId = localSpriteTaskParam.f;
+        ((List)localObject2).add(localApolloActionData);
+        ((ApolloDaoManagerServiceImpl)localObject1).saveAction((List)localObject2);
       }
-      ThreadManager.post(new ApolloPushManagerImpl.2(this, paramApolloActionPush, localSpriteTaskParam), 5, null, true);
-      return;
-      localSpriteTaskParam.jdField_b_of_type_Boolean = false;
-      break;
-      label267:
-      localObject2 = Collections.synchronizedList(new ArrayList());
-      ApolloActionData localApolloActionData = new ApolloActionData();
-      localApolloActionData.actionId = localSpriteTaskParam.f;
-      ((List)localObject2).add(localApolloActionData);
-      ((ApolloDaoManagerServiceImpl)localObject1).saveAction((List)localObject2);
     }
+    localObject1 = (ISpriteScriptManager)this.mApp.getRuntimeService(ISpriteScriptManager.class, "all");
+    if (localObject1 != null) {
+      ((ISpriteScriptManager)localObject1).getSpriteBridge().b(localSpriteTaskParam);
+    }
+    ThreadManager.post(new ApolloPushManagerImpl.2(this, paramApolloActionPush, localSpriteTaskParam), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.api.impl.ApolloPushManagerImpl
  * JD-Core Version:    0.7.0.1
  */

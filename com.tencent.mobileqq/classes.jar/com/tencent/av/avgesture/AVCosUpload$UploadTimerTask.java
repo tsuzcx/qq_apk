@@ -10,13 +10,14 @@ class AVCosUpload$UploadTimerTask
   
   public void run()
   {
-    this.this$0.IsUploading = false;
-    AVCosUpload.access$200(this.this$0).cancel();
+    AVCosUpload localAVCosUpload = this.this$0;
+    localAVCosUpload.IsUploading = false;
+    AVCosUpload.access$200(localAVCosUpload).cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.avgesture.AVCosUpload.UploadTimerTask
  * JD-Core Version:    0.7.0.1
  */

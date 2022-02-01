@@ -229,7 +229,7 @@ public abstract class ObjectBaseData
   {
     this.jdField_c_of_type_Float = 1.0F;
     this.jdField_g_of_type_Float = 1.0F;
-    this.jdField_f_of_type_JavaLangString = HardCodeUtil.a(2131707668);
+    this.jdField_f_of_type_JavaLangString = HardCodeUtil.a(2131707692);
     this.jdField_g_of_type_JavaLangString = "YANG YANG";
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     a();
@@ -238,11 +238,12 @@ public abstract class ObjectBaseData
   
   private void a()
   {
-    if (this.jdField_a_of_type_AndroidContentContext != null)
+    Object localObject = this.jdField_a_of_type_AndroidContentContext;
+    if (localObject != null)
     {
-      WindowManager localWindowManager = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
+      localObject = (WindowManager)((Context)localObject).getSystemService("window");
       DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-      localWindowManager.getDefaultDisplay().getMetrics(localDisplayMetrics);
+      ((WindowManager)localObject).getDefaultDisplay().getMetrics(localDisplayMetrics);
       this.jdField_d_of_type_Float = localDisplayMetrics.widthPixels;
       this.jdField_e_of_type_Float = localDisplayMetrics.heightPixels;
     }
@@ -772,7 +773,7 @@ public abstract class ObjectBaseData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ObjectBaseData
  * JD-Core Version:    0.7.0.1
  */

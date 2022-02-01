@@ -19,13 +19,14 @@ public final class oidb_cmd0x68b$SubscribeMsg
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32 }, new String[] { "uint64_source_article_id", "bytes_title", "uint64_algorithm_id", "uint32_strategy_id" }, new Object[] { Long.valueOf(0L), localByteStringMicro, Long.valueOf(0L), Integer.valueOf(0) }, SubscribeMsg.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32 }, new String[] { "uint64_source_article_id", "bytes_title", "uint64_algorithm_id", "uint32_strategy_id" }, new Object[] { localLong, localByteStringMicro, localLong, Integer.valueOf(0) }, SubscribeMsg.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.SubscribeMsg
  * JD-Core Version:    0.7.0.1
  */

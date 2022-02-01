@@ -16,31 +16,32 @@ class AssociateSearchWordsFragment$SearchAssociatedWordAdapter$1
   
   public void onClick(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment$SearchAssociatedWordAdapter.a.getActivity();
-    if ((this.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment$SearchAssociatedWordAdapter.a.getActivity() instanceof AssociateSearchWordsFragment.AssociateWordClickCallback))
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment$SearchAssociatedWordAdapter.a.getBaseActivity();
+    boolean bool = this.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment$SearchAssociatedWordAdapter.a.getBaseActivity() instanceof AssociateSearchWordsFragment.AssociateWordClickCallback;
+    AssociateSearchWordsFragment.AssociateWordClickCallback localAssociateWordClickCallback = null;
+    if (bool)
     {
-      localObject = (AssociateSearchWordsFragment.AssociateWordClickCallback)localObject;
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      UniteSearchReportController.a(null, new ReportModelDC02528().module("all_search").action("clk_frame_up").ver1(this.jdField_a_of_type_JavaLangString).ver2("kandian").ver3(UniteSearchActivity.d).ver4(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment$SearchAssociatedWordAdapter.a.jdField_a_of_type_JavaLangString).ver5(this.jdField_a_of_type_Int / 2 + 1 + "").ver6(UniteSearchActivity.c).session_id(UniteSearchActivity.e));
+      localAssociateWordClickCallback = (AssociateSearchWordsFragment.AssociateWordClickCallback)localObject;
+      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      localObject = new ReportModelDC02528().module("all_search").action("clk_frame_up").ver1(this.jdField_a_of_type_JavaLangString).ver2("kandian").ver3(UniteSearchActivity.d).ver4(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment$SearchAssociatedWordAdapter.a.jdField_a_of_type_JavaLangString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_Int / 2 + 1);
+      localStringBuilder.append("");
+      UniteSearchReportController.a(null, ((ReportModelDC02528)localObject).ver5(localStringBuilder.toString()).ver6(UniteSearchActivity.c).session_id(UniteSearchActivity.e));
     }
-    for (;;)
+    else if (AssociateSearchWordsFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment$SearchAssociatedWordAdapter.a) != null)
     {
-      if (localObject != null) {
-        ((AssociateSearchWordsFragment.AssociateWordClickCallback)localObject).c(this.jdField_a_of_type_JavaLangString);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (AssociateSearchWordsFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment$SearchAssociatedWordAdapter.a) != null) {
-        localObject = AssociateSearchWordsFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment$SearchAssociatedWordAdapter.a);
-      } else {
-        localObject = null;
-      }
+      localAssociateWordClickCallback = AssociateSearchWordsFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment$SearchAssociatedWordAdapter.a);
     }
+    if (localAssociateWordClickCallback != null) {
+      localAssociateWordClickCallback.c(this.jdField_a_of_type_JavaLangString);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.SearchAssociatedWordAdapter.1
  * JD-Core Version:    0.7.0.1
  */

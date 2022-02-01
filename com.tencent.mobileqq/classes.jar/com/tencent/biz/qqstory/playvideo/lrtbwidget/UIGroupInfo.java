@@ -18,7 +18,7 @@ public class UIGroupInfo
   
   public UIGroupInfo(@NonNull ErrorMessage paramErrorMessage, boolean paramBoolean)
   {
-    super(new IDataProvider.GroupId("ERROR_" + paramErrorMessage));
+    super(new IDataProvider.GroupId(localStringBuilder.toString()));
     this.b = null;
     this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
     this.jdField_a_of_type_Boolean = paramBoolean;
@@ -30,7 +30,7 @@ public class UIGroupInfo
   
   public UIGroupInfo(@NonNull String paramString, boolean paramBoolean)
   {
-    super(new IDataProvider.GroupId("LOADING_" + paramString));
+    super(new IDataProvider.GroupId(localStringBuilder.toString()));
     this.b = paramString;
     this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = null;
     this.jdField_a_of_type_Boolean = paramBoolean;
@@ -52,7 +52,7 @@ public class UIGroupInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.UIGroupInfo
  * JD-Core Version:    0.7.0.1
  */

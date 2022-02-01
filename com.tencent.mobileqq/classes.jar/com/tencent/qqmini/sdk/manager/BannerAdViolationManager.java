@@ -17,70 +17,119 @@ public class BannerAdViolationManager
   
   private static View.OnClickListener getOnClickListenerReflected(View paramView)
   {
+    Object localObject2 = null;
     if (paramView == null) {
       return null;
     }
+    Object localObject1;
     try
     {
       Field localField = View.class.getDeclaredField("mListenerInfo");
-      if (localField == null) {
-        break label96;
+      localObject1 = localObject2;
+      if (localField != null)
+      {
+        localField.setAccessible(true);
+        paramView = localField.get(paramView);
+        localField = paramView.getClass().getDeclaredField("mOnClickListener");
+        localObject1 = localObject2;
+        if (localField != null)
+        {
+          localObject1 = localObject2;
+          if (paramView != null)
+          {
+            localField.setAccessible(true);
+            localObject1 = (View.OnClickListener)localField.get(paramView);
+          }
+        }
       }
-      localField.setAccessible(true);
-      paramView = localField.get(paramView);
-      localField = paramView.getClass().getDeclaredField("mOnClickListener");
-      if ((localField == null) || (paramView == null)) {
-        break label96;
-      }
-      localField.setAccessible(true);
-      paramView = (View.OnClickListener)localField.get(paramView);
     }
     catch (Throwable paramView)
     {
-      for (;;)
-      {
-        QMLog.e("BannerAdViolationManage", "getOnClickListenerReflected", paramView);
-        paramView = null;
-      }
+      QMLog.e("BannerAdViolationManage", "getOnClickListenerReflected", paramView);
+      localObject1 = localObject2;
     }
-    QMLog.d("BannerAdViolationManage", "getOnClickListenerReflected: listener = " + paramView);
-    return paramView;
+    paramView = new StringBuilder();
+    paramView.append("getOnClickListenerReflected: listener = ");
+    paramView.append(localObject1);
+    QMLog.d("BannerAdViolationManage", paramView.toString());
+    return localObject1;
   }
   
   private static void handleViolationReport(String paramString, long paramLong1, int paramInt, long paramLong2)
   {
-    QMLog.d("BannerAdViolationManage", "handleViolationReport() called with: miniAppId = [" + paramString + "], aid = [" + paramLong1 + "], clickArea = [" + paramInt + "], expoClickInterval = [" + paramLong2 + "]");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handleViolationReport() called with: miniAppId = [");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("], aid = [");
+    ((StringBuilder)localObject).append(paramLong1);
+    ((StringBuilder)localObject).append("], clickArea = [");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("], expoClickInterval = [");
+    ((StringBuilder)localObject).append(paramLong2);
+    ((StringBuilder)localObject).append("]");
+    QMLog.d("BannerAdViolationManage", ((StringBuilder)localObject).toString());
     if ((paramInt > 0) && (paramInt < 11) && (paramLong2 > 0L))
     {
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramString).append('|').append(paramLong1).append('|').append(paramInt).append('|').append(paramLong2).append('|').append(System.currentTimeMillis()).append('|').append("Android").append('|').append("");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append('|');
+      ((StringBuilder)localObject).append(paramLong1);
+      ((StringBuilder)localObject).append('|');
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append('|');
+      ((StringBuilder)localObject).append(paramLong2);
+      ((StringBuilder)localObject).append('|');
+      ((StringBuilder)localObject).append(System.currentTimeMillis());
+      ((StringBuilder)localObject).append('|');
+      ((StringBuilder)localObject).append("Android");
+      ((StringBuilder)localObject).append('|');
+      ((StringBuilder)localObject).append("");
       paramString = ((StringBuilder)localObject).toString();
-      QMLog.d("BannerAdViolationManage", "handleViolationReport: report one record " + paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleViolationReport: report one record ");
+      ((StringBuilder)localObject).append(paramString);
+      QMLog.d("BannerAdViolationManage", ((StringBuilder)localObject).toString());
       localObject = new Bundle();
       ((Bundle)localObject).putStringArray("data", new String[] { paramString });
       ((Bundle)localObject).putString("log_key", "dc05439");
       AppBrandCmdProxy.g().sendCmd("cmd_dc_report_log_key_data", (Bundle)localObject, null);
       return;
     }
-    QMLog.w("BannerAdViolationManage", "invalid report record clickArea = " + paramInt + ", expoClickInterval = " + paramLong2);
+    paramString = new StringBuilder();
+    paramString.append("invalid report record clickArea = ");
+    paramString.append(paramInt);
+    paramString.append(", expoClickInterval = ");
+    paramString.append(paramLong2);
+    QMLog.w("BannerAdViolationManage", paramString.toString());
   }
   
   public static void scheduleViolationDetectTask(String paramString, long paramLong, View paramView)
   {
-    QMLog.d("BannerAdViolationManage", "scheduleViolationDetectTask() called with: miniAppId = [" + paramString + "], aid = [" + paramLong + "], view = [" + paramView + "]");
-    if ((TextUtils.isEmpty(paramString)) || (paramView == null)) {
-      return;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("scheduleViolationDetectTask() called with: miniAppId = [");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("], aid = [");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append("], view = [");
+    ((StringBuilder)localObject).append(paramView);
+    ((StringBuilder)localObject).append("]");
+    QMLog.d("BannerAdViolationManage", ((StringBuilder)localObject).toString());
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (paramView == null) {
+        return;
+      }
+      exposureTimestampMap.put(Long.valueOf(paramLong), Long.valueOf(System.currentTimeMillis()));
+      localObject = new float[2];
+      paramView.setOnTouchListener(new BannerAdViolationManager.1((float[])localObject));
+      paramView.setOnClickListener(new BannerAdViolationManager.2(getOnClickListenerReflected(paramView), paramLong, paramView, (float[])localObject, paramString));
+      QMLog.d("BannerAdViolationManage", "scheduleViolationDetectTask: end");
     }
-    exposureTimestampMap.put(Long.valueOf(paramLong), Long.valueOf(System.currentTimeMillis()));
-    float[] arrayOfFloat = new float[2];
-    paramView.setOnTouchListener(new BannerAdViolationManager.1(arrayOfFloat));
-    paramView.setOnClickListener(new BannerAdViolationManager.2(getOnClickListenerReflected(paramView), paramLong, paramView, arrayOfFloat, paramString));
-    QMLog.d("BannerAdViolationManage", "scheduleViolationDetectTask: end");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.BannerAdViolationManager
  * JD-Core Version:    0.7.0.1
  */

@@ -28,10 +28,13 @@ public final class VideoFramesRetriever$FrameFetchTask
   
   public int a(@Nullable FrameFetchTask paramFrameFetchTask)
   {
-    if (paramFrameFetchTask != null) {}
-    for (long l = paramFrameFetchTask.jdField_a_of_type_Long;; l = 0L) {
-      return -(int)(this.jdField_a_of_type_Long - l);
+    long l;
+    if (paramFrameFetchTask != null) {
+      l = paramFrameFetchTask.jdField_a_of_type_Long;
+    } else {
+      l = 0L;
     }
+    return -(int)(this.jdField_a_of_type_Long - l);
   }
   
   public final void a(long paramLong)
@@ -46,7 +49,7 @@ public final class VideoFramesRetriever$FrameFetchTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocrop.VideoFramesRetriever.FrameFetchTask
  * JD-Core Version:    0.7.0.1
  */

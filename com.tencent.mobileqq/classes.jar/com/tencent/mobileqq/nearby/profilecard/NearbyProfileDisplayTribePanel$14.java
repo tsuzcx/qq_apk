@@ -9,15 +9,15 @@ class NearbyProfileDisplayTribePanel$14
 {
   NearbyProfileDisplayTribePanel$14(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
   
-  public void a(FaceScoreConfig paramFaceScoreConfig)
+  public void a(Object paramObject)
   {
-    ThreadManager.post(new NearbyProfileDisplayTribePanel.14.1(this, paramFaceScoreConfig), 8, null, false);
-    this.a.a = paramFaceScoreConfig;
+    ThreadManager.post(new NearbyProfileDisplayTribePanel.14.1(this, paramObject), 8, null, false);
+    this.a.a = ((FaceScoreConfig)paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.14
  * JD-Core Version:    0.7.0.1
  */

@@ -29,19 +29,24 @@ public class MiniAppGetAppInfoByLinkServlet
   
   public void onProcessData(Intent paramIntent, Bundle paramBundle, byte[] paramArrayOfByte)
   {
-    INTERFACE.StGetAppInfoByLinkRsp localStGetAppInfoByLinkRsp = new INTERFACE.StGetAppInfoByLinkRsp();
-    localStGetAppInfoByLinkRsp.mergeFrom(paramArrayOfByte);
-    if (localStGetAppInfoByLinkRsp.appInfo != null)
+    Object localObject = new INTERFACE.StGetAppInfoByLinkRsp();
+    ((INTERFACE.StGetAppInfoByLinkRsp)localObject).mergeFrom(paramArrayOfByte);
+    if (((INTERFACE.StGetAppInfoByLinkRsp)localObject).appInfo != null)
     {
-      if (localStGetAppInfoByLinkRsp.appInfo.type.get() == 3) {
-        savaMiniAppInfo(paramIntent, localStGetAppInfoByLinkRsp);
+      if (((INTERFACE.StGetAppInfoByLinkRsp)localObject).appInfo.type.get() == 3) {
+        savaMiniAppInfo(paramIntent, (INTERFACE.StGetAppInfoByLinkRsp)localObject);
       }
-      paramArrayOfByte = MiniAppInfo.from(localStGetAppInfoByLinkRsp.appInfo);
-      String str = localStGetAppInfoByLinkRsp.shareTicket.get();
+      paramArrayOfByte = MiniAppInfo.from(((INTERFACE.StGetAppInfoByLinkRsp)localObject).appInfo);
+      String str = ((INTERFACE.StGetAppInfoByLinkRsp)localObject).shareTicket.get();
       paramBundle.putSerializable("appInfo", paramArrayOfByte);
-      paramBundle.putSerializable("appInfo_pd", localStGetAppInfoByLinkRsp.appInfo.toByteArray());
+      paramBundle.putSerializable("appInfo_pd", ((INTERFACE.StGetAppInfoByLinkRsp)localObject).appInfo.toByteArray());
       paramBundle.putString("shareTicket", str);
-      QLog.i("[mini] MiniAppGetAppInfoByLinkServlet", 1, "[MiniEng]" + paramArrayOfByte.downloadUrl + "," + paramArrayOfByte.fileSize);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[MiniEng]");
+      ((StringBuilder)localObject).append(paramArrayOfByte.downloadUrl);
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(paramArrayOfByte.fileSize);
+      QLog.i("[mini] MiniAppGetAppInfoByLinkServlet", 1, ((StringBuilder)localObject).toString());
       notifyObserver(paramIntent, this.observerId, true, paramBundle, MiniAppObserver.class);
       return;
     }
@@ -68,7 +73,7 @@ public class MiniAppGetAppInfoByLinkServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetAppInfoByLinkServlet
  * JD-Core Version:    0.7.0.1
  */

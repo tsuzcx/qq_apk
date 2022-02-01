@@ -12,23 +12,27 @@ class QQBroadcastActivity$Adapter$1$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
+      if (paramInt != 1) {
+        return;
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.getCount() > 0)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.a.app.getMessageFacade().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.a.a(), 0);
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.changeCursor(this.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.getCursor());
+      }
     }
-    do
+    else
     {
-      return;
       this.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.a.app.getMessageFacade().b(this.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.a.a(), 0, this.a.jdField_a_of_type_Long);
       this.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.a.b();
-      return;
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.getCount() <= 0);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.a.app.getMessageFacade().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.a.a(), 0);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.changeCursor(this.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.getCursor());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQBroadcastActivity.Adapter.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -58,7 +58,7 @@ public class TransitionHelper
       paramTransitionStruct.curChannel.add(paramTransitionStruct.curClip);
       paramTransitionStruct.totalDurationMsInTimeLine = (paramTransitionStruct.totalDurationMsInTimeLine - l + paramTransitionStruct.curClip.getDuration().getTimeUs() / 1000L);
       localObject = new CMTimeRange((CMTime)localObject, new CMTime(l, 1000));
-      localFaceTransition = new FaceTransition();
+      FaceTransition localFaceTransition = new FaceTransition();
       localFaceTransition.timeRange = ((CMTimeRange)localObject);
       localFaceTransition.procMethod = paramTAVTransitionAutomaticEffect.getProcMethod();
       this.faceTransitions.add(localFaceTransition);
@@ -68,19 +68,18 @@ public class TransitionHelper
       paramTransitionStruct.lastChannel = paramTransitionStruct.curChannel;
       paramTransitionStruct.lastClip = paramTransitionStruct.curClip;
       paramTransitionStruct.channels.add(paramTransitionStruct.curChannel);
-    }
-    while (CollectionUtil.isEmptyList(paramTAVTransitionAutomaticEffect.getSubTransitions()))
-    {
-      FaceTransition localFaceTransition;
       return;
     }
-    paramTAVTransitionAutomaticEffect = randomTransition(paramTAVTransitionAutomaticEffect.getSubTransitions());
-    if (TAVAutomaticTemplate.isMapping)
+    if (!CollectionUtil.isEmptyList(paramTAVTransitionAutomaticEffect.getSubTransitions()))
     {
-      applyNormalTransitionInChannel(paramTransitionStruct, paramTAVTransitionAutomaticEffect);
-      return;
+      paramTAVTransitionAutomaticEffect = randomTransition(paramTAVTransitionAutomaticEffect.getSubTransitions());
+      if (TAVAutomaticTemplate.isMapping)
+      {
+        applyNormalTransitionInChannel(paramTransitionStruct, paramTAVTransitionAutomaticEffect);
+        return;
+      }
+      applyNormalTransitionsToChannel(paramTransitionStruct, paramTAVTransitionAutomaticEffect);
     }
-    applyNormalTransitionsToChannel(paramTransitionStruct, paramTAVTransitionAutomaticEffect);
   }
   
   private void applyNormalTransitionInChannel(TransitionStruct paramTransitionStruct, TAVTransitionAutomaticEffect paramTAVTransitionAutomaticEffect)
@@ -103,13 +102,18 @@ public class TransitionHelper
   @Deprecated
   private void applyNormalTransitionsToChannel(TransitionStruct paramTransitionStruct, TAVTransitionAutomaticEffect paramTAVTransitionAutomaticEffect)
   {
-    long l = 0L;
-    CMTime localCMTime = null;
     TAVSticker localTAVSticker = getTAVSticker(paramTAVTransitionAutomaticEffect);
+    long l;
+    CMTime localCMTime;
     if (localTAVSticker != null)
     {
       l = ((float)localTAVSticker.durationTime() / 1000.0F);
       localCMTime = new CMTime(paramTransitionStruct.totalDurationMsInTimeLine - l, 1000);
+    }
+    else
+    {
+      l = 0L;
+      localCMTime = null;
     }
     if ((localTAVSticker != null) && (localCMTime.bigThan(paramTransitionStruct.lastTransitionEndTime)))
     {
@@ -223,7 +227,9 @@ public class TransitionHelper
   
   private boolean shouldAddTransition(TransitionEffectParam paramTransitionEffectParam, TransitionStruct paramTransitionStruct)
   {
-    if (paramTransitionStruct.index == 0) {
+    int i = paramTransitionStruct.index;
+    boolean bool3 = false;
+    if (i == 0) {
       return false;
     }
     List localList = paramTransitionStruct.lastChannel;
@@ -231,15 +237,22 @@ public class TransitionHelper
     if (!CollectionUtil.isEmptyCollection(localList)) {
       localTAVClip = (TAVClip)localList.get(localList.size() - 1);
     }
-    if (localTAVClip != null) {}
-    for (boolean bool1 = localTAVClip.getTimeRange().getEnd().sub(paramTransitionStruct.lastTransitionEndTime).bigThan(paramTransitionEffectParam.getLeftTransitionTime());; bool1 = false)
-    {
-      boolean bool2 = paramTransitionStruct.curClip.getDuration().bigThan(paramTransitionEffectParam.getRightTransitionTime());
-      if ((!bool1) || (!bool2)) {
-        break;
-      }
-      return true;
+    boolean bool1;
+    if (localTAVClip != null) {
+      bool1 = localTAVClip.getTimeRange().getEnd().sub(paramTransitionStruct.lastTransitionEndTime).bigThan(paramTransitionEffectParam.getLeftTransitionTime());
+    } else {
+      bool1 = false;
     }
+    boolean bool4 = paramTransitionStruct.curClip.getDuration().bigThan(paramTransitionEffectParam.getRightTransitionTime());
+    boolean bool2 = bool3;
+    if (bool1)
+    {
+      bool2 = bool3;
+      if (bool4) {
+        bool2 = true;
+      }
+    }
+    return bool2;
   }
   
   public void applyTransitionToComposition(TAVComposition paramTAVComposition)
@@ -273,23 +286,33 @@ public class TransitionHelper
   
   public TAVSticker getTAVSticker(TAVTransitionAutomaticEffect paramTAVTransitionAutomaticEffect)
   {
-    TAVSticker localTAVSticker = TavStickerUtils.createSticker(this.templateDir + File.separator + paramTAVTransitionAutomaticEffect.parameter.filePath, false);
-    if (localTAVSticker == null) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.templateDir);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(paramTAVTransitionAutomaticEffect.parameter.filePath);
+    localObject = TavStickerUtils.createSticker(((StringBuilder)localObject).toString(), false);
+    if (localObject == null) {
       return null;
     }
-    localTAVSticker.setStickerId(paramTAVTransitionAutomaticEffect.effectId);
-    return localTAVSticker;
+    ((TAVSticker)localObject).setStickerId(paramTAVTransitionAutomaticEffect.effectId);
+    return localObject;
   }
   
   public boolean needTransition(TAVComposition paramTAVComposition)
   {
     paramTAVComposition = (List)paramTAVComposition.getVideoChannels().get(0);
-    return (paramTAVComposition != null) && (paramTAVComposition.size() > 1) && (!CollectionUtil.isEmptyList(this.transitions));
+    if ((paramTAVComposition != null) && (paramTAVComposition.size() > 1)) {
+      return !CollectionUtil.isEmptyList(this.transitions);
+    }
+    return false;
   }
   
   public TAVTransitionAutomaticEffect randomTransition(List<TAVTransitionAutomaticEffect> paramList)
   {
-    return (TAVTransitionAutomaticEffect)paramList.get((int)(Math.random() * paramList.size()));
+    double d1 = Math.random();
+    double d2 = paramList.size();
+    Double.isNaN(d2);
+    return (TAVTransitionAutomaticEffect)paramList.get((int)(d1 * d2));
   }
   
   public void setTransitionEffectModels(List<TransitionEffectModel> paramList)

@@ -17,9 +17,16 @@ public class QCircleSafeZipInPutStream
     ZipEntry localZipEntry = super.getNextEntry();
     if (localZipEntry != null)
     {
-      String str = localZipEntry.getName();
-      if ((str != null) && ((str.contains("../")) || (str.contains("..\\")))) {
-        throw new SecurityException("非法entry路径:" + localZipEntry.getName());
+      Object localObject = localZipEntry.getName();
+      if (localObject != null)
+      {
+        if ((!((String)localObject).contains("../")) && (!((String)localObject).contains("..\\"))) {
+          return localZipEntry;
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("非法entry路径:");
+        ((StringBuilder)localObject).append(localZipEntry.getName());
+        throw new SecurityException(((StringBuilder)localObject).toString());
       }
     }
     return localZipEntry;
@@ -27,7 +34,7 @@ public class QCircleSafeZipInPutStream
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.pluginparse.QCircleSafeZipInPutStream
  * JD-Core Version:    0.7.0.1
  */

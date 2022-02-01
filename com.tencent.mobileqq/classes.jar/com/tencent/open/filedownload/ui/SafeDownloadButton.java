@@ -28,8 +28,8 @@ import mqq.os.MqqHandler;
 public class SafeDownloadButton
   extends ApkFileDownloadButton
 {
-  private static final String jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131713451);
-  private static final String jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131713454);
+  private static final String jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131713419);
+  private static final String jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131713422);
   private long jdField_a_of_type_Long = 0L;
   private boolean jdField_a_of_type_Boolean = false;
   private TaskInfo jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo;
@@ -54,8 +54,15 @@ public class SafeDownloadButton
   {
     try
     {
-      String str = "tmast://download?downl_url=" + URLEncoder.encode(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.e, "UTF-8") + "&down_ticket=" + URLEncoder.encode(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.e, "UTF-8") + "&oplist=1;2&via=" + this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.d;
-      return str;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("tmast://download?downl_url=");
+      ((StringBuilder)localObject).append(URLEncoder.encode(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.e, "UTF-8"));
+      ((StringBuilder)localObject).append("&down_ticket=");
+      ((StringBuilder)localObject).append(URLEncoder.encode(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.e, "UTF-8"));
+      ((StringBuilder)localObject).append("&oplist=1;2&via=");
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.d);
+      localObject = ((StringBuilder)localObject).toString();
+      return localObject;
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
@@ -66,51 +73,64 @@ public class SafeDownloadButton
   
   private void k()
   {
-    if ((this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo == null) || (TextUtils.isEmpty(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.e))) {
-      return;
-    }
-    AppCenterReporter.b(ClickDataBuilder.a().a("200").k(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_a_of_type_JavaLangString).j(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_b_of_type_JavaLangString).l(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.c).m(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.d).a(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.h).b(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.f).g(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.e));
-    QQAppInterface localQQAppInterface = ((BaseActivity)getContext()).app;
-    if (this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h == null) {}
-    for (String str = "";; str = this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h)
+    Object localObject = this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo;
+    if (localObject != null)
     {
-      ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8009AC4", "0X8009AC4", 0, 0, "1", "", str, "");
+      if (TextUtils.isEmpty(((TaskInfo)localObject).e)) {
+        return;
+      }
+      AppCenterReporter.b(ClickDataBuilder.a().a("200").k(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_a_of_type_JavaLangString).j(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_b_of_type_JavaLangString).l(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.c).m(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.d).a(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.h).b(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.f).g(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.e));
+      QQAppInterface localQQAppInterface = ((BaseActivity)getContext()).app;
+      if (this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h == null) {
+        localObject = "";
+      } else {
+        localObject = this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h;
+      }
+      ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8009AC4", "0X8009AC4", 0, 0, "1", "", (String)localObject, "");
       l();
-      return;
     }
   }
   
   private void l()
   {
     String str = c();
-    Intent localIntent = new Intent("android.intent.action.VIEW");
-    localIntent.setData(Uri.parse(str));
-    localIntent.addFlags(268435456);
+    Object localObject = new Intent("android.intent.action.VIEW");
+    ((Intent)localObject).setData(Uri.parse(str));
+    ((Intent)localObject).addFlags(268435456);
     try
     {
-      BaseApplication.getContext().startActivity(localIntent);
-      LogUtility.b("SafeDownloadButton_", "goToYYBByTmast success! jumpUrl=" + str);
+      BaseApplication.getContext().startActivity((Intent)localObject);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("goToYYBByTmast success! jumpUrl=");
+      ((StringBuilder)localObject).append(str);
+      LogUtility.b("SafeDownloadButton_", ((StringBuilder)localObject).toString());
       return;
     }
     catch (ActivityNotFoundException localActivityNotFoundException)
     {
-      LogUtility.e("SafeDownloadButton_", "ActivityNotFoundException e=" + localActivityNotFoundException.getMessage());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("ActivityNotFoundException e=");
+      ((StringBuilder)localObject).append(localActivityNotFoundException.getMessage());
+      LogUtility.e("SafeDownloadButton_", ((StringBuilder)localObject).toString());
     }
   }
   
   private void m()
   {
     String str = c();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("url", str);
-    DownloadApi.a(localBundle);
-    DownloadApi.b(localBundle);
-    LogUtility.b("SafeDownloadButton_", "writeTmastCmd success! jumpUrl=" + str);
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putString("url", str);
+    DownloadApi.a((Bundle)localObject);
+    DownloadApi.b((Bundle)localObject);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("writeTmastCmd success! jumpUrl=");
+    ((StringBuilder)localObject).append(str);
+    LogUtility.b("SafeDownloadButton_", ((StringBuilder)localObject).toString());
   }
   
   protected String a()
   {
-    return HardCodeUtil.a(2131713456);
+    return HardCodeUtil.a(2131713424);
   }
   
   protected String a(int paramInt)
@@ -132,7 +152,10 @@ public class SafeDownloadButton
   {
     if (TextUtils.equals(paramString, "com.tencent.android.qqdownloader"))
     {
-      LogUtility.b("SafeDownloadButton_", HardCodeUtil.a(2131713453) + this.jdField_a_of_type_Boolean);
+      paramString = new StringBuilder();
+      paramString.append(HardCodeUtil.a(2131713421));
+      paramString.append(this.jdField_a_of_type_Boolean);
+      LogUtility.b("SafeDownloadButton_", paramString.toString());
       if (this.jdField_a_of_type_Boolean)
       {
         this.jdField_b_of_type_Boolean = true;
@@ -144,28 +167,24 @@ public class SafeDownloadButton
   
   protected void a(String paramString, boolean paramBoolean)
   {
-    QQAppInterface localQQAppInterface;
     if ((paramBoolean) && (("900".equals(paramString)) || ("400".equals(paramString))))
     {
-      localQQAppInterface = ((BaseActivity)getContext()).app;
-      if (this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h != null) {
-        break label73;
+      QQAppInterface localQQAppInterface = ((BaseActivity)getContext()).app;
+      if (this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h == null) {
+        paramString = "";
+      } else {
+        paramString = this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h;
       }
-    }
-    label73:
-    for (paramString = "";; paramString = this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h)
-    {
       ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8009AC4", "0X8009AC4", 0, 0, "2", "", paramString, "");
-      return;
     }
   }
   
   protected String b(int paramInt)
   {
     if (paramInt == 4) {
-      return HardCodeUtil.a(2131713455);
+      return HardCodeUtil.a(2131713423);
     }
-    return HardCodeUtil.a(2131713452);
+    return HardCodeUtil.a(2131713420);
   }
   
   protected void b(boolean paramBoolean)
@@ -190,7 +209,14 @@ public class SafeDownloadButton
   public void j()
   {
     long l = System.currentTimeMillis();
-    LogUtility.b("SafeDownloadButton_", "onResume " + this.jdField_b_of_type_Boolean + ",currentTimestamp=" + l + ",mYYBInstallSuccessTimestamp= " + this.jdField_a_of_type_Long);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onResume ");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(",currentTimestamp=");
+    localStringBuilder.append(l);
+    localStringBuilder.append(",mYYBInstallSuccessTimestamp= ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    LogUtility.b("SafeDownloadButton_", localStringBuilder.toString());
     if (this.jdField_b_of_type_Boolean)
     {
       if (l - this.jdField_a_of_type_Long < 5000L) {
@@ -207,7 +233,7 @@ public class SafeDownloadButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.filedownload.ui.SafeDownloadButton
  * JD-Core Version:    0.7.0.1
  */

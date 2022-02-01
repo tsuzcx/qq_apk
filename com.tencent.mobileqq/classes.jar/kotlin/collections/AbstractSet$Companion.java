@@ -25,22 +25,23 @@ public final class AbstractSet$Companion
     Intrinsics.checkParameterIsNotNull(paramCollection, "c");
     paramCollection = paramCollection.iterator();
     int i = 0;
-    if (paramCollection.hasNext())
+    while (paramCollection.hasNext())
     {
       Object localObject = paramCollection.next();
-      if (localObject != null) {}
-      for (int j = localObject.hashCode();; j = 0)
-      {
-        i += j;
-        break;
+      int j;
+      if (localObject != null) {
+        j = localObject.hashCode();
+      } else {
+        j = 0;
       }
+      i += j;
     }
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.collections.AbstractSet.Companion
  * JD-Core Version:    0.7.0.1
  */

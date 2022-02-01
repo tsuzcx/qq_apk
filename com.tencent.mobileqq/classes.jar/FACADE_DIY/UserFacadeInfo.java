@@ -40,24 +40,28 @@ public final class UserFacadeInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.code, 0);
-    if (this.layout != null) {
-      paramJceOutputStream.write(this.layout, 1);
+    Object localObject = this.layout;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.checksum != null) {
-      paramJceOutputStream.write(this.checksum, 2);
+    localObject = this.checksum;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.detail != null) {
-      paramJceOutputStream.write(this.detail, 3);
+    localObject = this.detail;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
     paramJceOutputStream.write(this.switchStatus, 4);
-    if (this.id != null) {
-      paramJceOutputStream.write(this.id, 5);
+    localObject = this.id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     FACADE_DIY.UserFacadeInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -27,39 +27,51 @@ public class SharpPDecoder
   public Bitmap decodeSharpP2PNG2(String paramString, int paramInt1, int paramInt2)
   {
     SharpPDecoder.SharpPFeature localSharpPFeature = new SharpPDecoder.SharpPFeature(this);
-    if (ParseHeader2(paramString, localSharpPFeature) != 0) {}
-    do
-    {
+    if (ParseHeader2(paramString, localSharpPFeature) != 0) {
       return null;
-      this.mhDec = CreateDecoder2(paramString, localSharpPFeature);
-    } while (this.mhDec == 0L);
+    }
+    this.mhDec = CreateDecoder2(paramString, localSharpPFeature);
+    if (this.mhDec == 0L) {
+      return null;
+    }
     this.imageWidth = localSharpPFeature.width;
     this.imageHeight = localSharpPFeature.height;
-    int i = (int)(this.imageHeight / this.imageWidth * paramInt2);
-    if ((paramInt2 > this.imageWidth) || (i > this.imageHeight))
+    int i = this.imageHeight;
+    double d1 = i;
+    int k = this.imageWidth;
+    double d2 = k;
+    Double.isNaN(d1);
+    Double.isNaN(d2);
+    d1 /= d2;
+    d2 = paramInt2;
+    Double.isNaN(d2);
+    int j = (int)(d1 * d2);
+    if ((paramInt2 <= k) && (j <= i))
     {
-      paramInt2 = this.imageWidth;
-      i = this.imageHeight;
+      i = paramInt2;
+      paramInt2 = j;
     }
-    for (;;)
+    else
     {
-      paramString = new int[paramInt2 * i];
-      SharpPDecoder.SharpPOutFrame localSharpPOutFrame = new SharpPDecoder.SharpPOutFrame(this);
-      localSharpPOutFrame.pOutBuf = paramString;
-      localSharpPOutFrame.dstWidth = paramInt2;
-      localSharpPOutFrame.dstHeight = i;
-      localSharpPOutFrame.fmt = paramInt1;
-      paramInt1 = 0;
-      while (paramInt1 < localSharpPFeature.layerNum)
-      {
-        if (DecodeImage2(this.mhDec, paramInt1, localSharpPOutFrame) > 0) {}
-        paramInt1 += 1;
-      }
-      paramString = Bitmap.createBitmap(paramString, 0, paramInt2, paramInt2, i, Bitmap.Config.ARGB_8888);
-      CloseDecoder2(this.mhDec);
-      this.mhDec = 0L;
-      return paramString;
+      i = this.imageWidth;
+      paramInt2 = this.imageHeight;
     }
+    paramString = new int[i * paramInt2];
+    SharpPDecoder.SharpPOutFrame localSharpPOutFrame = new SharpPDecoder.SharpPOutFrame(this);
+    localSharpPOutFrame.pOutBuf = paramString;
+    localSharpPOutFrame.dstWidth = i;
+    localSharpPOutFrame.dstHeight = paramInt2;
+    localSharpPOutFrame.fmt = paramInt1;
+    paramInt1 = 0;
+    while (paramInt1 < localSharpPFeature.layerNum)
+    {
+      DecodeImage2(this.mhDec, paramInt1, localSharpPOutFrame);
+      paramInt1 += 1;
+    }
+    paramString = Bitmap.createBitmap(paramString, 0, i, i, paramInt2, Bitmap.Config.ARGB_8888);
+    CloseDecoder2(this.mhDec);
+    this.mhDec = 0L;
+    return paramString;
   }
   
   public int getSharpPType()
@@ -75,7 +87,7 @@ public class SharpPDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.sharpP.SharpPDecoder
  * JD-Core Version:    0.7.0.1
  */

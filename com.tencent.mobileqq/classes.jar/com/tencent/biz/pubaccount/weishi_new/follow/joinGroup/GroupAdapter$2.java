@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.weishi_new.follow.joinGroup;
 
 import com.tencent.biz.pubaccount.weishi_new.view.WSLoadingDialog;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troop.utils.TroopInfoUIUtil;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -13,12 +13,12 @@ class GroupAdapter$2
   
   public void a()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, 2131720720, 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, 2131720444, 0).a();
   }
   
   public void a(String paramString1, String paramString2)
   {
-    paramString1 = TroopInfoActivity.a(paramString1, paramString2, 60006);
+    paramString1 = TroopInfoUIUtil.a(paramString1, paramString2, 60006);
     TroopUtils.a(GroupAdapter.a(this.a), paramString1, 2);
   }
   
@@ -39,7 +39,7 @@ class GroupAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.follow.joinGroup.GroupAdapter.2
  * JD-Core Version:    0.7.0.1
  */

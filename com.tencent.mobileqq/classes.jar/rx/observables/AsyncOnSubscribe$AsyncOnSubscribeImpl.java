@@ -37,10 +37,11 @@ final class AsyncOnSubscribe$AsyncOnSubscribeImpl<S, T>
   
   protected S generateState()
   {
-    if (this.generator == null) {
+    Func0 localFunc0 = this.generator;
+    if (localFunc0 == null) {
       return null;
     }
-    return this.generator.call();
+    return localFunc0.call();
   }
   
   protected S next(S paramS, long paramLong, Observer<Observable<? extends T>> paramObserver)
@@ -50,14 +51,15 @@ final class AsyncOnSubscribe$AsyncOnSubscribeImpl<S, T>
   
   protected void onUnsubscribe(S paramS)
   {
-    if (this.onUnsubscribe != null) {
-      this.onUnsubscribe.call(paramS);
+    Action1 localAction1 = this.onUnsubscribe;
+    if (localAction1 != null) {
+      localAction1.call(paramS);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.observables.AsyncOnSubscribe.AsyncOnSubscribeImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -18,14 +18,15 @@ public final class group_member_info$GBarInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34 }, new String[] { "uint32_gbar_id", "uint32_uin_lev", "str_head_portrait", "bytes_gbar_name" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2 }, GBarInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34 }, new String[] { "uint32_gbar_id", "uint32_uin_lev", "str_head_portrait", "bytes_gbar_name" }, new Object[] { localInteger, localInteger, localByteStringMicro1, localByteStringMicro2 }, GBarInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.group.group_member_info.GBarInfo
  * JD-Core Version:    0.7.0.1
  */

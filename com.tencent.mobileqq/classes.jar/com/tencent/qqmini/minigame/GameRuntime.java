@@ -88,7 +88,7 @@ public class GameRuntime
 {
   private static final String TAG = "GameRuntime";
   private static boolean killAllGamesWhenDestroy = GameWnsUtils.killAllGamesWhenDestroy();
-  private static boolean killAllGamesWhenReuse;
+  private static boolean killAllGamesWhenReuse = ;
   public static boolean sStorageReport = false;
   public static volatile boolean webviewDataDirectoryInited = false;
   private Activity mActivity;
@@ -120,11 +120,6 @@ public class GameRuntime
   private TritonPlatform mTritonPlatform;
   private Handler mUIHandler = new Handler(Looper.getMainLooper());
   
-  static
-  {
-    killAllGamesWhenReuse = GameWnsUtils.killAllGamesWhenReuse();
-  }
-  
   public GameRuntime(Context paramContext)
   {
     super(paramContext);
@@ -134,8 +129,8 @@ public class GameRuntime
       {
         webviewDataDirectoryInited = true;
         WebView.setDataDirectorySuffix(AppLoaderFactory.g().getProcessName());
+        return;
       }
-      return;
     }
     catch (Throwable paramContext)
     {
@@ -152,16 +147,20 @@ public class GameRuntime
     MiniGameDataFileSystem localMiniGameDataFileSystem = new MiniGameDataFileSystem(this.mMiniAppInfo.apkgInfo);
     GameView localGameView = GameView.Companion.from(this.mGamePage.getGameSurfaceView());
     QQDebugWebSocket localQQDebugWebSocket = getQQDebugSocket();
-    if (isJankCanaryBriefEnabled()) {}
-    for (JankTraceLevel localJankTraceLevel = JankTraceLevel.BRIEF;; localJankTraceLevel = JankTraceLevel.NONE) {
-      return new GameLaunchParam(localMiniGamePackage, localMiniGameDataFileSystem, localGameView, localQQDebugWebSocket, localJankTraceLevel, localHashMap);
+    JankTraceLevel localJankTraceLevel;
+    if (isJankCanaryBriefEnabled()) {
+      localJankTraceLevel = JankTraceLevel.BRIEF;
+    } else {
+      localJankTraceLevel = JankTraceLevel.NONE;
     }
+    return new GameLaunchParam(localMiniGamePackage, localMiniGameDataFileSystem, localGameView, localQQDebugWebSocket, localJankTraceLevel, localHashMap);
   }
   
   private void destroyGamePage()
   {
-    if (this.mGamePage != null) {
-      this.mGamePage.onDestroy();
+    GamePage localGamePage = this.mGamePage;
+    if (localGamePage != null) {
+      localGamePage.onDestroy();
     }
   }
   
@@ -169,14 +168,20 @@ public class GameRuntime
   {
     if (!killAllGamesWhenDestroy)
     {
-      QMLog.i("GameRuntime", "[MiniEng]doOnDestroy killAllGamesWhenDestroy :" + killAllGamesWhenDestroy);
-      if (this.mTritonEngine != null) {
-        this.mTritonEngine.destroy();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[MiniEng]doOnDestroy killAllGamesWhenDestroy :");
+      ((StringBuilder)localObject).append(killAllGamesWhenDestroy);
+      QMLog.i("GameRuntime", ((StringBuilder)localObject).toString());
+      localObject = this.mTritonEngine;
+      if (localObject != null) {
+        ((TritonEngine)localObject).destroy();
       }
-      return;
     }
-    QMLog.i("GameRuntime", "[MiniEng]doOnDestroy killProcess");
-    this.mUIHandler.postDelayed(new GameRuntime.5(this), 300L);
+    else
+    {
+      QMLog.i("GameRuntime", "[MiniEng]doOnDestroy killProcess");
+      this.mUIHandler.postDelayed(new GameRuntime.5(this), 300L);
+    }
   }
   
   private void doOnTTEngineExit()
@@ -189,10 +194,17 @@ public class GameRuntime
   
   private String getLaunchMsg()
   {
-    if (this.mPkgDownloadFlag) {
-      return "firstLaunch" + this.mStartMode;
+    if (this.mPkgDownloadFlag)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("firstLaunch");
+      localStringBuilder.append(this.mStartMode);
+      return localStringBuilder.toString();
     }
-    return "twiceLaunch" + this.mStartMode;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("twiceLaunch");
+    localStringBuilder.append(this.mStartMode);
+    return localStringBuilder.toString();
   }
   
   private void initGamePage()
@@ -225,12 +237,20 @@ public class GameRuntime
   private boolean isJankCanaryBriefEnabled()
   {
     String str = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAccount();
-    if (this.mActivity.getSharedPreferences(str + "_user_sdk_minigame_", 0).getBoolean("_minigame_enable_jank_canary_brief", false)) {
+    Activity localActivity = this.mActivity;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("_user_sdk_minigame_");
+    if (localActivity.getSharedPreferences(localStringBuilder.toString(), 0).getBoolean("_minigame_enable_jank_canary_brief", false)) {
       return true;
     }
     int i = WnsConfig.getConfig("qqminiapp", "mini_game_jank_trace_sampling_rate", 100);
-    if (new Random().nextInt(10000) < i) {}
-    for (i = 1; i != 0; i = 0)
+    if (new Random().nextInt(10000) < i) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
     {
       QMLog.e("GameRuntime", "sampled for JankCanary Trace Info");
       return true;
@@ -240,7 +260,10 @@ public class GameRuntime
   
   private void onFirstFrame(FirstFrameStatistic paramFirstFrameStatistic)
   {
-    QMLog.i("GameRuntime", "onFirstRender. " + this.mMiniAppInfo);
+    paramFirstFrameStatistic = new StringBuilder();
+    paramFirstFrameStatistic.append("onFirstRender. ");
+    paramFirstFrameStatistic.append(this.mMiniAppInfo);
+    QMLog.i("GameRuntime", paramFirstFrameStatistic.toString());
     if (this.mGameInfoManager != null) {
       this.mGameReportManager.onFirstFrame();
     }
@@ -249,28 +272,44 @@ public class GameRuntime
     if (this.mPkgDownloadFlag)
     {
       this.mPkgDownloadFlag = false;
-      QMLog.i("GameRuntime", "game[" + this.mMiniAppInfo.appId + "][" + this.mMiniAppInfo.name + "] 冷启动，首帧出现!");
+      paramFirstFrameStatistic = new StringBuilder();
+      paramFirstFrameStatistic.append("game[");
+      paramFirstFrameStatistic.append(this.mMiniAppInfo.appId);
+      paramFirstFrameStatistic.append("][");
+      paramFirstFrameStatistic.append(this.mMiniAppInfo.name);
+      paramFirstFrameStatistic.append("] 冷启动，首帧出现!");
+      QMLog.i("GameRuntime", paramFirstFrameStatistic.toString());
       MiniReportManager.reportEventType(this.mMiniAppInfo, 1022, "1");
     }
-    for (;;)
+    else
     {
-      long l1 = this.mOnShowTime;
-      long l2 = this.mOnGameLaunchedTime;
-      MiniReportManager.reportEventType(this.mMiniAppInfo, 1042, null, null, null, 0, "1", l1 - l2, null);
-      AdFrequencyLimit.setOnStartTime(this.mOnShowTime);
-      this.mUIHandler.post(new GameRuntime.4(this));
-      preloadSpringHbRaffleMaterial();
-      ((AdProxy)ProxyManager.get(AdProxy.class)).onFirstFrame();
-      return;
-      QMLog.i("GameRuntime", "game[" + this.mMiniAppInfo.appId + "][" + this.mMiniAppInfo.name + "] 热启动,二次启动游戏!");
+      paramFirstFrameStatistic = new StringBuilder();
+      paramFirstFrameStatistic.append("game[");
+      paramFirstFrameStatistic.append(this.mMiniAppInfo.appId);
+      paramFirstFrameStatistic.append("][");
+      paramFirstFrameStatistic.append(this.mMiniAppInfo.name);
+      paramFirstFrameStatistic.append("] 热启动,二次启动游戏!");
+      QMLog.i("GameRuntime", paramFirstFrameStatistic.toString());
       MiniReportManager.reportEventType(this.mMiniAppInfo, 1023, "1");
       JsApiUpdateManager.checkForUpdate(this.mMiniAppInfo, (MiniAppFileManager)getManager(MiniAppFileManager.class), new GameRuntime.3(this));
     }
+    long l1 = this.mOnShowTime;
+    long l2 = this.mOnGameLaunchedTime;
+    MiniReportManager.reportEventType(this.mMiniAppInfo, 1042, null, null, null, 0, "1", l1 - l2, null);
+    AdFrequencyLimit.setOnStartTime(this.mOnShowTime);
+    this.mUIHandler.post(new GameRuntime.4(this));
+    preloadSpringHbRaffleMaterial();
+    ((AdProxy)ProxyManager.get(AdProxy.class)).onFirstFrame();
   }
   
   private void onGameLaunched(TritonEngine paramTritonEngine, @NonNull GameLaunchStatistic paramGameLaunchStatistic)
   {
-    QMLog.e("[minigame] ", "onGameLaunched: success?" + paramGameLaunchStatistic.getSuccess() + ", exception:" + paramGameLaunchStatistic.getException());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onGameLaunched: success?");
+    localStringBuilder.append(paramGameLaunchStatistic.getSuccess());
+    localStringBuilder.append(", exception:");
+    localStringBuilder.append(paramGameLaunchStatistic.getException());
+    QMLog.e("[minigame] ", localStringBuilder.toString());
     this.mGameLaunchStatics = paramGameLaunchStatistic;
     this.mTritonEngine = paramTritonEngine;
     if (paramTritonEngine != null)
@@ -285,38 +324,45 @@ public class GameRuntime
     }
     long l = paramGameLaunchStatistic.getEngineInitStatistic().getCreateEGLContextTimeMs();
     MiniReportManager.reportEventType(this.mMiniAppInfo, 1039, null, String.valueOf(this.mStartMode), null, 0, "1", l, null);
-    QMLog.e("[minigame][timecost] ", "step[create surfaceView] cost time: " + l + "(from create SurfaceView)");
+    paramTritonEngine = new StringBuilder();
+    paramTritonEngine.append("step[create surfaceView] cost time: ");
+    paramTritonEngine.append(l);
+    paramTritonEngine.append("(from create SurfaceView)");
+    QMLog.e("[minigame][timecost] ", paramTritonEngine.toString());
+    int i = 0;
     this.mLaunchResult = 0;
     l = paramGameLaunchStatistic.getLaunchTimesMs();
-    int i;
-    if (isGameLaunchSuccess(paramGameLaunchStatistic))
-    {
-      i = 0;
-      this.mLaunchResult = i;
-      this.mOnGameLaunchedTime = System.currentTimeMillis();
-      QMLog.i("[minigame][timecost] ", "step[launchGame] launchResult: " + this.mLaunchResult + ", timeCost: " + l + ", " + this.mMiniAppInfo + ", statics=" + paramGameLaunchStatistic);
-      MiniReportManager.reportEventType(this.mMiniAppInfo, 1040, null, null, null, 0, "1", l, null);
-      AppStateEvent.obtain(63, new Pair(Integer.valueOf(this.mLaunchResult), paramGameLaunchStatistic)).notifyRuntime(this);
-      AppStateEvent.obtain(2051).notifyRuntime(this);
-      MiniAppReportManager2.reportPageView("2load_end", String.valueOf(this.mLaunchResult), null, this.mMiniAppInfo);
-      if (this.mLaunchResult < 0) {
-        break label449;
-      }
-      paramGameLaunchStatistic = this.mMiniAppInfo;
-      if (!this.mPkgDownloadFlag) {
-        break label442;
-      }
+    if (!isGameLaunchSuccess(paramGameLaunchStatistic)) {
+      i = -1;
     }
-    label442:
-    for (paramTritonEngine = "1";; paramTritonEngine = "0")
+    this.mLaunchResult = i;
+    this.mOnGameLaunchedTime = System.currentTimeMillis();
+    paramTritonEngine = new StringBuilder();
+    paramTritonEngine.append("step[launchGame] launchResult: ");
+    paramTritonEngine.append(this.mLaunchResult);
+    paramTritonEngine.append(", timeCost: ");
+    paramTritonEngine.append(l);
+    paramTritonEngine.append(", ");
+    paramTritonEngine.append(this.mMiniAppInfo);
+    paramTritonEngine.append(", statics=");
+    paramTritonEngine.append(paramGameLaunchStatistic);
+    QMLog.i("[minigame][timecost] ", paramTritonEngine.toString());
+    MiniReportManager.reportEventType(this.mMiniAppInfo, 1040, null, null, null, 0, "1", l, null);
+    AppStateEvent.obtain(63, new Pair(Integer.valueOf(this.mLaunchResult), paramGameLaunchStatistic)).notifyRuntime(this);
+    AppStateEvent.obtain(2051).notifyRuntime(this);
+    MiniAppReportManager2.reportPageView("2load_end", String.valueOf(this.mLaunchResult), null, this.mMiniAppInfo);
+    if (this.mLaunchResult >= 0)
     {
+      paramGameLaunchStatistic = this.mMiniAppInfo;
+      if (this.mPkgDownloadFlag) {
+        paramTritonEngine = "1";
+      } else {
+        paramTritonEngine = "0";
+      }
       MiniReportManager.addCostTimeEventAttachInfo(paramGameLaunchStatistic, 1008, paramTritonEngine);
       MiniReportManager.reportEventType(this.mMiniAppInfo, 1008, "1");
       return;
-      i = -1;
-      break;
     }
-    label449:
     SDKMiniProgramLpReportDC04239.reportPageView(this.mMiniAppInfo, "1", null, "show_fail", "load_pkg_fail");
     MiniAppReportManager2.reportPageView("2launch_fail", "load_pkg_fail", null, this.mMiniAppInfo);
     MiniGdtReporter.report(this.mMiniAppInfo, 512);
@@ -325,55 +371,65 @@ public class GameRuntime
   
   private void preloadSpringHbRaffleMaterial()
   {
-    if (this.mGameInfoManager != null)
+    Object localObject1 = this.mGameInfoManager;
+    if (localObject1 != null)
     {
-      localObject = this.mGameInfoManager.getQueryPath();
-      QMLog.d("GameRuntime", "preloadSpringHbRaffleMaterial query: " + localObject);
-      if ("springfestival".equals(((JSONObject)localObject).optString("act"))) {
-        if (this.mMiniAppInfo == null) {
-          break label94;
+      localObject1 = ((GameInfoManager)localObject1).getQueryPath();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("preloadSpringHbRaffleMaterial query: ");
+      ((StringBuilder)localObject2).append(localObject1);
+      QMLog.d("GameRuntime", ((StringBuilder)localObject2).toString());
+      if ("springfestival".equals(((JSONObject)localObject1).optString("act")))
+      {
+        localObject1 = this.mMiniAppInfo;
+        if (localObject1 != null) {
+          localObject1 = ((MiniAppInfo)localObject1).appId;
+        } else {
+          localObject1 = null;
         }
+        localObject2 = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAccount();
+        RaffleJsPlugin.preloadGameRaffleMaterial(this.mContext, (String)localObject1, (String)localObject2);
       }
-    }
-    label94:
-    for (Object localObject = this.mMiniAppInfo.appId;; localObject = null)
-    {
-      String str = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAccount();
-      RaffleJsPlugin.preloadGameRaffleMaterial(this.mContext, (String)localObject, str);
-      return;
     }
   }
   
   private void reportAppFirstStorageUsage()
   {
-    if (this.mMiniAppInfo != null) {}
-    for (long l = Storage.getCurrentStorageSize(this.mMiniAppInfo.appId);; l = -1L)
+    MiniAppInfo localMiniAppInfo = this.mMiniAppInfo;
+    long l;
+    if (localMiniAppInfo != null) {
+      l = Storage.getCurrentStorageSize(localMiniAppInfo.appId);
+    } else {
+      l = -1L;
+    }
+    if ((l >= 0L) && (!sStorageReport))
     {
-      if ((l >= 0L) && (!sStorageReport))
-      {
-        sStorageReport = true;
-        MiniReportManager.reportEventType(this.mMiniAppInfo, 639, null, String.valueOf(l), null, 1, "1", 0L, null);
-      }
-      return;
+      sStorageReport = true;
+      MiniReportManager.reportEventType(this.mMiniAppInfo, 639, null, String.valueOf(l), null, 1, "1", 0L, null);
     }
   }
   
   private void reportGameBlackScreen()
   {
-    if ((this.mTritonEngine != null) && (this.mTritonEngine.getState() != EngineState.DESTROYED)) {}
-    for (long l = this.mTritonEngine.getStatisticsManager().getLastBlackScreenTimeMillis();; l = 0L)
+    Object localObject = this.mTritonEngine;
+    long l;
+    if ((localObject != null) && (((TritonEngine)localObject).getState() != EngineState.DESTROYED)) {
+      l = this.mTritonEngine.getStatisticsManager().getLastBlackScreenTimeMillis();
+    } else {
+      l = 0L;
+    }
+    if ((this.mOnFirstBlackScreenReport) && (l > 0L))
     {
-      if ((this.mOnFirstBlackScreenReport) && (l > 0L))
+      l = System.currentTimeMillis() - l;
+      if (l > 0L)
       {
-        l = System.currentTimeMillis() - l;
-        if (l > 0L)
-        {
-          this.mOnFirstBlackScreenReport = false;
-          MiniReportManager.reportEventType(this.mMiniAppInfo, 1018, null, null, null, 0, "1", l, null);
-          QMLog.e("GameRuntime", "doOnPause blackTimeDuration " + l);
-        }
+        this.mOnFirstBlackScreenReport = false;
+        MiniReportManager.reportEventType(this.mMiniAppInfo, 1018, null, null, null, 0, "1", l, null);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("doOnPause blackTimeDuration ");
+        ((StringBuilder)localObject).append(l);
+        QMLog.e("GameRuntime", ((StringBuilder)localObject).toString());
       }
-      return;
     }
   }
   
@@ -392,18 +448,21 @@ public class GameRuntime
   
   private void reportGameStayDuration()
   {
-    long l = System.currentTimeMillis() - this.mOnShowTime;
-    if ((l > 0L) && (this.mOnShowTime > 0L)) {
-      MiniReportManager.reportEventType(this.mMiniAppInfo, 1021, null, null, null, 0, "1", l, null);
+    long l2 = System.currentTimeMillis();
+    long l1 = this.mOnShowTime;
+    l2 -= l1;
+    if ((l2 > 0L) && (l1 > 0L)) {
+      MiniReportManager.reportEventType(this.mMiniAppInfo, 1021, null, null, null, 0, "1", l2, null);
     }
   }
   
   private void reportOnDestroy()
   {
-    if (this.mMiniAppInfo == null) {
+    MiniAppInfo localMiniAppInfo = this.mMiniAppInfo;
+    if (localMiniAppInfo == null) {
       return;
     }
-    MiniReportManager.reportEventType(this.mMiniAppInfo, 22, "1");
+    MiniReportManager.reportEventType(localMiniAppInfo, 22, "1");
     SDKMiniProgramLpReportDC04239.reportPageView(this.mMiniAppInfo, "1", null, "unload", null);
     MiniAppReportManager2.reportPageView("2unload", null, null, this.mMiniAppInfo);
     SDKMiniProgramLpReportDC04239.deleteRecordDurationMsg();
@@ -422,8 +481,9 @@ public class GameRuntime
   
   public void checkPayForFriendLogic(MiniAppInfo paramMiniAppInfo)
   {
-    if (this.mGamePage != null) {
-      this.mGamePage.checkPayForFriendLogic(paramMiniAppInfo);
+    GamePage localGamePage = this.mGamePage;
+    if (localGamePage != null) {
+      localGamePage.checkPayForFriendLogic(paramMiniAppInfo);
     }
   }
   
@@ -461,7 +521,8 @@ public class GameRuntime
   
   public long getCurrentDrawCount()
   {
-    if ((this.mTritonEngine != null) && (this.mTritonEngine.getState() != EngineState.DESTROYED)) {
+    TritonEngine localTritonEngine = this.mTritonEngine;
+    if ((localTritonEngine != null) && (localTritonEngine.getState() != EngineState.DESTROYED)) {
       return this.mTritonEngine.getStatisticsManager().getCurrentDrawCalls();
     }
     return 0L;
@@ -489,37 +550,35 @@ public class GameRuntime
   
   public IJsPluginEngine getJsPluginEngine()
   {
-    if (this.mJsPluginEngine != null) {
-      return this.mJsPluginEngine.getRealPluginEngine();
+    GameJsPluginEngine localGameJsPluginEngine = this.mJsPluginEngine;
+    if (localGameJsPluginEngine != null) {
+      return localGameJsPluginEngine.getRealPluginEngine();
     }
     return null;
   }
   
   public IJsService getJsService()
   {
-    if (this.mJsPluginEngine != null) {
-      return this.mJsPluginEngine.getCommonJsService(ScriptContextType.MAIN);
+    GameJsPluginEngine localGameJsPluginEngine = this.mJsPluginEngine;
+    if (localGameJsPluginEngine != null) {
+      return localGameJsPluginEngine.getCommonJsService(ScriptContextType.MAIN);
     }
     return null;
   }
   
   public String getJsVersion()
   {
-    String str2 = "";
-    String str1 = str2;
-    if (this.mTritonEnginePackage != null)
-    {
-      str1 = str2;
-      if (this.mTritonEnginePackage.getJsLibVersion() != null) {
-        str1 = this.mTritonEnginePackage.getJsLibVersion().getVersion();
-      }
+    MiniEnginePackage localMiniEnginePackage = this.mTritonEnginePackage;
+    if ((localMiniEnginePackage != null) && (localMiniEnginePackage.getJsLibVersion() != null)) {
+      return this.mTritonEnginePackage.getJsLibVersion().getVersion();
     }
-    return str1;
+    return "";
   }
   
   public String getLastClicks()
   {
-    if ((this.mTritonEngine != null) && (this.mTritonEngine.getState() != EngineState.DESTROYED)) {
+    TritonEngine localTritonEngine = this.mTritonEngine;
+    if ((localTritonEngine != null) && (localTritonEngine.getState() != EngineState.DESTROYED)) {
       return this.mTritonEngine.getStatisticsManager().getLastClicks();
     }
     return null;
@@ -542,7 +601,8 @@ public class GameRuntime
   
   public void getScreenshot(GetScreenshot.Callback paramCallback)
   {
-    if ((this.mTritonEngine == null) && (this.mTritonEngine.getState() != EngineState.DESTROYED))
+    TritonEngine localTritonEngine = this.mTritonEngine;
+    if ((localTritonEngine == null) && (localTritonEngine.getState() != EngineState.DESTROYED))
     {
       QMLog.e("GameRuntime", "Failed to get screen shot. TTEngine is null");
       if (paramCallback != null) {
@@ -562,7 +622,8 @@ public class GameRuntime
   
   public String getTheLastClickInfo()
   {
-    if ((this.mTritonEngine != null) && (this.mTritonEngine.getState() != EngineState.DESTROYED)) {
+    TritonEngine localTritonEngine = this.mTritonEngine;
+    if ((localTritonEngine != null) && (localTritonEngine.getState() != EngineState.DESTROYED)) {
       return this.mTritonEngine.getStatisticsManager().getLastClickInfo();
     }
     return null;
@@ -570,29 +631,26 @@ public class GameRuntime
   
   public String getTritonVersion()
   {
-    String str2 = "";
-    String str1 = str2;
-    if (this.mTritonEnginePackage != null)
-    {
-      str1 = str2;
-      if (this.mTritonEnginePackage.getVersion() != null) {
-        str1 = this.mTritonEnginePackage.getVersion().getVersion();
-      }
+    MiniEnginePackage localMiniEnginePackage = this.mTritonEnginePackage;
+    if ((localMiniEnginePackage != null) && (localMiniEnginePackage.getVersion() != null)) {
+      return this.mTritonEnginePackage.getVersion().getVersion();
     }
-    return str1;
+    return "";
   }
   
   public void handleFocusGain()
   {
-    if (this.mJsPluginEngine != null) {
-      this.mJsPluginEngine.handleFocusGain();
+    GameJsPluginEngine localGameJsPluginEngine = this.mJsPluginEngine;
+    if (localGameJsPluginEngine != null) {
+      localGameJsPluginEngine.handleFocusGain();
     }
   }
   
   public void handleFocusLoss()
   {
-    if (this.mJsPluginEngine != null) {
-      this.mJsPluginEngine.handleFocusLoss();
+    GameJsPluginEngine localGameJsPluginEngine = this.mJsPluginEngine;
+    if (localGameJsPluginEngine != null) {
+      localGameJsPluginEngine.handleFocusLoss();
     }
   }
   
@@ -615,15 +673,17 @@ public class GameRuntime
   
   public boolean isOrientationLandscape()
   {
-    if (this.mGamePage != null) {
-      return this.mGamePage.isOrientationLandscape();
+    GamePage localGamePage = this.mGamePage;
+    if (localGamePage != null) {
+      return localGamePage.isOrientationLandscape();
     }
     return false;
   }
   
   public void launchGame()
   {
-    if (this.mActivity == null) {
+    Activity localActivity = this.mActivity;
+    if (localActivity == null) {
       return;
     }
     if (!this.mIsForground)
@@ -635,7 +695,7 @@ public class GameRuntime
       return;
     }
     this.mNeedLaunchGameOnResume = false;
-    this.mActivity.runOnUiThread(new GameRuntime.7(this));
+    localActivity.runOnUiThread(new GameRuntime.7(this));
   }
   
   public void loadMiniApp(MiniAppInfo paramMiniAppInfo)
@@ -697,8 +757,9 @@ public class GameRuntime
   
   public void onRuntimeDetachActivity(Activity paramActivity)
   {
-    if (this.mGamePage != null) {
-      this.mGamePage.onDetachWindow(paramActivity);
+    GamePage localGamePage = this.mGamePage;
+    if (localGamePage != null) {
+      localGamePage.onDetachWindow(paramActivity);
     }
     this.mActivity = null;
   }
@@ -708,29 +769,27 @@ public class GameRuntime
     try
     {
       reportOnPause();
-      this.mGamePage.onPause();
-      this.mIsForground = false;
-      this.lastStayTime += System.currentTimeMillis() - this.onResumeTime;
-      this.mPerformanceStatics.stopReport();
-      if (this.mTritonEngine != null) {
-        this.mTritonEngine.stop();
-      }
-      ThreadPools.getMainThreadHandler().removeCallbacks(this.mFpsListener);
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        QMLog.e("GameRuntime", "doOnPause reportOnPause ", localThrowable);
-      }
+      QMLog.e("GameRuntime", "doOnPause reportOnPause ", localThrowable);
     }
+    this.mGamePage.onPause();
+    this.mIsForground = false;
+    this.lastStayTime += System.currentTimeMillis() - this.onResumeTime;
+    this.mPerformanceStatics.stopReport();
+    TritonEngine localTritonEngine = this.mTritonEngine;
+    if (localTritonEngine != null) {
+      localTritonEngine.stop();
+    }
+    ThreadPools.getMainThreadHandler().removeCallbacks(this.mFpsListener);
   }
   
   public void onRuntimeResume()
   {
-    if (this.mTritonEngine != null) {
-      this.mTritonEngine.start();
+    TritonEngine localTritonEngine = this.mTritonEngine;
+    if (localTritonEngine != null) {
+      localTritonEngine.start();
     }
     this.mFpsListener.run();
     this.mGamePage.onResume(this.mMiniAppInfo);
@@ -760,14 +819,16 @@ public class GameRuntime
   
   public void pauseEngineOnly()
   {
-    if ((this.mTritonEngine != null) && (this.mTritonEngine.getState() != EngineState.DESTROYED)) {
+    TritonEngine localTritonEngine = this.mTritonEngine;
+    if ((localTritonEngine != null) && (localTritonEngine.getState() != EngineState.DESTROYED)) {
       this.mTritonEngine.stop();
     }
   }
   
   public void resumeEngineOnly()
   {
-    if ((this.mTritonEngine != null) && (this.mTritonEngine.getState() != EngineState.DESTROYED)) {
+    TritonEngine localTritonEngine = this.mTritonEngine;
+    if ((localTritonEngine != null) && (localTritonEngine.getState() != EngineState.DESTROYED)) {
       this.mTritonEngine.start();
     }
   }
@@ -810,12 +871,16 @@ public class GameRuntime
   public void startGame()
   {
     QMLog.i("GameRuntime", "startGame");
-    if ((this.mMiniAppInfo.debugInfo != null) && (this.mMiniAppInfo.debugInfo.valid()) && (this.mMiniAppInfo != null) && (this.mMiniAppInfo.launchParam.scene == 1011))
+    if ((this.mMiniAppInfo.debugInfo != null) && (this.mMiniAppInfo.debugInfo.valid()))
     {
-      QMLog.e("GameRuntime", "startLoadGame on ide debug mode");
-      this.mQQDebugSocket = new QQDebugWebSocket(this, this.mMiniAppInfo);
-      this.mQQDebugSocket.startConnectIDE(new GameRuntime.6(this));
-      return;
+      MiniAppInfo localMiniAppInfo = this.mMiniAppInfo;
+      if ((localMiniAppInfo != null) && (localMiniAppInfo.launchParam.scene == 1011))
+      {
+        QMLog.e("GameRuntime", "startLoadGame on ide debug mode");
+        this.mQQDebugSocket = new QQDebugWebSocket(this, this.mMiniAppInfo);
+        this.mQQDebugSocket.startConnectIDE(new GameRuntime.6(this));
+        return;
+      }
     }
     QMLog.e("GameRuntime", "startGame on real mode");
     launchGame();
@@ -823,7 +888,7 @@ public class GameRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.GameRuntime
  * JD-Core Version:    0.7.0.1
  */

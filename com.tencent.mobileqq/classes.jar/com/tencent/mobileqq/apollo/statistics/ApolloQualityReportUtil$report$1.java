@@ -11,12 +11,21 @@ final class ApolloQualityReportUtil$report$1
   
   public final void run()
   {
-    QLog.d("ApolloQualityReportUtil", 1, "report subActionType : " + this.a + "; reserves : " + this.b + "; reserves2 : " + this.c + "; reserves3 : " + this.d);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("report subActionType : ");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("; reserves : ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("; reserves2 : ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("; reserves3 : ");
+    localStringBuilder.append(this.d);
+    QLog.d("ApolloQualityReportUtil", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.ApolloQualityReportUtil.report.1
  * JD-Core Version:    0.7.0.1
  */

@@ -68,7 +68,7 @@ public abstract interface AVPlayerServiceInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avplayerservice_interface.AVPlayerServiceInterface
  * JD-Core Version:    0.7.0.1
  */

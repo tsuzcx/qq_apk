@@ -50,7 +50,7 @@ public class SubScribePersonalSharedCardView
   
   public int a()
   {
-    return 2131558875;
+    return 2131558773;
   }
   
   protected URLImageView a()
@@ -60,30 +60,28 @@ public class SubScribePersonalSharedCardView
   
   public void a(View paramView)
   {
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131377997);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131377992));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377999));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377993));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378000));
-    this.d = ((TextView)paramView.findViewById(2131377995));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131377990));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377991));
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131377418);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131377413));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377420));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377414));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377421));
+    this.d = ((TextView)paramView.findViewById(2131377416));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131377411));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377412));
   }
   
   public void a(ShareInfoBean paramShareInfoBean, Bitmap paramBitmap, AbsSubscribeShareCardView.ShareDataBindListener paramShareDataBindListener)
   {
     super.a(paramShareInfoBean, paramBitmap, paramShareDataBindListener);
-    CertifiedAccountMeta.StUser localStUser;
     if ((paramShareInfoBean != null) && (paramShareInfoBean.a() != null) && (paramShareInfoBean.a().poster != null))
     {
-      localStUser = paramShareInfoBean.a().poster;
-      if (!TextUtils.isEmpty(localStUser.iconInfo.iconUrl.get())) {
-        break label251;
+      CertifiedAccountMeta.StUser localStUser = paramShareInfoBean.a().poster;
+      if (TextUtils.isEmpty(localStUser.iconInfo.iconUrl.get())) {
+        paramShareInfoBean = localStUser.icon;
+      } else {
+        paramShareInfoBean = localStUser.iconInfo.iconUrl;
       }
-    }
-    label251:
-    for (paramShareInfoBean = localStUser.icon.get();; paramShareInfoBean = localStUser.iconInfo.iconUrl.get())
-    {
+      paramShareInfoBean = paramShareInfoBean.get();
       ArrayList localArrayList1 = new ArrayList();
       ArrayList localArrayList2 = new ArrayList();
       localArrayList1.add(paramShareInfoBean);
@@ -91,14 +89,14 @@ public class SubScribePersonalSharedCardView
       a(localArrayList1, localArrayList2, paramShareDataBindListener);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(localStUser.nick.get());
       paramShareDataBindListener = localStUser.desc.get();
-      if ((!TextUtils.isEmpty(paramShareDataBindListener)) && (!paramShareDataBindListener.equals(HardCodeUtil.a(2131719638))))
+      if ((!TextUtils.isEmpty(paramShareDataBindListener)) && (!paramShareDataBindListener.equals(HardCodeUtil.a(2131719357))))
       {
         paramShareInfoBean = paramShareDataBindListener;
         if (!TextUtils.isEmpty(paramShareDataBindListener.trim())) {}
       }
       else
       {
-        paramShareInfoBean = HardCodeUtil.a(2131719637);
+        paramShareInfoBean = HardCodeUtil.a(2131719356);
       }
       this.jdField_b_of_type_AndroidWidgetTextView.setText(paramShareInfoBean);
       paramShareInfoBean = SubscribeGlobalInfo.a();
@@ -110,13 +108,12 @@ public class SubScribePersonalSharedCardView
         layout(0, 0, getMeasuredWidth(), getMeasuredHeight());
       }
       this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubScribePersonalSharedCardView
  * JD-Core Version:    0.7.0.1
  */

@@ -52,7 +52,7 @@ class QQStoryMainActivity$1
   {
     if (paramBoolean)
     {
-      QQStoryMainActivity.a(this.a, QQStoryConstant.a, HardCodeUtil.a(2131710921));
+      QQStoryMainActivity.a(this.a, QQStoryConstant.a, HardCodeUtil.a(2131710898));
       return;
     }
     a(QQStoryConstant.a);
@@ -62,7 +62,7 @@ class QQStoryMainActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.QQStoryMainActivity.1
  * JD-Core Version:    0.7.0.1
  */

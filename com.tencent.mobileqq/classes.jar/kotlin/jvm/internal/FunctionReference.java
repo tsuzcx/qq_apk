@@ -30,23 +30,13 @@ public class FunctionReference
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == this) {}
-    for (;;)
-    {
+    if (paramObject == this) {
       return true;
-      if (!(paramObject instanceof FunctionReference)) {
-        break;
-      }
+    }
+    if ((paramObject instanceof FunctionReference))
+    {
       paramObject = (FunctionReference)paramObject;
-      if (getOwner() == null) {
-        if (paramObject.getOwner() != null) {}
-      }
-      while ((!getName().equals(paramObject.getName())) || (!getSignature().equals(paramObject.getSignature())) || (!Intrinsics.areEqual(getBoundReceiver(), paramObject.getBoundReceiver()))) {
-        do
-        {
-          return false;
-        } while (!getOwner().equals(paramObject.getOwner()));
-      }
+      return (getOwner() == null ? paramObject.getOwner() == null : getOwner().equals(paramObject.getOwner())) && (getName().equals(paramObject.getName())) && (getSignature().equals(paramObject.getSignature())) && (Intrinsics.areEqual(getBoundReceiver(), paramObject.getBoundReceiver()));
     }
     if ((paramObject instanceof KFunction)) {
       return paramObject.equals(compute());
@@ -67,10 +57,13 @@ public class FunctionReference
   
   public int hashCode()
   {
-    if (getOwner() == null) {}
-    for (int i = 0;; i = getOwner().hashCode() * 31) {
-      return (i + getName().hashCode()) * 31 + getSignature().hashCode();
+    int i;
+    if (getOwner() == null) {
+      i = 0;
+    } else {
+      i = getOwner().hashCode() * 31;
     }
+    return (i + getName().hashCode()) * 31 + getSignature().hashCode();
   }
   
   @SinceKotlin(version="1.1")
@@ -105,19 +98,23 @@ public class FunctionReference
   
   public String toString()
   {
-    KCallable localKCallable = compute();
-    if (localKCallable != this) {
-      return localKCallable.toString();
+    Object localObject = compute();
+    if (localObject != this) {
+      return localObject.toString();
     }
     if ("<init>".equals(getName())) {
       return "constructor (Kotlin reflection is not available)";
     }
-    return "function " + getName() + " (Kotlin reflection is not available)";
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("function ");
+    ((StringBuilder)localObject).append(getName());
+    ((StringBuilder)localObject).append(" (Kotlin reflection is not available)");
+    return ((StringBuilder)localObject).toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.jvm.internal.FunctionReference
  * JD-Core Version:    0.7.0.1
  */

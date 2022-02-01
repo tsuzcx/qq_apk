@@ -54,7 +54,7 @@ public class MpfileTaskRecord
     prewrite();
   }
   
-  public Class<? extends Entity> getClassForTable()
+  protected Class<? extends Entity> getClassForTable()
   {
     return MpfileTaskRecord.class;
   }
@@ -64,13 +64,13 @@ public class MpfileTaskRecord
     return "mr_dataline_mpfile";
   }
   
-  public void postRead() {}
+  protected void postRead() {}
   
-  public void prewrite() {}
+  protected void prewrite() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.mpfile.MpfileTaskRecord
  * JD-Core Version:    0.7.0.1
  */

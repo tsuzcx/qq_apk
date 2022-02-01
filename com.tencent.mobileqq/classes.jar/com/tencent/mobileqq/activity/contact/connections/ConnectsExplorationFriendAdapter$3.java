@@ -12,10 +12,14 @@ class ConnectsExplorationFriendAdapter$3
 {
   ConnectsExplorationFriendAdapter$3(ConnectsExplorationFriendAdapter paramConnectsExplorationFriendAdapter) {}
   
-  public void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectsExplorationFriendAdapter", 2, "onCancelMayKnowRecommend isSuccess = " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("onCancelMayKnowRecommend isSuccess = ");
+      paramString.append(paramBoolean);
+      QLog.d("ConnectsExplorationFriendAdapter", 2, paramString.toString());
     }
     if (paramBoolean) {
       this.a.a(false);
@@ -29,39 +33,51 @@ class ConnectsExplorationFriendAdapter$3
     }
   }
   
-  public void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
   {
     if ((paramBoolean) && (ConnectsExplorationFriendAdapter.a(this.a) == 23)) {
       this.a.a(false);
     }
   }
   
-  public void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
+  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
   {
     super.onMayKnowListPushAdd(paramBoolean, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectsExplorationFriendAdapter", 2, "onMayKnowListPushAdd isSuccess = " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      paramList = new StringBuilder();
+      paramList.append("onMayKnowListPushAdd isSuccess = ");
+      paramList.append(paramBoolean);
+      QLog.d("ConnectsExplorationFriendAdapter", 2, paramList.toString());
     }
     if (paramBoolean) {
       this.a.a(false);
     }
   }
   
-  public void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
+  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
   {
     super.onMayKnowListPushDel(paramBoolean, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectsExplorationFriendAdapter", 2, "onMayKnowListPushDel isSuccess = " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      paramList = new StringBuilder();
+      paramList.append("onMayKnowListPushDel isSuccess = ");
+      paramList.append(paramBoolean);
+      QLog.d("ConnectsExplorationFriendAdapter", 2, paramList.toString());
     }
     if (paramBoolean) {
       this.a.a(false);
     }
   }
   
-  public void onMayknowStateChanged(boolean paramBoolean)
+  protected void onMayknowStateChanged(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectsExplorationFriendAdapter", 2, "onMayknowStateChanged isSuccess = " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onMayknowStateChanged isSuccess = ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("ConnectsExplorationFriendAdapter", 2, localStringBuilder.toString());
     }
     if (paramBoolean)
     {
@@ -76,7 +92,7 @@ class ConnectsExplorationFriendAdapter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.connections.ConnectsExplorationFriendAdapter.3
  * JD-Core Version:    0.7.0.1
  */

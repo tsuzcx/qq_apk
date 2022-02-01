@@ -41,7 +41,10 @@ public class MsgBackupTransportExecutor
   
   public void a()
   {
-    MsgBackupUtil.a("MsgBackupMsgBackupTransportExecutor", "msgbackup destroy-------------> destroyed = " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get(), new Object[0]);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("msgbackup destroy-------------> destroyed = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+    MsgBackupUtil.a("MsgBackupMsgBackupTransportExecutor", localStringBuilder.toString(), new Object[0]);
     if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
       return;
     }
@@ -50,17 +53,18 @@ public class MsgBackupTransportExecutor
   
   public void a(Runnable paramRunnable)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentExecutor == null)
+    Executor localExecutor = this.jdField_a_of_type_JavaUtilConcurrentExecutor;
+    if (localExecutor == null)
     {
       MsgBackupUtil.a("MsgBackupMsgBackupTransportExecutor", "thread pool is destroyed!", new Object[0]);
       return;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(paramRunnable);
+    localExecutor.execute(paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.transport.MsgBackupTransportExecutor
  * JD-Core Version:    0.7.0.1
  */

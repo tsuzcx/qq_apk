@@ -44,35 +44,43 @@ public final class feeds_video_actalbum_config
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.banner_title != null) {
-      paramJceOutputStream.write(this.banner_title, 0);
+    String str = this.banner_title;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.banner_main_title != null) {
-      paramJceOutputStream.write(this.banner_main_title, 1);
+    str = this.banner_main_title;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.banner_sub_title != null) {
-      paramJceOutputStream.write(this.banner_sub_title, 2);
+    str = this.banner_sub_title;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.banner_btn_title != null) {
-      paramJceOutputStream.write(this.banner_btn_title, 3);
+    str = this.banner_btn_title;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.fscreen_title != null) {
-      paramJceOutputStream.write(this.fscreen_title, 4);
+    str = this.fscreen_title;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.fscreen_sub_title != null) {
-      paramJceOutputStream.write(this.fscreen_sub_title, 5);
+    str = this.fscreen_sub_title;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.fscreen_jump_h5 != null) {
-      paramJceOutputStream.write(this.fscreen_jump_h5, 6);
+    str = this.fscreen_jump_h5;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.fscreen_btn_title != null) {
-      paramJceOutputStream.write(this.fscreen_btn_title, 7);
+    str = this.fscreen_btn_title;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.feeds_video_actalbum_config
  * JD-Core Version:    0.7.0.1
  */

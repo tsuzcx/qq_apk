@@ -34,17 +34,25 @@ public class QWalletAuthService
       paramToServiceMsg = (RespCheckChangePwdAuth)paramToServiceMsg.getByClass("resp", new RespCheckChangePwdAuth());
       return paramToServiceMsg;
     }
-    catch (RuntimeException paramToServiceMsg)
+    catch (Exception paramToServiceMsg)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeModifyPassAuthWUP error:" + paramToServiceMsg.getMessage());
+      if (QLog.isDevelopLevel())
+      {
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("decodeModifyPassAuthWUP error:");
+        paramFromServiceMsg.append(paramToServiceMsg.getMessage());
+        QLog.d("Q.qwallet.auth.AuthService", 4, paramFromServiceMsg.toString());
       }
       return null;
     }
-    catch (Exception paramToServiceMsg)
+    catch (RuntimeException paramToServiceMsg)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeModifyPassAuthWUP error:" + paramToServiceMsg.getMessage());
+      if (QLog.isDevelopLevel())
+      {
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("decodeModifyPassAuthWUP error:");
+        paramFromServiceMsg.append(paramToServiceMsg.getMessage());
+        QLog.d("Q.qwallet.auth.AuthService", 4, paramFromServiceMsg.toString());
       }
     }
     return null;
@@ -71,17 +79,25 @@ public class QWalletAuthService
       paramToServiceMsg = (GetPasswordRsp)paramToServiceMsg.getByClass("rsp", new GetPasswordRsp());
       return paramToServiceMsg;
     }
-    catch (RuntimeException paramToServiceMsg)
+    catch (Exception paramToServiceMsg)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetPasswordWUP error:" + paramToServiceMsg.getMessage());
+      if (QLog.isDevelopLevel())
+      {
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("decodeGetPasswordWUP error:");
+        paramFromServiceMsg.append(paramToServiceMsg.getMessage());
+        QLog.d("Q.qwallet.auth.AuthService", 4, paramFromServiceMsg.toString());
       }
       return null;
     }
-    catch (Exception paramToServiceMsg)
+    catch (RuntimeException paramToServiceMsg)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetPasswordWUP error:" + paramToServiceMsg.getMessage());
+      if (QLog.isDevelopLevel())
+      {
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("decodeGetPasswordWUP error:");
+        paramFromServiceMsg.append(paramToServiceMsg.getMessage());
+        QLog.d("Q.qwallet.auth.AuthService", 4, paramFromServiceMsg.toString());
       }
     }
     return null;
@@ -108,17 +124,25 @@ public class QWalletAuthService
       paramToServiceMsg = (AuthCodeRsp)paramToServiceMsg.getByClass("rsp", new AuthCodeRsp());
       return paramToServiceMsg;
     }
-    catch (RuntimeException paramToServiceMsg)
+    catch (Exception paramToServiceMsg)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetAuthCode error:" + paramToServiceMsg.getMessage());
+      if (QLog.isDevelopLevel())
+      {
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("decodeGetAuthCode error:");
+        paramFromServiceMsg.append(paramToServiceMsg.getMessage());
+        QLog.d("Q.qwallet.auth.AuthService", 4, paramFromServiceMsg.toString());
       }
       return null;
     }
-    catch (Exception paramToServiceMsg)
+    catch (RuntimeException paramToServiceMsg)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetAuthCode error:" + paramToServiceMsg.getMessage());
+      if (QLog.isDevelopLevel())
+      {
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("decodeGetAuthCode error:");
+        paramFromServiceMsg.append(paramToServiceMsg.getMessage());
+        QLog.d("Q.qwallet.auth.AuthService", 4, paramFromServiceMsg.toString());
       }
     }
     return null;
@@ -145,17 +169,25 @@ public class QWalletAuthService
       paramToServiceMsg = (PfaFriendRsp)paramToServiceMsg.getByClass("rsp", new PfaFriendRsp());
       return paramToServiceMsg;
     }
-    catch (RuntimeException paramToServiceMsg)
+    catch (Exception paramToServiceMsg)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetRecentList error:" + paramToServiceMsg.getMessage());
+      if (QLog.isDevelopLevel())
+      {
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("decodeGetRecentList error:");
+        paramFromServiceMsg.append(paramToServiceMsg.getMessage());
+        QLog.d("Q.qwallet.auth.AuthService", 4, paramFromServiceMsg.toString());
       }
       return null;
     }
-    catch (Exception paramToServiceMsg)
+    catch (RuntimeException paramToServiceMsg)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qwallet.auth.AuthService", 4, "decodeGetRecentList error:" + paramToServiceMsg.getMessage());
+      if (QLog.isDevelopLevel())
+      {
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("decodeGetRecentList error:");
+        paramFromServiceMsg.append(paramToServiceMsg.getMessage());
+        QLog.d("Q.qwallet.auth.AuthService", 4, paramFromServiceMsg.toString());
       }
     }
     return null;
@@ -177,46 +209,48 @@ public class QWalletAuthService
   public Object decode(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     String str = paramToServiceMsg.getServiceCmd();
-    if (TextUtils.isEmpty(str)) {}
-    do
-    {
+    if (TextUtils.isEmpty(str)) {
       return null;
-      if (str.compareTo("QQWalletPayAuthServer.checkChangePwdAuth") == 0) {
-        return a(paramToServiceMsg, paramFromServiceMsg);
-      }
-      if (str.compareTo("WalletGestureSvc.GetPassword") == 0) {
-        return b(paramToServiceMsg, paramFromServiceMsg);
-      }
-      if (str.compareTo("VacThirdCodeSvc.fetchCodes") == 0) {
-        return c(paramToServiceMsg, paramFromServiceMsg);
-      }
-    } while (str.compareTo("QWalletPfa.RecFriend") != 0);
-    return d(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if (str.compareTo("QQWalletPayAuthServer.checkChangePwdAuth") == 0) {
+      return a(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if (str.compareTo("WalletGestureSvc.GetPassword") == 0) {
+      return b(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if (str.compareTo("VacThirdCodeSvc.fetchCodes") == 0) {
+      return c(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if (str.compareTo("QWalletPfa.RecFriend") == 0) {
+      return d(paramToServiceMsg, paramFromServiceMsg);
+    }
+    return null;
   }
   
   public boolean encodeReqMsg(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
     String str = paramToServiceMsg.getServiceCmd();
-    if (TextUtils.isEmpty(str)) {}
-    do
-    {
+    if (TextUtils.isEmpty(str)) {
       return false;
-      if (str.compareTo("QQWalletPayAuthServer.checkChangePwdAuth") == 0) {
-        return a(paramToServiceMsg, paramUniPacket);
-      }
-      if (str.compareTo("WalletGestureSvc.GetPassword") == 0) {
-        return b(paramToServiceMsg, paramUniPacket);
-      }
-      if (str.compareTo("VacThirdCodeSvc.fetchCodes") == 0) {
-        return c(paramToServiceMsg, paramUniPacket);
-      }
-    } while (str.compareTo("QWalletPfa.RecFriend") != 0);
-    return d(paramToServiceMsg, paramUniPacket);
+    }
+    if (str.compareTo("QQWalletPayAuthServer.checkChangePwdAuth") == 0) {
+      return a(paramToServiceMsg, paramUniPacket);
+    }
+    if (str.compareTo("WalletGestureSvc.GetPassword") == 0) {
+      return b(paramToServiceMsg, paramUniPacket);
+    }
+    if (str.compareTo("VacThirdCodeSvc.fetchCodes") == 0) {
+      return c(paramToServiceMsg, paramUniPacket);
+    }
+    if (str.compareTo("QWalletPfa.RecFriend") == 0) {
+      return d(paramToServiceMsg, paramUniPacket);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.qwallet.QWalletAuthService
  * JD-Core Version:    0.7.0.1
  */

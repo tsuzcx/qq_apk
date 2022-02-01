@@ -36,8 +36,10 @@ public final class oidb_cmd0xbd2$DiscoverTopicVideoCard
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
@@ -47,12 +49,12 @@ public final class oidb_cmd0xbd2$DiscoverTopicVideoCard
     ByteStringMicro localByteStringMicro9 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro10 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro11 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 50, 58, 64, 74, 82, 90, 98, 104, 114, 120, 130, 136, 146 }, new String[] { "bytes_corner_icon_url", "bytes_cover_url", "uint64_feeds_id", "feeds_type", "bytes_rowkey", "bytes_subscribe_id", "bytes_subscribe_name", "uint64_article_id", "bytes_article_title", "bytes_article_summary", "bytes_first_page_pic_url", "bytes_article_content_url", "uint64_time", "json_video_list", "uint32_is_ugc", "msg_ugc_video_info_list", "uint64_cuin", "bytes_sort_data" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, Long.valueOf(0L), localByteStringMicro6, localByteStringMicro7, localByteStringMicro8, localByteStringMicro9, Long.valueOf(0L), localByteStringMicro10, Integer.valueOf(0), null, Long.valueOf(0L), localByteStringMicro11 }, DiscoverTopicVideoCard.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 50, 58, 64, 74, 82, 90, 98, 104, 114, 120, 130, 136, 146 }, new String[] { "bytes_corner_icon_url", "bytes_cover_url", "uint64_feeds_id", "feeds_type", "bytes_rowkey", "bytes_subscribe_id", "bytes_subscribe_name", "uint64_article_id", "bytes_article_title", "bytes_article_summary", "bytes_first_page_pic_url", "bytes_article_content_url", "uint64_time", "json_video_list", "uint32_is_ugc", "msg_ugc_video_info_list", "uint64_cuin", "bytes_sort_data" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localLong, localInteger, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localLong, localByteStringMicro6, localByteStringMicro7, localByteStringMicro8, localByteStringMicro9, localLong, localByteStringMicro10, localInteger, null, localLong, localByteStringMicro11 }, DiscoverTopicVideoCard.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xbd2.oidb_cmd0xbd2.DiscoverTopicVideoCard
  * JD-Core Version:    0.7.0.1
  */

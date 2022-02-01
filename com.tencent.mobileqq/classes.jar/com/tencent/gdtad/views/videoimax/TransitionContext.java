@@ -68,8 +68,18 @@ public class TransitionContext
   
   private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    GdtLog.a("TransitionContext", "enterAnimation() called with: l = [" + paramInt1 + "], t = [" + paramInt2 + "], width = [" + paramInt3 + "], height = [" + paramInt4 + "]");
-    Object localObject1 = (Activity)this.jdField_a_of_type_ComTencentAdTangramVideoceilingAdVideoSpliceAdapter$Params.activity.get();
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("enterAnimation() called with: l = [");
+    ((StringBuilder)localObject1).append(paramInt1);
+    ((StringBuilder)localObject1).append("], t = [");
+    ((StringBuilder)localObject1).append(paramInt2);
+    ((StringBuilder)localObject1).append("], width = [");
+    ((StringBuilder)localObject1).append(paramInt3);
+    ((StringBuilder)localObject1).append("], height = [");
+    ((StringBuilder)localObject1).append(paramInt4);
+    ((StringBuilder)localObject1).append("]");
+    GdtLog.a("TransitionContext", ((StringBuilder)localObject1).toString());
+    localObject1 = (Activity)this.jdField_a_of_type_ComTencentAdTangramVideoceilingAdVideoSpliceAdapter$Params.activity.get();
     Object localObject2 = ((Activity)localObject1).getWindow();
     a((Window)localObject2);
     localObject2 = (FrameLayout)((Window)localObject2).getDecorView();
@@ -80,15 +90,19 @@ public class TransitionContext
     paramInt4 = paramInt2 + paramInt4;
     int i = ((FrameLayout)localObject2).getWidth();
     int j = ((FrameLayout)localObject2).getHeight();
-    GdtLog.a("TransitionContext", "enterAnimation() destinationClipBottom = [" + j + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("enterAnimation() destinationClipBottom = [");
+    localStringBuilder.append(j);
+    localStringBuilder.append("]");
+    GdtLog.a("TransitionContext", localStringBuilder.toString());
     this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxEnterImageView.setLayoutParams((ViewGroup.LayoutParams)localObject3);
     localRect.set(paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxEnterImageView.setClipBoundsCompact(localRect);
     localObject3 = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Activity)localObject1).getResources().getDrawable(2130851162);
-    ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Activity)localObject1).getResources().getDrawable(2130851162);
+    ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Activity)localObject1).getResources().getDrawable(2130851078);
+    ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Activity)localObject1).getResources().getDrawable(2130851078);
     localObject1 = URLDrawable.getDrawable(((GdtAd)GdtAd.class.cast(this.jdField_a_of_type_ComTencentAdTangramVideoceilingAdVideoSpliceAdapter$Params.ad)).info.display_info.basic_info.img.get(), (URLDrawable.URLDrawableOptions)localObject3);
-    ((URLDrawable)localObject1).setDecodeHandler(URLDrawableDecodeHandler.n);
+    ((URLDrawable)localObject1).setDecodeHandler(URLDrawableDecodeHandler.m);
     ((URLDrawable)localObject1).setTag(new int[] { 50 });
     this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxEnterImageView.setImageDrawable((Drawable)localObject1);
     this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxEnterImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -103,34 +117,33 @@ public class TransitionContext
   
   private static void a(Context paramContext)
   {
-    for (;;)
+    do
     {
       try
       {
-        if (c) {
-          return;
+        if (!c) {
+          continue;
         }
-        if (paramContext == null) {
-          break;
-        }
-        URLDrawable.DEBUG = false;
-        if ("mounted".equals(Environment.getExternalStorageState()))
-        {
-          localFile = new File(VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH));
-          localFile = new File(localFile, "diskcache");
-          URLDrawable.init(URLDrawableDepWrapInit.a(), new TransitionContext.URLDrawableFactory(paramContext, localFile));
-          c = true;
-          return;
-        }
+        return;
       }
       catch (Throwable paramContext)
       {
+        File localFile;
         paramContext.printStackTrace();
         QZLog.e("TransitionContext", "UrlDrawable init exception.", paramContext);
         return;
       }
-      File localFile = paramContext.getCacheDir();
-    }
+      URLDrawable.DEBUG = false;
+      if ("mounted".equals(Environment.getExternalStorageState())) {
+        localFile = new File(VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH));
+      } else {
+        localFile = paramContext.getCacheDir();
+      }
+      localFile = new File(localFile, "diskcache");
+      URLDrawable.init(URLDrawableDepWrapInit.a(), new TransitionContext.URLDrawableFactory(paramContext, localFile));
+      c = true;
+      return;
+    } while (paramContext != null);
   }
   
   private void a(Window paramWindow)
@@ -143,12 +156,17 @@ public class TransitionContext
   
   private void a(ImageView paramImageView)
   {
-    GdtLog.a("TransitionContext", "finishEnterAnimator() called with: maskView = [" + paramImageView + "]");
-    ViewGroup localViewGroup = (ViewGroup)paramImageView.getParent();
-    if (localViewGroup != null) {
-      localViewGroup.removeView(paramImageView);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("finishEnterAnimator() called with: maskView = [");
+    ((StringBuilder)localObject).append(paramImageView);
+    ((StringBuilder)localObject).append("]");
+    GdtLog.a("TransitionContext", ((StringBuilder)localObject).toString());
+    localObject = (ViewGroup)paramImageView.getParent();
+    if (localObject != null) {
+      ((ViewGroup)localObject).removeView(paramImageView);
     }
-    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning()))
+    paramImageView = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    if ((paramImageView != null) && (paramImageView.isRunning()))
     {
       this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
       this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
@@ -165,8 +183,9 @@ public class TransitionContext
   private void c()
   {
     GdtLog.a("TransitionContext", "sendAnimationEnd() called");
-    if (this.jdField_a_of_type_AndroidOsResultReceiver != null) {
-      this.jdField_a_of_type_AndroidOsResultReceiver.send(1, new Bundle());
+    ResultReceiver localResultReceiver = this.jdField_a_of_type_AndroidOsResultReceiver;
+    if (localResultReceiver != null) {
+      localResultReceiver.send(1, new Bundle());
     }
   }
   
@@ -226,7 +245,7 @@ public class TransitionContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.TransitionContext
  * JD-Core Version:    0.7.0.1
  */

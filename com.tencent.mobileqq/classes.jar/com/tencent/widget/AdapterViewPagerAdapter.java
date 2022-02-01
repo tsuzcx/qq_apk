@@ -1,13 +1,13 @@
 package com.tencent.widget;
 
 import android.content.Context;
-import android.support.v4.view.PagerAdapter;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import androidx.viewpager.widget.PagerAdapter;
 
 public class AdapterViewPagerAdapter
   extends PagerAdapter
@@ -31,22 +31,21 @@ public class AdapterViewPagerAdapter
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      if (this.jdField_a_of_type_ComTencentWidgetAdapterViewPagerAdapter$AdapterViewFactory != null) {
-        localObject1 = this.jdField_a_of_type_ComTencentWidgetAdapterViewPagerAdapter$AdapterViewFactory.a(this.jdField_a_of_type_AndroidContentContext, paramInt);
+      localObject1 = this.jdField_a_of_type_ComTencentWidgetAdapterViewPagerAdapter$AdapterViewFactory;
+      if (localObject1 != null) {
+        localObject1 = ((AdapterViewPagerAdapter.AdapterViewFactory)localObject1).a(this.jdField_a_of_type_AndroidContentContext, paramInt);
+      } else {
+        throw new IllegalArgumentException("setAdapterViewFactory should be invoked first!");
       }
     }
-    else
+    if (localObject1 != null)
     {
-      if (localObject1 != null)
-      {
-        localObject2 = new PagerBaseAdapterWrapper(this.jdField_a_of_type_ComTencentWidgetPagerBaseAdapterWrapper.a(), this.jdField_a_of_type_ComTencentWidgetPagerBaseAdapterWrapper.a());
-        ((PagerBaseAdapterWrapper)localObject2).a(paramInt);
-        ((AdapterView)localObject1).setAdapter((Adapter)localObject2);
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject1);
-      }
-      return localObject1;
+      localObject2 = new PagerBaseAdapterWrapper(this.jdField_a_of_type_ComTencentWidgetPagerBaseAdapterWrapper.a(), this.jdField_a_of_type_ComTencentWidgetPagerBaseAdapterWrapper.a());
+      ((PagerBaseAdapterWrapper)localObject2).a(paramInt);
+      ((AdapterView)localObject1).setAdapter((Adapter)localObject2);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject1);
     }
-    throw new IllegalArgumentException("setAdapterViewFactory should be invoked first!");
+    return localObject1;
   }
   
   public void a(AdapterViewPagerAdapter.AdapterViewFactory paramAdapterViewFactory)
@@ -56,9 +55,10 @@ public class AdapterViewPagerAdapter
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetAdapterViewPagerAdapter$PageInflateDelegate != null)
+    AdapterViewPagerAdapter.PageInflateDelegate localPageInflateDelegate = this.jdField_a_of_type_ComTencentWidgetAdapterViewPagerAdapter$PageInflateDelegate;
+    if (localPageInflateDelegate != null)
     {
-      this.jdField_a_of_type_ComTencentWidgetAdapterViewPagerAdapter$PageInflateDelegate.a(paramViewGroup, (View)paramObject, paramInt);
+      localPageInflateDelegate.a(paramViewGroup, (View)paramObject, paramInt);
       return;
     }
     paramViewGroup.removeView((View)paramObject);
@@ -75,8 +75,9 @@ public class AdapterViewPagerAdapter
     if (localAdapterView == null) {
       return null;
     }
-    if (this.jdField_a_of_type_ComTencentWidgetAdapterViewPagerAdapter$PageInflateDelegate != null) {
-      return this.jdField_a_of_type_ComTencentWidgetAdapterViewPagerAdapter$PageInflateDelegate.a(paramViewGroup, localAdapterView, paramInt);
+    AdapterViewPagerAdapter.PageInflateDelegate localPageInflateDelegate = this.jdField_a_of_type_ComTencentWidgetAdapterViewPagerAdapter$PageInflateDelegate;
+    if (localPageInflateDelegate != null) {
+      return localPageInflateDelegate.a(paramViewGroup, localAdapterView, paramInt);
     }
     paramViewGroup.addView(localAdapterView);
     return localAdapterView;
@@ -89,7 +90,7 @@ public class AdapterViewPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.AdapterViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

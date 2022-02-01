@@ -34,20 +34,27 @@ public class NetworkJsPlugin
   
   private String getCurrentTypeDesc()
   {
-    switch (NetworkUtil.getActiveNetworkType(this.mContext))
+    int i = NetworkUtil.getActiveNetworkType(this.mContext);
+    if (i != 0)
     {
-    default: 
-      return "unkown";
-    case 0: 
-      return "none";
-    case 2: 
-      return "2g";
-    case 3: 
-      return "3g";
-    case 4: 
-      return "4g";
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i != 4) {
+              return "unkown";
+            }
+            return "4g";
+          }
+          return "3g";
+        }
+        return "2g";
+      }
+      return "wifi";
     }
-    return "wifi";
+    return "none";
   }
   
   @JsEvent({"getNetworkType"})
@@ -83,23 +90,24 @@ public class NetworkJsPlugin
   
   public void onDestroy()
   {
-    if ((this.mRegister) && (this.mReceiver != null)) {}
-    try
-    {
-      this.mContext.unregisterReceiver(this.mReceiver);
-      this.mReceiver = null;
-      this.mRegister = false;
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QMLog.e("NetworkJsPlugin", "fail unregisterReceiver", localThrowable);
+    if ((this.mRegister) && (this.mReceiver != null)) {
+      try
+      {
+        this.mContext.unregisterReceiver(this.mReceiver);
+        this.mReceiver = null;
+        this.mRegister = false;
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        QMLog.e("NetworkJsPlugin", "fail unregisterReceiver", localThrowable);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.NetworkJsPlugin
  * JD-Core Version:    0.7.0.1
  */

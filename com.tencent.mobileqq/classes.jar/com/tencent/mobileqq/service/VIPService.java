@@ -21,15 +21,16 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.VipInfoHandler;
 import com.tencent.mobileqq.data.NamePlateCfgInfo;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.vas.PrettyAccountUtil;
 import com.tencent.mobileqq.vas.VasExtensionManager;
+import com.tencent.mobileqq.vas.util.PrettyAccountUtil;
+import com.tencent.mobileqq.vas.vip.QVipConfigManager;
 import com.tencent.mobileqq.vip.CUKingCardHelper;
-import com.tencent.mobileqq.vip.QVipConfigManager;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.QQDeviceInfo;
 import cooperation.ilive.manager.IliveDbManager;
+import cooperation.ilive.manager.IliveRedManager;
 import cooperation.qzone.QUA;
 import mqq.app.AppRuntime;
 
@@ -40,16 +41,22 @@ public class VIPService
   
   private long a(String paramString)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface)))
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    long l2 = 0L;
+    long l1 = l2;
+    if (localObject != null)
     {
-      long l = QVipConfigManager.a((QQAppInterface)localAppRuntime, "name_plate_config_version", 0L);
-      if (TextUtils.isEmpty(NamePlateCfgInfo.getVipNamePlateCfgInfo((QQAppInterface)localAppRuntime, paramString))) {
-        return 0L;
+      l1 = l2;
+      if ((localObject instanceof QQAppInterface))
+      {
+        localObject = (QQAppInterface)localObject;
+        l1 = QVipConfigManager.a((AppRuntime)localObject, "name_plate_config_version", 0L);
+        if (TextUtils.isEmpty(NamePlateCfgInfo.getVipNamePlateCfgInfo((QQAppInterface)localObject, paramString))) {
+          return 0L;
+        }
       }
-      return l;
     }
-    return 0L;
+    return l1;
   }
   
   private <T> T a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, T paramT)
@@ -90,153 +97,163 @@ public class VIPService
     paramUniPacket.setServantName("MQQ.PrivInfoServer.PrivInfoObj");
     paramUniPacket.setFuncName("queryPrivInfoExtV2");
     String str3 = paramToServiceMsg.extraData.getString(VipInfoHandler.a);
-    Object localObject = paramToServiceMsg.extraData.getString(VipInfoHandler.c);
+    Object localObject1 = paramToServiceMsg.extraData.getString(VipInfoHandler.c);
     long l1 = paramToServiceMsg.extraData.getLong(VipInfoHandler.m);
     boolean bool3 = VasExtensionManager.a();
-    boolean bool1 = false;
-    boolean bool2 = false;
     PrivExtV2Req localPrivExtV2Req = new PrivExtV2Req();
     localPrivExtV2Req.sUin = str3;
-    localPrivExtV2Req.sKey = ((String)localObject);
+    localPrivExtV2Req.sKey = ((String)localObject1);
     localPrivExtV2Req.iGetType = 0;
     localPrivExtV2Req.qua = QUA.getQUA3();
-    QLog.e("VIPService", 1, "Ilive handleGetVipInfoReq qua = " + QUA.getQUA3());
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("CUKingCardFile_" + str3, 4);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("Ilive handleGetVipInfoReq qua = ");
+    ((StringBuilder)localObject1).append(QUA.getQUA3());
+    QLog.e("VIPService", 1, ((StringBuilder)localObject1).toString());
+    localObject1 = BaseApplicationImpl.getApplication();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("CUKingCardFile_");
+    ((StringBuilder)localObject2).append(str3);
+    localObject2 = ((BaseApplicationImpl)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 4);
     String str4 = CUKingCardHelper.a(0, BaseApplicationImpl.getContext());
-    localObject = CUKingCardHelper.a(1, BaseApplicationImpl.getContext());
-    String str2 = localSharedPreferences.getString("imsiOne", "");
-    String str1 = localSharedPreferences.getString("imsiTwo", "");
-    long l2 = localSharedPreferences.getLong("kingCardLastRequest", 0L);
-    long l3 = localSharedPreferences.getInt("kingCardRequestInterval", 0);
+    localObject1 = CUKingCardHelper.a(1, BaseApplicationImpl.getContext());
+    String str2 = ((SharedPreferences)localObject2).getString("imsiOne", "");
+    String str1 = ((SharedPreferences)localObject2).getString("imsiTwo", "");
+    long l2 = ((SharedPreferences)localObject2).getLong("kingCardLastRequest", 0L);
+    long l3 = ((SharedPreferences)localObject2).getInt("kingCardRequestInterval", 0);
     long l4 = System.currentTimeMillis() / 1000L;
     localPrivExtV2Req.lastVisitTime = l1;
     localPrivExtV2Req.iItemCfgVer = a(str3);
     if (!TextUtils.isEmpty(str4))
     {
       localPrivExtV2Req.sImsi1 = str4;
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break label662;
-      }
     }
-    for (;;)
+    else if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      for (;;)
+      localPrivExtV2Req.sImsi1 = ((String)localObject1);
+      localObject1 = null;
+    }
+    else
+    {
+      try
       {
-        localPrivExtV2Req.sImsi2 = ((String)localObject);
-        localObject = paramToServiceMsg.extraData.getString(VipInfoHandler.d);
-        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals("vip_drawer")))
-        {
-          localPrivExtV2Req.trace_info = IliveDbManager.getIliveDrawerData("drawer_trace_info");
-          QLog.e("VIPService", 1, "handleGetVipInfoReq getVipInfo set trace_info " + localPrivExtV2Req.trace_info);
-        }
-        int k = localSharedPreferences.getInt("kingCardSdk", -1);
-        if ((!bool3) || (k < 0)) {
-          break label669;
-        }
-        localPrivExtV2Req.sImsi2 = "";
-        localPrivExtV2Req.sImsi1 = "";
-        localPrivExtV2Req.iWkOrderState1 = k;
-        localPrivExtV2Req.iToastVer = localSharedPreferences.getInt("toast_version", 0);
-        localPrivExtV2Req.iPopupVer = localSharedPreferences.getInt("popup_version_v2", 0);
-        localPrivExtV2Req.pullPayRuleCfgTime = QVipConfigManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "last_pull_pay_rule", 0L);
-        localPrivExtV2Req.clientLangugeId = 0;
-        QLog.e("VIPService", 1, "handleGetVipInfoReq, pullPayRuleCfgTime=" + localPrivExtV2Req.pullPayRuleCfgTime);
-        if (QLog.isColorLevel()) {
-          QLog.i("VIPService", 2, "handleGetVipInfoReq, iPopupVer: " + localPrivExtV2Req.iPopupVer + " iToastVer:" + localPrivExtV2Req.iToastVer + " canUseTMS:" + bool3 + " sdkCardStatus:" + k + ", send sim1: " + bool1 + ", send sim2:" + bool2);
-        }
-        paramToServiceMsg.extraData.putBoolean(VipInfoHandler.i, bool1);
-        paramToServiceMsg.extraData.putBoolean(VipInfoHandler.j, bool2);
-        paramUniPacket.put("req", localPrivExtV2Req);
-        return true;
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          localPrivExtV2Req.sImsi1 = ((String)localObject);
-          localObject = null;
-          break;
-        }
-        try
-        {
-          localPrivExtV2Req.sImsi1 = QQDeviceInfo.getIMSI("a4bd32");
-        }
-        catch (Exception localException)
-        {
-          QLog.e("VIPService", 1, "handleGetVipInfoReq", localException);
-        }
+        localPrivExtV2Req.sImsi1 = QQDeviceInfo.getIMSI("a4bd32");
       }
-      break;
-      label662:
-      localObject = "";
+      catch (Exception localException)
+      {
+        QLog.e("VIPService", 1, "handleGetVipInfoReq", localException);
+      }
     }
-    label669:
-    if ((TextUtils.isEmpty(localPrivExtV2Req.sImsi1)) && (TextUtils.isEmpty(localPrivExtV2Req.sImsi2))) {
-      localPrivExtV2Req.iGetType = 1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      localObject1 = "";
     }
-    int j = 0;
-    int i;
-    if (((!TextUtils.isEmpty(localPrivExtV2Req.sImsi1)) && (!localPrivExtV2Req.sImsi1.equals(str2))) || (TextUtils.isEmpty(localPrivExtV2Req.sImsi1)))
+    localPrivExtV2Req.sImsi2 = ((String)localObject1);
+    localObject1 = paramToServiceMsg.extraData.getString(VipInfoHandler.d);
+    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).equals("vip_drawer")))
     {
-      localObject = localSharedPreferences.edit();
-      ((SharedPreferences.Editor)localObject).putString("imsiOne", "");
-      ((SharedPreferences.Editor)localObject).putInt("kingCard", -1);
-      ((SharedPreferences.Editor)localObject).commit();
-      i = 1;
-      label778:
-      if (((TextUtils.isEmpty(localPrivExtV2Req.sImsi2)) || (localPrivExtV2Req.sImsi2.equals(str1))) && (!TextUtils.isEmpty(localPrivExtV2Req.sImsi2))) {
-        break label1033;
-      }
-      localObject = localSharedPreferences.edit();
-      ((SharedPreferences.Editor)localObject).putString("imsiTwo", "");
-      ((SharedPreferences.Editor)localObject).putInt("kingCard2", -1);
-      ((SharedPreferences.Editor)localObject).commit();
-      j = 1;
-      label857:
-      if (TextUtils.isEmpty(localPrivExtV2Req.sImsi1)) {
-        break label1060;
-      }
-      bool1 = true;
-      label871:
-      if (TextUtils.isEmpty(localPrivExtV2Req.sImsi2)) {
-        break label1066;
-      }
+      localPrivExtV2Req.trace_info = IliveDbManager.getIliveDrawerData("drawer_trace_info");
+      localPrivExtV2Req.recom_ext_info = IliveRedManager.getIliveRecomRedInfo();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("handleGetVipInfoReq getVipInfo set trace_info ");
+      ((StringBuilder)localObject1).append(localPrivExtV2Req.trace_info);
+      QLog.e("VIPService", 1, ((StringBuilder)localObject1).toString());
     }
-    label1033:
-    label1060:
-    label1066:
-    for (bool2 = true;; bool2 = false)
+    int k = ((SharedPreferences)localObject2).getInt("kingCardSdk", -1);
+    boolean bool1;
+    boolean bool2;
+    if ((bool3) && (k >= 0))
     {
+      localPrivExtV2Req.sImsi2 = "";
+      localPrivExtV2Req.sImsi1 = "";
+      localPrivExtV2Req.iWkOrderState1 = k;
+      bool1 = false;
+      bool2 = false;
+    }
+    else
+    {
+      if ((TextUtils.isEmpty(localPrivExtV2Req.sImsi1)) && (TextUtils.isEmpty(localPrivExtV2Req.sImsi2))) {
+        localPrivExtV2Req.iGetType = 1;
+      }
+      int i;
+      if (((!TextUtils.isEmpty(localPrivExtV2Req.sImsi1)) && (!localPrivExtV2Req.sImsi1.equals(str2))) || (TextUtils.isEmpty(localPrivExtV2Req.sImsi1)))
+      {
+        localObject1 = ((SharedPreferences)localObject2).edit();
+        ((SharedPreferences.Editor)localObject1).putString("imsiOne", "");
+        ((SharedPreferences.Editor)localObject1).putInt("kingCard", -1);
+        ((SharedPreferences.Editor)localObject1).commit();
+        i = 1;
+      }
+      else
+      {
+        if (l4 - l2 < l3) {
+          localPrivExtV2Req.sImsi1 = "";
+        }
+        i = 0;
+      }
+      int j;
+      if (((!TextUtils.isEmpty(localPrivExtV2Req.sImsi2)) && (!localPrivExtV2Req.sImsi2.equals(str1))) || (TextUtils.isEmpty(localPrivExtV2Req.sImsi2)))
+      {
+        localObject1 = ((SharedPreferences)localObject2).edit();
+        ((SharedPreferences.Editor)localObject1).putString("imsiTwo", "");
+        ((SharedPreferences.Editor)localObject1).putInt("kingCard2", -1);
+        ((SharedPreferences.Editor)localObject1).commit();
+        j = 1;
+      }
+      else
+      {
+        j = i;
+        if (l4 - l2 < l3)
+        {
+          localPrivExtV2Req.sImsi2 = "";
+          j = i;
+        }
+      }
+      bool1 = TextUtils.isEmpty(localPrivExtV2Req.sImsi1) ^ true;
+      bool2 = TextUtils.isEmpty(localPrivExtV2Req.sImsi2) ^ true;
       if (bool1) {
         paramToServiceMsg.extraData.putString(VipInfoHandler.k, localPrivExtV2Req.sImsi1);
       }
       if (bool2) {
         paramToServiceMsg.extraData.putString(VipInfoHandler.l, localPrivExtV2Req.sImsi2);
       }
-      localPrivExtV2Req.iWkOrderState1 = localSharedPreferences.getInt("kingCard", -1);
-      localPrivExtV2Req.iWkOrderState2 = localSharedPreferences.getInt("kingCard2", -1);
+      localPrivExtV2Req.iWkOrderState1 = ((SharedPreferences)localObject2).getInt("kingCard", -1);
+      localPrivExtV2Req.iWkOrderState2 = ((SharedPreferences)localObject2).getInt("kingCard2", -1);
       if (j != 0)
       {
-        localObject = localSharedPreferences.edit();
-        ((SharedPreferences.Editor)localObject).putInt("toast_version", 0);
-        ((SharedPreferences.Editor)localObject).putInt("popup_version_v2", 0);
-        ((SharedPreferences.Editor)localObject).commit();
+        localObject1 = ((SharedPreferences)localObject2).edit();
+        ((SharedPreferences.Editor)localObject1).putInt("toast_version", 0);
+        ((SharedPreferences.Editor)localObject1).putInt("popup_version_v2", 0);
+        ((SharedPreferences.Editor)localObject1).commit();
       }
-      break;
-      i = j;
-      if (l4 - l2 >= l3) {
-        break label778;
-      }
-      localPrivExtV2Req.sImsi1 = "";
-      i = j;
-      break label778;
-      j = i;
-      if (l4 - l2 >= l3) {
-        break label857;
-      }
-      localPrivExtV2Req.sImsi2 = "";
-      j = i;
-      break label857;
-      bool1 = false;
-      break label871;
     }
+    localPrivExtV2Req.iToastVer = ((SharedPreferences)localObject2).getInt("toast_version", 0);
+    localPrivExtV2Req.iPopupVer = ((SharedPreferences)localObject2).getInt("popup_version_v2", 0);
+    localPrivExtV2Req.pullPayRuleCfgTime = QVipConfigManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "last_pull_pay_rule", 0L);
+    localPrivExtV2Req.clientLangugeId = 0;
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("handleGetVipInfoReq, pullPayRuleCfgTime=");
+    ((StringBuilder)localObject1).append(localPrivExtV2Req.pullPayRuleCfgTime);
+    QLog.e("VIPService", 1, ((StringBuilder)localObject1).toString());
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("handleGetVipInfoReq, iPopupVer: ");
+      ((StringBuilder)localObject1).append(localPrivExtV2Req.iPopupVer);
+      ((StringBuilder)localObject1).append(" iToastVer:");
+      ((StringBuilder)localObject1).append(localPrivExtV2Req.iToastVer);
+      ((StringBuilder)localObject1).append(" canUseTMS:");
+      ((StringBuilder)localObject1).append(bool3);
+      ((StringBuilder)localObject1).append(" sdkCardStatus:");
+      ((StringBuilder)localObject1).append(k);
+      ((StringBuilder)localObject1).append(", send sim1: ");
+      ((StringBuilder)localObject1).append(bool1);
+      ((StringBuilder)localObject1).append(", send sim2:");
+      ((StringBuilder)localObject1).append(bool2);
+      QLog.i("VIPService", 2, ((StringBuilder)localObject1).toString());
+    }
+    paramToServiceMsg.extraData.putBoolean(VipInfoHandler.i, bool1);
+    paramToServiceMsg.extraData.putBoolean(VipInfoHandler.j, bool2);
+    paramUniPacket.put("req", localPrivExtV2Req);
+    return true;
   }
   
   public String[] cmdHeaderPrefix()
@@ -274,45 +291,44 @@ public class VIPService
   
   public boolean encodeReqMsg(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    boolean bool = true;
-    if ("ClubInfoSvc.queryPrivExt".equals(paramToServiceMsg.getServiceCmd())) {
-      if (paramToServiceMsg.extraData.getInt(VipInfoHandler.b) == 6) {
-        bool = a(paramToServiceMsg, paramUniPacket);
-      }
-    }
-    do
+    if ("ClubInfoSvc.queryPrivExt".equals(paramToServiceMsg.getServiceCmd()))
     {
-      return bool;
+      if (paramToServiceMsg.extraData.getInt(VipInfoHandler.b) == 6) {
+        return a(paramToServiceMsg, paramUniPacket);
+      }
       return b(paramToServiceMsg, paramUniPacket);
-      if ("ClubInfoSvc.guanjiaReport".equals(paramToServiceMsg.getServiceCmd()))
-      {
-        paramUniPacket.setServantName("MQQ.PrivInfoServer.PrivInfoObj");
-        paramUniPacket.setFuncName("guanjiaDoReport");
-        localObject = paramToServiceMsg.extraData.getString(VipInfoHandler.a);
-        GuanjiaReportReq localGuanjiaReportReq = new GuanjiaReportReq();
-        localGuanjiaReportReq.sPkgName = "mobileQQ";
-        localGuanjiaReportReq.uin = Long.parseLong((String)localObject);
-        localGuanjiaReportReq.iImplat = 109;
-        localGuanjiaReportReq.sPhoneNum = paramToServiceMsg.extraData.getString(VipInfoHandler.e);
-        localGuanjiaReportReq.bKingCard = paramToServiceMsg.extraData.getBoolean(VipInfoHandler.f);
-        localGuanjiaReportReq.iCardType = paramToServiceMsg.extraData.getInt(VipInfoHandler.g);
-        localGuanjiaReportReq.iCardStatus = paramToServiceMsg.extraData.getInt(VipInfoHandler.h);
-        localGuanjiaReportReq.bReportFlag = false;
-        paramUniPacket.put("req", localGuanjiaReportReq);
-        return true;
-      }
-      if (!"VipCustom.GetCustomOnlineStatus".equals(paramToServiceMsg.getServiceCmd())) {
-        break;
-      }
+    }
+    Object localObject;
+    if ("ClubInfoSvc.guanjiaReport".equals(paramToServiceMsg.getServiceCmd()))
+    {
+      paramUniPacket.setServantName("MQQ.PrivInfoServer.PrivInfoObj");
+      paramUniPacket.setFuncName("guanjiaDoReport");
+      localObject = paramToServiceMsg.extraData.getString(VipInfoHandler.a);
+      GuanjiaReportReq localGuanjiaReportReq = new GuanjiaReportReq();
+      localGuanjiaReportReq.sPkgName = "mobileQQ";
+      localGuanjiaReportReq.uin = Long.parseLong((String)localObject);
+      localGuanjiaReportReq.iImplat = 109;
+      localGuanjiaReportReq.sPhoneNum = paramToServiceMsg.extraData.getString(VipInfoHandler.e);
+      localGuanjiaReportReq.bKingCard = paramToServiceMsg.extraData.getBoolean(VipInfoHandler.f);
+      localGuanjiaReportReq.iCardType = paramToServiceMsg.extraData.getInt(VipInfoHandler.g);
+      localGuanjiaReportReq.iCardStatus = paramToServiceMsg.extraData.getInt(VipInfoHandler.h);
+      localGuanjiaReportReq.bReportFlag = false;
+      paramUniPacket.put("req", localGuanjiaReportReq);
+      return true;
+    }
+    if ("VipCustom.GetCustomOnlineStatus".equals(paramToServiceMsg.getServiceCmd()))
+    {
       paramUniPacket.setServantName("VIP.CustomOnlineStatusServer.CustomOnlineStatusObj");
       paramUniPacket.setFuncName("GetCustomOnlineStatus");
-      Object localObject = new GetCustomOnlineStatusReq();
+      localObject = new GetCustomOnlineStatusReq();
       ((GetCustomOnlineStatusReq)localObject).lUin = paramToServiceMsg.extraData.getLong(VipInfoHandler.n);
       ((GetCustomOnlineStatusReq)localObject).sIMei = MsfSdkUtils.getIMEIForMain("bussiness_id_customize_online_status");
       paramUniPacket.put("req", localObject);
-    } while (!QLog.isDevelopLevel());
-    QLog.d("CustomOnlineStatusManager", 4, "encodeReqMsg");
-    return true;
+      if (QLog.isDevelopLevel()) {
+        QLog.d("CustomOnlineStatusManager", 4, "encodeReqMsg");
+      }
+      return true;
+    }
     if ("QCUniBusinessLogic.uniSet".equals(paramToServiceMsg.getServiceCmd()))
     {
       paramUniPacket.setServantName("QC.UniBusinessLogicServer.UniBusinessLogicObj");
@@ -332,7 +348,7 @@ public class VIPService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.VIPService
  * JD-Core Version:    0.7.0.1
  */

@@ -7,20 +7,21 @@ import com.tencent.qqperf.monitor.base.IAPMModuleBattery;
 public class BatteryStatsImpl
   extends BatteryStats
 {
-  private static BatteryStatsImpl jdField_a_of_type_ComTencentQqperfMonitorBackgroundcpuBatteryStatsImpl = null;
+  private static BatteryStatsImpl jdField_a_of_type_ComTencentQqperfMonitorBackgroundcpuBatteryStatsImpl;
   private boolean jdField_a_of_type_Boolean = false;
   
   public static BatteryStatsImpl a()
   {
-    if (jdField_a_of_type_ComTencentQqperfMonitorBackgroundcpuBatteryStatsImpl != null) {
-      return jdField_a_of_type_ComTencentQqperfMonitorBackgroundcpuBatteryStatsImpl;
+    BatteryStatsImpl localBatteryStatsImpl = jdField_a_of_type_ComTencentQqperfMonitorBackgroundcpuBatteryStatsImpl;
+    if (localBatteryStatsImpl != null) {
+      return localBatteryStatsImpl;
     }
     try
     {
       if (jdField_a_of_type_ComTencentQqperfMonitorBackgroundcpuBatteryStatsImpl == null) {
         jdField_a_of_type_ComTencentQqperfMonitorBackgroundcpuBatteryStatsImpl = new BatteryStatsImpl();
       }
-      BatteryStatsImpl localBatteryStatsImpl = jdField_a_of_type_ComTencentQqperfMonitorBackgroundcpuBatteryStatsImpl;
+      localBatteryStatsImpl = jdField_a_of_type_ComTencentQqperfMonitorBackgroundcpuBatteryStatsImpl;
       return localBatteryStatsImpl;
     }
     finally {}
@@ -29,12 +30,12 @@ public class BatteryStatsImpl
   public void a()
   {
     Object localObject = MagnifierSDK.a().a().b().split("\\|");
-    if ((localObject.length >= 11) && (!TextUtils.isEmpty(localObject[10]))) {}
-    for (localObject = localObject[10];; localObject = "0.1;0.0002;10;5;10;5;2;0;500;1")
-    {
-      BackgroundCpuMonitor.a().a((String)localObject);
-      return;
+    if ((localObject.length >= 11) && (!TextUtils.isEmpty(localObject[10]))) {
+      localObject = localObject[10];
+    } else {
+      localObject = "0.1;0.0002;10;5;10;5;2;0;500;1";
     }
+    BackgroundCpuMonitor.a().a((String)localObject);
   }
   
   public void b()
@@ -54,7 +55,7 @@ public class BatteryStatsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.monitor.backgroundcpu.BatteryStatsImpl
  * JD-Core Version:    0.7.0.1
  */

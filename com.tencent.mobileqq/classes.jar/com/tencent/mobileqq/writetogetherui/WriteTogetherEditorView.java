@@ -32,6 +32,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import com.tencent.mobileqq.qmethodmonitor.monitor.ClipboardMonitor;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.writetogether.WriteTogetherUtils;
 import com.tencent.mobileqq.writetogether.client.IEditorController;
@@ -116,84 +117,82 @@ public class WriteTogetherEditorView
       int i = paramString.lastIndexOf("等");
       String str = paramString.substring(i);
       paramString = paramString.substring(0, i);
-      return TextUtils.ellipsize(paramString, paramTextPaint, paramInt - paramTextPaint.measureText(str), TextUtils.TruncateAt.END).toString() + str;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(TextUtils.ellipsize(paramString, paramTextPaint, paramInt - paramTextPaint.measureText(str), TextUtils.TruncateAt.END).toString());
+      localStringBuilder.append(str);
+      return localStringBuilder.toString();
     }
     return TextUtils.ellipsize(paramString, paramTextPaint, paramInt, TextUtils.TruncateAt.END).toString();
   }
   
   private void a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    int m = 0;
-    ClipData localClipData = ((ClipboardManager)getContext().getSystemService("clipboard")).getPrimaryClip();
+    Object localObject1 = (ClipboardManager)getContext().getSystemService("clipboard");
+    ClipboardMonitor.getPrimaryClip((ClipboardManager)localObject1);
+    ClipData localClipData = ((ClipboardManager)localObject1).getPrimaryClip();
     int[] arrayOfInt = new int[1];
-    Object localObject1;
-    label74:
-    Object localObject2;
     if (localClipData != null)
     {
+      int m = 0;
       int i = 0;
-      int j = 0;
-      if (i < localClipData.getItemCount())
+      Object localObject2;
+      int k;
+      for (int j = 0; i < localClipData.getItemCount(); j = k)
       {
         if ((paramBoolean) && (Build.VERSION.SDK_INT > 15))
         {
           localObject1 = localClipData.getItemAt(i).coerceToStyledText(getContext());
-          k = j;
-          if (localObject1 != null)
-          {
-            localObject2 = getEditableText();
-            localObject1 = WriteTogetherUtils.a((CharSequence)localObject1);
-            arrayOfInt[0] += ((CharSequence)localObject1).length();
-            if (j != 0) {
-              break label190;
-            }
-            setSelection(paramInt2);
-            ((Editable)localObject2).replace(paramInt1, paramInt2, (CharSequence)localObject1);
-          }
-        }
-        for (int k = 1;; k = j)
-        {
-          i += 1;
-          j = k;
-          break;
-          localObject2 = localClipData.getItemAt(i).coerceToText(getContext());
-          localObject1 = localObject2;
-          if (!(localObject2 instanceof Spanned)) {
-            break label74;
-          }
-          localObject1 = ((CharSequence)localObject2).toString();
-          break label74;
-          label190:
-          ((Editable)localObject2).insert(getSelectionEnd(), "\n");
-          ((Editable)localObject2).insert(getSelectionEnd(), (CharSequence)localObject1);
-        }
-      }
-    }
-    try
-    {
-      localObject1 = TextView.class.getFields();
-      paramInt2 = localObject1.length;
-      paramInt1 = m;
-      for (;;)
-      {
-        if (paramInt1 < paramInt2)
-        {
-          localObject2 = localObject1[paramInt1];
-          if ("sLastCutCopyOrTextChangedTime".equals(((Field)localObject2).getName())) {
-            ((Field)localObject2).setLong(null, 0L);
-          }
         }
         else
         {
-          return;
+          localObject2 = localClipData.getItemAt(i).coerceToText(getContext());
+          localObject1 = localObject2;
+          if ((localObject2 instanceof Spanned)) {
+            localObject1 = ((CharSequence)localObject2).toString();
+          }
         }
-        paramInt1 += 1;
+        k = j;
+        if (localObject1 != null)
+        {
+          localObject2 = getEditableText();
+          localObject1 = WriteTogetherUtils.a((CharSequence)localObject1);
+          arrayOfInt[0] += ((CharSequence)localObject1).length();
+          if (j == 0)
+          {
+            setSelection(paramInt2);
+            ((Editable)localObject2).replace(paramInt1, paramInt2, (CharSequence)localObject1);
+            k = 1;
+          }
+          else
+          {
+            ((Editable)localObject2).insert(getSelectionEnd(), "\n");
+            ((Editable)localObject2).insert(getSelectionEnd(), (CharSequence)localObject1);
+            k = j;
+          }
+        }
+        i += 1;
       }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("WriteTogetherEditorView", 1, "[paste] reflect failed: ", localThrowable);
+      try
+      {
+        localObject1 = TextView.class.getFields();
+        paramInt2 = localObject1.length;
+        paramInt1 = m;
+        while (paramInt1 < paramInt2)
+        {
+          localObject2 = localObject1[paramInt1];
+          if ("sLastCutCopyOrTextChangedTime".equals(((Field)localObject2).getName()))
+          {
+            ((Field)localObject2).setLong(null, 0L);
+            return;
+          }
+          paramInt1 += 1;
+        }
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("WriteTogetherEditorView", 1, "[paste] reflect failed: ", localThrowable);
+      }
     }
   }
   
@@ -214,45 +213,44 @@ public class WriteTogetherEditorView
   {
     float f1 = (this.jdField_c_of_type_Float - this.jdField_a_of_type_Float) / 2.0F;
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(getResources().getColor(2131167374));
-    paramInt = getResources().getDimensionPixelSize(2131299301);
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(getResources().getColor(2131167394));
+    paramInt = getResources().getDimensionPixelSize(2131299304);
     paramString = a(paramString, paramBoolean, this.jdField_a_of_type_AndroidTextTextPaint, paramInt);
-    float f3 = getResources().getDimensionPixelSize(2131299282);
+    float f3 = getResources().getDimensionPixelSize(2131299285);
     paramBoolean = a(this.jdField_a_of_type_AndroidTextTextPaint, paramString, paramPoint, getWidth(), f3, f3);
     int j = (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(paramString);
     int k = paramPoint.y;
     int m = (int)f1;
     int n = paramPoint.y;
     int i1 = (int)paramFloat;
-    int i2 = (int)f1;
-    int i3 = getResources().getDimensionPixelSize(2131299300);
+    int i2 = getResources().getDimensionPixelSize(2131299303);
     int i;
-    RectF localRectF;
-    float f2;
     if (paramBoolean)
     {
       paramInt = paramPoint.x;
-      i = (int)f3 * 2 + paramInt;
-      paramInt = paramPoint.x + (int)f3 * 2 + j + i3 * 2;
-      localRectF = new RectF();
-      localRectF.set(i, k + m, paramInt, n + i1 + i2);
-      f1 = paramPoint.y;
-      f2 = (this.jdField_b_of_type_Float + paramFloat) / 2.0F;
-      if (!paramBoolean) {
-        break label340;
-      }
+      i = (int)f3 * 2;
+      paramInt += i;
+      i = paramPoint.x + i + j + i2 * 2;
     }
-    label340:
-    for (paramFloat = paramPoint.x + 2.0F * f3 + i3;; paramFloat = paramPoint.x - f3 - j - i3)
+    else
     {
-      f3 = getResources().getDimensionPixelSize(2131299302);
-      paramCanvas.drawRoundRect(localRectF, f3, f3, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawText(paramString, paramFloat, f2 + f1, this.jdField_a_of_type_AndroidTextTextPaint);
-      return;
-      i = paramPoint.x - (int)f3 - j - i3 * 2;
-      paramInt = paramPoint.x - (int)f3;
-      break;
+      paramInt = paramPoint.x;
+      i = (int)f3;
+      paramInt = paramInt - i - j - i2 * 2;
+      i = paramPoint.x - i;
     }
+    RectF localRectF = new RectF();
+    localRectF.set(paramInt, k + m, i, n + i1 + m);
+    f1 = paramPoint.y;
+    float f2 = (this.jdField_b_of_type_Float + paramFloat) / 2.0F;
+    if (paramBoolean) {
+      paramFloat = paramPoint.x + f3 * 2.0F + i2;
+    } else {
+      paramFloat = paramPoint.x - f3 - j - i2;
+    }
+    f3 = getResources().getDimensionPixelSize(2131299305);
+    paramCanvas.drawRoundRect(localRectF, f3, f3, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawText(paramString, paramFloat, f1 + f2, this.jdField_a_of_type_AndroidTextTextPaint);
   }
   
   private void a(Canvas paramCanvas, List<UserEditInfo> paramList)
@@ -297,7 +295,8 @@ public class WriteTogetherEditorView
   
   private boolean a(Paint paramPaint, String paramString, Point paramPoint, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    return paramPaint.measureText(paramString) + paramFloat2 + paramFloat3 + paramPoint.x <= paramFloat1;
+    float f = paramPaint.measureText(paramString);
+    return paramPoint.x + (f + paramFloat2 + paramFloat3) <= paramFloat1;
   }
   
   private void d()
@@ -317,7 +316,7 @@ public class WriteTogetherEditorView
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
     this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_b_of_type_Float);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(getResources().getColor(2131167374));
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(getResources().getColor(2131167394));
   }
   
   private void f()
@@ -372,11 +371,11 @@ public class WriteTogetherEditorView
   
   public void b()
   {
-    this.jdField_a_of_type_Float = getResources().getDimensionPixelSize(2131299299);
-    this.jdField_b_of_type_Float = getResources().getDimensionPixelSize(2131299303);
+    this.jdField_a_of_type_Float = getResources().getDimensionPixelSize(2131299302);
+    this.jdField_b_of_type_Float = getResources().getDimensionPixelSize(2131299306);
     this.jdField_c_of_type_Float = getLineHeight();
-    this.jdField_d_of_type_Float = getResources().getDimensionPixelSize(2131299282);
-    this.jdField_c_of_type_Int = getResources().getDimensionPixelSize(2131299288);
+    this.jdField_d_of_type_Float = getResources().getDimensionPixelSize(2131299285);
+    this.jdField_c_of_type_Int = getResources().getDimensionPixelSize(2131299291);
     super.setOnClickListener(this);
   }
   
@@ -397,17 +396,17 @@ public class WriteTogetherEditorView
     setEnabled(true);
     requestFocus();
     Object localObject = getText();
-    if (localObject == null) {
-      QLog.e("WriteTogetherEditorView", 1, "[activateEditorAndSetSelToEnd] getText is null");
-    }
-    do
+    if (localObject == null)
     {
+      QLog.e("WriteTogetherEditorView", 1, "[activateEditorAndSetSelToEnd] getText is null");
       return;
-      setSelection(((Editable)localObject).length());
-      setCursorVisible(true);
-      localObject = (InputMethodManager)getContext().getSystemService("input_method");
-    } while (localObject == null);
-    ((InputMethodManager)localObject).showSoftInput(this, 0);
+    }
+    setSelection(((Editable)localObject).length());
+    setCursorVisible(true);
+    localObject = (InputMethodManager)getContext().getSystemService("input_method");
+    if (localObject != null) {
+      ((InputMethodManager)localObject).showSoftInput(this, 0);
+    }
   }
   
   public boolean isSuggestionsEnabled()
@@ -415,7 +414,7 @@ public class WriteTogetherEditorView
     return this.jdField_c_of_type_Boolean;
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     g();
@@ -432,9 +431,10 @@ public class WriteTogetherEditorView
       setFocusableInTouchMode(true);
       requestFocus();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView$OnEditorClickEventListener != null)
+    WriteTogetherEditorView.OnEditorClickEventListener localOnEditorClickEventListener = this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView$OnEditorClickEventListener;
+    if (localOnEditorClickEventListener != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView$OnEditorClickEventListener.j();
+      localOnEditorClickEventListener.f();
       setCursorVisible(true);
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -445,20 +445,22 @@ public class WriteTogetherEditorView
     return new WriteTogetherEditorView.WtInputConnectionWrapper(this, super.onCreateInputConnection(paramEditorInfo), false);
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
     this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllListeners();
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIEditorController != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIEditorController;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIEditorController.a();
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() != 0)) {
+      this.jdField_a_of_type_JavaUtilList = ((IEditorController)localObject).a();
+      localObject = this.jdField_a_of_type_JavaUtilList;
+      if ((localObject != null) && (((List)localObject).size() != 0)) {
         a(paramCanvas, this.jdField_a_of_type_JavaUtilList);
       }
     }
@@ -468,9 +470,10 @@ public class WriteTogetherEditorView
   {
     if (this.e)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView$OnEditorClickEventListener != null)
+      paramView = this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView$OnEditorClickEventListener;
+      if (paramView != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiWriteTogetherEditorView$OnEditorClickEventListener.j();
+        paramView.f();
         setCursorVisible(true);
       }
       this.e = false;
@@ -479,36 +482,42 @@ public class WriteTogetherEditorView
   
   protected void onSelectionChanged(int paramInt1, int paramInt2)
   {
-    boolean bool2 = true;
     super.onSelectionChanged(paramInt1, paramInt2);
-    if (!this.jdField_c_of_type_Boolean) {}
-    do
-    {
+    if (!this.jdField_c_of_type_Boolean) {
       return;
-      if (paramInt1 != 0) {
-        setCursorVisible(true);
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIEditorController == null);
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      bool1 = bool2;
-      if (paramInt1 == this.jdField_a_of_type_Int) {
-        if (paramInt2 == this.jdField_b_of_type_Int) {
-          break label189;
-        }
-      }
     }
-    label189:
-    for (boolean bool1 = bool2;; bool1 = false)
+    if (paramInt1 != 0) {
+      setCursorVisible(true);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIEditorController != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("WriteTogetherEditorView", 2, "[onSelectionChanged] userChangeCursorIndex: " + bool1 + ", selStart: " + paramInt1 + ", selEnd: " + paramInt2 + ", mSelStart: " + this.jdField_a_of_type_Int + ", mSelEnd: " + this.jdField_b_of_type_Int + ", mTyping: " + this.jdField_a_of_type_Boolean);
+      boolean bool;
+      if ((!this.jdField_a_of_type_Boolean) && ((paramInt1 != this.jdField_a_of_type_Int) || (paramInt2 != this.jdField_b_of_type_Int))) {
+        bool = true;
+      } else {
+        bool = false;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIEditorController.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt1, paramInt2, bool1);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[onSelectionChanged] userChangeCursorIndex: ");
+        localStringBuilder.append(bool);
+        localStringBuilder.append(", selStart: ");
+        localStringBuilder.append(paramInt1);
+        localStringBuilder.append(", selEnd: ");
+        localStringBuilder.append(paramInt2);
+        localStringBuilder.append(", mSelStart: ");
+        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(", mSelEnd: ");
+        localStringBuilder.append(this.jdField_b_of_type_Int);
+        localStringBuilder.append(", mTyping: ");
+        localStringBuilder.append(this.jdField_a_of_type_Boolean);
+        QLog.d("WriteTogetherEditorView", 2, localStringBuilder.toString());
+      }
+      this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIEditorController.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt1, paramInt2, bool);
       this.jdField_a_of_type_Boolean = false;
       this.jdField_a_of_type_Int = paramInt1;
       this.jdField_b_of_type_Int = paramInt2;
-      return;
     }
   }
   
@@ -525,50 +534,53 @@ public class WriteTogetherEditorView
   
   public boolean onTextContextMenuItem(int paramInt)
   {
-    int i;
-    int j;
     switch (paramInt)
     {
     default: 
       i = 0;
-      if (i != 0) {
-        ReportController.b(null, "dc00898", "", "", "0X800AF34", "0X800AF34", i, 0, "", "", "", "");
-      }
-      i = a().length();
-      if (isFocused())
-      {
-        i = getSelectionStart();
-        int k = getSelectionEnd();
-        j = Math.max(0, Math.min(i, k));
-        i = Math.max(0, Math.max(i, k));
-      }
       break;
+    case 16908341: 
+      i = 6;
+      break;
+    case 16908328: 
+      i = 1;
+      break;
+    case 16908322: 
+      i = 4;
+      break;
+    case 16908321: 
+      i = 3;
+      break;
+    case 16908319: 
+      i = 2;
     }
-    for (;;)
+    if (i != 0) {
+      ReportController.b(null, "dc00898", "", "", "0X800AF34", "0X800AF34", i, 0, "", "", "", "");
+    }
+    int i = a().length();
+    int j;
+    if (isFocused())
     {
-      if (paramInt == 16908322)
-      {
-        a(j, i, true);
-        return true;
-        i = 1;
-        break;
-        i = 2;
-        break;
-        i = 3;
-        break;
-        i = 4;
-        break;
-        i = 6;
-        break;
-      }
-      if (paramInt == 16908337)
-      {
-        a(j, i, false);
-        return true;
-      }
-      return super.onTextContextMenuItem(paramInt);
+      i = getSelectionStart();
+      int k = getSelectionEnd();
+      j = Math.max(0, Math.min(i, k));
+      i = Math.max(0, Math.max(i, k));
+    }
+    else
+    {
       j = 0;
     }
+    if (paramInt == 16908322)
+    {
+      a(j, i, true);
+      return true;
+    }
+    if (paramInt == 16908337)
+    {
+      a(j, i, false);
+      return true;
+    }
+    return super.onTextContextMenuItem(paramInt);
   }
   
   public void setClient(IEditorController paramIEditorController)
@@ -601,15 +613,21 @@ public class WriteTogetherEditorView
   
   public void setSelection(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WriteTogetherEditorView", 2, "[setSelection] start: " + paramInt1 + ", stop: " + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[setSelection] start: ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(", stop: ");
+      localStringBuilder.append(paramInt2);
+      QLog.d("WriteTogetherEditorView", 2, localStringBuilder.toString());
     }
     super.setSelection(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.WriteTogetherEditorView
  * JD-Core Version:    0.7.0.1
  */

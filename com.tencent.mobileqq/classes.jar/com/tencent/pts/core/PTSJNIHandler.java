@@ -48,27 +48,35 @@ public class PTSJNIHandler
   
   public static String getPageInfo(int paramInt, String paramString)
   {
-    Object localObject = getAppInstance(paramInt);
-    String str = "";
-    if (localObject != null)
+    Object localObject1 = getAppInstance(paramInt);
+    if (localObject1 != null)
     {
-      localObject = ((PTSAppInstance)localObject).getItemData();
-      if (localObject != null) {
-        str = ((PTSItemData)localObject).getJSONData();
+      localObject1 = ((PTSAppInstance)localObject1).getItemData();
+      if (localObject1 != null)
+      {
+        localObject1 = ((PTSItemData)localObject1).getJSONData();
+        break label48;
       }
-    }
-    for (;;)
-    {
-      localObject = str;
-      if (TextUtils.isEmpty(str)) {
-        localObject = "";
-      }
-      PTSLog.i(TAG, "[getPageInfo], key = " + paramString + ", res = " + (String)localObject);
-      return localObject;
       PTSLog.e(TAG, "[getPageInfo], data is null.");
-      continue;
+    }
+    else
+    {
       PTSLog.e(TAG, "[getPageInfo], app not found.");
     }
+    localObject1 = "";
+    label48:
+    Object localObject2 = localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      localObject2 = "";
+    }
+    localObject1 = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[getPageInfo], key = ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", res = ");
+    localStringBuilder.append((String)localObject2);
+    PTSLog.i((String)localObject1, localStringBuilder.toString());
+    return localObject2;
   }
   
   public static float[] getRichTextMeasuredSize(float[] paramArrayOfFloat, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
@@ -111,7 +119,7 @@ public class PTSJNIHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.core.PTSJNIHandler
  * JD-Core Version:    0.7.0.1
  */

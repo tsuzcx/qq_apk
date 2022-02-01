@@ -10,7 +10,7 @@ class MiniAppUserAppInfoListManager$1
 {
   MiniAppUserAppInfoListManager$1(MiniAppUserAppInfoListManager paramMiniAppUserAppInfoListManager) {}
   
-  public void onGetAppletsPushUnreadInfo(Object paramObject)
+  protected void onGetAppletsPushUnreadInfo(Object paramObject)
   {
     if ((MiniAppConfProcessor.d()) && ((paramObject instanceof MiniAppRedDotEntity)))
     {
@@ -19,17 +19,21 @@ class MiniAppUserAppInfoListManager$1
     }
   }
   
-  public void onReceiveAppletsMessageUnreadInfo(Map<String, Integer> paramMap)
+  protected void onReceiveAppletsMessageUnreadInfo(Map<String, Integer> paramMap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletsObserver", 1, "onReceiveAppletsMessageUnreadInfo: " + paramMap);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReceiveAppletsMessageUnreadInfo: ");
+      localStringBuilder.append(paramMap);
+      QLog.d("AppletsObserver", 1, localStringBuilder.toString());
     }
     this.this$0.setMiniAppNoticeRedDotData(paramMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUserAppInfoListManager.1
  * JD-Core Version:    0.7.0.1
  */

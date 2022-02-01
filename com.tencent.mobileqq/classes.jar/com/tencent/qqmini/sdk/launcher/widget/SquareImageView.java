@@ -17,7 +17,7 @@ import android.widget.ImageView;
 public class SquareImageView
   extends ImageView
 {
-  public static final String TAG = SquareImageView.class.getSimpleName();
+  public static final String TAG = "SquareImageView";
   protected final Path mClipPath = new Path();
   private int mFilterColor = -1;
   private String mFilterText;
@@ -46,8 +46,12 @@ public class SquareImageView
   {
     if (this.mRoundRectRadius != 0)
     {
-      if (this.mClipPath.isEmpty()) {
-        this.mClipPath.addRoundRect(this.mViewBounds, this.mRoundRectRadius, this.mRoundRectRadius, Path.Direction.CW);
+      if (this.mClipPath.isEmpty())
+      {
+        Path localPath = this.mClipPath;
+        RectF localRectF = this.mViewBounds;
+        int i = this.mRoundRectRadius;
+        localPath.addRoundRect(localRectF, i, i, Path.Direction.CW);
       }
       if (Build.VERSION.SDK_INT >= 18) {
         paramCanvas.clipPath(this.mClipPath);
@@ -56,15 +60,18 @@ public class SquareImageView
     super.draw(paramCanvas);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     Paint localPaint;
+    Object localObject;
     if (this.mFilterColor != -1)
     {
       localPaint = new Paint();
       localPaint.setColor(this.mFilterColor);
-      paramCanvas.drawRoundRect(new RectF(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight()), this.mRoundRectRadius, this.mRoundRectRadius, localPaint);
+      localObject = new RectF(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
+      int i = this.mRoundRectRadius;
+      paramCanvas.drawRoundRect((RectF)localObject, i, i, localPaint);
     }
     if (!TextUtils.isEmpty(this.mFilterText))
     {
@@ -72,18 +79,18 @@ public class SquareImageView
       localPaint.setTextSize(this.mFilterTextSize);
       localPaint.setColor(-1);
       localPaint.setTextAlign(Paint.Align.CENTER);
-      Paint.FontMetricsInt localFontMetricsInt = localPaint.getFontMetricsInt();
-      paramCanvas.drawText(this.mFilterText, getMeasuredWidth() / 2, (getMeasuredHeight() - localFontMetricsInt.ascent - localFontMetricsInt.descent) / 2, localPaint);
+      localObject = localPaint.getFontMetricsInt();
+      paramCanvas.drawText(this.mFilterText, getMeasuredWidth() / 2, (getMeasuredHeight() - ((Paint.FontMetricsInt)localObject).ascent - ((Paint.FontMetricsInt)localObject).descent) / 2, localPaint);
     }
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     this.mViewBounds.set(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt1);
     paramInt1 = getMeasuredWidth();
@@ -129,7 +136,7 @@ public class SquareImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.widget.SquareImageView
  * JD-Core Version:    0.7.0.1
  */

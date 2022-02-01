@@ -19,7 +19,7 @@ public abstract class Frame
   private View jdField_a_of_type_AndroidViewView;
   private QBaseActivity jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
   public AppRuntime a;
-  public boolean w;
+  protected boolean u;
   
   static
   {
@@ -29,8 +29,8 @@ public abstract class Frame
       {
         jdField_a_of_type_ComTencentMobileqqAppIFrameInjectInterface = (IFrameInjectInterface)((Class)FrameInjectUtil.a.get(0)).newInstance();
         QLog.d("Frame", 1, "FrameInjectUtil newInstance");
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -38,25 +38,28 @@ public abstract class Frame
     }
   }
   
-  public void C()
+  public void B()
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.finish();
   }
   
-  public void D()
+  public void C()
   {
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject != null)
     {
-      Animation localAnimation = this.jdField_a_of_type_AndroidViewView.getAnimation();
-      if (localAnimation != null) {
-        localAnimation.setAnimationListener(null);
+      localObject = ((View)localObject).getAnimation();
+      if (localObject != null) {
+        ((Animation)localObject).setAnimationListener(null);
       }
       this.jdField_a_of_type_AndroidViewView.clearAnimation();
     }
     jdField_a_of_type_ComTencentMobileqqAppIFrameInjectInterface.a(this);
   }
   
-  protected void E() {}
+  protected void D() {}
+  
+  protected void V_() {}
   
   public Resources a()
   {
@@ -78,12 +81,20 @@ public abstract class Frame
     return this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
   }
   
+  protected String a()
+  {
+    return null;
+  }
+  
   public String a(int paramInt)
   {
     return this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(paramInt);
   }
   
-  public void a() {}
+  protected void a()
+  {
+    this.jdField_a_of_type_MqqAppAppRuntime = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime();
+  }
   
   protected void a(int paramInt1, int paramInt2, Intent paramIntent) {}
   
@@ -94,18 +105,22 @@ public abstract class Frame
   
   public void a(Configuration paramConfiguration) {}
   
+  void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
   public void a(View paramView, boolean paramBoolean)
   {
     if (paramView != null)
     {
-      if (paramBoolean) {
-        paramView.setBackgroundResource(2130850508);
+      if (paramBoolean)
+      {
+        paramView.setBackgroundResource(2130850434);
+        return;
       }
+      paramView.setBackgroundColor(a().getColor(2131167114));
     }
-    else {
-      return;
-    }
-    paramView.setBackgroundColor(a().getColor(2131167091));
   }
   
   protected void a(QBaseActivity paramQBaseActivity)
@@ -115,21 +130,33 @@ public abstract class Frame
   
   protected void a(Runnable paramRunnable)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.post(paramRunnable);
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (localView != null) {
+      localView.post(paramRunnable);
     }
   }
   
   protected void a(Constants.LogoutReason paramLogoutReason) {}
   
-  protected String a_()
+  public void a(boolean paramBoolean)
   {
-    return null;
+    this.u = true;
+    if (Build.VERSION.SDK_INT >= 15) {
+      jdField_a_of_type_ComTencentMobileqqAppIFrameInjectInterface.a(this, false);
+    }
   }
   
-  void b(View paramView)
+  public boolean a()
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    return jdField_a_of_type_ComTencentMobileqqAppIFrameInjectInterface.a();
+  }
+  
+  public void ab_()
+  {
+    this.u = false;
+    if (Build.VERSION.SDK_INT >= 15) {
+      jdField_a_of_type_ComTencentMobileqqAppIFrameInjectInterface.a(this, true);
+    }
   }
   
   public void b(Runnable paramRunnable)
@@ -137,79 +164,46 @@ public abstract class Frame
     this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.runOnUiThread(paramRunnable);
   }
   
-  public void b(boolean paramBoolean)
-  {
-    this.w = true;
-    if (Build.VERSION.SDK_INT >= 15) {
-      jdField_a_of_type_ComTencentMobileqqAppIFrameInjectInterface.a(this, false);
-    }
-  }
+  public abstract void b(boolean paramBoolean);
   
   public boolean b()
-  {
-    return jdField_a_of_type_ComTencentMobileqqAppIFrameInjectInterface.a();
-  }
-  
-  protected void d() {}
-  
-  protected void e() {}
-  
-  public abstract void e(boolean paramBoolean);
-  
-  public boolean e_()
   {
     return true;
   }
   
-  protected void f()
+  public void c()
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime();
-  }
-  
-  public void h()
-  {
-    if (this.w) {
-      n();
+    if (this.u) {
+      ab_();
     }
   }
   
-  protected void k() {}
+  protected void d() {}
   
-  protected void l()
+  public void e() {}
+  
+  protected void f()
   {
-    boolean bool2 = false;
-    d();
+    h();
     AppRuntime localAppRuntime1 = this.jdField_a_of_type_MqqAppAppRuntime;
     this.jdField_a_of_type_MqqAppAppRuntime = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime();
     AppRuntime localAppRuntime2 = this.jdField_a_of_type_MqqAppAppRuntime;
-    boolean bool1 = bool2;
-    if (localAppRuntime1 != null)
-    {
-      bool1 = bool2;
-      if (localAppRuntime2 != null)
-      {
-        bool1 = bool2;
-        if (!TextUtils.equals(localAppRuntime1.getAccount(), localAppRuntime2.getAccount())) {
-          bool1 = true;
-        }
-      }
+    boolean bool;
+    if ((localAppRuntime1 != null) && (localAppRuntime2 != null)) {
+      bool = TextUtils.equals(localAppRuntime1.getAccount(), localAppRuntime2.getAccount()) ^ true;
+    } else {
+      bool = false;
     }
-    e(bool1);
+    b(bool);
   }
   
-  public void n()
-  {
-    this.w = false;
-    if (Build.VERSION.SDK_INT >= 15) {
-      jdField_a_of_type_ComTencentMobileqqAppIFrameInjectInterface.a(this, true);
-    }
-  }
+  protected void h() {}
   
-  public void r() {}
+  public void q() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.Frame
  * JD-Core Version:    0.7.0.1
  */

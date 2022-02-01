@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.view.View;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class AddContactsActivity$2$4
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   AddContactsActivity$2$4(AddContactsActivity.2 param2) {}
   
@@ -22,7 +22,7 @@ class AddContactsActivity$2$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity.2.4
  * JD-Core Version:    0.7.0.1
  */

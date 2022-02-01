@@ -43,7 +43,7 @@ public class AuthFilterList
   
   public static boolean apiAuthoritySilent(MiniAppInfo paramMiniAppInfo)
   {
-    return (paramMiniAppInfo != null) && ((paramMiniAppInfo.isAppStoreMiniApp()) || ((paramMiniAppInfo.appMode != null) && (paramMiniAppInfo.appMode.authoritySilent)));
+    return (paramMiniAppInfo != null) && ((paramMiniAppInfo.appMode.unlimitedApiRight) || ((paramMiniAppInfo.appMode != null) && (paramMiniAppInfo.appMode.authoritySilent)));
   }
   
   private static void initAppWhiteList()
@@ -78,6 +78,10 @@ public class AuthFilterList
         }
       }
       return;
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -175,18 +179,27 @@ public class AuthFilterList
     return (sEventLocalSecondaryApiMap.containsKey(paramString)) || (sEventRemoteSecondaryApiMap.containsKey(paramString));
   }
   
-  public static boolean isEventNameRight(String paramString1, String paramString2)
+  public static boolean isEventNameRight(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2)
   {
+    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.appMode.unlimitedApiRight)) {
+      return true;
+    }
     if (sEventRemoteList.containsKey(paramString1))
     {
       if (((Integer)sEventRemoteList.get(paramString1)).intValue() == 0)
       {
-        QMLog.d("AuthFilterList_isEventNameRight", "false, 一级黑名单 : " + paramString1);
+        paramMiniAppInfo = new StringBuilder();
+        paramMiniAppInfo.append("false, 一级黑名单 : ");
+        paramMiniAppInfo.append(paramString1);
+        QMLog.d("AuthFilterList_isEventNameRight", paramMiniAppInfo.toString());
         return false;
       }
       if (((Integer)sEventRemoteList.get(paramString1)).intValue() == 1)
       {
-        QMLog.d("AuthFilterList_isEventNameRight", "true, 一级白名单 : " + paramString1);
+        paramMiniAppInfo = new StringBuilder();
+        paramMiniAppInfo.append("true, 一级白名单 : ");
+        paramMiniAppInfo.append(paramString1);
+        QMLog.d("AuthFilterList_isEventNameRight", paramMiniAppInfo.toString());
         return true;
       }
     }
@@ -194,29 +207,56 @@ public class AuthFilterList
     {
       if ((sEventRemoteSecondaryApiMap.get(paramString1) != null) && (((HashMap)sEventRemoteSecondaryApiMap.get(paramString1)).containsKey(paramString2)) && (((Integer)((HashMap)sEventRemoteSecondaryApiMap.get(paramString1)).get(paramString2)).intValue() == -1))
       {
-        QMLog.d("AuthFilterList_isEventNameRight", "false, 二级黑名单 : " + paramString1 + " " + paramString2);
+        paramMiniAppInfo = new StringBuilder();
+        paramMiniAppInfo.append("false, 二级黑名单 : ");
+        paramMiniAppInfo.append(paramString1);
+        paramMiniAppInfo.append(" ");
+        paramMiniAppInfo.append(paramString2);
+        QMLog.d("AuthFilterList_isEventNameRight", paramMiniAppInfo.toString());
         return false;
       }
       if ((sEventRemoteSecondaryApiMap.get(paramString1) != null) && (((HashMap)sEventRemoteSecondaryApiMap.get(paramString1)).containsKey(paramString2)) && (((Integer)((HashMap)sEventRemoteSecondaryApiMap.get(paramString1)).get(paramString2)).intValue() == 1))
       {
-        QMLog.d("AuthFilterList_isEventNameRight", "true, 二级白名单 : " + paramString1 + " " + paramString2);
+        paramMiniAppInfo = new StringBuilder();
+        paramMiniAppInfo.append("true, 二级白名单 : ");
+        paramMiniAppInfo.append(paramString1);
+        paramMiniAppInfo.append(" ");
+        paramMiniAppInfo.append(paramString2);
+        QMLog.d("AuthFilterList_isEventNameRight", paramMiniAppInfo.toString());
         return true;
       }
       if (sEventLocalSecondaryApiMap.containsKey(paramString1))
       {
-        QMLog.d("AuthFilterList_isEventNameRight", "false, 二级默认黑名单 : " + paramString1 + " " + paramString2);
+        paramMiniAppInfo = new StringBuilder();
+        paramMiniAppInfo.append("false, 二级默认黑名单 : ");
+        paramMiniAppInfo.append(paramString1);
+        paramMiniAppInfo.append(" ");
+        paramMiniAppInfo.append(paramString2);
+        QMLog.d("AuthFilterList_isEventNameRight", paramMiniAppInfo.toString());
         return false;
       }
-      QMLog.d("AuthFilterList_isEventNameRight", "true, 二级白名单或未配置 : " + paramString1 + " " + paramString2);
+      paramMiniAppInfo = new StringBuilder();
+      paramMiniAppInfo.append("true, 二级白名单或未配置 : ");
+      paramMiniAppInfo.append(paramString1);
+      paramMiniAppInfo.append(" ");
+      paramMiniAppInfo.append(paramString2);
+      QMLog.d("AuthFilterList_isEventNameRight", paramMiniAppInfo.toString());
       return true;
     }
     if (sEventLocalBlackList.contains(paramString1))
     {
-      QMLog.d("AuthFilterList_isEventNameRight", "false, 本地黑名单 : " + paramString1);
+      paramMiniAppInfo = new StringBuilder();
+      paramMiniAppInfo.append("false, 本地黑名单 : ");
+      paramMiniAppInfo.append(paramString1);
+      QMLog.d("AuthFilterList_isEventNameRight", paramMiniAppInfo.toString());
       return false;
     }
-    if (sMiniAppProxy.isDebugVersion()) {
-      QMLog.d("AuthFilterList_isEventNameRight", "true, 无限制api : " + paramString1);
+    if (sMiniAppProxy.isDebugVersion())
+    {
+      paramMiniAppInfo = new StringBuilder();
+      paramMiniAppInfo.append("true, 无限制api : ");
+      paramMiniAppInfo.append(paramString1);
+      QMLog.d("AuthFilterList_isEventNameRight", paramMiniAppInfo.toString());
     }
     return true;
   }
@@ -232,69 +272,91 @@ public class AuthFilterList
   public static void updateEventRemoteList(List<String> paramList1, List<String> paramList2)
   {
     Map localMap = sEventRemoteList;
-    if (paramList1 != null)
+    if (paramList1 != null) {}
+    try
     {
-      try
-      {
-        paramList1 = paramList1.iterator();
-        while (paramList1.hasNext())
-        {
-          String str = (String)paramList1.next();
-          if (!TextUtils.isEmpty(str))
-          {
-            QMLog.d("AuthFilterList", "whiteList eventName : " + str);
-            sEventRemoteList.put(str, Integer.valueOf(0));
-          }
-        }
-        if (paramList2 == null) {
-          break label169;
-        }
-      }
-      finally {}
-    }
-    else
-    {
-      paramList1 = paramList2.iterator();
+      paramList1 = paramList1.iterator();
+      Object localObject;
       while (paramList1.hasNext())
       {
-        paramList2 = (String)paramList1.next();
-        if (!TextUtils.isEmpty(paramList2))
+        localObject = (String)paramList1.next();
+        if (!TextUtils.isEmpty((CharSequence)localObject))
         {
-          QMLog.d("AuthFilterList", "whiteList eventName : " + paramList2);
-          sEventRemoteList.put(paramList2, Integer.valueOf(1));
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("whiteList eventName : ");
+          localStringBuilder.append((String)localObject);
+          QMLog.d("AuthFilterList", localStringBuilder.toString());
+          sEventRemoteList.put(localObject, Integer.valueOf(0));
         }
       }
+      if (paramList2 != null)
+      {
+        paramList1 = paramList2.iterator();
+        while (paramList1.hasNext())
+        {
+          paramList2 = (String)paramList1.next();
+          if (!TextUtils.isEmpty(paramList2))
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("whiteList eventName : ");
+            ((StringBuilder)localObject).append(paramList2);
+            QMLog.d("AuthFilterList", ((StringBuilder)localObject).toString());
+            sEventRemoteList.put(paramList2, Integer.valueOf(1));
+          }
+        }
+      }
+      return;
     }
-    label169:
+    finally
+    {
+      label183:
+      break label183;
+    }
+    for (;;)
+    {
+      throw paramList1;
+    }
   }
   
   public static void updateEventSecondaryApiList(List<SecondApiRightInfo> paramList)
   {
-    if (paramList == null) {}
-    for (;;)
-    {
+    if (paramList == null) {
       return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      SecondApiRightInfo localSecondApiRightInfo = (SecondApiRightInfo)paramList.next();
+      if (localSecondApiRightInfo != null)
       {
-        SecondApiRightInfo localSecondApiRightInfo = (SecondApiRightInfo)paramList.next();
-        if (localSecondApiRightInfo != null) {
-          if (sEventRemoteSecondaryApiMap.containsKey(localSecondApiRightInfo.apiName))
+        Object localObject;
+        if (sEventRemoteSecondaryApiMap.containsKey(localSecondApiRightInfo.apiName))
+        {
+          if (QMLog.isColorLevel())
           {
-            if (QMLog.isColorLevel()) {
-              QMLog.d("AuthFilterList", "config apiName : " + localSecondApiRightInfo.apiName + ", secondName: " + localSecondApiRightInfo.secondName);
-            }
-            ((Map)sEventRemoteSecondaryApiMap.get(localSecondApiRightInfo.apiName)).put(localSecondApiRightInfo.secondName, Integer.valueOf(localSecondApiRightInfo.right));
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("config apiName : ");
+            ((StringBuilder)localObject).append(localSecondApiRightInfo.apiName);
+            ((StringBuilder)localObject).append(", secondName: ");
+            ((StringBuilder)localObject).append(localSecondApiRightInfo.secondName);
+            QMLog.d("AuthFilterList", ((StringBuilder)localObject).toString());
           }
-          else
+          ((Map)sEventRemoteSecondaryApiMap.get(localSecondApiRightInfo.apiName)).put(localSecondApiRightInfo.secondName, Integer.valueOf(localSecondApiRightInfo.right));
+        }
+        else
+        {
+          if (QMLog.isColorLevel())
           {
-            if (QMLog.isColorLevel()) {
-              QMLog.d("AuthFilterList", "init config apiName : " + localSecondApiRightInfo.apiName + ", secondName: " + localSecondApiRightInfo.secondName);
-            }
-            HashMap localHashMap = new HashMap();
-            localHashMap.put(localSecondApiRightInfo.secondName, Integer.valueOf(localSecondApiRightInfo.right));
-            sEventRemoteSecondaryApiMap.put(localSecondApiRightInfo.apiName, localHashMap);
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("init config apiName : ");
+            ((StringBuilder)localObject).append(localSecondApiRightInfo.apiName);
+            ((StringBuilder)localObject).append(", secondName: ");
+            ((StringBuilder)localObject).append(localSecondApiRightInfo.secondName);
+            QMLog.d("AuthFilterList", ((StringBuilder)localObject).toString());
           }
+          localObject = new HashMap();
+          ((HashMap)localObject).put(localSecondApiRightInfo.secondName, Integer.valueOf(localSecondApiRightInfo.right));
+          sEventRemoteSecondaryApiMap.put(localSecondApiRightInfo.apiName, localObject);
         }
       }
     }
@@ -302,7 +364,7 @@ public class AuthFilterList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.auth.AuthFilterList
  * JD-Core Version:    0.7.0.1
  */

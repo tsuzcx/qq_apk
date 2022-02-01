@@ -11,14 +11,14 @@ class ChatHistoryEmotionBaseFragment$5
   public boolean a(boolean paramBoolean)
   {
     if (paramBoolean) {
-      WeiyunAIOUtils.a(this.a.getActivity());
+      WeiyunAIOUtils.a(this.a.getBaseActivity());
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment.5
  * JD-Core Version:    0.7.0.1
  */

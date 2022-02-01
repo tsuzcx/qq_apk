@@ -2,6 +2,7 @@ package com.tencent.biz.pubaccount.weishi_new.report;
 
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.weishi_new.net.common.WSNetService;
+import com.tencent.biz.pubaccount.weishi_new.net.common.WSNetUtil;
 import com.tencent.biz.pubaccount.weishi_new.request.newreq.WSBeaconSendRequest;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -22,7 +23,6 @@ public class WSStatisticsReporter
   private WSStatisticsReporter.Builder mBuilder;
   private String mEventName;
   private boolean mFlush;
-  private boolean mIsImmediatelyUpload;
   private boolean mIsSendServer;
   private HashMap<String, String> mReportParams = new HashMap();
   
@@ -32,9 +32,8 @@ public class WSStatisticsReporter
   {
     this.mEventName = WSStatisticsReporter.Builder.access$000(paramBuilder);
     this.mFlush = WSStatisticsReporter.Builder.access$100(paramBuilder);
-    this.mIsImmediatelyUpload = WSStatisticsReporter.Builder.access$200(paramBuilder);
-    this.mIsSendServer = WSStatisticsReporter.Builder.access$300(paramBuilder);
-    this.mBaseCollector = WSStatisticsReporter.Builder.access$400(paramBuilder);
+    this.mIsSendServer = WSStatisticsReporter.Builder.access$200(paramBuilder);
+    this.mBaseCollector = WSStatisticsReporter.Builder.access$300(paramBuilder);
     this.mBuilder = paramBuilder;
   }
   
@@ -42,6 +41,7 @@ public class WSStatisticsReporter
   {
     paramMap.put("scenes_channel_from", getEnterPublicAccFrom());
     paramMap.put("last_test_id", WSPublicAccReport.getInstance().getLocalTestId());
+    paramMap.put("teen", String.valueOf(WSNetUtil.a()));
   }
   
   private void beaconData2Server()
@@ -52,6 +52,9 @@ public class WSStatisticsReporter
   private static String getEnterPublicAccFrom()
   {
     String str = WSPublicAccReport.getInstance().getEnterPublicAccFrom();
+    if (TextUtils.equals(str, "from_trends_tab")) {
+      return "1";
+    }
     if (TextUtils.equals(str, "from_search_rzh_ws")) {
       return "2";
     }
@@ -64,19 +67,48 @@ public class WSStatisticsReporter
     if (TextUtils.equals(str, "from_qq_chat")) {
       return "6";
     }
-    return "0";
+    if (TextUtils.equals(str, "from_search_trends_ws")) {
+      return "10";
+    }
+    if ((!TextUtils.equals(str, "from_qq_scheme")) && (!TextUtils.equals(str, "from_operation_h5"))) {
+      return "0";
+    }
+    return WSPublicAccReport.getInstance().getScenesChannelFrom();
   }
   
   private void printReportLog()
   {
     if (QLog.isColorLevel())
     {
-      HashMap localHashMap = new HashMap(WSStatisticsReporter.Builder.access$1100(this.mBuilder));
-      WSLog.b("WSReportFeedPassKey", "EventReport feedPassKey:" + (String)localHashMap.get("feed_pass_key"));
-      WSLog.b("WSReportFeedGlobalKey", "EventReport globalKey:" + (String)localHashMap.get("global_key"));
+      HashMap localHashMap = new HashMap(WSStatisticsReporter.Builder.access$1000(this.mBuilder));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("EventReport feedPassKey:");
+      localStringBuilder.append((String)localHashMap.get("feed_pass_key"));
+      WSLog.b("WSReportFeedPassKey", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("EventReport globalKey:");
+      localStringBuilder.append((String)localHashMap.get("global_key"));
+      WSLog.b("WSReportFeedGlobalKey", localStringBuilder.toString());
       localHashMap.remove("feed_pass_key");
       localHashMap.remove("global_key");
-      WSLog.a("WSStatisticsReporter", "[EventReport] mSceneFrom:" + (String)this.mReportParams.get("scenes_from") + ", mEventName:" + this.mEventName + ", mSopName:" + (String)this.mReportParams.get("sop_name") + ", mPosition:" + (String)this.mReportParams.get("position") + ", mSubSessionId:" + (String)this.mReportParams.get("sub_session_id") + ", mTabId:" + (String)WSStatisticsReporter.Builder.access$900(this.mBuilder).get("tab_id") + ", mCustomParams:" + localHashMap.toString() + ", mBaseParams:" + this.mBaseCollector.getBaseParams().toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[EventReport] mSceneFrom:");
+      localStringBuilder.append((String)this.mReportParams.get("scenes_from"));
+      localStringBuilder.append(", mEventName:");
+      localStringBuilder.append(this.mEventName);
+      localStringBuilder.append(", mSopName:");
+      localStringBuilder.append((String)this.mReportParams.get("sop_name"));
+      localStringBuilder.append(", mPosition:");
+      localStringBuilder.append((String)this.mReportParams.get("position"));
+      localStringBuilder.append(", mSubSessionId:");
+      localStringBuilder.append((String)this.mReportParams.get("sub_session_id"));
+      localStringBuilder.append(", mTabId:");
+      localStringBuilder.append((String)WSStatisticsReporter.Builder.access$800(this.mBuilder).get("tab_id"));
+      localStringBuilder.append(", mCustomParams:");
+      localStringBuilder.append(localHashMap.toString());
+      localStringBuilder.append(", mBaseParams:");
+      localStringBuilder.append(this.mBaseCollector.getBaseParams().toString());
+      WSLog.a("WSStatisticsReporter", localStringBuilder.toString());
     }
   }
   
@@ -84,22 +116,27 @@ public class WSStatisticsReporter
   {
     HashMap localHashMap = new HashMap();
     Object localObject2 = this.mEventName;
-    Object localObject1 = "";
-    String str = "";
-    if (this.mReportParams != null)
+    Object localObject1 = this.mReportParams;
+    String str2 = "";
+    String str1;
+    if (localObject1 != null)
     {
-      localObject1 = (String)this.mReportParams.get("position");
-      str = (String)this.mReportParams.get("sop_name");
+      str1 = (String)((HashMap)localObject1).get("position");
+      localObject1 = (String)this.mReportParams.get("sop_name");
+    }
+    else
+    {
+      str1 = "";
+      localObject1 = str1;
     }
     localHashMap.put("event_name", localObject2);
-    localObject2 = localObject1;
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+    localObject2 = str1;
+    if (TextUtils.isEmpty(str1)) {
       localObject2 = "";
     }
     localHashMap.put("position", localObject2);
-    localObject1 = str;
-    if (TextUtils.isEmpty(str)) {
-      localObject1 = "";
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      localObject1 = str2;
     }
     localHashMap.put("sop_name", localObject1);
     localHashMap.put("err_type", paramString1);
@@ -117,7 +154,7 @@ public class WSStatisticsReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter
  * JD-Core Version:    0.7.0.1
  */

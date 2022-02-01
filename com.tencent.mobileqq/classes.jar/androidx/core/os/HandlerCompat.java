@@ -30,27 +30,21 @@ public final class HandlerCompat
     catch (InvocationTargetException paramLooper)
     {
       paramLooper = paramLooper.getCause();
-      if ((paramLooper instanceof RuntimeException)) {
-        throw ((RuntimeException)paramLooper);
+      if (!(paramLooper instanceof RuntimeException))
+      {
+        if ((paramLooper instanceof Error)) {
+          throw ((Error)paramLooper);
+        }
+        throw new RuntimeException(paramLooper);
       }
-      if ((paramLooper instanceof Error)) {
-        throw ((Error)paramLooper);
-      }
-      throw new RuntimeException(paramLooper);
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
+      throw ((RuntimeException)paramLooper);
       Log.v("HandlerCompat", "Unable to invoke Handler(Looper, Callback, boolean) constructor");
       return new Handler(paramLooper);
     }
-    catch (InstantiationException localInstantiationException)
+    catch (IllegalAccessException|InstantiationException|NoSuchMethodException localIllegalAccessException)
     {
-      break label114;
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      label114:
-      break label114;
+      label113:
+      break label113;
     }
   }
   
@@ -69,27 +63,21 @@ public final class HandlerCompat
     catch (InvocationTargetException paramLooper)
     {
       paramLooper = paramLooper.getCause();
-      if ((paramLooper instanceof RuntimeException)) {
-        throw ((RuntimeException)paramLooper);
+      if (!(paramLooper instanceof RuntimeException))
+      {
+        if ((paramLooper instanceof Error)) {
+          throw ((Error)paramLooper);
+        }
+        throw new RuntimeException(paramLooper);
       }
-      if ((paramLooper instanceof Error)) {
-        throw ((Error)paramLooper);
-      }
-      throw new RuntimeException(paramLooper);
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
+      throw ((RuntimeException)paramLooper);
       Log.v("HandlerCompat", "Unable to invoke Handler(Looper, Callback, boolean) constructor");
       return new Handler(paramLooper, paramCallback);
     }
-    catch (InstantiationException localInstantiationException)
+    catch (IllegalAccessException|InstantiationException|NoSuchMethodException localIllegalAccessException)
     {
-      break label115;
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      label115:
-      break label115;
+      label114:
+      break label114;
     }
   }
   
@@ -105,7 +93,7 @@ public final class HandlerCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.os.HandlerCompat
  * JD-Core Version:    0.7.0.1
  */

@@ -95,20 +95,17 @@ public class ViolaSDKEngine
   
   public static void initialize(Application paramApplication, InitConfig paramInitConfig, @NonNull ViolaSDKEngine.InitCallback paramInitCallback, String paramString)
   {
-    for (;;)
+    synchronized (mLock)
     {
-      synchronized (mLock)
-      {
-        if (isInitialized()) {
-          return;
-        }
-        if (TextUtils.isEmpty(paramString))
-        {
-          initialize(paramApplication, paramInitConfig, paramInitCallback, paramString);
-          return;
-        }
+      if (isInitialized()) {
+        return;
       }
-      doInitInternal(paramApplication, paramInitConfig, paramInitCallback, paramString);
+      if (TextUtils.isEmpty(paramString)) {
+        initialize(paramApplication, paramInitConfig, paramInitCallback, paramString);
+      } else {
+        doInitInternal(paramApplication, paramInitConfig, paramInitCallback, paramString);
+      }
+      return;
     }
   }
   
@@ -175,7 +172,10 @@ public class ViolaSDKEngine
     }
     catch (Exception localException)
     {
-      ViolaLogUtils.e("ViolaSDKEngine", "[SDKEngine] register exception e:" + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[SDKEngine] register exception e:");
+      localStringBuilder.append(localException);
+      ViolaLogUtils.e("ViolaSDKEngine", localStringBuilder.toString());
     }
   }
   
@@ -184,19 +184,19 @@ public class ViolaSDKEngine
     int j = paramVarArgs.length;
     int i = 0;
     boolean bool = true;
-    if (i < j)
+    while (i < j)
     {
       String str = paramVarArgs[i];
       HashMap localHashMap = new HashMap();
       if (paramBoolean) {
         localHashMap.put("append", "tree");
       }
-      if ((bool) && (ComponentRegistry.registerComponent(str, paramIFComponentHolder, localHashMap))) {}
-      for (bool = true;; bool = false)
-      {
-        i += 1;
-        break;
+      if ((bool) && (ComponentRegistry.registerComponent(str, paramIFComponentHolder, localHashMap))) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      i += 1;
     }
     return bool;
   }
@@ -228,15 +228,15 @@ public class ViolaSDKEngine
     int j = paramVarArgs.length;
     int i = 0;
     boolean bool = true;
-    if (i < j)
+    while (i < j)
     {
       String str = paramVarArgs[i];
-      if ((bool) && (ComponentRegistry.registerOnlyNativeComponent(str, paramClass))) {}
-      for (bool = true;; bool = false)
-      {
-        i += 1;
-        break;
+      if ((bool) && (ComponentRegistry.registerOnlyNativeComponent(str, paramClass))) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      i += 1;
     }
     return bool;
   }
@@ -248,7 +248,7 @@ public class ViolaSDKEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.core.ViolaSDKEngine
  * JD-Core Version:    0.7.0.1
  */

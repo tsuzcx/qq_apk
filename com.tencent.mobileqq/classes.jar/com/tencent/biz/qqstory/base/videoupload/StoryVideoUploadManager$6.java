@@ -18,12 +18,13 @@ class StoryVideoUploadManager$6
     super(paramString1);
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
     paramJobContext = new DeleteStoryVideoEvent(new ErrorMessage(), this.jdField_a_of_type_JavaLangString, true);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)
+    paramVarArgs = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
+    if (paramVarArgs != null)
     {
-      paramJobContext.b = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
+      paramJobContext.b = paramVarArgs.mOwnerUid;
       paramJobContext.c = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.shareGroupId;
       paramJobContext.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
       if (paramJobContext.a == 0L) {
@@ -36,7 +37,7 @@ class StoryVideoUploadManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.6
  * JD-Core Version:    0.7.0.1
  */

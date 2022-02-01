@@ -19,42 +19,53 @@ class NearbyGuideActivity$1
       return;
     }
     FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    switch (paramMessage.what)
+    int j = paramMessage.what;
+    int i = 0;
+    if (j != 1002)
     {
-    case 1004: 
-    default: 
-      return;
-    case 1002: 
-      if (localFileMsg.fileSize <= 0L) {
-        break;
+      if (j != 1003)
+      {
+        if (j != 1005) {
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyGuideActivity.mPicUploadHandler.handleMessage(), upload fail.");
+        }
+        this.a.dismissProcessDialog();
+        this.a.showToast(HardCodeUtil.a(2131707222));
+        this.a.updateAvatar(true, null);
+        return;
       }
-    }
-    for (int i = (int)(localFileMsg.transferedSize * 100L / localFileMsg.fileSize); QLog.isColorLevel(); i = 0)
-    {
-      QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyGuideActivity .mPicUploadHandler.handleMessage, send process : " + i);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyGuideActivity.mPicUploadHandler.handleMessage(), upload success. photo_id = " + NearbyPeoplePhotoUploadProcessor.mPhotoId);
+      if (QLog.isColorLevel())
+      {
+        paramMessage = new StringBuilder();
+        paramMessage.append("NearbyGuideActivity.mPicUploadHandler.handleMessage(), upload success. photo_id = ");
+        paramMessage.append(NearbyPeoplePhotoUploadProcessor.mPhotoId);
+        QLog.d("Q.nearby_people_card.upload_local_photo", 2, paramMessage.toString());
       }
       i = NearbyPeoplePhotoUploadProcessor.mPhotoId;
       if (i >= 0) {
-        this.a.a.set(0, Integer.valueOf(i));
+        this.a.mUploadPhotoIds.set(0, Integer.valueOf(i));
       }
-      this.a.a(this.a.a);
+      paramMessage = this.a;
+      paramMessage.saveProfileInfo(paramMessage.mUploadPhotoIds);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyGuideActivity.mPicUploadHandler.handleMessage(), upload fail.");
-      }
-      this.a.l();
-      this.a.c(HardCodeUtil.a(2131707197));
-      this.a.a(true, null);
-      return;
+    }
+    if (localFileMsg.fileSize > 0L) {
+      i = (int)(localFileMsg.transferedSize * 100L / localFileMsg.fileSize);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramMessage = new StringBuilder();
+      paramMessage.append("NearbyGuideActivity .mPicUploadHandler.handleMessage, send process : ");
+      paramMessage.append(i);
+      QLog.d("Q.nearby_people_card.upload_local_photo", 2, paramMessage.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.guide.NearbyGuideActivity.1
  * JD-Core Version:    0.7.0.1
  */

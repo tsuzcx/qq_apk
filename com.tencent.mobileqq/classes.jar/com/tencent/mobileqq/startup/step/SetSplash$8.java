@@ -1,24 +1,26 @@
 package com.tencent.mobileqq.startup.step;
 
-import com.tencent.mobileqq.startup.director.StartupDirector;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.splashad.SplashADView.SplashADViewPresenter;
 
 final class SetSplash$8
-  implements TVK_IMediaPlayer.OnCompletionListener
+  implements SplashADView.SplashADViewPresenter
 {
-  SetSplash$8(StartupDirector paramStartupDirector) {}
+  SetSplash$8(ImageView paramImageView1, ImageView paramImageView2) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void a()
   {
-    QLog.i("QSplash@QbossSplashUtil", 1, "video finish");
-    this.a.a(15, 1, 0L);
+    ImageView localImageView = this.a;
+    if ((localImageView != null) && (this.b != null))
+    {
+      localImageView.setVisibility(8);
+      this.b.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.SetSplash.8
  * JD-Core Version:    0.7.0.1
  */

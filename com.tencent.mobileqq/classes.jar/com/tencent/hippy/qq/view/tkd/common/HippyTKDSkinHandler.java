@@ -1,7 +1,7 @@
 package com.tencent.hippy.qq.view.tkd.common;
 
 import android.view.View;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mtt.hippy.common.HippyArray;
 import com.tencent.mtt.hippy.views.common.CommonBorder;
 import com.tencent.mtt.hippy.views.common.CommonBorder.BorderWidthDirection;
@@ -94,29 +94,35 @@ public class HippyTKDSkinHandler
   
   public void switchSkin(View paramView)
   {
-    if (this.mBackgroundColors != null) {
-      setBackgroundColors(paramView, this.mBackgroundColors);
+    HippyArray localHippyArray = this.mBackgroundColors;
+    if (localHippyArray != null) {
+      setBackgroundColors(paramView, localHippyArray);
     }
-    if ((this.mBorderColors != null) && ((paramView instanceof CommonBorder))) {
-      setBorderColors((CommonBorder)paramView, this.mBorderColors);
+    localHippyArray = this.mBorderColors;
+    if ((localHippyArray != null) && ((paramView instanceof CommonBorder))) {
+      setBorderColors((CommonBorder)paramView, localHippyArray);
     }
-    if ((this.mBorderLeftColors != null) && ((paramView instanceof CommonBorder))) {
-      setBorderLeftColors((CommonBorder)paramView, this.mBorderLeftColors);
+    localHippyArray = this.mBorderLeftColors;
+    if ((localHippyArray != null) && ((paramView instanceof CommonBorder))) {
+      setBorderLeftColors((CommonBorder)paramView, localHippyArray);
     }
-    if ((this.mBorderTopColors != null) && ((paramView instanceof CommonBorder))) {
-      setBorderTopColors((CommonBorder)paramView, this.mBorderTopColors);
+    localHippyArray = this.mBorderTopColors;
+    if ((localHippyArray != null) && ((paramView instanceof CommonBorder))) {
+      setBorderTopColors((CommonBorder)paramView, localHippyArray);
     }
-    if ((this.mBorderRightColors != null) && ((paramView instanceof CommonBorder))) {
-      setBorderRightColors((CommonBorder)paramView, this.mBorderRightColors);
+    localHippyArray = this.mBorderRightColors;
+    if ((localHippyArray != null) && ((paramView instanceof CommonBorder))) {
+      setBorderRightColors((CommonBorder)paramView, localHippyArray);
     }
-    if ((this.mBorderBottomColors != null) && ((paramView instanceof CommonBorder))) {
-      setBorderBottomColors((CommonBorder)paramView, this.mBorderBottomColors);
+    localHippyArray = this.mBorderBottomColors;
+    if ((localHippyArray != null) && ((paramView instanceof CommonBorder))) {
+      setBorderBottomColors((CommonBorder)paramView, localHippyArray);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.common.HippyTKDSkinHandler
  * JD-Core Version:    0.7.0.1
  */

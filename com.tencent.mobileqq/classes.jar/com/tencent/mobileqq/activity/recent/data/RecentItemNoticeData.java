@@ -51,40 +51,58 @@ public class RecentItemNoticeData
       paramQQAppInterface = new StringBuilder(24);
       paramQQAppInterface.append(this.mTitleName);
       if (this.mUnreadNum != 0) {
-        break label102;
+        if (this.mUnreadNum == 1)
+        {
+          paramQQAppInterface.append("有一条未读");
+        }
+        else if (this.mUnreadNum == 2)
+        {
+          paramQQAppInterface.append("有两条未读");
+        }
+        else if (this.mUnreadNum > 0)
+        {
+          paramQQAppInterface.append("有");
+          paramQQAppInterface.append(this.mUnreadNum);
+          paramQQAppInterface.append("条未读");
+        }
       }
-    }
-    for (;;)
-    {
-      if (this.mMsgExtroInfo != null) {
-        paramQQAppInterface.append(this.mMsgExtroInfo + ",");
+      if (this.mMsgExtroInfo != null)
+      {
+        paramContext = new StringBuilder();
+        paramContext.append(this.mMsgExtroInfo);
+        paramContext.append(",");
+        paramQQAppInterface.append(paramContext.toString());
       }
-      paramQQAppInterface.append(this.mLastMsg).append(' ').append(this.mShowTime);
+      paramQQAppInterface.append(this.mLastMsg);
+      paramQQAppInterface.append(' ');
+      paramQQAppInterface.append(this.mShowTime);
       this.mContentDesc = paramQQAppInterface.toString();
-      return;
-      label102:
-      if (this.mUnreadNum == 1) {
-        paramQQAppInterface.append("有一条未读");
-      } else if (this.mUnreadNum == 2) {
-        paramQQAppInterface.append("有两条未读");
-      } else if (this.mUnreadNum > 0) {
-        paramQQAppInterface.append("有").append(this.mUnreadNum).append("条未读");
-      }
     }
   }
   
   public boolean a(int paramInt, long paramLong1, String paramString1, String paramString2, String paramString3, long paramLong2)
   {
-    if (this.type != paramInt) {}
-    while ((this.uin != paramLong1) || (this.time != paramLong2) || (!Utils.a(this.wording, paramString1)) || (!Utils.a(this.url, paramString2)) || (!Utils.a(this.from, paramString3))) {
+    if (this.type != paramInt) {
       return false;
     }
-    return true;
+    if (this.uin != paramLong1) {
+      return false;
+    }
+    if (this.time != paramLong2) {
+      return false;
+    }
+    if (!Utils.a(this.wording, paramString1)) {
+      return false;
+    }
+    if (!Utils.a(this.url, paramString2)) {
+      return false;
+    }
+    return Utils.a(this.from, paramString3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemNoticeData
  * JD-Core Version:    0.7.0.1
  */

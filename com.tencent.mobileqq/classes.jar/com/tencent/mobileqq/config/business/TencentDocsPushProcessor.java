@@ -28,8 +28,12 @@ public class TencentDocsPushProcessor
   
   public void a(TencentDocsPushBean paramTencentDocsPushBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TencentDocsPushProcessor", 2, "onUpdate " + paramTencentDocsPushBean.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      localStringBuilder.append(paramTencentDocsPushBean.toString());
+      QLog.d("TencentDocsPushProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -67,7 +71,7 @@ public class TencentDocsPushProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.TencentDocsPushProcessor
  * JD-Core Version:    0.7.0.1
  */

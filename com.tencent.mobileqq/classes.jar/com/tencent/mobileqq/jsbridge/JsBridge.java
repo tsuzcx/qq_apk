@@ -35,44 +35,45 @@ public class JsBridge
   {
     int j = paramList.size();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j) {
-        try
+      try
+      {
+        paramList.set(i, URLDecoder.decode((String)paramList.get(i), "UTF-8"));
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        if (QLog.isDevelopLevel())
         {
-          paramList.set(i, URLDecoder.decode((String)paramList.get(i), "UTF-8"));
-          i += 1;
-        }
-        catch (UnsupportedEncodingException localUnsupportedEncodingException)
-        {
-          for (;;)
-          {
-            localUnsupportedEncodingException.printStackTrace();
-            if (QLog.isDevelopLevel()) {
-              QLog.i("JB", 4, "decode failed: " + (String)paramList.get(i));
-            }
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            localException.printStackTrace();
-            if (QLog.isDevelopLevel()) {
-              QLog.i("JB", 4, "decode failed, exception: " + (String)paramList.get(i));
-            }
-          }
+          StringBuilder localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("decode failed, exception: ");
+          localStringBuilder1.append((String)paramList.get(i));
+          QLog.i("JB", 4, localStringBuilder1.toString());
         }
       }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        localUnsupportedEncodingException.printStackTrace();
+        if (QLog.isDevelopLevel())
+        {
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("decode failed: ");
+          localStringBuilder2.append((String)paramList.get(i));
+          QLog.i("JB", 4, localStringBuilder2.toString());
+        }
+      }
+      i += 1;
     }
     paramString1 = (JsBridge.JsHandler)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
-    if (paramString1 != null) {
+    if (paramString1 != null)
+    {
       paramString1.call(paramString2, paramList, paramJsBridgeListener);
-    }
-    while (paramJsBridgeListener == null) {
       return;
     }
-    paramJsBridgeListener.a();
+    if (paramJsBridgeListener != null) {
+      paramJsBridgeListener.a();
+    }
   }
   
   public boolean a(WebView paramWebView, String paramString)
@@ -83,45 +84,62 @@ public class JsBridge
     if (!paramString.startsWith("jsbridge://")) {
       return false;
     }
-    List localList = Arrays.asList((paramString + "/#").split("/"));
-    if (localList.size() < 6) {
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append("/#");
+    Object localObject2 = Arrays.asList(((StringBuilder)localObject1).toString().split("/"));
+    if (((List)localObject2).size() < 6) {
       return false;
     }
-    String str1 = (String)localList.get(2);
-    String str2 = (String)localList.get(3);
-    String str3 = (String)localList.get(4);
-    for (;;)
+    localObject1 = (String)((List)localObject2).get(2);
+    String str = (String)((List)localObject2).get(3);
+    Object localObject3 = (String)((List)localObject2).get(4);
+    try
     {
-      try
+      long l = Long.parseLong((String)localObject3);
+      localObject2 = ((List)localObject2).subList(5, ((List)localObject2).size() - 1);
+      if (QLog.isDevelopLevel())
       {
-        long l = Long.parseLong(str3);
-        localList = localList.subList(5, localList.size() - 1);
-        if (QLog.isDevelopLevel()) {
-          QLog.d("JB", 4, "calling " + str1 + "." + str2);
-        }
-        paramString = new JsBridge.JsBridgeListener(paramWebView, l, paramString);
-        paramWebView = paramWebView.getUrl();
-        if (this.jdField_a_of_type_ComTencentBizAuthorizeConfig == null) {
-          this.jdField_a_of_type_ComTencentBizAuthorizeConfig = AuthorizeConfig.a();
-        }
-        if (this.jdField_a_of_type_ComTencentBizAuthorizeConfig.a(paramWebView, str1 + "." + str2))
-        {
-          a(str1, str2, localList, paramString);
-          return true;
-        }
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("calling ");
+        ((StringBuilder)localObject3).append((String)localObject1);
+        ((StringBuilder)localObject3).append(".");
+        ((StringBuilder)localObject3).append(str);
+        QLog.d("JB", 4, ((StringBuilder)localObject3).toString());
       }
-      catch (Exception paramWebView)
+      paramString = new JsBridge.JsBridgeListener(paramWebView, l, paramString);
+      paramWebView = paramWebView.getUrl();
+      if (this.jdField_a_of_type_ComTencentBizAuthorizeConfig == null) {
+        this.jdField_a_of_type_ComTencentBizAuthorizeConfig = AuthorizeConfig.a();
+      }
+      localObject3 = this.jdField_a_of_type_ComTencentBizAuthorizeConfig;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append(".");
+      localStringBuilder.append(str);
+      if (((AuthorizeConfig)localObject3).a(paramWebView, localStringBuilder.toString()))
       {
-        return false;
+        a((String)localObject1, str, (List)localObject2, paramString);
+        return true;
       }
-      QLog.e("JsBridge", 1, "JS API no auth url = " + Util.b(paramWebView, new String[0]) + " objectName = " + str1 + " methodName = " + str2);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("JS API no auth url = ");
+      ((StringBuilder)localObject2).append(Util.b(paramWebView, new String[0]));
+      ((StringBuilder)localObject2).append(" objectName = ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(" methodName = ");
+      ((StringBuilder)localObject2).append(str);
+      QLog.e("JsBridge", 1, ((StringBuilder)localObject2).toString());
       paramString.b();
+      return true;
     }
+    catch (Exception paramWebView) {}
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsbridge.JsBridge
  * JD-Core Version:    0.7.0.1
  */

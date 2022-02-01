@@ -16,50 +16,66 @@ class MiniAppVideoController$9
   
   public boolean onInfo(AbsVideoPlayer paramAbsVideoPlayer, int paramInt1, int paramInt2)
   {
-    QMLog.i("MiniAppVideoController", "onInfo: " + paramInt1 + " " + paramInt1);
-    switch (paramInt1)
+    paramAbsVideoPlayer = new StringBuilder();
+    paramAbsVideoPlayer.append("onInfo: ");
+    paramAbsVideoPlayer.append(paramInt1);
+    paramAbsVideoPlayer.append(" ");
+    paramAbsVideoPlayer.append(paramInt1);
+    QMLog.i("MiniAppVideoController", paramAbsVideoPlayer.toString());
+    Object localObject;
+    if (paramInt1 != 21)
     {
+      if (paramInt1 == 22)
+      {
+        QMLog.d("MiniAppVideoController", "video player PLAYER_INFO_ENDOF_BUFFERING--------------");
+        try
+        {
+          paramAbsVideoPlayer = new JSONObject();
+          paramAbsVideoPlayer.put("data", MiniAppVideoController.access$2800(this.this$0));
+          localObject = MiniAppVideoController.access$1400(this.this$0);
+          if (localObject != null) {
+            MiniAppVideoController.access$1400(this.this$0).performAction(ServiceSubscribeEvent.obtain("onVideoLoadedData", paramAbsVideoPlayer.toString(), MiniAppVideoController.access$3000(this.this$0)));
+          }
+          MiniAppVideoController.access$3100(this.this$0).evaluateSubscribeJS("onVideoLoadedData", paramAbsVideoPlayer.toString(), MiniAppVideoController.access$3000(this.this$0));
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("evaluateSubcribeJS onVideoLoadedData = ");
+          ((StringBuilder)localObject).append(paramAbsVideoPlayer.toString());
+          QMLog.d("MiniAppVideoController", ((StringBuilder)localObject).toString());
+        }
+        catch (JSONException paramAbsVideoPlayer)
+        {
+          paramAbsVideoPlayer.printStackTrace();
+        }
+      }
     }
-    for (;;)
+    else
     {
-      return false;
       QMLog.d("MiniAppVideoController", "video player PLAYER_INFO_START_BUFFERING--------------");
       try
       {
         paramAbsVideoPlayer = new JSONObject();
         paramAbsVideoPlayer.put("data", MiniAppVideoController.access$2800(this.this$0));
-        if (MiniAppVideoController.access$1400(this.this$0) != null) {
+        localObject = MiniAppVideoController.access$1400(this.this$0);
+        if (localObject != null) {
           MiniAppVideoController.access$1400(this.this$0).performAction(ServiceSubscribeEvent.obtain("onVideoLoadStart", paramAbsVideoPlayer.toString(), MiniAppVideoController.access$3000(this.this$0)));
         }
         MiniAppVideoController.access$3100(this.this$0).evaluateSubscribeJS("onVideoLoadStart", paramAbsVideoPlayer.toString(), MiniAppVideoController.access$3000(this.this$0));
-        QMLog.d("MiniAppVideoController", "evaluateSubcribeJS onVideoLoadStart = " + paramAbsVideoPlayer.toString());
-      }
-      catch (JSONException paramAbsVideoPlayer)
-      {
-        paramAbsVideoPlayer.printStackTrace();
-      }
-      continue;
-      QMLog.d("MiniAppVideoController", "video player PLAYER_INFO_ENDOF_BUFFERING--------------");
-      try
-      {
-        paramAbsVideoPlayer = new JSONObject();
-        paramAbsVideoPlayer.put("data", MiniAppVideoController.access$2800(this.this$0));
-        if (MiniAppVideoController.access$1400(this.this$0) != null) {
-          MiniAppVideoController.access$1400(this.this$0).performAction(ServiceSubscribeEvent.obtain("onVideoLoadedData", paramAbsVideoPlayer.toString(), MiniAppVideoController.access$3000(this.this$0)));
-        }
-        MiniAppVideoController.access$3100(this.this$0).evaluateSubscribeJS("onVideoLoadedData", paramAbsVideoPlayer.toString(), MiniAppVideoController.access$3000(this.this$0));
-        QMLog.d("MiniAppVideoController", "evaluateSubcribeJS onVideoLoadedData = " + paramAbsVideoPlayer.toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("evaluateSubcribeJS onVideoLoadStart = ");
+        ((StringBuilder)localObject).append(paramAbsVideoPlayer.toString());
+        QMLog.d("MiniAppVideoController", ((StringBuilder)localObject).toString());
       }
       catch (JSONException paramAbsVideoPlayer)
       {
         paramAbsVideoPlayer.printStackTrace();
       }
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.media.MiniAppVideoController.9
  * JD-Core Version:    0.7.0.1
  */

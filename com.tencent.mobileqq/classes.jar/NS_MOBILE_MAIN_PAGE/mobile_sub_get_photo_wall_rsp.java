@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class mobile_sub_get_photo_wall_rsp
   extends JceStruct
@@ -43,12 +44,14 @@ public final class mobile_sub_get_photo_wall_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vecUrls != null) {
-      paramJceOutputStream.write(this.vecUrls, 0);
+    Object localObject = this.vecUrls;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
     paramJceOutputStream.write(this.total_pic, 1);
-    if (this.attachInfo != null) {
-      paramJceOutputStream.write(this.attachInfo, 2);
+    localObject = this.attachInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.iHasMore, 3);
     paramJceOutputStream.write(this.photoWallCombinePic, 4);
@@ -56,7 +59,7 @@ public final class mobile_sub_get_photo_wall_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp
  * JD-Core Version:    0.7.0.1
  */

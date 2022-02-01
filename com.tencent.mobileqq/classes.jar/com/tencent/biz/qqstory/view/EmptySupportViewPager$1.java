@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.view;
 
 import android.database.DataSetObserver;
-import android.support.v4.view.PagerAdapter;
+import androidx.viewpager.widget.PagerAdapter;
 
 class EmptySupportViewPager$1
   extends DataSetObserver
@@ -23,7 +23,7 @@ class EmptySupportViewPager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.EmptySupportViewPager.1
  * JD-Core Version:    0.7.0.1
  */

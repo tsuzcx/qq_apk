@@ -51,113 +51,165 @@ public class TroopFileTransferRetryController
   
   public String a()
   {
-    int i = 0;
-    int j = 1;
+    int i = 1;
     Object localObject1 = null;
-    for (;;)
+    int j = 0;
+    Object localObject2;
+    int k;
+    do
     {
       String str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor.a();
       if (!TextUtils.isEmpty(str))
       {
         this.jdField_a_of_type_JavaUtilMap.put(str, new TroopFileTransferRetryController.RetryContent(this));
-        Object localObject2 = localObject1;
+        localObject2 = localObject1;
         if (localObject1 == null) {
           localObject2 = str;
         }
-        TroopFileTransferUtil.Log.c("TroopFileTransferRetryController", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] retryContrller init:" + str);
-        localObject1 = localObject2;
-        i += 1;
+        k = j + 1;
+        j = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("[");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+        ((StringBuilder)localObject1).append("] retryContrller init:");
+        ((StringBuilder)localObject1).append(str);
+        TroopFileTransferUtil.Log.c("TroopFileTransferRetryController", j, ((StringBuilder)localObject1).toString());
       }
-      while ((j == 0) || (i >= 4))
+      else
       {
-        return localObject1;
-        j = 0;
+        i = 0;
+        k = j;
+        localObject2 = localObject1;
       }
-    }
+      if (i == 0) {
+        break;
+      }
+      localObject1 = localObject2;
+      j = k;
+    } while (k < 4);
+    return localObject2;
   }
   
   protected String a(String paramString, int paramInt, boolean paramBoolean)
   {
-    TroopFileTransferRetryController.RetryContent localRetryContent;
     try
     {
-      localRetryContent = (TroopFileTransferRetryController.RetryContent)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      TroopFileTransferRetryController.RetryContent localRetryContent = (TroopFileTransferRetryController.RetryContent)this.jdField_a_of_type_JavaUtilMap.get(paramString);
       if (localRetryContent == null)
       {
-        TroopFileTransferUtil.Log.a("TroopFileTransferRetryController", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] selectUrl err. not find strErrUrl. urlCont:" + this.jdField_a_of_type_JavaUtilMap.size());
-        paramString = null;
+        paramInt = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+        paramString = new StringBuilder();
+        paramString.append("[");
+        paramString.append(this.jdField_a_of_type_Long);
+        paramString.append("] selectUrl err. not find strErrUrl. urlCont:");
+        paramString.append(this.jdField_a_of_type_JavaUtilMap.size());
+        TroopFileTransferUtil.Log.a("TroopFileTransferRetryController", paramInt, paramString.toString());
+        return null;
       }
-      for (;;)
+      if (((9056 == paramInt) || (paramBoolean)) && (localRetryContent.jdField_a_of_type_Int < this.e))
       {
-        return paramString;
-        if (((9056 != paramInt) && (!paramBoolean)) || (localRetryContent.jdField_a_of_type_Int >= this.e)) {
-          break;
-        }
         a(localRetryContent, paramInt, paramBoolean);
-        TroopFileTransferUtil.Log.c("TroopFileTransferRetryController", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] selectUrl:" + paramString + localRetryContent.toString() + " eof err or serr, use cur errurl");
+        paramInt = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("[");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+        ((StringBuilder)localObject1).append("] selectUrl:");
+        ((StringBuilder)localObject1).append(paramString);
+        ((StringBuilder)localObject1).append(localRetryContent.toString());
+        ((StringBuilder)localObject1).append(" eof err or serr, use cur errurl");
+        TroopFileTransferUtil.Log.c("TroopFileTransferRetryController", paramInt, ((StringBuilder)localObject1).toString());
+        return paramString;
       }
       localObject1 = new TroopFileTransferRetryController.RetryContent(this);
-    }
-    finally {}
-    Object localObject1;
-    ((TroopFileTransferRetryController.RetryContent)localObject1).jdField_a_of_type_Int = 2147483647;
-    ((TroopFileTransferRetryController.RetryContent)localObject1).jdField_b_of_type_Int = 2147483647;
-    ((TroopFileTransferRetryController.RetryContent)localObject1).c = 2147483647;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-    Object localObject2 = null;
-    label216:
-    Object localObject3;
-    while (localIterator.hasNext())
-    {
-      Object localObject4 = (Map.Entry)localIterator.next();
-      localObject3 = (String)((Map.Entry)localObject4).getKey();
-      localObject4 = (TroopFileTransferRetryController.RetryContent)((Map.Entry)localObject4).getValue();
-      TroopFileTransferUtil.Log.c("TroopFileTransferRetryController", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "]" + (String)localObject3 + " <->" + ((TroopFileTransferRetryController.RetryContent)localObject4).toString());
-      if (!paramString.equalsIgnoreCase((String)localObject3))
+      ((TroopFileTransferRetryController.RetryContent)localObject1).jdField_a_of_type_Int = 2147483647;
+      ((TroopFileTransferRetryController.RetryContent)localObject1).jdField_b_of_type_Int = 2147483647;
+      ((TroopFileTransferRetryController.RetryContent)localObject1).c = 2147483647;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      label246:
+      Object localObject3;
+      int i;
+      for (localObject2 = null; localIterator.hasNext(); localObject2 = localObject3)
       {
-        if (((TroopFileTransferRetryController.RetryContent)localObject4).jdField_a_of_type_Int >= ((TroopFileTransferRetryController.RetryContent)localObject1).jdField_a_of_type_Int) {
-          break label580;
+        Object localObject4 = (Map.Entry)localIterator.next();
+        localObject3 = (String)((Map.Entry)localObject4).getKey();
+        localObject4 = (TroopFileTransferRetryController.RetryContent)((Map.Entry)localObject4).getValue();
+        i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[");
+        localStringBuilder.append(this.jdField_a_of_type_Long);
+        localStringBuilder.append("]");
+        localStringBuilder.append((String)localObject3);
+        localStringBuilder.append(" <->");
+        localStringBuilder.append(((TroopFileTransferRetryController.RetryContent)localObject4).toString());
+        TroopFileTransferUtil.Log.c("TroopFileTransferRetryController", i, localStringBuilder.toString());
+        if ((paramString.equalsIgnoreCase((String)localObject3)) || (((TroopFileTransferRetryController.RetryContent)localObject4).jdField_a_of_type_Int >= ((TroopFileTransferRetryController.RetryContent)localObject1).jdField_a_of_type_Int)) {
+          break label246;
         }
-        localObject2 = localObject4;
-        localObject1 = localObject3;
-        break label592;
+        localObject1 = localObject4;
       }
-    }
-    if ((localObject2 == null) || (((TroopFileTransferRetryController.RetryContent)localObject1).jdField_a_of_type_Int >= this.e)) {
+      if (localObject2 != null) {
+        if (((TroopFileTransferRetryController.RetryContent)localObject1).jdField_a_of_type_Int < this.e) {
+          break label723;
+        }
+      }
       if (localObject2 == null)
       {
-        TroopFileTransferUtil.Log.b("TroopFileTransferRetryController", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] no next url use cur errurl");
-        break label607;
+        i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("[");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+        ((StringBuilder)localObject1).append("] no next url use cur errurl");
+        TroopFileTransferUtil.Log.b("TroopFileTransferRetryController", i, ((StringBuilder)localObject1).toString());
+        localObject1 = localRetryContent;
       }
-    }
-    for (;;)
-    {
-      if (((TroopFileTransferRetryController.RetryContent)localObject1).jdField_a_of_type_Int < this.e)
+      else
       {
-        a((TroopFileTransferRetryController.RetryContent)localObject1, paramInt, paramBoolean);
-        TroopFileTransferUtil.Log.c("TroopFileTransferRetryController", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] selectUrl:" + paramString + ((TroopFileTransferRetryController.RetryContent)localObject1).toString());
-        break;
-        TroopFileTransferUtil.Log.b("TroopFileTransferRetryController", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] minurl retry over, use cur errurl. minRetryUrl:" + localObject2 + ((TroopFileTransferRetryController.RetryContent)localObject1).toString());
-        break label607;
+        i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("[");
+        ((StringBuilder)localObject3).append(this.jdField_a_of_type_Long);
+        ((StringBuilder)localObject3).append("] minurl retry over, use cur errurl. minRetryUrl:");
+        ((StringBuilder)localObject3).append((String)localObject2);
+        ((StringBuilder)localObject3).append(((TroopFileTransferRetryController.RetryContent)localObject1).toString());
+        TroopFileTransferUtil.Log.b("TroopFileTransferRetryController", i, ((StringBuilder)localObject3).toString());
+        localObject1 = localRetryContent;
       }
-      this.jdField_a_of_type_Boolean = true;
-      TroopFileTransferUtil.Log.a("TroopFileTransferRetryController", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] all retry over and fail");
-      paramString = null;
-      break;
-      paramString = localObject2;
-      continue;
-      label580:
-      localObject3 = localObject1;
-      localObject1 = localObject2;
-      localObject2 = localObject3;
-      label592:
-      localObject3 = localObject1;
-      localObject1 = localObject2;
-      localObject2 = localObject3;
-      break label216;
-      label607:
-      localObject1 = localRetryContent;
     }
+    finally
+    {
+      for (;;)
+      {
+        Object localObject1;
+        Object localObject2;
+        for (;;)
+        {
+          throw paramString;
+        }
+        label723:
+        paramString = (String)localObject2;
+      }
+    }
+    if (((TroopFileTransferRetryController.RetryContent)localObject1).jdField_a_of_type_Int < this.e)
+    {
+      a((TroopFileTransferRetryController.RetryContent)localObject1, paramInt, paramBoolean);
+      paramInt = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[");
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject2).append("] selectUrl:");
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(((TroopFileTransferRetryController.RetryContent)localObject1).toString());
+      TroopFileTransferUtil.Log.c("TroopFileTransferRetryController", paramInt, ((StringBuilder)localObject2).toString());
+      return paramString;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    paramInt = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+    paramString = new StringBuilder();
+    paramString.append("[");
+    paramString.append(this.jdField_a_of_type_Long);
+    paramString.append("] all retry over and fail");
+    TroopFileTransferUtil.Log.a("TroopFileTransferRetryController", paramInt, paramString.toString());
+    return null;
   }
   
   public void a()
@@ -200,33 +252,44 @@ public class TroopFileTransferRetryController
   
   public void a(String paramString)
   {
-    for (;;)
+    try
     {
-      TroopFileTransferRetryController.RetryContent localRetryContent;
-      try
-      {
-        localRetryContent = (TroopFileTransferRetryController.RetryContent)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-        if (localRetryContent == null) {
-          return;
-        }
-        if (!this.jdField_b_of_type_Boolean)
-        {
-          this.jdField_b_of_type_Boolean = true;
-          localRetryContent.a();
-          this.jdField_a_of_type_JavaUtilMap.clear();
-          this.jdField_a_of_type_JavaUtilMap.put(paramString, localRetryContent);
-          TroopFileTransferUtil.Log.c("TroopFileTransferRetryController", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] data conned. lockedUseThisUrl:" + paramString);
-          continue;
-        }
-        if (this.d > this.h) {
-          continue;
-        }
+      Object localObject = (TroopFileTransferRetryController.RetryContent)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      if (localObject == null) {
+        return;
       }
-      finally {}
-      localRetryContent.a();
+      if (!this.jdField_b_of_type_Boolean)
+      {
+        this.jdField_b_of_type_Boolean = true;
+        ((TroopFileTransferRetryController.RetryContent)localObject).a();
+        this.jdField_a_of_type_JavaUtilMap.clear();
+        this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
+        i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+        ((StringBuilder)localObject).append("] data conned. lockedUseThisUrl:");
+        ((StringBuilder)localObject).append(paramString);
+        TroopFileTransferUtil.Log.c("TroopFileTransferRetryController", i, ((StringBuilder)localObject).toString());
+        return;
+      }
+      int i = this.d;
+      int j = this.h;
+      if (i > j) {
+        return;
+      }
+      ((TroopFileTransferRetryController.RetryContent)localObject).a();
       this.d += 1;
-      TroopFileTransferUtil.Log.c("TroopFileTransferRetryController", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] data conned. resetRetryInfo. resetcount:" + this.d);
+      i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      paramString = new StringBuilder();
+      paramString.append("[");
+      paramString.append(this.jdField_a_of_type_Long);
+      paramString.append("] data conned. resetRetryInfo. resetcount:");
+      paramString.append(this.d);
+      TroopFileTransferUtil.Log.c("TroopFileTransferRetryController", i, paramString.toString());
+      return;
     }
+    finally {}
   }
   
   public boolean a()
@@ -238,37 +301,79 @@ public class TroopFileTransferRetryController
   {
     if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileTransferRetryController$ITroopFileTransferRetrySink == null)
     {
-      TroopFileTransferUtil.Log.a("TroopFileTransferRetryController", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] reqRetryOnErr fail. sink=null");
+      paramInt = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      paramString = new StringBuilder();
+      paramString.append("[");
+      paramString.append(this.jdField_a_of_type_Long);
+      paramString.append("] reqRetryOnErr fail. sink=null");
+      TroopFileTransferUtil.Log.a("TroopFileTransferRetryController", paramInt, paramString.toString());
       return false;
     }
     if (TextUtils.isEmpty(paramString))
     {
-      TroopFileTransferUtil.Log.a("TroopFileTransferRetryController", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] reqRetryOnErr fail. strErrUrl=null");
+      paramInt = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      paramString = new StringBuilder();
+      paramString.append("[");
+      paramString.append(this.jdField_a_of_type_Long);
+      paramString.append("] reqRetryOnErr fail. strErrUrl=null");
+      TroopFileTransferUtil.Log.a("TroopFileTransferRetryController", paramInt, paramString.toString());
       return false;
     }
-    String str = a(paramString, paramInt, paramBoolean);
-    if (TextUtils.isEmpty(str))
+    Object localObject = a(paramString, paramInt, paramBoolean);
+    if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      TroopFileTransferUtil.Log.a("TroopFileTransferRetryController", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] reqRetryOnErr fail. all retry over or has err. errCode:" + paramInt + " bSvrErr:" + paramBoolean + " ReportR:" + this.jdField_a_of_type_Int + "UrlChgedT:" + this.c + " strErrUrl:" + paramString);
+      i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append("] reqRetryOnErr fail. all retry over or has err. errCode:");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" bSvrErr:");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(" ReportR:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append("UrlChgedT:");
+      ((StringBuilder)localObject).append(this.c);
+      ((StringBuilder)localObject).append(" strErrUrl:");
+      ((StringBuilder)localObject).append(paramString);
+      TroopFileTransferUtil.Log.a("TroopFileTransferRetryController", i, ((StringBuilder)localObject).toString());
       return false;
     }
     long l = 100L;
     if (9056 != paramInt) {
-      l = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileTransferRetryController$ITroopFileTransferRetrySink.b();
+      l = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileTransferRetryController$ITroopFileTransferRetrySink.a();
     }
-    ThreadManager.getSubThreadHandler().postDelayed(new TroopFileTransferRetryController.1(this, str), l);
+    ThreadManager.getSubThreadHandler().postDelayed(new TroopFileTransferRetryController.1(this, (String)localObject), l);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_Int += 1;
-    if (!paramString.equalsIgnoreCase(str)) {
+    if (!paramString.equalsIgnoreCase((String)localObject)) {
       this.c += 1;
     }
-    TroopFileTransferUtil.Log.c("TroopFileTransferRetryController", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] reqRetryOnErr suc, delay:" + l + " errCode:" + paramInt + " bSvrErr:" + paramBoolean + " strErrUrl:" + paramString + " selectUrl:" + str + " ReportR:" + this.jdField_a_of_type_Int + "UrlChgedT:" + this.c);
+    int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("] reqRetryOnErr suc, delay:");
+    localStringBuilder.append(l);
+    localStringBuilder.append(" errCode:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" bSvrErr:");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(" strErrUrl:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" selectUrl:");
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(" ReportR:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("UrlChgedT:");
+    localStringBuilder.append(this.c);
+    TroopFileTransferUtil.Log.c("TroopFileTransferRetryController", i, localStringBuilder.toString());
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.TroopFileTransferRetryController
  * JD-Core Version:    0.7.0.1
  */

@@ -21,61 +21,76 @@ public class NewDnaInfo
   
   public static ArrayList<NewDnaInfo> a(List<oidb_0xcf4.NewDnaInfo> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      Object localObject = (oidb_0xcf4.NewDnaInfo)paramList.next();
-      if ((localObject != null) && (((oidb_0xcf4.NewDnaInfo)localObject).has()))
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        NewDnaInfo localNewDnaInfo = new NewDnaInfo();
-        if (((oidb_0xcf4.NewDnaInfo)localObject).eDnaType.has()) {
-          localNewDnaInfo.jdField_a_of_type_Int = ((oidb_0xcf4.NewDnaInfo)localObject).eDnaType.get();
-        }
-        if (((oidb_0xcf4.NewDnaInfo)localObject).bytes_title.has()) {
-          localNewDnaInfo.jdField_a_of_type_JavaLangString = ((oidb_0xcf4.NewDnaInfo)localObject).bytes_title.get().toStringUtf8();
-        }
-        if (((oidb_0xcf4.NewDnaInfo)localObject).bytes_jump_url.has()) {
-          localNewDnaInfo.b = ((oidb_0xcf4.NewDnaInfo)localObject).bytes_jump_url.get().toStringUtf8();
-        }
-        if (((oidb_0xcf4.NewDnaInfo)localObject).bytes_cover_url.has()) {
-          localNewDnaInfo.c = ((oidb_0xcf4.NewDnaInfo)localObject).bytes_cover_url.get().toStringUtf8();
-        }
-        if (((oidb_0xcf4.NewDnaInfo)localObject).bytes_jump_minapp_url.has()) {
-          localNewDnaInfo.d = ((oidb_0xcf4.NewDnaInfo)localObject).bytes_jump_minapp_url.get().toStringUtf8();
-        }
-        if (((oidb_0xcf4.NewDnaInfo)localObject).rpt_detail.has())
+        Object localObject = (oidb_0xcf4.NewDnaInfo)paramList.next();
+        if ((localObject != null) && (((oidb_0xcf4.NewDnaInfo)localObject).has()))
         {
-          localObject = ((oidb_0xcf4.NewDnaInfo)localObject).rpt_detail.get().iterator();
-          while (((Iterator)localObject).hasNext())
+          NewDnaInfo localNewDnaInfo = new NewDnaInfo();
+          if (((oidb_0xcf4.NewDnaInfo)localObject).eDnaType.has()) {
+            localNewDnaInfo.jdField_a_of_type_Int = ((oidb_0xcf4.NewDnaInfo)localObject).eDnaType.get();
+          }
+          if (((oidb_0xcf4.NewDnaInfo)localObject).bytes_title.has()) {
+            localNewDnaInfo.jdField_a_of_type_JavaLangString = ((oidb_0xcf4.NewDnaInfo)localObject).bytes_title.get().toStringUtf8();
+          }
+          if (((oidb_0xcf4.NewDnaInfo)localObject).bytes_jump_url.has()) {
+            localNewDnaInfo.b = ((oidb_0xcf4.NewDnaInfo)localObject).bytes_jump_url.get().toStringUtf8();
+          }
+          if (((oidb_0xcf4.NewDnaInfo)localObject).bytes_cover_url.has()) {
+            localNewDnaInfo.c = ((oidb_0xcf4.NewDnaInfo)localObject).bytes_cover_url.get().toStringUtf8();
+          }
+          if (((oidb_0xcf4.NewDnaInfo)localObject).bytes_jump_minapp_url.has()) {
+            localNewDnaInfo.d = ((oidb_0xcf4.NewDnaInfo)localObject).bytes_jump_minapp_url.get().toStringUtf8();
+          }
+          if (((oidb_0xcf4.NewDnaInfo)localObject).rpt_detail.has())
           {
-            NewDnaInfo.DnaDetail localDnaDetail = NewDnaInfo.DnaDetail.a((oidb_0xcf4.DnaDetail)((Iterator)localObject).next());
-            if (localDnaDetail != null)
+            localObject = ((oidb_0xcf4.NewDnaInfo)localObject).rpt_detail.get().iterator();
+            while (((Iterator)localObject).hasNext())
             {
-              if (localNewDnaInfo.jdField_a_of_type_JavaUtilArrayList == null) {
-                localNewDnaInfo.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+              NewDnaInfo.DnaDetail localDnaDetail = NewDnaInfo.DnaDetail.a((oidb_0xcf4.DnaDetail)((Iterator)localObject).next());
+              if (localDnaDetail != null)
+              {
+                if (localNewDnaInfo.jdField_a_of_type_JavaUtilArrayList == null) {
+                  localNewDnaInfo.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+                }
+                localNewDnaInfo.jdField_a_of_type_JavaUtilArrayList.add(localDnaDetail);
               }
-              localNewDnaInfo.jdField_a_of_type_JavaUtilArrayList.add(localDnaDetail);
             }
           }
+          localArrayList.add(localNewDnaInfo);
         }
-        localArrayList.add(localNewDnaInfo);
       }
+      return localArrayList;
     }
-    return localArrayList;
+    return null;
   }
   
   public String toString()
   {
-    return "NewDnaInfo{type=" + this.jdField_a_of_type_Int + ", title=" + this.jdField_a_of_type_JavaLangString + ", jumpUrl=" + this.b + ", coverUrl=" + this.c + ", jumpMinappUrl=" + this.d + ", details=" + this.jdField_a_of_type_JavaUtilArrayList + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("NewDnaInfo{type=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", title=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", jumpUrl=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", coverUrl=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", jumpMinappUrl=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", details=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.info.NewDnaInfo
  * JD-Core Version:    0.7.0.1
  */

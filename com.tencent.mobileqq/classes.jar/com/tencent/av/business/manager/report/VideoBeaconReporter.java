@@ -1,7 +1,7 @@
 package com.tencent.av.business.manager.report;
 
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
@@ -12,91 +12,119 @@ public class VideoBeaconReporter
     try
     {
       boolean bool = a("QuaVChatNewIntent", true, null);
-      QLog.d("VideoBeaconReporter", 1, "event_QuaVChatNewIntent, isSucceed[true],  ret[" + bool + "]");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("event_QuaVChatNewIntent, isSucceed[true],  ret[");
+      localStringBuilder.append(bool);
+      localStringBuilder.append("]");
+      QLog.d("VideoBeaconReporter", 1, localStringBuilder.toString());
       return;
     }
     catch (Throwable localThrowable)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("VideoBeaconReporter", 2, "event_QuaVChatNewIntent:", localThrowable);
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoBeaconReporter", 2, "event_QuaVChatNewIntent:", localThrowable);
+      }
     }
   }
   
   public static void a(int paramInt, long paramLong1, long paramLong2, String paramString)
   {
-    boolean bool2 = true;
-    QLog.d("VideoBeaconReporter", 1, "reportQuaOnCloseVideo_onCloseVideo :reason[" + paramInt + "], param0[" + paramLong1 + "], param1[" + paramLong2 + "], param2[" + paramString + "], ");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("reportQuaOnCloseVideo_onCloseVideo :reason[");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("], param0[");
+    ((StringBuilder)localObject).append(paramLong1);
+    ((StringBuilder)localObject).append("], param1[");
+    ((StringBuilder)localObject).append(paramLong2);
+    ((StringBuilder)localObject).append("], param2[");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("], ");
+    QLog.d("VideoBeaconReporter", 1, ((StringBuilder)localObject).toString());
+    boolean bool1 = false;
     for (;;)
     {
+      int i;
       try
       {
-        localHashMap = new HashMap();
-        l = paramLong1;
-        if (paramLong2 != 0L)
+        localObject = new HashMap();
+        if (paramLong2 == 0L) {
+          break label405;
+        }
+        i = (int)paramLong2 + 1000;
+        if (paramString == null) {
+          break label397;
+        }
+        try
         {
-          i = (int)paramLong2 + 1000;
+          paramLong2 = Long.parseLong(paramString);
+          paramLong1 = paramLong2;
+        }
+        catch (Exception paramString)
+        {
           paramInt = i;
-          l = paramLong1;
-          if (paramString == null) {}
+          paramLong2 = paramLong1;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("VideoBeaconReporter", 2, "parseLong error:", paramString);
+            paramInt = i;
+            paramLong2 = paramLong1;
+          }
+        }
+        paramString = new StringBuilder();
+        paramString.append("");
+        paramString.append(paramInt);
+        ((HashMap)localObject).put("reason", paramString.toString());
+        paramString = new StringBuilder();
+        paramString.append("");
+        paramString.append(paramLong2);
+        ((HashMap)localObject).put("error_code", paramString.toString());
+        if (paramInt != 1) {
+          break label410;
+        }
+        if ((paramLong2 == 1L) || (paramLong2 == 2L)) {
+          break label416;
         }
       }
       catch (Throwable paramString)
       {
-        HashMap localHashMap;
-        long l;
-        int i;
+        boolean bool2;
         if (!QLog.isColorLevel()) {
-          return;
+          continue;
         }
         QLog.d("VideoBeaconReporter", 2, "event_QuaOnCloseVideo:", paramString);
         return;
-        boolean bool1 = false;
-        continue;
-        if (l != 0L) {
-          continue;
-        }
-        bool1 = bool2;
-        continue;
       }
-      try
-      {
-        l = Long.parseLong(paramString);
-        paramInt = i;
-      }
-      catch (Exception paramString)
-      {
-        paramInt = i;
-        l = paramLong1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("VideoBeaconReporter", 2, "parseLong error:", paramString);
-        paramInt = i;
-        l = paramLong1;
-      }
-    }
-    localHashMap.put("reason", "" + paramInt);
-    localHashMap.put("error_code", "" + l);
-    if (paramInt == 1)
-    {
-      bool1 = bool2;
-      if (l != 1L)
-      {
-        bool1 = bool2;
-        if (l != 2L) {}
-      }
-      else
-      {
-        bool2 = a("QuaOnCloseVideo", bool1, localHashMap);
-        QLog.d("VideoBeaconReporter", 1, "event_QuaOnCloseVideo, isSucceed[" + bool1 + "], node_reason[" + (String)localHashMap.get("reason") + "], node_error_code[" + (String)localHashMap.get("error_code") + "],     ret[" + bool2 + "]");
-        return;
+      bool2 = a("QuaOnCloseVideo", bool1, (HashMap)localObject);
+      paramString = new StringBuilder();
+      paramString.append("event_QuaOnCloseVideo, isSucceed[");
+      paramString.append(bool1);
+      paramString.append("], node_reason[");
+      paramString.append((String)((HashMap)localObject).get("reason"));
+      paramString.append("], node_error_code[");
+      paramString.append((String)((HashMap)localObject).get("error_code"));
+      paramString.append("],     ret[");
+      paramString.append(bool2);
+      paramString.append("]");
+      QLog.d("VideoBeaconReporter", 1, paramString.toString());
+      return;
+      label397:
+      paramInt = i;
+      paramLong2 = paramLong1;
+      continue;
+      label405:
+      paramLong2 = paramLong1;
+      continue;
+      label410:
+      if (paramLong2 == 0L) {
+        label416:
+        bool1 = true;
       }
     }
   }
   
   public static void a(long paramLong)
   {
-    boolean bool1 = true;
+    boolean bool1 = false;
     for (;;)
     {
       long l;
@@ -105,13 +133,14 @@ public class VideoBeaconReporter
         new HashMap();
         l = -1L;
         if (paramLong <= 0L) {
-          break label107;
+          break label120;
         }
         l = System.currentTimeMillis() - paramLong;
       }
       catch (Throwable localThrowable)
       {
         boolean bool2;
+        StringBuilder localStringBuilder;
         if (!QLog.isColorLevel()) {
           continue;
         }
@@ -119,63 +148,72 @@ public class VideoBeaconReporter
         return;
       }
       bool2 = a("QuaInviteClose", bool1, null);
-      QLog.d("VideoBeaconReporter", 1, "event_QuaInviteClose, isSucceed[" + bool1 + "],  ret[" + bool2 + "]");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("event_QuaInviteClose, isSucceed[");
+      localStringBuilder.append(bool1);
+      localStringBuilder.append("],  ret[");
+      localStringBuilder.append(bool2);
+      localStringBuilder.append("]");
+      QLog.d("VideoBeaconReporter", 1, localStringBuilder.toString());
       return;
-      label107:
-      while (l <= 2000L)
-      {
-        bool1 = false;
-        break;
+      label120:
+      if (l > 2000L) {
+        bool1 = true;
       }
     }
   }
   
   public static void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    boolean bool = true;
-    for (;;)
+    try
     {
-      try
-      {
-        localHashMap = new HashMap();
-        if (!paramBoolean1) {
-          continue;
-        }
+      HashMap localHashMap = new HashMap();
+      if (paramBoolean1) {
         localHashMap.put("broadcast_created", "1");
-        if (!paramBoolean2) {
-          continue;
-        }
-        localHashMap.put("vchat_created", "1");
-        paramBoolean1 = bool;
+      } else {
+        localHashMap.put("broadcast_created", "0");
       }
-      catch (Throwable localThrowable)
+      if (paramBoolean2)
       {
-        HashMap localHashMap;
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.d("VideoBeaconReporter", 2, "event_QuaProcessWakeUp:", localThrowable);
-        return;
-        localThrowable.put("vchat_created", "0");
+        localHashMap.put("vchat_created", "1");
+        paramBoolean1 = true;
+      }
+      else
+      {
+        localHashMap.put("vchat_created", "0");
         paramBoolean1 = false;
-        continue;
       }
       paramBoolean2 = a("QuaProcessWakeUp", paramBoolean1, localHashMap);
-      QLog.d("VideoBeaconReporter", 1, "event_QuaProcessWakeUp, isSucceed[" + paramBoolean1 + "], node_broadcast_created[" + (String)localHashMap.get("broadcast_created") + "], node_vchat_created[" + (String)localHashMap.get("vchat_created") + "],     ret[" + paramBoolean2 + "]");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("event_QuaProcessWakeUp, isSucceed[");
+      localStringBuilder.append(paramBoolean1);
+      localStringBuilder.append("], node_broadcast_created[");
+      localStringBuilder.append((String)localHashMap.get("broadcast_created"));
+      localStringBuilder.append("], node_vchat_created[");
+      localStringBuilder.append((String)localHashMap.get("vchat_created"));
+      localStringBuilder.append("],     ret[");
+      localStringBuilder.append(paramBoolean2);
+      localStringBuilder.append("]");
+      QLog.d("VideoBeaconReporter", 1, localStringBuilder.toString());
       return;
-      localHashMap.put("broadcast_created", "0");
+    }
+    catch (Throwable localThrowable)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoBeaconReporter", 2, "event_QuaProcessWakeUp:", localThrowable);
+      }
     }
   }
   
   private static boolean a(String paramString, boolean paramBoolean, HashMap<String, String> paramHashMap)
   {
-    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(null, paramString, paramBoolean, 0L, 0L, paramHashMap, null);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, paramString, paramBoolean, 0L, 0L, paramHashMap, null);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.report.VideoBeaconReporter
  * JD-Core Version:    0.7.0.1
  */

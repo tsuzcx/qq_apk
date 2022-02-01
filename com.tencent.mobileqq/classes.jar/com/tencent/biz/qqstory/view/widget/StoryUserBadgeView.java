@@ -76,39 +76,41 @@ public class StoryUserBadgeView
       return;
     }
     String str = localQQUserUIItem.getUserIconUrl();
-    if ((!TextUtils.isEmpty(str)) || (localQQUserUIItem.isVipButNoFriend()))
+    if ((TextUtils.isEmpty(str)) && (!localQQUserUIItem.isVipButNoFriend()))
     {
-      if (StoryDepends.QimUtil.a())
+      if (this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager.a(localQQUserUIItem.qq))
       {
-        if (localQQUserUIItem.isVipButNoFriend()) {}
-        for (int i = 10000;; i = 10001)
-        {
-          this.jdField_a_of_type_Int = i;
-          super.setVisibility(0);
-          super.setOnClickListener(this);
-          if (TextUtils.isEmpty(str)) {
-            break;
-          }
-          UIUtils.a(this, str, 50, 50, null, null);
-          return;
-        }
-        super.setImageResource(2130847187);
+        this.jdField_a_of_type_Int = 10002;
+        super.setVisibility(0);
+        super.setOnClickListener(this);
+        super.setImageResource(2130847060);
         return;
       }
+      this.jdField_a_of_type_Int = 10003;
       super.setVisibility(8);
+      super.setOnClickListener(null);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager.a(localQQUserUIItem.qq))
+    if (StoryDepends.QimUtil.a())
     {
-      this.jdField_a_of_type_Int = 10002;
+      int i;
+      if (localQQUserUIItem.isVipButNoFriend()) {
+        i = 10000;
+      } else {
+        i = 10001;
+      }
+      this.jdField_a_of_type_Int = i;
       super.setVisibility(0);
       super.setOnClickListener(this);
-      super.setImageResource(2130847185);
+      if (!TextUtils.isEmpty(str))
+      {
+        UIUtils.a(this, str, 50, 50, null, null);
+        return;
+      }
+      super.setImageResource(2130847062);
       return;
     }
-    this.jdField_a_of_type_Int = 10003;
     super.setVisibility(8);
-    super.setOnClickListener(null);
   }
   
   public String a()
@@ -124,13 +126,14 @@ public class StoryUserBadgeView
       SLog.e("Q.qqstory.StoryUserBadge", "reportExposure the null user item");
       return;
     }
-    if (((QQUserUIItem)localObject).isMe()) {}
-    for (String str = "1";; str = "2")
-    {
-      localObject = ((QQUserUIItem)localObject).getUserIconUrlKey();
-      StoryReportor.a("home_page", "exp_medal", this.b, 0, new String[] { str, localObject });
-      return;
+    String str;
+    if (((QQUserUIItem)localObject).isMe()) {
+      str = "1";
+    } else {
+      str = "2";
     }
+    localObject = ((QQUserUIItem)localObject).getUserIconUrlKey();
+    StoryReportor.a("home_page", "exp_medal", this.b, 0, new String[] { str, localObject });
   }
   
   protected void a(@NonNull String paramString)
@@ -143,7 +146,7 @@ public class StoryUserBadgeView
     return this.jdField_a_of_type_Boolean;
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     this.jdField_a_of_type_Boolean = true;
@@ -153,49 +156,59 @@ public class StoryUserBadgeView
   public void onClick(View paramView)
   {
     Object localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager.b(this.jdField_a_of_type_JavaLangString);
-    if (localObject2 == null) {
-      SLog.e("Q.qqstory.StoryUserBadge", this.jdField_a_of_type_JavaLangString + ",userItem is null ! plz fix it!");
-    }
-    for (;;)
+    Object localObject1;
+    if (localObject2 == null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((this.jdField_a_of_type_Int != 10000) && (this.jdField_a_of_type_Int != 10001)) {
-        break label186;
-      }
-      if (!TextUtils.isEmpty(((QQUserUIItem)localObject2).getUserIconJumpURL())) {
-        break;
-      }
-      SLog.e("Q.qqstory.StoryUserBadge", ((QQUserUIItem)localObject2).getUnionId() + ",icon jump url is null!!");
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(",userItem is null ! plz fix it!");
+      SLog.e("Q.qqstory.StoryUserBadge", ((StringBuilder)localObject1).toString());
     }
-    Object localObject1 = new Intent(getContext(), QQBrowserActivity.class);
-    ((Intent)localObject1).putExtra("url", ((QQUserUIItem)localObject2).getUserIconJumpURL());
-    getContext().startActivity((Intent)localObject1);
-    label144:
-    if (((QQUserUIItem)localObject2).isMe()) {}
-    for (localObject1 = "1";; localObject1 = "2")
+    else
     {
+      int i = this.jdField_a_of_type_Int;
+      if ((i != 10000) && (i != 10001))
+      {
+        if (i == 10002)
+        {
+          localObject1 = new Intent(getContext(), SpecailCareListActivity.class);
+          getContext().startActivity((Intent)localObject1);
+        }
+      }
+      else
+      {
+        if (TextUtils.isEmpty(((QQUserUIItem)localObject2).getUserIconJumpURL()))
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(((QQUserUIItem)localObject2).getUnionId());
+          ((StringBuilder)localObject1).append(",icon jump url is null!!");
+          SLog.e("Q.qqstory.StoryUserBadge", ((StringBuilder)localObject1).toString());
+          break label239;
+        }
+        localObject1 = new Intent(getContext(), QQBrowserActivity.class);
+        ((Intent)localObject1).putExtra("url", ((QQUserUIItem)localObject2).getUserIconJumpURL());
+        getContext().startActivity((Intent)localObject1);
+      }
+      if (((QQUserUIItem)localObject2).isMe()) {
+        localObject1 = "1";
+      } else {
+        localObject1 = "2";
+      }
       localObject2 = ((QQUserUIItem)localObject2).getIconJumpUrlKey();
       StoryReportor.a("home_page", "clk_medal", this.b, 0, new String[] { localObject1, localObject2 });
-      break;
-      label186:
-      if (this.jdField_a_of_type_Int != 10002) {
-        break label144;
-      }
-      localObject1 = new Intent(getContext(), SpecailCareListActivity.class);
-      getContext().startActivity((Intent)localObject1);
-      break label144;
     }
+    label239:
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.jdField_a_of_type_Boolean = false;
     StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView$UserIconUpdateReceiver);
   }
   
-  public void onFinishInflate()
+  protected void onFinishInflate()
   {
     super.onFinishInflate();
   }
@@ -204,7 +217,7 @@ public class StoryUserBadgeView
   {
     if (TextUtils.isEmpty(paramString))
     {
-      AssertUtils.a(false, "It is not allow to set the null union id!!!!!!");
+      AssertUtils.assertTrue(false, "It is not allow to set the null union id!!!!!!");
       return;
     }
     this.b = paramInt;
@@ -214,7 +227,7 @@ public class StoryUserBadgeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.StoryUserBadgeView
  * JD-Core Version:    0.7.0.1
  */

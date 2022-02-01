@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
+import addcontacts.AccountSearchPb.record;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
 
 public class SearchBaseFragment$ItemViewHolder
 {
   public int a;
+  public AccountSearchPb.record a;
   public ImageView a;
   public TextView a;
   public RichStatus a;
-  public AccountSearchPb.record a;
   public String a;
   public boolean a = true;
   public int b;
@@ -23,7 +23,7 @@ public class SearchBaseFragment$ItemViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment.ItemViewHolder
  * JD-Core Version:    0.7.0.1
  */

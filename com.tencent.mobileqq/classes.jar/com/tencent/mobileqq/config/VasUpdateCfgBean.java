@@ -29,12 +29,15 @@ public class VasUpdateCfgBean
   @NonNull
   public String toString()
   {
-    return "switch = " + this.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("switch = ");
+    localStringBuilder.append(this.a);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.VasUpdateCfgBean
  * JD-Core Version:    0.7.0.1
  */

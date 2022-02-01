@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,30 +58,36 @@ public final class stGetPersonalFeedListRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.feeds != null) {
-      paramJceOutputStream.write(this.feeds, 0);
+    Object localObject = this.feeds;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 1);
+    localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.is_finished, 2);
-    if (this.config != null) {
-      paramJceOutputStream.write(this.config, 3);
+    localObject = this.config;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.traceId != null) {
-      paramJceOutputStream.write(this.traceId, 4);
+    localObject = this.traceId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.map_ext != null) {
-      paramJceOutputStream.write(this.map_ext, 5);
+    localObject = this.map_ext;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 5);
     }
-    if (this.contextFeedStatus != null) {
-      paramJceOutputStream.write(this.contextFeedStatus, 6);
+    localObject = this.contextFeedStatus;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stGetPersonalFeedListRsp
  * JD-Core Version:    0.7.0.1
  */

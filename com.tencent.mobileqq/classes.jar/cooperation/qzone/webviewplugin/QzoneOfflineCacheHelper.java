@@ -27,90 +27,99 @@ public class QzoneOfflineCacheHelper
   
   public static boolean checkFileIfExist(String paramString)
   {
-    if (!URLUtil.isNetworkUrl(paramString)) {}
-    String str;
-    do
-    {
+    if (!URLUtil.isNetworkUrl(paramString)) {
       return false;
-      str = urlKey2FileName(paramString, true);
-      str = getFileCache().getPath(str);
-      if (new File(str).exists())
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("QzoneOfflineCacheHelper", 2, String.format("check result file exist,url:%s,path:%s", new Object[] { paramString, str }));
-        }
-        return true;
+    }
+    String str = urlKey2FileName(paramString, true);
+    str = getFileCache().getPath(str);
+    if (new File(str).exists())
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("QzoneOfflineCacheHelper", 2, String.format("check result file exist,url:%s,path:%s", new Object[] { paramString, str }));
       }
-    } while (!QLog.isDevelopLevel());
-    QLog.i("QzoneOfflineCacheHelper", 2, String.format("check result file not exist,url:%s,path:%s", new Object[] { paramString, str }));
+      return true;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("QzoneOfflineCacheHelper", 2, String.format("check result file not exist,url:%s,path:%s", new Object[] { paramString, str }));
+    }
     return false;
   }
   
   public static File downLoadFileIfNeeded(AppInterface paramAppInterface, String paramString1, QzoneOfflineCacheHelperCallBack paramQzoneOfflineCacheHelperCallBack, boolean paramBoolean, String paramString2)
   {
-    File localFile1;
-    for (;;)
+    Object localObject1;
+    try
     {
-      try
-      {
-        if (!URLUtil.isNetworkUrl(paramString1)) {
-          return null;
-        }
-        str2 = urlKey2FileName(paramString1, true);
-        if (!paramBoolean)
-        {
-          str1 = CacheManager.getQzoneWidgetAICacheService().getPath("dressup");
-          localFile1 = new File(str1);
-          if (!localFile1.exists()) {
-            localFile1.mkdirs();
-          }
-          str2 = str1 + File.separator + str2;
-          localFile1 = new File(str2);
-          File localFile2 = new File(str2 + ".headers");
-          if ((!localFile1.exists()) || (localFile1.length() <= 0L) || (!localFile2.exists()) || (localFile2.length() <= 0L)) {
-            break label253;
-          }
-          if (paramBoolean) {
-            break label245;
-          }
-          updateLruFileInNewThread(str1);
-          if (QLog.isColorLevel()) {
-            QLog.i("QzoneOfflineCacheHelper", 2, String.format("file exist,update lru,url:%s ,path:%s", new Object[] { paramString1, str2 }));
-          }
-          if (paramQzoneOfflineCacheHelperCallBack == null) {
-            break;
-          }
-          paramQzoneOfflineCacheHelperCallBack.onResultOfNativeRequest(true, str2);
-          return localFile1;
-        }
-      }
-      catch (Throwable paramAppInterface)
-      {
-        QLog.e("QzoneOfflineCacheHelper", 1, paramAppInterface, new Object[0]);
+      if (!URLUtil.isNetworkUrl(paramString1)) {
         return null;
       }
-      String str2 = getFileCache().getPath(str2);
-      String str1 = "";
-      continue;
-      label245:
-      updateLruFileInNewThread(str2);
-      continue;
-      label253:
+      String str1 = urlKey2FileName(paramString1, true);
+      String str2 = "";
+      if (!paramBoolean)
+      {
+        str2 = CacheManager.getQzoneWidgetAICacheService().getPath("dressup");
+        localObject1 = new File(str2);
+        if (!((File)localObject1).exists()) {
+          ((File)localObject1).mkdirs();
+        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(str2);
+        ((StringBuilder)localObject1).append(File.separator);
+        ((StringBuilder)localObject1).append(str1);
+        str1 = ((StringBuilder)localObject1).toString();
+      }
+      else
+      {
+        str1 = getFileCache().getPath(str1);
+      }
+      localObject1 = new File(str1);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(str1);
+      ((StringBuilder)localObject2).append(".headers");
+      localObject2 = new File(((StringBuilder)localObject2).toString());
+      if ((((File)localObject1).exists()) && (((File)localObject1).length() > 0L) && (((File)localObject2).exists()) && (((File)localObject2).length() > 0L))
+      {
+        if (!paramBoolean) {
+          updateLruFileInNewThread(str2);
+        } else {
+          updateLruFileInNewThread(str1);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("QzoneOfflineCacheHelper", 2, String.format("file exist,update lru,url:%s ,path:%s", new Object[] { paramString1, str1 }));
+        }
+        if (paramQzoneOfflineCacheHelperCallBack == null) {
+          break label339;
+        }
+        paramQzoneOfflineCacheHelperCallBack.onResultOfNativeRequest(true, str1);
+        return localObject1;
+      }
       if (paramBoolean)
       {
         int i = getTBSCoreVersion();
-        if (!TextUtils.isEmpty(paramString2)) {
-          downloadAfterGetDomainAndTBSVersion(paramAppInterface, paramString1, str2, getProtocolAndDomainOfCurrentWebPage(paramString2), i, paramQzoneOfflineCacheHelperCallBack);
-        } else if (QLog.isDevelopLevel()) {
+        if (!TextUtils.isEmpty(paramString2))
+        {
+          downloadAfterGetDomainAndTBSVersion(paramAppInterface, paramString1, str1, getProtocolAndDomainOfCurrentWebPage(paramString2), i, paramQzoneOfflineCacheHelperCallBack);
+          return null;
+        }
+        if (QLog.isDevelopLevel())
+        {
           QLog.e("QzoneOfflineCacheHelper", 1, "offline webview Url is empty!");
+          return null;
         }
       }
       else
       {
-        downloadAfterGetDomainAndTBSVersion(paramAppInterface, paramString1, str2, "", 0, paramQzoneOfflineCacheHelperCallBack);
+        downloadAfterGetDomainAndTBSVersion(paramAppInterface, paramString1, str1, "", 0, paramQzoneOfflineCacheHelperCallBack);
+        return null;
       }
     }
-    return localFile1;
+    catch (Throwable paramAppInterface)
+    {
+      QLog.e("QzoneOfflineCacheHelper", 1, paramAppInterface, new Object[0]);
+    }
+    return null;
+    label339:
+    return localObject1;
   }
   
   public static void downloadAfterGetDomainAndTBSVersion(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, QzoneOfflineCacheHelperCallBack paramQzoneOfflineCacheHelperCallBack)
@@ -123,33 +132,27 @@ public class QzoneOfflineCacheHelper
         {
           ArrayList localArrayList = (ArrayList)downloadindUrlMap.get(paramString1);
           if (localArrayList != null) {
-            break label133;
+            break label136;
           }
-          i = 0;
           localArrayList = new ArrayList();
+          i = 0;
           if (!localArrayList.contains(paramQzoneOfflineCacheHelperCallBack))
           {
-            if (paramQzoneOfflineCacheHelperCallBack != null)
-            {
-              localArrayList.add(paramQzoneOfflineCacheHelperCallBack);
-              downloadindUrlMap.put(paramString1, localArrayList);
+            if (paramQzoneOfflineCacheHelperCallBack == null) {
+              paramQzoneOfflineCacheHelperCallBack = new Object();
             }
+            localArrayList.add(paramQzoneOfflineCacheHelperCallBack);
+            downloadindUrlMap.put(paramString1, localArrayList);
           }
-          else
-          {
-            if (i == 0) {
-              break label103;
-            }
+          if (i != 0) {
             return;
           }
-          paramQzoneOfflineCacheHelperCallBack = new Object();
         }
+        paramAppInterface = new QzoneOfflineCacheHelper.2(paramString1, paramString2, paramAppInterface, paramString3, paramInt);
+        QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").postDelayed(paramAppInterface, 10000L);
+        return;
       }
-      label103:
-      paramAppInterface = new QzoneOfflineCacheHelper.2(paramString1, paramString2, paramAppInterface, paramString3, paramInt);
-      QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").postDelayed(paramAppInterface, 10000L);
-      return;
-      label133:
+      label136:
       int i = 1;
     }
   }
@@ -170,7 +173,11 @@ public class QzoneOfflineCacheHelper
     try
     {
       paramString = new URL(paramString);
-      paramString = paramString.getProtocol() + "://" + paramString.getHost();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString.getProtocol());
+      localStringBuilder.append("://");
+      localStringBuilder.append(paramString.getHost());
+      paramString = localStringBuilder.toString();
       return paramString;
     }
     catch (Throwable paramString)
@@ -182,24 +189,31 @@ public class QzoneOfflineCacheHelper
   
   public static long getSmallGameLastCacheTime(long paramLong)
   {
-    long l1 = 0L;
-    if (paramLong <= 0L) {}
-    long l2;
-    do
+    if (paramLong <= 0L) {
+      return 0L;
+    }
+    long l = LocalMultiProcConfig.getLong4Uin("key_qzone_preload_small_game_finish_", 0L, paramLong);
+    if (QLog.isDevelopLevel())
     {
-      return l1;
-      l2 = LocalMultiProcConfig.getLong4Uin("key_qzone_preload_small_game_finish_", 0L, paramLong);
-      l1 = l2;
-    } while (!QLog.isDevelopLevel());
-    QLog.i("QzoneOfflineCacheHelper", 2, "uin=" + paramLong + ",getSmallGameLastCacheTime cacheTime=" + l2);
-    return l2;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("uin=");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(",getSmallGameLastCacheTime cacheTime=");
+      localStringBuilder.append(l);
+      QLog.i("QzoneOfflineCacheHelper", 2, localStringBuilder.toString());
+    }
+    return l;
   }
   
   private static int getTBSCoreVersion()
   {
     int i = WebView.getTbsCoreVersion(BaseApplicationImpl.getContext());
-    if (QLog.isColorLevel()) {
-      QLog.i("QzoneOfflineCacheHelper", 2, "tbsCoreVersion= " + i);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("tbsCoreVersion= ");
+      localStringBuilder.append(i);
+      QLog.i("QzoneOfflineCacheHelper", 2, localStringBuilder.toString());
     }
     return i;
   }
@@ -209,17 +223,26 @@ public class QzoneOfflineCacheHelper
     if (paramLong1 <= 0L) {}
     try
     {
-      QLog.w("QzoneOfflineCacheHelper", 1, "updataSmallGameLastCacheFinishTime uin is invalid,uin=" + paramLong1);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updataSmallGameLastCacheFinishTime uin is invalid,uin=");
+      localStringBuilder.append(paramLong1);
+      QLog.w("QzoneOfflineCacheHelper", 1, localStringBuilder.toString());
       return;
     }
     catch (Exception localException)
     {
+      StringBuilder localStringBuilder;
       QLog.w("QzoneOfflineCacheHelper", 1, "updataSmallGameLastCacheFinishTime error.", localException);
     }
     LocalMultiProcConfig.putLong4Uin("key_qzone_preload_small_game_finish_", paramLong2, paramLong1);
     if (QLog.isDevelopLevel())
     {
-      QLog.i("QzoneOfflineCacheHelper", 2, "uin=" + paramLong1 + ",updataSmallGameLastCacheFinishTime timestamp=" + paramLong2);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("uin=");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append(",updataSmallGameLastCacheFinishTime timestamp=");
+      localStringBuilder.append(paramLong2);
+      QLog.i("QzoneOfflineCacheHelper", 2, localStringBuilder.toString());
       return;
     }
   }
@@ -231,21 +254,19 @@ public class QzoneOfflineCacheHelper
   
   private static String urlKey2FileName(String paramString, boolean paramBoolean)
   {
-    String str;
     if (paramBoolean) {
-      str = String.valueOf(paramString.hashCode());
+      return String.valueOf(paramString.hashCode());
     }
-    do
-    {
-      return str;
-      str = paramString;
-    } while (!paramString.startsWith("file://"));
-    return paramString.substring("file://".length(), paramString.length());
+    String str = paramString;
+    if (paramString.startsWith("file://")) {
+      str = paramString.substring(7, paramString.length());
+    }
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneOfflineCacheHelper
  * JD-Core Version:    0.7.0.1
  */

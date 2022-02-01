@@ -45,18 +45,15 @@ public class StorageJsPlugin
   {
     try
     {
-      Object localObject = new JSONObject(paramRequestEvent.jsonParams);
-      localObject = URLUtil.encodeUrl(((JSONObject)localObject).optString("key"));
-      return execStorageTask(paramRequestEvent.event, new StorageJsPlugin.7(this, (String)localObject, paramRequestEvent));
+      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-        JSONObject localJSONObject = new JSONObject();
-      }
+      localThrowable.printStackTrace();
+      localObject = new JSONObject();
     }
+    Object localObject = URLUtil.encodeUrl(((JSONObject)localObject).optString("key"));
+    return execStorageTask(paramRequestEvent.event, new StorageJsPlugin.7(this, (String)localObject, paramRequestEvent));
   }
   
   @JsEvent({"getStorage", "getStorageSync"})
@@ -64,18 +61,15 @@ public class StorageJsPlugin
   {
     try
     {
-      Object localObject = new JSONObject(paramRequestEvent.jsonParams);
-      localObject = URLUtil.encodeUrl(((JSONObject)localObject).optString("key"));
-      return execStorageTask(paramRequestEvent.event, new StorageJsPlugin.3(this, (String)localObject, paramRequestEvent));
+      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-        JSONObject localJSONObject = new JSONObject();
-      }
+      localThrowable.printStackTrace();
+      localObject = new JSONObject();
     }
+    Object localObject = URLUtil.encodeUrl(((JSONObject)localObject).optString("key"));
+    return execStorageTask(paramRequestEvent.event, new StorageJsPlugin.3(this, (String)localObject, paramRequestEvent));
   }
   
   @JsEvent({"getStorageInfo", "getStorageInfoSync"})
@@ -89,18 +83,15 @@ public class StorageJsPlugin
   {
     try
     {
-      Object localObject = new JSONObject(paramRequestEvent.jsonParams);
-      localObject = URLUtil.encodeUrl(((JSONObject)localObject).optString("key"));
-      return execStorageTask(paramRequestEvent.event, new StorageJsPlugin.5(this, (String)localObject, paramRequestEvent));
+      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-        JSONObject localJSONObject = new JSONObject();
-      }
+      localThrowable.printStackTrace();
+      localObject = new JSONObject();
     }
+    Object localObject = URLUtil.encodeUrl(((JSONObject)localObject).optString("key"));
+    return execStorageTask(paramRequestEvent.event, new StorageJsPlugin.5(this, (String)localObject, paramRequestEvent));
   }
   
   @JsEvent({"setGlobalStorage"})
@@ -108,19 +99,16 @@ public class StorageJsPlugin
   {
     try
     {
-      Object localObject = new JSONObject(paramRequestEvent.jsonParams);
-      String str = URLUtil.encodeUrl(((JSONObject)localObject).optString("key"));
-      localObject = ((JSONObject)localObject).optString("data");
-      return execStorageTask(paramRequestEvent.event, new StorageJsPlugin.8(this, str, (String)localObject, paramRequestEvent));
+      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-        JSONObject localJSONObject = new JSONObject();
-      }
+      localThrowable.printStackTrace();
+      localObject = new JSONObject();
     }
+    String str = URLUtil.encodeUrl(((JSONObject)localObject).optString("key"));
+    Object localObject = ((JSONObject)localObject).optString("data");
+    return execStorageTask(paramRequestEvent.event, new StorageJsPlugin.8(this, str, (String)localObject, paramRequestEvent));
   }
   
   @JsEvent({"setStorage", "setStorageSync"})
@@ -159,20 +147,20 @@ public class StorageJsPlugin
   {
     super.onCreate(paramIMiniAppContext);
     this.mSharedPref = this.mContext.getSharedPreferences("miniapp", 4);
-    if (LoginManager.getInstance().getAccount() != null) {}
-    for (paramIMiniAppContext = LoginManager.getInstance().getAccount();; paramIMiniAppContext = "")
-    {
-      String str = this.mApkgInfo.appId;
-      this.mStorage = Storage.open(this.mContext, paramIMiniAppContext, str);
-      return;
+    if (LoginManager.getInstance().getAccount() != null) {
+      paramIMiniAppContext = LoginManager.getInstance().getAccount();
+    } else {
+      paramIMiniAppContext = "";
     }
+    String str = this.mApkgInfo.appId;
+    this.mStorage = Storage.open(this.mContext, paramIMiniAppContext, str);
   }
   
   public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.StorageJsPlugin
  * JD-Core Version:    0.7.0.1
  */

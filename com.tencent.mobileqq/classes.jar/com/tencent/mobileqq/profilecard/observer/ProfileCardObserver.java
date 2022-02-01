@@ -21,25 +21,26 @@ public class ProfileCardObserver
     switch (paramInt)
     {
     default: 
-    case 1001: 
-    case 1002: 
-      do
-      {
-        return;
-        onGetProfileCard(paramBoolean, paramObject);
-        return;
-      } while (!paramBoolean);
-      paramObject = (Card)paramObject;
-      onGetProfileDetail(paramBoolean, paramObject.uin, paramObject);
+    case 1003: 
+      paramObject = (Object[])paramObject;
+      onSetProfileDetail(paramBoolean, ((Integer)paramObject[0]).intValue(), (Card)paramObject[1]);
       return;
+    case 1002: 
+      if (paramBoolean)
+      {
+        paramObject = (Card)paramObject;
+        onGetProfileDetail(paramBoolean, paramObject.uin, paramObject);
+        return;
+      }
+      break;
+    case 1001: 
+      onGetProfileCard(paramBoolean, paramObject);
     }
-    paramObject = (Object[])paramObject;
-    onSetProfileDetail(paramBoolean, ((Integer)paramObject[0]).intValue(), (Card)paramObject[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.observer.ProfileCardObserver
  * JD-Core Version:    0.7.0.1
  */

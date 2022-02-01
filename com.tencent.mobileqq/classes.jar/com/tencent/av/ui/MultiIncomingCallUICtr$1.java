@@ -17,42 +17,43 @@ class MultiIncomingCallUICtr$1
   {
     paramContext = paramIntent.getAction();
     long l = SeqUtil.a(paramIntent);
-    if (paramContext.equals("tencent.av.EXIT_QZONE_LIVE_RSP_ACTION")) {
-      if (this.a.b == 1) {
+    if (paramContext.equals("tencent.av.EXIT_QZONE_LIVE_RSP_ACTION"))
+    {
+      if (this.a.b == 1)
+      {
         this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(new MultiIncomingCallUICtr.1.1(this), 500L);
+        return;
+      }
+      paramContext = SessionMgr.a().a();
+      this.a.a(l, paramContext);
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(67), Long.valueOf(this.a.jdField_a_of_type_Long), Integer.valueOf(3) });
+      if (this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar != null) {
+        this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.a();
       }
     }
-    do
+    else
     {
-      do
+      if (paramContext.equals("tencent.video.invite.multiaccept"))
       {
-        do
-        {
-          return;
-          paramContext = SessionMgr.a().a();
-          this.a.a(l, paramContext);
-          this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(67), Long.valueOf(this.a.jdField_a_of_type_Long), Integer.valueOf(3) });
-        } while (this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar == null);
-        this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.a();
+        paramContext = SessionMgr.a().a();
+        this.a.a(l, paramContext);
         return;
-        if (paramContext.equals("tencent.video.invite.multiaccept"))
-        {
-          paramContext = SessionMgr.a().a();
-          this.a.a(l, paramContext);
-          return;
+      }
+      if (paramContext.equals("tencent.video.invite.multirefuse"))
+      {
+        if (!this.a.b(0)) {
+          this.a.a(l, true, null);
         }
-        if (!paramContext.equals("tencent.video.invite.multirefuse")) {
-          break;
-        }
-      } while (this.a.b(0));
-      this.a.a(l, true, null);
-      return;
-    } while (!paramContext.equals("tencent.video.destroyService"));
+      }
+      else {
+        paramContext.equals("tencent.video.destroyService");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiIncomingCallUICtr.1
  * JD-Core Version:    0.7.0.1
  */

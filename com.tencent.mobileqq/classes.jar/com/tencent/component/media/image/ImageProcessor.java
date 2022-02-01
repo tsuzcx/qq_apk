@@ -20,18 +20,16 @@ public abstract class ImageProcessor
   final Drawable doProcess(Drawable paramDrawable)
   {
     if (paramDrawable == null) {
-      paramDrawable = null;
+      return null;
     }
-    Drawable localDrawable;
-    do
-    {
-      return paramDrawable;
-      localDrawable = process(paramDrawable);
-      if ((getType() == 5) && (localDrawable == null)) {
-        return null;
-      }
-    } while (localDrawable == null);
-    return localDrawable;
+    Drawable localDrawable = process(paramDrawable);
+    if ((getType() == 5) && (localDrawable == null)) {
+      return null;
+    }
+    if (localDrawable != null) {
+      paramDrawable = localDrawable;
+    }
+    return paramDrawable;
   }
   
   public int getType()
@@ -54,7 +52,7 @@ public abstract class ImageProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.ImageProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ public final class e_pull_weishi_mask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.e_pull_weishi_mask
  * JD-Core Version:    0.7.0.1
  */

@@ -53,7 +53,7 @@ public class VideoControllerView
   protected View.OnClickListener mFullscreenListener = new VideoControllerView.4(this);
   protected Handler mHandler;
   private View.OnClickListener mPauseListener = new VideoControllerView.3(this);
-  public VideoControllerView.MediaPlayerControl mPlayer;
+  protected VideoControllerView.MediaPlayerControl mPlayer;
   protected ProgressBar mProgress;
   protected View mRoot;
   private SeekBar.OnSeekBarChangeListener mSeekBarChangeListener;
@@ -65,7 +65,7 @@ public class VideoControllerView
   public ImageButton mVideoDanmakuSwitch;
   protected int mVideoDuration;
   public ImageButton mVideoOrigin;
-  public PlayerResources playerResources;
+  protected PlayerResources playerResources;
   private int seekBarrier = -1;
   
   public VideoControllerView(Context paramContext, AttributeSet paramAttributeSet, PlayerResources paramPlayerResources)
@@ -94,8 +94,9 @@ public class VideoControllerView
   
   private void destroyHandler()
   {
-    if (this.mHandler != null) {
-      this.mHandler.removeCallbacksAndMessages(null);
+    Handler localHandler = this.mHandler;
+    if (localHandler != null) {
+      localHandler.removeCallbacksAndMessages(null);
     }
   }
   
@@ -111,24 +112,26 @@ public class VideoControllerView
     }
     catch (Exception localException)
     {
-      if (Build.DEVICE.equals("mx2")) {
-        return true;
-      }
-      if ((Build.DEVICE.equals("mx")) || (Build.DEVICE.equals("m9"))) {
-        return false;
-      }
+      label44:
+      break label44;
     }
+    if (Build.DEVICE.equals("mx2")) {
+      return true;
+    }
+    if ((!Build.DEVICE.equals("mx")) && (Build.DEVICE.equals("m9"))) {}
     return false;
   }
   
   private void initHandler()
   {
-    if (this.mHandler != null) {
-      this.mHandler.removeCallbacksAndMessages(null);
+    Object localObject = this.mHandler;
+    if (localObject != null) {
+      ((Handler)localObject).removeCallbacksAndMessages(null);
     }
-    if (sVideoControllerViewHandlerThread != null)
+    localObject = sVideoControllerViewHandlerThread;
+    if (localObject != null)
     {
-      this.mHandler = new VideoControllerView.MessageHandler(sVideoControllerViewHandlerThread.getLooper(), this);
+      this.mHandler = new VideoControllerView.MessageHandler(((HandlerThread)localObject).getLooper(), this);
       return;
     }
     this.mHandler = new VideoControllerView.MessageHandler(Looper.getMainLooper(), this);
@@ -141,7 +144,8 @@ public class VideoControllerView
   
   private void maybeInitHandlerThread()
   {
-    if ((sVideoControllerViewHandlerThread == null) || (!sVideoControllerViewHandlerThread.isAlive()))
+    HandlerThread localHandlerThread = sVideoControllerViewHandlerThread;
+    if ((localHandlerThread == null) || (!localHandlerThread.isAlive()))
     {
       sVideoControllerViewHandlerThread = new HandlerThread("VideoControllerViewHandlerThread", -2);
       sVideoControllerViewHandlerThread.start();
@@ -155,29 +159,30 @@ public class VideoControllerView
   
   protected void disableUnsupportedButtons()
   {
-    if (this.mPlayer == null) {}
-    for (;;)
-    {
+    VideoControllerView.MediaPlayerControl localMediaPlayerControl = this.mPlayer;
+    if (localMediaPlayerControl == null) {
       return;
-      try
-      {
-        if ((this.mFullscreenButton != null) && (!this.mPlayer.enableToggleFullScreen())) {
-          this.mFullscreenButton.setVisibility(8);
-        }
-        if ((this.mSwitchLandscapeButton != null) && (!this.mPlayer.enableToggleLandscape()))
-        {
-          this.mSwitchLandscapeButton.setVisibility(8);
-          return;
-        }
-      }
-      catch (IncompatibleClassChangeError localIncompatibleClassChangeError) {}
     }
+    try
+    {
+      if ((this.mFullscreenButton != null) && (!localMediaPlayerControl.enableToggleFullScreen())) {
+        this.mFullscreenButton.setVisibility(8);
+      }
+      if ((this.mSwitchLandscapeButton != null) && (!this.mPlayer.enableToggleLandscape())) {
+        this.mSwitchLandscapeButton.setVisibility(8);
+      }
+      return;
+    }
+    catch (IncompatibleClassChangeError localIncompatibleClassChangeError) {}
   }
   
   public void doPauseResume()
   {
-    if (this.mPlayer == null) {}
-    while (!this.mPlayer.canPausePlay()) {
+    VideoControllerView.MediaPlayerControl localMediaPlayerControl = this.mPlayer;
+    if (localMediaPlayerControl == null) {
+      return;
+    }
+    if (!localMediaPlayerControl.canPausePlay()) {
       return;
     }
     if (this.mPlayer.isPlayComplete())
@@ -185,33 +190,34 @@ public class VideoControllerView
       this.mPlayer.seekTo(0);
       this.mPlayer.start();
     }
-    for (;;)
+    else if (this.mPlayer.isPlaying())
     {
-      updatePausePlay();
-      show();
-      return;
-      if (this.mPlayer.isPlaying()) {
-        this.mPlayer.pause();
-      } else {
-        this.mPlayer.start();
-      }
+      this.mPlayer.pause();
     }
+    else
+    {
+      this.mPlayer.start();
+    }
+    updatePausePlay();
+    show();
   }
   
   public void doToggleFullscreen()
   {
-    if (this.mPlayer == null) {
+    VideoControllerView.MediaPlayerControl localMediaPlayerControl = this.mPlayer;
+    if (localMediaPlayerControl == null) {
       return;
     }
-    this.mPlayer.toggleFullScreen();
+    localMediaPlayerControl.toggleFullScreen();
   }
   
-  public void doToggleLandscape()
+  protected void doToggleLandscape()
   {
-    if (this.mPlayer == null) {
+    VideoControllerView.MediaPlayerControl localMediaPlayerControl = this.mPlayer;
+    if (localMediaPlayerControl == null) {
       return;
     }
-    this.mPlayer.toggleLandscape();
+    localMediaPlayerControl.toggleLandscape();
   }
   
   public View getRootView()
@@ -221,43 +227,45 @@ public class VideoControllerView
   
   public void hide()
   {
-    if (this.mAnchor == null) {
+    ViewGroup localViewGroup = this.mAnchor;
+    if (localViewGroup == null) {
       return;
     }
     try
     {
-      this.mAnchor.removeView(this);
-      this.mShowing = false;
-      return;
+      localViewGroup.removeView(this);
     }
     catch (IllegalArgumentException localIllegalArgumentException)
     {
-      for (;;)
-      {
-        PlayerUtils.log(3, "MediaController", "already removed");
-      }
+      label18:
+      break label18;
     }
+    PlayerUtils.log(3, "MediaController", "already removed");
+    this.mShowing = false;
   }
   
   protected void initControllerView(View paramView)
   {
     this.mFullscreenButton = ((ImageButton)paramView.findViewById(this.playerResources.getViewId(555)));
-    if (this.mFullscreenButton != null)
+    Object localObject = this.mFullscreenButton;
+    if (localObject != null)
     {
-      this.mFullscreenButton.setOnClickListener(this.mFullscreenListener);
+      ((ImageButton)localObject).setOnClickListener(this.mFullscreenListener);
       if ((hasSmartBar()) || (isNotSupportFullscreen())) {
         this.mFullscreenButton.setVisibility(8);
       }
     }
     this.mSwitchLandscapeButton = ((ImageButton)paramView.findViewById(this.playerResources.getViewId(554)));
-    if (this.mSwitchLandscapeButton != null) {
-      this.mSwitchLandscapeButton.setOnClickListener(this.mSwitchLandscapeListener);
+    localObject = this.mSwitchLandscapeButton;
+    if (localObject != null) {
+      ((ImageButton)localObject).setOnClickListener(this.mSwitchLandscapeListener);
     }
     this.mProgress = ((ProgressBar)paramView.findViewById(this.playerResources.getViewId(556)));
-    if (this.mProgress != null)
+    localObject = this.mProgress;
+    if (localObject != null)
     {
-      if ((this.mProgress instanceof SeekBar)) {
-        ((SeekBar)this.mProgress).setOnSeekBarChangeListener(this.mSeekListener);
+      if ((localObject instanceof SeekBar)) {
+        ((SeekBar)localObject).setOnSeekBarChangeListener(this.mSeekListener);
       }
       this.mProgress.setMax(1000);
     }
@@ -285,7 +293,7 @@ public class VideoControllerView
     return this.mRoot;
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
   }
@@ -293,8 +301,9 @@ public class VideoControllerView
   public void onFinishInflate()
   {
     super.onFinishInflate();
-    if (this.mRoot != null) {
-      initControllerView(this.mRoot);
+    View localView = this.mRoot;
+    if (localView != null) {
+      initControllerView(localView);
     }
   }
   
@@ -312,8 +321,9 @@ public class VideoControllerView
   
   public void postSetProgress()
   {
-    if (this.mHandler != null) {
-      this.mHandler.sendEmptyMessage(3);
+    Handler localHandler = this.mHandler;
+    if (localHandler != null) {
+      localHandler.sendEmptyMessage(3);
     }
   }
   
@@ -337,8 +347,9 @@ public class VideoControllerView
   
   public void setEnabled(boolean paramBoolean)
   {
-    if (this.mProgress != null) {
-      this.mProgress.setEnabled(paramBoolean);
+    ProgressBar localProgressBar = this.mProgress;
+    if (localProgressBar != null) {
+      localProgressBar.setEnabled(paramBoolean);
     }
     disableUnsupportedButtons();
     super.setEnabled(paramBoolean);
@@ -346,8 +357,9 @@ public class VideoControllerView
   
   public void setFullscreenButtonVisible(int paramInt)
   {
-    if (this.mFullscreenButton != null) {
-      this.mFullscreenButton.setVisibility(paramInt);
+    ImageButton localImageButton = this.mFullscreenButton;
+    if (localImageButton != null) {
+      localImageButton.setVisibility(paramInt);
     }
   }
   
@@ -364,45 +376,50 @@ public class VideoControllerView
   
   public int setProgress(int paramInt)
   {
-    if ((this.mPlayer == null) || (this.mDragging) || (this.mPlayer.isLoading())) {
-      return 0;
-    }
-    int i = paramInt;
-    if (paramInt == -1) {
-      i = this.mPlayer.getCurrentPosition();
-    }
-    int j = this.mPlayer.getDuration();
-    if (j > 0) {
-      this.mVideoDuration = j;
-    }
-    paramInt = i;
-    if (j > 0)
+    Object localObject = this.mPlayer;
+    if ((localObject != null) && (!this.mDragging))
     {
+      if (((VideoControllerView.MediaPlayerControl)localObject).isLoading()) {
+        return 0;
+      }
+      int i = paramInt;
+      if (paramInt == -1) {
+        i = this.mPlayer.getCurrentPosition();
+      }
+      int j = this.mPlayer.getDuration();
+      if (j > 0) {
+        this.mVideoDuration = j;
+      }
       paramInt = i;
-      if (i > j) {
-        paramInt = j;
-      }
-    }
-    i = paramInt;
-    if (this.seekBarrier >= 0)
-    {
-      i = paramInt;
-      if (paramInt >= this.seekBarrier) {
-        i = 0;
-      }
-    }
-    if (this.mProgress != null)
-    {
       if (j > 0)
       {
-        long l = 1000L * i / j;
-        this.mProgress.setProgress((int)l);
+        paramInt = i;
+        if (i > j) {
+          paramInt = j;
+        }
       }
-      paramInt = this.mPlayer.getBufferPercentage();
-      this.mProgress.setSecondaryProgress(paramInt * 10);
+      int k = this.seekBarrier;
+      i = paramInt;
+      if (k >= 0)
+      {
+        i = paramInt;
+        if (paramInt >= k) {
+          i = 0;
+        }
+      }
+      localObject = this.mProgress;
+      if (localObject != null)
+      {
+        if (j > 0) {
+          ((ProgressBar)localObject).setProgress((int)(i * 1000L / j));
+        }
+        paramInt = this.mPlayer.getBufferPercentage();
+        this.mProgress.setSecondaryProgress(paramInt * 10);
+      }
+      PlayerUtils.runOnUiThread(new VideoControllerView.2(this, i));
+      return i;
     }
-    PlayerUtils.runOnUiThread(new VideoControllerView.2(this, i));
-    return i;
+    return 0;
   }
   
   public void setSeekBarChangeListener(SeekBar.OnSeekBarChangeListener paramOnSeekBarChangeListener)
@@ -422,96 +439,105 @@ public class VideoControllerView
   
   public void show(int paramInt)
   {
-    Object localObject;
     if ((!this.mShowing) && (this.mAnchor != null))
     {
       postSetProgress();
       disableUnsupportedButtons();
-      if (!(this.mAnchor instanceof RelativeLayout)) {
-        break label132;
+      if ((this.mAnchor instanceof RelativeLayout))
+      {
+        localObject = new RelativeLayout.LayoutParams(-1, -2);
+        ((RelativeLayout.LayoutParams)localObject).addRule(12);
       }
-      localObject = new RelativeLayout.LayoutParams(-1, -2);
-      ((RelativeLayout.LayoutParams)localObject).addRule(12);
-    }
-    for (;;)
-    {
+      else
+      {
+        localObject = new FrameLayout.LayoutParams(-1, -2, 80);
+      }
       this.mAnchor.addView(this, (ViewGroup.LayoutParams)localObject);
       this.mShowing = true;
-      updatePausePlay();
-      updateFullScreen();
-      updateLandscapeIndicator();
-      updateStreamNameButton();
-      this.mHandler.removeMessages(2);
-      this.mHandler.sendEmptyMessage(2);
-      localObject = this.mHandler.obtainMessage(1);
-      this.mHandler.removeMessages(1);
-      if (paramInt != 0) {
-        this.mHandler.sendMessageDelayed((Message)localObject, paramInt);
-      }
-      return;
-      label132:
-      localObject = new FrameLayout.LayoutParams(-1, -2, 80);
+    }
+    updatePausePlay();
+    updateFullScreen();
+    updateLandscapeIndicator();
+    updateStreamNameButton();
+    this.mHandler.removeMessages(2);
+    this.mHandler.sendEmptyMessage(2);
+    Object localObject = this.mHandler.obtainMessage(1);
+    this.mHandler.removeMessages(1);
+    if (paramInt != 0) {
+      this.mHandler.sendMessageDelayed((Message)localObject, paramInt);
     }
   }
   
   public void updateFullScreen()
   {
-    if ((this.mRoot == null) || (this.mFullscreenButton == null) || (this.mPlayer == null)) {
-      return;
-    }
-    if (this.mPlayer.isFullScreen())
+    if ((this.mRoot != null) && (this.mFullscreenButton != null))
     {
-      if (this.curFullscreenButtonDrawableRes != 1098)
-      {
-        this.mFullscreenButton.setImageResource(this.playerResources.getDrawableId(1098));
-        this.curFullscreenButtonDrawableRes = 1098;
+      VideoControllerView.MediaPlayerControl localMediaPlayerControl = this.mPlayer;
+      if (localMediaPlayerControl == null) {
         return;
       }
-      this.mFullscreenButton.setImageResource(this.playerResources.getDrawableId(1098));
-      return;
-    }
-    if (this.curFullscreenButtonDrawableRes != 1099)
-    {
+      if (localMediaPlayerControl.isFullScreen())
+      {
+        if (this.curFullscreenButtonDrawableRes != 1098)
+        {
+          this.mFullscreenButton.setImageResource(this.playerResources.getDrawableId(1098));
+          this.curFullscreenButtonDrawableRes = 1098;
+          return;
+        }
+        this.mFullscreenButton.setImageResource(this.playerResources.getDrawableId(1098));
+        return;
+      }
+      if (this.curFullscreenButtonDrawableRes != 1099)
+      {
+        this.mFullscreenButton.setImageResource(this.playerResources.getDrawableId(1099));
+        this.curFullscreenButtonDrawableRes = 1099;
+        return;
+      }
       this.mFullscreenButton.setImageResource(this.playerResources.getDrawableId(1099));
-      this.curFullscreenButtonDrawableRes = 1099;
-      return;
     }
-    this.mFullscreenButton.setImageResource(this.playerResources.getDrawableId(1099));
   }
   
   public void updateLandscapeIndicator()
   {
-    if ((this.mRoot == null) || (this.mSwitchLandscapeButton == null) || (this.mPlayer == null)) {}
-    do
+    if ((this.mRoot != null) && (this.mSwitchLandscapeButton != null))
     {
-      do
-      {
+      VideoControllerView.MediaPlayerControl localMediaPlayerControl = this.mPlayer;
+      if (localMediaPlayerControl == null) {
         return;
-        if (!this.mPlayer.isLandscape()) {
-          break;
+      }
+      if (localMediaPlayerControl.isLandscape())
+      {
+        if (this.curLandscapeButtonDrawableRes != 1097)
+        {
+          this.mSwitchLandscapeButton.setImageResource(this.playerResources.getDrawableId(1097));
+          this.curLandscapeButtonDrawableRes = 1097;
         }
-      } while (this.curLandscapeButtonDrawableRes == 1097);
-      this.mSwitchLandscapeButton.setImageResource(this.playerResources.getDrawableId(1097));
-      this.curLandscapeButtonDrawableRes = 1097;
-      return;
-    } while (this.curLandscapeButtonDrawableRes == 1096);
-    this.mSwitchLandscapeButton.setImageResource(this.playerResources.getDrawableId(1096));
-    this.curLandscapeButtonDrawableRes = 1096;
+      }
+      else if (this.curLandscapeButtonDrawableRes != 1096)
+      {
+        this.mSwitchLandscapeButton.setImageResource(this.playerResources.getDrawableId(1096));
+        this.curLandscapeButtonDrawableRes = 1096;
+      }
+    }
   }
   
   public void updatePausePlay()
   {
-    if ((this.mRoot == null) || (this.mPlayer == null)) {
-      return;
+    if (this.mRoot != null)
+    {
+      VideoControllerView.MediaPlayerControl localMediaPlayerControl = this.mPlayer;
+      if (localMediaPlayerControl == null) {
+        return;
+      }
+      localMediaPlayerControl.updatePlayPauseButton();
     }
-    this.mPlayer.updatePlayPauseButton();
   }
   
   protected void updateStreamNameButton() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qzoneplayer.ui.VideoControllerView
  * JD-Core Version:    0.7.0.1
  */

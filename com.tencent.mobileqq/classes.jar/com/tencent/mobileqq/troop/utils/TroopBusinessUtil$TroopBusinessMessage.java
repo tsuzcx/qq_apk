@@ -40,7 +40,11 @@ public class TroopBusinessUtil$TroopBusinessMessage
     }
     catch (Exception paramGroupBusinessMsg)
     {
-      QLog.e(TroopBusinessUtil.jdField_a_of_type_JavaLangString, 2, "the color string cannot parse to color. " + paramGroupBusinessMsg.getMessage());
+      String str = TroopBusinessUtil.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("the color string cannot parse to color. ");
+      localStringBuilder.append(paramGroupBusinessMsg.getMessage());
+      QLog.e(str, 2, localStringBuilder.toString());
     }
     return localTroopBusinessMessage;
   }
@@ -49,16 +53,28 @@ public class TroopBusinessUtil$TroopBusinessMessage
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TroopBusinessMessage");
-    localStringBuilder.append(",").append("nick").append("=").append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append(",").append("flag").append("=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(",").append("clk").append("=").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(",").append("head").append("=").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",");
+    localStringBuilder.append("nick");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(",");
+    localStringBuilder.append("flag");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",");
+    localStringBuilder.append("clk");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(",");
+    localStringBuilder.append("head");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopBusinessUtil.TroopBusinessMessage
  * JD-Core Version:    0.7.0.1
  */

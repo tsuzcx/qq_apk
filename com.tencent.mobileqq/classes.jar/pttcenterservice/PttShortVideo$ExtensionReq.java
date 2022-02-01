@@ -8,13 +8,19 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class PttShortVideo$ExtensionReq
   extends MessageMicro<ExtensionReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "uint32_sub_busi_type", "uint32_user_cnt" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }, ExtensionReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field uint32_sub_busi_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_user_cnt = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "uint32_sub_busi_type", "uint32_user_cnt" }, new Object[] { localInteger, localInteger }, ExtensionReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     pttcenterservice.PttShortVideo.ExtensionReq
  * JD-Core Version:    0.7.0.1
  */

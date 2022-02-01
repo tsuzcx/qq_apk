@@ -48,11 +48,13 @@ public abstract class MultiVideoShareModeBase
     paramShareQQData.a = this.a.mVideoThumbnailUrl;
     paramShareQQData.jdField_e_of_type_JavaLangString = this.a.mVid;
     paramShareQQData.h = a(1);
-    if (this.b != -1) {
-      paramShareQQData.jdField_d_of_type_Int = this.b;
+    int m = this.b;
+    if (m != -1) {
+      paramShareQQData.jdField_d_of_type_Int = m;
     }
-    if (this.c != -1) {
-      paramShareQQData.jdField_e_of_type_Int = this.c;
+    m = this.c;
+    if (m != -1) {
+      paramShareQQData.jdField_e_of_type_Int = m;
     }
   }
   
@@ -93,15 +95,10 @@ public abstract class MultiVideoShareModeBase
     super.a_(paramShareData);
     if (this.a.isPollVideo()) {
       paramShareData.a("vote", "1");
+    } else if (this.a.isInteractVideo()) {
+      paramShareData.a("grade", "1");
     }
-    for (;;)
-    {
-      paramShareData.a = this.a;
-      return;
-      if (this.a.isInteractVideo()) {
-        paramShareData.a("grade", "1");
-      }
-    }
+    paramShareData.a = this.a;
   }
   
   public void b(ShareWeChatData paramShareWeChatData)
@@ -116,7 +113,7 @@ public abstract class MultiVideoShareModeBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.base.MultiVideoShareModeBase
  * JD-Core Version:    0.7.0.1
  */

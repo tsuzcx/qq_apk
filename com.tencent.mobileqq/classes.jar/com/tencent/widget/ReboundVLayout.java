@@ -70,7 +70,7 @@ public class ReboundVLayout
     return 0;
   }
   
-  public void onFinishInflate()
+  protected void onFinishInflate()
   {
     super.onFinishInflate();
     this.mChildView = getChildAt(0);
@@ -82,7 +82,7 @@ public class ReboundVLayout
     scrollBy(0, 1000);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.mChildView.getLayoutParams().height = getHeight();
@@ -135,23 +135,23 @@ public class ReboundVLayout
   public void scrollTo(int paramInt1, int paramInt2)
   {
     int i;
-    if (paramInt2 < 0) {
+    if (paramInt2 < 0)
+    {
       i = 0;
     }
-    for (;;)
+    else
     {
-      super.scrollTo(paramInt1, i);
-      return;
       i = paramInt2;
       if (paramInt2 > 2000) {
         i = 2000;
       }
     }
+    super.scrollTo(paramInt1, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ReboundVLayout
  * JD-Core Version:    0.7.0.1
  */

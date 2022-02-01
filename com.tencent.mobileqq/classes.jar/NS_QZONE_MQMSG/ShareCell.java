@@ -32,23 +32,27 @@ public final class ShareCell
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 0);
+    String str = this.title;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.content != null) {
-      paramJceOutputStream.write(this.content, 1);
+    str = this.content;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.imgUrl != null) {
-      paramJceOutputStream.write(this.imgUrl, 2);
+    str = this.imgUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.jumpUrl != null) {
-      paramJceOutputStream.write(this.jumpUrl, 3);
+    str = this.jumpUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QZONE_MQMSG.ShareCell
  * JD-Core Version:    0.7.0.1
  */

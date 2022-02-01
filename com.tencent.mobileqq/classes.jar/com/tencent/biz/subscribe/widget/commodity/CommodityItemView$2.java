@@ -18,26 +18,30 @@ class CommodityItemView$2
   
   public void onClick(View paramView)
   {
-    if ((this.a.a() != null) && (!CommodityItemView.a(this.a))) {
-      if (!(this.a.a() instanceof CommodityBean)) {
-        break label127;
-      }
-    }
-    label127:
-    for (String str = ((CommodityBean)this.a.a()).mUrl;; str = ((CertifiedAccountMeta.StYouZanGood)this.a.a()).url.get())
+    if ((this.a.a() != null) && (!CommodityItemView.a(this.a)))
     {
-      if (CommodityItemView.a(this.a) != null) {
-        VSReporter.a(CommodityItemView.a(this.a).poster.id.get(), "auth_" + SubscribeShareHelper.a(this.a.a()), "clk_goods", 0, 0, new String[0]);
+      String str1;
+      if ((this.a.a() instanceof CommodityBean)) {
+        str1 = ((CommodityBean)this.a.a()).mUrl;
+      } else {
+        str1 = ((CertifiedAccountMeta.StYouZanGood)this.a.a()).url.get();
       }
-      SubscribeLaucher.a(str, 8002);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      if (CommodityItemView.a(this.a) != null)
+      {
+        String str2 = CommodityItemView.a(this.a).poster.id.get();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("auth_");
+        localStringBuilder.append(SubscribeShareHelper.a(this.a.a()));
+        VSReporter.a(str2, localStringBuilder.toString(), "clk_goods", 0, 0, new String[0]);
+      }
+      SubscribeLaucher.a(str1, 8002);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.commodity.CommodityItemView.2
  * JD-Core Version:    0.7.0.1
  */

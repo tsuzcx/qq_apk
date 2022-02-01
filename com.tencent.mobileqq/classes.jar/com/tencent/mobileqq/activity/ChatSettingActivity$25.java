@@ -11,14 +11,16 @@ class ChatSettingActivity$25
   
   public void onGetIcon(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if ((this.a.h != null) && (this.a.a != null) && (this.a.a.actionId == paramInt1) && (paramBitmap != null) && (paramInt2 == 200)) {
-      ChatSettingActivity.a(this.a, this.a.a, this.a.h);
+    if ((this.a.h != null) && (this.a.a != null) && (this.a.a.actionId == paramInt1) && (paramBitmap != null) && (paramInt2 == 200))
+    {
+      paramBitmap = this.a;
+      ChatSettingActivity.a(paramBitmap, paramBitmap.a, this.a.h);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingActivity.25
  * JD-Core Version:    0.7.0.1
  */

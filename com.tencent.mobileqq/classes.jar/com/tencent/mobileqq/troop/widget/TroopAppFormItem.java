@@ -38,14 +38,14 @@ public class TroopAppFormItem
   
   public void a()
   {
-    View localView = LayoutInflater.from(getContext()).inflate(2131560731, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131372115));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378645));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131370307));
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131377113);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)localView.findViewById(2131368729));
+    View localView = LayoutInflater.from(getContext()).inflate(2131560619, this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371697));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378037));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369975));
+    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131376590);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)localView.findViewById(2131368461));
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(DisplayUtil.a(getContext(), 4.0F));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368834));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368562));
   }
   
   public void setBgType(int paramInt)
@@ -58,7 +58,7 @@ public class TroopAppFormItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopAppFormItem
  * JD-Core Version:    0.7.0.1
  */

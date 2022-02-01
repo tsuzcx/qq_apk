@@ -31,14 +31,16 @@ public final class pbenterroom$EnterRoomReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40, 48, 58, 64, 73, 81, 88, 98, 104, 272 }, new String[] { "roomId", "machineCode", "enter_type", "private_key", "ts", "flag", "refer_source", "open_live_type", "latitude", "longitude", "room_type", "auth", "from_id", "gid" }, new Object[] { Integer.valueOf(0), "", Integer.valueOf(0), localByteStringMicro1, Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro2, Integer.valueOf(0), Double.valueOf(0.0D), Double.valueOf(0.0D), Integer.valueOf(0), null, Integer.valueOf(0), Long.valueOf(0L) }, EnterRoomReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40, 48, 58, 64, 73, 81, 88, 98, 104, 272 }, new String[] { "roomId", "machineCode", "enter_type", "private_key", "ts", "flag", "refer_source", "open_live_type", "latitude", "longitude", "room_type", "auth", "from_id", "gid" }, new Object[] { localInteger, "", localInteger, localByteStringMicro1, localLong, localLong, localByteStringMicro2, localInteger, Double.valueOf(0.0D), Double.valueOf(0.0D), localInteger, null, localInteger, localLong }, EnterRoomReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.room.protocol.pbenterroom.pbenterroom.EnterRoomReq
  * JD-Core Version:    0.7.0.1
  */

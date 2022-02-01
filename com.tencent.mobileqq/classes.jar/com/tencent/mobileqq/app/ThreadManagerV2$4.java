@@ -14,9 +14,10 @@ final class ThreadManagerV2$4
   public void cancel()
   {
     ThreadLog.printQLog("ThreadManager", "Can't cancel Global Timer");
-    if (!ThreadSetting.isPublicVersion) {
-      throw new RuntimeException("Can't cancel Global Timer");
+    if (ThreadSetting.isPublicVersion) {
+      return;
     }
+    throw new RuntimeException("Can't cancel Global Timer");
   }
   
   public void schedule(TimerTask paramTimerTask, long paramLong)
@@ -47,7 +48,7 @@ final class ThreadManagerV2$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ThreadManagerV2.4
  * JD-Core Version:    0.7.0.1
  */

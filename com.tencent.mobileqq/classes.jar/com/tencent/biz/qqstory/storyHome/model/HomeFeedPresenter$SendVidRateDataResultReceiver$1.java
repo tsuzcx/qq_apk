@@ -14,20 +14,20 @@ class HomeFeedPresenter$SendVidRateDataResultReceiver$1
     CommentManager localCommentManager = (CommentManager)SuperManager.a(17);
     if (HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.type = 3;
-      localCommentManager.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      CommentEntry localCommentEntry = this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry;
+      localCommentEntry.type = 3;
+      localCommentManager.a(localCommentEntry);
     }
-    for (;;)
+    else
     {
-      ((FeedManager)SuperManager.a(11)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-      return;
       localCommentManager.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
     }
+    ((FeedManager)SuperManager.a(11)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.SendVidRateDataResultReceiver.1
  * JD-Core Version:    0.7.0.1
  */

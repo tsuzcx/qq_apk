@@ -40,7 +40,7 @@ public class HorizontalAdapter
   @NonNull
   public HorizontalAdapter.HorizontalViewHolder a(@NonNull ViewGroup paramViewGroup, int paramInt)
   {
-    return new HorizontalAdapter.HorizontalViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561091, paramViewGroup, false));
+    return new HorizontalAdapter.HorizontalViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560955, paramViewGroup, false));
   }
   
   public void a(int paramInt)
@@ -52,35 +52,42 @@ public class HorizontalAdapter
   public void a(View paramView, int paramInt)
   {
     ReportController.b(null, "dc00898", "", "", "0X800B358", "0X800B358", 0, 0, "", "", "", "");
-    paramView = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(2131720732).setPositiveButton(2131720699, new HorizontalAdapter.3(this, paramInt)).setNegativeButton(2131720698, new HorizontalAdapter.2(this));
+    paramView = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(2131720457).setPositiveButton(2131720418, new HorizontalAdapter.3(this, paramInt)).setNegativeButton(2131720417, new HorizontalAdapter.2(this));
     paramView.show();
-    ((TextView)paramView.findViewById(2131365807)).setGravity(17);
+    ((TextView)paramView.findViewById(2131365644)).setGravity(17);
   }
   
   public void a(@NonNull HorizontalAdapter.HorizontalViewHolder paramHorizontalViewHolder, int paramInt)
   {
-    if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqWritetogetherconfigWriteTogetherTemplateConfBean$Template == null) || (this.jdField_a_of_type_ArrayOfComTencentMobileqqWritetogetherconfigWriteTogetherTemplateConfBean$Template.length == 0))
+    Object localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqWritetogetherconfigWriteTogetherTemplateConfBean$Template;
+    if ((localObject != null) && (localObject.length != 0))
     {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramHorizontalViewHolder, paramInt, getItemId(paramInt));
-      return;
-    }
-    if (this.jdField_a_of_type_Int == paramInt)
-    {
-      paramHorizontalViewHolder.a.setSelected(true);
-      paramHorizontalViewHolder.a.setTypeface(Typeface.defaultFromStyle(1));
-    }
-    for (;;)
-    {
+      if (this.jdField_a_of_type_Int == paramInt)
+      {
+        paramHorizontalViewHolder.a.setSelected(true);
+        paramHorizontalViewHolder.a.setTypeface(Typeface.defaultFromStyle(1));
+      }
+      else
+      {
+        paramHorizontalViewHolder.a.setSelected(false);
+        paramHorizontalViewHolder.a.setTypeface(Typeface.defaultFromStyle(0));
+      }
       paramHorizontalViewHolder.a.setText(this.jdField_a_of_type_ArrayOfComTencentMobileqqWritetogetherconfigWriteTogetherTemplateConfBean$Template[paramInt].jdField_a_of_type_JavaLangString);
       paramHorizontalViewHolder.a.setOnClickListener(new HorizontalAdapter.1(this, paramHorizontalViewHolder));
-      if (!QLog.isColorLevel()) {
-        break;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onBindViewHolder() called with: position = [");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append("], holder.templateTitle = [");
+        ((StringBuilder)localObject).append(paramHorizontalViewHolder.a);
+        ((StringBuilder)localObject).append("], mTemplates[position].title = [");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ArrayOfComTencentMobileqqWritetogetherconfigWriteTogetherTemplateConfBean$Template[paramInt].jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append("]");
+        QLog.d("HorizontalAdapter", 2, ((StringBuilder)localObject).toString());
       }
-      QLog.d("HorizontalAdapter", 2, "onBindViewHolder() called with: position = [" + paramInt + "], holder.templateTitle = [" + paramHorizontalViewHolder.a + "], mTemplates[position].title = [" + this.jdField_a_of_type_ArrayOfComTencentMobileqqWritetogetherconfigWriteTogetherTemplateConfBean$Template[paramInt].jdField_a_of_type_JavaLangString + "]");
-      break;
-      paramHorizontalViewHolder.a.setSelected(false);
-      paramHorizontalViewHolder.a.setTypeface(Typeface.defaultFromStyle(0));
     }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramHorizontalViewHolder, paramInt, getItemId(paramInt));
   }
   
   public void a(boolean paramBoolean)
@@ -101,15 +108,16 @@ public class HorizontalAdapter
   
   public int getItemCount()
   {
-    if (this.jdField_a_of_type_ArrayOfComTencentMobileqqWritetogetherconfigWriteTogetherTemplateConfBean$Template == null) {
+    WriteTogetherTemplateConfBean.Template[] arrayOfTemplate = this.jdField_a_of_type_ArrayOfComTencentMobileqqWritetogetherconfigWriteTogetherTemplateConfBean$Template;
+    if (arrayOfTemplate == null) {
       return 0;
     }
-    return this.jdField_a_of_type_ArrayOfComTencentMobileqqWritetogetherconfigWriteTogetherTemplateConfBean$Template.length;
+    return arrayOfTemplate.length;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.HorizontalAdapter
  * JD-Core Version:    0.7.0.1
  */

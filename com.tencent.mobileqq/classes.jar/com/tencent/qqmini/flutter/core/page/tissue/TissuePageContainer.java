@@ -63,7 +63,11 @@ public class TissuePageContainer
   
   public String dispatchEventToNativeView(NativeViewRequestEvent paramNativeViewRequestEvent)
   {
-    QMLog.d("miniapp-TISSUE", paramNativeViewRequestEvent.event + ": " + paramNativeViewRequestEvent.jsonParams);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramNativeViewRequestEvent.event);
+    localStringBuilder.append(": ");
+    localStringBuilder.append(paramNativeViewRequestEvent.jsonParams);
+    QMLog.d("miniapp-TISSUE", localStringBuilder.toString());
     return null;
   }
   
@@ -75,38 +79,40 @@ public class TissuePageContainer
       this.mMiniAppContext.performAction(new TissuePageContainer.4(this, paramString2));
       return;
     }
+    Object localObject;
     if ("operateVideoPlayer".equals(paramString1))
     {
-      QMLog.d("QFV", " from app-service operateVideoPlayer:" + paramString2);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" from app-service operateVideoPlayer:");
+      ((StringBuilder)localObject).append(paramString2);
+      QMLog.d("QFV", ((StringBuilder)localObject).toString());
       sendMsgToFlutter("operateVideoPlayer", JSONUtil.toMap(JSONUtil.parse(paramString2)));
     }
-    for (;;)
+    try
     {
-      try
-      {
-        localObject = JSONUtil.parse(paramString2);
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("event", paramString1);
-        if (localObject != null) {
-          continue;
-        }
+      localObject = JSONUtil.parse(paramString2);
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("event", paramString1);
+      if (localObject == null) {
         localObject = new HashMap();
-        localHashMap.put("data", localObject);
-        if (paramArrayOfInt != null) {
-          localHashMap.put("pageIDs", paramArrayOfInt);
-        }
-        sendMsgToFlutter("publishHandler", localHashMap);
+      } else {
+        localObject = JSONUtil.toMap((JSONObject)localObject);
       }
-      catch (Exception paramArrayOfInt)
-      {
-        Object localObject;
-        QMLog.e("miniapp-TISSUE", "", paramArrayOfInt);
-        continue;
+      localHashMap.put("data", localObject);
+      if (paramArrayOfInt != null) {
+        localHashMap.put("pageIDs", paramArrayOfInt);
       }
-      QMLog.d("miniapp-TISSUE", paramString1 + ": " + paramString2);
-      return;
-      localObject = JSONUtil.toMap((JSONObject)localObject);
+      sendMsgToFlutter("publishHandler", localHashMap);
     }
+    catch (Exception paramArrayOfInt)
+    {
+      QMLog.e("miniapp-TISSUE", "", paramArrayOfInt);
+    }
+    paramArrayOfInt = new StringBuilder();
+    paramArrayOfInt.append(paramString1);
+    paramArrayOfInt.append(": ");
+    paramArrayOfInt.append(paramString2);
+    QMLog.d("miniapp-TISSUE", paramArrayOfInt.toString());
   }
   
   public boolean doDispatchKeyEvent(KeyEvent paramKeyEvent)
@@ -136,23 +142,21 @@ public class TissuePageContainer
   
   public AppPageInfo getPageInfo(int paramInt)
   {
-    AppPageInfo.Builder localBuilder = new AppPageInfo.Builder();
-    Object localObject;
-    if (this.mStartUpURL != null)
-    {
-      localObject = this.mStartUpURL.getFullUrl();
-      localObject = localBuilder.setPageUrl((String)localObject);
-      if (this.flutterView == null) {
-        break label58;
-      }
+    Object localObject2 = new AppPageInfo.Builder();
+    Object localObject1 = this.mStartUpURL;
+    if (localObject1 != null) {
+      localObject1 = ((URL)localObject1).getFullUrl();
+    } else {
+      localObject1 = null;
     }
-    label58:
-    for (paramInt = this.flutterView.getHeight();; paramInt = 0)
-    {
-      return ((AppPageInfo.Builder)localObject).setWindowHeight(paramInt).build();
-      localObject = null;
-      break;
+    localObject1 = ((AppPageInfo.Builder)localObject2).setPageUrl((String)localObject1);
+    localObject2 = this.flutterView;
+    if (localObject2 != null) {
+      paramInt = ((FlutterView)localObject2).getHeight();
+    } else {
+      paramInt = 0;
     }
+    return ((AppPageInfo.Builder)localObject1).setWindowHeight(paramInt).build();
   }
   
   public String getPageOrientation()
@@ -167,19 +171,25 @@ public class TissuePageContainer
   
   public boolean hasToastView()
   {
-    return (this.toastView != null) && (this.toastView.shown());
+    ToastView localToastView = this.toastView;
+    return (localToastView != null) && (localToastView.shown());
   }
   
   public void hideSoftInput(View paramView) {}
   
   public void hideToastView()
   {
-    if (QMLog.isColorLevel()) {
-      QMLog.d("TissueRenderer", "hideToastView toastView=" + this.toastView);
-    }
-    if (this.toastView != null)
+    if (QMLog.isColorLevel())
     {
-      this.toastView.hide();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("hideToastView toastView=");
+      ((StringBuilder)localObject).append(this.toastView);
+      QMLog.d("TissueRenderer", ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.toastView;
+    if (localObject != null)
+    {
+      ((ToastView)localObject).hide();
       this.toastView = null;
     }
   }
@@ -191,19 +201,17 @@ public class TissuePageContainer
     this.mStartUpURL = new URL(paramString1);
     if (this.mApkgInfo != null)
     {
-      if (!this.isV8AfterFlutter) {
-        break label263;
+      if (this.isV8AfterFlutter) {
+        paramString1 = "1";
+      } else {
+        paramString1 = "0";
       }
-      paramString1 = "1";
-      if (this.mMiniAppContext.getMiniAppInfo() != null) {
-        break label270;
+      if (this.mMiniAppContext.getMiniAppInfo() == null) {
+        localObject = MiniProgramReportHelper.miniAppConfigForPreload();
+      } else {
+        localObject = this.mMiniAppContext.getMiniAppInfo();
       }
-    }
-    label263:
-    label270:
-    for (MiniAppInfo localMiniAppInfo = MiniProgramReportHelper.miniAppConfigForPreload();; localMiniAppInfo = this.mMiniAppContext.getMiniAppInfo())
-    {
-      MiniAppReportManager2.reportLaunchPiecewise(215, paramString1, localMiniAppInfo);
+      MiniAppReportManager2.reportLaunchPiecewise(215, paramString1, (MiniAppInfo)localObject);
       paramString1 = new HashMap();
       paramString1.put("apkgUnpackPath", this.mApkgInfo.apkgFolderPath);
       paramString1.put("appName", this.mApkgInfo.apkgName);
@@ -211,11 +219,12 @@ public class TissuePageContainer
       paramString1.put("query", this.mStartUpURL.getQueryParam());
       paramString1.put("logLevel", Integer.valueOf(6 - QMLog.getLogLevel()));
       boolean bool2 = false;
+      Object localObject = this.mMiniAppContext;
       boolean bool1 = bool2;
-      if (this.mMiniAppContext != null)
+      if (localObject != null)
       {
         bool1 = bool2;
-        if (this.mMiniAppContext.getMiniAppInfo() != null)
+        if (((IMiniAppContext)localObject).getMiniAppInfo() != null)
         {
           bool1 = bool2;
           if (this.mMiniAppContext.getMiniAppInfo().appMode != null) {
@@ -224,11 +233,11 @@ public class TissuePageContainer
         }
       }
       paramString1.put("topRightBtnHidden", Boolean.valueOf(bool1));
-      QMLog.w("miniapp-start-TISSUE", " miniapp launch" + this.mApkgInfo.appId);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" miniapp launch");
+      ((StringBuilder)localObject).append(this.mApkgInfo.appId);
+      QMLog.w("miniapp-start-TISSUE", ((StringBuilder)localObject).toString());
       sendMsgToFlutter(paramString2, paramString1);
-      return;
-      paramString1 = "0";
-      break;
     }
   }
   
@@ -253,19 +262,29 @@ public class TissuePageContainer
   
   public void onAttachedToActivity(Activity paramActivity)
   {
-    QMLog.w("miniapp-start-TISSUE", "flutterView start run" + System.currentTimeMillis());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("flutterView start run");
+    ((StringBuilder)localObject).append(System.currentTimeMillis());
+    QMLog.w("miniapp-start-TISSUE", ((StringBuilder)localObject).toString());
     MiniAppReportManager2.reportLaunchPiecewise(212, "", this.mMiniAppContext.getMiniAppInfo());
     FlutterMain.setNativeLibDir(TissueGlobal.tissueEnv.getNativeLibDir());
-    if (this.flutterView != null)
+    localObject = this.flutterView;
+    if (localObject != null)
     {
-      this.mNativeView.attachViewAndActivity(this.flutterView, paramActivity);
+      this.mNativeView.attachViewAndActivity((FlutterView)localObject, paramActivity);
       return;
     }
-    QMLog.w("miniapp-start-TISSUE", "start create flutterView " + System.currentTimeMillis());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("start create flutterView ");
+    ((StringBuilder)localObject).append(System.currentTimeMillis());
+    QMLog.w("miniapp-start-TISSUE", ((StringBuilder)localObject).toString());
     this.flutterView = Flutter.createView(paramActivity, "", this.mNativeView);
     this.flutterView.onStart();
     this.flutterView.onPostResume();
-    QMLog.w("miniapp-start-TISSUE", "flutterView run end" + System.currentTimeMillis());
+    paramActivity = new StringBuilder();
+    paramActivity.append("flutterView run end");
+    paramActivity.append(System.currentTimeMillis());
+    QMLog.w("miniapp-start-TISSUE", paramActivity.toString());
     MiniAppReportManager2.reportLaunchPiecewise(213, "", this.mMiniAppContext.getMiniAppInfo());
   }
   
@@ -273,54 +292,61 @@ public class TissuePageContainer
   
   public void onPause()
   {
-    if (this.mEventListener != null) {
-      this.mEventListener.onWebViewEvent("onAppEnterBackground", "{}", 0);
+    Object localObject = this.mEventListener;
+    if (localObject != null) {
+      ((EventListener)localObject).onWebViewEvent("onAppEnterBackground", "{}", 0);
     }
-    if (this.flutterView != null) {
-      this.flutterView.onPause();
+    localObject = this.flutterView;
+    if (localObject != null) {
+      ((FlutterView)localObject).onPause();
     }
   }
   
   public void onResume()
   {
-    if (this.flutterView != null) {
-      this.flutterView.onPostResume();
+    Object localObject = this.flutterView;
+    if (localObject != null) {
+      ((FlutterView)localObject).onPostResume();
     }
-    Object localObject = null;
-    boolean bool;
-    if ((this.mFromReload) && (this.mEventListener != null) && (this.mEventListener.isFirstDomReady()) && (!TextUtils.isEmpty(this.mMiniAppInfo.launchParam.entryPath)))
+    localObject = null;
+    if (this.mFromReload)
     {
-      bool = true;
-      localObject = this.mMiniAppInfo.launchParam.entryPath;
-      this.mEventListener.reload(this.mMiniAppInfo.launchParam.entryPath);
-    }
-    for (;;)
-    {
-      if ((this.mEventListener != null) && (this.mEventListener.isFirstDomReady()) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-        localObject = AppBrandUtil.getAppLaunchInfo((String)localObject, this.mMiniAppInfo);
+      localEventListener = this.mEventListener;
+      if ((localEventListener != null) && (localEventListener.isFirstDomReady()) && (!TextUtils.isEmpty(this.mMiniAppInfo.launchParam.entryPath)))
+      {
+        localObject = this.mMiniAppInfo.launchParam.entryPath;
+        this.mEventListener.reload(this.mMiniAppInfo.launchParam.entryPath);
+        bool = true;
+        break label89;
       }
+    }
+    boolean bool = false;
+    label89:
+    EventListener localEventListener = this.mEventListener;
+    if ((localEventListener != null) && (localEventListener.isFirstDomReady()) && (!TextUtils.isEmpty((CharSequence)localObject)))
+    {
+      localObject = AppBrandUtil.getAppLaunchInfo((String)localObject, this.mMiniAppInfo);
       try
       {
         ((JSONObject)localObject).put("reLaunch", bool);
-        QMLog.i("TissueRenderer", "appLaunchInfo : " + ((JSONObject)localObject).toString());
-        this.mEventListener.onWebViewEvent("onAppEnterForeground", ((JSONObject)localObject).toString(), 0);
-        return;
       }
       catch (Throwable localThrowable)
       {
-        for (;;)
-        {
-          QMLog.e("TissueRenderer", "appLaunchInfo error.", localThrowable);
-        }
+        QMLog.e("TissueRenderer", "appLaunchInfo error.", localThrowable);
       }
-      bool = false;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("appLaunchInfo : ");
+      localStringBuilder.append(((JSONObject)localObject).toString());
+      QMLog.i("TissueRenderer", localStringBuilder.toString());
+      this.mEventListener.onWebViewEvent("onAppEnterForeground", ((JSONObject)localObject).toString(), 0);
     }
   }
   
   public void onStop()
   {
-    if (this.flutterView != null) {
-      this.flutterView.onStop();
+    FlutterView localFlutterView = this.flutterView;
+    if (localFlutterView != null) {
+      localFlutterView.onStop();
     }
   }
   
@@ -382,8 +408,12 @@ public class TissuePageContainer
   
   public void showToastView(int paramInt1, String paramString1, String paramString2, CharSequence paramCharSequence, int paramInt2, boolean paramBoolean)
   {
-    if (QMLog.isColorLevel()) {
-      QMLog.d("TissueRenderer", "showToastView toastView=" + this.toastView);
+    if (QMLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showToastView toastView=");
+      localStringBuilder.append(this.toastView);
+      QMLog.d("TissueRenderer", localStringBuilder.toString());
     }
     if (this.mMiniAppContext.getAttachedActivity() == null)
     {
@@ -400,22 +430,15 @@ public class TissuePageContainer
   
   public boolean toggleDebugPanel()
   {
-    MiniAppInfo localMiniAppInfo;
-    if (this.mMiniAppContext != null)
-    {
-      localMiniAppInfo = this.mMiniAppContext.getMiniAppInfo();
-      if (DebugUtil.getDebugEnabled(localMiniAppInfo)) {
-        break label38;
-      }
+    Object localObject = this.mMiniAppContext;
+    if (localObject != null) {
+      localObject = ((IMiniAppContext)localObject).getMiniAppInfo();
+    } else {
+      localObject = null;
     }
-    label38:
-    for (boolean bool = true;; bool = false)
-    {
-      DebugUtil.setDebugEnabled(localMiniAppInfo, bool);
-      return bool;
-      localMiniAppInfo = null;
-      break;
-    }
+    boolean bool = DebugUtil.getDebugEnabled((MiniAppInfo)localObject) ^ true;
+    DebugUtil.setDebugEnabled((MiniAppInfo)localObject, bool);
+    return bool;
   }
   
   public boolean toggleMonitorPanel()
@@ -425,18 +448,23 @@ public class TissuePageContainer
   
   public void updateToastMsg(String paramString)
   {
-    if (QMLog.isColorLevel()) {
-      QMLog.d("TissueRenderer", "updateToastMsg toastView=" + this.toastView);
+    if (QMLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateToastMsg toastView=");
+      ((StringBuilder)localObject).append(this.toastView);
+      QMLog.d("TissueRenderer", ((StringBuilder)localObject).toString());
     }
-    if (this.toastView == null) {
+    Object localObject = this.toastView;
+    if (localObject == null) {
       return;
     }
-    this.toastView.updateMsg(paramString);
+    ((ToastView)localObject).updateMsg(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.flutter.core.page.tissue.TissuePageContainer
  * JD-Core Version:    0.7.0.1
  */

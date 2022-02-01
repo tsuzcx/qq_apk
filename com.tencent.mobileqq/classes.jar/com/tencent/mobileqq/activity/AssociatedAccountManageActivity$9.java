@@ -9,25 +9,27 @@ class AssociatedAccountManageActivity$9
 {
   AssociatedAccountManageActivity$9(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
-    View localView;
-    do
+    if (paramBoolean)
     {
-      return;
-      localView = AssociatedAccountManageActivity.a(this.a, paramString, 0);
-      if (localView != null) {
-        this.a.a(paramString, localView);
+      if (TextUtils.isEmpty(paramString)) {
+        return;
       }
-      localView = AssociatedAccountManageActivity.a(this.a, paramString, 1);
-    } while (localView == null);
-    this.a.a(paramString, localView);
+      View localView = AssociatedAccountManageActivity.access$1500(this.a, paramString, 0);
+      if (localView != null) {
+        this.a.updateFace(paramString, localView);
+      }
+      localView = AssociatedAccountManageActivity.access$1500(this.a, paramString, 1);
+      if (localView != null) {
+        this.a.updateFace(paramString, localView);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountManageActivity.9
  * JD-Core Version:    0.7.0.1
  */

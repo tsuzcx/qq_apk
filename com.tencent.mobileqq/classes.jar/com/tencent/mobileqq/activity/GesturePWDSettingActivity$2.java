@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,31 +15,36 @@ class GesturePWDSettingActivity$2
   
   public void onClick(View paramView)
   {
+    Object localObject;
     switch (paramView.getId())
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      GesturePWDUtils.setGesturePWDMode(this.a, this.a.app.getCurrentAccountUin(), 20);
+    default: 
+      break;
+    case 2131367656: 
+      localObject = new Intent(this.a, GesturePWDCreateActivity.class);
+      this.a.startActivityForResult((Intent)localObject, 11);
+      this.a.overridePendingTransition(2130772011, 2130772004);
+      break;
+    case 2131367643: 
+      localObject = new Intent(this.a, GesturePWDManualGuideActivity.class);
+      this.a.startActivity((Intent)localObject);
+      break;
+    case 2131367642: 
+      localObject = this.a;
+      GesturePWDUtils.setGesturePWDMode((Context)localObject, ((GesturePWDSettingActivity)localObject).app.getCurrentAccountUin(), 20);
       this.a.a();
-      continue;
-      GesturePWDUtils.setGesturePWDMode(this.a, this.a.app.getCurrentAccountUin(), 21);
+      break;
+    case 2131367639: 
+      localObject = this.a;
+      GesturePWDUtils.setGesturePWDMode((Context)localObject, ((GesturePWDSettingActivity)localObject).app.getCurrentAccountUin(), 21);
       this.a.a();
-      continue;
-      Intent localIntent = new Intent(this.a, GesturePWDManualGuideActivity.class);
-      this.a.startActivity(localIntent);
-      continue;
-      localIntent = new Intent(this.a, GesturePWDCreateActivity.class);
-      this.a.startActivityForResult(localIntent, 11);
-      this.a.overridePendingTransition(2130771999, 2130771992);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GesturePWDSettingActivity.2
  * JD-Core Version:    0.7.0.1
  */

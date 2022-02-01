@@ -20,18 +20,15 @@ class UserEngineLogic$4
   {
     if ((UserEngineLogic.access$600(this.this$0) != null) && (UserEngineLogic.access$700(this.this$0) != null)) {
       UserEngineLogic.access$700(this.this$0).getEnginLogic().reWatchEnterRoom(UserEngineLogic.access$600(this.this$0));
-    }
-    for (;;)
-    {
-      this.val$sdkLoginCallback.onSucceed(paramLoginInfo);
-      return;
+    } else {
       ((LoginServiceInterface)UserEngineLogic.access$100(this.this$0).getService(LoginServiceInterface.class)).notifyLoginRefresh();
     }
+    this.val$sdkLoginCallback.onSucceed(paramLoginInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.accountengine.UserEngineLogic.4
  * JD-Core Version:    0.7.0.1
  */

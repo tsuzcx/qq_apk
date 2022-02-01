@@ -25,33 +25,36 @@ public class VideoThumbVideoCache
   
   private BaseVideoThumbAssetCache.SeekListResult commonBinarySearch(List<BaseVideoThumbAssetCache.BitmapPoint> paramList, long paramLong, boolean paramBoolean)
   {
-    int i = paramList.size() - 1;
+    int j = paramList.size() - 1;
     BaseVideoThumbAssetCache.SeekListResult localSeekListResult = new BaseVideoThumbAssetCache.SeekListResult();
     localSeekListResult.index = 0;
     localSeekListResult.isNormalized = true;
-    if ((paramList.isEmpty()) || (paramLong < ((BaseVideoThumbAssetCache.BitmapPoint)paramList.get(0)).time)) {
-      return localSeekListResult;
-    }
-    if (paramLong > ((BaseVideoThumbAssetCache.BitmapPoint)paramList.get(i)).time)
+    if (!paramList.isEmpty())
     {
-      if (paramBoolean) {}
-      for (localSeekListResult.index = paramList.size();; localSeekListResult.index = i) {
+      if (paramLong < ((BaseVideoThumbAssetCache.BitmapPoint)paramList.get(0)).time) {
         return localSeekListResult;
       }
-    }
-    for (;;)
-    {
-      int j;
-      if (j <= i)
+      if (paramLong > ((BaseVideoThumbAssetCache.BitmapPoint)paramList.get(j)).time)
       {
-        int k = (j + i) / 2;
+        if (paramBoolean)
+        {
+          localSeekListResult.index = paramList.size();
+          return localSeekListResult;
+        }
+        localSeekListResult.index = j;
+        return localSeekListResult;
+      }
+      int i = 0;
+      while (i <= j)
+      {
+        int k = (i + j) / 2;
         if (((BaseVideoThumbAssetCache.BitmapPoint)paramList.get(k)).time > paramLong)
         {
-          i = k - 1;
+          j = k - 1;
         }
         else if (((BaseVideoThumbAssetCache.BitmapPoint)paramList.get(k)).time < paramLong)
         {
-          j = k + 1;
+          i = k + 1;
         }
         else
         {
@@ -60,21 +63,21 @@ public class VideoThumbVideoCache
           return localSeekListResult;
         }
       }
-      else
-      {
-        paramList = new BaseVideoThumbAssetCache.SeekListResult();
-        paramList.index = j;
-        paramList.isNormalized = true;
-        return paramList;
-        j = 0;
-      }
+      paramList = new BaseVideoThumbAssetCache.SeekListResult();
+      paramList.index = i;
+      paramList.isNormalized = true;
+      return paramList;
     }
+    return localSeekListResult;
   }
   
   public void addCover(CMTime paramCMTime, Bitmap paramBitmap)
   {
     long l = paramCMTime.getTimeUs() / 1000L;
-    Logger.i("VideoThumbVideoCache", "addCover: " + l);
+    paramCMTime = new StringBuilder();
+    paramCMTime.append("addCover: ");
+    paramCMTime.append(l);
+    Logger.i("VideoThumbVideoCache", paramCMTime.toString());
     if (!this.mGeneratingRecorder.contains(String.valueOf(l)))
     {
       this.mGeneratingRecorder.add(String.valueOf(l));
@@ -84,7 +87,10 @@ public class VideoThumbVideoCache
       this.mCacheSize += i;
       this.mLruCache.put(new BaseVideoThumbAssetCache.LRUKey(this.mAssetId, l), Integer.valueOf(i));
     }
-    Logger.i("VideoThumbVideoCache", "mCacheSize: " + this.mCacheSize);
+    paramCMTime = new StringBuilder();
+    paramCMTime.append("mCacheSize: ");
+    paramCMTime.append(this.mCacheSize);
+    Logger.i("VideoThumbVideoCache", paramCMTime.toString());
   }
   
   public BaseVideoThumbAssetCache.SeekResult getCover(long paramLong)
@@ -120,7 +126,7 @@ public class VideoThumbVideoCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weishi.module.edit.widget.playtrack.provider.VideoThumbVideoCache
  * JD-Core Version:    0.7.0.1
  */

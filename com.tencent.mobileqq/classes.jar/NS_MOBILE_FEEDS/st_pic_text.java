@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class st_pic_text
   extends JceStruct
@@ -62,42 +63,52 @@ public final class st_pic_text
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.picinfo != null) {
-      paramJceOutputStream.write(this.picinfo, 0);
+    Object localObject = this.picinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.userlist != null) {
-      paramJceOutputStream.write(this.userlist, 1);
+    localObject = this.userlist;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.summary != null) {
-      paramJceOutputStream.write(this.summary, 2);
+    localObject = this.summary;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 3);
+    localObject = this.title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.actiontype, 4);
-    if (this.actionurl != null) {
-      paramJceOutputStream.write(this.actionurl, 5);
+    localObject = this.actionurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.postfix != null) {
-      paramJceOutputStream.write(this.postfix, 6);
+    localObject = this.postfix;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.playurl != null) {
-      paramJceOutputStream.write(this.playurl, 7);
+    localObject = this.playurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.strHeader != null) {
-      paramJceOutputStream.write(this.strHeader, 8);
+    localObject = this.strHeader;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.desc_before_click != null) {
-      paramJceOutputStream.write(this.desc_before_click, 9);
+    localObject = this.desc_before_click;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.desc_after_click != null) {
-      paramJceOutputStream.write(this.desc_after_click, 10);
+    localObject = this.desc_after_click;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.st_pic_text
  * JD-Core Version:    0.7.0.1
  */

@@ -30,22 +30,23 @@ public class ShareGroupFeedItem
   
   private String a(qqstory_struct.ShareGroupFeed paramShareGroupFeed)
   {
-    if ((!paramShareGroupFeed.today_new_member.has()) || (paramShareGroupFeed.today_new_member.get() == null)) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    this.todayJoinMemberCount = paramShareGroupFeed.today_new_member.get().size();
-    paramShareGroupFeed = paramShareGroupFeed.today_new_member.get().iterator();
-    while (paramShareGroupFeed.hasNext())
+    if ((paramShareGroupFeed.today_new_member.has()) && (paramShareGroupFeed.today_new_member.get() != null))
     {
-      qqstory_struct.UserInfo localUserInfo = (qqstory_struct.UserInfo)paramShareGroupFeed.next();
-      QQUserUIItem localQQUserUIItem = new QQUserUIItem();
-      localQQUserUIItem.convertFrom(localUserInfo);
-      localStringBuilder.append(localQQUserUIItem.getName());
-      localStringBuilder.append("、");
+      StringBuilder localStringBuilder = new StringBuilder();
+      this.todayJoinMemberCount = paramShareGroupFeed.today_new_member.get().size();
+      paramShareGroupFeed = paramShareGroupFeed.today_new_member.get().iterator();
+      while (paramShareGroupFeed.hasNext())
+      {
+        qqstory_struct.UserInfo localUserInfo = (qqstory_struct.UserInfo)paramShareGroupFeed.next();
+        QQUserUIItem localQQUserUIItem = new QQUserUIItem();
+        localQQUserUIItem.convertFrom(localUserInfo);
+        localStringBuilder.append(localQQUserUIItem.getName());
+        localStringBuilder.append("、");
+      }
+      localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+      return localStringBuilder.toString();
     }
-    localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
-    return localStringBuilder.toString();
+    return "";
   }
   
   public static ShareGroupFeedItem createFakeFeedItem(String paramString1, String paramString2)
@@ -77,16 +78,19 @@ public class ShareGroupFeedItem
   {
     super.copy(paramObject);
     paramObject = (ShareGroupFeedItem)paramObject;
-    AssertUtils.a(this.mOwner);
+    AssertUtils.checkNotNull(this.mOwner);
     this.mOwner.copy(paramObject.mOwner);
-    if (paramObject.des != null) {
-      this.des = paramObject.des;
+    String str = paramObject.des;
+    if (str != null) {
+      this.des = str;
     }
-    if (paramObject.videoCount != -1) {
-      this.videoCount = paramObject.videoCount;
+    int i = paramObject.videoCount;
+    if (i != -1) {
+      this.videoCount = i;
     }
-    if (paramObject.todayJoinMemberCount != -1) {
-      this.todayJoinMemberCount = paramObject.todayJoinMemberCount;
+    i = paramObject.todayJoinMemberCount;
+    if (i != -1) {
+      this.todayJoinMemberCount = i;
     }
   }
   
@@ -96,20 +100,22 @@ public class ShareGroupFeedItem
     paramString = (qqstory_struct.ShareGroupFeed)paramStoryFeed.share_group_feed.get();
     setDate(String.valueOf(paramString.date.get()));
     this.mVideoSeq = paramString.seq.get();
-    if (paramString.is_end.get() == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.mIsVideoEnd = bool;
-      this.mVideoNextCookie = paramString.next_cookie.get().toStringUtf8();
-      this.mVideoPullType = paramString.pull_type.get();
-      this.videoCount = paramString.video_total.get();
-      this.des = a(paramString);
-      this.mOwner = new ShareGroupItem();
-      this.mOwner.convertFrom(paramString.info);
-      this.ownerId = this.mOwner.shareGroupId;
-      this.mOwner = ((ShareGroupManager)SuperManager.a(7)).a(this.mOwner);
-      return true;
+    boolean bool;
+    if (paramString.is_end.get() == 1) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.mIsVideoEnd = bool;
+    this.mVideoNextCookie = paramString.next_cookie.get().toStringUtf8();
+    this.mVideoPullType = paramString.pull_type.get();
+    this.videoCount = paramString.video_total.get();
+    this.des = a(paramString);
+    this.mOwner = new ShareGroupItem();
+    this.mOwner.convertFrom(paramString.info);
+    this.ownerId = this.mOwner.shareGroupId;
+    this.mOwner = ((ShareGroupManager)SuperManager.a(7)).a(this.mOwner);
+    return true;
   }
   
   public byte[] covertToByte()
@@ -118,14 +124,16 @@ public class ShareGroupFeedItem
     localShareGroupFeed.video_list_feed.set(super.writeVideoListFeedLocalPB());
     localShareGroupFeed.video_count.set(this.videoCount);
     PBStringField localPBStringField = localShareGroupFeed.des;
-    if (TextUtils.isEmpty(this.des)) {}
-    for (String str = "";; str = this.des)
-    {
-      localPBStringField.set(str);
-      localShareGroupFeed.today_join_member_count.set(this.todayJoinMemberCount);
-      AssertUtils.a(this.des);
-      return localShareGroupFeed.toByteArray();
+    String str;
+    if (TextUtils.isEmpty(this.des)) {
+      str = "";
+    } else {
+      str = this.des;
     }
+    localPBStringField.set(str);
+    localShareGroupFeed.today_join_member_count.set(this.todayJoinMemberCount);
+    AssertUtils.checkNotNull(this.des);
+    return localShareGroupFeed.toByteArray();
   }
   
   @NonNull
@@ -156,7 +164,7 @@ public class ShareGroupFeedItem
   protected void onCovertFromEntry()
   {
     super.onCovertFromEntry();
-    AssertUtils.a(this.ownerId);
+    AssertUtils.checkNotEmpty(this.ownerId);
     if (!TextUtils.isEmpty(this.ownerId)) {
       this.mOwner = ((ShareGroupManager)SuperManager.a(7)).b(this.ownerId);
     }
@@ -181,12 +189,22 @@ public class ShareGroupFeedItem
   
   public String toString()
   {
-    return "ShareGroupFeedItem{mOwner=" + this.mOwner + ", des='" + this.des + '\'' + ", videoCount=" + this.videoCount + '}' + super.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ShareGroupFeedItem{mOwner=");
+    localStringBuilder.append(this.mOwner);
+    localStringBuilder.append(", des='");
+    localStringBuilder.append(this.des);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", videoCount=");
+    localStringBuilder.append(this.videoCount);
+    localStringBuilder.append('}');
+    localStringBuilder.append(super.toString());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem
  * JD-Core Version:    0.7.0.1
  */

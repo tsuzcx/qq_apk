@@ -35,16 +35,24 @@ public class MessageForFuDai
   
   public String getSummaryMsg()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageForFuDai", 2, "getSummaryMsg() called fdTxt=" + this.fdTxt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getSummaryMsg() called fdTxt=");
+      localStringBuilder.append(this.fdTxt);
+      QLog.d("MessageForFuDai", 2, localStringBuilder.toString());
     }
     return this.fdTxt;
   }
   
   public String highlightMsg()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageForFuDai", 2, "highlightMsg Txt=" + this.highlightMsg);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("highlightMsg Txt=");
+      localStringBuilder.append(this.highlightMsg);
+      QLog.d("MessageForFuDai", 2, localStringBuilder.toString());
     }
     return this.highlightMsg;
   }
@@ -61,7 +69,8 @@ public class MessageForFuDai
   
   public boolean isGrabByMe()
   {
-    return (this.state == 3) || (this.state == 7);
+    int i = this.state;
+    return (i == 3) || (i == 7);
   }
   
   public boolean isSupportReply()
@@ -74,19 +83,53 @@ public class MessageForFuDai
     this.currentFrame = paramInt;
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     this.msgData = MessageForFuDai.Encoder.a(this);
   }
   
   public String toString()
   {
-    return "MessageForFuDai{hostUin='" + MsfSdkUtils.getShortUin(this.hostUin) + '\'' + ", fdId='" + this.fdId + '\'' + ", shareType=" + this.shareType + ", targetId='" + this.targetId + '\'' + ", fdTxt='" + this.fdTxt + '\'' + ", aioTails='" + this.aioTails + '\'' + ", state=" + this.state + ", busiId=" + this.busiId + ", highlightMsg='" + this.highlightMsg + '\'' + ", themeId=" + this.themeId + ", expireTime=" + this.expireTime + ", currentFrame=" + this.currentFrame + ", useDefaultImag=" + this.useDefaultImag + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MessageForFuDai{hostUin='");
+    localStringBuilder.append(MsfSdkUtils.getShortUin(this.hostUin));
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", fdId='");
+    localStringBuilder.append(this.fdId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", shareType=");
+    localStringBuilder.append(this.shareType);
+    localStringBuilder.append(", targetId='");
+    localStringBuilder.append(this.targetId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", fdTxt='");
+    localStringBuilder.append(this.fdTxt);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", aioTails='");
+    localStringBuilder.append(this.aioTails);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", state=");
+    localStringBuilder.append(this.state);
+    localStringBuilder.append(", busiId=");
+    localStringBuilder.append(this.busiId);
+    localStringBuilder.append(", highlightMsg='");
+    localStringBuilder.append(this.highlightMsg);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", themeId=");
+    localStringBuilder.append(this.themeId);
+    localStringBuilder.append(", expireTime=");
+    localStringBuilder.append(this.expireTime);
+    localStringBuilder.append(", currentFrame=");
+    localStringBuilder.append(this.currentFrame);
+    localStringBuilder.append(", useDefaultImag=");
+    localStringBuilder.append(this.useDefaultImag);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForFuDai
  * JD-Core Version:    0.7.0.1
  */

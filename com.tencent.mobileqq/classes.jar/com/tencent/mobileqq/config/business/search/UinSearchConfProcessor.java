@@ -21,8 +21,12 @@ public class UinSearchConfProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       UinSearchConfProcessor.UinSearchConfigBean localUinSearchConfigBean = UinSearchConfProcessor.UinSearchConfigBean.a(paramArrayOfQConfItem[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.i("UinSearchConfProcessor", 2, "onParsed: " + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed: ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.i("UinSearchConfProcessor", 2, localStringBuilder.toString());
       }
       return localUinSearchConfigBean;
     }
@@ -63,8 +67,12 @@ public class UinSearchConfProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("UinSearchConfProcessor", 2, "onReqFailed: " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqFailed: ");
+      localStringBuilder.append(paramInt);
+      QLog.i("UinSearchConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -75,7 +83,7 @@ public class UinSearchConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.search.UinSearchConfProcessor
  * JD-Core Version:    0.7.0.1
  */

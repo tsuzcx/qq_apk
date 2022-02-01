@@ -15,7 +15,10 @@ public class ViewModelProvider
     this.mViewModelStore = paramViewModelStore;
   }
   
-  public ViewModelProvider(@NonNull ViewModelStoreOwner paramViewModelStoreOwner) {}
+  public ViewModelProvider(@NonNull ViewModelStoreOwner paramViewModelStoreOwner)
+  {
+    this(localViewModelStore, paramViewModelStoreOwner);
+  }
   
   public ViewModelProvider(@NonNull ViewModelStoreOwner paramViewModelStoreOwner, @NonNull ViewModelProvider.Factory paramFactory)
   {
@@ -27,35 +30,42 @@ public class ViewModelProvider
   public <T extends ViewModel> T get(@NonNull Class<T> paramClass)
   {
     String str = paramClass.getCanonicalName();
-    if (str == null) {
-      throw new IllegalArgumentException("Local and anonymous classes can not be ViewModels");
+    if (str != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("androidx.lifecycle.ViewModelProvider.DefaultKey:");
+      localStringBuilder.append(str);
+      return get(localStringBuilder.toString(), paramClass);
     }
-    return get("androidx.lifecycle.ViewModelProvider.DefaultKey:" + str, paramClass);
+    throw new IllegalArgumentException("Local and anonymous classes can not be ViewModels");
   }
   
   @MainThread
   @NonNull
   public <T extends ViewModel> T get(@NonNull String paramString, @NonNull Class<T> paramClass)
   {
-    ViewModel localViewModel = this.mViewModelStore.get(paramString);
-    if (paramClass.isInstance(localViewModel))
+    Object localObject = this.mViewModelStore.get(paramString);
+    if (paramClass.isInstance(localObject))
     {
-      if ((this.mFactory instanceof ViewModelProvider.OnRequeryFactory)) {
-        ((ViewModelProvider.OnRequeryFactory)this.mFactory).onRequery(localViewModel);
+      paramString = this.mFactory;
+      if ((paramString instanceof ViewModelProvider.OnRequeryFactory)) {
+        ((ViewModelProvider.OnRequeryFactory)paramString).onRequery((ViewModel)localObject);
       }
-      return localViewModel;
+      return localObject;
     }
-    if ((localViewModel == null) || ((this.mFactory instanceof ViewModelProvider.KeyedFactory))) {}
-    for (paramClass = ((ViewModelProvider.KeyedFactory)this.mFactory).create(paramString, paramClass);; paramClass = this.mFactory.create(paramClass))
-    {
-      this.mViewModelStore.put(paramString, paramClass);
-      return paramClass;
+    localObject = this.mFactory;
+    if ((localObject instanceof ViewModelProvider.KeyedFactory)) {
+      paramClass = ((ViewModelProvider.KeyedFactory)localObject).create(paramString, paramClass);
+    } else {
+      paramClass = ((ViewModelProvider.Factory)localObject).create(paramClass);
     }
+    this.mViewModelStore.put(paramString, paramClass);
+    return paramClass;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.lifecycle.ViewModelProvider
  * JD-Core Version:    0.7.0.1
  */

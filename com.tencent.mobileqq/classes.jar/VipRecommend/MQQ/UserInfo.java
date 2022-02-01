@@ -47,14 +47,15 @@ public final class UserInfo
     paramJceOutputStream.write(this.aid, 3);
     paramJceOutputStream.write(this.version, 4);
     paramJceOutputStream.write(this.isIOSJailbreak, 5);
-    if (this.type != null) {
-      paramJceOutputStream.write(this.type, 6);
+    String str = this.type;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VipRecommend.MQQ.UserInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -23,10 +23,9 @@ public class JumpQqPimSecureUtil
 {
   public static void a(Context paramContext, String paramString, int paramInt)
   {
-    Intent localIntent;
     if (paramContext != null)
     {
-      localIntent = paramContext.getPackageManager().getLaunchIntentForPackage("com.tencent.qqpimsecure");
+      Intent localIntent = paramContext.getPackageManager().getLaunchIntentForPackage("com.tencent.qqpimsecure");
       if (localIntent != null)
       {
         Bundle localBundle = new Bundle();
@@ -37,25 +36,19 @@ public class JumpQqPimSecureUtil
           localBundle.putInt("dest_view", paramInt);
         }
         localIntent.putExtras(localBundle);
-        if (paramInt != 9502721) {
-          break label93;
+        if (paramInt == 9502721) {
+          localIntent.putExtra("big_brother_source_key", "biz_src_tmm");
+        } else {
+          localIntent.putExtra("big_brother_source_key", "biz_src_safe");
         }
-        localIntent.putExtra("big_brother_source_key", "biz_src_tmm");
+        localIntent.setFlags(402653184);
+        paramContext.startActivity(localIntent);
       }
-    }
-    for (;;)
-    {
-      localIntent.setFlags(402653184);
-      paramContext.startActivity(localIntent);
-      return;
-      label93:
-      localIntent.putExtra("big_brother_source_key", "biz_src_safe");
     }
   }
   
   public static boolean a(Context paramContext)
   {
-    boolean bool1 = false;
     try
     {
       paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.qqpimsecure", 64).signatures;
@@ -65,39 +58,22 @@ public class JumpQqPimSecureUtil
       }
       paramContext = ((MessageDigest)localObject).digest();
       localObject = new char[16];
-      Object tmp58_56 = localObject;
-      tmp58_56[0] = 48;
-      Object tmp63_58 = tmp58_56;
-      tmp63_58[1] = 49;
-      Object tmp68_63 = tmp63_58;
-      tmp68_63[2] = 50;
-      Object tmp73_68 = tmp68_63;
-      tmp73_68[3] = 51;
-      Object tmp78_73 = tmp73_68;
-      tmp78_73[4] = 52;
-      Object tmp83_78 = tmp78_73;
-      tmp83_78[5] = 53;
-      Object tmp88_83 = tmp83_78;
-      tmp88_83[6] = 54;
-      Object tmp94_88 = tmp88_83;
-      tmp94_88[7] = 55;
-      Object tmp100_94 = tmp94_88;
-      tmp100_94[8] = 56;
-      Object tmp106_100 = tmp100_94;
-      tmp106_100[9] = 57;
-      Object tmp112_106 = tmp106_100;
-      tmp112_106[10] = 65;
-      Object tmp118_112 = tmp112_106;
-      tmp118_112[11] = 66;
-      Object tmp124_118 = tmp118_112;
-      tmp124_118[12] = 67;
-      Object tmp130_124 = tmp124_118;
-      tmp130_124[13] = 68;
-      Object tmp136_130 = tmp130_124;
-      tmp136_130[14] = 69;
-      Object tmp142_136 = tmp136_130;
-      tmp142_136[15] = 70;
-      tmp142_136;
+      localObject[0] = 48;
+      localObject[1] = 49;
+      localObject[2] = 50;
+      localObject[3] = 51;
+      localObject[4] = 52;
+      localObject[5] = 53;
+      localObject[6] = 54;
+      localObject[7] = 55;
+      localObject[8] = 56;
+      localObject[9] = 57;
+      localObject[10] = 65;
+      localObject[11] = 66;
+      localObject[12] = 67;
+      localObject[13] = 68;
+      localObject[14] = 69;
+      localObject[15] = 70;
       StringBuilder localStringBuilder = new StringBuilder(paramContext.length * 2);
       int i = 0;
       while (i < paramContext.length)
@@ -108,14 +84,13 @@ public class JumpQqPimSecureUtil
       }
       if (!"00B1208638DE0FCD3E920886D658DAF6".equalsIgnoreCase(localStringBuilder.toString()))
       {
-        boolean bool2 = "7CC749CFC0FB5677E6ABA342EDBDBA5A".equalsIgnoreCase(localStringBuilder.toString());
-        if (!bool2) {}
+        boolean bool = "7CC749CFC0FB5677E6ABA342EDBDBA5A".equalsIgnoreCase(localStringBuilder.toString());
+        if (!bool) {}
       }
       else
       {
-        bool1 = true;
+        return true;
       }
-      return bool1;
     }
     catch (Exception paramContext)
     {
@@ -133,31 +108,36 @@ public class JumpQqPimSecureUtil
       if (localObject1 != null)
       {
         localObject1 = ((List)localObject1).iterator();
-        do
-        {
-          if (!((Iterator)localObject1).hasNext()) {
-            break;
+        while (((Iterator)localObject1).hasNext()) {
+          if ("com.tencent.qqpimsecure".equalsIgnoreCase(((ActivityManager.RunningAppProcessInfo)((Iterator)localObject1).next()).processName))
+          {
+            bool1 = true;
+            break label64;
           }
-        } while (!"com.tencent.qqpimsecure".equalsIgnoreCase(((ActivityManager.RunningAppProcessInfo)((Iterator)localObject1).next()).processName));
+        }
       }
     }
-    for (boolean bool1 = true;; bool1 = false)
+    boolean bool1 = false;
+    label64:
+    boolean bool2 = bool1;
+    if (!bool1)
     {
-      if ((!bool1) && (Build.VERSION.SDK_INT >= 21)) {}
-      boolean bool2;
-      for (;;)
-      {
+      bool2 = bool1;
+      if (Build.VERSION.SDK_INT >= 21) {
         try
         {
           localObject1 = new BufferedReader(new InputStreamReader(Runtime.getRuntime().exec(new String[] { "ps" }).getInputStream()));
-          Object localObject2 = ((BufferedReader)localObject1).readLine();
-          bool2 = bool1;
-          if (localObject2 != null)
+          do
           {
-            if (((String)localObject2).indexOf("com.tencent.qqpimsecure") == -1) {
-              continue;
-            }
-            localObject2 = new StringTokenizer((String)localObject2, " ");
+            do
+            {
+              localObject2 = ((BufferedReader)localObject1).readLine();
+              bool2 = bool1;
+              if (localObject2 == null) {
+                break;
+              }
+            } while (((String)localObject2).indexOf("com.tencent.qqpimsecure") == -1);
+            Object localObject2 = new StringTokenizer((String)localObject2, " ");
             ((StringTokenizer)localObject2).nextToken();
             ((StringTokenizer)localObject2).nextToken();
             ((StringTokenizer)localObject2).nextToken();
@@ -167,59 +147,50 @@ public class JumpQqPimSecureUtil
             ((StringTokenizer)localObject2).nextToken();
             ((StringTokenizer)localObject2).nextToken();
             bool2 = TextUtils.equals(((StringTokenizer)localObject2).nextToken().trim(), "com.tencent.qqpimsecure");
-            if (!bool2) {
-              continue;
-            }
-            bool2 = true;
-          }
-          if ((bool2) || (Build.VERSION.SDK_INT <= 23) || (paramContext == null)) {
-            break;
-          }
-          paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningServices(2147483647);
-          if (paramContext == null) {
-            break;
-          }
-          paramContext = paramContext.iterator();
-          if (!paramContext.hasNext()) {
-            break;
-          }
-          localObject1 = (ActivityManager.RunningServiceInfo)paramContext.next();
-          if ((localObject1 == null) || (((ActivityManager.RunningServiceInfo)localObject1).service == null) || (((ActivityManager.RunningServiceInfo)localObject1).process == null) || (!((ActivityManager.RunningServiceInfo)localObject1).process.contains("com.tencent.qqpimsecure"))) {
-            continue;
-          }
-          return true;
+          } while (!bool2);
+          bool2 = true;
         }
         catch (Throwable localThrowable)
         {
           localThrowable.printStackTrace();
+          bool2 = bool1;
         }
-        bool2 = bool1;
       }
-      return bool2;
     }
+    if ((!bool2) && (Build.VERSION.SDK_INT > 23) && (paramContext != null))
+    {
+      paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningServices(2147483647);
+      if (paramContext != null)
+      {
+        paramContext = paramContext.iterator();
+        while (paramContext.hasNext())
+        {
+          ActivityManager.RunningServiceInfo localRunningServiceInfo = (ActivityManager.RunningServiceInfo)paramContext.next();
+          if ((localRunningServiceInfo != null) && (localRunningServiceInfo.service != null) && (localRunningServiceInfo.process != null) && (localRunningServiceInfo.process.contains("com.tencent.qqpimsecure"))) {
+            return true;
+          }
+        }
+      }
+    }
+    return bool2;
   }
   
   public static boolean c(Context paramContext)
   {
-    boolean bool2 = false;
     try
     {
       paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.qqpimsecure", 0);
-      boolean bool1 = bool2;
       if (paramContext != null)
       {
         paramContext = paramContext.versionName;
-        bool1 = bool2;
         if (paramContext != null)
         {
-          boolean bool3 = paramContext.contains("mini");
-          bool1 = bool2;
-          if (bool3) {
-            bool1 = true;
+          boolean bool = paramContext.contains("mini");
+          if (bool) {
+            return true;
           }
         }
       }
-      return bool1;
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
@@ -230,25 +201,20 @@ public class JumpQqPimSecureUtil
   
   public static boolean d(Context paramContext)
   {
-    boolean bool2 = false;
     try
     {
       paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.qqpimsecure", 0);
-      boolean bool1 = bool2;
       if (paramContext != null)
       {
         paramContext = paramContext.versionName;
-        bool1 = bool2;
         if (paramContext != null)
         {
-          boolean bool3 = paramContext.contains("minipay");
-          bool1 = bool2;
-          if (bool3) {
-            bool1 = true;
+          boolean bool = paramContext.contains("minipay");
+          if (bool) {
+            return true;
           }
         }
       }
-      return bool1;
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
@@ -259,20 +225,16 @@ public class JumpQqPimSecureUtil
   
   public static boolean e(Context paramContext)
   {
-    boolean bool2 = false;
     try
     {
       paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.qqpimsecure", 0);
-      boolean bool1 = bool2;
       if (paramContext != null)
       {
         int i = paramContext.versionCode;
-        bool1 = bool2;
         if (i >= 198) {
-          bool1 = true;
+          return true;
         }
       }
-      return bool1;
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
@@ -288,7 +250,7 @@ public class JumpQqPimSecureUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.JumpQqPimSecureUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -32,12 +32,18 @@ public class WeSeeVideoPluginConfigInfo
   
   public String toString()
   {
-    return "WeSeeVideoPluginConfigInfo{mIsPreloadPluginInWsRecommend=" + this.jdField_a_of_type_Boolean + ", mQueryPluginTimeInterval=" + this.jdField_a_of_type_Long + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WeSeeVideoPluginConfigInfo{mIsPreloadPluginInWsRecommend=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", mQueryPluginTimeInterval=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.config.WeSeeVideoPluginConfigInfo
  * JD-Core Version:    0.7.0.1
  */

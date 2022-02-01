@@ -14,12 +14,22 @@ public class ZhituReportRequest
   
   public String toString()
   {
-    return "ZhituReportRequest{, type=" + this.jdField_a_of_type_Int + ", md5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", text='" + MD5.a(this.b) + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ZhituReportRequest{, type=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", md5='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", text='");
+    localStringBuilder.append(MD5.a(this.b));
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituReportRequest
  * JD-Core Version:    0.7.0.1
  */

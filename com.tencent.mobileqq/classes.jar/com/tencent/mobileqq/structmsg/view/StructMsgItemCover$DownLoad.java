@@ -22,30 +22,37 @@ public class StructMsgItemCover$DownLoad
     try
     {
       paramVarArgs = new URL(paramVarArgs[0]);
-      return Boolean.valueOf(false);
     }
     catch (Exception paramVarArgs)
     {
-      try
-      {
-        paramVarArgs = (HttpURLConnection)paramVarArgs.openConnection();
-        paramVarArgs.setDoInput(true);
-        paramVarArgs.setConnectTimeout(30000);
-        paramVarArgs.setReadTimeout(30000);
-        paramVarArgs.connect();
-        paramVarArgs = paramVarArgs.getInputStream();
-        this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeStream(paramVarArgs);
-        paramVarArgs.close();
-        return Boolean.valueOf(true);
-      }
-      catch (Exception paramVarArgs)
-      {
-        return Boolean.valueOf(false);
-      }
-      catch (OutOfMemoryError paramVarArgs) {}
-      paramVarArgs = paramVarArgs;
-      return Boolean.valueOf(false);
+      label64:
+      label69:
+      label74:
+      break label74;
     }
+    try
+    {
+      paramVarArgs = (HttpURLConnection)paramVarArgs.openConnection();
+      paramVarArgs.setDoInput(true);
+      paramVarArgs.setConnectTimeout(30000);
+      paramVarArgs.setReadTimeout(30000);
+      paramVarArgs.connect();
+      paramVarArgs = paramVarArgs.getInputStream();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeStream(paramVarArgs);
+      paramVarArgs.close();
+      return Boolean.valueOf(true);
+    }
+    catch (Exception paramVarArgs)
+    {
+      break label69;
+    }
+    catch (OutOfMemoryError paramVarArgs)
+    {
+      break label64;
+    }
+    return Boolean.valueOf(false);
+    return Boolean.valueOf(false);
+    return Boolean.valueOf(false);
   }
   
   protected void a(Boolean paramBoolean)
@@ -65,7 +72,7 @@ public class StructMsgItemCover$DownLoad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemCover.DownLoad
  * JD-Core Version:    0.7.0.1
  */

@@ -23,49 +23,49 @@ public class ModuleSimpleHolder<T extends BaseModule>
   
   private void generateMethodMap()
   {
-    ViolaLogUtils.d("TypeModuleFactory", "extractMethodNames:" + this.mClazz.getSimpleName());
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("extractMethodNames:");
+    ((StringBuilder)localObject1).append(this.mClazz.getSimpleName());
+    ViolaLogUtils.d("TypeModuleFactory", ((StringBuilder)localObject1).toString());
     HashMap localHashMap = new HashMap();
-    label213:
-    for (;;)
+    try
     {
-      try
+      Object localObject2 = this.mClazz.getMethods();
+      int k = localObject2.length;
+      int i = 0;
+      while (i < k)
       {
-        Method[] arrayOfMethod = this.mClazz.getMethods();
-        int k = arrayOfMethod.length;
-        int i = 0;
-        if (i < k)
+        Method localMethod = localObject2[i];
+        localObject1 = localMethod.getDeclaredAnnotations();
+        int m = localObject1.length;
+        int j = 0;
+        while (j < m)
         {
-          Method localMethod = arrayOfMethod[i];
-          Object localObject = localMethod.getDeclaredAnnotations();
-          int m = localObject.length;
-          int j = 0;
-          if (j >= m) {
-            break label213;
-          }
-          JSMethod localJSMethod = localObject[j];
+          JSMethod localJSMethod = localObject1[j];
           if ((localJSMethod != null) && ((localJSMethod instanceof JSMethod)))
           {
             localJSMethod = (JSMethod)localJSMethod;
-            if ("_".equals(localJSMethod.alias()))
-            {
-              localObject = localMethod.getName();
-              localHashMap.put(localObject, new MethodInvoker(localMethod, localJSMethod.uiThread()));
-              break label213;
+            if ("_".equals(localJSMethod.alias())) {
+              localObject1 = localMethod.getName();
+            } else {
+              localObject1 = localJSMethod.alias();
             }
-            localObject = localJSMethod.alias();
-            continue;
+            localHashMap.put(localObject1, new MethodInvoker(localMethod, localJSMethod.uiThread()));
+            break;
           }
           j += 1;
-          continue;
         }
         i += 1;
       }
-      catch (Throwable localThrowable)
-      {
-        ViolaLogUtils.e("TypeModuleFactory", "[ModuleManager] extractMethodNames:" + localThrowable);
-        this.mMethodMap = localHashMap;
-        return;
-      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[ModuleManager] extractMethodNames:");
+      ((StringBuilder)localObject2).append(localThrowable);
+      ViolaLogUtils.e("TypeModuleFactory", ((StringBuilder)localObject2).toString());
+      this.mMethodMap = localHashMap;
     }
   }
   
@@ -93,7 +93,7 @@ public class ModuleSimpleHolder<T extends BaseModule>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.module.ModuleSimpleHolder
  * JD-Core Version:    0.7.0.1
  */

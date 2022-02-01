@@ -30,38 +30,44 @@ public final class j
   
   private void a(c paramc, Throwable paramThrowable)
   {
-    if ((paramc == null) || (paramThrowable == null)) {}
-    do
-    {
-      return;
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("scene", "AppBrandRuntimeContainer init");
-        localJSONObject.put("miniAppId", paramc.d);
-        if (paramc.b != null) {
-          localJSONObject.put("page", paramc.b.f);
-        }
-        paramc = new StringBuilder(256);
-        paramc.append(paramThrowable.toString());
-        if (paramThrowable.getStackTrace() != null)
-        {
-          StackTraceElement[] arrayOfStackTraceElement = paramThrowable.getStackTrace();
-          int i = 0;
-          while ((i < arrayOfStackTraceElement.length) && (i < 16))
-          {
-            paramc.append("\n ");
-            paramc.append(arrayOfStackTraceElement[i].toString());
-            i += 1;
-          }
-        }
-        paramc = paramc.toString();
-        VACDReportUtil.a(localJSONObject.toString(), "MiniAppStat", "MiniAppCrashReport", "Catch", null, 88888, paramc);
+    if (paramc != null) {
+      if (paramThrowable == null) {
         return;
       }
-      catch (Throwable paramc) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("AppBrandRuntimeContainer", 2, paramThrowable, new Object[0]);
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("scene", "AppBrandRuntimeContainer init");
+      localJSONObject.put("miniAppId", paramc.d);
+      if (paramc.b != null) {
+        localJSONObject.put("page", paramc.b.f);
+      }
+      paramc = new StringBuilder(256);
+      paramc.append(paramThrowable.toString());
+      if (paramThrowable.getStackTrace() != null)
+      {
+        StackTraceElement[] arrayOfStackTraceElement = paramThrowable.getStackTrace();
+        int i = 0;
+        while ((i < arrayOfStackTraceElement.length) && (i < 16))
+        {
+          paramc.append("\n ");
+          paramc.append(arrayOfStackTraceElement[i].toString());
+          i += 1;
+        }
+      }
+      paramc = paramc.toString();
+      VACDReportUtil.singleReport(localJSONObject.toString(), "MiniAppStat", "MiniAppCrashReport", "Catch", null, 88888, paramc);
+      return;
+    }
+    catch (Throwable paramc)
+    {
+      label160:
+      break label160;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("AppBrandRuntimeContainer", 2, paramThrowable, new Object[0]);
+    }
   }
   
   public final a a()
@@ -71,13 +77,19 @@ public final class j
   
   public a a(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppBrandRuntimeContainer", 2, "getAppBrandRunTime appId=" + paramString + ",versionType=" + paramInt);
-    }
-    Iterator localIterator = this.c.iterator();
-    while (localIterator.hasNext())
+    if (QLog.isColorLevel())
     {
-      a locala = (a)localIterator.next();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getAppBrandRunTime appId=");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(",versionType=");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("AppBrandRuntimeContainer", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.c.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      a locala = (a)((Iterator)localObject).next();
       if ((locala.a.equals(paramString)) && (paramInt == locala.b)) {
         return locala;
       }
@@ -116,8 +128,12 @@ public final class j
   
   public void a(a parama)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppBrandRuntimeContainer", 2, "bringToFront appBrandRuntime=" + parama);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("bringToFront appBrandRuntime=");
+      localStringBuilder.append(parama);
+      QLog.d("AppBrandRuntimeContainer", 2, localStringBuilder.toString());
     }
     if (parama != null)
     {
@@ -137,8 +153,16 @@ public final class j
   public final void b(a parama)
   {
     a locala = (a)this.c.peekLast();
-    if (QLog.isColorLevel()) {
-      QLog.d("AppBrandRuntimeContainer", 2, "addAppBrandRunTime currSize=" + c() + ",insertAppBrandRunTime=" + parama + ",lastAppBrandRuntime=" + locala);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addAppBrandRunTime currSize=");
+      localStringBuilder.append(c());
+      localStringBuilder.append(",insertAppBrandRunTime=");
+      localStringBuilder.append(parama);
+      localStringBuilder.append(",lastAppBrandRuntime=");
+      localStringBuilder.append(locala);
+      QLog.d("AppBrandRuntimeContainer", 2, localStringBuilder.toString());
     }
     this.c.push(parama);
     this.a.addView(parama.g);
@@ -154,8 +178,12 @@ public final class j
   
   public final void c(a parama)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppBrandRuntimeContainer", 2, "removeAppBrandRunTime r=" + parama);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("removeAppBrandRunTime r=");
+      localStringBuilder.append(parama);
+      QLog.d("AppBrandRuntimeContainer", 2, localStringBuilder.toString());
     }
     if (parama != null)
     {
@@ -167,18 +195,22 @@ public final class j
   
   public final void d()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppBrandRuntimeContainer", 2, "cleanup appRunTime size = " + c());
-    }
-    Iterator localIterator = this.c.iterator();
-    while (localIterator.hasNext())
+    if (QLog.isColorLevel())
     {
-      a locala = (a)localIterator.next();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("cleanup appRunTime size = ");
+      ((StringBuilder)localObject).append(c());
+      QLog.d("AppBrandRuntimeContainer", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.c.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      a locala = (a)((Iterator)localObject).next();
       if (locala != null)
       {
         this.a.removeView(locala.g);
         locala.a();
-        localIterator.remove();
+        ((Iterator)localObject).remove();
       }
     }
   }
@@ -191,7 +223,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.j
  * JD-Core Version:    0.7.0.1
  */

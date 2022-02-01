@@ -136,10 +136,12 @@ public abstract class RecyclerView$Adapter<VH extends RecyclerView.ViewHolder>
   
   public void setHasStableIds(boolean paramBoolean)
   {
-    if (hasObservers()) {
-      throw new IllegalStateException("Cannot change whether this adapter has stable IDs while the adapter has registered observers.");
+    if (!hasObservers())
+    {
+      this.mHasStableIds = paramBoolean;
+      return;
     }
-    this.mHasStableIds = paramBoolean;
+    throw new IllegalStateException("Cannot change whether this adapter has stable IDs while the adapter has registered observers.");
   }
   
   public void unregisterAdapterDataObserver(RecyclerView.AdapterDataObserver paramAdapterDataObserver)

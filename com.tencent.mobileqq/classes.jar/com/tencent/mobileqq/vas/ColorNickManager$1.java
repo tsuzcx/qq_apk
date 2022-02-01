@@ -4,7 +4,7 @@ import android.text.Editable;
 import android.widget.EditText;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.model.QueryCallback;
+import com.tencent.mobileqq.emoticonview.QueryCallback;
 
 final class ColorNickManager$1
   implements QueryCallback<EmoticonPackage>
@@ -13,9 +13,9 @@ final class ColorNickManager$1
   
   public void a(EmoticonPackage paramEmoticonPackage)
   {
-    int j = 0;
-    char[] arrayOfChar1 = EmosmUtils.b(this.jdField_a_of_type_Int, this.b);
+    char[] arrayOfChar1 = EmosmUtils.a(this.jdField_a_of_type_Int, this.b);
     char[] arrayOfChar2 = new char[7];
+    int j = 0;
     arrayOfChar2[0] = '<';
     arrayOfChar2[1] = '$';
     arrayOfChar2[2] = arrayOfChar1[0];
@@ -48,7 +48,7 @@ final class ColorNickManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorNickManager.1
  * JD-Core Version:    0.7.0.1
  */

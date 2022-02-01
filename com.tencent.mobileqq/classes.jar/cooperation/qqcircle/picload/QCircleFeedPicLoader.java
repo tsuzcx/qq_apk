@@ -45,7 +45,7 @@ public class QCircleFeedPicLoader
   public static final int DEFAULT_COMPARE_VALUE = 0;
   public static final int DEFAULT_DOWN_SPEED = -1;
   public static final int DEFAULT_TIME_COST = -1;
-  public static final String DOWNLOAD_ROOT_PATH = QCircleConstants.QCIRCLE_DOWNLOAD_ROOT_PATH + "feed_pic/";
+  public static final String DOWNLOAD_ROOT_PATH;
   public static final long ONE_KB = 1024L;
   public static final float ONE_SECONDS = 1000.0F;
   public static final float RATE_SAMPLE_SIZE = 1.4F;
@@ -76,13 +76,23 @@ public class QCircleFeedPicLoader
   private Handler mReportHandler;
   private Handler mUIHandler;
   
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(QCircleConstants.QCIRCLE_DOWNLOAD_ROOT_PATH);
+    localStringBuilder.append("feed_pic/");
+    DOWNLOAD_ROOT_PATH = localStringBuilder.toString();
+  }
+  
   private QCircleFeedPicLoader()
   {
-    int i = Runtime.getRuntime().availableProcessors();
-    this.mDownLoadExecutor = createPool(i + 1, i * 2 + 1);
-    this.mDecodeExecutor = createPool(i + 1, i * 2 + 1);
-    this.mPreloadDecodeExecutor = createPool(i + 1, i * 2 + 1);
-    this.mPreloadDownLoadExecutor = createPool(i + 1, i * 2 + 1);
+    int j = Runtime.getRuntime().availableProcessors();
+    int i = j + 1;
+    j = j * 2 + 1;
+    this.mDownLoadExecutor = createPool(i, j);
+    this.mDecodeExecutor = createPool(i, j);
+    this.mPreloadDecodeExecutor = createPool(i, j);
+    this.mPreloadDownLoadExecutor = createPool(i, j);
     this.mDownLoadTasks = new ConcurrentHashMap();
     this.mDecodeTasks = new ConcurrentHashMap();
     sKeyHashMap = new HashMap();
@@ -147,12 +157,13 @@ public class QCircleFeedPicLoader
     {
       if (l - Long.valueOf(str).longValue() >= sCacheTime)
       {
-        FileUtils.a(DOWNLOAD_ROOT_PATH);
+        FileUtils.deleteDirectory(DOWNLOAD_ROOT_PATH);
         SharePreferenceUtils.a(MobileQQ.sMobileQQ, "qcircle_pic_cache_time", String.valueOf(l));
       }
-      return;
     }
-    SharePreferenceUtils.a(MobileQQ.sMobileQQ, "qcircle_pic_cache_time", String.valueOf(l));
+    else {
+      SharePreferenceUtils.a(MobileQQ.sMobileQQ, "qcircle_pic_cache_time", String.valueOf(l));
+    }
   }
   
   public static ThreadPoolExecutor createPool(int paramInt1, int paramInt2)
@@ -163,14 +174,15 @@ public class QCircleFeedPicLoader
   private void doDownLoadPic(@NotNull Option paramOption, QCirclePicStateListener paramQCirclePicStateListener)
   {
     String str = getCacheKey(paramOption);
-    if ((paramOption.isFromPreload()) && (this.mDownLoadTasks.containsKey(str))) {}
-    do
-    {
+    if ((paramOption.isFromPreload()) && (this.mDownLoadTasks.containsKey(str))) {
       return;
-      localPicDownLoadTask = (PicDownLoadTask)this.mDownLoadTasks.get(str);
-    } while ((localPicDownLoadTask != null) && (localPicDownLoadTask.mOption.getTargetView() != null) && (localPicDownLoadTask.mOption.getTargetView() == paramOption.getTargetView()));
+    }
+    PicDownLoadTask localPicDownLoadTask = (PicDownLoadTask)this.mDownLoadTasks.get(str);
+    if ((localPicDownLoadTask != null) && (localPicDownLoadTask.mOption.getTargetView() != null) && (localPicDownLoadTask.mOption.getTargetView() == paramOption.getTargetView())) {
+      return;
+    }
     paramOption.mDownLoadStartTime = Long.valueOf(System.currentTimeMillis());
-    PicDownLoadTask localPicDownLoadTask = new PicDownLoadTask(paramOption);
+    localPicDownLoadTask = new PicDownLoadTask(paramOption);
     localPicDownLoadTask.setStatusListener(paramQCirclePicStateListener);
     this.mDownLoadTasks.put(str, localPicDownLoadTask);
     if (paramOption.isFromPreload())
@@ -183,15 +195,16 @@ public class QCircleFeedPicLoader
   
   public static QCircleFeedPicLoader g()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new QCircleFeedPicLoader();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new QCircleFeedPicLoader();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   private Object getCache(String paramString)
@@ -205,59 +218,57 @@ public class QCircleFeedPicLoader
   
   private String getEncodeString(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.w("QCircleFeedPicLoader", 1, "[getEncodeString] current url is null, not encode key.");
-    }
-    Object localObject2;
-    do
+    if (TextUtils.isEmpty(paramString))
     {
+      QLog.w("QCircleFeedPicLoader", 1, "[getEncodeString] current url is null, not encode key.");
       return paramString;
-      Object localObject1 = "";
-      String str = getUniKeyFromUrl(paramString);
-      if (!TextUtils.isEmpty(str))
+    }
+    String str3 = getUniKeyFromUrl(paramString);
+    String str1;
+    if (!TextUtils.isEmpty(str3))
+    {
+      String str2 = (String)mDecodeValueMap.get(str3);
+      str1 = str2;
+      if (TextUtils.isEmpty(str2))
       {
-        localObject2 = (String)mDecodeValueMap.get(str);
-        localObject1 = localObject2;
-        if (TextUtils.isEmpty((CharSequence)localObject2))
-        {
-          localObject1 = MD5Utils.encodeHexStr(str);
-          mDecodeValueMap.put(str, localObject1);
-        }
+        str1 = MD5Utils.encodeHexStr(str3);
+        mDecodeValueMap.put(str3, str1);
       }
-      localObject2 = localObject1;
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = MD5Utils.encodeFileHexStr(paramString);
-      }
-    } while (localObject2 == null);
-    return localObject2;
+    }
+    else
+    {
+      str1 = "";
+    }
+    if (TextUtils.isEmpty(str1)) {
+      str1 = MD5Utils.encodeFileHexStr(paramString);
+    }
+    if (str1 == null) {
+      return paramString;
+    }
+    return str1;
   }
   
   public static String getUniKeyFromUrl(String paramString)
   {
-    Object localObject1;
-    int i;
     if (!TextUtils.isEmpty(paramString))
     {
-      if ((sKeyHashMap != null) && (sKeyHashMap.containsKey(paramString)))
-      {
-        localObject1 = (String)sKeyHashMap.get(paramString);
-        return localObject1;
+      Object localObject1 = sKeyHashMap;
+      if ((localObject1 != null) && (((HashMap)localObject1).containsKey(paramString))) {
+        return (String)sKeyHashMap.get(paramString);
       }
-      i = paramString.indexOf("://");
-      if (i == -1) {
-        break label167;
+      int i = paramString.indexOf("://");
+      if (i != -1) {
+        localObject2 = paramString.substring(i + 3);
+      } else {
+        localObject2 = paramString;
       }
-    }
-    label167:
-    for (Object localObject2 = paramString.substring(i + 3);; localObject2 = paramString)
-    {
       i = ((String)localObject2).indexOf("/");
       localObject1 = localObject2;
       if (i != -1) {
         localObject1 = ((String)localObject2).substring(i);
       }
       i = ((String)localObject1).lastIndexOf("#");
-      localObject2 = localObject1;
+      Object localObject2 = localObject1;
       if (i != -1) {
         localObject2 = ((String)localObject1).substring(0, i);
       }
@@ -271,14 +282,13 @@ public class QCircleFeedPicLoader
       if (i != -1) {
         localObject2 = ((String)localObject1).substring(0, i);
       }
-      localObject1 = localObject2;
-      if (sKeyHashMap == null) {
-        break;
+      localObject1 = sKeyHashMap;
+      if (localObject1 != null) {
+        ((HashMap)localObject1).put(paramString, localObject2);
       }
-      sKeyHashMap.put(paramString, localObject2);
       return localObject2;
-      return "";
     }
+    return "";
   }
   
   private void postToMain(Option paramOption, Drawable paramDrawable, boolean paramBoolean)
@@ -318,21 +328,39 @@ public class QCircleFeedPicLoader
       if (paramBoolean) {
         reportLoadResult(paramOption, 0);
       }
-      RFLog.i("QCircleFeedPicLoader", RFLog.USR, "seq = " + paramOption.getSeq() + " cacheKey = " + paramOption.getCacheKey() + " showDrawable time " + (System.currentTimeMillis() - paramOption.mStartTime.longValue()) + "pic is valid");
+      i = RFLog.USR;
+      paramDrawable = new StringBuilder();
+      paramDrawable.append("seq = ");
+      paramDrawable.append(paramOption.getSeq());
+      paramDrawable.append(" cacheKey = ");
+      paramDrawable.append(paramOption.getCacheKey());
+      paramDrawable.append(" showDrawable time ");
+      paramDrawable.append(System.currentTimeMillis() - paramOption.mStartTime.longValue());
+      paramDrawable.append("pic is valid");
+      RFLog.i("QCircleFeedPicLoader", i, paramDrawable.toString());
       return;
     }
-    RFLog.i("QCircleFeedPicLoader", RFLog.USR, "seq = " + paramOption.getSeq() + " cacheKey = " + paramOption.getCacheKey() + " showDrawable time " + (System.currentTimeMillis() - paramOption.mStartTime.longValue()) + "pic is unValid");
+    int i = RFLog.USR;
+    paramDrawable = new StringBuilder();
+    paramDrawable.append("seq = ");
+    paramDrawable.append(paramOption.getSeq());
+    paramDrawable.append(" cacheKey = ");
+    paramDrawable.append(paramOption.getCacheKey());
+    paramDrawable.append(" showDrawable time ");
+    paramDrawable.append(System.currentTimeMillis() - paramOption.mStartTime.longValue());
+    paramDrawable.append("pic is unValid");
+    RFLog.i("QCircleFeedPicLoader", i, paramDrawable.toString());
   }
   
   protected void addToCache(String paramString, Bitmap paramBitmap)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramBitmap != null) && (!paramBitmap.isRecycled())) {}
-    synchronized (this.mCacheLock)
-    {
-      this.mImageCache.put(paramString, paramBitmap);
-      this.mDecodeTasks.remove(paramString);
-      return;
+    if ((!TextUtils.isEmpty(paramString)) && (paramBitmap != null) && (!paramBitmap.isRecycled())) {
+      synchronized (this.mCacheLock)
+      {
+        this.mImageCache.put(paramString, paramBitmap);
+      }
     }
+    this.mDecodeTasks.remove(paramString);
   }
   
   public void cancel(@NotNull String paramString)
@@ -344,14 +372,15 @@ public class QCircleFeedPicLoader
   protected void decodeFile(@NotNull Option paramOption, QCirclePicStateListener paramQCirclePicStateListener)
   {
     String str = getCacheKey(paramOption);
-    if ((paramOption.isFromPreload()) && (this.mDecodeTasks.containsKey(str))) {}
-    do
-    {
+    if ((paramOption.isFromPreload()) && (this.mDecodeTasks.containsKey(str))) {
       return;
-      localPicDecodeTask = (PicDecodeTask)this.mDecodeTasks.get(str);
-    } while ((localPicDecodeTask != null) && (localPicDecodeTask.mOption.getTargetView() != null) && (localPicDecodeTask.mOption.getTargetView() == paramOption.getTargetView()));
+    }
+    PicDecodeTask localPicDecodeTask = (PicDecodeTask)this.mDecodeTasks.get(str);
+    if ((localPicDecodeTask != null) && (localPicDecodeTask.mOption.getTargetView() != null) && (localPicDecodeTask.mOption.getTargetView() == paramOption.getTargetView())) {
+      return;
+    }
     paramOption.mDecodeStartTime = Long.valueOf(System.currentTimeMillis());
-    PicDecodeTask localPicDecodeTask = new PicDecodeTask(paramOption);
+    localPicDecodeTask = new PicDecodeTask(paramOption);
     localPicDecodeTask.setStatusListener(paramQCirclePicStateListener);
     this.mDecodeTasks.put(str, localPicDecodeTask);
     if (paramOption.isFromPreload())
@@ -372,7 +401,10 @@ public class QCircleFeedPicLoader
     if (!TextUtils.isEmpty(paramOption.getUrl()))
     {
       StringBuilder localStringBuilder = new StringBuilder(getEncodeString(paramOption.getUrl()));
-      localStringBuilder.append("#").append(paramOption.getRequestWidth()).append("_").append(paramOption.getRequestHeight());
+      localStringBuilder.append("#");
+      localStringBuilder.append(paramOption.getRequestWidth());
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramOption.getRequestHeight());
       paramOption.setCacheKey(localStringBuilder.toString());
       return localStringBuilder.toString();
     }
@@ -381,14 +413,18 @@ public class QCircleFeedPicLoader
   
   public String getPicLocalPath(Option paramOption)
   {
-    if (FileUtils.c(paramOption.getUrl()))
+    if (FileUtils.isLocalPath(paramOption.getUrl()))
     {
       str = paramOption.getUrl();
       paramOption.setLocalPath(str);
       return str;
     }
     String str = getEncodeString(paramOption.getUrl());
-    str = DOWNLOAD_ROOT_PATH + str + ".suf";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(DOWNLOAD_ROOT_PATH);
+    localStringBuilder.append(str);
+    localStringBuilder.append(".suf");
+    str = localStringBuilder.toString();
     paramOption.setLocalPath(str);
     return str;
   }
@@ -403,17 +439,38 @@ public class QCircleFeedPicLoader
     if (paramOption.mStartTime == null) {
       paramOption.mStartTime = Long.valueOf(System.currentTimeMillis());
     }
-    RFLog.i("QCircleFeedPicLoader", RFLog.USR, "seq = " + paramOption.getSeq() + " cacheKey = " + paramOption.getCacheKey() + " url = " + paramOption.getUrl() + " isFromPreload:" + paramOption.isFromPreload());
+    int i = RFLog.USR;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("seq = ");
+    localStringBuilder.append(paramOption.getSeq());
+    localStringBuilder.append(" cacheKey = ");
+    localStringBuilder.append(paramOption.getCacheKey());
+    localStringBuilder.append(" url = ");
+    localStringBuilder.append(paramOption.getUrl());
+    localStringBuilder.append(" isFromPreload:");
+    localStringBuilder.append(paramOption.isFromPreload());
+    RFLog.i("QCircleFeedPicLoader", i, localStringBuilder.toString());
     if ((localObject instanceof Bitmap))
     {
       long l = System.currentTimeMillis();
       paramOption.mLoadType = 0;
+      localObject = (Bitmap)localObject;
       paramOption.setResultBitMap((Bitmap)localObject);
       showPic(paramOption, (Bitmap)localObject);
       if (paramQCirclePicStateListener != null) {
         paramQCirclePicStateListener.onStateChang(6, paramOption);
       }
-      RFLog.i("QCircleFeedPicLoader", RFLog.USR, "seq = " + paramOption.getSeq() + " cacheKey = " + paramOption.getCacheKey() + " return in cache: " + paramOption.isFromPreload() + " costTime:" + (System.currentTimeMillis() - l));
+      i = RFLog.USR;
+      paramQCirclePicStateListener = new StringBuilder();
+      paramQCirclePicStateListener.append("seq = ");
+      paramQCirclePicStateListener.append(paramOption.getSeq());
+      paramQCirclePicStateListener.append(" cacheKey = ");
+      paramQCirclePicStateListener.append(paramOption.getCacheKey());
+      paramQCirclePicStateListener.append(" return in cache: ");
+      paramQCirclePicStateListener.append(paramOption.isFromPreload());
+      paramQCirclePicStateListener.append(" costTime:");
+      paramQCirclePicStateListener.append(System.currentTimeMillis() - l);
+      RFLog.i("QCircleFeedPicLoader", i, paramQCirclePicStateListener.toString());
       return str;
     }
     this.mDecodeExecutor.execute(new QCircleFeedPicLoader.4(this, paramOption, paramQCirclePicStateListener));
@@ -437,8 +494,8 @@ public class QCircleFeedPicLoader
   
   protected void removeDownLoadTask(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      this.mDecodeTasks.remove(paramString);
+    if (!TextUtils.isEmpty(paramString)) {
+      this.mDownLoadTasks.remove(paramString);
     }
   }
   
@@ -458,14 +515,13 @@ public class QCircleFeedPicLoader
   {
     if ((paramOption != null) && (paramDrawable != null))
     {
-      if (Looper.getMainLooper() == Looper.myLooper()) {
+      if (Looper.getMainLooper() == Looper.myLooper())
+      {
         showInMain(paramOption, paramDrawable, false);
+        return;
       }
+      postToMain(paramOption, paramDrawable, false);
     }
-    else {
-      return;
-    }
-    postToMain(paramOption, paramDrawable, false);
   }
   
   protected void showPic(Option paramOption, Bitmap paramBitmap)
@@ -473,20 +529,18 @@ public class QCircleFeedPicLoader
     if ((paramOption != null) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
       paramBitmap = bitmapTransferDrawable(paramOption, paramBitmap);
-      if (Looper.getMainLooper() == Looper.myLooper()) {
+      if (Looper.getMainLooper() == Looper.myLooper())
+      {
         showInMain(paramOption, paramBitmap, true);
+        return;
       }
+      postToMain(paramOption, paramBitmap, true);
     }
-    else
-    {
-      return;
-    }
-    postToMain(paramOption, paramBitmap, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.picload.QCircleFeedPicLoader
  * JD-Core Version:    0.7.0.1
  */

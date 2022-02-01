@@ -17,17 +17,14 @@ class Face2FaceAddFriendActivity$2
     try
     {
       paramString = paramString.getBytes("utf-8");
-      if (paramString.length % 3 == 0) {
-        return paramString.length / 3;
-      }
     }
     catch (UnsupportedEncodingException paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = arrayOfByte;
-      }
+      paramString.printStackTrace();
+      paramString = arrayOfByte;
+    }
+    if (paramString.length % 3 == 0) {
+      return paramString.length / 3;
     }
     return paramString.length / 3 + 1;
   }
@@ -37,11 +34,16 @@ class Face2FaceAddFriendActivity$2
     while (a(paramString) > 32)
     {
       int i = paramString.length();
-      if ((i >= 2) && (Character.isHighSurrogate(paramString.charAt(i - 2)))) {
-        paramString = paramString.substring(0, i - 2);
-      } else {
-        paramString = paramString.substring(0, i - 1);
+      if (i >= 2)
+      {
+        int j = i - 2;
+        if (Character.isHighSurrogate(paramString.charAt(j)))
+        {
+          paramString = paramString.substring(0, j);
+          continue;
+        }
       }
+      paramString = paramString.substring(0, i - 1);
     }
     return paramString;
   }
@@ -71,7 +73,7 @@ class Face2FaceAddFriendActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -32,631 +32,842 @@ class MavEngineJni$NativeEventHandler
   
   private void onChatMemberInfoChange(IMavEventListener paramIMavEventListener, int paramInt1, byte[] paramArrayOfByte, long paramLong1, long paramLong2, int paramInt2, int paramInt3)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 8)) {}
-    do
+    if (paramArrayOfByte != null)
     {
-      return;
+      if (paramArrayOfByte.length < 8) {
+        return;
+      }
       paramArrayOfByte = MavJniUtil.getUinListFromBuf(paramArrayOfByte);
-      if (paramArrayOfByte != null) {
-        break;
-      }
-    } while (!AVCoreLog.isColorLevel());
-    AVCoreLog.e("MavEngineJni_NativeEvent", "handleMessage, fail, empty uinList");
-    return;
-    int j;
-    if (AVCoreLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      j = paramArrayOfByte.length;
-      i = 0;
-      while (i < j)
+      if (paramArrayOfByte == null)
       {
-        long l = paramArrayOfByte[i];
-        localStringBuilder.append("UserUin = ");
-        localStringBuilder.append(l);
-        localStringBuilder.append(", ");
-        i += 1;
+        if (AVCoreLog.isColorLevel()) {
+          AVCoreLog.e("MavEngineJni_NativeEvent", "handleMessage, fail, empty uinList");
+        }
+        return;
       }
-      localStringBuilder.append("eventid = ");
-      localStringBuilder.append(paramInt1);
-      AVCoreLog.i("MavEngineJni_NativeEvent", localStringBuilder.toString());
-    }
-    int i = 0;
-    if (paramInt1 == 42)
-    {
-      j = (int)paramLong1;
-      if (j <= 100) {
-        break label172;
-      }
-      i = 100;
-    }
-    for (;;)
-    {
-      paramIMavEventListener.onMultiVideoChatMembersInfoChange(paramLong2, paramArrayOfByte, paramInt1, paramInt3, paramLong1, paramInt2, i);
-      return;
-      label172:
-      i = j;
-      if (j < 0) {
+      if (AVCoreLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        int j = paramArrayOfByte.length;
         i = 0;
+        while (i < j)
+        {
+          long l = paramArrayOfByte[i];
+          localStringBuilder.append("UserUin = ");
+          localStringBuilder.append(l);
+          localStringBuilder.append(", ");
+          i += 1;
+        }
+        localStringBuilder.append("eventid = ");
+        localStringBuilder.append(paramInt1);
+        AVCoreLog.i("MavEngineJni_NativeEvent", localStringBuilder.toString());
       }
+      if (paramInt1 == 42)
+      {
+        i = (int)paramLong1;
+        if (i > 100)
+        {
+          i = 100;
+          break label167;
+        }
+        if (i >= 0) {
+          break label167;
+        }
+      }
+      int i = 0;
+      label167:
+      paramIMavEventListener.onMultiVideoChatMembersInfoChange(paramLong2, paramArrayOfByte, paramInt1, paramInt3, paramLong1, paramInt2, i);
     }
   }
   
   private void onRecPushEncParam(IMavEventListener paramIMavEventListener, int paramInt1, long paramLong1, long paramLong2, int paramInt2)
   {
-    if (AVCoreLog.isDevelopLevel()) {
-      AVCoreLog.d("MavEngineJni_NativeEvent", "onRecPushEncParam, relationType[" + paramInt1 + "], relationId[" + paramLong1 + "], lValue[" + paramLong2 + "], flag[" + paramInt2 + "]");
+    if (AVCoreLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onRecPushEncParam, relationType[");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append("], relationId[");
+      ((StringBuilder)localObject).append(paramLong1);
+      ((StringBuilder)localObject).append("], lValue[");
+      ((StringBuilder)localObject).append(paramLong2);
+      ((StringBuilder)localObject).append("], flag[");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append("]");
+      AVCoreLog.d("MavEngineJni_NativeEvent", ((StringBuilder)localObject).toString());
     }
     int i = this.mShareRecordParam.width;
     int j = this.mShareRecordParam.height;
     int k = this.mShareRecordParam.fps;
     int m = (int)(paramLong2 & 0xFFFFFFFF);
     int n = (int)(paramLong2 >> 32 & 0xFFFFFFFF);
-    this.mShareRecordParam.width = n;
-    this.mShareRecordParam.height = m;
-    this.mShareRecordParam.fps = paramInt2;
-    paramIMavEventListener.onRecSharePushEncParam(paramInt1, paramLong1, this.mShareRecordParam);
-    if ((AVCoreLog.isColorLevel()) && ((i != this.mShareRecordParam.width) || (j != this.mShareRecordParam.height) || (k != this.mShareRecordParam.fps))) {
-      AVCoreLog.i("AVShare", "onRecPushEncParam, relationType[" + paramInt1 + "], groupId[" + paramLong1 + "], param[" + this.mShareRecordParam + "]");
+    Object localObject = this.mShareRecordParam;
+    ((RecordParam)localObject).width = n;
+    ((RecordParam)localObject).height = m;
+    ((RecordParam)localObject).fps = paramInt2;
+    paramIMavEventListener.onRecSharePushEncParam(paramInt1, paramLong1, (RecordParam)localObject);
+    if ((AVCoreLog.isColorLevel()) && ((i != this.mShareRecordParam.width) || (j != this.mShareRecordParam.height) || (k != this.mShareRecordParam.fps)))
+    {
+      paramIMavEventListener = new StringBuilder();
+      paramIMavEventListener.append("onRecPushEncParam, relationType[");
+      paramIMavEventListener.append(paramInt1);
+      paramIMavEventListener.append("], groupId[");
+      paramIMavEventListener.append(paramLong1);
+      paramIMavEventListener.append("], param[");
+      paramIMavEventListener.append(this.mShareRecordParam);
+      paramIMavEventListener.append("]");
+      AVCoreLog.i("AVShare", paramIMavEventListener.toString());
     }
   }
   
   public void handleMessage(Message paramMessage)
   {
-    if (paramMessage == null) {}
-    Object localObject1;
-    IMavEventListener localIMavEventListener;
-    do
-    {
-      do
-      {
-        return;
-        localObject1 = (MavNativeEventParams)paramMessage.obj;
-        if (localObject1 != null) {
-          break;
-        }
-      } while (!AVCoreLog.isColorLevel());
-      AVCoreLog.e("MavEngineJni_NativeEvent", "handleMessage-->NativeEventParams is null");
+    if (paramMessage == null) {
       return;
-      localIMavEventListener = (IMavEventListener)this.mEventLisRef.get();
-      if (localIMavEventListener != null) {
-        break;
+    }
+    Object localObject1 = (MavNativeEventParams)paramMessage.obj;
+    if (localObject1 == null)
+    {
+      if (AVCoreLog.isColorLevel()) {
+        AVCoreLog.e("MavEngineJni_NativeEvent", "handleMessage-->NativeEventParams is null");
       }
+      return;
+    }
+    IMavEventListener localIMavEventListener = (IMavEventListener)this.mEventLisRef.get();
+    if (localIMavEventListener == null)
+    {
       localObject1 = (AVNativeEventProcessor)this.mCallback.get();
-    } while (localObject1 == null);
-    ((AVNativeEventProcessor)localObject1).handleMessage(paramMessage);
-    return;
+      if (localObject1 != null) {
+        ((AVNativeEventProcessor)localObject1).handleMessage(paramMessage);
+      }
+      return;
+    }
     int i1 = paramMessage.what;
-    byte[] arrayOfByte1 = ((MavNativeEventParams)localObject1).detail;
+    Object localObject2 = ((MavNativeEventParams)localObject1).detail;
     long l3 = ((MavNativeEventParams)localObject1).info;
     long l1 = ((MavNativeEventParams)localObject1).groupId;
-    int j = ((MavNativeEventParams)localObject1).multiAVType;
+    int k = ((MavNativeEventParams)localObject1).multiAVType;
     int n = ((MavNativeEventParams)localObject1).multiSubType;
-    int k = ((MavNativeEventParams)localObject1).relationType;
+    int m = ((MavNativeEventParams)localObject1).relationType;
     int i2 = ((MavNativeEventParams)localObject1).bufferLen;
-    int m = ((MavNativeEventParams)localObject1).flag;
-    label152:
-    Object localObject2;
-    boolean bool1;
+    int j = ((MavNativeEventParams)localObject1).flag;
+    int i;
     if (i1 == 61)
     {
       this.mEventLogForFrameDec.log();
-      localObject2 = (AVNativeEventProcessor)this.mCallback.get();
-      if (localObject2 == null) {
-        break label2904;
+    }
+    else if ((i1 != 43) && (AVCoreLog.isColorLevel()))
+    {
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("handleMessage, groupId[");
+      ((StringBuilder)localObject3).append(l1);
+      ((StringBuilder)localObject3).append("], multiAVType[");
+      ((StringBuilder)localObject3).append(k);
+      ((StringBuilder)localObject3).append("], multiSubType[");
+      ((StringBuilder)localObject3).append(n);
+      ((StringBuilder)localObject3).append("], relationType[");
+      ((StringBuilder)localObject3).append(m);
+      ((StringBuilder)localObject3).append("], info[");
+      ((StringBuilder)localObject3).append(l3);
+      ((StringBuilder)localObject3).append("], detail[");
+      if (localObject2 != null) {
+        i = localObject2.length;
+      } else {
+        i = -1;
       }
-      bool1 = ((AVNativeEventProcessor)localObject2).isMsgNeedExtraDeal(i1);
+      ((StringBuilder)localObject3).append(i);
+      ((StringBuilder)localObject3).append("], eventId[");
+      ((StringBuilder)localObject3).append(i1);
+      ((StringBuilder)localObject3).append("], buflen[");
+      ((StringBuilder)localObject3).append(i2);
+      ((StringBuilder)localObject3).append("], flag[");
+      ((StringBuilder)localObject3).append(j);
+      ((StringBuilder)localObject3).append("]");
+      AVCoreLog.i("MavEngineJni_NativeEvent", ((StringBuilder)localObject3).toString());
+    }
+    Object localObject3 = (AVNativeEventProcessor)this.mCallback.get();
+    boolean bool1;
+    if (localObject3 != null)
+    {
+      bool1 = ((AVNativeEventProcessor)localObject3).isMsgNeedExtraDeal(i1);
       if (bool1) {
         ((MavNativeEventParams)localObject1).elapsedRealtime = SystemClock.elapsedRealtime();
       }
     }
-    for (;;)
+    else
     {
-      switch (i1)
-      {
-      case 9: 
-      case 10: 
-      case 14: 
-      case 15: 
-      case 16: 
-      case 17: 
-      case 18: 
-      case 19: 
-      case 20: 
-      case 23: 
-      case 24: 
-      case 25: 
-      case 26: 
-      case 27: 
-      case 28: 
-      case 29: 
-      case 40: 
-      case 41: 
-      case 46: 
-      case 47: 
-      case 48: 
-      case 49: 
-      case 50: 
-      case 51: 
-      case 52: 
-      case 53: 
-      case 54: 
-      case 55: 
-      case 56: 
-      case 57: 
-      case 58: 
-      case 59: 
-      case 60: 
-      case 62: 
-      case 63: 
-      case 64: 
-      case 65: 
-      case 66: 
-      case 67: 
-      case 68: 
-      case 69: 
-      case 80: 
-      case 81: 
-      case 82: 
-      case 83: 
-      case 99: 
-      case 100: 
-      case 105: 
-      case 106: 
-      case 111: 
-      case 112: 
-      case 113: 
-      case 114: 
-      case 115: 
-      case 116: 
-      case 117: 
-      case 118: 
-      case 119: 
-      case 120: 
-      case 123: 
-      case 124: 
-      case 125: 
-      case 126: 
-      case 127: 
-      case 128: 
-      case 129: 
-      case 130: 
-      case 131: 
-      case 132: 
-      case 133: 
-      case 134: 
-      case 135: 
-      case 136: 
-      case 137: 
-      case 146: 
-      case 147: 
-      case 148: 
-      case 149: 
-      case 150: 
-      case 151: 
-      case 152: 
-      case 154: 
-      case 155: 
-      case 156: 
-      case 159: 
-      case 160: 
-      case 161: 
-      case 162: 
-      case 163: 
-      case 164: 
-      case 165: 
-      case 166: 
-      case 167: 
-      case 168: 
-      case 169: 
-      case 170: 
-      case 173: 
-      case 174: 
-      case 175: 
-      default: 
-        if (localObject2 != null) {
-          ((AVNativeEventProcessor)localObject2).handleMessage(paramMessage);
-        }
-        break;
-      }
-      label918:
-      while ((bool1) && (localObject2 != null))
-      {
-        ((AVNativeEventProcessor)localObject2).handleMessage(paramMessage);
-        return;
-        if ((i1 == 43) || (!AVCoreLog.isColorLevel())) {
-          break label152;
-        }
-        localObject2 = new StringBuilder().append("handleMessage, groupId[").append(l1).append("], multiAVType[").append(j).append("], multiSubType[").append(n).append("], relationType[").append(k).append("], info[").append(l3).append("], detail[");
-        if (arrayOfByte1 != null) {}
-        for (int i = arrayOfByte1.length;; i = -1)
+      bool1 = false;
+    }
+    if ((i1 != 5) && (i1 != 6))
+    {
+      if (i1 != 7) {
+        if (i1 != 8)
         {
-          AVCoreLog.i("MavEngineJni_NativeEvent", i + "], eventId[" + i1 + "], buflen[" + i2 + "], flag[" + m + "]");
-          break;
-        }
-        localObject1 = MavJniUtil.getUinListFromBuf(arrayOfByte1);
-        if ((k == 2) || (k == 1))
-        {
-          if (localObject1 == null) {}
-          for (i = 0;; i = localObject1.length)
+          if (i1 != 21)
           {
-            onRecvUserList(localIMavEventListener, 6, k, l1, (long[])localObject1, l3, j, n, i, m);
-            break;
-          }
-        }
-        if (k == 3)
-        {
-          onRecvDoubleVideoMeeting(localIMavEventListener, i1, k, l3, j, n);
-          continue;
-          localObject1 = MavJniUtil.getUinListFromBuf(arrayOfByte1);
-          if (localObject1 == null) {}
-          for (i = 0;; i = localObject1.length)
-          {
-            onRecvUserList(localIMavEventListener, 44, k, l1, (long[])localObject1, 0L, j, 0, i, m);
-            break;
-          }
-          m = (int)l3;
-          if (m >= 0)
-          {
-            localObject1 = null;
-            if (m > 0) {
-              if (arrayOfByte1 == null) {
-                break label1271;
-              }
-            }
-            label1271:
-            for (i = arrayOfByte1.length / m;; i = 0)
+            if (i1 != 22)
             {
-              localObject1 = MavJniUtil.getAVInfoListFromByte(arrayOfByte1, i);
-              if (localObject1 == null) {
-                break label1276;
+              if (i1 != 121)
+              {
+                if (i1 != 122) {
+                  switch (i1)
+                  {
+                  default: 
+                    switch (i1)
+                    {
+                    default: 
+                      long l2 = 0L;
+                      boolean bool2;
+                      switch (i1)
+                      {
+                      default: 
+                        switch (i1)
+                        {
+                        default: 
+                          switch (i1)
+                          {
+                          default: 
+                            switch (i1)
+                            {
+                            default: 
+                              switch (i1)
+                              {
+                              default: 
+                                if (localObject3 != null)
+                                {
+                                  ((AVNativeEventProcessor)localObject3).handleMessage(paramMessage);
+                                  break;
+                                }
+                                break;
+                              case 110: 
+                                if (localObject2 != null)
+                                {
+                                  if (localObject2.length < 8) {
+                                    return;
+                                  }
+                                  localIMavEventListener.onPPTInOrOut(l1, MavJniUtil.getLongFromByte((byte[])localObject2), m, (int)l3);
+                                  break;
+                                }
+                                return;
+                              case 109: 
+                                if (localObject2 != null)
+                                {
+                                  if (localObject2.length < 8) {
+                                    return;
+                                  }
+                                  if (m != 1) {
+                                    break;
+                                  }
+                                  l2 = MavJniUtil.getLongFromByte((byte[])localObject2);
+                                  if (k == 10) {
+                                    break;
+                                  }
+                                  localIMavEventListener.onVideoSrcChange((int)l3, m, l2, l1);
+                                  break;
+                                }
+                                return;
+                              }
+                              break;
+                            case 101: 
+                            case 102: 
+                            case 103: 
+                            case 104: 
+                              localIMavEventListener.onGroupChatModeChange(l1, m, i1);
+                            }
+                            break;
+                          case 72: 
+                          case 73: 
+                          case 74: 
+                          case 75: 
+                          case 76: 
+                          case 77: 
+                          case 78: 
+                          case 79: 
+                            break;
+                          case 70: 
+                          case 71: 
+                            if (localObject2 == null) {
+                              return;
+                            }
+                            localObject1 = MavJniUtil.getAVInfoFromByte((byte[])localObject2, i2);
+                            if (localObject1 == null)
+                            {
+                              if (AVCoreLog.isColorLevel()) {
+                                AVCoreLog.i("MavEngineJni_NativeEvent", "handleMessage, fail, empty userInfo");
+                              }
+                              return;
+                            }
+                            if ((((AVUserInfo)localObject1).accountType != 0) && ((((AVUserInfo)localObject1).accountType != 1) || (((AVUserInfo)localObject1).pstnStatus != 3) || (i1 != 70))) {
+                              if ((((AVUserInfo)localObject1).accountType != 1) || (i1 != 71)) {
+                                break label2916;
+                              }
+                            }
+                            localIMavEventListener.onMAVMemberInOrOut((AVUserInfo)localObject1, l1, i1, m, l3, new int[] { k });
+                          }
+                          break;
+                        case 45: 
+                          localIMavEventListener.onGAudioKickOut(l1, m, k);
+                          break;
+                        case 44: 
+                          localObject1 = MavJniUtil.getUinListFromBuf((byte[])localObject2);
+                          if (localObject1 == null) {
+                            i = 0;
+                          } else {
+                            i = localObject1.length;
+                          }
+                          onRecvUserList(localIMavEventListener, 44, m, l1, (long[])localObject1, 0L, k, 0, i, j);
+                          break;
+                        }
+                        onChatMemberInfoChange(localIMavEventListener, i1, (byte[])localObject2, l3, l1, k, m);
+                        break;
+                      case 180: 
+                        if ((int)l3 == 1) {
+                          localIMavEventListener.onNotifyAIDenoiseTips(true);
+                        } else {
+                          localIMavEventListener.onNotifyAIDenoiseTips(false);
+                        }
+                        break;
+                      case 178: 
+                        localIMavEventListener.onCheckScreenShareAvailable((int)l3, (byte[])localObject2);
+                        break;
+                      case 177: 
+                        onRecPushEncParam(localIMavEventListener, m, l1, l3, j);
+                        break;
+                      case 176: 
+                        localIMavEventListener.onSelfAudioVolumeChange(l3);
+                        break;
+                      case 172: 
+                        if (localObject2 == null) {
+                          break;
+                        }
+                        localIMavEventListener.onGVideoDownloadChannelCtlChanged((byte[])localObject2);
+                        break;
+                      case 171: 
+                        if (l3 == 0L) {
+                          break;
+                        }
+                        localIMavEventListener.onFpsChange((int)l3);
+                        break;
+                      case 158: 
+                        localIMavEventListener.onOpenMicFail();
+                        break;
+                      case 157: 
+                        if (localObject2 == null) {
+                          break;
+                        }
+                        localIMavEventListener.onSetMicBySelf(MavJniUtil.getLongFromByte((byte[])localObject2));
+                        break;
+                      case 153: 
+                        localIMavEventListener.onHowling();
+                        break;
+                      case 145: 
+                        if (((MavNativeEventParams)localObject1).detail != null)
+                        {
+                          if (((MavNativeEventParams)localObject1).detail.length != 16) {
+                            return;
+                          }
+                          l1 = MavJniUtil.getLongFromByte(((MavNativeEventParams)localObject1).detail);
+                          localObject2 = new byte[4];
+                          System.arraycopy(((MavNativeEventParams)localObject1).detail, 12, localObject2, 0, 4);
+                          i = MavJniUtil.getIntFromByte((byte[])localObject2);
+                          if (l3 == 1L) {
+                            bool2 = true;
+                          } else {
+                            bool2 = false;
+                          }
+                          if (AVCoreLog.isColorLevel())
+                          {
+                            localObject1 = new StringBuilder();
+                            ((StringBuilder)localObject1).append("onGAudioUserAudioSuspectNoisy : uin = ");
+                            ((StringBuilder)localObject1).append(l1);
+                            ((StringBuilder)localObject1).append(", isSuspectNoisy = ");
+                            ((StringBuilder)localObject1).append(bool2);
+                            ((StringBuilder)localObject1).append(",validDuration = ");
+                            ((StringBuilder)localObject1).append(i);
+                            AVCoreLog.i("MavEngineJni_NativeEvent", ((StringBuilder)localObject1).toString());
+                          }
+                          localIMavEventListener.onGAudioUserAudioSuspectNoisy(l1, bool2, i);
+                          break;
+                        }
+                        return;
+                      case 144: 
+                        j = (int)l3;
+                        if (((MavNativeEventParams)localObject1).detail != null)
+                        {
+                          if (j == 0) {
+                            return;
+                          }
+                          byte[] arrayOfByte = ((MavNativeEventParams)localObject1).detail;
+                          if (((MavNativeEventParams)localObject1).detail != null) {
+                            i = localObject2.length / j;
+                          } else {
+                            i = 0;
+                          }
+                          localObject1 = MavJniUtil.getAVInfoListFromByte(arrayOfByte, i);
+                          if (localObject1 != null)
+                          {
+                            if (((ArrayList)localObject1).size() != j) {
+                              return;
+                            }
+                            localIMavEventListener.onGAudioSetMicFailed(j, (ArrayList)localObject1);
+                            break;
+                          }
+                        }
+                        return;
+                      case 143: 
+                        i = (int)l3;
+                        l1 = l2;
+                        if (((MavNativeEventParams)localObject1).detail != null)
+                        {
+                          l1 = l2;
+                          if (((MavNativeEventParams)localObject1).detail.length == 8) {
+                            l1 = MavJniUtil.getLongFromByte(((MavNativeEventParams)localObject1).detail);
+                          }
+                        }
+                        if (AVCoreLog.isColorLevel())
+                        {
+                          localObject1 = new StringBuilder();
+                          ((StringBuilder)localObject1).append("SetMicByAdmin : uin = ");
+                          ((StringBuilder)localObject1).append(l1);
+                          ((StringBuilder)localObject1).append(", micAuthByAdmin = ");
+                          ((StringBuilder)localObject1).append(i);
+                          AVCoreLog.i("MavEngineJni_NativeEvent", ((StringBuilder)localObject1).toString());
+                        }
+                        localIMavEventListener.onGAudioMicSetByAdmin(l1, i);
+                        break;
+                      case 142: 
+                        if ((((MavNativeEventParams)localObject1).detail != null) && (((MavNativeEventParams)localObject1).detail.length == 8)) {
+                          l1 = MavJniUtil.getLongFromByte(((MavNativeEventParams)localObject1).detail);
+                        } else {
+                          l1 = 0L;
+                        }
+                        if (l3 != 0L) {
+                          bool2 = true;
+                        } else {
+                          bool2 = false;
+                        }
+                        localIMavEventListener.onGAudioRoomMicModeChanged(l1, bool2, false);
+                        break;
+                      case 140: 
+                      case 141: 
+                        if (((MavNativeEventParams)localObject1).detail != null)
+                        {
+                          if (((MavNativeEventParams)localObject1).detail.length < 16) {
+                            return;
+                          }
+                          localObject1 = MavJniUtil.getAVInfoFromByte(((MavNativeEventParams)localObject1).detail, ((MavNativeEventParams)localObject1).detail.length);
+                          if (i1 == 140) {
+                            bool2 = true;
+                          } else {
+                            bool2 = false;
+                          }
+                          if (localObject1 == null) {
+                            break;
+                          }
+                          if (AVCoreLog.isColorLevel())
+                          {
+                            localObject2 = new StringBuilder();
+                            ((StringBuilder)localObject2).append("MemberAudioChange, uin[");
+                            ((StringBuilder)localObject2).append(((AVUserInfo)localObject1).account);
+                            ((StringBuilder)localObject2).append("], accountType[");
+                            ((StringBuilder)localObject2).append(((AVUserInfo)localObject1).accountType);
+                            ((StringBuilder)localObject2).append("], isMicOff[");
+                            ((StringBuilder)localObject2).append(bool2);
+                            ((StringBuilder)localObject2).append("]");
+                            AVCoreLog.e("MavEngineJni_NativeEvent", ((StringBuilder)localObject2).toString());
+                          }
+                          localIMavEventListener.onGAudioMemberMicChanged(((AVUserInfo)localObject1).account, ((AVUserInfo)localObject1).accountType, ((AVUserInfo)localObject1).pstnStatus, bool2);
+                          break;
+                        }
+                        return;
+                      case 138: 
+                      case 139: 
+                        i = (int)l3;
+                        j = 35;
+                        if ((i != 3) && (i != 15))
+                        {
+                          if (i != 32)
+                          {
+                            if (i != 35)
+                            {
+                              if (i != 7)
+                              {
+                                if (i != 8)
+                                {
+                                  if (i != 42)
+                                  {
+                                    if (i != 43)
+                                    {
+                                      if ((l3 > 200L) && (l3 < 300L))
+                                      {
+                                        if (localObject2 == null) {
+                                          localObject1 = "";
+                                        } else {
+                                          localObject1 = new String((byte[])localObject2);
+                                        }
+                                        localIMavEventListener.onGroupSecurityLimit(l1, l3, (String)localObject1);
+                                      }
+                                      else
+                                      {
+                                        break label2199;
+                                      }
+                                    }
+                                    else
+                                    {
+                                      i = 43;
+                                      break label2199;
+                                    }
+                                  }
+                                  else
+                                  {
+                                    i = 42;
+                                    break label2199;
+                                  }
+                                }
+                                else {
+                                  if (m == 1) {
+                                    break label2176;
+                                  }
+                                }
+                                i = 0;
+                                break label2199;
+                                i = 1;
+                              }
+                              else
+                              {
+                                i = 2;
+                              }
+                            }
+                            else {
+                              i = j;
+                            }
+                          }
+                          else {
+                            i = 7;
+                          }
+                        }
+                        else {
+                          i = 3;
+                        }
+                        if (i == 0) {
+                          break;
+                        }
+                        localIMavEventListener.onGroupVideoClosed(m, l1, i, k);
+                        break;
+                      case 96: 
+                      case 97: 
+                      case 98: 
+                        localIMavEventListener.onGaSwitchVideoResult(i1, l3, l1, m);
+                        break;
+                      case 93: 
+                      case 94: 
+                      case 95: 
+                        localIMavEventListener.onGaGoOffStageResult(i1, l3, l1, m);
+                        break;
+                      case 90: 
+                      case 91: 
+                      case 92: 
+                        localIMavEventListener.onGaGoOnStageResult(i1, l3, l1, m);
+                        break;
+                      case 89: 
+                        localIMavEventListener.onShareOpsCallback(89, (int)l3, m, l1, k, n);
+                        break;
+                      case 88: 
+                        localIMavEventListener.onShareOpsCallback(88, (int)l3, m, l1, k, n);
+                        break;
+                      case 87: 
+                        localIMavEventListener.onShareOpsCallback(87, (int)l3, m, l1, k, n);
+                        break;
+                      case 86: 
+                        localIMavEventListener.onShareOpsCallback(86, (int)l3, m, l1, k, n);
+                        break;
+                      case 85: 
+                        localIMavEventListener.onShareOpsCallback(85, (int)l3, m, l1, k, n);
+                        break;
+                      case 84: 
+                        localIMavEventListener.onShareOpsCallback(84, (int)l3, m, l1, k, n);
+                        break;
+                      case 61: 
+                        if (AVCoreLog.isColorLevel())
+                        {
+                          localObject1 = new StringBuilder();
+                          ((StringBuilder)localObject1).append("EM_SDK_EVENT_ID_VIDEO_DEC_FRAME_DATA-->Uin=");
+                          ((StringBuilder)localObject1).append(l3);
+                          ((StringBuilder)localObject1).append(" ,VideoSrcType=");
+                          ((StringBuilder)localObject1).append(m);
+                          AVCoreLog.i("MavEngineJni_NativeEvent", ((StringBuilder)localObject1).toString());
+                        }
+                        localIMavEventListener.onRemoteVideoDataComeIn(61, l3, m);
+                        break;
+                      case 39: 
+                        localIMavEventListener.onGAudioSDKError(m, l1, 15, (int)((MavNativeEventParams)localObject1).info);
+                      }
+                      break;
+                    case 34: 
+                    case 35: 
+                      localIMavEventListener.onGAudioSDKError(m, l1, 16, (int)((MavNativeEventParams)localObject1).info);
+                      break;
+                    case 33: 
+                      localIMavEventListener.onEnterSuc(l1, m, k);
+                      break;
+                    case 31: 
+                    case 32: 
+                      localIMavEventListener.onGAudioSDKError(m, l1, 17, (int)((MavNativeEventParams)localObject1).info);
+                      break;
+                    case 30: 
+                      localIMavEventListener.onCreateRoomSuc(m, l1, k);
+                    }
+                    break;
+                  case 13: 
+                    break;
+                  case 12: 
+                    localIMavEventListener.onGAudioTerminalEnterRoom(m, l1, new int[] { k });
+                    break;
+                  case 11: 
+                    label2176:
+                    label2199:
+                    localIMavEventListener.onGAudioRoomDestroy(m, l1);
+                    break;
+                  }
+                } else {
+                  localIMavEventListener.onDetectAudioDataIssue(4);
+                }
               }
-              onRecvUserList(localIMavEventListener, 44, k, l1, (ArrayList)localObject1, 0L, 0, j, m);
-              break;
+              else {
+                localIMavEventListener.onDetectAudioDataIssue(3);
+              }
             }
-            label1276:
-            onRecvUserListFail(localIMavEventListener, k, l1, -99L);
+            else
+            {
+              if (localObject2 == null) {
+                localObject1 = "";
+              } else {
+                localObject1 = new String((byte[])localObject2);
+              }
+              localIMavEventListener.onKickOutFail(l1, m, k, (int)l3, (String)localObject1);
+            }
           }
           else
           {
-            onRecvUserListFail(localIMavEventListener, k, l1, m);
-            continue;
-            if (arrayOfByte1 == null) {
-              break;
+            if (localObject2 == null) {
+              localObject1 = "";
+            } else {
+              localObject1 = new String((byte[])localObject2);
             }
-            localObject1 = MavJniUtil.getAVInfoFromByte(arrayOfByte1, i2);
-            if (localObject1 == null)
+            localIMavEventListener.onKickOutSuc(l1, m, k, (int)l3, (String)localObject1);
+          }
+        }
+        else
+        {
+          j = (int)l3;
+          if (j >= 0)
+          {
+            localObject1 = null;
+            if (j > 0)
             {
-              if (!AVCoreLog.isColorLevel()) {
-                break;
+              if (localObject2 != null) {
+                i = localObject2.length / j;
+              } else {
+                i = 0;
               }
-              AVCoreLog.i("MavEngineJni_NativeEvent", "handleMessage, fail, empty userInfo");
-              return;
+              localObject1 = MavJniUtil.getAVInfoListFromByte((byte[])localObject2, i);
             }
-            if ((((AVUserInfo)localObject1).accountType == 0) || ((((AVUserInfo)localObject1).accountType == 1) && (((AVUserInfo)localObject1).pstnStatus == 3) && (i1 == 70)) || ((((AVUserInfo)localObject1).accountType == 1) && (i1 == 71)))
-            {
-              localIMavEventListener.onMAVMemberInOrOut((AVUserInfo)localObject1, l1, i1, k, l3, new int[] { j });
-              continue;
-              onChatMemberInfoChange(localIMavEventListener, i1, arrayOfByte1, l3, l1, j, k);
-              continue;
-              localIMavEventListener.onGroupChatModeChange(l1, k, i1);
-              continue;
-              if ((arrayOfByte1 == null) || (arrayOfByte1.length < 8)) {
-                break;
-              }
-              if (k == 1)
-              {
-                long l2 = MavJniUtil.getLongFromByte(arrayOfByte1);
-                if (j != 10)
-                {
-                  localIMavEventListener.onVideoSrcChange((int)l3, k, l2, l1);
-                  continue;
-                  if ((arrayOfByte1 == null) || (arrayOfByte1.length < 8)) {
-                    break;
-                  }
-                  localIMavEventListener.onPPTInOrOut(l1, MavJniUtil.getLongFromByte(arrayOfByte1), k, (int)l3);
-                  continue;
-                  i = 0;
-                  switch ((int)l3)
-                  {
-                  default: 
-                    if ((l3 > 200L) && (l3 < 300L)) {
-                      if (arrayOfByte1 == null)
-                      {
-                        localObject1 = "";
-                        label1648:
-                        localIMavEventListener.onGroupSecurityLimit(l1, l3, (String)localObject1);
-                      }
-                    }
-                    break;
-                  }
-                  while (i != 0)
-                  {
-                    localIMavEventListener.onGroupVideoClosed(k, l1, i, j);
-                    break;
-                    if (k == 1)
-                    {
-                      i = 1;
-                      continue;
-                      i = 2;
-                      continue;
-                      i = 7;
-                      continue;
-                      i = 35;
-                      continue;
-                      i = 42;
-                      continue;
-                      i = 43;
-                      continue;
-                      i = 3;
-                      continue;
-                      localObject1 = new String(arrayOfByte1);
-                      break label1648;
-                      i = (int)l3;
-                    }
-                  }
-                  if ((((MavNativeEventParams)localObject1).detail == null) || (((MavNativeEventParams)localObject1).detail.length < 16)) {
-                    break;
-                  }
-                  localObject1 = MavJniUtil.getAVInfoFromByte(((MavNativeEventParams)localObject1).detail, ((MavNativeEventParams)localObject1).detail.length);
-                  if (i1 == 140) {}
-                  for (boolean bool2 = true; localObject1 != null; bool2 = false)
-                  {
-                    if (AVCoreLog.isColorLevel()) {
-                      AVCoreLog.e("MavEngineJni_NativeEvent", "MemberAudioChange, uin[" + ((AVUserInfo)localObject1).account + "], accountType[" + ((AVUserInfo)localObject1).accountType + "], isMicOff[" + bool2 + "]");
-                    }
-                    localIMavEventListener.onGAudioMemberMicChanged(((AVUserInfo)localObject1).account, ((AVUserInfo)localObject1).accountType, ((AVUserInfo)localObject1).pstnStatus, bool2);
-                    break;
-                  }
-                  l2 = 0L;
-                  l1 = l2;
-                  if (((MavNativeEventParams)localObject1).detail != null)
-                  {
-                    l1 = l2;
-                    if (((MavNativeEventParams)localObject1).detail.length == 8) {
-                      l1 = MavJniUtil.getLongFromByte(((MavNativeEventParams)localObject1).detail);
-                    }
-                  }
-                  if (l3 != 0L) {}
-                  for (bool2 = true;; bool2 = false)
-                  {
-                    localIMavEventListener.onGAudioRoomMicModeChanged(l1, bool2, false);
-                    break;
-                  }
-                  l2 = 0L;
-                  i = (int)l3;
-                  l1 = l2;
-                  if (((MavNativeEventParams)localObject1).detail != null)
-                  {
-                    l1 = l2;
-                    if (((MavNativeEventParams)localObject1).detail.length == 8) {
-                      l1 = MavJniUtil.getLongFromByte(((MavNativeEventParams)localObject1).detail);
-                    }
-                  }
-                  if (AVCoreLog.isColorLevel()) {
-                    AVCoreLog.i("MavEngineJni_NativeEvent", "SetMicByAdmin : uin = " + l1 + ", micAuthByAdmin = " + i);
-                  }
-                  localIMavEventListener.onGAudioMicSetByAdmin(l1, i);
-                  continue;
-                  j = (int)l3;
-                  if ((((MavNativeEventParams)localObject1).detail == null) || (j == 0)) {
-                    break;
-                  }
-                  byte[] arrayOfByte2 = ((MavNativeEventParams)localObject1).detail;
-                  if (((MavNativeEventParams)localObject1).detail != null) {}
-                  for (i = arrayOfByte1.length / j;; i = 0)
-                  {
-                    localObject1 = MavJniUtil.getAVInfoListFromByte(arrayOfByte2, i);
-                    if ((localObject1 == null) || (((ArrayList)localObject1).size() != j)) {
-                      break;
-                    }
-                    localIMavEventListener.onGAudioSetMicFailed(j, (ArrayList)localObject1);
-                    break label918;
-                  }
-                  if ((((MavNativeEventParams)localObject1).detail == null) || (((MavNativeEventParams)localObject1).detail.length != 16)) {
-                    break;
-                  }
-                  l1 = MavJniUtil.getLongFromByte(((MavNativeEventParams)localObject1).detail);
-                  arrayOfByte1 = new byte[4];
-                  System.arraycopy(((MavNativeEventParams)localObject1).detail, 12, arrayOfByte1, 0, 4);
-                  i = MavJniUtil.getIntFromByte(arrayOfByte1);
-                  if (l3 == 1L) {}
-                  for (bool2 = true;; bool2 = false)
-                  {
-                    if (AVCoreLog.isColorLevel()) {
-                      AVCoreLog.i("MavEngineJni_NativeEvent", "onGAudioUserAudioSuspectNoisy : uin = " + l1 + ", isSuspectNoisy = " + bool2 + ",validDuration = " + i);
-                    }
-                    localIMavEventListener.onGAudioUserAudioSuspectNoisy(l1, bool2, i);
-                    break;
-                  }
-                  localIMavEventListener.onCreateRoomSuc(k, l1, j);
-                  continue;
-                  localIMavEventListener.onEnterSuc(l1, k, j);
-                  continue;
-                  localIMavEventListener.onGAudioTerminalEnterRoom(k, l1, new int[] { j });
-                  continue;
-                  localIMavEventListener.onGAudioRoomDestroy(k, l1);
-                  continue;
-                  localIMavEventListener.onGAudioSDKError(k, l1, 17, (int)((MavNativeEventParams)localObject1).info);
-                  continue;
-                  localIMavEventListener.onGAudioSDKError(k, l1, 16, (int)((MavNativeEventParams)localObject1).info);
-                  continue;
-                  localIMavEventListener.onGAudioSDKError(k, l1, 15, (int)((MavNativeEventParams)localObject1).info);
-                  continue;
-                  localIMavEventListener.onGAudioKickOut(l1, k, j);
-                  continue;
-                  if (AVCoreLog.isColorLevel()) {
-                    AVCoreLog.i("MavEngineJni_NativeEvent", "EM_SDK_EVENT_ID_VIDEO_DEC_FRAME_DATA-->Uin=" + l3 + " ,VideoSrcType=" + k);
-                  }
-                  localIMavEventListener.onRemoteVideoDataComeIn(61, l3, k);
-                  continue;
-                  localIMavEventListener.onGaGoOnStageResult(i1, l3, l1, k);
-                  continue;
-                  localIMavEventListener.onGaGoOffStageResult(i1, l3, l1, k);
-                  continue;
-                  localIMavEventListener.onShareOpsCallback(84, (int)l3, k, l1, j, n);
-                  continue;
-                  localIMavEventListener.onShareOpsCallback(85, (int)l3, k, l1, j, n);
-                  continue;
-                  localIMavEventListener.onShareOpsCallback(86, (int)l3, k, l1, j, n);
-                  continue;
-                  localIMavEventListener.onShareOpsCallback(87, (int)l3, k, l1, j, n);
-                  continue;
-                  localIMavEventListener.onShareOpsCallback(88, (int)l3, k, l1, j, n);
-                  continue;
-                  localIMavEventListener.onShareOpsCallback(89, (int)l3, k, l1, j, n);
-                  continue;
-                  localIMavEventListener.onGaSwitchVideoResult(i1, l3, l1, k);
-                  continue;
-                  localIMavEventListener.onDetectAudioDataIssue(3);
-                  continue;
-                  localIMavEventListener.onDetectAudioDataIssue(4);
-                  continue;
-                  if (arrayOfByte1 == null) {}
-                  for (localObject1 = "";; localObject1 = new String(arrayOfByte1))
-                  {
-                    localIMavEventListener.onKickOutSuc(l1, k, j, (int)l3, (String)localObject1);
-                    break;
-                  }
-                  if (arrayOfByte1 == null) {}
-                  for (localObject1 = "";; localObject1 = new String(arrayOfByte1))
-                  {
-                    localIMavEventListener.onKickOutFail(l1, k, j, (int)l3, (String)localObject1);
-                    break;
-                  }
-                  localIMavEventListener.onHowling();
-                  continue;
-                  localIMavEventListener.onOpenMicFail();
-                  continue;
-                  if (arrayOfByte1 != null)
-                  {
-                    localIMavEventListener.onSetMicBySelf(MavJniUtil.getLongFromByte(arrayOfByte1));
-                    continue;
-                    if (l3 != 0L)
-                    {
-                      localIMavEventListener.onFpsChange((int)l3);
-                      continue;
-                      if (arrayOfByte1 != null)
-                      {
-                        localIMavEventListener.onGVideoDownloadChannelCtlChanged(arrayOfByte1);
-                        continue;
-                        localIMavEventListener.onSelfAudioVolumeChange(l3);
-                        continue;
-                        onRecPushEncParam(localIMavEventListener, k, l1, l3, m);
-                        continue;
-                        localIMavEventListener.onCheckScreenShareAvailable((int)l3, arrayOfByte1);
-                      }
-                    }
-                  }
-                }
-              }
+            if (localObject1 != null) {
+              onRecvUserList(localIMavEventListener, 44, m, l1, (ArrayList)localObject1, 0L, 0, k, j);
+            } else {
+              onRecvUserListFail(localIMavEventListener, m, l1, -99L);
             }
+          }
+          else
+          {
+            onRecvUserListFail(localIMavEventListener, m, l1, j);
           }
         }
       }
-      label2904:
-      bool1 = false;
+    }
+    else
+    {
+      localObject1 = MavJniUtil.getUinListFromBuf((byte[])localObject2);
+      if ((m != 2) && (m != 1))
+      {
+        if (m == 3) {
+          onRecvDoubleVideoMeeting(localIMavEventListener, i1, m, l3, k, n);
+        }
+      }
+      else
+      {
+        if (localObject1 == null) {
+          i = 0;
+        } else {
+          i = localObject1.length;
+        }
+        onRecvUserList(localIMavEventListener, 6, m, l1, (long[])localObject1, l3, k, n, i, j);
+      }
+    }
+    label2916:
+    if ((bool1) && (localObject3 != null)) {
+      ((AVNativeEventProcessor)localObject3).handleMessage(paramMessage);
     }
   }
   
   void onRecvDoubleVideoMeeting(IMavEventListener paramIMavEventListener, int paramInt1, int paramInt2, long paramLong, int paramInt3, int paramInt4)
   {
-    if (paramIMavEventListener == null) {
+    if (paramIMavEventListener == null)
+    {
       if (AVCoreLog.isColorLevel()) {
         AVCoreLog.e("MavEngineJni_NativeEvent", "onRecvDoubleVideoMeeting-->mVideoController is null");
       }
-    }
-    do
-    {
       return;
-      if (AVCoreLog.isColorLevel()) {
-        AVCoreLog.i("MavEngineJni_NativeEvent", "onRecvDoubleVideoMeeting-->eventId=" + paramInt1 + " ,relationType=" + paramInt2 + " ,inviteUin=" + paramLong + "], multiAVType[" + paramInt3 + "], multiSubType[" + paramInt4);
-      }
-      if (paramInt1 == 6)
-      {
-        paramIMavEventListener.onDoubleVideoMeetingInvite(paramLong, paramInt3, paramInt4);
-        return;
-      }
-    } while ((paramInt1 == 44) || (paramInt1 != 5));
-    paramIMavEventListener.onDoubleVideoMeetingInvite(paramLong, paramInt3, paramInt4);
+    }
+    if (AVCoreLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onRecvDoubleVideoMeeting-->eventId=");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" ,relationType=");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(" ,inviteUin=");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append("], multiAVType[");
+      localStringBuilder.append(paramInt3);
+      localStringBuilder.append("], multiSubType[");
+      localStringBuilder.append(paramInt4);
+      AVCoreLog.i("MavEngineJni_NativeEvent", localStringBuilder.toString());
+    }
+    if (paramInt1 == 6)
+    {
+      paramIMavEventListener.onDoubleVideoMeetingInvite(paramLong, paramInt3, paramInt4);
+      return;
+    }
+    if (paramInt1 == 44) {
+      return;
+    }
+    if (paramInt1 == 5) {
+      paramIMavEventListener.onDoubleVideoMeetingInvite(paramLong, paramInt3, paramInt4);
+    }
   }
   
   void onRecvUserList(IMavEventListener paramIMavEventListener, int paramInt1, int paramInt2, long paramLong1, ArrayList<AVUserInfo> paramArrayList, long paramLong2, int paramInt3, int paramInt4, int paramInt5)
   {
-    if (paramIMavEventListener == null) {
+    if (paramIMavEventListener == null)
+    {
       if (AVCoreLog.isColorLevel()) {
         AVCoreLog.i("MavEngineJni_NativeEvent", "onRecvUserList --> mVideoController is null");
       }
-    }
-    do
-    {
       return;
-      if (AVCoreLog.isColorLevel()) {
-        AVCoreLog.i("MavEngineJni_NativeEvent", "onRecvUserList.GET_ROOM_INFO, evtId[" + paramInt1 + "], relationType[" + paramInt2 + "], relationId[" + paramLong1 + "], inviteUin[" + paramLong2 + "], multiAVType[" + paramInt4 + "], multiSubType[" + paramInt3 + "], userCount[" + paramInt5 + "]");
-      }
-      if (paramInt1 == 44)
-      {
-        paramIMavEventListener.onGAudioMemAllUpdate(paramLong1, paramArrayList, paramInt4, paramInt5);
-        return;
-      }
-    } while (!AVCoreLog.isColorLevel());
-    AVCoreLog.e("MavEngineJni_NativeEvent", "onRecvUserList --> WRONG EVTID. evtId = " + paramInt1);
+    }
+    if (AVCoreLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onRecvUserList.GET_ROOM_INFO, evtId[");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append("], relationType[");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append("], relationId[");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append("], inviteUin[");
+      localStringBuilder.append(paramLong2);
+      localStringBuilder.append("], multiAVType[");
+      localStringBuilder.append(paramInt4);
+      localStringBuilder.append("], multiSubType[");
+      localStringBuilder.append(paramInt3);
+      localStringBuilder.append("], userCount[");
+      localStringBuilder.append(paramInt5);
+      localStringBuilder.append("]");
+      AVCoreLog.i("MavEngineJni_NativeEvent", localStringBuilder.toString());
+    }
+    if (paramInt1 == 44)
+    {
+      paramIMavEventListener.onGAudioMemAllUpdate(paramLong1, paramArrayList, paramInt4, paramInt5);
+      return;
+    }
+    if (AVCoreLog.isColorLevel())
+    {
+      paramIMavEventListener = new StringBuilder();
+      paramIMavEventListener.append("onRecvUserList --> WRONG EVTID. evtId = ");
+      paramIMavEventListener.append(paramInt1);
+      AVCoreLog.e("MavEngineJni_NativeEvent", paramIMavEventListener.toString());
+    }
   }
   
   void onRecvUserList(IMavEventListener paramIMavEventListener, int paramInt1, int paramInt2, long paramLong1, long[] paramArrayOfLong, long paramLong2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    if (paramIMavEventListener == null) {
+    if (paramIMavEventListener == null)
+    {
       if (AVCoreLog.isColorLevel()) {
         AVCoreLog.e("MavEngineJni_NativeEvent", "onRecvUserList-->mVideoController is null");
       }
-    }
-    label193:
-    label199:
-    do
-    {
       return;
-      int i = 0;
+    }
+    boolean bool = false;
+    int i;
+    if (paramArrayOfLong != null) {
+      i = paramArrayOfLong.length;
+    } else {
+      i = 0;
+    }
+    if (AVCoreLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onRecvUserList, evtId[");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append("], relationType[");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append("], relationId[");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append("], inviteUin[");
+      localStringBuilder.append(paramLong2);
+      localStringBuilder.append("], multiAVType[");
+      localStringBuilder.append(paramInt3);
+      localStringBuilder.append("], multiSubType[");
+      localStringBuilder.append(paramInt4);
+      localStringBuilder.append("], userListSize[");
+      localStringBuilder.append(i);
+      localStringBuilder.append("], userList[");
       if (paramArrayOfLong != null) {
-        i = paramArrayOfLong.length;
+        bool = true;
       }
-      StringBuilder localStringBuilder;
-      if (AVCoreLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("onRecvUserList, evtId[").append(paramInt1).append("], relationType[").append(paramInt2).append("], relationId[").append(paramLong1).append("], inviteUin[").append(paramLong2).append("], multiAVType[").append(paramInt3).append("], multiSubType[").append(paramInt4).append("], userListSize[").append(i).append("], userList[");
-        if (paramArrayOfLong == null) {
-          break label193;
-        }
-      }
-      for (boolean bool = true;; bool = false)
-      {
-        AVCoreLog.i("MavEngineJni_NativeEvent", bool + "], flag[" + paramInt6 + "]");
-        if ((paramArrayOfLong == null) && (paramInt2 == 2)) {
-          break;
-        }
-        if (paramInt1 != 44) {
-          break label199;
-        }
-        paramIMavEventListener.onGAudioMemAllUpdate(paramLong1, paramArrayOfLong, paramInt3, paramInt5);
-        return;
-      }
-      if (paramInt1 == 6)
-      {
-        paramIMavEventListener.onGAudioInvite(paramInt2, paramLong1, paramLong2, paramArrayOfLong, false, paramInt3, paramInt4, paramInt6);
-        return;
-      }
-    } while (paramInt1 != 5);
-    paramIMavEventListener.onGAudioInvite(paramInt2, paramLong1, paramLong2, paramArrayOfLong, true, paramInt3, paramInt4, paramInt6);
+      localStringBuilder.append(bool);
+      localStringBuilder.append("], flag[");
+      localStringBuilder.append(paramInt6);
+      localStringBuilder.append("]");
+      AVCoreLog.i("MavEngineJni_NativeEvent", localStringBuilder.toString());
+    }
+    if ((paramArrayOfLong == null) && (paramInt2 == 2)) {
+      return;
+    }
+    if (paramInt1 == 44)
+    {
+      paramIMavEventListener.onGAudioMemAllUpdate(paramLong1, paramArrayOfLong, paramInt3, paramInt5);
+      return;
+    }
+    if (paramInt1 == 6)
+    {
+      paramIMavEventListener.onGAudioInvite(paramInt2, paramLong1, paramLong2, paramArrayOfLong, false, paramInt3, paramInt4, paramInt6);
+      return;
+    }
+    if (paramInt1 == 5) {
+      paramIMavEventListener.onGAudioInvite(paramInt2, paramLong1, paramLong2, paramArrayOfLong, true, paramInt3, paramInt4, paramInt6);
+    }
   }
   
   void onRecvUserListFail(IMavEventListener paramIMavEventListener, int paramInt, long paramLong1, long paramLong2)
   {
-    AVCoreLog.e("MavEngineJni_NativeEvent", "onRecvUserListFail, relationType[" + paramInt + "], relationId[" + paramLong1 + "], errCode[" + paramLong2 + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onRecvUserListFail, relationType[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("], relationId[");
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append("], errCode[");
+    localStringBuilder.append(paramLong2);
+    localStringBuilder.append("]");
+    AVCoreLog.e("MavEngineJni_NativeEvent", localStringBuilder.toString());
     paramIMavEventListener.onGAudioRoomDestroy(paramInt, paramLong1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avcore.jni.mav.MavEngineJni.NativeEventHandler
  * JD-Core Version:    0.7.0.1
  */

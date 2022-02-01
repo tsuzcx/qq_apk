@@ -13,12 +13,12 @@ final class g$1
   public final void a(int paramInt, String paramString, Throwable paramThrowable)
   {
     f.a(paramString, new Object[] { paramThrowable });
-    if ((this.a) || (this.b.a))
+    if ((!this.a) && (!this.b.a))
     {
-      this.b.a(paramInt, paramString, paramThrowable);
+      this.b.c();
       return;
     }
-    this.b.c();
+    this.b.a(paramInt, paramString, paramThrowable);
   }
   
   public final void a(T paramT)
@@ -28,7 +28,7 @@ final class g$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.a.g.1
  * JD-Core Version:    0.7.0.1
  */

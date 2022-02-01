@@ -1,50 +1,33 @@
 package com.tencent.biz.pubaccount.NativeAd.util;
 
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdReportData;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdLog;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.soso.location.LbsManagerServiceOnLocationChangeListener;
+import com.tencent.mobileqq.soso.location.data.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 final class NativeAdUtils$4
-  implements BusinessObserver
+  extends LbsManagerServiceOnLocationChangeListener
 {
-  NativeAdUtils$4(AdvertisementInfo paramAdvertisementInfo, AdReportData paramAdReportData, int paramInt) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  NativeAdUtils$4(String paramString)
   {
-    if (paramBoolean) {}
-    try
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel())
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle == null) {
-        return;
-      }
-      WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-      localWebSsoResponseBody.mergeFrom(paramBundle);
-      if ((!localWebSsoResponseBody.ret.has()) || (localWebSsoResponseBody.ret.get() != 0)) {
-        return;
-      }
-      paramBundle = "";
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) {
-        paramBundle = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mTitle;
-      }
-      ReadInJoyAdLog.a("REPORT_LINK", "new report success : title = " + paramBundle + " type = " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData.a());
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getADPosition doStartADLocation onLocationFinish errCode ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" info = ");
+      localStringBuilder.append(paramSosoLbsInfo);
+      QLog.d("NativeAdUtils", 2, localStringBuilder.toString());
     }
-    catch (Exception paramBundle)
-    {
-      paramBundle.printStackTrace();
-    }
-    ReadInJoyAdLog.a("REPORT_LINK", "new report fail : " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo + " type = " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData.a());
-    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils.4
  * JD-Core Version:    0.7.0.1
  */

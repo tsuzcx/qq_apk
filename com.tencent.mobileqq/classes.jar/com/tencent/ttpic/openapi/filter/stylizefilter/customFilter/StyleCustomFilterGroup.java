@@ -107,9 +107,8 @@ public class StyleCustomFilterGroup
   public Frame render(Frame paramFrame)
   {
     this.tmpFrameMap.clear();
-    float f = paramFrame.height * 1.0F / paramFrame.width;
+    float f1 = paramFrame.height * 1.0F / paramFrame.width;
     Iterator localIterator = this.customFilterList.iterator();
-    label105:
     Object localObject2;
     while (localIterator.hasNext())
     {
@@ -120,68 +119,60 @@ public class StyleCustomFilterGroup
         localObject3 = (StyleCustomNormalFilter)this.normalFilterMap.get(localCustomFilterItem.id);
         if (localObject3 != null)
         {
-          label128:
-          int j;
           if (localCustomFilterItem.preFilterId.size() == 0)
           {
             localObject1 = paramFrame;
-            if (localObject1 == null) {
-              break label435;
-            }
-            if (localCustomFilterItem.inputFrameSize[0] <= 0) {
-              break label437;
-            }
-            i = localCustomFilterItem.inputFrameSize[0];
-            int k = (int)(i * f);
-            if (localCustomFilterItem.outputFrameSize[0] <= 0) {
-              break label446;
-            }
-            j = localCustomFilterItem.outputFrameSize[0];
-            label154:
-            int m = (int)(j * f);
-            if ((Math.abs(i - ((Frame)localObject1).width) < 2) && (Math.abs(k - ((Frame)localObject1).height) < 2)) {
-              break label452;
-            }
-            localObject2 = FrameBufferCache.getInstance().get(i, k);
-            this.copyFilter.RenderProcess(((Frame)localObject1).getTextureId(), i, k, -1, 0.0D, (Frame)localObject2);
-            localObject1 = localObject2;
-            label225:
-            ((StyleCustomNormalFilter)localObject3).updateWidthHeightParam(1.0F / j, 1.0F / m);
-            ((StyleCustomNormalFilter)localObject3).updateImgSize(j, m);
-            if (!this.isSizeUpdated) {
-              break label455;
-            }
-            localObject2 = FrameBufferCache.getInstance().get(this.width, this.height);
-            FrameUtil.clearFrame((Frame)localObject2, 0.0F, 0.0F, 0.0F, 0.0F, this.width, this.height);
-            ((StyleCustomNormalFilter)localObject3).RenderProcess(((Frame)localObject1).getTextureId(), this.width, this.height, -1, 0.0D, (Frame)localObject2);
           }
-          label435:
-          label437:
-          label446:
-          label452:
-          label455:
-          for (localObject1 = localObject2;; localObject1 = ((StyleCustomNormalFilter)localObject3).RenderProcess((Frame)localObject1))
+          else if (localCustomFilterItem.preFilterId.size() == 1)
           {
-            this.tmpFrameMap.put(localCustomFilterItem.id, localObject1);
-            break;
-            if (localCustomFilterItem.preFilterId.size() == 1)
-            {
-              localObject1 = (Frame)this.tmpFrameMap.get(localCustomFilterItem.preFilterId.get(0));
-              break label105;
-            }
+            localObject1 = (Frame)this.tmpFrameMap.get(localCustomFilterItem.preFilterId.get(0));
+          }
+          else
+          {
             localObject1 = (Frame)this.tmpFrameMap.get(localCustomFilterItem.preFilterId.get(0));
             localObject2 = (Frame)this.tmpFrameMap.get(localCustomFilterItem.preFilterId.get(1));
             if (localObject2 == null) {
-              break;
+              continue;
             }
             ((StyleCustomNormalFilter)localObject3).setTexture2(((Frame)localObject2).getTextureId());
-            break label105;
-            break;
-            i = ((Frame)localObject1).width;
-            break label128;
-            j = i;
-            break label154;
-            break label225;
+          }
+          if (localObject1 != null)
+          {
+            if (localCustomFilterItem.inputFrameSize[0] > 0) {
+              i = localCustomFilterItem.inputFrameSize[0];
+            } else {
+              i = ((Frame)localObject1).width;
+            }
+            int m = (int)(i * f1);
+            int j;
+            if (localCustomFilterItem.outputFrameSize[0] > 0) {
+              j = localCustomFilterItem.outputFrameSize[0];
+            } else {
+              j = i;
+            }
+            float f2 = j;
+            int k = (int)(f2 * f1);
+            if ((Math.abs(i - ((Frame)localObject1).width) < 2) && (Math.abs(m - ((Frame)localObject1).height) < 2)) {
+              break label366;
+            }
+            localObject2 = FrameBufferCache.getInstance().get(i, m);
+            this.copyFilter.RenderProcess(((Frame)localObject1).getTextureId(), i, m, -1, 0.0D, (Frame)localObject2);
+            localObject1 = localObject2;
+            label366:
+            ((StyleCustomNormalFilter)localObject3).updateWidthHeightParam(1.0F / f2, 1.0F / k);
+            ((StyleCustomNormalFilter)localObject3).updateImgSize(j, k);
+            if (this.isSizeUpdated)
+            {
+              localObject2 = FrameBufferCache.getInstance().get(this.width, this.height);
+              FrameUtil.clearFrame((Frame)localObject2, 0.0F, 0.0F, 0.0F, 0.0F, this.width, this.height);
+              ((StyleCustomNormalFilter)localObject3).RenderProcess(((Frame)localObject1).getTextureId(), this.width, this.height, -1, 0.0D, (Frame)localObject2);
+              localObject1 = localObject2;
+            }
+            else
+            {
+              localObject1 = ((StyleCustomNormalFilter)localObject3).RenderProcess((Frame)localObject1);
+            }
+            this.tmpFrameMap.put(localCustomFilterItem.id, localObject1);
           }
         }
       }
@@ -190,21 +181,21 @@ public class StyleCustomFilterGroup
         localObject2 = (OptimGaussianMaskFilter)this.gaussianFilterMap.get(localCustomFilterItem.id);
         if (localObject2 != null)
         {
-          if (localCustomFilterItem.preFilterId.size() == 0) {}
-          for (localObject1 = paramFrame;; localObject1 = (Frame)this.tmpFrameMap.get(localCustomFilterItem.preFilterId.get(0)))
-          {
-            localObject3 = FrameBufferCache.getInstance().get(((Frame)localObject1).width, ((Frame)localObject1).height);
-            ((OptimGaussianMaskFilter)localObject2).updateVideoSize(((Frame)localObject1).width, ((Frame)localObject1).height);
-            localObject2 = ((OptimGaussianMaskFilter)localObject2).RenderProcess((Frame)localObject1, (Frame)localObject3);
-            if (localObject2 != localObject1) {
-              ((Frame)localObject1).unlock();
-            }
-            if (localObject2 != localObject3) {
-              ((Frame)localObject3).unlock();
-            }
-            this.tmpFrameMap.put(localCustomFilterItem.id, localObject2);
-            break;
+          if (localCustomFilterItem.preFilterId.size() == 0) {
+            localObject1 = paramFrame;
+          } else {
+            localObject1 = (Frame)this.tmpFrameMap.get(localCustomFilterItem.preFilterId.get(0));
           }
+          localObject3 = FrameBufferCache.getInstance().get(((Frame)localObject1).width, ((Frame)localObject1).height);
+          ((OptimGaussianMaskFilter)localObject2).updateVideoSize(((Frame)localObject1).width, ((Frame)localObject1).height);
+          localObject2 = ((OptimGaussianMaskFilter)localObject2).RenderProcess((Frame)localObject1, (Frame)localObject3);
+          if (localObject2 != localObject1) {
+            ((Frame)localObject1).unlock();
+          }
+          if (localObject2 != localObject3) {
+            ((Frame)localObject3).unlock();
+          }
+          this.tmpFrameMap.put(localCustomFilterItem.id, localObject2);
         }
       }
     }
@@ -230,7 +221,7 @@ public class StyleCustomFilterGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.stylizefilter.customFilter.StyleCustomFilterGroup
  * JD-Core Version:    0.7.0.1
  */

@@ -9,37 +9,38 @@ public class ForkJvmHeapDumper
   implements IHeapDumper
 {
   private static final String TAG = "QAPM_memory_ForkJvmHeapDumper";
-  private static volatile ForkJvmHeapDumper instance = null;
+  private static volatile ForkJvmHeapDumper instance;
   private boolean dumperValid = false;
   private boolean soLoaded;
   
   private ForkJvmHeapDumper()
   {
-    if (this.soLoaded) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!DumpEnableCheck.checkVersion());
-      this.soLoaded = FileUtil.loadLibrary("qapmMemoryDump");
-    } while (!this.soLoaded);
-    this.dumperValid = initForkDump();
+    if (this.soLoaded) {
+      return;
+    }
+    if (!DumpEnableCheck.checkVersion()) {
+      return;
+    }
+    this.soLoaded = FileUtil.loadLibrary("qapmMemoryDump");
+    if (this.soLoaded) {
+      this.dumperValid = initForkDump();
+    }
   }
   
   private native void exitProcess();
   
   public static ForkJvmHeapDumper getInstance()
   {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new ForkJvmHeapDumper();
+    if (instance == null) {
+      try
+      {
+        if (instance == null) {
+          instance = new ForkJvmHeapDumper();
+        }
       }
-      return instance;
+      finally {}
     }
-    finally {}
+    return instance;
   }
   
   private native boolean initForkDump();
@@ -58,7 +59,6 @@ public class ForkJvmHeapDumper
   
   public boolean dump(String paramString)
   {
-    boolean bool2 = false;
     Logger.INSTANCE.i(new String[] { "QAPM_memory_ForkJvmHeapDumper", "dump ", paramString });
     if (!this.soLoaded)
     {
@@ -75,34 +75,42 @@ public class ForkJvmHeapDumper
       Logger.INSTANCE.e(new String[] { "QAPM_memory_ForkJvmHeapDumper", "dump failed caused by version net permitted!" });
       return false;
     }
-    boolean bool1 = bool2;
-    int i;
+    boolean bool;
     try
     {
-      i = trySuspendVmThenFork();
+      int i = trySuspendVmThenFork();
+      Object localObject;
       if (i == 0)
       {
-        bool1 = bool2;
         Debug.dumpHprofData(paramString);
-        bool1 = bool2;
-        Logger.INSTANCE.i(new String[] { "QAPM_memory_ForkJvmHeapDumper", "notifyDumped:" + false });
-        bool1 = bool2;
+        paramString = Logger.INSTANCE;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("notifyDumped:");
+        ((StringBuilder)localObject).append(false);
+        paramString.i(new String[] { "QAPM_memory_ForkJvmHeapDumper", ((StringBuilder)localObject).toString() });
         exitProcess();
         return false;
       }
+      resumeVM();
+      bool = waitDumping(i);
+      try
+      {
+        localObject = Logger.INSTANCE;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("hprof pid:");
+        localStringBuilder.append(i);
+        localStringBuilder.append(" dumped: ");
+        ((Logger)localObject).i(new String[] { "QAPM_memory_ForkJvmHeapDumper", localStringBuilder.toString(), paramString });
+        return bool;
+      }
+      catch (IOException paramString) {}
+      Logger.INSTANCE.exception("QAPM_memory_ForkJvmHeapDumper", "dump failed caused by IOException!", paramString);
     }
     catch (IOException paramString)
     {
-      Logger.INSTANCE.exception("QAPM_memory_ForkJvmHeapDumper", "dump failed caused by IOException!", paramString);
-      return bool1;
+      bool = false;
     }
-    bool1 = bool2;
-    resumeVM();
-    bool1 = bool2;
-    bool2 = waitDumping(i);
-    bool1 = bool2;
-    Logger.INSTANCE.i(new String[] { "QAPM_memory_ForkJvmHeapDumper", "hprof pid:" + i + " dumped: ", paramString });
-    return bool2;
+    return bool;
   }
   
   public boolean isValid()
@@ -112,7 +120,7 @@ public class ForkJvmHeapDumper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.memory.memorydump.ForkJvmHeapDumper
  * JD-Core Version:    0.7.0.1
  */

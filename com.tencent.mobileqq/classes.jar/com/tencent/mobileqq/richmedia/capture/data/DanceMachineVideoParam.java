@@ -19,12 +19,29 @@ public class DanceMachineVideoParam
   
   public String toString()
   {
-    return "danceScoreRate : " + this.jdField_a_of_type_JavaLangString + "\ndanceScore : " + this.jdField_a_of_type_Int + "\nptvCategory : " + this.b + "\nptvId : " + this.c + " \nactivityType : " + this.d + "\nactivityId : " + this.e + "\noverPercent : " + this.f + "\nuseSpecialShare : " + this.jdField_a_of_type_Boolean;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("danceScoreRate : ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("\ndanceScore : ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("\nptvCategory : ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("\nptvId : ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(" \nactivityType : ");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("\nactivityId : ");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append("\noverPercent : ");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append("\nuseSpecialShare : ");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.data.DanceMachineVideoParam
  * JD-Core Version:    0.7.0.1
  */

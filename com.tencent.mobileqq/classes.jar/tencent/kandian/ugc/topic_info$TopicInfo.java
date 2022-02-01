@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class topic_info$TopicInfo
   extends MessageMicro<TopicInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 56, 64, 72, 80, 90, 96, 104, 120, 130, 138, 144, 152, 160, 170, 176, 184, 192, 200, 208, 216, 242, 248, 256, 264, 274, 280, 288 }, new String[] { "id", "title", "intro", "cover_img", "icon_img", "pendant_img", "type1", "type2", "type3", "create_time", "tags", "source", "status", "ui_type", "cover_color", "video_url", "topic_type", "topic_valid", "creator_uid", "rowkey", "is_default", "is_undistribute", "audit_status", "submit_permission", "last_update_ts", "version", "ext", "super_submit_permission", "is_show_timestamp", "payment_type", "payinfo", "sort_type", "is_high_quality" }, new Object[] { Integer.valueOf(0), "", "", "", "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), "", Boolean.valueOf(false), Boolean.valueOf(false), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Boolean.valueOf(false) }, TopicInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field audit_status = PBField.initUInt32(0);
   public final PBStringField cover_color = PBField.initString("");
   public final PBStringField cover_img = PBField.initString("");
@@ -45,10 +45,18 @@ public final class topic_info$TopicInfo
   public final PBUInt32Field ui_type = PBField.initUInt32(0);
   public final PBUInt64Field version = PBField.initUInt64(0L);
   public final PBStringField video_url = PBField.initString("");
+  
+  static
+  {
+    Boolean localBoolean = Boolean.valueOf(false);
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 56, 64, 72, 80, 90, 96, 104, 120, 130, 138, 144, 152, 160, 170, 176, 184, 192, 200, 208, 216, 242, 248, 256, 264, 274, 280, 288 }, new String[] { "id", "title", "intro", "cover_img", "icon_img", "pendant_img", "type1", "type2", "type3", "create_time", "tags", "source", "status", "ui_type", "cover_color", "video_url", "topic_type", "topic_valid", "creator_uid", "rowkey", "is_default", "is_undistribute", "audit_status", "submit_permission", "last_update_ts", "version", "ext", "super_submit_permission", "is_show_timestamp", "payment_type", "payinfo", "sort_type", "is_high_quality" }, new Object[] { localInteger, "", "", "", "", "", localInteger, localInteger, localInteger, localInteger, "", localInteger, localInteger, localInteger, "", "", localInteger, localInteger, localLong, "", localBoolean, localBoolean, localInteger, localInteger, localLong, localLong, null, localInteger, localInteger, localInteger, null, localInteger, localBoolean }, TopicInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.kandian.ugc.topic_info.TopicInfo
  * JD-Core Version:    0.7.0.1
  */

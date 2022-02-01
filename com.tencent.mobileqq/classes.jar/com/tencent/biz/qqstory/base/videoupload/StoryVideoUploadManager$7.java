@@ -30,13 +30,16 @@ class StoryVideoUploadManager$7
       paramJobContext.add(new StoryVideoTaskInfo((StoryVideoItem)paramVarArgs.next()));
     }
     this.a.a(paramJobContext);
-    SLog.c("Q.qqstory.publish.upload:StoryVideoUploadManager", "had load local task size " + paramJobContext.size());
+    paramVarArgs = new StringBuilder();
+    paramVarArgs.append("had load local task size ");
+    paramVarArgs.append(paramJobContext.size());
+    SLog.c("Q.qqstory.publish.upload:StoryVideoUploadManager", paramVarArgs.toString());
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.7
  * JD-Core Version:    0.7.0.1
  */

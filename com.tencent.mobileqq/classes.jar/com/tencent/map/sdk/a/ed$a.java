@@ -12,57 +12,54 @@ final class ed$a
   private ed$a(Object paramObject, fd<?> paramfd, boolean paramBoolean)
   {
     ea localea;
-    if ((paramObject instanceof ea))
-    {
+    if ((paramObject instanceof ea)) {
       localea = (ea)paramObject;
-      this.d = localea;
-      if (!(paramObject instanceof ds)) {
-        break label84;
-      }
-      paramObject = (ds)paramObject;
-      label35:
-      this.e = paramObject;
-      if ((this.d == null) && (this.e == null)) {
-        break label89;
-      }
-    }
-    label84:
-    label89:
-    for (boolean bool = true;; bool = false)
-    {
-      eg.a(bool);
-      this.a = paramfd;
-      this.b = paramBoolean;
-      this.c = null;
-      return;
+    } else {
       localea = null;
-      break;
-      paramObject = null;
-      break label35;
     }
+    this.d = localea;
+    if ((paramObject instanceof ds)) {
+      paramObject = (ds)paramObject;
+    } else {
+      paramObject = null;
+    }
+    this.e = paramObject;
+    boolean bool;
+    if ((this.d == null) && (this.e == null)) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    eg.a(bool);
+    this.a = paramfd;
+    this.b = paramBoolean;
+    this.c = null;
   }
   
   public final <T> ee<T> a(dn paramdn, fd<T> paramfd)
   {
+    fd localfd = this.a;
     boolean bool;
-    if (this.a != null) {
-      if ((this.a.equals(paramfd)) || ((this.b) && (this.a.b == paramfd.a))) {
+    if (localfd != null)
+    {
+      if ((!localfd.equals(paramfd)) && ((!this.b) || (this.a.b != paramfd.a))) {
+        bool = false;
+      } else {
         bool = true;
       }
     }
-    while (bool)
-    {
-      return new ed(this.d, this.e, paramdn, paramfd, this, (byte)0);
-      bool = false;
-      continue;
+    else {
       bool = this.c.isAssignableFrom(paramfd.a);
+    }
+    if (bool) {
+      return new ed(this.d, this.e, paramdn, paramfd, this, (byte)0);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.ed.a
  * JD-Core Version:    0.7.0.1
  */

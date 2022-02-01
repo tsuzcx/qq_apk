@@ -18,7 +18,11 @@ class ShortVideoRealItemBuilder$10$1
     if ((ShortVideoUtils.getDisplayProgress(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileProgress, 10) > 60) || (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.progress > 60))
     {
       this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(60, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin + this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+      MessageProgressView localMessageProgressView = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin);
+      localStringBuilder.append(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+      localMessageProgressView.setAnimProgress(60, localStringBuilder.toString());
       this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(0);
       this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder$Holder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
@@ -27,7 +31,7 @@ class ShortVideoRealItemBuilder$10$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.10.1
  * JD-Core Version:    0.7.0.1
  */

@@ -76,13 +76,19 @@ public class TypedArrayUtils
     {
       paramXmlPullParser = new TypedValue();
       paramTypedArray.getValue(paramInt, paramXmlPullParser);
-      if (paramXmlPullParser.type == 2) {
-        throw new UnsupportedOperationException("Failed to resolve attribute at index " + paramInt + ": " + paramXmlPullParser);
+      if (paramXmlPullParser.type != 2)
+      {
+        if ((paramXmlPullParser.type >= 28) && (paramXmlPullParser.type <= 31)) {
+          return getNamedColorStateListFromInt(paramXmlPullParser);
+        }
+        return ColorStateListInflaterCompat.inflate(paramTypedArray.getResources(), paramTypedArray.getResourceId(paramInt, 0), paramTheme);
       }
-      if ((paramXmlPullParser.type >= 28) && (paramXmlPullParser.type <= 31)) {
-        return getNamedColorStateListFromInt(paramXmlPullParser);
-      }
-      return ColorStateListInflaterCompat.inflate(paramTypedArray.getResources(), paramTypedArray.getResourceId(paramInt, 0), paramTheme);
+      paramTypedArray = new StringBuilder();
+      paramTypedArray.append("Failed to resolve attribute at index ");
+      paramTypedArray.append(paramInt);
+      paramTypedArray.append(": ");
+      paramTypedArray.append(paramXmlPullParser);
+      throw new UnsupportedOperationException(paramTypedArray.toString());
     }
     return null;
   }
@@ -100,14 +106,12 @@ public class TypedArrayUtils
       paramXmlPullParser = new TypedValue();
       paramTypedArray.getValue(paramInt1, paramXmlPullParser);
       if ((paramXmlPullParser.type >= 28) && (paramXmlPullParser.type <= 31)) {
-        paramTypedArray = ComplexColorCompat.from(paramXmlPullParser.data);
+        return ComplexColorCompat.from(paramXmlPullParser.data);
       }
-      do
-      {
+      paramTypedArray = ComplexColorCompat.inflate(paramTypedArray.getResources(), paramTypedArray.getResourceId(paramInt1, 0), paramTheme);
+      if (paramTypedArray != null) {
         return paramTypedArray;
-        paramXmlPullParser = ComplexColorCompat.inflate(paramTypedArray.getResources(), paramTypedArray.getResourceId(paramInt1, 0), paramTheme);
-        paramTypedArray = paramXmlPullParser;
-      } while (paramXmlPullParser != null);
+      }
     }
     return ComplexColorCompat.from(paramInt2);
   }
@@ -210,7 +214,7 @@ public class TypedArrayUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.content.res.TypedArrayUtils
  * JD-Core Version:    0.7.0.1
  */

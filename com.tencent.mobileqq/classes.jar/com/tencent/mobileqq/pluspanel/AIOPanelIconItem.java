@@ -71,15 +71,12 @@ public class AIOPanelIconItem
         localStateListDrawable.addState(new int[] { -16842908, 16842913, -16842919 }, (Drawable)localObject);
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localStateListDrawable;
       }
-      return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        QLog.e("AIOPanelIconItem", 1, localThrowable, new Object[0]);
-      }
+      QLog.e("AIOPanelIconItem", 1, localThrowable, new Object[0]);
     }
+    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   }
   
   public Drawable b()
@@ -96,20 +93,17 @@ public class AIOPanelIconItem
         localStateListDrawable.addState(new int[] { -16842908, 16842913, -16842919 }, (Drawable)localObject);
         this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = localStateListDrawable;
       }
-      return this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        QLog.e("AIOPanelIconItem", 1, localThrowable, new Object[0]);
-      }
+      QLog.e("AIOPanelIconItem", 1, localThrowable, new Object[0]);
     }
+    return this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.AIOPanelIconItem
  * JD-Core Version:    0.7.0.1
  */

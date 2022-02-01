@@ -1,7 +1,9 @@
 package com.tencent.hippy.qq.module;
 
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.QReportModule;
+import com.tencent.mobileqq.kandian.biz.viola.api.IQReportModule;
+import com.tencent.mobileqq.kandian.biz.viola.api.IQReportModuleFactory;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.annotation.HippyMethod;
 import com.tencent.mtt.hippy.annotation.HippyNativeModule;
@@ -14,7 +16,7 @@ public class HippyQQReportModule
   extends HippyNativeModuleBase
 {
   static final String CLASSNAME = "QReport";
-  private QReportModule mQReportModule = new QReportModule();
+  private IQReportModule mQReportModule = ((IQReportModuleFactory)QRoute.api(IQReportModuleFactory.class)).create();
   
   public HippyQQReportModule(HippyEngineContext paramHippyEngineContext)
   {
@@ -27,12 +29,12 @@ public class HippyQQReportModule
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mQReportModule.reportDT(paramString, paramHippyMap);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mQReportModule.reportDT(paramString, paramHippyMap);
   }
   
   @HippyMethod(name="reportT")
@@ -41,17 +43,17 @@ public class HippyQQReportModule
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mQReportModule.reportT(paramString, paramHippyMap);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mQReportModule.reportT(paramString, paramHippyMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.module.HippyQQReportModule
  * JD-Core Version:    0.7.0.1
  */

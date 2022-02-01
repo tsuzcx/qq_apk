@@ -11,20 +11,25 @@ class DownloadManagerV2$24
   public void run()
   {
     DownloadInfo localDownloadInfo = DownloadManagerV2.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b);
-    if (localDownloadInfo == null) {
+    if (localDownloadInfo == null)
+    {
       LogUtility.d("DownloadManagerV2", "OnDownloadSDKTaskProgressChanged info == null");
     }
-    for (;;)
+    else
     {
-      this.this$0.a(2, localDownloadInfo);
-      return;
-      LogUtility.a("DownloadManagerV2", "OnDownloadSDKTaskProgressChanged info state=" + localDownloadInfo.a() + " progress=" + localDownloadInfo.f);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("OnDownloadSDKTaskProgressChanged info state=");
+      localStringBuilder.append(localDownloadInfo.a());
+      localStringBuilder.append(" progress=");
+      localStringBuilder.append(localDownloadInfo.f);
+      LogUtility.a("DownloadManagerV2", localStringBuilder.toString());
     }
+    this.this$0.a(2, localDownloadInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.24
  * JD-Core Version:    0.7.0.1
  */

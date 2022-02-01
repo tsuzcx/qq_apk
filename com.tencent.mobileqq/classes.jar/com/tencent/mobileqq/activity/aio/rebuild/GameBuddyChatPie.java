@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
 import android.content.Context;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -13,71 +12,86 @@ import com.tencent.mobileqq.activity.aio.core.msglist.MsgList;
 import com.tencent.mobileqq.activity.aio.core.msglist.MsgListBuilder;
 import com.tencent.mobileqq.activity.aio.coreui.msglist.ListUI;
 import com.tencent.mobileqq.activity.aio.coreui.msglist.Scroller;
+import com.tencent.mobileqq.activity.aio.helper.GameBuddyHelperProvider;
+import com.tencent.mobileqq.activity.aio.helper.HelperProvider;
 import com.tencent.mobileqq.activity.aio.rebuild.msglist.GameBuddyMsgListRefresher;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageForPtt;
 import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.gamecenter.message.GameMsgManager;
-import com.tencent.mobileqq.gamecenter.message.GameMsgUtil;
+import com.tencent.mobileqq.gamecenter.api.IGameMsgHelperApi;
+import com.tencent.mobileqq.gamecenter.api.IGameMsgManagerService;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class GameBuddyChatPie
   extends StrangerChatPie
 {
-  public GameBuddyChatPie(QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, FragmentActivity paramFragmentActivity, Context paramContext)
+  public GameBuddyChatPie(QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, BaseActivity paramBaseActivity, Context paramContext)
   {
-    super(paramQQAppInterface, paramViewGroup, paramFragmentActivity, paramContext);
+    super(paramQQAppInterface, paramViewGroup, paramBaseActivity, paramContext);
   }
   
-  public AIOContext a()
+  protected AIOContext a()
   {
-    return new GameBuddyContext(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this);
+    return new GameBuddyContext();
   }
   
-  public MsgList a()
+  protected MsgList a()
   {
     return new MsgListBuilder(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext).a(new Scroller()).a(new ListUI(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext)).a(new UnreadTask(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext)).a(new GameBuddyMsgListRefresher(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext)).a();
   }
   
+  protected HelperProvider a()
+  {
+    return new GameBuddyHelperProvider(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+  }
+  
   void a()
   {
-    b(true);
+    a(true);
     if ((this.f != null) && (this.jdField_a_of_type_AndroidContentContext != null))
     {
-      String str = GameMsgUtil.d;
+      String str;
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        str = ((GameMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.GAME_CENTER_MSG_MANAGER)).a();
+        str = ((IGameMsgManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IGameMsgManagerService.class, "")).getGameBuddyAppName();
+      } else {
+        str = "\"玩伴\"小程序";
       }
-      this.f.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131698544) + str);
+      TextView localTextView = this.f;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_AndroidContentContext.getString(2131698610));
+      localStringBuilder.append(str);
+      localTextView.setText(localStringBuilder.toString());
     }
   }
   
-  public void a(Object paramObject)
+  public void a(int paramInt)
   {
-    super.a(paramObject);
-    int i = ((Integer)paramObject).intValue();
-    paramObject = "";
-    if (i == 2) {
-      paramObject = "206997";
+    super.a(paramInt);
+    String str;
+    if (paramInt == 2) {
+      str = "206997";
     }
     for (;;)
     {
-      GameMsgUtil.a("0", "1", "176", "969", "96902", paramObject, "", "0", "20", "0");
-      return;
-      if (i == 3) {
-        paramObject = "206996";
-      } else if (i == 24) {
-        paramObject = "207004";
-      } else if (i == 4) {
-        paramObject = "207000";
-      } else if (i == 5) {
-        paramObject = "207005";
+      break;
+      if (paramInt == 3) {
+        str = "206996";
+      } else if (paramInt == 24) {
+        str = "207004";
+      } else if (paramInt == 4) {
+        str = "207000";
+      } else if (paramInt == 5) {
+        str = "207005";
+      } else {
+        str = "";
       }
     }
+    ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).reportForGameMsg("0", "1", "176", "969", "96902", str, "", "0", "20", "0");
   }
   
   protected void a(boolean paramBoolean, String paramString, long paramLong)
@@ -86,68 +100,62 @@ public class GameBuddyChatPie
     {
       try
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 10009) {
-          break;
-        }
-        localObject = (ChatMessage)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageProxy(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong);
-        paramString = "2";
-        if ((localObject instanceof MessageForText))
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 10009)
         {
-          paramString = "2";
-          break label138;
-          GameMsgUtil.a("0", "1", "176", "969", "96902", "206999", paramString, "0", "20", (String)localObject);
-        }
-        else if ((localObject instanceof MessageForPic))
-        {
-          paramString = "0";
-        }
-        else if ((localObject instanceof MessageForPtt))
-        {
-          paramString = "1";
+          paramString = (ChatMessage)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageProxy(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong);
+          boolean bool = paramString instanceof MessageForText;
+          if (bool)
+          {
+            paramString = "2";
+          }
+          else if ((paramString instanceof MessageForPic))
+          {
+            paramString = "0";
+          }
+          else
+          {
+            if (!(paramString instanceof MessageForPtt)) {
+              continue;
+            }
+            paramString = "1";
+          }
+          IGameMsgHelperApi localIGameMsgHelperApi = (IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class);
+          if (!paramBoolean) {
+            break label150;
+          }
+          str = "0";
+          localIGameMsgHelperApi.reportForGameMsg("0", "1", "176", "969", "96902", "206999", paramString, "0", "20", str);
+          return;
         }
       }
       catch (Throwable paramString)
       {
         QLog.e("GameBuddyChatPie", 1, paramString, new Object[0]);
-        return;
       }
-      Object localObject = "1";
-      continue;
-      label138:
-      if (paramBoolean) {
-        localObject = "0";
-      }
+      return;
+      label150:
+      String str = "1";
     }
   }
   
-  public boolean c()
+  public void g(int paramInt)
   {
-    return true;
-  }
-  
-  public void m(int paramInt)
-  {
-    super.m(paramInt);
-    GameMsgUtil.a("0", "1", "176", "969", "96901", "206994", "", "0", "7", "0");
+    super.g(paramInt);
+    ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).reportForGameMsg("0", "1", "176", "969", "96901", "206994", "", "0", "7", "0");
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
+    if (paramView.getId() == 2131368874) {
+      ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).reportForGameMsg("0", "1", "176", "969", "96902", "206998", "", "0", "20", "0");
     }
-    for (;;)
-    {
-      super.onClick(paramView);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      GameMsgUtil.a("0", "1", "176", "969", "96902", "206998", "", "0", "20", "0");
-    }
+    super.onClick(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GameBuddyChatPie
  * JD-Core Version:    0.7.0.1
  */

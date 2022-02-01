@@ -2,10 +2,10 @@ package com.tencent.biz.webviewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.OnRemoteRespObserver;
 
 class GamePartyPlugin$1
-  extends Client.OnRemoteRespObserver
+  extends OnRemoteRespObserver
 {
   GamePartyPlugin$1(GamePartyPlugin paramGamePartyPlugin) {}
   
@@ -29,7 +29,7 @@ class GamePartyPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.GamePartyPlugin.1
  * JD-Core Version:    0.7.0.1
  */

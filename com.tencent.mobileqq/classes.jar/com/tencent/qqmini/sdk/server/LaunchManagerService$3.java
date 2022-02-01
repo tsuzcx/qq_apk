@@ -10,7 +10,10 @@ class LaunchManagerService$3
   
   public void onUpdateResult(int paramInt)
   {
-    QMLog.w("minisdk-start_LaunchManagerService", "updateBaseLib ret=" + paramInt);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("updateBaseLib ret=");
+    ((StringBuilder)localObject).append(paramInt);
+    QMLog.w("minisdk-start_LaunchManagerService", ((StringBuilder)localObject).toString());
     if (paramInt == 0) {
       return;
     }
@@ -19,23 +22,19 @@ class LaunchManagerService$3
       QMLog.w("minisdk-start_LaunchManagerService", "基础库无更新.");
       return;
     }
-    String str = "基础库更新失败.";
     if (paramInt == 1100) {
-      str = "础库更新请求失败.";
+      localObject = "础库更新请求失败.";
+    } else if (paramInt == 1101) {
+      localObject = "基础库下载失败.";
+    } else {
+      localObject = "基础库更新失败.";
     }
-    for (;;)
-    {
-      QMLog.w("minisdk-start_LaunchManagerService", str);
-      return;
-      if (paramInt == 1101) {
-        str = "基础库下载失败.";
-      }
-    }
+    QMLog.w("minisdk-start_LaunchManagerService", (String)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.LaunchManagerService.3
  * JD-Core Version:    0.7.0.1
  */

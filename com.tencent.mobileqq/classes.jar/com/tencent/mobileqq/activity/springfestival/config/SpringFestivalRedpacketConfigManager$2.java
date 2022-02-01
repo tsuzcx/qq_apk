@@ -13,8 +13,17 @@ class SpringFestivalRedpacketConfigManager$2
   
   public void loaded(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("shua2021_SpringFestivalRedpacketConfigManager", 2, "CODE_SUCCESS[" + this.jdField_a_of_type_JavaLangString + ", " + paramInt + ", " + paramString + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("CODE_SUCCESS[");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("]");
+      QLog.i("shua2021_SpringFestivalRedpacketConfigManager", 2, localStringBuilder.toString());
     }
     if ((paramInt == 0) && (paramString == null))
     {
@@ -25,14 +34,19 @@ class SpringFestivalRedpacketConfigManager$2
   
   public void progress(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("shua2021_SpringFestivalRedpacketConfigManager", 2, "progress[" + paramInt + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("progress[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("]");
+      QLog.i("shua2021_SpringFestivalRedpacketConfigManager", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.config.SpringFestivalRedpacketConfigManager.2
  * JD-Core Version:    0.7.0.1
  */

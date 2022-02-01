@@ -25,31 +25,31 @@ public class EcShopObserver
     {
     default: 
       return;
-    case 0: 
-      a(paramBoolean, paramObject);
-      return;
-    case 1: 
-      b(paramBoolean, paramObject);
-      return;
-    case 2: 
-      c(paramBoolean, paramObject);
-      return;
-    case 3: 
-      d(paramBoolean, paramObject);
-      return;
-    case 4: 
-      e(paramBoolean, paramObject);
+    case 6: 
+      g(paramBoolean, paramObject);
       return;
     case 5: 
       f(paramBoolean, paramObject);
       return;
+    case 4: 
+      e(paramBoolean, paramObject);
+      return;
+    case 3: 
+      d(paramBoolean, paramObject);
+      return;
+    case 2: 
+      c(paramBoolean, paramObject);
+      return;
+    case 1: 
+      b(paramBoolean, paramObject);
+      return;
     }
-    g(paramBoolean, paramObject);
+    a(paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcShopObserver
  * JD-Core Version:    0.7.0.1
  */

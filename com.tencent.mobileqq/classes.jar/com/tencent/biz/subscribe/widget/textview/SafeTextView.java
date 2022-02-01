@@ -25,17 +25,17 @@ public class SafeTextView
   
   public static String a(String paramString)
   {
-    if ((paramString == null) || (paramString.length() <= 0)) {}
-    int j;
-    Object localObject1;
-    do
+    Object localObject1 = paramString;
+    if (paramString != null)
     {
-      do
-      {
+      if (paramString.length() <= 0) {
         return paramString;
-      } while (!a(paramString));
-      j = paramString.length();
+      }
+      if (!a(paramString)) {
+        return paramString;
+      }
       localObject1 = null;
+      int j = paramString.length();
       int i = 0;
       while (i < j)
       {
@@ -55,8 +55,12 @@ public class SafeTextView
       if (localObject1 == null) {
         return "";
       }
-    } while (localObject1.length() == j);
-    return localObject1.toString();
+      if (((StringBuilder)localObject1).length() == j) {
+        return paramString;
+      }
+      localObject1 = ((StringBuilder)localObject1).toString();
+    }
+    return localObject1;
   }
   
   private static boolean a(char paramChar)
@@ -66,26 +70,19 @@ public class SafeTextView
   
   public static boolean a(String paramString)
   {
-    boolean bool2 = false;
     int j = paramString.length();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (!a(paramString.charAt(i))) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+      if (!a(paramString.charAt(i))) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     try
     {
@@ -94,18 +91,22 @@ public class SafeTextView
     }
     catch (Throwable localThrowable1)
     {
-      try
-      {
-        setText(a(getText().toString()));
-        super.onMeasure(paramInt1, paramInt2);
-        return;
-      }
-      catch (Throwable localThrowable2)
-      {
-        setText("");
-        super.onMeasure(paramInt1, paramInt2);
-      }
+      label7:
+      label30:
+      break label7;
     }
+    try
+    {
+      setText(a(getText().toString()));
+      super.onMeasure(paramInt1, paramInt2);
+      return;
+    }
+    catch (Throwable localThrowable2)
+    {
+      break label30;
+    }
+    setText("");
+    super.onMeasure(paramInt1, paramInt2);
   }
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
@@ -117,21 +118,25 @@ public class SafeTextView
     }
     catch (Throwable paramCharSequence)
     {
-      try
-      {
-        super.setText(a(getText().toString()), paramBufferType);
-        return;
-      }
-      catch (Throwable paramCharSequence)
-      {
-        setText("");
-      }
+      label7:
+      label25:
+      break label7;
     }
+    try
+    {
+      super.setText(a(getText().toString()), paramBufferType);
+      return;
+    }
+    catch (Throwable paramCharSequence)
+    {
+      break label25;
+    }
+    setText("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.textview.SafeTextView
  * JD-Core Version:    0.7.0.1
  */

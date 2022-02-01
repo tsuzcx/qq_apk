@@ -22,7 +22,8 @@ public class WSVerticalVideoRelativeLayout
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.a != null) && (this.a.a(paramMotionEvent))) {
+    WSVerticalVideoRelativeLayout.DispatchTouchEventListener localDispatchTouchEventListener = this.a;
+    if ((localDispatchTouchEventListener != null) && (localDispatchTouchEventListener.a(paramMotionEvent))) {
       return true;
     }
     return super.dispatchTouchEvent(paramMotionEvent);
@@ -35,7 +36,7 @@ public class WSVerticalVideoRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalVideoRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

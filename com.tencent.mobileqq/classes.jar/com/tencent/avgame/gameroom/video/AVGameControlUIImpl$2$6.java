@@ -1,7 +1,7 @@
 package com.tencent.avgame.gameroom.video;
 
 import com.tencent.avgame.app.AVGameAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.QQAudioHelper;
 
 class AVGameControlUIImpl$2$6
   implements Runnable
@@ -13,9 +13,16 @@ class AVGameControlUIImpl$2$6
     if (this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.a()) {
       return;
     }
-    long l = AudioHelper.b();
-    if ((this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getLongAccountUin() == this.jdField_a_of_type_Long) || (this.jdField_a_of_type_Long == -1L)) {}
-    for (int i = 1; i != 0; i = 0)
+    long l1 = QQAudioHelper.b();
+    long l2 = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getLongAccountUin();
+    long l3 = this.jdField_a_of_type_Long;
+    int i;
+    if ((l2 != l3) && (l3 != -1L)) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    if (i != 0)
     {
       this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer.c(this.jdField_a_of_type_Boolean);
       return;
@@ -23,15 +30,15 @@ class AVGameControlUIImpl$2$6
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.c();
-      this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer.a("onMemberShareInOrOut", l, Long.toString(this.jdField_a_of_type_Long), this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer.a("onMemberShareInOrOut", l1, Long.toString(this.jdField_a_of_type_Long), this.jdField_a_of_type_Int);
       return;
     }
-    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer.b("onMemberShareInOrOut", l, Long.toString(this.jdField_a_of_type_Long), this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer.b("onMemberShareInOrOut", l1, Long.toString(this.jdField_a_of_type_Long), this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.AVGameControlUIImpl.2.6
  * JD-Core Version:    0.7.0.1
  */

@@ -12,32 +12,29 @@ public class TencentDocsPushItemBean
   
   public static TencentDocsPushItemBean a(JSONObject paramJSONObject)
   {
-    boolean bool = true;
     TencentDocsPushItemBean localTencentDocsPushItemBean = new TencentDocsPushItemBean();
-    if (paramJSONObject.has("enableOpenMiniCode")) {
-      if (paramJSONObject.getInt("enableOpenMiniCode") != 1) {
-        break label112;
-      }
-    }
-    for (;;)
+    if (paramJSONObject.has("enableOpenMiniCode"))
     {
+      int i = paramJSONObject.getInt("enableOpenMiniCode");
+      boolean bool = true;
+      if (i != 1) {
+        bool = false;
+      }
       localTencentDocsPushItemBean.jdField_a_of_type_Boolean = bool;
-      if (paramJSONObject.has("miniCodeAppid")) {
-        localTencentDocsPushItemBean.jdField_a_of_type_JavaLangString = paramJSONObject.getString("miniCodeAppid");
-      }
-      if (paramJSONObject.has("miniCodePage")) {
-        localTencentDocsPushItemBean.b = paramJSONObject.getString("miniCodePage");
-      }
-      if (paramJSONObject.has("miniCodeEnvVersion")) {
-        localTencentDocsPushItemBean.c = paramJSONObject.getString("miniCodeEnvVersion");
-      }
-      if (paramJSONObject.has("miniCodeUrlBlackRegular")) {
-        localTencentDocsPushItemBean.d = paramJSONObject.getString("miniCodeUrlBlackRegular");
-      }
-      return localTencentDocsPushItemBean;
-      label112:
-      bool = false;
     }
+    if (paramJSONObject.has("miniCodeAppid")) {
+      localTencentDocsPushItemBean.jdField_a_of_type_JavaLangString = paramJSONObject.getString("miniCodeAppid");
+    }
+    if (paramJSONObject.has("miniCodePage")) {
+      localTencentDocsPushItemBean.b = paramJSONObject.getString("miniCodePage");
+    }
+    if (paramJSONObject.has("miniCodeEnvVersion")) {
+      localTencentDocsPushItemBean.c = paramJSONObject.getString("miniCodeEnvVersion");
+    }
+    if (paramJSONObject.has("miniCodeUrlBlackRegular")) {
+      localTencentDocsPushItemBean.d = paramJSONObject.getString("miniCodeUrlBlackRegular");
+    }
+    return localTencentDocsPushItemBean;
   }
   
   public String a()
@@ -72,7 +69,7 @@ public class TencentDocsPushItemBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.TencentDocsPushItemBean
  * JD-Core Version:    0.7.0.1
  */

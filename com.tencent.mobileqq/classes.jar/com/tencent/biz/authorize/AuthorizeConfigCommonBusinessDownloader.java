@@ -3,7 +3,8 @@ package com.tencent.biz.authorize;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.emosm.DataFactory;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import com.tencent.mobileqq.emosm.api.IWebIPCOperatorApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.vas.updatesystem.VasUpdateUtil;
 import com.tencent.mobileqq.webview.authorize.IAuthorizeConfigDownloadInjector;
 import com.tencent.qphone.base.util.QLog;
@@ -20,24 +21,21 @@ public class AuthorizeConfigCommonBusinessDownloader
     if ((localObject instanceof QQAppInterface))
     {
       QLog.d("AuthorizeConfigCommonBusinessDownloader", 1, "WebViewSwitchAio main process loadFuncDevWebViewConfig");
-      localObject = VasUpdateUtil.a((AppRuntime)localObject, "VASBiz_FuncDev_webview.json", true, null);
+      return VasUpdateUtil.a((AppRuntime)localObject, "VASBiz_FuncDev_webview.json", true, null);
     }
-    JSONObject localJSONObject;
-    do
+    localObject = VasUpdateUtil.a((AppRuntime)localObject, "VASBiz_FuncDev_webview.json", false, null);
+    if (localObject == null)
     {
-      return localObject;
-      localJSONObject = VasUpdateUtil.a((AppRuntime)localObject, "VASBiz_FuncDev_webview.json", false, null);
-      localObject = localJSONObject;
-    } while (localJSONObject != null);
-    QLog.d("AuthorizeConfigCommonBusinessDownloader", 1, "WebViewSwitchAio calling main process to download FuncDevWebViewConfig");
-    localObject = DataFactory.a("download_FuncDev_webview", "", 0, null);
-    WebIPCOperator.a().b((Bundle)localObject);
-    return localJSONObject;
+      QLog.d("AuthorizeConfigCommonBusinessDownloader", 1, "WebViewSwitchAio calling main process to download FuncDevWebViewConfig");
+      Bundle localBundle = DataFactory.a("download_FuncDev_webview", "", 0, null);
+      ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).sendServiceIpcReqWithoutTimeout(localBundle);
+    }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.authorize.AuthorizeConfigCommonBusinessDownloader
  * JD-Core Version:    0.7.0.1
  */

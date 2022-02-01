@@ -33,9 +33,10 @@ public final class b
   
   public boolean equals(Object paramObject)
   {
+    boolean bool3 = paramObject instanceof b;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if ((paramObject instanceof b))
+    if (bool3)
     {
       paramObject = (b)paramObject;
       bool1 = bool2;
@@ -52,7 +53,7 @@ public final class b
   
   public int hashCode()
   {
-    return (this.g.hashCode() + 527) * 31 + this.h.hashCode();
+    return (527 + this.g.hashCode()) * 31 + this.h.hashCode();
   }
   
   public String toString()
@@ -62,7 +63,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.b.b
  * JD-Core Version:    0.7.0.1
  */

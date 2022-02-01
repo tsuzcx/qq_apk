@@ -37,7 +37,10 @@ class NowRoomEntry$1
   
   public void onError(int paramInt)
   {
-    XLog.e("NowPluginManager | NowRoomEntry", "exChangeTicket error, code=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("exChangeTicket error, code=");
+    localStringBuilder.append(paramInt);
+    XLog.e("NowPluginManager | NowRoomEntry", localStringBuilder.toString());
     if (this.this$0.mLoginObserver != null) {
       this.this$0.mLoginObserver.onGetNowTicket(this.val$source, paramInt, null);
     }
@@ -45,7 +48,7 @@ class NowRoomEntry$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.NowRoomEntry.1
  * JD-Core Version:    0.7.0.1
  */

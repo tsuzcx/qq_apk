@@ -15,53 +15,55 @@ class MessengerService$5
   
   public void a(long paramLong, int paramInt, Bundle paramBundle)
   {
-    if (this.a.a != null) {}
-    try
-    {
-      Message localMessage = Message.obtain(null, 5);
-      if ((paramBundle.get("chatbgInfo") instanceof ChatBackgroundInfo))
+    if (this.a.a != null) {
+      try
       {
-        ChatBackgroundInfo localChatBackgroundInfo = (ChatBackgroundInfo)paramBundle.get("chatbgInfo");
-        paramBundle.putString("name", localChatBackgroundInfo.name);
-        paramBundle.putString("url", localChatBackgroundInfo.url);
+        Message localMessage = Message.obtain(null, 5);
+        if ((paramBundle.get("chatbgInfo") instanceof ChatBackgroundInfo))
+        {
+          ChatBackgroundInfo localChatBackgroundInfo = (ChatBackgroundInfo)paramBundle.get("chatbgInfo");
+          paramBundle.putString("name", localChatBackgroundInfo.name);
+          paramBundle.putString("url", localChatBackgroundInfo.url);
+        }
+        paramBundle.putInt("type", 2);
+        paramBundle.putInt("id", (int)paramLong);
+        paramBundle.putInt("result", paramInt);
+        localMessage.setData(paramBundle);
+        this.a.a.send(localMessage);
+        return;
       }
-      paramBundle.putInt("type", 2);
-      paramBundle.putInt("id", (int)paramLong);
-      paramBundle.putInt("result", paramInt);
-      localMessage.setData(paramBundle);
-      this.a.a.send(localMessage);
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.emoji.web.MessengerService", 2, paramBundle.getMessage());
+      catch (Exception paramBundle)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.emoji.web.MessengerService", 2, paramBundle.getMessage());
+        }
+      }
     }
   }
   
   public void a(Bundle paramBundle)
   {
-    Message localMessage;
     if (this.a.a != null)
     {
-      localMessage = Message.obtain(null, 5);
+      Message localMessage = Message.obtain(null, 5);
       localMessage.setData(paramBundle);
-    }
-    try
-    {
-      this.a.a.send(localMessage);
-      return;
-    }
-    catch (RemoteException paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.emoji.web.MessengerService", 2, paramBundle.getMessage());
+      try
+      {
+        this.a.a.send(localMessage);
+        return;
+      }
+      catch (RemoteException paramBundle)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.emoji.web.MessengerService", 2, paramBundle.getMessage());
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.5
  * JD-Core Version:    0.7.0.1
  */

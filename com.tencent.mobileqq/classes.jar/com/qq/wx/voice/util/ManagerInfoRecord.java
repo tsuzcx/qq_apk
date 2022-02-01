@@ -11,26 +11,17 @@ public class ManagerInfoRecord
   
   public void add(boolean paramBoolean, String paramString)
   {
-    if ("wifi" == paramString) {
-      if (!paramBoolean) {}
-    }
-    for (;;)
+    if (("wifi" != paramString) || (paramBoolean)) {}
+    try
     {
-      try
-      {
-        i = this.b.getInt("wifi_success", 0);
-        this.a.putInt("wifi_success", i + 1);
-        this.a.commit();
-        i = this.b.getInt("count", 0);
-        this.a.putInt("count", i + 1);
-        this.a.commit();
-        return;
-      }
-      finally {}
-      int i = this.b.getInt("wifi_fail", 0);
+      int i = this.b.getInt("wifi_success", 0);
+      this.a.putInt("wifi_success", i + 1);
+      this.a.commit();
+      break label453;
+      i = this.b.getInt("wifi_fail", 0);
       this.a.putInt("wifi_fail", i + 1);
       this.a.commit();
-      continue;
+      break label453;
       if ("2g" == paramString)
       {
         if (paramBoolean)
@@ -88,7 +79,13 @@ public class ManagerInfoRecord
         this.a.putInt("other_fail", i + 1);
         this.a.commit();
       }
+      label453:
+      i = this.b.getInt("count", 0);
+      this.a.putInt("count", i + 1);
+      this.a.commit();
+      return;
     }
+    finally {}
   }
   
   public void clear()
@@ -107,18 +104,15 @@ public class ManagerInfoRecord
   
   public int get(boolean paramBoolean, String paramString)
   {
-    if ("wifi" == paramString)
+    if (("wifi" != paramString) || (paramBoolean)) {}
+    try
     {
-      if (paramBoolean) {}
-      try
-      {
-        i = this.b.getInt("wifi_success", 0);
-        return i;
-      }
-      finally {}
-      i = this.b.getInt("wifi_fail", 0);
+      i = this.b.getInt("wifi_success", 0);
       return i;
     }
+    finally {}
+    int i = this.b.getInt("wifi_fail", 0);
+    return i;
     if ("2g" == paramString)
     {
       if (paramBoolean)
@@ -154,14 +148,33 @@ public class ManagerInfoRecord
       i = this.b.getInt("other_success", 0);
       return i;
     }
-    int i = this.b.getInt("other_fail", 0);
+    i = this.b.getInt("other_fail", 0);
     return i;
   }
   
   public String getRecordStr()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("&2g_fail=").append(get(false, "2g")).append("&2g_success=").append(get(true, "2g")).append("&ct3g_fail=").append(get(false, "ct3g")).append("&ct3g_success=").append(get(true, "ct3g")).append("&cu3g_fail=").append(get(false, "cu3g")).append("&cu3g_success=").append(get(true, "cu3g")).append("&other_fail=").append(get(false, "other")).append("&other_success=").append(get(true, "other")).append("&wifi_fail=").append(get(false, "wifi")).append("&wifi_success=").append(get(true, "wifi"));
+    localStringBuilder.append("&2g_fail=");
+    localStringBuilder.append(get(false, "2g"));
+    localStringBuilder.append("&2g_success=");
+    localStringBuilder.append(get(true, "2g"));
+    localStringBuilder.append("&ct3g_fail=");
+    localStringBuilder.append(get(false, "ct3g"));
+    localStringBuilder.append("&ct3g_success=");
+    localStringBuilder.append(get(true, "ct3g"));
+    localStringBuilder.append("&cu3g_fail=");
+    localStringBuilder.append(get(false, "cu3g"));
+    localStringBuilder.append("&cu3g_success=");
+    localStringBuilder.append(get(true, "cu3g"));
+    localStringBuilder.append("&other_fail=");
+    localStringBuilder.append(get(false, "other"));
+    localStringBuilder.append("&other_success=");
+    localStringBuilder.append(get(true, "other"));
+    localStringBuilder.append("&wifi_fail=");
+    localStringBuilder.append(get(false, "wifi"));
+    localStringBuilder.append("&wifi_success=");
+    localStringBuilder.append(get(true, "wifi"));
     return localStringBuilder.toString();
   }
   

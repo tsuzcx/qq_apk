@@ -24,70 +24,67 @@ public final class GdtIPCAdapter$ClientToServerIPCSyncModule
   
   public static ClientToServerIPCSyncModule a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new ClientToServerIPCSyncModule("gdt_ipc_sync_module_client_to_server");
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new ClientToServerIPCSyncModule("gdt_ipc_sync_module_client_to_server");
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    Object localObject2 = null;
-    AdIPCManager.Params localParams = new AdIPCManager.Params(paramBundle);
-    if (localParams != null)
-    {
-      paramBundle = localParams.getAction();
-      if (localParams == null) {
-        break label73;
-      }
-      localObject1 = localParams.getToProcessName();
-      label36:
-      GdtLog.b("GdtIPCAdapter", String.format("ClientToServerIPCSyncModule.onCall action:%s to:%s", new Object[] { paramBundle, localObject1 }));
-      if (!TextUtils.isEmpty(paramString)) {
-        break label79;
-      }
+    Object localObject1 = new AdIPCManager.Params(paramBundle);
+    paramBundle = ((AdIPCManager.Params)localObject1).getAction();
+    paramInt = 0;
+    GdtLog.b("GdtIPCAdapter", String.format("ClientToServerIPCSyncModule.onCall action:%s to:%s", new Object[] { paramBundle, ((AdIPCManager.Params)localObject1).getToProcessName() }));
+    boolean bool = TextUtils.isEmpty(paramString);
+    paramBundle = null;
+    if (bool) {
+      return null;
     }
-    label73:
-    label79:
-    do
+    if (!((AdIPCManager.Params)localObject1).isValid()) {
+      return null;
+    }
+    if (!TextUtils.equals(((AdIPCManager.Params)localObject1).getAction(), paramString)) {
+      return null;
+    }
+    Object localObject2 = AdProcessManager.INSTANCE.isOnMainProcess();
+    if (localObject2 != null)
     {
-      do
-      {
-        do
-        {
-          return null;
-          paramBundle = null;
-          break;
-          localObject1 = null;
-          break label36;
-        } while ((!localParams.isValid()) || (!TextUtils.equals(localParams.getAction(), paramString)));
-        paramBundle = AdProcessManager.INSTANCE.isOnMainProcess();
-      } while ((paramBundle == null) || (!paramBundle.booleanValue()) || (!TextUtils.equals(AdProcessManager.INSTANCE.getCurrentProcessName(BaseApplicationImpl.getContext()), localParams.getToProcessName())));
+      if (!((Boolean)localObject2).booleanValue()) {
+        return null;
+      }
+      if (!TextUtils.equals(AdProcessManager.INSTANCE.getCurrentProcessName(BaseApplicationImpl.getContext()), ((AdIPCManager.Params)localObject1).getToProcessName())) {
+        return null;
+      }
       paramString = AdIPCManager.INSTANCE.getHandler(paramString);
-    } while (paramString == null);
-    Object localObject1 = paramString.handle(localParams);
-    paramBundle = new EIPCResult();
-    if ((localObject1 != null) && (((AdIPCManager.Result)localObject1).success)) {}
-    for (paramInt = 0;; paramInt = -102)
-    {
-      paramBundle.code = paramInt;
-      paramString = localObject2;
-      if (localObject1 != null) {
-        paramString = ((AdIPCManager.Result)localObject1).bundle;
+      if (paramString == null) {
+        return null;
       }
-      paramBundle.data = paramString;
-      return paramBundle;
+      localObject2 = paramString.handle((AdIPCManager.Params)localObject1);
+      localObject1 = new EIPCResult();
+      if ((localObject2 == null) || (!((AdIPCManager.Result)localObject2).success)) {
+        paramInt = -102;
+      }
+      ((EIPCResult)localObject1).code = paramInt;
+      paramString = paramBundle;
+      if (localObject2 != null) {
+        paramString = ((AdIPCManager.Result)localObject2).bundle;
+      }
+      ((EIPCResult)localObject1).data = paramString;
+      return localObject1;
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtIPCAdapter.ClientToServerIPCSyncModule
  * JD-Core Version:    0.7.0.1
  */

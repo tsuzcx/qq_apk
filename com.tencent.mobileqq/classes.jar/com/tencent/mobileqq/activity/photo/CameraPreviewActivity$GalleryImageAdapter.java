@@ -40,42 +40,43 @@ class CameraPreviewActivity$GalleryImageAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     CameraPreviewActivity.ImagePhotoHolder localImagePhotoHolder;
-    Object localObject;
     if (paramView == null)
     {
-      paramView = this.a.getLayoutInflater().inflate(2131559680, null);
+      paramView = this.a.getLayoutInflater().inflate(2131559558, null);
       localImagePhotoHolder = new CameraPreviewActivity.ImagePhotoHolder();
-      localImagePhotoHolder.a = ((URLImageView)paramView.findViewById(2131373465));
+      localImagePhotoHolder.a = ((URLImageView)paramView.findViewById(2131373039));
       paramView.setTag(localImagePhotoHolder);
-      localObject = a(paramInt);
-      if (localObject == null) {
-        break label155;
-      }
-      localObject = new File((String)localObject);
-      if (!((File)localObject).exists()) {}
     }
-    for (;;)
+    else
     {
-      try
-      {
-        localImagePhotoHolder.a.setImageDrawable(URLDrawable.getDrawable(((File)localObject).toURL(), CameraPreviewActivity.a(this.a), CameraPreviewActivity.b(this.a), CameraPreviewActivity.a(this.a), null, true));
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        localImagePhotoHolder = (CameraPreviewActivity.ImagePhotoHolder)paramView.getTag();
+      localImagePhotoHolder = (CameraPreviewActivity.ImagePhotoHolder)paramView.getTag();
+    }
+    Object localObject = a(paramInt);
+    if (localObject != null)
+    {
+      localObject = new File((String)localObject);
+      if (((File)localObject).exists()) {
+        try
+        {
+          localImagePhotoHolder.a.setImageDrawable(URLDrawable.getDrawable(((File)localObject).toURL(), CameraPreviewActivity.a(this.a), CameraPreviewActivity.b(this.a), CameraPreviewActivity.a(this.a), null, true));
+        }
+        catch (MalformedURLException localMalformedURLException)
+        {
+          localMalformedURLException.printStackTrace();
+        }
       }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        localMalformedURLException.printStackTrace();
-        continue;
-      }
-      label155:
+    }
+    else
+    {
       localMalformedURLException.a.setImageDrawable(null);
     }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.CameraPreviewActivity.GalleryImageAdapter
  * JD-Core Version:    0.7.0.1
  */

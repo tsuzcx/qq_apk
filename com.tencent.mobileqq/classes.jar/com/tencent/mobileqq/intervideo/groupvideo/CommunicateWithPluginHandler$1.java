@@ -11,25 +11,34 @@ class CommunicateWithPluginHandler$1
   
   public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
   {
-    QLog.i("GroupVideoManager|Communicate", 2, "receive startWatchTogether: " + paramNewTogetherRoomMessageData.toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("receive startWatchTogether: ");
+    localStringBuilder.append(paramNewTogetherRoomMessageData.toString());
+    QLog.i("GroupVideoManager|Communicate", 2, localStringBuilder.toString());
     CommunicateWithPluginHandler.a(this.a, paramNewTogetherRoomMessageData, 1);
   }
   
   public void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
   {
-    QLog.i("GroupVideoManager|Communicate", 2, "receive switchWatchTogether: " + paramNewTogetherRoomMessageData.toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("receive switchWatchTogether: ");
+    localStringBuilder.append(paramNewTogetherRoomMessageData.toString());
+    QLog.i("GroupVideoManager|Communicate", 2, localStringBuilder.toString());
     CommunicateWithPluginHandler.a(this.a, paramNewTogetherRoomMessageData, 3);
   }
   
   public void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
   {
-    QLog.i("GroupVideoManager|Communicate", 2, "receive closeWatchTogether: " + paramNewTogetherRoomMessageData.toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("receive closeWatchTogether: ");
+    localStringBuilder.append(paramNewTogetherRoomMessageData.toString());
+    QLog.i("GroupVideoManager|Communicate", 2, localStringBuilder.toString());
     CommunicateWithPluginHandler.a(this.a, paramNewTogetherRoomMessageData, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.CommunicateWithPluginHandler.1
  * JD-Core Version:    0.7.0.1
  */

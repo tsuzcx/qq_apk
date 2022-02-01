@@ -16,33 +16,43 @@ import java.net.URL;
 public class QZoneCoverDownloader
   extends AbsDownloader
 {
-  public static final String HOST_ORIGINAL = "original";
-  public static final String HOST_OTHER = "other";
-  public static final String HOST_THUMB = "thumb";
-  public static final String PROTOCOL_QZONE_COVER = "qzone_cover";
   protected static final String TAG = "Q.qzonecover.";
   
   protected String dealUrl(String paramString)
   {
-    int i;
     if (!TextUtils.isEmpty(paramString))
     {
-      i = paramString.indexOf("http", 0);
-      if ((i <= 0) || (i >= paramString.length())) {}
-    }
-    for (String str = paramString.substring(i);; str = paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qzonecover.", 2, "dealUrl|in: " + paramString + ", out: " + str);
+      int i = paramString.indexOf("http", 0);
+      if ((i > 0) && (i < paramString.length()))
+      {
+        str = paramString.substring(i);
+        break label38;
       }
-      return str;
     }
+    String str = paramString;
+    label38:
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("dealUrl|in: ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", out: ");
+      localStringBuilder.append(str);
+      QLog.i("Q.qzonecover.", 2, localStringBuilder.toString());
+    }
+    return str;
   }
   
   public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qzonecover.", 2, "decodeFile() url = " + paramDownloadParams.url + ", path = " + paramFile.getAbsolutePath());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("decodeFile() url = ");
+      localStringBuilder.append(paramDownloadParams.url);
+      localStringBuilder.append(", path = ");
+      localStringBuilder.append(paramFile.getAbsolutePath());
+      QLog.i("Q.qzonecover.", 2, localStringBuilder.toString());
     }
     try
     {
@@ -51,7 +61,10 @@ public class QZoneCoverDownloader
     }
     catch (Exception paramFile)
     {
-      QLog.i("Q.qzonecover.", 2, "decodeFile() exception: " + paramFile.toString());
+      paramDownloadParams = new StringBuilder();
+      paramDownloadParams.append("decodeFile() exception: ");
+      paramDownloadParams.append(paramFile.toString());
+      QLog.i("Q.qzonecover.", 2, paramDownloadParams.toString());
       paramFile.printStackTrace();
       throw paramFile;
     }
@@ -59,38 +72,61 @@ public class QZoneCoverDownloader
   
   public File downloadImage(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qzonecover.", 2, "downloadImage|config.urlStr = " + paramDownloadParams.urlStr);
+    if (QLog.isColorLevel())
+    {
+      paramOutputStream = new StringBuilder();
+      paramOutputStream.append("downloadImage|config.urlStr = ");
+      paramOutputStream.append(paramDownloadParams.urlStr);
+      QLog.i("Q.qzonecover.", 2, paramOutputStream.toString());
     }
     paramOutputStream = paramDownloadParams.url.getFile();
     paramDownloadParams = paramDownloadParams.url.getHost();
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qzonecover.", 2, "downloadImage|host = " + paramDownloadParams + ", url = " + paramOutputStream);
-    }
-    paramOutputStream = dealUrl(paramOutputStream);
-    if (TextUtils.isEmpty(paramOutputStream)) {
-      throw new RuntimeException("downloadImage|url is null");
-    }
-    paramDownloadParams = CacheManager.getImageFilePath(BaseApplication.getContext(), paramOutputStream);
     if (QLog.isColorLevel())
     {
-      QLog.i("Q.qzonecover.", 2, "downloadImage|path = " + paramDownloadParams);
-      if (!FileUtils.b(paramDownloadParams)) {
-        break label198;
-      }
-      QLog.i("Q.qzonecover.", 2, "downloadImage|file exist and not empty");
+      paramURLDrawableHandler = new StringBuilder();
+      paramURLDrawableHandler.append("downloadImage|host = ");
+      paramURLDrawableHandler.append(paramDownloadParams);
+      paramURLDrawableHandler.append(", url = ");
+      paramURLDrawableHandler.append(paramOutputStream);
+      QLog.i("Q.qzonecover.", 2, paramURLDrawableHandler.toString());
     }
-    while (paramDownloadParams == null)
+    paramDownloadParams = dealUrl(paramOutputStream);
+    if (!TextUtils.isEmpty(paramDownloadParams))
     {
-      throw new RuntimeException("downloadImage|file not exist, path = " + paramDownloadParams);
-      label198:
-      QLog.i("Q.qzonecover.", 2, "downloadImage|file not exist or empty!!");
+      paramOutputStream = CacheManager.getImageFilePath(BaseApplication.getContext(), paramDownloadParams);
+      if (QLog.isColorLevel())
+      {
+        paramURLDrawableHandler = new StringBuilder();
+        paramURLDrawableHandler.append("downloadImage|path = ");
+        paramURLDrawableHandler.append(paramOutputStream);
+        QLog.i("Q.qzonecover.", 2, paramURLDrawableHandler.toString());
+        if (FileUtils.fileExistsAndNotEmpty(paramOutputStream)) {
+          QLog.i("Q.qzonecover.", 2, "downloadImage|file exist and not empty");
+        } else {
+          QLog.i("Q.qzonecover.", 2, "downloadImage|file not exist or empty!!");
+        }
+      }
+      if (paramOutputStream != null)
+      {
+        paramURLDrawableHandler = new File(paramOutputStream);
+        if (!paramURLDrawableHandler.exists())
+        {
+          if (((paramDownloadParams.startsWith("http://")) || (paramDownloadParams.startsWith("https://"))) && (DownloaderFactory.a(new DownloadTask(paramDownloadParams, paramURLDrawableHandler), null) == 0) && (paramURLDrawableHandler.exists())) {
+            return paramURLDrawableHandler;
+          }
+          paramDownloadParams = new StringBuilder();
+          paramDownloadParams.append("downloadImage|file not exist, path = ");
+          paramDownloadParams.append(paramOutputStream);
+          throw new RuntimeException(paramDownloadParams.toString());
+        }
+        return paramURLDrawableHandler;
+      }
+      paramDownloadParams = new StringBuilder();
+      paramDownloadParams.append("downloadImage|file not exist, path = ");
+      paramDownloadParams.append(paramOutputStream);
+      throw new RuntimeException(paramDownloadParams.toString());
     }
-    paramURLDrawableHandler = new File(paramDownloadParams);
-    if ((paramURLDrawableHandler.exists()) || (((paramOutputStream.startsWith("http://")) || (paramOutputStream.startsWith("https://"))) && (DownloaderFactory.a(new DownloadTask(paramOutputStream, paramURLDrawableHandler), null) == 0) && (paramURLDrawableHandler.exists()))) {
-      return paramURLDrawableHandler;
-    }
-    throw new RuntimeException("downloadImage|file not exist, path = " + paramDownloadParams);
+    throw new RuntimeException("downloadImage|url is null");
   }
   
   public boolean useDiskCache()
@@ -100,7 +136,7 @@ public class QZoneCoverDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.QZoneCoverDownloader
  * JD-Core Version:    0.7.0.1
  */

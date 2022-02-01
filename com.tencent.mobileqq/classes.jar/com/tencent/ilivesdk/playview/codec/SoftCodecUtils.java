@@ -24,7 +24,11 @@ public class SoftCodecUtils
       paramMediaCodecInfo = paramMediaCodecInfo.getCapabilitiesForType(paramString);
       return paramMediaCodecInfo;
     }
-    catch (Exception paramMediaCodecInfo) {}
+    catch (Exception paramMediaCodecInfo)
+    {
+      label8:
+      break label8;
+    }
     return null;
   }
   
@@ -34,27 +38,22 @@ public class SoftCodecUtils
     ArrayList localArrayList = new ArrayList();
     int k = MediaCodecList.getCodecCount();
     int i = 0;
-    if (i < k)
+    while (i < k)
     {
       MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
-      if (localMediaCodecInfo.isEncoder()) {}
-      for (;;)
+      if ((!localMediaCodecInfo.isEncoder()) && (!localMediaCodecInfo.getName().contains(".sw.")) && (!localMediaCodecInfo.getName().contains(".SW.")) && (!localMediaCodecInfo.getName().contains("google")) && (!localMediaCodecInfo.getName().contains("Google")) && (!localMediaCodecInfo.getName().contains("GOOGLE")))
       {
-        i += 1;
-        break;
-        if ((!localMediaCodecInfo.getName().contains(".sw.")) && (!localMediaCodecInfo.getName().contains(".SW.")) && (!localMediaCodecInfo.getName().contains("google")) && (!localMediaCodecInfo.getName().contains("Google")) && (!localMediaCodecInfo.getName().contains("GOOGLE")))
+        String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
+        int j = 0;
+        while (j < arrayOfString.length)
         {
-          String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
-          int j = 0;
-          while (j < arrayOfString.length)
-          {
-            if (arrayOfString[j].equalsIgnoreCase(paramString)) {
-              localArrayList.add(localMediaCodecInfo);
-            }
-            j += 1;
+          if (arrayOfString[j].equalsIgnoreCase(paramString)) {
+            localArrayList.add(localMediaCodecInfo);
           }
+          j += 1;
         }
       }
+      i += 1;
     }
     return localArrayList;
   }
@@ -92,22 +91,17 @@ public class SoftCodecUtils
   @TargetApi(16)
   public static boolean isAVCDecSupport360Size()
   {
-    boolean bool2 = false;
     List localList = getDecoderInfos(AVC_CODEC_MIME);
     int i = 0;
-    boolean bool1 = bool2;
-    if (i < localList.size())
+    while (i < localList.size())
     {
       MediaCodecInfo.CodecCapabilities localCodecCapabilities = getCodecCapabilities((MediaCodecInfo)localList.get(i), AVC_CODEC_MIME);
-      if (localCodecCapabilities == null) {}
-      while ((Build.VERSION.SDK_INT < 21) || (localCodecCapabilities.getVideoCapabilities() == null) || (!localCodecCapabilities.getVideoCapabilities().isSizeSupported(3840, 1920)))
-      {
-        i += 1;
-        break;
+      if ((localCodecCapabilities != null) && (Build.VERSION.SDK_INT >= 21) && (localCodecCapabilities.getVideoCapabilities() != null) && (localCodecCapabilities.getVideoCapabilities().isSizeSupported(3840, 1920))) {
+        return true;
       }
-      bool1 = true;
+      i += 1;
     }
-    return bool1;
+    return false;
   }
   
   public static int nv21clip(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3, int paramInt4)
@@ -118,11 +112,12 @@ public class SoftCodecUtils
   
   public static int nv21toi420rotate(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
-      return -1;
+    if ((paramArrayOfByte1 != null) && (paramArrayOfByte2 != null))
+    {
+      AVCEncoder.native_nv21toi420rotate(paramArrayOfByte1, paramArrayOfByte2, paramInt1, paramInt2, paramInt3, paramInt4);
+      return 0;
     }
-    AVCEncoder.native_nv21toi420rotate(paramArrayOfByte1, paramArrayOfByte2, paramInt1, paramInt2, paramInt3, paramInt4);
-    return 0;
+    return -1;
   }
   
   public static int setImageBeauty(int paramInt, byte[] paramArrayOfByte)
@@ -145,16 +140,17 @@ public class SoftCodecUtils
   
   public static int yv12tonv21(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2)
   {
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
-      return -1;
+    if ((paramArrayOfByte1 != null) && (paramArrayOfByte2 != null))
+    {
+      AVCEncoder.native_yv12tonv21(paramArrayOfByte1, paramArrayOfByte2, paramInt1, paramInt2);
+      return 0;
     }
-    AVCEncoder.native_yv12tonv21(paramArrayOfByte1, paramArrayOfByte2, paramInt1, paramInt2);
-    return 0;
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.playview.codec.SoftCodecUtils
  * JD-Core Version:    0.7.0.1
  */

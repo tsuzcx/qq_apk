@@ -36,33 +36,30 @@ public class WebPushClient
   
   public void a(Bundle paramBundle)
   {
-    if (paramBundle == null) {
+    if (paramBundle == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("WebPushClient", 2, "data is null");
       }
-    }
-    WeakReference localWeakReference;
-    do
-    {
-      int i;
-      do
-      {
-        return;
-        i = paramBundle.getInt("msgType", -1);
-        if (i != 0) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("WebPushClient", 2, "type is 0");
       return;
-      localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
-    } while ((localWeakReference == null) || (localWeakReference.get() == null));
-    ((WebPushClient.WebPushCallback)localWeakReference.get()).a(paramBundle);
+    }
+    int i = paramBundle.getInt("msgType", -1);
+    if (i == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebPushClient", 2, "type is 0");
+      }
+      return;
+    }
+    WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+      ((WebPushClient.WebPushCallback)localWeakReference.get()).a(paramBundle);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.apiproxy.WebPushClient
  * JD-Core Version:    0.7.0.1
  */

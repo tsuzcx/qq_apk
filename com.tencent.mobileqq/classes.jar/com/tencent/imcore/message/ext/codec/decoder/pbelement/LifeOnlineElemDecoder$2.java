@@ -1,8 +1,8 @@
 package com.tencent.imcore.message.ext.codec.decoder.pbelement;
 
+import com.tencent.biz.pubaccount.api.IPublicAccountHandler;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import msf.msgcomm.msg_comm.Msg;
@@ -15,12 +15,12 @@ class LifeOnlineElemDecoder$2
   
   public void run()
   {
-    ((PublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT)).a(String.valueOf(this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg.msg_head.from_uin.get()), 0L, 1);
+    ((IPublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT)).getAIOHistoryMsg(String.valueOf(this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg.msg_head.from_uin.get()), 0L, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.pbelement.LifeOnlineElemDecoder.2
  * JD-Core Version:    0.7.0.1
  */

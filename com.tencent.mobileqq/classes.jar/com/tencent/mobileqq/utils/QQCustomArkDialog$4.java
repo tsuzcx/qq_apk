@@ -17,22 +17,24 @@ class QQCustomArkDialog$4
       if (QLog.isColorLevel()) {
         QLog.d("QQCustomArkDialog", 2, "overtime,show dialog right now");
       }
-      if (QQCustomArkDialog.a(this.this$0) == null) {
-        break label76;
+      Activity localActivity;
+      if (QQCustomArkDialog.a(this.this$0) != null) {
+        localActivity = (Activity)QQCustomArkDialog.a(this.this$0).get();
+      } else {
+        localActivity = null;
       }
+      if ((localActivity != null) && (!localActivity.isFinishing()))
+      {
+        this.this$0.show();
+        return;
+      }
+      QLog.d("QQCustomArkDialog", 1, "overtime,show dialog right now activity is null or finished");
     }
-    label76:
-    for (Activity localActivity = (Activity)QQCustomArkDialog.a(this.this$0).get(); (localActivity != null) && (!localActivity.isFinishing()); localActivity = null)
-    {
-      this.this$0.show();
-      return;
-    }
-    QLog.d("QQCustomArkDialog", 1, "overtime,show dialog right now activity is null or finished");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomArkDialog.4
  * JD-Core Version:    0.7.0.1
  */

@@ -13,32 +13,33 @@ final class SDKMiniProgramLpReportDC04239$9
   
   public void run()
   {
-    Object localObject;
+    Object localObject2;
     if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion())
     {
-      localObject = new StringBuilder().append("gameInnerReport() called with args: ");
-      if (this.val$jsonObject == null) {
-        break label106;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("gameInnerReport() called with args: ");
+      localObject1 = this.val$jsonObject;
+      if (localObject1 != null) {
+        localObject1 = ((JSONObject)localObject1).toString();
+      } else {
+        localObject1 = "empty";
       }
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QMLog.d("MiniProgramLpReportDC04239", ((StringBuilder)localObject2).toString());
     }
-    label106:
-    for (String str1 = this.val$jsonObject.toString();; str1 = "empty")
+    Object localObject1 = this.val$jsonObject;
+    if (localObject1 != null)
     {
-      QMLog.d("MiniProgramLpReportDC04239", str1);
-      if (this.val$jsonObject != null)
-      {
-        str1 = this.val$jsonObject.optString("actiontype");
-        localObject = this.val$jsonObject.optString("sub_actiontype");
-        String str2 = this.val$jsonObject.optString("reserves_action");
-        SDKMiniProgramLpReportDC04239.access$300(this.val$miniAppConfig, "1", null, str1, (String)localObject, str2);
-      }
-      return;
+      localObject1 = ((JSONObject)localObject1).optString("actiontype");
+      localObject2 = this.val$jsonObject.optString("sub_actiontype");
+      String str = this.val$jsonObject.optString("reserves_action");
+      SDKMiniProgramLpReportDC04239.access$300(this.val$miniAppConfig, "1", null, (String)localObject1, (String)localObject2, str);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239.9
  * JD-Core Version:    0.7.0.1
  */

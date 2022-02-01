@@ -17,8 +17,12 @@ public class InviteMemberObserverWithoutCache
   {
     paramObject = (Object[])paramObject;
     int i = ((Integer)paramObject[0]).intValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("qav.GAudioUIObserver", 2, "OnUpdate，msgType = " + i);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("OnUpdate，msgType = ");
+      localStringBuilder.append(i);
+      QLog.d("qav.GAudioUIObserver", 2, localStringBuilder.toString());
     }
     if (paramObject.length < 4)
     {
@@ -27,9 +31,7 @@ public class InviteMemberObserverWithoutCache
       }
       return;
     }
-    switch (i)
-    {
-    default: 
+    if (i != 709) {
       return;
     }
     a(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), (ArrayList)paramObject[3]);
@@ -53,7 +55,7 @@ public class InviteMemberObserverWithoutCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.InviteMemberObserverWithoutCache
  * JD-Core Version:    0.7.0.1
  */

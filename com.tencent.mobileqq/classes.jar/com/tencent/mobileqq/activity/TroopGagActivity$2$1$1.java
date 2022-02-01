@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.app.TroopManager.MemberGagInfo;
+import com.tencent.mobileqq.troop.troopgag.data.MemberGagInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,13 +12,14 @@ class TroopGagActivity$2$1$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityTroopGagActivity$2$1.a.a.jdField_a_of_type_JavaUtilList.clear();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        TroopManager.MemberGagInfo localMemberGagInfo = (TroopManager.MemberGagInfo)localIterator.next();
+        MemberGagInfo localMemberGagInfo = (MemberGagInfo)((Iterator)localObject).next();
         TroopGagActivity.GagMemInfo localGagMemInfo = new TroopGagActivity.GagMemInfo();
         localGagMemInfo.jdField_a_of_type_JavaLangString = localMemberGagInfo.jdField_a_of_type_JavaLangString;
         localGagMemInfo.jdField_a_of_type_Long = localMemberGagInfo.jdField_a_of_type_Long;
@@ -30,7 +31,7 @@ class TroopGagActivity$2$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopGagActivity.2.1.1
  * JD-Core Version:    0.7.0.1
  */

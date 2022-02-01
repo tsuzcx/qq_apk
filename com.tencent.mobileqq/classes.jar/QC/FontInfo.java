@@ -57,39 +57,47 @@ public final class FontInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.item != null) {
-      paramJceOutputStream.write(this.item, 0);
+    Object localObject = this.item;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
     paramJceOutputStream.write(this.linkBubbleID, 1);
     paramJceOutputStream.write(this.feeType, 2);
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 3);
+    localObject = this.name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.payUrl != null) {
-      paramJceOutputStream.write(this.payUrl, 4);
+    localObject = this.payUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.type != null) {
-      paramJceOutputStream.write(this.type, 5);
+    localObject = this.type;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.month, 6);
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 7);
+    localObject = this.msg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.btn != null) {
-      paramJceOutputStream.write(this.btn, 8);
+    localObject = this.btn;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 9);
+    localObject = this.title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
     paramJceOutputStream.write(this.engine, 10);
-    if (this.strPicUrl != null) {
-      paramJceOutputStream.write(this.strPicUrl, 11);
+    localObject = this.strPicUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.FontInfo
  * JD-Core Version:    0.7.0.1
  */

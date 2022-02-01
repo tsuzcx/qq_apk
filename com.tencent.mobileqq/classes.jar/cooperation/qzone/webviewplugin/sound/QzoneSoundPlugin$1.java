@@ -14,65 +14,88 @@ class QzoneSoundPlugin$1
   
   public void onDownloadCanceled(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneSoundPlugin", 2, "onDownloadCanceled:" + paramString);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDownloadCanceled:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("QzoneSoundPlugin", 2, ((StringBuilder)localObject).toString());
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("code", -1);
-      localJSONObject.put("message", paramString);
-      QzoneSoundPlugin.access$000(this.this$0).callJs(this.val$callback, new String[] { localJSONObject.toString() });
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("code", -1);
+      ((JSONObject)localObject).put("message", paramString);
+      QzoneSoundPlugin.access$000(this.this$0).callJs(this.val$callback, new String[] { ((JSONObject)localObject).toString() });
       return;
     }
     catch (Exception paramString)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("QzoneSoundPlugin", 2, "DownloaderFactory onDownloadCanceled : " + paramString.getMessage());
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("DownloaderFactory onDownloadCanceled : ");
+        ((StringBuilder)localObject).append(paramString.getMessage());
+        QLog.i("QzoneSoundPlugin", 2, ((StringBuilder)localObject).toString());
+      }
     }
   }
   
   public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneSoundPlugin", 2, "onDownloadFailed:" + paramString);
-    }
-    for (;;)
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      try
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDownloadFailed:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("QzoneSoundPlugin", 2, ((StringBuilder)localObject).toString());
+    }
+    try
+    {
+      paramString = new JSONObject();
+      if (paramDownloadResult != null)
       {
-        paramString = new JSONObject();
-        if (paramDownloadResult == null) {
-          continue;
+        localObject = paramDownloadResult.getStatus();
+        if (localObject != null) {
+          paramString.put("code", ((DownloadResult.Status)localObject).failReason);
+        } else {
+          paramString.put("code", -1);
         }
-        DownloadResult.Status localStatus = paramDownloadResult.getStatus();
-        if (localStatus == null) {
-          continue;
-        }
-        paramString.put("code", localStatus.failReason);
         paramString.put("message", paramDownloadResult.getDetailDownloadInfo());
       }
-      catch (Exception paramString)
+      else
       {
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.i("QzoneSoundPlugin", 2, "DownloaderFactory onDownloadFailed : " + paramString.getMessage());
-        return;
         paramString.put("code", -1);
         paramString.put("message", "DownloadFailed");
-        continue;
       }
       QzoneSoundPlugin.access$100(this.this$0).callJs(this.val$callback, new String[] { paramString.toString() });
       return;
-      paramString.put("code", -1);
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramDownloadResult = new StringBuilder();
+        paramDownloadResult.append("DownloaderFactory onDownloadFailed : ");
+        paramDownloadResult.append(paramString.getMessage());
+        QLog.i("QzoneSoundPlugin", 2, paramDownloadResult.toString());
+      }
     }
   }
   
   public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneSoundPlugin", 2, new Object[] { "onDownloadProgress: ", paramString + " : " + paramLong + " : " + paramFloat });
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" : ");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(" : ");
+      localStringBuilder.append(paramFloat);
+      QLog.d("QzoneSoundPlugin", 2, new Object[] { "onDownloadProgress: ", localStringBuilder.toString() });
     }
   }
   
@@ -91,14 +114,19 @@ class QzoneSoundPlugin$1
     }
     catch (Exception paramString)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("QzoneSoundPlugin", 2, "DownloaderFactory onDownloadSucceed : " + paramString.getMessage());
+      if (QLog.isColorLevel())
+      {
+        paramDownloadResult = new StringBuilder();
+        paramDownloadResult.append("DownloaderFactory onDownloadSucceed : ");
+        paramDownloadResult.append(paramString.getMessage());
+        QLog.i("QzoneSoundPlugin", 2, paramDownloadResult.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.sound.QzoneSoundPlugin.1
  * JD-Core Version:    0.7.0.1
  */

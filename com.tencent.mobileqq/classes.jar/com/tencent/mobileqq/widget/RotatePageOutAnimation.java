@@ -24,7 +24,7 @@ class RotatePageOutAnimation
   {
     super.applyTransformation(paramFloat, paramTransformation);
     this.jdField_a_of_type_AndroidGraphicsCamera.save();
-    this.jdField_a_of_type_AndroidGraphicsCamera.rotateX(90.0F * paramFloat);
+    this.jdField_a_of_type_AndroidGraphicsCamera.rotateX(paramFloat * 90.0F);
     this.jdField_a_of_type_AndroidGraphicsCamera.getMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
     this.jdField_a_of_type_AndroidGraphicsCamera.restore();
     this.jdField_a_of_type_AndroidGraphicsMatrix.preTranslate(-this.jdField_a_of_type_Int / 2, -this.b / 2);
@@ -43,7 +43,7 @@ class RotatePageOutAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RotatePageOutAnimation
  * JD-Core Version:    0.7.0.1
  */

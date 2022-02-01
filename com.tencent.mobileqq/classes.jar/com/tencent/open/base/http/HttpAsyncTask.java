@@ -14,8 +14,12 @@ public abstract class HttpAsyncTask<Param, Progress, Result>
   public HttpAsyncTask(String paramString1, String paramString2)
   {
     this.a = paramString1;
-    if (!paramString1.toLowerCase().startsWith("http")) {
-      this.a = ("https://openmobile.qq.com/" + paramString1);
+    if (!paramString1.toLowerCase().startsWith("http"))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("https://openmobile.qq.com/");
+      localStringBuilder.append(paramString1);
+      this.a = localStringBuilder.toString();
     }
     this.b = paramString2;
   }
@@ -31,7 +35,7 @@ public abstract class HttpAsyncTask<Param, Progress, Result>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.base.http.HttpAsyncTask
  * JD-Core Version:    0.7.0.1
  */

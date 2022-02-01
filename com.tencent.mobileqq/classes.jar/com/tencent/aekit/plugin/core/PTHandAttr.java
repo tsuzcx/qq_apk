@@ -69,8 +69,9 @@ public class PTHandAttr
   
   public int getHandTypeIndex()
   {
-    if (this.handType >= 201) {
-      return this.handType - 201;
+    int i = this.handType;
+    if (i >= 201) {
+      return i - 201;
     }
     return -1;
   }

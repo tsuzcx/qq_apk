@@ -52,14 +52,16 @@ public class CosFunGroupItem
   private CosFunFilter createFilter(String paramString, int paramInt)
   {
     CosFunFilter localCosFunFilter = new CosFunFilter();
-    if ((this.customFilterGroupList != null) && (this.customFilterGroupList.size() > paramInt)) {}
-    for (StyleCustomFilterGroup localStyleCustomFilterGroup = (StyleCustomFilterGroup)this.customFilterGroupList.get(paramInt);; localStyleCustomFilterGroup = null)
-    {
-      localCosFunFilter.init(paramString, (CosFun.CosFunItem)this.cosFunGroupItem.getCosFunItems().get(paramInt), this.triggerManager, localStyleCustomFilterGroup);
-      localCosFunFilter.setGanFilter(this.ganFilter);
-      localCosFunFilter.setEnableGAN(this.enableGAN);
-      return localCosFunFilter;
+    Object localObject = this.customFilterGroupList;
+    if ((localObject != null) && (((List)localObject).size() > paramInt)) {
+      localObject = (StyleCustomFilterGroup)this.customFilterGroupList.get(paramInt);
+    } else {
+      localObject = null;
     }
+    localCosFunFilter.init(paramString, (CosFun.CosFunItem)this.cosFunGroupItem.getCosFunItems().get(paramInt), this.triggerManager, (StyleCustomFilterGroup)localObject);
+    localCosFunFilter.setGanFilter(this.ganFilter);
+    localCosFunFilter.setEnableGAN(this.enableGAN);
+    return localCosFunFilter;
   }
   
   private CosFunFilter createNewFilter()
@@ -74,19 +76,22 @@ public class CosFunGroupItem
   
   private CosFunFilter getCurrentCosFunFilter(long paramLong)
   {
-    if (this.currentCosFunFilter == null) {
+    CosFunFilter localCosFunFilter = this.currentCosFunFilter;
+    if (localCosFunFilter == null) {
       return createNewFilter();
     }
-    if (this.currentCosFunFilter.durationComplete(paramLong))
+    if (localCosFunFilter.durationComplete(paramLong))
     {
       this.currentCosFunFilter.release();
-      if (this.itemIndex == this.cosFunGroupItem.getCosFunItems().size() - 1) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.durationComplete = bool;
-        this.itemIndex = calcItemIndex(this.cosFunGroupItem, this.itemIndex);
-        return createNewFilter();
+      int i = this.itemIndex;
+      int j = this.cosFunGroupItem.getCosFunItems().size();
+      boolean bool = true;
+      if (i != j - 1) {
+        bool = false;
       }
+      this.durationComplete = bool;
+      this.itemIndex = calcItemIndex(this.cosFunGroupItem, this.itemIndex);
+      return createNewFilter();
     }
     return this.currentCosFunFilter;
   }
@@ -127,16 +132,18 @@ public class CosFunGroupItem
     if (this.triggerType == 1) {
       return this.itemIndex;
     }
-    if ((this.currentCosFunFilter == null) || (!this.currentCosFunFilter.isTriggered())) {
-      return -1;
+    CosFunFilter localCosFunFilter = this.currentCosFunFilter;
+    if ((localCosFunFilter != null) && (localCosFunFilter.isTriggered())) {
+      return this.itemIndex;
     }
-    return this.itemIndex;
+    return -1;
   }
   
   public void release()
   {
-    if (this.currentCosFunFilter != null) {
-      this.currentCosFunFilter.release();
+    CosFunFilter localCosFunFilter = this.currentCosFunFilter;
+    if (localCosFunFilter != null) {
+      localCosFunFilter.release();
     }
     this.currentCosFunFilter = null;
     this.lastFrameFaceCount = -1;
@@ -147,9 +154,10 @@ public class CosFunGroupItem
   
   public Frame render(Frame paramFrame, PTFaceAttr paramPTFaceAttr, PTSegAttr paramPTSegAttr, AIAttr paramAIAttr)
   {
+    CosFunFilter localCosFunFilter = this.currentCosFunFilter;
     Frame localFrame = paramFrame;
-    if (this.currentCosFunFilter != null) {
-      localFrame = this.currentCosFunFilter.render(paramFrame, paramPTFaceAttr, paramPTSegAttr, paramAIAttr);
+    if (localCosFunFilter != null) {
+      localFrame = localCosFunFilter.render(paramFrame, paramPTFaceAttr, paramPTSegAttr, paramAIAttr);
     }
     return localFrame;
   }
@@ -163,26 +171,31 @@ public class CosFunGroupItem
   
   public void updateParams(PTFaceAttr paramPTFaceAttr)
   {
-    if (this.cosFunGroupItem.getLoopMode().equals("sequence")) {}
-    for (this.currentCosFunFilter = getCurrentCosFunFilter(paramPTFaceAttr.getTimeStamp());; this.currentCosFunFilter = createRandomFilter())
+    if (this.cosFunGroupItem.getLoopMode().equals("sequence"))
     {
-      do
+      this.currentCosFunFilter = getCurrentCosFunFilter(paramPTFaceAttr.getTimeStamp());
+    }
+    else
+    {
+      CosFunFilter localCosFunFilter = this.currentCosFunFilter;
+      if ((localCosFunFilter == null) || (localCosFunFilter.durationComplete(paramPTFaceAttr.getTimeStamp())))
       {
-        this.currentCosFunFilter.updateParams(paramPTFaceAttr);
-        this.isFirstUpdate = false;
-        return;
-      } while ((this.currentCosFunFilter != null) && (!this.currentCosFunFilter.durationComplete(paramPTFaceAttr.getTimeStamp())));
-      if (this.currentCosFunFilter != null)
-      {
-        this.currentCosFunFilter.release();
-        this.durationComplete = true;
+        localCosFunFilter = this.currentCosFunFilter;
+        if (localCosFunFilter != null)
+        {
+          localCosFunFilter.release();
+          this.durationComplete = true;
+        }
+        this.currentCosFunFilter = createRandomFilter();
       }
     }
+    this.currentCosFunFilter.updateParams(paramPTFaceAttr);
+    this.isFirstUpdate = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.CosFunGroupItem
  * JD-Core Version:    0.7.0.1
  */

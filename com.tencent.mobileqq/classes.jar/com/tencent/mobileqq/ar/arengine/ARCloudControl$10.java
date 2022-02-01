@@ -12,20 +12,18 @@ class ARCloudControl$10
     if ((ARCloudControl.a(this.this$0) != null) && (ARCloudControl.e(this.this$0)))
     {
       QLog.i("AREngine_ARCloudControl", 1, "requestToCheckLBSLocation timeout.");
-      if (!ARCloudControl.a(this.this$0)) {}
+      if (ARCloudControl.a(this.this$0)) {
+        return;
+      }
+      ARCloudControl.a(this.this$0, true);
+      ARCloudControl.a(this.this$0).a(1, null);
+      ARCloudControl.a(this.this$0, null);
     }
-    else
-    {
-      return;
-    }
-    ARCloudControl.a(this.this$0, true);
-    ARCloudControl.a(this.this$0).a(1, null);
-    ARCloudControl.a(this.this$0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudControl.10
  * JD-Core Version:    0.7.0.1
  */

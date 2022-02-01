@@ -12,29 +12,29 @@ class UniformDownloader$1
   
   public void run()
   {
-    if (UniformDownloader.a(this.this$0, false, UniformDownloader.a(this.this$0))) {
-      this.this$0.b();
-    }
-    for (;;)
+    Object localObject = this.this$0;
+    if (UniformDownloader.a((UniformDownloader)localObject, false, UniformDownloader.a((UniformDownloader)localObject)))
     {
+      this.this$0.b();
       return;
-      if (this.jdField_a_of_type_AndroidOsBundle != null) {
-        this.jdField_a_of_type_AndroidOsBundle.putBundle("_CB_USERDATA", UniformDownloader.b(this.this$0));
-      }
-      Iterator localIterator = UniformDownloader.a(this.this$0).iterator();
-      while (localIterator.hasNext())
-      {
-        IUniformDownloaderListener localIUniformDownloaderListener = (IUniformDownloaderListener)localIterator.next();
-        if (localIUniformDownloaderListener != null) {
-          localIUniformDownloaderListener.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-        }
+    }
+    localObject = this.jdField_a_of_type_AndroidOsBundle;
+    if (localObject != null) {
+      ((Bundle)localObject).putBundle("_CB_USERDATA", UniformDownloader.b(this.this$0));
+    }
+    localObject = UniformDownloader.a(this.this$0).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      IUniformDownloaderListener localIUniformDownloaderListener = (IUniformDownloaderListener)((Iterator)localObject).next();
+      if (localIUniformDownloaderListener != null) {
+        localIUniformDownloaderListener.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.downloader.UniformDownloader.1
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -16,6 +15,7 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import tencent.im.oidb.cmd0xac5.cmd0xac5.NearbyLabelInfo;
@@ -45,7 +45,7 @@ public class TopicLabelCtrl
     localLinearLayout.setGravity(16);
     try
     {
-      localObject = URLDrawable.URLDrawableOptions.obtain();
+      Object localObject = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = new ColorDrawable(-7829368);
       ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable;
       localObject = URLDrawable.getDrawable(paramString1, (URLDrawable.URLDrawableOptions)localObject);
@@ -53,28 +53,30 @@ public class TopicLabelCtrl
     }
     catch (Exception localException)
     {
-      for (;;)
+      if (QLog.isColorLevel())
       {
-        Object localObject;
-        if (QLog.isColorLevel()) {
-          QLog.w("TopicLabelCtrl", 2, "getDrawable exception, exp=" + localException + ", url=" + paramString1);
-        }
-        paramString1 = new ColorDrawable(-7829368);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getDrawable exception, exp=");
+        localStringBuilder.append(localException);
+        localStringBuilder.append(", url=");
+        localStringBuilder.append(paramString1);
+        QLog.w("TopicLabelCtrl", 2, localStringBuilder.toString());
       }
+      paramString1 = new ColorDrawable(-7829368);
     }
-    localObject = new View(this.jdField_a_of_type_AndroidContentContext);
-    ((View)localObject).setBackgroundDrawable(paramString1);
-    localLinearLayout.addView((View)localObject, DisplayUtil.b(this.jdField_a_of_type_AndroidContentContext, 18.0F), DisplayUtil.b(this.jdField_a_of_type_AndroidContentContext, 15.0F));
-    ((LinearLayout.LayoutParams)((View)localObject).getLayoutParams()).leftMargin = DisplayUtil.b(this.jdField_a_of_type_AndroidContentContext, 4.0F);
+    View localView = new View(this.jdField_a_of_type_AndroidContentContext);
+    localView.setBackgroundDrawable(paramString1);
+    localLinearLayout.addView(localView, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 18.0F), DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 15.0F));
+    ((LinearLayout.LayoutParams)localView.getLayoutParams()).leftMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 4.0F);
     paramString1 = new TextView(this.jdField_a_of_type_AndroidContentContext);
     paramString1.setText(paramString2);
     paramString1.setTextSize(14.0F);
     paramString1.setTextColor(i);
     localLinearLayout.addView(paramString1);
     paramString1 = (LinearLayout.LayoutParams)paramString1.getLayoutParams();
-    paramString1.rightMargin = DisplayUtil.b(this.jdField_a_of_type_AndroidContentContext, 6.0F);
-    paramString1.leftMargin = DisplayUtil.b(this.jdField_a_of_type_AndroidContentContext, 2.0F);
-    localLinearLayout.setBackgroundResource(2130845849);
+    paramString1.rightMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 6.0F);
+    paramString1.leftMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 2.0F);
+    localLinearLayout.setBackgroundResource(2130845722);
     paramString1 = localLinearLayout.getBackground();
     if (paramString1 != null)
     {
@@ -89,9 +91,9 @@ public class TopicLabelCtrl
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131379534);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer = ((LabelContainer)paramView.findViewById(2131370208));
-    this.b = paramView.findViewById(2131370410);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131378882);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer = ((LabelContainer)paramView.findViewById(2131369877));
+    this.b = paramView.findViewById(2131370069);
     this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
   }
   
@@ -100,36 +102,39 @@ public class TopicLabelCtrl
     if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.getChildCount() > 0) {
       this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.removeAllViews();
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.setSpace(DisplayUtil.b(this.jdField_a_of_type_AndroidContentContext, 6.0F), DisplayUtil.b(this.jdField_a_of_type_AndroidContentContext, 8.0F));
-    if (paramNearbyNowData != null) {}
-    for (paramNearbyNowData = paramNearbyNowData.label_info.get();; paramNearbyNowData = null)
+    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.setSpace(DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 6.0F), DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 8.0F));
+    List localList = null;
+    if (paramNearbyNowData != null) {
+      localList = paramNearbyNowData.label_info.get();
+    }
+    if ((localList != null) && (localList.size() > 0))
     {
-      if ((paramNearbyNowData != null) && (paramNearbyNowData.size() > 0))
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("TopicLabelCtrl", 2, "updateData, nearbyLabelInfoList.size=" + paramNearbyNowData.size());
-        }
-        int i = 0;
-        while (i < paramNearbyNowData.size())
-        {
-          Object localObject = (cmd0xac5.NearbyLabelInfo)paramNearbyNowData.get(i);
-          localObject = a(((cmd0xac5.NearbyLabelInfo)localObject).label_pic.get().toStringUtf8(), ((cmd0xac5.NearbyLabelInfo)localObject).label_name.get().toStringUtf8(), ((cmd0xac5.NearbyLabelInfo)localObject).font_colour.get(), ((cmd0xac5.NearbyLabelInfo)localObject).label_colour.get());
-          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.addView((View)localObject, -2, DisplayUtil.b(this.jdField_a_of_type_AndroidContentContext, 24.0F));
-          i += 1;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.setVisibility(0);
-        return;
+        paramNearbyNowData = new StringBuilder();
+        paramNearbyNowData.append("updateData, nearbyLabelInfoList.size=");
+        paramNearbyNowData.append(localList.size());
+        QLog.i("TopicLabelCtrl", 2, paramNearbyNowData.toString());
       }
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.b.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.setVisibility(8);
+      int i = 0;
+      while (i < localList.size())
+      {
+        paramNearbyNowData = (cmd0xac5.NearbyLabelInfo)localList.get(i);
+        paramNearbyNowData = a(paramNearbyNowData.label_pic.get().toStringUtf8(), paramNearbyNowData.label_name.get().toStringUtf8(), paramNearbyNowData.font_colour.get(), paramNearbyNowData.label_colour.get());
+        this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.addView(paramNearbyNowData, -2, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 24.0F));
+        i += 1;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.setVisibility(0);
       return;
     }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.b.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardLabelContainer.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.TopicLabelCtrl
  * JD-Core Version:    0.7.0.1
  */

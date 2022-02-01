@@ -24,7 +24,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Ldov/com/qq/im/aeeditor/module/autotemplate/CodecOutputSurface;", "Landroid/graphics/SurfaceTexture$OnFrameAvailableListener;", "width", "", "height", "(II)V", "mEGLContext", "Landroid/opengl/EGLContext;", "kotlin.jvm.PlatformType", "mEGLDisplay", "Landroid/opengl/EGLDisplay;", "mEGLSurface", "Landroid/opengl/EGLSurface;", "mFrameAvailable", "", "mFrameSyncObject", "Ljava/lang/Object;", "mFrameWrapper", "Ldov/com/qq/im/aeeditor/module/autotemplate/FrameWrapper;", "mHeight", "mPixelBuf", "Ljava/nio/ByteBuffer;", "mSurfaceTexture", "Landroid/graphics/SurfaceTexture;", "mTextureRender", "Ldov/com/qq/im/aeeditor/module/autotemplate/STextureRender;", "mWidth", "<set-?>", "Landroid/view/Surface;", "surface", "getSurface", "()Landroid/view/Surface;", "awaitNewImage", "", "drawImage", "invert", "eglSetup", "flipBitmapY", "Landroid/graphics/Bitmap;", "bitmap", "makeCurrent", "onFrameAvailable", "st", "release", "saveBitmap", "flipY", "setup", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Ldov/com/qq/im/aeeditor/module/autotemplate/CodecOutputSurface;", "Landroid/graphics/SurfaceTexture$OnFrameAvailableListener;", "width", "", "height", "(II)V", "mEGLContext", "Landroid/opengl/EGLContext;", "kotlin.jvm.PlatformType", "mEGLDisplay", "Landroid/opengl/EGLDisplay;", "mEGLSurface", "Landroid/opengl/EGLSurface;", "mFrameAvailable", "", "mFrameSyncObject", "Ljava/lang/Object;", "mFrameWrapper", "Ldov/com/qq/im/aeeditor/module/autotemplate/FrameWrapper;", "mHeight", "mPixelBuf", "Ljava/nio/ByteBuffer;", "mSurfaceTexture", "Landroid/graphics/SurfaceTexture;", "mTextureRender", "Ldov/com/qq/im/aeeditor/module/autotemplate/STextureRender;", "mWidth", "<set-?>", "Landroid/view/Surface;", "surface", "getSurface", "()Landroid/view/Surface;", "awaitNewImage", "", "drawImage", "invert", "eglSetup", "flipBitmapY", "Landroid/graphics/Bitmap;", "bitmap", "makeCurrent", "onFrameAvailable", "st", "release", "saveBitmap", "flipY", "setup", "Companion", "aelight_impl_release"}, k=1, mv={1, 1, 16})
 @RequiresApi(17)
 public final class CodecOutputSurface
   implements SurfaceTexture.OnFrameAvailableListener
@@ -55,15 +55,22 @@ public final class CodecOutputSurface
   
   public CodecOutputSurface(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 > 0) && (paramInt2 > 0)) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException("Failed requirement.".toString()));
+    int i;
+    if ((paramInt1 > 0) && (paramInt2 > 0)) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    e();
-    b();
-    d();
+    if (i != 0)
+    {
+      this.jdField_a_of_type_Int = paramInt1;
+      this.jdField_b_of_type_Int = paramInt2;
+      e();
+      b();
+      d();
+      return;
+    }
+    throw ((Throwable)new IllegalArgumentException("Failed requirement.".toString()));
   }
   
   private final Bitmap a(Bitmap paramBitmap)
@@ -89,12 +96,14 @@ public final class CodecOutputSurface
     ((STextureRender)localObject).a();
     if (jdField_b_of_type_Boolean)
     {
-      localObject = new StringBuilder().append("textureID=");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("textureID=");
       STextureRender localSTextureRender = this.jdField_a_of_type_DovComQqImAeeditorModuleAutotemplateSTextureRender;
       if (localSTextureRender == null) {
         Intrinsics.throwNpe();
       }
-      Log.d("STextureRender", localSTextureRender.a());
+      ((StringBuilder)localObject).append(localSTextureRender.a());
+      Log.d("STextureRender", ((StringBuilder)localObject).toString());
     }
     localObject = this.jdField_a_of_type_DovComQqImAeeditorModuleAutotemplateSTextureRender;
     if (localObject == null) {
@@ -118,32 +127,36 @@ public final class CodecOutputSurface
   private final void e()
   {
     this.jdField_a_of_type_AndroidOpenglEGLDisplay = EGL14.eglGetDisplay(0);
-    if (this.jdField_a_of_type_AndroidOpenglEGLDisplay == EGL14.EGL_NO_DISPLAY) {
-      throw ((Throwable)new RuntimeException("unable to get EGL14 display"));
-    }
-    Object localObject = new int[2];
-    if (!EGL14.eglInitialize(this.jdField_a_of_type_AndroidOpenglEGLDisplay, (int[])localObject, 0, (int[])localObject, 1))
+    if (this.jdField_a_of_type_AndroidOpenglEGLDisplay != EGL14.EGL_NO_DISPLAY)
     {
+      Object localObject = new int[2];
+      if (EGL14.eglInitialize(this.jdField_a_of_type_AndroidOpenglEGLDisplay, (int[])localObject, 0, (int[])localObject, 1))
+      {
+        localObject = new EGLConfig[1];
+        int[] arrayOfInt = new int[1];
+        EGLDisplay localEGLDisplay = this.jdField_a_of_type_AndroidOpenglEGLDisplay;
+        int i = localObject.length;
+        if (EGL14.eglChooseConfig(localEGLDisplay, new int[] { 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12352, 4, 12339, 1, 12344 }, 0, (EGLConfig[])localObject, 0, i, arrayOfInt, 0))
+        {
+          this.jdField_a_of_type_AndroidOpenglEGLContext = EGL14.eglCreateContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, localObject[0], EGL14.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 }, 0);
+          if (this.jdField_a_of_type_AndroidOpenglEGLContext != null)
+          {
+            i = this.jdField_a_of_type_Int;
+            int j = this.jdField_b_of_type_Int;
+            this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.eglCreatePbufferSurface(this.jdField_a_of_type_AndroidOpenglEGLDisplay, localObject[0], new int[] { 12375, i, 12374, j, 12344 }, 0);
+            if (this.jdField_a_of_type_AndroidOpenglEGLSurface != null) {
+              return;
+            }
+            throw ((Throwable)new RuntimeException("surface was null"));
+          }
+          throw ((Throwable)new RuntimeException("null context"));
+        }
+        throw ((Throwable)new RuntimeException("unable to find RGB888+recordable ES2 EGL config"));
+      }
       this.jdField_a_of_type_AndroidOpenglEGLDisplay = ((EGLDisplay)null);
       throw ((Throwable)new RuntimeException("unable to initialize EGL14"));
     }
-    localObject = new EGLConfig[1];
-    int[] arrayOfInt = new int[1];
-    EGLDisplay localEGLDisplay = this.jdField_a_of_type_AndroidOpenglEGLDisplay;
-    int i = localObject.length;
-    if (!EGL14.eglChooseConfig(localEGLDisplay, new int[] { 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12352, 4, 12339, 1, 12344 }, 0, (EGLConfig[])localObject, 0, i, arrayOfInt, 0)) {
-      throw ((Throwable)new RuntimeException("unable to find RGB888+recordable ES2 EGL config"));
-    }
-    this.jdField_a_of_type_AndroidOpenglEGLContext = EGL14.eglCreateContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, localObject[0], EGL14.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 }, 0);
-    if (this.jdField_a_of_type_AndroidOpenglEGLContext == null) {
-      throw ((Throwable)new RuntimeException("null context"));
-    }
-    i = this.jdField_a_of_type_Int;
-    int j = this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.eglCreatePbufferSurface(this.jdField_a_of_type_AndroidOpenglEGLDisplay, localObject[0], new int[] { 12375, i, 12374, j, 12344 }, 0);
-    if (this.jdField_a_of_type_AndroidOpenglEGLSurface == null) {
-      throw ((Throwable)new RuntimeException("surface was null"));
-    }
+    throw ((Throwable)new RuntimeException("unable to get EGL14 display"));
   }
   
   @NotNull
@@ -155,23 +168,21 @@ public final class CodecOutputSurface
     }
     ((ByteBuffer)localObject).rewind();
     GLES20.glReadPixels(0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 6408, 5121, (Buffer)this.jdField_a_of_type_JavaNioByteBuffer);
-    localObject = Bitmap.createBitmap(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, Bitmap.Config.ARGB_8888);
-    ByteBuffer localByteBuffer = this.jdField_a_of_type_JavaNioByteBuffer;
-    if (localByteBuffer == null) {
+    Bitmap localBitmap = Bitmap.createBitmap(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, Bitmap.Config.ARGB_8888);
+    localObject = this.jdField_a_of_type_JavaNioByteBuffer;
+    if (localObject == null) {
       Intrinsics.throwNpe();
     }
-    localByteBuffer.rewind();
-    ((Bitmap)localObject).copyPixelsFromBuffer((Buffer)this.jdField_a_of_type_JavaNioByteBuffer);
+    ((ByteBuffer)localObject).rewind();
+    localBitmap.copyPixelsFromBuffer((Buffer)this.jdField_a_of_type_JavaNioByteBuffer);
+    localObject = localBitmap;
     if (paramBoolean)
     {
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "bmp");
-      localObject = a((Bitmap)localObject);
+      Intrinsics.checkExpressionValueIsNotNull(localBitmap, "bmp");
+      localObject = a(localBitmap);
     }
-    for (;;)
-    {
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "bmp");
-      return localObject;
-    }
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "bmp");
+    return localObject;
   }
   
   @Nullable
@@ -220,9 +231,12 @@ public final class CodecOutputSurface
   @RequiresApi(17)
   public final void b()
   {
-    if (!EGL14.eglMakeCurrent(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLSurface, this.jdField_a_of_type_AndroidOpenglEGLSurface, this.jdField_a_of_type_AndroidOpenglEGLContext)) {
-      throw ((Throwable)new RuntimeException("eglMakeCurrent failed"));
+    EGLDisplay localEGLDisplay = this.jdField_a_of_type_AndroidOpenglEGLDisplay;
+    EGLSurface localEGLSurface = this.jdField_a_of_type_AndroidOpenglEGLSurface;
+    if (EGL14.eglMakeCurrent(localEGLDisplay, localEGLSurface, localEGLSurface, this.jdField_a_of_type_AndroidOpenglEGLContext)) {
+      return;
     }
+    throw ((Throwable)new RuntimeException("eglMakeCurrent failed"));
   }
   
   public final void c()
@@ -246,14 +260,19 @@ public final class CodecOutputSurface
           }
         }
       }
+      this.jdField_a_of_type_Boolean = false;
+      Unit localUnit = Unit.INSTANCE;
+      ??? = this.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+      if (??? == null) {
+        Intrinsics.throwNpe();
+      }
+      ((SurfaceTexture)???).updateTexImage();
+      return;
     }
-    this.jdField_a_of_type_Boolean = false;
-    Unit localUnit = Unit.INSTANCE;
-    ??? = this.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-    if (??? == null) {
-      Intrinsics.throwNpe();
+    for (;;)
+    {
+      throw localObject2;
     }
-    ((SurfaceTexture)???).updateTexImage();
   }
   
   public void onFrameAvailable(@NotNull SurfaceTexture arg1)
@@ -264,18 +283,20 @@ public final class CodecOutputSurface
     }
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      if (this.jdField_a_of_type_Boolean) {
-        throw ((Throwable)new RuntimeException("mFrameAvailable already set, frame could be dropped"));
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_JavaLangObject.notifyAll();
+        Unit localUnit = Unit.INSTANCE;
+        return;
       }
+      throw ((Throwable)new RuntimeException("mFrameAvailable already set, frame could be dropped"));
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangObject.notifyAll();
-    Unit localUnit = Unit.INSTANCE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.autotemplate.CodecOutputSurface
  * JD-Core Version:    0.7.0.1
  */

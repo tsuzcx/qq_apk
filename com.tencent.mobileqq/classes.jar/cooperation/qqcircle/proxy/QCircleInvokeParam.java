@@ -15,7 +15,7 @@ public class QCircleInvokeParam
   
   public static int getMethod(int paramInt)
   {
-    return 0xFFFF & paramInt;
+    return paramInt & 0xFFFF;
   }
   
   public static int initInvokeKey(int paramInt1, int paramInt2)
@@ -25,7 +25,7 @@ public class QCircleInvokeParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.proxy.QCircleInvokeParam
  * JD-Core Version:    0.7.0.1
  */

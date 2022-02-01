@@ -1,208 +1,151 @@
 package com.huawei.hms.opendevice;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
-import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.huawei.hms.aaid.entity.TokenReq;
+import com.huawei.agconnect.config.AGConnectServicesConfig;
+import com.huawei.hms.aaid.utils.PushPreferences;
+import com.huawei.hms.android.HwBuildEx.VERSION;
+import com.huawei.hms.android.SystemUtils;
 import com.huawei.hms.support.log.HMSLog;
-import com.huawei.hms.utils.HEX;
+import com.huawei.hms.utils.PackageManagerHelper;
 import com.huawei.hms.utils.Util;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.util.Iterator;
-import java.util.List;
+import java.util.TimeZone;
 import java.util.UUID;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class n
 {
-  public static TokenReq a(String paramString1, String paramString2, Context paramContext)
+  public static void a(Context paramContext, String paramString)
   {
-    TokenReq localTokenReq = new TokenReq();
-    localTokenReq.setPackageName(paramContext.getPackageName());
-    if (TextUtils.isEmpty(paramString1)) {
-      localTokenReq.setAppId(Util.getAppId(paramContext));
-    }
-    if (TextUtils.isEmpty(paramString2)) {
-      localTokenReq.setScope("HCM");
-    }
-    paramString1 = paramContext.getSharedPreferences("push_client_self_info", 0);
-    if (!a("hasRequestAgreement", paramString1))
-    {
-      localTokenReq.setFirstTime(true);
-      paramString1.edit().putBoolean("hasRequestAgreement", true).commit();
-      return localTokenReq;
-    }
-    localTokenReq.setFirstTime(false);
-    return localTokenReq;
+    new m(paramContext, paramString).start();
   }
   
-  private static String a(int paramInt)
+  public static void b(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
-    byte[] arrayOfByte = new byte[paramInt];
-    if (Build.VERSION.SDK_INT >= 26) {}
-    for (;;)
+    if (TextUtils.isEmpty(paramString1))
     {
-      try
-      {
-        SecureRandom.getInstanceStrong().nextBytes(arrayOfByte);
-        return HEX.encodeHexString(arrayOfByte, false);
-      }
-      catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
-      {
-        new SecureRandom().nextBytes(arrayOfByte);
-        continue;
-      }
-      new SecureRandom().nextBytes(arrayOfByte);
+      HMSLog.e("ReportAaidToken", "Https response is empty.");
+      return;
     }
+    try
+    {
+      paramString1 = new JSONObject(paramString1);
+      int i = paramString1.optInt("ret", 256);
+      if (i == 0)
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append(paramString3);
+        paramString1.append(paramString2);
+        paramString1 = paramString1.toString();
+        paramString1 = r.a(paramString1, "SHA-256");
+        paramContext = i.a(paramContext);
+        boolean bool = paramContext.saveString("reportAaidAndToken", paramString1);
+        paramString1 = new StringBuilder();
+        paramString1.append("Report success ");
+        if (bool) {
+          paramContext = "and save success.";
+        } else {
+          paramContext = "but save failure.";
+        }
+        paramString1.append(paramContext);
+        HMSLog.d("ReportAaidToken", paramString1.toString());
+        return;
+      }
+      paramContext = new StringBuilder();
+      paramContext.append("Https response body's ret code: ");
+      paramContext.append(i);
+      paramContext.append(", error message: ");
+      paramContext.append(paramString1.optString("msg"));
+      HMSLog.e("ReportAaidToken", paramContext.toString());
+      return;
+    }
+    catch (JSONException paramContext)
+    {
+      break label189;
+    }
+    catch (Exception paramContext)
+    {
+      label181:
+      break label181;
+    }
+    HMSLog.e("ReportAaidToken", "Exception occur.");
+    return;
+    label189:
+    HMSLog.e("ReportAaidToken", "Has JSONException.");
   }
   
-  public static String a(Context paramContext)
+  public static boolean b(Context paramContext)
   {
-    if (paramContext == null)
+    int i = new PackageManagerHelper(paramContext).getPackageVersionCode("com.huawei.android.pushagent");
+    paramContext = new StringBuilder();
+    paramContext.append("NC version code: ");
+    paramContext.append(i);
+    HMSLog.d("ReportAaidToken", paramContext.toString());
+    return ((90101400 <= i) && (i < 100000000)) || (i >= 100001301);
+  }
+  
+  public static String c(Context paramContext, String paramString1, String paramString2)
+  {
+    try
     {
-      HMSLog.e("AaidUtils", "getSign failed because context is null.");
-      return null;
+      JSONObject localJSONObject1 = new JSONObject();
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("timezone", TimeZone.getDefault().getID());
+      localJSONObject2.put("country", SystemUtils.getLocalCountry());
+      JSONObject localJSONObject3 = new JSONObject();
+      Object localObject = new PackageManagerHelper(paramContext);
+      localObject = ((PackageManagerHelper)localObject).getPackageVersionName("com.huawei.android.pushagent");
+      localJSONObject3.put("agent_version", localObject);
+      localJSONObject3.put("hms_version", String.valueOf(Util.getHmsVersion(paramContext)));
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("dev_type", n.a.a.a());
+      ((JSONObject)localObject).put("dev_sub_type", "phone");
+      ((JSONObject)localObject).put("os_type", n.b.b.a());
+      ((JSONObject)localObject).put("os_version", String.valueOf(HwBuildEx.VERSION.EMUI_SDK_INT));
+      localJSONObject1.put("id", UUID.randomUUID().toString());
+      localJSONObject1.put("global", localJSONObject2);
+      localJSONObject1.put("push_agent", localJSONObject3);
+      localJSONObject1.put("hardware", localObject);
+      localJSONObject1.put("aaid", paramString1);
+      localJSONObject1.put("token", paramString2);
+      paramString1 = AGConnectServicesConfig.fromContext(paramContext);
+      localJSONObject1.put("app_id", paramString1.getString("client/app_id"));
+      localJSONObject1.put("region", AGConnectServicesConfig.fromContext(paramContext).getString("region"));
+      return localJSONObject1.toString();
     }
-    Iterator localIterator = paramContext.getPackageManager().getInstalledPackages(64).iterator();
-    while (localIterator.hasNext())
+    catch (JSONException paramContext)
     {
-      PackageInfo localPackageInfo = (PackageInfo)localIterator.next();
-      if (localPackageInfo.packageName.equals(paramContext.getPackageName())) {
-        return localPackageInfo.signatures[0].toCharsString();
-      }
+      label251:
+      break label251;
     }
+    HMSLog.e("ReportAaidToken", "Catch JSONException.");
     return null;
   }
   
-  public static String a(String paramString)
+  public static boolean d(Context paramContext, String paramString1, String paramString2)
   {
-    return b(paramString + a(32));
-  }
-  
-  private static boolean a(String paramString, SharedPreferences paramSharedPreferences)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramSharedPreferences != null)
+    paramContext = i.a(paramContext);
+    if (!paramContext.containsKey("reportAaidAndToken"))
     {
-      bool1 = bool2;
-      if (paramSharedPreferences.getBoolean(paramString, false)) {
-        bool1 = true;
-      }
+      HMSLog.d("ReportAaidToken", "It hasn't been reported, this time needs report.");
+      return true;
     }
-    return bool1;
-  }
-  
-  /* Error */
-  public static String b(Context paramContext)
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: new 178	com/huawei/hms/opendevice/q
-    //   6: dup
-    //   7: aload_0
-    //   8: ldc 180
-    //   10: invokespecial 183	com/huawei/hms/opendevice/q:<init>	(Landroid/content/Context;Ljava/lang/String;)V
-    //   13: astore_1
-    //   14: aload_1
-    //   15: ldc 180
-    //   17: invokevirtual 187	com/huawei/hms/opendevice/q:d	(Ljava/lang/String;)Z
-    //   20: ifeq +15 -> 35
-    //   23: aload_1
-    //   24: ldc 180
-    //   26: invokevirtual 188	com/huawei/hms/opendevice/q:b	(Ljava/lang/String;)Ljava/lang/String;
-    //   29: astore_0
-    //   30: ldc 2
-    //   32: monitorexit
-    //   33: aload_0
-    //   34: areturn
-    //   35: aload_0
-    //   36: invokevirtual 18	android/content/Context:getPackageName	()Ljava/lang/String;
-    //   39: astore_2
-    //   40: aload_0
-    //   41: invokestatic 190	com/huawei/hms/opendevice/n:a	(Landroid/content/Context;)Ljava/lang/String;
-    //   44: astore_0
-    //   45: new 159	java/lang/StringBuilder
-    //   48: dup
-    //   49: invokespecial 160	java/lang/StringBuilder:<init>	()V
-    //   52: aload_2
-    //   53: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   56: aload_0
-    //   57: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   60: invokevirtual 169	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   63: invokestatic 192	com/huawei/hms/opendevice/n:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   66: astore_0
-    //   67: aload_1
-    //   68: ldc 180
-    //   70: aload_0
-    //   71: invokevirtual 195	com/huawei/hms/opendevice/q:a	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   74: pop
-    //   75: aload_1
-    //   76: ldc 197
-    //   78: invokestatic 203	java/lang/System:currentTimeMillis	()J
-    //   81: invokestatic 209	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   84: invokevirtual 212	com/huawei/hms/opendevice/q:a	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   87: goto -57 -> 30
-    //   90: astore_0
-    //   91: ldc 2
-    //   93: monitorexit
-    //   94: aload_0
-    //   95: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	96	0	paramContext	Context
-    //   13	63	1	localq	q
-    //   39	14	2	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   3	30	90	finally
-    //   35	87	90	finally
-  }
-  
-  private static String b(String paramString)
-  {
-    paramString = r.a(paramString, "SHA-256");
-    if ((TextUtils.isEmpty(paramString)) || (paramString.length() != 64)) {
-      return UUID.randomUUID().toString();
+    paramContext = paramContext.getString("reportAaidAndToken");
+    if (TextUtils.isEmpty(paramContext))
+    {
+      HMSLog.e("ReportAaidToken", "It has been reported, but sp file is empty, this time needs report.");
+      return true;
     }
-    return c(paramString).toString();
-  }
-  
-  public static String c(Context paramContext)
-  {
-    paramContext = new q(paramContext, "aaid");
-    if (paramContext.d("aaid")) {
-      return paramContext.b("aaid");
-    }
-    return null;
-  }
-  
-  private static UUID c(String paramString)
-  {
-    String str = paramString.substring(0, 32);
-    paramString = paramString.substring(32, 64);
-    return new UUID(d(str), d(paramString));
-  }
-  
-  private static long d(String paramString)
-  {
-    String str1 = "0x" + paramString.substring(0, 8);
-    String str2 = "0x" + paramString.substring(8, 16);
-    String str3 = "0x" + paramString.substring(16, 24);
-    paramString = "0x" + paramString.substring(24, 32);
-    long l = Long.decode(str1).longValue();
-    return ((Long.decode(str2).longValue() | l << 16) << 16 | Long.decode(str3).longValue()) << 16 | Long.decode(paramString).longValue();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(paramString1);
+    return paramContext.equals(r.a(localStringBuilder.toString(), "SHA-256")) ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.opendevice.n
  * JD-Core Version:    0.7.0.1
  */

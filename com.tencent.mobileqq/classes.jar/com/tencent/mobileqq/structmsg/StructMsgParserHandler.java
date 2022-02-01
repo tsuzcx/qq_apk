@@ -20,39 +20,38 @@ public class StructMsgParserHandler
   
   public AbsStructMsg a()
   {
-    Object localObject1 = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode == null) {}
-    label161:
-    for (;;)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode;
+    if (localObject == null) {
+      return null;
+    }
+    if (((StructMsgNode)localObject).a() > 0) {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode.a(0);
+    } else {
+      localObject = null;
+    }
+    if (localObject == null) {
+      return null;
+    }
+    int i = Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode.a("serviceID"));
+    if (i == 2) {
+      return new StructMsgForAudioShare(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode);
+    }
+    if ((i != 3) && (i != 82) && (i != 120))
     {
-      return localObject1;
-      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode.a() > 0) {}
-      for (Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode.a(0);; localObject2 = null)
+      if ((i != 5) && (i != 137))
       {
-        if (localObject2 == null) {
-          break label161;
-        }
-        int i = Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode.a("serviceID"));
-        if (i == 2) {
-          return new StructMsgForAudioShare(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode);
-        }
-        if ((i == 3) || (i == 82) || (i == 120)) {
-          return new StructMsgForHypertext(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode, i);
-        }
-        if ((i == 5) || (i == 137)) {
-          return new StructMsgForImageShare(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode);
-        }
         if (i == 150)
         {
-          localObject2 = new StructMsgSubImageVideo(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode);
-          localObject1 = localObject2;
-          if (((StructMsgSubImageVideo)localObject2).isValid()) {
-            break;
+          localObject = new StructMsgSubImageVideo(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode);
+          if (((StructMsgSubImageVideo)localObject).isValid()) {
+            return localObject;
           }
         }
         return new StructMsgForGeneralShare(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode);
       }
+      return new StructMsgForImageShare(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode);
     }
+    return new StructMsgForHypertext(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode, i);
   }
   
   public void a(String paramString)
@@ -69,23 +68,17 @@ public class StructMsgParserHandler
   {
     super.characters(paramArrayOfChar, paramInt1, paramInt2);
     paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
-    StructMsgNode localStructMsgNode;
     if (!this.jdField_a_of_type_JavaUtilStack.isEmpty())
     {
-      localStructMsgNode = (StructMsgNode)this.jdField_a_of_type_JavaUtilStack.peek();
-      if (localStructMsgNode != null) {
+      StructMsgNode localStructMsgNode = (StructMsgNode)this.jdField_a_of_type_JavaUtilStack.peek();
+      if (localStructMsgNode != null)
+      {
         if (localStructMsgNode.jdField_a_of_type_JavaLangString != null) {
-          break label81;
+          paramArrayOfChar = localStructMsgNode.jdField_a_of_type_JavaLangString.concat(paramArrayOfChar);
         }
+        localStructMsgNode.jdField_a_of_type_JavaLangString = paramArrayOfChar;
+        localStructMsgNode.jdField_a_of_type_JavaLangString = EmotcationConstants.afterXml(localStructMsgNode.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b);
       }
-    }
-    for (;;)
-    {
-      localStructMsgNode.jdField_a_of_type_JavaLangString = paramArrayOfChar;
-      localStructMsgNode.jdField_a_of_type_JavaLangString = EmotcationConstants.afterXml(localStructMsgNode.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b);
-      return;
-      label81:
-      paramArrayOfChar = localStructMsgNode.jdField_a_of_type_JavaLangString.concat(paramArrayOfChar);
     }
   }
   
@@ -125,8 +118,18 @@ public class StructMsgParserHandler
       localHashMap.put(paramAttributes.getLocalName(i), EmotcationConstants.afterXml(paramAttributes.getValue(i), this.jdField_a_of_type_JavaLangString, this.b));
       i += 1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("StructMsg", 2, "StructMsgParserHandler startElement uri = " + paramString1 + ", localName = " + paramString2 + ", qName = " + paramString3 + ", map = " + localHashMap);
+    if (QLog.isColorLevel())
+    {
+      paramAttributes = new StringBuilder();
+      paramAttributes.append("StructMsgParserHandler startElement uri = ");
+      paramAttributes.append(paramString1);
+      paramAttributes.append(", localName = ");
+      paramAttributes.append(paramString2);
+      paramAttributes.append(", qName = ");
+      paramAttributes.append(paramString3);
+      paramAttributes.append(", map = ");
+      paramAttributes.append(localHashMap);
+      QLog.e("StructMsg", 2, paramAttributes.toString());
     }
     paramString1 = new StructMsgNode(paramString2, localHashMap);
     if (!this.jdField_a_of_type_JavaUtilStack.isEmpty())
@@ -144,7 +147,7 @@ public class StructMsgParserHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgParserHandler
  * JD-Core Version:    0.7.0.1
  */

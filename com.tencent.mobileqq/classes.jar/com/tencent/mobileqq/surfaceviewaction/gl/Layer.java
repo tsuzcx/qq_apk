@@ -77,14 +77,14 @@ public class Layer
     return false;
   }
   
-  protected void aC_()
+  protected void aP_()
   {
     Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext())
     {
       BaseNode localBaseNode = (BaseNode)localIterator.next();
       if ((localBaseNode instanceof Sprite)) {
-        ((Sprite)localBaseNode).aC_();
+        ((Sprite)localBaseNode).aP_();
       }
     }
   }
@@ -102,7 +102,7 @@ public class Layer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.Layer
  * JD-Core Version:    0.7.0.1
  */

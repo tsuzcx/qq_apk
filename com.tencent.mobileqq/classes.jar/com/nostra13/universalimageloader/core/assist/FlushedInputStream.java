@@ -14,28 +14,24 @@ public class FlushedInputStream
   public long skip(long paramLong)
   {
     long l2;
-    for (long l1 = 0L;; l1 = l2 + l1)
+    for (long l1 = 0L; l1 < paramLong; l1 += l2)
     {
-      if (l1 < paramLong)
+      long l3 = this.in.skip(paramLong - l1);
+      l2 = l3;
+      if (l3 == 0L)
       {
-        long l3 = this.in.skip(paramLong - l1);
-        l2 = l3;
-        if (l3 != 0L) {
-          continue;
+        if (read() < 0) {
+          return l1;
         }
-        if (read() >= 0) {}
+        l2 = 1L;
       }
-      else
-      {
-        return l1;
-      }
-      l2 = 1L;
     }
+    return l1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.core.assist.FlushedInputStream
  * JD-Core Version:    0.7.0.1
  */

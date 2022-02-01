@@ -19,104 +19,94 @@ class AIOImageProviderService$TroopFileObserver
   
   private void a(TroopFileStatusInfo paramTroopFileStatusInfo, MessageForTroopFile paramMessageForTroopFile)
   {
-    if (FileUtils.b(paramTroopFileStatusInfo.jdField_d_of_type_JavaLangString)) {
+    boolean bool = FileUtils.fileExistsAndNotEmpty(paramTroopFileStatusInfo.jdField_d_of_type_JavaLangString);
+    String str = "";
+    Object localObject2;
+    if (bool)
+    {
       this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack.a(paramMessageForTroopFile.uniseq, 0, 16, 1, paramTroopFileStatusInfo.jdField_d_of_type_JavaLangString, false);
     }
-    label157:
-    do
+    else if (paramTroopFileStatusInfo.j != 0)
     {
-      for (;;)
+      try
       {
-        if (!FileUtils.b(paramTroopFileStatusInfo.jdField_c_of_type_JavaLangString)) {
-          break label157;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack.a(paramMessageForTroopFile.uniseq, 0, 18, 1, paramTroopFileStatusInfo.jdField_c_of_type_JavaLangString, false);
-        return;
-        if (paramTroopFileStatusInfo.j != 0) {
-          localObject1 = "";
-        }
-        try
-        {
-          Object localObject2 = new JSONObject();
-          ((JSONObject)localObject2).put("errorType", "thumb_download");
-          ((JSONObject)localObject2).put("errorCode", paramTroopFileStatusInfo.j);
-          localObject2 = ((JSONObject)localObject2).toString();
-          localObject1 = localObject2;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack.a(paramMessageForTroopFile.uniseq, 0, 18, 2, (String)localObject1, false);
+        Object localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("errorType", "thumb_download");
+        ((JSONObject)localObject1).put("errorCode", paramTroopFileStatusInfo.j);
+        localObject1 = ((JSONObject)localObject1).toString();
       }
-    } while (paramTroopFileStatusInfo.j == 0);
-    Object localObject1 = "";
-    try
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+        localObject2 = "";
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack.a(paramMessageForTroopFile.uniseq, 0, 18, 2, (String)localObject2, false);
+    }
+    if (FileUtils.fileExistsAndNotEmpty(paramTroopFileStatusInfo.jdField_c_of_type_JavaLangString))
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("errorType", "thumb_download");
-      localJSONObject.put("errorCode", paramTroopFileStatusInfo.j);
-      paramTroopFileStatusInfo = localJSONObject.toString();
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack.a(paramMessageForTroopFile.uniseq, 0, 18, 2, paramTroopFileStatusInfo, false);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack.a(paramMessageForTroopFile.uniseq, 0, 18, 1, paramTroopFileStatusInfo.jdField_c_of_type_JavaLangString, false);
       return;
     }
-    catch (JSONException paramTroopFileStatusInfo)
+    if (paramTroopFileStatusInfo.j != 0)
     {
-      for (;;)
+      try
+      {
+        localObject2 = new JSONObject();
+        ((JSONObject)localObject2).put("errorType", "thumb_download");
+        ((JSONObject)localObject2).put("errorCode", paramTroopFileStatusInfo.j);
+        paramTroopFileStatusInfo = ((JSONObject)localObject2).toString();
+      }
+      catch (JSONException paramTroopFileStatusInfo)
       {
         paramTroopFileStatusInfo.printStackTrace();
-        paramTroopFileStatusInfo = (TroopFileStatusInfo)localObject1;
+        paramTroopFileStatusInfo = str;
       }
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack.a(paramMessageForTroopFile.uniseq, 0, 18, 2, paramTroopFileStatusInfo, false);
     }
   }
   
   private void b(TroopFileStatusInfo paramTroopFileStatusInfo, MessageForTroopFile paramMessageForTroopFile)
   {
-    if (AIOImageProviderService.a(this.a, paramMessageForTroopFile)) {
+    if (AIOImageProviderService.a(this.a, paramMessageForTroopFile))
+    {
       if ((paramTroopFileStatusInfo.b == 8) && (paramTroopFileStatusInfo.jdField_c_of_type_Long > 0L))
       {
         int i = (int)((float)paramTroopFileStatusInfo.jdField_d_of_type_Long / (float)paramTroopFileStatusInfo.jdField_c_of_type_Long * 10000.0F);
         this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack.a(paramMessageForTroopFile.uniseq, 0, 1, i, paramTroopFileStatusInfo.jdField_c_of_type_Long, true);
+        return;
+      }
+      if (paramTroopFileStatusInfo.b == 11)
+      {
+        if (this.a.jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(paramMessageForTroopFile.uniseq)))
+        {
+          Context localContext = BaseApplicationImpl.sApplication.getBaseContext();
+          if (localContext != null) {
+            FileManagerUtil.a(localContext, paramTroopFileStatusInfo.a);
+          } else {
+            QLog.i("AIOImageProviderService<QFile>", 1, "AIO gallery service error, get context is null [troop file save album].");
+          }
+          this.a.jdField_a_of_type_JavaUtilArrayList.remove(Long.valueOf(paramMessageForTroopFile.uniseq));
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack.a(paramMessageForTroopFile.uniseq, 1, 269484034, 1, paramTroopFileStatusInfo.a, false);
+        return;
+      }
+      if ((paramTroopFileStatusInfo.b == 12) || (paramTroopFileStatusInfo.b == 10)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack.a(paramMessageForTroopFile.uniseq, 0, 269484034, 2, paramTroopFileStatusInfo.a, false);
       }
     }
-    label165:
-    do
+    else
     {
-      do
+      if (paramMessageForTroopFile.isPause)
       {
-        do
+        if (QLog.isDevelopLevel())
         {
-          return;
-          if (paramTroopFileStatusInfo.b == 11)
-          {
-            if (this.a.jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(paramMessageForTroopFile.uniseq)))
-            {
-              Context localContext = BaseApplicationImpl.sApplication.getBaseContext();
-              if (localContext == null) {
-                break label165;
-              }
-              FileManagerUtil.a(localContext, paramTroopFileStatusInfo.a);
-            }
-            for (;;)
-            {
-              this.a.jdField_a_of_type_JavaUtilArrayList.remove(Long.valueOf(paramMessageForTroopFile.uniseq));
-              this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack.a(paramMessageForTroopFile.uniseq, 1, 269484034, 1, paramTroopFileStatusInfo.a, false);
-              return;
-              QLog.i("AIOImageProviderService<QFile>", 1, "AIO gallery service error, get context is null [troop file save album].");
-            }
-          }
-        } while ((paramTroopFileStatusInfo.b != 12) && (paramTroopFileStatusInfo.b != 10));
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack.a(paramMessageForTroopFile.uniseq, 0, 269484034, 2, paramTroopFileStatusInfo.a, false);
-        return;
-        if (!paramMessageForTroopFile.isPause) {
-          break;
+          paramMessageForTroopFile = new StringBuilder();
+          paramMessageForTroopFile.append("troopFilemsg Pauseed, return! current Status:");
+          paramMessageForTroopFile.append(paramTroopFileStatusInfo.b);
+          QLog.i("TroopStatusDebug", 1, paramMessageForTroopFile.toString());
         }
-      } while (!QLog.isDevelopLevel());
-      QLog.i("TroopStatusDebug", 1, "troopFilemsg Pauseed, return! current Status:" + paramTroopFileStatusInfo.b);
-      return;
+        return;
+      }
       if ((paramTroopFileStatusInfo.b == 8) && (paramTroopFileStatusInfo.jdField_c_of_type_Long > 0L))
       {
         this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack.a(paramMessageForTroopFile.uniseq, 0, 20, (int)(paramTroopFileStatusInfo.jdField_d_of_type_Long * 10000L / paramTroopFileStatusInfo.jdField_c_of_type_Long), paramMessageForTroopFile.fileSize, true);
@@ -127,39 +117,52 @@ class AIOImageProviderService$TroopFileObserver
         this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack.a(paramMessageForTroopFile.uniseq, 0, 20, 1, paramTroopFileStatusInfo.a, false);
         return;
       }
-    } while ((paramTroopFileStatusInfo.b != 12) && (paramTroopFileStatusInfo.b != 10));
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack.a(paramMessageForTroopFile.uniseq, 0, 20, 2, "TroopFileError", false);
+      if ((paramTroopFileStatusInfo.b == 12) || (paramTroopFileStatusInfo.b == 10)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack.a(paramMessageForTroopFile.uniseq, 0, 20, 2, "TroopFileError", false);
+      }
+    }
   }
   
-  public void onTroopFileStatusUpdate(Object paramObject)
+  protected void a(Object paramObject)
   {
     TroopFileStatusInfo localTroopFileStatusInfo = (TroopFileStatusInfo)paramObject;
-    paramObject = null;
     if (localTroopFileStatusInfo != null) {
       paramObject = AIOImageProviderService.a(this.a, localTroopFileStatusInfo.e);
+    } else {
+      paramObject = null;
     }
-    if ((localTroopFileStatusInfo == null) || (paramObject == null))
+    if ((localTroopFileStatusInfo != null) && (paramObject != null))
     {
-      QLog.i("AIOImageProviderService", 2, "onTroopFileStatusUpdate: error, info[" + localTroopFileStatusInfo + "] troopFileMsg[" + paramObject + "]");
+      if (!paramObject.url.equals(localTroopFileStatusInfo.e))
+      {
+        paramObject = new StringBuilder();
+        paramObject.append("OnFileTransferProgress: error, file info not match message. fileId[");
+        paramObject.append(localTroopFileStatusInfo.e);
+        paramObject.append("]");
+        QLog.i("AIOImageProviderService", 2, paramObject.toString());
+        return;
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack == null)
+      {
+        QLog.i("AIOImageProviderService", 2, "OnFileTransferProgress: error, callback is null.");
+        return;
+      }
+      a(localTroopFileStatusInfo, paramObject);
+      b(localTroopFileStatusInfo, paramObject);
       return;
     }
-    if (!paramObject.url.equals(localTroopFileStatusInfo.e))
-    {
-      QLog.i("AIOImageProviderService", 2, "OnFileTransferProgress: error, file info not match message. fileId[" + localTroopFileStatusInfo.e + "]");
-      return;
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack == null)
-    {
-      QLog.i("AIOImageProviderService", 2, "OnFileTransferProgress: error, callback is null.");
-      return;
-    }
-    a(localTroopFileStatusInfo, paramObject);
-    b(localTroopFileStatusInfo, paramObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onTroopFileStatusUpdate: error, info[");
+    localStringBuilder.append(localTroopFileStatusInfo);
+    localStringBuilder.append("] troopFileMsg[");
+    localStringBuilder.append(paramObject);
+    localStringBuilder.append("]");
+    QLog.i("AIOImageProviderService", 2, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService.TroopFileObserver
  * JD-Core Version:    0.7.0.1
  */

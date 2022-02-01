@@ -12,95 +12,104 @@ public class MavJniUtil
     if (paramArrayOfByte == null) {
       return null;
     }
-    if ((paramArrayOfByte.length != paramInt) || (paramArrayOfByte.length < 16)) {
-      return null;
-    }
-    byte[] arrayOfByte = new byte[8];
-    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, 8);
-    long l = getLongFromByte(arrayOfByte);
-    arrayOfByte = new byte[4];
-    System.arraycopy(paramArrayOfByte, 8, arrayOfByte, 0, 4);
-    int i = getIntFromByte(arrayOfByte);
-    arrayOfByte = new byte[4];
-    System.arraycopy(paramArrayOfByte, 12, arrayOfByte, 0, 4);
-    int j = getIntFromByte(arrayOfByte);
-    paramInt = 2;
-    if (paramArrayOfByte.length > 16)
+    if (paramArrayOfByte.length == paramInt)
     {
-      arrayOfByte = new byte[1];
-      System.arraycopy(paramArrayOfByte, 16, arrayOfByte, 0, 1);
-      paramInt = arrayOfByte[0];
-    }
-    for (;;)
-    {
+      if (paramArrayOfByte.length < 16) {
+        return null;
+      }
+      Object localObject = new byte[8];
+      System.arraycopy(paramArrayOfByte, 0, localObject, 0, 8);
+      long l = getLongFromByte((byte[])localObject);
+      localObject = new byte[4];
+      System.arraycopy(paramArrayOfByte, 8, localObject, 0, 4);
+      int i = getIntFromByte((byte[])localObject);
+      localObject = new byte[4];
+      System.arraycopy(paramArrayOfByte, 12, localObject, 0, 4);
+      int j = getIntFromByte((byte[])localObject);
+      paramInt = 2;
+      if (paramArrayOfByte.length > 16)
+      {
+        localObject = new byte[1];
+        System.arraycopy(paramArrayOfByte, 16, localObject, 0, 1);
+        paramInt = localObject[0];
+      }
+      else
+      {
+        AVCoreLog.e("MavJniUtil", "getAVInfoFromByte", new Throwable("打印调用栈"));
+      }
       paramArrayOfByte = new AVUserInfo();
       paramArrayOfByte.account = l;
       paramArrayOfByte.accountType = i;
       paramArrayOfByte.pstnStatus = j;
       paramArrayOfByte.micAuthByAdmin = paramInt;
-      if (AVCoreLog.isColorLevel()) {
-        AVCoreLog.d("MavJniUtil", "AVUserInfo-->Uin = " + l + " ,isPstn = " + i + " ,pstnState = " + j + " ,micOffByAdmin = " + paramInt);
+      if (AVCoreLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("AVUserInfo-->Uin = ");
+        ((StringBuilder)localObject).append(l);
+        ((StringBuilder)localObject).append(" ,isPstn = ");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(" ,pstnState = ");
+        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(" ,micOffByAdmin = ");
+        ((StringBuilder)localObject).append(paramInt);
+        AVCoreLog.d("MavJniUtil", ((StringBuilder)localObject).toString());
       }
       return paramArrayOfByte;
-      AVCoreLog.e("MavJniUtil", "getAVInfoFromByte", new Throwable("打印调用栈"));
     }
+    return null;
   }
   
   public static ArrayList<AVUserInfo> getAVInfoListFromByte(byte[] paramArrayOfByte, int paramInt)
   {
-    if (paramArrayOfByte == null) {
+    if (paramArrayOfByte == null)
+    {
       if (AVCoreLog.isColorLevel()) {
         AVCoreLog.i("MavJniUtil", "getAVInfoListFromByte--> buf is null");
       }
-    }
-    int i;
-    ArrayList localArrayList;
-    Object localObject;
-    do
-    {
-      do
-      {
-        do
-        {
-          return null;
-          if (paramInt != 0) {
-            break;
-          }
-        } while (!AVCoreLog.isColorLevel());
-        AVCoreLog.i("MavJniUtil", "getAVInfoListFromByte--> structLen is 0");
-        return null;
-        i = paramArrayOfByte.length;
-        if (i % paramInt == 0) {
-          break;
-        }
-      } while (!AVCoreLog.isColorLevel());
-      AVCoreLog.i("MavJniUtil", "getAVInfoListFromByte--> buf len is incorrect");
       return null;
-      int j = i / paramInt;
-      localArrayList = new ArrayList();
-      i = 0;
-      if (i >= j) {
-        break label162;
+    }
+    if (paramInt == 0)
+    {
+      if (AVCoreLog.isColorLevel()) {
+        AVCoreLog.i("MavJniUtil", "getAVInfoListFromByte--> structLen is 0");
       }
-      localObject = new byte[paramInt];
+      return null;
+    }
+    int i = paramArrayOfByte.length;
+    if (i % paramInt != 0)
+    {
+      if (AVCoreLog.isColorLevel()) {
+        AVCoreLog.i("MavJniUtil", "getAVInfoListFromByte--> buf len is incorrect");
+      }
+      return null;
+    }
+    int j = i / paramInt;
+    ArrayList localArrayList = new ArrayList();
+    i = 0;
+    while (i < j)
+    {
+      Object localObject = new byte[paramInt];
       System.arraycopy(paramArrayOfByte, i * paramInt, localObject, 0, paramInt);
       localObject = getAVInfoFromByte((byte[])localObject, paramInt);
-      if (localObject != null) {
-        break;
+      if (localObject == null)
+      {
+        if (AVCoreLog.isColorLevel()) {
+          AVCoreLog.i("MavJniUtil", "Can not get AVUserInfo...Error");
+        }
+        return null;
       }
-    } while (!AVCoreLog.isColorLevel());
-    AVCoreLog.i("MavJniUtil", "Can not get AVUserInfo...Error");
-    return null;
-    if ((((AVUserInfo)localObject).accountType == 1) && (((AVUserInfo)localObject).pstnStatus != 3)) {}
-    for (;;)
-    {
+      if ((((AVUserInfo)localObject).accountType != 1) || (((AVUserInfo)localObject).pstnStatus == 3)) {
+        localArrayList.add(localObject);
+      }
       i += 1;
-      break;
-      localArrayList.add(localObject);
     }
-    label162:
-    if (AVCoreLog.isColorLevel()) {
-      AVCoreLog.d("MavJniUtil", "getAVInfoListFromByte --> length = " + localArrayList.size());
+    if (AVCoreLog.isColorLevel())
+    {
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("getAVInfoListFromByte --> length = ");
+      paramArrayOfByte.append(localArrayList.size());
+      AVCoreLog.d("MavJniUtil", paramArrayOfByte.toString());
     }
     return localArrayList;
   }
@@ -111,7 +120,8 @@ public class MavJniUtil
     int j = 0;
     while (i < 4)
     {
-      j |= (paramArrayOfByte[(3 - i)] & 0xFF) << (3 - i) * 4;
+      int k = 3 - i;
+      j |= (paramArrayOfByte[k] & 0xFF) << k * 4;
       i += 1;
     }
     return j;
@@ -123,7 +133,8 @@ public class MavJniUtil
     int i = 0;
     while (i < 8)
     {
-      l |= (paramArrayOfByte[(7 - i)] & 0xFF) << (7 - i) * 8;
+      int j = 7 - i;
+      l |= (paramArrayOfByte[j] & 0xFF) << j * 8;
       i += 1;
     }
     return l;
@@ -131,48 +142,43 @@ public class MavJniUtil
   
   public static long[] getUinListFromBuf(byte[] paramArrayOfByte)
   {
-    long[] arrayOfLong2 = null;
-    long[] arrayOfLong1 = arrayOfLong2;
+    Object localObject = null;
     if (paramArrayOfByte != null)
     {
-      if (paramArrayOfByte.length >= 8) {
-        break label25;
+      if (paramArrayOfByte.length < 8) {
+        return null;
       }
-      arrayOfLong1 = arrayOfLong2;
-    }
-    label25:
-    int i;
-    do
-    {
-      return arrayOfLong1;
-      i = paramArrayOfByte.length;
-      arrayOfLong1 = arrayOfLong2;
-    } while (i % 8 != 0);
-    arrayOfLong2 = new long[i / 8];
-    byte[] arrayOfByte = new byte[8];
-    int j = 0;
-    for (;;)
-    {
-      arrayOfLong1 = arrayOfLong2;
-      if (i < 8) {
-        break;
+      int i = paramArrayOfByte.length;
+      if (i % 8 != 0) {
+        return null;
       }
-      System.arraycopy(paramArrayOfByte, j, arrayOfByte, 0, 8);
-      long l = getLongFromByte(arrayOfByte);
-      if (l == 0L)
+      long[] arrayOfLong = new long[i / 8];
+      byte[] arrayOfByte = new byte[8];
+      int j = 0;
+      for (;;)
       {
-        AVCoreLog.e("MavJniUtil", "getUinListFromBuf-->get the wrong uin==0");
-        return arrayOfLong2;
+        localObject = arrayOfLong;
+        if (i < 8) {
+          break;
+        }
+        System.arraycopy(paramArrayOfByte, j, arrayOfByte, 0, 8);
+        long l = getLongFromByte(arrayOfByte);
+        if (l == 0L)
+        {
+          AVCoreLog.e("MavJniUtil", "getUinListFromBuf-->get the wrong uin==0");
+          return arrayOfLong;
+        }
+        arrayOfLong[(j / 8)] = l;
+        j += 8;
+        i -= 8;
       }
-      arrayOfLong2[(j / 8)] = l;
-      j += 8;
-      i -= 8;
     }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avcore.util.MavJniUtil
  * JD-Core Version:    0.7.0.1
  */

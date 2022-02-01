@@ -23,11 +23,15 @@ public class PathTraceService$UpdateRunDataBroadCastReceiver
     long l = paramIntent.getLongExtra(PathTraceService.c, 0L);
     double d = paramIntent.getDoubleExtra(PathTraceService.d, 0.0D);
     if (i == 1) {
-      PathTraceService.a(this.a).setTextViewText(2131372416, HardCodeUtil.a(2131707888));
+      PathTraceService.a(this.a).setTextViewText(2131371998, HardCodeUtil.a(2131707911));
     }
-    PathTraceService.a(this.a).setChronometer(2131372417, SystemClock.elapsedRealtime() - l * 1000L, null, false);
+    PathTraceService.a(this.a).setChronometer(2131371999, SystemClock.elapsedRealtime() - l * 1000L, null, false);
     paramContext = new DecimalFormat("######0.00");
-    PathTraceService.a(this.a).setTextViewText(2131372415, paramContext.format(d / 1000.0D) + "km");
+    paramIntent = PathTraceService.a(this.a);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.format(d / 1000.0D));
+    localStringBuilder.append("km");
+    paramIntent.setTextViewText(2131371997, localStringBuilder.toString());
     try
     {
       PathTraceService.a(this.a, PathTraceService.a(this.a).build());
@@ -36,13 +40,15 @@ public class PathTraceService$UpdateRunDataBroadCastReceiver
     }
     catch (Throwable paramContext)
     {
-      QLog.e("PathTraceManager.Service", 1, "[update] err in notify");
+      label186:
+      break label186;
     }
+    QLog.e("PathTraceManager.Service", 1, "[update] err in notify");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.PathTraceService.UpdateRunDataBroadCastReceiver
  * JD-Core Version:    0.7.0.1
  */

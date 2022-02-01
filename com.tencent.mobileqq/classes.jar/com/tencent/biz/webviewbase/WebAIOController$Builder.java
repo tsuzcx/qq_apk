@@ -12,8 +12,9 @@ public class WebAIOController$Builder
   {
     if (paramView != null)
     {
-      this.a.jdField_a_of_type_AndroidViewView = paramView;
-      this.a.jdField_a_of_type_AndroidContentContext = paramView.getContext();
+      WebAIOController localWebAIOController = this.a;
+      localWebAIOController.jdField_a_of_type_AndroidViewView = paramView;
+      localWebAIOController.jdField_a_of_type_AndroidContentContext = paramView.getContext();
     }
   }
   
@@ -23,7 +24,7 @@ public class WebAIOController$Builder
     Object localObject = this.a;
     int i = j;
     if (j == 0) {
-      i = 2130851320;
+      i = 2130851230;
     }
     ((WebAIOController)localObject).jdField_a_of_type_Int = i;
     j = paramBundle.getInt("banner_icon_res");
@@ -81,7 +82,7 @@ public class WebAIOController$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewbase.WebAIOController.Builder
  * JD-Core Version:    0.7.0.1
  */

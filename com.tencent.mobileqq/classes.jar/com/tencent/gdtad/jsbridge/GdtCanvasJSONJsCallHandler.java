@@ -3,7 +3,7 @@ package com.tencent.gdtad.jsbridge;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.ad.tangram.statistics.AdAnalysisHelperForUtil;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.json.GdtJsonPbUtil;
 import com.tencent.gdtad.log.GdtLog;
@@ -16,8 +16,7 @@ public final class GdtCanvasJSONJsCallHandler
 {
   private static GdtAd a(Intent paramIntent)
   {
-    if (paramIntent == null) {}
-    while (!paramIntent.hasExtra("gdt_ad")) {
+    if ((paramIntent == null) || (!paramIntent.hasExtra("gdt_ad"))) {
       return null;
     }
     return (GdtAd)paramIntent.getParcelableExtra("gdt_ad");
@@ -26,90 +25,92 @@ public final class GdtCanvasJSONJsCallHandler
   private static JSONObject a(GdtAd paramGdtAd)
   {
     JSONObject localJSONObject = new JSONObject();
-    if (paramGdtAd != null) {}
-    for (;;)
-    {
+    if (paramGdtAd != null) {
       try
       {
-        boolean bool = paramGdtAd.isValid();
-        if (bool) {
-          continue;
+        if (paramGdtAd.isValid())
+        {
+          Object localObject = GdtJsonPbUtil.a(paramGdtAd.info);
+          if ((localObject != null) && (!JSONObject.NULL.equals(localObject))) {
+            localJSONObject.put("adInfo", localObject.toString());
+          }
+          paramGdtAd = paramGdtAd.getCanvasForXiJingOffline();
+          if (!TextUtils.isEmpty(paramGdtAd)) {
+            localJSONObject.put("canvasJson", paramGdtAd);
+          }
         }
       }
       catch (Throwable paramGdtAd)
       {
-        Object localObject;
         GdtLog.d("GdtCanvasJSONJsCallHandler", "handleJsCallRequest error", paramGdtAd);
-        continue;
-      }
-      if (localJSONObject.length() <= 0) {
-        break label98;
-      }
-      return localJSONObject;
-      localObject = GdtJsonPbUtil.a(paramGdtAd.info);
-      if ((localObject != null) && (!JSONObject.NULL.equals(localObject))) {
-        localJSONObject.put("adInfo", localObject.toString());
-      }
-      paramGdtAd = paramGdtAd.getCanvasForXiJingOffline();
-      if (!TextUtils.isEmpty(paramGdtAd)) {
-        localJSONObject.put("canvasJson", paramGdtAd);
       }
     }
-    label98:
+    if (localJSONObject.length() > 0) {
+      return localJSONObject;
+    }
     return null;
   }
   
   private static GdtAd b(Intent paramIntent)
   {
-    if (paramIntent == null) {}
-    do
+    if ((paramIntent != null) && (paramIntent.hasExtra("data")))
     {
-      do
+      paramIntent = paramIntent.getSerializableExtra("data");
+      if ((paramIntent != null) && ((paramIntent instanceof GdtVideoCeilingData)))
       {
-        do
-        {
-          return null;
-        } while (!paramIntent.hasExtra("data"));
-        paramIntent = paramIntent.getSerializableExtra("data");
-      } while ((paramIntent == null) || (!(paramIntent instanceof GdtVideoCeilingData)));
-      paramIntent = (GdtVideoCeilingData)GdtVideoCeilingData.class.cast(paramIntent);
-    } while (paramIntent == null);
+        paramIntent = (GdtVideoCeilingData)GdtVideoCeilingData.class.cast(paramIntent);
+        if (paramIntent != null) {
+          break label59;
+        }
+      }
+    }
+    return null;
+    label59:
     return paramIntent.getAd();
   }
   
   private static GdtAd c(Intent paramIntent)
   {
-    if (paramIntent == null) {}
-    do
+    if ((paramIntent != null) && (paramIntent.hasExtra("data")))
     {
-      do
+      paramIntent = paramIntent.getSerializableExtra("data");
+      if ((paramIntent != null) && ((paramIntent instanceof GdtImaxData)))
       {
-        do
-        {
-          return null;
-        } while (!paramIntent.hasExtra("data"));
-        paramIntent = paramIntent.getSerializableExtra("data");
-      } while ((paramIntent == null) || (!(paramIntent instanceof GdtImaxData)));
-      paramIntent = (GdtImaxData)GdtImaxData.class.cast(paramIntent);
-    } while (paramIntent == null);
+        paramIntent = (GdtImaxData)GdtImaxData.class.cast(paramIntent);
+        if (paramIntent != null) {
+          break label59;
+        }
+      }
+    }
+    return null;
+    label59:
     return paramIntent.getAd();
   }
   
   public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
   {
-    Object localObject2 = null;
     long l1 = System.currentTimeMillis();
-    if (paramGdtAdWebPlugin != null) {}
-    for (Activity localActivity = paramGdtAdWebPlugin.a(); (paramGdtAdWebPlugin == null) || (localActivity == null); localActivity = null)
-    {
-      GdtLog.d("GdtCanvasJSONJsCallHandler", "handleJsCallRequest error");
-      return true;
+    Object localObject2 = null;
+    Activity localActivity;
+    if (paramGdtAdWebPlugin != null) {
+      localActivity = paramGdtAdWebPlugin.a();
+    } else {
+      localActivity = null;
     }
-    GdtAd localGdtAd = a(localActivity.getIntent());
-    paramVarArgs = a(localGdtAd);
-    if ((paramVarArgs != null) && (!JSONObject.NULL.equals(paramVarArgs)) && (paramVarArgs.length() > 0)) {}
-    for (;;)
+    if ((paramGdtAdWebPlugin != null) && (localActivity != null))
     {
+      GdtAd localGdtAd = a(localActivity.getIntent());
+      paramVarArgs = a(localGdtAd);
+      if ((paramVarArgs == null) || (JSONObject.NULL.equals(paramVarArgs)) || (paramVarArgs.length() <= 0))
+      {
+        do
+        {
+          localGdtAd = b(localActivity.getIntent());
+          paramVarArgs = a(localGdtAd);
+        } while ((paramVarArgs != null) && (!JSONObject.NULL.equals(paramVarArgs)) && (paramVarArgs.length() > 0));
+        localGdtAd = c(localActivity.getIntent());
+        paramVarArgs = a(localGdtAd);
+      }
       Object localObject1;
       if (paramVarArgs != null)
       {
@@ -124,38 +125,26 @@ public final class GdtCanvasJSONJsCallHandler
       try
       {
         paramGdtAdWebPlugin.callJs(paramString, new String[] { ((JSONObject)localObject1).toString() });
-        long l2 = System.currentTimeMillis();
-        paramString = localObject2;
-        if (paramGdtAdWebPlugin != null) {
-          paramString = paramGdtAdWebPlugin.a();
-        }
-        AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, false, "getCanvasJson", paramString, localGdtAd, l2 - l1);
-        return true;
-        localGdtAd = b(localActivity.getIntent());
-        localObject1 = a(localGdtAd);
-        if ((localObject1 != null) && (!JSONObject.NULL.equals(localObject1)))
-        {
-          paramVarArgs = (String[])localObject1;
-          if (((JSONObject)localObject1).length() > 0) {
-            continue;
-          }
-        }
-        localGdtAd = c(localActivity.getIntent());
-        paramVarArgs = a(localGdtAd);
       }
       catch (Throwable paramString)
       {
-        for (;;)
-        {
-          GdtLog.d("GdtCanvasJSONJsCallHandler", "handleJsCallRequest error", paramString);
-        }
+        GdtLog.d("GdtCanvasJSONJsCallHandler", "handleJsCallRequest error", paramString);
       }
+      long l2 = System.currentTimeMillis();
+      paramString = localObject2;
+      if (paramGdtAdWebPlugin != null) {
+        paramString = paramGdtAdWebPlugin.a();
+      }
+      AdAnalysisHelperForUtil.reportForJSBridgeInvoked(localActivity, false, "getCanvasJson", paramString, localGdtAd, l2 - l1);
+      return true;
     }
+    GdtLog.d("GdtCanvasJSONJsCallHandler", "handleJsCallRequest error");
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtCanvasJSONJsCallHandler
  * JD-Core Version:    0.7.0.1
  */

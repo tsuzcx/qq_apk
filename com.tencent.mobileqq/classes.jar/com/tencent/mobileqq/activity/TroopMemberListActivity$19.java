@@ -13,16 +13,16 @@ class TroopMemberListActivity$19
   {
     if (paramMotionEvent.getAction() == 1)
     {
-      this.a.j();
-      paramView = this.a.n;
-      this.a.a("Clk_find", paramView, "");
+      this.a.clickSearchBar();
+      paramView = this.a.mMyTroopRole;
+      this.a.doReport("Clk_find", paramView, "");
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.19
  * JD-Core Version:    0.7.0.1
  */

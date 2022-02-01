@@ -33,13 +33,34 @@ class AdvertisementStatistics$Report
     HashMap localHashMap = new HashMap();
     localHashMap.put("adid", this.jdField_b_of_type_JavaLangString);
     localHashMap.put("vid", this.jdField_c_of_type_JavaLangString);
-    localHashMap.put("webPreloaded", "" + this.jdField_a_of_type_Int);
-    localHashMap.put("videoPreloaded", "" + this.jdField_b_of_type_Int);
-    localHashMap.put("webProStartCost", "" + this.jdField_b_of_type_Long);
-    localHashMap.put("webActStartCost", "" + this.jdField_a_of_type_Long);
-    localHashMap.put("actDisplayCost", "" + this.jdField_c_of_type_Long);
-    localHashMap.put("videoDisplayCost", "" + this.d);
-    localHashMap.put("isFirst", "" + this.jdField_a_of_type_Boolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localHashMap.put("webPreloaded", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localHashMap.put("videoPreloaded", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localHashMap.put("webProStartCost", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localHashMap.put("webActStartCost", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localHashMap.put("actDisplayCost", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(this.d);
+    localHashMap.put("videoDisplayCost", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localHashMap.put("isFirst", localStringBuilder.toString());
     return localHashMap;
   }
   
@@ -58,14 +79,54 @@ class AdvertisementStatistics$Report
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[name:" + this.jdField_a_of_type_JavaLangString).append(" adid:" + this.jdField_b_of_type_JavaLangString).append(" vid:" + this.jdField_c_of_type_JavaLangString).append(" webPreloaded:" + this.jdField_a_of_type_Int).append(" videoPreloaded:" + this.jdField_b_of_type_Int).append(" webProStartCost:" + this.jdField_b_of_type_Long).append(" webActStartCost:" + this.jdField_a_of_type_Long).append(" actDisplayCost:" + this.jdField_c_of_type_Long).append(" videoDisplayCost:" + this.d).append(" isFirst:" + this.jdField_a_of_type_Boolean + "]");
-    return localStringBuilder.toString();
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("[name:");
+    localStringBuilder2.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" adid:");
+    localStringBuilder2.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" vid:");
+    localStringBuilder2.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" webPreloaded:");
+    localStringBuilder2.append(this.jdField_a_of_type_Int);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" videoPreloaded:");
+    localStringBuilder2.append(this.jdField_b_of_type_Int);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" webProStartCost:");
+    localStringBuilder2.append(this.jdField_b_of_type_Long);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" webActStartCost:");
+    localStringBuilder2.append(this.jdField_a_of_type_Long);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" actDisplayCost:");
+    localStringBuilder2.append(this.jdField_c_of_type_Long);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" videoDisplayCost:");
+    localStringBuilder2.append(this.d);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" isFirst:");
+    localStringBuilder2.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder2.append("]");
+    localStringBuilder1.append(localStringBuilder2.toString());
+    return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementStatistics.Report
  * JD-Core Version:    0.7.0.1
  */

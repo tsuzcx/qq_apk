@@ -39,12 +39,20 @@ public class ProteusInnerData$InnerFormItem
   
   public String toString()
   {
-    return "InnerFormItem[" + this.jdField_a_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.b + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("InnerFormItem[");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusInnerData.InnerFormItem
  * JD-Core Version:    0.7.0.1
  */

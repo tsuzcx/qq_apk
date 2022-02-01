@@ -1,5 +1,6 @@
 package com.tencent.mtt.hippy.modules;
 
+import com.tencent.mtt.hippy.utils.LogUtils;
 import com.tencent.mtt.supportui.utils.struct.Pools.SynchronizedPool;
 
 class HippyModuleANRMonitor$MonitorMessage
@@ -35,12 +36,18 @@ class HippyModuleANRMonitor$MonitorMessage
       INSTANCE_POOL.release(this);
       return;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDispose: ");
+      localStringBuilder.append(localThrowable.getMessage());
+      LogUtils.d("MonitorMessage", localStringBuilder.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.HippyModuleANRMonitor.MonitorMessage
  * JD-Core Version:    0.7.0.1
  */

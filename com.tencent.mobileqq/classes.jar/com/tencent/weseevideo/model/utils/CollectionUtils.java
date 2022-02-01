@@ -13,24 +13,27 @@ public class CollectionUtils
   
   public static <T> void add(Collection<T> paramCollection, T paramT)
   {
-    if ((paramCollection == null) || (paramT == null)) {
-      return;
+    if (paramCollection != null)
+    {
+      if (paramT == null) {
+        return;
+      }
+      paramCollection.add(paramT);
     }
-    paramCollection.add(paramT);
   }
   
   @Nullable
   public static <T> List<T> checkListType(List paramList, Class<T> paramClass)
   {
-    Object localObject;
-    if ((paramList == null) || (paramList.isEmpty())) {
-      localObject = null;
-    }
-    do
+    if (paramList != null)
     {
-      return localObject;
-      localObject = paramList;
-    } while (paramClass.isAssignableFrom(paramList.get(0).getClass()));
+      if (paramList.isEmpty()) {
+        return null;
+      }
+      if (paramClass.isAssignableFrom(paramList.get(0).getClass())) {
+        return paramList;
+      }
+    }
     return null;
   }
   
@@ -45,12 +48,10 @@ public class CollectionUtils
   
   public static <T> int findPosition(List<T> paramList, CollectionUtils.ElementCompare paramElementCompare)
   {
-    int j;
     if (paramList == null)
     {
       Logger.d("CollectionUtils", "findPosition() list == null.");
-      j = -1;
-      return j;
+      return -1;
     }
     if (paramElementCompare == null)
     {
@@ -58,18 +59,13 @@ public class CollectionUtils
       return -1;
     }
     int i = 0;
-    for (;;)
+    while (i < paramList.size())
     {
-      if (i >= paramList.size()) {
-        break label65;
-      }
-      j = i;
       if (paramElementCompare.compared(paramList.get(i))) {
-        break;
+        return i;
       }
       i += 1;
     }
-    label65:
     return -1;
   }
   
@@ -110,10 +106,13 @@ public class CollectionUtils
   
   public static <T> void remove(Collection<T> paramCollection, T paramT)
   {
-    if ((paramCollection == null) || (paramT == null)) {
-      return;
+    if (paramCollection != null)
+    {
+      if (paramT == null) {
+        return;
+      }
+      paramCollection.remove(paramT);
     }
-    paramCollection.remove(paramT);
   }
   
   public static int size(Collection paramCollection)
@@ -126,7 +125,7 @@ public class CollectionUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.utils.CollectionUtils
  * JD-Core Version:    0.7.0.1
  */

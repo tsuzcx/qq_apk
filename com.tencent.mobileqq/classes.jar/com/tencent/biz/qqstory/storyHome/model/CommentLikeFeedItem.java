@@ -28,79 +28,72 @@ public abstract class CommentLikeFeedItem<T extends StoryHomeFeed, E extends IFe
   
   public static int getCommentLikeType(QQUserUIItem paramQQUserUIItem)
   {
-    if (paramQQUserUIItem == null) {}
-    boolean bool1;
-    boolean bool2;
-    do
-    {
+    if (paramQQUserUIItem == null) {
       return 1;
-      bool1 = paramQQUserUIItem.isVipButNoFriend();
-      bool2 = paramQQUserUIItem.isSubscribeButNoFriend();
-      if (paramQQUserUIItem.isMe()) {
-        return 0;
+    }
+    boolean bool1 = paramQQUserUIItem.isVipButNoFriend();
+    boolean bool2 = paramQQUserUIItem.isSubscribeButNoFriend();
+    if (paramQQUserUIItem.isMe()) {
+      return 0;
+    }
+    if (!bool1)
+    {
+      if (bool2) {
+        return 1;
       }
-    } while ((bool1) || (bool2));
-    return 0;
+      return 0;
+    }
+    return 1;
   }
   
   public void convertFromFeedFeature(FeedFeatureItem paramFeedFeatureItem)
   {
-    int j = 1;
-    this.feedId = paramFeedFeatureItem.jdField_a_of_type_JavaLangString;
-    this.mLikeCount = paramFeedFeatureItem.jdField_a_of_type_Int;
-    this.mCommentCount = paramFeedFeatureItem.jdField_b_of_type_Int;
-    this.mViewTotalTime = paramFeedFeatureItem.c;
-    if (paramFeedFeatureItem.jdField_a_of_type_Boolean)
-    {
-      i = 1;
-      this.mDenyComment = i;
-      if (!paramFeedFeatureItem.jdField_b_of_type_Boolean) {
-        break label69;
-      }
-    }
-    label69:
-    for (int i = j;; i = 0)
-    {
-      this.mHadLike = i;
-      return;
-      i = 0;
-      break;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void copy(Object paramObject)
   {
     super.copy(paramObject);
     paramObject = (CommentLikeFeedItem)paramObject;
-    if (paramObject.mCommentCount != -1) {
-      this.mCommentCount = paramObject.mCommentCount;
+    int i = paramObject.mCommentCount;
+    if (i != -1) {
+      this.mCommentCount = i;
     }
-    if (paramObject.mFriendCommentCount != -1) {
-      this.mFriendCommentCount = paramObject.mFriendCommentCount;
+    i = paramObject.mFriendCommentCount;
+    if (i != -1) {
+      this.mFriendCommentCount = i;
     }
-    if (paramObject.mFanCommentCount != -1) {
-      this.mFanCommentCount = paramObject.mFanCommentCount;
+    i = paramObject.mFanCommentCount;
+    if (i != -1) {
+      this.mFanCommentCount = i;
     }
-    if (paramObject.mCommentIsEnd != -1) {
-      this.mCommentIsEnd = paramObject.mCommentIsEnd;
+    i = paramObject.mCommentIsEnd;
+    if (i != -1) {
+      this.mCommentIsEnd = i;
     }
-    if (paramObject.mDenyComment != -1) {
-      this.mDenyComment = paramObject.mDenyComment;
+    i = paramObject.mDenyComment;
+    if (i != -1) {
+      this.mDenyComment = i;
     }
-    if (paramObject.mLikeCount != -1) {
-      this.mLikeCount = paramObject.mLikeCount;
+    i = paramObject.mLikeCount;
+    if (i != -1) {
+      this.mLikeCount = i;
     }
-    if (paramObject.mFriendLikeCount != -1) {
-      this.mFriendLikeCount = paramObject.mFriendLikeCount;
+    i = paramObject.mFriendLikeCount;
+    if (i != -1) {
+      this.mFriendLikeCount = i;
     }
-    if (paramObject.mFanLikeCount != -1) {
-      this.mFanLikeCount = paramObject.mFanLikeCount;
+    i = paramObject.mFanLikeCount;
+    if (i != -1) {
+      this.mFanLikeCount = i;
     }
-    if (paramObject.mHadLike != -1) {
-      this.mHadLike = paramObject.mHadLike;
+    i = paramObject.mHadLike;
+    if (i != -1) {
+      this.mHadLike = i;
     }
-    if (paramObject.mViewTotalTime != -1L) {
-      this.mViewTotalTime = paramObject.mViewTotalTime;
+    long l = paramObject.mViewTotalTime;
+    if (l != -1L) {
+      this.mViewTotalTime = l;
     }
   }
   
@@ -149,22 +142,24 @@ public abstract class CommentLikeFeedItem<T extends StoryHomeFeed, E extends IFe
     localCommentLikeFeed.comment_is_end.set(this.mCommentIsEnd);
     localCommentLikeFeed.deny_comment.set(this.mDenyComment);
     PBStringField localPBStringField = localCommentLikeFeed.comment_last_cookie;
-    if (TextUtils.isEmpty(this.mCommentLastCookie)) {}
-    for (String str = "";; str = this.mCommentLastCookie)
-    {
-      localPBStringField.set(str);
-      localCommentLikeFeed.like_count.set(this.mLikeCount);
-      localCommentLikeFeed.friend_like_count.set(this.mFriendLikeCount);
-      localCommentLikeFeed.fan_like_count.set(this.mFanLikeCount);
-      localCommentLikeFeed.had_like.set(this.mHadLike);
-      localCommentLikeFeed.view_total_time.set(this.mViewTotalTime);
-      return localCommentLikeFeed;
+    String str;
+    if (TextUtils.isEmpty(this.mCommentLastCookie)) {
+      str = "";
+    } else {
+      str = this.mCommentLastCookie;
     }
+    localPBStringField.set(str);
+    localCommentLikeFeed.like_count.set(this.mLikeCount);
+    localCommentLikeFeed.friend_like_count.set(this.mFriendLikeCount);
+    localCommentLikeFeed.fan_like_count.set(this.mFanLikeCount);
+    localCommentLikeFeed.had_like.set(this.mHadLike);
+    localCommentLikeFeed.view_total_time.set(this.mViewTotalTime);
+    return localCommentLikeFeed;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem
  * JD-Core Version:    0.7.0.1
  */

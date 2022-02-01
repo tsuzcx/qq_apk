@@ -1,21 +1,30 @@
 package com.tencent.mobileqq.activity.aio.voicetextpanel.ui;
 
 import android.view.View.MeasureSpec;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseAIOContext;
+import com.tencent.mobileqq.activity.aio.panel.PanelManager;
 import com.tencent.mobileqq.activity.aio.voicetextpanel.controller.VoiceTextSttProcessController;
 import com.tencent.mobileqq.activity.aio.voicetextpanel.listeners.VoiceTextScrollerListener;
 import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.viewhelper.VoiceTextBottomViewHelper;
 import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.viewhelper.VoiceTextSlideViewHelper;
+import com.tencent.mobileqq.ptt.temp.api.IVoice2TxtTmpApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 
 public class VoiceTextPanel$VoiceTextScrollerListenerImp
   implements VoiceTextScrollerListener
 {
   public VoiceTextPanel$VoiceTextScrollerListenerImp(VoiceTextPanel paramVoiceTextPanel) {}
   
+  public int a()
+  {
+    return XPanelContainer.a;
+  }
+  
   public void a()
   {
-    VoiceTextPanel.a(this.a).ai();
+    ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).hideSoftInput(VoiceTextPanel.a(this.a));
   }
   
   public void a(int paramInt)
@@ -28,8 +37,10 @@ public class VoiceTextPanel$VoiceTextScrollerListenerImp
       return;
     }
     VoiceTextPanel.a(this.a, true);
-    this.a.measure(View.MeasureSpec.makeMeasureSpec(this.a.getRight() - this.a.getLeft(), 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt - this.a.getTop(), 1073741824));
-    this.a.layout(this.a.getLeft(), this.a.getTop(), this.a.getRight(), paramInt);
+    VoiceTextPanel localVoiceTextPanel = this.a;
+    localVoiceTextPanel.measure(View.MeasureSpec.makeMeasureSpec(localVoiceTextPanel.getRight() - this.a.getLeft(), 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt - this.a.getTop(), 1073741824));
+    localVoiceTextPanel = this.a;
+    localVoiceTextPanel.layout(localVoiceTextPanel.getLeft(), this.a.getTop(), this.a.getRight(), paramInt);
     VoiceTextPanel.a(this.a).a(this.a.getLeft(), this.a.getTop(), this.a.getRight(), this.a.getBottom(), paramInt);
   }
   
@@ -40,7 +51,7 @@ public class VoiceTextPanel$VoiceTextScrollerListenerImp
     }
     VoiceTextPanel.a(this.a).a();
     VoiceTextPanel.a(this.a).a(paramInt1, paramInt2, this.a.getHeight(), this.a.getTop());
-    VoiceTextPanel.a(this.a).ax();
+    VoiceTextPanel.a(this.a).a().a(1, true);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
@@ -64,7 +75,7 @@ public class VoiceTextPanel$VoiceTextScrollerListenerImp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel.VoiceTextScrollerListenerImp
  * JD-Core Version:    0.7.0.1
  */

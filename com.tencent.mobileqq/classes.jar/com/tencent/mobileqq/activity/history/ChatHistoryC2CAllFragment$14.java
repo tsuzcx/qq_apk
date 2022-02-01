@@ -11,48 +11,55 @@ class ChatHistoryC2CAllFragment$14
 {
   ChatHistoryC2CAllFragment$14(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public void a(long paramLong1, long paramLong2, String paramString, int paramInt)
+  protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
     if (this.a.a != null) {
       this.a.a.notifyDataSetChanged();
     }
   }
   
-  public void a(ThumbnailInfo paramThumbnailInfo)
+  protected void a(ThumbnailInfo paramThumbnailInfo)
   {
-    if ((TextUtils.isEmpty(paramThumbnailInfo.a)) || (TextUtils.isEmpty(paramThumbnailInfo.b))) {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.history.C2CAllFragment", 2, "OnThumbDownLoad error : [fileId] = " + paramThumbnailInfo.a + " [path] = " + paramThumbnailInfo.b);
+    if ((!TextUtils.isEmpty(paramThumbnailInfo.a)) && (!TextUtils.isEmpty(paramThumbnailInfo.b)))
+    {
+      if (this.a.a != null) {
+        this.a.a.notifyDataSetChanged();
       }
-    }
-    while (this.a.a == null) {
       return;
     }
-    this.a.a.notifyDataSetChanged();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("OnThumbDownLoad error : [fileId] = ");
+      localStringBuilder.append(paramThumbnailInfo.a);
+      localStringBuilder.append(" [path] = ");
+      localStringBuilder.append(paramThumbnailInfo.b);
+      QLog.i("Q.history.C2CAllFragment", 2, localStringBuilder.toString());
+    }
   }
   
-  public void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
     if (this.a.a != null) {
       this.a.a.notifyDataSetChanged();
     }
   }
   
-  public void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
     if (this.a.a != null) {
       this.a.a.notifyDataSetChanged();
     }
   }
   
-  public void b()
+  protected void b()
   {
     if (this.a.a != null) {
       this.a.a.notifyDataSetChanged();
     }
   }
   
-  public void d()
+  protected void d()
   {
     if (this.a.a != null) {
       this.a.a.notifyDataSetChanged();
@@ -61,7 +68,7 @@ class ChatHistoryC2CAllFragment$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment.14
  * JD-Core Version:    0.7.0.1
  */

@@ -5,9 +5,9 @@ import java.util.Map;
 
 public final class Qimei
 {
-  private Map<String, String> qimeiMap;
-  private String qimeiNew;
-  private String qimeiOld;
+  private String a;
+  private String b;
+  private Map<String, String> c;
   
   public Qimei()
   {
@@ -25,57 +25,75 @@ public final class Qimei
     if (paramString1 == null) {
       str = "";
     }
-    this.qimeiOld = str;
+    this.a = str;
     paramString1 = paramString2;
     if (paramString2 == null) {
       paramString1 = "";
     }
-    this.qimeiNew = paramString1;
-    this.qimeiMap = paramMap;
+    this.b = paramString1;
+    this.c = paramMap;
+  }
+  
+  void a(String paramString)
+  {
+    this.b = paramString;
+  }
+  
+  void a(Map<String, String> paramMap)
+  {
+    this.c = paramMap;
+  }
+  
+  void b(String paramString)
+  {
+    this.a = paramString;
   }
   
   public Map<String, String> getQimeiMap()
   {
-    return this.qimeiMap;
+    return this.c;
   }
   
   public String getQimeiNew()
   {
-    return this.qimeiNew;
+    return this.b;
   }
   
   public String getQimeiOld()
   {
-    return this.qimeiOld;
+    return this.a;
   }
   
-  void setQimeiMap(Map<String, String> paramMap)
+  public boolean isEmpty()
   {
-    this.qimeiMap = paramMap;
-  }
-  
-  void setQimeiNew(String paramString)
-  {
-    this.qimeiNew = paramString;
-  }
-  
-  void setQimeiOld(String paramString)
-  {
-    this.qimeiOld = paramString;
+    Map localMap = this.c;
+    return (localMap == null) || (localMap.isEmpty());
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("Qimei:").append(this.qimeiOld);
-    if (TextUtils.isEmpty(this.qimeiNew)) {}
-    for (String str = "";; str = "\nQimei3:" + this.qimeiNew) {
-      return str;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Qimei:");
+    localStringBuilder.append(this.a);
+    Object localObject;
+    if (TextUtils.isEmpty(this.b))
+    {
+      localObject = "";
     }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("\nQimei3:");
+      ((StringBuilder)localObject).append(this.b);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    localStringBuilder.append((String)localObject);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.beacon.qimei.Qimei
  * JD-Core Version:    0.7.0.1
  */

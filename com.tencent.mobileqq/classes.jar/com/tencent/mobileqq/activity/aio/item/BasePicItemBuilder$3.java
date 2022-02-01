@@ -16,43 +16,32 @@ class BasePicItemBuilder$3
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    int i = 1;
+    if (paramInt == 0)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      int i = 0;
       paramView = ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder.a.getRuntimeService(ITransFileController.class)).findProcessor(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq);
-      paramInt = i;
-      if (paramView != null)
+      if ((paramView != null) && ((paramView instanceof BaseTransProcessor)))
       {
-        paramInt = i;
-        if ((paramView instanceof BaseTransProcessor))
+        paramView = (BaseTransProcessor)paramView;
+        if ((paramView.isRawPic()) && (paramView.isPause()))
         {
-          paramView = (BaseTransProcessor)paramView;
+          ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder.a.getRuntimeService(ITransFileController.class)).getBusHelper().resumeRawSend(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq));
           paramInt = i;
-          if (paramView.isRawPic())
-          {
-            paramInt = i;
-            if (paramView.isPause())
-            {
-              paramInt = 1;
-              ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder.a.getRuntimeService(ITransFileController.class)).getBusHelper().resumeRawSend(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq));
-            }
-          }
+          break label122;
         }
       }
+      paramInt = 0;
+      label122:
       if (paramInt == 0) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder.e(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
       }
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.BasePicItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

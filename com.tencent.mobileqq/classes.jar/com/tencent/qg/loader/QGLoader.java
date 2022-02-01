@@ -29,41 +29,57 @@ public class QGLoader
     try
     {
       i = Integer.parseInt(((String)localObject).substring(0, ((String)localObject).lastIndexOf(".")));
-      try
-      {
-        QLog.d("QGLoader", 1, new Object[] { "getQGLocalVersion version success. version=", Integer.valueOf(i) });
-        return i;
-      }
-      catch (NumberFormatException localNumberFormatException1) {}
+    }
+    catch (NumberFormatException localNumberFormatException1)
+    {
+      int i;
+      label54:
+      label56:
+      break label54;
+    }
+    try
+    {
+      QLog.d("QGLoader", 1, new Object[] { "getQGLocalVersion version success. version=", Integer.valueOf(i) });
+      return i;
     }
     catch (NumberFormatException localNumberFormatException2)
     {
-      for (;;)
-      {
-        int i = 0;
-      }
+      break label56;
     }
+    i = 0;
     QLog.e("QGLoader", 1, new Object[] { "getQGLocalVersion version error. fileName=", localObject });
     return i;
   }
   
   private static File a()
   {
-    Object localObject = new File(OfflineEnvHelper.a("1018") + "1018");
-    if (!((File)localObject).isDirectory()) {}
-    do
-    {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(OfflineEnvHelper.a("1018"));
+    ((StringBuilder)localObject).append("1018");
+    localObject = new File(((StringBuilder)localObject).toString());
+    if (!((File)localObject).isDirectory()) {
       return null;
-      localObject = ((File)localObject).listFiles(new QGLoader.2());
-    } while ((localObject == null) || (localObject.length == 0));
-    return localObject[0];
+    }
+    localObject = ((File)localObject).listFiles(new QGLoader.2());
+    if (localObject != null)
+    {
+      if (localObject.length == 0) {
+        return null;
+      }
+      return localObject[0];
+    }
+    return null;
   }
   
   public static boolean a(String paramString)
   {
     boolean bool2 = b.get();
-    if (QLog.isColorLevel()) {
-      QLog.d("QGLoader", 2, new Object[] { paramString + " load so enter. soloaded=", Boolean.valueOf(bool2) });
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" load so enter. soloaded=");
+      QLog.d("QGLoader", 2, new Object[] { localStringBuilder.toString(), Boolean.valueOf(bool2) });
     }
     boolean bool1 = bool2;
     if (!bool2)
@@ -71,86 +87,71 @@ public class QGLoader
       if (QLog.isColorLevel()) {
         QLog.d("QGLoader", 2, "load offline so");
       }
-      if (a() >= 6) {
-        break label113;
+      if (a() < 6)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QGLoader", 2, new Object[] { "so version low. min version is: ", Integer.valueOf(6) });
+        }
+        return false;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("QGLoader", 2, new Object[] { "so version low. min version is: ", Integer.valueOf(6) });
-      }
-      bool1 = false;
-    }
-    label113:
-    do
-    {
-      return bool1;
       bool2 = c("1018");
       bool1 = bool2;
-    } while (!bool2);
-    b.set(true);
-    return bool2;
+      if (bool2)
+      {
+        b.set(true);
+        bool1 = bool2;
+      }
+    }
+    return bool1;
   }
   
   private static boolean b(String paramString)
   {
     paramString = new File(paramString).listFiles(new QGLoader.3());
-    boolean bool2;
-    if ((paramString == null) || (paramString.length == 0))
+    if ((paramString != null) && (paramString.length != 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QGLoader", 2, "load so files empty.");
-      }
-      bool2 = false;
-      return bool2;
-    }
-    Object localObject1 = new ArrayList();
-    int j = paramString.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i < j)
+      Object localObject1 = new ArrayList();
+      int j = paramString.length;
+      int i = 0;
+      while (i < j)
       {
         Object localObject2 = paramString[i];
         try
         {
           System.load(localObject2.getAbsolutePath());
-          i += 1;
         }
         catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
         {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("QGLoader", 1, new Object[] { "load so error=", localUnsatisfiedLinkError2.getMessage() });
-            }
-            ((ArrayList)localObject1).add(localObject2);
+          if (QLog.isColorLevel()) {
+            QLog.e("QGLoader", 1, new Object[] { "load so error=", localUnsatisfiedLinkError2.getMessage() });
           }
+          ((ArrayList)localObject1).add(localObject2);
         }
+        i += 1;
       }
-    }
-    paramString = ((ArrayList)localObject1).iterator();
-    boolean bool1 = true;
-    for (;;)
-    {
-      bool2 = bool1;
-      if (!paramString.hasNext()) {
-        break;
-      }
-      localObject1 = (File)paramString.next();
-      try
+      paramString = ((ArrayList)localObject1).iterator();
+      boolean bool = true;
+      while (paramString.hasNext())
       {
-        System.load(((File)localObject1).getAbsolutePath());
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
-      {
-        for (;;)
+        localObject1 = (File)paramString.next();
+        try
+        {
+          System.load(((File)localObject1).getAbsolutePath());
+        }
+        catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
         {
           if (QLog.isColorLevel()) {
             QLog.e("QGLoader", 1, new Object[] { "load so again error=", localUnsatisfiedLinkError1.getMessage() });
           }
-          bool1 = false;
+          bool = false;
         }
       }
+      return bool;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("QGLoader", 2, "load so files empty.");
+    }
+    return false;
   }
   
   /* Error */
@@ -164,218 +165,240 @@ public class QGLoader
     //   8: new 85	java/lang/StringBuilder
     //   11: dup
     //   12: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   15: aload_0
-    //   16: invokestatic 93	com/tencent/biz/common/offline/OfflineEnvHelper:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   19: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   22: aload_0
-    //   23: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   26: getstatic 197	java/io/File:separator	Ljava/lang/String;
-    //   29: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   32: ldc 199
-    //   34: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: getstatic 197	java/io/File:separator	Ljava/lang/String;
-    //   40: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   43: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   46: astore 4
-    //   48: invokestatic 43	com/tencent/qg/loader/QGLoader:a	()Ljava/io/File;
-    //   51: astore_0
-    //   52: aload_0
-    //   53: ifnonnull +9 -> 62
-    //   56: aload 4
-    //   58: invokestatic 201	com/tencent/qg/loader/QGLoader:b	(Ljava/lang/String;)Z
-    //   61: ireturn
-    //   62: new 152	java/util/ArrayList
-    //   65: dup
-    //   66: invokespecial 153	java/util/ArrayList:<init>	()V
-    //   69: astore 5
-    //   71: new 203	java/io/BufferedReader
-    //   74: dup
-    //   75: new 205	java/io/FileReader
-    //   78: dup
-    //   79: aload_0
-    //   80: invokespecial 208	java/io/FileReader:<init>	(Ljava/io/File;)V
-    //   83: invokespecial 211	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   86: astore_2
-    //   87: aload_2
-    //   88: astore_0
-    //   89: aload_2
-    //   90: invokevirtual 214	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   93: astore_3
-    //   94: aload_2
-    //   95: astore_0
-    //   96: aload_3
-    //   97: invokestatic 220	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   100: ifne +24 -> 124
+    //   15: astore_2
+    //   16: aload_2
+    //   17: aload_0
+    //   18: invokestatic 93	com/tencent/biz/common/offline/OfflineEnvHelper:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   21: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   24: pop
+    //   25: aload_2
+    //   26: aload_0
+    //   27: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: pop
+    //   31: aload_2
+    //   32: getstatic 197	java/io/File:separator	Ljava/lang/String;
+    //   35: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: pop
+    //   39: aload_2
+    //   40: ldc 199
+    //   42: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: pop
+    //   46: aload_2
+    //   47: getstatic 197	java/io/File:separator	Ljava/lang/String;
+    //   50: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   53: pop
+    //   54: aload_2
+    //   55: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   58: astore 4
+    //   60: invokestatic 43	com/tencent/qg/loader/QGLoader:a	()Ljava/io/File;
+    //   63: astore_2
+    //   64: aload_2
+    //   65: ifnonnull +9 -> 74
+    //   68: aload 4
+    //   70: invokestatic 201	com/tencent/qg/loader/QGLoader:b	(Ljava/lang/String;)Z
+    //   73: ireturn
+    //   74: aconst_null
+    //   75: astore_3
+    //   76: aconst_null
+    //   77: astore_0
+    //   78: new 150	java/util/ArrayList
+    //   81: dup
+    //   82: invokespecial 151	java/util/ArrayList:<init>	()V
+    //   85: astore 5
+    //   87: new 203	java/io/BufferedReader
+    //   90: dup
+    //   91: new 205	java/io/FileReader
+    //   94: dup
+    //   95: aload_2
+    //   96: invokespecial 208	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   99: invokespecial 211	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   102: astore_2
     //   103: aload_2
-    //   104: astore_0
-    //   105: aload 5
-    //   107: aload_3
-    //   108: invokeinterface 223 2 0
-    //   113: pop
-    //   114: aload_2
-    //   115: astore_0
-    //   116: aload_2
-    //   117: invokevirtual 214	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   120: astore_3
-    //   121: goto -27 -> 94
+    //   104: invokevirtual 214	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   107: astore_0
+    //   108: aload_0
+    //   109: invokestatic 220	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   112: ifne +20 -> 132
+    //   115: aload 5
+    //   117: aload_0
+    //   118: invokeinterface 223 2 0
+    //   123: pop
     //   124: aload_2
-    //   125: ifnull +7 -> 132
-    //   128: aload_2
-    //   129: invokevirtual 226	java/io/BufferedReader:close	()V
-    //   132: iconst_1
-    //   133: istore_1
-    //   134: iload_1
-    //   135: ifne +113 -> 248
-    //   138: aload 4
-    //   140: invokestatic 201	com/tencent/qg/loader/QGLoader:b	(Ljava/lang/String;)Z
-    //   143: istore_1
-    //   144: iload_1
-    //   145: ireturn
-    //   146: astore_0
-    //   147: ldc 66
+    //   125: invokevirtual 214	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   128: astore_0
+    //   129: goto -21 -> 108
+    //   132: aload_2
+    //   133: invokevirtual 226	java/io/BufferedReader:close	()V
+    //   136: goto +13 -> 149
+    //   139: astore_0
+    //   140: ldc 66
+    //   142: iconst_1
+    //   143: ldc 228
+    //   145: aload_0
+    //   146: invokestatic 232	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   149: iconst_1
-    //   150: ldc 228
-    //   152: aload_0
-    //   153: invokestatic 232	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   156: iconst_1
-    //   157: istore_1
-    //   158: goto -24 -> 134
-    //   161: astore_3
-    //   162: aconst_null
-    //   163: astore_2
-    //   164: aload_2
-    //   165: astore_0
-    //   166: ldc 66
-    //   168: iconst_1
-    //   169: new 85	java/lang/StringBuilder
-    //   172: dup
-    //   173: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   176: ldc 234
-    //   178: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   181: aload_3
-    //   182: invokevirtual 235	java/lang/Exception:toString	()Ljava/lang/String;
-    //   185: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   188: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   191: invokestatic 237	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   194: aload_2
-    //   195: ifnull +7 -> 202
-    //   198: aload_2
-    //   199: invokevirtual 226	java/io/BufferedReader:close	()V
-    //   202: iconst_0
-    //   203: istore_1
-    //   204: goto -70 -> 134
-    //   207: astore_0
-    //   208: ldc 66
-    //   210: iconst_1
-    //   211: ldc 228
-    //   213: aload_0
-    //   214: invokestatic 232	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   217: iconst_0
-    //   218: istore_1
-    //   219: goto -85 -> 134
-    //   222: astore_2
-    //   223: aconst_null
-    //   224: astore_0
-    //   225: aload_0
-    //   226: ifnull +7 -> 233
-    //   229: aload_0
-    //   230: invokevirtual 226	java/io/BufferedReader:close	()V
-    //   233: aload_2
-    //   234: athrow
-    //   235: astore_0
-    //   236: ldc 66
-    //   238: iconst_1
-    //   239: ldc 228
-    //   241: aload_0
-    //   242: invokestatic 232	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   245: goto -12 -> 233
-    //   248: aload 5
-    //   250: invokeinterface 239 1 0
-    //   255: ifne +92 -> 347
-    //   258: aload 5
-    //   260: invokeinterface 240 1 0
-    //   265: astore_0
-    //   266: aload_0
-    //   267: invokeinterface 179 1 0
-    //   272: ifeq +72 -> 344
-    //   275: aload_0
-    //   276: invokeinterface 183 1 0
-    //   281: checkcast 12	java/lang/String
-    //   284: astore_2
-    //   285: new 85	java/lang/StringBuilder
-    //   288: dup
-    //   289: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   292: aload 4
-    //   294: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   297: aload_2
-    //   298: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   301: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   304: invokestatic 161	java/lang/System:load	(Ljava/lang/String;)V
-    //   307: goto -41 -> 266
-    //   310: astore_0
-    //   311: invokestatic 121	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   314: ifeq +25 -> 339
-    //   317: ldc 66
-    //   319: iconst_1
-    //   320: iconst_2
-    //   321: anewarray 4	java/lang/Object
-    //   324: dup
-    //   325: iconst_0
-    //   326: ldc 163
-    //   328: aastore
-    //   329: dup
-    //   330: iconst_1
-    //   331: aload_0
-    //   332: invokevirtual 166	java/lang/UnsatisfiedLinkError:getMessage	()Ljava/lang/String;
-    //   335: aastore
-    //   336: invokestatic 83	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   150: istore_1
+    //   151: goto +93 -> 244
+    //   154: astore_3
+    //   155: aload_2
+    //   156: astore_0
+    //   157: aload_3
+    //   158: astore_2
+    //   159: goto +196 -> 355
+    //   162: astore_3
+    //   163: goto +12 -> 175
+    //   166: astore_2
+    //   167: goto +188 -> 355
+    //   170: astore_0
+    //   171: aload_3
+    //   172: astore_2
+    //   173: aload_0
+    //   174: astore_3
+    //   175: aload_2
+    //   176: astore_0
+    //   177: new 85	java/lang/StringBuilder
+    //   180: dup
+    //   181: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   184: astore 6
+    //   186: aload_2
+    //   187: astore_0
+    //   188: aload 6
+    //   190: ldc 234
+    //   192: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   195: pop
+    //   196: aload_2
+    //   197: astore_0
+    //   198: aload 6
+    //   200: aload_3
+    //   201: invokevirtual 235	java/lang/Exception:toString	()Ljava/lang/String;
+    //   204: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   207: pop
+    //   208: aload_2
+    //   209: astore_0
+    //   210: ldc 66
+    //   212: iconst_1
+    //   213: aload 6
+    //   215: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   218: invokestatic 237	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   221: aload_2
+    //   222: ifnull +20 -> 242
+    //   225: aload_2
+    //   226: invokevirtual 226	java/io/BufferedReader:close	()V
+    //   229: goto +13 -> 242
+    //   232: astore_0
+    //   233: ldc 66
+    //   235: iconst_1
+    //   236: ldc 228
+    //   238: aload_0
+    //   239: invokestatic 232	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   242: iconst_0
+    //   243: istore_1
+    //   244: iload_1
+    //   245: ifne +9 -> 254
+    //   248: aload 4
+    //   250: invokestatic 201	com/tencent/qg/loader/QGLoader:b	(Ljava/lang/String;)Z
+    //   253: ireturn
+    //   254: aload 5
+    //   256: invokeinterface 239 1 0
+    //   261: ifne +92 -> 353
+    //   264: aload 5
+    //   266: invokeinterface 240 1 0
+    //   271: astore_0
+    //   272: aload_0
+    //   273: invokeinterface 177 1 0
+    //   278: ifeq +44 -> 322
+    //   281: aload_0
+    //   282: invokeinterface 181 1 0
+    //   287: checkcast 12	java/lang/String
+    //   290: astore_2
+    //   291: new 85	java/lang/StringBuilder
+    //   294: dup
+    //   295: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   298: astore_3
+    //   299: aload_3
+    //   300: aload 4
+    //   302: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   305: pop
+    //   306: aload_3
+    //   307: aload_2
+    //   308: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   311: pop
+    //   312: aload_3
+    //   313: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   316: invokestatic 159	java/lang/System:load	(Ljava/lang/String;)V
+    //   319: goto -47 -> 272
+    //   322: iload_1
+    //   323: ireturn
+    //   324: astore_0
+    //   325: invokestatic 121	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   328: ifeq +25 -> 353
+    //   331: ldc 66
+    //   333: iconst_1
+    //   334: iconst_2
+    //   335: anewarray 4	java/lang/Object
+    //   338: dup
     //   339: iconst_0
-    //   340: istore_1
-    //   341: goto -197 -> 144
-    //   344: goto -200 -> 144
-    //   347: iconst_0
-    //   348: istore_1
-    //   349: goto -205 -> 144
-    //   352: astore_2
-    //   353: goto -128 -> 225
-    //   356: astore_3
-    //   357: goto -193 -> 164
+    //   340: ldc 161
+    //   342: aastore
+    //   343: dup
+    //   344: iconst_1
+    //   345: aload_0
+    //   346: invokevirtual 164	java/lang/UnsatisfiedLinkError:getMessage	()Ljava/lang/String;
+    //   349: aastore
+    //   350: invokestatic 83	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   353: iconst_0
+    //   354: ireturn
+    //   355: aload_0
+    //   356: ifnull +20 -> 376
+    //   359: aload_0
+    //   360: invokevirtual 226	java/io/BufferedReader:close	()V
+    //   363: goto +13 -> 376
+    //   366: astore_0
+    //   367: ldc 66
+    //   369: iconst_1
+    //   370: ldc 228
+    //   372: aload_0
+    //   373: invokestatic 232	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   376: goto +5 -> 381
+    //   379: aload_2
+    //   380: athrow
+    //   381: goto -2 -> 379
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	360	0	paramString	String
-    //   133	216	1	bool	boolean
-    //   86	113	2	localBufferedReader	java.io.BufferedReader
-    //   222	12	2	localObject1	Object
-    //   284	14	2	str1	String
-    //   352	1	2	localObject2	Object
-    //   93	28	3	str2	String
-    //   161	21	3	localException1	java.lang.Exception
-    //   356	1	3	localException2	java.lang.Exception
-    //   46	247	4	str3	String
-    //   69	190	5	localArrayList	ArrayList
+    //   0	384	0	paramString	String
+    //   150	173	1	bool	boolean
+    //   15	144	2	localObject1	Object
+    //   166	1	2	localObject2	Object
+    //   172	208	2	localObject3	Object
+    //   75	1	3	localObject4	Object
+    //   154	4	3	localObject5	Object
+    //   162	10	3	localException	java.lang.Exception
+    //   174	139	3	localObject6	Object
+    //   58	243	4	str	String
+    //   85	180	5	localArrayList	ArrayList
+    //   184	30	6	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   128	132	146	java/io/IOException
-    //   71	87	161	java/lang/Exception
-    //   198	202	207	java/io/IOException
-    //   71	87	222	finally
-    //   229	233	235	java/io/IOException
-    //   258	266	310	java/lang/UnsatisfiedLinkError
-    //   266	307	310	java/lang/UnsatisfiedLinkError
-    //   89	94	352	finally
-    //   96	103	352	finally
-    //   105	114	352	finally
-    //   116	121	352	finally
-    //   166	194	352	finally
-    //   89	94	356	java/lang/Exception
-    //   96	103	356	java/lang/Exception
-    //   105	114	356	java/lang/Exception
-    //   116	121	356	java/lang/Exception
+    //   132	136	139	java/io/IOException
+    //   103	108	154	finally
+    //   108	129	154	finally
+    //   103	108	162	java/lang/Exception
+    //   108	129	162	java/lang/Exception
+    //   87	103	166	finally
+    //   177	186	166	finally
+    //   188	196	166	finally
+    //   198	208	166	finally
+    //   210	221	166	finally
+    //   87	103	170	java/lang/Exception
+    //   225	229	232	java/io/IOException
+    //   264	272	324	java/lang/UnsatisfiedLinkError
+    //   272	319	324	java/lang/UnsatisfiedLinkError
+    //   359	363	366	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qg.loader.QGLoader
  * JD-Core Version:    0.7.0.1
  */

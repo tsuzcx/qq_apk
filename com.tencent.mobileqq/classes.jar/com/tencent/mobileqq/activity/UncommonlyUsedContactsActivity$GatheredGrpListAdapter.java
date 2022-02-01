@@ -42,189 +42,188 @@ class UncommonlyUsedContactsActivity$GatheredGrpListAdapter
   {
     Object localObject1 = (UncommonlyUsedContactsActivity.ListItem)getItem(paramInt);
     UncommonlyUsedContactsActivity.GatheredViewHolder localGatheredViewHolder;
-    View localView;
     if ((paramView != null) && (paramView.getTag() != null))
     {
       localGatheredViewHolder = (UncommonlyUsedContactsActivity.GatheredViewHolder)paramView.getTag();
-      localView = paramView;
     }
-    Object localObject2;
-    for (;;)
+    else
     {
-      paramView = (TextView)localView.findViewById(2131377837);
-      localObject2 = localView.findViewById(2131376894);
-      if (((UncommonlyUsedContactsActivity.ListItem)localObject1).jdField_a_of_type_Int != 0) {
-        break;
-      }
-      ((View)localObject2).setVisibility(8);
-      paramView.setVisibility(0);
-      paramView.setText(((UncommonlyUsedContactsActivity.ListItem)localObject1).jdField_a_of_type_JavaLangString);
+      paramView = this.a.getLayoutInflater().inflate(2131561028, null);
+      localGatheredViewHolder = new UncommonlyUsedContactsActivity.GatheredViewHolder(this.a, null);
+      localGatheredViewHolder.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368343));
+      localGatheredViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(16908308));
+      localGatheredViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367802));
+      localGatheredViewHolder.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367601));
+      localGatheredViewHolder.d = ((TextView)paramView.findViewById(2131377095));
+      localGatheredViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364613));
+      localGatheredViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramView.setTag(localGatheredViewHolder);
+    }
+    Object localObject2 = (TextView)paramView.findViewById(2131377263);
+    Object localObject3 = paramView.findViewById(2131376384);
+    if (((UncommonlyUsedContactsActivity.ListItem)localObject1).jdField_a_of_type_Int == 0)
+    {
+      ((View)localObject3).setVisibility(8);
+      ((TextView)localObject2).setVisibility(0);
+      ((TextView)localObject2).setText(((UncommonlyUsedContactsActivity.ListItem)localObject1).jdField_a_of_type_JavaLangString);
       if (AppSetting.d)
       {
-        paramView.setFocusable(true);
-        paramView.setContentDescription(((UncommonlyUsedContactsActivity.ListItem)localObject1).jdField_a_of_type_JavaLangString);
+        ((TextView)localObject2).setFocusable(true);
+        ((TextView)localObject2).setContentDescription(((UncommonlyUsedContactsActivity.ListItem)localObject1).jdField_a_of_type_JavaLangString);
       }
       localGatheredViewHolder.jdField_b_of_type_Int = 0;
       localGatheredViewHolder.jdField_a_of_type_JavaLangString = "";
       localGatheredViewHolder.jdField_a_of_type_Int = paramInt;
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localView = this.a.getLayoutInflater().inflate(2131561165, null);
-      localGatheredViewHolder = new UncommonlyUsedContactsActivity.GatheredViewHolder(this.a, null);
-      localGatheredViewHolder.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368603));
-      localGatheredViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(16908308));
-      localGatheredViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131368050));
-      localGatheredViewHolder.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367834));
-      localGatheredViewHolder.d = ((TextView)localView.findViewById(2131377655));
-      localGatheredViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364726));
-      localGatheredViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      localView.setTag(localGatheredViewHolder);
     }
-    ((View)localObject2).setVisibility(0);
-    paramView.setVisibility(8);
-    label373:
-    int i;
-    if ((((UncommonlyUsedContactsActivity.ListItem)localObject1).jdField_a_of_type_ComTencentMobileqqPersistenceEntity instanceof Friends))
+    else
     {
-      localObject1 = (Friends)((UncommonlyUsedContactsActivity.ListItem)localObject1).jdField_a_of_type_ComTencentMobileqqPersistenceEntity;
-      localGatheredViewHolder.jdField_a_of_type_JavaLangString = ((Friends)localObject1).uin;
-      label513:
-      label540:
-      if (!TextUtils.isEmpty(((Friends)localObject1).remark))
+      ((View)localObject3).setVisibility(0);
+      ((TextView)localObject2).setVisibility(8);
+      if ((((UncommonlyUsedContactsActivity.ListItem)localObject1).jdField_a_of_type_ComTencentMobileqqPersistenceEntity instanceof Friends))
       {
-        localGatheredViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(((Friends)localObject1).remark);
-        localGatheredViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(null);
-        if (AppSetting.d) {
-          localGatheredViewHolder.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(((Friends)localObject1).remark);
-        }
-        if (TextUtils.equals(HardCodeUtil.a(2131715725), ((Friends)localObject1).recommReason)) {
-          ((Friends)localObject1).recommReason = HardCodeUtil.a(2131715729);
-        }
-        localGatheredViewHolder.d.setText(((Friends)localObject1).recommReason);
-        if (((Friends)localObject1).age == 0) {
-          break label846;
-        }
-        localGatheredViewHolder.jdField_c_of_type_AndroidWidgetTextView.setText(String.valueOf(((Friends)localObject1).age));
-        label436:
-        switch (((Friends)localObject1).gender)
+        localObject2 = (Friends)((UncommonlyUsedContactsActivity.ListItem)localObject1).jdField_a_of_type_ComTencentMobileqqPersistenceEntity;
+        localGatheredViewHolder.jdField_a_of_type_JavaLangString = ((Friends)localObject2).uin;
+        if (!TextUtils.isEmpty(((Friends)localObject2).remark))
         {
-        default: 
-          localGatheredViewHolder.jdField_c_of_type_AndroidWidgetTextView.setBackgroundResource(2130846180);
-          i = 0;
-          label477:
-          localGatheredViewHolder.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(i, 0, 0, 0);
-          if ((((Friends)localObject1).age == 0) && (i == 0))
+          localGatheredViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(((Friends)localObject2).remark);
+          localGatheredViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(null);
+          if (AppSetting.d) {
+            localGatheredViewHolder.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(((Friends)localObject2).remark);
+          }
+        }
+        else if (!TextUtils.isEmpty(((Friends)localObject2).smartRemark))
+        {
+          if (!TextUtils.isEmpty(((Friends)localObject2).name)) {
+            localGatheredViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(((Friends)localObject2).name);
+          } else {
+            localGatheredViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(((Friends)localObject2).uin);
+          }
+          localObject1 = localGatheredViewHolder.jdField_b_of_type_AndroidWidgetTextView;
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("(");
+          ((StringBuilder)localObject3).append(((Friends)localObject2).smartRemark);
+          ((StringBuilder)localObject3).append(")");
+          ((TextView)localObject1).setText(((StringBuilder)localObject3).toString());
+          if (AppSetting.d)
           {
-            localGatheredViewHolder.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-            if (AppSetting.d)
-            {
-              localObject2 = localGatheredViewHolder.jdField_c_of_type_AndroidWidgetTextView;
-              if (i != 0) {
-                break label904;
-              }
-              paramView = String.valueOf(((Friends)localObject1).age);
-              ((TextView)localObject2).setContentDescription(paramView);
-              localGatheredViewHolder.d.setContentDescription(((Friends)localObject1).recommReason);
+            localObject3 = localGatheredViewHolder.jdField_a_of_type_AndroidWidgetTextView;
+            if (TextUtils.isEmpty(((Friends)localObject2).name)) {
+              localObject1 = ((Friends)localObject2).uin;
+            } else {
+              localObject1 = ((Friends)localObject2).name;
             }
-            localGatheredViewHolder.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(1, ((Friends)localObject1).uin));
+            ((TextView)localObject3).setContentDescription((CharSequence)localObject1);
+            localGatheredViewHolder.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(((Friends)localObject2).smartRemark);
           }
-          break;
         }
-      }
-    }
-    for (;;)
-    {
-      localGatheredViewHolder.jdField_a_of_type_Int = paramInt;
-      localGatheredViewHolder.jdField_b_of_type_Int = 1;
-      localView.setOnClickListener(this.a);
-      break;
-      if (!TextUtils.isEmpty(((Friends)localObject1).smartRemark))
-      {
-        if (!TextUtils.isEmpty(((Friends)localObject1).name))
+        else
         {
-          localGatheredViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(((Friends)localObject1).name);
-          label636:
-          localGatheredViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText("(" + ((Friends)localObject1).smartRemark + ")");
-          if (!AppSetting.d) {
-            break label373;
+          if (!TextUtils.isEmpty(((Friends)localObject2).name)) {
+            localGatheredViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(((Friends)localObject2).name);
+          } else {
+            localGatheredViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(((Friends)localObject2).uin);
           }
-          localObject2 = localGatheredViewHolder.jdField_a_of_type_AndroidWidgetTextView;
-          if (!TextUtils.isEmpty(((Friends)localObject1).name)) {
-            break label740;
+          localGatheredViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(null);
+          if (AppSetting.d)
+          {
+            localObject3 = localGatheredViewHolder.jdField_a_of_type_AndroidWidgetTextView;
+            if (TextUtils.isEmpty(((Friends)localObject2).name)) {
+              localObject1 = ((Friends)localObject2).uin;
+            } else {
+              localObject1 = ((Friends)localObject2).name;
+            }
+            ((TextView)localObject3).setContentDescription((CharSequence)localObject1);
           }
         }
-        label740:
-        for (paramView = ((Friends)localObject1).uin;; paramView = ((Friends)localObject1).name)
+        if (TextUtils.equals(HardCodeUtil.a(2131715649), ((Friends)localObject2).recommReason)) {
+          ((Friends)localObject2).recommReason = HardCodeUtil.a(2131715653);
+        }
+        localGatheredViewHolder.d.setText(((Friends)localObject2).recommReason);
+        if (((Friends)localObject2).age != 0) {
+          localGatheredViewHolder.jdField_c_of_type_AndroidWidgetTextView.setText(String.valueOf(((Friends)localObject2).age));
+        } else {
+          localGatheredViewHolder.jdField_c_of_type_AndroidWidgetTextView.setText(null);
+        }
+        int i = ((Friends)localObject2).gender;
+        if (i != 1)
         {
-          ((TextView)localObject2).setContentDescription(paramView);
-          localGatheredViewHolder.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(((Friends)localObject1).smartRemark);
-          break;
-          localGatheredViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(((Friends)localObject1).uin);
-          break label636;
+          if (i != 2)
+          {
+            localGatheredViewHolder.jdField_c_of_type_AndroidWidgetTextView.setBackgroundResource(2130846056);
+            i = 0;
+          }
+          else
+          {
+            i = 2130840540;
+            localGatheredViewHolder.jdField_c_of_type_AndroidWidgetTextView.setBackgroundResource(2130846054);
+          }
         }
-      }
-      if (!TextUtils.isEmpty(((Friends)localObject1).name))
-      {
-        localGatheredViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(((Friends)localObject1).name);
-        label773:
-        localGatheredViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(null);
-        if (!AppSetting.d) {
-          break label373;
+        else
+        {
+          i = 2130840545;
+          localGatheredViewHolder.jdField_c_of_type_AndroidWidgetTextView.setBackgroundResource(2130846056);
         }
-        localObject2 = localGatheredViewHolder.jdField_a_of_type_AndroidWidgetTextView;
-        if (!TextUtils.isEmpty(((Friends)localObject1).name)) {
-          break label837;
+        localGatheredViewHolder.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(i, 0, 0, 0);
+        if ((((Friends)localObject2).age == 0) && (i == 0)) {
+          localGatheredViewHolder.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+        } else {
+          localGatheredViewHolder.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
         }
-      }
-      label837:
-      for (paramView = ((Friends)localObject1).uin;; paramView = ((Friends)localObject1).name)
-      {
-        ((TextView)localObject2).setContentDescription(paramView);
-        break;
-        localGatheredViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(((Friends)localObject1).uin);
-        break label773;
-      }
-      label846:
-      localGatheredViewHolder.jdField_c_of_type_AndroidWidgetTextView.setText(null);
-      break label436;
-      i = 2130840670;
-      localGatheredViewHolder.jdField_c_of_type_AndroidWidgetTextView.setBackgroundResource(2130846180);
-      break label477;
-      i = 2130840665;
-      localGatheredViewHolder.jdField_c_of_type_AndroidWidgetTextView.setBackgroundResource(2130846178);
-      break label477;
-      localGatheredViewHolder.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      break label513;
-      label904:
-      if (((Friends)localObject1).gender == 1)
-      {
-        paramView = HardCodeUtil.a(2131715726) + ((Friends)localObject1).age;
-        break label540;
-      }
-      paramView = HardCodeUtil.a(2131715731) + ((Friends)localObject1).age;
-      break label540;
-      if ((((UncommonlyUsedContactsActivity.ListItem)localObject1).jdField_a_of_type_ComTencentMobileqqPersistenceEntity instanceof PhoneContact))
-      {
-        paramView = (PhoneContact)((UncommonlyUsedContactsActivity.ListItem)localObject1).jdField_a_of_type_ComTencentMobileqqPersistenceEntity;
-        localGatheredViewHolder.jdField_a_of_type_JavaLangString = paramView.mobileCode;
-        localGatheredViewHolder.jdField_c_of_type_Int = 11;
-        localGatheredViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramView.name);
-        localGatheredViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(null);
-        localGatheredViewHolder.d.setText(HardCodeUtil.a(2131715730));
         if (AppSetting.d)
         {
-          localGatheredViewHolder.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramView.name);
-          localGatheredViewHolder.d.setContentDescription(HardCodeUtil.a(2131715728));
+          localObject3 = localGatheredViewHolder.jdField_c_of_type_AndroidWidgetTextView;
+          if (i == 0)
+          {
+            localObject1 = String.valueOf(((Friends)localObject2).age);
+          }
+          else
+          {
+            if (((Friends)localObject2).gender == 1)
+            {
+              localObject1 = new StringBuilder();
+              i = 2131715650;
+            }
+            else
+            {
+              localObject1 = new StringBuilder();
+              i = 2131715655;
+            }
+            ((StringBuilder)localObject1).append(HardCodeUtil.a(i));
+            ((StringBuilder)localObject1).append(((Friends)localObject2).age);
+            localObject1 = ((StringBuilder)localObject1).toString();
+          }
+          ((TextView)localObject3).setContentDescription((CharSequence)localObject1);
+          localGatheredViewHolder.d.setContentDescription(((Friends)localObject2).recommReason);
+        }
+        localGatheredViewHolder.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(1, ((Friends)localObject2).uin));
+      }
+      else if ((((UncommonlyUsedContactsActivity.ListItem)localObject1).jdField_a_of_type_ComTencentMobileqqPersistenceEntity instanceof PhoneContact))
+      {
+        localObject1 = (PhoneContact)((UncommonlyUsedContactsActivity.ListItem)localObject1).jdField_a_of_type_ComTencentMobileqqPersistenceEntity;
+        localGatheredViewHolder.jdField_a_of_type_JavaLangString = ((PhoneContact)localObject1).mobileCode;
+        localGatheredViewHolder.jdField_c_of_type_Int = 11;
+        localGatheredViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(((PhoneContact)localObject1).name);
+        localGatheredViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(null);
+        localGatheredViewHolder.d.setText(HardCodeUtil.a(2131715654));
+        if (AppSetting.d)
+        {
+          localGatheredViewHolder.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(((PhoneContact)localObject1).name);
+          localGatheredViewHolder.d.setContentDescription(HardCodeUtil.a(2131715652));
         }
         localGatheredViewHolder.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
         localGatheredViewHolder.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(localGatheredViewHolder.jdField_a_of_type_JavaLangString, 11, (byte)0));
       }
+      localGatheredViewHolder.jdField_a_of_type_Int = paramInt;
+      localGatheredViewHolder.jdField_b_of_type_Int = 1;
+      paramView.setOnClickListener(this.a);
     }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity.GatheredGrpListAdapter
  * JD-Core Version:    0.7.0.1
  */

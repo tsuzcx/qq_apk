@@ -22,15 +22,23 @@ public class ShieldOperationItem
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("");
-    localStringBuilder.append("--->>DUMP_ShieldOperationItem<<---").append(",").append("opType:").append(this.jdField_a_of_type_Int).append(",source_id:").append(this.b).append(",source_sub_id:").append(this.c).append(this.d).append(",uinList:");
-    if (this.jdField_a_of_type_ArrayOfLong != null) {
-      localStringBuilder.append(this.jdField_a_of_type_ArrayOfLong.toString());
-    }
-    for (;;)
-    {
-      return localStringBuilder.toString();
+    localStringBuilder.append("--->>DUMP_ShieldOperationItem<<---");
+    localStringBuilder.append(",");
+    localStringBuilder.append("opType:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",source_id:");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",source_sub_id:");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(",uinList:");
+    long[] arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+    if (arrayOfLong != null) {
+      localStringBuilder.append(arrayOfLong.toString());
+    } else {
       localStringBuilder.append("null.");
     }
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -44,7 +52,7 @@ public class ShieldOperationItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ShieldOperationItem
  * JD-Core Version:    0.7.0.1
  */

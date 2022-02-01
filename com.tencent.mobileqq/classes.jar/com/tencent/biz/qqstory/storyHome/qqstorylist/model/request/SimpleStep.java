@@ -38,27 +38,35 @@ public abstract class SimpleStep
   protected void b(ErrorMessage paramErrorMessage)
   {
     paramErrorMessage.extraMsg = a();
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$ErrorCallBack != null)
+    Step.ErrorCallBack localErrorCallBack = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$ErrorCallBack;
+    if (localErrorCallBack != null)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$ErrorCallBack.a(paramErrorMessage);
+      localErrorCallBack.a(paramErrorMessage);
       return;
     }
-    SLog.d("SimpleStep", a() + " errorCallBack is null.");
+    paramErrorMessage = new StringBuilder();
+    paramErrorMessage.append(a());
+    paramErrorMessage.append(" errorCallBack is null.");
+    SLog.d("SimpleStep", paramErrorMessage.toString());
   }
   
   protected void d()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack != null)
+    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack.a(a());
+      ((Step.FinishCallBack)localObject).a(a());
       return;
     }
-    SLog.d("SimpleStep", a() + " finishCallBack is null.");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(a());
+    ((StringBuilder)localObject).append(" finishCallBack is null.");
+    SLog.d("SimpleStep", ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStep
  * JD-Core Version:    0.7.0.1
  */

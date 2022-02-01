@@ -15,30 +15,25 @@ class AudioPlayer$1
   
   public void onServiceConnected(int paramInt, BluetoothProfile paramBluetoothProfile)
   {
-    Object localObject;
     if (paramInt == 1)
     {
       paramBluetoothProfile = (BluetoothHeadset)paramBluetoothProfile;
-      localObject = paramBluetoothProfile.getConnectedDevices();
-      if ((localObject == null) || (((List)localObject).size() <= 0)) {
-        break label93;
+      Object localObject = paramBluetoothProfile.getConnectedDevices();
+      if ((localObject != null) && (((List)localObject).size() > 0))
+      {
+        localObject = (BluetoothDevice)((List)localObject).get(0);
+        if ((localObject != null) && (((BluetoothDevice)localObject).getBluetoothClass() != null)) {
+          AudioDeviceHelper.jdField_a_of_type_Int = ((BluetoothDevice)localObject).getBluetoothClass().getDeviceClass();
+        } else {
+          AudioDeviceHelper.jdField_a_of_type_Int = 0;
+        }
       }
-      localObject = (BluetoothDevice)((List)localObject).get(0);
-      if ((localObject != null) && (((BluetoothDevice)localObject).getBluetoothClass() != null)) {
-        break label80;
+      else
+      {
+        AudioDeviceHelper.jdField_a_of_type_Int = 0;
       }
-      AudioPlayerBase.b = 0;
-    }
-    for (;;)
-    {
       this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
       this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.closeProfileProxy(1, paramBluetoothProfile);
-      return;
-      label80:
-      AudioPlayerBase.b = ((BluetoothDevice)localObject).getBluetoothClass().getDeviceClass();
-      continue;
-      label93:
-      AudioPlayerBase.b = 0;
     }
   }
   
@@ -46,7 +41,7 @@ class AudioPlayer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.audioplayer.AudioPlayer.1
  * JD-Core Version:    0.7.0.1
  */

@@ -44,72 +44,49 @@ public class DownloaderProxyDefault$DownloadTask
   
   private void doDownloadTask(File paramFile)
   {
-    label393:
-    for (;;)
+    try
     {
-      HttpURLConnection localHttpURLConnection;
-      int i;
-      Object localObject1;
-      DownloaderProxyDefault.DownloadTask.PositionFixedInputStream localPositionFixedInputStream;
-      Object localObject2;
-      int j;
-      int k;
-      try
+      HttpURLConnection localHttpURLConnection = getRealConnection(this.mUrl);
+      if (localHttpURLConnection == null) {
+        return;
+      }
+      int i = localHttpURLConnection.getResponseCode();
+      if ((i >= 200) && (i < 300))
       {
-        localHttpURLConnection = getRealConnection(this.mUrl);
-        if (localHttpURLConnection == null) {
-          return;
-        }
-        i = localHttpURLConnection.getResponseCode();
-        if ((i >= 200) && (i < 300))
+        Object localObject2 = new DownloaderProxyDefault.DownloadTask.PositionFixedInputStream(this, localHttpURLConnection.getInputStream());
+        DownloaderProxyDefault.DownloadTask.PositionFixedInputStream localPositionFixedInputStream = (DownloaderProxyDefault.DownloadTask.PositionFixedInputStream)localObject2;
+        this.mListener.onDownloadHeadersReceived(i, localHttpURLConnection.getHeaderFields());
+        String str = localHttpURLConnection.getContentEncoding();
+        Object localObject1 = localObject2;
+        if (!TextUtils.isEmpty(str))
         {
-          localObject1 = new DownloaderProxyDefault.DownloadTask.PositionFixedInputStream(this, localHttpURLConnection.getInputStream());
-          localPositionFixedInputStream = (DownloaderProxyDefault.DownloadTask.PositionFixedInputStream)localObject1;
-          this.mListener.onDownloadHeadersReceived(i, localHttpURLConnection.getHeaderFields());
-          localObject2 = localHttpURLConnection.getContentEncoding();
-          if ((TextUtils.isEmpty((CharSequence)localObject2)) || (!((String)localObject2).contains("gzip"))) {
-            break label393;
+          localObject1 = localObject2;
+          if (str.contains("gzip")) {
+            localObject1 = new GZIPInputStream(localPositionFixedInputStream);
           }
-          localObject1 = new GZIPInputStream(localPositionFixedInputStream);
-          j = localHttpURLConnection.getContentLength();
-          paramFile = new FileOutputStream(paramFile);
-          localObject2 = new byte[4096];
-          k = ((InputStream)localObject1).read((byte[])localObject2);
-          if (k == -1) {
-            break label319;
-          }
-          if (!this.mAbort) {
-            break label254;
-          }
-          ((InputStream)localObject1).close();
-          paramFile.close();
         }
-      }
-      catch (IOException paramFile)
-      {
-        QMLog.e("DefaultDownloader", "io err", paramFile);
-        this.this$0.taskMap.remove(Integer.valueOf(this.mTaskId));
-        this.mListener.onDownloadFailed(-2, paramFile.getMessage());
-        return;
-        throw new DownloadException(i, "http server code indicates err status");
-      }
-      catch (DownloadException paramFile)
-      {
-        this.this$0.taskMap.remove(Integer.valueOf(this.mTaskId));
-        this.mListener.onDownloadFailed(paramFile.getCode(), paramFile.getMessage());
-        return;
-      }
-      label254:
-      paramFile.write((byte[])localObject2, 0, k);
-      if (j != -1)
-      {
-        this.mListener.onDownloadProgress(localPositionFixedInputStream.getPosition() * 1.0F / j, localPositionFixedInputStream.getPosition(), j);
-      }
-      else
-      {
-        this.mListener.onDownloadProgress(0.0F, localPositionFixedInputStream.getPosition(), 0L);
-        continue;
-        label319:
+        int j = localHttpURLConnection.getContentLength();
+        paramFile = new FileOutputStream(paramFile);
+        localObject2 = new byte[4096];
+        for (;;)
+        {
+          int k = ((InputStream)localObject1).read((byte[])localObject2);
+          if (k == -1) {
+            break;
+          }
+          if (this.mAbort)
+          {
+            ((InputStream)localObject1).close();
+            paramFile.close();
+            return;
+          }
+          paramFile.write((byte[])localObject2, 0, k);
+          if (j != -1) {
+            this.mListener.onDownloadProgress(localPositionFixedInputStream.getPosition() * 1.0F / j, localPositionFixedInputStream.getPosition(), j);
+          } else {
+            this.mListener.onDownloadProgress(0.0F, localPositionFixedInputStream.getPosition(), 0L);
+          }
+        }
         ((InputStream)localObject1).close();
         paramFile.close();
         localHttpURLConnection.disconnect();
@@ -117,39 +94,69 @@ public class DownloaderProxyDefault$DownloadTask
         this.mListener.onDownloadSucceed(i, this.mFilePath, new DownloaderProxy.DownloadListener.DownloadResult("", 200L, true, "", true, 0L, 0L, 0L, 0L, 0L, 0L, localHttpURLConnection.getHeaderFields()));
         return;
       }
+      throw new DownloadException(i, "http server code indicates err status");
+    }
+    catch (DownloadException paramFile)
+    {
+      this.this$0.taskMap.remove(Integer.valueOf(this.mTaskId));
+      this.mListener.onDownloadFailed(paramFile.getCode(), paramFile.getMessage());
+      return;
+    }
+    catch (IOException paramFile)
+    {
+      QMLog.e("DefaultDownloader", "io err", paramFile);
+      this.this$0.taskMap.remove(Integer.valueOf(this.mTaskId));
+      this.mListener.onDownloadFailed(-2, paramFile.getMessage());
     }
   }
   
   private HttpURLConnection getRealConnection(String paramString)
   {
-    HttpURLConnection localHttpURLConnection;
-    int i;
     try
     {
-      localHttpURLConnection = (HttpURLConnection)new URL(paramString).openConnection();
-      localHttpURLConnection.setRequestProperty("Accept-Encoding", "gzip, deflate");
-      localHttpURLConnection.setConnectTimeout(this.mTimeout * 1000);
-      localHttpURLConnection.setRequestMethod("GET");
+      paramString = (HttpURLConnection)new URL(paramString).openConnection();
+      paramString.setRequestProperty("Accept-Encoding", "gzip, deflate");
+      paramString.setConnectTimeout(this.mTimeout * 1000);
+      paramString.setRequestMethod("GET");
       if (this.mHeader != null)
       {
-        paramString = this.mHeader.keySet().iterator();
-        while (paramString.hasNext())
+        Iterator localIterator = this.mHeader.keySet().iterator();
+        while (localIterator.hasNext())
         {
-          String str = (String)paramString.next();
-          localHttpURLConnection.setRequestProperty(str, (String)this.mHeader.get(str));
+          String str = (String)localIterator.next();
+          paramString.setRequestProperty(str, (String)this.mHeader.get(str));
         }
       }
-      if (i == 302) {
-        break label213;
-      }
-    }
-    catch (MalformedURLException paramString)
-    {
-      throw new DownloadException(-1, paramString.getMessage());
-      i = localHttpURLConnection.getResponseCode();
-      if (this.mAbort)
+      int i = paramString.getResponseCode();
+      if (!this.mAbort)
       {
-        QMLog.i("DefaultDownloader", this.mUrl + " aborted");
+        if (i != 302) {
+          if (i != 301) {
+            return paramString;
+          }
+        }
+        this.redirectCount += 1;
+        paramString.disconnect();
+        if (this.redirectCount <= 30) {
+          return getRealConnection(paramString.getHeaderField("Location"));
+        }
+        paramString = new StringBuilder();
+        paramString.append("url: ");
+        paramString.append(this.mUrl);
+        paramString.append("server redirects connection to many times");
+        QMLog.e("DefaultDownloader", paramString.toString());
+        paramString = new StringBuilder();
+        paramString.append("url: ");
+        paramString.append(this.mUrl);
+        paramString.append("server redirects connection to many times");
+        throw new DownloadException(-4, paramString.toString());
+      }
+      else
+      {
+        paramString = new StringBuilder();
+        paramString.append(this.mUrl);
+        paramString.append(" aborted");
+        QMLog.i("DefaultDownloader", paramString.toString());
         throw new DownloadException(-3, "aborted by outside");
       }
     }
@@ -158,18 +165,13 @@ public class DownloaderProxyDefault$DownloadTask
       QMLog.e("DefaultDownloader", "unknown err", paramString);
       throw new DownloadException(-100, paramString.getMessage());
     }
-    paramString = localHttpURLConnection;
-    if (i == 301)
+    catch (MalformedURLException paramString)
     {
-      label213:
-      this.redirectCount += 1;
-      localHttpURLConnection.disconnect();
-      if (this.redirectCount > 30)
+      paramString = new DownloadException(-1, paramString.getMessage());
+      for (;;)
       {
-        QMLog.e("DefaultDownloader", "url: " + this.mUrl + "server redirects connection to many times");
-        throw new DownloadException(-4, "url: " + this.mUrl + "server redirects connection to many times");
+        throw paramString;
       }
-      paramString = getRealConnection(localHttpURLConnection.getHeaderField("Location"));
     }
     return paramString;
   }
@@ -189,17 +191,14 @@ public class DownloaderProxyDefault$DownloadTask
     }
     catch (IOException localIOException)
     {
-      for (;;)
-      {
-        localIOException.printStackTrace();
-      }
+      localIOException.printStackTrace();
     }
     doDownloadTask(localFile);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.DownloaderProxyDefault.DownloadTask
  * JD-Core Version:    0.7.0.1
  */

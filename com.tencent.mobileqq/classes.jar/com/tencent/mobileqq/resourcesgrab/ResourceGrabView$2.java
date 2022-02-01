@@ -3,8 +3,8 @@ package com.tencent.mobileqq.resourcesgrab;
 import android.app.Activity;
 import android.app.Application.ActivityLifecycleCallbacks;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
+import androidx.fragment.app.FragmentManager;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import mqq.util.WeakReference;
 
@@ -15,22 +15,30 @@ class ResourceGrabView$2
   
   public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ResourceGrabView", 2, "onActivityCreated activity: " + paramActivity);
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("onActivityCreated activity: ");
+      paramBundle.append(paramActivity);
+      QLog.d("ResourceGrabView", 2, paramBundle.toString());
     }
     ResourceGrabView.a(this.a, new WeakReference(paramActivity));
   }
   
   public void onActivityDestroyed(Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ResourceGrabView", 2, "onActivityDestroyed activity: " + paramActivity);
-    }
-    if ((paramActivity instanceof FragmentActivity))
+    if (QLog.isColorLevel())
     {
-      paramActivity = ((FragmentActivity)paramActivity).getSupportFragmentManager().findFragmentByTag("ResourceGrabFragment");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityDestroyed activity: ");
+      localStringBuilder.append(paramActivity);
+      QLog.d("ResourceGrabView", 2, localStringBuilder.toString());
+    }
+    if ((paramActivity instanceof BaseActivity))
+    {
+      paramActivity = ((BaseActivity)paramActivity).getSupportFragmentManager().findFragmentByTag("ResourceGrabFragment");
       if ((paramActivity instanceof ResourceGrabFragment)) {
-        ((ResourceGrabFragment)paramActivity).d();
+        ((ResourceGrabFragment)paramActivity).c();
       }
     }
     ResourceGrabView.a(this.a, null);
@@ -40,11 +48,16 @@ class ResourceGrabView$2
   
   public void onActivityResumed(Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ResourceGrabView", 2, "onActivityResumed activity: " + paramActivity);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityResumed activity: ");
+      localStringBuilder.append(paramActivity);
+      QLog.d("ResourceGrabView", 2, localStringBuilder.toString());
     }
     ResourceGrabView.a(this.a, new WeakReference(paramActivity));
-    this.a.a(ResourceGrabView.a(this.a));
+    paramActivity = this.a;
+    paramActivity.a(ResourceGrabView.a(paramActivity));
     ResourceGrabView.a(this.a);
   }
   
@@ -56,7 +69,7 @@ class ResourceGrabView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.resourcesgrab.ResourceGrabView.2
  * JD-Core Version:    0.7.0.1
  */

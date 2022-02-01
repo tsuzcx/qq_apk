@@ -10,23 +10,31 @@ class SubLoginActivity$3
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1982)
     {
+      if (i != 2001)
+      {
+        if (i != 2002) {
+          return;
+        }
+        if (!this.a.isFinishing()) {
+          SubLoginActivity.a(this.a, true);
+        }
+      }
+      else
+      {
+        this.a.hideJuhua();
+      }
     }
-    do
-    {
-      return;
+    else {
       this.a.finish();
-      return;
-      this.a.e();
-      return;
-    } while (this.a.isFinishing());
-    SubLoginActivity.a(this.a, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubLoginActivity.3
  * JD-Core Version:    0.7.0.1
  */

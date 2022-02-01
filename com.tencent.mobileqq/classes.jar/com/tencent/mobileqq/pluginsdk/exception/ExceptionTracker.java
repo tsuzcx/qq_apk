@@ -14,34 +14,44 @@ public final class ExceptionTracker
   public static void printCallStack(String paramString, int paramInt)
   {
     int i = paramInt + 3;
-    try
+    for (;;)
     {
-      StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
-      if ((arrayOfStackTraceElement == null) || (arrayOfStackTraceElement.length <= i))
+      try
       {
-        if (QLog.isColorLevel()) {
+        StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
+        if ((arrayOfStackTraceElement != null) && (arrayOfStackTraceElement.length > i))
+        {
+          paramInt = i;
+          if (QLog.isColorLevel())
+          {
+            QLog.d(paramString, 2, "printCallStack:");
+            paramInt = i;
+          }
+          if (paramInt < arrayOfStackTraceElement.length)
+          {
+            if (!QLog.isColorLevel()) {
+              break label108;
+            }
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("");
+            localStringBuilder.append(arrayOfStackTraceElement[paramInt]);
+            QLog.d(paramString, 2, localStringBuilder.toString());
+            break label108;
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
           QLog.d(paramString, 2, "printCallStack empty");
         }
+        return;
       }
-      else
+      catch (Throwable paramString)
       {
-        paramInt = i;
-        if (QLog.isColorLevel())
-        {
-          QLog.d(paramString, 2, "printCallStack:");
-          paramInt = i;
-        }
-        while (paramInt < arrayOfStackTraceElement.length)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(paramString, 2, "" + arrayOfStackTraceElement[paramInt]);
-          }
-          paramInt += 1;
-        }
+        return;
       }
-      return;
+      label108:
+      paramInt += 1;
     }
-    catch (Throwable paramString) {}
   }
   
   public static void trackException(String paramString1, String paramString2)
@@ -60,7 +70,7 @@ public final class ExceptionTracker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.exception.ExceptionTracker
  * JD-Core Version:    0.7.0.1
  */

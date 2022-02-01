@@ -5,21 +5,21 @@ import java.util.List;
 
 public abstract class NumRedGetMsgCallback
 {
-  private static int a = 0;
-  public int b;
+  private static int b;
+  public int a;
   
   public NumRedGetMsgCallback()
   {
-    int i = a;
-    a = i + 1;
-    this.b = i;
+    int i = b;
+    b = i + 1;
+    this.a = i;
   }
   
   public abstract void a(String paramString, List<NumRedMsg.NumMsgBusi> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tianshu.data.NumRedGetMsgCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.NickNameExtenderViewBasicAbility;
+import com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.BaseChatItemLayoutViewBasicAbility;
 import com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.NickNameLayoutExtender;
 import com.tencent.mobileqq.troop.troopMemberLevel.TroopMemberLevelView;
 import com.tencent.mobileqq.utils.ViewUtils;
@@ -26,10 +26,10 @@ public class TroopMemberLevelExtender
     if (this.a == null)
     {
       this.a = new TroopMemberLevelView(this.mContext);
-      this.a.setId(2131364673);
+      this.a.setId(2131364560);
       this.a.setTextSize(2, 12.0F);
       this.a.setIncludeFontPadding(false);
-      this.a.setPadding(AIOUtils.a(4.0F, this.mContext.getResources()), 0, AIOUtils.a(4.0F, this.mContext.getResources()), 0);
+      this.a.setPadding(AIOUtils.b(4.0F, this.mContext.getResources()), 0, AIOUtils.b(4.0F, this.mContext.getResources()), 0);
       this.a.setEllipsize(TextUtils.TruncateAt.END);
       this.a.setSingleLine();
       this.a.setGravity(17);
@@ -40,7 +40,7 @@ public class TroopMemberLevelExtender
     }
   }
   
-  public NickNameExtenderViewBasicAbility getBasicAbility()
+  public BaseChatItemLayoutViewBasicAbility getBasicAbility()
   {
     if (this.ability == null) {
       this.ability = new TroopMemberLevelExtender.1(this, this.a);
@@ -56,7 +56,7 @@ public class TroopMemberLevelExtender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.basechatitemlayout.TroopMemberLevelExtender
  * JD-Core Version:    0.7.0.1
  */

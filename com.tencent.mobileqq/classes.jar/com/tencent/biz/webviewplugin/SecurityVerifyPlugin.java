@@ -12,21 +12,19 @@ import org.json.JSONObject;
 public class SecurityVerifyPlugin
   extends WebViewPlugin
 {
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    boolean bool = true;
     if (QLog.isColorLevel()) {
       QLog.d("Q.security_verify", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
     }
-    if (!"userVerify".equals(paramString2)) {}
-    do
-    {
+    if (!"userVerify".equals(paramString2)) {
       return false;
-      paramJsBridgeListener = this.mRuntime.a();
-    } while (paramJsBridgeListener == null);
-    if ("setTicket".equals(paramString3)) {}
-    for (;;)
-    {
+    }
+    paramJsBridgeListener = this.mRuntime.a();
+    if (paramJsBridgeListener == null) {
+      return false;
+    }
+    if ("setTicket".equals(paramString3)) {
       try
       {
         paramString1 = new JSONObject(paramVarArgs[0]).optString("ticket");
@@ -38,21 +36,21 @@ public class SecurityVerifyPlugin
         paramString2.putExtra("ticket", paramString1);
         paramJsBridgeListener.setResult(-1, paramString2);
         paramJsBridgeListener.finish();
+        return true;
       }
       catch (Exception paramJsBridgeListener)
       {
         paramJsBridgeListener.printStackTrace();
         QLog.d("Q.security_verify", 1, "handleJsRequest", paramJsBridgeListener);
-        continue;
+        return true;
       }
-      return bool;
-      bool = false;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.SecurityVerifyPlugin
  * JD-Core Version:    0.7.0.1
  */

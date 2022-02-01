@@ -15,7 +15,11 @@ final class FileSystemManager$Resolution
   
   public String toString()
   {
-    return this.path + " -> " + this.fileSystem.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.path);
+    localStringBuilder.append(" -> ");
+    localStringBuilder.append(this.fileSystem.toString());
+    return localStringBuilder.toString();
   }
   
   boolean valid()
@@ -25,7 +29,7 @@ final class FileSystemManager$Resolution
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.vfs.FileSystemManager.Resolution
  * JD-Core Version:    0.7.0.1
  */

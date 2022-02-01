@@ -11,23 +11,29 @@ public class QuestionOptionsDataSource
   
   private String a()
   {
-    switch (this.a.size())
+    int i = this.a.size();
+    if (i != 0)
     {
-    default: 
-      return "";
-    case 0: 
-      return "A.";
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3) {
+            return "";
+          }
+          return "D.";
+        }
+        return "C.";
+      }
       return "B.";
-    case 2: 
-      return "C.";
     }
-    return "D.";
+    return "A.";
   }
   
   public int a(String paramString)
   {
-    this.a.add(new QuestionOptionInfo(this.a.size(), paramString));
+    List localList = this.a;
+    localList.add(new QuestionOptionInfo(localList.size(), paramString));
     return this.a.size() - 1;
   }
   
@@ -48,7 +54,10 @@ public class QuestionOptionsDataSource
       while (paramList.hasNext())
       {
         String str = (String)paramList.next();
-        int i = a(a() + str);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(a());
+        localStringBuilder.append(str);
+        int i = a(localStringBuilder.toString());
         if (i >= 0) {
           localArrayList.add(Integer.valueOf(i));
         }
@@ -64,7 +73,7 @@ public class QuestionOptionsDataSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.festivalstage.questionoption.QuestionOptionsDataSource
  * JD-Core Version:    0.7.0.1
  */

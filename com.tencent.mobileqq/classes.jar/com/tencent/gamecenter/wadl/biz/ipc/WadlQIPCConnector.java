@@ -14,23 +14,22 @@ public class WadlQIPCConnector
   
   public static WadlQIPCConnector a()
   {
-    if (jdField_a_of_type_ComTencentGamecenterWadlBizIpcWadlQIPCConnector == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentGamecenterWadlBizIpcWadlQIPCConnector == null) {
-        jdField_a_of_type_ComTencentGamecenterWadlBizIpcWadlQIPCConnector = new WadlQIPCConnector();
+    if (jdField_a_of_type_ComTencentGamecenterWadlBizIpcWadlQIPCConnector == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentGamecenterWadlBizIpcWadlQIPCConnector == null) {
+          jdField_a_of_type_ComTencentGamecenterWadlBizIpcWadlQIPCConnector = new WadlQIPCConnector();
+        }
       }
-      return jdField_a_of_type_ComTencentGamecenterWadlBizIpcWadlQIPCConnector;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentGamecenterWadlBizIpcWadlQIPCConnector;
   }
   
   private void b()
   {
     this.b = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("WadlQIPCConnector", 2, "begin connect:");
-    }
+    QLog.d("Wadl_QIPCConnector", 1, "begin connect:");
     QIPCClientHelper.getInstance().getClient().addListener(new WadlQIPCConnector.1(this));
     long l = System.currentTimeMillis();
     QIPCClientHelper.getInstance().getClient().connect(new WadlQIPCConnector.2(this, l));
@@ -45,26 +44,24 @@ public class WadlQIPCConnector
       synchronized (this.jdField_a_of_type_JavaLangObject)
       {
         boolean bool = this.jdField_a_of_type_Boolean;
-        if (!bool) {}
-        try
-        {
-          this.jdField_a_of_type_JavaLangObject.wait(500L);
-          return;
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          for (;;)
+        if (!bool) {
+          try
+          {
+            this.jdField_a_of_type_JavaLangObject.wait(500L);
+          }
+          catch (InterruptedException localInterruptedException)
           {
             localInterruptedException.printStackTrace();
           }
         }
+        return;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.biz.ipc.WadlQIPCConnector
  * JD-Core Version:    0.7.0.1
  */

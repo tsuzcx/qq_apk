@@ -16,7 +16,10 @@ class AppStateManager$3$1
   {
     try
     {
-      QMLog.i("minisdk-start_RuntimeState", "restart " + AppStateManager.access$000(this.this$1.this$0).getRuntime().getMiniAppInfo());
+      paramDialogInterface = new StringBuilder();
+      paramDialogInterface.append("restart ");
+      paramDialogInterface.append(AppStateManager.access$000(this.this$1.this$0).getRuntime().getMiniAppInfo());
+      QMLog.i("minisdk-start_RuntimeState", paramDialogInterface.toString());
       MiniCacheFreeManager.freeCache(LoginManager.getInstance().getAccount(), this.this$1.val$miniAppInfo, false, new AppStateManager.3.1.1(this));
       return;
     }
@@ -28,7 +31,7 @@ class AppStateManager$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.AppStateManager.3.1
  * JD-Core Version:    0.7.0.1
  */

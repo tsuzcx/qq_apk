@@ -11,13 +11,14 @@ class FormEditItem$1
   public void onGlobalLayout()
   {
     this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    FormEditItem.a(this.a, this.a.getMeasuredWidth());
+    FormEditItem localFormEditItem = this.a;
+    FormEditItem.a(localFormEditItem, localFormEditItem.getMeasuredWidth());
     FormEditItem.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FormEditItem.1
  * JD-Core Version:    0.7.0.1
  */

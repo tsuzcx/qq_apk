@@ -26,11 +26,6 @@ public class AvatarPendantManager
   public boolean a;
   List<AvatarInPendantHeadportraitInfo> b;
   
-  static
-  {
-    jdField_b_of_type_Long = 0L;
-  }
-  
   public AvatarPendantManager(AppInterface paramAppInterface)
   {
     this.jdField_a_of_type_Long = -1L;
@@ -45,20 +40,28 @@ public class AvatarPendantManager
   {
     synchronized (this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache)
     {
-      PendantInfo localPendantInfo2 = (PendantInfo)this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache.get(Long.valueOf(paramLong));
-      if (localPendantInfo2 != null)
+      PendantInfo localPendantInfo = (PendantInfo)this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache.get(Long.valueOf(paramLong));
+      Object localObject1;
+      if (localPendantInfo != null)
       {
-        localPendantInfo1 = localPendantInfo2;
+        localObject1 = localPendantInfo;
         if (QLog.isColorLevel())
         {
-          QLog.d("AvatarPendantManager", 2, "getPendantInfo pendantId=" + paramLong + " from cache");
-          localPendantInfo1 = localPendantInfo2;
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("getPendantInfo pendantId=");
+          ((StringBuilder)localObject1).append(paramLong);
+          ((StringBuilder)localObject1).append(" from cache");
+          QLog.d("AvatarPendantManager", 2, ((StringBuilder)localObject1).toString());
+          localObject1 = localPendantInfo;
         }
-        localPendantInfo1.a(this.jdField_a_of_type_Boolean);
-        return localPendantInfo1;
       }
-      PendantInfo localPendantInfo1 = new PendantInfo(paramLong);
-      this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache.put(Long.valueOf(paramLong), localPendantInfo1);
+      else
+      {
+        localObject1 = new PendantInfo(paramLong);
+        this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache.put(Long.valueOf(paramLong), localObject1);
+      }
+      ((PendantInfo)localObject1).a(this.jdField_a_of_type_Boolean);
+      return localObject1;
     }
   }
   
@@ -82,15 +85,20 @@ public class AvatarPendantManager
     synchronized (this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache)
     {
       Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache.values().iterator();
-      if (localIterator.hasNext()) {
+      while (localIterator.hasNext()) {
         ((PendantInfo)localIterator.next()).a(true);
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
   public void a(List<AvatarInPendantHeadportraitInfo> paramList)
   {
-    this.jdField_b_of_type_JavaUtilList = paramList;
+    this.b = paramList;
   }
   
   public boolean a(long paramLong)
@@ -109,7 +117,7 @@ public class AvatarPendantManager
   
   public List<AvatarInPendantHeadportraitInfo> b()
   {
-    return this.jdField_b_of_type_JavaUtilList;
+    return this.b;
   }
   
   public void b()
@@ -118,9 +126,14 @@ public class AvatarPendantManager
     synchronized (this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache)
     {
       Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache.values().iterator();
-      if (localIterator.hasNext()) {
+      while (localIterator.hasNext()) {
         ((PendantInfo)localIterator.next()).a(false);
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -129,11 +142,16 @@ public class AvatarPendantManager
     synchronized (this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache)
     {
       Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache.values().iterator();
-      if (localIterator.hasNext()) {
+      while (localIterator.hasNext()) {
         ((PendantInfo)localIterator.next()).c();
       }
+      this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache.clear();
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantManager$PendantInfoLruCache.clear();
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public void onDestroy()
@@ -147,7 +165,7 @@ public class AvatarPendantManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.AvatarPendantManager
  * JD-Core Version:    0.7.0.1
  */

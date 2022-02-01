@@ -8,8 +8,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.contact.recommendtroop.base.CommonAdapter;
-import com.tencent.mobileqq.activity.contact.recommendtroop.base.ViewHolder;
+import com.tencent.mobileqq.troop.adapter.CommonAdapter;
+import com.tencent.mobileqq.troop.adapter.base.ViewHolder;
 import com.tencent.mobileqq.troop.shortcutbar.ShortcutBarInfo;
 
 class PopupMoreListDialog$3
@@ -20,14 +20,14 @@ class PopupMoreListDialog$3
     super(paramContext, paramInt);
   }
   
-  public ViewHolder a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
+  protected ViewHolder a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
   {
     paramViewGroup = LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false);
     paramContext = new ShortcutBarMoreListHolder(paramContext, paramViewGroup);
-    paramContext.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131378044));
-    paramContext.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131378045));
-    paramContext.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramViewGroup.findViewById(2131378048));
-    paramContext.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131378049));
+    paramContext.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131377469));
+    paramContext.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131377470));
+    paramContext.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramViewGroup.findViewById(2131377473));
+    paramContext.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131377474));
     return paramContext;
   }
   
@@ -38,7 +38,7 @@ class PopupMoreListDialog$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.PopupMoreListDialog.3
  * JD-Core Version:    0.7.0.1
  */

@@ -26,16 +26,17 @@ final class GroupSearchEngine$3
     }
     catch (ExecutionException paramRunnable)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("GroupSearchEngine", 2, "Exception happened", paramRunnable);
+      if (QLog.isColorLevel()) {
+        QLog.e("GroupSearchEngine", 2, "Exception happened", paramRunnable);
+      }
       return;
     }
-    catch (Error paramRunnable) {}catch (Exception paramRunnable) {}
+    catch (Exception|Error paramRunnable) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.GroupSearchEngine.3
  * JD-Core Version:    0.7.0.1
  */

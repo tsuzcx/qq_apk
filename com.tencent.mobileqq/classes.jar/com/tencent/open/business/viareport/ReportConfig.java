@@ -11,7 +11,7 @@ public class ReportConfig
 {
   public static int a()
   {
-    int j = OpenConfig.a(CommonDataAdapter.a().a(), null).a("Common_BusinessReportMaxcount");
+    int j = OpenConfig.a(CommonDataAdapter.a().a(), null).b("Common_BusinessReportMaxcount");
     int i = j;
     if (j == 0) {
       i = 20;
@@ -24,24 +24,26 @@ public class ReportConfig
     int i;
     if (paramInt == 0)
     {
-      i = OpenConfig.a(CommonDataAdapter.a().a(), null).a("Common_ViaSuccessRatioFrequencySuccess");
+      i = OpenConfig.a(CommonDataAdapter.a().a(), null).b("Common_ViaSuccessRatioFrequencySuccess");
       paramInt = i;
       if (i == 0) {
-        paramInt = 20;
+        return 20;
       }
     }
-    do
+    else
     {
-      return paramInt;
-      i = OpenConfig.a(CommonDataAdapter.a().a(), null).a("Common_ViaSuccessRatioFrequencyFail");
+      i = OpenConfig.a(CommonDataAdapter.a().a(), null).b("Common_ViaSuccessRatioFrequencyFail");
       paramInt = i;
-    } while (i != 0);
-    return 50;
+      if (i == 0) {
+        paramInt = 50;
+      }
+    }
+    return paramInt;
   }
   
   public static int a(String paramString)
   {
-    int j = OpenConfig.a(CommonDataAdapter.a().a(), paramString).a("Common_BusinessReportFrequency");
+    int j = OpenConfig.a(CommonDataAdapter.a().a(), paramString).b("Common_BusinessReportFrequency");
     int i = j;
     if (j == 0) {
       i = 100;
@@ -89,7 +91,7 @@ public class ReportConfig
   
   public static int b()
   {
-    int j = OpenConfig.a(CommonDataAdapter.a().a(), null).a("Common_HttpRetryCount");
+    int j = OpenConfig.a(CommonDataAdapter.a().a(), null).b("Common_HttpRetryCount");
     int i = j;
     if (j == 0) {
       i = 2;
@@ -109,7 +111,7 @@ public class ReportConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.business.viareport.ReportConfig
  * JD-Core Version:    0.7.0.1
  */

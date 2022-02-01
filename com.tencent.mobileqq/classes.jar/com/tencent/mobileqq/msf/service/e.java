@@ -45,42 +45,45 @@ public class e
     try
     {
       paramContext = MsfStore.getNativeConfigStore().getConfigList("app_process_info_");
-      StringBuilder localStringBuilder = new StringBuilder().append("start loadAppProcessInfos proInfos size=");
-      if (paramContext == null)
-      {
-        localObject = "null";
-        QLog.d("MSF.S.AppProcessManager", 1, localObject);
-        if (paramContext == null) {
-          return;
-        }
-        int j = paramContext.length;
-        int i = 0;
-        while (i < j)
-        {
-          localObject = paramContext[i];
-          QLog.d("MSF.S.AppProcessManager", 1, "loadAppProcessInfo proInfo:" + (String)localObject);
-          String[] arrayOfString = ((String)localObject).split(",");
-          localStringBuilder = arrayOfString[0];
-          localObject = "";
-          if (arrayOfString.length > 1) {
-            localObject = arrayOfString[1];
-          }
-          a(localStringBuilder, (String)localObject, null, 0);
-          i += 1;
-        }
-      }
     }
     catch (UnsatisfiedLinkError paramContext)
     {
-      for (;;)
+      QLog.d("MSF.S.AppProcessManager", 1, "loadAppProcessInfo UnsatisfiedLinkError", paramContext);
+      if (new Random().nextInt(100) < 1) {
+        CrashReport.handleCatchException(Thread.currentThread(), paramContext, "NativeConfigStoreCatchedException", null);
+      }
+      paramContext = null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("start loadAppProcessInfos proInfos size=");
+    Object localObject;
+    if (paramContext == null) {
+      localObject = "null";
+    } else {
+      localObject = Integer.valueOf(paramContext.length);
+    }
+    localStringBuilder.append(localObject);
+    QLog.d("MSF.S.AppProcessManager", 1, localStringBuilder.toString());
+    if (paramContext != null)
+    {
+      int j = paramContext.length;
+      int i = 0;
+      while (i < j)
       {
-        QLog.d("MSF.S.AppProcessManager", 1, "loadAppProcessInfo UnsatisfiedLinkError", paramContext);
-        if (new Random().nextInt(100) < 1) {
-          CrashReport.handleCatchException(Thread.currentThread(), paramContext, "NativeConfigStoreCatchedException", null);
+        localObject = paramContext[i];
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("loadAppProcessInfo proInfo:");
+        localStringBuilder.append((String)localObject);
+        QLog.d("MSF.S.AppProcessManager", 1, localStringBuilder.toString());
+        localObject = ((String)localObject).split(",");
+        localStringBuilder = localObject[0];
+        if (localObject.length > 1) {
+          localObject = localObject[1];
+        } else {
+          localObject = "";
         }
-        paramContext = null;
-        continue;
-        Object localObject = Integer.valueOf(paramContext.length);
+        a(localStringBuilder, (String)localObject, null, 0);
+        i += 1;
       }
     }
   }
@@ -104,154 +107,208 @@ public class e
   
   public static void a(String paramString, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    if ((paramString == null) || (paramString.length() == 0))
+    if ((paramString != null) && (paramString.length() != 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("MSF.S.AppProcessManager", 2, "find null processName msg to app " + paramToServiceMsg + " " + paramFromServiceMsg);
-      }
-      if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getServiceCmd() != null) && (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))) {
-        com.tencent.mobileqq.msf.core.c.e.a().a(e.a.c, paramFromServiceMsg.getWupBuffer(), 7);
-      }
-      return;
-    }
-    if (paramString.equals("*"))
-    {
-      paramString = c.entrySet().iterator();
-      while (paramString.hasNext())
+      if (paramString.equals("*"))
       {
-        localObject = (Map.Entry)paramString.next();
-        MsfSdkUtils.addFromMsgProcessName((String)((Map.Entry)localObject).getKey(), paramFromServiceMsg);
-        ((c)((Map.Entry)localObject).getValue()).i.add(new MsfMessagePair(paramToServiceMsg, paramFromServiceMsg));
+        paramString = c.entrySet().iterator();
+        while (paramString.hasNext())
+        {
+          localObject = (Map.Entry)paramString.next();
+          MsfSdkUtils.addFromMsgProcessName((String)((Map.Entry)localObject).getKey(), paramFromServiceMsg);
+          ((c)((Map.Entry)localObject).getValue()).i.add(new MsfMessagePair(paramToServiceMsg, paramFromServiceMsg));
+        }
       }
-    }
-    Object localObject = (c)c.get(paramString);
-    if (localObject != null)
-    {
-      ((c)localObject).i.add(new MsfMessagePair(paramToServiceMsg, paramFromServiceMsg));
+      Object localObject = (c)c.get(paramString);
+      boolean bool = true;
+      if (localObject != null)
+      {
+        ((c)localObject).i.add(new MsfMessagePair(paramToServiceMsg, paramFromServiceMsg));
+      }
+      else
+      {
+        if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getServiceCmd() != null) && (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))) {
+          com.tencent.mobileqq.msf.core.c.e.a().a(e.a.c, paramFromServiceMsg.getWupBuffer(), 8);
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("can not find ");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" to receive msg to:");
+        localStringBuilder.append(paramToServiceMsg);
+        localStringBuilder.append(" from:");
+        localStringBuilder.append(paramFromServiceMsg);
+        QLog.e("MSF.S.AppProcessManager", 1, localStringBuilder.toString());
+      }
       if (paramFromServiceMsg.getServiceCmd().equals(com.tencent.qphone.base.BaseConstants.CMD_NeedBootPushCmdHeads[1]))
       {
         paramToServiceMsg = new HashMap();
         a(paramToServiceMsg);
         paramToServiceMsg.put("MsgType", paramFromServiceMsg.toString());
         if (localObject == null) {
-          break label424;
+          bool = false;
         }
-      }
-    }
-    label424:
-    for (boolean bool = true;; bool = false)
-    {
-      paramToServiceMsg.put("AppInfo", String.valueOf(bool));
-      paramToServiceMsg.put("uin", paramFromServiceMsg.getUin());
-      paramToServiceMsg.put("ProcName", paramString);
-      paramToServiceMsg.put("appid", String.valueOf(paramFromServiceMsg.getAppId()));
-      if (e.getStatReporter() != null) {
-        e.getStatReporter().a("dim.Msf.ForkVideoProc", false, 0L, 0L, paramToServiceMsg, true, false);
+        paramToServiceMsg.put("AppInfo", String.valueOf(bool));
+        paramToServiceMsg.put("uin", paramFromServiceMsg.getUin());
+        paramToServiceMsg.put("ProcName", paramString);
+        paramToServiceMsg.put("appid", String.valueOf(paramFromServiceMsg.getAppId()));
+        if (e.getStatReporter() != null) {
+          e.getStatReporter().a("dim.Msf.ForkVideoProc", false, 0L, 0L, paramToServiceMsg, true, false);
+        }
       }
       d.a();
       return;
-      if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getServiceCmd() != null) && (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))) {
-        com.tencent.mobileqq.msf.core.c.e.a().a(e.a.c, paramFromServiceMsg.getWupBuffer(), 8);
-      }
-      QLog.e("MSF.S.AppProcessManager", 1, "can not find " + paramString + " to receive msg to:" + paramToServiceMsg + " from:" + paramFromServiceMsg);
-      break;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("find null processName msg to app ");
+      paramString.append(paramToServiceMsg);
+      paramString.append(" ");
+      paramString.append(paramFromServiceMsg);
+      QLog.e("MSF.S.AppProcessManager", 2, paramString.toString());
+    }
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getServiceCmd() != null) && (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))) {
+      com.tencent.mobileqq.msf.core.c.e.a().a(e.a.c, paramFromServiceMsg.getWupBuffer(), 7);
     }
   }
   
   public static void a(String paramString, Boolean paramBoolean)
   {
-    QLog.i("MSF.S.AppProcessManager", 1, "onUnRegisterApp process=" + paramString + " stopWakeupProcess=" + paramBoolean);
-    c localc = (c)c.get(paramString);
-    if (localc != null)
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("onUnRegisterApp process=");
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append(" stopWakeupProcess=");
+    ((StringBuilder)localObject1).append(paramBoolean);
+    QLog.i("MSF.S.AppProcessManager", 1, ((StringBuilder)localObject1).toString());
+    Object localObject2 = (c)c.get(paramString);
+    if (localObject2 != null)
     {
-      localc.a(localc.c());
+      ((c)localObject2).a(((c)localObject2).c());
       if (BaseApplication.getContext().getPackageName().equals(paramString)) {
-        localc.a(100, 0L, 0L);
+        ((c)localObject2).a(100, 0L, 0L);
       }
     }
-    if (!paramBoolean.booleanValue()) {
+    boolean bool = paramBoolean.booleanValue();
+    paramBoolean = "failed";
+    if (!bool)
+    {
       if (QLog.isColorLevel())
       {
-        paramBoolean = new StringBuilder().append("unregister process :").append(paramString).append(" ");
-        if (localc != null) {
-          break label139;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("unregister process :");
+        ((StringBuilder)localObject1).append(paramString);
+        ((StringBuilder)localObject1).append(" ");
+        if (localObject2 != null) {
+          paramBoolean = "succ";
         }
-        paramString = "failed";
-        QLog.d("MSF.S.AppProcessManager", 2, paramString);
+        ((StringBuilder)localObject1).append(paramBoolean);
+        QLog.d("MSF.S.AppProcessManager", 2, ((StringBuilder)localObject1).toString());
       }
     }
-    label139:
-    do
+    else
     {
-      return;
-      paramString = "succ";
-      break;
-      localc = (c)c.remove(paramString);
-      MsfStore.getNativeConfigStore().removeConfig("app_process_info_" + paramString);
-    } while (!QLog.isColorLevel());
-    paramBoolean = new StringBuilder().append("remove process :").append(paramString).append(" ");
-    if (localc == null) {}
-    for (paramString = "failed";; paramString = "succ")
-    {
-      QLog.d("MSF.S.AppProcessManager", 2, paramString);
-      return;
+      localObject1 = (c)c.remove(paramString);
+      localObject2 = MsfStore.getNativeConfigStore();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("app_process_info_");
+      localStringBuilder.append(paramString);
+      ((NativeConfigStore)localObject2).removeConfig(localStringBuilder.toString());
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("remove process :");
+        ((StringBuilder)localObject2).append(paramString);
+        ((StringBuilder)localObject2).append(" ");
+        if (localObject1 != null) {
+          paramBoolean = "succ";
+        }
+        ((StringBuilder)localObject2).append(paramBoolean);
+        QLog.d("MSF.S.AppProcessManager", 2, ((StringBuilder)localObject2).toString());
+      }
     }
   }
   
   public static void a(String paramString1, String paramString2, IMsfServiceCallbacker paramIMsfServiceCallbacker, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("onRegisterApp process=").append(paramString1).append(" processBootName=").append(paramString2).append(" appid=").append(paramInt).append(" callback=");
-    if (paramIMsfServiceCallbacker != null) {}
-    for (String str = Integer.toHexString(paramIMsfServiceCallbacker.hashCode());; str = "null")
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("onRegisterApp process=");
+    localStringBuilder2.append(paramString1);
+    localStringBuilder2.append(" processBootName=");
+    localStringBuilder2.append(paramString2);
+    localStringBuilder2.append(" appid=");
+    localStringBuilder2.append(paramInt);
+    localStringBuilder2.append(" callback=");
+    if (paramIMsfServiceCallbacker != null) {
+      str = Integer.toHexString(paramIMsfServiceCallbacker.hashCode());
+    } else {
+      str = "null";
+    }
+    localStringBuilder2.append(str);
+    QLog.i("MSF.S.AppProcessManager", 1, localStringBuilder2.toString());
+    if (paramString1 == null)
     {
-      QLog.i("MSF.S.AppProcessManager", 1, str);
-      if (paramString1 != null) {
-        break;
-      }
-      QLog.w("MSF.S.AppProcessManager", 1, MsfSdkUtils.getProcessName(BaseApplication.getContext()) + " " + Thread.currentThread().getName() + " onRegisterApp appProcessName is null");
+      paramString1 = new StringBuilder();
+      paramString1.append(MsfSdkUtils.getProcessName(BaseApplication.getContext()));
+      paramString1.append(" ");
+      paramString1.append(Thread.currentThread().getName());
+      paramString1.append(" onRegisterApp appProcessName is null");
+      QLog.w("MSF.S.AppProcessManager", 1, paramString1.toString());
       return;
     }
-    str = BaseApplication.getContext().getPackageName();
+    String str = BaseApplication.getContext().getPackageName();
+    int i = 0;
     try
     {
-      bool = paramString1.equals(str);
-      if (!c.containsKey(paramString1))
-      {
-        c.putIfAbsent(paramString1, new c());
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.S.AppProcessManager", 2, "add processName: " + paramString1);
-        }
-        if (bool)
-        {
-          ((c)c.get(paramString1)).j = f;
-          ((c)c.get(paramString1)).e = true;
-        }
-      }
-      ((c)c.get(paramString1)).a(paramString1, paramString2, paramIMsfServiceCallbacker);
-      MsfStore.getNativeConfigStore().setConfig("app_process_info_" + paramString1, ((c)c.get(paramString1)).a());
-      if ((paramInt != 0) && (bool) && ((MsfCore.mobileQQAppid == -1) || (MsfCore.mobileQQAppid != paramInt)))
-      {
-        MsfCore.mobileQQAppid = paramInt;
-        MsfStore.getNativeConfigStore().setConfig("key_mobileQQAppid", String.valueOf(paramInt));
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.S.AppProcessManager", 2, "set mobileQQAppid :" + paramInt);
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.S.AppProcessManager", 2, "add process :" + paramString1);
-      }
-      d.a();
-      f.a().c();
-      return;
+      boolean bool = paramString1.equals(str);
+      i = bool;
     }
     catch (Exception localException)
     {
-      for (;;)
+      QLog.w("MSF.S.AppProcessManager", 1, "except at string compare ", localException);
+    }
+    if (!c.containsKey(paramString1))
+    {
+      c.putIfAbsent(paramString1, new c());
+      if (QLog.isColorLevel())
       {
-        QLog.w("MSF.S.AppProcessManager", 1, "except at string compare ", localException);
-        boolean bool = false;
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("add processName: ");
+        localStringBuilder1.append(paramString1);
+        QLog.d("MSF.S.AppProcessManager", 2, localStringBuilder1.toString());
+      }
+      if (i != 0)
+      {
+        ((c)c.get(paramString1)).j = f;
+        ((c)c.get(paramString1)).e = true;
       }
     }
+    ((c)c.get(paramString1)).a(paramString1, paramString2, paramIMsfServiceCallbacker);
+    paramString2 = MsfStore.getNativeConfigStore();
+    paramIMsfServiceCallbacker = new StringBuilder();
+    paramIMsfServiceCallbacker.append("app_process_info_");
+    paramIMsfServiceCallbacker.append(paramString1);
+    paramString2.setConfig(paramIMsfServiceCallbacker.toString(), ((c)c.get(paramString1)).a());
+    if ((paramInt != 0) && (i != 0) && ((MsfCore.mobileQQAppid == -1) || (MsfCore.mobileQQAppid != paramInt)))
+    {
+      MsfCore.mobileQQAppid = paramInt;
+      MsfStore.getNativeConfigStore().setConfig("key_mobileQQAppid", String.valueOf(paramInt));
+      if (QLog.isColorLevel())
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("set mobileQQAppid :");
+        paramString2.append(paramInt);
+        QLog.d("MSF.S.AppProcessManager", 2, paramString2.toString());
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("add process :");
+      paramString2.append(paramString1);
+      QLog.d("MSF.S.AppProcessManager", 2, paramString2.toString());
+    }
+    d.a();
+    f.a().c();
   }
   
   public static void a(HashMap paramHashMap)
@@ -267,8 +324,9 @@ public class e
     }
     catch (Exception paramHashMap)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("MSF.S.AppProcessManager", 2, "getSystemStatus exception", paramHashMap);
+      if (QLog.isColorLevel()) {
+        QLog.d("MSF.S.AppProcessManager", 2, "getSystemStatus exception", paramHashMap);
+      }
     }
   }
   
@@ -279,43 +337,63 @@ public class e
   
   public static void b(String paramString, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    if ((paramString == null) || (paramString.length() == 0))
+    if ((paramString != null) && (paramString.length() != 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("MSF.S.AppProcessManager", 2, "find null processName msg to app " + paramToServiceMsg + " " + paramFromServiceMsg);
+      Object localObject = (c)c.get(paramString);
+      if (localObject != null)
+      {
+        int i = ((Integer)paramToServiceMsg.getAttribute("status")).intValue();
+        paramFromServiceMsg.addAttribute("status", Integer.valueOf(i));
+        paramFromServiceMsg.setMsgSuccess();
+        if (i == 1)
+        {
+          a(paramString, paramToServiceMsg, paramFromServiceMsg);
+          ((c)localObject).c = true;
+          ((c)localObject).b = SystemClock.elapsedRealtime();
+        }
+        else if (i == 2)
+        {
+          ((c)localObject).c = false;
+        }
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("setAppConnStatus ");
+        paramToServiceMsg.append(paramString);
+        paramToServiceMsg.append(" ");
+        paramToServiceMsg.append(i);
+        QLog.e("MSF.S.AppProcessManager", 1, paramToServiceMsg.toString());
+        return;
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("can not find ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" to receive msg to:");
+      ((StringBuilder)localObject).append(paramToServiceMsg);
+      ((StringBuilder)localObject).append(" from:");
+      ((StringBuilder)localObject).append(paramFromServiceMsg);
+      QLog.e("MSF.S.AppProcessManager", 1, ((StringBuilder)localObject).toString());
       return;
     }
-    c localc = (c)c.get(paramString);
-    if (localc != null)
+    if (QLog.isColorLevel())
     {
-      int i = ((Integer)paramToServiceMsg.getAttribute("status")).intValue();
-      paramFromServiceMsg.addAttribute("status", Integer.valueOf(i));
-      paramFromServiceMsg.setMsgSuccess();
-      if (i == 1)
-      {
-        a(paramString, paramToServiceMsg, paramFromServiceMsg);
-        localc.c = true;
-        localc.b = SystemClock.elapsedRealtime();
-      }
-      for (;;)
-      {
-        QLog.e("MSF.S.AppProcessManager", 1, "setAppConnStatus " + paramString + " " + i);
-        return;
-        if (i == 2) {
-          localc.c = false;
-        }
-      }
+      paramString = new StringBuilder();
+      paramString.append("find null processName msg to app ");
+      paramString.append(paramToServiceMsg);
+      paramString.append(" ");
+      paramString.append(paramFromServiceMsg);
+      QLog.e("MSF.S.AppProcessManager", 2, paramString.toString());
     }
-    QLog.e("MSF.S.AppProcessManager", 1, "can not find " + paramString + " to receive msg to:" + paramToServiceMsg + " from:" + paramFromServiceMsg);
   }
   
   public static boolean b(String paramString)
   {
-    c localc = (c)c.get(paramString);
-    if ((localc != null) && (localc.c() != null))
+    Object localObject = (c)c.get(paramString);
+    if ((localObject != null) && (((c)localObject).c() != null))
     {
-      QLog.w("MSF.S.AppProcessManager", 1, "process " + paramString + " also registed,can not unregister by proxy.");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("process ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" also registed,can not unregister by proxy.");
+      QLog.w("MSF.S.AppProcessManager", 1, ((StringBuilder)localObject).toString());
       return false;
     }
     return true;
@@ -337,18 +415,15 @@ public class e
         paramFromServiceMsg.addAttribute("keepAlive", Boolean.valueOf(bool));
         paramFromServiceMsg.setMsgSuccess();
         a(paramString, paramToServiceMsg, paramFromServiceMsg);
+        return;
       }
+      QLog.e("MSF.S.AppProcessManager", 1, String.format("keepProcessAlive can not find process to receive msg, processName=%s", new Object[] { paramString }));
     }
-    else
-    {
-      return;
-    }
-    QLog.e("MSF.S.AppProcessManager", 1, String.format("keepProcessAlive can not find process to receive msg, processName=%s", new Object[] { paramString }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.service.e
  * JD-Core Version:    0.7.0.1
  */

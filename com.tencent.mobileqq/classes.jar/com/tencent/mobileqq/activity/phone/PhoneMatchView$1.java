@@ -11,19 +11,19 @@ class PhoneMatchView$1
   
   public void run()
   {
-    this.this$0.a(2131719050, 1000L, true);
+    this.this$0.a(2131718766, 1000L, true);
     PhoneMatchView.a(this.this$0).sendEmptyMessageDelayed(0, 15000L);
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
+    if (this.this$0.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver == null)
     {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new PhoneMatchView.1.1(this);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.this$0.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver = new PhoneMatchView.1.1(this);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.this$0.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver);
     }
     ThreadManager.excute(new PhoneMatchView.1.2(this), 16, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.PhoneMatchView.1
  * JD-Core Version:    0.7.0.1
  */

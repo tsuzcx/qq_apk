@@ -34,36 +34,46 @@ public abstract class OrientationProvider2
   
   protected void a(float[] paramArrayOfFloat)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener == null) || (paramArrayOfFloat == null)) {}
-    do
+    if (this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener != null)
     {
-      do
-      {
+      if (paramArrayOfFloat == null) {
         return;
-        this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4.set(paramArrayOfFloat);
-        this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationOrientationCalculator.a(this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4, 0, this.c);
-        if (this.jdField_a_of_type_Int == 1)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener.updateAzimuth(this.c[0]);
-          return;
-        }
-        this.b[0] = this.c[1];
-        this.b[1] = (-this.c[0]);
-        this.b[2] = (-this.c[2]);
-        if (this.jdField_a_of_type_Int == 0)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener.updateRotation(this.b[0], this.b[1], this.b[2]);
-          return;
-        }
-      } while ((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 3));
-      this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener.updateRotation(this.b[0], this.b[1], this.b[2]);
-    } while ((this.jdField_a_of_type_Int != 3) || (paramArrayOfFloat.length != 16));
-    this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener.onRotationUpdateOriginal(paramArrayOfFloat);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4.set(paramArrayOfFloat);
+      this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationOrientationCalculator.a(this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4, 0, this.c);
+      int i = this.jdField_a_of_type_Int;
+      if (i == 1)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener.updateAzimuth(this.c[0]);
+        return;
+      }
+      Object localObject = this.b;
+      float[] arrayOfFloat = this.c;
+      localObject[0] = arrayOfFloat[1];
+      localObject[1] = (-arrayOfFloat[0]);
+      localObject[2] = (-arrayOfFloat[2]);
+      if (i == 0)
+      {
+        paramArrayOfFloat = this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener;
+        localObject = this.b;
+        paramArrayOfFloat.updateRotation(localObject[0], localObject[1], localObject[2]);
+        return;
+      }
+      if ((i != 2) && (i != 3)) {
+        return;
+      }
+      localObject = this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener;
+      arrayOfFloat = this.b;
+      ((ARSensorManager.OnSensorChangeListener)localObject).updateRotation(arrayOfFloat[0], arrayOfFloat[1], arrayOfFloat[2]);
+      if ((this.jdField_a_of_type_Int == 3) && (paramArrayOfFloat.length == 16)) {
+        this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener.onRotationUpdateOriginal(paramArrayOfFloat);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.sensor.provider.OrientationProvider2
  * JD-Core Version:    0.7.0.1
  */

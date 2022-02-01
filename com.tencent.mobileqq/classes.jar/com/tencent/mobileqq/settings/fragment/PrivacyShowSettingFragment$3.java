@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.settings.fragment;
 
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
@@ -15,15 +15,19 @@ class PrivacyShowSettingFragment$3
   public void run()
   {
     boolean bool = ((FriendsManager)this.this$0.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.this$0.a.getCurrentAccountUin()).medalSwitchDisable;
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarFragment", 2, "PermissionPrivacyFragment initUI medalSwitchDisable = " + bool);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PermissionPrivacyFragment initUI medalSwitchDisable = ");
+      localStringBuilder.append(bool);
+      QLog.d("IphoneTitleBarFragment", 2, localStringBuilder.toString());
     }
-    this.this$0.getActivity().runOnUiThread(new PrivacyShowSettingFragment.3.1(this, bool));
+    this.this$0.getBaseActivity().runOnUiThread(new PrivacyShowSettingFragment.3.1(this, bool));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.fragment.PrivacyShowSettingFragment.3
  * JD-Core Version:    0.7.0.1
  */

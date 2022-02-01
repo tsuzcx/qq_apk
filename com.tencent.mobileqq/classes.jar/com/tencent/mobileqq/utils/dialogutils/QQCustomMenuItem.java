@@ -50,12 +50,21 @@ public class QQCustomMenuItem
   
   public String toString()
   {
-    return "QQCustomMenuItem{title='" + this.jdField_a_of_type_JavaLangString + '\'' + ", special=" + this.jdField_a_of_type_Boolean + ", priority=" + this.c + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QQCustomMenuItem{title='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", special=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", priority=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem
  * JD-Core Version:    0.7.0.1
  */

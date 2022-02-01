@@ -2,9 +2,9 @@ package com.tencent.mobileqq.filemanageraux.core;
 
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.ControlerCallback;
 import com.tencent.mobileqq.filemanager.app.FMObserver;
 import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.core.ControlerCallback;
 import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
 import com.tencent.mobileqq.filemanager.core.FilePreViewControllerBase;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
@@ -43,9 +43,13 @@ public class DiscOfflinePreviewController
   {
     if (TextUtils.isEmpty(this.b))
     {
-      QLog.e(this.jdField_a_of_type_JavaLangString, 1, " init OfflinePreviewController error,uuid is null,stack:" + FileManagerUtil.a());
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity$ControlerCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity$ControlerCallback.a(false, "", "", -100005L, "", "", null, this.b, null);
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" init OfflinePreviewController error,uuid is null,stack:");
+      localStringBuilder.append(FileManagerUtil.a());
+      QLog.e(str, 1, localStringBuilder.toString());
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreControlerCallback != null) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreControlerCallback.a(false, "", "", -100005L, "", "", null, this.b, null);
       }
       return false;
     }
@@ -61,7 +65,7 @@ public class DiscOfflinePreviewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.core.DiscOfflinePreviewController
  * JD-Core Version:    0.7.0.1
  */

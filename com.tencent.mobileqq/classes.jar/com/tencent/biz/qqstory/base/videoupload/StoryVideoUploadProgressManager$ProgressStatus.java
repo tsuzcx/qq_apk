@@ -16,36 +16,45 @@ class StoryVideoUploadProgressManager$ProgressStatus
   
   private void c()
   {
-    switch (this.jdField_a_of_type_Int)
+    int i = this.jdField_a_of_type_Int;
+    if (i != 0)
     {
-    default: 
-    case 0: 
-    case 1: 
-    case 2: 
-    case 3: 
-      do
+      if (i != 1)
       {
-        do
+        if (i != 2)
         {
-          do
+          if (i != 3)
           {
+            if ((i != 4) && (i != 5)) {
+              return;
+            }
+            this.jdField_b_of_type_Int = 100;
             return;
-            this.jdField_b_of_type_Int = 0;
-            return;
-            this.jdField_b_of_type_Int += 1;
-          } while (this.jdField_b_of_type_Int < 60);
-          this.jdField_b_of_type_Int = 59;
-          return;
+          }
           this.jdField_b_of_type_Int += 1;
-        } while (this.jdField_b_of_type_Int < 95);
-        this.jdField_b_of_type_Int = 94;
-        return;
+          if (this.jdField_b_of_type_Int >= 100) {
+            this.jdField_b_of_type_Int = 99;
+          }
+        }
+        else
+        {
+          this.jdField_b_of_type_Int += 1;
+          if (this.jdField_b_of_type_Int >= 95) {
+            this.jdField_b_of_type_Int = 94;
+          }
+        }
+      }
+      else
+      {
         this.jdField_b_of_type_Int += 1;
-      } while (this.jdField_b_of_type_Int < 100);
-      this.jdField_b_of_type_Int = 99;
-      return;
+        if (this.jdField_b_of_type_Int >= 60) {
+          this.jdField_b_of_type_Int = 59;
+        }
+      }
     }
-    this.jdField_b_of_type_Int = 100;
+    else {
+      this.jdField_b_of_type_Int = 0;
+    }
   }
   
   public void a()
@@ -62,7 +71,7 @@ class StoryVideoUploadProgressManager$ProgressStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadProgressManager.ProgressStatus
  * JD-Core Version:    0.7.0.1
  */

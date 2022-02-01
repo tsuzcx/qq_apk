@@ -130,6 +130,8 @@ public abstract class RecyclerViewBase$Adapter<VH extends RecyclerViewBase.ViewH
   
   public abstract int getItemCount();
   
+  public abstract int getItemHeight(int paramInt);
+  
   public long getItemId(int paramInt)
   {
     return -1L;
@@ -144,42 +146,51 @@ public abstract class RecyclerViewBase$Adapter<VH extends RecyclerViewBase.ViewH
   
   public int getListTotalHeight()
   {
-    int m = 1;
+    int j = getHeaderViewCount();
+    int k = 1;
     int i = 0;
-    int j = 0;
-    int n;
-    if (getHeaderViewCount() > 0)
+    int m;
+    if (j > 0)
     {
-      n = getHeaderViewCount();
-      k = 1;
-      for (;;)
+      m = getHeaderViewCount();
+      j = 1;
+      i = 0;
+      while (j <= m)
       {
-        i = j;
-        if (k > n) {
-          break;
-        }
-        i = getHeaderViewHeight(k);
-        k += 1;
-        j = i + j;
+        i += getHeaderViewHeight(j);
+        j += 1;
       }
     }
-    int k = i;
+    j = i;
     if (getFooterViewCount() > 0)
     {
-      n = getFooterViewCount();
-      j = m;
+      m = getFooterViewCount();
       for (;;)
       {
-        k = i;
-        if (j > n) {
+        j = i;
+        if (k > m) {
           break;
         }
-        k = getFooterViewHeight(j);
-        j += 1;
-        i = k + i;
+        i += getFooterViewHeight(k);
+        k += 1;
       }
     }
-    return k + getTotalHeight();
+    return getTotalHeight() + j;
+  }
+  
+  public int getMarginBetweenItem(int paramInt1, int paramInt2)
+  {
+    return 0;
+  }
+  
+  public int getMarginCloseToParentH(int paramInt1, int paramInt2)
+  {
+    return 0;
+  }
+  
+  public int getMarginCloseToParentV(int paramInt1, int paramInt2)
+  {
+    return 0;
   }
   
   public int getPreloadThresholdInItemNumber()
@@ -321,10 +332,12 @@ public abstract class RecyclerViewBase$Adapter<VH extends RecyclerViewBase.ViewH
   
   public void setHasStableIds(boolean paramBoolean)
   {
-    if (hasObservers()) {
-      throw new IllegalStateException("Cannot change whether this adapter has stable IDs while the adapter has registered observers.");
+    if (!hasObservers())
+    {
+      this.mHasStableIds = paramBoolean;
+      return;
     }
-    this.mHasStableIds = paramBoolean;
+    throw new IllegalStateException("Cannot change whether this adapter has stable IDs while the adapter has registered observers.");
   }
   
   public void startRefreshData() {}
@@ -336,7 +349,7 @@ public abstract class RecyclerViewBase$Adapter<VH extends RecyclerViewBase.ViewH
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.views.recyclerview.RecyclerViewBase.Adapter
  * JD-Core Version:    0.7.0.1
  */

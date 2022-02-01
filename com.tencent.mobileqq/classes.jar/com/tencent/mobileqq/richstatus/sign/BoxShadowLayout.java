@@ -34,8 +34,9 @@ public class BoxShadowLayout
   public void a(int paramInt)
   {
     FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadow.getLayoutParams();
-    localLayoutParams.leftMargin = (paramInt - (int)(this.b * 0.5F));
-    localLayoutParams.rightMargin = (paramInt - (int)(this.b * 0.5F));
+    int i = this.b;
+    localLayoutParams.leftMargin = (paramInt - (int)(i * 0.5F));
+    localLayoutParams.rightMargin = (paramInt - (int)(i * 0.5F));
     localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
     localLayoutParams.leftMargin = paramInt;
     localLayoutParams.rightMargin = paramInt;
@@ -49,7 +50,7 @@ public class BoxShadowLayout
     this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadow = new BoxShadow(getContext(), paramInt1, paramInt2, paramInt3);
     this.jdField_a_of_type_AndroidViewView = paramView;
     this.b = paramInt1;
-    paramInt2 = (int)(0.5F * paramInt1);
+    paramInt2 = (int)(paramInt1 * 0.5F);
     paramView = new FrameLayout.LayoutParams(-1, -1);
     addView(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadow, paramView);
     paramView = new FrameLayout.LayoutParams(-1, -2);
@@ -78,7 +79,7 @@ public class BoxShadowLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.sign.BoxShadowLayout
  * JD-Core Version:    0.7.0.1
  */

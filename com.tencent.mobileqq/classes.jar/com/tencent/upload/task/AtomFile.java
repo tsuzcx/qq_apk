@@ -70,37 +70,37 @@ public class AtomFile
     //   1: monitorenter
     //   2: aload_0
     //   3: getfield 49	com/tencent/upload/task/AtomFile:mSending	Z
-    //   6: ifne +15 -> 21
+    //   6: ifne +11 -> 17
     //   9: aload_0
     //   10: iconst_1
     //   11: putfield 49	com/tencent/upload/task/AtomFile:mSending	Z
-    //   14: aload_0
-    //   15: monitorexit
-    //   16: aload_0
-    //   17: getfield 51	com/tencent/upload/task/AtomFile:mSessionId	Ljava/lang/String;
-    //   20: areturn
+    //   14: goto +7 -> 21
+    //   17: aload_0
+    //   18: invokevirtual 52	java/lang/Object:wait	()V
     //   21: aload_0
-    //   22: invokevirtual 54	java/lang/Object:wait	()V
-    //   25: goto -11 -> 14
+    //   22: monitorexit
+    //   23: aload_0
+    //   24: getfield 54	com/tencent/upload/task/AtomFile:mSessionId	Ljava/lang/String;
+    //   27: areturn
     //   28: astore_1
-    //   29: goto -15 -> 14
-    //   32: astore_1
-    //   33: aload_0
-    //   34: monitorexit
-    //   35: aload_1
-    //   36: athrow
+    //   29: aload_0
+    //   30: monitorexit
+    //   31: aload_1
+    //   32: athrow
+    //   33: astore_1
+    //   34: goto -13 -> 21
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	37	0	this	AtomFile
-    //   28	1	1	localException	java.lang.Exception
-    //   32	4	1	localObject	Object
+    //   28	4	1	localObject	Object
+    //   33	1	1	localException	java.lang.Exception
     // Exception table:
     //   from	to	target	type
-    //   21	25	28	java/lang/Exception
-    //   2	14	32	finally
-    //   14	16	32	finally
-    //   21	25	32	finally
-    //   33	35	32	finally
+    //   2	14	28	finally
+    //   17	21	28	finally
+    //   21	23	28	finally
+    //   29	31	28	finally
+    //   17	21	33	java/lang/Exception
   }
   
   public int getSliceSize()
@@ -193,7 +193,7 @@ public class AtomFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.task.AtomFile
  * JD-Core Version:    0.7.0.1
  */

@@ -30,13 +30,14 @@ public final class ShortVideo$UploadRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 72, 82, 88, 98, 106 }, new String[] { "retcode", "ver", "userip", "prov", "frontid", "frontip", "zoneid", "zoneip", "expiretime", "zonedomain", "userflag", "authkey", "err_msg" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), localByteStringMicro, "" }, UploadRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 72, 82, 88, 98, 106 }, new String[] { "retcode", "ver", "userip", "prov", "frontid", "frontip", "zoneid", "zoneip", "expiretime", "zonedomain", "userflag", "authkey", "err_msg" }, new Object[] { localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, "", localInteger, localByteStringMicro, "" }, UploadRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive_feeds.ShortVideo.UploadRsp
  * JD-Core Version:    0.7.0.1
  */

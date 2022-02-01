@@ -14,8 +14,13 @@ class WSFollowFragment$3
   
   public void run()
   {
-    RecyclerView.ViewHolder localViewHolder = this.this$0.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().findViewHolderForLayoutPosition(((WSFollowPresenter)this.this$0.jdField_a_of_type_ComTencentBizPubaccountWeishi_newIWSPresenter).a());
-    WSLog.e("WSFollowContinuePlayLog", "[WSFollowFragment.java][onActivityResult] from vertical getLastPosition:" + ((WSFollowPresenter)this.this$0.jdField_a_of_type_ComTencentBizPubaccountWeishi_newIWSPresenter).a() + ", holder:" + localViewHolder);
+    RecyclerView.ViewHolder localViewHolder = this.this$0.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.getRecyclerView().findViewHolderForLayoutPosition(((WSFollowPresenter)this.this$0.jdField_a_of_type_ComTencentBizPubaccountWeishi_newIWSPresenter).a());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSFollowFragment.java][onActivityResult] from vertical getLastPosition:");
+    localStringBuilder.append(((WSFollowPresenter)this.this$0.jdField_a_of_type_ComTencentBizPubaccountWeishi_newIWSPresenter).a());
+    localStringBuilder.append(", holder:");
+    localStringBuilder.append(localViewHolder);
+    WSLog.e("WSFollowContinuePlayLog", localStringBuilder.toString());
     if ((localViewHolder instanceof WSPlayableHolder)) {
       this.this$0.a((WSPlayableHolder)localViewHolder, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
     }
@@ -24,7 +29,7 @@ class WSFollowFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSFollowFragment.3
  * JD-Core Version:    0.7.0.1
  */

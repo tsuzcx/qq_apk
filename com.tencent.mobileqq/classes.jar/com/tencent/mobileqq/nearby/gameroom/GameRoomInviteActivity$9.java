@@ -21,19 +21,22 @@ class GameRoomInviteActivity$9
     {
       paramRspBody = paramRspBody.poi_info;
       String str = paramRspBody.bytes_uid.get().toStringUtf8();
-      this.a.a(HotChatInfo.createHotChat(paramRspBody, false, 0), paramRspBody.uint32_group_code.get(), str, paramRspBody.bytes_name.get().toStringUtf8());
-    }
-    do
-    {
+      this.a.gotoGameChatPie(HotChatInfo.createHotChat(paramRspBody, false, 0), paramRspBody.uint32_group_code.get(), str, paramRspBody.bytes_name.get().toStringUtf8());
       return;
-      this.a.a(paramInt, paramRspBody, HardCodeUtil.a(2131705156));
-    } while (!QLog.isColorLevel());
-    QLog.d("GameRoomInviteActivity", 2, "start game failed! code = " + paramInt);
+    }
+    this.a.handle8e4Error(paramInt, paramRspBody, HardCodeUtil.a(2131705233));
+    if (QLog.isColorLevel())
+    {
+      paramRspBody = new StringBuilder();
+      paramRspBody.append("start game failed! code = ");
+      paramRspBody.append(paramInt);
+      QLog.d("GameRoomInviteActivity", 2, paramRspBody.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.9
  * JD-Core Version:    0.7.0.1
  */

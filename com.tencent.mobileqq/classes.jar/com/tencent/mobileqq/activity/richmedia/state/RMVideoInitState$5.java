@@ -22,17 +22,18 @@ class RMVideoInitState$5
     {
       NewFlowCameraReporter.a(localCameraControl.a(), "front");
       localSharedPreferences.edit().putBoolean("sv_has_reported_front_camera_compatibility", true).commit();
-    }
-    while ((bool2) || (FlowCameraConstant.a != 2)) {
       return;
     }
-    NewFlowCameraReporter.a(localCameraControl.a(), "back");
-    localSharedPreferences.edit().putBoolean("sv_has_reported_back_camera_compatibility", true).commit();
+    if ((!bool2) && (FlowCameraConstant.a == 2))
+    {
+      NewFlowCameraReporter.a(localCameraControl.a(), "back");
+      localSharedPreferences.edit().putBoolean("sv_has_reported_back_camera_compatibility", true).commit();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.state.RMVideoInitState.5
  * JD-Core Version:    0.7.0.1
  */

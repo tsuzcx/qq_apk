@@ -20,7 +20,6 @@ public class MessageRecordEntityManager
   @NonNull
   private Entity a(String paramString, Cursor paramCursor, long paramLong)
   {
-    boolean bool2 = true;
     int i = paramCursor.getInt(paramCursor.getColumnIndex("msgtype"));
     byte[] arrayOfByte = paramCursor.getBlob(paramCursor.getColumnIndex("msgData"));
     int j = paramCursor.getInt(paramCursor.getColumnIndex("extLong"));
@@ -37,49 +36,45 @@ public class MessageRecordEntityManager
     localMessageRecord.senderuin = paramCursor.getString(paramCursor.getColumnIndex("senderuin"));
     localMessageRecord.time = paramCursor.getLong(paramCursor.getColumnIndex("time"));
     localMessageRecord.msgtype = paramCursor.getInt(paramCursor.getColumnIndex("msgtype"));
+    i = paramCursor.getInt(paramCursor.getColumnIndex("isread"));
+    boolean bool2 = true;
     boolean bool1;
-    if (paramCursor.getInt(paramCursor.getColumnIndex("isread")) != 0)
-    {
+    if (i != 0) {
       bool1 = true;
-      localMessageRecord.isread = bool1;
-      localMessageRecord.issend = paramCursor.getInt(paramCursor.getColumnIndex("issend"));
-      localMessageRecord.msgseq = paramCursor.getLong(paramCursor.getColumnIndex("msgseq"));
-      localMessageRecord.shmsgseq = paramCursor.getLong(paramCursor.getColumnIndex("shmsgseq"));
-      localMessageRecord.extraflag = paramCursor.getInt(paramCursor.getColumnIndex("extraflag"));
-      localMessageRecord.sendFailCode = paramCursor.getInt(paramCursor.getColumnIndex("sendFailCode"));
-      localMessageRecord.msgId = paramCursor.getLong(paramCursor.getColumnIndex("msgId"));
-      localMessageRecord.longMsgIndex = paramCursor.getInt(paramCursor.getColumnIndex("longMsgIndex"));
-      localMessageRecord.longMsgId = paramCursor.getInt(paramCursor.getColumnIndex("longMsgId"));
-      localMessageRecord.longMsgCount = paramCursor.getInt(paramCursor.getColumnIndex("longMsgCount"));
-      localMessageRecord.msgUid = paramCursor.getLong(paramCursor.getColumnIndex("msgUid"));
-      localMessageRecord.uniseq = paramCursor.getLong(paramCursor.getColumnIndex("uniseq"));
-      localMessageRecord.extInt = paramCursor.getInt(paramCursor.getColumnIndex("extInt"));
-      if (paramCursor.getInt(paramCursor.getColumnIndex("isValid")) == 0) {
-        break label609;
-      }
+    } else {
+      bool1 = false;
+    }
+    localMessageRecord.isread = bool1;
+    localMessageRecord.issend = paramCursor.getInt(paramCursor.getColumnIndex("issend"));
+    localMessageRecord.msgseq = paramCursor.getLong(paramCursor.getColumnIndex("msgseq"));
+    localMessageRecord.shmsgseq = paramCursor.getLong(paramCursor.getColumnIndex("shmsgseq"));
+    localMessageRecord.extraflag = paramCursor.getInt(paramCursor.getColumnIndex("extraflag"));
+    localMessageRecord.sendFailCode = paramCursor.getInt(paramCursor.getColumnIndex("sendFailCode"));
+    localMessageRecord.msgId = paramCursor.getLong(paramCursor.getColumnIndex("msgId"));
+    localMessageRecord.longMsgIndex = paramCursor.getInt(paramCursor.getColumnIndex("longMsgIndex"));
+    localMessageRecord.longMsgId = paramCursor.getInt(paramCursor.getColumnIndex("longMsgId"));
+    localMessageRecord.longMsgCount = paramCursor.getInt(paramCursor.getColumnIndex("longMsgCount"));
+    localMessageRecord.msgUid = paramCursor.getLong(paramCursor.getColumnIndex("msgUid"));
+    localMessageRecord.uniseq = paramCursor.getLong(paramCursor.getColumnIndex("uniseq"));
+    localMessageRecord.extInt = paramCursor.getInt(paramCursor.getColumnIndex("extInt"));
+    if (paramCursor.getInt(paramCursor.getColumnIndex("isValid")) != 0) {
       bool1 = bool2;
-      label503:
-      localMessageRecord.isValid = bool1;
-      localMessageRecord.versionCode = paramCursor.getInt(paramCursor.getColumnIndex("versionCode"));
-      localMessageRecord.vipBubbleID = paramCursor.getLong(paramCursor.getColumnIndex("vipBubbleID"));
-      if (localMessageRecord.versionCode <= 0) {
-        localMessageRecord.msg = paramCursor.getString(paramCursor.getColumnIndex("msg"));
-      }
-      if ((paramLong == -1L) || (paramString == null)) {
-        break label615;
-      }
-    }
-    label609:
-    label615:
-    for (localMessageRecord._status = 1001;; localMessageRecord._status = 1002)
-    {
-      localMessageRecord.postRead();
-      return localMessageRecord;
+    } else {
       bool1 = false;
-      break;
-      bool1 = false;
-      break label503;
     }
+    localMessageRecord.isValid = bool1;
+    localMessageRecord.versionCode = paramCursor.getInt(paramCursor.getColumnIndex("versionCode"));
+    localMessageRecord.vipBubbleID = paramCursor.getLong(paramCursor.getColumnIndex("vipBubbleID"));
+    if (localMessageRecord.versionCode <= 0) {
+      localMessageRecord.msg = paramCursor.getString(paramCursor.getColumnIndex("msg"));
+    }
+    if ((paramLong != -1L) && (paramString != null)) {
+      localMessageRecord._status = 1001;
+    } else {
+      localMessageRecord._status = 1002;
+    }
+    localMessageRecord.postRead();
+    return localMessageRecord;
   }
   
   private void a(List<MessageRecord> paramList)
@@ -113,39 +108,31 @@ public class MessageRecordEntityManager
       if (paramCursor.getColumnIndex("_id") >= 0) {
         l1 = paramCursor.getLong(paramCursor.getColumnIndex("_id"));
       }
-      try
-      {
-        if (paramClass.getName().equals(MessageRecord.class.getName())) {
-          return a(paramString, paramCursor, l1);
-        }
-        paramClass = super.cursor2Entity(paramClass, paramString, paramCursor, null);
-        return paramClass;
-      }
-      catch (Exception paramClass)
-      {
-        return null;
-      }
-      catch (OutOfMemoryError paramClass)
-      {
-        return null;
-      }
-      catch (VerifyError paramClass)
-      {
-        return null;
-      }
     }
     catch (Exception paramNoColumnErrorHandler)
     {
       for (;;)
       {
+        try
+        {
+          if (paramClass.getName().equals(MessageRecord.class.getName())) {
+            paramClass = a(paramString, paramCursor, l1);
+          } else {
+            paramClass = super.cursor2Entity(paramClass, paramString, paramCursor, null);
+          }
+          return paramClass;
+        }
+        catch (Exception|OutOfMemoryError|VerifyError paramClass) {}
+        paramNoColumnErrorHandler = paramNoColumnErrorHandler;
         l1 = l2;
       }
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.MessageRecordEntityManager
  * JD-Core Version:    0.7.0.1
  */

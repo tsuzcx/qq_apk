@@ -53,14 +53,15 @@ public final class event_cloud_photo
     paramJceOutputStream.write(this.lloc, 2);
     paramJceOutputStream.write(this.uploadTime, 5);
     paramJceOutputStream.write(this.type, 10);
-    if (this.specUrls != null) {
-      paramJceOutputStream.write(this.specUrls, 11);
+    Map localMap = this.specUrls;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 11);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.event_cloud_photo
  * JD-Core Version:    0.7.0.1
  */

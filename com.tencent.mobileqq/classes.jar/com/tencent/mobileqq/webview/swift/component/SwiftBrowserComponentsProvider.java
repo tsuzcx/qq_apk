@@ -21,6 +21,8 @@ public class SwiftBrowserComponentsProvider
   static
   {
     jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_JavaUtilHashMap.put("256", SwiftMiniAIOHandler.class);
+    jdField_a_of_type_JavaUtilHashMap.put("128", SwiftFileChooseHandler.class);
     jdField_a_of_type_JavaUtilHashMap.put("64", SwiftBrowserScreenShotHandler.class);
     jdField_a_of_type_JavaUtilHashMap.put("32", SwiftBrowserMiscHandler.class);
     jdField_a_of_type_JavaUtilHashMap.put("16", SwiftBrowserTBSHandler.class);
@@ -39,14 +41,14 @@ public class SwiftBrowserComponentsProvider
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentFactory = paramSwiftBrowserComponentFactory;
     int i = 0;
-    while (i < 32)
+    int k;
+    for (int j = 0; i < 32; j = k)
     {
-      int k = j;
+      k = j;
       if ((1 << i & paramInt) != 0) {
         k = j + 1;
       }
       i += 1;
-      j = k;
     }
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(j);
   }
@@ -54,65 +56,64 @@ public class SwiftBrowserComponentsProvider
   public <T> T a(int paramInt)
   {
     if (paramInt >= 0) {}
-    Object localObject4;
     try
     {
-      if ((this.jdField_a_of_type_Int & paramInt) == 0) {
-        break label188;
+      int i = this.jdField_a_of_type_Int;
+      if ((i & paramInt) == 0) {
+        return null;
       }
       Object localObject1 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-      localObject4 = localObject1;
-      if (localObject1 != null) {
-        break label164;
+      Object localObject3 = localObject1;
+      Object localObject5;
+      if (localObject1 == null)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentFactory != null) {
+          localObject1 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentFactory.a(paramInt);
+        }
+        localObject3 = localObject1;
+        if (localObject1 == null)
+        {
+          Class localClass = (Class)jdField_a_of_type_JavaUtilHashMap.get(String.valueOf(paramInt));
+          if (localClass != null)
+          {
+            localObject3 = localObject1;
+            if (paramInt != -3) {
+              try
+              {
+                localObject3 = localClass.newInstance();
+              }
+              catch (IllegalAccessException localIllegalAccessException)
+              {
+                localIllegalAccessException.printStackTrace();
+                Object localObject4 = localObject1;
+              }
+              catch (InstantiationException localInstantiationException)
+              {
+                localInstantiationException.printStackTrace();
+                localObject5 = localObject1;
+              }
+            }
+          }
+          else
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("componentFlag:");
+            ((StringBuilder)localObject1).append(paramInt);
+            ((StringBuilder)localObject1).append(" cannot create, please check!");
+            throw new InvalidParameterException(((StringBuilder)localObject1).toString());
+          }
+        }
+        if ((localObject5 instanceof SwiftBrowserComponentsProvider.SwiftBrowserComponent))
+        {
+          localObject1 = (SwiftBrowserComponentsProvider.SwiftBrowserComponent)localObject5;
+          ((SwiftBrowserComponentsProvider.SwiftBrowserComponent)localObject1).jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext;
+          ((SwiftBrowserComponentsProvider.SwiftBrowserComponent)localObject1).a();
+        }
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), localObject5);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentFactory != null) {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentFactory.a(paramInt);
-      }
-      localObject4 = localObject1;
-      if (localObject1 != null) {
-        break label127;
-      }
-      localObject4 = (Class)jdField_a_of_type_JavaUtilHashMap.get(String.valueOf(paramInt));
-      if (localObject4 == null) {
-        throw new InvalidParameterException("componentFlag:" + paramInt + " cannot create, please check!");
-      }
+      return localObject5;
     }
     finally {}
-    if (paramInt != -3) {}
-    for (;;)
-    {
-      try
-      {
-        localObject4 = ((Class)localObject4).newInstance();
-        localObject3 = localObject4;
-        localObject4 = localObject3;
-      }
-      catch (InstantiationException localInstantiationException)
-      {
-        localInstantiationException.printStackTrace();
-        Object localObject5 = localObject3;
-        continue;
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        Object localObject3;
-        label127:
-        localIllegalAccessException.printStackTrace();
-        label164:
-        localObject6 = localObject3;
-        continue;
-      }
-      if ((localObject4 instanceof SwiftBrowserComponentsProvider.SwiftBrowserComponent))
-      {
-        localObject3 = (SwiftBrowserComponentsProvider.SwiftBrowserComponent)localObject4;
-        ((SwiftBrowserComponentsProvider.SwiftBrowserComponent)localObject3).jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext;
-        ((SwiftBrowserComponentsProvider.SwiftBrowserComponent)localObject3).b();
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), localObject4);
-      return localObject4;
-      label188:
-      Object localObject6 = null;
-    }
   }
   
   public void a(int paramInt, Bundle paramBundle)
@@ -133,7 +134,7 @@ public class SwiftBrowserComponentsProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider
  * JD-Core Version:    0.7.0.1
  */

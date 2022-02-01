@@ -2,35 +2,41 @@ package androidx.core.provider;
 
 import java.util.Comparator;
 
-final class FontsContractCompat$5
+class FontsContractCompat$5
   implements Comparator<byte[]>
 {
   public int compare(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    int k = 0;
-    int i;
+    int j;
     if (paramArrayOfByte1.length != paramArrayOfByte2.length)
     {
-      i = paramArrayOfByte1.length - paramArrayOfByte2.length;
-      return i;
+      i = paramArrayOfByte1.length;
+      j = paramArrayOfByte2.length;
+      return i - j;
     }
-    int j = 0;
+    int i = 0;
     for (;;)
     {
-      i = k;
-      if (j >= paramArrayOfByte1.length) {
+      if (i >= paramArrayOfByte1.length) {
+        break label63;
+      }
+      if (paramArrayOfByte1[i] != paramArrayOfByte2[i])
+      {
+        j = paramArrayOfByte1[i];
+        int k = paramArrayOfByte2[i];
+        i = j;
+        j = k;
         break;
       }
-      if (paramArrayOfByte1[j] != paramArrayOfByte2[j]) {
-        return paramArrayOfByte1[j] - paramArrayOfByte2[j];
-      }
-      j += 1;
+      i += 1;
     }
+    label63:
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.provider.FontsContractCompat.5
  * JD-Core Version:    0.7.0.1
  */

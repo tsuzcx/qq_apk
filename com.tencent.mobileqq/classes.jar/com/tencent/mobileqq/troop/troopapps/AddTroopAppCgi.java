@@ -36,45 +36,62 @@ public class AddTroopAppCgi
     }
     String str2 = paramQQAppInterface.getCurrentUin();
     Object localObject = (TicketManager)paramQQAppInterface.getManager(2);
-    String str1;
+    String str1 = null;
     if (localObject != null)
     {
       str1 = ((TicketManager)localObject).getSkey(str2);
       localObject = ((TicketManager)localObject).getPskey(str2, "qun.qq.com");
     }
-    for (;;)
+    else
     {
-      Bundle localBundle = new Bundle();
-      HashMap localHashMap = new HashMap();
-      localBundle.putString("bkn", "" + TroopUtils.b(str1));
-      localBundle.putString("Cookie", "uin=o" + str2 + ";skey=" + str1 + ";p_uin=o" + str2 + ";p_skey=" + (String)localObject);
-      localBundle.putString("gc", String.valueOf(this.jdField_a_of_type_JavaLangString));
-      localBundle.putString("append_appid", String.valueOf(this.jdField_a_of_type_Long));
-      localBundle.putString("add_type", "1");
-      localBundle.putString("append_source", String.valueOf(this.b));
-      localBundle.putString("qqver", "8.5.5.5105");
-      localBundle.putString("platform", "2");
-      if (this.jdField_a_of_type_Boolean) {}
-      for (localObject = "1";; localObject = "0")
-      {
-        localBundle.putString("open_shortcut", (String)localObject);
-        localHashMap.put("BUNDLE", localBundle);
-        localHashMap.put("CONTEXT", paramQQAppInterface.getApp().getApplicationContext());
-        new HttpWebCgiAsyncTask2("https://app.qun.qq.com/cgi-bin/api/inner_setunifiedapp", "POST", new AddTroopAppCgi.1(this), 1000, null).a(localHashMap);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("AddTroopAppCgi", 2, "AddTroopAppCgi mTroopUin:" + this.jdField_a_of_type_JavaLangString + " append_appid:" + this.jdField_a_of_type_Long + " mNeedOpenShortCut:" + this.jdField_a_of_type_Boolean);
-        return;
-      }
       localObject = null;
-      str1 = null;
+    }
+    Bundle localBundle = new Bundle();
+    HashMap localHashMap = new HashMap();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(TroopUtils.a(str1));
+    localBundle.putString("bkn", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uin=o");
+    localStringBuilder.append(str2);
+    localStringBuilder.append(";skey=");
+    localStringBuilder.append(str1);
+    localStringBuilder.append(";p_uin=o");
+    localStringBuilder.append(str2);
+    localStringBuilder.append(";p_skey=");
+    localStringBuilder.append((String)localObject);
+    localBundle.putString("Cookie", localStringBuilder.toString());
+    localBundle.putString("gc", String.valueOf(this.jdField_a_of_type_JavaLangString));
+    localBundle.putString("append_appid", String.valueOf(this.jdField_a_of_type_Long));
+    localObject = "1";
+    localBundle.putString("add_type", "1");
+    localBundle.putString("append_source", String.valueOf(this.b));
+    localBundle.putString("qqver", "8.7.0.5295");
+    localBundle.putString("platform", "2");
+    if (!this.jdField_a_of_type_Boolean) {
+      localObject = "0";
+    }
+    localBundle.putString("open_shortcut", (String)localObject);
+    localHashMap.put("BUNDLE", localBundle);
+    localHashMap.put("CONTEXT", paramQQAppInterface.getApp().getApplicationContext());
+    new HttpWebCgiAsyncTask2("https://app.qun.qq.com/cgi-bin/api/inner_setunifiedapp", "POST", new AddTroopAppCgi.1(this), 1000, null).a(localHashMap);
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("AddTroopAppCgi mTroopUin:");
+      paramQQAppInterface.append(this.jdField_a_of_type_JavaLangString);
+      paramQQAppInterface.append(" append_appid:");
+      paramQQAppInterface.append(this.jdField_a_of_type_Long);
+      paramQQAppInterface.append(" mNeedOpenShortCut:");
+      paramQQAppInterface.append(this.jdField_a_of_type_Boolean);
+      QLog.d("AddTroopAppCgi", 2, paramQQAppInterface.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.AddTroopAppCgi
  * JD-Core Version:    0.7.0.1
  */

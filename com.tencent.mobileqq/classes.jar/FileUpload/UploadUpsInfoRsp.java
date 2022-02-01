@@ -53,23 +53,26 @@ public final class UploadUpsInfoRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iType, 0);
-    if (this.vBusiNessData != null) {
-      paramJceOutputStream.write(this.vBusiNessData, 1);
+    Object localObject = this.vBusiNessData;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 1);
     }
-    if (this.sUrl != null) {
-      paramJceOutputStream.write(this.sUrl, 2);
+    localObject = this.sUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.iWidth, 3);
     paramJceOutputStream.write(this.iHight, 4);
     paramJceOutputStream.write(this.iPhotoType, 5);
-    if (this.sUrls != null) {
-      paramJceOutputStream.write(this.sUrls, 6);
+    localObject = this.sUrls;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     FileUpload.UploadUpsInfoRsp
  * JD-Core Version:    0.7.0.1
  */

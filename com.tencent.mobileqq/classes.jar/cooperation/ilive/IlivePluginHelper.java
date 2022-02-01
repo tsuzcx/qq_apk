@@ -10,8 +10,6 @@ import mqq.app.AppRuntime;
 
 public class IlivePluginHelper
 {
-  private static int a = -1;
-  
   public static void a(Context paramContext)
   {
     QLog.i("IlivePluginHelper", 1, "Ilive start preloadOdexPlugin");
@@ -20,23 +18,23 @@ public class IlivePluginHelper
   
   public static void a(Context paramContext, Intent paramIntent, String paramString, EnterCallback paramEnterCallback)
   {
-    if (paramIntent != null) {}
-    for (paramIntent = paramIntent.getExtras();; paramIntent = null)
-    {
-      Object localObject = paramIntent;
-      if (paramIntent == null) {
-        localObject = new Bundle();
-      }
-      ((Bundle)localObject).putString("KEY_ACTIVITY_CLASSNAME", paramString);
-      ((Bundle)localObject).putLong("start_plugin_act_begin_time", System.currentTimeMillis());
-      IliveShadowImpl.a().enter(paramContext, 1003L, BaseApplicationImpl.getApplication().getRuntime().getAccount(), "", (Bundle)localObject, paramEnterCallback);
-      return;
+    if (paramIntent != null) {
+      paramIntent = paramIntent.getExtras();
+    } else {
+      paramIntent = null;
     }
+    Object localObject = paramIntent;
+    if (paramIntent == null) {
+      localObject = new Bundle();
+    }
+    ((Bundle)localObject).putString("KEY_ACTIVITY_CLASSNAME", paramString);
+    ((Bundle)localObject).putLong("start_plugin_act_begin_time", System.currentTimeMillis());
+    IliveShadowImpl.a().enter(paramContext, 1003L, BaseApplicationImpl.getApplication().getRuntime().getAccount(), "", (Bundle)localObject, paramEnterCallback);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.IlivePluginHelper
  * JD-Core Version:    0.7.0.1
  */

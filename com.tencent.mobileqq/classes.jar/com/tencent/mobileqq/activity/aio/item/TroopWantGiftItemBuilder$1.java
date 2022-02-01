@@ -19,31 +19,35 @@ class TroopWantGiftItemBuilder$1
   
   public void onClick(View paramView)
   {
-    String str;
-    if (paramView.getId() == 2131374333)
+    if (paramView.getId() == 2131373889)
     {
-      new ReportTask(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopWantGiftItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_flower").c("grp_aio").d("clk_send_him").a(0).a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + "", "29" }).a();
-      str = SharedPreUtils.i(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopWantGiftItemBuilder.jdField_a_of_type_AndroidContentContext, "url");
-      if (TextUtils.isEmpty(str)) {
-        break label223;
+      Object localObject1 = new ReportTask(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopWantGiftItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_flower").c("grp_aio").d("clk_send_him").a(0);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin);
+      ((StringBuilder)localObject2).append("");
+      ((ReportTask)localObject1).a(new String[] { ((StringBuilder)localObject2).toString(), "29" }).a();
+      localObject1 = SharedPreUtils.g(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopWantGiftItemBuilder.jdField_a_of_type_AndroidContentContext, "url");
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        localObject1 = "https://qun.qq.com/qunpay/gifts/index.html?_bid=2204&troopUin={troopUin}&uin={uin}&from={from}&_wv=1031";
       }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("");
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForWantGiftMsg.frienduin);
+      localObject1 = ((String)localObject1).replace("{troopUin}", ((StringBuilder)localObject2).toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("");
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForWantGiftMsg.senderuin);
+      localObject1 = ((String)localObject1).replace("{uin}", ((StringBuilder)localObject2).toString()).replace("{from}", "29");
+      localObject2 = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopWantGiftItemBuilder.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      ((Intent)localObject2).putExtra("url", (String)localObject1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopWantGiftItemBuilder.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject2);
     }
-    for (;;)
-    {
-      str = str.replace("{troopUin}", "" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForWantGiftMsg.frienduin).replace("{uin}", "" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForWantGiftMsg.senderuin).replace("{from}", "29");
-      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopWantGiftItemBuilder.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", str);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopWantGiftItemBuilder.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label223:
-      str = "https://qun.qq.com/qunpay/gifts/index.html?_bid=2204&troopUin={troopUin}&uin={uin}&from={from}&_wv=1031";
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopWantGiftItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

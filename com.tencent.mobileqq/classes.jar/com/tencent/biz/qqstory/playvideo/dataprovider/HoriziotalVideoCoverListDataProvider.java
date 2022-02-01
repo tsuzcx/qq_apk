@@ -46,31 +46,27 @@ public class HoriziotalVideoCoverListDataProvider
     }
     this.jdField_a_of_type_JavaUtilList = localArrayList;
     this.jdField_a_of_type_Int = paramInt;
-    int i;
-    if ((paramGroupId instanceof MsgTabPlayPageLoader.MsgTabGroupId))
+    boolean bool = paramGroupId instanceof MsgTabPlayPageLoader.MsgTabGroupId;
+    int i = -1;
+    if (bool)
     {
       paramArrayList = (MsgTabPlayPageLoader.MsgTabGroupId)paramGroupId;
-      if (paramArrayList.a != null)
-      {
+      if (paramArrayList.a != null) {
         i = paramArrayList.a.jdField_a_of_type_Int;
-        this.b = i;
-        label129:
-        i = this.jdField_a_of_type_JavaUtilList.size();
-        if (paramGroupId != null) {
-          break label186;
-        }
       }
+      this.b = i;
     }
-    label186:
-    for (paramArrayList = "";; paramArrayList = paramGroupId.toString())
+    else
     {
-      SLog.a("Q.qqstory.player:HoriziotalVideoCoverListDataProvider", "setDataList , verticalPosition = %d , size = %d, groupId= %s, msgTabNodeType=%d", Integer.valueOf(paramInt), Integer.valueOf(i), paramArrayList, Integer.valueOf(this.b));
-      return;
-      i = -1;
-      break;
       this.b = -1;
-      break label129;
     }
+    i = this.jdField_a_of_type_JavaUtilList.size();
+    if (paramGroupId == null) {
+      paramArrayList = "";
+    } else {
+      paramArrayList = paramGroupId.toString();
+    }
+    SLog.a("Q.qqstory.player:HoriziotalVideoCoverListDataProvider", "setDataList , verticalPosition = %d , size = %d, groupId= %s, msgTabNodeType=%d", Integer.valueOf(paramInt), Integer.valueOf(i), paramArrayList, Integer.valueOf(this.b));
   }
   
   public boolean a()
@@ -85,7 +81,7 @@ public class HoriziotalVideoCoverListDataProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.HoriziotalVideoCoverListDataProvider
  * JD-Core Version:    0.7.0.1
  */

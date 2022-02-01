@@ -72,50 +72,61 @@ class DefaultDrmSession<T extends ExoMediaCrypto>
   
   private void doLicense(boolean paramBoolean)
   {
-    switch (this.mode)
+    int i = this.mode;
+    if ((i != 0) && (i != 1))
     {
-    }
-    do
-    {
-      do
+      if (i != 2)
       {
-        do
-        {
-          do
-          {
-            return;
-            if (this.offlineLicenseKeySetId == null)
-            {
-              postKeyRequest(1, paramBoolean);
-              return;
-            }
-          } while ((this.state != 4) && (!restoreKeys()));
-          long l = getLicenseDurationRemainingSec();
-          if ((this.mode == 0) && (l <= 60L))
-          {
-            Log.d("DefaultDrmSession", "Offline license has expired or will expire soon. Remaining seconds: " + l);
-            postKeyRequest(2, paramBoolean);
-            return;
-          }
-          if (l <= 0L)
-          {
-            onError(new KeysExpiredException());
-            return;
-          }
-          this.state = 4;
-        } while ((this.eventHandler == null) || (this.eventListener == null));
-        this.eventHandler.post(new DefaultDrmSession.1(this));
-        return;
+        if (i != 3) {
+          return;
+        }
+        if (restoreKeys()) {
+          postKeyRequest(3, paramBoolean);
+        }
+      }
+      else
+      {
         if (this.offlineLicenseKeySetId == null)
         {
           postKeyRequest(2, paramBoolean);
           return;
         }
-      } while (!restoreKeys());
-      postKeyRequest(2, paramBoolean);
-      return;
-    } while (!restoreKeys());
-    postKeyRequest(3, paramBoolean);
+        if (restoreKeys()) {
+          postKeyRequest(2, paramBoolean);
+        }
+      }
+    }
+    else
+    {
+      if (this.offlineLicenseKeySetId == null)
+      {
+        postKeyRequest(1, paramBoolean);
+        return;
+      }
+      if ((this.state == 4) || (restoreKeys()))
+      {
+        long l = getLicenseDurationRemainingSec();
+        if ((this.mode == 0) && (l <= 60L))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("Offline license has expired or will expire soon. Remaining seconds: ");
+          ((StringBuilder)localObject).append(l);
+          Log.d("DefaultDrmSession", ((StringBuilder)localObject).toString());
+          postKeyRequest(2, paramBoolean);
+          return;
+        }
+        if (l <= 0L)
+        {
+          onError(new KeysExpiredException());
+          return;
+        }
+        this.state = 4;
+        Object localObject = this.eventHandler;
+        if ((localObject != null) && (this.eventListener != null)) {
+          ((Handler)localObject).post(new DefaultDrmSession.1(this));
+        }
+      }
+    }
   }
   
   private long getLicenseDurationRemainingSec()
@@ -129,14 +140,16 @@ class DefaultDrmSession<T extends ExoMediaCrypto>
   
   private boolean isOpen()
   {
-    return (this.state == 3) || (this.state == 4);
+    int i = this.state;
+    return (i == 3) || (i == 4);
   }
   
   private void onError(Exception paramException)
   {
     this.lastException = new DrmSession.DrmSessionException(paramException);
-    if ((this.eventHandler != null) && (this.eventListener != null)) {
-      this.eventHandler.post(new DefaultDrmSession.4(this, paramException));
+    Handler localHandler = this.eventHandler;
+    if ((localHandler != null) && (this.eventListener != null)) {
+      localHandler.post(new DefaultDrmSession.4(this, paramException));
     }
     if (this.state != 4) {
       this.state = 1;
@@ -145,46 +158,46 @@ class DefaultDrmSession<T extends ExoMediaCrypto>
   
   private void onKeyResponse(Object paramObject)
   {
-    if (!isOpen()) {}
-    do
+    if (!isOpen()) {
+      return;
+    }
+    if ((paramObject instanceof Exception))
     {
-      for (;;)
+      onKeysError((Exception)paramObject);
+      return;
+    }
+    try
+    {
+      byte[] arrayOfByte = (byte[])paramObject;
+      paramObject = arrayOfByte;
+      if (C.CLEARKEY_UUID.equals(this.uuid)) {
+        paramObject = ClearKeyUtil.adjustResponseData(arrayOfByte);
+      }
+      if (this.mode == 3)
       {
-        return;
-        if ((paramObject instanceof Exception))
-        {
-          onKeysError((Exception)paramObject);
-          return;
+        this.mediaDrm.provideKeyResponse(this.offlineLicenseKeySetId, paramObject);
+        if ((this.eventHandler != null) && (this.eventListener != null)) {
+          this.eventHandler.post(new DefaultDrmSession.2(this));
         }
-        try
-        {
-          byte[] arrayOfByte = (byte[])paramObject;
-          paramObject = arrayOfByte;
-          if (C.CLEARKEY_UUID.equals(this.uuid)) {
-            paramObject = ClearKeyUtil.adjustResponseData(arrayOfByte);
-          }
-          if (this.mode == 3)
-          {
-            this.mediaDrm.provideKeyResponse(this.offlineLicenseKeySetId, paramObject);
-            if ((this.eventHandler == null) || (this.eventListener == null)) {
-              continue;
-            }
-            this.eventHandler.post(new DefaultDrmSession.2(this));
-          }
+      }
+      else
+      {
+        paramObject = this.mediaDrm.provideKeyResponse(this.sessionId, paramObject);
+        if (((this.mode == 2) || ((this.mode == 0) && (this.offlineLicenseKeySetId != null))) && (paramObject != null) && (paramObject.length != 0)) {
+          this.offlineLicenseKeySetId = paramObject;
         }
-        catch (Exception paramObject)
+        this.state = 4;
+        if ((this.eventHandler != null) && (this.eventListener != null))
         {
-          onKeysError(paramObject);
+          this.eventHandler.post(new DefaultDrmSession.3(this));
           return;
         }
       }
-      paramObject = this.mediaDrm.provideKeyResponse(this.sessionId, paramObject);
-      if (((this.mode == 2) || ((this.mode == 0) && (this.offlineLicenseKeySetId != null))) && (paramObject != null) && (paramObject.length != 0)) {
-        this.offlineLicenseKeySetId = paramObject;
-      }
-      this.state = 4;
-    } while ((this.eventHandler == null) || (this.eventListener == null));
-    this.eventHandler.post(new DefaultDrmSession.3(this));
+    }
+    catch (Exception paramObject)
+    {
+      onKeysError(paramObject);
+    }
   }
   
   private void onKeysError(Exception paramException)
@@ -240,24 +253,19 @@ class DefaultDrmSession<T extends ExoMediaCrypto>
       this.state = 3;
       return true;
     }
+    catch (Exception localException)
+    {
+      onError(localException);
+    }
     catch (NotProvisionedException localNotProvisionedException)
     {
       if (paramBoolean) {
         this.provisioningManager.provisionRequired(this);
-      }
-      for (;;)
-      {
-        return false;
+      } else {
         onError(localNotProvisionedException);
       }
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        onError(localException);
-      }
-    }
+    return false;
   }
   
   private void postKeyRequest(int paramInt, boolean paramBoolean)
@@ -265,26 +273,22 @@ class DefaultDrmSession<T extends ExoMediaCrypto>
     Object localObject;
     if (paramInt == 3) {
       localObject = this.offlineLicenseKeySetId;
-    }
-    label99:
-    for (;;)
-    {
-      try
-      {
-        localObject = this.mediaDrm.getKeyRequest((byte[])localObject, this.initData, this.mimeType, paramInt, this.optionalKeyRequestParameters);
-        if (!C.CLEARKEY_UUID.equals(this.uuid)) {
-          break label99;
-        }
-        localObject = new ExoMediaDrm.DefaultKeyRequest(ClearKeyUtil.adjustRequestData(((ExoMediaDrm.KeyRequest)localObject).getData()), ((ExoMediaDrm.KeyRequest)localObject).getDefaultUrl());
-        this.postRequestHandler.obtainMessage(1, localObject, paramBoolean).sendToTarget();
-        return;
-      }
-      catch (Exception localException)
-      {
-        onKeysError(localException);
-        return;
-      }
+    } else {
       localObject = this.sessionId;
+    }
+    try
+    {
+      ExoMediaDrm.KeyRequest localKeyRequest = this.mediaDrm.getKeyRequest((byte[])localObject, this.initData, this.mimeType, paramInt, this.optionalKeyRequestParameters);
+      localObject = localKeyRequest;
+      if (C.CLEARKEY_UUID.equals(this.uuid)) {
+        localObject = new ExoMediaDrm.DefaultKeyRequest(ClearKeyUtil.adjustRequestData(localKeyRequest.getData()), localKeyRequest.getDefaultUrl());
+      }
+      this.postRequestHandler.obtainMessage(1, localObject, paramBoolean).sendToTarget();
+      return;
+    }
+    catch (Exception localException)
+    {
+      onKeysError(localException);
     }
   }
   
@@ -307,11 +311,15 @@ class DefaultDrmSession<T extends ExoMediaCrypto>
   {
     int i = this.openCount + 1;
     this.openCount = i;
-    if ((i != 1) || (this.state == 1)) {}
-    while (!openInternal(true)) {
-      return;
+    if (i == 1)
+    {
+      if (this.state == 1) {
+        return;
+      }
+      if (openInternal(true)) {
+        doLicense(true);
+      }
     }
-    doLicense(true);
   }
   
   public final DrmSession.DrmSessionException getError()
@@ -352,19 +360,21 @@ class DefaultDrmSession<T extends ExoMediaCrypto>
     if (!isOpen()) {
       return;
     }
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      this.state = 3;
-      this.provisioningManager.provisionRequired(this);
-      return;
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3) {
+          return;
+        }
+        onKeysExpired();
+        return;
+      }
       doLicense(false);
       return;
     }
-    onKeysExpired();
+    this.state = 3;
+    this.provisioningManager.provisionRequired(this);
   }
   
   public void onProvisionCompleted()
@@ -387,15 +397,15 @@ class DefaultDrmSession<T extends ExoMediaCrypto>
   
   public Map<String, String> queryKeyStatus()
   {
-    if (this.sessionId == null) {
+    byte[] arrayOfByte = this.sessionId;
+    if (arrayOfByte == null) {
       return null;
     }
-    return this.mediaDrm.queryKeyStatus(this.sessionId);
+    return this.mediaDrm.queryKeyStatus(arrayOfByte);
   }
   
   public boolean release()
   {
-    boolean bool = false;
     int i = this.openCount - 1;
     this.openCount = i;
     if (i == 0)
@@ -408,19 +418,20 @@ class DefaultDrmSession<T extends ExoMediaCrypto>
       this.requestHandlerThread = null;
       this.mediaCrypto = null;
       this.lastException = null;
-      if (this.sessionId != null)
+      byte[] arrayOfByte = this.sessionId;
+      if (arrayOfByte != null)
       {
-        this.mediaDrm.closeSession(this.sessionId);
+        this.mediaDrm.closeSession(arrayOfByte);
         this.sessionId = null;
       }
-      bool = true;
+      return true;
     }
-    return bool;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.drm.DefaultDrmSession
  * JD-Core Version:    0.7.0.1
  */

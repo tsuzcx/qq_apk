@@ -7,6 +7,7 @@ import com.tencent.mobileqq.location.OnUpdateUserLocationListener;
 import com.tencent.mobileqq.location.data.LocationItem;
 import com.tencent.mobileqq.location.data.LocationRoom.RoomKey;
 import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.LocationAvatarHelper;
 import com.tencent.mobileqq.location.ui.LocationDialogUtil;
 import com.tencent.mobileqq.utils.BaseImageUtil;
 import com.tencent.mobileqq.widget.QQToast;
@@ -22,8 +23,14 @@ class LocationFloatWindowController$1
   
   public void a(LocationRoom.RoomKey paramRoomKey, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationShareController", 2, "onKickOff: invoked. roomKey: " + paramRoomKey + " mRoomKey: " + LocationFloatWindowController.a(this.a));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onKickOff: invoked. roomKey: ");
+      localStringBuilder.append(paramRoomKey);
+      localStringBuilder.append(" mRoomKey: ");
+      localStringBuilder.append(LocationFloatWindowController.a(this.a));
+      QLog.d("LocationShareController", 2, localStringBuilder.toString());
     }
     QQToast.a(BaseApplication.getContext(), "已在其他设备进行共享", 0).a();
   }
@@ -33,21 +40,19 @@ class LocationFloatWindowController$1
     if (QLog.isColorLevel()) {
       QLog.d("LocationShareController", 2, new Object[] { "onOperateRoomResponse: invoked. ", " roomKey: ", paramRoomKey, " errorCode: ", Integer.valueOf(paramInt1), " operateType: ", Integer.valueOf(paramInt2) });
     }
-    if (!paramRoomKey.equals(LocationFloatWindowController.a(this.a))) {}
-    do
-    {
-      do
-      {
-        return;
-        paramRoomKey = QBaseActivity.sTopActivity;
-        if (paramInt1 != 10100) {
-          break;
-        }
-      } while ((paramRoomKey == null) || (paramRoomKey.isFinishing()));
-      LocationDialogUtil.a(paramRoomKey);
+    if (!paramRoomKey.equals(LocationFloatWindowController.a(this.a))) {
       return;
-    } while ((paramInt1 != 10101) || (paramRoomKey == null) || (paramRoomKey.isFinishing()));
-    LocationDialogUtil.b(paramRoomKey);
+    }
+    paramRoomKey = QBaseActivity.sTopActivity;
+    if (paramInt1 == 10100)
+    {
+      if ((paramRoomKey != null) && (!paramRoomKey.isFinishing())) {
+        LocationDialogUtil.a(paramRoomKey);
+      }
+    }
+    else if ((paramInt1 == 10101) && (paramRoomKey != null) && (!paramRoomKey.isFinishing())) {
+      LocationDialogUtil.b(paramRoomKey);
+    }
   }
   
   public void a(LocationRoom.RoomKey paramRoomKey, LocationRoom.Venue paramVenue, List<LocationItem> paramList)
@@ -63,7 +68,7 @@ class LocationFloatWindowController$1
     while (paramVenue.hasNext())
     {
       paramList = (LocationItem)paramVenue.next();
-      Bitmap localBitmap = this.a.a(paramList.a());
+      Bitmap localBitmap = LocationAvatarHelper.a().a(paramList.a());
       if (localBitmap != null)
       {
         localBitmap = BaseImageUtil.c(localBitmap, 16, 16);
@@ -75,16 +80,17 @@ class LocationFloatWindowController$1
   
   public void b(LocationRoom.RoomKey paramRoomKey, int paramInt)
   {
-    if (!paramRoomKey.equals(LocationFloatWindowController.a(this.a))) {}
-    while ((paramInt == 2) || (paramInt == 1) || (QBaseActivity.sTopActivity == null)) {
+    if (!paramRoomKey.equals(LocationFloatWindowController.a(this.a))) {
       return;
     }
-    LocationDialogUtil.a(QBaseActivity.sTopActivity);
+    if ((paramInt != 2) && (paramInt != 1) && (QBaseActivity.sTopActivity != null)) {
+      LocationDialogUtil.a(QBaseActivity.sTopActivity);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.window.LocationFloatWindowController.1
  * JD-Core Version:    0.7.0.1
  */

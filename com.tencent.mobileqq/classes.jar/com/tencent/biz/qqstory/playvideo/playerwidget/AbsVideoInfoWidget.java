@@ -15,13 +15,13 @@ import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.biz.qqstory.playvideo.dataprovider.IDataProvider.GroupInfo;
 import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
 import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.ReportData;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.ActivityLifeCycle;
 import com.tencent.biz.qqstory.playvideo.lrtbwidget.GroupHolderBase;
 import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
 import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerVideoData;
 import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
 import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.utils.AssertUtils;
 import com.tribe.async.dispatch.Dispatcher;
@@ -57,7 +57,10 @@ public abstract class AbsVideoInfoWidget
     super(paramView);
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_b_of_type_JavaLangString = ("Q.qqstory.player.videoinfowidget." + a());
+    paramView = new StringBuilder();
+    paramView.append("Q.qqstory.player.videoinfowidget.");
+    paramView.append(a());
+    this.jdField_b_of_type_JavaLangString = paramView.toString();
   }
   
   public AbsVideoInfoWidget(ViewGroup paramViewGroup)
@@ -65,31 +68,34 @@ public abstract class AbsVideoInfoWidget
     super(paramViewGroup);
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_b_of_type_JavaLangString = ("Q.qqstory.player.videoinfowidget." + a());
+    paramViewGroup = new StringBuilder();
+    paramViewGroup.append("Q.qqstory.player.videoinfowidget.");
+    paramViewGroup.append(a());
+    this.jdField_b_of_type_JavaLangString = paramViewGroup.toString();
   }
   
   private final void a(StoryPlayerVideoData paramStoryPlayerVideoData)
   {
-    if ((paramStoryPlayerVideoData == null) || (!paramStoryPlayerVideoData.c()))
+    if ((paramStoryPlayerVideoData != null) && (paramStoryPlayerVideoData.c()))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData = null;
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData = paramStoryPlayerVideoData;
+      StoryVideoItem localStoryVideoItem = ((StoryManager)SuperManager.a(5)).b(paramStoryPlayerVideoData.a);
+      if ((localStoryVideoItem != null) && (localStoryVideoItem.mErrorCode == 0))
+      {
+        if (a(paramStoryPlayerVideoData, localStoryVideoItem))
+        {
+          h();
+          j();
+          a(paramStoryPlayerVideoData, localStoryVideoItem);
+          return;
+        }
+        k();
+        return;
+      }
       k();
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData = paramStoryPlayerVideoData;
-    StoryVideoItem localStoryVideoItem = ((StoryManager)SuperManager.a(5)).b(paramStoryPlayerVideoData.a);
-    if ((localStoryVideoItem == null) || (localStoryVideoItem.mErrorCode != 0))
-    {
-      k();
-      return;
-    }
-    if (a(paramStoryPlayerVideoData, localStoryVideoItem))
-    {
-      h();
-      j();
-      a(paramStoryPlayerVideoData, localStoryVideoItem);
-      return;
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData = null;
     k();
   }
   
@@ -112,20 +118,21 @@ public abstract class AbsVideoInfoWidget
     }
     this.c = false;
     this.d = false;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    Object localObject = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      Subscriber localSubscriber = (Subscriber)((Map.Entry)localIterator.next()).getKey();
+      Subscriber localSubscriber = (Subscriber)((Map.Entry)((Iterator)localObject).next()).getKey();
       StoryDispatcher.a().unRegisterSubscriber(localSubscriber);
     }
     this.jdField_a_of_type_JavaUtilMap.clear();
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget$MyActivityLifeCycle != null) {
-      b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget$MyActivityLifeCycle);
+    localObject = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget$MyActivityLifeCycle;
+    if (localObject != null) {
+      b((ActivityLifeCycle)localObject);
     }
     SLog.b(this.jdField_b_of_type_JavaLangString, "onWidgetDestroy!");
   }
   
-  public final View a(ViewGroup paramViewGroup)
+  protected final View a(ViewGroup paramViewGroup)
   {
     return paramViewGroup;
   }
@@ -140,13 +147,13 @@ public abstract class AbsVideoInfoWidget
       d();
     }
     paramInt = ((StoryPlayerGroupHolder)a()).b;
-    if ((paramInt >= this.jdField_a_of_type_JavaUtilList.size()) || (paramInt < 0))
+    if ((paramInt < this.jdField_a_of_type_JavaUtilList.size()) && (paramInt >= 0))
     {
-      SLog.d(this.jdField_b_of_type_JavaLangString, "Position error , bind data error, current position = %d , size = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
-      i();
+      a((StoryPlayerVideoData)this.jdField_a_of_type_JavaUtilList.get(paramInt));
       return;
     }
-    a((StoryPlayerVideoData)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    SLog.d(this.jdField_b_of_type_JavaLangString, "Position error , bind data error, current position = %d , size = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
+    i();
   }
   
   protected abstract void a(View paramView);
@@ -183,17 +190,18 @@ public abstract class AbsVideoInfoWidget
   
   final String b()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData != null)
+    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData;
+    if (localObject != null)
     {
-      VideoListFeedItem localVideoListFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.a();
-      if ((localVideoListFeedItem != null) && ((localVideoListFeedItem instanceof ShareGroupFeedItem))) {
-        return ((ShareGroupFeedItem)localVideoListFeedItem).getOwner().getUnionId();
+      localObject = ((StoryPlayerVideoData)localObject).a();
+      if ((localObject != null) && ((localObject instanceof ShareGroupFeedItem))) {
+        return ((ShareGroupFeedItem)localObject).getOwner().getUnionId();
       }
     }
     return "";
   }
   
-  public final void b()
+  protected final void b()
   {
     super.b();
     StoryPlayerGroupHolder localStoryPlayerGroupHolder = (StoryPlayerGroupHolder)a();
@@ -242,7 +250,7 @@ public abstract class AbsVideoInfoWidget
         this.e = true;
         if (b() != -1)
         {
-          AssertUtils.a(this.jdField_a_of_type_AndroidViewView instanceof ViewGroup);
+          AssertUtils.assertTrue(this.jdField_a_of_type_AndroidViewView instanceof ViewGroup);
           LayoutInflater.from(this.jdField_a_of_type_AndroidViewView.getContext()).inflate(b(), (ViewGroup)this.jdField_a_of_type_AndroidViewView, true);
         }
         a(this.jdField_a_of_type_AndroidViewView);
@@ -278,7 +286,7 @@ public abstract class AbsVideoInfoWidget
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget
  * JD-Core Version:    0.7.0.1
  */

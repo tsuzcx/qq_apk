@@ -32,14 +32,15 @@ public final class GetPicContInfoRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.pic_info != null) {
-      paramJceOutputStream.write(this.pic_info, 0);
+    Map localMap = this.pic_info;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.GetPicContInfoRsp
  * JD-Core Version:    0.7.0.1
  */

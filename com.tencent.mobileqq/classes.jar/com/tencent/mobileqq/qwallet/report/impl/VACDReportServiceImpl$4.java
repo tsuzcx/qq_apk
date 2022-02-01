@@ -11,50 +11,55 @@ class VACDReportServiceImpl$4
   
   public void run()
   {
-    synchronized ()
+    try
     {
-      try
+      synchronized ()
       {
-        while ((VACDReportServiceImpl.access$700(this.this$0).isEmpty()) && (VACDReportServiceImpl.access$600(this.this$0).isEmpty())) {
+        if ((VACDReportServiceImpl.access$700(this.this$0).isEmpty()) && (VACDReportServiceImpl.access$600(this.this$0).isEmpty())) {
           VACDReportServiceImpl.access$000().wait();
         }
-        try
-        {
-          synchronized (this.a)
-          {
-            this.a.wait(2000L);
-          }
-          do
-          {
-            synchronized (VACDReportServiceImpl.access$000())
-            {
-              VACDReportServiceImpl.access$800(this.this$0, 2);
-              if (VACDReportServiceImpl.access$400(this.this$0))
-              {
-                VACDReportServiceImpl.access$1000(this.this$0).post(this);
-                return;
-                localObject1 = finally;
-                throw localObject1;
-                localObject2 = finally;
-                throw localObject2;
-              }
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d("VACDReport", 2, "WriteDBThread exit.");
-          return;
-        }
-        catch (Exception localException2)
-        {
-          break label61;
-        }
       }
-      catch (Exception localException1) {}
+    }
+    catch (Exception localException1)
+    {
+      label45:
+      label71:
+      break label45;
+    }
+    try
+    {
+      synchronized (this.a)
+      {
+        this.a.wait(2000L);
+      }
+    }
+    catch (Exception localException2)
+    {
+      break label71;
+    }
+    synchronized (VACDReportServiceImpl.access$000())
+    {
+      VACDReportServiceImpl.access$800(this.this$0, 2);
+      if (VACDReportServiceImpl.access$400(this.this$0))
+      {
+        VACDReportServiceImpl.access$1000(this.this$0).post(this);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("VACDReport", 2, "WriteDBThread exit.");
+      }
+      return;
+    }
+    throw localObject3;
+    for (;;)
+    {
+      throw localObject3;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.report.impl.VACDReportServiceImpl.4
  * JD-Core Version:    0.7.0.1
  */

@@ -33,8 +33,14 @@ public class ScreenshotManager
   
   static
   {
-    jdField_a_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath("Tencent/MobileQQ/gamecenter" + File.separator);
-    jdField_b_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(jdField_a_of_type_JavaLangString + "gamecenter_screenshot");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Tencent/MobileQQ/gamecenter");
+    localStringBuilder.append(File.separator);
+    jdField_a_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("gamecenter_screenshot");
+    jdField_b_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
   }
   
   public static Bitmap a(View paramView)
@@ -54,7 +60,10 @@ public class ScreenshotManager
   
   private void a(Context paramContext, String paramString, ScreenshotManager.ShotCallback paramShotCallback)
   {
-    if (FileUtil.a(jdField_b_of_type_JavaLangString + paramString)) {
+    paramContext = new StringBuilder();
+    paramContext.append(jdField_b_of_type_JavaLangString);
+    paramContext.append(paramString);
+    if (FileUtil.b(paramContext.toString())) {
       ThreadManagerV2.executeOnFileThread(new ScreenshotManager.1(this, paramString, paramShotCallback));
     }
   }
@@ -68,12 +77,15 @@ public class ScreenshotManager
         ((ViewGroup)this.jdField_a_of_type_AndroidWidgetImageView.getParent()).removeView(this.jdField_a_of_type_AndroidWidgetImageView);
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
         QLog.i("ScreenshotManager", 1, "forceRemoveMask call");
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
-      QLog.e("ScreenshotManager", 1, "forceRemoveMask e=" + localThrowable.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("forceRemoveMask e=");
+      localStringBuilder.append(localThrowable.toString());
+      QLog.e("ScreenshotManager", 1, localStringBuilder.toString());
     }
   }
   
@@ -101,13 +113,11 @@ public class ScreenshotManager
       return;
     }
     this.jdField_b_of_type_Boolean = true;
-    if ((this.jdField_a_of_type_AndroidWidgetImageView == null) || (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0))
-    {
-      paramShotCallback.a(0, "removeShotMask no visible");
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenshotManager", 2, "removeShotMask call");
+    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    if ((localImageView != null) && (localImageView.getVisibility() == 0)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ScreenshotManager", 2, "removeShotMask call");
+      }
     }
     try
     {
@@ -118,8 +128,12 @@ public class ScreenshotManager
     }
     catch (Throwable paramWebView)
     {
-      paramShotCallback.a(-400, "removeShotMask fail");
+      label79:
+      break label79;
     }
+    paramShotCallback.a(-400, "removeShotMask fail");
+    return;
+    paramShotCallback.a(0, "removeShotMask no visible");
   }
   
   public void a(WebView paramWebView, String paramString, ScreenshotManager.ShotCallback paramShotCallback)
@@ -128,7 +142,16 @@ public class ScreenshotManager
       return;
     }
     this.jdField_a_of_type_AndroidGraphicsBitmap = a(paramWebView);
-    QLog.i("ScreenshotManager", 1, "screenShot view.w =" + paramWebView.getWidth() + " view.h=" + paramWebView.getHeight() + " mask.w = " + this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + " mask.h=" + this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("screenShot view.w =");
+    localStringBuilder.append(paramWebView.getWidth());
+    localStringBuilder.append(" view.h=");
+    localStringBuilder.append(paramWebView.getHeight());
+    localStringBuilder.append(" mask.w = ");
+    localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
+    localStringBuilder.append(" mask.h=");
+    localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+    QLog.i("ScreenshotManager", 1, localStringBuilder.toString());
     if (this.jdField_a_of_type_AndroidWidgetImageView == null)
     {
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramWebView.getContext());
@@ -144,19 +167,25 @@ public class ScreenshotManager
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("switch", GameCenterSpUtils.a("gamecenter_shot_switch"));
-      localJSONObject.put("fileExist", FileUtil.a(jdField_a_of_type_JavaLangString + paramString));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(paramString);
+      localJSONObject.put("fileExist", FileUtil.b(localStringBuilder.toString()));
       paramShotCallback.a(0, localJSONObject.toString());
       return;
     }
     catch (Exception paramString)
     {
-      paramShotCallback.a(-700, "queryShotInfo error");
+      label74:
+      break label74;
     }
+    paramShotCallback.a(-700, "queryShotInfo error");
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0);
+    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    return (localImageView != null) && (localImageView.getVisibility() == 0);
   }
   
   public boolean a(Bitmap paramBitmap, String paramString)
@@ -164,7 +193,10 @@ public class ScreenshotManager
     if (paramBitmap != null) {
       try
       {
-        paramString = jdField_b_of_type_JavaLangString + paramString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(jdField_b_of_type_JavaLangString);
+        localStringBuilder.append(paramString);
+        paramString = localStringBuilder.toString();
         FileUtils.a(jdField_a_of_type_JavaLangString);
         paramString = new FileOutputStream(new File(paramString));
         paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, paramString);
@@ -174,8 +206,10 @@ public class ScreenshotManager
       }
       catch (Exception paramBitmap)
       {
-        QLog.e("ScreenshotManager", 1, "screenShot saveBitmap error=" + paramBitmap.toString());
-        return false;
+        paramString = new StringBuilder();
+        paramString.append("screenShot saveBitmap error=");
+        paramString.append(paramBitmap.toString());
+        QLog.e("ScreenshotManager", 1, paramString.toString());
       }
     }
     return false;
@@ -237,7 +271,10 @@ public class ScreenshotManager
     }
     catch (Throwable paramWebView)
     {
-      QLog.e("ScreenshotManager", 1, "addShot error =" + paramWebView.toString());
+      paramString = new StringBuilder();
+      paramString.append("addShot error =");
+      paramString.append(paramWebView.toString());
+      QLog.e("ScreenshotManager", 1, paramString.toString());
       paramShotCallback.a(-301, "add view error");
     }
   }
@@ -256,7 +293,7 @@ public class ScreenshotManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gamecenter.common.util.ScreenshotManager
  * JD-Core Version:    0.7.0.1
  */

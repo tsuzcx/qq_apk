@@ -9,30 +9,31 @@ public class PLog
   
   static
   {
-    for (;;)
+    try
     {
-      try
-      {
-        if (Class.forName("com.tencent.qphone.base.util.QLog") == null) {
-          continue;
-        }
-        bool = true;
-        isQLogExists = bool;
+      if (Class.forName("com.tencent.qphone.base.util.QLog") == null) {
+        break label62;
       }
-      catch (Exception localException)
-      {
-        boolean bool;
-        StringBuilder localStringBuilder;
-        isQLogExists = false;
-        continue;
-      }
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("isQLogExists=");
-      localStringBuilder.append(isQLogExists);
-      Log.d("PLog", localStringBuilder.toString());
-      return;
-      bool = false;
+      bool = true;
     }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        label24:
+        StringBuilder localStringBuilder;
+        continue;
+        label62:
+        boolean bool = false;
+      }
+    }
+    isQLogExists = bool;
+    break label24;
+    isQLogExists = false;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isQLogExists=");
+    localStringBuilder.append(isQLogExists);
+    Log.d("PLog", localStringBuilder.toString());
   }
   
   public static void d(String paramString1, String paramString2)
@@ -95,7 +96,7 @@ public class PLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.qflutter.qqcircle.PLog
  * JD-Core Version:    0.7.0.1
  */

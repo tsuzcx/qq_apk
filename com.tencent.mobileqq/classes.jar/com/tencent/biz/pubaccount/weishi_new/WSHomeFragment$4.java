@@ -12,27 +12,29 @@ class WSHomeFragment$4
   
   public void a(WSPopupMenuDialog.MenuItem paramMenuItem)
   {
-    if (paramMenuItem != null) {}
-    switch (paramMenuItem.a)
+    if (paramMenuItem != null)
     {
-    default: 
-      return;
-    case 2131720715: 
-      WSPublicAccReport.getInstance().reportNotificationClick(WSHomeFragment.a, WSHomeFragment.b(this.a));
-      WSHomeFragment.d(this.a);
-      ((WSHomeFragmentPresenter)this.a.b()).a(this.a.getActivity(), 602);
-      return;
-    case 2131720714: 
-      WSPublicAccReport.getInstance().reportPersonHomeClick(WSHomeFragment.a, WSHomeFragment.b(this.a));
-      ((WSHomeFragmentPresenter)this.a.b()).a(this.a.getActivity());
-      return;
+      switch (paramMenuItem.a)
+      {
+      default: 
+        return;
+      case 2131720439: 
+        WSPublicAccReport.getInstance().reportNotificationClick(WSHomeFragment.a, WSHomeFragment.b(this.a));
+        WSHomeFragment.d(this.a);
+        ((WSHomeFragmentPresenter)this.a.b()).a(this.a.getBaseActivity(), 602);
+        return;
+      case 2131720438: 
+        WSPublicAccReport.getInstance().reportPersonHomeClick(WSHomeFragment.a, WSHomeFragment.b(this.a));
+        ((WSHomeFragmentPresenter)this.a.b()).a(this.a.getBaseActivity());
+        return;
+      }
+      ((WSHomeFragmentPresenter)this.a.b()).b(this.a.getActivity());
     }
-    ((WSHomeFragmentPresenter)this.a.b()).b(this.a.getActivity());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSHomeFragment.4
  * JD-Core Version:    0.7.0.1
  */

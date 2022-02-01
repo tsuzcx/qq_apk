@@ -1,11 +1,11 @@
 package com.tencent.avgame.gamelobby.rv;
 
 import android.view.View;
+import com.tencent.avgame.gamelobby.IAVGameRoomCenterFragment;
 import com.tencent.avgame.gamelobby.data.AVGameLobbySurvivalContentInfo;
 import com.tencent.avgame.gamelobby.data.IBaseData;
-import com.tencent.avgame.gameroom.festivalreport.CJSurvivalFestivalReporter;
 import com.tencent.avgame.qav.AsyncExitTask;
-import com.tencent.avgame.ui.AVGameRoomCenterFragment;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -17,68 +17,64 @@ class AVGameLobbyOnClickListenerFactory$3
   
   public void a(View paramView, IBaseData paramIBaseData, int paramInt)
   {
-    boolean bool = true;
-    if (paramIBaseData == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (AsyncExitTask.a())
-          {
-            QQToast.a(this.a.jdField_a_of_type_ComTencentAvgameUiAVGameRoomCenterFragment.getActivity(), 2131690501, 0).a();
-            return;
-          }
-          paramIBaseData = (AVGameLobbySurvivalContentInfo)paramIBaseData;
-          QLog.d(AVGameRoomCenterFragment.jdField_a_of_type_JavaLangString, 2, "getTimeType is " + paramIBaseData.c());
-          if (paramView.getId() != 2131363304) {
-            break;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d(AVGameRoomCenterFragment.jdField_a_of_type_JavaLangString, 2, "reserve button click");
-          }
-        } while (paramIBaseData.b());
-        if (this.a.jdField_a_of_type_ComTencentAvgameUiAVGameRoomCenterFragment.a())
-        {
-          AVGameRoomCenterFragment localAVGameRoomCenterFragment = this.a.jdField_a_of_type_ComTencentAvgameUiAVGameRoomCenterFragment;
-          paramInt = paramIBaseData.d();
-          if (!paramIBaseData.b()) {}
-          for (;;)
-          {
-            localAVGameRoomCenterFragment.a(paramInt, bool);
-            paramIBaseData.b(false);
-            paramView.setClickable(false);
-            ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B690", "0X800B690", 0, 0, "", "", "", "");
-            return;
-            bool = false;
-          }
-        }
-        this.a.jdField_a_of_type_ComTencentAvgameUiAVGameRoomCenterFragment.jdField_a_of_type_Int = paramIBaseData.d();
-        this.a.jdField_a_of_type_ComTencentAvgameUiAVGameRoomCenterFragment.e();
-        return;
-        if (paramIBaseData.c() != 3) {
-          break;
-        }
-        if (paramIBaseData.d()) {
-          CJSurvivalFestivalReporter.a(1, 1, true, 0, false, paramIBaseData.d(), "0", false);
-        }
-        this.a.jdField_a_of_type_ComTencentAvgameUiAVGameRoomCenterFragment.c(paramIBaseData.d(), paramIBaseData.d());
-      } while (!QLog.isColorLevel());
-      QLog.d(AVGameRoomCenterFragment.jdField_a_of_type_JavaLangString, 2, "reserve item click");
+    if (paramIBaseData == null) {
       return;
-      if (paramIBaseData.d()) {
-        CJSurvivalFestivalReporter.a(1, 1, true, 0, true, paramIBaseData.d(), "0", false);
+    }
+    if (AsyncExitTask.a())
+    {
+      QQToast.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplicationContext(), 2131690426, 0).a();
+      return;
+    }
+    paramIBaseData = (AVGameLobbySurvivalContentInfo)paramIBaseData;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getTimeType is ");
+    localStringBuilder.append(paramIBaseData.c());
+    QLog.d("AVGameLobbyOnClickListenerFactory", 2, localStringBuilder.toString());
+    if (paramView.getId() == 2131363236)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AVGameLobbyOnClickListenerFactory", 2, "reserve button click");
       }
-      QQToast.a(this.a.jdField_a_of_type_ComTencentAvgameUiAVGameRoomCenterFragment.getActivity(), 0, 2131690505, 0).a();
-    } while (!QLog.isColorLevel());
-    QLog.d(AVGameRoomCenterFragment.jdField_a_of_type_JavaLangString, 2, "reserve item click err");
+      if (paramIBaseData.b()) {
+        return;
+      }
+      if (this.a.jdField_a_of_type_ComTencentAvgameGamelobbyIAVGameRoomCenterFragment.a())
+      {
+        this.a.jdField_a_of_type_ComTencentAvgameGamelobbyIAVGameRoomCenterFragment.a(paramIBaseData.d(), paramIBaseData.b() ^ true);
+        paramIBaseData.b(false);
+        paramView.setClickable(false);
+        ReportController.b(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, "dc00898", "", "", "0X800B690", "0X800B690", 0, 0, "", "", "", "");
+        return;
+      }
+      this.a.jdField_a_of_type_ComTencentAvgameGamelobbyIAVGameRoomCenterFragment.b(paramIBaseData.d());
+      this.a.jdField_a_of_type_ComTencentAvgameGamelobbyIAVGameRoomCenterFragment.d();
+      return;
+    }
+    if (paramIBaseData.c() == 3)
+    {
+      if (paramIBaseData.d()) {
+        this.a.jdField_a_of_type_ComTencentAvgameGamelobbyIAVGameRoomCenterFragment.a(paramIBaseData.b(), paramIBaseData.d());
+      }
+      this.a.jdField_a_of_type_ComTencentAvgameGamelobbyIAVGameRoomCenterFragment.c(paramIBaseData.d(), paramIBaseData.d());
+      if (QLog.isColorLevel()) {
+        QLog.d("AVGameLobbyOnClickListenerFactory", 2, "reserve item click");
+      }
+    }
+    else
+    {
+      if (paramIBaseData.d()) {
+        this.a.jdField_a_of_type_ComTencentAvgameGamelobbyIAVGameRoomCenterFragment.a(paramIBaseData.b(), paramIBaseData.d());
+      }
+      QQToast.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplicationContext(), 0, 2131690430, 0).a();
+      if (QLog.isColorLevel()) {
+        QLog.d("AVGameLobbyOnClickListenerFactory", 2, "reserve item click err");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelobby.rv.AVGameLobbyOnClickListenerFactory.3
  * JD-Core Version:    0.7.0.1
  */

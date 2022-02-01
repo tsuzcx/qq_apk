@@ -32,23 +32,18 @@ public class DefaultTaskExecutor
       Handler localHandler = (Handler)Handler.class.getDeclaredConstructor(new Class[] { Looper.class, Handler.Callback.class, Boolean.TYPE }).newInstance(new Object[] { paramLooper, null, Boolean.valueOf(true) });
       return localHandler;
     }
+    catch (IllegalAccessException|InstantiationException|NoSuchMethodException localIllegalAccessException)
+    {
+      break label83;
+    }
     catch (InvocationTargetException localInvocationTargetException)
     {
-      return new Handler(paramLooper);
+      label74:
+      label83:
+      break label74;
     }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      return new Handler(paramLooper);
-    }
-    catch (InstantiationException localInstantiationException)
-    {
-      break label85;
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      label85:
-      break label85;
-    }
+    return new Handler(paramLooper);
+    return new Handler(paramLooper);
   }
   
   public void executeOnDiskIO(Runnable paramRunnable)
@@ -63,20 +58,20 @@ public class DefaultTaskExecutor
   
   public void postToMainThread(Runnable paramRunnable)
   {
-    if (this.mMainHandler == null) {}
-    synchronized (this.mLock)
-    {
-      if (this.mMainHandler == null) {
-        this.mMainHandler = createAsync(Looper.getMainLooper());
+    if (this.mMainHandler == null) {
+      synchronized (this.mLock)
+      {
+        if (this.mMainHandler == null) {
+          this.mMainHandler = createAsync(Looper.getMainLooper());
+        }
       }
-      this.mMainHandler.post(paramRunnable);
-      return;
     }
+    this.mMainHandler.post(paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.arch.core.executor.DefaultTaskExecutor
  * JD-Core Version:    0.7.0.1
  */

@@ -18,69 +18,62 @@ class ArkMessageServerLogic$1$1
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
+    Object localObject1 = null;
     if ((paramBoolean) && (paramObject != null))
     {
-      localObject1 = new ArkAppPanelList.RespBody();
+      Object localObject2 = new ArkAppPanelList.RespBody();
       try
       {
-        ((ArkAppPanelList.RespBody)localObject1).mergeFrom((byte[])paramObject);
-        localArrayList = new ArrayList();
-        if (((ArkAppPanelList.RespBody)localObject1).apps.has())
+        ((ArkAppPanelList.RespBody)localObject2).mergeFrom((byte[])paramObject);
+        ArrayList localArrayList = new ArrayList();
+        paramObject = localObject1;
+        if (((ArkAppPanelList.RespBody)localObject2).apps.has()) {
+          paramObject = ((ArkAppPanelList.RespBody)localObject2).apps.get();
+        }
+        if ((paramObject != null) && (paramObject.size() > 0))
         {
-          paramObject = ((ArkAppPanelList.RespBody)localObject1).apps.get();
-          if ((paramObject == null) || (paramObject.size() <= 0)) {
-            break label234;
-          }
           paramObject = paramObject.iterator();
           while (paramObject.hasNext())
           {
-            localObject2 = (ArkAppPanelList.AppDetail)paramObject.next();
-            if (localObject2 != null)
+            Object localObject3 = (ArkAppPanelList.AppDetail)paramObject.next();
+            if (localObject3 != null)
             {
-              localObject1 = ((ArkAppPanelList.AppDetail)localObject2).appName.get();
-              str = ((ArkAppPanelList.AppDetail)localObject2).cnName.get();
-              localObject2 = ((ArkAppPanelList.AppDetail)localObject2).iconUrl.get();
-              if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
-              {
-                localArrayList.add(new ArkAppManagerPanel.ArkAppPanelData((String)localObject1, str, (String)localObject2));
-                continue;
-                return;
+              localObject1 = ((ArkAppPanelList.AppDetail)localObject3).appName.get();
+              localObject2 = ((ArkAppPanelList.AppDetail)localObject3).cnName.get();
+              localObject3 = ((ArkAppPanelList.AppDetail)localObject3).iconUrl.get();
+              if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty((CharSequence)localObject3))) {
+                localArrayList.add(new ArkAppPanelData((String)localObject1, (String)localObject2, (String)localObject3));
               }
             }
           }
         }
+        if (this.a.a == null) {
+          return;
+        }
+        this.a.a.b(localArrayList);
+        return;
       }
       catch (InvalidProtocolBufferMicroException paramObject)
       {
-        ArkAppCenter.c("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList mergeFrom exception=" + paramObject);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("requestArkAppManagerPanelList mergeFrom exception=");
+        ((StringBuilder)localObject1).append(paramObject);
+        ArkAppCenter.a("ArkApp.ArkMessageServerLogic", ((StringBuilder)localObject1).toString());
         if (this.a.a != null) {
           this.a.a.b(null);
         }
+        return;
       }
     }
-    label234:
-    while (this.a.a == null)
+    else if (this.a.a != null)
     {
-      ArrayList localArrayList;
-      do
-      {
-        for (;;)
-        {
-          Object localObject1;
-          Object localObject2;
-          String str;
-          paramObject = null;
-        }
-      } while (this.a.a == null);
-      this.a.a.b(localArrayList);
-      return;
+      this.a.a.b(null);
     }
-    this.a.a.b(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkMessageServerLogic.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.ad.api.R.styleable;
 
 public class AuthorizationItem
   extends LinearLayout
@@ -49,13 +49,13 @@ public class AuthorizationItem
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    LayoutInflater.from(paramContext).inflate(2131561117, this, true);
+    LayoutInflater.from(paramContext).inflate(2131560979, this, true);
     if (paramAttributeSet != null)
     {
-      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.AuthorizationItem);
-      this.jdField_a_of_type_Int = paramContext.getInteger(1, -1);
-      this.e = AuthorizationItem.ItemType.a(paramContext.getInteger(2, -1));
-      this.jdField_a_of_type_JavaLangString = paramContext.getString(0);
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.s);
+      this.jdField_a_of_type_Int = paramContext.getInteger(R.styleable.b, -1);
+      this.e = AuthorizationItem.ItemType.a(paramContext.getInteger(R.styleable.c, -1));
+      this.jdField_a_of_type_JavaLangString = paramContext.getString(R.styleable.jdField_a_of_type_Int);
       paramContext.recycle();
     }
     setPositionType(this.jdField_a_of_type_Int);
@@ -66,40 +66,40 @@ public class AuthorizationItem
   public void setContent(String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
-      ((TextView)findViewById(2131380426)).setText(paramString);
+      ((TextView)findViewById(2131379738)).setText(paramString);
     }
   }
   
   public void setItemType(AuthorizationItem.ItemType paramItemType)
   {
-    ((TextView)findViewById(2131380428)).setText(paramItemType.jdField_a_of_type_JavaLangString);
+    ((TextView)findViewById(2131379740)).setText(paramItemType.jdField_a_of_type_JavaLangString);
   }
   
   public void setPositionType(int paramInt)
   {
-    if (paramInt == 0) {
-      setBackgroundResource(2130845044);
-    }
-    do
+    if (paramInt == 0)
     {
+      setBackgroundResource(2130844920);
       return;
-      if (paramInt == 1)
-      {
-        setBackgroundResource(2130845043);
-        return;
-      }
-      if (paramInt == 2)
-      {
-        setBackgroundResource(2130845041);
-        return;
-      }
-    } while (paramInt != 3);
-    setBackgroundResource(2130845040);
+    }
+    if (paramInt == 1)
+    {
+      setBackgroundResource(2130844919);
+      return;
+    }
+    if (paramInt == 2)
+    {
+      setBackgroundResource(2130844917);
+      return;
+    }
+    if (paramInt == 3) {
+      setBackgroundResource(2130844916);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.AuthorizationItem
  * JD-Core Version:    0.7.0.1
  */

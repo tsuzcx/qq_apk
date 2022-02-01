@@ -15,17 +15,25 @@ public class NotificationFactory
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("createNotification:String channel ").append(paramString).append(", int icon ").append(paramInt).append(", CharSequence tickerText ").append(paramCharSequence).append(", long when").append(paramLong);
+      localStringBuilder.append("createNotification:String channel ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", int icon ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", CharSequence tickerText ");
+      localStringBuilder.append(paramCharSequence);
+      localStringBuilder.append(", long when");
+      localStringBuilder.append(paramLong);
       QLog.d("NotificationFactory", 2, new Object[] { localStringBuilder });
     }
     if (SdkInfoUtil.isOreo())
     {
-      if (paramString.isEmpty()) {}
-      for (paramString = new Notification.Builder(BaseApplication.getContext());; paramString = new Notification.Builder(BaseApplication.getContext(), paramString))
-      {
-        paramString.setSmallIcon(paramInt).setTicker(paramCharSequence).setWhen(paramLong);
-        return paramString.build();
+      if (paramString.isEmpty()) {
+        paramString = new Notification.Builder(BaseApplication.getContext());
+      } else {
+        paramString = new Notification.Builder(BaseApplication.getContext(), paramString);
       }
+      paramString.setSmallIcon(paramInt).setTicker(paramCharSequence).setWhen(paramLong);
+      return paramString.build();
     }
     return new Notification(paramInt, paramCharSequence, paramLong);
   }
@@ -44,20 +52,27 @@ public class NotificationFactory
   
   public static NotificationCompat.Builder createNotificationCompatBuilder(String paramString)
   {
+    NotificationCompat.Builder localBuilder1;
     if (SdkInfoUtil.isOreo())
     {
-      NotificationCompat.Builder localBuilder = new NotificationCompat.Builder(BaseApplication.getContext());
-      if (!paramString.isEmpty()) {
-        localBuilder.setChannelId(paramString);
+      NotificationCompat.Builder localBuilder2 = new NotificationCompat.Builder(BaseApplication.getContext());
+      localBuilder1 = localBuilder2;
+      if (!paramString.isEmpty())
+      {
+        localBuilder2.setChannelId(paramString);
+        return localBuilder2;
       }
-      return localBuilder;
     }
-    return new NotificationCompat.Builder(BaseApplication.getContext());
+    else
+    {
+      localBuilder1 = new NotificationCompat.Builder(BaseApplication.getContext());
+    }
+    return localBuilder1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.commonsdk.util.notification.NotificationFactory
  * JD-Core Version:    0.7.0.1
  */

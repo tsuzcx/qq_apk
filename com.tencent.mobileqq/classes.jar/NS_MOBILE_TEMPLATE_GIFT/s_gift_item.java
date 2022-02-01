@@ -73,32 +73,39 @@ public final class s_gift_item
     paramJceOutputStream.write(this.item_type, 5);
     paramJceOutputStream.write(this.remark, 6);
     paramJceOutputStream.write(this.special_type, 7);
-    if (this.pre_format != null) {
-      paramJceOutputStream.write(this.pre_format, 8);
+    String str = this.pre_format;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
-    if (this.picUrl != null) {
-      paramJceOutputStream.write(this.picUrl, 9);
+    str = this.picUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
-    if (this.warm_msg != null) {
-      paramJceOutputStream.write(this.warm_msg, 10);
+    str = this.warm_msg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
-    if (this.url_audio != null) {
-      paramJceOutputStream.write(this.url_audio, 11);
+    str = this.url_audio;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
-    if (this.url_video != null) {
-      paramJceOutputStream.write(this.url_video, 12);
+    str = this.url_video;
+    if (str != null) {
+      paramJceOutputStream.write(str, 12);
     }
-    if (this.url_video_thumbnail != null) {
-      paramJceOutputStream.write(this.url_video_thumbnail, 13);
+    str = this.url_video_thumbnail;
+    if (str != null) {
+      paramJceOutputStream.write(str, 13);
     }
-    if (this.picUrl_188 != null) {
-      paramJceOutputStream.write(this.picUrl_188, 14);
+    str = this.picUrl_188;
+    if (str != null) {
+      paramJceOutputStream.write(str, 14);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_TEMPLATE_GIFT.s_gift_item
  * JD-Core Version:    0.7.0.1
  */

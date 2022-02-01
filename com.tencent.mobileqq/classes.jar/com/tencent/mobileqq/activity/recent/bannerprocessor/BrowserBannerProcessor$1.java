@@ -16,41 +16,42 @@ class BrowserBannerProcessor$1
   
   public void onClick(View paramView)
   {
-    BannerManager.a().a(34, 0, null);
-    Object localObject1 = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("activity");
-    if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
+    Object localObject2 = BannerManager.a();
+    int i = BrowserBannerProcessor.a;
+    Object localObject1 = null;
+    ((BannerManager)localObject2).a(i, 0, null);
+    localObject2 = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("activity");
+    if (!TextUtils.isEmpty((CharSequence)localObject2)) {}
     try
     {
-      localObject1 = Class.forName((String)localObject1);
-      if (localObject1 != null)
-      {
-        localObject1 = new Intent(BrowserBannerProcessor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBrowserBannerProcessor).getApplicationContext(), (Class)localObject1);
-        String str = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("action");
-        if (!TextUtils.isEmpty(str)) {
-          ((Intent)localObject1).setAction(str);
-        }
-        str = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("category");
-        if (!TextUtils.isEmpty(str)) {
-          ((Intent)localObject1).addCategory(str);
-        }
-        ((Intent)localObject1).setFlags(this.jdField_a_of_type_AndroidOsBundle.getInt("flags", 0));
-        BrowserBannerProcessor.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBrowserBannerProcessor).startActivity((Intent)localObject1);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      localObject2 = Class.forName((String)localObject2);
+      localObject1 = localObject2;
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
-      for (;;)
-      {
-        Object localObject2 = null;
-      }
+      label51:
+      break label51;
     }
+    if (localObject1 != null)
+    {
+      localObject1 = new Intent(BrowserBannerProcessor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBrowserBannerProcessor).getApplicationContext(), (Class)localObject1);
+      localObject2 = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("action");
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        ((Intent)localObject1).setAction((String)localObject2);
+      }
+      localObject2 = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("category");
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        ((Intent)localObject1).addCategory((String)localObject2);
+      }
+      ((Intent)localObject1).setFlags(this.jdField_a_of_type_AndroidOsBundle.getInt("flags", 0));
+      BrowserBannerProcessor.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBrowserBannerProcessor).startActivity((Intent)localObject1);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.BrowserBannerProcessor.1
  * JD-Core Version:    0.7.0.1
  */

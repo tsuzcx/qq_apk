@@ -33,18 +33,22 @@ public class VideoLayerUI$ScaleGestureListener
     float f1 = this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].c();
     float f2 = this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].a();
     float f3 = this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].b();
-    if (f1 < f2) {
-      VideoLayerUI.a(this.a, this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0], f2 / f1, 60L);
-    }
-    while (f1 <= f3) {
+    if (f1 < f2)
+    {
+      paramScaleGestureDetector = this.a;
+      VideoLayerUI.a(paramScaleGestureDetector, paramScaleGestureDetector.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0], f2 / f1, 60L);
       return;
     }
-    VideoLayerUI.a(this.a, this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0], f3 / f1, 60L);
+    if (f1 > f3)
+    {
+      paramScaleGestureDetector = this.a;
+      VideoLayerUI.a(paramScaleGestureDetector, paramScaleGestureDetector.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0], f3 / f1, 60L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoLayerUI.ScaleGestureListener
  * JD-Core Version:    0.7.0.1
  */

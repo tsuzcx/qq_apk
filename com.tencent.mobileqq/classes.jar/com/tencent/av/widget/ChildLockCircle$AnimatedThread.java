@@ -11,155 +11,133 @@ class ChildLockCircle$AnimatedThread
   public void run()
   {
     this.b = false;
-    float f2 = 0.0F;
+    ChildLockCircle localChildLockCircle;
     if (ChildLockCircle.a(this.this$0))
     {
       ChildLockCircle.a(this.this$0, 0);
-      ChildLockCircle.a(this.this$0, ChildLockCircle.a(this.this$0));
-      ChildLockCircle.a(this.this$0, ChildLockCircle.a(this.this$0));
+      localChildLockCircle = this.this$0;
+      ChildLockCircle.a(localChildLockCircle, ChildLockCircle.a(localChildLockCircle));
+      localChildLockCircle = this.this$0;
+      ChildLockCircle.a(localChildLockCircle, ChildLockCircle.a(localChildLockCircle));
     }
-    for (;;)
+    else
     {
-      this.this$0.a(0);
-      float f1 = f2;
-      if (!ChildLockCircle.a(this.this$0)) {}
-      try
+      ChildLockCircle.a(this.this$0, 100);
+      localChildLockCircle = this.this$0;
+      ChildLockCircle.a(localChildLockCircle, ChildLockCircle.b(localChildLockCircle));
+      localChildLockCircle = this.this$0;
+      ChildLockCircle.a(localChildLockCircle, ChildLockCircle.b(localChildLockCircle));
+    }
+    ChildLockCircle.a(this.this$0, 0);
+    if (!ChildLockCircle.a(this.this$0)) {}
+    try
+    {
+      Thread.sleep(300L);
+      float f = 0.0F;
+      for (;;)
       {
-        Thread.sleep(300L);
-        f1 = f2;
-        label84:
         if (this.a)
         {
           if (ChildLockCircle.a(this.this$0))
           {
-            ChildLockCircle.a(this.this$0, (int)((float)(ChildLockCircle.a(this.this$0) + 100L * 15L / 1000L) + f1));
+            localChildLockCircle = this.this$0;
+            ChildLockCircle.a(localChildLockCircle, (int)((float)(ChildLockCircle.a(localChildLockCircle) + 1L) + f));
             if (ChildLockCircle.a(this.this$0) >= 100)
             {
-              ChildLockCircle.a(this.this$0, ChildLockCircle.c(this.this$0));
+              localChildLockCircle = this.this$0;
+              ChildLockCircle.a(localChildLockCircle, ChildLockCircle.c(localChildLockCircle));
               this.b = true;
             }
-            f1 = (float)(f1 + 0.08D);
-            if ((!this.b) || (!ChildLockCircle.a(this.this$0))) {
-              this.this$0.postInvalidate();
-            }
-            if ((!this.b) || (ChildLockCircle.a(this.this$0))) {
-              break label384;
-            }
-            ChildLockCircle.a(this.this$0);
           }
+          else
+          {
+            localChildLockCircle = this.this$0;
+            ChildLockCircle.a(localChildLockCircle, (int)((float)(ChildLockCircle.a(localChildLockCircle) - 1L) - f));
+            if (ChildLockCircle.a(this.this$0) <= 0)
+            {
+              ChildLockCircle.a(this.this$0, 0);
+              localChildLockCircle = this.this$0;
+              ChildLockCircle.a(localChildLockCircle, ChildLockCircle.d(localChildLockCircle));
+              localChildLockCircle = this.this$0;
+              ChildLockCircle.a(localChildLockCircle, ChildLockCircle.a(localChildLockCircle));
+              this.b = true;
+            }
+          }
+          double d = f;
+          Double.isNaN(d);
+          f = (float)(d + 0.08D);
+          if ((!this.b) || (!ChildLockCircle.a(this.this$0))) {
+            this.this$0.postInvalidate();
+          }
+          if ((this.b) && (!ChildLockCircle.a(this.this$0))) {
+            ChildLockCircle.a(this.this$0);
+          } else if ((this.b) && (ChildLockCircle.a(this.this$0))) {
+            ChildLockCircle.a(this.this$0, 3);
+          }
+        }
+        try
+        {
+          Thread.sleep(15L);
+        }
+        catch (InterruptedException localInterruptedException2) {}
+      }
+      if ((!this.b) || (ChildLockCircle.a(this.this$0))) {}
+      try
+      {
+        Thread.sleep(900L);
+      }
+      catch (InterruptedException localInterruptedException3)
+      {
+        break label539;
+      }
+      Thread.sleep(300L);
+      for (;;)
+      {
+        if (ChildLockCircle.a(this.this$0))
+        {
+          localChildLockCircle = this.this$0;
+          ChildLockCircle.a(localChildLockCircle, (int)(ChildLockCircle.a(localChildLockCircle) - 2L));
+          if (ChildLockCircle.a(this.this$0) > 0) {
+            break label547;
+          }
+          ChildLockCircle.a(this.this$0, 0);
         }
         else
         {
-          label221:
-          if (!this.b) {
-            break label451;
-          }
-          if (!ChildLockCircle.a(this.this$0)) {
-            break label425;
+          localChildLockCircle = this.this$0;
+          ChildLockCircle.a(localChildLockCircle, (int)(ChildLockCircle.a(localChildLockCircle) + 2L));
+          if (ChildLockCircle.a(this.this$0) < 100) {
+            break label547;
           }
         }
-      }
-      catch (InterruptedException localInterruptedException5)
-      {
+        this.this$0.postInvalidate();
+        ChildLockCircle.b(this.this$0);
+        Thread.sleep(30L);
+        label539:
+        ChildLockCircle.c(this.this$0);
+        return;
+        label547:
+        this.this$0.postInvalidate();
         try
         {
-          label165:
-          Thread.sleep(900L);
-          for (;;)
-          {
-            for (;;)
-            {
-              ChildLockCircle.c(this.this$0);
-              return;
-              ChildLockCircle.a(this.this$0, 100);
-              ChildLockCircle.a(this.this$0, ChildLockCircle.b(this.this$0));
-              ChildLockCircle.a(this.this$0, ChildLockCircle.b(this.this$0));
-              break;
-              ChildLockCircle.a(this.this$0, (int)((float)(ChildLockCircle.a(this.this$0) - 100L * 15L / 1000L) - f1));
-              if (ChildLockCircle.a(this.this$0) > 0) {
-                break label165;
-              }
-              ChildLockCircle.a(this.this$0, 0);
-              ChildLockCircle.a(this.this$0, ChildLockCircle.d(this.this$0));
-              ChildLockCircle.a(this.this$0, ChildLockCircle.a(this.this$0));
-              this.b = true;
-              break label165;
-              label384:
-              if ((this.b) && (ChildLockCircle.a(this.this$0)))
-              {
-                this.this$0.a(3);
-                break label221;
-              }
-              try
-              {
-                Thread.sleep(15L);
-              }
-              catch (InterruptedException localInterruptedException1) {}
-            }
-            break label84;
-            try
-            {
-              label425:
-              Thread.sleep(300L);
-            }
-            catch (InterruptedException localInterruptedException2) {}
-          }
-          label438:
-          this.this$0.postInvalidate();
+          Thread.sleep(15L);
         }
-        catch (InterruptedException localInterruptedException5)
+        catch (InterruptedException localInterruptedException4)
         {
-          try
-          {
-            for (;;)
-            {
-              Thread.sleep(15L);
-              label451:
-              if (ChildLockCircle.a(this.this$0))
-              {
-                ChildLockCircle.a(this.this$0, (int)(ChildLockCircle.a(this.this$0) - 9L * 15L / 5L * 100L / 1000L));
-                if (ChildLockCircle.a(this.this$0) <= 0) {
-                  ChildLockCircle.a(this.this$0, 0);
-                }
-              }
-              else
-              {
-                for (;;)
-                {
-                  for (;;)
-                  {
-                    this.this$0.postInvalidate();
-                    ChildLockCircle.b(this.this$0);
-                    try
-                    {
-                      Thread.sleep(2L * 15L);
-                    }
-                    catch (InterruptedException localInterruptedException3) {}
-                  }
-                  break;
-                  ChildLockCircle.a(this.this$0, (int)(ChildLockCircle.a(this.this$0) + 9L * 15L / 5L * 100L / 1000L));
-                  if (ChildLockCircle.a(this.this$0) < 100) {
-                    break label438;
-                  }
-                }
-                localInterruptedException4 = localInterruptedException4;
-                f1 = f2;
-              }
-            }
-            localInterruptedException5 = localInterruptedException5;
-          }
-          catch (InterruptedException localInterruptedException6)
-          {
-            break label451;
-          }
+          label563:
+          break label563;
         }
       }
+    }
+    catch (InterruptedException localInterruptedException1)
+    {
+      for (;;) {}
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.widget.ChildLockCircle.AnimatedThread
  * JD-Core Version:    0.7.0.1
  */

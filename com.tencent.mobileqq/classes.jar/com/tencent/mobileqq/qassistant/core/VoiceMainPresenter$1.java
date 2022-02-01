@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.qassistant.core;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.qassistant.data.VoiceDataUtils;
+import com.tencent.mobileqq.qassistant.api.IVoiceAssistantCore;
 import com.tencent.mobileqq.qassistant.util.CommandUtils;
+import com.tencent.mobileqq.qassistant.util.VoiceDataUtils;
 import com.tencent.mobileqq.qassistant.util.VoiceTextUtils;
 import com.tencent.mobileqq.qassistant.view.VoiceView;
 
@@ -13,16 +14,20 @@ class VoiceMainPresenter$1
   
   public void run()
   {
-    if ((!TextUtils.isEmpty(this.a)) && (VoiceMainPresenter.a(this.this$0) != null) && (VoiceMainPresenter.a(this.this$0) != null)) {}
-    switch (VoiceMainPresenter.a(this.this$0).a())
+    if ((!TextUtils.isEmpty(this.a)) && (VoiceMainPresenter.a(this.this$0) != null) && (VoiceMainPresenter.a(this.this$0) != null))
     {
-    case 3: 
-    default: 
-      return;
-    case 2: 
+      int i = VoiceMainPresenter.a(this.this$0).a();
+      if (i != 2)
+      {
+        if (i != 4) {
+          return;
+        }
+        VoiceMainPresenter.a(this.this$0, this.a);
+        return;
+      }
       if (VoiceTextUtils.a(this.a))
       {
-        VoiceMainPresenter.a(this.this$0).a(true, false);
+        VoiceMainPresenter.a(this.this$0).quiteVoicePanel(true, false);
         return;
       }
       if (VoiceTextUtils.b(this.a))
@@ -32,18 +37,16 @@ class VoiceMainPresenter$1
       }
       if (VoiceTextUtils.c(this.a))
       {
-        VoiceMainPresenter.a(this.this$0).d();
+        VoiceMainPresenter.a(this.this$0).resendVoice();
         return;
       }
       VoiceMainPresenter.a(this.this$0, this.a);
-      return;
     }
-    VoiceMainPresenter.a(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.core.VoiceMainPresenter.1
  * JD-Core Version:    0.7.0.1
  */

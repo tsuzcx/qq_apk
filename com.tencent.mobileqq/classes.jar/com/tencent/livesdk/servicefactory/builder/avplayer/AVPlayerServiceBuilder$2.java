@@ -9,6 +9,7 @@ import com.tencent.falco.base.libapi.login.LoginServiceInterface;
 import com.tencent.falco.base.libapi.network.NetworkStateInterface;
 import com.tencent.falco.base.libapi.toast.ToastInterface;
 import com.tencent.ilivesdk.avmediaservice_interface.AVMediaServiceInterface;
+import com.tencent.ilivesdk.avmediaservice_interface.MediaPlayerInterface;
 import com.tencent.ilivesdk.avplayerservice_interface.AVPlayerServiceAdapter;
 import com.tencent.ilivesdk.roompushservice_interface.RoomPushServiceInterface;
 import com.tencent.ilivesdk.roomservice_interface.RoomServiceInterface;
@@ -65,6 +66,11 @@ class AVPlayerServiceBuilder$2
     return (LogInterface)this.val$serviceManager.getService(LogInterface.class);
   }
   
+  public MediaPlayerInterface getMediaPlayerInterface()
+  {
+    return (MediaPlayerInterface)this.val$serviceManager.getService(MediaPlayerInterface.class);
+  }
+  
   public NetworkStateInterface getNetWorkState()
   {
     return (NetworkStateInterface)this.val$serviceManager.getService(NetworkStateInterface.class);
@@ -98,10 +104,15 @@ class AVPlayerServiceBuilder$2
   {
     return (ToastInterface)this.val$serviceManager.getService(ToastInterface.class);
   }
+  
+  public boolean isHoldPlayerLog()
+  {
+    return ((AppGeneralInfoService)this.val$serviceManager.getService(AppGeneralInfoService.class)).isHoldPlayerLog();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.servicefactory.builder.avplayer.AVPlayerServiceBuilder.2
  * JD-Core Version:    0.7.0.1
  */

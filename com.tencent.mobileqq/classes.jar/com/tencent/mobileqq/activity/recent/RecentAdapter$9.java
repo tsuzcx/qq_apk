@@ -13,40 +13,37 @@ class RecentAdapter$9
   
   public void onClick(View paramView)
   {
-    if (paramView == null) {}
-    label109:
-    for (;;)
+    if (paramView != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       int i = paramView.getId();
       if ((i >= 0) && (i < this.a.getCount()))
       {
-        Object localObject = this.a.getItem(i);
-        if ((localObject != null) && ((localObject instanceof RecentBaseData)))
+        Object localObject1 = this.a.getItem(i);
+        if ((localObject1 != null) && ((localObject1 instanceof RecentBaseData)))
         {
-          RecentBaseData localRecentBaseData = (RecentBaseData)localObject;
+          RecentBaseData localRecentBaseData = (RecentBaseData)localObject1;
+          Object localObject2 = null;
+          localObject1 = localObject2;
           if ((paramView instanceof TextView))
           {
-            localObject = ((TextView)paramView).getText();
-            if (localObject == null) {}
-          }
-          for (localObject = ((CharSequence)localObject).toString();; localObject = null)
-          {
-            if (TextUtils.isEmpty((CharSequence)localObject)) {
-              break label109;
+            CharSequence localCharSequence = ((TextView)paramView).getText();
+            localObject1 = localObject2;
+            if (localCharSequence != null) {
+              localObject1 = localCharSequence.toString();
             }
-            this.a.a(localRecentBaseData, (String)localObject, "1");
-            break;
+          }
+          if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+            this.a.a(localRecentBaseData, (String)localObject1, "1");
           }
         }
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentAdapter.9
  * JD-Core Version:    0.7.0.1
  */

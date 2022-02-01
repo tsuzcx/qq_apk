@@ -38,15 +38,15 @@ class OnLinePushMessageProcessor$HandleShMsgTypeTroopSytemMessage
   
   public HandleShMsgTypeTroopSytemMessage a()
   {
-    this.jdField_a_of_type_ComTencentImcoreMessageOnLinePushMessageProcessor.a.getMsgHandler().a().a(3);
+    ((QQAppInterface)this.jdField_a_of_type_ComTencentImcoreMessageOnLinePushMessageProcessor.a).getMsgHandler().a().a(3);
     if (this.jdField_a_of_type_Int != 45)
     {
-      this.jdField_a_of_type_ComTencentImcoreMessageOnLinePushMessageProcessor.a.getMsgHandler().a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_OnlinePushPackMsgInfo.vMsg, this.jdField_a_of_type_OnlinePushPackMsgInfo.lFromUin, this.jdField_a_of_type_OnlinePushPackMsgInfo.uMsgTime, null);
+      ((QQAppInterface)this.jdField_a_of_type_ComTencentImcoreMessageOnLinePushMessageProcessor.a).getMsgHandler().a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_OnlinePushPackMsgInfo.vMsg, this.jdField_a_of_type_OnlinePushPackMsgInfo.lFromUin, this.jdField_a_of_type_OnlinePushPackMsgInfo.uMsgTime, null);
       this.jdField_b_of_type_Long = 9998L;
       this.c = 32769;
       this.jdField_b_of_type_Int = SystemMsg.getTroopSystemMsgType(this.jdField_a_of_type_Int);
     }
-    GroupSystemMsgController.a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_OnlinePushPackMsgInfo.uMsgTime, this.jdField_a_of_type_ComTencentImcoreMessageOnLinePushMessageProcessor.a);
+    GroupSystemMsgController.a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_OnlinePushPackMsgInfo.uMsgTime, (QQAppInterface)this.jdField_a_of_type_ComTencentImcoreMessageOnLinePushMessageProcessor.a);
     return this;
   }
   
@@ -57,7 +57,7 @@ class OnLinePushMessageProcessor$HandleShMsgTypeTroopSytemMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.OnLinePushMessageProcessor.HandleShMsgTypeTroopSytemMessage
  * JD-Core Version:    0.7.0.1
  */

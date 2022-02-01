@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.aio;
 
-import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
@@ -11,9 +10,9 @@ public class AIOAssist
   public static BaseChatPie a()
   {
     Object localObject = BaseActivity.sTopActivity;
-    if ((localObject instanceof FragmentActivity))
+    if ((localObject instanceof BaseActivity))
     {
-      localObject = ((FragmentActivity)localObject).getChatFragment();
+      localObject = ((BaseActivity)localObject).getChatFragment();
       if (localObject != null) {
         return ((ChatFragment)localObject).a();
       }
@@ -23,12 +22,11 @@ public class AIOAssist
   
   public static boolean a()
   {
-    boolean bool = false;
     BaseChatPie localBaseChatPie = a();
     if (localBaseChatPie != null) {
-      bool = ((AIOLongShotHelper)localBaseChatPie.a(15)).a();
+      return ((AIOLongShotHelper)localBaseChatPie.a(15)).a();
     }
-    return bool;
+    return false;
   }
   
   public static boolean b()
@@ -38,7 +36,7 @@ public class AIOAssist
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOAssist
  * JD-Core Version:    0.7.0.1
  */

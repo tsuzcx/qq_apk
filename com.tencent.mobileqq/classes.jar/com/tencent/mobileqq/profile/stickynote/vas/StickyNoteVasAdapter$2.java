@@ -13,40 +13,44 @@ class StickyNoteVasAdapter$2
   
   public void a(boolean paramBoolean, UniBusiGetOneItemWithCheckRsp paramUniBusiGetOneItemWithCheckRsp)
   {
-    if (StickyNoteVasAdapter.a(this.a) == null) {}
-    do
+    if (StickyNoteVasAdapter.a(this.a) == null) {
+      return;
+    }
+    if (!paramBoolean)
     {
-      do
+      if ((paramUniBusiGetOneItemWithCheckRsp != null) && (paramUniBusiGetOneItemWithCheckRsp.stDetail != null))
       {
-        return;
-        if (paramBoolean) {
-          break label195;
+        if (paramUniBusiGetOneItemWithCheckRsp.stDetail.itemId == StickyNoteVasAdapter.a(this.a).itemId)
+        {
+          if (paramUniBusiGetOneItemWithCheckRsp.ret == 0)
+          {
+            StickyNoteVasAdapter.a(this.a, false);
+            this.a.b();
+            return;
+          }
+          if (StickyNoteVasAdapter.a(this.a))
+          {
+            paramUniBusiGetOneItemWithCheckRsp = this.a;
+            StickyNoteVasAdapter.a(paramUniBusiGetOneItemWithCheckRsp, StickyNoteVasAdapter.a(paramUniBusiGetOneItemWithCheckRsp), StickyNoteVasAdapter.a(this.a).stAidInfo.androidAid, StickyNoteVasAdapter.a(this.a).stAidInfo.payType, StickyNoteVasAdapter.a(this.a).stAidInfo.errMsg, StickyNoteVasAdapter.a(this.a).stAidInfo.month);
+          }
         }
-        if ((paramUniBusiGetOneItemWithCheckRsp == null) || (paramUniBusiGetOneItemWithCheckRsp.stDetail == null)) {
-          break;
-        }
-      } while (paramUniBusiGetOneItemWithCheckRsp.stDetail.itemId != StickyNoteVasAdapter.a(this.a).itemId);
-      if (paramUniBusiGetOneItemWithCheckRsp.ret == 0)
+      }
+      else
       {
         StickyNoteVasAdapter.a(this.a, false);
-        this.a.b();
-        return;
+        QQToast.a(StickyNoteVasAdapter.a(this.a), HardCodeUtil.a(2131714908), 0).a();
+        StickyNoteVasAdapter.a(this.a, null);
+        StickyNoteVasAdapter.a(this.a, -1);
       }
-    } while (!StickyNoteVasAdapter.a(this.a));
-    StickyNoteVasAdapter.a(this.a, StickyNoteVasAdapter.a(this.a), StickyNoteVasAdapter.a(this.a).stAidInfo.androidAid, StickyNoteVasAdapter.a(this.a).stAidInfo.payType, StickyNoteVasAdapter.a(this.a).stAidInfo.errMsg, StickyNoteVasAdapter.a(this.a).stAidInfo.month);
-    return;
-    StickyNoteVasAdapter.a(this.a, false);
-    QQToast.a(StickyNoteVasAdapter.a(this.a), HardCodeUtil.a(2131714985), 0).a();
-    StickyNoteVasAdapter.a(this.a, null);
-    StickyNoteVasAdapter.a(this.a, -1);
-    return;
-    label195:
-    this.a.b();
+    }
+    else {
+      this.a.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.vas.StickyNoteVasAdapter.2
  * JD-Core Version:    0.7.0.1
  */

@@ -10,22 +10,22 @@ abstract class ZipUtils
   private static int a(ByteBuffer paramByteBuffer)
   {
     a(paramByteBuffer);
-    int j = paramByteBuffer.capacity();
-    if (j < 22) {}
-    for (;;)
-    {
+    int i = paramByteBuffer.capacity();
+    if (i < 22) {
       return -1;
-      int k = Math.min(j - 22, 65535);
-      int i = 0;
-      while (i < k)
-      {
-        int m = j - 22 - i;
-        if ((paramByteBuffer.getInt(m) == 101010256) && (a(paramByteBuffer, m + 20) == i)) {
-          return m;
-        }
-        i += 1;
-      }
     }
+    int j = i - 22;
+    int k = Math.min(j, 65535);
+    i = 0;
+    while (i < k)
+    {
+      int m = j - i;
+      if ((paramByteBuffer.getInt(m) == 101010256) && (a(paramByteBuffer, m + 20) == i)) {
+        return m;
+      }
+      i += 1;
+    }
+    return -1;
   }
   
   private static int a(ByteBuffer paramByteBuffer, int paramInt)
@@ -46,57 +46,63 @@ abstract class ZipUtils
   
   static Pair<ByteBuffer, Long> a(RandomAccessFile paramRandomAccessFile)
   {
-    Object localObject;
     if (paramRandomAccessFile.length() < 22L) {
-      localObject = null;
+      return null;
     }
-    Pair localPair;
-    do
-    {
-      return localObject;
-      localPair = a(paramRandomAccessFile, 0);
-      localObject = localPair;
-    } while (localPair != null);
+    Pair localPair = a(paramRandomAccessFile, 0);
+    if (localPair != null) {
+      return localPair;
+    }
     return a(paramRandomAccessFile, 65535);
   }
   
   private static Pair<ByteBuffer, Long> a(RandomAccessFile paramRandomAccessFile, int paramInt)
   {
-    if ((paramInt < 0) || (paramInt > 65535)) {
-      throw new IllegalArgumentException("maxCommentSize: " + paramInt);
-    }
-    long l = paramRandomAccessFile.length();
-    if (l < 22L) {}
-    ByteBuffer localByteBuffer;
-    do
+    if ((paramInt >= 0) && (paramInt <= 65535))
     {
-      return null;
-      localByteBuffer = ByteBuffer.allocate((int)Math.min(paramInt, l - 22L) + 22);
+      long l = paramRandomAccessFile.length();
+      if (l < 22L) {
+        return null;
+      }
+      ByteBuffer localByteBuffer = ByteBuffer.allocate((int)Math.min(paramInt, l - 22L) + 22);
       localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
       l -= localByteBuffer.capacity();
       paramRandomAccessFile.seek(l);
       paramRandomAccessFile.readFully(localByteBuffer.array(), localByteBuffer.arrayOffset(), localByteBuffer.capacity());
       paramInt = a(localByteBuffer);
-    } while (paramInt == -1);
-    localByteBuffer.position(paramInt);
-    paramRandomAccessFile = localByteBuffer.slice();
-    paramRandomAccessFile.order(ByteOrder.LITTLE_ENDIAN);
-    return Pair.create(paramRandomAccessFile, Long.valueOf(l + paramInt));
+      if (paramInt == -1) {
+        return null;
+      }
+      localByteBuffer.position(paramInt);
+      paramRandomAccessFile = localByteBuffer.slice();
+      paramRandomAccessFile.order(ByteOrder.LITTLE_ENDIAN);
+      return Pair.create(paramRandomAccessFile, Long.valueOf(l + paramInt));
+    }
+    paramRandomAccessFile = new StringBuilder();
+    paramRandomAccessFile.append("maxCommentSize: ");
+    paramRandomAccessFile.append(paramInt);
+    throw new IllegalArgumentException(paramRandomAccessFile.toString());
   }
   
   private static void a(ByteBuffer paramByteBuffer)
   {
-    if (paramByteBuffer.order() != ByteOrder.LITTLE_ENDIAN) {
-      throw new IllegalArgumentException("ByteBuffer byte order must be little endian");
+    if (paramByteBuffer.order() == ByteOrder.LITTLE_ENDIAN) {
+      return;
     }
+    throw new IllegalArgumentException("ByteBuffer byte order must be little endian");
   }
   
   private static void a(ByteBuffer paramByteBuffer, int paramInt, long paramLong)
   {
-    if ((paramLong < 0L) || (paramLong > 4294967295L)) {
-      throw new IllegalArgumentException("uint32 value of out range: " + paramLong);
+    if ((paramLong >= 0L) && (paramLong <= 4294967295L))
+    {
+      paramByteBuffer.putInt(paramByteBuffer.position() + paramInt, (int)paramLong);
+      return;
     }
-    paramByteBuffer.putInt(paramByteBuffer.position() + paramInt, (int)paramLong);
+    paramByteBuffer = new StringBuilder();
+    paramByteBuffer.append("uint32 value of out range: ");
+    paramByteBuffer.append(paramLong);
+    throw new IllegalArgumentException(paramByteBuffer.toString());
   }
   
   static void a(ByteBuffer paramByteBuffer, long paramLong)
@@ -108,13 +114,15 @@ abstract class ZipUtils
   static final boolean a(RandomAccessFile paramRandomAccessFile, long paramLong)
   {
     paramLong -= 20L;
-    if (paramLong < 0L) {}
-    do
-    {
+    boolean bool = false;
+    if (paramLong < 0L) {
       return false;
-      paramRandomAccessFile.seek(paramLong);
-    } while (paramRandomAccessFile.readInt() != 1347094023);
-    return true;
+    }
+    paramRandomAccessFile.seek(paramLong);
+    if (paramRandomAccessFile.readInt() == 1347094023) {
+      bool = true;
+    }
+    return bool;
   }
   
   static long b(ByteBuffer paramByteBuffer)
@@ -125,7 +133,7 @@ abstract class ZipUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.securitysdk.utils.ZipUtils
  * JD-Core Version:    0.7.0.1
  */

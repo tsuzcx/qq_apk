@@ -9,7 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class QFileExcitingC2CDownloadConfigBean
-  implements IExcitingC2CDownloadConfig, IQStorageSafable<String>
+  implements IQFileExcitingC2CDownloadConfigBean, IQStorageSafable<String>
 {
   static boolean jdField_a_of_type_Boolean = true;
   static boolean b = true;
@@ -32,56 +32,47 @@ public class QFileExcitingC2CDownloadConfigBean
   
   private void a(JSONObject paramJSONObject)
   {
-    for (;;)
+    try
     {
-      try
+      this.c = paramJSONObject.getBoolean("enableaqq");
+      paramJSONObject = paramJSONObject.getJSONObject("config");
+      if (paramJSONObject != null)
       {
-        this.c = paramJSONObject.getBoolean("enableaqq");
-        paramJSONObject = paramJSONObject.getJSONObject("config");
-        if (paramJSONObject == null) {
-          break label221;
-        }
-        if (paramJSONObject.has("oneslicesize"))
-        {
+        if (paramJSONObject.has("oneslicesize")) {
           this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.mSliceSize = paramJSONObject.getLong("oneslicesize");
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.uMaxParrallelSlice = paramJSONObject.getInt("maxparrallelslice");
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.uMaxWaitingSlice = paramJSONObject.getInt("maxtotalwaitingslice");
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.uNotifyIntervals = paramJSONObject.getInt("notifyintervals");
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.uSpeedDuration = paramJSONObject.getInt("speedduration");
-          this.jdField_a_of_type_Long = paramJSONObject.getInt("limitedsize");
-          if (paramJSONObject.has("slicenum"))
-          {
-            this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.uSliceNum = paramJSONObject.getInt("slicenum");
-            QLog.i("QFileExcitingC2CDownloadConfigBean<FileAssistant>", 1, "parse Exciting-C2C-Download config: enable:" + this.c + " LimitedSize:" + this.jdField_a_of_type_Long + " " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.toString());
-          }
-        }
-        else
-        {
+        } else {
           this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.mSliceSize = 524288L;
-          continue;
         }
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.uSliceNum = 10;
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.uMaxParrallelSlice = paramJSONObject.getInt("maxparrallelslice");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.uMaxWaitingSlice = paramJSONObject.getInt("maxtotalwaitingslice");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.uNotifyIntervals = paramJSONObject.getInt("notifyintervals");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.uSpeedDuration = paramJSONObject.getInt("speedduration");
+        this.jdField_a_of_type_Long = paramJSONObject.getInt("limitedsize");
+        if (paramJSONObject.has("slicenum")) {
+          this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.uSliceNum = paramJSONObject.getInt("slicenum");
+        } else {
+          this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.uSliceNum = 10;
+        }
       }
-      catch (JSONException paramJSONObject)
+      else
       {
-        QLog.e("QFileExcitingC2CDownloadConfigBean<FileAssistant>", 1, QLog.getStackTraceString(paramJSONObject));
-        return;
+        this.jdField_a_of_type_Long = 20971520L;
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig = new ExcitingTransferDownloadConfig();
       }
-      continue;
-      label221:
-      this.jdField_a_of_type_Long = 20971520L;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig = new ExcitingTransferDownloadConfig();
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("parse Exciting-C2C-Download config: enable:");
+      paramJSONObject.append(this.c);
+      paramJSONObject.append(" LimitedSize:");
+      paramJSONObject.append(this.jdField_a_of_type_Long);
+      paramJSONObject.append(" ");
+      paramJSONObject.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.toString());
+      QLog.i("QFileExcitingC2CDownloadConfigBean<FileAssistant>", 1, paramJSONObject.toString());
+      return;
     }
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public static void b(boolean paramBoolean)
-  {
-    b = paramBoolean;
+    catch (JSONException paramJSONObject)
+    {
+      QLog.e("QFileExcitingC2CDownloadConfigBean<FileAssistant>", 1, QLog.getStackTraceString(paramJSONObject));
+    }
   }
   
   public long a()
@@ -96,7 +87,6 @@ public class QFileExcitingC2CDownloadConfigBean
   
   public void a(String paramString)
   {
-    int k = 0;
     this.jdField_a_of_type_JavaLangString = paramString.toLowerCase();
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
@@ -104,48 +94,48 @@ public class QFileExcitingC2CDownloadConfigBean
       a();
       return;
     }
-    try
-    {
-      paramString = new JSONObject(this.jdField_a_of_type_JavaLangString);
-      if (paramString.length() == 0)
-      {
-        QLog.w("QFileExcitingC2CDownloadConfigBean<FileAssistant>", 1, "configContent is empty json, use default value");
-        a();
-        return;
-      }
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("QFileExcitingC2CDownloadConfigBean<FileAssistant>", 1, QLog.getStackTraceString(paramString));
-      return;
-    }
-    JSONArray localJSONArray = paramString.names();
-    int i = 0;
     for (;;)
     {
-      int j = k;
-      if (i < localJSONArray.length())
+      int i;
+      try
       {
-        Object localObject = localJSONArray.getString(i).trim();
-        if (!TextUtils.isEmpty((CharSequence)localObject))
+        paramString = new JSONObject(this.jdField_a_of_type_JavaLangString);
+        if (paramString.length() == 0)
         {
-          localObject = paramString.optJSONObject((String)localObject).getJSONObject("download");
-          if (localObject != null)
-          {
-            a((JSONObject)localObject);
-            j = 1;
+          QLog.w("QFileExcitingC2CDownloadConfigBean<FileAssistant>", 1, "configContent is empty json, use default value");
+          a();
+          return;
+        }
+        JSONArray localJSONArray = paramString.names();
+        int k = 0;
+        i = 0;
+        int j = k;
+        if (i < localJSONArray.length())
+        {
+          Object localObject = localJSONArray.getString(i).trim();
+          if (TextUtils.isEmpty((CharSequence)localObject)) {
+            break label166;
           }
+          localObject = paramString.optJSONObject((String)localObject).getJSONObject("download");
+          if (localObject == null) {
+            break label166;
+          }
+          a((JSONObject)localObject);
+          j = 1;
+        }
+        if (j == 0)
+        {
+          QLog.w("QFileExcitingC2CDownloadConfigBean<FileAssistant>", 1, "configContent no Exciting-C2C-Download config, use default value");
+          a();
+          return;
         }
       }
-      else
+      catch (JSONException paramString)
       {
-        if (j != 0) {
-          break;
-        }
-        QLog.w("QFileExcitingC2CDownloadConfigBean<FileAssistant>", 1, "configContent no Exciting-C2C-Download config, use default value");
-        a();
-        return;
+        QLog.e("QFileExcitingC2CDownloadConfigBean<FileAssistant>", 1, QLog.getStackTraceString(paramString));
       }
+      return;
+      label166:
       i += 1;
     }
   }
@@ -157,7 +147,7 @@ public class QFileExcitingC2CDownloadConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileExcitingC2CDownloadConfigBean
  * JD-Core Version:    0.7.0.1
  */

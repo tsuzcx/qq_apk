@@ -16,7 +16,7 @@ class EffectSettingBtn$4
   public boolean onPreDraw()
   {
     this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().removeOnPreDrawListener(this);
-    this.jdField_a_of_type_ComTencentAvUiEffectSettingBtn.a.a().a().ax = true;
+    this.jdField_a_of_type_ComTencentAvUiEffectSettingBtn.a.a().a().al = true;
     UITools.a(this.jdField_a_of_type_ComTencentAvUiEffectSettingBtn.a);
     QLog.d("qav_face_guide", 1, "onPreDraw");
     return false;
@@ -24,7 +24,7 @@ class EffectSettingBtn$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.EffectSettingBtn.4
  * JD-Core Version:    0.7.0.1
  */

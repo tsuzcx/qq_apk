@@ -12,20 +12,20 @@ class GaInviteLockActivity$8
   {
     if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a != null)
     {
-      this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a.setViewEnable(2131373938, false);
-      this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a.setViewEnable(2131373939, false);
+      this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a.setViewEnable(2131373510, false);
+      this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a.setViewEnable(2131373511, false);
     }
   }
   
   public void b()
   {
     GaInviteLockActivity.a(this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity, this.jdField_a_of_type_Long);
-    GaInviteLockActivity.a(this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity, 0, 2130772192);
+    GaInviteLockActivity.a(this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity, 0, 2130772219);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.gaudio.GaInviteLockActivity.8
  * JD-Core Version:    0.7.0.1
  */

@@ -5,9 +5,9 @@ import android.graphics.Color;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.QQTheme;
 import java.util.Timer;
+import mqq.app.AppRuntime;
 
 public class VoiceTextShowAnimator
 {
@@ -15,25 +15,26 @@ public class VoiceTextShowAnimator
   private int jdField_a_of_type_Int = 0;
   private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
   private VoiceTextShowAnimator.LoadingTextListner jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator$LoadingTextListner;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private String jdField_a_of_type_JavaLangString = ".";
   private Timer jdField_a_of_type_JavaUtilTimer;
+  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
   private String b = "";
   private String c;
   
   private SpannableString b()
   {
     SpannableString localSpannableString = new SpannableString(this.c);
-    int i = 1;
     if (this.b.length() > 4) {
       i = 3;
+    } else {
+      i = 1;
     }
     int j = this.b.length() - i;
-    i = j;
+    int i = j;
     if (j < 0) {
       i = 0;
     }
-    if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null))
+    if (QQTheme.a())
     {
       localSpannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#777777")), 0, i, 33);
       localSpannableString.setSpan(new ForegroundColorSpan(this.jdField_a_of_type_AndroidContentResColorStateList.getDefaultColor()), i, this.c.length(), 33);
@@ -51,19 +52,26 @@ public class VoiceTextShowAnimator
   
   public SpannableString a()
   {
-    SpannableString localSpannableString = new SpannableString(HardCodeUtil.a(2131716677) + this.jdField_a_of_type_JavaLangString);
-    localSpannableString.setSpan(new ForegroundColorSpan(this.jdField_a_of_type_AndroidContentResColorStateList.getDefaultColor()), 0, localSpannableString.length(), 33);
-    return localSpannableString;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131716329));
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    localObject = new SpannableString(((StringBuilder)localObject).toString());
+    ((SpannableString)localObject).setSpan(new ForegroundColorSpan(this.jdField_a_of_type_AndroidContentResColorStateList.getDefaultColor()), 0, ((SpannableString)localObject).length(), 33);
+    return localObject;
   }
   
   public SpannableString a(String paramString)
   {
-    if (paramString.length() - this.b.length() < 3) {}
-    for (this.b = paramString;; this.b = paramString.substring(0, this.b.length() + 3 - 1))
-    {
-      this.c = (this.b + this.jdField_a_of_type_JavaLangString);
-      return b();
+    if (paramString.length() - this.b.length() < 3) {
+      this.b = paramString;
+    } else {
+      this.b = paramString.substring(0, this.b.length() + 3 - 1);
     }
+    paramString = new StringBuilder();
+    paramString.append(this.b);
+    paramString.append(this.jdField_a_of_type_JavaLangString);
+    this.c = paramString.toString();
+    return b();
   }
   
   public void a()
@@ -71,10 +79,10 @@ public class VoiceTextShowAnimator
     this.jdField_a_of_type_JavaUtilTimer.schedule(new VoiceTextShowAnimator.1(this), 0L, 100L);
   }
   
-  public void a(QQAppInterface paramQQAppInterface, ColorStateList paramColorStateList, VoiceTextShowAnimator.LoadingTextListner paramLoadingTextListner)
+  public void a(AppRuntime paramAppRuntime, ColorStateList paramColorStateList, VoiceTextShowAnimator.LoadingTextListner paramLoadingTextListner)
   {
     this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
     this.jdField_a_of_type_JavaUtilTimer = new Timer();
     this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator$LoadingTextListner = paramLoadingTextListner;
   }
@@ -86,9 +94,10 @@ public class VoiceTextShowAnimator
   
   public void b()
   {
-    if (this.jdField_a_of_type_JavaUtilTimer != null)
+    Timer localTimer = this.jdField_a_of_type_JavaUtilTimer;
+    if (localTimer != null)
     {
-      this.jdField_a_of_type_JavaUtilTimer.cancel();
+      localTimer.cancel();
       this.jdField_a_of_type_JavaUtilTimer = null;
     }
     this.jdField_a_of_type_Int = 0;
@@ -99,7 +108,7 @@ public class VoiceTextShowAnimator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.anim.VoiceTextShowAnimator
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.av.ui.funchat.filter;
 
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.business.manager.filter.FilterItem;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -20,8 +20,15 @@ class EffectFilterTextPager$MyOnPageChangeListener
   public void onPageScrollStateChanged(int paramInt)
   {
     long l = AudioHelper.b();
-    if (QLog.isColorLevel()) {
-      QLog.w("EffectFilterTextPager", 1, "onPageScrollStateChanged, arg0[" + paramInt + "], seq[" + l + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPageScrollStateChanged, arg0[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("], seq[");
+      localStringBuilder.append(l);
+      localStringBuilder.append("]");
+      QLog.w("EffectFilterTextPager", 1, localStringBuilder.toString());
     }
     if (paramInt == 0)
     {
@@ -37,22 +44,36 @@ class EffectFilterTextPager$MyOnPageChangeListener
   public void onPageSelected(int paramInt)
   {
     long l = AudioHelper.b();
-    if (AudioHelper.e()) {
-      QLog.w("EffectFilterTextPager", 1, "onPageSelected, pos[" + paramInt + "], mProgramingPos[" + EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager) + "], seq[" + l + "]");
-    }
-    if ((EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager) != paramInt) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    Object localObject;
+    if (AudioHelper.b())
     {
-      FilterItem localFilterItem = this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter.a(paramInt);
-      if (localFilterItem != null) {
-        ((EffectFilterTextPager.OnEffectFilterChangeListener)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(l, paramInt, localFilterItem.getId());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onPageSelected, pos[");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("], mProgramingPos[");
+      ((StringBuilder)localObject).append(EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager));
+      ((StringBuilder)localObject).append("], seq[");
+      ((StringBuilder)localObject).append(l);
+      ((StringBuilder)localObject).append("]");
+      QLog.w("EffectFilterTextPager", 1, ((StringBuilder)localObject).toString());
+    }
+    if (EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager) != paramInt)
+    {
+      localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+      if ((localObject != null) && (((WeakReference)localObject).get() != null))
+      {
+        localObject = this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter.a(paramInt);
+        if (localObject != null) {
+          ((EffectFilterTextPager.OnEffectFilterChangeListener)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(l, paramInt, ((FilterItem)localObject).getId());
+        }
+        EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager, -1);
       }
-      EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager, -1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.funchat.filter.EffectFilterTextPager.MyOnPageChangeListener
  * JD-Core Version:    0.7.0.1
  */

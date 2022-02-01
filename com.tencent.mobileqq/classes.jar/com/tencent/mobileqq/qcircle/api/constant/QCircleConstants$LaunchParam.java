@@ -2,7 +2,6 @@ package com.tencent.mobileqq.qcircle.api.constant;
 
 public class QCircleConstants$LaunchParam
 {
-  public static final String KEY_ACTIVITY_BOTTOM_MARGIN = "key_activity_bottom_margin";
   public static final String KEY_ASSIGN_SHOW_TAB_TYPE = "key_assign_show_tab_type";
   public static final String KEY_ATTRS = "key_attrs";
   public static final String KEY_ENABLE_SPLASH = "key_enable_splash";
@@ -19,7 +18,7 @@ public class QCircleConstants$LaunchParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.constant.QCircleConstants.LaunchParam
  * JD-Core Version:    0.7.0.1
  */

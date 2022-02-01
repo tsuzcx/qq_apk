@@ -35,12 +35,12 @@ public class MethodChannel
     BinaryMessenger localBinaryMessenger = this.messenger;
     String str = this.name;
     paramObject = this.codec.encodeMethodCall(new MethodCall(paramString, paramObject));
-    if (paramResult == null) {}
-    for (paramString = null;; paramString = new MethodChannel.IncomingResultHandler(this, paramResult))
-    {
-      localBinaryMessenger.send(str, paramObject, paramString);
-      return;
+    if (paramResult == null) {
+      paramString = null;
+    } else {
+      paramString = new MethodChannel.IncomingResultHandler(this, paramResult);
     }
+    localBinaryMessenger.send(str, paramObject, paramString);
   }
   
   public void resizeChannelBuffer(int paramInt)
@@ -53,17 +53,17 @@ public class MethodChannel
   {
     BinaryMessenger localBinaryMessenger = this.messenger;
     String str = this.name;
-    if (paramMethodCallHandler == null) {}
-    for (paramMethodCallHandler = null;; paramMethodCallHandler = new MethodChannel.IncomingMethodCallHandler(this, paramMethodCallHandler))
-    {
-      localBinaryMessenger.setMessageHandler(str, paramMethodCallHandler);
-      return;
+    if (paramMethodCallHandler == null) {
+      paramMethodCallHandler = null;
+    } else {
+      paramMethodCallHandler = new MethodChannel.IncomingMethodCallHandler(this, paramMethodCallHandler);
     }
+    localBinaryMessenger.setMessageHandler(str, paramMethodCallHandler);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.common.MethodChannel
  * JD-Core Version:    0.7.0.1
  */

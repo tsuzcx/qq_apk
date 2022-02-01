@@ -12,22 +12,23 @@ final class LoadModule$5
   {
     if ((paramEntity instanceof MessageRecord))
     {
-      MessageRecord localMessageRecord = (MessageRecord)paramEntity;
-      paramEntity = localMessageRecord.getTableName();
+      paramEntity = (MessageRecord)paramEntity;
+      String str = paramEntity.getTableName();
       StringBuilder localStringBuilder = new StringBuilder("CREATE INDEX IF NOT EXISTS ");
-      localStringBuilder.append(paramEntity).append("_idx");
+      localStringBuilder.append(str);
+      localStringBuilder.append("_idx");
       localStringBuilder.append(" ON ");
-      localStringBuilder.append(paramEntity);
-      paramEntity = "time";
-      switch (localMessageRecord.istroop)
-      {
-      }
-      for (;;)
-      {
-        localStringBuilder.append("(").append(paramEntity).append(", _id)");
-        return localStringBuilder.toString();
+      localStringBuilder.append(str);
+      int i = paramEntity.istroop;
+      if ((i != 1) && (i != 3000)) {
+        paramEntity = "time";
+      } else {
         paramEntity = "shmsgseq";
       }
+      localStringBuilder.append("(");
+      localStringBuilder.append(paramEntity);
+      localStringBuilder.append(", _id)");
+      return localStringBuilder.toString();
     }
     return null;
   }
@@ -39,7 +40,7 @@ final class LoadModule$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.LoadModule.5
  * JD-Core Version:    0.7.0.1
  */

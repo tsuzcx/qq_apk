@@ -51,7 +51,12 @@ public class LpReportInfo_dc00307
   
   public String getSimpleInfo()
   {
-    return "dc00307:" + this.act_id + "," + this.act_type;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("dc00307:");
+    localStringBuilder.append(this.act_id);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.act_type);
+    return localStringBuilder.toString();
   }
   
   public Map<String, String> toMap()
@@ -60,33 +65,37 @@ public class LpReportInfo_dc00307
     if (!TextUtils.isEmpty(((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount())) {
       LpReportUtils.safePut(localHashMap, "uin", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount());
     }
-    if (this.page_id >= 0) {
-      LpReportUtils.safePut(localHashMap, "page_id", this.page_id);
+    int i = this.page_id;
+    if (i >= 0) {
+      LpReportUtils.safePut(localHashMap, "page_id", i);
     }
-    if (this.src_id >= 0) {
-      LpReportUtils.safePut(localHashMap, "src_id", this.src_id);
+    i = this.src_id;
+    if (i >= 0) {
+      LpReportUtils.safePut(localHashMap, "src_id", i);
     }
     LpReportUtils.safePut(localHashMap, "act_id", this.act_id);
     LpReportUtils.safePut(localHashMap, "act_type", this.act_type);
     LpReportUtils.safePut(localHashMap, "platform_id", 2);
-    LpReportUtils.safePut(localHashMap, "qq_version", "8.5.5.5105");
+    LpReportUtils.safePut(localHashMap, "qq_version", "8.7.0.5295");
     LpReportUtils.safePut(localHashMap, "imei", QQDeviceInfo.getIMEI("52b7f2"));
     LpReportUtils.safePut(localHashMap, "module_id", this.module_id);
     LpReportUtils.safePut(localHashMap, "data_timestamp", String.valueOf(System.currentTimeMillis()));
     LpReportUtils.safePut(localHashMap, "ext0", this.ext0);
     LpReportUtils.safePut(localHashMap, "ext1", this.ext1);
-    if (this.success_or_not >= 0) {
-      LpReportUtils.safePut(localHashMap, "success_or_not", this.success_or_not);
+    i = this.success_or_not;
+    if (i >= 0) {
+      LpReportUtils.safePut(localHashMap, "success_or_not", i);
     }
-    if (this.data2 >= 0L) {
-      LpReportUtils.safePut(localHashMap, "data2", String.valueOf(this.data2));
+    long l = this.data2;
+    if (l >= 0L) {
+      LpReportUtils.safePut(localHashMap, "data2", String.valueOf(l));
     }
     return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc00307
  * JD-Core Version:    0.7.0.1
  */

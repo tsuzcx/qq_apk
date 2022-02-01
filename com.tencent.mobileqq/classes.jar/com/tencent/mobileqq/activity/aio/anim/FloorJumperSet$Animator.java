@@ -14,59 +14,64 @@ class FloorJumperSet$Animator
   {
     Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilArrayList.iterator();
     long l1 = -1L;
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       Object localObject = (FloorJumper)localIterator.next();
       long l2 = ((FloorJumper)localObject).a();
       if (l2 >= 0L)
       {
-        if (l1 < 0L) {}
-        for (l1 = l2;; l1 = Math.min(l1, l2)) {
-          break;
+        if (l1 < 0L) {
+          l1 = l2;
+        } else {
+          l1 = Math.min(l1, l2);
         }
       }
-      localIterator.remove();
-      if (QLog.isColorLevel()) {
-        QLog.d("FloorJumperSet", 2, "removed businessId:" + ((FloorJumper)localObject).c);
-      }
-      if (((FloorJumper)localObject).c == 1)
+      else
       {
-        localObject = this.this$0.jdField_a_of_type_JavaUtilArrayList.iterator();
-        do
+        localIterator.remove();
+        if (QLog.isColorLevel())
         {
-          if (!((Iterator)localObject).hasNext()) {
-            break;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("removed businessId:");
+          localStringBuilder.append(((FloorJumper)localObject).c);
+          QLog.d("FloorJumperSet", 2, localStringBuilder.toString());
+        }
+        if (((FloorJumper)localObject).c == 1)
+        {
+          int j = 0;
+          localObject = this.this$0.jdField_a_of_type_JavaUtilArrayList.iterator();
+          do
+          {
+            i = j;
+            if (!((Iterator)localObject).hasNext()) {
+              break;
+            }
+          } while (((FloorJumper)((Iterator)localObject).next()).c != 1);
+          int i = 1;
+          if ((i == 0) && (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a != null)) {
+            this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a.b();
           }
-        } while (((FloorJumper)((Iterator)localObject).next()).c != 1);
+        }
       }
     }
-    for (int i = 1;; i = 0)
+    if (l1 >= 0L)
     {
-      if ((i == 0) && (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a != null)) {
-        this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a.b();
+      if (FloorJumperSet.a(this.this$0) == 0L) {
+        this.this$0.jdField_a_of_type_ComTencentWidgetListView.postDelayed(this, l1);
       }
-      break;
-      if (l1 >= 0L)
-      {
-        if (FloorJumperSet.a(this.this$0) == 0L) {
-          this.this$0.jdField_a_of_type_ComTencentWidgetListView.postDelayed(this, l1);
-        }
-        this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.invalidate();
-      }
-      do
-      {
-        return;
-        this.this$0.d();
-        this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.invalidate();
-      } while (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a == null);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a.b();
+      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.invalidate();
       return;
+    }
+    this.this$0.d();
+    this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.invalidate();
+    if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a != null) {
+      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.FloorJumperSet.Animator
  * JD-Core Version:    0.7.0.1
  */

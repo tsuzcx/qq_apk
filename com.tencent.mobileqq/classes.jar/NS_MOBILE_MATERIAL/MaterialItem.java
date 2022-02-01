@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -98,45 +99,56 @@ public final class MaterialItem
     paramJceOutputStream.write(this.iItemType, 2);
     paramJceOutputStream.write(this.strItemName, 3);
     paramJceOutputStream.write(this.iPrice, 4);
-    if (this.vecFile != null) {
-      paramJceOutputStream.write(this.vecFile, 5);
+    Object localObject = this.vecFile;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 5);
     }
-    if (this.strItemSummary != null) {
-      paramJceOutputStream.write(this.strItemSummary, 6);
+    localObject = this.strItemSummary;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.strDescription != null) {
-      paramJceOutputStream.write(this.strDescription, 7);
+    localObject = this.strDescription;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.stThumb != null) {
-      paramJceOutputStream.write(this.stThumb, 8);
+    localObject = this.stThumb;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 8);
     }
-    if (this.stBanner != null) {
-      paramJceOutputStream.write(this.stBanner, 9);
+    localObject = this.stBanner;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
     paramJceOutputStream.write(this.uiSettleTime, 10);
-    if (this.strTraceInfo != null) {
-      paramJceOutputStream.write(this.strTraceInfo, 11);
+    localObject = this.strTraceInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
-    if (this.strJumpUrl != null) {
-      paramJceOutputStream.write(this.strJumpUrl, 12);
+    localObject = this.strJumpUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
-    if (this.strExtFields != null) {
-      paramJceOutputStream.write(this.strExtFields, 13);
+    localObject = this.strExtFields;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 13);
     }
-    if (this.mapExtInfo != null) {
-      paramJceOutputStream.write(this.mapExtInfo, 14);
+    localObject = this.mapExtInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 14);
     }
-    if (this.stExtFile1 != null) {
-      paramJceOutputStream.write(this.stExtFile1, 15);
+    localObject = this.stExtFile1;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 15);
     }
-    if (this.stExtFile2 != null) {
-      paramJceOutputStream.write(this.stExtFile2, 16);
+    localObject = this.stExtFile2;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 16);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.MaterialItem
  * JD-Core Version:    0.7.0.1
  */

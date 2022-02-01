@@ -12,14 +12,15 @@ class SubscribePersonalDetailPreLoaderTask$1
   
   public void a(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqEngineeringPreloadInterOnPreLoadListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqEngineeringPreloadInterOnPreLoadListener.onLoaded(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetMainPageRsp });
+    paramBaseRequest = this.jdField_a_of_type_ComTencentMobileqqEngineeringPreloadInterOnPreLoadListener;
+    if (paramBaseRequest != null) {
+      paramBaseRequest.onLoaded(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetMainPageRsp });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.preloader.task.SubscribePersonalDetailPreLoaderTask.1
  * JD-Core Version:    0.7.0.1
  */

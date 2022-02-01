@@ -13,14 +13,14 @@ class GameMsgChatPie$1$1
     if (this.a.a.a != null)
     {
       this.a.a.a.a(true);
-      this.a.a.a.findViewById(2131376829).setOnClickListener(this.a.a);
+      this.a.a.a.findViewById(2131376321).setOnClickListener(this.a.a);
       GameMsgChatPie.b(this.a.a, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GameMsgChatPie.1.1
  * JD-Core Version:    0.7.0.1
  */

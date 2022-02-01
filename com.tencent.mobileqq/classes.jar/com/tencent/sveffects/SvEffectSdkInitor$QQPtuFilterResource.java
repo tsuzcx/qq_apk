@@ -1,15 +1,16 @@
 package com.tencent.sveffects;
 
+import com.tencent.aelight.camera.download.api.AEResInfo;
+import com.tencent.aelight.camera.download.api.IAEResUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
-import dov.com.qq.im.ae.download.AEResInfo;
-import dov.com.qq.im.ae.download.AEResUtil;
 
 public class SvEffectSdkInitor$QQPtuFilterResource
   implements PtuFilterResource
 {
   public boolean checkPendantVersionOK()
   {
-    return AEResUtil.a(AEResInfo.b);
+    return ((IAEResUtil)QRoute.api(IAEResUtil.class)).checkAEResVersionOK(AEResInfo.AE_RES_BASE_PACKAGE);
   }
   
   public String getPortraitPathDir()
@@ -19,12 +20,12 @@ public class SvEffectSdkInitor$QQPtuFilterResource
   
   public String getSoPathDir()
   {
-    return AEResUtil.b();
+    return ((IAEResUtil)QRoute.api(IAEResUtil.class)).getFinalUnzipFilePath();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.sveffects.SvEffectSdkInitor.QQPtuFilterResource
  * JD-Core Version:    0.7.0.1
  */

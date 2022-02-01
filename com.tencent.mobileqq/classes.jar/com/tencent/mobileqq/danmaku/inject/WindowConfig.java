@@ -31,27 +31,29 @@ public class WindowConfig
     DisplayMetrics localDisplayMetrics = DanmakuDependImp.a().a().a().getDisplayMetrics();
     int i = localDisplayMetrics.widthPixels;
     int j = localDisplayMetrics.heightPixels;
-    if (this.jdField_d_of_type_Boolean) {
-      this.g = Math.max(i, j);
-    }
-    for (this.jdField_f_of_type_Int = Math.min(i, j);; this.jdField_f_of_type_Int = Math.max(i, j))
+    if (this.jdField_d_of_type_Boolean)
     {
-      c(8000);
-      b(12);
-      a(3);
-      a(1.5F);
-      d(1);
-      c(5.0F);
-      b(5.0F);
-      b(true);
-      c(true);
-      d(16.0F);
-      e(0.0F);
-      f(5.0F);
-      g(4.0F);
-      return;
-      this.g = Math.min(i, j);
+      this.g = Math.max(i, j);
+      this.jdField_f_of_type_Int = Math.min(i, j);
     }
+    else
+    {
+      this.g = Math.min(i, j);
+      this.jdField_f_of_type_Int = Math.max(i, j);
+    }
+    c(8000);
+    b(12);
+    a(3);
+    a(1.5F);
+    d(1);
+    c(5.0F);
+    b(5.0F);
+    b(true);
+    c(true);
+    d(16.0F);
+    e(0.0F);
+    f(5.0F);
+    g(4.0F);
   }
   
   public static void a(boolean paramBoolean)
@@ -217,7 +219,7 @@ public class WindowConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.inject.WindowConfig
  * JD-Core Version:    0.7.0.1
  */

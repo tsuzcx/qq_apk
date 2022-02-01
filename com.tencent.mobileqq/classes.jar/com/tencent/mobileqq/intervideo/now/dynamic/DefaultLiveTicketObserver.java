@@ -14,12 +14,20 @@ public class DefaultLiveTicketObserver
   
   public void a(int paramInt)
   {
-    QLog.i("DefaultLiveTicketObserver", 1, "DefaultLiveTicketObserver----request Doraemon onPermission, code = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DefaultLiveTicketObserver----request Doraemon onPermission, code = ");
+    localStringBuilder.append(paramInt);
+    QLog.i("DefaultLiveTicketObserver", 1, localStringBuilder.toString());
   }
   
   public void a(int paramInt, String paramString)
   {
-    QLog.i("DefaultLiveTicketObserver", 1, "DefaultLiveTicketObserver----request Doraemon failed, errCode = " + paramInt + ", errMsg = " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DefaultLiveTicketObserver----request Doraemon failed, errCode = ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", errMsg = ");
+    localStringBuilder.append(paramString);
+    QLog.i("DefaultLiveTicketObserver", 1, localStringBuilder.toString());
   }
   
   public void a(JSONObject paramJSONObject)
@@ -34,7 +42,7 @@ public class DefaultLiveTicketObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.DefaultLiveTicketObserver
  * JD-Core Version:    0.7.0.1
  */

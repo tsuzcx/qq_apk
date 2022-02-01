@@ -1,21 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/mh9" android:background="#b2000000" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_gravity="center_horizontal" android:focusableInTouchMode="true" android:layout_width="227.0dip" android:layout_height="128.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <ImageView android:id="@id/mh8" android:layout_width="296.0dip" android:layout_height="470.0dip" />
-        <TextView android:textSize="17.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/mkd" android:background="@drawable/bkk" android:layout_width="236.0dip" android:layout_height="41.0dip" android:layout_marginBottom="20.0dip" android:text="我知道了" android:layout_alignBottom="@id/mh8" android:layout_centerHorizontal="true" />
-        <Button android:id="@id/mh7" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="40.0dip" android:layout_below="@id/mh8" android:layout_centerInParent="true" />
-    </RelativeLayout>
-    <RelativeLayout android:id="@id/mgj" android:padding="7.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="74.0dip" android:layout_centerHorizontal="true">
-        <ImageView android:background="@drawable/bkh" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/gf5" android:scaleType="center" />
-    </RelativeLayout>
-    <RelativeLayout android:id="@id/mgk" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView android:textSize="14.0sp" android:textColor="#ff000000" android:gravity="center" android:id="@id/mgm" android:background="@drawable/bkc" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginBottom="8.0dip" android:text="@string/wi0" android:maxLines="1" />
-        <ImageView android:id="@id/lok" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="36.0dip" android:src="@drawable/bkd" android:layout_alignTop="@id/mgm" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-    <com.tencent.avgame.ui.GuideView android:id="@id/mh3" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <RelativeLayout android:id="@id/mh4" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView android:textSize="13.0sp" android:textColor="#ff000000" android:gravity="center" android:id="@id/mh5" android:background="@drawable/bkc" android:paddingLeft="3.0dip" android:paddingRight="3.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginBottom="8.0dip" android:text="@string/whz" android:maxLines="1" />
-        <ImageView android:id="@id/miq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="36.0dip" android:src="@drawable/bkd" android:layout_alignTop="@id/mh5" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
+    <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/lch" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" android:contentDescription="@string/cli" />
+    <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/lji" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/hv1" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    <View android:id="@id/lfd" android:background="@drawable/ec2" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_alignParentBottom="true" />
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip" android:layout_alignParentBottom="true" layout="@layout/chh" />
 </RelativeLayout>

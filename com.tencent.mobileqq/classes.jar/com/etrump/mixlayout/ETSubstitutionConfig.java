@@ -9,39 +9,34 @@ public class ETSubstitutionConfig
   private int a(JSONObject paramJSONObject)
   {
     int k = 0;
-    if (paramJSONObject == null) {}
-    do
+    if (paramJSONObject == null) {
+      return 0;
+    }
+    int i = 12;
+    j = i;
+    try
     {
-      return k;
-      try
+      paramJSONObject = paramJSONObject.getJSONArray("records");
+      j = i;
+      int m = paramJSONObject.length();
+      i = m * 8 + 12;
+      for (;;)
       {
-        paramJSONObject = paramJSONObject.getJSONArray("records");
-        m = paramJSONObject.length();
-        i = 12 + m * 8;
-        j = 0;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        try
-        {
-          int m;
-          int j;
-          k = paramJSONObject.getJSONObject(j).getString("uuid").length();
-          j += 1;
-          i = k + 1 + i;
-        }
-        catch (JSONException paramJSONObject)
-        {
-          int i;
+        j = i;
+        if (k >= m) {
           break;
         }
-        paramJSONObject = paramJSONObject;
-        i = 12;
+        j = i;
+        int n = paramJSONObject.getJSONObject(k).getString("uuid").length();
+        i += n + 1;
+        k += 1;
       }
-      k = i;
-    } while (j >= m);
-    paramJSONObject.printStackTrace();
-    return i;
+      return j;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
   }
   
   public static long a(long paramLong)
@@ -54,7 +49,6 @@ public class ETSubstitutionConfig
   
   public static long a(ETFont paramETFont, String paramString)
   {
-    int j = 12;
     try
     {
       Object localObject1 = new JSONObject(paramString);
@@ -63,20 +57,21 @@ public class ETSubstitutionConfig
       {
         paramString = new byte[i];
         i = ((JSONObject)localObject1).getInt("version");
-        int k = ((JSONObject)localObject1).getInt("fontId");
-        if (k != paramETFont.getId()) {
+        int j = ((JSONObject)localObject1).getInt("fontId");
+        if (j != paramETFont.getId()) {
           return 0L;
         }
         localObject1 = ((JSONObject)localObject1).getJSONArray("records");
         int m = ((JSONArray)localObject1).length();
         a(paramString, 0, i);
-        a(paramString, 4, k);
+        a(paramString, 4, j);
         a(paramString, 8, m);
         i = 0;
+        j = 12;
         while (i < m)
         {
           Object localObject2 = ((JSONArray)localObject1).getJSONObject(i);
-          k = ((JSONObject)localObject2).getInt("origin");
+          int k = ((JSONObject)localObject2).getInt("origin");
           int i1 = ((JSONObject)localObject2).getInt("format");
           localObject2 = ((JSONObject)localObject2).getString("uuid");
           int n = ((String)localObject2).length();
@@ -84,17 +79,17 @@ public class ETSubstitutionConfig
           a(paramString, j, i1);
           j += 4;
           a(paramString, j, k);
-          j += 4;
-          k = 0;
-          while (k < n)
+          k = j + 4;
+          j = 0;
+          while (j < n)
           {
-            a(paramString, j, localObject2[k]);
-            j += 1;
+            a(paramString, k, localObject2[j]);
             k += 1;
+            j += 1;
           }
-          a(paramString, j, (byte)0);
+          a(paramString, k, (byte)0);
+          j = k + 1;
           i += 1;
-          j += 1;
         }
         long l = ETEngine.getInstance().native_CreateNativeSubstitutionConfig(paramETFont, paramString);
         return l;
@@ -129,7 +124,7 @@ public class ETSubstitutionConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.ETSubstitutionConfig
  * JD-Core Version:    0.7.0.1
  */

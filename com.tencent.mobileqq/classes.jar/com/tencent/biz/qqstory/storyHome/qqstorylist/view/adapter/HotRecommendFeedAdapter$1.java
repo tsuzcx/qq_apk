@@ -16,35 +16,34 @@ class HotRecommendFeedAdapter$1
   
   public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
   {
-    if (UIUtils.b()) {}
-    label6:
-    do
+    if (UIUtils.b()) {
+      return;
+    }
+    if (paramInt >= 0)
     {
-      do
-      {
-        do
-        {
-          break label6;
-          do
-          {
-            return;
-          } while ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_JavaUtilList.size()));
-          paramObject = (StoryVideoItem)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-        } while (TextUtils.isEmpty(paramObject.mOwnerUid));
-        paramObject = HotRecommendFeedAdapter.a(this.a).b(paramObject.mOwnerUid);
-      } while (paramObject == null);
-      switch (paramView.getId())
-      {
-      default: 
+      if (paramInt >= this.a.jdField_a_of_type_JavaUtilList.size()) {
         return;
       }
-    } while (HotRecommendFeedAdapter.a(this.a) == null);
-    HotRecommendFeedAdapter.a(this.a).a(paramView, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem, paramObject, paramInt);
+      paramObject = (StoryVideoItem)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (TextUtils.isEmpty(paramObject.mOwnerUid)) {
+        return;
+      }
+      paramObject = HotRecommendFeedAdapter.a(this.a).b(paramObject.mOwnerUid);
+      if (paramObject == null) {
+        return;
+      }
+      if (paramView.getId() != 2131379896) {
+        return;
+      }
+      if (HotRecommendFeedAdapter.a(this.a) != null) {
+        HotRecommendFeedAdapter.a(this.a).a(paramView, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem, paramObject, paramInt);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.adapter.HotRecommendFeedAdapter.1
  * JD-Core Version:    0.7.0.1
  */

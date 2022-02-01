@@ -6,10 +6,10 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteCallbackList;
-import android.os.RemoteException;
 import android.text.TextUtils;
 import com.tencent.av.AVLog;
 import com.tencent.av.utils.SensorReport;
+import com.tencent.av.utils.api.IVideoProcessMonitor;
 import com.tencent.av.wtogether.WTogetherRealNameMainProcessHelper;
 import com.tencent.biz.ProtoServlet;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -17,11 +17,11 @@ import com.tencent.imcore.message.UinTypeUtil;
 import com.tencent.mobileqq.WebSsoBody.WebSsoRequestBody;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.GVideoHandler;
+import com.tencent.mobileqq.app.GVideoObserver;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.MessageObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopBusinessObserver;
-import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.app.face.IFaceDecoder;
 import com.tencent.mobileqq.avatar.listener.DecodeTaskCompletionListener;
 import com.tencent.mobileqq.avatar.observer.AvatarObserver;
@@ -29,14 +29,19 @@ import com.tencent.mobileqq.data.MessageForGrayTips;
 import com.tencent.mobileqq.data.MessageForMixedMsg;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.nearby.NearbyFlowerMessage;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.graytip.UniteGrayTipMsgUtil;
+import com.tencent.mobileqq.graytip.UniteGrayTipParam;
+import com.tencent.mobileqq.nearby.api.INearbyFlowerMessage;
 import com.tencent.mobileqq.nearby.business.NearbyCardObserver;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.qcall.QCallCardHandler.OnGetQCallCardListener;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.structmsg.StructMsgFactory;
+import com.tencent.mobileqq.troop.api.observer.TroopObserver;
 import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -53,7 +58,6 @@ public class QQServiceForAV
   extends AppService
   implements Observer
 {
-  static IBinder jdField_a_of_type_AndroidOsIBinder = null;
   int jdField_a_of_type_Int = 0;
   long jdField_a_of_type_Long = -1L;
   private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new QQServiceForAV.5(this);
@@ -62,14 +66,15 @@ public class QQServiceForAV
   private QQServiceForAV.CMSConfigUpdateListener jdField_a_of_type_ComTencentAvServiceQQServiceForAV$CMSConfigUpdateListener = null;
   private QQServiceForAV.LocationListener jdField_a_of_type_ComTencentAvServiceQQServiceForAV$LocationListener = null;
   private WTogetherRealNameMainProcessHelper jdField_a_of_type_ComTencentAvWtogetherWTogetherRealNameMainProcessHelper;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new QQServiceForAV.9(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new QQServiceForAV.10(this);
+  GVideoObserver jdField_a_of_type_ComTencentMobileqqAppGVideoObserver = new QQServiceForAV.8(this);
   private final MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new QQServiceForAV.3(this);
-  TroopBusinessObserver jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver = new QQServiceForAV.7(this);
   IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = null;
   DecodeTaskCompletionListener jdField_a_of_type_ComTencentMobileqqAvatarListenerDecodeTaskCompletionListener = new QQServiceForAV.1(this);
-  AvatarObserver jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver = new QQServiceForAV.8(this);
+  AvatarObserver jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver = new QQServiceForAV.9(this);
   NearbyCardObserver jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver = new QQServiceForAV.6(this);
   QCallCardHandler.OnGetQCallCardListener jdField_a_of_type_ComTencentMobileqqQcallQCallCardHandler$OnGetQCallCardListener = new QQServiceForAV.2(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver = new QQServiceForAV.7(this);
   String jdField_a_of_type_JavaLangString = null;
   ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   boolean jdField_a_of_type_Boolean = false;
@@ -83,80 +88,216 @@ public class QQServiceForAV
   String jdField_d_of_type_JavaLangString = null;
   private boolean jdField_d_of_type_Boolean = false;
   
-  public static boolean a()
-  {
-    return jdField_a_of_type_AndroidOsIBinder != null;
-  }
-  
   private boolean a(String paramString)
   {
     try
     {
       int i = Integer.parseInt(paramString);
-      switch (i)
-      {
-      case 6: 
-      default: 
-        return false;
-      }
-      return true;
+      return (i == 5) || (i == 7);
     }
     catch (Exception localException)
     {
-      AVLog.printErrorLog("QQServiceForAV", "isTroopGiftGrayMsg: serviceType(" + paramString + ") cannot be parse to int");
+      label20:
+      StringBuilder localStringBuilder;
+      break label20;
     }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isTroopGiftGrayMsg: serviceType(");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(") cannot be parse to int");
+    AVLog.printErrorLog("QQServiceForAV", localStringBuilder.toString());
     return false;
   }
   
+  private static void b(QQAppInterface paramQQAppInterface, Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      return;
+    }
+    try
+    {
+      Object localObject = paramBundle.getString("uin");
+      int i = paramBundle.getInt("uinType");
+      paramBundle = paramBundle.getString("wording");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("writeGrayMsg_in_QQ, peerUin[");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("], wording[");
+      localStringBuilder.append(paramBundle);
+      localStringBuilder.append("]");
+      QLog.w("QQServiceForAV", 1, localStringBuilder.toString());
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        paramBundle = new UniteGrayTipParam((String)localObject, paramQQAppInterface.getCurrentAccountUin(), paramBundle, i, -5040, 65560, 0L);
+        localObject = new MessageForUniteGrayTip();
+        ((MessageForUniteGrayTip)localObject).initGrayTipMsg(paramQQAppInterface, paramBundle);
+        UniteGrayTipMsgUtil.a(paramQQAppInterface, (MessageForUniteGrayTip)localObject);
+        return;
+      }
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("writeGrayMsg_in_QQ, Exception[");
+      paramBundle.append(paramQQAppInterface.getClass().getName());
+      paramBundle.append("]");
+      QLog.w("QQServiceForAV", 1, paramBundle.toString(), paramQQAppInterface);
+    }
+  }
+  
+  /* Error */
   public Bundle a(int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    int i = 0;
-    Object localObject1;
-    boolean bool;
-    if (QLog.isColorLevel())
-    {
-      localObject1 = new StringBuilder().append("getDataFromVideoProcess, mainCmd = ").append(paramInt1).append(",subCmd = ").append(paramInt2).append(",bundle = ").append(paramBundle).append(",mCallbacks =");
-      if (this.jdField_a_of_type_AndroidOsRemoteCallbackList != null)
-      {
-        bool = true;
-        QLog.w("QQServiceForAV", 1, bool);
-      }
-    }
-    else
-    {
-      localObject1 = null;
-      if (this.jdField_a_of_type_AndroidOsRemoteCallbackList == null) {
-        break label211;
-      }
-    }
-    label208:
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_AndroidOsRemoteCallbackList)
-      {
-        int j = this.jdField_a_of_type_AndroidOsRemoteCallbackList.beginBroadcast();
-        if (i < j)
-        {
-          try
-          {
-            Object localObject2 = this.jdField_a_of_type_AndroidOsRemoteCallbackList.getBroadcastCookie(i);
-            if ((localObject2 == null) || (!(localObject2 instanceof String)) || (!localObject2.equals("video_process_cookie"))) {
-              break label208;
-            }
-            localObject2 = ((IQQServiceCallback)this.jdField_a_of_type_AndroidOsRemoteCallbackList.getBroadcastItem(i)).a("video_process_cookie", paramInt1, paramInt2, paramBundle);
-            localObject1 = localObject2;
-            i += 1;
-          }
-          catch (RemoteException paramBundle) {}
-          bool = false;
-          break;
-        }
-        this.jdField_a_of_type_AndroidOsRemoteCallbackList.finishBroadcast();
-        return localObject1;
-      }
-    }
-    label211:
-    return null;
+    // Byte code:
+    //   0: invokestatic 272	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: istore 6
+    //   5: iconst_0
+    //   6: istore 4
+    //   8: iload 6
+    //   10: ifeq +104 -> 114
+    //   13: new 165	java/lang/StringBuilder
+    //   16: dup
+    //   17: invokespecial 166	java/lang/StringBuilder:<init>	()V
+    //   20: astore 7
+    //   22: aload 7
+    //   24: ldc_w 274
+    //   27: invokevirtual 172	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: pop
+    //   31: aload 7
+    //   33: iload_1
+    //   34: invokevirtual 277	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   37: pop
+    //   38: aload 7
+    //   40: ldc_w 279
+    //   43: invokevirtual 172	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   46: pop
+    //   47: aload 7
+    //   49: iload_2
+    //   50: invokevirtual 277	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   53: pop
+    //   54: aload 7
+    //   56: ldc_w 281
+    //   59: invokevirtual 172	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   62: pop
+    //   63: aload 7
+    //   65: aload_3
+    //   66: invokevirtual 284	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   69: pop
+    //   70: aload 7
+    //   72: ldc_w 286
+    //   75: invokevirtual 172	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   78: pop
+    //   79: aload_0
+    //   80: getfield 77	com/tencent/av/service/QQServiceForAV:jdField_a_of_type_AndroidOsRemoteCallbackList	Landroid/os/RemoteCallbackList;
+    //   83: ifnull +9 -> 92
+    //   86: iconst_1
+    //   87: istore 6
+    //   89: goto +6 -> 95
+    //   92: iconst_0
+    //   93: istore 6
+    //   95: aload 7
+    //   97: iload 6
+    //   99: invokevirtual 289	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   102: pop
+    //   103: ldc 176
+    //   105: iconst_1
+    //   106: aload 7
+    //   108: invokevirtual 180	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   111: invokestatic 213	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   114: aconst_null
+    //   115: astore 7
+    //   117: aload_0
+    //   118: getfield 77	com/tencent/av/service/QQServiceForAV:jdField_a_of_type_AndroidOsRemoteCallbackList	Landroid/os/RemoteCallbackList;
+    //   121: astore 9
+    //   123: aload 9
+    //   125: ifnull +126 -> 251
+    //   128: aload 9
+    //   130: monitorenter
+    //   131: aload_0
+    //   132: getfield 77	com/tencent/av/service/QQServiceForAV:jdField_a_of_type_AndroidOsRemoteCallbackList	Landroid/os/RemoteCallbackList;
+    //   135: invokevirtual 293	android/os/RemoteCallbackList:beginBroadcast	()I
+    //   138: istore 5
+    //   140: iload 4
+    //   142: iload 5
+    //   144: if_icmpge +88 -> 232
+    //   147: aload_0
+    //   148: getfield 77	com/tencent/av/service/QQServiceForAV:jdField_a_of_type_AndroidOsRemoteCallbackList	Landroid/os/RemoteCallbackList;
+    //   151: iload 4
+    //   153: invokevirtual 297	android/os/RemoteCallbackList:getBroadcastCookie	(I)Ljava/lang/Object;
+    //   156: astore 10
+    //   158: aload 7
+    //   160: astore 8
+    //   162: aload 10
+    //   164: ifnull +55 -> 219
+    //   167: aload 7
+    //   169: astore 8
+    //   171: aload 10
+    //   173: instanceof 299
+    //   176: ifeq +43 -> 219
+    //   179: aload 7
+    //   181: astore 8
+    //   183: aload 10
+    //   185: ldc_w 301
+    //   188: invokevirtual 305	java/lang/Object:equals	(Ljava/lang/Object;)Z
+    //   191: ifeq +28 -> 219
+    //   194: aload_0
+    //   195: getfield 77	com/tencent/av/service/QQServiceForAV:jdField_a_of_type_AndroidOsRemoteCallbackList	Landroid/os/RemoteCallbackList;
+    //   198: iload 4
+    //   200: invokevirtual 309	android/os/RemoteCallbackList:getBroadcastItem	(I)Landroid/os/IInterface;
+    //   203: checkcast 311	com/tencent/av/service/IQQServiceCallback
+    //   206: ldc_w 301
+    //   209: iload_1
+    //   210: iload_2
+    //   211: aload_3
+    //   212: invokeinterface 314 5 0
+    //   217: astore 8
+    //   219: iload 4
+    //   221: iconst_1
+    //   222: iadd
+    //   223: istore 4
+    //   225: aload 8
+    //   227: astore 7
+    //   229: goto -89 -> 140
+    //   232: aload_0
+    //   233: getfield 77	com/tencent/av/service/QQServiceForAV:jdField_a_of_type_AndroidOsRemoteCallbackList	Landroid/os/RemoteCallbackList;
+    //   236: invokevirtual 317	android/os/RemoteCallbackList:finishBroadcast	()V
+    //   239: aload 9
+    //   241: monitorexit
+    //   242: aload 7
+    //   244: areturn
+    //   245: astore_3
+    //   246: aload 9
+    //   248: monitorexit
+    //   249: aload_3
+    //   250: athrow
+    //   251: aconst_null
+    //   252: areturn
+    //   253: astore_3
+    //   254: goto -22 -> 232
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	257	0	this	QQServiceForAV
+    //   0	257	1	paramInt1	int
+    //   0	257	2	paramInt2	int
+    //   0	257	3	paramBundle	Bundle
+    //   6	218	4	i	int
+    //   138	7	5	j	int
+    //   3	95	6	bool	boolean
+    //   20	223	7	localObject1	Object
+    //   160	66	8	localObject2	Object
+    //   121	126	9	localRemoteCallbackList	RemoteCallbackList
+    //   156	28	10	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   131	140	245	finally
+    //   147	158	245	finally
+    //   171	179	245	finally
+    //   183	219	245	finally
+    //   232	242	245	finally
+    //   246	249	245	finally
+    //   147	158	253	android/os/RemoteException
+    //   171	179	253	android/os/RemoteException
+    //   183	219	253	android/os/RemoteException
   }
   
   AppRuntime a()
@@ -180,31 +321,45 @@ public class QQServiceForAV
       ((Intent)localObject2).putExtra("relationId", paramLong1);
       ((Intent)localObject2).putExtra("userUin", paramLong2);
       ((Intent)localObject2).putExtra("needSendCmd", false);
-      QLog.w("QQServiceForAV", 1, "sendAdminToVideo, troopUin[" + paramLong1 + "], userUin[" + paramLong2 + "], Action[" + "tencent.video.q2v.GroupSystemMsg" + "], type[" + 3 + "]");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sendAdminToVideo, troopUin[");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append("], userUin[");
+      localStringBuilder.append(paramLong2);
+      localStringBuilder.append("], Action[");
+      localStringBuilder.append("tencent.video.q2v.GroupSystemMsg");
+      localStringBuilder.append("], type[");
+      localStringBuilder.append(3);
+      localStringBuilder.append("]");
+      QLog.w("QQServiceForAV", 1, localStringBuilder.toString());
       ((QQAppInterface)localObject1).getApp().sendBroadcast((Intent)localObject2);
     }
   }
   
   public void a(String paramString)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)a();
-    TroopHandler localTroopHandler = (TroopHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
-    if (localTroopHandler != null) {}
-    while (!QLog.isColorLevel()) {
+    Object localObject = (QQAppInterface)a();
+    GVideoHandler localGVideoHandler = (GVideoHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.GVIDEO_HANDLER);
+    if (localGVideoHandler != null) {
       try
       {
-        localQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver);
-        localTroopHandler.q(paramString);
+        ((QQAppInterface)localObject).addObserver(this.jdField_a_of_type_ComTencentMobileqqAppGVideoObserver);
+        localGVideoHandler.a(paramString);
         return;
       }
       catch (Exception paramString)
       {
-        localQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver);
-        AVLog.printErrorLog("nearby.video.follow", "QQServiceForAV, getFollowStatus exp:" + paramString.getMessage());
+        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppGVideoObserver);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("QQServiceForAV, getFollowStatus exp:");
+        ((StringBuilder)localObject).append(paramString.getMessage());
+        AVLog.printErrorLog("nearby.video.follow", ((StringBuilder)localObject).toString());
         return;
       }
     }
-    QLog.e("QQServiceForAV", 2, "QQServiceForAV, getFollowStatus, troopHandler==null");
+    if (QLog.isColorLevel()) {
+      QLog.e("QQServiceForAV", 2, "QQServiceForAV, getFollowStatus, troopHandler==null");
+    }
   }
   
   public void a(String paramString1, String paramString2, String paramString3, int paramInt)
@@ -213,7 +368,7 @@ public class QQServiceForAV
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("client_ver", "8.5.5");
+      localJSONObject.put("client_ver", "8.7.0");
       localJSONObject.put("from", paramString2);
       if ("1".equals(paramString2))
       {
@@ -226,8 +381,12 @@ public class QQServiceForAV
       localJSONObject.put("operation", paramString3);
       localJSONObject.put("sourceid", 3088);
       localJSONObject.put("sub_sourceid", paramInt);
-      if (QLog.isColorLevel()) {
-        QLog.d("nearby.video.follow", 2, "QQServiceForAV, followUser:" + localJSONObject);
+      if (QLog.isColorLevel())
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("QQServiceForAV, followUser:");
+        paramString2.append(localJSONObject);
+        QLog.d("nearby.video.follow", 2, paramString2.toString());
       }
       paramString2 = new NewIntent(localQQAppInterface.getApplication().getApplicationContext(), ProtoServlet.class);
       paramString2.putExtra("cmd", "MQUpdateSvc_com_qq_buluo.web.follow_user");
@@ -241,25 +400,42 @@ public class QQServiceForAV
     }
     catch (Exception paramString1)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("nearby.video.follow", 2, "QQServiceForAV, followUser 1:" + paramString1.toString());
+      if (QLog.isColorLevel())
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("QQServiceForAV, followUser 1:");
+        paramString2.append(paramString1.toString());
+        QLog.e("nearby.video.follow", 2, paramString2.toString());
+      }
     }
+  }
+  
+  boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size() == 0;
   }
   
   public boolean a(String paramString, int paramInt, byte[] paramArrayOfByte)
   {
-    for (;;)
+    boolean bool2;
+    label132:
+    label244:
+    synchronized (this.jdField_a_of_type_AndroidOsRemoteCallbackList)
     {
-      synchronized (this.jdField_a_of_type_AndroidOsRemoteCallbackList)
+      int k = this.jdField_a_of_type_AndroidOsRemoteCallbackList.beginBroadcast();
+      int j = 0;
+      int i = 0;
+      boolean bool1 = false;
+      for (;;)
       {
-        int j = this.jdField_a_of_type_AndroidOsRemoteCallbackList.beginBroadcast();
-        int i = 0;
-        bool1 = false;
-        if (i < j) {}
+        bool2 = bool1;
+        if (i >= k) {
+          break label132;
+        }
         try
         {
           Object localObject = this.jdField_a_of_type_AndroidOsRemoteCallbackList.getBroadcastCookie(i);
-          boolean bool2 = bool1;
+          bool2 = bool1;
           if ((localObject instanceof String))
           {
             bool2 = bool1;
@@ -275,38 +451,35 @@ public class QQServiceForAV
         catch (Throwable paramString)
         {
           if (!QLog.isColorLevel()) {
-            break label216;
+            break label244;
           }
-        }
-        this.jdField_a_of_type_AndroidOsRemoteCallbackList.finishBroadcast();
-        if (QLog.isColorLevel())
-        {
-          paramString = new StringBuilder().append("onReceiveChatRoomPushMsg, msgType[").append(paramInt).append("], bytes[");
-          if (paramArrayOfByte == null)
-          {
-            paramInt = 0;
-            QLog.w("QQServiceForAV", 1, paramInt + "], ret[" + bool1 + "]");
-          }
-        }
-        else
-        {
-          return bool1;
-          QLog.i("QQServiceForAV", 2, "onReceiveChatRoomPushMsg", paramString);
         }
       }
-      paramInt = paramArrayOfByte.length;
-      continue;
-      label216:
-      boolean bool1 = false;
+      QLog.i("QQServiceForAV", 2, "onReceiveChatRoomPushMsg", paramString);
+      break label244;
+      this.jdField_a_of_type_AndroidOsRemoteCallbackList.finishBroadcast();
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("onReceiveChatRoomPushMsg, msgType[");
+        paramString.append(paramInt);
+        paramString.append("], bytes[");
+        if (paramArrayOfByte == null) {
+          paramInt = j;
+        } else {
+          paramInt = paramArrayOfByte.length;
+        }
+        paramString.append(paramInt);
+        paramString.append("], ret[");
+        paramString.append(bool2);
+        paramString.append("]");
+        QLog.w("QQServiceForAV", 1, paramString.toString());
+      }
+      return bool2;
     }
   }
   
   boolean b()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size() == 0;
-  }
-  
-  boolean c()
   {
     return this.jdField_b_of_type_JavaUtilArrayList.size() == 0;
   }
@@ -317,23 +490,30 @@ public class QQServiceForAV
       QLog.d("QQServiceForAV", 2, "onBind");
     }
     this.jdField_b_of_type_Boolean = true;
-    QLog.i("QQServiceForAV", 1, "mBindVideoProcessConn intent=" + paramIntent);
-    if (!this.jdField_d_of_type_Boolean) {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mBindVideoProcessConn intent=");
+    localStringBuilder.append(paramIntent);
+    QLog.i("QQServiceForAV", 1, localStringBuilder.toString());
+    if (!this.jdField_d_of_type_Boolean)
+    {
       paramIntent = new Intent(BaseApplicationImpl.getContext(), AVServiceForQQ.class);
-    }
-    try
-    {
-      boolean bool = BaseApplicationImpl.getContext().bindService(paramIntent, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
-      QLog.i("QQServiceForAV", 1, "mBindVideoProcessConn bind service return " + bool);
-      return this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV$Stub;
-    }
-    catch (Throwable paramIntent)
-    {
-      for (;;)
+      try
       {
-        QLog.e("QQServiceForAV", 1, "mHasBindToVideoProcess exception:" + paramIntent, paramIntent);
+        boolean bool = BaseApplicationImpl.getContext().bindService(paramIntent, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
+        paramIntent = new StringBuilder();
+        paramIntent.append("mBindVideoProcessConn bind service return ");
+        paramIntent.append(bool);
+        QLog.i("QQServiceForAV", 1, paramIntent.toString());
+      }
+      catch (Throwable paramIntent)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("mHasBindToVideoProcess exception:");
+        localStringBuilder.append(paramIntent);
+        QLog.e("QQServiceForAV", 1, localStringBuilder.toString(), paramIntent);
       }
     }
+    return this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV$Stub;
   }
   
   public void onCreate()
@@ -355,19 +535,21 @@ public class QQServiceForAV
   public void onDestroy()
   {
     AVLog.printAllUserLog("QQServiceForAV", "onDestroy");
-    QQAppInterface localQQAppInterface = (QQAppInterface)a();
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder != null)
+    Object localObject = (QQAppInterface)a();
+    IFaceDecoder localIFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    if (localIFaceDecoder != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.destory();
+      localIFaceDecoder.destory();
       this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = null;
     }
     this.jdField_b_of_type_Boolean = false;
-    localQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    localQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver);
-    jdField_a_of_type_AndroidOsIBinder = null;
-    if (this.jdField_a_of_type_ComTencentAvWtogetherWTogetherRealNameMainProcessHelper != null)
+    ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver);
+    ((IVideoProcessMonitor)QRoute.api(IVideoProcessMonitor.class)).clearMonitorBinder();
+    localObject = this.jdField_a_of_type_ComTencentAvWtogetherWTogetherRealNameMainProcessHelper;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentAvWtogetherWTogetherRealNameMainProcessHelper.b();
+      ((WTogetherRealNameMainProcessHelper)localObject).b();
       this.jdField_a_of_type_ComTencentAvWtogetherWTogetherRealNameMainProcessHelper = null;
     }
     super.onDestroy();
@@ -376,8 +558,14 @@ public class QQServiceForAV
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQServiceForAV", 2, "onStartCommand flags: " + paramInt1 + ", startId: " + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("onStartCommand flags: ");
+      paramIntent.append(paramInt1);
+      paramIntent.append(", startId: ");
+      paramIntent.append(paramInt2);
+      QLog.d("QQServiceForAV", 2, paramIntent.toString());
     }
     if ((a() instanceof QQAppInterface))
     {
@@ -399,167 +587,206 @@ public class QQServiceForAV
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    if (paramObject == null) {
+    if (paramObject == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("QQServiceForAV", 2, "update invalid data!");
       }
+      return;
     }
-    Object localObject;
-    MessageRecord localMessageRecord;
-    long l1;
-    long l2;
-    label332:
-    String str;
-    int i;
-    do
+    paramObservable = (QQAppInterface)a();
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      do
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("update data: ");
+      ((StringBuilder)localObject1).append(paramObject);
+      ((StringBuilder)localObject1).append(", mLastUniseq: ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject1).append(",mStartTime:");
+      ((StringBuilder)localObject1).append(this.jdField_b_of_type_Long);
+      QLog.d("QQServiceForAV", 2, ((StringBuilder)localObject1).toString());
+    }
+    if (!(paramObject instanceof MessageRecord)) {
+      return;
+    }
+    Object localObject2 = (MessageRecord)paramObject;
+    if ((localObject2 != null) && (!((MessageRecord)localObject2).isSendFromLocal()))
+    {
+      if ((this.jdField_c_of_type_JavaLangString != null) && (paramObservable != null))
       {
-        do
+        paramObject = paramObservable;
+        if (paramObservable.getMessageFacade() != null) {}
+      }
+      else
+      {
+        paramObservable = (QQAppInterface)a();
+        paramObject = paramObservable;
+        if (paramObservable != null)
         {
-          do
+          this.jdField_c_of_type_JavaLangString = paramObservable.getCurrentAccountUin();
+          paramObject = paramObservable;
+        }
+      }
+      if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))
+      {
+        if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+          return;
+        }
+        if ((!this.jdField_c_of_type_JavaLangString.equals(((MessageRecord)localObject2).senderuin)) && ((((MessageRecord)localObject2).isSend()) || (((MessageRecord)localObject2).isread)) && (((MessageRecord)localObject2).msgtype != -2035) && (((MessageRecord)localObject2).msgtype != -2038) && ((((MessageRecord)localObject2).msgtype != 2024) || (!a(((MessageRecord)localObject2).getExtInfoFromExtStr("gray_tips_serviceType")))))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QQServiceForAV", 2, "update  continue 1");
+          }
+          return;
+        }
+        long l1 = ((MessageRecord)localObject2).time;
+        long l2 = ((MessageRecord)localObject2).uniseq;
+        if (this.jdField_a_of_type_Long == -1L)
+        {
+          if (l1 < this.jdField_b_of_type_Long)
           {
-            do
-            {
-              do
-              {
-                return;
-                localObject = (QQAppInterface)a();
-                if (QLog.isColorLevel()) {
-                  QLog.d("QQServiceForAV", 2, "update data: " + paramObject + ", mLastUniseq: " + this.jdField_a_of_type_Long + ",mStartTime:" + this.jdField_b_of_type_Long);
-                }
-              } while (!(paramObject instanceof MessageRecord));
-              localMessageRecord = (MessageRecord)paramObject;
-            } while ((localMessageRecord == null) || (localMessageRecord.isSendFromLocal()));
-            if ((this.jdField_c_of_type_JavaLangString != null) && (localObject != null))
-            {
-              paramObservable = (Observable)localObject;
-              if (((QQAppInterface)localObject).getMessageFacade() != null) {}
+            if (QLog.isColorLevel()) {
+              QLog.d("QQServiceForAV", 2, "update  continue 2");
             }
-            else
+            return;
+          }
+          this.jdField_a_of_type_Long = l2;
+        }
+        paramObservable = ((MessageRecord)localObject2).selfuin;
+        localObject1 = ((MessageRecord)localObject2).frienduin;
+        String str = ((MessageRecord)localObject2).senderuin;
+        int i = (int)((MessageRecord)localObject2).vipBubbleID;
+        if ((l2 >= this.jdField_a_of_type_Long) && (paramObservable != null) && (localObject1 != null) && (str != null) && (this.jdField_c_of_type_JavaLangString.equals(paramObservable)) && (this.jdField_b_of_type_JavaLangString.equals(localObject1)))
+        {
+          int j = ((MessageRecord)localObject2).msgtype;
+          localObject1 = null;
+          switch (j)
+          {
+          default: 
+            paramObservable = (Observable)localObject1;
+            break;
+          case 2024: 
+            paramObservable = (Observable)localObject1;
+            if ((localObject2 instanceof MessageForGrayTips)) {
+              paramObservable = MessageForGrayTips.getOrginMsg(((MessageForGrayTips)localObject2).getSummaryMsg());
+            }
+            break;
+          case -1000: 
+            paramObject = ((MessageRecord)localObject2).msg;
+            paramObservable = paramObject;
+            if (paramObject != null)
             {
-              paramObject = (QQAppInterface)a();
               paramObservable = paramObject;
-              if (paramObject != null)
-              {
-                this.jdField_c_of_type_JavaLangString = paramObject.getCurrentAccountUin();
-                paramObservable = paramObject;
+              if (paramObject.indexOf("http://maps.google.com/maps?q=") != -1) {
+                paramObservable = getResources().getString(2131720288);
               }
             }
-          } while ((TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)));
-          if ((this.jdField_c_of_type_JavaLangString.equals(localMessageRecord.senderuin)) || ((!localMessageRecord.isSend()) && (!localMessageRecord.isread)) || (localMessageRecord.msgtype == -2035) || (localMessageRecord.msgtype == -2038) || ((localMessageRecord.msgtype == 2024) && (a(localMessageRecord.getExtInfoFromExtStr("gray_tips_serviceType"))))) {
             break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("QQServiceForAV", 2, "update  continue 1");
-        return;
-        l1 = localMessageRecord.time;
-        l2 = localMessageRecord.uniseq;
-        if (this.jdField_a_of_type_Long != -1L) {
-          break label332;
-        }
-        if (l1 >= this.jdField_b_of_type_Long) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("QQServiceForAV", 2, "update  continue 2");
-      return;
-      this.jdField_a_of_type_Long = l2;
-      paramObject = localMessageRecord.selfuin;
-      str = localMessageRecord.frienduin;
-      localObject = localMessageRecord.senderuin;
-      i = (int)localMessageRecord.vipBubbleID;
-    } while ((l2 < this.jdField_a_of_type_Long) || (paramObject == null) || (str == null) || (localObject == null) || (!this.jdField_c_of_type_JavaLangString.equals(paramObject)) || (!this.jdField_b_of_type_JavaLangString.equals(str)));
-    int j = localMessageRecord.msgtype;
-    switch (j)
-    {
-    default: 
-      paramObservable = null;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQServiceForAV", 2, ", vipBubbleId: " + i + ", senderUin: " + (String)localObject + ", msgtype: " + j + ", msg: " + paramObservable + ", time: " + l1 + ", uinseq: " + l2 + ", mLastUniseq: " + this.jdField_a_of_type_Long);
-      }
-      if (paramObservable != null) {}
-      this.jdField_a_of_type_Long = (1L + l2);
-      return;
-      paramObject = localMessageRecord.msg;
-      paramObservable = paramObject;
-      if (paramObject != null)
-      {
-        paramObservable = paramObject;
-        if (paramObject.indexOf("http://maps.google.com/maps?q=") != -1)
-        {
-          paramObservable = getResources().getString(2131720573);
-          continue;
-          paramObservable = getResources().getString(2131720574);
-          continue;
-          paramObservable = HardCodeUtil.a(2131710700);
-          continue;
-          paramObservable = getResources().getString(2131720575);
-          continue;
-          paramObservable = getResources().getString(2131720572);
-          continue;
-          paramObservable = getResources().getString(2131720576);
-          continue;
-          paramObservable = getResources().getString(2131720571);
-          continue;
-          paramObservable = getResources().getString(2131720578);
-          continue;
-          if ((localMessageRecord instanceof MessageForMixedMsg))
-          {
-            paramObservable = (String)MessageForMixedMsg.getTextFromMixedMsg((MessageForMixedMsg)localMessageRecord);
-            continue;
+          case -1035: 
+            paramObservable = (Observable)localObject1;
+            if ((localObject2 instanceof MessageForMixedMsg)) {
+              paramObservable = (String)MessageForMixedMsg.getTextFromMixedMsg((MessageForMixedMsg)localObject2);
+            }
+            break;
+          case -2000: 
+            paramObservable = getResources().getString(2131720289);
+            break;
+          case -2002: 
+          case -1031: 
+            paramObservable = getResources().getString(2131720290);
+            break;
+          case -2007: 
+          case -2001: 
+            paramObservable = getResources().getString(2131720286);
+            break;
+          case -2011: 
             try
             {
-              if ((UinTypeUtil.h(localMessageRecord.istroop)) && ((localMessageRecord instanceof MessageForStructing)))
+              if ((UinTypeUtil.h(((MessageRecord)localObject2).istroop)) && ((localObject2 instanceof MessageForStructing)))
               {
-                paramObject = (MessageForStructing)localMessageRecord;
-                if (paramObject.structingMsg.mMsgServiceID != 52) {
-                  break label1011;
+                MessageForStructing localMessageForStructing = (MessageForStructing)localObject2;
+                paramObservable = (Observable)localObject1;
+                if (localMessageForStructing.structingMsg.mMsgServiceID == 52)
+                {
+                  localObject2 = (INearbyFlowerMessage)QRoute.api(INearbyFlowerMessage.class);
+                  ((INearbyFlowerMessage)localObject2).init(paramObject, localMessageForStructing);
+                  paramObservable = (Observable)localObject1;
+                  if (QLog.isColorLevel())
+                  {
+                    paramObservable = new StringBuilder();
+                    paramObservable.append("flower message version: ");
+                    paramObservable.append(((INearbyFlowerMessage)localObject2).getVersion());
+                    QLog.d("QQServiceForAV", 2, paramObservable.toString());
+                    paramObservable = (Observable)localObject1;
+                  }
                 }
-                paramObservable = new NearbyFlowerMessage(paramObservable, paramObject);
-                if (!QLog.isColorLevel()) {
-                  break label1011;
-                }
-                QLog.d("QQServiceForAV", 2, "flower message version: " + paramObservable.version);
-                break label1011;
               }
-              paramObservable = StructMsgFactory.a(localMessageRecord.msgData);
-              if (paramObservable == null)
+              else
               {
-                if (!QLog.isColorLevel()) {
-                  break label1016;
+                paramObservable = StructMsgFactory.a(((MessageRecord)localObject2).msgData);
+                if (paramObservable == null)
+                {
+                  paramObservable = (Observable)localObject1;
+                  if (QLog.isColorLevel())
+                  {
+                    QLog.d("QQServiceForAV", 2, "QQServiceForAV:getStructMsg is null");
+                    paramObservable = (Observable)localObject1;
+                  }
                 }
-                QLog.d("QQServiceForAV", 2, "QQServiceForAV:getStructMsg is null");
-                break label1016;
+                else
+                {
+                  paramObservable = paramObservable.mMsgBrief;
+                }
               }
-              paramObservable = paramObservable.mMsgBrief;
             }
-            catch (Exception paramObservable)
+            catch (Exception paramObject)
             {
-              if (QLog.isColorLevel()) {
-                QLog.d("StructMsg", 2, "QQServiceForAV:getStructMsg error", paramObservable);
+              paramObservable = (Observable)localObject1;
+              if (!QLog.isColorLevel()) {
+                break;
               }
-              paramObservable = null;
             }
-            continue;
-            paramObservable = getResources().getString(2131720577);
-            continue;
-            if ((localMessageRecord instanceof MessageForGrayTips))
-            {
-              paramObservable = MessageForGrayTips.getOrginMsg(((MessageForGrayTips)localMessageRecord).getSummaryMsg());
-              continue;
-            }
+            QLog.d("StructMsg", 2, "QQServiceForAV:getStructMsg error", paramObject);
+            paramObservable = (Observable)localObject1;
+            break;
+          case -2022: 
+            paramObservable = getResources().getString(2131720292);
+            break;
+          case -2058: 
+            paramObservable = getResources().getString(2131720293);
+            break;
+          case -3005: 
+            paramObservable = getResources().getString(2131720291);
+            break;
+          case -3007: 
+          case -2017: 
+          case -2005: 
+            paramObservable = getResources().getString(2131720287);
+            break;
+          case -5015: 
+            paramObservable = HardCodeUtil.a(2131710677);
           }
-          paramObservable = null;
-          continue;
-          label1011:
-          paramObservable = null;
-          continue;
-          label1016:
-          paramObservable = null;
+          if (QLog.isColorLevel())
+          {
+            paramObject = new StringBuilder();
+            paramObject.append(", vipBubbleId: ");
+            paramObject.append(i);
+            paramObject.append(", senderUin: ");
+            paramObject.append(str);
+            paramObject.append(", msgtype: ");
+            paramObject.append(j);
+            paramObject.append(", msg: ");
+            paramObject.append(paramObservable);
+            paramObject.append(", time: ");
+            paramObject.append(l1);
+            paramObject.append(", uinseq: ");
+            paramObject.append(l2);
+            paramObject.append(", mLastUniseq: ");
+            paramObject.append(this.jdField_a_of_type_Long);
+            QLog.d("QQServiceForAV", 2, paramObject.toString());
+          }
+          this.jdField_a_of_type_Long = (l2 + 1L);
         }
       }
     }
@@ -567,7 +794,7 @@ public class QQServiceForAV
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.service.QQServiceForAV
  * JD-Core Version:    0.7.0.1
  */

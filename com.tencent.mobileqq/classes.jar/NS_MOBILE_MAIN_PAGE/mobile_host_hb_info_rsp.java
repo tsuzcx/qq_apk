@@ -46,28 +46,33 @@ public final class mobile_host_hb_info_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.has_available, 0);
-    if (this.hb_id != null) {
-      paramJceOutputStream.write(this.hb_id, 1);
+    Object localObject = this.hb_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.feeds_id != null) {
-      paramJceOutputStream.write(this.feeds_id, 2);
+    localObject = this.feeds_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.auth_res, 3);
-    if (this.encryp_key != null) {
-      paramJceOutputStream.write(this.encryp_key, 4);
+    localObject = this.encryp_key;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.channel, 5);
-    if (this.hb_info != null) {
-      paramJceOutputStream.write(this.hb_info, 6);
+    localObject = this.hb_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
-    if (this.err_msg != null) {
-      paramJceOutputStream.write(this.err_msg, 7);
+    localObject = this.err_msg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_host_hb_info_rsp
  * JD-Core Version:    0.7.0.1
  */

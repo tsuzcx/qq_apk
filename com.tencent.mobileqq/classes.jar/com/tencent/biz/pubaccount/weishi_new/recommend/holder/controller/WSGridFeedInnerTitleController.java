@@ -18,23 +18,24 @@ public class WSGridFeedInnerTitleController
     super(paramContext);
   }
   
-  public void a()
+  protected void a()
   {
     this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)a());
   }
   
-  public int b()
+  protected int b()
   {
-    return 2131560541;
+    return 2131560431;
   }
   
-  public void b()
+  protected void b()
   {
     String str = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.feed_desc;
     if (!TextUtils.isEmpty(str))
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(c());
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, d());
       this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
       return;
     }
@@ -47,16 +48,21 @@ public class WSGridFeedInnerTitleController
     return -1;
   }
   
-  public void c() {}
+  protected void c() {}
   
-  public void e()
+  protected int d()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131369393));
+    return 14;
+  }
+  
+  protected void e()
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131369121));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.controller.WSGridFeedInnerTitleController
  * JD-Core Version:    0.7.0.1
  */

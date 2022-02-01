@@ -1,11 +1,11 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 import com.tencent.qqmini.sdk.launcher.action.ActionBridge.UpdateUIActionBridge;
 
 class KingCardProxyImpl$1$1
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   KingCardProxyImpl$1$1(KingCardProxyImpl.1 param1) {}
   
@@ -25,7 +25,7 @@ class KingCardProxyImpl$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.KingCardProxyImpl.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -30,55 +30,54 @@ class TroopBarShortVideoUploadUtil$UploadReqBody
   public void a(ByteBuffer paramByteBuffer)
   {
     paramByteBuffer.putShort((short)(this.jdField_a_of_type_Int & 0xFFFF));
+    Object localObject = this.jdField_a_of_type_ArrayOfByte;
+    int j = localObject.length;
+    int i = this.jdField_a_of_type_Int;
     byte[] arrayOfByte;
-    if (this.jdField_a_of_type_ArrayOfByte.length == this.jdField_a_of_type_Int) {
-      arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    }
-    for (;;)
+    if (j != i)
     {
-      paramByteBuffer.put(arrayOfByte, 0, this.jdField_a_of_type_Int);
-      paramByteBuffer.putShort((short)(this.jdField_b_of_type_Int & 0xFFFF));
-      if (this.jdField_b_of_type_ArrayOfByte.length == this.jdField_b_of_type_Int) {
-        arrayOfByte = this.jdField_b_of_type_ArrayOfByte;
+      arrayOfByte = new byte[i];
+      if (localObject.length <= i) {
+        i = localObject.length;
       }
-      for (;;)
+      System.arraycopy(this.jdField_a_of_type_ArrayOfByte, 0, arrayOfByte, 0, i);
+      while (i < this.jdField_a_of_type_Int)
       {
-        paramByteBuffer.put(arrayOfByte, 0, this.jdField_b_of_type_Int);
-        paramByteBuffer.putInt((int)(this.jdField_a_of_type_Long & 0xFFFFFFFF));
-        paramByteBuffer.putInt((int)(this.jdField_b_of_type_Long & 0xFFFFFFFF));
-        paramByteBuffer.putInt((int)(this.c & 0xFFFFFFFF));
-        paramByteBuffer.putInt((int)(this.d & 0xFFFFFFFF));
-        paramByteBuffer.putInt((int)(this.e & 0xFFFFFFFF));
-        return;
-        arrayOfByte = new byte[this.jdField_a_of_type_Int];
-        if (this.jdField_a_of_type_ArrayOfByte.length > this.jdField_a_of_type_Int) {}
-        for (int i = this.jdField_a_of_type_Int;; i = this.jdField_a_of_type_ArrayOfByte.length)
-        {
-          System.arraycopy(this.jdField_a_of_type_ArrayOfByte, 0, arrayOfByte, 0, i);
-          while (i < this.jdField_a_of_type_Int)
-          {
-            arrayOfByte[i] = 0;
-            i += 1;
-          }
-        }
-        arrayOfByte = new byte[this.jdField_b_of_type_Int];
-        if (this.jdField_b_of_type_ArrayOfByte.length > this.jdField_b_of_type_Int) {}
-        for (i = this.jdField_b_of_type_Int;; i = this.jdField_b_of_type_ArrayOfByte.length)
-        {
-          System.arraycopy(this.jdField_b_of_type_ArrayOfByte, 0, arrayOfByte, 0, i);
-          while (i < this.jdField_b_of_type_Int)
-          {
-            arrayOfByte[i] = 0;
-            i += 1;
-          }
-        }
+        arrayOfByte[i] = 0;
+        i += 1;
       }
+      localObject = arrayOfByte;
     }
+    paramByteBuffer.put((byte[])localObject, 0, this.jdField_a_of_type_Int);
+    paramByteBuffer.putShort((short)(this.jdField_b_of_type_Int & 0xFFFF));
+    localObject = this.jdField_b_of_type_ArrayOfByte;
+    j = localObject.length;
+    i = this.jdField_b_of_type_Int;
+    if (j != i)
+    {
+      arrayOfByte = new byte[i];
+      if (localObject.length <= i) {
+        i = localObject.length;
+      }
+      System.arraycopy(this.jdField_b_of_type_ArrayOfByte, 0, arrayOfByte, 0, i);
+      while (i < this.jdField_b_of_type_Int)
+      {
+        arrayOfByte[i] = 0;
+        i += 1;
+      }
+      localObject = arrayOfByte;
+    }
+    paramByteBuffer.put((byte[])localObject, 0, this.jdField_b_of_type_Int);
+    paramByteBuffer.putInt((int)(this.jdField_a_of_type_Long & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.jdField_b_of_type_Long & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.c & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.d & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.e & 0xFFFFFFFF));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopBarShortVideoUploadUtil.UploadReqBody
  * JD-Core Version:    0.7.0.1
  */

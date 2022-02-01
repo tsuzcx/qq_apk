@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class YTOpenBase$FaceItem
   extends MessageMicro<FaceItem>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 37, 45, 48, 56, 64, 72, 80, 88, 96, 104, 165, 173, 181, 189, 242, 320, 328, 336 }, new String[] { "face_id", "x", "y", "height", "width", "pitch", "roll", "yaw", "age", "gender", "glass", "expression", "beauty", "rel_leftx", "rel_width", "rel_lefty", "rel_height", "face_shape", "glasses", "mask", "hat" }, new Object[] { "", Integer.valueOf(0), Integer.valueOf(0), Float.valueOf(0.0F), Float.valueOf(0.0F), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false), Integer.valueOf(0), Integer.valueOf(0), Float.valueOf(0.0F), Float.valueOf(0.0F), Float.valueOf(0.0F), Float.valueOf(0.0F), null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, FaceItem.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field age = PBField.initInt32(0);
   public final PBInt32Field beauty = PBField.initInt32(0);
   public final PBInt32Field expression = PBField.initInt32(0);
@@ -33,10 +33,17 @@ public final class YTOpenBase$FaceItem
   public final PBInt32Field x = PBField.initInt32(0);
   public final PBInt32Field y = PBField.initInt32(0);
   public final PBInt32Field yaw = PBField.initInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    Float localFloat = Float.valueOf(0.0F);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 37, 45, 48, 56, 64, 72, 80, 88, 96, 104, 165, 173, 181, 189, 242, 320, 328, 336 }, new String[] { "face_id", "x", "y", "height", "width", "pitch", "roll", "yaw", "age", "gender", "glass", "expression", "beauty", "rel_leftx", "rel_width", "rel_lefty", "rel_height", "face_shape", "glasses", "mask", "hat" }, new Object[] { "", localInteger, localInteger, localFloat, localFloat, localInteger, localInteger, localInteger, localInteger, localInteger, Boolean.valueOf(false), localInteger, localInteger, localFloat, localFloat, localFloat, localFloat, null, localInteger, localInteger, localInteger }, FaceItem.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.YTOpenBase.FaceItem
  * JD-Core Version:    0.7.0.1
  */

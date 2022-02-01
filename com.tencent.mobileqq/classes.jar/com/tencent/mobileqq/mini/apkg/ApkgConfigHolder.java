@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.mini.apkg;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.utils.FileUtils;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qwallet.IQWalletApi;
 import com.tencent.mobileqq.qwallet.preload.PreloadStaticApi;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -31,7 +32,9 @@ public class ApkgConfigHolder
   private static String getConfigPath(AppRuntime paramAppRuntime)
   {
     StringBuilder localStringBuilder = new StringBuilder(paramAppRuntime.getApplication().getFilesDir().getPath());
-    localStringBuilder.append("/mini/").append(paramAppRuntime.getAccount()).append("/");
+    localStringBuilder.append("/mini/");
+    localStringBuilder.append(paramAppRuntime.getAccount());
+    localStringBuilder.append("/");
     localStringBuilder.append(".ApkgConfigs");
     return localStringBuilder.toString();
   }
@@ -41,29 +44,30 @@ public class ApkgConfigHolder
     String str = getConfigPath(paramQQAppInterface);
     try
     {
-      paramQQAppInterface = (ApkgConfigHolder)QWalletTools.a(str);
-      Object localObject = paramQQAppInterface;
-      if (paramQQAppInterface == null) {
-        localObject = new ApkgConfigHolder();
-      }
-      ((ApkgConfigHolder)localObject).mSavePath = str;
-      ((ApkgConfigHolder)localObject).mSaveLock = new byte[0];
-      if (((ApkgConfigHolder)localObject).mDebugApkgConfigs == null) {
-        ((ApkgConfigHolder)localObject).mDebugApkgConfigs = new HashMap();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ApkgConfigHolder", 2, "readApkgConfigHolder:" + localObject);
-      }
-      return localObject;
+      paramQQAppInterface = (ApkgConfigHolder)((IQWalletApi)QRoute.api(IQWalletApi.class)).readObject(str);
     }
     catch (Throwable paramQQAppInterface)
     {
-      for (;;)
-      {
-        paramQQAppInterface.printStackTrace();
-        paramQQAppInterface = null;
-      }
+      paramQQAppInterface.printStackTrace();
+      paramQQAppInterface = null;
     }
+    Object localObject = paramQQAppInterface;
+    if (paramQQAppInterface == null) {
+      localObject = new ApkgConfigHolder();
+    }
+    ((ApkgConfigHolder)localObject).mSavePath = str;
+    ((ApkgConfigHolder)localObject).mSaveLock = new byte[0];
+    if (((ApkgConfigHolder)localObject).mDebugApkgConfigs == null) {
+      ((ApkgConfigHolder)localObject).mDebugApkgConfigs = new HashMap();
+    }
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("readApkgConfigHolder:");
+      paramQQAppInterface.append(localObject);
+      QLog.d("ApkgConfigHolder", 2, paramQQAppInterface.toString());
+    }
+    return localObject;
   }
   
   public static void removeRes(MiniAppInfo paramMiniAppInfo)
@@ -122,7 +126,7 @@ public class ApkgConfigHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.ApkgConfigHolder
  * JD-Core Version:    0.7.0.1
  */

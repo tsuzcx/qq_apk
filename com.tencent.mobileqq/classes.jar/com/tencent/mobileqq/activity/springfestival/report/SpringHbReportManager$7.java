@@ -17,63 +17,78 @@ class SpringHbReportManager$7
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("shua2021report_SpringHbReportManager", 2, "[reportlistener] onReceive:type:" + paramInt + ",isSucc:" + paramBoolean + ",reqSeq:" + this.jdField_a_of_type_Long);
-    }
-    for (;;)
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      try
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[reportlistener] onReceive:type:");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(",isSucc:");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(",reqSeq:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      QLog.d("shua2021report_SpringHbReportManager", 2, ((StringBuilder)localObject).toString());
+    }
+    try
+    {
+      SpringHbReportManager.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalReportSpringHbReportManager, this.jdField_a_of_type_Long);
+      paramBundle = paramBundle.getByteArray("data");
+      if ((paramBundle != null) && (paramBoolean))
       {
-        SpringHbReportManager.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalReportSpringHbReportManager, this.jdField_a_of_type_Long);
-        Object localObject = paramBundle.getByteArray("data");
-        if ((localObject == null) || (!paramBoolean)) {
-          break;
-        }
-        paramBundle = new Unisso.UniSsoServerRsp();
-        paramBundle.mergeFrom((byte[])localObject);
-        long l = paramBundle.ret.get();
+        localObject = new Unisso.UniSsoServerRsp();
+        ((Unisso.UniSsoServerRsp)localObject).mergeFrom((byte[])paramBundle);
+        long l = ((Unisso.UniSsoServerRsp)localObject).ret.get();
         if (QLog.isColorLevel()) {
           QLog.d("shua2021report_SpringHbReportManager", 1, new Object[] { "[reportlistener] unissoRes=", Long.valueOf(l) });
         }
-        localObject = new newyear_report.NYReportRsp();
-        ((newyear_report.NYReportRsp)localObject).mergeFrom(paramBundle.rspdata.get().toByteArray());
-        paramInt = ((newyear_report.NYReportRsp)localObject).ret.get();
+        paramBundle = new newyear_report.NYReportRsp();
+        paramBundle.mergeFrom(((Unisso.UniSsoServerRsp)localObject).rspdata.get().toByteArray());
+        paramInt = paramBundle.ret.get();
         if (paramInt == 0)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("shua2021report_SpringHbReportManager", 2, "[reportlistener] onreceive success:" + localObject);
-          }
-          if (paramInt == 110002)
+          if (QLog.isColorLevel())
           {
-            SpringHbReportManager.b(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalReportSpringHbReportManager, true);
-            SpringHbReportManager.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalReportSpringHbReportManager, this.jdField_a_of_type_Long, paramInt);
-            paramInt = ((newyear_report.NYReportRsp)localObject).batchSize.get();
-            SpringHbReportManager.b(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalReportSpringHbReportManager, paramInt);
-            paramInt = ((newyear_report.NYReportRsp)localObject).reportLevel.get();
-            SpringHbReportManager.c(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalReportSpringHbReportManager, paramInt);
-            paramInt = ((newyear_report.NYReportRsp)localObject).reportLevelTime.get();
-            SpringHbReportManager.b(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalReportSpringHbReportManager, paramInt);
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("[reportlistener] onreceive success:");
+            ((StringBuilder)localObject).append(paramBundle);
+            QLog.d("shua2021report_SpringHbReportManager", 2, ((StringBuilder)localObject).toString());
           }
         }
         else
         {
-          QLog.e("shua2021report_SpringHbReportManager", 1, "[reportlistener] onreceive fail:" + localObject);
-          continue;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("[reportlistener] onreceive fail:");
+          ((StringBuilder)localObject).append(paramBundle);
+          QLog.e("shua2021report_SpringHbReportManager", 1, ((StringBuilder)localObject).toString());
         }
-        SpringHbReportManager.b(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalReportSpringHbReportManager, false);
-      }
-      catch (Throwable paramBundle)
-      {
-        paramBundle.printStackTrace();
-        QLog.e("shua2021report_SpringHbReportManager", 1, "[reportlistener] onreceive fail exception:" + paramBundle.getMessage());
+        if (paramInt == 110002) {
+          SpringHbReportManager.b(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalReportSpringHbReportManager, true);
+        } else {
+          SpringHbReportManager.b(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalReportSpringHbReportManager, false);
+        }
+        SpringHbReportManager.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalReportSpringHbReportManager, this.jdField_a_of_type_Long, paramInt);
+        paramInt = paramBundle.batchSize.get();
+        SpringHbReportManager.b(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalReportSpringHbReportManager, paramInt);
+        paramInt = paramBundle.reportLevel.get();
+        SpringHbReportManager.c(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalReportSpringHbReportManager, paramInt);
+        paramInt = paramBundle.reportLevelTime.get();
+        SpringHbReportManager.b(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalReportSpringHbReportManager, paramInt);
         return;
       }
+    }
+    catch (Throwable paramBundle)
+    {
+      paramBundle.printStackTrace();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[reportlistener] onreceive fail exception:");
+      ((StringBuilder)localObject).append(paramBundle.getMessage());
+      QLog.e("shua2021report_SpringHbReportManager", 1, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.report.SpringHbReportManager.7
  * JD-Core Version:    0.7.0.1
  */

@@ -6,11 +6,8 @@ import org.json.JSONObject;
 
 public class C2BUserInfo
 {
-  public final String a = "uid";
-  public final String b = "ukey";
-  public final String c = "^%QAI$I+j{2HuP0L";
-  public String d;
-  public String e;
+  public String a;
+  public String b;
   
   public static C2BUserInfo a(String paramString)
   {
@@ -23,25 +20,31 @@ public class C2BUserInfo
   
   private boolean a(String paramString)
   {
-    try
+    for (;;)
     {
-      paramString = Base64Util.decode(paramString, 0);
-      paramString = new JSONObject(new String(new Cryptor().decrypt(paramString, "^%QAI$I+j{2HuP0L".getBytes())));
-      if (paramString.has("uid")) {
-        this.d = paramString.getString("uid");
-      }
-      for (int i = 1; (i != 0) && (paramString.has("ukey")); i = 0)
+      try
       {
-        this.e = paramString.getString("ukey");
-        return true;
+        paramString = Base64Util.decode(paramString, 0);
+        paramString = new JSONObject(new String(new Cryptor().decrypt(paramString, "^%QAI$I+j{2HuP0L".getBytes())));
+        if (!paramString.has("uid")) {
+          break label93;
+        }
+        this.a = paramString.getString("uid");
+        i = 1;
+        if ((i != 0) && (paramString.has("ukey")))
+        {
+          this.b = paramString.getString("ukey");
+          return true;
+        }
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
       }
       return false;
+      label93:
+      int i = 0;
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return false;
   }
 }
 

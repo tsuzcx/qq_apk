@@ -23,14 +23,15 @@ public class QZoneLayoutInflateFactory
   private final boolean verifyClassLoader(Constructor<? extends View> paramConstructor)
   {
     ClassLoader localClassLoader2 = paramConstructor.getDeclaringClass().getClassLoader();
-    if (localClassLoader2 == BOOT_CLASS_LOADER) {}
+    if (localClassLoader2 == BOOT_CLASS_LOADER) {
+      return true;
+    }
+    paramConstructor = this.inflater.getContext().getClassLoader();
     ClassLoader localClassLoader1;
     do
     {
-      while (localClassLoader2 == paramConstructor)
-      {
+      if (localClassLoader2 == paramConstructor) {
         return true;
-        paramConstructor = this.inflater.getContext().getClassLoader();
       }
       localClassLoader1 = paramConstructor.getParent();
       paramConstructor = localClassLoader1;
@@ -45,7 +46,7 @@ public class QZoneLayoutInflateFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QZoneLayoutInflateFactory
  * JD-Core Version:    0.7.0.1
  */

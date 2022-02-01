@@ -6,7 +6,7 @@ public class AtomicRequestId
 {
   private static final int initValue = 100;
   private static final int maxValue = 65535;
-  private static AtomicRequestId reqId = null;
+  private static AtomicRequestId reqId;
   private static AtomicInteger reqIdentity = new AtomicInteger(100);
   
   public static AtomicRequestId getInstance()
@@ -40,7 +40,7 @@ public class AtomicRequestId
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.module.common.dns.AtomicRequestId
  * JD-Core Version:    0.7.0.1
  */

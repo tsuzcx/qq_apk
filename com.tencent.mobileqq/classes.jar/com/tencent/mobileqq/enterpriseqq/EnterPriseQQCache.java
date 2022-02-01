@@ -28,21 +28,18 @@ public class EnterPriseQQCache
   
   public long a(String paramString)
   {
-    long l2 = -1L;
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    long l1 = l2;
-    try
+    for (;;)
     {
-      if (!TextUtils.isEmpty(paramString))
+      synchronized (this.jdField_a_of_type_ArrayOfByte)
       {
-        l1 = l2;
-        if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-          l1 = ((Long)this.jdField_a_of_type_JavaUtilMap.get(paramString)).longValue();
+        if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)))
+        {
+          l = ((Long)this.jdField_a_of_type_JavaUtilMap.get(paramString)).longValue();
+          return l;
         }
       }
-      return l1;
+      long l = -1L;
     }
-    finally {}
   }
   
   public List<StructMsg.ButtonInfo> a(String paramString)
@@ -87,7 +84,7 @@ public class EnterPriseQQCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.enterpriseqq.EnterPriseQQCache
  * JD-Core Version:    0.7.0.1
  */

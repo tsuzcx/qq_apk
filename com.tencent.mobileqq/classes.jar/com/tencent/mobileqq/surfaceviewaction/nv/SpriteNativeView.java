@@ -30,7 +30,10 @@ public class SpriteNativeView
   public void a()
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    for (boolean bool = false; localIterator.hasNext(); bool = ((Node)localIterator.next()).c() | bool) {}
+    boolean bool = false;
+    while (localIterator.hasNext()) {
+      bool |= ((Node)localIterator.next()).c();
+    }
     if (bool) {
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 16L);
     }
@@ -80,7 +83,7 @@ public class SpriteNativeView
     this.jdField_a_of_type_JavaUtilArrayList.clear();
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     a();
@@ -93,7 +96,7 @@ public class SpriteNativeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView
  * JD-Core Version:    0.7.0.1
  */

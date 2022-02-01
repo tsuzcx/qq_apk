@@ -26,28 +26,47 @@ public class RelationVipHelper
   
   public static RelationVipHelper a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new RelationVipHelper();
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new RelationVipHelper();
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   public static String a(long paramLong1, int paramInt, long paramLong2, boolean paramBoolean)
   {
-    String str = MutualMarkConfProcessor.a().f + "/vas/";
-    if ((TextUtils.isEmpty(str)) || (paramInt == 0)) {
-      return str;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(MutualMarkConfProcessor.a().f);
+    ((StringBuilder)localObject).append("/vas/");
+    localObject = ((StringBuilder)localObject).toString();
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      if (paramInt == 0) {
+        return localObject;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramLong2);
+      localStringBuilder.append("_");
+      if (paramBoolean) {
+        localObject = "1";
+      } else {
+        localObject = "0";
+      }
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(".png");
+      return localStringBuilder.toString();
     }
-    StringBuilder localStringBuilder = new StringBuilder().append(str).append(paramInt).append("_").append(paramLong1).append("_").append(paramLong2).append("_");
-    if (paramBoolean) {}
-    for (str = "1";; str = "0") {
-      return str + ".png";
-    }
+    return localObject;
   }
   
   public static String a(String paramString)
@@ -61,31 +80,45 @@ public class RelationVipHelper
   
   public static String a(String paramString, int paramInt, boolean paramBoolean)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramInt == 0)) {}
-    int i;
-    do
+    if (!TextUtils.isEmpty(paramString))
     {
-      do
-      {
+      if (paramInt == 0) {
         return paramString;
-        i = paramString.lastIndexOf("/");
-        str = paramString.substring(0, i + 1);
-      } while (str.length() < 4);
-      localObject1 = str.substring(str.length() - 4, str.length() - 3);
-      localObject2 = str.substring(str.length() - 3, str.length() - 2);
-    } while ((((String)localObject1).equals(String.valueOf(paramInt))) && (((String)localObject2).equals("_")));
-    Object localObject1 = new StringBuilder();
-    Object localObject2 = ((StringBuilder)localObject1).append(str).append(paramInt).append("_");
-    if (paramBoolean) {}
-    for (String str = "1";; str = "0")
-    {
-      ((StringBuilder)localObject2).append(str).append(paramString.substring(i));
-      str = ((StringBuilder)localObject1).toString();
-      if (QLog.isColorLevel()) {
-        QLog.d("appendVasUrl", 2, "originUrl:" + paramString + " appendUrl:" + str);
       }
-      return str;
+      int i = paramString.lastIndexOf("/");
+      String str1 = paramString.substring(0, i + 1);
+      if (str1.length() < 4) {
+        return paramString;
+      }
+      Object localObject = str1.substring(str1.length() - 4, str1.length() - 3);
+      String str2 = str1.substring(str1.length() - 3, str1.length() - 2);
+      if ((((String)localObject).equals(String.valueOf(paramInt))) && (str2.equals("_"))) {
+        return paramString;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str1);
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("_");
+      if (paramBoolean) {
+        str1 = "1";
+      } else {
+        str1 = "0";
+      }
+      ((StringBuilder)localObject).append(str1);
+      ((StringBuilder)localObject).append(paramString.substring(i));
+      str1 = ((StringBuilder)localObject).toString();
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("originUrl:");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(" appendUrl:");
+        ((StringBuilder)localObject).append(str1);
+        QLog.d("appendVasUrl", 2, ((StringBuilder)localObject).toString());
+      }
+      return str1;
     }
+    return paramString;
   }
   
   public static void a(Resources paramResources, ImageView paramImageView, String paramString, Drawable paramDrawable)
@@ -93,7 +126,7 @@ public class RelationVipHelper
     paramString = VasApngUtil.getApngURLDrawable(paramString, VasApngUtil.VIP_APNG_TAGS, paramDrawable, null, new RelationVipHelper.1(paramResources, paramImageView));
     if (paramString != null)
     {
-      int i = AIOUtils.a(21.0F, paramResources);
+      int i = AIOUtils.b(21.0F, paramResources);
       int j = paramString.getIntrinsicWidth() * i / paramString.getIntrinsicHeight();
       paramResources = paramImageView.getLayoutParams();
       paramResources.height = i;
@@ -106,216 +139,222 @@ public class RelationVipHelper
   
   private void a(QQAppInterface paramQQAppInterface, String paramString, MutualMarkForDisplayInfo paramMutualMarkForDisplayInfo, RelationVipGrayBean paramRelationVipGrayBean)
   {
-    int i;
     if ((paramRelationVipGrayBean != null) && (!TextUtils.isEmpty(paramRelationVipGrayBean.jdField_b_of_type_JavaLangString)))
     {
-      i = VipUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramString, 0);
-      if ((paramMutualMarkForDisplayInfo.h <= 0L) || (paramMutualMarkForDisplayInfo.jdField_b_of_type_Long != 6L)) {
-        break label145;
-      }
-      if (!TextUtils.isEmpty(paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString)) {
-        break label137;
-      }
-      paramQQAppInterface = paramMutualMarkForDisplayInfo.c;
-    }
-    for (paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = a(paramQQAppInterface, i, true);; paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = a(5L, i, paramMutualMarkForDisplayInfo.jdField_b_of_type_Long, true)) {
-      label137:
-      label145:
-      do
+      int i = VipUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramString, 0);
+      if ((paramMutualMarkForDisplayInfo.h > 0L) && (paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 6L))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("RelationVipHelper", 2, "iconApngUrl:" + paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString + " sub_level:" + paramMutualMarkForDisplayInfo.h + " level:" + paramMutualMarkForDisplayInfo.jdField_b_of_type_Long);
+        if (TextUtils.isEmpty(paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString)) {
+          paramQQAppInterface = paramMutualMarkForDisplayInfo.c;
+        } else {
+          paramQQAppInterface = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString;
         }
-        return;
-        paramQQAppInterface = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString;
-        break;
-      } while ((i <= 0) || (paramMutualMarkForDisplayInfo.jdField_b_of_type_Long <= 0L));
+        paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = a(paramQQAppInterface, i, true);
+      }
+      else if ((i > 0) && (paramMutualMarkForDisplayInfo.jdField_b_of_type_Long > 0L))
+      {
+        paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = a(5L, i, paramMutualMarkForDisplayInfo.jdField_b_of_type_Long, true);
+      }
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("iconApngUrl:");
+        paramQQAppInterface.append(paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString);
+        paramQQAppInterface.append(" sub_level:");
+        paramQQAppInterface.append(paramMutualMarkForDisplayInfo.h);
+        paramQQAppInterface.append(" level:");
+        paramQQAppInterface.append(paramMutualMarkForDisplayInfo.jdField_b_of_type_Long);
+        QLog.d("RelationVipHelper", 2, paramQQAppInterface.toString());
+      }
     }
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString, MutualMarkForDisplayInfo paramMutualMarkForDisplayInfo)
   {
-    if ((paramQQAppInterface == null) || (paramMutualMarkForDisplayInfo == null) || (TextUtils.isEmpty(paramString))) {}
-    do
+    if ((paramQQAppInterface != null) && (paramMutualMarkForDisplayInfo != null) && (!TextUtils.isEmpty(paramString)))
     {
-      int i;
-      do
+      RelationVipGrayBean localRelationVipGrayBean = (RelationVipGrayBean)QConfigManager.a().a(490);
+      int i = (int)paramMutualMarkForDisplayInfo.a;
+      if (i != 1)
       {
-        RelationVipGrayBean localRelationVipGrayBean;
-        do
+        String str = "svip";
+        if (i != 2)
         {
-          do
+          if (i != 3)
           {
-            do
+            if (i != 5)
             {
-              do
+              if (i != 12) {
+                if (i != 26) {
+                  if (i != 19) {
+                    if (i == 20) {}
+                  }
+                }
+              }
+              for (;;)
               {
-                do
+                return;
+                if (paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 1L)
                 {
-                  do
+                  paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = "https://cmshow.qq.com/xydata/cmshow/devAct/7/24f5b4859404c4de52aa329d4d05ee5d.png";
+                }
+                else if (paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 2L)
+                {
+                  paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = "https://cmshow.qq.com/xydata/cmshow/devAct/7/16baf9bdf1b7a672001939b447e5f3c9.png";
+                }
+                else if (paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 3L)
+                {
+                  paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = "https://cmshow.qq.com/xydata/cmshow/devAct/7/c4e28479a1f47ff9e3104cf3e96c2430.png";
+                  continue;
+                  i = VipUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramString, 5);
+                  if ((i == 1) && (paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 1L))
                   {
-                    do
+                    paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("H5Url", "mentorship_svip_apng_url", "https://qzonestyle.gtimg.cn/aoi/sola/20191127150330_NTF6EEcVWV.png");
+                  }
+                  else if ((i == 2) && (paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 1L))
+                  {
+                    paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("H5Url", "mentorship_apng_url", "https://qzonestyle.gtimg.cn/aoi/sola/20191111173708_UYRdOtYOfJ.png");
+                  }
+                  else if ((i == 3) && (paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 1L))
+                  {
+                    paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("H5Url", "mentorship_yellowvip_apng_url", "https://qzonestyle.gtimg.cn/aoi/sola/20191127145904_DNAFqFLjOz.png");
+                  }
+                  else if ((i == 4) && (paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 1L))
+                  {
+                    paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("H5Url", "mentorship_newyear_apng_url", "https://qzonestyle.gtimg.cn/aoi/sola/20191127150330_evBQGhifVq.png");
+                    continue;
+                    if (localRelationVipGrayBean != null)
                     {
-                      do
+                      TextUtils.isEmpty(localRelationVipGrayBean.jdField_b_of_type_JavaLangString);
+                      continue;
+                      if ((localRelationVipGrayBean != null) && (!TextUtils.isEmpty(localRelationVipGrayBean.jdField_b_of_type_JavaLangString)))
                       {
-                        do
+                        i = VipUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramString, 1);
+                        if (paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 1L)
                         {
-                          do
-                          {
-                            do
-                            {
-                              return;
-                              localRelationVipGrayBean = (RelationVipGrayBean)QConfigManager.a().a(490);
-                              switch ((int)paramMutualMarkForDisplayInfo.a)
-                              {
-                              default: 
-                                return;
-                              }
-                            } while ((localRelationVipGrayBean == null) || (TextUtils.isEmpty(localRelationVipGrayBean.jdField_b_of_type_JavaLangString)));
-                            i = VipUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramString, 2);
-                            if ((paramMutualMarkForDisplayInfo.jdField_b_of_type_Long != 0L) || (i <= 0)) {
-                              break;
-                            }
-                            paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = localRelationVipGrayBean.jdField_b_of_type_JavaLangString.replace("{type}", "lover1");
-                            paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString.replace("{vip}", "vip");
-                            return;
-                            a(paramQQAppInterface, paramString, paramMutualMarkForDisplayInfo, localRelationVipGrayBean);
-                            return;
-                          } while ((localRelationVipGrayBean == null) || (TextUtils.isEmpty(localRelationVipGrayBean.jdField_b_of_type_JavaLangString)));
-                          i = VipUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramString, 1);
-                          if (paramMutualMarkForDisplayInfo.jdField_b_of_type_Long != 1L) {
-                            break;
-                          }
                           if (i == 2)
                           {
                             paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = localRelationVipGrayBean.jdField_b_of_type_JavaLangString.replace("{type}", "smallship");
                             paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString.replace("{vip}", "union_vip");
-                            return;
                           }
-                        } while (i != 1);
-                        paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = localRelationVipGrayBean.jdField_b_of_type_JavaLangString.replace("{type}", "smallship");
-                        paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString.replace("{vip}", "svip");
-                        return;
-                      } while (paramMutualMarkForDisplayInfo.jdField_b_of_type_Long != 2L);
-                      if (i == 2)
-                      {
-                        paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = localRelationVipGrayBean.jdField_b_of_type_JavaLangString.replace("{type}", "bigship");
-                        paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString.replace("{vip}", "union_vip");
-                        return;
+                          else if (i == 1)
+                          {
+                            paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = localRelationVipGrayBean.jdField_b_of_type_JavaLangString.replace("{type}", "smallship");
+                            paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString.replace("{vip}", "svip");
+                          }
+                        }
+                        else if (paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 2L) {
+                          if (i == 2)
+                          {
+                            paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = localRelationVipGrayBean.jdField_b_of_type_JavaLangString.replace("{type}", "bigship");
+                            paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString.replace("{vip}", "union_vip");
+                          }
+                          else if (i == 1)
+                          {
+                            paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = localRelationVipGrayBean.jdField_b_of_type_JavaLangString.replace("{type}", "bigship");
+                            paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString.replace("{vip}", "svip");
+                          }
+                        }
                       }
-                    } while (i != 1);
-                    paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = localRelationVipGrayBean.jdField_b_of_type_JavaLangString.replace("{type}", "bigship");
-                    paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString.replace("{vip}", "svip");
-                    return;
-                    if ((paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 1L) && (i > 0))
-                    {
-                      paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = localRelationVipGrayBean.jdField_b_of_type_JavaLangString.replace("{type}", "lover2");
-                      paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString.replace("{vip}", "vip");
-                      return;
                     }
-                  } while ((paramMutualMarkForDisplayInfo.jdField_b_of_type_Long != 2L) || (i <= 0));
-                  paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = localRelationVipGrayBean.jdField_b_of_type_JavaLangString.replace("{type}", "lover3");
-                  paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString.replace("{vip}", "vip");
-                  return;
-                } while ((localRelationVipGrayBean == null) || (TextUtils.isEmpty(localRelationVipGrayBean.jdField_b_of_type_JavaLangString)));
-                i = VipUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramString, 3);
-                if ((paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 0L) && (i > 0))
-                {
-                  paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = localRelationVipGrayBean.jdField_b_of_type_JavaLangString.replace("{type}", "sister1");
-                  paramString = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString;
-                  if (i == 1) {}
-                  for (paramQQAppInterface = "svip";; paramQQAppInterface = "union_vip")
-                  {
-                    paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = paramString.replace("{vip}", paramQQAppInterface);
-                    return;
                   }
                 }
-                if ((paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 1L) && (i > 0))
-                {
-                  paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = localRelationVipGrayBean.jdField_b_of_type_JavaLangString.replace("{type}", "sister2");
-                  paramString = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString;
-                  if (i == 1) {}
-                  for (paramQQAppInterface = "svip";; paramQQAppInterface = "union_vip")
-                  {
-                    paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = paramString.replace("{vip}", paramQQAppInterface);
-                    return;
-                  }
-                }
-              } while ((paramMutualMarkForDisplayInfo.jdField_b_of_type_Long != 2L) || (i <= 0));
-              paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = localRelationVipGrayBean.jdField_b_of_type_JavaLangString.replace("{type}", "sister3");
-              paramString = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString;
-              if (i == 1) {}
-              for (paramQQAppInterface = "svip";; paramQQAppInterface = "union_vip")
-              {
-                paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = paramString.replace("{vip}", paramQQAppInterface);
-                return;
               }
-            } while ((localRelationVipGrayBean == null) || (TextUtils.isEmpty(localRelationVipGrayBean.jdField_b_of_type_JavaLangString)));
+            }
+            a(paramQQAppInterface, paramString, paramMutualMarkForDisplayInfo, localRelationVipGrayBean);
             return;
-          } while ((localRelationVipGrayBean == null) || (TextUtils.isEmpty(localRelationVipGrayBean.jdField_b_of_type_JavaLangString)));
-          i = VipUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramString, 4);
-          if ((paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 0L) && (i > 0))
+          }
+          if ((localRelationVipGrayBean != null) && (!TextUtils.isEmpty(localRelationVipGrayBean.jdField_b_of_type_JavaLangString)))
           {
-            paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = localRelationVipGrayBean.jdField_b_of_type_JavaLangString.replace("{type}", "brother1");
-            paramString = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString;
-            if (i == 1) {}
-            for (paramQQAppInterface = "svip";; paramQQAppInterface = "union_vip")
+            i = VipUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramString, 4);
+            if ((paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 0L) && (i > 0))
             {
-              paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = paramString.replace("{vip}", paramQQAppInterface);
+              paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = localRelationVipGrayBean.jdField_b_of_type_JavaLangString.replace("{type}", "brother1");
+              paramQQAppInterface = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString;
+              if (i != 1) {
+                str = "union_vip";
+              }
+              paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = paramQQAppInterface.replace("{vip}", str);
               return;
             }
+            if ((paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 1L) && (i > 0))
+            {
+              paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = localRelationVipGrayBean.jdField_b_of_type_JavaLangString.replace("{type}", "brother2");
+              paramQQAppInterface = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString;
+              if (i != 1) {
+                str = "union_vip";
+              }
+              paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = paramQQAppInterface.replace("{vip}", str);
+              return;
+            }
+            if ((paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 2L) && (i > 0))
+            {
+              paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = localRelationVipGrayBean.jdField_b_of_type_JavaLangString.replace("{type}", "brother3");
+              paramQQAppInterface = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString;
+              if (i != 1) {
+                str = "union_vip";
+              }
+              paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = paramQQAppInterface.replace("{vip}", str);
+            }
+          }
+        }
+        else if ((localRelationVipGrayBean != null) && (!TextUtils.isEmpty(localRelationVipGrayBean.jdField_b_of_type_JavaLangString)))
+        {
+          i = VipUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramString, 3);
+          if ((paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 0L) && (i > 0))
+          {
+            paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = localRelationVipGrayBean.jdField_b_of_type_JavaLangString.replace("{type}", "sister1");
+            paramQQAppInterface = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString;
+            if (i != 1) {
+              str = "union_vip";
+            }
+            paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = paramQQAppInterface.replace("{vip}", str);
+            return;
           }
           if ((paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 1L) && (i > 0))
           {
-            paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = localRelationVipGrayBean.jdField_b_of_type_JavaLangString.replace("{type}", "brother2");
-            paramString = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString;
-            if (i == 1) {}
-            for (paramQQAppInterface = "svip";; paramQQAppInterface = "union_vip")
-            {
-              paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = paramString.replace("{vip}", paramQQAppInterface);
-              return;
+            paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = localRelationVipGrayBean.jdField_b_of_type_JavaLangString.replace("{type}", "sister2");
+            paramQQAppInterface = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString;
+            if (i != 1) {
+              str = "union_vip";
             }
+            paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = paramQQAppInterface.replace("{vip}", str);
+            return;
           }
-        } while ((paramMutualMarkForDisplayInfo.jdField_b_of_type_Long != 2L) || (i <= 0));
-        paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = localRelationVipGrayBean.jdField_b_of_type_JavaLangString.replace("{type}", "brother3");
-        paramString = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString;
-        if (i == 1) {}
-        for (paramQQAppInterface = "svip";; paramQQAppInterface = "union_vip")
+          if ((paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 2L) && (i > 0))
+          {
+            paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = localRelationVipGrayBean.jdField_b_of_type_JavaLangString.replace("{type}", "sister3");
+            paramQQAppInterface = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString;
+            if (i != 1) {
+              str = "union_vip";
+            }
+            paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = paramQQAppInterface.replace("{vip}", str);
+          }
+        }
+      }
+      else if ((localRelationVipGrayBean != null) && (!TextUtils.isEmpty(localRelationVipGrayBean.jdField_b_of_type_JavaLangString)))
+      {
+        i = VipUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramString, 2);
+        if ((paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 0L) && (i > 0))
         {
-          paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = paramString.replace("{vip}", paramQQAppInterface);
+          paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = localRelationVipGrayBean.jdField_b_of_type_JavaLangString.replace("{type}", "lover1");
+          paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString.replace("{vip}", "vip");
           return;
         }
-        i = VipUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramString, 5);
-        if ((i == 1) && (paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 1L))
+        if ((paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 1L) && (i > 0))
         {
-          paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("H5Url", "mentorship_svip_apng_url", "https://qzonestyle.gtimg.cn/aoi/sola/20191127150330_NTF6EEcVWV.png");
+          paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = localRelationVipGrayBean.jdField_b_of_type_JavaLangString.replace("{type}", "lover2");
+          paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString.replace("{vip}", "vip");
           return;
         }
-        if ((i == 2) && (paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 1L))
+        if ((paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 2L) && (i > 0))
         {
-          paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("H5Url", "mentorship_apng_url", "https://qzonestyle.gtimg.cn/aoi/sola/20191111173708_UYRdOtYOfJ.png");
-          return;
+          paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = localRelationVipGrayBean.jdField_b_of_type_JavaLangString.replace("{type}", "lover3");
+          paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString.replace("{vip}", "vip");
         }
-        if ((i == 3) && (paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 1L))
-        {
-          paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("H5Url", "mentorship_yellowvip_apng_url", "https://qzonestyle.gtimg.cn/aoi/sola/20191127145904_DNAFqFLjOz.png");
-          return;
-        }
-      } while ((i != 4) || (paramMutualMarkForDisplayInfo.jdField_b_of_type_Long != 1L));
-      paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("H5Url", "mentorship_newyear_apng_url", "https://qzonestyle.gtimg.cn/aoi/sola/20191127150330_evBQGhifVq.png");
+      }
       return;
-      if (paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 1L)
-      {
-        paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = "https://cmshow.qq.com/xydata/cmshow/devAct/7/24f5b4859404c4de52aa329d4d05ee5d.png";
-        return;
-      }
-      if (paramMutualMarkForDisplayInfo.jdField_b_of_type_Long == 2L)
-      {
-        paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = "https://cmshow.qq.com/xydata/cmshow/devAct/7/16baf9bdf1b7a672001939b447e5f3c9.png";
-        return;
-      }
-    } while (paramMutualMarkForDisplayInfo.jdField_b_of_type_Long != 3L);
-    paramMutualMarkForDisplayInfo.jdField_b_of_type_JavaLangString = "https://cmshow.qq.com/xydata/cmshow/devAct/7/c4e28479a1f47ff9e3104cf3e96c2430.png";
+    }
   }
   
   public boolean a()
@@ -326,7 +365,7 @@ public class RelationVipHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.alienation.RelationVipHelper
  * JD-Core Version:    0.7.0.1
  */

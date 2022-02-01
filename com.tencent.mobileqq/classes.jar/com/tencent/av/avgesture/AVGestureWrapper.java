@@ -33,11 +33,21 @@ public class AVGestureWrapper
   
   public AVGestureWrapper(Context paramContext)
   {
-    int i = 0;
+    int i;
     if (paramContext != null) {
       i = ((ActivityManager)paramContext.getSystemService("activity")).getDeviceConfigurationInfo().reqGlEsVersion;
+    } else {
+      i = 0;
     }
-    setDeviceInfo("" + Build.VERSION.SDK_INT, Build.MANUFACTURER + ":" + Build.MODEL, i);
+    paramContext = new StringBuilder();
+    paramContext.append("");
+    paramContext.append(Build.VERSION.SDK_INT);
+    paramContext = paramContext.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Build.MANUFACTURER);
+    localStringBuilder.append(":");
+    localStringBuilder.append(Build.MODEL);
+    setDeviceInfo(paramContext, localStringBuilder.toString(), i);
   }
   
   public static native void clearCache();
@@ -76,123 +86,123 @@ public class AVGestureWrapper
   private static String readFile(String paramString)
   {
     // Byte code:
-    //   0: new 137	java/io/BufferedReader
-    //   3: dup
-    //   4: new 139	java/io/InputStreamReader
-    //   7: dup
-    //   8: new 141	java/io/FileInputStream
+    //   0: ldc 76
+    //   2: astore_3
+    //   3: aconst_null
+    //   4: astore 5
+    //   6: aconst_null
+    //   7: astore_1
+    //   8: new 137	java/io/BufferedReader
     //   11: dup
-    //   12: aload_0
-    //   13: invokespecial 144	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   16: ldc 146
-    //   18: invokespecial 149	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
-    //   21: invokespecial 152	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   24: astore_2
-    //   25: ldc 76
-    //   27: astore_1
-    //   28: aload_2
-    //   29: astore_0
-    //   30: aload_2
-    //   31: invokevirtual 155	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   34: astore_3
-    //   35: aload_3
-    //   36: ifnull +29 -> 65
-    //   39: aload_2
-    //   40: astore_0
-    //   41: new 73	java/lang/StringBuilder
-    //   44: dup
-    //   45: invokespecial 74	java/lang/StringBuilder:<init>	()V
-    //   48: aload_1
-    //   49: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12: new 139	java/io/InputStreamReader
+    //   15: dup
+    //   16: new 141	java/io/FileInputStream
+    //   19: dup
+    //   20: aload_0
+    //   21: invokespecial 144	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   24: ldc 146
+    //   26: invokespecial 149	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   29: invokespecial 152	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   32: astore_2
+    //   33: aload_3
+    //   34: astore_0
+    //   35: aload_2
+    //   36: invokevirtual 155	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   39: astore_1
+    //   40: aload_1
+    //   41: ifnull +33 -> 74
+    //   44: new 73	java/lang/StringBuilder
+    //   47: dup
+    //   48: invokespecial 74	java/lang/StringBuilder:<init>	()V
+    //   51: astore_3
     //   52: aload_3
-    //   53: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   56: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   59: astore_3
-    //   60: aload_3
-    //   61: astore_1
-    //   62: goto -34 -> 28
-    //   65: aload_2
-    //   66: astore_0
-    //   67: aload_2
-    //   68: invokevirtual 158	java/io/BufferedReader:close	()V
-    //   71: aload_1
-    //   72: astore_0
-    //   73: aload_2
-    //   74: ifnull +9 -> 83
-    //   77: aload_2
-    //   78: invokevirtual 158	java/io/BufferedReader:close	()V
-    //   81: aload_1
-    //   82: astore_0
-    //   83: aload_0
-    //   84: areturn
-    //   85: astore_0
-    //   86: aload_0
-    //   87: invokevirtual 161	java/io/IOException:printStackTrace	()V
-    //   90: aload_1
-    //   91: areturn
-    //   92: astore_3
-    //   93: aconst_null
-    //   94: astore_2
-    //   95: ldc 76
-    //   97: astore_1
-    //   98: aload_2
-    //   99: astore_0
-    //   100: aload_3
-    //   101: invokevirtual 161	java/io/IOException:printStackTrace	()V
-    //   104: aload_1
-    //   105: astore_0
-    //   106: aload_2
-    //   107: ifnull -24 -> 83
-    //   110: aload_2
-    //   111: invokevirtual 158	java/io/BufferedReader:close	()V
-    //   114: aload_1
-    //   115: areturn
-    //   116: astore_0
-    //   117: aload_0
-    //   118: invokevirtual 161	java/io/IOException:printStackTrace	()V
-    //   121: aload_1
-    //   122: areturn
-    //   123: astore_1
-    //   124: aconst_null
-    //   125: astore_0
+    //   53: aload_0
+    //   54: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   57: pop
+    //   58: aload_3
+    //   59: aload_1
+    //   60: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   63: pop
+    //   64: aload_3
+    //   65: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   68: astore_1
+    //   69: aload_1
+    //   70: astore_0
+    //   71: goto -36 -> 35
+    //   74: aload_2
+    //   75: invokevirtual 158	java/io/BufferedReader:close	()V
+    //   78: aload_0
+    //   79: astore_1
+    //   80: aload_2
+    //   81: invokevirtual 158	java/io/BufferedReader:close	()V
+    //   84: aload_0
+    //   85: areturn
+    //   86: astore_0
+    //   87: aload_0
+    //   88: invokevirtual 161	java/io/IOException:printStackTrace	()V
+    //   91: aload_1
+    //   92: areturn
+    //   93: astore_0
+    //   94: aload_2
+    //   95: astore_1
+    //   96: goto +38 -> 134
+    //   99: astore 4
+    //   101: goto +14 -> 115
+    //   104: astore_0
+    //   105: goto +29 -> 134
+    //   108: astore 4
+    //   110: aload 5
+    //   112: astore_2
+    //   113: aload_3
+    //   114: astore_0
+    //   115: aload_2
+    //   116: astore_1
+    //   117: aload 4
+    //   119: invokevirtual 161	java/io/IOException:printStackTrace	()V
+    //   122: aload_2
+    //   123: ifnull +9 -> 132
     //   126: aload_0
-    //   127: ifnull +7 -> 134
-    //   130: aload_0
-    //   131: invokevirtual 158	java/io/BufferedReader:close	()V
+    //   127: astore_1
+    //   128: aload_2
+    //   129: invokevirtual 158	java/io/BufferedReader:close	()V
+    //   132: aload_0
+    //   133: areturn
     //   134: aload_1
-    //   135: athrow
-    //   136: astore_0
-    //   137: aload_0
-    //   138: invokevirtual 161	java/io/IOException:printStackTrace	()V
-    //   141: goto -7 -> 134
-    //   144: astore_1
-    //   145: goto -19 -> 126
-    //   148: astore_3
-    //   149: goto -51 -> 98
+    //   135: ifnull +15 -> 150
+    //   138: aload_1
+    //   139: invokevirtual 158	java/io/BufferedReader:close	()V
+    //   142: goto +8 -> 150
+    //   145: astore_1
+    //   146: aload_1
+    //   147: invokevirtual 161	java/io/IOException:printStackTrace	()V
+    //   150: goto +5 -> 155
+    //   153: aload_0
+    //   154: athrow
+    //   155: goto -2 -> 153
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	152	0	paramString	String
-    //   27	95	1	localObject1	Object
-    //   123	12	1	localObject2	Object
-    //   144	1	1	localObject3	Object
-    //   24	87	2	localBufferedReader	java.io.BufferedReader
-    //   34	27	3	str	String
-    //   92	9	3	localIOException1	java.io.IOException
-    //   148	1	3	localIOException2	java.io.IOException
+    //   0	158	0	paramString	String
+    //   7	132	1	localObject1	Object
+    //   145	2	1	localIOException1	java.io.IOException
+    //   32	97	2	localObject2	Object
+    //   2	112	3	localObject3	Object
+    //   99	1	4	localIOException2	java.io.IOException
+    //   108	10	4	localIOException3	java.io.IOException
+    //   4	107	5	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   77	81	85	java/io/IOException
-    //   0	25	92	java/io/IOException
-    //   110	114	116	java/io/IOException
-    //   0	25	123	finally
-    //   130	134	136	java/io/IOException
-    //   30	35	144	finally
-    //   41	60	144	finally
-    //   67	71	144	finally
-    //   100	104	144	finally
-    //   30	35	148	java/io/IOException
-    //   41	60	148	java/io/IOException
-    //   67	71	148	java/io/IOException
+    //   80	84	86	java/io/IOException
+    //   128	132	86	java/io/IOException
+    //   35	40	93	finally
+    //   44	69	93	finally
+    //   74	78	93	finally
+    //   35	40	99	java/io/IOException
+    //   44	69	99	java/io/IOException
+    //   74	78	99	java/io/IOException
+    //   8	33	104	finally
+    //   117	122	104	finally
+    //   8	33	108	java/io/IOException
+    //   138	142	145	java/io/IOException
   }
   
   public static void setAVGestureReport(AVGestureWrapper.AVUploadReport paramAVUploadReport)
@@ -219,7 +229,10 @@ public class AVGestureWrapper
   public static boolean setGlobalConfigFile(String paramString)
   {
     mFilePath = paramString;
-    paramString = readFile(paramString + "/global.config");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("/global.config");
+    paramString = readFile(((StringBuilder)localObject).toString());
     try
     {
       paramString = new JSONObject(paramString);
@@ -228,11 +241,11 @@ public class AVGestureWrapper
       }
       if (paramString.has("fcnThresHold"))
       {
-        JSONArray localJSONArray = paramString.getJSONArray("fcnThresHold");
+        localObject = paramString.getJSONArray("fcnThresHold");
         int i = 0;
-        while (i < localJSONArray.length())
+        while (i < ((JSONArray)localObject).length())
         {
-          setFcnThresHold(i, (float)localJSONArray.getDouble(i));
+          setFcnThresHold(i, (float)((JSONArray)localObject).getDouble(i));
           i += 1;
         }
       }
@@ -274,9 +287,10 @@ public class AVGestureWrapper
   
   public void destroyRecognizor()
   {
-    if (this.mGestureRecognizor != 0L)
+    long l = this.mGestureRecognizor;
+    if (l != 0L)
     {
-      destroyRecognizor(this.mGestureRecognizor);
+      destroyRecognizor(l);
       this.mGestureRecognizor = 0L;
     }
   }
@@ -316,12 +330,7 @@ public class AVGestureWrapper
   public RectF getHotRegionInOriginImg()
   {
     float[] arrayOfFloat = getHotRegionInOriginImg(this.mGestureRecognizor);
-    float f1 = arrayOfFloat[0];
-    float f2 = arrayOfFloat[1];
-    float f3 = arrayOfFloat[0];
-    float f4 = arrayOfFloat[2];
-    float f5 = arrayOfFloat[1];
-    return new RectF(f1, f2, f3 + f4, arrayOfFloat[3] + f5);
+    return new RectF(arrayOfFloat[0], arrayOfFloat[1], arrayOfFloat[0] + arrayOfFloat[2], arrayOfFloat[1] + arrayOfFloat[3]);
   }
   
   public PointF getKeyPointByName(String paramString)
@@ -348,7 +357,7 @@ public class AVGestureWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.avgesture.AVGestureWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -39,15 +39,16 @@ public final class BatchGetSimilarGroupidReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.infos != null) {
-      paramJceOutputStream.write(this.infos, 1);
+    Map localMap = this.infos;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 1);
     }
     paramJceOutputStream.write(this.is_need_new_groupids, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.BatchGetSimilarGroupidReq
  * JD-Core Version:    0.7.0.1
  */

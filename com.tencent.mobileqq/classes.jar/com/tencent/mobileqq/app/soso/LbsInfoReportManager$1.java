@@ -5,6 +5,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.data.LbsReportInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.qphone.base.util.QLog;
@@ -17,61 +18,70 @@ class LbsInfoReportManager$1
   
   public void run()
   {
-    LbsReportInfo localLbsReportInfo = new LbsReportInfo();
-    localLbsReportInfo.operTime = NetConnInfoCenter.getServerTime();
-    localLbsReportInfo.lat = this.jdField_a_of_type_Double;
-    localLbsReportInfo.lng = this.jdField_b_of_type_Double;
-    localLbsReportInfo.alt = this.jdField_c_of_type_Double;
-    localLbsReportInfo.accuracy = this.jdField_a_of_type_Float;
-    localLbsReportInfo.businessTag = this.jdField_a_of_type_JavaLangString;
-    localLbsReportInfo.nation = this.jdField_b_of_type_JavaLangString;
-    localLbsReportInfo.province = this.jdField_c_of_type_JavaLangString;
-    localLbsReportInfo.city = this.d;
-    localLbsReportInfo.district = this.e;
-    localLbsReportInfo.createContent();
-    LbsInfoReportManager.a(this.this$0).add(localLbsReportInfo);
+    Object localObject = new LbsReportInfo();
+    ((LbsReportInfo)localObject).operTime = NetConnInfoCenter.getServerTime();
+    ((LbsReportInfo)localObject).lat = this.jdField_a_of_type_Double;
+    ((LbsReportInfo)localObject).lng = this.jdField_b_of_type_Double;
+    ((LbsReportInfo)localObject).alt = this.jdField_c_of_type_Double;
+    ((LbsReportInfo)localObject).accuracy = this.jdField_a_of_type_Float;
+    ((LbsReportInfo)localObject).businessTag = this.jdField_a_of_type_JavaLangString;
+    ((LbsReportInfo)localObject).nation = this.jdField_b_of_type_JavaLangString;
+    ((LbsReportInfo)localObject).province = this.jdField_c_of_type_JavaLangString;
+    ((LbsReportInfo)localObject).city = this.d;
+    ((LbsReportInfo)localObject).district = this.e;
+    ((LbsReportInfo)localObject).createContent();
+    LbsInfoReportManager.a(this.this$0).add(localObject);
     LbsInfoReportManager.a(this.this$0, this.jdField_a_of_type_Double);
     LbsInfoReportManager.b(this.this$0, this.jdField_b_of_type_Double);
     LbsInfoReportManager.a(this.this$0, SystemClock.elapsedRealtime());
-    if (QLog.isColorLevel()) {
-      QLog.i("LBSReport", 2, "onReceiveLbsInfo cache size : " + LbsInfoReportManager.a(this.this$0).size() + " lastReportTime: " + LbsInfoReportManager.a(this.this$0) + " currentTime: " + NetConnInfoCenter.getServerTime());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReceiveLbsInfo cache size : ");
+      localStringBuilder.append(LbsInfoReportManager.a(this.this$0).size());
+      localStringBuilder.append(" lastReportTime: ");
+      localStringBuilder.append(LbsInfoReportManager.a(this.this$0));
+      localStringBuilder.append(" currentTime: ");
+      localStringBuilder.append(NetConnInfoCenter.getServerTime());
+      QLog.i("LBSReport", 2, localStringBuilder.toString());
     }
     int i;
-    if ((LbsInfoReportManager.a(this.this$0).mAutomator != null) && (!LbsInfoReportManager.a(this.this$0).mAutomator.b()))
-    {
+    if ((LbsInfoReportManager.a(this.this$0).mAutomator != null) && (!LbsInfoReportManager.a(this.this$0).mAutomator.b())) {
       i = 1;
-      if (i != 0) {
-        break label245;
+    } else {
+      i = 0;
+    }
+    if (i == 0) {
+      return;
+    }
+    if (!LbsInfoReportManager.a(this.this$0)) {
+      LbsInfoReportManager.a(this.this$0);
+    }
+    if ((LbsInfoReportManager.a(this.this$0).size() < 20) && (NetConnInfoCenter.getServerTime() - LbsInfoReportManager.a(this.this$0) < 1200L))
+    {
+      LbsInfoReportManager.a(this.this$0).getEntityManagerFactory().createEntityManager().persist((Entity)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("LBSReport", 2, "update db");
       }
     }
-    label245:
-    do
+    else
     {
-      return;
-      i = 0;
-      break;
-      if (!LbsInfoReportManager.a(this.this$0)) {
-        LbsInfoReportManager.a(this.this$0);
-      }
-      if ((LbsInfoReportManager.a(this.this$0).size() >= 20) || (NetConnInfoCenter.getServerTime() - LbsInfoReportManager.a(this.this$0) >= 1200L))
+      localObject = this.this$0;
+      ((LbsInfoReportManager)localObject).a(LbsInfoReportManager.a((LbsInfoReportManager)localObject), 0);
+      if (!LbsInfoReportManager.b(this.this$0))
       {
-        this.this$0.a(LbsInfoReportManager.a(this.this$0), 0);
-        if (!LbsInfoReportManager.b(this.this$0)) {
-          this.this$0.a(LbsInfoReportManager.a(this.this$0, LbsInfoReportManager.a(this.this$0)), LbsReportInfo.convert2StrList(LbsInfoReportManager.a(this.this$0)), LbsInfoReportManager.a(this.this$0), 0);
-        }
-        LbsInfoReportManager.a(this.this$0).clear();
-        LbsInfoReportManager.a(this.this$0).getEntityManagerFactory().createEntityManager().delete(LbsReportInfo.class.getSimpleName(), null, null);
-        LbsInfoReportManager.b(this.this$0, NetConnInfoCenter.getServerTime());
-        return;
+        localObject = this.this$0;
+        ((LbsInfoReportManager)localObject).a(LbsInfoReportManager.a((LbsInfoReportManager)localObject, LbsInfoReportManager.a((LbsInfoReportManager)localObject)), LbsReportInfo.convert2StrList(LbsInfoReportManager.a(this.this$0)), LbsInfoReportManager.a(this.this$0), 0);
       }
-      LbsInfoReportManager.a(this.this$0).getEntityManagerFactory().createEntityManager().persist(localLbsReportInfo);
-    } while (!QLog.isColorLevel());
-    QLog.d("LBSReport", 2, "update db");
+      LbsInfoReportManager.a(this.this$0).clear();
+      LbsInfoReportManager.a(this.this$0).getEntityManagerFactory().createEntityManager().delete(LbsReportInfo.class.getSimpleName(), null, null);
+      LbsInfoReportManager.b(this.this$0, NetConnInfoCenter.getServerTime());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.soso.LbsInfoReportManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/NativeAd/report/bean/ControlReportObj;", "Lcom/tencent/biz/pubaccount/NativeAd/report/IReportObj;", "()V", "debug", "", "noforwardAMS", "", "Ljava/lang/Integer;", "ticket", "getKey", "parseAdReportData", "", "adReportData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;", "toJsonObject", "Lorg/json/JSONObject;", "valid", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/NativeAd/report/bean/ControlReportObj;", "Lcom/tencent/biz/pubaccount/NativeAd/report/IReportObj;", "()V", "debug", "", "noforwardAMS", "", "Ljava/lang/Integer;", "ticket", "getKey", "parseAdReportData", "", "adReportData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;", "toJsonObject", "Lorg/json/JSONObject;", "valid", "", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class ControlReportObj
   extends IReportObj
 {
@@ -40,20 +40,22 @@ public final class ControlReportObj
     Intrinsics.checkParameterIsNotNull(paramAdReportData, "adReportData");
     this.jdField_a_of_type_JavaLangString = AdReportUtil.b(paramAdReportData);
     ReportAction localReportAction = AdReportUtil.a(paramAdReportData);
-    if ((localReportAction == ReportAction.VIDEO_SEE_TIME) || (localReportAction == ReportAction.NFB)) {}
-    for (Integer localInteger = Integer.valueOf(0);; localInteger = Integer.valueOf(1))
-    {
+    Object localObject = ReportAction.VIDEO_SEE_TIME;
+    Integer localInteger = Integer.valueOf(0);
+    if ((localReportAction != localObject) && (localReportAction != ReportAction.NFB)) {
+      localObject = Integer.valueOf(1);
+    } else {
+      localObject = localInteger;
+    }
+    this.jdField_a_of_type_JavaLangInteger = ((Integer)localObject);
+    if (paramAdReportData.b() == 28) {
       this.jdField_a_of_type_JavaLangInteger = localInteger;
-      if (paramAdReportData.b() == 28) {
-        this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(0);
-      }
-      if (((localReportAction == ReportAction.CLICK) || (localReportAction == ReportAction.EXPOSE)) && ((paramAdReportData.b() == 31) || (paramAdReportData.b() == 32))) {
-        this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(0);
-      }
-      if ((localReportAction == ReportAction.CLICK) && ((paramAdReportData.b() == 27) || (paramAdReportData.b() == 29))) {
-        this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(0);
-      }
-      return;
+    }
+    if (((localReportAction == ReportAction.CLICK) || (localReportAction == ReportAction.EXPOSE)) && ((paramAdReportData.b() == 31) || (paramAdReportData.b() == 32))) {
+      this.jdField_a_of_type_JavaLangInteger = localInteger;
+    }
+    if ((localReportAction == ReportAction.CLICK) && ((paramAdReportData.b() == 27) || (paramAdReportData.b() == 29))) {
+      this.jdField_a_of_type_JavaLangInteger = localInteger;
     }
   }
   
@@ -64,7 +66,7 @@ public final class ControlReportObj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.report.bean.ControlReportObj
  * JD-Core Version:    0.7.0.1
  */

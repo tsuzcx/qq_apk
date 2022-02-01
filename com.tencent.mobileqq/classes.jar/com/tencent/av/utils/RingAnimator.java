@@ -38,16 +38,18 @@ public class RingAnimator
   
   public void b()
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    if (localImageView != null) {
+      localImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    if (localImageView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      localImageView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
     }
   }
@@ -64,9 +66,10 @@ public class RingAnimator
   {
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(10);
-    if ((this.jdField_b_of_type_AndroidWidgetImageView != null) && (this.jdField_c_of_type_AndroidWidgetImageView != null))
+    ImageView localImageView = this.jdField_b_of_type_AndroidWidgetImageView;
+    if ((localImageView != null) && (this.jdField_c_of_type_AndroidWidgetImageView != null))
     {
-      this.jdField_b_of_type_AndroidWidgetImageView.clearAnimation();
+      localImageView.clearAnimation();
       this.jdField_c_of_type_AndroidWidgetImageView.clearAnimation();
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
       this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -75,7 +78,7 @@ public class RingAnimator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.RingAnimator
  * JD-Core Version:    0.7.0.1
  */

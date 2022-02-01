@@ -88,8 +88,9 @@ public class PTFilter$PTBeautyBodyFilter
   
   public void setLongLegStrength(float paramFloat)
   {
-    if (this.mBeautyBodyFilter != null) {
-      this.mBeautyBodyFilter.setStrength("LONG_LEG", paramFloat);
+    BeautyBodyFilter localBeautyBodyFilter = this.mBeautyBodyFilter;
+    if (localBeautyBodyFilter != null) {
+      localBeautyBodyFilter.setStrength("LONG_LEG", paramFloat);
     }
   }
   
@@ -100,8 +101,9 @@ public class PTFilter$PTBeautyBodyFilter
   
   public void setSlimWaistStrength(float paramFloat)
   {
-    if (this.mBeautyBodyFilter != null) {
-      this.mBeautyBodyFilter.setStrength("SLIM_WAIST", paramFloat);
+    BeautyBodyFilter localBeautyBodyFilter = this.mBeautyBodyFilter;
+    if (localBeautyBodyFilter != null) {
+      localBeautyBodyFilter.setStrength("SLIM_WAIST", paramFloat);
     }
   }
   
@@ -112,8 +114,9 @@ public class PTFilter$PTBeautyBodyFilter
   
   public void setThinBodyStrength(float paramFloat)
   {
-    if (this.mBeautyBodyFilter != null) {
-      this.mBeautyBodyFilter.setStrength("THIN_BODY", paramFloat);
+    BeautyBodyFilter localBeautyBodyFilter = this.mBeautyBodyFilter;
+    if (localBeautyBodyFilter != null) {
+      localBeautyBodyFilter.setStrength("THIN_BODY", paramFloat);
     }
   }
   
@@ -124,14 +127,15 @@ public class PTFilter$PTBeautyBodyFilter
   
   public void setThinShoulderStrength(float paramFloat)
   {
-    if (this.mBeautyBodyFilter != null) {
-      this.mBeautyBodyFilter.setStrength("THIN_SHOULDER", paramFloat);
+    BeautyBodyFilter localBeautyBodyFilter = this.mBeautyBodyFilter;
+    if (localBeautyBodyFilter != null) {
+      localBeautyBodyFilter.setStrength("THIN_SHOULDER", paramFloat);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.PTFilter.PTBeautyBodyFilter
  * JD-Core Version:    0.7.0.1
  */

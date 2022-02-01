@@ -91,15 +91,14 @@ public class b
   
   public void markUpdated()
   {
-    if (this.mNodeUpdated) {}
-    b localb;
-    do
-    {
+    if (this.mNodeUpdated) {
       return;
-      this.mNodeUpdated = true;
-      localb = getParent();
-    } while (localb == null);
-    localb.markUpdated();
+    }
+    this.mNodeUpdated = true;
+    b localb = getParent();
+    if (localb != null) {
+      localb.markUpdated();
+    }
   }
   
   public b removeChildAt(int paramInt)
@@ -151,18 +150,20 @@ public class b
   
   public boolean shouldUpdateLayout(float paramFloat1, float paramFloat2)
   {
-    if ((this.mLastX != paramFloat1) || (this.mLastY != paramFloat2) || (this.mLastWidth != getLayoutWidth()) || (this.mLastHeight != getLayoutHeight())) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (bool)
-      {
-        this.mLastX = paramFloat1;
-        this.mLastY = paramFloat2;
-        this.mLastWidth = getLayoutWidth();
-        this.mLastHeight = getLayoutHeight();
-      }
-      return bool;
+    boolean bool;
+    if ((this.mLastX == paramFloat1) && (this.mLastY == paramFloat2) && (this.mLastWidth == getLayoutWidth()) && (this.mLastHeight == getLayoutHeight())) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    if (bool)
+    {
+      this.mLastX = paramFloat1;
+      this.mLastY = paramFloat2;
+      this.mLastWidth = getLayoutWidth();
+      this.mLastHeight = getLayoutHeight();
+    }
+    return bool;
   }
   
   public String toString()
@@ -172,19 +173,26 @@ public class b
     return localStringBuilder.toString();
   }
   
-  public void toStringWithIndentation(StringBuilder paramStringBuilder, int paramInt)
+  protected void toStringWithIndentation(StringBuilder paramStringBuilder, int paramInt)
   {
+    StringBuilder localStringBuilder1 = new StringBuilder();
     int j = 0;
-    StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
     while (i < paramInt)
     {
-      localStringBuilder.append("__");
+      localStringBuilder1.append("__");
       i += 1;
     }
-    paramStringBuilder.append(localStringBuilder.toString());
-    paramStringBuilder.append("id:" + getId());
-    paramStringBuilder.append(" className:" + getViewClass() + " ");
+    paramStringBuilder.append(localStringBuilder1.toString());
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("id:");
+    localStringBuilder2.append(getId());
+    paramStringBuilder.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" className:");
+    localStringBuilder2.append(getViewClass());
+    localStringBuilder2.append(" ");
+    paramStringBuilder.append(localStringBuilder2.toString());
     paramStringBuilder.append(resultToString());
     if (getChildCount() == 0) {
       return;
@@ -197,14 +205,17 @@ public class b
       paramStringBuilder.append("\n");
       i += 1;
     }
-    paramStringBuilder.append(localStringBuilder + "]");
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(localStringBuilder1);
+    localStringBuilder2.append("]");
+    paramStringBuilder.append(localStringBuilder2.toString());
   }
   
   public void updateProps(HippyMap paramHippyMap) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.node.b
  * JD-Core Version:    0.7.0.1
  */

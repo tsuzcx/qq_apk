@@ -42,8 +42,9 @@ public final class SSummaryCardLikeIt
     paramJceOutputStream.write(this.cmd, 0);
     paramJceOutputStream.write(this.uin, 1);
     paramJceOutputStream.write(this.likeuin, 2);
-    if (this.version != null) {
-      paramJceOutputStream.write(this.version, 3);
+    String str = this.version;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.platform, 4);
     paramJceOutputStream.write(this.label, 5);

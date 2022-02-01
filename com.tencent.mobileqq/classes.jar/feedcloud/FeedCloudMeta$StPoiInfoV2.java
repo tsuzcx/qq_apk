@@ -9,13 +9,15 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class FeedCloudMeta$StPoiInfoV2
   extends MessageMicro<StPoiInfoV2>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 48, 58, 64, 72, 82, 90, 98, 106, 112, 120, 130, 138, 146 }, new String[] { "poiId", "name", "poiType", "typeName", "address", "districtCode", "gps", "distance", "hotValue", "phone", "country", "province", "city", "poiNum", "poiOrderType", "defaultName", "district", "dianPingId" }, new Object[] { "", "", Integer.valueOf(0), "", "", Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), "", "", "", "", Integer.valueOf(0), Integer.valueOf(0), "", "", "" }, StPoiInfoV2.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField address = PBField.initString("");
   public final PBStringField city = PBField.initString("");
   public final PBStringField country = PBField.initString("");
   public final PBStringField defaultName = PBField.initString("");
   public final PBStringField dianPingId = PBField.initString("");
+  public final PBStringField displayName = PBField.initString("");
   public final PBInt32Field distance = PBField.initInt32(0);
+  public final PBStringField distanceText = PBField.initString("");
   public final PBStringField district = PBField.initString("");
   public final PBInt32Field districtCode = PBField.initInt32(0);
   public FeedCloudMeta.StGPSV2 gps = new FeedCloudMeta.StGPSV2();
@@ -28,10 +30,16 @@ public final class FeedCloudMeta$StPoiInfoV2
   public final PBInt32Field poiType = PBField.initInt32(0);
   public final PBStringField province = PBField.initString("");
   public final PBStringField typeName = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 48, 58, 64, 72, 82, 90, 98, 106, 112, 120, 130, 138, 146, 154, 162 }, new String[] { "poiId", "name", "poiType", "typeName", "address", "districtCode", "gps", "distance", "hotValue", "phone", "country", "province", "city", "poiNum", "poiOrderType", "defaultName", "district", "dianPingId", "distanceText", "displayName" }, new Object[] { "", "", localInteger, "", "", localInteger, null, localInteger, localInteger, "", "", "", "", localInteger, localInteger, "", "", "", "", "" }, StPoiInfoV2.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     feedcloud.FeedCloudMeta.StPoiInfoV2
  * JD-Core Version:    0.7.0.1
  */

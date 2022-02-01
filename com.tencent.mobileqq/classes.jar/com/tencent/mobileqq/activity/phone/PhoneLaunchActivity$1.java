@@ -11,9 +11,9 @@ class PhoneLaunchActivity$1
   
   public void run()
   {
-    if (!NetworkUtil.d(this.this$0))
+    if (!NetworkUtil.isNetSupport(this.this$0))
     {
-      this.this$0.a(2131694510);
+      this.this$0.showToast(2131694475);
       PhoneLaunchActivity.a(this.this$0).setEnabled(true);
       return;
     }
@@ -23,12 +23,12 @@ class PhoneLaunchActivity$1
       this.this$0.app.registObserver(this.this$0.a);
     }
     this.this$0.app.execute(new PhoneLaunchActivity.1.2(this));
-    this.this$0.a(2131719050, 1000L, true);
+    this.this$0.showProgressDialog(2131718766, 1000L, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.PhoneLaunchActivity.1
  * JD-Core Version:    0.7.0.1
  */

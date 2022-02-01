@@ -84,24 +84,18 @@ public class TimePickerView
     Field[] arrayOfField = NumberPicker.class.getDeclaredFields();
     int j = arrayOfField.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      Field localField;
-      if (i < j)
+      Field localField = arrayOfField[i];
+      if (localField.getName().equals("mSelectionDivider"))
       {
-        localField = arrayOfField[i];
-        if (localField.getName().equals("mSelectionDivider")) {
-          localField.setAccessible(true);
-        }
-      }
-      else
-      {
+        localField.setAccessible(true);
         try
         {
           localField.set(paramNumberPicker, new ColorDrawable(ColorUtils.parseColor("#3CB371")));
           return;
         }
-        catch (IllegalArgumentException paramNumberPicker)
+        catch (IllegalAccessException paramNumberPicker)
         {
           paramNumberPicker.printStackTrace();
           return;
@@ -111,7 +105,7 @@ public class TimePickerView
           paramNumberPicker.printStackTrace();
           return;
         }
-        catch (IllegalAccessException paramNumberPicker)
+        catch (IllegalArgumentException paramNumberPicker)
         {
           paramNumberPicker.printStackTrace();
           return;
@@ -143,43 +137,50 @@ public class TimePickerView
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.mOnConfirmListener != null) {
-      this.mOnConfirmListener.onTimeCancel();
+    paramDialogInterface = this.mOnConfirmListener;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.onTimeCancel();
     }
   }
   
   public void onClick(View paramView)
   {
+    Object localObject1;
     if (paramView.getId() == R.id.tv_cancel)
     {
-      if (this.mOnConfirmListener != null) {
-        this.mOnConfirmListener.onTimeCancel();
+      localObject1 = this.mOnConfirmListener;
+      if (localObject1 != null) {
+        ((TimePickerView.OnConfirmListener)localObject1).onTimeCancel();
       }
       dismissDlg();
     }
-    for (;;)
+    else if (paramView.getId() == R.id.tv_confirm)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (paramView.getId() == R.id.tv_confirm)
+      if (this.mOnConfirmListener != null)
       {
-        if (this.mOnConfirmListener != null)
+        Object localObject2 = String.valueOf(this.hour);
+        localObject1 = localObject2;
+        if (this.hour < 10)
         {
-          Object localObject2 = String.valueOf(this.hour);
-          Object localObject1 = localObject2;
-          if (this.hour < 10) {
-            localObject1 = "0" + (String)localObject2;
-          }
-          String str = String.valueOf(this.minute);
-          localObject2 = str;
-          if (this.minute < 10) {
-            localObject2 = "0" + str;
-          }
-          this.mOnConfirmListener.onTimeConfirm((String)localObject1, (String)localObject2);
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("0");
+          ((StringBuilder)localObject1).append((String)localObject2);
+          localObject1 = ((StringBuilder)localObject1).toString();
         }
-        dismissDlg();
+        String str = String.valueOf(this.minute);
+        localObject2 = str;
+        if (this.minute < 10)
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("0");
+          ((StringBuilder)localObject2).append(str);
+          localObject2 = ((StringBuilder)localObject2).toString();
+        }
+        this.mOnConfirmListener.onTimeConfirm((String)localObject1, (String)localObject2);
       }
+      dismissDlg();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void setHourMaxValue(int paramInt)
@@ -209,7 +210,7 @@ public class TimePickerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.TimePickerView
  * JD-Core Version:    0.7.0.1
  */

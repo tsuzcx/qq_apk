@@ -1,8 +1,8 @@
 package com.tencent.av.share;
 
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 
@@ -13,14 +13,21 @@ class AVSchema$5
   
   public void run()
   {
-    QLog.w(this.this$0.jdField_a_of_type_JavaLangString, 1, "handleResult_I_Known, msg[" + this.this$0.isResumed() + "], seq[" + this.a + "]");
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {}
+    String str = AVSchema.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleResult_I_Known, msg[");
+    localStringBuilder.append(this.this$0.isResumed());
+    localStringBuilder.append("], seq[");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("]");
+    QLog.w(str, 1, localStringBuilder.toString());
+    if (this.this$0.a != null) {}
     try
     {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-      this.this$0.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.getWindow().getDecorView().requestLayout();
-      this.this$0.getActivity().getWindow().getDecorView().requestLayout();
-      this.this$0.getActivity().getWindow().getDecorView().invalidate();
+      this.this$0.a.show();
+      this.this$0.a.getWindow().getDecorView().requestLayout();
+      this.this$0.getBaseActivity().getWindow().getDecorView().requestLayout();
+      this.this$0.getBaseActivity().getWindow().getDecorView().invalidate();
       return;
     }
     catch (Exception localException) {}
@@ -28,7 +35,7 @@ class AVSchema$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.share.AVSchema.5
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import android.text.TextUtils;
 import com.tencent.biz.common.util.NetworkUtil;
 import com.tencent.mobileqq.pic.UpCallBack;
 import com.tencent.mobileqq.pic.UpCallBack.SendResult;
+import com.tencent.mobileqq.transfile.report.ProcessorReport;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -37,7 +38,7 @@ public class ForwardSdkShareProcessor$SendMsgByServerStep
       QLog.w("Q.share.ForwardSdkShareProcessor", 1, "SendMsgByServerStep|no network");
       if ((ForwardSdkShareProcessor.access$000(this.this$0) > 0) || (!ForwardSdkShareProcessor.access$1000(this.this$0).get()) || (!this.this$0.mIsAllUrlShort.get()) || (this.this$0.mAppInfo.status != 1))
       {
-        this.this$0.setError(9004, "no network");
+        this.this$0.mProcessorReport.setError(9004, "no network", null, null);
         doError();
         return;
       }
@@ -62,7 +63,7 @@ public class ForwardSdkShareProcessor$SendMsgByServerStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ForwardSdkShareProcessor.SendMsgByServerStep
  * JD-Core Version:    0.7.0.1
  */

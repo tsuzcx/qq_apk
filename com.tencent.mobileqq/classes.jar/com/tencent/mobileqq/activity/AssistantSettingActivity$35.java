@@ -18,30 +18,24 @@ class AssistantSettingActivity$35
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    boolean bool = false;
-    if (!NetworkUtil.d(BaseApplication.getContext()))
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      AssistantSettingActivity.a(this.a, 2131692257, 1);
+      AssistantSettingActivity.a(this.a, 2131692183, 1);
       this.a.f.setOnCheckedChangeListener(null);
-      FormSwitchItem localFormSwitchItem = this.a.f;
-      if (!paramCompoundButton.isChecked()) {
-        bool = true;
-      }
-      localFormSwitchItem.setChecked(bool);
+      this.a.f.setChecked(paramCompoundButton.isChecked() ^ true);
       this.a.f.setOnCheckedChangeListener(this);
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
       ((C2CShortcutBarManager)this.a.app.getManager(QQManagerFactory.C2C_SHORTCUT_BAR_MANAGER)).a(paramBoolean);
       ReportController.b(this.a.app, "dc00898", "", "", "0X800B333", "0X800B333", 0, 0, "", "", "", "");
     }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssistantSettingActivity.35
  * JD-Core Version:    0.7.0.1
  */

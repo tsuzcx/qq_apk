@@ -15,14 +15,14 @@ public class P2VEditMusicDialog$MusicPlayTask
     {
       P2VEditMusicDialog localP2VEditMusicDialog = this.this$0;
       localP2VEditMusicDialog.b += 1;
-      if (QLog.isColorLevel()) {}
+      QLog.isColorLevel();
       this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog.MusicPlayTask
  * JD-Core Version:    0.7.0.1
  */

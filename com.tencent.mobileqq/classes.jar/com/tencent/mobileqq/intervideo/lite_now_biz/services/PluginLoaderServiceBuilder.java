@@ -10,9 +10,9 @@ import java.io.File;
 import mqq.app.AppRuntime;
 
 public class PluginLoaderServiceBuilder
-  implements BaseServiceBuilder
+  implements BaseServiceBuilder, IPluginLoaderServiceBuilder
 {
-  public IPluginLoaderService a(ServiceAccessor paramServiceAccessor)
+  public IPluginLoaderService build(ServiceAccessor paramServiceAccessor)
   {
     PluginLoaderService localPluginLoaderService = new PluginLoaderService();
     localPluginLoaderService.a(new PluginLoaderServiceAdapter(paramServiceAccessor, BaseApplicationImpl.getApplication().getRuntime().getApplicationContext().getFilesDir().getAbsolutePath()));
@@ -21,7 +21,7 @@ public class PluginLoaderServiceBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.services.PluginLoaderServiceBuilder
  * JD-Core Version:    0.7.0.1
  */

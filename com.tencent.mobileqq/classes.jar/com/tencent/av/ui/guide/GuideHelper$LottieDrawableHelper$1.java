@@ -17,11 +17,15 @@ class GuideHelper$LottieDrawableHelper$1
   
   public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    int i = AIOUtils.a(130.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int j = AIOUtils.a(120.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int i = AIOUtils.b(130.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int j = AIOUtils.b(120.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     if (paramLottieComposition == null)
     {
-      QLog.w("GuideHelper", 1, "onCompositionLoaded, fail, seq[" + this.jdField_a_of_type_Long + "]");
+      paramLottieComposition = new StringBuilder();
+      paramLottieComposition.append("onCompositionLoaded, fail, seq[");
+      paramLottieComposition.append(this.jdField_a_of_type_Long);
+      paramLottieComposition.append("]");
+      QLog.w("GuideHelper", 1, paramLottieComposition.toString());
       return;
     }
     Object localObject = paramLottieComposition.getBounds();
@@ -37,7 +41,7 @@ class GuideHelper$LottieDrawableHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.guide.GuideHelper.LottieDrawableHelper.1
  * JD-Core Version:    0.7.0.1
  */

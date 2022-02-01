@@ -23,55 +23,62 @@ public class HomeworkDpcCfg
   
   public static HomeworkDpcCfg a()
   {
-    if (jdField_a_of_type_CooperationTroop_homeworkHomeworkDpcCfg == null) {}
-    try
-    {
-      if (jdField_a_of_type_CooperationTroop_homeworkHomeworkDpcCfg == null) {
-        jdField_a_of_type_CooperationTroop_homeworkHomeworkDpcCfg = new HomeworkDpcCfg();
+    if (jdField_a_of_type_CooperationTroop_homeworkHomeworkDpcCfg == null) {
+      try
+      {
+        if (jdField_a_of_type_CooperationTroop_homeworkHomeworkDpcCfg == null) {
+          jdField_a_of_type_CooperationTroop_homeworkHomeworkDpcCfg = new HomeworkDpcCfg();
+        }
       }
-      return jdField_a_of_type_CooperationTroop_homeworkHomeworkDpcCfg;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_CooperationTroop_homeworkHomeworkDpcCfg;
   }
   
   public void a()
   {
     String str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValueWithoutAccountManager(jdField_a_of_type_JavaLangString);
-    String[] arrayOfString;
     if (!TextUtils.isEmpty(str))
     {
-      arrayOfString = str.split("\\|");
-      if (arrayOfString.length < 1) {}
-    }
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[0]).intValue();
-        if (QLog.isColorLevel()) {
-          QLog.d("HomeworkDpcCfg", 2, String.format("loadConfig, mUseNewApiLevel: %s, dpc=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), str }));
+      String[] arrayOfString = str.split("\\|");
+      if (arrayOfString.length >= 1) {
+        try
+        {
+          this.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[0]).intValue();
         }
-        return;
+        catch (Exception localException)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("loadConfig exception :");
+          localStringBuilder.append(localException.getMessage());
+          QLog.d("HomeworkDpcCfg", 1, localStringBuilder.toString());
+          this.jdField_a_of_type_Int = 22;
+        }
       }
-      catch (Exception localException)
-      {
-        QLog.d("HomeworkDpcCfg", 1, "loadConfig exception :" + localException.getMessage());
-        this.jdField_a_of_type_Int = 22;
-        continue;
-      }
+    }
+    else
+    {
       this.jdField_a_of_type_Int = 22;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("HomeworkDpcCfg", 2, String.format("loadConfig, mUseNewApiLevel: %s, dpc=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), str }));
     }
   }
   
   public boolean a()
   {
-    QLog.d("HomeworkDpcCfg", 1, String.format("hwUseNewAPI thisVer=%d cfgVer=%d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT), Integer.valueOf(this.jdField_a_of_type_Int) }));
-    return Build.VERSION.SDK_INT <= this.jdField_a_of_type_Int;
+    int i = Build.VERSION.SDK_INT;
+    boolean bool = false;
+    QLog.d("HomeworkDpcCfg", 1, String.format("hwUseNewAPI thisVer=%d cfgVer=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_Int) }));
+    if (Build.VERSION.SDK_INT <= this.jdField_a_of_type_Int) {
+      bool = true;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.troop_homework.HomeworkDpcCfg
  * JD-Core Version:    0.7.0.1
  */

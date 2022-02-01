@@ -10,18 +10,19 @@ final class MiniProgramLpReportDC04239$8
   
   public void run()
   {
-    if (this.val$jsonObject != null)
+    Object localObject = this.val$jsonObject;
+    if (localObject != null)
     {
-      String str1 = this.val$jsonObject.optString("actiontype");
-      String str2 = this.val$jsonObject.optString("sub_actiontype");
-      String str3 = this.val$jsonObject.optString("reserves_action");
-      MiniProgramLpReportDC04239.access$000(this.val$miniAppConfig, "1", null, str1, str2, str3);
+      localObject = ((JSONObject)localObject).optString("actiontype");
+      String str1 = this.val$jsonObject.optString("sub_actiontype");
+      String str2 = this.val$jsonObject.optString("reserves_action");
+      MiniProgramLpReportDC04239.access$000(this.val$miniAppConfig, "1", null, (String)localObject, str1, str2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239.8
  * JD-Core Version:    0.7.0.1
  */

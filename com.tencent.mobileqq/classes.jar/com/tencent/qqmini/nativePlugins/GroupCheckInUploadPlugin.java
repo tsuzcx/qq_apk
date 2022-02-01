@@ -25,125 +25,140 @@ public class GroupCheckInUploadPlugin
   @JsEvent({"checkin_uploadRes"})
   public void checkinUploadRes(RequestEvent paramRequestEvent)
   {
-    for (;;)
+    try
     {
-      int i;
-      try
-      {
-        this.a = paramRequestEvent;
-        JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams).optJSONObject("data");
-        QLog.d("GroupCheckInUploadPlugin", 1, "data: " + localJSONObject);
-        str1 = ((IMiniAppFileManager)this.mMiniAppContext.getManager(IMiniAppFileManager.class)).getAbsolutePath(localJSONObject.optString("filePath"));
-        if (localJSONObject.optInt("isVideo") != 1) {
-          break label274;
-        }
-        i = 1;
-        localBundle = new Bundle();
-        if (i == 0) {
-          continue;
-        }
-        String str2 = ((IMiniAppFileManager)this.mMiniAppContext.getManager(IMiniAppFileManager.class)).getAbsolutePath(localJSONObject.optString("cover"));
-        if (!FileUtils.a(str1)) {
-          break label273;
-        }
-        if (!FileUtils.a(str2)) {
-          return;
-        }
-        localBundle.putString("BUNDLE_NAME_FILEPATH", str1);
-        localBundle.putString("BUNDLE_NAME_COVER", str2);
-        localBundle.putLong("BUNDLE_NAME_VIDEOTIME", localJSONObject.optLong("videoDuration"));
-        if (i == 0) {
-          continue;
-        }
-        QIPCClientHelper.getInstance().callServer("Module_CheckInServer", "ACTION_UPLOAD_VIDEO", localBundle, this);
+      this.a = paramRequestEvent;
+      localObject1 = new JSONObject(paramRequestEvent.jsonParams).optJSONObject("data");
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("data: ");
+      ((StringBuilder)localObject2).append(localObject1);
+      QLog.d("GroupCheckInUploadPlugin", 1, ((StringBuilder)localObject2).toString());
+      localObject2 = ((IMiniAppFileManager)this.mMiniAppContext.getManager(IMiniAppFileManager.class)).getAbsolutePath(((JSONObject)localObject1).optString("filePath"));
+      if (((JSONObject)localObject1).optInt("isVideo") != 1) {
+        break label296;
       }
-      catch (JSONException localJSONException)
+      i = 1;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
       {
-        String str1;
+        Object localObject1;
+        Object localObject2;
         Bundle localBundle;
-        QLog.e("GroupCheckInUploadPlugin", 1, "checkinUploadRes(). Failed to parse jsonParams=" + paramRequestEvent.jsonParams);
+        String str;
+        label278:
         continue;
-        QIPCClientHelper.getInstance().callServer("Module_CheckInServer", "ACTION_UPLOAD_PIC", localBundle, this);
-        continue;
-      }
-      QLog.d("GroupCheckInUploadPlugin", 1, "checkin_uploadRes succeed");
-      paramRequestEvent.ok();
-      return;
-      if (FileUtils.a(str1))
-      {
-        localBundle.putString("BUNDLE_NAME_FILEPATH", str1);
-      }
-      else
-      {
-        label273:
-        return;
-        label274:
-        i = 0;
+        label296:
+        int i = 0;
       }
     }
+    localBundle = new Bundle();
+    if (i != 0)
+    {
+      str = ((IMiniAppFileManager)this.mMiniAppContext.getManager(IMiniAppFileManager.class)).getAbsolutePath(((JSONObject)localObject1).optString("cover"));
+      if (!FileUtils.fileExists((String)localObject2)) {
+        return;
+      }
+      if (!FileUtils.fileExists(str)) {
+        return;
+      }
+      localBundle.putString("BUNDLE_NAME_FILEPATH", (String)localObject2);
+      localBundle.putString("BUNDLE_NAME_COVER", str);
+      localBundle.putLong("BUNDLE_NAME_VIDEOTIME", ((JSONObject)localObject1).optLong("videoDuration"));
+    }
+    else
+    {
+      if (!FileUtils.fileExists((String)localObject2)) {
+        return;
+      }
+      localBundle.putString("BUNDLE_NAME_FILEPATH", (String)localObject2);
+    }
+    if (i != 0)
+    {
+      QIPCClientHelper.getInstance().callServer("Module_CheckInServer", "ACTION_UPLOAD_VIDEO", localBundle, this);
+    }
+    else
+    {
+      QIPCClientHelper.getInstance().callServer("Module_CheckInServer", "ACTION_UPLOAD_PIC", localBundle, this);
+      break label278;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("checkinUploadRes(). Failed to parse jsonParams=");
+      ((StringBuilder)localObject1).append(paramRequestEvent.jsonParams);
+      QLog.e("GroupCheckInUploadPlugin", 1, ((StringBuilder)localObject1).toString());
+    }
+    QLog.d("GroupCheckInUploadPlugin", 1, "checkin_uploadRes succeed");
+    paramRequestEvent.ok();
+    return;
   }
   
   public void onCallback(EIPCResult paramEIPCResult)
   {
     int i = paramEIPCResult.code;
-    Bundle localBundle = paramEIPCResult.data;
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupCheckInUploadPlugin", 2, "result = " + i + ", data = " + localBundle.toString());
+    Object localObject = paramEIPCResult.data;
+    if (QLog.isColorLevel())
+    {
+      paramEIPCResult = new StringBuilder();
+      paramEIPCResult.append("result = ");
+      paramEIPCResult.append(i);
+      paramEIPCResult.append(", data = ");
+      paramEIPCResult.append(((Bundle)localObject).toString());
+      QLog.d("GroupCheckInUploadPlugin", 2, paramEIPCResult.toString());
     }
     paramEIPCResult = new JSONObject();
     for (;;)
     {
       try
       {
-        int j = localBundle.getInt("isVideo");
-        int k = localBundle.getInt("result");
+        int j = ((Bundle)localObject).getInt("isVideo");
+        int k = ((Bundle)localObject).getInt("result");
         if (k != 1) {
-          break label275;
+          break label299;
         }
         i = 1;
         paramEIPCResult.put("isVideo", j);
         paramEIPCResult.put("result", k);
-        if (j != 1) {
-          continue;
+        if (j == 1)
+        {
+          if (i != 0)
+          {
+            paramEIPCResult.put("url", ((Bundle)localObject).getString("url"));
+            paramEIPCResult.put("vid", ((Bundle)localObject).getString("vid"));
+          }
+          else
+          {
+            paramEIPCResult.put("error", ((Bundle)localObject).getString("error"));
+          }
         }
-        if (i == 0) {
-          continue;
+        else if (i != 0) {
+          paramEIPCResult.put("url", ((Bundle)localObject).getString("url"));
+        } else {
+          paramEIPCResult.put("error", ((Bundle)localObject).getString("error"));
         }
-        paramEIPCResult.put("url", localBundle.getString("url"));
-        paramEIPCResult.put("vid", localBundle.getString("vid"));
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("onCallback json = ");
+          ((StringBuilder)localObject).append(paramEIPCResult.toString());
+          QLog.d("GroupCheckInUploadPlugin", 2, ((StringBuilder)localObject).toString());
+        }
+        if (this.a != null)
+        {
+          this.a.ok(paramEIPCResult);
+          return;
+        }
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
-        if (this.a == null) {
-          break label274;
+        RequestEvent localRequestEvent = this.a;
+        if (localRequestEvent != null) {
+          localRequestEvent.fail(paramEIPCResult, "");
         }
-        this.a.fail(paramEIPCResult, "");
-        return;
-        if (i == 0) {
-          continue;
-        }
-        paramEIPCResult.put("url", localException.getString("url"));
-        continue;
-        paramEIPCResult.put("error", localException.getString("error"));
-        continue;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupCheckInUploadPlugin", 2, "onCallback json = " + paramEIPCResult.toString());
-      }
-      if (this.a != null)
-      {
-        this.a.ok(paramEIPCResult);
-        return;
-        paramEIPCResult.put("error", localBundle.getString("error"));
-      }
-      else
-      {
-        label274:
-        return;
-        label275:
-        i = 0;
-      }
+      return;
+      label299:
+      i = 0;
     }
   }
   
@@ -154,7 +169,7 @@ public class GroupCheckInUploadPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.GroupCheckInUploadPlugin
  * JD-Core Version:    0.7.0.1
  */

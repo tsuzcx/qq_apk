@@ -9,17 +9,17 @@ class MessageNotificationSettingManager$1
 {
   MessageNotificationSettingManager$1(MessageNotificationSettingManager paramMessageNotificationSettingManager)
   {
-    put(Integer.valueOf(2131230765), HardCodeUtil.a(2131706654));
-    put(Integer.valueOf(2131230721), HardCodeUtil.a(2131706656));
-    put(Integer.valueOf(2131230762), HardCodeUtil.a(2131706651));
-    put(Integer.valueOf(2131230720), HardCodeUtil.a(2131706652));
-    put(Integer.valueOf(AppSetting.d), HardCodeUtil.a(2131706655));
-    put(Integer.valueOf(AppSetting.e), HardCodeUtil.a(2131706659));
+    put(Integer.valueOf(2131230769), HardCodeUtil.a(2131706676));
+    put(Integer.valueOf(2131230721), HardCodeUtil.a(2131706678));
+    put(Integer.valueOf(2131230766), HardCodeUtil.a(2131706673));
+    put(Integer.valueOf(2131230720), HardCodeUtil.a(2131706674));
+    put(Integer.valueOf(AppSetting.d), HardCodeUtil.a(2131706677));
+    put(Integer.valueOf(AppSetting.e), HardCodeUtil.a(2131706681));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.chat.MessageNotificationSettingManager.1
  * JD-Core Version:    0.7.0.1
  */

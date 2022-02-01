@@ -29,8 +29,9 @@ public class f
   {
     Util.jsonPut(paramJSONObject, "pi", this.p);
     Util.jsonPut(paramJSONObject, "rf", this.q);
-    if (this.a != null) {
-      paramJSONObject.put("du", this.a);
+    Long localLong = this.a;
+    if (localLong != null) {
+      paramJSONObject.put("du", localLong);
     }
     return true;
   }

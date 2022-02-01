@@ -77,16 +77,18 @@ public class CacheManager
   
   public static String getExternalCacheDir(Context paramContext, String paramString, boolean paramBoolean)
   {
-    String str = getExternalCacheDir(paramContext, paramBoolean);
-    if (str == null) {
-      paramContext = null;
+    paramContext = getExternalCacheDir(paramContext, paramBoolean);
+    if (paramContext == null) {
+      return null;
     }
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return paramContext;
-      paramContext = str;
-    } while (TextUtils.isEmpty(paramString));
-    paramContext = new File(str + File.separator + paramString);
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
+    paramContext = new File(localStringBuilder.toString());
     try
     {
       if (paramContext.isFile()) {
@@ -102,29 +104,34 @@ public class CacheManager
   
   private static String getExternalCacheDir(Context paramContext, boolean paramBoolean)
   {
-    if (!isExternalAvailable()) {}
-    for (;;)
-    {
+    if (!isExternalAvailable()) {
       return null;
-      if (!paramBoolean) {}
-      for (paramContext = CacheManager.InnerEnvironment.getExternalCacheDir(paramContext, false); paramContext != null; paramContext = CacheManager.InnerEnvironment.getExternalFilesDir(paramContext, "cache", false)) {
-        return paramContext.getAbsolutePath();
-      }
     }
+    if (!paramBoolean) {
+      paramContext = CacheManager.InnerEnvironment.getExternalCacheDir(paramContext, false);
+    } else {
+      paramContext = CacheManager.InnerEnvironment.getExternalFilesDir(paramContext, "cache", false);
+    }
+    if (paramContext == null) {
+      return null;
+    }
+    return paramContext.getAbsolutePath();
   }
   
   public static String getExternalCacheDirExt(Context paramContext, String paramString, boolean paramBoolean)
   {
-    String str = getExternalCacheDirExt(paramContext, paramBoolean);
-    if (str == null) {
-      paramContext = null;
+    paramContext = getExternalCacheDirExt(paramContext, paramBoolean);
+    if (paramContext == null) {
+      return null;
     }
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return paramContext;
-      paramContext = str;
-    } while (TextUtils.isEmpty(paramString));
-    paramContext = new File(str + File.separator + paramString);
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
+    paramContext = new File(localStringBuilder.toString());
     try
     {
       if (paramContext.isFile()) {
@@ -140,15 +147,18 @@ public class CacheManager
   
   private static String getExternalCacheDirExt(Context paramContext, boolean paramBoolean)
   {
-    if (!isExternalAvailable()) {}
-    for (;;)
-    {
+    if (!isExternalAvailable()) {
       return null;
-      if (!paramBoolean) {}
-      for (paramContext = CacheManager.InnerEnvironment.getExternalCacheDir(paramContext, true); paramContext != null; paramContext = CacheManager.InnerEnvironment.getExternalFilesDir(paramContext, "cache", true)) {
-        return paramContext.getAbsolutePath();
-      }
     }
+    if (!paramBoolean) {
+      paramContext = CacheManager.InnerEnvironment.getExternalCacheDir(paramContext, true);
+    } else {
+      paramContext = CacheManager.InnerEnvironment.getExternalFilesDir(paramContext, "cache", true);
+    }
+    if (paramContext == null) {
+      return null;
+    }
+    return paramContext.getAbsolutePath();
   }
   
   public static FileCacheService getFileCacheService(Context paramContext, String paramString, int paramInt1, int paramInt2)
@@ -158,22 +168,18 @@ public class CacheManager
   
   public static FileCacheService getFileCacheService(Context paramContext, String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (boolean bool = true;; bool = false)
+    AssertUtil.assertTrue(TextUtils.isEmpty(paramString) ^ true);
+    synchronized (sFileCacheService)
     {
-      AssertUtil.assertTrue(bool);
-      synchronized (sFileCacheService)
+      FileCacheService localFileCacheService2 = (FileCacheService)sFileCacheService.get(paramString);
+      FileCacheService localFileCacheService1 = localFileCacheService2;
+      if (localFileCacheService2 == null)
       {
-        FileCacheService localFileCacheService2 = (FileCacheService)sFileCacheService.get(paramString);
-        FileCacheService localFileCacheService1 = localFileCacheService2;
-        if (localFileCacheService2 == null)
-        {
-          localFileCacheService1 = new FileCacheService(paramContext, paramString, paramInt1, paramInt2, paramBoolean);
-          localFileCacheService1.setStorageHandler(sStorageHandler);
-          sFileCacheService.put(paramString, localFileCacheService1);
-        }
-        return localFileCacheService1;
+        localFileCacheService1 = new FileCacheService(paramContext, paramString, paramInt1, paramInt2, paramBoolean);
+        localFileCacheService1.setStorageHandler(sStorageHandler);
+        sFileCacheService.put(paramString, localFileCacheService1);
       }
+      return localFileCacheService1;
     }
   }
   
@@ -183,7 +189,11 @@ public class CacheManager
     if (TextUtils.isEmpty(paramString)) {
       return paramContext;
     }
-    paramContext = new File(paramContext + File.separator + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
+    paramContext = new File(localStringBuilder.toString());
     if (paramContext.isFile()) {
       FileUtils.delete(paramContext);
     }
@@ -198,27 +208,36 @@ public class CacheManager
     if (!paramBoolean) {
       return paramContext.getCacheDir().getAbsolutePath();
     }
-    return paramContext.getFilesDir().getAbsolutePath() + File.separator + "cache";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getFilesDir().getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("cache");
+    return localStringBuilder.toString();
   }
   
   public static FileCacheService getTmpFileCacheService(Context paramContext)
   {
-    String str2 = "tmp";
-    String str3 = Utils.getCurrentProcessName(paramContext);
-    String str1 = str2;
-    if (str3 != null)
+    String str2 = Utils.getCurrentProcessName(paramContext);
+    String str1 = "tmp";
+    Object localObject = str1;
+    if (str2 != null)
     {
-      str1 = str2;
-      if (str3.contains(":"))
+      localObject = str1;
+      if (str2.contains(":"))
       {
-        int i = str3.lastIndexOf(":");
-        str1 = str2;
-        if (i > 0) {
-          str1 = "tmp" + "_" + str3.substring(i + 1);
+        int i = str2.lastIndexOf(":");
+        localObject = str1;
+        if (i > 0)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("tmp");
+          ((StringBuilder)localObject).append("_");
+          ((StringBuilder)localObject).append(str2.substring(i + 1));
+          localObject = ((StringBuilder)localObject).toString();
         }
       }
     }
-    return getFileCacheService(paramContext, str1, 500, 200);
+    return getFileCacheService(paramContext, (String)localObject, 500, 200);
   }
   
   public static FileCacheService getTmpFileCacheService(Context paramContext, String paramString)
@@ -245,7 +264,7 @@ public class CacheManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.module.cache.CacheManager
  * JD-Core Version:    0.7.0.1
  */

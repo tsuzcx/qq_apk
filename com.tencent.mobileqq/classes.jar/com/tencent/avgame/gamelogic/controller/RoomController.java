@@ -5,15 +5,14 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.avgame.app.AVGameAppInterface;
 import com.tencent.avgame.business.handler.HandlerFactory;
 import com.tencent.avgame.business.handler.UserInfoHandler;
 import com.tencent.avgame.business.observer.UserInfoObserver;
 import com.tencent.avgame.gamelogic.DelayNotifyRunnable;
 import com.tencent.avgame.gamelogic.DelayNotifyRunnable.IOnDelayNotifyDoneListener;
-import com.tencent.avgame.gamelogic.GameEngine;
 import com.tencent.avgame.gamelogic.GameUtil;
 import com.tencent.avgame.gamelogic.IGame;
+import com.tencent.avgame.gamelogic.IGameEngine;
 import com.tencent.avgame.gamelogic.data.EngineData;
 import com.tencent.avgame.gamelogic.data.Game;
 import com.tencent.avgame.gamelogic.data.GameItem;
@@ -28,10 +27,11 @@ import com.tencent.avgame.gamelogic.listener.GameRoomStatusListener;
 import com.tencent.avgame.gamelogic.listener.IDataCtrl;
 import com.tencent.avgame.gamelogic.listener.SyncListener;
 import com.tencent.avgame.gamelogic.observer.GameRoomObserver;
-import com.tencent.avgame.gameroom.festivalreport.CJSurvivalFestivalReporter;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.avgame.report.CJSurvivalReporterUtil;
+import com.tencent.avgame.report.exception.AVGameExceptionReporter;
+import com.tencent.avgame.util.ContactUtils;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -39,32 +39,34 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class RoomController
   extends GameRoomObserver
   implements Handler.Callback, DelayNotifyRunnable.IOnDelayNotifyDoneListener
 {
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private AVGameAppInterface jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface;
   private UserInfoObserver jdField_a_of_type_ComTencentAvgameBusinessObserverUserInfoObserver = new RoomController.1(this);
   private ISurvivalRoomController jdField_a_of_type_ComTencentAvgameGamelogicControllerISurvivalRoomController;
   private GameRoomHandler jdField_a_of_type_ComTencentAvgameGamelogicHandlerGameRoomHandler;
   private GameRoomStatusListener jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener;
   private IDataCtrl<EngineData> jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl;
   private SyncListener jdField_a_of_type_ComTencentAvgameGamelogicListenerSyncListener;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   List<DelayNotifyRunnable> jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean = false;
   private Handler b = null;
   
-  public RoomController(AVGameAppInterface paramAVGameAppInterface, GameRoomStatusListener paramGameRoomStatusListener, SyncListener paramSyncListener, IDataCtrl<EngineData> paramIDataCtrl)
+  public RoomController(AppInterface paramAppInterface, GameRoomStatusListener paramGameRoomStatusListener, SyncListener paramSyncListener, IDataCtrl<EngineData> paramIDataCtrl)
   {
-    this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface = paramAVGameAppInterface;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
     this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener = paramGameRoomStatusListener;
     this.jdField_a_of_type_ComTencentAvgameGamelogicListenerSyncListener = paramSyncListener;
     this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl = paramIDataCtrl;
-    this.jdField_a_of_type_ComTencentAvgameGamelogicHandlerGameRoomHandler = ((GameRoomHandler)paramAVGameAppInterface.getBusinessHandler(HandlerFactory.a));
-    this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.addObserver(this, false);
-    this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.addObserver(this.jdField_a_of_type_ComTencentAvgameBusinessObserverUserInfoObserver, false);
+    this.jdField_a_of_type_ComTencentAvgameGamelogicHandlerGameRoomHandler = ((GameRoomHandler)paramAppInterface.getBusinessHandler(HandlerFactory.a));
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this, false);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentAvgameBusinessObserverUserInfoObserver, false);
     this.jdField_a_of_type_ComTencentAvgameGamelogicControllerISurvivalRoomController = new SurvivalRoomController(this);
   }
   
@@ -73,7 +75,7 @@ public class RoomController
     if (QLog.isColorLevel()) {
       QLog.i("avgame_logic.GameRoomController", 2, String.format("updateNicks when roomInfo update %s", new Object[] { paramEngineData.a() }));
     }
-    paramEngineData.a(((UserInfoHandler)this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getBusinessHandler(HandlerFactory.b)).a(paramEngineData.a().getUins()));
+    paramEngineData.a(((UserInfoHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(HandlerFactory.b)).a(paramEngineData.a().getUins()));
   }
   
   private void a(HashMap<String, String> paramHashMap)
@@ -110,19 +112,18 @@ public class RoomController
   private boolean a(long paramLong, String paramString)
   {
     EngineData localEngineData = (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a();
-    if ((paramLong == 0L) || (paramLong != localEngineData.a()))
-    {
-      QLog.d("avgame_logic.GameRoomController", 1, String.format("%s bValidSession=false [svrRId,locRId]=[%d,%d]", new Object[] { paramString, Long.valueOf(paramLong), Long.valueOf(localEngineData.a()) }));
-      return false;
+    if ((paramLong != 0L) && (paramLong == localEngineData.a())) {
+      return true;
     }
-    return true;
+    QLog.d("avgame_logic.GameRoomController", 1, String.format("%s bValidSession=false [svrRId,locRId]=[%d,%d]", new Object[] { paramString, Long.valueOf(paramLong), Long.valueOf(localEngineData.a()) }));
+    return false;
   }
   
   private boolean a(String paramString, RoomInfo paramRoomInfo)
   {
-    if (paramRoomInfo.getPlayer(this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getAccount()) == null)
+    if (paramRoomInfo.getPlayer(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount()) == null)
     {
-      this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(6, BaseApplicationImpl.getApplication().getString(2131690407), (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
+      this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(6, MobileQQ.sMobileQQ.getString(2131690331), (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
       return false;
     }
     paramRoomInfo = (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a();
@@ -138,48 +139,44 @@ public class RoomController
   {
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    if (this.b != null) {
-      this.b.removeCallbacksAndMessages(null);
+    Handler localHandler = this.b;
+    if (localHandler != null) {
+      localHandler.removeCallbacksAndMessages(null);
     }
   }
   
   public void a(int paramInt, Object paramObject)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject;
-    int i;
     if (paramInt == 0)
     {
-      localObject = (Object[])paramObject;
+      Object localObject = (Object[])paramObject;
       paramObject = (String)localObject[0];
-      i = ((Integer)localObject[1]).intValue();
+      int i = ((Integer)localObject[1]).intValue();
       localObject = (String)localObject[2];
-      if (1 != i) {
-        break label147;
-      }
-      paramObject = String.format(BaseApplicationImpl.getApplication().getString(2131690401), new Object[] { ContactUtils.a(paramObject, 8.0F) });
-    }
-    for (;;)
-    {
-      localStringBuilder.append(paramObject);
-      this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.b(paramObject, (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
-      if (QLog.isColorLevel()) {
-        QLog.i("avgame_logic.GameRoomController", 2, String.format("onDelayNotifyDone nt=%d result=%s", new Object[] { Integer.valueOf(paramInt), localStringBuilder.toString() }));
-      }
-      return;
-      label147:
-      if (2 == i) {
-        paramObject = String.format(BaseApplicationImpl.getApplication().getString(2131690402), new Object[] { ContactUtils.a(paramObject, 5.0F), ContactUtils.a((String)localObject, 5.0F) });
+      if (1 == i) {
+        paramObject = String.format(MobileQQ.sMobileQQ.getString(2131690325), new Object[] { ContactUtils.a(paramObject, 8.0F) });
+      } else if (2 == i) {
+        paramObject = String.format(MobileQQ.sMobileQQ.getString(2131690326), new Object[] { ContactUtils.a(paramObject, 5.0F), ContactUtils.a((String)localObject, 5.0F) });
       } else {
         paramObject = "";
       }
+      localStringBuilder.append(paramObject);
+      this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.b(paramObject, (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("avgame_logic.GameRoomController", 2, String.format("onDelayNotifyDone nt=%d result=%s", new Object[] { Integer.valueOf(paramInt), localStringBuilder.toString() }));
     }
   }
   
   public void a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("avgame_logic.GameRoomController", 2, "onGetGameListFailed() roomId=" + paramLong);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetGameListFailed() roomId=");
+      localStringBuilder.append(paramLong);
+      QLog.i("avgame_logic.GameRoomController", 2, localStringBuilder.toString());
     }
     if (!a(paramLong, "onGetGameListSuccess()")) {
       return;
@@ -189,79 +186,100 @@ public class RoomController
   
   public void a(long paramLong, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("avgame_logic.GameRoomController", 2, "onGetGameRoomInfoFailed() roomId = " + paramLong + " data =" + this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetGameRoomInfoFailed() roomId = ");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(" data =");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
+      QLog.i("avgame_logic.GameRoomController", 2, localStringBuilder.toString());
     }
     if (paramLong == ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).a()) {
-      this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(paramInt, BaseApplicationImpl.getApplication().getString(2131690407), (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
+      this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(paramInt, MobileQQ.sMobileQQ.getString(2131690331), (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
     }
   }
   
   public void a(long paramLong, int paramInt, String paramString, RoomInfo paramRoomInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("avgame_logic.GameRoomController", 2, "onLeaveGameRoomSuccess() leaveType =" + paramInt + " kickUin = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onLeaveGameRoomSuccess() leaveType =");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" kickUin = ");
+      localStringBuilder.append(paramString);
+      QLog.i("avgame_logic.GameRoomController", 2, localStringBuilder.toString());
     }
-    if (GameEngine.a().f()) {
+    if (IGameEngine.a().f())
+    {
       this.jdField_a_of_type_ComTencentAvgameGamelogicControllerISurvivalRoomController.a(paramLong, paramInt, paramString, paramRoomInfo);
-    }
-    do
-    {
       return;
-      if (2 != paramInt) {
-        break;
+    }
+    if (2 == paramInt)
+    {
+      if (!a(paramLong, "onLeaveGameRoomSuccess(kick)")) {
+        return;
       }
-    } while (!a(paramLong, "onLeaveGameRoomSuccess(kick)"));
-    a(paramRoomInfo, false);
-    this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(2, paramString, null, (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
-    ReportController.b(null, "dc00898", "", "", "0X800B02E", "0X800B02E", 0, 0, paramString, "" + paramLong, "", "");
-    return;
-    this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(paramInt, null, (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
-    if (this.jdField_a_of_type_Boolean) {}
-    for (paramInt = 1;; paramInt = 2)
-    {
-      ReportController.b(null, "dc00898", "", "", "0X800B030", "0X800B030", paramInt, 0, "", "" + paramLong, "", "");
-      this.jdField_a_of_type_Boolean = false;
+      a(paramRoomInfo, false);
+      this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(2, paramString, null, (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
+      paramRoomInfo = new StringBuilder();
+      paramRoomInfo.append("");
+      paramRoomInfo.append(paramLong);
+      ReportController.b(null, "dc00898", "", "", "0X800B02E", "0X800B02E", 0, 0, paramString, paramRoomInfo.toString(), "", "");
       return;
     }
+    this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(paramInt, null, (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
+    if (this.jdField_a_of_type_Boolean) {
+      paramInt = 1;
+    } else {
+      paramInt = 2;
+    }
+    paramString = new StringBuilder();
+    paramString.append("");
+    paramString.append(paramLong);
+    ReportController.b(null, "dc00898", "", "", "0X800B030", "0X800B030", paramInt, 0, "", paramString.toString(), "", "");
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public void a(long paramLong, int paramInt, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("avgame_logic.GameRoomController", 2, "onLeaveGameRoomFailed() leaveType =" + paramInt + " kickUin = " + paramString1 + " errorMsg = " + paramString2);
-    }
-    if (GameEngine.a().i()) {
-      if (GameEngine.a().a().m()) {
-        break label108;
-      }
-    }
-    label108:
-    for (boolean bool = true;; bool = false)
+    if (QLog.isColorLevel())
     {
-      CJSurvivalFestivalReporter.a(13, true, "-1", paramString2, bool);
-      if (2 != paramInt) {
-        break label154;
-      }
-      if (a(paramLong, "onLeaveGameRoomFailed(kick)")) {
-        break;
-      }
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onLeaveGameRoomFailed() leaveType =");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" kickUin = ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" errorMsg = ");
+      localStringBuilder.append(paramString2);
+      QLog.i("avgame_logic.GameRoomController", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(-2, paramString1, BaseApplicationImpl.getApplication().getString(2131690438), (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
-    for (;;)
+    if (IGameEngine.a().i()) {
+      AVGameExceptionReporter.a().a(13, null, "-1", paramString2);
+    }
+    if (2 == paramInt)
     {
-      this.jdField_a_of_type_Boolean = false;
-      return;
-      label154:
+      if (!a(paramLong, "onLeaveGameRoomFailed(kick)")) {
+        return;
+      }
+      this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(-2, paramString1, MobileQQ.sMobileQQ.getString(2131690362), (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
+    }
+    else
+    {
       this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(paramInt, null, (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
     }
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public void a(long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("avgame_logic.GameRoomController", 2, "onSelectGameSuccess roomId=" + paramLong2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSelectGameSuccess roomId=");
+      localStringBuilder.append(paramLong2);
+      QLog.i("avgame_logic.GameRoomController", 2, localStringBuilder.toString());
     }
     if (!a(paramLong2, "onSelectGameSuccess()")) {
       return;
@@ -286,8 +304,12 @@ public class RoomController
     }
     EngineData localEngineData = (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a();
     localEngineData.a(paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.i("avgame_logic.GameRoomController", 2, "pushOnGameChange() newIndex = " + localEngineData.a);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("pushOnGameChange() newIndex = ");
+      localStringBuilder.append(localEngineData.a);
+      QLog.i("avgame_logic.GameRoomController", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.b(localEngineData);
   }
@@ -312,17 +334,19 @@ public class RoomController
       this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.c(paramString1, (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
       return;
     }
-    if (!this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getCurrentAccountUin().equals(paramString1))
+    if (!this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin().equals(paramString1))
     {
       paramRoomInfo = ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).a().getNick(paramString1);
       paramString2 = ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).a().getNick(paramString2);
-      if ((paramRoomInfo != null) && (!paramRoomInfo.equalsIgnoreCase(paramString1))) {}
-      for (int i = 1;; i = 0)
+      int i;
+      if ((paramRoomInfo != null) && (!paramRoomInfo.equalsIgnoreCase(paramString1))) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      paramString1 = new DelayNotifyRunnable(this.jdField_a_of_type_ComTencentCommonAppAppInterface, 0, this, new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
+      if (i != 0)
       {
-        paramString1 = new DelayNotifyRunnable(this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface, 0, this, new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
-        if (i == 0) {
-          break;
-        }
         paramString1.a(paramRoomInfo);
         return;
       }
@@ -343,130 +367,128 @@ public class RoomController
       QLog.i("avgame_logic.GameRoomController", 2, "pushOnRoomExit seq is invalid just return");
       return;
     }
-    int i = 0;
-    String str = this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getCurrentAccountUin();
-    boolean bool2 = false;
-    boolean bool1;
+    String str2 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
+    int i = 2131690331;
+    String str1 = "";
     if (paramInt1 == 0) {
       if (paramInt3 == 1) {
-        if (paramString1.equals(str))
+        if (paramString1.equals(str2))
         {
-          if (!paramString1.equals(String.valueOf(paramRoomInfo.owner))) {
-            break label842;
+          if (paramString1.equals(String.valueOf(paramRoomInfo.owner))) {
+            break label228;
           }
-          paramInt2 = 1;
-          bool1 = true;
+          paramString2 = paramString4;
         }
       }
     }
+    label228:
+    label380:
     for (;;)
     {
-      if (paramInt2 != 0) {
-        GameEngine.a().f();
-      }
-      a(paramRoomInfo, false);
-      if (QLog.isColorLevel()) {
-        QLog.i("avgame_logic.GameRoomController", 2, "pushOnRoomExit() isMine = " + bool1 + " tips = " + paramString4);
-      }
-      if ((!bool1) && (((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).f()))
+      for (paramInt2 = 0;; paramInt2 = 1)
       {
-        i = ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).a();
-        if ((i != 10) && (i != 0)) {
-          ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).f(9);
+        bool = true;
+        break label432;
+        paramString2 = str1;
+        if (!str2.equals(String.valueOf(paramRoomInfo.owner))) {
+          break label426;
         }
-      }
-      if (bool1)
-      {
-        this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(3, paramString4, (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
-        if (paramInt3 != 1) {
+        paramString2 = paramString3.replace("#", ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).a().getNick(paramString1));
+        break label426;
+        paramString2 = str1;
+        if (paramInt2 != 1) {
+          break label426;
+        }
+        paramString2 = str1;
+        if (!paramString1.equals(str2)) {
+          break label426;
+        }
+        if (!NetworkUtil.isNetworkAvailable()) {
+          i = 2131690403;
+        }
+        paramString2 = MobileQQ.sMobileQQ.getString(i);
+        break label380;
+        if (1 != paramInt1) {
+          break label349;
+        }
+        if ((paramInt3 != 1) || (!paramString1.equals(str2))) {
           break;
         }
+        paramString2 = paramString4;
+      }
+      if ((paramInt2 == 1) && (paramString1.equals(str2)))
+      {
+        if (!NetworkUtil.isNetworkAvailable()) {
+          i = 2131690403;
+        }
+        paramString2 = MobileQQ.sMobileQQ.getString(i);
+      }
+      else
+      {
+        paramString2 = String.format(MobileQQ.sMobileQQ.getString(2131690400), new Object[] { ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).a().getNick(paramString2, 8) });
+        if (!((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).f()) {
+          break label426;
+        }
+        paramString2 = str1;
+        break label426;
+        paramString2 = str1;
+        if (2 != paramInt1) {
+          break label426;
+        }
+        if (!paramString1.equals(str2)) {
+          break;
+        }
+        paramString2 = MobileQQ.sMobileQQ.getString(2131690363);
+      }
+    }
+    label349:
+    paramString2 = String.format(MobileQQ.sMobileQQ.getString(2131690364), new Object[] { ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).a().getNick(paramString1, 8) });
+    label426:
+    paramInt2 = 0;
+    boolean bool = false;
+    label432:
+    if (paramInt2 != 0) {
+      IGameEngine.a().f();
+    }
+    a(paramRoomInfo, false);
+    if (QLog.isColorLevel())
+    {
+      paramString3 = new StringBuilder();
+      paramString3.append("pushOnRoomExit() isMine = ");
+      paramString3.append(bool);
+      paramString3.append(" tips = ");
+      paramString3.append(paramString2);
+      QLog.i("avgame_logic.GameRoomController", 2, paramString3.toString());
+    }
+    if ((!bool) && (((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).f()))
+    {
+      i = ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).a();
+      if ((i != 10) && (i != 0)) {
+        ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).f(9);
+      }
+    }
+    if (bool)
+    {
+      this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(3, paramString2, (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
+      if (paramInt3 == 1)
+      {
         if (paramInt2 != 0)
         {
           ReportController.b(null, "dc00898", "", "", "0X800B35A", "0X800B35A", 0, 0, "", "", "", "");
           return;
-          if (!str.equals(String.valueOf(paramRoomInfo.owner))) {
-            break label826;
-          }
-          paramString4 = paramString3.replace("#", ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).a().getNick(paramString1));
-          bool1 = bool2;
-          paramInt2 = i;
-          continue;
-          if ((paramInt2 != 1) || (!paramString1.equals(str))) {
-            break label826;
-          }
-          bool1 = true;
-          if (NetworkUtil.a()) {}
-          for (paramInt2 = 2131690407;; paramInt2 = 2131690479)
-          {
-            paramString4 = BaseApplicationImpl.getApplication().getString(paramInt2);
-            paramInt2 = i;
-            break;
-          }
-          if (1 == paramInt1)
-          {
-            if ((paramInt3 == 1) && (paramString1.equals(str)))
-            {
-              paramInt2 = 1;
-              bool1 = true;
-              continue;
-            }
-            if ((paramInt2 == 1) && (paramString1.equals(str)))
-            {
-              bool1 = true;
-              if (NetworkUtil.a()) {}
-              for (paramInt2 = 2131690407;; paramInt2 = 2131690479)
-              {
-                paramString4 = BaseApplicationImpl.getApplication().getString(paramInt2);
-                paramInt2 = i;
-                break;
-              }
-            }
-            paramString4 = String.format(BaseApplicationImpl.getApplication().getString(2131690476), new Object[] { ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).a().getNick(paramString2, 8) });
-            bool1 = bool2;
-            paramInt2 = i;
-            if (!((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).f()) {
-              continue;
-            }
-            paramString4 = "";
-            bool1 = bool2;
-            paramInt2 = i;
-            continue;
-          }
-          if (2 != paramInt1) {
-            break label826;
-          }
-          if (paramString1.equals(str))
-          {
-            paramString4 = BaseApplicationImpl.getApplication().getString(2131690439);
-            bool1 = true;
-            paramInt2 = i;
-            continue;
-          }
-          paramString4 = String.format(BaseApplicationImpl.getApplication().getString(2131690440), new Object[] { ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).a().getNick(paramString1, 8) });
-          bool1 = bool2;
-          paramInt2 = i;
-          continue;
         }
         ReportController.b(null, "dc00898", "", "", "0X800B35C", "0X800B35C", 0, 0, "", "", "", "");
-        return;
       }
-      if ((paramInt1 != 1) && (paramInt3 == 1) && (str.equals(String.valueOf(paramRoomInfo.owner))) && (!paramString1.equals(str)))
+    }
+    else
+    {
+      if ((paramInt1 != 1) && (paramInt3 == 1) && (str2.equals(String.valueOf(paramRoomInfo.owner))) && (!paramString1.equals(str2)))
       {
-        this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(3, paramString1, paramString4, (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
+        this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(3, paramString1, paramString2, (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
         ReportController.b(null, "dc00898", "", "", "0X800B35B", "0X800B35B", 0, 0, "", "", "", "");
         return;
       }
-      this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(1, paramString1, paramString4, (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
-      return;
-      label826:
-      paramString4 = "";
-      bool1 = bool2;
-      paramInt2 = i;
-      continue;
-      label842:
-      bool1 = true;
-      paramInt2 = i;
+      this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(1, paramString1, paramString2, (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
     }
   }
   
@@ -482,8 +504,14 @@ public class RoomController
     }
     a(paramRoomInfo, false);
     ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).a(paramString, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.i("avgame_logic.GameRoomController", 2, "pushOnChangeUserStatus() uin = " + paramString + " userStatusType =" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramRoomInfo = new StringBuilder();
+      paramRoomInfo.append("pushOnChangeUserStatus() uin = ");
+      paramRoomInfo.append(paramString);
+      paramRoomInfo.append(" userStatusType =");
+      paramRoomInfo.append(paramInt);
+      QLog.i("avgame_logic.GameRoomController", 2, paramRoomInfo.toString());
     }
     paramRoomInfo = (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a();
     this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(paramString, paramInt, paramRoomInfo);
@@ -491,14 +519,37 @@ public class RoomController
   
   public void a(long paramLong1, long paramLong2, String paramString1, int paramInt1, String paramString2, int paramInt2, long paramLong3)
   {
-    QLog.d("avgame_logic.GameRoomController", 1, "getGameShareLink  roomId: " + paramLong1 + " shareUin: " + paramLong2 + " shareName: " + paramString1 + " shareType: " + paramInt1 + " gameId: " + paramString2 + " gameType: " + paramInt2 + " pbMark" + paramLong3);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getGameShareLink  roomId: ");
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append(" shareUin: ");
+    localStringBuilder.append(paramLong2);
+    localStringBuilder.append(" shareName: ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" shareType: ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" gameId: ");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(" gameType: ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(" pbMark");
+    localStringBuilder.append(paramLong3);
+    QLog.d("avgame_logic.GameRoomController", 1, localStringBuilder.toString());
     this.jdField_a_of_type_ComTencentAvgameGamelogicHandlerGameRoomHandler.a(paramLong1, paramLong2, paramString1, paramInt1, paramString2, paramInt2, paramLong3);
   }
   
   public void a(long paramLong, String paramString, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("avgame_logic.GameRoomController", 2, "onChangeUserStatusFailed() errorMsg =" + paramString + "errorCode = " + paramInt1 + " from = " + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onChangeUserStatusFailed() errorMsg =");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("errorCode = ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" from = ");
+      localStringBuilder.append(paramInt2);
+      QLog.i("avgame_logic.GameRoomController", 2, localStringBuilder.toString());
     }
     if (!a(paramLong, "onChangeUserStatusFailed()")) {
       return;
@@ -508,13 +559,26 @@ public class RoomController
   
   public void a(long paramLong, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("avgame_logic.GameRoomController", 2, "kickGameRoomUserByOwner roomId = " + paramLong + " ownerUin =" + paramString1 + " kickedUserUin =" + paramString2 + " isHostUser =" + ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).e(paramString1));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("kickGameRoomUserByOwner roomId = ");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(" ownerUin =");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" kickedUserUin =");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(" isHostUser =");
+      localStringBuilder.append(((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).e(paramString1));
+      QLog.i("avgame_logic.GameRoomController", 2, localStringBuilder.toString());
     }
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (!((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).e(paramString1))) {
-      return;
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    {
+      if (!((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).e(paramString1)) {
+        return;
+      }
+      this.jdField_a_of_type_ComTencentAvgameGamelogicHandlerGameRoomHandler.a(paramLong, 2, paramString1, paramString2);
     }
-    this.jdField_a_of_type_ComTencentAvgameGamelogicHandlerGameRoomHandler.a(paramLong, 2, paramString1, paramString2);
   }
   
   public void a(long paramLong, String paramString1, List<QuestionClassInfo> paramList, String paramString2, String paramString3)
@@ -527,9 +591,17 @@ public class RoomController
   
   public void a(long paramLong, String paramString, boolean paramBoolean)
   {
-    boolean bool = GameEngine.a().i();
-    if (QLog.isColorLevel()) {
-      QLog.i("avgame_logic.GameRoomController", 2, "leaveGameRoomByUser roomId = " + paramLong + " userUin =" + paramString + " isQQCJ =" + bool);
+    boolean bool = IGameEngine.a().i();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("leaveGameRoomByUser roomId = ");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(" userUin =");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" isQQCJ =");
+      localStringBuilder.append(bool);
+      QLog.i("avgame_logic.GameRoomController", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (!bool)
@@ -542,15 +614,23 @@ public class RoomController
   
   public void a(long paramLong, String paramString1, boolean paramBoolean, int paramInt1, String paramString2, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("avgame_logic.GameRoomController", 2, "onGetGameRoomInfoFailed() uin = " + paramString1 + " isFromSync =" + paramBoolean + " fromType=" + paramInt1);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetGameRoomInfoFailed() uin = ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" isFromSync =");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" fromType=");
+      localStringBuilder.append(paramInt1);
+      QLog.i("avgame_logic.GameRoomController", 2, localStringBuilder.toString());
     }
     if (!a(paramLong, "onGetGameRoomInfoFailed()")) {
       return;
     }
     if (((paramInt2 == 106) || (paramInt2 == 111)) && (paramLong == ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).a()))
     {
-      this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(6, BaseApplicationImpl.getApplication().getString(2131690407), (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
+      this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(6, MobileQQ.sMobileQQ.getString(2131690331), (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
       return;
     }
     this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(paramLong, paramString1, paramBoolean, paramString2, paramInt2);
@@ -558,22 +638,18 @@ public class RoomController
   
   public void a(long paramLong, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    boolean bool = GameEngine.a().i();
-    if (QLog.isColorLevel()) {
-      QLog.i("avgame_logic.GameRoomController", 2, "getGameRoomInfo roomId = " + paramLong + " uin = " + paramString + " fromSync=" + paramBoolean2 + " fromEnter=" + paramBoolean2 + " isQQCJ=" + bool);
-    }
-    if (bool) {}
-    for (int i = 1;; i = 0)
-    {
-      this.jdField_a_of_type_ComTencentAvgameGamelogicHandlerGameRoomHandler.a(paramLong, paramString, paramBoolean1, 1, i);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge Z and I\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void a(RoomInfo paramRoomInfo, int paramInt)
   {
-    if (paramRoomInfo == null) {}
-    for (long l = 0L; !a(l, "onChangeUserStatusSuccess()"); l = paramRoomInfo.id) {
+    long l;
+    if (paramRoomInfo == null) {
+      l = 0L;
+    } else {
+      l = paramRoomInfo.id;
+    }
+    if (!a(l, "onChangeUserStatusSuccess()")) {
       return;
     }
     if (!a(paramRoomInfo.seq, paramRoomInfo.id))
@@ -583,10 +659,14 @@ public class RoomController
     }
     a(paramRoomInfo, false);
     if ((paramInt == 4) || (paramInt == 2)) {
-      ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).a(this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getCurrentAccountUin(), 1);
+      ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 1);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("avgame_logic.GameRoomController", 2, "onChangeUserStatusSuccess() and from = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramRoomInfo = new StringBuilder();
+      paramRoomInfo.append("onChangeUserStatusSuccess() and from = ");
+      paramRoomInfo.append(paramInt);
+      QLog.i("avgame_logic.GameRoomController", 2, paramRoomInfo.toString());
     }
     paramRoomInfo = (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a();
     this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(paramRoomInfo, paramInt);
@@ -601,7 +681,7 @@ public class RoomController
     paramString1.a(paramGame);
     paramString1.a(paramList);
     if ((GameUtil.b(paramString1.c())) && (paramString1.a().size() == 0) && (paramString1.a() >= 0) && (paramString1.a() <= 10)) {
-      ((GamePlayHandler)this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getBusinessHandler(HandlerFactory.c)).a(this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getCurrentAccountUin(), paramString1.a(), paramString1.b(), false);
+      ((GamePlayHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(HandlerFactory.c)).a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramString1.a(), paramString1.b(), false);
     }
     if (paramRoomInfo != null) {
       a(paramString1);
@@ -625,38 +705,50 @@ public class RoomController
   
   public void a(String paramString, long paramLong, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("avgame_logic.GameRoomController", 2, "selectGame roomId = " + paramLong + " uin = " + paramString + " isHost =" + ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).e(paramString));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("selectGame roomId = ");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(" uin = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" isHost =");
+      localStringBuilder.append(((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).e(paramString));
+      QLog.i("avgame_logic.GameRoomController", 2, localStringBuilder.toString());
     }
-    if ((TextUtils.isEmpty(paramString)) || (!((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).e(paramString))) {
-      return;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (!((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).e(paramString)) {
+        return;
+      }
+      this.jdField_a_of_type_ComTencentAvgameGamelogicHandlerGameRoomHandler.a(paramString, paramLong, paramInt);
     }
-    this.jdField_a_of_type_ComTencentAvgameGamelogicHandlerGameRoomHandler.a(paramString, paramLong, paramInt);
   }
   
   public void a(String paramString1, boolean paramBoolean, int paramInt1, RoomInfo paramRoomInfo, IGame paramIGame, List<UserScore> paramList, List<GameItem> paramList1, int paramInt2, String paramString2, String paramString3)
   {
     long l1 = paramRoomInfo.seq;
     long l2 = paramRoomInfo.id;
-    if (!a(l2, "onGetGameRoomInfoSuccess()")) {}
-    do
-    {
+    if (!a(l2, "onGetGameRoomInfoSuccess()")) {
       return;
-      if (!this.jdField_a_of_type_ComTencentAvgameGamelogicListenerSyncListener.a(l1, l2, paramBoolean))
-      {
-        QLog.i("avgame_logic.GameRoomController", 2, "onGetGameRoomInfoSuccess() seq is invalid just return");
-        return;
-      }
-      if (!paramBoolean) {
-        break;
-      }
+    }
+    if (!this.jdField_a_of_type_ComTencentAvgameGamelogicListenerSyncListener.a(l1, l2, paramBoolean))
+    {
+      QLog.i("avgame_logic.GameRoomController", 2, "onGetGameRoomInfoSuccess() seq is invalid just return");
+      return;
+    }
+    if (paramBoolean)
+    {
       a(paramRoomInfo, (Game)paramIGame, paramList, paramList1, paramInt2, paramString2, paramString3);
       if (QLog.isColorLevel()) {
         QLog.i("avgame_logic.GameRoomController", 2, String.format("onGetSnapshotSuc() fromEnter=%b curGameIndex=%d roomInfo=[%s] game=[%s] scores=[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramRoomInfo, paramIGame, Arrays.toString(paramList.toArray()) }));
       }
-    } while (!a(paramString1, paramRoomInfo));
-    this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.c((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a(), paramInt1);
-    return;
+      if (!a(paramString1, paramRoomInfo)) {
+        return;
+      }
+      this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.c((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a(), paramInt1);
+      return;
+    }
     a(paramRoomInfo, false);
     if (QLog.isColorLevel()) {
       QLog.i("avgame_logic.GameRoomController", 2, String.format("onGetGameRoomInfoSuccess() roomInfo=[%s]", new Object[] { paramRoomInfo }));
@@ -666,33 +758,42 @@ public class RoomController
   
   public void a(List<GameItem> paramList, int paramInt, String paramString1, String paramString2, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("avgame_logic.GameRoomController", 2, "onGetGameListSuccess() curGameIndex = " + paramInt + " resUrl =" + paramString1 + " resMd5 =" + paramString2);
-    }
-    if (!a(paramLong, "onGetGameListSuccess()")) {}
-    do
+    if (QLog.isColorLevel())
     {
-      return;
-      paramString1 = (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a();
-      paramString1.a(paramList, paramInt);
-      this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(paramString1);
-    } while ((paramList == null) || (paramList.size() <= 0));
-    paramString1 = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      paramString1.add(Integer.valueOf(((GameItem)paramList.next()).a));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetGameListSuccess() curGameIndex = ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" resUrl =");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" resMd5 =");
+      localStringBuilder.append(paramString2);
+      QLog.i("avgame_logic.GameRoomController", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentAvgameGamelogicHandlerGameRoomHandler.a(paramLong, paramString1);
+    if (!a(paramLong, "onGetGameListSuccess()")) {
+      return;
+    }
+    paramString1 = (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a();
+    paramString1.a(paramList, paramInt);
+    this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(paramString1);
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      paramString1 = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        paramString1.add(Integer.valueOf(((GameItem)paramList.next()).a));
+      }
+      this.jdField_a_of_type_ComTencentAvgameGamelogicHandlerGameRoomHandler.a(paramLong, paramString1);
+    }
   }
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, List<Long> paramList)
+  protected void a(boolean paramBoolean, int paramInt1, int paramInt2, List<Long> paramList)
   {
     if (QLog.isColorLevel()) {
       QLog.i("avgame_logic.GameRoomController", 2, String.format("onPkPoolUserChange isSuc:%b option:%d pkTotalNum:%d listSize:%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramList.size()) }));
     }
-    if (paramBoolean)
+    if ((paramBoolean) && (!IGameEngine.k()))
     {
-      EngineData localEngineData = GameEngine.a().a();
+      EngineData localEngineData = IGameEngine.a().a();
       localEngineData.c(paramInt2);
       localEngineData.d(Math.max(localEngineData.m(), paramInt2));
       localEngineData.b(paramList, paramInt1);
@@ -700,12 +801,14 @@ public class RoomController
     this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(paramBoolean, "");
   }
   
-  public void a(boolean paramBoolean1, int paramInt1, int paramInt2, List<Long> paramList, boolean paramBoolean2, int paramInt3, boolean paramBoolean3, int paramInt4, String paramString)
+  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, List<Long> paramList, boolean paramBoolean2, int paramInt3, boolean paramBoolean3, int paramInt4, String paramString)
   {
-    if (QLog.isColorLevel()) {
+    boolean bool2 = QLog.isColorLevel();
+    boolean bool1 = true;
+    if (bool2) {
       QLog.i("avgame_logic.GameRoomController", 2, String.format("onPKInfoResult isSuc:%b interval:%d pkTotalNum:%d isChange:%b realId:%d errCode:%d errMsg:%s", new Object[] { Boolean.valueOf(paramBoolean1), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramString }));
     }
-    EngineData localEngineData = GameEngine.a().a();
+    EngineData localEngineData = IGameEngine.a().a();
     if (paramBoolean1)
     {
       localEngineData.c(paramInt2);
@@ -715,40 +818,34 @@ public class RoomController
       if (paramBoolean2) {
         localEngineData.b(paramInt3);
       }
-      paramList = this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener;
-      if ((!paramBoolean1) || (paramInt4 != 0)) {
-        break label257;
-      }
     }
-    label257:
-    for (paramBoolean2 = true;; paramBoolean2 = false)
+    else if (localEngineData.g())
     {
-      paramList.a(paramBoolean2, paramString);
-      if (this.b == null) {
-        this.b = new Handler(this);
-      }
-      if (!paramBoolean1) {
-        break label263;
-      }
+      AVGameExceptionReporter.a().a(4, null, String.valueOf(paramInt4), paramString);
+    }
+    paramList = this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener;
+    if ((paramBoolean1) && (paramInt4 == 0)) {
+      paramBoolean2 = bool1;
+    } else {
+      paramBoolean2 = false;
+    }
+    paramList.a(paramBoolean2, paramString);
+    if (this.b == null) {
+      this.b = new Handler(this);
+    }
+    if (paramBoolean1)
+    {
       if ((paramInt1 > 0) && (paramInt4 != 652))
       {
         this.b.removeMessages(0);
         this.b.sendEmptyMessageDelayed(0, paramInt1);
       }
-      return;
-      if (!localEngineData.g()) {
-        break;
-      }
-      if (!localEngineData.m()) {}
-      for (paramBoolean2 = true;; paramBoolean2 = false)
-      {
-        CJSurvivalFestivalReporter.a(4, true, String.valueOf(paramInt4), null, paramBoolean2);
-        break;
-      }
     }
-    label263:
-    this.b.removeMessages(0);
-    this.b.sendEmptyMessageDelayed(0, 1000L);
+    else
+    {
+      this.b.removeMessages(0);
+      this.b.sendEmptyMessageDelayed(0, 1000L);
+    }
   }
   
   public void a(boolean paramBoolean, int paramInt, String paramString, RoomInfo paramRoomInfo, byte[] paramArrayOfByte, long paramLong)
@@ -759,199 +856,104 @@ public class RoomController
     this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(paramBoolean, paramInt, paramString, paramRoomInfo, paramArrayOfByte, paramLong);
   }
   
-  public void a(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, String paramString)
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("avgame_logic.GameRoomController", 2, "onStartStrangerMatch isSuc=" + paramBoolean + " roomId=" + paramLong + " shareId=" + paramInt1 + " errCod=" + paramInt2 + " errMsg=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onStartStrangerMatch isSuc=");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" roomId=");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(" shareId=");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" errCod=");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(" errMsg=");
+      localStringBuilder.append(paramString);
+      QLog.i("avgame_logic.GameRoomController", 2, localStringBuilder.toString());
     }
     if (paramBoolean)
     {
       ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).a(paramLong, 1);
       ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).b(paramLong, paramInt1);
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(paramBoolean, paramLong, paramInt1, paramInt2, paramString);
-      return;
       ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).a(paramLong, 0);
     }
+    this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(paramBoolean, paramLong, paramInt1, paramInt2, paramString);
   }
   
-  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("avgame_logic.GameRoomController", 2, "onStopStrangerMatch isSuc=" + paramBoolean + " roomId=" + paramLong + " errCod=" + paramInt + " errMsg=" + paramString);
-    }
-    if (paramBoolean)
-    {
-      EngineData localEngineData = (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a();
-      localEngineData.b(paramLong, 0);
-      localEngineData.a(paramLong, 0);
-    }
-    this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(paramBoolean, paramLong, paramInt, paramString);
-  }
-  
-  public void a(boolean paramBoolean, long paramLong, int paramInt1, byte[] paramArrayOfByte, int paramInt2, String paramString)
+  protected void a(boolean paramBoolean, long paramLong, int paramInt, String paramString)
   {
     Object localObject;
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("onStartStrangerMatchV2 isSuc=").append(paramBoolean).append(" roomId=").append(paramLong).append(" gameType=").append(paramInt1).append(" info=");
-      if (paramArrayOfByte != null)
-      {
-        localObject = Integer.valueOf(paramArrayOfByte.length);
-        QLog.i("avgame_logic.GameRoomController", 2, localObject + " errCod=" + paramInt2 + " errMsg=" + paramString);
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onStopStrangerMatch isSuc=");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(" roomId=");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(" errCod=");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" errMsg=");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("avgame_logic.GameRoomController", 2, ((StringBuilder)localObject).toString());
     }
-    else
+    if (paramBoolean)
     {
-      if (!paramBoolean) {
-        break label169;
+      localObject = (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a();
+      ((EngineData)localObject).b(paramLong, 0);
+      ((EngineData)localObject).a(paramLong, 0);
+    }
+    this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(paramBoolean, paramLong, paramInt, paramString);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, byte[] paramArrayOfByte, int paramInt2, String paramString)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onStartStrangerMatchV2 isSuc=");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" roomId=");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(" gameType=");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" info=");
+      Object localObject;
+      if (paramArrayOfByte != null) {
+        localObject = Integer.valueOf(paramArrayOfByte.length);
+      } else {
+        localObject = "null";
       }
+      localStringBuilder.append(localObject);
+      localStringBuilder.append(" errCod=");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(" errMsg=");
+      localStringBuilder.append(paramString);
+      QLog.i("avgame_logic.GameRoomController", 2, localStringBuilder.toString());
+    }
+    if (paramBoolean)
+    {
       ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).a(paramLong, 1);
       ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).a(paramArrayOfByte);
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(paramBoolean, paramLong, paramInt1, paramArrayOfByte, paramInt2, paramString);
-      return;
-      localObject = "null";
-      break;
-      label169:
       ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).a(paramLong, 0);
       ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).a(null);
     }
+    this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(paramBoolean, paramLong, paramInt1, paramArrayOfByte, paramInt2, paramString);
   }
   
-  public void a(boolean paramBoolean1, long paramLong1, long paramLong2, int paramInt, boolean paramBoolean2, SurvivalPkResultInfo paramSurvivalPkResultInfo)
+  protected void a(boolean paramBoolean1, long paramLong1, long paramLong2, int paramInt, boolean paramBoolean2, SurvivalPkResultInfo paramSurvivalPkResultInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("avgame_logic.GameRoomController", 2, String.format("onPkUserResult isSuc:%b resultStatus:%d curStatus:%d exitRoom:%b info:%s curRoomId=%d roomId=%d", new Object[] { Boolean.valueOf(paramBoolean1), Integer.valueOf(paramInt), Integer.valueOf(GameEngine.a().a().o()), Boolean.valueOf(paramBoolean2), paramSurvivalPkResultInfo, Long.valueOf(GameEngine.a().a().a()), Long.valueOf(paramLong2) }));
-    }
-    if ((GameEngine.a().a().a() != 0L) && (GameEngine.a().a().o() == 0) && ((paramInt == 3) || (paramInt == 4) || (paramInt == 2))) {}
-    Object localObject;
-    int i;
-    label205:
-    label238:
-    do
-    {
-      return;
-      GameEngine.a().a().a(paramSurvivalPkResultInfo);
-      if (paramBoolean2) {
-        this.jdField_a_of_type_ComTencentAvgameGamelogicControllerISurvivalRoomController.a();
-      }
-      if (paramInt != 2) {
-        break label378;
-      }
-      GameEngine.a().a().f(5);
-      if (this.b != null)
-      {
-        this.b.removeMessages(0);
-        localObject = this.b;
-        if (!paramBoolean2) {
-          break;
-        }
-        i = 1;
-        localObject = ((Handler)localObject).obtainMessage(1, i, paramInt);
-        this.b.removeMessages(1);
-        this.b.sendMessageDelayed((Message)localObject, 4000L);
-      }
-      if (((paramInt == 1) || (paramInt == 4) || (paramInt == 5)) && (GameEngine.a().a().i())) {
-        GameEngine.a().n();
-      }
-      GameEngine.a().p();
-      this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(paramBoolean1, paramInt, paramBoolean2, paramSurvivalPkResultInfo);
-    } while ((paramInt != 1) && (paramInt != 2) && (paramInt != 3));
-    if (paramInt == 2) {
-      i = 3;
-    }
-    for (;;)
-    {
-      paramInt = GameEngine.a().a().a(this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getAccount());
-      if ((paramSurvivalPkResultInfo.score <= 0) || (paramSurvivalPkResultInfo.score == paramInt)) {
-        break;
-      }
-      CJSurvivalFestivalReporter.a(paramInt, paramSurvivalPkResultInfo.score, i);
-      return;
-      i = 0;
-      break label205;
-      label378:
-      if (paramInt == 1)
-      {
-        GameEngine.a().a().f(4);
-        GameEngine.a().a().g(paramSurvivalPkResultInfo.winRound);
-        if (this.b == null) {
-          break label238;
-        }
-        localObject = this.b;
-        if (paramBoolean2) {}
-        for (i = 1;; i = 0)
-        {
-          localObject = ((Handler)localObject).obtainMessage(3, i, 0);
-          this.b.removeMessages(3);
-          this.b.sendMessageDelayed((Message)localObject, 4000L);
-          break;
-        }
-      }
-      if (paramInt == 3)
-      {
-        GameEngine.a().a().f(10);
-        if (this.b == null) {
-          break label238;
-        }
-        this.b.removeMessages(0);
-        localObject = this.b;
-        if (paramBoolean2) {}
-        for (i = 1;; i = 0)
-        {
-          localObject = ((Handler)localObject).obtainMessage(2, i, paramInt);
-          this.b.removeMessages(2);
-          this.b.sendMessageDelayed((Message)localObject, 4000L);
-          break;
-        }
-      }
-      if (paramInt == 4)
-      {
-        GameEngine.a().a().g(paramSurvivalPkResultInfo.winRound);
-        GameEngine.a().a().f(4);
-        if (this.b == null) {
-          break label238;
-        }
-        localObject = this.b;
-        if (paramBoolean2) {}
-        for (i = 1;; i = 0)
-        {
-          localObject = ((Handler)localObject).obtainMessage(3, i, 0);
-          this.b.removeMessages(3);
-          this.b.sendMessageDelayed((Message)localObject, 4000L);
-          break;
-        }
-      }
-      if (paramInt != 5) {
-        break label238;
-      }
-      GameEngine.a().a().g(paramSurvivalPkResultInfo.winRound);
-      GameEngine.a().a().f(8);
-      if (this.b == null) {
-        break label238;
-      }
-      localObject = this.b;
-      if (paramBoolean2) {}
-      for (i = 1;; i = 0)
-      {
-        localObject = ((Handler)localObject).obtainMessage(3, i, 0);
-        this.b.removeMessages(3);
-        this.b.sendMessageDelayed((Message)localObject, 4000L);
-        break;
-      }
-      i = paramInt;
-      if (paramInt == 3) {
-        i = 2;
-      }
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge Z and I\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s2stmt(TypeTransformer.java:820)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:843)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  public void a(boolean paramBoolean1, long paramLong1, boolean paramBoolean2, long paramLong2, boolean paramBoolean3, long paramLong3)
+  protected void a(boolean paramBoolean1, long paramLong1, boolean paramBoolean2, long paramLong2, boolean paramBoolean3, long paramLong3)
   {
     if (QLog.isColorLevel()) {
       QLog.i("avgame_logic.GameRoomController", 2, String.format("onSurvivalPkRoomAction isSuc:%b create:%b roomId:%d needAVRoom:%b peerUin:%d", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Long.valueOf(paramLong2), Boolean.valueOf(paramBoolean3), Long.valueOf(paramLong3) }));
@@ -959,17 +961,21 @@ public class RoomController
     this.jdField_a_of_type_ComTencentAvgameGamelogicControllerISurvivalRoomController.a(paramBoolean1, paramLong1, paramBoolean2, paramLong2, paramBoolean3, paramLong3);
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, String paramString, PkCJOperationData paramPkCJOperationData)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, String paramString, PkCJOperationData paramPkCJOperationData)
   {
-    if (QLog.isColorLevel()) {
+    boolean bool3 = QLog.isColorLevel();
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (bool3) {
       QLog.i("avgame_logic.GameRoomController", 2, String.format("onSurvivalResult isSuc:%b exit:%b poolId:%d startNum:%d errCode:%d errMsg:%s cjData=%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, paramPkCJOperationData }));
     }
-    boolean bool1 = false;
-    boolean bool2 = false;
+    if (IGameEngine.k()) {
+      return;
+    }
     Object localObject;
     if (paramBoolean1)
     {
-      localObject = GameEngine.a().a();
+      localObject = IGameEngine.a().a();
       if (paramBoolean2)
       {
         ((EngineData)localObject).f(0);
@@ -980,95 +986,106 @@ public class RoomController
         ((EngineData)localObject).e(0);
         bool1 = bool2;
       }
-    }
-    for (;;)
-    {
-      GameEngine.a().a().h(paramInt2);
-      if (!paramBoolean2) {
-        this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(paramBoolean1, paramInt3, paramString, bool1);
-      }
-      return;
-      if (((EngineData)localObject).j() == 0)
+      else
       {
-        bool1 = true;
-        ((EngineData)localObject).b(paramInt1);
-        ((EngineData)localObject).a(paramPkCJOperationData.isCJ());
-        ((EngineData)localObject).b(paramPkCJOperationData.hasAVRoom());
-        ((EngineData)localObject).a(paramPkCJOperationData);
-        GameEngine.a().n();
+        if (((EngineData)localObject).j() == 0)
+        {
+          ((EngineData)localObject).b(paramInt1);
+          ((EngineData)localObject).a(paramPkCJOperationData.isCJ());
+          ((EngineData)localObject).b(paramPkCJOperationData.hasAVRoom());
+          ((EngineData)localObject).a(paramPkCJOperationData);
+          IGameEngine.a().n();
+          if (paramPkCJOperationData.isCJ())
+          {
+            if (paramPkCJOperationData.hasAVRoom()) {
+              paramInt1 = 1;
+            } else {
+              paramInt1 = 2;
+            }
+            ReportController.b(null, "dc00898", "", "", "survival_call", "survival_call", paramInt1, 0, String.valueOf(CJSurvivalReporterUtil.a().a()), "", CJSurvivalReporterUtil.a().a(), String.valueOf(((EngineData)localObject).k()));
+          }
+          bool1 = true;
+        }
+        ((EngineData)localObject).g(paramPkCJOperationData.curRound);
+        ((EngineData)localObject).e(1);
       }
-      ((EngineData)localObject).g(paramPkCJOperationData.curRound);
-      ((EngineData)localObject).e(1);
-      continue;
-      paramPkCJOperationData = GameEngine.a().a();
+    }
+    else
+    {
+      paramPkCJOperationData = IGameEngine.a().a();
       bool1 = bool2;
       if (paramPkCJOperationData.g())
       {
-        if (paramInt3 == 0)
-        {
+        ReportController.b(null, "dc00898", "", "", "survival_call", "survival_call", 0, 0, String.valueOf(CJSurvivalReporterUtil.a().a()), "", CJSurvivalReporterUtil.a().a(), String.valueOf(paramPkCJOperationData.k()));
+        if (paramInt3 == 0) {
           paramInt1 = -1;
-          label267:
-          localObject = String.valueOf(paramInt1);
-          if (!paramBoolean2) {
-            break label318;
-          }
-          if (paramPkCJOperationData.m()) {
-            break label312;
-          }
-        }
-        label312:
-        for (bool1 = true;; bool1 = false)
-        {
-          CJSurvivalFestivalReporter.a(11, true, (String)localObject, null, bool1);
-          bool1 = bool2;
-          break;
+        } else {
           paramInt1 = paramInt3;
-          break label267;
         }
-        label318:
-        if (paramPkCJOperationData.j() != 0) {
-          break;
+        localObject = String.valueOf(paramInt1);
+        if (paramBoolean2)
+        {
+          AVGameExceptionReporter.a().a(11, null, (String)localObject, paramString);
+          bool1 = bool2;
         }
-        CJSurvivalFestivalReporter.a(3, false, (String)localObject, null, true);
-        bool1 = bool2;
+        else if (paramPkCJOperationData.j() == 0)
+        {
+          AVGameExceptionReporter.a().a(3, null, (String)localObject, paramString);
+          bool1 = bool2;
+        }
+        else
+        {
+          AVGameExceptionReporter.a().a(10, null, (String)localObject, paramString);
+          bool1 = bool2;
+        }
       }
     }
-    if (!paramPkCJOperationData.m()) {}
-    for (bool1 = true;; bool1 = false)
+    IGameEngine.a().a().h(paramInt2);
+    if (!paramBoolean2)
     {
-      CJSurvivalFestivalReporter.a(10, true, (String)localObject, null, bool1);
-      bool1 = bool2;
-      break;
+      this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(paramBoolean1, paramInt3, paramString, bool1);
+      return;
     }
   }
   
   public void b()
   {
     this.jdField_a_of_type_JavaUtilList.clear();
-    if (this.b != null) {
-      this.b.removeCallbacksAndMessages(null);
+    Handler localHandler = this.b;
+    if (localHandler != null) {
+      localHandler.removeCallbacksAndMessages(null);
     }
   }
   
   public void b(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("avgame_logic.GameRoomController", 2, "getGameRoomList roomId = " + paramLong);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getGameRoomList roomId = ");
+      localStringBuilder.append(paramLong);
+      QLog.i("avgame_logic.GameRoomController", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentAvgameGamelogicHandlerGameRoomHandler.a(paramLong);
   }
   
-  public void b(long paramLong, int paramInt)
+  protected void b(long paramLong, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("avgame_logic.GameRoomController", 2, "onRoomMatchStatusChange roomId=" + paramLong + " matchStatus=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onRoomMatchStatusChange roomId=");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(" matchStatus=");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.i("avgame_logic.GameRoomController", 2, ((StringBuilder)localObject).toString());
     }
     if (!a(paramLong, "onRoomMatchStatusChange()")) {
       return;
     }
-    EngineData localEngineData = (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a();
-    localEngineData.a(paramLong, paramInt);
-    this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(paramLong, localEngineData.a(localEngineData.e(GameEngine.a().a().getCurrentAccountUin())));
+    Object localObject = (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a();
+    ((EngineData)localObject).a(paramLong, paramInt);
+    this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(paramLong, ((EngineData)localObject).a(((EngineData)localObject).e(IGameEngine.a().getCurrentAccountUin())));
   }
   
   public void b(long paramLong1, long paramLong2)
@@ -1089,16 +1106,7 @@ public class RoomController
   
   public void b(long paramLong, String paramString, int paramInt1, int paramInt2)
   {
-    boolean bool = GameEngine.a().i();
-    if (QLog.isColorLevel()) {
-      QLog.i("avgame_logic.GameRoomController", 2, "changeUserStatus roomId = " + paramLong + " userUin =" + paramString + " userStatus =" + paramInt1 + " isQQCJ =" + bool);
-    }
-    if (bool) {}
-    for (int i = 1;; i = 0)
-    {
-      this.jdField_a_of_type_ComTencentAvgameGamelogicHandlerGameRoomHandler.a(paramLong, paramString, paramInt1, paramInt2, i);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge Z and I\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void b(boolean paramBoolean, int paramInt, String paramString, RoomInfo paramRoomInfo, byte[] paramArrayOfByte, long paramLong)
@@ -1109,25 +1117,38 @@ public class RoomController
     this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.b(paramBoolean, paramInt, paramString, paramRoomInfo, paramArrayOfByte, paramLong);
   }
   
-  public void b(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, String paramString)
+  protected void b(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("avgame_logic.GameRoomController", 2, "onStartStrangerMatch isSuc=" + paramBoolean + " roomId=" + paramLong + " gameType=" + paramInt1 + " errCod=" + paramInt2 + " errMsg=" + paramString);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onStartStrangerMatch isSuc=");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(" roomId=");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(" gameType=");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(" errCod=");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append(" errMsg=");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("avgame_logic.GameRoomController", 2, ((StringBuilder)localObject).toString());
     }
     if (paramBoolean)
     {
-      EngineData localEngineData = (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a();
-      localEngineData.a(paramLong, 0);
-      localEngineData.a(null);
-      localEngineData.e(false);
+      localObject = (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a();
+      ((EngineData)localObject).a(paramLong, 0);
+      ((EngineData)localObject).a(null);
+      ((EngineData)localObject).e(false);
     }
     this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.b(paramBoolean, paramLong, paramInt1, paramInt2, paramString);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.removeObserver(this);
-    this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.removeObserver(this.jdField_a_of_type_ComTencentAvgameBusinessObserverUserInfoObserver);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentAvgameBusinessObserverUserInfoObserver);
     this.jdField_a_of_type_ComTencentAvgameGamelogicControllerISurvivalRoomController.b();
     a();
     if (QLog.isColorLevel()) {
@@ -1143,10 +1164,10 @@ public class RoomController
     if (!a(paramLong2, "pushOnRoomDestroy()")) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(7, BaseApplicationImpl.getApplication().getString(2131690527), (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
+    this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.a(7, MobileQQ.sMobileQQ.getString(2131690452), (EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a());
   }
   
-  public void d(long paramLong1, long paramLong2)
+  protected void d(long paramLong1, long paramLong2)
   {
     if (QLog.isColorLevel()) {
       QLog.i("avgame_logic.GameRoomController", 2, "onPkMatchTimeout");
@@ -1156,62 +1177,80 @@ public class RoomController
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (IGameEngine.k()) {
+      return false;
+    }
+    int i = paramMessage.what;
+    if (i != 0)
     {
-    default: 
-    case 0: 
-    case 2: 
-    case 1: 
-      do
+      Object localObject;
+      boolean bool;
+      if (i != 1)
       {
-        do
+        if (i != 2)
         {
+          if (i != 3) {
+            return false;
+          }
+          IGameEngine.a().l();
+          IGameEngine.a().a().f(1);
+          localObject = this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener;
+          if (paramMessage.arg1 == 1) {
+            bool = true;
+          } else {
+            bool = false;
+          }
+          ((GameRoomStatusListener)localObject).a(true, 0, bool, null);
           return false;
-          GameEngine.a().n();
-          return false;
-        } while (GameEngine.a().a().o() != 10);
-        GameEngine.a().a().f(6);
-        if (this.b != null) {
-          this.b.removeMessages(0);
         }
-        localGameRoomStatusListener = this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener;
-        i = paramMessage.arg2;
-        if (paramMessage.arg1 == 1) {}
-        for (bool = true;; bool = false)
+        if (IGameEngine.a().a().o() == 10)
         {
-          localGameRoomStatusListener.a(true, i, bool, null);
+          IGameEngine.a().a().f(6);
+          localObject = this.b;
+          if (localObject != null) {
+            ((Handler)localObject).removeMessages(0);
+          }
+          localObject = this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener;
+          i = paramMessage.arg2;
+          if (paramMessage.arg1 == 1) {
+            bool = true;
+          } else {
+            bool = false;
+          }
+          ((GameRoomStatusListener)localObject).a(true, i, bool, null);
           this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.b(true);
           return false;
         }
-      } while (GameEngine.a().a().o() != 5);
-      if (this.b != null) {
-        this.b.removeMessages(0);
       }
-      GameEngine.a().a().f(7);
-      localGameRoomStatusListener = this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener;
-      int i = paramMessage.arg2;
-      if (paramMessage.arg1 == 1) {}
-      for (bool = true;; bool = false)
+      else if (IGameEngine.a().a().o() == 5)
       {
-        localGameRoomStatusListener.a(true, i, bool, null);
+        localObject = this.b;
+        if (localObject != null) {
+          ((Handler)localObject).removeMessages(0);
+        }
+        IGameEngine.a().a().f(7);
+        localObject = this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener;
+        i = paramMessage.arg2;
+        if (paramMessage.arg1 == 1) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        ((GameRoomStatusListener)localObject).a(true, i, bool, null);
         this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener.b(false);
         return false;
       }
     }
-    GameEngine.a().l();
-    GameEngine.a().a().f(1);
-    GameRoomStatusListener localGameRoomStatusListener = this.jdField_a_of_type_ComTencentAvgameGamelogicListenerGameRoomStatusListener;
-    if (paramMessage.arg1 == 1) {}
-    for (boolean bool = true;; bool = false)
+    else
     {
-      localGameRoomStatusListener.a(true, 0, bool, null);
-      return false;
+      IGameEngine.a().n();
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.controller.RoomController
  * JD-Core Version:    0.7.0.1
  */

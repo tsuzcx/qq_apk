@@ -15,14 +15,17 @@ class DefaultActivityLauncher
   {
     try
     {
-      Method localMethod = paramContext.getClass().getMethod("startActivity", new Class[] { Intent.class });
+      localObject = paramContext.getClass().getMethod("startActivity", new Class[] { Intent.class });
       paramContext = paramContext.getClass().getMethod("startActivity", new Class[] { Intent.class, Bundle.class });
-      boolean bool = localMethod.getDeclaringClass().isAssignableFrom(paramContext.getDeclaringClass());
+      boolean bool = ((Method)localObject).getDeclaringClass().isAssignableFrom(paramContext.getDeclaringClass());
       return bool;
     }
     catch (Exception paramContext)
     {
-      Logger.warning("failed to check activity method, " + paramContext.toString());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("failed to check activity method, ");
+      ((StringBuilder)localObject).append(paramContext.toString());
+      Logger.warning(((StringBuilder)localObject).toString());
     }
     return false;
   }
@@ -31,32 +34,51 @@ class DefaultActivityLauncher
   {
     try
     {
-      Method localMethod = paramContext.getClass().getMethod("startActivityForResult", new Class[] { Intent.class, Integer.TYPE });
+      localObject = paramContext.getClass().getMethod("startActivityForResult", new Class[] { Intent.class, Integer.TYPE });
       paramContext = paramContext.getClass().getMethod("startActivityForResult", new Class[] { Intent.class, Integer.TYPE, Bundle.class });
-      boolean bool = localMethod.getDeclaringClass().isAssignableFrom(paramContext.getDeclaringClass());
+      boolean bool = ((Method)localObject).getDeclaringClass().isAssignableFrom(paramContext.getDeclaringClass());
       return bool;
     }
     catch (Exception paramContext)
     {
-      Logger.warning("failed to check activity method, " + paramContext.toString());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("failed to check activity method, ");
+      ((StringBuilder)localObject).append(paramContext.toString());
+      Logger.warning(((StringBuilder)localObject).toString());
     }
     return false;
   }
   
   protected static void printCheckStartActivityFailMessage(Context paramContext)
   {
-    Logger.warning("startActivity(Intent) and startActivity(Intent, Bundle) is either override in class " + paramContext.getClass().toString() + ", you should override them both or none");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("startActivity(Intent) and startActivity(Intent, Bundle) is either override in class ");
+    localStringBuilder.append(paramContext.getClass().toString());
+    localStringBuilder.append(", you should override them both or none");
+    Logger.warning(localStringBuilder.toString());
   }
   
   protected static void setIntentParams(ActivityURIRequest paramActivityURIRequest, Intent paramIntent)
   {
-    Bundle localBundle = paramActivityURIRequest.extra();
-    if (localBundle != null) {
-      paramIntent.putExtras(localBundle);
+    Object localObject = paramActivityURIRequest.extra();
+    if (localObject != null) {
+      paramIntent.putExtras((Bundle)localObject);
     }
     int i = paramActivityURIRequest.flags();
     if (i != 0) {
       paramIntent.setFlags(i);
+    }
+    localObject = paramActivityURIRequest.data();
+    if (localObject != null) {
+      paramIntent.setData((Uri)localObject);
+    }
+    localObject = paramActivityURIRequest.type();
+    if (localObject != null) {
+      paramIntent.setType((String)localObject);
+    }
+    paramActivityURIRequest = paramActivityURIRequest.intentAction();
+    if (paramActivityURIRequest != null) {
+      paramIntent.setAction(paramActivityURIRequest);
     }
   }
   
@@ -71,115 +93,123 @@ class DefaultActivityLauncher
   
   protected static int startActivity(URIRequest paramURIRequest, Intent paramIntent)
   {
-    int j = 1000;
-    int i = j;
     if (paramURIRequest != null)
     {
-      if (paramIntent != null) {
-        break label18;
+      if (paramIntent == null) {
+        return 1000;
       }
-      i = j;
-    }
-    label18:
-    Context localContext;
-    Integer localInteger;
-    do
-    {
-      return i;
-      localContext = paramURIRequest.getContext();
+      Context localContext = paramURIRequest.getContext();
       if (localContext == null)
       {
-        Logger.warning("fail to start activity, context is null, uri is " + paramURIRequest.getURI().toString());
+        paramIntent = new StringBuilder();
+        paramIntent.append("fail to start activity, context is null, uri is ");
+        paramIntent.append(paramURIRequest.getURI().toString());
+        Logger.warning(paramIntent.toString());
         return 1000;
       }
       paramURIRequest = new ActivityURIRequest(paramURIRequest);
       setIntentParams(paramURIRequest, paramIntent);
       paramIntent.setPackage(localContext.getPackageName());
-      localInteger = paramURIRequest.requestCode();
-      j = startIntent(paramURIRequest, paramIntent, localContext, localInteger, true);
-      i = j;
-    } while (j == 0);
-    paramIntent.setPackage(null);
-    return startIntent(paramURIRequest, paramIntent, localContext, localInteger, false);
+      Integer localInteger = paramURIRequest.requestCode();
+      int i = startIntent(paramURIRequest, paramIntent, localContext, localInteger, true);
+      if (i == 0) {
+        return i;
+      }
+      paramIntent.setPackage(null);
+      return startIntent(paramURIRequest, paramIntent, localContext, localInteger, false);
+    }
+    return 1000;
   }
   
   protected static int startActivityByAction(ActivityURIRequest paramActivityURIRequest, Intent paramIntent)
   {
-    int i = 1000;
     try
     {
       StartActivityAction localStartActivityAction = paramActivityURIRequest.startActivityAction();
       if (localStartActivityAction == null) {
         return 1000;
       }
-      if (localStartActivityAction.startActivity(paramActivityURIRequest, paramIntent))
-      {
-        setOverridePendingTransition(paramActivityURIRequest);
-        return 0;
+      if (!localStartActivityAction.startActivity(paramActivityURIRequest, paramIntent)) {
+        return 1000;
       }
-    }
-    catch (ActivityNotFoundException paramActivityURIRequest)
-    {
-      Logger.warning("fail to start activity, " + paramActivityURIRequest.toString());
-      return 1001;
+      setOverridePendingTransition(paramActivityURIRequest);
+      return 0;
     }
     catch (SecurityException paramActivityURIRequest)
     {
-      Logger.warning("fail to start activity, " + paramActivityURIRequest.toString());
-      i = 1002;
+      paramIntent = new StringBuilder();
+      paramIntent.append("fail to start activity, ");
+      paramIntent.append(paramActivityURIRequest.toString());
+      Logger.warning(paramIntent.toString());
+      return 1002;
     }
-    return i;
+    catch (ActivityNotFoundException paramActivityURIRequest)
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("fail to start activity, ");
+      paramIntent.append(paramActivityURIRequest.toString());
+      Logger.warning(paramIntent.toString());
+    }
+    return 1001;
   }
   
   protected static int startActivityByDefault(ActivityURIRequest paramActivityURIRequest, Intent paramIntent, Context paramContext, Integer paramInteger)
   {
-    for (;;)
+    try
     {
-      try
+      Bundle localBundle = paramActivityURIRequest.options(false);
+      if ((paramInteger != null) && ((paramContext instanceof Activity)))
       {
-        localBundle = paramActivityURIRequest.options(false);
-        if ((paramInteger == null) || (!(paramContext instanceof Activity))) {
-          continue;
+        if (localBundle == null)
+        {
+          ((Activity)paramContext).startActivityForResult(paramIntent, paramInteger.intValue());
         }
-        if (localBundle != null) {
-          continue;
+        else
+        {
+          if (!checkStartActivityForResult(paramContext)) {
+            printCheckStartActivityFailMessage(paramContext);
+          }
+          ((Activity)paramContext).startActivityForResult(paramIntent, paramInteger.intValue(), localBundle);
         }
-        ((Activity)paramContext).startActivityForResult(paramIntent, paramInteger.intValue());
       }
-      catch (ActivityNotFoundException paramActivityURIRequest)
+      else if (localBundle == null)
       {
-        Logger.warning("fail to start activity, " + paramActivityURIRequest.toString());
-        return 1001;
-        if (localBundle != null) {
-          continue;
-        }
         paramContext.startActivity(paramIntent);
-        continue;
       }
-      catch (SecurityException paramActivityURIRequest)
+      else
       {
-        Bundle localBundle;
-        Logger.warning("fail to start activity, " + paramActivityURIRequest.toString());
-        return 1002;
-        if (checkStartActivity(paramContext)) {
-          continue;
+        if (!checkStartActivity(paramContext)) {
+          printCheckStartActivityFailMessage(paramContext);
         }
-        printCheckStartActivityFailMessage(paramContext);
         paramContext.startActivity(paramIntent, localBundle);
-        continue;
-      }
-      catch (Exception paramActivityURIRequest)
-      {
-        Logger.warning("fail to start activity, " + paramActivityURIRequest.toString());
       }
       setOverridePendingTransition(paramActivityURIRequest);
       return 0;
-      if (!checkStartActivityForResult(paramContext)) {
-        printCheckStartActivityFailMessage(paramContext);
-      }
-      ((Activity)paramContext).startActivityForResult(paramIntent, paramInteger.intValue(), localBundle);
     }
-    return 1000;
+    catch (Exception paramActivityURIRequest)
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("fail to start activity, ");
+      paramIntent.append(paramActivityURIRequest.toString());
+      Logger.warning(paramIntent.toString());
+      return 1000;
+    }
+    catch (SecurityException paramActivityURIRequest)
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("fail to start activity, ");
+      paramIntent.append(paramActivityURIRequest.toString());
+      Logger.warning(paramIntent.toString());
+      return 1002;
+    }
+    catch (ActivityNotFoundException paramActivityURIRequest)
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("fail to start activity, ");
+      paramIntent.append(paramActivityURIRequest.toString());
+      Logger.warning(paramIntent.toString());
+    }
+    return 1001;
   }
   
   protected static int startIntent(ActivityURIRequest paramActivityURIRequest, Intent paramIntent, Context paramContext, Integer paramInteger, boolean paramBoolean)
@@ -197,7 +227,7 @@ class DefaultActivityLauncher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qroute.route.DefaultActivityLauncher
  * JD-Core Version:    0.7.0.1
  */

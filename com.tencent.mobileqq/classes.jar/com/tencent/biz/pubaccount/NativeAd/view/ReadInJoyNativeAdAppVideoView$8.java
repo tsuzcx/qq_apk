@@ -1,13 +1,5 @@
 package com.tencent.biz.pubaccount.NativeAd.view;
 
-import android.os.Handler;
-import com.tencent.biz.pubaccount.NativeAd.module.AdModuleVideo;
-import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-
 class ReadInJoyNativeAdAppVideoView$8
   implements Runnable
 {
@@ -15,38 +7,12 @@ class ReadInJoyNativeAdAppVideoView$8
   
   public void run()
   {
-    int i = 1;
-    IPublicAccountReportUtils localIPublicAccountReportUtils;
-    String str;
-    if (!ReadInJoyNativeAdAppVideoView.b(this.this$0))
-    {
-      ReadInJoyNativeAdAppVideoView.b(this.this$0, true);
-      boolean bool = this.this$0.a(ReadInJoyNativeAdAppVideoView.a(this.this$0).d, ReadInJoyNativeAdAppVideoView.a(this.this$0).d);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyNativeAdAppVideoView", 2, "native ad preload cache state: " + bool);
-      }
-      localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-      str = "" + ReadInJoyNativeAdAppVideoView.a(this.this$0).mAdUin;
-      if (!bool) {
-        break label198;
-      }
-    }
-    for (;;)
-    {
-      localIPublicAccountReportUtils.publicAccountReportClickEvent(null, str, "0X80093B8", "0X80093B8", 0, i, ReadInJoyNativeAdAppVideoView.a(this.this$0).mAdTraceId, null, null, null);
-      ReadInJoyNativeAdAppVideoView.a(this.this$0).start();
-      ReadInJoyNativeAdAppVideoView.e(this.this$0, 4);
-      ReadInJoyNativeAdAppVideoView.a(this.this$0);
-      ReadInJoyNativeAdAppVideoView.a(this.this$0).post(this.this$0.a);
-      return;
-      label198:
-      i = 0;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge Z and I\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.8
  * JD-Core Version:    0.7.0.1
  */

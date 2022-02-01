@@ -1,23 +1,26 @@
 package com.tencent.qqperf.monitor.backgroundcpu;
 
-import com.tencent.mobileqq.qqperf.api.IPerfApi;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MainService;
 
 public class BackgroundCpuMonitor$BgCpuTotalCost
 {
-  long a = 0L;
+  long a;
   long b = 0L;
+  
+  public BackgroundCpuMonitor$BgCpuTotalCost()
+  {
+    this.jdField_a_of_type_Long = 0L;
+  }
   
   public void a()
   {
     long l1 = MainService.sReceiverCpuTime;
-    long l2 = ((IPerfApi)QRoute.api(IPerfApi.class)).getFTSSyncHandlerThreadTime();
-    if (this.a == 0L)
+    long l2 = BackgroundCpuMonitor.jdField_a_of_type_Long;
+    if (this.jdField_a_of_type_Long == 0L)
     {
-      QLog.d("BatteryStats.BgCpu", 1, new Object[] { "bgPrintCpuStart msfrecv=", Long.valueOf(l1), "[", Integer.valueOf(MainService.sNativeTidOfReceiver), "], ", "  fts=", Long.valueOf(l2), "[", Integer.valueOf(((IPerfApi)QRoute.api(IPerfApi.class)).getFTSSyncHandlerFtsSyncThreadid()), "]" });
-      this.a = l1;
+      QLog.d("BatteryStats.BgCpu", 1, new Object[] { "bgPrintCpuStart msfrecv=", Long.valueOf(l1), "[", Integer.valueOf(MainService.sNativeTidOfReceiver), "], ", "  fts=", Long.valueOf(l2), "[", Integer.valueOf(BackgroundCpuMonitor.jdField_a_of_type_Int), "]" });
+      this.jdField_a_of_type_Long = l1;
       this.b = l2;
       return;
     }
@@ -27,20 +30,20 @@ public class BackgroundCpuMonitor$BgCpuTotalCost
   public void b()
   {
     c();
-    this.a = 0L;
+    this.jdField_a_of_type_Long = 0L;
     this.b = 0L;
   }
   
   void c()
   {
     long l1 = MainService.sReceiverCpuTime;
-    long l2 = ((IPerfApi)QRoute.api(IPerfApi.class)).getFTSSyncHandlerThreadTime();
-    QLog.d("BatteryStats.BgCpu", 1, new Object[] { "bgPrintCpuCostSofar msfrecv=", Long.valueOf(l1 - this.a), "[", Integer.valueOf(MainService.sNativeTidOfReceiver), "], ", "  fts=", Long.valueOf(l2 - this.b), "[", Integer.valueOf(((IPerfApi)QRoute.api(IPerfApi.class)).getFTSSyncHandlerFtsSyncThreadid()), "]" });
+    long l2 = BackgroundCpuMonitor.jdField_a_of_type_Long;
+    QLog.d("BatteryStats.BgCpu", 1, new Object[] { "bgPrintCpuCostSofar msfrecv=", Long.valueOf(l1 - this.jdField_a_of_type_Long), "[", Integer.valueOf(MainService.sNativeTidOfReceiver), "], ", "  fts=", Long.valueOf(l2 - this.b), "[", Integer.valueOf(BackgroundCpuMonitor.jdField_a_of_type_Int), "]" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.monitor.backgroundcpu.BackgroundCpuMonitor.BgCpuTotalCost
  * JD-Core Version:    0.7.0.1
  */

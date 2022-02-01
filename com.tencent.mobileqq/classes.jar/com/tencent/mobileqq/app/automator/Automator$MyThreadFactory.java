@@ -10,7 +10,10 @@ class Automator$MyThreadFactory
   
   public Thread newThread(Runnable paramRunnable)
   {
-    paramRunnable = new Thread(paramRunnable, "Automator_" + this.a.getAndIncrement());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Automator_");
+    localStringBuilder.append(this.a.getAndIncrement());
+    paramRunnable = new Thread(paramRunnable, localStringBuilder.toString());
     if (paramRunnable.getPriority() != 10) {
       paramRunnable.setPriority(10);
     }
@@ -19,7 +22,7 @@ class Automator$MyThreadFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.Automator.MyThreadFactory
  * JD-Core Version:    0.7.0.1
  */

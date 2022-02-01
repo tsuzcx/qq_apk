@@ -8,25 +8,33 @@ class VideoNetStateBar$1
 {
   VideoNetStateBar$1(VideoNetStateBar paramVideoNetStateBar) {}
   
-  public void a(long paramLong1, long paramLong2)
+  protected void a(long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoNetStateBar", 2, "onCreateRoomSuc-->GroupID=" + paramLong2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCreateRoomSuc-->GroupID=");
+      localStringBuilder.append(paramLong2);
+      QLog.d("VideoNetStateBar", 2, localStringBuilder.toString());
     }
     this.a.i();
   }
   
-  public void b(long paramLong1, long paramLong2)
+  protected void b(long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoNetStateBar", 2, "onEnterRoomSuc-->GroupID=" + paramLong2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onEnterRoomSuc-->GroupID=");
+      localStringBuilder.append(paramLong2);
+      QLog.d("VideoNetStateBar", 2, localStringBuilder.toString());
     }
     this.a.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoNetStateBar.1
  * JD-Core Version:    0.7.0.1
  */

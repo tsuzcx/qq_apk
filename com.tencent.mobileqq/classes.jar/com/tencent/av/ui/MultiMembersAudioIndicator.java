@@ -2,14 +2,14 @@ package com.tencent.av.ui;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.LayoutParams;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 
 public class MultiMembersAudioIndicator
   extends RadioGroup
@@ -34,7 +34,7 @@ public class MultiMembersAudioIndicator
   public RadioButton a()
   {
     MultiMembersAudioIndicator.1 local1 = new MultiMembersAudioIndicator.1(this, super.getContext());
-    local1.setButtonDrawable(2130842364);
+    local1.setButtonDrawable(2130842262);
     local1.setGravity(17);
     Resources localResources = super.getContext().getResources();
     RadioGroup.LayoutParams localLayoutParams = new RadioGroup.LayoutParams((int)TypedValue.applyDimension(1, 10.0F, localResources.getDisplayMetrics()), (int)TypedValue.applyDimension(1, 10.0F, localResources.getDisplayMetrics()));
@@ -50,12 +50,14 @@ public class MultiMembersAudioIndicator
   
   public void a()
   {
-    if (this.a == null) {}
-    do
-    {
+    Object localObject = this.a;
+    if (localObject == null) {
       return;
-      localObject = this.a.getAdapter();
-    } while (localObject == null);
+    }
+    localObject = ((ViewPager)localObject).getAdapter();
+    if (localObject == null) {
+      return;
+    }
     int k = ((PagerAdapter)localObject).getCount();
     super.removeAllViews();
     int i = 0;
@@ -69,7 +71,7 @@ public class MultiMembersAudioIndicator
     if (j >= super.getChildCount()) {
       i = super.getChildCount() - 1;
     }
-    Object localObject = (RadioButton)super.getChildAt(i);
+    localObject = (RadioButton)super.getChildAt(i);
     if (localObject != null) {
       ((RadioButton)localObject).setChecked(true);
     }
@@ -87,34 +89,38 @@ public class MultiMembersAudioIndicator
   
   public void onPageSelected(int paramInt)
   {
-    if (this.a == null) {}
-    RadioButton localRadioButton;
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.a.getAdapter() == null) || (super.getChildCount() <= paramInt));
-      int i = paramInt;
-      if (paramInt >= super.getChildCount()) {
-        i = super.getChildCount() - 1;
-      }
-      localRadioButton = (RadioButton)super.getChildAt(i);
-    } while (localRadioButton == null);
-    localRadioButton.setChecked(true);
+    Object localObject = this.a;
+    if (localObject == null) {
+      return;
+    }
+    if (((ViewPager)localObject).getAdapter() == null) {
+      return;
+    }
+    if (super.getChildCount() <= paramInt) {
+      return;
+    }
+    int i = paramInt;
+    if (paramInt >= super.getChildCount()) {
+      i = super.getChildCount() - 1;
+    }
+    localObject = (RadioButton)super.getChildAt(i);
+    if (localObject != null) {
+      ((RadioButton)localObject).setChecked(true);
+    }
   }
   
   public void setViewPager(ViewPager paramViewPager)
   {
     this.a = paramViewPager;
-    if (this.a != null) {
-      this.a.setOnPageChangeListener(this);
+    paramViewPager = this.a;
+    if (paramViewPager != null) {
+      paramViewPager.setOnPageChangeListener(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiMembersAudioIndicator
  * JD-Core Version:    0.7.0.1
  */

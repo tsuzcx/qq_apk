@@ -21,48 +21,61 @@ class QCircleChatPie$4
   
   public void a(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, QQCirclePrivateMsgAIO.StGetPMBeginShowMsgRsp paramStGetPMBeginShowMsgRsp)
   {
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStGetPMBeginShowMsgRsp == null)) {
-      QLog.e(this.a.b, 1, "requestNewestShowFuelTips error:" + paramLong + "  errorMsg:" + paramString);
-    }
-    label269:
-    label297:
-    do
+    if ((paramBoolean) && (paramLong == 0L) && (paramStGetPMBeginShowMsgRsp != null))
     {
-      do
+      if (paramStGetPMBeginShowMsgRsp.pmBeginShow.has())
       {
-        do
-        {
-          return;
-        } while (!paramStGetPMBeginShowMsgRsp.pmBeginShow.has());
         paramBaseRequest = paramStGetPMBeginShowMsgRsp.pmBeginShow.get();
-        if (QCircleChatPie.a(this.a) == null) {
-          break label297;
+        if (QCircleChatPie.a(this.a) != null)
+        {
+          if ((!TextUtils.isEmpty(QCircleChatPie.a(this.a))) && (!QCircleChatPie.a(this.a).equals(paramBaseRequest)))
+          {
+            QCircleChatPie.a(this.a, paramBaseRequest);
+            if (!TextUtils.isEmpty(QCircleChatPie.a(this.a)))
+            {
+              if (QCircleChatUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, QCircleChatPie.a(this.a), QCircleChatPie.a(this.a)))
+              {
+                paramBaseRequest = this.a;
+                paramBaseRequest.a(QCircleChatPie.a(paramBaseRequest), 0);
+                ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 45, 3, 1);
+              }
+            }
+            else
+            {
+              this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, QCircleChatPie.a(this.a).msgtype, QCircleChatPie.a(this.a).uniseq);
+              this.a.e(131072);
+            }
+          }
+          else
+          {
+            ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 45, 3, 1);
+          }
         }
-        if ((TextUtils.isEmpty(QCircleChatPie.a(this.a))) || (QCircleChatPie.a(this.a).equals(paramBaseRequest))) {
-          break label269;
+        else
+        {
+          QCircleChatPie.a(this.a, paramBaseRequest);
+          if (!TextUtils.isEmpty(QCircleChatPie.a(this.a)))
+          {
+            paramBaseRequest = this.a;
+            QCircleChatPie.a(paramBaseRequest, QCircleChatUtil.a(paramBaseRequest.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, QCircleChatPie.a(this.a), QCircleChatPie.a(this.a)));
+            ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 45, 3, 1);
+          }
         }
-        QCircleChatPie.a(this.a, paramBaseRequest);
-        if (TextUtils.isEmpty(QCircleChatPie.a(this.a))) {
-          break;
-        }
-      } while (!QCircleChatUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, QCircleChatPie.a(this.a), QCircleChatPie.a(this.a)));
-      this.a.a(QCircleChatPie.a(this.a), 0);
-      ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 45, 3, 1);
+      }
       return;
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, QCircleChatPie.a(this.a).msgtype, QCircleChatPie.a(this.a).uniseq);
-      this.a.g(131072);
-      return;
-      ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 45, 3, 1);
-      return;
-      QCircleChatPie.a(this.a, paramBaseRequest);
-    } while (TextUtils.isEmpty(QCircleChatPie.a(this.a)));
-    QCircleChatPie.a(this.a, QCircleChatUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, QCircleChatPie.a(this.a), QCircleChatPie.a(this.a)));
-    ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 45, 3, 1);
+    }
+    paramBaseRequest = this.a.b;
+    paramStGetPMBeginShowMsgRsp = new StringBuilder();
+    paramStGetPMBeginShowMsgRsp.append("requestNewestShowFuelTips error:");
+    paramStGetPMBeginShowMsgRsp.append(paramLong);
+    paramStGetPMBeginShowMsgRsp.append("  errorMsg:");
+    paramStGetPMBeginShowMsgRsp.append(paramString);
+    QLog.e(paramBaseRequest, 1, paramStGetPMBeginShowMsgRsp.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.QCircleChatPie.4
  * JD-Core Version:    0.7.0.1
  */

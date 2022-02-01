@@ -7,7 +7,10 @@ public class QavSoData
 {
   public String getSharedPreferencesName()
   {
-    return "preload_" + QavSoDownloadHandler.e();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("preload_");
+    localStringBuilder.append(QavSoDownloadHandler.e());
+    return localStringBuilder.toString();
   }
   
   public String getStrResName()
@@ -17,7 +20,7 @@ public class QavSoData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.QavSoData
  * JD-Core Version:    0.7.0.1
  */

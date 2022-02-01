@@ -44,35 +44,33 @@ public final class BasicMessageChannel<T>
   @UiThread
   public void send(@Nullable T paramT, @Nullable BasicMessageChannel.Reply<T> paramReply)
   {
-    Object localObject = null;
     BinaryMessenger localBinaryMessenger = this.messenger;
     String str = this.name;
     ByteBuffer localByteBuffer = this.codec.encodeMessage(paramT);
-    if (paramReply == null) {}
-    for (paramT = localObject;; paramT = new BasicMessageChannel.IncomingReplyHandler(this, paramReply, null))
-    {
-      localBinaryMessenger.send(str, localByteBuffer, paramT);
-      return;
+    paramT = null;
+    if (paramReply != null) {
+      paramT = new BasicMessageChannel.IncomingReplyHandler(this, paramReply, null);
     }
+    localBinaryMessenger.send(str, localByteBuffer, paramT);
   }
   
   @UiThread
   public void setMessageHandler(@Nullable BasicMessageChannel.MessageHandler<T> paramMessageHandler)
   {
-    Object localObject = null;
     BinaryMessenger localBinaryMessenger = this.messenger;
     String str = this.name;
-    if (paramMessageHandler == null) {}
-    for (paramMessageHandler = localObject;; paramMessageHandler = new BasicMessageChannel.IncomingMessageHandler(this, paramMessageHandler, null))
-    {
-      localBinaryMessenger.setMessageHandler(str, paramMessageHandler);
-      return;
+    Object localObject = null;
+    if (paramMessageHandler == null) {
+      paramMessageHandler = localObject;
+    } else {
+      paramMessageHandler = new BasicMessageChannel.IncomingMessageHandler(this, paramMessageHandler, null);
     }
+    localBinaryMessenger.setMessageHandler(str, paramMessageHandler);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.common.BasicMessageChannel
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,11 @@ final class MiniAppUtils$3
       WebSoCgiService.WebSoCgiState localWebSoCgiState = (WebSoCgiService.WebSoCgiState)paramMessage.obj;
       if (localWebSoCgiState.c == 0)
       {
-        QLog.d("MiniAppUtils", 2, "handleMessage() called with: msg = [" + paramMessage + "]");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleMessage() called with: msg = [");
+        localStringBuilder.append(paramMessage);
+        localStringBuilder.append("]");
+        QLog.d("MiniAppUtils", 2, localStringBuilder.toString());
         ThreadManager.getFileThreadHandler().post(new MiniAppUtils.3.1(this, localWebSoCgiState));
       }
     }
@@ -32,7 +36,7 @@ final class MiniAppUtils$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUtils.3
  * JD-Core Version:    0.7.0.1
  */

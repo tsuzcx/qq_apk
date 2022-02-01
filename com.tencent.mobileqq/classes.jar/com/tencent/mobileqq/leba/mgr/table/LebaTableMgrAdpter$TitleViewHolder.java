@@ -16,13 +16,13 @@ public class LebaTableMgrAdpter$TitleViewHolder
   public LebaTableMgrAdpter$TitleViewHolder(Context paramContext, View paramView, boolean paramBoolean)
   {
     super(paramView);
-    this.a = ((TextView)paramView.findViewById(2131379432));
+    this.a = ((TextView)paramView.findViewById(2131378784));
     if (paramBoolean)
     {
-      this.a.setTextColor(paramContext.getResources().getColor(2131165777));
+      this.a.setTextColor(paramContext.getResources().getColor(2131165768));
       return;
     }
-    this.a.setTextColor(paramContext.getResources().getColor(2131165776));
+    this.a.setTextColor(paramContext.getResources().getColor(2131165767));
   }
   
   public void a(LebaMgrViewItem paramLebaMgrViewItem)
@@ -38,7 +38,7 @@ public class LebaTableMgrAdpter$TitleViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.mgr.table.LebaTableMgrAdpter.TitleViewHolder
  * JD-Core Version:    0.7.0.1
  */

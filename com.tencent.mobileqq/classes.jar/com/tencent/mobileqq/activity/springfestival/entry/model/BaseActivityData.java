@@ -39,15 +39,17 @@ public abstract class BaseActivityData
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (BaseActivityData)paramObject;
-    } while ((this.type == paramObject.type) && (this.id.equals(paramObject.id)));
+      return (this.type == paramObject.type) && (this.id.equals(paramObject.id));
+    }
     return false;
   }
   
@@ -86,7 +88,6 @@ public abstract class BaseActivityData
   
   public void parseJson(JSONObject paramJSONObject)
   {
-    boolean bool2 = true;
     if (paramJSONObject == null) {
       return;
     }
@@ -96,30 +97,26 @@ public abstract class BaseActivityData
     this.id = paramJSONObject.optString("Id", this.id);
     this.promotionId = paramJSONObject.optString("PromotionId", this.promotionId);
     this.type = paramJSONObject.optInt("Type", this.type);
-    if (paramJSONObject.optInt("SupportStaggerPeak", 0) == 1)
-    {
+    boolean bool2 = false;
+    if (paramJSONObject.optInt("SupportStaggerPeak", 0) == 1) {
       bool1 = true;
-      this.staggerPeakSwitch = bool1;
-      this.configTimeInfo.begin = Utils.a(paramJSONObject.optString("BeginTime"));
-      this.configTimeInfo.end = Utils.a(paramJSONObject.optString("EndTime"));
-      this.taskTimeInfo.copyFrom(this.configTimeInfo);
-      JSONObject localJSONObject = paramJSONObject.optJSONObject("BreathLight");
-      this.breathLightData.parseJson(localJSONObject);
-      paramJSONObject = paramJSONObject.optJSONObject("Pendant");
-      this.pendantData.parseJson(paramJSONObject);
-      paramJSONObject = this.pendantData;
-      if (this.type != 2) {
-        break label184;
-      }
-    }
-    label184:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      paramJSONObject.validateCloseType(bool1);
-      return;
+    } else {
       bool1 = false;
-      break;
     }
+    this.staggerPeakSwitch = bool1;
+    this.configTimeInfo.begin = Utils.a(paramJSONObject.optString("BeginTime"));
+    this.configTimeInfo.end = Utils.a(paramJSONObject.optString("EndTime"));
+    this.taskTimeInfo.copyFrom(this.configTimeInfo);
+    JSONObject localJSONObject = paramJSONObject.optJSONObject("BreathLight");
+    this.breathLightData.parseJson(localJSONObject);
+    paramJSONObject = paramJSONObject.optJSONObject("Pendant");
+    this.pendantData.parseJson(paramJSONObject);
+    paramJSONObject = this.pendantData;
+    boolean bool1 = bool2;
+    if (this.type == 2) {
+      bool1 = true;
+    }
+    paramJSONObject.validateCloseType(bool1);
   }
   
   public boolean schedulePendantNBreathLight()
@@ -134,43 +131,78 @@ public abstract class BaseActivityData
   
   public String toSimpleString()
   {
-    return "BaseActivityData{id='" + this.id + '\'' + ", promotionId=" + this.promotionId + ", type=" + Const.a(this.type) + ", staggerPeakSwitch=" + this.staggerPeakSwitch + ", peakDelayMs=" + this.peakDelayMs + ", configTimeInfo=" + this.configTimeInfo + ", taskTimeInfo=" + this.taskTimeInfo + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BaseActivityData{id='");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", promotionId=");
+    localStringBuilder.append(this.promotionId);
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(Const.a(this.type));
+    localStringBuilder.append(", staggerPeakSwitch=");
+    localStringBuilder.append(this.staggerPeakSwitch);
+    localStringBuilder.append(", peakDelayMs=");
+    localStringBuilder.append(this.peakDelayMs);
+    localStringBuilder.append(", configTimeInfo=");
+    localStringBuilder.append(this.configTimeInfo);
+    localStringBuilder.append(", taskTimeInfo=");
+    localStringBuilder.append(this.taskTimeInfo);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("BaseActivityData{id='").append(this.id).append('\'').append(", promotionId=").append(this.promotionId).append(", type=").append(Const.a(this.type)).append(", staggerPeakSwitch=").append(this.staggerPeakSwitch).append(", peakDelayMs=").append(this.peakDelayMs).append(", configTimeInfo=").append(this.configTimeInfo).append(", taskTimeInfo=").append(this.taskTimeInfo).append(", pendantData=");
-    if (this.pendantData == null)
-    {
-      localObject = "null";
-      localStringBuilder = localStringBuilder.append(localObject).append(", breathLightData=");
-      if (this.breathLightData != null) {
-        break label158;
-      }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BaseActivityData{id='");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", promotionId=");
+    localStringBuilder.append(this.promotionId);
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(Const.a(this.type));
+    localStringBuilder.append(", staggerPeakSwitch=");
+    localStringBuilder.append(this.staggerPeakSwitch);
+    localStringBuilder.append(", peakDelayMs=");
+    localStringBuilder.append(this.peakDelayMs);
+    localStringBuilder.append(", configTimeInfo=");
+    localStringBuilder.append(this.configTimeInfo);
+    localStringBuilder.append(", taskTimeInfo=");
+    localStringBuilder.append(this.taskTimeInfo);
+    localStringBuilder.append(", pendantData=");
+    Object localObject2 = this.pendantData;
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = "null";
     }
-    label158:
-    for (Object localObject = "null";; localObject = this.breathLightData)
-    {
-      return localObject + '}';
-      localObject = this.pendantData;
-      break;
+    localStringBuilder.append(localObject1);
+    localStringBuilder.append(", breathLightData=");
+    localObject2 = this.breathLightData;
+    localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = "null";
     }
+    localStringBuilder.append(localObject1);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void updatePeakDelay(int paramInt)
   {
-    if (this.pendantData != null)
+    Object localObject = this.pendantData;
+    if (localObject != null)
     {
-      if (this.pendantData.getConfigTime().begin < getTaskTime().begin) {
+      if (((PendantData)localObject).getConfigTime().begin < getTaskTime().begin) {
         this.pendantData.getTaskTime().begin = getTaskTime().begin;
       }
       if (!Const.a(this.pendantData.getTaskTime())) {
         this.pendantData = null;
       }
     }
-    if (this.breathLightData != null)
+    localObject = this.breathLightData;
+    if (localObject != null)
     {
-      if (this.breathLightData.getConfigTime().begin < getTaskTime().begin) {
+      if (((BreathLightData)localObject).getConfigTime().begin < getTaskTime().begin) {
         this.breathLightData.getTaskTime().begin = getTaskTime().begin;
       }
       if (!Const.a(this.breathLightData.getTaskTime())) {
@@ -181,18 +213,18 @@ public abstract class BaseActivityData
   
   public void validate()
   {
-    if ((Const.a(this.pendantData.getConfigTime())) && (this.pendantData.getConfigTime().begin >= getConfigTime().begin) && (this.pendantData.getConfigTime().end <= getConfigTime().end)) {}
-    while ((Const.a(this.breathLightData.getConfigTime())) && (this.breathLightData.getConfigTime().begin >= getConfigTime().begin) && (this.breathLightData.getConfigTime().end <= getConfigTime().end))
-    {
-      return;
+    if ((!Const.a(this.pendantData.getConfigTime())) || (this.pendantData.getConfigTime().begin < getConfigTime().begin) || (this.pendantData.getConfigTime().end > getConfigTime().end)) {
       this.pendantData = null;
+    }
+    if ((Const.a(this.breathLightData.getConfigTime())) && (this.breathLightData.getConfigTime().begin >= getConfigTime().begin) && (this.breathLightData.getConfigTime().end <= getConfigTime().end)) {
+      return;
     }
     this.breathLightData = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.model.BaseActivityData
  * JD-Core Version:    0.7.0.1
  */

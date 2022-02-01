@@ -9,7 +9,7 @@ public class PhotoDanmakuUtil
 {
   private static final String TAG = "PhotoDanmakuUtil";
   private static final int cpuLevelLimit = QzoneConfig.getInstance().getConfig("QZoneSetting", "PictureViewerPhotoDanmakuCpuLevel", 1);
-  private static PhotoDanmakuUtil instance = null;
+  private static PhotoDanmakuUtil instance;
   private static final String mPhotoDanmakuBlackList = QzoneConfig.getInstance().getConfig("QZoneSetting", "PictureViewerPhotoDanmakuBlackList", "");
   private static final int memoryLevelLimit = QzoneConfig.getInstance().getConfig("QZoneSetting", "PictureViewerPhotoDanmakuMemoryLevel", 1);
   private volatile boolean enableP2VFunc = false;
@@ -25,15 +25,16 @@ public class PhotoDanmakuUtil
   
   public static PhotoDanmakuUtil getInstance()
   {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new PhotoDanmakuUtil();
+    if (instance == null) {
+      try
+      {
+        if (instance == null) {
+          instance = new PhotoDanmakuUtil();
+        }
       }
-      return instance;
+      finally {}
     }
-    finally {}
+    return instance;
   }
   
   private boolean isBuildModelInList(String paramString)
@@ -41,21 +42,41 @@ public class PhotoDanmakuUtil
     try
     {
       String str = Build.MODEL;
-      if ((str == null) || (str.length() == 0))
+      if ((str != null) && (str.length() != 0))
+      {
+        StringBuilder localStringBuilder;
+        if (QZLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("buildModel is '");
+          localStringBuilder.append(str);
+          localStringBuilder.append("'");
+          QZLog.d("PhotoDanmakuUtil", 2, localStringBuilder.toString());
+        }
+        if (paramString != null)
+        {
+          if (paramString.length() == 0) {
+            return false;
+          }
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(",");
+          localStringBuilder.append(str);
+          localStringBuilder.append(",");
+          str = localStringBuilder.toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(",");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(",");
+          if (localStringBuilder.toString().contains(str))
+          {
+            QZLog.i("PhotoDanmakuUtil", 1, "命中禁止大图浮层策略");
+            return true;
+          }
+        }
+      }
+      else
       {
         QZLog.i("PhotoDanmakuUtil", 1, "buildModel is empty, hide PhotoDanmaku .命中禁止大图浮层策略");
-        return true;
-      }
-      if (QZLog.isColorLevel()) {
-        QZLog.d("PhotoDanmakuUtil", 2, "buildModel is '" + str + "'");
-      }
-      if ((paramString == null) || (paramString.length() == 0)) {
-        break label150;
-      }
-      str = "," + str + ",";
-      if (("," + paramString + ",").contains(str))
-      {
-        QZLog.i("PhotoDanmakuUtil", 1, "命中禁止大图浮层策略");
         return true;
       }
     }
@@ -65,33 +86,22 @@ public class PhotoDanmakuUtil
       return false;
     }
     return false;
-    label150:
-    return false;
   }
   
   public boolean isEnablePhotoDanmakuFunc()
   {
-    if ((mPhotoDanmakuBlackList != null) && (!mPhotoDanmakuBlackList.equals(this.g_photoDanmakuBlacklist))) {
-      if (isBuildModelInList(mPhotoDanmakuBlackList)) {
-        break label74;
-      }
-    }
-    label74:
-    for (boolean bool = true;; bool = false)
+    String str = mPhotoDanmakuBlackList;
+    if ((str != null) && (!str.equals(this.g_photoDanmakuBlacklist)))
     {
-      this.enableP2VFunc = bool;
+      this.enableP2VFunc = (isBuildModelInList(mPhotoDanmakuBlackList) ^ true);
       this.g_photoDanmakuBlacklist = mPhotoDanmakuBlackList;
-      if ((!this.enableP2VFunc) || (!((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).meetHardwareRestriction(memoryLevelLimit, cpuLevelLimit))) {
-        break;
-      }
-      return true;
     }
-    return false;
+    return (this.enableP2VFunc) && (((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).meetHardwareRestriction(memoryLevelLimit, cpuLevelLimit));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.PhotoDanmakuUtil
  * JD-Core Version:    0.7.0.1
  */

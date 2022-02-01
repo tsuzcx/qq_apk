@@ -17,7 +17,8 @@ class TVKVideoInfoRequest$1
   
   public void onVInfoSuccess(String paramString1, String paramString2, Document paramDocument)
   {
-    TVKVideoInfoRequest.access$202(this.this$0, TVKVideoInfoRequest.access$300(this.this$0).parseVinfo(paramDocument));
+    paramString1 = this.this$0;
+    TVKVideoInfoRequest.access$202(paramString1, TVKVideoInfoRequest.access$300(paramString1).parseVinfo(paramDocument));
     TVKVideoInfoRequest.access$300(this.this$0).setVinfoXml(paramString2);
     if (TVKVideoInfoRequest.access$300(this.this$0).getEm() > 0)
     {
@@ -38,7 +39,7 @@ class TVKVideoInfoRequest$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.vod.TVKVideoInfoRequest.1
  * JD-Core Version:    0.7.0.1
  */

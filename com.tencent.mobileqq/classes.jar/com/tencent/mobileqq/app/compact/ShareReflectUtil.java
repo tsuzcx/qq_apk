@@ -9,11 +9,10 @@ public class ShareReflectUtil
 {
   public static Field a(Object paramObject, String paramString)
   {
-    Class localClass = paramObject.getClass();
-    while (localClass != null) {
+    for (Object localObject = paramObject.getClass(); localObject != null; localObject = ((Class)localObject).getSuperclass()) {
       try
       {
-        Field localField = localClass.getDeclaredField(paramString);
+        Field localField = ((Class)localObject).getDeclaredField(paramString);
         if (!localField.isAccessible()) {
           localField.setAccessible(true);
         }
@@ -21,19 +20,28 @@ public class ShareReflectUtil
       }
       catch (NoSuchFieldException localNoSuchFieldException)
       {
-        localClass = localClass.getSuperclass();
+        label29:
+        break label29;
       }
     }
-    throw new NoSuchFieldException("Field " + paramString + " not found in " + paramObject.getClass());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Field ");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(" not found in ");
+    ((StringBuilder)localObject).append(paramObject.getClass());
+    paramObject = new NoSuchFieldException(((StringBuilder)localObject).toString());
+    for (;;)
+    {
+      throw paramObject;
+    }
   }
   
   public static Method a(Object paramObject, String paramString, Class<?>... paramVarArgs)
   {
-    Class localClass = paramObject.getClass();
-    while (localClass != null) {
+    for (Object localObject = paramObject.getClass(); localObject != null; localObject = ((Class)localObject).getSuperclass()) {
       try
       {
-        Method localMethod = localClass.getDeclaredMethod(paramString, paramVarArgs);
+        Method localMethod = ((Class)localObject).getDeclaredMethod(paramString, paramVarArgs);
         if (!localMethod.isAccessible()) {
           localMethod.setAccessible(true);
         }
@@ -41,10 +49,22 @@ public class ShareReflectUtil
       }
       catch (NoSuchMethodException localNoSuchMethodException)
       {
-        localClass = localClass.getSuperclass();
+        label34:
+        break label34;
       }
     }
-    throw new NoSuchMethodException("Method " + paramString + " with parameters " + Arrays.asList(paramVarArgs) + " not found in " + paramObject.getClass());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Method ");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(" with parameters ");
+    ((StringBuilder)localObject).append(Arrays.asList(paramVarArgs));
+    ((StringBuilder)localObject).append(" not found in ");
+    ((StringBuilder)localObject).append(paramObject.getClass());
+    paramObject = new NoSuchMethodException(((StringBuilder)localObject).toString());
+    for (;;)
+    {
+      throw paramObject;
+    }
   }
   
   public static void a(Object paramObject, String paramString, Object[] paramArrayOfObject)
@@ -59,7 +79,7 @@ public class ShareReflectUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.compact.ShareReflectUtil
  * JD-Core Version:    0.7.0.1
  */

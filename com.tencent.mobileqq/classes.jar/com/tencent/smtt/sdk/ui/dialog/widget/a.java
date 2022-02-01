@@ -49,7 +49,7 @@ public class a
   
   public static int a(Context paramContext, float paramFloat)
   {
-    return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+    return (int)(paramFloat * paramContext.getResources().getDisplayMetrics().density + 0.5F);
   }
   
   private void a(Context paramContext, float paramFloat1, float paramFloat2, float paramFloat3)
@@ -72,7 +72,7 @@ public class a
     this.h = new float[] { paramFloat1, paramFloat1, paramFloat1, paramFloat1, 0.0F, 0.0F, 0.0F, 0.0F };
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.translate(0.0F, 0.0F);
@@ -100,26 +100,27 @@ public class a
     paramCanvas.drawPath(this.e, this.c);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     setMeasuredDimension(a(paramInt1), a(paramInt2));
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.a = paramInt1;
     this.b = paramInt2;
-    this.g.left = 0.0F;
-    this.g.top = 0.0F;
-    this.g.right = this.a;
-    this.g.bottom = this.b;
+    RectF localRectF = this.g;
+    localRectF.left = 0.0F;
+    localRectF.top = 0.0F;
+    localRectF.right = this.a;
+    localRectF.bottom = this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.ui.dialog.widget.a
  * JD-Core Version:    0.7.0.1
  */

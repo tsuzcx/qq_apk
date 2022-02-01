@@ -91,6 +91,11 @@ public class MiniReportManager$EventName
   public static final String MINI_GAME_STAY_DURATION = "minigamestaytime";
   public static final String MINI_GAME_SURVIVAL = "minigamesurvival";
   public static final String MINI_GAME_TWICE_LAUNCH = "minigametwicelaunch";
+  public static final String MINI_SEARCH_DF_LAUNCH = "mini_search_df_launch";
+  public static final String MINI_SEARCH_DF_LOAD_END = "mini_search_df_load_end";
+  public static final String MINI_SEARCH_DF_LOAD_RESULT = "mini_search_df_load_result";
+  public static final String MINI_SEARCH_DF_LOAD_START = "mini_search_df_load_start";
+  public static final String MINI_SEARCH_DF_RESULT = "mini_search_df_result";
   public static final String PAGE_CLICK = "pageclick";
   public static final String PAGE_FRAME_LOAD_END = "pageframeloadend";
   public static final String PAGE_FRAME_LOAD_START = "pageframeloadstart";
@@ -147,7 +152,7 @@ public class MiniReportManager$EventName
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniReportManager.EventName
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.FriendsManager;
@@ -18,16 +17,19 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.vas.api.IVasService;
+import com.tencent.mobileqq.vas.util.VasUtil;
+import com.tencent.mobileqq.vas.vipav.VipFunCallObserver;
+import com.tencent.mobileqq.vas.vipav.api.IVipFunCallManager;
+import com.tencent.mobileqq.vas.vipav.api.VipFunCallUtil;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewTempUtil;
 import com.tencent.open.agent.report.ReportCenter;
 import com.tencent.pb.funcall.VipFunCallAndRing.TGroupInfo;
 import com.tencent.pb.funcall.VipFunCallAndRing.TSourceInfo;
 import com.tencent.pb.funcall.VipFunCallAndRing.TSsoCmd0x1Req;
 import com.tencent.pb.funcall.VipFunCallAndRing.TSsoCmd0x1Rsp;
 import com.tencent.pb.funcall.VipFunCallAndRing.TSsoCmd0x2Req;
-import com.tencent.pb.funcall.VipFunCallAndRing.TSsoCmd0x2Rsp;
 import com.tencent.pb.funcall.VipFunCallAndRing.TSsoCmd0x3Req;
-import com.tencent.pb.funcall.VipFunCallAndRing.TSsoCmd0x3Rsp;
 import com.tencent.pb.funcall.VipFunCallAndRing.TSsoCmd0x4Req;
 import com.tencent.pb.funcall.VipFunCallAndRing.TSsoCmd0x4Rsp;
 import com.tencent.pb.funcall.VipFunCallAndRing.TSsoCmd0x5Req;
@@ -40,6 +42,7 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
+import org.jetbrains.annotations.Nullable;
 
 public class VipSetFunCallHandler
   extends BusinessHandler
@@ -52,51 +55,106 @@ public class VipSetFunCallHandler
     this.a = paramQQAppInterface;
   }
   
-  private void a(int paramInt, VipFunCallAndRing.TSsoRsp paramTSsoRsp, String paramString, VipFunCallManager paramVipFunCallManager)
+  private int a(VipFunCallAndRing.TSsoReq paramTSsoReq)
   {
-    long l;
+    if (paramTSsoReq.i32_cmd.has()) {
+      return paramTSsoReq.i32_cmd.get();
+    }
+    return -1;
+  }
+  
+  private int a(VipFunCallAndRing.TSsoReq paramTSsoReq, int paramInt, Bundle paramBundle)
+  {
+    paramInt = paramBundle.getInt("srcType", paramInt);
+    int i = paramBundle.getInt("callId");
+    int j = paramBundle.getInt("ringId");
+    if (i == 0)
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("sendReqToSVR Error 3 callId=");
+      paramBundle.append(i);
+      QLog.d("VipSetFunCallHandler", 1, paramBundle.toString());
+    }
+    paramBundle = new VipFunCallAndRing.TSsoCmd0x3Req();
+    paramBundle.i32_funcall_id.set(i);
+    paramBundle.i32_ring_id.set(j);
+    paramTSsoReq.st_cmd0x3_req.set(paramBundle);
+    return paramInt;
+  }
+  
+  @Nullable
+  private Bundle a(int paramInt, Object paramObject)
+  {
+    if ((paramObject instanceof Bundle)) {
+      paramObject = (Bundle)paramObject;
+    } else {
+      paramObject = null;
+    }
+    if (paramObject == null)
+    {
+      if ((2 != paramInt) && (3 != paramInt) && (5 != paramInt)) {
+        return new Bundle();
+      }
+      paramObject = new StringBuilder();
+      paramObject.append("sendReqToSVR Error fcBundle==null funcType=");
+      paramObject.append(paramInt);
+      QLog.e("VipSetFunCallHandler", 1, paramObject.toString());
+      return null;
+    }
+    return paramObject;
+  }
+  
+  private void a(int paramInt, VipFunCallAndRing.TSsoRsp paramTSsoRsp, String paramString, IVipFunCallManager paramIVipFunCallManager)
+  {
     if (paramInt == 0)
     {
-      localObject = (VipFunCallAndRing.TSsoCmd0x1Rsp)paramTSsoRsp.st_cmd0x1_rsp.get();
-      l = ((VipFunCallAndRing.TSsoCmd0x1Rsp)localObject).u64_server_ver.get();
-      paramTSsoRsp = VipFunCallManager.a(this.a, 1, null);
-      if (paramTSsoRsp.getLong("local_version", 0L) != l) {
-        break label66;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("VipSetFunCallHandler", 2, "onReceive localVer == ver.");
-      }
-    }
-    return;
-    label66:
-    Object localObject = (VipFunCallAndRing.TUserInfo)((VipFunCallAndRing.TSsoCmd0x1Rsp)localObject).st_User_Info.get();
-    paramTSsoRsp.edit().putLong("local_version", l).apply();
-    if (QLog.isColorLevel()) {
-      QLog.d("VipSetFunCallHandler", 2, "onReceive~ localVer=" + paramString + ", ver=" + l);
-    }
-    if (localObject != null)
-    {
-      paramVipFunCallManager.a(this.a, 0, this.a.getAccount(), ((VipFunCallAndRing.TUserInfo)localObject).i32_common_id.get(), ((VipFunCallAndRing.TUserInfo)localObject).i32_ring_id.get(), null, l);
-      paramString = (VipFunCallAndRing.TSourceInfo)((VipFunCallAndRing.TUserInfo)localObject).st_src_info.get();
-      VipFunCallManager.a(this.a, ((VipFunCallAndRing.TUserInfo)localObject).i32_common_id.get(), null, paramString, true);
-      paramString = ((VipFunCallAndRing.TUserInfo)localObject).rpt_user_groups.get();
-      if ((paramString != null) && (paramString.size() > 0))
+      Object localObject1 = (VipFunCallAndRing.TSsoCmd0x1Rsp)paramTSsoRsp.st_cmd0x1_rsp.get();
+      long l = ((VipFunCallAndRing.TSsoCmd0x1Rsp)localObject1).u64_server_ver.get();
+      paramTSsoRsp = VipFunCallUtil.a(this.a, 1, null);
+      if (paramTSsoRsp.getLong("local_version", 0L) == l)
       {
-        paramTSsoRsp.edit().putString("group", "").commit();
-        paramString = paramString.iterator();
-        while (paramString.hasNext())
+        if (QLog.isColorLevel()) {
+          QLog.d("VipSetFunCallHandler", 2, "onReceive localVer == ver.");
+        }
+        return;
+      }
+      localObject1 = (VipFunCallAndRing.TUserInfo)((VipFunCallAndRing.TSsoCmd0x1Rsp)localObject1).st_User_Info.get();
+      paramTSsoRsp.edit().putLong("local_version", l).apply();
+      Object localObject2;
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("onReceive~ localVer=");
+        ((StringBuilder)localObject2).append(paramString);
+        ((StringBuilder)localObject2).append(", ver=");
+        ((StringBuilder)localObject2).append(l);
+        QLog.d("VipSetFunCallHandler", 2, ((StringBuilder)localObject2).toString());
+      }
+      if (localObject1 != null)
+      {
+        paramString = this.a;
+        paramIVipFunCallManager.setFunCallData(paramString, 0, paramString.getAccount(), ((VipFunCallAndRing.TUserInfo)localObject1).i32_common_id.get(), ((VipFunCallAndRing.TUserInfo)localObject1).i32_ring_id.get(), null, l);
+        paramString = (VipFunCallAndRing.TSourceInfo)((VipFunCallAndRing.TUserInfo)localObject1).st_src_info.get();
+        VipFunCallManager.a(this.a, ((VipFunCallAndRing.TUserInfo)localObject1).i32_common_id.get(), null, paramString, true);
+        paramString = ((VipFunCallAndRing.TUserInfo)localObject1).rpt_user_groups.get();
+        if ((paramString != null) && (paramString.size() > 0))
         {
-          VipFunCallAndRing.TGroupInfo localTGroupInfo = (VipFunCallAndRing.TGroupInfo)paramString.next();
-          paramVipFunCallManager.a(this.a, 1, null, localTGroupInfo.i32_group_id.get(), localTGroupInfo.i32_ring_id.get(), localTGroupInfo.u64_group_uins.get(), 0L);
-          VipFunCallAndRing.TSourceInfo localTSourceInfo = (VipFunCallAndRing.TSourceInfo)localTGroupInfo.st_src_info.get();
-          VipFunCallManager.a(this.a, localTGroupInfo.i32_group_id.get(), null, localTSourceInfo, true);
+          paramTSsoRsp.edit().putString("group", "").commit();
+          paramString = paramString.iterator();
+          while (paramString.hasNext())
+          {
+            localObject2 = (VipFunCallAndRing.TGroupInfo)paramString.next();
+            paramIVipFunCallManager.setFunCallData(this.a, 1, null, ((VipFunCallAndRing.TGroupInfo)localObject2).i32_group_id.get(), ((VipFunCallAndRing.TGroupInfo)localObject2).i32_ring_id.get(), ((VipFunCallAndRing.TGroupInfo)localObject2).u64_group_uins.get(), 0L);
+            VipFunCallAndRing.TSourceInfo localTSourceInfo = (VipFunCallAndRing.TSourceInfo)((VipFunCallAndRing.TGroupInfo)localObject2).st_src_info.get();
+            VipFunCallManager.a(this.a, ((VipFunCallAndRing.TGroupInfo)localObject2).i32_group_id.get(), null, localTSourceInfo, true);
+          }
+        }
+        if (VipFunCallUtil.a()) {
+          paramIVipFunCallManager.downloadFCSuit(((VipFunCallAndRing.TUserInfo)localObject1).i32_common_id.get(), ((VipFunCallAndRing.TUserInfo)localObject1).i32_ring_id.get(), false, 0, null);
         }
       }
-      if (VipFunCallManager.b()) {
-        paramVipFunCallManager.a(((VipFunCallAndRing.TUserInfo)localObject).i32_common_id.get(), ((VipFunCallAndRing.TUserInfo)localObject).i32_ring_id.get(), false, 0, null);
-      }
+      paramTSsoRsp.edit().putLong("update_time", System.currentTimeMillis()).commit();
     }
-    paramTSsoRsp.edit().putLong("update_time", System.currentTimeMillis()).commit();
   }
   
   private void a(int paramInt, String paramString)
@@ -111,51 +169,54 @@ public class VipSetFunCallHandler
         localExtensionInfo1 = new ExtensionInfo();
         localExtensionInfo1.uin = paramString;
       }
-      localExtensionInfo1.colorRingId = paramInt;
-      localExtensionInfo1.commingRingId = paramInt;
+      long l = paramInt;
+      localExtensionInfo1.colorRingId = l;
+      localExtensionInfo1.commingRingId = l;
       localFriendsManager.a(localExtensionInfo1);
     }
   }
   
-  private void a(VipFunCallAndRing.TSsoReq paramTSsoReq, int paramInt1, Bundle paramBundle, int paramInt2, VipFunCallAndRing.TSsoRsp paramTSsoRsp, VipFunCallManager paramVipFunCallManager)
+  private void a(VipFunCallAndRing.TSsoReq paramTSsoReq, int paramInt1, Bundle paramBundle, int paramInt2, VipFunCallAndRing.TSsoRsp paramTSsoRsp, IVipFunCallManager paramIVipFunCallManager)
   {
     paramTSsoReq = (VipFunCallAndRing.TSsoCmd0x4Req)paramTSsoReq.st_cmd0x4_req.get();
     paramBundle.putInt("callId", paramTSsoReq.i32_funcall_id.get());
     if (paramInt2 == 0)
     {
       paramBundle = (VipFunCallAndRing.TSsoCmd0x4Rsp)paramTSsoRsp.st_cmd0x4_rsp.get();
-      paramVipFunCallManager.a(this.a, 1, null, paramTSsoReq.i32_funcall_id.get(), paramTSsoReq.i32_ring_id.get(), paramTSsoReq.rpt_uins.get(), 0L);
+      paramIVipFunCallManager.setFunCallData(this.a, 1, null, paramTSsoReq.i32_funcall_id.get(), paramTSsoReq.i32_ring_id.get(), paramTSsoReq.rpt_uins.get(), 0L);
     }
     if (1 == paramInt1)
     {
       paramBundle = this.a;
       paramInt1 = paramTSsoReq.i32_funcall_id.get();
-      if (paramInt2 != 0) {
-        break label121;
+      if (paramInt2 == 0) {
+        paramTSsoReq = "0";
+      } else {
+        paramTSsoReq = "1";
       }
-    }
-    label121:
-    for (paramTSsoReq = "0";; paramTSsoReq = "1")
-    {
-      VasWebviewUtil.reportVASTo00145(paramBundle, String.valueOf(paramInt1), "preview", "SetGroupCall", paramTSsoReq, new String[0]);
-      return;
+      VasWebviewTempUtil.reportVASTo00145(paramBundle, String.valueOf(paramInt1), "preview", "SetGroupCall", paramTSsoReq, new String[0]);
     }
   }
   
-  private void a(VipFunCallAndRing.TSsoReq paramTSsoReq, int paramInt, VipFunCallAndRing.TSsoRsp paramTSsoRsp, VipFunCallManager paramVipFunCallManager)
+  private void a(VipFunCallAndRing.TSsoReq paramTSsoReq, int paramInt, VipFunCallAndRing.TSsoRsp paramTSsoRsp, IVipFunCallManager paramIVipFunCallManager)
   {
     if (paramInt == 0)
     {
       paramTSsoRsp = (VipFunCallAndRing.TSsoCmd0x5Rsp)paramTSsoRsp.st_cmd0x5_rsp.get();
       paramTSsoReq = (VipFunCallAndRing.TSsoCmd0x5Req)paramTSsoReq.st_cmd0x5_req.get();
-      paramVipFunCallManager.a(this.a, 2, null, paramTSsoReq.i32_funcall_id.get(), 0, null, 0L);
+      paramIVipFunCallManager.setFunCallData(this.a, 2, null, paramTSsoReq.i32_funcall_id.get(), 0, null, 0L);
     }
   }
   
   private void a(FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, int paramInt1, Bundle paramBundle, int paramInt2)
   {
-    QLog.e("VipSetFunCallHandler", 1, "onReceive~ isSuccess=false ,data=" + PkgTools.toHexStr(paramArrayOfByte) + ", funcType=" + paramInt1);
-    ReportCenter.a().a("FunCallSvr.call", 100, paramFromServiceMsg.getBusinessFailCode(), this.a.getCurrentAccountUin(), 1000277, HardCodeUtil.a(2131716601), true);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReceive~ isSuccess=false ,data=");
+    localStringBuilder.append(PkgTools.toHexStr(paramArrayOfByte));
+    localStringBuilder.append(", funcType=");
+    localStringBuilder.append(paramInt1);
+    QLog.e("VipSetFunCallHandler", 1, localStringBuilder.toString());
+    ReportCenter.a().a("FunCallSvr.call", 100, paramFromServiceMsg.getBusinessFailCode(), this.a.getCurrentAccountUin(), 1000277, HardCodeUtil.a(2131716256), true);
     paramBundle.putInt("result", paramInt2);
     notifyUI(paramInt1, false, paramBundle);
   }
@@ -164,14 +225,124 @@ public class VipSetFunCallHandler
   {
     if (paramInt1 != paramInt2)
     {
-      if (paramInt2 == 0) {
-        VipFunCallManager.a(this.a, paramString, 2, this.a.getAccount(), paramInt1);
+      if (paramInt2 == 0)
+      {
+        localQQAppInterface = this.a;
+        VipFunCallUtil.a(localQQAppInterface, paramString, 2, localQQAppInterface.getAccount(), paramInt1);
+        return;
+      }
+      QQAppInterface localQQAppInterface = this.a;
+      VipFunCallUtil.a(localQQAppInterface, paramString, 1, localQQAppInterface.getAccount(), paramInt1);
+    }
+  }
+  
+  private void a(boolean paramBoolean, VipFunCallAndRing.TSsoReq paramTSsoReq)
+  {
+    VipFunCallAndRing.TSsoCmd0x1Req localTSsoCmd0x1Req = new VipFunCallAndRing.TSsoCmd0x1Req();
+    long l = 0L;
+    if (!paramBoolean) {
+      l = VipFunCallUtil.a(this.a, 1, null).getLong("local_version", 0L);
+    }
+    localTSsoCmd0x1Req.u64_local_ver.set(l);
+    paramTSsoReq.st_cmd0x1_req.set(localTSsoCmd0x1Req);
+  }
+  
+  private boolean a(FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    return (paramFromServiceMsg.isSuccess()) && (paramObject != null);
+  }
+  
+  private boolean a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    VipFunCallAndRing.TSsoReq localTSsoReq = new VipFunCallAndRing.TSsoReq();
+    localTSsoReq.mergeFrom(paramToServiceMsg.getWupBuffer(), 4, paramToServiceMsg.getWupBuffer().length - 4);
+    int j = a(localTSsoReq);
+    int i = paramToServiceMsg.extraData.getInt("srcType", 0);
+    int m = paramToServiceMsg.extraData.getInt("from");
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("srcType", i);
+    if (!a(paramFromServiceMsg, paramObject))
+    {
+      a(paramFromServiceMsg, (byte[])paramObject, j, localBundle, -1);
+      return true;
+    }
+    paramToServiceMsg = new VipFunCallAndRing.TSsoRsp();
+    paramToServiceMsg.mergeFrom((byte[])paramObject);
+    int k = paramToServiceMsg.i32_ret.get();
+    paramFromServiceMsg = paramToServiceMsg.str_msg.get();
+    paramObject = paramToServiceMsg.str_url.get();
+    String str = paramToServiceMsg.str_act_wording.get();
+    localBundle.putInt("result", k);
+    IVipFunCallManager localIVipFunCallManager = VasUtil.a().getFunCallManager();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("VipSetFunCallHandler onReceive~ ret=");
+      localStringBuilder.append(k);
+      localStringBuilder.append(",msg=");
+      localStringBuilder.append(paramFromServiceMsg);
+      localStringBuilder.append(", url=");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(", funcType=");
+      localStringBuilder.append(j);
+      localStringBuilder.append(", srcType=");
+      localStringBuilder.append(i);
+      localStringBuilder.append(", actStr=");
+      localStringBuilder.append(str);
+      QLog.d("VipSetFunCallHandler", 2, localStringBuilder.toString());
+    }
+    if (j != 1)
+    {
+      if (j != 2)
+      {
+        if (j != 3)
+        {
+          if (j != 4) {
+            if (j != 5)
+            {
+              paramToServiceMsg = new StringBuilder();
+              paramToServiceMsg.append("sendReqToSVR Error funcType=");
+              paramToServiceMsg.append(j);
+              QLog.e("VipSetFunCallHandler", 1, paramToServiceMsg.toString());
+            }
+          }
+          for (;;)
+          {
+            break;
+            a(localTSsoReq, k, paramToServiceMsg, localIVipFunCallManager);
+            continue;
+            a(localTSsoReq, m, localBundle, k, paramToServiceMsg, localIVipFunCallManager);
+          }
+        }
+        paramToServiceMsg = new VipSetFunCallHandler.HandleMyDefaultFC(this, localTSsoReq, m, localBundle, k, paramToServiceMsg, localIVipFunCallManager, -1, null).a();
+        i = paramToServiceMsg.a();
+        paramToServiceMsg = paramToServiceMsg.a();
+      }
+      else
+      {
+        paramToServiceMsg = new VipSetFunCallHandler.HandleFriiendFC(this, localTSsoReq, localBundle, k, paramToServiceMsg, localIVipFunCallManager, -1, null).a();
+        i = paramToServiceMsg.a();
+        paramToServiceMsg = paramToServiceMsg.a();
       }
     }
-    else {
-      return;
+    else
+    {
+      a(k, paramToServiceMsg, paramFromServiceMsg, localIVipFunCallManager);
+      paramToServiceMsg = null;
+      i = -1;
     }
-    VipFunCallManager.a(this.a, paramString, 1, this.a.getAccount(), paramInt1);
+    localBundle.putString("message", paramFromServiceMsg);
+    localBundle.putString("svr_url", paramObject);
+    localBundle.putString("svr_actStr", str);
+    boolean bool;
+    if (k == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    notifyUI(j, bool, localBundle);
+    a(i, paramToServiceMsg);
+    return false;
   }
   
   public void a(int paramInt, Object paramObject)
@@ -185,84 +356,81 @@ public class VipSetFunCallHandler
     VipFunCallAndRing.TSsoReq localTSsoReq = new VipFunCallAndRing.TSsoReq();
     localTSsoReq.i32_implat.set(109);
     localTSsoReq.i32_cmd.set(paramInt);
-    localTSsoReq.str_qq_ver.set("8.5.5");
-    if ((paramObject instanceof Bundle)) {}
-    for (Bundle localBundle1 = (Bundle)paramObject;; localBundle1 = null)
-    {
-      localBundle2 = localBundle1;
-      if (localBundle1 != null) {
-        break label127;
-      }
-      if ((2 != paramInt) && (3 != paramInt) && (5 != paramInt)) {
-        break;
-      }
-      QLog.e("VipSetFunCallHandler", 1, "sendReqToSVR Error fcBundle==null funcType=" + paramInt);
+    localTSsoReq.str_qq_ver.set("8.7.0");
+    Object localObject = a(paramInt, paramObject);
+    if (localObject == null) {
       return;
     }
-    Bundle localBundle2 = new Bundle();
-    label127:
-    int i = localBundle2.getInt("from");
-    int j;
-    switch (paramInt)
+    int j = ((Bundle)localObject).getInt("from");
+    int i = 0;
+    if (paramInt != 1)
     {
-    default: 
-      QLog.e("VipSetFunCallHandler", 1, "sendReqToSVR Error funcType=" + paramInt);
-      return;
-    case 1: 
-      paramObject = new VipFunCallAndRing.TSsoCmd0x1Req();
-      long l = 0L;
-      if (!paramBoolean) {
-        l = VipFunCallManager.a(this.a, 1, null).getLong("local_version", 0L);
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 5)
+            {
+              paramObject = new StringBuilder();
+              paramObject.append("sendReqToSVR Error funcType=");
+              paramObject.append(paramInt);
+              QLog.e("VipSetFunCallHandler", 1, paramObject.toString());
+              return;
+            }
+            paramObject = new VipFunCallAndRing.TSsoCmd0x5Req();
+            i = ((Bundle)localObject).getInt("srcType", 0);
+            int k = ((Bundle)localObject).getInt("callId");
+            if (k == 0)
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("sendReqToSVR Error 5 callId5=");
+              ((StringBuilder)localObject).append(k);
+              QLog.e("VipSetFunCallHandler", 1, ((StringBuilder)localObject).toString());
+            }
+            paramObject.i32_funcall_id.set(k);
+            localTSsoReq.st_cmd0x5_req.set(paramObject);
+          }
+          else
+          {
+            paramObject = (VipFunCallAndRing.TSsoCmd0x4Req)paramObject;
+            localTSsoReq.st_cmd0x4_req.set(paramObject);
+            j = 1;
+          }
+        }
+        else {
+          i = a(localTSsoReq, 0, (Bundle)localObject);
+        }
       }
-      paramObject.u64_local_ver.set(l);
-      localTSsoReq.st_cmd0x1_req.set(paramObject);
-      j = 0;
+      else
+      {
+        paramObject = new VipFunCallAndRing.TSsoCmd0x2Req();
+        paramObject.u64_friend_uin.set(((Bundle)localObject).getLong("uin"));
+        paramObject.str_friend_phone.set(((Bundle)localObject).getString("phone"));
+        localTSsoReq.st_cmd0x2_req.set(paramObject);
+      }
     }
-    for (;;)
+    else {
+      a(paramBoolean, localTSsoReq);
+    }
+    localTSsoReq.setHasFlag(true);
+    localToServiceMsg.extraData.putInt("srcType", i);
+    localToServiceMsg.extraData.putInt("from", j);
+    localToServiceMsg.putWupBuffer(localTSsoReq.toByteArray());
+    if (QLog.isColorLevel())
     {
-      localTSsoReq.setHasFlag(true);
-      localToServiceMsg.extraData.putInt("srcType", j);
-      localToServiceMsg.extraData.putInt("from", i);
-      localToServiceMsg.putWupBuffer(localTSsoReq.toByteArray());
-      if (QLog.isColorLevel()) {
-        QLog.d("VipSetFunCallHandler", 2, "sendReqToSVR funcType=" + paramInt + ", srcType:" + j);
-      }
-      super.sendPbReq(localToServiceMsg);
-      return;
-      paramObject = new VipFunCallAndRing.TSsoCmd0x2Req();
-      paramObject.u64_friend_uin.set(localBundle2.getLong("uin"));
-      paramObject.str_friend_phone.set(localBundle2.getString("phone"));
-      localTSsoReq.st_cmd0x2_req.set(paramObject);
-      j = 0;
-      continue;
-      j = localBundle2.getInt("srcType", 0);
-      int k = localBundle2.getInt("callId");
-      int m = localBundle2.getInt("ringId");
-      if (k == 0) {
-        QLog.d("VipSetFunCallHandler", 1, "sendReqToSVR Error 3 callId=" + k);
-      }
-      paramObject = new VipFunCallAndRing.TSsoCmd0x3Req();
-      paramObject.i32_funcall_id.set(k);
-      paramObject.i32_ring_id.set(m);
-      localTSsoReq.st_cmd0x3_req.set(paramObject);
-      continue;
-      paramObject = (VipFunCallAndRing.TSsoCmd0x4Req)paramObject;
-      localTSsoReq.st_cmd0x4_req.set(paramObject);
-      i = 1;
-      j = 0;
-      continue;
-      paramObject = new VipFunCallAndRing.TSsoCmd0x5Req();
-      j = localBundle2.getInt("srcType", 0);
-      k = localBundle2.getInt("callId");
-      if (k == 0) {
-        QLog.e("VipSetFunCallHandler", 1, "sendReqToSVR Error 5 callId5=" + k);
-      }
-      paramObject.i32_funcall_id.set(k);
-      localTSsoReq.st_cmd0x5_req.set(paramObject);
+      paramObject = new StringBuilder();
+      paramObject.append("sendReqToSVR funcType=");
+      paramObject.append(paramInt);
+      paramObject.append(", srcType:");
+      paramObject.append(i);
+      QLog.d("VipSetFunCallHandler", 2, paramObject.toString());
     }
+    super.sendPbReq(localToServiceMsg);
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return VipFunCallObserver.class;
   }
@@ -272,147 +440,23 @@ public class VipSetFunCallHandler
     if (!"FunCallSvr.call".equals(paramFromServiceMsg.getServiceCmd())) {
       return;
     }
-    Object localObject1;
-    int j;
-    int n;
-    int m;
-    Bundle localBundle;
-    int i;
-    for (;;)
+    try
     {
-      try
-      {
-        localObject1 = new VipFunCallAndRing.TSsoReq();
-        ((VipFunCallAndRing.TSsoReq)localObject1).mergeFrom(paramToServiceMsg.getWupBuffer(), 4, paramToServiceMsg.getWupBuffer().length - 4);
-        if (((VipFunCallAndRing.TSsoReq)localObject1).i32_cmd.has())
-        {
-          j = ((VipFunCallAndRing.TSsoReq)localObject1).i32_cmd.get();
-          n = paramToServiceMsg.extraData.getInt("srcType", 0);
-          m = paramToServiceMsg.extraData.getInt("from");
-          localBundle = new Bundle();
-          localBundle.putInt("srcType", n);
-          if ((!paramFromServiceMsg.isSuccess()) || (paramObject == null)) {
-            break label180;
-          }
-          i = 1;
-          if (i != 0) {
-            break;
-          }
-          a(paramFromServiceMsg, (byte[])paramObject, j, localBundle, -1);
-          return;
-        }
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        QLog.e("VipSetFunCallHandler", 2, "onReceive prb.mergeFrom error: " + paramToServiceMsg.getMessage());
-        return;
-      }
-      j = -1;
-      continue;
-      label180:
-      i = 0;
+      boolean bool = a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      if (bool) {}
     }
-    Object localObject2 = new VipFunCallAndRing.TSsoRsp();
-    ((VipFunCallAndRing.TSsoRsp)localObject2).mergeFrom((byte[])paramObject);
-    int k = ((VipFunCallAndRing.TSsoRsp)localObject2).i32_ret.get();
-    paramObject = ((VipFunCallAndRing.TSsoRsp)localObject2).str_msg.get();
-    String str1 = ((VipFunCallAndRing.TSsoRsp)localObject2).str_url.get();
-    String str2 = ((VipFunCallAndRing.TSsoRsp)localObject2).str_act_wording.get();
-    localBundle.putInt("result", k);
-    paramFromServiceMsg = (VipFunCallManager)this.a.getManager(QQManagerFactory.VIP_FUNCALL_MANAGER);
-    label391:
-    boolean bool;
-    if (QLog.isColorLevel())
+    catch (Exception paramToServiceMsg)
     {
-      QLog.d("VipSetFunCallHandler", 2, "VipSetFunCallHandler onReceive~ ret=" + k + ",msg=" + paramObject + ", url=" + str1 + ", funcType=" + j + ", srcType=" + n + ", actStr=" + str2);
-      break label864;
-      QLog.e("VipSetFunCallHandler", 1, "sendReqToSVR Error funcType=" + j);
-      break label907;
-      for (;;)
-      {
-        localBundle.putString("message", paramObject);
-        localBundle.putString("svr_url", str1);
-        localBundle.putString("svr_actStr", str2);
-        if (k != 0) {
-          break;
-        }
-        bool = true;
-        label428:
-        notifyUI(j, bool, localBundle);
-        a(i, paramToServiceMsg);
-        return;
-        a(k, (VipFunCallAndRing.TSsoRsp)localObject2, paramObject, paramFromServiceMsg);
-        paramToServiceMsg = null;
-        i = -1;
-        continue;
-        if (k != 0) {
-          break label907;
-        }
-        localObject2 = (VipFunCallAndRing.TSsoCmd0x2Rsp)((VipFunCallAndRing.TSsoRsp)localObject2).st_cmd0x2_rsp.get();
-        localObject1 = (VipFunCallAndRing.TSsoCmd0x2Req)((VipFunCallAndRing.TSsoReq)localObject1).st_cmd0x2_req.get();
-        paramToServiceMsg = String.valueOf(((VipFunCallAndRing.TSsoCmd0x2Req)localObject1).u64_friend_uin.get());
-        i = ((VipFunCallAndRing.TSsoCmd0x2Rsp)localObject2).i32_funcall_id.get();
-        m = VipFunCallManager.a(this.a, paramToServiceMsg, 6, true, null);
-        paramFromServiceMsg.a(this.a, 0, paramToServiceMsg, i, ((VipFunCallAndRing.TSsoCmd0x2Rsp)localObject2).i32_ring_id.get(), null, 0L);
-        VipFunCallManager.a(this.a, ((VipFunCallAndRing.TSsoCmd0x2Rsp)localObject2).i32_funcall_id.get(), null, (VipFunCallAndRing.TSourceInfo)((VipFunCallAndRing.TSsoCmd0x2Rsp)localObject2).st_src_info.get(), true);
-        if (VipFunCallManager.b()) {
-          paramFromServiceMsg.a(i, ((VipFunCallAndRing.TSsoCmd0x2Rsp)localObject2).i32_ring_id.get(), false, 0, null);
-        }
-        a(paramToServiceMsg, i, m);
-        localBundle.putString("uin", ((VipFunCallAndRing.TSsoCmd0x2Req)localObject1).u64_friend_uin.get() + "");
-        i = ((VipFunCallAndRing.TSsoCmd0x2Rsp)localObject2).i32_ring_id.get();
-      }
-      localObject1 = (VipFunCallAndRing.TSsoCmd0x3Req)((VipFunCallAndRing.TSsoReq)localObject1).st_cmd0x3_req.get();
-      localBundle.putInt("callId", ((VipFunCallAndRing.TSsoCmd0x3Req)localObject1).i32_funcall_id.get());
-      if (k == 0)
-      {
-        paramToServiceMsg = (VipFunCallAndRing.TSsoCmd0x3Rsp)((VipFunCallAndRing.TSsoRsp)localObject2).st_cmd0x3_rsp.get();
-        paramFromServiceMsg.a(this.a, 0, this.a.getAccount(), ((VipFunCallAndRing.TSsoCmd0x3Req)localObject1).i32_funcall_id.get(), ((VipFunCallAndRing.TSsoCmd0x3Req)localObject1).i32_ring_id.get(), null, 0L);
-        i = ((VipFunCallAndRing.TSsoCmd0x3Req)localObject1).i32_ring_id.get();
-        paramToServiceMsg = this.a.getAccount();
-      }
-      if (1 == m)
-      {
-        localObject2 = this.a;
-        m = ((VipFunCallAndRing.TSsoCmd0x3Req)localObject1).i32_funcall_id.get();
-        if (k != 0) {
-          break label915;
-        }
-      }
-    }
-    label907:
-    label915:
-    for (paramFromServiceMsg = "0";; paramFromServiceMsg = "1")
-    {
-      VasWebviewUtil.reportVASTo00145((AppInterface)localObject2, String.valueOf(m), "preview", "SetComCall", paramFromServiceMsg, new String[0]);
-      break label391;
-      a((VipFunCallAndRing.TSsoReq)localObject1, m, localBundle, k, (VipFunCallAndRing.TSsoRsp)localObject2, paramFromServiceMsg);
-      paramToServiceMsg = null;
-      i = -1;
-      break label391;
-      a((VipFunCallAndRing.TSsoReq)localObject1, k, (VipFunCallAndRing.TSsoRsp)localObject2, paramFromServiceMsg);
-      paramToServiceMsg = null;
-      i = -1;
-      break label391;
-      bool = false;
-      break label428;
-      break label391;
-      label864:
-      i = -1;
-      paramToServiceMsg = null;
-      switch (j)
-      {
-      }
-      break;
-      paramToServiceMsg = null;
-      i = -1;
-      break label391;
+      paramFromServiceMsg = new StringBuilder();
+      paramFromServiceMsg.append("onReceive prb.mergeFrom error: ");
+      paramFromServiceMsg.append(paramToServiceMsg.getMessage());
+      QLog.e("VipSetFunCallHandler", 2, paramFromServiceMsg.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vipav.VipSetFunCallHandler
  * JD-Core Version:    0.7.0.1
  */

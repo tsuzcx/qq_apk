@@ -49,14 +49,17 @@ public class GiftRoundCornerFrameLayout
   {
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
     this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getWidth(), getHeight());
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, Path.Direction.CW);
+    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    float f = this.jdField_a_of_type_Float;
+    localPath.addRoundRect(localRectF, f, f, Path.Direction.CW);
     paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
     super.dispatchDraw(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.GiftRoundCornerFrameLayout
  * JD-Core Version:    0.7.0.1
  */

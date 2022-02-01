@@ -33,8 +33,9 @@ public final class LikeUserInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iUin, 0);
-    if (this.sNickName != null) {
-      paramJceOutputStream.write(this.sNickName, 1);
+    String str = this.sNickName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.iLikeNum, 2);
     paramJceOutputStream.write(this.isFriend, 3);
@@ -42,7 +43,7 @@ public final class LikeUserInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.LikeUserInfo
  * JD-Core Version:    0.7.0.1
  */

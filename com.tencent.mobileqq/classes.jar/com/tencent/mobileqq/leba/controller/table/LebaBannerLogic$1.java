@@ -18,55 +18,56 @@ class LebaBannerLogic$1
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout == null) {
-      QLog.i("LebaBannerLogic", 1, "mRootLayout == null");
-    }
-    do
+    if (this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout == null)
     {
+      QLog.i("LebaBannerLogic", 1, "mRootLayout == null");
       return;
-      if (this.this$0.jdField_a_of_type_MqqAppAppRuntime == null)
+    }
+    if (this.this$0.jdField_a_of_type_MqqAppAppRuntime == null)
+    {
+      QLog.i("LebaBannerLogic", 1, "mRuntime == null");
+      return;
+    }
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((IRedTouchManager)this.this$0.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedTouchManager.class, "")).getAppInfo(0, "100000");
+    if (localAppInfo != null) {}
+    try
+    {
+      if (RedTouch.a(localAppInfo))
       {
-        QLog.i("LebaBannerLogic", 1, "mRuntime == null");
-        return;
-      }
-      BusinessInfoCheckUpdate.AppInfo localAppInfo = ((IRedTouchManager)this.this$0.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedTouchManager.class, "")).getAppInfo(0, "100000");
-      if (localAppInfo != null) {
-        for (;;)
+        View localView;
+        if (this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout.getChildCount() > 0)
         {
-          try
-          {
-            if (!RedTouch.a(localAppInfo)) {
-              break;
-            }
-            if (this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout.getChildCount() > 0)
-            {
-              QLog.i("LebaBannerLogic", 1, "showBannerView reused");
-              View localView1 = this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout.getChildAt(0);
-              LebaBannerLogic.a(this.this$0, localAppInfo, localView1);
-              return;
-            }
-          }
-          catch (Exception localException)
-          {
-            QLog.i("LebaBannerLogic", 1, "showBannerView", localException);
-            return;
-          }
+          QLog.i("LebaBannerLogic", 1, "showBannerView reused");
+          localView = this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout.getChildAt(0);
+        }
+        else
+        {
           QLog.i("LebaBannerLogic", 1, "showBannerView new");
-          View localView2 = ((LayoutInflater)LebaBannerLogic.a(this.this$0).getSystemService("layout_inflater")).inflate(2131561294, null);
+          localView = ((LayoutInflater)LebaBannerLogic.a(this.this$0).getSystemService("layout_inflater")).inflate(2131561137, null);
           this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this.this$0);
           this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout.setPadding(ViewUtils.b(16.0F), ViewUtils.b(12.0F), ViewUtils.b(16.0F), 0);
-          this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localView2);
+          this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localView);
         }
+        LebaBannerLogic.a(this.this$0, localAppInfo, localView);
+        return;
       }
-    } while (this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout.getChildCount() <= 0);
-    QLog.i("LebaBannerLogic", 1, "hideBannerView remove");
-    this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout.setPadding(0, 0, 0, 0);
-    this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
+      if (this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout.getChildCount() > 0)
+      {
+        QLog.i("LebaBannerLogic", 1, "hideBannerView remove");
+        this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout.setPadding(0, 0, 0, 0);
+        this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.i("LebaBannerLogic", 1, "showBannerView", localException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.controller.table.LebaBannerLogic.1
  * JD-Core Version:    0.7.0.1
  */

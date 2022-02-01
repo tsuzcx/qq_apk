@@ -37,24 +37,26 @@ public final class GifBitmapProvider
   @NotNull
   public byte[] a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeArrayPool == null) {
+    ArrayPool localArrayPool = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeArrayPool;
+    if (localArrayPool == null) {
       return new byte[paramInt];
     }
-    return (byte[])this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeArrayPool.a(paramInt, [B.class);
+    return (byte[])localArrayPool.a(paramInt, [B.class);
   }
   
   @NotNull
   public int[] a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeArrayPool == null) {
+    ArrayPool localArrayPool = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeArrayPool;
+    if (localArrayPool == null) {
       return new int[paramInt];
     }
-    return (int[])this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeArrayPool.a(paramInt, [I.class);
+    return (int[])localArrayPool.a(paramInt, [I.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.imagecompress.encodedecode.GifBitmapProvider
  * JD-Core Version:    0.7.0.1
  */

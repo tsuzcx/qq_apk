@@ -38,10 +38,9 @@ public final class MiniGameBeaconReport
   public static final void report(@NotNull String paramString, @Nullable Map<String, String> paramMap)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "eventCode");
-    Map localMap;
     if (paramMap != null)
     {
-      localMap = MapsKt.toMutableMap(paramMap);
+      Map localMap = MapsKt.toMutableMap(paramMap);
       if (localMap != null)
       {
         paramMap = QUA.getQUA3();
@@ -53,26 +52,26 @@ public final class MiniGameBeaconReport
         if (paramMap != null)
         {
           paramMap = paramMap.getAccount();
-          if (paramMap != null)
-          {
-            localMap.put("uid", paramMap);
-            localMap.put("perfLevel", String.valueOf(DeviceInfoUtils.a()));
-          }
+          if (paramMap != null) {}
         }
+        else
+        {
+          paramMap = "";
+        }
+        localMap.put("uid", paramMap);
+        localMap.put("perfLevel", String.valueOf(DeviceInfoUtils.a()));
+        paramMap = localMap;
+        break label105;
       }
     }
-    for (paramMap = localMap;; paramMap = null)
-    {
-      UserAction.onUserActionToTunnel("00000ARN3S3S9UE8", paramString, paramMap, false, false);
-      return;
-      paramMap = "";
-      break;
-    }
+    paramMap = null;
+    label105:
+    UserAction.onUserActionToTunnel("00000ARN3S3S9UE8", paramString, paramMap, false, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.report.MiniGameBeaconReport
  * JD-Core Version:    0.7.0.1
  */

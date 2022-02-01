@@ -9,23 +9,34 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class EventControlUtils
 {
-  private static SimpleArrayMap<String, Long> jdField_a_of_type_AndroidSupportV4UtilSimpleArrayMap = new SimpleArrayMap();
-  private static ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = null;
+  private static SimpleArrayMap<String, Long> jdField_a_of_type_AndroidSupportV4UtilSimpleArrayMap;
+  private static ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   private static SimpleArrayMap<String, Timer> b = new SimpleArrayMap();
+  
+  static
+  {
+    a = new SimpleArrayMap();
+  }
   
   public static void a(String paramString, long paramLong, EventControlUtils.OnDebounceListener paramOnDebounceListener)
   {
     try
     {
-      Object localObject = (Long)jdField_a_of_type_AndroidSupportV4UtilSimpleArrayMap.get(paramString);
+      Object localObject = (Long)a.get(paramString);
       long l = SystemClock.elapsedRealtime();
-      QLog.i("EventControlUtils", 2, "currentTime" + l);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("currentTime");
+      localStringBuilder.append(l);
+      QLog.i("EventControlUtils", 2, localStringBuilder.toString());
       if ((localObject != null) && (l - ((Long)localObject).longValue() < paramLong))
       {
-        LogUtils.w("EventControlUtils", "throttling in timeInterval" + paramLong);
+        paramString = new StringBuilder();
+        paramString.append("throttling in timeInterval");
+        paramString.append(paramLong);
+        LogUtils.w("EventControlUtils", paramString.toString());
         return;
       }
-      jdField_a_of_type_AndroidSupportV4UtilSimpleArrayMap.put(paramString, Long.valueOf(l));
+      a.put(paramString, Long.valueOf(l));
       localObject = (Timer)b.get(paramString);
       if (localObject != null) {
         ((Timer)localObject).cancel();
@@ -40,7 +51,7 @@ public class EventControlUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.EventControlUtils
  * JD-Core Version:    0.7.0.1
  */

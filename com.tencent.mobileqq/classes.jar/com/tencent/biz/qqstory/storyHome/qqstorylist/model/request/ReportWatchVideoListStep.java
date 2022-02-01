@@ -46,15 +46,13 @@ public class ReportWatchVideoListStep
   public void a(StoryListPresenter paramStoryListPresenter, ReportWatchVideoManager.WatchVideoBatchFinishEvent paramWatchVideoBatchFinishEvent)
   {
     StoryDispatcher.a().unRegisterSubscriber(this);
-    if (this.a != null) {
-      this.a.a(a());
-    }
-    for (;;)
-    {
-      SLog.d("Q.qqstory.home,ReportWatchVideoListStep", "receive event. step is done");
-      return;
+    paramStoryListPresenter = this.a;
+    if (paramStoryListPresenter != null) {
+      paramStoryListPresenter.a(a());
+    } else {
       SLog.d("Q.qqstory.home,ReportWatchVideoListStep", "finish callBack is null");
     }
+    SLog.d("Q.qqstory.home,ReportWatchVideoListStep", "receive event. step is done");
   }
   
   public void a(Object paramObject) {}
@@ -83,7 +81,7 @@ public class ReportWatchVideoListStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.ReportWatchVideoListStep
  * JD-Core Version:    0.7.0.1
  */

@@ -52,10 +52,22 @@ public class Recorder
     this.mAudioManager = ((AudioManager)paramContext.getSystemService("audio"));
     this.ringBuffer = new RingBuffer(6400);
     this.deviceInfo = Build.MANUFACTURER;
-    Log.d("Recorder", "device info = " + this.deviceInfo);
+    paramContext = new StringBuilder();
+    paramContext.append("device info = ");
+    paramContext.append(this.deviceInfo);
+    Log.d("Recorder", paramContext.toString());
     this.mMode = 0;
     this.mAudioSource = 0;
-    Log.d("Recorder", "mMode = " + this.mMode + " | mAudioSource = " + this.mAudioSource + " | recorderBufSize = " + this.recorderInitBufSize + " | readLength = " + this.frameLengthPerRead);
+    paramContext = new StringBuilder();
+    paramContext.append("mMode = ");
+    paramContext.append(this.mMode);
+    paramContext.append(" | mAudioSource = ");
+    paramContext.append(this.mAudioSource);
+    paramContext.append(" | recorderBufSize = ");
+    paramContext.append(this.recorderInitBufSize);
+    paramContext.append(" | readLength = ");
+    paramContext.append(this.frameLengthPerRead);
+    Log.d("Recorder", paramContext.toString());
   }
   
   private void initBufferSize(int paramInt1, int paramInt2, int paramInt3)
@@ -67,22 +79,20 @@ public class Recorder
         this.recorderInitBufSize = (paramInt2 * paramInt1);
       }
     }
-    for (;;)
+    else if (paramInt2 != -1)
     {
-      if (paramInt3 != -1) {
-        this.frameLengthPerRead = paramInt3;
-      }
-      return;
-      if (paramInt2 != -1) {
-        this.recorderInitBufSize = paramInt2;
-      }
+      this.recorderInitBufSize = paramInt2;
+    }
+    if (paramInt3 != -1) {
+      this.frameLengthPerRead = paramInt3;
     }
   }
   
   private void releaseRecordThreadResource()
   {
-    if (this.mRecord != null) {
-      this.mRecord.release();
+    AudioRecord localAudioRecord = this.mRecord;
+    if (localAudioRecord != null) {
+      localAudioRecord.release();
     }
     this.mRecord = null;
     this.recordThread = null;
@@ -91,65 +101,96 @@ public class Recorder
   
   public void cancel()
   {
-    if (this.recordThread != null) {
-      this.recordThread.unNormal = true;
+    Object localObject = this.recordThread;
+    if (localObject != null) {
+      ((Recorder.RecordThread)localObject).unNormal = true;
     }
     stop();
-    File localFile = new File(this.silkFilePath);
-    if (localFile.exists()) {
-      localFile.delete();
+    localObject = new File(this.silkFilePath);
+    if (((File)localObject).exists()) {
+      ((File)localObject).delete();
     }
   }
   
   public boolean initRecording()
   {
-    if (this.mRecord != null)
+    Object localObject1 = this.mRecord;
+    if (localObject1 != null)
     {
-      this.mRecord.release();
+      ((AudioRecord)localObject1).release();
       this.mRecord = null;
     }
-    if (this.mAudioManager != null) {}
-    for (int i = this.mAudioManager.getMode();; i = 0)
+    localObject1 = this.mAudioManager;
+    int i;
+    if (localObject1 != null) {
+      i = ((AudioManager)localObject1).getMode();
+    } else {
+      i = 0;
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("Record :startRecording | audio mode = ");
+    ((StringBuilder)localObject1).append(i);
+    Log.d("Recorder", ((StringBuilder)localObject1).toString());
+    if ((this.mAudioManager != null) && (this.mMode != -1))
     {
-      Log.d("Recorder", "Record :startRecording | audio mode = " + i);
-      if ((this.mAudioManager != null) && (this.mMode != -1))
-      {
-        Log.d("Recorder", "Record :initRecording --> SetMode ,mode = " + this.mMode);
-        this.mAudioManager.setMode(this.mMode);
-      }
-      if (this.mRecord == null) {
-        Log.d("Recorder", "Record: new AudioRecord --> mAudioSource = " + this.mAudioSource + " ,SAMPLE_RATE_IN_HZ =" + 16000 + " ,CHANNEL_CONFIG = " + 16 + " ,AUDIO_FORMAT =" + 2 + " ,recorderInitBufSize = " + this.recorderInitBufSize);
-      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Record :initRecording --> SetMode ,mode = ");
+      ((StringBuilder)localObject1).append(this.mMode);
+      Log.d("Recorder", ((StringBuilder)localObject1).toString());
+      this.mAudioManager.setMode(this.mMode);
+    }
+    Object localObject2;
+    if (this.mRecord == null)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Record: new AudioRecord --> mAudioSource = ");
+      ((StringBuilder)localObject1).append(this.mAudioSource);
+      ((StringBuilder)localObject1).append(" ,SAMPLE_RATE_IN_HZ =");
+      ((StringBuilder)localObject1).append(16000);
+      ((StringBuilder)localObject1).append(" ,CHANNEL_CONFIG = ");
+      ((StringBuilder)localObject1).append(16);
+      ((StringBuilder)localObject1).append(" ,AUDIO_FORMAT =");
+      ((StringBuilder)localObject1).append(2);
+      ((StringBuilder)localObject1).append(" ,recorderInitBufSize = ");
+      ((StringBuilder)localObject1).append(this.recorderInitBufSize);
+      Log.d("Recorder", ((StringBuilder)localObject1).toString());
       try
       {
         this.mRecord = new AudioRecord(0, 16000, 16, 2, this.recorderInitBufSize);
-        if (this.mRecord.getState() == 1) {
-          break label353;
-        }
-        i = this.mRecord.getState();
-        Log.d("Recorder", "Record State = " + i);
-        if (this.mRecord != null) {
-          this.mRecord.release();
-        }
-        this.mRecord = null;
-        if (this.mListener == null) {
-          break label353;
-        }
-        this.mListener.onRecorderFailed(this.recorderPath, 3);
       }
       catch (IllegalArgumentException localIllegalArgumentException)
       {
-        do
-        {
-          Log.d("Recorder", "Record : new AudioRecord Failed:" + Log.getStackTraceString(localIllegalArgumentException), localIllegalArgumentException);
-        } while (this.mListener == null);
-        this.mListener.onRecorderFailed(this.recorderPath, 3);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Record : new AudioRecord Failed:");
+        localStringBuilder.append(Log.getStackTraceString(localIllegalArgumentException));
+        Log.d("Recorder", localStringBuilder.toString(), localIllegalArgumentException);
+        localObject2 = this.mListener;
+        if (localObject2 != null) {
+          ((Recorder.OnQQRecorderListener)localObject2).onRecorderFailed(this.recorderPath, 3);
+        }
         return false;
       }
-      return false;
-      label353:
-      return true;
     }
+    if (this.mRecord.getState() != 1)
+    {
+      i = this.mRecord.getState();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("Record State = ");
+      ((StringBuilder)localObject2).append(i);
+      Log.d("Recorder", ((StringBuilder)localObject2).toString());
+      localObject2 = this.mRecord;
+      if (localObject2 != null) {
+        ((AudioRecord)localObject2).release();
+      }
+      this.mRecord = null;
+      localObject2 = this.mListener;
+      if (localObject2 != null)
+      {
+        ((Recorder.OnQQRecorderListener)localObject2).onRecorderFailed(this.recorderPath, 3);
+        return false;
+      }
+    }
+    return true;
   }
   
   public boolean isRecording()
@@ -159,21 +200,22 @@ public class Recorder
   
   public boolean isStop()
   {
-    if (this.recordThread == null) {}
-    while (!this.recordThread.isRunning) {
+    Recorder.RecordThread localRecordThread = this.recordThread;
+    if (localRecordThread == null) {
       return true;
     }
-    return false;
+    return localRecordThread.isRunning ^ true;
   }
   
   public void setMaxRecorderTime(int paramInt)
   {
-    if (paramInt <= this.MAX_RECORD_TIME)
+    int i = this.MAX_RECORD_TIME;
+    if (paramInt <= i)
     {
       this.maxRecorderTime = paramInt;
       return;
     }
-    this.maxRecorderTime = this.MAX_RECORD_TIME;
+    this.maxRecorderTime = i;
   }
   
   public void setQQRecorderListener(Recorder.OnQQRecorderListener paramOnQQRecorderListener)
@@ -189,26 +231,30 @@ public class Recorder
   
   public void start(String paramString)
   {
-    Log.d("Recorder", "QQRecord Start --> Path = " + paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("QQRecord Start --> Path = ");
+    ((StringBuilder)localObject).append(paramString);
+    Log.d("Recorder", ((StringBuilder)localObject).toString());
     if (this.recordThread == null)
     {
       this.recordThread = new Recorder.RecordThread(this, paramString);
       TraeJni.getInstance().initTRAE();
       this.recordThread.start();
-    }
-    do
-    {
       return;
-      Log.d("Recorder", "Record :start --> Record is Not Ready");
-    } while (this.mListener == null);
-    this.mListener.onRecorderFailed(paramString, 1);
+    }
+    Log.d("Recorder", "Record :start --> Record is Not Ready");
+    localObject = this.mListener;
+    if (localObject != null) {
+      ((Recorder.OnQQRecorderListener)localObject).onRecorderFailed(paramString, 1);
+    }
   }
   
   public void stop()
   {
     Log.d("Recorder", "QQRecord Stop");
-    if (this.recordThread != null) {
-      this.recordThread.isRunning = false;
+    Recorder.RecordThread localRecordThread = this.recordThread;
+    if (localRecordThread != null) {
+      localRecordThread.isRunning = false;
     }
   }
 }

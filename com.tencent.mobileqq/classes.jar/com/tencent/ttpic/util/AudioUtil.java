@@ -6,7 +6,7 @@ import java.nio.ByteOrder;
 
 public class AudioUtil
 {
-  private static final String TAG = AudioUtil.class.getSimpleName();
+  private static final String TAG = "AudioUtil";
   
   public static int byteArrayToInt(byte[] paramArrayOfByte)
   {
@@ -23,8 +23,9 @@ public class AudioUtil
     AudioUtil.Complex localComplex1 = new AudioUtil.Complex();
     new AudioUtil.Complex();
     int k = paramInt / 2;
-    int j = 1;
+    int i1 = 1;
     int i = paramInt;
+    int j = 1;
     for (;;)
     {
       i /= 2;
@@ -34,49 +35,57 @@ public class AudioUtil
       j += 1;
     }
     i = k;
-    int m = 1;
+    int n = 1;
+    int m;
     AudioUtil.Complex localComplex2;
-    int n;
-    while (m <= paramInt - 2)
+    for (;;)
     {
-      if (m < i)
+      m = i1;
+      if (n > paramInt - 2) {
+        break;
+      }
+      if (n < i)
       {
         localComplex2 = paramArrayOfComplex[i];
-        paramArrayOfComplex[i] = paramArrayOfComplex[m];
-        paramArrayOfComplex[m] = localComplex2;
+        paramArrayOfComplex[i] = paramArrayOfComplex[n];
+        paramArrayOfComplex[n] = localComplex2;
       }
-      n = k;
-      while (i >= n)
+      m = k;
+      while (i >= m)
       {
-        i -= n;
-        n /= 2;
+        i -= m;
+        m /= 2;
       }
-      i += n;
-      m += 1;
+      i += m;
+      n += 1;
     }
-    k = 1;
-    while (k <= j)
+    while (m <= j)
     {
-      n = (int)Math.pow(2.0D, k);
-      int i1 = n / 2;
+      n = (int)Math.pow(2.0D, m);
+      i1 = n / 2;
       i = 0;
       while (i < i1)
       {
-        double d = 6.283185307179586D / n;
-        localComplex1.real = Math.cos(i * d);
-        localComplex1.image = (Math.sin(d * i) * -1.0D);
-        m = i;
-        while (m < paramInt)
+        double d1 = n;
+        Double.isNaN(d1);
+        d1 = 6.283185307179586D / d1;
+        double d2 = i;
+        Double.isNaN(d2);
+        d1 *= d2;
+        localComplex1.real = Math.cos(d1);
+        localComplex1.image = (Math.sin(d1) * -1.0D);
+        k = i;
+        while (k < paramInt)
         {
-          int i2 = m + i1;
+          int i2 = k + i1;
           localComplex2 = paramArrayOfComplex[i2].cc(localComplex1);
-          paramArrayOfComplex[i2] = paramArrayOfComplex[m].cut(localComplex2);
-          paramArrayOfComplex[m] = paramArrayOfComplex[m].sum(localComplex2);
-          m += n;
+          paramArrayOfComplex[i2] = paramArrayOfComplex[k].cut(localComplex2);
+          paramArrayOfComplex[k] = paramArrayOfComplex[k].sum(localComplex2);
+          k += n;
         }
         i += 1;
       }
-      k += 1;
+      m += 1;
     }
   }
   
@@ -95,27 +104,32 @@ public class AudioUtil
   public static int getPcmDBFromShortBuffer(short[] paramArrayOfShort, int paramInt)
   {
     int j = 0;
+    double d1 = 0.0D;
     int i = 0;
-    double d = 0.0D;
     while (i < paramInt)
     {
-      d += Math.abs(paramArrayOfShort[i]);
+      d2 = Math.abs(paramArrayOfShort[i]);
+      Double.isNaN(d2);
+      d1 += d2;
       i += 1;
     }
-    d /= paramInt;
+    double d2 = paramInt;
+    Double.isNaN(d2);
+    d1 /= d2;
     paramInt = j;
-    if (d > 0.0D) {
-      paramInt = (int)(20.0D * Math.log10(d));
+    if (d1 > 0.0D) {
+      paramInt = (int)(Math.log10(d1) * 20.0D);
     }
     return paramInt;
   }
   
   public static void getPcmFFTFromShortBuffer(short[] paramArrayOfShort, int paramInt, FFTData paramFFTData)
   {
-    if ((paramInt > FFTData.BUFFER_SIZE) || (paramInt == 0)) {}
-    for (;;)
+    if (paramInt <= FFTData.BUFFER_SIZE)
     {
-      return;
+      if (paramInt == 0) {
+        return;
+      }
       int i = up2int(paramInt);
       AudioUtil.Complex[] arrayOfComplex = new AudioUtil.Complex[i];
       paramInt = 0;
@@ -147,15 +161,17 @@ public class AudioUtil
   
   public static short[] pcm16BitToShort(byte[] paramArrayOfByte, int paramInt)
   {
-    short[] arrayOfShort = new short[paramInt / 2];
+    int i = paramInt / 2;
+    short[] arrayOfShort = new short[i];
     byte[] arrayOfByte = new byte[2];
-    int i = 0;
-    while (i < paramInt / 2)
+    paramInt = 0;
+    while (paramInt < i)
     {
-      arrayOfByte[0] = paramArrayOfByte[(i * 2)];
-      arrayOfByte[1] = paramArrayOfByte[(i * 2 + 1)];
-      arrayOfShort[i] = byteArrayToShort(arrayOfByte);
-      i += 1;
+      int j = paramInt * 2;
+      arrayOfByte[0] = paramArrayOfByte[j];
+      arrayOfByte[1] = paramArrayOfByte[(j + 1)];
+      arrayOfShort[paramInt] = byteArrayToShort(arrayOfByte);
+      paramInt += 1;
     }
     return arrayOfShort;
   }
@@ -183,7 +199,7 @@ public class AudioUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.util.AudioUtil
  * JD-Core Version:    0.7.0.1
  */

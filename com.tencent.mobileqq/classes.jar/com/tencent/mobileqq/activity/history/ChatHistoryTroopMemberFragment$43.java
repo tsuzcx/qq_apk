@@ -1,27 +1,24 @@
 package com.tencent.mobileqq.activity.history;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.troopsetting.api.TroopSettingObserver;
 
 class ChatHistoryTroopMemberFragment$43
-  implements View.OnClickListener
+  extends TroopSettingObserver
 {
   ChatHistoryTroopMemberFragment$43(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onClick(View paramView)
+  protected void a(String paramString1, String paramString2, String paramString3)
   {
-    Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    localIntent.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
-    this.a.startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (!this.a.c.equals(paramString1)) {
+      return;
+    }
+    ThreadManager.post(new ChatHistoryTroopMemberFragment.43.1(this, paramString2), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.43
  * JD-Core Version:    0.7.0.1
  */

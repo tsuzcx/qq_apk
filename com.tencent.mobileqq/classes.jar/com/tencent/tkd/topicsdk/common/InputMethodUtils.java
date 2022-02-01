@@ -23,13 +23,15 @@ public final class InputMethodUtils
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
     Intrinsics.checkParameterIsNotNull(paramIBinder, "windowToken");
     paramContext = paramContext.getSystemService("input_method");
-    if (paramContext == null) {
-      throw new TypeCastException("null cannot be cast to non-null type android.view.inputmethod.InputMethodManager");
+    if (paramContext != null)
+    {
+      paramContext = (InputMethodManager)paramContext;
+      if (paramContext.isActive()) {
+        paramContext.hideSoftInputFromWindow(paramIBinder, 0);
+      }
+      return;
     }
-    paramContext = (InputMethodManager)paramContext;
-    if (paramContext.isActive()) {
-      paramContext.hideSoftInputFromWindow(paramIBinder, 0);
-    }
+    throw new TypeCastException("null cannot be cast to non-null type android.view.inputmethod.InputMethodManager");
   }
   
   public final void a(@NotNull Context paramContext, @NotNull View paramView)
@@ -37,12 +39,14 @@ public final class InputMethodUtils
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
     Intrinsics.checkParameterIsNotNull(paramView, "view");
     paramContext = paramContext.getSystemService("input_method");
-    if (paramContext == null) {
-      throw new TypeCastException("null cannot be cast to non-null type android.view.inputmethod.InputMethodManager");
+    if (paramContext != null)
+    {
+      paramContext = (InputMethodManager)paramContext;
+      paramView.requestFocus();
+      paramContext.showSoftInput(paramView, 0);
+      return;
     }
-    paramContext = (InputMethodManager)paramContext;
-    paramView.requestFocus();
-    paramContext.showSoftInput(paramView, 0);
+    throw new TypeCastException("null cannot be cast to non-null type android.view.inputmethod.InputMethodManager");
   }
   
   public final boolean a(@Nullable Activity paramActivity)
@@ -70,7 +74,7 @@ public final class InputMethodUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.common.InputMethodUtils
  * JD-Core Version:    0.7.0.1
  */

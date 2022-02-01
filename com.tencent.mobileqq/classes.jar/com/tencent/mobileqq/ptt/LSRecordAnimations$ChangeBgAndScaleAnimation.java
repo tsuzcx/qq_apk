@@ -31,41 +31,58 @@ public class LSRecordAnimations$ChangeBgAndScaleAnimation
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = paramGradientDrawable;
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_b_of_type_Int = paramInt2;
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS setColorChanger: " + paramInt1 + " --> " + paramInt2);
+    if (QLog.isDevelopLevel())
+    {
+      paramGradientDrawable = new StringBuilder();
+      paramGradientDrawable.append("LS setColorChanger: ");
+      paramGradientDrawable.append(paramInt1);
+      paramGradientDrawable.append(" --> ");
+      paramGradientDrawable.append(paramInt2);
+      QLog.d("LsRecord", 4, paramGradientDrawable.toString());
     }
   }
   
   public void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
     super.applyTransformation(paramFloat, paramTransformation);
-    if ((this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener != null) && ((this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener instanceof LSRecordAnimations.LSRecordAnimationCallback))) {
-      ((LSRecordAnimations.LSRecordAnimationCallback)this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener).a(this, paramFloat);
+    paramTransformation = this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
+    if ((paramTransformation != null) && ((paramTransformation instanceof LSRecordAnimations.LSRecordAnimationCallback))) {
+      ((LSRecordAnimations.LSRecordAnimationCallback)paramTransformation).a(this, paramFloat);
     }
     this.jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo.jdField_a_of_type_Float = (this.jdField_a_of_type_Float + this.jdField_b_of_type_Float * paramFloat);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS applyTransformation: " + paramFloat + " F: " + this.jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo.jdField_a_of_type_Float);
-    }
-    int i;
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable != null)
+    if (QLog.isDevelopLevel())
     {
-      i = this.jdField_b_of_type_Int;
-      if (paramFloat >= 1.0F) {
-        break label296;
+      paramTransformation = new StringBuilder();
+      paramTransformation.append("LS applyTransformation: ");
+      paramTransformation.append(paramFloat);
+      paramTransformation.append(" F: ");
+      paramTransformation.append(this.jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo.jdField_a_of_type_Float);
+      QLog.d("LsRecord", 4, paramTransformation.toString());
+    }
+    paramTransformation = this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable;
+    if (paramTransformation != null)
+    {
+      int i = this.jdField_b_of_type_Int;
+      if (paramFloat < 1.0F)
+      {
+        i = Color.argb((int)(Color.alpha(this.jdField_a_of_type_Int) + (Color.alpha(this.jdField_b_of_type_Int) - Color.alpha(this.jdField_a_of_type_Int)) * paramFloat), (int)(Color.red(this.jdField_a_of_type_Int) + (Color.red(this.jdField_b_of_type_Int) - Color.red(this.jdField_a_of_type_Int)) * paramFloat), (int)(Color.green(this.jdField_a_of_type_Int) + (Color.green(this.jdField_b_of_type_Int) - Color.green(this.jdField_a_of_type_Int)) * paramFloat), (int)(Color.blue(this.jdField_a_of_type_Int) + (Color.blue(this.jdField_b_of_type_Int) - Color.blue(this.jdField_a_of_type_Int)) * paramFloat));
+        this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(i);
       }
-      i = Color.argb((int)(Color.alpha(this.jdField_a_of_type_Int) + (Color.alpha(this.jdField_b_of_type_Int) - Color.alpha(this.jdField_a_of_type_Int)) * paramFloat), (int)(Color.red(this.jdField_a_of_type_Int) + (Color.red(this.jdField_b_of_type_Int) - Color.red(this.jdField_a_of_type_Int)) * paramFloat), (int)(Color.green(this.jdField_a_of_type_Int) + (Color.green(this.jdField_b_of_type_Int) - Color.green(this.jdField_a_of_type_Int)) * paramFloat), (int)(Color.blue(this.jdField_a_of_type_Int) + (Color.blue(this.jdField_b_of_type_Int) - Color.blue(this.jdField_a_of_type_Int)) * paramFloat));
-      this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(i);
-    }
-    for (;;)
-    {
+      else
+      {
+        paramTransformation.setColor(i);
+        this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = null;
+      }
       this.jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo.jdField_a_of_type_Int = i;
-      if (QLog.isDevelopLevel()) {
-        QLog.d("LsRecord", 4, "LS applyTransformation: " + paramFloat + " CLR: " + this.jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo.jdField_a_of_type_Int);
-      }
-      return;
-      label296:
-      this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(i);
-      this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = null;
+    }
+    if (QLog.isDevelopLevel())
+    {
+      paramTransformation = new StringBuilder();
+      paramTransformation.append("LS applyTransformation: ");
+      paramTransformation.append(paramFloat);
+      paramTransformation.append(" CLR: ");
+      paramTransformation.append(this.jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo.jdField_a_of_type_Int);
+      QLog.d("LsRecord", 4, paramTransformation.toString());
     }
   }
   
@@ -77,7 +94,7 @@ public class LSRecordAnimations$ChangeBgAndScaleAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.LSRecordAnimations.ChangeBgAndScaleAnimation
  * JD-Core Version:    0.7.0.1
  */

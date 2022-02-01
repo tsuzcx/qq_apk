@@ -43,7 +43,10 @@ public class TPNativePlayer
     }
     catch (Throwable paramContext)
     {
-      TPNativeLog.printLog(4, "Failed to create native player:" + paramContext.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Failed to create native player:");
+      localStringBuilder.append(paramContext.getMessage());
+      TPNativeLog.printLog(4, localStringBuilder.toString());
       throw new UnsupportedOperationException("Failed to create native player");
     }
   }
@@ -165,6 +168,8 @@ public class TPNativePlayer
   private native int _stop();
   
   private native int _switchDefinitionAsync(String paramString, int paramInt, long paramLong);
+  
+  private native int _switchDefinitionAsyncWithHttpHeader(String paramString, Object[] paramArrayOfObject, int paramInt, long paramLong);
   
   public int addAudioTrackSource(String paramString1, String paramString2)
   {
@@ -297,56 +302,25 @@ public class TPNativePlayer
     return 1000001;
   }
   
-  /* Error */
   public TPNativePlayerProgramInfo[] getProgramInfo()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokespecial 199	com/tencent/thumbplayer/core/player/TPNativePlayer:_getProgramCount	()I
-    //   4: istore_2
-    //   5: iload_2
-    //   6: anewarray 203	com/tencent/thumbplayer/core/player/TPNativePlayerProgramInfo
-    //   9: astore 4
-    //   11: iconst_0
-    //   12: istore_1
-    //   13: aload 4
-    //   15: astore_3
-    //   16: iload_1
-    //   17: iload_2
-    //   18: if_icmpge +30 -> 48
-    //   21: aload 4
-    //   23: iload_1
-    //   24: aload_0
-    //   25: iload_1
-    //   26: invokespecial 205	com/tencent/thumbplayer/core/player/TPNativePlayer:_getProgramInfo	(I)Lcom/tencent/thumbplayer/core/player/TPNativePlayerProgramInfo;
-    //   29: aastore
-    //   30: iload_1
-    //   31: iconst_1
-    //   32: iadd
-    //   33: istore_1
-    //   34: goto -21 -> 13
-    //   37: astore_3
-    //   38: iconst_4
-    //   39: aload_3
-    //   40: invokevirtual 71	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   43: invokestatic 80	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
-    //   46: aconst_null
-    //   47: astore_3
-    //   48: aload_3
-    //   49: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	50	0	this	TPNativePlayer
-    //   12	22	1	i	int
-    //   4	15	2	j	int
-    //   15	1	3	arrayOfTPNativePlayerProgramInfo1	TPNativePlayerProgramInfo[]
-    //   37	3	3	localThrowable	Throwable
-    //   47	2	3	arrayOfTPNativePlayerProgramInfo2	TPNativePlayerProgramInfo[]
-    //   9	13	4	arrayOfTPNativePlayerProgramInfo3	TPNativePlayerProgramInfo[]
-    // Exception table:
-    //   from	to	target	type
-    //   0	11	37	java/lang/Throwable
-    //   21	30	37	java/lang/Throwable
+    try
+    {
+      int j = _getProgramCount();
+      TPNativePlayerProgramInfo[] arrayOfTPNativePlayerProgramInfo = new TPNativePlayerProgramInfo[j];
+      int i = 0;
+      while (i < j)
+      {
+        arrayOfTPNativePlayerProgramInfo[i] = _getProgramInfo(i);
+        i += 1;
+      }
+      return arrayOfTPNativePlayerProgramInfo;
+    }
+    catch (Throwable localThrowable)
+    {
+      TPNativeLog.printLog(4, localThrowable.getMessage());
+    }
+    return null;
   }
   
   public long getPropertyLong(int paramInt)
@@ -379,37 +353,32 @@ public class TPNativePlayer
   
   public TPMediaTrackInfo[] getTrackInfo()
   {
+    TPMediaTrackInfo[] arrayOfTPMediaTrackInfo = null;
     try
     {
       int j = _getTrackCount();
       if (j > 0)
       {
-        TPMediaTrackInfo[] arrayOfTPMediaTrackInfo3 = new TPMediaTrackInfo[j];
+        arrayOfTPMediaTrackInfo = new TPMediaTrackInfo[j];
         int i = 0;
-        for (;;)
+        while (i < j)
         {
-          TPMediaTrackInfo[] arrayOfTPMediaTrackInfo1 = arrayOfTPMediaTrackInfo3;
-          if (i >= j) {
-            break;
-          }
-          arrayOfTPMediaTrackInfo3[i] = new TPMediaTrackInfo();
-          arrayOfTPMediaTrackInfo3[i].trackType = _getTrackType(i);
-          arrayOfTPMediaTrackInfo3[i].trackName = _getTrackName(i);
-          arrayOfTPMediaTrackInfo3[i].isSelected = _getTrackIsSelected(i);
-          arrayOfTPMediaTrackInfo3[i].isExclusive = _getTrackIsExclusive(i);
-          arrayOfTPMediaTrackInfo3[i].isInternal = _getTrackIsInternal(i);
+          arrayOfTPMediaTrackInfo[i] = new TPMediaTrackInfo();
+          arrayOfTPMediaTrackInfo[i].trackType = _getTrackType(i);
+          arrayOfTPMediaTrackInfo[i].trackName = _getTrackName(i);
+          arrayOfTPMediaTrackInfo[i].isSelected = _getTrackIsSelected(i);
+          arrayOfTPMediaTrackInfo[i].isExclusive = _getTrackIsExclusive(i);
+          arrayOfTPMediaTrackInfo[i].isInternal = _getTrackIsInternal(i);
           i += 1;
         }
       }
-      TPMediaTrackInfo[] arrayOfTPMediaTrackInfo2;
-      return null;
+      return arrayOfTPMediaTrackInfo;
     }
     catch (Throwable localThrowable)
     {
       TPNativeLog.printLog(4, localThrowable.getMessage());
-      arrayOfTPMediaTrackInfo2 = null;
-      return arrayOfTPMediaTrackInfo2;
     }
+    return null;
   }
   
   public int getVideoHeight()
@@ -636,40 +605,36 @@ public class TPNativePlayer
   
   public int setDataSource(String paramString, Map<String, String> paramMap)
   {
+    int i = 0;
     if (paramMap != null) {}
-    for (;;)
+    try
     {
-      try
+      if (paramMap.size() != 0)
       {
-        String[] arrayOfString;
-        if (paramMap.size() != 0)
+        String[] arrayOfString = new String[paramMap.size() * 2];
+        Iterator localIterator = paramMap.keySet().iterator();
+        for (;;)
         {
-          arrayOfString = new String[paramMap.size() * 2];
-          Iterator localIterator = paramMap.keySet().iterator();
-          int i = 0;
-          if (localIterator.hasNext())
-          {
-            String str = (String)localIterator.next();
-            arrayOfString[(i * 2)] = str;
-            arrayOfString[(i * 2 + 1)] = ((String)paramMap.get(str));
-            i += 1;
-            continue;
-            return _setDataSourceWithHttpHeader(paramString, paramMap);
+          localObject = arrayOfString;
+          if (!localIterator.hasNext()) {
+            break;
           }
+          localObject = (String)localIterator.next();
+          int j = i * 2;
+          arrayOfString[j] = localObject;
+          arrayOfString[(j + 1)] = ((String)paramMap.get(localObject));
+          i += 1;
         }
-        else
-        {
-          paramMap = new String[0];
-          continue;
-        }
-        paramMap = arrayOfString;
       }
-      catch (Throwable paramString)
-      {
-        TPNativeLog.printLog(4, paramString.getMessage());
-        return 1000001;
-      }
+      Object localObject = new String[0];
+      i = _setDataSourceWithHttpHeader(paramString, (Object[])localObject);
+      return i;
     }
+    catch (Throwable paramString)
+    {
+      TPNativeLog.printLog(4, paramString.getMessage());
+    }
+    return 1000001;
   }
   
   public int setDemuxerCallback(ITPDemuxerCallback paramITPDemuxerCallback)
@@ -688,16 +653,14 @@ public class TPNativePlayer
   
   public void setInitConfig(TPNativePlayerInitConfig paramTPNativePlayerInitConfig)
   {
-    Object localObject5;
-    Object localObject4;
     try
     {
       _resetInitConfig();
-      localObject5 = paramTPNativePlayerInitConfig.getIntMap();
-      localObject4 = paramTPNativePlayerInitConfig.getLongMap();
-      localObject3 = paramTPNativePlayerInitConfig.getFloatMap();
-      localObject2 = paramTPNativePlayerInitConfig.getBoolMap();
-      localObject1 = paramTPNativePlayerInitConfig.getQueueIntMap();
+      Object localObject5 = paramTPNativePlayerInitConfig.getIntMap();
+      Object localObject4 = paramTPNativePlayerInitConfig.getLongMap();
+      Object localObject3 = paramTPNativePlayerInitConfig.getFloatMap();
+      Object localObject2 = paramTPNativePlayerInitConfig.getBoolMap();
+      Object localObject1 = paramTPNativePlayerInitConfig.getQueueIntMap();
       localObject5 = ((HashMap)localObject5).entrySet().iterator();
       while (((Iterator)localObject5).hasNext())
       {
@@ -705,60 +668,60 @@ public class TPNativePlayer
         _setInitConfigInt(((Integer)localEntry.getKey()).intValue(), ((Integer)localEntry.getValue()).intValue());
       }
       localObject4 = ((HashMap)localObject4).entrySet().iterator();
+      while (((Iterator)localObject4).hasNext())
+      {
+        localObject5 = (Map.Entry)((Iterator)localObject4).next();
+        _setInitConfigLong(((Integer)((Map.Entry)localObject5).getKey()).intValue(), ((Long)((Map.Entry)localObject5).getValue()).longValue());
+      }
+      localObject3 = ((HashMap)localObject3).entrySet().iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        localObject4 = (Map.Entry)((Iterator)localObject3).next();
+        _setInitConfigFloat(((Integer)((Map.Entry)localObject4).getKey()).intValue(), ((Float)((Map.Entry)localObject4).getValue()).floatValue());
+      }
+      localObject2 = ((HashMap)localObject2).entrySet().iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = (Map.Entry)((Iterator)localObject2).next();
+        _setInitConfigBool(((Integer)((Map.Entry)localObject3).getKey()).intValue(), ((Boolean)((Map.Entry)localObject3).getValue()).booleanValue());
+      }
+      localObject1 = ((HashMap)localObject1).entrySet().iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (Map.Entry)((Iterator)localObject1).next();
+        localObject3 = (Vector)((Map.Entry)localObject2).getValue();
+        if (localObject3 != null)
+        {
+          localObject3 = ((Vector)localObject3).iterator();
+          while (((Iterator)localObject3).hasNext())
+          {
+            int i = ((Integer)((Iterator)localObject3).next()).intValue();
+            _addInitConfigQueueInt(((Integer)((Map.Entry)localObject2).getKey()).intValue(), i);
+          }
+        }
+      }
+      paramTPNativePlayerInitConfig = paramTPNativePlayerInitConfig.getQueueStringMap().entrySet().iterator();
+      while (paramTPNativePlayerInitConfig.hasNext())
+      {
+        localObject1 = (Map.Entry)paramTPNativePlayerInitConfig.next();
+        localObject2 = (Vector)((Map.Entry)localObject1).getValue();
+        if (localObject2 != null)
+        {
+          localObject2 = ((Vector)localObject2).iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            localObject3 = (String)((Iterator)localObject2).next();
+            _addInitConfigQueueString(((Integer)((Map.Entry)localObject1).getKey()).intValue(), (String)localObject3);
+          }
+        }
+      }
+      _applyInitConfig();
+      return;
     }
     catch (Throwable paramTPNativePlayerInitConfig)
     {
       TPNativeLog.printLog(4, paramTPNativePlayerInitConfig.getMessage());
-      return;
     }
-    while (((Iterator)localObject4).hasNext())
-    {
-      localObject5 = (Map.Entry)((Iterator)localObject4).next();
-      _setInitConfigLong(((Integer)((Map.Entry)localObject5).getKey()).intValue(), ((Long)((Map.Entry)localObject5).getValue()).longValue());
-    }
-    Object localObject3 = ((HashMap)localObject3).entrySet().iterator();
-    while (((Iterator)localObject3).hasNext())
-    {
-      localObject4 = (Map.Entry)((Iterator)localObject3).next();
-      _setInitConfigFloat(((Integer)((Map.Entry)localObject4).getKey()).intValue(), ((Float)((Map.Entry)localObject4).getValue()).floatValue());
-    }
-    Object localObject2 = ((HashMap)localObject2).entrySet().iterator();
-    while (((Iterator)localObject2).hasNext())
-    {
-      localObject3 = (Map.Entry)((Iterator)localObject2).next();
-      _setInitConfigBool(((Integer)((Map.Entry)localObject3).getKey()).intValue(), ((Boolean)((Map.Entry)localObject3).getValue()).booleanValue());
-    }
-    Object localObject1 = ((HashMap)localObject1).entrySet().iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (Map.Entry)((Iterator)localObject1).next();
-      localObject3 = (Vector)((Map.Entry)localObject2).getValue();
-      if (localObject3 != null)
-      {
-        localObject3 = ((Vector)localObject3).iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          int i = ((Integer)((Iterator)localObject3).next()).intValue();
-          _addInitConfigQueueInt(((Integer)((Map.Entry)localObject2).getKey()).intValue(), i);
-        }
-      }
-    }
-    paramTPNativePlayerInitConfig = paramTPNativePlayerInitConfig.getQueueStringMap().entrySet().iterator();
-    while (paramTPNativePlayerInitConfig.hasNext())
-    {
-      localObject1 = (Map.Entry)paramTPNativePlayerInitConfig.next();
-      localObject2 = (Vector)((Map.Entry)localObject1).getValue();
-      if (localObject2 != null)
-      {
-        localObject2 = ((Vector)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = (String)((Iterator)localObject2).next();
-          _addInitConfigQueueString(((Integer)((Map.Entry)localObject1).getKey()).intValue(), (String)localObject3);
-        }
-      }
-    }
-    _applyInitConfig();
   }
   
   public int setLoopback(boolean paramBoolean, long paramLong1, long paramLong2)
@@ -948,10 +911,44 @@ public class TPNativePlayer
   {
     return switchDefinitionAsync(paramString, 0, paramLong);
   }
+  
+  public int switchDefinitionAsync(String paramString, Map<String, String> paramMap, int paramInt, long paramLong)
+  {
+    int i = 0;
+    if (paramMap != null) {}
+    try
+    {
+      if (paramMap.size() != 0)
+      {
+        String[] arrayOfString = new String[paramMap.size() * 2];
+        Iterator localIterator = paramMap.keySet().iterator();
+        for (;;)
+        {
+          localObject = arrayOfString;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localObject = (String)localIterator.next();
+          int j = i * 2;
+          arrayOfString[j] = localObject;
+          arrayOfString[(j + 1)] = ((String)paramMap.get(localObject));
+          i += 1;
+        }
+      }
+      Object localObject = new String[0];
+      paramInt = _switchDefinitionAsyncWithHttpHeader(paramString, (Object[])localObject, paramInt, paramLong);
+      return paramInt;
+    }
+    catch (Throwable paramString)
+    {
+      TPNativeLog.printLog(4, paramString.getMessage());
+    }
+    return 1000001;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.player.TPNativePlayer
  * JD-Core Version:    0.7.0.1
  */

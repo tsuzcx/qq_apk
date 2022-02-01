@@ -10,13 +10,14 @@ class TAVCutVideoSession$5
   
   public void run()
   {
-    this.this$0.resetAEKitModelForAI(this.this$0.getMediaModel(), TAVCutVideoSession.access$200(this.this$0), this.val$lutPath, this.val$lutStrength, this.val$adjustParams, this.val$smoothLevel, this.val$glowAlpha, this.this$0.getDuration().getTimeUs() / 1000L);
+    TAVCutVideoSession localTAVCutVideoSession = this.this$0;
+    localTAVCutVideoSession.resetAEKitModelForAI(localTAVCutVideoSession.getMediaModel(), TAVCutVideoSession.access$200(this.this$0), this.val$lutPath, this.val$lutStrength, this.val$adjustParams, this.val$smoothLevel, this.val$glowAlpha, this.this$0.getDuration().getTimeUs() / 1000L);
     this.this$0.refresh();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutVideoSession.5
  * JD-Core Version:    0.7.0.1
  */

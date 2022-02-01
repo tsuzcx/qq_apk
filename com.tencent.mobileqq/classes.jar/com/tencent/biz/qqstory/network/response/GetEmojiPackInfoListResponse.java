@@ -26,37 +26,34 @@ public class GetEmojiPackInfoListResponse
   {
     super(paramRspGetEmoticonPackList.result);
     boolean bool;
-    ArrayList localArrayList;
-    if (paramRspGetEmoticonPackList.is_end.get() != 0)
-    {
+    if (paramRspGetEmoticonPackList.is_end.get() != 0) {
       bool = true;
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_JavaLangString = paramRspGetEmoticonPackList.next_cookie.get().toStringUtf8();
-      localArrayList = new ArrayList();
-      paramRspGetEmoticonPackList = paramRspGetEmoticonPackList.pack_list.get();
-      if (paramRspGetEmoticonPackList != null) {
-        paramRspGetEmoticonPackList = paramRspGetEmoticonPackList.iterator();
-      }
+    } else {
+      bool = false;
     }
-    else
+    this.jdField_a_of_type_Boolean = bool;
+    this.jdField_a_of_type_JavaLangString = paramRspGetEmoticonPackList.next_cookie.get().toStringUtf8();
+    ArrayList localArrayList = new ArrayList();
+    paramRspGetEmoticonPackList = paramRspGetEmoticonPackList.pack_list.get();
+    if (paramRspGetEmoticonPackList != null)
     {
-      for (;;)
+      paramRspGetEmoticonPackList = paramRspGetEmoticonPackList.iterator();
+      while (paramRspGetEmoticonPackList.hasNext())
       {
-        if (!paramRspGetEmoticonPackList.hasNext()) {
-          break label151;
-        }
         GetEmojiPackInfoListResponse.EmojiPack localEmojiPack = new GetEmojiPackInfoListResponse.EmojiPack((qqstory_struct.EmoticonPack)paramRspGetEmoticonPackList.next());
         if (localEmojiPack.a())
         {
           localArrayList.add(localEmojiPack);
-          continue;
-          bool = false;
-          break;
         }
-        SLog.d("GetEmojiPackInfoListResponse", "found invalid data we ignore it : " + localEmojiPack);
+        else
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("found invalid data we ignore it : ");
+          localStringBuilder.append(localEmojiPack);
+          SLog.d("GetEmojiPackInfoListResponse", localStringBuilder.toString());
+        }
       }
     }
-    label151:
     this.jdField_a_of_type_JavaUtilList = Collections.unmodifiableList(localArrayList);
     this.jdField_a_of_type_Long = paramLong;
     this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte.length];
@@ -65,12 +62,21 @@ public class GetEmojiPackInfoListResponse
   
   public String toString()
   {
-    return "GetEmojiPackInfoListResponse{mEmojiPackList.size=" + this.jdField_a_of_type_JavaUtilList.size() + ", mIsEnd=" + this.jdField_a_of_type_Boolean + ", mNextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetEmojiPackInfoListResponse{mEmojiPackList.size=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
+    localStringBuilder.append(", mIsEnd=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", mNextCookie='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetEmojiPackInfoListResponse
  * JD-Core Version:    0.7.0.1
  */

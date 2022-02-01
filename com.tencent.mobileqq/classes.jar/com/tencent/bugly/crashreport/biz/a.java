@@ -32,57 +32,53 @@ public final class a
   
   private static ContentValues a(UserInfoBean paramUserInfoBean)
   {
-    if (paramUserInfoBean == null) {}
-    do
-    {
+    if (paramUserInfoBean == null) {
       return null;
-      try
-      {
-        ContentValues localContentValues = new ContentValues();
-        if (paramUserInfoBean.a > 0L) {
-          localContentValues.put("_id", Long.valueOf(paramUserInfoBean.a));
-        }
-        localContentValues.put("_tm", Long.valueOf(paramUserInfoBean.e));
-        localContentValues.put("_ut", Long.valueOf(paramUserInfoBean.f));
-        localContentValues.put("_tp", Integer.valueOf(paramUserInfoBean.b));
-        localContentValues.put("_pc", paramUserInfoBean.c);
-        localContentValues.put("_dt", z.a(paramUserInfoBean));
-        return localContentValues;
+    }
+    try
+    {
+      ContentValues localContentValues = new ContentValues();
+      if (paramUserInfoBean.a > 0L) {
+        localContentValues.put("_id", Long.valueOf(paramUserInfoBean.a));
       }
-      catch (Throwable paramUserInfoBean) {}
-    } while (x.a(paramUserInfoBean));
-    paramUserInfoBean.printStackTrace();
+      localContentValues.put("_tm", Long.valueOf(paramUserInfoBean.e));
+      localContentValues.put("_ut", Long.valueOf(paramUserInfoBean.f));
+      localContentValues.put("_tp", Integer.valueOf(paramUserInfoBean.b));
+      localContentValues.put("_pc", paramUserInfoBean.c);
+      localContentValues.put("_dt", z.a(paramUserInfoBean));
+      return localContentValues;
+    }
+    catch (Throwable paramUserInfoBean)
+    {
+      if (!x.a(paramUserInfoBean)) {
+        paramUserInfoBean.printStackTrace();
+      }
+    }
     return null;
   }
   
   private static UserInfoBean a(Cursor paramCursor)
   {
     if (paramCursor == null) {
-      paramCursor = null;
+      return null;
     }
-    for (;;)
+    try
     {
-      return paramCursor;
-      try
-      {
-        Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("_dt"));
-        if (localObject == null) {
-          return null;
-        }
-        long l = paramCursor.getLong(paramCursor.getColumnIndex("_id"));
-        localObject = (UserInfoBean)z.a((byte[])localObject, UserInfoBean.CREATOR);
-        paramCursor = (Cursor)localObject;
-        if (localObject != null)
-        {
-          ((UserInfoBean)localObject).a = l;
-          return localObject;
-        }
+      byte[] arrayOfByte = paramCursor.getBlob(paramCursor.getColumnIndex("_dt"));
+      if (arrayOfByte == null) {
+        return null;
       }
-      catch (Throwable paramCursor)
-      {
-        if (!x.a(paramCursor)) {
-          paramCursor.printStackTrace();
-        }
+      long l = paramCursor.getLong(paramCursor.getColumnIndex("_id"));
+      paramCursor = (UserInfoBean)z.a(arrayOfByte, UserInfoBean.CREATOR);
+      if (paramCursor != null) {
+        paramCursor.a = l;
+      }
+      return paramCursor;
+    }
+    catch (Throwable paramCursor)
+    {
+      if (!x.a(paramCursor)) {
+        paramCursor.printStackTrace();
       }
     }
     return null;
@@ -90,16 +86,19 @@ public final class a
   
   private static void a(List<UserInfoBean> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    do
+    if (paramList != null)
     {
-      return;
+      if (paramList.size() == 0) {
+        return;
+      }
       StringBuilder localStringBuilder = new StringBuilder();
       int i = 0;
       while ((i < paramList.size()) && (i < 50))
       {
         localObject = (UserInfoBean)paramList.get(i);
-        localStringBuilder.append(" or _id").append(" = ").append(((UserInfoBean)localObject).a);
+        localStringBuilder.append(" or _id");
+        localStringBuilder.append(" = ");
+        localStringBuilder.append(((UserInfoBean)localObject).a);
         i += 1;
       }
       Object localObject = localStringBuilder.toString();
@@ -113,170 +112,180 @@ public final class a
         x.c("[Database] deleted %s data %d", new Object[] { "t_ui", Integer.valueOf(p.a().a("t_ui", paramList, null, null, true)) });
         return;
       }
-      catch (Throwable paramList) {}
-    } while (x.a(paramList));
-    paramList.printStackTrace();
+      catch (Throwable paramList)
+      {
+        if (!x.a(paramList)) {
+          paramList.printStackTrace();
+        }
+      }
+    }
   }
   
   private void c()
   {
-    boolean bool1 = false;
-    Object localObject4;
-    label109:
-    int j;
-    label126:
-    Object localObject5;
-    label213:
-    label252:
-    Object localObject6;
-    label390:
-    label440:
-    Object localObject3;
-    for (;;)
+    try
     {
-      Object localObject1;
-      try
+      bool = this.d;
+      if (!bool) {
+        return;
+      }
+      localObject1 = u.a();
+      if (localObject1 == null) {
+        return;
+      }
+      localObject3 = com.tencent.bugly.crashreport.common.strategy.a.a();
+      if (localObject3 == null) {
+        return;
+      }
+      if (((com.tencent.bugly.crashreport.common.strategy.a)localObject3).b())
       {
-        boolean bool2 = this.d;
-        if (!bool2) {
+        bool = ((u)localObject1).b(1001);
+        if (!bool) {
           return;
         }
-        localObject1 = u.a();
-        if (localObject1 == null) {
-          continue;
-        }
-        localObject4 = com.tencent.bugly.crashreport.common.strategy.a.a();
-        if ((localObject4 == null) || ((((com.tencent.bugly.crashreport.common.strategy.a)localObject4).b()) && (!((u)localObject1).b(1001)))) {
-          continue;
-        }
-        localObject1 = com.tencent.bugly.crashreport.common.info.a.a(this.a).d;
-        localObject4 = new ArrayList();
-        localObject1 = a((String)localObject1);
-        if (localObject1 == null) {
-          break label440;
-        }
-        int k = ((List)localObject1).size() - 20;
-        if (k > 0)
-        {
-          i = 0;
-          if (i >= ((List)localObject1).size() - 1) {
-            break label661;
-          }
-          j = i + 1;
-          if (j >= ((List)localObject1).size()) {
-            break label654;
-          }
-          if (((UserInfoBean)((List)localObject1).get(i)).e <= ((UserInfoBean)((List)localObject1).get(j)).e) {
-            break label647;
-          }
-          localObject5 = (UserInfoBean)((List)localObject1).get(i);
-          ((List)localObject1).set(i, ((List)localObject1).get(j));
-          ((List)localObject1).set(j, localObject5);
-          break label647;
-          if (i < k)
-          {
-            ((List)localObject4).add(((List)localObject1).get(i));
-            i += 1;
-            continue;
-          }
-        }
-        localObject5 = ((List)localObject1).iterator();
-        i = 0;
-        if (((Iterator)localObject5).hasNext())
-        {
-          localObject6 = (UserInfoBean)((Iterator)localObject5).next();
-          if (((UserInfoBean)localObject6).f != -1L)
-          {
-            ((Iterator)localObject5).remove();
-            if (((UserInfoBean)localObject6).e < z.b()) {
-              ((List)localObject4).add(localObject6);
-            }
-          }
-          if (((UserInfoBean)localObject6).e <= System.currentTimeMillis() - 600000L) {
-            break label644;
-          }
-          if ((((UserInfoBean)localObject6).b == 1) || (((UserInfoBean)localObject6).b == 4)) {
-            break label666;
-          }
-          if (((UserInfoBean)localObject6).b != 3) {
-            break label644;
-          }
-          break label666;
-        }
-        if (i <= 15) {
-          break;
-        }
-        x.d("[UserInfo] Upload user info too many times in 10 min: %d", new Object[] { Integer.valueOf(i) });
-        i = 0;
       }
-      finally {}
-      if (((List)localObject4).size() > 0) {
-        a((List)localObject4);
+      localObject1 = com.tencent.bugly.crashreport.common.info.a.a(this.a).d;
+      localObject4 = new ArrayList();
+      localObject3 = a((String)localObject1);
+      if (localObject3 == null) {
+        break label413;
       }
-      if ((i == 0) || (((List)localObject1).size() == 0))
+      m = ((List)localObject3).size() - 20;
+      if (m <= 0) {
+        break label256;
+      }
+      i = 0;
+    }
+    finally
+    {
+      for (;;)
       {
-        x.c("[UserInfo] There is no user info in local database.", new Object[0]);
+        Object localObject1;
+        Object localObject3;
+        Object localObject4;
+        int m;
+        int j;
+        int k;
+        label256:
+        Object localObject5;
+        label413:
+        label425:
+        u localu;
+        for (;;)
+        {
+          throw localObject2;
+        }
+        label675:
+        k += 1;
         continue;
-        localObject3 = new ArrayList();
+        int i = j;
+        continue;
+        i = 0;
+        continue;
+        label692:
+        i += 1;
+        continue;
+        label699:
         i = 1;
-      }
-      else
-      {
-        x.c("[UserInfo] Upload user info(size: %d)", new Object[] { Integer.valueOf(((List)localObject3).size()) });
-        if (this.c != 1) {
-          break label676;
-        }
+        continue;
+        label704:
+        i = 2;
+        continue;
+        label709:
+        boolean bool = false;
       }
     }
-    label644:
-    label647:
-    label654:
-    label661:
-    label666:
-    label670:
-    label673:
-    label676:
-    for (int i = 1;; i = 2)
+    if (i < ((List)localObject3).size() - 1)
     {
-      localObject4 = com.tencent.bugly.proguard.a.a((List)localObject3, i);
-      if (localObject4 == null)
-      {
-        x.d("[UserInfo] Failed to create UserInfoPackage.", new Object[0]);
-        break;
+      j = i + 1;
+      k = j;
+      if (k < ((List)localObject3).size()) {
+        if (((UserInfoBean)((List)localObject3).get(i)).e > ((UserInfoBean)((List)localObject3).get(k)).e)
+        {
+          localObject1 = (UserInfoBean)((List)localObject3).get(i);
+          ((List)localObject3).set(i, ((List)localObject3).get(k));
+          ((List)localObject3).set(k, localObject1);
+          break label675;
+          while (i < m)
+          {
+            ((List)localObject4).add(((List)localObject3).get(i));
+            i += 1;
+          }
+          localObject1 = ((List)localObject3).iterator();
+          i = 0;
+          while (((Iterator)localObject1).hasNext())
+          {
+            localObject5 = (UserInfoBean)((Iterator)localObject1).next();
+            if (((UserInfoBean)localObject5).f != -1L)
+            {
+              ((Iterator)localObject1).remove();
+              if (((UserInfoBean)localObject5).e < z.b()) {
+                ((List)localObject4).add(localObject5);
+              }
+            }
+            if (((UserInfoBean)localObject5).e > System.currentTimeMillis() - 600000L)
+            {
+              if ((((UserInfoBean)localObject5).b == 1) || (((UserInfoBean)localObject5).b == 4)) {
+                break label692;
+              }
+              if (((UserInfoBean)localObject5).b == 3) {
+                break label692;
+              }
+            }
+          }
+          localObject1 = localObject3;
+          if (i <= 15) {
+            break label699;
+          }
+          x.d("[UserInfo] Upload user info too many times in 10 min: %d", new Object[] { Integer.valueOf(i) });
+          i = 0;
+          localObject1 = localObject3;
+          break label425;
+          localObject1 = new ArrayList();
+          break label699;
+          if (((List)localObject4).size() > 0) {
+            a((List)localObject4);
+          }
+          if ((i != 0) && (((List)localObject1).size() != 0))
+          {
+            x.c("[UserInfo] Upload user info(size: %d)", new Object[] { Integer.valueOf(((List)localObject1).size()) });
+            if (this.c != 1) {
+              break label704;
+            }
+            i = 1;
+            localObject3 = com.tencent.bugly.proguard.a.a((List)localObject1, i);
+            if (localObject3 == null)
+            {
+              x.d("[UserInfo] Failed to create UserInfoPackage.", new Object[0]);
+              return;
+            }
+            localObject3 = com.tencent.bugly.proguard.a.a((k)localObject3);
+            if (localObject3 == null)
+            {
+              x.d("[UserInfo] Failed to encode data.", new Object[0]);
+              return;
+            }
+            localObject3 = com.tencent.bugly.proguard.a.a(this.a, 840, (byte[])localObject3);
+            if (localObject3 == null)
+            {
+              x.d("[UserInfo] Request package is null.", new Object[0]);
+              return;
+            }
+            localObject1 = new a.1(this, (List)localObject1);
+            localObject4 = com.tencent.bugly.crashreport.common.strategy.a.a().c().q;
+            localObject5 = StrategyBean.b;
+            localu = u.a();
+            if (this.c != 1) {
+              break label709;
+            }
+            bool = true;
+            localu.a(1001, (am)localObject3, (String)localObject4, (String)localObject5, (t)localObject1, bool);
+            return;
+          }
+          x.c("[UserInfo] There is no user info in local database.", new Object[0]);
+          return;
+        }
       }
-      localObject4 = com.tencent.bugly.proguard.a.a((k)localObject4);
-      if (localObject4 == null)
-      {
-        x.d("[UserInfo] Failed to encode data.", new Object[0]);
-        break;
-      }
-      localObject4 = com.tencent.bugly.proguard.a.a(this.a, 840, (byte[])localObject4);
-      if (localObject4 == null)
-      {
-        x.d("[UserInfo] Request package is null.", new Object[0]);
-        break;
-      }
-      localObject3 = new a.1(this, (List)localObject3);
-      localObject5 = com.tencent.bugly.crashreport.common.strategy.a.a().c().q;
-      localObject6 = StrategyBean.b;
-      u localu = u.a();
-      if (this.c == 1) {
-        bool1 = true;
-      }
-      localu.a(1001, (am)localObject4, (String)localObject5, (String)localObject6, (t)localObject3, bool1);
-      break;
-      i = 1;
-      break label673;
-      break label670;
-      j += 1;
-      break label126;
-      i += 1;
-      break label109;
-      i = 0;
-      break label213;
-      i += 1;
-      break label252;
-      break label390;
     }
   }
   
@@ -286,189 +295,242 @@ public final class a
     // Byte code:
     //   0: aload_1
     //   1: invokestatic 306	com/tencent/bugly/proguard/z:a	(Ljava/lang/String;)Z
-    //   4: ifeq +35 -> 39
+    //   4: ifeq +8 -> 12
     //   7: aconst_null
     //   8: astore_1
-    //   9: invokestatic 146	com/tencent/bugly/proguard/p:a	()Lcom/tencent/bugly/proguard/p;
-    //   12: ldc 148
-    //   14: aconst_null
-    //   15: aload_1
-    //   16: aconst_null
-    //   17: aconst_null
-    //   18: iconst_1
-    //   19: invokevirtual 309	com/tencent/bugly/proguard/p:a	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Lcom/tencent/bugly/proguard/o;Z)Landroid/database/Cursor;
-    //   22: astore_1
-    //   23: aload_1
-    //   24: ifnonnull +42 -> 66
-    //   27: aload_1
-    //   28: ifnull +9 -> 37
-    //   31: aload_1
-    //   32: invokeinterface 312 1 0
-    //   37: aconst_null
-    //   38: areturn
-    //   39: new 158	java/lang/StringBuilder
-    //   42: dup
-    //   43: ldc_w 314
-    //   46: invokespecial 317	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   49: aload_1
-    //   50: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   53: ldc_w 319
-    //   56: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   59: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   62: astore_1
-    //   63: goto -54 -> 9
-    //   66: new 158	java/lang/StringBuilder
-    //   69: dup
-    //   70: invokespecial 159	java/lang/StringBuilder:<init>	()V
-    //   73: astore 5
-    //   75: new 219	java/util/ArrayList
-    //   78: dup
-    //   79: invokespecial 220	java/util/ArrayList:<init>	()V
-    //   82: astore 4
-    //   84: aload_1
-    //   85: invokeinterface 322 1 0
-    //   90: ifeq +127 -> 217
-    //   93: aload_1
-    //   94: invokestatic 324	com/tencent/bugly/crashreport/biz/a:a	(Landroid/database/Cursor;)Lcom/tencent/bugly/crashreport/biz/UserInfoBean;
-    //   97: astore 6
-    //   99: aload 6
-    //   101: ifnull +43 -> 144
+    //   9: goto +37 -> 46
+    //   12: new 158	java/lang/StringBuilder
+    //   15: dup
+    //   16: ldc_w 308
+    //   19: invokespecial 311	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   22: astore 4
+    //   24: aload 4
+    //   26: aload_1
+    //   27: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: pop
+    //   31: aload 4
+    //   33: ldc_w 313
+    //   36: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: pop
+    //   40: aload 4
+    //   42: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   45: astore_1
+    //   46: invokestatic 146	com/tencent/bugly/proguard/p:a	()Lcom/tencent/bugly/proguard/p;
+    //   49: ldc 148
+    //   51: aconst_null
+    //   52: aload_1
+    //   53: aconst_null
+    //   54: aconst_null
+    //   55: iconst_1
+    //   56: invokevirtual 316	com/tencent/bugly/proguard/p:a	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Lcom/tencent/bugly/proguard/o;Z)Landroid/database/Cursor;
+    //   59: astore 4
+    //   61: aload 4
+    //   63: ifnonnull +17 -> 80
+    //   66: aload 4
+    //   68: ifnull +10 -> 78
+    //   71: aload 4
+    //   73: invokeinterface 319 1 0
+    //   78: aconst_null
+    //   79: areturn
+    //   80: aload 4
+    //   82: astore_1
+    //   83: new 158	java/lang/StringBuilder
+    //   86: dup
+    //   87: invokespecial 159	java/lang/StringBuilder:<init>	()V
+    //   90: astore 6
+    //   92: aload 4
+    //   94: astore_1
+    //   95: new 219	java/util/ArrayList
+    //   98: dup
+    //   99: invokespecial 220	java/util/ArrayList:<init>	()V
+    //   102: astore 5
     //   104: aload 4
-    //   106: aload 6
-    //   108: invokeinterface 228 2 0
-    //   113: pop
-    //   114: goto -30 -> 84
-    //   117: astore 4
-    //   119: aload 4
-    //   121: invokestatic 89	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
-    //   124: ifne +8 -> 132
-    //   127: aload 4
-    //   129: invokevirtual 92	java/lang/Throwable:printStackTrace	()V
-    //   132: aload_1
-    //   133: ifnull +9 -> 142
-    //   136: aload_1
-    //   137: invokeinterface 312 1 0
-    //   142: aconst_null
-    //   143: areturn
-    //   144: aload_1
-    //   145: aload_1
-    //   146: ldc 34
-    //   148: invokeinterface 99 2 0
-    //   153: invokeinterface 107 2 0
-    //   158: lstore_2
-    //   159: aload 5
-    //   161: ldc 165
-    //   163: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   166: ldc 171
-    //   168: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   171: lload_2
-    //   172: invokevirtual 174	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   175: pop
-    //   176: goto -92 -> 84
-    //   179: astore 6
-    //   181: ldc_w 326
-    //   184: iconst_0
-    //   185: anewarray 4	java/lang/Object
-    //   188: invokestatic 260	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   191: pop
-    //   192: goto -108 -> 84
-    //   195: astore 5
-    //   197: aload_1
-    //   198: astore 4
-    //   200: aload 5
-    //   202: astore_1
+    //   106: astore_1
+    //   107: aload 4
+    //   109: invokeinterface 322 1 0
+    //   114: ifeq +106 -> 220
+    //   117: aload 4
+    //   119: astore_1
+    //   120: aload 4
+    //   122: invokestatic 324	com/tencent/bugly/crashreport/biz/a:a	(Landroid/database/Cursor;)Lcom/tencent/bugly/crashreport/biz/UserInfoBean;
+    //   125: astore 7
+    //   127: aload 7
+    //   129: ifnull +19 -> 148
+    //   132: aload 4
+    //   134: astore_1
+    //   135: aload 5
+    //   137: aload 7
+    //   139: invokeinterface 228 2 0
+    //   144: pop
+    //   145: goto -41 -> 104
+    //   148: aload 4
+    //   150: astore_1
+    //   151: aload 4
+    //   153: aload 4
+    //   155: ldc 34
+    //   157: invokeinterface 99 2 0
+    //   162: invokeinterface 107 2 0
+    //   167: lstore_2
+    //   168: aload 4
+    //   170: astore_1
+    //   171: aload 6
+    //   173: ldc 165
+    //   175: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   178: pop
+    //   179: aload 4
+    //   181: astore_1
+    //   182: aload 6
+    //   184: ldc 171
+    //   186: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   189: pop
+    //   190: aload 4
+    //   192: astore_1
+    //   193: aload 6
+    //   195: lload_2
+    //   196: invokevirtual 174	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   199: pop
+    //   200: goto -96 -> 104
     //   203: aload 4
-    //   205: ifnull +10 -> 215
-    //   208: aload 4
-    //   210: invokeinterface 312 1 0
-    //   215: aload_1
-    //   216: athrow
-    //   217: aload 5
-    //   219: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   222: astore 5
-    //   224: aload 5
-    //   226: invokevirtual 183	java/lang/String:length	()I
-    //   229: ifle +46 -> 275
-    //   232: aload 5
-    //   234: iconst_4
-    //   235: invokevirtual 187	java/lang/String:substring	(I)Ljava/lang/String;
-    //   238: astore 5
-    //   240: ldc_w 328
-    //   243: iconst_2
-    //   244: anewarray 4	java/lang/Object
-    //   247: dup
-    //   248: iconst_0
-    //   249: ldc 148
-    //   251: aastore
-    //   252: dup
-    //   253: iconst_1
-    //   254: invokestatic 146	com/tencent/bugly/proguard/p:a	()Lcom/tencent/bugly/proguard/p;
-    //   257: ldc 148
-    //   259: aload 5
-    //   261: aconst_null
-    //   262: aconst_null
-    //   263: iconst_1
-    //   264: invokevirtual 196	com/tencent/bugly/proguard/p:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Lcom/tencent/bugly/proguard/o;Z)I
-    //   267: invokestatic 63	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   270: aastore
-    //   271: invokestatic 260	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   274: pop
-    //   275: aload_1
-    //   276: ifnull +9 -> 285
-    //   279: aload_1
-    //   280: invokeinterface 312 1 0
-    //   285: aload 4
-    //   287: areturn
-    //   288: astore_1
-    //   289: aconst_null
-    //   290: astore 4
-    //   292: goto -89 -> 203
-    //   295: astore 5
-    //   297: aload_1
-    //   298: astore 4
-    //   300: aload 5
-    //   302: astore_1
-    //   303: goto -100 -> 203
-    //   306: astore 4
-    //   308: aconst_null
-    //   309: astore_1
-    //   310: goto -191 -> 119
+    //   205: astore_1
+    //   206: ldc_w 326
+    //   209: iconst_0
+    //   210: anewarray 4	java/lang/Object
+    //   213: invokestatic 260	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   216: pop
+    //   217: goto -113 -> 104
+    //   220: aload 4
+    //   222: astore_1
+    //   223: aload 6
+    //   225: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   228: astore 6
+    //   230: aload 4
+    //   232: astore_1
+    //   233: aload 6
+    //   235: invokevirtual 183	java/lang/String:length	()I
+    //   238: ifle +52 -> 290
+    //   241: aload 4
+    //   243: astore_1
+    //   244: aload 6
+    //   246: iconst_4
+    //   247: invokevirtual 187	java/lang/String:substring	(I)Ljava/lang/String;
+    //   250: astore 6
+    //   252: aload 4
+    //   254: astore_1
+    //   255: ldc_w 328
+    //   258: iconst_2
+    //   259: anewarray 4	java/lang/Object
+    //   262: dup
+    //   263: iconst_0
+    //   264: ldc 148
+    //   266: aastore
+    //   267: dup
+    //   268: iconst_1
+    //   269: invokestatic 146	com/tencent/bugly/proguard/p:a	()Lcom/tencent/bugly/proguard/p;
+    //   272: ldc 148
+    //   274: aload 6
+    //   276: aconst_null
+    //   277: aconst_null
+    //   278: iconst_1
+    //   279: invokevirtual 196	com/tencent/bugly/proguard/p:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Lcom/tencent/bugly/proguard/o;Z)I
+    //   282: invokestatic 63	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   285: aastore
+    //   286: invokestatic 260	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   289: pop
+    //   290: aload 4
+    //   292: ifnull +10 -> 302
+    //   295: aload 4
+    //   297: invokeinterface 319 1 0
+    //   302: aload 5
+    //   304: areturn
+    //   305: astore 5
+    //   307: goto +15 -> 322
+    //   310: astore_1
+    //   311: aconst_null
+    //   312: astore 4
+    //   314: goto +49 -> 363
+    //   317: astore 5
+    //   319: aconst_null
+    //   320: astore 4
+    //   322: aload 4
+    //   324: astore_1
+    //   325: aload 5
+    //   327: invokestatic 89	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   330: ifne +11 -> 341
+    //   333: aload 4
+    //   335: astore_1
+    //   336: aload 5
+    //   338: invokevirtual 92	java/lang/Throwable:printStackTrace	()V
+    //   341: aload 4
+    //   343: ifnull +10 -> 353
+    //   346: aload 4
+    //   348: invokeinterface 319 1 0
+    //   353: aconst_null
+    //   354: areturn
+    //   355: astore 5
+    //   357: aload_1
+    //   358: astore 4
+    //   360: aload 5
+    //   362: astore_1
+    //   363: aload 4
+    //   365: ifnull +10 -> 375
+    //   368: aload 4
+    //   370: invokeinterface 319 1 0
+    //   375: goto +5 -> 380
+    //   378: aload_1
+    //   379: athrow
+    //   380: goto -2 -> 378
+    //   383: astore_1
+    //   384: goto -181 -> 203
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	313	0	this	a
-    //   0	313	1	paramString	String
-    //   158	14	2	l	long
-    //   82	23	4	localArrayList	ArrayList
-    //   117	11	4	localThrowable1	Throwable
-    //   198	101	4	str1	String
-    //   306	1	4	localThrowable2	Throwable
-    //   73	87	5	localStringBuilder	StringBuilder
-    //   195	23	5	localObject1	Object
-    //   222	38	5	str2	String
-    //   295	6	5	localObject2	Object
-    //   97	10	6	localUserInfoBean	UserInfoBean
-    //   179	1	6	localThrowable3	Throwable
+    //   0	387	0	this	a
+    //   0	387	1	paramString	String
+    //   167	29	2	l	long
+    //   22	347	4	localObject1	Object
+    //   102	201	5	localArrayList	ArrayList
+    //   305	1	5	localThrowable1	Throwable
+    //   317	20	5	localThrowable2	Throwable
+    //   355	6	5	localObject2	Object
+    //   90	185	6	localObject3	Object
+    //   125	13	7	localUserInfoBean	UserInfoBean
     // Exception table:
     //   from	to	target	type
-    //   66	84	117	java/lang/Throwable
-    //   84	99	117	java/lang/Throwable
-    //   104	114	117	java/lang/Throwable
-    //   181	192	117	java/lang/Throwable
-    //   217	275	117	java/lang/Throwable
-    //   144	176	179	java/lang/Throwable
-    //   66	84	195	finally
-    //   84	99	195	finally
-    //   104	114	195	finally
-    //   144	176	195	finally
-    //   181	192	195	finally
-    //   217	275	195	finally
-    //   0	7	288	finally
-    //   9	23	288	finally
-    //   39	63	288	finally
-    //   119	132	295	finally
-    //   0	7	306	java/lang/Throwable
-    //   9	23	306	java/lang/Throwable
-    //   39	63	306	java/lang/Throwable
+    //   83	92	305	java/lang/Throwable
+    //   95	104	305	java/lang/Throwable
+    //   107	117	305	java/lang/Throwable
+    //   120	127	305	java/lang/Throwable
+    //   135	145	305	java/lang/Throwable
+    //   206	217	305	java/lang/Throwable
+    //   223	230	305	java/lang/Throwable
+    //   233	241	305	java/lang/Throwable
+    //   244	252	305	java/lang/Throwable
+    //   255	290	305	java/lang/Throwable
+    //   0	7	310	finally
+    //   12	46	310	finally
+    //   46	61	310	finally
+    //   0	7	317	java/lang/Throwable
+    //   12	46	317	java/lang/Throwable
+    //   46	61	317	java/lang/Throwable
+    //   83	92	355	finally
+    //   95	104	355	finally
+    //   107	117	355	finally
+    //   120	127	355	finally
+    //   135	145	355	finally
+    //   151	168	355	finally
+    //   171	179	355	finally
+    //   182	190	355	finally
+    //   193	200	355	finally
+    //   206	217	355	finally
+    //   223	230	355	finally
+    //   233	241	355	finally
+    //   244	252	355	finally
+    //   255	290	355	finally
+    //   325	333	355	finally
+    //   336	341	355	finally
+    //   151	168	383	java/lang/Throwable
+    //   171	179	383	java/lang/Throwable
+    //   182	190	383	java/lang/Throwable
+    //   193	200	383	java/lang/Throwable
   }
   
   public final void a()
@@ -479,8 +541,8 @@ public final class a
   
   public final void a(int paramInt, boolean paramBoolean, long paramLong)
   {
-    int i = 1;
     Object localObject = com.tencent.bugly.crashreport.common.strategy.a.a();
+    int i = 0;
     if ((localObject != null) && (!((com.tencent.bugly.crashreport.common.strategy.a)localObject).c().g) && (paramInt != 1) && (paramInt != 3))
     {
       x.e("UserInfo is disable", new Object[0]);
@@ -497,23 +559,21 @@ public final class a
     localUserInfoBean.e = System.currentTimeMillis();
     localUserInfoBean.f = -1L;
     localUserInfoBean.n = ((com.tencent.bugly.crashreport.common.info.a)localObject).m;
-    if (paramInt == 1) {}
-    for (paramInt = i;; paramInt = 0)
-    {
-      localUserInfoBean.o = paramInt;
-      localUserInfoBean.l = ((com.tencent.bugly.crashreport.common.info.a)localObject).a();
-      localUserInfoBean.m = ((com.tencent.bugly.crashreport.common.info.a)localObject).s;
-      localUserInfoBean.g = ((com.tencent.bugly.crashreport.common.info.a)localObject).t;
-      localUserInfoBean.h = ((com.tencent.bugly.crashreport.common.info.a)localObject).u;
-      localUserInfoBean.i = ((com.tencent.bugly.crashreport.common.info.a)localObject).v;
-      localUserInfoBean.k = ((com.tencent.bugly.crashreport.common.info.a)localObject).w;
-      localUserInfoBean.r = ((com.tencent.bugly.crashreport.common.info.a)localObject).z();
-      localUserInfoBean.s = ((com.tencent.bugly.crashreport.common.info.a)localObject).E();
-      localUserInfoBean.p = ((com.tencent.bugly.crashreport.common.info.a)localObject).F();
-      localUserInfoBean.q = ((com.tencent.bugly.crashreport.common.info.a)localObject).G();
-      w.a().a(new a.a(this, localUserInfoBean, paramBoolean), 0L);
-      return;
+    if (paramInt == 1) {
+      i = 1;
     }
+    localUserInfoBean.o = i;
+    localUserInfoBean.l = ((com.tencent.bugly.crashreport.common.info.a)localObject).a();
+    localUserInfoBean.m = ((com.tencent.bugly.crashreport.common.info.a)localObject).s;
+    localUserInfoBean.g = ((com.tencent.bugly.crashreport.common.info.a)localObject).t;
+    localUserInfoBean.h = ((com.tencent.bugly.crashreport.common.info.a)localObject).u;
+    localUserInfoBean.i = ((com.tencent.bugly.crashreport.common.info.a)localObject).v;
+    localUserInfoBean.k = ((com.tencent.bugly.crashreport.common.info.a)localObject).w;
+    localUserInfoBean.r = ((com.tencent.bugly.crashreport.common.info.a)localObject).z();
+    localUserInfoBean.s = ((com.tencent.bugly.crashreport.common.info.a)localObject).E();
+    localUserInfoBean.p = ((com.tencent.bugly.crashreport.common.info.a)localObject).F();
+    localUserInfoBean.q = ((com.tencent.bugly.crashreport.common.info.a)localObject).G();
+    w.a().a(new a.a(this, localUserInfoBean, paramBoolean), 0L);
   }
   
   public final void b()
@@ -526,7 +586,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.bugly.crashreport.biz.a
  * JD-Core Version:    0.7.0.1
  */

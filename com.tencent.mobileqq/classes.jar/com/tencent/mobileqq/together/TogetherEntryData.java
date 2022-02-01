@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class TogetherEntryData
 {
-  static int jdField_a_of_type_Int = 2131699330;
+  static int jdField_a_of_type_Int = 2131699435;
   static int[] jdField_a_of_type_ArrayOfInt = { 1001, 1003, 1002, 1005, 1004 };
   static int[] b;
   static int[] c;
@@ -29,9 +29,9 @@ public class TogetherEntryData
   static
   {
     jdField_b_of_type_ArrayOfInt = new int[] { -8293377, -35897, -42646, -3243777, -16725252 };
-    jdField_c_of_type_ArrayOfInt = new int[] { 2131693688, 2131719433, 2131720632, 2131699311, 2131699313 };
-    jdField_d_of_type_ArrayOfInt = new int[] { 2130846483, 2130846485, 2130846486, 2130844962, 2130846484 };
-    jdField_e_of_type_ArrayOfInt = new int[] { 2131699310, 2131699326, 2131699344, 2131699312, 2131699314 };
+    jdField_c_of_type_ArrayOfInt = new int[] { 2131693641, 2131719151, 2131720347, 2131699416, 2131699418 };
+    jdField_d_of_type_ArrayOfInt = new int[] { 2130846363, 2130846365, 2130846366, 2130844838, 2130846364 };
+    jdField_e_of_type_ArrayOfInt = new int[] { 2131699415, 2131699431, 2131699449, 2131699417, 2131699419 };
   }
   
   public TogetherEntryData()
@@ -45,16 +45,16 @@ public class TogetherEntryData
     {
     default: 
       return null;
-    case 1001: 
-      return paramContext.getResources().getDrawable(2130846483);
+    case 1005: 
+      return paramContext.getResources().getDrawable(2130844838);
     case 1004: 
-      return paramContext.getResources().getDrawable(2130846484);
+      return paramContext.getResources().getDrawable(2130846364);
     case 1003: 
-      return paramContext.getResources().getDrawable(2130846485);
+      return paramContext.getResources().getDrawable(2130846365);
     case 1002: 
-      return paramContext.getResources().getDrawable(2130846486);
+      return paramContext.getResources().getDrawable(2130846366);
     }
-    return paramContext.getResources().getDrawable(2130844962);
+    return paramContext.getResources().getDrawable(2130846363);
   }
   
   public static ArrayList<TogetherEntryData> a()
@@ -78,8 +78,12 @@ public class TogetherEntryData
   
   public String a()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return this.f + HardCodeUtil.a(jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.f);
+      localStringBuilder.append(HardCodeUtil.a(jdField_a_of_type_Int));
+      return localStringBuilder.toString();
     }
     return this.jdField_b_of_type_JavaLangString;
   }
@@ -96,7 +100,7 @@ public class TogetherEntryData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.together.TogetherEntryData
  * JD-Core Version:    0.7.0.1
  */

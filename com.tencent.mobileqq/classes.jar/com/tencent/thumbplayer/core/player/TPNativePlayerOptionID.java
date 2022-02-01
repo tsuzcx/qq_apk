@@ -14,10 +14,11 @@ public class TPNativePlayerOptionID
   public static final int LONG1_SKIP_END_TIME_MS = 500;
   public static final int LONG2_ADAPTIVE_LIMIT_BITRATE_RANGE = 1;
   public static final int OBJECT_DUMMY = 1000;
+  public static final int OBJECT_SUBTITLE_RENDER_PARAMS = 1001;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.player.TPNativePlayerOptionID
  * JD-Core Version:    0.7.0.1
  */

@@ -52,13 +52,18 @@ public class AppBrandLaunchManager$RecommendRunnable
         }
       }
     }
-    QLog.d("DesktopDataManager-Recommend", 2, "RecommendRunnable getRecommendAppList : " + this.appId + ", recommendAppList size: " + this.recommendAppInfos.size());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("RecommendRunnable getRecommendAppList : ");
+    ((StringBuilder)localObject).append(this.appId);
+    ((StringBuilder)localObject).append(", recommendAppList size: ");
+    ((StringBuilder)localObject).append(this.recommendAppInfos.size());
+    QLog.d("DesktopDataManager-Recommend", 2, ((StringBuilder)localObject).toString());
     MiniAppCmdUtil.getInstance().getRecommendAppList(localStCommonExt, this.appId, this.verType, this.useTime, this.recommendAppInfos, new AppBrandLaunchManager.RecommendRunnable.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.RecommendRunnable
  * JD-Core Version:    0.7.0.1
  */

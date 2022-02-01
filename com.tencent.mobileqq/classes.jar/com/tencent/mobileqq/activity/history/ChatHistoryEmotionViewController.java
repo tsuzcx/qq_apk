@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.history;
 
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.TextView;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -10,16 +10,16 @@ public class ChatHistoryEmotionViewController
   extends ChatHistoryCommonViewController
 {
   public static final int[] a;
-  public static final int[] b = { 2131364619 };
+  public static final int[] b = { 2131364506 };
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131690884 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2131690813 };
   }
   
-  public ChatHistoryEmotionViewController(FragmentActivity paramFragmentActivity)
+  public ChatHistoryEmotionViewController(BaseActivity paramBaseActivity)
   {
-    super(paramFragmentActivity);
+    super(paramBaseActivity);
   }
   
   protected int[] a()
@@ -41,15 +41,15 @@ public class ChatHistoryEmotionViewController
   public void onClick(View paramView)
   {
     super.onClick(paramView);
-    if ((paramView.getId() == 2131369518) && (this.c == 2)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131690802);
+    if ((paramView.getId() == 2131369233) && (this.c == 2)) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131690730);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryEmotionViewController
  * JD-Core Version:    0.7.0.1
  */

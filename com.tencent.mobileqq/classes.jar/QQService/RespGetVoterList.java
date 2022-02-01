@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class RespGetVoterList
   extends JceStruct
@@ -67,14 +68,17 @@ public final class RespGetVoterList
   {
     paramJceOutputStream.write(this.stHeader, 0);
     paramJceOutputStream.write(this.RespTime, 1);
-    if (this.vVoterInfos != null) {
-      paramJceOutputStream.write(this.vVoterInfos, 2);
+    Object localObject = this.vVoterInfos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.stUserData != null) {
-      paramJceOutputStream.write(this.stUserData, 3);
+    localObject = this.stUserData;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.vTodayFavoriteInfos != null) {
-      paramJceOutputStream.write(this.vTodayFavoriteInfos, 4);
+    localObject = this.vTodayFavoriteInfos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
     paramJceOutputStream.write(this.iMaxFriendFavoriteCount, 5);
     paramJceOutputStream.write(this.iMaxStrangerFavoriteCount, 6);
@@ -85,7 +89,7 @@ public final class RespGetVoterList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.RespGetVoterList
  * JD-Core Version:    0.7.0.1
  */

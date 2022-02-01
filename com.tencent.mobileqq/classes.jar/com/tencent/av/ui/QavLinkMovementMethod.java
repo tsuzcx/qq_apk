@@ -31,14 +31,12 @@ public class QavLinkMovementMethod
         {
           localObject[0].onClick(paramTextView);
           Selection.removeSelection(paramSpannable);
-        }
-        for (;;)
-        {
           return true;
-          if (i == 0) {
-            Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]));
-          }
         }
+        if (i == 0) {
+          Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]));
+        }
+        return true;
       }
       Selection.removeSelection(paramSpannable);
     }
@@ -47,7 +45,7 @@ public class QavLinkMovementMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.QavLinkMovementMethod
  * JD-Core Version:    0.7.0.1
  */

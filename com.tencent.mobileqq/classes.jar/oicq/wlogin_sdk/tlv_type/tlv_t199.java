@@ -25,23 +25,27 @@ public class tlv_t199
   
   public Boolean verify()
   {
-    if (this._body_len < 2) {
-      return Boolean.valueOf(false);
+    int i = this._body_len;
+    Boolean localBoolean = Boolean.valueOf(false);
+    if (i < 2) {
+      return localBoolean;
     }
-    int i = util.buf_to_int16(this._buf, this._head_len + 0);
-    if (this._body_len < i + 2) {
-      return Boolean.valueOf(false);
+    int j = util.buf_to_int16(this._buf, this._head_len + 0);
+    int k = this._body_len;
+    i = 2 + j;
+    if (k < i) {
+      return localBoolean;
     }
-    this.openid = new byte[i];
-    System.arraycopy(this._buf, this._head_len + 2, this.openid, 0, i);
-    int j = i + 2;
-    if (this._body_len < j + 2) {
-      return Boolean.valueOf(false);
+    this.openid = new byte[j];
+    System.arraycopy(this._buf, this._head_len + 2, this.openid, 0, j);
+    k = this._body_len;
+    j = i + 2;
+    if (k < j) {
+      return localBoolean;
     }
-    i = util.buf_to_int16(this._buf, this._head_len + j);
-    j += 2;
+    i = util.buf_to_int16(this._buf, this._head_len + i);
     if (this._body_len < j + i) {
-      return Boolean.valueOf(false);
+      return localBoolean;
     }
     this.paytoken = new byte[i];
     System.arraycopy(this._buf, this._head_len + j, this.paytoken, 0, i);
@@ -50,7 +54,7 @@ public class tlv_t199
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.tlv_type.tlv_t199
  * JD-Core Version:    0.7.0.1
  */

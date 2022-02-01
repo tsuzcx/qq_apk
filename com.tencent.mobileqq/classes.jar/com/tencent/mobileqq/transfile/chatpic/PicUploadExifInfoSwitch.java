@@ -2,8 +2,8 @@ package com.tencent.mobileqq.transfile.chatpic;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.haoliyou.orion.ZhuoXusManager;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class PicUploadExifInfoSwitch
@@ -15,31 +15,33 @@ public class PicUploadExifInfoSwitch
   
   public static boolean getSwitch()
   {
-    if (ZhuoXusManager.a().g()) {}
-    do
-    {
+    if (ZhuoXusManager.a().g()) {
       return true;
-      if (EXIF_Info_Switch < 0) {
-        EXIF_Info_Switch = BaseApplicationImpl.sApplication.getSharedPreferences("SP_KEY_EXIF_Info_Switch", 4).getInt("SP_KEY_EXIF_Info_Switch_VALUE", 0);
-      }
-    } while (EXIF_Info_Switch == 1);
-    return false;
+    }
+    if (EXIF_Info_Switch < 0) {
+      EXIF_Info_Switch = BaseApplication.getContext().getSharedPreferences("SP_KEY_EXIF_Info_Switch", 4).getInt("SP_KEY_EXIF_Info_Switch_VALUE", 0);
+    }
+    return EXIF_Info_Switch == 1;
   }
   
   public static void setSwitch(int paramInt)
   {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.sApplication.getSharedPreferences("SP_KEY_EXIF_Info_Switch", 4).edit();
-    localEditor.putInt("SP_KEY_EXIF_Info_Switch_VALUE", paramInt);
-    localEditor.commit();
+    Object localObject = BaseApplication.getContext().getSharedPreferences("SP_KEY_EXIF_Info_Switch", 4).edit();
+    ((SharedPreferences.Editor)localObject).putInt("SP_KEY_EXIF_Info_Switch_VALUE", paramInt);
+    ((SharedPreferences.Editor)localObject).commit();
     EXIF_Info_Switch = paramInt;
-    if (QLog.isColorLevel()) {
-      QLog.d("PicUploadExifInfoSwitch", 2, "setSwitch:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setSwitch:");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("PicUploadExifInfoSwitch", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.chatpic.PicUploadExifInfoSwitch
  * JD-Core Version:    0.7.0.1
  */

@@ -11,8 +11,9 @@ class SearchContactsFragment$3
   
   public void a(String paramString)
   {
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_Int = 80000001;
+    SearchContactsFragment localSearchContactsFragment = this.a;
+    localSearchContactsFragment.jdField_a_of_type_Boolean = true;
+    localSearchContactsFragment.jdField_a_of_type_Int = 80000001;
     if (!TextUtils.isEmpty(paramString))
     {
       ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "add_page", "", "search_grp", "clk_history", 0, 0, "", "", paramString, "");
@@ -22,7 +23,7 @@ class SearchContactsFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment.3
  * JD-Core Version:    0.7.0.1
  */

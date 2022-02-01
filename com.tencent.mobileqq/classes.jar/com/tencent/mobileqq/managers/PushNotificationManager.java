@@ -8,8 +8,8 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.config.business.QConfPushBean;
 import com.tencent.mobileqq.data.PushSwitchGrayTipsInfo;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.graytip.UniteGrayTipMsgUtil;
 import com.tencent.mobileqq.graytip.UniteGrayTipParam;
-import com.tencent.mobileqq.graytip.UniteGrayTipUtil;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.mobileqq.service.message.MessageCache;
@@ -23,7 +23,7 @@ import mqq.manager.Manager;
 public class PushNotificationManager
   implements Manager
 {
-  public static int a;
+  public static int a = 1;
   public static int b = 1;
   public static int c = 2;
   private long jdField_a_of_type_Long = 0L;
@@ -31,11 +31,6 @@ public class PushNotificationManager
   private QConfPushBean jdField_a_of_type_ComTencentMobileqqConfigBusinessQConfPushBean;
   private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
   private int d = -1;
-  
-  static
-  {
-    jdField_a_of_type_Int = 1;
-  }
   
   public PushNotificationManager(QQAppInterface paramQQAppInterface)
   {
@@ -46,120 +41,174 @@ public class PushNotificationManager
   
   private int a()
   {
-    Long localLong = Long.valueOf(System.currentTimeMillis());
-    if ((this.d >= 0) && (localLong.longValue() - this.jdField_a_of_type_Long < 86400000L)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("PushNotificationManager", 2, "mTodayHadShowCount=" + this.d + " mTodayZeroTimeMillis=" + this.jdField_a_of_type_Long);
+    Object localObject = Long.valueOf(System.currentTimeMillis());
+    if ((this.d >= 0) && (((Long)localObject).longValue() - this.jdField_a_of_type_Long < 86400000L))
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("mTodayHadShowCount=");
+        ((StringBuilder)localObject).append(this.d);
+        ((StringBuilder)localObject).append(" mTodayZeroTimeMillis=");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+        QLog.d("PushNotificationManager", 2, ((StringBuilder)localObject).toString());
       }
     }
-    for (;;)
+    else
     {
-      return this.d;
       if (this.jdField_a_of_type_Long == 0L) {
-        this.jdField_a_of_type_Long = SharedPreUtils.m(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+        this.jdField_a_of_type_Long = SharedPreUtils.j(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
       }
-      if (localLong.longValue() - this.jdField_a_of_type_Long > 86400000L)
+      if (((Long)localObject).longValue() - this.jdField_a_of_type_Long > 86400000L)
       {
-        this.jdField_a_of_type_Long = TimeFormatterUtils.a(localLong.longValue());
-        SharedPreUtils.l(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_Long);
-        SharedPreUtils.aj(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0);
+        this.jdField_a_of_type_Long = TimeFormatterUtils.a(((Long)localObject).longValue());
+        SharedPreUtils.i(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_Long);
+        SharedPreUtils.X(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0);
         this.d = 0;
-        if (QLog.isColorLevel()) {
-          QLog.d("PushNotificationManager", 2, "Today First Query, mTodayHadShowCount=" + this.d + " mTodayZeroTimeMillis=" + this.jdField_a_of_type_Long);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("Today First Query, mTodayHadShowCount=");
+          ((StringBuilder)localObject).append(this.d);
+          ((StringBuilder)localObject).append(" mTodayZeroTimeMillis=");
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+          QLog.d("PushNotificationManager", 2, ((StringBuilder)localObject).toString());
         }
       }
       else
       {
-        this.d = SharedPreUtils.aX(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-        if (QLog.isColorLevel()) {
-          QLog.d("PushNotificationManager", 2, "Query, mTodayHadShowCount=" + this.d + " mTodayZeroTimeMillis=" + this.jdField_a_of_type_Long);
+        this.d = SharedPreUtils.aL(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("Query, mTodayHadShowCount=");
+          ((StringBuilder)localObject).append(this.d);
+          ((StringBuilder)localObject).append(" mTodayZeroTimeMillis=");
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+          QLog.d("PushNotificationManager", 2, ((StringBuilder)localObject).toString());
         }
       }
     }
+    return this.d;
   }
   
   private boolean a(SessionInfo paramSessionInfo)
   {
-    if (paramSessionInfo.jdField_a_of_type_Int == 0) {}
-    for (String str = paramSessionInfo.jdField_a_of_type_JavaLangString;; str = "") {
-      for (;;)
-      {
-        if ((QLog.isColorLevel()) && (TextUtils.isEmpty(str))) {
-          QLog.d("PushNotificationManager", 2, "sessionInfo.curType=" + paramSessionInfo.jdField_a_of_type_Int + " uin==null sessionInfo.realTroopUin=" + paramSessionInfo.c);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("PushNotificationManager", 2, "uin=" + str + "mApp.getAccount()=" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-        }
-        try
-        {
-          List localList = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(PushSwitchGrayTipsInfo.class, true, "uin=? and toUin=?", new String[] { this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), str }, null, null, null, null);
-          if ((localList == null) || (localList.size() == 0))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("PushNotificationManager", 2, "result == null || result.size() == 0");
-            }
-            paramSessionInfo = new PushSwitchGrayTipsInfo(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), str, paramSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Long, 1);
-            this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramSessionInfo);
-            return true;
-            if ((paramSessionInfo.jdField_a_of_type_Int == 1) || (paramSessionInfo.jdField_a_of_type_Int == 3000)) {
-              str = paramSessionInfo.jdField_a_of_type_JavaLangString;
-            }
-          }
-          else
-          {
-            paramSessionInfo = (PushSwitchGrayTipsInfo)localList.get(0);
-            if (QLog.isColorLevel()) {
-              QLog.d("PushNotificationManager", 2, "pushSwitchGrayTipsInfo.lastShowTime=" + paramSessionInfo.lastShowTime + " mTodayZeroTimeMillis=" + this.jdField_a_of_type_Long);
-            }
-            if (paramSessionInfo.lastShowTime >= this.jdField_a_of_type_Long) {
-              return false;
-            }
-            paramSessionInfo.lastShowTime = this.jdField_a_of_type_Long;
-            paramSessionInfo.showCount += 1;
-            this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramSessionInfo);
-            return true;
-          }
-        }
-        finally {}
+    Object localObject1;
+    if (paramSessionInfo.jdField_a_of_type_Int == 0) {
+      localObject1 = paramSessionInfo.jdField_a_of_type_JavaLangString;
+    }
+    for (;;)
+    {
+      break;
+      if ((paramSessionInfo.jdField_a_of_type_Int != 1) && (paramSessionInfo.jdField_a_of_type_Int != 3000)) {
+        localObject1 = "";
+      } else {
+        localObject1 = paramSessionInfo.jdField_a_of_type_JavaLangString;
       }
+    }
+    Object localObject2;
+    if ((QLog.isColorLevel()) && (TextUtils.isEmpty((CharSequence)localObject1)))
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("sessionInfo.curType=");
+      ((StringBuilder)localObject2).append(paramSessionInfo.jdField_a_of_type_Int);
+      ((StringBuilder)localObject2).append(" uin==null sessionInfo.realTroopUin=");
+      ((StringBuilder)localObject2).append(paramSessionInfo.c);
+      QLog.d("PushNotificationManager", 2, ((StringBuilder)localObject2).toString());
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("uin=");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("mApp.getAccount()=");
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+      QLog.d("PushNotificationManager", 2, ((StringBuilder)localObject2).toString());
+    }
+    try
+    {
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(PushSwitchGrayTipsInfo.class, true, "uin=? and toUin=?", new String[] { this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), localObject1 }, null, null, null, null);
+      if ((localObject2 != null) && (((List)localObject2).size() != 0))
+      {
+        paramSessionInfo = (PushSwitchGrayTipsInfo)((List)localObject2).get(0);
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("pushSwitchGrayTipsInfo.lastShowTime=");
+          ((StringBuilder)localObject1).append(paramSessionInfo.lastShowTime);
+          ((StringBuilder)localObject1).append(" mTodayZeroTimeMillis=");
+          ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+          QLog.d("PushNotificationManager", 2, ((StringBuilder)localObject1).toString());
+        }
+        if (paramSessionInfo.lastShowTime >= this.jdField_a_of_type_Long) {
+          return false;
+        }
+        paramSessionInfo.lastShowTime = this.jdField_a_of_type_Long;
+        paramSessionInfo.showCount += 1;
+        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramSessionInfo);
+        return true;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PushNotificationManager", 2, "result == null || result.size() == 0");
+      }
+      paramSessionInfo = new PushSwitchGrayTipsInfo(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), (String)localObject1, paramSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Long, 1);
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramSessionInfo);
+      return true;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramSessionInfo;
     }
   }
   
   private void b(SessionInfo paramSessionInfo, int paramInt)
   {
-    String str2 = "";
-    String str1 = "";
+    Object localObject;
     if (paramSessionInfo.jdField_a_of_type_Int == 0) {
-      str2 = a().a();
+      localObject = a().a();
     }
-    for (str1 = a().b();; str1 = a().d())
+    for (String str = a().b();; str = a().d())
     {
-      do
+      break;
+      if ((paramSessionInfo.jdField_a_of_type_Int != 1) && (paramSessionInfo.jdField_a_of_type_Int != 3000))
       {
-        UniteGrayTipParam localUniteGrayTipParam = new UniteGrayTipParam(paramSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), str2, paramSessionInfo.jdField_a_of_type_Int, -5023, 655383, 0L);
-        if (paramSessionInfo.jdField_a_of_type_Int == 0) {
-          localUniteGrayTipParam.jdField_a_of_type_Long = (MessageCache.a() + 1L);
-        }
-        int i = str2.indexOf(str1);
-        if (i >= 0)
-        {
-          paramSessionInfo = new Bundle();
-          paramSessionInfo.putInt("key_action", 40);
-          paramSessionInfo.putString("textColor", "");
-          paramSessionInfo.putString("image_resource", null);
-          paramSessionInfo.putString("key_action_DATA", paramInt + "");
-          localUniteGrayTipParam.a(i, str1.length() + i, paramSessionInfo);
-        }
-        paramSessionInfo = new MessageForUniteGrayTip();
-        paramSessionInfo.initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localUniteGrayTipParam);
-        UniteGrayTipUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramSessionInfo);
-        ReportController.b(null, "dc00898", "", "", "0X8009ACE", "0X8009ACE", paramInt, paramInt, "", "", "", "");
-        if (QLog.isColorLevel()) {
-          QLog.d("PushNotificationManager", 2, "add gray tip =" + str2 + " fromType=" + paramInt);
-        }
-        return;
-      } while ((paramSessionInfo.jdField_a_of_type_Int != 1) && (paramSessionInfo.jdField_a_of_type_Int != 3000));
-      str2 = a().c();
+        str = "";
+        localObject = str;
+        break;
+      }
+      localObject = a().c();
+    }
+    UniteGrayTipParam localUniteGrayTipParam = new UniteGrayTipParam(paramSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (String)localObject, paramSessionInfo.jdField_a_of_type_Int, -5023, 655383, 0L);
+    if (paramSessionInfo.jdField_a_of_type_Int == 0) {
+      localUniteGrayTipParam.jdField_a_of_type_Long = (MessageCache.a() + 1L);
+    }
+    int i = ((String)localObject).indexOf(str);
+    if (i >= 0)
+    {
+      paramSessionInfo = new Bundle();
+      paramSessionInfo.putInt("key_action", 40);
+      paramSessionInfo.putString("textColor", "");
+      paramSessionInfo.putString("image_resource", null);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("");
+      paramSessionInfo.putString("key_action_DATA", localStringBuilder.toString());
+      localUniteGrayTipParam.a(i, str.length() + i, paramSessionInfo);
+    }
+    paramSessionInfo = new MessageForUniteGrayTip();
+    paramSessionInfo.initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localUniteGrayTipParam);
+    UniteGrayTipMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramSessionInfo);
+    ReportController.b(null, "dc00898", "", "", "0X8009ACE", "0X8009ACE", paramInt, paramInt, "", "", "", "");
+    if (QLog.isColorLevel())
+    {
+      paramSessionInfo = new StringBuilder();
+      paramSessionInfo.append("add gray tip =");
+      paramSessionInfo.append((String)localObject);
+      paramSessionInfo.append(" fromType=");
+      paramSessionInfo.append(paramInt);
+      QLog.d("PushNotificationManager", 2, paramSessionInfo.toString());
     }
   }
   
@@ -178,30 +227,32 @@ public class PushNotificationManager
   
   public void a(SessionInfo paramSessionInfo, int paramInt)
   {
-    if (QQAppInterface.isNotificationEnabled() == 0) {
+    if (QQAppInterface.isNotificationEnabled() == 0)
+    {
       if (a().a())
       {
-        if (a() < a().a()) {
-          break label46;
+        if (a() >= a().a())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("PushNotificationManager", 2, "getmTodayHadShowCount > showCount");
+          }
+          return;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("PushNotificationManager", 2, "getmTodayHadShowCount > showCount");
+        if (a(paramSessionInfo))
+        {
+          this.d += 1;
+          SharedPreUtils.X(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.d);
+          b(paramSessionInfo, paramInt);
         }
       }
     }
-    label46:
-    while (!QLog.isColorLevel())
+    else if (QLog.isColorLevel())
     {
-      do
-      {
-        return;
-      } while (!a(paramSessionInfo));
-      this.d += 1;
-      SharedPreUtils.aj(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.d);
-      b(paramSessionInfo, paramInt);
-      return;
+      paramSessionInfo = new StringBuilder();
+      paramSessionInfo.append("isNotificationEnabled=");
+      paramSessionInfo.append(QQAppInterface.isNotificationEnabled());
+      QLog.d("PushNotificationManager", 2, paramSessionInfo.toString());
     }
-    QLog.d("PushNotificationManager", 2, "isNotificationEnabled=" + QQAppInterface.isNotificationEnabled());
   }
   
   public void a(QConfPushBean paramQConfPushBean)
@@ -217,7 +268,7 @@ public class PushNotificationManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.managers.PushNotificationManager
  * JD-Core Version:    0.7.0.1
  */

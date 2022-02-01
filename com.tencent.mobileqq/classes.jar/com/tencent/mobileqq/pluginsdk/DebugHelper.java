@@ -21,14 +21,13 @@ public class DebugHelper
   {
     if ((sDebug) && (QLog.isColorLevel()))
     {
-      if (paramThrowable == null) {
+      if (paramThrowable == null)
+      {
         QLog.d(paramString1, 2, paramString2);
+        return;
       }
+      QLog.d(paramString1, 2, paramString2, paramThrowable);
     }
-    else {
-      return;
-    }
-    QLog.d(paramString1, 2, paramString2, paramThrowable);
   }
   
   public static void log(String paramString)
@@ -54,7 +53,7 @@ public class DebugHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.DebugHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -98,7 +98,10 @@ public final class FixedSizeVideoView
     }
     catch (Exception localException)
     {
-      TLog.d("FixedSizeVideoView", "setPlayDuration error " + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setPlayDuration error ");
+      localStringBuilder.append(localException);
+      TLog.d("FixedSizeVideoView", localStringBuilder.toString());
     }
   }
   
@@ -116,7 +119,7 @@ public final class FixedSizeVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocrop.FixedSizeVideoView
  * JD-Core Version:    0.7.0.1
  */

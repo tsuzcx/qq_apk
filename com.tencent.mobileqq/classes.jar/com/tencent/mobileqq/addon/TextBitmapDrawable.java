@@ -44,7 +44,7 @@ public class TextBitmapDrawable
   
   public void invalidateSelf()
   {
-    Object localObject4 = this.jdField_a_of_type_OrgJsonJSONObject.optString("text");
+    Object localObject3 = this.jdField_a_of_type_OrgJsonJSONObject.optString("text");
     int j = this.jdField_a_of_type_OrgJsonJSONObject.optInt("width");
     int k = this.jdField_a_of_type_OrgJsonJSONObject.optInt("height");
     int m = this.jdField_a_of_type_OrgJsonJSONObject.optInt("fontId");
@@ -52,85 +52,91 @@ public class TextBitmapDrawable
     int n = this.jdField_a_of_type_OrgJsonJSONObject.optInt("fontType");
     TextPaint localTextPaint = new TextPaint();
     Rect localRect = new Rect(3, 5, j - 3, k - 3);
-    float f = AvatarPendantUtil.a(localTextPaint, localRect, (String)localObject4);
+    float f = AvatarPendantUtil.a(localTextPaint, localRect, (String)localObject3);
     try
     {
       i = Color.parseColor((String)localObject1);
-      if (n == 1)
+    }
+    catch (Exception localException2)
+    {
+      int i;
+      label111:
+      String str;
+      Object localObject2;
+      WeakReference localWeakReference;
+      break label111;
+    }
+    i = 0;
+    if (n == 1)
+    {
+      localObject1 = DiyPendantFetcher.a().a(this, (String)localObject3, m, n, f, i, j, k, localTextPaint);
+    }
+    else
+    {
+      localObject1 = DiyPendantFetcher.a().a(this, m, n);
+      if (localObject1 != null) {
+        localTextPaint.setTypeface((Typeface)localObject1);
+      }
+      localTextPaint.setColor(i);
+      localTextPaint.setTextAlign(Paint.Align.CENTER);
+      localTextPaint.setTextSize(f);
+      localObject1 = localTextPaint.getFontMetrics();
+      f = (localRect.bottom + localRect.top - ((Paint.FontMetrics)localObject1).bottom - ((Paint.FontMetrics)localObject1).top) / 2.0F;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(j);
+      ((StringBuilder)localObject1).append("_");
+      ((StringBuilder)localObject1).append(k);
+      str = ((StringBuilder)localObject1).toString();
+      localObject2 = (Bitmap)jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(str);
+      localObject1 = localObject2;
+      if (localObject2 == null)
       {
-        localObject3 = DiyPendantFetcher.a().a(this, (String)localObject4, m, n, f, i, j, k, localTextPaint);
-        if (localObject3 != null) {
-          localObject1 = new Bundle();
+        localObject2 = Bitmap.createBitmap(j, k, Bitmap.Config.ARGB_8888);
+        localObject1 = localObject2;
+        if (localObject2 != null)
+        {
+          jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(str, localObject2);
+          localObject1 = localObject2;
         }
+      }
+      if (localObject1 != null)
+      {
+        localObject2 = new Canvas((Bitmap)localObject1);
+        ((Canvas)localObject2).drawColor(0, PorterDuff.Mode.CLEAR);
+        ((Canvas)localObject2).drawText((String)localObject3, localRect.centerX(), f, localTextPaint);
       }
     }
-    catch (Exception localException1)
+    if (localObject1 != null)
     {
+      localObject2 = new Bundle();
       try
       {
-        do
-        {
-          int i;
-          for (;;)
-          {
-            localObject4 = new ByteArrayOutputStream();
-            ((Bitmap)localObject3).compress(Bitmap.CompressFormat.PNG, 100, (OutputStream)localObject4);
-            localObject3 = Base64Util.encodeToString(((ByteArrayOutputStream)localObject4).toByteArray(), 2);
-            ((ByteArrayOutputStream)localObject4).close();
-            ((Bundle)localObject1).putBoolean("updateResult", true);
-            ((Bundle)localObject1).putString("file", "data:image/png;base64," + (String)localObject3);
-            this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject1);
-            if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-              ((MessengerService)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_AndroidOsBundle);
-            }
-            return;
-            localException1 = localException1;
-            i = 0;
-          }
-          localObject2 = DiyPendantFetcher.a().a(this, m, n);
-          if (localObject2 != null) {
-            localTextPaint.setTypeface((Typeface)localObject2);
-          }
-          localTextPaint.setColor(i);
-          localTextPaint.setTextAlign(Paint.Align.CENTER);
-          localTextPaint.setTextSize(f);
-          localObject2 = localTextPaint.getFontMetrics();
-          f = (localRect.bottom + localRect.top - ((Paint.FontMetrics)localObject2).bottom - ((Paint.FontMetrics)localObject2).top) / 2.0F;
-          String str = j + "_" + k;
-          localObject3 = (Bitmap)jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(str);
-          localObject2 = localObject3;
-          if (localObject3 == null)
-          {
-            localObject3 = Bitmap.createBitmap(j, k, Bitmap.Config.ARGB_8888);
-            localObject2 = localObject3;
-            if (localObject3 != null)
-            {
-              jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(str, localObject3);
-              localObject2 = localObject3;
-            }
-          }
-          localObject3 = localObject2;
-        } while (localObject2 == null);
-        Object localObject3 = new Canvas((Bitmap)localObject2);
-        ((Canvas)localObject3).drawColor(0, PorterDuff.Mode.CLEAR);
-        ((Canvas)localObject3).drawText((String)localObject4, localRect.centerX(), f, localTextPaint);
-        localObject3 = localObject2;
+        localObject3 = new ByteArrayOutputStream();
+        ((Bitmap)localObject1).compress(Bitmap.CompressFormat.PNG, 100, (OutputStream)localObject3);
+        localObject1 = Base64Util.encodeToString(((ByteArrayOutputStream)localObject3).toByteArray(), 2);
+        ((ByteArrayOutputStream)localObject3).close();
+        ((Bundle)localObject2).putBoolean("updateResult", true);
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("data:image/png;base64,");
+        ((StringBuilder)localObject3).append((String)localObject1);
+        ((Bundle)localObject2).putString("file", ((StringBuilder)localObject3).toString());
       }
-      catch (Exception localException2)
+      catch (Exception localException1)
       {
-        for (;;)
-        {
-          Object localObject2;
-          ((Bundle)localObject2).putBoolean("updateResult", false);
-          ((Bundle)localObject2).putString("errMsg", localException2.getMessage());
-        }
+        ((Bundle)localObject2).putBoolean("updateResult", false);
+        ((Bundle)localObject2).putString("errMsg", localException1.getMessage());
+      }
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject2);
+      localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+        ((MessengerService)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_AndroidOsBundle);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.addon.TextBitmapDrawable
  * JD-Core Version:    0.7.0.1
  */

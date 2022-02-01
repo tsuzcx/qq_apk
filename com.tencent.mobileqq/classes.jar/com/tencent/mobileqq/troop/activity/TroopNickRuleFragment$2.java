@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.activity;
 
-import com.tencent.mobileqq.app.TroopBusinessObserver;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.troopmanager.api.TroopManagerBizObserver;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 class TroopNickRuleFragment$2
-  extends TroopBusinessObserver
+  extends TroopManagerBizObserver
 {
   TroopNickRuleFragment$2(TroopNickRuleFragment paramTroopNickRuleFragment) {}
   
@@ -14,36 +14,42 @@ class TroopNickRuleFragment$2
   {
     if (paramBoolean)
     {
-      QLog.d("TroopNickRuleFragment", 2, "onModifyTroopNickRule success uin = " + paramLong1);
+      paramString = new StringBuilder();
+      paramString.append("onModifyTroopNickRule success uin = ");
+      paramString.append(paramLong1);
+      QLog.d("TroopNickRuleFragment", 2, paramString.toString());
       if (TroopNickRuleFragment.a(this.a).equals(String.valueOf(paramLong1))) {
         this.a.c();
       }
-      return;
     }
-    QLog.i("TroopNickRuleFragment", 2, "onModifyTroopNickRule failed errCode = " + paramLong2 + ", errInfo = " + paramString);
-    paramString = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-    int i;
-    if (paramLong2 == 1298L)
+    else
     {
-      i = 2131720274;
-      QQToast.a(paramString, i, 0).a();
-      if (paramLong2 != 1298L) {
-        break label183;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onModifyTroopNickRule failed errCode = ");
+      localStringBuilder.append(paramLong2);
+      localStringBuilder.append(", errInfo = ");
+      localStringBuilder.append(paramString);
+      QLog.i("TroopNickRuleFragment", 2, localStringBuilder.toString());
+      paramString = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+      int i;
+      if (paramLong2 == 1298L) {
+        i = 2131720012;
+      } else {
+        i = 2131720011;
       }
-    }
-    label183:
-    for (paramString = "3";; paramString = "1")
-    {
+      QQToast.a(paramString, i, 0).a();
+      if (paramLong2 == 1298L) {
+        paramString = "3";
+      } else {
+        paramString = "1";
+      }
       ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_set", "", "nickname rule", "nickname rule_sub_failure", 0, 0, String.valueOf(TroopNickRuleFragment.a(this.a)), paramString, "", "");
-      return;
-      i = 2131720273;
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopNickRuleFragment.2
  * JD-Core Version:    0.7.0.1
  */

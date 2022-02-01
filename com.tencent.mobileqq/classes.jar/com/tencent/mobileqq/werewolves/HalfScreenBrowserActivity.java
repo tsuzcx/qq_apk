@@ -39,7 +39,7 @@ public class HalfScreenBrowserActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     setImmersiveStatus(0);
     super.doOnCreate(paramBundle);
@@ -48,47 +48,44 @@ public class HalfScreenBrowserActivity
     paramBundle = getIntent().getStringExtra("url");
     FrameLayout localFrameLayout = new FrameLayout(this);
     this.jdField_a_of_type_AndroidWidgetProgressBar = new ProgressBar(this);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130840611));
-    Object localObject = new FrameLayout.LayoutParams(AIOUtils.a(25.0F, getResources()), AIOUtils.a(25.0F, getResources()));
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130840486));
+    Object localObject = new FrameLayout.LayoutParams(AIOUtils.b(25.0F, getResources()), AIOUtils.b(25.0F, getResources()));
     ((FrameLayout.LayoutParams)localObject).gravity = 17;
     localFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetProgressBar, (ViewGroup.LayoutParams)localObject);
     int i;
     if (paramBundle.indexOf("https://nearby.qq.com/werewolf/gift.html") >= 0) {
       i = 1;
+    } else {
+      i = 0;
     }
-    for (;;)
+    int j;
+    if (i != 0) {
+      j = AIOUtils.b(338.0F, getResources());
+    } else {
+      j = -1;
+    }
+    localObject = new RelativeLayout.LayoutParams(-1, j);
+    ((RelativeLayout.LayoutParams)localObject).addRule(12);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(localFrameLayout, (ViewGroup.LayoutParams)localObject);
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = getWebView(localFrameLayout);
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.setVisibility(4);
+    setContentView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    if (i != 0) {}
+    try
     {
-      int j;
-      if (i != 0)
-      {
-        j = AIOUtils.a(338.0F, getResources());
-        localObject = new RelativeLayout.LayoutParams(-1, j);
-        ((RelativeLayout.LayoutParams)localObject).addRule(12);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(localFrameLayout, (ViewGroup.LayoutParams)localObject);
-        this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = getWebView(localFrameLayout);
-        this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.setVisibility(4);
-        setContentView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-        if (i == 0) {}
-      }
-      try
-      {
-        findViewById(2131377159).setVisibility(8);
-        label226:
-        this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramBundle);
-        AlbumUtil.anim(this, false, true);
-        return true;
-        i = 0;
-        continue;
-        j = -1;
-      }
-      catch (Throwable localThrowable)
-      {
-        break label226;
-      }
+      findViewById(2131376636).setVisibility(8);
+      label236:
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramBundle);
+      AlbumUtil.anim(this, false, true);
+      return true;
+    }
+    catch (Throwable localThrowable)
+    {
+      break label236;
     }
   }
   
-  public void doOnPostResume()
+  protected void doOnPostResume()
   {
     super.doOnPostResume();
     InputMethodManager localInputMethodManager = (InputMethodManager)getSystemService("input_method");
@@ -97,12 +94,12 @@ public class HalfScreenBrowserActivity
     }
   }
   
-  public boolean isWrapContent()
+  protected boolean isWrapContent()
   {
     return false;
   }
   
-  public boolean onBackEvent()
+  protected boolean onBackEvent()
   {
     boolean bool = super.onBackEvent();
     overridePendingTransition(0, 0);
@@ -116,7 +113,7 @@ public class HalfScreenBrowserActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  protected void onPageFinished(WebView paramWebView, String paramString)
   {
     super.onPageFinished(paramWebView, paramString);
     this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.setVisibility(0);
@@ -124,20 +121,20 @@ public class HalfScreenBrowserActivity
     runOnUiThread(new HalfScreenBrowserActivity.2(this));
   }
   
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  protected void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
     super.onPageStarted(paramWebView, paramString, paramBitmap);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(jdField_a_of_type_Int);
   }
   
-  public void requestWindowFeature(Intent paramIntent)
+  protected void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.HalfScreenBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

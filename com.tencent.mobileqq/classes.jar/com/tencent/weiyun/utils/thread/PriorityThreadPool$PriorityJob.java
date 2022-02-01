@@ -21,28 +21,30 @@ class PriorityThreadPool$PriorityJob<T>
   
   private int subCompareTo(PriorityJob paramPriorityJob)
   {
+    long l1 = this.mSeqNum;
+    long l2 = paramPriorityJob.mSeqNum;
     int i;
-    if (this.mSeqNum < paramPriorityJob.mSeqNum) {
+    if (l1 < l2) {
       i = -1;
+    } else if (l1 > l2) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    while (this.mFifo)
-    {
+    if (this.mFifo) {
       return i;
-      if (this.mSeqNum > paramPriorityJob.mSeqNum) {
-        i = 1;
-      } else {
-        i = 0;
-      }
     }
     return -i;
   }
   
   public int compareTo(PriorityJob paramPriorityJob)
   {
-    if (this.mPriority > paramPriorityJob.mPriority) {
+    int i = this.mPriority;
+    int j = paramPriorityJob.mPriority;
+    if (i > j) {
       return -1;
     }
-    if (this.mPriority < paramPriorityJob.mPriority) {
+    if (i < j) {
       return 1;
     }
     return subCompareTo(paramPriorityJob);
@@ -55,7 +57,7 @@ class PriorityThreadPool$PriorityJob<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weiyun.utils.thread.PriorityThreadPool.PriorityJob
  * JD-Core Version:    0.7.0.1
  */

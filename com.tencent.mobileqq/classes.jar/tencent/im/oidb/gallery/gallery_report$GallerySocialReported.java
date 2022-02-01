@@ -25,16 +25,17 @@ public final class gallery_report$GallerySocialReported
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 42, 88, 96, 106, 112, 120, 402 }, new String[] { "phone_type", "client_ver", "source", "city", "pos", "is_read_end", "rowkey", "share_state", "action", "proxy_bytes" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro4 }, GallerySocialReported.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 42, 88, 96, 106, 112, 120, 402 }, new String[] { "phone_type", "client_ver", "source", "city", "pos", "is_read_end", "rowkey", "share_state", "action", "proxy_bytes" }, new Object[] { localInteger, localByteStringMicro1, localInteger, localByteStringMicro2, localInteger, localInteger, localByteStringMicro3, localInteger, localInteger, localByteStringMicro4 }, GallerySocialReported.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.gallery.gallery_report.GallerySocialReported
  * JD-Core Version:    0.7.0.1
  */

@@ -13,34 +13,39 @@ class MultiAIOItemFragment$5
   public void b(int paramInt)
   {
     super.b(paramInt);
+    int i = 2;
     boolean bool;
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      bool = false;
-      paramInt = 0;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener.onScrollStateChanged(this.jdField_a_of_type_ComTencentWidgetListView, paramInt);
-      if ((this.jdField_a_of_type_ComTencentWidgetListView instanceof ChatXListView))
+      if (paramInt != 2)
       {
-        ChatXListView localChatXListView = (ChatXListView)this.jdField_a_of_type_ComTencentWidgetListView;
-        int[] arrayOfInt = MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment);
-        localChatXListView.setDisableLayout(bool, arrayOfInt[0], arrayOfInt[1]);
+        bool = false;
+        paramInt = 0;
       }
-      return;
+      else
+      {
+        bool = true;
+        paramInt = i;
+      }
+    }
+    else
+    {
       bool = false;
       paramInt = 1;
-      continue;
-      paramInt = 2;
-      bool = true;
+    }
+    this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener.onScrollStateChanged(this.jdField_a_of_type_ComTencentWidgetListView, paramInt);
+    Object localObject = this.jdField_a_of_type_ComTencentWidgetListView;
+    if ((localObject instanceof ChatXListView))
+    {
+      localObject = (ChatXListView)localObject;
+      int[] arrayOfInt = MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment);
+      ((ChatXListView)localObject).setDisableLayout(bool, arrayOfInt[0], arrayOfInt[1]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.MultiAIOItemFragment.5
  * JD-Core Version:    0.7.0.1
  */

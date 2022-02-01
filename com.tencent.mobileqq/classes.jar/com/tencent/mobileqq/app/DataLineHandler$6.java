@@ -24,17 +24,11 @@ class DataLineHandler$6
     if ((this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg == null) || (this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg == null)) {
       localMsgSCBody.bTimeOut = true;
     }
-    if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg == null) {}
-    for (;;)
+    FromServiceMsg localFromServiceMsg = this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
+    if (localFromServiceMsg != null)
     {
-      this.this$0.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.FillMsgSCBody(localMsgSCBody, (cmd0x346.RspBody)localObject2, this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg != null) {
-        break;
-      }
-      this.this$0.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.OnPbMsgReply(0, localMsgSCBody);
-      return;
       byte[] arrayOfByte = null;
-      if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer() != null)
+      if (localFromServiceMsg.getWupBuffer() != null)
       {
         int i = this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer().length - 4;
         if (i >= 0)
@@ -55,7 +49,14 @@ class DataLineHandler$6
         }
       }
     }
-    Object localObject1 = (IDatalineFileReqCallback)this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getAttribute("callback");
+    this.this$0.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.FillMsgSCBody(localMsgSCBody, (cmd0x346.RspBody)localObject2, this.jdField_a_of_type_Int);
+    Object localObject1 = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg;
+    if (localObject1 == null)
+    {
+      this.this$0.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.OnPbMsgReply(0, localMsgSCBody);
+      return;
+    }
+    localObject1 = (IDatalineFileReqCallback)((ToServiceMsg)localObject1).getAttribute("callback");
     if (localObject1 != null)
     {
       localObject2 = new DatalineDownloadRespInfo();
@@ -69,7 +70,7 @@ class DataLineHandler$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.DataLineHandler.6
  * JD-Core Version:    0.7.0.1
  */

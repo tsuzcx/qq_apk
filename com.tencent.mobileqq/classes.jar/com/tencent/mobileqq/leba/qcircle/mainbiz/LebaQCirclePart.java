@@ -10,7 +10,6 @@ import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.LebaQZoneFacePlayHelper;
-import com.tencent.mobileqq.activity.qcircle.handler.QCircleObserver;
 import com.tencent.mobileqq.activity.qcircle.utils.QCircleUtils;
 import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -22,6 +21,8 @@ import com.tencent.mobileqq.qcircle.api.IQCircleEeveeManangerService;
 import com.tencent.mobileqq.qcircle.api.IQCirclePreLoaderService;
 import com.tencent.mobileqq.qcircle.api.IQCircleReportApi;
 import com.tencent.mobileqq.qcircle.api.IQCircleService;
+import com.tencent.mobileqq.qcircle.api.helper.QCircleObserver;
+import com.tencent.mobileqq.qcircle.api.utils.QCircleHostConfig;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.studymode.StudyModeManager;
 import com.tencent.mobileqq.utils.JumpAction;
@@ -65,13 +66,14 @@ public class LebaQCirclePart
   public volatile boolean c;
   public TextView d;
   public volatile boolean d;
+  public TextView e;
   public boolean e;
   
   public LebaQCirclePart()
   {
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqActivityQcircleHandlerQCircleObserver = new LebaQCirclePart.5(this);
+    this.jdField_a_of_type_ComTencentMobileqqQcircleApiHelperQCircleObserver = new LebaQCirclePart.5(this);
   }
   
   public QQAppInterface a()
@@ -85,56 +87,60 @@ public class LebaQCirclePart
   
   public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView.getVisibility() == 0) || (QzoneConfig.isShowQCircleEnter(StudyModeManager.a()))))
+    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    if ((localObject != null) && ((((View)localObject).getVisibility() == 0) || (QzoneConfig.isShowQCircleEnter(StudyModeManager.a()))))
     {
       d();
-      if (QLog.isColorLevel()) {
-        QLog.d("Leba", 2, "updateRefreshFlagForQQCircle " + paramInt);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("updateRefreshFlagForQQCircle ");
+        ((StringBuilder)localObject).append(paramInt);
+        QLog.d("Leba", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
   
-  public void a(int paramInt, boolean paramBoolean1, List<String> paramList, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, String paramString, QBaseActivity paramQBaseActivity)
+  public void a(int paramInt, boolean paramBoolean1, List<String> paramList, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, String paramString, QBaseActivity paramQBaseActivity, boolean paramBoolean5)
   {
-    a(new LebaQCirclePart.2(this, paramInt, paramQBaseActivity, paramBoolean1, paramString, paramList, paramBoolean2, paramBoolean4, paramBoolean3));
+    a(new LebaQCirclePart.2(this, paramBoolean5, paramInt, paramQBaseActivity, paramBoolean1, paramString, paramList, paramBoolean2, paramBoolean4, paramBoolean3));
   }
   
   public void a(View paramView)
   {
     QQAppInterface localQQAppInterface = a();
     QBaseActivity localQBaseActivity = a();
-    if ((localQQAppInterface == null) || (localQBaseActivity == null))
+    if ((localQQAppInterface != null) && (localQBaseActivity != null))
     {
-      QLog.i("LebaQCirclePartImpl", 1, "initLebaQQCircleView app == null || activity == null");
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131374846);
-    if ((!QzoneConfig.isShowQCircleEnter(StudyModeManager.a())) || (QQTheme.e())) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370322));
-      if ((this.jdField_a_of_type_AndroidWidgetImageView instanceof ThemeImageView)) {
-        ((ThemeImageView)this.jdField_a_of_type_AndroidWidgetImageView).setMaskShape(ThemeImageWrapper.MODE_OTHER);
+      this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131374379);
+      if ((QzoneConfig.isShowQCircleEnter(StudyModeManager.a())) && (!QQTheme.f())) {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      } else {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845617);
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839537);
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374851)).setText(2131719715);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369990));
+      paramView = this.jdField_a_of_type_AndroidWidgetImageView;
+      if ((paramView instanceof ThemeImageView)) {
+        ((ThemeImageView)paramView).setMaskShape(ThemeImageWrapper.MODE_OTHER);
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845490);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839393);
+      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374384)).setText(2131719438);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374853));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374854));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374852));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374855));
-      this.jdField_b_of_type_AndroidWidgetImageSwitcher = ((ImageSwitcher)this.jdField_a_of_type_AndroidViewView.findViewById(2131374848));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374387));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374388));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374386));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374385));
+      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374389));
+      this.jdField_b_of_type_AndroidWidgetImageSwitcher = ((ImageSwitcher)this.jdField_a_of_type_AndroidViewView.findViewById(2131374381));
       this.jdField_b_of_type_AndroidWidgetImageSwitcher.setFactory(new LebaQCirclePart.3(this, localQBaseActivity));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374850));
-      this.jdField_a_of_type_AndroidWidgetImageSwitcher = ((ImageSwitcher)this.jdField_a_of_type_AndroidViewView.findViewById(2131374849));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374383));
+      this.jdField_a_of_type_AndroidWidgetImageSwitcher = ((ImageSwitcher)this.jdField_a_of_type_AndroidViewView.findViewById(2131374382));
       this.jdField_a_of_type_AndroidWidgetImageSwitcher.setFactory(new LebaQCirclePart.4(this, localQBaseActivity));
       this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper = new LebaQZoneFacePlayHelper(this.jdField_b_of_type_AndroidWidgetImageSwitcher, this.jdField_a_of_type_AndroidWidgetImageSwitcher, this.jdField_b_of_type_AndroidWidgetImageView, localQQAppInterface);
       return;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
+    QLog.i("LebaQCirclePartImpl", 1, "initLebaQQCircleView app == null || activity == null");
   }
   
   public void a(LeabOnPauseInfo paramLeabOnPauseInfo)
@@ -145,9 +151,18 @@ public class LebaQCirclePart
   
   public void a(String paramString, Context paramContext, List<String> paramList)
   {
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null)
+    TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+    if (localTextView != null)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+      localTextView.setText(paramString);
+      paramString = (ViewGroup.MarginLayoutParams)this.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
+      if ((paramList != null) && (!paramList.isEmpty()) && (paramList.size() > 1)) {
+        paramString.rightMargin = ViewUtils.b(80.0F);
+      } else if ((paramList != null) && (!paramList.isEmpty()) && (paramList.size() == 1)) {
+        paramString.rightMargin = ViewUtils.b(48.0F);
+      } else {
+        paramString.rightMargin = ViewUtils.b(8.0F);
+      }
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
     }
     CustomWidgetUtil.a(this.jdField_a_of_type_AndroidWidgetTextView, 8, 0, 0);
@@ -155,83 +170,71 @@ public class LebaQCirclePart
     if ((paramString instanceof ViewGroup.MarginLayoutParams))
     {
       paramString = (ViewGroup.MarginLayoutParams)paramString;
-      if (!b()) {
-        break label118;
+      if (b()) {
+        paramString.bottomMargin = (paramContext.getResources().getDimensionPixelSize(2131297117) + ViewUtils.b(8.0F));
+      } else {
+        paramString.bottomMargin = (paramContext.getResources().getDimensionPixelSize(2131297117) + ViewUtils.b(5.0F));
       }
     }
-    label118:
-    for (paramString.bottomMargin = (paramContext.getResources().getDimensionPixelSize(2131297135) + ViewUtils.b(8.0F));; paramString.bottomMargin = paramContext.getResources().getDimensionPixelSize(2131297135))
-    {
-      if ((paramList != null) && (paramList.size() > 0)) {
-        paramString.rightMargin += this.jdField_b_of_type_AndroidWidgetTextView.getWidth();
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      return;
-    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper.c();
+    LebaQZoneFacePlayHelper localLebaQZoneFacePlayHelper = this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper;
+    if (localLebaQZoneFacePlayHelper != null) {
+      localLebaQZoneFacePlayHelper.c();
     }
   }
   
   public int b()
   {
-    int i = 0;
+    int i;
     if ((this.jdField_b_of_type_Int > 0) && (this.jdField_b_of_type_Boolean)) {
       i = 3;
+    } else if (this.jdField_b_of_type_Boolean) {
+      i = 1;
+    } else if (this.jdField_b_of_type_Int > 0) {
+      i = 2;
+    } else if (this.jdField_d_of_type_Boolean) {
+      i = 5;
+    } else if (this.jdField_e_of_type_Boolean) {
+      i = 6;
+    } else {
+      i = 4;
     }
-    do
-    {
-      return i;
-      if (this.jdField_b_of_type_Boolean) {
-        return 1;
-      }
-      if (this.jdField_b_of_type_Int > 0) {
-        return 2;
-      }
-      if (this.jdField_d_of_type_Boolean) {
-        return 5;
-      }
-    } while (!this.e);
-    return 6;
+    if (QzoneConfig.getQQCircleShowGuideOnLebaEntrance()) {
+      i = 7;
+    }
+    return i;
   }
   
   public int c()
   {
+    int i = this.jdField_b_of_type_Int;
     int j = 0;
-    int i;
-    boolean bool1;
-    boolean bool2;
-    if (this.jdField_b_of_type_Int > 0)
-    {
+    if (i > 0) {
       i = 1;
-      bool1 = this.jdField_b_of_type_Boolean;
-      bool2 = this.jdField_c_of_type_Boolean;
-      if (i == 0) {
-        break label42;
-      }
-      if (!bool1) {
-        break label40;
-      }
-      i = 7;
-    }
-    label40:
-    label42:
-    do
-    {
-      return i;
+    } else {
       i = 0;
-      break;
-      return 4;
+    }
+    boolean bool1 = this.jdField_b_of_type_Boolean;
+    boolean bool2 = this.jdField_c_of_type_Boolean;
+    if (i != 0)
+    {
       if (bool1) {
-        return 5;
+        return 7;
       }
-      i = j;
-    } while (!bool2);
-    return 8;
+      return 4;
+    }
+    if (bool1) {
+      return 5;
+    }
+    i = j;
+    if (bool2) {
+      i = 8;
+    }
+    return i;
   }
   
   public void c(boolean paramBoolean)
@@ -243,37 +246,41 @@ public class LebaQCirclePart
   
   public boolean c()
   {
-    return (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0);
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    return (localView != null) && (localView.getVisibility() == 0);
   }
   
   public void e()
   {
-    QQAppInterface localQQAppInterface = a();
-    QBaseActivity localQBaseActivity = a();
-    if ((localQQAppInterface == null) || (localQBaseActivity == null))
+    Object localObject2 = a();
+    Object localObject1 = a();
+    if ((localObject2 != null) && (localObject1 != null))
     {
-      QLog.i("LebaQCirclePartImpl", 1, "updateQQCircleRedFlag app == null || activity == null");
-      return;
-    }
-    if ((!QzoneConfig.isShowQCircleEnter(StudyModeManager.a())) || (QQTheme.e()))
-    {
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      if ((QzoneConfig.isShowQCircleEnter(StudyModeManager.a())) && (!QQTheme.f()))
+      {
+        localObject2 = this.jdField_a_of_type_AndroidViewView;
+        if (localObject2 != null) {
+          ((View)localObject2).setVisibility(0);
+        }
+        QLog.e("QCircleEeveeRedPoint_LebaQCirclePartImpl", 1, "updateQQCircleRedFlag show");
+        ThreadManager.post(new LebaQCirclePart.1(this, (QBaseActivity)localObject1), 5, null, false);
+        return;
+      }
+      localObject1 = this.jdField_a_of_type_AndroidViewView;
+      if (localObject1 != null) {
+        ((View)localObject1).setVisibility(8);
       }
       QLog.e("QCircleEeveeRedPoint_LebaQCirclePartImpl", 1, "updateQQCircleRedFlag hide");
       return;
     }
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-    QLog.e("QCircleEeveeRedPoint_LebaQCirclePartImpl", 1, "updateQQCircleRedFlag show");
-    ThreadManager.post(new LebaQCirclePart.1(this, localQBaseActivity), 5, null, false);
+    QLog.i("LebaQCirclePartImpl", 1, "updateQQCircleRedFlag app == null || activity == null");
   }
   
   public void f()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper.d();
+    LebaQZoneFacePlayHelper localLebaQZoneFacePlayHelper = this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper;
+    if (localLebaQZoneFacePlayHelper != null) {
+      localLebaQZoneFacePlayHelper.d();
     }
   }
   
@@ -284,8 +291,9 @@ public class LebaQCirclePart
   
   public void h()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper.b();
+    LebaQZoneFacePlayHelper localLebaQZoneFacePlayHelper = this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper;
+    if (localLebaQZoneFacePlayHelper != null) {
+      localLebaQZoneFacePlayHelper.b();
     }
     v();
     a(3);
@@ -293,8 +301,9 @@ public class LebaQCirclePart
   
   public void i()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper.f();
+    LebaQZoneFacePlayHelper localLebaQZoneFacePlayHelper = this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper;
+    if (localLebaQZoneFacePlayHelper != null) {
+      localLebaQZoneFacePlayHelper.f();
     }
   }
   
@@ -302,6 +311,9 @@ public class LebaQCirclePart
   {
     QCircleUtils.a().onSend(3, null, null);
     a(2);
+    if (QzoneConfig.getQQCircleShowGuideOnLebaTab()) {
+      QCircleHostConfig.setNeedShowLebaTabGuideNew(false);
+    }
   }
   
   public void l()
@@ -312,7 +324,7 @@ public class LebaQCirclePart
       QLog.i("LebaQCirclePartImpl", 1, "removeObservers app == null");
       return;
     }
-    localQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqActivityQcircleHandlerQCircleObserver);
+    localQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqQcircleApiHelperQCircleObserver);
   }
   
   public void m()
@@ -323,49 +335,49 @@ public class LebaQCirclePart
       QLog.i("LebaQCirclePartImpl", 1, "addObservers app == null");
       return;
     }
-    localQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqActivityQcircleHandlerQCircleObserver);
+    localQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqQcircleApiHelperQCircleObserver);
   }
   
   public void n()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper.e();
+    LebaQZoneFacePlayHelper localLebaQZoneFacePlayHelper = this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper;
+    if (localLebaQZoneFacePlayHelper != null) {
+      localLebaQZoneFacePlayHelper.e();
     }
   }
   
   public void o()
   {
-    Object localObject = a();
-    if (localObject == null)
+    Object localObject1 = a();
+    if (localObject1 == null)
     {
       QLog.i("LebaQCirclePartImpl", 1, "onAccountChanged app == null");
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper.a((QQAppInterface)localObject);
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper;
+    if (localObject2 != null) {
+      ((LebaQZoneFacePlayHelper)localObject2).a((QQAppInterface)localObject1);
     }
     p();
-    QCircleUtils.a().onSend(4, null, null);
-    IQCirclePreLoaderService localIQCirclePreLoaderService = QCircleUtils.a();
-    if (localObject != null) {}
-    for (localObject = ((QQAppInterface)localObject).getCurrentUin();; localObject = "")
-    {
-      localIQCirclePreLoaderService.requestWhiteList((String)localObject);
-      return;
+    localObject2 = QCircleUtils.a();
+    if (localObject1 != null) {
+      localObject1 = ((QQAppInterface)localObject1).getCurrentUin();
+    } else {
+      localObject1 = "";
     }
+    ((IQCirclePreLoaderService)localObject2).requestWhiteList((String)localObject1);
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    if (paramView.getId() == 2131374379)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       s();
+      if (QzoneConfig.getQQCircleShowGuideOnLebaEntrance()) {
+        QCircleHostConfig.setNeedShowLebaQCircleEntranceGuideNew(false);
+      }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onConfigChange()
@@ -383,14 +395,16 @@ public class LebaQCirclePart
     this.jdField_b_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
     this.jdField_d_of_type_Boolean = false;
-    this.e = false;
+    this.jdField_e_of_type_Boolean = false;
     this.jdField_c_of_type_JavaLangString = null;
     this.jdField_c_of_type_Int = 0;
-    if (this.jdField_c_of_type_AndroidWidgetTextView != null) {
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+    TextView localTextView = this.jdField_c_of_type_AndroidWidgetTextView;
+    if (localTextView != null) {
+      localTextView.setVisibility(8);
     }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localTextView != null) {
+      localTextView.setVisibility(8);
     }
     this.jdField_b_of_type_JavaLangString = null;
     QLog.d("QCircleEeveeRedPoint_LebaQCirclePartImpl", 1, "resetQQCircleRedDot redDot");
@@ -399,6 +413,12 @@ public class LebaQCirclePart
   public void q()
   {
     int i = b();
+    if ((!QzoneConfig.getQQCircleEnableNoneRedpointReport()) && (i == 4)) {
+      return;
+    }
+    if ((!QzoneConfig.getQQCircleEnableHasRedpointReport()) && (i != 4)) {
+      return;
+    }
     if ((i != 0) && (this.jdField_a_of_type_Boolean))
     {
       HashMap localHashMap = new HashMap();
@@ -425,48 +445,57 @@ public class LebaQCirclePart
   {
     QQAppInterface localQQAppInterface = a();
     QBaseActivity localQBaseActivity = a();
-    if ((localQQAppInterface == null) || (localQBaseActivity == null))
+    if ((localQQAppInterface != null) && (localQBaseActivity != null))
     {
-      QLog.i("LebaQCirclePartImpl", 1, "onClickQCircle app == null || activity == null");
-      return;
-    }
-    HashMap localHashMap1 = new HashMap();
-    HashMap localHashMap2 = new HashMap();
-    localHashMap1.put("key_enable_splash", "1");
-    localHashMap1.put("key_jump_from", "3");
-    if (this.jdField_b_of_type_Boolean) {}
-    for (Object localObject = "1";; localObject = "0")
-    {
-      localHashMap1.put("key_show_active_red_dot", localObject);
-      localHashMap1.put("key_unread_red_num", this.jdField_b_of_type_Int + "");
-      if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length > 0)) {
-        localHashMap2.put("key_red_dot_trans_info", this.jdField_a_of_type_ArrayOfByte);
+      HashMap localHashMap1 = new HashMap();
+      HashMap localHashMap2 = new HashMap();
+      Object localObject = "1";
+      localHashMap1.put("key_enable_splash", "1");
+      localHashMap1.put("key_jump_from", "3");
+      if (!this.jdField_b_of_type_Boolean) {
+        localObject = "0";
       }
-      if (this.jdField_a_of_type_Int > 0) {
-        localHashMap1.put("key_assign_show_tab_type", this.jdField_a_of_type_Int + "");
+      localHashMap1.put("key_show_active_red_dot", localObject);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+      ((StringBuilder)localObject).append("");
+      localHashMap1.put("key_unread_red_num", ((StringBuilder)localObject).toString());
+      localObject = this.jdField_a_of_type_ArrayOfByte;
+      if ((localObject != null) && (localObject.length > 0)) {
+        localHashMap2.put("key_red_dot_trans_info", localObject);
+      }
+      if (this.jdField_a_of_type_Int > 0)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append("");
+        localHashMap1.put("key_assign_show_tab_type", ((StringBuilder)localObject).toString());
       }
       u();
       r();
       a(1);
-      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        break;
+      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+      {
+        localObject = JumpParser.a(localQQAppInterface, localQBaseActivity, this.jdField_b_of_type_JavaLangString);
+        if (localObject != null)
+        {
+          ((JumpAction)localObject).a();
+          return;
+        }
       }
-      localObject = JumpParser.a(localQQAppInterface, localQBaseActivity, this.jdField_b_of_type_JavaLangString);
-      if (localObject == null) {
-        break;
-      }
-      ((JumpAction)localObject).a();
+      localHashMap1.put("xsj_main_entrance", "qq_updates_tab");
+      QCircleUtils.a().enterBySchemeAction(localQBaseActivity, "openfolder", localHashMap1, localHashMap2);
       return;
     }
-    localHashMap1.put("xsj_main_entrance", "qq_updates_tab");
-    QCircleUtils.a().enterBySchemeAction(localQBaseActivity, "openfolder", localHashMap1, localHashMap2);
+    QLog.i("LebaQCirclePartImpl", 1, "onClickQCircle app == null || activity == null");
   }
   
   public void t()
   {
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (localView != null)
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      localView.setVisibility(8);
       QLog.d("LebaQCirclePartImpl", 1, "hideQQCircleAfterAccountChanged");
     }
   }
@@ -489,7 +518,7 @@ public class LebaQCirclePart
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.qcircle.mainbiz.LebaQCirclePart
  * JD-Core Version:    0.7.0.1
  */

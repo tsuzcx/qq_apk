@@ -41,8 +41,7 @@ class ReceiptMessageReadMemberListFragment$DividerItemDecoration
     {
       paramState = paramRecyclerView.getChildAt(i);
       RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramState.getLayoutParams();
-      int i3 = paramState.getBottom();
-      i3 = localLayoutParams.bottomMargin + i3;
+      int i3 = paramState.getBottom() + localLayoutParams.bottomMargin;
       int i4 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(j + k, i3, m - n - i1, i4 + i3);
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
@@ -52,7 +51,7 @@ class ReceiptMessageReadMemberListFragment$DividerItemDecoration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.DividerItemDecoration
  * JD-Core Version:    0.7.0.1
  */

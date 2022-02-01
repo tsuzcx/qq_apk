@@ -17,16 +17,13 @@ public final class UArraySortingKt
   private static final int partition--nroSd4(long[] paramArrayOfLong, int paramInt1, int paramInt2)
   {
     long l1 = ULongArray.get-impl(paramArrayOfLong, (paramInt1 + paramInt2) / 2);
-    int i = paramInt1;
-    paramInt1 = paramInt2;
-    paramInt2 = i;
-    while (paramInt2 <= paramInt1)
+    while (paramInt1 <= paramInt2)
     {
-      i = paramInt2;
+      int i = paramInt1;
       int j;
       for (;;)
       {
-        j = paramInt1;
+        j = paramInt2;
         if (UnsignedKt.ulongCompare(ULongArray.get-impl(paramArrayOfLong, i), l1) >= 0) {
           break;
         }
@@ -35,106 +32,101 @@ public final class UArraySortingKt
       while (UnsignedKt.ulongCompare(ULongArray.get-impl(paramArrayOfLong, j), l1) > 0) {
         j -= 1;
       }
-      paramInt2 = i;
-      paramInt1 = j;
+      paramInt1 = i;
+      paramInt2 = j;
       if (i <= j)
       {
         long l2 = ULongArray.get-impl(paramArrayOfLong, i);
         ULongArray.set-k8EXiF4(paramArrayOfLong, i, ULongArray.get-impl(paramArrayOfLong, j));
         ULongArray.set-k8EXiF4(paramArrayOfLong, j, l2);
-        paramInt2 = i + 1;
-        paramInt1 = j - 1;
+        paramInt1 = i + 1;
+        paramInt2 = j - 1;
       }
     }
-    return paramInt2;
+    return paramInt1;
   }
   
   @ExperimentalUnsignedTypes
   private static final int partition-4UcCI2c(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     int k = UByteArray.get-impl(paramArrayOfByte, (paramInt1 + paramInt2) / 2);
-    int i = paramInt1;
-    paramInt1 = paramInt2;
-    paramInt2 = i;
-    while (paramInt2 <= paramInt1)
+    while (paramInt1 <= paramInt2)
     {
-      i = paramInt2;
+      int i = paramInt1;
       int j;
       for (;;)
       {
-        j = paramInt1;
-        if (Intrinsics.compare(UByteArray.get-impl(paramArrayOfByte, i) & 0xFF, k & 0xFF) >= 0) {
+        int m = UByteArray.get-impl(paramArrayOfByte, i);
+        paramInt1 = k & 0xFF;
+        j = paramInt2;
+        if (Intrinsics.compare(m & 0xFF, paramInt1) >= 0) {
           break;
         }
         i += 1;
       }
-      while (Intrinsics.compare(UByteArray.get-impl(paramArrayOfByte, j) & 0xFF, k & 0xFF) > 0) {
+      while (Intrinsics.compare(UByteArray.get-impl(paramArrayOfByte, j) & 0xFF, paramInt1) > 0) {
         j -= 1;
       }
-      paramInt2 = i;
-      paramInt1 = j;
+      paramInt1 = i;
+      paramInt2 = j;
       if (i <= j)
       {
         byte b = UByteArray.get-impl(paramArrayOfByte, i);
         UByteArray.set-VurrAj0(paramArrayOfByte, i, UByteArray.get-impl(paramArrayOfByte, j));
         UByteArray.set-VurrAj0(paramArrayOfByte, j, b);
-        paramInt2 = i + 1;
-        paramInt1 = j - 1;
+        paramInt1 = i + 1;
+        paramInt2 = j - 1;
       }
     }
-    return paramInt2;
+    return paramInt1;
   }
   
   @ExperimentalUnsignedTypes
   private static final int partition-Aa5vz7o(short[] paramArrayOfShort, int paramInt1, int paramInt2)
   {
     int k = UShortArray.get-impl(paramArrayOfShort, (paramInt1 + paramInt2) / 2);
-    int i = paramInt1;
-    paramInt1 = paramInt2;
-    paramInt2 = i;
-    while (paramInt2 <= paramInt1)
+    while (paramInt1 <= paramInt2)
     {
-      i = paramInt2;
+      int i = paramInt1;
       int j;
       for (;;)
       {
-        j = paramInt1;
-        if (Intrinsics.compare(UShortArray.get-impl(paramArrayOfShort, i) & 0xFFFF, k & 0xFFFF) >= 0) {
+        int m = UShortArray.get-impl(paramArrayOfShort, i);
+        paramInt1 = k & 0xFFFF;
+        j = paramInt2;
+        if (Intrinsics.compare(m & 0xFFFF, paramInt1) >= 0) {
           break;
         }
         i += 1;
       }
-      while (Intrinsics.compare(UShortArray.get-impl(paramArrayOfShort, j) & 0xFFFF, k & 0xFFFF) > 0) {
+      while (Intrinsics.compare(UShortArray.get-impl(paramArrayOfShort, j) & 0xFFFF, paramInt1) > 0) {
         j -= 1;
       }
-      paramInt2 = i;
-      paramInt1 = j;
+      paramInt1 = i;
+      paramInt2 = j;
       if (i <= j)
       {
         short s = UShortArray.get-impl(paramArrayOfShort, i);
         UShortArray.set-01HTLdE(paramArrayOfShort, i, UShortArray.get-impl(paramArrayOfShort, j));
         UShortArray.set-01HTLdE(paramArrayOfShort, j, s);
-        paramInt2 = i + 1;
-        paramInt1 = j - 1;
+        paramInt1 = i + 1;
+        paramInt2 = j - 1;
       }
     }
-    return paramInt2;
+    return paramInt1;
   }
   
   @ExperimentalUnsignedTypes
   private static final int partition-oBK06Vg(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
     int k = UIntArray.get-impl(paramArrayOfInt, (paramInt1 + paramInt2) / 2);
-    int i = paramInt1;
-    paramInt1 = paramInt2;
-    paramInt2 = i;
-    while (paramInt2 <= paramInt1)
+    while (paramInt1 <= paramInt2)
     {
-      i = paramInt2;
+      int i = paramInt1;
       int j;
       for (;;)
       {
-        j = paramInt1;
+        j = paramInt2;
         if (UnsignedKt.uintCompare(UIntArray.get-impl(paramArrayOfInt, i), k) >= 0) {
           break;
         }
@@ -143,26 +135,27 @@ public final class UArraySortingKt
       while (UnsignedKt.uintCompare(UIntArray.get-impl(paramArrayOfInt, j), k) > 0) {
         j -= 1;
       }
-      paramInt2 = i;
-      paramInt1 = j;
+      paramInt1 = i;
+      paramInt2 = j;
       if (i <= j)
       {
         paramInt1 = UIntArray.get-impl(paramArrayOfInt, i);
         UIntArray.set-VXSXFK8(paramArrayOfInt, i, UIntArray.get-impl(paramArrayOfInt, j));
         UIntArray.set-VXSXFK8(paramArrayOfInt, j, paramInt1);
-        paramInt2 = i + 1;
-        paramInt1 = j - 1;
+        paramInt1 = i + 1;
+        paramInt2 = j - 1;
       }
     }
-    return paramInt2;
+    return paramInt1;
   }
   
   @ExperimentalUnsignedTypes
   private static final void quickSort--nroSd4(long[] paramArrayOfLong, int paramInt1, int paramInt2)
   {
     int i = partition--nroSd4(paramArrayOfLong, paramInt1, paramInt2);
-    if (paramInt1 < i - 1) {
-      quickSort--nroSd4(paramArrayOfLong, paramInt1, i - 1);
+    int j = i - 1;
+    if (paramInt1 < j) {
+      quickSort--nroSd4(paramArrayOfLong, paramInt1, j);
     }
     if (i < paramInt2) {
       quickSort--nroSd4(paramArrayOfLong, i, paramInt2);
@@ -173,8 +166,9 @@ public final class UArraySortingKt
   private static final void quickSort-4UcCI2c(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     int i = partition-4UcCI2c(paramArrayOfByte, paramInt1, paramInt2);
-    if (paramInt1 < i - 1) {
-      quickSort-4UcCI2c(paramArrayOfByte, paramInt1, i - 1);
+    int j = i - 1;
+    if (paramInt1 < j) {
+      quickSort-4UcCI2c(paramArrayOfByte, paramInt1, j);
     }
     if (i < paramInt2) {
       quickSort-4UcCI2c(paramArrayOfByte, i, paramInt2);
@@ -185,8 +179,9 @@ public final class UArraySortingKt
   private static final void quickSort-Aa5vz7o(short[] paramArrayOfShort, int paramInt1, int paramInt2)
   {
     int i = partition-Aa5vz7o(paramArrayOfShort, paramInt1, paramInt2);
-    if (paramInt1 < i - 1) {
-      quickSort-Aa5vz7o(paramArrayOfShort, paramInt1, i - 1);
+    int j = i - 1;
+    if (paramInt1 < j) {
+      quickSort-Aa5vz7o(paramArrayOfShort, paramInt1, j);
     }
     if (i < paramInt2) {
       quickSort-Aa5vz7o(paramArrayOfShort, i, paramInt2);
@@ -197,8 +192,9 @@ public final class UArraySortingKt
   private static final void quickSort-oBK06Vg(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
     int i = partition-oBK06Vg(paramArrayOfInt, paramInt1, paramInt2);
-    if (paramInt1 < i - 1) {
-      quickSort-oBK06Vg(paramArrayOfInt, paramInt1, i - 1);
+    int j = i - 1;
+    if (paramInt1 < j) {
+      quickSort-oBK06Vg(paramArrayOfInt, paramInt1, j);
     }
     if (i < paramInt2) {
       quickSort-oBK06Vg(paramArrayOfInt, i, paramInt2);
@@ -235,7 +231,7 @@ public final class UArraySortingKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.collections.UArraySortingKt
  * JD-Core Version:    0.7.0.1
  */

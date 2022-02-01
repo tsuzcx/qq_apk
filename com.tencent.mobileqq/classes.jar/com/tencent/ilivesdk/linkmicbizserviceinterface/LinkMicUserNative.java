@@ -6,12 +6,16 @@ public class LinkMicUserNative
   
   public String toString()
   {
-    return "[LinkMicUser-uid:" + this.a + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[LinkMicUser-uid:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.linkmicbizserviceinterface.LinkMicUserNative
  * JD-Core Version:    0.7.0.1
  */

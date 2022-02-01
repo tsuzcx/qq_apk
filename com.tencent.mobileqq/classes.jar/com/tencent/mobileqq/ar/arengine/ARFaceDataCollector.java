@@ -32,23 +32,35 @@ public class ARFaceDataCollector
   
   public static void a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARFaceDataCollector", 2, "reportARFaceInit,initCost  = " + paramLong + ",devType = " + ARMapTracer.a());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportARFaceInit,initCost  = ");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(",devType = ");
+      ((StringBuilder)localObject).append(ARMapTracer.a());
+      QLog.d("ARFaceDataCollector", 2, ((StringBuilder)localObject).toString());
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("device_type", String.valueOf(ARMapTracer.a()));
-    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actARFaceInit", true, paramLong, 0L, localHashMap, "", true);
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("device_type", String.valueOf(ARMapTracer.a()));
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actARFaceInit", true, paramLong, 0L, (HashMap)localObject, "", true);
   }
   
   public static void a(long paramLong, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARFaceDataCollector", 2, "reportARTrackStablity,duration  = " + paramLong + ",count = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportARTrackStablity,duration  = ");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(",count = ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("ARFaceDataCollector", 2, ((StringBuilder)localObject).toString());
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("device_type", String.valueOf(ARMapTracer.a()));
-    localHashMap.put("recoverCount", String.valueOf(paramInt));
-    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actARFaceTrackStability", true, paramLong, 0L, localHashMap, "", true);
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("device_type", String.valueOf(ARMapTracer.a()));
+    ((HashMap)localObject).put("recoverCount", String.valueOf(paramInt));
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actARFaceTrackStability", true, paramLong, 0L, (HashMap)localObject, "", true);
   }
   
   public static void a(ARCloudReqInfo paramARCloudReqInfo, ARCloudRecogRspFaceResult paramARCloudRecogRspFaceResult)
@@ -56,55 +68,77 @@ public class ARFaceDataCollector
     HashMap localHashMap = new HashMap();
     localHashMap.put("errorcode_mq", String.valueOf(paramARCloudRecogRspFaceResult.jdField_a_of_type_Int));
     localHashMap.put("errorcode_yt", String.valueOf(paramARCloudRecogRspFaceResult.b));
-    if ((paramARCloudRecogRspFaceResult.jdField_a_of_type_Int == 0) && (paramARCloudRecogRspFaceResult.b == 0)) {}
-    for (boolean bool = true;; bool = false)
+    int i = paramARCloudRecogRspFaceResult.jdField_a_of_type_Int;
+    int j = 0;
+    boolean bool;
+    if ((i == 0) && (paramARCloudRecogRspFaceResult.b == 0)) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if (bool)
     {
-      int i = 0;
-      int m = 0;
-      int j = 0;
-      int k = 0;
-      if (bool)
-      {
-        i = m;
-        if (paramARCloudReqInfo.a.a != null) {
-          i = paramARCloudReqInfo.a.a.length;
-        }
-        j = k;
-        if (paramARCloudRecogRspFaceResult.jdField_a_of_type_JavaUtilArrayList != null) {
-          j = paramARCloudRecogRspFaceResult.jdField_a_of_type_JavaUtilArrayList.size();
-        }
-        localHashMap.put("send_person_count", String.valueOf(i));
-        localHashMap.put("receive_star_count", String.valueOf(j));
+      if (paramARCloudReqInfo.a.a != null) {
+        i = paramARCloudReqInfo.a.a.length;
+      } else {
+        i = 0;
       }
-      long l = System.currentTimeMillis() - paramARCloudReqInfo.c;
-      localHashMap.put("upload_cost", String.valueOf(l));
-      StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actARFaceCloudResult", bool, 0L, 0L, localHashMap, "", true);
-      if (QLog.isColorLevel()) {
-        QLog.d("ARFaceDataCollector", 2, "reportARFaceCloudResult,sendPersonCount  = " + i + ",starCount = " + j + ",uploadCost = " + l);
+      if (paramARCloudRecogRspFaceResult.jdField_a_of_type_JavaUtilArrayList != null) {
+        j = paramARCloudRecogRspFaceResult.jdField_a_of_type_JavaUtilArrayList.size();
       }
-      return;
+      localHashMap.put("send_person_count", String.valueOf(i));
+      localHashMap.put("receive_star_count", String.valueOf(j));
+    }
+    else
+    {
+      i = 0;
+      j = 0;
+    }
+    long l = System.currentTimeMillis() - paramARCloudReqInfo.c;
+    localHashMap.put("upload_cost", String.valueOf(l));
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actARFaceCloudResult", bool, 0L, 0L, localHashMap, "", true);
+    if (QLog.isColorLevel())
+    {
+      paramARCloudReqInfo = new StringBuilder();
+      paramARCloudReqInfo.append("reportARFaceCloudResult,sendPersonCount  = ");
+      paramARCloudReqInfo.append(i);
+      paramARCloudReqInfo.append(",starCount = ");
+      paramARCloudReqInfo.append(j);
+      paramARCloudReqInfo.append(",uploadCost = ");
+      paramARCloudReqInfo.append(l);
+      QLog.d("ARFaceDataCollector", 2, paramARCloudReqInfo.toString());
     }
   }
   
   public static void a(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARFaceDataCollector", 2, "reportARSoLoadResult,libName  = " + paramString + ",result = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportARSoLoadResult,libName  = ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(",result = ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("ARFaceDataCollector", 2, ((StringBuilder)localObject).toString());
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("libName", paramString);
-    localHashMap.put("loadResult", String.valueOf(paramInt));
-    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actARFaceSoLoadResult", true, 0L, 0L, localHashMap, "", true);
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("libName", paramString);
+    ((HashMap)localObject).put("loadResult", String.valueOf(paramInt));
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actARFaceSoLoadResult", true, 0L, 0L, (HashMap)localObject, "", true);
   }
   
   public static void b(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARFaceDataCollector", 2, "reportARFaceDetect,cost  = " + paramLong);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportARFaceDetect,cost  = ");
+      ((StringBuilder)localObject).append(paramLong);
+      QLog.d("ARFaceDataCollector", 2, ((StringBuilder)localObject).toString());
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("device_type", String.valueOf(ARMapTracer.a()));
-    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actARFaceDetect", true, paramLong, 0L, localHashMap, "", true);
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("device_type", String.valueOf(ARMapTracer.a()));
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actARFaceDetect", true, paramLong, 0L, (HashMap)localObject, "", true);
   }
   
   public static void c()
@@ -119,25 +153,29 @@ public class ARFaceDataCollector
     localHashMap.put("ppExtractCost", String.valueOf(localARFaceDataCollector.e));
     localHashMap.put("ppExtractFaceCount", String.valueOf(localARFaceDataCollector.jdField_a_of_type_Int));
     localHashMap.put("firstDrawUICost", String.valueOf(localARFaceDataCollector.f));
-    long l2 = localARFaceDataCollector.b;
-    if (localARFaceDataCollector.e > localARFaceDataCollector.d) {}
-    for (long l1 = localARFaceDataCollector.e;; l1 = localARFaceDataCollector.d)
-    {
-      localHashMap.put("totalCost", String.valueOf(l1 + l2 + localARFaceDataCollector.f));
-      StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actFaceStepDuration", true, 0L, 0L, localHashMap, "", true);
-      localARFaceDataCollector.a();
-      return;
+    long l3 = localARFaceDataCollector.b;
+    long l1 = localARFaceDataCollector.e;
+    long l2 = localARFaceDataCollector.d;
+    if (l1 <= l2) {
+      l1 = l2;
     }
+    localHashMap.put("totalCost", String.valueOf(l3 + l1 + localARFaceDataCollector.f));
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actFaceStepDuration", true, 0L, 0L, localHashMap, "", true);
+    localARFaceDataCollector.a();
   }
   
   public static void c(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARFaceDataCollector", 2, "reportARExtracFaceFeatrue,cost  = " + paramLong);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportARExtracFaceFeatrue,cost  = ");
+      ((StringBuilder)localObject).append(paramLong);
+      QLog.d("ARFaceDataCollector", 2, ((StringBuilder)localObject).toString());
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("device_type", String.valueOf(ARMapTracer.a()));
-    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actARExtractFaceFeatrue", true, paramLong, 0L, localHashMap, "", true);
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("device_type", String.valueOf(ARMapTracer.a()));
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actARExtractFaceFeatrue", true, paramLong, 0L, (HashMap)localObject, "", true);
   }
   
   public void a()
@@ -152,23 +190,43 @@ public class ARFaceDataCollector
   
   public void b()
   {
-    long l2 = this.b;
-    if (this.e > this.d) {}
-    for (long l1 = this.e;; l1 = this.d)
+    long l3 = this.b;
+    long l1 = this.e;
+    long l2 = this.d;
+    if (l1 <= l2) {
+      l1 = l2;
+    }
+    l2 = this.f;
+    long l4 = System.currentTimeMillis();
+    long l5 = this.jdField_a_of_type_Long;
+    if (QLog.isColorLevel())
     {
-      long l3 = this.f;
-      long l4 = System.currentTimeMillis();
-      long l5 = this.jdField_a_of_type_Long;
-      if (QLog.isColorLevel()) {
-        QLog.d("ARFaceDataCollector", 2, "printStepDuration preprocessTotalCost  = " + this.b + ",preprocessFaceDetectCost = " + this.c + ",picUploadCost = " + this.d + ",preprocessFeatureExtrctCost = " + this.e + ",preprocessFaceCount = " + this.jdField_a_of_type_Int + ",firstDrawUICost = " + this.f + ",totalCost = " + (l1 + l2 + l3) + ",starTime = " + this.jdField_a_of_type_Long + ",realCost = " + (l4 - l5));
-      }
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("printStepDuration preprocessTotalCost  = ");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append(",preprocessFaceDetectCost = ");
+      localStringBuilder.append(this.c);
+      localStringBuilder.append(",picUploadCost = ");
+      localStringBuilder.append(this.d);
+      localStringBuilder.append(",preprocessFeatureExtrctCost = ");
+      localStringBuilder.append(this.e);
+      localStringBuilder.append(",preprocessFaceCount = ");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(",firstDrawUICost = ");
+      localStringBuilder.append(this.f);
+      localStringBuilder.append(",totalCost = ");
+      localStringBuilder.append(l3 + l1 + l2);
+      localStringBuilder.append(",starTime = ");
+      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(",realCost = ");
+      localStringBuilder.append(l4 - l5);
+      QLog.d("ARFaceDataCollector", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARFaceDataCollector
  * JD-Core Version:    0.7.0.1
  */

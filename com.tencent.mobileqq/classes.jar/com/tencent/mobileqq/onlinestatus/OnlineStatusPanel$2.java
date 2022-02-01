@@ -10,32 +10,37 @@ class OnlineStatusPanel$2
   
   public void run()
   {
-    ArrayList localArrayList1 = new ArrayList(0);
-    ArrayList localArrayList2 = new ArrayList(0);
-    if (OnlineStatusPanel.a(this.this$0) != null) {
-      if (OnlineStatusPanel.a(this.this$0).b() == null) {
-        if (OnlineStatusPanel.a(this.this$0).c() != null) {
-          break label98;
-        }
+    Object localObject1 = new ArrayList(0);
+    ArrayList localArrayList = new ArrayList(0);
+    Object localObject2;
+    if (OnlineStatusPanel.a(this.this$0) != null)
+    {
+      if (OnlineStatusPanel.a(this.this$0).a() != null) {
+        localObject1 = OnlineStatusPanel.a(this.this$0).a();
+      }
+      if (OnlineStatusPanel.a(this.this$0).b() == null)
+      {
+        localObject2 = localObject1;
+        localObject1 = localArrayList;
+      }
+      else
+      {
+        localArrayList = OnlineStatusPanel.a(this.this$0).b();
+        localObject2 = localObject1;
+        localObject1 = localArrayList;
       }
     }
-    for (;;)
+    else
     {
-      ((Activity)this.this$0.getContext()).runOnUiThread(new OnlineStatusPanel.2.1(this, localArrayList1, localArrayList2));
-      return;
-      localArrayList1 = OnlineStatusPanel.a(this.this$0).b();
-      break;
-      label98:
-      localArrayList2 = OnlineStatusPanel.a(this.this$0).c();
-      continue;
-      localArrayList1 = OnLineStatusHelper.a().a();
-      localArrayList2 = this.this$0.a.a;
+      localObject2 = OnLineStatusHelper.a().a();
+      localObject1 = this.this$0.a.a;
     }
+    ((Activity)this.this$0.getContext()).runOnUiThread(new OnlineStatusPanel.2.1(this, (ArrayList)localObject2, (ArrayList)localObject1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnlineStatusPanel.2
  * JD-Core Version:    0.7.0.1
  */

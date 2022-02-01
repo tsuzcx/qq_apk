@@ -11,16 +11,18 @@ class d$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (paramMessage.what != 1001)
     {
-    default: 
-      Log.e("RecordThread", "can't accept msg.what: " + paramMessage.what);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("can't accept msg.what: ");
+      localStringBuilder.append(paramMessage.what);
+      Log.e("RecordThread", localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trackrecordlib.core.d.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ import org.json.JSONObject;
 
 public class JumpForwardPkgManager
 {
-  private static JumpForwardPkgManager jdField_a_of_type_ComTencentMobileqqUtilsJumpForwardPkgManager = null;
+  private static JumpForwardPkgManager jdField_a_of_type_ComTencentMobileqqUtilsJumpForwardPkgManager;
   private ConcurrentHashMap<String, String> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
   private JumpForwardPkgManager()
@@ -29,8 +29,12 @@ public class JumpForwardPkgManager
     int i = a();
     if (!TextUtils.isEmpty(str))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("JumpForwardPkgManager", 2, "LocalConfig: version= " + i);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("LocalConfig: version= ");
+        localStringBuilder.append(i);
+        QLog.d("JumpForwardPkgManager", 2, localStringBuilder.toString());
       }
       b(str);
     }
@@ -43,15 +47,16 @@ public class JumpForwardPkgManager
   
   public static JumpForwardPkgManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqUtilsJumpForwardPkgManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqUtilsJumpForwardPkgManager == null) {
-        jdField_a_of_type_ComTencentMobileqqUtilsJumpForwardPkgManager = new JumpForwardPkgManager();
+    if (jdField_a_of_type_ComTencentMobileqqUtilsJumpForwardPkgManager == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqUtilsJumpForwardPkgManager == null) {
+          jdField_a_of_type_ComTencentMobileqqUtilsJumpForwardPkgManager = new JumpForwardPkgManager();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqUtilsJumpForwardPkgManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqUtilsJumpForwardPkgManager;
   }
   
   private static String a()
@@ -74,36 +79,31 @@ public class JumpForwardPkgManager
   
   public static String a(Activity paramActivity)
   {
-    Object localObject;
-    if ((paramActivity == null) || (paramActivity.isFinishing()))
+    if (paramActivity != null)
     {
-      localObject = null;
-      return localObject;
+      if (paramActivity.isFinishing()) {
+        return null;
+      }
+      if (Build.VERSION.SDK_INT < 22) {}
     }
-    if (Build.VERSION.SDK_INT >= 22) {}
-    for (;;)
+    try
+    {
+      localObject = Class.forName("android.app.Activity").getDeclaredField("mReferrer");
+      ((Field)localObject).setAccessible(true);
+      localObject = (String)((Field)localObject).get(paramActivity);
+      localObject = a().a((String)localObject);
+      bool = TextUtils.isEmpty((CharSequence)localObject);
+      if (!bool) {
+        return localObject;
+      }
+    }
+    catch (Exception localException1)
     {
       for (;;)
       {
         try
         {
-          localObject = Class.forName("android.app.Activity").getDeclaredField("mReferrer");
-          ((Field)localObject).setAccessible(true);
-          localObject = (String)((Field)localObject).get(paramActivity);
-          localObject = a().a((String)localObject);
-          bool = TextUtils.isEmpty((CharSequence)localObject);
-          if (!bool) {
-            break;
-          }
-        }
-        catch (Exception localException2)
-        {
           boolean bool;
-          String str;
-          continue;
-        }
-        try
-        {
           localObject = paramActivity.getReferrer();
           if (localObject != null)
           {
@@ -111,66 +111,13 @@ public class JumpForwardPkgManager
             localObject = a().a((String)localObject);
             bool = TextUtils.isEmpty((CharSequence)localObject);
             if (!bool) {
-              break;
+              return localObject;
             }
           }
         }
-        catch (Exception localException1) {}
-      }
-      try
-      {
-        str = paramActivity.getCallingPackage();
-        localObject = str;
-        if (TextUtils.isEmpty(str))
+        catch (Exception localException2)
         {
-          paramActivity = paramActivity.getCallingActivity();
-          localObject = str;
-          if (paramActivity != null) {
-            localObject = paramActivity.getPackageName();
-          }
-        }
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          paramActivity = a().a((String)localObject);
-          return paramActivity;
-        }
-      }
-      catch (Exception paramActivity) {}
-    }
-    return null;
-  }
-  
-  public static HashSet<String> a(Activity paramActivity)
-  {
-    if ((paramActivity == null) || (paramActivity.isFinishing())) {
-      return null;
-    }
-    HashSet localHashSet = new HashSet();
-    if (Build.VERSION.SDK_INT >= 22) {}
-    try
-    {
-      Object localObject = Class.forName("android.app.Activity").getDeclaredField("mReferrer");
-      ((Field)localObject).setAccessible(true);
-      localObject = (String)((Field)localObject).get(paramActivity);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localHashSet.add(localObject);
-      }
-      for (;;)
-      {
-        try
-        {
-          label67:
-          localObject = paramActivity.getReferrer();
-          if (localObject != null)
-          {
-            localObject = ((Uri)localObject).getAuthority();
-            if (!TextUtils.isEmpty((CharSequence)localObject)) {
-              localHashSet.add(localObject);
-            }
-          }
-        }
-        catch (Exception localException1)
-        {
+          Object localObject;
           String str;
           continue;
         }
@@ -186,33 +133,103 @@ public class JumpForwardPkgManager
               localObject = paramActivity.getPackageName();
             }
           }
+          if (!TextUtils.isEmpty((CharSequence)localObject))
+          {
+            paramActivity = a().a((String)localObject);
+            return paramActivity;
+          }
+          return null;
+        }
+        catch (Exception paramActivity) {}
+        localException1 = localException1;
+      }
+    }
+    return null;
+  }
+  
+  public static HashSet<String> a(Activity paramActivity)
+  {
+    HashSet localHashSet;
+    if ((paramActivity != null) && (!paramActivity.isFinishing()))
+    {
+      localHashSet = new HashSet();
+      if (Build.VERSION.SDK_INT < 22) {}
+    }
+    try
+    {
+      Object localObject = Class.forName("android.app.Activity").getDeclaredField("mReferrer");
+      ((Field)localObject).setAccessible(true);
+      localObject = (String)((Field)localObject).get(paramActivity);
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        localHashSet.add(localObject);
+      }
+      try
+      {
+        label68:
+        localObject = paramActivity.getReferrer();
+        if (localObject != null)
+        {
+          localObject = ((Uri)localObject).getAuthority();
           if (!TextUtils.isEmpty((CharSequence)localObject)) {
             localHashSet.add(localObject);
           }
         }
-        catch (Exception paramActivity) {}
+      }
+      catch (Exception localException2)
+      {
+        label95:
+        String str;
+        label138:
+        break label95;
+      }
+      try
+      {
+        str = paramActivity.getCallingPackage();
+        localObject = str;
+        if (TextUtils.isEmpty(str))
+        {
+          paramActivity = paramActivity.getCallingActivity();
+          localObject = str;
+          if (paramActivity != null) {
+            localObject = paramActivity.getPackageName();
+          }
+        }
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          localHashSet.add(localObject);
+        }
+      }
+      catch (Exception paramActivity)
+      {
+        break label138;
       }
       if (QLog.isColorLevel()) {
         QLog.d("JumpForwardPkgManager", 2, "getCallerReferrerPkg :");
       }
       return localHashSet;
+      return null;
     }
-    catch (Exception localException2)
+    catch (Exception localException1)
     {
-      break label67;
+      break label68;
     }
   }
   
   public static final boolean a(Activity paramActivity)
   {
-    if ((paramActivity == null) || (paramActivity.isFinishing())) {}
-    while ((!a().a()) || (TextUtils.isEmpty(a(paramActivity)))) {
-      return false;
+    if (paramActivity != null)
+    {
+      if (paramActivity.isFinishing()) {
+        return false;
+      }
+      if ((a().a()) && (!TextUtils.isEmpty(a(paramActivity))))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("JumpForwardPkgManager", 2, "needHidePreview true");
+        }
+        return true;
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpForwardPkgManager", 2, "needHidePreview true");
-    }
-    return true;
+    return false;
   }
   
   private static boolean a(String paramString, int paramInt)
@@ -257,8 +274,12 @@ public class JumpForwardPkgManager
         }
         else
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("JumpForwardPkgManager", 2, "parseConfigData list size= " + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+          if (QLog.isColorLevel())
+          {
+            paramString = new StringBuilder();
+            paramString.append("parseConfigData list size= ");
+            paramString.append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+            QLog.d("JumpForwardPkgManager", 2, paramString.toString());
           }
           return true;
         }
@@ -277,21 +298,31 @@ public class JumpForwardPkgManager
   
   public String a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      if (QLog.isColorLevel()) {
-        QLog.d("JumpForwardPkgManager", 2, "getPkgShareToast: ");
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("JumpForwardPkgManager", 2, "getPkgShareToast: ");
+    }
+    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    if (localConcurrentHashMap != null)
+    {
+      if (localConcurrentHashMap.size() == 0) {
+        return null;
       }
-    } while ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) || (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() == 0));
-    return (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      return (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    }
+    return null;
   }
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpForwardPkgManager", 2, "clearConfig list size= " + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("clearConfig list size= ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+      QLog.d("JumpForwardPkgManager", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
     a("", paramInt);
@@ -299,92 +330,99 @@ public class JumpForwardPkgManager
   
   public void a(Context paramContext, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpForwardPkgManager", 2, "updateConfigFromServer|received version: " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("updateConfigFromServer|received version: ");
+      paramContext.append(paramInt);
+      QLog.d("JumpForwardPkgManager", 2, paramContext.toString());
     }
     if (TextUtils.isEmpty(paramString))
     {
       a(paramInt);
-      if (QLog.isColorLevel()) {
-        QLog.d("JumpForwardPkgManager", 2, "updateConfigFromServer| version=" + paramInt + ",config_content is null, clear");
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("updateConfigFromServer| version=");
+        paramContext.append(paramInt);
+        paramContext.append(",config_content is null, clear");
+        QLog.d("JumpForwardPkgManager", 2, paramContext.toString());
       }
     }
-    do
+    else if (b(paramString))
     {
-      boolean bool;
-      do
+      boolean bool = a(paramString, paramInt);
+      if (QLog.isColorLevel())
       {
-        return;
-        if (!b(paramString)) {
-          break;
-        }
-        bool = a(paramString, paramInt);
-      } while (!QLog.isColorLevel());
-      QLog.d("JumpForwardPkgManager", 2, "updateConfigFromServer| saveContentOK=" + bool);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("JumpForwardPkgManager", 2, "updateConfigFromServer| parseConfigData false");
+        paramContext = new StringBuilder();
+        paramContext.append("updateConfigFromServer| saveContentOK=");
+        paramContext.append(bool);
+        QLog.d("JumpForwardPkgManager", 2, paramContext.toString());
+      }
+    }
+    else if (QLog.isColorLevel())
+    {
+      QLog.d("JumpForwardPkgManager", 2, "updateConfigFromServer| parseConfigData false");
+    }
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0);
+    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    return (localConcurrentHashMap != null) && (localConcurrentHashMap.size() > 0);
   }
   
   public boolean a(String paramString)
   {
+    boolean bool;
     for (;;)
     {
-      boolean bool1;
       try
       {
         String str = Uri.parse(paramString).getHost();
-        if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(str))) {
-          break label129;
+        if (!TextUtils.isEmpty(paramString))
+        {
+          if (TextUtils.isEmpty(str)) {
+            return false;
+          }
+          if (a())
+          {
+            if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
+              break label123;
+            }
+            if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {
+              break label118;
+            }
+            break label123;
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.d("JumpForwardPkgManager", 2, new Object[] { "contain :", Boolean.valueOf(bool) });
+            return bool;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("JumpForwardPkgManager", 2, "needCheckPkg false");
+          }
         }
-        if (!a()) {
-          break label112;
-        }
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
-          break label133;
-        }
-        if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {
-          break label107;
-        }
+        return false;
       }
       catch (Throwable paramString)
       {
         QLog.e("JumpForwardPkgManager", 1, paramString, new Object[0]);
         return false;
       }
-      boolean bool2 = bool1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("JumpForwardPkgManager", 2, new Object[] { "contain :", Boolean.valueOf(bool1) });
-        return bool1;
-        label107:
-        bool1 = false;
-        continue;
-        label112:
-        if (QLog.isColorLevel()) {
-          QLog.d("JumpForwardPkgManager", 2, "needCheckPkg false");
-        }
-        return false;
-        label129:
-        bool2 = false;
-      }
-      else
-      {
-        return bool2;
-        label133:
-        bool1 = true;
-      }
+      label118:
+      bool = false;
+      continue;
+      label123:
+      bool = true;
     }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.JumpForwardPkgManager
  * JD-Core Version:    0.7.0.1
  */

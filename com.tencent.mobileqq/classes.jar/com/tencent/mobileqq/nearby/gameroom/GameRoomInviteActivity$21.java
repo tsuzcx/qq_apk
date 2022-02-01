@@ -34,13 +34,18 @@ class GameRoomInviteActivity$21
           }
         }
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a(this.a.b, "" + this.a.jdField_a_of_type_Long, paramBundle, new GameRoomInviteActivity.21.1(this));
+      paramJSONObject = this.a.mDataManager;
+      String str = this.a.mInviteId;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(this.a.mGc);
+      paramJSONObject.a(str, localStringBuilder.toString(), paramBundle, new GameRoomInviteActivity.21.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.21
  * JD-Core Version:    0.7.0.1
  */

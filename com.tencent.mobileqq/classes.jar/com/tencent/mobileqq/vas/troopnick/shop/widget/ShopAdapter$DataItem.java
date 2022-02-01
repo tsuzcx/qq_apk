@@ -41,12 +41,13 @@ final class ShopAdapter$DataItem
     this.jdField_c_of_type_JavaLangString = paramItemDisDetail.image;
     this.jdField_d_of_type_JavaLangString = paramItemDisDetail.itemBgColor;
     this.e = paramItemDisDetail.name;
-    if (paramItemDisDetail.isSetup != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
+    boolean bool;
+    if (paramItemDisDetail.isSetup != 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.jdField_a_of_type_Boolean = bool;
   }
   
   public boolean a()
@@ -56,7 +57,7 @@ final class ShopAdapter$DataItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.shop.widget.ShopAdapter.DataItem
  * JD-Core Version:    0.7.0.1
  */

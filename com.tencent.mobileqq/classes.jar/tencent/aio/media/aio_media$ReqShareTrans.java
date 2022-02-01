@@ -30,16 +30,18 @@ public final class aio_media$ReqShareTrans
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 56, 66, 72, 80, 90 }, new String[] { "enum_aio_type", "uint64_id", "uint32_share_appid", "bytes_song_name", "rpt_bytes_singer", "bytes_song_url", "bool_cut_song", "str_song_id", "uint32_duration", "uint64_sharer_uin", "bytes_cover" }, new Object[] { Integer.valueOf(1), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Boolean.valueOf(false), "", Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro4 }, ReqShareTrans.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 56, 66, 72, 80, 90 }, new String[] { "enum_aio_type", "uint64_id", "uint32_share_appid", "bytes_song_name", "rpt_bytes_singer", "bytes_song_url", "bool_cut_song", "str_song_id", "uint32_duration", "uint64_sharer_uin", "bytes_cover" }, new Object[] { Integer.valueOf(1), localLong, localInteger, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Boolean.valueOf(false), "", localInteger, localLong, localByteStringMicro4 }, ReqShareTrans.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.aio.media.aio_media.ReqShareTrans
  * JD-Core Version:    0.7.0.1
  */

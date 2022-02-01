@@ -31,7 +31,6 @@ import com.tencent.mobileqq.dpc.api.IDPCApi;
 import com.tencent.mobileqq.dpc.enumname.DPCNames;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
@@ -93,17 +92,29 @@ public class BlessManager
   
   static
   {
-    jdField_a_of_type_JavaLangString = "bless" + File.separator;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("bless");
+    localStringBuilder.append(File.separator);
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
   }
   
   public BlessManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_JavaLangRunnable = new BlessManager.1(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface = AppConstants.SDCARD_PATH + jdField_a_of_type_JavaLangString;
+    paramQQAppInterface = new StringBuilder();
+    paramQQAppInterface.append(AppConstants.SDCARD_PATH);
+    paramQQAppInterface.append(jdField_a_of_type_JavaLangString);
+    paramQQAppInterface = paramQQAppInterface.toString();
     this.jdField_b_of_type_JavaLangString = paramQQAppInterface;
     BlessPtvModule.path = paramQQAppInterface;
-    this.jdField_c_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + File.separator + "history" + File.separator + "ptvHistory");
+    paramQQAppInterface = new StringBuilder();
+    paramQQAppInterface.append(this.jdField_b_of_type_JavaLangString);
+    paramQQAppInterface.append(File.separator);
+    paramQQAppInterface.append("history");
+    paramQQAppInterface.append(File.separator);
+    paramQQAppInterface.append("ptvHistory");
+    this.jdField_c_of_type_JavaLangString = paramQQAppInterface.toString();
     i();
     h();
     ThreadManager.getSubThreadHandler().post(this.jdField_a_of_type_JavaLangRunnable);
@@ -117,18 +128,15 @@ public class BlessManager
       paramString = localSimpleDateFormat.parse(paramString);
       return paramString;
     }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
     catch (ParseException paramString)
     {
       paramString.printStackTrace();
-      return null;
     }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
-    }
+    return null;
   }
   
   private Set<String> a()
@@ -138,177 +146,247 @@ public class BlessManager
   
   private void a(BlessTask paramBlessTask)
   {
-    if (paramBlessTask == null) {}
-    String[] arrayOfString;
-    File[] arrayOfFile;
-    do
-    {
+    if (paramBlessTask == null) {
       return;
-      arrayOfString = new String[11];
-      arrayOfString[0] = paramBlessTask.mainBanner;
-      arrayOfString[1] = paramBlessTask.mainCenter;
-      arrayOfString[2] = paramBlessTask.typeBanner;
-      arrayOfString[3] = paramBlessTask.succeededBanner;
-      arrayOfString[4] = paramBlessTask.defaultVoice;
-      arrayOfString[5] = paramBlessTask.starAvator;
-      arrayOfString[6] = paramBlessTask.starVideo;
-      arrayOfString[7] = paramBlessTask.recentHeadImgUrl;
-      arrayOfString[8] = paramBlessTask.ptvAnimationUrl;
-      arrayOfString[9] = paramBlessTask.starAvatorSimple;
-      arrayOfString[10] = paramBlessTask.recentHeadImgUrlSimple;
-      arrayOfFile = new File(this.jdField_b_of_type_JavaLangString).listFiles();
-    } while (arrayOfFile == null);
-    int k = 0;
-    label129:
-    if (k < arrayOfFile.length) {
-      if ((!arrayOfFile[k].getName().endsWith(".zip")) && (!arrayOfFile[k].isDirectory())) {
-        break label173;
-      }
     }
-    label513:
-    label529:
-    for (;;)
+    String[] arrayOfString = new String[11];
+    arrayOfString[0] = paramBlessTask.mainBanner;
+    arrayOfString[1] = paramBlessTask.mainCenter;
+    arrayOfString[2] = paramBlessTask.typeBanner;
+    arrayOfString[3] = paramBlessTask.succeededBanner;
+    arrayOfString[4] = paramBlessTask.defaultVoice;
+    arrayOfString[5] = paramBlessTask.starAvator;
+    arrayOfString[6] = paramBlessTask.starVideo;
+    arrayOfString[7] = paramBlessTask.recentHeadImgUrl;
+    arrayOfString[8] = paramBlessTask.ptvAnimationUrl;
+    arrayOfString[9] = paramBlessTask.starAvatorSimple;
+    arrayOfString[10] = paramBlessTask.recentHeadImgUrlSimple;
+    File[] arrayOfFile = new File(this.jdField_b_of_type_JavaLangString).listFiles();
+    if (arrayOfFile == null) {
+      return;
+    }
+    int m = 0;
+    while (m < arrayOfFile.length)
     {
-      k += 1;
-      break label129;
-      break;
-      label173:
-      int m = 0;
-      int i = 0;
-      int j = 0;
-      label199:
-      Object localObject;
-      label246:
-      int n;
-      for (;;)
+      if ((!arrayOfFile[m].getName().endsWith(".zip")) && (!arrayOfFile[m].isDirectory()))
       {
-        if (m < arrayOfString.length) {
-          if (TextUtils.isEmpty(arrayOfString[m]))
+        int n = 0;
+        int i = 0;
+        int i1;
+        Object localObject2;
+        Object localObject1;
+        for (int j = 0; n < arrayOfString.length; j = i1)
+        {
+          if (TextUtils.isEmpty(arrayOfString[n]))
           {
-            m += 1;
+            i1 = j;
           }
           else
           {
-            localObject = a(arrayOfString[m]);
-            if (arrayOfString[m].equals(paramBlessTask.starVideo))
+            localObject2 = a(arrayOfString[n]);
+            if (arrayOfString[n].equals(paramBlessTask.starVideo))
             {
-              localObject = MD5Utils.encodeHexStr(arrayOfString[m]);
-              j = 1;
-              if (!arrayOfFile[k].getName().equals(localObject)) {
-                break label513;
+              localObject1 = MD5Utils.encodeHexStr(arrayOfString[n]);
+              k = 1;
+            }
+            else
+            {
+              k = i;
+              localObject1 = localObject2;
+              if (arrayOfString[n].equals(paramBlessTask.ptvAnimationUrl))
+              {
+                j = 1;
+                localObject1 = localObject2;
+                k = i;
               }
-              n = 0;
-              m = i;
+            }
+            i = k;
+            i1 = j;
+            if (arrayOfFile[m].getName().equals(localObject1))
+            {
+              i = 0;
+              break label321;
             }
           }
+          n += 1;
         }
-      }
-      for (i = n;; i = n)
-      {
-        if (i == 0) {
-          break label529;
-        }
-        arrayOfFile[k].delete();
-        if (QLog.isColorLevel()) {
-          QLog.d("BlessManager", 2, "deleteOldBanner=" + arrayOfFile[k].getName());
-        }
-        if (j != 0)
-        {
-          localObject = this.jdField_b_of_type_JavaLangString + paramBlessTask.starVideoCoverFolderName + File.separator;
-          localObject = new File((String)localObject + paramBlessTask.starVideoCoverFileName);
-          if ((((File)localObject).exists()) && (((File)localObject).isFile()))
-          {
-            ((File)localObject).delete();
-            if (QLog.isColorLevel()) {
-              QLog.d("BlessManager", 2, "deleteOldCover=" + ((File)localObject).getName());
-            }
-          }
-        }
-        if (m == 0) {
-          break;
-        }
-        localObject = new File(g());
-        if ((!((File)localObject).exists()) || (!((File)localObject).isDirectory())) {
-          break;
-        }
-        ((File)localObject).delete();
-        break;
-        if (arrayOfString[m].equals(paramBlessTask.ptvAnimationUrl))
-        {
-          i = 1;
-          break label246;
-          break label199;
-        }
-        break label246;
         n = 1;
-        m = i;
+        int k = i;
+        i = n;
+        label321:
+        if (i != 0)
+        {
+          arrayOfFile[m].delete();
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("deleteOldBanner=");
+            ((StringBuilder)localObject1).append(arrayOfFile[m].getName());
+            QLog.d("BlessManager", 2, ((StringBuilder)localObject1).toString());
+          }
+          if (k != 0)
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+            ((StringBuilder)localObject1).append(paramBlessTask.starVideoCoverFolderName);
+            ((StringBuilder)localObject1).append(File.separator);
+            localObject1 = ((StringBuilder)localObject1).toString();
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append((String)localObject1);
+            ((StringBuilder)localObject2).append(paramBlessTask.starVideoCoverFileName);
+            localObject1 = new File(((StringBuilder)localObject2).toString());
+            if ((((File)localObject1).exists()) && (((File)localObject1).isFile()))
+            {
+              ((File)localObject1).delete();
+              if (QLog.isColorLevel())
+              {
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append("deleteOldCover=");
+                ((StringBuilder)localObject2).append(((File)localObject1).getName());
+                QLog.d("BlessManager", 2, ((StringBuilder)localObject2).toString());
+              }
+            }
+          }
+          if (j != 0)
+          {
+            localObject1 = new File(g());
+            if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory())) {
+              ((File)localObject1).delete();
+            }
+          }
+        }
       }
+      m += 1;
     }
   }
   
+  /* Error */
   private void a(BlessTask paramBlessTask, ArrayList<BlessPtvModule> paramArrayList, ArrayList<BlessWording> paramArrayList1)
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    EntityTransaction localEntityTransaction = localEntityManager.getTransaction();
-    for (;;)
-    {
-      try
-      {
-        localEntityTransaction.begin();
-        localEntityManager.drop(BlessTask.class);
-        if (paramBlessTask != null) {
-          localEntityManager.persistOrReplace(paramBlessTask);
-        }
-        localEntityManager.drop(BlessPtvModule.class);
-        if (paramArrayList != null)
-        {
-          paramBlessTask = paramArrayList.iterator();
-          if (paramBlessTask.hasNext())
-          {
-            localEntityManager.persistOrReplace((BlessPtvModule)paramBlessTask.next());
-            continue;
-          }
-        }
-      }
-      catch (Exception paramBlessTask)
-      {
-        paramBlessTask.printStackTrace();
-        localEntityTransaction.end();
-        return;
-        localEntityManager.drop(BlessWording.class);
-        if (paramArrayList1 != null)
-        {
-          paramBlessTask = paramArrayList1.iterator();
-          if (paramBlessTask.hasNext())
-          {
-            localEntityManager.persistOrReplace((BlessWording)paramBlessTask.next());
-            continue;
-          }
-        }
-      }
-      finally
-      {
-        localEntityTransaction.end();
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("BlessManager", 4, "save task and modules to db");
-      }
-      localEntityTransaction.end();
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 92	com/tencent/mobileqq/activity/bless/BlessManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   4: invokevirtual 296	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   7: invokevirtual 302	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   10: astore 5
+    //   12: aload 5
+    //   14: invokevirtual 308	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   17: astore 4
+    //   19: aload 4
+    //   21: invokevirtual 313	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   24: aload 5
+    //   26: ldc 190
+    //   28: invokevirtual 317	com/tencent/mobileqq/persistence/EntityManager:drop	(Ljava/lang/Class;)Z
+    //   31: pop
+    //   32: aload_1
+    //   33: ifnull +9 -> 42
+    //   36: aload 5
+    //   38: aload_1
+    //   39: invokevirtual 321	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   42: aload 5
+    //   44: ldc 101
+    //   46: invokevirtual 317	com/tencent/mobileqq/persistence/EntityManager:drop	(Ljava/lang/Class;)Z
+    //   49: pop
+    //   50: aload_2
+    //   51: ifnull +34 -> 85
+    //   54: aload_2
+    //   55: invokevirtual 327	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   58: astore_1
+    //   59: aload_1
+    //   60: invokeinterface 332 1 0
+    //   65: ifeq +20 -> 85
+    //   68: aload 5
+    //   70: aload_1
+    //   71: invokeinterface 336 1 0
+    //   76: checkcast 101	com/tencent/mobileqq/activity/bless/BlessPtvModule
+    //   79: invokevirtual 321	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   82: goto -23 -> 59
+    //   85: aload 5
+    //   87: ldc_w 338
+    //   90: invokevirtual 317	com/tencent/mobileqq/persistence/EntityManager:drop	(Ljava/lang/Class;)Z
+    //   93: pop
+    //   94: aload_3
+    //   95: ifnull +34 -> 129
+    //   98: aload_3
+    //   99: invokevirtual 327	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   102: astore_1
+    //   103: aload_1
+    //   104: invokeinterface 332 1 0
+    //   109: ifeq +20 -> 129
+    //   112: aload 5
+    //   114: aload_1
+    //   115: invokeinterface 336 1 0
+    //   120: checkcast 338	com/tencent/mobileqq/activity/bless/BlessWording
+    //   123: invokevirtual 321	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   126: goto -23 -> 103
+    //   129: aload 4
+    //   131: invokevirtual 341	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   134: invokestatic 344	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   137: ifeq +25 -> 162
+    //   140: ldc_w 271
+    //   143: iconst_4
+    //   144: ldc_w 346
+    //   147: invokestatic 274	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   150: goto +12 -> 162
+    //   153: astore_1
+    //   154: goto +19 -> 173
+    //   157: astore_1
+    //   158: aload_1
+    //   159: invokevirtual 149	java/lang/Exception:printStackTrace	()V
+    //   162: aload 4
+    //   164: invokevirtual 349	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   167: aload 5
+    //   169: invokevirtual 352	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   172: return
+    //   173: aload 4
+    //   175: invokevirtual 349	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   178: goto +5 -> 183
+    //   181: aload_1
+    //   182: athrow
+    //   183: goto -2 -> 181
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	186	0	this	BlessManager
+    //   0	186	1	paramBlessTask	BlessTask
+    //   0	186	2	paramArrayList	ArrayList<BlessPtvModule>
+    //   0	186	3	paramArrayList1	ArrayList<BlessWording>
+    //   17	157	4	localEntityTransaction	com.tencent.mobileqq.persistence.EntityTransaction
+    //   10	158	5	localEntityManager	EntityManager
+    // Exception table:
+    //   from	to	target	type
+    //   19	32	153	finally
+    //   36	42	153	finally
+    //   42	50	153	finally
+    //   54	59	153	finally
+    //   59	82	153	finally
+    //   85	94	153	finally
+    //   98	103	153	finally
+    //   103	126	153	finally
+    //   129	150	153	finally
+    //   158	162	153	finally
+    //   19	32	157	java/lang/Exception
+    //   36	42	157	java/lang/Exception
+    //   42	50	157	java/lang/Exception
+    //   54	59	157	java/lang/Exception
+    //   59	82	157	java/lang/Exception
+    //   85	94	157	java/lang/Exception
+    //   98	103	157	java/lang/Exception
+    //   103	126	157	java/lang/Exception
+    //   129	150	157	java/lang/Exception
   }
   
   private void a(QQAppInterface paramQQAppInterface)
   {
-    if (paramQQAppInterface == null) {}
-    do
-    {
+    if (paramQQAppInterface == null) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("BlessManager", 2, "refresh recent");
-      }
-      paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.sendEmptyMessage(1009);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessManager", 2, "refresh recent");
+    }
+    paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.sendEmptyMessage(1009);
+    }
   }
   
   private void a(RecentUserProxy paramRecentUserProxy)
@@ -332,17 +410,22 @@ public class BlessManager
   
   private void a(String paramString, BlessTask paramBlessTask, ArrayList<BlessPtvModule> paramArrayList, ArrayList<BlessWording> paramArrayList1)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessManager", 2, "processReceivedConfig newTask=" + paramBlessTask);
-    }
-    Object localObject2;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    if (QLog.isColorLevel())
     {
-      localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("processReceivedConfig newTask=");
+      ((StringBuilder)localObject1).append(paramBlessTask);
+      QLog.d("BlessManager", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject2;
+    if (localObject1 != null)
+    {
+      localObject1 = ((ArrayList)localObject1).iterator();
       for (;;)
       {
         if (!((Iterator)localObject1).hasNext()) {
-          break label153;
+          break label165;
         }
         localObject2 = (BlessPtvModule)((Iterator)localObject1).next();
         Iterator localIterator = paramArrayList.iterator();
@@ -360,10 +443,11 @@ public class BlessManager
         }
       }
     }
-    label153:
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask != null)
+    label165:
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask;
+    if (localObject1 != null)
     {
-      localObject1 = a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.starVideo);
+      localObject1 = a(((BlessTask)localObject1).starVideo);
       localObject2 = a(paramBlessTask.starVideo);
       if ((localObject1 != null) && (((String)localObject1).equals(localObject2))) {
         paramBlessTask.videoPlayed = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.videoPlayed;
@@ -386,7 +470,7 @@ public class BlessManager
     d(this.jdField_c_of_type_Boolean);
     a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask, true);
     this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessUinList.b();
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
     BlessUinList.a((SharedPreferences)localObject1, this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessUinList, 1);
     a(paramBlessTask, paramArrayList, paramArrayList1);
     ((SharedPreferences)localObject1).edit().remove("bless_send_wording").commit();
@@ -396,96 +480,116 @@ public class BlessManager
   
   private void a(String paramString1, String paramString2)
   {
-    if (NetworkUtil.a(BaseApplicationImpl.getApplication()) == 0) {
-      if (QLog.isColorLevel()) {
-        QLog.d("BlessManager", 2, "download 2g give up " + paramString2);
-      }
-    }
-    do
+    if (NetworkUtil.getSystemNetwork(BaseApplicationImpl.getApplication()) == 0)
     {
+      if (QLog.isColorLevel())
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("download 2g give up ");
+        paramString1.append(paramString2);
+        QLog.d("BlessManager", 2, paramString1.toString());
+      }
       return;
-      localDownloadTask = (DownloadTask)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString2);
-      if (localDownloadTask == null) {
-        break label147;
-      }
-      if ((localDownloadTask.a() != 2) && (localDownloadTask.a() != 3)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("BlessManager", 2, "download duplicated " + paramString2);
-    return;
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessManager", 2, "download task status error, cancel it " + paramString2);
     }
-    localDownloadTask.a(true);
-    label147:
-    DownloadTask localDownloadTask = new DownloadTask(paramString1, new File(paramString2));
+    DownloadTask localDownloadTask = (DownloadTask)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString2);
+    if (localDownloadTask != null) {
+      if ((localDownloadTask.a() != 2) && (localDownloadTask.a() != 3))
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("download task status error, cancel it ");
+          ((StringBuilder)localObject).append(paramString2);
+          QLog.d("BlessManager", 2, ((StringBuilder)localObject).toString());
+        }
+        localDownloadTask.a(true);
+      }
+      else
+      {
+        if (QLog.isColorLevel())
+        {
+          paramString1 = new StringBuilder();
+          paramString1.append("download duplicated ");
+          paramString1.append(paramString2);
+          QLog.d("BlessManager", 2, paramString1.toString());
+        }
+        return;
+      }
+    }
+    localDownloadTask = new DownloadTask(paramString1, new File(paramString2));
     localDownloadTask.n = true;
-    DownloaderInterface localDownloaderInterface = ((DownloaderFactory)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessManager", 2, "startDownload: " + paramString1 + " path=" + paramString2);
+    Object localObject = ((DownloaderFactory)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("startDownload: ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" path=");
+      localStringBuilder.append(paramString2);
+      QLog.d("BlessManager", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString2, localDownloadTask);
-    localDownloaderInterface.a(localDownloadTask, new BlessManager.3(this, paramString2, paramString1), null);
+    ((DownloaderInterface)localObject).startDownload(localDownloadTask, new BlessManager.3(this, paramString2, paramString1), null);
   }
   
   private void a(ArrayList<BlessPtvModule> paramArrayList)
   {
-    if (paramArrayList == null) {}
-    File[] arrayOfFile;
-    do
-    {
+    if (paramArrayList == null) {
       return;
-      arrayOfFile = new File(this.jdField_b_of_type_JavaLangString).listFiles();
-    } while (arrayOfFile == null);
-    int j = 0;
-    label28:
-    if (j < arrayOfFile.length) {
-      if ((arrayOfFile[j].getName().endsWith(".zip")) && (!arrayOfFile[j].isDirectory())) {
-        break label67;
-      }
     }
-    label67:
-    label76:
-    label251:
-    for (;;)
+    File[] arrayOfFile = new File(this.jdField_b_of_type_JavaLangString).listFiles();
+    if (arrayOfFile == null) {
+      return;
+    }
+    int i = 0;
+    while (i < arrayOfFile.length)
     {
-      j += 1;
-      break label28;
-      break;
-      String str1 = null;
-      Iterator localIterator = paramArrayList.iterator();
-      int i;
-      if (localIterator.hasNext())
+      if ((arrayOfFile[i].getName().endsWith(".zip")) && (!arrayOfFile[i].isDirectory()))
       {
-        BlessPtvModule localBlessPtvModule = (BlessPtvModule)localIterator.next();
-        str1 = localBlessPtvModule.id;
-        String str2 = localBlessPtvModule.id + ".zip";
-        if (arrayOfFile[j].getName().equals(str2)) {
-          if (localBlessPtvModule.broken)
+        Object localObject1 = null;
+        Object localObject2 = paramArrayList.iterator();
+        int j;
+        for (;;)
+        {
+          boolean bool = ((Iterator)localObject2).hasNext();
+          j = 1;
+          if (!bool) {
+            break;
+          }
+          BlessPtvModule localBlessPtvModule = (BlessPtvModule)((Iterator)localObject2).next();
+          localObject1 = localBlessPtvModule.id;
+          Object localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append(localBlessPtvModule.id);
+          ((StringBuilder)localObject3).append(".zip");
+          localObject3 = ((StringBuilder)localObject3).toString();
+          if (arrayOfFile[i].getName().equals(localObject3))
           {
-            localBlessPtvModule.broken = false;
-            i = 1;
+            if (localBlessPtvModule.broken)
+            {
+              localBlessPtvModule.broken = false;
+              break;
+            }
+            j = 0;
+            break;
+          }
+        }
+        if (j != 0)
+        {
+          arrayOfFile[i].delete();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(this.jdField_b_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append((String)localObject1);
+          FileUtils.deleteDirectory(((StringBuilder)localObject2).toString());
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("deleteOldModules=");
+            ((StringBuilder)localObject1).append(arrayOfFile[i].getName());
+            QLog.d("BlessManager", 2, ((StringBuilder)localObject1).toString());
           }
         }
       }
-      for (;;)
-      {
-        if (i == 0) {
-          break label251;
-        }
-        arrayOfFile[j].delete();
-        FileUtils.a(this.jdField_b_of_type_JavaLangString + str1);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("BlessManager", 2, "deleteOldModules=" + arrayOfFile[j].getName());
-        break;
-        i = 0;
-        continue;
-        break label76;
-        i = 1;
-      }
+      i += 1;
     }
   }
   
@@ -494,10 +598,7 @@ public class BlessManager
     if (paramBlessTask == null) {
       return false;
     }
-    Object localObject2;
     Object localObject1;
-    label68:
-    String str1;
     if (paramBoolean)
     {
       localObject2 = new ArrayList(Arrays.asList(new String[] { paramBlessTask.starAvator, paramBlessTask.starVideo }));
@@ -507,97 +608,140 @@ public class BlessManager
         ((ArrayList)localObject2).add(paramBlessTask.starAvatorSimple);
         localObject1 = localObject2;
       }
-      localObject2 = ((ArrayList)localObject1).iterator();
-      paramBoolean = true;
-      if (!((Iterator)localObject2).hasNext()) {
-        break label554;
-      }
-      str1 = (String)((Iterator)localObject2).next();
-      localObject1 = a(str1);
-      if ((TextUtils.isEmpty(str1)) || (!str1.equals(paramBlessTask.starVideo))) {
-        break label559;
-      }
-      localObject1 = MD5Utils.encodeHexStr(str1);
-      paramBlessTask.ex1 = ((String)localObject1);
     }
-    label549:
-    label554:
-    label559:
-    for (int i = 1;; i = 0)
+    else
     {
-      if (localObject1 == null)
+      localObject2 = new ArrayList(Arrays.asList(new String[] { paramBlessTask.mainBanner, paramBlessTask.mainCenter, paramBlessTask.typeBanner, paramBlessTask.succeededBanner, paramBlessTask.defaultVoice }));
+      if (!TextUtils.isEmpty(paramBlessTask.recentHeadImgUrl)) {
+        ((ArrayList)localObject2).add(paramBlessTask.recentHeadImgUrl);
+      }
+      if (!TextUtils.isEmpty(paramBlessTask.recentHeadImgUrlSimple)) {
+        ((ArrayList)localObject2).add(paramBlessTask.recentHeadImgUrlSimple);
+      }
+      localObject1 = localObject2;
+      if (!TextUtils.isEmpty(paramBlessTask.ptvAnimationUrl))
       {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("BlessManager", 2, "checkBannersReady error banner: " + str1);
-        return false;
-        localObject2 = new ArrayList(Arrays.asList(new String[] { paramBlessTask.mainBanner, paramBlessTask.mainCenter, paramBlessTask.typeBanner, paramBlessTask.succeededBanner, paramBlessTask.defaultVoice }));
-        if (!TextUtils.isEmpty(paramBlessTask.recentHeadImgUrl)) {
-          ((ArrayList)localObject2).add(paramBlessTask.recentHeadImgUrl);
-        }
-        if (!TextUtils.isEmpty(paramBlessTask.recentHeadImgUrlSimple)) {
-          ((ArrayList)localObject2).add(paramBlessTask.recentHeadImgUrlSimple);
-        }
-        localObject1 = localObject2;
-        if (TextUtils.isEmpty(paramBlessTask.ptvAnimationUrl)) {
-          break label68;
-        }
         ((ArrayList)localObject2).add(paramBlessTask.ptvAnimationUrl);
         localObject1 = localObject2;
-        break label68;
       }
-      String str2 = this.jdField_b_of_type_JavaLangString + (String)localObject1;
-      if (QLog.isColorLevel()) {
-        QLog.d("BlessManager", 2, "checkBannersReady: " + str1 + " urlPath=" + str2 + "  fileName=" + (String)localObject1);
-      }
-      if (!new File(str2).exists())
+    }
+    Object localObject2 = ((ArrayList)localObject1).iterator();
+    paramBoolean = true;
+    if (((Iterator)localObject2).hasNext())
+    {
+      String str = (String)((Iterator)localObject2).next();
+      localObject1 = a(str);
+      int i;
+      if ((!TextUtils.isEmpty(str)) && (str.equals(paramBlessTask.starVideo)))
       {
-        a(str1, str2);
-        if (!QLog.isColorLevel()) {
-          break label549;
+        localObject1 = MD5Utils.encodeHexStr(str);
+        paramBlessTask.ex1 = ((String)localObject1);
+        i = 1;
+      }
+      else
+      {
+        i = 0;
+      }
+      if (localObject1 == null)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramBlessTask = new StringBuilder();
+          paramBlessTask.append("checkBannersReady error banner: ");
+          paramBlessTask.append(str);
+          QLog.d("BlessManager", 2, paramBlessTask.toString());
         }
-        QLog.d("BlessManager", 2, "checkBannersReady no banner: " + str2);
-        paramBoolean = false;
+        return false;
+      }
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(this.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject3).append((String)localObject1);
+      localObject3 = ((StringBuilder)localObject3).toString();
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("checkBannersReady: ");
+        localStringBuilder.append(str);
+        localStringBuilder.append(" urlPath=");
+        localStringBuilder.append((String)localObject3);
+        localStringBuilder.append("  fileName=");
+        localStringBuilder.append((String)localObject1);
+        QLog.d("BlessManager", 2, localStringBuilder.toString());
+      }
+      if (!new File((String)localObject3).exists())
+      {
+        a(str, (String)localObject3);
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("checkBannersReady no banner: ");
+          ((StringBuilder)localObject1).append((String)localObject3);
+          QLog.d("BlessManager", 2, ((StringBuilder)localObject1).toString());
+        }
       }
       for (;;)
       {
+        paramBoolean = false;
         break;
-        if (i != 0)
+        if (i == 0) {
+          break;
+        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(paramBlessTask.starVideoCoverFolderName);
+        ((StringBuilder)localObject1).append(File.separator);
+        ((StringBuilder)localObject1).append(paramBlessTask.starVideoCoverFileName);
+        localObject1 = ((StringBuilder)localObject1).toString();
+        if ((!VersionUtils.d()) || (new File((String)localObject1).exists())) {
+          break;
+        }
+        k();
+        if (QLog.isColorLevel())
         {
-          localObject1 = this.jdField_b_of_type_JavaLangString + paramBlessTask.starVideoCoverFolderName + File.separator + paramBlessTask.starVideoCoverFileName;
-          if ((VersionUtils.d()) && (!new File((String)localObject1).exists()))
-          {
-            k();
-            if (QLog.isColorLevel()) {
-              QLog.d("BlessManager", 2, "checkAllDownloaded no cover: " + str2);
-            }
-            paramBoolean = false;
-            continue;
-            return paramBoolean;
-          }
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("checkAllDownloaded no cover: ");
+          ((StringBuilder)localObject1).append((String)localObject3);
+          QLog.d("BlessManager", 2, ((StringBuilder)localObject1).toString());
         }
       }
     }
+    return paramBoolean;
   }
   
   private boolean a(String paramString1, String paramString2)
   {
     long l = NetConnInfoCenter.getServerTimeMillis();
-    Date localDate1 = a(paramString1);
-    Date localDate2 = a(paramString2);
-    if ((localDate1 == null) || (localDate2 == null)) {}
-    do
+    Object localObject = a(paramString1);
+    Date localDate = a(paramString2);
+    if (localObject != null)
     {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("BlessManager", 2, "isInTime now=" + l + "  beginDate.getTime():" + localDate1.getTime() + "  endDate.getTime():" + localDate2.getTime());
+      if (localDate == null) {
+        return false;
       }
-      if ((l > localDate1.getTime()) && (l < localDate2.getTime())) {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isInTime now=");
+        localStringBuilder.append(l);
+        localStringBuilder.append("  beginDate.getTime():");
+        localStringBuilder.append(((Date)localObject).getTime());
+        localStringBuilder.append("  endDate.getTime():");
+        localStringBuilder.append(localDate.getTime());
+        QLog.d("BlessManager", 2, localStringBuilder.toString());
+      }
+      if ((l > ((Date)localObject).getTime()) && (l < localDate.getTime())) {
         return true;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("BlessManager", 2, "not in time" + paramString1 + " " + paramString2);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("not in time");
+        ((StringBuilder)localObject).append(paramString1);
+        ((StringBuilder)localObject).append(" ");
+        ((StringBuilder)localObject).append(paramString2);
+        QLog.d("BlessManager", 2, ((StringBuilder)localObject).toString());
+      }
+    }
     return false;
   }
   
@@ -613,129 +757,123 @@ public class BlessManager
     SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("bless_config", 4).edit();
     if (paramSet == null) {
       localEditor.remove("config_list");
-    }
-    for (;;)
-    {
-      localEditor.commit();
-      return;
+    } else {
       localEditor.putStringSet("config_list", paramSet);
     }
+    localEditor.commit();
   }
   
   private void d(boolean paramBoolean)
   {
-    boolean bool = true;
     RecentUserProxy localRecentUserProxy = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
     RecentUser localRecentUser = localRecentUserProxy.b(AppConstants.SEND_BLESS_UIN, 9003);
-    int i;
-    label80:
-    Object localObject;
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask != null) && (this.jdField_b_of_type_JavaUtilArrayList != null) && (this.jdField_b_of_type_JavaUtilArrayList.size() > 0))
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask;
+    boolean bool = true;
+    if (localObject != null)
     {
-      i = 1;
-      if ((i == 0) || (!c()) || (!paramBoolean) || (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.isDeleted)) {
-        break label192;
-      }
-      if (QLog.isColorLevel())
+      localObject = this.jdField_b_of_type_JavaUtilArrayList;
+      if ((localObject != null) && (((ArrayList)localObject).size() > 0))
       {
-        StringBuilder localStringBuilder = new StringBuilder().append("initEntrance show=").append(bool).append(" hasConfig=").append(paramBoolean).append(" task=").append(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask).append(" isDeleted=");
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask != null) {
-          break label197;
-        }
+        i = 1;
+        break label66;
+      }
+    }
+    int i = 0;
+    label66:
+    if ((i == 0) || (!c()) || (!paramBoolean) || (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.isDeleted)) {
+      bool = false;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initEntrance show=");
+      localStringBuilder.append(bool);
+      localStringBuilder.append(" hasConfig=");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" task=");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask);
+      localStringBuilder.append(" isDeleted=");
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask;
+      if (localObject == null) {
         localObject = "";
-        label146:
-        QLog.d("BlessManager", 2, localObject);
+      } else {
+        localObject = Boolean.valueOf(((BlessTask)localObject).isDeleted);
       }
-      if (!bool) {
-        break label239;
-      }
-      if (localRecentUser != null) {
-        break label212;
-      }
-      a(localRecentUserProxy);
-      this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.isNew = false;
+      localStringBuilder.append(localObject);
+      QLog.d("BlessManager", 2, localStringBuilder.toString());
     }
-    label192:
-    label197:
-    label212:
-    label239:
-    while (localRecentUser == null) {
-      for (;;)
+    if (bool)
+    {
+      if (localRecentUser == null)
       {
-        return;
-        i = 0;
-        break;
-        bool = false;
-        break label80;
-        localObject = Boolean.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.isDeleted);
-        break label146;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.isNew)
-        {
-          a(localRecentUserProxy, localRecentUser);
-          a(localRecentUserProxy);
-        }
+        a(localRecentUserProxy);
       }
+      else if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.isNew)
+      {
+        a(localRecentUserProxy, localRecentUser);
+        a(localRecentUserProxy);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.isNew = false;
+      return;
     }
-    a(localRecentUserProxy, localRecentUser);
+    if (localRecentUser != null) {
+      a(localRecentUserProxy, localRecentUser);
+    }
   }
   
   public static int g()
   {
     if (jdField_a_of_type_Int <= 0) {
-      if (BaseApplication.getContext().getResources().getConfiguration().orientation != 2) {
-        break label41;
+      if (BaseApplication.getContext().getResources().getConfiguration().orientation == 2) {
+        jdField_a_of_type_Int = BaseApplication.getContext().getResources().getDisplayMetrics().heightPixels;
+      } else {
+        jdField_a_of_type_Int = BaseApplication.getContext().getResources().getDisplayMetrics().widthPixels;
       }
     }
-    label41:
-    for (jdField_a_of_type_Int = BaseApplication.getContext().getResources().getDisplayMetrics().heightPixels;; jdField_a_of_type_Int = BaseApplication.getContext().getResources().getDisplayMetrics().widthPixels) {
-      return jdField_a_of_type_Int;
-    }
+    return jdField_a_of_type_Int;
   }
   
   private void h()
   {
-    Object localObject2 = null;
     Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
     this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessUinList = BlessUinList.a((SharedPreferences)localObject1, 1);
     this.jdField_b_of_type_ComTencentMobileqqActivityBlessBlessUinList = BlessUinList.a((SharedPreferences)localObject1, 2);
+    Object localObject2 = null;
     Object localObject3 = SharedPreferencesHandler.a((SharedPreferences)localObject1, "bless_uin_to_send", null);
-    if (localObject3 != null)
-    {
+    if (localObject3 != null) {
       this.jdField_c_of_type_JavaUtilArrayList = new ArrayList((Collection)localObject3);
-      this.jdField_d_of_type_JavaLangString = ((SharedPreferences)localObject1).getString("bless_send_wording", null);
-      if (QLog.isColorLevel())
-      {
-        localObject3 = new StringBuilder().append("initUinSendRecordFromSp sendWording=").append(this.jdField_d_of_type_JavaLangString).append(" uinListToSend=");
-        if (this.jdField_c_of_type_JavaUtilArrayList != null) {
-          break label184;
-        }
-        localObject1 = this.jdField_c_of_type_JavaUtilArrayList;
-        label112:
-        localObject3 = ((StringBuilder)localObject3).append(localObject1).append(" blessUinList=");
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessUinList != null) {
-          break label198;
-        }
-        localObject1 = null;
-        label133:
-        localObject3 = ((StringBuilder)localObject3).append(localObject1).append(" webUinList=");
-        if (this.jdField_b_of_type_ComTencentMobileqqActivityBlessBlessUinList != null) {
-          break label212;
-        }
-      }
-    }
-    label184:
-    label198:
-    label212:
-    for (localObject1 = localObject2;; localObject1 = Integer.valueOf(this.jdField_b_of_type_ComTencentMobileqqActivityBlessBlessUinList.a()))
-    {
-      QLog.d("BlessManager", 2, localObject1);
-      return;
+    } else {
       this.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-      break;
-      localObject1 = Integer.valueOf(this.jdField_c_of_type_JavaUtilArrayList.size());
-      break label112;
-      localObject1 = Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessUinList.a());
-      break label133;
+    }
+    this.jdField_d_of_type_JavaLangString = ((SharedPreferences)localObject1).getString("bless_send_wording", null);
+    if (QLog.isColorLevel())
+    {
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("initUinSendRecordFromSp sendWording=");
+      ((StringBuilder)localObject3).append(this.jdField_d_of_type_JavaLangString);
+      ((StringBuilder)localObject3).append(" uinListToSend=");
+      localObject1 = this.jdField_c_of_type_JavaUtilArrayList;
+      if (localObject1 != null) {
+        localObject1 = Integer.valueOf(((ArrayList)localObject1).size());
+      }
+      ((StringBuilder)localObject3).append(localObject1);
+      ((StringBuilder)localObject3).append(" blessUinList=");
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessUinList;
+      if (localObject1 == null) {
+        localObject1 = null;
+      } else {
+        localObject1 = Integer.valueOf(((BlessUinList)localObject1).a());
+      }
+      ((StringBuilder)localObject3).append(localObject1);
+      ((StringBuilder)localObject3).append(" webUinList=");
+      localObject1 = this.jdField_b_of_type_ComTencentMobileqqActivityBlessBlessUinList;
+      if (localObject1 == null) {
+        localObject1 = localObject2;
+      } else {
+        localObject1 = Integer.valueOf(((BlessUinList)localObject1).a());
+      }
+      ((StringBuilder)localObject3).append(localObject1);
+      QLog.d("BlessManager", 2, ((StringBuilder)localObject3).toString());
     }
   }
   
@@ -756,32 +894,31 @@ public class BlessManager
     ((EntityManager)localObject1).close();
     if (QLog.isColorLevel())
     {
-      localObject2 = new StringBuilder().append("initTaskAndModuleFromDB task=");
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask != null) {
-        break label249;
-      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("initTaskAndModuleFromDB task=");
       localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask;
-      localObject2 = ((StringBuilder)localObject2).append(localObject1).append(" blessWordings=").append(this.jdField_b_of_type_JavaUtilArrayList).append(" module=");
-      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-        break label260;
+      if (localObject1 != null) {
+        localObject1 = ((BlessTask)localObject1).toString();
       }
+      ((StringBuilder)localObject2).append(localObject1);
+      ((StringBuilder)localObject2).append(" blessWordings=");
+      ((StringBuilder)localObject2).append(this.jdField_b_of_type_JavaUtilArrayList);
+      ((StringBuilder)localObject2).append(" module=");
+      localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
+      if (localObject1 != null) {
+        localObject1 = Integer.valueOf(((ArrayList)localObject1).size());
+      }
+      ((StringBuilder)localObject2).append(localObject1);
+      QLog.d("BlessManager", 2, ((StringBuilder)localObject2).toString());
     }
-    label260:
-    for (localObject1 = this.jdField_a_of_type_JavaUtilArrayList;; localObject1 = Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()))
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask;
+    if (localObject1 != null)
     {
-      QLog.d("BlessManager", 2, localObject1);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask == null) {
-        break label274;
-      }
-      this.jdField_c_of_type_Boolean = a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask, false);
+      this.jdField_c_of_type_Boolean = a((BlessTask)localObject1, false);
       d(this.jdField_c_of_type_Boolean);
       a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask, true);
       return;
-      label249:
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.toString();
-      break;
     }
-    label274:
     d(false);
   }
   
@@ -789,109 +926,115 @@ public class BlessManager
   {
     String str1 = d();
     String str2 = c();
-    if ((str1 == null) || (str2 == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BlessManager", 2, "isStarVideoFileReady() videoCoverPath=" + str1 + ", videoPath=" + str2);
-      }
-      return false;
+    if ((str1 != null) && (str2 != null)) {
+      return true;
     }
-    return true;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isStarVideoFileReady() videoCoverPath=");
+      localStringBuilder.append(str1);
+      localStringBuilder.append(", videoPath=");
+      localStringBuilder.append(str2);
+      QLog.d("BlessManager", 2, localStringBuilder.toString());
+    }
+    return false;
   }
   
   private void j()
   {
-    Object localObject;
-    label150:
-    String str;
-    int i;
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask != null) && (this.jdField_a_of_type_JavaUtilArrayList != null))
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask;
+    if ((localObject1 != null) && (this.jdField_a_of_type_JavaUtilArrayList != null))
     {
-      localObject = new ArrayList(Arrays.asList(new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.mainBanner, this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.mainCenter, this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.typeBanner, this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.succeededBanner, this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.defaultVoice }));
+      localObject1 = ((BlessTask)localObject1).mainBanner;
+      int j = 0;
+      localObject1 = new ArrayList(Arrays.asList(new String[] { localObject1, this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.mainCenter, this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.typeBanner, this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.succeededBanner, this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.defaultVoice }));
       if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.recentHeadImgUrl != null) {
-        ((ArrayList)localObject).add(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.recentHeadImgUrl);
+        ((ArrayList)localObject1).add(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.recentHeadImgUrl);
       }
       if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.recentHeadImgUrlSimple != null) {
-        ((ArrayList)localObject).add(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.recentHeadImgUrlSimple);
+        ((ArrayList)localObject1).add(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.recentHeadImgUrlSimple);
       }
       if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.ptvAnimationUrl != null) {
-        ((ArrayList)localObject).add(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.ptvAnimationUrl);
+        ((ArrayList)localObject1).add(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.ptvAnimationUrl);
       }
-      Iterator localIterator = ((ArrayList)localObject).iterator();
-      break label217;
-      if (!localIterator.hasNext()) {
-        break label469;
-      }
-      str = (String)localIterator.next();
-      localObject = a(str);
-      if ((TextUtils.isEmpty(str)) || (!str.equals(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.starVideo))) {
-        break label464;
-      }
-      localObject = MD5Utils.encodeHexStr(str);
-      i = 1;
-      label208:
-      if (localObject != null) {
-        break label218;
-      }
-      d(false);
-    }
-    label459:
-    label464:
-    label469:
-    label472:
-    for (;;)
-    {
-      label217:
-      return;
-      label218:
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break label150;
-      }
-      localObject = this.jdField_b_of_type_JavaLangString + (String)localObject;
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break label150;
-      }
-      if (!new File((String)localObject).exists())
+      Object localObject2 = ((ArrayList)localObject1).iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        if (!QLog.isColorLevel()) {
-          break label459;
-        }
-        QLog.d("BlessManager", 2, "checkAllDownloaded no banner: " + (String)localObject);
-        i = 0;
-      }
-      for (;;)
-      {
-        if (i == 0) {
-          break label472;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("BlessManager", 2, "check Modules and banners all ready");
-        }
-        if ((this.jdField_b_of_type_JavaUtilArrayList == null) || (this.jdField_b_of_type_JavaUtilArrayList.size() <= 0)) {
-          break;
-        }
-        this.jdField_c_of_type_Boolean = true;
-        d(true);
-        return;
-        if (i == 0) {
-          break label150;
-        }
-        str = this.jdField_b_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.starVideoCoverFolderName + File.separator + this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.starVideoCoverFileName;
-        if ((!VersionUtils.d()) || (new File(str).exists())) {
-          break label150;
-        }
-        if (QLog.isColorLevel())
+        Object localObject3 = (String)((Iterator)localObject2).next();
+        localObject1 = a((String)localObject3);
+        if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (((String)localObject3).equals(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.starVideo)))
         {
-          QLog.d("BlessManager", 2, "checkAllDownloaded no cover: " + (String)localObject);
-          i = 0;
+          localObject1 = MD5Utils.encodeHexStr((String)localObject3);
+          i = 1;
         }
         else
         {
           i = 0;
-          continue;
-          i = 0;
-          break label208;
-          i = 1;
+        }
+        if (localObject1 == null)
+        {
+          d(false);
+          return;
+        }
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append(this.jdField_b_of_type_JavaLangString);
+          ((StringBuilder)localObject3).append((String)localObject1);
+          localObject1 = ((StringBuilder)localObject3).toString();
+          if (!TextUtils.isEmpty((CharSequence)localObject1))
+          {
+            if (!new File((String)localObject1).exists())
+            {
+              i = j;
+              if (!QLog.isColorLevel()) {
+                break label477;
+              }
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("checkAllDownloaded no banner: ");
+              ((StringBuilder)localObject2).append((String)localObject1);
+              QLog.d("BlessManager", 2, ((StringBuilder)localObject2).toString());
+              i = j;
+              break label477;
+            }
+            if (i != 0)
+            {
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append(this.jdField_b_of_type_JavaLangString);
+              ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.starVideoCoverFolderName);
+              ((StringBuilder)localObject3).append(File.separator);
+              ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.starVideoCoverFileName);
+              localObject3 = ((StringBuilder)localObject3).toString();
+              if ((VersionUtils.d()) && (!new File((String)localObject3).exists()))
+              {
+                i = j;
+                if (!QLog.isColorLevel()) {
+                  break label477;
+                }
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append("checkAllDownloaded no cover: ");
+                ((StringBuilder)localObject2).append((String)localObject1);
+                QLog.d("BlessManager", 2, ((StringBuilder)localObject2).toString());
+                i = j;
+                break label477;
+              }
+            }
+          }
+        }
+      }
+      int i = 1;
+      label477:
+      if (i != 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BlessManager", 2, "check Modules and banners all ready");
+        }
+        localObject1 = this.jdField_b_of_type_JavaUtilArrayList;
+        if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0))
+        {
+          this.jdField_c_of_type_Boolean = true;
+          d(true);
         }
       }
     }
@@ -907,94 +1050,103 @@ public class BlessManager
   
   public int a()
   {
-    int i = 1;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask == null) {
-      i = -1;
+    BlessTask localBlessTask = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask;
+    if (localBlessTask == null) {
+      return -1;
     }
-    while (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.unread > 1) {
-      return i;
+    if (localBlessTask.unread > 1) {
+      return 1;
     }
     return this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.unread;
   }
   
   public Drawable a()
   {
-    Object localObject2 = BaseApplication.getContext().getResources().getDrawable(2130839000);
-    boolean bool = QQTheme.e();
-    Object localObject3;
-    Object localObject1;
+    Object localObject2 = BaseApplication.getContext().getResources().getDrawable(2130838760);
+    boolean bool = QQTheme.f();
+    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask;
+    Object localObject1 = localObject2;
     int i;
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.recentHeadImgUrl != null))
+    if (localObject3 != null)
     {
-      if ((this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null) || (this.jdField_d_of_type_Boolean != bool))
+      localObject1 = localObject2;
+      if (((BlessTask)localObject3).recentHeadImgUrl != null)
       {
-        localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.recentHeadImgUrl;
-        localObject1 = localObject3;
-        if (bool)
+        if ((this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null) || (this.jdField_d_of_type_Boolean != bool))
         {
+          localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.recentHeadImgUrl;
           localObject1 = localObject3;
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.recentHeadImgUrlSimple)) {
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.recentHeadImgUrlSimple;
-          }
-        }
-        localObject1 = a((String)localObject1);
-        if (!TextUtils.isEmpty((CharSequence)localObject1))
-        {
-          localObject1 = this.jdField_b_of_type_JavaLangString + (String)localObject1;
-          localObject3 = URLDrawable.URLDrawableOptions.obtain();
-          i = AIOUtils.a(50.0F, BaseApplication.getContext().getResources());
-          ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = i;
-          ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = i;
-          ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Drawable)localObject2);
-          ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Drawable)localObject2);
-          this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = URLDrawable.getDrawable(new File((String)localObject1), (URLDrawable.URLDrawableOptions)localObject3);
-        }
-      }
-      if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null)
-      {
-        localObject1 = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-        this.jdField_d_of_type_Boolean = bool;
-      }
-    }
-    for (;;)
-    {
-      localObject2 = localObject1;
-      if (h())
-      {
-        if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) || (this.jdField_d_of_type_Boolean != bool))
-        {
-          localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.starAvator;
-          localObject2 = localObject3;
           if (bool)
           {
-            localObject2 = localObject3;
-            if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.starAvatorSimple)) {
-              localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.starAvatorSimple;
+            localObject1 = localObject3;
+            if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.recentHeadImgUrlSimple)) {
+              localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.recentHeadImgUrlSimple;
             }
           }
-          localObject2 = a((String)localObject2);
-          if (!TextUtils.isEmpty((CharSequence)localObject2))
+          localObject1 = a((String)localObject1);
+          if (!TextUtils.isEmpty((CharSequence)localObject1))
           {
-            localObject2 = this.jdField_b_of_type_JavaLangString + (String)localObject2;
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append(this.jdField_b_of_type_JavaLangString);
+            ((StringBuilder)localObject3).append((String)localObject1);
+            localObject1 = ((StringBuilder)localObject3).toString();
             localObject3 = URLDrawable.URLDrawableOptions.obtain();
-            i = AIOUtils.a(50.0F, BaseApplication.getContext().getResources());
+            i = AIOUtils.b(50.0F, BaseApplication.getContext().getResources());
             ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = i;
             ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = i;
-            ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Drawable)localObject1);
-            ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Drawable)localObject1);
-            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = URLDrawable.getDrawable(new File((String)localObject2), (URLDrawable.URLDrawableOptions)localObject3);
+            ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Drawable)localObject2);
+            ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Drawable)localObject2);
+            this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = URLDrawable.getDrawable(new File((String)localObject1), (URLDrawable.URLDrawableOptions)localObject3);
           }
         }
-        localObject2 = localObject1;
-        if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+        localObject3 = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+        localObject1 = localObject2;
+        if (localObject3 != null)
         {
-          localObject2 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
           this.jdField_d_of_type_Boolean = bool;
+          localObject1 = localObject3;
         }
       }
-      return localObject2;
-      localObject1 = localObject2;
     }
+    localObject2 = localObject1;
+    if (h())
+    {
+      if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) || (this.jdField_d_of_type_Boolean != bool))
+      {
+        localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.starAvator;
+        localObject2 = localObject3;
+        if (bool)
+        {
+          localObject2 = localObject3;
+          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.starAvatorSimple)) {
+            localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.starAvatorSimple;
+          }
+        }
+        localObject2 = a((String)localObject2);
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append(this.jdField_b_of_type_JavaLangString);
+          ((StringBuilder)localObject3).append((String)localObject2);
+          localObject2 = ((StringBuilder)localObject3).toString();
+          localObject3 = URLDrawable.URLDrawableOptions.obtain();
+          i = AIOUtils.b(50.0F, BaseApplication.getContext().getResources());
+          ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = i;
+          ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = i;
+          ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Drawable)localObject1);
+          ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Drawable)localObject1);
+          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = URLDrawable.getDrawable(new File((String)localObject2), (URLDrawable.URLDrawableOptions)localObject3);
+        }
+      }
+      localObject3 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localObject2 = localObject1;
+      if (localObject3 != null)
+      {
+        this.jdField_d_of_type_Boolean = bool;
+        localObject2 = localObject3;
+      }
+    }
+    return localObject2;
   }
   
   public ChatActivityFacade.HongbaoParams a(int paramInt1, int paramInt2)
@@ -1003,17 +1155,13 @@ public class BlessManager
     localHongbaoParams.jdField_a_of_type_Int = 0;
     if (paramInt1 == 2) {
       localHongbaoParams.jdField_b_of_type_Int = 1;
+    } else if (paramInt1 == 3) {
+      localHongbaoParams.jdField_b_of_type_Int = 4;
+    } else {
+      localHongbaoParams.jdField_b_of_type_Int = 0;
     }
-    for (;;)
-    {
-      localHongbaoParams.jdField_b_of_type_Long = paramInt2;
-      return localHongbaoParams;
-      if (paramInt1 == 3) {
-        localHongbaoParams.jdField_b_of_type_Int = 4;
-      } else {
-        localHongbaoParams.jdField_b_of_type_Int = 0;
-      }
-    }
+    localHongbaoParams.jdField_b_of_type_Long = paramInt2;
+    return localHongbaoParams;
   }
   
   public BlessTask a()
@@ -1024,50 +1172,67 @@ public class BlessManager
   public MessageForShortVideo a()
   {
     MessageForShortVideo localMessageForShortVideo = this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessManager", 2, "getPtvMessage: " + localMessageForShortVideo);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getPtvMessage: ");
+      localStringBuilder.append(localMessageForShortVideo);
+      QLog.d("BlessManager", 2, localStringBuilder.toString());
     }
     return localMessageForShortVideo;
   }
   
   public Boolean a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask == null) {
+    BlessTask localBlessTask = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask;
+    if (localBlessTask == null) {
       return Boolean.valueOf(false);
     }
-    return Boolean.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.ptvAnimationSwtich);
+    return Boolean.valueOf(localBlessTask.ptvAnimationSwtich);
   }
   
   public String a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask == null) {}
-    String str;
-    do
-    {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask;
+    if (localObject == null) {
       return null;
-      str = a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.mainCenter);
-    } while (str == null);
-    return this.jdField_b_of_type_JavaLangString + File.separator + str;
+    }
+    localObject = a(((BlessTask)localObject).mainCenter);
+    if (localObject == null) {
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append((String)localObject);
+    return localStringBuilder.toString();
   }
   
   public String a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask == null) {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask;
+    if (localObject == null) {
       return null;
     }
-    String str;
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      str = null;
+      if (paramInt != 2) {
+        localObject = null;
+      } else {
+        localObject = a(((BlessTask)localObject).succeededBanner);
+      }
     }
-    while (str != null)
-    {
-      return this.jdField_b_of_type_JavaLangString + File.separator + str;
-      str = a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.mainBanner);
-      continue;
-      str = a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.succeededBanner);
+    else {
+      localObject = a(((BlessTask)localObject).mainBanner);
     }
+    if (localObject == null) {
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append((String)localObject);
+    return localStringBuilder.toString();
   }
   
   public String a(String paramString)
@@ -1077,22 +1242,21 @@ public class BlessManager
       try
       {
         String str;
-        int i;
         if (paramString.startsWith("http://"))
         {
-          str = paramString.substring("http://".length(), paramString.length());
-          i = str.lastIndexOf('/');
-          if (i == -1) {
-            return null;
-          }
+          str = paramString.substring(7, paramString.length());
         }
         else
         {
+          str = paramString;
           if (!paramString.startsWith("https://")) {
-            break;
+            continue;
           }
-          str = paramString.substring("https://".length(), paramString.length());
-          continue;
+          str = paramString.substring(8, paramString.length());
+        }
+        int i = str.lastIndexOf('/');
+        if (i == -1) {
+          return null;
         }
         int j = str.substring(0, i).lastIndexOf('/');
         if (j != -1)
@@ -1108,30 +1272,44 @@ public class BlessManager
       }
       catch (Throwable localThrowable)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("BlessManager", 2, "getFileNameFromUrl failed: " + paramString, localThrowable);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getFileNameFromUrl failed: ");
+          localStringBuilder.append(paramString);
+          QLog.d("BlessManager", 2, localStringBuilder.toString(), localThrowable);
         }
         return null;
       }
     }
-    return paramString;
   }
   
   public String a(String paramString1, String paramString2)
   {
-    paramString1 = e() + "&uuid=" + paramString1 + "&md5=" + paramString2 + "&nick=";
-    return paramString1 + Base64Util.encodeToString(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname().getBytes(), 2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(e());
+    localStringBuilder.append("&uuid=");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("&md5=");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("&nick=");
+    paramString1 = localStringBuilder.toString();
+    paramString2 = new StringBuilder();
+    paramString2.append(paramString1);
+    paramString2.append(Base64Util.encodeToString(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname().getBytes(), 2));
+    return paramString2.toString();
   }
   
   public String a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask == null) {
+    BlessTask localBlessTask = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask;
+    if (localBlessTask == null) {
       return "";
     }
     if (paramBoolean) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.shareQzoneTitle;
+      return localBlessTask.shareQzoneTitle;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.shareWeixinTitle;
+    return localBlessTask.shareWeixinTitle;
   }
   
   public ArrayList<String> a()
@@ -1151,17 +1329,17 @@ public class BlessManager
   
   public void a(int paramInt1, String paramString, int paramInt2)
   {
-    if (this.jdField_b_of_type_JavaUtilArrayList == null) {}
-    int i;
-    do
-    {
+    ArrayList localArrayList = this.jdField_b_of_type_JavaUtilArrayList;
+    if (localArrayList == null) {
       return;
-      i = paramInt1;
-      if (paramInt2 == this.jdField_b_of_type_JavaUtilArrayList.size() + 1) {
-        i = paramInt1 - 1;
-      }
-    } while ((i < 0) || (i >= this.jdField_b_of_type_JavaUtilArrayList.size()));
-    ((BlessWording)this.jdField_b_of_type_JavaUtilArrayList.get(i)).setEditingWording(paramString);
+    }
+    int i = paramInt1;
+    if (paramInt2 == localArrayList.size() + 1) {
+      i = paramInt1 - 1;
+    }
+    if ((i >= 0) && (i < this.jdField_b_of_type_JavaUtilArrayList.size())) {
+      ((BlessWording)this.jdField_b_of_type_JavaUtilArrayList.get(i)).setEditingWording(paramString);
+    }
   }
   
   public void a(Context paramContext)
@@ -1180,43 +1358,63 @@ public class BlessManager
   
   public void a(BlessPtvModule paramBlessPtvModule, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessManager", 2, "deleteOneModuleFile " + paramBlessPtvModule.id + " del zip=" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("deleteOneModuleFile ");
+      localStringBuilder.append(paramBlessPtvModule.id);
+      localStringBuilder.append(" del zip=");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("BlessManager", 2, localStringBuilder.toString());
     }
-    FileUtils.a(this.jdField_b_of_type_JavaLangString + paramBlessPtvModule.id);
-    if (paramBoolean) {
-      FileUtils.e(this.jdField_b_of_type_JavaLangString + paramBlessPtvModule.id + ".zip");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(paramBlessPtvModule.id);
+    FileUtils.deleteDirectory(localStringBuilder.toString());
+    if (paramBoolean)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(paramBlessPtvModule.id);
+      localStringBuilder.append(".zip");
+      FileUtils.deleteFile(localStringBuilder.toString());
     }
   }
   
   public void a(MessageForShortVideo paramMessageForShortVideo)
   {
     this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessManager", 2, "setPtvMessage: " + paramMessageForShortVideo);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setPtvMessage: ");
+      localStringBuilder.append(paramMessageForShortVideo);
+      QLog.d("BlessManager", 2, localStringBuilder.toString());
     }
   }
   
   public void a(String paramString)
   {
-    if (paramString == null) {}
-    String str;
-    do
-    {
+    if (paramString == null) {
       return;
+    }
+    ArrayList localArrayList = this.jdField_b_of_type_JavaUtilArrayList;
+    String str = paramString;
+    if (localArrayList != null)
+    {
       str = paramString;
-      if (this.jdField_b_of_type_JavaUtilArrayList != null)
+      if (localArrayList.size() > 0)
       {
         str = paramString;
-        if (this.jdField_b_of_type_JavaUtilArrayList.size() > 0)
-        {
-          str = paramString;
-          if (paramString.equals(((BlessWording)this.jdField_b_of_type_JavaUtilArrayList.get(0)).wording)) {
-            str = "";
-          }
+        if (paramString.equals(((BlessWording)this.jdField_b_of_type_JavaUtilArrayList.get(0)).wording)) {
+          str = "";
         }
       }
-    } while ((this.jdField_d_of_type_JavaLangString != null) && (this.jdField_d_of_type_JavaLangString.equals(str)));
+    }
+    paramString = this.jdField_d_of_type_JavaLangString;
+    if ((paramString != null) && (paramString.equals(str))) {
+      return;
+    }
     this.jdField_d_of_type_JavaLangString = str;
     paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
     paramString.putString("bless_send_wording", str);
@@ -1236,17 +1434,18 @@ public class BlessManager
         this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessUinList.a(str);
       }
       BlessUinList.a(localSharedPreferences, this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessUinList, 1);
-    }
-    while (paramInt != 2) {
       return;
     }
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
+    if (paramInt == 2)
     {
-      str = (String)paramArrayList.next();
-      this.jdField_b_of_type_ComTencentMobileqqActivityBlessBlessUinList.a(str);
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        str = (String)paramArrayList.next();
+        this.jdField_b_of_type_ComTencentMobileqqActivityBlessBlessUinList.a(str);
+      }
+      BlessUinList.a(localSharedPreferences, this.jdField_b_of_type_ComTencentMobileqqActivityBlessBlessUinList, 2);
     }
-    BlessUinList.a(localSharedPreferences, this.jdField_b_of_type_ComTencentMobileqqActivityBlessBlessUinList, 2);
   }
   
   public void a(List<String> paramList)
@@ -1258,115 +1457,163 @@ public class BlessManager
   
   public void a(Set<String> paramSet)
   {
-    Object localObject2 = null;
-    Object localObject3 = null;
-    Object localObject1 = null;
-    Object localObject4 = null;
-    Object localObject5 = null;
     long l1 = NetConnInfoCenter.getServerTimeMillis();
     ArrayList localArrayList3 = new ArrayList();
-    Iterator localIterator = paramSet.iterator();
-    Object localObject6;
-    Object localObject8;
-    Object localObject7;
-    while (localIterator.hasNext())
+    Object localObject1 = paramSet.iterator();
+    Object localObject9 = null;
+    Object localObject2 = null;
+    Object localObject6 = null;
+    Object localObject4 = null;
+    Object localObject5;
+    for (Object localObject3 = null; ((Iterator)localObject1).hasNext(); localObject3 = localObject5)
     {
-      localObject6 = (String)localIterator.next();
-      localObject8 = new BlessTask();
-      ArrayList localArrayList1 = new ArrayList();
+      String str = (String)((Iterator)localObject1).next();
+      BlessTask localBlessTask = new BlessTask();
       ArrayList localArrayList2 = new ArrayList();
-      boolean bool = BlessTask.parse((String)localObject6, (BlessTask)localObject8, localArrayList1, localArrayList2);
-      if (QLog.isColorLevel()) {
-        QLog.d("BlessManager", 2, "onNewConfigReceived tmpNewTask=" + localObject8 + " tmpNewBlessWordings=" + localArrayList2.size() + " tmpNewPtvModules=" + localArrayList1.size() + " result=" + bool);
-      }
-      if (!bool) {
-        break label578;
-      }
-      localObject7 = a(((BlessTask)localObject8).entranceBegin);
-      Date localDate = a(((BlessTask)localObject8).entranceEnd);
-      if ((localObject7 != null) && (localDate != null) && (localDate.getTime() >= l1) && (((BlessTask)localObject8).entranceEnabled == 1))
+      ArrayList localArrayList1 = new ArrayList();
+      boolean bool = BlessTask.parse(str, localBlessTask, localArrayList2, localArrayList1);
+      if (QLog.isColorLevel())
       {
-        localArrayList3.add(localObject8);
-        if ((localObject2 == null) || (localObject5 == null) || (((((Date)localObject7).getTime() <= ((Date)localObject5).getTime()) || (((Date)localObject7).getTime() <= l1)) && ((((Date)localObject7).getTime() >= ((Date)localObject5).getTime()) || (((Date)localObject5).getTime() >= l1))))
+        localObject5 = new StringBuilder();
+        ((StringBuilder)localObject5).append("onNewConfigReceived tmpNewTask=");
+        ((StringBuilder)localObject5).append(localBlessTask);
+        ((StringBuilder)localObject5).append(" tmpNewBlessWordings=");
+        ((StringBuilder)localObject5).append(localArrayList1.size());
+        ((StringBuilder)localObject5).append(" tmpNewPtvModules=");
+        ((StringBuilder)localObject5).append(localArrayList2.size());
+        ((StringBuilder)localObject5).append(" result=");
+        ((StringBuilder)localObject5).append(bool);
+        QLog.d("BlessManager", 2, ((StringBuilder)localObject5).toString());
+      }
+      Object localObject11 = localObject9;
+      Object localObject10 = localObject2;
+      Object localObject8 = localObject6;
+      Object localObject7 = localObject4;
+      localObject5 = localObject3;
+      if (bool)
+      {
+        Date localDate1 = a(localBlessTask.entranceBegin);
+        Date localDate2 = a(localBlessTask.entranceEnd);
+        localObject11 = localObject9;
+        localObject10 = localObject2;
+        localObject8 = localObject6;
+        localObject7 = localObject4;
+        localObject5 = localObject3;
+        if (localDate1 != null)
         {
-          localObject5 = localArrayList2;
-          localObject4 = localArrayList1;
-          localObject3 = localObject8;
-          localObject1 = localObject7;
-          localObject2 = localObject6;
+          localObject11 = localObject9;
+          localObject10 = localObject2;
+          localObject8 = localObject6;
+          localObject7 = localObject4;
+          localObject5 = localObject3;
+          if (localDate2 != null)
+          {
+            localObject11 = localObject9;
+            localObject10 = localObject2;
+            localObject8 = localObject6;
+            localObject7 = localObject4;
+            localObject5 = localObject3;
+            if (localDate2.getTime() >= l1) {
+              if (localBlessTask.entranceEnabled != 1)
+              {
+                localObject11 = localObject9;
+                localObject10 = localObject2;
+                localObject8 = localObject6;
+                localObject7 = localObject4;
+                localObject5 = localObject3;
+              }
+              else
+              {
+                localArrayList3.add(localBlessTask);
+                if ((localObject2 != null) && (localObject3 != null))
+                {
+                  if (localDate1.getTime() > ((Date)localObject3).getTime())
+                  {
+                    localObject11 = localObject9;
+                    localObject10 = localObject2;
+                    localObject8 = localObject6;
+                    localObject7 = localObject4;
+                    localObject5 = localObject3;
+                    if (localDate1.getTime() > l1) {
+                      break label488;
+                    }
+                  }
+                  if ((localDate1.getTime() < ((Date)localObject3).getTime()) && (((Date)localObject3).getTime() < l1))
+                  {
+                    localObject11 = localObject9;
+                    localObject10 = localObject2;
+                    localObject8 = localObject6;
+                    localObject7 = localObject4;
+                    localObject5 = localObject3;
+                    break label488;
+                  }
+                }
+                localObject5 = localDate1;
+                localObject8 = localArrayList2;
+                localObject7 = localArrayList1;
+                localObject10 = localBlessTask;
+                localObject11 = str;
+              }
+            }
+          }
         }
       }
+      label488:
+      localObject9 = localObject11;
+      localObject2 = localObject10;
+      localObject6 = localObject8;
+      localObject4 = localObject7;
     }
-    for (;;)
+    if ((localObject9 != null) && (localObject2 != null)) {
+      a(localObject9, localObject2, (ArrayList)localObject6, (ArrayList)localObject4);
+    } else {
+      a();
+    }
+    if (localArrayList3.size() > 1)
     {
-      localObject6 = localObject5;
-      localObject7 = localObject4;
-      localObject8 = localObject3;
-      localObject5 = localObject1;
-      localObject4 = localObject2;
-      localObject1 = localObject6;
-      localObject3 = localObject7;
-      localObject2 = localObject8;
-      break;
-      if ((localObject4 != null) && (localObject2 != null))
+      if (localObject2 != null)
       {
-        a((String)localObject4, localObject2, (ArrayList)localObject3, localObject1);
-        localObject4 = null;
-        localObject3 = null;
-        localObject1 = null;
-        if (localArrayList3.size() <= 1) {
-          break label518;
-        }
-        localObject3 = localObject4;
-        if (localObject2 == null) {
-          break label513;
-        }
         localObject4 = a(localObject2.entranceBegin);
         l1 = 9223372036854775807L;
         localObject5 = localArrayList3.iterator();
-        label416:
-        localObject3 = localObject1;
-        if (!((Iterator)localObject5).hasNext()) {
-          break label513;
+        localObject1 = null;
+        while (((Iterator)localObject5).hasNext())
+        {
+          localObject3 = (BlessTask)((Iterator)localObject5).next();
+          if (localObject3 != localObject2)
+          {
+            localObject6 = a(((BlessTask)localObject3).entranceBegin);
+            if ((localObject6 != null) && (localObject4 != null))
+            {
+              long l2 = ((Date)localObject6).getTime() - ((Date)localObject4).getTime();
+              if ((l2 > 0L) && (l2 < l1))
+              {
+                localObject1 = localObject3;
+                l1 = l2;
+              }
+            }
+          }
         }
-        localObject3 = (BlessTask)((Iterator)localObject5).next();
-        if (localObject3 == localObject2) {
-          break label575;
-        }
-        localObject6 = a(((BlessTask)localObject3).entranceBegin);
-        if ((localObject6 == null) || (localObject4 == null)) {
-          break label575;
-        }
-        long l2 = ((Date)localObject6).getTime() - ((Date)localObject4).getTime();
-        if ((l2 <= 0L) || (l2 >= l1)) {
-          break label575;
-        }
-        localObject1 = localObject3;
-        l1 = l2;
       }
-      label513:
-      label518:
-      label575:
-      for (;;)
+      else
       {
-        break label416;
-        a();
-        break;
-        b(paramSet);
-        this.jdField_b_of_type_ComTencentMobileqqActivityBlessBlessTask = ((BlessTask)localObject3);
-        if (QLog.isColorLevel()) {
-          QLog.d("BlessManager", 2, "onNewConfigReceived validCount=" + localArrayList3.size() + "  nextTask:" + this.jdField_b_of_type_ComTencentMobileqqActivityBlessBlessTask);
-        }
-        return;
+        localObject1 = null;
       }
-      label578:
-      localObject6 = localObject2;
-      localObject7 = localObject1;
-      localObject1 = localObject5;
-      localObject2 = localObject4;
-      localObject5 = localObject7;
-      localObject4 = localObject3;
-      localObject3 = localObject6;
+      b(paramSet);
+    }
+    else
+    {
+      localObject1 = null;
+    }
+    this.jdField_b_of_type_ComTencentMobileqqActivityBlessBlessTask = ((BlessTask)localObject1);
+    if (QLog.isColorLevel())
+    {
+      paramSet = new StringBuilder();
+      paramSet.append("onNewConfigReceived validCount=");
+      paramSet.append(localArrayList3.size());
+      paramSet.append("  nextTask:");
+      paramSet.append(this.jdField_b_of_type_ComTencentMobileqqActivityBlessBlessTask);
+      QLog.d("BlessManager", 2, paramSet.toString());
     }
   }
   
@@ -1387,18 +1634,35 @@ public class BlessManager
     }
     try
     {
-      String str = this.jdField_b_of_type_JavaLangString + paramBlessPtvModule.id + ".zip";
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramBlessPtvModule.id);
+      ((StringBuilder)localObject).append(".zip");
+      localObject = ((StringBuilder)localObject).toString();
       a(paramBlessPtvModule, false);
-      FileUtils.a(str, this.jdField_b_of_type_JavaLangString + paramBlessPtvModule.id + File.separator, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("BlessManager", 2, "un compressZip success: " + str);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(paramBlessPtvModule.id);
+      localStringBuilder.append(File.separator);
+      FileUtils.uncompressZip((String)localObject, localStringBuilder.toString(), false);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("un compressZip success: ");
+        localStringBuilder.append((String)localObject);
+        QLog.d("BlessManager", 2, localStringBuilder.toString());
       }
       return true;
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BlessManager", 2, "un compressZip failed: " + localException.getMessage());
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("un compressZip failed: ");
+        localStringBuilder.append(localException.getMessage());
+        QLog.d("BlessManager", 2, localStringBuilder.toString());
       }
       a(paramBlessPtvModule, true);
     }
@@ -1413,22 +1677,27 @@ public class BlessManager
   
   public int b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask == null) {}
-    while (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.unread < 1) {
+    BlessTask localBlessTask = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask;
+    if (localBlessTask == null) {
       return 0;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessManager", 2, "getUnreadNum=1");
+    if (localBlessTask.unread >= 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BlessManager", 2, "getUnreadNum=1");
+      }
+      return 1;
     }
-    return 1;
+    return 0;
   }
   
   public String b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask == null) {
+    BlessTask localBlessTask = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask;
+    if (localBlessTask == null) {
       return "";
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.entranceHint;
+    return localBlessTask.entranceHint;
   }
   
   public ArrayList<String> b()
@@ -1437,12 +1706,13 @@ public class BlessManager
     if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
       localArrayList.add(this.jdField_d_of_type_JavaLangString);
     }
-    if (this.jdField_b_of_type_JavaUtilArrayList != null)
+    Object localObject = this.jdField_b_of_type_JavaUtilArrayList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        BlessWording localBlessWording = (BlessWording)localIterator.next();
+        BlessWording localBlessWording = (BlessWording)((Iterator)localObject).next();
         if (localBlessWording.hasEditingWording()) {
           localArrayList.add(localBlessWording.getEditingWording());
         } else {
@@ -1459,58 +1729,134 @@ public class BlessManager
     SharedPreferencesHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit(), "bless_uin_to_send", new String[0]).commit();
   }
   
+  /* Error */
   public void b(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask == null) {}
-    for (;;)
-    {
-      return;
-      if (paramBoolean)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.unread == 0) {}
-      }
-      else {
-        while ((this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.unread != -1) || (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.videoPlayed))
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.d("BlessManager", 4, "update task to db read=" + this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.unread + " videoPlayed=" + this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.videoPlayed);
-          }
-          this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.unread = -1;
-          EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-          localEntityTransaction = localEntityManager.getTransaction();
-          try
-          {
-            localEntityTransaction.begin();
-            localEntityManager.update(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask);
-            localEntityTransaction.commit();
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              localException.printStackTrace();
-              localEntityTransaction.end();
-            }
-          }
-          finally
-          {
-            localEntityTransaction.end();
-          }
-          localEntityManager.close();
-          return;
-          this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.videoPlayed = true;
-        }
-      }
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 131	com/tencent/mobileqq/activity/bless/BlessManager:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask	Lcom/tencent/mobileqq/activity/bless/BlessTask;
+    //   4: astore_2
+    //   5: aload_2
+    //   6: ifnonnull +4 -> 10
+    //   9: return
+    //   10: iload_1
+    //   11: ifeq +11 -> 22
+    //   14: aload_2
+    //   15: getfield 780	com/tencent/mobileqq/activity/bless/BlessTask:unread	I
+    //   18: ifne +9 -> 27
+    //   21: return
+    //   22: aload_2
+    //   23: iconst_1
+    //   24: putfield 420	com/tencent/mobileqq/activity/bless/BlessTask:videoPlayed	Z
+    //   27: aload_0
+    //   28: getfield 131	com/tencent/mobileqq/activity/bless/BlessManager:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask	Lcom/tencent/mobileqq/activity/bless/BlessTask;
+    //   31: getfield 780	com/tencent/mobileqq/activity/bless/BlessTask:unread	I
+    //   34: iconst_m1
+    //   35: if_icmpne +13 -> 48
+    //   38: aload_0
+    //   39: getfield 131	com/tencent/mobileqq/activity/bless/BlessManager:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask	Lcom/tencent/mobileqq/activity/bless/BlessTask;
+    //   42: getfield 420	com/tencent/mobileqq/activity/bless/BlessTask:videoPlayed	Z
+    //   45: ifeq +131 -> 176
+    //   48: invokestatic 344	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   51: ifeq +62 -> 113
+    //   54: new 32	java/lang/StringBuilder
+    //   57: dup
+    //   58: invokespecial 35	java/lang/StringBuilder:<init>	()V
+    //   61: astore_2
+    //   62: aload_2
+    //   63: ldc_w 1049
+    //   66: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   69: pop
+    //   70: aload_2
+    //   71: aload_0
+    //   72: getfield 131	com/tencent/mobileqq/activity/bless/BlessManager:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask	Lcom/tencent/mobileqq/activity/bless/BlessTask;
+    //   75: getfield 780	com/tencent/mobileqq/activity/bless/BlessTask:unread	I
+    //   78: invokevirtual 994	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   81: pop
+    //   82: aload_2
+    //   83: ldc_w 1051
+    //   86: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   89: pop
+    //   90: aload_2
+    //   91: aload_0
+    //   92: getfield 131	com/tencent/mobileqq/activity/bless/BlessManager:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask	Lcom/tencent/mobileqq/activity/bless/BlessTask;
+    //   95: getfield 420	com/tencent/mobileqq/activity/bless/BlessTask:videoPlayed	Z
+    //   98: invokevirtual 649	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   101: pop
+    //   102: ldc_w 271
+    //   105: iconst_4
+    //   106: aload_2
+    //   107: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   110: invokestatic 274	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   113: aload_0
+    //   114: getfield 131	com/tencent/mobileqq/activity/bless/BlessManager:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask	Lcom/tencent/mobileqq/activity/bless/BlessTask;
+    //   117: iconst_m1
+    //   118: putfield 780	com/tencent/mobileqq/activity/bless/BlessTask:unread	I
+    //   121: aload_0
+    //   122: getfield 92	com/tencent/mobileqq/activity/bless/BlessManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   125: invokevirtual 296	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   128: invokevirtual 302	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   131: astore_3
+    //   132: aload_3
+    //   133: invokevirtual 308	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   136: astore_2
+    //   137: aload_2
+    //   138: invokevirtual 313	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   141: aload_3
+    //   142: aload_0
+    //   143: getfield 131	com/tencent/mobileqq/activity/bless/BlessManager:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask	Lcom/tencent/mobileqq/activity/bless/BlessTask;
+    //   146: invokevirtual 1055	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   149: pop
+    //   150: aload_2
+    //   151: invokevirtual 341	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   154: goto +14 -> 168
+    //   157: astore_3
+    //   158: goto +19 -> 177
+    //   161: astore 4
+    //   163: aload 4
+    //   165: invokevirtual 149	java/lang/Exception:printStackTrace	()V
+    //   168: aload_2
+    //   169: invokevirtual 349	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   172: aload_3
+    //   173: invokevirtual 352	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   176: return
+    //   177: aload_2
+    //   178: invokevirtual 349	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   181: aload_3
+    //   182: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	183	0	this	BlessManager
+    //   0	183	1	paramBoolean	boolean
+    //   4	174	2	localObject1	Object
+    //   131	11	3	localEntityManager	EntityManager
+    //   157	25	3	localObject2	Object
+    //   161	3	4	localException	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   137	154	157	finally
+    //   163	168	157	finally
+    //   137	154	161	java/lang/Exception
   }
   
   public boolean b()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask != null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (this.jdField_b_of_type_JavaUtilArrayList != null) && (this.jdField_b_of_type_JavaUtilArrayList.size() > 0)) {}
-    for (int i = 1; (i != 0) && (c()) && (this.jdField_c_of_type_Boolean); i = 0) {
-      return true;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask != null)
+    {
+      ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+      if ((localArrayList != null) && (localArrayList.size() > 0))
+      {
+        localArrayList = this.jdField_b_of_type_JavaUtilArrayList;
+        if ((localArrayList != null) && (localArrayList.size() > 0))
+        {
+          i = 1;
+          break label46;
+        }
+      }
     }
-    return false;
+    int i = 0;
+    label46:
+    return (i != 0) && (c()) && (this.jdField_c_of_type_Boolean);
   }
   
   public boolean b(String paramString)
@@ -1521,48 +1867,65 @@ public class BlessManager
   
   public int c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask == null) {
+    BlessTask localBlessTask = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask;
+    if (localBlessTask == null) {
       return 100;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.uinTotalLimit;
+    return localBlessTask.uinTotalLimit;
   }
   
   public String c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask == null) {}
-    String str;
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask == null) {
       return null;
-      str = this.jdField_b_of_type_JavaLangString + a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.ex1);
-      File localFile = new File(str);
-      if (QLog.isColorLevel()) {
-        QLog.d("BlessManager", 2, "getStarVideoPath: " + str);
+    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.ex1));
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new File((String)localObject1);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getStarVideoPath: ");
+      localStringBuilder.append((String)localObject1);
+      QLog.d("BlessManager", 2, localStringBuilder.toString());
+    }
+    if (!((File)localObject2).exists())
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("getStarVideoPath: ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(" not exist");
+        QLog.d("BlessManager", 2, ((StringBuilder)localObject2).toString());
       }
-      if (localFile.exists()) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("BlessManager", 2, "getStarVideoPath: " + str + " not exist");
-    return null;
-    return str;
+      return null;
+    }
+    return localObject1;
   }
   
   public void c()
   {
-    if (this.jdField_b_of_type_JavaUtilArrayList != null)
+    Object localObject = this.jdField_b_of_type_JavaUtilArrayList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((BlessWording)localIterator.next()).setEditingWording(null);
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((BlessWording)((Iterator)localObject).next()).setEditingWording(null);
       }
     }
   }
   
   public void c(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessManager", 2, "onPushCmd: " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPushCmd: ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("BlessManager", 2, localStringBuilder.toString());
     }
     if (paramBoolean)
     {
@@ -1574,19 +1937,23 @@ public class BlessManager
   
   public boolean c()
   {
-    boolean bool = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask == null) {
+    BlessTask localBlessTask = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask;
+    boolean bool2 = false;
+    if (localBlessTask == null) {
       return false;
     }
     if (QLog.isColorLevel()) {
       QLog.d("BlessManager", 2, "isEntranceTime");
     }
-    if ((a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.entranceBegin, this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.entranceEnd)) && (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.entranceEnabled == 1)) {}
-    for (;;)
+    boolean bool1 = bool2;
+    if (a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.entranceBegin, this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.entranceEnd))
     {
-      return bool;
-      bool = false;
+      bool1 = bool2;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.entranceEnabled == 1) {
+        bool1 = true;
+      }
     }
+    return bool1;
   }
   
   public int d()
@@ -1597,53 +1964,100 @@ public class BlessManager
   
   public String d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask == null) {}
-    String str;
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask == null) {
       return null;
-      str = this.jdField_b_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.starVideoCoverFolderName + File.separator + this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.starVideoCoverFileName;
-      if (new File(str).exists()) {
-        break;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.starVideoCoverFolderName);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.starVideoCoverFileName);
+    localObject = ((StringBuilder)localObject).toString();
+    if (!new File((String)localObject).exists())
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getStartVideoCoverPath: ");
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append(" not exist");
+        QLog.d("BlessManager", 2, localStringBuilder.toString());
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("BlessManager", 2, "getStartVideoCoverPath: " + str + " not exist");
-    return null;
-    return str;
+      return null;
+    }
+    return localObject;
   }
   
+  /* Error */
   public void d()
   {
-    EntityManager localEntityManager;
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.isDeleted))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("BlessManager", 4, "update task to db isDeleted");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.isDeleted = true;
-      localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-      localEntityTransaction = localEntityManager.getTransaction();
-    }
-    try
-    {
-      localEntityTransaction.begin();
-      localEntityManager.update(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask);
-      localEntityTransaction.commit();
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-        localEntityTransaction.end();
-      }
-    }
-    finally
-    {
-      localEntityTransaction.end();
-    }
-    localEntityManager.close();
-    d(false);
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 131	com/tencent/mobileqq/activity/bless/BlessManager:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask	Lcom/tencent/mobileqq/activity/bless/BlessTask;
+    //   4: astore_1
+    //   5: aload_1
+    //   6: ifnull +99 -> 105
+    //   9: aload_1
+    //   10: getfield 432	com/tencent/mobileqq/activity/bless/BlessTask:isDeleted	Z
+    //   13: ifne +92 -> 105
+    //   16: invokestatic 344	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   19: ifeq +13 -> 32
+    //   22: ldc_w 271
+    //   25: iconst_4
+    //   26: ldc_w 1078
+    //   29: invokestatic 274	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   32: aload_0
+    //   33: getfield 131	com/tencent/mobileqq/activity/bless/BlessManager:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask	Lcom/tencent/mobileqq/activity/bless/BlessTask;
+    //   36: iconst_1
+    //   37: putfield 432	com/tencent/mobileqq/activity/bless/BlessTask:isDeleted	Z
+    //   40: aload_0
+    //   41: getfield 92	com/tencent/mobileqq/activity/bless/BlessManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   44: invokevirtual 296	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   47: invokevirtual 302	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   50: astore_2
+    //   51: aload_2
+    //   52: invokevirtual 308	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   55: astore_1
+    //   56: aload_1
+    //   57: invokevirtual 313	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   60: aload_2
+    //   61: aload_0
+    //   62: getfield 131	com/tencent/mobileqq/activity/bless/BlessManager:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask	Lcom/tencent/mobileqq/activity/bless/BlessTask;
+    //   65: invokevirtual 1055	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   68: pop
+    //   69: aload_1
+    //   70: invokevirtual 341	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   73: goto +12 -> 85
+    //   76: astore_2
+    //   77: goto +22 -> 99
+    //   80: astore_3
+    //   81: aload_3
+    //   82: invokevirtual 149	java/lang/Exception:printStackTrace	()V
+    //   85: aload_1
+    //   86: invokevirtual 349	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   89: aload_2
+    //   90: invokevirtual 352	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   93: aload_0
+    //   94: iconst_0
+    //   95: invokespecial 185	com/tencent/mobileqq/activity/bless/BlessManager:d	(Z)V
+    //   98: return
+    //   99: aload_1
+    //   100: invokevirtual 349	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   103: aload_2
+    //   104: athrow
+    //   105: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	106	0	this	BlessManager
+    //   4	96	1	localObject1	Object
+    //   50	11	2	localEntityManager	EntityManager
+    //   76	28	2	localObject2	Object
+    //   80	2	3	localException	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   56	73	76	finally
+    //   81	85	76	finally
+    //   56	73	80	java/lang/Exception
   }
   
   public boolean d()
@@ -1659,69 +2073,136 @@ public class BlessManager
   
   public int e()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask == null) {
+    BlessTask localBlessTask = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask;
+    if (localBlessTask == null) {
       return 100;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.sendTotalLimit;
+    return localBlessTask.sendTotalLimit;
   }
   
   public String e()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.shareUrl))) {
-      return "https://wa.qq.com/qfzf/index.html?_wv=16777217&adtag=main";
+    BlessTask localBlessTask = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask;
+    if ((localBlessTask != null) && (!TextUtils.isEmpty(localBlessTask.shareUrl))) {
+      return this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.shareUrl;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.shareUrl;
+    return "https://wa.qq.com/qfzf/index.html?_wv=16777217&adtag=main";
   }
   
+  /* Error */
   public void e()
   {
-    EntityManager localEntityManager;
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.isDeleted))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("BlessManager", 4, "update task to db isDeleted false");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.isDeleted = false;
-      localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-      localEntityTransaction = localEntityManager.getTransaction();
-    }
-    try
-    {
-      localEntityTransaction.begin();
-      localEntityManager.update(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask);
-      localEntityTransaction.commit();
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-        localEntityTransaction.end();
-      }
-    }
-    finally
-    {
-      localEntityTransaction.end();
-    }
-    localEntityManager.close();
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 131	com/tencent/mobileqq/activity/bless/BlessManager:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask	Lcom/tencent/mobileqq/activity/bless/BlessTask;
+    //   4: astore_1
+    //   5: aload_1
+    //   6: ifnull +94 -> 100
+    //   9: aload_1
+    //   10: getfield 432	com/tencent/mobileqq/activity/bless/BlessTask:isDeleted	Z
+    //   13: ifeq +87 -> 100
+    //   16: invokestatic 344	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   19: ifeq +13 -> 32
+    //   22: ldc_w 271
+    //   25: iconst_4
+    //   26: ldc_w 1096
+    //   29: invokestatic 274	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   32: aload_0
+    //   33: getfield 131	com/tencent/mobileqq/activity/bless/BlessManager:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask	Lcom/tencent/mobileqq/activity/bless/BlessTask;
+    //   36: iconst_0
+    //   37: putfield 432	com/tencent/mobileqq/activity/bless/BlessTask:isDeleted	Z
+    //   40: aload_0
+    //   41: getfield 92	com/tencent/mobileqq/activity/bless/BlessManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   44: invokevirtual 296	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   47: invokevirtual 302	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   50: astore_2
+    //   51: aload_2
+    //   52: invokevirtual 308	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   55: astore_1
+    //   56: aload_1
+    //   57: invokevirtual 313	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   60: aload_2
+    //   61: aload_0
+    //   62: getfield 131	com/tencent/mobileqq/activity/bless/BlessManager:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask	Lcom/tencent/mobileqq/activity/bless/BlessTask;
+    //   65: invokevirtual 1055	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   68: pop
+    //   69: aload_1
+    //   70: invokevirtual 341	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   73: goto +12 -> 85
+    //   76: astore_2
+    //   77: goto +17 -> 94
+    //   80: astore_3
+    //   81: aload_3
+    //   82: invokevirtual 149	java/lang/Exception:printStackTrace	()V
+    //   85: aload_1
+    //   86: invokevirtual 349	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   89: aload_2
+    //   90: invokevirtual 352	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   93: return
+    //   94: aload_1
+    //   95: invokevirtual 349	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   98: aload_2
+    //   99: athrow
+    //   100: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	101	0	this	BlessManager
+    //   4	91	1	localObject1	Object
+    //   50	11	2	localEntityManager	EntityManager
+    //   76	23	2	localObject2	Object
+    //   80	2	3	localException	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   56	73	76	finally
+    //   81	85	76	finally
+    //   56	73	80	java/lang/Exception
   }
   
   public boolean e()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask == null) {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask;
+    boolean bool2 = false;
+    if (localObject == null) {
       return false;
     }
-    boolean bool1 = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.BlessPTVEnable.name()).equals("1");
-    boolean bool2 = VideoEnvironment.supportShortVideoRecordAndPlay();
-    boolean bool3 = VideoEnvironment.isX86Platform();
-    boolean bool4 = VcSystemInfo.isBeautySupported();
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessManager", 2, "isPTVEnabled task=" + this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.ptvEnabled + " ptvRecord=" + bool2 + " isX86=" + bool3 + " frontCamera=" + true);
+    boolean bool3 = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.BlessPTVEnable.name()).equals("1");
+    boolean bool4 = VideoEnvironment.supportShortVideoRecordAndPlay();
+    boolean bool5 = VideoEnvironment.isX86Platform();
+    boolean bool6 = VcSystemInfo.isBeautySupported();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isPTVEnabled task=");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.ptvEnabled);
+      ((StringBuilder)localObject).append(" ptvRecord=");
+      ((StringBuilder)localObject).append(bool4);
+      ((StringBuilder)localObject).append(" isX86=");
+      ((StringBuilder)localObject).append(bool5);
+      ((StringBuilder)localObject).append(" frontCamera=");
+      ((StringBuilder)localObject).append(true);
+      QLog.d("BlessManager", 2, ((StringBuilder)localObject).toString());
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.ptvEnabled == 1) && (bool2) && (!bool3) && (bool4) && (!bool1)) {}
-    for (bool1 = true;; bool1 = false) {
-      return bool1;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.ptvEnabled == 1)
+    {
+      bool1 = bool2;
+      if (bool4)
+      {
+        bool1 = bool2;
+        if (!bool5)
+        {
+          bool1 = bool2;
+          if (bool6)
+          {
+            bool1 = bool2;
+            if (!bool3) {
+              bool1 = true;
+            }
+          }
+        }
+      }
     }
+    return bool1;
   }
   
   public int f()
@@ -1737,30 +2218,45 @@ public class BlessManager
   
   public String f()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.ptvAnimationUrl))) {
-      return "";
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask;
+    String str = "";
+    if (localObject != null)
+    {
+      if (TextUtils.isEmpty(((BlessTask)localObject).ptvAnimationUrl)) {
+        return "";
+      }
+      str = a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.ptvAnimationUrl);
+      if (str == null) {
+        return "";
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append(str);
+      str = ((StringBuilder)localObject).toString();
     }
-    String str = a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.ptvAnimationUrl);
-    if (str == null) {
-      return "";
-    }
-    return this.jdField_b_of_type_JavaLangString + File.separator + str;
+    return str;
   }
   
   public void f()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessManager", 2, "check entrance.  nextTask:" + this.jdField_b_of_type_ComTencentMobileqqActivityBlessBlessTask);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("check entrance.  nextTask:");
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_ComTencentMobileqqActivityBlessBlessTask);
+      QLog.d("BlessManager", 2, ((StringBuilder)localObject).toString());
     }
     if (!c())
     {
-      RecentUserProxy localRecentUserProxy = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
-      RecentUser localRecentUser = localRecentUserProxy.b(AppConstants.SEND_BLESS_UIN, 9003);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
+      RecentUser localRecentUser = ((RecentUserProxy)localObject).b(AppConstants.SEND_BLESS_UIN, 9003);
       if (localRecentUser != null) {
-        a(localRecentUserProxy, localRecentUser);
+        a((RecentUserProxy)localObject, localRecentUser);
       }
     }
-    if ((this.jdField_b_of_type_ComTencentMobileqqActivityBlessBlessTask != null) && (a(this.jdField_b_of_type_ComTencentMobileqqActivityBlessBlessTask.entranceBegin, this.jdField_b_of_type_ComTencentMobileqqActivityBlessBlessTask.entranceEnd)) && (this.jdField_b_of_type_ComTencentMobileqqActivityBlessBlessTask.entranceEnabled == 1) && (!this.e))
+    Object localObject = this.jdField_b_of_type_ComTencentMobileqqActivityBlessBlessTask;
+    if ((localObject != null) && (a(((BlessTask)localObject).entranceBegin, this.jdField_b_of_type_ComTencentMobileqqActivityBlessBlessTask.entranceEnd)) && (this.jdField_b_of_type_ComTencentMobileqqActivityBlessBlessTask.entranceEnabled == 1) && (!this.e))
     {
       ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       ThreadManager.getSubThreadHandler().post(this.jdField_a_of_type_JavaLangRunnable);
@@ -1769,23 +2265,34 @@ public class BlessManager
   
   public boolean f()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask == null) {}
-    while (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.ptvEnabled != 1) {
+    BlessTask localBlessTask = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask;
+    if (localBlessTask == null) {
       return true;
     }
-    return false;
+    return localBlessTask.ptvEnabled != 1;
   }
   
   public String g()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.ptvAnimationUrl))) {}
-    String str;
-    do
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask;
+    String str = "";
+    Object localObject1 = str;
+    if (localObject2 != null)
     {
-      return "";
-      str = f();
-    } while (!str.endsWith(".zip"));
-    return str.substring(0, str.length() - 4) + File.separator;
+      if (TextUtils.isEmpty(((BlessTask)localObject2).ptvAnimationUrl)) {
+        return "";
+      }
+      localObject2 = f();
+      localObject1 = str;
+      if (((String)localObject2).endsWith(".zip"))
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(((String)localObject2).substring(0, ((String)localObject2).length() - 4));
+        ((StringBuilder)localObject1).append(File.separator);
+        localObject1 = ((StringBuilder)localObject1).toString();
+      }
+    }
+    return localObject1;
   }
   
   public void g()
@@ -1805,19 +2312,36 @@ public class BlessManager
   
   public String h()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.webBlessUrl))) {
-      return "https://ti.qq.com/mass-blessing/index.html?_wv=16777223";
+    BlessTask localBlessTask = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask;
+    if ((localBlessTask != null) && (!TextUtils.isEmpty(localBlessTask.webBlessUrl))) {
+      return this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.webBlessUrl;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.webBlessUrl;
+    return "https://ti.qq.com/mass-blessing/index.html?_wv=16777223";
   }
   
   public boolean h()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask == null) {}
-    while ((!VersionUtils.d()) || (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.videoPlayed) || (!d()) || (!i())) {
+    BlessTask localBlessTask = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask;
+    boolean bool2 = false;
+    if (localBlessTask == null) {
       return false;
     }
-    return true;
+    if (!VersionUtils.d()) {
+      return false;
+    }
+    boolean bool1 = bool2;
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.videoPlayed)
+    {
+      bool1 = bool2;
+      if (d())
+      {
+        bool1 = bool2;
+        if (i()) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public int i()
@@ -1844,18 +2368,20 @@ public class BlessManager
   
   public int l()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask == null) {
+    BlessTask localBlessTask = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask;
+    if (localBlessTask == null) {
       return 1;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.ptvAnimationCount;
+    return localBlessTask.ptvAnimationCount;
   }
   
   public int m()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask == null) {
+    BlessTask localBlessTask = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask;
+    if (localBlessTask == null) {
       return 2000;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessTask.ptvAnimationCost;
+    return localBlessTask.ptvAnimationCost;
   }
   
   public void onDestroy()
@@ -1865,7 +2391,7 @@ public class BlessManager
     {
       localObject = ((DownloaderFactory)localObject).a(1);
       if (localObject != null) {
-        ((DownloaderInterface)localObject).a(true, null);
+        ((DownloaderInterface)localObject).cancelTask(true, null);
       }
     }
     ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
@@ -1873,7 +2399,7 @@ public class BlessManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessManager
  * JD-Core Version:    0.7.0.1
  */

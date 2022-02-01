@@ -13,29 +13,31 @@ class OfflineFileMultiOperate$3
   
   public void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)((Iterator)localObject).next();
       if (!localFileManagerEntity.sendCloudUnsuccessful()) {
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileManagerEngine.c(localFileManagerEntity);
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateQFileMultiOperateCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateQFileMultiOperateCallback.a(1, 0);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateQFileMultiOperateCallback;
+    if (localObject != null) {
+      ((QFileMultiOperateCallback)localObject).a(1, 0);
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateQFileMultiOperateCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateQFileMultiOperateCallback.a(1, 1);
+    QFileMultiOperateCallback localQFileMultiOperateCallback = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateQFileMultiOperateCallback;
+    if (localQFileMultiOperateCallback != null) {
+      localQFileMultiOperateCallback.a(1, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multioperate.OfflineFileMultiOperate.3
  * JD-Core Version:    0.7.0.1
  */

@@ -24,8 +24,10 @@ public class ArkAppManagerPanelProvider
   
   public ArkAppManagerPanel a(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel = ((ArkAppManagerPanel)View.inflate(paramContext, 2131558737, null));
-    this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a);
+    this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel = ((ArkAppManagerPanel)View.inflate(paramContext, 2131558636, null));
+    paramContext = this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel;
+    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    paramContext.a(localBaseChatPie, localBaseChatPie.a);
     return this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel;
   }
   
@@ -44,10 +46,14 @@ public class ArkAppManagerPanelProvider
   public void onPanelChanged(int paramInt1, int paramInt2) {}
   
   public void onPanelIconClick(XPanelContainer paramXPanelContainer) {}
+  
+  public void onPanelIconClickBeforeCreate(int paramInt) {}
+  
+  public void postOnPanelChanged(int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.ArkAppManagerPanelProvider
  * JD-Core Version:    0.7.0.1
  */

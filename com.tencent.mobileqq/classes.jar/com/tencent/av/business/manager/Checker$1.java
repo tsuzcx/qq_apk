@@ -9,7 +9,7 @@ class Checker$1
   
   public void run()
   {
-    if (FileUtils.a(this.jdField_a_of_type_ComTencentAvBusinessManagerChecker$ItemRecord.jdField_a_of_type_JavaLangString)) {
+    if (FileUtils.fileExists(this.jdField_a_of_type_ComTencentAvBusinessManagerChecker$ItemRecord.jdField_a_of_type_JavaLangString)) {
       this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvBusinessManagerChecker$ItemRecord);
     }
     Checker.a(this.this$0);
@@ -17,7 +17,7 @@ class Checker$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.Checker.1
  * JD-Core Version:    0.7.0.1
  */

@@ -30,8 +30,10 @@ public final class IntrinsicsKt__IntrinsicsJvmKt$buildContinuationByInvokeCall$c
       Object localObject = this.$block.invoke();
       if (localObject != IntrinsicsKt.getCOROUTINE_SUSPENDED())
       {
-        if (paramUnit != null) {
-          break label51;
+        if (paramUnit != null)
+        {
+          paramUnit.resume(localObject);
+          return;
         }
         throw new TypeCastException("null cannot be cast to non-null type kotlin.coroutines.experimental.Continuation<kotlin.Any?>");
       }
@@ -40,9 +42,6 @@ public final class IntrinsicsKt__IntrinsicsJvmKt$buildContinuationByInvokeCall$c
     {
       paramUnit.resumeWithException(localThrowable);
     }
-    return;
-    label51:
-    paramUnit.resume(localThrowable);
   }
   
   public void resumeWithException(@NotNull Throwable paramThrowable)
@@ -53,7 +52,7 @@ public final class IntrinsicsKt__IntrinsicsJvmKt$buildContinuationByInvokeCall$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.coroutines.experimental.intrinsics.IntrinsicsKt__IntrinsicsJvmKt.buildContinuationByInvokeCall.continuation.1
  * JD-Core Version:    0.7.0.1
  */

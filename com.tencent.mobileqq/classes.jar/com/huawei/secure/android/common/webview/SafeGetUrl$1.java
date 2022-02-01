@@ -10,13 +10,14 @@ class SafeGetUrl$1
   
   public void run()
   {
-    this.F.setUrl(SafeGetUrl.a(this.F).getUrl());
-    this.E.countDown();
+    SafeGetUrl localSafeGetUrl = this.H;
+    localSafeGetUrl.setUrl(SafeGetUrl.a(localSafeGetUrl).getUrl());
+    this.G.countDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.secure.android.common.webview.SafeGetUrl.1
  * JD-Core Version:    0.7.0.1
  */

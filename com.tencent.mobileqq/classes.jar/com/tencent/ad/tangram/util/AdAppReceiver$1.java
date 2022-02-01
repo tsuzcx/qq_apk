@@ -2,7 +2,7 @@ package com.tencent.ad.tangram.util;
 
 import android.text.TextUtils;
 import com.tencent.ad.tangram.Ad;
-import com.tencent.ad.tangram.statistics.b;
+import com.tencent.ad.tangram.statistics.c;
 import java.lang.ref.WeakReference;
 
 class AdAppReceiver$1
@@ -14,13 +14,13 @@ class AdAppReceiver$1
   {
     if (!TextUtils.isEmpty(this.val$params.ad.getAppDeeplink()))
     {
-      b.reportAsync(new WeakReference(this.val$params.activity.get()), this.val$params.ad, 297);
+      c.reportAsync(new WeakReference(this.val$params.activity.get()), this.val$params.ad, 297);
       AdClickUtil.handleAppWithDeeplink(this.val$params, true);
-    }
-    while (!this.val$params.ad.canLaunchAppAfterInstalled()) {
       return;
     }
-    AdClickUtil.handleApp(this.val$params, true);
+    if (this.val$params.ad.canLaunchAppAfterInstalled()) {
+      AdClickUtil.handleApp(this.val$params, true);
+    }
   }
 }
 

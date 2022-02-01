@@ -19,24 +19,33 @@ class FriendShipAnimDirector$2
     localOptions.inDensity = 320;
     try
     {
-      paramLottieImageAsset = ImageUtil.a(FriendShipAnimDirector.a(this.a) + "images/" + paramLottieImageAsset.getFileName(), localOptions);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FriendShipAnimDirector.a(this.a));
+      localStringBuilder.append("images/");
+      localStringBuilder.append(paramLottieImageAsset.getFileName());
+      paramLottieImageAsset = ImageUtil.a(localStringBuilder.toString(), localOptions);
       return paramLottieImageAsset;
     }
     catch (Exception paramLottieImageAsset)
     {
-      QLog.e("FriendShipAnimDirector", 1, "Delegate decode bitmap error");
-      return null;
+      break label78;
     }
     catch (OutOfMemoryError paramLottieImageAsset)
     {
-      QLog.e("FriendShipAnimDirector", 1, "Delegate decode bitmap OOM");
+      label67:
+      label78:
+      label86:
+      break label67;
     }
+    QLog.e("FriendShipAnimDirector", 1, "Delegate decode bitmap OOM");
+    break label86;
+    QLog.e("FriendShipAnimDirector", 1, "Delegate decode bitmap error");
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.friendship.impl.FriendShipAnimDirector.2
  * JD-Core Version:    0.7.0.1
  */

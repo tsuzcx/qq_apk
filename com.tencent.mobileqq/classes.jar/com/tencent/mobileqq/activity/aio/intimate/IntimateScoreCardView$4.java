@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.intimate;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.widget.RelativeLayout;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class IntimateScoreCardView$4
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   IntimateScoreCardView$4(IntimateScoreCardView paramIntimateScoreCardView) {}
   
@@ -25,7 +25,7 @@ class IntimateScoreCardView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.IntimateScoreCardView.4
  * JD-Core Version:    0.7.0.1
  */

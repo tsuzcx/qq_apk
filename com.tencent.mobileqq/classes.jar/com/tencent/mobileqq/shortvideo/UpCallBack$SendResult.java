@@ -15,20 +15,36 @@ public class UpCallBack$SendResult
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("\nSendResult");
-    localStringBuilder.append("\n |-").append("result:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("\n |-").append("errCode:").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append("\n |-").append("errStr:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("path:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("size:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("\n |-").append("uuid:").append(this.c);
-    localStringBuilder.append("\n |-").append("md5:").append(this.d);
-    localStringBuilder.append("\n |-").append("groupFileID:").append(this.jdField_b_of_type_Long);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("result:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("errCode:");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("errStr:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("path:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("size:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("uuid:");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("md5:");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("groupFileID:");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.UpCallBack.SendResult
  * JD-Core Version:    0.7.0.1
  */

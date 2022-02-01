@@ -12,13 +12,19 @@ class BeautyRender$1
   public void run()
   {
     BeautyRender.access$002(this.this$0, new QQAVImageBeautyFilter());
-    BeautyRender.access$000(this.this$0).setSkinColorFilter(BeautyRender.access$100(this.this$0).getFilter(this.val$resPath + File.separator + "SKINCOLOR"));
+    QQAVImageBeautyFilter localQQAVImageBeautyFilter = BeautyRender.access$000(this.this$0);
+    FilterFactory localFilterFactory = BeautyRender.access$100(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.val$resPath);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("SKINCOLOR");
+    localQQAVImageBeautyFilter.setSkinColorFilter(localFilterFactory.getFilter(localStringBuilder.toString()));
     BeautyRender.access$000(this.this$0).init();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.beauty.BeautyRender.1
  * JD-Core Version:    0.7.0.1
  */

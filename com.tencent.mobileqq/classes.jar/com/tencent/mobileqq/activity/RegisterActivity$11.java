@@ -12,25 +12,23 @@ class RegisterActivity$11
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
+    if (paramMessage.what != 9) {
       return;
-      paramMessage = (String)paramMessage.obj;
-      if (!TextUtils.isEmpty(paramMessage))
-      {
-        RegisterActivity.b(this.a, paramMessage);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("IphoneTitleBarActivity", 2, "captcha sig is empty");
+    }
+    paramMessage = (String)paramMessage.obj;
+    if (!TextUtils.isEmpty(paramMessage))
+    {
+      RegisterActivity.b(this.a, paramMessage);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "captcha sig is empty");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterActivity.11
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class PackageInstallReceiver
   extends BroadcastReceiver
 {
-  private static PackageInstallReceiver d = null;
+  private static PackageInstallReceiver d;
   protected final String a = "DLSDK_PackageInstallReceiver";
   protected boolean b = false;
   ArrayList<Object> c = new ArrayList();
@@ -53,66 +53,95 @@ public class PackageInstallReceiver
   public void a(String paramString)
   {
     long l = System.currentTimeMillis() / 1000L;
-    String str = l + "|" + "" + "|" + paramString + "|" + Build.MANUFACTURER + "|" + Build.MODEL;
-    ab.c("DLSDK_PackageInstallReceiver", "<installReport>reportLog installTest type=" + 9 + ",postReport.data: " + str);
-    SDKReportManager2.getInstance().postReport(9, str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(l);
+    ((StringBuilder)localObject).append("|");
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append("|");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("|");
+    ((StringBuilder)localObject).append(Build.MANUFACTURER);
+    ((StringBuilder)localObject).append("|");
+    ((StringBuilder)localObject).append(Build.MODEL);
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("<installReport>reportLog installTest type=");
+    localStringBuilder.append(9);
+    localStringBuilder.append(",postReport.data: ");
+    localStringBuilder.append((String)localObject);
+    ab.c("DLSDK_PackageInstallReceiver", localStringBuilder.toString());
+    SDKReportManager2.getInstance().postReport(9, (String)localObject);
     b.a().a(paramString);
   }
   
   public void b(Context paramContext)
   {
-    if (paramContext == null) {}
-    while (!this.b) {
+    if (paramContext == null) {
       return;
     }
-    paramContext.unregisterReceiver(this);
-    this.b = false;
+    if (this.b)
+    {
+      paramContext.unregisterReceiver(this);
+      this.b = false;
+    }
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ab.b("DLSDK_PackageInstallReceiver", "halleytest intent Action" + paramIntent.getAction());
+    paramContext = new StringBuilder();
+    paramContext.append("halleytest intent Action");
+    paramContext.append(paramIntent.getAction());
+    ab.b("DLSDK_PackageInstallReceiver", paramContext.toString());
     paramContext = paramIntent.getDataString();
-    if (TextUtils.isEmpty(paramContext)) {
-      ab.e("DLSDK_PackageInstallReceiver", "intentPkgNameString == null ");
-    }
-    Object localObject;
-    Message localMessage;
-    do
+    if (TextUtils.isEmpty(paramContext))
     {
+      ab.e("DLSDK_PackageInstallReceiver", "intentPkgNameString == null ");
       return;
-      localObject = paramContext.split(":");
-      if (localObject.length == 2)
+    }
+    Object localObject = paramContext.split(":");
+    if (localObject.length == 2)
+    {
+      String str = localObject[1];
+      localObject = Message.obtain();
+      ((Message)localObject).obj = str;
+      if (paramIntent.getAction().equals("android.intent.action.PACKAGE_REMOVED"))
       {
-        localObject = localObject[1];
-        localMessage = Message.obtain();
-        localMessage.obj = localObject;
-        if (paramIntent.getAction().equals("android.intent.action.PACKAGE_REMOVED"))
-        {
-          ab.b("DLSDK_PackageInstallReceiver", "ACTION_PACKAGE_REMOVED >> " + paramContext);
-          localMessage.what = 2;
-        }
-      }
-      else
-      {
-        ab.e("DLSDK_PackageInstallReceiver", "packageName == null " + paramIntent.getDataString());
+        paramIntent = new StringBuilder();
+        paramIntent.append("ACTION_PACKAGE_REMOVED >> ");
+        paramIntent.append(paramContext);
+        ab.b("DLSDK_PackageInstallReceiver", paramIntent.toString());
+        ((Message)localObject).what = 2;
         return;
       }
       if (paramIntent.getAction().equals("android.intent.action.PACKAGE_REPLACED"))
       {
-        ab.b("DLSDK_PackageInstallReceiver", "ACTION_PACKAGE_REPLACED >> " + paramContext);
-        localMessage.what = 3;
+        paramIntent = new StringBuilder();
+        paramIntent.append("ACTION_PACKAGE_REPLACED >> ");
+        paramIntent.append(paramContext);
+        ab.b("DLSDK_PackageInstallReceiver", paramIntent.toString());
+        ((Message)localObject).what = 3;
         return;
       }
-    } while (!paramIntent.getAction().equals("android.intent.action.PACKAGE_ADDED"));
-    ab.b("DLSDK_PackageInstallReceiver", "ACTION_PACKAGE_ADDED >> " + paramContext);
-    localMessage.what = 1;
-    k.a().post(new a(this, (String)localObject));
+      if (paramIntent.getAction().equals("android.intent.action.PACKAGE_ADDED"))
+      {
+        paramIntent = new StringBuilder();
+        paramIntent.append("ACTION_PACKAGE_ADDED >> ");
+        paramIntent.append(paramContext);
+        ab.b("DLSDK_PackageInstallReceiver", paramIntent.toString());
+        ((Message)localObject).what = 1;
+        k.a().post(new a(this, str));
+      }
+      return;
+    }
+    paramContext = new StringBuilder();
+    paramContext.append("packageName == null ");
+    paramContext.append(paramIntent.getDataString());
+    ab.e("DLSDK_PackageInstallReceiver", paramContext.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistant.common.PackageInstallReceiver
  * JD-Core Version:    0.7.0.1
  */

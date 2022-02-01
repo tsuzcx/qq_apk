@@ -20,26 +20,27 @@ class MsgTabStoryNodeListManager$6
       if ((paramRecyclerView.findLastCompletelyVisibleItemPosition() == paramRecyclerView.getItemCount() - 1) && (this.jdField_a_of_type_Boolean)) {
         this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.d();
       }
-      return;
     }
-    MsgTabStoryNodeListManager.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager);
+    else {
+      MsgTabStoryNodeListManager.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager);
+    }
   }
   
   public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    if (paramInt1 > 0) {}
-    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.isDirty()) {
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.invalidate();
-      }
-      return;
+    if (paramInt1 > 0) {
+      this.jdField_a_of_type_Boolean = true;
+    } else {
+      this.jdField_a_of_type_Boolean = false;
+    }
+    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.isDirty()) {
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.invalidate();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.6
  * JD-Core Version:    0.7.0.1
  */

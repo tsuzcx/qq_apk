@@ -10,13 +10,10 @@ public class CTEntryMng$EntryUserSetting
   
   public JSONObject a()
   {
+    JSONObject localJSONObject;
     try
     {
       localJSONObject = new JSONObject();
-      localException1.printStackTrace();
-    }
-    catch (Exception localException1)
-    {
       try
       {
         localJSONObject.put("entryId", this.jdField_a_of_type_Int);
@@ -24,15 +21,13 @@ public class CTEntryMng$EntryUserSetting
         localJSONObject.put("flagValue", this.b);
         return localJSONObject;
       }
-      catch (Exception localException2)
-      {
-        JSONObject localJSONObject;
-        break label46;
-      }
-      localException1 = localException1;
+      catch (Exception localException1) {}
+      localException2.printStackTrace();
+    }
+    catch (Exception localException2)
+    {
       localJSONObject = null;
     }
-    label46:
     return localJSONObject;
   }
   
@@ -53,7 +48,7 @@ public class CTEntryMng$EntryUserSetting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.CTEntryMng.EntryUserSetting
  * JD-Core Version:    0.7.0.1
  */

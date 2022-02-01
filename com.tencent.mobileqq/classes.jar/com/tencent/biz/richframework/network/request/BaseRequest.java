@@ -30,7 +30,12 @@ public abstract class BaseRequest
   
   public static String concactRetCodeAndMsg(long paramLong, String paramString)
   {
-    return ", retcode:" + paramLong + " | errMsg:" + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(", retcode:");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(" | errMsg:");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   public static String generateTraceId()
@@ -41,24 +46,45 @@ public abstract class BaseRequest
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MMddHHmmss");
     Random localRandom = new Random();
     localRandom.setSeed(System.currentTimeMillis());
-    localStringBuilder.append(str).append("_").append(localSimpleDateFormat.format(new Date())).append(System.currentTimeMillis() % 1000L).append("_").append(localRandom.nextInt(90000) + 10000);
+    localStringBuilder.append(str);
+    localStringBuilder.append("_");
+    localStringBuilder.append(localSimpleDateFormat.format(new Date()));
+    localStringBuilder.append(System.currentTimeMillis() % 1000L);
+    localStringBuilder.append("_");
+    localStringBuilder.append(localRandom.nextInt(90000) + 10000);
     return localStringBuilder.toString();
   }
   
   public static boolean isCacheExist(BaseRequest paramBaseRequest)
   {
-    if ((paramBaseRequest == null) || (paramBaseRequest.getRequestByteData() == null)) {
-      return false;
+    if ((paramBaseRequest != null) && (paramBaseRequest.getRequestByteData() != null))
+    {
+      Cache localCache = CacheHelper.fileCache();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramBaseRequest.getCmdName());
+      localStringBuilder.append(VSNetworkHelper.getNetworkImpl().getAccountId());
+      localStringBuilder.append(VSNetworkHelper.getNetworkImpl().getQUA());
+      localStringBuilder.append(new String(paramBaseRequest.getRequestByteKey()));
+      return localCache.cacheExists(localStringBuilder.toString());
     }
-    return CacheHelper.fileCache().cacheExists(paramBaseRequest.getCmdName() + VSNetworkHelper.getNetworkImpl().getAccountId() + VSNetworkHelper.getNetworkImpl().getQUA() + new String(paramBaseRequest.getRequestByteKey()));
+    return false;
   }
   
   public static void reMoveCache(BaseRequest paramBaseRequest)
   {
-    if ((paramBaseRequest == null) || (paramBaseRequest.getRequestByteData() == null)) {
-      return;
+    if (paramBaseRequest != null)
+    {
+      if (paramBaseRequest.getRequestByteData() == null) {
+        return;
+      }
+      Cache localCache = CacheHelper.fileCache();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramBaseRequest.getCmdName());
+      localStringBuilder.append(VSNetworkHelper.getNetworkImpl().getAccountId());
+      localStringBuilder.append(VSNetworkHelper.getNetworkImpl().getQUA());
+      localStringBuilder.append(new String(paramBaseRequest.getRequestByteKey()));
+      localCache.remove(localStringBuilder.toString());
     }
-    CacheHelper.fileCache().remove(paramBaseRequest.getCmdName() + VSNetworkHelper.getNetworkImpl().getAccountId() + VSNetworkHelper.getNetworkImpl().getQUA() + new String(paramBaseRequest.getRequestByteKey()));
   }
   
   public abstract <T> T decode(byte[] paramArrayOfByte);
@@ -66,8 +92,14 @@ public abstract class BaseRequest
   public byte[] encode()
   {
     byte[] arrayOfByte = getRequestByteData();
-    if (isEnableCache()) {
-      this.mRequestKey = (getCmdName() + VSNetworkHelper.getNetworkImpl().getAccountId() + VSNetworkHelper.getNetworkImpl().getQUA() + new String(getRequestByteKey()));
+    if (isEnableCache())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getCmdName());
+      localStringBuilder.append(VSNetworkHelper.getNetworkImpl().getAccountId());
+      localStringBuilder.append(VSNetworkHelper.getNetworkImpl().getQUA());
+      localStringBuilder.append(new String(getRequestByteKey()));
+      this.mRequestKey = localStringBuilder.toString();
     }
     return getFinalRequestData(arrayOfByte);
   }
@@ -95,12 +127,14 @@ public abstract class BaseRequest
   public int getNewSeq()
   {
     this.mSeq = atomicInteger.getAndIncrement();
-    if (StringUtils.isEmpty(this.mOverrideTraceId)) {}
-    for (String str = generateTraceId();; str = this.mOverrideTraceId)
-    {
-      this.mTraceId = str;
-      return this.mSeq;
+    String str;
+    if (StringUtils.isEmpty(this.mOverrideTraceId)) {
+      str = generateTraceId();
+    } else {
+      str = this.mOverrideTraceId;
     }
+    this.mTraceId = str;
+    return this.mSeq;
   }
   
   protected abstract byte[] getRequestByteData();
@@ -142,12 +176,19 @@ public abstract class BaseRequest
   
   public boolean isNeedRetry(long paramLong)
   {
-    if (paramLong == -2L) {}
-    for (boolean bool = false;; bool = true)
-    {
-      RFLog.d("VSBaseRequest", RFLog.USR, new Object[] { "CmdName:", getCmdName(), ",retCode:", Long.valueOf(paramLong), "isNeedRetry:" + bool });
-      return bool;
+    boolean bool;
+    if (paramLong == -2L) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    int i = RFLog.USR;
+    String str = getCmdName();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isNeedRetry:");
+    localStringBuilder.append(bool);
+    RFLog.d("VSBaseRequest", i, new Object[] { "CmdName:", str, ",retCode:", Long.valueOf(paramLong), localStringBuilder.toString() });
+    return bool;
   }
   
   public boolean isSuccessRetCode(long paramLong)
@@ -183,7 +224,7 @@ public abstract class BaseRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.network.request.BaseRequest
  * JD-Core Version:    0.7.0.1
  */

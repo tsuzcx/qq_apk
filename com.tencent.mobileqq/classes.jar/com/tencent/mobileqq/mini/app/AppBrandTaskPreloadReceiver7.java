@@ -14,12 +14,15 @@ public class AppBrandTaskPreloadReceiver7
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    QLog.i("minisdk-start", 1, "AppBrandTaskPreloadReceiver onReceive action: " + paramContext);
+    paramIntent = new StringBuilder();
+    paramIntent.append("AppBrandTaskPreloadReceiver onReceive action: ");
+    paramIntent.append(paramContext);
+    QLog.i("minisdk-start", 1, paramIntent.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.app.AppBrandTaskPreloadReceiver7
  * JD-Core Version:    0.7.0.1
  */

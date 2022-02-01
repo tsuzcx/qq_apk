@@ -22,37 +22,31 @@ public abstract class QFixApplication
     super.attachBaseContext(paramContext);
     ClassLoader localClassLoader2 = super.getClassLoader();
     Object localObject = localClassLoader2;
+    ClassLoader localClassLoader1;
     if (Build.VERSION.SDK_INT >= 24)
     {
       localObject = localClassLoader2;
-      if (!isAndroidNPatchEnable()) {}
+      if (isAndroidNPatchEnable()) {
+        try
+        {
+          localObject = AndroidNClassLoader.inject((PathClassLoader)super.getClassLoader(), this);
+        }
+        catch (Exception localException1)
+        {
+          localException1.printStackTrace();
+          localClassLoader1 = super.getClassLoader();
+        }
+      }
     }
     try
     {
-      localObject = AndroidNClassLoader.inject((PathClassLoader)super.getClassLoader(), this);
+      this.applicationLike = ((ApplicationDelegate)localClassLoader1.loadClass(this.mApplicationDelegateName).newInstance());
     }
-    catch (Exception localException1)
+    catch (Exception localException2)
     {
-      try
-      {
-        for (;;)
-        {
-          this.applicationLike = ((ApplicationDelegate)((ClassLoader)localObject).loadClass(this.mApplicationDelegateName).newInstance());
-          this.applicationLike.proxyAttachBaseContext(paramContext, this);
-          return;
-          localException1 = localException1;
-          localException1.printStackTrace();
-          ClassLoader localClassLoader1 = super.getClassLoader();
-        }
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          localException2.printStackTrace();
-        }
-      }
+      localException2.printStackTrace();
     }
+    this.applicationLike.proxyAttachBaseContext(paramContext, this);
   }
   
   public boolean isAndroidNPatchEnable()
@@ -63,8 +57,9 @@ public abstract class QFixApplication
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    if (this.applicationLike != null) {
-      this.applicationLike.onConfigurationChanged(paramConfiguration);
+    ApplicationDelegate localApplicationDelegate = this.applicationLike;
+    if (localApplicationDelegate != null) {
+      localApplicationDelegate.onConfigurationChanged(paramConfiguration);
     }
   }
   
@@ -77,30 +72,33 @@ public abstract class QFixApplication
   public void onLowMemory()
   {
     super.onLowMemory();
-    if (this.applicationLike != null) {
-      this.applicationLike.onLowMemory();
+    ApplicationDelegate localApplicationDelegate = this.applicationLike;
+    if (localApplicationDelegate != null) {
+      localApplicationDelegate.onLowMemory();
     }
   }
   
   public void onTerminate()
   {
     super.onTerminate();
-    if (this.applicationLike != null) {
-      this.applicationLike.onTerminate();
+    ApplicationDelegate localApplicationDelegate = this.applicationLike;
+    if (localApplicationDelegate != null) {
+      localApplicationDelegate.onTerminate();
     }
   }
   
   public void onTrimMemory(int paramInt)
   {
     super.onTrimMemory(paramInt);
-    if (this.applicationLike != null) {
-      this.applicationLike.onTrimMemory(paramInt);
+    ApplicationDelegate localApplicationDelegate = this.applicationLike;
+    if (localApplicationDelegate != null) {
+      localApplicationDelegate.onTrimMemory(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qfix.QFixApplication
  * JD-Core Version:    0.7.0.1
  */

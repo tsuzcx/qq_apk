@@ -24,7 +24,8 @@ public class DetailLikeListLoader
   
   private boolean a()
   {
-    return (this.jdField_a_of_type_Boolean) && ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int != 0));
+    boolean bool = this.jdField_a_of_type_Boolean;
+    return (bool) && ((!bool) || (this.jdField_a_of_type_Int != 0));
   }
   
   public void a(boolean paramBoolean)
@@ -32,15 +33,16 @@ public class DetailLikeListLoader
     DetailLikeListLoader.GetLikeListRequest localGetLikeListRequest = new DetailLikeListLoader.GetLikeListRequest();
     localGetLikeListRequest.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
     localGetLikeListRequest.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    if (this.jdField_a_of_type_Int != -1) {
-      localGetLikeListRequest.c = this.jdField_a_of_type_Int;
+    int i = this.jdField_a_of_type_Int;
+    if (i != -1) {
+      localGetLikeListRequest.c = i;
     }
     CmdTaskManger.a().a(localGetLikeListRequest, new DetailLikeListLoader.2(this, paramBoolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.DetailLikeListLoader
  * JD-Core Version:    0.7.0.1
  */

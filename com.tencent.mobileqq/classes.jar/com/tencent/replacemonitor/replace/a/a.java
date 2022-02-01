@@ -18,16 +18,28 @@ public class a
 {
   public MonitorResult a(MonitorTask paramMonitorTask, MonitorStep paramMonitorStep)
   {
-    ab.c("WashMonitor", "AppNameMonitorAction>>" + paramMonitorTask.appName + "开始通过AppName比较检测洗包 step = " + paramMonitorStep);
-    if (paramMonitorTask.appType != 2) {
-      return new MonitorResult(paramMonitorStep, 0, paramMonitorStep + "非联运游戏不需要做应用名检测", a());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("AppNameMonitorAction>>");
+    ((StringBuilder)localObject).append(paramMonitorTask.appName);
+    ((StringBuilder)localObject).append("开始通过AppName比较检测洗包 step = ");
+    ((StringBuilder)localObject).append(paramMonitorStep);
+    ab.c("WashMonitor", ((StringBuilder)localObject).toString());
+    if (paramMonitorTask.appType != 2)
+    {
+      paramMonitorTask = new StringBuilder();
+      paramMonitorTask.append(paramMonitorStep);
+      paramMonitorTask.append("非联运游戏不需要做应用名检测");
+      return new MonitorResult(paramMonitorStep, 0, paramMonitorTask.toString(), a());
     }
     if (((paramMonitorStep == MonitorStep.AFTER_INSTALL) || (paramMonitorStep == MonitorStep.INSTALLING)) && (!q.a(paramMonitorTask.packageName, paramMonitorTask.versionCode)))
     {
-      Object localObject = q.d(paramMonitorTask.appName);
+      localObject = q.d(paramMonitorTask.appName);
       if (!d.a((List)localObject))
       {
-        paramMonitorStep = new MonitorResult(paramMonitorStep, 1, paramMonitorStep + "通过应用名称比对发现洗包", a());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramMonitorStep);
+        localStringBuilder.append("通过应用名称比对发现洗包");
+        paramMonitorStep = new MonitorResult(paramMonitorStep, 1, localStringBuilder.toString(), a());
         localObject = (PackageInfo)((List)localObject).get(0);
         paramMonitorStep.replacedPkgName = ((PackageInfo)localObject).packageName;
         paramMonitorStep.replacedVersionCode = ((PackageInfo)localObject).versionCode;
@@ -43,7 +55,10 @@ public class a
         return paramMonitorStep;
       }
     }
-    return new MonitorResult(paramMonitorStep, 0, paramMonitorStep + "通过应用名称检测通过", a());
+    paramMonitorTask = new StringBuilder();
+    paramMonitorTask.append(paramMonitorStep);
+    paramMonitorTask.append("通过应用名称检测通过");
+    return new MonitorResult(paramMonitorStep, 0, paramMonitorTask.toString(), a());
   }
   
   public MonitorType a()
@@ -53,7 +68,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.replacemonitor.replace.a.a
  * JD-Core Version:    0.7.0.1
  */

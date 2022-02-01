@@ -50,8 +50,8 @@ public final class FieldArray
   
   private int binarySearch(int paramInt)
   {
-    int i = 0;
     int j = this.mSize - 1;
+    int i = 0;
     while (i <= j)
     {
       int k = i + j >>> 1;
@@ -97,20 +97,15 @@ public final class FieldArray
   private int idealByteArraySize(int paramInt)
   {
     int i = 4;
-    for (;;)
+    while (i < 32)
     {
-      int j = paramInt;
-      if (i < 32)
-      {
-        if (paramInt <= (1 << i) - 12) {
-          j = (1 << i) - 12;
-        }
-      }
-      else {
+      int j = (1 << i) - 12;
+      if (paramInt <= j) {
         return j;
       }
       i += 1;
     }
+    return paramInt;
   }
   
   private int idealIntArraySize(int paramInt)
@@ -120,14 +115,17 @@ public final class FieldArray
   
   public final FieldArray clone()
   {
-    int i = 0;
     int j = size();
     FieldArray localFieldArray = new FieldArray(j);
-    System.arraycopy(this.mFieldNumbers, 0, localFieldArray.mFieldNumbers, 0, j);
+    Object localObject = this.mFieldNumbers;
+    int[] arrayOfInt = localFieldArray.mFieldNumbers;
+    int i = 0;
+    System.arraycopy(localObject, 0, arrayOfInt, 0, j);
     while (i < j)
     {
-      if (this.mData[i] != null) {
-        localFieldArray.mData[i] = this.mData[i].clone();
+      localObject = this.mData;
+      if (localObject[i] != null) {
+        localFieldArray.mData[i] = localObject[i].clone();
       }
       i += 1;
     }
@@ -145,28 +143,30 @@ public final class FieldArray
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == this) {}
-    do
-    {
+    if (paramObject == this) {
       return true;
-      if (!(paramObject instanceof FieldArray)) {
-        return false;
-      }
-      paramObject = (FieldArray)paramObject;
-      if (size() != paramObject.size()) {
-        return false;
-      }
-    } while ((arrayEquals(this.mFieldNumbers, paramObject.mFieldNumbers, this.mSize)) && (arrayEquals(this.mData, paramObject.mData, this.mSize)));
-    return false;
+    }
+    if (!(paramObject instanceof FieldArray)) {
+      return false;
+    }
+    paramObject = (FieldArray)paramObject;
+    if (size() != paramObject.size()) {
+      return false;
+    }
+    return (arrayEquals(this.mFieldNumbers, paramObject.mFieldNumbers, this.mSize)) && (arrayEquals(this.mData, paramObject.mData, this.mSize));
   }
   
   FieldData get(int paramInt)
   {
     paramInt = binarySearch(paramInt);
-    if ((paramInt < 0) || (this.mData[paramInt] == DELETED)) {
-      return null;
+    if (paramInt >= 0)
+    {
+      FieldData[] arrayOfFieldData = this.mData;
+      if (arrayOfFieldData[paramInt] != DELETED) {
+        return arrayOfFieldData[paramInt];
+      }
     }
-    return this.mData[paramInt];
+    return null;
   }
   
   public int hashCode()
@@ -198,11 +198,16 @@ public final class FieldArray
       return;
     }
     int j = i ^ 0xFFFFFFFF;
-    if ((j < this.mSize) && (this.mData[j] == DELETED))
+    Object localObject1;
+    if (j < this.mSize)
     {
-      this.mFieldNumbers[j] = paramInt;
-      this.mData[j] = paramFieldData;
-      return;
+      localObject1 = this.mData;
+      if (localObject1[j] == DELETED)
+      {
+        this.mFieldNumbers[j] = paramInt;
+        localObject1[j] = paramFieldData;
+        return;
+      }
     }
     i = j;
     if (this.mGarbage)
@@ -214,20 +219,27 @@ public final class FieldArray
         i = binarySearch(paramInt) ^ 0xFFFFFFFF;
       }
     }
-    if (this.mSize >= this.mFieldNumbers.length)
+    j = this.mSize;
+    if (j >= this.mFieldNumbers.length)
     {
-      j = idealIntArraySize(this.mSize + 1);
-      int[] arrayOfInt = new int[j];
+      j = idealIntArraySize(j + 1);
+      localObject1 = new int[j];
       FieldData[] arrayOfFieldData = new FieldData[j];
-      System.arraycopy(this.mFieldNumbers, 0, arrayOfInt, 0, this.mFieldNumbers.length);
-      System.arraycopy(this.mData, 0, arrayOfFieldData, 0, this.mData.length);
-      this.mFieldNumbers = arrayOfInt;
+      Object localObject2 = this.mFieldNumbers;
+      System.arraycopy(localObject2, 0, localObject1, 0, localObject2.length);
+      localObject2 = this.mData;
+      System.arraycopy(localObject2, 0, arrayOfFieldData, 0, localObject2.length);
+      this.mFieldNumbers = ((int[])localObject1);
       this.mData = arrayOfFieldData;
     }
-    if (this.mSize - i != 0)
+    j = this.mSize;
+    if (j - i != 0)
     {
-      System.arraycopy(this.mFieldNumbers, i, this.mFieldNumbers, i + 1, this.mSize - i);
-      System.arraycopy(this.mData, i, this.mData, i + 1, this.mSize - i);
+      localObject1 = this.mFieldNumbers;
+      int k = i + 1;
+      System.arraycopy(localObject1, i, localObject1, k, j - i);
+      localObject1 = this.mData;
+      System.arraycopy(localObject1, i, localObject1, k, this.mSize - i);
     }
     this.mFieldNumbers[i] = paramInt;
     this.mData[i] = paramFieldData;
@@ -237,10 +249,16 @@ public final class FieldArray
   void remove(int paramInt)
   {
     paramInt = binarySearch(paramInt);
-    if ((paramInt >= 0) && (this.mData[paramInt] != DELETED))
+    if (paramInt >= 0)
     {
-      this.mData[paramInt] = DELETED;
-      this.mGarbage = true;
+      FieldData[] arrayOfFieldData = this.mData;
+      FieldData localFieldData1 = arrayOfFieldData[paramInt];
+      FieldData localFieldData2 = DELETED;
+      if (localFieldData1 != localFieldData2)
+      {
+        arrayOfFieldData[paramInt] = localFieldData2;
+        this.mGarbage = true;
+      }
     }
   }
   
@@ -254,7 +272,7 @@ public final class FieldArray
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.protobuf.nano.FieldArray
  * JD-Core Version:    0.7.0.1
  */

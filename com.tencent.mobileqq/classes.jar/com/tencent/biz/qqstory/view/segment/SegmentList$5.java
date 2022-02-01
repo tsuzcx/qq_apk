@@ -14,7 +14,7 @@ class SegmentList$5
     super(paramString);
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
   {
     this.a.a.f();
     if (SegmentList.a(this.a)) {
@@ -26,7 +26,7 @@ class SegmentList$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.segment.SegmentList.5
  * JD-Core Version:    0.7.0.1
  */

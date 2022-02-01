@@ -60,18 +60,20 @@ public class BorderDrawable
   
   private void drawBorders(Canvas paramCanvas)
   {
-    if (this.mRectBounds == null) {
+    Object localObject = this.mRectBounds;
+    if (localObject == null) {
       this.mRectBounds = new RectF(getBounds());
+    } else {
+      ((RectF)localObject).set(getBounds());
     }
-    while (this.mBorderWidth == null)
-    {
+    localObject = this.mBorderWidth;
+    if (localObject == null) {
       return;
-      this.mRectBounds.set(getBounds());
     }
-    float f1 = this.mBorderWidth[1];
-    float f2 = this.mBorderWidth[2];
-    float f3 = this.mBorderWidth[4];
-    float f4 = this.mBorderWidth[3];
+    float f1 = localObject[1];
+    float f2 = localObject[2];
+    float f3 = localObject[4];
+    float f4 = localObject[3];
     if (this.mTopLeftCorner == null) {
       this.mTopLeftCorner = new TopLeftCorner();
     }
@@ -114,22 +116,24 @@ public class BorderDrawable
   
   private float getBorderRadius(int paramInt)
   {
-    if (this.mOverlappingBorderRadius != null) {
-      return this.mOverlappingBorderRadius[paramInt];
+    float[] arrayOfFloat = this.mOverlappingBorderRadius;
+    if (arrayOfFloat != null) {
+      return arrayOfFloat[paramInt];
     }
     return 0.0F;
   }
   
   private float getScaleFactor(@NonNull RectF paramRectF)
   {
-    float f1 = this.mBorderRadius[1];
-    float f2 = this.mBorderRadius[2];
-    float f3 = this.mBorderRadius[2];
-    float f4 = this.mBorderRadius[3];
-    float f5 = this.mBorderRadius[3];
-    float f6 = this.mBorderRadius[4];
-    float f7 = this.mBorderRadius[4];
-    float f8 = this.mBorderRadius[1];
+    float[] arrayOfFloat = this.mBorderRadius;
+    float f1 = arrayOfFloat[1];
+    float f2 = arrayOfFloat[2];
+    float f3 = arrayOfFloat[2];
+    float f4 = arrayOfFloat[3];
+    float f5 = arrayOfFloat[3];
+    float f6 = arrayOfFloat[4];
+    float f7 = arrayOfFloat[4];
+    float f8 = arrayOfFloat[1];
     if (!this.mFactors.isEmpty()) {
       this.mFactors.clear();
     }
@@ -148,20 +152,17 @@ public class BorderDrawable
     if (this.mBorderRadius != null)
     {
       prepareBorderRadius(paramRectF);
-      float f1 = this.mOverlappingBorderRadius[1];
-      float f2 = this.mOverlappingBorderRadius[2];
-      float f3 = this.mOverlappingBorderRadius[3];
-      float f4 = this.mOverlappingBorderRadius[4];
+      Object localObject = this.mOverlappingBorderRadius;
+      float f1 = localObject[1];
+      float f2 = localObject[2];
+      float f3 = localObject[3];
+      float f4 = localObject[4];
       float f5 = paramInt4;
       float f6 = paramInt1;
       float f7 = paramInt2;
-      float f8 = paramInt1;
-      float f9 = paramInt2;
-      float f10 = paramInt3;
-      float f11 = paramInt4;
-      float f12 = paramInt3;
-      Path.Direction localDirection = Path.Direction.CW;
-      paramPath.addRoundRect(paramRectF, new float[] { f1 - f5, f1 - f6, f2 - f7, f2 - f8, f3 - f9, f3 - f10, f4 - f11, f4 - f12 }, localDirection);
+      float f8 = paramInt3;
+      localObject = Path.Direction.CW;
+      paramPath.addRoundRect(paramRectF, new float[] { f1 - f5, f1 - f6, f2 - f7, f2 - f6, f3 - f7, f3 - f8, f4 - f5, f4 - f8 }, (Path.Direction)localObject);
       return;
     }
     paramPath.addRect(paramRectF, Path.Direction.CW);
@@ -174,20 +175,21 @@ public class BorderDrawable
       float f = getScaleFactor(paramRectF);
       if ((!Float.isNaN(f)) && (f < 1.0F))
       {
-        this.mOverlappingBorderRadius[1] = (this.mBorderRadius[1] * f);
-        this.mOverlappingBorderRadius[2] = (this.mBorderRadius[2] * f);
-        this.mOverlappingBorderRadius[3] = (this.mBorderRadius[3] * f);
-        this.mOverlappingBorderRadius[4] = (f * this.mBorderRadius[4]);
+        paramRectF = this.mOverlappingBorderRadius;
+        arrayOfFloat = this.mBorderRadius;
+        arrayOfFloat[1] *= f;
+        arrayOfFloat[2] *= f;
+        arrayOfFloat[3] *= f;
+        arrayOfFloat[4] *= f;
+        return;
       }
+      paramRectF = this.mOverlappingBorderRadius;
+      float[] arrayOfFloat = this.mBorderRadius;
+      paramRectF[1] = arrayOfFloat[1];
+      paramRectF[2] = arrayOfFloat[2];
+      paramRectF[3] = arrayOfFloat[3];
+      paramRectF[4] = arrayOfFloat[4];
     }
-    else
-    {
-      return;
-    }
-    this.mOverlappingBorderRadius[1] = this.mBorderRadius[1];
-    this.mOverlappingBorderRadius[2] = this.mBorderRadius[2];
-    this.mOverlappingBorderRadius[3] = this.mBorderRadius[3];
-    this.mOverlappingBorderRadius[4] = this.mBorderRadius[4];
   }
   
   private void preparePaint(int paramInt)
@@ -225,28 +227,18 @@ public class BorderDrawable
     paramCanvas.save();
     updateBorderOutline();
     this.mPaint.setAlpha(255);
-    int i;
     if (this.mPathForBorderOutline != null)
     {
-      i = ViolaUtils.multiplyColorAlpha(this.mColor, this.mAlpha);
-      if (this.mShader == null) {
-        break label127;
+      int i = ViolaUtils.multiplyColorAlpha(this.mColor, this.mAlpha);
+      Shader localShader = this.mShader;
+      if (localShader != null)
+      {
+        this.mPaint.setShader(localShader);
+        this.mPaint.setStyle(Paint.Style.FILL);
+        paramCanvas.drawPath(this.mPathForBorderOutline, this.mPaint);
+        this.mPaint.setShader(null);
       }
-      this.mPaint.setShader(this.mShader);
-      this.mPaint.setStyle(Paint.Style.FILL);
-      paramCanvas.drawPath(this.mPathForBorderOutline, this.mPaint);
-      this.mPaint.setShader(null);
-    }
-    for (;;)
-    {
-      this.mPaint.setStyle(Paint.Style.STROKE);
-      this.mPaint.setStrokeJoin(Paint.Join.ROUND);
-      drawBorders(paramCanvas);
-      this.mPaint.setShader(null);
-      paramCanvas.restore();
-      return;
-      label127:
-      if (i >>> 24 != 0)
+      else if (i >>> 24 != 0)
       {
         this.mPaint.setColor(i);
         this.mPaint.setStyle(Paint.Style.FILL);
@@ -254,6 +246,11 @@ public class BorderDrawable
         this.mPaint.setShader(null);
       }
     }
+    this.mPaint.setStyle(Paint.Style.STROKE);
+    this.mPaint.setStrokeJoin(Paint.Join.ROUND);
+    drawBorders(paramCanvas);
+    this.mPaint.setShader(null);
+    paramCanvas.restore();
   }
   
   public int getAlpha()
@@ -342,21 +339,26 @@ public class BorderDrawable
   
   public void setBorderRadius(int paramInt, float paramFloat)
   {
-    if (this.mBorderRadius[paramInt] != paramFloat)
+    float[] arrayOfFloat = this.mBorderRadius;
+    if (arrayOfFloat[paramInt] != paramFloat)
     {
       this.mHasSetBorderRadius = true;
       if (paramInt == 0)
       {
         paramInt = 0;
-        while (paramInt < this.mBorderRadius.length)
+        for (;;)
         {
-          if (this.mBorderRadius[paramInt] == 0.0F) {
-            this.mBorderRadius[paramInt] = paramFloat;
+          arrayOfFloat = this.mBorderRadius;
+          if (paramInt >= arrayOfFloat.length) {
+            break;
+          }
+          if (arrayOfFloat[paramInt] == 0.0F) {
+            arrayOfFloat[paramInt] = paramFloat;
           }
           paramInt += 1;
         }
       }
-      this.mBorderRadius[paramInt] = paramFloat;
+      arrayOfFloat[paramInt] = paramFloat;
       this.mNeedUpdatePath = true;
       invalidateSelf();
     }
@@ -384,20 +386,25 @@ public class BorderDrawable
   
   public void setBorderWidth(int paramInt, float paramFloat)
   {
-    if (this.mBorderWidth[paramInt] != paramFloat)
+    float[] arrayOfFloat = this.mBorderWidth;
+    if (arrayOfFloat[paramInt] != paramFloat)
     {
       if (paramInt == 0)
       {
         paramInt = 0;
-        while (paramInt < this.mBorderWidth.length)
+        for (;;)
         {
-          if (this.mBorderWidth[paramInt] == 0.0F) {
-            this.mBorderWidth[paramInt] = paramFloat;
+          arrayOfFloat = this.mBorderWidth;
+          if (paramInt >= arrayOfFloat.length) {
+            break;
+          }
+          if (arrayOfFloat[paramInt] == 0.0F) {
+            arrayOfFloat[paramInt] = paramFloat;
           }
           paramInt += 1;
         }
       }
-      this.mBorderWidth[paramInt] = paramFloat;
+      arrayOfFloat[paramInt] = paramFloat;
       this.mNeedUpdatePath = true;
       invalidateSelf();
     }
@@ -419,7 +426,7 @@ public class BorderDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.dom.style.BorderDrawable
  * JD-Core Version:    0.7.0.1
  */

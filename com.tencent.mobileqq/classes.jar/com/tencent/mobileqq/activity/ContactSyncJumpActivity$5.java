@@ -1,23 +1,24 @@
 package com.tencent.mobileqq.activity;
 
 import android.content.Intent;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
+import com.tencent.mobileqq.phonecontact.observer.ContactBindObserver;
 
 class ContactSyncJumpActivity$5
   extends ContactBindObserver
 {
   ContactSyncJumpActivity$5(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  public void onQueryBindState(boolean paramBoolean1, boolean paramBoolean2)
+  protected void onQueryBindState(boolean paramBoolean1, boolean paramBoolean2)
   {
     if (paramBoolean1)
     {
-      int i = ContactSyncJumpActivity.a(this.a).d();
+      int i = ContactSyncJumpActivity.a(this.a).getSelfBindState();
       if ((i == 1) || (i == 5))
       {
-        this.a.startActivity(new Intent(this.a, PhoneFrameActivity.class));
+        ContactSyncJumpActivity localContactSyncJumpActivity = this.a;
+        localContactSyncJumpActivity.startActivity(new Intent(localContactSyncJumpActivity, PhoneFrameActivity.class));
         this.a.finish();
       }
     }
@@ -25,7 +26,7 @@ class ContactSyncJumpActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ContactSyncJumpActivity.5
  * JD-Core Version:    0.7.0.1
  */

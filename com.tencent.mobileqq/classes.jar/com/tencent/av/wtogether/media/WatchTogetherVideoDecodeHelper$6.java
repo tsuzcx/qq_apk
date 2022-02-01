@@ -10,18 +10,19 @@ class WatchTogetherVideoDecodeHelper$6
   public void run()
   {
     WatchTogetherVideoDecodeHelper.c(this.this$0, true);
-    if (!WatchTogetherVideoDecodeHelper.b(this.this$0)) {
+    if (!WatchTogetherVideoDecodeHelper.b(this.this$0))
+    {
       WatchTogetherVideoDecodeHelper.a(this.this$0);
-    }
-    while (WatchTogetherVideoDecodeHelper.a(this.this$0) == null) {
       return;
     }
-    WatchTogetherVideoDecodeHelper.a(this.this$0).b();
+    if (WatchTogetherVideoDecodeHelper.a(this.this$0) != null) {
+      WatchTogetherVideoDecodeHelper.a(this.this$0).b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.media.WatchTogetherVideoDecodeHelper.6
  * JD-Core Version:    0.7.0.1
  */

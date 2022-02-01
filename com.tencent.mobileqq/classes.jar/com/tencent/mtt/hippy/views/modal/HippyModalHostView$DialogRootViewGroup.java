@@ -17,7 +17,7 @@ class HippyModalHostView$DialogRootViewGroup
     setFitsSystemWindows(false);
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if (getChildCount() > 0)
@@ -42,7 +42,7 @@ class HippyModalHostView$DialogRootViewGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.modal.HippyModalHostView.DialogRootViewGroup
  * JD-Core Version:    0.7.0.1
  */

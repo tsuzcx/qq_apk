@@ -11,22 +11,26 @@ class TroopPicEffectsEditActivity$UploadPicCallback$1
 {
   TroopPicEffectsEditActivity$UploadPicCallback$1(TroopPicEffectsEditActivity.UploadPicCallback paramUploadPicCallback, TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopPicEffectsEditActivity", 2, "payForPhoto. onResult. errorCode=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("payForPhoto. onResult. errorCode=");
+      paramArrayOfByte.append(paramInt);
+      QLog.d("TroopPicEffectsEditActivity", 2, paramArrayOfByte.toString());
     }
     if (paramInt == 0)
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity, 2, HardCodeUtil.a(2131715558), 0).a();
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity, 2, HardCodeUtil.a(2131715480), 0).a();
       return;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity, 1, HardCodeUtil.a(2131715565), 0).a();
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity, 1, HardCodeUtil.a(2131715487), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity.UploadPicCallback.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,18 +12,16 @@ class VisitorsActivity$11
   
   public void onGetIcon(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    int i = 0;
     if ((paramBitmap != null) && (paramInt2 == 200))
     {
       paramBitmap = this.a.a;
-      if (paramBitmap == null) {
-        break label108;
+      int i = 0;
+      if (paramBitmap != null) {
+        paramInt2 = paramBitmap.getChildCount();
+      } else {
+        paramInt2 = 0;
       }
-      paramInt2 = paramBitmap.getChildCount();
-    }
-    for (;;)
-    {
-      if (i < paramInt2)
+      while (i < paramInt2)
       {
         Object localObject = paramBitmap.getChildAt(i).getTag();
         if ((localObject != null) && ((localObject instanceof VisitorsActivity.CustomViewHolder)))
@@ -35,18 +33,12 @@ class VisitorsActivity$11
         }
         i += 1;
       }
-      else
-      {
-        return;
-        label108:
-        paramInt2 = 0;
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VisitorsActivity.11
  * JD-Core Version:    0.7.0.1
  */

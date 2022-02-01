@@ -35,7 +35,7 @@ public class ZhituServlet
   private byte[] a(byte[] paramArrayOfByte)
   {
     byte[] arrayOfByte = new byte[paramArrayOfByte.length + 4];
-    PkgTools.DWord2Byte(arrayOfByte, 0, paramArrayOfByte.length + 4);
+    PkgTools.dWord2Byte(arrayOfByte, 0, paramArrayOfByte.length + 4);
     System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 4, paramArrayOfByte.length);
     return arrayOfByte;
   }
@@ -47,106 +47,123 @@ public class ZhituServlet
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ZhituServlet", 2, "onReceive with code: " + paramFromServiceMsg.getResultCode());
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onReceive with code: ");
+      ((StringBuilder)localObject1).append(paramFromServiceMsg.getResultCode());
+      QLog.d("ZhituServlet", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject = paramIntent.getStringExtra("ZhituCMD");
-    if (((String)localObject).equals("MQInference.ZhituReport")) {}
+    Object localObject1 = paramIntent.getStringExtra("ZhituCMD");
+    if (((String)localObject1).equals("MQInference.ZhituReport")) {
+      return;
+    }
+    boolean bool2 = ((String)localObject1).equals("ZhituGate.Check");
+    boolean bool1 = true;
     int i;
-    do
-    {
-      do
+    if (bool2) {
+      if (paramFromServiceMsg.isSuccess())
       {
-        do
-        {
-          return;
-          if (!((String)localObject).equals("ZhituGate.Check")) {
-            break label295;
-          }
-          if (!paramFromServiceMsg.isSuccess()) {
-            break;
-          }
-          paramIntent = getAppRuntime();
-        } while ((paramIntent == null) || (!(paramIntent instanceof AppInterface)));
+        paramIntent = getAppRuntime();
+        if ((paramIntent == null) || (!(paramIntent instanceof AppInterface))) {
+          break label554;
+        }
         i = paramFromServiceMsg.getWupBuffer().length - 4;
-        localObject = new byte[i];
-        PkgTools.copyData((byte[])localObject, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-        paramFromServiceMsg.putWupBuffer((byte[])localObject);
-        for (;;)
-        {
-          try
-          {
-            paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
-            localObject = new ZhituSafeGate.RspBody();
-            ((ZhituSafeGate.RspBody)localObject).mergeFrom(paramFromServiceMsg);
-            i = ((ZhituSafeGate.RspBody)localObject).int32_result.get();
-            if (i != 0) {
-              break;
-            }
-            i = ((ZhituSafeGate.GateInfo)((ZhituSafeGate.RspBody)localObject).gate_info.get()).uint32_state.get();
-            paramFromServiceMsg = ZhituManager.a((QQAppInterface)paramIntent);
-            if (i == 1)
-            {
-              bool = true;
-              paramFromServiceMsg.c(bool);
-              long l = System.currentTimeMillis();
-              ZhituManager.a((QQAppInterface)paramIntent).a(l);
-              return;
-            }
-          }
-          catch (Exception paramIntent)
-          {
-            QLog.e("ZhituServlet", 2, "onReceive CMD_SAFE_GATE has exception: ", paramIntent);
-            return;
-          }
-          boolean bool = false;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ZhituServlet", 2, "onReceive CMD_SAFE_GATE failed result: " + i);
-      return;
-      i = paramFromServiceMsg.getResultCode();
-    } while (!QLog.isColorLevel());
-    QLog.d("ZhituServlet", 2, "onReceive CMD_SAFE_GATE not Success code is : " + i);
-    return;
-    label295:
-    if (!paramFromServiceMsg.isSuccess())
-    {
-      a(paramIntent, 1, paramFromServiceMsg);
-      return;
-    }
-    localObject = paramFromServiceMsg.getWupBuffer();
-    if (localObject != null)
-    {
-      String str = new String(Arrays.copyOfRange((byte[])localObject, 4, localObject.length));
-      for (;;)
-      {
-        try
-        {
-          if (!TextUtils.isEmpty(str))
-          {
-            localObject = (ZhituResponse)JSONUtils.b(new JSONObject(str), ZhituResponse.class);
-            Bundle localBundle = new Bundle();
-            localBundle.putInt("ErrorCode", 0);
-            localBundle.putParcelable("Response", (Parcelable)localObject);
-            localBundle.putString("UniqueKey", paramIntent.getStringExtra("ZhituReqKey"));
-            localBundle.putInt("StartIdx", paramIntent.getIntExtra("StartIdx", 0));
-            localBundle.putString("QueryText", paramIntent.getStringExtra("QueryText"));
-            notifyObserver(paramIntent, 0, true, localBundle, ZhituObserver.class);
-            return;
-          }
-        }
-        catch (JSONException localJSONException)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ZhituServlet", 2, "parse json error with str:\n" + str + "\n" + localJSONException);
-          }
-          a(paramIntent, 3, paramFromServiceMsg);
-          return;
-        }
-        ZhituResponse localZhituResponse = new ZhituResponse();
+        localObject1 = new byte[i];
+        PkgTools.copyData((byte[])localObject1, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+        paramFromServiceMsg.putWupBuffer((byte[])localObject1);
       }
     }
-    a(paramIntent, 2, paramFromServiceMsg);
+    for (;;)
+    {
+      try
+      {
+        paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
+        localObject1 = new ZhituSafeGate.RspBody();
+        ((ZhituSafeGate.RspBody)localObject1).mergeFrom(paramFromServiceMsg);
+        i = ((ZhituSafeGate.RspBody)localObject1).int32_result.get();
+        if (i == 0)
+        {
+          i = ((ZhituSafeGate.GateInfo)((ZhituSafeGate.RspBody)localObject1).gate_info.get()).uint32_state.get();
+          paramFromServiceMsg = ZhituManager.a((QQAppInterface)paramIntent);
+          if (i != 1) {
+            break label555;
+          }
+          paramFromServiceMsg.c(bool1);
+          long l = System.currentTimeMillis();
+          ZhituManager.a((QQAppInterface)paramIntent).a(l);
+          return;
+        }
+        if (!QLog.isColorLevel()) {
+          break label554;
+        }
+        paramIntent = new StringBuilder();
+        paramIntent.append("onReceive CMD_SAFE_GATE failed result: ");
+        paramIntent.append(i);
+        QLog.d("ZhituServlet", 2, paramIntent.toString());
+        return;
+      }
+      catch (Exception paramIntent)
+      {
+        QLog.e("ZhituServlet", 2, "onReceive CMD_SAFE_GATE has exception: ", paramIntent);
+        return;
+      }
+      i = paramFromServiceMsg.getResultCode();
+      if (QLog.isColorLevel())
+      {
+        paramIntent = new StringBuilder();
+        paramIntent.append("onReceive CMD_SAFE_GATE not Success code is : ");
+        paramIntent.append(i);
+        QLog.d("ZhituServlet", 2, paramIntent.toString());
+        return;
+        if (!paramFromServiceMsg.isSuccess())
+        {
+          a(paramIntent, 1, paramFromServiceMsg);
+          return;
+        }
+        localObject1 = paramFromServiceMsg.getWupBuffer();
+        if (localObject1 != null)
+        {
+          String str = new String(Arrays.copyOfRange((byte[])localObject1, 4, localObject1.length));
+          try
+          {
+            if (!TextUtils.isEmpty(str)) {
+              localObject1 = (ZhituResponse)JSONUtils.b(new JSONObject(str), ZhituResponse.class);
+            } else {
+              localObject1 = new ZhituResponse();
+            }
+            localObject2 = new Bundle();
+            ((Bundle)localObject2).putInt("ErrorCode", 0);
+            ((Bundle)localObject2).putParcelable("Response", (Parcelable)localObject1);
+            ((Bundle)localObject2).putString("UniqueKey", paramIntent.getStringExtra("ZhituReqKey"));
+            ((Bundle)localObject2).putInt("StartIdx", paramIntent.getIntExtra("StartIdx", 0));
+            ((Bundle)localObject2).putString("QueryText", paramIntent.getStringExtra("QueryText"));
+            notifyObserver(paramIntent, 0, true, (Bundle)localObject2, ZhituObserver.class);
+            return;
+          }
+          catch (JSONException localJSONException)
+          {
+            Object localObject2;
+            if (QLog.isColorLevel())
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("parse json error with str:\n");
+              ((StringBuilder)localObject2).append(str);
+              ((StringBuilder)localObject2).append("\n");
+              ((StringBuilder)localObject2).append(localJSONException);
+              QLog.d("ZhituServlet", 2, ((StringBuilder)localObject2).toString());
+            }
+            a(paramIntent, 3, paramFromServiceMsg);
+            return;
+          }
+        }
+        a(paramIntent, 2, paramFromServiceMsg);
+      }
+      label554:
+      return;
+      label555:
+      bool1 = false;
+    }
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -156,8 +173,12 @@ public class ZhituServlet
     }
     String str = paramIntent.getStringExtra("ZhituCMD");
     paramPacket.setSSOCommand(str);
-    if (QLog.isColorLevel()) {
-      QLog.d("ZhituServlet", 2, "onSend with cmd: " + str);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSend with cmd: ");
+      localStringBuilder.append(str);
+      QLog.d("ZhituServlet", 2, localStringBuilder.toString());
     }
     paramIntent = paramIntent.getByteArrayExtra("ZhituRequestBytes");
     if (paramIntent != null)
@@ -170,7 +191,7 @@ public class ZhituServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituServlet
  * JD-Core Version:    0.7.0.1
  */

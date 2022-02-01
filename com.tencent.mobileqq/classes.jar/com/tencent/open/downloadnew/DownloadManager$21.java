@@ -15,83 +15,111 @@ class DownloadManager$21
   
   public void run()
   {
-    DownloadInfo localDownloadInfo;
     try
     {
       String str1 = this.a.getString("PackageName");
-      LogUtility.c("DownloadManager_", "receive write code msg pkgName|" + str1);
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("receive write code msg pkgName|");
+      ((StringBuilder)localObject1).append(str1);
+      LogUtility.c("DownloadManager_", ((StringBuilder)localObject1).toString());
       if (str1 == null) {
         return;
       }
-      localDownloadInfo = this.this$0.b(str1);
-      if (localDownloadInfo == null)
+      localObject1 = this.this$0.b(str1);
+      if (localObject1 == null)
       {
-        LogUtility.c("DownloadManager_", "receive write code msg pkgName|" + str1 + " download info is null");
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("receive write code msg pkgName|");
+        ((StringBuilder)localObject1).append(str1);
+        ((StringBuilder)localObject1).append(" download info is null");
+        LogUtility.c("DownloadManager_", ((StringBuilder)localObject1).toString());
+        return;
+      }
+      String str2 = this.a.getString("Code");
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("receive write code msg pkgName|");
+      ((StringBuilder)localObject2).append(str1);
+      ((StringBuilder)localObject2).append(" code|");
+      ((StringBuilder)localObject2).append(str2);
+      LogUtility.c("DownloadManager_", ((StringBuilder)localObject2).toString());
+      boolean bool = TextUtils.isEmpty(str2);
+      if (bool)
+      {
+        ((DownloadInfo)localObject1).a(4);
+        ((DownloadInfo)localObject1).j = 0;
+        this.this$0.e((DownloadInfo)localObject1);
+        this.this$0.a(4, (DownloadInfo)localObject1);
+        this.this$0.a((DownloadInfo)localObject1, ((DownloadInfo)localObject1).jdField_c_of_type_Long);
+        StaticAnalyz.a("300", ((DownloadInfo)localObject1).h, ((DownloadInfo)localObject1).jdField_c_of_type_JavaLangString, ((DownloadInfo)localObject1).o);
+        if (!((DownloadInfo)localObject1).a) {
+          return;
+        }
+        this.this$0.c((DownloadInfo)localObject1);
+        return;
+      }
+      this.a.getInt("VersionCode");
+      localObject2 = new File(((DownloadInfo)localObject1).l);
+      try
+      {
+        ApkExternalInfoTool.a((File)localObject2, str2);
+        localObject2 = ApkExternalInfoTool.a((File)localObject2);
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("receive write code msg pkgName|");
+        localStringBuilder2.append(str1);
+        localStringBuilder2.append(" check code|");
+        localStringBuilder2.append((String)localObject2);
+        LogUtility.c("DownloadManager_", localStringBuilder2.toString());
+        bool = str2.equals(localObject2);
+      }
+      catch (IOException localIOException)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("write code Exception|");
+        ((StringBuilder)localObject2).append(localIOException.getMessage());
+        LogUtility.c("DownloadManager_", ((StringBuilder)localObject2).toString());
+        bool = false;
+      }
+      StringBuilder localStringBuilder1;
+      if (bool)
+      {
+        localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("receive write code msg pkgName|");
+        localStringBuilder1.append(str1);
+        localStringBuilder1.append(" write code and check code suc");
+        LogUtility.c("DownloadManager_", localStringBuilder1.toString());
+        ((DownloadInfo)localObject1).j = 0;
+        this.this$0.e((DownloadInfo)localObject1);
+        this.this$0.a(4, (DownloadInfo)localObject1);
+        this.this$0.a((DownloadInfo)localObject1, ((DownloadInfo)localObject1).jdField_c_of_type_Long);
+        StaticAnalyz.a("300", ((DownloadInfo)localObject1).h, ((DownloadInfo)localObject1).jdField_c_of_type_JavaLangString, ((DownloadInfo)localObject1).o);
+        if (((DownloadInfo)localObject1).a) {
+          this.this$0.c((DownloadInfo)localObject1);
+        }
+      }
+      else
+      {
+        localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("receive write code msg pkgName|");
+        localStringBuilder1.append(str1);
+        localStringBuilder1.append(" write code or check code fail");
+        LogUtility.c("DownloadManager_", localStringBuilder1.toString());
+        ((DownloadInfo)localObject1).j = -20;
+        ((DownloadInfo)localObject1).e = -2;
+        this.this$0.e((DownloadInfo)localObject1);
+        this.this$0.a((DownloadInfo)localObject1, ((DownloadInfo)localObject1).j, null);
         return;
       }
     }
     catch (Exception localException)
     {
       LogUtility.c("DownloadManager_", "downloadSDKClient>>>", localException);
-      return;
     }
-    String str2 = this.a.getString("Code");
-    LogUtility.c("DownloadManager_", "receive write code msg pkgName|" + localException + " code|" + str2);
-    if (TextUtils.isEmpty(str2))
-    {
-      localDownloadInfo.a(4);
-      localDownloadInfo.j = 0;
-      this.this$0.e(localDownloadInfo);
-      this.this$0.a(4, localDownloadInfo);
-      this.this$0.a(localDownloadInfo, localDownloadInfo.jdField_c_of_type_Long);
-      StaticAnalyz.a("300", localDownloadInfo.h, localDownloadInfo.jdField_c_of_type_JavaLangString, localDownloadInfo.o);
-      if (localDownloadInfo.a) {
-        this.this$0.c(localDownloadInfo);
-      }
-    }
-    else
-    {
-      this.a.getInt("VersionCode");
-      Object localObject = new File(localDownloadInfo.l);
-      try
-      {
-        ApkExternalInfoTool.a((File)localObject, str2);
-        localObject = ApkExternalInfoTool.a((File)localObject);
-        LogUtility.c("DownloadManager_", "receive write code msg pkgName|" + localException + " check code|" + (String)localObject);
-        bool = str2.equals(localObject);
-        if (bool)
-        {
-          LogUtility.c("DownloadManager_", "receive write code msg pkgName|" + localException + " write code and check code suc");
-          localDownloadInfo.j = 0;
-          this.this$0.e(localDownloadInfo);
-          this.this$0.a(4, localDownloadInfo);
-          this.this$0.a(localDownloadInfo, localDownloadInfo.jdField_c_of_type_Long);
-          StaticAnalyz.a("300", localDownloadInfo.h, localDownloadInfo.jdField_c_of_type_JavaLangString, localDownloadInfo.o);
-          if (!localDownloadInfo.a) {
-            return;
-          }
-          this.this$0.c(localDownloadInfo);
-        }
-      }
-      catch (IOException localIOException)
-      {
-        for (;;)
-        {
-          LogUtility.c("DownloadManager_", "write code Exception|" + localIOException.getMessage());
-          boolean bool = false;
-        }
-        LogUtility.c("DownloadManager_", "receive write code msg pkgName|" + localException + " write code or check code fail");
-        localDownloadInfo.j = -20;
-        localDownloadInfo.e = -2;
-        this.this$0.e(localDownloadInfo);
-        this.this$0.a(localDownloadInfo, localDownloadInfo.j, null);
-      }
-    }
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.21
  * JD-Core Version:    0.7.0.1
  */

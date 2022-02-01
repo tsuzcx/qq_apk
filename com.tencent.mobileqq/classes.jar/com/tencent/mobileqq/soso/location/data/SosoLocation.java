@@ -100,7 +100,8 @@ public final class SosoLocation
     if (paramInt == 4)
     {
       LinkedList localLinkedList = new LinkedList();
-      if ((this.poi != null) && (this.poi.size() > 0)) {
+      List localList = this.poi;
+      if ((localList != null) && (localList.size() > 0)) {
         localLinkedList.addAll(this.poi);
       }
       localSosoLocation.poi = localLinkedList;
@@ -141,7 +142,7 @@ public final class SosoLocation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soso.location.data.SosoLocation
  * JD-Core Version:    0.7.0.1
  */

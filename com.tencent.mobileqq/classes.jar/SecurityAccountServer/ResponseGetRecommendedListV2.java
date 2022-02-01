@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class ResponseGetRecommendedListV2
   extends JceStruct
@@ -108,20 +109,25 @@ public final class ResponseGetRecommendedListV2
     paramJceOutputStream.write(this.timeStamp, 1);
     paramJceOutputStream.write(this.sessionSid, 2);
     paramJceOutputStream.write(this.alreadyBindContacts, 3);
-    if (this.circleInfo != null) {
-      paramJceOutputStream.write(this.circleInfo, 4);
+    Object localObject = this.circleInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
-    if (this.assistBindContacts != null) {
-      paramJceOutputStream.write(this.assistBindContacts, 5);
+    localObject = this.assistBindContacts;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 5);
     }
-    if (this.nationCode != null) {
-      paramJceOutputStream.write(this.nationCode, 6);
+    localObject = this.nationCode;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.mobileNo != null) {
-      paramJceOutputStream.write(this.mobileNo, 7);
+    localObject = this.mobileNo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.MobileUniqueNo != null) {
-      paramJceOutputStream.write(this.MobileUniqueNo, 8);
+    localObject = this.MobileUniqueNo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
     paramJceOutputStream.write(this.lastUsedFlag, 9);
     paramJceOutputStream.write(this.type, 10);
@@ -136,7 +142,7 @@ public final class ResponseGetRecommendedListV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.ResponseGetRecommendedListV2
  * JD-Core Version:    0.7.0.1
  */

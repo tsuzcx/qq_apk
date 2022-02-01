@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class qq_ad_get$QQAdGetRsp$AdInfo$DisplayInfo
   extends MessageMicro<DisplayInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 66, 74, 80, 93, 96, 106, 114, 122, 130, 138 }, new String[] { "pattern_type", "creative_size", "animation_effect", "basic_info", "button_info", "muti_pic_text_info", "advertiser_info", "video_info", "local_info", "mini_program_type", "ecpm", "inner_adshowtype", "video_info2", "mini_program_name", "mini_program_id", "container_ad_item", "screenshot_url_list" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, null, null, null, null, null, Integer.valueOf(0), Float.valueOf(0.0F), Integer.valueOf(0), null, "", "", null, "" }, DisplayInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.AdvertiserInfo advertiser_info = new qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.AdvertiserInfo();
   public final PBUInt32Field animation_effect = PBField.initUInt32(0);
   public qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo basic_info = new qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo();
@@ -30,10 +30,16 @@ public final class qq_ad_get$QQAdGetRsp$AdInfo$DisplayInfo
   public final PBRepeatField<String> screenshot_url_list = PBField.initRepeat(PBStringField.__repeatHelper__);
   public qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo video_info = new qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo();
   public qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo video_info2 = new qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo();
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 66, 74, 80, 93, 96, 106, 114, 122, 130, 138 }, new String[] { "pattern_type", "creative_size", "animation_effect", "basic_info", "button_info", "muti_pic_text_info", "advertiser_info", "video_info", "local_info", "mini_program_type", "ecpm", "inner_adshowtype", "video_info2", "mini_program_name", "mini_program_id", "container_ad_item", "screenshot_url_list" }, new Object[] { localInteger, localInteger, localInteger, null, null, null, null, null, null, localInteger, Float.valueOf(0.0F), localInteger, null, "", "", null, "" }, DisplayInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo
  * JD-Core Version:    0.7.0.1
  */

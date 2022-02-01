@@ -3,9 +3,7 @@ package cooperation.ilive.lite.module;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.ilive.base.event.ModuleEvent;
 import com.tencent.ilive.pages.room.RoomBizContext;
-import com.tencent.ilive.pages.room.events.RoomCloseEvent;
 import com.tencent.ilivesdk.roomservice_interface.model.LiveInfo;
 import com.tencent.ilivesdk.roomservice_interface.model.LiveRoomInfo;
 import com.tencent.mobileqq.litelivesdk.utils.log.LogFactory;
@@ -25,23 +23,22 @@ class IliveCloseBtnModule$1
       long l = this.a.getRoomBizContext().mLiveInfo.roomInfo.roomId;
       Bundle localBundle = new Bundle();
       localBundle.putLong("roomId", l);
-      localBundle.putInt("closeFrom", 3);
+      localBundle.putInt("closeFrom", 1003);
       if (!IliveLiteEventCenter.a().a("ACTION_CLOSE_ROOM", localBundle)) {
-        this.a.getEvent().post(new RoomCloseEvent((short)3));
+        IliveCloseBtnModule.a(this.a);
       }
     }
-    for (;;)
+    else
     {
-      LogFactory.a().c(IliveCloseBtnModule.a(), "mCloseImageView");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.getEvent().post(new RoomCloseEvent((short)3));
+      IliveCloseBtnModule.a(this.a);
     }
+    LogFactory.a().c(IliveCloseBtnModule.a(), "mCloseImageView");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.lite.module.IliveCloseBtnModule.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,12 +15,13 @@ class HippyTKDRefreshHeader$7
     if (paramBitmap != null) {
       this.this$0.mPullDownToRefreshDesIcon = new BitmapDrawable(paramBitmap);
     }
-    this.this$0.mRefreshOffset = (this.this$0.mContentheight + this.val$imgDisplayOffset);
+    paramBitmap = this.this$0;
+    paramBitmap.mRefreshOffset = (paramBitmap.mContentheight + this.val$imgDisplayOffset);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.listview.HippyTKDRefreshHeader.7
  * JD-Core Version:    0.7.0.1
  */

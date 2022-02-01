@@ -2,169 +2,184 @@ package com.tencent.mobileqq.gamecenter.data;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.rebuild.GameMsgChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gamecenter.message.GameMsgUtil;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.api.IGameMsgHelperApi;
 import com.tencent.mobileqq.gamecenter.message.TinyIdCache;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.graytip.UniteGrayTipMsgUtil;
 import com.tencent.mobileqq.graytip.UniteGrayTipParam;
-import com.tencent.mobileqq.graytip.UniteGrayTipUtil;
+import com.tencent.mobileqq.msg.api.IMessageFacade;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.ArrayList<Lcom.tencent.mobileqq.gamecenter.data.GameMsgGrayTipsHandler.GrayTipsChildInfo;>;
 import java.util.Iterator;
+import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class GameMsgGrayTipsHandler
 {
-  public static final String a;
-  
-  static
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, long paramLong)
   {
-    jdField_a_of_type_JavaLangString = GameMsgChatPie.g;
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
-  {
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "[showGrayTip], content:" + paramString2 + ",start:" + paramInt1 + ",end:" + paramInt2 + ",url:" + paramString3);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[showGrayTip], content:");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append(",start:");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(",end:");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append(",url:");
+    ((StringBuilder)localObject).append(paramString3);
+    QLog.i("GameMsgGrayTipsHandler", 1, ((StringBuilder)localObject).toString());
     if (TextUtils.isEmpty(paramString2)) {
       return;
     }
     paramString1 = new UniteGrayTipParam(paramString1, paramQQAppInterface.getCurrentUin(), paramString2, 10007, -5020, 656397, MessageCache.a());
     paramString2 = new MessageForUniteGrayTip();
-    int i;
     if (!TextUtils.isEmpty(paramString3))
     {
-      if (paramInt2 <= paramInt1) {
-        break label185;
+      int j = 0;
+      int i;
+      if (paramInt2 > paramInt1) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      i = 1;
-      if (paramInt1 < 0) {
-        break label191;
+      if (paramInt1 >= 0) {
+        j = 1;
       }
-    }
-    label185:
-    label191:
-    for (int j = 1;; j = 0)
-    {
       if ((j & i) != 0)
       {
-        Bundle localBundle = new Bundle();
-        localBundle.putInt("key_action", 1);
-        localBundle.putString("textColor", "#40A0FF");
-        localBundle.putString("key_action_DATA", paramString3);
-        paramString1.a(paramInt1, paramInt2, localBundle);
+        localObject = new Bundle();
+        ((Bundle)localObject).putInt("key_action", 1);
+        ((Bundle)localObject).putString("textColor", "#40A0FF");
+        ((Bundle)localObject).putString("key_action_DATA", paramString3);
+        paramString1.a(paramInt1, paramInt2, (Bundle)localObject);
       }
-      paramString2.initGrayTipMsg(paramQQAppInterface, paramString1);
-      UniteGrayTipUtil.a(paramQQAppInterface, paramString2);
-      return;
-      i = 0;
-      break;
     }
+    paramString2.msgUid = paramLong;
+    paramString2.initGrayTipMsg(paramQQAppInterface, paramString1);
+    UniteGrayTipMsgUtil.a(paramQQAppInterface, paramString2);
   }
   
-  private static void a(QQAppInterface paramQQAppInterface, String paramString1, ArrayList<GameMsgGrayTipsHandler.GrayTipsChildInfo> paramArrayList, String paramString2, String paramString3, String paramString4)
+  private static void a(QQAppInterface paramQQAppInterface, String paramString1, ArrayList<GameMsgGrayTipsHandler.GrayTipsChildInfo> paramArrayList, String paramString2, String paramString3, String paramString4, long paramLong)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "[createGrayTips]");
+      QLog.d("GameMsgGrayTipsHandler", 2, "[createGrayTips]");
     }
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return;
-    }
-    String str = "";
-    int k = 0;
-    int i = 0;
-    Object localObject = "";
-    Iterator localIterator = paramArrayList.iterator();
-    int j = 0;
-    for (paramArrayList = (ArrayList<GameMsgGrayTipsHandler.GrayTipsChildInfo>)localObject; localIterator.hasNext(); paramArrayList = (ArrayList<GameMsgGrayTipsHandler.GrayTipsChildInfo>)localObject)
+    if (paramArrayList != null)
     {
-      GameMsgGrayTipsHandler.GrayTipsChildInfo localGrayTipsChildInfo = (GameMsgGrayTipsHandler.GrayTipsChildInfo)localIterator.next();
-      if (i == 0) {
-        k = str.length();
+      if (paramArrayList.size() == 0) {
+        return;
       }
-      int n = j;
-      int m = i;
-      localObject = paramArrayList;
-      if (2 == localGrayTipsChildInfo.jdField_a_of_type_Int)
+      Iterator localIterator = paramArrayList.iterator();
+      paramArrayList = "";
+      Object localObject2 = paramArrayList;
+      int k = 0;
+      int j = 0;
+      int i = 0;
+      while (localIterator.hasNext())
       {
-        n = j;
-        m = i;
-        localObject = paramArrayList;
-        if (!TextUtils.isEmpty(localGrayTipsChildInfo.b))
+        GameMsgGrayTipsHandler.GrayTipsChildInfo localGrayTipsChildInfo = (GameMsgGrayTipsHandler.GrayTipsChildInfo)localIterator.next();
+        if (i == 0) {
+          j = paramArrayList.length();
+        }
+        int n = k;
+        int m = i;
+        Object localObject1 = localObject2;
+        if (2 == localGrayTipsChildInfo.jdField_a_of_type_Int)
         {
-          n = j;
+          n = k;
           m = i;
-          localObject = paramArrayList;
-          if (!TextUtils.isEmpty(localGrayTipsChildInfo.jdField_a_of_type_JavaLangString))
+          localObject1 = localObject2;
+          if (!TextUtils.isEmpty(localGrayTipsChildInfo.b))
           {
-            n = j;
+            n = k;
             m = i;
-            localObject = paramArrayList;
-            if (j == 0)
+            localObject1 = localObject2;
+            if (!TextUtils.isEmpty(localGrayTipsChildInfo.jdField_a_of_type_JavaLangString))
             {
-              localObject = localGrayTipsChildInfo.b;
-              m = k + localGrayTipsChildInfo.jdField_a_of_type_JavaLangString.length();
-              n = 1;
+              n = k;
+              m = i;
+              localObject1 = localObject2;
+              if (k == 0)
+              {
+                localObject1 = localGrayTipsChildInfo.b;
+                i = localGrayTipsChildInfo.jdField_a_of_type_JavaLangString.length();
+                m = i + j;
+                n = 1;
+              }
             }
           }
         }
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(paramArrayList);
+        ((StringBuilder)localObject2).append(localGrayTipsChildInfo.jdField_a_of_type_JavaLangString);
+        paramArrayList = ((StringBuilder)localObject2).toString();
+        k = n;
+        i = m;
+        localObject2 = localObject1;
       }
-      str = str + localGrayTipsChildInfo.jdField_a_of_type_JavaLangString;
-      j = n;
-      i = m;
-    }
-    a(paramQQAppInterface, paramString1, str, k, i, paramArrayList);
-    GameMsgUtil.a(GameMsgChatPie.h, "1", "145", "920", "92005", "207652", str, "", "8", "");
-    paramString1 = "";
-    paramArrayList = "";
-    if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
-    {
-      paramArrayList = paramString3;
-      paramString1 = paramString2;
-    }
-    for (;;)
-    {
-      GameMsgUtil.a(GameMsgChatPie.h, "1", "145", "920", "92005", "207652", str, "", "8", paramString1, "", paramArrayList);
-      return;
-      if (!TextUtils.isEmpty(paramString4))
+      a(paramQQAppInterface, paramString1, paramArrayList, j, i, (String)localObject2, paramLong);
+      ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).reportForGameMsg(GameMsgChatPie.e, "1", "145", "920", "92005", "207652", paramArrayList, "", "8", "");
+      if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
       {
-        paramArrayList = paramQQAppInterface.getCurrentAccountUin();
-        paramString1 = paramString4;
+        paramQQAppInterface = paramString2;
+        paramString1 = paramString3;
       }
+      else if (!TextUtils.isEmpty(paramString4))
+      {
+        paramString1 = paramQQAppInterface.getCurrentAccountUin();
+        paramQQAppInterface = paramString4;
+      }
+      else
+      {
+        paramQQAppInterface = "";
+        paramString1 = paramQQAppInterface;
+      }
+      ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).reportForGameMsg(GameMsgChatPie.e, "1", "145", "920", "92005", "207652", paramArrayList, "", "8", paramQQAppInterface, "", paramString1);
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, JSONObject paramJSONObject)
+  public static void a(QQAppInterface paramQQAppInterface, JSONObject paramJSONObject, long paramLong)
   {
     try
     {
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "[handleGrayTipsFrom0x11c],data:" + paramJSONObject.toString());
-      String str1 = paramJSONObject.optString("from_tinyid");
-      String str2 = paramJSONObject.optString("tinyid");
-      paramJSONObject = paramJSONObject.optJSONArray("content");
-      String str3 = paramQQAppInterface.getTinyIdCache().a(str1, str2);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[handleGrayTipsFrom0x11c],data:");
+      ((StringBuilder)localObject).append(paramJSONObject.toString());
+      ((StringBuilder)localObject).append(",uid:");
+      ((StringBuilder)localObject).append(paramLong);
+      QLog.i("GameMsgGrayTipsHandler", 1, ((StringBuilder)localObject).toString());
+      localObject = paramJSONObject.optString("from_tinyid");
+      String str1 = paramJSONObject.optString("tinyid");
+      String str2 = ((IMessageFacade)paramQQAppInterface.getRuntimeService(IMessageFacade.class, "")).getTinyIdCache().a((String)localObject, str1);
+      if (a(paramQQAppInterface, str2, paramLong)) {
+        return;
+      }
       JSONArray localJSONArray = new JSONArray();
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("content", paramJSONObject);
+      localJSONObject.put("content", paramJSONObject.optJSONArray("content"));
       localJSONArray.put(localJSONObject);
-      a(localJSONArray, paramQQAppInterface, str3, str1, str2, "");
+      a(localJSONArray, paramQQAppInterface, str2, (String)localObject, str1, "", paramLong);
       return;
     }
     catch (Throwable paramQQAppInterface)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, paramQQAppInterface, new Object[0]);
+      QLog.e("GameMsgGrayTipsHandler", 1, paramQQAppInterface, new Object[0]);
     }
   }
   
-  public static void a(Object paramObject, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4)
+  public static void a(Object paramObject, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
   {
     try
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[onGetGrayTips], data:", paramObject });
+        QLog.d("GameMsgGrayTipsHandler", 2, new Object[] { "[onGetGrayTips], data:", paramObject });
       }
       paramObject = (JSONArray)paramObject;
       int i = 0;
@@ -183,20 +198,45 @@ public class GameMsgGrayTipsHandler
           localArrayList.add(localGrayTipsChildInfo);
           j += 1;
         }
-        a(paramQQAppInterface, paramString1, localArrayList, paramString2, paramString3, paramString4);
+        a(paramQQAppInterface, paramString1, localArrayList, paramString2, paramString3, paramString4, paramLong);
         i += 1;
       }
       return;
     }
     catch (Throwable paramObject)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, paramObject, new Object[0]);
+      QLog.e("GameMsgGrayTipsHandler", 1, paramObject, new Object[0]);
     }
+  }
+  
+  private static boolean a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
+  {
+    if (paramQQAppInterface != null) {
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
+      }
+    }
+    try
+    {
+      paramQQAppInterface = paramQQAppInterface.getMessageFacade().a(paramString, 10007, 10).iterator();
+      while (paramQQAppInterface.hasNext())
+      {
+        paramString = (MessageRecord)paramQQAppInterface.next();
+        if ((paramString != null) && ((paramString instanceof MessageForUniteGrayTip)) && (paramString.msgUid == paramLong))
+        {
+          QLog.i("GameMsgGrayTipsHandler", 1, "The Same game graytips!");
+          return true;
+        }
+      }
+      return false;
+    }
+    catch (Throwable paramQQAppInterface) {}
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.data.GameMsgGrayTipsHandler
  * JD-Core Version:    0.7.0.1
  */

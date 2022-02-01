@@ -48,12 +48,8 @@ public class VoIPProxyImpl
     IMultiOperator localIMultiOperator = QavSDK.a().a();
     if (localIMultiOperator != null)
     {
-      if (!paramBoolean) {}
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        localIMultiOperator.b(paramBoolean);
-        return 0;
-      }
+      localIMultiOperator.b(paramBoolean ^ true);
+      return 0;
     }
     return -1;
   }
@@ -123,7 +119,7 @@ public class VoIPProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.VoIPProxyImpl
  * JD-Core Version:    0.7.0.1
  */

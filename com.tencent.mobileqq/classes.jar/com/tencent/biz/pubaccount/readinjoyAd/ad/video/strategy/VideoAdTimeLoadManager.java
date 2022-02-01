@@ -4,11 +4,13 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.SparseArray;
 import com.tencent.biz.pubaccount.NativeAd.data.AdRequestData;
-import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdLog;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdLogService;
+import com.tencent.mobileqq.kandian.ad.api.entity.IVideoAdTimeLoadManager;
+import com.tencent.mobileqq.kandian.biz.video.playfeeds.api.IVideoFeedsAdapter;
+import com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoInfo;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,6 +19,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class VideoAdTimeLoadManager
+  implements IVideoAdTimeLoadManager
 {
   private static SparseArray<Integer> jdField_a_of_type_AndroidUtilSparseArray;
   public static CopyOnWriteArrayList<VideoInfo> a;
@@ -27,7 +30,7 @@ public class VideoAdTimeLoadManager
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long = 0L;
   private Handler jdField_a_of_type_AndroidOsHandler = new VideoAdTimeLoadManager.1(this, Looper.getMainLooper());
-  private VideoFeedsAdapter jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter;
+  private IVideoFeedsAdapter jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter;
   private ArrayList<VideoInfo> jdField_a_of_type_JavaUtilArrayList;
   private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int = 2;
@@ -42,16 +45,19 @@ public class VideoAdTimeLoadManager
     jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   }
   
-  public VideoAdTimeLoadManager(VideoFeedsAdapter paramVideoFeedsAdapter, ArrayList<VideoInfo> paramArrayList)
+  public VideoAdTimeLoadManager(IVideoFeedsAdapter paramIVideoFeedsAdapter, ArrayList<VideoInfo> paramArrayList)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter = paramVideoFeedsAdapter;
+    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter = paramIVideoFeedsAdapter;
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
   
   public static int a()
   {
-    if ((jdField_b_of_type_JavaUtilArrayList != null) && (jdField_b_of_type_JavaUtilArrayList.size() > 0)) {
-      return ((Integer)jdField_b_of_type_JavaUtilArrayList.get(jdField_b_of_type_JavaUtilArrayList.size() - 1)).intValue();
+    ArrayList localArrayList = jdField_b_of_type_JavaUtilArrayList;
+    if ((localArrayList != null) && (localArrayList.size() > 0))
+    {
+      localArrayList = jdField_b_of_type_JavaUtilArrayList;
+      return ((Integer)localArrayList.get(localArrayList.size() - 1)).intValue();
     }
     return 0;
   }
@@ -76,7 +82,7 @@ public class VideoAdTimeLoadManager
       while (paramArrayList.hasNext())
       {
         VideoInfo localVideoInfo = (VideoInfo)paramArrayList.next();
-        if (localVideoInfo.jdField_c_of_type_Boolean) {
+        if (localVideoInfo.r) {
           localArrayList.add(localVideoInfo);
         }
       }
@@ -97,104 +103,139 @@ public class VideoAdTimeLoadManager
   
   public static void a(int paramInt, ArrayList<AdvertisementInfo> paramArrayList)
   {
-    if ((paramInt != 88888888) || (paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
+    if ((paramInt == 88888888) && (paramArrayList != null))
     {
-      AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)paramArrayList.next();
-      VideoInfo localVideoInfo = VideoAdExposureManager.a(localAdvertisementInfo, false);
-      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localVideoInfo);
-      localStringBuilder.append(localAdvertisementInfo.mTitle + "---");
+      if (paramArrayList.size() == 0) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        localObject1 = (AdvertisementInfo)paramArrayList.next();
+        Object localObject2 = VideoAdExposureManager.a((AdvertisementInfo)localObject1, false);
+        jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localObject2);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(((AdvertisementInfo)localObject1).mTitle);
+        ((StringBuilder)localObject2).append("---");
+        localStringBuilder.append(((StringBuilder)localObject2).toString());
+      }
+      paramArrayList = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onAsyncDataReady :");
+      ((StringBuilder)localObject1).append(localStringBuilder.toString());
+      paramArrayList.d("VideoAdTimeLoadManager", ((StringBuilder)localObject1).toString());
     }
-    ReadInJoyAdLog.a("VideoAdTimeLoadManager", "onAsyncDataReady :" + localStringBuilder.toString());
   }
   
   private boolean a(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter == null) || (this.jdField_a_of_type_JavaUtilArrayList == null) || (paramInt < 0) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= paramInt))
+    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter != null)
     {
-      ReadInJoyAdLog.a("VideoAdTimeLoadManager", "Invalid parameter");
-      return false;
+      Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      if ((localObject != null) && (paramInt >= 0) && (((ArrayList)localObject).size() > paramInt))
+      {
+        if (((VideoInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).r)
+        {
+          localObject = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramInt);
+          localStringBuilder.append(" has adVideo");
+          ((IRIJAdLogService)localObject).d("VideoAdTimeLoadManager", localStringBuilder.toString());
+          return true;
+        }
+        return false;
+      }
     }
-    if (((VideoInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_c_of_type_Boolean)
-    {
-      ReadInJoyAdLog.a("VideoAdTimeLoadManager", paramInt + " has adVideo");
-      return true;
-    }
+    ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("VideoAdTimeLoadManager", "Invalid parameter");
     return false;
   }
   
   private boolean a(int paramInt, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter == null) || (this.jdField_a_of_type_JavaUtilArrayList == null) || (paramInt < 0) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= paramInt))
+    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter != null)
     {
-      ReadInJoyAdLog.a("VideoAdTimeLoadManager", "Invalid parameter");
-      return false;
+      Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      if ((localObject != null) && (paramInt >= 0) && (((ArrayList)localObject).size() > paramInt))
+      {
+        int i = a();
+        if ((i > 0) && (paramInt - i < VideoAdStrategyManager.e + 1) && (!paramBoolean))
+        {
+          ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("VideoAdTimeLoadManager", "not meet adProtectGap");
+          return false;
+        }
+        if (paramInt > this.jdField_a_of_type_JavaUtilArrayList.size() - 1)
+        {
+          localObject = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("article size = ");
+          localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList.size());
+          localStringBuilder.append(" but  pos = ");
+          localStringBuilder.append(paramInt);
+          ((IRIJAdLogService)localObject).d("VideoAdTimeLoadManager", localStringBuilder.toString());
+          return false;
+        }
+        if (a(paramInt))
+        {
+          ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("VideoAdTimeLoadManager", "shouldInsert not allow insert！");
+          return false;
+        }
+        if ((paramBoolean) && (i != 0) && (i == this.jdField_a_of_type_Int))
+        {
+          ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("VideoAdTimeLoadManager", "insertAd not allow insert vv default");
+          return false;
+        }
+        return true;
+      }
     }
-    int i = a();
-    if ((i > 0) && (paramInt - i < VideoAdStrategyManager.e + 1) && (!paramBoolean))
-    {
-      ReadInJoyAdLog.a("VideoAdTimeLoadManager", "not meet adProtectGap");
-      return false;
-    }
-    if (paramInt > this.jdField_a_of_type_JavaUtilArrayList.size() - 1)
-    {
-      ReadInJoyAdLog.a("VideoAdTimeLoadManager", "article size = " + this.jdField_a_of_type_JavaUtilArrayList.size() + " but  pos = " + paramInt);
-      return false;
-    }
-    if (a(paramInt))
-    {
-      ReadInJoyAdLog.a("VideoAdTimeLoadManager", "shouldInsert not allow insert！");
-      return false;
-    }
-    if ((paramBoolean) && (i != 0) && (i == this.jdField_a_of_type_Int))
-    {
-      ReadInJoyAdLog.a("VideoAdTimeLoadManager", "insertAd not allow insert vv default");
-      return false;
-    }
-    return true;
+    ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("VideoAdTimeLoadManager", "Invalid parameter");
+    return false;
   }
   
   private void b(boolean paramBoolean)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
     if (this.jdField_b_of_type_Boolean) {
       return;
     }
+    boolean bool1 = false;
+    boolean bool2 = true;
     if ((!paramBoolean) && (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1))
     {
-      localStringBuilder = new StringBuilder().append("repeat startPlay, so return isMainThread : ");
-      if (Looper.myLooper() == Looper.getMainLooper()) {}
-      for (paramBoolean = bool1;; paramBoolean = false)
-      {
-        ReadInJoyAdLog.a("VideoAdTimeLoadManager", paramBoolean);
-        return;
+      localIRIJAdLogService = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("repeat startPlay, so return isMainThread : ");
+      paramBoolean = bool1;
+      if (Looper.myLooper() == Looper.getMainLooper()) {
+        paramBoolean = true;
       }
-    }
-    StringBuilder localStringBuilder = new StringBuilder().append("startTiming :").append(this.jdField_a_of_type_Long).append(" isMainThread : ");
-    if (Looper.myLooper() == Looper.getMainLooper()) {}
-    for (paramBoolean = bool2;; paramBoolean = false)
-    {
-      ReadInJoyAdLog.a("VideoAdTimeLoadManager", paramBoolean);
-      this.jdField_a_of_type_Long += 1L;
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 1000L);
-      int i = VideoAdStrategyManager.jdField_b_of_type_Int;
-      h();
-      if (this.jdField_a_of_type_Boolean) {
-        i = VideoAdStrategyManager.jdField_c_of_type_Int;
-      }
-      if (this.jdField_a_of_type_Long >= i - VideoAdStrategyManager.d) {
-        j();
-      }
-      if (this.jdField_a_of_type_Long < i) {
-        break;
-      }
-      a(false);
+      localStringBuilder.append(paramBoolean);
+      localIRIJAdLogService.d("VideoAdTimeLoadManager", localStringBuilder.toString());
       return;
+    }
+    IRIJAdLogService localIRIJAdLogService = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("startTiming :");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" isMainThread : ");
+    if (Looper.myLooper() == Looper.getMainLooper()) {
+      paramBoolean = bool2;
+    } else {
+      paramBoolean = false;
+    }
+    localStringBuilder.append(paramBoolean);
+    localIRIJAdLogService.d("VideoAdTimeLoadManager", localStringBuilder.toString());
+    this.jdField_a_of_type_Long += 1L;
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 1000L);
+    int i = VideoAdStrategyManager.jdField_b_of_type_Int;
+    h();
+    if (this.jdField_a_of_type_Boolean) {
+      i = VideoAdStrategyManager.jdField_c_of_type_Int;
+    }
+    if (this.jdField_a_of_type_Long >= i - VideoAdStrategyManager.d) {
+      j();
+    }
+    if (this.jdField_a_of_type_Long >= i) {
+      a(false);
     }
   }
   
@@ -209,35 +250,37 @@ public class VideoAdTimeLoadManager
   
   private void h()
   {
-    if ((VideoAdStrategyManager.j == 0) || (VideoAdStrategyManager.l == 0) || (VideoAdStrategyManager.k == 0) || (jdField_b_of_type_JavaUtilArrayList == null)) {
-      ReadInJoyAdLog.a("VideoAdTimeLoadManager", "checkNeedInsertFromVV no vv data");
-    }
-    do
+    if ((VideoAdStrategyManager.j != 0) && (VideoAdStrategyManager.l != 0) && (VideoAdStrategyManager.k != 0) && (jdField_b_of_type_JavaUtilArrayList != null))
     {
-      do
+      if ((VideoAdStrategyManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= VideoAdStrategyManager.j) || (VideoAdStrategyManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= VideoAdStrategyManager.k) || (VideoAdStrategyManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= VideoAdStrategyManager.l))
       {
-        return;
-      } while ((VideoAdStrategyManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() < VideoAdStrategyManager.j) && (VideoAdStrategyManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() < VideoAdStrategyManager.k) && (VideoAdStrategyManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() < VideoAdStrategyManager.l));
-      if ((jdField_b_of_type_JavaUtilArrayList.size() > 1) && (VideoAdStrategyManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= VideoAdStrategyManager.l))
-      {
-        ReadInJoyAdLog.a("VideoAdTimeLoadManager", "checkNeedInsertFromVV is adVvIntervalOther");
-        i();
-        return;
+        if ((jdField_b_of_type_JavaUtilArrayList.size() > 1) && (VideoAdStrategyManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= VideoAdStrategyManager.l))
+        {
+          ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("VideoAdTimeLoadManager", "checkNeedInsertFromVV is adVvIntervalOther");
+          i();
+          return;
+        }
+        if ((jdField_b_of_type_JavaUtilArrayList.size() == 0) && (VideoAdStrategyManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= VideoAdStrategyManager.j))
+        {
+          ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("VideoAdTimeLoadManager", "checkNeedInsertFromVV is adVvIntervalFirst");
+          i();
+          return;
+        }
+        if ((jdField_b_of_type_JavaUtilArrayList.size() == 1) && (VideoAdStrategyManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= VideoAdStrategyManager.k))
+        {
+          ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("VideoAdTimeLoadManager", "checkNeedInsertFromVV is adVvIntervalSecond");
+          i();
+        }
       }
-      if ((jdField_b_of_type_JavaUtilArrayList.size() == 0) && (VideoAdStrategyManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= VideoAdStrategyManager.j))
-      {
-        ReadInJoyAdLog.a("VideoAdTimeLoadManager", "checkNeedInsertFromVV is adVvIntervalFirst");
-        i();
-        return;
-      }
-    } while ((jdField_b_of_type_JavaUtilArrayList.size() != 1) || (VideoAdStrategyManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() < VideoAdStrategyManager.k));
-    ReadInJoyAdLog.a("VideoAdTimeLoadManager", "checkNeedInsertFromVV is adVvIntervalSecond");
-    i();
+      return;
+    }
+    ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("VideoAdTimeLoadManager", "checkNeedInsertFromVV no vv data");
   }
   
   private void i()
   {
-    if ((jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == 0)) {
+    CopyOnWriteArrayList localCopyOnWriteArrayList = jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+    if ((localCopyOnWriteArrayList != null) && (localCopyOnWriteArrayList.size() == 0)) {
       j();
     }
     a(true);
@@ -245,32 +288,44 @@ public class VideoAdTimeLoadManager
   
   private void j()
   {
-    if (jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() > 0) {
-      ReadInJoyAdLog.a("VideoAdTimeLoadManager", "adVideoCache size :" + jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+    Object localObject;
+    StringBuilder localStringBuilder;
+    if (jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() > 0)
+    {
+      localObject = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("adVideoCache size :");
+      localStringBuilder.append(jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+      ((IRIJAdLogService)localObject).d("VideoAdTimeLoadManager", localStringBuilder.toString());
+      return;
     }
-    while (a(this.jdField_a_of_type_Int + 1)) {
+    if (a(this.jdField_a_of_type_Int + 1)) {
       return;
     }
     int i = a();
     int j = a(i);
     if (j >= 3)
     {
-      ReadInJoyAdLog.a("VideoAdTimeLoadManager", "has preLoad 3 times");
+      ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("VideoAdTimeLoadManager", "has preLoad 3 times");
       return;
     }
     if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
     {
-      ReadInJoyAdLog.a("VideoAdTimeLoadManager", "preLoadAd :" + this.jdField_a_of_type_Long);
-      AdRequestData localAdRequestData = new AdRequestData();
-      localAdRequestData.h = 1;
-      localAdRequestData.i = this.jdField_b_of_type_Int;
-      localAdRequestData.j = i;
-      localAdRequestData.jdField_a_of_type_Boolean = true;
-      ThreadManager.executeOnSubThread(new VideoAdTimeLoadManager.2(this, localAdRequestData));
+      localObject = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("preLoadAd :");
+      localStringBuilder.append(this.jdField_a_of_type_Long);
+      ((IRIJAdLogService)localObject).d("VideoAdTimeLoadManager", localStringBuilder.toString());
+      localObject = new AdRequestData();
+      ((AdRequestData)localObject).h = 1;
+      ((AdRequestData)localObject).i = this.jdField_b_of_type_Int;
+      ((AdRequestData)localObject).j = i;
+      ((AdRequestData)localObject).jdField_a_of_type_Boolean = true;
+      ThreadManager.executeOnSubThread(new VideoAdTimeLoadManager.2(this, (AdRequestData)localObject));
       jdField_a_of_type_AndroidUtilSparseArray.put(i, Integer.valueOf(j + 1));
       return;
     }
-    ReadInJoyAdLog.a("VideoAdTimeLoadManager", "preLoading : so return");
+    ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("VideoAdTimeLoadManager", "preLoading : so return");
   }
   
   public long a()
@@ -280,17 +335,16 @@ public class VideoAdTimeLoadManager
   
   public VideoInfo a()
   {
-    if ((jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() > 0)) {
+    CopyOnWriteArrayList localCopyOnWriteArrayList = jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+    if ((localCopyOnWriteArrayList != null) && (localCopyOnWriteArrayList.size() > 0)) {
       return (VideoInfo)jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(0);
     }
     if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
       j();
+    } else {
+      ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("VideoAdTimeLoadManager", "getVideoInfo onAdPreLoading is true");
     }
-    for (;;)
-    {
-      return null;
-      ReadInJoyAdLog.a("VideoAdTimeLoadManager", "getVideoInfo onAdPreLoading is true");
-    }
+    return null;
   }
   
   public void a()
@@ -302,59 +356,79 @@ public class VideoAdTimeLoadManager
   {
     if (paramVideoInfo != null)
     {
-      if (paramVideoInfo.jdField_b_of_type_Int > paramVideoInfo.jdField_c_of_type_Int) {}
-      for (this.jdField_b_of_type_Int = 1;; this.jdField_b_of_type_Int = 2)
-      {
-        QLog.d("VideoAdTimeLoadManager", 1, "setSceneId : sceneId = " + this.jdField_b_of_type_Int + " , videoInfo = " + paramVideoInfo.jdField_c_of_type_JavaLangString);
-        return;
+      if (paramVideoInfo.jdField_b_of_type_Int > paramVideoInfo.jdField_c_of_type_Int) {
+        this.jdField_b_of_type_Int = 1;
+      } else {
+        this.jdField_b_of_type_Int = 2;
       }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setSceneId : sceneId = ");
+      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append(" , videoInfo = ");
+      localStringBuilder.append(paramVideoInfo.jdField_c_of_type_JavaLangString);
+      QLog.d("VideoAdTimeLoadManager", 1, localStringBuilder.toString());
+      return;
     }
     QLog.d("VideoAdTimeLoadManager", 1, "setSceneId : videoInfo is null");
   }
   
   public void a(boolean paramBoolean)
   {
-    ReadInJoyAdLog.a("VideoAdTimeLoadManager", "onInsertAd :" + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+    Object localObject = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onInsertAd :");
+    localStringBuilder.append(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+    ((IRIJAdLogService)localObject).d("VideoAdTimeLoadManager", localStringBuilder.toString());
     int i = this.jdField_a_of_type_Int + 1;
     if (!a(i, paramBoolean)) {
       return;
     }
-    VideoInfo localVideoInfo = a();
-    if (localVideoInfo == null)
+    localObject = a();
+    if (localObject == null)
     {
-      ReadInJoyAdLog.a("VideoAdTimeLoadManager", "empty cache");
+      ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("VideoAdTimeLoadManager", "empty cache");
       return;
     }
-    ReadInJoyAdLog.a("VideoAdTimeLoadManager", "onInsertAd : success");
-    this.jdField_a_of_type_AndroidOsHandler.post(new VideoAdTimeLoadManager.3(this, i, localVideoInfo));
-    localVideoInfo.a.jdField_a_of_type_Int = i;
+    ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("VideoAdTimeLoadManager", "onInsertAd : success");
+    this.jdField_a_of_type_AndroidOsHandler.post(new VideoAdTimeLoadManager.3(this, i, (VideoInfo)localObject));
+    ((VideoInfo)localObject).a.jdField_a_of_type_Int = i;
     int j = a();
-    if (j == 0) {}
-    for (localVideoInfo.a.jdField_b_of_type_Int = 0;; localVideoInfo.a.jdField_b_of_type_Int = (i - j))
-    {
-      localVideoInfo.a.jdField_c_of_type_Int = VideoAdStrategyManager.jdField_c_of_type_Int;
-      c(i);
-      ReadInJoyAdLog.a("VideoAdTimeLoadManager", "insert success: pos = " + i);
-      return;
+    if (j == 0) {
+      ((VideoInfo)localObject).a.jdField_b_of_type_Int = 0;
+    } else {
+      ((VideoInfo)localObject).a.jdField_b_of_type_Int = (i - j);
     }
+    ((VideoInfo)localObject).a.jdField_c_of_type_Int = VideoAdStrategyManager.jdField_c_of_type_Int;
+    c(i);
+    localObject = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("insert success: pos = ");
+    localStringBuilder.append(i);
+    ((IRIJAdLogService)localObject).d("VideoAdTimeLoadManager", localStringBuilder.toString());
   }
   
   public void b()
   {
-    if ((VideoAdStrategyManager.c()) && (VideoAdStrategyManager.b()))
+    if ((VideoAdStrategyManager.e()) && (VideoAdStrategyManager.d()))
     {
       e();
       return;
     }
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
     this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
-    StringBuilder localStringBuilder = new StringBuilder().append("pauseTiming :").append(this.jdField_a_of_type_Long).append(" isMainThread : ");
-    if (Looper.myLooper() == Looper.getMainLooper()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ReadInJoyAdLog.a("VideoAdTimeLoadManager", bool);
-      return;
+    IRIJAdLogService localIRIJAdLogService = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pauseTiming :");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" isMainThread : ");
+    boolean bool;
+    if (Looper.myLooper() == Looper.getMainLooper()) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    localStringBuilder.append(bool);
+    localIRIJAdLogService.d("VideoAdTimeLoadManager", localStringBuilder.toString());
   }
   
   public void b(int paramInt)
@@ -362,7 +436,11 @@ public class VideoAdTimeLoadManager
     if (paramInt > this.jdField_a_of_type_Int) {
       this.jdField_a_of_type_Int = paramInt;
     }
-    ReadInJoyAdLog.a("VideoAdTimeLoadManager", "lastPlayPosition = " + this.jdField_a_of_type_Int);
+    IRIJAdLogService localIRIJAdLogService = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("lastPlayPosition = ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localIRIJAdLogService.d("VideoAdTimeLoadManager", localStringBuilder.toString());
   }
   
   public void c()
@@ -390,18 +468,22 @@ public class VideoAdTimeLoadManager
   
   public void f()
   {
-    if ((VideoAdStrategyManager.c()) && (VideoAdStrategyManager.b())) {
+    if ((VideoAdStrategyManager.e()) && (VideoAdStrategyManager.d())) {
       return;
     }
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
-    ReadInJoyAdLog.a("VideoAdTimeLoadManager", "restoreTiming :" + this.jdField_a_of_type_Long);
+    IRIJAdLogService localIRIJAdLogService = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("restoreTiming :");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localIRIJAdLogService.d("VideoAdTimeLoadManager", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.video.strategy.VideoAdTimeLoadManager
  * JD-Core Version:    0.7.0.1
  */

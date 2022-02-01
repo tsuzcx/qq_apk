@@ -14,20 +14,22 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.profile.DataTag;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profilecard.api.IProfileCardBusinessApi;
+import com.tencent.mobileqq.profilecard.api.IProfileGuideApi;
 import com.tencent.mobileqq.profilecard.base.component.AbsProfileContentComponent;
+import com.tencent.mobileqq.profilecard.base.config.IProfileConfig;
 import com.tencent.mobileqq.profilecard.base.framework.IComponentCenter;
-import com.tencent.mobileqq.profilecard.base.utils.ProfileCardUtils;
 import com.tencent.mobileqq.profilecard.bussiness.accountinfo.report.ProfileAccountInfoReport;
 import com.tencent.mobileqq.profilecard.bussiness.accountinfo.utils.ProfileAccountInfoUtils;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.widget.ProfileConfigHelper;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
+import com.tencent.mobileqq.profilecard.utils.ProfilePAUtils;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
@@ -51,42 +53,42 @@ public class ProfileAccountInfoV2Component
   
   private void appendBirthdayAndConstellation(List<String> paramList, ProfileCardInfo paramProfileCardInfo, Resources paramResources)
   {
-    Object localObject = null;
     String str = ProfileAccountInfoUtils.getConstellationWithPrivacy(paramProfileCardInfo);
     long l = ProfileAccountInfoUtils.getBirthdayWithPrivacy(paramProfileCardInfo);
-    paramProfileCardInfo = localObject;
     if (l > 0L)
     {
       int i = (int)(0xFF00 & l) >> 8;
       int j = (int)(l & 0xFF);
-      paramProfileCardInfo = localObject;
-      if (i > 0)
+      if ((i > 0) && (j > 0))
       {
-        paramProfileCardInfo = localObject;
-        if (j > 0)
-        {
-          paramProfileCardInfo = new StringBuilder();
-          paramProfileCardInfo.append(i);
-          paramProfileCardInfo.append(paramResources.getString(2131694236));
-          paramProfileCardInfo.append(j);
-          paramProfileCardInfo.append(paramResources.getString(2131691528));
-          paramProfileCardInfo = paramProfileCardInfo.toString();
-        }
+        paramProfileCardInfo = new StringBuilder();
+        paramProfileCardInfo.append(i);
+        paramProfileCardInfo.append(paramResources.getString(2131694201));
+        paramProfileCardInfo.append(j);
+        paramProfileCardInfo.append(paramResources.getString(2131691450));
+        paramProfileCardInfo = paramProfileCardInfo.toString();
+        break label104;
       }
     }
-    if ((!TextUtils.isEmpty(paramProfileCardInfo)) && (!TextUtils.isEmpty(str))) {
-      paramList.add(paramProfileCardInfo + " " + str);
-    }
-    do
+    paramProfileCardInfo = null;
+    label104:
+    if ((!TextUtils.isEmpty(paramProfileCardInfo)) && (!TextUtils.isEmpty(str)))
     {
+      paramResources = new StringBuilder();
+      paramResources.append(paramProfileCardInfo);
+      paramResources.append(" ");
+      paramResources.append(str);
+      paramList.add(paramResources.toString());
       return;
-      if (!TextUtils.isEmpty(paramProfileCardInfo))
-      {
-        paramList.add(paramProfileCardInfo);
-        return;
-      }
-    } while (TextUtils.isEmpty(str));
-    paramList.add(str);
+    }
+    if (!TextUtils.isEmpty(paramProfileCardInfo))
+    {
+      paramList.add(paramProfileCardInfo);
+      return;
+    }
+    if (!TextUtils.isEmpty(str)) {
+      paramList.add(str);
+    }
   }
   
   private void appendCompany(List<String> paramList, ProfileCardInfo paramProfileCardInfo, Resources paramResources)
@@ -107,40 +109,41 @@ public class ProfileAccountInfoV2Component
   
   private void appendGenderAndAge(List<String> paramList, ProfileCardInfo paramProfileCardInfo, Resources paramResources)
   {
-    Object localObject = null;
     int i = ProfileAccountInfoUtils.getGenderWithPrivacy(paramProfileCardInfo);
+    Object localObject = null;
     String str;
     if (i == 0) {
-      str = paramResources.getString(2131693923);
-    }
-    for (;;)
-    {
-      i = ProfileAccountInfoUtils.getAgeWithPrivacy(paramProfileCardInfo);
-      paramProfileCardInfo = localObject;
-      if (i > 0) {
-        paramProfileCardInfo = i + paramResources.getString(2131719672);
-      }
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramProfileCardInfo))) {
-        paramList.add(str + " " + paramProfileCardInfo);
-      }
-      do
-      {
-        return;
-        if (i != 1) {
-          break label159;
-        }
-        str = paramResources.getString(2131692330);
-        break;
-        if (!TextUtils.isEmpty(str))
-        {
-          paramList.add(str);
-          return;
-        }
-      } while (TextUtils.isEmpty(paramProfileCardInfo));
-      paramList.add(paramProfileCardInfo);
-      return;
-      label159:
+      str = paramResources.getString(2131693879);
+    } else if (i == 1) {
+      str = paramResources.getString(2131692259);
+    } else {
       str = null;
+    }
+    i = ProfileAccountInfoUtils.getAgeWithPrivacy(paramProfileCardInfo);
+    paramProfileCardInfo = localObject;
+    if (i > 0)
+    {
+      paramProfileCardInfo = new StringBuilder();
+      paramProfileCardInfo.append(i);
+      paramProfileCardInfo.append(paramResources.getString(2131719391));
+      paramProfileCardInfo = paramProfileCardInfo.toString();
+    }
+    if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramProfileCardInfo)))
+    {
+      paramResources = new StringBuilder();
+      paramResources.append(str);
+      paramResources.append(" ");
+      paramResources.append(paramProfileCardInfo);
+      paramList.add(paramResources.toString());
+      return;
+    }
+    if (!TextUtils.isEmpty(str))
+    {
+      paramList.add(str);
+      return;
+    }
+    if (!TextUtils.isEmpty(paramProfileCardInfo)) {
+      paramList.add(paramProfileCardInfo);
     }
   }
   
@@ -151,7 +154,7 @@ public class ProfileAccountInfoV2Component
     if ((!TextUtils.isEmpty(str)) || (!TextUtils.isEmpty(paramProfileCardInfo)))
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramResources.getString(2131699046));
+      localStringBuilder.append(paramResources.getString(2131699150));
       if (!TextUtils.isEmpty(str)) {
         localStringBuilder.append(str);
       }
@@ -169,7 +172,7 @@ public class ProfileAccountInfoV2Component
     if ((!TextUtils.isEmpty(str)) || (!TextUtils.isEmpty(paramProfileCardInfo)))
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramResources.getString(2131699047));
+      localStringBuilder.append(paramResources.getString(2131699151));
       if (!TextUtils.isEmpty(str)) {
         localStringBuilder.append(str);
       }
@@ -198,58 +201,61 @@ public class ProfileAccountInfoV2Component
   
   private String calculateAccountInfoBreak(String paramString, TextView paramTextView)
   {
-    Object localObject;
-    TextPaint localTextPaint;
-    int i;
-    int j;
-    int n;
-    int i1;
-    if ((paramString != null) && (paramString.length() > 0) && (paramTextView != null))
+    Object localObject = paramString;
+    if (paramString != null)
     {
-      localObject = paramTextView.getResources();
-      localTextPaint = paramTextView.getPaint();
-      i = paramTextView.getPaddingLeft();
-      j = paramTextView.getPaddingRight();
-      n = paramTextView.getWidth() - i - j;
-      if (n > 0)
+      localObject = paramString;
+      if (paramString.length() > 0)
       {
-        i1 = paramString.length();
-        j = 0;
+        localObject = paramString;
+        if (paramTextView != null)
+        {
+          Resources localResources = paramTextView.getResources();
+          TextPaint localTextPaint = paramTextView.getPaint();
+          int i = paramTextView.getPaddingLeft();
+          int j = paramTextView.getPaddingRight();
+          int n = paramTextView.getWidth() - i - j;
+          localObject = paramString;
+          if (n > 0)
+          {
+            int i1 = paramString.length();
+            j = 0;
+            int k = 0;
+            for (;;)
+            {
+              int m = paramString.offsetByCodePoints(j, 1);
+              paramTextView = paramString.substring(j, m);
+              if ("|".equals(paramTextView)) {
+                i = Utils.a(1.0F, localResources);
+              } else if (" ".equals(paramTextView)) {
+                i = Utils.a(8.0F, localResources);
+              } else {
+                i = (int)localTextPaint.measureText(paramTextView);
+              }
+              k += i;
+              if (k > n) {
+                break;
+              }
+              if (m >= i1 - 1) {
+                return paramString;
+              }
+              j = m;
+            }
+            paramTextView = paramString.substring(0, j).trim();
+            paramString = paramString.substring(j).trim();
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(paramTextView);
+            if (!TextUtils.isEmpty(paramString))
+            {
+              ((StringBuilder)localObject).append('\n');
+              ((StringBuilder)localObject).append(paramString);
+            }
+            localObject = ((StringBuilder)localObject).toString();
+          }
+        }
       }
     }
-    int m;
-    label222:
-    for (int k = 0;; k = m)
-    {
-      m = paramString.offsetByCodePoints(k, 1);
-      paramTextView = paramString.substring(k, m);
-      if ("|".equals(paramTextView)) {
-        i = AIOUtils.a(1.0F, (Resources)localObject);
-      }
-      while (j + i <= n)
-      {
-        j += i;
-        if (m < i1 - 1) {
-          break label222;
-        }
-        return paramString;
-        if (" ".equals(paramTextView)) {
-          i = AIOUtils.a(8.0F, (Resources)localObject);
-        } else {
-          i = (int)localTextPaint.measureText(paramTextView);
-        }
-      }
-      paramTextView = paramString.substring(0, k).trim();
-      paramString = paramString.substring(k).trim();
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramTextView);
-      if (!TextUtils.isEmpty(paramString))
-      {
-        ((StringBuilder)localObject).append('\n');
-        ((StringBuilder)localObject).append(paramString);
-      }
-      return ((StringBuilder)localObject).toString();
-    }
+    return localObject;
   }
   
   private SpannableStringBuilder combineAccountInfo(List<String> paramList, TextView paramTextView)
@@ -288,13 +294,13 @@ public class ProfileAccountInfoV2Component
   {
     paramContext = paramContext.getResources();
     ColorDrawable localColorDrawable = new ColorDrawable();
-    localColorDrawable.setBounds(0, 0, AIOUtils.a(8.0F, paramContext), 0);
+    localColorDrawable.setBounds(0, 0, Utils.a(8.0F, paramContext), 0);
     return new ImageSpan(localColorDrawable);
   }
   
   private ImageSpan genSplitImageSpan(Context paramContext)
   {
-    return new ProfileAccountInfoV2Component.CustomImageSpan(paramContext, 2130846020, 2);
+    return new ProfileAccountInfoV2Component.CustomImageSpan(paramContext, 2130845895, 2);
   }
   
   private List<String> makeAccountInfo(Card paramCard)
@@ -320,74 +326,61 @@ public class ProfileAccountInfoV2Component
   
   private boolean makeOrRefreshAccountInfo(Card paramCard, boolean paramBoolean)
   {
-    boolean bool2 = false;
-    boolean bool1 = false;
     Object localObject = makeAccountInfo(paramCard);
-    int i;
-    int j;
-    if (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0)
-    {
+    int i = ((ProfileCardInfo)this.mData).allInOne.pa;
+    boolean bool3 = false;
+    boolean bool2 = false;
+    if (i == 0) {
       i = 1;
-      paramBoolean = ProfileActivity.AllInOne.a(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
-      if (((List)localObject).isEmpty()) {
-        break label171;
-      }
-      j = 1;
-      label58:
-      if ((!ProfileCardUtils.isDefaultProfile((ProfileCardInfo)this.mData)) || (paramCard == null) || ((i == 0) && ((!paramBoolean) || (j == 0)))) {
-        break label352;
-      }
+    } else {
+      i = 0;
     }
-    label171:
-    label314:
-    label352:
-    for (paramBoolean = true;; paramBoolean = false)
+    paramBoolean = ProfilePAUtils.isPaTypeShowAccount(((ProfileCardInfo)this.mData).allInOne);
+    boolean bool1 = ((List)localObject).isEmpty() ^ true;
+    if ((((IProfileCardBusinessApi)QRoute.api(IProfileCardBusinessApi.class)).isDefaultProfile((ProfileCardInfo)this.mData)) && (paramCard != null) && ((i != 0) || ((paramBoolean) && (bool1)))) {
+      paramBoolean = true;
+    } else {
+      paramBoolean = false;
+    }
+    boolean bool4 = this.mConfigHelper.isSwitchEnable(12);
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileAccountInfoV2Component", 2, String.format("makeOrRefreshAccountInfo showAccountInfo=%s baseInfoABTestEnable=%s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool4) }));
+    }
+    if ((paramBoolean) && (bool4))
     {
-      boolean bool3 = this.mConfigHelper.a(12);
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileAccountInfoV2Component", 2, String.format("makeOrRefreshAccountInfo showAccountInfo=%s baseInfoABTestEnable=%s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool3) }));
-      }
-      if ((!paramBoolean) || (!bool3))
-      {
-        paramBoolean = bool1;
-        if (this.mViewContainer != null)
-        {
-          this.mViewContainer = null;
-          paramBoolean = true;
-        }
-        return paramBoolean;
-        i = 0;
-        break;
-        j = 0;
-        break label58;
-      }
       paramBoolean = bool2;
       if (this.mViewContainer == null)
       {
-        this.mViewContainer = this.mActivity.getLayoutInflater().inflate(2131561497, null);
+        this.mViewContainer = this.mActivity.getLayoutInflater().inflate(2131561341, null);
         ((View)this.mViewContainer).setOnClickListener(this);
         paramBoolean = true;
       }
-      paramCard = (TextView)((View)this.mViewContainer).findViewById(2131379091);
-      ImageView localImageView = (ImageView)((View)this.mViewContainer).findViewById(2131363027);
-      if (paramCard != null)
-      {
-        if ((i == 0) || (j != 0)) {
-          break label314;
+      paramCard = (TextView)((View)this.mViewContainer).findViewById(2131378460);
+      ImageView localImageView = (ImageView)((View)this.mViewContainer).findViewById(2131362975);
+      if (paramCard != null) {
+        if ((i != 0) && (!bool1))
+        {
+          paramCard.setText(2131699152);
+          localObject = new DataTag(81, null);
+          ((View)this.mViewContainer).setTag(localObject);
         }
-        paramCard.setText(2131699048);
-        localObject = new DataTag(81, null);
-        ((View)this.mViewContainer).setTag(localObject);
+        else
+        {
+          paramCard.setText(combineAccountInfo((List)localObject, paramCard));
+          localObject = new DataTag(103, null);
+          ((View)this.mViewContainer).setTag(localObject);
+        }
       }
-      for (;;)
-      {
-        updateItemTheme((View)this.mViewContainer, paramCard, null, localImageView);
-        return paramBoolean;
-        paramCard.setText(combineAccountInfo((List)localObject, paramCard));
-        localObject = new DataTag(103, null);
-        ((View)this.mViewContainer).setTag(localObject);
-      }
+      updateItemTheme((View)this.mViewContainer, paramCard, null, localImageView);
+      return paramBoolean;
     }
+    paramBoolean = bool3;
+    if (this.mViewContainer != null)
+    {
+      this.mViewContainer = null;
+      paramBoolean = true;
+    }
+    return paramBoolean;
   }
   
   public String getComponentName()
@@ -407,51 +400,49 @@ public class ProfileAccountInfoV2Component
   
   public void onClick(View paramView)
   {
-    int j = 1;
     Object localObject = paramView.getTag();
-    if ((localObject instanceof DataTag)) {
-      switch (((DataTag)localObject).a)
+    if ((localObject instanceof DataTag))
+    {
+      int i = ((DataTag)localObject).a;
+      if (i != 81)
       {
+        if (i == 103)
+        {
+          ((IProfileCardBusinessApi)QRoute.api(IProfileCardBusinessApi.class)).jumpProfileOpenDetails((ProfileCardInfo)this.mData, this.mApp, this.mActivity);
+          if (((IProfileCardBusinessApi)QRoute.api(IProfileCardBusinessApi.class)).isDefaultProfile((ProfileCardInfo)this.mData))
+          {
+            i = ((ProfileCardInfo)this.mData).allInOne.pa;
+            int j = 1;
+            if (i == 0) {
+              i = 1;
+            } else {
+              i = 0;
+            }
+            localObject = this.mApp;
+            if (i != 0) {
+              i = j;
+            } else {
+              i = 3;
+            }
+            ProfileAccountInfoReport.reportAccountInfoClick((AppInterface)localObject, i);
+          }
+        }
+      }
+      else {
+        ((IProfileGuideApi)QRoute.api(IProfileGuideApi.class)).jumpProfileEdit(this.mApp, this.mActivity, (ProfileCardInfo)this.mData);
       }
     }
-    do
-    {
-      for (;;)
-      {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        ProfileCardUtils.openProfileEdit(this.mApp, this.mActivity, (ProfileCardInfo)this.mData);
-      }
-      ProfileCardUtil.a((ProfileCardInfo)this.mData, this.mApp, this.mActivity);
-    } while (!ProfileCardUtils.isDefaultProfile((ProfileCardInfo)this.mData));
-    if (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0)
-    {
-      i = 1;
-      label130:
-      localObject = this.mApp;
-      if (i == 0) {
-        break label156;
-      }
-    }
-    label156:
-    for (int i = j;; i = 3)
-    {
-      ProfileAccountInfoReport.reportAccountInfoClick((QQAppInterface)localObject, i);
-      break;
-      i = 0;
-      break label130;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public boolean onDataUpdate(ProfileCardInfo paramProfileCardInfo)
   {
-    boolean bool = super.onDataUpdate(paramProfileCardInfo);
-    return makeOrRefreshAccountInfo(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqDataCard, ((ProfileCardInfo)this.mData).d) | bool;
+    return super.onDataUpdate(paramProfileCardInfo) | makeOrRefreshAccountInfo(((ProfileCardInfo)this.mData).card, ((ProfileCardInfo)this.mData).isNetRet);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.accountinfo.ProfileAccountInfoV2Component
  * JD-Core Version:    0.7.0.1
  */

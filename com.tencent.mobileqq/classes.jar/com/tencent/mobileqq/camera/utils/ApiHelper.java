@@ -23,131 +23,93 @@ public class ApiHelper
   
   static
   {
+    int i1 = Build.VERSION.SDK_INT;
     boolean bool2 = true;
-    if (Build.VERSION.SDK_INT >= 14)
-    {
+    boolean bool1;
+    if (i1 >= 14) {
       bool1 = true;
-      a = bool1;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label251;
-      }
+    } else {
+      bool1 = false;
+    }
+    a = bool1;
+    if (Build.VERSION.SDK_INT >= 16) {
       bool1 = true;
-      label26:
-      b = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        break label256;
-      }
+    } else {
+      bool1 = false;
+    }
+    b = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
       bool1 = true;
-      label40:
-      c = bool1;
-      if (Build.VERSION.SDK_INT < 15) {
-        break label261;
-      }
+    } else {
+      bool1 = false;
+    }
+    c = bool1;
+    if (Build.VERSION.SDK_INT >= 15) {
       bool1 = a("android.graphics.SurfaceTexture", "setDefaultBufferSize", new Class[] { Integer.TYPE, Integer.TYPE });
-      label76:
-      d = bool1;
-      if (Build.VERSION.SDK_INT < 14) {
-        break label266;
-      }
+    } else {
+      bool1 = false;
+    }
+    d = bool1;
+    if (Build.VERSION.SDK_INT >= 14) {
       bool1 = a("android.graphics.SurfaceTexture", "release", new Class[0]);
-      label100:
-      e = bool1;
-      if (Build.VERSION.SDK_INT < 14) {
-        break label271;
-      }
+    } else {
+      bool1 = false;
+    }
+    e = bool1;
+    if (Build.VERSION.SDK_INT >= 14) {
       bool1 = true;
-      label114:
-      f = bool1;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label276;
-      }
+    } else {
+      bool1 = false;
+    }
+    f = bool1;
+    if (Build.VERSION.SDK_INT >= 16) {
       bool1 = true;
-      label128:
-      g = bool1;
-      if (Build.VERSION.SDK_INT < 14) {
-        break label281;
-      }
+    } else {
+      bool1 = false;
+    }
+    g = bool1;
+    if (Build.VERSION.SDK_INT >= 14) {
       bool1 = a(DevicePolicyManager.class, "getCameraDisabled", new Class[] { ComponentName.class });
-      label157:
-      h = bool1;
-      if (Build.VERSION.SDK_INT < 14) {
-        break label286;
-      }
-      bool1 = true;
-      label171:
-      i = bool1;
-      if (Build.VERSION.SDK_INT < 14) {
-        break label291;
-      }
-      bool1 = true;
-      label185:
-      j = bool1;
-      if (Build.VERSION.SDK_INT < 17) {
-        break label296;
-      }
-      bool1 = true;
-      label199:
-      k = bool1;
-      if (Build.VERSION.SDK_INT < 19) {
-        break label301;
-      }
-      bool1 = true;
-      label213:
-      l = bool1;
-      if (Build.VERSION.SDK_INT < 17) {
-        break label306;
-      }
-      bool1 = true;
-      label227:
-      m = bool1;
-      if (Build.VERSION.SDK_INT < 14) {
-        break label311;
-      }
+    } else {
+      bool1 = false;
     }
-    label256:
-    label261:
-    label266:
-    label271:
-    label276:
-    label281:
-    label286:
-    label291:
-    label296:
-    label301:
-    label306:
-    label311:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      n = bool1;
-      return;
+    h = bool1;
+    if (Build.VERSION.SDK_INT >= 14) {
+      bool1 = true;
+    } else {
       bool1 = false;
-      break;
-      label251:
-      bool1 = false;
-      break label26;
-      bool1 = false;
-      break label40;
-      bool1 = false;
-      break label76;
-      bool1 = false;
-      break label100;
-      bool1 = false;
-      break label114;
-      bool1 = false;
-      break label128;
-      bool1 = false;
-      break label157;
-      bool1 = false;
-      break label171;
-      bool1 = false;
-      break label185;
-      bool1 = false;
-      break label199;
-      bool1 = false;
-      break label213;
-      bool1 = false;
-      break label227;
     }
+    i = bool1;
+    if (Build.VERSION.SDK_INT >= 14) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    j = bool1;
+    if (Build.VERSION.SDK_INT >= 17) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    k = bool1;
+    if (Build.VERSION.SDK_INT >= 19) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    l = bool1;
+    if (Build.VERSION.SDK_INT >= 17) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    m = bool1;
+    if (Build.VERSION.SDK_INT >= 14) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    n = bool1;
   }
   
   private static boolean a(Class<?> paramClass, String paramString, Class<?>... paramVarArgs)
@@ -157,7 +119,11 @@ public class ApiHelper
       paramClass.getDeclaredMethod(paramString, paramVarArgs);
       return true;
     }
-    catch (NoSuchMethodException paramClass) {}
+    catch (NoSuchMethodException paramClass)
+    {
+      label9:
+      break label9;
+    }
     return false;
   }
   
@@ -168,13 +134,17 @@ public class ApiHelper
       Class.forName(paramString1).getDeclaredMethod(paramString2, paramVarArgs);
       return true;
     }
-    catch (Throwable paramString1) {}
+    catch (Throwable paramString1)
+    {
+      label12:
+      break label12;
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.camera.utils.ApiHelper
  * JD-Core Version:    0.7.0.1
  */

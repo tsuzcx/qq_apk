@@ -19,16 +19,17 @@ public class ConfigProtocol$LocalLogUploadTLV
   
   public boolean Unpack(ByteBuffer paramByteBuffer)
   {
-    if ((paramByteBuffer == null) || (paramByteBuffer.length() < getLength())) {
-      return false;
+    if ((paramByteBuffer != null) && (paramByteBuffer.length() >= getLength()))
+    {
+      this.m_allStr = paramByteBuffer.ReadString(getLength());
+      return true;
     }
-    this.m_allStr = paramByteBuffer.ReadString(getLength());
-    return true;
+    return false;
   }
   
   public boolean getLogUploadTimeScope()
   {
-    if (this.m_allStr.length() < "2012/03/05/08,2012/03/05/20".length()) {
+    if (this.m_allStr.length() < 27) {
       return false;
     }
     this.m_startTimeStr = this.m_allStr.substring(0, 13);

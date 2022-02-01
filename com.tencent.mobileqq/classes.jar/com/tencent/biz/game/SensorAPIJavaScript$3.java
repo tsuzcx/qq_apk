@@ -11,14 +11,18 @@ class SensorAPIJavaScript$3
   
   public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F) == 0) && (QLog.isColorLevel())) {
-      QLog.d("SensorApi", 2, "play failure url=" + this.jdField_a_of_type_JavaLangString);
+    if ((this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F) == 0) && (QLog.isColorLevel()))
+    {
+      paramSoundPool = new StringBuilder();
+      paramSoundPool.append("play failure url=");
+      paramSoundPool.append(this.jdField_a_of_type_JavaLangString);
+      QLog.d("SensorApi", 2, paramSoundPool.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.game.SensorAPIJavaScript.3
  * JD-Core Version:    0.7.0.1
  */

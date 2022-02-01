@@ -37,18 +37,20 @@ public final class SuixintieItem
   {
     paramJceOutputStream.write(this.appid, 0);
     paramJceOutputStream.write(this.itemid, 1);
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 2);
+    String str = this.name;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.feeType, 3);
-    if (this.image != null) {
-      paramJceOutputStream.write(this.image, 4);
+    str = this.image;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.SuixintieItem
  * JD-Core Version:    0.7.0.1
  */

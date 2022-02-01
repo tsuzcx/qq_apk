@@ -12,13 +12,15 @@ class PhotoView$2
   public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
     float f = paramScaleGestureDetector.getScaleFactor();
-    if ((Float.isNaN(f)) || (Float.isInfinite(f))) {
-      return false;
+    if ((!Float.isNaN(f)) && (!Float.isInfinite(f)))
+    {
+      PhotoView localPhotoView = this.a;
+      PhotoView.c(localPhotoView, PhotoView.c(localPhotoView) * f);
+      PhotoView.a(this.a).postScale(f, f, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
+      PhotoView.a(this.a);
+      return true;
     }
-    PhotoView.c(this.a, PhotoView.c(this.a) * f);
-    PhotoView.a(this.a).postScale(f, f, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
-    PhotoView.a(this.a);
-    return true;
+    return false;
   }
   
   public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
@@ -30,7 +32,7 @@ class PhotoView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.bm.library.PhotoView.2
  * JD-Core Version:    0.7.0.1
  */

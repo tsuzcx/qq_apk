@@ -22,10 +22,14 @@ final class BaseMediaChunkOutput
   {
     int[] arrayOfInt = new int[this.sampleQueues.length];
     int i = 0;
-    while (i < this.sampleQueues.length)
+    for (;;)
     {
-      if (this.sampleQueues[i] != null) {
-        arrayOfInt[i] = this.sampleQueues[i].getWriteIndex();
+      SampleQueue[] arrayOfSampleQueue = this.sampleQueues;
+      if (i >= arrayOfSampleQueue.length) {
+        break;
+      }
+      if (arrayOfSampleQueue[i] != null) {
+        arrayOfInt[i] = arrayOfSampleQueue[i].getWriteIndex();
       }
       i += 1;
     }
@@ -50,20 +54,27 @@ final class BaseMediaChunkOutput
   public TrackOutput track(int paramInt1, int paramInt2)
   {
     paramInt1 = 0;
-    while (paramInt1 < this.trackTypes.length)
+    for (;;)
     {
-      if (paramInt2 == this.trackTypes[paramInt1]) {
+      localObject = this.trackTypes;
+      if (paramInt1 >= localObject.length) {
+        break;
+      }
+      if (paramInt2 == localObject[paramInt1]) {
         return this.sampleQueues[paramInt1];
       }
       paramInt1 += 1;
     }
-    Log.e("BaseMediaChunkOutput", "Unmatched track of type: " + paramInt2);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Unmatched track of type: ");
+    ((StringBuilder)localObject).append(paramInt2);
+    Log.e("BaseMediaChunkOutput", ((StringBuilder)localObject).toString());
     return new DummyTrackOutput();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.chunk.BaseMediaChunkOutput
  * JD-Core Version:    0.7.0.1
  */

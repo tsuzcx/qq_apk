@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/h70" android:background="@color/a4p" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:background="#fffafafa" android:layout_width="wrap_content" android:layout_height="75.0dip" android:minWidth="187.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/j1w" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_alignParentTop="true" />
-    <include android:id="@id/rlCommenTitle" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_below="@id/j1w" layout="@layout/bct" />
+    <ImageView android:id="@id/l1" android:layout_width="75.0dip" android:layout_height="75.0dip" android:src="#ff777777" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <RelativeLayout android:id="@id/l3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_toRightOf="@id/l1" android:layout_centerVertical="true">
+        <TextView android:textSize="12.0dip" android:textColor="#ff000000" android:id="@id/l2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/y0y" />
+        <TextView android:textSize="12.0dip" android:textColor="#ff777777" android:id="@id/l0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="124905人拥有" android:layout_below="@id/l2" />
+    </RelativeLayout>
 </RelativeLayout>

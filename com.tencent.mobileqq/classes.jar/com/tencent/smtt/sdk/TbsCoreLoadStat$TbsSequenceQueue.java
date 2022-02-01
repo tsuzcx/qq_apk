@@ -26,13 +26,15 @@ public class TbsCoreLoadStat$TbsSequenceQueue
   
   public void add(int paramInt)
   {
-    if (this.f > this.c - 1) {
-      throw new IndexOutOfBoundsException("sequeue is full");
-    }
-    int[] arrayOfInt = this.d;
     int i = this.f;
-    this.f = (i + 1);
-    arrayOfInt[i] = paramInt;
+    if (i <= this.c - 1)
+    {
+      int[] arrayOfInt = this.d;
+      this.f = (i + 1);
+      arrayOfInt[i] = paramInt;
+      return;
+    }
+    throw new IndexOutOfBoundsException("sequeue is full");
   }
   
   public void clear()
@@ -44,10 +46,10 @@ public class TbsCoreLoadStat$TbsSequenceQueue
   
   public int element()
   {
-    if (empty()) {
-      throw new IndexOutOfBoundsException("sequeue is null");
+    if (!empty()) {
+      return this.d[this.e];
     }
-    return this.d[this.e];
+    throw new IndexOutOfBoundsException("sequeue is null");
   }
   
   public boolean empty()
@@ -62,15 +64,16 @@ public class TbsCoreLoadStat$TbsSequenceQueue
   
   public int remove()
   {
-    if (empty()) {
-      throw new IndexOutOfBoundsException("sequeue is null");
+    if (!empty())
+    {
+      int[] arrayOfInt = this.d;
+      int i = this.e;
+      int j = arrayOfInt[i];
+      this.e = (i + 1);
+      arrayOfInt[i] = 0;
+      return j;
     }
-    int i = this.d[this.e];
-    int[] arrayOfInt = this.d;
-    int j = this.e;
-    this.e = (j + 1);
-    arrayOfInt[j] = 0;
-    return i;
+    throw new IndexOutOfBoundsException("sequeue is null");
   }
   
   public String toString()
@@ -78,20 +81,25 @@ public class TbsCoreLoadStat$TbsSequenceQueue
     if (empty()) {
       return "";
     }
-    StringBuilder localStringBuilder = new StringBuilder("[");
+    StringBuilder localStringBuilder1 = new StringBuilder("[");
     int i = this.e;
     while (i < this.f)
     {
-      localStringBuilder.append(String.valueOf(this.d[i]) + ",");
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(String.valueOf(this.d[i]));
+      localStringBuilder2.append(",");
+      localStringBuilder1.append(localStringBuilder2.toString());
       i += 1;
     }
-    i = localStringBuilder.length();
-    return "]";
+    i = localStringBuilder1.length();
+    localStringBuilder1 = localStringBuilder1.delete(i - 1, i);
+    localStringBuilder1.append("]");
+    return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsCoreLoadStat.TbsSequenceQueue
  * JD-Core Version:    0.7.0.1
  */

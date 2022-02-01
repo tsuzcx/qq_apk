@@ -30,6 +30,7 @@ import com.tencent.mobileqq.troop.utils.TroopFileUtils;
 import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.util.QLog;
+import java.io.Serializable;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -71,11 +72,10 @@ public class FileMultiMsgPackageHandle
   
   private boolean a(MessageRecord paramMessageRecord)
   {
-    if (paramMessageRecord == null) {}
-    while (TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileType"))) {
+    if (paramMessageRecord == null) {
       return false;
     }
-    return true;
+    return !TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileType"));
   }
   
   private boolean a(hummer_resv_21.ResvAttr paramResvAttr)
@@ -103,27 +103,40 @@ public class FileMultiMsgPackageHandle
       QLog.e("FileMultiMsgPackageHandle<QFile>", 1, "getMultiMsgBody : message is null");
       return null;
     }
+    Object localObject;
     if (paramInt == 1)
     {
-      String str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileType");
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "process type:" + str);
-      if (TextUtils.isEmpty(str))
+      localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileType");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("process type:");
+      localStringBuilder.append((String)localObject);
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
+      if (TextUtils.isEmpty((CharSequence)localObject))
       {
         QLog.e("FileMultiMsgPackageHandle<QFile>", 1, "getMultiMsgBody : message extInfo type null");
         return null;
       }
     }
-    switch (paramMessageRecord.istroop)
+    paramInt = paramMessageRecord.istroop;
+    if (paramInt != 0)
     {
-    default: 
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "attention, this is a default way to handle, peerType[" + paramMessageRecord.istroop + "] " + QFileUtils.a(this.a, paramMessageRecord));
-      return c(paramMessageRecord);
-    case 0: 
-      return c(paramMessageRecord);
-    case 3000: 
-      return b(paramMessageRecord);
+      if (paramInt != 1)
+      {
+        if (paramInt != 3000)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("attention, this is a default way to handle, peerType[");
+          ((StringBuilder)localObject).append(paramMessageRecord.istroop);
+          ((StringBuilder)localObject).append("] ");
+          ((StringBuilder)localObject).append(QFileUtils.a(this.a, paramMessageRecord));
+          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject).toString());
+          return c(paramMessageRecord);
+        }
+        return b(paramMessageRecord);
+      }
+      return a(paramMessageRecord);
     }
-    return a(paramMessageRecord);
+    return c(paramMessageRecord);
   }
   
   public im_msg_body.MsgBody a(MessageRecord paramMessageRecord)
@@ -135,10 +148,15 @@ public class FileMultiMsgPackageHandle
     Object localObject4;
     int i;
     long l;
-    String str1;
+    Object localObject6;
+    int j;
+    Object localObject5;
     if (a(paramMessageRecord))
     {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleTroopFileMessage: package multi troop file message. " + QFileUtils.a(this.a, paramMessageRecord));
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("handleTroopFileMessage: package multi troop file message. ");
+      ((StringBuilder)localObject4).append(QFileUtils.a(this.a, paramMessageRecord));
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject4).toString());
       localObject4 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
       ((obj_msg.MsgContentInfo.MsgFile)localObject3).bytes_file_path.set(ByteStringMicro.copyFrom(((String)localObject4).getBytes()));
       localObject4 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardBusType");
@@ -151,133 +169,152 @@ public class FileMultiMsgPackageHandle
       ((obj_msg.MsgContentInfo.MsgFile)localObject3).str_file_name.set((String)localObject4);
       l = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
       ((obj_msg.MsgContentInfo.MsgFile)localObject3).uint64_file_size.set(l);
-      str1 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardDeadTime");
-      if (!TextUtils.isEmpty(str1))
+      String str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardDeadTime");
+      if (!TextUtils.isEmpty(str))
       {
-        l = Long.parseLong(str1);
+        l = Long.parseLong(str);
         ((obj_msg.MsgContentInfo.MsgFile)localObject3).int64_dead_time.set(l);
       }
-      str1 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSha");
-      if (str1 != null) {
-        ((obj_msg.MsgContentInfo.MsgFile)localObject3).bytes_file_sha1.set(ByteStringMicro.copyFrom(str1.getBytes()));
+      str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSha");
+      if (str != null) {
+        ((obj_msg.MsgContentInfo.MsgFile)localObject3).bytes_file_sha1.set(ByteStringMicro.copyFrom(str.getBytes()));
       }
-      str1 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-      if (str1 != null) {
-        ((obj_msg.MsgContentInfo.MsgFile)localObject3).bytes_file_md5.set(ByteStringMicro.copyFrom(str1.getBytes()));
+      str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
+      if (str != null) {
+        ((obj_msg.MsgContentInfo.MsgFile)localObject3).bytes_file_md5.set(ByteStringMicro.copyFrom(str.getBytes()));
       }
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleTroopFileMessage fileMd5 is " + str1);
+      localObject6 = new StringBuilder();
+      ((StringBuilder)localObject6).append("handleTroopFileMessage fileMd5 is ");
+      ((StringBuilder)localObject6).append(str);
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject6).toString());
       i = FileManagerUtil.a((String)localObject4);
       localObject4 = new JSONObject();
-      if ((i != 0) && (i != 2)) {}
+      if ((i == 0) || (i == 2))
+      {
+        try
+        {
+          i = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth"));
+          j = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight"));
+          ((JSONObject)localObject4).put("width", i);
+          ((JSONObject)localObject4).put("height", j);
+        }
+        catch (JSONException paramMessageRecord)
+        {
+          break label435;
+        }
+        catch (NumberFormatException localNumberFormatException1)
+        {
+          localNumberFormatException1.printStackTrace();
+        }
+        localObject5 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardDuration");
+        if (!TextUtils.isEmpty((CharSequence)localObject5)) {
+          ((JSONObject)localObject4).put("duration", Integer.parseInt((String)localObject5));
+        }
+      }
+      ((JSONObject)localObject4).put("ExtInfo", Base64.encodeToString(a(paramMessageRecord).toByteArray(), 2));
+      break label439;
+      label435:
+      paramMessageRecord.printStackTrace();
+      label439:
+      ((obj_msg.MsgContentInfo.MsgFile)localObject3).bytes_ext.set(ByteStringMicro.copyFrom(((JSONObject)localObject4).toString().getBytes()));
     }
-    for (;;)
+    else
     {
-      int j;
-      try
-      {
-        i = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth"));
-        j = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight"));
-        ((JSONObject)localObject4).put("width", i);
-        ((JSONObject)localObject4).put("height", j);
-        str1 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardDuration");
-        if (!TextUtils.isEmpty(str1)) {
-          ((JSONObject)localObject4).put("duration", Integer.parseInt(str1));
-        }
-        ((JSONObject)localObject4).put("ExtInfo", Base64.encodeToString(a(paramMessageRecord).toByteArray(), 2));
-        ((obj_msg.MsgContentInfo.MsgFile)localObject3).bytes_ext.set(ByteStringMicro.copyFrom(((JSONObject)localObject4).toString().getBytes()));
-        ((obj_msg.MsgContentInfo)localObject2).msg_file.set((MessageMicro)localObject3);
-        ((obj_msg.ObjMsg)localObject1).uint32_msg_type.set(6);
-        ((obj_msg.ObjMsg)localObject1).msg_content_info.add((MessageMicro)localObject2);
-        paramMessageRecord = new im_msg_body.TransElem();
-        localObject1 = ((obj_msg.ObjMsg)localObject1).toByteArray();
-        paramMessageRecord.elem_type.set(24);
-        localObject2 = ByteBuffer.allocate(2);
-        ((ByteBuffer)localObject2).putShort((short)localObject1.length);
-        localObject3 = new byte[localObject1.length + 3];
-        localObject3[0] = 1;
-        System.arraycopy(((ByteBuffer)localObject2).array(), 0, localObject3, 1, 2);
-        System.arraycopy(localObject1, 0, localObject3, 3, localObject1.length);
-        paramMessageRecord.elem_value.set(ByteStringMicro.copyFrom((byte[])localObject3));
-        localObject1 = new im_msg_body.Elem();
-        ((im_msg_body.Elem)localObject1).trans_elem_info.set(paramMessageRecord);
-        paramMessageRecord = new im_msg_body.RichText();
-        paramMessageRecord.elems.add((MessageMicro)localObject1);
-        localMsgBody.rich_text.set(paramMessageRecord);
-        return localMsgBody;
-      }
-      catch (NumberFormatException localNumberFormatException1)
-      {
-        localNumberFormatException1.printStackTrace();
-        continue;
-      }
-      catch (JSONException paramMessageRecord)
-      {
-        paramMessageRecord.printStackTrace();
-        continue;
-      }
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleTroopFileMessage: package normal troop file message. " + QFileUtils.a(this.a, paramMessageRecord));
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("handleTroopFileMessage: package normal troop file message. ");
+      ((StringBuilder)localObject4).append(QFileUtils.a(this.a, paramMessageRecord));
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject4).toString());
       localObject4 = (MessageForTroopFile)paramMessageRecord;
-      Object localObject5 = a((MessageForTroopFile)localObject4);
-      if (localObject5 == null) {
-        continue;
-      }
-      String str2 = ((TroopFileStatusInfo)localObject5).e;
-      if (!TextUtils.isEmpty(str2))
+      localObject5 = a((MessageForTroopFile)localObject4);
+      if (localObject5 != null)
       {
-        ((obj_msg.MsgContentInfo.MsgFile)localObject3).bytes_file_path.set(ByteStringMicro.copyFrom(str2.getBytes()));
-        if (QLog.isDebugVersion()) {
-          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleTroopFileMessage: get troop fileId[" + str2 + "] " + QFileUtils.a(this.a, paramMessageRecord));
+        localObject6 = ((TroopFileStatusInfo)localObject5).e;
+        if (!TextUtils.isEmpty((CharSequence)localObject6))
+        {
+          ((obj_msg.MsgContentInfo.MsgFile)localObject3).bytes_file_path.set(ByteStringMicro.copyFrom(((String)localObject6).getBytes()));
+          if (QLog.isDebugVersion())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("handleTroopFileMessage: get troop fileId[");
+            localStringBuilder.append((String)localObject6);
+            localStringBuilder.append("] ");
+            localStringBuilder.append(QFileUtils.a(this.a, paramMessageRecord));
+            QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
+          }
         }
-        label735:
+        else
+        {
+          localObject6 = new StringBuilder();
+          ((StringBuilder)localObject6).append("handleTroopFileMessage: error, can not get troop fileId. ");
+          ((StringBuilder)localObject6).append(QFileUtils.a(this.a, paramMessageRecord));
+          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject6).toString());
+        }
         ((obj_msg.MsgContentInfo.MsgFile)localObject3).uint32_bus_id.set(((TroopFileStatusInfo)localObject5).h);
-        str2 = ((TroopFileStatusInfo)localObject5).g;
-        ((obj_msg.MsgContentInfo.MsgFile)localObject3).str_file_name.set(str2);
+        localObject6 = ((TroopFileStatusInfo)localObject5).g;
+        ((obj_msg.MsgContentInfo.MsgFile)localObject3).str_file_name.set((String)localObject6);
         l = ((TroopFileStatusInfo)localObject5).c;
         ((obj_msg.MsgContentInfo.MsgFile)localObject3).uint64_file_size.set(l);
         l = ((MessageForTroopFile)localObject4).lastTime;
         ((obj_msg.MsgContentInfo.MsgFile)localObject3).int64_dead_time.set(l);
         localObject5 = ((TroopFileStatusInfo)localObject5).f;
-        if (TextUtils.isEmpty((CharSequence)localObject5)) {
-          break label950;
+        if (!TextUtils.isEmpty((CharSequence)localObject5))
+        {
+          ((obj_msg.MsgContentInfo.MsgFile)localObject3).bytes_file_sha1.set(ByteStringMicro.copyFrom(((String)localObject5).getBytes()));
         }
-        ((obj_msg.MsgContentInfo.MsgFile)localObject3).bytes_file_sha1.set(ByteStringMicro.copyFrom(((String)localObject5).getBytes()));
-        label830:
-        i = FileManagerUtil.a(str2);
+        else if (QLog.isDebugVersion())
+        {
+          localObject5 = new StringBuilder();
+          ((StringBuilder)localObject5).append("handleTroopFileMessage: error, can not get sha. ");
+          ((StringBuilder)localObject5).append(QFileUtils.a(this.a, paramMessageRecord));
+          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject5).toString());
+        }
+        i = FileManagerUtil.a((String)localObject6);
         paramMessageRecord = new JSONObject();
-        if ((i != 0) && (i != 2)) {}
-      }
-      try
-      {
-        i = ((MessageForTroopFile)localObject4).width;
-        j = ((MessageForTroopFile)localObject4).height;
-        paramMessageRecord.put("width", i);
-        paramMessageRecord.put("height", j);
-        paramMessageRecord.put("duration", ((MessageForTroopFile)localObject4).duration);
-        ((obj_msg.MsgContentInfo.MsgFile)localObject3).bytes_ext.set(ByteStringMicro.copyFrom(paramMessageRecord.toString().getBytes()));
-        continue;
-        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleTroopFileMessage: error, can not get troop fileId. " + QFileUtils.a(this.a, paramMessageRecord));
-        break label735;
-        label950:
-        if (!QLog.isDebugVersion()) {
-          break label830;
-        }
-        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleTroopFileMessage: error, can not get sha. " + QFileUtils.a(this.a, paramMessageRecord));
-      }
-      catch (NumberFormatException localNumberFormatException2)
-      {
-        for (;;)
+        if ((i == 0) || (i == 2))
         {
-          localNumberFormatException2.printStackTrace();
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
+          try
+          {
+            i = ((MessageForTroopFile)localObject4).width;
+            j = ((MessageForTroopFile)localObject4).height;
+            paramMessageRecord.put("width", i);
+            paramMessageRecord.put("height", j);
+          }
+          catch (JSONException localJSONException)
+          {
+            break label893;
+          }
+          catch (NumberFormatException localNumberFormatException2)
+          {
+            localNumberFormatException2.printStackTrace();
+          }
+          paramMessageRecord.put("duration", localJSONException.duration);
+          break label898;
+          label893:
           localJSONException.printStackTrace();
         }
+        label898:
+        ((obj_msg.MsgContentInfo.MsgFile)localObject3).bytes_ext.set(ByteStringMicro.copyFrom(paramMessageRecord.toString().getBytes()));
       }
     }
+    ((obj_msg.MsgContentInfo)localObject2).msg_file.set((MessageMicro)localObject3);
+    ((obj_msg.ObjMsg)localObject1).uint32_msg_type.set(6);
+    ((obj_msg.ObjMsg)localObject1).msg_content_info.add((MessageMicro)localObject2);
+    paramMessageRecord = new im_msg_body.TransElem();
+    localObject1 = ((obj_msg.ObjMsg)localObject1).toByteArray();
+    paramMessageRecord.elem_type.set(24);
+    localObject2 = ByteBuffer.allocate(2);
+    ((ByteBuffer)localObject2).putShort((short)localObject1.length);
+    localObject3 = new byte[localObject1.length + 3];
+    localObject3[0] = 1;
+    System.arraycopy(((ByteBuffer)localObject2).array(), 0, localObject3, 1, 2);
+    System.arraycopy(localObject1, 0, localObject3, 3, localObject1.length);
+    paramMessageRecord.elem_value.set(ByteStringMicro.copyFrom((byte[])localObject3));
+    localObject1 = new im_msg_body.Elem();
+    ((im_msg_body.Elem)localObject1).trans_elem_info.set(paramMessageRecord);
+    paramMessageRecord = new im_msg_body.RichText();
+    paramMessageRecord.elems.add((MessageMicro)localObject1);
+    localMsgBody.rich_text.set(paramMessageRecord);
+    return localMsgBody;
   }
   
   public hummer_resv_21.ResvAttr a(MessageRecord paramMessageRecord)
@@ -285,83 +322,136 @@ public class FileMultiMsgPackageHandle
     hummer_resv_21.ResvAttr localResvAttr = new hummer_resv_21.ResvAttr();
     hummer_resv_21.ForwardExtFileInfo localForwardExtFileInfo = new hummer_resv_21.ForwardExtFileInfo();
     int i = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileType"));
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo fileType:" + i);
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleFrowardExtFileInfo fileType:");
+      ((StringBuilder)localObject).append(i);
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject).toString());
     }
     localForwardExtFileInfo.uint32_file_type.set(i);
     long l = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSenderUin"));
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo sendUin:" + l);
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleFrowardExtFileInfo sendUin:");
+      ((StringBuilder)localObject).append(l);
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject).toString());
     }
     localForwardExtFileInfo.uint64_sender_uin.set(l);
     l = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin"));
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo recvUin:" + l);
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleFrowardExtFileInfo recvUin:");
+      ((StringBuilder)localObject).append(l);
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject).toString());
     }
     localForwardExtFileInfo.uint64_receiver_uin.set(l);
-    String str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo fileUuid:" + str);
+    Object localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
+    StringBuilder localStringBuilder;
+    if (QLog.isDevelopLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleFrowardExtFileInfo fileUuid:");
+      localStringBuilder.append((String)localObject);
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
     }
-    localForwardExtFileInfo.bytes_file_uuid.set(ByteStringMicro.copyFrom(str.getBytes()));
-    str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileIdCrc");
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo fileIdCrc:" + str);
+    localForwardExtFileInfo.bytes_file_uuid.set(ByteStringMicro.copyFrom(((String)localObject).getBytes()));
+    localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileIdCrc");
+    if (QLog.isDevelopLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleFrowardExtFileInfo fileIdCrc:");
+      localStringBuilder.append((String)localObject);
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
     }
-    localForwardExtFileInfo.str_fileidcrc.set(str);
-    str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo fileName:" + str);
+    localForwardExtFileInfo.str_fileidcrc.set((String)localObject);
+    localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    if (QLog.isDevelopLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleFrowardExtFileInfo fileName:");
+      localStringBuilder.append((String)localObject);
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
     }
-    localForwardExtFileInfo.str_file_name.set(str);
+    localForwardExtFileInfo.str_file_name.set((String)localObject);
     l = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo fileSize:" + l);
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleFrowardExtFileInfo fileSize:");
+      ((StringBuilder)localObject).append(l);
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject).toString());
     }
     localForwardExtFileInfo.uint64_file_size.set(l);
-    str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSha");
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo strSHA1:" + str);
-    }
-    localForwardExtFileInfo.bytes_file_sha1.set(ByteStringMicro.copyFrom(str.getBytes()));
-    str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo fileMd5:" + str);
-    }
-    localForwardExtFileInfo.bytes_file_md5.set(ByteStringMicro.copyFrom(str.getBytes()));
-    str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardDeadTime");
-    if (!TextUtils.isEmpty(str))
+    localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSha");
+    if (QLog.isDevelopLevel())
     {
-      l = Long.parseLong(str);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo deadTime:" + str);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleFrowardExtFileInfo strSHA1:");
+      localStringBuilder.append((String)localObject);
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
+    }
+    localForwardExtFileInfo.bytes_file_sha1.set(ByteStringMicro.copyFrom(((String)localObject).getBytes()));
+    localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
+    if (QLog.isDevelopLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleFrowardExtFileInfo fileMd5:");
+      localStringBuilder.append((String)localObject);
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
+    }
+    localForwardExtFileInfo.bytes_file_md5.set(ByteStringMicro.copyFrom(((String)localObject).getBytes()));
+    localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardDeadTime");
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      l = Long.parseLong((String)localObject);
+      if (QLog.isDevelopLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleFrowardExtFileInfo deadTime:");
+        localStringBuilder.append((String)localObject);
+        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
       }
       localForwardExtFileInfo.int64_dead_time.set(l);
     }
-    str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    if (!TextUtils.isEmpty(str))
+    localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      i = Integer.parseInt(str);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo imgWidth:" + str);
+      i = Integer.parseInt((String)localObject);
+      if (QLog.isDevelopLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleFrowardExtFileInfo imgWidth:");
+        localStringBuilder.append((String)localObject);
+        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
       }
       localForwardExtFileInfo.uint32_img_width.set(i);
     }
-    str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    if (!TextUtils.isEmpty(str))
+    localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      i = Integer.parseInt(str);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo imgWidth:" + str);
+      i = Integer.parseInt((String)localObject);
+      if (QLog.isDevelopLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleFrowardExtFileInfo imgWidth:");
+        localStringBuilder.append((String)localObject);
+        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
       }
       localForwardExtFileInfo.uint32_img_height.set(i);
     }
-    str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardDuration");
-    if (!TextUtils.isEmpty(str))
+    localObject = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardDuration");
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      l = Long.parseLong(str);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo videoDur:" + str);
+      l = Long.parseLong((String)localObject);
+      if (QLog.isDevelopLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleFrowardExtFileInfo videoDur:");
+        localStringBuilder.append((String)localObject);
+        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
       }
       localForwardExtFileInfo.uint64_video_duration.set(l);
     }
@@ -369,8 +459,12 @@ public class FileMultiMsgPackageHandle
     if (!TextUtils.isEmpty(paramMessageRecord))
     {
       i = Integer.parseInt(paramMessageRecord);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleFrowardExtFileInfo bizId:" + paramMessageRecord);
+      if (QLog.isDevelopLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("handleFrowardExtFileInfo bizId:");
+        ((StringBuilder)localObject).append(paramMessageRecord);
+        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject).toString());
       }
       localForwardExtFileInfo.uint32_bus_id.set(i);
     }
@@ -380,107 +474,147 @@ public class FileMultiMsgPackageHandle
   
   public void a(ArrayList<MessageRecord> paramArrayList, ByteStringMicro paramByteStringMicro)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 2, "decodeBuddyFilePBMsg: startTime[" + System.currentTimeMillis() + "]");
-    }
-    MessageRecord localMessageRecord = MessageRecordFactory.a(-2005);
-    Object localObject = new SubMsgType0x4.MsgBody();
-    do
+    if (QLog.isColorLevel())
     {
-      try
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("decodeBuddyFilePBMsg: startTime[");
+      ((StringBuilder)localObject1).append(System.currentTimeMillis());
+      ((StringBuilder)localObject1).append("]");
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject1 = MessageRecordFactory.a(-2005);
+    Object localObject2 = new SubMsgType0x4.MsgBody();
+    try
+    {
+      paramByteStringMicro = (SubMsgType0x4.MsgBody)((SubMsgType0x4.MsgBody)localObject2).mergeFrom(paramByteStringMicro.toByteArray());
+      localObject2 = (hummer_resv_21.ResvAttr)paramByteStringMicro.resv_attr.get();
+      if (a((hummer_resv_21.ResvAttr)localObject2))
       {
-        paramByteStringMicro = (SubMsgType0x4.MsgBody)((SubMsgType0x4.MsgBody)localObject).mergeFrom(paramByteStringMicro.toByteArray());
-        localObject = (hummer_resv_21.ResvAttr)paramByteStringMicro.resv_attr.get();
-        if (a((hummer_resv_21.ResvAttr)localObject))
+        paramByteStringMicro = new StringBuilder();
+        paramByteStringMicro.append("decodeBuddyFilePBMsg: decode multi buddy file message. ");
+        paramByteStringMicro.append(QFileUtils.a(this.a, (MessageRecord)localObject1, false));
+        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, paramByteStringMicro.toString());
+        if (a((hummer_resv_21.ResvAttr)localObject2, (MessageRecord)localObject1))
         {
-          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeBuddyFilePBMsg: decode multi buddy file message. " + QFileUtils.a(this.a, localMessageRecord, false));
-          if (a((hummer_resv_21.ResvAttr)localObject, localMessageRecord))
-          {
-            localMessageRecord.isMultiMsg = true;
-            paramArrayList.add(localMessageRecord);
-          }
+          ((MessageRecord)localObject1).isMultiMsg = true;
+          paramArrayList.add(localObject1);
+        }
+      }
+      else
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("decodeBuddyFilePBMsg: decode normal buddy file message. ");
+        ((StringBuilder)localObject2).append(QFileUtils.a(this.a, (MessageRecord)localObject1, false));
+        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject2).toString());
+        if (!paramByteStringMicro.msg_not_online_file.has()) {
           return;
         }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayList)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.e("FileMultiMsgPackageHandle<QFile>", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : subMsgType[0x4] failed", paramArrayList);
-        return;
-      }
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeBuddyFilePBMsg: decode normal buddy file message. " + QFileUtils.a(this.a, localMessageRecord, false));
-    } while (!paramByteStringMicro.msg_not_online_file.has());
-    localObject = (im_msg_body.NotOnlineFile)paramByteStringMicro.msg_not_online_file.get();
-    label293:
-    int i;
-    if (((im_msg_body.NotOnlineFile)localObject).bytes_file_name.has())
-    {
-      String str = ((im_msg_body.NotOnlineFile)localObject).bytes_file_name.get().toStringUtf8();
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeBuddyFilePBMsg: decode normal buddy fileName[" + str + "]");
-      localMessageRecord.saveExtInfoToExtStr("_backup_ForwardFileName", str);
-      if (!((im_msg_body.NotOnlineFile)localObject).uint32_file_type.has()) {
-        break label660;
-      }
-      i = ((im_msg_body.NotOnlineFile)localObject).uint32_file_type.get();
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeBuddyFilePBMsg: decode normal buddy fileType[" + i + "]");
-      localMessageRecord.saveExtInfoToExtStr("_backup_ForwardFileType", String.valueOf(i));
-      label357:
-      if (((im_msg_body.NotOnlineFile)localObject).bytes_file_md5.has()) {
-        localMessageRecord.saveExtInfoToExtStr("_backup_ForwardMd5", FileHttpUtils.a(((im_msg_body.NotOnlineFile)localObject).bytes_file_md5.get().toByteArray()));
-      }
-      if (!((im_msg_body.NotOnlineFile)localObject).bytes_file_uuid.has()) {
-        break label672;
-      }
-      str = ((im_msg_body.NotOnlineFile)localObject).bytes_file_uuid.get().toStringUtf8();
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeBuddyFilePBMsg: decode normal buddy uuid[" + str + "]");
-      localMessageRecord.saveExtInfoToExtStr("_backup_ForwardUuid", str);
-    }
-    for (;;)
-    {
-      if (((im_msg_body.NotOnlineFile)localObject).uint64_file_size.has()) {
-        localMessageRecord.saveExtInfoToExtStr("_backup_ForwardSize", String.valueOf(((im_msg_body.NotOnlineFile)localObject).uint64_file_size.get()));
-      }
-      if (paramByteStringMicro.file_image_info.has())
-      {
-        paramByteStringMicro = (hummer_resv_21.FileImgInfo)paramByteStringMicro.file_image_info.get();
-        if (paramByteStringMicro.uint32_file_width.has())
+        localObject2 = (im_msg_body.NotOnlineFile)paramByteStringMicro.msg_not_online_file.get();
+        Object localObject3;
+        StringBuilder localStringBuilder;
+        if (((im_msg_body.NotOnlineFile)localObject2).bytes_file_name.has())
         {
-          i = paramByteStringMicro.uint32_file_width.get();
-          localMessageRecord.saveExtInfoToExtStr("_backup_ForwardImgWidth", i + "");
+          localObject3 = ((im_msg_body.NotOnlineFile)localObject2).bytes_file_name.get().toStringUtf8();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("decodeBuddyFilePBMsg: decode normal buddy fileName[");
+          localStringBuilder.append((String)localObject3);
+          localStringBuilder.append("]");
+          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
+          ((MessageRecord)localObject1).saveExtInfoToExtStr("_backup_ForwardFileName", (String)localObject3);
         }
-        if (paramByteStringMicro.uint32_file_height.has())
+        else
         {
-          i = paramByteStringMicro.uint32_file_height.get();
-          localMessageRecord.saveExtInfoToExtStr("_backup_ForwardImgHeight", i + "");
+          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeBuddyFilePBMsg: decode normal buddy fileName is null");
+        }
+        int i;
+        if (((im_msg_body.NotOnlineFile)localObject2).uint32_file_type.has())
+        {
+          i = ((im_msg_body.NotOnlineFile)localObject2).uint32_file_type.get();
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("decodeBuddyFilePBMsg: decode normal buddy fileType[");
+          ((StringBuilder)localObject3).append(i);
+          ((StringBuilder)localObject3).append("]");
+          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject3).toString());
+          ((MessageRecord)localObject1).saveExtInfoToExtStr("_backup_ForwardFileType", String.valueOf(i));
+        }
+        else
+        {
+          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeBuddyFilePBMsg: decode normal buddy fileType is null");
+        }
+        if (((im_msg_body.NotOnlineFile)localObject2).bytes_file_md5.has()) {
+          ((MessageRecord)localObject1).saveExtInfoToExtStr("_backup_ForwardMd5", FileHttpUtils.a(((im_msg_body.NotOnlineFile)localObject2).bytes_file_md5.get().toByteArray()));
+        }
+        if (((im_msg_body.NotOnlineFile)localObject2).bytes_file_uuid.has())
+        {
+          localObject3 = ((im_msg_body.NotOnlineFile)localObject2).bytes_file_uuid.get().toStringUtf8();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("decodeBuddyFilePBMsg: decode normal buddy uuid[");
+          localStringBuilder.append((String)localObject3);
+          localStringBuilder.append("]");
+          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
+          ((MessageRecord)localObject1).saveExtInfoToExtStr("_backup_ForwardUuid", (String)localObject3);
+        }
+        else
+        {
+          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeBuddyFilePBMsg: decode normal buddy uuid is null");
+        }
+        if (((im_msg_body.NotOnlineFile)localObject2).uint64_file_size.has()) {
+          ((MessageRecord)localObject1).saveExtInfoToExtStr("_backup_ForwardSize", String.valueOf(((im_msg_body.NotOnlineFile)localObject2).uint64_file_size.get()));
+        }
+        if (paramByteStringMicro.file_image_info.has())
+        {
+          paramByteStringMicro = (hummer_resv_21.FileImgInfo)paramByteStringMicro.file_image_info.get();
+          if (paramByteStringMicro.uint32_file_width.has())
+          {
+            i = paramByteStringMicro.uint32_file_width.get();
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append(i);
+            ((StringBuilder)localObject2).append("");
+            ((MessageRecord)localObject1).saveExtInfoToExtStr("_backup_ForwardImgWidth", ((StringBuilder)localObject2).toString());
+          }
+          if (paramByteStringMicro.uint32_file_height.has())
+          {
+            i = paramByteStringMicro.uint32_file_height.get();
+            paramByteStringMicro = new StringBuilder();
+            paramByteStringMicro.append(i);
+            paramByteStringMicro.append("");
+            ((MessageRecord)localObject1).saveExtInfoToExtStr("_backup_ForwardImgHeight", paramByteStringMicro.toString());
+          }
+        }
+        paramArrayList.add(localObject1);
+        if (QLog.isColorLevel())
+        {
+          paramArrayList = new StringBuilder();
+          paramArrayList.append("decodeBuddyFilePBMsg: endTime[");
+          paramArrayList.append(System.currentTimeMillis());
+          paramArrayList.append("]");
+          QLog.i("FileMultiMsgPackageHandle<QFile>", 2, paramArrayList.toString());
         }
       }
-      paramArrayList.add(localMessageRecord);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 2, "decodeBuddyFilePBMsg: endTime[" + System.currentTimeMillis() + "]");
       return;
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeBuddyFilePBMsg: decode normal buddy fileName is null");
-      break label293;
-      label660:
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeBuddyFilePBMsg: decode normal buddy fileType is null");
-      break label357;
-      label672:
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeBuddyFilePBMsg: decode normal buddy uuid is null");
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayList)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgPackageHandle<QFile>", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : subMsgType[0x4] failed", paramArrayList);
+      }
     }
   }
   
   public boolean a(ArrayList<MessageRecord> paramArrayList, msg_comm.Msg paramMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 2, "decodeGroupFilePb: startTime[" + System.currentTimeMillis() + "]");
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("decodeGroupFilePb: startTime[");
+      ((StringBuilder)localObject1).append(System.currentTimeMillis());
+      ((StringBuilder)localObject1).append("]");
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 2, ((StringBuilder)localObject1).toString());
     }
-    boolean bool2;
     if (paramMsg == null)
     {
       QLog.e("FileMultiMsgPackageHandle<QFile>", 2, "<FileAssistant>decodeGroupFilePb : msg is null");
-      bool2 = false;
-      return bool2;
+      return false;
     }
     if (!paramMsg.msg_body.has())
     {
@@ -500,24 +634,13 @@ public class FileMultiMsgPackageHandle
       return false;
     }
     Iterator localIterator = ((im_msg_body.RichText)localObject1).elems.get().iterator();
-    boolean bool1 = false;
-    int i;
-    int k;
-    byte[] arrayOfByte;
-    int j;
-    label311:
-    int m;
-    do
+    bool1 = false;
+    while (localIterator.hasNext())
     {
-      for (;;)
+      localObject1 = (im_msg_body.Elem)localIterator.next();
+      bool2 = bool1;
+      if (((im_msg_body.Elem)localObject1).trans_elem_info.has())
       {
-        if (!localIterator.hasNext()) {
-          break label760;
-        }
-        localObject1 = (im_msg_body.Elem)localIterator.next();
-        if (!((im_msg_body.Elem)localObject1).trans_elem_info.has()) {
-          break label818;
-        }
         if (!((im_msg_body.Elem)localObject1).trans_elem_info.has())
         {
           QLog.e("FileMultiMsgPackageHandle<QFile>", 2, "<FileAssistant>decodeGroupFilePb : elem has not trans_elem_info");
@@ -525,133 +648,142 @@ public class FileMultiMsgPackageHandle
         else
         {
           localObject1 = (im_msg_body.TransElem)((im_msg_body.Elem)localObject1).trans_elem_info.get();
-          i = ((im_msg_body.TransElem)localObject1).elem_type.get();
-          if (i == 24) {
-            break;
+          int i = ((im_msg_body.TransElem)localObject1).elem_type.get();
+          if (i != 24)
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("<FileAssistant>decodeGroupFilePb : trans_elem_info type:");
+            ((StringBuilder)localObject1).append(i);
+            QLog.e("FileMultiMsgPackageHandle<QFile>", 2, ((StringBuilder)localObject1).toString());
           }
-          QLog.e("FileMultiMsgPackageHandle<QFile>", 2, "<FileAssistant>decodeGroupFilePb : trans_elem_info type:" + i);
+          else
+          {
+            i = ((im_msg_body.TransElem)localObject1).elem_value.get().size();
+            byte[] arrayOfByte = ((im_msg_body.TransElem)localObject1).elem_value.get().toByteArray();
+            int k = 0;
+            int j = 0;
+            while ((i > 3) && (j <= 100))
+            {
+              int i1 = arrayOfByte[k];
+              int i2 = PkgTools.getShortData(arrayOfByte, k + 1);
+              int n = i2 + 3;
+              int m = i - n;
+              Object localObject3;
+              if (i1 != 1)
+              {
+                bool2 = bool1;
+              }
+              else
+              {
+                localObject1 = new byte[i2];
+                PkgTools.copyData((byte[])localObject1, 0, arrayOfByte, k + 3, i2);
+                localObject3 = new obj_msg.ObjMsg();
+              }
+              try
+              {
+                localObject3 = (obj_msg.ObjMsg)((obj_msg.ObjMsg)localObject3).mergeFrom((byte[])localObject1);
+                Object localObject4;
+                if (((obj_msg.MsgContentInfo)((obj_msg.ObjMsg)localObject3).msg_content_info.get(0)).msg_file.bytes_ext.has())
+                {
+                  localObject1 = ((obj_msg.MsgContentInfo)((obj_msg.ObjMsg)localObject3).msg_content_info.get(0)).msg_file.bytes_ext.get().toStringUtf8();
+                  try
+                  {
+                    localObject4 = Base64.decode(new JSONObject((String)localObject1).optString("ExtInfo"), 0);
+                    localObject1 = new hummer_resv_21.ResvAttr();
+                    ((hummer_resv_21.ResvAttr)localObject1).mergeFrom((byte[])localObject4);
+                    localObject4 = (MessageForTroopFile)MessageRecordFactory.a(-2017);
+                    if (a((hummer_resv_21.ResvAttr)localObject1, (MessageRecord)localObject4))
+                    {
+                      paramArrayList.add(localObject4);
+                      try
+                      {
+                        ((MessageForTroopFile)localObject4).isMultiMsg = true;
+                        i = 1;
+                      }
+                      catch (Exception localException1)
+                      {
+                        break label575;
+                      }
+                    }
+                    else
+                    {
+                      i = 0;
+                    }
+                    bool1 = true;
+                  }
+                  catch (Exception localException2)
+                  {
+                    label575:
+                    localException2.printStackTrace();
+                  }
+                }
+                else
+                {
+                  i = 0;
+                }
+                bool2 = bool1;
+                if (i == 0)
+                {
+                  Object localObject2 = TroopFileUtils.a((obj_msg.ObjMsg)localObject3);
+                  if (localObject2 == null)
+                  {
+                    bool2 = bool1;
+                  }
+                  else
+                  {
+                    localObject4 = a(paramMsg.msg_head.group_info.group_code.get());
+                    localObject3 = ((TroopFileDataManager)localObject4).a(this.a, ((TroopFileData)localObject2).fileUrl);
+                    if (localObject3 == null) {
+                      ((TroopFileDataManager)localObject4).a(this.a, ((TroopFileData)localObject2).fileUrl, (TroopFileData)localObject2);
+                    } else {
+                      localObject2 = localObject3;
+                    }
+                    localObject3 = (MessageForTroopFile)MessageRecordFactory.a(-2017);
+                    ((MessageForTroopFile)localObject3).msgtype = -2017;
+                    ((MessageForTroopFile)localObject3).msg = HardCodeUtil.a(2131704664);
+                    try
+                    {
+                      ((MessageForTroopFile)localObject3).msgData = MessagePkgUtils.a((Serializable)localObject2);
+                    }
+                    catch (Exception localException3)
+                    {
+                      localException3.printStackTrace();
+                    }
+                    ((MessageForTroopFile)localObject3).parse();
+                    paramArrayList.add(localObject3);
+                    bool2 = true;
+                  }
+                }
+              }
+              catch (Exception localException4)
+              {
+                for (;;)
+                {
+                  bool2 = bool1;
+                }
+              }
+              j += 1;
+              k = n + k;
+              i = m;
+              bool1 = bool2;
+            }
+            bool2 = bool1;
+          }
         }
       }
-      k = ((im_msg_body.TransElem)localObject1).elem_value.get().size();
-      arrayOfByte = ((im_msg_body.TransElem)localObject1).elem_value.get().toByteArray();
-      j = 0;
-      i = 0;
-      if (k <= 3) {
-        break label815;
-      }
-      m = j + 1;
-    } while (j > 100);
-    label807:
-    label810:
-    label815:
-    label818:
-    for (;;)
-    {
-      int n = arrayOfByte[i];
-      int i1 = PkgTools.getShortData(arrayOfByte, i + 1);
-      j = k - (i1 + 3);
-      k = i + (i1 + 3);
-      if (n != 1)
-      {
-        i = k;
-        k = j;
-        j = m;
-        break label311;
-      }
-      localObject1 = new byte[i1];
-      PkgTools.copyData((byte[])localObject1, 0, arrayOfByte, i + 3, i1);
-      Object localObject3 = new obj_msg.ObjMsg();
-      for (;;)
-      {
-        try
-        {
-          localObject1 = (obj_msg.ObjMsg)((obj_msg.ObjMsg)localObject3).mergeFrom((byte[])localObject1);
-          i = 0;
-          if (!((obj_msg.MsgContentInfo)((obj_msg.ObjMsg)localObject1).msg_content_info.get(0)).msg_file.bytes_ext.has()) {
-            break label614;
-          }
-          localObject3 = ((obj_msg.MsgContentInfo)((obj_msg.ObjMsg)localObject1).msg_content_info.get(0)).msg_file.bytes_ext.get().toStringUtf8();
-        }
-        catch (Exception localException1)
-        {
-          try
-          {
-            localObject4 = Base64.decode(new JSONObject((String)localObject3).optString("ExtInfo"), 0);
-            localObject3 = new hummer_resv_21.ResvAttr();
-            ((hummer_resv_21.ResvAttr)localObject3).mergeFrom((byte[])localObject4);
-            localObject4 = (MessageForTroopFile)MessageRecordFactory.a(-2017);
-            if (!a((hummer_resv_21.ResvAttr)localObject3, (MessageRecord)localObject4)) {
-              break label810;
-            }
-            paramArrayList.add(localObject4);
-            ((MessageForTroopFile)localObject4).isMultiMsg = true;
-            i = 1;
-            bool1 = true;
-            if (i != 0) {
-              break label807;
-            }
-            localObject3 = TroopFileUtils.a((obj_msg.ObjMsg)localObject1);
-            if (localObject3 != null) {
-              break label617;
-            }
-            i = m;
-            m = j;
-            j = i;
-            i = k;
-            k = m;
-          }
-          catch (Exception localException3)
-          {
-            localException3.printStackTrace();
-          }
-          localException1 = localException1;
-          i = k;
-          k = j;
-          j = m;
-        }
-        break label311;
-        label614:
-        continue;
-        label617:
-        TroopFileDataManager localTroopFileDataManager = a(paramMsg.msg_head.group_info.group_code.get());
-        Object localObject4 = localTroopFileDataManager.a(this.a, localException3.fileUrl);
-        Object localObject2 = localObject4;
-        if (localObject4 == null)
-        {
-          localTroopFileDataManager.a(this.a, localException3.fileUrl, localException3);
-          localObject2 = localException3;
-        }
-        MessageForTroopFile localMessageForTroopFile = (MessageForTroopFile)MessageRecordFactory.a(-2017);
-        localMessageForTroopFile.msgtype = -2017;
-        localMessageForTroopFile.msg = HardCodeUtil.a(2131704584);
-        for (;;)
-        {
-          try
-          {
-            localMessageForTroopFile.msgData = MessagePkgUtils.a(localObject2);
-            localMessageForTroopFile.parse();
-            paramArrayList.add(localMessageForTroopFile);
-            bool1 = true;
-            i = k;
-            k = j;
-            j = m;
-          }
-          catch (Exception localException2)
-          {
-            localException2.printStackTrace();
-            continue;
-          }
-          label760:
-          bool2 = bool1;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.i("FileMultiMsgPackageHandle<QFile>", 2, "decodeGroupFilePb: endTime[" + System.currentTimeMillis() + "]");
-          return bool1;
-        }
-        i = 0;
+      else {
+        bool1 = bool2;
       }
     }
+    if (QLog.isColorLevel())
+    {
+      paramArrayList = new StringBuilder();
+      paramArrayList.append("decodeGroupFilePb: endTime[");
+      paramArrayList.append(System.currentTimeMillis());
+      paramArrayList.append("]");
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 2, paramArrayList.toString());
+    }
+    return bool1;
   }
   
   public boolean a(hummer_resv_21.ResvAttr paramResvAttr, MessageRecord paramMessageRecord)
@@ -662,119 +794,98 @@ public class FileMultiMsgPackageHandle
       return false;
     }
     paramResvAttr = (hummer_resv_21.ForwardExtFileInfo)paramResvAttr.forward_ext_file_info.get();
-    label70:
-    label89:
-    label108:
-    String str;
-    if (!paramResvAttr.uint32_file_type.has())
-    {
+    if (!paramResvAttr.uint32_file_type.has()) {
       a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no uint32_file_type");
-      if (paramResvAttr.uint64_sender_uin.has()) {
-        break label352;
-      }
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no uint64_sender_uin");
-      if (paramResvAttr.uint64_receiver_uin.has()) {
-        break label372;
-      }
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no uint64_receiver_uin");
-      if (paramResvAttr.bytes_file_uuid.has()) {
-        break label392;
-      }
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no bytes_file_uuid");
-      if (paramResvAttr.str_fileidcrc.has())
-      {
-        str = paramResvAttr.str_fileidcrc.get();
-        paramMessageRecord.saveExtInfoToExtStr("_m_ForwardFileIdCrc", str);
-        a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr fileIdCrc:" + str);
-      }
-      if (paramResvAttr.str_file_name.has()) {
-        break label446;
-      }
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no str_file_name");
-      label179:
-      if (paramResvAttr.uint64_file_size.has()) {
-        break label462;
-      }
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no uint64_file_size");
-      label198:
-      if (paramResvAttr.bytes_file_sha1.has()) {
-        break label481;
-      }
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no bytes_file_sha1");
-      label217:
-      if (paramResvAttr.bytes_file_md5.has()) {
-        break label500;
-      }
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no bytes_file_md5");
-      label236:
-      if (paramResvAttr.uint32_bus_id.has()) {
-        break label519;
-      }
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no uint32_bus_id");
-      label255:
-      if (paramResvAttr.int64_dead_time.has()) {
-        break label554;
-      }
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no int64_dead_time");
-      label274:
-      if (paramResvAttr.uint32_img_width.has()) {
-        break label573;
-      }
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no uint32_img_width");
-      label293:
-      if (paramResvAttr.uint32_img_height.has()) {
-        break label592;
-      }
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no uint32_img_height");
-      label312:
-      if (paramResvAttr.uint64_video_duration.has()) {
-        break label611;
-      }
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no uint64_video_duration");
-    }
-    for (;;)
-    {
-      return true;
+    } else {
       paramMessageRecord.saveExtInfoToExtStr("_m_ForwardFileType", String.valueOf(paramResvAttr.uint32_file_type.get()));
-      break;
-      label352:
-      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardSenderUin", String.valueOf(paramResvAttr.uint64_sender_uin.get()));
-      break label70;
-      label372:
-      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardReceiverUin", String.valueOf(paramResvAttr.uint64_receiver_uin.get()));
-      break label89;
-      label392:
-      str = new String(paramResvAttr.bytes_file_uuid.get().toByteArray());
-      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardUuid", str);
-      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr uuid:" + str);
-      break label108;
-      label446:
-      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardFileName", paramResvAttr.str_file_name.get());
-      break label179;
-      label462:
-      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardSize", String.valueOf(paramResvAttr.uint64_file_size.get()));
-      break label198;
-      label481:
-      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardSha", paramResvAttr.bytes_file_sha1.get().toStringUtf8());
-      break label217;
-      label500:
-      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardMd5", paramResvAttr.bytes_file_md5.get().toStringUtf8());
-      break label236;
-      label519:
-      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardBusType", paramResvAttr.uint32_bus_id.get() + "");
-      break label255;
-      label554:
-      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardDeadTime", String.valueOf(paramResvAttr.int64_dead_time.get()));
-      break label274;
-      label573:
-      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardImgWidth", String.valueOf(paramResvAttr.uint32_img_width.get()));
-      break label293;
-      label592:
-      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardImgHeight", String.valueOf(paramResvAttr.uint32_img_height.get()));
-      break label312;
-      label611:
-      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardDuration", String.valueOf(paramResvAttr.uint64_video_duration.get()));
     }
+    if (!paramResvAttr.uint64_sender_uin.has()) {
+      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no uint64_sender_uin");
+    } else {
+      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardSenderUin", String.valueOf(paramResvAttr.uint64_sender_uin.get()));
+    }
+    if (!paramResvAttr.uint64_receiver_uin.has()) {
+      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no uint64_receiver_uin");
+    } else {
+      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardReceiverUin", String.valueOf(paramResvAttr.uint64_receiver_uin.get()));
+    }
+    Object localObject;
+    StringBuilder localStringBuilder;
+    if (!paramResvAttr.bytes_file_uuid.has())
+    {
+      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no bytes_file_uuid");
+    }
+    else
+    {
+      localObject = new String(paramResvAttr.bytes_file_uuid.get().toByteArray());
+      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardUuid", (String)localObject);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("saveResvAttrToMr uuid:");
+      localStringBuilder.append((String)localObject);
+      a("FileMultiMsgPackageHandle<QFile>", localStringBuilder.toString());
+    }
+    if (paramResvAttr.str_fileidcrc.has())
+    {
+      localObject = paramResvAttr.str_fileidcrc.get();
+      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardFileIdCrc", (String)localObject);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("saveResvAttrToMr fileIdCrc:");
+      localStringBuilder.append((String)localObject);
+      a("FileMultiMsgPackageHandle<QFile>", localStringBuilder.toString());
+    }
+    if (!paramResvAttr.str_file_name.has()) {
+      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no str_file_name");
+    } else {
+      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardFileName", paramResvAttr.str_file_name.get());
+    }
+    if (!paramResvAttr.uint64_file_size.has()) {
+      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no uint64_file_size");
+    } else {
+      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardSize", String.valueOf(paramResvAttr.uint64_file_size.get()));
+    }
+    if (!paramResvAttr.bytes_file_sha1.has()) {
+      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no bytes_file_sha1");
+    } else {
+      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardSha", paramResvAttr.bytes_file_sha1.get().toStringUtf8());
+    }
+    if (!paramResvAttr.bytes_file_md5.has()) {
+      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no bytes_file_md5");
+    } else {
+      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardMd5", paramResvAttr.bytes_file_md5.get().toStringUtf8());
+    }
+    if (!paramResvAttr.uint32_bus_id.has())
+    {
+      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no uint32_bus_id");
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramResvAttr.uint32_bus_id.get());
+      ((StringBuilder)localObject).append("");
+      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardBusType", ((StringBuilder)localObject).toString());
+    }
+    if (!paramResvAttr.int64_dead_time.has()) {
+      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no int64_dead_time");
+    } else {
+      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardDeadTime", String.valueOf(paramResvAttr.int64_dead_time.get()));
+    }
+    if (!paramResvAttr.uint32_img_width.has()) {
+      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no uint32_img_width");
+    } else {
+      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardImgWidth", String.valueOf(paramResvAttr.uint32_img_width.get()));
+    }
+    if (!paramResvAttr.uint32_img_height.has()) {
+      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no uint32_img_height");
+    } else {
+      paramMessageRecord.saveExtInfoToExtStr("_m_ForwardImgHeight", String.valueOf(paramResvAttr.uint32_img_height.get()));
+    }
+    if (!paramResvAttr.uint64_video_duration.has())
+    {
+      a("FileMultiMsgPackageHandle<QFile>", "saveResvAttrToMr no uint64_video_duration");
+      return true;
+    }
+    paramMessageRecord.saveExtInfoToExtStr("_m_ForwardDuration", String.valueOf(paramResvAttr.uint64_video_duration.get()));
+    return true;
   }
   
   public im_msg_body.MsgBody b(MessageRecord paramMessageRecord)
@@ -782,14 +893,17 @@ public class FileMultiMsgPackageHandle
     im_msg_body.MsgBody localMsgBody = new im_msg_body.MsgBody();
     im_msg_body.RichText localRichText = new im_msg_body.RichText();
     im_msg_body.GroupFile localGroupFile = new im_msg_body.GroupFile();
+    Object localObject1;
     Object localObject2;
     long l;
-    Object localObject1;
     int i;
     hummer_resv_21.FileImgInfo localFileImgInfo;
     if (a(paramMessageRecord))
     {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleDiscFileMessage: package multi disc file message. " + QFileUtils.a(this.a, paramMessageRecord));
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("handleDiscFileMessage: package multi disc file message. ");
+      ((StringBuilder)localObject1).append(QFileUtils.a(this.a, paramMessageRecord));
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject1).toString());
       localObject2 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
       localGroupFile.bytes_filename.set(ByteStringMicro.copyFrom(((String)localObject2).getBytes()));
       l = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
@@ -812,14 +926,12 @@ public class FileMultiMsgPackageHandle
       }
       localGroupFile.bytes_pb_reserve.set(ByteStringMicro.copyFrom(((hummer_resv_21.ResvAttr)localObject1).toByteArray()));
     }
-    for (;;)
+    else
     {
-      paramMessageRecord = new im_msg_body.Elem();
-      paramMessageRecord.group_file.set(localGroupFile);
-      localRichText.elems.add(paramMessageRecord);
-      localMsgBody.rich_text.set(localRichText);
-      return localMsgBody;
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleDiscFileMessage: package normal disc file message. " + QFileUtils.a(this.a, paramMessageRecord));
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("handleDiscFileMessage: package normal disc file message. ");
+      ((StringBuilder)localObject1).append(QFileUtils.a(this.a, paramMessageRecord));
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject1).toString());
       localObject1 = this.a.getFileManagerDataCenter().a(paramMessageRecord.uniseq, paramMessageRecord.frienduin, paramMessageRecord.istroop);
       if (localObject1 != null)
       {
@@ -842,15 +954,30 @@ public class FileMultiMsgPackageHandle
       }
       else
       {
-        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleDiscFileMessage. error, get file entity is null. msgUniseq[" + paramMessageRecord.uniseq + "]");
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("handleDiscFileMessage. error, get file entity is null. msgUniseq[");
+        ((StringBuilder)localObject1).append(paramMessageRecord.uniseq);
+        ((StringBuilder)localObject1).append("]");
+        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject1).toString());
       }
     }
+    paramMessageRecord = new im_msg_body.Elem();
+    paramMessageRecord.group_file.set(localGroupFile);
+    localRichText.elems.add(paramMessageRecord);
+    localMsgBody.rich_text.set(localRichText);
+    return localMsgBody;
   }
   
   public boolean b(ArrayList<MessageRecord> paramArrayList, msg_comm.Msg paramMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 2, "decodeDiscFilepb: startTime[" + System.currentTimeMillis() + "]");
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("decodeDiscFilepb: startTime[");
+      ((StringBuilder)localObject1).append(System.currentTimeMillis());
+      ((StringBuilder)localObject1).append("]");
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 2, ((StringBuilder)localObject1).toString());
     }
     if (paramMsg == null)
     {
@@ -875,88 +1002,117 @@ public class FileMultiMsgPackageHandle
       return false;
     }
     paramMsg = paramMsg.elems.get().iterator();
-    while (paramMsg.hasNext())
+    for (;;)
     {
-      Object localObject1 = (im_msg_body.Elem)paramMsg.next();
-      if (!((im_msg_body.Elem)localObject1).group_file.has())
+      if (paramMsg.hasNext())
       {
-        QLog.e("FileMultiMsgPackageHandle<QFile>", 2, "<FileAssistant>decodeDiscFilepb : elem has not group_file");
-      }
-      else
-      {
-        Object localObject2 = (im_msg_body.GroupFile)((im_msg_body.Elem)localObject1).group_file.get();
-        if (!((im_msg_body.GroupFile)localObject2).bytes_pb_reserve.has())
+        localObject1 = (im_msg_body.Elem)paramMsg.next();
+        if (!((im_msg_body.Elem)localObject1).group_file.has())
         {
-          QLog.e("FileMultiMsgPackageHandle<QFile>", 2, "<FileAssistant>decodeDiscFilepb : elem has not reserve info");
-          return false;
+          QLog.e("FileMultiMsgPackageHandle<QFile>", 2, "<FileAssistant>decodeDiscFilepb : elem has not group_file");
         }
-        Object localObject3 = ((im_msg_body.GroupFile)localObject2).bytes_pb_reserve.get().toByteArray();
-        localObject1 = new hummer_resv_21.ResvAttr();
-        paramMsg = (MessageForFile)MessageRecordFactory.a(-2005);
-        try
+        else
         {
-          ((hummer_resv_21.ResvAttr)localObject1).mergeFrom((byte[])localObject3);
-          if (a((hummer_resv_21.ResvAttr)localObject1))
+          Object localObject2 = (im_msg_body.GroupFile)((im_msg_body.Elem)localObject1).group_file.get();
+          if (!((im_msg_body.GroupFile)localObject2).bytes_pb_reserve.has())
           {
-            QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeDiscFilepb: decode multi disc file message. " + QFileUtils.a(this.a, paramMsg, false));
-            if (a((hummer_resv_21.ResvAttr)localObject1, paramMsg)) {
-              paramMsg.isMultiMsg = true;
+            QLog.e("FileMultiMsgPackageHandle<QFile>", 2, "<FileAssistant>decodeDiscFilepb : elem has not reserve info");
+            return false;
+          }
+          Object localObject3 = ((im_msg_body.GroupFile)localObject2).bytes_pb_reserve.get().toByteArray();
+          localObject1 = new hummer_resv_21.ResvAttr();
+          paramMsg = (MessageForFile)MessageRecordFactory.a(-2005);
+          try
+          {
+            ((hummer_resv_21.ResvAttr)localObject1).mergeFrom((byte[])localObject3);
+            if (a((hummer_resv_21.ResvAttr)localObject1))
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("decodeDiscFilepb: decode multi disc file message. ");
+              ((StringBuilder)localObject2).append(QFileUtils.a(this.a, paramMsg, false));
+              QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject2).toString());
+              if (a((hummer_resv_21.ResvAttr)localObject1, paramMsg)) {
+                paramMsg.isMultiMsg = true;
+              }
+              paramArrayList.add(paramMsg);
+              return true;
+            }
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("decodeDiscFilepb: decode normal disc file message. ");
+            ((StringBuilder)localObject3).append(QFileUtils.a(this.a, paramMsg, false));
+            QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject3).toString());
+            if (((im_msg_body.GroupFile)localObject2).bytes_filename.has())
+            {
+              localObject3 = ((im_msg_body.GroupFile)localObject2).bytes_filename.get().toStringUtf8();
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("decodeDiscFilepb: decode normal disc, fileName[");
+              localStringBuilder.append((String)localObject3);
+              localStringBuilder.append("]");
+              QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
+              paramMsg.saveExtInfoToExtStr("_backup_ForwardFileName", FileManagerUtil.a((String)localObject3));
+            }
+            else
+            {
+              QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeDiscFilepb: decode normal disc, fileName is null");
+            }
+            if (((im_msg_body.GroupFile)localObject2).uint64_file_size.has())
+            {
+              long l = ((im_msg_body.GroupFile)localObject2).uint64_file_size.get();
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append(l);
+              ((StringBuilder)localObject3).append("");
+              paramMsg.saveExtInfoToExtStr("_backup_ForwardSize", ((StringBuilder)localObject3).toString());
+            }
+            if (((im_msg_body.GroupFile)localObject2).bytes_file_id.has())
+            {
+              localObject2 = ((im_msg_body.GroupFile)localObject2).bytes_file_id.get().toStringUtf8();
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append("decodeDiscFilepb: decode normal disc, fileId[");
+              ((StringBuilder)localObject3).append((String)localObject2);
+              ((StringBuilder)localObject3).append("]");
+              QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject3).toString());
+              paramMsg.saveExtInfoToExtStr("_backup_ForwardUuid", (String)localObject2);
+            }
+            else
+            {
+              QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeDiscFilepb: decode normal disc, fileId is null");
+            }
+            if (((hummer_resv_21.ResvAttr)localObject1).file_image_info.has())
+            {
+              localObject1 = (hummer_resv_21.FileImgInfo)((hummer_resv_21.ResvAttr)localObject1).file_image_info.get();
+              int i;
+              if (((hummer_resv_21.FileImgInfo)localObject1).uint32_file_width.has())
+              {
+                i = ((hummer_resv_21.FileImgInfo)localObject1).uint32_file_width.get();
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append(i);
+                ((StringBuilder)localObject2).append("");
+                paramMsg.saveExtInfoToExtStr("_backup_ForwardImgWidth", ((StringBuilder)localObject2).toString());
+              }
+              if (((hummer_resv_21.FileImgInfo)localObject1).uint32_file_height.has())
+              {
+                i = ((hummer_resv_21.FileImgInfo)localObject1).uint32_file_height.get();
+                localObject1 = new StringBuilder();
+                ((StringBuilder)localObject1).append(i);
+                ((StringBuilder)localObject1).append("");
+                paramMsg.saveExtInfoToExtStr("_backup_ForwardImgHeight", ((StringBuilder)localObject1).toString());
+              }
             }
             paramArrayList.add(paramMsg);
+            if (QLog.isColorLevel())
+            {
+              paramArrayList = new StringBuilder();
+              paramArrayList.append("decodeDiscFilepb: endTime[");
+              paramArrayList.append(System.currentTimeMillis());
+              paramArrayList.append("]");
+              QLog.i("FileMultiMsgPackageHandle<QFile>", 2, paramArrayList.toString());
+            }
             return true;
           }
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayList)
-        {
-          paramArrayList.printStackTrace();
-          return false;
-        }
-        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeDiscFilepb: decode normal disc file message. " + QFileUtils.a(this.a, paramMsg, false));
-        if (((im_msg_body.GroupFile)localObject2).bytes_filename.has())
-        {
-          localObject3 = ((im_msg_body.GroupFile)localObject2).bytes_filename.get().toStringUtf8();
-          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeDiscFilepb: decode normal disc, fileName[" + (String)localObject3 + "]");
-          paramMsg.saveExtInfoToExtStr("_backup_ForwardFileName", FileManagerUtil.a((String)localObject3));
-          label447:
-          if (((im_msg_body.GroupFile)localObject2).uint64_file_size.has())
+          catch (InvalidProtocolBufferMicroException paramArrayList)
           {
-            long l = ((im_msg_body.GroupFile)localObject2).uint64_file_size.get();
-            paramMsg.saveExtInfoToExtStr("_backup_ForwardSize", l + "");
+            paramArrayList.printStackTrace();
           }
-          if (!((im_msg_body.GroupFile)localObject2).bytes_file_id.has()) {
-            break label741;
-          }
-          localObject2 = ((im_msg_body.GroupFile)localObject2).bytes_file_id.get().toStringUtf8();
-          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeDiscFilepb: decode normal disc, fileId[" + (String)localObject2 + "]");
-          paramMsg.saveExtInfoToExtStr("_backup_ForwardUuid", (String)localObject2);
-        }
-        for (;;)
-        {
-          if (((hummer_resv_21.ResvAttr)localObject1).file_image_info.has())
-          {
-            localObject1 = (hummer_resv_21.FileImgInfo)((hummer_resv_21.ResvAttr)localObject1).file_image_info.get();
-            int i;
-            if (((hummer_resv_21.FileImgInfo)localObject1).uint32_file_width.has())
-            {
-              i = ((hummer_resv_21.FileImgInfo)localObject1).uint32_file_width.get();
-              paramMsg.saveExtInfoToExtStr("_backup_ForwardImgWidth", i + "");
-            }
-            if (((hummer_resv_21.FileImgInfo)localObject1).uint32_file_height.has())
-            {
-              i = ((hummer_resv_21.FileImgInfo)localObject1).uint32_file_height.get();
-              paramMsg.saveExtInfoToExtStr("_backup_ForwardImgHeight", i + "");
-            }
-          }
-          paramArrayList.add(paramMsg);
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.i("FileMultiMsgPackageHandle<QFile>", 2, "decodeDiscFilepb: endTime[" + System.currentTimeMillis() + "]");
-          break;
-          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeDiscFilepb: decode normal disc, fileName is null");
-          break label447;
-          label741:
-          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "decodeDiscFilepb: decode normal disc, fileId is null");
         }
       }
     }
@@ -965,108 +1121,131 @@ public class FileMultiMsgPackageHandle
   
   public im_msg_body.MsgBody c(MessageRecord paramMessageRecord)
   {
-    im_msg_body.MsgBody localMsgBody = new im_msg_body.MsgBody();
-    SubMsgType0x4.MsgBody localMsgBody1 = new SubMsgType0x4.MsgBody();
-    Object localObject1 = new im_msg_body.NotOnlineFile();
-    ((im_msg_body.NotOnlineFile)localObject1).uint32_client_type.set(0);
-    Object localObject2;
+    Object localObject1 = new im_msg_body.MsgBody();
+    SubMsgType0x4.MsgBody localMsgBody = new SubMsgType0x4.MsgBody();
+    Object localObject2 = new im_msg_body.NotOnlineFile();
+    ((im_msg_body.NotOnlineFile)localObject2).uint32_client_type.set(0);
+    Object localObject3;
+    Object localObject4;
     int i;
     if (a(paramMessageRecord))
     {
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleBuddyFileMessage: package multi buddy file message. " + QFileUtils.a(this.a, paramMessageRecord));
-      localObject2 = this.a.getFileManagerDataCenter().a(paramMessageRecord.uniseq, paramMessageRecord.frienduin, paramMessageRecord.istroop);
-      if ((localObject2 != null) && (((FileManagerEntity)localObject2).getCloudType() == 0))
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("handleBuddyFileMessage: package multi buddy file message. ");
+      ((StringBuilder)localObject3).append(QFileUtils.a(this.a, paramMessageRecord));
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject3).toString());
+      localObject3 = this.a.getFileManagerDataCenter().a(paramMessageRecord.uniseq, paramMessageRecord.frienduin, paramMessageRecord.istroop);
+      if ((localObject3 != null) && (((FileManagerEntity)localObject3).getCloudType() == 0))
       {
-        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleBuddyFileMessage: package multi buddy file message but found online file." + QFileUtils.a(this.a, paramMessageRecord));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("handleBuddyFileMessage: package multi buddy file message but found online file.");
+        ((StringBuilder)localObject1).append(QFileUtils.a(this.a, paramMessageRecord));
+        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject1).toString());
         return null;
       }
-      localObject2 = a(paramMessageRecord);
+      localObject3 = a(paramMessageRecord);
       long l = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-      ((im_msg_body.NotOnlineFile)localObject1).uint64_file_size.set(l);
-      Object localObject3 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-      ((im_msg_body.NotOnlineFile)localObject1).bytes_file_name.set(ByteStringMicro.copyFrom(((String)localObject3).getBytes()));
-      ((im_msg_body.NotOnlineFile)localObject1).uint32_subcmd.set(2);
+      ((im_msg_body.NotOnlineFile)localObject2).uint64_file_size.set(l);
+      localObject4 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+      ((im_msg_body.NotOnlineFile)localObject2).bytes_file_name.set(ByteStringMicro.copyFrom(((String)localObject4).getBytes()));
+      ((im_msg_body.NotOnlineFile)localObject2).uint32_subcmd.set(2);
       String str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
       if (!TextUtils.isEmpty(str)) {
-        ((im_msg_body.NotOnlineFile)localObject1).bytes_file_md5.set(ByteStringMicro.copyFrom(HexUtil.hexStr2Bytes(str)));
+        ((im_msg_body.NotOnlineFile)localObject2).bytes_file_md5.set(ByteStringMicro.copyFrom(HexUtil.hexStr2Bytes(str)));
       }
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleBuddyFileMessage fileMd5 is " + str);
-      localMsgBody1.msg_not_online_file.set((MessageMicro)localObject1);
-      i = FileManagerUtil.a((String)localObject3);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleBuddyFileMessage fileMd5 is ");
+      localStringBuilder.append(str);
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, localStringBuilder.toString());
+      localMsgBody.msg_not_online_file.set((MessageMicro)localObject2);
+      i = FileManagerUtil.a((String)localObject4);
       if ((i == 0) || (i == 2))
       {
-        localObject1 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+        localObject2 = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
         paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-        if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(paramMessageRecord)))
+        if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty(paramMessageRecord)))
         {
-          localObject3 = new hummer_resv_21.FileImgInfo();
-          ((hummer_resv_21.FileImgInfo)localObject3).uint32_file_height.set(Integer.valueOf(paramMessageRecord).intValue());
-          ((hummer_resv_21.FileImgInfo)localObject3).uint32_file_width.set(Integer.valueOf((String)localObject1).intValue());
-          localMsgBody1.file_image_info.set((MessageMicro)localObject3);
+          localObject4 = new hummer_resv_21.FileImgInfo();
+          ((hummer_resv_21.FileImgInfo)localObject4).uint32_file_height.set(Integer.valueOf(paramMessageRecord).intValue());
+          ((hummer_resv_21.FileImgInfo)localObject4).uint32_file_width.set(Integer.valueOf((String)localObject2).intValue());
+          localMsgBody.file_image_info.set((MessageMicro)localObject4);
         }
       }
-      localMsgBody1.resv_attr.set((MessageMicro)localObject2);
+      localMsgBody.resv_attr.set((MessageMicro)localObject3);
     }
-    for (;;)
+    else
     {
-      paramMessageRecord = localMsgBody1.toByteArray();
-      localMsgBody.msg_content.set(ByteStringMicro.copyFrom(paramMessageRecord));
-      return localMsgBody;
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleBuddyFileMessage: package normal buddy file message. " + QFileUtils.a(this.a, paramMessageRecord));
-      localObject2 = this.a.getFileManagerDataCenter().a(paramMessageRecord.uniseq, paramMessageRecord.frienduin, paramMessageRecord.istroop);
-      if (localObject2 != null)
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("handleBuddyFileMessage: package normal buddy file message. ");
+      ((StringBuilder)localObject3).append(QFileUtils.a(this.a, paramMessageRecord));
+      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject3).toString());
+      localObject3 = this.a.getFileManagerDataCenter().a(paramMessageRecord.uniseq, paramMessageRecord.frienduin, paramMessageRecord.istroop);
+      if (localObject3 != null)
       {
-        if (((FileManagerEntity)localObject2).getCloudType() == 0)
+        if (((FileManagerEntity)localObject3).getCloudType() == 0)
         {
-          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleBuddyFileMessage: package normal buddy file message but found online file." + QFileUtils.a(this.a, paramMessageRecord));
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("handleBuddyFileMessage: package normal buddy file message but found online file.");
+          ((StringBuilder)localObject1).append(QFileUtils.a(this.a, paramMessageRecord));
+          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject1).toString());
           return null;
         }
-        ((im_msg_body.NotOnlineFile)localObject1).uint64_file_size.set(((FileManagerEntity)localObject2).fileSize);
-        if (!TextUtils.isEmpty(((FileManagerEntity)localObject2).fileName))
+        ((im_msg_body.NotOnlineFile)localObject2).uint64_file_size.set(((FileManagerEntity)localObject3).fileSize);
+        if (!TextUtils.isEmpty(((FileManagerEntity)localObject3).fileName))
         {
-          ((im_msg_body.NotOnlineFile)localObject1).bytes_file_name.set(ByteStringMicro.copyFrom(((FileManagerEntity)localObject2).fileName.getBytes()));
-          label551:
-          if (TextUtils.isEmpty(((FileManagerEntity)localObject2).Uuid)) {
-            break label728;
-          }
-          ((im_msg_body.NotOnlineFile)localObject1).bytes_file_uuid.set(ByteStringMicro.copyFrom(((FileManagerEntity)localObject2).Uuid.getBytes()));
-          label581:
-          if (TextUtils.isEmpty(((FileManagerEntity)localObject2).strFileMd5)) {
-            break label764;
-          }
-          ((im_msg_body.NotOnlineFile)localObject1).bytes_file_md5.set(ByteStringMicro.copyFrom(((FileManagerEntity)localObject2).strFileMd5.getBytes()));
+          ((im_msg_body.NotOnlineFile)localObject2).bytes_file_name.set(ByteStringMicro.copyFrom(((FileManagerEntity)localObject3).fileName.getBytes()));
         }
-        for (;;)
+        else
         {
-          paramMessageRecord = new hummer_resv_21.FileImgInfo();
-          i = FileManagerUtil.a(((FileManagerEntity)localObject2).fileName);
-          if ((i == 0) || (i == 2))
-          {
-            paramMessageRecord.uint32_file_width.set(((FileManagerEntity)localObject2).imgWidth);
-            paramMessageRecord.uint32_file_height.set(((FileManagerEntity)localObject2).imgHeight);
-          }
-          ((im_msg_body.NotOnlineFile)localObject1).uint32_subcmd.set(2);
-          localMsgBody1.msg_not_online_file.set((MessageMicro)localObject1);
-          localMsgBody1.file_image_info.set(paramMessageRecord);
-          break;
-          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleBuddyFileMessage: offline file name is null. " + QFileUtils.a(this.a, paramMessageRecord));
-          break label551;
-          label728:
-          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleBuddyFileMessage: offline file uuid is null. " + QFileUtils.a(this.a, paramMessageRecord));
-          break label581;
-          label764:
-          if (!TextUtils.isEmpty(((FileManagerEntity)localObject2).str10Md5)) {
-            ((im_msg_body.NotOnlineFile)localObject1).bytes_file_md5.set(ByteStringMicro.copyFrom(((FileManagerEntity)localObject2).str10Md5.getBytes()));
-          }
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("handleBuddyFileMessage: offline file name is null. ");
+          ((StringBuilder)localObject4).append(QFileUtils.a(this.a, paramMessageRecord));
+          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject4).toString());
         }
+        if (!TextUtils.isEmpty(((FileManagerEntity)localObject3).Uuid))
+        {
+          ((im_msg_body.NotOnlineFile)localObject2).bytes_file_uuid.set(ByteStringMicro.copyFrom(((FileManagerEntity)localObject3).Uuid.getBytes()));
+        }
+        else
+        {
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("handleBuddyFileMessage: offline file uuid is null. ");
+          ((StringBuilder)localObject4).append(QFileUtils.a(this.a, paramMessageRecord));
+          QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject4).toString());
+        }
+        if (!TextUtils.isEmpty(((FileManagerEntity)localObject3).strFileMd5)) {
+          ((im_msg_body.NotOnlineFile)localObject2).bytes_file_md5.set(ByteStringMicro.copyFrom(((FileManagerEntity)localObject3).strFileMd5.getBytes()));
+        } else if (!TextUtils.isEmpty(((FileManagerEntity)localObject3).str10Md5)) {
+          ((im_msg_body.NotOnlineFile)localObject2).bytes_file_md5.set(ByteStringMicro.copyFrom(((FileManagerEntity)localObject3).str10Md5.getBytes()));
+        }
+        paramMessageRecord = new hummer_resv_21.FileImgInfo();
+        i = FileManagerUtil.a(((FileManagerEntity)localObject3).fileName);
+        if ((i == 0) || (i == 2))
+        {
+          paramMessageRecord.uint32_file_width.set(((FileManagerEntity)localObject3).imgWidth);
+          paramMessageRecord.uint32_file_height.set(((FileManagerEntity)localObject3).imgHeight);
+        }
+        ((im_msg_body.NotOnlineFile)localObject2).uint32_subcmd.set(2);
+        localMsgBody.msg_not_online_file.set((MessageMicro)localObject2);
+        localMsgBody.file_image_info.set(paramMessageRecord);
       }
-      QLog.i("FileMultiMsgPackageHandle<QFile>", 1, "handleBuddyFileMessage. error, get file entity is null. msgUniseq[" + paramMessageRecord.uniseq + "]");
+      else
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("handleBuddyFileMessage. error, get file entity is null. msgUniseq[");
+        ((StringBuilder)localObject2).append(paramMessageRecord.uniseq);
+        ((StringBuilder)localObject2).append("]");
+        QLog.i("FileMultiMsgPackageHandle<QFile>", 1, ((StringBuilder)localObject2).toString());
+      }
     }
+    paramMessageRecord = localMsgBody.toByteArray();
+    ((im_msg_body.MsgBody)localObject1).msg_content.set(ByteStringMicro.copyFrom(paramMessageRecord));
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FileMultiMsgPackageHandle
  * JD-Core Version:    0.7.0.1
  */

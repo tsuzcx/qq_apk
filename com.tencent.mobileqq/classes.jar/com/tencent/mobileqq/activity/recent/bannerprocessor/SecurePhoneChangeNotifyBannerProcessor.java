@@ -8,6 +8,7 @@ import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.banner.Banner;
 import com.tencent.mobileqq.banner.BannerManager;
+import com.tencent.mobileqq.banner.BannerTypeCollections;
 import com.tencent.mobileqq.banner.processor.BaseBannerProcessor;
 import com.tencent.mobileqq.banner.processor.IBannerLifecycle;
 import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
@@ -22,6 +23,13 @@ public class SecurePhoneChangeNotifyBannerProcessor
   extends BaseBannerProcessor
   implements Handler.Callback, IBannerLifecycle
 {
+  public static final int a;
+  
+  static
+  {
+    jdField_a_of_type_Int = BannerTypeCollections.e;
+  }
+  
   public SecurePhoneChangeNotifyBannerProcessor(QBaseActivity paramQBaseActivity)
   {
     super(paramQBaseActivity);
@@ -43,7 +51,7 @@ public class SecurePhoneChangeNotifyBannerProcessor
   
   public void a()
   {
-    BannerManager.a().a(5, 0);
+    BannerManager.a().a(jdField_a_of_type_Int, 0);
     SecurePhoneBannerManager.a().a();
   }
   
@@ -52,19 +60,25 @@ public class SecurePhoneChangeNotifyBannerProcessor
     paramBanner.a.setVisibility(0);
   }
   
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity != null) {}
-    for (QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime();; localQQAppInterface = null)
-    {
-      SecurePhoneBannerManager.a().a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-      return;
-    }
-  }
-  
-  public void b(AppRuntime paramAppRuntime)
+  public void a(AppRuntime paramAppRuntime)
   {
     this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+  }
+  
+  public int b()
+  {
+    return jdField_a_of_type_Int;
+  }
+  
+  public void b()
+  {
+    QQAppInterface localQQAppInterface;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity != null) {
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime();
+    } else {
+      localQQAppInterface = null;
+    }
+    SecurePhoneBannerManager.a().a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -77,7 +91,7 @@ public class SecurePhoneChangeNotifyBannerProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.SecurePhoneChangeNotifyBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

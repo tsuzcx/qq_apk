@@ -44,8 +44,9 @@ class SingleLineTextView$ExtendText
     if (paramCanvas != null)
     {
       this.mTextPaint.setColor(this.mCurTextColor);
-      this.mTextPaint.drawableState = paramArrayOfInt;
-      paramCanvas.drawText(this.mText, paramFloat1, paramFloat2, this.mTextPaint);
+      TextPaint localTextPaint = this.mTextPaint;
+      localTextPaint.drawableState = paramArrayOfInt;
+      paramCanvas.drawText(this.mText, paramFloat1, paramFloat2, localTextPaint);
     }
   }
   
@@ -101,13 +102,14 @@ class SingleLineTextView$ExtendText
     if (Math.abs(this.mTextSize - paramFloat) > 0.01F)
     {
       this.mTextSize = paramFloat;
-      if (paramContext == null) {}
-      for (paramContext = Resources.getSystem();; paramContext = paramContext.getResources())
+      if (paramContext == null) {
+        paramContext = Resources.getSystem();
+      } else {
+        paramContext = paramContext.getResources();
+      }
+      paramFloat = TypedValue.applyDimension(1, paramFloat, paramContext.getDisplayMetrics());
+      if (paramFloat != this.mTextPaint.getTextSize())
       {
-        paramFloat = TypedValue.applyDimension(1, paramFloat, paramContext.getDisplayMetrics());
-        if (paramFloat == this.mTextPaint.getTextSize()) {
-          break;
-        }
         this.mTextPaint.setTextSize(paramFloat);
         this.mDesiredTextWidth = -1;
         this.mDesiredTextHeight = -1;
@@ -120,57 +122,59 @@ class SingleLineTextView$ExtendText
   
   public String toString()
   {
-    if (this.mText == null) {
-      return "";
+    String str2 = this.mText;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    return this.mText;
+    return str1;
   }
   
   public boolean updateTextColors(int[] paramArrayOfInt)
   {
-    int j = this.mTextColor.getColorForState(paramArrayOfInt, 0);
+    ColorStateList localColorStateList1 = this.mTextColor;
+    boolean bool = false;
+    int j = localColorStateList1.getColorForState(paramArrayOfInt, 0);
     int i = j;
-    if ((j != 0) || (this.mGetColorStateListMethod == null)) {}
-    try
+    if (j == 0)
     {
-      this.mGetColorStateListMethod = SkinnableColorStateList.class.getMethod("getColorForState", new Class[] { [I.class, Integer.TYPE });
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      try
-      {
-        for (;;)
+      if (this.mGetColorStateListMethod == null) {
+        try
         {
-          i = ((Integer)this.mGetColorStateListMethod.invoke(this.mTextColor, new Object[] { paramArrayOfInt, Integer.valueOf(0) })).intValue();
-          if ((this.mTextColor instanceof SkinnableColorStateList)) {
-            ((SkinnableColorStateList)this.mTextColor).reset();
-          }
-          if (i == this.mCurTextColor) {
-            break;
-          }
-          this.mCurTextColor = i;
-          this.mTextPaint.setColor(this.mCurTextColor);
-          this.mTextPaint.drawableState = paramArrayOfInt;
-          return true;
-          localNoSuchMethodException = localNoSuchMethodException;
+          this.mGetColorStateListMethod = SkinnableColorStateList.class.getMethod("getColorForState", new Class[] { [I.class, Integer.TYPE });
+        }
+        catch (NoSuchMethodException localNoSuchMethodException)
+        {
           localNoSuchMethodException.printStackTrace();
         }
       }
+      try
+      {
+        i = ((Integer)this.mGetColorStateListMethod.invoke(this.mTextColor, new Object[] { paramArrayOfInt, Integer.valueOf(0) })).intValue();
+      }
       catch (Exception localException)
       {
-        for (;;)
-        {
-          QLog.e("SingleLineTextView", 1, localException, new Object[0]);
-          i = j;
-        }
+        QLog.e("SingleLineTextView", 1, localException, new Object[0]);
+        i = j;
       }
     }
-    return false;
+    ColorStateList localColorStateList2 = this.mTextColor;
+    if ((localColorStateList2 instanceof SkinnableColorStateList)) {
+      ((SkinnableColorStateList)localColorStateList2).reset();
+    }
+    if (i != this.mCurTextColor)
+    {
+      this.mCurTextColor = i;
+      this.mTextPaint.setColor(this.mCurTextColor);
+      this.mTextPaint.drawableState = paramArrayOfInt;
+      bool = true;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.SingleLineTextView.ExtendText
  * JD-Core Version:    0.7.0.1
  */

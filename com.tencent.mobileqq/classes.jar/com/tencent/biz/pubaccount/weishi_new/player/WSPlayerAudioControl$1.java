@@ -10,12 +10,15 @@ class WSPlayerAudioControl$1
   
   public void onAudioFocusChange(int paramInt)
   {
-    WSLog.e("WSPlayerAudioControlLog", "[WSPlayerAudioControl.java][requestAudioFocus] onAudioFocusChange focusChange:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSPlayerAudioControl.java][requestAudioFocus] onAudioFocusChange focusChange:");
+    localStringBuilder.append(paramInt);
+    WSLog.e("WSPlayerAudioControlLog", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerAudioControl.1
  * JD-Core Version:    0.7.0.1
  */

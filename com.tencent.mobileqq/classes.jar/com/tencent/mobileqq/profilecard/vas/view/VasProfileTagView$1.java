@@ -2,7 +2,6 @@ package com.tencent.mobileqq.profilecard.vas.view;
 
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
 import com.tencent.qphone.base.util.QLog;
 
 class VasProfileTagView$1
@@ -24,30 +23,19 @@ class VasProfileTagView$1
         paramFloat1 = paramMotionEvent1.getY() - paramMotionEvent2.getY();
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "onScroll distance = " + paramFloat1);
-    }
-    if (Math.abs(paramFloat1) > VasProfileTagView.access$100(this.this$0))
+    if (QLog.isColorLevel())
     {
-      if ((paramFloat1 > 0.0F) && (this.this$0.isFullScreen)) {
-        if (this.this$0.switchScreenMode())
-        {
-          this.this$0.tagsGather();
-          VasProfileTagView.access$200(this.this$0).b(null);
-        }
-      }
-      while ((paramFloat1 >= 0.0F) || (this.this$0.isFullScreen)) {
-        return true;
-      }
-      this.this$0.switchScreenMode();
-      return true;
+      paramMotionEvent1 = new StringBuilder();
+      paramMotionEvent1.append("onScroll distance = ");
+      paramMotionEvent1.append(paramFloat1);
+      QLog.d("Q.profilecard.FrdProfileCard", 2, paramMotionEvent1.toString());
     }
-    return false;
+    return this.this$0.scrollAnimation(paramFloat1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView.1
  * JD-Core Version:    0.7.0.1
  */

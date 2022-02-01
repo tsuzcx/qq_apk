@@ -12,7 +12,11 @@ final class EmbeddedHelper$5
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    EmbeddedHelper.access$400().edit().putInt(this.val$version + this.val$uin, 1).commit();
+    SharedPreferences.Editor localEditor = EmbeddedHelper.access$400().edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.val$version);
+    localStringBuilder.append(this.val$uin);
+    localEditor.putInt(localStringBuilder.toString(), 1).commit();
     paramDialogInterface.dismiss();
     EmbeddedHelper.setIsRunning(Boolean.valueOf(false));
     EmbeddedHelper.access$300(781, "cancel download");
@@ -20,7 +24,7 @@ final class EmbeddedHelper$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.util.EmbeddedHelper.5
  * JD-Core Version:    0.7.0.1
  */

@@ -49,12 +49,12 @@ public final class GameView$Companion$from$2
   public void setGameOnTouchListener(@Nullable Function1<? super MotionEvent, Boolean> paramFunction1)
   {
     TextureView localTextureView = this.$textureView;
-    if (paramFunction1 != null) {}
-    for (paramFunction1 = (View.OnTouchListener)new GameView.Companion.from.2.setGameOnTouchListener.1.1(paramFunction1);; paramFunction1 = null)
-    {
-      localTextureView.setOnTouchListener(paramFunction1);
-      return;
+    if (paramFunction1 != null) {
+      paramFunction1 = (View.OnTouchListener)new GameView.Companion.from.2.setGameOnTouchListener.1.1(paramFunction1);
+    } else {
+      paramFunction1 = null;
     }
+    localTextureView.setOnTouchListener(paramFunction1);
   }
   
   public void setSurfaceCallback(@Nullable GameView.SurfaceCallback paramSurfaceCallback)
@@ -76,14 +76,16 @@ public final class GameView$Companion$from$2
         }
         paramSurfaceCallback.onSurfaceTextureSizeChanged(localSurfaceTexture, this.$textureView.getWidth(), this.$textureView.getHeight());
       }
-      return;
     }
-    this.$textureView.setSurfaceTextureListener((TextureView.SurfaceTextureListener)null);
+    else
+    {
+      this.$textureView.setSurfaceTextureListener((TextureView.SurfaceTextureListener)null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.view.GameView.Companion.from.2
  * JD-Core Version:    0.7.0.1
  */

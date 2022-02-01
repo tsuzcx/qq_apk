@@ -1,8 +1,8 @@
 package com.tencent.gdtad.adapter;
 
-import com.tencent.ad.tangram.canvas.download.AdCanvasDownloadListenerAdapter;
-import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppDownloadManager;
 import com.tencent.ad.tangram.downloader.IAdDownloader.Callback;
+import com.tencent.ad.tangram.views.canvas.AdCanvasDownloadListenerAdapter;
+import com.tencent.ad.tangram.views.canvas.components.appbutton.AdAppDownloadManager;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -14,12 +14,13 @@ public class GdtDownloadListenerAdapter
   
   public IAdDownloader.Callback getDownloadListener(AdAppDownloadManager paramAdAppDownloadManager)
   {
-    if ((this.a != null) && (this.a.size() > 0))
+    Object localObject = this.a;
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
+      localObject = this.a.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        IAdDownloader.Callback localCallback = (IAdDownloader.Callback)localIterator.next();
+        IAdDownloader.Callback localCallback = (IAdDownloader.Callback)((Iterator)localObject).next();
         if (((localCallback instanceof GdtDownloadListener)) && (((GdtDownloadListener)localCallback).a() == paramAdAppDownloadManager)) {
           return localCallback;
         }
@@ -30,14 +31,16 @@ public class GdtDownloadListenerAdapter
   
   public void removeDownloadListener(AdAppDownloadManager paramAdAppDownloadManager)
   {
-    if ((this.a == null) || (paramAdAppDownloadManager == null)) {}
-    for (;;)
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      return;
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
+      if (paramAdAppDownloadManager == null) {
+        return;
+      }
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        IAdDownloader.Callback localCallback = (IAdDownloader.Callback)localIterator.next();
+        IAdDownloader.Callback localCallback = (IAdDownloader.Callback)((Iterator)localObject).next();
         if ((localCallback instanceof GdtDownloadListener))
         {
           AdAppDownloadManager localAdAppDownloadManager = ((GdtDownloadListener)localCallback).a();
@@ -61,7 +64,7 @@ public class GdtDownloadListenerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtDownloadListenerAdapter
  * JD-Core Version:    0.7.0.1
  */

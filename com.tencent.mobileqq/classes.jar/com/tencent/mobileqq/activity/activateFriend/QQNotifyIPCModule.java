@@ -21,15 +21,16 @@ public class QQNotifyIPCModule
   
   public static QQNotifyIPCModule a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new QQNotifyIPCModule("QQNotifyIPCModule");
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new QQNotifyIPCModule("QQNotifyIPCModule");
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   private void a(int paramInt)
@@ -46,10 +47,7 @@ public class QQNotifyIPCModule
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if ("newSubscribe".equals(paramString)) {}
-    for (;;)
-    {
-      return EIPCResult.createResult(-100, null);
+    if (!"newSubscribe".equals(paramString)) {
       if ("query".equals(paramString))
       {
         paramString = (IQQReminderService)BaseApplicationImpl.getApplication().getRuntime().getRuntimeService(IQQReminderService.class, "");
@@ -72,6 +70,7 @@ public class QQNotifyIPCModule
         callbackResult(paramInt, EIPCResult.createResult(0, paramString));
       }
     }
+    return EIPCResult.createResult(-100, null);
   }
   
   public void queryHasSetNotify(Bundle paramBundle1, Bundle paramBundle2)
@@ -81,7 +80,7 @@ public class QQNotifyIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.QQNotifyIPCModule
  * JD-Core Version:    0.7.0.1
  */

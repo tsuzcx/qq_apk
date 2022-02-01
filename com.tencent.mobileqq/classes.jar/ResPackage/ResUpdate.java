@@ -19,16 +19,6 @@ public final class ResUpdate
   public String Path = "";
   public String ResURL = "";
   
-  static
-  {
-    if (!ResUpdate.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public ResUpdate() {}
   
   public ResUpdate(String paramString1, int paramInt, String paramString2, Map<String, String> paramMap)
@@ -46,18 +36,17 @@ public final class ResUpdate
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -80,13 +69,28 @@ public final class ResUpdate
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (ResUpdate)paramObject;
-    } while ((!JceUtil.equals(this.Path, paramObject.Path)) || (!JceUtil.equals(this.OpType, paramObject.OpType)) || (!JceUtil.equals(this.ResURL, paramObject.ResURL)) || (!JceUtil.equals(this.AttrMap, paramObject.AttrMap)));
-    return true;
+    }
+    paramObject = (ResUpdate)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.Path, paramObject.Path))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.OpType, paramObject.OpType))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.ResURL, paramObject.ResURL))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.AttrMap, paramObject.AttrMap)) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -164,17 +168,19 @@ public final class ResUpdate
   {
     paramJceOutputStream.write(this.Path, 0);
     paramJceOutputStream.write(this.OpType, 1);
-    if (this.ResURL != null) {
-      paramJceOutputStream.write(this.ResURL, 2);
+    Object localObject = this.ResURL;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.AttrMap != null) {
-      paramJceOutputStream.write(this.AttrMap, 3);
+    localObject = this.AttrMap;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ResPackage.ResUpdate
  * JD-Core Version:    0.7.0.1
  */

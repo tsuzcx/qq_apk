@@ -50,31 +50,30 @@ public class CircleGuideView
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {}
-    try
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramCanvas.getWidth(), paramCanvas.getHeight(), Bitmap.Config.ARGB_8888);
-      this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+      try
       {
-        this.jdField_a_of_type_AndroidGraphicsCanvas.drawColor(Color.argb(this.jdField_a_of_type_Int, 0, 0, 0));
-        this.jdField_a_of_type_AndroidGraphicsCanvas.drawCircle(this.jdField_a_of_type_Float, this.b, this.c, this.jdField_a_of_type_AndroidGraphicsPaint);
-        paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, new Rect(0, 0, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()), new Rect(0, 0, paramCanvas.getWidth(), paramCanvas.getHeight()), null);
-        return;
+        this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramCanvas.getWidth(), paramCanvas.getHeight(), Bitmap.Config.ARGB_8888);
+        this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
       }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      catch (Throwable localThrowable)
       {
         if (QLog.isColorLevel()) {
           QLog.d("CircleGuideView", 2, localThrowable.toString());
         }
       }
-      paramCanvas.drawColor(Color.argb(this.jdField_a_of_type_Int, 0, 0, 0));
     }
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsCanvas.drawColor(Color.argb(this.jdField_a_of_type_Int, 0, 0, 0));
+      this.jdField_a_of_type_AndroidGraphicsCanvas.drawCircle(this.jdField_a_of_type_Float, this.b, this.c, this.jdField_a_of_type_AndroidGraphicsPaint);
+      Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      paramCanvas.drawBitmap(localBitmap, new Rect(0, 0, localBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()), new Rect(0, 0, paramCanvas.getWidth(), paramCanvas.getHeight()), null);
+      return;
+    }
+    paramCanvas.drawColor(Color.argb(this.jdField_a_of_type_Int, 0, 0, 0));
   }
   
   public void setCircle(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -86,7 +85,7 @@ public class CircleGuideView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.confess.CircleGuideView
  * JD-Core Version:    0.7.0.1
  */

@@ -22,21 +22,32 @@ class SystemMessageProcessor$5
       paramProtoReq = new structmsg.RspSystemMsgRead();
       paramProtoReq.mergeFrom(paramProtoResp);
       int i = paramProtoReq.head.result.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.systemmsg.", 2, "sendGroupSystemMsgReadedReportResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
+      if (QLog.isColorLevel())
+      {
+        paramProtoResp = new StringBuilder();
+        paramProtoResp.append("sendGroupSystemMsgReadedReportResp reqSeq=");
+        paramProtoResp.append(this.jdField_a_of_type_Long);
+        paramProtoResp.append(";resultCode=");
+        paramProtoResp.append(i);
+        paramProtoResp.append(";latestFriendSeq=");
+        paramProtoResp.append(this.b);
+        paramProtoResp.append(";latestGroupSeq=");
+        paramProtoResp.append(this.c);
+        QLog.d("Q.systemmsg.", 2, paramProtoResp.toString());
+        return;
       }
-      return;
     }
     catch (Exception paramProtoResp)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", paramProtoResp);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", paramProtoResp);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.SystemMessageProcessor.5
  * JD-Core Version:    0.7.0.1
  */

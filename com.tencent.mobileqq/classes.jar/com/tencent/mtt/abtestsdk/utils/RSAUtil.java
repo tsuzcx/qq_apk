@@ -20,7 +20,7 @@ public class RSAUtil
   private static final String ENCRYPT_ALGORITHM = "RSA";
   private static final int MAX_DECRYPT_BLOCK = 128;
   private static final int MAX_ENCRYPT_BLOCK = 117;
-  private static RSAPublicKey mLogPublicKey = null;
+  private static RSAPublicKey mLogPublicKey;
   
   public static String decrypt(byte[] paramArrayOfByte, PrivateKey paramPrivateKey)
   {
@@ -29,18 +29,22 @@ public class RSAUtil
     byte[] arrayOfByte = Base64.decode(paramArrayOfByte, 0);
     int k = arrayOfByte.length;
     paramPrivateKey = new ByteArrayOutputStream();
-    int j = 0;
     int i = 0;
-    if (k - i > 0)
+    int j = 0;
+    for (;;)
     {
-      if (k - i > 128) {}
-      for (paramArrayOfByte = localCipher.doFinal(arrayOfByte, i, 128);; paramArrayOfByte = localCipher.doFinal(arrayOfByte, i, k - i))
-      {
-        paramPrivateKey.write(paramArrayOfByte, 0, paramArrayOfByte.length);
-        j += 1;
-        i = j * 128;
+      int m = k - i;
+      if (m <= 0) {
         break;
       }
+      if (m > 128) {
+        paramArrayOfByte = localCipher.doFinal(arrayOfByte, i, 128);
+      } else {
+        paramArrayOfByte = localCipher.doFinal(arrayOfByte, i, m);
+      }
+      paramPrivateKey.write(paramArrayOfByte, 0, paramArrayOfByte.length);
+      j += 1;
+      i = j * 128;
     }
     paramArrayOfByte = paramPrivateKey.toByteArray();
     paramPrivateKey.close();
@@ -49,76 +53,86 @@ public class RSAUtil
   
   public static String encrypt(byte[] paramArrayOfByte)
   {
-    int i = 0;
     Object localObject = getWUPRSAPublicKey();
-    if ((paramArrayOfByte == null) || (localObject == null)) {
-      return null;
-    }
-    try
+    if (paramArrayOfByte != null)
     {
-      Cipher localCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
-      localCipher.init(1, (Key)localObject);
-      int k = paramArrayOfByte.length;
-      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-      int j = 0;
-      if (k - i > 0)
+      if (localObject == null) {
+        return null;
+      }
+      try
       {
-        if (k - i > 117) {}
-        for (localObject = localCipher.doFinal(paramArrayOfByte, i, 117);; localObject = localCipher.doFinal(paramArrayOfByte, i, k - i))
+        Cipher localCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+        localCipher.init(1, (Key)localObject);
+        int k = paramArrayOfByte.length;
+        ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+        int i = 0;
+        int j = 0;
+        for (;;)
         {
+          int m = k - i;
+          if (m <= 0) {
+            break;
+          }
+          if (m > 117) {
+            localObject = localCipher.doFinal(paramArrayOfByte, i, 117);
+          } else {
+            localObject = localCipher.doFinal(paramArrayOfByte, i, m);
+          }
           localByteArrayOutputStream.write((byte[])localObject, 0, localObject.length);
           j += 1;
           i = j * 117;
-          break;
+        }
+        paramArrayOfByte = localByteArrayOutputStream.toByteArray();
+        localByteArrayOutputStream.close();
+        if (paramArrayOfByte != null)
+        {
+          paramArrayOfByte = new String(Base64.encode(paramArrayOfByte, 2), "UTF-8");
+          return paramArrayOfByte;
         }
       }
-      paramArrayOfByte = localByteArrayOutputStream.toByteArray();
-      localByteArrayOutputStream.close();
-      if (paramArrayOfByte != null)
+      catch (Exception paramArrayOfByte)
       {
-        paramArrayOfByte = new String(Base64.encode(paramArrayOfByte, 2), "UTF-8");
-        return paramArrayOfByte;
+        paramArrayOfByte.printStackTrace();
+        return null;
       }
-    }
-    catch (Error paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      for (;;)
+      catch (Error paramArrayOfByte)
       {
         paramArrayOfByte.printStackTrace();
       }
     }
+    return null;
   }
   
   public static String encrypt(byte[] paramArrayOfByte, PublicKey paramPublicKey)
   {
-    if ((paramArrayOfByte == null) || (paramPublicKey == null)) {
-      return null;
-    }
-    Cipher localCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
-    localCipher.init(1, paramPublicKey);
-    int k = paramArrayOfByte.length;
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    int j = 0;
-    int i = 0;
-    if (k - i > 0)
+    if ((paramArrayOfByte != null) && (paramPublicKey != null))
     {
-      if (k - i > 117) {}
-      for (paramPublicKey = localCipher.doFinal(paramArrayOfByte, i, 117);; paramPublicKey = localCipher.doFinal(paramArrayOfByte, i, k - i))
+      Cipher localCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+      localCipher.init(1, paramPublicKey);
+      int k = paramArrayOfByte.length;
+      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+      int i = 0;
+      int j = 0;
+      for (;;)
       {
+        int m = k - i;
+        if (m <= 0) {
+          break;
+        }
+        if (m > 117) {
+          paramPublicKey = localCipher.doFinal(paramArrayOfByte, i, 117);
+        } else {
+          paramPublicKey = localCipher.doFinal(paramArrayOfByte, i, m);
+        }
         localByteArrayOutputStream.write(paramPublicKey, 0, paramPublicKey.length);
         j += 1;
         i = j * 117;
-        break;
       }
+      paramArrayOfByte = localByteArrayOutputStream.toByteArray();
+      localByteArrayOutputStream.close();
+      return new String(Base64.encode(paramArrayOfByte, 0), "utf-8");
     }
-    paramArrayOfByte = localByteArrayOutputStream.toByteArray();
-    localByteArrayOutputStream.close();
-    return new String(Base64.encode(paramArrayOfByte, 0), "utf-8");
+    return null;
   }
   
   public static PrivateKey getPrivateKey(String paramString)
@@ -133,39 +147,31 @@ public class RSAUtil
   
   private static RSAPublicKey getWUPRSAPublicKey()
   {
-    if (mLogPublicKey == null) {}
-    try
-    {
-      X509EncodedKeySpec localX509EncodedKeySpec = new X509EncodedKeySpec(Base64.decode("MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCLhKbpjQQUFgVs0xX8mELVU8oFwUBIAcmtZf4FmvjkPXwtBwTkqHY2jhwr4ZRgyfGNl2537AssBA+jV2JSHlcRHeGOfR1ijueU5NojoUayvdJb5AyYI1y+OaonUgVSBHvl4Kwj04yc+6+bDp4ZAAM1Z5T50sovA0wL8pnNWEKU7QIDAQAB".getBytes("UTF-8"), 0));
-      mLogPublicKey = (RSAPublicKey)KeyFactory.getInstance("RSA").generatePublic(localX509EncodedKeySpec);
-      return mLogPublicKey;
-    }
-    catch (InvalidKeySpecException localInvalidKeySpecException)
-    {
-      for (;;)
+    if (mLogPublicKey == null) {
+      try
+      {
+        X509EncodedKeySpec localX509EncodedKeySpec = new X509EncodedKeySpec(Base64.decode("MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCLhKbpjQQUFgVs0xX8mELVU8oFwUBIAcmtZf4FmvjkPXwtBwTkqHY2jhwr4ZRgyfGNl2537AssBA+jV2JSHlcRHeGOfR1ijueU5NojoUayvdJb5AyYI1y+OaonUgVSBHvl4Kwj04yc+6+bDp4ZAAM1Z5T50sovA0wL8pnNWEKU7QIDAQAB".getBytes("UTF-8"), 0));
+        mLogPublicKey = (RSAPublicKey)KeyFactory.getInstance("RSA").generatePublic(localX509EncodedKeySpec);
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        ABTestLog.error(localUnsupportedEncodingException.getMessage(), new Object[0]);
+      }
+      catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
+      {
+        ABTestLog.error(localNoSuchAlgorithmException.getMessage(), new Object[0]);
+      }
+      catch (InvalidKeySpecException localInvalidKeySpecException)
       {
         ABTestLog.error(localInvalidKeySpecException.getMessage(), new Object[0]);
       }
     }
-    catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
-    {
-      for (;;)
-      {
-        ABTestLog.error(localNoSuchAlgorithmException.getMessage(), new Object[0]);
-      }
-    }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
-    {
-      for (;;)
-      {
-        ABTestLog.error(localUnsupportedEncodingException.getMessage(), new Object[0]);
-      }
-    }
+    return mLogPublicKey;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.abtestsdk.utils.RSAUtil
  * JD-Core Version:    0.7.0.1
  */

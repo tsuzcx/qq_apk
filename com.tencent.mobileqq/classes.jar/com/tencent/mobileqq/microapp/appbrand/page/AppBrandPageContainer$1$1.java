@@ -11,43 +11,31 @@ class AppBrandPageContainer$1$1
   
   public void run()
   {
-    AppBrandPageContainer localAppBrandPageContainer;
     if (this.val$resCode == 0)
     {
-      localAppBrandPageContainer = (AppBrandPageContainer)this.this$1.val$pageWeakRef.get();
-      if (localAppBrandPageContainer != null)
-      {
-        if (!"navigateTo".equals(this.this$1.val$fromFunc)) {
-          break label62;
+      AppBrandPageContainer localAppBrandPageContainer = (AppBrandPageContainer)this.this$1.val$pageWeakRef.get();
+      if (localAppBrandPageContainer != null) {
+        if ("navigateTo".equals(this.this$1.val$fromFunc)) {
+          localAppBrandPageContainer.navigateTo(this.this$1.val$url);
+        } else if ("redirectTo".equals(this.this$1.val$fromFunc)) {
+          localAppBrandPageContainer.redirectTo(this.this$1.val$url);
+        } else if ("appLaunch".equals(this.this$1.val$fromFunc)) {
+          localAppBrandPageContainer.launch(this.this$1.val$url, "appLaunch");
+        } else if ("reLaunch".equals(this.this$1.val$fromFunc)) {
+          localAppBrandPageContainer.launch(this.this$1.val$url, "reLaunch");
         }
-        localAppBrandPageContainer.navigateTo(this.this$1.val$url);
       }
     }
-    for (;;)
+    else
     {
-      this.this$1.val$dialog.dismiss();
-      return;
-      label62:
-      if ("redirectTo".equals(this.this$1.val$fromFunc))
-      {
-        localAppBrandPageContainer.redirectTo(this.this$1.val$url);
-      }
-      else if ("appLaunch".equals(this.this$1.val$fromFunc))
-      {
-        localAppBrandPageContainer.launch(this.this$1.val$url, "appLaunch");
-      }
-      else if ("reLaunch".equals(this.this$1.val$fromFunc))
-      {
-        localAppBrandPageContainer.launch(this.this$1.val$url, "reLaunch");
-        continue;
-        QQToast.a(this.this$1.val$dialog.getContext(), "页面不存在，请稍后重试", 1).a();
-      }
+      QQToast.a(this.this$1.val$dialog.getContext(), "页面不存在，请稍后重试", 1).a();
     }
+    this.this$1.val$dialog.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.page.AppBrandPageContainer.1.1
  * JD-Core Version:    0.7.0.1
  */

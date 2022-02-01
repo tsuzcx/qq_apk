@@ -20,107 +20,118 @@ final class lu$1
   
   public final void handleMessage(Message paramMessage)
   {
-    Object localObject;
     if ((paramMessage != null) && (paramMessage.obj != null))
     {
       paramMessage = (hj)paramMessage.obj;
-      if (paramMessage.a != 0) {
-        break label86;
-      }
-      if (this.a.c != null)
+      Object localObject;
+      if (paramMessage.a == 0)
       {
-        localObject = this.a.c;
-        boolean bool1 = paramMessage.b;
-        boolean bool2 = paramMessage.c;
-        if (((js)localObject).a != null)
+        if (this.a.c != null)
         {
-          ((js)localObject).a.setIsZoomInEnabled(bool1);
-          ((js)localObject).a.setIsZoomOutEnabled(bool2);
-        }
-      }
-    }
-    label86:
-    int i;
-    int m;
-    int j;
-    label202:
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (paramMessage.a != 1) {
-            break;
-          }
-        } while (this.a.d == null);
-        localObject = this.a.d;
-        i = paramMessage.d;
-        double d = paramMessage.e;
-        ((jr)localObject).k = i;
-        ((jr)localObject).l = d;
-        m = (int)Math.log10(((jr)localObject).q * ((jr)localObject).l);
-        i = (int)(jr.h[0] * Math.pow(10.0D, m));
-        j = (int)(i / ((jr)localObject).l);
-        if ((j > 0) && (!Double.isNaN(((jr)localObject).l))) {
-          break label518;
-        }
-        ((jr)localObject).b();
-        paramMessage = this.a.d;
-      } while (!paramMessage.n);
-      if (paramMessage.m != null) {
-        paramMessage.m.postInvalidate();
-      }
-    } while (paramMessage.o == null);
-    if (paramMessage.o.getVisibility() != 0)
-    {
-      paramMessage.o.setVisibility(0);
-      return;
-    }
-    for (;;)
-    {
-      int k;
-      if (j < ((jr)localObject).q)
-      {
-        k += 1;
-        i = jr.h.length;
-        i = (int)(jr.h[(k % i)] * Math.pow(10.0D, k / jr.h.length + m));
-        j = (int)(i / ((jr)localObject).l);
-      }
-      else
-      {
-        if (i >= 1000) {
-          i /= 1000;
-        }
-        for (paramMessage = "km";; paramMessage = "m")
-        {
-          ((jr)localObject).i = (i + paramMessage);
-          ((jr)localObject).j = j;
-          ((jr)localObject).d.setText(((jr)localObject).i);
-          break label202;
-          paramMessage.o.clearAnimation();
-          return;
-          if ((paramMessage.a != 3) || (fz.g != 1) || (TextUtils.equals("original", "wechat")) || (this.a.a == null)) {
-            break;
-          }
-          if (this.a.e == null)
+          localObject = this.a.c;
+          boolean bool1 = paramMessage.b;
+          boolean bool2 = paramMessage.c;
+          if (((js)localObject).a != null)
           {
-            this.a.e = new hu(this.a.a.getContext().getApplicationContext());
-            this.a.e.a = this.a.f;
+            ((js)localObject).a.setIsZoomInEnabled(bool1);
+            ((js)localObject).a.setIsZoomOutEnabled(bool2);
           }
-          this.a.e.a(this.a.a);
+        }
+      }
+      else if (paramMessage.a == 1)
+      {
+        if (this.a.d != null)
+        {
+          localObject = this.a.d;
+          int i = paramMessage.d;
+          double d1 = paramMessage.e;
+          ((jr)localObject).k = i;
+          ((jr)localObject).l = d1;
+          d1 = ((jr)localObject).q;
+          double d2 = ((jr)localObject).l;
+          Double.isNaN(d1);
+          int m = (int)Math.log10(d1 * d2);
+          d1 = jr.h[0];
+          d2 = Math.pow(10.0D, m);
+          Double.isNaN(d1);
+          i = (int)(d1 * d2);
+          d1 = i;
+          d2 = ((jr)localObject).l;
+          Double.isNaN(d1);
+          int j = (int)(d1 / d2);
+          if ((j > 0) && (!Double.isNaN(((jr)localObject).l)))
+          {
+            int k = 0;
+            while (j < ((jr)localObject).q)
+            {
+              k += 1;
+              i = jr.h.length;
+              d1 = jr.h[(k % i)];
+              d2 = Math.pow(10.0D, k / jr.h.length + m);
+              Double.isNaN(d1);
+              i = (int)(d1 * d2);
+              d1 = i;
+              d2 = ((jr)localObject).l;
+              Double.isNaN(d1);
+              j = (int)(d1 / d2);
+            }
+            if (i >= 1000)
+            {
+              i /= 1000;
+              paramMessage = "km";
+            }
+            else
+            {
+              paramMessage = "m";
+            }
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(i);
+            localStringBuilder.append(paramMessage);
+            ((jr)localObject).i = localStringBuilder.toString();
+            ((jr)localObject).j = j;
+            ((jr)localObject).d.setText(((jr)localObject).i);
+          }
+          ((jr)localObject).b();
+          paramMessage = this.a.d;
+          if (paramMessage.n)
+          {
+            if (paramMessage.m != null) {
+              paramMessage.m.postInvalidate();
+            }
+            if (paramMessage.o != null)
+            {
+              if (paramMessage.o.getVisibility() != 0)
+              {
+                paramMessage.o.setVisibility(0);
+                return;
+              }
+              paramMessage.o.clearAnimation();
+            }
+          }
+        }
+      }
+      else if ((paramMessage.a == 3) && (fz.g == 1))
+      {
+        if (TextUtils.equals("original", "wechat")) {
           return;
         }
-        label518:
-        k = 0;
+        if (this.a.a == null) {
+          return;
+        }
+        if (this.a.e == null)
+        {
+          paramMessage = this.a;
+          paramMessage.e = new hu(paramMessage.a.getContext().getApplicationContext());
+          this.a.e.a = this.a.f;
+        }
+        this.a.e.a(this.a.a);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.lu.1
  * JD-Core Version:    0.7.0.1
  */

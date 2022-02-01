@@ -4,23 +4,16 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Surface;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IWXLivePlayerProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
-import com.tencent.qqmini.sdk.utils.JarReflectUtil;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Proxy;
 import java.util.Iterator;
 import java.util.Set;
 import org.json.JSONObject;
 
 public class TXLivePlayerJSAdapter
 {
-  public static final String CLASS_NAME_ITX_AUDIO_VOLUME_EVALUATION_LISTENER = "com.tencent.rtmp.TXLivePlayer$ITXAudioVolumeEvaluationListener";
-  public static final String CLASS_NAME_ITX_LIVEPLAY_LISTENER = "com.tencent.rtmp.ITXLivePlayListener";
-  public static final String CLASS_NAME_ITX_SNAPSHOT_LISTENER = "com.tencent.rtmp.TXLivePlayer$ITXSnapshotListener";
-  public static final String CLASS_NAME_TX_CLOUD_VIDEO_VIEW = "com.tencent.rtmp.ui.TXCloudVideoView";
-  public static final String CLASS_NAME_TX_LIVEPLAY = "com.tencent.rtmp.WXLivePlayer";
-  public static final String CLASS_NAME_TX_LIVEPLAY_CONFIG = "com.tencent.rtmp.WXLivePlayConfig";
   public static final String EVT_DESCRIPTION = "EVT_MSG";
   public static final String EVT_GET_MSG = "EVT_GET_MSG";
   public static final String NET_STATUS_AUDIO_BITRATE = "AUDIO_BITRATE";
@@ -83,31 +76,13 @@ public class TXLivePlayerJSAdapter
   private boolean mPlayingBeforeEnterBackground = false;
   private String mSoundMode = "speaker";
   private Surface mSurface;
-  private Object txCloudVideoView;
-  private Object txLivePlayConfig;
-  private Object txLivePlayer;
+  private final IWXLivePlayerProxy trtc;
   
   public TXLivePlayerJSAdapter(Context paramContext)
   {
     this.mContext = paramContext;
-    this.txLivePlayConfig = JarReflectUtil.creatSpecifiedObject("com.tencent.rtmp.WXLivePlayConfig", null, new Object[0]);
-    this.txLivePlayer = JarReflectUtil.creatSpecifiedObject("com.tencent.rtmp.WXLivePlayer", JarReflectUtil.getParamsClass(new Class[] { Context.class }), new Object[] { this.mContext });
-    txLivePlayer_enableHardwareDecode(Boolean.valueOf(true));
-    try
-    {
-      JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "setConfig", false, JarReflectUtil.getParamsClass(new Class[] { Class.forName("com.tencent.rtmp.WXLivePlayConfig") }), new Object[] { this.txLivePlayConfig });
-      paramContext = Class.forName("com.tencent.rtmp.ITXLivePlayListener");
-      Object localObject = new TXLivePlayerJSAdapter.InnerTXLivePlayListenerImpl(this);
-      txLivePlayer_setPlayListener(Proxy.newProxyInstance(TXLivePlayerJSAdapter.class.getClassLoader(), new Class[] { paramContext }, (InvocationHandler)localObject));
-      paramContext = Class.forName("com.tencent.rtmp.TXLivePlayer$ITXAudioVolumeEvaluationListener");
-      localObject = new TXLivePlayerJSAdapter.InnerAudioVolumeEvaluationListenerImpl(this);
-      txLivePlayer_setAudioVolumeEvaluationListener(Proxy.newProxyInstance(TXLivePlayerJSAdapter.class.getClassLoader(), new Class[] { paramContext }, (InvocationHandler)localObject));
-      return;
-    }
-    catch (ClassNotFoundException paramContext)
-    {
-      QMLog.e("TXLivePlayerJSAdapter", "bind InnerTXLivePlayListenerImpl failed, e" + paramContext.toString());
-    }
+    this.trtc = ((IWXLivePlayerProxy)ProxyManager.get(IWXLivePlayerProxy.class));
+    this.trtc.init(this.mContext, new TXLivePlayerJSAdapter.InnerTXLivePlayListenerImpl(this), new TXLivePlayerJSAdapter.InnerAudioVolumeEvaluationListenerImpl(this));
   }
   
   private int getPlayType(Bundle paramBundle)
@@ -115,11 +90,14 @@ public class TXLivePlayerJSAdapter
     this.mMode = paramBundle.getInt("mode", this.mMode);
     if (this.mMode == 1)
     {
-      if (this.mPlayerUrl == null) {}
-      while ((this.mPlayerUrl == null) || ((!this.mPlayerUrl.startsWith("http://")) && (!this.mPlayerUrl.startsWith("https://"))) || (!this.mPlayerUrl.contains(".flv"))) {
+      paramBundle = this.mPlayerUrl;
+      if (paramBundle == null) {
         return 0;
       }
-      return 1;
+      if ((paramBundle != null) && ((paramBundle.startsWith("http://")) || (this.mPlayerUrl.startsWith("https://"))) && (this.mPlayerUrl.contains(".flv"))) {
+        return 1;
+      }
+      return 0;
     }
     return 5;
   }
@@ -129,25 +107,20 @@ public class TXLivePlayerJSAdapter
     boolean bool = this.mMuteAudio;
     if (paramBundle.keySet().contains("muteAudio")) {
       bool = paramBundle.getBoolean("muteAudio");
+    } else if (paramBundle.keySet().contains("muted")) {
+      bool = paramBundle.getBoolean("muted");
     }
-    for (;;)
-    {
-      if ((paramBoolean) || (bool != this.mMuteAudio)) {
-        txLivePlayer_muteAudio(Boolean.valueOf(bool));
-      }
-      this.mMuteAudio = bool;
-      return;
-      if (paramBundle.keySet().contains("muted")) {
-        bool = paramBundle.getBoolean("muted");
-      }
+    if ((paramBoolean) || (bool != this.mMuteAudio)) {
+      this.trtc.txLivePlayer_muteAudio(Boolean.valueOf(bool));
     }
+    this.mMuteAudio = bool;
   }
   
   private void handleMuteVideoProperty(Bundle paramBundle, boolean paramBoolean)
   {
     boolean bool = paramBundle.getBoolean("muteVideo", this.mMuteVideo);
     if ((paramBoolean) || (bool != this.mMuteVideo)) {
-      txLivePlayer_muteVideo(Boolean.valueOf(bool));
+      this.trtc.txLivePlayer_muteVideo(Boolean.valueOf(bool));
     }
     this.mMuteVideo = bool;
   }
@@ -155,43 +128,27 @@ public class TXLivePlayerJSAdapter
   private void handleObjectFitProperty(Bundle paramBundle, boolean paramBoolean)
   {
     paramBundle = paramBundle.getString("objectFit", this.mObjectFit);
-    if ((paramBoolean) || (!paramBundle.equalsIgnoreCase(this.mObjectFit)))
-    {
-      if (!paramBundle.equalsIgnoreCase("fillCrop")) {
-        break label48;
-      }
-      txLivePlayer_setRenderMode(0);
-    }
-    for (;;)
-    {
-      this.mObjectFit = paramBundle;
-      return;
-      label48:
-      if (paramBundle.equalsIgnoreCase("contain")) {
-        txLivePlayer_setRenderMode(1);
+    if ((paramBoolean) || (!paramBundle.equalsIgnoreCase(this.mObjectFit))) {
+      if (paramBundle.equalsIgnoreCase("fillCrop")) {
+        this.trtc.txLivePlayer_setRenderMode(0);
+      } else if (paramBundle.equalsIgnoreCase("contain")) {
+        this.trtc.txLivePlayer_setRenderMode(1);
       }
     }
+    this.mObjectFit = paramBundle;
   }
   
   private void handleOrientationProperty(Bundle paramBundle, boolean paramBoolean)
   {
     paramBundle = paramBundle.getString("orientation", this.mOrientation);
-    if ((paramBoolean) || (!paramBundle.equalsIgnoreCase(this.mOrientation)))
-    {
-      if (!paramBundle.equalsIgnoreCase("horizontal")) {
-        break label50;
-      }
-      txLivePlayer_setRenderRotation(270);
-    }
-    for (;;)
-    {
-      this.mOrientation = paramBundle;
-      return;
-      label50:
-      if (paramBundle.equalsIgnoreCase("vertical")) {
-        txLivePlayer_setRenderRotation(0);
+    if ((paramBoolean) || (!paramBundle.equalsIgnoreCase(this.mOrientation))) {
+      if (paramBundle.equalsIgnoreCase("horizontal")) {
+        this.trtc.txLivePlayer_setRenderRotation(270);
+      } else if (paramBundle.equalsIgnoreCase("vertical")) {
+        this.trtc.txLivePlayer_setRenderRotation(0);
       }
     }
+    this.mOrientation = paramBundle;
   }
   
   private void handleSoundModeProperty(Bundle paramBundle)
@@ -199,16 +156,15 @@ public class TXLivePlayerJSAdapter
     if (paramBundle.keySet().contains("soundMode"))
     {
       this.mSoundMode = paramBundle.getString("soundMode", this.mSoundMode);
-      if (!this.mSoundMode.equalsIgnoreCase("speaker")) {
-        break label48;
+      if (this.mSoundMode.equalsIgnoreCase("speaker"))
+      {
+        this.trtc.txLivePlayer_setAudioRoute(0);
+        return;
       }
-      txLivePlayer_setAudioRoute(0);
+      if (this.mSoundMode.equalsIgnoreCase("ear")) {
+        this.trtc.txLivePlayer_setAudioRoute(1);
+      }
     }
-    label48:
-    while (!this.mSoundMode.equalsIgnoreCase("ear")) {
-      return;
-    }
-    txLivePlayer_setAudioRoute(1);
   }
   
   private boolean isBooleanValueKey(String paramString)
@@ -221,58 +177,131 @@ public class TXLivePlayerJSAdapter
     if (paramArrayOfObject.length == 1)
     {
       paramArrayOfObject = (Bundle)paramArrayOfObject[0];
-      if (this.iWXLivePlayerOuterListener != null) {
-        this.iWXLivePlayerOuterListener.onNetStatus(paramArrayOfObject);
+      Object localObject1 = this.iWXLivePlayerOuterListener;
+      if (localObject1 != null) {
+        ((TXLivePlayerJSAdapter.IPlayOuterListener)localObject1).onNetStatus(paramArrayOfObject);
       }
       if (QMLog.isColorLevel())
       {
-        paramArrayOfObject = String.format("%-16s %-16s %-16s %-12s %-12s %-12s %-12s %-14s %-14s %-14s %-16s %-16s", new Object[] { "CPU:" + paramArrayOfObject.getString("CPU_USAGE"), "RES:" + paramArrayOfObject.getInt("VIDEO_WIDTH") + "*" + paramArrayOfObject.getInt("VIDEO_HEIGHT"), "SPD:" + paramArrayOfObject.getInt("NET_SPEED") + "Kbps", "JIT:" + paramArrayOfObject.getInt("NET_JITTER"), "FPS:" + paramArrayOfObject.getInt("VIDEO_FPS"), "GOP:" + paramArrayOfObject.getInt("VIDEO_GOP") + "s", "ARA:" + paramArrayOfObject.getInt("AUDIO_BITRATE") + "Kbps", "QUE:" + paramArrayOfObject.getInt("AUDIO_CACHE") + " | " + paramArrayOfObject.getInt("VIDEO_CACHE") + "," + paramArrayOfObject.getInt("V_SUM_CACHE_SIZE") + "," + paramArrayOfObject.getInt("V_DEC_CACHE_SIZE") + " | " + paramArrayOfObject.getInt("AV_RECV_INTERVAL") + "," + paramArrayOfObject.getInt("AV_PLAY_INTERVAL") + "," + String.format("%.1f", new Object[] { Float.valueOf(paramArrayOfObject.getFloat("AUDIO_CACHE_THRESHOLD")) }).toString(), "VRA:" + paramArrayOfObject.getInt("VIDEO_BITRATE") + "Kbps", "DRP:" + paramArrayOfObject.getInt("AUDIO_DROP") + "|" + paramArrayOfObject.getInt("VIDEO_DROP"), "SVR:" + paramArrayOfObject.getString("SERVER_IP"), "AUDIO:" + paramArrayOfObject.getString("AUDIO_PLAY_INFO") });
-        QMLog.d("TXLivePlayerJSAdapter", "onNetStatus:" + paramArrayOfObject);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("CPU:");
+        ((StringBuilder)localObject1).append(paramArrayOfObject.getString("CPU_USAGE"));
+        localObject1 = ((StringBuilder)localObject1).toString();
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("RES:");
+        ((StringBuilder)localObject2).append(paramArrayOfObject.getInt("VIDEO_WIDTH"));
+        ((StringBuilder)localObject2).append("*");
+        ((StringBuilder)localObject2).append(paramArrayOfObject.getInt("VIDEO_HEIGHT"));
+        localObject2 = ((StringBuilder)localObject2).toString();
+        Object localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("SPD:");
+        ((StringBuilder)localObject3).append(paramArrayOfObject.getInt("NET_SPEED"));
+        ((StringBuilder)localObject3).append("Kbps");
+        localObject3 = ((StringBuilder)localObject3).toString();
+        Object localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("JIT:");
+        ((StringBuilder)localObject4).append(paramArrayOfObject.getInt("NET_JITTER"));
+        localObject4 = ((StringBuilder)localObject4).toString();
+        Object localObject5 = new StringBuilder();
+        ((StringBuilder)localObject5).append("FPS:");
+        ((StringBuilder)localObject5).append(paramArrayOfObject.getInt("VIDEO_FPS"));
+        localObject5 = ((StringBuilder)localObject5).toString();
+        Object localObject6 = new StringBuilder();
+        ((StringBuilder)localObject6).append("GOP:");
+        ((StringBuilder)localObject6).append(paramArrayOfObject.getInt("VIDEO_GOP"));
+        ((StringBuilder)localObject6).append("s");
+        localObject6 = ((StringBuilder)localObject6).toString();
+        Object localObject7 = new StringBuilder();
+        ((StringBuilder)localObject7).append("ARA:");
+        ((StringBuilder)localObject7).append(paramArrayOfObject.getInt("AUDIO_BITRATE"));
+        ((StringBuilder)localObject7).append("Kbps");
+        localObject7 = ((StringBuilder)localObject7).toString();
+        Object localObject8 = new StringBuilder();
+        ((StringBuilder)localObject8).append("QUE:");
+        ((StringBuilder)localObject8).append(paramArrayOfObject.getInt("AUDIO_CACHE"));
+        ((StringBuilder)localObject8).append(" | ");
+        ((StringBuilder)localObject8).append(paramArrayOfObject.getInt("VIDEO_CACHE"));
+        ((StringBuilder)localObject8).append(",");
+        ((StringBuilder)localObject8).append(paramArrayOfObject.getInt("V_SUM_CACHE_SIZE"));
+        ((StringBuilder)localObject8).append(",");
+        ((StringBuilder)localObject8).append(paramArrayOfObject.getInt("V_DEC_CACHE_SIZE"));
+        ((StringBuilder)localObject8).append(" | ");
+        ((StringBuilder)localObject8).append(paramArrayOfObject.getInt("AV_RECV_INTERVAL"));
+        ((StringBuilder)localObject8).append(",");
+        ((StringBuilder)localObject8).append(paramArrayOfObject.getInt("AV_PLAY_INTERVAL"));
+        ((StringBuilder)localObject8).append(",");
+        ((StringBuilder)localObject8).append(String.format("%.1f", new Object[] { Float.valueOf(paramArrayOfObject.getFloat("AUDIO_CACHE_THRESHOLD")) }).toString());
+        localObject8 = ((StringBuilder)localObject8).toString();
+        Object localObject9 = new StringBuilder();
+        ((StringBuilder)localObject9).append("VRA:");
+        ((StringBuilder)localObject9).append(paramArrayOfObject.getInt("VIDEO_BITRATE"));
+        ((StringBuilder)localObject9).append("Kbps");
+        localObject9 = ((StringBuilder)localObject9).toString();
+        Object localObject10 = new StringBuilder();
+        ((StringBuilder)localObject10).append("DRP:");
+        ((StringBuilder)localObject10).append(paramArrayOfObject.getInt("AUDIO_DROP"));
+        ((StringBuilder)localObject10).append("|");
+        ((StringBuilder)localObject10).append(paramArrayOfObject.getInt("VIDEO_DROP"));
+        localObject10 = ((StringBuilder)localObject10).toString();
+        Object localObject11 = new StringBuilder();
+        ((StringBuilder)localObject11).append("SVR:");
+        ((StringBuilder)localObject11).append(paramArrayOfObject.getString("SERVER_IP"));
+        localObject11 = ((StringBuilder)localObject11).toString();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("AUDIO:");
+        localStringBuilder.append(paramArrayOfObject.getString("AUDIO_PLAY_INFO"));
+        paramArrayOfObject = String.format("%-16s %-16s %-16s %-12s %-12s %-12s %-12s %-14s %-14s %-14s %-16s %-16s", new Object[] { localObject1, localObject2, localObject3, localObject4, localObject5, localObject6, localObject7, localObject8, localObject9, localObject10, localObject11, localStringBuilder.toString() });
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("onNetStatus:");
+        ((StringBuilder)localObject1).append(paramArrayOfObject);
+        QMLog.d("TXLivePlayerJSAdapter", ((StringBuilder)localObject1).toString());
       }
     }
   }
   
   private void onPlayEvent(Object[] paramArrayOfObject)
   {
-    Integer localInteger;
-    Bundle localBundle;
     if (paramArrayOfObject.length == 2)
     {
-      localInteger = (Integer)paramArrayOfObject[0];
-      localBundle = (Bundle)paramArrayOfObject[1];
+      Integer localInteger = (Integer)paramArrayOfObject[0];
+      Object localObject = (Bundle)paramArrayOfObject[1];
       if ((localInteger.equals(Integer.valueOf(2006))) || (localInteger.equals(Integer.valueOf(-2301)))) {
         operateLivePlayer("stop", null);
       }
-      if ((localInteger.intValue() == 2012) && (localBundle != null))
+      if ((localInteger.intValue() == 2012) && (localObject != null))
       {
-        paramArrayOfObject = localBundle.getByteArray("EVT_GET_MSG");
-        if ((paramArrayOfObject == null) || (paramArrayOfObject.length <= 0)) {
-          break label184;
+        paramArrayOfObject = ((Bundle)localObject).getByteArray("EVT_GET_MSG");
+        if ((paramArrayOfObject != null) && (paramArrayOfObject.length > 0)) {
+          try
+          {
+            paramArrayOfObject = new String(paramArrayOfObject, "UTF-8");
+          }
+          catch (UnsupportedEncodingException paramArrayOfObject)
+          {
+            paramArrayOfObject.printStackTrace();
+          }
+        } else {
+          paramArrayOfObject = "";
+        }
+        ((Bundle)localObject).putString("EVT_MSG", paramArrayOfObject);
+      }
+      if (this.mNeedEvent)
+      {
+        paramArrayOfObject = this.iWXLivePlayerOuterListener;
+        if (paramArrayOfObject != null) {
+          paramArrayOfObject.onPlayEvent(localInteger.intValue(), (Bundle)localObject);
         }
       }
-    }
-    for (;;)
-    {
-      try
+      if (localObject != null)
       {
-        paramArrayOfObject = new String(paramArrayOfObject, "UTF-8");
-        localBundle.putString("EVT_MSG", paramArrayOfObject);
-        if ((this.mNeedEvent) && (this.iWXLivePlayerOuterListener != null)) {
-          this.iWXLivePlayerOuterListener.onPlayEvent(localInteger.intValue(), localBundle);
-        }
-        if (localBundle != null)
-        {
-          paramArrayOfObject = localBundle.getString("EVT_MSG");
-          QMLog.d("TXLivePlayerJSAdapter", "onPlayEvent: event = " + localInteger + " message = " + paramArrayOfObject);
-        }
-        return;
+        paramArrayOfObject = ((Bundle)localObject).getString("EVT_MSG");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onPlayEvent: event = ");
+        ((StringBuilder)localObject).append(localInteger);
+        ((StringBuilder)localObject).append(" message = ");
+        ((StringBuilder)localObject).append(paramArrayOfObject);
+        QMLog.d("TXLivePlayerJSAdapter", ((StringBuilder)localObject).toString());
       }
-      catch (UnsupportedEncodingException paramArrayOfObject)
-      {
-        paramArrayOfObject.printStackTrace();
-      }
-      label184:
-      paramArrayOfObject = "";
     }
   }
   
@@ -286,35 +315,35 @@ public class TXLivePlayerJSAdapter
     this.mMinCache = paramBundle.getFloat("minCache", this.mMinCache);
     this.mMaxCache = paramBundle.getFloat("maxCache", this.mMaxCache);
     this.mEnableMetaData = paramBundle.getBoolean("enableMetadata", this.mEnableMetaData);
-    txLivePlayConfig_setAutoAdjustCacheTime(Boolean.valueOf(true));
-    txLivePlayConfig_setCacheTime(this.mMinCache);
-    txLivePlayConfig_setEnableMetaData(Boolean.valueOf(this.mEnableMetaData));
-    txLivePlayConfig_setMinAutoAdjustCacheTime(this.mMinCache);
-    txLivePlayConfig_setMaxAutoAdjustCacheTime(this.mMaxCache);
+    this.trtc.txLivePlayConfig_setAutoAdjustCacheTime(Boolean.valueOf(true));
+    this.trtc.txLivePlayConfig_setCacheTime(this.mMinCache);
+    this.trtc.txLivePlayConfig_setEnableMetaData(Boolean.valueOf(this.mEnableMetaData));
+    this.trtc.txLivePlayConfig_setMinAutoAdjustCacheTime(this.mMinCache);
+    this.trtc.txLivePlayConfig_setMaxAutoAdjustCacheTime(this.mMaxCache);
     this.mEnableRecvMessage = paramBundle.getBoolean("enableRecvMessage", this.mEnableRecvMessage);
-    txPlayConfig_setEnableMessage(Boolean.valueOf(this.mEnableRecvMessage));
-    txLivePlayer_setConfig(this.txLivePlayConfig);
+    this.trtc.txPlayConfig_setEnableMessage(Boolean.valueOf(this.mEnableRecvMessage));
+    this.trtc.txLivePlayer_setConfig();
     this.mNeedEvent = paramBundle.getBoolean("needEvent", this.mNeedEvent);
     this.mAutoPauseIfNavigate = paramBundle.getBoolean("autoPauseIfNavigate", this.mAutoPauseIfNavigate);
     this.mAutoPauseIfOpenNative = paramBundle.getBoolean("autoPauseIfOpenNative", this.mAutoPauseIfOpenNative);
     paramBoolean = paramBundle.getBoolean("needAudioVolume", this.mNeedAudioVolumeNotify);
-    if (paramBoolean != this.mNeedAudioVolumeNotify) {
-      if (!paramBoolean) {
-        break label268;
-      }
-    }
-    label268:
-    for (int i = 300;; i = 0)
+    if (paramBoolean != this.mNeedAudioVolumeNotify)
     {
-      txLivePlayer_enableAudioVolumeEvaluation(i);
-      this.mNeedAudioVolumeNotify = paramBoolean;
-      paramBoolean = paramBundle.getBoolean("debug", this.mDebug);
-      if (paramBoolean != this.mDebug) {
-        txLivePlayer_showDebugLog(Boolean.valueOf(paramBoolean));
+      IWXLivePlayerProxy localIWXLivePlayerProxy = this.trtc;
+      int i;
+      if (paramBoolean) {
+        i = 300;
+      } else {
+        i = 0;
       }
-      this.mDebug = paramBoolean;
-      return;
+      localIWXLivePlayerProxy.txLivePlayer_enableAudioVolumeEvaluation(i);
     }
+    this.mNeedAudioVolumeNotify = paramBoolean;
+    paramBoolean = paramBundle.getBoolean("debug", this.mDebug);
+    if (paramBoolean != this.mDebug) {
+      this.trtc.txLivePlayer_showDebugLog(Boolean.valueOf(paramBoolean));
+    }
+    this.mDebug = paramBoolean;
   }
   
   private void printJSParams(String paramString, Bundle paramBundle)
@@ -325,14 +354,55 @@ public class TXLivePlayerJSAdapter
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        if ((str.equalsIgnoreCase("playUrl")) || (str.equalsIgnoreCase("orientation")) || (str.equalsIgnoreCase("objectFit")) || (str.equalsIgnoreCase("soundMode"))) {
-          paramString = paramString + "\n" + str + " = " + paramBundle.getString(str);
-        } else if ((str.equalsIgnoreCase("mode")) || (str.equalsIgnoreCase("playType"))) {
-          paramString = paramString + "\n" + str + " = " + paramBundle.getInt(str);
-        } else if ((str.equalsIgnoreCase("minCache")) || (str.equalsIgnoreCase("maxCache"))) {
-          paramString = paramString + "\n" + str + " = " + paramBundle.getFloat(str);
-        } else if (isBooleanValueKey(str)) {
-          paramString = paramString + "\n" + str + " = " + paramBundle.getBoolean(str);
+        StringBuilder localStringBuilder;
+        if ((!str.equalsIgnoreCase("playUrl")) && (!str.equalsIgnoreCase("orientation")) && (!str.equalsIgnoreCase("objectFit")) && (!str.equalsIgnoreCase("soundMode")))
+        {
+          if ((!str.equalsIgnoreCase("mode")) && (!str.equalsIgnoreCase("playType")))
+          {
+            if ((!str.equalsIgnoreCase("minCache")) && (!str.equalsIgnoreCase("maxCache")))
+            {
+              if (isBooleanValueKey(str))
+              {
+                localStringBuilder = new StringBuilder();
+                localStringBuilder.append(paramString);
+                localStringBuilder.append("\n");
+                localStringBuilder.append(str);
+                localStringBuilder.append(" = ");
+                localStringBuilder.append(paramBundle.getBoolean(str));
+                paramString = localStringBuilder.toString();
+              }
+            }
+            else
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append(paramString);
+              localStringBuilder.append("\n");
+              localStringBuilder.append(str);
+              localStringBuilder.append(" = ");
+              localStringBuilder.append(paramBundle.getFloat(str));
+              paramString = localStringBuilder.toString();
+            }
+          }
+          else
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(paramString);
+            localStringBuilder.append("\n");
+            localStringBuilder.append(str);
+            localStringBuilder.append(" = ");
+            localStringBuilder.append(paramBundle.getInt(str));
+            paramString = localStringBuilder.toString();
+          }
+        }
+        else
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString);
+          localStringBuilder.append("\n");
+          localStringBuilder.append(str);
+          localStringBuilder.append(" = ");
+          localStringBuilder.append(paramBundle.getString(str));
+          paramString = localStringBuilder.toString();
         }
       }
       QMLog.d("TXLivePlayerJSAdapter", paramString);
@@ -343,208 +413,19 @@ public class TXLivePlayerJSAdapter
   {
     if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      QMLog.d("TXLivePlayerJSAdapter", "bitmap recycle " + paramBitmap.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("bitmap recycle ");
+      localStringBuilder.append(paramBitmap.toString());
+      QMLog.d("TXLivePlayerJSAdapter", localStringBuilder.toString());
       paramBitmap.recycle();
     }
   }
   
-  private void txCloudVideoView_disableLog(Boolean paramBoolean)
-  {
-    JarReflectUtil.callSpecifiedMethod(this.txCloudVideoView, "disableLog", false, JarReflectUtil.getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
-  }
-  
-  private void txCloudVideoView_showLog(Boolean paramBoolean)
-  {
-    JarReflectUtil.callSpecifiedMethod(this.txCloudVideoView, "showLog", false, JarReflectUtil.getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
-  }
-  
-  private void txLivePlayConfig_setAutoAdjustCacheTime(Boolean paramBoolean)
-  {
-    JarReflectUtil.callSpecifiedMethod(this.txLivePlayConfig, "setAutoAdjustCacheTime", false, JarReflectUtil.getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
-  }
-  
-  private void txLivePlayConfig_setCacheTime(float paramFloat)
-  {
-    JarReflectUtil.callSpecifiedMethod(this.txLivePlayConfig, "setCacheTime", false, JarReflectUtil.getParamsClass(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
-  }
-  
-  private void txLivePlayConfig_setEnableMetaData(Boolean paramBoolean)
-  {
-    JarReflectUtil.callSpecifiedMethod(this.txLivePlayConfig, "setEnableMetaData", false, JarReflectUtil.getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
-  }
-  
-  private void txLivePlayConfig_setMaxAutoAdjustCacheTime(float paramFloat)
-  {
-    JarReflectUtil.callSpecifiedMethod(this.txLivePlayConfig, "setMaxAutoAdjustCacheTime", false, JarReflectUtil.getParamsClass(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
-  }
-  
-  private void txLivePlayConfig_setMinAutoAdjustCacheTime(float paramFloat)
-  {
-    JarReflectUtil.callSpecifiedMethod(this.txLivePlayConfig, "setMinAutoAdjustCacheTime", false, JarReflectUtil.getParamsClass(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
-  }
-  
-  private void txLivePlay_snapshot(Object paramObject)
-  {
-    try
-    {
-      JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "snapshot", false, JarReflectUtil.getParamsClass(new Class[] { Class.forName("com.tencent.rtmp.TXLivePlayer$ITXSnapshotListener") }), new Object[] { paramObject });
-      return;
-    }
-    catch (ClassNotFoundException paramObject)
-    {
-      paramObject.printStackTrace();
-    }
-  }
-  
-  private void txLivePlayer_enableAudioVolumeEvaluation(int paramInt)
-  {
-    JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "enableAudioVolumeEvaluation", false, JarReflectUtil.getParamsClass(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
-  }
-  
-  private void txLivePlayer_enableHardwareDecode(Boolean paramBoolean)
-  {
-    JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "enableHardwareDecode", false, JarReflectUtil.getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
-  }
-  
-  private boolean txLivePlayer_isPlaying()
-  {
-    Object localObject = JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "isPlaying", false, null, new Object[0]);
-    if (localObject != null) {
-      return ((Boolean)localObject).booleanValue();
-    }
-    return false;
-  }
-  
-  private void txLivePlayer_muteAudio(Boolean paramBoolean)
-  {
-    JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "muteAudio", false, JarReflectUtil.getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
-  }
-  
-  private void txLivePlayer_muteVideo(Boolean paramBoolean)
-  {
-    JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "muteVideo", false, JarReflectUtil.getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
-  }
-  
-  private void txLivePlayer_pause()
-  {
-    JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "pause", false, null, new Object[0]);
-  }
-  
-  private void txLivePlayer_resume()
-  {
-    JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "resume", false, null, new Object[0]);
-  }
-  
-  private void txLivePlayer_setAudioRoute(int paramInt)
-  {
-    JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "setAudioRoute", false, JarReflectUtil.getParamsClass(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
-  }
-  
-  private void txLivePlayer_setAudioVolumeEvaluationListener(Object paramObject)
-  {
-    try
-    {
-      JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "setAudioVolumeEvaluationListener", false, JarReflectUtil.getParamsClass(new Class[] { Class.forName("com.tencent.rtmp.TXLivePlayer$ITXAudioVolumeEvaluationListener") }), new Object[] { paramObject });
-      return;
-    }
-    catch (ClassNotFoundException paramObject)
-    {
-      paramObject.printStackTrace();
-    }
-  }
-  
-  private void txLivePlayer_setConfig(Object paramObject)
-  {
-    try
-    {
-      JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "setConfig", false, JarReflectUtil.getParamsClass(new Class[] { Class.forName("com.tencent.rtmp.WXLivePlayConfig") }), new Object[] { paramObject });
-      return;
-    }
-    catch (ClassNotFoundException paramObject)
-    {
-      paramObject.printStackTrace();
-    }
-  }
-  
-  private void txLivePlayer_setPlayListener(Object paramObject)
-  {
-    try
-    {
-      JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "setPlayListener", false, JarReflectUtil.getParamsClass(new Class[] { Class.forName("com.tencent.rtmp.ITXLivePlayListener") }), new Object[] { paramObject });
-      return;
-    }
-    catch (ClassNotFoundException paramObject)
-    {
-      paramObject.printStackTrace();
-    }
-  }
-  
-  private void txLivePlayer_setPlayerView(Object paramObject)
-  {
-    try
-    {
-      JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "setPlayerView", false, JarReflectUtil.getParamsClass(new Class[] { Class.forName("com.tencent.rtmp.ui.TXCloudVideoView") }), new Object[] { paramObject });
-      return;
-    }
-    catch (ClassNotFoundException paramObject)
-    {
-      paramObject.printStackTrace();
-    }
-  }
-  
-  private void txLivePlayer_setRenderMode(int paramInt)
-  {
-    JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "setRenderMode", false, JarReflectUtil.getParamsClass(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
-  }
-  
-  private void txLivePlayer_setRenderRotation(int paramInt)
-  {
-    JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "setRenderRotation", false, JarReflectUtil.getParamsClass(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
-  }
-  
-  private void txLivePlayer_setSurface(Surface paramSurface)
-  {
-    JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "setSurface", false, JarReflectUtil.getParamsClass(new Class[] { Surface.class }), new Object[] { paramSurface });
-  }
-  
-  private void txLivePlayer_setSurfaceSize(int paramInt1, int paramInt2)
-  {
-    JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "setSurfaceSize", false, JarReflectUtil.getParamsClass(new Class[] { Integer.TYPE, Integer.TYPE }), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-  }
-  
-  private void txLivePlayer_showDebugLog(Boolean paramBoolean)
-  {
-    JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "showDebugLog", false, JarReflectUtil.getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
-  }
-  
-  private int txLivePlayer_startPlay(String paramString, int paramInt)
-  {
-    paramString = JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "startPlay", false, JarReflectUtil.getParamsClass(new Class[] { String.class, Integer.TYPE }), new Object[] { paramString, Integer.valueOf(paramInt) });
-    if (paramString != null) {
-      return ((Integer)paramString).intValue();
-    }
-    return -1;
-  }
-  
-  private int txLivePlayer_stopPlay(Boolean paramBoolean)
-  {
-    paramBoolean = JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "stopPlay", false, JarReflectUtil.getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
-    if (paramBoolean != null) {
-      return ((Integer)paramBoolean).intValue();
-    }
-    return -1;
-  }
-  
-  private void txPlayConfig_setEnableMessage(Boolean paramBoolean)
-  {
-    JarReflectUtil.callSpecifiedMethod(this.txLivePlayConfig, "setEnableMessage", false, JarReflectUtil.getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
-  }
-  
   public Bundle createBundleFromJsonObject(JSONObject paramJSONObject)
   {
-    int j = 0;
     Bundle localBundle = new Bundle();
     String[] arrayOfString = new String[4];
+    int j = 0;
     arrayOfString[0] = "playUrl";
     arrayOfString[1] = "orientation";
     arrayOfString[2] = "objectFit";
@@ -620,11 +501,15 @@ public class TXLivePlayerJSAdapter
       this.mPlayingBeforeEnterBackground = false;
       return new TXJSAdapterError();
     }
-    this.mPlayingBeforeEnterBackground = txLivePlayer_isPlaying();
+    this.mPlayingBeforeEnterBackground = this.trtc.txLivePlayer_isPlaying();
     if (this.mPlayingBeforeEnterBackground)
     {
-      if ((this.mNeedEvent) && (this.iWXLivePlayerOuterListener != null)) {
-        this.iWXLivePlayerOuterListener.onPlayEvent(6000, new Bundle());
+      if (this.mNeedEvent)
+      {
+        TXLivePlayerJSAdapter.IPlayOuterListener localIPlayOuterListener = this.iWXLivePlayerOuterListener;
+        if (localIPlayOuterListener != null) {
+          localIPlayOuterListener.onPlayEvent(6000, new Bundle());
+        }
       }
       return operateLivePlayer("pause", null);
     }
@@ -646,16 +531,19 @@ public class TXLivePlayerJSAdapter
       return new TXJSAdapterError(-1, "invalid params");
     }
     printJSParams("initLivePlayer", paramJSONObject);
-    this.txCloudVideoView = null;
-    txLivePlayer_setPlayerView(null);
+    this.trtc.txLivePlayer_setPlayerView(null);
     this.mPlayerUrl = paramJSONObject.getString("playUrl", this.mPlayerUrl);
     this.mPlayType = getPlayType(paramJSONObject);
     parseAndApplyParams(paramJSONObject, true);
     this.mAutoPlay = paramJSONObject.getBoolean("autoplay", this.mAutoPlay);
-    if ((this.mAutoPlay) && (this.mPlayerUrl != null) && (!this.mPlayerUrl.isEmpty()))
+    if (this.mAutoPlay)
     {
-      QMLog.d("TXLivePlayerJSAdapter", "initLivePlayer: startPlay");
-      txLivePlayer_startPlay(this.mPlayerUrl, this.mPlayType);
+      paramJSONObject = this.mPlayerUrl;
+      if ((paramJSONObject != null) && (!paramJSONObject.isEmpty()))
+      {
+        QMLog.d("TXLivePlayerJSAdapter", "initLivePlayer: startPlay");
+        this.trtc.txLivePlayer_startPlay(this.mPlayerUrl, this.mPlayType);
+      }
     }
     this.mInited = true;
     return new TXJSAdapterError();
@@ -663,30 +551,39 @@ public class TXLivePlayerJSAdapter
   
   public TXJSAdapterError initLivePlayer(Object paramObject, Bundle paramBundle)
   {
-    if ((paramObject == null) || (paramBundle == null)) {
-      return new TXJSAdapterError(-1, "invalid params");
-    }
-    printJSParams("initLivePlayer", paramBundle);
-    this.txCloudVideoView = paramObject;
-    txCloudVideoView_disableLog(Boolean.valueOf(false));
-    txLivePlayer_setPlayerView(paramObject);
-    this.mPlayerUrl = paramBundle.getString("playUrl", this.mPlayerUrl);
-    this.mPlayType = getPlayType(paramBundle);
-    parseAndApplyParams(paramBundle, true);
-    this.mAutoPlay = paramBundle.getBoolean("autoplay", this.mAutoPlay);
-    if ((this.mAutoPlay) && (this.mPlayerUrl != null) && (!this.mPlayerUrl.isEmpty()))
+    if ((paramObject != null) && (paramBundle != null))
     {
-      QMLog.d("TXLivePlayerJSAdapter", "initLivePlayer: startPlay");
-      txLivePlayer_startPlay(this.mPlayerUrl, this.mPlayType);
+      printJSParams("initLivePlayer", paramBundle);
+      this.trtc.initLivePlayer(paramObject);
+      this.trtc.txCloudVideoView_disableLog(Boolean.valueOf(false));
+      this.trtc.txLivePlayer_setPlayerView(paramObject);
+      this.mPlayerUrl = paramBundle.getString("playUrl", this.mPlayerUrl);
+      this.mPlayType = getPlayType(paramBundle);
+      parseAndApplyParams(paramBundle, true);
+      this.mAutoPlay = paramBundle.getBoolean("autoplay", this.mAutoPlay);
+      if (this.mAutoPlay)
+      {
+        paramObject = this.mPlayerUrl;
+        if ((paramObject != null) && (!paramObject.isEmpty()))
+        {
+          QMLog.d("TXLivePlayerJSAdapter", "initLivePlayer: startPlay");
+          this.trtc.txLivePlayer_startPlay(this.mPlayerUrl, this.mPlayType);
+        }
+      }
+      this.mInited = true;
+      return new TXJSAdapterError();
     }
-    this.mInited = true;
-    return new TXJSAdapterError();
+    return new TXJSAdapterError(-1, "invalid params");
   }
   
   public TXJSAdapterError initLivePlayer(Object paramObject, JSONObject paramJSONObject)
   {
-    if (QMLog.isColorLevel()) {
-      QMLog.d("TXLivePlayerJSAdapter", "initLivePlayer: params = " + paramJSONObject.toString());
+    if (QMLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initLivePlayer: params = ");
+      localStringBuilder.append(paramJSONObject.toString());
+      QMLog.d("TXLivePlayerJSAdapter", localStringBuilder.toString());
     }
     return initLivePlayer(paramObject, createBundleFromJsonObject(paramJSONObject));
   }
@@ -698,7 +595,7 @@ public class TXLivePlayerJSAdapter
   
   public boolean isPlaying()
   {
-    return txLivePlayer_isPlaying();
+    return this.trtc.txLivePlayer_isPlaying();
   }
   
   public TXJSAdapterError operateLivePlayer(String paramString, JSONObject paramJSONObject)
@@ -706,46 +603,46 @@ public class TXLivePlayerJSAdapter
     if (paramString == null) {
       return new TXJSAdapterError(-1, "invalid params");
     }
-    String str = "";
     if (paramJSONObject != null) {
-      str = paramJSONObject.toString();
+      paramJSONObject = paramJSONObject.toString();
+    } else {
+      paramJSONObject = "";
     }
-    QMLog.d("TXLivePlayerJSAdapter", "operateLivePlayer: type = " + paramString + " params = " + str);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("operateLivePlayer: type = ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" params = ");
+    localStringBuilder.append(paramJSONObject);
+    QMLog.d("TXLivePlayerJSAdapter", localStringBuilder.toString());
     if (!this.mInited) {
       return new TXJSAdapterError(-3, "uninited livePlayer");
     }
-    if (paramString.equalsIgnoreCase("play")) {
-      txLivePlayer_startPlay(this.mPlayerUrl, this.mPlayType);
-    }
-    for (;;)
+    if (paramString.equalsIgnoreCase("play"))
     {
-      return new TXJSAdapterError();
-      if (paramString.equalsIgnoreCase("stop"))
-      {
-        txLivePlayer_stopPlay(Boolean.valueOf(true));
-      }
-      else if (paramString.equalsIgnoreCase("pause"))
-      {
-        txLivePlayer_pause();
-      }
-      else
-      {
-        if (!paramString.equalsIgnoreCase("resume")) {
-          break;
-        }
-        txLivePlayer_resume();
-      }
+      this.trtc.txLivePlayer_startPlay(this.mPlayerUrl, this.mPlayType);
     }
-    if (paramString.equalsIgnoreCase("mute"))
+    else if (paramString.equalsIgnoreCase("stop"))
     {
-      if (!this.mMute) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.mMute = bool;
-        txLivePlayer_muteAudio(Boolean.valueOf(this.mMute));
-        break;
-      }
+      this.trtc.txLivePlayer_stopPlay(Boolean.valueOf(true));
     }
+    else if (paramString.equalsIgnoreCase("pause"))
+    {
+      this.trtc.txLivePlayer_pause();
+    }
+    else if (paramString.equalsIgnoreCase("resume"))
+    {
+      this.trtc.txLivePlayer_resume();
+    }
+    else
+    {
+      if (!paramString.equalsIgnoreCase("mute")) {
+        break label242;
+      }
+      this.mMute ^= true;
+      this.trtc.txLivePlayer_muteAudio(Boolean.valueOf(this.mMute));
+    }
+    return new TXJSAdapterError();
+    label242:
     return new TXJSAdapterError(-4, "invalid operate command");
   }
   
@@ -767,31 +664,21 @@ public class TXLivePlayerJSAdapter
   public TXJSAdapterError setSurface(Surface paramSurface)
   {
     this.mSurface = paramSurface;
-    txLivePlayer_setSurface(paramSurface);
+    this.trtc.txLivePlayer_setSurface(paramSurface);
     return new TXJSAdapterError();
   }
   
   public TXJSAdapterError setSurfaceSize(int paramInt1, int paramInt2)
   {
-    txLivePlayer_setSurfaceSize(paramInt1, paramInt2);
+    this.trtc.txLivePlayer_setSurfaceSize(paramInt1, paramInt2);
     return new TXJSAdapterError();
   }
   
   public void takePhoto(boolean paramBoolean)
   {
-    if (this.txLivePlayer != null) {}
-    try
-    {
-      Class localClass = Class.forName("com.tencent.rtmp.TXLivePlayer$ITXSnapshotListener");
-      TXLivePlayerJSAdapter.InnerITXSnapshotListenerImpl localInnerITXSnapshotListenerImpl = new TXLivePlayerJSAdapter.InnerITXSnapshotListenerImpl(this);
-      localInnerITXSnapshotListenerImpl.setNeedCompress(paramBoolean);
-      txLivePlay_snapshot(Proxy.newProxyInstance(TXLivePlayerJSAdapter.class.getClassLoader(), new Class[] { localClass }, localInnerITXSnapshotListenerImpl));
-      return;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      localClassNotFoundException.printStackTrace();
-    }
+    TXLivePlayerJSAdapter.InnerITXSnapshotListenerImpl localInnerITXSnapshotListenerImpl = new TXLivePlayerJSAdapter.InnerITXSnapshotListenerImpl(this);
+    localInnerITXSnapshotListenerImpl.setNeedCompress(paramBoolean);
+    this.trtc.txLivePlay_snapshot(localInnerITXSnapshotListenerImpl);
   }
   
   public TXJSAdapterError uninitLivePlayer()
@@ -799,8 +686,8 @@ public class TXLivePlayerJSAdapter
     if (!this.mInited) {
       return new TXJSAdapterError(-3, "uninited livePlayer");
     }
-    txLivePlayer_stopPlay(Boolean.valueOf(true));
-    txLivePlayer_setPlayListener(null);
+    this.trtc.txLivePlayer_stopPlay(Boolean.valueOf(true));
+    this.trtc.txLivePlayer_setPlayListener(null);
     this.mInited = false;
     return new TXJSAdapterError();
   }
@@ -815,41 +702,63 @@ public class TXLivePlayerJSAdapter
     }
     printJSParams("updateLivePlayer", paramBundle);
     parseAndApplyParams(paramBundle, false);
-    String str = paramBundle.getString("playUrl", this.mPlayerUrl);
-    if ((str != null) && (!str.isEmpty()) && (this.mPlayerUrl != null) && (!this.mPlayerUrl.equalsIgnoreCase(str)) && (txLivePlayer_isPlaying()))
+    Object localObject1 = paramBundle.getString("playUrl", this.mPlayerUrl);
+    if ((localObject1 != null) && (!((String)localObject1).isEmpty()))
     {
-      QMLog.d("TXLivePlayerJSAdapter", "updateLivePlayer: stopPlay playUrl-old = " + this.mPlayerUrl + " playUrl-new = " + str);
-      txLivePlayer_stopPlay(Boolean.valueOf(true));
+      Object localObject2 = this.mPlayerUrl;
+      if ((localObject2 != null) && (!((String)localObject2).equalsIgnoreCase((String)localObject1)) && (this.trtc.txLivePlayer_isPlaying()))
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("updateLivePlayer: stopPlay playUrl-old = ");
+        ((StringBuilder)localObject2).append(this.mPlayerUrl);
+        ((StringBuilder)localObject2).append(" playUrl-new = ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QMLog.d("TXLivePlayerJSAdapter", ((StringBuilder)localObject2).toString());
+        this.trtc.txLivePlayer_stopPlay(Boolean.valueOf(true));
+      }
     }
-    this.mPlayerUrl = str;
+    this.mPlayerUrl = ((String)localObject1);
     int i = getPlayType(paramBundle);
-    if ((i != this.mPlayType) && (txLivePlayer_isPlaying()))
+    if ((i != this.mPlayType) && (this.trtc.txLivePlayer_isPlaying()))
     {
-      QMLog.d("TXLivePlayerJSAdapter", "updateLivePlayer: stopPlay  playType-old = " + this.mPlayType + " playType-new = " + i);
-      txLivePlayer_stopPlay(Boolean.valueOf(true));
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("updateLivePlayer: stopPlay  playType-old = ");
+      ((StringBuilder)localObject1).append(this.mPlayType);
+      ((StringBuilder)localObject1).append(" playType-new = ");
+      ((StringBuilder)localObject1).append(i);
+      QMLog.d("TXLivePlayerJSAdapter", ((StringBuilder)localObject1).toString());
+      this.trtc.txLivePlayer_stopPlay(Boolean.valueOf(true));
     }
     this.mPlayType = i;
     this.mAutoPlay = paramBundle.getBoolean("autoplay", this.mAutoPlay);
-    boolean bool = txLivePlayer_isPlaying();
-    if (((this.mAutoPlay) || (bool)) && (this.mPlayerUrl != null) && (!this.mPlayerUrl.isEmpty()) && (!txLivePlayer_isPlaying()))
+    boolean bool = this.trtc.txLivePlayer_isPlaying();
+    if ((this.mAutoPlay) || (bool))
     {
-      QMLog.d("TXLivePlayerJSAdapter", "updateLivePlayer: startPlay");
-      txLivePlayer_startPlay(this.mPlayerUrl, this.mPlayType);
+      paramBundle = this.mPlayerUrl;
+      if ((paramBundle != null) && (!paramBundle.isEmpty()) && (!this.trtc.txLivePlayer_isPlaying()))
+      {
+        QMLog.d("TXLivePlayerJSAdapter", "updateLivePlayer: startPlay");
+        this.trtc.txLivePlayer_startPlay(this.mPlayerUrl, this.mPlayType);
+      }
     }
     return new TXJSAdapterError();
   }
   
   public TXJSAdapterError updateLivePlayer(JSONObject paramJSONObject)
   {
-    if (QMLog.isColorLevel()) {
-      QMLog.d("TXLivePlayerJSAdapter", "updateLivePlayer: params = " + paramJSONObject.toString());
+    if (QMLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateLivePlayer: params = ");
+      localStringBuilder.append(paramJSONObject.toString());
+      QMLog.d("TXLivePlayerJSAdapter", localStringBuilder.toString());
     }
     return updateLivePlayer(createBundleFromJsonObject(paramJSONObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.media.live.TXLivePlayerJSAdapter
  * JD-Core Version:    0.7.0.1
  */

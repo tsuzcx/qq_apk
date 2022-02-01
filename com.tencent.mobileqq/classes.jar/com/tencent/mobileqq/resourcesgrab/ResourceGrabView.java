@@ -5,10 +5,6 @@ import android.app.Application.ActivityLifecycleCallbacks;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.GradientDrawable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +16,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.ViewUtils;
@@ -57,28 +56,30 @@ public class ResourceGrabView
   public ResourceGrabView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(paramContext).inflate(2131559009, this, true);
+    LayoutInflater.from(paramContext).inflate(2131558903, this, true);
     c();
   }
   
   private Activity a()
   {
-    Activity localActivity = null;
-    if (this.jdField_a_of_type_MqqUtilWeakReference != null) {
-      localActivity = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    Object localObject1 = this.jdField_a_of_type_MqqUtilWeakReference;
+    if (localObject1 != null) {
+      localObject1 = (Activity)((WeakReference)localObject1).get();
+    } else {
+      localObject1 = null;
     }
-    Object localObject = localActivity;
-    if (localActivity == null) {
-      localObject = BaseActivity.sTopActivity;
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = BaseActivity.sTopActivity;
     }
-    return localObject;
+    return localObject2;
   }
   
   private Fragment a()
   {
     Activity localActivity = a();
-    if ((localActivity instanceof FragmentActivity)) {
-      return ((FragmentActivity)localActivity).getSupportFragmentManager().findFragmentByTag("ResourceGrabFragment");
+    if ((localActivity instanceof BaseActivity)) {
+      return ((BaseActivity)localActivity).getSupportFragmentManager().findFragmentByTag("ResourceGrabFragment");
     }
     return null;
   }
@@ -89,13 +90,13 @@ public class ResourceGrabView
     GradientDrawable localGradientDrawable = new GradientDrawable();
     localGradientDrawable.setCornerRadius(ViewUtils.b(6.0F));
     localGradientDrawable.setColor(-1);
-    localGradientDrawable.setStroke(ViewUtils.b(1.5F), getResources().getColor(2131167141));
+    localGradientDrawable.setStroke(ViewUtils.b(1.5F), getResources().getColor(2131167166));
     setBackgroundDrawable(localGradientDrawable);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364157));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131364137));
-    this.c = ((Button)findViewById(2131363963));
-    this.d = ((Button)findViewById(2131363955));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380569));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364078));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131364058));
+    this.c = ((Button)findViewById(2131363890));
+    this.d = ((Button)findViewById(2131363881));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379853));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.c.setOnClickListener(this);
@@ -111,23 +112,20 @@ public class ResourceGrabView
   private void e()
   {
     Button localButton = this.jdField_a_of_type_AndroidWidgetButton;
-    if (this.jdField_b_of_type_Boolean)
-    {
+    String str;
+    if (this.jdField_b_of_type_Boolean) {
       str = "关闭";
-      localButton.setText(str);
-      localButton = this.jdField_b_of_type_AndroidWidgetButton;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label47;
-      }
-    }
-    label47:
-    for (String str = "不发送";; str = "发送")
-    {
-      localButton.setText(str);
-      return;
+    } else {
       str = "开启";
-      break;
     }
+    localButton.setText(str);
+    localButton = this.jdField_b_of_type_AndroidWidgetButton;
+    if (this.jdField_a_of_type_Boolean) {
+      str = "不发送";
+    } else {
+      str = "发送";
+    }
+    localButton.setText(str);
   }
   
   void a()
@@ -142,40 +140,50 @@ public class ResourceGrabView
     }
     catch (Exception localException)
     {
-      QLog.d("ResourceGrabView", 1, "hideFromWindow error : " + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("hideFromWindow error : ");
+      localStringBuilder.append(localException);
+      QLog.d("ResourceGrabView", 1, localStringBuilder.toString());
     }
   }
   
   void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ResourceGrabView", 2, "enableGrabResourceName on: " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("enableGrabResourceName on: ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("ResourceGrabView", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = a();
-    if (!paramBoolean) {
+    if (!paramBoolean)
+    {
       if ((localObject instanceof ResourceGrabFragment))
       {
         localObject = (ResourceGrabFragment)localObject;
         ((ResourceGrabFragment)localObject).a(this);
-        ((ResourceGrabFragment)localObject).d();
+        ((ResourceGrabFragment)localObject).c();
       }
     }
-    do
+    else
     {
-      return;
       if ((localObject instanceof ResourceGrabFragment))
       {
         localObject = (ResourceGrabFragment)localObject;
         ((ResourceGrabFragment)localObject).a(this);
-        ((ResourceGrabFragment)localObject).b();
+        ((ResourceGrabFragment)localObject).a();
         return;
       }
       localObject = a();
-    } while (!(localObject instanceof FragmentActivity));
-    ResourceGrabFragment localResourceGrabFragment = new ResourceGrabFragment();
-    localResourceGrabFragment.a(this);
-    ((FragmentActivity)localObject).getSupportFragmentManager().beginTransaction().add(localResourceGrabFragment, "ResourceGrabFragment").commitAllowingStateLoss();
-    localResourceGrabFragment.b();
+      if ((localObject instanceof BaseActivity))
+      {
+        ResourceGrabFragment localResourceGrabFragment = new ResourceGrabFragment();
+        localResourceGrabFragment.a(this);
+        ((BaseActivity)localObject).getSupportFragmentManager().beginTransaction().add(localResourceGrabFragment, "ResourceGrabFragment").commitAllowingStateLoss();
+        localResourceGrabFragment.a();
+      }
+    }
   }
   
   void b()
@@ -188,63 +196,50 @@ public class ResourceGrabView
   
   public void onClick(View paramView)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
     switch (paramView.getId())
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    default: 
+      break;
+    case 2131364078: 
       if (this.jdField_b_of_type_Boolean)
       {
         this.jdField_a_of_type_AndroidWidgetButton.setText("开启");
         a(false);
         Toast.makeText(getContext(), "资源获取功能已关闭", 0).show();
-        label95:
-        if (this.jdField_b_of_type_Boolean) {
-          break label141;
-        }
       }
-      for (;;)
+      else
       {
-        this.jdField_b_of_type_Boolean = bool1;
-        break;
         this.jdField_a_of_type_AndroidWidgetButton.setText("关闭");
         a(true);
         Toast.makeText(getContext(), "资源获取功能已开启", 0).show();
-        break label95;
-        label141:
-        bool1 = false;
       }
+      this.jdField_b_of_type_Boolean ^= true;
+      break;
+    case 2131364058: 
       if (this.jdField_a_of_type_Boolean)
       {
         this.jdField_b_of_type_AndroidWidgetButton.setText("发送");
         Toast.makeText(getContext(), "发送图片至我的电脑功能已关闭", 0).show();
-        label176:
-        if (this.jdField_a_of_type_Boolean) {
-          break label219;
-        }
       }
-      label219:
-      for (bool1 = bool2;; bool1 = false)
+      else
       {
-        this.jdField_a_of_type_Boolean = bool1;
-        break;
         this.jdField_b_of_type_AndroidWidgetButton.setText("不发送");
         Toast.makeText(getContext(), "发送图片至我的电脑功能已开启", 0).show();
-        break label176;
       }
+      this.jdField_a_of_type_Boolean ^= true;
+      break;
+    case 2131363890: 
       a();
-      continue;
+      break;
+    case 2131363881: 
       this.jdField_a_of_type_AndroidWidgetTextView.setText("");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.resourcesgrab.ResourceGrabView
  * JD-Core Version:    0.7.0.1
  */

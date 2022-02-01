@@ -48,21 +48,21 @@ public final class SafeContinuation<T>
   public final Object getResult()
   {
     Object localObject2 = this.result;
+    Object localObject3 = UNDECIDED;
     Object localObject1 = localObject2;
-    if (localObject2 == UNDECIDED) {
-      if (RESULT.compareAndSet(this, UNDECIDED, IntrinsicsKt.getCOROUTINE_SUSPENDED())) {
-        localObject2 = IntrinsicsKt.getCOROUTINE_SUSPENDED();
-      }
-    }
-    do
+    if (localObject2 == localObject3)
     {
-      return localObject2;
-      localObject1 = this.result;
-      if (localObject1 == RESUMED) {
+      if (RESULT.compareAndSet(this, localObject3, IntrinsicsKt.getCOROUTINE_SUSPENDED())) {
         return IntrinsicsKt.getCOROUTINE_SUSPENDED();
       }
-      localObject2 = localObject1;
-    } while (!(localObject1 instanceof SafeContinuation.Fail));
+      localObject1 = this.result;
+    }
+    if (localObject1 == RESUMED) {
+      return IntrinsicsKt.getCOROUTINE_SUSPENDED();
+    }
+    if (!(localObject1 instanceof SafeContinuation.Fail)) {
+      return localObject1;
+    }
     throw ((SafeContinuation.Fail)localObject1).getException();
   }
   
@@ -70,22 +70,28 @@ public final class SafeContinuation<T>
   {
     do
     {
-      Object localObject;
+      Object localObject1;
+      Object localObject2;
       do
       {
-        localObject = this.result;
-        if (localObject != UNDECIDED) {
+        localObject1 = this.result;
+        localObject2 = UNDECIDED;
+        if (localObject1 != localObject2) {
           break;
         }
-      } while (!RESULT.compareAndSet(this, UNDECIDED, paramT));
+      } while (!RESULT.compareAndSet(this, localObject2, paramT));
       return;
-      if (localObject != IntrinsicsKt.getCOROUTINE_SUSPENDED()) {
+      if (localObject1 != IntrinsicsKt.getCOROUTINE_SUSPENDED()) {
         break;
       }
     } while (!RESULT.compareAndSet(this, IntrinsicsKt.getCOROUTINE_SUSPENDED(), RESUMED));
     this.delegate.resume(paramT);
     return;
-    throw ((Throwable)new IllegalStateException("Already resumed"));
+    paramT = (Throwable)new IllegalStateException("Already resumed");
+    for (;;)
+    {
+      throw paramT;
+    }
   }
   
   public void resumeWithException(@NotNull Throwable paramThrowable)
@@ -93,27 +99,33 @@ public final class SafeContinuation<T>
     Intrinsics.checkParameterIsNotNull(paramThrowable, "exception");
     do
     {
-      Object localObject;
+      Object localObject1;
+      Object localObject2;
       do
       {
-        localObject = this.result;
-        if (localObject != UNDECIDED) {
+        localObject1 = this.result;
+        localObject2 = UNDECIDED;
+        if (localObject1 != localObject2) {
           break;
         }
-      } while (!RESULT.compareAndSet(this, UNDECIDED, new SafeContinuation.Fail(paramThrowable)));
+      } while (!RESULT.compareAndSet(this, localObject2, new SafeContinuation.Fail(paramThrowable)));
       return;
-      if (localObject != IntrinsicsKt.getCOROUTINE_SUSPENDED()) {
+      if (localObject1 != IntrinsicsKt.getCOROUTINE_SUSPENDED()) {
         break;
       }
     } while (!RESULT.compareAndSet(this, IntrinsicsKt.getCOROUTINE_SUSPENDED(), RESUMED));
     this.delegate.resumeWithException(paramThrowable);
     return;
-    throw ((Throwable)new IllegalStateException("Already resumed"));
+    paramThrowable = (Throwable)new IllegalStateException("Already resumed");
+    for (;;)
+    {
+      throw paramThrowable;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.coroutines.experimental.SafeContinuation
  * JD-Core Version:    0.7.0.1
  */

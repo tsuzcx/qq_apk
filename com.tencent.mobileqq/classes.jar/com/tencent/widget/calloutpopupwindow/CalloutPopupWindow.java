@@ -43,18 +43,20 @@ public class CalloutPopupWindow
   public CalloutPopupWindow(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
     super(paramInt1, paramInt2);
-    if (paramInt1 < 0) {
-      throw new RuntimeException("You must specify the window width explicitly(do not use WRAP_CONTENT or MATCH_PARENT)!!!");
+    if (paramInt1 >= 0)
+    {
+      this.e = paramInt3;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(0, 0, 0, 0);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
+      this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(paramContext);
+      setBackgroundDrawable(new ColorDrawable());
+      setOutsideTouchable(true);
+      setFocusable(false);
+      return;
     }
-    this.e = paramInt3;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(0, 0, 0, 0);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(paramContext);
-    setBackgroundDrawable(new ColorDrawable());
-    setOutsideTouchable(true);
-    setFocusable(false);
+    throw new RuntimeException("You must specify the window width explicitly(do not use WRAP_CONTENT or MATCH_PARENT)!!!");
   }
   
   public static CalloutPopupWindow.Builder a(Context paramContext)
@@ -77,143 +79,146 @@ public class CalloutPopupWindow
     {
       try
       {
-        i = DisplayUtil.a(paramView.getContext(), 300.0F);
-        int j = DisplayUtil.a(paramView.getContext(), 120.0F);
+        int i = DisplayUtil.a(paramView.getContext(), 300.0F);
+        j = DisplayUtil.a(paramView.getContext(), 120.0F);
         this.jdField_a_of_type_AndroidWidgetFrameLayout.measure(i, j);
         this.jdField_b_of_type_Int = DisplayUtil.a(paramView.getContext(), this.jdField_b_of_type_Int);
         Rect localRect = new Rect();
         paramView.getWindowVisibleDisplayFrame(localRect);
-        j = localRect.right - localRect.left;
-        int m = localRect.bottom - localRect.top;
+        int m = localRect.right - localRect.left;
+        int n = localRect.bottom - localRect.top;
         int[] arrayOfInt = new int[2];
         paramView.getLocationInWindow(arrayOfInt);
+        j = this.e;
+        int k = 0;
+        i = 0;
         float f1;
-        int n;
-        int i2;
-        int k;
-        if ((this.e == 51) || (this.e == 52))
+        if ((j != 51) && (this.e != 52))
         {
-          i = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable().getIntrinsicWidth();
-          setWidth(getWidth() + i);
-          if (this.e == 51)
-          {
-            i = (i + this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredWidth()) * -1 - this.jdField_b_of_type_Int;
-            if (this.c == 83)
-            {
-              f1 = (localRect.centerY() - arrayOfInt[1]) / m;
-              paramInt2 = (int)((paramView.getHeight() + this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredHeight()) / 2 - f1 * this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredWidth() / 2.0F) * -1;
-              paramInt1 = i;
-              n = arrayOfInt[0] + paramInt1;
-              i2 = getWidth();
-              int i1 = arrayOfInt[1] + paramInt2;
-              int i3 = i1 + this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredHeight();
-              k = 0;
-              i = 0;
-              if ((this.e != 51) && (this.e != 52)) {
-                continue;
-              }
-              if (i3 > m - this.jdField_a_of_type_Int) {
-                i = i3 - (m - this.jdField_a_of_type_Int);
-              }
-              j = paramInt1;
-              if (i1 < localRect.top + this.jdField_a_of_type_Int)
-              {
-                i = localRect.top + this.jdField_a_of_type_Int - i1;
-                j = paramInt1;
-              }
-              d(paramView, j, i);
-              SLog.b("CalloutPopupWindow.VASH", "show tips xoff=%d, yAnchorOff=%d, yoff=%d", Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(paramInt2));
-              super.showAsDropDown(paramView, j, i + paramInt2);
-              if (this.d <= 0) {
-                break;
-              }
-              this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, new WeakReference(this)), this.d * 1000);
-            }
-          }
-          else
-          {
-            if (this.e != 52) {
-              break label741;
-            }
-            paramInt1 = paramView.getWidth();
-            i = this.jdField_b_of_type_Int + (i + paramInt1);
-            continue;
-          }
-          paramInt1 = i;
-          if (this.c != 82) {
-            continue;
-          }
-          paramInt2 = (paramView.getHeight() + this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredHeight()) * -1 / 2;
-          paramInt1 = i;
-          continue;
-        }
-        else
-        {
-          i = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable().getIntrinsicHeight();
+          j = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable().getIntrinsicHeight();
           if (this.e == 49)
           {
-            paramInt2 = (i + (this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredHeight() + paramView.getHeight())) * -1 - this.jdField_b_of_type_Int;
-            if (this.c == 83)
-            {
-              f1 = (localRect.centerX() - arrayOfInt[0]) / j;
-              float f2 = (paramView.getWidth() - getWidth()) / 2;
-              paramInt1 = (int)(f1 * getWidth() / 2.0F + f2);
-            }
+            paramInt2 = (this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredHeight() + paramView.getHeight() + j) * -1 - this.jdField_b_of_type_Int;
           }
           else
           {
             if (this.e != 50) {
-              continue;
+              break label730;
             }
             paramInt2 = this.jdField_b_of_type_Int;
-            continue;
+          }
+          if (this.c == 83)
+          {
+            f1 = (localRect.centerX() - arrayOfInt[0]) / m;
+            paramInt1 = (int)((paramView.getWidth() - getWidth()) / 2 + f1 * getWidth() / 2.0F);
+            j = paramInt2;
+          }
+          else
+          {
+            if (this.c != 82) {
+              break label733;
+            }
+            paramInt1 = (paramView.getWidth() - getWidth()) / 2;
+            j = paramInt2;
+          }
+        }
+        else
+        {
+          j = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable().getIntrinsicWidth();
+          setWidth(getWidth() + j);
+          if (this.e == 51)
+          {
+            paramInt1 = (this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredWidth() + j) * -1 - this.jdField_b_of_type_Int;
+          }
+          else
+          {
+            if (this.e != 52) {
+              break label739;
+            }
+            paramInt1 = paramView.getWidth() + j + this.jdField_b_of_type_Int;
+          }
+          if (this.c == 83)
+          {
+            f1 = (localRect.centerY() - arrayOfInt[1]) / n;
+            paramInt2 = (int)((paramView.getHeight() + this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredHeight()) / 2 - f1 * this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredWidth() / 2.0F) * -1;
+            break label742;
           }
           if (this.c != 82) {
-            break label738;
+            break label745;
           }
-          paramInt1 = (paramView.getWidth() - getWidth()) / 2;
-          continue;
+          paramInt2 = (paramView.getHeight() + this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredHeight()) * -1 / 2;
+          break label742;
         }
-        if (n + i2 > j - this.jdField_a_of_type_Int) {
-          paramInt1 = j - this.jdField_a_of_type_Int - getWidth() - arrayOfInt[0];
+        int i1 = arrayOfInt[0] + paramInt1;
+        paramInt2 = getWidth();
+        int i2 = arrayOfInt[1] + j;
+        int i3 = this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredHeight() + i2;
+        if ((this.e != 51) && (this.e != 52))
+        {
+          if (paramInt2 + i1 > m - this.jdField_a_of_type_Int) {
+            paramInt1 = m - this.jdField_a_of_type_Int - getWidth() - arrayOfInt[0];
+          }
+          paramInt2 = paramInt1;
+          i = k;
+          if (i1 < localRect.left + this.jdField_a_of_type_Int)
+          {
+            paramInt2 = localRect.left + this.jdField_a_of_type_Int - arrayOfInt[0];
+            i = k;
+          }
         }
-        i = k;
-        j = paramInt1;
-        if (n >= localRect.left + this.jdField_a_of_type_Int) {
-          continue;
+        else
+        {
+          if (i3 > n - this.jdField_a_of_type_Int) {
+            i = i3 - (n - this.jdField_a_of_type_Int);
+          }
+          paramInt2 = paramInt1;
+          if (i2 < localRect.top + this.jdField_a_of_type_Int)
+          {
+            i = localRect.top + this.jdField_a_of_type_Int - i2;
+            paramInt2 = paramInt1;
+          }
         }
-        paramInt1 = localRect.left;
-        i = this.jdField_a_of_type_Int;
-        j = arrayOfInt[0];
-        j = paramInt1 + i - j;
-        i = k;
-        continue;
-        continue;
+        d(paramView, paramInt2, i);
+        SLog.b("CalloutPopupWindow.VASH", "show tips xoff=%d, yAnchorOff=%d, yoff=%d", Integer.valueOf(paramInt2), Integer.valueOf(i), Integer.valueOf(j));
+        super.showAsDropDown(paramView, paramInt2, j + i);
+        if (this.d > 0)
+        {
+          this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, new WeakReference(this)), this.d * 1000);
+          return;
+        }
       }
       catch (Exception paramView)
       {
         Log.e("CalloutPopupWindow", "[showInternal] failed to show window", paramView);
-        return;
       }
-      label738:
-      label741:
-      int i = paramInt1;
+      return;
+      label730:
+      continue;
+      label733:
+      int j = paramInt2;
+      continue;
+      label739:
+      continue;
+      label742:
+      label745:
+      j = paramInt2;
     }
   }
   
   private void d(View paramView, int paramInt1, int paramInt2)
   {
     Drawable localDrawable = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
-    if ((this.e == 51) || (this.e == 52))
+    int i = this.e;
+    if ((i != 51) && (i != 52))
     {
-      paramInt1 = this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredHeight();
-      i = localDrawable.getIntrinsicHeight();
-      this.jdField_a_of_type_AndroidWidgetImageView.setPadding(0, (paramInt1 - i) / 2 - paramInt2, 0, 0);
+      paramInt2 = paramView.getWidth();
+      i = localDrawable.getIntrinsicWidth();
+      this.jdField_a_of_type_AndroidWidgetImageView.setPadding((paramInt2 - i) / 2 - paramInt1, 0, 0, 0);
       return;
     }
-    paramInt2 = paramView.getWidth();
-    int i = localDrawable.getIntrinsicWidth();
-    this.jdField_a_of_type_AndroidWidgetImageView.setPadding((paramInt2 - i) / 2 - paramInt1, 0, 0, 0);
+    paramInt1 = this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredHeight();
+    i = localDrawable.getIntrinsicHeight();
+    this.jdField_a_of_type_AndroidWidgetImageView.setPadding(0, (paramInt1 - i) / 2 - paramInt2, 0, 0);
   }
   
   public void a(int paramInt)
@@ -258,134 +263,138 @@ public class CalloutPopupWindow
   
   public void b(View paramView, int paramInt1, int paramInt2)
   {
-    int k = 0;
-    int i = 0;
-    int j = 0;
-    int m = 0;
-    label772:
-    label783:
     for (;;)
     {
       try
       {
-        int n = DisplayUtil.a(paramView.getContext(), 300.0F);
-        int i1 = DisplayUtil.a(paramView.getContext(), 120.0F);
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.measure(n, i1);
+        i = DisplayUtil.a(paramView.getContext(), 300.0F);
+        j = DisplayUtil.a(paramView.getContext(), 120.0F);
+        this.jdField_a_of_type_AndroidWidgetFrameLayout.measure(i, j);
         this.jdField_b_of_type_Int = DisplayUtil.a(paramView.getContext(), this.jdField_b_of_type_Int);
         Rect localRect = new Rect();
         paramView.getWindowVisibleDisplayFrame(localRect);
-        i1 = localRect.right - localRect.left;
+        int i1 = localRect.right - localRect.left;
         int i2 = localRect.bottom - localRect.top;
         int[] arrayOfInt = new int[2];
         paramView.getLocationOnScreen(arrayOfInt);
+        i = this.e;
+        int n = 0;
+        int k = 0;
         float f1;
-        int i3;
-        if ((this.e == 51) || (this.e == 52))
-        {
-          k = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable().getIntrinsicWidth();
-          setWidth(getWidth() + k);
-          if (this.e == 51)
-          {
-            i = (this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredWidth() + k) * -1 - this.jdField_b_of_type_Int;
-            if (this.c == 83)
-            {
-              f1 = (localRect.centerY() - arrayOfInt[1]) / i2;
-              j = (int)((paramView.getHeight() + this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredHeight()) / 2 - f1 * this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredWidth() / 2.0F) * -1;
-              break label783;
-              i3 = arrayOfInt[0] + i;
-              m = getWidth();
-              int i4 = arrayOfInt[1] + j;
-              int i5 = i4 + this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredHeight();
-              n = 0;
-              k = 0;
-              if ((this.e != 51) && (this.e != 52)) {
-                continue;
-              }
-              if (i5 > i2 - this.jdField_a_of_type_Int) {
-                k = i5 - (i2 - this.jdField_a_of_type_Int);
-              }
-              m = i;
-              if (i4 < localRect.top + this.jdField_a_of_type_Int)
-              {
-                k = localRect.top + this.jdField_a_of_type_Int - i4;
-                m = i;
-              }
-              d(paramView, m, k);
-              super.showAtLocation(paramView, 51, m + paramInt1, k + (j + arrayOfInt[1]) + paramView.getHeight() + paramInt2);
-              if (this.d <= 0) {
-                break;
-              }
-              this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, new WeakReference(this)), this.d * 1000);
-            }
-          }
-          else
-          {
-            if (this.e != 52) {
-              continue;
-            }
-            i = paramView.getWidth() + k + this.jdField_b_of_type_Int;
-            continue;
-          }
-          if (this.c != 82) {
-            break label783;
-          }
-          j = (paramView.getHeight() + this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredHeight()) * -1 / 2;
-          break label783;
-        }
-        else
+        if ((i != 51) && (this.e != 52))
         {
           i = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable().getIntrinsicHeight();
           if (this.e == 49)
           {
-            i = (this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredHeight() + paramView.getHeight() + i) * -1 - this.jdField_b_of_type_Int;
-            if (this.c == 83)
-            {
-              f1 = (localRect.centerX() - arrayOfInt[0]) / i1;
-              float f2 = (paramView.getWidth() - getWidth()) / 2;
-              k = (int)(f1 * getWidth() / 2.0F + f2);
-              j = i;
-              i = k;
-            }
+            j = (this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredHeight() + paramView.getHeight() + i) * -1 - this.jdField_b_of_type_Int;
           }
           else
           {
-            i = m;
             if (this.e != 50) {
-              continue;
+              break label748;
             }
-            i = this.jdField_b_of_type_Int;
-            continue;
+            j = this.jdField_b_of_type_Int;
+          }
+          if (this.c == 83)
+          {
+            f1 = (localRect.centerX() - arrayOfInt[0]) / i1;
+            i = (int)((paramView.getWidth() - getWidth()) / 2 + f1 * getWidth() / 2.0F);
+            m = j;
+          }
+          else
+          {
+            if (this.c != 82) {
+              break label754;
+            }
+            i = (paramView.getWidth() - getWidth()) / 2;
+            m = j;
+          }
+        }
+        else
+        {
+          i = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable().getIntrinsicWidth();
+          setWidth(getWidth() + i);
+          if (this.e == 51)
+          {
+            i = (this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredWidth() + i) * -1 - this.jdField_b_of_type_Int;
+          }
+          else
+          {
+            if (this.e != 52) {
+              break label764;
+            }
+            i = paramView.getWidth() + i + this.jdField_b_of_type_Int;
+          }
+          if (this.c == 83)
+          {
+            f1 = (localRect.centerY() - arrayOfInt[1]) / i2;
+            j = (int)((paramView.getHeight() + this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredHeight()) / 2 - f1 * this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredWidth() / 2.0F) * -1;
+            break label770;
           }
           if (this.c != 82) {
-            break label772;
+            break label773;
           }
-          k = (paramView.getWidth() - getWidth()) / 2;
+          j = (paramView.getHeight() + this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredHeight()) * -1 / 2;
+          break label770;
+        }
+        int i3 = arrayOfInt[0] + i;
+        j = getWidth();
+        int i4 = arrayOfInt[1] + m;
+        int i5 = this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredHeight() + i4;
+        if ((this.e != 51) && (this.e != 52))
+        {
+          if (j + i3 > i1 - this.jdField_a_of_type_Int) {
+            i = i1 - this.jdField_a_of_type_Int - getWidth() - arrayOfInt[0];
+          }
           j = i;
-          i = k;
-          continue;
+          k = n;
+          if (i3 < localRect.left + this.jdField_a_of_type_Int)
+          {
+            j = localRect.left + this.jdField_a_of_type_Int - arrayOfInt[0];
+            k = n;
+          }
         }
-        if (i3 + m > i1 - this.jdField_a_of_type_Int) {
-          i = i1 - this.jdField_a_of_type_Int - getWidth() - arrayOfInt[0];
+        else
+        {
+          if (i5 > i2 - this.jdField_a_of_type_Int) {
+            k = i5 - (i2 - this.jdField_a_of_type_Int);
+          }
+          j = i;
+          if (i4 < localRect.top + this.jdField_a_of_type_Int)
+          {
+            k = localRect.top + this.jdField_a_of_type_Int - i4;
+            j = i;
+          }
         }
-        k = n;
-        m = i;
-        if (i3 >= localRect.left + this.jdField_a_of_type_Int) {
-          continue;
+        d(paramView, j, k);
+        super.showAtLocation(paramView, 51, j + paramInt1, arrayOfInt[1] + m + k + paramView.getHeight() + paramInt2);
+        if (this.d > 0)
+        {
+          this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, new WeakReference(this)), this.d * 1000);
+          return;
         }
-        i = localRect.left;
-        k = this.jdField_a_of_type_Int;
-        m = arrayOfInt[0];
-        m = i + k - m;
-        k = n;
-        continue;
-        j = i;
       }
       catch (Exception paramView)
       {
         Log.e("CalloutPopupWindow", "[showInternal] failed to show window", paramView);
-        return;
       }
-      i = k;
+      return;
+      label748:
+      int j = 0;
+      continue;
+      label754:
+      int i = 0;
+      int m = j;
+      continue;
+      label764:
+      i = 0;
+      continue;
+      label770:
+      break label776;
+      label773:
+      j = 0;
+      label776:
+      m = j;
     }
   }
   
@@ -423,69 +432,66 @@ public class CalloutPopupWindow
   
   public void setContentView(View paramView)
   {
-    if (paramView != null) {
+    if (paramView != null)
+    {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    }
-    switch (this.e)
-    {
-    default: 
-    case 49: 
-    case 50: 
-    case 52: 
-      for (;;)
+      Drawable localDrawable;
+      switch (this.e)
       {
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(paramView, -2, -2);
-        super.setContentView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-        return;
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, -2, -2);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, -2, -2);
-        if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        }
-        for (;;)
-        {
-          a(this.jdField_a_of_type_AndroidWidgetImageView);
-          break;
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.f);
-        }
+      default: 
+        break;
+      case 52: 
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, -2, -2);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, -2, -2);
-        if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-        {
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        localDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+        if (localDrawable != null) {
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
+        } else {
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.g);
         }
-        else
-        {
+        break;
+      case 51: 
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, -2, -2);
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, -2, -2);
+        localDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+        if (localDrawable != null) {
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
+        } else {
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.g);
+        }
+        a(this.jdField_a_of_type_AndroidWidgetImageView);
+        break;
+      case 50: 
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, -2, -2);
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, -2, -2);
+        localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        if (localDrawable != null) {
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
+        } else {
           this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.f);
-          continue;
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, -2, -2);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, -2, -2);
-          if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null) {
-            this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
-          } else {
-            this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.g);
-          }
         }
+        break;
+      case 49: 
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, -2, -2);
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, -2, -2);
+        localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        if (localDrawable != null) {
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
+        } else {
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.f);
+        }
+        a(this.jdField_a_of_type_AndroidWidgetImageView);
       }
-    }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, -2, -2);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, -2, -2);
-    if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
-    }
-    for (;;)
-    {
-      a(this.jdField_a_of_type_AndroidWidgetImageView);
-      break;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.g);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(paramView, -2, -2);
+      super.setContentView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.calloutpopupwindow.CalloutPopupWindow
  * JD-Core Version:    0.7.0.1
  */

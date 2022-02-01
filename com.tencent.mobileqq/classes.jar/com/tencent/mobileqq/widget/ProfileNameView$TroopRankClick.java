@@ -4,15 +4,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
 import com.tencent.mobileqq.profile.TroopMemberCardUtils;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportTask;
 import com.tencent.mobileqq.troop.data.TroopRankConfig;
 import com.tencent.mobileqq.troop.honor.api.ITroopHonorService;
-import com.tencent.mobileqq.troop.utils.TroopLinkManager;
+import com.tencent.mobileqq.troop.trooplink.api.ITroopLinkApi;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.ref.WeakReference;
 
@@ -32,34 +33,34 @@ class ProfileNameView$TroopRankClick
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
     ProfileCardInfo localProfileCardInfo = (ProfileCardInfo)this.b.get();
-    if ((localQQAppInterface == null) || (localProfileCardInfo == null) || (localProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null))
+    if ((localQQAppInterface != null) && (localProfileCardInfo != null) && (localProfileCardInfo.allInOne != null))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    if (((ITroopHonorService)localQQAppInterface.getRuntimeService(ITroopHonorService.class, "")).isSupportTroopHonor(localProfileCardInfo.jdField_a_of_type_JavaLangString)) {}
-    for (Object localObject = TroopLinkManager.a().a(localProfileCardInfo.jdField_a_of_type_JavaLangString, localProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);; localObject = TroopLinkManager.a().a(localProfileCardInfo.jdField_a_of_type_JavaLangString, localProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, TroopMemberCardUtils.a(localQQAppInterface, localProfileCardInfo.jdField_a_of_type_JavaLangString, localProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, localProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard), "3", "aio"))
-    {
+      Object localObject;
+      if (((ITroopHonorService)localQQAppInterface.getRuntimeService(ITroopHonorService.class, "")).isSupportTroopHonor(localProfileCardInfo.troopUin)) {
+        localObject = ((ITroopLinkApi)QRoute.api(ITroopLinkApi.class)).getTroopMemberHonorUrl(localProfileCardInfo.troopUin, localProfileCardInfo.allInOne.uin);
+      } else {
+        localObject = ((ITroopLinkApi)QRoute.api(ITroopLinkApi.class)).getTroopMemberLevelUrl(localProfileCardInfo.troopUin, localProfileCardInfo.allInOne.uin, TroopMemberCardUtils.a(localQQAppInterface, localProfileCardInfo.troopUin, localProfileCardInfo.allInOne.uin, localProfileCardInfo.card), "3", "aio");
+      }
       Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
       localIntent.putExtra("url", (String)localObject);
       paramView.getContext().startActivity(localIntent);
-      if (TroopRankConfig.a().a(localProfileCardInfo.jdField_a_of_type_JavaLangString, localProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))
+      if (TroopRankConfig.a().a(localProfileCardInfo.troopUin, localProfileCardInfo.allInOne.uin))
       {
-        localObject = paramView.findViewById(2131376828);
+        localObject = paramView.findViewById(2131376320);
         if (localObject != null) {
           ((View)localObject).setVisibility(8);
         }
-        TroopRankConfig.a().a(localProfileCardInfo.jdField_a_of_type_JavaLangString, localProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, false);
+        TroopRankConfig.a().a(localProfileCardInfo.troopUin, localProfileCardInfo.allInOne.uin, false);
       }
       TroopRankConfig.a("grp_data", "clk_medal");
-      new ReportTask(localQQAppInterface).a("dc00899").b("Grp_mem_card").c("page").d("title_clk").a(new String[] { localProfileCardInfo.jdField_a_of_type_JavaLangString }).a();
-      break;
+      new ReportTask(localQQAppInterface).a("dc00899").b("Grp_mem_card").c("page").d("title_clk").a(new String[] { localProfileCardInfo.troopUin }).a();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ProfileNameView.TroopRankClick
  * JD-Core Version:    0.7.0.1
  */

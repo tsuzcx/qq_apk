@@ -18,23 +18,56 @@ public class UserServer
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append("uin: " + this.uin);
-    localStringBuffer.append("\nfaceUrl: " + this.faceUrl);
-    localStringBuffer.append("\nversion: " + this.version);
-    localStringBuffer.append("\ntinyid: " + this.tinyid);
-    localStringBuffer.append("\nclientType: " + this.clientType);
-    localStringBuffer.append("\nnickName: " + this.nickName);
-    localStringBuffer.append("\nenterTime: " + this.enterTime);
-    localStringBuffer.append("\nlogoFullUrl: " + this.logoFullUrl);
-    localStringBuffer.append("\nscore: " + this.score);
-    localStringBuffer.append("\nbusinessUid: " + this.businessUid);
-    localStringBuffer.append("\ninitialClientType: " + this.initialClientType);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uin: ");
+    localStringBuilder.append(this.uin);
+    localStringBuffer.append(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nfaceUrl: ");
+    localStringBuilder.append(this.faceUrl);
+    localStringBuffer.append(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nversion: ");
+    localStringBuilder.append(this.version);
+    localStringBuffer.append(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\ntinyid: ");
+    localStringBuilder.append(this.tinyid);
+    localStringBuffer.append(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nclientType: ");
+    localStringBuilder.append(this.clientType);
+    localStringBuffer.append(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nnickName: ");
+    localStringBuilder.append(this.nickName);
+    localStringBuffer.append(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nenterTime: ");
+    localStringBuilder.append(this.enterTime);
+    localStringBuffer.append(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nlogoFullUrl: ");
+    localStringBuilder.append(this.logoFullUrl);
+    localStringBuffer.append(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nscore: ");
+    localStringBuilder.append(this.score);
+    localStringBuffer.append(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nbusinessUid: ");
+    localStringBuilder.append(this.businessUid);
+    localStringBuffer.append(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\ninitialClientType: ");
+    localStringBuilder.append(this.initialClientType);
+    localStringBuffer.append(localStringBuilder.toString());
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.roomaudienceservice_interface.UserServer
  * JD-Core Version:    0.7.0.1
  */

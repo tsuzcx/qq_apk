@@ -36,14 +36,25 @@ public class WatchActivityManager
   
   private void unRegistKeyReceiver()
   {
-    if (this.activity != null) {
-      this.activity.unregisterReceiver(this.mScreenReceiver);
+    Activity localActivity = this.activity;
+    if (localActivity != null) {
+      localActivity.unregisterReceiver(this.mScreenReceiver);
     }
   }
   
   public boolean hasJump()
   {
-    QZLog.i(TAG, 4, "ljh, mActivityStopped = " + this.mActivityStopped + ", mPressScreenOff = " + this.mPressScreenOff + ", mPressMenuKey = " + this.mPressMenuKey + ", mPressHomeKey = " + this.mPressHomeKey);
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ljh, mActivityStopped = ");
+    localStringBuilder.append(this.mActivityStopped);
+    localStringBuilder.append(", mPressScreenOff = ");
+    localStringBuilder.append(this.mPressScreenOff);
+    localStringBuilder.append(", mPressMenuKey = ");
+    localStringBuilder.append(this.mPressMenuKey);
+    localStringBuilder.append(", mPressHomeKey = ");
+    localStringBuilder.append(this.mPressHomeKey);
+    QZLog.i(str, 4, localStringBuilder.toString());
     return (this.mActivityStopped) && (!this.mPressScreenOff) && (!this.mPressMenuKey) && (!this.mPressHomeKey);
   }
   
@@ -60,9 +71,7 @@ public class WatchActivityManager
   
   public void onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 82) {
       return;
     }
     this.mPressMenuKey = true;
@@ -80,7 +89,7 @@ public class WatchActivityManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.WatchActivityManager
  * JD-Core Version:    0.7.0.1
  */

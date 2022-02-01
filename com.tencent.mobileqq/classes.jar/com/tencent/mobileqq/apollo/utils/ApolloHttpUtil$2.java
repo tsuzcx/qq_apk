@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.api.res.IApolloResDownloader.OnApolloDownLoadListener;
+import com.tencent.mobileqq.apollo.res.api.IApolloResDownloader.OnApolloDownLoadListener;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,8 +12,14 @@ final class ApolloHttpUtil$2
   
   public void a(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloHttpUtil", 2, "fakeResource3DUrlRequest onDownLoadFinish:" + paramInt1 + " sucess:" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("fakeResource3DUrlRequest onDownLoadFinish:");
+      paramString.append(paramInt1);
+      paramString.append(" sucess:");
+      paramString.append(paramBoolean);
+      QLog.d("[cmshow]ApolloHttpUtil", 2, paramString.toString());
     }
     if (paramBoolean)
     {
@@ -28,19 +33,27 @@ final class ApolloHttpUtil$2
             paramArrayOfInt = ApolloHttpUtil.a(paramArrayOfInt, paramString);
             this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloHttpResponseCallback.a(0, paramString, paramArrayOfInt);
           }
-          while (QLog.isColorLevel())
+          else
           {
-            QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest onDownLoadFinish retHeader:", paramString + " id:" + this.jdField_a_of_type_Int });
-            return;
-            this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloHttpResponseCallback.a(0, paramString, ApolloRender.readStream(new FileInputStream(paramArrayOfInt)));
+            this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloHttpResponseCallback.a(0, paramString, ApolloHttpUtil.a(new FileInputStream(paramArrayOfInt)));
           }
-          this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloHttpResponseCallback.a(-1, null, null);
+          if (!QLog.isColorLevel()) {
+            return;
+          }
+          paramArrayOfInt = new StringBuilder();
+          paramArrayOfInt.append(paramString);
+          paramArrayOfInt.append(" id:");
+          paramArrayOfInt.append(this.jdField_a_of_type_Int);
+          QLog.d("[cmshow]ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest onDownLoadFinish retHeader:", paramArrayOfInt.toString() });
+          return;
         }
         catch (Exception paramString)
         {
-          QLog.e("ApolloHttpUtil", 1, paramString, new Object[0]);
+          QLog.e("[cmshow]ApolloHttpUtil", 1, paramString, new Object[0]);
           return;
         }
+      } else {
+        this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloHttpResponseCallback.a(-1, null, null);
       }
     }
     else
@@ -51,7 +64,7 @@ final class ApolloHttpUtil$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloHttpUtil.2
  * JD-Core Version:    0.7.0.1
  */

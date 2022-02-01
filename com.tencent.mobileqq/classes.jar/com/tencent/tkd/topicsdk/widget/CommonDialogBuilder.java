@@ -7,7 +7,6 @@ import android.view.View;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
-import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -60,24 +59,9 @@ public final class CommonDialogBuilder
   }
   
   @NotNull
-  public final CommonDialogBuilder a()
-  {
-    this.jdField_b_of_type_Boolean = true;
-    return this;
-  }
-  
-  @NotNull
   public final CommonDialogBuilder a(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  @NotNull
-  public final CommonDialogBuilder a(@NotNull View paramView)
-  {
-    Intrinsics.checkParameterIsNotNull(paramView, "contentView");
-    this.jdField_a_of_type_AndroidViewView = paramView;
     return this;
   }
   
@@ -104,13 +88,6 @@ public final class CommonDialogBuilder
   }
   
   @NotNull
-  public final CommonDialogBuilder a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  @NotNull
   public final CommonDialogBuilder b(@Nullable String paramString, @Nullable CommonDialogBuilder.ICommonDialogListener paramICommonDialogListener)
   {
     this.jdField_c_of_type_JavaLangString = paramString;
@@ -120,7 +97,7 @@ public final class CommonDialogBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.CommonDialogBuilder
  * JD-Core Version:    0.7.0.1
  */

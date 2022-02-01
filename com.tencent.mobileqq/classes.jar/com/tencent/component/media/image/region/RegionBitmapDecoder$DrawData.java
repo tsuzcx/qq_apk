@@ -15,15 +15,15 @@ public class RegionBitmapDecoder$DrawData
     if (this == paramObject) {
       return true;
     }
-    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-      return false;
+    if ((paramObject != null) && (getClass() == paramObject.getClass())) {
+      return ((DrawData)paramObject).mShowRect.equals(this.mShowRect);
     }
-    return ((DrawData)paramObject).mShowRect.equals(this.mShowRect);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.region.RegionBitmapDecoder.DrawData
  * JD-Core Version:    0.7.0.1
  */

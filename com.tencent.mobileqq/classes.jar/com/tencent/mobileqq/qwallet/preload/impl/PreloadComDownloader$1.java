@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.qwallet.preload.impl;
 
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.transfile.predownload.IPreDownloadController;
 import com.tencent.mobileqq.vip.DownloadListener;
 import com.tencent.mobileqq.vip.DownloadTask;
+import cooperation.qwallet.plugin.impl.QWalletHelperImpl;
 import java.io.File;
 import java.util.Map;
 
@@ -20,27 +19,28 @@ class PreloadComDownloader$1
   
   public void onDoneFile(DownloadTask paramDownloadTask)
   {
-    long l2 = -1L;
     super.onDoneFile(paramDownloadTask);
     if ((paramDownloadTask != null) && (paramDownloadTask.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(paramDownloadTask.jdField_a_of_type_JavaLangString)))
     {
       File localFile = (File)paramDownloadTask.jdField_a_of_type_JavaUtilMap.get(paramDownloadTask.jdField_a_of_type_JavaLangString);
       if (localFile != null)
       {
-        Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        Object localObject = QWalletHelperImpl.getAppRuntime();
         if (localObject != null)
         {
-          localObject = (PreDownloadController)((QQAppInterface)localObject).getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2);
+          localObject = (IPreDownloadController)((AppInterface)localObject).getRuntimeService(IPreDownloadController.class, "");
           String str = paramDownloadTask.jdField_a_of_type_JavaLangString;
+          int i = paramDownloadTask.jdField_a_of_type_Int;
+          long l2 = -1L;
           long l1 = l2;
-          if (paramDownloadTask.jdField_a_of_type_Int == 0)
+          if (i == 0)
           {
             l1 = l2;
             if (localFile.exists()) {
               l1 = localFile.length();
             }
           }
-          ((PreDownloadController)localObject).preDownloadSuccess(str, l1);
+          ((IPreDownloadController)localObject).preDownloadSuccess(str, l1);
         }
       }
     }
@@ -48,7 +48,7 @@ class PreloadComDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadComDownloader.1
  * JD-Core Version:    0.7.0.1
  */

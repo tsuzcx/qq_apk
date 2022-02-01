@@ -21,15 +21,16 @@ class BarrageView$PrebuildCacheTask
   public void run()
   {
     long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    do
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject == null) {
+      return;
+    }
+    localObject = (BarrageView)((WeakReference)localObject).get();
+    if (localObject != null)
     {
-      BarrageView localBarrageView;
-      do
-      {
+      if (BarrageView.a((BarrageView)localObject) == null) {
         return;
-        localBarrageView = (BarrageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      } while ((localBarrageView == null) || (BarrageView.a(localBarrageView) == null));
+      }
       List localList = this.jdField_a_of_type_JavaUtilList;
       if ((localList != null) && (!localList.isEmpty()))
       {
@@ -39,15 +40,21 @@ class BarrageView$PrebuildCacheTask
           ((Barrage)localList.get(i)).a();
           i -= 1;
         }
-        BarrageView.a(localBarrageView).obtainMessage(256, 1, 0, localList).sendToTarget();
+        BarrageView.a((BarrageView)localObject).obtainMessage(256, 1, 0, localList).sendToTarget();
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("BarrageView", 2, "BarrageView PreBuild use->" + (System.currentTimeMillis() - l));
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("BarrageView PreBuild use->");
+        ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+        QLog.d("[cmshow]BarrageView", 2, ((StringBuilder)localObject).toString());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.barrage.BarrageView.PrebuildCacheTask
  * JD-Core Version:    0.7.0.1
  */

@@ -15,8 +15,13 @@ class d$a
   public void run()
   {
     QLog.d("MSF.C.MonitorNetFlowStore", 1, "MonitorWriteDataThread Enter");
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.C.MonitorNetFlowStore", 1, "MonitorWriteDataThread avaialbeMemory=" + a.a() / 1024L + "k");
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("MonitorWriteDataThread avaialbeMemory=");
+      ((StringBuilder)???).append(a.a() / 1024L);
+      ((StringBuilder)???).append("k");
+      QLog.d("MSF.C.MonitorNetFlowStore", 1, ((StringBuilder)???).toString());
     }
     long l = System.currentTimeMillis();
     if (this.a == null) {
@@ -29,25 +34,26 @@ class d$a
       if (this.b == null) {
         this.b = new HashMap();
       }
-    }
-    synchronized (d.b(this.c))
-    {
-      this.b.putAll(d.b(this.c));
-      d.b(this.c).clear();
-      d.a(this.c, this.a, this.b);
-      this.a.clear();
-      this.b.clear();
-      d.a(this.c, System.currentTimeMillis());
-      QLog.d("MSF.C.MonitorNetFlowStore", 1, "MonitorWriteDataThread End takeTimes=" + (System.currentTimeMillis() - l));
-      return;
-      localObject1 = finally;
-      throw localObject1;
+      synchronized (d.b(this.c))
+      {
+        this.b.putAll(d.b(this.c));
+        d.b(this.c).clear();
+        d.a(this.c, this.a, this.b);
+        this.a.clear();
+        this.b.clear();
+        d.a(this.c, System.currentTimeMillis());
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("MonitorWriteDataThread End takeTimes=");
+        ((StringBuilder)???).append(System.currentTimeMillis() - l);
+        QLog.d("MSF.C.MonitorNetFlowStore", 1, ((StringBuilder)???).toString());
+        return;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.c.d.a
  * JD-Core Version:    0.7.0.1
  */

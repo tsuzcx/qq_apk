@@ -19,7 +19,10 @@ class MiniAppProxyImpl$9
     MiniAppProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl).removeCallbacksAndMessages(Integer.valueOf(1000));
     if (paramEIPCResult != null)
     {
-      QLog.d("MiniAppProxyImpl", 1, "onMoreClick onCallback code : " + paramEIPCResult.code);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onMoreClick onCallback code : ");
+      localStringBuilder.append(paramEIPCResult.code);
+      QLog.d("MiniAppProxyImpl", 1, localStringBuilder.toString());
       if (paramEIPCResult.code == 0)
       {
         paramEIPCResult = paramEIPCResult.data;
@@ -30,8 +33,9 @@ class MiniAppProxyImpl$9
           MiniAppProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl).clear();
           MiniAppProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl).addAll(paramEIPCResult);
         }
-        if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo != null) {
-          this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.topType = i;
+        paramEIPCResult = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+        if (paramEIPCResult != null) {
+          paramEIPCResult.topType = i;
         }
       }
     }
@@ -40,7 +44,7 @@ class MiniAppProxyImpl$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.9
  * JD-Core Version:    0.7.0.1
  */

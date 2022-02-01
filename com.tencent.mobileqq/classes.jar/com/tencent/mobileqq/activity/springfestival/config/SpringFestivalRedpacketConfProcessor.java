@@ -3,11 +3,9 @@ package com.tencent.mobileqq.activity.springfestival.config;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.springfestival.entry.SpringFestivalEntryManager;
 import com.tencent.mobileqq.activity.springfestival.entry.model.EntryConfigBean;
-import com.tencent.mobileqq.activity.springfestival.entry.model.HtmlOfflineCheckConfig;
 import com.tencent.mobileqq.activity.springfestival.report.SpringHbMonitorReporter;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
@@ -18,6 +16,8 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 import org.jetbrains.annotations.Nullable;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class SpringFestivalRedpacketConfProcessor
 {
@@ -31,135 +31,56 @@ public class SpringFestivalRedpacketConfProcessor
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  /* Error */
   private EntryConfigBean a(int paramInt1, int paramInt2, int paramInt3, String paramString, List<Integer> paramList, SpringFestivalRedpacketPopBannerConfBean paramSpringFestivalRedpacketPopBannerConfBean)
   {
-    // Byte code:
-    //   0: invokestatic 30	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3: ifeq +41 -> 44
-    //   6: ldc 32
-    //   8: iconst_2
-    //   9: ldc 34
-    //   11: iconst_3
-    //   12: anewarray 4	java/lang/Object
-    //   15: dup
-    //   16: iconst_0
-    //   17: iload_1
-    //   18: invokestatic 40	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   21: aastore
-    //   22: dup
-    //   23: iconst_1
-    //   24: iload_2
-    //   25: invokestatic 40	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   28: aastore
-    //   29: dup
-    //   30: iconst_2
-    //   31: aload_0
-    //   32: aload 5
-    //   34: invokespecial 43	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:a	(Ljava/util/List;)Ljava/lang/String;
-    //   37: aastore
-    //   38: invokestatic 49	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   41: invokestatic 53	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   44: aconst_null
-    //   45: astore 7
-    //   47: aload 4
-    //   49: ifnull +105 -> 154
-    //   52: new 55	org/json/JSONObject
-    //   55: dup
-    //   56: aload 4
-    //   58: invokespecial 58	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   61: astore 7
-    //   63: new 60	com/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean
-    //   66: dup
-    //   67: invokespecial 61	com/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean:<init>	()V
-    //   70: astore 4
-    //   72: aload 4
-    //   74: aload 7
-    //   76: invokevirtual 65	com/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean:parseJson	(Lorg/json/JSONObject;)V
-    //   79: aload 4
-    //   81: aload 6
-    //   83: invokevirtual 69	com/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean:onGetPopBannerConfig	(Lcom/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketPopBannerConfBean;)V
-    //   86: aload 4
-    //   88: invokevirtual 72	com/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean:validate	()V
-    //   91: aload 4
-    //   93: astore 7
-    //   95: aload 4
-    //   97: ifnull +57 -> 154
-    //   100: aload 4
-    //   102: iload_1
-    //   103: putfield 76	com/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean:version	I
-    //   106: aload 4
-    //   108: iload_3
-    //   109: putfield 79	com/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean:taskId	I
-    //   112: aload 4
-    //   114: iload_2
-    //   115: putfield 82	com/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean:peakVersion	I
-    //   118: aload 4
-    //   120: getfield 86	com/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean:delayList	Ljava/util/List;
-    //   123: invokeinterface 91 1 0
-    //   128: aload 4
-    //   130: astore 7
-    //   132: aload 5
-    //   134: ifnull +20 -> 154
-    //   137: aload 4
-    //   139: getfield 86	com/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean:delayList	Ljava/util/List;
-    //   142: aload 5
-    //   144: invokeinterface 95 2 0
-    //   149: pop
-    //   150: aload 4
-    //   152: astore 7
-    //   154: aload 7
-    //   156: areturn
-    //   157: astore 6
-    //   159: aconst_null
-    //   160: astore 4
-    //   162: sipush 308
-    //   165: aload 6
-    //   167: iconst_0
-    //   168: anewarray 45	java/lang/String
-    //   171: invokestatic 100	com/tencent/mobileqq/activity/springfestival/report/SpringHbMonitorReporter:a	(ILjava/lang/Throwable;[Ljava/lang/String;)V
-    //   174: ldc 32
-    //   176: iconst_1
-    //   177: aload 6
-    //   179: invokevirtual 104	org/json/JSONException:getMessage	()Ljava/lang/String;
-    //   182: aload 6
-    //   184: invokestatic 108	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   187: goto -96 -> 91
-    //   190: astore 6
-    //   192: aconst_null
-    //   193: astore 4
-    //   195: sipush 309
-    //   198: aload 6
-    //   200: iconst_0
-    //   201: anewarray 45	java/lang/String
-    //   204: invokestatic 100	com/tencent/mobileqq/activity/springfestival/report/SpringHbMonitorReporter:a	(ILjava/lang/Throwable;[Ljava/lang/String;)V
-    //   207: ldc 32
-    //   209: iconst_1
-    //   210: aload 6
-    //   212: invokevirtual 109	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   215: aload 6
-    //   217: invokestatic 108	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   220: goto -129 -> 91
-    //   223: astore 6
-    //   225: goto -30 -> 195
-    //   228: astore 6
-    //   230: goto -68 -> 162
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	233	0	this	SpringFestivalRedpacketConfProcessor
-    //   0	233	1	paramInt1	int
-    //   0	233	2	paramInt2	int
-    //   0	233	3	paramInt3	int
-    //   0	233	4	paramString	String
-    //   0	233	5	paramList	List<Integer>
-    //   0	233	6	paramSpringFestivalRedpacketPopBannerConfBean	SpringFestivalRedpacketPopBannerConfBean
-    //   45	110	7	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   52	72	157	org/json/JSONException
-    //   52	72	190	java/lang/Exception
-    //   72	91	223	java/lang/Exception
-    //   72	91	228	org/json/JSONException
+    if (QLog.isColorLevel()) {
+      QLog.i("shua2021_SpringFestivalRedpacketConfProcessor", 2, String.format("handleGetEntryConfig ver=%d pVer=%d delayList=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), a(paramList) }));
+    }
+    Object localObject3 = null;
+    Object localObject1 = null;
+    Object localObject2 = null;
+    if (paramString != null)
+    {
+      try
+      {
+        localObject1 = new JSONObject(paramString);
+        paramString = new EntryConfigBean();
+        try
+        {
+          paramString.parseJson((JSONObject)localObject1);
+          paramString.onGetPopBannerConfig(paramSpringFestivalRedpacketPopBannerConfBean);
+          paramString.validate();
+        }
+        catch (Exception paramSpringFestivalRedpacketPopBannerConfBean) {}catch (JSONException paramSpringFestivalRedpacketPopBannerConfBean) {}
+        SpringHbMonitorReporter.a(308, paramSpringFestivalRedpacketPopBannerConfBean, new String[0]);
+      }
+      catch (Exception paramSpringFestivalRedpacketPopBannerConfBean)
+      {
+        paramString = localObject2;
+        SpringHbMonitorReporter.a(309, paramSpringFestivalRedpacketPopBannerConfBean, new String[0]);
+        QLog.d("shua2021_SpringFestivalRedpacketConfProcessor", 1, paramSpringFestivalRedpacketPopBannerConfBean.getMessage(), paramSpringFestivalRedpacketPopBannerConfBean);
+      }
+      catch (JSONException paramSpringFestivalRedpacketPopBannerConfBean)
+      {
+        paramString = localObject3;
+      }
+      QLog.d("shua2021_SpringFestivalRedpacketConfProcessor", 1, paramSpringFestivalRedpacketPopBannerConfBean.getMessage(), paramSpringFestivalRedpacketPopBannerConfBean);
+      localObject1 = paramString;
+      if (paramString != null)
+      {
+        paramString.version = paramInt1;
+        paramString.taskId = paramInt3;
+        paramString.peakVersion = paramInt2;
+        paramString.delayList.clear();
+        localObject1 = paramString;
+        if (paramList != null)
+        {
+          paramString.delayList.addAll(paramList);
+          localObject1 = paramString;
+        }
+      }
+    }
+    return localObject1;
   }
   
   @Nullable
@@ -178,25 +99,20 @@ public class SpringFestivalRedpacketConfProcessor
   
   private EntryConfigBean a(EntryConfigBean paramEntryConfigBean, int paramInt, List<Integer> paramList)
   {
-    EntryConfigBean localEntryConfigBean;
     if (paramEntryConfigBean == null) {
-      localEntryConfigBean = null;
+      return null;
     }
-    do
+    if (QLog.isColorLevel()) {
+      QLog.i("shua2021_SpringFestivalRedpacketConfProcessor", 2, String.format("handleUpdatePeakDelay pVer=%d delayList=%s", new Object[] { Integer.valueOf(paramInt), a(paramList) }));
+    }
+    if (paramEntryConfigBean != null)
     {
-      do
-      {
-        return localEntryConfigBean;
-        if (QLog.isColorLevel()) {
-          QLog.i("shua2021_SpringFestivalRedpacketConfProcessor", 2, String.format("handleUpdatePeakDelay pVer=%d delayList=%s", new Object[] { Integer.valueOf(paramInt), a(paramList) }));
-        }
-        localEntryConfigBean = paramEntryConfigBean;
-      } while (paramEntryConfigBean == null);
       paramEntryConfigBean.peakVersion = paramInt;
       paramEntryConfigBean.delayList.clear();
-      localEntryConfigBean = paramEntryConfigBean;
-    } while (paramList == null);
-    paramEntryConfigBean.delayList.addAll(paramList);
+      if (paramList != null) {
+        paramEntryConfigBean.delayList.addAll(paramList);
+      }
+    }
     return paramEntryConfigBean;
   }
   
@@ -204,10 +120,13 @@ public class SpringFestivalRedpacketConfProcessor
   {
     try
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
-      String str = "config_md5_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      localObject = ((Context)localObject).getSharedPreferences("spring_festival_redpacket2021_entry_config_sp", 0).getString(str, "");
-      return localObject;
+      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("config_md5_");
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      localObject2 = ((StringBuilder)localObject2).toString();
+      localObject1 = ((Context)localObject1).getSharedPreferences("spring_festival_redpacket2021_entry_config_sp", 0).getString((String)localObject2, "");
+      return localObject1;
     }
     catch (Exception localException)
     {
@@ -230,7 +149,10 @@ public class SpringFestivalRedpacketConfProcessor
     {
       synchronized (this.jdField_a_of_type_ArrayOfByte)
       {
-        Object localObject1 = "spring_festival_redpacket2021_entry_config_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("spring_festival_redpacket2021_entry_config_");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        localObject1 = ((StringBuilder)localObject1).toString();
         QLog.i("shua2021_SpringFestivalRedpacketConfProcessor", 1, String.format("deleteLocalEntryConfig fileName=%s", new Object[] { localObject1 }));
         localObject1 = BaseApplicationImpl.getContext().getFileStreamPath((String)localObject1);
         if (((File)localObject1).exists()) {
@@ -253,10 +175,19 @@ public class SpringFestivalRedpacketConfProcessor
     try
     {
       BaseApplication localBaseApplication = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
-      String str1 = "config_version_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      String str2 = "peak_version_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      String str3 = "config_md5_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      localBaseApplication.getSharedPreferences("spring_festival_redpacket2021_entry_config_sp", 0).edit().putInt(str1, paramInt1).putInt(str2, paramInt2).putString(str3, paramString).apply();
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("config_version_");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      localObject1 = ((StringBuilder)localObject1).toString();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("peak_version_");
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      localObject2 = ((StringBuilder)localObject2).toString();
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("config_md5_");
+      ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      localObject3 = ((StringBuilder)localObject3).toString();
+      localBaseApplication.getSharedPreferences("spring_festival_redpacket2021_entry_config_sp", 0).edit().putInt((String)localObject1, paramInt1).putInt((String)localObject2, paramInt2).putString((String)localObject3, paramString).apply();
       return;
     }
     catch (Exception paramString)
@@ -279,294 +210,357 @@ public class SpringFestivalRedpacketConfProcessor
   private void b(EntryConfigBean paramEntryConfigBean)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 5
-    //   3: aconst_null
-    //   4: astore 4
-    //   6: aload_0
-    //   7: getfield 16	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:jdField_a_of_type_ArrayOfByte	[B
-    //   10: astore 6
-    //   12: aload 6
-    //   14: monitorenter
-    //   15: aload_0
-    //   16: getfield 18	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   19: invokevirtual 255	com/tencent/mobileqq/app/QQAppInterface:getCurrentUin	()Ljava/lang/String;
-    //   22: astore_2
-    //   23: new 136	java/lang/StringBuilder
-    //   26: dup
-    //   27: invokespecial 137	java/lang/StringBuilder:<init>	()V
-    //   30: ldc 184
-    //   32: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: aload_2
-    //   36: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   39: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   42: astore_2
-    //   43: invokestatic 191	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   46: aload_2
-    //   47: invokevirtual 197	com/tencent/qphone/base/util/BaseApplication:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
-    //   50: astore 7
+    //   0: aload_0
+    //   1: getfield 16	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:jdField_a_of_type_ArrayOfByte	[B
+    //   4: astore 7
+    //   6: aload 7
+    //   8: monitorenter
+    //   9: aconst_null
+    //   10: astore 4
+    //   12: aconst_null
+    //   13: astore_3
+    //   14: aload_0
+    //   15: getfield 18	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   18: invokevirtual 255	com/tencent/mobileqq/app/QQAppInterface:getCurrentUin	()Ljava/lang/String;
+    //   21: astore_2
+    //   22: new 136	java/lang/StringBuilder
+    //   25: dup
+    //   26: invokespecial 137	java/lang/StringBuilder:<init>	()V
+    //   29: astore 5
+    //   31: aload 5
+    //   33: ldc 184
+    //   35: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: pop
+    //   39: aload 5
+    //   41: aload_2
+    //   42: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: pop
+    //   46: aload 5
+    //   48: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   51: astore_2
     //   52: invokestatic 191	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   55: new 136	java/lang/StringBuilder
-    //   58: dup
-    //   59: invokespecial 137	java/lang/StringBuilder:<init>	()V
-    //   62: aload_2
-    //   63: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   66: ldc_w 257
-    //   69: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   72: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   75: invokevirtual 197	com/tencent/qphone/base/util/BaseApplication:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
-    //   78: astore 8
-    //   80: ldc 32
-    //   82: iconst_1
-    //   83: ldc_w 259
-    //   86: iconst_1
-    //   87: anewarray 4	java/lang/Object
-    //   90: dup
-    //   91: iconst_0
-    //   92: aload_2
-    //   93: aastore
-    //   94: invokestatic 49	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   97: invokestatic 53	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   100: aload 8
-    //   102: invokevirtual 202	java/io/File:exists	()Z
-    //   105: ifeq +9 -> 114
-    //   108: aload 8
-    //   110: invokevirtual 205	java/io/File:delete	()Z
-    //   113: pop
-    //   114: aload 8
-    //   116: invokevirtual 262	java/io/File:createNewFile	()Z
-    //   119: pop
-    //   120: new 264	java/io/FileOutputStream
-    //   123: dup
-    //   124: aload 8
-    //   126: invokespecial 267	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   129: astore_2
-    //   130: new 269	java/io/BufferedOutputStream
-    //   133: dup
-    //   134: aload_2
-    //   135: invokespecial 272	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   138: astore 4
-    //   140: new 274	java/io/ObjectOutputStream
-    //   143: dup
-    //   144: aload 4
-    //   146: invokespecial 275	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   149: astore_3
-    //   150: aload_3
-    //   151: aload_1
-    //   152: invokevirtual 279	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
-    //   155: aload_3
-    //   156: invokevirtual 282	java/io/ObjectOutputStream:flush	()V
-    //   159: aload_2
-    //   160: invokevirtual 283	java/io/FileOutputStream:flush	()V
-    //   163: aload 7
-    //   165: invokevirtual 202	java/io/File:exists	()Z
-    //   168: ifeq +9 -> 177
-    //   171: aload 7
-    //   173: invokevirtual 205	java/io/File:delete	()Z
-    //   176: pop
-    //   177: aload 8
-    //   179: aload 7
-    //   181: invokevirtual 287	java/io/File:renameTo	(Ljava/io/File;)Z
-    //   184: pop
-    //   185: aload 7
-    //   187: invokevirtual 290	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   190: invokestatic 296	com/tencent/open/base/MD5Utils:encodeFileHexStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   193: astore 5
-    //   195: aload_0
-    //   196: aload_1
-    //   197: getfield 76	com/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean:version	I
-    //   200: aload_1
-    //   201: getfield 82	com/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean:peakVersion	I
-    //   204: aload 5
-    //   206: invokespecial 208	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:a	(IILjava/lang/String;)V
-    //   209: aload_2
-    //   210: ifnull +7 -> 217
-    //   213: aload_2
-    //   214: invokevirtual 299	java/io/FileOutputStream:close	()V
-    //   217: aload 4
-    //   219: ifnull +8 -> 227
-    //   222: aload 4
-    //   224: invokevirtual 300	java/io/BufferedOutputStream:close	()V
-    //   227: aload_3
-    //   228: ifnull +7 -> 235
-    //   231: aload_3
-    //   232: invokevirtual 301	java/io/ObjectOutputStream:close	()V
-    //   235: aload 6
-    //   237: monitorexit
-    //   238: return
-    //   239: astore 5
-    //   241: aconst_null
-    //   242: astore_1
-    //   243: aconst_null
-    //   244: astore_3
-    //   245: aload 4
-    //   247: astore_2
-    //   248: aload 5
-    //   250: astore 4
-    //   252: sipush 310
+    //   55: aload_2
+    //   56: invokevirtual 197	com/tencent/qphone/base/util/BaseApplication:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
+    //   59: astore 6
+    //   61: invokestatic 191	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   64: astore 5
+    //   66: new 136	java/lang/StringBuilder
+    //   69: dup
+    //   70: invokespecial 137	java/lang/StringBuilder:<init>	()V
+    //   73: astore 8
+    //   75: aload 8
+    //   77: aload_2
+    //   78: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   81: pop
+    //   82: aload 8
+    //   84: ldc_w 257
+    //   87: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   90: pop
+    //   91: aload 5
+    //   93: aload 8
+    //   95: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   98: invokevirtual 197	com/tencent/qphone/base/util/BaseApplication:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
+    //   101: astore 8
+    //   103: ldc 32
+    //   105: iconst_1
+    //   106: ldc_w 259
+    //   109: iconst_1
+    //   110: anewarray 4	java/lang/Object
+    //   113: dup
+    //   114: iconst_0
+    //   115: aload_2
+    //   116: aastore
+    //   117: invokestatic 49	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   120: invokestatic 53	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   123: aload 8
+    //   125: invokevirtual 202	java/io/File:exists	()Z
+    //   128: ifeq +9 -> 137
+    //   131: aload 8
+    //   133: invokevirtual 205	java/io/File:delete	()Z
+    //   136: pop
+    //   137: aload 8
+    //   139: invokevirtual 262	java/io/File:createNewFile	()Z
+    //   142: pop
+    //   143: new 264	java/io/FileOutputStream
+    //   146: dup
+    //   147: aload 8
+    //   149: invokespecial 267	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   152: astore 5
+    //   154: new 269	java/io/BufferedOutputStream
+    //   157: dup
+    //   158: aload 5
+    //   160: invokespecial 272	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   163: astore_3
+    //   164: new 274	java/io/ObjectOutputStream
+    //   167: dup
+    //   168: aload_3
+    //   169: invokespecial 275	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   172: astore_2
+    //   173: aload_2
+    //   174: aload_1
+    //   175: invokevirtual 279	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   178: aload_2
+    //   179: invokevirtual 282	java/io/ObjectOutputStream:flush	()V
+    //   182: aload 5
+    //   184: invokevirtual 283	java/io/FileOutputStream:flush	()V
+    //   187: aload 6
+    //   189: invokevirtual 202	java/io/File:exists	()Z
+    //   192: ifeq +9 -> 201
+    //   195: aload 6
+    //   197: invokevirtual 205	java/io/File:delete	()Z
+    //   200: pop
+    //   201: aload 8
+    //   203: aload 6
+    //   205: invokevirtual 287	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   208: pop
+    //   209: aload 6
+    //   211: invokevirtual 290	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   214: invokestatic 296	com/tencent/open/base/MD5Utils:encodeFileHexStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   217: astore 4
+    //   219: aload_0
+    //   220: aload_1
+    //   221: getfield 90	com/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean:version	I
+    //   224: aload_1
+    //   225: getfield 96	com/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean:peakVersion	I
+    //   228: aload 4
+    //   230: invokespecial 208	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:a	(IILjava/lang/String;)V
+    //   233: aload 5
+    //   235: invokevirtual 299	java/io/FileOutputStream:close	()V
+    //   238: aload_3
+    //   239: invokevirtual 300	java/io/BufferedOutputStream:close	()V
+    //   242: aload_2
+    //   243: astore_1
+    //   244: aload_1
+    //   245: invokevirtual 301	java/io/ObjectOutputStream:close	()V
+    //   248: goto +142 -> 390
+    //   251: astore 4
+    //   253: aload_2
+    //   254: astore_1
     //   255: aload 4
-    //   257: iconst_0
-    //   258: anewarray 45	java/lang/String
-    //   261: invokestatic 100	com/tencent/mobileqq/activity/springfestival/report/SpringHbMonitorReporter:a	(ILjava/lang/Throwable;[Ljava/lang/String;)V
-    //   264: ldc 32
-    //   266: iconst_1
-    //   267: ldc_w 303
-    //   270: aload 4
-    //   272: invokestatic 170	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   275: aload_0
-    //   276: invokespecial 123	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:a	()V
-    //   279: aload_2
-    //   280: ifnull +7 -> 287
-    //   283: aload_2
-    //   284: invokevirtual 299	java/io/FileOutputStream:close	()V
-    //   287: aload_1
-    //   288: ifnull +7 -> 295
-    //   291: aload_1
-    //   292: invokevirtual 300	java/io/BufferedOutputStream:close	()V
-    //   295: aload_3
-    //   296: ifnull -61 -> 235
-    //   299: aload_3
-    //   300: invokevirtual 301	java/io/ObjectOutputStream:close	()V
-    //   303: goto -68 -> 235
-    //   306: astore_1
-    //   307: goto -72 -> 235
+    //   257: astore_2
+    //   258: goto +36 -> 294
+    //   261: astore 6
+    //   263: aload_3
+    //   264: astore 4
+    //   266: aload_2
+    //   267: astore_1
+    //   268: aload 6
+    //   270: astore_2
+    //   271: goto +40 -> 311
+    //   274: astore_2
+    //   275: aconst_null
+    //   276: astore_1
+    //   277: goto +17 -> 294
+    //   280: astore_2
+    //   281: aconst_null
+    //   282: astore_1
+    //   283: aload_3
+    //   284: astore 4
+    //   286: goto +25 -> 311
+    //   289: astore_2
+    //   290: aconst_null
+    //   291: astore_3
+    //   292: aload_3
+    //   293: astore_1
+    //   294: aload 5
+    //   296: astore 4
+    //   298: aload_3
+    //   299: astore 5
+    //   301: goto +101 -> 402
+    //   304: astore_2
+    //   305: aconst_null
+    //   306: astore 4
+    //   308: aload 4
     //   310: astore_1
-    //   311: aconst_null
-    //   312: astore 4
-    //   314: aconst_null
-    //   315: astore_3
-    //   316: aload 5
-    //   318: astore_2
-    //   319: aload_2
-    //   320: ifnull +7 -> 327
-    //   323: aload_2
-    //   324: invokevirtual 299	java/io/FileOutputStream:close	()V
-    //   327: aload 4
-    //   329: ifnull +8 -> 337
-    //   332: aload 4
-    //   334: invokevirtual 300	java/io/BufferedOutputStream:close	()V
-    //   337: aload_3
-    //   338: ifnull +7 -> 345
-    //   341: aload_3
-    //   342: invokevirtual 301	java/io/ObjectOutputStream:close	()V
-    //   345: aload_1
-    //   346: athrow
-    //   347: astore_1
-    //   348: aload 6
-    //   350: monitorexit
-    //   351: aload_1
-    //   352: athrow
-    //   353: astore_1
-    //   354: goto -137 -> 217
-    //   357: astore_1
-    //   358: goto -131 -> 227
-    //   361: astore_1
-    //   362: goto -127 -> 235
-    //   365: astore_2
-    //   366: goto -79 -> 287
-    //   369: astore_1
-    //   370: goto -75 -> 295
-    //   373: astore_2
-    //   374: goto -47 -> 327
-    //   377: astore_2
-    //   378: goto -41 -> 337
-    //   381: astore_2
-    //   382: goto -37 -> 345
-    //   385: astore_1
-    //   386: aconst_null
-    //   387: astore 4
-    //   389: aconst_null
-    //   390: astore_3
-    //   391: goto -72 -> 319
-    //   394: astore_1
-    //   395: aconst_null
-    //   396: astore_3
-    //   397: goto -78 -> 319
-    //   400: astore_1
-    //   401: goto -82 -> 319
-    //   404: astore 5
-    //   406: aload_1
-    //   407: astore 4
-    //   409: aload 5
-    //   411: astore_1
-    //   412: goto -93 -> 319
-    //   415: astore 4
-    //   417: aconst_null
-    //   418: astore_3
-    //   419: aconst_null
-    //   420: astore_1
-    //   421: goto -169 -> 252
-    //   424: astore 5
-    //   426: aload 4
-    //   428: astore_1
-    //   429: aconst_null
-    //   430: astore_3
-    //   431: aload 5
-    //   433: astore 4
-    //   435: goto -183 -> 252
-    //   438: astore 5
-    //   440: aload 4
-    //   442: astore_1
-    //   443: aload 5
-    //   445: astore 4
-    //   447: goto -195 -> 252
+    //   311: aload 5
+    //   313: astore_3
+    //   314: goto +20 -> 334
+    //   317: astore_2
+    //   318: aconst_null
+    //   319: astore 5
+    //   321: aload 5
+    //   323: astore_1
+    //   324: goto +78 -> 402
+    //   327: astore_2
+    //   328: aconst_null
+    //   329: astore 4
+    //   331: aload 4
+    //   333: astore_1
+    //   334: sipush 310
+    //   337: aload_2
+    //   338: iconst_0
+    //   339: anewarray 45	java/lang/String
+    //   342: invokestatic 77	com/tencent/mobileqq/activity/springfestival/report/SpringHbMonitorReporter:a	(ILjava/lang/Throwable;[Ljava/lang/String;)V
+    //   345: ldc 32
+    //   347: iconst_1
+    //   348: ldc_w 303
+    //   351: aload_2
+    //   352: invokestatic 170	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   355: aload_0
+    //   356: invokespecial 123	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:a	()V
+    //   359: aload_3
+    //   360: ifnull +10 -> 370
+    //   363: aload_3
+    //   364: invokevirtual 299	java/io/FileOutputStream:close	()V
+    //   367: goto +3 -> 370
+    //   370: aload 4
+    //   372: ifnull +11 -> 383
+    //   375: aload 4
+    //   377: invokevirtual 300	java/io/BufferedOutputStream:close	()V
+    //   380: goto +3 -> 383
+    //   383: aload_1
+    //   384: ifnull +6 -> 390
+    //   387: goto -143 -> 244
+    //   390: aload 7
+    //   392: monitorexit
+    //   393: return
+    //   394: astore_2
+    //   395: aload 4
+    //   397: astore 5
+    //   399: aload_3
+    //   400: astore 4
+    //   402: aload 4
+    //   404: ifnull +15 -> 419
+    //   407: aload 4
+    //   409: invokevirtual 299	java/io/FileOutputStream:close	()V
+    //   412: goto +7 -> 419
+    //   415: astore_1
+    //   416: goto +26 -> 442
+    //   419: aload 5
+    //   421: ifnull +11 -> 432
+    //   424: aload 5
+    //   426: invokevirtual 300	java/io/BufferedOutputStream:close	()V
+    //   429: goto +3 -> 432
+    //   432: aload_1
+    //   433: ifnull +7 -> 440
+    //   436: aload_1
+    //   437: invokevirtual 301	java/io/ObjectOutputStream:close	()V
+    //   440: aload_2
+    //   441: athrow
+    //   442: aload 7
+    //   444: monitorexit
+    //   445: goto +5 -> 450
+    //   448: aload_1
+    //   449: athrow
+    //   450: goto -2 -> 448
+    //   453: astore_1
+    //   454: goto -216 -> 238
+    //   457: astore_1
+    //   458: aload_2
+    //   459: astore_1
+    //   460: goto -216 -> 244
+    //   463: astore_1
+    //   464: goto -74 -> 390
+    //   467: astore_2
+    //   468: goto -98 -> 370
+    //   471: astore_2
+    //   472: goto -89 -> 383
+    //   475: astore_3
+    //   476: goto -57 -> 419
+    //   479: astore_3
+    //   480: goto -48 -> 432
+    //   483: astore_1
+    //   484: goto -44 -> 440
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	450	0	this	SpringFestivalRedpacketConfProcessor
-    //   0	450	1	paramEntryConfigBean	EntryConfigBean
-    //   22	302	2	localObject1	Object
-    //   365	1	2	localException1	Exception
-    //   373	1	2	localException2	Exception
-    //   377	1	2	localException3	Exception
-    //   381	1	2	localException4	Exception
-    //   149	282	3	localObjectOutputStream	java.io.ObjectOutputStream
-    //   4	404	4	localObject2	Object
-    //   415	12	4	localException5	Exception
-    //   433	13	4	localException6	Exception
-    //   1	204	5	str	String
-    //   239	78	5	localException7	Exception
-    //   404	6	5	localObject3	Object
-    //   424	8	5	localException8	Exception
-    //   438	6	5	localException9	Exception
-    //   10	339	6	arrayOfByte	byte[]
-    //   50	136	7	localFile1	File
-    //   78	100	8	localFile2	File
+    //   0	487	0	this	SpringFestivalRedpacketConfProcessor
+    //   0	487	1	paramEntryConfigBean	EntryConfigBean
+    //   21	250	2	localObject1	Object
+    //   274	1	2	localObject2	Object
+    //   280	1	2	localException1	Exception
+    //   289	1	2	localObject3	Object
+    //   304	1	2	localException2	Exception
+    //   317	1	2	localObject4	Object
+    //   327	25	2	localException3	Exception
+    //   394	65	2	localObject5	Object
+    //   467	1	2	localException4	Exception
+    //   471	1	2	localException5	Exception
+    //   13	387	3	localObject6	Object
+    //   475	1	3	localException6	Exception
+    //   479	1	3	localException7	Exception
+    //   10	219	4	str	String
+    //   251	5	4	localObject7	Object
+    //   264	144	4	localObject8	Object
+    //   29	396	5	localObject9	Object
+    //   59	151	6	localFile	File
+    //   261	8	6	localException8	Exception
+    //   4	439	7	arrayOfByte	byte[]
+    //   73	129	8	localObject10	Object
     // Exception table:
     //   from	to	target	type
-    //   15	114	239	java/lang/Exception
-    //   114	130	239	java/lang/Exception
-    //   299	303	306	java/lang/Exception
-    //   15	114	310	finally
-    //   114	130	310	finally
-    //   213	217	347	finally
-    //   222	227	347	finally
-    //   231	235	347	finally
-    //   235	238	347	finally
-    //   283	287	347	finally
-    //   291	295	347	finally
-    //   299	303	347	finally
-    //   323	327	347	finally
-    //   332	337	347	finally
-    //   341	345	347	finally
-    //   345	347	347	finally
-    //   348	351	347	finally
-    //   213	217	353	java/lang/Exception
-    //   222	227	357	java/lang/Exception
-    //   231	235	361	java/lang/Exception
-    //   283	287	365	java/lang/Exception
-    //   291	295	369	java/lang/Exception
-    //   323	327	373	java/lang/Exception
-    //   332	337	377	java/lang/Exception
-    //   341	345	381	java/lang/Exception
-    //   130	140	385	finally
-    //   140	150	394	finally
-    //   150	177	400	finally
-    //   177	209	400	finally
-    //   252	279	404	finally
-    //   130	140	415	java/lang/Exception
-    //   140	150	424	java/lang/Exception
-    //   150	177	438	java/lang/Exception
-    //   177	209	438	java/lang/Exception
+    //   173	201	251	finally
+    //   201	233	251	finally
+    //   173	201	261	java/lang/Exception
+    //   201	233	261	java/lang/Exception
+    //   164	173	274	finally
+    //   164	173	280	java/lang/Exception
+    //   154	164	289	finally
+    //   154	164	304	java/lang/Exception
+    //   14	137	317	finally
+    //   137	154	317	finally
+    //   14	137	327	java/lang/Exception
+    //   137	154	327	java/lang/Exception
+    //   334	359	394	finally
+    //   233	238	415	finally
+    //   238	242	415	finally
+    //   244	248	415	finally
+    //   363	367	415	finally
+    //   375	380	415	finally
+    //   390	393	415	finally
+    //   407	412	415	finally
+    //   424	429	415	finally
+    //   436	440	415	finally
+    //   440	442	415	finally
+    //   442	445	415	finally
+    //   233	238	453	java/lang/Exception
+    //   238	242	457	java/lang/Exception
+    //   244	248	463	java/lang/Exception
+    //   363	367	467	java/lang/Exception
+    //   375	380	471	java/lang/Exception
+    //   407	412	475	java/lang/Exception
+    //   424	429	479	java/lang/Exception
+    //   436	440	483	java/lang/Exception
+  }
+  
+  private int c()
+  {
+    int j = 0;
+    int i = j;
+    int k;
+    try
+    {
+      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
+      i = j;
+      Object localObject2 = new StringBuilder();
+      i = j;
+      ((StringBuilder)localObject2).append("config_version_");
+      i = j;
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      i = j;
+      localObject2 = ((StringBuilder)localObject2).toString();
+      i = j;
+      j = ((Context)localObject1).getSharedPreferences("spring_festival_redpacket2021_entry_config_sp", 0).getInt((String)localObject2, 0);
+      i = j;
+      k = j;
+      if (QLog.isColorLevel())
+      {
+        i = j;
+        localObject1 = new StringBuilder();
+        i = j;
+        ((StringBuilder)localObject1).append("getLocalConfigVersionFromSP version: ");
+        i = j;
+        ((StringBuilder)localObject1).append(j);
+        i = j;
+        QLog.i("shua2021_SpringFestivalRedpacketConfProcessor", 2, ((StringBuilder)localObject1).toString());
+        return j;
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("shua2021_SpringFestivalRedpacketConfProcessor", 1, "getLocalConfigVersionFromSP fail.", localException);
+      k = i;
+    }
+    return k;
   }
   
   private EntryConfigBean c()
@@ -584,432 +578,294 @@ public class SpringFestivalRedpacketConfProcessor
   }
   
   /* Error */
-  private int d()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 18	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   4: invokevirtual 134	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   7: astore_2
-    //   8: new 136	java/lang/StringBuilder
-    //   11: dup
-    //   12: invokespecial 137	java/lang/StringBuilder:<init>	()V
-    //   15: ldc 216
-    //   17: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   20: aload_0
-    //   21: getfield 18	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   24: invokevirtual 146	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   27: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   33: astore_3
-    //   34: aload_2
-    //   35: ldc 151
-    //   37: iconst_0
-    //   38: invokevirtual 157	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   41: aload_3
-    //   42: iconst_0
-    //   43: invokeinterface 316 3 0
-    //   48: istore_1
-    //   49: invokestatic 30	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   52: ifeq +29 -> 81
-    //   55: ldc 32
-    //   57: iconst_2
-    //   58: new 136	java/lang/StringBuilder
-    //   61: dup
-    //   62: invokespecial 137	java/lang/StringBuilder:<init>	()V
-    //   65: ldc_w 318
-    //   68: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   71: iload_1
-    //   72: invokevirtual 321	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   75: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   78: invokestatic 53	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   81: iload_1
-    //   82: ireturn
-    //   83: astore_2
-    //   84: iconst_0
-    //   85: istore_1
-    //   86: ldc 32
-    //   88: iconst_1
-    //   89: ldc_w 323
-    //   92: aload_2
-    //   93: invokestatic 170	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   96: iload_1
-    //   97: ireturn
-    //   98: astore_2
-    //   99: goto -13 -> 86
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	102	0	this	SpringFestivalRedpacketConfProcessor
-    //   48	49	1	i	int
-    //   7	28	2	localBaseApplication	BaseApplication
-    //   83	10	2	localException1	Exception
-    //   98	1	2	localException2	Exception
-    //   33	9	3	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   0	49	83	java/lang/Exception
-    //   49	81	98	java/lang/Exception
-  }
-  
-  /* Error */
   private EntryConfigBean d()
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aconst_null
-    //   4: astore 5
-    //   6: aconst_null
-    //   7: astore_2
-    //   8: aload_0
-    //   9: getfield 16	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:jdField_a_of_type_ArrayOfByte	[B
-    //   12: astore 7
-    //   14: aload 7
-    //   16: monitorenter
+    //   0: aload_0
+    //   1: getfield 16	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:jdField_a_of_type_ArrayOfByte	[B
+    //   4: astore 6
+    //   6: aload 6
+    //   8: monitorenter
+    //   9: aconst_null
+    //   10: astore 4
+    //   12: aconst_null
+    //   13: astore 5
+    //   15: aconst_null
+    //   16: astore_3
     //   17: new 136	java/lang/StringBuilder
     //   20: dup
     //   21: invokespecial 137	java/lang/StringBuilder:<init>	()V
-    //   24: ldc 184
-    //   26: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: aload_0
-    //   30: getfield 18	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   33: invokevirtual 146	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   36: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   39: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   42: astore 6
-    //   44: invokestatic 191	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   47: aload 6
-    //   49: invokevirtual 197	com/tencent/qphone/base/util/BaseApplication:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
-    //   52: astore_1
-    //   53: aload_1
-    //   54: invokevirtual 202	java/io/File:exists	()Z
-    //   57: ifeq +129 -> 186
-    //   60: aload_0
-    //   61: invokespecial 325	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:a	()Ljava/lang/String;
-    //   64: aload_1
-    //   65: invokevirtual 290	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   68: invokestatic 296	com/tencent/open/base/MD5Utils:encodeFileHexStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   71: invokestatic 331	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
-    //   74: ifeq +99 -> 173
-    //   77: new 333	java/io/FileInputStream
-    //   80: dup
-    //   81: aload_1
-    //   82: invokespecial 334	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   85: astore_1
-    //   86: new 336	java/io/BufferedInputStream
-    //   89: dup
-    //   90: aload_1
-    //   91: invokespecial 339	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   94: astore_3
-    //   95: new 341	java/io/ObjectInputStream
-    //   98: dup
-    //   99: aload_3
-    //   100: invokespecial 342	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
-    //   103: astore_2
-    //   104: aload_2
-    //   105: invokevirtual 346	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   108: checkcast 60	com/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean
-    //   111: astore 5
-    //   113: aload_2
-    //   114: astore 4
-    //   116: aload_1
-    //   117: astore_2
-    //   118: aload 5
-    //   120: astore_1
-    //   121: aload 4
-    //   123: ifnull +8 -> 131
-    //   126: aload 4
-    //   128: invokevirtual 347	java/io/ObjectInputStream:close	()V
-    //   131: aload_3
-    //   132: ifnull +7 -> 139
-    //   135: aload_3
-    //   136: invokevirtual 348	java/io/BufferedInputStream:close	()V
-    //   139: aload_2
-    //   140: ifnull +7 -> 147
-    //   143: aload_2
-    //   144: invokevirtual 349	java/io/FileInputStream:close	()V
-    //   147: ldc 32
-    //   149: iconst_1
-    //   150: ldc_w 351
-    //   153: iconst_1
-    //   154: anewarray 4	java/lang/Object
-    //   157: dup
-    //   158: iconst_0
-    //   159: aload 6
-    //   161: aastore
-    //   162: invokestatic 49	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   165: invokestatic 53	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   168: aload 7
-    //   170: monitorexit
-    //   171: aload_1
-    //   172: areturn
-    //   173: ldc 32
-    //   175: iconst_1
-    //   176: ldc_w 353
-    //   179: invokestatic 355	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   182: aload_0
-    //   183: invokespecial 123	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:a	()V
-    //   186: aconst_null
-    //   187: astore_3
-    //   188: aconst_null
-    //   189: astore 5
-    //   191: aconst_null
+    //   24: astore_1
+    //   25: aload_1
+    //   26: ldc 184
+    //   28: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   31: pop
+    //   32: aload_1
+    //   33: aload_0
+    //   34: getfield 18	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   37: invokevirtual 146	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   40: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   43: pop
+    //   44: aload_1
+    //   45: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   48: astore 7
+    //   50: invokestatic 191	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   53: aload 7
+    //   55: invokevirtual 197	com/tencent/qphone/base/util/BaseApplication:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
+    //   58: astore_1
+    //   59: aload_1
+    //   60: invokevirtual 202	java/io/File:exists	()Z
+    //   63: ifeq +146 -> 209
+    //   66: aload_0
+    //   67: invokespecial 325	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:a	()Ljava/lang/String;
+    //   70: aload_1
+    //   71: invokevirtual 290	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   74: invokestatic 296	com/tencent/open/base/MD5Utils:encodeFileHexStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   77: invokestatic 331	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+    //   80: ifeq +116 -> 196
+    //   83: new 333	java/io/FileInputStream
+    //   86: dup
+    //   87: aload_1
+    //   88: invokespecial 334	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   91: astore_1
+    //   92: new 336	java/io/BufferedInputStream
+    //   95: dup
+    //   96: aload_1
+    //   97: invokespecial 339	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   100: astore_2
+    //   101: new 341	java/io/ObjectInputStream
+    //   104: dup
+    //   105: aload_2
+    //   106: invokespecial 342	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   109: astore 4
+    //   111: aload 4
+    //   113: invokevirtual 346	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   116: checkcast 60	com/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean
+    //   119: astore_3
+    //   120: aload 4
+    //   122: astore 5
+    //   124: aload_2
+    //   125: astore 4
+    //   127: aload_3
+    //   128: astore_2
+    //   129: goto +91 -> 220
+    //   132: astore_3
+    //   133: aload_1
+    //   134: astore 5
+    //   136: goto +226 -> 362
+    //   139: astore_3
+    //   140: aload_2
+    //   141: astore 5
+    //   143: aload 4
+    //   145: astore_2
+    //   146: goto +41 -> 187
+    //   149: astore_3
+    //   150: aload 5
+    //   152: astore 4
+    //   154: goto +211 -> 365
+    //   157: astore_3
+    //   158: aconst_null
+    //   159: astore 4
+    //   161: aload_2
+    //   162: astore 5
+    //   164: aload 4
+    //   166: astore_2
+    //   167: goto +20 -> 187
+    //   170: astore_3
+    //   171: aconst_null
+    //   172: astore_2
+    //   173: aload 5
+    //   175: astore 4
+    //   177: goto +188 -> 365
+    //   180: astore_3
+    //   181: aconst_null
+    //   182: astore 5
+    //   184: aload 5
+    //   186: astore_2
+    //   187: aload_1
+    //   188: astore 4
+    //   190: aload 5
     //   192: astore_1
-    //   193: aload_2
-    //   194: astore 4
-    //   196: aload 5
-    //   198: astore_2
-    //   199: goto -78 -> 121
-    //   202: astore_3
-    //   203: aconst_null
-    //   204: astore_1
-    //   205: aconst_null
-    //   206: astore_2
-    //   207: ldc 32
-    //   209: iconst_1
-    //   210: ldc_w 357
-    //   213: aload_3
-    //   214: invokestatic 170	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   217: aload_0
-    //   218: invokespecial 123	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:a	()V
-    //   221: new 359	java/lang/RuntimeException
-    //   224: dup
-    //   225: new 136	java/lang/StringBuilder
-    //   228: dup
-    //   229: invokespecial 137	java/lang/StringBuilder:<init>	()V
-    //   232: ldc_w 361
-    //   235: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   238: aload_3
-    //   239: invokevirtual 109	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   242: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   245: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   248: invokespecial 362	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
-    //   251: athrow
-    //   252: astore 5
-    //   254: aload 4
-    //   256: astore_3
-    //   257: aload_1
-    //   258: astore 4
-    //   260: aload_2
-    //   261: astore_1
-    //   262: aload 5
-    //   264: astore_2
-    //   265: aload 4
-    //   267: ifnull +8 -> 275
-    //   270: aload 4
-    //   272: invokevirtual 347	java/io/ObjectInputStream:close	()V
-    //   275: aload_3
-    //   276: ifnull +7 -> 283
-    //   279: aload_3
-    //   280: invokevirtual 348	java/io/BufferedInputStream:close	()V
-    //   283: aload_1
-    //   284: ifnull +7 -> 291
-    //   287: aload_1
-    //   288: invokevirtual 349	java/io/FileInputStream:close	()V
-    //   291: aload_2
-    //   292: athrow
-    //   293: astore_1
-    //   294: aload 7
-    //   296: monitorexit
-    //   297: aload_1
-    //   298: athrow
-    //   299: astore 4
-    //   301: goto -170 -> 131
-    //   304: astore_3
-    //   305: goto -166 -> 139
-    //   308: astore_2
-    //   309: goto -162 -> 147
-    //   312: astore 4
-    //   314: goto -39 -> 275
-    //   317: astore_3
-    //   318: goto -35 -> 283
-    //   321: astore_1
-    //   322: goto -31 -> 291
-    //   325: astore_2
-    //   326: aconst_null
-    //   327: astore_3
-    //   328: aconst_null
-    //   329: astore_1
-    //   330: aload 5
-    //   332: astore 4
-    //   334: goto -69 -> 265
-    //   337: astore_2
-    //   338: aconst_null
-    //   339: astore_3
-    //   340: aload 5
-    //   342: astore 4
-    //   344: goto -79 -> 265
-    //   347: astore_2
-    //   348: aload 5
-    //   350: astore 4
-    //   352: goto -87 -> 265
+    //   193: goto +104 -> 297
+    //   196: ldc 32
+    //   198: iconst_1
+    //   199: ldc_w 348
+    //   202: invokestatic 350	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   205: aload_0
+    //   206: invokespecial 123	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:a	()V
+    //   209: aconst_null
+    //   210: astore 4
+    //   212: aload 4
+    //   214: astore_1
+    //   215: aload_1
+    //   216: astore_2
+    //   217: aload_3
+    //   218: astore 5
+    //   220: aload 5
+    //   222: ifnull +11 -> 233
+    //   225: aload 5
+    //   227: invokevirtual 351	java/io/ObjectInputStream:close	()V
+    //   230: goto +3 -> 233
+    //   233: aload 4
+    //   235: ifnull +11 -> 246
+    //   238: aload 4
+    //   240: invokevirtual 352	java/io/BufferedInputStream:close	()V
+    //   243: goto +3 -> 246
+    //   246: aload_1
+    //   247: ifnull +7 -> 254
+    //   250: aload_1
+    //   251: invokevirtual 353	java/io/FileInputStream:close	()V
+    //   254: ldc 32
+    //   256: iconst_1
+    //   257: ldc_w 355
+    //   260: iconst_1
+    //   261: anewarray 4	java/lang/Object
+    //   264: dup
+    //   265: iconst_0
+    //   266: aload 7
+    //   268: aastore
+    //   269: invokestatic 49	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   272: invokestatic 53	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   275: aload 6
+    //   277: monitorexit
+    //   278: aload_2
+    //   279: areturn
+    //   280: astore_3
+    //   281: aconst_null
+    //   282: astore_2
+    //   283: aload_2
+    //   284: astore_1
+    //   285: aload 5
+    //   287: astore 4
+    //   289: goto +76 -> 365
+    //   292: astore_3
+    //   293: aconst_null
+    //   294: astore_1
+    //   295: aload_1
+    //   296: astore_2
+    //   297: ldc 32
+    //   299: iconst_1
+    //   300: ldc_w 357
+    //   303: aload_3
+    //   304: invokestatic 170	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   307: aload_0
+    //   308: invokespecial 123	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:a	()V
+    //   311: new 136	java/lang/StringBuilder
+    //   314: dup
+    //   315: invokespecial 137	java/lang/StringBuilder:<init>	()V
+    //   318: astore 5
+    //   320: aload 5
+    //   322: ldc_w 359
+    //   325: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   328: pop
+    //   329: aload 5
+    //   331: aload_3
+    //   332: invokevirtual 81	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   335: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   338: pop
+    //   339: new 361	java/lang/RuntimeException
+    //   342: dup
+    //   343: aload 5
+    //   345: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   348: invokespecial 362	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   351: athrow
+    //   352: astore_3
+    //   353: aload 4
     //   355: astore 5
     //   357: aload_2
     //   358: astore 4
-    //   360: aload 5
-    //   362: astore_2
-    //   363: goto -98 -> 265
-    //   366: astore_3
-    //   367: aconst_null
-    //   368: astore 5
-    //   370: aload_1
-    //   371: astore_2
-    //   372: aload 5
-    //   374: astore_1
-    //   375: goto -168 -> 207
-    //   378: astore 6
-    //   380: aconst_null
-    //   381: astore 5
-    //   383: aload_3
-    //   384: astore 4
-    //   386: aload_1
-    //   387: astore_2
-    //   388: aload 6
-    //   390: astore_3
-    //   391: aload 5
-    //   393: astore_1
-    //   394: goto -187 -> 207
-    //   397: astore 6
-    //   399: aload_3
-    //   400: astore 4
-    //   402: aload_1
-    //   403: astore 5
-    //   405: aload 6
-    //   407: astore_3
-    //   408: aload_2
-    //   409: astore_1
-    //   410: aload 5
-    //   412: astore_2
-    //   413: goto -206 -> 207
+    //   360: aload_1
+    //   361: astore_2
+    //   362: aload 5
+    //   364: astore_1
+    //   365: aload 4
+    //   367: ifnull +15 -> 382
+    //   370: aload 4
+    //   372: invokevirtual 351	java/io/ObjectInputStream:close	()V
+    //   375: goto +7 -> 382
+    //   378: astore_1
+    //   379: goto +24 -> 403
+    //   382: aload_2
+    //   383: ifnull +10 -> 393
+    //   386: aload_2
+    //   387: invokevirtual 352	java/io/BufferedInputStream:close	()V
+    //   390: goto +3 -> 393
+    //   393: aload_1
+    //   394: ifnull +7 -> 401
+    //   397: aload_1
+    //   398: invokevirtual 353	java/io/FileInputStream:close	()V
+    //   401: aload_3
+    //   402: athrow
+    //   403: aload 6
+    //   405: monitorexit
+    //   406: aload_1
+    //   407: athrow
+    //   408: astore_3
+    //   409: goto -176 -> 233
+    //   412: astore_3
+    //   413: goto -167 -> 246
+    //   416: astore_1
+    //   417: goto -163 -> 254
+    //   420: astore 4
+    //   422: goto -40 -> 382
+    //   425: astore_2
+    //   426: goto -33 -> 393
+    //   429: astore_1
+    //   430: goto -29 -> 401
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	416	0	this	SpringFestivalRedpacketConfProcessor
-    //   52	236	1	localObject1	Object
-    //   293	5	1	localObject2	Object
-    //   321	1	1	localException1	Exception
-    //   329	81	1	localObject3	Object
-    //   7	285	2	localObject4	Object
-    //   308	1	2	localException2	Exception
-    //   325	1	2	localObject5	Object
-    //   337	1	2	localObject6	Object
-    //   347	11	2	localObject7	Object
-    //   362	51	2	localObject8	Object
-    //   94	94	3	localBufferedInputStream	java.io.BufferedInputStream
-    //   202	37	3	localException3	Exception
-    //   256	24	3	localObject9	Object
-    //   304	1	3	localException4	Exception
-    //   317	1	3	localException5	Exception
-    //   327	13	3	localObject10	Object
-    //   366	18	3	localException6	Exception
-    //   390	18	3	localException7	Exception
-    //   1	270	4	localObject11	Object
-    //   299	1	4	localException8	Exception
-    //   312	1	4	localException9	Exception
-    //   332	69	4	localObject12	Object
-    //   4	193	5	localEntryConfigBean	EntryConfigBean
-    //   252	97	5	localObject13	Object
-    //   355	6	5	localObject14	Object
-    //   368	43	5	localObject15	Object
-    //   42	118	6	str	String
-    //   378	11	6	localException10	Exception
-    //   397	9	6	localException11	Exception
-    //   12	283	7	arrayOfByte	byte[]
+    //   0	433	0	this	SpringFestivalRedpacketConfProcessor
+    //   24	341	1	localObject1	Object
+    //   378	29	1	localObject2	Object
+    //   416	1	1	localException1	Exception
+    //   429	1	1	localException2	Exception
+    //   100	287	2	localObject3	Object
+    //   425	1	2	localException3	Exception
+    //   16	112	3	localEntryConfigBean	EntryConfigBean
+    //   132	1	3	localObject4	Object
+    //   139	1	3	localException4	Exception
+    //   149	1	3	localObject5	Object
+    //   157	1	3	localException5	Exception
+    //   170	1	3	localObject6	Object
+    //   180	38	3	localException6	Exception
+    //   280	1	3	localObject7	Object
+    //   292	40	3	localException7	Exception
+    //   352	50	3	localObject8	Object
+    //   408	1	3	localException8	Exception
+    //   412	1	3	localException9	Exception
+    //   10	361	4	localObject9	Object
+    //   420	1	4	localException10	Exception
+    //   13	350	5	localObject10	Object
+    //   4	400	6	arrayOfByte	byte[]
+    //   48	219	7	str	String
     // Exception table:
     //   from	to	target	type
-    //   17	86	202	java/lang/Exception
-    //   173	186	202	java/lang/Exception
-    //   207	252	252	finally
-    //   126	131	293	finally
-    //   135	139	293	finally
-    //   143	147	293	finally
-    //   147	171	293	finally
-    //   270	275	293	finally
-    //   279	283	293	finally
-    //   287	291	293	finally
-    //   291	293	293	finally
-    //   294	297	293	finally
-    //   126	131	299	java/lang/Exception
-    //   135	139	304	java/lang/Exception
-    //   143	147	308	java/lang/Exception
-    //   270	275	312	java/lang/Exception
-    //   279	283	317	java/lang/Exception
-    //   287	291	321	java/lang/Exception
-    //   17	86	325	finally
-    //   173	186	325	finally
-    //   86	95	337	finally
-    //   95	104	347	finally
-    //   104	113	355	finally
-    //   86	95	366	java/lang/Exception
-    //   95	104	378	java/lang/Exception
-    //   104	113	397	java/lang/Exception
-  }
-  
-  /* Error */
-  private int e()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 18	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   4: invokevirtual 134	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   7: astore_2
-    //   8: new 136	java/lang/StringBuilder
-    //   11: dup
-    //   12: invokespecial 137	java/lang/StringBuilder:<init>	()V
-    //   15: ldc 214
-    //   17: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   20: aload_0
-    //   21: getfield 18	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   24: invokevirtual 146	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   27: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   33: astore_3
-    //   34: aload_2
-    //   35: ldc 151
-    //   37: iconst_0
-    //   38: invokevirtual 157	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   41: aload_3
-    //   42: iconst_0
-    //   43: invokeinterface 316 3 0
-    //   48: istore_1
-    //   49: invokestatic 30	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   52: ifeq +29 -> 81
-    //   55: ldc 32
-    //   57: iconst_2
-    //   58: new 136	java/lang/StringBuilder
-    //   61: dup
-    //   62: invokespecial 137	java/lang/StringBuilder:<init>	()V
-    //   65: ldc_w 364
-    //   68: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   71: iload_1
-    //   72: invokevirtual 321	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   75: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   78: invokestatic 53	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   81: iload_1
-    //   82: ireturn
-    //   83: astore_2
-    //   84: iconst_0
-    //   85: istore_1
-    //   86: ldc 32
-    //   88: iconst_1
-    //   89: ldc_w 366
-    //   92: aload_2
-    //   93: invokestatic 170	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   96: iload_1
-    //   97: ireturn
-    //   98: astore_2
-    //   99: goto -13 -> 86
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	102	0	this	SpringFestivalRedpacketConfProcessor
-    //   48	49	1	i	int
-    //   7	28	2	localBaseApplication	BaseApplication
-    //   83	10	2	localException1	Exception
-    //   98	1	2	localException2	Exception
-    //   33	9	3	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   0	49	83	java/lang/Exception
-    //   49	81	98	java/lang/Exception
+    //   111	120	132	finally
+    //   111	120	139	java/lang/Exception
+    //   101	111	149	finally
+    //   101	111	157	java/lang/Exception
+    //   92	101	170	finally
+    //   92	101	180	java/lang/Exception
+    //   17	92	280	finally
+    //   196	209	280	finally
+    //   17	92	292	java/lang/Exception
+    //   196	209	292	java/lang/Exception
+    //   297	352	352	finally
+    //   225	230	378	finally
+    //   238	243	378	finally
+    //   250	254	378	finally
+    //   254	278	378	finally
+    //   370	375	378	finally
+    //   386	390	378	finally
+    //   397	401	378	finally
+    //   401	403	378	finally
+    //   403	406	378	finally
+    //   225	230	408	java/lang/Exception
+    //   238	243	412	java/lang/Exception
+    //   250	254	416	java/lang/Exception
+    //   370	375	420	java/lang/Exception
+    //   386	390	425	java/lang/Exception
+    //   397	401	429	java/lang/Exception
   }
   
   public int a()
@@ -1018,75 +874,7 @@ public class SpringFestivalRedpacketConfProcessor
     if (this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelEntryConfigBean != null) {
       return this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelEntryConfigBean.version;
     }
-    return e();
-  }
-  
-  /* Error */
-  public long a()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 18	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   4: invokevirtual 134	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   7: astore_3
-    //   8: new 136	java/lang/StringBuilder
-    //   11: dup
-    //   12: invokespecial 137	java/lang/StringBuilder:<init>	()V
-    //   15: ldc_w 373
-    //   18: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: aload_0
-    //   22: getfield 18	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   25: invokevirtual 146	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   28: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   31: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   34: astore 4
-    //   36: aload_3
-    //   37: ldc 151
-    //   39: iconst_0
-    //   40: invokevirtual 157	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   43: aload 4
-    //   45: lconst_0
-    //   46: invokeinterface 377 4 0
-    //   51: lstore_1
-    //   52: invokestatic 30	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   55: ifeq +29 -> 84
-    //   58: ldc 32
-    //   60: iconst_2
-    //   61: new 136	java/lang/StringBuilder
-    //   64: dup
-    //   65: invokespecial 137	java/lang/StringBuilder:<init>	()V
-    //   68: ldc_w 379
-    //   71: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   74: lload_1
-    //   75: invokevirtual 382	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   78: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   81: invokestatic 53	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   84: lload_1
-    //   85: lreturn
-    //   86: astore_3
-    //   87: lconst_0
-    //   88: lstore_1
-    //   89: ldc 32
-    //   91: iconst_1
-    //   92: ldc_w 384
-    //   95: aload_3
-    //   96: invokestatic 170	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   99: lload_1
-    //   100: lreturn
-    //   101: astore_3
-    //   102: goto -13 -> 89
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	105	0	this	SpringFestivalRedpacketConfProcessor
-    //   51	49	1	l	long
-    //   7	30	3	localBaseApplication	BaseApplication
-    //   86	10	3	localException1	Exception
-    //   101	1	3	localException2	Exception
-    //   34	10	4	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   0	52	86	java/lang/Exception
-    //   52	84	101	java/lang/Exception
+    return c();
   }
   
   public SpringFestivalRedpacketPopBannerConfBean a()
@@ -1096,17 +884,15 @@ public class SpringFestivalRedpacketConfProcessor
   
   public SpringFestivalRedpacketPopBannerConfBean a(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalConfigSpringFestivalRedpacketPopBannerConfBean == null) && (paramBoolean)) {}
-    try
-    {
-      SpringFestivalRedpacketPopBannerConfBean localSpringFestivalRedpacketPopBannerConfBean = (SpringFestivalRedpacketPopBannerConfBean)QConfigManager.a().a(723);
-      if (localSpringFestivalRedpacketPopBannerConfBean != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalConfigSpringFestivalRedpacketPopBannerConfBean = localSpringFestivalRedpacketPopBannerConfBean;
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalConfigSpringFestivalRedpacketPopBannerConfBean == null) && (paramBoolean)) {
+      try
+      {
+        SpringFestivalRedpacketPopBannerConfBean localSpringFestivalRedpacketPopBannerConfBean = (SpringFestivalRedpacketPopBannerConfBean)QConfigManager.a().a(723);
+        if (localSpringFestivalRedpacketPopBannerConfBean != null) {
+          this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalConfigSpringFestivalRedpacketPopBannerConfBean = localSpringFestivalRedpacketPopBannerConfBean;
+        }
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
         SpringHbMonitorReporter.a(306, localException, new String[0]);
         QLog.e("shua2021_SpringFestivalRedpacketConfProcessor", 1, "getLocalPopBannerConfig fail.", localException);
@@ -1122,17 +908,15 @@ public class SpringFestivalRedpacketConfProcessor
   
   public EntryConfigBean a(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelEntryConfigBean == null) && (paramBoolean)) {}
-    try
-    {
-      EntryConfigBean localEntryConfigBean = d();
-      if (localEntryConfigBean != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelEntryConfigBean = localEntryConfigBean;
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelEntryConfigBean == null) && (paramBoolean)) {
+      try
+      {
+        EntryConfigBean localEntryConfigBean = d();
+        if (localEntryConfigBean != null) {
+          this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelEntryConfigBean = localEntryConfigBean;
+        }
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
         SpringHbMonitorReporter.a(305, localException, new String[0]);
         QLog.e("shua2021_SpringFestivalRedpacketConfProcessor", 1, "getLocalEntryConfig fail.", localException);
@@ -1177,8 +961,11 @@ public class SpringFestivalRedpacketConfProcessor
     try
     {
       BaseApplication localBaseApplication = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
-      String str = "last_req_adcode_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      localBaseApplication.getSharedPreferences("spring_festival_redpacket2021_entry_config_sp", 0).edit().putLong(str, paramLong).apply();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("last_req_adcode_");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      localObject = ((StringBuilder)localObject).toString();
+      localBaseApplication.getSharedPreferences("spring_festival_redpacket2021_entry_config_sp", 0).edit().putLong((String)localObject, paramLong).apply();
       return;
     }
     catch (Exception localException)
@@ -1187,151 +974,327 @@ public class SpringFestivalRedpacketConfProcessor
     }
   }
   
+  /* Error */
   public boolean a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, String paramString, List<Integer> paramList, int paramInt4, boolean paramBoolean3, long paramLong)
   {
-    localEntryConfigBean = null;
-    localObject = localEntryConfigBean;
-    try
-    {
-      if (QLog.isColorLevel())
-      {
-        localObject = localEntryConfigBean;
-        QLog.i("shua2021_SpringFestivalRedpacketConfProcessor", 2, String.format("onGetEntryConfig configContent:%s", new Object[] { paramString }));
-      }
-      localObject = localEntryConfigBean;
-      localEntryConfigBean = c();
-      if (localEntryConfigBean == null) {
-        localObject = null;
-      }
-    }
-    catch (Exception paramList)
-    {
-      for (;;)
-      {
-        SpringFestivalRedpacketPopBannerConfBean localSpringFestivalRedpacketPopBannerConfBean;
-        label224:
-        label227:
-        label360:
-        paramString = (String)localObject;
-        label312:
-        SpringHbMonitorReporter.a(307, paramList, new String[0]);
-        QLog.e("shua2021_SpringFestivalRedpacketConfProcessor", 1, "onGetEntryConfig fail." + paramList.getMessage(), paramList);
-        paramBoolean2 = false;
-        paramList = paramString;
-      }
-    }
-    finally {}
-    try
-    {
-      localSpringFestivalRedpacketPopBannerConfBean = a();
-      QLog.i("shua2021_SpringFestivalRedpacketConfProcessor", 1, String.format("onGetEntryConfig() update=%s remoteVersion=%s peakUpdate=%s remotePeakVersion=%s taskId=%s reqOccasion=%s remoteDelayList=%s localDelayList=%s respSuc=%b adcode=%d", new Object[] { Boolean.valueOf(paramBoolean1), Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean2), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), a(paramList), a((List)localObject), Boolean.valueOf(paramBoolean3), Long.valueOf(paramLong) }));
-      if (QLog.isColorLevel()) {
-        QLog.i("shua2021_SpringFestivalRedpacketConfProcessor", 2, String.format("onGetEntryConfig() localPopBannerConfBean=%s", new Object[] { localSpringFestivalRedpacketPopBannerConfBean }));
-      }
-      if (paramBoolean3) {
-        a(paramLong);
-      }
-      if (!paramBoolean1) {
-        break label360;
-      }
-      if (!TextUtils.isEmpty(paramString)) {
-        break label484;
-      }
-      paramString = a(localSpringFestivalRedpacketPopBannerConfBean);
-      paramBoolean1 = true;
-    }
-    catch (Exception paramList)
-    {
-      paramString = localEntryConfigBean;
-      break label393;
-      break label227;
-      paramBoolean1 = true;
-      break label224;
-      if (!paramBoolean2) {
-        break label312;
-      }
-      localObject = paramList;
-      break label312;
-    }
-    paramInt2 = 1;
-    for (;;)
-    {
-      for (;;)
-      {
-        paramBoolean2 = paramBoolean1;
-        paramList = paramString;
-        if (paramString != null)
-        {
-          paramBoolean2 = paramBoolean1;
-          paramList = paramString;
-          if (paramInt2 != 0)
-          {
-            localObject = paramString;
-            b(paramString);
-            paramList = paramString;
-            paramBoolean2 = paramBoolean1;
-          }
-        }
-        a(paramList);
-        if ((paramList != null) && (paramList.htmlOfflineCheckConfig != null)) {
-          SpringHbMonitorReporter.b(paramList.htmlOfflineCheckConfig.bids, paramInt3, paramInt1);
-        }
-        return paramBoolean2;
-        localObject = localEntryConfigBean.delayList;
-        break;
-        paramString = a(paramInt1, paramInt2, paramInt3, paramString, (List)localObject, localSpringFestivalRedpacketPopBannerConfBean);
-        if (paramString != null) {
-          break label479;
-        }
-        try
-        {
-          QLog.e("shua2021_SpringFestivalRedpacketConfProcessor", 1, "onGetEntryConfig parse config fail.");
-          paramList = a(localSpringFestivalRedpacketPopBannerConfBean);
-          paramString = paramList;
-          paramBoolean1 = false;
-        }
-        catch (Exception paramList)
-        {
-          break label393;
-          paramInt2 = 0;
-          paramString = localEntryConfigBean;
-          paramBoolean1 = true;
-        }
-      }
-      if (!paramBoolean2) {
-        break label467;
-      }
-      a(localEntryConfigBean, paramInt2, paramList);
-      paramInt2 = 1;
-      paramString = localEntryConfigBean;
-      paramBoolean1 = true;
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aconst_null
+    //   3: astore 14
+    //   5: aconst_null
+    //   6: astore 15
+    //   8: iconst_0
+    //   9: istore 12
+    //   11: aload 14
+    //   13: astore 13
+    //   15: invokestatic 30	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   18: ifeq +28 -> 46
+    //   21: aload 14
+    //   23: astore 13
+    //   25: ldc 32
+    //   27: iconst_2
+    //   28: ldc_w 414
+    //   31: iconst_1
+    //   32: anewarray 4	java/lang/Object
+    //   35: dup
+    //   36: iconst_0
+    //   37: aload 6
+    //   39: aastore
+    //   40: invokestatic 49	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   43: invokestatic 53	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   46: aload 14
+    //   48: astore 13
+    //   50: aload_0
+    //   51: invokespecial 392	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:c	()Lcom/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean;
+    //   54: astore 14
+    //   56: aload 14
+    //   58: ifnonnull +10 -> 68
+    //   61: aload 15
+    //   63: astore 13
+    //   65: goto +10 -> 75
+    //   68: aload 14
+    //   70: getfield 100	com/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean:delayList	Ljava/util/List;
+    //   73: astore 13
+    //   75: aload_0
+    //   76: invokevirtual 416	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:a	()Lcom/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketPopBannerConfBean;
+    //   79: astore 15
+    //   81: ldc 32
+    //   83: iconst_1
+    //   84: ldc_w 418
+    //   87: bipush 10
+    //   89: anewarray 4	java/lang/Object
+    //   92: dup
+    //   93: iconst_0
+    //   94: iload_1
+    //   95: invokestatic 423	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   98: aastore
+    //   99: dup
+    //   100: iconst_1
+    //   101: iload_3
+    //   102: invokestatic 40	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   105: aastore
+    //   106: dup
+    //   107: iconst_2
+    //   108: iload_2
+    //   109: invokestatic 423	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   112: aastore
+    //   113: dup
+    //   114: iconst_3
+    //   115: iload 4
+    //   117: invokestatic 40	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   120: aastore
+    //   121: dup
+    //   122: iconst_4
+    //   123: iload 5
+    //   125: invokestatic 40	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   128: aastore
+    //   129: dup
+    //   130: iconst_5
+    //   131: iload 8
+    //   133: invokestatic 40	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   136: aastore
+    //   137: dup
+    //   138: bipush 6
+    //   140: aload_0
+    //   141: aload 7
+    //   143: invokespecial 43	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:a	(Ljava/util/List;)Ljava/lang/String;
+    //   146: aastore
+    //   147: dup
+    //   148: bipush 7
+    //   150: aload_0
+    //   151: aload 13
+    //   153: invokespecial 43	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:a	(Ljava/util/List;)Ljava/lang/String;
+    //   156: aastore
+    //   157: dup
+    //   158: bipush 8
+    //   160: iload 9
+    //   162: invokestatic 423	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   165: aastore
+    //   166: dup
+    //   167: bipush 9
+    //   169: lload 10
+    //   171: invokestatic 403	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   174: aastore
+    //   175: invokestatic 49	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   178: invokestatic 53	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   181: invokestatic 30	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   184: ifeq +24 -> 208
+    //   187: ldc 32
+    //   189: iconst_2
+    //   190: ldc_w 425
+    //   193: iconst_1
+    //   194: anewarray 4	java/lang/Object
+    //   197: dup
+    //   198: iconst_0
+    //   199: aload 15
+    //   201: aastore
+    //   202: invokestatic 49	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   205: invokestatic 53	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   208: iload 9
+    //   210: ifeq +9 -> 219
+    //   213: aload_0
+    //   214: lload 10
+    //   216: invokevirtual 427	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:a	(J)V
+    //   219: iload_1
+    //   220: ifeq +83 -> 303
+    //   223: aload 6
+    //   225: invokestatic 431	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   228: ifeq +258 -> 486
+    //   231: aload_0
+    //   232: aload 15
+    //   234: invokespecial 433	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:a	(Lcom/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketPopBannerConfBean;)Lcom/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean;
+    //   237: astore 6
+    //   239: goto +242 -> 481
+    //   242: aload_0
+    //   243: iload_3
+    //   244: iload 4
+    //   246: iload 5
+    //   248: aload 6
+    //   250: aload 7
+    //   252: aload 15
+    //   254: invokespecial 435	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:a	(IIILjava/lang/String;Ljava/util/List;Lcom/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketPopBannerConfBean;)Lcom/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean;
+    //   257: astore 6
+    //   259: aload 6
+    //   261: ifnonnull +33 -> 294
+    //   264: aload 6
+    //   266: astore 13
+    //   268: ldc 32
+    //   270: iconst_1
+    //   271: ldc_w 437
+    //   274: invokestatic 350	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   277: aload 6
+    //   279: astore 13
+    //   281: aload_0
+    //   282: aload 15
+    //   284: invokespecial 433	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:a	(Lcom/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketPopBannerConfBean;)Lcom/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean;
+    //   287: astore 6
+    //   289: iconst_0
+    //   290: istore_1
+    //   291: goto +6 -> 297
+    //   294: goto +187 -> 481
+    //   297: iconst_1
+    //   298: istore 4
+    //   300: goto +33 -> 333
+    //   303: iload_2
+    //   304: ifeq +20 -> 324
+    //   307: aload_0
+    //   308: aload 14
+    //   310: iload 4
+    //   312: aload 7
+    //   314: invokespecial 439	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:a	(Lcom/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean;ILjava/util/List;)Lcom/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean;
+    //   317: pop
+    //   318: iconst_1
+    //   319: istore 4
+    //   321: goto +6 -> 327
+    //   324: iconst_0
+    //   325: istore 4
+    //   327: aload 14
+    //   329: astore 6
+    //   331: iconst_1
+    //   332: istore_1
+    //   333: aload 6
+    //   335: ifnull +18 -> 353
+    //   338: iload 4
+    //   340: ifeq +13 -> 353
+    //   343: aload 6
+    //   345: astore 13
+    //   347: aload_0
+    //   348: aload 6
+    //   350: invokespecial 394	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:b	(Lcom/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean;)V
+    //   353: goto +80 -> 433
+    //   356: astore 6
+    //   358: aload 14
+    //   360: astore 13
+    //   362: goto +10 -> 372
+    //   365: astore 6
+    //   367: goto +103 -> 470
+    //   370: astore 6
+    //   372: sipush 307
+    //   375: aload 6
+    //   377: iconst_0
+    //   378: anewarray 45	java/lang/String
+    //   381: invokestatic 77	com/tencent/mobileqq/activity/springfestival/report/SpringHbMonitorReporter:a	(ILjava/lang/Throwable;[Ljava/lang/String;)V
+    //   384: new 136	java/lang/StringBuilder
+    //   387: dup
+    //   388: invokespecial 137	java/lang/StringBuilder:<init>	()V
+    //   391: astore 7
+    //   393: aload 7
+    //   395: ldc_w 441
+    //   398: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   401: pop
+    //   402: aload 7
+    //   404: aload 6
+    //   406: invokevirtual 81	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   409: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   412: pop
+    //   413: ldc 32
+    //   415: iconst_1
+    //   416: aload 7
+    //   418: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   421: aload 6
+    //   423: invokestatic 170	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   426: iload 12
+    //   428: istore_1
+    //   429: aload 13
+    //   431: astore 6
+    //   433: aload_0
+    //   434: aload 6
+    //   436: invokespecial 395	com/tencent/mobileqq/activity/springfestival/config/SpringFestivalRedpacketConfProcessor:a	(Lcom/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean;)V
+    //   439: aload 6
+    //   441: ifnull +25 -> 466
+    //   444: aload 6
+    //   446: getfield 445	com/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean:htmlOfflineCheckConfig	Lcom/tencent/mobileqq/activity/springfestival/entry/model/HtmlOfflineCheckConfig;
+    //   449: ifnull +17 -> 466
+    //   452: aload 6
+    //   454: getfield 445	com/tencent/mobileqq/activity/springfestival/entry/model/EntryConfigBean:htmlOfflineCheckConfig	Lcom/tencent/mobileqq/activity/springfestival/entry/model/HtmlOfflineCheckConfig;
+    //   457: getfield 451	com/tencent/mobileqq/activity/springfestival/entry/model/HtmlOfflineCheckConfig:bids	Ljava/lang/String;
+    //   460: iload 5
+    //   462: iload_3
+    //   463: invokestatic 454	com/tencent/mobileqq/activity/springfestival/report/SpringHbMonitorReporter:b	(Ljava/lang/String;II)V
+    //   466: aload_0
+    //   467: monitorexit
+    //   468: iload_1
+    //   469: ireturn
+    //   470: aload_0
+    //   471: monitorexit
+    //   472: goto +6 -> 478
+    //   475: aload 6
+    //   477: athrow
+    //   478: goto -3 -> 475
+    //   481: iconst_1
+    //   482: istore_1
+    //   483: goto -186 -> 297
+    //   486: iload_2
+    //   487: ifeq +6 -> 493
+    //   490: goto -248 -> 242
+    //   493: aload 13
+    //   495: astore 7
+    //   497: goto -255 -> 242
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	500	0	this	SpringFestivalRedpacketConfProcessor
+    //   0	500	1	paramBoolean1	boolean
+    //   0	500	2	paramBoolean2	boolean
+    //   0	500	3	paramInt1	int
+    //   0	500	4	paramInt2	int
+    //   0	500	5	paramInt3	int
+    //   0	500	6	paramString	String
+    //   0	500	7	paramList	List<Integer>
+    //   0	500	8	paramInt4	int
+    //   0	500	9	paramBoolean3	boolean
+    //   0	500	10	paramLong	long
+    //   9	418	12	bool	boolean
+    //   13	481	13	localObject	Object
+    //   3	356	14	localEntryConfigBean	EntryConfigBean
+    //   6	277	15	localSpringFestivalRedpacketPopBannerConfBean	SpringFestivalRedpacketPopBannerConfBean
+    // Exception table:
+    //   from	to	target	type
+    //   68	75	356	java/lang/Exception
+    //   75	208	356	java/lang/Exception
+    //   213	219	356	java/lang/Exception
+    //   223	239	356	java/lang/Exception
+    //   242	259	356	java/lang/Exception
+    //   307	318	356	java/lang/Exception
+    //   15	21	365	finally
+    //   25	46	365	finally
+    //   50	56	365	finally
+    //   68	75	365	finally
+    //   75	208	365	finally
+    //   213	219	365	finally
+    //   223	239	365	finally
+    //   242	259	365	finally
+    //   268	277	365	finally
+    //   281	289	365	finally
+    //   307	318	365	finally
+    //   347	353	365	finally
+    //   372	426	365	finally
+    //   433	439	365	finally
+    //   444	466	365	finally
+    //   15	21	370	java/lang/Exception
+    //   25	46	370	java/lang/Exception
+    //   50	56	370	java/lang/Exception
+    //   268	277	370	java/lang/Exception
+    //   281	289	370	java/lang/Exception
+    //   347	353	370	java/lang/Exception
   }
   
   public int b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelEntryConfigBean != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelEntryConfigBean.peakVersion;
-    }
-    return d();
-  }
-  
-  public EntryConfigBean b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelEntryConfigBean;
-  }
-  
-  public int c()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelEntryConfigBean != null) {
       return this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelEntryConfigBean.taskId;
     }
     return 0;
   }
+  
+  public EntryConfigBean b()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelEntryConfigBean;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.config.SpringFestivalRedpacketConfProcessor
  * JD-Core Version:    0.7.0.1
  */

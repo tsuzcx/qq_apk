@@ -8,6 +8,18 @@ class NowHostProxyBuilder$1$2
 {
   NowHostProxyBuilder$1$2(NowHostProxyBuilder.1 param1) {}
   
+  public boolean aekitResAsyncLoad()
+  {
+    return false;
+  }
+  
+  public boolean disableExternalMiniCard()
+  {
+    return false;
+  }
+  
+  public void floatWindowPermissionRequestResult(boolean paramBoolean) {}
+  
   public boolean isBackgroundPlay()
   {
     return this.a.a();
@@ -21,6 +33,11 @@ class NowHostProxyBuilder$1$2
   public boolean isFloatWindowShowWhenAppInBackground()
   {
     return true;
+  }
+  
+  public boolean isFloatWindowShowWhenRoomFinish()
+  {
+    return false;
   }
   
   public boolean isTestEnv()
@@ -40,7 +57,7 @@ class NowHostProxyBuilder$1$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.now_live.NowHostProxyBuilder.1.2
  * JD-Core Version:    0.7.0.1
  */

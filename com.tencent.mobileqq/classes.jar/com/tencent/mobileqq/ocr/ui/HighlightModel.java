@@ -34,10 +34,10 @@ public class HighlightModel
   
   public int a(String paramString1, String paramString2, int paramInt)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return -1;
+    if ((paramString1 != null) && (paramString2 != null)) {
+      return paramString1.toLowerCase().indexOf(paramString2.toLowerCase(), paramInt);
     }
-    return paramString1.toLowerCase().indexOf(paramString2.toLowerCase(), paramInt);
+    return -1;
   }
   
   public SpannableString a(String paramString)
@@ -47,75 +47,83 @@ public class HighlightModel
   
   public SpannableString a(String paramString, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      localObject = null;
-      return localObject;
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    Object localObject = new SpannableString(paramString);
-    if ((this.a == null) || (this.a.size() <= 0)) {
-      return localObject;
-    }
-    Object[] arrayOfObject = this.a.toArray();
-    int k = 0;
-    int i = 0;
-    int j = 0;
-    String str1 = paramString;
-    paramString = (String)localObject;
-    String str2;
-    int m;
-    for (;;)
+    Object localObject2 = new SpannableString(paramString);
+    Object localObject1 = this.a;
+    if (localObject1 != null)
     {
-      localObject = paramString;
-      if (k >= arrayOfObject.length) {
-        break;
+      if (((List)localObject1).size() <= 0) {
+        return localObject2;
       }
-      str2 = (String)arrayOfObject[k];
-      if (str2.length() <= 1)
+      Object[] arrayOfObject = this.a.toArray();
+      int m = 0;
+      int i = 0;
+      int j = 0;
+      if (m < arrayOfObject.length)
       {
-        localObject = paramString;
-        if (i != 0) {
-          break;
+        String str = (String)arrayOfObject[m];
+        if ((str.length() <= 1) && (i != 0)) {
+          return localObject2;
+        }
+        int k = 0;
+        for (;;)
+        {
+          int i1 = a(paramString, str, k);
+          if (i1 == -1)
+          {
+            m += 1;
+            break;
+          }
+          int n = i1;
+          Object localObject3 = localObject2;
+          localObject1 = paramString;
+          k = j;
+          if (i1 > 10)
+          {
+            n = i1;
+            localObject3 = localObject2;
+            localObject1 = paramString;
+            k = j;
+            if (j == 0)
+            {
+              n = i1;
+              localObject3 = localObject2;
+              localObject1 = paramString;
+              k = j;
+              if (!paramBoolean)
+              {
+                localObject1 = new StringBuilder();
+                ((StringBuilder)localObject1).append("…");
+                ((StringBuilder)localObject1).append(paramString.substring(i1 - 6));
+                localObject1 = ((StringBuilder)localObject1).toString();
+                n = 7;
+                localObject3 = new SpannableString((CharSequence)localObject1);
+                k = 1;
+              }
+            }
+          }
+          j = k;
+          if (str.length() > 1)
+          {
+            j = 1;
+            i = 1;
+          }
+          ((SpannableString)localObject3).setSpan(new ForegroundColorSpan(Color.parseColor("#12b7f5")), n, str.length() + n, 34);
+          k = n + 1;
+          localObject2 = localObject3;
+          paramString = (String)localObject1;
         }
       }
-      m = 0;
-      m = a(str1, str2, m);
-      if (m != -1) {
-        break label137;
-      }
-      k += 1;
+      return localObject2;
     }
-    label137:
-    if ((m > 10) && (j == 0) && (!paramBoolean))
-    {
-      str1 = "…" + str1.substring(m - 6);
-      paramString = new SpannableString(str1);
-      m = 7;
-      j = 1;
-    }
-    for (;;)
-    {
-      if (str2.length() > 1) {
-        j = 1;
-      }
-      int n;
-      for (i = 1;; i = n)
-      {
-        paramString.setSpan(new ForegroundColorSpan(Color.parseColor("#12b7f5")), m, str2.length() + m, 34);
-        n = i;
-        m += 1;
-        i = j;
-        j = n;
-        break;
-        n = j;
-        j = i;
-      }
-    }
+    return localObject2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.ui.HighlightModel
  * JD-Core Version:    0.7.0.1
  */

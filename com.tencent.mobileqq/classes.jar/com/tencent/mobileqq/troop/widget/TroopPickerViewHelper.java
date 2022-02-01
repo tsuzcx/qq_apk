@@ -32,23 +32,23 @@ public class TroopPickerViewHelper
   {
     if (this.jdField_a_of_type_ComTencentWidgetActionSheet == null)
     {
-      View localView = paramActivity.getLayoutInflater().inflate(2131560807, null);
+      View localView = paramActivity.getLayoutInflater().inflate(2131560680, null);
       this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.createMenuSheet(paramActivity);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.setCloseAutoRead(true);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.setActionContentView(localView, null);
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout = ((WheelPickerLayout)localView.findViewById(2131379809));
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout = ((WheelPickerLayout)localView.findViewById(2131379138));
       WheelPickerLayout.ViewStyle localViewStyle = new WheelPickerLayout.ViewStyle();
       paramActivity = paramActivity.getResources();
       localViewStyle.jdField_a_of_type_Int = 33;
       localViewStyle.b = 23;
-      localViewStyle.c = paramActivity.getColor(2131167126);
+      localViewStyle.c = paramActivity.getColor(2131167151);
       localViewStyle.d = 17;
       localViewStyle.e = 23;
-      localViewStyle.f = paramActivity.getColor(2131167033);
+      localViewStyle.f = paramActivity.getColor(2131167056);
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper$DateAdapter = new TroopPickerViewHelper.DateAdapter(this, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout);
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper$DateAdapter, localViewStyle);
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.setPickListener(new TroopPickerViewHelper.1(this));
-      paramActivity = localView.findViewById(2131363967);
+      paramActivity = localView.findViewById(2131363894);
       if (paramActivity != null) {
         paramActivity.setOnClickListener(new TroopPickerViewHelper.2(this, paramOnConfirmListener));
       }
@@ -75,7 +75,7 @@ public class TroopPickerViewHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopPickerViewHelper
  * JD-Core Version:    0.7.0.1
  */

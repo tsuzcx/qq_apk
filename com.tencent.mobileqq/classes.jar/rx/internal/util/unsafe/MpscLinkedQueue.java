@@ -14,12 +14,13 @@ public final class MpscLinkedQueue<E>
   
   public final boolean offer(E paramE)
   {
-    if (paramE == null) {
-      throw new NullPointerException("null elements not allowed");
+    if (paramE != null)
+    {
+      paramE = new LinkedQueueNode(paramE);
+      xchgProducerNode(paramE).soNext(paramE);
+      return true;
     }
-    paramE = new LinkedQueueNode(paramE);
-    xchgProducerNode(paramE).soNext(paramE);
-    return true;
+    throw new NullPointerException("null elements not allowed");
   }
   
   public final E peek()
@@ -75,7 +76,7 @@ public final class MpscLinkedQueue<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.util.unsafe.MpscLinkedQueue
  * JD-Core Version:    0.7.0.1
  */

@@ -5,33 +5,50 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter;
-import com.tencent.mobileqq.relationx.addFrd.AddFrdHelper;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.widget.TroopMemberListSlideItem;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.troop.api.troopmemberlist.IFacePreloadBaseAdapter;
+import com.tencent.mobileqq.troop.api.troopmemberlist.IFacePreloadBaseAdapterProxy;
+import com.tencent.mobileqq.troop.api.troopmemberlist.ITroopMemberListActivityApi;
+import com.tencent.mobileqq.troop.memberlist.AddFrdHelper;
+import com.tencent.mobileqq.troop.utils.api.ITroopUtilsApi;
+import com.tencent.mobileqq.troop.widget.TroopMemberListSlideItem;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
 public class TroopMemberListActivity$SearchResultAdapter
-  extends FacePreloadBaseAdapter
+  extends BaseAdapter
+  implements IFacePreloadBaseAdapter
 {
+  private IFacePreloadBaseAdapterProxy jdField_a_of_type_ComTencentMobileqqTroopApiTroopmemberlistIFacePreloadBaseAdapterProxy;
   public List<TroopMemberListActivity.ATroopMember> a;
   
   public TroopMemberListActivity$SearchResultAdapter(List<TroopMemberListActivity.ATroopMember> paramList)
   {
-    super(paramList, paramList.app, paramList.jdField_a_of_type_ComTencentWidgetXListView, 1, true);
+    this.jdField_a_of_type_ComTencentMobileqqTroopApiTroopmemberlistIFacePreloadBaseAdapterProxy = ((ITroopMemberListActivityApi)QRoute.api(ITroopMemberListActivityApi.class)).getFacePreloadBaseAdapterProxy(this, paramList, paramList.app, paramList.searchList, 1, true);
     Object localObject;
     this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
+  protected Bitmap a(int paramInt, String paramString)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqTroopApiTroopmemberlistIFacePreloadBaseAdapterProxy.a(paramInt, paramString);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqTroopApiTroopmemberlistIFacePreloadBaseAdapterProxy.c();
+  }
+  
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList == null) {
       return 0;
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return localList.size();
   }
   
   public Object getItem(int paramInt)
@@ -49,7 +66,7 @@ public class TroopMemberListActivity$SearchResultAdapter
   
   public int getItemViewType(int paramInt)
   {
-    if (TroopMemberListActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity))
+    if (TroopMemberListActivity.access$2500(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity))
     {
       TroopMemberListActivity.ATroopMember localATroopMember = (TroopMemberListActivity.ATroopMember)this.jdField_a_of_type_JavaUtilList.get(paramInt);
       if ((TextUtils.isEmpty(localATroopMember.m)) && (!TextUtils.isEmpty(localATroopMember.p)) && (!TextUtils.isEmpty(localATroopMember.g)) && (!localATroopMember.g.equals(localATroopMember.p))) {
@@ -62,66 +79,58 @@ public class TroopMemberListActivity$SearchResultAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     int i = getItemViewType(paramInt);
-    Object localObject1;
-    Object localObject2;
-    label59:
-    boolean bool;
-    if (paramView == null) {
+    TroopMemberListActivity.TmViewHolder localTmViewHolder;
+    if (paramView == null)
+    {
       if (i == 0)
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131563152, paramViewGroup, false);
-        paramView = new TroopMemberListActivity.TmViewHolder((View)localObject1, false);
-        ((View)localObject1).setTag(paramView);
-        localObject2 = paramView;
-        paramView = (View)localObject1;
-        localObject1 = localObject2;
-        localObject2 = (TroopMemberListActivity.ATroopMember)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-        ((TroopMemberListActivity.TmViewHolder)localObject1).g.setTag(((TroopMemberListActivity.ATroopMember)localObject2).a);
-        ((TroopMemberListActivity.TmViewHolder)localObject1).b.setTag(((TroopMemberListActivity.ATroopMember)localObject2).a);
-        ((TroopMemberListActivity.TmViewHolder)localObject1).jdField_a_of_type_AndroidViewView.setTag(((TroopMemberListActivity.ATroopMember)localObject2).a);
-        ((TroopMemberListActivity.TmViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetTroopMemberListSlideItem.setTag(Integer.valueOf(paramInt));
-        TroopMemberListActivity localTroopMemberListActivity = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity;
-        Bitmap localBitmap = a(1, ((TroopMemberListActivity.ATroopMember)localObject2).a);
-        if (i != 1) {
-          break label343;
-        }
-        bool = true;
-        label152:
-        localTroopMemberListActivity.a((TroopMemberListActivity.TmViewHolder)localObject1, (TroopMemberListActivity.ATroopMember)localObject2, localBitmap, true, bool);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.d == 12)
-        {
-          if (!this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.jdField_a_of_type_JavaUtilList.contains(localObject2)) {
-            break label349;
-          }
-          ((TroopMemberListActivity.TmViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        }
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mLayoutInflater.inflate(2131562975, paramViewGroup, false);
+        localTmViewHolder = new TroopMemberListActivity.TmViewHolder(paramView, false);
       }
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_ComTencentMobileqqRelationxAddFrdAddFrdHelper != null)
+      else
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_ComTencentMobileqqRelationxAddFrdAddFrdHelper.a((TroopMemberListActivity.TmViewHolder)localObject1, (TroopMemberListActivity.ATroopMember)localObject2);
-        if (((TroopMemberListActivity.TmViewHolder)localObject1).f.getVisibility() == 0)
-        {
-          i = VipUtils.d(2);
-          ((TroopMemberListActivity.TmViewHolder)localObject1).e.setMaxWidth(i);
-          TroopMemberListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, ((TroopMemberListActivity.TmViewHolder)localObject1).e, ((TroopMemberListActivity.TmViewHolder)localObject1).d, ((TroopMemberListActivity.ATroopMember)localObject2).a, i);
-        }
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mLayoutInflater.inflate(2131562979, paramViewGroup, false);
+        localTmViewHolder = new TroopMemberListActivity.TmViewHolder(paramView, true);
       }
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131563156, paramViewGroup, false);
-      paramView = new TroopMemberListActivity.TmViewHolder((View)localObject1, true);
-      break;
-      localObject1 = (TroopMemberListActivity.TmViewHolder)paramView.getTag();
-      break label59;
-      label343:
-      bool = false;
-      break label152;
-      label349:
-      ((TroopMemberListActivity.TmViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramView.setTag(localTmViewHolder);
     }
+    else
+    {
+      localTmViewHolder = (TroopMemberListActivity.TmViewHolder)paramView.getTag();
+    }
+    TroopMemberListActivity.ATroopMember localATroopMember = (TroopMemberListActivity.ATroopMember)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    localTmViewHolder.g.setTag(localATroopMember.a);
+    localTmViewHolder.b.setTag(localATroopMember.a);
+    localTmViewHolder.jdField_a_of_type_AndroidViewView.setTag(localATroopMember.a);
+    localTmViewHolder.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopMemberListSlideItem.setTag(Integer.valueOf(paramInt));
+    TroopMemberListActivity localTroopMemberListActivity = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity;
+    Bitmap localBitmap = a(1, localATroopMember.a);
+    boolean bool;
+    if (i == 1) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localTroopMemberListActivity.setItemViewValue(localTmViewHolder, localATroopMember, localBitmap, true, bool);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mFrom == 12) {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mAdapter.jdField_a_of_type_JavaUtilList.contains(localATroopMember)) {
+        localTmViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      } else {
+        localTmViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      }
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mAddFrdHelper != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mAddFrdHelper.a(localTmViewHolder, localATroopMember);
+      if (localTmViewHolder.f.getVisibility() == 0)
+      {
+        i = ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).getMaxWidthForNameInTroopMemberListActivity(2);
+        localTmViewHolder.e.setMaxWidth(i);
+        TroopMemberListActivity.access$2600(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, localTmViewHolder.e, localTmViewHolder.d, localATroopMember.a, i);
+      }
+    }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
   
   public int getViewTypeCount()
@@ -131,7 +140,7 @@ public class TroopMemberListActivity$SearchResultAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.SearchResultAdapter
  * JD-Core Version:    0.7.0.1
  */

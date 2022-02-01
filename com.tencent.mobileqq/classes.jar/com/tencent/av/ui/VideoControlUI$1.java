@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.utils.AudioHelper;
 
 class VideoControlUI$1
   implements QavPanel.onReciveQavPanelStatusChangeListener
@@ -14,7 +14,7 @@ class VideoControlUI$1
   
   public void a()
   {
-    this.a.D(AudioHelper.b());
+    this.a.C(AudioHelper.b());
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
@@ -34,7 +34,7 @@ class VideoControlUI$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoControlUI.1
  * JD-Core Version:    0.7.0.1
  */

@@ -38,26 +38,30 @@ public class DatalineMsgHelper
   
   public void a(MessageRecord paramMessageRecord)
   {
-    if (paramMessageRecord.msgtype == -1000) {
+    if (paramMessageRecord.msgtype == -1000)
+    {
       a((MessageForText)paramMessageRecord);
-    }
-    while (paramMessageRecord.msgtype != -3017) {
       return;
     }
-    a((MessageForDLFile)paramMessageRecord);
+    if (paramMessageRecord.msgtype == -3017) {
+      a((MessageForDLFile)paramMessageRecord);
+    }
   }
   
   public void a(List<MessageRecord> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return;
+    if (paramList != null)
+    {
+      if (paramList.isEmpty()) {
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramList, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramList, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.util.DatalineMsgHelper
  * JD-Core Version:    0.7.0.1
  */

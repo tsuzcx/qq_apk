@@ -16,10 +16,10 @@ class MapViewJsPlugin$3
     {
       JSONObject localJSONObject = new JSONObject(this.val$req.jsonParams);
       int i = localJSONObject.optInt("mapId");
-      MapContext localMapContext = MapViewJsPlugin.access$200(this.this$0, i);
-      if (localMapContext != null)
+      localObject = MapViewJsPlugin.access$200(this.this$0, i);
+      if (localObject != null)
       {
-        localMapContext.addMapPolyline(localJSONObject);
+        ((MapContext)localObject).addMapPolyline(localJSONObject);
         this.val$req.ok();
         return;
       }
@@ -28,14 +28,17 @@ class MapViewJsPlugin$3
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("MapViewJsPlugin", this.val$req.event + " error.", localJSONException);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.val$req.event);
+      ((StringBuilder)localObject).append(" error.");
+      QMLog.e("MapViewJsPlugin", ((StringBuilder)localObject).toString(), localJSONException);
       this.val$req.fail();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.map.MapViewJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

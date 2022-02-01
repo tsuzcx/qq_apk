@@ -10,19 +10,20 @@ class ShowAndGuessGameVideoRecordCtrl$5
   
   public void run()
   {
-    if (this.a != null)
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      this.a.destroyDrawingCache();
-      Bitmap localBitmap = this.a.getDrawingCache();
-      if (localBitmap != null) {
-        this.this$0.a(localBitmap, this.a.getWidth(), this.a.getHeight(), this.a.getLeft(), this.a.getTop());
+      ((View)localObject).destroyDrawingCache();
+      localObject = this.a.getDrawingCache();
+      if (localObject != null) {
+        this.this$0.a((Bitmap)localObject, this.a.getWidth(), this.a.getHeight(), this.a.getLeft(), this.a.getTop());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.videorecord.ShowAndGuessGameVideoRecordCtrl.5
  * JD-Core Version:    0.7.0.1
  */

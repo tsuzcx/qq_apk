@@ -1,16 +1,11 @@
 package com.tencent.mobileqq.vas;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SVIPHandler;
-import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.vip.DownloadListener;
 import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.mobileqq.vip.IPCDownloadListener;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
 
 class ColorRingManager$1
   extends DownloadListener
@@ -22,151 +17,122 @@ class ColorRingManager$1
   
   public void onDone(DownloadTask paramDownloadTask)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorRingManager", 2, "onDone, status=" + paramDownloadTask.a());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDone, status=");
+      ((StringBuilder)localObject).append(paramDownloadTask.a());
+      QLog.d("ColorRingManager", 2, ((StringBuilder)localObject).toString());
     }
-    Bundle localBundle = paramDownloadTask.a();
-    int k = localBundle.getInt("callId");
-    int i = localBundle.getInt("resourceType");
+    Object localObject = paramDownloadTask.a();
+    int i = ((Bundle)localObject).getInt("callId");
+    int j = ((Bundle)localObject).getInt("resourceType");
     boolean bool1;
-    boolean bool2;
-    Object localObject;
-    if (paramDownloadTask.a() == 3)
-    {
+    if (paramDownloadTask.a() == 3) {
       bool1 = true;
-      bool2 = bool1;
-      if (bool1)
-      {
-        bool2 = localBundle.getBoolean("isExists", false);
-        localObject = localBundle.getString("path");
-        if (!bool2) {
-          break label482;
-        }
-        label101:
-        bool2 = bool1;
-        if (!bool1)
-        {
-          bool2 = bool1;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ColorRingManager", 2, "rename failure.");
-            bool2 = bool1;
-          }
-        }
-      }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqVipIPCDownloadListener != null) && (paramDownloadTask.a().getBoolean("isIPC")))
-      {
-        paramDownloadTask = new Bundle();
-        paramDownloadTask.putString("status", "onDone");
-        paramDownloadTask.putInt("fcStatus", 3);
-        paramDownloadTask.putInt("id", k);
-        paramDownloadTask.putInt("callId", k);
-        paramDownloadTask.putInt("srcType", localBundle.getInt("srcType"));
-        paramDownloadTask.putBoolean("result", bool2);
-        paramDownloadTask.putInt("resourceType", localBundle.getInt("resourceType"));
-        paramDownloadTask.putString("colorType", localBundle.getString("colorType"));
-        paramDownloadTask.putBoolean("result_boo", bool2);
-        paramDownloadTask.putInt("resourceType", i);
-        this.a.jdField_a_of_type_ComTencentMobileqqVipIPCDownloadListener.a(paramDownloadTask);
-      }
-      if (i == 3)
-      {
-        paramDownloadTask = (SVIPHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER);
-        i = paramDownloadTask.g();
-        if (i != 2) {
-          break label512;
-        }
-        i = 0;
-      }
+    } else {
+      bool1 = false;
     }
-    label512:
-    label527:
-    label532:
-    for (;;)
+    boolean bool2 = bool1;
+    if (bool1)
     {
-      label300:
-      int j;
-      if ("colorring".equals(localBundle.getString("colorType")))
+      bool2 = ((Bundle)localObject).getBoolean("isExists", false);
+      String str = ((Bundle)localObject).getString("path");
+      if (!bool2)
       {
-        localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        if (bool2)
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append(".tmp");
+        bool1 = FileUtils.rename(localStringBuilder.toString(), str);
+      }
+      bool2 = bool1;
+      if (!bool1)
+      {
+        bool2 = bool1;
+        if (QLog.isColorLevel())
         {
-          j = 0;
-          label331:
-          ReportController.b((AppRuntime)localObject, "CliOper", "", "", "0X8004A22", "0X8004A22", 0, j, "" + i, k + "", "", "");
+          QLog.d("ColorRingManager", 2, "rename failure.");
+          bool2 = bool1;
         }
-      }
-      else if ("comering".equals(localBundle.getString("colorType")))
-      {
-        if (!bool2) {
-          break label527;
-        }
-      }
-      for (i = 0;; i = 1)
-      {
-        ReportController.b(null, "CliOper", "", "", "0X8005002", "0X8005002", 0, i, "" + paramDownloadTask.g(), k + "", "", "");
-        return;
-        bool1 = false;
-        break;
-        label482:
-        bool1 = FileUtils.c((String)localObject + ".tmp", (String)localObject);
-        break label101;
-        if (i != 3) {
-          break label532;
-        }
-        i = 2;
-        break label300;
-        j = 1;
-        break label331;
       }
     }
+    if ((this.a.a != null) && (paramDownloadTask.a().getBoolean("isIPC")))
+    {
+      paramDownloadTask = new Bundle();
+      paramDownloadTask.putString("status", "onDone");
+      paramDownloadTask.putInt("fcStatus", 3);
+      paramDownloadTask.putInt("id", i);
+      paramDownloadTask.putInt("callId", i);
+      paramDownloadTask.putInt("srcType", ((Bundle)localObject).getInt("srcType"));
+      paramDownloadTask.putBoolean("result", bool2);
+      paramDownloadTask.putInt("resourceType", ((Bundle)localObject).getInt("resourceType"));
+      paramDownloadTask.putString("colorType", ((Bundle)localObject).getString("colorType"));
+      paramDownloadTask.putBoolean("result_boo", bool2);
+      paramDownloadTask.putInt("resourceType", j);
+      this.a.a.a(paramDownloadTask);
+    }
+    ColorRingManager.a(this.a, (Bundle)localObject, i, j, bool2);
   }
   
   public void onProgress(DownloadTask paramDownloadTask)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorRingManager", 2, "onProgress, loaded=" + paramDownloadTask.b + "percent=" + paramDownloadTask.a);
-    }
-    if ((paramDownloadTask.a().getBoolean("isIPC")) && (this.a.jdField_a_of_type_ComTencentMobileqqVipIPCDownloadListener != null))
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      Bundle localBundle1 = paramDownloadTask.a();
-      Bundle localBundle2 = new Bundle();
-      localBundle2.putString("status", "onProgress");
-      localBundle2.putInt("fcStatus", 2);
-      localBundle2.putInt("id", localBundle1.getInt("callId"));
-      localBundle2.putInt("callId", localBundle1.getInt("callId"));
-      localBundle2.putInt("srcType", localBundle1.getInt("srcType"));
-      localBundle2.putInt("progress", (int)paramDownloadTask.a);
-      localBundle2.putInt("resourceType", localBundle1.getInt("resourceType"));
-      localBundle2.putString("colorType", localBundle1.getString("colorType"));
-      this.a.jdField_a_of_type_ComTencentMobileqqVipIPCDownloadListener.a(localBundle2);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onProgress, loaded=");
+      ((StringBuilder)localObject).append(paramDownloadTask.b);
+      ((StringBuilder)localObject).append("percent=");
+      ((StringBuilder)localObject).append(paramDownloadTask.a);
+      QLog.d("ColorRingManager", 2, ((StringBuilder)localObject).toString());
+    }
+    if ((paramDownloadTask.a().getBoolean("isIPC")) && (this.a.a != null))
+    {
+      localObject = paramDownloadTask.a();
+      Bundle localBundle = new Bundle();
+      localBundle.putString("status", "onProgress");
+      localBundle.putInt("fcStatus", 2);
+      localBundle.putInt("id", ((Bundle)localObject).getInt("callId"));
+      localBundle.putInt("callId", ((Bundle)localObject).getInt("callId"));
+      localBundle.putInt("srcType", ((Bundle)localObject).getInt("srcType"));
+      localBundle.putInt("progress", (int)paramDownloadTask.a);
+      localBundle.putInt("resourceType", ((Bundle)localObject).getInt("resourceType"));
+      localBundle.putString("colorType", ((Bundle)localObject).getString("colorType"));
+      this.a.a.a(localBundle);
     }
   }
   
   public boolean onStart(DownloadTask paramDownloadTask)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorRingManager", 2, "onStart, loaded=" + paramDownloadTask.b + "percent=" + paramDownloadTask.a);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onStart, loaded=");
+      ((StringBuilder)localObject).append(paramDownloadTask.b);
+      ((StringBuilder)localObject).append("percent=");
+      ((StringBuilder)localObject).append(paramDownloadTask.a);
+      QLog.d("ColorRingManager", 2, ((StringBuilder)localObject).toString());
     }
-    if ((paramDownloadTask.a().getBoolean("isIPC")) && (this.a.jdField_a_of_type_ComTencentMobileqqVipIPCDownloadListener != null))
+    if ((paramDownloadTask.a().getBoolean("isIPC")) && (this.a.a != null))
     {
       paramDownloadTask = paramDownloadTask.a();
-      Bundle localBundle = new Bundle();
-      localBundle.putString("status", "onStart");
-      localBundle.putInt("id", paramDownloadTask.getInt("callId"));
-      localBundle.putInt("fcStatus", 1);
-      localBundle.putInt("callId", paramDownloadTask.getInt("callId"));
-      localBundle.putInt("srcType", paramDownloadTask.getInt("srcType"));
-      localBundle.putInt("resourceType", paramDownloadTask.getInt("resourceType"));
-      localBundle.putString("colorType", paramDownloadTask.getString("colorType"));
-      this.a.jdField_a_of_type_ComTencentMobileqqVipIPCDownloadListener.a(localBundle);
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("status", "onStart");
+      ((Bundle)localObject).putInt("id", paramDownloadTask.getInt("callId"));
+      ((Bundle)localObject).putInt("fcStatus", 1);
+      ((Bundle)localObject).putInt("callId", paramDownloadTask.getInt("callId"));
+      ((Bundle)localObject).putInt("srcType", paramDownloadTask.getInt("srcType"));
+      ((Bundle)localObject).putInt("resourceType", paramDownloadTask.getInt("resourceType"));
+      ((Bundle)localObject).putString("colorType", paramDownloadTask.getString("colorType"));
+      this.a.a.a((Bundle)localObject);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorRingManager.1
  * JD-Core Version:    0.7.0.1
  */

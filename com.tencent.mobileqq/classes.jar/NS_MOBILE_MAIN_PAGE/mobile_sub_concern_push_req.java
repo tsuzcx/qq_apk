@@ -39,14 +39,15 @@ public final class mobile_sub_concern_push_req
   {
     paramJceOutputStream.write(this.objuin, 0);
     paramJceOutputStream.write(this.push_type, 1);
-    if (this.map_ext != null) {
-      paramJceOutputStream.write(this.map_ext, 2);
+    Map localMap = this.map_ext;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_sub_concern_push_req
  * JD-Core Version:    0.7.0.1
  */

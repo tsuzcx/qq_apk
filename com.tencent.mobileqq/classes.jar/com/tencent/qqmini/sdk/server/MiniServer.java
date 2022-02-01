@@ -54,7 +54,10 @@ public class MiniServer
     {
       Object localObject = (Configuration.ProcessInfo)paramConfiguration.next();
       localObject = new MiniProcessorConfig(((Configuration.ProcessInfo)localObject).processType, ((Configuration.ProcessInfo)localObject).name, ((Configuration.ProcessInfo)localObject).uiClass, ((Configuration.ProcessInfo)localObject).internalUIClass, ((Configuration.ProcessInfo)localObject).receiverClass, ((Configuration.ProcessInfo)localObject).supportRuntimeType);
-      QMLog.i("MiniServer", "createConfiguration. Add processor config: " + localObject);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("createConfiguration. Add processor config: ");
+      localStringBuilder.append(localObject);
+      QMLog.i("MiniServer", localStringBuilder.toString());
       localArrayList.add(localObject);
     }
     this.mLaunchManagerService.registerProcessInfo(localArrayList);
@@ -93,27 +96,30 @@ public class MiniServer
   
   public void init(Context paramContext, Configuration paramConfiguration)
   {
-    for (;;)
+    try
     {
-      try
+      if (this.mContext != null)
       {
-        if (this.mContext != null)
-        {
-          QMLog.d("MiniServer", "Already initialized");
-          return;
-        }
-        if (paramContext == null)
-        {
-          QMLog.e("MiniServer", "Failed to init MiniServer. context is null");
-          continue;
-        }
-        QMLog.i("MiniServer", "Init MiniServer. MiniSdkVersion:1.12.1_153_3c46116 QUA:" + QUAUtil.getQUA() + " PlatformQUA:" + QUAUtil.getPlatformQUA());
+        QMLog.d("MiniServer", "Already initialized");
+        return;
       }
-      finally {}
+      if (paramContext == null)
+      {
+        QMLog.e("MiniServer", "Failed to init MiniServer. context is null");
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Init MiniServer. MiniSdkVersion:1.15.0_944_fdf6368 QUA:");
+      localStringBuilder.append(QUAUtil.getQUA());
+      localStringBuilder.append(" PlatformQUA:");
+      localStringBuilder.append(QUAUtil.getPlatformQUA());
+      QMLog.i("MiniServer", localStringBuilder.toString());
       this.mContext = paramContext;
       processConfiguration(paramConfiguration);
       registerMiniServices();
+      return;
     }
+    finally {}
   }
   
   public void onHostAppBackground()
@@ -143,7 +149,7 @@ public class MiniServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.MiniServer
  * JD-Core Version:    0.7.0.1
  */

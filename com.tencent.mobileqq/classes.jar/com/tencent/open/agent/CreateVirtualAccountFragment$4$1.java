@@ -1,7 +1,7 @@
 package com.tencent.open.agent;
 
-import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.open.agent.util.QQLiteStatusUtil;
 import mqq.app.QQPermissionCallback;
 
 class CreateVirtualAccountFragment$4$1
@@ -11,17 +11,17 @@ class CreateVirtualAccountFragment$4$1
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    DialogUtil.a(this.a.a.getActivity(), paramArrayOfString, paramArrayOfInt);
+    DialogUtil.a(this.a.a.getQBaseActivity(), paramArrayOfString, paramArrayOfInt);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.a.a = ProfileActivity.a(this.a.a.getActivity(), 257);
+    CreateVirtualAccountFragment.a(this.a.a, QQLiteStatusUtil.a(this.a.a.getActivity()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.CreateVirtualAccountFragment.4.1
  * JD-Core Version:    0.7.0.1
  */

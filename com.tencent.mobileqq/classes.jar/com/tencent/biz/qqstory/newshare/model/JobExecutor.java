@@ -25,8 +25,9 @@ public class JobExecutor
     paramJob.a(paramConcurrentHashMap);
     if (!paramJob.a())
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback.b();
+      paramJob = this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback;
+      if (paramJob != null) {
+        paramJob.b();
       }
       a();
       return;
@@ -56,7 +57,8 @@ public class JobExecutor
   
   protected void a()
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty())) {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if ((localList != null) && (!localList.isEmpty())) {
       this.jdField_a_of_type_JavaUtilList.clear();
     }
     this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback = null;
@@ -82,73 +84,80 @@ public class JobExecutor
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback.c();
+      localObject = this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback;
+      if (localObject != null) {
+        ((JobExecutor.IOnJobExecuteResultCallback)localObject).c();
       }
       a();
       return;
     }
-    Job localJob = (Job)this.jdField_a_of_type_JavaUtilList.get(0);
+    Object localObject = (Job)this.jdField_a_of_type_JavaUtilList.get(0);
     if (paramBoolean)
     {
-      if (localJob.b)
+      if (((Job)localObject).b)
       {
         if (Looper.myLooper() == Looper.getMainLooper())
         {
-          localJob.a(localJob.b());
+          ((Job)localObject).a(((Job)localObject).b());
           return;
         }
-        ThreadManager.getUIHandler().post(new JobExecutor.3(this, localJob));
+        ThreadManager.getUIHandler().post(new JobExecutor.3(this, (Job)localObject));
         return;
       }
-      this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new JobExecutor.4(this, localJob));
+      this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new JobExecutor.4(this, (Job)localObject));
       return;
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback.b();
+    JobExecutor.IOnJobExecuteResultCallback localIOnJobExecuteResultCallback = this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback;
+    if (localIOnJobExecuteResultCallback != null) {
+      localIOnJobExecuteResultCallback.b();
     }
-    localJob.a(paramBoolean);
+    ((Job)localObject).a(paramBoolean);
     a();
   }
   
   public void b(boolean paramBoolean)
   {
+    Object localObject;
     if (this.jdField_a_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback.c();
+      localObject = this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback;
+      if (localObject != null) {
+        ((JobExecutor.IOnJobExecuteResultCallback)localObject).c();
+      }
+      a();
+      return;
+    }
+    if (paramBoolean)
+    {
+      localObject = (Job)this.jdField_a_of_type_JavaUtilList.remove(0);
+      if (this.jdField_a_of_type_JavaUtilList.isEmpty())
+      {
+        localObject = this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback;
+        if (localObject != null) {
+          ((JobExecutor.IOnJobExecuteResultCallback)localObject).a();
+        }
+        if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
+          a();
+        }
+      }
+      else
+      {
+        ThreadManager.getUIHandler().post(new JobExecutor.5(this, (Job)localObject));
+      }
+    }
+    else
+    {
+      localObject = this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback;
+      if (localObject != null) {
+        ((JobExecutor.IOnJobExecuteResultCallback)localObject).b();
       }
       a();
     }
-    Job localJob;
-    do
-    {
-      return;
-      if (!paramBoolean) {
-        break label108;
-      }
-      localJob = (Job)this.jdField_a_of_type_JavaUtilList.remove(0);
-      if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-        break;
-      }
-      if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback.a();
-      }
-    } while (!this.jdField_a_of_type_JavaUtilList.isEmpty());
-    a();
-    return;
-    ThreadManager.getUIHandler().post(new JobExecutor.5(this, localJob));
-    return;
-    label108:
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback.b();
-    }
-    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.model.JobExecutor
  * JD-Core Version:    0.7.0.1
  */

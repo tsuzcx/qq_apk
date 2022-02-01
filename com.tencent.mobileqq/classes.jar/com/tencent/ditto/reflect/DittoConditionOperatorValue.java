@@ -9,28 +9,30 @@ public class DittoConditionOperatorValue
   
   private DittoValue getResultField(Object paramObject)
   {
-    boolean bool = true;
     paramObject = this.conditionValue.getValue(paramObject);
-    if ((paramObject instanceof Boolean)) {
+    boolean bool;
+    if ((paramObject instanceof Boolean))
+    {
       bool = ((Boolean)paramObject).booleanValue();
     }
-    while (bool)
+    else
     {
-      return this.trueValue;
-      if ((paramObject instanceof Number))
-      {
-        if (((Number)paramObject).floatValue() != 0.0F) {
-          bool = true;
-        } else {
-          bool = false;
-        }
+      if ((paramObject instanceof Number)) {
+        if (((Number)paramObject).floatValue() == 0.0F) {}
       }
-      else if (paramObject == null) {
-        for (;;)
+      for (;;)
+      {
+        bool = true;
+        break;
+        do
         {
           bool = false;
-        }
+          break;
+        } while (paramObject == null);
       }
+    }
+    if (bool) {
+      return this.trueValue;
     }
     return this.falseValue;
   }
@@ -52,7 +54,7 @@ public class DittoConditionOperatorValue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ditto.reflect.DittoConditionOperatorValue
  * JD-Core Version:    0.7.0.1
  */

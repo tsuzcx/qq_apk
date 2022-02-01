@@ -29,34 +29,37 @@ public abstract class IChannelClient$Stub
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 1)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.intervideo.nowproxy.proxyinner.channel.IChannelClient");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.intervideo.nowproxy.proxyinner.channel.IChannelClient");
-      paramInt1 = paramParcel1.readInt();
-      if (paramParcel1.readInt() != 0) {}
-      for (paramParcel1 = (FromService)FromService.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+      if (paramInt1 != 2)
       {
-        a(paramInt1, paramParcel1);
-        paramParcel2.writeNoException();
+        if (paramInt1 != 1598968902) {
+          return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+        }
+        paramParcel2.writeString("com.tencent.intervideo.nowproxy.proxyinner.channel.IChannelClient");
         return true;
       }
+      paramParcel1.enforceInterface("com.tencent.intervideo.nowproxy.proxyinner.channel.IChannelClient");
+      paramParcel1 = a();
+      paramParcel2.writeNoException();
+      paramParcel2.writeString(paramParcel1);
+      return true;
     }
     paramParcel1.enforceInterface("com.tencent.intervideo.nowproxy.proxyinner.channel.IChannelClient");
-    paramParcel1 = a();
+    paramInt1 = paramParcel1.readInt();
+    if (paramParcel1.readInt() != 0) {
+      paramParcel1 = (FromService)FromService.CREATOR.createFromParcel(paramParcel1);
+    } else {
+      paramParcel1 = null;
+    }
+    a(paramInt1, paramParcel1);
     paramParcel2.writeNoException();
-    paramParcel2.writeString(paramParcel1);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.proxyinner.channel.IChannelClient.Stub
  * JD-Core Version:    0.7.0.1
  */

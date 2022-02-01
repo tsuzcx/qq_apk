@@ -22,14 +22,14 @@ class LSRecordPanel$6
       if (paramAnimation == this.a.b) {
         LSRecordPanel.a(this.a);
       }
-      this.a.a = null;
-      this.a.b = null;
-      paramAnimation = (RelativeLayout.LayoutParams)LSRecordPanel.a(this.a).getLayoutParams();
+      paramAnimation = this.a;
+      paramAnimation.a = null;
+      paramAnimation.b = null;
+      paramAnimation = (RelativeLayout.LayoutParams)LSRecordPanel.a(paramAnimation).getLayoutParams();
       int i = (int)(this.a.getResources().getDisplayMetrics().density * 4.0F);
       paramAnimation.height -= i;
       paramAnimation.width -= i;
-      int j = paramAnimation.rightMargin;
-      paramAnimation.rightMargin = (i / 2 + j);
+      paramAnimation.rightMargin += i / 2;
       LSRecordPanel.a(this.a, false);
       LSRecordPanel.a(this.a).setLayoutParams(paramAnimation);
     }
@@ -37,7 +37,7 @@ class LSRecordPanel$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.LSRecordPanel.6
  * JD-Core Version:    0.7.0.1
  */

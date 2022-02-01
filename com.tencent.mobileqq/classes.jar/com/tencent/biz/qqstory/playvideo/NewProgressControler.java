@@ -30,30 +30,32 @@ public class NewProgressControler
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(null);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidOsHandler = new NewProgressControler.1(this, Looper.getMainLooper());
-    if (paramSplitedProgressBar == null) {
-      throw new InvalidParameterException("ProgressControler: progressBar is null");
+    if (paramSplitedProgressBar != null)
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar = paramSplitedProgressBar;
+      this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar.setTotalCount(1);
+      return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar = paramSplitedProgressBar;
-    this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar.setTotalCount(1);
+    throw new InvalidParameterException("ProgressControler: progressBar is null");
   }
   
   private void a(long paramLong)
   {
-    int i = 100;
-    int j;
-    if (this.b > 0L)
+    long l = this.b;
+    int i;
+    if (l > 0L)
     {
-      j = (int)paramLong * 100 / (int)this.b;
-      if (j <= 100) {}
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar.setProgress(0, i);
-      return;
+      int j = (int)paramLong * 100 / (int)l;
       i = j;
-      continue;
+      if (j > 100) {
+        i = 100;
+      }
+    }
+    else
+    {
       i = 0;
     }
+    this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar.setProgress(0, i);
   }
   
   private void a(long paramLong1, long paramLong2)
@@ -143,26 +145,26 @@ public class NewProgressControler
   
   public void a(IVideoView paramIVideoView)
   {
-    if ((paramIVideoView instanceof ProgressVideoViewWrapper)) {}
-    for (IVideoView localIVideoView = ((ProgressVideoViewWrapper)paramIVideoView).a();; localIVideoView = paramIVideoView)
-    {
-      if (localIVideoView == this.jdField_a_of_type_JavaLangRefWeakReference.get())
-      {
-        SLog.b("Q.qqstory.player:NewProgressControler", "cannot set the same video view");
-        return;
-      }
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localIVideoView);
-      if ((paramIVideoView instanceof ProgressVideoViewWrapper)) {
-        ((ProgressVideoViewWrapper)paramIVideoView).a(this);
-      }
-      for (;;)
-      {
-        f();
-        a(0L, paramIVideoView.b());
-        return;
-        SLog.b("Yarkey", "cannot set the same video view");
-      }
+    boolean bool = paramIVideoView instanceof ProgressVideoViewWrapper;
+    IVideoView localIVideoView;
+    if (bool) {
+      localIVideoView = ((ProgressVideoViewWrapper)paramIVideoView).a();
+    } else {
+      localIVideoView = paramIVideoView;
     }
+    if (localIVideoView == this.jdField_a_of_type_JavaLangRefWeakReference.get())
+    {
+      SLog.b("Q.qqstory.player:NewProgressControler", "cannot set the same video view");
+      return;
+    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localIVideoView);
+    if (bool) {
+      ((ProgressVideoViewWrapper)paramIVideoView).a(this);
+    } else {
+      SLog.b("Yarkey", "cannot set the same video view");
+    }
+    f();
+    a(0L, paramIVideoView.b());
   }
   
   public void b()
@@ -193,7 +195,7 @@ public class NewProgressControler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.NewProgressControler
  * JD-Core Version:    0.7.0.1
  */

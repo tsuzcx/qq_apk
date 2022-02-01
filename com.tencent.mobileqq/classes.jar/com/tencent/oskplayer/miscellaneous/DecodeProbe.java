@@ -13,7 +13,7 @@ import java.util.Set;
 @TargetApi(17)
 public class DecodeProbe
 {
-  public static final String TAG = DecodeProbe.class.getSimpleName();
+  public static final String TAG = "DecodeProbe";
   private static final String outDirBasePath = "video_dec_probe";
   private static String outDirPath = "";
   HardwareDecodeProbe mHardwareDecodeProbe = new HardwareDecodeProbe();
@@ -25,22 +25,21 @@ public class DecodeProbe
     if (paramFile == null) {
       return;
     }
-    if (paramFile.isDirectory()) {}
-    for (File[] arrayOfFile = paramFile.listFiles();; arrayOfFile = null)
-    {
-      if (arrayOfFile != null)
-      {
-        int j = arrayOfFile.length;
-        int i = 0;
-        while (i < j)
-        {
-          deleteRecursive(arrayOfFile[i]);
-          i += 1;
-        }
-      }
-      paramFile.delete();
-      return;
+    File[] arrayOfFile = null;
+    if (paramFile.isDirectory()) {
+      arrayOfFile = paramFile.listFiles();
     }
+    if (arrayOfFile != null)
+    {
+      int j = arrayOfFile.length;
+      int i = 0;
+      while (i < j)
+      {
+        deleteRecursive(arrayOfFile[i]);
+        i += 1;
+      }
+    }
+    paramFile.delete();
   }
   
   private boolean failedEnsurePicOutDir()
@@ -70,20 +69,20 @@ public class DecodeProbe
   
   public long getHwDecodeAvgCost()
   {
-    if (this.mHardwareDecodeProbe == null) {
+    HardwareDecodeProbe localHardwareDecodeProbe = this.mHardwareDecodeProbe;
+    if (localHardwareDecodeProbe == null) {
       return 0L;
     }
-    return this.mHardwareDecodeProbe.getDecodeFrameAvgCost();
+    return localHardwareDecodeProbe.getDecodeFrameAvgCost();
   }
   
   public File getPicOutDir()
   {
-    File localFile = null;
     String str = getPicOutDirPath();
     if (!TextUtils.isEmpty(str)) {
-      localFile = new File(str);
+      return new File(str);
     }
-    return localFile;
+    return null;
   }
   
   public String getPicOutDirPath()
@@ -104,51 +103,55 @@ public class DecodeProbe
   
   public int hwProbe(String paramString)
   {
-    int i;
     if (Build.VERSION.SDK_INT < 17) {
-      i = 10001;
+      return 10001;
     }
-    int j;
-    do
-    {
+    if (failedEnsurePicOutDir()) {
+      return 60000;
+    }
+    int i = this.mHardwareDecodeProbe.probe(paramString, getPicOutDirPath(), this.mSaveFrameSet);
+    if (i != 0) {
       return i;
-      if (failedEnsurePicOutDir()) {
-        return 60000;
-      }
-      j = this.mHardwareDecodeProbe.probe(paramString, getPicOutDirPath(), this.mSaveFrameSet);
-      i = j;
-    } while (j != 0);
+    }
     return 0;
   }
   
   public int probe(String paramString)
   {
-    int i;
     if (Build.VERSION.SDK_INT < 17) {
-      i = 10001;
+      return 10001;
     }
-    long l1;
-    int j;
-    do
-    {
-      do
-      {
-        return i;
-        if (failedEnsurePicOutDir()) {
-          return 60000;
-        }
-        l1 = System.currentTimeMillis();
-        j = this.mHardwareDecodeProbe.probe(paramString, getPicOutDirPath(), this.mSaveFrameSet);
-        i = j;
-      } while (j != 0);
-      l2 = System.currentTimeMillis();
-      Logger.g().d(TAG, "[probe] hw probe cost=" + (l2 - l1) + ", decode frame avg cost=" + this.mHardwareDecodeProbe.getDecodeFrameAvgCost());
-      l1 = System.currentTimeMillis();
-      j = this.mSoftwareProbe.probe(paramString, getPicOutDirPath(), this.mSaveFrameSet);
-      i = j;
-    } while (j != 0);
+    if (failedEnsurePicOutDir()) {
+      return 60000;
+    }
+    long l1 = System.currentTimeMillis();
+    int i = this.mHardwareDecodeProbe.probe(paramString, getPicOutDirPath(), this.mSaveFrameSet);
+    if (i != 0) {
+      return i;
+    }
     long l2 = System.currentTimeMillis();
-    Logger.g().d(TAG, "[probe] sw probe cost=" + (l2 - l1) + ", decode frame avg cost=" + SoftwareDecodeProbe.getDecodeFrameAvgCost());
+    Object localObject1 = Logger.g();
+    Object localObject2 = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[probe] hw probe cost=");
+    localStringBuilder.append(l2 - l1);
+    localStringBuilder.append(", decode frame avg cost=");
+    localStringBuilder.append(this.mHardwareDecodeProbe.getDecodeFrameAvgCost());
+    ((ILogger)localObject1).d((String)localObject2, localStringBuilder.toString());
+    l1 = System.currentTimeMillis();
+    i = this.mSoftwareProbe.probe(paramString, getPicOutDirPath(), this.mSaveFrameSet);
+    if (i != 0) {
+      return i;
+    }
+    l2 = System.currentTimeMillis();
+    paramString = Logger.g();
+    localObject1 = TAG;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("[probe] sw probe cost=");
+    ((StringBuilder)localObject2).append(l2 - l1);
+    ((StringBuilder)localObject2).append(", decode frame avg cost=");
+    ((StringBuilder)localObject2).append(SoftwareDecodeProbe.getDecodeFrameAvgCost());
+    paramString.d((String)localObject1, ((StringBuilder)localObject2).toString());
     return 0;
   }
   
@@ -164,23 +167,19 @@ public class DecodeProbe
   
   public int swProbe(String paramString)
   {
-    int i;
     if (failedEnsurePicOutDir()) {
-      i = 60000;
+      return 60000;
     }
-    int j;
-    do
-    {
+    int i = this.mSoftwareProbe.probe(paramString, getPicOutDirPath(), this.mSaveFrameSet);
+    if (i != 0) {
       return i;
-      j = this.mSoftwareProbe.probe(paramString, getPicOutDirPath(), this.mSaveFrameSet);
-      i = j;
-    } while (j != 0);
+    }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.miscellaneous.DecodeProbe
  * JD-Core Version:    0.7.0.1
  */

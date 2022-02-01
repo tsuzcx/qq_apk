@@ -14,26 +14,41 @@ public class QZoneTihSettingWebPlugin
     this.mPluginNameSpace = "qztodayinhistory";
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneTihSettingWebPlugin", 2, "handleJsRequest url: " + paramString1 + "pkgName:" + paramString2 + "method:" + paramString3);
+    if (QLog.isColorLevel())
+    {
+      paramJsBridgeListener = new StringBuilder();
+      paramJsBridgeListener.append("handleJsRequest url: ");
+      paramJsBridgeListener.append(paramString1);
+      paramJsBridgeListener.append("pkgName:");
+      paramJsBridgeListener.append(paramString2);
+      paramJsBridgeListener.append("method:");
+      paramJsBridgeListener.append(paramString3);
+      QLog.d("QZoneTihSettingWebPlugin", 2, paramJsBridgeListener.toString());
     }
-    if (!paramString2.equals("qztodayinhistory")) {}
-    while (!paramString3.equals("settihnome")) {
+    if (!paramString2.equals("qztodayinhistory")) {
       return false;
     }
-    paramJsBridgeListener = new Intent("aciton_switch_tih_setting");
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneTihSettingWebPlugin", 2, "actionString: " + paramJsBridgeListener.getAction());
+    if (paramString3.equals("settihnome"))
+    {
+      paramJsBridgeListener = new Intent("aciton_switch_tih_setting");
+      if (QLog.isColorLevel())
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("actionString: ");
+        paramString1.append(paramJsBridgeListener.getAction());
+        QLog.d("QZoneTihSettingWebPlugin", 2, paramString1.toString());
+      }
+      BaseApplication.getContext().sendBroadcast(paramJsBridgeListener);
+      return true;
     }
-    BaseApplication.getContext().sendBroadcast(paramJsBridgeListener);
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.QZoneTihSettingWebPlugin
  * JD-Core Version:    0.7.0.1
  */

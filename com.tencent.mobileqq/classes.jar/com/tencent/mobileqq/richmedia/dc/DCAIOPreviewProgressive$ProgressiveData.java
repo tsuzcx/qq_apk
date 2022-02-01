@@ -14,66 +14,90 @@ class DCAIOPreviewProgressive$ProgressiveData
   
   public HashMap<String, String> a(String paramString)
   {
+    long l1 = this.jdField_a_of_type_Long;
     paramString = null;
-    if ((this.jdField_a_of_type_Long == 0L) || (this.c == 0L)) {
-      return null;
-    }
-    if (QLog.isColorLevel()) {
-      paramString = new StringBuilder();
-    }
-    HashMap localHashMap = new HashMap();
-    if (this.jdField_a_of_type_Boolean)
+    if (l1 != 0L)
     {
-      localHashMap.put("is_progressive", "progressive");
-      localHashMap.put("view_count", "1");
-      if (this.jdField_b_of_type_Boolean)
+      if (this.c == 0L) {
+        return null;
+      }
+      if (QLog.isColorLevel()) {
+        paramString = new StringBuilder();
+      }
+      HashMap localHashMap = new HashMap();
+      long l2;
+      StringBuilder localStringBuilder;
+      if (this.jdField_a_of_type_Boolean)
       {
-        localHashMap.put("failure", "1");
+        localHashMap.put("is_progressive", "progressive");
+        localHashMap.put("view_count", "1");
+        if (this.jdField_b_of_type_Boolean)
+        {
+          localHashMap.put("failure", "1");
+        }
+        else
+        {
+          l1 = this.jdField_b_of_type_Long;
+          l2 = this.jdField_a_of_type_Long;
+          if (l1 > l2) {
+            localHashMap.put("to_dp", String.valueOf(l1 - l2));
+          }
+          l1 = this.c;
+          l2 = this.jdField_a_of_type_Long;
+          if ((l1 > l2) && (l1 > this.jdField_b_of_type_Long)) {
+            localHashMap.put("to_large", String.valueOf(l1 - l2));
+          }
+        }
         if (QLog.isColorLevel())
         {
           paramString.append("progressive:\n");
-          paramString.append("refresh_dp:" + String.valueOf(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) + "\n");
-          paramString.append("refresh_large:" + String.valueOf(this.c - this.jdField_a_of_type_Long));
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("refresh_dp:");
+          localStringBuilder.append(String.valueOf(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long));
+          localStringBuilder.append("\n");
+          paramString.append(localStringBuilder.toString());
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("refresh_large:");
+          localStringBuilder.append(String.valueOf(this.c - this.jdField_a_of_type_Long));
+          paramString.append(localStringBuilder.toString());
+          QLog.i(DataCollector.a, 2, paramString.toString());
+          return localHashMap;
+        }
+      }
+      else
+      {
+        localHashMap.put("is_progressive", "baseline");
+        localHashMap.put("view_count", "1");
+        if (this.jdField_b_of_type_Boolean)
+        {
+          localHashMap.put("failure", "1");
+        }
+        else
+        {
+          l1 = this.c;
+          l2 = this.jdField_a_of_type_Long;
+          if (l1 > l2) {
+            localHashMap.put("to_large", String.valueOf(l1 - l2));
+          }
+        }
+        if (QLog.isColorLevel())
+        {
+          paramString.append("baseline:\n");
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("refresh_large:");
+          localStringBuilder.append(String.valueOf(this.c - this.jdField_a_of_type_Long));
+          paramString.append(localStringBuilder.toString());
           QLog.i(DataCollector.a, 2, paramString.toString());
         }
       }
-    }
-    label391:
-    for (;;)
-    {
       return localHashMap;
-      if (this.jdField_b_of_type_Long > this.jdField_a_of_type_Long) {
-        localHashMap.put("to_dp", String.valueOf(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long));
-      }
-      if ((this.c <= this.jdField_a_of_type_Long) || (this.c <= this.jdField_b_of_type_Long)) {
-        break;
-      }
-      localHashMap.put("to_large", String.valueOf(this.c - this.jdField_a_of_type_Long));
-      break;
-      localHashMap.put("is_progressive", "baseline");
-      localHashMap.put("view_count", "1");
-      if (this.jdField_b_of_type_Boolean) {
-        localHashMap.put("failure", "1");
-      }
-      for (;;)
-      {
-        if (!QLog.isColorLevel()) {
-          break label391;
-        }
-        paramString.append("baseline:\n");
-        paramString.append("refresh_large:" + String.valueOf(this.c - this.jdField_a_of_type_Long));
-        QLog.i(DataCollector.a, 2, paramString.toString());
-        break;
-        if (this.c > this.jdField_a_of_type_Long) {
-          localHashMap.put("to_large", String.valueOf(this.c - this.jdField_a_of_type_Long));
-        }
-      }
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.dc.DCAIOPreviewProgressive.ProgressiveData
  * JD-Core Version:    0.7.0.1
  */

@@ -14,13 +14,14 @@ class TAVCutVideoSession$4
   
   public void run()
   {
-    this.this$0.resetAEKitModelForAI(this.this$0.getMediaModel(), TAVCutVideoSession.access$200(this.this$0), this.val$lutPath, this.val$lutStrength, this.val$adjustParams, this.val$smoothLevel, this.val$glowAlpha, ((MediaClipModel)this.this$0.getMediaModel().getMediaResourceModel().getVideos().get(0)).getResource().getSelectTimeDuration());
+    TAVCutVideoSession localTAVCutVideoSession = this.this$0;
+    localTAVCutVideoSession.resetAEKitModelForAI(localTAVCutVideoSession.getMediaModel(), TAVCutVideoSession.access$200(this.this$0), this.val$lutPath, this.val$lutStrength, this.val$adjustParams, this.val$smoothLevel, this.val$glowAlpha, ((MediaClipModel)this.this$0.getMediaModel().getMediaResourceModel().getVideos().get(0)).getResource().getSelectTimeDuration());
     this.this$0.refresh();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutVideoSession.4
  * JD-Core Version:    0.7.0.1
  */

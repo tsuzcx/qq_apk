@@ -1,56 +1,31 @@
 package com.tencent.mobileqq.forward;
 
-import android.os.Bundle;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.os.AsyncTask;
+import com.dataline.core.DirectForwarder;
+import com.dataline.core.DirectForwarder.CallBack;
 
 class ForwardBaseOption$13
-  implements Runnable
+  extends DirectForwarder.CallBack
 {
-  ForwardBaseOption$13(ForwardBaseOption paramForwardBaseOption, String paramString, QQCustomDialog paramQQCustomDialog) {}
+  ForwardBaseOption$13(ForwardBaseOption paramForwardBaseOption) {}
   
-  public void run()
+  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
   {
-    Object localObject1;
-    if (!this.this$0.jdField_a_of_type_Boolean)
+    try
     {
-      localObject2 = ForwardBaseOption.a(this.this$0, this.jdField_a_of_type_JavaLangString);
-      localObject1 = localObject2;
-      if (localObject2 != null) {
-        break label83;
-      }
-      this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog);
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOption.ForwardBaseOption", 2, "updateImageView getNormalDrawable null");
-      }
+      DirectForwarder.a(this.a.a, paramAsyncTask, paramInt, new ForwardBaseOption.13.1(this));
+      super.a(paramAsyncTask, paramInt);
+      return;
     }
-    do
+    catch (Exception paramAsyncTask)
     {
-      return;
-      localObject2 = ForwardBaseOption.a(this.this$0);
-      localObject1 = localObject2;
-      if (localObject2 != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ForwardOption.ForwardBaseOption", 2, "updateImageView getURLDrawable null");
-    return;
-    label83:
-    this.this$0.a(localObject1, this.this$0.jdField_a_of_type_Boolean);
-    Object localObject2 = (ArrayList)this.this$0.jdField_a_of_type_AndroidOsBundle.get("PhotoConst.PHOTO_PATHS");
-    ForwardBaseOption localForwardBaseOption = this.this$0;
-    if (localObject2 != null) {}
-    for (int i = ((ArrayList)localObject2).size();; i = 0)
-    {
-      localForwardBaseOption.a(localObject1, true, i, this.this$0.jdField_a_of_type_Boolean);
-      return;
+      paramAsyncTask.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardBaseOption.13
  * JD-Core Version:    0.7.0.1
  */

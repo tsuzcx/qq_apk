@@ -19,7 +19,11 @@ public class ZipResEntry
   {
     this.jdField_b_of_type_JavaLangString = paramString1;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + " " + paramString2);
+    paramString1 = new StringBuilder();
+    paramString1.append(this.jdField_b_of_type_JavaLangString);
+    paramString1.append(" ");
+    paramString1.append(paramString2);
+    this.jdField_a_of_type_JavaLangString = paramString1.toString();
     this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
   }
   
@@ -35,7 +39,11 @@ public class ZipResEntry
         localZipResEntry.jdField_b_of_type_JavaLangString = paramString1;
         localZipResEntry.d = paramString2;
         localZipResEntry.jdField_a_of_type_Int = paramInt;
-        localZipResEntry.jdField_a_of_type_JavaLangString = (paramString1 + " " + paramString2);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append(" ");
+        localStringBuilder.append(paramString2);
+        localZipResEntry.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
         localZipResEntry.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
         jdField_b_of_type_Int -= 1;
         return localZipResEntry;
@@ -71,7 +79,7 @@ public class ZipResEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.vipcomponent.util.ZipResEntry
  * JD-Core Version:    0.7.0.1
  */

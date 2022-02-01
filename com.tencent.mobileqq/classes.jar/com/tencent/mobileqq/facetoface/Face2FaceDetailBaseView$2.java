@@ -16,8 +16,12 @@ class Face2FaceDetailBaseView$2
     this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.b();
     this.a.c.setBackgroundDrawable(null);
     this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceDetailBaseView$IFace2faceContext.d();
-    if (QLog.isColorLevel()) {
-      QLog.d("Face2FaceDetailBaseView", 2, "animHide, onAnimationEnd " + hashCode());
+    if (QLog.isColorLevel())
+    {
+      paramAnimation = new StringBuilder();
+      paramAnimation.append("animHide, onAnimationEnd ");
+      paramAnimation.append(hashCode());
+      QLog.d("Face2FaceDetailBaseView", 2, paramAnimation.toString());
     }
     Face2FaceDetailBaseView.a(this.a, true);
   }
@@ -26,14 +30,18 @@ class Face2FaceDetailBaseView$2
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Face2FaceDetailBaseView", 2, "animHide, onAnimationStart " + hashCode());
+    if (QLog.isColorLevel())
+    {
+      paramAnimation = new StringBuilder();
+      paramAnimation.append("animHide, onAnimationStart ");
+      paramAnimation.append(hashCode());
+      QLog.d("Face2FaceDetailBaseView", 2, paramAnimation.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -46,20 +46,23 @@ public class FileInfo
   
   public FileInfo(String paramString)
   {
-    if (paramString == null) {
-      throw new FileNotFoundException("file path is null!");
-    }
-    paramString = new File(paramString);
-    if (!paramString.exists()) {
+    if (paramString != null)
+    {
+      paramString = new File(paramString);
+      if (paramString.exists())
+      {
+        setDirectory(paramString.isDirectory());
+        setPath(paramString.getAbsolutePath());
+        setName(paramString.getName());
+        setSize(paramString.length());
+        setDate(paramString.lastModified());
+        setApkPackeageName("");
+        setGroupName("");
+        return;
+      }
       throw new FileNotFoundException("file not exist!");
     }
-    setDirectory(paramString.isDirectory());
-    setPath(paramString.getAbsolutePath());
-    setName(paramString.getName());
-    setSize(paramString.length());
-    setDate(paramString.lastModified());
-    setApkPackeageName("");
-    setGroupName("");
+    throw new FileNotFoundException("file path is null!");
   }
   
   private boolean compare(FileInfo paramFileInfo)
@@ -69,25 +72,28 @@ public class FileInfo
   
   public static FileInfo create(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    File localFile;
-    do
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramString != null)
     {
-      return null;
-      localFile = new File(paramString);
-    } while ((!localFile.exists()) || (localFile.length() == 0L));
-    try
-    {
-      paramString = new FileInfo(paramString);
-      return paramString;
-    }
-    catch (FileNotFoundException paramString)
-    {
-      for (;;)
-      {
-        paramString = null;
+      if (paramString.length() == 0) {
+        return null;
+      }
+      File localFile = new File(paramString);
+      localObject1 = localObject2;
+      if (localFile.exists()) {
+        if (localFile.length() == 0L) {
+          return null;
+        }
       }
     }
+    try
+    {
+      localObject1 = new FileInfo(paramString);
+      return localObject1;
+    }
+    catch (FileNotFoundException paramString) {}
+    return null;
   }
   
   public int describeContents()
@@ -100,10 +106,10 @@ public class FileInfo
     if (this == paramObject) {
       return true;
     }
-    if ((paramObject == null) || (!(paramObject instanceof FileInfo))) {
-      return false;
+    if ((paramObject != null) && ((paramObject instanceof FileInfo))) {
+      return compare((FileInfo)paramObject);
     }
-    return compare((FileInfo)paramObject);
+    return false;
   }
   
   public String getApkPackeageName()
@@ -148,7 +154,11 @@ public class FileInfo
   
   public int hashCode()
   {
-    return (getName() + getSize() + getDate()).hashCode();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getName());
+    localStringBuilder.append(getSize());
+    localStringBuilder.append(getDate());
+    return localStringBuilder.toString().hashCode();
   }
   
   public boolean isDirectory()
@@ -234,7 +244,7 @@ public class FileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.FileInfo
  * JD-Core Version:    0.7.0.1
  */

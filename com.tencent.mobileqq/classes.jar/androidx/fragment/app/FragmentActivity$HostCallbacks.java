@@ -99,7 +99,7 @@ class FragmentActivity$HostCallbacks
   
   public boolean onShouldSaveFragmentState(@NonNull Fragment paramFragment)
   {
-    return !this.this$0.isFinishing();
+    return this.this$0.isFinishing() ^ true;
   }
   
   public boolean onShouldShowRequestPermissionRationale(@NonNull String paramString)
@@ -129,7 +129,7 @@ class FragmentActivity$HostCallbacks
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.fragment.app.FragmentActivity.HostCallbacks
  * JD-Core Version:    0.7.0.1
  */

@@ -16,31 +16,47 @@ final class ShortVideoShareUtil$1
   {
     int i = paramActionSheetItem.action;
     paramShareActionSheet.dismiss();
-    switch (i)
-    {
-    default: 
-      QLog.e("ShortVideoShareUtil", 1, "handleShareChatItemClick with invalid case:" + i);
-      return;
-    case 2: 
-    case 73: 
-      ShortVideoShareUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e, false);
-      return;
-    case 3: 
-      ShortVideoShareUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e);
-      return;
-    case 9: 
-      ShortVideoShareUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.f, new ShortVideoShareUtil.1.1(this));
-      return;
-    case 10: 
-      ShortVideoShareUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.f, new ShortVideoShareUtil.1.2(this));
-      return;
+    if (i != 2) {
+      if (i != 3)
+      {
+        if (i != 9)
+        {
+          if (i != 10)
+          {
+            if (i != 72)
+            {
+              if (i != 73)
+              {
+                paramActionSheetItem = new StringBuilder();
+                paramActionSheetItem.append("handleShareChatItemClick with invalid case:");
+                paramActionSheetItem.append(i);
+                QLog.e("ShortVideoShareUtil", 1, paramActionSheetItem.toString());
+              }
+            }
+            else {
+              ShortVideoShareUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e, false, paramActionSheetItem.uinType, paramActionSheetItem.uin);
+            }
+          }
+          else {
+            ShortVideoShareUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.f, new ShortVideoShareUtil.1.2(this));
+          }
+        }
+        else {
+          ShortVideoShareUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.f, new ShortVideoShareUtil.1.1(this));
+        }
+      }
+      else
+      {
+        ShortVideoShareUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e);
+        return;
+      }
     }
-    ShortVideoShareUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e, false, paramActionSheetItem.uinType, paramActionSheetItem.uin);
+    ShortVideoShareUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil.1
  * JD-Core Version:    0.7.0.1
  */

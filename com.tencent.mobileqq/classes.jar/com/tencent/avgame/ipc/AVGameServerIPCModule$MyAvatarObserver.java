@@ -13,7 +13,7 @@ class AVGameServerIPCModule$MyAvatarObserver
     this.a = new WeakReference(paramAVGameServerIPCModule);
   }
   
-  public void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
     AVGameServerIPCModule localAVGameServerIPCModule = (AVGameServerIPCModule)this.a.get();
     if ((paramBoolean) && (localAVGameServerIPCModule != null) && (AVGameServerIPCModule.a(localAVGameServerIPCModule, paramString, 0))) {
@@ -23,7 +23,7 @@ class AVGameServerIPCModule$MyAvatarObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.ipc.AVGameServerIPCModule.MyAvatarObserver
  * JD-Core Version:    0.7.0.1
  */

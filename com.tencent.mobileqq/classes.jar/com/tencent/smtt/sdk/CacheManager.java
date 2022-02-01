@@ -42,23 +42,27 @@ public final class CacheManager
       paramString = i.a(Class.forName("android.webkit.CacheManager"), "getCacheFile", new Class[] { String.class, Map.class }, new Object[] { paramString, paramMap });
       return paramString;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label62:
+      break label62;
+    }
     return null;
   }
   
   @Deprecated
   public static File getCacheFileBaseDir()
   {
-    x localx = x.a();
-    if ((localx != null) && (localx.b())) {
-      return (File)localx.c().g();
+    Object localObject = x.a();
+    if ((localObject != null) && (((x)localObject).b())) {}
+    for (localObject = ((x)localObject).c().g();; localObject = i.a("android.webkit.CacheManager", "getCacheFileBaseDir")) {
+      return (File)localObject;
     }
-    return (File)i.a("android.webkit.CacheManager", "getCacheFileBaseDir");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.CacheManager
  * JD-Core Version:    0.7.0.1
  */

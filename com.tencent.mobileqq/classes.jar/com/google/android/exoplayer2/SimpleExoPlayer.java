@@ -62,73 +62,74 @@ public class SimpleExoPlayer
   
   protected SimpleExoPlayer(RenderersFactory paramRenderersFactory, TrackSelector paramTrackSelector, LoadControl paramLoadControl, Clock paramClock)
   {
-    if (Looper.myLooper() != null) {}
-    for (Looper localLooper = Looper.myLooper();; localLooper = Looper.getMainLooper())
-    {
-      this.renderers = paramRenderersFactory.createRenderers(new Handler(localLooper), this.componentListener, this.componentListener, this.componentListener, this.componentListener);
-      this.audioVolume = 1.0F;
-      this.audioSessionId = 0;
-      this.audioAttributes = AudioAttributes.DEFAULT;
-      this.videoScalingMode = 1;
-      this.player = createExoPlayerImpl(this.renderers, paramTrackSelector, paramLoadControl, paramClock);
-      return;
+    if (Looper.myLooper() != null) {
+      localObject = Looper.myLooper();
+    } else {
+      localObject = Looper.getMainLooper();
     }
+    Object localObject = new Handler((Looper)localObject);
+    SimpleExoPlayer.ComponentListener localComponentListener = this.componentListener;
+    this.renderers = paramRenderersFactory.createRenderers((Handler)localObject, localComponentListener, localComponentListener, localComponentListener, localComponentListener);
+    this.audioVolume = 1.0F;
+    this.audioSessionId = 0;
+    this.audioAttributes = AudioAttributes.DEFAULT;
+    this.videoScalingMode = 1;
+    this.player = createExoPlayerImpl(this.renderers, paramTrackSelector, paramLoadControl, paramClock);
   }
   
   private void removeSurfaceCallbacks()
   {
-    if (this.textureView != null)
+    Object localObject = this.textureView;
+    if (localObject != null)
     {
-      if (this.textureView.getSurfaceTextureListener() == this.componentListener) {
-        break label60;
+      if (((TextureView)localObject).getSurfaceTextureListener() != this.componentListener) {
+        Log.w("SimpleExoPlayer", "SurfaceTextureListener already unset or replaced.");
+      } else {
+        this.textureView.setSurfaceTextureListener(null);
       }
-      Log.w("SimpleExoPlayer", "SurfaceTextureListener already unset or replaced.");
-    }
-    for (;;)
-    {
       this.textureView = null;
-      if (this.surfaceHolder != null)
-      {
-        this.surfaceHolder.removeCallback(this.componentListener);
-        this.surfaceHolder = null;
-      }
-      return;
-      label60:
-      this.textureView.setSurfaceTextureListener(null);
+    }
+    localObject = this.surfaceHolder;
+    if (localObject != null)
+    {
+      ((SurfaceHolder)localObject).removeCallback(this.componentListener);
+      this.surfaceHolder = null;
     }
   }
   
   private void setVideoSurfaceInternal(Surface paramSurface, boolean paramBoolean)
   {
-    Object localObject = new ArrayList();
-    Renderer[] arrayOfRenderer = this.renderers;
-    int j = arrayOfRenderer.length;
+    Object localObject1 = new ArrayList();
+    Object localObject2 = this.renderers;
+    int j = localObject2.length;
     int i = 0;
     while (i < j)
     {
-      Renderer localRenderer = arrayOfRenderer[i];
-      if (localRenderer.getTrackType() == 2) {
-        ((List)localObject).add(this.player.createMessage(localRenderer).setType(1).setPayload(paramSurface).send());
+      PlayerMessage.Target localTarget = localObject2[i];
+      if (localTarget.getTrackType() == 2) {
+        ((List)localObject1).add(this.player.createMessage(localTarget).setType(1).setPayload(paramSurface).send());
       }
       i += 1;
     }
-    if ((this.surface != null) && (this.surface != paramSurface)) {
-      try
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          ((PlayerMessage)((Iterator)localObject).next()).blockUntilDelivered();
-        }
-        this.surface = paramSurface;
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        Thread.currentThread().interrupt();
-        if (this.ownsSurface) {
-          this.surface.release();
-        }
+    localObject2 = this.surface;
+    if ((localObject2 != null) && (localObject2 != paramSurface)) {}
+    try
+    {
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext()) {
+        ((PlayerMessage)((Iterator)localObject1).next()).blockUntilDelivered();
       }
     }
+    catch (InterruptedException localInterruptedException)
+    {
+      label135:
+      break label135;
+    }
+    Thread.currentThread().interrupt();
+    if (this.ownsSurface) {
+      this.surface.release();
+    }
+    this.surface = paramSurface;
     this.ownsSurface = paramBoolean;
   }
   
@@ -206,12 +207,12 @@ public class SimpleExoPlayer
   
   public void clearVideoSurfaceView(SurfaceView paramSurfaceView)
   {
-    if (paramSurfaceView == null) {}
-    for (paramSurfaceView = null;; paramSurfaceView = paramSurfaceView.getHolder())
-    {
-      clearVideoSurfaceHolder(paramSurfaceView);
-      return;
+    if (paramSurfaceView == null) {
+      paramSurfaceView = null;
+    } else {
+      paramSurfaceView = paramSurfaceView.getHolder();
     }
+    clearVideoSurfaceHolder(paramSurfaceView);
   }
   
   public void clearVideoTextureView(TextureView paramTextureView)
@@ -436,10 +437,11 @@ public class SimpleExoPlayer
   {
     this.player.release();
     removeSurfaceCallbacks();
-    if (this.surface != null)
+    Surface localSurface = this.surface;
+    if (localSurface != null)
     {
       if (this.ownsSurface) {
-        this.surface.release();
+        localSurface.release();
       }
       this.surface = null;
     }
@@ -556,14 +558,16 @@ public class SimpleExoPlayer
   @TargetApi(23)
   public void setPlaybackParams(@Nullable PlaybackParams paramPlaybackParams)
   {
-    if (paramPlaybackParams != null) {
-      paramPlaybackParams.allowDefaults();
-    }
-    for (paramPlaybackParams = new PlaybackParameters(paramPlaybackParams.getSpeed(), paramPlaybackParams.getPitch());; paramPlaybackParams = null)
+    if (paramPlaybackParams != null)
     {
-      setPlaybackParameters(paramPlaybackParams);
-      return;
+      paramPlaybackParams.allowDefaults();
+      paramPlaybackParams = new PlaybackParameters(paramPlaybackParams.getSpeed(), paramPlaybackParams.getPitch());
     }
+    else
+    {
+      paramPlaybackParams = null;
+    }
+    setPlaybackParameters(paramPlaybackParams);
   }
   
   public void setRepeatMode(int paramInt)
@@ -641,30 +645,27 @@ public class SimpleExoPlayer
     }
     paramSurfaceHolder.addCallback(this.componentListener);
     paramSurfaceHolder = paramSurfaceHolder.getSurface();
-    if ((paramSurfaceHolder != null) && (paramSurfaceHolder.isValid())) {}
-    for (;;)
-    {
-      setVideoSurfaceInternal(paramSurfaceHolder, false);
-      return;
+    if ((paramSurfaceHolder == null) || (!paramSurfaceHolder.isValid())) {
       paramSurfaceHolder = null;
     }
+    setVideoSurfaceInternal(paramSurfaceHolder, false);
   }
   
   public void setVideoSurfaceView(SurfaceView paramSurfaceView)
   {
-    if (paramSurfaceView == null) {}
-    for (paramSurfaceView = null;; paramSurfaceView = paramSurfaceView.getHolder())
-    {
-      setVideoSurfaceHolder(paramSurfaceView);
-      return;
+    if (paramSurfaceView == null) {
+      paramSurfaceView = null;
+    } else {
+      paramSurfaceView = paramSurfaceView.getHolder();
     }
+    setVideoSurfaceHolder(paramSurfaceView);
   }
   
   public void setVideoTextureView(TextureView paramTextureView)
   {
-    Object localObject = null;
     removeSurfaceCallbacks();
     this.textureView = paramTextureView;
+    Object localObject = null;
     if (paramTextureView == null)
     {
       setVideoSurfaceInternal(null, true);
@@ -674,21 +675,17 @@ public class SimpleExoPlayer
       Log.w("SimpleExoPlayer", "Replacing existing SurfaceTextureListener.");
     }
     paramTextureView.setSurfaceTextureListener(this.componentListener);
-    if (paramTextureView.isAvailable())
-    {
+    if (paramTextureView.isAvailable()) {
       paramTextureView = paramTextureView.getSurfaceTexture();
-      if (paramTextureView != null) {
-        break label76;
-      }
-    }
-    label76:
-    for (paramTextureView = localObject;; paramTextureView = new Surface(paramTextureView))
-    {
-      setVideoSurfaceInternal(paramTextureView, true);
-      return;
+    } else {
       paramTextureView = null;
-      break;
     }
+    if (paramTextureView == null) {
+      paramTextureView = localObject;
+    } else {
+      paramTextureView = new Surface(paramTextureView);
+    }
+    setVideoSurfaceInternal(paramTextureView, true);
   }
   
   public void setVolume(float paramFloat)
@@ -719,7 +716,7 @@ public class SimpleExoPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.SimpleExoPlayer
  * JD-Core Version:    0.7.0.1
  */

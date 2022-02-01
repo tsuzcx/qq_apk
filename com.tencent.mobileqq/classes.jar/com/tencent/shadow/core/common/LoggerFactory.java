@@ -9,10 +9,10 @@ public final class LoggerFactory
   
   public static ILoggerFactory getILoggerFactory()
   {
-    if (sILoggerFactory == null) {
-      throw new RuntimeException("没有找到 ILoggerFactory 实现，请先调用setILoggerFactory");
+    if (sILoggerFactory != null) {
+      return sILoggerFactory;
     }
-    return sILoggerFactory;
+    throw new RuntimeException("没有找到 ILoggerFactory 实现，请先调用setILoggerFactory");
   }
   
   public static final Logger getLogger(Class<?> paramClass)
@@ -32,7 +32,7 @@ public final class LoggerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.shadow.core.common.LoggerFactory
  * JD-Core Version:    0.7.0.1
  */

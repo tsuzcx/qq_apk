@@ -1,37 +1,38 @@
 package com.tencent.biz.pubaccount.weishi_new;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import com.tencent.mobileqq.app.BaseFragment;
 import java.util.List;
 
 public class WSHomeFragmentAdapter
   extends FragmentPagerAdapter
 {
-  private List<Fragment> a;
+  private List<BaseFragment> a;
   
-  public WSHomeFragmentAdapter(FragmentManager paramFragmentManager, List<Fragment> paramList)
+  public WSHomeFragmentAdapter(FragmentManager paramFragmentManager, List<BaseFragment> paramList)
   {
     super(paramFragmentManager);
     this.a = paramList;
   }
   
-  public int getCount()
+  public BaseFragment a(int paramInt)
   {
-    if (this.a == null) {
-      return 0;
-    }
-    return this.a.size();
+    return (BaseFragment)this.a.get(paramInt);
   }
   
-  public Fragment getItem(int paramInt)
+  public int getCount()
   {
-    return (Fragment)this.a.get(paramInt);
+    List localList = this.a;
+    if (localList == null) {
+      return 0;
+    }
+    return localList.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSHomeFragmentAdapter
  * JD-Core Version:    0.7.0.1
  */

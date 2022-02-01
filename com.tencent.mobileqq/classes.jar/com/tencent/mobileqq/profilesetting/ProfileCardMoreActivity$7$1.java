@@ -11,17 +11,18 @@ class ProfileCardMoreActivity$7$1
   public void run()
   {
     FormSimpleItem localFormSimpleItem = this.a.a.a;
-    if (TextUtils.isEmpty(this.a.a.c)) {}
-    for (String str = "";; str = this.a.a.c)
-    {
-      localFormSimpleItem.setRightText(str);
-      return;
+    String str;
+    if (TextUtils.isEmpty(this.a.a.c)) {
+      str = "";
+    } else {
+      str = this.a.a.c;
     }
+    localFormSimpleItem.setRightText(str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity.7.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,11 @@
 package com.tencent.mobileqq.managers;
 
 import android.content.SharedPreferences;
-import android.os.SystemClock;
-import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import org.json.JSONObject;
 
 public class CUOpenCardGuideMng$GuideConfigData
 {
@@ -28,9 +25,13 @@ public class CUOpenCardGuideMng$GuideConfigData
     this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_ArrayOfComTencentMobileqqManagersCUOpenCardGuideMng$GuideEntry = new CUOpenCardGuideMng.GuideEntry[6];
     int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfComTencentMobileqqManagersCUOpenCardGuideMng$GuideEntry.length)
+    for (;;)
     {
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqManagersCUOpenCardGuideMng$GuideEntry[i] = null;
+      paramString = this.jdField_a_of_type_ArrayOfComTencentMobileqqManagersCUOpenCardGuideMng$GuideEntry;
+      if (i >= paramString.length) {
+        break;
+      }
+      paramString[i] = null;
       i += 1;
     }
     this.jdField_a_of_type_Long = 0L;
@@ -40,96 +41,270 @@ public class CUOpenCardGuideMng$GuideConfigData
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
-    {
+    if (this.jdField_a_of_type_Boolean) {
       return;
-      a(BaseApplicationImpl.getApplication().getSharedPreferences("ChinaUnicomPhoneCard" + this.jdField_a_of_type_JavaLangString, 4).getString("config_content", ""));
-    } while (!QLog.isColorLevel());
-    QLog.i("CUOpenCardGuideMng", 2, "init");
+    }
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ChinaUnicomPhoneCard");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    a(localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 4).getString("config_content", ""));
+    if (QLog.isColorLevel()) {
+      QLog.i("CUOpenCardGuideMng", 2, "init");
+    }
   }
   
+  /* Error */
   public void a(String paramString)
   {
-    int j = 0;
-    int i = 0;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    if ((this.jdField_b_of_type_JavaLangString != null) && (this.jdField_b_of_type_JavaLangString.equals(paramString))) {
-      if (QLog.isColorLevel()) {
-        QLog.i("CUOpenCardGuideMng", 2, "parseConfig config not change");
-      }
-    }
-    do
-    {
-      return;
-      if (!TextUtils.isEmpty(paramString)) {
-        break;
-      }
-      this.jdField_b_of_type_Boolean = false;
-      while (i < this.jdField_a_of_type_ArrayOfComTencentMobileqqManagersCUOpenCardGuideMng$GuideEntry.length)
-      {
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqManagersCUOpenCardGuideMng$GuideEntry[i] = null;
-        i += 1;
-      }
-      this.jdField_b_of_type_JavaLangString = "";
-    } while (!QLog.isColorLevel());
-    QLog.i("CUOpenCardGuideMng", 2, "parseConfig config is empty");
-    return;
-    for (;;)
-    {
-      Object localObject;
-      try
-      {
-        localObject = new JSONObject(paramString);
-        if (!((JSONObject)localObject).has("isNeedShowGuide")) {
-          break label359;
-        }
-        this.jdField_b_of_type_Boolean = ((JSONObject)localObject).getBoolean("isNeedShowGuide");
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        return;
-      }
-      finally {}
-      if ((i < this.jdField_a_of_type_ArrayOfComTencentMobileqqManagersCUOpenCardGuideMng$GuideEntry.length) && (i < CUOpenCardGuideMng.a.length))
-      {
-        if (((JSONObject)localObject).has(CUOpenCardGuideMng.a[i])) {
-          this.jdField_a_of_type_ArrayOfComTencentMobileqqManagersCUOpenCardGuideMng$GuideEntry[i] = CUOpenCardGuideMng.GuideEntry.a(((JSONObject)localObject).getJSONObject(CUOpenCardGuideMng.a[i]));
-        } else {
-          this.jdField_a_of_type_ArrayOfComTencentMobileqqManagersCUOpenCardGuideMng$GuideEntry[i] = null;
-        }
-      }
-      else
-      {
-        this.jdField_b_of_type_JavaLangString = paramString;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        localObject = new StringBuilder(300);
-        ((StringBuilder)localObject).append("parseConfig:").append("\n");
-        ((StringBuilder)localObject).append("config: ").append(paramString).append("\n");
-        ((StringBuilder)localObject).append("mIsShowGuide: ").append(this.jdField_b_of_type_Boolean).append("\n");
-        i = j;
-        while ((i < this.jdField_a_of_type_ArrayOfComTencentMobileqqManagersCUOpenCardGuideMng$GuideEntry.length) && (i < CUOpenCardGuideMng.a.length))
-        {
-          ((StringBuilder)localObject).append(CUOpenCardGuideMng.a[i]).append(": ").append(this.jdField_a_of_type_ArrayOfComTencentMobileqqManagersCUOpenCardGuideMng$GuideEntry[i]).append("\n");
-          i += 1;
-        }
-        QLog.i("CUOpenCardGuideMng", 2, ((StringBuilder)localObject).toString());
-        continue;
-        label359:
-        i = 0;
-        continue;
-      }
-      i += 1;
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: iconst_1
+    //   2: putfield 19	com/tencent/mobileqq/managers/CUOpenCardGuideMng$GuideConfigData:jdField_a_of_type_Boolean	Z
+    //   5: aload_0
+    //   6: invokestatic 107	android/os/SystemClock:elapsedRealtime	()J
+    //   9: putfield 33	com/tencent/mobileqq/managers/CUOpenCardGuideMng$GuideConfigData:jdField_a_of_type_Long	J
+    //   12: aload_0
+    //   13: getfield 25	com/tencent/mobileqq/managers/CUOpenCardGuideMng$GuideConfigData:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   16: astore 5
+    //   18: aload 5
+    //   20: ifnull +27 -> 47
+    //   23: aload 5
+    //   25: aload_1
+    //   26: invokevirtual 113	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   29: ifeq +18 -> 47
+    //   32: invokestatic 91	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   35: ifeq +11 -> 46
+    //   38: ldc 93
+    //   40: iconst_2
+    //   41: ldc 115
+    //   43: invokestatic 99	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   46: return
+    //   47: aload_1
+    //   48: invokestatic 121	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   51: istore 4
+    //   53: iconst_0
+    //   54: istore_3
+    //   55: iconst_0
+    //   56: istore_2
+    //   57: iload 4
+    //   59: ifeq +51 -> 110
+    //   62: aload_0
+    //   63: iconst_0
+    //   64: putfield 27	com/tencent/mobileqq/managers/CUOpenCardGuideMng$GuideConfigData:jdField_b_of_type_Boolean	Z
+    //   67: aload_0
+    //   68: getfield 31	com/tencent/mobileqq/managers/CUOpenCardGuideMng$GuideConfigData:jdField_a_of_type_ArrayOfComTencentMobileqqManagersCUOpenCardGuideMng$GuideEntry	[Lcom/tencent/mobileqq/managers/CUOpenCardGuideMng$GuideEntry;
+    //   71: astore_1
+    //   72: iload_2
+    //   73: aload_1
+    //   74: arraylength
+    //   75: if_icmpge +14 -> 89
+    //   78: aload_1
+    //   79: iload_2
+    //   80: aconst_null
+    //   81: aastore
+    //   82: iload_2
+    //   83: iconst_1
+    //   84: iadd
+    //   85: istore_2
+    //   86: goto -19 -> 67
+    //   89: aload_0
+    //   90: ldc 23
+    //   92: putfield 25	com/tencent/mobileqq/managers/CUOpenCardGuideMng$GuideConfigData:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   95: invokestatic 91	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   98: ifeq +11 -> 109
+    //   101: ldc 93
+    //   103: iconst_2
+    //   104: ldc 123
+    //   106: invokestatic 99	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   109: return
+    //   110: aload_0
+    //   111: monitorenter
+    //   112: new 125	org/json/JSONObject
+    //   115: dup
+    //   116: aload_1
+    //   117: invokespecial 127	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   120: astore 5
+    //   122: aload 5
+    //   124: ldc 129
+    //   126: invokevirtual 133	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   129: ifeq +268 -> 397
+    //   132: aload_0
+    //   133: aload 5
+    //   135: ldc 129
+    //   137: invokevirtual 136	org/json/JSONObject:getBoolean	(Ljava/lang/String;)Z
+    //   140: putfield 27	com/tencent/mobileqq/managers/CUOpenCardGuideMng$GuideConfigData:jdField_b_of_type_Boolean	Z
+    //   143: goto +254 -> 397
+    //   146: iload_2
+    //   147: aload_0
+    //   148: getfield 31	com/tencent/mobileqq/managers/CUOpenCardGuideMng$GuideConfigData:jdField_a_of_type_ArrayOfComTencentMobileqqManagersCUOpenCardGuideMng$GuideEntry	[Lcom/tencent/mobileqq/managers/CUOpenCardGuideMng$GuideEntry;
+    //   151: arraylength
+    //   152: if_icmpge +56 -> 208
+    //   155: iload_2
+    //   156: getstatic 141	com/tencent/mobileqq/managers/CUOpenCardGuideMng:a	[Ljava/lang/String;
+    //   159: arraylength
+    //   160: if_icmpge +48 -> 208
+    //   163: aload 5
+    //   165: getstatic 141	com/tencent/mobileqq/managers/CUOpenCardGuideMng:a	[Ljava/lang/String;
+    //   168: iload_2
+    //   169: aaload
+    //   170: invokevirtual 133	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   173: ifeq +25 -> 198
+    //   176: aload_0
+    //   177: getfield 31	com/tencent/mobileqq/managers/CUOpenCardGuideMng$GuideConfigData:jdField_a_of_type_ArrayOfComTencentMobileqqManagersCUOpenCardGuideMng$GuideEntry	[Lcom/tencent/mobileqq/managers/CUOpenCardGuideMng$GuideEntry;
+    //   180: iload_2
+    //   181: aload 5
+    //   183: getstatic 141	com/tencent/mobileqq/managers/CUOpenCardGuideMng:a	[Ljava/lang/String;
+    //   186: iload_2
+    //   187: aaload
+    //   188: invokevirtual 145	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   191: invokestatic 148	com/tencent/mobileqq/managers/CUOpenCardGuideMng$GuideEntry:a	(Lorg/json/JSONObject;)Lcom/tencent/mobileqq/managers/CUOpenCardGuideMng$GuideEntry;
+    //   194: aastore
+    //   195: goto +207 -> 402
+    //   198: aload_0
+    //   199: getfield 31	com/tencent/mobileqq/managers/CUOpenCardGuideMng$GuideConfigData:jdField_a_of_type_ArrayOfComTencentMobileqqManagersCUOpenCardGuideMng$GuideEntry	[Lcom/tencent/mobileqq/managers/CUOpenCardGuideMng$GuideEntry;
+    //   202: iload_2
+    //   203: aconst_null
+    //   204: aastore
+    //   205: goto +197 -> 402
+    //   208: aload_0
+    //   209: aload_1
+    //   210: putfield 25	com/tencent/mobileqq/managers/CUOpenCardGuideMng$GuideConfigData:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   213: invokestatic 91	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   216: ifeq +168 -> 384
+    //   219: new 60	java/lang/StringBuilder
+    //   222: dup
+    //   223: sipush 300
+    //   226: invokespecial 151	java/lang/StringBuilder:<init>	(I)V
+    //   229: astore 5
+    //   231: aload 5
+    //   233: ldc 153
+    //   235: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   238: pop
+    //   239: aload 5
+    //   241: ldc 155
+    //   243: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   246: pop
+    //   247: aload 5
+    //   249: ldc 157
+    //   251: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   254: pop
+    //   255: aload 5
+    //   257: aload_1
+    //   258: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   261: pop
+    //   262: aload 5
+    //   264: ldc 155
+    //   266: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   269: pop
+    //   270: aload 5
+    //   272: ldc 159
+    //   274: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   277: pop
+    //   278: aload 5
+    //   280: aload_0
+    //   281: getfield 27	com/tencent/mobileqq/managers/CUOpenCardGuideMng$GuideConfigData:jdField_b_of_type_Boolean	Z
+    //   284: invokevirtual 162	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   287: pop
+    //   288: aload 5
+    //   290: ldc 155
+    //   292: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   295: pop
+    //   296: iload_3
+    //   297: istore_2
+    //   298: iload_2
+    //   299: aload_0
+    //   300: getfield 31	com/tencent/mobileqq/managers/CUOpenCardGuideMng$GuideConfigData:jdField_a_of_type_ArrayOfComTencentMobileqqManagersCUOpenCardGuideMng$GuideEntry	[Lcom/tencent/mobileqq/managers/CUOpenCardGuideMng$GuideEntry;
+    //   303: arraylength
+    //   304: if_icmpge +57 -> 361
+    //   307: iload_2
+    //   308: getstatic 141	com/tencent/mobileqq/managers/CUOpenCardGuideMng:a	[Ljava/lang/String;
+    //   311: arraylength
+    //   312: if_icmpge +49 -> 361
+    //   315: aload 5
+    //   317: getstatic 141	com/tencent/mobileqq/managers/CUOpenCardGuideMng:a	[Ljava/lang/String;
+    //   320: iload_2
+    //   321: aaload
+    //   322: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   325: pop
+    //   326: aload 5
+    //   328: ldc 164
+    //   330: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   333: pop
+    //   334: aload 5
+    //   336: aload_0
+    //   337: getfield 31	com/tencent/mobileqq/managers/CUOpenCardGuideMng$GuideConfigData:jdField_a_of_type_ArrayOfComTencentMobileqqManagersCUOpenCardGuideMng$GuideEntry	[Lcom/tencent/mobileqq/managers/CUOpenCardGuideMng$GuideEntry;
+    //   340: iload_2
+    //   341: aaload
+    //   342: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   345: pop
+    //   346: aload 5
+    //   348: ldc 155
+    //   350: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   353: pop
+    //   354: iload_2
+    //   355: iconst_1
+    //   356: iadd
+    //   357: istore_2
+    //   358: goto -60 -> 298
+    //   361: ldc 93
+    //   363: iconst_2
+    //   364: aload 5
+    //   366: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   369: invokestatic 99	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   372: goto +12 -> 384
+    //   375: astore_1
+    //   376: goto +11 -> 387
+    //   379: astore_1
+    //   380: aload_1
+    //   381: invokevirtual 170	java/lang/Exception:printStackTrace	()V
+    //   384: aload_0
+    //   385: monitorexit
+    //   386: return
+    //   387: aload_0
+    //   388: monitorexit
+    //   389: goto +5 -> 394
+    //   392: aload_1
+    //   393: athrow
+    //   394: goto -2 -> 392
+    //   397: iconst_0
+    //   398: istore_2
+    //   399: goto -253 -> 146
+    //   402: iload_2
+    //   403: iconst_1
+    //   404: iadd
+    //   405: istore_2
+    //   406: goto -260 -> 146
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	409	0	this	GuideConfigData
+    //   0	409	1	paramString	String
+    //   56	350	2	i	int
+    //   54	243	3	j	int
+    //   51	7	4	bool	boolean
+    //   16	349	5	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   112	143	375	finally
+    //   146	195	375	finally
+    //   198	205	375	finally
+    //   208	296	375	finally
+    //   298	354	375	finally
+    //   361	372	375	finally
+    //   380	384	375	finally
+    //   384	386	375	finally
+    //   387	389	375	finally
+    //   112	143	379	java/lang/Exception
+    //   146	195	379	java/lang/Exception
+    //   198	205	379	java/lang/Exception
+    //   208	296	379	java/lang/Exception
+    //   298	354	379	java/lang/Exception
+    //   361	372	379	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.managers.CUOpenCardGuideMng.GuideConfigData
  * JD-Core Version:    0.7.0.1
  */

@@ -26,72 +26,78 @@ public class PCActiveNoticeDecoder
 {
   public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, DecodeProtoPkgContext paramDecodeProtoPkgContext, MessageHandler paramMessageHandler)
   {
-    paramDecodeProtoPkgContext = null;
     if (QLog.isColorLevel()) {
       QLog.d("Push_PCActive_Notice_Decode", 2, "get notice from decodeC2CMsgPkg_MsgType0x210");
     }
     paramMsgType0x210 = paramMsgType0x210.msg_content.get().toByteArray();
     try
     {
-      Object localObject = new SubMsgType0x6b.MsgBody();
+      localObject = new SubMsgType0x6b.MsgBody();
       ((SubMsgType0x6b.MsgBody)localObject).mergeFrom(paramMsgType0x210);
-      long l = ((SubMsgType0x6b.MsgBody)localObject).uint64_to_uin.get();
-      if (!SettingCloneUtil.readValue(BaseApplicationImpl.getApplication(), Long.toString(l), null, "qqsetting_pcactive_key", false))
-      {
-        if (!((SubMsgType0x6b.MsgBody)localObject).bytes_tips_content.has()) {
-          break label337;
-        }
-        paramMsgType0x210 = new String(((SubMsgType0x6b.MsgBody)localObject).bytes_tips_content.get().toByteArray(), "utf-8");
-        if (!((SubMsgType0x6b.MsgBody)localObject).bytes_yes_text.has()) {
-          break label332;
-        }
-        paramList = new String(((SubMsgType0x6b.MsgBody)localObject).bytes_yes_text.get().toByteArray(), "utf-8");
-        if (((SubMsgType0x6b.MsgBody)localObject).bytes_no_text.has()) {
-          paramDecodeProtoPkgContext = new String(((SubMsgType0x6b.MsgBody)localObject).bytes_no_text.get().toByteArray(), "utf-8");
-        }
-        BaseApplicationImpl.getApplication().setPCActiveNotice(Long.toString(l), paramMsgType0x210, paramDecodeProtoPkgContext, paramList);
-        localObject = new Intent("mqq.intent.action.PCACTIVE_TIPS");
-        ((Intent)localObject).putExtra("uin", Long.toString(l));
-        ((Intent)localObject).putExtra("Message", paramMsgType0x210);
-        ((Intent)localObject).putExtra("lButton", paramDecodeProtoPkgContext);
-        ((Intent)localObject).putExtra("rButton", paramList);
-        if (NotifyPCActiveActivity.a == null) {
-          BaseApplicationImpl.getApplication().startActivity((Intent)localObject);
-        }
+      l = ((SubMsgType0x6b.MsgBody)localObject).uint64_to_uin.get();
+      paramMsgType0x210 = BaseApplicationImpl.getApplication();
+      paramList = Long.toString(l);
+      paramDecodeProtoPkgContext = null;
+      if (SettingCloneUtil.readValue(paramMsgType0x210, paramList, null, "qqsetting_pcactive_key", false)) {
+        break label298;
       }
-      MessageProtoCodec.a(paramMessageHandler, paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get());
-      return;
+      boolean bool = ((SubMsgType0x6b.MsgBody)localObject).bytes_tips_content.has();
+      if (!bool) {
+        break label355;
+      }
+      paramMsgType0x210 = new String(((SubMsgType0x6b.MsgBody)localObject).bytes_tips_content.get().toByteArray(), "utf-8");
     }
     catch (InvalidProtocolBufferMicroException paramMsgType0x210)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Push_PCActive_Notice_Decode", 2, "failed to get msg0x210.SubMsgType0x6b");
-        }
-      }
+      Object localObject;
+      long l;
+      break label284;
     }
     catch (UnsupportedEncodingException paramMsgType0x210)
     {
       for (;;)
       {
+        label284:
+        label298:
+        continue;
+        paramMsgType0x210 = null;
+        continue;
+        paramList = null;
+      }
+    }
+    if (((SubMsgType0x6b.MsgBody)localObject).bytes_yes_text.has())
+    {
+      paramList = new String(((SubMsgType0x6b.MsgBody)localObject).bytes_yes_text.get().toByteArray(), "utf-8");
+      if (((SubMsgType0x6b.MsgBody)localObject).bytes_no_text.has()) {
+        paramDecodeProtoPkgContext = new String(((SubMsgType0x6b.MsgBody)localObject).bytes_no_text.get().toByteArray(), "utf-8");
+      }
+      BaseApplicationImpl.getApplication().setPCActiveNotice(Long.toString(l), paramMsgType0x210, paramDecodeProtoPkgContext, paramList);
+      localObject = new Intent("mqq.intent.action.PCACTIVE_TIPS");
+      ((Intent)localObject).putExtra("uin", Long.toString(l));
+      ((Intent)localObject).putExtra("Message", paramMsgType0x210);
+      ((Intent)localObject).putExtra("lButton", paramDecodeProtoPkgContext);
+      ((Intent)localObject).putExtra("rButton", paramList);
+      if (NotifyPCActiveActivity.a == null)
+      {
+        BaseApplicationImpl.getApplication().startActivity((Intent)localObject);
+        break label298;
         if (QLog.isColorLevel())
         {
           QLog.d("Push_PCActive_Notice_Decode", 2, "failed to parse msg0x210.SubMsgType0x6b");
-          continue;
-          label332:
-          paramList = null;
-          continue;
-          label337:
-          paramMsgType0x210 = null;
+          break label298;
+          if (QLog.isColorLevel()) {
+            QLog.d("Push_PCActive_Notice_Decode", 2, "failed to get msg0x210.SubMsgType0x6b");
+          }
         }
       }
+      MessageProtoCodec.a(paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get(), paramMessageHandler.a());
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.msgType0x210.PCActiveNoticeDecoder
  * JD-Core Version:    0.7.0.1
  */

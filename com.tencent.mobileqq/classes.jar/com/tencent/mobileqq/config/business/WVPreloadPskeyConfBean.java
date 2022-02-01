@@ -16,13 +16,17 @@ public class WVPreloadPskeyConfBean
       paramString = new JSONObject(paramString);
       localWVPreloadPskeyConfBean.a = paramString.optInt("preloadPskey", 1);
       localWVPreloadPskeyConfBean.b = paramString.optInt("enableFTSMerge", 1);
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "confBean = " + localWVPreloadPskeyConfBean.toString());
+      paramString = new StringBuilder();
+      paramString.append("confBean = ");
+      paramString.append(localWVPreloadPskeyConfBean.toString());
+      QLog.d("WVPreloadPskeyConfProcessor", 2, paramString.toString());
       return localWVPreloadPskeyConfBean;
     }
     catch (Exception paramString)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("WVPreloadPskeyConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+      if (QLog.isColorLevel()) {
+        QLog.e("WVPreloadPskeyConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+      }
     }
     return localWVPreloadPskeyConfBean;
   }
@@ -30,13 +34,14 @@ public class WVPreloadPskeyConfBean
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("preloadPskey:").append(this.a);
+    localStringBuilder.append("preloadPskey:");
+    localStringBuilder.append(this.a);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.WVPreloadPskeyConfBean
  * JD-Core Version:    0.7.0.1
  */

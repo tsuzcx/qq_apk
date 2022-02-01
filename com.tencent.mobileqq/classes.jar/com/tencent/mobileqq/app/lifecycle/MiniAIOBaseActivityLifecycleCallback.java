@@ -29,8 +29,12 @@ public class MiniAIOBaseActivityLifecycleCallback
   
   public void doOnActivityDestroyed(Activity paramActivity)
   {
-    if (((paramActivity instanceof QBaseActivity)) && (((QBaseActivity)paramActivity).isNeedMiniMsg()) && (this.a != null)) {
-      this.a.destroy();
+    if (((paramActivity instanceof QBaseActivity)) && (((QBaseActivity)paramActivity).isNeedMiniMsg()))
+    {
+      paramActivity = this.a;
+      if (paramActivity != null) {
+        paramActivity.destroy();
+      }
     }
   }
   
@@ -38,8 +42,12 @@ public class MiniAIOBaseActivityLifecycleCallback
   
   public void doOnActivityPause(Activity paramActivity)
   {
-    if (((paramActivity instanceof QBaseActivity)) && (((QBaseActivity)paramActivity).isNeedMiniMsg()) && (this.a != null)) {
-      this.a.onBackground();
+    if (((paramActivity instanceof QBaseActivity)) && (((QBaseActivity)paramActivity).isNeedMiniMsg()))
+    {
+      paramActivity = this.a;
+      if (paramActivity != null) {
+        paramActivity.onBackground();
+      }
     }
   }
   
@@ -62,8 +70,12 @@ public class MiniAIOBaseActivityLifecycleCallback
   
   public void doOnActivityResume(Activity paramActivity)
   {
-    if (((paramActivity instanceof QBaseActivity)) && (((QBaseActivity)paramActivity).isNeedMiniMsg()) && (this.a != null)) {
-      this.a.onForeground();
+    if (((paramActivity instanceof QBaseActivity)) && (((QBaseActivity)paramActivity).isNeedMiniMsg()))
+    {
+      paramActivity = this.a;
+      if (paramActivity != null) {
+        paramActivity.onForeground();
+      }
     }
   }
   
@@ -78,8 +90,12 @@ public class MiniAIOBaseActivityLifecycleCallback
       paramActivity = (QBaseActivity)paramActivity;
       if ((paramBoolean) && (!paramActivity.isShowOnFirst()))
       {
-        if ((paramActivity.isNeedMiniMsg()) && (this.a != null)) {
-          this.a.showOnFirst();
+        if (paramActivity.isNeedMiniMsg())
+        {
+          MiniMsgUser localMiniMsgUser = this.a;
+          if (localMiniMsgUser != null) {
+            localMiniMsgUser.showOnFirst();
+          }
         }
         paramActivity.setShowOnFirst(true);
       }
@@ -94,7 +110,7 @@ public class MiniAIOBaseActivityLifecycleCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.lifecycle.MiniAIOBaseActivityLifecycleCallback
  * JD-Core Version:    0.7.0.1
  */

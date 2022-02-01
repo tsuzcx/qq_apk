@@ -86,10 +86,11 @@ public class MiniAppEnv
     try
     {
       paramIntent = (LoginInfo)paramIntent.getParcelableExtra("KEY_LOGININFO");
-      if (paramIntent != null) {
+      if (paramIntent != null)
+      {
         this.mLoginInfo = paramIntent;
+        return;
       }
-      return;
     }
     catch (Exception paramIntent)
     {
@@ -102,10 +103,11 @@ public class MiniAppEnv
     try
     {
       paramIntent = (MiniServiceFetcher)paramIntent.getParcelableExtra("KEY_MINI_SERVICE_MANAGER");
-      if (paramIntent != null) {
+      if (paramIntent != null)
+      {
         this.mMiniServiceManager = paramIntent.getMiniServiceManager();
+        return;
       }
-      return;
     }
     catch (Exception paramIntent)
     {
@@ -115,26 +117,27 @@ public class MiniAppEnv
   
   private void processConfiguration(Configuration paramConfiguration)
   {
-    if (this.mContext == null) {
-      QMLog.e("MiniAppEnv", "processConfiguration with Context is null!");
-    }
-    for (;;)
+    if (this.mContext == null)
     {
+      QMLog.e("MiniAppEnv", "processConfiguration with Context is null!");
       return;
-      if (paramConfiguration == null)
-      {
-        QMLog.e("MiniAppEnv", "processConfiguration with Configuration is null!");
-        return;
-      }
-      this.mProcessList = new ArrayList();
-      paramConfiguration = paramConfiguration.processInfoList.iterator();
-      while (paramConfiguration.hasNext())
-      {
-        Object localObject = (Configuration.ProcessInfo)paramConfiguration.next();
-        localObject = new MiniProcessorConfig(((Configuration.ProcessInfo)localObject).processType, ((Configuration.ProcessInfo)localObject).name, ((Configuration.ProcessInfo)localObject).uiClass, ((Configuration.ProcessInfo)localObject).internalUIClass, ((Configuration.ProcessInfo)localObject).receiverClass, ((Configuration.ProcessInfo)localObject).supportRuntimeType);
-        QMLog.i("MiniAppEnv", "createConfiguration. Add processor config: " + localObject);
-        this.mProcessList.add(localObject);
-      }
+    }
+    if (paramConfiguration == null)
+    {
+      QMLog.e("MiniAppEnv", "processConfiguration with Configuration is null!");
+      return;
+    }
+    this.mProcessList = new ArrayList();
+    paramConfiguration = paramConfiguration.processInfoList.iterator();
+    while (paramConfiguration.hasNext())
+    {
+      Object localObject = (Configuration.ProcessInfo)paramConfiguration.next();
+      localObject = new MiniProcessorConfig(((Configuration.ProcessInfo)localObject).processType, ((Configuration.ProcessInfo)localObject).name, ((Configuration.ProcessInfo)localObject).uiClass, ((Configuration.ProcessInfo)localObject).internalUIClass, ((Configuration.ProcessInfo)localObject).receiverClass, ((Configuration.ProcessInfo)localObject).supportRuntimeType);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("createConfiguration. Add processor config: ");
+      localStringBuilder.append(localObject);
+      QMLog.i("MiniAppEnv", localStringBuilder.toString());
+      this.mProcessList.add(localObject);
     }
   }
   
@@ -177,10 +180,11 @@ public class MiniAppEnv
   
   public Context getContext()
   {
-    if (this.mContext == null) {
-      throw new RuntimeException("Should call init() first!");
+    Context localContext = this.mContext;
+    if (localContext != null) {
+      return localContext;
     }
-    return this.mContext;
+    throw new RuntimeException("Should call init() first!");
   }
   
   public MiniProcessorConfig getCurrentProcessConfig()
@@ -233,31 +237,32 @@ public class MiniAppEnv
     if (paramMiniAppInfo == null)
     {
       QMLog.e("MiniAppEnv", "Failed to getAppUIProxy, miniAppInfo is null, return default appUIProxy");
-      paramMiniAppInfo = this.appUIProxy;
+      return this.appUIProxy;
     }
-    String str;
-    IUIProxy localIUIProxy;
-    do
+    if (paramMiniAppInfo.isEngineTypeMiniGame())
     {
-      return paramMiniAppInfo;
-      if (!paramMiniAppInfo.isEngineTypeMiniGame()) {
-        break label131;
-      }
-      str = paramMiniAppInfo.appId + "_" + paramMiniAppInfo.verType;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramMiniAppInfo.appId);
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(paramMiniAppInfo.verType);
+      String str = ((StringBuilder)localObject).toString();
       paramMiniAppInfo = (WeakReference)this.mUIProxyMap.get(str);
-      if (paramMiniAppInfo == null) {
-        break;
+      if (paramMiniAppInfo != null)
+      {
+        localObject = (IUIProxy)paramMiniAppInfo.get();
+        if (localObject != null)
+        {
+          paramMiniAppInfo = (MiniAppInfo)localObject;
+          if (!((IUIProxy)localObject).isDestroyed()) {
+            break label135;
+          }
+        }
       }
-      localIUIProxy = (IUIProxy)paramMiniAppInfo.get();
-      if (localIUIProxy == null) {
-        break;
-      }
-      paramMiniAppInfo = localIUIProxy;
-    } while (!localIUIProxy.isDestroyed());
-    paramMiniAppInfo = (IUIProxy)MiniAppDexLoader.g().create("com.tencent.qqmini.minigame.ui.GameUIProxy");
-    this.mUIProxyMap.put(str, new WeakReference(paramMiniAppInfo));
-    return paramMiniAppInfo;
-    label131:
+      paramMiniAppInfo = (IUIProxy)MiniAppDexLoader.g().create("com.tencent.qqmini.minigame.ui.GameUIProxy");
+      this.mUIProxyMap.put(str, new WeakReference(paramMiniAppInfo));
+      label135:
+      return paramMiniAppInfo;
+    }
     if (paramMiniAppInfo.isInternalApp()) {
       return this.appInternalUIProxy;
     }
@@ -270,7 +275,12 @@ public class MiniAppEnv
     processConfiguration(paramConfiguration);
     bindFields();
     this.miniAppInterface.onCreate(paramContext, paramConfiguration);
-    QMLog.i("MiniAppEnv", "Init MiniAppEnv. MiniSdkVersion:1.12.1_153_3c46116 QUA:" + QUAUtil.getQUA() + " PlatformQUA:" + QUAUtil.getPlatformQUA());
+    paramContext = new StringBuilder();
+    paramContext.append("Init MiniAppEnv. MiniSdkVersion:1.15.0_944_fdf6368 QUA:");
+    paramContext.append(QUAUtil.getQUA());
+    paramContext.append(" PlatformQUA:");
+    paramContext.append(QUAUtil.getPlatformQUA());
+    QMLog.i("MiniAppEnv", paramContext.toString());
   }
   
   public void setApkgLoader(ApkgLoader paramApkgLoader)
@@ -297,7 +307,7 @@ public class MiniAppEnv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.MiniAppEnv
  * JD-Core Version:    0.7.0.1
  */

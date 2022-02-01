@@ -21,17 +21,18 @@ public class SendAuth$Req
   
   public boolean checkArgs()
   {
-    if ((this.scope == null) || (this.scope.length() == 0) || (this.scope.length() > 1024))
+    String str = this.scope;
+    if ((str != null) && (str.length() != 0) && (this.scope.length() <= 1024))
     {
-      Log.e("MicroMsg.SDK.SendAuth.Req", "checkArgs fail, scope is invalid");
-      return false;
+      str = this.state;
+      if ((str == null) || (str.length() <= 1024)) {}
     }
-    if ((this.state != null) && (this.state.length() > 1024))
+    for (str = "checkArgs fail, state is invalid";; str = "checkArgs fail, scope is invalid")
     {
-      Log.e("MicroMsg.SDK.SendAuth.Req", "checkArgs fail, state is invalid");
+      Log.e("MicroMsg.SDK.SendAuth.Req", str);
       return false;
+      return true;
     }
-    return true;
   }
   
   public void fromBundle(Bundle paramBundle)
@@ -55,7 +56,7 @@ public class SendAuth$Req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.SendAuth.Req
  * JD-Core Version:    0.7.0.1
  */

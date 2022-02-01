@@ -23,12 +23,18 @@ final class ResolverState$MountPointEntry
   
   public String toString()
   {
-    return this.basePath + " -> " + this.fileSystemName + " " + this.fileSystem.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.basePath);
+    localStringBuilder.append(" -> ");
+    localStringBuilder.append(this.fileSystemName);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.fileSystem.toString());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.vfs.ResolverState.MountPointEntry
  * JD-Core Version:    0.7.0.1
  */

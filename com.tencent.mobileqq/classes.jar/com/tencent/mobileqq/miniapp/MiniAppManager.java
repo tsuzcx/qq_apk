@@ -32,41 +32,48 @@ public class MiniAppManager
     StoryDispatcher.a().registerSubscriber("MiniAppManager", this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppManager$MiniAppReceiver);
   }
   
-  private MiniAppInfo a(String paramString, int paramInt1, MiniAppInfo paramMiniAppInfo, int paramInt2, boolean paramBoolean, MiniAppInfoManager.MiniAppInfoCallback paramMiniAppInfoCallback, int paramInt3)
+  private MiniAppInfo a(String paramString, int paramInt1, MiniAppInfo paramMiniAppInfo, int paramInt2, boolean paramBoolean, MiniAppInfoCallback paramMiniAppInfoCallback, int paramInt3)
   {
-    if ((paramMiniAppInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfoManager.a(paramMiniAppInfo, paramInt2, paramInt3))) {
+    if ((paramMiniAppInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfoManager.a(paramMiniAppInfo, paramInt2, paramInt3)))
+    {
       if ((paramMiniAppInfoCallback != null) && (paramMiniAppInfoCallback.a != null)) {
         paramMiniAppInfoCallback.a(paramMiniAppInfoCallback.a.get(), true, paramMiniAppInfo);
       }
-    }
-    do
-    {
-      do
-      {
-        return paramMiniAppInfo;
-        if ((paramMiniAppInfo == null) || (paramInt2 != 1) || (!this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfoManager.a(paramMiniAppInfo))) {
-          break;
-        }
-        paramString = (IApp)this.jdField_a_of_type_JavaUtilMap.get(paramMiniAppInfo.h);
-        if (paramString != null) {
-          paramString.a(paramMiniAppInfo);
-        }
-      } while ((paramMiniAppInfoCallback == null) || (paramMiniAppInfoCallback.a == null));
-      paramMiniAppInfoCallback.a(paramMiniAppInfoCallback.a.get(), true, paramMiniAppInfo);
       return paramMiniAppInfo;
-      if ((paramMiniAppInfo == null) || (paramInt2 != 2) || (!this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfoManager.b(paramMiniAppInfo))) {
-        break;
-      }
+    }
+    if ((paramMiniAppInfo != null) && (paramInt2 == 1) && (this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfoManager.a(paramMiniAppInfo)))
+    {
       paramString = (IApp)this.jdField_a_of_type_JavaUtilMap.get(paramMiniAppInfo.h);
       if (paramString != null) {
         paramString.a(paramMiniAppInfo);
       }
-    } while ((paramMiniAppInfoCallback == null) || (paramMiniAppInfoCallback.a == null));
-    paramMiniAppInfoCallback.a(paramMiniAppInfoCallback.a.get(), true, paramMiniAppInfo);
-    return paramMiniAppInfo;
+      if ((paramMiniAppInfoCallback != null) && (paramMiniAppInfoCallback.a != null)) {
+        paramMiniAppInfoCallback.a(paramMiniAppInfoCallback.a.get(), true, paramMiniAppInfo);
+      }
+      return paramMiniAppInfo;
+    }
+    if ((paramMiniAppInfo != null) && (paramInt2 == 2) && (this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfoManager.b(paramMiniAppInfo)))
+    {
+      paramString = (IApp)this.jdField_a_of_type_JavaUtilMap.get(paramMiniAppInfo.h);
+      if (paramString != null) {
+        paramString.a(paramMiniAppInfo);
+      }
+      if ((paramMiniAppInfoCallback != null) && (paramMiniAppInfoCallback.a != null)) {
+        paramMiniAppInfoCallback.a(paramMiniAppInfoCallback.a.get(), true, paramMiniAppInfo);
+      }
+      return paramMiniAppInfo;
+    }
     if (paramBoolean)
     {
-      if ((paramInt2 == 1) || (paramInt2 == 2))
+      if ((paramInt2 != 1) && (paramInt2 != 2))
+      {
+        if ((paramMiniAppInfoCallback != null) && (paramMiniAppInfoCallback.a != null))
+        {
+          paramMiniAppInfoCallback.a(paramMiniAppInfoCallback.a.get(), false, null);
+          return null;
+        }
+      }
+      else
       {
         Object localObject = paramMiniAppInfo;
         if (paramMiniAppInfo == null)
@@ -82,13 +89,7 @@ public class MiniAppManager
         }
         this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfoManager.a((MiniAppInfo)localObject, paramInt2, paramMiniAppInfoCallback);
       }
-      for (;;)
-      {
-        return null;
-        if ((paramMiniAppInfoCallback != null) && (paramMiniAppInfoCallback.a != null)) {
-          paramMiniAppInfoCallback.a(paramMiniAppInfoCallback.a.get(), false, null);
-        }
-      }
+      return null;
     }
     if ((paramMiniAppInfoCallback != null) && (paramMiniAppInfoCallback.a != null)) {
       paramMiniAppInfoCallback.a(paramMiniAppInfoCallback.a.get(), false, null);
@@ -98,15 +99,16 @@ public class MiniAppManager
   
   public static MiniAppManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqMiniappMiniAppManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqMiniappMiniAppManager == null) {
-        jdField_a_of_type_ComTencentMobileqqMiniappMiniAppManager = new MiniAppManager();
+    if (jdField_a_of_type_ComTencentMobileqqMiniappMiniAppManager == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqMiniappMiniAppManager == null) {
+          jdField_a_of_type_ComTencentMobileqqMiniappMiniAppManager = new MiniAppManager();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqMiniappMiniAppManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqMiniappMiniAppManager;
   }
   
   public static void a(Activity paramActivity, String paramString, int paramInt, MiniAppOptions paramMiniAppOptions)
@@ -121,7 +123,7 @@ public class MiniAppManager
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.setFlags(268435456);
     paramActivity.startActivity(localIntent);
-    paramActivity.overridePendingTransition(2130772314, 2130771992);
+    paramActivity.overridePendingTransition(2130772342, 2130772004);
   }
   
   private void a(IApp paramIApp)
@@ -161,7 +163,7 @@ public class MiniAppManager
   
   private void a(String paramString, int paramInt1, int paramInt2)
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131706826), 0).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131706848), 0).a();
     QLog.e("MiniAppManager", 1, new Object[] { "onInitFailed. errorCode=", Integer.valueOf(paramInt2), ", appId=", paramString, ", appType=", Integer.valueOf(paramInt1) });
     a(paramString, paramInt1);
     a(MiniAppInfo.a(paramString, paramInt1));
@@ -195,12 +197,12 @@ public class MiniAppManager
     return null;
   }
   
-  public MiniAppInfo a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean, MiniAppInfoManager.MiniAppInfoCallback paramMiniAppInfoCallback)
+  public MiniAppInfo a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean, MiniAppInfoCallback paramMiniAppInfoCallback)
   {
     return a(paramString, paramInt1, paramInt2, paramBoolean, paramMiniAppInfoCallback, 0);
   }
   
-  public MiniAppInfo a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean, MiniAppInfoManager.MiniAppInfoCallback paramMiniAppInfoCallback, int paramInt3)
+  public MiniAppInfo a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean, MiniAppInfoCallback paramMiniAppInfoCallback, int paramInt3)
   {
     if (paramMiniAppInfoCallback == null) {
       return this.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfoManager.a(MiniAppInfo.a(paramString, paramInt1), paramInt2, paramInt3, true);
@@ -231,7 +233,7 @@ public class MiniAppManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.miniapp.MiniAppManager
  * JD-Core Version:    0.7.0.1
  */

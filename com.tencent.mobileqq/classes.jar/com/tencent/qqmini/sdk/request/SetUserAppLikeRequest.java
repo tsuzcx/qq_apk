@@ -5,7 +5,6 @@ import NS_MINI_INTERFACE.INTERFACE.StSetUserAppLikeReq;
 import NS_MINI_INTERFACE.INTERFACE.StSetUserAppLikeRsp;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import org.json.JSONObject;
 
 public class SetUserAppLikeRequest
@@ -43,19 +42,14 @@ public class SetUserAppLikeRequest
   {
     INTERFACE.StSetUserAppLikeRsp localStSetUserAppLikeRsp = new INTERFACE.StSetUserAppLikeRsp();
     localStSetUserAppLikeRsp.mergeFrom(paramArrayOfByte);
-    if (localStSetUserAppLikeRsp != null)
-    {
-      paramJSONObject.put("response", localStSetUserAppLikeRsp);
-      paramJSONObject.put("resultCode", 0);
-      return paramJSONObject;
-    }
-    QMLog.d("SetUserAppLikeRequest", "onResponse fail.rsp = null");
-    return null;
+    paramJSONObject.put("response", localStSetUserAppLikeRsp);
+    paramJSONObject.put("resultCode", 0);
+    return paramJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.SetUserAppLikeRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -15,31 +15,47 @@ class CompoundProcessor$EncodeHandler
   
   public void handleMessage(Message paramMessage)
   {
-    LOG.a("CompoundProcessor", "handleMessage, msg.what = " + paramMessage.what + ",msg.arg1 = " + paramMessage.arg1);
-    switch (paramMessage.what)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleMessage, msg.what = ");
+    localStringBuilder.append(paramMessage.what);
+    localStringBuilder.append(",msg.arg1 = ");
+    localStringBuilder.append(paramMessage.arg1);
+    LOG.a("CompoundProcessor", localStringBuilder.toString());
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    case 1: 
-    default: 
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3) {
+          return;
+        }
+        i = paramMessage.arg1;
+        if (paramMessage.arg1 != 0) {
+          return;
+        }
+        paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("ret is ");
+        localStringBuilder.append(i);
+        localStringBuilder.append(",targetFile is ");
+        localStringBuilder.append(paramMessage);
+        LOG.a("CompoundProcessor", localStringBuilder.toString());
+        return;
+      }
       i = paramMessage.arg1;
       paramMessage = paramMessage.getData();
-      LOG.a("CompoundProcessor", "ret is " + i + ",data is " + paramMessage);
-      return;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ret is ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(",data is ");
+      localStringBuilder.append(paramMessage);
+      LOG.a("CompoundProcessor", localStringBuilder.toString());
     }
-    int i = paramMessage.arg1;
-    switch (paramMessage.arg1)
-    {
-    default: 
-      return;
-    }
-    paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
-    LOG.a("CompoundProcessor", "ret is " + i + ",targetFile is " + paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.CompoundProcessor.EncodeHandler
  * JD-Core Version:    0.7.0.1
  */

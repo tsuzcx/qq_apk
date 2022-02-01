@@ -2,13 +2,15 @@ package com.tencent.mobileqq.activity.recent.data;
 
 import android.content.Context;
 import android.content.res.Resources;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.RecentUser;
-import cooperation.readinjoy.ReadInJoyHelper;
+import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyHelper;
+import com.tencent.mobileqq.kandian.biz.feeds.api.IRIJKanDianFolderStatus;
+import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 
 @Deprecated
 public class RecentItemKandianMergeData
@@ -21,29 +23,28 @@ public class RecentItemKandianMergeData
   public RecentItemKandianMergeData(RecentUser paramRecentUser)
   {
     super(paramRecentUser);
-    if (ReadInJoyHelper.z(BaseApplicationImpl.getApplication().getRuntime()) == 1) {}
-    for (this.mUnreadFlag = 1;; this.mUnreadFlag = 2)
-    {
-      this.mExtraInfoColor = BaseApplicationImpl.getApplication().getResources().getColor(2131167145);
-      return;
+    if (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getKandianConfigBadgeSwitch() == 1) {
+      this.mUnreadFlag = 1;
+    } else {
+      this.mUnreadFlag = 2;
     }
+    this.mExtraInfoColor = BaseApplicationImpl.getApplication().getResources().getColor(2131167170);
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if ((paramQQAppInterface == null) || (paramContext == null)) {
-      return;
+    if (paramQQAppInterface != null)
+    {
+      if (paramContext == null) {
+        return;
+      }
+      super.a(paramQQAppInterface, paramContext);
     }
-    super.a(paramQQAppInterface, paramContext);
   }
   
   public long getFaceExtraFlag()
   {
-    Object localObject = (QQAppInterface)ReadInJoyUtils.a();
-    if (localObject == null) {
-      return super.getFaceExtraFlag();
-    }
-    localObject = ((QQAppInterface)localObject).getMessageFacade();
+    Object localObject = ((QQAppInterface)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime()).getMessageFacade();
     if (localObject != null)
     {
       localObject = ((QQMessageFacade)localObject).b(this.mUser.uin, this.mUser.getType());
@@ -57,14 +58,14 @@ public class RecentItemKandianMergeData
           ((MessageForStructing)localObject).parse();
         }
       }
-      com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.push.RIJKanDianFolderStatus.b = ReadInJoyUtils.b();
+      ((IRIJKanDianFolderStatus)QRoute.api(IRIJKanDianFolderStatus.class)).setReportLastRedPntPosition(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getMergeKanDianPosInMsgTab());
     }
     return super.getFaceExtraFlag();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemKandianMergeData
  * JD-Core Version:    0.7.0.1
  */

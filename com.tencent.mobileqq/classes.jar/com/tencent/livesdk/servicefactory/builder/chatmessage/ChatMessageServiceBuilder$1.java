@@ -8,6 +8,7 @@ import com.tencent.falco.base.libapi.http.HttpInterface;
 import com.tencent.falco.base.libapi.log.LogInterface;
 import com.tencent.falco.base.libapi.login.LoginInfo;
 import com.tencent.falco.base.libapi.login.LoginServiceInterface;
+import com.tencent.ilivesdk.messagefilterserviceinterface.MessageFilterServiceInterface;
 import com.tencent.ilivesdk.messageservice_interface.MessageServiceAdapter;
 import com.tencent.ilivesdk.roompushservice_interface.RoomPushServiceInterface;
 import com.tencent.ilivesdk.roomservice_interface.RoomServiceInterface;
@@ -27,7 +28,11 @@ class ChatMessageServiceBuilder$1
   
   public long getAccountUin()
   {
-    return ((LoginServiceInterface)this.val$serviceManager.getService(LoginServiceInterface.class)).getLoginInfo().uid;
+    LoginInfo localLoginInfo = ((LoginServiceInterface)this.val$serviceManager.getService(LoginServiceInterface.class)).getLoginInfo();
+    if (localLoginInfo != null) {
+      return localLoginInfo.uid;
+    }
+    return 0L;
   }
   
   public long getAnchorUin()
@@ -63,10 +68,15 @@ class ChatMessageServiceBuilder$1
   {
     return (LogInterface)this.val$serviceManager.getService(LogInterface.class);
   }
+  
+  public MessageFilterServiceInterface getMessageFilterService()
+  {
+    return (MessageFilterServiceInterface)this.val$serviceManager.getService(MessageFilterServiceInterface.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.servicefactory.builder.chatmessage.ChatMessageServiceBuilder.1
  * JD-Core Version:    0.7.0.1
  */

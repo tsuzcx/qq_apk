@@ -87,12 +87,36 @@ public class AnimWebPInfo
   
   public String toString()
   {
-    return "AnimWebPInfo{width=" + this.width + ", height=" + this.height + ", xOffset=" + this.xOffset + ", yOffset=" + this.yOffset + ", backgroundColor=" + this.backgroundColor + ", canvasWidth=" + this.canvasWidth + ", canvasHeight=" + this.canvasHeight + ", frameCount=" + this.frameCount + ", loopCount=" + this.loopCount + ", durationMillis=" + this.durationMillis + ", frameNumber=" + this.frameNumber + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AnimWebPInfo{width=");
+    localStringBuilder.append(this.width);
+    localStringBuilder.append(", height=");
+    localStringBuilder.append(this.height);
+    localStringBuilder.append(", xOffset=");
+    localStringBuilder.append(this.xOffset);
+    localStringBuilder.append(", yOffset=");
+    localStringBuilder.append(this.yOffset);
+    localStringBuilder.append(", backgroundColor=");
+    localStringBuilder.append(this.backgroundColor);
+    localStringBuilder.append(", canvasWidth=");
+    localStringBuilder.append(this.canvasWidth);
+    localStringBuilder.append(", canvasHeight=");
+    localStringBuilder.append(this.canvasHeight);
+    localStringBuilder.append(", frameCount=");
+    localStringBuilder.append(this.frameCount);
+    localStringBuilder.append(", loopCount=");
+    localStringBuilder.append(this.loopCount);
+    localStringBuilder.append(", durationMillis=");
+    localStringBuilder.append(this.durationMillis);
+    localStringBuilder.append(", frameNumber=");
+    localStringBuilder.append(this.frameNumber);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.animwebp.AnimWebPInfo
  * JD-Core Version:    0.7.0.1
  */

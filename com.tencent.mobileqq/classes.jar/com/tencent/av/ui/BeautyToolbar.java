@@ -18,7 +18,7 @@ import com.tencent.av.business.manager.filter.EffectFilterTools;
 import com.tencent.av.opengl.effects.EffectController;
 import com.tencent.av.opengl.effects.EffectsRenderController;
 import com.tencent.av.tips.TipsUtil;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -52,11 +52,13 @@ public class BeautyToolbar
   
   static boolean checkShowBeauty(VideoController paramVideoController, VideoAppInterface paramVideoAppInterface)
   {
-    if ((paramVideoController.a().n) || (!paramVideoController.a().j) || (!BeautyConfigUtil.a(paramVideoAppInterface.getCurrentAccountUin())) || (!paramVideoController.a().o)) {}
-    for (int i = 1; i == 0; i = 0) {
-      return true;
+    int i;
+    if ((!paramVideoController.a().n) && (paramVideoController.a().j) && (BeautyConfigUtil.a(paramVideoAppInterface.getCurrentAccountUin())) && (paramVideoController.a().o)) {
+      i = 0;
+    } else {
+      i = 1;
     }
-    return false;
+    return i ^ 0x1;
   }
   
   protected BaseToolbar.UIInfo getUIInfo()
@@ -64,10 +66,11 @@ public class BeautyToolbar
     if (this.mUIInfo == null)
     {
       this.mUIInfo = new BaseToolbar.UIInfo();
-      this.mUIInfo.d = 4;
-      this.mUIInfo.g = 2131559897;
-      this.mUIInfo.f = 2130842157;
-      this.mUIInfo.a = this.mApp.getApp().getString(2131695901);
+      BaseToolbar.UIInfo localUIInfo = this.mUIInfo;
+      localUIInfo.d = 4;
+      localUIInfo.g = 2131559768;
+      localUIInfo.f = 2130842055;
+      localUIInfo.a = this.mApp.getApp().getString(2131695916);
     }
     return this.mUIInfo;
   }
@@ -75,7 +78,7 @@ public class BeautyToolbar
   public String getUnableInfo()
   {
     if (this.mActivity.get() != null) {
-      return ((AVActivity)this.mActivity.get()).getResources().getString(2131695451);
+      return ((AVActivity)this.mActivity.get()).getResources().getString(2131695462);
     }
     return "";
   }
@@ -87,15 +90,15 @@ public class BeautyToolbar
   
   protected void onCreate(long paramLong, AVActivity paramAVActivity)
   {
-    this.mBeautySeekBar = ((RelativeLayout)this.toolbarView.findViewById(2131374087));
-    this.mSeek = ((SeekBar)this.toolbarView.findViewById(2131374088));
-    this.mTip = ((TextView)this.toolbarView.findViewById(2131374089));
+    this.mBeautySeekBar = ((RelativeLayout)this.toolbarView.findViewById(2131373642));
+    this.mSeek = ((SeekBar)this.toolbarView.findViewById(2131373643));
+    this.mTip = ((TextView)this.toolbarView.findViewById(2131373644));
     this.mTipLayoutParams = null;
     this.mContext = paramAVActivity;
-    this.mThumb_0 = this.mContext.getResources().getDrawable(2130842118);
-    this.mThumb_30 = this.mContext.getResources().getDrawable(2130842120);
-    this.mThumb_60 = this.mContext.getResources().getDrawable(2130842121);
-    this.mThumb_100 = this.mContext.getResources().getDrawable(2130842119);
+    this.mThumb_0 = this.mContext.getResources().getDrawable(2130842015);
+    this.mThumb_30 = this.mContext.getResources().getDrawable(2130842017);
+    this.mThumb_60 = this.mContext.getResources().getDrawable(2130842018);
+    this.mThumb_100 = this.mContext.getResources().getDrawable(2130842016);
     this.mSeek.setMax(100);
     this.mSeek.setOnSeekBarChangeListener(this.mOnSeekBarChangeListener);
     this.mSeek.getViewTreeObserver().addOnGlobalLayoutListener(new BeautyToolbar.2(this));
@@ -105,9 +108,9 @@ public class BeautyToolbar
     if (AudioHelper.a(0) == 1)
     {
       this.toolbarView.setBackgroundColor(-16711936);
-      this.toolbarView.findViewById(2131374087).setBackgroundColor(-256);
-      this.toolbarView.findViewById(2131374091).setBackgroundColor(-16711681);
-      this.toolbarView.findViewById(2131374088).setBackgroundColor(-65281);
+      this.toolbarView.findViewById(2131373642).setBackgroundColor(-256);
+      this.toolbarView.findViewById(2131373646).setBackgroundColor(-16711681);
+      this.toolbarView.findViewById(2131373643).setBackgroundColor(-65281);
     }
     this.mBeautySeekBar.setVisibility(4);
   }
@@ -121,10 +124,10 @@ public class BeautyToolbar
     {
       SessionInfo localSessionInfo = SessionMgr.a().a();
       if (localSessionInfo != null) {
-        localSessionInfo.u = true;
+        localSessionInfo.t = true;
       }
     }
-    this.mControlUI.D(paramLong);
+    this.mControlUI.C(paramLong);
   }
   
   public void onShow(long paramLong, int paramInt, boolean paramBoolean)
@@ -137,8 +140,13 @@ public class BeautyToolbar
     EffectsRenderController localEffectsRenderController = VideoController.a().a(false);
     if (localEffectsRenderController != null)
     {
-      if (AudioHelper.e()) {
-        QLog.w("BeautyToolbar", 1, "onShow, seq[" + paramLong + "]");
+      if (AudioHelper.b())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onShow, seq[");
+        localStringBuilder.append(paramLong);
+        localStringBuilder.append("]");
+        QLog.w("BeautyToolbar", 1, localStringBuilder.toString());
       }
       localEffectsRenderController.a(paramLong);
     }
@@ -153,7 +161,11 @@ public class BeautyToolbar
       this.mThumbWidth = this.mThumb_60.getIntrinsicWidth();
       this.mTipLayoutMargin = (((RelativeLayout.LayoutParams)this.mSeek.getLayoutParams()).leftMargin + this.mThumbWidth / 2);
     }
-    this.mTip.setText(paramInt + "%");
+    TextView localTextView = this.mTip;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("%");
+    localTextView.setText(localStringBuilder.toString());
     int i = this.mTip.getWidth();
     int j = this.mSeek.getWidth();
     this.mTipLayoutParams.leftMargin = (this.mTipLayoutMargin - i / 2 + (j - this.mThumbWidth) * paramInt / 100);
@@ -162,7 +174,7 @@ public class BeautyToolbar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.BeautyToolbar
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="40.0dip"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/muz" android:background="@drawable/e7m" android:layout_width="280.0dip" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:id="@id/e85" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/yb3" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/m_b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-        <CheckBox android:layout_gravity="center_vertical" android:id="@id/j95" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="6.0dip" android:button="@drawable/nj" android:scaleX="0.67" android:scaleY="0.67" />
-        <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yba" />
-    </LinearLayout>
-</RelativeLayout>
+    <TextView android:textSize="@dimen/ayo" android:textColor="@color/bp" android:gravity="center" android:layout_width="192.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n9" android:text="公众号会根据你的浏览兴趣推荐更多优质内容" />
+    <TextView android:textSize="@dimen/ayk" android:textColor="@color/bp" android:id="@id/oqk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="0.0dip" android:text="暂不需要，去设置 >" android:alpha="0.4082" />
+    <View android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="@dimen/n2" android:alpha="0.19" />
+    <TextView android:textSize="@dimen/ayq" android:textColor="#ff1b1b1b" android:gravity="center" android:id="@id/oqj" android:background="@drawable/common_dialog_btn_right" android:layout_width="fill_parent" android:layout_height="55.0dip" android:text="好的" />
+</LinearLayout>

@@ -8,7 +8,10 @@ public class AVVideoCtrl$SwitchCameraCompleteCallback
   
   protected void onComplete(int paramInt1, int paramInt2)
   {
-    Log.d("SdkJni", "SwitchCameraCompleteCallback.OnComplete. result = " + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SwitchCameraCompleteCallback.OnComplete. result = ");
+    localStringBuilder.append(paramInt2);
+    Log.d("SdkJni", localStringBuilder.toString());
   }
 }
 

@@ -16,10 +16,11 @@ public class FloatLocationShareCallback
     try
     {
       IFloatMapService localIFloatMapService = (IFloatMapService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IFloatMapService.class, "");
-      if (localIFloatMapService != null) {
+      if (localIFloatMapService != null)
+      {
         localIFloatMapService.quitFloat(-1);
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -36,7 +37,7 @@ public class FloatLocationShareCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.window.FloatLocationShareCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -5,26 +5,13 @@ import java.io.Serializable;
 public final class eLandingPage
   implements Serializable
 {
-  private static eLandingPage[] __values;
+  private static eLandingPage[] __values = new eLandingPage[2];
   public static final int _eLandingPageFallList = 0;
   public static final int _eLandingPageVideoPage = 1;
-  public static final eLandingPage eLandingPageFallList;
-  public static final eLandingPage eLandingPageVideoPage;
+  public static final eLandingPage eLandingPageFallList = new eLandingPage(0, 0, "eLandingPageFallList");
+  public static final eLandingPage eLandingPageVideoPage = new eLandingPage(1, 1, "eLandingPageVideoPage");
   private String __T = new String();
   private int __value;
-  
-  static
-  {
-    if (!eLandingPage.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      __values = new eLandingPage[2];
-      eLandingPageFallList = new eLandingPage(0, 0, "eLandingPageFallList");
-      eLandingPageVideoPage = new eLandingPage(1, 1, "eLandingPageVideoPage");
-      return;
-    }
-  }
   
   private eLandingPage(int paramInt1, int paramInt2, String paramString)
   {
@@ -36,15 +23,16 @@ public final class eLandingPage
   public static eLandingPage convert(int paramInt)
   {
     int i = 0;
-    while (i < __values.length)
+    for (;;)
     {
-      if (__values[i].value() == paramInt) {
+      eLandingPage[] arrayOfeLandingPage = __values;
+      if (i >= arrayOfeLandingPage.length) {
+        break;
+      }
+      if (arrayOfeLandingPage[i].value() == paramInt) {
         return __values[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -52,15 +40,16 @@ public final class eLandingPage
   public static eLandingPage convert(String paramString)
   {
     int i = 0;
-    while (i < __values.length)
+    for (;;)
     {
-      if (__values[i].toString().equals(paramString)) {
+      eLandingPage[] arrayOfeLandingPage = __values;
+      if (i >= arrayOfeLandingPage.length) {
+        break;
+      }
+      if (arrayOfeLandingPage[i].toString().equals(paramString)) {
         return __values[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -77,7 +66,7 @@ public final class eLandingPage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.eLandingPage
  * JD-Core Version:    0.7.0.1
  */

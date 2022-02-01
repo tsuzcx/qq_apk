@@ -30,16 +30,18 @@ final class DefaultOggSeeker
   
   public DefaultOggSeeker(long paramLong1, long paramLong2, StreamReader paramStreamReader, int paramInt, long paramLong3)
   {
-    if ((paramLong1 >= 0L) && (paramLong2 > paramLong1)) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if ((paramLong1 >= 0L) && (paramLong2 > paramLong1)) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    Assertions.checkArgument(bool);
+    this.streamReader = paramStreamReader;
+    this.startPosition = paramLong1;
+    this.endPosition = paramLong2;
+    if (paramInt == paramLong2 - paramLong1)
     {
-      Assertions.checkArgument(bool);
-      this.streamReader = paramStreamReader;
-      this.startPosition = paramLong1;
-      this.endPosition = paramLong2;
-      if (paramInt != paramLong2 - paramLong1) {
-        break;
-      }
       this.totalGranules = paramLong3;
       this.state = 3;
       return;
@@ -49,14 +51,17 @@ final class DefaultOggSeeker
   
   private long getEstimatedPosition(long paramLong1, long paramLong2, long paramLong3)
   {
-    paramLong2 = (this.endPosition - this.startPosition) * paramLong2 / this.totalGranules - paramLong3 + paramLong1;
+    long l2 = this.endPosition;
+    long l1 = this.startPosition;
+    paramLong2 = paramLong1 + (paramLong2 * (l2 - l1) / this.totalGranules - paramLong3);
     paramLong1 = paramLong2;
-    if (paramLong2 < this.startPosition) {
-      paramLong1 = this.startPosition;
+    if (paramLong2 < l1) {
+      paramLong1 = l1;
     }
+    paramLong3 = this.endPosition;
     paramLong2 = paramLong1;
-    if (paramLong1 >= this.endPosition) {
-      paramLong2 = this.endPosition - 1L;
+    if (paramLong1 >= paramLong3) {
+      paramLong2 = paramLong3 - 1L;
     }
     return paramLong2;
   }
@@ -71,85 +76,107 @@ final class DefaultOggSeeker
   
   public long getNextSeekPosition(long paramLong, ExtractorInput paramExtractorInput)
   {
-    if (this.start == this.end) {
+    long l2 = this.start;
+    long l3 = this.end;
+    long l1 = 2L;
+    if (l2 == l3) {
       return -(this.startGranule + 2L);
     }
-    long l2 = paramExtractorInput.getPosition();
+    l3 = paramExtractorInput.getPosition();
     if (!skipToNextPage(paramExtractorInput, this.end))
     {
-      if (this.start == l2) {
-        throw new IOException("No ogg page can be found.");
+      paramLong = this.start;
+      if (paramLong != l3) {
+        return paramLong;
       }
-      return this.start;
+      throw new IOException("No ogg page can be found.");
     }
     this.pageHeader.populate(paramExtractorInput, false);
     paramExtractorInput.resetPeekPosition();
-    long l1 = paramLong - this.pageHeader.granulePosition;
+    l2 = paramLong - this.pageHeader.granulePosition;
     int i = this.pageHeader.headerSize + this.pageHeader.bodySize;
-    if ((l1 < 0L) || (l1 > 72000L))
+    if ((l2 >= 0L) && (l2 <= 72000L))
     {
-      if (l1 < 0L)
+      paramExtractorInput.skipFully(i);
+      return -(this.pageHeader.granulePosition + 2L);
+    }
+    if (l2 < 0L)
+    {
+      this.end = l3;
+      this.endGranule = this.pageHeader.granulePosition;
+    }
+    else
+    {
+      paramLong = paramExtractorInput.getPosition();
+      l3 = i;
+      this.start = (paramLong + l3);
+      this.startGranule = this.pageHeader.granulePosition;
+      if (this.end - this.start + l3 < 100000L)
       {
-        this.end = l2;
-        this.endGranule = this.pageHeader.granulePosition;
-      }
-      while (this.end - this.start < 100000L)
-      {
-        this.end = this.start;
-        return this.start;
-        this.start = (paramExtractorInput.getPosition() + i);
-        this.startGranule = this.pageHeader.granulePosition;
-        if (this.end - this.start + i < 100000L)
-        {
-          paramExtractorInput.skipFully(i);
-          return -(this.startGranule + 2L);
-        }
-      }
-      l2 = i;
-      if (l1 <= 0L) {}
-      for (paramLong = 2L;; paramLong = 1L) {
-        return Math.min(Math.max(paramExtractorInput.getPosition() - paramLong * l2 + l1 * (this.end - this.start) / (this.endGranule - this.startGranule), this.start), this.end - 1L);
+        paramExtractorInput.skipFully(i);
+        return -(this.startGranule + 2L);
       }
     }
-    paramExtractorInput.skipFully(i);
-    return -(this.pageHeader.granulePosition + 2L);
+    paramLong = this.end;
+    l3 = this.start;
+    if (paramLong - l3 < 100000L)
+    {
+      this.end = l3;
+      return l3;
+    }
+    l3 = i;
+    if (l2 <= 0L) {
+      paramLong = l1;
+    } else {
+      paramLong = 1L;
+    }
+    l1 = paramExtractorInput.getPosition();
+    long l4 = this.end;
+    long l5 = this.start;
+    return Math.min(Math.max(l1 - l3 * paramLong + l2 * (l4 - l5) / (this.endGranule - this.startGranule), l5), this.end - 1L);
   }
   
   public long read(ExtractorInput paramExtractorInput)
   {
-    long l1 = 0L;
-    switch (this.state)
+    int i = this.state;
+    long l1;
+    if (i != 0)
     {
-    default: 
-      throw new IllegalStateException();
-    case 3: 
-      l1 = -1L;
-    case 0: 
-      long l2;
-      do
+      if (i != 1)
       {
-        return l1;
-        this.positionBeforeSeekToEnd = paramExtractorInput.getPosition();
-        this.state = 1;
-        l2 = this.endPosition - 65307L;
-        l1 = l2;
-      } while (l2 > this.positionBeforeSeekToEnd);
-    case 1: 
-      this.totalGranules = readGranuleOfLastPage(paramExtractorInput);
-      this.state = 3;
-      return this.positionBeforeSeekToEnd;
+        if (i != 2)
+        {
+          if (i == 3) {
+            return -1L;
+          }
+          throw new IllegalStateException();
+        }
+        long l2 = this.targetGranule;
+        l1 = 0L;
+        if (l2 != 0L)
+        {
+          l1 = getNextSeekPosition(l2, paramExtractorInput);
+          if (l1 >= 0L) {
+            return l1;
+          }
+          l1 = skipToPageOfGranule(paramExtractorInput, this.targetGranule, -(l1 + 2L));
+        }
+        this.state = 3;
+        return -(l1 + 2L);
+      }
     }
-    if (this.targetGranule == 0L) {}
-    for (;;)
+    else
     {
-      this.state = 3;
-      return -(l1 + 2L);
-      l1 = getNextSeekPosition(this.targetGranule, paramExtractorInput);
-      if (l1 >= 0L) {
+      this.positionBeforeSeekToEnd = paramExtractorInput.getPosition();
+      this.state = 1;
+      l1 = this.endPosition - 65307L;
+      if (l1 > this.positionBeforeSeekToEnd) {
         return l1;
       }
-      l1 = skipToPageOfGranule(paramExtractorInput, this.targetGranule, -(l1 + 2L));
     }
+    this.totalGranules = readGranuleOfLastPage(paramExtractorInput);
+    this.state = 3;
+    return this.positionBeforeSeekToEnd;
   }
   
   long readGranuleOfLastPage(ExtractorInput paramExtractorInput)
@@ -174,31 +201,37 @@ final class DefaultOggSeeker
   
   void skipToNextPage(ExtractorInput paramExtractorInput)
   {
-    if (!skipToNextPage(paramExtractorInput, this.endPosition)) {
-      throw new EOFException();
+    if (skipToNextPage(paramExtractorInput, this.endPosition)) {
+      return;
     }
+    throw new EOFException();
   }
   
   boolean skipToNextPage(ExtractorInput paramExtractorInput, long paramLong)
   {
-    paramLong = Math.min(3L + paramLong, this.endPosition);
+    paramLong = Math.min(paramLong + 3L, this.endPosition);
     byte[] arrayOfByte = new byte[2048];
-    int i;
-    for (int j = arrayOfByte.length;; j = i)
+    int i = arrayOfByte.length;
+    for (;;)
     {
-      i = j;
-      if (paramExtractorInput.getPosition() + j > paramLong)
+      long l1 = paramExtractorInput.getPosition();
+      long l2 = i;
+      int j = 0;
+      if (l1 + l2 > paramLong)
       {
-        j = (int)(paramLong - paramExtractorInput.getPosition());
-        i = j;
-        if (j < 4) {
+        i = (int)(paramLong - paramExtractorInput.getPosition());
+        if (i < 4) {
           return false;
         }
       }
       paramExtractorInput.peekFully(arrayOfByte, 0, i, false);
-      j = 0;
-      while (j < i - 3)
+      int k;
+      for (;;)
       {
+        k = i - 3;
+        if (j >= k) {
+          break;
+        }
         if ((arrayOfByte[j] == 79) && (arrayOfByte[(j + 1)] == 103) && (arrayOfByte[(j + 2)] == 103) && (arrayOfByte[(j + 3)] == 83))
         {
           paramExtractorInput.skipFully(j);
@@ -206,7 +239,7 @@ final class DefaultOggSeeker
         }
         j += 1;
       }
-      paramExtractorInput.skipFully(i - 3);
+      paramExtractorInput.skipFully(k);
     }
   }
   
@@ -225,30 +258,29 @@ final class DefaultOggSeeker
   
   public long startSeek(long paramLong)
   {
+    int i = this.state;
     boolean bool;
-    if ((this.state == 3) || (this.state == 2))
-    {
-      bool = true;
-      Assertions.checkArgument(bool);
-      if (paramLong != 0L) {
-        break label54;
-      }
-    }
-    label54:
-    for (paramLong = 0L;; paramLong = this.streamReader.convertTimeToGranule(paramLong))
-    {
-      this.targetGranule = paramLong;
-      this.state = 2;
-      resetSeeking();
-      return this.targetGranule;
+    if ((i != 3) && (i != 2)) {
       bool = false;
-      break;
+    } else {
+      bool = true;
     }
+    Assertions.checkArgument(bool);
+    long l = 0L;
+    if (paramLong == 0L) {
+      paramLong = l;
+    } else {
+      paramLong = this.streamReader.convertTimeToGranule(paramLong);
+    }
+    this.targetGranule = paramLong;
+    this.state = 2;
+    resetSeeking();
+    return this.targetGranule;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ogg.DefaultOggSeeker
  * JD-Core Version:    0.7.0.1
  */

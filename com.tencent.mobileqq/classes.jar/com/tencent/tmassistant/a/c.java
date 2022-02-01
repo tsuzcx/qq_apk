@@ -16,26 +16,24 @@ class c
     }
     catch (InterruptedException localInterruptedException)
     {
-      for (;;)
-      {
-        try
-        {
-          b.a(this.b, this.a);
-          return;
-        }
-        catch (Throwable localThrowable)
-        {
-          b.a(this.b, false);
-        }
-        localInterruptedException = localInterruptedException;
-        localInterruptedException.printStackTrace();
-      }
+      localInterruptedException.printStackTrace();
     }
+    try
+    {
+      b.a(this.b, this.a);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      label42:
+      break label42;
+    }
+    b.a(this.b, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistant.a.c
  * JD-Core Version:    0.7.0.1
  */

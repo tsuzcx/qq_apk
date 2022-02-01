@@ -4,6 +4,7 @@ import android.util.Log;
 import androidx.annotation.RestrictTo;
 import java.io.Writer;
 
+@Deprecated
 @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
 public class LogWriter
   extends Writer
@@ -21,7 +22,8 @@ public class LogWriter
     if (this.mBuilder.length() > 0)
     {
       Log.d(this.mTag, this.mBuilder.toString());
-      this.mBuilder.delete(0, this.mBuilder.length());
+      StringBuilder localStringBuilder = this.mBuilder;
+      localStringBuilder.delete(0, localStringBuilder.length());
     }
   }
   
@@ -38,24 +40,21 @@ public class LogWriter
   public void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
     int i = 0;
-    if (i < paramInt2)
+    while (i < paramInt2)
     {
       char c = paramArrayOfChar[(paramInt1 + i)];
       if (c == '\n') {
         flushBuilder();
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         this.mBuilder.append(c);
       }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.util.LogWriter
  * JD-Core Version:    0.7.0.1
  */

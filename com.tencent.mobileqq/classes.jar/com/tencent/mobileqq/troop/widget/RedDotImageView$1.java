@@ -1,27 +1,32 @@
 package com.tencent.mobileqq.troop.widget;
 
+import android.content.Context;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
 
 class RedDotImageView$1
   implements Runnable
 {
   public void run()
   {
-    MobileQQ localMobileQQ = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication();
-    int i = SharedPreUtils.e(localMobileQQ);
-    boolean bool = SharedPreUtils.a(localMobileQQ, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), i, this.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, this.jdField_a_of_type_JavaLangString + " show redDot: " + bool);
+    Object localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication();
+    int i = SharedPreUtils.e((Context)localObject);
+    boolean bool = SharedPreUtils.a((Context)localObject, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), i, this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(" show redDot: ");
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("Q.recent", 2, ((StringBuilder)localObject).toString());
     }
     this.this$0.a(bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.RedDotImageView.1
  * JD-Core Version:    0.7.0.1
  */

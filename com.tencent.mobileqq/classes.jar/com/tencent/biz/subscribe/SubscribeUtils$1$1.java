@@ -13,16 +13,25 @@ class SubscribeUtils$1$1
   
   public void onResp(NetResp paramNetResp)
   {
-    QLog.i("DownLoadZipFile", 1, "download  onResp url:  resultcode: " + paramNetResp.mHttpCode);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("download  onResp url:  resultcode: ");
+    localStringBuilder.append(paramNetResp.mHttpCode);
+    QLog.i("DownLoadZipFile", 1, localStringBuilder.toString());
     try
     {
-      QLog.d("DownLoadZipFile", 4, "start unzip file to folderPath:" + this.a.jdField_a_of_type_JavaLangString);
+      paramNetResp = new StringBuilder();
+      paramNetResp.append("start unzip file to folderPath:");
+      paramNetResp.append(this.a.jdField_a_of_type_JavaLangString);
+      QLog.d("DownLoadZipFile", 4, paramNetResp.toString());
       ZipUtils.unZipFile(this.a.jdField_a_of_type_JavaIoFile, this.a.jdField_a_of_type_JavaLangString);
       return;
     }
     catch (Exception paramNetResp)
     {
-      QLog.i("DownLoadZipFile", 1, "unzip file failed" + paramNetResp);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("unzip file failed");
+      localStringBuilder.append(paramNetResp);
+      QLog.i("DownLoadZipFile", 1, localStringBuilder.toString());
     }
   }
   
@@ -30,7 +39,7 @@ class SubscribeUtils$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.SubscribeUtils.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mobileqq.widget.FormItemRelativeLayout android:id="@id/n8g" android:background="@drawable/common_strip_setting_top" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginTop="@dimen/al0">
-        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/gq9" android:focusable="false" android:clickable="false" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:leftText="@string/xgz" formItem:showArrow="false" />
-        <ImageView android:id="@id/o5a" android:focusable="false" android:clickable="false" android:duplicateParentState="true" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/qq_account_select_icon" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </com.tencent.mobileqq.widget.FormItemRelativeLayout>
-    <com.tencent.mobileqq.widget.FormItemRelativeLayout android:id="@id/n8h" android:background="@drawable/common_strip_setting_bottom" android:paddingTop="19.5dip" android:paddingBottom="19.5dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <RelativeLayout android:id="@id/o5d" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:id="@id/j6l" android:paddingLeft="@dimen/is" android:focusable="false" android:clickable="false" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/xh0" style="@style/w2" />
-            <ImageView android:id="@id/o5b" android:focusable="false" android:visibility="gone" android:clickable="false" android:duplicateParentState="true" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/qq_account_select_icon" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-        </RelativeLayout>
-        <RelativeLayout android:id="@id/o5c" android:visibility="gone" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_below="@id/o5d">
-            <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2" android:id="@id/fyp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-            <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2" android:id="@id/fyg" android:paddingLeft="@dimen/is" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_toLeftOf="@id/fyp" />
-        </RelativeLayout>
-    </com.tencent.mobileqq.widget.FormItemRelativeLayout>
-</LinearLayout>
+<androidx.appcompat.widget.AlertDialogLayout android:gravity="start|center|top" android:orientation="vertical" android:id="@id/nqn" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/a32" />
+    <FrameLayout android:id="@id/b9q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="48.0dip">
+        <View android:layout_gravity="top" android:id="@id/o69" android:background="?a2a" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        <androidx.core.widget.NestedScrollView android:id="@id/ii_" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <android.widget.Space android:id="@id/obf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/ba1" />
+                <TextView android:id="@android:id/message" android:paddingLeft="?a3b" android:paddingRight="?a3b" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/a4x" />
+                <android.widget.Space android:id="@id/obe" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/ba1" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+        <View android:layout_gravity="bottom" android:id="@id/o68" android:background="?a2a" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/mtt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="48.0dip">
+        <FrameLayout android:id="@id/mts" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </FrameLayout>
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/ty" />
+</androidx.appcompat.widget.AlertDialogLayout>

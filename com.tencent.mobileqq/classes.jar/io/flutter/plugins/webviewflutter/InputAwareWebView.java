@@ -4,9 +4,10 @@ import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
+import com.tencent.qqlive.module.videoreport.inject.webview.dtwebview.DtWebView;
 
 final class InputAwareWebView
-  extends WebView
+  extends DtWebView
 {
   private static final String TAG = "InputAwareWebView";
   private View containerView;
@@ -24,12 +25,13 @@ final class InputAwareWebView
     if (this.proxyAdapterView == null) {
       return;
     }
-    if (this.containerView == null)
+    View localView = this.containerView;
+    if (localView == null)
     {
       Log.e("InputAwareWebView", "Can't reset the input connection to the container view because there is none.");
       return;
     }
-    setInputConnectionTarget(this.containerView);
+    setInputConnectionTarget(localView);
   }
   
   private void setInputConnectionTarget(View paramView)
@@ -50,14 +52,16 @@ final class InputAwareWebView
     if (localView == paramView) {
       return super.checkInputConnectionProxy(paramView);
     }
-    if (this.containerView == null)
-    {
+    localView = this.containerView;
+    if (localView == null) {
       Log.e("InputAwareWebView", "Can't create a proxy view because there's no container view. Text input may not work.");
-      return super.checkInputConnectionProxy(paramView);
     }
-    this.proxyAdapterView = new ThreadedInputConnectionProxyAdapterView(this.containerView, paramView, paramView.getHandler());
-    setInputConnectionTarget(this.proxyAdapterView);
-    return super.checkInputConnectionProxy(paramView);
+    for (;;)
+    {
+      return super.checkInputConnectionProxy(paramView);
+      this.proxyAdapterView = new ThreadedInputConnectionProxyAdapterView(localView, paramView, paramView.getHandler());
+      setInputConnectionTarget(this.proxyAdapterView);
+    }
   }
   
   public void clearFocus()
@@ -73,35 +77,37 @@ final class InputAwareWebView
   
   void lockInputConnection()
   {
-    if (this.proxyAdapterView == null) {
+    ThreadedInputConnectionProxyAdapterView localThreadedInputConnectionProxyAdapterView = this.proxyAdapterView;
+    if (localThreadedInputConnectionProxyAdapterView == null) {
       return;
     }
-    this.proxyAdapterView.setLocked(true);
+    localThreadedInputConnectionProxyAdapterView.setLocked(true);
   }
   
   void setContainerView(View paramView)
   {
     this.containerView = paramView;
-    if (this.proxyAdapterView == null) {}
-    do
-    {
+    if (this.proxyAdapterView == null) {
       return;
-      Log.w("InputAwareWebView", "The containerView has changed while the proxyAdapterView exists.");
-    } while (paramView == null);
-    setInputConnectionTarget(this.proxyAdapterView);
+    }
+    Log.w("InputAwareWebView", "The containerView has changed while the proxyAdapterView exists.");
+    if (paramView != null) {
+      setInputConnectionTarget(this.proxyAdapterView);
+    }
   }
   
   void unlockInputConnection()
   {
-    if (this.proxyAdapterView == null) {
+    ThreadedInputConnectionProxyAdapterView localThreadedInputConnectionProxyAdapterView = this.proxyAdapterView;
+    if (localThreadedInputConnectionProxyAdapterView == null) {
       return;
     }
-    this.proxyAdapterView.setLocked(false);
+    localThreadedInputConnectionProxyAdapterView.setLocked(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugins.webviewflutter.InputAwareWebView
  * JD-Core Version:    0.7.0.1
  */

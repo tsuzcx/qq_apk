@@ -11,15 +11,16 @@ class PhoneUnityBindInfoActivity$16
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (PhoneUnityBindInfoActivity.a(this.a) != null) {
-      PhoneUnityBindInfoActivity.a(this.a).dismiss();
+    if (PhoneUnityBindInfoActivity.access$2700(this.a) != null)
+    {
+      this.a.bindContactsMobile();
+      PhoneUnityBindInfoActivity.access$2700(this.a).dismiss();
     }
-    this.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity.16
  * JD-Core Version:    0.7.0.1
  */

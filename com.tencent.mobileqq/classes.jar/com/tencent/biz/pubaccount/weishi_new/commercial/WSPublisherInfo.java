@@ -16,31 +16,34 @@ public class WSPublisherInfo
   
   public stSchema a()
   {
-    if (this.a == null) {
+    stFunctionalIconInfo localstFunctionalIconInfo = this.a;
+    if (localstFunctionalIconInfo == null) {
       return null;
     }
-    return this.a.jump;
+    return localstFunctionalIconInfo.jump;
   }
   
   public String a()
   {
-    if (this.a == null) {
+    stFunctionalIconInfo localstFunctionalIconInfo = this.a;
+    if (localstFunctionalIconInfo == null) {
       return null;
     }
-    return this.a.imgUrl;
+    return localstFunctionalIconInfo.imgUrl;
   }
   
   public String b()
   {
-    if (this.a == null) {
+    stFunctionalIconInfo localstFunctionalIconInfo = this.a;
+    if (localstFunctionalIconInfo == null) {
       return null;
     }
-    return this.a.text;
+    return localstFunctionalIconInfo.text;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.commercial.WSPublisherInfo
  * JD-Core Version:    0.7.0.1
  */

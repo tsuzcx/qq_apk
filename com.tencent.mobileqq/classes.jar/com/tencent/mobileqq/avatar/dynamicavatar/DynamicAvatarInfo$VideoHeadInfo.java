@@ -14,44 +14,40 @@ public class DynamicAvatarInfo$VideoHeadInfo
   
   public static VideoHeadInfo a(oidb_0x74b.VideoHeadInfo paramVideoHeadInfo)
   {
-    Object localObject;
     if (paramVideoHeadInfo == null) {
-      localObject = null;
+      return null;
     }
-    VideoHeadInfo localVideoHeadInfo;
-    do
-    {
-      return localObject;
-      localVideoHeadInfo = new VideoHeadInfo();
-      if (paramVideoHeadInfo.str_url.has()) {
-        localVideoHeadInfo.jdField_a_of_type_JavaLangString = paramVideoHeadInfo.str_url.get();
-      }
-      localObject = localVideoHeadInfo;
-    } while (!paramVideoHeadInfo.uint32_video_size.has());
-    localVideoHeadInfo.jdField_a_of_type_Int = paramVideoHeadInfo.uint32_video_size.get();
+    VideoHeadInfo localVideoHeadInfo = new VideoHeadInfo();
+    if (paramVideoHeadInfo.str_url.has()) {
+      localVideoHeadInfo.jdField_a_of_type_JavaLangString = paramVideoHeadInfo.str_url.get();
+    }
+    if (paramVideoHeadInfo.uint32_video_size.has()) {
+      localVideoHeadInfo.jdField_a_of_type_Int = paramVideoHeadInfo.uint32_video_size.get();
+    }
     return localVideoHeadInfo;
   }
   
   public static ArrayList<VideoHeadInfo> a(List<oidb_0x74b.VideoHeadInfo> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      VideoHeadInfo localVideoHeadInfo = a((oidb_0x74b.VideoHeadInfo)paramList.next());
-      if (localVideoHeadInfo != null) {
-        localArrayList.add(localVideoHeadInfo);
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        VideoHeadInfo localVideoHeadInfo = a((oidb_0x74b.VideoHeadInfo)paramList.next());
+        if (localVideoHeadInfo != null) {
+          localArrayList.add(localVideoHeadInfo);
+        }
       }
+      return localArrayList;
     }
-    return localArrayList;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarInfo.VideoHeadInfo
  * JD-Core Version:    0.7.0.1
  */

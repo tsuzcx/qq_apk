@@ -17,10 +17,12 @@ public class LocalConfig
   {
     int i = Build.VERSION.SDK_INT;
     BaseApplication localBaseApplication = BaseApplication.getContext();
-    if (i > 10) {}
-    for (i = 4;; i = 0) {
-      return localBaseApplication.getSharedPreferences("OPENSDK_setting", i);
+    if (i > 10) {
+      i = 4;
+    } else {
+      i = 0;
     }
+    return localBaseApplication.getSharedPreferences("OPENSDK_setting", i);
   }
   
   public static SharedPreferences a(long paramLong)
@@ -28,8 +30,12 @@ public class LocalConfig
     if (paramLong == 0L) {
       return a();
     }
-    String str = MD5Utils.encodeHexStr(String.valueOf(paramLong)) + "_" + "preference";
-    return BaseApplication.getContext().getSharedPreferences(str, 0);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(MD5Utils.encodeHexStr(String.valueOf(paramLong)));
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append("preference");
+    localObject = ((StringBuilder)localObject).toString();
+    return BaseApplication.getContext().getSharedPreferences((String)localObject, 0);
   }
   
   public static void a(String paramString, int paramInt, long paramLong)
@@ -41,7 +47,7 @@ public class LocalConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.component.cache.util.LocalConfig
  * JD-Core Version:    0.7.0.1
  */

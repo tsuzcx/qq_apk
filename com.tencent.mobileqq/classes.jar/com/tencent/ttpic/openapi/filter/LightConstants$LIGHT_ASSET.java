@@ -29,6 +29,7 @@ public final class LightConstants$LIGHT_ASSET
   public static final String ASSET_NEED_SEGMENT = "ai.segment";
   public static final String ASSET_NEED_SKY_SEGMENT = "ai.segmentSky";
   public static final String ASSET_NEED_TNN = "ai.gan";
+  public static final String ASSET_NEED_VOICE_CHANGE = "material.voiceChange";
   public static final String ASSET_PAINT_EVENT = "event.paintPoint";
   public static final String ASSET_PAINT_EVENT_END = "event.paintPoint.end";
   public static final String ASSET_SUPPORT_TOUCH = "material.touch";
@@ -38,7 +39,7 @@ public final class LightConstants$LIGHT_ASSET
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.LightConstants.LIGHT_ASSET
  * JD-Core Version:    0.7.0.1
  */

@@ -42,13 +42,17 @@ public final class PackageUtil
       a(paramContext, paramString);
       return true;
     }
-    catch (PackageManager.NameNotFoundException paramContext) {}
+    catch (PackageManager.NameNotFoundException paramContext)
+    {
+      label8:
+      break label8;
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.pm.PackageUtil
  * JD-Core Version:    0.7.0.1
  */

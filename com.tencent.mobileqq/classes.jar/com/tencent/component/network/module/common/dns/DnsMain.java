@@ -13,99 +13,134 @@ public class DnsMain
   public static InetAddress[] getBetterHostByName(String paramString, long paramLong)
   {
     paramString = getHostName(paramString);
-    if (QDLog.isInfoEnable()) {
-      QDLog.i("DnsMain", "hostName:" + paramString + ",timeout:" + paramLong + "get better host for name:" + paramString);
+    Object localObject;
+    if (QDLog.isInfoEnable())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("hostName:");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(",timeout:");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("get better host for name:");
+      ((StringBuilder)localObject).append(paramString);
+      QDLog.i("DnsMain", ((StringBuilder)localObject).toString());
     }
-    if ((paramString == null) || (paramString.trim().length() <= 0)) {}
-    do
+    if (paramString != null)
     {
-      return null;
+      if (paramString.trim().length() <= 0) {
+        return null;
+      }
       paramString = paramString.trim();
-      if (0 == 0) {
-        break;
-      }
-    } while (!QDLog.isInfoEnable());
-    QDLog.i("DnsMain", "get ip from cache: " + paramString + " --- " + null);
-    return null;
-    try
-    {
-      InetAddress[] arrayOfInetAddress = new Lookup("114.114.114.114").run(paramString, paramLong);
-      if ((arrayOfInetAddress != null) && (arrayOfInetAddress.length > 0))
+      try
       {
-        if (QDLog.isInfoEnable()) {
-          QDLog.i("DnsMain", "get ip from Lookup: " + paramString + " --- " + arrayOfInetAddress);
+        localObject = new Lookup("114.114.114.114").run(paramString, paramLong);
+        if ((localObject != null) && (localObject.length > 0))
+        {
+          if (!QDLog.isInfoEnable()) {
+            return localObject;
+          }
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("get ip from Lookup: ");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(" --- ");
+          localStringBuilder.append(localObject);
+          QDLog.i("DnsMain", localStringBuilder.toString());
+          return localObject;
         }
-      }
-      else
-      {
         QDLog.e("DnsMain", "114 - Address == null ? WTF ?!");
         return null;
       }
+      catch (Exception localException)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Exception cause[");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("][114.114.114.114].");
+        localStringBuilder.append(localException.getMessage());
+        QDLog.e("DnsMain", localStringBuilder.toString());
+        return null;
+      }
+      catch (IOException localIOException)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("IOException cause[");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("][114.114.114.114].");
+        localStringBuilder.append(localIOException.getMessage());
+        QDLog.e("DnsMain", localStringBuilder.toString());
+        return null;
+      }
+      catch (SocketTimeoutException localSocketTimeoutException)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("SocketTimeoutException cause[");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("][114.114.114.114].");
+        localStringBuilder.append(localSocketTimeoutException.getMessage());
+        QDLog.e("DnsMain", localStringBuilder.toString());
+        return null;
+      }
+      catch (WireParseException localWireParseException)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("WireParseException cause[");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("][114.114.114.114].");
+        localStringBuilder.append(localWireParseException.getMessage());
+        QDLog.e("DnsMain", localStringBuilder.toString());
+        return null;
+      }
+      catch (UnknownHostException localUnknownHostException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("UnknownHostException cause[");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("][114.114.114.114].");
+        localStringBuilder.append(localUnknownHostException.getMessage());
+        QDLog.e("DnsMain", localStringBuilder.toString());
+      }
     }
-    catch (UnknownHostException localUnknownHostException)
+    else
     {
-      QDLog.e("DnsMain", "UnknownHostException cause[" + paramString + "][114.114.114.114]." + localUnknownHostException.getMessage());
       return null;
     }
-    catch (WireParseException localWireParseException)
-    {
-      QDLog.e("DnsMain", "WireParseException cause[" + paramString + "][114.114.114.114]." + localWireParseException.getMessage());
-      return null;
-    }
-    catch (SocketTimeoutException localSocketTimeoutException)
-    {
-      QDLog.e("DnsMain", "SocketTimeoutException cause[" + paramString + "][114.114.114.114]." + localSocketTimeoutException.getMessage());
-      return null;
-    }
-    catch (IOException localIOException)
-    {
-      QDLog.e("DnsMain", "IOException cause[" + paramString + "][114.114.114.114]." + localIOException.getMessage());
-      return null;
-    }
-    catch (Exception localException)
-    {
-      QDLog.e("DnsMain", "Exception cause[" + paramString + "][114.114.114.114]." + localException.getMessage());
-      return null;
-    }
-    return localException;
+    return localUnknownHostException;
   }
   
   public static String getHostName(String paramString)
   {
     if (paramString == null) {
-      paramString = "";
+      return "";
     }
-    String str;
-    do
+    String str = paramString.trim();
+    paramString = str.toLowerCase();
+    int i;
+    if (paramString.startsWith("http://"))
     {
-      return paramString;
-      str = paramString.trim();
-      paramString = str.toLowerCase();
-      int i;
-      if (paramString.startsWith("http://"))
-      {
-        i = str.indexOf("/", 8);
-        if (i > 7) {
-          return str.substring(7, i);
-        }
-        return str.substring(7);
+      i = str.indexOf("/", 8);
+      if (i > 7) {
+        return str.substring(7, i);
       }
-      if (paramString.startsWith("https://"))
-      {
-        i = str.indexOf("/", 9);
-        if (i > 8) {
-          return str.substring(8, i);
-        }
-        return str.substring(8);
+      return str.substring(7);
+    }
+    if (paramString.startsWith("https://"))
+    {
+      i = str.indexOf("/", 9);
+      if (i > 8) {
+        return str.substring(8, i);
       }
-      paramString = str;
-    } while (str.indexOf("/", 1) <= 1);
-    return str.substring(0, str.indexOf("/", 1));
+      return str.substring(8);
+    }
+    paramString = str;
+    if (str.indexOf("/", 1) > 1) {
+      paramString = str.substring(0, str.indexOf("/", 1));
+    }
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.module.common.dns.DnsMain
  * JD-Core Version:    0.7.0.1
  */

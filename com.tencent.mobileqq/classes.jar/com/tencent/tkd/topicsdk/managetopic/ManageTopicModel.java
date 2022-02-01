@@ -18,22 +18,18 @@ public final class ManageTopicModel
   public TopicInfo a()
   {
     String str = StorageManager.a.a("sp_topic_info_sketch", "");
-    if (str != null) {
-      if (((CharSequence)str).length() != 0) {
-        break label41;
-      }
-    }
-    label41:
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        break label46;
-      }
-      return null;
+    if (str == null) {
       str = "";
-      break;
     }
-    label46:
+    int i;
+    if (((CharSequence)str).length() == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      return null;
+    }
     return new TopicInfo(str);
   }
   
@@ -64,7 +60,7 @@ public final class ManageTopicModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.managetopic.ManageTopicModel
  * JD-Core Version:    0.7.0.1
  */

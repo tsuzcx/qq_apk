@@ -1,20 +1,26 @@
 package com.tencent.biz.qcircleshadow.lib;
 
-import com.tencent.tmassistantbase.network.INetworkChangedObserver;
+import com.tencent.mobileqq.flutter.download.InstallCallback;
+import com.tencent.mobileqq.qcircle.tempapi.interfaces.FlutterInstallCallBack;
 
 final class HostStaticInvokeHelper$2
-  implements INetworkChangedObserver
+  implements InstallCallback
 {
-  HostStaticInvokeHelper$2(HostStaticInvokeHelper.NetworkChangedObserver paramNetworkChangedObserver) {}
+  HostStaticInvokeHelper$2(FlutterInstallCallBack paramFlutterInstallCallBack) {}
   
-  public void onNetworkChanged()
+  public void onProgress(int paramInt)
   {
-    this.val$observer.onNetworkChanged();
+    this.val$callBack.onProgress(paramInt);
+  }
+  
+  public void onResult(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    this.val$callBack.onResult(paramBoolean1, paramString, paramBoolean2, paramBoolean3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.HostStaticInvokeHelper.2
  * JD-Core Version:    0.7.0.1
  */

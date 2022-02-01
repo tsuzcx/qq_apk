@@ -3,9 +3,11 @@ package com.tencent.biz.pubaccount.readinjoyAd.ad.utils;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdReportData;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdService;
+import com.tencent.mobileqq.kandian.ad.api.IRIJFastWebAdService;
+import com.tencent.mobileqq.qroute.QRoute;
 import mqq.app.AppActivity;
 import org.json.JSONObject;
 
@@ -47,13 +49,16 @@ public class ReadInJoyTelePhoneUtils
     if (paramContext == null) {
       return;
     }
-    paramContext.startActivity(new Intent("android.intent.action.DIAL", Uri.parse("tel:" + paramString)));
-    NativeAdUtils.a(new AdReportData().a(paramContext).a(116).b(Integer.valueOf(22)).b(28).a(paramAdvertisementInfo).e(a(2, 1, paramString, paramAdvertisementInfo)));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tel:");
+    localStringBuilder.append(paramString);
+    paramContext.startActivity(new Intent("android.intent.action.DIAL", Uri.parse(localStringBuilder.toString())));
+    ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(paramContext).a(116).b(Integer.valueOf(22)).b(28).a(paramAdvertisementInfo).e(((IRIJFastWebAdService)QRoute.api(IRIJFastWebAdService.class)).getTelephoneSubmitInfo(2, 1, paramString, paramAdvertisementInfo)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyTelePhoneUtils
  * JD-Core Version:    0.7.0.1
  */

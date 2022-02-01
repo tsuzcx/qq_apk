@@ -18,13 +18,24 @@ public class SubAccountThirdQQBackProtocData
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("result:").append(this.jdField_b_of_type_Int).append(" mainAccount:").append(this.jdField_a_of_type_JavaLangString).append(" errorType:").append(this.jdField_a_of_type_Int).append(" errorMsg:").append(this.jdField_b_of_type_JavaLangString).append(" interval:").append(this.c).append(" allLastMsgTime:").append(this.d);
+    localStringBuilder.append("result:");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(" mainAccount:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" errorType:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" errorMsg:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" interval:");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(" allLastMsgTime:");
+    localStringBuilder.append(this.d);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.logic.SubAccountThirdQQBackProtocData
  * JD-Core Version:    0.7.0.1
  */

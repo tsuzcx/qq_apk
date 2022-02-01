@@ -2,8 +2,8 @@ package com.tencent.biz.pubaccount.qqnews;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
 import com.tencent.mobileqq.qroute.route.URIRequest;
@@ -25,21 +25,20 @@ public final class QQNewsHippyFragment$setNavClickListener$$inlined$apply$lambda
       paramView.extra().putBoolean("fromQQNewsPubNew", true);
       paramView.extra().putString("uin", "2909288299");
       QRoute.startUri((URIRequest)paramView, null);
+      return;
     }
-    do
+    if (1 == paramInt)
     {
-      do
-      {
-        return;
-      } while (1 != paramInt);
       paramView = this.a.getActivity();
-    } while (paramView == null);
-    paramView.finish();
+      if (paramView != null) {
+        paramView.finish();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.qqnews.QQNewsHippyFragment.setNavClickListener..inlined.apply.lambda.1
  * JD-Core Version:    0.7.0.1
  */

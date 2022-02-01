@@ -37,7 +37,7 @@ final class DisplayBitmapTask
   private boolean isViewWasReused()
   {
     String str = this.engine.getLoadingUriForView(this.imageAware);
-    return !this.memoryCacheKey.equals(str);
+    return this.memoryCacheKey.equals(str) ^ true;
   }
   
   public void run()
@@ -62,7 +62,7 @@ final class DisplayBitmapTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.core.DisplayBitmapTask
  * JD-Core Version:    0.7.0.1
  */

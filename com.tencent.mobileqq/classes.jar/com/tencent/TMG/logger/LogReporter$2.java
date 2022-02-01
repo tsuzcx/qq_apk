@@ -13,34 +13,38 @@ class LogReporter$2
   
   public void onCompleted(String paramString, int paramInt, byte[] paramArrayOfByte, Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof LogReporter.LogReprotInfo))) {}
-    do
+    if (paramObject != null)
     {
-      return;
-      paramString = (LogReporter.LogReprotInfo)paramObject;
-    } while (TextUtils.isEmpty(paramString.logPath));
-    if ((paramInt != 200) || (paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
-    {
-      Log.e("LogReporter", String.format("mReportLogInfoListener|http request error code=%d", new Object[] { Integer.valueOf(paramInt) }));
-      return;
-    }
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
-    {
-      int i = new JSONObject(paramArrayOfByte).getInt("errorCode");
-      if ((i == 0) || (i == 1))
-      {
-        LogReporter.access$100(this.this$0, paramString);
+      if (!(paramObject instanceof LogReporter.LogReprotInfo)) {
         return;
       }
+      paramString = (LogReporter.LogReprotInfo)paramObject;
+      if (TextUtils.isEmpty(paramString.logPath)) {
+        return;
+      }
+      if ((paramInt == 200) && (paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
+      {
+        paramArrayOfByte = new String(paramArrayOfByte);
+        try
+        {
+          int i = new JSONObject(paramArrayOfByte).getInt("errorCode");
+          if ((i != 0) && (i != 1))
+          {
+            Log.e("LogReporter", String.format("mReportLogInfoListener|errorcode=%d", new Object[] { Integer.valueOf(paramInt) }));
+            return;
+          }
+          LogReporter.access$100(this.this$0, paramString);
+          return;
+        }
+        catch (JSONException paramString)
+        {
+          paramString.printStackTrace();
+          Log.e("LogReporter", String.format("mReportLogInfoListener|json=%s", new Object[] { paramArrayOfByte }));
+          return;
+        }
+      }
+      Log.e("LogReporter", String.format("mReportLogInfoListener|http request error code=%d", new Object[] { Integer.valueOf(paramInt) }));
     }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-      Log.e("LogReporter", String.format("mReportLogInfoListener|json=%s", new Object[] { paramArrayOfByte }));
-      return;
-    }
-    Log.e("LogReporter", String.format("mReportLogInfoListener|errorcode=%d", new Object[] { Integer.valueOf(paramInt) }));
   }
 }
 

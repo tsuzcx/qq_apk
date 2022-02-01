@@ -76,24 +76,30 @@ public class DropdownView
     ((RelativeLayout.LayoutParams)localObject2).addRule(7, this.jdField_a_of_type_ComTencentMobileqqWidgetDropdownView$AutoCompleteView.getId());
     addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_b_of_type_AndroidWidgetImageView.setPadding((int)(this.jdField_a_of_type_Float * 10.0F), (int)(this.jdField_a_of_type_Float * 10.0F), (int)(this.jdField_a_of_type_Float * 15.0F), (int)(this.jdField_a_of_type_Float * 10.0F));
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839526);
+    localObject2 = this.jdField_b_of_type_AndroidWidgetImageView;
+    float f = this.jdField_a_of_type_Float;
+    ((ImageView)localObject2).setPadding((int)(f * 10.0F), (int)(f * 10.0F), (int)(f * 15.0F), (int)(f * 10.0F));
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839382);
     this.jdField_b_of_type_AndroidWidgetImageView.setClickable(true);
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131703579));
+    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131703710));
     new LinearLayout.LayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    localObject2 = new LinearLayout.LayoutParams((int)(44.0F * this.jdField_a_of_type_Float), (int)(39.0F * this.jdField_a_of_type_Float));
+    f = this.jdField_a_of_type_Float;
+    localObject2 = new LinearLayout.LayoutParams((int)(44.0F * f), (int)(f * 39.0F));
     ((LinearLayout.LayoutParams)localObject2).gravity = 16;
     ((LinearLayout)localObject1).addView(this.jdField_b_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject2);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
     this.jdField_a_of_type_AndroidWidgetImageView.setId(571);
-    this.jdField_a_of_type_AndroidWidgetImageView.setPadding((int)(1.0F * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F), (int)(this.jdField_a_of_type_Float * 15.0F), (int)(this.jdField_a_of_type_Float * 10.0F));
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131703580));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840800);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840801);
+    paramContext = this.jdField_a_of_type_AndroidWidgetImageView;
+    f = this.jdField_a_of_type_Float;
+    paramContext.setPadding((int)(1.0F * f), (int)(f * 10.0F), (int)(15.0F * f), (int)(f * 10.0F));
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131703711));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840675);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840676);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     this.jdField_a_of_type_AndroidWidgetImageView.setClickable(true);
-    paramContext = new LinearLayout.LayoutParams((int)(35.0F * this.jdField_a_of_type_Float), (int)(33.0F * this.jdField_a_of_type_Float));
+    f = this.jdField_a_of_type_Float;
+    paramContext = new LinearLayout.LayoutParams((int)(35.0F * f), (int)(f * 33.0F));
     paramContext.gravity = 16;
     ((LinearLayout)localObject1).addView(this.jdField_a_of_type_AndroidWidgetImageView, paramContext);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new DropdownView.1(this));
@@ -131,7 +137,7 @@ public class DropdownView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.DropdownView
  * JD-Core Version:    0.7.0.1
  */

@@ -30,16 +30,17 @@ public final class oidb_0xede$GroupInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 48, 56, 64, 74, 82, 90, 98, 104, 112 }, new String[] { "uint64_group_code", "uint32_group_member_max_num", "uint32_group_member_num", "string_group_name", "uint32_status", "uint32_type", "uint32_role", "uint32_seq", "bytes_join_group_auth", "rpt_group_label", "string_group_finger_memo", "string_group_rich_finger_memo", "uint32_group_face", "uint32_is_conf_group" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, null, localByteStringMicro3, localByteStringMicro4, Integer.valueOf(0), Integer.valueOf(0) }, GroupInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 48, 56, 64, 74, 82, 90, 98, 104, 112 }, new String[] { "uint64_group_code", "uint32_group_member_max_num", "uint32_group_member_num", "string_group_name", "uint32_status", "uint32_type", "uint32_role", "uint32_seq", "bytes_join_group_auth", "rpt_group_label", "string_group_finger_memo", "string_group_rich_finger_memo", "uint32_group_face", "uint32_is_conf_group" }, new Object[] { Long.valueOf(0L), localInteger, localInteger, localByteStringMicro1, localInteger, localInteger, localInteger, localInteger, localByteStringMicro2, null, localByteStringMicro3, localByteStringMicro4, localInteger, localInteger }, GroupInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xede.oidb_0xede.GroupInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -9,8 +9,8 @@ import org.libpag.PAGFile;
 public class TAVPAGFileManager
 {
   private static final int CACHE_SIZE = 10;
-  private static final String TAG = TAVPAGFileManager.class.getSimpleName();
-  private static volatile TAVPAGFileManager sInstance = null;
+  private static final String TAG = "TAVPAGFileManager";
+  private static volatile TAVPAGFileManager sInstance;
   private LruCache<String, PAGFile> mapPagFile = null;
   
   private void checkPAGFileMap()
@@ -22,15 +22,16 @@ public class TAVPAGFileManager
   
   public static TAVPAGFileManager getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new TAVPAGFileManager();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new TAVPAGFileManager();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public void clearCache()
@@ -51,74 +52,75 @@ public class TAVPAGFileManager
   public PAGFile getPAGFileFromAsset(Context paramContext, String paramString)
   {
     checkPAGFileMap();
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramContext != null)
+    if ((paramContext != null) && (!TextUtils.isEmpty(paramString)))
     {
-      localObject1 = localObject2;
-      if (!TextUtils.isEmpty(paramString))
+      Object localObject = this.mapPagFile;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("android_asset://");
+      localStringBuilder.append(paramString);
+      localObject = (PAGFile)((LruCache)localObject).get(localStringBuilder.toString());
+      if (localObject != null) {
+        return localObject;
+      }
+      localObject = PAGFile.Load(paramContext.getAssets(), paramString);
+      paramContext = (Context)localObject;
+      if (localObject != null)
       {
-        localObject1 = (PAGFile)this.mapPagFile.get("android_asset://" + paramString);
-        if (localObject1 == null) {
-          break label60;
-        }
+        paramContext = this.mapPagFile;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("android_asset://");
+        localStringBuilder.append(paramString);
+        paramContext.put(localStringBuilder.toString(), localObject);
+        return localObject;
       }
     }
-    label60:
-    do
+    else
     {
-      return localObject1;
-      paramContext = PAGFile.Load(paramContext.getAssets(), paramString);
-      localObject1 = paramContext;
-    } while (paramContext == null);
-    this.mapPagFile.put("android_asset://" + paramString, paramContext);
+      paramContext = null;
+    }
     return paramContext;
   }
   
   public PAGFile getPAGFileFromByteArray(byte[] paramArrayOfByte)
   {
     checkPAGFileMap();
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfByte != null)
-    {
-      localObject1 = localObject2;
-      if (paramArrayOfByte.length > 0) {
-        localObject1 = PAGFile.Load(paramArrayOfByte);
-      }
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {
+      return PAGFile.Load(paramArrayOfByte);
     }
-    return localObject1;
+    return null;
   }
   
   public PAGFile getPAGFileFromPath(String paramString)
   {
     checkPAGFileMap();
-    Object localObject = null;
+    Object localObject;
     if (!TextUtils.isEmpty(paramString))
     {
       localObject = (PAGFile)this.mapPagFile.get(paramString);
-      if (localObject == null) {
-        break label31;
+      if (localObject != null) {
+        return localObject;
+      }
+      if (new File(paramString).exists())
+      {
+        PAGFile localPAGFile = PAGFile.Load(paramString);
+        localObject = localPAGFile;
+        if (localPAGFile != null)
+        {
+          this.mapPagFile.put(paramString, localPAGFile);
+          return localPAGFile;
+        }
       }
     }
-    label31:
-    PAGFile localPAGFile;
-    do
+    else
     {
-      do
-      {
-        return localObject;
-      } while (!new File(paramString).exists());
-      localPAGFile = PAGFile.Load(paramString);
-      localObject = localPAGFile;
-    } while (localPAGFile == null);
-    this.mapPagFile.put(paramString, localPAGFile);
-    return localPAGFile;
+      localObject = null;
+    }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavsticker.core.TAVPAGFileManager
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.mobileqq.vas.quickupdate;
 
 import android.content.Context;
 import androidx.annotation.Keep;
+import com.tencent.comic.quickupdate.QQComicUpdateBusiness;
 import com.tencent.mobileqq.qroute.annotation.ConfigInject;
 import com.tencent.mobileqq.vas.FontUpdateBusiness;
 import com.tencent.qphone.base.util.QLog;
@@ -30,6 +31,7 @@ public class UpdateCallbackSelector
     mInjectBusinessCallback.add(QQLevelIconCallback.class);
     mInjectBusinessCallback.add(VipIconCallback.class);
     mInjectBusinessCallback.add(FontUpdateBusiness.class);
+    mInjectBusinessCallback.add(QQComicUpdateBusiness.class);
     sBusinessRegister = new HashMap();
     initBaseUpdateCallback();
   }
@@ -59,24 +61,31 @@ public class UpdateCallbackSelector
   
   private static BaseUpdateCallback[] getInjectArray()
   {
-    QLog.i("UpdateCallbackSelector", 1, "getInjectArray size = " + mInjectBusinessCallback.size());
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("getInjectArray size = ");
+    ((StringBuilder)localObject1).append(mInjectBusinessCallback.size());
+    QLog.i("UpdateCallbackSelector", 1, ((StringBuilder)localObject1).toString());
     if (mInjectBusinessCallback.isEmpty()) {
       return new BaseUpdateCallback[] { ThemeUpdateCallback.sInstance, RingUpdateCallback.sInstance, PobingUpdateCallback.sInstance, MusicPlayerCallback.sInstance, MusicThemeCallback.sInstance, QQLevelIconCallback.sInstance, VipIconCallback.sInstance };
     }
-    ArrayList localArrayList = new ArrayList();
+    localObject1 = new ArrayList();
     Iterator localIterator = mInjectBusinessCallback.iterator();
     while (localIterator.hasNext())
     {
       Class localClass = (Class)localIterator.next();
       if (localClass != null)
       {
-        Object localObject = JarReflectUtil.getStaticField(localClass.getName(), "sInstance");
-        if (localObject != null)
+        Object localObject2 = JarReflectUtil.getStaticField(localClass.getName(), "sInstance");
+        if (localObject2 != null)
         {
-          if (QLog.isColorLevel()) {
-            QLog.i("UpdateCallbackSelector", 2, "inject class name = " + localClass.getName());
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("inject class name = ");
+            localStringBuilder.append(localClass.getName());
+            QLog.i("UpdateCallbackSelector", 2, localStringBuilder.toString());
           }
-          localArrayList.add((BaseUpdateCallback)localObject);
+          ((ArrayList)localObject1).add((BaseUpdateCallback)localObject2);
         }
         else
         {
@@ -84,28 +93,33 @@ public class UpdateCallbackSelector
         }
       }
     }
-    return (BaseUpdateCallback[])localArrayList.toArray(new BaseUpdateCallback[localArrayList.size()]);
+    return (BaseUpdateCallback[])((ArrayList)localObject1).toArray(new BaseUpdateCallback[((ArrayList)localObject1).size()]);
   }
   
   private static void initBaseUpdateCallback()
   {
     BaseUpdateCallback[] arrayOfBaseUpdateCallback = getInjectArray();
-    if (arrayOfBaseUpdateCallback != null) {
-      QLog.i("UpdateCallbackSelector", 1, "getInjectArray size = " + arrayOfBaseUpdateCallback.length);
+    Object localObject;
+    if (arrayOfBaseUpdateCallback != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getInjectArray size = ");
+      ((StringBuilder)localObject).append(arrayOfBaseUpdateCallback.length);
+      QLog.i("UpdateCallbackSelector", 1, ((StringBuilder)localObject).toString());
     }
     int j = arrayOfBaseUpdateCallback.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
-      BaseUpdateCallback localBaseUpdateCallback = arrayOfBaseUpdateCallback[i];
-      if (localBaseUpdateCallback == null) {}
-      for (;;)
+      localObject = arrayOfBaseUpdateCallback[i];
+      if (localObject != null)
       {
-        i += 1;
-        break;
-        if ((sBusinessRegister.containsKey(Long.valueOf(localBaseUpdateCallback.getBID()))) && (sBusinessRegister.get(Long.valueOf(localBaseUpdateCallback.getBID())) != null)) {}
-        sBusinessRegister.put(Long.valueOf(localBaseUpdateCallback.getBID()), localBaseUpdateCallback);
+        if (sBusinessRegister.containsKey(Long.valueOf(((BaseUpdateCallback)localObject).getBID()))) {
+          sBusinessRegister.get(Long.valueOf(((BaseUpdateCallback)localObject).getBID()));
+        }
+        sBusinessRegister.put(Long.valueOf(((BaseUpdateCallback)localObject).getBID()), localObject);
       }
+      i += 1;
     }
   }
   
@@ -141,7 +155,7 @@ public class UpdateCallbackSelector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.quickupdate.UpdateCallbackSelector
  * JD-Core Version:    0.7.0.1
  */

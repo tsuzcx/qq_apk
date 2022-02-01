@@ -26,45 +26,45 @@ class DevicePttItemBuilder$1
   public void OnClick(View paramView, int paramInt)
   {
     this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.uniseq);
-    paramView = null;
     if (this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
     {
       paramView = MessageRecordFactory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
       ((MessageForPtt)paramView).fileSize = -3L;
       this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramView, this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     }
-    if (paramView != null)
+    else
     {
-      if (!"device_groupchat".equals(paramView.extStr)) {
-        break label257;
-      }
-      if ((!NetworkUtil.d(BaseApplication.getContext())) && ((paramView instanceof MessageForDevPtt)))
+      paramView = null;
+    }
+    if (paramView != null) {
+      if ("device_groupchat".equals(paramView.extStr))
       {
-        paramView = (MessageForDevPtt)paramView;
-        paramView.fileSize = -1L;
-        paramView.extraflag = 32768;
-        paramView.extStr = "device_groupchat";
-        paramView.serial();
-        this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramView.frienduin, paramView.istroop, paramView.uniseq, paramView.msgData);
-        this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.b();
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-        return;
+        if ((!NetworkUtil.isNetSupport(BaseApplication.getContext())) && ((paramView instanceof MessageForDevPtt)))
+        {
+          paramView = (MessageForDevPtt)paramView;
+          paramView.fileSize = -1L;
+          paramView.extraflag = 32768;
+          paramView.extStr = "device_groupchat";
+          paramView.serial();
+          this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramView.frienduin, paramView.istroop, paramView.uniseq, paramView.msgData);
+          this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.b();
+          this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+          return;
+        }
+        DeviceMsgChatPie.a(((SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.parseLong(this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.url, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceLength), paramView);
       }
-      DeviceMsgChatPie.a(((SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.parseLong(this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.url, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceLength), paramView);
+      else
+      {
+        ((DeviceMsgHandle)this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a().a(DeviceMsgHandle.f, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.url, Long.parseLong(this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), paramView.uniseq, paramView.istroop, (int)this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.msgRecTime / 1000);
+      }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.b();
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      label257:
-      ((DeviceMsgHandle)this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a().a(DeviceMsgHandle.f, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.url, Long.parseLong(this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), paramView.uniseq, paramView.istroop, (int)this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.msgRecTime / 1000);
-    }
+    this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.b();
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.msg.activities.DevicePttItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

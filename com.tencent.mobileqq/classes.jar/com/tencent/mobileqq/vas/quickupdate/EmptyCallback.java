@@ -9,7 +9,14 @@ public class EmptyCallback
 {
   private void logError(String paramString1, long paramLong, String paramString2)
   {
-    QLog.e("EmptyCallback", 1, "call empty method:" + paramString1 + " with " + paramLong + "_" + paramString2, new Exception());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("call empty method:");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" with ");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    QLog.e("EmptyCallback", 1, localStringBuilder.toString(), new Exception());
   }
   
   public boolean canUpdate(long paramLong, String paramString1, String paramString2)
@@ -58,7 +65,7 @@ public class EmptyCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.quickupdate.EmptyCallback
  * JD-Core Version:    0.7.0.1
  */

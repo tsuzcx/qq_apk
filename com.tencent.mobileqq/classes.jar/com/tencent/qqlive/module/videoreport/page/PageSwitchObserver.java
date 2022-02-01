@@ -44,15 +44,20 @@ public class PageSwitchObserver
   
   private void checkActivity(Activity paramActivity)
   {
-    View localView = paramActivity.getWindow().getDecorView();
-    if (localView == null)
+    Object localObject = paramActivity.getWindow().getDecorView();
+    if (localObject == null)
     {
-      if (VideoReportInner.getInstance().isDebugMode()) {
-        Log.d("PageSwitchObserver", "onActivityResume: activity = " + paramActivity + ", null getView()");
+      if (VideoReportInner.getInstance().isDebugMode())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onActivityResume: activity = ");
+        ((StringBuilder)localObject).append(paramActivity);
+        ((StringBuilder)localObject).append(", null getView()");
+        Log.d("PageSwitchObserver", ((StringBuilder)localObject).toString());
       }
       return;
     }
-    laidOutAppear(paramActivity, localView);
+    laidOutAppear(paramActivity, (View)localObject);
   }
   
   private boolean checkPageDisappear(View paramView)
@@ -74,15 +79,23 @@ public class PageSwitchObserver
   private void detectActivePage(Activity paramActivity, int paramInt)
   {
     Log.d("LazyInitSequence", "detect page");
-    String str = "PageSwitchObserver.detectActivity(" + paramActivity.getClass().getSimpleName() + ")";
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("PageSwitchObserver.detectActivity(");
+    ((StringBuilder)localObject).append(paramActivity.getClass().getSimpleName());
+    ((StringBuilder)localObject).append(")");
+    String str = ((StringBuilder)localObject).toString();
     SimpleTracer.begin(str);
     List localList = DialogListUtil.getDialogList(paramActivity);
     int i = BaseUtils.size(localList) - 1;
     while (i >= 0)
     {
-      Object localObject = (WeakReference)localList.get(i);
-      if (localObject == null) {}
-      for (localObject = null; (localObject != null) && (detectActivePage(((Dialog)localObject).getWindow(), paramInt)); localObject = (Dialog)((WeakReference)localObject).get()) {
+      localObject = (WeakReference)localList.get(i);
+      if (localObject == null) {
+        localObject = null;
+      } else {
+        localObject = (Dialog)((WeakReference)localObject).get();
+      }
+      if ((localObject != null) && (detectActivePage(((Dialog)localObject).getWindow(), paramInt))) {
         return;
       }
       i -= 1;
@@ -104,8 +117,14 @@ public class PageSwitchObserver
       }
       return false;
     }
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("PageSwitchObserver", "detectActivePage: active page found, view = " + paramView + ", page = " + localPageInfo);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("detectActivePage: active page found, view = ");
+      localStringBuilder.append(paramView);
+      localStringBuilder.append(", page = ");
+      localStringBuilder.append(localPageInfo);
+      Log.d("PageSwitchObserver", localStringBuilder.toString());
     }
     onActivePageFound(localPageInfo, paramInt);
     return true;
@@ -118,30 +137,29 @@ public class PageSwitchObserver
   
   private Activity findAttachedActivity(View paramView)
   {
-    if (!ViewCompatUtils.isAttachedToWindow(paramView))
+    boolean bool = ViewCompatUtils.isAttachedToWindow(paramView);
+    Object localObject1 = null;
+    if (!bool) {
+      return null;
+    }
+    Object localObject2 = paramView.getRootView();
+    Object localObject3 = ViewContainerBinder.getInstance().getBoundContainer((View)localObject2);
+    if ((localObject3 instanceof Activity)) {
+      return (Activity)localObject3;
+    }
+    if ((localObject3 instanceof Dialog)) {
+      return DialogListUtil.getDialogActivity((Dialog)localObject3);
+    }
+    if ((localObject2 instanceof ViewGroup))
     {
-      localObject2 = null;
-      return localObject2;
+      localObject1 = ((ViewGroup)localObject2).getChildAt(0);
+      localObject1 = this.mViewActivityMap.getActivity((View)localObject1);
     }
-    Object localObject1 = paramView.getRootView();
-    Object localObject2 = ViewContainerBinder.getInstance().getBoundContainer((View)localObject1);
-    if ((localObject2 instanceof Activity)) {
-      return (Activity)localObject2;
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = this.mViewActivityMap.getActivity(paramView);
     }
-    if ((localObject2 instanceof Dialog)) {
-      return DialogListUtil.getDialogActivity((Dialog)localObject2);
-    }
-    if ((localObject1 instanceof ViewGroup)) {
-      localObject1 = ((ViewGroup)localObject1).getChildAt(0);
-    }
-    for (localObject1 = this.mViewActivityMap.getActivity((View)localObject1);; localObject1 = null)
-    {
-      localObject2 = localObject1;
-      if (localObject1 != null) {
-        break;
-      }
-      return this.mViewActivityMap.getActivity(paramView);
-    }
+    return localObject2;
   }
   
   public static PageSwitchObserver getInstance()
@@ -158,8 +176,14 @@ public class PageSwitchObserver
   private void laidOutAppear(Activity paramActivity, View paramView)
   {
     boolean bool = ViewCompat.isLaidOut(paramView);
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("PageSwitchObserver", "laidOutAppear: activity = " + paramActivity + ", isLaidOut = " + bool);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("laidOutAppear: activity = ");
+      ((StringBuilder)localObject).append(paramActivity);
+      ((StringBuilder)localObject).append(", isLaidOut = ");
+      ((StringBuilder)localObject).append(bool);
+      Log.d("PageSwitchObserver", ((StringBuilder)localObject).toString());
     }
     if (bool)
     {
@@ -177,8 +201,14 @@ public class PageSwitchObserver
   {
     if (paramPageInfo != null)
     {
-      if (VideoReportInner.getInstance().isDebugMode()) {
-        Log.d("PageSwitchObserver", "notifyPageAppear: page = " + paramPageInfo + ", view = " + paramPageInfo.getPageView());
+      if (VideoReportInner.getInstance().isDebugMode())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("notifyPageAppear: page = ");
+        localStringBuilder.append(paramPageInfo);
+        localStringBuilder.append(", view = ");
+        localStringBuilder.append(paramPageInfo.getPageView());
+        Log.d("PageSwitchObserver", localStringBuilder.toString());
       }
       this.mListenerMgr.startNotify(new PageSwitchObserver.3(this, paramPageInfo, paramInt));
     }
@@ -209,48 +239,64 @@ public class PageSwitchObserver
   
   private void postAppearDetectionTask(Activity paramActivity)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("PageSwitchObserver", "postAppearDetectionTask: activity = " + paramActivity);
-    }
-    if ((paramActivity == null) || (!DetectionPolicy.isAbleToDetect(paramActivity))) {
-      if (VideoReportInner.getInstance().isDebugMode()) {
-        Log.d("PageSwitchObserver", "postAppearDetectionTask: unable to detect activity");
-      }
-    }
-    do
+    if (VideoReportInner.getInstance().isDebugMode())
     {
-      return;
-      if (this.mResumedActivities.contains(paramActivity)) {
-        break;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("postAppearDetectionTask: activity = ");
+      localStringBuilder.append(paramActivity);
+      Log.d("PageSwitchObserver", localStringBuilder.toString());
+    }
+    if ((paramActivity != null) && (DetectionPolicy.isAbleToDetect(paramActivity)))
+    {
+      if (!this.mResumedActivities.contains(paramActivity))
+      {
+        if (VideoReportInner.getInstance().isDebugMode()) {
+          Log.d("PageSwitchObserver", "postAppearDetectionTask: activity is not resumed, skip detection");
+        }
+        return;
       }
-    } while (!VideoReportInner.getInstance().isDebugMode());
-    Log.d("PageSwitchObserver", "postAppearDetectionTask: activity is not resumed, skip detection");
-    return;
-    this.mDelayedIdleHandler.remove(this.mDetectionTask);
-    this.mDetectionTask.setActivity(paramActivity);
-    this.mDelayedIdleHandler.post(this.mDetectionTask, 80L);
+      this.mDelayedIdleHandler.remove(this.mDetectionTask);
+      this.mDetectionTask.setActivity(paramActivity);
+      this.mDelayedIdleHandler.post(this.mDetectionTask, 80L);
+      return;
+    }
+    if (VideoReportInner.getInstance().isDebugMode()) {
+      Log.d("PageSwitchObserver", "postAppearDetectionTask: unable to detect activity");
+    }
   }
   
   public void onActivityConfigurationChanged(Activity paramActivity, android.content.res.Configuration paramConfiguration)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("PageSwitchObserver", "onActivityConfigurationChanged: activity = " + paramActivity);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      paramConfiguration = new StringBuilder();
+      paramConfiguration.append("onActivityConfigurationChanged: activity = ");
+      paramConfiguration.append(paramActivity);
+      Log.d("PageSwitchObserver", paramConfiguration.toString());
     }
     checkActivity(paramActivity);
   }
   
   public void onActivityDestroyed(Activity paramActivity)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("PageSwitchObserver", "onActivityDestroyed: activity = " + paramActivity);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityDestroyed: activity = ");
+      localStringBuilder.append(paramActivity);
+      Log.d("PageSwitchObserver", localStringBuilder.toString());
     }
     checkPageDisappear(paramActivity.getWindow());
   }
   
   public void onActivityPause(Activity paramActivity)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("PageSwitchObserver", "onActivityPause: activity = " + paramActivity);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityPause: activity = ");
+      localStringBuilder.append(paramActivity);
+      Log.d("PageSwitchObserver", localStringBuilder.toString());
     }
     if (this.mDetectionTask.getActivity() == paramActivity)
     {
@@ -268,8 +314,12 @@ public class PageSwitchObserver
   public void onActivityResume(Activity paramActivity)
   {
     this.mResumedActivities.add(paramActivity);
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("PageSwitchObserver", "onActivityResume: activity = " + paramActivity);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityResume: activity = ");
+      localStringBuilder.append(paramActivity);
+      Log.d("PageSwitchObserver", localStringBuilder.toString());
     }
     checkActivity(paramActivity);
   }
@@ -289,8 +339,14 @@ public class PageSwitchObserver
   
   public void onDialogHide(Activity paramActivity, Dialog paramDialog)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("PageSwitchObserver", "onDialogHide: activity = " + paramActivity + "dialog =" + paramDialog);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDialogHide: activity = ");
+      localStringBuilder.append(paramActivity);
+      localStringBuilder.append("dialog =");
+      localStringBuilder.append(paramDialog);
+      Log.d("PageSwitchObserver", localStringBuilder.toString());
     }
     if ((ReflectUtils.getField(Dialog.class, "mDecor", paramDialog) == null) && (checkPageDisappear(paramDialog.getWindow()))) {
       postAppearDetectionTask(paramActivity);
@@ -299,21 +355,37 @@ public class PageSwitchObserver
   
   public void onDialogShow(Activity paramActivity, Dialog paramDialog)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("PageSwitchObserver", "onDialogShow: activity = " + paramActivity + ", dialog = " + paramDialog);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDialogShow: activity = ");
+      localStringBuilder.append(paramActivity);
+      localStringBuilder.append(", dialog = ");
+      localStringBuilder.append(paramDialog);
+      Log.d("PageSwitchObserver", localStringBuilder.toString());
     }
     postAppearDetectionTask(DialogListUtil.getDialogActivity(paramDialog));
   }
   
   public void onFragmentDestroyView(FragmentCompat paramFragmentCompat)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("PageSwitchObserver", "onFragmentDestroyView: fragment = " + paramFragmentCompat);
+    StringBuilder localStringBuilder;
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onFragmentDestroyView: fragment = ");
+      localStringBuilder.append(paramFragmentCompat);
+      Log.d("PageSwitchObserver", localStringBuilder.toString());
     }
     if (paramFragmentCompat.getView() == null)
     {
-      if (VideoReportInner.getInstance().isDebugMode()) {
-        Log.d("PageSwitchObserver", "onFragmentDestroyView: Fragment = " + paramFragmentCompat + ", null getView()");
+      if (VideoReportInner.getInstance().isDebugMode())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onFragmentDestroyView: Fragment = ");
+        localStringBuilder.append(paramFragmentCompat);
+        localStringBuilder.append(", null getView()");
+        Log.d("PageSwitchObserver", localStringBuilder.toString());
       }
       return;
     }
@@ -322,46 +394,59 @@ public class PageSwitchObserver
   
   public void onFragmentPause(FragmentCompat paramFragmentCompat)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("PageSwitchObserver", "onFragmentPause: fragment=" + paramFragmentCompat);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onFragmentPause: fragment=");
+      localStringBuilder.append(paramFragmentCompat);
+      Log.d("PageSwitchObserver", localStringBuilder.toString());
     }
     postAppearDetectionTask(paramFragmentCompat.getActivity());
   }
   
   public void onFragmentResume(FragmentCompat paramFragmentCompat)
   {
-    View localView = paramFragmentCompat.getView();
-    if (localView == null)
+    Object localObject = paramFragmentCompat.getView();
+    if (localObject == null)
     {
-      if (VideoReportInner.getInstance().isDebugMode()) {
-        Log.d("PageSwitchObserver", "onFragmentResume: fragment = " + paramFragmentCompat + ", null getView()");
+      if (VideoReportInner.getInstance().isDebugMode())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onFragmentResume: fragment = ");
+        ((StringBuilder)localObject).append(paramFragmentCompat);
+        ((StringBuilder)localObject).append(", null getView()");
+        Log.d("PageSwitchObserver", ((StringBuilder)localObject).toString());
       }
       return;
     }
-    laidOutAppear(paramFragmentCompat.getActivity(), localView);
+    laidOutAppear(paramFragmentCompat.getActivity(), (View)localObject);
   }
   
   public void onPageReport(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    if (paramObject == null) {
       return;
-      if (VideoReportInner.getInstance().isDebugMode()) {
-        Log.d("PageSwitchObserver", "onPageReport: object=" + paramObject);
-      }
-      if ((paramObject instanceof Activity))
-      {
-        postAppearDetectionTask((Activity)paramObject);
-        return;
-      }
-      if ((paramObject instanceof Dialog))
-      {
-        postAppearDetectionTask(DialogListUtil.getDialogActivity((Dialog)paramObject));
-        return;
-      }
-    } while (!(paramObject instanceof View));
-    onPageViewVisible((View)paramObject);
+    }
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPageReport: object=");
+      localStringBuilder.append(paramObject);
+      Log.d("PageSwitchObserver", localStringBuilder.toString());
+    }
+    if ((paramObject instanceof Activity))
+    {
+      postAppearDetectionTask((Activity)paramObject);
+      return;
+    }
+    if ((paramObject instanceof Dialog))
+    {
+      postAppearDetectionTask(DialogListUtil.getDialogActivity((Dialog)paramObject));
+      return;
+    }
+    if ((paramObject instanceof View)) {
+      onPageViewVisible((View)paramObject);
+    }
   }
   
   public void onPageViewInvisible(View paramView)
@@ -369,8 +454,12 @@ public class PageSwitchObserver
     if (paramView == null) {
       return;
     }
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("PageSwitchObserver", "onPageViewInvisible: view = " + paramView);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPageViewInvisible: view = ");
+      localStringBuilder.append(paramView);
+      Log.d("PageSwitchObserver", localStringBuilder.toString());
     }
     checkPageDisappear(paramView);
   }
@@ -380,8 +469,12 @@ public class PageSwitchObserver
     if (paramView == null) {
       return;
     }
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("PageSwitchObserver", "onPageViewVisible: view = " + paramView);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPageViewVisible: view = ");
+      localStringBuilder.append(paramView);
+      Log.d("PageSwitchObserver", localStringBuilder.toString());
     }
     postAppearDetectionTask(findAttachedActivity(paramView));
   }
@@ -398,7 +491,7 @@ public class PageSwitchObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.page.PageSwitchObserver
  * JD-Core Version:    0.7.0.1
  */

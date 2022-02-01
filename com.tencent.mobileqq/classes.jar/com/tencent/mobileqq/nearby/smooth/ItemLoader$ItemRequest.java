@@ -20,18 +20,18 @@ final class ItemLoader$ItemRequest<Params, Result>
   {
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView1);
-    if (paramView2 != null) {}
-    for (paramString = new SoftReference(paramView2);; paramString = null)
-    {
-      this.b = paramString;
-      this.jdField_a_of_type_JavaLangObject = paramParams;
-      this.jdField_a_of_type_Int = paramInt1;
-      this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramInt2);
-      this.c = null;
-      this.jdField_a_of_type_JavaLangLong = Long.valueOf(paramLong);
-      this.jdField_a_of_type_JavaUtilConcurrentFuture = null;
-      return;
+    if (paramView2 != null) {
+      paramString = new SoftReference(paramView2);
+    } else {
+      paramString = null;
     }
+    this.b = paramString;
+    this.jdField_a_of_type_JavaLangObject = paramParams;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramInt2);
+    this.c = null;
+    this.jdField_a_of_type_JavaLangLong = Long.valueOf(paramLong);
+    this.jdField_a_of_type_JavaUtilConcurrentFuture = null;
   }
   
   public ItemLoader$ItemRequest(String paramString, View paramView, Params paramParams, int paramInt1, int paramInt2, long paramLong)
@@ -41,7 +41,7 @@ final class ItemLoader$ItemRequest<Params, Result>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.smooth.ItemLoader.ItemRequest
  * JD-Core Version:    0.7.0.1
  */

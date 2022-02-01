@@ -1,17 +1,18 @@
 package com.tencent.mobileqq.activity.selectmember;
 
 import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopBusinessObserver;
+import com.tencent.mobileqq.activity.selectmember.api.ISelectMemberRefatorHelperApi;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.troop.api.observer.TroopAvatarObserver;
 
 class TroopListBaseAdapter$4
-  extends TroopBusinessObserver
+  extends TroopAvatarObserver
 {
   TroopListBaseAdapter$4(TroopListBaseAdapter paramTroopListBaseAdapter) {}
   
-  public void onUpdateNewTroopFaceIcon(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  protected void onUpdateNewTroopFaceIcon(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    Bitmap localBitmap = this.a.a.getFaceBitmap(113, paramString, false, 0);
+    Bitmap localBitmap = ((ISelectMemberRefatorHelperApi)QRoute.api(ISelectMemberRefatorHelperApi.class)).getFaceBitmap(this.a.a, 113, paramString, false, 0);
     if (localBitmap != null) {
       TroopListBaseAdapter.a(this.a, paramString, localBitmap);
     }
@@ -19,7 +20,7 @@ class TroopListBaseAdapter$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.TroopListBaseAdapter.4
  * JD-Core Version:    0.7.0.1
  */

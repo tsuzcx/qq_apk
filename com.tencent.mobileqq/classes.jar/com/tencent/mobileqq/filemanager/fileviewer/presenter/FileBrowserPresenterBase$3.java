@@ -17,27 +17,29 @@ class FileBrowserPresenterBase$3
   public void onClick(View paramView)
   {
     int i = this.a.a.h();
-    if ((i == 2) || (i == 3))
+    if ((i != 2) && (i != 3))
     {
-      i = QFileUtils.b(this.a.a.e());
-      ReportController.b(null, "dc00898", "", "", "0X800A688", "0X800A688", 0, 0, i + "", "", "", "");
-      if (this.a.a.a() != null) {
-        this.a.a.a().a();
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       if ((i == 1) && (this.a.a.a() != null)) {
         this.a.a.a().a();
       }
     }
+    else
+    {
+      i = QFileUtils.b(this.a.a.e());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(i);
+      localStringBuilder.append("");
+      ReportController.b(null, "dc00898", "", "", "0X800A688", "0X800A688", 0, 0, localStringBuilder.toString(), "", "", "");
+      if (this.a.a.a() != null) {
+        this.a.a.a().a();
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.FileBrowserPresenterBase.3
  * JD-Core Version:    0.7.0.1
  */

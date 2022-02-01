@@ -8,13 +8,16 @@ final class SSLUtil$2
 {
   public boolean verify(String paramString, SSLSession paramSSLSession)
   {
-    PlayerUtils.log(3, "SSLUtil", "verifying " + paramString);
+    paramSSLSession = new StringBuilder();
+    paramSSLSession.append("verifying ");
+    paramSSLSession.append(paramString);
+    PlayerUtils.log(3, "SSLUtil", paramSSLSession.toString());
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.util.SSLUtil.2
  * JD-Core Version:    0.7.0.1
  */

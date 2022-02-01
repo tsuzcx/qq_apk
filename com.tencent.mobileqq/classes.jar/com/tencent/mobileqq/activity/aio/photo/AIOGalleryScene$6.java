@@ -11,8 +11,16 @@ class AIOGalleryScene$6
 {
   public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AIOGalleryScene", 4, "onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onFaceUpdate uin: ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" -- ");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(" head:");
+      localStringBuilder.append(paramBitmap);
+      QLog.i("AIOGalleryScene", 4, localStringBuilder.toString());
     }
     if (paramBitmap != null) {
       this.a.a.setImageDrawable(new BitmapDrawable(paramBitmap));
@@ -21,7 +29,7 @@ class AIOGalleryScene$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.6
  * JD-Core Version:    0.7.0.1
  */

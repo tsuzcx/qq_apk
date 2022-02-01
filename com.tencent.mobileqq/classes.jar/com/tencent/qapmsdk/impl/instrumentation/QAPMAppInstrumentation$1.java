@@ -11,25 +11,18 @@ final class QAPMAppInstrumentation$1
   {
     if (paramBoolean)
     {
-      if (com.tencent.qapmsdk.impl.appstate.b.a) {
-        break label24;
-      }
-      QAPMAppInstrumentation.appStateTimeInfo.i();
-    }
-    for (;;)
-    {
-      com.tencent.qapmsdk.impl.g.b.f.set(false);
-      return;
-      label24:
-      if (com.tencent.qapmsdk.impl.g.b.f.get()) {
+      if (!com.tencent.qapmsdk.impl.appstate.b.a) {
+        QAPMAppInstrumentation.appStateTimeInfo.i();
+      } else if (com.tencent.qapmsdk.impl.g.b.f.get()) {
         QAPMAppInstrumentation.activityTrace.g();
       }
+      com.tencent.qapmsdk.impl.g.b.f.set(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.QAPMAppInstrumentation.1
  * JD-Core Version:    0.7.0.1
  */

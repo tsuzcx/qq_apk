@@ -1,8 +1,8 @@
 package com.tencent.gdtad.adapter;
 
 import android.util.Pair;
-import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppDownloadManager;
 import com.tencent.ad.tangram.downloader.IAdDownloader.Callback;
+import com.tencent.ad.tangram.views.canvas.components.appbutton.AdAppDownloadManager;
 import com.tencent.open.appstore.dl.DownloadManagerV2;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.open.downloadnew.DownloadListener;
@@ -18,7 +18,8 @@ public class GdtDownloadListener
   
   public AdAppDownloadManager a()
   {
-    if ((this.a != null) && (this.a.get() != null)) {
+    WeakReference localWeakReference = this.a;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
       return (AdAppDownloadManager)this.a.get();
     }
     return null;
@@ -32,35 +33,40 @@ public class GdtDownloadListener
   public void installSucceed(String paramString1, String paramString2)
   {
     paramString2 = DownloadManagerV2.a().c(paramString2);
-    if ((this.a != null) && (this.a.get() != null) && (paramString2 != null)) {
+    WeakReference localWeakReference = this.a;
+    if ((localWeakReference != null) && (localWeakReference.get() != null) && (paramString2 != null)) {
       ((AdAppDownloadManager)this.a.get()).onDownloadStatusChanged(6, 0, new Pair(paramString2.d, paramString2.e), paramString1);
     }
   }
   
   public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
-    if ((this.a != null) && (this.a.get() != null) && (paramDownloadInfo != null)) {
+    WeakReference localWeakReference = this.a;
+    if ((localWeakReference != null) && (localWeakReference.get() != null) && (paramDownloadInfo != null)) {
       ((AdAppDownloadManager)this.a.get()).onDownloadStatusChanged(4, paramDownloadInfo.f, new Pair(paramDownloadInfo.d, paramDownloadInfo.e), paramDownloadInfo.c);
     }
   }
   
   public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
   {
-    if ((this.a != null) && (this.a.get() != null) && (paramDownloadInfo != null)) {
+    paramString = this.a;
+    if ((paramString != null) && (paramString.get() != null) && (paramDownloadInfo != null)) {
       ((AdAppDownloadManager)this.a.get()).onDownloadStatusChanged(5, paramDownloadInfo.f, new Pair(paramDownloadInfo.d, paramDownloadInfo.e), paramDownloadInfo.c);
     }
   }
   
   public void onDownloadFinish(DownloadInfo paramDownloadInfo)
   {
-    if ((this.a != null) && (this.a.get() != null) && (paramDownloadInfo != null)) {
+    WeakReference localWeakReference = this.a;
+    if ((localWeakReference != null) && (localWeakReference.get() != null) && (paramDownloadInfo != null)) {
       ((AdAppDownloadManager)this.a.get()).onDownloadStatusChanged(3, paramDownloadInfo.f, new Pair(paramDownloadInfo.d, paramDownloadInfo.e), paramDownloadInfo.c);
     }
   }
   
   public void onDownloadPause(DownloadInfo paramDownloadInfo)
   {
-    if ((this.a != null) && (this.a.get() != null) && (paramDownloadInfo != null)) {
+    WeakReference localWeakReference = this.a;
+    if ((localWeakReference != null) && (localWeakReference.get() != null) && (paramDownloadInfo != null)) {
       ((AdAppDownloadManager)this.a.get()).onDownloadStatusChanged(2, paramDownloadInfo.f, new Pair(paramDownloadInfo.d, paramDownloadInfo.e), paramDownloadInfo.c);
     }
   }
@@ -71,30 +77,31 @@ public class GdtDownloadListener
   
   public void onDownloadUpdate(List<DownloadInfo> paramList)
   {
-    if ((this.a == null) || (this.a.get() == null) || (paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    paramList = paramList.iterator();
-    for (;;)
+    Object localObject = this.a;
+    if ((localObject != null) && (((WeakReference)localObject).get() != null) && (paramList != null))
     {
-      DownloadInfo localDownloadInfo;
-      if (paramList.hasNext())
-      {
-        localDownloadInfo = (DownloadInfo)paramList.next();
-        if (localDownloadInfo != null) {}
-      }
-      else
-      {
-        if ((localArrayList2.size() == 0) || (localArrayList1.size() == 0)) {
-          break;
-        }
-        ((AdAppDownloadManager)this.a.get()).onDownloadProgressUpdate(localArrayList1, localArrayList2);
+      if (paramList.size() == 0) {
         return;
       }
-      localArrayList2.add(new Pair(localDownloadInfo.d, localDownloadInfo.e));
-      localArrayList1.add(localDownloadInfo);
+      localObject = new ArrayList();
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
+        if (localDownloadInfo == null) {
+          break;
+        }
+        localArrayList.add(new Pair(localDownloadInfo.d, localDownloadInfo.e));
+        ((List)localObject).add(localDownloadInfo);
+      }
+      if (localArrayList.size() != 0)
+      {
+        if (((List)localObject).size() == 0) {
+          return;
+        }
+        ((AdAppDownloadManager)this.a.get()).onDownloadProgressUpdate((List)localObject, localArrayList);
+      }
     }
   }
   
@@ -105,14 +112,15 @@ public class GdtDownloadListener
   public void uninstallSucceed(String paramString1, String paramString2)
   {
     paramString2 = DownloadManagerV2.a().c(paramString2);
-    if ((this.a != null) && (this.a.get() != null) && (paramString2 != null)) {
+    WeakReference localWeakReference = this.a;
+    if ((localWeakReference != null) && (localWeakReference.get() != null) && (paramString2 != null)) {
       ((AdAppDownloadManager)this.a.get()).onDownloadStatusChanged(7, 0, new Pair(paramString2.d, paramString2.e), paramString1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtDownloadListener
  * JD-Core Version:    0.7.0.1
  */

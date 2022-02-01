@@ -50,34 +50,36 @@ class MemoryManager$StatMemory
     try
     {
       paramString = MobileQQ.getContext().getSharedPreferences("MemoryManagerMemoryStat", 0).getString(this.jdField_a_of_type_JavaLangString, null);
-      if ((paramString == null) || (paramString.length() == 0))
+      if ((paramString != null) && (paramString.length() != 0))
       {
-        a();
+        paramString = new DataInputStream(new ByteArrayInputStream(Base64Util.decode(paramString, 0)));
+        this.jdField_a_of_type_Int = paramString.readInt();
+        this.jdField_a_of_type_Long = paramString.readLong();
+        this.jdField_b_of_type_Long = paramString.readLong();
+        this.jdField_c_of_type_Long = paramString.readLong();
+        this.d = paramString.readLong();
+        this.e = paramString.readLong();
+        this.jdField_b_of_type_Int = paramString.readInt();
+        this.jdField_c_of_type_Int = paramString.readInt();
+        this.f = paramString.readLong();
+        this.g = paramString.readLong();
+        this.h = paramString.readLong();
         return;
       }
-      paramString = new DataInputStream(new ByteArrayInputStream(Base64Util.decode(paramString, 0)));
-      this.jdField_a_of_type_Int = paramString.readInt();
-      this.jdField_a_of_type_Long = paramString.readLong();
-      this.jdField_b_of_type_Long = paramString.readLong();
-      this.jdField_c_of_type_Long = paramString.readLong();
-      this.d = paramString.readLong();
-      this.e = paramString.readLong();
-      this.jdField_b_of_type_Int = paramString.readInt();
-      this.jdField_c_of_type_Int = paramString.readInt();
-      this.f = paramString.readLong();
-      this.g = paramString.readLong();
-      this.h = paramString.readLong();
+      a();
       return;
     }
     catch (Exception paramString)
     {
-      paramString = new HashMap(3);
-      paramString.put("type", "wrong-value");
-      paramString.put("file", "MemoryManagerMemoryStat");
-      paramString.put("key", "MemoryInfomation");
-      StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(null, "evSpError", true, 0L, 0L, paramString, null);
-      a();
+      label153:
+      break label153;
     }
+    paramString = new HashMap(3);
+    paramString.put("type", "wrong-value");
+    paramString.put("file", "MemoryManagerMemoryStat");
+    paramString.put("key", "MemoryInfomation");
+    StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(null, "evSpError", true, 0L, 0L, paramString, null);
+    a();
   }
   
   public void b()
@@ -104,14 +106,15 @@ class MemoryManager$StatMemory
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.Memory.MemoryManager", 2, "StatMemory.save exception", localException);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.Memory.MemoryManager", 2, "StatMemory.save exception", localException);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.monitor.memory.MemoryManager.StatMemory
  * JD-Core Version:    0.7.0.1
  */

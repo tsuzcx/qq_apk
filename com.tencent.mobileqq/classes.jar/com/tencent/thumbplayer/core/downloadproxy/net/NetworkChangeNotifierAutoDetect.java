@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager.NetworkCallback;
 import android.net.Network;
 import android.net.NetworkRequest;
 import android.net.NetworkRequest.Builder;
@@ -35,51 +36,48 @@ public class NetworkChangeNotifierAutoDetect
   @TargetApi(21)
   public NetworkChangeNotifierAutoDetect(NetworkChangeNotifierAutoDetect.Observer paramObserver, Looper paramLooper, RegistrationPolicy paramRegistrationPolicy)
   {
-    if (paramLooper == null)
-    {
+    if (paramLooper == null) {
       this.mLooper = Looper.getMainLooper();
-      this.mHandler = new Handler(this.mLooper);
-      this.mObserver = paramObserver;
-      this.mConnectivityManagerDelegate = new ConnectivityManagerDelegate(NetworkChangeNotifier.getAppContext());
-      if (Build.VERSION.SDK_INT < 23) {
-        this.mWifiManagerDelegate = new WifiManagerDelegate(NetworkChangeNotifier.getAppContext());
-      }
-      if (Build.VERSION.SDK_INT < 21) {
-        break label195;
-      }
+    } else {
+      this.mLooper = paramLooper;
+    }
+    this.mHandler = new Handler(this.mLooper);
+    this.mObserver = paramObserver;
+    this.mConnectivityManagerDelegate = new ConnectivityManagerDelegate(NetworkChangeNotifier.getAppContext());
+    if (Build.VERSION.SDK_INT < 23) {
+      this.mWifiManagerDelegate = new WifiManagerDelegate(NetworkChangeNotifier.getAppContext());
+    }
+    if (Build.VERSION.SDK_INT >= 21)
+    {
       this.mNetworkCallback = new NetworkChangeNotifierAutoDetect.MyNetworkCallback(this, null);
       this.mNetworkRequest = new NetworkRequest.Builder().addCapability(12).removeCapability(15).build();
-      label116:
-      if (Build.VERSION.SDK_INT < 28) {
-        break label208;
-      }
     }
-    label195:
-    label208:
-    for (paramObserver = new NetworkChangeNotifierAutoDetect.DefaultNetworkCallback(this, null);; paramObserver = null)
+    else
     {
-      this.mDefaultNetworkCallback = paramObserver;
-      this.mNetworkState = getCurrentNetworkState();
-      this.mIntentFilter = new NetworkChangeNotifierAutoDetect.NetworkConnectivityIntentFilter();
-      this.mIgnoreNextBroadcast = false;
-      this.mShouldSignalObserver = false;
-      this.mRegistrationPolicy = paramRegistrationPolicy;
-      this.mRegistrationPolicy.init(this);
-      this.mShouldSignalObserver = true;
-      return;
-      this.mLooper = paramLooper;
-      break;
       this.mNetworkCallback = null;
       this.mNetworkRequest = null;
-      break label116;
     }
+    if (Build.VERSION.SDK_INT >= 28) {
+      paramObserver = new NetworkChangeNotifierAutoDetect.DefaultNetworkCallback(this, null);
+    } else {
+      paramObserver = null;
+    }
+    this.mDefaultNetworkCallback = paramObserver;
+    this.mNetworkState = getCurrentNetworkState();
+    this.mIntentFilter = new NetworkChangeNotifierAutoDetect.NetworkConnectivityIntentFilter();
+    this.mIgnoreNextBroadcast = false;
+    this.mShouldSignalObserver = false;
+    this.mRegistrationPolicy = paramRegistrationPolicy;
+    this.mRegistrationPolicy.init(this);
+    this.mShouldSignalObserver = true;
   }
   
   private void assertOnThread()
   {
-    if (!onThread()) {
-      throw new IllegalStateException("Must be called on NetworkChangeNotifierAutoDetect thread.");
+    if (onThread()) {
+      return;
     }
+    throw new IllegalStateException("Must be called on NetworkChangeNotifierAutoDetect thread.");
   }
   
   private void connectionTypeChanged()
@@ -122,42 +120,37 @@ public class NetworkChangeNotifierAutoDetect
   
   public long getDefaultNetId()
   {
-    if (Build.VERSION.SDK_INT < 21) {}
-    Network localNetwork;
-    do
-    {
+    if (Build.VERSION.SDK_INT < 21) {
       return -1L;
-      localNetwork = this.mConnectivityManagerDelegate.getDefaultNetwork();
-    } while (localNetwork == null);
+    }
+    Network localNetwork = this.mConnectivityManagerDelegate.getDefaultNetwork();
+    if (localNetwork == null) {
+      return -1L;
+    }
     return NetworkUtil.networkToNetId(localNetwork);
   }
   
   public long[] getNetworksAndTypes()
   {
+    int j = Build.VERSION.SDK_INT;
     int i = 0;
-    Object localObject;
-    if (Build.VERSION.SDK_INT < 21)
-    {
-      localObject = new long[0];
-      return localObject;
+    if (j < 21) {
+      return new long[0];
     }
     Network[] arrayOfNetwork = NetworkUtil.getAllNetworksFiltered(this.mConnectivityManagerDelegate, null);
     long[] arrayOfLong = new long[arrayOfNetwork.length * 2];
     int k = arrayOfNetwork.length;
-    int j = 0;
-    for (;;)
+    j = 0;
+    while (i < k)
     {
-      localObject = arrayOfLong;
-      if (i >= k) {
-        break;
-      }
-      localObject = arrayOfNetwork[i];
+      Network localNetwork = arrayOfNetwork[i];
       int m = j + 1;
-      arrayOfLong[j] = NetworkUtil.networkToNetId((Network)localObject);
+      arrayOfLong[j] = NetworkUtil.networkToNetId(localNetwork);
       j = m + 1;
-      arrayOfLong[m] = this.mConnectivityManagerDelegate.getConnectionType((Network)localObject);
+      arrayOfLong[m] = this.mConnectivityManagerDelegate.getConnectionType(localNetwork);
       i += 1;
     }
+    return arrayOfLong;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -167,99 +160,107 @@ public class NetworkChangeNotifierAutoDetect
   
   public void register()
   {
-    int i = 0;
     assertOnThread();
-    if (!NetworkChangeNotifier.checkAppContext()) {}
-    for (;;)
-    {
+    if (!NetworkChangeNotifier.checkAppContext()) {
       return;
-      if (this.mRegistered)
+    }
+    if (this.mRegistered)
+    {
+      connectionTypeChanged();
+      return;
+    }
+    if (this.mShouldSignalObserver) {
+      connectionTypeChanged();
+    }
+    Object localObject = this.mDefaultNetworkCallback;
+    if (localObject != null) {}
+    try
+    {
+      this.mConnectivityManagerDelegate.registerDefaultNetworkCallback((ConnectivityManager.NetworkCallback)localObject, this.mHandler);
+    }
+    catch (RuntimeException localRuntimeException)
+    {
+      label58:
+      int i;
+      boolean bool;
+      break label58;
+    }
+    this.mDefaultNetworkCallback = null;
+    localObject = this.mDefaultNetworkCallback;
+    i = 0;
+    if (localObject == null)
+    {
+      if (NetworkChangeNotifier.getAppContext().registerReceiver(this, this.mIntentFilter) != null) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      this.mIgnoreNextBroadcast = bool;
+    }
+    this.mRegistered = true;
+    localObject = this.mNetworkCallback;
+    if (localObject != null) {
+      ((NetworkChangeNotifierAutoDetect.MyNetworkCallback)localObject).initializeVpnInPlace();
+    }
+    try
+    {
+      this.mConnectivityManagerDelegate.registerNetworkCallback(this.mNetworkRequest, this.mNetworkCallback, this.mHandler);
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      long[] arrayOfLong;
+      break label153;
+    }
+    catch (Exception localException)
+    {
+      label140:
+      break label140;
+    }
+    this.mRegisterNetworkCallbackFailed = true;
+    this.mNetworkCallback = null;
+    break label163;
+    label153:
+    this.mRegisterNetworkCallbackFailed = true;
+    this.mNetworkCallback = null;
+    label163:
+    if ((!this.mRegisterNetworkCallbackFailed) && (this.mShouldSignalObserver))
+    {
+      localObject = NetworkUtil.getAllNetworksFiltered(this.mConnectivityManagerDelegate, null);
+      arrayOfLong = new long[localObject.length];
+      while (i < localObject.length)
       {
-        connectionTypeChanged();
-        return;
+        arrayOfLong[i] = NetworkUtil.networkToNetId(localObject[i]);
+        i += 1;
       }
-      if (this.mShouldSignalObserver) {
-        connectionTypeChanged();
-      }
-      if (this.mDefaultNetworkCallback != null) {}
-      try
-      {
-        this.mConnectivityManagerDelegate.registerDefaultNetworkCallback(this.mDefaultNetworkCallback, this.mHandler);
-        if (this.mDefaultNetworkCallback == null)
-        {
-          if (NetworkChangeNotifier.getAppContext().registerReceiver(this, this.mIntentFilter) != null)
-          {
-            bool = true;
-            this.mIgnoreNextBroadcast = bool;
-          }
-        }
-        else
-        {
-          this.mRegistered = true;
-          if (this.mNetworkCallback == null) {
-            continue;
-          }
-          this.mNetworkCallback.initializeVpnInPlace();
-        }
-      }
-      catch (RuntimeException localRuntimeException)
-      {
-        try
-        {
-          for (;;)
-          {
-            this.mConnectivityManagerDelegate.registerNetworkCallback(this.mNetworkRequest, this.mNetworkCallback, this.mHandler);
-            if ((this.mRegisterNetworkCallbackFailed) || (!this.mShouldSignalObserver)) {
-              break;
-            }
-            Network[] arrayOfNetwork = NetworkUtil.getAllNetworksFiltered(this.mConnectivityManagerDelegate, null);
-            arrayOfLong = new long[arrayOfNetwork.length];
-            while (i < arrayOfNetwork.length)
-            {
-              arrayOfLong[i] = NetworkUtil.networkToNetId(arrayOfNetwork[i]);
-              i += 1;
-            }
-            localRuntimeException = localRuntimeException;
-            this.mDefaultNetworkCallback = null;
-          }
-          boolean bool = false;
-        }
-        catch (IllegalArgumentException localIllegalArgumentException)
-        {
-          long[] arrayOfLong;
-          for (;;)
-          {
-            this.mRegisterNetworkCallbackFailed = true;
-            this.mNetworkCallback = null;
-          }
-          this.mObserver.purgeActiveNetworkList(arrayOfLong);
-        }
-      }
+      this.mObserver.purgeActiveNetworkList(arrayOfLong);
     }
   }
   
   public void unregister()
   {
-    if (!this.mRegistered) {}
-    do
-    {
+    if (!this.mRegistered) {
       return;
-      this.mRegistered = false;
-      if (this.mNetworkCallback != null) {
-        this.mConnectivityManagerDelegate.unregisterNetworkCallback(this.mNetworkCallback);
-      }
-      if (this.mDefaultNetworkCallback != null)
-      {
-        this.mConnectivityManagerDelegate.unregisterNetworkCallback(this.mDefaultNetworkCallback);
-        return;
-      }
-    } while (!NetworkChangeNotifier.checkAppContext());
+    }
+    this.mRegistered = false;
+    Object localObject = this.mNetworkCallback;
+    if (localObject != null) {
+      this.mConnectivityManagerDelegate.unregisterNetworkCallback((ConnectivityManager.NetworkCallback)localObject);
+    }
+    localObject = this.mDefaultNetworkCallback;
+    if (localObject != null)
+    {
+      this.mConnectivityManagerDelegate.unregisterNetworkCallback((ConnectivityManager.NetworkCallback)localObject);
+      return;
+    }
+    if (!NetworkChangeNotifier.checkAppContext()) {
+      return;
+    }
     NetworkChangeNotifier.getAppContext().unregisterReceiver(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.net.NetworkChangeNotifierAutoDetect
  * JD-Core Version:    0.7.0.1
  */

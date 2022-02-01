@@ -7,6 +7,7 @@ import com.tencent.mobileqq.app.ForegroundNotifyManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.message.newmsg.NewMsgNotificationManager;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.pushnotice.PushNoticeUtil;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -19,49 +20,46 @@ class NotifyPushSettingFragment$16
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    boolean bool = true;
-    Object localObject;
     if (!this.a.b())
     {
-      NotifyPushSettingFragment.a(this.a).a(this.a.getActivity());
+      NotifyPushSettingFragment.a(this.a).a(this.a.getBaseActivity());
       NotifyPushSettingFragment.h(this.a).setOnCheckedChangeListener(null);
-      localObject = NotifyPushSettingFragment.h(this.a);
-      if (!NotifyPushSettingFragment.h(this.a).a()) {}
-      for (;;)
-      {
-        ((FormSwitchItem)localObject).setChecked(bool);
-        NotifyPushSettingFragment.h(this.a).setOnCheckedChangeListener(this.a.b);
-        EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-        return;
-        bool = false;
-      }
+      NotifyPushSettingFragment.h(this.a).setChecked(true ^ NotifyPushSettingFragment.h(this.a).a());
+      NotifyPushSettingFragment.h(this.a).setOnCheckedChangeListener(this.a.b);
     }
-    NotifyPushSettingFragment.h(this.a).a().setClickable(false);
-    if (paramBoolean)
+    else
     {
-      localObject = new NotifyPushSettingFragment.16.1(this);
-      NotifyPushSettingFragment.a(this.a, NotifyPushSettingFragment.a(this.a), (AnimatorListenerAdapter)localObject);
-      if (!NotifyPushSettingFragment.e(this.a))
+      NotifyPushSettingFragment.h(this.a).a().setClickable(false);
+      Object localObject;
+      if (paramBoolean)
       {
-        NotifyPushSettingFragment.c(this.a, true);
-        ReportController.a(NotifyPushSettingFragment.a(this.a), "0X800B7E1");
+        localObject = new NotifyPushSettingFragment.16.1(this);
+        NotifyPushSettingFragment localNotifyPushSettingFragment = this.a;
+        NotifyPushSettingFragment.a(localNotifyPushSettingFragment, NotifyPushSettingFragment.a(localNotifyPushSettingFragment), (AnimatorListenerAdapter)localObject);
+        if (!NotifyPushSettingFragment.e(this.a))
+        {
+          NotifyPushSettingFragment.c(this.a, true);
+          ReportController.a(NotifyPushSettingFragment.a(this.a), "0X800B7E1");
+        }
       }
-    }
-    for (;;)
-    {
+      else
+      {
+        localObject = this.a;
+        NotifyPushSettingFragment.a((NotifyPushSettingFragment)localObject, NotifyPushSettingFragment.a((NotifyPushSettingFragment)localObject), NotifyPushSettingFragment.h(this.a).a());
+      }
       if (ForegroundNotifyManager.a(NotifyPushSettingFragment.a(this.a)).h()) {
         NotifyPushSettingFragment.a(this.a).setVisibility(8);
       }
       SettingCloneUtil.writeValue(NotifyPushSettingFragment.a(this.a).getApp(), NotifyPushSettingFragment.a(this.a).getCurrentUin(), null, "new_msg_notification_key", paramBoolean);
+      PushNoticeUtil.a(paramBoolean);
       ReportClickEventHelper.a(NotifyPushSettingFragment.a(this.a), "0X800B844", paramBoolean);
-      break;
-      NotifyPushSettingFragment.a(this.a, NotifyPushSettingFragment.a(this.a), NotifyPushSettingFragment.h(this.a).a());
     }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.NotifyPushSettingFragment.16
  * JD-Core Version:    0.7.0.1
  */

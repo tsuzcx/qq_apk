@@ -20,16 +20,17 @@ class DBFixConfigActivity$4
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(CacheConstants.a, 0).edit().putBoolean(CacheConstants.b, paramBoolean).commit();
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getApplicationContext(), HardCodeUtil.a(2131702902), 1).a();
-    if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).exit(false);
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getApplicationContext(), HardCodeUtil.a(2131703032), 1).a();
+    AppRuntime localAppRuntime = this.jdField_a_of_type_MqqAppAppRuntime;
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      ((QQAppInterface)localAppRuntime).exit(false);
     }
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixConfigActivity.4
  * JD-Core Version:    0.7.0.1
  */

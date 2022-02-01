@@ -24,20 +24,22 @@ public class TPMediaCompositionTrackClip
   
   public TPMediaCompositionTrackClip(String paramString, int paramInt, long paramLong1, long paramLong2)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      throw new IllegalArgumentException("TPMediaCompositionTrackClip : clipPath empty");
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.mClipType = paramInt;
+      this.mClipPath = paramString;
+      this.mStartTime = paramLong1;
+      this.mEndTime = paramLong2;
+      if (this.mStartTime < 0L) {
+        this.mStartTime = 0L;
+      }
+      if (this.mEndTime <= 0L) {
+        this.mEndTime = getOriginalDurationMs();
+      }
+      this.mClipId = TPMediaCompositionHelper.generateTrackClipId(this.mClipType);
+      return;
     }
-    this.mClipType = paramInt;
-    this.mClipPath = paramString;
-    this.mStartTime = paramLong1;
-    this.mEndTime = paramLong2;
-    if (this.mStartTime < 0L) {
-      this.mStartTime = 0L;
-    }
-    if (this.mEndTime <= 0L) {
-      this.mEndTime = getOriginalDurationMs();
-    }
-    this.mClipId = TPMediaCompositionHelper.generateTrackClipId(this.mClipType);
+    throw new IllegalArgumentException("TPMediaCompositionTrackClip : clipPath empty");
   }
   
   public ITPMediaTrackClip clone(int paramInt)
@@ -56,14 +58,24 @@ public class TPMediaCompositionTrackClip
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    while (!(paramObject instanceof TPMediaCompositionTrackClip)) {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
     }
-    if ((this.mClipId == ((TPMediaCompositionTrackClip)paramObject).getClipId()) && (this.mClipType == ((TPMediaCompositionTrackClip)paramObject).getMediaType())) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    if (!(paramObject instanceof TPMediaCompositionTrackClip)) {
+      return false;
     }
+    int i = this.mClipId;
+    paramObject = (TPMediaCompositionTrackClip)paramObject;
+    boolean bool1 = bool2;
+    if (i == paramObject.getClipId())
+    {
+      bool1 = bool2;
+      if (this.mClipType == paramObject.getMediaType()) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public int getClipId()
@@ -108,25 +120,29 @@ public class TPMediaCompositionTrackClip
   
   public void setCutTimeRange(long paramLong1, long paramLong2)
   {
-    if (paramLong1 >= getOriginalDurationMs()) {
+    if (paramLong1 < getOriginalDurationMs())
+    {
+      if (paramLong2 <= getOriginalDurationMs())
+      {
+        long l = paramLong1;
+        if (paramLong1 < 0L) {
+          l = 0L;
+        }
+        paramLong1 = paramLong2;
+        if (paramLong2 <= 0L) {
+          paramLong1 = getOriginalDurationMs();
+        }
+        if (l < paramLong1)
+        {
+          this.mStartTime = l;
+          this.mEndTime = paramLong1;
+          return;
+        }
+        throw new IllegalArgumentException("setCutTimeRange: Start time is greater than end time");
+      }
       throw new IllegalArgumentException("setCutTimeRange: Start time is greater than duration");
     }
-    if (paramLong2 > getOriginalDurationMs()) {
-      throw new IllegalArgumentException("setCutTimeRange: Start time is greater than duration");
-    }
-    long l = paramLong1;
-    if (paramLong1 < 0L) {
-      l = 0L;
-    }
-    paramLong1 = paramLong2;
-    if (paramLong2 <= 0L) {
-      paramLong1 = getOriginalDurationMs();
-    }
-    if (l >= paramLong1) {
-      throw new IllegalArgumentException("setCutTimeRange: Start time is greater than end time");
-    }
-    this.mStartTime = l;
-    this.mEndTime = paramLong1;
+    throw new IllegalArgumentException("setCutTimeRange: Start time is greater than duration");
   }
   
   public void setFilePath(String paramString)
@@ -146,7 +162,7 @@ public class TPMediaCompositionTrackClip
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.composition.TPMediaCompositionTrackClip
  * JD-Core Version:    0.7.0.1
  */

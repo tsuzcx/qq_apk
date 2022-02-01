@@ -15,11 +15,12 @@ public class ReboundLayout
   extends LinearLayout
   implements NestedScrollingParent
 {
-  private int jdField_a_of_type_Int = 3;
-  private View jdField_a_of_type_AndroidViewView;
-  private boolean jdField_a_of_type_Boolean;
-  private View b;
-  private View c;
+  private static final int MAX_WIDTH = 400;
+  private boolean isRunAnim;
+  private View mChildView;
+  private int mDrag = 3;
+  private View mFooterView;
+  private View mHeaderView;
   
   public ReboundLayout(Context paramContext)
   {
@@ -49,22 +50,22 @@ public class ReboundLayout
     return 0;
   }
   
-  public void onFinishInflate()
+  protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.c = getChildAt(0);
+    this.mChildView = getChildAt(0);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(400, -1);
-    this.jdField_a_of_type_AndroidViewView = new View(this.c.getContext());
-    this.b = new View(this.c.getContext());
-    addView(this.jdField_a_of_type_AndroidViewView, 0, localLayoutParams);
-    addView(this.b, getChildCount(), localLayoutParams);
+    this.mHeaderView = new View(this.mChildView.getContext());
+    this.mFooterView = new View(this.mChildView.getContext());
+    addView(this.mHeaderView, 0, localLayoutParams);
+    addView(this.mFooterView, getChildCount(), localLayoutParams);
     scrollBy(400, 0);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    this.c.getLayoutParams().width = getMeasuredWidth();
+    this.mChildView.getLayoutParams().width = getMeasuredWidth();
   }
   
   public boolean onNestedFling(View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean)
@@ -80,48 +81,39 @@ public class ReboundLayout
   public void onNestedPreScroll(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
   {
     getParent().requestDisallowInterceptTouchEvent(true);
-    int i;
-    label49:
-    int j;
-    if ((paramInt1 > 0) && (getScrollX() < 400) && (!ViewCompat.canScrollHorizontally(paramView, -1)))
-    {
+    if ((paramInt1 > 0) && (getScrollX() < 400) && (!ViewCompat.canScrollHorizontally(paramView, -1))) {
       paramInt2 = 1;
-      if ((paramInt1 >= 0) || (ViewCompat.canScrollHorizontally(paramView, -1))) {
-        break label190;
-      }
-      i = 1;
-      if ((paramInt1 >= 0) || (getScrollX() <= 400) || (ViewCompat.canScrollHorizontally(paramView, 1))) {
-        break label196;
-      }
-      j = 1;
-      label74:
-      if ((paramInt1 <= 0) || (ViewCompat.canScrollHorizontally(paramView, 1))) {
-        break label202;
-      }
-    }
-    label190:
-    label196:
-    label202:
-    for (int k = 1;; k = 0)
-    {
-      if ((paramInt2 != 0) || (i != 0) || (j != 0) || (k != 0))
-      {
-        scrollBy(paramInt1 / this.jdField_a_of_type_Int, 0);
-        paramArrayOfInt[0] = paramInt1;
-      }
-      if ((paramInt1 > 0) && (getScrollX() > 400) && (!ViewCompat.canScrollHorizontally(paramView, -1))) {
-        scrollTo(400, 0);
-      }
-      if ((paramInt1 < 0) && (getScrollX() < 400) && (!ViewCompat.canScrollHorizontally(paramView, 1))) {
-        scrollTo(400, 0);
-      }
-      return;
+    } else {
       paramInt2 = 0;
-      break;
+    }
+    int i;
+    if ((paramInt1 < 0) && (!ViewCompat.canScrollHorizontally(paramView, -1))) {
+      i = 1;
+    } else {
       i = 0;
-      break label49;
+    }
+    int j;
+    if ((paramInt1 < 0) && (getScrollX() > 400) && (!ViewCompat.canScrollHorizontally(paramView, 1))) {
+      j = 1;
+    } else {
       j = 0;
-      break label74;
+    }
+    int k;
+    if ((paramInt1 > 0) && (!ViewCompat.canScrollHorizontally(paramView, 1))) {
+      k = 1;
+    } else {
+      k = 0;
+    }
+    if ((paramInt2 != 0) || (i != 0) || (j != 0) || (k != 0))
+    {
+      scrollBy(paramInt1 / this.mDrag, 0);
+      paramArrayOfInt[0] = paramInt1;
+    }
+    if ((paramInt1 > 0) && (getScrollX() > 400) && (!ViewCompat.canScrollHorizontally(paramView, -1))) {
+      scrollTo(400, 0);
+    }
+    if ((paramInt1 < 0) && (getScrollX() < 400) && (!ViewCompat.canScrollHorizontally(paramView, 1))) {
+      scrollTo(400, 0);
     }
   }
   
@@ -131,7 +123,7 @@ public class ReboundLayout
   
   public boolean onStartNestedScroll(View paramView1, View paramView2, int paramInt)
   {
-    return ((paramView2 instanceof RecyclerView)) && (!this.jdField_a_of_type_Boolean);
+    return ((paramView2 instanceof RecyclerView)) && (!this.isRunAnim);
   }
   
   public void onStopNestedScroll(View paramView)
@@ -142,23 +134,23 @@ public class ReboundLayout
   public void scrollTo(int paramInt1, int paramInt2)
   {
     int i;
-    if (paramInt1 < 0) {
+    if (paramInt1 < 0)
+    {
       i = 0;
     }
-    for (;;)
+    else
     {
-      super.scrollTo(i, paramInt2);
-      return;
       i = paramInt1;
       if (paramInt1 > 800) {
         i = 800;
       }
     }
+    super.scrollTo(i, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ReboundLayout
  * JD-Core Version:    0.7.0.1
  */

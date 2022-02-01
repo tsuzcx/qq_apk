@@ -13,13 +13,15 @@ public class URLImageLoader$Config
   
   public String a()
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (str == null) {
       return "?";
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageTransformation == null) {
-      return this.jdField_a_of_type_JavaLangString;
+    Transformation localTransformation = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageTransformation;
+    if (localTransformation == null) {
+      return str;
     }
-    return StringAppendTool.a(new Object[] { this.jdField_a_of_type_JavaLangString, "/", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageTransformation.a() });
+    return StringAppendTool.a(new Object[] { str, "/", localTransformation.a() });
   }
   
   public boolean equals(Object paramObject)
@@ -39,7 +41,7 @@ public class URLImageLoader$Config
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.URLImageLoader.Config
  * JD-Core Version:    0.7.0.1
  */

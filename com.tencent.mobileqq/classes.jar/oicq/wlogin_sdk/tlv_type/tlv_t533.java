@@ -26,8 +26,7 @@ public class tlv_t533
     System.arraycopy(arrayOfByte, 0, paramArrayOfByte2, 2, arrayOfByte.length);
     int j = arrayOfByte.length + 2;
     util.int16_to_buf(paramArrayOfByte2, j, paramArrayOfByte1.length);
-    j += 2;
-    System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, j, paramArrayOfByte1.length);
+    System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, j + 2, paramArrayOfByte1.length);
     j = paramArrayOfByte1.length;
     fill_head(this._cmd);
     fill_body(paramArrayOfByte2, i);
@@ -37,7 +36,7 @@ public class tlv_t533
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.tlv_type.tlv_t533
  * JD-Core Version:    0.7.0.1
  */

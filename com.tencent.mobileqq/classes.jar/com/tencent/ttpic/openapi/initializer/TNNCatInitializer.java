@@ -61,50 +61,57 @@ public class TNNCatInitializer
   
   public boolean loadRapidModelFrom(String arg1, List<String> paramList, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        LogUtils.i("TNNCatInitializer", "loadRapidNetModelImpl");
-        paramBoolean1 = isFunctionReady();
-        if (!paramBoolean1)
-        {
-          paramBoolean1 = false;
-          return paramBoolean1;
-        }
-        if (!unloadRapidNetModelImpl(true))
-        {
-          paramBoolean1 = false;
-          continue;
-        }
-        ArrayList localArrayList1 = new ArrayList();
-        ArrayList localArrayList2 = new ArrayList();
-        paramList = paramList.iterator();
-        if (paramList.hasNext())
-        {
-          String str2 = (String)paramList.next();
-          String str1 = RapidnetModelManager.copyIfInAssets(???, str2 + ".rapidmodel.wmc", FeatureManager.Features.RAPID_NET_GESTURE.getFinalResourcesDir());
-          str2 = RapidnetModelManager.copyIfInAssets(???, str2 + ".rapidproto.wmc", FeatureManager.Features.RAPID_NET_GESTURE.getFinalResourcesDir());
-          new File(str1);
-          new File(str2);
-          localArrayList1.add(str1);
-          localArrayList2.add(str2);
-          continue;
-        }
-        synchronized (this.TNNCat)
-        {
-          paramInt = this.TNNCat.catKeypointsInit((String)localArrayList2.get(0), (String)localArrayList1.get(0), (String)localArrayList2.get(1), (String)localArrayList1.get(1), (String)localArrayList2.get(2), (String)localArrayList1.get(2));
-          if (paramInt != 0)
-          {
-            LogUtils.d("TNNCatInitializer", "RapidnetLib init failed ret =" + paramInt);
-            paramBoolean1 = false;
-          }
-        }
+      LogUtils.i("TNNCatInitializer", "loadRapidNetModelImpl");
+      paramBoolean1 = isFunctionReady();
+      if (!paramBoolean1) {
+        return false;
       }
-      finally {}
-      LogUtils.d("TNNCatInitializer", "RapidnetLib init success. ret =" + paramInt);
-      paramBoolean1 = true;
+      paramBoolean1 = unloadRapidNetModelImpl(true);
+      if (!paramBoolean1) {
+        return false;
+      }
+      ArrayList localArrayList1 = new ArrayList();
+      ArrayList localArrayList2 = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        String str = (String)paramList.next();
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append(".rapidmodel.wmc");
+        localObject = RapidnetModelManager.copyIfInAssets(???, ((StringBuilder)localObject).toString(), FeatureManager.Features.RAPID_NET_GESTURE.getFinalResourcesDir());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append(".rapidproto.wmc");
+        str = RapidnetModelManager.copyIfInAssets(???, localStringBuilder.toString(), FeatureManager.Features.RAPID_NET_GESTURE.getFinalResourcesDir());
+        new File((String)localObject);
+        new File(str);
+        localArrayList1.add(localObject);
+        localArrayList2.add(str);
+      }
+      synchronized (this.TNNCat)
+      {
+        paramInt = this.TNNCat.catKeypointsInit((String)localArrayList2.get(0), (String)localArrayList1.get(0), (String)localArrayList2.get(1), (String)localArrayList1.get(1), (String)localArrayList2.get(2), (String)localArrayList1.get(2));
+        if (paramInt != 0)
+        {
+          ??? = new StringBuilder();
+          ???.append("RapidnetLib init failed ret =");
+          ???.append(paramInt);
+          LogUtils.d("TNNCatInitializer", ???.toString());
+          return false;
+        }
+        ??? = new StringBuilder();
+        ???.append("RapidnetLib init success. ret =");
+        ???.append(paramInt);
+        LogUtils.d("TNNCatInitializer", ???.toString());
+        return true;
+      }
+      throw ???;
     }
+    finally {}
+    for (;;) {}
   }
   
   public float[] retrieveCatKeyPoints(Bitmap paramBitmap)
@@ -118,7 +125,7 @@ public class TNNCatInitializer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.initializer.TNNCatInitializer
  * JD-Core Version:    0.7.0.1
  */

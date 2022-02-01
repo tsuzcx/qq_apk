@@ -26,120 +26,125 @@ class DeviceSingleStructBuilder$1
   
   public void onClick(View paramView)
   {
-    localMessageForDeviceSingleStruct = (MessageForDeviceSingleStruct)AIOUtils.a(paramView);
-    if (localMessageForDeviceSingleStruct == null) {}
-    do
+    MessageForDeviceSingleStruct localMessageForDeviceSingleStruct = (MessageForDeviceSingleStruct)AIOUtils.a(paramView);
+    if (localMessageForDeviceSingleStruct != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((TextUtils.isEmpty(localMessageForDeviceSingleStruct.strMediaFileName)) && (localMessageForDeviceSingleStruct.nMediaChannelType == 2) && (!TextUtils.isEmpty(localMessageForDeviceSingleStruct.strMediaKey))) {
-        localMessageForDeviceSingleStruct.strMediaFileName = (MD5Utils.toMD5(localMessageForDeviceSingleStruct.strMediaKey) + localMessageForDeviceSingleStruct.strMediaKey.substring(localMessageForDeviceSingleStruct.strMediaKey.lastIndexOf(".")));
-      }
-      localDeviceInfo = ((SmartDeviceProxyMgr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.parseLong(localMessageForDeviceSingleStruct.senderuin));
-    } while (localDeviceInfo == null);
-    if (localDeviceInfo.isAdmin == 1) {
-      i = 1;
-    }
-    for (;;)
-    {
-      try
+      Object localObject1;
+      if ((TextUtils.isEmpty(localMessageForDeviceSingleStruct.strMediaFileName)) && (localMessageForDeviceSingleStruct.nMediaChannelType == 2) && (!TextUtils.isEmpty(localMessageForDeviceSingleStruct.strMediaKey)))
       {
-        localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("title", localMessageForDeviceSingleStruct.strTitle);
-        ((JSONObject)localObject2).put("digest", localMessageForDeviceSingleStruct.strDigest);
-        if (localMessageForDeviceSingleStruct.nMediaFileStatus != 5) {
-          continue;
-        }
-        localObject1 = localMessageForDeviceSingleStruct.strMediaPath;
-        ((JSONObject)localObject2).put("file_path_url", localObject1);
-        ((JSONObject)localObject2).put("thumb_path_url", localMessageForDeviceSingleStruct.strCoverPath);
-        ((JSONObject)localObject2).put("guide_words", localMessageForDeviceSingleStruct.strGuideWords);
-        ((JSONObject)localObject2).put("appear_time", localMessageForDeviceSingleStruct.nAppearTime);
-        ((JSONObject)localObject2).put("data_type", localMessageForDeviceSingleStruct.nDataType);
-        ((JSONObject)localObject2).put("face", localMessageForDeviceSingleStruct.faceRect);
-        ((JSONObject)localObject2).put("cover_session_id", localMessageForDeviceSingleStruct.nCoverSessionID);
-        ((JSONObject)localObject2).put("media_session_id", localMessageForDeviceSingleStruct.nMediaSessionID);
-        if (localMessageForDeviceSingleStruct.nCoverChannelType != 1) {
-          continue;
-        }
-        ((JSONObject)localObject2).put("cover_key", localMessageForDeviceSingleStruct.strCoverKey);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(MD5Utils.toMD5(localMessageForDeviceSingleStruct.strMediaKey));
+        ((StringBuilder)localObject1).append(localMessageForDeviceSingleStruct.strMediaKey.substring(localMessageForDeviceSingleStruct.strMediaKey.lastIndexOf(".")));
+        localMessageForDeviceSingleStruct.strMediaFileName = ((StringBuilder)localObject1).toString();
       }
-      catch (JSONException localJSONException)
+      DeviceInfo localDeviceInfo = ((SmartDeviceProxyMgr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.parseLong(localMessageForDeviceSingleStruct.senderuin));
+      if (localDeviceInfo != null)
       {
-        Object localObject1;
-        long l;
-        int j;
-        localJSONException.printStackTrace();
-        String str = null;
-        continue;
-        ((JSONObject)localObject2).put("cover_url", localMessageForDeviceSingleStruct.strCoverKey);
-        continue;
-        if (localMessageForDeviceSingleStruct.nMediaChannelType != 3) {
-          continue;
+        int i;
+        if (localDeviceInfo.isAdmin == 1) {
+          i = 1;
+        } else {
+          i = 0;
         }
-        ((JSONObject)localObject2).put("media_mini", localMessageForDeviceSingleStruct.strMediaKey);
-        ((JSONObject)localObject2).put("fkey2", localMessageForDeviceSingleStruct.strCoverKey2);
-        continue;
-        ((JSONObject)localObject2).put("media_url", localMessageForDeviceSingleStruct.strMediaKey);
-        continue;
-        if ((i == 0) || (TextUtils.isEmpty(localMessageForDeviceSingleStruct.faceRect)) || (!DeviceSingleStructBuilder.a(this.a, localMessageForDeviceSingleStruct.faceRect)) || (TextUtils.isEmpty(localMessageForDeviceSingleStruct.strCoverPath))) {
-          continue;
+        Intent localIntent = null;
+        Object localObject2;
+        try
+        {
+          JSONObject localJSONObject = new JSONObject();
+          localJSONObject.put("title", localMessageForDeviceSingleStruct.strTitle);
+          localJSONObject.put("digest", localMessageForDeviceSingleStruct.strDigest);
+          if (localMessageForDeviceSingleStruct.nMediaFileStatus == 5) {
+            localObject1 = localMessageForDeviceSingleStruct.strMediaPath;
+          } else {
+            localObject1 = localMessageForDeviceSingleStruct.strCoverPath;
+          }
+          localJSONObject.put("file_path_url", localObject1);
+          localJSONObject.put("thumb_path_url", localMessageForDeviceSingleStruct.strCoverPath);
+          localJSONObject.put("guide_words", localMessageForDeviceSingleStruct.strGuideWords);
+          localJSONObject.put("appear_time", localMessageForDeviceSingleStruct.nAppearTime);
+          localJSONObject.put("data_type", localMessageForDeviceSingleStruct.nDataType);
+          localJSONObject.put("face", localMessageForDeviceSingleStruct.faceRect);
+          localJSONObject.put("cover_session_id", localMessageForDeviceSingleStruct.nCoverSessionID);
+          localJSONObject.put("media_session_id", localMessageForDeviceSingleStruct.nMediaSessionID);
+          if (localMessageForDeviceSingleStruct.nCoverChannelType == 1)
+          {
+            localJSONObject.put("cover_key", localMessageForDeviceSingleStruct.strCoverKey);
+          }
+          else if (localMessageForDeviceSingleStruct.nCoverChannelType == 3)
+          {
+            localJSONObject.put("cover_mini", localMessageForDeviceSingleStruct.strCoverKey);
+            localJSONObject.put("ckey2", localMessageForDeviceSingleStruct.strCoverKey2);
+          }
+          else
+          {
+            localJSONObject.put("cover_url", localMessageForDeviceSingleStruct.strCoverKey);
+          }
+          if (localMessageForDeviceSingleStruct.nMediaChannelType == 1)
+          {
+            localJSONObject.put("media_key", localMessageForDeviceSingleStruct.strMediaKey);
+          }
+          else if (localMessageForDeviceSingleStruct.nMediaChannelType == 3)
+          {
+            localJSONObject.put("media_mini", localMessageForDeviceSingleStruct.strMediaKey);
+            localJSONObject.put("fkey2", localMessageForDeviceSingleStruct.strCoverKey2);
+          }
+          else
+          {
+            localJSONObject.put("media_url", localMessageForDeviceSingleStruct.strMediaKey);
+          }
+          localJSONObject.put("jump_url", localMessageForDeviceSingleStruct.url);
+          localJSONObject.put("msg_time", localMessageForDeviceSingleStruct.time);
+          localJSONObject.put("ext", localMessageForDeviceSingleStruct.ext);
+          localObject1 = new JSONObject();
+          ((JSONObject)localObject1).put("struct_msg", localJSONObject);
+          localObject1 = ((JSONObject)localObject1).toString();
         }
-        Object localObject2 = new Intent();
-        ((Intent)localObject2).putExtra("device_id", localDeviceInfo.din + "");
-        if (localMessageForDeviceSingleStruct.nMediaFileStatus != 5) {
-          continue;
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+          localObject2 = localIntent;
         }
-        str = localMessageForDeviceSingleStruct.strMediaPath;
-        ((Intent)localObject2).putExtra("filepath", str);
-        ((Intent)localObject2).putExtra("rect", localMessageForDeviceSingleStruct.faceRect);
-        ((Intent)localObject2).putExtra("from", 0);
-        SmartDevicePluginLoader.a().a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), (Intent)localObject2, "com.tencent.device.face.FaceRegisterActivity", -1, null, SmartDevicePluginProxyActivity.class);
-        continue;
-        str = localMessageForDeviceSingleStruct.strCoverPath;
-        continue;
-        DeviceSingleStructBuilder.a(this.a, localMessageForDeviceSingleStruct);
-        continue;
-        i = 3;
-        continue;
+        if (!TextUtils.isEmpty(localMessageForDeviceSingleStruct.url))
+        {
+          DeviceSingleStructBuilder.a(this.a, localMessageForDeviceSingleStruct, localDeviceInfo, (String)localObject2);
+        }
+        else if ((i != 0) && (!TextUtils.isEmpty(localMessageForDeviceSingleStruct.faceRect)) && (DeviceSingleStructBuilder.a(this.a, localMessageForDeviceSingleStruct.faceRect)) && (!TextUtils.isEmpty(localMessageForDeviceSingleStruct.strCoverPath)))
+        {
+          localIntent = new Intent();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(localDeviceInfo.din);
+          ((StringBuilder)localObject2).append("");
+          localIntent.putExtra("device_id", ((StringBuilder)localObject2).toString());
+          if (localMessageForDeviceSingleStruct.nMediaFileStatus == 5) {
+            localObject2 = localMessageForDeviceSingleStruct.strMediaPath;
+          } else {
+            localObject2 = localMessageForDeviceSingleStruct.strCoverPath;
+          }
+          localIntent.putExtra("filepath", (String)localObject2);
+          localIntent.putExtra("rect", localMessageForDeviceSingleStruct.faceRect);
+          localIntent.putExtra("from", 0);
+          SmartDevicePluginLoader.a().a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), localIntent, "com.tencent.device.face.FaceRegisterActivity", -1, null, SmartDevicePluginProxyActivity.class);
+        }
+        else
+        {
+          DeviceSingleStructBuilder.a(this.a, localMessageForDeviceSingleStruct);
+        }
+        if (localMessageForDeviceSingleStruct.nDataType == 2) {
+          i = 4;
+        } else {
+          i = 3;
+        }
+        long l = Long.parseLong(localMessageForDeviceSingleStruct.senderuin);
+        int j = localDeviceInfo.productId;
+        SmartDeviceReport.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l, "Usr_AIO_ReceiveMsg_Click", i, 0, j);
       }
-      if (localMessageForDeviceSingleStruct.nMediaChannelType != 1) {
-        continue;
-      }
-      ((JSONObject)localObject2).put("media_key", localMessageForDeviceSingleStruct.strMediaKey);
-      ((JSONObject)localObject2).put("jump_url", localMessageForDeviceSingleStruct.url);
-      ((JSONObject)localObject2).put("msg_time", localMessageForDeviceSingleStruct.time);
-      ((JSONObject)localObject2).put("ext", localMessageForDeviceSingleStruct.ext);
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("struct_msg", localObject2);
-      localObject1 = ((JSONObject)localObject1).toString();
-      if (TextUtils.isEmpty(localMessageForDeviceSingleStruct.url)) {
-        continue;
-      }
-      DeviceSingleStructBuilder.a(this.a, localMessageForDeviceSingleStruct, localDeviceInfo, (String)localObject1);
-      if (localMessageForDeviceSingleStruct.nDataType != 2) {
-        continue;
-      }
-      i = 4;
-      l = Long.parseLong(localMessageForDeviceSingleStruct.senderuin);
-      j = localDeviceInfo.productId;
-      SmartDeviceReport.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l, "Usr_AIO_ReceiveMsg_Click", i, 0, j);
-      break;
-      i = 0;
-      continue;
-      localObject1 = localMessageForDeviceSingleStruct.strCoverPath;
-      continue;
-      if (localMessageForDeviceSingleStruct.nCoverChannelType != 3) {
-        continue;
-      }
-      ((JSONObject)localObject2).put("cover_mini", localMessageForDeviceSingleStruct.strCoverKey);
-      ((JSONObject)localObject2).put("ckey2", localMessageForDeviceSingleStruct.strCoverKey2);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.DeviceSingleStructBuilder.1
  * JD-Core Version:    0.7.0.1
  */

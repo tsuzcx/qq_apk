@@ -11,18 +11,23 @@ public class ArDownloadDPC
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("ArDownloadDPC{");
-    localStringBuilder.append("networkControl=").append(this.a);
-    localStringBuilder.append(", dailyRetryTimes=").append(this.b);
-    localStringBuilder.append(", countRetryTimes=").append(this.c);
-    localStringBuilder.append(", entranceControl=").append(this.d);
-    localStringBuilder.append(", autoPreDownload=").append(this.e);
+    localStringBuilder.append("networkControl=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", dailyRetryTimes=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", countRetryTimes=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", entranceControl=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", autoPreDownload=");
+    localStringBuilder.append(this.e);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArDownloadDPC
  * JD-Core Version:    0.7.0.1
  */

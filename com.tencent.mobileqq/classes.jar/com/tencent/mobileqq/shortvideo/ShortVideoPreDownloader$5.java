@@ -15,8 +15,12 @@ class ShortVideoPreDownloader$5
     {
       ShortVideoReq localShortVideoReq = (ShortVideoReq)localIterator.next();
       ShortVideoBusiManager.a(localShortVideoReq, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if (localShortVideoReq.a != null) {
-        ShortVideoPreDownloader.a("consumeAllThumbsInPendingQueue", "consume thumb, uniseq=" + localShortVideoReq.a.a);
+      if (localShortVideoReq.a != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("consume thumb, uniseq=");
+        localStringBuilder.append(localShortVideoReq.a.a);
+        ShortVideoPreDownloader.a("consumeAllThumbsInPendingQueue", localStringBuilder.toString());
       }
     }
     this.this$0.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.clear();
@@ -24,7 +28,7 @@ class ShortVideoPreDownloader$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader.5
  * JD-Core Version:    0.7.0.1
  */

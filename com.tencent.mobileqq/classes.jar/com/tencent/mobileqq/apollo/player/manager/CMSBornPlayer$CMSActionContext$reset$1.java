@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.player.manager;
 
-import com.tencent.mobileqq.apollo.api.player.action.CMSAction;
 import com.tencent.mobileqq.apollo.player.CMSActionStatus;
+import com.tencent.mobileqq.apollo.player.action.CMSAction;
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
 
@@ -13,13 +13,18 @@ final class CMSBornPlayer$CMSActionContext$reset$1
   
   public final void run()
   {
-    QLog.e("cmshow_scripted_[CMSPlayer]CMSBornPlayer", 1, this.this$0.a().d() + " timeout(" + CMSBornPlayer.a.a() + "ms)!! callback timeout");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.this$0.a().d());
+    localStringBuilder.append(" timeout(");
+    localStringBuilder.append(CMSBornPlayer.a.a());
+    localStringBuilder.append("ms)!! callback timeout");
+    QLog.e("[cmshow][scripted][CMSPlayer]CMSBornPlayer", 1, localStringBuilder.toString());
     CMSBornPlayer.Companion.a(CMSBornPlayer.a, this.this$0, CMSActionStatus.ERROR_TIME_OUT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.player.manager.CMSBornPlayer.CMSActionContext.reset.1
  * JD-Core Version:    0.7.0.1
  */

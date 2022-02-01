@@ -16,33 +16,27 @@ public class TroopBaseProxyActivity
 {
   public static Dialog a(Activity paramActivity)
   {
-    do
+    try
     {
+      paramActivity = new ReportDialog(paramActivity, 2131756189);
       try
       {
-        paramActivity = new ReportDialog(paramActivity, 2131755842);
-        Activity localActivity = paramActivity;
+        paramActivity.setCancelable(true);
+        paramActivity.setContentView(2131559561);
+        paramActivity.show();
+        ((TextView)paramActivity.findViewById(2131372646)).setText(HardCodeUtil.a(2131715033));
+        return paramActivity;
       }
-      catch (OutOfMemoryError localOutOfMemoryError1)
-      {
-        try
-        {
-          paramActivity.setCancelable(true);
-          paramActivity.setContentView(2131559683);
-          paramActivity.show();
-          ((TextView)paramActivity.findViewById(2131373066)).setText(HardCodeUtil.a(2131715110));
-          localActivity = paramActivity;
-          return localActivity;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError2)
-        {
-          continue;
-        }
-        localOutOfMemoryError1 = localOutOfMemoryError1;
-        paramActivity = null;
+      catch (OutOfMemoryError localOutOfMemoryError1) {}
+      if (!QLog.isColorLevel()) {
+        return paramActivity;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("TroopBaseProxyActivity", 2, localOutOfMemoryError1.getStackTrace());
+    }
+    catch (OutOfMemoryError localOutOfMemoryError2)
+    {
+      paramActivity = null;
+    }
+    QLog.e("TroopBaseProxyActivity", 2, localOutOfMemoryError2.getStackTrace());
     return paramActivity;
   }
   
@@ -69,7 +63,7 @@ public class TroopBaseProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.troop.TroopBaseProxyActivity
  * JD-Core Version:    0.7.0.1
  */

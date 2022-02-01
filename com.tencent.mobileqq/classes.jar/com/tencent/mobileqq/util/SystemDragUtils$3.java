@@ -12,34 +12,46 @@ final class SystemDragUtils$3
   {
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    default: 
-    case 0: 
-    case 2: 
-      do
+      if (i != 1)
       {
+        if (i != 2) {
+          return false;
+        }
+        if (SystemDragUtils.a()) {
+          return false;
+        }
+        if ((Math.abs(SystemDragUtils.a - f1) > 20.0F) || (Math.abs(SystemDragUtils.b - f2) > 20.0F))
+        {
+          SystemDragUtils.b(true);
+          SystemDragUtils.a().removeMessages(SystemDragUtils.TouchHandler.a);
+          return false;
+        }
+      }
+      else
+      {
+        SystemDragUtils.a().removeMessages(SystemDragUtils.TouchHandler.a);
         return false;
-        SystemDragUtils.b(false);
-        SystemDragUtils.a = f1;
-        SystemDragUtils.b = f2;
-        paramMotionEvent = Message.obtain();
-        paramMotionEvent.what = SystemDragUtils.TouchHandler.a;
-        paramMotionEvent.obj = paramView;
-        SystemDragUtils.a().sendMessageDelayed(paramMotionEvent, 1000L);
-        return false;
-      } while ((SystemDragUtils.a()) || ((Math.abs(SystemDragUtils.a - f1) <= 20.0F) && (Math.abs(SystemDragUtils.b - f2) <= 20.0F)));
-      SystemDragUtils.b(true);
-      SystemDragUtils.a().removeMessages(SystemDragUtils.TouchHandler.a);
-      return false;
+      }
     }
-    SystemDragUtils.a().removeMessages(SystemDragUtils.TouchHandler.a);
+    else
+    {
+      SystemDragUtils.b(false);
+      SystemDragUtils.a = f1;
+      SystemDragUtils.b = f2;
+      paramMotionEvent = Message.obtain();
+      paramMotionEvent.what = SystemDragUtils.TouchHandler.a;
+      paramMotionEvent.obj = paramView;
+      SystemDragUtils.a().sendMessageDelayed(paramMotionEvent, 1000L);
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.SystemDragUtils.3
  * JD-Core Version:    0.7.0.1
  */

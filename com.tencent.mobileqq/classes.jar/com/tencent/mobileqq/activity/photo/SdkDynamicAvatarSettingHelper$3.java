@@ -11,9 +11,7 @@ final class SdkDynamicAvatarSettingHelper$3
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 0) {
       return;
     }
     SdkDynamicAvatarSettingHelper.a(this.jdField_a_of_type_AndroidAppActivity, false, this.jdField_a_of_type_JavaLangString, this.b, false);
@@ -22,7 +20,7 @@ final class SdkDynamicAvatarSettingHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.SdkDynamicAvatarSettingHelper.3
  * JD-Core Version:    0.7.0.1
  */

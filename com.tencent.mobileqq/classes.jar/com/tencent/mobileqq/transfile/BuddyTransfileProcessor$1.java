@@ -9,29 +9,50 @@ class BuddyTransfileProcessor$1
 {
   BuddyTransfileProcessor$1(BuddyTransfileProcessor paramBuddyTransfileProcessor) {}
   
-  public void onUpdateUploadStreamFinished(boolean paramBoolean, MessageFactoryReceiver.UploadStreamStruct paramUploadStreamStruct)
+  protected void onUpdateUploadStreamFinished(boolean paramBoolean, MessageFactoryReceiver.UploadStreamStruct paramUploadStreamStruct)
   {
-    if ((paramUploadStreamStruct != null) && (QLog.isColorLevel())) {
-      QLog.e("streamptt.send", 2, "onUpdateUploadStreamFinished Key:" + paramUploadStreamStruct.jdField_a_of_type_JavaLangString + " seq:" + paramUploadStreamStruct.jdField_a_of_type_Short + " Layer:" + paramUploadStreamStruct.jdField_a_of_type_Int + " RespCode:" + paramUploadStreamStruct.b);
-    }
-    if ((this.this$0.file != null) && (QLog.isColorLevel())) {
-      QLog.e("streamptt.send", 2, "isSuccess:" + paramBoolean + "　FilePath:" + this.this$0.file.filePath + " isStreamPttSuccess:" + this.this$0.isStreamPttSuccess);
-    }
-    this.this$0.setStepFinishTime(2);
-    if ((paramUploadStreamStruct == null) || (paramUploadStreamStruct.jdField_a_of_type_JavaLangString == null) || (!paramUploadStreamStruct.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.this$0.file.filePath))) {
-      return;
-    }
-    if (!paramBoolean)
+    StringBuilder localStringBuilder;
+    if ((paramUploadStreamStruct != null) && (QLog.isColorLevel()))
     {
-      BuddyTransfileProcessor.access$000(this.this$0, false, paramUploadStreamStruct);
-      return;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdateUploadStreamFinished Key:");
+      localStringBuilder.append(paramUploadStreamStruct.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(" seq:");
+      localStringBuilder.append(paramUploadStreamStruct.jdField_a_of_type_Short);
+      localStringBuilder.append(" Layer:");
+      localStringBuilder.append(paramUploadStreamStruct.jdField_a_of_type_Int);
+      localStringBuilder.append(" RespCode:");
+      localStringBuilder.append(paramUploadStreamStruct.b);
+      QLog.e("streamptt.send", 2, localStringBuilder.toString());
     }
-    BuddyTransfileProcessor.access$000(this.this$0, true, paramUploadStreamStruct);
+    if ((this.this$0.file != null) && (QLog.isColorLevel()))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isSuccess:");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("　FilePath:");
+      localStringBuilder.append(this.this$0.file.filePath);
+      localStringBuilder.append(" isStreamPttSuccess:");
+      localStringBuilder.append(this.this$0.isStreamPttSuccess);
+      QLog.e("streamptt.send", 2, localStringBuilder.toString());
+    }
+    if ((paramUploadStreamStruct != null) && (paramUploadStreamStruct.jdField_a_of_type_JavaLangString != null))
+    {
+      if (!paramUploadStreamStruct.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.this$0.file.filePath)) {
+        return;
+      }
+      if (!paramBoolean)
+      {
+        BuddyTransfileProcessor.access$000(this.this$0, false, paramUploadStreamStruct);
+        return;
+      }
+      BuddyTransfileProcessor.access$000(this.this$0, true, paramUploadStreamStruct);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.BuddyTransfileProcessor.1
  * JD-Core Version:    0.7.0.1
  */

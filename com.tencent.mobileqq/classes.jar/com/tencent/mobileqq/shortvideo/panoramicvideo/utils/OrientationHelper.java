@@ -63,59 +63,53 @@ public class OrientationHelper
   
   public void revertRotation(float[] paramArrayOfFloat)
   {
-    if ((this.lockAxisMode == 0) && (this.ignoreRotationMode == 0)) {}
-    do
-    {
+    if ((this.lockAxisMode == 0) && (this.ignoreRotationMode == 0)) {
       return;
-      if (this.ignoreRotationMode != 0)
-      {
-        Matrix.setIdentityM(this.tmp, 0);
-        if ((this.ignoreRotationMode & 0x20) == 0) {
-          Matrix.rotateM(this.tmp, 0, -this.currentRotation[0], 0.0F, 0.0F, 1.0F);
-        }
-        if ((this.ignoreRotationMode & 0x8) == 0) {
-          Matrix.rotateM(this.tmp, 0, -this.currentRotation[1], 1.0F, 0.0F, 0.0F);
-        }
-        if ((this.ignoreRotationMode & 0x10) == 0) {
-          Matrix.rotateM(this.tmp, 0, this.currentRotation[2], 0.0F, 1.0F, 0.0F);
-        }
-        System.arraycopy(this.tmp, 0, paramArrayOfFloat, 0, 16);
-        Matrix.transposeM(this.tmp, 0, paramArrayOfFloat, 0);
-        SensorUtil.getOrientationFromRotationMatrix(this.tmp, this.currentRotation);
-        convertToDegrees(this.currentRotation);
-      }
-    } while (this.lockAxisMode == 0);
-    Matrix.setIdentityM(this.tmp, 0);
-    float f1;
-    float f2;
-    if ((this.lockAxisMode & 0x4) != 0)
-    {
-      f1 = this.initialRotation[0];
-      if ((this.lockAxisMode & 0x1) == 0) {
-        break label326;
-      }
-      f2 = this.initialRotation[1];
-      label201:
-      if ((this.lockAxisMode & 0x2) == 0) {
-        break label331;
-      }
     }
-    label326:
-    label331:
-    for (float f3 = -this.initialRotation[2];; f3 = 0.0F)
+    if (this.ignoreRotationMode != 0)
     {
-      Matrix.rotateM(this.tmp, 0, f1 + -this.currentRotation[0], 0.0F, 0.0F, 1.0F);
+      Matrix.setIdentityM(this.tmp, 0);
+      if ((this.ignoreRotationMode & 0x20) == 0) {
+        Matrix.rotateM(this.tmp, 0, -this.currentRotation[0], 0.0F, 0.0F, 1.0F);
+      }
+      if ((this.ignoreRotationMode & 0x8) == 0) {
+        Matrix.rotateM(this.tmp, 0, -this.currentRotation[1], 1.0F, 0.0F, 0.0F);
+      }
+      if ((this.ignoreRotationMode & 0x10) == 0) {
+        Matrix.rotateM(this.tmp, 0, this.currentRotation[2], 0.0F, 1.0F, 0.0F);
+      }
+      System.arraycopy(this.tmp, 0, paramArrayOfFloat, 0, 16);
+      Matrix.transposeM(this.tmp, 0, paramArrayOfFloat, 0);
+      SensorUtil.getOrientationFromRotationMatrix(this.tmp, this.currentRotation);
+      convertToDegrees(this.currentRotation);
+    }
+    if (this.lockAxisMode != 0)
+    {
+      Matrix.setIdentityM(this.tmp, 0);
+      int i = this.lockAxisMode;
+      float f3 = 0.0F;
+      float f1;
+      if ((i & 0x4) != 0) {
+        f1 = this.initialRotation[0];
+      } else {
+        f1 = 0.0F;
+      }
+      float f2;
+      if ((this.lockAxisMode & 0x1) != 0) {
+        f2 = this.initialRotation[1];
+      } else {
+        f2 = 0.0F;
+      }
+      if ((this.lockAxisMode & 0x2) != 0) {
+        f3 = -this.initialRotation[2];
+      }
+      Matrix.rotateM(this.tmp, 0, -this.currentRotation[0] + f1, 0.0F, 0.0F, 1.0F);
       Matrix.rotateM(this.tmp, 0, -this.currentRotation[1] + f2, 1.0F, 0.0F, 0.0F);
       Matrix.rotateM(this.tmp, 0, this.currentRotation[2] + f3, 0.0F, 1.0F, 0.0F);
       System.arraycopy(this.tmp, 0, paramArrayOfFloat, 0, 16);
       Matrix.transposeM(this.tmp, 0, paramArrayOfFloat, 0);
       SensorUtil.getOrientationFromRotationMatrix(this.tmp, this.currentRotation);
       convertToDegrees(this.currentRotation);
-      return;
-      f1 = 0.0F;
-      break;
-      f2 = 0.0F;
-      break label201;
     }
   }
   
@@ -136,7 +130,7 @@ public class OrientationHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.panoramicvideo.utils.OrientationHelper
  * JD-Core Version:    0.7.0.1
  */

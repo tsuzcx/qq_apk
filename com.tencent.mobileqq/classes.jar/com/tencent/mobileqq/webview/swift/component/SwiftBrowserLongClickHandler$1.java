@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import com.tencent.mobileqq.ar.codeEngine.MiniCodeController;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qrscan.api.IMiniCodeApi;
 
 class SwiftBrowserLongClickHandler$1
   implements Runnable
@@ -9,12 +10,12 @@ class SwiftBrowserLongClickHandler$1
   
   public void run()
   {
-    MiniCodeController.a().a(this.this$0.a.a(), this.this$0.hashCode(), "SwiftBrowserLongClickHandler");
+    ((IMiniCodeApi)QRoute.api(IMiniCodeApi.class)).init(this.this$0.a.a(), this.this$0.hashCode(), "SwiftBrowserLongClickHandler");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler.1
  * JD-Core Version:    0.7.0.1
  */

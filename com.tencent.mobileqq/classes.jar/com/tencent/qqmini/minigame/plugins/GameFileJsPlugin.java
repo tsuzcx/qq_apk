@@ -25,12 +25,13 @@ public final class GameFileJsPlugin
   private final void reportDownloadWithCache(long paramLong, int paramInt, String paramString)
   {
     MiniAppInfo localMiniAppInfo = this.mMiniAppInfo;
-    if (this.mIsMiniGame) {}
-    for (String str = "1";; str = "0")
-    {
-      MiniReportManager.reportEventType(localMiniAppInfo, 1044, null, null, null, paramInt, str, paramLong, paramString);
-      return;
+    String str;
+    if (this.mIsMiniGame) {
+      str = "1";
+    } else {
+      str = "0";
     }
+    MiniReportManager.reportEventType(localMiniAppInfo, 1044, null, null, null, paramInt, str, paramLong, paramString);
   }
   
   @JsEvent({"downloadWithCache"})
@@ -58,7 +59,7 @@ public final class GameFileJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.GameFileJsPlugin
  * JD-Core Version:    0.7.0.1
  */

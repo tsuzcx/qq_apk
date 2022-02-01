@@ -7,7 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class QFileAppStorePromoteDialogConfigBean
-  implements IQStorageSafable<String>
+  implements IQFileAppStorePromoteDialogConfigBean, IQStorageSafable<String>
 {
   public String a;
   public boolean a;
@@ -27,20 +27,31 @@ public class QFileAppStorePromoteDialogConfigBean
     try
     {
       paramString = new JSONObject(paramString);
-      if (paramString.has("dialogSwitch")) {
+      if (paramString.has("dialogSwitch"))
+      {
         this.jdField_a_of_type_Boolean = paramString.getBoolean("dialogSwitch");
+        return;
       }
-      return;
     }
     catch (JSONException paramString)
     {
       QLog.e("QFileAppStorePromoteDialogConfigBean<QFile>", 1, QLog.getStackTraceString(paramString));
     }
   }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileAppStorePromoteDialogConfigBean
  * JD-Core Version:    0.7.0.1
  */

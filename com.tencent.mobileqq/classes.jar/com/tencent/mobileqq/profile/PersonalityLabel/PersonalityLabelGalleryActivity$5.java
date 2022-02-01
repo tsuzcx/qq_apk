@@ -21,15 +21,16 @@ class PersonalityLabelGalleryActivity$5
       paramContext = paramIntent.getBundleExtra("key_bundle_data");
       if ((paramContext != null) && (paramContext.getBoolean("onTagChanged")))
       {
-        this.a.a = true;
-        PersonalityLabelGalleryActivity.a(this.a);
+        paramContext = this.a;
+        paramContext.a = true;
+        PersonalityLabelGalleryActivity.a(paramContext);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.5
  * JD-Core Version:    0.7.0.1
  */

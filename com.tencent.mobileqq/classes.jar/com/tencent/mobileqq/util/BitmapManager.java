@@ -22,57 +22,54 @@ public class BitmapManager
   
   public static int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
   {
-    int j = paramOptions.outHeight;
-    int k = paramOptions.outWidth;
-    int i = 1;
-    if ((j > paramInt2) || (k > paramInt1))
-    {
-      if (k > j) {
-        i = Math.round(j / paramInt2);
-      }
+    int i = paramOptions.outHeight;
+    int j = paramOptions.outWidth;
+    if ((i <= paramInt2) && (j <= paramInt1)) {
+      return 1;
     }
-    else {
-      return i;
+    if (j > i) {
+      return Math.round(i / paramInt2);
     }
-    return Math.round(k / paramInt1);
+    return Math.round(j / paramInt1);
   }
   
   public static Bitmap a(Resources paramResources, int paramInt)
   {
     a();
-    localBitmapDecodeResult = new BitmapManager.BitmapDecodeResult();
-    for (;;)
+    BitmapManager.BitmapDecodeResult localBitmapDecodeResult = new BitmapManager.BitmapDecodeResult();
+    try
     {
-      try
-      {
-        localObject = new BitmapFactory.Options();
-        if (((!"Xiaomi".equalsIgnoreCase(Build.MANUFACTURER)) || (!Build.MODEL.toUpperCase().startsWith("MI 2"))) && ((!"BBK".equalsIgnoreCase(Build.MANUFACTURER)) || (!Build.MODEL.toUpperCase().startsWith("VIVO")))) {
-          continue;
-        }
+      localObject = new BitmapFactory.Options();
+      if ((("Xiaomi".equalsIgnoreCase(Build.MANUFACTURER)) && (Build.MODEL.toUpperCase().startsWith("MI 2"))) || (("BBK".equalsIgnoreCase(Build.MANUFACTURER)) && (Build.MODEL.toUpperCase().startsWith("VIVO")))) {
         ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.ARGB_8888;
-        localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramResources, paramInt, (BitmapFactory.Options)localObject);
+      } else {
+        ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.RGB_565;
       }
-      catch (OutOfMemoryError paramResources)
-      {
-        Object localObject;
-        localBitmapDecodeResult.jdField_a_of_type_Int = 1;
-        continue;
-      }
-      catch (Throwable paramResources)
-      {
-        localBitmapDecodeResult.jdField_a_of_type_Int = 3;
-        continue;
-      }
-      if (localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap != null)
-      {
-        localBitmapDecodeResult.jdField_a_of_type_Int = 0;
-        paramResources = String.valueOf(localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap.hashCode());
-        localObject = new BitmapManager.MonitorReference(paramResources, localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap, jdField_a_of_type_JavaLangRefReferenceQueue);
-        jdField_a_of_type_JavaUtilMap.put(paramResources, localObject);
-      }
-      return localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap;
-      ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.RGB_565;
+      localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramResources, paramInt, (BitmapFactory.Options)localObject);
     }
+    catch (OutOfMemoryError paramResources)
+    {
+      Object localObject;
+      break label107;
+    }
+    catch (Throwable paramResources)
+    {
+      label99:
+      break label99;
+    }
+    localBitmapDecodeResult.jdField_a_of_type_Int = 3;
+    break label112;
+    label107:
+    localBitmapDecodeResult.jdField_a_of_type_Int = 1;
+    label112:
+    if (localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      localBitmapDecodeResult.jdField_a_of_type_Int = 0;
+      paramResources = String.valueOf(localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap.hashCode());
+      localObject = new BitmapManager.MonitorReference(paramResources, localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap, jdField_a_of_type_JavaLangRefReferenceQueue);
+      jdField_a_of_type_JavaUtilMap.put(paramResources, localObject);
+    }
+    return localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap;
   }
   
   public static Bitmap a(Resources paramResources, int paramInt1, int paramInt2, int paramInt3)
@@ -157,40 +154,41 @@ public class BitmapManager
   public static Bitmap a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     a();
-    localBitmapDecodeResult = new BitmapManager.BitmapDecodeResult();
-    for (;;)
+    BitmapManager.BitmapDecodeResult localBitmapDecodeResult = new BitmapManager.BitmapDecodeResult();
+    try
     {
-      try
-      {
-        BitmapFactory.Options localOptions = new BitmapFactory.Options();
-        if ((!"Xiaomi".equalsIgnoreCase(Build.MANUFACTURER)) || (!Build.MODEL.toUpperCase().startsWith("MI 2"))) {
-          continue;
-        }
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      if (("Xiaomi".equalsIgnoreCase(Build.MANUFACTURER)) && (Build.MODEL.toUpperCase().startsWith("MI 2"))) {
         localObject = Bitmap.Config.ARGB_8888;
-        localOptions.inPreferredConfig = ((Bitmap.Config)localObject);
-        localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap = SafeBitmapFactory.decodeByteArray(paramArrayOfByte, paramInt1, paramInt2, localOptions);
+      } else {
+        localObject = Bitmap.Config.RGB_565;
       }
-      catch (OutOfMemoryError paramArrayOfByte)
-      {
-        Object localObject;
-        localBitmapDecodeResult.jdField_a_of_type_Int = 1;
-        continue;
-      }
-      catch (Throwable paramArrayOfByte)
-      {
-        localBitmapDecodeResult.jdField_a_of_type_Int = 3;
-        continue;
-      }
-      if (localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap != null)
-      {
-        localBitmapDecodeResult.jdField_a_of_type_Int = 0;
-        paramArrayOfByte = String.valueOf(localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap.hashCode());
-        localObject = new BitmapManager.MonitorReference(paramArrayOfByte, localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap, jdField_a_of_type_JavaLangRefReferenceQueue);
-        jdField_a_of_type_JavaUtilMap.put(paramArrayOfByte, localObject);
-      }
-      return localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap;
-      localObject = Bitmap.Config.RGB_565;
+      localOptions.inPreferredConfig = ((Bitmap.Config)localObject);
+      localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap = SafeBitmapFactory.decodeByteArray(paramArrayOfByte, paramInt1, paramInt2, localOptions);
     }
+    catch (OutOfMemoryError paramArrayOfByte)
+    {
+      Object localObject;
+      break label88;
+    }
+    catch (Throwable paramArrayOfByte)
+    {
+      label79:
+      break label79;
+    }
+    localBitmapDecodeResult.jdField_a_of_type_Int = 3;
+    break label94;
+    label88:
+    localBitmapDecodeResult.jdField_a_of_type_Int = 1;
+    label94:
+    if (localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      localBitmapDecodeResult.jdField_a_of_type_Int = 0;
+      paramArrayOfByte = String.valueOf(localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap.hashCode());
+      localObject = new BitmapManager.MonitorReference(paramArrayOfByte, localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap, jdField_a_of_type_JavaLangRefReferenceQueue);
+      jdField_a_of_type_JavaUtilMap.put(paramArrayOfByte, localObject);
+    }
+    return localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap;
   }
   
   public static BitmapManager.BitmapDecodeResult a(String paramString, BitmapFactory.Options paramOptions)
@@ -216,327 +214,325 @@ public class BitmapManager
   public static void a(String paramString, BitmapFactory.Options paramOptions, BitmapManager.BitmapDecodeResult paramBitmapDecodeResult)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 8
+    //   0: invokestatic 54	com/tencent/mobileqq/util/BitmapManager:a	()V
     //   3: aconst_null
-    //   4: astore 9
+    //   4: astore 6
     //   6: aconst_null
     //   7: astore 7
     //   9: aconst_null
-    //   10: astore 6
+    //   10: astore 8
     //   12: aconst_null
-    //   13: astore 5
+    //   13: astore 9
     //   15: aconst_null
     //   16: astore 10
-    //   18: invokestatic 54	com/tencent/mobileqq/util/BitmapManager:a	()V
-    //   21: new 197	java/io/File
-    //   24: dup
-    //   25: aload_0
-    //   26: invokespecial 200	java/io/File:<init>	(Ljava/lang/String;)V
-    //   29: astore 11
-    //   31: aload 11
-    //   33: ifnull +11 -> 44
-    //   36: aload 11
-    //   38: invokevirtual 203	java/io/File:exists	()Z
-    //   41: ifne +32 -> 73
-    //   44: aload_2
-    //   45: iconst_2
-    //   46: putfield 108	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
-    //   49: iconst_0
-    //   50: ifeq +11 -> 61
-    //   53: new 205	java/lang/NullPointerException
-    //   56: dup
-    //   57: invokespecial 206	java/lang/NullPointerException:<init>	()V
-    //   60: athrow
-    //   61: iconst_0
-    //   62: ifeq +10 -> 72
-    //   65: invokestatic 212	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   68: aconst_null
-    //   69: invokevirtual 216	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   72: return
-    //   73: new 218	java/io/BufferedInputStream
-    //   76: dup
-    //   77: new 220	java/io/FileInputStream
-    //   80: dup
-    //   81: aload 11
-    //   83: invokespecial 223	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   86: invokespecial 226	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   89: astore 4
-    //   91: aload 7
-    //   93: astore 9
-    //   95: aload 6
-    //   97: astore 8
-    //   99: aload 5
-    //   101: astore 10
-    //   103: aload 11
-    //   105: invokevirtual 230	java/io/File:length	()J
-    //   108: l2i
-    //   109: istore_3
-    //   110: aload 7
-    //   112: astore 9
-    //   114: aload 6
-    //   116: astore 8
-    //   118: aload 5
-    //   120: astore 10
-    //   122: invokestatic 212	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   125: iload_3
-    //   126: invokevirtual 234	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
-    //   129: astore 7
-    //   131: aload 7
-    //   133: astore 5
-    //   135: aload 4
-    //   137: astore 6
-    //   139: aload 7
-    //   141: astore 9
-    //   143: aload 7
-    //   145: astore 8
-    //   147: aload 7
-    //   149: astore 10
-    //   151: iload_3
-    //   152: aload 4
-    //   154: aload 7
-    //   156: invokevirtual 238	java/io/InputStream:read	([B)I
-    //   159: if_icmpeq +52 -> 211
-    //   162: aload 7
-    //   164: astore 5
-    //   166: aload 4
-    //   168: astore 6
-    //   170: aload 7
-    //   172: astore 9
-    //   174: aload 7
-    //   176: astore 8
-    //   178: aload 7
-    //   180: astore 10
-    //   182: aload_2
-    //   183: iconst_3
-    //   184: putfield 108	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
-    //   187: aload 4
-    //   189: ifnull +8 -> 197
-    //   192: aload 4
-    //   194: invokevirtual 241	java/io/InputStream:close	()V
-    //   197: aload 7
-    //   199: ifnull -127 -> 72
-    //   202: invokestatic 212	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   205: aload 7
-    //   207: invokevirtual 216	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   210: return
-    //   211: aload 7
-    //   213: astore 5
-    //   215: aload 4
-    //   217: astore 6
-    //   219: aload 7
-    //   221: astore 9
-    //   223: aload 7
-    //   225: astore 8
-    //   227: aload 7
-    //   229: astore 10
-    //   231: aload_2
-    //   232: aload 7
-    //   234: iconst_0
-    //   235: aload 7
-    //   237: arraylength
-    //   238: aload_1
-    //   239: invokestatic 181	com/tencent/image/SafeBitmapFactory:decodeByteArray	([BIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   242: putfield 106	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   245: aload 4
-    //   247: ifnull +8 -> 255
+    //   18: aconst_null
+    //   19: astore 11
+    //   21: aconst_null
+    //   22: astore 12
+    //   24: aconst_null
+    //   25: astore 5
+    //   27: new 197	java/io/File
+    //   30: dup
+    //   31: aload_0
+    //   32: invokespecial 200	java/io/File:<init>	(Ljava/lang/String;)V
+    //   35: astore 13
+    //   37: aload 13
+    //   39: invokevirtual 203	java/io/File:exists	()Z
+    //   42: ifne +9 -> 51
+    //   45: aload_2
+    //   46: iconst_2
+    //   47: putfield 111	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
+    //   50: return
+    //   51: new 205	java/io/BufferedInputStream
+    //   54: dup
+    //   55: new 207	java/io/FileInputStream
+    //   58: dup
+    //   59: aload 13
+    //   61: invokespecial 210	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   64: invokespecial 213	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   67: astore 4
+    //   69: aload 5
+    //   71: astore 6
+    //   73: aload 10
+    //   75: astore 7
+    //   77: aload 11
+    //   79: astore 8
+    //   81: aload 12
+    //   83: astore 9
+    //   85: aload 13
+    //   87: invokevirtual 217	java/io/File:length	()J
+    //   90: l2i
+    //   91: istore_3
+    //   92: aload 5
+    //   94: astore 6
+    //   96: aload 10
+    //   98: astore 7
+    //   100: aload 11
+    //   102: astore 8
+    //   104: aload 12
+    //   106: astore 9
+    //   108: invokestatic 223	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   111: iload_3
+    //   112: invokevirtual 227	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
+    //   115: astore 5
+    //   117: aload 5
+    //   119: astore 6
+    //   121: aload 5
+    //   123: astore 7
+    //   125: aload 5
+    //   127: astore 8
+    //   129: aload 5
+    //   131: astore 9
+    //   133: iload_3
+    //   134: aload 4
+    //   136: aload 5
+    //   138: invokevirtual 231	java/io/InputStream:read	([B)I
+    //   141: if_icmpeq +43 -> 184
+    //   144: aload 5
+    //   146: astore 6
+    //   148: aload 5
+    //   150: astore 7
+    //   152: aload 5
+    //   154: astore 8
+    //   156: aload 5
+    //   158: astore 9
+    //   160: aload_2
+    //   161: iconst_3
+    //   162: putfield 111	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
+    //   165: aload 4
+    //   167: invokevirtual 234	java/io/InputStream:close	()V
+    //   170: aload 5
+    //   172: ifnull +11 -> 183
+    //   175: invokestatic 223	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   178: aload 5
+    //   180: invokevirtual 238	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   183: return
+    //   184: aload 5
+    //   186: astore 6
+    //   188: aload 5
+    //   190: astore 7
+    //   192: aload 5
+    //   194: astore 8
+    //   196: aload 5
+    //   198: astore 9
+    //   200: aload_2
+    //   201: aload 5
+    //   203: iconst_0
+    //   204: aload 5
+    //   206: arraylength
+    //   207: aload_1
+    //   208: invokestatic 181	com/tencent/image/SafeBitmapFactory:decodeByteArray	([BIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   211: putfield 109	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   214: aload 4
+    //   216: invokevirtual 234	java/io/InputStream:close	()V
+    //   219: aload 5
+    //   221: ifnull +205 -> 426
+    //   224: invokestatic 223	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   227: aload 5
+    //   229: invokevirtual 238	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   232: goto +194 -> 426
+    //   235: astore_0
+    //   236: aload 4
+    //   238: astore_1
+    //   239: aload 6
+    //   241: astore 4
+    //   243: goto +224 -> 467
+    //   246: aload 9
+    //   248: astore 5
     //   250: aload 4
-    //   252: invokevirtual 241	java/io/InputStream:close	()V
-    //   255: aload 7
-    //   257: ifnull +11 -> 268
-    //   260: invokestatic 212	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   263: aload 7
-    //   265: invokevirtual 216	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   268: aload_2
-    //   269: getfield 106	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   272: ifnull -200 -> 72
-    //   275: aload_2
-    //   276: iconst_0
-    //   277: putfield 108	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
-    //   280: new 118	com/tencent/mobileqq/util/BitmapManager$MonitorReference
-    //   283: dup
-    //   284: aload_0
-    //   285: aload_2
-    //   286: getfield 106	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   289: getstatic 29	com/tencent/mobileqq/util/BitmapManager:jdField_a_of_type_JavaLangRefReferenceQueue	Ljava/lang/ref/ReferenceQueue;
-    //   292: invokespecial 121	com/tencent/mobileqq/util/BitmapManager$MonitorReference:<init>	(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
-    //   295: astore_1
-    //   296: getstatic 24	com/tencent/mobileqq/util/BitmapManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   299: aload_0
-    //   300: aload_1
-    //   301: invokeinterface 127 3 0
-    //   306: pop
-    //   307: return
-    //   308: astore_1
-    //   309: aconst_null
-    //   310: astore 4
-    //   312: aload 10
-    //   314: astore 5
-    //   316: aload 4
-    //   318: astore 6
-    //   320: aload_2
-    //   321: iconst_2
-    //   322: putfield 108	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
-    //   325: aload 4
-    //   327: ifnull +8 -> 335
-    //   330: aload 4
-    //   332: invokevirtual 241	java/io/InputStream:close	()V
-    //   335: aload 10
-    //   337: ifnull -69 -> 268
-    //   340: invokestatic 212	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   343: aload 10
-    //   345: invokevirtual 216	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   348: goto -80 -> 268
-    //   351: astore_1
-    //   352: aconst_null
-    //   353: astore 4
-    //   355: aload 8
-    //   357: astore 5
-    //   359: aload 4
-    //   361: astore 6
-    //   363: aload_2
-    //   364: iconst_1
-    //   365: putfield 108	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
-    //   368: aload 4
-    //   370: ifnull +8 -> 378
-    //   373: aload 4
-    //   375: invokevirtual 241	java/io/InputStream:close	()V
-    //   378: aload 8
-    //   380: ifnull -112 -> 268
-    //   383: invokestatic 212	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   386: aload 8
-    //   388: invokevirtual 216	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   391: goto -123 -> 268
-    //   394: astore_1
-    //   395: aconst_null
-    //   396: astore 4
-    //   398: aload 9
-    //   400: astore 5
-    //   402: aload 4
-    //   404: astore 6
-    //   406: aload_2
-    //   407: iconst_3
-    //   408: putfield 108	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
-    //   411: aload 4
-    //   413: ifnull +8 -> 421
-    //   416: aload 4
-    //   418: invokevirtual 241	java/io/InputStream:close	()V
-    //   421: aload 9
-    //   423: ifnull -155 -> 268
-    //   426: invokestatic 212	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   429: aload 9
-    //   431: invokevirtual 216	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   434: goto -166 -> 268
-    //   437: astore_0
-    //   438: aconst_null
-    //   439: astore_2
-    //   440: aconst_null
-    //   441: astore_1
-    //   442: aload_2
-    //   443: ifnull +7 -> 450
-    //   446: aload_2
-    //   447: invokevirtual 241	java/io/InputStream:close	()V
-    //   450: aload_1
-    //   451: ifnull +10 -> 461
-    //   454: invokestatic 212	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   457: aload_1
-    //   458: invokevirtual 216	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   461: aload_0
-    //   462: athrow
-    //   463: astore_0
-    //   464: goto -403 -> 61
-    //   467: astore_0
-    //   468: goto -271 -> 197
-    //   471: astore_1
-    //   472: goto -217 -> 255
-    //   475: astore_1
-    //   476: goto -141 -> 335
-    //   479: astore_1
-    //   480: goto -102 -> 378
-    //   483: astore_1
-    //   484: goto -63 -> 421
-    //   487: astore_2
-    //   488: goto -38 -> 450
-    //   491: astore_0
-    //   492: aload 4
-    //   494: astore_2
-    //   495: aconst_null
-    //   496: astore_1
-    //   497: goto -55 -> 442
-    //   500: astore_0
-    //   501: aload 6
-    //   503: astore_2
-    //   504: aload 5
-    //   506: astore_1
-    //   507: goto -65 -> 442
-    //   510: astore_1
-    //   511: goto -113 -> 398
-    //   514: astore_1
-    //   515: goto -160 -> 355
-    //   518: astore_1
-    //   519: goto -207 -> 312
+    //   252: astore 6
+    //   254: goto +38 -> 292
+    //   257: aload 8
+    //   259: astore 5
+    //   261: aload 4
+    //   263: astore 6
+    //   265: goto +75 -> 340
+    //   268: aload 7
+    //   270: astore 5
+    //   272: aload 4
+    //   274: astore 6
+    //   276: goto +112 -> 388
+    //   279: astore_0
+    //   280: aconst_null
+    //   281: astore 4
+    //   283: aload 9
+    //   285: astore_1
+    //   286: goto +181 -> 467
+    //   289: aconst_null
+    //   290: astore 5
+    //   292: aload 6
+    //   294: astore_1
+    //   295: aload 5
+    //   297: astore 4
+    //   299: aload_2
+    //   300: iconst_3
+    //   301: putfield 111	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
+    //   304: aload 6
+    //   306: ifnull +11 -> 317
+    //   309: aload 6
+    //   311: invokevirtual 234	java/io/InputStream:close	()V
+    //   314: goto +3 -> 317
+    //   317: aload 5
+    //   319: ifnull +107 -> 426
+    //   322: invokestatic 223	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   325: aload 5
+    //   327: invokevirtual 238	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   330: goto +96 -> 426
+    //   333: aconst_null
+    //   334: astore 5
+    //   336: aload 7
+    //   338: astore 6
+    //   340: aload 6
+    //   342: astore_1
+    //   343: aload 5
+    //   345: astore 4
+    //   347: aload_2
+    //   348: iconst_1
+    //   349: putfield 111	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
+    //   352: aload 6
+    //   354: ifnull +11 -> 365
+    //   357: aload 6
+    //   359: invokevirtual 234	java/io/InputStream:close	()V
+    //   362: goto +3 -> 365
+    //   365: aload 5
+    //   367: ifnull +59 -> 426
+    //   370: invokestatic 223	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   373: aload 5
+    //   375: invokevirtual 238	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   378: goto +48 -> 426
+    //   381: aconst_null
+    //   382: astore 5
+    //   384: aload 8
+    //   386: astore 6
+    //   388: aload 6
+    //   390: astore_1
+    //   391: aload 5
+    //   393: astore 4
+    //   395: aload_2
+    //   396: iconst_2
+    //   397: putfield 111	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
+    //   400: aload 6
+    //   402: ifnull +11 -> 413
+    //   405: aload 6
+    //   407: invokevirtual 234	java/io/InputStream:close	()V
+    //   410: goto +3 -> 413
+    //   413: aload 5
+    //   415: ifnull +11 -> 426
+    //   418: invokestatic 223	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   421: aload 5
+    //   423: invokevirtual 238	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   426: aload_2
+    //   427: getfield 109	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   430: ifnull +35 -> 465
+    //   433: aload_2
+    //   434: iconst_0
+    //   435: putfield 111	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
+    //   438: new 121	com/tencent/mobileqq/util/BitmapManager$MonitorReference
+    //   441: dup
+    //   442: aload_0
+    //   443: aload_2
+    //   444: getfield 109	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   447: getstatic 29	com/tencent/mobileqq/util/BitmapManager:jdField_a_of_type_JavaLangRefReferenceQueue	Ljava/lang/ref/ReferenceQueue;
+    //   450: invokespecial 124	com/tencent/mobileqq/util/BitmapManager$MonitorReference:<init>	(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
+    //   453: astore_1
+    //   454: getstatic 24	com/tencent/mobileqq/util/BitmapManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   457: aload_0
+    //   458: aload_1
+    //   459: invokeinterface 130 3 0
+    //   464: pop
+    //   465: return
+    //   466: astore_0
+    //   467: aload_1
+    //   468: ifnull +10 -> 478
+    //   471: aload_1
+    //   472: invokevirtual 234	java/io/InputStream:close	()V
+    //   475: goto +3 -> 478
+    //   478: aload 4
+    //   480: ifnull +11 -> 491
+    //   483: invokestatic 223	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   486: aload 4
+    //   488: invokevirtual 238	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   491: aload_0
+    //   492: athrow
+    //   493: astore_1
+    //   494: goto -113 -> 381
+    //   497: astore_1
+    //   498: goto -165 -> 333
+    //   501: astore_1
+    //   502: goto -213 -> 289
+    //   505: astore_1
+    //   506: goto -238 -> 268
+    //   509: astore_1
+    //   510: goto -253 -> 257
+    //   513: astore_1
+    //   514: goto -268 -> 246
+    //   517: astore_0
+    //   518: goto -348 -> 170
+    //   521: astore_1
+    //   522: goto -303 -> 219
+    //   525: astore_1
+    //   526: goto -209 -> 317
+    //   529: astore_1
+    //   530: goto -165 -> 365
+    //   533: astore_1
+    //   534: goto -121 -> 413
+    //   537: astore_1
+    //   538: goto -60 -> 478
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	522	0	paramString	String
-    //   0	522	1	paramOptions	BitmapFactory.Options
-    //   0	522	2	paramBitmapDecodeResult	BitmapManager.BitmapDecodeResult
-    //   109	51	3	i	int
-    //   89	404	4	localBufferedInputStream	java.io.BufferedInputStream
-    //   13	492	5	localObject1	Object
-    //   10	492	6	localObject2	Object
-    //   7	257	7	arrayOfByte	byte[]
-    //   1	386	8	localObject3	Object
-    //   4	426	9	localObject4	Object
-    //   16	328	10	localObject5	Object
-    //   29	75	11	localFile	java.io.File
+    //   0	541	0	paramString	String
+    //   0	541	1	paramOptions	BitmapFactory.Options
+    //   0	541	2	paramBitmapDecodeResult	BitmapManager.BitmapDecodeResult
+    //   91	51	3	i	int
+    //   67	420	4	localObject1	Object
+    //   25	397	5	localObject2	Object
+    //   4	402	6	localObject3	Object
+    //   7	330	7	localObject4	Object
+    //   10	375	8	localObject5	Object
+    //   13	271	9	localObject6	Object
+    //   16	81	10	localObject7	Object
+    //   19	82	11	localObject8	Object
+    //   22	83	12	localObject9	Object
+    //   35	51	13	localFile	java.io.File
     // Exception table:
     //   from	to	target	type
-    //   21	31	308	java/io/FileNotFoundException
-    //   36	44	308	java/io/FileNotFoundException
-    //   44	49	308	java/io/FileNotFoundException
-    //   73	91	308	java/io/FileNotFoundException
-    //   21	31	351	java/lang/OutOfMemoryError
-    //   36	44	351	java/lang/OutOfMemoryError
-    //   44	49	351	java/lang/OutOfMemoryError
-    //   73	91	351	java/lang/OutOfMemoryError
-    //   21	31	394	java/lang/Throwable
-    //   36	44	394	java/lang/Throwable
-    //   44	49	394	java/lang/Throwable
-    //   73	91	394	java/lang/Throwable
-    //   21	31	437	finally
-    //   36	44	437	finally
-    //   44	49	437	finally
-    //   73	91	437	finally
-    //   53	61	463	java/io/IOException
-    //   192	197	467	java/io/IOException
-    //   250	255	471	java/io/IOException
-    //   330	335	475	java/io/IOException
-    //   373	378	479	java/io/IOException
-    //   416	421	483	java/io/IOException
-    //   446	450	487	java/io/IOException
-    //   103	110	491	finally
-    //   122	131	491	finally
-    //   151	162	500	finally
-    //   182	187	500	finally
-    //   231	245	500	finally
-    //   320	325	500	finally
-    //   363	368	500	finally
-    //   406	411	500	finally
-    //   103	110	510	java/lang/Throwable
-    //   122	131	510	java/lang/Throwable
-    //   151	162	510	java/lang/Throwable
-    //   182	187	510	java/lang/Throwable
-    //   231	245	510	java/lang/Throwable
-    //   103	110	514	java/lang/OutOfMemoryError
-    //   122	131	514	java/lang/OutOfMemoryError
-    //   151	162	514	java/lang/OutOfMemoryError
-    //   182	187	514	java/lang/OutOfMemoryError
-    //   231	245	514	java/lang/OutOfMemoryError
-    //   103	110	518	java/io/FileNotFoundException
-    //   122	131	518	java/io/FileNotFoundException
-    //   151	162	518	java/io/FileNotFoundException
-    //   182	187	518	java/io/FileNotFoundException
-    //   231	245	518	java/io/FileNotFoundException
+    //   85	92	235	finally
+    //   108	117	235	finally
+    //   133	144	235	finally
+    //   160	165	235	finally
+    //   200	214	235	finally
+    //   27	50	279	finally
+    //   51	69	279	finally
+    //   299	304	466	finally
+    //   347	352	466	finally
+    //   395	400	466	finally
+    //   27	50	493	java/io/FileNotFoundException
+    //   51	69	493	java/io/FileNotFoundException
+    //   27	50	497	java/lang/OutOfMemoryError
+    //   51	69	497	java/lang/OutOfMemoryError
+    //   27	50	501	java/lang/Throwable
+    //   51	69	501	java/lang/Throwable
+    //   85	92	505	java/io/FileNotFoundException
+    //   108	117	505	java/io/FileNotFoundException
+    //   133	144	505	java/io/FileNotFoundException
+    //   160	165	505	java/io/FileNotFoundException
+    //   200	214	505	java/io/FileNotFoundException
+    //   85	92	509	java/lang/OutOfMemoryError
+    //   108	117	509	java/lang/OutOfMemoryError
+    //   133	144	509	java/lang/OutOfMemoryError
+    //   160	165	509	java/lang/OutOfMemoryError
+    //   200	214	509	java/lang/OutOfMemoryError
+    //   85	92	513	java/lang/Throwable
+    //   108	117	513	java/lang/Throwable
+    //   133	144	513	java/lang/Throwable
+    //   160	165	513	java/lang/Throwable
+    //   200	214	513	java/lang/Throwable
+    //   165	170	517	java/io/IOException
+    //   214	219	521	java/io/IOException
+    //   309	314	525	java/io/IOException
+    //   357	362	529	java/io/IOException
+    //   405	410	533	java/io/IOException
+    //   471	475	537	java/io/IOException
   }
   
   public static Bitmap b(Resources paramResources, int paramInt)
@@ -546,34 +542,35 @@ public class BitmapManager
     try
     {
       localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramResources, paramInt, new BitmapFactory.Options());
-      if (localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap != null)
-      {
-        localBitmapDecodeResult.jdField_a_of_type_Int = 0;
-        paramResources = String.valueOf(localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap.hashCode());
-        BitmapManager.MonitorReference localMonitorReference = new BitmapManager.MonitorReference(paramResources, localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap, jdField_a_of_type_JavaLangRefReferenceQueue);
-        jdField_a_of_type_JavaUtilMap.put(paramResources, localMonitorReference);
-      }
-      return localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap;
     }
     catch (OutOfMemoryError paramResources)
     {
-      for (;;)
-      {
-        localBitmapDecodeResult.jdField_a_of_type_Int = 1;
-      }
+      BitmapManager.MonitorReference localMonitorReference;
+      break label38;
     }
     catch (Throwable paramResources)
     {
-      for (;;)
-      {
-        localBitmapDecodeResult.jdField_a_of_type_Int = 3;
-      }
+      label30:
+      break label30;
     }
+    localBitmapDecodeResult.jdField_a_of_type_Int = 3;
+    break label43;
+    label38:
+    localBitmapDecodeResult.jdField_a_of_type_Int = 1;
+    label43:
+    if (localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      localBitmapDecodeResult.jdField_a_of_type_Int = 0;
+      paramResources = String.valueOf(localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap.hashCode());
+      localMonitorReference = new BitmapManager.MonitorReference(paramResources, localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap, jdField_a_of_type_JavaLangRefReferenceQueue);
+      jdField_a_of_type_JavaUtilMap.put(paramResources, localMonitorReference);
+    }
+    return localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.BitmapManager
  * JD-Core Version:    0.7.0.1
  */

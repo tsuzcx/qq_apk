@@ -18,10 +18,7 @@ public class PNGReader
   {
     byte[] arrayOfByte = new byte[4];
     paramInputStream.read(arrayOfByte, 0, 4);
-    int i = arrayOfByte[0];
-    int j = arrayOfByte[1];
-    int k = arrayOfByte[2];
-    return arrayOfByte[3] & 0xFF | (i & 0xFF) << 24 | (j & 0xFF) << 16 | (k & 0xFF) << 8;
+    return (arrayOfByte[0] & 0xFF) << 24 | (arrayOfByte[1] & 0xFF) << 16 | (arrayOfByte[2] & 0xFF) << 8 | arrayOfByte[3] & 0xFF;
   }
   
   private int readInt(byte[] paramArrayOfByte, int paramInt)
@@ -30,8 +27,8 @@ public class PNGReader
     paramInt = paramArrayOfByte[paramInt];
     int i = j + 1;
     j = paramArrayOfByte[j];
-    int k = i + 1;
-    return (j & 0xFF) << 16 | (paramInt & 0xFF) << 24 | (paramArrayOfByte[i] & 0xFF) << 8 | paramArrayOfByte[k] & 0xFF;
+    int k = paramArrayOfByte[i];
+    return paramArrayOfByte[(i + 1)] & 0xFF | (paramInt & 0xFF) << 24 | (j & 0xFF) << 16 | (k & 0xFF) << 8;
   }
   
   private long readLong(InputStream paramInputStream)
@@ -50,16 +47,20 @@ public class PNGReader
   
   private boolean read_IHDR(InputStream paramInputStream)
   {
-    if ((readInt(paramInputStream) != 13) || (readInt(paramInputStream) != 1229472850)) {
-      return false;
+    if (readInt(paramInputStream) == 13)
+    {
+      if (readInt(paramInputStream) != 1229472850) {
+        return false;
+      }
+      byte[] arrayOfByte = new byte[13];
+      paramInputStream.read(arrayOfByte, 0, 13);
+      this.width = readInt(arrayOfByte, 0);
+      this.height = readInt(arrayOfByte, 4);
+      this.bit_depth = arrayOfByte[8];
+      this.color_type = arrayOfByte[9];
+      return true;
     }
-    byte[] arrayOfByte = new byte[13];
-    paramInputStream.read(arrayOfByte, 0, 13);
-    this.width = readInt(arrayOfByte, 0);
-    this.height = readInt(arrayOfByte, 4);
-    this.bit_depth = arrayOfByte[8];
-    this.color_type = arrayOfByte[9];
-    return true;
+    return false;
   }
   
   public boolean isTransparentPng(String paramString)
@@ -67,24 +68,21 @@ public class PNGReader
     try
     {
       unpackImage(new FileInputStream(paramString));
-      if (((this.bit_depth == 8) || (this.bit_depth == 16)) && (this.color_type == 6)) {
-        return true;
-      }
     }
     catch (Exception paramString)
     {
-      for (;;)
-      {
-        Log.w("ImageProcessService", paramString.toString());
-      }
+      Log.w("ImageProcessService", paramString.toString());
     }
-    return false;
+    int i = this.bit_depth;
+    return ((i == 8) || (i == 16)) && (this.color_type == 6);
   }
   
   public void unpackImage(InputStream paramInputStream)
   {
-    if (readLong(paramInputStream) != -8552249625308161526L) {}
-    while (read_IHDR(paramInputStream)) {
+    if (readLong(paramInputStream) != -8552249625308161526L) {
+      return;
+    }
+    if (read_IHDR(paramInputStream)) {
       return;
     }
     throw new IOException("Not a valid png image !!!");
@@ -92,7 +90,7 @@ public class PNGReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.image.PNGReader
  * JD-Core Version:    0.7.0.1
  */

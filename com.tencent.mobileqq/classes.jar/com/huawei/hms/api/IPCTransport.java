@@ -48,7 +48,7 @@ public class IPCTransport
       RequestHeader localRequestHeader = new RequestHeader();
       localRequestHeader.setAppID(paramApiClient.getAppID());
       localRequestHeader.setPackageName(paramApiClient.getPackageName());
-      localRequestHeader.setSdkVersion(50000301);
+      localRequestHeader.setSdkVersion(50200300);
       localRequestHeader.setApiNameList(((HuaweiApiClientImpl)paramApiClient).getApiNameList());
       localRequestHeader.setSessionId(paramApiClient.getSessionId());
       localRequestHeader.setApiLevel(this.d);
@@ -66,7 +66,10 @@ public class IPCTransport
       }
       catch (Exception paramApiClient)
       {
-        HMSLog.e("IPCTransport", "sync call ex:" + paramApiClient);
+        paramc = new StringBuilder();
+        paramc.append("sync call ex:");
+        paramc.append(paramApiClient);
+        HMSLog.e("IPCTransport", paramc.toString());
         return 907135001;
       }
     }
@@ -83,8 +86,10 @@ public class IPCTransport
       }
       catch (Exception paramApiClient)
       {
-        HMSLog.e("IPCTransport", "sync call ex:" + paramApiClient);
-        return 907135001;
+        paramc = new StringBuilder();
+        paramc.append("sync call ex:");
+        paramc.append(paramApiClient);
+        HMSLog.e("IPCTransport", paramc.toString());
       }
     }
     return 907135001;
@@ -105,7 +110,7 @@ public class IPCTransport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.api.IPCTransport
  * JD-Core Version:    0.7.0.1
  */

@@ -18,78 +18,106 @@ class QZonePersonalizePlugin$1
     Object localObject;
     if (QLog.isDevelopLevel())
     {
-      localObject = new StringBuilder().append("intent is: ");
-      if (paramIntent == null)
-      {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("intent is: ");
+      if (paramIntent == null) {
         paramContext = "null";
-        QLog.d("QZonePersonalizePlugin", 4, paramContext);
+      } else {
+        paramContext = "not null";
       }
+      ((StringBuilder)localObject).append(paramContext);
+      QLog.d("QZonePersonalizePlugin", 4, ((StringBuilder)localObject).toString());
     }
-    else
+    if ((paramIntent != null) && ("QZoneCardPreDownload".equals(paramIntent.getAction())))
     {
-      if ((paramIntent == null) || (!"QZoneCardPreDownload".equals(paramIntent.getAction()))) {
-        break label239;
+      if (QLog.isDevelopLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("QZoneCardPreDownload js receive setting action");
+        paramContext.append(paramIntent.getAction());
+        QLog.d("QZoneCardLogic.QZonePersonalizePlugin", 4, paramContext.toString());
       }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QZoneCardLogic.QZonePersonalizePlugin", 4, "QZoneCardPreDownload js receive setting action" + paramIntent.getAction());
-      }
-      localObject = paramIntent.getExtras();
+      paramContext = paramIntent.getExtras();
       paramIntent = "";
-      paramContext = "";
-      if (localObject != null)
+      if (paramContext != null)
       {
-        paramIntent = ((Bundle)localObject).getString("result");
-        paramContext = ((Bundle)localObject).getString("cardurl");
+        paramIntent = paramContext.getString("result");
+        paramContext = paramContext.getString("cardurl");
       }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QZoneCardLogic.QZonePersonalizePlugin", 4, "QZoneCardPreDownload js receive cardurl:" + paramContext + "\n dowonload result:" + paramIntent);
+      else
+      {
+        paramContext = "";
       }
-      if (this.this$0.mRuntime != null) {
-        break label182;
+      if (QLog.isDevelopLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("QZoneCardPreDownload js receive cardurl:");
+        ((StringBuilder)localObject).append(paramContext);
+        ((StringBuilder)localObject).append("\n dowonload result:");
+        ((StringBuilder)localObject).append(paramIntent);
+        QLog.d("QZoneCardLogic.QZonePersonalizePlugin", 4, ((StringBuilder)localObject).toString());
+      }
+      if (this.this$0.mRuntime == null) {
+        return;
+      }
+      if (this.this$0.mRuntime.a() == null) {
+        return;
+      }
+      paramIntent = this.this$0.mRuntime.a();
+      if (paramIntent != null)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("window.QzFeedDressJSInterface.onReceive({type:\"cardurl\",data:\"");
+        ((StringBuilder)localObject).append(paramContext);
+        ((StringBuilder)localObject).append("\"});window.QzFeedDressJSInterface.onReceive({type:\"result\",data:\"success\"});");
+        paramIntent.callJs(((StringBuilder)localObject).toString());
       }
     }
-    label182:
-    label239:
-    int i;
-    do
+    else if ((paramIntent != null) && ("action_facade_qzone2js".equals(paramIntent.getAction())))
     {
-      do
+      paramIntent = paramIntent.getExtras();
+      if (paramIntent != null)
       {
-        do
+        int i = paramIntent.getInt("ret");
+        paramContext = paramIntent.getString("imgDir");
+        paramIntent = paramIntent.getString("imgNameList");
+        if (QLog.isDevelopLevel())
         {
-          do
-          {
-            do
-            {
-              return;
-              paramContext = "not null";
-              break;
-            } while (this.this$0.mRuntime.a() == null);
-            paramIntent = this.this$0.mRuntime.a();
-          } while (paramIntent == null);
-          paramIntent.callJs("window.QzFeedDressJSInterface.onReceive({type:\"cardurl\",data:\"" + paramContext + "\"});window.QzFeedDressJSInterface.onReceive({type:\"result\",data:\"success\"});");
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("receive ret:");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append("|imgDir:");
+          ((StringBuilder)localObject).append(paramContext);
+          ((StringBuilder)localObject).append("|imgNameList:");
+          ((StringBuilder)localObject).append(paramIntent);
+          QLog.d("QZonePersonalizePlugin", 4, ((StringBuilder)localObject).toString());
+        }
+        if (this.this$0.mRuntime == null) {
           return;
-        } while ((paramIntent == null) || (!"action_facade_qzone2js".equals(paramIntent.getAction())));
-        paramIntent = paramIntent.getExtras();
-      } while (paramIntent == null);
-      i = paramIntent.getInt("ret");
-      paramContext = paramIntent.getString("imgDir");
-      paramIntent = paramIntent.getString("imgNameList");
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QZonePersonalizePlugin", 4, "receive ret:" + i + "|imgDir:" + paramContext + "|imgNameList:" + paramIntent);
+        }
+        if (this.this$0.mRuntime.a() == null) {
+          return;
+        }
+        if (i == 0)
+        {
+          localObject = this.this$0;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("window.QzAvatarDressJSInterface.onReceive({type:\"result\",data:\"success\",imgDir:\"");
+          localStringBuilder.append(paramContext);
+          localStringBuilder.append("\",imgNameList:\"");
+          localStringBuilder.append(paramIntent);
+          localStringBuilder.append("\"});");
+          ((QZonePersonalizePlugin)localObject).callJs(localStringBuilder.toString());
+          return;
+        }
+        this.this$0.callJs("window.QzAvatarDressJSInterface.onReceive({type:\"result\",data:\"fail\"});");
       }
-    } while ((this.this$0.mRuntime == null) || (this.this$0.mRuntime.a() == null));
-    if (i == 0)
-    {
-      this.this$0.callJs("window.QzAvatarDressJSInterface.onReceive({type:\"result\",data:\"success\",imgDir:\"" + paramContext + "\",imgNameList:\"" + paramIntent + "\"});");
-      return;
     }
-    this.this$0.callJs("window.QzAvatarDressJSInterface.onReceive({type:\"result\",data:\"fail\"});");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.personalize.QZonePersonalizePlugin.1
  * JD-Core Version:    0.7.0.1
  */

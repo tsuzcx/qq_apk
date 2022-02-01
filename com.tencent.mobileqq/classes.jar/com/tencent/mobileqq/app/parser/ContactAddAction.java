@@ -4,11 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 public class ContactAddAction
-  extends JumpActionBase
+  extends JumpAction
 {
   public ContactAddAction(QQAppInterface paramQQAppInterface, Context paramContext)
   {
@@ -19,18 +20,21 @@ public class ContactAddAction
   {
     try
     {
-      boolean bool = i_();
+      boolean bool = b();
       return bool;
     }
     catch (Exception localException)
     {
-      QLog.e("ContactAddAction", 1, "doAction error: " + localException.getMessage());
-      a("ContactAddAction");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doAction error: ");
+      localStringBuilder.append(localException.getMessage());
+      QLog.e("ContactAddAction", 1, localStringBuilder.toString());
+      b_("ContactAddAction");
     }
     return false;
   }
   
-  public boolean i_()
+  public boolean b()
   {
     Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, AddContactsActivity.class);
     localIntent.setFlags(67108864);
@@ -54,7 +58,7 @@ public class ContactAddAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.ContactAddAction
  * JD-Core Version:    0.7.0.1
  */

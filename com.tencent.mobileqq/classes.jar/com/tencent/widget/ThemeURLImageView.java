@@ -45,7 +45,7 @@ public class ThemeURLImageView
     CUR_THEMEID = paramString;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     if ((this.isSupportMaskView) && (QQUIDelegate.b()))
     {
@@ -64,7 +64,7 @@ public class ThemeURLImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ThemeURLImageView
  * JD-Core Version:    0.7.0.1
  */

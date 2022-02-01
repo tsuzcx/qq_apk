@@ -2,6 +2,7 @@ package com.tencent.biz.qqstory.album.strategy;
 
 import com.tencent.biz.qqstory.album.model.StoryAlbum;
 import com.tencent.biz.qqstory.album.model.StoryAlbum.PicInfo;
+import com.tencent.biz.qqstory.album.model.strategy.BaseSplitConfig;
 import com.tencent.biz.qqstory.model.item.AddressItem;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import java.util.ArrayList;
@@ -12,11 +13,18 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class CitySplitStrategy
-  extends AbstractSplitStrategy<SplitConfig.BaseSplitConfig>
+  extends AbstractSplitStrategy<BaseSplitConfig>
 {
   public String a(AddressItem paramAddressItem)
   {
-    return "city:" + paramAddressItem.city + " district:" + paramAddressItem.district + " building:" + paramAddressItem.building;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("city:");
+    localStringBuilder.append(paramAddressItem.city);
+    localStringBuilder.append(" district:");
+    localStringBuilder.append(paramAddressItem.district);
+    localStringBuilder.append(" building:");
+    localStringBuilder.append(paramAddressItem.building);
+    return localStringBuilder.toString();
   }
   
   protected List<StoryAlbum> a(List<StoryAlbum.PicInfo> paramList)
@@ -65,7 +73,7 @@ public class CitySplitStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.strategy.CitySplitStrategy
  * JD-Core Version:    0.7.0.1
  */

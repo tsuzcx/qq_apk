@@ -27,8 +27,16 @@ public class WifiSdkHandler
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WifiSdk", 2, "WifiSdkHandler, onReceive resultCode: " + paramFromServiceMsg.getResultCode() + " errorMsg: " + paramFromServiceMsg.getBusinessFailMsg() + " serviceCmd: " + paramToServiceMsg.getServiceCmd());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("WifiSdkHandler, onReceive resultCode: ");
+      localStringBuilder.append(paramFromServiceMsg.getResultCode());
+      localStringBuilder.append(" errorMsg: ");
+      localStringBuilder.append(paramFromServiceMsg.getBusinessFailMsg());
+      localStringBuilder.append(" serviceCmd: ");
+      localStringBuilder.append(paramToServiceMsg.getServiceCmd());
+      QLog.i("WifiSdk", 2, localStringBuilder.toString());
     }
     int i = 0;
     try
@@ -39,7 +47,10 @@ public class WifiSdkHandler
         i = j;
         if (QLog.isColorLevel())
         {
-          QLog.i("WifiSdk", 2, "WifiSdkHandler, onReceive type: " + j);
+          paramToServiceMsg = new StringBuilder();
+          paramToServiceMsg.append("WifiSdkHandler, onReceive type: ");
+          paramToServiceMsg.append(j);
+          QLog.i("WifiSdk", 2, paramToServiceMsg.toString());
           i = j;
         }
       }
@@ -48,14 +59,19 @@ public class WifiSdkHandler
     }
     catch (Exception paramToServiceMsg)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("WifiSdk", 2, "WifiSdkHandler, onReceive exception: " + paramToServiceMsg.getMessage());
+      if (QLog.isColorLevel())
+      {
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("WifiSdkHandler, onReceive exception: ");
+        paramFromServiceMsg.append(paramToServiceMsg.getMessage());
+        QLog.i("WifiSdk", 2, paramFromServiceMsg.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.WifiSdkHandler
  * JD-Core Version:    0.7.0.1
  */

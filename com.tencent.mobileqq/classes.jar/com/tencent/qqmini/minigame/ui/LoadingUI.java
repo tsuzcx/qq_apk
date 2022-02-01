@@ -38,6 +38,8 @@ public class LoadingUI
   private ImageView mCloseView;
   private LinearLayout mDeveloperDescLayout;
   private TextView mDeveloperDescView;
+  private LinearLayout mGameCopyRightLayout;
+  private TextView mGameCopyrightInfo;
   private ImageView mGameFakeFirstFrame;
   private RelativeLayout mGameFakeFirstFrameDownLoadRect;
   private TextView mGameFakeFrameGameName;
@@ -104,7 +106,6 @@ public class LoadingUI
   
   private String getFakeFristFrameUrlByAppid(String paramString1, String paramString2)
   {
-    int i = 0;
     try
     {
       if (!TextUtils.isEmpty(paramString1))
@@ -113,7 +114,9 @@ public class LoadingUI
           return null;
         }
         paramString1 = paramString1.split(";");
-        if ((paramString1 != null) && (paramString1.length > 0)) {
+        if ((paramString1 != null) && (paramString1.length > 0))
+        {
+          int i = 0;
           while (i < paramString1.length)
           {
             String[] arrayOfString = paramString1[i].split("\\|\\|");
@@ -129,6 +132,7 @@ public class LoadingUI
       return null;
     }
     catch (Throwable paramString1) {}
+    return null;
   }
   
   private void initUIComponents()
@@ -139,6 +143,8 @@ public class LoadingUI
       this.mStatusBar = findViewById(R.id.status_bar);
       this.mGameInstruction = ((TextView)findViewById(R.id.game_instruction));
       this.mGameVersionDesc = ((TextView)findViewById(R.id.game_version_desc));
+      this.mGameCopyrightInfo = ((TextView)findViewById(R.id.game_copyright_info));
+      this.mGameCopyRightLayout = ((LinearLayout)findViewById(R.id.game_copyright));
       this.mJumpBtn = ((TextView)findViewById(R.id.jump_btn));
       this.mMoreView = ((ImageView)findViewById(R.id.btn_more_menu));
       this.mCloseView = ((ImageView)findViewById(R.id.btn_close));
@@ -176,63 +182,29 @@ public class LoadingUI
     this.isForeground = true;
     this.mProgressTxt.setText(this.mProgressStr);
     this.mSplashProgressTxt.setText(this.mProgressStr);
-    Object localObject1;
-    Object localObject2;
-    if (this.mMiniAppInfo != null)
+    Object localObject1 = this.mMiniAppInfo;
+    if (localObject1 != null)
     {
-      this.mNameView.setText(this.mMiniAppInfo.name);
+      this.mNameView.setText(((MiniAppInfo)localObject1).name);
       this.mGameFakeFrameGameName.setText(this.mMiniAppInfo.name);
-      if (TextUtils.isEmpty(this.mMiniAppInfo.developerDesc)) {
-        this.mDeveloperDescLayout.setVisibility(8);
-      }
-      for (;;)
+      showGameCopyRight();
+      showDeveloperDesc();
+      showGameVersionDesc();
+      if (!TextUtils.isEmpty(this.mMiniAppInfo.iconUrl))
       {
-        if ((this.mMiniAppInfo.qualifications != null) && (this.mMiniAppInfo.qualifications.size() > 0))
-        {
-          this.mDeveloperDescLayout.setVisibility(8);
-          this.mGameVersionDesc.setVisibility(0);
-          localObject1 = new StringBuilder();
-          int i = 0;
-          for (;;)
-          {
-            if (i < this.mMiniAppInfo.qualifications.size())
-            {
-              if ((i > 0) && (!TextUtils.isEmpty((CharSequence)this.mMiniAppInfo.qualifications.get(i - 1)))) {
-                ((StringBuilder)localObject1).append("\n");
-              }
-              if (!TextUtils.isEmpty((CharSequence)this.mMiniAppInfo.qualifications.get(i))) {
-                ((StringBuilder)localObject1).append((String)this.mMiniAppInfo.qualifications.get(i));
-              }
-              i += 1;
-              continue;
-              this.mDeveloperDescLayout.setVisibility(0);
-              this.mDeveloperDescView.setText("由" + this.mMiniAppInfo.developerDesc + "提供");
-              break;
-            }
-          }
-          this.mGameVersionDesc.setText(((StringBuilder)localObject1).toString());
-          if (!TextUtils.isEmpty(this.mMiniAppInfo.iconUrl))
-          {
-            localObject2 = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-            localObject1 = getContext().getResources().getDrawable(R.drawable.mini_sdk_default_icon);
-            localObject2 = ((MiniAppProxy)localObject2).getDrawable(getContext(), this.mMiniAppInfo.iconUrl, this.iconSize, this.iconSize, (Drawable)localObject1);
-            if (localObject2 != null) {
-              break label386;
-            }
-          }
+        Object localObject2 = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+        localObject1 = getContext().getResources().getDrawable(R.drawable.mini_sdk_default_icon);
+        Context localContext = getContext();
+        String str = this.mMiniAppInfo.iconUrl;
+        int i = this.iconSize;
+        localObject2 = ((MiniAppProxy)localObject2).getDrawable(localContext, str, i, i, (Drawable)localObject1);
+        if (localObject2 != null) {
+          localObject1 = localObject2;
         }
+        this.mLogoView.setImageDrawable((Drawable)localObject1);
+        this.mGameFakeGameLogo.setImageDrawable((Drawable)localObject1);
       }
-    }
-    for (;;)
-    {
-      this.mLogoView.setImageDrawable((Drawable)localObject1);
-      this.mGameFakeGameLogo.setImageDrawable((Drawable)localObject1);
       checkShowFakeFirstFrame();
-      return;
-      this.mGameVersionDesc.setVisibility(4);
-      break;
-      label386:
-      localObject1 = localObject2;
     }
   }
   
@@ -240,6 +212,60 @@ public class LoadingUI
   {
     this.isForeground = false;
     setVisibility(8);
+  }
+  
+  private void showDeveloperDesc()
+  {
+    if (TextUtils.isEmpty(this.mMiniAppInfo.developerDesc))
+    {
+      this.mDeveloperDescLayout.setVisibility(8);
+      return;
+    }
+    this.mDeveloperDescLayout.setVisibility(0);
+    TextView localTextView = this.mDeveloperDescView;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("由");
+    localStringBuilder.append(this.mMiniAppInfo.developerDesc);
+    localStringBuilder.append("提供");
+    localTextView.setText(localStringBuilder.toString());
+  }
+  
+  private void showGameCopyRight()
+  {
+    if (TextUtils.isEmpty(this.mMiniAppInfo.gameCopyrightInfo))
+    {
+      this.mGameCopyRightLayout.setVisibility(8);
+      this.mDeveloperDescLayout.setVisibility(0);
+      return;
+    }
+    this.mGameCopyRightLayout.setVisibility(0);
+    this.mDeveloperDescLayout.setVisibility(0);
+    this.mGameCopyrightInfo.setText(this.mMiniAppInfo.gameCopyrightInfo);
+  }
+  
+  private void showGameVersionDesc()
+  {
+    if ((this.mMiniAppInfo.qualifications != null) && (this.mMiniAppInfo.qualifications.size() > 0))
+    {
+      this.mDeveloperDescLayout.setVisibility(8);
+      Object localObject = this.mGameVersionDesc;
+      int i = 0;
+      ((TextView)localObject).setVisibility(0);
+      localObject = new StringBuilder();
+      while (i < this.mMiniAppInfo.qualifications.size())
+      {
+        if ((i > 0) && (!TextUtils.isEmpty((CharSequence)this.mMiniAppInfo.qualifications.get(i - 1)))) {
+          ((StringBuilder)localObject).append("\n");
+        }
+        if (!TextUtils.isEmpty((CharSequence)this.mMiniAppInfo.qualifications.get(i))) {
+          ((StringBuilder)localObject).append((String)this.mMiniAppInfo.qualifications.get(i));
+        }
+        i += 1;
+      }
+      this.mGameVersionDesc.setText(((StringBuilder)localObject).toString());
+      return;
+    }
+    this.mGameVersionDesc.setVisibility(4);
   }
   
   private void showStartView()
@@ -267,8 +293,14 @@ public class LoadingUI
   
   public void setProgressInt(float paramFloat)
   {
-    this.mGameFakeFrameProgres.setProgress((int)(paramFloat * 100.0F));
-    this.mGameFakeFrameProgressText.setText((int)(100.0F * paramFloat) + "%");
+    Object localObject = this.mGameFakeFrameProgres;
+    int i = (int)(paramFloat * 100.0F);
+    ((ProgressBar)localObject).setProgress(i);
+    localObject = this.mGameFakeFrameProgressText;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(i);
+    localStringBuilder.append("%");
+    ((TextView)localObject).setText(localStringBuilder.toString());
   }
   
   public void setProgressTxt(String paramString)
@@ -291,7 +323,7 @@ public class LoadingUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.ui.LoadingUI
  * JD-Core Version:    0.7.0.1
  */

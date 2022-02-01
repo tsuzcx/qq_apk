@@ -30,18 +30,19 @@ public final class FeedsProtocol$VideoItem
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 64, 72, 80, 90, 96, 104, 112 }, new String[] { "id", "user_info", "vid", "room_name", "rpt_msg_rich_title", "video_cover_url", "room_cover_url", "total_view", "total_money", "video_end_time", "jump_url", "anchor_type", "video_start_time", "live_duration_time" }, new Object[] { localByteStringMicro1, null, localByteStringMicro2, localByteStringMicro3, null, localByteStringMicro4, localByteStringMicro5, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro6, Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0) }, VideoItem.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 64, 72, 80, 90, 96, 104, 112 }, new String[] { "id", "user_info", "vid", "room_name", "rpt_msg_rich_title", "video_cover_url", "room_cover_url", "total_view", "total_money", "video_end_time", "jump_url", "anchor_type", "video_start_time", "live_duration_time" }, new Object[] { localByteStringMicro1, null, localByteStringMicro2, localByteStringMicro3, null, localByteStringMicro4, localByteStringMicro5, localInteger, localInteger, localInteger, localByteStringMicro6, localInteger, Long.valueOf(0L), localInteger }, VideoItem.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.now.FeedsProtocol.VideoItem
  * JD-Core Version:    0.7.0.1
  */

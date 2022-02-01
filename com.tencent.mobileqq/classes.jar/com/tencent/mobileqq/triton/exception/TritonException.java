@@ -40,12 +40,16 @@ public class TritonException
   @NotNull
   public String getMessage()
   {
-    return this.error + ' ' + super.getMessage();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.error);
+    localStringBuilder.append(' ');
+    localStringBuilder.append(super.getMessage());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.exception.TritonException
  * JD-Core Version:    0.7.0.1
  */

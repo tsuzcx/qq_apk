@@ -51,120 +51,111 @@ public class QShadowRepository
   public static String getStringFromStream(InputStream paramInputStream)
   {
     // Byte code:
-    //   0: new 101	java/io/BufferedReader
-    //   3: dup
-    //   4: new 103	java/io/InputStreamReader
+    //   0: aconst_null
+    //   1: astore_3
+    //   2: aconst_null
+    //   3: astore_1
+    //   4: new 101	java/io/BufferedReader
     //   7: dup
-    //   8: aload_0
-    //   9: invokespecial 106	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   12: invokespecial 109	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   15: astore_1
-    //   16: aload_1
-    //   17: astore_0
-    //   18: new 111	java/lang/StringBuilder
-    //   21: dup
-    //   22: ldc 113
-    //   24: invokespecial 116	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   27: astore_2
-    //   28: aload_1
-    //   29: astore_0
-    //   30: aload_1
+    //   8: new 103	java/io/InputStreamReader
+    //   11: dup
+    //   12: aload_0
+    //   13: invokespecial 106	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   16: invokespecial 109	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   19: astore_0
+    //   20: new 111	java/lang/StringBuilder
+    //   23: dup
+    //   24: ldc 113
+    //   26: invokespecial 116	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   29: astore_1
+    //   30: aload_0
     //   31: invokevirtual 120	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   34: astore_3
-    //   35: aload_3
-    //   36: ifnull +34 -> 70
+    //   34: astore_2
+    //   35: aload_2
+    //   36: ifnull +12 -> 48
     //   39: aload_1
-    //   40: astore_0
-    //   41: aload_2
-    //   42: aload_3
-    //   43: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   46: pop
-    //   47: goto -19 -> 28
-    //   50: astore_2
-    //   51: aload_1
-    //   52: astore_0
-    //   53: aload_2
-    //   54: invokevirtual 127	java/lang/Exception:printStackTrace	()V
+    //   40: aload_2
+    //   41: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   44: pop
+    //   45: goto -15 -> 30
+    //   48: aload_1
+    //   49: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   52: astore_1
+    //   53: aload_0
+    //   54: invokevirtual 130	java/io/BufferedReader:close	()V
     //   57: aload_1
-    //   58: ifnull +7 -> 65
-    //   61: aload_1
-    //   62: invokevirtual 130	java/io/BufferedReader:close	()V
-    //   65: ldc 113
-    //   67: astore_2
-    //   68: aload_2
-    //   69: areturn
-    //   70: aload_1
-    //   71: astore_0
-    //   72: aload_2
-    //   73: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   76: astore_2
-    //   77: aload_2
+    //   58: areturn
+    //   59: astore_0
+    //   60: aload_0
+    //   61: invokevirtual 133	java/io/IOException:printStackTrace	()V
+    //   64: aload_1
+    //   65: areturn
+    //   66: astore_2
+    //   67: aload_0
+    //   68: astore_1
+    //   69: aload_2
+    //   70: astore_0
+    //   71: goto +39 -> 110
+    //   74: astore_2
+    //   75: goto +10 -> 85
     //   78: astore_0
-    //   79: aload_0
-    //   80: astore_2
-    //   81: aload_1
-    //   82: ifnull -14 -> 68
-    //   85: aload_1
-    //   86: invokevirtual 130	java/io/BufferedReader:close	()V
-    //   89: aload_0
-    //   90: areturn
-    //   91: astore_1
-    //   92: aload_1
-    //   93: invokevirtual 134	java/io/IOException:printStackTrace	()V
-    //   96: aload_0
-    //   97: areturn
-    //   98: astore_0
-    //   99: aload_0
-    //   100: invokevirtual 134	java/io/IOException:printStackTrace	()V
-    //   103: goto -38 -> 65
-    //   106: astore_1
-    //   107: aconst_null
-    //   108: astore_0
-    //   109: aload_0
-    //   110: ifnull +7 -> 117
-    //   113: aload_0
-    //   114: invokevirtual 130	java/io/BufferedReader:close	()V
-    //   117: aload_1
-    //   118: athrow
-    //   119: astore_0
-    //   120: aload_0
-    //   121: invokevirtual 134	java/io/IOException:printStackTrace	()V
-    //   124: goto -7 -> 117
-    //   127: astore_1
-    //   128: goto -19 -> 109
-    //   131: astore_2
-    //   132: aconst_null
-    //   133: astore_1
-    //   134: goto -83 -> 51
+    //   79: goto +31 -> 110
+    //   82: astore_2
+    //   83: aload_3
+    //   84: astore_0
+    //   85: aload_0
+    //   86: astore_1
+    //   87: aload_2
+    //   88: invokevirtual 134	java/lang/Exception:printStackTrace	()V
+    //   91: aload_0
+    //   92: ifnull +15 -> 107
+    //   95: aload_0
+    //   96: invokevirtual 130	java/io/BufferedReader:close	()V
+    //   99: ldc 113
+    //   101: areturn
+    //   102: astore_0
+    //   103: aload_0
+    //   104: invokevirtual 133	java/io/IOException:printStackTrace	()V
+    //   107: ldc 113
+    //   109: areturn
+    //   110: aload_1
+    //   111: ifnull +15 -> 126
+    //   114: aload_1
+    //   115: invokevirtual 130	java/io/BufferedReader:close	()V
+    //   118: goto +8 -> 126
+    //   121: astore_1
+    //   122: aload_1
+    //   123: invokevirtual 133	java/io/IOException:printStackTrace	()V
+    //   126: goto +5 -> 131
+    //   129: aload_0
+    //   130: athrow
+    //   131: goto -2 -> 129
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	137	0	paramInputStream	InputStream
-    //   15	71	1	localBufferedReader	java.io.BufferedReader
-    //   91	2	1	localIOException	java.io.IOException
-    //   106	12	1	localObject1	Object
-    //   127	1	1	localObject2	Object
-    //   133	1	1	localObject3	Object
-    //   27	15	2	localStringBuilder	java.lang.StringBuilder
-    //   50	4	2	localException1	java.lang.Exception
-    //   67	14	2	localObject4	Object
-    //   131	1	2	localException2	java.lang.Exception
-    //   34	9	3	str	String
+    //   0	134	0	paramInputStream	InputStream
+    //   3	112	1	localObject1	Object
+    //   121	2	1	localIOException	java.io.IOException
+    //   34	7	2	str	String
+    //   66	4	2	localObject2	Object
+    //   74	1	2	localException1	java.lang.Exception
+    //   82	6	2	localException2	java.lang.Exception
+    //   1	83	3	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   18	28	50	java/lang/Exception
-    //   30	35	50	java/lang/Exception
-    //   41	47	50	java/lang/Exception
-    //   72	77	50	java/lang/Exception
-    //   85	89	91	java/io/IOException
-    //   61	65	98	java/io/IOException
-    //   0	16	106	finally
-    //   113	117	119	java/io/IOException
-    //   18	28	127	finally
-    //   30	35	127	finally
-    //   41	47	127	finally
-    //   53	57	127	finally
-    //   72	77	127	finally
-    //   0	16	131	java/lang/Exception
+    //   53	57	59	java/io/IOException
+    //   20	30	66	finally
+    //   30	35	66	finally
+    //   39	45	66	finally
+    //   48	53	66	finally
+    //   20	30	74	java/lang/Exception
+    //   30	35	74	java/lang/Exception
+    //   39	45	74	java/lang/Exception
+    //   48	53	74	java/lang/Exception
+    //   4	20	78	finally
+    //   87	91	78	finally
+    //   4	20	82	java/lang/Exception
+    //   95	99	102	java/io/IOException
+    //   114	118	121	java/io/IOException
   }
   
   public static String getUuidFromFile(File paramFile)
@@ -206,7 +197,7 @@ public class QShadowRepository
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qshadow.utils.QShadowRepository
  * JD-Core Version:    0.7.0.1
  */

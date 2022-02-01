@@ -3,9 +3,10 @@ package com.tencent.biz.pubaccount.troopbarassit;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -39,8 +40,12 @@ class TroopBarAssistantManager$2
       }
     }
     localObject1 = ((JSONArray)localObject1).toString();
-    if (ReadInJoyHelper.b()) {
-      QLog.i("TroopBarAssistantManager", 2, "saveNewMsgSet, save newMsgStr into sp:" + (String)localObject1);
+    if (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("saveNewMsgSet, save newMsgStr into sp:");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.i("TroopBarAssistantManager", 2, ((StringBuilder)localObject2).toString());
     }
     localObject2 = this.a.getApp().getSharedPreferences(this.a.getAccount(), 0).edit();
     ((SharedPreferences.Editor)localObject2).putString("troopbar_assist_new_unread_list", (String)localObject1);
@@ -49,7 +54,7 @@ class TroopBarAssistantManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager.2
  * JD-Core Version:    0.7.0.1
  */

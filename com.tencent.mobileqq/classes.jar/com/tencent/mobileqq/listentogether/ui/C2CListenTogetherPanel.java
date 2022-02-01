@@ -17,7 +17,7 @@ public class C2CListenTogetherPanel
   public void a()
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof FriendChatPie)) {
-      ((FriendChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie).bi();
+      ((FriendChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie).ap();
     }
   }
   
@@ -52,22 +52,23 @@ public class C2CListenTogetherPanel
   
   public void k()
   {
-    if ((AIOMusicSkin.a().m_()) && (!QQTheme.e())) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if ((AIOMusicSkin.a().n_()) && (!QQTheme.f())) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    QLog.d("BaseListenTogetherPanel_C2C", 1, String.format("[music-panel] onVasSkinStateChange mutualLevel=%d vasSkinShowing [%b-->%b]", new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$UiData.f), Boolean.valueOf(this.e), Boolean.valueOf(bool) }));
+    if (bool != this.e)
     {
-      QLog.d("BaseListenTogetherPanel_C2C", 1, String.format("[music-panel] onVasSkinStateChange mutualLevel=%d vasSkinShowing [%b-->%b]", new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$UiData.f), Boolean.valueOf(this.e), Boolean.valueOf(bool) }));
-      if (bool != this.e)
-      {
-        this.e = bool;
-        a(this.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$UiData);
-      }
-      return;
+      this.e = bool;
+      a(this.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$UiData);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ui.C2CListenTogetherPanel
  * JD-Core Version:    0.7.0.1
  */

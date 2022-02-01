@@ -61,17 +61,20 @@ public class AudioBufferPrintHelper
       }
       if (!paramString1.createNewFile())
       {
-        Log.e("DebugUtils", "export: 创建输出文件失败:" + paramString1.getAbsolutePath());
+        paramString2 = new StringBuilder();
+        paramString2.append("export: 创建输出文件失败:");
+        paramString2.append(paramString1.getAbsolutePath());
+        Log.e("DebugUtils", paramString2.toString());
         return null;
       }
+      return paramString1;
     }
     catch (IOException paramString1)
     {
       paramString1.printStackTrace();
       Log.e("DebugUtils", "export: 创建输出文件失败, e = ", paramString1);
-      return null;
     }
-    return paramString1;
+    return null;
   }
   
   private static void deleteAllFiles(File paramFile)
@@ -82,28 +85,20 @@ public class AudioBufferPrintHelper
     }
     int j = paramFile.length;
     int i = 0;
-    label15:
-    File localFile;
-    if (i < j)
+    while (i < j)
     {
-      localFile = paramFile[i];
-      if (!localFile.isDirectory()) {
-        break label47;
-      }
-      deleteAllFiles(localFile);
-      localFile.delete();
-    }
-    for (;;)
-    {
-      i += 1;
-      break label15;
-      break;
-      label47:
-      if (localFile.exists())
+      File localFile = paramFile[i];
+      if (localFile.isDirectory())
       {
         deleteAllFiles(localFile);
         localFile.delete();
       }
+      else if (localFile.exists())
+      {
+        deleteAllFiles(localFile);
+        localFile.delete();
+      }
+      i += 1;
     }
   }
   
@@ -144,19 +139,20 @@ public class AudioBufferPrintHelper
   public void startDelay(long paramLong, int paramInt)
   {
     initFlag(paramInt);
-    if (System.currentTimeMillis() >= this.startTimeMs + paramLong) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (System.currentTimeMillis() >= this.startTimeMs + paramLong) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.enable = bool;
+    if (this.enable)
     {
-      this.enable = bool;
-      if (this.enable)
-      {
-        paramInt = this.maxPrintCount;
-        this.maxPrintCount = (paramInt - 1);
-        if (paramInt < 0) {
-          this.enable = false;
-        }
+      paramInt = this.maxPrintCount;
+      this.maxPrintCount = (paramInt - 1);
+      if (paramInt < 0) {
+        this.enable = false;
       }
-      return;
     }
   }
   
@@ -185,7 +181,7 @@ public class AudioBufferPrintHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tav.report.AudioBufferPrintHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -12,6 +12,7 @@ import com.tencent.mobileqq.fragment.QPublicBaseFragment;
 import com.tencent.mobileqq.qcircle.api.event.HostActivityResultEvent;
 import com.tencent.mobileqq.qcircle.api.helper.HostUIHelper;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 
@@ -23,8 +24,8 @@ public class QCircleHostTransFragment
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    boolean bool = false;
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    boolean bool = false;
     if (paramIntent != null) {
       bool = true;
     }
@@ -37,7 +38,7 @@ public class QCircleHostTransFragment
     if (ImmersiveUtils.isSupporImmersive() != 0)
     {
       ((QPublicFragmentActivity)getActivity()).mSystemBarComp.init();
-      ((QPublicFragmentActivity)getActivity()).mSystemBarComp.setStatusBarColor(getResources().getColor(2131167305));
+      ((QPublicFragmentActivity)getActivity()).mSystemBarComp.setStatusBarColor(getResources().getColor(2131167333));
     }
     if (getActivity() != null) {
       this.a = getActivity().hashCode();
@@ -45,12 +46,13 @@ public class QCircleHostTransFragment
     if (HostUIHelper.getShadowTopContext() != null) {
       this.b = HostUIHelper.getShadowTopContext().hashCode();
     }
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, null);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.fragment.QCircleHostTransFragment
  * JD-Core Version:    0.7.0.1
  */

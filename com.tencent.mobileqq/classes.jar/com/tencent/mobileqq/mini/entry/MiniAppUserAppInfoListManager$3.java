@@ -38,20 +38,23 @@ class MiniAppUserAppInfoListManager$3
           ((DesktopDataManager)paramJSONObject.getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER)).removeRedDotData(this.val$miniAppInfo.appId);
         }
       }
-      for (;;)
+      else
       {
-        QLog.e("MiniAppUserAppInfoListManager", 2, "sendDelUserAppRequest, success. delete appInfo: " + this.val$miniAppInfo);
-        return;
         this.this$0.removeRedDotData(this.val$miniAppInfo.appId);
       }
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("sendDelUserAppRequest, success. delete appInfo: ");
+      paramJSONObject.append(this.val$miniAppInfo);
+      QLog.e("MiniAppUserAppInfoListManager", 2, paramJSONObject.toString());
+      return;
     }
     QLog.e("MiniAppUserAppInfoListManager", 1, "sendDelUserAppRequest, failed to delete miniapp!");
-    QQToast.a(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131706846), 0).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131706868), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUserAppInfoListManager.3
  * JD-Core Version:    0.7.0.1
  */

@@ -23,50 +23,89 @@ public class WsCommentPresenter$CommentEventReceiver
   
   public void a(@NonNull WsCommentPresenter paramWsCommentPresenter, @NonNull WSCommentEvent paramWSCommentEvent)
   {
-    WSLog.c("comment", "onEvent,commentEvent.mEventAction:" + paramWSCommentEvent.jdField_a_of_type_Int + ",WSHomeFragment.mCurrentPageIndex:" + WSHomeFragment.jdField_a_of_type_Int + ",mCurrentPageIndex:" + this.jdField_a_of_type_Int);
-    if (WSHomeFragment.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {
-      WSLog.d("comment", "commentPresenter 's hashCode:" + paramWsCommentPresenter.hashCode() + ", 页面不对,不响应!");
-    }
-    do
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onEvent,commentEvent.mEventAction:");
+    localStringBuilder.append(paramWSCommentEvent.jdField_a_of_type_Int);
+    localStringBuilder.append(",WSHomeFragment.mCurrentPageIndex:");
+    localStringBuilder.append(WSHomeFragment.jdField_a_of_type_Int);
+    localStringBuilder.append(",mCurrentPageIndex:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    WSLog.c("comment", localStringBuilder.toString());
+    if (WSHomeFragment.jdField_a_of_type_Int != this.jdField_a_of_type_Int)
     {
+      paramWSCommentEvent = new StringBuilder();
+      paramWSCommentEvent.append("commentPresenter 's hashCode:");
+      paramWSCommentEvent.append(paramWsCommentPresenter.hashCode());
+      paramWSCommentEvent.append(", 页面不对,不响应!");
+      WSLog.d("comment", paramWSCommentEvent.toString());
       return;
-      WSLog.c("comment", "commentPresenter 's hashCode:" + paramWsCommentPresenter.hashCode() + ", 页面正确,开始响应~");
-      switch (paramWSCommentEvent.jdField_a_of_type_Int)
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("commentPresenter 's hashCode:");
+    localStringBuilder.append(paramWsCommentPresenter.hashCode());
+    localStringBuilder.append(", 页面正确,开始响应~");
+    WSLog.c("comment", localStringBuilder.toString());
+    int i = paramWSCommentEvent.jdField_a_of_type_Int;
+    if (i != 1)
+    {
+      if (i != 2)
       {
-      case 3: 
-      case 5: 
-      default: 
-        WSLog.b("comment", "default process,commentEvent.mEventAction:" + paramWSCommentEvent.jdField_a_of_type_Int);
-        return;
-      case 1: 
-        paramWsCommentPresenter.b();
-        return;
-      case 2: 
-        WsCommentPresenter.a(paramWsCommentPresenter);
-        return;
-      case 4: 
+        if (i != 4)
+        {
+          if (i != 6)
+          {
+            paramWsCommentPresenter = new StringBuilder();
+            paramWsCommentPresenter.append("default process,commentEvent.mEventAction:");
+            paramWsCommentPresenter.append(paramWSCommentEvent.jdField_a_of_type_Int);
+            WSLog.b("comment", paramWsCommentPresenter.toString());
+            return;
+          }
+          paramWsCommentPresenter.a((Object[])paramWSCommentEvent.jdField_a_of_type_JavaLangObject);
+          return;
+        }
         if ((paramWSCommentEvent.jdField_a_of_type_JavaLangObject instanceof Object[]))
         {
           paramWSCommentEvent = (Object[])paramWSCommentEvent.jdField_a_of_type_JavaLangObject;
-          int i = ((Integer)paramWSCommentEvent[0]).intValue();
+          i = ((Integer)paramWSCommentEvent[0]).intValue();
           paramWsCommentPresenter.a(i);
           paramWSCommentEvent = ((WSVerticalItemData)paramWSCommentEvent[1]).a();
-          WSLog.c("comment", "setCurrentFeed , feedId:" + paramWSCommentEvent.id + ", position:" + i + ",feed desc:" + paramWSCommentEvent.feed_desc);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("setCurrentFeed , feedId:");
+          localStringBuilder.append(paramWSCommentEvent.id);
+          localStringBuilder.append(", position:");
+          localStringBuilder.append(i);
+          localStringBuilder.append(",feed desc:");
+          localStringBuilder.append(paramWSCommentEvent.feed_desc);
+          WSLog.c("comment", localStringBuilder.toString());
           paramWsCommentPresenter.a(paramWSCommentEvent);
         }
-        QZLog.w(this.TAG, "event page change, position:" + WsCommentPresenter.b(paramWsCommentPresenter) + " feedId:" + WsCommentPresenter.a(paramWsCommentPresenter));
+        paramWSCommentEvent = this.TAG;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("event page change, position:");
+        localStringBuilder.append(WsCommentPresenter.b(paramWsCommentPresenter));
+        localStringBuilder.append(" feedId:");
+        localStringBuilder.append(WsCommentPresenter.a(paramWsCommentPresenter));
+        QZLog.w(paramWSCommentEvent, localStringBuilder.toString());
         WsCommentPresenter.a(paramWsCommentPresenter, null);
         WsCommentPresenter.a(paramWsCommentPresenter, "");
         WsCommentPresenter.a(paramWsCommentPresenter, 0L);
         WsCommentPresenter.a(paramWsCommentPresenter, false);
         paramWSCommentEvent = WsCommentPresenter.a(paramWsCommentPresenter);
+        if ((WsCommentPresenter.c(paramWsCommentPresenter)) && (paramWSCommentEvent != null))
+        {
+          paramWsCommentPresenter = paramWSCommentEvent.a();
+          paramWsCommentPresenter.removeMessages(11);
+          paramWsCommentPresenter.sendMessageDelayed(paramWsCommentPresenter.obtainMessage(11), 20L);
+        }
       }
-    } while ((!WsCommentPresenter.c(paramWsCommentPresenter)) || (paramWSCommentEvent == null));
-    paramWsCommentPresenter = paramWSCommentEvent.a();
-    paramWsCommentPresenter.removeMessages(11);
-    paramWsCommentPresenter.sendMessageDelayed(paramWsCommentPresenter.obtainMessage(11), 20L);
-    return;
-    paramWsCommentPresenter.a((Object[])paramWSCommentEvent.jdField_a_of_type_JavaLangObject);
+      else
+      {
+        WsCommentPresenter.a(paramWsCommentPresenter);
+      }
+    }
+    else {
+      paramWsCommentPresenter.b();
+    }
   }
   
   public Class acceptEventClass()
@@ -76,7 +115,7 @@ public class WsCommentPresenter$CommentEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentPresenter.CommentEventReceiver
  * JD-Core Version:    0.7.0.1
  */

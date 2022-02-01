@@ -19,25 +19,27 @@ public class ScrollVelometer
   
   public void a(int paramInt)
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
-    {
+    if (!this.jdField_a_of_type_Boolean) {
       return;
-      this.b += paramInt;
-      if (this.jdField_a_of_type_Long == 0L)
-      {
-        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-        return;
-      }
-    } while (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long <= this.c);
-    ScrollVelometer.SpeedListener localSpeedListener = this.jdField_a_of_type_ComTencentMobileqqHotpicScrollVelometer$SpeedListener;
-    if (this.b > this.jdField_a_of_type_Int) {}
-    for (boolean bool = true;; bool = false)
+    }
+    this.b += paramInt;
+    if (this.jdField_a_of_type_Long == 0L)
     {
+      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+      return;
+    }
+    if (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long > this.c)
+    {
+      ScrollVelometer.SpeedListener localSpeedListener = this.jdField_a_of_type_ComTencentMobileqqHotpicScrollVelometer$SpeedListener;
+      boolean bool;
+      if (this.b > this.jdField_a_of_type_Int) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       localSpeedListener.a(bool);
       this.jdField_a_of_type_Long = 0L;
       this.b = 0;
-      return;
     }
   }
   
@@ -48,7 +50,7 @@ public class ScrollVelometer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.ScrollVelometer
  * JD-Core Version:    0.7.0.1
  */

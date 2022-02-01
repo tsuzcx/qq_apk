@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.voicetextpanel.ui;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import com.tencent.mobileqq.activity.aio.voicetextpanel.listeners.VoiceTextScrollerListener;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class VoiceTextEditScrollerView$2
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   VoiceTextEditScrollerView$2(VoiceTextEditScrollerView paramVoiceTextEditScrollerView, int paramInt) {}
   
@@ -15,14 +15,13 @@ class VoiceTextEditScrollerView$2
   {
     if (VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView) != null)
     {
-      if (this.jdField_a_of_type_Int == 0) {
+      if (this.jdField_a_of_type_Int == 0)
+      {
         VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView).c();
+        return;
       }
+      VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView).b();
     }
-    else {
-      return;
-    }
-    VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView).b();
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -31,7 +30,7 @@ class VoiceTextEditScrollerView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextEditScrollerView.2
  * JD-Core Version:    0.7.0.1
  */

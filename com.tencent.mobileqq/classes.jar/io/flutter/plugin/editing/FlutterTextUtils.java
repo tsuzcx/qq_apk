@@ -18,23 +18,18 @@ class FlutterTextUtils
   
   public int getOffsetAfter(CharSequence paramCharSequence, int paramInt)
   {
-    int n = 0;
-    int i = 0;
-    int i3 = paramCharSequence.length();
-    int i1 = i3 - 1;
-    if (paramInt >= i1) {
-      i = i3;
+    int i4 = paramCharSequence.length();
+    int n = i4 - 1;
+    if (paramInt >= n) {
+      return i4;
     }
-    int k;
-    int j;
-    int m;
-    do
-    {
-      return i;
-      k = Character.codePointAt(paramCharSequence, paramInt);
-      j = Character.charCount(k);
-      m = paramInt + j;
-    } while (m == 0);
+    int k = Character.codePointAt(paramCharSequence, paramInt);
+    int j = Character.charCount(k);
+    int m = paramInt + j;
+    int i = 0;
+    if (m == 0) {
+      return 0;
+    }
     if (k == 10)
     {
       i = j;
@@ -45,21 +40,24 @@ class FlutterTextUtils
     }
     if (isRegionalIndicatorSymbol(k))
     {
-      if ((m >= i1) || (!isRegionalIndicatorSymbol(Character.codePointAt(paramCharSequence, m)))) {
-        return m;
-      }
-      k = paramInt;
-      i = n;
-      while ((k > 0) && (isRegionalIndicatorSymbol(Character.codePointBefore(paramCharSequence, paramInt))))
+      if (m < n)
       {
-        k -= Character.charCount(Character.codePointBefore(paramCharSequence, paramInt));
-        i += 1;
+        if (!isRegionalIndicatorSymbol(Character.codePointAt(paramCharSequence, m))) {
+          return m;
+        }
+        k = paramInt;
+        while ((k > 0) && (isRegionalIndicatorSymbol(Character.codePointBefore(paramCharSequence, paramInt))))
+        {
+          k -= Character.charCount(Character.codePointBefore(paramCharSequence, paramInt));
+          i += 1;
+        }
+        k = j;
+        if (i % 2 == 0) {
+          k = j + 2;
+        }
+        return paramInt + k;
       }
-      k = j;
-      if (i % 2 == 0) {
-        k = j + 2;
-      }
-      return paramInt + k;
+      return m;
     }
     i = j;
     if (isKeycapBase(k)) {
@@ -69,7 +67,7 @@ class FlutterTextUtils
     {
       k = Character.codePointBefore(paramCharSequence, m);
       j = m + Character.charCount(k);
-      if ((j < i3) && (isVariationSelector(k)))
+      if ((j < i4) && (isVariationSelector(k)))
       {
         m = Character.codePointAt(paramCharSequence, j);
         j = i;
@@ -77,149 +75,135 @@ class FlutterTextUtils
           j = i + (Character.charCount(k) + Character.charCount(m));
         }
       }
-      for (;;)
+      else
       {
-        return paramInt + j;
         j = i;
         if (isKeycapBase(k)) {
           j = i + Character.charCount(k);
         }
       }
+      return paramInt + j;
     }
-    int i2;
+    j = i;
     if (isEmoji(k))
     {
-      i2 = 0;
-      j = m;
+      int i2 = 0;
+      j = k;
       n = 0;
-      i1 = i;
-      m = n;
-      i = i1;
-      if (n != 0)
+      int i3 = i;
+      label651:
+      do
       {
-        i = Character.charCount(k) + i2 + 1 + i1;
-        m = 0;
-      }
-      if (isEmojiModifier(k)) {
-        j = i;
-      }
-    }
-    for (;;)
-    {
-      return paramInt + j;
-      n = j;
-      if (j < i3)
-      {
-        i1 = Character.codePointAt(paramCharSequence, j);
-        j += Character.charCount(i1);
-        if (i1 == 8419)
+        int i1 = n;
+        i = i3;
+        if (n != 0)
         {
-          k = Character.codePointBefore(paramCharSequence, j);
-          j = Character.charCount(k) + j;
-          if ((j < i3) && (isVariationSelector(k)))
+          i = i3 + (Character.charCount(j) + i2 + 1);
+          i1 = 0;
+        }
+        if (isEmojiModifier(j))
+        {
+          j = i;
+          break;
+        }
+        n = i1;
+        k = m;
+        if (m < i4)
+        {
+          i2 = Character.codePointAt(paramCharSequence, m);
+          m += Character.charCount(i2);
+          if (i2 == 8419)
           {
-            m = Character.codePointAt(paramCharSequence, j);
-            j = i;
-            if (isKeycapBase(m)) {
-              j = i + (Character.charCount(k) + Character.charCount(m));
+            k = Character.codePointBefore(paramCharSequence, m);
+            j = m + Character.charCount(k);
+            if ((j < i4) && (isVariationSelector(k)))
+            {
+              m = Character.codePointAt(paramCharSequence, j);
+              j = i;
+              if (isKeycapBase(m)) {
+                j = i + (Character.charCount(k) + Character.charCount(m));
+              }
             }
-          }
-          for (;;)
-          {
+            else
+            {
+              j = i;
+              if (isKeycapBase(k)) {
+                j = i + Character.charCount(k);
+              }
+            }
             return paramInt + j;
-            j = i;
-            if (isKeycapBase(k)) {
-              j = i + Character.charCount(k);
-            }
           }
-        }
-        if (isEmojiModifier(i1))
-        {
-          j = i + (Character.charCount(i1) + 0);
-          continue;
-        }
-        if (isVariationSelector(i1))
-        {
-          j = i + (Character.charCount(i1) + 0);
-          continue;
-        }
-        k = i1;
-        n = j;
-        if (i1 == 8205)
-        {
-          n = Character.codePointAt(paramCharSequence, j);
-          m = Character.charCount(n) + j;
-          if ((m < i3) && (isVariationSelector(n)))
+          if (isEmojiModifier(i2)) {}
+          while (isVariationSelector(i2))
           {
-            k = Character.codePointAt(paramCharSequence, m);
-            n = Character.charCount(k);
-            m += Character.charCount(k);
-            i1 = 1;
-            j = i;
-            if (m >= i3) {
-              continue;
-            }
-            j = i;
-            if (i1 == 0) {
-              continue;
-            }
-            j = i;
-            if (!isEmoji(k)) {
-              continue;
-            }
-            i2 = n;
-            j = m;
-            n = i1;
-            i1 = i;
+            j = i + (Character.charCount(i2) + 0);
             break;
           }
-          k = 1;
-          j = n;
+          n = i1;
+          j = i2;
+          k = m;
+          if (i2 == 8205)
+          {
+            j = Character.codePointAt(paramCharSequence, m);
+            k = m + Character.charCount(j);
+            if ((k < i4) && (isVariationSelector(j)))
+            {
+              j = Character.codePointAt(paramCharSequence, k);
+              i1 = Character.charCount(j);
+              m = k + Character.charCount(j);
+              k = j;
+              n = 1;
+              break label651;
+            }
+            n = 1;
+          }
         }
-      }
-      for (;;)
-      {
-        i1 = k;
-        n = 0;
+        i1 = 0;
+        m = k;
         k = j;
-        break;
-        i1 = m;
+        if (m >= i4)
+        {
+          j = i;
+          break;
+        }
+        j = i;
+        if (n == 0) {
+          break;
+        }
+        i3 = i;
         j = k;
-        m = n;
-        k = i1;
-      }
+        i2 = i1;
+      } while (isEmoji(k));
       j = i;
     }
+    return paramInt + j;
   }
   
   public int getOffsetBefore(CharSequence paramCharSequence, int paramInt)
   {
     int j = 1;
-    int i3 = 0;
-    if (paramInt <= 1) {}
-    int i1;
-    int i;
-    int k;
-    do
-    {
+    int i4 = 0;
+    if (paramInt <= 1) {
       return 0;
-      i1 = Character.codePointBefore(paramCharSequence, paramInt);
-      i = Character.charCount(i1);
-      k = paramInt - i;
-    } while (k == 0);
+    }
+    int i1 = Character.codePointBefore(paramCharSequence, paramInt);
+    int i = Character.charCount(i1);
+    int n = paramInt - i;
+    if (n == 0) {
+      return 0;
+    }
     if (i1 == 10)
     {
       j = i;
-      if (Character.codePointBefore(paramCharSequence, k) == 13) {
+      if (Character.codePointBefore(paramCharSequence, n) == 13) {
         j = i + 1;
       }
       return paramInt - j;
     }
-    int m;
     if (isRegionalIndicatorSymbol(i1))
     {
-      m = Character.codePointBefore(paramCharSequence, k);
-      k -= Character.charCount(m);
+      m = Character.codePointBefore(paramCharSequence, n);
+      k = n - Character.charCount(m);
       while ((k > 0) && (isRegionalIndicatorSymbol(m)))
       {
         m = Character.codePointBefore(paramCharSequence, k);
@@ -234,155 +218,145 @@ class FlutterTextUtils
     }
     if (i1 == 8419)
     {
-      m = Character.codePointBefore(paramCharSequence, k);
-      j = k - Character.charCount(m);
-      if ((j > 0) && (isVariationSelector(m)))
+      k = Character.codePointBefore(paramCharSequence, n);
+      j = n - Character.charCount(k);
+      if ((j > 0) && (isVariationSelector(k)))
       {
-        k = Character.codePointBefore(paramCharSequence, j);
-        j = i;
-        if (isKeycapBase(k)) {
-          j = i + (Character.charCount(m) + Character.charCount(k));
-        }
-      }
-      for (;;)
-      {
-        return paramInt - j;
+        m = Character.codePointBefore(paramCharSequence, j);
         j = i;
         if (isKeycapBase(m)) {
-          j = i + Character.charCount(m);
+          j = i + (Character.charCount(k) + Character.charCount(m));
         }
       }
+      else
+      {
+        j = i;
+        if (isKeycapBase(k)) {
+          j = i + Character.charCount(k);
+        }
+      }
+      return paramInt - j;
     }
+    int m = i1;
+    int k = i;
+    j = n;
     if (i1 == 917631)
     {
-      j = Character.codePointBefore(paramCharSequence, k);
-      m = k - Character.charCount(j);
-      k = j;
-      j = m;
-      m = i;
-      i = k;
-      while ((j > 0) && (isTagSpecChar(i)))
-      {
-        m += Character.charCount(i);
-        i = Character.codePointBefore(paramCharSequence, j);
-        j -= Character.charCount(i);
-      }
-      if (!isEmoji(i)) {
-        return paramInt - 2;
-      }
-      m += Character.charCount(i);
-      i1 = i;
-    }
-    for (;;)
-    {
-      int n = i1;
-      i = m;
-      k = j;
-      if (isVariationSelector(i1))
-      {
-        n = Character.codePointBefore(paramCharSequence, j);
-        if (!isEmoji(n)) {
-          return paramInt - m;
-        }
-        i = m + Character.charCount(n);
-        k = j - i;
-      }
-      m = i;
-      int i2;
-      if (isEmoji(n))
-      {
-        i2 = 0;
-        j = k;
-        k = n;
-        n = 0;
-      }
-      for (i1 = i;; i1 = i)
-      {
-        m = n;
-        i = i1;
-        if (n != 0)
-        {
-          i = Character.charCount(k) + i2 + 1 + i1;
-          m = 0;
-        }
-        if (isEmojiModifier(k))
-        {
-          m = Character.codePointBefore(paramCharSequence, j);
-          n = j - Character.charCount(m);
-          k = m;
-          j = i3;
-          if (n > 0)
-          {
-            k = m;
-            j = i3;
-            if (isVariationSelector(m))
-            {
-              k = Character.codePointBefore(paramCharSequence, n);
-              if (!isEmoji(k)) {
-                return paramInt - i;
-              }
-              j = Character.charCount(k);
-              Character.charCount(k);
-            }
-          }
-          m = i;
-          if (isEmojiModifierBase(k)) {
-            m = i + (Character.charCount(k) + j);
-          }
-        }
-        do
-        {
-          do
-          {
-            do
-            {
-              return paramInt - m;
-              n = k;
-              k = j;
-              if (j <= 0) {
-                break label764;
-              }
-              i1 = Character.codePointBefore(paramCharSequence, j);
-              j -= Character.charCount(i1);
-              n = i1;
-              k = j;
-              if (i1 != 8205) {
-                break label764;
-              }
-              m = Character.codePointBefore(paramCharSequence, j);
-              j -= Character.charCount(m);
-              if ((j <= 0) || (!isVariationSelector(m))) {
-                break;
-              }
-              k = Character.codePointBefore(paramCharSequence, j);
-              n = Character.charCount(k);
-              j -= Character.charCount(k);
-              i1 = 1;
-              m = i;
-            } while (j == 0);
-            m = i;
-          } while (i1 == 0);
-          m = i;
-        } while (!isEmoji(k));
-        i2 = n;
-        n = i1;
-      }
-      n = 1;
+      j = n;
       for (;;)
       {
-        i1 = n;
-        k = m;
-        n = 0;
-        break;
-        label764:
-        j = m;
-        m = n;
-        n = j;
-        j = k;
+        m = Character.codePointBefore(paramCharSequence, j);
+        j -= Character.charCount(m);
+        if ((j <= 0) || (!isTagSpecChar(m))) {
+          break;
+        }
+        i += Character.charCount(m);
       }
-      m = i;
+      if (!isEmoji(m)) {
+        return paramInt - 2;
+      }
+      k = i + Character.charCount(m);
+    }
+    n = m;
+    i = k;
+    i1 = j;
+    if (isVariationSelector(m))
+    {
+      n = Character.codePointBefore(paramCharSequence, j);
+      if (!isEmoji(n)) {
+        return paramInt - k;
+      }
+      i = k + Character.charCount(n);
+      i1 = j - i;
+    }
+    j = i;
+    if (isEmoji(n))
+    {
+      m = i1;
+      int i2 = 0;
+      j = n;
+      n = 0;
+      int i3 = i;
+      label702:
+      do
+      {
+        i1 = n;
+        k = i3;
+        if (n != 0)
+        {
+          k = i3 + (Character.charCount(j) + i2 + 1);
+          i1 = 0;
+        }
+        if (isEmojiModifier(j))
+        {
+          j = Character.codePointBefore(paramCharSequence, m);
+          n = m - Character.charCount(j);
+          m = j;
+          i = i4;
+          if (n > 0)
+          {
+            m = j;
+            i = i4;
+            if (isVariationSelector(j))
+            {
+              m = Character.codePointBefore(paramCharSequence, n);
+              if (!isEmoji(m)) {
+                return paramInt - k;
+              }
+              i = Character.charCount(m);
+              Character.charCount(m);
+            }
+          }
+          j = k;
+          if (!isEmojiModifierBase(m)) {
+            break;
+          }
+          j = k + (i + Character.charCount(m));
+          break;
+        }
+        n = i1;
+        i = j;
+        j = m;
+        if (m > 0)
+        {
+          i2 = Character.codePointBefore(paramCharSequence, m);
+          m -= Character.charCount(i2);
+          n = i1;
+          i = i2;
+          j = m;
+          if (i2 == 8205)
+          {
+            i = Character.codePointBefore(paramCharSequence, m);
+            j = m - Character.charCount(i);
+            if ((j > 0) && (isVariationSelector(i)))
+            {
+              i = Character.codePointBefore(paramCharSequence, j);
+              i1 = Character.charCount(i);
+              m = j - Character.charCount(i);
+              n = 1;
+              break label702;
+            }
+            n = 1;
+          }
+        }
+        i1 = 0;
+        m = j;
+        if (m == 0)
+        {
+          j = k;
+          break;
+        }
+        j = k;
+        if (n == 0) {
+          break;
+        }
+        i3 = k;
+        j = i;
+        i2 = i1;
+      } while (isEmoji(i));
       j = k;
     }
+    return paramInt - j;
   }
   
   public boolean isEmoji(int paramInt)
@@ -422,7 +396,7 @@ class FlutterTextUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.editing.FlutterTextUtils
  * JD-Core Version:    0.7.0.1
  */

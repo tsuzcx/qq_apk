@@ -88,7 +88,7 @@ public class ShaderAnimLayout
     this.jdField_a_of_type_Float = 0.0F;
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
     this.jdField_a_of_type_AndroidGraphicsPath.addRect(getWidth() * (1.0F - this.jdField_a_of_type_Float), 0.0F, getWidth(), getBottom(), Path.Direction.CW);
@@ -122,7 +122,7 @@ public class ShaderAnimLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ShaderAnimLayout
  * JD-Core Version:    0.7.0.1
  */

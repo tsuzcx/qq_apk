@@ -4,12 +4,12 @@ import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import com.tencent.mobileqq.extendfriend.wiget.WrapContentLinearLayoutManager;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopAppGroupInfo;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopAppInfo;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopItemInfo;
 import com.tencent.mobileqq.mini.entry.desktop.widget.DragRecyclerView;
 import com.tencent.mobileqq.mini.entry.desktop.widget.DragRecyclerView.DragDeleteListener;
+import com.tencent.mobileqq.qqexpand.widget.WrapContentLinearLayoutManager;
 import java.util.List;
 
 public class MiniAppDesktopAdapter$DesktopModuleListViewHolder
@@ -22,7 +22,7 @@ public class MiniAppDesktopAdapter$DesktopModuleListViewHolder
   public MiniAppDesktopAdapter$DesktopModuleListViewHolder(MiniAppDesktopAdapter paramMiniAppDesktopAdapter, View paramView, Context paramContext, DragRecyclerView.DragDeleteListener paramDragDeleteListener)
   {
     super(paramView);
-    this.mRecycleView = ((DragRecyclerView)paramView.findViewById(2131376816));
+    this.mRecycleView = ((DragRecyclerView)paramView.findViewById(2131376308));
     MiniAppDesktopAdapter.access$3100(paramMiniAppDesktopAdapter).addChildDragRecycleView(this.mRecycleView);
     this.mAdapter = new MiniAppDesktopAdapter.DesktopModuleListViewHolder.MiniAppAdapter(this, paramContext, this.mRecycleView);
     this.mAdapter.setParentRecyclerView(MiniAppDesktopAdapter.access$3200(paramMiniAppDesktopAdapter));
@@ -39,16 +39,18 @@ public class MiniAppDesktopAdapter$DesktopModuleListViewHolder
   
   private void updateOrigDataList()
   {
-    if ((this.mAdapter == null) || (this.mAdapter.origList == null)) {}
-    for (;;)
+    Object localObject = this.mAdapter;
+    if (localObject != null)
     {
-      return;
-      List localList = this.mAdapter.getData();
+      if (((MiniAppDesktopAdapter.DesktopModuleListViewHolder.MiniAppAdapter)localObject).origList == null) {
+        return;
+      }
+      localObject = this.mAdapter.getData();
       this.mAdapter.origList.clear();
       int i = 0;
-      while (i < localList.size())
+      while (i < ((List)localObject).size())
       {
-        DesktopItemInfo localDesktopItemInfo = (DesktopItemInfo)localList.get(i);
+        DesktopItemInfo localDesktopItemInfo = (DesktopItemInfo)((List)localObject).get(i);
         if ((localDesktopItemInfo instanceof DesktopAppInfo)) {
           this.mAdapter.origList.add((DesktopAppInfo)localDesktopItemInfo);
         }
@@ -76,7 +78,7 @@ public class MiniAppDesktopAdapter$DesktopModuleListViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.DesktopModuleListViewHolder
  * JD-Core Version:    0.7.0.1
  */

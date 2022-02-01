@@ -16,12 +16,16 @@ class VideoNodeReporter$2
       Iterator localIterator = this.this$0.a.iterator();
       while (localIterator.hasNext())
       {
-        VideoNodeReporter.SeesionRecord localSeesionRecord = (VideoNodeReporter.SeesionRecord)localIterator.next();
-        if (localSeesionRecord.a == -1L)
+        Object localObject = (VideoNodeReporter.SeesionRecord)localIterator.next();
+        if (((VideoNodeReporter.SeesionRecord)localObject).a == -1L)
         {
-          localSeesionRecord.a = this.a;
-          this.this$0.a(this.a, 26, this.a);
-          QLog.d("VideoNodeReporter", 1, "updateCallerRoomId  updated roomId = " + this.a);
+          long l = this.a;
+          ((VideoNodeReporter.SeesionRecord)localObject).a = l;
+          this.this$0.a(l, 26, l);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("updateCallerRoomId  updated roomId = ");
+          ((StringBuilder)localObject).append(this.a);
+          QLog.d("VideoNodeReporter", 1, ((StringBuilder)localObject).toString());
           VideoNodeReporter.a(this.this$0, -1L);
         }
       }
@@ -30,7 +34,7 @@ class VideoNodeReporter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.report.VideoNodeReporter.2
  * JD-Core Version:    0.7.0.1
  */

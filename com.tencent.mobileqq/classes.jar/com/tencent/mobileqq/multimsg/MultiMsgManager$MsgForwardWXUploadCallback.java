@@ -3,6 +3,7 @@ package com.tencent.mobileqq.multimsg;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -59,54 +60,57 @@ class MultiMsgManager$MsgForwardWXUploadCallback
   
   public void b(UpCallBack.SendResult paramSendResult)
   {
+    Object localObject1;
     if (paramSendResult.jdField_a_of_type_Int == 0) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg_TAG", 2, "send real struct msg for weixin done, cost : " + (System.currentTimeMillis() - MultiMsgManager.b()));
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("send real struct msg for weixin done, cost : ");
+        ((StringBuilder)localObject1).append(System.currentTimeMillis() - MultiMsgManager.b());
+        QLog.d("MultiMsg_TAG", 2, ((StringBuilder)localObject1).toString());
       }
     }
     for (;;)
     {
-      String str2;
-      Object localObject2;
-      long l;
       try
       {
-        String str1;
-        String str3;
-        if (this.jdField_a_of_type_Int == 0)
+        if (this.jdField_a_of_type_Int == 0) {
+          localObject1 = String.format(((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplication().getString(2131694312), new Object[] { ContactUtils.a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentUin()), ContactUtils.a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString) });
+        } else {
+          localObject1 = String.format(((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplication().getString(2131694313), new Object[] { ContactUtils.a((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int) });
+        }
+        String str2 = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msg;
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("https://mma.qq.com/jumpqq/forward2.html?rId=");
+        ((StringBuilder)localObject2).append(paramSendResult.c);
+        ((StringBuilder)localObject2).append("&fName=");
+        ((StringBuilder)localObject2).append(paramSendResult.d);
+        String str1 = ((StringBuilder)localObject2).toString();
+        if (this.jdField_a_of_type_Int == 1)
         {
-          str1 = String.format(((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplication().getString(2131694347), new Object[] { ContactUtils.b((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentUin()), ContactUtils.b((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString) });
-          str3 = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msg;
-          str2 = "https://mma.qq.com/jumpqq/forward2.html?rId=" + paramSendResult.c + "&fName=" + paramSendResult.d;
-          if (this.jdField_a_of_type_Int == 1)
-          {
-            i = 4;
-            localObject2 = ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getFaceBitmap(i, this.jdField_a_of_type_JavaLangString, (byte)1, false, 0);
-            if (localObject2 != null) {
-              continue;
-            }
-          }
+          i = 4;
         }
         else
         {
-          str1 = String.format(((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplication().getString(2131694348), new Object[] { ContactUtils.a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int) });
-          continue;
+          if (this.jdField_a_of_type_Int != 3000) {
+            break label642;
+          }
+          i = 101;
         }
-        if (this.jdField_a_of_type_Int != 3000) {
-          break label587;
+        Object localObject3 = ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getFaceBitmap(i, this.jdField_a_of_type_JavaLangString, (byte)1, false, 0);
+        if (localObject3 == null) {
+          return;
         }
-        i = 101;
-        continue;
         if (QLog.isColorLevel()) {
           QLog.d("MultiMsg_TAG", 2, "send to weixin icon != null  ");
         }
-        Object localObject1 = localObject2;
+        localObject2 = localObject3;
         if (this.jdField_a_of_type_Int == 3000) {
-          localObject1 = a((Bitmap)localObject2);
+          localObject2 = a((Bitmap)localObject3);
         }
-        localObject2 = String.valueOf(System.currentTimeMillis());
-        WXShareHelper.a().d((String)localObject2, str1, (Bitmap)localObject1, str3, str2);
-        l = paramSendResult.c.hashCode();
+        localObject3 = String.valueOf(System.currentTimeMillis());
+        WXShareHelper.a().d((String)localObject3, (String)localObject1, (Bitmap)localObject2, str2, str1);
+        long l = paramSendResult.c.hashCode();
         paramSendResult = this.jdField_a_of_type_JavaUtilArrayList.iterator();
         if (paramSendResult.hasNext())
         {
@@ -114,32 +118,43 @@ class MultiMsgManager$MsgForwardWXUploadCallback
           continue;
         }
         ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getProxyManager().a().a(this.jdField_a_of_type_JavaUtilArrayList, null);
+        MultiMsgManager.a().a(this.jdField_a_of_type_JavaUtilHashMap, l, (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+        ((MessageHandler)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).notifyUI(8031, false, Integer.valueOf(0));
+        if (QLog.isColorLevel())
+        {
+          paramSendResult = new StringBuilder();
+          paramSendResult.append("shareToWXFriend.transaction: ");
+          paramSendResult.append((String)localObject3);
+          paramSendResult.append(", shareLink:");
+          paramSendResult.append(str1);
+          QLog.i("MultiMsg_TAG", 2, paramSendResult.toString());
+          return;
+        }
       }
       catch (Exception paramSendResult)
       {
         paramSendResult.printStackTrace();
-        return;
       }
-      MultiMsgManager.a().a(this.jdField_a_of_type_JavaUtilHashMap, l, (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-      ((MessageHandler)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).notifyUI(8031, false, Integer.valueOf(0));
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("MultiMsg_TAG", 2, "shareToWXFriend.transaction: " + (String)localObject2 + ", shareLink:" + str2);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiMsg_TAG", 2, "upload multi msg pack failed, result.errStr=" + paramSendResult.b + ",result.errStr=" + paramSendResult.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("upload multi msg pack failed, result.errStr=");
+        ((StringBuilder)localObject1).append(paramSendResult.b);
+        ((StringBuilder)localObject1).append(",result.errStr=");
+        ((StringBuilder)localObject1).append(paramSendResult.jdField_a_of_type_JavaLangString);
+        QLog.d("MultiMsg_TAG", 2, ((StringBuilder)localObject1).toString());
       }
       ((MessageHandler)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).notifyUI(8031, false, Integer.valueOf(5));
       return;
-      label587:
+      label642:
       int i = 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.MultiMsgManager.MsgForwardWXUploadCallback
  * JD-Core Version:    0.7.0.1
  */

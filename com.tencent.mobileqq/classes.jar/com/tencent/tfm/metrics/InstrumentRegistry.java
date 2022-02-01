@@ -24,24 +24,19 @@ public class InstrumentRegistry
   <I extends AbstractInstrument> I register(I paramI)
   {
     AbstractInstrument localAbstractInstrument = (AbstractInstrument)this.registry.putIfAbsent(paramI.getName(), paramI);
-    Object localObject;
     if (localAbstractInstrument != null)
     {
-      localObject = localAbstractInstrument;
-      if (!paramI.getClass().getName().equals(localAbstractInstrument.getClass().getName())) {
-        throw new IllegalArgumentException(String.format("监控项已注册，且类型不匹配。 监控项名称: %s。 欲注册的类型 : %s。已注册的类型: %s", new Object[] { paramI.getName(), paramI.getClass().getName(), localAbstractInstrument.getClass().getName() }));
+      if (paramI.getClass().getName().equals(localAbstractInstrument.getClass().getName())) {
+        return localAbstractInstrument;
       }
+      throw new IllegalArgumentException(String.format("监控项已注册，且类型不匹配。 监控项名称: %s。 欲注册的类型 : %s。已注册的类型: %s", new Object[] { paramI.getName(), paramI.getClass().getName(), localAbstractInstrument.getClass().getName() }));
     }
-    else
-    {
-      localObject = paramI;
-    }
-    return localObject;
+    return paramI;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tfm.metrics.InstrumentRegistry
  * JD-Core Version:    0.7.0.1
  */

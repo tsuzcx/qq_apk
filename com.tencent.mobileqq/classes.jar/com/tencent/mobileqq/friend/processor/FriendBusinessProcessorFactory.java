@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.friend.processor;
 
-import com.tencent.mobileqq.app.friendlist.processor.ApolloProcessor;
+import com.tencent.mobileqq.apollo.ApolloProcessor;
+import com.tencent.mobileqq.app.friendlist.processor.AddFriendProcessor;
 import com.tencent.mobileqq.app.friendlist.processor.DiscussionProcessor;
 import com.tencent.mobileqq.app.friendlist.processor.FriendStatusProcessor;
 import com.tencent.mobileqq.app.friendlist.processor.IntimateInfoProcessor;
@@ -44,35 +45,35 @@ public class FriendBusinessProcessorFactory
     jdField_a_of_type_JavaUtilArrayList.add(ShieldFriendProcessor.class);
     jdField_a_of_type_JavaUtilArrayList.add(SpecialCareProcessor.class);
     jdField_a_of_type_JavaUtilArrayList.add(VASProcessor.class);
+    jdField_a_of_type_JavaUtilArrayList.add(AddFriendProcessor.class);
   }
   
   private void a(AppRuntime paramAppRuntime)
   {
     b.clear();
     Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
-    for (;;)
+    while (localIterator.hasNext())
     {
-      if (localIterator.hasNext())
+      Object localObject1 = (Class)localIterator.next();
+      if (QLog.isColorLevel())
       {
-        Object localObject1 = (Class)localIterator.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("IMCore.friend.FriendBusinessProcessor", 2, "initBusinessProcessors| " + ((Class)localObject1).getName());
-        }
-        try
-        {
-          localObject1 = (BaseFriendProcessor)((Class)localObject1).getConstructor(new Class[] { AppRuntime.class }).newInstance(new Object[] { paramAppRuntime });
-          if (localObject1 != null) {
-            b.add(localObject1);
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            QLog.d("IMCore.friend.FriendBusinessProcessor", 1, "initBusinessProcessors fail.", localException);
-            Object localObject2 = null;
-          }
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("initBusinessProcessors| ");
+        localStringBuilder.append(((Class)localObject1).getName());
+        QLog.d("IMCore.friend.FriendBusinessProcessor", 2, localStringBuilder.toString());
+      }
+      Object localObject2;
+      try
+      {
+        localObject1 = (BaseFriendProcessor)((Class)localObject1).getConstructor(new Class[] { AppRuntime.class }).newInstance(new Object[] { paramAppRuntime });
+      }
+      catch (Exception localException)
+      {
+        QLog.d("IMCore.friend.FriendBusinessProcessor", 1, "initBusinessProcessors fail.", localException);
+        localObject2 = null;
+      }
+      if (localObject2 != null) {
+        b.add(localObject2);
       }
     }
   }
@@ -89,7 +90,7 @@ public class FriendBusinessProcessorFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.friend.processor.FriendBusinessProcessorFactory
  * JD-Core Version:    0.7.0.1
  */

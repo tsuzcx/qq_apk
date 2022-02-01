@@ -49,19 +49,23 @@ public final class SWUploadPicRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iCode, 0);
-    if (this.sURL != null) {
-      paramJceOutputStream.write(this.sURL, 1);
+    String str = this.sURL;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.sAlbumID != null) {
-      paramJceOutputStream.write(this.sAlbumID, 2);
+    str = this.sAlbumID;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.sPhotoID != null) {
-      paramJceOutputStream.write(this.sPhotoID, 3);
+    str = this.sPhotoID;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.iWidth, 4);
     paramJceOutputStream.write(this.iHeight, 5);
-    if (this.sName != null) {
-      paramJceOutputStream.write(this.sName, 6);
+    str = this.sName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
     paramJceOutputStream.write(this.iUploadTs, 7);
     paramJceOutputStream.write(this.ePicType, 8);
@@ -69,7 +73,7 @@ public final class SWUploadPicRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SWU.SWUploadPicRsp
  * JD-Core Version:    0.7.0.1
  */

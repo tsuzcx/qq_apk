@@ -25,16 +25,17 @@ class d$a
   {
     try
     {
-      switch (paramMessage.what)
+      int i = paramMessage.what;
+      if (i != 1)
       {
-      case 1: 
-        if ((d.b(this.vI) != null) && (d.c(this.vI) != null))
+        if (i != 2)
         {
-          d.b(this.vI).removeHeaderView(d.c(this.vI));
+          if (i != 4) {
+            return false;
+          }
+          this.vI.fS();
           return false;
         }
-        break;
-      case 2: 
         if (!TMSDKWifiManager.isWiFiManagerExist())
         {
           this.vI.fS();
@@ -49,7 +50,7 @@ class d$a
           d.f(this.vI).setText(paramMessage.ssid);
           d.h(this.vI).setText(d.g(this.vI));
           d.h(this.vI).setTextColor(d.i(this.vI).getResources().getColor(RProxy.color.tmsdk_wifi_gray));
-          int i = d.i(this.vI).getResources().getDimensionPixelSize(RProxy.dimen.tmsdk_wifi_item_des_padding);
+          i = d.i(this.vI).getResources().getDimensionPixelSize(RProxy.dimen.tmsdk_wifi_item_des_padding);
           d.h(this.vI).setPadding(i, 0, i, 0);
           if (TextUtils.isEmpty(paramMessage.poi))
           {
@@ -63,10 +64,10 @@ class d$a
           d.j(this.vI).setLayoutParams(paramMessage);
           return false;
         }
-        break;
-      case 4: 
-        this.vI.fS();
-        return false;
+      }
+      else if ((d.b(this.vI) != null) && (d.c(this.vI) != null))
+      {
+        d.b(this.vI).removeHeaderView(d.c(this.vI));
       }
       return false;
     }
@@ -76,7 +77,7 @@ class d$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.wifisdk.ui.view.d.a
  * JD-Core Version:    0.7.0.1
  */

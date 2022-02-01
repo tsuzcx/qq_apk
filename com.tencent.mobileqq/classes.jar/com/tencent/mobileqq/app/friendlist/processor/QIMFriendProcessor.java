@@ -28,55 +28,52 @@ public class QIMFriendProcessor
   public void onBatchUpdateFriendInfo(List<Pair<Friends, FriendInfo>> paramList, long paramLong, boolean paramBoolean)
   {
     paramList = paramList.iterator();
-    Object localObject1;
-    Friends localFriends;
     while (paramList.hasNext())
     {
-      localObject1 = (Pair)paramList.next();
-      localFriends = (Friends)((Pair)localObject1).first;
+      Object localObject1 = (Pair)paramList.next();
+      Friends localFriends = (Friends)((Pair)localObject1).first;
       localObject1 = parseSnsUpdateBuffer(((FriendInfo)((Pair)localObject1).second).vecRing);
-      if ((localObject1 != null) && (((Oidb_0x5d0.SnsUpateBuffer)localObject1).rpt_msg_sns_update_item.has())) {
+      if ((localObject1 != null) && (((Oidb_0x5d0.SnsUpateBuffer)localObject1).rpt_msg_sns_update_item.has()))
+      {
         localObject1 = ((Oidb_0x5d0.SnsUpateBuffer)localObject1).rpt_msg_sns_update_item.get().iterator();
-      }
-    }
-    label85:
-    label231:
-    label235:
-    for (;;)
-    {
-      int j;
-      if (((Iterator)localObject1).hasNext())
-      {
-        Object localObject2 = (Oidb_0x5d0.SnsUpdateItem)((Iterator)localObject1).next();
-        if (((Oidb_0x5d0.SnsUpdateItem)localObject2).uint32_update_sns_type.get() != 13824) {
-          continue;
+        while (((Iterator)localObject1).hasNext())
+        {
+          Object localObject2 = (Oidb_0x5d0.SnsUpdateItem)((Iterator)localObject1).next();
+          if (((Oidb_0x5d0.SnsUpdateItem)localObject2).uint32_update_sns_type.get() == 13824)
+          {
+            localObject2 = ((Oidb_0x5d0.SnsUpdateItem)localObject2).bytes_value.get().toByteArray();
+            int j = localObject2.length;
+            int i = 0;
+            if (j >= 1)
+            {
+              j = localObject2[0] & 0x2;
+              i = j;
+              if (j == 2)
+              {
+                localFriends.friendType = 1;
+                i = j;
+              }
+            }
+            if (QLog.isColorLevel())
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("updateQimFriend | friend.uin : ");
+              ((StringBuilder)localObject2).append(localFriends.uin);
+              ((StringBuilder)localObject2).append(" | friend.friendType : ");
+              ((StringBuilder)localObject2).append(localFriends.friendType);
+              ((StringBuilder)localObject2).append(" | itemType : ");
+              ((StringBuilder)localObject2).append(i);
+              QLog.d("IMCore.friend.QIMFriendProcessor", 2, ((StringBuilder)localObject2).toString());
+            }
+          }
         }
-        localObject2 = ((Oidb_0x5d0.SnsUpdateItem)localObject2).bytes_value.get().toByteArray();
-        if (localObject2.length < 1) {
-          break label231;
-        }
-        j = localObject2[0] & 0x2;
-        i = j;
-        if (j == 2) {
-          localFriends.friendType = 1;
-        }
-      }
-      for (int i = j;; i = 0)
-      {
-        if (!QLog.isColorLevel()) {
-          break label235;
-        }
-        QLog.d("IMCore.friend.QIMFriendProcessor", 2, "updateQimFriend | friend.uin : " + localFriends.uin + " | friend.friendType : " + localFriends.friendType + " | itemType : " + i);
-        break label85;
-        break;
-        return;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.friendlist.processor.QIMFriendProcessor
  * JD-Core Version:    0.7.0.1
  */

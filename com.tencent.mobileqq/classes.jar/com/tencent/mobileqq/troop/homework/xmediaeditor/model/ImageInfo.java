@@ -2,11 +2,9 @@ package com.tencent.mobileqq.troop.homework.xmediaeditor.model;
 
 import android.graphics.BitmapFactory.Options;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
 import com.tencent.image.JpegExifReader;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.mm.vfs.VFSFile;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditorAdapter;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.EditorViewHolderManager;
@@ -24,6 +22,7 @@ import java.io.File;
 import java.net.URI;
 import java.net.URL;
 import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.MobileQQ;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -46,7 +45,7 @@ public class ImageInfo
   
   public ImageInfo(String paramString)
   {
-    b(paramString);
+    a(paramString);
     a();
     this.jdField_d_of_type_JavaLangString = String.valueOf(hashCode());
   }
@@ -59,11 +58,14 @@ public class ImageInfo
   
   public static String b()
   {
-    VFSFile localVFSFile = new VFSFile(TroopHWJsPlugin.jdField_a_of_type_JavaLangString);
-    if (!localVFSFile.exists())
+    Object localObject = new VFSFile(TroopHWJsPlugin.jdField_a_of_type_JavaLangString);
+    if (!((VFSFile)localObject).exists())
     {
-      localVFSFile.mkdirs();
-      FileUtils.c(TroopHWJsPlugin.jdField_a_of_type_JavaLangString + ".nomedia");
+      ((VFSFile)localObject).mkdirs();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(TroopHWJsPlugin.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(".nomedia");
+      FileUtils.createFileIfNotExits(((StringBuilder)localObject).toString());
     }
     return TroopHWJsPlugin.jdField_a_of_type_JavaLangString;
   }
@@ -75,27 +77,25 @@ public class ImageInfo
   
   public Stream<ImageInfo> a(XMediaEditor paramXMediaEditor)
   {
-    this.g = 1;
+    this.f = 1;
     Object localObject2 = Stream.of(this).map(new ThreadOffFunction("ImageInfo", 2));
     Object localObject1 = localObject2;
-    if (!FileUtil.b(this.jdField_c_of_type_JavaLangString)) {
+    if (!FileUtils.fileExistsAndNotEmpty(this.jdField_c_of_type_JavaLangString)) {
       localObject1 = ((Stream)localObject2).map(new ImageInfo.CompressImageSegment(this.jdField_d_of_type_Int));
     }
+    localObject2 = localObject1;
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      localObject1 = ((Stream)localObject1).map(new ImageInfo.UploadMediaSegment(0, paramXMediaEditor, paramXMediaEditor.a("troopuin")));
+      localObject2 = ((Stream)localObject1).map(new ImageInfo.UploadMediaSegment(0, paramXMediaEditor, paramXMediaEditor.a("troopuin")));
     }
-    for (;;)
+    localObject1 = paramXMediaEditor.findViewHolderForLayoutPosition(this.jdField_c_of_type_Int);
+    if ((localObject1 instanceof ImageItem.ImageViewHolder))
     {
-      localObject2 = paramXMediaEditor.findViewHolderForLayoutPosition(this.jdField_c_of_type_Int);
-      if ((localObject2 instanceof ImageItem.ImageViewHolder))
-      {
-        localObject2 = (ImageItem.ImageViewHolder)localObject2;
-        if (this.jdField_d_of_type_JavaLangString.equals(((ImageItem.ImageViewHolder)localObject2).a.getTag())) {
-          ((ImageItem)((XMediaEditorAdapter)paramXMediaEditor.getAdapter()).a.a(1)).a((ImageItem.ImageViewHolder)localObject2, this, 0);
-        }
+      localObject1 = (ImageItem.ImageViewHolder)localObject1;
+      if (this.jdField_d_of_type_JavaLangString.equals(((ImageItem.ImageViewHolder)localObject1).a.getTag())) {
+        ((ImageItem)((XMediaEditorAdapter)paramXMediaEditor.getAdapter()).a.a(1)).a((ImageItem.ImageViewHolder)localObject1, this, 0);
       }
-      return ((Stream)localObject1).map(new UIThreadOffFunction(null));
     }
+    return ((Stream)localObject2).map(new UIThreadOffFunction(null));
   }
   
   public TroopHomeworkHelper.UploadFileTask a(String paramString1, String paramString2)
@@ -105,7 +105,7 @@ public class ImageInfo
     }
     if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString1))
     {
-      paramString2 = new TroopHomeworkHelper.UploadFileTask(PlayModeUtils.a(), paramString1, paramString2);
+      paramString2 = new TroopHomeworkHelper.UploadFileTask(MobileQQ.sMobileQQ.waitAppRuntime(null), paramString1, paramString2);
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1, paramString2);
       return paramString2;
     }
@@ -133,7 +133,10 @@ public class ImageInfo
     }
     catch (JSONException localJSONException)
     {
-      while (!QLog.isColorLevel()) {}
+      label52:
+      break label52;
+    }
+    if (QLog.isColorLevel()) {
       QLog.e("ImageInfo", 2, "ImageInfo getContent exception.");
     }
     return localJSONObject;
@@ -142,7 +145,7 @@ public class ImageInfo
   public void a()
   {
     long l = System.currentTimeMillis();
-    if (FileUtil.b(this.jdField_a_of_type_JavaLangString))
+    if (FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_JavaLangString))
     {
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
       localOptions.inJustDecodeBounds = true;
@@ -165,20 +168,36 @@ public class ImageInfo
     }
   }
   
+  public void a(String paramString)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaNetURL = new File(paramString).toURI().toURL();
+      this.jdField_a_of_type_JavaLangString = paramString;
+      return;
+    }
+    catch (Exception paramString)
+    {
+      label24:
+      break label24;
+    }
+    QLog.e("ImageInfo", 1, "setURLFromPath exception.");
+  }
+  
   public void a(JSONObject paramJSONObject)
   {
     if (QLog.isColorLevel()) {
       QLog.d("ImageInfo", 2, new Object[] { "ImageInfo createFrom json: ", paramJSONObject });
     }
     this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    c(paramJSONObject.optString("url"));
+    b(paramJSONObject.optString("url"));
     this.jdField_a_of_type_Int = paramJSONObject.optInt("width");
     this.jdField_b_of_type_Int = paramJSONObject.optInt("height");
   }
   
   public boolean a()
   {
-    return !TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString);
+    return TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString) ^ true;
   }
   
   public int b()
@@ -190,38 +209,26 @@ public class ImageInfo
   {
     try
     {
-      this.jdField_a_of_type_JavaNetURL = new File(paramString).toURI().toURL();
-      this.jdField_a_of_type_JavaLangString = paramString;
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("ImageInfo", 1, "setURLFromPath exception.");
-    }
-  }
-  
-  public boolean b()
-  {
-    return TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString);
-  }
-  
-  public void c(String paramString)
-  {
-    try
-    {
       this.jdField_a_of_type_JavaNetURL = new URL(paramString);
       this.jdField_b_of_type_JavaLangString = paramString;
       return;
     }
     catch (Exception paramString)
     {
-      QLog.e("ImageInfo", 1, "Image setURLFromContentUrl exception.");
+      label18:
+      break label18;
     }
+    QLog.e("ImageInfo", 1, "Image setURLFromContentUrl exception.");
+  }
+  
+  public boolean b()
+  {
+    return TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo
  * JD-Core Version:    0.7.0.1
  */

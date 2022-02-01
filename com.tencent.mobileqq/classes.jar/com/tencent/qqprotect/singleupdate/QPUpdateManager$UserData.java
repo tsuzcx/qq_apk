@@ -31,12 +31,32 @@ class QPUpdateManager$UserData
   
   public String toString()
   {
-    return "filePath=" + this.jdField_a_of_type_JavaLangString + ",fileName=" + this.jdField_b_of_type_JavaLangString + ",fileId=" + this.jdField_b_of_type_Int + ",fileUrl=" + this.jdField_c_of_type_JavaLangString + ",fileHash=" + this.jdField_d_of_type_JavaLangString + ",fileVersion=" + this.jdField_c_of_type_Int + ",zipFlag=" + this.jdField_a_of_type_Boolean + ",startTime=" + this.jdField_a_of_type_Long + ",tryTimes=" + this.jdField_d_of_type_Int + ",downloadFlag=" + this.e;
+    StringBuilder localStringBuilder = new StringBuilder("filePath=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",fileName=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(",fileId=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(",fileUrl=");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(",fileHash=");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(",fileVersion=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(",zipFlag=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(",startTime=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(",tryTimes=");
+    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(",downloadFlag=");
+    localStringBuilder.append(this.e);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.singleupdate.QPUpdateManager.UserData
  * JD-Core Version:    0.7.0.1
  */

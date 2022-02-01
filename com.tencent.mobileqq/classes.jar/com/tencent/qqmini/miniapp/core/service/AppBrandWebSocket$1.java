@@ -23,7 +23,10 @@ class AppBrandWebSocket$1
   
   public void onMessage(int paramInt, String paramString)
   {
-    QMLog.d("AppBrandRemoteService", "<--- onMessage string" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("<--- onMessage string");
+    localStringBuilder.append(paramString);
+    QMLog.d("AppBrandRemoteService", localStringBuilder.toString());
     if (this.this$0.mThreadHandler != null) {
       this.this$0.mThreadHandler.post(new AppBrandWebSocket.1.2(this, paramString));
     }
@@ -44,7 +47,7 @@ class AppBrandWebSocket$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.service.AppBrandWebSocket.1
  * JD-Core Version:    0.7.0.1
  */

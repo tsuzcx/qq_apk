@@ -16,27 +16,28 @@ class QRScanEntryView$3
   
   public void onClick(View paramView)
   {
-    this.a.findViewById(2131369734).setAlpha(1.0F);
+    this.a.findViewById(2131369428).setAlpha(1.0F);
     ScanTorchActivity localScanTorchActivity = (ScanTorchActivity)this.a.jdField_a_of_type_AndroidContentContext;
     String str2 = this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-    if (!TextUtils.isEmpty(localScanTorchActivity.b)) {}
-    for (String str1 = localScanTorchActivity.b;; str1 = str2)
-    {
-      Intent localIntent = new Intent(localScanTorchActivity, QRDisplayActivity.class);
-      localIntent.putExtra("from", "ScannerActivity");
-      localIntent.putExtra("title", localScanTorchActivity.getString(2131717061));
-      localIntent.putExtra("nick", str1);
-      localIntent.putExtra("uin", str2);
-      localIntent.putExtra("type", 1);
-      localScanTorchActivity.startActivity(localIntent);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    String str1;
+    if (!TextUtils.isEmpty(localScanTorchActivity.b)) {
+      str1 = localScanTorchActivity.b;
+    } else {
+      str1 = str2;
     }
+    Intent localIntent = new Intent(localScanTorchActivity, QRDisplayActivity.class);
+    localIntent.putExtra("from", "ScannerActivity");
+    localIntent.putExtra("title", localScanTorchActivity.getString(2131716714));
+    localIntent.putExtra("nick", str1);
+    localIntent.putExtra("uin", str2);
+    localIntent.putExtra("type", 1);
+    localScanTorchActivity.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.QRScanEntryView.3
  * JD-Core Version:    0.7.0.1
  */

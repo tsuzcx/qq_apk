@@ -2,7 +2,11 @@ package com.tencent.mobileqq.onlinestatus;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.Intent;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.onlinestatus.utils.UiRouteUtils;
+import com.tencent.mobileqq.onlinestatus.viewmodel.AccountPanelViewModel;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 
 class AccountPanel$5
@@ -12,29 +16,21 @@ class AccountPanel$5
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      if ((AccountPanel.a(this.a) != null) && (AccountPanel.a(this.a).isShowing()))
-      {
-        this.a.c();
-        AccountPanel.a(this.a).dismiss();
-        AccountPanel.a(this.a, null);
-      }
-      label49:
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountPanel", 2, "switch status cancel");
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountPanel", 2, "onAccoutChangeFailed -> LoginActivity");
     }
-    catch (Exception paramDialogInterface)
-    {
-      break label49;
-    }
+    ReportController.a(null, "dc00898", "", "", "0X800B430", "0X800B430", 0, 0, "", "", "", "");
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("is_change_account", true);
+    paramDialogInterface.putExtra("uin", AccountPanel.a(this.a).a());
+    paramDialogInterface.putExtra("befault_uin", AccountPanel.a(this.a).getCurrentAccountUin());
+    UiRouteUtils.a(AccountPanel.a(this.a), paramDialogInterface, "/base/login");
+    AccountPanel.a(this.a).a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AccountPanel.5
  * JD-Core Version:    0.7.0.1
  */

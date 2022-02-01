@@ -24,9 +24,10 @@ public final class IndoorBuilding
   protected final Object clone()
   {
     IndoorBuilding localIndoorBuilding = (IndoorBuilding)super.clone();
-    if (this.d != null)
+    Object localObject = this.d;
+    if (localObject != null)
     {
-      localIndoorBuilding.d = new ArrayList(this.d.size());
+      localIndoorBuilding.d = new ArrayList(((List)localObject).size());
       int i = 0;
       while (i < this.d.size())
       {
@@ -34,8 +35,9 @@ public final class IndoorBuilding
         i += 1;
       }
     }
-    if (this.e != null) {
-      localIndoorBuilding.e = new LatLng(this.e.latitude, this.e.longitude);
+    localObject = this.e;
+    if (localObject != null) {
+      localIndoorBuilding.e = new LatLng(((LatLng)localObject).latitude, this.e.longitude);
     }
     return localIndoorBuilding;
   }
@@ -67,15 +69,24 @@ public final class IndoorBuilding
   
   public final String toString()
   {
-    if ((this.a == null) || (this.d == null) || (this.d.size() <= this.c)) {
-      return "";
+    if (this.a != null)
+    {
+      Object localObject = this.d;
+      if ((localObject != null) && (((List)localObject).size() > this.c))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.a);
+        ((StringBuilder)localObject).append("_");
+        ((StringBuilder)localObject).append(((IndoorLevel)this.d.get(this.c)).getName());
+        return ((StringBuilder)localObject).toString();
+      }
     }
-    return this.a + "_" + ((IndoorLevel)this.d.get(this.c)).getName();
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.IndoorBuilding
  * JD-Core Version:    0.7.0.1
  */

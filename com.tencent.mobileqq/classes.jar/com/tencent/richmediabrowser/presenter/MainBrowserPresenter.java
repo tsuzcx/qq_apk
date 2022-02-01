@@ -3,62 +3,61 @@ package com.tencent.richmediabrowser.presenter;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Rect;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import com.tencent.image.RegionDrawableData;
+import com.tencent.richmediabrowser.api.BrowserParamsBuilder;
+import com.tencent.richmediabrowser.api.decorator.IDecoratorPresenter;
+import com.tencent.richmediabrowser.api.event.IActivityEvent;
 import com.tencent.richmediabrowser.core.BrowserBuilder;
 import com.tencent.richmediabrowser.core.BrowserDirector;
-import com.tencent.richmediabrowser.core.IBrowserBuilder;
-import com.tencent.richmediabrowser.core.IViewBuilder;
-import com.tencent.richmediabrowser.core.ViewBuilder;
-import com.tencent.richmediabrowser.download.HttpDownloadManager;
+import com.tencent.richmediabrowser.core.IBaseModelBuilder;
+import com.tencent.richmediabrowser.core.IBasePresenterBuilder;
+import com.tencent.richmediabrowser.core.IBaseViewBuilder;
 import com.tencent.richmediabrowser.listener.IDownloadEventListener;
-import com.tencent.richmediabrowser.listener.IVideoEnventListener;
 import com.tencent.richmediabrowser.log.BrowserLogHelper;
 import com.tencent.richmediabrowser.log.IBrowserLog;
-import com.tencent.richmediabrowser.model.BrowserBaseModel;
 import com.tencent.richmediabrowser.model.MainBrowserModel;
 import com.tencent.richmediabrowser.model.RichMediaBaseData;
 import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
-import com.tencent.richmediabrowser.presenter.video.VideoPresenter;
 import com.tencent.richmediabrowser.view.BrowserBaseView;
 import com.tencent.richmediabrowser.view.MainBrowserScene;
+import com.tencent.richmediabrowser.view.recyclerview.BrowserAdapter.BrowserViewHolder;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class MainBrowserPresenter
-  extends BasePresenter
-  implements IDownloadEventListener, IVideoEnventListener
+  implements IActivityEvent, IBasePresenterBuilder, IDownloadEventListener
 {
   private static final String TAG = "MainBrowserPresenter";
+  public IActivityEvent activityEventListener;
   public MainBrowserModel browserModel;
   public MainBrowserScene browserScene;
-  private ConcurrentHashMap<Integer, BrowserBasePresenter> presenterMap = new ConcurrentHashMap();
+  public ConcurrentHashMap<Integer, IDecoratorPresenter> decoratorPresenterMap = new ConcurrentHashMap();
+  private BrowserParamsBuilder paramsBuilder;
+  private ConcurrentHashMap<Integer, IBasePresenterBuilder> presenterMap = new ConcurrentHashMap();
   
   public void buildComplete() {}
   
-  public BrowserBaseView buildItemView(int paramInt)
+  public IBaseViewBuilder buildItemView(int paramInt)
   {
-    if (this.presenterMap.containsKey(Integer.valueOf(paramInt)))
+    BrowserBuilder localBrowserBuilder = new BrowserBuilder(this.browserScene.mContext, paramInt);
+    localBrowserBuilder.setRelyPresenter(this);
+    new BrowserDirector().construct(localBrowserBuilder, this.browserScene.mIntent);
+    if ((localBrowserBuilder.getPresenter() instanceof BrowserBasePresenter))
     {
-      localObject = new ViewBuilder(this.browserScene.mContext, paramInt, getPresenter(paramInt));
-      new BrowserDirector().constructItemView((IViewBuilder)localObject, this.browserScene.mIntent);
-      return ((ViewBuilder)localObject).getView();
+      ((BrowserBasePresenter)localBrowserBuilder.getPresenter()).setMainBrowserPresenter(this);
+      this.presenterMap.put(Integer.valueOf(paramInt), localBrowserBuilder.getPresenter());
+      if (localBrowserBuilder.getDecoratorPresenter() != null) {
+        this.decoratorPresenterMap.put(Integer.valueOf(paramInt), localBrowserBuilder.getDecoratorPresenter());
+      }
     }
-    Object localObject = new BrowserBuilder(this.browserScene.mContext, paramInt);
-    ((BrowserBuilder)localObject).setRelyPresenter(this);
-    new BrowserDirector().construct((IBrowserBuilder)localObject, this.browserScene.mIntent);
-    if ((((BrowserBuilder)localObject).getPresenter() instanceof BrowserBasePresenter))
-    {
-      ((BrowserBasePresenter)((BrowserBuilder)localObject).getPresenter()).setMainBrowserPresenter(this);
-      this.presenterMap.put(Integer.valueOf(paramInt), (BrowserBasePresenter)((BrowserBuilder)localObject).getPresenter());
-    }
-    return ((BrowserBuilder)localObject).getView();
+    return localBrowserBuilder.getView();
   }
   
   public void buildParams(Intent paramIntent) {}
@@ -77,75 +76,119 @@ public class MainBrowserPresenter
   
   public Rect getAnimationEndDstRect()
   {
-    BrowserBasePresenter localBrowserBasePresenter = getCurrentPresenter();
-    if ((localBrowserBasePresenter != null) && (localBrowserBasePresenter.browserBaseView != null)) {
-      return localBrowserBasePresenter.browserBaseView.getAnimationEndDstRect();
+    MainBrowserScene localMainBrowserScene = this.browserScene;
+    if (localMainBrowserScene != null) {
+      return localMainBrowserScene.getAnimationEndDstRect();
+    }
+    return null;
+  }
+  
+  public IDecoratorPresenter getCurrentDecoratorPresenter()
+  {
+    Object localObject = this.browserModel;
+    if (localObject != null)
+    {
+      localObject = ((MainBrowserModel)localObject).getItem(getCurrentPosition());
+      if ((localObject != null) && (((RichMediaBrowserInfo)localObject).baseData != null)) {
+        return (IDecoratorPresenter)this.decoratorPresenterMap.get(Integer.valueOf(((RichMediaBrowserInfo)localObject).baseData.getType()));
+      }
     }
     return null;
   }
   
   public int getCurrentPosition()
   {
-    if (this.browserModel != null) {
-      return this.browserModel.getSelectedIndex();
+    MainBrowserModel localMainBrowserModel = this.browserModel;
+    if (localMainBrowserModel != null) {
+      return localMainBrowserModel.getSelectedIndex();
     }
-    return -1;
+    return 0;
   }
   
-  public BrowserBasePresenter getCurrentPresenter()
+  public IBasePresenterBuilder getCurrentPresenter()
   {
-    if (this.browserModel != null)
+    Object localObject = this.browserModel;
+    if (localObject != null)
     {
-      RichMediaBrowserInfo localRichMediaBrowserInfo = this.browserModel.getItem(getCurrentPosition());
-      if ((localRichMediaBrowserInfo != null) && (localRichMediaBrowserInfo.baseData != null)) {
-        return (BrowserBasePresenter)this.presenterMap.get(Integer.valueOf(localRichMediaBrowserInfo.baseData.getType()));
+      localObject = ((MainBrowserModel)localObject).getItem(getCurrentPosition());
+      if ((localObject != null) && (((RichMediaBrowserInfo)localObject).baseData != null)) {
+        return (IBasePresenterBuilder)this.presenterMap.get(Integer.valueOf(((RichMediaBrowserInfo)localObject).baseData.getType()));
       }
     }
     return null;
   }
   
+  public int getCurrentType()
+  {
+    Object localObject = this.browserModel;
+    if (localObject != null)
+    {
+      localObject = ((MainBrowserModel)localObject).getItem(getCurrentPosition());
+      if ((localObject != null) && (((RichMediaBrowserInfo)localObject).baseData != null)) {
+        return ((RichMediaBrowserInfo)localObject).baseData.getType();
+      }
+    }
+    return 0;
+  }
+  
+  public IDecoratorPresenter getDecoratorPresenter(int paramInt)
+  {
+    return (IDecoratorPresenter)this.decoratorPresenterMap.get(Integer.valueOf(paramInt));
+  }
+  
   public int getItemCount()
   {
-    if (this.browserModel != null) {
-      return this.browserModel.getCount();
+    MainBrowserModel localMainBrowserModel = this.browserModel;
+    if (localMainBrowserModel != null) {
+      return localMainBrowserModel.getCount();
     }
     return 0;
   }
   
   public int getLastVisibleItemPosition()
   {
-    if (this.browserScene != null) {
-      return this.browserScene.getLastVisibleItemPosition();
+    MainBrowserScene localMainBrowserScene = this.browserScene;
+    if (localMainBrowserScene != null) {
+      return localMainBrowserScene.getLastVisibleItemPosition();
     }
-    return -1;
+    return 0;
   }
   
-  public BrowserBasePresenter getPresenter(int paramInt)
+  public BrowserParamsBuilder getParamsBuilder()
   {
-    return (BrowserBasePresenter)this.presenterMap.get(Integer.valueOf(paramInt));
+    if (this.paramsBuilder == null) {
+      this.paramsBuilder = new BrowserParamsBuilder();
+    }
+    return this.paramsBuilder;
+  }
+  
+  public IBasePresenterBuilder getPresenter(int paramInt)
+  {
+    return (IBasePresenterBuilder)this.presenterMap.get(Integer.valueOf(paramInt));
   }
   
   public boolean isCurrentView(String paramString)
   {
+    Object localObject = this.browserModel;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.browserModel != null)
+    if (localObject != null)
     {
       bool1 = bool2;
       if (!TextUtils.isEmpty(paramString))
       {
-        RichMediaBrowserInfo localRichMediaBrowserInfo = this.browserModel.getItem(getCurrentPosition());
+        localObject = this.browserModel.getItem(getCurrentPosition());
         bool1 = bool2;
-        if (localRichMediaBrowserInfo != null)
+        if (localObject != null)
         {
           bool1 = bool2;
-          if (localRichMediaBrowserInfo.baseData != null)
+          if (((RichMediaBrowserInfo)localObject).baseData != null)
           {
             bool1 = bool2;
-            if (!TextUtils.isEmpty(localRichMediaBrowserInfo.baseData.id))
+            if (!TextUtils.isEmpty(((RichMediaBrowserInfo)localObject).baseData.id))
             {
               bool1 = bool2;
-              if (paramString.equals(localRichMediaBrowserInfo.baseData.id)) {
+              if (paramString.equals(((RichMediaBrowserInfo)localObject).baseData.id)) {
                 bool1 = true;
               }
             }
@@ -158,58 +201,47 @@ public class MainBrowserPresenter
   
   public boolean isNeedDisallowInterceptEvent(MotionEvent paramMotionEvent)
   {
-    return (this.browserScene != null) && (this.browserScene.isNeedDisallowInterceptEvent(paramMotionEvent));
-  }
-  
-  public boolean needEnterRectAnimation()
-  {
-    if (this.browserScene != null)
-    {
-      BrowserBaseView localBrowserBaseView = this.browserScene.getCurrentView();
-      if (localBrowserBaseView != null) {
-        return localBrowserBaseView.needEnterRectAnimation();
-      }
-    }
-    return true;
-  }
-  
-  public boolean needExitRectAnimation()
-  {
-    if (this.browserScene != null)
-    {
-      BrowserBaseView localBrowserBaseView = this.browserScene.getCurrentView();
-      if (localBrowserBaseView != null) {
-        return localBrowserBaseView.needExitRectAnimation();
-      }
-    }
-    return true;
+    MainBrowserScene localMainBrowserScene = this.browserScene;
+    return (localMainBrowserScene != null) && (localMainBrowserScene.isNeedDisallowInterceptEvent(paramMotionEvent));
   }
   
   public void notifyImageListChanged(List<RichMediaBrowserInfo> paramList, int paramInt)
   {
-    if (paramList != null) {}
-    for (int i = paramList.size();; i = 0)
+    int i;
+    if (paramList != null) {
+      i = paramList.size();
+    } else {
+      i = 0;
+    }
+    Object localObject = BrowserLogHelper.getInstance().getGalleryLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("notifyImageListChanged list size ");
+    localStringBuilder.append(i);
+    localStringBuilder.append(", selected ");
+    localStringBuilder.append(paramInt);
+    ((IBrowserLog)localObject).i("MainBrowserPresenter", 2, localStringBuilder.toString());
+    localObject = this.browserModel;
+    if (localObject != null)
     {
-      BrowserLogHelper.getInstance().getGalleryLog().i("MainBrowserPresenter", 2, "notifyImageListChanged list size " + i + ", selected " + paramInt);
-      if (this.browserModel != null) {
-        this.browserModel.updateList(paramList);
-      }
-      if (this.browserScene != null) {
-        this.browserScene.notifyImageModelDataChanged();
-      }
-      return;
+      ((MainBrowserModel)localObject).updateList(paramList);
+      this.browserModel.setSelectedIndex(paramInt);
+    }
+    paramList = this.browserScene;
+    if (paramList != null) {
+      paramList.notifyImageModelDataChanged();
     }
   }
   
   public void notifyProgress(String paramString, int paramInt)
   {
-    if (this.browserModel != null)
+    Object localObject = this.browserModel;
+    if (localObject != null)
     {
-      Object localObject = this.browserModel.getItem(paramString);
+      localObject = ((MainBrowserModel)localObject).getItem(paramString);
       if ((localObject != null) && (((RichMediaBrowserInfo)localObject).baseData != null))
       {
-        localObject = (BrowserBasePresenter)this.presenterMap.get(Integer.valueOf(((RichMediaBrowserInfo)localObject).baseData.getType()));
-        if (localObject != null) {
+        localObject = (IBasePresenterBuilder)this.presenterMap.get(Integer.valueOf(((RichMediaBrowserInfo)localObject).baseData.getType()));
+        if ((localObject instanceof BrowserBasePresenter)) {
           ((BrowserBasePresenter)localObject).notifyProgress(paramString, paramInt);
         }
       }
@@ -218,29 +250,15 @@ public class MainBrowserPresenter
   
   public void notifyResult(String paramString, int paramInt)
   {
-    if (this.browserModel != null)
+    Object localObject = this.browserModel;
+    if (localObject != null)
     {
-      Object localObject = this.browserModel.getItem(paramString);
+      localObject = ((MainBrowserModel)localObject).getItem(paramString);
       if ((localObject != null) && (((RichMediaBrowserInfo)localObject).baseData != null))
       {
-        localObject = (BrowserBasePresenter)this.presenterMap.get(Integer.valueOf(((RichMediaBrowserInfo)localObject).baseData.getType()));
-        if (localObject != null) {
+        localObject = (IBasePresenterBuilder)this.presenterMap.get(Integer.valueOf(((RichMediaBrowserInfo)localObject).baseData.getType()));
+        if ((localObject instanceof BrowserBasePresenter)) {
           ((BrowserBasePresenter)localObject).notifyResult(paramString, paramInt);
-        }
-      }
-    }
-  }
-  
-  public void notifyVideoUrl(String paramString1, String paramString2)
-  {
-    if (this.browserModel != null)
-    {
-      paramString1 = this.browserModel.getItem(paramString1);
-      if ((paramString1 != null) && (paramString1.baseData != null))
-      {
-        paramString1 = (BrowserBasePresenter)this.presenterMap.get(Integer.valueOf(paramString1.baseData.getType()));
-        if ((paramString1 instanceof VideoPresenter)) {
-          paramString1 = (VideoPresenter)paramString1;
         }
       }
     }
@@ -248,201 +266,286 @@ public class MainBrowserPresenter
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.browserScene != null) {
-      this.browserScene.onActivityResult(paramInt1, paramInt2, paramIntent);
+    Object localObject = this.activityEventListener;
+    if (localObject != null) {
+      ((IActivityEvent)localObject).onActivityResult(paramInt1, paramInt2, paramIntent);
+    }
+    localObject = getPresenter(getCurrentType());
+    if ((localObject instanceof BrowserBasePresenter)) {
+      ((BrowserBasePresenter)localObject).onActivityResult(paramInt1, paramInt2, paramIntent);
     }
   }
   
   public boolean onBackEvent()
   {
-    if (this.browserScene != null) {
-      return this.browserScene.back();
+    Object localObject = this.browserScene;
+    if (localObject != null) {
+      ((MainBrowserScene)localObject).back();
+    }
+    localObject = getPresenter(getCurrentType());
+    if ((localObject instanceof BrowserBasePresenter)) {
+      ((BrowserBasePresenter)localObject).onBackEvent();
+    }
+    localObject = this.activityEventListener;
+    if (localObject != null) {
+      return ((IActivityEvent)localObject).onBackEvent();
     }
     return false;
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    if (this.browserScene != null) {
-      this.browserScene.onConfigurationChanged(paramConfiguration);
+    Object localObject = this.browserScene;
+    if (localObject != null) {
+      ((MainBrowserScene)localObject).onConfigurationChanged(paramConfiguration);
+    }
+    localObject = this.activityEventListener;
+    if (localObject != null) {
+      ((IActivityEvent)localObject).onConfigurationChanged(paramConfiguration);
+    }
+    localObject = getPresenter(getCurrentType());
+    if ((localObject instanceof BrowserBasePresenter)) {
+      ((BrowserBasePresenter)localObject).onConfigurationChanged(paramConfiguration);
+    }
+  }
+  
+  public void onCreate(Bundle paramBundle)
+  {
+    Object localObject = this.activityEventListener;
+    if (localObject != null) {
+      ((IActivityEvent)localObject).onCreate(paramBundle);
+    }
+    localObject = getPresenter(getCurrentType());
+    if ((localObject instanceof BrowserBasePresenter)) {
+      ((BrowserBasePresenter)localObject).onCreate(paramBundle);
     }
   }
   
   public void onDestroy()
   {
-    Iterator localIterator = this.presenterMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    Object localObject1 = this.presenterMap.values().iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      BrowserBasePresenter localBrowserBasePresenter = (BrowserBasePresenter)((Map.Entry)localIterator.next()).getValue();
-      if (localBrowserBasePresenter != null) {
-        localBrowserBasePresenter.onDestroy();
+      Object localObject2 = (IBasePresenterBuilder)((Iterator)localObject1).next();
+      if ((localObject2 instanceof BrowserBasePresenter))
+      {
+        localObject2 = (BrowserBasePresenter)localObject2;
+        ((BrowserBasePresenter)localObject2).onDestroy();
+        if (((BrowserBasePresenter)localObject2).browserBaseView != null) {
+          ((BrowserBasePresenter)localObject2).browserBaseView.onDestroy();
+        }
       }
     }
-    this.presenterMap.clear();
-    if (this.browserScene != null) {
-      this.browserScene.onDestroy();
+    localObject1 = this.activityEventListener;
+    if (localObject1 != null) {
+      ((IActivityEvent)localObject1).onDestroy();
     }
-    HttpDownloadManager.getInstance().clean();
+    this.presenterMap.clear();
+    this.decoratorPresenterMap.clear();
+    localObject1 = this.browserScene;
+    if (localObject1 != null) {
+      ((MainBrowserScene)localObject1).onDestroy();
+    }
   }
   
   public void onDoubleTap()
   {
-    if (this.browserScene != null) {
-      this.browserScene.onDoubleTap();
+    MainBrowserScene localMainBrowserScene = this.browserScene;
+    if (localMainBrowserScene != null) {
+      localMainBrowserScene.onDoubleTap();
     }
   }
   
   public void onItemSelect(int paramInt)
   {
-    if (this.browserModel != null)
+    Object localObject = this.browserModel;
+    if (localObject != null)
     {
-      this.browserModel.setSelectedIndex(paramInt);
-      Object localObject = this.browserModel.getItem(paramInt);
+      ((MainBrowserModel)localObject).setSelectedIndex(paramInt);
+      localObject = this.browserModel.getItem(paramInt);
       if ((localObject != null) && (((RichMediaBrowserInfo)localObject).baseData != null))
       {
-        localObject = getPresenter(((RichMediaBrowserInfo)localObject).baseData.getType());
-        if (localObject != null)
+        BrowserAdapter.BrowserViewHolder localBrowserViewHolder = this.browserScene.getBrowserViewHolder(paramInt);
+        if (localBrowserViewHolder != null)
         {
-          if (this.browserScene.getCurrentView() != null) {
-            ((BrowserBasePresenter)localObject).setGalleryView(this.browserScene.getCurrentView());
+          if (localBrowserViewHolder.decoratorPresenter != null) {
+            this.decoratorPresenterMap.put(Integer.valueOf(((RichMediaBrowserInfo)localObject).baseData.getType()), localBrowserViewHolder.decoratorPresenter);
           }
-          BrowserLogHelper.getInstance().getGalleryLog().i("MainBrowserPresenter", 2, "onItemSelect position = " + paramInt + ", id = " + this.browserModel.getItem(paramInt).baseData.id);
-          ((BrowserBasePresenter)localObject).onItemSelect(paramInt);
+          if (localBrowserViewHolder.presenterBuilder != null) {
+            this.presenterMap.put(Integer.valueOf(((RichMediaBrowserInfo)localObject).baseData.getType()), localBrowserViewHolder.presenterBuilder);
+          }
+          if ((localBrowserViewHolder.presenterBuilder instanceof BrowserBasePresenter)) {
+            ((BrowserBasePresenter)localBrowserViewHolder.presenterBuilder).onItemSelect(paramInt);
+          }
         }
       }
     }
-    if (this.browserScene != null) {
-      this.browserScene.onItemSelected(paramInt);
+    localObject = this.browserScene;
+    if (localObject != null) {
+      ((MainBrowserScene)localObject).onItemSelected(paramInt);
     }
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.browserScene != null) {
-      return this.browserScene.onKeyDown(paramInt, paramKeyEvent);
+    Object localObject = getPresenter(getCurrentType());
+    if ((localObject instanceof BrowserBasePresenter)) {
+      ((BrowserBasePresenter)localObject).onKeyDown(paramInt, paramKeyEvent);
+    }
+    localObject = this.browserScene;
+    if (localObject != null) {
+      return ((MainBrowserScene)localObject).onKeyDown(paramInt, paramKeyEvent);
+    }
+    localObject = this.activityEventListener;
+    if (localObject != null) {
+      return ((IActivityEvent)localObject).onKeyDown(paramInt, paramKeyEvent);
     }
     return false;
   }
   
   public void onPause()
   {
-    if (this.browserScene != null) {
-      this.browserScene.onPause();
+    Object localObject = this.activityEventListener;
+    if (localObject != null) {
+      ((IActivityEvent)localObject).onPause();
+    }
+    localObject = getPresenter(getCurrentType());
+    if ((localObject instanceof BrowserBasePresenter)) {
+      ((BrowserBasePresenter)localObject).onPause();
     }
   }
   
   public void onResume()
   {
-    if (this.browserScene != null) {
-      this.browserScene.onResume();
+    Object localObject = this.activityEventListener;
+    if (localObject != null) {
+      ((IActivityEvent)localObject).onResume();
+    }
+    localObject = getPresenter(getCurrentType());
+    if ((localObject instanceof BrowserBasePresenter)) {
+      ((BrowserBasePresenter)localObject).onResume();
     }
   }
   
   public void onScale()
   {
-    if (this.browserScene != null) {
-      this.browserScene.onScale();
+    MainBrowserScene localMainBrowserScene = this.browserScene;
+    if (localMainBrowserScene != null) {
+      localMainBrowserScene.onScale();
     }
   }
   
   public void onScaleBegin()
   {
-    if (this.browserScene != null) {
-      this.browserScene.onScaleBegin();
+    MainBrowserScene localMainBrowserScene = this.browserScene;
+    if (localMainBrowserScene != null) {
+      localMainBrowserScene.onScaleBegin();
     }
   }
   
   public void onScaleEnd()
   {
-    if (this.browserScene != null) {
-      this.browserScene.onScaleEnd();
+    MainBrowserScene localMainBrowserScene = this.browserScene;
+    if (localMainBrowserScene != null) {
+      localMainBrowserScene.onScaleEnd();
     }
   }
   
   public void onShowAreaChanged(View paramView, RegionDrawableData paramRegionDrawableData)
   {
-    if (this.browserScene != null) {
-      this.browserScene.onShowAreaChanged(getCurrentPosition(), paramView, paramRegionDrawableData);
+    MainBrowserScene localMainBrowserScene = this.browserScene;
+    if (localMainBrowserScene != null) {
+      localMainBrowserScene.onShowAreaChanged(getCurrentPosition(), paramView, paramRegionDrawableData);
     }
   }
   
   public void onStart()
   {
-    if (this.browserScene != null) {
-      this.browserScene.onStart();
+    Object localObject = this.activityEventListener;
+    if (localObject != null) {
+      ((IActivityEvent)localObject).onStart();
+    }
+    localObject = getPresenter(getCurrentType());
+    if ((localObject instanceof BrowserBasePresenter)) {
+      ((BrowserBasePresenter)localObject).onStart();
     }
   }
   
   public void onStop()
   {
-    if (this.browserScene != null) {
-      this.browserScene.onStop();
+    Object localObject = this.activityEventListener;
+    if (localObject != null) {
+      ((IActivityEvent)localObject).onStop();
+    }
+    localObject = getPresenter(getCurrentType());
+    if ((localObject instanceof BrowserBasePresenter)) {
+      ((BrowserBasePresenter)localObject).onStop();
     }
   }
   
   public void onWindowFocusChanged()
   {
-    if (this.browserScene != null) {
-      this.browserScene.onWindowFocusChanged();
+    Object localObject = this.browserScene;
+    if (localObject != null) {
+      ((MainBrowserScene)localObject).onWindowFocusChanged();
     }
-  }
-  
-  public void preInitItem(int paramInt)
-  {
-    BrowserLogHelper.getInstance().getGalleryLog().d("MainBrowserPresenter", 4, "preInitItem position = " + paramInt);
-    if (this.browserModel != null)
-    {
-      Object localObject = this.browserModel.getItem(paramInt);
-      if ((localObject != null) && (((RichMediaBrowserInfo)localObject).baseData != null))
-      {
-        localObject = getPresenter(((RichMediaBrowserInfo)localObject).baseData.getType());
-        if (localObject != null) {
-          ((BrowserBasePresenter)localObject).preInitItem(paramInt);
-        }
-      }
+    localObject = this.activityEventListener;
+    if (localObject != null) {
+      ((IActivityEvent)localObject).onWindowFocusChanged();
+    }
+    localObject = getPresenter(getCurrentType());
+    if ((localObject instanceof BrowserBasePresenter)) {
+      ((BrowserBasePresenter)localObject).onWindowFocusChanged();
     }
   }
   
   public void requestDisallowInterceptDragEvent(boolean paramBoolean)
   {
-    if (this.browserScene != null) {
-      this.browserScene.requestDisallowInterceptDragEvent(paramBoolean);
+    MainBrowserScene localMainBrowserScene = this.browserScene;
+    if (localMainBrowserScene != null) {
+      localMainBrowserScene.requestDisallowInterceptDragEvent(paramBoolean);
     }
   }
   
   public void requestDisallowInterceptTouchEvent(boolean paramBoolean)
   {
-    if (this.browserScene != null) {
-      this.browserScene.requestDisallowInterceptTouchEvent(paramBoolean);
+    MainBrowserScene localMainBrowserScene = this.browserScene;
+    if (localMainBrowserScene != null) {
+      localMainBrowserScene.requestDisallowInterceptTouchEvent(paramBoolean);
     }
   }
   
-  public void resetItemView(int paramInt)
+  public void resetItemView(int paramInt) {}
+  
+  public void setActivityEventListener(IActivityEvent paramIActivityEvent)
   {
-    Object localObject = this.baseModel.getItem(paramInt);
-    if ((localObject != null) && (((RichMediaBrowserInfo)localObject).baseData != null))
-    {
-      localObject = getPresenter(((RichMediaBrowserInfo)localObject).baseData.getType());
-      if ((localObject != null) && (((BrowserBasePresenter)localObject).browserBaseView != null)) {
-        ((BrowserBasePresenter)localObject).browserBaseView.reset();
-      }
+    this.activityEventListener = paramIActivityEvent;
+  }
+  
+  public void setBrowserModel(IBaseModelBuilder paramIBaseModelBuilder)
+  {
+    if ((paramIBaseModelBuilder instanceof MainBrowserModel)) {
+      this.browserModel = ((MainBrowserModel)paramIBaseModelBuilder);
     }
   }
   
-  public void setGalleryModel(MainBrowserModel paramMainBrowserModel)
-  {
-    this.browserModel = paramMainBrowserModel;
-    super.setGalleryModel(paramMainBrowserModel);
-  }
-  
-  public void setGalleryScene(MainBrowserScene paramMainBrowserScene)
+  public void setBrowserScene(MainBrowserScene paramMainBrowserScene)
   {
     this.browserScene = paramMainBrowserScene;
   }
+  
+  public void setBrowserView(IBaseViewBuilder paramIBaseViewBuilder) {}
+  
+  public void setParamsBuilder(BrowserParamsBuilder paramBrowserParamsBuilder)
+  {
+    this.paramsBuilder = paramBrowserParamsBuilder;
+  }
+  
+  public void setRelyPresenter(IBasePresenterBuilder paramIBasePresenterBuilder) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmediabrowser.presenter.MainBrowserPresenter
  * JD-Core Version:    0.7.0.1
  */

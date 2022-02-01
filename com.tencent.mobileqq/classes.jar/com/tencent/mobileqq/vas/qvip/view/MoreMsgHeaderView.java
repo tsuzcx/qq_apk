@@ -22,20 +22,20 @@ public class MoreMsgHeaderView
   public void a(QQVipMsgInfo paramQQVipMsgInfo, Activity paramActivity, int paramInt)
   {
     paramQQVipMsgInfo = new TextView(getContext());
-    paramQQVipMsgInfo.setText(HardCodeUtil.a(2131706888));
+    paramQQVipMsgInfo.setText(HardCodeUtil.a(2131706910));
     paramQQVipMsgInfo.setTextColor(-16777216);
     paramQQVipMsgInfo.setAlpha(0.5F);
     paramQQVipMsgInfo.setEms(1);
     paramActivity = new RelativeLayout.LayoutParams(-2, -2);
     paramActivity.addRule(9);
     paramActivity.addRule(15);
-    paramActivity.leftMargin = AIOUtils.a(50.0F, BaseApplicationImpl.getApplication().getResources());
+    paramActivity.leftMargin = AIOUtils.b(50.0F, BaseApplicationImpl.getApplication().getResources());
     addView(paramQQVipMsgInfo, paramActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.view.MoreMsgHeaderView
  * JD-Core Version:    0.7.0.1
  */

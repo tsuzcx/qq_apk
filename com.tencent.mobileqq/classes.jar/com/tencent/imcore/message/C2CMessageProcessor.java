@@ -2,77 +2,19 @@ package com.tencent.imcore.message;
 
 import OnlinePushPack.DelMsgInfo;
 import PushNotifyPack.C2CMsgReadedNotify;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Pair;
-import com.etrump.mixlayout.ETDIYUtil;
-import com.tencent.biz.now.NowLiveManager;
-import com.tencent.biz.officialaccount.OfficialAccountReporter;
-import com.tencent.biz.officialaccount.OfficialAccountReporter.Reporter;
-import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.UserguideActivity;
-import com.tencent.mobileqq.activity.aio.XMLMessageUtils;
-import com.tencent.mobileqq.activity.recent.AppletsFolderManager;
-import com.tencent.mobileqq.activity.recent.msgbox.TempMsgBoxManager;
-import com.tencent.mobileqq.activity.recent.msgbox.TempMsgBoxUtil;
-import com.tencent.mobileqq.apollo.api.IApolloManagerService;
-import com.tencent.mobileqq.apollo.api.model.ApolloBaseInfo;
-import com.tencent.mobileqq.apollo.api.model.ApolloMessage;
-import com.tencent.mobileqq.apollo.api.model.MessageForApollo;
-import com.tencent.mobileqq.apollo.api.statistics.product.IApollo644ReportHelper;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.MessageHandlerUtils;
-import com.tencent.mobileqq.app.MessageRoamManager;
-import com.tencent.mobileqq.app.NearbyFlowerManager;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.SVIPHandler;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.asyncdb.cache.RoamDateCache;
-import com.tencent.mobileqq.app.message.GiftMessageUtils;
-import com.tencent.mobileqq.app.message.MessageStatisticHelper;
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
-import com.tencent.mobileqq.app.msgnotify.MsgNotifyManager;
-import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
-import com.tencent.mobileqq.applets.PublicAccountEventReport;
-import com.tencent.mobileqq.confess.ConfessMsgUtil;
-import com.tencent.mobileqq.data.Card;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BaseMessageHandler;
+import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.data.ConversationInfo;
-import com.tencent.mobileqq.data.ConversationInfoErrorReporter;
-import com.tencent.mobileqq.data.MessageForMarketFace;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForPoke;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageForText;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.PAMessage;
-import com.tencent.mobileqq.dating.MsgBoxProtocol;
-import com.tencent.mobileqq.dpc.api.IDPCApi;
-import com.tencent.mobileqq.dpc.enumname.DPCNames;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
-import com.tencent.mobileqq.filemanager.fileassistant.util.QFileAssistantUtils;
-import com.tencent.mobileqq.gamecenter.message.TinyMsgCodec;
-import com.tencent.mobileqq.limitchat.LimitChatUtil;
-import com.tencent.mobileqq.model.CommercialDrainageManager;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.nearby.NearbyCardManager;
-import com.tencent.mobileqq.nearby.NearbyFlowerMessage;
+import com.tencent.mobileqq.msg.api.IConversationFacade;
+import com.tencent.mobileqq.msg.api.IMessageFacade;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -80,27 +22,12 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.relationx.icebreaking.IceBreakingUtil;
 import com.tencent.mobileqq.service.message.DecodeProtoPkgContext;
-import com.tencent.mobileqq.service.message.FriendShieldUtils;
 import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.mobileqq.service.message.MessageProtoCodec;
-import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.service.message.PBDecodeContext;
 import com.tencent.mobileqq.service.message.codec.decoder.C2CMessageDecoderGenerator;
 import com.tencent.mobileqq.service.message.codec.decoder.Decoder;
-import com.tencent.mobileqq.service.message.remote.MessageRecordInfo;
-import com.tencent.mobileqq.statistics.FightMsgReporter;
-import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.streamtransfile.StreamDataManager;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.transfile.PttInfoCollector;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
-import com.tencent.mobileqq.util.NoDisturbUtil;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -114,7 +41,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import msf.msgcomm.msg_comm.AppShareInfo;
 import msf.msgcomm.msg_comm.C2CTmpMsgHead;
@@ -131,540 +57,189 @@ import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
 import msf.msgsvc.msg_svc.PbSearchRoamMsgInCloudResp;
 import msf.onlinepush.msg_onlinepush.PbPushMsg;
 import org.jetbrains.annotations.Nullable;
-import tencent.im.msg.hummer.resv.generalflags.ResvAttr;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.GeneralFlags;
 import tencent.im.msg.im_msg_body.MsgBody;
-import tencent.im.msg.im_msg_body.PubAccInfo;
-import tencent.im.msg.im_msg_body.RichText;
 import tencent.im.oidb.searcher.oidb_c2c_searcher.RspBody;
 
 public class C2CMessageProcessor
   extends BaseMessageProcessor
 {
-  public int a;
+  public static C2CMessageProcessor.Callback a;
   public Comparator a;
-  HashSet<String> jdField_a_of_type_JavaUtilHashSet = null;
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean = false;
-  public int b;
-  HashSet<String> jdField_b_of_type_JavaUtilHashSet = null;
-  private Set<String> jdField_b_of_type_JavaUtilSet = new HashSet();
-  public int c;
-  public int d;
-  public int e = 0;
-  public int f = 1;
-  public int g = 5;
-  public int h = 10;
-  public int i = 50;
-  public int j = 0;
+  private Set<String> a;
+  private Set<String> b = new HashSet();
   
-  public C2CMessageProcessor(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
+  static {}
+  
+  public C2CMessageProcessor(AppInterface paramAppInterface, BaseMessageHandler paramBaseMessageHandler)
   {
-    super(paramQQAppInterface, paramMessageHandler);
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Int = 3;
-    this.jdField_c_of_type_Int = 10;
-    this.jdField_d_of_type_Int = 30;
+    super(paramAppInterface, paramBaseMessageHandler);
     this.jdField_a_of_type_JavaUtilComparator = new C2CMessageProcessor.1(this);
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+  }
+  
+  private int a()
+  {
+    return jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(this);
   }
   
   private int a(byte paramByte, msg_comm.UinPairMsg paramUinPairMsg, String paramString, int paramInt)
   {
-    int k;
-    int m;
+    IMessageFacade localIMessageFacade = (IMessageFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "");
     if ((paramUinPairMsg.c2c_type.has()) && (paramUinPairMsg.service_type.has()))
     {
-      k = paramUinPairMsg.c2c_type.get();
-      m = paramUinPairMsg.service_type.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.C2CMessageProcessor", 2, "<---decodeC2CMessagePackage : peerUin:" + paramString + "c2cType:" + k + " serviceType:" + m + " channelType:" + paramByte);
+      int i = paramUinPairMsg.c2c_type.get();
+      int j = paramUinPairMsg.service_type.get();
+      if (QLog.isColorLevel())
+      {
+        paramUinPairMsg = new StringBuilder();
+        paramUinPairMsg.append("<---decodeC2CMessagePackage : peerUin:");
+        paramUinPairMsg.append(paramString);
+        paramUinPairMsg.append("c2cType:");
+        paramUinPairMsg.append(i);
+        paramUinPairMsg.append(" serviceType:");
+        paramUinPairMsg.append(j);
+        paramUinPairMsg.append(" channelType:");
+        paramUinPairMsg.append(paramByte);
+        QLog.d("Q.msg.C2CMessageProcessor", 2, paramUinPairMsg.toString());
       }
-      if ((k == 1) && (m == 130)) {
-        paramByte = 1006;
+      if ((i == 1) && (j == 130)) {
+        return 1006;
       }
+      if ((i == 1) && (j == 164)) {
+        return 10007;
+      }
+      if ((i == 2) && (j == 0)) {
+        return 1000;
+      }
+      if ((i == 2) && (j == 1)) {
+        return 1004;
+      }
+      if ((i == 1) && (j == 133)) {
+        return 1023;
+      }
+      if ((i == 1) && (j == 134)) {
+        return 1022;
+      }
+      if ((i == 1) && (j == 167)) {
+        return 10010;
+      }
+      return localIMessageFacade.getLastMessage(paramString, paramInt).istroop;
     }
-    for (;;)
-    {
-      ConversationInfoErrorReporter.reportTypeError(paramByte, "get Error pkgUinType: " + paramByte + ", uin: " + paramString);
-      return paramByte;
-      if ((k == 1) && (m == 164))
-      {
-        paramByte = 10007;
-      }
-      else if ((k == 2) && (m == 0))
-      {
-        paramByte = 1000;
-      }
-      else if ((k == 2) && (m == 1))
-      {
-        paramByte = 1004;
-      }
-      else if ((k == 1) && (m == 133))
-      {
-        paramByte = 1023;
-      }
-      else if ((k == 1) && (m == 134))
-      {
-        paramByte = 1022;
-      }
-      else if ((k == 1) && (m == 167))
-      {
-        paramByte = 10010;
-      }
-      else
-      {
-        paramByte = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramString, paramInt).istroop;
-        continue;
-        paramByte = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramString, paramInt).istroop;
-      }
-    }
-  }
-  
-  private int a(msg_comm.Msg paramMsg)
-  {
-    k = -1;
-    m = k;
-    for (;;)
-    {
-      try
-      {
-        paramMsg = ((im_msg_body.RichText)((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.get()).elems.get();
-        n = k;
-        if (paramMsg != null)
-        {
-          n = k;
-          m = k;
-          if (paramMsg.size() > 0)
-          {
-            i2 = 0;
-            n = k;
-            m = k;
-            if (i2 < paramMsg.size())
-            {
-              m = k;
-              localElem = (im_msg_body.Elem)paramMsg.get(i2);
-              m = k;
-              if (!localElem.general_flags.has()) {
-                continue;
-              }
-              m = k;
-              boolean bool = localElem.general_flags.bytes_pb_reserve.has();
-              if (!bool) {
-                continue;
-              }
-              i1 = k;
-              m = k;
-            }
-          }
-        }
-      }
-      catch (Throwable paramMsg)
-      {
-        int n;
-        int i2;
-        im_msg_body.Elem localElem;
-        int i1;
-        generalflags.ResvAttr localResvAttr;
-        k = m;
-        continue;
-        continue;
-      }
-      try
-      {
-        localResvAttr = new generalflags.ResvAttr();
-        i1 = k;
-        m = k;
-        localResvAttr.mergeFrom(localElem.general_flags.bytes_pb_reserve.get().toByteArray());
-        i1 = k;
-        m = k;
-        if (localResvAttr.uint32_show_in_msg_list.has())
-        {
-          i1 = k;
-          m = k;
-          k = localResvAttr.uint32_show_in_msg_list.get();
-          n = k;
-          i1 = k;
-          m = k;
-          if (QLog.isColorLevel())
-          {
-            i1 = k;
-            m = k;
-            QLog.d("Q.msg.C2CMessageProcessor", 2, "----------handleMsgPush_PB_SlaveMaster has uint32ShowInMsgList:" + k);
-            n = k;
-          }
-          return n;
-        }
-      }
-      catch (Exception localException)
-      {
-        k = i1;
-        try
-        {
-          QLog.e("msgFold", 1, "prase ResvAttr error, ", localException);
-        }
-        catch (Throwable paramMsg)
-        {
-          QLog.e("Q.msg.C2CMessageProcessor", 2, "<---decodeSinglePBMsg_C2C: ", paramMsg);
-          return k;
-        }
-      }
-      i2 += 1;
-    }
+    return localIMessageFacade.getLastMessage(paramString, paramInt).istroop;
   }
   
   private int a(msg_svc.PbGetMsgResp paramPbGetMsgResp, byte[] paramArrayOfByte)
   {
-    byte[] arrayOfByte = null;
+    byte[] arrayOfByte;
     if (paramPbGetMsgResp.pubaccount_cookie.has()) {
       arrayOfByte = paramPbGetMsgResp.pubaccount_cookie.get().toByteArray();
+    } else {
+      arrayOfByte = null;
     }
-    int k = 0;
+    int i = 0;
     if (paramPbGetMsgResp.msg_rsp_type.has()) {
-      k = paramPbGetMsgResp.msg_rsp_type.get();
+      i = paramPbGetMsgResp.msg_rsp_type.get();
     }
-    a(paramArrayOfByte, arrayOfByte, k);
-    return k;
+    a(paramArrayOfByte, arrayOfByte, i);
+    return i;
   }
   
-  /* Error */
   private long a(byte paramByte, boolean paramBoolean1, boolean paramBoolean2, long paramLong, StringBuilder paramStringBuilder, List<msg_comm.UinPairMsg> paramList, int paramInt)
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore 9
-    //   3: iload 9
-    //   5: aload 7
-    //   7: invokeinterface 189 1 0
-    //   12: if_icmpge +449 -> 461
-    //   15: invokestatic 257	java/lang/System:currentTimeMillis	()J
-    //   18: lstore 4
-    //   20: aload 7
-    //   22: iload 9
-    //   24: invokeinterface 192 2 0
-    //   29: checkcast 71	msf/msgcomm/msg_comm$UinPairMsg
-    //   32: astore 17
-    //   34: aload 17
-    //   36: getfield 261	msf/msgcomm/msg_comm$UinPairMsg:peer_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   39: invokevirtual 265	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   42: invokestatic 271	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   45: astore 16
-    //   47: aload 17
-    //   49: getfield 274	msf/msgcomm/msg_comm$UinPairMsg:last_read_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   52: invokevirtual 88	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   55: i2l
-    //   56: ldc2_w 275
-    //   59: land
-    //   60: lstore 13
-    //   62: aload 17
-    //   64: getfield 279	msf/msgcomm/msg_comm$UinPairMsg:msg	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   67: invokevirtual 184	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   70: astore 18
-    //   72: aload 17
-    //   74: getfield 282	msf/msgcomm/msg_comm$UinPairMsg:msg_completed	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   77: invokevirtual 81	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   80: ifeq +285 -> 365
-    //   83: aload 17
-    //   85: getfield 282	msf/msgcomm/msg_comm$UinPairMsg:msg_completed	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   88: invokevirtual 88	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   91: ifeq +274 -> 365
-    //   94: iconst_1
-    //   95: istore 11
-    //   97: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   100: ifeq +81 -> 181
-    //   103: aload 6
-    //   105: iconst_0
-    //   106: invokevirtual 286	java/lang/StringBuilder:setLength	(I)V
-    //   109: aload 6
-    //   111: ldc_w 288
-    //   114: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   117: aload 16
-    //   119: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   122: ldc_w 290
-    //   125: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   128: iload 11
-    //   130: invokevirtual 293	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   133: ldc_w 295
-    //   136: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   139: lload 13
-    //   141: invokevirtual 298	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   144: ldc_w 300
-    //   147: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   150: astore 19
-    //   152: aload 18
-    //   154: ifnonnull +217 -> 371
-    //   157: ldc_w 302
-    //   160: astore 15
-    //   162: aload 19
-    //   164: aload 15
-    //   166: invokevirtual 305	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   169: pop
-    //   170: ldc 95
-    //   172: iconst_2
-    //   173: aload 6
-    //   175: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   178: invokestatic 120	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   181: iconst_0
-    //   182: istore 12
-    //   184: aload 18
-    //   186: ifnull +253 -> 439
-    //   189: aload 18
-    //   191: invokeinterface 189 1 0
-    //   196: ifle +243 -> 439
-    //   199: aload 18
-    //   201: invokeinterface 189 1 0
-    //   206: iconst_1
-    //   207: if_icmple +12 -> 219
-    //   210: aload 18
-    //   212: aload_0
-    //   213: getfield 52	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_JavaUtilComparator	Ljava/util/Comparator;
-    //   216: invokestatic 311	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
-    //   219: aload_0
-    //   220: getfield 133	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   223: getstatic 316	com/tencent/mobileqq/app/QQManagerFactory:FRIENDS_MANAGER	I
-    //   226: invokevirtual 320	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   229: checkcast 322	com/tencent/mobileqq/app/FriendsManager
-    //   232: aload 18
-    //   234: iconst_0
-    //   235: invokeinterface 192 2 0
-    //   240: checkcast 159	msf/msgcomm/msg_comm$Msg
-    //   243: getfield 326	msf/msgcomm/msg_comm$Msg:msg_head	Lmsf/msgcomm/msg_comm$MsgHead;
-    //   246: invokevirtual 329	msf/msgcomm/msg_comm$MsgHead:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   249: checkcast 328	msf/msgcomm/msg_comm$MsgHead
-    //   252: getfield 332	msf/msgcomm/msg_comm$MsgHead:from_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   255: invokevirtual 265	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   258: invokevirtual 335	com/tencent/mobileqq/app/FriendsManager:a	(J)V
-    //   261: aload_0
-    //   262: getfield 338	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
-    //   265: aload 16
-    //   267: iconst_0
-    //   268: invokevirtual 343	com/tencent/mobileqq/app/MessageHandler:a	(Ljava/lang/String;I)Ljava/lang/Object;
-    //   271: astore 19
-    //   273: aload 19
-    //   275: monitorenter
-    //   276: aload_0
-    //   277: aload 16
-    //   279: aload 17
-    //   281: lload 13
-    //   283: iload 11
-    //   285: iload_2
-    //   286: iload_3
-    //   287: invokespecial 346	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/lang/String;Lmsf/msgcomm/msg_comm$UinPairMsg;JZZZ)Landroid/util/Pair;
-    //   290: astore 16
-    //   292: aload 16
-    //   294: getfield 352	android/util/Pair:first	Ljava/lang/Object;
-    //   297: checkcast 267	java/lang/String
-    //   300: astore 15
-    //   302: aload 16
-    //   304: getfield 355	android/util/Pair:second	Ljava/lang/Object;
-    //   307: checkcast 357	java/lang/Integer
-    //   310: invokevirtual 360	java/lang/Integer:intValue	()I
-    //   313: istore 10
-    //   315: aload 19
-    //   317: monitorexit
-    //   318: aload_0
-    //   319: iload_1
-    //   320: aload 15
-    //   322: aload 18
-    //   324: iload 11
-    //   326: invokespecial 363	com/tencent/imcore/message/C2CMessageProcessor:a	(BLjava/lang/String;Ljava/util/List;Z)V
-    //   329: iload 12
-    //   331: istore 11
-    //   333: iload_2
-    //   334: ifeq +22 -> 356
-    //   337: aload_0
-    //   338: iload_1
-    //   339: iload 8
-    //   341: lload 13
-    //   343: aload 17
-    //   345: aload 15
-    //   347: iload 10
-    //   349: aload 18
-    //   351: iload 11
-    //   353: invokespecial 366	com/tencent/imcore/message/C2CMessageProcessor:a	(BIJLmsf/msgcomm/msg_comm$UinPairMsg;Ljava/lang/String;ILjava/util/List;Z)V
-    //   356: iload 9
-    //   358: iconst_1
-    //   359: iadd
-    //   360: istore 9
-    //   362: goto -359 -> 3
-    //   365: iconst_0
-    //   366: istore 11
-    //   368: goto -271 -> 97
-    //   371: aload 18
-    //   373: invokeinterface 189 1 0
-    //   378: invokestatic 369	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   381: astore 15
-    //   383: goto -221 -> 162
-    //   386: astore 15
-    //   388: aload 19
-    //   390: monitorexit
-    //   391: aload 15
-    //   393: athrow
-    //   394: astore 15
-    //   396: aload 15
-    //   398: invokevirtual 372	java/lang/Exception:printStackTrace	()V
-    //   401: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   404: ifeq -48 -> 356
-    //   407: ldc 95
-    //   409: iconst_2
-    //   410: new 97	java/lang/StringBuilder
-    //   413: dup
-    //   414: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   417: ldc_w 374
-    //   420: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   423: aload 15
-    //   425: invokevirtual 305	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   428: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   431: aload 15
-    //   433: invokestatic 236	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   436: goto -80 -> 356
-    //   439: aload_0
-    //   440: iload_1
-    //   441: aload 17
-    //   443: aload 16
-    //   445: iconst_0
-    //   446: invokespecial 376	com/tencent/imcore/message/C2CMessageProcessor:a	(BLmsf/msgcomm/msg_comm$UinPairMsg;Ljava/lang/String;I)I
-    //   449: istore 10
-    //   451: iconst_1
-    //   452: istore 11
-    //   454: aload 16
-    //   456: astore 15
-    //   458: goto -125 -> 333
-    //   461: lload 4
-    //   463: lreturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	464	0	this	C2CMessageProcessor
-    //   0	464	1	paramByte	byte
-    //   0	464	2	paramBoolean1	boolean
-    //   0	464	3	paramBoolean2	boolean
-    //   0	464	4	paramLong	long
-    //   0	464	6	paramStringBuilder	StringBuilder
-    //   0	464	7	paramList	List<msg_comm.UinPairMsg>
-    //   0	464	8	paramInt	int
-    //   1	360	9	k	int
-    //   313	137	10	m	int
-    //   95	358	11	bool1	boolean
-    //   182	148	12	bool2	boolean
-    //   60	282	13	l	long
-    //   160	222	15	localObject1	Object
-    //   386	6	15	localObject2	Object
-    //   394	38	15	localException	Exception
-    //   456	1	15	localObject3	Object
-    //   45	410	16	localObject4	Object
-    //   32	410	17	localUinPairMsg	msg_comm.UinPairMsg
-    //   70	302	18	localList	List
-    // Exception table:
-    //   from	to	target	type
-    //   276	318	386	finally
-    //   388	391	386	finally
-    //   261	276	394	java/lang/Exception
-    //   391	394	394	java/lang/Exception
-  }
-  
-  private long a(String paramString, int paramInt)
-  {
-    long l = -1L;
-    if (paramInt == 1006)
+    int i = 0;
+    int k = 0;
+    while (k < paramList.size())
     {
-      paramString = ContactUtils.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
-      if (!TextUtils.isEmpty(paramString)) {
-        l = Long.valueOf(paramString).longValue();
+      paramLong = System.currentTimeMillis();
+      msg_comm.UinPairMsg localUinPairMsg = (msg_comm.UinPairMsg)paramList.get(k);
+      ??? = String.valueOf(localUinPairMsg.peer_uin.get());
+      long l = localUinPairMsg.last_read_time.get() & 0xFFFFFFFF;
+      List localList = localUinPairMsg.msg.get();
+      boolean bool;
+      if ((localUinPairMsg.msg_completed.has()) && (localUinPairMsg.msg_completed.get() != 0)) {
+        bool = true;
+      } else {
+        bool = false;
       }
-      return l;
+      Object localObject1;
+      if (QLog.isColorLevel())
+      {
+        paramStringBuilder.setLength(i);
+        paramStringBuilder.append("<---handleGetC2CMessageResp pkgPeerUin:");
+        paramStringBuilder.append((String)???);
+        paramStringBuilder.append(" uMsgCompleted:");
+        paramStringBuilder.append(bool);
+        paramStringBuilder.append(" lastReadTime:");
+        paramStringBuilder.append(l);
+        paramStringBuilder.append(" msgListSize:");
+        if (localList == null) {
+          localObject1 = "null";
+        } else {
+          localObject1 = Integer.valueOf(localList.size());
+        }
+        paramStringBuilder.append(localObject1);
+        QLog.d("Q.msg.C2CMessageProcessor", 2, paramStringBuilder.toString());
+      }
+      int m;
+      int j;
+      if ((localList != null) && (localList.size() > 0))
+      {
+        if (localList.size() > 1) {
+          Collections.sort(localList, this.jdField_a_of_type_JavaUtilComparator);
+        }
+        b(localList);
+        try
+        {
+          synchronized (this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a((String)???, i))
+          {
+            Pair localPair = a(localUinPairMsg, l, bool, paramBoolean1, paramBoolean2);
+            localObject1 = (String)localPair.first;
+            m = ((Integer)localPair.second).intValue();
+            a(paramByte, (String)localObject1, localList, bool);
+            i = 0;
+            bool = false;
+          }
+          m = a(paramByte, localUinPairMsg, (String)???, i);
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+          if (QLog.isColorLevel())
+          {
+            ??? = new StringBuilder();
+            ((StringBuilder)???).append("decodeC2CMessagePackage error ");
+            ((StringBuilder)???).append(localException);
+            QLog.e("Q.msg.C2CMessageProcessor", 2, ((StringBuilder)???).toString(), localException);
+          }
+          j = 0;
+        }
+      }
+      else
+      {
+        b((String)???, m);
+        Object localObject3 = ???;
+        bool = true;
+        j = i;
+        if (paramBoolean1)
+        {
+          a(paramByte, paramInt, l, localUinPairMsg, localObject3, m, localList, bool);
+          j = i;
+        }
+      }
+      k += 1;
+      i = j;
     }
-    return Long.valueOf(paramString).longValue();
+    return paramLong;
   }
   
-  /* Error */
-  private long a(msg_comm.Msg paramMsg, long paramLong)
+  private long a(int paramInt1, int paramInt2)
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: getfield 163	msf/msgcomm/msg_comm$Msg:msg_body	Ltencent/im/msg/im_msg_body$MsgBody;
-    //   4: invokevirtual 168	tencent/im/msg/im_msg_body$MsgBody:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   7: checkcast 165	tencent/im/msg/im_msg_body$MsgBody
-    //   10: getfield 172	tencent/im/msg/im_msg_body$MsgBody:rich_text	Ltencent/im/msg/im_msg_body$RichText;
-    //   13: invokevirtual 175	tencent/im/msg/im_msg_body$RichText:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   16: checkcast 174	tencent/im/msg/im_msg_body$RichText
-    //   19: getfield 179	tencent/im/msg/im_msg_body$RichText:elems	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   22: invokevirtual 184	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   25: astore_1
-    //   26: lload_2
-    //   27: lstore 5
-    //   29: aload_1
-    //   30: ifnull +121 -> 151
-    //   33: aload_1
-    //   34: invokeinterface 189 1 0
-    //   39: istore 4
-    //   41: lload_2
-    //   42: lstore 5
-    //   44: iload 4
-    //   46: ifle +105 -> 151
-    //   49: iconst_0
-    //   50: istore 4
-    //   52: iload 4
-    //   54: aload_1
-    //   55: invokeinterface 189 1 0
-    //   60: if_icmpge +101 -> 161
-    //   63: aload_1
-    //   64: iload 4
-    //   66: invokeinterface 192 2 0
-    //   71: checkcast 194	tencent/im/msg/im_msg_body$Elem
-    //   74: astore 7
-    //   76: aload 7
-    //   78: getfield 405	tencent/im/msg/im_msg_body$Elem:elem_flags2	Ltencent/im/msg/im_msg_body$ElemFlags2;
-    //   81: invokevirtual 408	tencent/im/msg/im_msg_body$ElemFlags2:has	()Z
-    //   84: ifeq +74 -> 158
-    //   87: aload 7
-    //   89: getfield 405	tencent/im/msg/im_msg_body$Elem:elem_flags2	Ltencent/im/msg/im_msg_body$ElemFlags2;
-    //   92: invokevirtual 409	tencent/im/msg/im_msg_body$ElemFlags2:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   95: checkcast 407	tencent/im/msg/im_msg_body$ElemFlags2
-    //   98: getfield 412	tencent/im/msg/im_msg_body$ElemFlags2:uint64_msg_id	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   101: invokevirtual 413	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
-    //   104: ifeq +54 -> 158
-    //   107: aload 7
-    //   109: getfield 405	tencent/im/msg/im_msg_body$Elem:elem_flags2	Ltencent/im/msg/im_msg_body$ElemFlags2;
-    //   112: invokevirtual 409	tencent/im/msg/im_msg_body$ElemFlags2:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   115: checkcast 407	tencent/im/msg/im_msg_body$ElemFlags2
-    //   118: getfield 412	tencent/im/msg/im_msg_body$ElemFlags2:uint64_msg_id	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   121: invokevirtual 265	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   124: lstore 5
-    //   126: lload 5
-    //   128: lstore_2
-    //   129: iload 4
-    //   131: iconst_1
-    //   132: iadd
-    //   133: istore 4
-    //   135: goto -83 -> 52
-    //   138: astore_1
-    //   139: ldc 95
-    //   141: iconst_2
-    //   142: ldc 238
-    //   144: aload_1
-    //   145: invokestatic 236	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   148: lload_2
-    //   149: lstore 5
-    //   151: lload 5
-    //   153: lreturn
-    //   154: astore_1
-    //   155: goto -16 -> 139
-    //   158: goto -29 -> 129
-    //   161: lload_2
-    //   162: lreturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	163	0	this	C2CMessageProcessor
-    //   0	163	1	paramMsg	msg_comm.Msg
-    //   0	163	2	paramLong	long
-    //   39	95	4	k	int
-    //   27	125	5	l	long
-    //   74	34	7	localElem	im_msg_body.Elem
-    // Exception table:
-    //   from	to	target	type
-    //   0	26	138	java/lang/Throwable
-    //   33	41	138	java/lang/Throwable
-    //   52	126	154	java/lang/Throwable
+    return jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramInt1, paramInt2);
+  }
+  
+  private long a(long paramLong1, long paramLong2, long paramLong3)
+  {
+    return jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramLong1, paramLong2, paramLong3);
   }
   
   private long a(msg_svc.PbGetRoamMsgResp paramPbGetRoamMsgResp, ArrayList<msg_comm.Msg> paramArrayList, long paramLong)
@@ -672,325 +247,178 @@ public class C2CMessageProcessor
     if (!paramArrayList.isEmpty())
     {
       paramArrayList = (msg_comm.Msg)paramArrayList.get(0);
-      paramLong = MessageHandlerUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((msg_comm.MsgHead)paramArrayList.msg_head.get()).from_uin.get(), ((msg_comm.MsgHead)paramArrayList.msg_head.get()).to_uin.get(), paramPbGetRoamMsgResp.peer_uin.get());
+      paramLong = a(((msg_comm.MsgHead)paramArrayList.msg_head.get()).from_uin.get(), ((msg_comm.MsgHead)paramArrayList.msg_head.get()).to_uin.get(), paramPbGetRoamMsgResp.peer_uin.get());
     }
     return paramLong;
-  }
-  
-  private Pair<String, Integer> a(String paramString, msg_comm.UinPairMsg paramUinPairMsg, long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    ArrayList localArrayList1 = new ArrayList();
-    long l5 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin();
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    Object localObject1 = paramUinPairMsg.msg.get();
-    if ((localObject1 == null) || (((List)localObject1).size() <= 0)) {
-      return new Pair(paramString, Integer.valueOf(0));
-    }
-    ArrayList localArrayList2 = new ArrayList();
-    a((List)localObject1, localArrayList2);
-    StringBuilder localStringBuilder = new StringBuilder();
-    HashMap localHashMap = new HashMap();
-    HashSet localHashSet = new HashSet();
-    DecodeProtoPkgContext localDecodeProtoPkgContext = new DecodeProtoPkgContext(l5, Long.parseLong(paramString), true, paramBoolean2, paramBoolean3, false);
-    localDecodeProtoPkgContext.jdField_e_of_type_Boolean = true;
-    localDecodeProtoPkgContext.a(1000, localHashMap);
-    localDecodeProtoPkgContext.a(1001, localHashSet);
-    int n = 0;
-    long l2 = -1L;
-    Object localObject2 = paramString;
-    int k = 0;
-    long l1 = -1L;
-    for (;;)
-    {
-      if (n < localArrayList2.size()) {}
-      for (;;)
-      {
-        long l4;
-        int m;
-        try
-        {
-          localObject4 = (msg_comm.Msg)localArrayList2.get(n);
-          localObject1 = (msg_comm.MsgHead)((msg_comm.Msg)localObject4).msg_head.get();
-          if (!((msg_comm.Msg)localObject4).msg_head.has())
-          {
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("Q.msg.C2CMessageProcessor", 2, "<---decodeC2CMessagePackage: msgList[" + n + "] : msg doesn't has msgHead.");
-            break;
-          }
-          l3 = ((msg_comm.MsgHead)localObject1).to_uin.get();
-          l6 = ((msg_comm.MsgHead)localObject1).from_uin.get();
-          l4 = ((msg_comm.MsgHead)localObject1).from_uin.get();
-          l8 = ((msg_comm.MsgHead)localObject1).msg_time.get();
-          if (l8 <= paramLong) {
-            break label886;
-          }
-          paramBoolean3 = false;
-          bool = false;
-          l7 = MessageHandlerUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l4, l3, paramUinPairMsg.peer_uin.get(), paramUinPairMsg);
-          localDecodeProtoPkgContext.i = true;
-          localObject1 = String.valueOf(l7);
-          m = k;
-          l4 = l1;
-          l3 = l2;
-        }
-        catch (Exception localException4)
-        {
-          Object localObject4;
-          long l6;
-          long l8;
-          long l7;
-          int i1;
-          localObject1 = localObject2;
-          l3 = l2;
-          l2 = l1;
-          localObject2 = localException4;
-        }
-        try
-        {
-          if (a(localStringBuilder, n, bool, l8, l7, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-            break label899;
-          }
-          m = k;
-          l4 = l1;
-          l3 = l2;
-          localDecodeProtoPkgContext.jdField_a_of_type_Boolean = bool;
-          m = k;
-          l4 = l1;
-          l3 = l2;
-          localDecodeProtoPkgContext.jdField_e_of_type_Long = l7;
-          m = k;
-          l4 = l1;
-          l3 = l2;
-          localDecodeProtoPkgContext.h = paramBoolean3;
-          m = k;
-          l4 = l1;
-          l3 = l2;
-          localObject2 = a((msg_comm.Msg)localObject4, localDecodeProtoPkgContext).iterator();
-        }
-        catch (Exception localException1)
-        {
-          for (;;)
-          {
-            k = m;
-            l2 = l4;
-          }
-        }
-        try
-        {
-          if (((Iterator)localObject2).hasNext())
-          {
-            localObject4 = (MessageRecord)((Iterator)localObject2).next();
-            l3 = ((MessageRecord)localObject4).vipBubbleID;
-            if (l3 != -1L)
-            {
-              paramBoolean3 = MessageRecordInfo.a(((MessageRecord)localObject4).issend);
-              if (paramBoolean3)
-              {
-                l1 = l2;
-                l2 = l3;
-              }
-            }
-          }
-        }
-        catch (Exception localException2)
-        {
-          l3 = l2;
-          l2 = l1;
-          break label706;
-        }
-        try
-        {
-          i1 = ((MessageRecord)localObject4).istroop;
-          m = i1;
-          l4 = l2;
-          l3 = l1;
-          paramBoolean3 = a((MessageRecord)localObject4, true);
-          m = i1;
-          l4 = l2;
-          l3 = l1;
-          a(localArrayList1, (MessageRecord)localObject4, paramBoolean3, b((MessageRecord)localObject4));
-          m = i1;
-          l4 = l2;
-          l3 = l1;
-          b((MessageRecord)localObject4, paramBoolean3);
-          m = i1;
-          l4 = l2;
-          l3 = l1;
-          a((MessageRecord)localObject4, paramBoolean3);
-          k = i1;
-          l3 = l2;
-          l2 = l1;
-          l1 = l3;
-        }
-        catch (Exception localException3)
-        {
-          l3 = l1;
-          break label706;
-        }
-        l2 = l1;
-        l1 = l3;
-        continue;
-        a(l2, l1, l6, l7, (MessageRecord)localObject4);
-        long l3 = l2;
-        l2 = l1;
-        l1 = l3;
-        continue;
-        break label899;
-        label706:
-        ((Exception)localObject2).printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.msg.C2CMessageProcessor", 2, "decodeC2CMessage error,", (Throwable)localObject2);
-        }
-        l1 = l2;
-        l2 = l3;
-        break label899;
-        paramUinPairMsg = a(paramString, (String)localObject2);
-        a(l5, localHashMap, localHashSet);
-        a(paramBoolean1, paramBoolean2, localArrayList1, str, paramUinPairMsg);
-        a(localArrayList1, k);
-        a(paramString, localArrayList1, k);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.C2CMessageProcessor", 2, "<---decodeC2CMessagePackage : dstUin:" + paramUinPairMsg + ", pkgUinType:" + k);
-        }
-        b(paramUinPairMsg, k);
-        return new Pair(paramUinPairMsg, Integer.valueOf(k));
-        label886:
-        paramBoolean3 = true;
-        boolean bool = true;
-      }
-      localObject1 = localException3;
-      label899:
-      n += 1;
-      Object localObject3 = localObject1;
-    }
   }
   
   private Pair<List<MessageRecord>, List<MessageRecord>> a(List<msg_comm.Msg> paramList, List<MessageRecord> paramList1, long paramLong1, long paramLong2, long paramLong3)
   {
     ArrayList localArrayList = new ArrayList();
-    List localList = ((MessageRoamManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER)).a(String.valueOf(paramLong1), paramLong2 - 30L, 30L + paramLong3);
+    List localList = a(paramLong1, paramLong2, paramLong3);
     if ((localList != null) && (!localList.isEmpty()))
     {
       paramList = paramList.iterator();
-      Object localObject;
-      int k;
-      while (paramList.hasNext())
+      int i;
+      Object localObject1;
+      Object localObject2;
+      for (;;)
       {
-        localObject = (msg_comm.Msg)paramList.next();
-        if (!((msg_comm.Msg)localObject).msg_head.has())
+        boolean bool = paramList.hasNext();
+        i = 0;
+        if (!bool) {
+          break;
+        }
+        localObject1 = (msg_comm.Msg)paramList.next();
+        if (!((msg_comm.Msg)localObject1).msg_head.has())
         {
           paramList.remove();
         }
         else
         {
-          localObject = (msg_comm.MsgHead)((msg_comm.Msg)localObject).msg_head.get();
-          paramLong1 = ((msg_comm.MsgHead)localObject).msg_uid.get();
-          paramLong2 = (short)((msg_comm.MsgHead)localObject).msg_seq.get();
-          k = 0;
-          while (k < localList.size())
+          localObject1 = (msg_comm.MsgHead)((msg_comm.Msg)localObject1).msg_head.get();
+          paramLong1 = ((msg_comm.MsgHead)localObject1).msg_uid.get();
+          paramLong2 = (short)((msg_comm.MsgHead)localObject1).msg_seq.get();
+          while (i < localList.size())
           {
-            localObject = (MessageRecord)localList.get(k);
-            if ((((MessageRecord)localObject).msgUid == paramLong1) && (((MessageRecord)localObject).shmsgseq == paramLong2))
+            localObject1 = (MessageRecord)localList.get(i);
+            if ((((MessageRecord)localObject1).msgUid == paramLong1) && (((MessageRecord)localObject1).shmsgseq == paramLong2))
             {
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.msg.C2CMessageProcessor", 2, "filterRoamMsgFromDB duplicated " + localObject);
+              if (QLog.isColorLevel())
+              {
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append("filterRoamMsgFromDB duplicated ");
+                ((StringBuilder)localObject2).append(localObject1);
+                QLog.d("Q.msg.C2CMessageProcessor", 2, ((StringBuilder)localObject2).toString());
               }
-              localArrayList.add(localObject);
+              localArrayList.add(localObject1);
               paramList.remove();
             }
-            k += 1;
+            i += 1;
           }
         }
       }
       paramList = paramList1.iterator();
       while (paramList.hasNext())
       {
-        localObject = (MessageRecord)paramList.next();
-        k = 0;
-        while (k < localList.size())
+        localObject1 = (MessageRecord)paramList.next();
+        i = 0;
+        while (i < localList.size())
         {
-          MessageRecord localMessageRecord = (MessageRecord)localList.get(k);
-          if ((localMessageRecord.msgUid == ((MessageRecord)localObject).msgUid) && (localMessageRecord.shmsgseq == ((MessageRecord)localObject).shmsgseq))
+          localObject2 = (MessageRecord)localList.get(i);
+          if ((((MessageRecord)localObject2).msgUid == ((MessageRecord)localObject1).msgUid) && (((MessageRecord)localObject2).shmsgseq == ((MessageRecord)localObject1).shmsgseq))
           {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.msg.C2CMessageProcessor", 2, "filterRoamMsgFromDB duplicated " + localObject);
+            if (QLog.isColorLevel())
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("filterRoamMsgFromDB duplicated ");
+              ((StringBuilder)localObject2).append(localObject1);
+              QLog.d("Q.msg.C2CMessageProcessor", 2, ((StringBuilder)localObject2).toString());
             }
             paramList.remove();
           }
-          k += 1;
+          i += 1;
         }
       }
     }
     return new Pair(localArrayList, paramList1);
   }
   
-  private String a(SharedPreferences paramSharedPreferences, String paramString)
+  private Pair<String, Integer> a(msg_comm.UinPairMsg paramUinPairMsg, long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (this.jdField_a_of_type_JavaUtilHashSet == null) {
-      for (;;)
+    ArrayList localArrayList = new ArrayList();
+    long l = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getLongAccountUin();
+    String str = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
+    DecodeProtoPkgContext localDecodeProtoPkgContext = new DecodeProtoPkgContext(l, paramUinPairMsg.peer_uin.get(), true, paramBoolean2, paramBoolean3, false);
+    localDecodeProtoPkgContext.jdField_a_of_type_JavaLangString = String.valueOf(paramUinPairMsg.peer_uin.get());
+    Object localObject2 = paramUinPairMsg.msg.get();
+    if ((localObject2 != null) && (((List)localObject2).size() > 0))
+    {
+      Object localObject1 = new ArrayList();
+      a((List)localObject2, (List)localObject1);
+      localObject2 = new StringBuilder();
+      HashMap localHashMap = new HashMap();
+      HashSet localHashSet = new HashSet();
+      localDecodeProtoPkgContext.jdField_e_of_type_Boolean = true;
+      localDecodeProtoPkgContext.a(1000, localHashMap);
+      localDecodeProtoPkgContext.a(1001, localHashSet);
+      int i = 0;
+      while (i < ((ArrayList)localObject1).size())
       {
-        int k;
-        try
-        {
-          if (this.jdField_a_of_type_JavaUtilHashSet == null)
-          {
-            this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-            paramSharedPreferences = paramSharedPreferences.getString(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_OneWayMsgDateRecentUinList", "");
-            String[] arrayOfString = paramSharedPreferences.split("\\|");
-            int m = arrayOfString.length;
-            k = 0;
-            paramString = paramSharedPreferences;
-            if (k < m)
-            {
-              paramString = arrayOfString[k];
-              if ((paramString.length() <= 0) || (Long.parseLong(paramString) <= 0L)) {
-                break label129;
-              }
-              this.jdField_a_of_type_JavaUtilHashSet.add(paramString);
-              break label129;
-            }
-          }
-          return paramString;
-        }
-        finally {}
-        label129:
-        k += 1;
+        a(this, paramUinPairMsg, paramLong, localArrayList, localDecodeProtoPkgContext, (ArrayList)localObject1, (StringBuilder)localObject2, i);
+        i += 1;
       }
+      localDecodeProtoPkgContext.jdField_a_of_type_JavaLangString = a(String.valueOf(paramUinPairMsg.peer_uin.get()), localDecodeProtoPkgContext.jdField_a_of_type_JavaLangString);
+      a(l, localHashMap, localHashSet);
+      if (localArrayList.size() > 0)
+      {
+        if (!paramBoolean2) {
+          ((MessageCache)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache()).b(localArrayList);
+        }
+        localObject1 = (IMessageFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "");
+        localObject2 = localDecodeProtoPkgContext.jdField_a_of_type_JavaLangString;
+        paramBoolean3 = false;
+        ((IMessageFacade)localObject1).setAutoPullC2CMsgResult((String)localObject2, 0, localArrayList, paramBoolean1);
+        boolean bool = a(localArrayList);
+        i = MsgProxyUtils.a(localArrayList, (MessageCache)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache());
+        b(localArrayList);
+        localObject1 = (IMessageFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "");
+        if ((bool) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface.isBackgroundStop)) {
+          paramBoolean1 = true;
+        } else {
+          paramBoolean1 = paramBoolean3;
+        }
+        ((IMessageFacade)localObject1).addMessage(localArrayList, str, paramBoolean1);
+        c(localArrayList);
+        a("handleGetBuddyMessageResp", true, i, bool, paramBoolean2);
+        a(String.valueOf(paramUinPairMsg.peer_uin.get()), paramBoolean2, localArrayList, localDecodeProtoPkgContext.jdField_a_of_type_JavaLangString, localDecodeProtoPkgContext.jdField_e_of_type_Int);
+      }
+      if (QLog.isColorLevel())
+      {
+        paramUinPairMsg = new StringBuilder();
+        paramUinPairMsg.append("<---decodeC2CMessagePackage : dstUin:");
+        paramUinPairMsg.append(localDecodeProtoPkgContext.jdField_a_of_type_JavaLangString);
+        paramUinPairMsg.append(", pkgUinType:");
+        paramUinPairMsg.append(localDecodeProtoPkgContext.jdField_e_of_type_Int);
+        QLog.d("Q.msg.C2CMessageProcessor", 2, paramUinPairMsg.toString());
+      }
+      return new Pair(localDecodeProtoPkgContext.jdField_a_of_type_JavaLangString, Integer.valueOf(localDecodeProtoPkgContext.jdField_e_of_type_Int));
     }
-    return paramString;
+    return new Pair(localDecodeProtoPkgContext.jdField_a_of_type_JavaLangString, Integer.valueOf(localDecodeProtoPkgContext.jdField_e_of_type_Int));
   }
   
-  private String a(SharedPreferences paramSharedPreferences, String paramString, MessageRecord paramMessageRecord)
+  private String a(String paramString)
   {
-    if (!this.jdField_b_of_type_JavaUtilHashSet.contains(paramMessageRecord.frienduin))
-    {
-      this.jdField_b_of_type_JavaUtilHashSet.add(paramMessageRecord.frienduin);
-      if (paramString.length() == 0) {}
-      for (paramString = paramMessageRecord.frienduin;; paramString = paramString + "|" + paramMessageRecord.frienduin)
-      {
-        paramSharedPreferences.edit().putString(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_OneWayMsgLBSFriendRecentUinList", paramString);
-        paramSharedPreferences.edit().commit();
-        return paramString;
-      }
-    }
-    return paramString;
+    return jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramString, this);
   }
   
   private String a(String paramString1, String paramString2)
   {
-    String str;
+    String str = paramString1;
     if (paramString2 != null)
     {
+      if (paramString2.equals("0")) {
+        return paramString1;
+      }
       str = paramString2;
-      if (!paramString2.equals("0")) {}
-    }
-    else
-    {
-      str = paramString1;
     }
     return str;
+  }
+  
+  @NonNull
+  private String a(msg_comm.UinPairMsg paramUinPairMsg, int paramInt)
+  {
+    return jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramUinPairMsg, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramInt);
+  }
+  
+  private List<MessageRecord> a(long paramLong1, long paramLong2, long paramLong3)
+  {
+    return jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(String.valueOf(paramLong1), paramLong2 - 30L, paramLong3 + 30L, this);
+  }
+  
+  private List<MessageRecord> a(String paramString, List<msg_comm.Msg> paramList)
+  {
+    return jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramString, paramList, this);
   }
   
   @Nullable
@@ -1000,22 +428,19 @@ public class C2CMessageProcessor
     try
     {
       paramArrayOfByte = (msg_svc.PbGetMsgResp)localPbGetMsgResp.mergeFrom(paramArrayOfByte);
-      if (paramArrayOfByte == null) {
-        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "msf.msg.decodeerr", false, 0L, 0L, new HashMap(), "");
-      }
-      return paramArrayOfByte;
     }
     catch (Exception paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.msg.C2CMessageProcessor", 2, "<---handleGetC2CMessageResp_PB : decode pb:", paramArrayOfByte);
-        }
-        paramArrayOfByte = null;
+      paramArrayOfByte.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.msg.C2CMessageProcessor", 2, "<---handleGetC2CMessageResp_PB : decode pb:", paramArrayOfByte);
       }
+      paramArrayOfByte = null;
     }
+    if (paramArrayOfByte == null) {
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "msf.msg.decodeerr", false, 0L, 0L, new HashMap(), "");
+    }
+    return paramArrayOfByte;
   }
   
   @Nullable
@@ -1027,101 +452,99 @@ public class C2CMessageProcessor
         paramPbSearchRoamMsgInCloudResp = (oidb_c2c_searcher.RspBody)paramRspBody.mergeFrom(paramPbSearchRoamMsgInCloudResp.serialize_rspbody.get().toByteArray());
         return paramPbSearchRoamMsgInCloudResp;
       }
+      catch (OutOfMemoryError paramPbSearchRoamMsgInCloudResp)
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.w("Q.msg.C2CMessageProcessor", 2, "processSearchRoamMsgInCloud OutOfMemoryError ! oidb_search!", paramPbSearchRoamMsgInCloudResp);
+          return null;
+        }
+      }
       catch (InvalidProtocolBufferMicroException paramPbSearchRoamMsgInCloudResp)
       {
         if (QLog.isColorLevel()) {
           QLog.w("Q.msg.C2CMessageProcessor", 2, "processSearchRoamMsgInCloud InvalidProtocolBufferMicroException oidb_search! ", paramPbSearchRoamMsgInCloudResp);
         }
-        return null;
-      }
-      catch (OutOfMemoryError paramPbSearchRoamMsgInCloudResp)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.msg.C2CMessageProcessor", 2, "processSearchRoamMsgInCloud OutOfMemoryError ! oidb_search!", paramPbSearchRoamMsgInCloudResp);
-        }
-        return null;
       }
     }
     return null;
   }
   
-  private void a()
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      Object localObject2 = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.OneyWayDateMsgNotifyCfg.name());
-      Object localObject1 = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.OneyWayLBSFriendMsgNotifyCfg.name());
-      localObject2 = ((String)localObject2).split("\\|");
-      localObject1 = ((String)localObject1).split("\\|");
-      if ((localObject2.length >= 6) && (localObject1.length >= 6))
-      {
-        this.jdField_a_of_type_Int = Integer.parseInt(localObject2[0]);
-        this.jdField_b_of_type_Int = Integer.parseInt(localObject2[1]);
-        this.jdField_c_of_type_Int = Integer.parseInt(localObject2[2]);
-        this.jdField_d_of_type_Int = Integer.parseInt(localObject2[3]);
-        this.f = Integer.parseInt(localObject1[0]);
-        this.g = Integer.parseInt(localObject1[1]);
-        this.h = Integer.parseInt(localObject1[2]);
-        this.i = Integer.parseInt(localObject1[3]);
-        if (QLog.isDevelopLevel()) {
-          QLog.d("Q.nearby_bank", 4, "DealOneWayMessageNotify,date:[" + this.jdField_a_of_type_Int + "|" + this.jdField_b_of_type_Int + "|" + this.jdField_c_of_type_Int + "|" + this.jdField_d_of_type_Int + "],LBS:[" + this.f + "|" + this.g + "|" + this.h + "|" + this.i + "]");
-        }
-      }
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
   private void a(byte paramByte, int paramInt1, long paramLong, msg_comm.UinPairMsg paramUinPairMsg, String paramString, int paramInt2, List<msg_comm.Msg> paramList, boolean paramBoolean)
   {
-    if (((paramInt2 != 1006) || (((PhoneContactManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER)).b(paramString) == null)) || (UinTypeUtil.a(paramInt2) == 1032)) {}
-    for (int k = 0;; k = paramInt2)
+    if (paramInt2 == 1006) {
+      a(paramString);
+    }
+    int i = UinTypeUtil.a(paramInt2);
+    boolean bool = false;
+    if (i == 1032) {
+      i = 0;
+    } else {
+      i = paramInt2;
+    }
+    paramUinPairMsg = a(paramUinPairMsg, i);
+    if (QLog.isColorLevel())
     {
-      paramUinPairMsg = TinyMsgCodec.a(paramUinPairMsg, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, k);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.C2CMessageProcessor", 2, "update c2c unread , pkguin=" + paramUinPairMsg + ", pkgUinType=" + paramInt2 + ", lastReadTime=" + paramLong);
-      }
-      a(paramUinPairMsg, paramList, paramBoolean, k);
-      paramString = new android.os.Message();
-      paramString.what = 1;
-      paramList = new Bundle();
-      paramList.putLong("update_unread_time", paramLong);
-      paramList.putString("update_unread_uin", paramUinPairMsg);
-      paramList.putInt("update_unread_type", k);
-      paramString.setData(paramList);
-      paramList = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler;
-      if (paramByte <= 0) {}
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        paramList.a(paramString, paramBoolean);
-        if (paramInt1 != 2) {
-          break;
-        }
-        this.jdField_b_of_type_JavaUtilSet.add(paramUinPairMsg);
-        return;
-      }
-      this.jdField_a_of_type_JavaUtilSet.add(paramUinPairMsg);
+      paramString = new StringBuilder();
+      paramString.append("update c2c unread , pkguin=");
+      paramString.append(paramUinPairMsg);
+      paramString.append(", pkgUinType=");
+      paramString.append(paramInt2);
+      paramString.append(", lastReadTime=");
+      paramString.append(paramLong);
+      QLog.d("Q.msg.C2CMessageProcessor", 2, paramString.toString());
+    }
+    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramUinPairMsg, paramList, paramBoolean, i, this);
+    paramString = new android.os.Message();
+    paramString.what = 1;
+    paramList = new Bundle();
+    paramList.putLong("update_unread_time", paramLong);
+    paramList.putString("update_unread_uin", paramUinPairMsg);
+    paramList.putInt("update_unread_type", i);
+    paramString.setData(paramList);
+    paramList = this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler;
+    paramBoolean = bool;
+    if (paramByte <= 0) {
+      paramBoolean = true;
+    }
+    paramList.a(paramString, paramBoolean);
+    if (paramInt1 == 2)
+    {
+      this.b.add(paramUinPairMsg);
       return;
     }
+    this.jdField_a_of_type_JavaUtilSet.add(paramUinPairMsg);
   }
   
   private void a(byte paramByte, String paramString, List<msg_comm.Msg> paramList, boolean paramBoolean)
   {
     if (!paramBoolean)
     {
-      long l1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().g(paramString);
+      long l1 = ((MessageCache)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache()).g(paramString);
       long l2 = ((msg_comm.MsgHead)((msg_comm.Msg)paramList.get(0)).msg_head.get()).msg_time.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.C2CMessageProcessor", 2, "<---decodeC2CMessagePackage : peerUin:" + paramString + "lastBreakTime:" + l1 + " currentBreakTime:" + l2 + " channelType:" + paramByte);
+      if (QLog.isColorLevel())
+      {
+        paramList = new StringBuilder();
+        paramList.append("<---decodeC2CMessagePackage : peerUin:");
+        paramList.append(paramString);
+        paramList.append("lastBreakTime:");
+        paramList.append(l1);
+        paramList.append(" currentBreakTime:");
+        paramList.append(l2);
+        paramList.append(" channelType:");
+        paramList.append(paramByte);
+        QLog.d("Q.msg.C2CMessageProcessor", 2, paramList.toString());
       }
+      paramList = (MessageCache)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache();
       if ((l1 == 0L) || (l2 < l1))
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().b(paramString, l2, 0L);
+        paramList.b(paramString, l2, 0L);
         if (paramByte > 0) {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().g(paramString, l2);
+          paramList.g(paramString, l2);
         }
       }
       if (paramByte == 0) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().c();
+        paramList.c();
       }
     }
   }
@@ -1130,63 +553,32 @@ public class C2CMessageProcessor
   {
     if (paramByte <= 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.c();
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.b();
       if (paramBoolean)
       {
-        a(paramInt, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a());
-        if (paramInt != 2) {
-          break label100;
+        a(paramInt, ((IConversationFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IConversationFacade.class, "")).getConversationInfoSet());
+        if (paramInt == 2) {
+          this.b.clear();
+        } else {
+          this.jdField_a_of_type_JavaUtilSet.clear();
         }
-        this.jdField_b_of_type_JavaUtilSet.clear();
       }
-    }
-    for (;;)
-    {
       MsgAutoMonitorUtil.getInstance().markC2CFinishTime();
-      a(paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().i();
-      if (this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a())
+      b(paramInt);
+      ((MessageCache)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache()).i();
+      if (this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a())
       {
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg.C2CMessageProcessor", 2, "<---handleGetC2CMessageResp_PB handleMsgNew()");
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(false, 0);
+        this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(false, 0);
       }
-      return;
-      label100:
-      this.jdField_a_of_type_JavaUtilSet.clear();
     }
   }
   
   private void a(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      a(4016, true, null);
-      a(4001, true, null);
-      return;
-    case 1: 
-      a(4001, true, null);
-      return;
-    }
-    a(4016, true, null);
-  }
-  
-  private void a(int paramInt, ArrayList<MessageRecord> paramArrayList)
-  {
-    if ((paramArrayList.size() == 0) && (paramInt > 1))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.C2CMessageProcessor", 2, "<---decodeSinglePBMsg_C2C, empty long msg fragment");
-      }
-      MessageForText localMessageForText = (MessageForText)MessageRecordFactory.a(-1000);
-      localMessageForText.msgtype = -1000;
-      localMessageForText.msg = "";
-      paramArrayList.add(localMessageForText);
-    }
+    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramInt, this);
   }
   
   private void a(int paramInt, Set<ConversationInfo> paramSet)
@@ -1195,28 +587,23 @@ public class C2CMessageProcessor
     while (paramSet.hasNext())
     {
       ConversationInfo localConversationInfo = (ConversationInfo)paramSet.next();
-      if ((localConversationInfo.uin != null) && (localConversationInfo.type != 1036) && (UinTypeUtil.a(localConversationInfo.type) != 1032) && ((paramInt != 1) || (localConversationInfo.type != 1008)) && ((paramInt != 2) || (localConversationInfo.type == 1008)) && ((paramInt == 2) || (this.jdField_a_of_type_JavaUtilSet.size() <= 0) || (!this.jdField_a_of_type_JavaUtilSet.contains(localConversationInfo.uin))) && ((paramInt != 2) || (this.jdField_b_of_type_JavaUtilSet.size() <= 0) || (!this.jdField_b_of_type_JavaUtilSet.contains(localConversationInfo.uin)))) {
+      if ((localConversationInfo.uin != null) && (localConversationInfo.type != 1036) && (UinTypeUtil.a(localConversationInfo.type) != 1032) && ((paramInt != 1) || (localConversationInfo.type != 1008)) && ((paramInt != 2) || (localConversationInfo.type == 1008)) && ((paramInt == 2) || (this.jdField_a_of_type_JavaUtilSet.size() <= 0) || (!this.jdField_a_of_type_JavaUtilSet.contains(localConversationInfo.uin))) && ((paramInt != 2) || (this.b.size() <= 0) || (!this.b.contains(localConversationInfo.uin)))) {
         a(localConversationInfo);
       }
     }
   }
   
-  private void a(int paramInt, msg_comm.Msg paramMsg, ArrayList<MessageRecord> paramArrayList, MessageHandler paramMessageHandler, DecodeProtoPkgContext paramDecodeProtoPkgContext)
+  private void a(int paramInt, msg_comm.Msg paramMsg, ArrayList<MessageRecord> paramArrayList, BaseMessageHandler paramBaseMessageHandler, DecodeProtoPkgContext paramDecodeProtoPkgContext)
   {
-    Decoder localDecoder = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a().a(paramInt);
+    Decoder localDecoder = a(paramInt);
     if (localDecoder != null) {
-      localDecoder.a(paramMessageHandler, paramMsg, paramArrayList, paramDecodeProtoPkgContext);
+      localDecoder.a(paramBaseMessageHandler, paramMsg, paramArrayList, paramDecodeProtoPkgContext);
     }
   }
   
-  private void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4, MessageRecord paramMessageRecord)
+  private void a(long paramLong)
   {
-    if (paramMessageRecord.msgtype == -2002)
-    {
-      b(paramLong1, paramLong2, paramLong3, paramLong4, paramMessageRecord);
-      return;
-    }
-    paramMessageRecord.vipBubbleID = 0L;
+    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramLong);
   }
   
   private void a(long paramLong, HashMap<Long, msg_comm.Msg> paramHashMap, HashSet<Long> paramHashSet)
@@ -1229,133 +616,96 @@ public class C2CMessageProcessor
       {
         localObject = (Long)paramHashSet.next();
         paramHashMap.remove(localObject);
-        if (QLog.isColorLevel()) {
-          QLog.d("svenxu", 2, "Discard video request because canceled: fromUin = " + localObject);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Discard video request because canceled: fromUin = ");
+          localStringBuilder.append(localObject);
+          QLog.d("svenxu", 2, localStringBuilder.toString());
         }
       }
       paramHashSet = paramHashMap.keySet().iterator();
       while (paramHashSet.hasNext())
       {
         localObject = (msg_comm.Msg)paramHashMap.get((Long)paramHashSet.next());
-        if ((((msg_comm.Msg)localObject).msg_body.has()) && (((im_msg_body.MsgBody)((msg_comm.Msg)localObject).msg_body.get()).msg_content.has())) {
-          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(paramLong, ((im_msg_body.MsgBody)((msg_comm.Msg)localObject).msg_body.get()).msg_content.get().toByteArray(), ((msg_comm.MsgHead)((msg_comm.Msg)localObject).msg_head.get()).from_uin.get(), ((msg_comm.MsgHead)((msg_comm.Msg)localObject).msg_head.get()).msg_time.get());
+        if (((msg_comm.Msg)localObject).msg_body.has()) {
+          ((im_msg_body.MsgBody)((msg_comm.Msg)localObject).msg_body.get()).msg_content.has();
         }
       }
     }
+  }
+  
+  private void a(C2CMsgReadedNotify paramC2CMsgReadedNotify, String paramString)
+  {
+    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString, paramC2CMsgReadedNotify);
+  }
+  
+  public static void a(C2CMessageProcessor.Callback paramCallback)
+  {
+    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback = paramCallback;
+  }
+  
+  private static void a(C2CMessageProcessor paramC2CMessageProcessor, msg_comm.UinPairMsg paramUinPairMsg, long paramLong, ArrayList<MessageRecord> paramArrayList, DecodeProtoPkgContext paramDecodeProtoPkgContext, ArrayList<msg_comm.Msg> paramArrayList1, StringBuilder paramStringBuilder, int paramInt)
+  {
+    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramC2CMessageProcessor, paramUinPairMsg, paramLong, paramArrayList, paramArrayList1, paramStringBuilder, paramDecodeProtoPkgContext, paramInt);
   }
   
   private void a(ConversationInfo paramConversationInfo)
   {
     if ((UinTypeUtil.b(paramConversationInfo.type)) && (ConversationFacade.c(paramConversationInfo) > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.C2CMessageProcessor", 2, "update c2c unread , frienduin=" + paramConversationInfo.uin + ", friendUinType=" + paramConversationInfo.type);
-      }
-      if (paramConversationInfo.uin.length() > 4) {
-        break label77;
-      }
-    }
-    label77:
-    do
-    {
-      Object localObject;
-      do
+      if (QLog.isColorLevel())
       {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("update c2c unread , frienduin=");
+        ((StringBuilder)localObject1).append(paramConversationInfo.uin);
+        ((StringBuilder)localObject1).append(", friendUinType=");
+        ((StringBuilder)localObject1).append(paramConversationInfo.type);
+        QLog.d("Q.msg.C2CMessageProcessor", 2, ((StringBuilder)localObject1).toString());
+      }
+      if (paramConversationInfo.uin.length() <= 4) {
         return;
-        if (paramConversationInfo.type != 1001) {
-          break;
-        }
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().m(paramConversationInfo.uin);
-      } while ((localObject == null) || (localObject.length <= 0));
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.C2CMessageProcessor", 2, "clean the unreadcount of lbs : " + localObject);
       }
-      do
+      if (paramConversationInfo.type == 1001)
       {
-        for (;;)
+        localObject1 = ((MessageCache)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache()).m(paramConversationInfo.uin);
+        if (localObject1 != null)
         {
-          localObject = new android.os.Message();
-          ((android.os.Message)localObject).what = 1;
-          Bundle localBundle = new Bundle();
-          localBundle.putLong("update_unread_time", 9223372036854775807L);
-          localBundle.putString("update_unread_uin", paramConversationInfo.uin);
-          localBundle.putInt("update_unread_type", paramConversationInfo.type);
-          ((android.os.Message)localObject).setData(localBundle);
-          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a((android.os.Message)localObject, true);
-          return;
-          if (paramConversationInfo.type != 10002) {
-            break;
+          if (localObject1.length <= 0) {
+            return;
           }
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.msg.C2CMessageProcessor", 2, "processOffline : ");
+          if (!QLog.isColorLevel()) {
+            break label219;
           }
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("clean the unreadcount of lbs : ");
+          ((StringBuilder)localObject2).append(localObject1);
+          QLog.d("Q.msg.C2CMessageProcessor", 2, ((StringBuilder)localObject2).toString());
         }
-      } while (!paramConversationInfo.isImax);
-    } while (!QLog.isColorLevel());
-    QLog.d("ImaxAdvertisement", 2, "processOffline 0xf9 no need syn unreadtime");
-  }
-  
-  private void a(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord instanceof MessageForPoke))
-    {
-      if ((!paramMessageRecord.isread) && (!paramMessageRecord.isSend())) {
-        ((MessageForPoke)paramMessageRecord).isPlayed = false;
       }
-      ((MessageForPoke)paramMessageRecord).initMsg();
-    }
-  }
-  
-  private void a(MessageRecord paramMessageRecord, MessageForApollo paramMessageForApollo, IApolloManagerService paramIApolloManagerService, StringBuilder paramStringBuilder)
-  {
-    boolean bool2 = paramMessageForApollo.isSend();
-    ApolloBaseInfo localApolloBaseInfo;
-    long l;
-    if (paramMessageForApollo.mApolloMessage.peer_uin != 0L)
-    {
-      boolean bool1 = true;
-      if ((!(bool1 & bool2)) || (paramMessageForApollo.mApolloMessage.peer_uin == this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin())) {
-        break label332;
-      }
-      localApolloBaseInfo = paramIApolloManagerService.getApolloBaseInfo(paramMessageForApollo.mApolloMessage.peer_uin + "");
-      l = paramMessageForApollo.mApolloMessage.peer_ts;
-    }
-    for (int k = paramMessageForApollo.mApolloMessage.peer_status;; k = paramMessageForApollo.mApolloMessage.sender_status)
-    {
-      if ((QLog.isColorLevel()) && (localApolloBaseInfo != null)) {
-        paramStringBuilder.append("\n fuin: ").append(localApolloBaseInfo.uin).append(", msg time: ").append(paramMessageRecord.time).append(", msg ts: ").append(l).append(", svr ts: ").append(localApolloBaseInfo.apolloServerTS).append(", update time: ").append(localApolloBaseInfo.apolloUpdateTime).append(", status: ").append(k);
-      }
-      if (a(paramMessageRecord, paramMessageForApollo, localApolloBaseInfo, l, k))
+      else if (paramConversationInfo.type == 10002)
       {
-        paramIApolloManagerService.saveOrUpdateApolloBaseInfo(localApolloBaseInfo);
-        if ((QLog.isColorLevel()) && (localApolloBaseInfo != null)) {
-          paramStringBuilder.append("\n save apollo info fuin: ").append(localApolloBaseInfo.uin).append("-->").append(localApolloBaseInfo.apolloVipFlag).append("|").append(localApolloBaseInfo.apolloStatus).append("|").append(localApolloBaseInfo.apolloLocalTS).append("|").append(localApolloBaseInfo.apolloServerTS).append("|").append(localApolloBaseInfo.apolloUpdateTime).append("|").append(localApolloBaseInfo.apolloSignValidTS);
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.msg.C2CMessageProcessor", 2, "processOffline : ");
         }
       }
-      return;
-      k = 0;
-      break;
-      label332:
-      localApolloBaseInfo = paramIApolloManagerService.getApolloBaseInfo(paramMessageForApollo.senderuin);
-      l = paramMessageForApollo.mApolloMessage.sender_ts;
+      else if (paramConversationInfo.isImax)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ImaxAdvertisement", 2, "processOffline 0xf9 no need syn unreadtime");
+        }
+        return;
+      }
+      label219:
+      Object localObject1 = new android.os.Message();
+      ((android.os.Message)localObject1).what = 1;
+      Object localObject2 = new Bundle();
+      ((Bundle)localObject2).putLong("update_unread_time", 9223372036854775807L);
+      ((Bundle)localObject2).putString("update_unread_uin", paramConversationInfo.uin);
+      ((Bundle)localObject2).putInt("update_unread_type", paramConversationInfo.type);
+      ((android.os.Message)localObject1).setData((Bundle)localObject2);
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a((android.os.Message)localObject1, true);
     }
-  }
-  
-  private void a(MessageRecord paramMessageRecord, boolean paramBoolean)
-  {
-    if ((!paramBoolean) && (paramMessageRecord.istroop == 1008)) {
-      PublicAccountEventReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord);
-    }
-  }
-  
-  private void a(DecodeProtoPkgContext paramDecodeProtoPkgContext, MessageRecord paramMessageRecord)
-  {
-    if ((1 == paramDecodeProtoPkgContext.jdField_d_of_type_Int) && (UinTypeUtil.h(paramMessageRecord.istroop)) && (UinTypeUtil.a(paramMessageRecord.istroop) != 1032) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(paramMessageRecord.frienduin)) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(paramMessageRecord.frienduin, UinTypeUtil.a(paramMessageRecord.istroop), MsgProxyUtils.a(UinTypeUtil.a(paramMessageRecord.istroop)))))
-    {
-      MsgProxyUtils.a(paramMessageRecord, true);
-      return;
-    }
-    MsgProxyUtils.a(paramMessageRecord, false);
   }
   
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -1366,311 +716,478 @@ public class C2CMessageProcessor
     a(1004, false, paramFromServiceMsg);
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    byte b1 = 0;
-    int k = 2;
-    boolean bool2 = paramToServiceMsg.extraData.getBoolean("isPullRoamMsg", true);
-    boolean bool3 = paramToServiceMsg.extraData.getBoolean("needNofityConversation", true);
-    boolean bool4 = paramToServiceMsg.extraData.getBoolean("used_register_proxy", false);
-    long l = System.currentTimeMillis();
-    msg_svc.PbGetMsgResp localPbGetMsgResp = a((byte[])paramObject);
-    StringBuilder localStringBuilder = new StringBuilder();
-    if ((localPbGetMsgResp == null) || (!localPbGetMsgResp.result.has()) || (localPbGetMsgResp.result.get() != 0))
-    {
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder.setLength(0);
-        localObject = localStringBuilder.append("<PbGetMsg><R><---handleGetC2CMessageResp_PB ssoSeq:").append(paramToServiceMsg.getRequestSsoSeq()).append(" msgStruct.cReplyCode: ");
-        if (localPbGetMsgResp != null) {
-          break label216;
-        }
-        paramObject = "null";
-        localObject = ((StringBuilder)localObject).append(paramObject).append(",hasSyncCookie:");
-        if (localPbGetMsgResp != null) {
-          break label231;
-        }
-      }
-      label216:
-      label231:
-      for (paramObject = "null";; paramObject = Boolean.valueOf(localPbGetMsgResp.sync_cookie.has()))
-      {
-        ((StringBuilder)localObject).append(paramObject).append(",isPullRoam:").append(bool2).append(",needNofityConversation:").append(bool3);
-        QLog.e("Q.msg.C2CMessageProcessor", 2, localStringBuilder.toString());
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(paramToServiceMsg, paramFromServiceMsg);
-        return;
-        paramObject = Integer.valueOf(localPbGetMsgResp.result.get());
-        break;
-      }
-    }
-    Object localObject = localPbGetMsgResp.uin_pair_msgs.get();
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.f = 0;
-    if (localPbGetMsgResp.sync_flag.has()) {
-      k = localPbGetMsgResp.sync_flag.get();
-    }
-    if (k < 2) {
-      b1 = (byte)1;
-    }
-    paramFromServiceMsg = null;
-    if (localPbGetMsgResp.sync_cookie.has()) {
-      paramFromServiceMsg = localPbGetMsgResp.sync_cookie.get().toByteArray();
-    }
-    int m = a(localPbGetMsgResp, paramFromServiceMsg);
-    boolean bool1 = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a()) {
-      bool1 = true;
-    }
-    if (b1 > 0) {
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(b1, paramFromServiceMsg, k, bool2, bool3, bool1, null, m, null);
-    }
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder.setLength(0);
-      localStringBuilder.append("<PbGetMsg><R><---handleGetC2CMessageResp_PB ssoSeq:").append(paramToServiceMsg.getRequestSsoSeq()).append(" msgStruct.cReplyCode: ").append(localPbGetMsgResp.result.get()).append(" hasSyncCookie:").append(localPbGetMsgResp.sync_cookie.has()).append(" channelType:").append(b1).append(" cSyncFlag:").append(k).append(" isPullRoam").append(bool2).append(",needNofityConversation:").append(bool3).append(" uinPairMsg size:").append(((List)localObject).size()).append(", dataHash=@").append(Integer.toHexString(paramObject.hashCode())).append("pullMsgType").append(m);
-      QLog.d("Q.msg.C2CMessageProcessor", 2, localStringBuilder.toString());
-    }
-    l = a(b1, bool2, bool4, l, localStringBuilder, (List)localObject, m);
-    a(b1, bool2, m);
-    l = System.currentTimeMillis() - l;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.C2CMessageProcessor", 2, "decodecMsg costTime = [" + l + "]");
-    }
-    MessageStatisticHelper.a("actC2cDecodeCost", l);
-  }
-  
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, boolean paramBoolean)
   {
     paramFromServiceMsg = new HashMap(1);
     paramFromServiceMsg.put("KEYWORD", paramToServiceMsg.extraData.getString("keyword"));
     paramFromServiceMsg.put("SEARCHSEQUENCE", Long.valueOf(paramToServiceMsg.extraData.getLong("sequence")));
     paramFromServiceMsg.put("LOADTYPE", Integer.valueOf(paramToServiceMsg.extraData.getInt("loadType")));
-    int k = paramToServiceMsg.extraData.getInt("retryIndex");
-    if ((!paramBoolean) && (k < 2))
+    int i = paramToServiceMsg.extraData.getInt("retryIndex");
+    if ((!paramBoolean) && (i < 2))
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.msg.C2CMessageProcessor", 2, "handleSearchRoamMsgInCloudTimeOutAndError retry index:" + k);
+      if (QLog.isColorLevel())
+      {
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("handleSearchRoamMsgInCloudTimeOutAndError retry index:");
+        paramFromServiceMsg.append(i);
+        QLog.w("Q.msg.C2CMessageProcessor", 2, paramFromServiceMsg.toString());
       }
-      paramToServiceMsg.extraData.putInt("retryIndex", k + 1);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().sendPbReq(paramToServiceMsg);
+      paramToServiceMsg.extraData.putInt("retryIndex", i + 1);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler("com.tencent.mobileqq.app.MessageHandler").sendPbReq(paramToServiceMsg);
       return;
     }
     a(8015, false, paramFromServiceMsg);
   }
   
+  private void a(ToServiceMsg paramToServiceMsg, String paramString)
+  {
+    long l = paramToServiceMsg.extraData.getLong("lBeginTime");
+    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramString, l, 3, this);
+  }
+  
+  /* Error */
   private void a(ToServiceMsg paramToServiceMsg, msg_svc.PbGetRoamMsgResp paramPbGetRoamMsgResp, Long paramLong, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, Bundle paramBundle, String paramString, int paramInt2, List<msg_comm.Msg> paramList)
   {
-    MessageRoamManager localMessageRoamManager = (MessageRoamManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
-    int k = 0;
-    if (((paramInt2 != 0) && (paramInt2 != 1)) || (paramInt2 == 0)) {}
-    try
-    {
-      a(paramString, paramList);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(paramString, paramLong.longValue(), paramPbGetRoamMsgResp.last_msgtime.get(), paramToServiceMsg.extraData.getLong("lEndTime"), (short)0, paramPbGetRoamMsgResp.random.get(), 1, localMessageRoamManager.a(), localMessageRoamManager.b(), paramToServiceMsg.extraData.getBoolean("fetchMore"), paramInt1, paramBoolean1, paramBoolean2);
-      return;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      paramToServiceMsg.printStackTrace();
-      if (!QLog.isColorLevel()) {
-        break label232;
-      }
-      QLog.w("Q.msg.C2CMessageProcessor", 2, "handlePBGetRoamMsg exception ! ", paramToServiceMsg);
-      for (k = 0; k == 0; k = 1)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-        paramBundle.putInt("SVR_CODE", paramInt2);
-        if (paramPbGetRoamMsgResp.errmsg.has()) {
-          paramBundle.putString("SVR_MSG", paramPbGetRoamMsgResp.errmsg.get());
-        }
-        a(1004, false, paramBundle);
-        return;
-        long l1 = paramToServiceMsg.extraData.getLong("lBeginTime");
-        long l2 = paramToServiceMsg.extraData.getLong("lEndTime");
-        ArrayList localArrayList1 = new ArrayList();
-        a(paramList, l1, l2, localArrayList1);
-        List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileTransferHandler().a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, localArrayList1, Long.valueOf(paramString).longValue(), true);
-        ArrayList localArrayList2 = new ArrayList();
-        l1 = a(paramPbGetRoamMsgResp, localArrayList1, Long.parseLong(paramString));
-        localArrayList2.addAll((Collection)a(localArrayList1, localList, l1, paramLong.longValue(), paramToServiceMsg.extraData.getLong("lEndTime")).second);
-        paramLong = new DecodeProtoPkgContext(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()), l1, true, true, false, false);
-        paramLong.h = true;
-        a(localArrayList1, localArrayList2, paramLong);
-        a(paramBoolean2, paramString, localMessageRoamManager, localArrayList2);
-        paramLong = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().b(String.valueOf(paramPbGetRoamMsgResp.peer_uin.get()));
-        if ((paramLong == null) || (((Long)paramLong.first).longValue() > paramPbGetRoamMsgResp.last_msgtime.get())) {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().b(String.valueOf(paramPbGetRoamMsgResp.peer_uin.get()), paramToServiceMsg.extraData.getLong("lBeginTime"), 0L);
-        }
-        localMessageRoamManager.a().b(paramString, paramToServiceMsg.extraData.getLong("lBeginTime"), 3);
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.msg.C2CMessageProcessor", 2, "handlePBGetRoamMsg resList size = " + paramList.size() + ", dayList size = " + localArrayList1.size() + ", loopList size=" + localArrayList2.size());
-        }
-        paramBundle.putInt("MSG_COUNT", paramInt1 - localArrayList2.size());
-        a(1004, true, paramBundle);
-      }
-    }
-    catch (OutOfMemoryError paramToServiceMsg)
-    {
-      for (;;)
-      {
-        label232:
-        paramToServiceMsg.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.msg.C2CMessageProcessor", 2, "handlePBGetRoamMsg OutOfMemoryError ! ", paramToServiceMsg);
-        }
-        k = 0;
-      }
-    }
-    paramList = new ArrayList(paramList);
-    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
-    {
-      paramList.addAll((Collection)this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.jdField_a_of_type_JavaUtilHashMap.get(paramString));
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-    }
-    if (paramList.isEmpty())
-    {
-      new Object[2][0] = Boolean.valueOf(true);
-      paramBundle.putBoolean("NO_MSG", Boolean.TRUE.booleanValue());
-      a(1004, false, paramBundle);
-      return;
-    }
+    // Byte code:
+    //   0: iconst_0
+    //   1: istore 11
+    //   3: iload 9
+    //   5: ifeq +19 -> 24
+    //   8: iload 9
+    //   10: iconst_1
+    //   11: if_icmpne +6 -> 17
+    //   14: goto +10 -> 24
+    //   17: iload 11
+    //   19: istore 4
+    //   21: goto +653 -> 674
+    //   24: aload_2
+    //   25: getfield 809	msf/msgsvc/msg_svc$PbGetRoamMsgResp:last_msgtime	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   28: invokevirtual 169	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   31: lstore 13
+    //   33: aload_1
+    //   34: getfield 734	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   37: ldc_w 811
+    //   40: invokevirtual 739	android/os/Bundle:getLong	(Ljava/lang/String;)J
+    //   43: lstore 15
+    //   45: iload 9
+    //   47: ifne +78 -> 125
+    //   50: aload_0
+    //   51: aload 8
+    //   53: aload 10
+    //   55: invokespecial 814	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/lang/String;Ljava/util/List;)V
+    //   58: aload_2
+    //   59: getfield 817	msf/msgsvc/msg_svc$PbGetRoamMsgResp:random	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   62: invokevirtual 169	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   65: lstore 17
+    //   67: aload_0
+    //   68: invokespecial 819	com/tencent/imcore/message/C2CMessageProcessor:a	()[B
+    //   71: astore 10
+    //   73: aload_0
+    //   74: invokespecial 821	com/tencent/imcore/message/C2CMessageProcessor:a	()I
+    //   77: istore 11
+    //   79: aload_1
+    //   80: getfield 734	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   83: ldc_w 743
+    //   86: invokevirtual 747	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
+    //   89: istore 12
+    //   91: aload_0
+    //   92: getfield 232	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler	Lcom/tencent/mobileqq/app/BaseMessageHandler;
+    //   95: aload 8
+    //   97: aload_3
+    //   98: invokevirtual 824	java/lang/Long:longValue	()J
+    //   101: lload 13
+    //   103: lload 15
+    //   105: iconst_0
+    //   106: lload 17
+    //   108: iconst_1
+    //   109: aload 10
+    //   111: iload 11
+    //   113: iload 12
+    //   115: iload 4
+    //   117: iload 5
+    //   119: iload 6
+    //   121: invokevirtual 827	com/tencent/mobileqq/app/BaseMessageHandler:a	(Ljava/lang/String;JJJSJI[BIZIZZ)V
+    //   124: return
+    //   125: new 284	java/util/ArrayList
+    //   128: dup
+    //   129: aload 10
+    //   131: invokespecial 830	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
+    //   134: astore 21
+    //   136: aload_0
+    //   137: getfield 232	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler	Lcom/tencent/mobileqq/app/BaseMessageHandler;
+    //   140: getfield 833	com/tencent/mobileqq/app/BaseMessageHandler:a	Ljava/util/HashMap;
+    //   143: aload 8
+    //   145: invokevirtual 836	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   148: ifeq +37 -> 185
+    //   151: aload 21
+    //   153: aload_0
+    //   154: getfield 232	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler	Lcom/tencent/mobileqq/app/BaseMessageHandler;
+    //   157: getfield 833	com/tencent/mobileqq/app/BaseMessageHandler:a	Ljava/util/HashMap;
+    //   160: aload 8
+    //   162: invokevirtual 672	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   165: checkcast 838	java/util/Collection
+    //   168: invokevirtual 842	java/util/ArrayList:addAll	(Ljava/util/Collection;)Z
+    //   171: pop
+    //   172: aload_0
+    //   173: getfield 232	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler	Lcom/tencent/mobileqq/app/BaseMessageHandler;
+    //   176: getfield 833	com/tencent/mobileqq/app/BaseMessageHandler:a	Ljava/util/HashMap;
+    //   179: aload 8
+    //   181: invokevirtual 663	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   184: pop
+    //   185: aload 21
+    //   187: invokevirtual 287	java/util/ArrayList:isEmpty	()Z
+    //   190: ifeq +38 -> 228
+    //   193: iconst_2
+    //   194: anewarray 844	java/lang/Object
+    //   197: iconst_0
+    //   198: iconst_1
+    //   199: invokestatic 849	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   202: aastore
+    //   203: aload 7
+    //   205: ldc_w 851
+    //   208: getstatic 855	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
+    //   211: invokevirtual 858	java/lang/Boolean:booleanValue	()Z
+    //   214: invokevirtual 751	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   217: aload_0
+    //   218: sipush 1004
+    //   221: iconst_0
+    //   222: aload 7
+    //   224: invokevirtual 754	com/tencent/imcore/message/C2CMessageProcessor:a	(IZLjava/lang/Object;)V
+    //   227: return
+    //   228: aload_1
+    //   229: getfield 734	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   232: ldc_w 736
+    //   235: invokevirtual 739	android/os/Bundle:getLong	(Ljava/lang/String;)J
+    //   238: lstore 17
+    //   240: new 284	java/util/ArrayList
+    //   243: dup
+    //   244: invokespecial 313	java/util/ArrayList:<init>	()V
+    //   247: astore 22
+    //   249: aload_0
+    //   250: aload 21
+    //   252: lload 17
+    //   254: lload 15
+    //   256: aload 22
+    //   258: invokespecial 861	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/util/ArrayList;JJLjava/util/ArrayList;)V
+    //   261: aload_0
+    //   262: aload 8
+    //   264: aload 22
+    //   266: invokespecial 863	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/lang/String;Ljava/util/List;)Ljava/util/List;
+    //   269: astore 23
+    //   271: new 284	java/util/ArrayList
+    //   274: dup
+    //   275: invokespecial 313	java/util/ArrayList:<init>	()V
+    //   278: astore 10
+    //   280: aload_0
+    //   281: aload_2
+    //   282: aload 22
+    //   284: aload 8
+    //   286: invokestatic 866	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   289: invokespecial 868	com/tencent/imcore/message/C2CMessageProcessor:a	(Lmsf/msgsvc/msg_svc$PbGetRoamMsgResp;Ljava/util/ArrayList;J)J
+    //   292: lstore 17
+    //   294: aload_3
+    //   295: invokevirtual 824	java/lang/Long:longValue	()J
+    //   298: lstore 19
+    //   300: aload 10
+    //   302: aload_0
+    //   303: aload 22
+    //   305: aload 23
+    //   307: lload 17
+    //   309: lload 19
+    //   311: lload 15
+    //   313: invokespecial 870	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/util/List;Ljava/util/List;JJJ)Landroid/util/Pair;
+    //   316: getfield 249	android/util/Pair:second	Ljava/lang/Object;
+    //   319: checkcast 838	java/util/Collection
+    //   322: invokevirtual 842	java/util/ArrayList:addAll	(Ljava/util/Collection;)Z
+    //   325: pop
+    //   326: new 367	com/tencent/mobileqq/service/message/DecodeProtoPkgContext
+    //   329: dup
+    //   330: aload_0
+    //   331: getfield 48	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
+    //   334: invokevirtual 365	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   337: invokestatic 866	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   340: lload 17
+    //   342: iconst_1
+    //   343: iconst_1
+    //   344: iconst_0
+    //   345: iconst_0
+    //   346: invokespecial 370	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:<init>	(JJZZZZ)V
+    //   349: astore_3
+    //   350: aload_3
+    //   351: iconst_1
+    //   352: putfield 873	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:h	Z
+    //   355: aload_0
+    //   356: aload 22
+    //   358: aload 10
+    //   360: aload_3
+    //   361: invokespecial 876	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/util/ArrayList;Ljava/util/ArrayList;Lcom/tencent/mobileqq/service/message/DecodeProtoPkgContext;)V
+    //   364: aload_0
+    //   365: iload 6
+    //   367: aload 8
+    //   369: aload 10
+    //   371: invokespecial 879	com/tencent/imcore/message/C2CMessageProcessor:a	(ZLjava/lang/String;Ljava/util/ArrayList;)V
+    //   374: aload_0
+    //   375: getfield 48	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
+    //   378: invokevirtual 398	com/tencent/common/app/AppInterface:getMsgCache	()Ljava/lang/Object;
+    //   381: checkcast 400	com/tencent/mobileqq/service/message/MessageCache
+    //   384: aload_2
+    //   385: getfield 308	msf/msgsvc/msg_svc$PbGetRoamMsgResp:peer_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   388: invokevirtual 169	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   391: invokestatic 175	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   394: invokevirtual 882	com/tencent/mobileqq/service/message/MessageCache:b	(Ljava/lang/String;)Landroid/util/Pair;
+    //   397: astore_3
+    //   398: aload_3
+    //   399: ifnull +19 -> 418
+    //   402: aload_3
+    //   403: getfield 246	android/util/Pair:first	Ljava/lang/Object;
+    //   406: checkcast 660	java/lang/Long
+    //   409: invokevirtual 824	java/lang/Long:longValue	()J
+    //   412: lload 13
+    //   414: lcmp
+    //   415: ifle +37 -> 452
+    //   418: aload_0
+    //   419: getfield 48	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
+    //   422: invokevirtual 398	com/tencent/common/app/AppInterface:getMsgCache	()Ljava/lang/Object;
+    //   425: checkcast 400	com/tencent/mobileqq/service/message/MessageCache
+    //   428: aload_2
+    //   429: getfield 308	msf/msgsvc/msg_svc$PbGetRoamMsgResp:peer_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   432: invokevirtual 169	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   435: invokestatic 175	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   438: aload_1
+    //   439: getfield 734	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   442: ldc_w 736
+    //   445: invokevirtual 739	android/os/Bundle:getLong	(Ljava/lang/String;)J
+    //   448: lconst_0
+    //   449: invokevirtual 583	com/tencent/mobileqq/service/message/MessageCache:b	(Ljava/lang/String;JJ)V
+    //   452: aload_0
+    //   453: aload_1
+    //   454: aload 8
+    //   456: invokespecial 884	com/tencent/imcore/message/C2CMessageProcessor:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Ljava/lang/String;)V
+    //   459: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   462: istore 5
+    //   464: iload 5
+    //   466: ifeq +280 -> 746
+    //   469: new 83	java/lang/StringBuilder
+    //   472: dup
+    //   473: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   476: astore_1
+    //   477: aload_1
+    //   478: ldc_w 886
+    //   481: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   484: pop
+    //   485: aload_1
+    //   486: aload 21
+    //   488: invokevirtual 386	java/util/ArrayList:size	()I
+    //   491: invokevirtual 95	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   494: pop
+    //   495: aload_1
+    //   496: ldc_w 888
+    //   499: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   502: pop
+    //   503: aload_1
+    //   504: aload 22
+    //   506: invokevirtual 386	java/util/ArrayList:size	()I
+    //   509: invokevirtual 95	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   512: pop
+    //   513: aload_1
+    //   514: ldc_w 890
+    //   517: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   520: pop
+    //   521: aload_1
+    //   522: aload 10
+    //   524: invokevirtual 386	java/util/ArrayList:size	()I
+    //   527: invokevirtual 95	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   530: pop
+    //   531: aload_1
+    //   532: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   535: astore_1
+    //   536: ldc 101
+    //   538: iconst_2
+    //   539: aload_1
+    //   540: invokestatic 789	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   543: goto +3 -> 546
+    //   546: aload 10
+    //   548: invokevirtual 386	java/util/ArrayList:size	()I
+    //   551: istore 11
+    //   553: aload 7
+    //   555: astore_1
+    //   556: aload_1
+    //   557: ldc_w 892
+    //   560: iload 4
+    //   562: iload 11
+    //   564: isub
+    //   565: invokevirtual 558	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   568: aload_0
+    //   569: sipush 1004
+    //   572: iconst_1
+    //   573: aload_1
+    //   574: invokevirtual 754	com/tencent/imcore/message/C2CMessageProcessor:a	(IZLjava/lang/Object;)V
+    //   577: iconst_1
+    //   578: istore 4
+    //   580: goto +94 -> 674
+    //   583: astore_1
+    //   584: goto +40 -> 624
+    //   587: astore_1
+    //   588: goto +63 -> 651
+    //   591: astore_1
+    //   592: goto +32 -> 624
+    //   595: astore_1
+    //   596: goto +55 -> 651
+    //   599: astore_1
+    //   600: goto +24 -> 624
+    //   603: astore_1
+    //   604: goto +47 -> 651
+    //   607: astore_1
+    //   608: goto +8 -> 616
+    //   611: astore_1
+    //   612: goto +8 -> 620
+    //   615: astore_1
+    //   616: goto +8 -> 624
+    //   619: astore_1
+    //   620: goto +31 -> 651
+    //   623: astore_1
+    //   624: aload_1
+    //   625: invokevirtual 893	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   628: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   631: ifeq +13 -> 644
+    //   634: ldc 101
+    //   636: iconst_2
+    //   637: ldc_w 895
+    //   640: aload_1
+    //   641: invokestatic 512	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   644: iconst_0
+    //   645: istore 4
+    //   647: goto +27 -> 674
+    //   650: astore_1
+    //   651: aload_1
+    //   652: invokevirtual 258	java/lang/Exception:printStackTrace	()V
+    //   655: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   658: ifeq -14 -> 644
+    //   661: ldc 101
+    //   663: iconst_2
+    //   664: ldc_w 897
+    //   667: aload_1
+    //   668: invokestatic 512	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   671: goto -27 -> 644
+    //   674: iload 4
+    //   676: ifne +61 -> 737
+    //   679: aload_0
+    //   680: getfield 232	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler	Lcom/tencent/mobileqq/app/BaseMessageHandler;
+    //   683: getfield 833	com/tencent/mobileqq/app/BaseMessageHandler:a	Ljava/util/HashMap;
+    //   686: aload 8
+    //   688: invokevirtual 663	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   691: pop
+    //   692: aload 7
+    //   694: ldc_w 899
+    //   697: iload 9
+    //   699: invokevirtual 558	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   702: aload_2
+    //   703: getfield 903	msf/msgsvc/msg_svc$PbGetRoamMsgResp:errmsg	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   706: invokevirtual 906	com/tencent/mobileqq/pb/PBStringField:has	()Z
+    //   709: ifeq +18 -> 727
+    //   712: aload 7
+    //   714: ldc_w 908
+    //   717: aload_2
+    //   718: getfield 903	msf/msgsvc/msg_svc$PbGetRoamMsgResp:errmsg	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   721: invokevirtual 910	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   724: invokevirtual 553	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   727: aload_0
+    //   728: sipush 1004
+    //   731: iconst_0
+    //   732: aload 7
+    //   734: invokevirtual 754	com/tencent/imcore/message/C2CMessageProcessor:a	(IZLjava/lang/Object;)V
+    //   737: return
+    //   738: astore_1
+    //   739: goto -139 -> 600
+    //   742: astore_1
+    //   743: goto -139 -> 604
+    //   746: goto -200 -> 546
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	749	0	this	C2CMessageProcessor
+    //   0	749	1	paramToServiceMsg	ToServiceMsg
+    //   0	749	2	paramPbGetRoamMsgResp	msg_svc.PbGetRoamMsgResp
+    //   0	749	3	paramLong	Long
+    //   0	749	4	paramInt1	int
+    //   0	749	5	paramBoolean1	boolean
+    //   0	749	6	paramBoolean2	boolean
+    //   0	749	7	paramBundle	Bundle
+    //   0	749	8	paramString	String
+    //   0	749	9	paramInt2	int
+    //   0	749	10	paramList	List<msg_comm.Msg>
+    //   1	564	11	i	int
+    //   89	25	12	bool	boolean
+    //   31	382	13	l1	long
+    //   43	269	15	l2	long
+    //   65	276	17	l3	long
+    //   298	12	19	l4	long
+    //   134	353	21	localArrayList1	ArrayList
+    //   247	258	22	localArrayList2	ArrayList
+    //   269	37	23	localList	List
+    // Exception table:
+    //   from	to	target	type
+    //   568	577	583	java/lang/OutOfMemoryError
+    //   568	577	587	java/lang/Exception
+    //   556	568	591	java/lang/OutOfMemoryError
+    //   556	568	595	java/lang/Exception
+    //   536	543	599	java/lang/OutOfMemoryError
+    //   546	553	599	java/lang/OutOfMemoryError
+    //   536	543	603	java/lang/Exception
+    //   546	553	603	java/lang/Exception
+    //   300	398	607	java/lang/OutOfMemoryError
+    //   402	418	607	java/lang/OutOfMemoryError
+    //   418	452	607	java/lang/OutOfMemoryError
+    //   452	464	607	java/lang/OutOfMemoryError
+    //   300	398	611	java/lang/Exception
+    //   402	418	611	java/lang/Exception
+    //   418	452	611	java/lang/Exception
+    //   452	464	611	java/lang/Exception
+    //   249	300	615	java/lang/OutOfMemoryError
+    //   249	300	619	java/lang/Exception
+    //   24	45	623	java/lang/OutOfMemoryError
+    //   50	124	623	java/lang/OutOfMemoryError
+    //   125	185	623	java/lang/OutOfMemoryError
+    //   185	227	623	java/lang/OutOfMemoryError
+    //   228	249	623	java/lang/OutOfMemoryError
+    //   24	45	650	java/lang/Exception
+    //   50	124	650	java/lang/Exception
+    //   125	185	650	java/lang/Exception
+    //   185	227	650	java/lang/Exception
+    //   228	249	650	java/lang/Exception
+    //   469	536	738	java/lang/OutOfMemoryError
+    //   469	536	742	java/lang/Exception
   }
   
-  private void a(String paramString, int paramInt, long paramLong, msg_svc.PbMsgReadedReportReq paramPbMsgReadedReportReq)
+  private void a(String paramString)
   {
-    if (paramLong == 0L) {}
-    long l;
-    do
-    {
-      return;
-      if (AppConstants.SYSTEM_MSG_UIN.equals(paramString))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a().a();
-        return;
-      }
-      if ((paramInt == 1001) && ((UinTypeUtil.d(paramString)) || (UinTypeUtil.e(paramString))))
-      {
-        if (MsgProxyUtils.a(paramString))
-        {
-          MsgBoxProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, null);
-          return;
-        }
-        if (UinTypeUtil.e(paramString))
-        {
-          MsgBoxProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          return;
-        }
-        MsgBoxProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2, null);
-        return;
-      }
-      l = a(paramString, paramInt);
-    } while (l == -1L);
-    if (paramInt == 10007)
-    {
-      TinyMsgCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPbMsgReadedReportReq, paramString, paramLong);
-      return;
-    }
-    Object localObject = new msg_svc.PbC2CReadedReportReq.UinPairReadInfo();
-    ((msg_svc.PbC2CReadedReportReq.UinPairReadInfo)localObject).peer_uin.set(l);
-    ((msg_svc.PbC2CReadedReportReq.UinPairReadInfo)localObject).last_read_time.set((int)paramLong);
-    a(paramString, paramInt, (msg_svc.PbC2CReadedReportReq.UinPairReadInfo)localObject);
-    paramString = new msg_svc.PbC2CReadedReportReq();
-    paramString.pair_info.add((MessageMicro)localObject);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a().a();
-    if (localObject != null) {
-      paramString.sync_cookie.set(ByteStringMicro.copyFrom((byte[])localObject));
-    }
-    paramPbMsgReadedReportReq.c2c_read_report.set(paramString);
-  }
-  
-  private void a(String paramString, int paramInt, msg_svc.PbC2CReadedReportReq.UinPairReadInfo paramUinPairReadInfo)
-  {
-    if (paramInt == 1024)
-    {
-      paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().d(paramString);
-      if (paramString != null)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("Q.msg.sendReadConfirm_PB", 4, "Readcomfirmed------->Sig:" + HexUtil.bytes2HexStr(paramString) + ",length:" + paramString.length);
-        }
-        paramUinPairReadInfo.crm_sig.set(ByteStringMicro.copyFrom(paramString));
-      }
-    }
-  }
-  
-  private void a(String paramString, ArrayList<MessageRecord> paramArrayList, int paramInt)
-  {
-    if ((paramInt == 0) && (paramArrayList.size() > 0))
-    {
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        MessageRecord localMessageRecord = (MessageRecord)paramArrayList.next();
-        IceBreakingUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, 0, localMessageRecord);
-      }
-    }
+    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString);
   }
   
   private void a(String paramString, List<msg_comm.Msg> paramList)
   {
-    if (paramList.size() > 0)
-    {
-      if (!this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) {
-        break label174;
-      }
-      paramString = (List)this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      if (paramString.size() != 0) {
-        break label57;
-      }
-      paramString.addAll(0, paramList);
-    }
-    label57:
-    while ((((msg_comm.MsgHead)((msg_comm.Msg)paramString.get(0)).msg_head.get()).msg_uid.get() == ((msg_comm.MsgHead)((msg_comm.Msg)paramList.get(0)).msg_head.get()).msg_uid.get()) && (((msg_comm.MsgHead)((msg_comm.Msg)paramString.get(0)).msg_head.get()).msg_seq.get() == ((msg_comm.MsgHead)((msg_comm.Msg)paramList.get(0)).msg_head.get()).msg_seq.get())) {
-      return;
-    }
-    paramString.addAll(0, paramList);
-    return;
-    label174:
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramList);
-  }
-  
-  private void a(String paramString, List<msg_comm.Msg> paramList, boolean paramBoolean, int paramInt)
-  {
-    if ((!paramBoolean) && (ConversationInfoErrorReporter.reportPublicaccoutTypeError(paramString, paramInt)))
-    {
-      StringBuilder localStringBuilder = new StringBuilder(128);
-      localStringBuilder.append("reportPublicaccoutTypeError").append(" uin :").append(paramString);
-      localStringBuilder.append(" type :").append(paramInt);
-      if ((paramList != null) && (paramList.size() > 0))
+    if (paramList.size() > 0) {
+      if (this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a.containsKey(paramString))
       {
-        paramString = (msg_comm.Msg)paramList.get(0);
-        if (paramString.msg_head.has())
+        paramString = (List)this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a.get(paramString);
+        if (paramString.size() == 0)
         {
-          paramString = (msg_comm.MsgHead)paramString.msg_head.get();
-          localStringBuilder.append(" msgType :").append(paramString.msg_type.get());
-          localStringBuilder.append(" msgSeq :").append(paramString.msg_seq.get());
-          localStringBuilder.append(" msgUid :").append(paramString.msg_uid.get());
-          localStringBuilder.append(" msgTime :").append(paramString.msg_time.get());
-          if (paramString.c2c_tmp_msg_head.has())
-          {
-            paramString = (msg_comm.C2CTmpMsgHead)paramString.c2c_tmp_msg_head.get();
-            localStringBuilder.append(" serviceType :").append(paramString.service_type.get());
-            localStringBuilder.append(" c2cType :").append(paramString.c2c_type.get());
-          }
+          paramString.addAll(0, paramList);
+          return;
+        }
+        if ((((msg_comm.MsgHead)((msg_comm.Msg)paramString.get(0)).msg_head.get()).msg_uid.get() != ((msg_comm.MsgHead)((msg_comm.Msg)paramList.get(0)).msg_head.get()).msg_uid.get()) || (((msg_comm.MsgHead)((msg_comm.Msg)paramString.get(0)).msg_head.get()).msg_seq.get() != ((msg_comm.MsgHead)((msg_comm.Msg)paramList.get(0)).msg_head.get()).msg_seq.get())) {
+          paramString.addAll(0, paramList);
         }
       }
-      QLog.e("Q.msg.C2CMessageProcessor", 1, localStringBuilder.toString());
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a.put(paramString, paramList);
+      }
     }
   }
   
-  private void a(ArrayList<MessageRecord> paramArrayList, int paramInt)
+  private void a(String paramString1, boolean paramBoolean, ArrayList<MessageRecord> paramArrayList, String paramString2, int paramInt)
   {
-    if (paramInt == 1008)
-    {
-      PublicAccountDataManager localPublicAccountDataManager = (PublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
-      if (localPublicAccountDataManager != null) {
-        localPublicAccountDataManager.a(paramArrayList, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
-    }
+    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramString1, paramBoolean, paramArrayList, paramString2, paramInt, this);
   }
   
   private void a(ArrayList<msg_comm.Msg> paramArrayList1, long paramLong1, long paramLong2, ArrayList<msg_comm.Msg> paramArrayList2)
@@ -1698,90 +1215,71 @@ public class C2CMessageProcessor
   private void a(ArrayList<msg_comm.Msg> paramArrayList, long paramLong, DecodeProtoPkgContext paramDecodeProtoPkgContext, ArrayList<MessageRecord> paramArrayList1)
   {
     Iterator localIterator = paramArrayList.iterator();
-    label118:
-    long l1;
-    label161:
-    long l2;
-    while (localIterator.hasNext())
+    if (localIterator.hasNext())
     {
       paramArrayList = (msg_comm.Msg)localIterator.next();
-      if (paramArrayList != null) {}
-      for (;;)
+      if (paramArrayList == null) {}
+    }
+    for (;;)
+    {
+      long l2;
+      long l3;
+      try
       {
-        try
+        if ((paramArrayList.msg_head.has()) && (paramArrayList.msg_body.has()))
         {
-          if ((paramArrayList.msg_head.has()) && (paramArrayList.msg_body.has())) {
-            break label161;
+          localObject2 = (msg_comm.MsgHead)paramArrayList.msg_head.get();
+          l2 = ((msg_comm.MsgHead)localObject2).to_uin.get();
+          l3 = ((msg_comm.MsgHead)localObject2).from_uin.get();
+          if ((l2 == paramLong) || (l3 == paramLong)) {
+            break label289;
           }
           if (!QLog.isColorLevel()) {
             break;
           }
-          localObject = new StringBuilder().append("decodeSinglePBMsg_C2C return : ");
-          if (paramArrayList != null) {
-            break label118;
+          QLog.d("Q.msg.C2CMessageProcessor", 2, "decodeSinglePBMsg_C2C msg uin not selfUin and toUin : ");
+          break;
+          Object localObject1;
+          paramDecodeProtoPkgContext.g = localObject1;
+          paramArrayList = a(paramArrayList, paramDecodeProtoPkgContext);
+          if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
+            break;
           }
-          paramArrayList = " msg=null";
-          QLog.d("Q.msg.C2CMessageProcessor", 2, paramArrayList);
+          paramArrayList1.addAll(paramArrayList);
+          break;
         }
-        catch (Exception paramArrayList) {}
         if (!QLog.isColorLevel()) {
           break;
         }
-        QLog.w("Q.msg.C2CMessageProcessor", 2, "processSearchRoamMsgInCloud decodeSinglePBMsg_C2C error,", paramArrayList);
-        break;
-        paramArrayList = " msg.msg_head:" + paramArrayList.msg_head + " msg.msg_body:" + paramArrayList.msg_body.has();
-      }
-      Object localObject = (msg_comm.MsgHead)paramArrayList.msg_head.get();
-      l1 = ((msg_comm.MsgHead)localObject).to_uin.get();
-      l2 = ((msg_comm.MsgHead)localObject).from_uin.get();
-      if ((l1 == paramLong) || (l2 == paramLong)) {
-        break label267;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.C2CMessageProcessor", 2, "decodeSinglePBMsg_C2C msg uin not selfUin and toUin : ");
-      }
-    }
-    for (;;)
-    {
-      paramDecodeProtoPkgContext.jdField_e_of_type_Long = l1;
-      paramArrayList = a(paramArrayList, paramDecodeProtoPkgContext);
-      if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
-        break;
-      }
-      paramArrayList1.addAll(paramArrayList);
-      break;
-      label267:
-      do
-      {
-        break;
-        return;
-      } while (l1 != paramLong);
-      l1 = l2;
-    }
-  }
-  
-  private void a(ArrayList<MessageRecord> paramArrayList, MessageRecord paramMessageRecord, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((!paramBoolean1) && (!paramBoolean2))
-    {
-      d(paramMessageRecord);
-      if ((paramMessageRecord instanceof MessageForMarketFace)) {
-        CommercialDrainageManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForMarketFace)paramMessageRecord);
-      }
-      if (AppConstants.NEW_KANDIAN_UIN.equals(paramMessageRecord.frienduin)) {
-        paramMessageRecord.time = NetConnInfoCenter.getServerTime();
-      }
-      if (AppConstants.KANDIAN_DAILY_UIN.equals(paramMessageRecord.frienduin)) {
-        ((KandianDailyManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.KANDIAN_DAILY_MANAGER)).b(paramMessageRecord);
-      }
-      paramArrayList.add(paramMessageRecord);
-      int k = KandianMergeManager.a(paramMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if ((k == 0) || (k == 1))
-      {
-        paramMessageRecord = ((KandianMergeManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).a(paramMessageRecord);
-        if (paramMessageRecord != null) {
-          paramArrayList.add(paramMessageRecord);
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("decodeSinglePBMsg_C2C return : ");
+        if (paramArrayList == null)
+        {
+          paramArrayList = " msg=null";
         }
+        else
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" msg.msg_head:");
+          localStringBuilder.append(paramArrayList.msg_head);
+          localStringBuilder.append(" msg.msg_body:");
+          localStringBuilder.append(paramArrayList.msg_body.has());
+          paramArrayList = localStringBuilder.toString();
+        }
+        ((StringBuilder)localObject2).append(paramArrayList);
+        QLog.d("Q.msg.C2CMessageProcessor", 2, ((StringBuilder)localObject2).toString());
+      }
+      catch (Exception paramArrayList) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.w("Q.msg.C2CMessageProcessor", 2, "processSearchRoamMsgInCloud decodeSinglePBMsg_C2C error,", paramArrayList);
+      break;
+      return;
+      label289:
+      long l1 = l2;
+      if (l2 == paramLong) {
+        l1 = l3;
       }
     }
   }
@@ -1814,50 +1312,47 @@ public class C2CMessageProcessor
   {
     if ((paramArrayList1 != null) && (paramArrayList1.size() > 0))
     {
-      int m = paramArrayList1.size();
-      int k = 0;
-      if (k < m)
+      int j = paramArrayList1.size();
+      int i = 0;
+      while (i < j)
       {
-        MessageRecord localMessageRecord = (MessageRecord)paramArrayList1.get(k);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.C2CMessageProcessor", 2, "----------handleMsgPush_PB_C2CPush after analysis mr.senderuin: " + localMessageRecord.senderuin + " mr.msgtype: " + localMessageRecord.msgtype + " mr.frienduin: " + localMessageRecord.frienduin + " mr.shmsgseq: " + localMessageRecord.shmsgseq + " mr.time:" + localMessageRecord.time + " mr.msg: " + localMessageRecord.getLogColorContent());
-        }
-        if ((localMessageRecord.frienduin == null) || (localMessageRecord.frienduin.length() <= 2)) {}
-        for (;;)
+        MessageRecord localMessageRecord = (MessageRecord)paramArrayList1.get(i);
+        Object localObject;
+        if (QLog.isColorLevel())
         {
-          k += 1;
-          break;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("----------handleMsgPush_PB_C2CPush after analysis mr.senderuin: ");
+          ((StringBuilder)localObject).append(localMessageRecord.senderuin);
+          ((StringBuilder)localObject).append(" mr.msgtype: ");
+          ((StringBuilder)localObject).append(localMessageRecord.msgtype);
+          ((StringBuilder)localObject).append(" mr.frienduin: ");
+          ((StringBuilder)localObject).append(localMessageRecord.frienduin);
+          ((StringBuilder)localObject).append(" mr.shmsgseq: ");
+          ((StringBuilder)localObject).append(localMessageRecord.shmsgseq);
+          ((StringBuilder)localObject).append(" mr.time:");
+          ((StringBuilder)localObject).append(localMessageRecord.time);
+          ((StringBuilder)localObject).append(" mr.msg: ");
+          ((StringBuilder)localObject).append(localMessageRecord.getLogColorContent());
+          QLog.d("Q.msg.C2CMessageProcessor", 2, ((StringBuilder)localObject).toString());
+        }
+        if ((localMessageRecord.frienduin != null) && (localMessageRecord.frienduin.length() > 2))
+        {
           localMessageRecord.isread = false;
           paramArrayList2.add(localMessageRecord);
-          DelMsgInfo localDelMsgInfo = new DelMsgInfo();
-          localDelMsgInfo.lFromUin = Long.parseLong(localMessageRecord.senderuin);
-          localDelMsgInfo.shMsgSeq = ((short)(int)localMessageRecord.shmsgseq);
-          localDelMsgInfo.uMsgTime = localMessageRecord.time;
-          paramArrayList.add(localDelMsgInfo);
+          localObject = new DelMsgInfo();
+          ((DelMsgInfo)localObject).lFromUin = Long.parseLong(localMessageRecord.senderuin);
+          ((DelMsgInfo)localObject).shMsgSeq = ((short)(int)localMessageRecord.shmsgseq);
+          ((DelMsgInfo)localObject).uMsgTime = localMessageRecord.time;
+          paramArrayList.add(localObject);
         }
+        i += 1;
       }
     }
   }
   
-  private void a(ArrayList<MessageRecord> paramArrayList, boolean paramBoolean1, QQMessageFacade paramQQMessageFacade, short paramShort, boolean paramBoolean2, SharedPreferences paramSharedPreferences, String paramString1, String paramString2)
+  private void a(List<MessageRecord> paramList)
   {
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)paramArrayList.next();
-      if ((a(localMessageRecord)) && (paramQQMessageFacade != null)) {
-        if (localMessageRecord.istroop == 1010)
-        {
-          paramString1 = b(paramSharedPreferences, paramString1, localMessageRecord);
-          a(paramBoolean1, paramShort, paramBoolean2, paramSharedPreferences, localMessageRecord);
-        }
-        else if ((localMessageRecord.istroop == 1001) || (localMessageRecord.istroop == 10002))
-        {
-          paramString2 = a(paramSharedPreferences, paramString2, localMessageRecord);
-          b(paramBoolean1, paramShort, paramBoolean2, paramSharedPreferences, localMessageRecord);
-        }
-      }
-    }
+    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramList);
   }
   
   private void a(List<msg_comm.Msg> paramList1, List<msg_comm.Msg> paramList2)
@@ -1867,7 +1362,10 @@ public class C2CMessageProcessor
     {
       StringBuilder localStringBuilder = new StringBuilder("<---C2CMessagePackage:msgFilter_OnePkg ");
       localStringBuilder.append((CharSequence)localPair.second);
-      localStringBuilder.append(" inListSize:").append(paramList1.size()).append(" outListSize:").append(paramList2.size());
+      localStringBuilder.append(" inListSize:");
+      localStringBuilder.append(paramList1.size());
+      localStringBuilder.append(" outListSize:");
+      localStringBuilder.append(paramList2.size());
       QLog.d("Q.msg.C2CMessageProcessor", 2, localStringBuilder.toString());
     }
   }
@@ -1875,362 +1373,455 @@ public class C2CMessageProcessor
   private void a(List<msg_comm.Msg> paramList, List<MessageRecord> paramList1, ArrayList<MessageRecord> paramArrayList, DecodeProtoPkgContext paramDecodeProtoPkgContext)
   {
     Iterator localIterator = paramList.iterator();
-    for (;;)
+    while (localIterator.hasNext())
     {
-      if (localIterator.hasNext())
-      {
-        paramList = (msg_comm.Msg)localIterator.next();
-        try
-        {
-          paramList = a(paramList, paramDecodeProtoPkgContext);
-          paramList1 = paramList;
-          if (paramList != null)
-          {
-            paramList1 = paramList;
-            if (paramList.size() > 0)
-            {
-              paramArrayList.addAll(paramList);
-              paramList1 = paramList;
-            }
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            paramList = paramList1;
-            if (QLog.isColorLevel())
-            {
-              QLog.w("Q.msg.C2CMessageProcessor", 2, "decodeSinglePBMsg_C2C error,", localException);
-              paramList = paramList1;
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  private void a(msg_comm.Msg paramMsg, DecodeProtoPkgContext paramDecodeProtoPkgContext, MessageRecord paramMessageRecord)
-  {
-    if (paramDecodeProtoPkgContext.jdField_b_of_type_Int > 0) {
-      paramMessageRecord.saveExtInfoToExtStr("bubble_sub_id", String.valueOf(paramDecodeProtoPkgContext.jdField_b_of_type_Int));
-    }
-    int k = MessageProtoCodec.c(paramMsg);
-    if (k > 0) {
-      paramMessageRecord.saveExtInfoToExtStr("vip_pendant_diy_id", String.valueOf(k));
-    }
-    k = MessageProtoCodec.b(paramMsg);
-    if (k >= 0) {
-      paramMessageRecord.saveExtInfoToExtStr("vip_font_effect_id", String.valueOf(k));
-    }
-    k = MessageProtoCodec.d(paramMsg);
-    if (k >= 0) {
-      paramMessageRecord.saveExtInfoToExtStr("vip_face_id", String.valueOf(k));
-    }
-    k = ETDIYUtil.a(paramMsg);
-    if (k > 0) {
-      paramMessageRecord.saveExtInfoToExtStr("vip_diy_font_id", String.valueOf(k));
-    }
-  }
-  
-  private void a(msg_comm.Msg paramMsg, DecodeProtoPkgContext paramDecodeProtoPkgContext, ArrayList<MessageRecord> paramArrayList)
-  {
-    if ((paramDecodeProtoPkgContext.jdField_c_of_type_Int == 1008) && (paramMsg.msg_body.has()))
-    {
-      paramMsg = (im_msg_body.MsgBody)paramMsg.msg_body.get();
-      if (paramMsg.rich_text.has())
-      {
-        paramMsg = (im_msg_body.RichText)paramMsg.rich_text.get();
-        if (paramMsg.elems.has())
-        {
-          paramMsg = paramMsg.elems.get().iterator();
-          while (paramMsg.hasNext())
-          {
-            paramDecodeProtoPkgContext = (im_msg_body.Elem)paramMsg.next();
-            if (paramDecodeProtoPkgContext.pub_acc_info.has())
-            {
-              int k = paramDecodeProtoPkgContext.pub_acc_info.uint32_is_inter_num.get();
-              paramMsg = paramDecodeProtoPkgContext.pub_acc_info.string_msg_template_id.get();
-              if (k != 0)
-              {
-                paramDecodeProtoPkgContext = paramArrayList.iterator();
-                while (paramDecodeProtoPkgContext.hasNext()) {
-                  ((MessageRecord)paramDecodeProtoPkgContext.next()).saveExtInfoToExtStr("inter_num", String.valueOf(k));
-                }
-              }
-              paramDecodeProtoPkgContext = paramArrayList.iterator();
-              while (paramDecodeProtoPkgContext.hasNext()) {
-                ((MessageRecord)paramDecodeProtoPkgContext.next()).saveExtInfoToExtStr("msg_template_id", paramMsg);
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  private void a(msg_comm.Msg paramMsg, DecodeProtoPkgContext paramDecodeProtoPkgContext, ArrayList<MessageRecord> paramArrayList1, msg_comm.MsgHead paramMsgHead, int paramInt1, long paramLong1, long paramLong2, int paramInt2, long paramLong3, int paramInt3, int paramInt4, int paramInt5, ArrayList<MessageRecord> paramArrayList2, long paramLong4)
-  {
-    if (QFileAssistantUtils.a(paramLong1 + "")) {}
-    for (int k = QFileAssistantUtils.a(paramMsg);; k = 0)
-    {
-      paramArrayList2 = paramArrayList2.iterator();
-      while (paramArrayList2.hasNext())
-      {
-        MessageRecord localMessageRecord = (MessageRecord)paramArrayList2.next();
-        if ((!a(paramDecodeProtoPkgContext, localMessageRecord)) && (!a(paramDecodeProtoPkgContext, paramInt1, paramLong1, paramLong2, paramInt2)))
-        {
-          localMessageRecord.selfuin = String.valueOf(paramDecodeProtoPkgContext.jdField_a_of_type_Long);
-          localMessageRecord.frienduin = String.valueOf(paramDecodeProtoPkgContext.jdField_e_of_type_Long);
-          localMessageRecord.senderuin = String.valueOf(paramDecodeProtoPkgContext.jdField_b_of_type_Long);
-          localMessageRecord.time = paramDecodeProtoPkgContext.jdField_c_of_type_Long;
-          localMessageRecord.shmsgseq = paramInt1;
-          localMessageRecord.msgUid = paramLong2;
-          localMessageRecord.istroop = paramDecodeProtoPkgContext.jdField_c_of_type_Int;
-          localMessageRecord.longMsgId = paramInt3;
-          localMessageRecord.longMsgCount = paramInt4;
-          localMessageRecord.longMsgIndex = paramInt5;
-          a(paramDecodeProtoPkgContext, localMessageRecord);
-          if (localMessageRecord.msgtype == -2058) {
-            EmojiStickerManager.a(localMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          }
-          if (QFileAssistantUtils.a(localMessageRecord.frienduin)) {
-            QFileAssistantUtils.a(localMessageRecord, k);
-          }
-          if (!a(paramDecodeProtoPkgContext, paramInt1, paramLong1, paramLong2, paramInt2, localMessageRecord))
-          {
-            b(paramMsgHead, localMessageRecord);
-            a(paramMsgHead, localMessageRecord);
-            if ((paramDecodeProtoPkgContext.jdField_c_of_type_Int == 0) && ((localMessageRecord instanceof MessageForPic))) {
-              ((MessageForPic)localMessageRecord).bEnableEnc = true;
-            }
-            if (!a(paramDecodeProtoPkgContext, paramMsgHead, paramLong1, localMessageRecord))
-            {
-              b(paramDecodeProtoPkgContext, localMessageRecord);
-              a(localMessageRecord);
-              localMessageRecord.vipBubbleID = paramDecodeProtoPkgContext.jdField_d_of_type_Long;
-              localMessageRecord.vipBubbleDiyTextId = paramDecodeProtoPkgContext.jdField_a_of_type_Int;
-              localMessageRecord.vipSubBubbleId = paramDecodeProtoPkgContext.jdField_b_of_type_Int;
-              a(paramMsg, paramDecodeProtoPkgContext, localMessageRecord);
-              a(paramMsgHead, paramLong4, localMessageRecord);
-              b(localMessageRecord);
-              if (localMessageRecord.msgtype == -7005)
-              {
-                LimitChatUtil.a(localMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-              }
-              else
-              {
-                paramArrayList1.add(localMessageRecord);
-                if (paramDecodeProtoPkgContext.jdField_c_of_type_Int == 1036) {
-                  MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, paramLong3, paramInt1, paramLong2, paramInt2);
-                }
-                c(localMessageRecord);
-              }
-            }
-          }
-        }
-      }
-      return;
-    }
-  }
-  
-  private void a(msg_comm.Msg paramMsg, FromServiceMsg paramFromServiceMsg, msg_onlinepush.PbPushMsg paramPbPushMsg)
-  {
-    msg_comm.MsgHead localMsgHead = (msg_comm.MsgHead)paramMsg.msg_head.get();
-    if (!localMsgHead.c2c_cmd.has()) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.C2CMessageProcessor", 2, "<---handleMsgPush_PB_C2CPush: no C2CCmd.");
-      }
-    }
-    for (;;)
-    {
-      return;
-      long l1 = localMsgHead.c2c_cmd.get();
-      long l2 = localMsgHead.from_uin.get();
-      long l3 = localMsgHead.to_uin.get();
-      long l4 = localMsgHead.msg_seq.get();
-      long l5 = localMsgHead.msg_time.get();
-      long l6 = localMsgHead.msg_uid.get();
-      int k = localMsgHead.user_active.get();
-      int m = localMsgHead.from_instid.get();
-      Object localObject1;
-      long l7;
-      if (paramFromServiceMsg.getUin() == null)
-      {
-        localObject1 = Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        l7 = ((Long)localObject1).longValue();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.C2CMessageProcessor", 2, "<---handleMsgPush_PB_C2CPush:fromUin:" + l2 + ",toUin:" + l3 + ",msgTime:" + l5 + ",msgSeq:" + l4 + ",msgUid:" + l6 + ",userActive:" + k + ",fromInstid:" + m + ",hasAppShare:" + paramMsg.appshare_info.has() + ",hasMsgBody:" + paramMsg.msg_body.has());
-        }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.userActiveStatus = k;
-        localObject1 = new ArrayList();
-      }
+      paramList = (msg_comm.Msg)localIterator.next();
       try
       {
-        Object localObject2 = new DecodeProtoPkgContext(l7, l2, true, false, false, false);
-        ((DecodeProtoPkgContext)localObject2).h = true;
-        paramMsg = a(paramMsg, (PBDecodeContext)localObject2);
-        MessageHandlerUtils.a(paramMsg);
-        if ((paramMsg == null) || (paramMsg.size() == 0)) {
-          continue;
-        }
-        a(paramMsg, (ArrayList)localObject1, true);
-        paramMsg = new ArrayList();
-        localObject2 = new ArrayList();
-        a((ArrayList)localObject1, paramMsg, (ArrayList)localObject2);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().b((List)localObject2);
-        boolean bool2 = MessageHandlerUtils.a((ArrayList)localObject2);
-        k = MsgProxyUtils.a((List)localObject1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache());
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
-        if ((bool2) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundStop))
+        paramList = a(paramList, paramDecodeProtoPkgContext);
+      }
+      catch (Exception localException)
+      {
+        paramList = paramList1;
+        if (QLog.isColorLevel())
         {
-          bool1 = true;
-          ((QQMessageFacade)localObject1).a((ArrayList)localObject2, String.valueOf(l7), bool1);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a(localMsgHead.msg_seq.get());
-          m = paramFromServiceMsg.getRequestSsoSeq();
-          paramFromServiceMsg = paramPbPushMsg.bytes_push_token.get().toStringUtf8();
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.msg.C2CMessageProcessor", 2, new Object[] { "----------handleMsgPush_PB_C2CPush get Push token = ", paramFromServiceMsg, " and use ", "OnlinePush.RespPush", " send back to server" });
-          }
-          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(l2, paramMsg, paramPbPushMsg.svrip.get(), m, paramPbPushMsg);
-          if (l1 == 127L) {
-            continue;
-          }
-          a("handleMsgPush_PB_C2CPush", true, k, this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(bool2), false);
-          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b((ArrayList)localObject2);
-          return;
-          localObject1 = Long.valueOf(paramFromServiceMsg.getUin());
+          QLog.w("Q.msg.C2CMessageProcessor", 2, "decodeSinglePBMsg_C2C error,", localException);
+          paramList = paramList1;
         }
       }
-      catch (Exception paramMsg)
+      paramList1 = paramList;
+      if (paramList != null)
       {
-        for (;;)
+        paramList1 = paramList;
+        if (paramList.size() > 0)
         {
-          paramMsg.printStackTrace();
-          if (QLog.isColorLevel()) {
-            QLog.w("Q.msg.C2CMessageProcessor", 2, "handleMsgPush_PB_C2CPush decodeSinglePBMsg_C2C error,", paramMsg);
-          }
-          paramMsg = null;
-          continue;
-          boolean bool1 = false;
+          paramArrayList.addAll(paramList);
+          paramList1 = paramList;
         }
       }
     }
   }
   
-  private void a(msg_comm.Msg paramMsg, ArrayList<MessageRecord> paramArrayList, DecodeProtoPkgContext paramDecodeProtoPkgContext, MessageHandler paramMessageHandler)
+  /* Error */
+  private void a(msg_comm.Msg paramMsg, FromServiceMsg paramFromServiceMsg, msg_onlinepush.PbPushMsg paramPbPushMsg)
   {
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a().a().a().iterator();
+    // Byte code:
+    //   0: aload_1
+    //   1: getfield 294	msf/msgcomm/msg_comm$Msg:msg_head	Lmsf/msgcomm/msg_comm$MsgHead;
+    //   4: invokevirtual 299	msf/msgcomm/msg_comm$MsgHead:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   7: checkcast 296	msf/msgcomm/msg_comm$MsgHead
+    //   10: astore 23
+    //   12: aload 23
+    //   14: getfield 1021	msf/msgcomm/msg_comm$MsgHead:c2c_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   17: invokevirtual 70	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   20: ifne +19 -> 39
+    //   23: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   26: ifeq +12 -> 38
+    //   29: ldc 101
+    //   31: iconst_2
+    //   32: ldc_w 1023
+    //   35: invokestatic 109	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   38: return
+    //   39: aload 23
+    //   41: getfield 1021	msf/msgcomm/msg_comm$MsgHead:c2c_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   44: invokevirtual 76	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   47: i2l
+    //   48: lstore 6
+    //   50: aload 23
+    //   52: getfield 302	msf/msgcomm/msg_comm$MsgHead:from_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   55: invokevirtual 169	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   58: lstore 8
+    //   60: aload 23
+    //   62: getfield 305	msf/msgcomm/msg_comm$MsgHead:to_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   65: invokevirtual 169	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   68: lstore 10
+    //   70: aload 23
+    //   72: getfield 340	msf/msgcomm/msg_comm$MsgHead:msg_seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   75: invokevirtual 76	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   78: i2l
+    //   79: lstore 12
+    //   81: aload 23
+    //   83: getfield 576	msf/msgcomm/msg_comm$MsgHead:msg_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   86: invokevirtual 76	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   89: i2l
+    //   90: lstore 14
+    //   92: aload 23
+    //   94: getfield 337	msf/msgcomm/msg_comm$MsgHead:msg_uid	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   97: invokevirtual 169	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   100: lstore 16
+    //   102: aload 23
+    //   104: getfield 1026	msf/msgcomm/msg_comm$MsgHead:user_active	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   107: invokevirtual 76	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   110: istore 4
+    //   112: aload 23
+    //   114: getfield 1029	msf/msgcomm/msg_comm$MsgHead:from_instid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   117: invokevirtual 76	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   120: istore 5
+    //   122: aload_2
+    //   123: invokevirtual 1034	com/tencent/qphone/base/remote/FromServiceMsg:getUin	()Ljava/lang/String;
+    //   126: ifnonnull +15 -> 141
+    //   129: aload_0
+    //   130: getfield 48	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
+    //   133: invokevirtual 365	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   136: astore 22
+    //   138: goto +9 -> 147
+    //   141: aload_2
+    //   142: invokevirtual 1034	com/tencent/qphone/base/remote/FromServiceMsg:getUin	()Ljava/lang/String;
+    //   145: astore 22
+    //   147: aload 22
+    //   149: invokestatic 1037	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
+    //   152: invokevirtual 824	java/lang/Long:longValue	()J
+    //   155: lstore 18
+    //   157: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   160: ifeq +189 -> 349
+    //   163: new 83	java/lang/StringBuilder
+    //   166: dup
+    //   167: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   170: astore 22
+    //   172: aload 22
+    //   174: ldc_w 1039
+    //   177: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   180: pop
+    //   181: aload 22
+    //   183: lload 8
+    //   185: invokevirtual 208	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   188: pop
+    //   189: aload 22
+    //   191: ldc_w 1041
+    //   194: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   197: pop
+    //   198: aload 22
+    //   200: lload 10
+    //   202: invokevirtual 208	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   205: pop
+    //   206: aload 22
+    //   208: ldc_w 1043
+    //   211: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   214: pop
+    //   215: aload 22
+    //   217: lload 14
+    //   219: invokevirtual 208	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   222: pop
+    //   223: aload 22
+    //   225: ldc_w 1045
+    //   228: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   231: pop
+    //   232: aload 22
+    //   234: lload 12
+    //   236: invokevirtual 208	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   239: pop
+    //   240: aload 22
+    //   242: ldc_w 1047
+    //   245: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   248: pop
+    //   249: aload 22
+    //   251: lload 16
+    //   253: invokevirtual 208	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   256: pop
+    //   257: aload 22
+    //   259: ldc_w 1049
+    //   262: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   265: pop
+    //   266: aload 22
+    //   268: iload 4
+    //   270: invokevirtual 95	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   273: pop
+    //   274: aload 22
+    //   276: ldc_w 1051
+    //   279: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   282: pop
+    //   283: aload 22
+    //   285: iload 5
+    //   287: invokevirtual 95	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   290: pop
+    //   291: aload 22
+    //   293: ldc_w 1053
+    //   296: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   299: pop
+    //   300: aload 22
+    //   302: aload_1
+    //   303: getfield 1057	msf/msgcomm/msg_comm$Msg:appshare_info	Lmsf/msgcomm/msg_comm$AppShareInfo;
+    //   306: invokevirtual 1060	msf/msgcomm/msg_comm$AppShareInfo:has	()Z
+    //   309: invokevirtual 203	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   312: pop
+    //   313: aload 22
+    //   315: ldc_w 1062
+    //   318: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   321: pop
+    //   322: aload 22
+    //   324: aload_1
+    //   325: getfield 676	msf/msgcomm/msg_comm$Msg:msg_body	Ltencent/im/msg/im_msg_body$MsgBody;
+    //   328: invokevirtual 679	tencent/im/msg/im_msg_body$MsgBody:has	()Z
+    //   331: invokevirtual 203	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   334: pop
+    //   335: ldc 101
+    //   337: iconst_2
+    //   338: aload 22
+    //   340: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   343: invokestatic 109	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   346: goto +3 -> 349
+    //   349: aload_0
+    //   350: iload 4
+    //   352: invokespecial 1064	com/tencent/imcore/message/C2CMessageProcessor:a	(I)V
+    //   355: new 284	java/util/ArrayList
+    //   358: dup
+    //   359: invokespecial 313	java/util/ArrayList:<init>	()V
+    //   362: astore 22
+    //   364: new 367	com/tencent/mobileqq/service/message/DecodeProtoPkgContext
+    //   367: dup
+    //   368: lload 18
+    //   370: lload 8
+    //   372: iconst_1
+    //   373: iconst_0
+    //   374: iconst_0
+    //   375: iconst_0
+    //   376: invokespecial 370	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:<init>	(JJZZZZ)V
+    //   379: astore 24
+    //   381: aload 24
+    //   383: iconst_1
+    //   384: putfield 873	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:h	Z
+    //   387: aload_0
+    //   388: aload_1
+    //   389: aload 24
+    //   391: invokevirtual 936	com/tencent/imcore/message/C2CMessageProcessor:a	(Lmsf/msgcomm/msg_comm$Msg;Lcom/tencent/mobileqq/service/message/PBDecodeContext;)Ljava/util/List;
+    //   394: astore_1
+    //   395: goto +31 -> 426
+    //   398: astore_1
+    //   399: goto +5 -> 404
+    //   402: astore 24
+    //   404: aload_1
+    //   405: invokevirtual 258	java/lang/Exception:printStackTrace	()V
+    //   408: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   411: ifeq +13 -> 424
+    //   414: ldc 101
+    //   416: iconst_2
+    //   417: ldc_w 1066
+    //   420: aload_1
+    //   421: invokestatic 512	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   424: aconst_null
+    //   425: astore_1
+    //   426: aload_0
+    //   427: aload_1
+    //   428: invokespecial 1067	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/util/List;)V
+    //   431: aload_1
+    //   432: ifnull +285 -> 717
+    //   435: aload_1
+    //   436: invokeinterface 152 1 0
+    //   441: ifne +4 -> 445
+    //   444: return
+    //   445: aload_0
+    //   446: aload_1
+    //   447: aload 22
+    //   449: iconst_1
+    //   450: invokevirtual 1070	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/util/List;Ljava/util/ArrayList;Z)V
+    //   453: new 284	java/util/ArrayList
+    //   456: dup
+    //   457: invokespecial 313	java/util/ArrayList:<init>	()V
+    //   460: astore_1
+    //   461: new 284	java/util/ArrayList
+    //   464: dup
+    //   465: invokespecial 313	java/util/ArrayList:<init>	()V
+    //   468: astore 24
+    //   470: aload_0
+    //   471: aload 22
+    //   473: aload_1
+    //   474: aload 24
+    //   476: invokespecial 1072	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/util/ArrayList;Ljava/util/ArrayList;Ljava/util/ArrayList;)V
+    //   479: aload_0
+    //   480: getfield 48	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
+    //   483: invokevirtual 398	com/tencent/common/app/AppInterface:getMsgCache	()Ljava/lang/Object;
+    //   486: checkcast 400	com/tencent/mobileqq/service/message/MessageCache
+    //   489: aload 24
+    //   491: invokevirtual 401	com/tencent/mobileqq/service/message/MessageCache:b	(Ljava/util/List;)V
+    //   494: aload 24
+    //   496: invokestatic 1075	com/tencent/mobileqq/app/BaseMessageHandlerUtils:a	(Ljava/util/ArrayList;)Z
+    //   499: istore 21
+    //   501: aload 22
+    //   503: aload_0
+    //   504: getfield 48	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
+    //   507: invokevirtual 398	com/tencent/common/app/AppInterface:getMsgCache	()Ljava/lang/Object;
+    //   510: checkcast 400	com/tencent/mobileqq/service/message/MessageCache
+    //   513: invokestatic 413	com/tencent/imcore/message/MsgProxyUtils:a	(Ljava/util/List;Lcom/tencent/mobileqq/service/message/MessageCache;)I
+    //   516: istore 4
+    //   518: aload_0
+    //   519: getfield 48	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
+    //   522: ldc 50
+    //   524: ldc 52
+    //   526: invokevirtual 58	com/tencent/common/app/AppInterface:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
+    //   529: checkcast 50	com/tencent/mobileqq/msg/api/IMessageFacade
+    //   532: astore 22
+    //   534: iload 21
+    //   536: ifeq +19 -> 555
+    //   539: aload_0
+    //   540: getfield 48	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
+    //   543: getfield 419	com/tencent/common/app/AppInterface:isBackgroundStop	Z
+    //   546: ifeq +9 -> 555
+    //   549: iconst_1
+    //   550: istore 20
+    //   552: goto +6 -> 558
+    //   555: iconst_0
+    //   556: istore 20
+    //   558: aload 22
+    //   560: aload 24
+    //   562: lload 18
+    //   564: invokestatic 175	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   567: iload 20
+    //   569: invokeinterface 423 4 0
+    //   574: aload_0
+    //   575: getfield 48	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
+    //   578: invokevirtual 398	com/tencent/common/app/AppInterface:getMsgCache	()Ljava/lang/Object;
+    //   581: checkcast 400	com/tencent/mobileqq/service/message/MessageCache
+    //   584: aload 23
+    //   586: getfield 340	msf/msgcomm/msg_comm$MsgHead:msg_seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   589: invokevirtual 76	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   592: invokevirtual 1076	com/tencent/mobileqq/service/message/MessageCache:a	(I)V
+    //   595: aload_2
+    //   596: invokevirtual 1079	com/tencent/qphone/base/remote/FromServiceMsg:getRequestSsoSeq	()I
+    //   599: istore 5
+    //   601: aload_3
+    //   602: getfield 1084	msf/onlinepush/msg_onlinepush$PbPushMsg:bytes_push_token	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   605: invokevirtual 132	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   608: invokevirtual 1087	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   611: astore_2
+    //   612: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   615: ifeq +41 -> 656
+    //   618: ldc 101
+    //   620: iconst_2
+    //   621: iconst_5
+    //   622: anewarray 844	java/lang/Object
+    //   625: dup
+    //   626: iconst_0
+    //   627: ldc_w 1089
+    //   630: aastore
+    //   631: dup
+    //   632: iconst_1
+    //   633: aload_2
+    //   634: aastore
+    //   635: dup
+    //   636: iconst_2
+    //   637: ldc_w 1091
+    //   640: aastore
+    //   641: dup
+    //   642: iconst_3
+    //   643: ldc_w 1093
+    //   646: aastore
+    //   647: dup
+    //   648: iconst_4
+    //   649: ldc_w 1095
+    //   652: aastore
+    //   653: invokestatic 1098	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   656: aload_0
+    //   657: getfield 232	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler	Lcom/tencent/mobileqq/app/BaseMessageHandler;
+    //   660: lload 8
+    //   662: aload_1
+    //   663: aload_3
+    //   664: getfield 1102	msf/onlinepush/msg_onlinepush$PbPushMsg:svrip	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   667: invokevirtual 1105	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   670: iload 5
+    //   672: aload_3
+    //   673: invokevirtual 1108	com/tencent/mobileqq/app/BaseMessageHandler:a	(JLjava/util/ArrayList;IILmsf/onlinepush/msg_onlinepush$PbPushMsg;)V
+    //   676: lload 6
+    //   678: ldc2_w 1109
+    //   681: lcmp
+    //   682: ifne +4 -> 686
+    //   685: return
+    //   686: aload_0
+    //   687: ldc_w 1112
+    //   690: iconst_1
+    //   691: iload 4
+    //   693: aload_0
+    //   694: getfield 232	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler	Lcom/tencent/mobileqq/app/BaseMessageHandler;
+    //   697: iload 21
+    //   699: invokevirtual 1115	com/tencent/mobileqq/app/BaseMessageHandler:a	(Z)Z
+    //   702: iconst_0
+    //   703: invokevirtual 431	com/tencent/imcore/message/C2CMessageProcessor:a	(Ljava/lang/String;ZIZZ)V
+    //   706: getstatic 39	com/tencent/imcore/message/C2CMessageProcessor:jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback	Lcom/tencent/imcore/message/C2CMessageProcessor$Callback;
+    //   709: aload 24
+    //   711: aload_0
+    //   712: invokeinterface 1118 3 0
+    //   717: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	718	0	this	C2CMessageProcessor
+    //   0	718	1	paramMsg	msg_comm.Msg
+    //   0	718	2	paramFromServiceMsg	FromServiceMsg
+    //   0	718	3	paramPbPushMsg	msg_onlinepush.PbPushMsg
+    //   110	241	4	i	int
+    //   120	166	5	j	int
+    //   48	1	6	l1	long
+    //   58	313	8	l2	long
+    //   68	133	10	l3	long
+    //   79	156	12	l4	long
+    //   90	128	14	l5	long
+    //   100	152	16	l6	long
+    //   155	214	18	l7	long
+    //   136	227	22	localObject	Object
+    //   10	103	23	localMsgHead	msg_comm.MsgHead
+    //   379	11	24	localDecodeProtoPkgContext	DecodeProtoPkgContext
+    // Exception table:
+    //   from	to	target	type
+    //   364	395	398	java/lang/Exception
+  }
+  
+  private void a(msg_comm.Msg paramMsg, ArrayList<MessageRecord> paramArrayList, DecodeProtoPkgContext paramDecodeProtoPkgContext, BaseMessageHandler paramBaseMessageHandler)
+  {
+    Iterator localIterator = ((IMessageFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "")).getRegistry().a().a().iterator();
     while (localIterator.hasNext()) {
-      ((Decoder)localIterator.next()).a(paramMessageHandler, paramMsg, paramArrayList, paramDecodeProtoPkgContext);
-    }
-  }
-  
-  private void a(msg_comm.MsgHead paramMsgHead, long paramLong, MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord.istroop == 1008) {}
-    try
-    {
-      if (paramMsgHead.public_account_group_send_flag.has()) {
-        paramMessageRecord.saveExtInfoToExtStr("public_account_send_flag", String.valueOf(paramMsgHead.public_account_group_send_flag.get()));
-      }
-      if (paramLong != -1L) {
-        paramMessageRecord.saveExtInfoToExtStr("public_account_msg_id", String.valueOf(paramLong));
-      }
-      return;
-    }
-    catch (Throwable paramMsgHead)
-    {
-      for (;;)
-      {
-        QLog.e("Q.msg.C2CMessageProcessor", 2, "<---decodeMessage: ", paramMsgHead);
-      }
-    }
-  }
-  
-  private void a(msg_comm.MsgHead paramMsgHead, MessageRecord paramMessageRecord)
-  {
-    paramMsgHead = (msg_comm.C2CTmpMsgHead)paramMsgHead.c2c_tmp_msg_head.get();
-    if (paramMsgHead != null)
-    {
-      if (paramMsgHead.business_name.has()) {
-        paramMessageRecord.saveExtInfoToExtStr("temp_conv_biz_name", paramMsgHead.business_name.get().toStringUtf8());
-      }
-      if (paramMsgHead.business_sub_content.has()) {
-        paramMessageRecord.saveExtInfoToExtStr("temp_conv_biz_content", paramMsgHead.business_sub_content.get().toStringUtf8());
-      }
+      ((Decoder)localIterator.next()).a(paramBaseMessageHandler, paramMsg, paramArrayList, paramDecodeProtoPkgContext);
     }
   }
   
   private void a(msg_svc.PbGetOneDayRoamMsgResp paramPbGetOneDayRoamMsgResp, Bundle paramBundle, ArrayList<MessageRecord> paramArrayList, long paramLong, int paramInt)
   {
-    long l;
-    boolean bool3;
-    boolean bool1;
     if (paramBundle != null)
     {
-      l = paramBundle.getLong("UIN", 0L);
-      bool3 = paramBundle.getBoolean("canUpdateEct", true);
-      if (paramPbGetOneDayRoamMsgResp.iscomplete.get() == 0) {
-        break label165;
-      }
-      bool1 = true;
-    }
-    for (;;)
-    {
-      boolean bool2;
-      label57:
-      label89:
-      ArrayList localArrayList;
-      if ((paramInt == 0) || (paramInt == 1) || (paramInt == 4))
-      {
-        bool2 = true;
-        if ((!bool2) || (!bool3)) {
-          break label214;
-        }
-        if (!bool1) {
-          break label177;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().b(String.valueOf(l), 0L, 0L);
-        paramBundle.putBoolean("complete", bool1);
-        paramBundle.putBoolean("success", bool2);
-        paramBundle.putLong("lowTime", paramLong);
-        localArrayList = new ArrayList();
-      }
-      try
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(String.valueOf(paramPbGetOneDayRoamMsgResp.peer_uin.get()), 0, paramArrayList, localArrayList, paramBundle);
-        if (paramArrayList != null) {
-          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(localArrayList, false);
-        }
-        return;
-        label165:
+      long l = paramBundle.getLong("UIN", 0L);
+      boolean bool3 = paramBundle.getBoolean("canUpdateEct", true);
+      int i = paramPbGetOneDayRoamMsgResp.iscomplete.get();
+      boolean bool2 = false;
+      boolean bool1;
+      if (i != 0) {
+        bool1 = true;
+      } else {
         bool1 = false;
-        continue;
-        bool2 = false;
-        break label57;
-        label177:
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().b(String.valueOf(paramPbGetOneDayRoamMsgResp.peer_uin.get()), paramPbGetOneDayRoamMsgResp.last_msgtime.get(), paramPbGetOneDayRoamMsgResp.random.get());
-        break label89;
-        label214:
-        if (bool3) {
-          break label89;
+      }
+      if ((paramInt == 0) || (paramInt == 1) || (paramInt == 4)) {
+        bool2 = true;
+      }
+      if ((bool2) && (bool3))
+      {
+        if (bool1) {
+          ((MessageCache)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache()).b(String.valueOf(l), 0L, 0L);
+        } else {
+          ((MessageCache)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache()).b(String.valueOf(paramPbGetOneDayRoamMsgResp.peer_uin.get()), paramPbGetOneDayRoamMsgResp.last_msgtime.get(), paramPbGetOneDayRoamMsgResp.random.get());
         }
+      }
+      else if (!bool3) {
         if (bool1)
         {
           paramBundle.putLong("tempEct", 0L);
           paramBundle.putLong("tempRandom", 0L);
-          break label89;
         }
-        paramBundle.putLong("tempEct", paramPbGetOneDayRoamMsgResp.last_msgtime.get());
-        paramBundle.putLong("tempRandom", paramPbGetOneDayRoamMsgResp.random.get());
+        else
+        {
+          paramBundle.putLong("tempEct", paramPbGetOneDayRoamMsgResp.last_msgtime.get());
+          paramBundle.putLong("tempRandom", paramPbGetOneDayRoamMsgResp.random.get());
+        }
+      }
+      paramBundle.putBoolean("complete", bool1);
+      paramBundle.putBoolean("success", bool2);
+      paramBundle.putLong("lowTime", paramLong);
+      ArrayList localArrayList = new ArrayList();
+      try
+      {
+        ((IMessageFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "")).handleRefreshMessageListHeadResult(String.valueOf(paramPbGetOneDayRoamMsgResp.peer_uin.get()), 0, paramArrayList, localArrayList, paramBundle);
       }
       catch (Exception paramPbGetOneDayRoamMsgResp)
       {
-        for (;;)
-        {
-          paramPbGetOneDayRoamMsgResp.printStackTrace();
-        }
+        paramPbGetOneDayRoamMsgResp.printStackTrace();
+      }
+      if (paramArrayList != null) {
+        jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(localArrayList, this);
       }
     }
   }
@@ -2243,48 +1834,57 @@ public class C2CMessageProcessor
       if (QLog.isColorLevel()) {
         QLog.w("Q.msg.C2CMessageProcessor", 2, "processSearchRoamMsgInCloud pb error search result == null");
       }
-      return;
     }
-    ArrayList localArrayList2 = new ArrayList();
-    a(paramPbSearchRoamMsgInCloudResp, localArrayList2);
-    long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    DecodeProtoPkgContext localDecodeProtoPkgContext = new DecodeProtoPkgContext(l, 0L, true, true, false, false);
-    localDecodeProtoPkgContext.h = true;
-    ArrayList localArrayList1 = new ArrayList();
-    a(localArrayList2, l, localDecodeProtoPkgContext, localArrayList1);
-    if (localArrayList1.size() > 0) {
-      Collections.sort(localArrayList1, new C2CMessageProcessor.5(this));
-    }
-    if (QLog.isColorLevel()) {
-      QLog.w("Q.msg.C2CMessageProcessor", 2, "processSearchRoamMsgInCloud resultList size:" + paramPbSearchRoamMsgInCloudResp.size() + ",outList size:" + localArrayList2.size() + ",loopList size:" + localArrayList1.size());
-    }
-    if (paramRspBody.friends.has())
+    else
     {
-      paramPbSearchRoamMsgInCloudResp = paramRspBody.friends.get();
-      if (paramPbSearchRoamMsgInCloudResp == null) {
-        break label320;
+      ArrayList localArrayList2 = new ArrayList();
+      a(paramPbSearchRoamMsgInCloudResp, localArrayList2);
+      long l = Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+      Object localObject = new DecodeProtoPkgContext(l, 0L, true, true, false, false);
+      ((DecodeProtoPkgContext)localObject).h = true;
+      ArrayList localArrayList1 = new ArrayList();
+      a(localArrayList2, l, (DecodeProtoPkgContext)localObject, localArrayList1);
+      if (localArrayList1.size() > 0) {
+        Collections.sort(localArrayList1, new C2CMessageProcessor.4(this));
       }
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.msg.C2CMessageProcessor", 2, "processSearchRoamMsgInCloud friendsInfo size:" + paramPbSearchRoamMsgInCloudResp.size());
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("processSearchRoamMsgInCloud resultList size:");
+        ((StringBuilder)localObject).append(paramPbSearchRoamMsgInCloudResp.size());
+        ((StringBuilder)localObject).append(",outList size:");
+        ((StringBuilder)localObject).append(localArrayList2.size());
+        ((StringBuilder)localObject).append(",loopList size:");
+        ((StringBuilder)localObject).append(localArrayList1.size());
+        QLog.w("Q.msg.C2CMessageProcessor", 2, ((StringBuilder)localObject).toString());
       }
-    }
-    for (;;)
-    {
-      if ((localArrayList1.size() == 0) && (paramInt1 != 1))
+      if (paramRspBody.friends.has()) {
+        paramPbSearchRoamMsgInCloudResp = paramRspBody.friends.get();
+      } else {
+        paramPbSearchRoamMsgInCloudResp = null;
+      }
+      if (paramPbSearchRoamMsgInCloudResp != null)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramRspBody = new StringBuilder();
+          paramRspBody.append("processSearchRoamMsgInCloud friendsInfo size:");
+          paramRspBody.append(paramPbSearchRoamMsgInCloudResp.size());
+          QLog.w("Q.msg.C2CMessageProcessor", 2, paramRspBody.toString());
+        }
+      }
+      else if (QLog.isColorLevel()) {
+        QLog.w("Q.msg.C2CMessageProcessor", 2, "processSearchRoamMsgInCloud friendsInfo == null");
+      }
+      int i = localArrayList1.size();
+      boolean bool = false;
+      if ((i == 0) && (paramInt1 != 1))
       {
         paramInt1 = paramToServiceMsg.extraData.getInt("retryIndex");
         if (paramInt1 < 4)
         {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a(paramInt2, null, paramToServiceMsg.extraData.getString("keyword"), paramToServiceMsg.extraData.getLong("sequence"), paramPbSearchRoamMsgInCloudResp, paramInt1 + 1, 0L);
+          ((BaseMessageHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler("com.tencent.mobileqq.app.MessageHandler")).a(paramInt2, null, paramToServiceMsg.extraData.getString("keyword"), paramToServiceMsg.extraData.getLong("sequence"), paramPbSearchRoamMsgInCloudResp, paramInt1 + 1, 0L);
           return;
-          paramPbSearchRoamMsgInCloudResp = null;
-          break;
-          label320:
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.w("Q.msg.C2CMessageProcessor", 2, "processSearchRoamMsgInCloud friendsInfo == null");
-          continue;
         }
         if (QLog.isColorLevel()) {
           QLog.w("Q.msg.C2CMessageProcessor", 2, "processSearchRoamMsgInCloud retry extend 5 times, do not request again");
@@ -2293,335 +1893,101 @@ public class C2CMessageProcessor
         a(8015, false, paramHashMap);
         return;
       }
-    }
-    paramHashMap.put("SEARCHINFO", paramPbSearchRoamMsgInCloudResp);
-    paramHashMap.put("SEARCHRESULT", localArrayList1);
-    if (paramInt1 == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
+      paramHashMap.put("SEARCHINFO", paramPbSearchRoamMsgInCloudResp);
+      paramHashMap.put("SEARCHRESULT", localArrayList1);
+      if (paramInt1 == 1) {
+        bool = true;
+      }
       paramHashMap.put("SEARCHCOMPLETE", Boolean.valueOf(bool));
       a(8015, true, paramHashMap);
-      return;
     }
   }
   
-  private void a(boolean paramBoolean, String paramString, MessageRoamManager paramMessageRoamManager, ArrayList<MessageRecord> paramArrayList)
+  private void a(boolean paramBoolean, String paramString, ArrayList<MessageRecord> paramArrayList)
   {
-    if ((paramArrayList != null) && (paramArrayList.size() > 0))
+    if (paramArrayList != null)
     {
+      if (paramArrayList.size() <= 0) {
+        return;
+      }
       Collections.sort(paramArrayList, new C2CMessageProcessor.2(this));
-      if (paramMessageRoamManager == null) {}
-    }
-    try
-    {
-      paramMessageRoamManager.a(paramArrayList, paramString, paramBoolean);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(paramArrayList, false);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.msg.C2CMessageProcessor", 2, "handlePBGetRoamMsg exception ! ", paramString);
-        }
-      }
-    }
-    catch (OutOfMemoryError paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.msg.C2CMessageProcessor", 2, "handlePBGetRoamMsg OutOfMemoryError ! ", paramString);
-        }
-      }
-    }
-  }
-  
-  private void a(boolean paramBoolean1, short paramShort, boolean paramBoolean2, SharedPreferences paramSharedPreferences, MessageRecord paramMessageRecord)
-  {
-    if (paramShort == 0) {
-      if (paramBoolean2) {
-        paramShort = this.jdField_c_of_type_Int;
-      }
-    }
-    for (;;)
-    {
-      this.e = this.jdField_a_of_type_JavaUtilHashSet.size();
-      if (this.e % paramShort == 0)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.oneWayMessageNotifyVibert(paramMessageRecord, paramBoolean1);
-        this.jdField_a_of_type_JavaUtilHashSet.clear();
-        paramSharedPreferences.edit().remove(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_OneWayMsgDateRecentUinList");
-        paramSharedPreferences.edit().commit();
-        if (paramBoolean2) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005296", "0X8005296", 0, 0, "", "", "", "");
-        }
-      }
-      return;
-      paramShort = this.jdField_a_of_type_Int;
-      continue;
-      if (paramBoolean2) {
-        paramShort = this.jdField_d_of_type_Int;
-      } else {
-        paramShort = this.jdField_b_of_type_Int;
-      }
-    }
-  }
-  
-  private void a(boolean paramBoolean1, boolean paramBoolean2, ArrayList<MessageRecord> paramArrayList, String paramString1, String paramString2)
-  {
-    boolean bool;
-    int k;
-    if (paramArrayList.size() > 0)
-    {
-      if (!paramBoolean2) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().b(paramArrayList);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramString2, 0, paramArrayList, paramBoolean1);
-      bool = a(paramArrayList);
-      k = MsgProxyUtils.a(paramArrayList, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache());
-      ConfessMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramArrayList);
-      paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
-      if ((!bool) || (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundStop)) {
-        break label163;
-      }
-    }
-    label163:
-    for (paramBoolean1 = true;; paramBoolean1 = false)
-    {
-      paramString2.a(paramArrayList, paramString1, paramBoolean1);
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).reportPubAccMsg(paramArrayList);
-      OfficialAccountReporter.a.a(paramArrayList);
-      b(paramArrayList);
-      a("handleGetBuddyMessageResp", true, k, bool, paramBoolean2);
-      a(paramArrayList, paramBoolean2);
-      MessageStatisticHelper.a((MessageRecord)paramArrayList.get(0), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      return;
+      b(paramBoolean, paramString, paramArrayList);
+      jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramArrayList, this);
     }
   }
   
   private void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
   {
-    switch (paramInt)
+    MessageCache localMessageCache = (MessageCache)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache();
+    if (paramInt != 0)
     {
-    default: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          return;
+        }
+        localMessageCache.b(paramArrayOfByte2);
+        this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.b(false);
+        return;
+      }
+      localMessageCache.a(paramArrayOfByte1);
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(false);
       return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a(paramArrayOfByte1);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().b(paramArrayOfByte1);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b(false);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.c(false);
+    }
+    localMessageCache.a(paramArrayOfByte1);
+    localMessageCache.b(paramArrayOfByte1);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(false);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.b(false);
+  }
+  
+  private boolean a(MessageRecord paramMessageRecord)
+  {
+    return jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramMessageRecord, this);
+  }
+  
+  public static boolean a(StringBuilder paramStringBuilder, int paramInt, boolean paramBoolean, long paramLong1, long paramLong2, AppInterface paramAppInterface)
+  {
+    paramLong2 = ((MessageCache)paramAppInterface.getMsgCache()).a(String.valueOf(paramLong2), 0);
+    if ((paramLong1 <= paramLong2) && (paramBoolean))
+    {
+      if (QLog.isColorLevel())
+      {
+        paramStringBuilder.setLength(0);
+        paramStringBuilder.append("<---decodeC2CMessagePackage : msgList[");
+        paramStringBuilder.append(paramInt);
+        paramStringBuilder.append("] : filter msg by del time delTime =");
+        paramStringBuilder.append(paramLong2);
+        paramStringBuilder.append(", msgTime = ");
+        paramStringBuilder.append(paramLong1);
+        QLog.d("Q.msg.C2CMessageProcessor", 2, paramStringBuilder.toString());
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  private byte[] a()
+  {
+    return jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(this);
+  }
+  
+  private void b(int paramInt)
+  {
+    if (paramInt != 0)
+    {
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          return;
+        }
+        a(4016, true, null);
+        return;
+      }
+      a(4001, true, null);
       return;
-    case 1: 
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a(paramArrayOfByte1);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b(false);
-      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().b(paramArrayOfByte2);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.c(false);
-  }
-  
-  private boolean a(int paramInt1, long paramLong1, long paramLong2, int paramInt2, MessageForStructing paramMessageForStructing)
-  {
-    if ((paramMessageForStructing.structingMsg.mMsgServiceID == 52) && ((NearbyFlowerManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEARBY_FLOWER_MANAGER) != null))
-    {
-      paramMessageForStructing = new NearbyFlowerMessage(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForStructing);
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin().equals(paramMessageForStructing.sUin)) {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80060AF", "0X80060AF", 0, 0, "", "", "", "");
-      }
-      while ("4".equals(paramMessageForStructing.version))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.C2CMessageProcessor", 2, "<---received random chat flower message, don't put it to aio");
-        }
-        MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, paramLong1, paramInt1, paramLong2, paramInt2);
-        return true;
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin().equals(paramMessageForStructing.rUin)) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80060B0", "0X80060B0", 0, 0, "", "", "", "");
-        }
-      }
-    }
-    return false;
-  }
-  
-  private boolean a(MessageRecord paramMessageRecord, MessageForApollo paramMessageForApollo, ApolloBaseInfo paramApolloBaseInfo, long paramLong, int paramInt)
-  {
-    if ((paramApolloBaseInfo != null) && (paramMessageRecord.time > paramApolloBaseInfo.apolloUpdateTime) && (paramApolloBaseInfo.apolloServerTS < paramLong))
-    {
-      paramApolloBaseInfo.apolloStatus = paramInt;
-      paramApolloBaseInfo.apolloServerTS = paramLong;
-      paramApolloBaseInfo.apolloVipFlag = (paramMessageForApollo.mApolloMessage.flag >> 30 & 0x1);
-      paramApolloBaseInfo.apolloUpdateTime = paramMessageRecord.time;
-      if ((!paramMessageForApollo.isSend()) && (paramMessageForApollo.signTs > NetConnInfoCenter.getServerTime()) && (paramMessageForApollo.signTs != paramApolloBaseInfo.apolloSignValidTS))
-      {
-        paramApolloBaseInfo.apolloSignValidTS = paramMessageForApollo.signTs;
-        paramApolloBaseInfo.apolloSignStr = "";
-        return true;
-      }
-    }
-    else if ((paramApolloBaseInfo != null) && (!paramMessageForApollo.isSend()) && (paramMessageForApollo.signTs > NetConnInfoCenter.getServerTime()) && (paramMessageForApollo.signTs != paramApolloBaseInfo.apolloSignValidTS))
-    {
-      paramApolloBaseInfo.apolloSignValidTS = paramMessageForApollo.signTs;
-      paramApolloBaseInfo.apolloSignStr = "";
-      return true;
-    }
-    return false;
-  }
-  
-  private boolean a(DecodeProtoPkgContext paramDecodeProtoPkgContext, int paramInt1, long paramLong1, long paramLong2, int paramInt2)
-  {
-    if (UinTypeUtil.a(paramDecodeProtoPkgContext.jdField_c_of_type_Int) == 1032)
-    {
-      Object localObject2 = null;
-      Object localObject1 = localObject2;
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-      {
-        MessageCache localMessageCache = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache();
-        localObject1 = localObject2;
-        if (localMessageCache != null) {
-          localObject1 = localMessageCache.a(String.valueOf(paramDecodeProtoPkgContext.jdField_e_of_type_Long), String.valueOf(paramDecodeProtoPkgContext.jdField_a_of_type_Long));
-        }
-      }
-      MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLong1, paramInt1, paramLong2, paramInt2, (byte[])localObject1);
-      if (paramDecodeProtoPkgContext.jdField_c_of_type_Int == 1032)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.msg.C2CMessageProcessor", 2, String.format("decodeMessage discard confess msg senderUin:%s msgSeq:%d msgType:%d", new Object[] { Long.toString(paramLong1), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-        }
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  private boolean a(DecodeProtoPkgContext paramDecodeProtoPkgContext, int paramInt1, long paramLong1, long paramLong2, int paramInt2, MessageRecord paramMessageRecord)
-  {
-    if ((UinTypeUtil.h(paramDecodeProtoPkgContext.jdField_c_of_type_Int)) && ((paramMessageRecord instanceof MessageForStructing)))
-    {
-      int k = GiftMessageUtils.a(paramMessageRecord, 1);
-      if (k > 0) {
-        paramMessageRecord.saveExtInfoToExtStr("nearby_gift_msg", "1|" + k);
-      }
-      if (a(paramInt1, paramLong1, paramLong2, paramInt2, (MessageForStructing)paramMessageRecord)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  private boolean a(DecodeProtoPkgContext paramDecodeProtoPkgContext, MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord == null) {
-      return true;
-    }
-    if ((paramDecodeProtoPkgContext.jdField_b_of_type_Long == 3338705755L) && (((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).isDeleteOldKandian(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {
-      return true;
-    }
-    if ((paramDecodeProtoPkgContext.jdField_b_of_type_Long == 2171946401L) && (ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {
-      return true;
-    }
-    if (paramDecodeProtoPkgContext.jdField_b_of_type_Long == 2171946401L) {
-      ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).updateDeleteOldKandian(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
-    }
-    return ((paramDecodeProtoPkgContext.jdField_c_of_type_Int == 1025) || (paramDecodeProtoPkgContext.jdField_c_of_type_Int == 1024)) && (paramMessageRecord.msgtype == -1000) && (paramMessageRecord.msg.startsWith("default:SigT="));
-  }
-  
-  private boolean a(DecodeProtoPkgContext paramDecodeProtoPkgContext, msg_comm.MsgHead paramMsgHead, long paramLong, MessageRecord paramMessageRecord)
-  {
-    if (paramDecodeProtoPkgContext.jdField_c_of_type_Int == 1006)
-    {
-      if (paramMsgHead.from_nick.has()) {
-        ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(String.valueOf(paramDecodeProtoPkgContext.jdField_e_of_type_Long), paramMsgHead.from_nick.get());
-      }
-      paramMessageRecord.frienduin = ContactUtils.f(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(paramDecodeProtoPkgContext.jdField_e_of_type_Long));
-      paramMessageRecord.senderuin = ContactUtils.f(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(paramLong));
-      if ((TextUtils.isEmpty(paramMessageRecord.frienduin)) && (paramDecodeProtoPkgContext.jdField_d_of_type_Boolean)) {
-        paramMessageRecord.frienduin = String.valueOf(paramDecodeProtoPkgContext.jdField_e_of_type_Long);
-      }
-      if (paramMessageRecord.frienduin == null)
-      {
-        QLog.e("Q.msg.C2CMessageProcessor", 1, String.format("decodeMessage error, getPhoneNumByUin is null, friendUin: %d senderUin: %d uinType: %d msgType: %d", new Object[] { Long.valueOf(paramDecodeProtoPkgContext.jdField_e_of_type_Long), Long.valueOf(paramLong), Integer.valueOf(paramMessageRecord.istroop), Integer.valueOf(paramMessageRecord.msgtype) }));
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  private static boolean a(StringBuilder paramStringBuilder, int paramInt, boolean paramBoolean, long paramLong1, long paramLong2, QQAppInterface paramQQAppInterface)
-  {
-    boolean bool2 = false;
-    paramLong2 = paramQQAppInterface.getMsgCache().a(String.valueOf(paramLong2), 0);
-    boolean bool1 = bool2;
-    if (paramLong1 <= paramLong2)
-    {
-      bool1 = bool2;
-      if (paramBoolean)
-      {
-        if (QLog.isColorLevel())
-        {
-          paramStringBuilder.setLength(0);
-          paramStringBuilder.append("<---decodeC2CMessagePackage : msgList[").append(paramInt).append("] : filter msg by del time delTime =").append(paramLong2).append(", msgTime = ").append(paramLong1);
-          QLog.d("Q.msg.C2CMessageProcessor", 2, paramStringBuilder.toString());
-        }
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  private String b(SharedPreferences paramSharedPreferences, String paramString)
-  {
-    if (this.jdField_b_of_type_JavaUtilHashSet == null) {
-      for (;;)
-      {
-        int k;
-        try
-        {
-          if (this.jdField_b_of_type_JavaUtilHashSet == null)
-          {
-            this.jdField_b_of_type_JavaUtilHashSet = new HashSet();
-            paramSharedPreferences = paramSharedPreferences.getString(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_OneWayMsgLBSFriendRecentUinList", "");
-            String[] arrayOfString = paramSharedPreferences.split("\\|");
-            int m = arrayOfString.length;
-            k = 0;
-            paramString = paramSharedPreferences;
-            if (k < m)
-            {
-              paramString = arrayOfString[k];
-              if ((paramString.length() <= 0) || (Long.parseLong(paramString) <= 0L)) {
-                break label129;
-              }
-              this.jdField_b_of_type_JavaUtilHashSet.add(paramString);
-              break label129;
-            }
-          }
-          return paramString;
-        }
-        finally {}
-        label129:
-        k += 1;
-      }
-    }
-    return paramString;
-  }
-  
-  private String b(SharedPreferences paramSharedPreferences, String paramString, MessageRecord paramMessageRecord)
-  {
-    if (!this.jdField_a_of_type_JavaUtilHashSet.contains(paramMessageRecord.frienduin))
-    {
-      this.jdField_a_of_type_JavaUtilHashSet.add(paramMessageRecord.frienduin);
-      if (paramString.length() == 0) {}
-      for (paramString = paramMessageRecord.frienduin;; paramString = paramString + "|" + paramMessageRecord.frienduin)
-      {
-        paramSharedPreferences.edit().putString(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_OneWayMsgDateRecentUinList", paramString);
-        paramSharedPreferences.edit().commit();
-        return paramString;
-      }
-    }
-    return paramString;
+    a(4016, true, null);
+    a(4001, true, null);
   }
   
   private void b(int paramInt, Object[] paramArrayOfObject)
@@ -2634,71 +2000,6 @@ public class C2CMessageProcessor
     a(getClass().getName(), paramInt);
   }
   
-  private void b(long paramLong1, long paramLong2, long paramLong3, long paramLong4, MessageRecord paramMessageRecord)
-  {
-    if (MessageRecordInfo.a(paramMessageRecord.issend))
-    {
-      if (paramLong2 != -1L)
-      {
-        paramMessageRecord.vipBubbleID = paramLong2;
-        return;
-      }
-      paramMessageRecord.vipBubbleID = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(String.valueOf(paramLong4), String.valueOf(paramLong3));
-      return;
-    }
-    if (paramLong1 != -1L)
-    {
-      paramMessageRecord.vipBubbleID = paramLong1;
-      return;
-    }
-    paramMessageRecord.vipBubbleID = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(String.valueOf(paramLong4), String.valueOf(paramLong3));
-  }
-  
-  private void b(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord instanceof MessageForStructing))
-    {
-      paramMessageRecord = (MessageForStructing)paramMessageRecord;
-      if ((paramMessageRecord.structingMsg != null) && (paramMessageRecord.structingMsg.mMsgServiceID == 76)) {
-        ((NowLiveManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NOW_LIVE_MANAGER)).a(paramMessageRecord);
-      }
-    }
-  }
-  
-  private void b(MessageRecord paramMessageRecord, boolean paramBoolean)
-  {
-    if (paramMessageRecord.msgtype == -2002)
-    {
-      if ((!paramBoolean) && (StreamDataManager.a(paramMessageRecord.msgUid, paramMessageRecord.shmsgseq) != null)) {
-        PttInfoCollector.reportPttDownloadStream2Offline(true);
-      }
-      if ((paramBoolean) && ((paramMessageRecord instanceof MessageForPtt)) && (UinTypeUtil.b(paramMessageRecord.istroop)))
-      {
-        Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(paramMessageRecord.frienduin, paramMessageRecord.istroop).iterator();
-        while (localIterator.hasNext())
-        {
-          MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-          if (((localMessageRecord instanceof MessageForPtt)) && (localMessageRecord.msgUid == paramMessageRecord.msgUid) && (localMessageRecord.shmsgseq == paramMessageRecord.shmsgseq)) {
-            a((MessageForPtt)localMessageRecord, (MessageForPtt)paramMessageRecord);
-          }
-        }
-      }
-    }
-  }
-  
-  private void b(DecodeProtoPkgContext paramDecodeProtoPkgContext, MessageRecord paramMessageRecord)
-  {
-    if (paramDecodeProtoPkgContext.f)
-    {
-      paramMessageRecord.issend = 2;
-      paramMessageRecord.isread = true;
-    }
-    while (paramMessageRecord.msgtype == -2037) {
-      return;
-    }
-    paramMessageRecord.isread = paramDecodeProtoPkgContext.jdField_a_of_type_Boolean;
-  }
-  
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     paramFromServiceMsg = new Bundle();
@@ -2709,352 +2010,227 @@ public class C2CMessageProcessor
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    paramFromServiceMsg = new msg_svc.PbGetRoamMsgResp();
-    Bundle localBundle;
-    try
+    boolean bool1 = paramToServiceMsg.extraData.getBoolean("isPullRoamMsg", true);
+    boolean bool2 = paramToServiceMsg.extraData.getBoolean("needNofityConversation", true);
+    boolean bool3 = paramToServiceMsg.extraData.getBoolean("used_register_proxy", false);
+    long l = System.currentTimeMillis();
+    msg_svc.PbGetMsgResp localPbGetMsgResp = a((byte[])paramObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    Object localObject;
+    if ((localPbGetMsgResp != null) && (localPbGetMsgResp.result.has()) && (localPbGetMsgResp.result.get() == 0))
     {
-      paramFromServiceMsg = (msg_svc.PbGetRoamMsgResp)paramFromServiceMsg.mergeFrom((byte[])paramObject);
-      paramObject = Long.valueOf(paramToServiceMsg.extraData.getLong("lBeginTime"));
-      bool1 = paramToServiceMsg.extraData.getBoolean("fetchMore");
-      k = paramToServiceMsg.extraData.getInt("fetchNum");
-      bool2 = paramToServiceMsg.extraData.getBoolean("preloadType");
-      bool3 = paramToServiceMsg.extraData.getBoolean("notify", true);
-      localBundle = new Bundle();
-      localBundle.putLong("BEGTIME", paramObject.longValue());
-      localBundle.putBoolean("FETCH_MORE", bool1);
-      localBundle.putInt("MSG_COUNT", k);
-      localBundle.putString("PEER_UIN", paramToServiceMsg.extraData.getString("peerUin"));
-      localBundle.putBoolean("IS_PRELOAD_TYPE", bool2);
-      if (paramFromServiceMsg != null)
-      {
-        str = String.valueOf(paramFromServiceMsg.peer_uin.get());
-        m = paramFromServiceMsg.result.get();
-        localList = paramFromServiceMsg.msg.get();
-        if (localList == null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.jdField_a_of_type_JavaUtilHashMap.remove(str);
-          if (QLog.isColorLevel()) {
-            QLog.w("Q.msg.C2CMessageProcessor", 2, "handlePBGetRoamMsg code=" + m + ", msgList is null !");
-          }
-          a(1004, false, localBundle);
-          return;
-        }
+      localObject = localPbGetMsgResp.uin_pair_msgs.get();
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(0);
+      int i;
+      if (localPbGetMsgResp.sync_flag.has()) {
+        i = localPbGetMsgResp.sync_flag.get();
+      } else {
+        i = 2;
       }
-    }
-    catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.msg.C2CMessageProcessor", 2, "handlePBGetRoamMsg InvalidProtocolBufferMicroException ! ", paramFromServiceMsg);
-        }
+      byte b1;
+      if (i < 2) {
+        b1 = (byte)1;
+      } else {
+        b1 = 0;
+      }
+      if (localPbGetMsgResp.sync_cookie.has()) {
+        paramFromServiceMsg = localPbGetMsgResp.sync_cookie.get().toByteArray();
+      } else {
         paramFromServiceMsg = null;
       }
-    }
-    catch (OutOfMemoryError paramFromServiceMsg)
-    {
-      boolean bool1;
-      int k;
-      boolean bool2;
-      boolean bool3;
-      String str;
-      int m;
-      List localList;
-      for (;;)
+      int j = a(localPbGetMsgResp, paramFromServiceMsg);
+      boolean bool4 = this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a();
+      if (b1 > 0) {
+        this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(b1, paramFromServiceMsg, i, bool1, bool2, bool4, null, j, null);
+      }
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.msg.C2CMessageProcessor", 2, "handlePBGetRoamMsg OutOfMemoryError ! ", paramFromServiceMsg);
-        }
-        paramFromServiceMsg = null;
+        localStringBuilder.setLength(0);
+        localStringBuilder.append("<PbGetMsg><R><---handleGetC2CMessageResp_PB ssoSeq:");
+        localStringBuilder.append(paramToServiceMsg.getRequestSsoSeq());
+        localStringBuilder.append(" msgStruct.cReplyCode: ");
+        localStringBuilder.append(localPbGetMsgResp.result.get());
+        localStringBuilder.append(" hasSyncCookie:");
+        localStringBuilder.append(localPbGetMsgResp.sync_cookie.has());
+        localStringBuilder.append(" channelType:");
+        localStringBuilder.append(b1);
+        localStringBuilder.append(" cSyncFlag:");
+        localStringBuilder.append(i);
+        localStringBuilder.append(" isPullRoam");
+        localStringBuilder.append(bool1);
+        localStringBuilder.append(",needNofityConversation:");
+        localStringBuilder.append(bool2);
+        localStringBuilder.append(" uinPairMsg size:");
+        localStringBuilder.append(((List)localObject).size());
+        localStringBuilder.append(", dataHash=@");
+        localStringBuilder.append(Integer.toHexString(paramObject.hashCode()));
+        localStringBuilder.append("pullMsgType");
+        localStringBuilder.append(j);
+        QLog.d("Q.msg.C2CMessageProcessor", 2, localStringBuilder.toString());
       }
-      ArrayList localArrayList = new ArrayList();
-      a(localList, localArrayList);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.C2CMessageProcessor", 2, "handlePBGetRoamMsg begTime: " + paramObject + ", code=" + m + " ,errMsg=" + paramFromServiceMsg.errmsg.get() + ", msgList.size()=" + localArrayList.size() + ",peerUin=" + str + ",time=" + paramFromServiceMsg.last_msgtime.get() + ",fetchMore:" + bool1 + ",fetchNum: " + k);
+      l = a(b1, bool1, bool3, l, localStringBuilder, (List)localObject, j);
+      a(b1, bool1, j);
+      l = System.currentTimeMillis() - l;
+      if (QLog.isColorLevel())
+      {
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("decodecMsg costTime = [");
+        paramToServiceMsg.append(l);
+        paramToServiceMsg.append("]");
+        QLog.d("Q.msg.C2CMessageProcessor", 2, paramToServiceMsg.toString());
       }
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject, k, bool2, bool3, localBundle, str, m, localArrayList);
+      a(l);
       return;
     }
-    a(1004, false, localBundle);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder.setLength(0);
+      localStringBuilder.append("<PbGetMsg><R><---handleGetC2CMessageResp_PB ssoSeq:");
+      localStringBuilder.append(paramToServiceMsg.getRequestSsoSeq());
+      localStringBuilder.append(" msgStruct.cReplyCode: ");
+      localObject = "null";
+      if (localPbGetMsgResp == null) {
+        paramObject = "null";
+      } else {
+        paramObject = Integer.valueOf(localPbGetMsgResp.result.get());
+      }
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(",hasSyncCookie:");
+      if (localPbGetMsgResp == null) {
+        paramObject = localObject;
+      } else {
+        paramObject = Boolean.valueOf(localPbGetMsgResp.sync_cookie.has());
+      }
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(",isPullRoam:");
+      localStringBuilder.append(bool1);
+      localStringBuilder.append(",needNofityConversation:");
+      localStringBuilder.append(bool2);
+      QLog.e("Q.msg.C2CMessageProcessor", 2, localStringBuilder.toString());
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.b(paramToServiceMsg, paramFromServiceMsg);
   }
   
   private void b(String paramString, int paramInt)
   {
-    TempMsgBoxManager localTempMsgBoxManager = (TempMsgBoxManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_BOX);
-    if (localTempMsgBoxManager.b(paramString, paramInt)) {
-      paramString = (Integer)TempMsgBoxUtil.b().get(Integer.valueOf(paramInt));
-    }
-    for (;;)
-    {
-      if ((paramString != null) && (paramString.intValue() >= 0)) {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B1C2", "0X800B1C2", paramString.intValue(), 0, "", "", "", "");
-      }
-      return;
-      if (localTempMsgBoxManager.a(paramString, paramInt)) {
-        paramString = Integer.valueOf(10000);
-      } else {
-        paramString = Integer.valueOf(-1);
-      }
-    }
+    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramString, paramInt);
+  }
+  
+  private void b(String paramString, int paramInt, long paramLong)
+  {
+    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramString, paramInt, paramLong, this);
   }
   
   private void b(ArrayList<MessageRecord> paramArrayList)
   {
-    Iterator localIterator = paramArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-      if ((localMessageRecord.msgtype == -3006) || (localMessageRecord.msgtype == -5004))
-      {
-        PAMessage localPAMessage = XMLMessageUtils.a(localMessageRecord);
-        if ((localPAMessage != null) && (localPAMessage.mMsgId > 0L)) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", localMessageRecord.frienduin, "mp_msg_sys_15", "msg_get", 0, 1, 0, Long.toString(localPAMessage.mMsgId), "", "", "");
-        }
-      }
-      if ((localMessageRecord.mQidianMasterUin != 0L) && (!TextUtils.isEmpty(localMessageRecord.mQidianTipText)) && (localMessageRecord.mIsShowQidianTips == 1)) {
-        ThreadManager.executeOnSubThread(new C2CMessageProcessor.4(this, localMessageRecord));
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b(paramArrayList);
+    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramArrayList, this);
+  }
+  
+  private void b(List<msg_comm.Msg> paramList)
+  {
+    long l = ((msg_comm.MsgHead)((msg_comm.Msg)paramList.get(0)).msg_head.get()).from_uin.get();
+    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(l, this);
   }
   
   private void b(msg_comm.Msg paramMsg, FromServiceMsg paramFromServiceMsg, msg_onlinepush.PbPushMsg paramPbPushMsg)
   {
     msg_comm.MsgHead localMsgHead = (msg_comm.MsgHead)paramMsg.msg_head.get();
-    if (!localMsgHead.c2c_cmd.has()) {
+    if (!localMsgHead.c2c_cmd.has())
+    {
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.C2CMessageProcessor", 2, "<---handleMsgPush_PB_SlaveMaster: no C2CCmd.");
       }
-    }
-    for (;;)
-    {
       return;
-      long l1 = localMsgHead.c2c_cmd.get();
-      long l2 = localMsgHead.from_uin.get();
-      long l3 = localMsgHead.to_uin.get();
-      long l4 = localMsgHead.msg_seq.get();
-      long l5 = localMsgHead.msg_time.get();
-      long l6 = localMsgHead.msg_uid.get();
-      int k = localMsgHead.user_active.get();
-      int m = localMsgHead.from_instid.get();
-      Object localObject1;
-      long l7;
-      ArrayList localArrayList1;
-      if (paramFromServiceMsg.getUin() == null)
-      {
-        localObject1 = Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        l7 = ((Long)localObject1).longValue();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.C2CMessageProcessor", 2, "<---handleMsgPush_PB_SlaveMaster:fromUin:" + l2 + ",toUin:" + l3 + ",msgTime:" + l5 + ",msgSeq:" + l4 + ",msgUid:" + l6 + ",userActive:" + k + ",fromInstid:" + m + ",hasAppShare:" + paramMsg.appshare_info.has() + ",hasMsgBody:" + paramMsg.msg_body.has());
-        }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.userActiveStatus = k;
-        localArrayList1 = new ArrayList();
+    }
+    long l1 = localMsgHead.c2c_cmd.get();
+    long l2 = localMsgHead.from_uin.get();
+    long l3 = localMsgHead.to_uin.get();
+    long l4 = localMsgHead.msg_seq.get();
+    long l5 = localMsgHead.msg_time.get();
+    long l6 = localMsgHead.msg_uid.get();
+    int i = localMsgHead.user_active.get();
+    int j = localMsgHead.from_instid.get();
+    Object localObject1;
+    if (paramFromServiceMsg.getUin() == null) {
+      localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
+    } else {
+      localObject1 = paramFromServiceMsg.getUin();
+    }
+    C2CMessageProcessor localC2CMessageProcessor = this;
+    long l7 = Long.valueOf((String)localObject1).longValue();
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("<---handleMsgPush_PB_SlaveMaster:fromUin:");
+      ((StringBuilder)localObject1).append(l2);
+      ((StringBuilder)localObject1).append(",toUin:");
+      ((StringBuilder)localObject1).append(l3);
+      ((StringBuilder)localObject1).append(",msgTime:");
+      ((StringBuilder)localObject1).append(l5);
+      ((StringBuilder)localObject1).append(",msgSeq:");
+      ((StringBuilder)localObject1).append(l4);
+      ((StringBuilder)localObject1).append(",msgUid:");
+      ((StringBuilder)localObject1).append(l6);
+      ((StringBuilder)localObject1).append(",userActive:");
+      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append(",fromInstid:");
+      ((StringBuilder)localObject1).append(j);
+      ((StringBuilder)localObject1).append(",hasAppShare:");
+      ((StringBuilder)localObject1).append(paramMsg.appshare_info.has());
+      ((StringBuilder)localObject1).append(",hasMsgBody:");
+      ((StringBuilder)localObject1).append(paramMsg.msg_body.has());
+      QLog.d("Q.msg.C2CMessageProcessor", 2, ((StringBuilder)localObject1).toString());
+    }
+    localC2CMessageProcessor.a(i);
+    ArrayList localArrayList1 = new ArrayList();
+    Object localObject2;
+    try
+    {
+      localObject1 = new DecodeProtoPkgContext(l7, l3, true, false, false, false);
+      ((DecodeProtoPkgContext)localObject1).h = true;
+      localObject1 = localC2CMessageProcessor.a(paramMsg, (PBDecodeContext)localObject1);
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.msg.C2CMessageProcessor", 2, "decodeSinglePBMsg_C2C error,", localException);
       }
-      try
-      {
-        localObject1 = new DecodeProtoPkgContext(l7, l3, true, false, false, false);
-        ((DecodeProtoPkgContext)localObject1).h = true;
-        localObject1 = a(paramMsg, (PBDecodeContext)localObject1);
-        MessageHandlerUtils.a((List)localObject1);
-        if ((localObject1 == null) || (((List)localObject1).size() == 0)) {
-          continue;
-        }
-        if (localArrayList1 != null) {
-          a((List)localObject1, localArrayList1, true);
-        }
-        localObject1 = new ArrayList();
-        ArrayList localArrayList2 = new ArrayList();
-        paramMsg = new C2CMessageProcessor.ProcessMsgPushPBSlaveMaster(this, paramMsg, localArrayList1, false, null, (ArrayList)localObject1, localArrayList2).a();
-        boolean bool = C2CMessageProcessor.ProcessMsgPushPBSlaveMaster.a(paramMsg);
-        paramMsg = C2CMessageProcessor.ProcessMsgPushPBSlaveMaster.a(paramMsg);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().b(localArrayList2);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(localArrayList2, String.valueOf(l7), false);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a(localMsgHead.msg_seq.get());
-        k = paramFromServiceMsg.getRequestSsoSeq();
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(l2, (ArrayList)localObject1, paramPbPushMsg.svrip.get(), k, null);
-        if (l1 == 127L) {
-          continue;
-        }
-        a("handleMsgPush_PB_SlaveMaster", true, 0, this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(false), false);
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b(localArrayList2);
-        if ((!bool) || (TextUtils.isEmpty(paramMsg))) {
-          continue;
-        }
-        FriendShieldUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMsg);
+      localObject2 = null;
+    }
+    localC2CMessageProcessor.a((List)localObject2);
+    if (localObject2 != null)
+    {
+      if (((List)localObject2).size() == 0) {
         return;
-        localObject1 = Long.valueOf(paramFromServiceMsg.getUin());
       }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("Q.msg.C2CMessageProcessor", 2, "decodeSinglePBMsg_C2C error,", localException);
-          }
-          Object localObject2 = null;
-        }
+      localC2CMessageProcessor.a((List)localObject2, localArrayList1, true);
+      localObject2 = new ArrayList();
+      ArrayList localArrayList2 = new ArrayList();
+      paramMsg = new C2CMessageProcessor.ProcessMsgPushPBSlaveMaster(this, paramMsg, localArrayList1, false, null, (ArrayList)localObject2, localArrayList2).a();
+      boolean bool = paramMsg.jdField_a_of_type_Boolean;
+      paramMsg = paramMsg.jdField_a_of_type_JavaLangString;
+      ((MessageCache)localC2CMessageProcessor.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache()).b(localArrayList2);
+      ((IMessageFacade)localC2CMessageProcessor.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "")).addMessage(localArrayList2, String.valueOf(l7), false);
+      ((MessageCache)localC2CMessageProcessor.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache()).a(localMsgHead.msg_seq.get());
+      i = paramFromServiceMsg.getRequestSsoSeq();
+      localC2CMessageProcessor.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(l2, (ArrayList)localObject2, paramPbPushMsg.svrip.get(), i, null);
+      if (l1 == 127L) {
+        return;
       }
-    }
-  }
-  
-  private void b(msg_comm.MsgHead paramMsgHead, MessageRecord paramMessageRecord)
-  {
-    paramMsgHead = (msg_comm.C2CTmpMsgHead)paramMsgHead.c2c_tmp_msg_head.get();
-    if ((paramMsgHead != null) && (paramMsgHead.lock_display.has()) && (paramMsgHead.lock_display.get() == 1))
-    {
-      paramMessageRecord.extLong |= 0x1;
-      paramMessageRecord.saveExtInfoToExtStr("lockDisplay", "true");
-    }
-  }
-  
-  private void b(boolean paramBoolean1, short paramShort, boolean paramBoolean2, SharedPreferences paramSharedPreferences, MessageRecord paramMessageRecord)
-  {
-    if (paramShort == 0) {
-      if (paramBoolean2) {
-        paramShort = this.h;
-      }
-    }
-    for (;;)
-    {
-      this.j = this.jdField_b_of_type_JavaUtilHashSet.size();
-      if (this.j % paramShort == 0)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.oneWayMessageNotifyVibert(paramMessageRecord, paramBoolean1);
-        this.jdField_b_of_type_JavaUtilHashSet.clear();
-        paramSharedPreferences.edit().remove(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_OneWayMsgLBSFriendRecentUinList");
-        paramSharedPreferences.edit().commit();
-        if (paramBoolean2) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005296", "0X8005296", 0, 0, "", "", "", "");
-        }
-      }
-      return;
-      paramShort = this.f;
-      continue;
-      if (paramBoolean2) {
-        paramShort = this.i;
-      } else {
-        paramShort = this.g;
+      a("handleMsgPush_PB_SlaveMaster", true, 0, localC2CMessageProcessor.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(false), false);
+      jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(localArrayList2, localC2CMessageProcessor);
+      if ((bool) && (!TextUtils.isEmpty(paramMsg))) {
+        localC2CMessageProcessor.a(paramMsg);
       }
     }
   }
   
-  private boolean b(MessageRecord paramMessageRecord)
+  private void b(boolean paramBoolean, String paramString, ArrayList<MessageRecord> paramArrayList)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a(paramMessageRecord.frienduin, paramMessageRecord.msgUid, paramMessageRecord.shmsgseq);
+    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramArrayList, paramString, paramBoolean, this);
   }
   
   private void c(int paramInt, Object[] paramArrayOfObject)
-  {
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length == 3))
-    {
-      c((ToServiceMsg)paramArrayOfObject[0], (FromServiceMsg)paramArrayOfObject[1], paramArrayOfObject[2]);
-      return;
-    }
-    a(getClass().getName(), paramInt);
-  }
-  
-  private void c(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord.msgtype == -2039)
-    {
-      MessageForApollo localMessageForApollo = (MessageForApollo)paramMessageRecord;
-      IApolloManagerService localIApolloManagerService = (IApolloManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
-      StringBuilder localStringBuilder = new StringBuilder();
-      if (QLog.isColorLevel()) {
-        localStringBuilder.append("decode apollo c2c msg: ").append(", id: ").append(localMessageForApollo.mApolloMessage.id).append(", name: ").append(new String(localMessageForApollo.mApolloMessage.name)).append(", doubleAction: ").append(localMessageForApollo.isDoubleAction()).append(", signTS: ").append(localMessageForApollo.signTs);
-      }
-      a(paramMessageRecord, localMessageForApollo, localIApolloManagerService, localStringBuilder);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.C2CMessageProcessor", 2, localStringBuilder.toString());
-      }
-      ((IApollo644ReportHelper)QRoute.api(IApollo644ReportHelper.class)).reportApolloRevAction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForApollo, localIApolloManagerService);
-    }
-  }
-  
-  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.C2CMessageProcessor", 2, "handlePBGetRoamMsgInOneDay ");
-    }
-    paramFromServiceMsg = new msg_svc.PbGetOneDayRoamMsgResp();
-    try
-    {
-      paramFromServiceMsg = (msg_svc.PbGetOneDayRoamMsgResp)paramFromServiceMsg.mergeFrom((byte[])paramObject);
-      paramObject = paramToServiceMsg.extraData.getBundle("context");
-      ArrayList localArrayList;
-      if (paramFromServiceMsg != null)
-      {
-        k = paramFromServiceMsg.result.get();
-        paramToServiceMsg = paramFromServiceMsg.msg.get();
-        localArrayList = new ArrayList();
-        a(paramToServiceMsg, localArrayList);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.C2CMessageProcessor", 2, "handlePBGetRoamMsgInOneDay code=" + k + ", complete=" + paramFromServiceMsg.iscomplete.get() + " ,respRandom:" + paramFromServiceMsg.random.get() + ", lastMsgTime:" + paramFromServiceMsg.last_msgtime.get() + ", msgList.size()=" + localArrayList.size() + ", context" + paramObject);
-        }
-        if (k == 0) {
-          paramToServiceMsg = new ArrayList();
-        }
-      }
-      else
-      {
-        try
-        {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileTransferHandler().a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, localArrayList, paramFromServiceMsg.peer_uin.get(), true);
-          if (localObject != null) {
-            paramToServiceMsg.addAll((Collection)localObject);
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            Object localObject;
-            localException.printStackTrace();
-            if (QLog.isColorLevel()) {
-              QLog.w("Q.msg.C2CMessageProcessor", 2, "FileMsg filter error,", localException);
-            }
-          }
-        }
-        l = paramFromServiceMsg.peer_uin.get();
-        if (!localArrayList.isEmpty())
-        {
-          localObject = (msg_comm.Msg)localArrayList.get(0);
-          l = MessageHandlerUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((msg_comm.MsgHead)((msg_comm.Msg)localObject).msg_head.get()).from_uin.get(), ((msg_comm.MsgHead)((msg_comm.Msg)localObject).msg_head.get()).to_uin.get(), paramFromServiceMsg.peer_uin.get());
-        }
-        localObject = new DecodeProtoPkgContext(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()), l, true, true, false, false);
-        ((DecodeProtoPkgContext)localObject).h = true;
-        a(localArrayList, null, paramToServiceMsg, (DecodeProtoPkgContext)localObject);
-        if (paramToServiceMsg.size() <= 0) {
-          break label477;
-        }
-        Collections.sort(paramToServiceMsg, new C2CMessageProcessor.3(this));
-        l = ((MessageRecord)paramToServiceMsg.get(0)).time;
-        a(paramFromServiceMsg, paramObject, paramToServiceMsg, l, k);
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-    {
-      for (;;)
-      {
-        int k;
-        paramFromServiceMsg.printStackTrace();
-        paramFromServiceMsg = null;
-        continue;
-        if ((k == 1) && (QLog.isColorLevel())) {
-          QLog.d("Q.msg.C2CMessageProcessor", 2, "code == 0x01");
-        }
-        long l = 0L;
-        paramToServiceMsg = null;
-        continue;
-        label477:
-        l = 0L;
-        paramToServiceMsg = null;
-      }
-    }
-  }
-  
-  private void d(int paramInt, Object[] paramArrayOfObject)
   {
     if ((paramArrayOfObject != null) && (paramArrayOfObject.length == 3))
     {
@@ -3064,80 +2240,195 @@ public class C2CMessageProcessor
     a(getClass().getName(), paramInt);
   }
   
-  private void d(MessageRecord paramMessageRecord)
+  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((paramMessageRecord.istroop == 1008) && ((paramMessageRecord instanceof MessageForStructing)) && ((StructLongMessageDownloadProcessor.isPALongMsg(paramMessageRecord)) || (StructLongMessageDownloadProcessor.needFetchOldLongMsg(paramMessageRecord))))
+    paramFromServiceMsg = new msg_svc.PbGetRoamMsgResp();
+    Long localLong = null;
+    try
     {
-      String str = paramMessageRecord.getExtInfoFromExtStr("longMsg_State");
-      if ((str == null) || (!String.valueOf(3).equals(str)))
+      paramFromServiceMsg = (msg_svc.PbGetRoamMsgResp)paramFromServiceMsg.mergeFrom((byte[])paramObject);
+    }
+    catch (OutOfMemoryError paramObject)
+    {
+      paramFromServiceMsg = localLong;
+      if (QLog.isColorLevel())
       {
-        paramMessageRecord.saveExtInfoToExtStr("longMsg_State", String.valueOf(1));
-        StructLongMessageDownloadProcessor.getStructLongMessage(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord);
+        QLog.w("Q.msg.C2CMessageProcessor", 2, "handlePBGetRoamMsg OutOfMemoryError ! ", paramObject);
+        paramFromServiceMsg = localLong;
       }
     }
+    catch (InvalidProtocolBufferMicroException paramObject)
+    {
+      paramFromServiceMsg = localLong;
+      if (QLog.isColorLevel())
+      {
+        QLog.w("Q.msg.C2CMessageProcessor", 2, "handlePBGetRoamMsg InvalidProtocolBufferMicroException ! ", paramObject);
+        paramFromServiceMsg = localLong;
+      }
+    }
+    localLong = Long.valueOf(paramToServiceMsg.extraData.getLong("lBeginTime"));
+    boolean bool1 = paramToServiceMsg.extraData.getBoolean("fetchMore");
+    int i = paramToServiceMsg.extraData.getInt("fetchNum");
+    boolean bool2 = paramToServiceMsg.extraData.getBoolean("preloadType");
+    boolean bool3 = paramToServiceMsg.extraData.getBoolean("notify", true);
+    paramObject = new Bundle();
+    paramObject.putLong("BEGTIME", localLong.longValue());
+    paramObject.putBoolean("FETCH_MORE", bool1);
+    paramObject.putInt("MSG_COUNT", i);
+    paramObject.putString("PEER_UIN", paramToServiceMsg.extraData.getString("peerUin"));
+    paramObject.putBoolean("IS_PRELOAD_TYPE", bool2);
+    if (paramFromServiceMsg != null)
+    {
+      String str = String.valueOf(paramFromServiceMsg.peer_uin.get());
+      int j = paramFromServiceMsg.result.get();
+      Object localObject = paramFromServiceMsg.msg.get();
+      if (localObject == null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a.remove(str);
+        if (QLog.isColorLevel())
+        {
+          paramToServiceMsg = new StringBuilder();
+          paramToServiceMsg.append("handlePBGetRoamMsg code=");
+          paramToServiceMsg.append(j);
+          paramToServiceMsg.append(", msgList is null !");
+          QLog.w("Q.msg.C2CMessageProcessor", 2, paramToServiceMsg.toString());
+        }
+        a(1004, false, paramObject);
+        return;
+      }
+      ArrayList localArrayList = new ArrayList();
+      a((List)localObject, localArrayList);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("handlePBGetRoamMsg begTime: ");
+        ((StringBuilder)localObject).append(localLong);
+        ((StringBuilder)localObject).append(", code=");
+        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(" ,errMsg=");
+        ((StringBuilder)localObject).append(paramFromServiceMsg.errmsg.get());
+        ((StringBuilder)localObject).append(", msgList.size()=");
+        ((StringBuilder)localObject).append(localArrayList.size());
+        ((StringBuilder)localObject).append(",peerUin=");
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append(",time=");
+        ((StringBuilder)localObject).append(paramFromServiceMsg.last_msgtime.get());
+        ((StringBuilder)localObject).append(",fetchMore:");
+        ((StringBuilder)localObject).append(bool1);
+        ((StringBuilder)localObject).append(",fetchNum: ");
+        ((StringBuilder)localObject).append(i);
+        QLog.d("Q.msg.C2CMessageProcessor", 2, ((StringBuilder)localObject).toString());
+      }
+      a(paramToServiceMsg, paramFromServiceMsg, localLong, i, bool2, bool3, paramObject, str, j, localArrayList);
+      return;
+    }
+    a(1004, false, paramObject);
+  }
+  
+  private void c(ArrayList<MessageRecord> paramArrayList)
+  {
+    jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.b(paramArrayList, this);
+  }
+  
+  private void d(int paramInt, Object[] paramArrayOfObject)
+  {
+    if ((paramArrayOfObject != null) && (paramArrayOfObject.length == 3))
+    {
+      e((ToServiceMsg)paramArrayOfObject[0], (FromServiceMsg)paramArrayOfObject[1], paramArrayOfObject[2]);
+      return;
+    }
+    a(getClass().getName(), paramInt);
   }
   
   private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    oidb_c2c_searcher.RspBody localRspBody = null;
-    int k = paramToServiceMsg.extraData.getInt("loadType");
-    HashMap localHashMap = new HashMap(1);
-    localHashMap.put("KEYWORD", paramToServiceMsg.extraData.getString("keyword"));
-    localHashMap.put("SEARCHSEQUENCE", Long.valueOf(paramToServiceMsg.extraData.getLong("sequence")));
-    localHashMap.put("LOADTYPE", Integer.valueOf(k));
-    msg_svc.PbSearchRoamMsgInCloudResp localPbSearchRoamMsgInCloudResp = new msg_svc.PbSearchRoamMsgInCloudResp();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.C2CMessageProcessor", 2, "handlePBGetRoamMsgInOneDay ");
+    }
+    paramFromServiceMsg = new msg_svc.PbGetOneDayRoamMsgResp();
     try
     {
-      paramObject = (msg_svc.PbSearchRoamMsgInCloudResp)localPbSearchRoamMsgInCloudResp.mergeFrom((byte[])paramObject);
-      if (paramObject != null)
+      paramFromServiceMsg = (msg_svc.PbGetOneDayRoamMsgResp)paramFromServiceMsg.mergeFrom((byte[])paramObject);
+    }
+    catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+    {
+      paramFromServiceMsg.printStackTrace();
+      paramFromServiceMsg = null;
+    }
+    paramObject = paramToServiceMsg.extraData.getBundle("context");
+    if (paramFromServiceMsg != null)
+    {
+      int i = paramFromServiceMsg.result.get();
+      paramToServiceMsg = paramFromServiceMsg.msg.get();
+      ArrayList localArrayList = new ArrayList();
+      a(paramToServiceMsg, localArrayList);
+      if (QLog.isColorLevel())
       {
-        localRspBody = a(paramObject, new oidb_c2c_searcher.RspBody());
-        if (localRspBody == null)
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("handlePBGetRoamMsgInOneDay code=");
+        paramToServiceMsg.append(i);
+        paramToServiceMsg.append(", complete=");
+        paramToServiceMsg.append(paramFromServiceMsg.iscomplete.get());
+        paramToServiceMsg.append(" ,respRandom:");
+        paramToServiceMsg.append(paramFromServiceMsg.random.get());
+        paramToServiceMsg.append(", lastMsgTime:");
+        paramToServiceMsg.append(paramFromServiceMsg.last_msgtime.get());
+        paramToServiceMsg.append(", msgList.size()=");
+        paramToServiceMsg.append(localArrayList.size());
+        paramToServiceMsg.append(", context");
+        paramToServiceMsg.append(paramObject);
+        QLog.d("Q.msg.C2CMessageProcessor", 2, paramToServiceMsg.toString());
+      }
+      long l;
+      if (i == 0)
+      {
+        paramToServiceMsg = new ArrayList();
+        try
         {
-          if (QLog.isColorLevel()) {
-            QLog.w("Q.msg.C2CMessageProcessor", 2, "<----processSearchRoamMsgInCloud error oidb_search null----> ");
+          Object localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(paramFromServiceMsg.peer_uin.get());
+          ((StringBuilder)localObject1).append("");
+          localObject1 = a(((StringBuilder)localObject1).toString(), localArrayList);
+          if (localObject1 != null) {
+            paramToServiceMsg.addAll((Collection)localObject1);
           }
-          a(paramToServiceMsg, paramFromServiceMsg, false);
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+          if (QLog.isColorLevel()) {
+            QLog.w("Q.msg.C2CMessageProcessor", 2, "FileMsg filter error,", localException);
+          }
+        }
+        l = paramFromServiceMsg.peer_uin.get();
+        if (!localArrayList.isEmpty())
+        {
+          localObject2 = (msg_comm.Msg)localArrayList.get(0);
+          l = a(((msg_comm.MsgHead)((msg_comm.Msg)localObject2).msg_head.get()).from_uin.get(), ((msg_comm.MsgHead)((msg_comm.Msg)localObject2).msg_head.get()).to_uin.get(), paramFromServiceMsg.peer_uin.get());
+        }
+        Object localObject2 = new DecodeProtoPkgContext(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()), l, true, true, false, false);
+        ((DecodeProtoPkgContext)localObject2).h = true;
+        a(localArrayList, null, paramToServiceMsg, (DecodeProtoPkgContext)localObject2);
+        if (paramToServiceMsg.size() > 0)
+        {
+          Collections.sort(paramToServiceMsg, new C2CMessageProcessor.3(this));
+          l = ((MessageRecord)paramToServiceMsg.get(0)).time;
+        }
+        else
+        {
+          paramToServiceMsg = null;
+          l = 0L;
         }
       }
       else
       {
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
-      {
-        paramObject = localRspBody;
-        if (QLog.isColorLevel())
-        {
-          QLog.w("Q.msg.C2CMessageProcessor", 2, "processSearchRoamMsgInCloud InvalidProtocolBufferMicroException ! ", localInvalidProtocolBufferMicroException);
-          paramObject = localRspBody;
+        if ((i == 1) && (QLog.isColorLevel())) {
+          QLog.d("Q.msg.C2CMessageProcessor", 2, "code == 0x01");
         }
+        paramToServiceMsg = null;
+        l = 0L;
       }
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        paramObject = localRspBody;
-        if (QLog.isColorLevel())
-        {
-          QLog.w("Q.msg.C2CMessageProcessor", 2, "processSearchRoamMsgInCloud OutOfMemoryError ! ", localOutOfMemoryError);
-          paramObject = localRspBody;
-        }
-      }
-      int m = localRspBody.result.get();
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.msg.C2CMessageProcessor", 2, "processSearchRoamMsgInCloud result--------->>>>>> " + m + ", loadType: " + k);
-      }
-      if ((m == 0) || (m == 1))
-      {
-        a(paramObject, localRspBody, m, paramToServiceMsg, k, localHashMap);
-        return;
-      }
-      a(paramToServiceMsg, paramFromServiceMsg, false);
+      a(paramFromServiceMsg, paramObject, paramToServiceMsg, l, i);
     }
   }
   
@@ -3145,17 +2436,72 @@ public class C2CMessageProcessor
   {
     if ((paramArrayOfObject != null) && (paramArrayOfObject.length == 3))
     {
-      b((ToServiceMsg)paramArrayOfObject[0], (FromServiceMsg)paramArrayOfObject[1], paramArrayOfObject[2]);
+      c((ToServiceMsg)paramArrayOfObject[0], (FromServiceMsg)paramArrayOfObject[1], paramArrayOfObject[2]);
       return;
     }
     a(getClass().getName(), paramInt);
+  }
+  
+  private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int i = paramToServiceMsg.extraData.getInt("loadType");
+    HashMap localHashMap = new HashMap(1);
+    localHashMap.put("KEYWORD", paramToServiceMsg.extraData.getString("keyword"));
+    localHashMap.put("SEARCHSEQUENCE", Long.valueOf(paramToServiceMsg.extraData.getLong("sequence")));
+    localHashMap.put("LOADTYPE", Integer.valueOf(i));
+    Object localObject = new msg_svc.PbSearchRoamMsgInCloudResp();
+    try
+    {
+      paramObject = (msg_svc.PbSearchRoamMsgInCloudResp)((msg_svc.PbSearchRoamMsgInCloudResp)localObject).mergeFrom((byte[])paramObject);
+    }
+    catch (OutOfMemoryError paramObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.msg.C2CMessageProcessor", 2, "processSearchRoamMsgInCloud OutOfMemoryError ! ", paramObject);
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.msg.C2CMessageProcessor", 2, "processSearchRoamMsgInCloud InvalidProtocolBufferMicroException ! ", paramObject);
+      }
+    }
+    paramObject = null;
+    if (paramObject != null)
+    {
+      localObject = a(paramObject, new oidb_c2c_searcher.RspBody());
+      if (localObject == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("Q.msg.C2CMessageProcessor", 2, "<----processSearchRoamMsgInCloud error oidb_search null----> ");
+        }
+        a(paramToServiceMsg, paramFromServiceMsg, false);
+        return;
+      }
+      int j = ((oidb_c2c_searcher.RspBody)localObject).result.get();
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("processSearchRoamMsgInCloud result--------->>>>>> ");
+        localStringBuilder.append(j);
+        localStringBuilder.append(", loadType: ");
+        localStringBuilder.append(i);
+        QLog.w("Q.msg.C2CMessageProcessor", 2, localStringBuilder.toString());
+      }
+      if ((j != 0) && (j != 1))
+      {
+        a(paramToServiceMsg, paramFromServiceMsg, false);
+        return;
+      }
+      a(paramObject, (oidb_c2c_searcher.RspBody)localObject, j, paramToServiceMsg, i, localHashMap);
+    }
   }
   
   private void f(int paramInt, Object[] paramArrayOfObject)
   {
     if ((paramArrayOfObject != null) && (paramArrayOfObject.length == 3))
     {
-      a((ToServiceMsg)paramArrayOfObject[0], (FromServiceMsg)paramArrayOfObject[1], paramArrayOfObject[2]);
+      b((ToServiceMsg)paramArrayOfObject[0], (FromServiceMsg)paramArrayOfObject[1], paramArrayOfObject[2]);
       return;
     }
     a(getClass().getName(), paramInt);
@@ -3171,339 +2517,310 @@ public class C2CMessageProcessor
     a(getClass().getName(), paramInt);
   }
   
+  public Decoder a(int paramInt)
+  {
+    return ((IMessageFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "")).getRegistry().a(paramInt);
+  }
+  
   protected String a(msg_comm.Msg paramMsg)
   {
     long l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_uid.get();
     long l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.get();
-    return 64 + "key_uid_" + l1 + "_seq_" + l2;
+    paramMsg = new StringBuilder(64);
+    paramMsg.append("key_uid_");
+    paramMsg.append(l1);
+    paramMsg.append("_seq_");
+    paramMsg.append(l2);
+    return paramMsg.toString();
   }
   
   public List<MessageRecord> a(msg_comm.Msg paramMsg, PBDecodeContext paramPBDecodeContext)
   {
     if (!(paramPBDecodeContext instanceof DecodeProtoPkgContext)) {
-      paramPBDecodeContext = new ArrayList();
+      return new ArrayList();
     }
-    long l2;
-    ArrayList localArrayList;
-    do
+    Object localObject1 = (DecodeProtoPkgContext)paramPBDecodeContext;
+    long l2 = System.currentTimeMillis();
+    paramPBDecodeContext = new ArrayList();
+    Object localObject2;
+    if ((paramMsg != null) && (paramMsg.msg_head.has()) && (paramMsg.msg_body.has()))
     {
+      localObject2 = (msg_comm.MsgHead)paramMsg.msg_head.get();
+      int m = (short)((msg_comm.MsgHead)localObject2).msg_seq.get();
+      long l3 = ((msg_comm.MsgHead)localObject2).to_uin.get();
+      long l4 = ((msg_comm.MsgHead)localObject2).from_uin.get();
+      long l5 = ((msg_comm.MsgHead)localObject2).msg_time.get();
+      long l6 = ((msg_comm.MsgHead)localObject2).msg_uid.get();
+      int n = ((msg_comm.MsgHead)localObject2).msg_type.get();
+      int i1 = paramMsg.msg_head.c2c_cmd.get();
+      ((DecodeProtoPkgContext)localObject1).jdField_c_of_type_Int = 0;
+      ((DecodeProtoPkgContext)localObject1).jdField_d_of_type_Int = 0;
+      int j;
+      int i;
+      int k;
+      if (paramMsg.content_head.has())
+      {
+        localObject3 = (msg_comm.ContentHead)paramMsg.content_head.get();
+        j = ((msg_comm.ContentHead)localObject3).div_seq.get();
+        i = ((msg_comm.ContentHead)localObject3).pkg_num.get();
+        k = ((msg_comm.ContentHead)localObject3).pkg_index.get();
+      }
+      else
+      {
+        i = 0;
+        j = 0;
+        k = 0;
+      }
+      long l1 = -1L;
+      if (!((DecodeProtoPkgContext)localObject1).jdField_d_of_type_Boolean) {
+        l1 = DecodeC2CMsgPkgBubbleID.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler, paramMsg, String.valueOf(((DecodeProtoPkgContext)localObject1).g), String.valueOf(l4));
+      }
+      ((DecodeProtoPkgContext)localObject1).jdField_b_of_type_Long = l4;
+      ((DecodeProtoPkgContext)localObject1).jdField_c_of_type_Long = l5;
+      int i2 = DecodeC2CMsgPkgBubbleID.a(paramMsg);
+      ((DecodeProtoPkgContext)localObject1).jdField_a_of_type_Int = i2;
+      ((DecodeProtoPkgContext)localObject1).jdField_d_of_type_Long = a((int)l1, i2);
+      ((DecodeProtoPkgContext)localObject1).jdField_b_of_type_Int = DecodeC2CMsgPkgBubbleID.b(paramMsg);
+      if (l4 == ((DecodeProtoPkgContext)localObject1).jdField_a_of_type_Long)
+      {
+        ((DecodeProtoPkgContext)localObject1).jdField_a_of_type_Boolean = true;
+        ((DecodeProtoPkgContext)localObject1).f = true;
+      }
+      else
+      {
+        ((DecodeProtoPkgContext)localObject1).f = false;
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("<---decodeSinglePBMsg_C2C : decode msg: msgTime:");
+        ((StringBuilder)localObject3).append(l5);
+        ((StringBuilder)localObject3).append(" shortSeq:");
+        ((StringBuilder)localObject3).append(m);
+        ((StringBuilder)localObject3).append(" uint32Seq:");
+        ((StringBuilder)localObject3).append(((msg_comm.MsgHead)localObject2).msg_seq.get());
+        ((StringBuilder)localObject3).append(" msgUid:");
+        ((StringBuilder)localObject3).append(l6);
+        ((StringBuilder)localObject3).append(" toUin:");
+        ((StringBuilder)localObject3).append(l3);
+        ((StringBuilder)localObject3).append(" senderUin:");
+        ((StringBuilder)localObject3).append(l4);
+        ((StringBuilder)localObject3).append(" friendUin:");
+        ((StringBuilder)localObject3).append(((DecodeProtoPkgContext)localObject1).g);
+        ((StringBuilder)localObject3).append(" isReaded:");
+        ((StringBuilder)localObject3).append(((DecodeProtoPkgContext)localObject1).jdField_a_of_type_Boolean);
+        ((StringBuilder)localObject3).append(" isSyncFromOtherTerm:");
+        ((StringBuilder)localObject3).append(((DecodeProtoPkgContext)localObject1).f);
+        ((StringBuilder)localObject3).append(" msgType:0x");
+        ((StringBuilder)localObject3).append(Integer.toHexString(n));
+        ((StringBuilder)localObject3).append(" c2CCmd:0x");
+        ((StringBuilder)localObject3).append(Integer.toHexString(i1));
+        ((StringBuilder)localObject3).append(" hasTemp:");
+        ((StringBuilder)localObject3).append(((msg_comm.MsgHead)localObject2).c2c_tmp_msg_head.has());
+        ((StringBuilder)localObject3).append(" hasShare:");
+        ((StringBuilder)localObject3).append(paramMsg.appshare_info.has());
+        ((StringBuilder)localObject3).append(" pkgID:");
+        ((StringBuilder)localObject3).append(l1);
+        ((StringBuilder)localObject3).append(" longMsgID:");
+        ((StringBuilder)localObject3).append(j);
+        ((StringBuilder)localObject3).append(" longMsgCount:");
+        ((StringBuilder)localObject3).append(i);
+        ((StringBuilder)localObject3).append(" longMsgIndex:");
+        ((StringBuilder)localObject3).append(k);
+        ((StringBuilder)localObject3).append("init_direction_flag");
+        ((StringBuilder)localObject3).append(((DecodeProtoPkgContext)localObject1).jdField_d_of_type_Int);
+        QLog.d("Q.msg.C2CMessageProcessor", 2, ((StringBuilder)localObject3).toString());
+      }
+      else if (((DecodeProtoPkgContext)localObject1).g == 0L)
+      {
+        QLog.e("Q.msg.C2CMessageProcessor", 1, "<---decodeSinglePBMsg_C2C : decode msg: frienduin=0");
+      }
+      Object localObject3 = new ArrayList();
+      a(n, paramMsg, (ArrayList)localObject3, this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler, (DecodeProtoPkgContext)localObject1);
+      a(paramMsg, (ArrayList)localObject3, (DecodeProtoPkgContext)localObject1, this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler);
+      jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramMsg, (DecodeProtoPkgContext)localObject1, l2, paramPBDecodeContext, (msg_comm.MsgHead)localObject2, m, l4, l6, n, l4, j, i, k, (ArrayList)localObject3, this);
       return paramPBDecodeContext;
-      paramPBDecodeContext = (DecodeProtoPkgContext)paramPBDecodeContext;
-      l2 = System.currentTimeMillis();
-      localArrayList = new ArrayList();
-      if ((paramMsg != null) && (paramMsg.msg_head.has()) && (paramMsg.msg_body.has())) {
-        break;
-      }
-      paramPBDecodeContext = localArrayList;
-    } while (!QLog.isColorLevel());
-    paramPBDecodeContext = new StringBuilder().append("decodeSinglePBMsg_C2C return : ");
-    if (paramMsg == null) {}
-    for (paramMsg = " msg=null";; paramMsg = " msg.msg_head:" + paramMsg.msg_head + " msg.msg_body:" + paramMsg.msg_body.has())
+    }
+    if (QLog.isColorLevel())
     {
-      QLog.d("Q.msg.C2CMessageProcessor", 2, paramMsg);
-      return localArrayList;
-    }
-    msg_comm.MsgHead localMsgHead = (msg_comm.MsgHead)paramMsg.msg_head.get();
-    int i1 = (short)localMsgHead.msg_seq.get();
-    long l3 = localMsgHead.to_uin.get();
-    long l4 = localMsgHead.from_uin.get();
-    long l5 = localMsgHead.msg_time.get();
-    long l6 = localMsgHead.msg_uid.get();
-    int i2 = localMsgHead.msg_type.get();
-    int i3 = paramMsg.msg_head.c2c_cmd.get();
-    paramPBDecodeContext.jdField_c_of_type_Int = 0;
-    paramPBDecodeContext.jdField_d_of_type_Int = 0;
-    int k = 0;
-    int m = 0;
-    int n = 0;
-    Object localObject;
-    if (paramMsg.content_head.has())
-    {
-      localObject = (msg_comm.ContentHead)paramMsg.content_head.get();
-      k = ((msg_comm.ContentHead)localObject).div_seq.get();
-      m = ((msg_comm.ContentHead)localObject).pkg_num.get();
-      n = ((msg_comm.ContentHead)localObject).pkg_index.get();
-    }
-    long l1 = -1L;
-    if (!paramPBDecodeContext.jdField_d_of_type_Boolean) {
-      l1 = MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, paramMsg, String.valueOf(paramPBDecodeContext.jdField_e_of_type_Long), String.valueOf(l4));
-    }
-    paramPBDecodeContext.jdField_b_of_type_Long = l4;
-    paramPBDecodeContext.jdField_c_of_type_Long = l5;
-    int i4 = MessageProtoCodec.a(paramMsg);
-    paramPBDecodeContext.jdField_a_of_type_Int = i4;
-    paramPBDecodeContext.jdField_d_of_type_Long = SVIPHandler.a((int)l1, i4);
-    paramPBDecodeContext.jdField_b_of_type_Int = MessageProtoCodec.e(paramMsg);
-    if (l4 == paramPBDecodeContext.jdField_a_of_type_Long)
-    {
-      paramPBDecodeContext.jdField_a_of_type_Boolean = true;
-      paramPBDecodeContext.f = true;
-      if (!QLog.isColorLevel()) {
-        break label817;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("decodeSinglePBMsg_C2C return : ");
+      if (paramMsg == null)
+      {
+        paramMsg = " msg=null";
       }
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("<---decodeSinglePBMsg_C2C : decode msg: msgTime:").append(l5).append(" shortSeq:").append(i1).append(" uint32Seq:").append(localMsgHead.msg_seq.get()).append(" msgUid:").append(l6).append(" toUin:").append(l3).append(" senderUin:").append(l4).append(" friendUin:").append(paramPBDecodeContext.jdField_e_of_type_Long).append(" isReaded:").append(paramPBDecodeContext.jdField_a_of_type_Boolean).append(" isSyncFromOtherTerm:").append(paramPBDecodeContext.f).append(" msgType:0x").append(Integer.toHexString(i2)).append(" c2CCmd:0x").append(Integer.toHexString(i3)).append(" hasTemp:").append(localMsgHead.c2c_tmp_msg_head.has()).append(" hasShare:").append(paramMsg.appshare_info.has()).append(" pkgID:").append(l1).append(" longMsgID:").append(k).append(" longMsgCount:").append(m).append(" longMsgIndex:").append(n).append("init_direction_flag").append(paramPBDecodeContext.jdField_d_of_type_Int);
-      QLog.d("Q.msg.C2CMessageProcessor", 2, ((StringBuilder)localObject).toString());
-      label661:
-      localObject = new ArrayList();
-      a(i2, paramMsg, (ArrayList)localObject, this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, paramPBDecodeContext);
-      a(paramMsg, (ArrayList)localObject, paramPBDecodeContext, this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler);
-      a(m, (ArrayList)localObject);
-      a(paramMsg, paramPBDecodeContext, localArrayList, localMsgHead, i1, l4, l6, i2, l4, k, m, n, (ArrayList)localObject, a(paramMsg, -1L));
-      a(paramMsg, paramPBDecodeContext, localArrayList);
-      MsgAutoMonitorUtil.getInstance().addDecodeC2CMsgTime(System.currentTimeMillis() - l2);
-      m = 0;
-      paramMsg = localArrayList.iterator();
-      k = 0;
-      label770:
-      if (!paramMsg.hasNext()) {
-        break label838;
+      else
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(" msg.msg_head:");
+        ((StringBuilder)localObject2).append(paramMsg.msg_head);
+        ((StringBuilder)localObject2).append(" msg.msg_body:");
+        ((StringBuilder)localObject2).append(paramMsg.msg_body.has());
+        paramMsg = ((StringBuilder)localObject2).toString();
       }
-      paramPBDecodeContext = (MessageRecord)paramMsg.next();
-      m = paramPBDecodeContext.istroop;
-      if (paramPBDecodeContext.isread) {
-        break label849;
-      }
-      k += 1;
+      ((StringBuilder)localObject1).append(paramMsg);
+      QLog.d("Q.msg.C2CMessageProcessor", 2, ((StringBuilder)localObject1).toString());
     }
-    label817:
-    label838:
-    label849:
-    for (;;)
-    {
-      break label770;
-      paramPBDecodeContext.f = false;
-      break;
-      if (paramPBDecodeContext.jdField_e_of_type_Long != 0L) {
-        break label661;
-      }
-      QLog.e("Q.msg.C2CMessageProcessor", 1, "<---decodeSinglePBMsg_C2C : decode msg: frienduin=0");
-      break label661;
-      FightMsgReporter.a(0, 1, m, k);
-      return localArrayList;
-    }
+    return paramPBDecodeContext;
   }
   
   public void a(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    switch (paramInt)
+    if (paramInt != 2001)
     {
-    default: 
-      return;
-    case 2001: 
-      b(paramToServiceMsg, paramFromServiceMsg);
+      if (paramInt != 2005) {
+        return;
+      }
+      a(paramToServiceMsg, paramFromServiceMsg, false);
       return;
     }
-    a(paramToServiceMsg, paramFromServiceMsg, false);
+    b(paramToServiceMsg, paramFromServiceMsg);
   }
   
   public void a(int paramInt, Object... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.C2CMessageProcessor", 2, "processType" + paramInt);
-    }
-    switch (paramInt)
+    if (QLog.isColorLevel())
     {
-    default: 
-      return;
-    case 1001: 
-      g(paramInt, paramVarArgs);
-      return;
-    case 1002: 
-      f(paramInt, paramVarArgs);
-      return;
-    case 2001: 
-      e(paramInt, paramVarArgs);
-      return;
-    case 2005: 
-      d(paramInt, paramVarArgs);
-      return;
-    case 1003: 
-      c(paramInt, paramVarArgs);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("processType");
+      localStringBuilder.append(paramInt);
+      QLog.d("Q.msg.C2CMessageProcessor", 2, localStringBuilder.toString());
+    }
+    if (paramInt != 2001)
+    {
+      if (paramInt != 2003)
+      {
+        if (paramInt != 2005)
+        {
+          switch (paramInt)
+          {
+          default: 
+            return;
+          case 1003: 
+            c(paramInt, paramVarArgs);
+            return;
+          case 1002: 
+            f(paramInt, paramVarArgs);
+            return;
+          }
+          g(paramInt, paramVarArgs);
+          return;
+        }
+        d(paramInt, paramVarArgs);
+        return;
+      }
+      b(paramInt, paramVarArgs);
       return;
     }
-    b(paramInt, paramVarArgs);
+    e(paramInt, paramVarArgs);
   }
   
   public void a(C2CMsgReadedNotify paramC2CMsgReadedNotify)
   {
     String str = String.valueOf(paramC2CMsgReadedNotify.lPeerUin);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.C2CMessageProcessor", 2, "processPushReadedNotify is called. uAioType = " + paramC2CMsgReadedNotify.uAioType);
-    }
-    if (paramC2CMsgReadedNotify.uAioType == 3L) {
-      TinyMsgCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, paramC2CMsgReadedNotify);
-    }
-    do
+    if (QLog.isColorLevel())
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("processPushReadedNotify is called. uAioType = ");
+      localStringBuilder.append(paramC2CMsgReadedNotify.uAioType);
+      QLog.d("Q.msg.C2CMessageProcessor", 2, localStringBuilder.toString());
+    }
+    if (paramC2CMsgReadedNotify.uAioType == 3L)
+    {
+      a(paramC2CMsgReadedNotify, str);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(str, 0, paramC2CMsgReadedNotify.lLastReadTime);
-    } while (paramC2CMsgReadedNotify.lLastReadTime < 0L);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a.a(str, 0);
-  }
-  
-  public void a(MessageForPtt paramMessageForPtt1, MessageForPtt paramMessageForPtt2)
-  {
-    bool2 = false;
-    bool1 = bool2;
-    if (paramMessageForPtt1.getPttStreamFlag() == 10001)
-    {
-      bool1 = bool2;
-      if (!TextUtils.isEmpty(paramMessageForPtt2.directUrl))
-      {
-        bool1 = bool2;
-        if (!TextUtils.isEmpty(paramMessageForPtt1.directUrl)) {}
-      }
     }
-    try
-    {
-      paramMessageForPtt1.directUrl = paramMessageForPtt2.directUrl;
-      paramMessageForPtt1.serial();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramMessageForPtt1.frienduin, paramMessageForPtt1.istroop, paramMessageForPtt1.uniseq, paramMessageForPtt1.msgData);
-      bool1 = true;
-    }
-    catch (Exception paramMessageForPtt1)
-    {
-      for (;;)
-      {
-        paramMessageForPtt1.printStackTrace();
-        bool1 = bool2;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.C2CMessageProcessor", 2, "updateStreamPttDirectUrl : " + bool1);
+    ((IMessageFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "")).setReadFrom(str, 0, paramC2CMsgReadedNotify.lLastReadTime);
+    if (paramC2CMsgReadedNotify.lLastReadTime >= 0L) {
+      ((IMessageFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "")).removeNotification(str, 0);
     }
   }
   
   public void a(String paramString, int paramInt, long paramLong)
   {
     super.a(paramString, paramInt, paramLong);
-    if (UinTypeUtil.b(paramInt))
-    {
-      msg_svc.PbMsgReadedReportReq localPbMsgReadedReportReq = new msg_svc.PbMsgReadedReportReq();
-      a(paramString, paramInt, paramLong, localPbMsgReadedReportReq);
-      a(localPbMsgReadedReportReq);
+    if (!UinTypeUtil.b(paramInt)) {
+      return;
     }
+    if (paramLong == 0L) {
+      return;
+    }
+    b(paramString, paramInt, paramLong);
   }
   
   public void a(ArrayList<Pair<Long, Long>> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder("-ReportList-");
-    msg_svc.PbMsgReadedReportReq localPbMsgReadedReportReq = new msg_svc.PbMsgReadedReportReq();
-    msg_svc.PbC2CReadedReportReq localPbC2CReadedReportReq = new msg_svc.PbC2CReadedReportReq();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
+    if (paramArrayList != null)
     {
-      Pair localPair = (Pair)paramArrayList.next();
-      msg_svc.PbC2CReadedReportReq.UinPairReadInfo localUinPairReadInfo = new msg_svc.PbC2CReadedReportReq.UinPairReadInfo();
-      localUinPairReadInfo.peer_uin.set(((Long)localPair.first).longValue());
-      localUinPairReadInfo.last_read_time.set(((Long)localPair.second).intValue());
-      localStringBuilder.append("-uin:").append(localPair.first).append("-ReadTime-").append(localPair.second);
-      localPbC2CReadedReportReq.pair_info.add(localUinPairReadInfo);
-    }
-    paramArrayList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a().a();
-    if (paramArrayList != null) {
-      localPbC2CReadedReportReq.sync_cookie.set(ByteStringMicro.copyFrom(paramArrayList));
-    }
-    localPbMsgReadedReportReq.c2c_read_report.set(localPbC2CReadedReportReq);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.C2CMessageProcessor", 2, "<ReadReport><S>_C2C:" + localStringBuilder.toString());
-    }
-    a(localPbMsgReadedReportReq);
-  }
-  
-  public void a(ArrayList<MessageRecord> paramArrayList, boolean paramBoolean)
-  {
-    short s2 = 1;
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {}
-    for (;;)
-    {
-      return;
-      if ((!UserguideActivity.a(BaseApplicationImpl.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) && (NoDisturbUtil.a(BaseApplicationImpl.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)))
-      {
-        Object localObject1 = paramArrayList.iterator();
-        Object localObject2;
-        do
-        {
-          if (!((Iterator)localObject1).hasNext()) {
-            break;
-          }
-          localObject2 = (MessageRecord)((Iterator)localObject1).next();
-        } while ((!UinTypeUtil.h(((MessageRecord)localObject2).istroop)) || (!UinTypeUtil.a((MessageRecord)localObject2)) || (MsgProxyUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageRecord)localObject2)) || (((MessageRecord)localObject2).isSend()) || (((MessageRecord)localObject2).isread));
-        for (int k = 1; k != 0; k = 0)
-        {
-          localObject2 = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
-          if (localObject2 == null)
-          {
-            s1 = s2;
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.msg.C2CMessageProcessor", 2, "findFriendCardByUin card is null");
-            }
-          }
-          for (short s1 = s2;; s1 = ((Card)localObject2).shGender)
-          {
-            boolean bool = ((NearbyCardManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)).a();
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.msg_box", 2, "DealOneWayMessageNotify,gender:" + s1 + ",isGod:" + bool);
-            }
-            a();
-            localObject2 = BaseApplicationImpl.getApplication().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "OneWayMsgRecentUinList", 0);
-            a(paramArrayList, paramBoolean, (QQMessageFacade)localObject1, s1, bool, (SharedPreferences)localObject2, a((SharedPreferences)localObject2, ""), b((SharedPreferences)localObject2, ""));
-            return;
-          }
-        }
+      if (paramArrayList.size() <= 0) {
+        return;
       }
+      StringBuilder localStringBuilder = new StringBuilder("-ReportList-");
+      msg_svc.PbMsgReadedReportReq localPbMsgReadedReportReq = new msg_svc.PbMsgReadedReportReq();
+      msg_svc.PbC2CReadedReportReq localPbC2CReadedReportReq = new msg_svc.PbC2CReadedReportReq();
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        Pair localPair = (Pair)paramArrayList.next();
+        msg_svc.PbC2CReadedReportReq.UinPairReadInfo localUinPairReadInfo = new msg_svc.PbC2CReadedReportReq.UinPairReadInfo();
+        localUinPairReadInfo.peer_uin.set(((Long)localPair.first).longValue());
+        localUinPairReadInfo.last_read_time.set(((Long)localPair.second).intValue());
+        localStringBuilder.append("-uin:");
+        localStringBuilder.append(localPair.first);
+        localStringBuilder.append("-ReadTime-");
+        localStringBuilder.append(localPair.second);
+        localPbC2CReadedReportReq.pair_info.add(localUinPairReadInfo);
+      }
+      paramArrayList = ((MessageCache)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getMsgCache()).a();
+      if (paramArrayList != null) {
+        localPbC2CReadedReportReq.sync_cookie.set(ByteStringMicro.copyFrom(paramArrayList));
+      }
+      localPbMsgReadedReportReq.c2c_read_report.set(localPbC2CReadedReportReq);
+      if (QLog.isColorLevel())
+      {
+        paramArrayList = new StringBuilder();
+        paramArrayList.append("<ReadReport><S>_C2C:");
+        paramArrayList.append(localStringBuilder.toString());
+        QLog.d("Q.msg.C2CMessageProcessor", 2, paramArrayList.toString());
+      }
+      a(localPbMsgReadedReportReq);
     }
-  }
-  
-  public boolean a(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord.istroop != 1010) && (paramMessageRecord.istroop != 1001) && (paramMessageRecord.istroop != 10002)) {}
-    while (((paramMessageRecord.senderuin != null) && (paramMessageRecord.senderuin.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) || (((paramMessageRecord.istroop == 1001) || (paramMessageRecord.istroop == 10002)) && ((paramMessageRecord.msgtype == -3001) || (!UinTypeUtil.a(paramMessageRecord)) || (MsgProxyUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord))))) {
-      return false;
-    }
-    return true;
   }
   
   public boolean a(ArrayList<MessageRecord> paramArrayList)
   {
+    boolean bool2 = false;
     if (paramArrayList == null) {
       return false;
     }
     paramArrayList = paramArrayList.iterator();
-    MessageRecord localMessageRecord;
     do
     {
+      bool1 = bool2;
       if (!paramArrayList.hasNext()) {
         break;
       }
-      localMessageRecord = (MessageRecord)paramArrayList.next();
-    } while ((localMessageRecord.isSend()) || (localMessageRecord.isread) || ((UinTypeUtil.a(localMessageRecord)) && (!MsgProxyUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord))) || (FriendsStatusUtil.a(localMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) || (!AppletsFolderManager.a(localMessageRecord.frienduin)) || (!TinyMsgCodec.a(localMessageRecord)));
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    } while (!a((MessageRecord)paramArrayList.next()));
+    boolean bool1 = true;
+    return bool1;
   }
   
   public void b(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    switch (paramInt)
+    if (paramInt != 2001)
     {
-    default: 
-      return;
-    case 2001: 
-      a(paramToServiceMsg, paramFromServiceMsg);
+      if (paramInt != 2005) {
+        return;
+      }
+      a(paramToServiceMsg, paramFromServiceMsg, true);
       return;
     }
-    a(paramToServiceMsg, paramFromServiceMsg, true);
+    a(paramToServiceMsg, paramFromServiceMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.C2CMessageProcessor
  * JD-Core Version:    0.7.0.1
  */

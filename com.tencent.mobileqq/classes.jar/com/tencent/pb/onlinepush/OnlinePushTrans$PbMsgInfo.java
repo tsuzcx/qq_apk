@@ -29,13 +29,15 @@ public final class OnlinePushTrans$PbMsgInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 74, 82, 88, 98, 136 }, new String[] { "from_uin", "to_uin", "msg_type", "msg_subtype", "msg_seq", "msg_uid", "msg_time", "real_msg_time", "nick_name", "msg_data", "svr_ip", "ext_group_key_info", "uint32_general_flag" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), "", localByteStringMicro, Integer.valueOf(0), null, Integer.valueOf(0) }, PbMsgInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 74, 82, 88, 98, 136 }, new String[] { "from_uin", "to_uin", "msg_type", "msg_subtype", "msg_seq", "msg_uid", "msg_time", "real_msg_time", "nick_name", "msg_data", "svr_ip", "ext_group_key_info", "uint32_general_flag" }, new Object[] { localLong, localLong, localInteger, localInteger, localInteger, localLong, localInteger, localInteger, "", localByteStringMicro, localInteger, null, localInteger }, PbMsgInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.onlinepush.OnlinePushTrans.PbMsgInfo
  * JD-Core Version:    0.7.0.1
  */

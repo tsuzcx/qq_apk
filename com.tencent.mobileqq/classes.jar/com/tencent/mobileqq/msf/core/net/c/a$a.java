@@ -22,35 +22,41 @@ class a$a
   
   private void a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.C.DeepSleepDetector", 2, "onAppBackground setStartTime " + paramLong);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onAppBackground setStartTime ");
+      localStringBuilder.append(paramLong);
+      QLog.d("MSF.C.DeepSleepDetector", 2, localStringBuilder.toString());
     }
     this.a = paramLong;
   }
   
   private boolean a(boolean paramBoolean)
   {
-    boolean bool = true;
-    if (this.a > 0L) {
-      if ((i.a().h()) && ("huawei".equalsIgnoreCase(Build.MANUFACTURER))) {
+    long l = this.a;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (l > 0L) {
+      if ((i.a().h()) && ("huawei".equalsIgnoreCase(Build.MANUFACTURER)))
+      {
+        bool1 = bool2;
         if (Math.abs(SystemClock.elapsedRealtime() - this.a - (this.b - 1) * 120000) <= 120000L) {}
       }
-    }
-    for (;;)
-    {
-      if ((bool) && (paramBoolean)) {
-        a();
-      }
-      return bool;
-      bool = false;
-      continue;
-      if (Math.abs((int)((SystemClock.elapsedRealtime() - this.a) / 120000L) + 1 - this.b) <= 1)
+      else
       {
-        bool = false;
-        continue;
-        bool = false;
+        do
+        {
+          bool1 = true;
+          break;
+          bool1 = bool2;
+        } while (Math.abs((int)((SystemClock.elapsedRealtime() - this.a) / 120000L) + 1 - this.b) > 1);
       }
     }
+    if ((bool1) && (paramBoolean)) {
+      a();
+    }
+    return bool1;
   }
   
   public void run()
@@ -61,7 +67,7 @@ class a$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.c.a.a
  * JD-Core Version:    0.7.0.1
  */

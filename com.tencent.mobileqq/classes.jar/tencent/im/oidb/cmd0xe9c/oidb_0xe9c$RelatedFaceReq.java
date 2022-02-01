@@ -30,14 +30,16 @@ public final class oidb_0xe9c$RelatedFaceReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 42, 48, 56, 66, 72, 120, 130, 136, 144 }, new String[] { "str_img_md5", "str_url", "str_labels", "uint32_face_type", "bytes_emoji_id", "uint32_width", "uint32_height", "bytes_package_id", "uint64_msg_time", "uint64_from_uin", "str_uuid", "uint64_group_code", "uint64_file_id" }, new Object[] { "", "", "", Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, Long.valueOf(0L), Long.valueOf(0L), "", Long.valueOf(0L), Long.valueOf(0L) }, RelatedFaceReq.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 42, 48, 56, 66, 72, 120, 130, 136, 144 }, new String[] { "str_img_md5", "str_url", "str_labels", "uint32_face_type", "bytes_emoji_id", "uint32_width", "uint32_height", "bytes_package_id", "uint64_msg_time", "uint64_from_uin", "str_uuid", "uint64_group_code", "uint64_file_id" }, new Object[] { "", "", "", localInteger, localByteStringMicro1, localInteger, localInteger, localByteStringMicro2, localLong, localLong, "", localLong, localLong }, RelatedFaceReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xe9c.oidb_0xe9c.RelatedFaceReq
  * JD-Core Version:    0.7.0.1
  */

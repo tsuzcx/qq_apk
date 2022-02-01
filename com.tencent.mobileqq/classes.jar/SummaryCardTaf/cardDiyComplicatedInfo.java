@@ -28,8 +28,9 @@ public final class cardDiyComplicatedInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.detail != null) {
-      paramJceOutputStream.write(this.detail, 0);
+    String str = this.detail;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
   }
 }

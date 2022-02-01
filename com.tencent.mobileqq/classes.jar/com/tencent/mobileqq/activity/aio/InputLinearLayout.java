@@ -49,8 +49,14 @@ public class InputLinearLayout
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.InputLinearLayout", 2, "dispatchTouchEvent status = " + this.a + " action = " + paramMotionEvent.getAction());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("dispatchTouchEvent status = ");
+      localStringBuilder.append(this.a);
+      localStringBuilder.append(" action = ");
+      localStringBuilder.append(paramMotionEvent.getAction());
+      QLog.d("Q.aio.InputLinearLayout", 2, localStringBuilder.toString());
     }
     if (this.a == 1) {}
     try
@@ -60,20 +66,19 @@ public class InputLinearLayout
     }
     catch (Throwable paramMotionEvent) {}
     int i = paramMotionEvent.getAction();
-    if (i == 0) {
-      getParent().requestDisallowInterceptTouchEvent(true);
-    }
-    for (;;)
+    if (i == 0)
     {
+      getParent().requestDisallowInterceptTouchEvent(true);
       return true;
-      if ((i == 1) || (i == 3)) {
-        getParent().requestDisallowInterceptTouchEvent(false);
-      }
     }
+    if ((i == 1) || (i == 3)) {
+      getParent().requestDisallowInterceptTouchEvent(false);
+    }
+    return true;
     return false;
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     View localView = getChildAt(0);
@@ -90,7 +95,7 @@ public class InputLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.InputLinearLayout
  * JD-Core Version:    0.7.0.1
  */

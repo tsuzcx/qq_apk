@@ -3,6 +3,7 @@ package com.tencent.biz.webviewbase;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -29,24 +30,29 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
 import com.tencent.biz.AuthorizeConfig;
 import com.tencent.biz.common.util.FileChooserHelper;
-import com.tencent.biz.common.util.ImageUtil;
 import com.tencent.biz.common.util.Util;
 import com.tencent.biz.pubaccount.CustomWebChromeClient;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.AIOOpenWebMonitor;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.app.QIphoneTitleBarActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.log.VipWebViewReportLog;
-import com.tencent.mobileqq.pluginsdk.ActivityLifecycle;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
+import com.tencent.mobileqq.utils.BaseImageUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.webview.sonic.SonicClientImpl;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.SwiftBrowserUIStyle;
 import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
 import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -61,11 +67,12 @@ import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvid
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserSetting;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
+import com.tencent.mobileqq.webview.swift.injector.AbsBaseWebViewActivityInjectorUtil;
+import com.tencent.mobileqq.webview.swift.injector.IAbsBaseWebViewActivityInjector;
+import com.tencent.mobileqq.webview.swift.utils.BaseOpenWebMonitor;
 import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator;
 import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
-import com.tencent.mobileqq.webview.webso.WebSoUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.webview.util.WebViewComUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
@@ -78,7 +85,6 @@ import com.tencent.sonic.sdk.SonicEngine;
 import com.tencent.sonic.sdk.SonicSession;
 import com.tencent.sonic.sdk.SonicSessionConfig.Builder;
 import com.tencent.widget.immersive.SystemBarCompact;
-import cooperation.pluginbridge.BridgeHelper;
 import java.io.File;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -89,23 +95,21 @@ import mqq.os.MqqHandler;
 import org.json.JSONObject;
 
 public abstract class AbsBaseWebViewActivity
-  extends IphoneTitleBarActivity
+  extends QIphoneTitleBarActivity
   implements View.OnClickListener, View.OnTouchListener, WebViewPluginContainer, SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderContext, SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderSupporter
 {
   public static final String ACTION_SELECT_PICTURE = "actionSelectPicture";
   public static final String EXTRA_ACTION = "keyAction";
-  public static final HashSet<String> HWForbiddenList = new HashSet();
-  public static final int REQUEST_CODE_CHOOSE_FILE = 0;
   static final String TAG = "WebLog_WebViewBase";
   public static final String WEBVIEW_ADJUST_SETTINGS = "Web_AdjustSettings";
   public static final String WEBVIEW_BROWSER_INIT_WEBVIEW = "Web_qqbrowser_init_only_webview";
   public static final String WEBVIEW_SET_USER_AGENT = "Web_SetUserAgent";
   protected AuthorizeConfig authConfig;
   public FrameLayout customContainer;
+  private IAbsBaseWebViewActivityInjector injector;
   public boolean isDestroyed;
   private boolean isRecordTitleLeftDrawable;
   private boolean isRecordTitleRightDrawable;
-  protected volatile boolean isSendWebSoRequest = false;
   boolean isVideoPlaying;
   public volatile AppInterface mApp;
   public CustomWebChromeClient mChromeClient;
@@ -115,7 +119,6 @@ public abstract class AbsBaseWebViewActivity
   protected final Handler mHandler = new Handler(Looper.getMainLooper());
   protected long mLastTouchTime = 0L;
   protected boolean mNightMode = false;
-  protected boolean mPayActionSucc = false;
   protected volatile WebViewPluginEngine mPluginEngine;
   public String mRedirect302Url = "";
   protected String mRightButtonCallback = null;
@@ -126,7 +129,7 @@ public abstract class AbsBaseWebViewActivity
   public final SwiftBrowserStatistics mStatistics = (SwiftBrowserStatistics)this.mComponentsProvider.a(-2);
   public SwiftIphoneTitleBarUI mSwiftTitleUI = null;
   private Drawable mTitleLeftDrawable;
-  public final SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle mUIStyle = this.mUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle;
+  public final SwiftBrowserUIStyle mUIStyle = this.mUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle;
   public final SwiftBrowserUIStyleHandler mUIStyleHandler = (SwiftBrowserUIStyleHandler)this.mComponentsProvider.a(2);
   public long mWWVRulesFromUrl = 0L;
   private WebViewClient mWebViewClient;
@@ -135,26 +138,6 @@ public abstract class AbsBaseWebViewActivity
   protected final Object sInitEngineLock = new Object();
   protected SonicClientImpl sonicClient;
   public String uin;
-  
-  static
-  {
-    HWForbiddenList.add("Meizu_M040");
-    HWForbiddenList.add("YuLong_Coolpad8720Q");
-    HWForbiddenList.add("YuLong_Coolpad 7269");
-    HWForbiddenList.add("samsung_SM-G9006W");
-  }
-  
-  private void doWebSoRequest()
-  {
-    if (!this.isSendWebSoRequest)
-    {
-      this.isSendWebSoRequest = true;
-      String str = getIntent().getStringExtra("url");
-      if (WebSoUtils.b(str)) {
-        ThreadManager.postImmediately(new AbsBaseWebViewActivity.7(this, str), null, false);
-      }
-    }
-  }
   
   private void initPluginEngine()
   {
@@ -173,8 +156,12 @@ public abstract class AbsBaseWebViewActivity
   
   private void initSonicSession(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewBase", 2, "initSonicSession url = :" + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("initSonicSession url = :");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("WebLog_WebViewBase", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = new SonicSessionConfig.Builder();
     ((SonicSessionConfig.Builder)localObject).setSessionMode(1);
@@ -186,33 +173,38 @@ public abstract class AbsBaseWebViewActivity
       {
         this.sonicClient = new SonicClientImpl((SonicSession)localObject);
         ((SonicSession)localObject).bindClient(this.sonicClient);
+        return;
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("initSonicSession sonicSession = null, url = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("WebLog_WebViewBase", 1, ((StringBuilder)localObject).toString());
     }
-    else
-    {
-      return;
-    }
-    QLog.d("WebLog_WebViewBase", 1, "initSonicSession sonicSession = null, url = " + paramString);
   }
   
   public static int switchRequestCodeImpl(WebViewPlugin paramWebViewPlugin, byte paramByte)
   {
     CustomWebView localCustomWebView = paramWebViewPlugin.mRuntime.a();
-    if (localCustomWebView == null) {}
-    int i;
-    do
+    if (localCustomWebView == null) {
+      return -1;
+    }
+    if (localCustomWebView.getPluginEngine() == null) {
+      return -1;
+    }
+    int i = WebViewUtil.a(paramWebViewPlugin);
+    if (i == -1)
     {
-      do
+      if (QLog.isColorLevel())
       {
-        return -1;
-      } while (localCustomWebView.getPluginEngine() == null);
-      i = WebViewUtil.a(paramWebViewPlugin);
-      if (i != -1) {
-        break;
+        paramWebViewPlugin = new StringBuilder();
+        paramWebViewPlugin.append("switchRequestCode failed: webview index=");
+        paramWebViewPlugin.append(0);
+        paramWebViewPlugin.append(", pluginIndex=");
+        paramWebViewPlugin.append(i);
+        QLog.d("WebLog_WebViewBase", 2, paramWebViewPlugin.toString());
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("WebLog_WebViewBase", 2, "switchRequestCode failed: webview index=" + 0 + ", pluginIndex=" + i);
-    return -1;
+      return -1;
+    }
     return i << 8 & 0xFF00 | 0x0 | paramByte & 0xFF;
   }
   
@@ -226,181 +218,169 @@ public abstract class AbsBaseWebViewActivity
     Util.a("Web_qqbrowser_init_only_webview");
     Object localObject2 = getIntent();
     long l = System.currentTimeMillis();
-    Object localObject1;
     if (0L != (this.mWWVRulesFromUrl & 0x40)) {
       localObject1 = SwiftReuseTouchWebView.a(this);
+    } else {
+      localObject1 = new TouchWebView(this);
     }
-    for (;;)
+    boolean bool;
+    if ((localObject1 instanceof SwiftReuseTouchWebView))
     {
-      Object localObject3;
-      boolean bool;
-      label63:
-      label234:
-      WebSettings localWebSettings;
-      if ((localObject1 instanceof SwiftReuseTouchWebView))
-      {
-        localObject3 = this.mStatistics;
-        if (1 == ((SwiftReuseTouchWebView)localObject1).b)
-        {
-          bool = true;
-          ((SwiftBrowserStatistics)localObject3).u = bool;
-        }
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("webviewinit", 2, "TouchWebView cost = " + (System.currentTimeMillis() - l));
-        }
-        ((TouchWebView)localObject1).setIntent((Intent)localObject2);
-        Util.b("Web_qqbrowser_init_only_webview");
-        if ((this.mApp == null) && (QLog.isColorLevel())) {
-          QLog.w("WebLog_WebViewBase", 2, "Caution! AppRuntime is null!");
-        }
-        this.mPluginEngine.a((CustomWebView)localObject1);
-        ((TouchWebView)localObject1).setPluginEngine(this.mPluginEngine);
-        if (this.sonicClient != null) {
-          this.sonicClient.bindWebView((CustomWebView)localObject1);
-        }
-        System.currentTimeMillis();
-        if (this.mChromeClient == null) {
-          this.mChromeClient = new AbsBaseWebViewActivity.1(this);
-        }
-        ((TouchWebView)localObject1).setWebChromeClient(this.mChromeClient);
-        if (this.mWebViewClient == null)
-        {
-          if (Build.VERSION.SDK_INT < 21) {
-            break label734;
-          }
-          this.mWebViewClient = new AbsBaseWebViewActivity.2(this);
-        }
-        ((TouchWebView)localObject1).setWebViewClient(this.mWebViewClient);
-        ((TouchWebView)localObject1).setScrollBarStyle(0);
-        Util.a("Web_AdjustSettings");
-        localWebSettings = ((TouchWebView)localObject1).getSettings();
-        Util.a("Web_SetUserAgent");
-        localObject2 = localWebSettings.getUserAgentString();
-        localObject3 = getUAMark();
-        if (((TouchWebView)localObject1).getX5WebViewExtension() == null) {
-          break label749;
-        }
+      localObject3 = this.mStatistics;
+      if (1 == ((SwiftReuseTouchWebView)localObject1).b) {
         bool = true;
-        label290:
-        localWebSettings.setUserAgentString(SwiftWebViewUtils.a((String)localObject2, (String)localObject3, bool));
-        Util.b("Web_SetUserAgent");
-        localWebSettings.setSavePassword(false);
-        localWebSettings.setSaveFormData(false);
-        localWebSettings.setBuiltInZoomControls(true);
-        localWebSettings.setUseWideViewPort(true);
-        localWebSettings.setLoadWithOverviewMode(true);
-        localWebSettings.setPluginState(WebSettings.PluginState.ON);
-        localObject2 = getPackageManager();
+      } else {
+        bool = false;
       }
+      ((SwiftBrowserStatistics)localObject3).r = bool;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("TouchWebView cost = ");
+      ((StringBuilder)localObject3).append(System.currentTimeMillis() - l);
+      QLog.d("webviewinit", 2, ((StringBuilder)localObject3).toString());
+    }
+    ((TouchWebView)localObject1).setIntent((Intent)localObject2);
+    Util.b("Web_qqbrowser_init_only_webview");
+    if ((this.mApp == null) && (QLog.isColorLevel())) {
+      QLog.w("WebLog_WebViewBase", 2, "Caution! AppRuntime is null!");
+    }
+    this.mPluginEngine.a((CustomWebView)localObject1);
+    ((TouchWebView)localObject1).setPluginEngine(this.mPluginEngine);
+    localObject2 = this.sonicClient;
+    if (localObject2 != null) {
+      ((SonicClientImpl)localObject2).bindWebView((CustomWebView)localObject1);
+    }
+    System.currentTimeMillis();
+    if (this.mChromeClient == null) {
+      this.mChromeClient = new AbsBaseWebViewActivity.1(this);
+    }
+    ((TouchWebView)localObject1).setWebChromeClient(this.mChromeClient);
+    if (this.mWebViewClient == null) {
+      if (Build.VERSION.SDK_INT >= 21) {
+        this.mWebViewClient = new AbsBaseWebViewActivity.2(this);
+      } else {
+        this.mWebViewClient = new AbsBaseWebViewActivity.3(this);
+      }
+    }
+    ((TouchWebView)localObject1).setWebViewClient(this.mWebViewClient);
+    ((TouchWebView)localObject1).setScrollBarStyle(0);
+    Util.a("Web_AdjustSettings");
+    Object localObject3 = ((TouchWebView)localObject1).getSettings();
+    Util.a("Web_SetUserAgent");
+    localObject2 = ((WebSettings)localObject3).getUserAgentString();
+    Object localObject4 = getUAMark();
+    if (((TouchWebView)localObject1).getX5WebViewExtension() != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ((WebSettings)localObject3).setUserAgentString(SwiftWebViewUtils.a((String)localObject2, (String)localObject4, bool));
+    Util.b("Web_SetUserAgent");
+    ((WebSettings)localObject3).setSavePassword(false);
+    ((WebSettings)localObject3).setSaveFormData(false);
+    ((WebSettings)localObject3).setBuiltInZoomControls(true);
+    ((WebSettings)localObject3).setUseWideViewPort(true);
+    ((WebSettings)localObject3).setLoadWithOverviewMode(true);
+    ((WebSettings)localObject3).setPluginState(WebSettings.PluginState.ON);
+    localObject2 = getPackageManager();
+    try
+    {
+      if (((PackageManager)localObject2).hasSystemFeature("android.hardware.touchscreen.multitouch")) {
+        break label439;
+      }
+      bool = ((PackageManager)localObject2).hasSystemFeature("android.hardware.faketouch.multitouch.distinct");
+      if (!bool) {}
+    }
+    catch (RuntimeException localRuntimeException)
+    {
       try
       {
-        if (!((PackageManager)localObject2).hasSystemFeature("android.hardware.touchscreen.multitouch"))
-        {
-          bool = ((PackageManager)localObject2).hasSystemFeature("android.hardware.faketouch.multitouch.distinct");
-          if (!bool) {}
+        int i;
+        StringBuilder localStringBuilder;
+        ((TouchWebView)localObject1).requestFocus();
+        ((TouchWebView)localObject1).setFocusableInTouchMode(true);
+        ((TouchWebView)localObject1).setDownloadListener(new AbsBaseWebViewActivity.4(this, (TouchWebView)localObject1));
+        CookieSyncManager.createInstance(getApplicationContext());
+        if (((TouchWebView)localObject1).getX5WebViewExtension() == null) {
+          break label765;
         }
-        else
-        {
-          i = 1;
-          label381:
-          if (i != 0) {
-            break label767;
-          }
-          bool = true;
-          label388:
-          localWebSettings.setDisplayZoomControls(bool);
-          localWebSettings.setPluginsEnabled(true);
-          localWebSettings.setJavaScriptEnabled(true);
-          localWebSettings.setAllowContentAccess(true);
-          localWebSettings.setDatabaseEnabled(true);
-          localWebSettings.setDomStorageEnabled(true);
-          localWebSettings.setAppCacheEnabled(true);
-          String str = MobileQQ.getMobileQQ().getQQProcessName();
-          localObject3 = "";
-          localObject2 = localObject3;
-          if (str != null)
-          {
-            i = str.lastIndexOf(':');
-            localObject2 = localObject3;
-            if (i > -1) {
-              localObject2 = "_" + str.substring(i + 1);
-            }
-          }
-          localWebSettings.setDatabasePath(getApplicationContext().getDir("database" + (String)localObject2, 0).getPath());
-          localWebSettings.setAppCachePath(getApplicationContext().getDir("appcache" + (String)localObject2, 0).getPath());
-          localWebSettings.setMediaPlaybackRequiresUserGesture(false);
-          if (Build.VERSION.SDK_INT >= 11) {
-            ((TouchWebView)localObject1).removeJavascriptInterface("searchBoxJavaBridge_");
-          }
+        this.mX5CoreActive = true;
+        ((TouchWebView)localObject1).getX5WebViewExtension().setWebViewClientExtension(new AbsBaseWebViewActivity.DownloadQQBrowserExtension(this, (TouchWebView)localObject1));
+        BaseOpenWebMonitor.b(getIntent(), "use_x5", "1");
+        break label778;
+        BaseOpenWebMonitor.b(getIntent(), "use_x5", "2");
+        ((TouchWebView)localObject1).getView().setOnTouchListener(this);
+        if (!this.mNightMode) {
+          break label800;
         }
+        ((TouchWebView)localObject1).setMask(true);
+        Util.b("Web_AdjustSettings");
+        if (paramViewGroup == null) {
+          break label815;
+        }
+        paramViewGroup.addView((View)localObject1);
+        return localObject1;
+        localRuntimeException = localRuntimeException;
       }
-      catch (RuntimeException localRuntimeException)
+      catch (Exception localException)
       {
-        try
-        {
-          int i;
-          ((TouchWebView)localObject1).requestFocus();
-          label600:
-          ((TouchWebView)localObject1).setFocusableInTouchMode(true);
-          ((TouchWebView)localObject1).setDownloadListener(new AbsBaseWebViewActivity.4(this, (TouchWebView)localObject1));
-          CookieSyncManager.createInstance(getApplicationContext());
-          if (((TouchWebView)localObject1).getX5WebViewExtension() != null)
-          {
-            this.mX5CoreActive = true;
-            ((TouchWebView)localObject1).getX5WebViewExtension().setWebViewClientExtension(new AbsBaseWebViewActivity.DownloadQQBrowserExtension(this, (TouchWebView)localObject1));
-            AIOOpenWebMonitor.b(getIntent(), "use_x5", "1");
-          }
-          for (;;)
-          {
-            ((TouchWebView)localObject1).getView().setOnTouchListener(this);
-            if (this.mNightMode) {
-              ((TouchWebView)localObject1).setMask(true);
-            }
-            Util.b("Web_AdjustSettings");
-            if (paramViewGroup != null) {
-              paramViewGroup.addView((View)localObject1);
-            }
-            return localObject1;
-            localObject1 = new TouchWebView(this);
-            break;
-            bool = false;
-            break label63;
-            label734:
-            this.mWebViewClient = new AbsBaseWebViewActivity.3(this);
-            break label234;
-            label749:
-            bool = false;
-            break label290;
-            i = 0;
-            break label381;
-            localRuntimeException = localRuntimeException;
-            i = 0;
-            break label381;
-            label767:
-            bool = false;
-            break label388;
-            AIOOpenWebMonitor.b(getIntent(), "use_x5", "2");
-          }
-        }
-        catch (Exception localException)
-        {
-          break label600;
-        }
+        break label687;
       }
+    }
+    i = 0;
+    break label441;
+    label439:
+    i = 1;
+    label441:
+    ((WebSettings)localObject3).setDisplayZoomControls(i ^ 0x1);
+    ((WebSettings)localObject3).setPluginsEnabled(true);
+    ((WebSettings)localObject3).setJavaScriptEnabled(true);
+    ((WebSettings)localObject3).setAllowContentAccess(true);
+    ((WebSettings)localObject3).setDatabaseEnabled(true);
+    ((WebSettings)localObject3).setDomStorageEnabled(true);
+    ((WebSettings)localObject3).setAppCacheEnabled(true);
+    localObject2 = MobileQQ.getMobileQQ().getQQProcessName();
+    if (localObject2 != null)
+    {
+      i = ((String)localObject2).lastIndexOf(':');
+      if (i > -1)
+      {
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("_");
+        ((StringBuilder)localObject4).append(((String)localObject2).substring(i + 1));
+        localObject2 = ((StringBuilder)localObject4).toString();
+        break label557;
+      }
+    }
+    localObject2 = "";
+    label557:
+    localObject4 = getApplicationContext();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("database");
+    localStringBuilder.append((String)localObject2);
+    ((WebSettings)localObject3).setDatabasePath(((Context)localObject4).getDir(localStringBuilder.toString(), 0).getPath());
+    localObject4 = getApplicationContext();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("appcache");
+    localStringBuilder.append((String)localObject2);
+    ((WebSettings)localObject3).setAppCachePath(((Context)localObject4).getDir(localStringBuilder.toString(), 0).getPath());
+    ((WebSettings)localObject3).setMediaPlaybackRequiresUserGesture(false);
+    if (Build.VERSION.SDK_INT >= 11) {
+      ((TouchWebView)localObject1).removeJavascriptInterface("searchBoxJavaBridge_");
     }
   }
   
   protected boolean dispatchPluginEvent(long paramLong, Map<String, Object> paramMap)
   {
-    if (this.mWebViewInstance != null)
+    Object localObject = this.mWebViewInstance;
+    if (localObject != null)
     {
-      this.mWebViewInstance.onResume();
-      WebViewPluginEngine localWebViewPluginEngine = this.mWebViewInstance.getPluginEngine();
-      if (localWebViewPluginEngine != null) {
-        return localWebViewPluginEngine.a(this.mWebViewInstance.getUrl(), paramLong, paramMap);
+      ((TouchWebView)localObject).onResume();
+      localObject = this.mWebViewInstance.getPluginEngine();
+      if (localObject != null) {
+        return ((WebViewPluginEngine)localObject).a(this.mWebViewInstance.getUrl(), paramLong, paramMap);
       }
     }
     return false;
@@ -415,96 +395,75 @@ public abstract class AbsBaseWebViewActivity
     return bool;
   }
   
-  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewBase", 2, "onActivityResult, requestCode=" + paramInt1 + ", resultCode=" + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onActivityResult, requestCode=");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(", resultCode=");
+      ((StringBuilder)localObject).append(paramInt2);
+      QLog.d("WebLog_WebViewBase", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = new HashMap();
     ((Map)localObject).put("requestCode", Integer.valueOf(paramInt1));
     ((Map)localObject).put("resultCode", Integer.valueOf(paramInt2));
     ((Map)localObject).put("data", paramIntent);
-    if (dispatchPluginEvent(8589934600L, (Map)localObject)) {}
-    label478:
-    do
+    if (dispatchPluginEvent(8589934600L, (Map)localObject)) {
+      return;
+    }
+    int i = paramInt1 >> 8 & 0xFF;
+    if (i > 0)
     {
-      do
+      localObject = this.mWebViewInstance;
+      if (localObject != null)
       {
-        do
+        localObject = ((TouchWebView)localObject).getPluginEngine();
+        if (localObject != null)
         {
-          do
+          localObject = ((WebViewPluginEngine)localObject).a(i, true);
+          if (localObject != null)
           {
+            ((WebViewPlugin)localObject).onActivityResult(paramIntent, (byte)(paramInt1 & 0xFF), paramInt2);
             return;
-            int i = paramInt1 >> 8 & 0xFF;
-            if (i <= 0) {
-              break;
-            }
-            if (this.mWebViewInstance != null)
-            {
-              localObject = this.mWebViewInstance.getPluginEngine();
-              if (localObject != null)
-              {
-                if ((paramIntent != null) && (paramIntent.hasExtra("entryId")) && (((WebViewPluginEngine)localObject).a("card") == null)) {
-                  ((WebViewPluginEngine)localObject).a(new String[] { "card" });
-                }
-                localObject = ((WebViewPluginEngine)localObject).a(i, true);
-                if (localObject != null)
-                {
-                  ((WebViewPlugin)localObject).onActivityResult(paramIntent, (byte)(paramInt1 & 0xFF), paramInt2);
-                  return;
-                }
-              }
-            }
-          } while (!QLog.isColorLevel());
-          QLog.w("WebLog_WebViewBase", 2, "Caution! activity result not handled!");
-          return;
-          if ((this.mFileChooserHelper == null) || (!this.mFileChooserHelper.a(paramInt1, paramInt2, paramIntent))) {
-            break;
           }
-        } while (!QLog.isColorLevel());
-        QLog.w("WebLog_WebViewBase", 2, "Activity result handled by FileChooserHelper.");
-        return;
-        if ((paramInt2 != -1) || (this.mWebViewInstance == null)) {
-          break;
         }
-        switch (paramInt1)
-        {
-        default: 
-          return;
-        }
-      } while (paramIntent == null);
-      localObject = paramIntent.getStringExtra("callbackSn");
-      paramIntent = paramIntent.getStringExtra("result");
-      this.mWebViewInstance.loadUrl("javascript:window.JsBridge&&JsBridge.callback('" + (String)localObject + "',{'r':0,'result':" + paramIntent + "});");
-      for (;;)
-      {
-        try
-        {
-          if (new JSONObject(paramIntent).getInt("resultCode") != 0) {
-            break label478;
-          }
-          this.mPayActionSucc = bool;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("WebLog_WebViewBase", 2, "onActivityResult: mPayActionSucc=" + this.mPayActionSucc);
-          return;
-        }
-        catch (Exception paramIntent) {}
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("WebLog_WebViewBase", 2, "onActivityResult: mPayActionException=" + paramIntent.getMessage());
-        return;
-        bool = false;
       }
-    } while (paramInt2 != 4660);
-    setResult(4660);
-    finish();
+      if (QLog.isColorLevel()) {
+        QLog.w("WebLog_WebViewBase", 2, "Caution! activity result not handled!");
+      }
+    }
+    else
+    {
+      localObject = this.mFileChooserHelper;
+      if ((localObject != null) && (((FileChooserHelper)localObject).a(paramInt1, paramInt2, paramIntent)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("WebLog_WebViewBase", 2, "Activity result handled by FileChooserHelper.");
+        }
+      }
+      else
+      {
+        if (paramInt2 == 4660)
+        {
+          setResult(4660);
+          finish();
+          return;
+        }
+        localObject = this.mWebViewInstance;
+        if (localObject != null)
+        {
+          IAbsBaseWebViewActivityInjector localIAbsBaseWebViewActivityInjector = this.injector;
+          if (localIAbsBaseWebViewActivityInjector != null) {
+            localIAbsBaseWebViewActivityInjector.a(paramInt1, paramInt2, paramIntent, (TouchWebView)localObject);
+          }
+        }
+      }
+    }
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_WebViewBase", 2, "doOnCreate");
@@ -519,20 +478,24 @@ public abstract class AbsBaseWebViewActivity
     }
     QQBrowserActivity.sQQBrowserActivityCounter += 1;
     this.mNightMode = "1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId"));
-    setTheme(2131755154);
+    setTheme(2131755316);
     this.authConfig = AuthorizeConfig.a();
     WebAccelerateHelper.isWebViewCache = true;
     QLog.d("WebLog_WebViewBase", 1, "doOnCreate, WebAccelerateHelper.isWebViewCache = true");
     paramBundle = this.mStatistics;
     this.isDestroyed = false;
-    paramBundle.l = false;
+    paramBundle.k = false;
     this.uin = this.mApp.getAccount();
-    doWebSoRequest();
+    this.injector = AbsBaseWebViewActivityInjectorUtil.a();
+    paramBundle = this.injector;
+    if (paramBundle != null) {
+      paramBundle.a(this);
+    }
     initPluginEngineOnActivityCreated();
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
     if (QLog.isColorLevel()) {
@@ -541,13 +504,15 @@ public abstract class AbsBaseWebViewActivity
     QQBrowserActivity.sQQBrowserActivityCounter -= 1;
     Object localObject = this.mStatistics;
     this.isDestroyed = true;
-    ((SwiftBrowserStatistics)localObject).l = true;
-    if (this.mChromeClient != null) {
-      this.mChromeClient.a();
+    ((SwiftBrowserStatistics)localObject).k = true;
+    localObject = this.mChromeClient;
+    if (localObject != null) {
+      ((CustomWebChromeClient)localObject).a();
     }
-    if (this.mWebViewInstance != null)
+    localObject = this.mWebViewInstance;
+    if (localObject != null)
     {
-      localObject = this.mWebViewInstance.getPluginEngine();
+      localObject = ((TouchWebView)localObject).getPluginEngine();
       if (localObject != null) {
         ((WebViewPluginEngine)localObject).b();
       }
@@ -561,129 +526,121 @@ public abstract class AbsBaseWebViewActivity
     {
       try
       {
-        for (;;)
-        {
-          this.mWebViewInstance.stopLoading();
-          label113:
-          this.mWebViewInstance.loadUrlOriginal("about:blank");
-          this.mWebViewInstance.clearView();
-          this.mWebViewInstance.destroy();
-          this.mWebViewInstance = null;
-          this.mApp = null;
-          return;
-          localException1 = localException1;
-          if (QLog.isColorLevel()) {
-            QLog.d("WebLog_WebViewBase", 2, "remove webview error");
-          }
-        }
+        this.mWebViewInstance.stopLoading();
+        this.mWebViewInstance.loadUrlOriginal("about:blank");
+        this.mWebViewInstance.clearView();
+        this.mWebViewInstance.destroy();
+        this.mWebViewInstance = null;
+        this.mApp = null;
+        return;
+        localException1 = localException1;
       }
       catch (Exception localException2)
       {
-        break label113;
+        break label129;
       }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewBase", 2, "remove webview error");
     }
   }
   
   public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    switch (paramInt)
+    if (paramInt != 24)
     {
+      if (paramInt != 25)
+      {
+        if (paramInt == 82) {
+          dispatchPluginEvent(8589934607L, null);
+        }
+      }
+      else {
+        dispatchPluginEvent(8589934608L, null);
+      }
     }
-    for (;;)
-    {
-      return super.doOnKeyDown(paramInt, paramKeyEvent);
-      dispatchPluginEvent(8589934607L, null);
-      continue;
-      dispatchPluginEvent(8589934608L, null);
-      continue;
+    else {
       dispatchPluginEvent(8589934609L, null);
     }
+    return super.doOnKeyDown(paramInt, paramKeyEvent);
   }
   
-  public void doOnNewIntent(Intent paramIntent)
+  protected void doOnNewIntent(Intent paramIntent)
   {
-    int i = -1;
-    int j;
-    Object localObject;
     if ("actionSelectPicture".equals(paramIntent.getStringExtra("keyAction")))
     {
-      j = paramIntent.getIntExtra("requestCode", -1);
+      int i = -1;
+      int j = paramIntent.getIntExtra("requestCode", -1);
       int k = j >> 8 & 0xFF;
-      if (k > 0) {
-        if (this.mWebViewInstance != null)
+      if (k > 0)
+      {
+        localObject = this.mWebViewInstance;
+        if (localObject != null)
         {
-          localObject = this.mWebViewInstance.getPluginEngine();
+          localObject = ((TouchWebView)localObject).getPluginEngine();
           if (localObject != null)
           {
             localObject = ((WebViewPluginEngine)localObject).a(k, true);
-            if (localObject != null) {
+            if (localObject != null)
+            {
               if (!paramIntent.hasExtra("PhotoConst.PHOTO_PATHS")) {
-                break label158;
+                i = 0;
               }
+              ((WebViewPlugin)localObject).onActivityResult(paramIntent, (byte)(j & 0xFF), i);
+              return;
             }
           }
         }
+        if (QLog.isColorLevel()) {
+          QLog.w("WebLog_WebViewBase", 2, "Caution! activity result not handled!");
+        }
       }
     }
-    for (;;)
-    {
-      ((WebViewPlugin)localObject).onActivityResult(paramIntent, (byte)(j & 0xFF), i);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.w("WebLog_WebViewBase", 2, "Caution! activity result not handled!");
-      }
-      this.uin = this.mApp.getAccount();
-      localObject = new HashMap();
-      ((Map)localObject).put("intent", paramIntent);
-      dispatchPluginEvent(128L, (Map)localObject);
-      return;
-      label158:
-      i = 0;
-    }
+    this.uin = this.mApp.getAccount();
+    Object localObject = new HashMap();
+    ((Map)localObject).put("intent", paramIntent);
+    dispatchPluginEvent(128L, (Map)localObject);
   }
   
-  public void doOnPause()
+  protected void doOnPause()
   {
     super.doOnPause();
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_WebViewBase", 2, "onPause");
     }
-    if (this.mWebViewInstance != null) {
-      this.mWebViewInstance.onPause();
+    Object localObject = this.mWebViewInstance;
+    if (localObject != null) {
+      ((TouchWebView)localObject).onPause();
     }
-    if ((this.mChromeClient != null) && (this.isVideoPlaying)) {
-      this.mChromeClient.onHideCustomView();
+    localObject = this.mChromeClient;
+    if ((localObject != null) && (this.isVideoPlaying)) {
+      ((CustomWebChromeClient)localObject).onHideCustomView();
     }
     dispatchPluginEvent(8589934597L, null);
-    String str = BridgeHelper.a(getActivity(), this.uin).a("buscard_registerNFC");
-    if ((TextUtils.isEmpty(str)) || ("true".equals(str))) {
-      ActivityLifecycle.onPause(getActivity());
+    localObject = this.injector;
+    if (localObject != null) {
+      ((IAbsBaseWebViewActivityInjector)localObject).b(this);
     }
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_WebViewBase", 2, "onResume");
     }
-    if (this.mWebViewInstance != null) {
-      this.mWebViewInstance.onResume();
+    Object localObject = this.mWebViewInstance;
+    if (localObject != null) {
+      ((TouchWebView)localObject).onResume();
     }
-    Object localObject = new Intent("tencent.notify.foreground");
-    ((Intent)localObject).setPackage(MobileQQ.getContext().getPackageName());
-    ((Intent)localObject).putExtra("selfuin", this.uin);
-    ((Intent)localObject).putExtra("AccountInfoSync", "mobileqq.web");
-    ((Intent)localObject).putExtra("classname", getClass().getName());
-    sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
     dispatchPluginEvent(2L, null);
-    localObject = BridgeHelper.a(getActivity(), this.uin).a("buscard_registerNFC");
-    if ((TextUtils.isEmpty((CharSequence)localObject)) || ("true".equals(localObject))) {
-      ActivityLifecycle.onResume(getActivity());
+    localObject = this.injector;
+    if (localObject != null) {
+      ((IAbsBaseWebViewActivityInjector)localObject).a(this);
     }
   }
   
-  public void doOnStop()
+  protected void doOnStop()
   {
     super.doOnStop();
     if ((this.mRulesFromUrl & 0x2000000) != 0L)
@@ -703,7 +660,7 @@ public abstract class AbsBaseWebViewActivity
     }
     super.finish();
     if (getIntent().getBooleanExtra("finish_animation_up_down", false)) {
-      overridePendingTransition(0, 2130771980);
+      overridePendingTransition(0, 2130771992);
     }
   }
   
@@ -722,11 +679,6 @@ public abstract class AbsBaseWebViewActivity
     throw new UnsupportedOperationException("must override this method getHostWebView()!");
   }
   
-  public View getIphoneTitleContentView()
-  {
-    return this.mContentView;
-  }
-  
   public String getModuleId()
   {
     return "modular_web";
@@ -737,15 +689,11 @@ public abstract class AbsBaseWebViewActivity
     return null;
   }
   
-  protected WebAIOController getWebAIOController()
-  {
-    return null;
-  }
-  
   public final TouchWebView getWebView(ViewGroup paramViewGroup)
   {
-    if (this.mWebViewInstance != null) {
-      return this.mWebViewInstance;
+    TouchWebView localTouchWebView = this.mWebViewInstance;
+    if (localTouchWebView != null) {
+      return localTouchWebView;
     }
     this.mWebViewInstance = createWebViewInstance(paramViewGroup);
     return this.mWebViewInstance;
@@ -764,11 +712,19 @@ public abstract class AbsBaseWebViewActivity
     startActivity(paramIntent);
   }
   
+  public void gotoSelectPicture(WebViewPlugin paramWebViewPlugin, ActivityURIRequest paramActivityURIRequest, byte paramByte)
+  {
+    int i = switchRequestCode(paramWebViewPlugin, paramByte);
+    paramActivityURIRequest.extra().putString("keyAction", "actionSelectPicture");
+    paramActivityURIRequest.extra().putInt("requestCode", i);
+    QRoute.startUri(paramActivityURIRequest);
+  }
+  
   public void init(Intent paramIntent)
   {
     super.init(paramIntent);
     if (this.vg != null) {
-      this.vg.setOnTouchListener(new AbsBaseWebViewActivity.8(this));
+      this.vg.setOnTouchListener(new AbsBaseWebViewActivity.7(this));
     }
     removeWebViewLayerType();
     this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView = this.leftView;
@@ -776,11 +732,6 @@ public abstract class AbsBaseWebViewActivity
     this.mSwiftTitleUI.c = this.rightViewText;
     this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView = this.rightViewImg;
     this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup = this.vg;
-  }
-  
-  public void initIphoneTitleBySwiftUI(Intent paramIntent)
-  {
-    init(paramIntent);
   }
   
   public final void initPluginEngineOnActivityCreated()
@@ -794,57 +745,63 @@ public abstract class AbsBaseWebViewActivity
       WebViewPluginEngine.a = null;
       WebAccelerateHelper.getInstance().onPluginRuntimeReady(this.mPluginEngine, this.mApp, this);
       this.mPluginEngine.a();
-    }
-    while (this.mPluginEngine != null) {
       return;
     }
-    synchronized (this.sInitEngineLock)
-    {
-      if (this.mPluginEngine == null)
+    if (this.mPluginEngine == null) {
+      synchronized (this.sInitEngineLock)
       {
-        this.mPluginEngine = WebAccelerateHelper.getInstance().createWebViewPluginEngine(this.mApp, this, null, null);
-        WebAccelerateHelper.getInstance().onPluginRuntimeReady(this.mPluginEngine, this.mApp, this);
+        if (this.mPluginEngine == null)
+        {
+          this.mPluginEngine = WebAccelerateHelper.getInstance().createWebViewPluginEngine(this.mApp, this, null, null);
+          WebAccelerateHelper.getInstance().onPluginRuntimeReady(this.mPluginEngine, this.mApp, this);
+        }
+        return;
       }
-      return;
     }
   }
   
-  public boolean onBackEvent()
+  protected boolean onBackEvent()
   {
-    if ((this.mChromeClient != null) && (this.isVideoPlaying)) {
-      this.mChromeClient.onHideCustomView();
-    }
-    WebViewPluginEngine localWebViewPluginEngine;
-    do
+    Object localObject1 = this.mChromeClient;
+    if ((localObject1 != null) && (this.isVideoPlaying))
     {
-      do
+      ((CustomWebChromeClient)localObject1).onHideCustomView();
+      return true;
+    }
+    localObject1 = this.sonicClient;
+    if (localObject1 != null)
+    {
+      ((SonicClientImpl)localObject1).clearHistory();
+      this.sonicClient.destroy();
+      this.sonicClient = null;
+    }
+    localObject1 = new HashMap(1);
+    ((Map)localObject1).put("target", Integer.valueOf(3));
+    if (dispatchPluginEvent(8589934601L, (Map)localObject1)) {
+      return true;
+    }
+    if ((this.mRulesFromUrl & 0x4) == 0L)
+    {
+      Object localObject2 = this.mWebViewInstance;
+      if ((localObject2 != null) && (((TouchWebView)localObject2).canGoBack()))
       {
-        return true;
-        if (this.sonicClient != null)
-        {
-          this.sonicClient.clearHistory();
-          this.sonicClient.destroy();
-          this.sonicClient = null;
+        this.mWebViewInstance.stopLoading();
+        this.mWebViewInstance.goBack();
+        localObject2 = this.mWebViewInstance.getPluginEngine();
+        if (localObject2 != null) {
+          ((WebViewPluginEngine)localObject2).a(this.mWebViewInstance.getUrl(), 8589934610L, (Map)localObject1);
         }
-        localObject = new HashMap(1);
-        ((Map)localObject).put("target", Integer.valueOf(3));
-      } while (dispatchPluginEvent(8589934601L, (Map)localObject));
-      if (((this.mRulesFromUrl & 0x4) != 0L) || (this.mWebViewInstance == null) || (!this.mWebViewInstance.canGoBack())) {
-        break;
+        return true;
       }
-      this.mWebViewInstance.stopLoading();
-      this.mWebViewInstance.goBack();
-      localWebViewPluginEngine = this.mWebViewInstance.getPluginEngine();
-    } while (localWebViewPluginEngine == null);
-    localWebViewPluginEngine.a(this.mWebViewInstance.getUrl(), 8589934610L, (Map)localObject);
-    return true;
-    Object localObject = (InputMethodManager)getSystemService("input_method");
-    if ((localObject != null) && (getCurrentFocus() != null)) {
-      ((InputMethodManager)localObject).hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
     }
-    if ((this.mChromeClient != null) && (this.isVideoPlaying))
+    localObject1 = (InputMethodManager)getSystemService("input_method");
+    if ((localObject1 != null) && (getCurrentFocus() != null)) {
+      ((InputMethodManager)localObject1).hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+    }
+    localObject1 = this.mChromeClient;
+    if ((localObject1 != null) && (this.isVideoPlaying))
     {
-      this.mChromeClient.onHideCustomView();
+      ((CustomWebChromeClient)localObject1).onHideCustomView();
       return true;
     }
     finish();
@@ -866,21 +823,23 @@ public abstract class AbsBaseWebViewActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
-    doWebSoRequest();
     SwiftWebAccelerator.a().a();
     String str = SwiftWebViewUtils.a(getIntent());
     WebAccelerateHelper.getInstance().preGetKey(str, getIntent(), this.mApp);
     WebAccelerateHelper.getInstance().preCheckOffline(str);
     WebAccelerateHelper.getInstance().preFetchResource(str);
-    this.mUIStyleHandler.c();
+    this.mUIStyleHandler.b();
     this.mSwiftTitleUI = this.mUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI;
     boolean bool = WebAccelerateHelper.isWebViewCache;
     initSonicSession(str);
     ThreadManager.getFileThreadHandler().post(new AbsBaseWebViewActivity.6(this, bool));
     super.onCreate(paramBundle);
-    QLog.i("WebLog_WebViewBase", 1, "onCreate cache:" + bool);
+    paramBundle = new StringBuilder();
+    paramBundle.append("onCreate cache:");
+    paramBundle.append(bool);
+    QLog.i("WebLog_WebViewBase", 1, paramBundle.toString());
     this.mApp = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
     if (this.mApp != null)
     {
@@ -889,8 +848,12 @@ public abstract class AbsBaseWebViewActivity
       }
       initPluginEngine();
     }
-    paramBundle = Build.MANUFACTURER + "_" + Build.MODEL;
-    if ((Build.VERSION.SDK_INT > 10) && (!HWForbiddenList.contains(paramBundle))) {
+    paramBundle = new StringBuilder();
+    paramBundle.append(Build.MANUFACTURER);
+    paramBundle.append("_");
+    paramBundle.append(Build.MODEL);
+    paramBundle = paramBundle.toString();
+    if ((Build.VERSION.SDK_INT > 10) && (!WebViewComUtils.a.contains(paramBundle))) {
       getWindow().addFlags(16777216);
     }
     getWindow().setFormat(-3);
@@ -909,7 +872,7 @@ public abstract class AbsBaseWebViewActivity
     }
     if ((this.mSystemBarComp != null) && (!this.mUIStyle.i))
     {
-      int i = getResources().getColor(2131167091);
+      int i = getResources().getColor(2131167114);
       this.mSystemBarComp.setStatusColor(i);
       this.mSystemBarComp.setStatusBarColor(i);
     }
@@ -931,45 +894,29 @@ public abstract class AbsBaseWebViewActivity
   
   protected void onUrlChange(String paramString1, String paramString2) {}
   
-  protected void onWebViewClientImplPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap) {}
-  
   public final int pluginStartActivityForResult(WebViewPlugin paramWebViewPlugin, Intent paramIntent, byte paramByte)
   {
     int i = switchRequestCode(paramWebViewPlugin, paramByte);
     if (i == -1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("WebLog_WebViewBase", 2, "pluginStartActivityForResult not handled");
-      }
-      return i;
-    }
-    startActivityForResult(paramIntent, i);
-    return i;
-  }
-  
-  public void resetTitleBarTextColor()
-  {
-    this.leftView.setTextColor(getResources().getColorStateList(2131167027));
-    this.rightViewText.setTextColor(getResources().getColorStateList(2131167027));
-    this.centerView.setTextColor(getResources().getColor(2131167030));
-    if (this.rightViewImg != null)
-    {
-      Drawable localDrawable = this.rightViewImg.getDrawable();
-      if (localDrawable != null)
+      if (QLog.isColorLevel())
       {
-        localDrawable.clearColorFilter();
-        localDrawable.invalidateSelf();
+        QLog.d("WebLog_WebViewBase", 2, "pluginStartActivityForResult not handled");
+        return i;
       }
-      this.rightViewImg.setImageDrawable(localDrawable);
     }
-    this.leftView.setBackgroundDrawable(this.mTitleLeftDrawable);
+    else {
+      startActivityForResult(paramIntent, i);
+    }
+    return i;
   }
   
   protected boolean rightButtonCallBack()
   {
     if (this.mWebViewInstance != null)
     {
-      if ((this.mRightButtonListener != null) && (this.mRightButtonListener.a))
+      JsBridgeListener localJsBridgeListener = this.mRightButtonListener;
+      if ((localJsBridgeListener != null) && (localJsBridgeListener.a))
       {
         this.mWebViewInstance.callJs4OpenApi(this.mRightButtonListener, 0, new String[] { "" });
         return true;
@@ -986,178 +933,147 @@ public abstract class AbsBaseWebViewActivity
   public void setRightButton(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, JsBridgeListener paramJsBridgeListener, View.OnClickListener paramOnClickListener)
   {
     int i;
-    if ((paramJsBridgeListener != null) && (paramJsBridgeListener.a))
-    {
+    if ((paramJsBridgeListener != null) && (paramJsBridgeListener.a)) {
       i = 1;
-      if (!paramBoolean) {
-        break label70;
-      }
+    } else {
+      i = 0;
+    }
+    if (paramBoolean)
+    {
       this.mUIStyle.e = true;
       this.rightViewText.setVisibility(8);
       this.rightViewImg.setVisibility(8);
-      if (this.mRightCornerIcon != null) {
-        this.mRightCornerIcon.setVisibility(8);
+      paramString1 = this.mRightCornerIcon;
+      if (paramString1 != null) {
+        paramString1.setVisibility(8);
       }
-    }
-    for (;;)
-    {
       return;
-      i = 0;
-      break;
-      label70:
-      if (paramInt1 == 0)
-      {
-        if (!TextUtils.isEmpty(paramString2))
-        {
-          this.rightViewText.setText(paramString2);
-          this.rightViewText.setVisibility(0);
-          this.rightViewText.bringToFront();
-          this.rightViewImg.setImageResource(0);
-          this.rightViewImg.setBackgroundColor(0);
-          this.rightViewImg.setVisibility(8);
-        }
-        if (paramString3 != null)
-        {
-          paramInt1 = 0;
-          if (paramString3.length() <= 0) {}
-        }
-        try
-        {
-          paramInt1 = Color.parseColor(paramString3);
-          this.rightViewImg.setBackgroundColor(paramInt1);
-          if ((paramString1 != null) && (i == 0))
-          {
-            this.rightViewImg.setOnClickListener(this);
-            this.rightViewText.setOnClickListener(this);
-            this.mRightButtonCallback = paramString1.trim();
-            if ((this.mUIStyle.a == null) || (!this.mUIStyle.a.has("txtclr"))) {
-              continue;
-            }
-            paramString2 = this.mUIStyle.a.optString("txtclr", "");
-            if (TextUtils.isEmpty(paramString2)) {
-              continue;
-            }
-            paramString1 = paramString2;
-            if (!paramString2.startsWith("#")) {
-              paramString1 = "#" + paramString2;
-            }
-            try
-            {
-              paramInt1 = Color.parseColor(paramString1);
-              paramString1 = ImageUtil.a(this.rightViewImg.getDrawable(), paramInt1);
-              if (paramString1 != null) {
-                this.rightViewImg.setImageDrawable(paramString1);
-              }
-              this.rightViewText.setTextColor(paramInt1);
-              return;
-            }
-            catch (Exception paramString1)
-            {
-              QLog.e("WebLog_WebViewBase", 1, paramString1, new Object[0]);
-              return;
-            }
-          }
-        }
-        catch (Exception paramString2)
-        {
-          for (;;)
-          {
-            paramInt1 = 0;
-            continue;
-            this.mRightButtonListener = paramJsBridgeListener;
-            this.mRightButtonCallback = null;
-          }
-        }
-      }
     }
-    this.rightViewText.setVisibility(8);
-    this.rightViewImg.setVisibility(0);
-    paramString3 = this.mUIStyle;
-    if (paramInt1 != 4)
+    if (paramInt1 == 0)
     {
-      paramBoolean = true;
-      label380:
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        this.rightViewText.setText(paramString2);
+        this.rightViewText.setVisibility(0);
+        this.rightViewText.bringToFront();
+        this.rightViewImg.setImageResource(0);
+        this.rightViewImg.setBackgroundColor(0);
+        this.rightViewImg.setVisibility(8);
+      }
+      if ((paramString3 != null) && (paramString3.length() <= 0)) {}
+    }
+    try
+    {
+      paramInt1 = Color.parseColor(paramString3);
+    }
+    catch (Exception paramString2)
+    {
+      label149:
+      RelativeLayout.LayoutParams localLayoutParams;
+      label910:
+      break label149;
+    }
+    paramInt1 = 0;
+    this.rightViewImg.setBackgroundColor(paramInt1);
+    if ((paramString1 != null) && (i == 0))
+    {
+      this.rightViewImg.setOnClickListener(this);
+      this.rightViewText.setOnClickListener(this);
+      this.mRightButtonCallback = paramString1.trim();
+    }
+    else
+    {
+      this.mRightButtonListener = paramJsBridgeListener;
+      this.mRightButtonCallback = null;
+      break label910;
+      this.rightViewText.setVisibility(8);
+      this.rightViewImg.setVisibility(0);
+      paramString3 = this.mUIStyle;
+      if (paramInt1 != 4) {
+        paramBoolean = true;
+      } else {
+        paramBoolean = false;
+      }
       paramString3.e = paramBoolean;
       switch (paramInt1)
       {
       case 6: 
       default: 
         this.rightViewImg.setVisibility(8);
-        label457:
-        if (paramInt2 != 0)
-        {
-          if (this.mRightCornerIcon == null)
-          {
-            this.mRightCornerIcon = new ImageView(this);
-            paramString3 = (RelativeLayout)findViewById(2131377301);
-            RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-            localLayoutParams.addRule(7, 2131369501);
-            localLayoutParams.addRule(6, 2131369501);
-            localLayoutParams.setMargins(0, 0, 0, 0);
-            this.mRightCornerIcon.setLayoutParams(localLayoutParams);
-            paramString3.addView(this.mRightCornerIcon);
-          }
-          this.mRightCornerIcon.setVisibility(0);
-          switch (paramInt2)
-          {
-          default: 
-            this.mRightCornerIcon.setVisibility(8);
-            label589:
-            if (!TextUtils.isEmpty(paramString2)) {
-              this.rightViewImg.setContentDescription(paramString2);
-            }
-            if (paramOnClickListener != null) {
-              this.rightViewImg.setOnClickListener(paramOnClickListener);
-            }
-            break;
-          }
-        }
         break;
+      case 10: 
+        this.mUIStyleHandler.a(this.rightViewImg, false, 2130850663, 2130850663);
+        this.rightViewImg.setContentDescription(getResources().getString(2131692634));
+        break;
+      case 9: 
+        this.mUIStyleHandler.a(this.rightViewImg, false, 2130838831, 2130838831);
+        this.rightViewImg.setContentDescription(getResources().getString(2131692634));
+        break;
+      case 8: 
+      case 11: 
+        this.mUIStyleHandler.a(this.rightViewImg, false, 2130850469, 2130850473);
+        this.rightViewImg.setContentDescription(getResources().getString(2131689589));
+        break;
+      case 7: 
+        this.mUIStyleHandler.a(this.rightViewImg, false, 2130842612, 2130842615);
+        this.rightViewImg.setContentDescription(getResources().getString(2131689589));
+        break;
+      case 5: 
+        this.rightViewImg.setImageResource(2130844052);
+        this.rightViewImg.setContentDescription(getResources().getString(2131692636));
+        ((AnimationDrawable)this.rightViewImg.getDrawable()).start();
+        break;
+      case 4: 
+        this.mUIStyleHandler.a(this.rightViewImg, false, 2130839368, 2130839360);
+        this.rightViewImg.setContentDescription(getResources().getString(2131692635));
+        break;
+      case 3: 
+        this.mUIStyleHandler.a(this.rightViewImg, false, 2130840351, 2130840347);
+        this.rightViewImg.setContentDescription(getResources().getString(2131692633));
+        break;
+      case 2: 
+        this.mUIStyleHandler.a(this.rightViewImg, false, 2130844007, 2130844007);
+        this.rightViewImg.setContentDescription(getResources().getString(2131692630));
+        break;
+      case 1: 
+        this.mUIStyleHandler.a(this.rightViewImg, false, 2130844008, 2130844008);
+        this.rightViewImg.setContentDescription(getResources().getString(2131692631));
       }
-    }
-    for (;;)
-    {
-      this.isRecordTitleLeftDrawable = false;
-      this.isRecordTitleRightDrawable = false;
-      break;
-      paramBoolean = false;
-      break label380;
-      this.mUIStyleHandler.a(this.rightViewImg, false, 2130844104, 2130844104);
-      this.rightViewImg.setContentDescription(getResources().getString(2131692674));
-      break label457;
-      this.mUIStyleHandler.a(this.rightViewImg, false, 2130844103, 2130844103);
-      this.rightViewImg.setContentDescription(getResources().getString(2131692673));
-      break label457;
-      this.mUIStyleHandler.a(this.rightViewImg, false, 2130840482, 2130840478);
-      this.rightViewImg.setContentDescription(getResources().getString(2131692676));
-      break label457;
-      this.mUIStyleHandler.a(this.rightViewImg, false, 2130839512, 2130839504);
-      this.rightViewImg.setContentDescription(getResources().getString(2131692678));
-      break label457;
-      this.rightViewImg.setImageResource(2130844149);
-      this.rightViewImg.setContentDescription(getResources().getString(2131692679));
-      ((AnimationDrawable)this.rightViewImg.getDrawable()).start();
-      break label457;
-      this.mUIStyleHandler.a(this.rightViewImg, false, 2130842713, 2130842716);
-      this.rightViewImg.setContentDescription(getResources().getString(2131689557));
-      break label457;
-      this.mUIStyleHandler.a(this.rightViewImg, false, 2130850543, 2130850547);
-      this.rightViewImg.setContentDescription(getResources().getString(2131689557));
-      break label457;
-      this.mUIStyleHandler.a(this.rightViewImg, false, 2130839030, 2130839030);
-      this.rightViewImg.setContentDescription(getResources().getString(2131692677));
-      break label457;
-      this.mUIStyleHandler.a(this.rightViewImg, false, 2130850737, 2130850737);
-      this.rightViewImg.setContentDescription(getResources().getString(2131692677));
-      break label457;
-      this.mRightCornerIcon.setImageResource(2130843924);
-      break label589;
-      if (this.mRightCornerIcon == null) {
-        break label589;
+      if (paramInt2 != 0)
+      {
+        if (this.mRightCornerIcon == null)
+        {
+          this.mRightCornerIcon = new ImageView(this);
+          paramString3 = (RelativeLayout)findViewById(2131376756);
+          localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+          localLayoutParams.addRule(7, 2131369216);
+          localLayoutParams.addRule(6, 2131369216);
+          localLayoutParams.setMargins(0, 0, 0, 0);
+          this.mRightCornerIcon.setLayoutParams(localLayoutParams);
+          paramString3.addView(this.mRightCornerIcon);
+        }
+        this.mRightCornerIcon.setVisibility(0);
+        if (paramInt2 != 6) {
+          this.mRightCornerIcon.setVisibility(8);
+        } else {
+          this.mRightCornerIcon.setImageResource(2130843844);
+        }
       }
-      this.mRightCornerIcon.setVisibility(8);
-      break label589;
-      if ((paramString1 != null) && (i == 0))
+      else
+      {
+        paramString3 = this.mRightCornerIcon;
+        if (paramString3 != null) {
+          paramString3.setVisibility(8);
+        }
+      }
+      if (!TextUtils.isEmpty(paramString2)) {
+        this.rightViewImg.setContentDescription(paramString2);
+      }
+      if (paramOnClickListener != null)
+      {
+        this.rightViewImg.setOnClickListener(paramOnClickListener);
+      }
+      else if ((paramString1 != null) && (i == 0))
       {
         this.rightViewImg.setOnClickListener(this);
         this.rightViewText.setOnClickListener(this);
@@ -1168,11 +1084,43 @@ public abstract class AbsBaseWebViewActivity
         this.mRightButtonCallback = null;
         this.mRightButtonListener = paramJsBridgeListener;
       }
+      this.isRecordTitleLeftDrawable = false;
+      this.isRecordTitleRightDrawable = false;
+    }
+    if ((this.mUIStyle.a != null) && (this.mUIStyle.a.has("txtclr")))
+    {
+      paramString2 = this.mUIStyle.a.optString("txtclr", "");
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        paramString1 = paramString2;
+        if (!paramString2.startsWith("#"))
+        {
+          paramString1 = new StringBuilder();
+          paramString1.append("#");
+          paramString1.append(paramString2);
+          paramString1 = paramString1.toString();
+        }
+        try
+        {
+          paramInt1 = Color.parseColor(paramString1);
+          paramString1 = BaseImageUtil.a(this.rightViewImg.getDrawable(), paramInt1);
+          if (paramString1 != null) {
+            this.rightViewImg.setImageDrawable(paramString1);
+          }
+          this.rightViewText.setTextColor(paramInt1);
+          return;
+        }
+        catch (Exception paramString1)
+        {
+          QLog.e("WebLog_WebViewBase", 1, paramString1, new Object[0]);
+        }
+      }
     }
   }
   
   public void setRightButton(boolean paramBoolean)
   {
+    ImageView localImageView;
     if (paramBoolean)
     {
       this.mUIStyle.e = true;
@@ -1182,56 +1130,24 @@ public abstract class AbsBaseWebViewActivity
       if (this.rightViewImg != null) {
         this.rightViewImg.setVisibility(8);
       }
-      if (this.mRightCornerIcon != null) {
-        this.mRightCornerIcon.setVisibility(8);
+      localImageView = this.mRightCornerIcon;
+      if (localImageView != null) {
+        localImageView.setVisibility(8);
       }
     }
-    do
+    else
     {
-      return;
       if ((this.rightViewText != null) && (!TextUtils.isEmpty(this.rightViewText.getText()))) {
         this.rightViewText.setVisibility(0);
       }
       if (this.rightViewImg != null) {
         this.rightViewImg.setVisibility(0);
       }
-    } while (this.mRightCornerIcon == null);
-    this.mRightCornerIcon.setVisibility(0);
-  }
-  
-  public void setTitleBarButtonColor(int paramInt)
-  {
-    this.leftView.setTextColor(paramInt);
-    this.rightViewText.setTextColor(paramInt);
-    Drawable localDrawable2 = this.leftView.getBackground();
-    Drawable localDrawable1 = this.rightViewImg.getDrawable();
-    if (localDrawable2 != null)
-    {
-      if (!this.isRecordTitleLeftDrawable)
-      {
-        this.mTitleLeftDrawable = localDrawable2;
-        this.isRecordTitleLeftDrawable = true;
-      }
-      localDrawable2 = ImageUtil.a(localDrawable2, paramInt);
-      if (localDrawable2 != null) {
-        this.leftView.setBackgroundDrawable(localDrawable2);
+      localImageView = this.mRightCornerIcon;
+      if (localImageView != null) {
+        localImageView.setVisibility(0);
       }
     }
-    if (localDrawable1 != null)
-    {
-      if (!this.isRecordTitleRightDrawable) {
-        this.isRecordTitleRightDrawable = true;
-      }
-      localDrawable1 = ImageUtil.a(localDrawable1, paramInt);
-      if (localDrawable1 != null) {
-        this.rightViewImg.setImageDrawable(localDrawable1);
-      }
-    }
-  }
-  
-  public void setTitleBarTextColor(int paramInt)
-  {
-    this.centerView.setTextColor(paramInt);
   }
   
   protected boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
@@ -1246,9 +1162,29 @@ public abstract class AbsBaseWebViewActivity
       this.mSystemBarComp.init();
     }
     overridePendingTransition(0, 0);
-    setContentViewNoTitle(2131558826);
-    ((TextView)findViewById(2131371913)).setText(2131692193);
+    setContentViewNoTitle(2131558724);
+    ((TextView)findViewById(2131371534)).setText(2131692119);
     return true;
+  }
+  
+  public void startActivityFromFragment(@NonNull Fragment paramFragment, Intent paramIntent, int paramInt, @Nullable Bundle paramBundle)
+  {
+    if (paramInt == -1)
+    {
+      ActivityCompat.startActivityForResult(this, paramIntent, -1, paramBundle);
+      return;
+    }
+    ActivityCompat.startActivityForResult(this, paramIntent, paramInt, paramBundle);
+  }
+  
+  public void startIntentSenderFromFragment(@NonNull Fragment paramFragment, IntentSender paramIntentSender, int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3, int paramInt4, @Nullable Bundle paramBundle)
+  {
+    if (paramInt1 == -1)
+    {
+      ActivityCompat.startIntentSenderForResult(this, paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4, paramBundle);
+      return;
+    }
+    ActivityCompat.startIntentSenderForResult(this, paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4, paramBundle);
   }
   
   public final int switchRequestCode(WebViewPlugin paramWebViewPlugin, byte paramByte)
@@ -1258,7 +1194,7 @@ public abstract class AbsBaseWebViewActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewbase.AbsBaseWebViewActivity
  * JD-Core Version:    0.7.0.1
  */

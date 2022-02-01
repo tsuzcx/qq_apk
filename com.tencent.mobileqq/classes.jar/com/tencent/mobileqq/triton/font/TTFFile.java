@@ -40,7 +40,7 @@ public class TTFFile
     int i = this.fontFile.readTTFUShort();
     int m = this.fontFile.readTTFUShort();
     int j = k + 4;
-    if (i > 0)
+    while (i > 0)
     {
       this.fontFile.seekSet(j);
       int n = this.fontFile.readTTFUShort();
@@ -48,48 +48,65 @@ public class TTFFile
       int i2 = this.fontFile.readTTFUShort();
       int i3 = this.fontFile.readTTFUShort();
       int i4 = this.fontFile.readTTFUShort();
-      String str;
       if (((n == 1) || (n == 3)) && ((i1 == 0) || (i1 == 1)))
       {
-        this.fontFile.seekSet(this.fontFile.readTTFUShort() + (m + k - 2));
-        if (n != 3) {
-          break label240;
+        Object localObject = this.fontFile;
+        ((FontFileReader)localObject).seekSet(((FontFileReader)localObject).readTTFUShort() + (m + k - 2));
+        if (n == 3) {
+          localObject = this.fontFile.readTTFString(i4, i1);
+        } else {
+          localObject = this.fontFile.readTTFString(i4);
         }
-        str = this.fontFile.readTTFString(i4, i1);
-        label166:
-        switch (i3)
+        if (i3 != 0)
         {
-        }
-      }
-      for (;;)
-      {
-        j += 12;
-        i -= 1;
-        break;
-        label240:
-        str = this.fontFile.readTTFString(i4);
-        break label166;
-        if (this.notice.length() == 0)
-        {
-          this.notice = str;
-          continue;
-          this.familyNames.add(str);
-          continue;
-          if (this.subFamilyName.length() == 0)
-          {
-            this.subFamilyName = str;
-            continue;
-            if ((this.fullName.length() == 0) || ((n == 3) && (i2 == 1033)))
+          if (i3 != 1) {
+            if (i3 != 2)
             {
-              this.fullName = str;
-              continue;
-              if (this.postScriptName.length() == 0) {
-                this.postScriptName = str;
+              if (i3 != 4)
+              {
+                if (i3 != 6)
+                {
+                  if (i3 != 16) {
+                    break label324;
+                  }
+                }
+                else
+                {
+                  if (this.postScriptName.length() != 0) {
+                    break label324;
+                  }
+                  this.postScriptName = ((String)localObject);
+                  break label324;
+                }
+              }
+              else
+              {
+                if ((this.fullName.length() != 0) && ((n != 3) || (i2 != 1033))) {
+                  break label324;
+                }
+                this.fullName = ((String)localObject);
+                break label324;
               }
             }
+            else
+            {
+              if (this.subFamilyName.length() != 0) {
+                break label324;
+              }
+              this.subFamilyName = ((String)localObject);
+              break label324;
+            }
           }
+          this.familyNames.add(localObject);
+        }
+        else if (this.notice.length() == 0)
+        {
+          this.notice = ((String)localObject);
         }
       }
+      label324:
+      j += 12;
+      i -= 1;
     }
   }
   
@@ -137,7 +154,7 @@ public class TTFFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.font.TTFFile
  * JD-Core Version:    0.7.0.1
  */

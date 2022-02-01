@@ -35,7 +35,10 @@ public class WebSocketModule
       }
       catch (Exception localException)
       {
-        ViolaLogUtils.d("WebSocketModule", "webSocket adapter newInstance error " + localException.getMessage());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("webSocket adapter newInstance error ");
+        localStringBuilder.append(localException.getMessage());
+        ViolaLogUtils.d("WebSocketModule", localStringBuilder.toString());
       }
     }
     return null;
@@ -45,8 +48,9 @@ public class WebSocketModule
   {
     if (this.webSocketAdapter == null)
     {
-      if (this.eventListener != null) {
-        this.eventListener.onError("No implementation found for IWebSocketAdapter");
+      WebSocketModule.WebSocketEventListener localWebSocketEventListener = this.eventListener;
+      if (localWebSocketEventListener != null) {
+        localWebSocketEventListener.onError("No implementation found for IWebSocketAdapter");
       }
       return true;
     }
@@ -56,7 +60,7 @@ public class WebSocketModule
   @JSMethod(uiThread=false)
   public void WebSocket(String paramString1, String paramString2)
   {
-    if (this.webSocketAdapter != null) {}
+    VWebSocketAdapter localVWebSocketAdapter = this.webSocketAdapter;
     this.webSocketAdapter = newInstance();
     if (!reportErrorIfNoAdapter())
     {
@@ -98,8 +102,9 @@ public class WebSocketModule
     super.onActivityDestroy();
     if (ViolaEnvironment.isDebugable())
     {
-      if (this.webSocketAdapter != null) {
-        this.webSocketAdapter.destroy();
+      VWebSocketAdapter localVWebSocketAdapter = this.webSocketAdapter;
+      if (localVWebSocketAdapter != null) {
+        localVWebSocketAdapter.destroy();
       }
       this.webSocketAdapter = null;
       this.eventListener = null;
@@ -109,32 +114,36 @@ public class WebSocketModule
   @JSMethod(uiThread=false)
   public void onclose(String paramString)
   {
-    if (this.eventListener != null) {
-      WebSocketModule.WebSocketEventListener.access$302(this.eventListener, paramString);
+    WebSocketModule.WebSocketEventListener localWebSocketEventListener = this.eventListener;
+    if (localWebSocketEventListener != null) {
+      WebSocketModule.WebSocketEventListener.access$302(localWebSocketEventListener, paramString);
     }
   }
   
   @JSMethod(uiThread=false)
   public void onerror(String paramString)
   {
-    if (this.eventListener != null) {
-      WebSocketModule.WebSocketEventListener.access$402(this.eventListener, paramString);
+    WebSocketModule.WebSocketEventListener localWebSocketEventListener = this.eventListener;
+    if (localWebSocketEventListener != null) {
+      WebSocketModule.WebSocketEventListener.access$402(localWebSocketEventListener, paramString);
     }
   }
   
   @JSMethod(uiThread=false)
   public void onmessage(String paramString)
   {
-    if (this.eventListener != null) {
-      WebSocketModule.WebSocketEventListener.access$202(this.eventListener, paramString);
+    WebSocketModule.WebSocketEventListener localWebSocketEventListener = this.eventListener;
+    if (localWebSocketEventListener != null) {
+      WebSocketModule.WebSocketEventListener.access$202(localWebSocketEventListener, paramString);
     }
   }
   
   @JSMethod(uiThread=false)
   public void onopen(String paramString)
   {
-    if (this.eventListener != null) {
-      WebSocketModule.WebSocketEventListener.access$102(this.eventListener, paramString);
+    WebSocketModule.WebSocketEventListener localWebSocketEventListener = this.eventListener;
+    if (localWebSocketEventListener != null) {
+      WebSocketModule.WebSocketEventListener.access$102(localWebSocketEventListener, paramString);
     }
   }
   
@@ -148,7 +157,7 @@ public class WebSocketModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.module.WebSocketModule
  * JD-Core Version:    0.7.0.1
  */

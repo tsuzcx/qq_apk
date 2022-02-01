@@ -11,20 +11,20 @@ class RecyclerViewWithHeaderFooter$1
   
   public RecyclerView.ViewHolder getRecycledView(int paramInt)
   {
-    Object localObject = this.a.getAdapter();
+    Object localObject = this.this$0.getAdapter();
     RecyclerView.ViewHolder localViewHolder = super.getRecycledView(paramInt);
     if ((localViewHolder != null) && ((localObject instanceof RecyclerViewHeaderViewAdapter)))
     {
       localObject = (RecyclerViewHeaderViewAdapter)localObject;
-      if (((RecyclerViewHeaderViewAdapter)localObject).d(paramInt))
+      if (((RecyclerViewHeaderViewAdapter)localObject).isFooter(paramInt))
       {
-        if (!RecyclerViewWithHeaderFooter.a(this.a).contains(localViewHolder.itemView))
+        if (!RecyclerViewWithHeaderFooter.access$000(this.this$0).contains(localViewHolder.itemView))
         {
           putRecycledView(localViewHolder);
           return null;
         }
       }
-      else if ((((RecyclerViewHeaderViewAdapter)localObject).c(paramInt)) && (!RecyclerViewWithHeaderFooter.b(this.a).contains(localViewHolder.itemView)))
+      else if ((((RecyclerViewHeaderViewAdapter)localObject).isHeader(paramInt)) && (!RecyclerViewWithHeaderFooter.access$100(this.this$0).contains(localViewHolder.itemView)))
       {
         putRecycledView(localViewHolder);
         return null;
@@ -35,7 +35,7 @@ class RecyclerViewWithHeaderFooter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter.1
  * JD-Core Version:    0.7.0.1
  */

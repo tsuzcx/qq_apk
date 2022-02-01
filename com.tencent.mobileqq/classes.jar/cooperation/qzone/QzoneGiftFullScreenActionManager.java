@@ -46,93 +46,85 @@ public class QzoneGiftFullScreenActionManager
   
   private void filterAction()
   {
-    boolean bool = false;
-    if ((this.actionGlobalData == null) || ("non-ver".equals(this.actionGlobalData.b)))
+    Object localObject = this.actionGlobalData;
+    int j = 0;
+    if ((localObject != null) && (!"non-ver".equals(((ActionGlobalData)localObject).b)))
     {
-      this.magicfaceActions = getValidActions(false);
-      return;
-    }
-    int[] arrayOfInt1 = splitVersion("8.5.5");
-    int[] arrayOfInt2 = splitVersion(this.actionGlobalData.b);
-    int i;
-    if ((arrayOfInt1 != null) && (arrayOfInt2 != null) && (arrayOfInt1.length == arrayOfInt2.length))
-    {
-      i = 0;
-      if (i < arrayOfInt2.length) {
-        if (arrayOfInt1[i] > arrayOfInt2[i]) {
-          i = 1;
-        }
-      }
-    }
-    for (;;)
-    {
-      if (i == 0) {
-        bool = true;
-      }
-      this.magicfaceActions = getValidActions(bool);
-      return;
-      if (arrayOfInt1[i] < arrayOfInt2[i])
+      localObject = splitVersion("8.7.0");
+      int[] arrayOfInt = splitVersion(this.actionGlobalData.b);
+      if ((localObject != null) && (arrayOfInt != null) && (localObject.length == arrayOfInt.length))
       {
         i = 0;
+        while ((i < arrayOfInt.length) && (localObject[i] <= arrayOfInt[i]))
+        {
+          if (localObject[i] < arrayOfInt[i])
+          {
+            i = j;
+            break label109;
+          }
+          i += 1;
+        }
       }
-      else
-      {
-        i += 1;
-        break;
-        i = 1;
-      }
+      int i = 1;
+      label109:
+      this.magicfaceActions = getValidActions(i ^ 0x1);
+      return;
     }
+    this.magicfaceActions = getValidActions(false);
   }
   
   public static String getGiftFullScreenFolderPath(String paramString)
   {
     String str = CacheManager.getGifFullScreenDir();
-    File localFile = new File(str);
-    if (!localFile.isDirectory()) {
-      localFile.mkdirs();
+    Object localObject = new File(str);
+    if (!((File)localObject).isDirectory()) {
+      ((File)localObject).mkdirs();
     }
-    return str + File.separator + paramString + File.separator;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(str);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(File.separator);
+    return ((StringBuilder)localObject).toString();
   }
   
   public static String getPassiveFullScreenFolderPath(String paramString)
   {
     String str = CacheManager.getPraiseDir();
-    File localFile = new File(str);
-    if (!localFile.isDirectory()) {
-      localFile.mkdirs();
+    Object localObject = new File(str);
+    if (!((File)localObject).isDirectory()) {
+      ((File)localObject).mkdirs();
     }
-    return str + File.separator + paramString + File.separator;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(str);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(File.separator);
+    return ((StringBuilder)localObject).toString();
   }
   
   private List<Action> getValidActions(boolean paramBoolean)
   {
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = this.magicfaceActions.iterator();
-    for (;;)
+    while (localIterator.hasNext())
     {
-      Action localAction;
-      if (localIterator.hasNext())
-      {
-        localAction = (Action)localIterator.next();
-        if (localAction == null) {
-          continue;
-        }
+      Action localAction = (Action)localIterator.next();
+      if (localAction != null) {
         if (paramBoolean)
         {
-          if (!"default".equals(localAction.a)) {
-            continue;
+          if ("default".equals(localAction.a))
+          {
+            localArrayList.add(localAction);
+            return localArrayList;
           }
+        }
+        else if (!"default".equals(localAction.a)) {
           localArrayList.add(localAction);
         }
       }
-      else
-      {
-        return localArrayList;
-      }
-      if (!"default".equals(localAction.a)) {
-        localArrayList.add(localAction);
-      }
     }
+    return localArrayList;
   }
   
   public static ActionGlobalData hasAction(String paramString1, String paramString2)
@@ -156,19 +148,22 @@ public class QzoneGiftFullScreenActionManager
   
   private void onEndMagicface(ActionGlobalData paramActionGlobalData)
   {
-    if (this.magicfaceCloseListener != null) {
-      this.magicfaceCloseListener.magicfaceClose();
+    Object localObject = this.magicfaceCloseListener;
+    if (localObject != null) {
+      ((QzoneGiftFullScreenActionManager.MagicfaceCloseListener)localObject).magicfaceClose();
     }
     this.isStart = false;
-    if (this.magicfaceActionListener != null) {
-      this.magicfaceActionListener.magicfaceActionEnd(paramActionGlobalData);
+    localObject = this.magicfaceActionListener;
+    if (localObject != null) {
+      ((QzoneGiftFullScreenActionManager.MagicfaceActionListener)localObject).magicfaceActionEnd(paramActionGlobalData);
     }
   }
   
   private void onStartMagicface(ActionGlobalData paramActionGlobalData)
   {
-    if (this.magicfaceActionListener != null) {
-      this.magicfaceActionListener.magicfaceActionStart(paramActionGlobalData);
+    QzoneGiftFullScreenActionManager.MagicfaceActionListener localMagicfaceActionListener = this.magicfaceActionListener;
+    if (localMagicfaceActionListener != null) {
+      localMagicfaceActionListener.magicfaceActionStart(paramActionGlobalData);
     }
     if ((paramActionGlobalData != null) && (paramActionGlobalData.a != null)) {
       paramActionGlobalData.a();
@@ -177,46 +172,35 @@ public class QzoneGiftFullScreenActionManager
   
   private int[] splitVersion(String paramString)
   {
-    int j = 0;
     if (TextUtils.isEmpty(paramString)) {
-      paramString = null;
+      return null;
     }
-    int[] arrayOfInt;
-    for (;;)
+    arrayOfInt = new int[3];
+    int j = 0;
+    int i = 0;
+    while (i < 3)
     {
-      return paramString;
-      arrayOfInt = new int[3];
-      int i = 0;
-      while (i < 3)
+      arrayOfInt[i] = 0;
+      i += 1;
+    }
+    paramString = paramString.split("\\.");
+    if ((paramString != null) && (paramString.length > 1))
+    {
+      i = j;
+      try
       {
-        arrayOfInt[i] = 0;
-        i += 1;
-      }
-      String[] arrayOfString = paramString.split("\\.");
-      paramString = arrayOfInt;
-      if (arrayOfString != null)
-      {
-        paramString = arrayOfInt;
-        if (arrayOfString.length > 1)
+        while (i < arrayOfInt.length)
         {
-          i = j;
-          paramString = arrayOfInt;
-          try
-          {
-            if (i < arrayOfInt.length)
-            {
-              arrayOfInt[i] = Integer.valueOf(arrayOfString[i]).intValue();
-              i += 1;
-            }
-          }
-          catch (Throwable paramString)
-          {
-            paramString.printStackTrace();
-          }
+          arrayOfInt[i] = Integer.valueOf(paramString[i]).intValue();
+          i += 1;
         }
+        return arrayOfInt;
+      }
+      catch (Throwable paramString)
+      {
+        paramString.printStackTrace();
       }
     }
-    return arrayOfInt;
   }
   
   public void close(QzoneGiftFullScreenActionManager.MagicfaceCloseListener paramMagicfaceCloseListener)
@@ -225,11 +209,13 @@ public class QzoneGiftFullScreenActionManager
       this.magicfaceCloseListener = paramMagicfaceCloseListener;
     }
     this.isShutDown = true;
-    if (this.currentMagicfaceAction != null) {
-      this.currentMagicfaceAction.d();
+    paramMagicfaceCloseListener = this.currentMagicfaceAction;
+    if (paramMagicfaceCloseListener != null) {
+      paramMagicfaceCloseListener.d();
     }
-    if (this.actionGlobalData != null) {
-      this.actionGlobalData.a(null);
+    paramMagicfaceCloseListener = this.actionGlobalData;
+    if (paramMagicfaceCloseListener != null) {
+      paramMagicfaceCloseListener.a(null);
     }
   }
   
@@ -254,25 +240,29 @@ public class QzoneGiftFullScreenActionManager
   
   public void openSound(boolean paramBoolean)
   {
-    if (this.actionGlobalData != null) {
-      this.actionGlobalData.d = true;
+    ActionGlobalData localActionGlobalData = this.actionGlobalData;
+    if (localActionGlobalData != null) {
+      localActionGlobalData.d = true;
     }
   }
   
   public void release()
   {
     this.isRelease = true;
-    if (this.actionGlobalData != null) {
-      this.actionGlobalData.a(null);
+    Object localObject = this.actionGlobalData;
+    if (localObject != null) {
+      ((ActionGlobalData)localObject).a(null);
     }
-    if (this.magicfacePlayManager != null)
+    localObject = this.magicfacePlayManager;
+    if (localObject != null)
     {
-      this.magicfacePlayManager.a(null);
+      ((MagicfacePlayManager)localObject).a(null);
       this.magicfacePlayManager.c();
     }
-    if (this.soundPoolUtil != null)
+    localObject = this.soundPoolUtil;
+    if (localObject != null)
     {
-      this.soundPoolUtil.a();
+      ((SoundPoolUtil)localObject).a();
       this.soundPoolUtil = null;
     }
     this.magicfaceViewController = null;
@@ -290,7 +280,7 @@ public class QzoneGiftFullScreenActionManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.QzoneGiftFullScreenActionManager
  * JD-Core Version:    0.7.0.1
  */

@@ -9,30 +9,29 @@ public class ThreadPoolUtil
   
   public static void execute(Runnable paramRunnable)
   {
-    for (;;)
+    try
     {
-      try
+      if ((sExecutor != null) && (!sExecutor.isShutdown()))
       {
-        if ((sExecutor == null) || (sExecutor.isShutdown()))
+        if (paramRunnable == null)
         {
-          ABTestLog.warn("sExecutor is closed, should not execute task", new Object[0]);
+          ABTestLog.warn("execute task is null", new Object[0]);
           return;
         }
-        if (paramRunnable == null) {
-          ABTestLog.warn("execute task is null", new Object[0]);
-        } else {
-          try
-          {
-            sExecutor.execute(paramRunnable);
-          }
-          catch (Exception paramRunnable)
-          {
-            ABTestLog.error(paramRunnable.getMessage(), new Object[0]);
-          }
+        try
+        {
+          sExecutor.execute(paramRunnable);
         }
+        catch (Exception paramRunnable)
+        {
+          ABTestLog.error(paramRunnable.getMessage(), new Object[0]);
+        }
+        return;
       }
-      finally {}
+      ABTestLog.warn("sExecutor is closed, should not execute task", new Object[0]);
+      return;
     }
+    finally {}
   }
   
   public void close()
@@ -55,7 +54,7 @@ public class ThreadPoolUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.abtestsdk.utils.ThreadPoolUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,94 +1,95 @@
 package com.tencent.biz.qcircleshadow.lib;
 
+import android.os.HandlerThread;
 import android.os.Looper;
-import com.tencent.mobileqq.qcircle.api.impl.QCircleServiceImpl;
-import com.tencent.mobileqq.qcircle.tempapi.api.IQZoneService;
+import cooperation.qzone.thread.QzoneBaseThread;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
 
 public class QCircleHostQzoneThreadHelper
 {
   public static Looper getBackGroundLooper()
   {
-    return QCircleServiceImpl.getQZoneService().getBackGroundLooper();
+    return QzoneHandlerThreadFactory.getHandlerThreadLooper("BackGround_HandlerThread");
   }
   
   public static Looper getBusinessThreadLooper()
   {
-    return QCircleServiceImpl.getQZoneService().getBusinessThreadLooper();
+    return QzoneHandlerThreadFactory.getHandlerThread("Business_HandlerThread").getLooper();
   }
   
   public static Looper getRealTimeLooper()
   {
-    return QCircleServiceImpl.getQZoneService().getRealTimeLooper();
+    return QzoneHandlerThreadFactory.getHandlerThread("RealTime_HandlerThread").getLooper();
   }
   
   public static int getVideoThreadId()
   {
-    return QCircleServiceImpl.getQZoneService().getVideoThreadId();
+    return QzoneHandlerThreadFactory.getHandlerThread("Video_HandlerThread").getHandlerThread().getThreadId();
   }
   
   public static void postBackGoundThread(Runnable paramRunnable)
   {
-    QCircleServiceImpl.getQZoneService().postBackGoundThread(paramRunnable, 0L);
+    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(paramRunnable);
   }
   
   public static void postBackGoundThreadDelayed(Runnable paramRunnable, long paramLong)
   {
-    QCircleServiceImpl.getQZoneService().postBackGoundThread(paramRunnable, paramLong);
+    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").postDelayed(paramRunnable, paramLong);
   }
   
   public static void postNormalThread(Runnable paramRunnable)
   {
-    QCircleServiceImpl.getQZoneService().postNormalThread(paramRunnable, 0L);
+    QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(paramRunnable);
   }
   
   public static void postNormalThreadDelayed(Runnable paramRunnable, long paramLong)
   {
-    QCircleServiceImpl.getQZoneService().postNormalThread(paramRunnable, paramLong);
+    QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").postDelayed(paramRunnable, paramLong);
   }
   
   public static void postRealTimeThread(Runnable paramRunnable)
   {
-    QCircleServiceImpl.getQZoneService().postRealTimeThread(paramRunnable, 0L);
+    QzoneHandlerThreadFactory.getHandlerThread("RealTime_HandlerThread").post(paramRunnable);
   }
   
   public static void postRealTimeThreadDelayed(Runnable paramRunnable, long paramLong)
   {
-    QCircleServiceImpl.getQZoneService().postRealTimeThread(paramRunnable, paramLong);
+    QzoneHandlerThreadFactory.getHandlerThread("RealTime_HandlerThread").postDelayed(paramRunnable, paramLong);
   }
   
   public static void postReportThreadDelayed(Runnable paramRunnable, long paramLong)
   {
-    QCircleServiceImpl.getQZoneService().postReportThreadThread(paramRunnable, paramLong);
+    QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").postDelayed(paramRunnable, paramLong);
   }
   
   public static void postReportThreadThread(Runnable paramRunnable)
   {
-    QCircleServiceImpl.getQZoneService().postReportThreadThread(paramRunnable, 0L);
+    QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(paramRunnable);
   }
   
   public static void postVideoThread(Runnable paramRunnable)
   {
-    QCircleServiceImpl.getQZoneService().postVideoThread(paramRunnable, 0L);
+    QzoneHandlerThreadFactory.getHandlerThread("Video_HandlerThread").post(paramRunnable);
   }
   
   public static void postVideoThreadDelayed(Runnable paramRunnable, long paramLong)
   {
-    QCircleServiceImpl.getQZoneService().postVideoThread(paramRunnable, paramLong);
+    QzoneHandlerThreadFactory.getHandlerThread("Video_HandlerThread").postDelayed(paramRunnable, paramLong);
   }
   
   public static void removeBackGroundThreadTask(Runnable paramRunnable)
   {
-    QCircleServiceImpl.getQZoneService().removeBackGroundThreadTask(paramRunnable);
+    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").removeTask(paramRunnable);
   }
   
   public static void removeRealTimeThreadTask(Runnable paramRunnable)
   {
-    QCircleServiceImpl.getQZoneService().removeRealTimeThreadTask(paramRunnable);
+    QzoneHandlerThreadFactory.getHandlerThread("RealTime_HandlerThread").removeTask(paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCircleHostQzoneThreadHelper
  * JD-Core Version:    0.7.0.1
  */

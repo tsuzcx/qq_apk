@@ -14,26 +14,22 @@ class MayKnowAdapter$2
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramView instanceof ImageView))
-      {
-        ((ImageView)paramView).getDrawable().setColorFilter(855638016, PorterDuff.Mode.SRC_ATOP);
-        continue;
-        if ((paramView instanceof ImageView)) {
-          ((ImageView)paramView).getDrawable().clearColorFilter();
-        }
+      if (((i == 1) || (i == 3)) && ((paramView instanceof ImageView))) {
+        ((ImageView)paramView).getDrawable().clearColorFilter();
       }
     }
+    else if ((paramView instanceof ImageView)) {
+      ((ImageView)paramView).getDrawable().setColorFilter(855638016, PorterDuff.Mode.SRC_ATOP);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.MayKnowAdapter.2
  * JD-Core Version:    0.7.0.1
  */

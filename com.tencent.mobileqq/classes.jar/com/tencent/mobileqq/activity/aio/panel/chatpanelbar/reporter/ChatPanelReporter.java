@@ -49,10 +49,11 @@ public class ChatPanelReporter
   
   public void a(List<AIOPanelIconItem> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    for (;;)
+    if (paramList != null)
     {
-      return;
+      if (paramList.size() == 0) {
+        return;
+      }
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
@@ -68,12 +69,14 @@ public class ChatPanelReporter
   public boolean a(View paramView)
   {
     Object localObject = paramView.getTag();
-    if (!(localObject instanceof Integer)) {
-      return false;
+    if ((localObject instanceof Integer))
+    {
+      int i = ((Integer)localObject).intValue();
+      localObject = (IPanelBizReporter)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
+      if (localObject != null) {}
     }
-    int i = ((Integer)localObject).intValue();
-    localObject = (IPanelBizReporter)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
-    if (localObject == null) {
+    else
+    {
       return false;
     }
     ((IPanelBizReporter)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarIChatPanelBarData, paramView);
@@ -82,7 +85,7 @@ public class ChatPanelReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.chatpanelbar.reporter.ChatPanelReporter
  * JD-Core Version:    0.7.0.1
  */

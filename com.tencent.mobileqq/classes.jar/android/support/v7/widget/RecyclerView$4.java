@@ -21,15 +21,15 @@ class RecyclerView$4
   public void processPersistent(RecyclerView.ViewHolder paramViewHolder, @NonNull RecyclerView.ItemAnimator.ItemHolderInfo paramItemHolderInfo1, @NonNull RecyclerView.ItemAnimator.ItemHolderInfo paramItemHolderInfo2)
   {
     paramViewHolder.setIsRecyclable(false);
-    if (RecyclerView.access$900(this.this$0)) {
+    if (RecyclerView.access$900(this.this$0))
+    {
       if (this.this$0.mItemAnimator.animateChange(paramViewHolder, paramViewHolder, paramItemHolderInfo1, paramItemHolderInfo2)) {
         RecyclerView.access$1000(this.this$0);
       }
     }
-    while (!this.this$0.mItemAnimator.animatePersistence(paramViewHolder, paramItemHolderInfo1, paramItemHolderInfo2)) {
-      return;
+    else if (this.this$0.mItemAnimator.animatePersistence(paramViewHolder, paramItemHolderInfo1, paramItemHolderInfo2)) {
+      RecyclerView.access$1000(this.this$0);
     }
-    RecyclerView.access$1000(this.this$0);
   }
   
   public void unused(RecyclerView.ViewHolder paramViewHolder)

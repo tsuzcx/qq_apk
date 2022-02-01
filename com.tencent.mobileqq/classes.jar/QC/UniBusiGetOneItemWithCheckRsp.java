@@ -31,17 +31,19 @@ public final class UniBusiGetOneItemWithCheckRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.errmsg != null) {
-      paramJceOutputStream.write(this.errmsg, 1);
+    Object localObject = this.errmsg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.stDetail != null) {
-      paramJceOutputStream.write(this.stDetail, 2);
+    localObject = this.stDetail;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.UniBusiGetOneItemWithCheckRsp
  * JD-Core Version:    0.7.0.1
  */

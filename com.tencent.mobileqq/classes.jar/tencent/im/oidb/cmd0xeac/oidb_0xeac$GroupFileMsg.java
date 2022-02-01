@@ -25,15 +25,16 @@ public final class oidb_0xeac$GroupFileMsg
   static
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40, 50, 58, 66 }, new String[] { "file_name", "bus_id", "file_id", "file_size", "dead_time", "file_sha1", "ext", "file_md5" }, new Object[] { localByteStringMicro1, Integer.valueOf(0), "", Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro2, localByteStringMicro3, localByteStringMicro4 }, GroupFileMsg.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40, 50, 58, 66 }, new String[] { "file_name", "bus_id", "file_id", "file_size", "dead_time", "file_sha1", "ext", "file_md5" }, new Object[] { localByteStringMicro1, Integer.valueOf(0), "", localLong, localLong, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4 }, GroupFileMsg.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xeac.oidb_0xeac.GroupFileMsg
  * JD-Core Version:    0.7.0.1
  */

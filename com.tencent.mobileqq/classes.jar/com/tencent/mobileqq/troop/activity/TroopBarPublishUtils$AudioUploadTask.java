@@ -24,28 +24,16 @@ public class TroopBarPublishUtils$AudioUploadTask
   protected WeakReference<BaseActivity> a;
   protected String b;
   
-  public TroopBarPublishUtils$AudioUploadTask(BaseActivity paramBaseActivity, Handler paramHandler, String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_MqqUtilWeakReference = null;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_AndroidOsHandler = null;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramBaseActivity);
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
   public void run()
   {
     this.jdField_a_of_type_Int = 1;
-    if (this.jdField_a_of_type_MqqUtilWeakReference == null) {}
-    for (Object localObject1 = null; localObject1 == null; localObject1 = (BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get())
+    Object localObject1 = this.jdField_a_of_type_MqqUtilWeakReference;
+    if (localObject1 == null) {
+      localObject1 = null;
+    } else {
+      localObject1 = (BaseActivity)((WeakReference)localObject1).get();
+    }
+    if (localObject1 == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("TroopBarPublishUtils", 2, "AudioUploadTask activity is null!");
@@ -53,18 +41,22 @@ public class TroopBarPublishUtils$AudioUploadTask
       this.jdField_a_of_type_Int = 0;
       return;
     }
-    if (!FileUtil.a(this.b))
+    if (!FileUtil.b(this.b))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopBarPublishUtils", 2, "Audio is null! mAudioPath=" + this.b);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("Audio is null! mAudioPath=");
+        ((StringBuilder)localObject1).append(this.b);
+        QLog.d("TroopBarPublishUtils", 2, ((StringBuilder)localObject1).toString());
       }
       this.jdField_a_of_type_Int = 0;
       return;
     }
-    Object localObject2 = ((BaseActivity)localObject1).getAppRuntime();
-    localObject1 = ((AppRuntime)localObject2).getAccount();
-    localObject2 = ((TicketManager)((AppRuntime)localObject2).getManager(2)).getSkey((String)localObject1);
-    if (TextUtils.isEmpty((CharSequence)localObject2))
+    Object localObject3 = ((BaseActivity)localObject1).getAppRuntime();
+    localObject1 = ((AppRuntime)localObject3).getAccount();
+    localObject3 = ((TicketManager)((AppRuntime)localObject3).getManager(2)).getSkey((String)localObject1);
+    if (TextUtils.isEmpty((CharSequence)localObject3))
     {
       this.jdField_a_of_type_Int = 0;
       return;
@@ -78,47 +70,52 @@ public class TroopBarPublishUtils$AudioUploadTask
     HashMap localHashMap3 = new HashMap();
     localHashMap3.put("Connection", "keep-alive");
     localHashMap3.put("Referer", "https://www.qq.com");
-    localObject1 = HttpUtil.uploadImage(this.jdField_a_of_type_JavaLangString, (String)localObject1, (String)localObject2, localHashMap1, localHashMap2, localHashMap3);
-    if (localObject1 != null) {}
-    for (;;)
+    localObject1 = HttpUtil.uploadImage(this.jdField_a_of_type_JavaLangString, (String)localObject1, (String)localObject3, localHashMap1, localHashMap2, localHashMap3);
+    if (localObject1 != null)
     {
       try
       {
         localObject1 = new JSONObject((String)localObject1);
-        if (((JSONObject)localObject1).optInt("retcode", -1) == 0)
-        {
-          localObject1 = ((JSONObject)localObject1).optJSONObject("result");
-          if ((localObject1 != null) && (((JSONObject)localObject1).optInt("retcode") == 0))
-          {
-            localObject1 = ((JSONObject)localObject1).optString("url");
-            localObject2 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1009);
-            ((Message)localObject2).obj = localObject1;
-            ((Message)localObject2).arg1 = 1;
-            this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
-          }
+        if (((JSONObject)localObject1).optInt("retcode", -1) != 0) {
+          break label424;
         }
+        localObject1 = ((JSONObject)localObject1).optJSONObject("result");
+        if ((localObject1 == null) || (((JSONObject)localObject1).optInt("retcode") != 0)) {
+          break label424;
+        }
+        localObject1 = ((JSONObject)localObject1).optString("url");
+        localObject3 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1009);
+        ((Message)localObject3).obj = localObject1;
+        ((Message)localObject3).arg1 = 1;
+        this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject3);
       }
       catch (JSONException localJSONException)
       {
         if (!QLog.isColorLevel()) {
-          continue;
+          break label424;
         }
-        QLog.d("TroopBarPublishUtils", 2, localJSONException.getMessage());
-        continue;
       }
-      this.jdField_a_of_type_Int = 0;
-      return;
-      Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1004);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopBarPublishUtils", 2, "uploadImage failed: path = " + this.b);
+      QLog.d("TroopBarPublishUtils", 2, localJSONException.getMessage());
+    }
+    else
+    {
+      Object localObject2 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1004);
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("uploadImage failed: path = ");
+        ((StringBuilder)localObject2).append(this.b);
+        QLog.d("TroopBarPublishUtils", 2, ((StringBuilder)localObject2).toString());
       }
     }
+    label424:
+    this.jdField_a_of_type_Int = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopBarPublishUtils.AudioUploadTask
  * JD-Core Version:    0.7.0.1
  */

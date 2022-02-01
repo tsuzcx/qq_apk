@@ -9,17 +9,19 @@ class GameResultUploadMgrForRemote$4
   
   public void run()
   {
-    if (this.a != null) {
-      FileUtils.e(this.a);
+    String str = this.a;
+    if (str != null) {
+      FileUtils.deleteFile(str);
     }
-    if (this.b != null) {
-      FileUtils.e(this.b);
+    str = this.b;
+    if (str != null) {
+      FileUtils.deleteFile(str);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameresult.GameResultUploadMgrForRemote.4
  * JD-Core Version:    0.7.0.1
  */

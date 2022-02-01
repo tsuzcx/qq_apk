@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.avgame.gameroom.stage.util.FontStyleConfig;
+import com.tencent.avgame.data.FontStyleConfig;
 import com.tencent.avgame.ui.AVGameText;
 import com.tencent.avgame.util.UiUtils;
 
@@ -33,19 +33,19 @@ public class GuessPictureStageView
   
   protected void b()
   {
-    LayoutInflater.from(getContext()).inflate(2131558772, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380650));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380648));
-    this.jdField_a_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131380233));
-    this.jdField_b_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131380234));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370577);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369723));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365404));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366914));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131370688);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378775));
+    LayoutInflater.from(getContext()).inflate(2131558671, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379929));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379927));
+    this.jdField_a_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379550));
+    this.jdField_b_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379551));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370232);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369421));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365268));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366776));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131370328);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378169));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new GuessPictureStageView.1(this));
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131368017);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131367771);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, UiUtils.b());
     this.jdField_b_of_type_AndroidViewView.getLayoutParams().width = UiUtils.a();
     this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter = new GuessPictureStagePresenter(this);
@@ -84,7 +84,7 @@ public class GuessPictureStageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.stage.guesspicture.GuessPictureStageView
  * JD-Core Version:    0.7.0.1
  */

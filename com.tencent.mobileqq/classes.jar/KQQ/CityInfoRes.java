@@ -31,14 +31,15 @@ public final class CityInfoRes
   {
     paramJceOutputStream.write(this.result, 1);
     paramJceOutputStream.write(this.city, 2);
-    if (this.province != null) {
-      paramJceOutputStream.write(this.province, 3);
+    String str = this.province;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.CityInfoRes
  * JD-Core Version:    0.7.0.1
  */

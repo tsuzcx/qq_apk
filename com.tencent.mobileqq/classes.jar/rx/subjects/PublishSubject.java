@@ -76,33 +76,27 @@ public final class PublishSubject<T>
     if (this.state.active)
     {
       Object localObject2 = this.nl.error(paramThrowable);
+      paramThrowable = null;
       SubjectSubscriptionManager.SubjectObserver[] arrayOfSubjectObserver = this.state.terminate(localObject2);
       int j = arrayOfSubjectObserver.length;
       int i = 0;
-      paramThrowable = null;
-      for (;;)
+      while (i < j)
       {
-        if (i < j)
+        Object localObject1 = arrayOfSubjectObserver[i];
+        try
         {
-          Object localObject1 = arrayOfSubjectObserver[i];
-          try
-          {
-            ((SubjectSubscriptionManager.SubjectObserver)localObject1).emitNext(localObject2, this.state.nl);
-            i += 1;
-          }
-          catch (Throwable localThrowable)
-          {
-            for (;;)
-            {
-              localObject1 = paramThrowable;
-              if (paramThrowable == null) {
-                localObject1 = new ArrayList();
-              }
-              ((List)localObject1).add(localThrowable);
-              paramThrowable = (Throwable)localObject1;
-            }
-          }
+          ((SubjectSubscriptionManager.SubjectObserver)localObject1).emitNext(localObject2, this.state.nl);
         }
+        catch (Throwable localThrowable)
+        {
+          localObject1 = paramThrowable;
+          if (paramThrowable == null) {
+            localObject1 = new ArrayList();
+          }
+          ((List)localObject1).add(localThrowable);
+          paramThrowable = (Throwable)localObject1;
+        }
+        i += 1;
       }
       Exceptions.throwIfAny(paramThrowable);
     }
@@ -122,7 +116,7 @@ public final class PublishSubject<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.subjects.PublishSubject
  * JD-Core Version:    0.7.0.1
  */

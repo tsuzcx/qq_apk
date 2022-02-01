@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -13,13 +12,16 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.galleryactivity.AnimationUtils;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
 import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView;
@@ -49,44 +51,55 @@ public class SDKSetEmotionPreviewFragment
   {
     Object localObject = getResources();
     int i = ((Resources)localObject).getDisplayMetrics().widthPixels;
-    int j = AIOUtils.a(0.0F, (Resources)localObject);
-    int k = AIOUtils.a(4.0F, (Resources)localObject);
-    int m = AIOUtils.a(4.0F, (Resources)localObject);
+    int j = AIOUtils.b(0.0F, (Resources)localObject);
+    int k = AIOUtils.b(4.0F, (Resources)localObject);
+    int m = AIOUtils.b(4.0F, (Resources)localObject);
     this.jdField_a_of_type_Int = ((i - j * 2 - k * 3) / 4);
     this.b = this.jdField_a_of_type_Int;
-    localObject = ((Resources)localObject).getString(2131691405);
+    localObject = ((Resources)localObject).getString(2131691327);
     setTitle((CharSequence)localObject, (String)localObject);
-    this.jdField_a_of_type_ComTencentWidgetGridView = ((GridView)paramView.findViewById(2131366259));
+    this.jdField_a_of_type_ComTencentWidgetGridView = ((GridView)paramView.findViewById(2131366147));
     this.jdField_a_of_type_ComTencentWidgetGridView.setScrollBarStyle(0);
     this.jdField_a_of_type_ComTencentWidgetGridView.setNumColumns(4);
     this.jdField_a_of_type_ComTencentWidgetGridView.setColumnWidth(this.jdField_a_of_type_Int);
     this.jdField_a_of_type_ComTencentWidgetGridView.setHorizontalSpacing(k);
     this.jdField_a_of_type_ComTencentWidgetGridView.setVerticalSpacing(m);
-    this.jdField_a_of_type_ComTencentWidgetGridView.setPadding(j, this.jdField_a_of_type_ComTencentWidgetGridView.getPaddingTop(), j, this.jdField_a_of_type_ComTencentWidgetGridView.getPaddingBottom());
+    paramView = this.jdField_a_of_type_ComTencentWidgetGridView;
+    paramView.setPadding(j, paramView.getPaddingTop(), j, this.jdField_a_of_type_ComTencentWidgetGridView.getPaddingBottom());
     this.jdField_a_of_type_ComTencentWidgetGridView.setOnItemClickListener(this);
-    this.jdField_a_of_type_ComTencentWidgetGridView.setMaximumVelocity((int)(2500.0F * getResources().getDisplayMetrics().density));
+    this.jdField_a_of_type_ComTencentWidgetGridView.setMaximumVelocity((int)(getResources().getDisplayMetrics().density * 2500.0F));
   }
   
   public static void a(String paramString, Context paramContext, View paramView)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKSetEmotionPreviewFragment", 2, "startToAioImagePreviewWithPath: path=" + paramString);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startToAioImagePreviewWithPath: path=");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("SDKSetEmotionPreviewFragment", 2, ((StringBuilder)localObject).toString());
     }
-    if ((localQQAppInterface == null) || (paramContext == null)) {}
-    while (TextUtils.isEmpty(paramString)) {
-      return;
+    if (localQQAppInterface != null)
+    {
+      if (paramContext == null) {
+        return;
+      }
+      if (!TextUtils.isEmpty(paramString))
+      {
+        localObject = new AIOImageData();
+        ((AIOImageData)localObject).a = paramString;
+        ((AIOImageData)localObject).b = paramString;
+        ((AIOImageData)localObject).c = paramString;
+        ((AIOImageData)localObject).e = false;
+        paramString = new Bundle();
+        if (paramView != null) {
+          paramString.putParcelable("KEY_THUMBNAL_BOUND", AnimationUtils.a(paramView));
+        }
+        PeakUtils.a(paramContext, paramString, new AIOImageProviderService(localQQAppInterface.getCurrentUin(), null, 0, null), (AIORichMediaData)localObject, -1, 4);
+      }
     }
-    AIOImageData localAIOImageData = new AIOImageData();
-    localAIOImageData.a = paramString;
-    localAIOImageData.b = paramString;
-    localAIOImageData.c = paramString;
-    localAIOImageData.e = false;
-    paramString = new Bundle();
-    if (paramView != null) {
-      paramString.putParcelable("KEY_THUMBNAL_BOUND", AnimationUtils.a(paramView));
-    }
-    PeakUtils.a(paramContext, paramString, new AIOImageProviderService(localQQAppInterface.getCurrentUin(), null, 0, null), localAIOImageData, -1, 4);
   }
   
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
@@ -98,7 +111,7 @@ public class SDKSetEmotionPreviewFragment
   
   protected int getContentLayoutId()
   {
-    return 2131559210;
+    return 2131559089;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -116,7 +129,7 @@ public class SDKSetEmotionPreviewFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = getActivity().getIntent();
+    paramBundle = getBaseActivity().getIntent();
     if (paramBundle != null) {
       this.jdField_a_of_type_JavaUtilArrayList = paramBundle.getStringArrayListExtra("path_list");
     }
@@ -137,12 +150,12 @@ public class SDKSetEmotionPreviewFragment
   public void onResume()
   {
     super.onResume();
-    ReadInJoyUtils.a(getActivity());
+    ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).setStatusBar(getBaseActivity());
     if (this.leftView != null)
     {
       this.leftView.setTextColor(-14408926);
-      this.leftView.setContentDescription(getString(2131690601));
-      this.leftView.setBackgroundResource(2130849916);
+      this.leftView.setContentDescription(getString(2131690529));
+      this.leftView.setBackgroundResource(2130849814);
     }
     if (this.centerView != null) {
       this.centerView.setTextColor(-16777216);
@@ -154,7 +167,7 @@ public class SDKSetEmotionPreviewFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.SDKSetEmotionPreviewFragment
  * JD-Core Version:    0.7.0.1
  */

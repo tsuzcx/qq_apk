@@ -41,7 +41,10 @@ class NowEntry$1
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
     long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    QLog.i("DynamicNow | NowEntry", 1, " download cover pic  success  timeconsume = " + l);
+    paramURLDrawable = new StringBuilder();
+    paramURLDrawable.append(" download cover pic  success  timeconsume = ");
+    paramURLDrawable.append(l);
+    QLog.i("DynamicNow | NowEntry", 1, paramURLDrawable.toString());
     this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicNowEntry.a.b("download_cover").c("0").i(String.valueOf(l)).b();
     if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
@@ -52,7 +55,7 @@ class NowEntry$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.NowEntry.1
  * JD-Core Version:    0.7.0.1
  */

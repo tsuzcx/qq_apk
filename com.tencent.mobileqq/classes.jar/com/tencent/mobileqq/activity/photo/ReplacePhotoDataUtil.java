@@ -31,21 +31,21 @@ public class ReplacePhotoDataUtil
     if (paramBoolean)
     {
       localLocalMediaInfo.thumbWidth = 0;
-      localLocalMediaInfo.thumbHeight = ((int)paramContext.getResources().getDimension(2131297120));
+      localLocalMediaInfo.thumbHeight = ((int)paramContext.getResources().getDimension(2131297102));
       if ((localLocalMediaInfo.mediaWidth > 0) && (localLocalMediaInfo.mediaHeight > 0)) {
         FlowThumbDecoder.determineThumbSize(localLocalMediaInfo, localLocalMediaInfo.mediaWidth, localLocalMediaInfo.mediaHeight);
       }
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReplacePhotoDataUtil", 1, new Object[] { "convert to mediaInfo, cost:", Long.valueOf(System.currentTimeMillis() - l) });
-      }
-      return localLocalMediaInfo;
       int i = AlbumThumbDownloader.THUMB_WIDHT;
       localLocalMediaInfo.thumbHeight = i;
       localLocalMediaInfo.thumbWidth = i;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReplacePhotoDataUtil", 1, new Object[] { "convert to mediaInfo, cost:", Long.valueOf(System.currentTimeMillis() - l) });
+    }
+    return localLocalMediaInfo;
   }
   
   public static LocalMediaInfo a(Map<LocalMediaInfo, LocalMediaInfo> paramMap, String paramString)
@@ -96,28 +96,20 @@ public class ReplacePhotoDataUtil
       localObject = new HashMap();
     }
     paramIntent = (HashMap)paramIntent.getSerializableExtra("PhotoConst.editPathMap");
-    LocalMediaInfo localLocalMediaInfo;
     if (paramIntent != null)
     {
       Iterator localIterator = paramIntent.entrySet().iterator();
-      if (localIterator.hasNext())
+      while (localIterator.hasNext())
       {
         paramHashMap = (Map.Entry)localIterator.next();
         paramIntent = a(paramContext, (String)paramHashMap.getKey(), paramBoolean);
-        localLocalMediaInfo = a(paramContext, (String)paramHashMap.getValue(), paramBoolean);
+        LocalMediaInfo localLocalMediaInfo = a(paramContext, (String)paramHashMap.getValue(), paramBoolean);
         paramHashMap = a((Map)localObject, (String)paramHashMap.getKey());
-        if (paramHashMap == null) {
-          break label127;
+        if (paramHashMap != null) {
+          paramIntent = paramHashMap;
         }
-        paramIntent = paramHashMap;
+        ((HashMap)localObject).put(paramIntent, localLocalMediaInfo);
       }
-    }
-    label127:
-    for (;;)
-    {
-      ((HashMap)localObject).put(paramIntent, localLocalMediaInfo);
-      break;
-      return;
     }
   }
   
@@ -127,71 +119,55 @@ public class ReplacePhotoDataUtil
     if (paramHashMap == null) {
       localObject = new HashMap();
     }
-    LocalMediaInfo localLocalMediaInfo;
     if (paramHashMap1 != null)
     {
       Iterator localIterator = paramHashMap1.entrySet().iterator();
-      if (localIterator.hasNext())
+      while (localIterator.hasNext())
       {
         paramHashMap1 = (Map.Entry)localIterator.next();
         paramHashMap = a(paramContext, (String)paramHashMap1.getKey(), false);
-        localLocalMediaInfo = a(paramContext, (String)paramHashMap1.getValue(), false);
+        LocalMediaInfo localLocalMediaInfo = a(paramContext, (String)paramHashMap1.getValue(), false);
         paramHashMap1 = a((Map)localObject, (String)paramHashMap1.getKey());
-        if (paramHashMap1 == null) {
-          break label113;
+        if (paramHashMap1 != null) {
+          paramHashMap = paramHashMap1;
         }
-        paramHashMap = paramHashMap1;
+        ((HashMap)localObject).put(paramHashMap, localLocalMediaInfo);
       }
-    }
-    label113:
-    for (;;)
-    {
-      ((HashMap)localObject).put(paramHashMap, localLocalMediaInfo);
-      break;
-      return;
     }
   }
   
   public static void a(List<LocalMediaInfo> paramList, int paramInt, ArrayList<String> paramArrayList, HashMap<LocalMediaInfo, LocalMediaInfo> paramHashMap)
   {
     Iterator localIterator = paramHashMap.entrySet().iterator();
-    label36:
-    label191:
-    label194:
-    for (;;)
+    while (localIterator.hasNext())
     {
-      Map.Entry localEntry;
-      int i;
-      if (localIterator.hasNext())
-      {
-        localEntry = (Map.Entry)localIterator.next();
-        i = paramInt;
-        if (i >= paramList.size()) {
-          break label191;
-        }
-        paramHashMap = (LocalMediaInfo)paramList.get(i);
-        if (!paramHashMap.path.equals(((LocalMediaInfo)localEntry.getKey()).path)) {}
-      }
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      Object localObject = null;
+      int i = paramInt;
       for (;;)
       {
-        if (paramHashMap == null) {
-          break label194;
+        paramHashMap = localObject;
+        if (i >= paramList.size()) {
+          break;
         }
+        paramHashMap = (LocalMediaInfo)paramList.get(i);
+        if (paramHashMap.path.equals(((LocalMediaInfo)localEntry.getKey()).path)) {
+          break;
+        }
+        i += 1;
+      }
+      if (paramHashMap != null)
+      {
         i = paramList.indexOf(paramHashMap);
         paramList.remove(paramHashMap);
         paramList.add(i, localEntry.getValue());
         ((LocalMediaInfo)localEntry.getValue()).position = Integer.valueOf(i);
-        if (paramArrayList == null) {
-          break;
+        if (paramArrayList != null)
+        {
+          i = paramArrayList.indexOf(paramHashMap.path);
+          paramArrayList.remove(paramHashMap.path);
+          paramArrayList.add(i, ((LocalMediaInfo)localEntry.getValue()).path);
         }
-        i = paramArrayList.indexOf(paramHashMap.path);
-        paramArrayList.remove(paramHashMap.path);
-        paramArrayList.add(i, ((LocalMediaInfo)localEntry.getValue()).path);
-        break;
-        i += 1;
-        break label36;
-        return;
-        paramHashMap = null;
       }
     }
   }
@@ -221,7 +197,7 @@ public class ReplacePhotoDataUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.ReplacePhotoDataUtil
  * JD-Core Version:    0.7.0.1
  */

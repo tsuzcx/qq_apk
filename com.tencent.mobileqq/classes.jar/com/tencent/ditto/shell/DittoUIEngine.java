@@ -54,7 +54,7 @@ public class DittoUIEngine
   private static final String TAG = "DittoUIEngine";
   private static boolean needLoadFromSdcard = true;
   private static volatile DittoValue.GLOBAL outerGlobalData;
-  private static volatile DittoUIEngine sInstance = null;
+  private static volatile DittoUIEngine sInstance;
   private Map<String, String> fileMd5 = null;
   private final Map<String, List<DittoArea>> inflatedAreaBuffer = new HashMap();
   private final HashMap<String, JSONObject> jsonCache = new HashMap();
@@ -87,77 +87,49 @@ public class DittoUIEngine
   
   private void createVersionFile(String paramString)
   {
-    File localFile1 = new File(this.mContext.getFilesDir().getAbsolutePath() + File.separator + this.subDirectoryPath + File.separator + "version", paramString);
-    File localFile2 = localFile1.getParentFile();
-    if ((localFile2 != null) && (!localFile2.exists()) && (!localFile2.mkdirs())) {
-      DittoLog.e(String.format("create version file:%s failed", new Object[] { paramString }));
-    }
-    for (;;)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.mContext.getFilesDir().getAbsolutePath());
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(this.subDirectoryPath);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append("version");
+    localObject = new File(((StringBuilder)localObject).toString(), paramString);
+    File localFile = ((File)localObject).getParentFile();
+    if ((localFile != null) && (!localFile.exists()) && (!localFile.mkdirs()))
     {
+      DittoLog.e(String.format("create version file:%s failed", new Object[] { paramString }));
       return;
-      try
+    }
+    try
+    {
+      if (!((File)localObject).createNewFile())
       {
-        if (!localFile1.createNewFile())
-        {
-          DittoLog.e(String.format("create version file:%s failed", new Object[] { paramString }));
-          return;
-        }
+        DittoLog.e(String.format("create version file:%s failed", new Object[] { paramString }));
+        return;
       }
-      catch (IOException localIOException)
-      {
-        DittoLog.e("DITTO_UI", String.format("create version file:%s failed", new Object[] { paramString }), localIOException);
-      }
+    }
+    catch (IOException localIOException)
+    {
+      DittoLog.e("DITTO_UI", String.format("create version file:%s failed", new Object[] { paramString }), localIOException);
     }
   }
   
-  /* Error */
   public static DittoUIEngine g()
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 49	com/tencent/ditto/shell/DittoUIEngine:sInstance	Lcom/tencent/ditto/shell/DittoUIEngine;
-    //   6: ifnonnull +27 -> 33
-    //   9: getstatic 51	com/tencent/ditto/shell/DittoUIEngine:INSTANCE_LOCK	[B
-    //   12: astore_0
-    //   13: aload_0
-    //   14: monitorenter
-    //   15: getstatic 49	com/tencent/ditto/shell/DittoUIEngine:sInstance	Lcom/tencent/ditto/shell/DittoUIEngine;
-    //   18: ifnonnull +13 -> 31
-    //   21: new 2	com/tencent/ditto/shell/DittoUIEngine
-    //   24: dup
-    //   25: invokespecial 161	com/tencent/ditto/shell/DittoUIEngine:<init>	()V
-    //   28: putstatic 49	com/tencent/ditto/shell/DittoUIEngine:sInstance	Lcom/tencent/ditto/shell/DittoUIEngine;
-    //   31: aload_0
-    //   32: monitorexit
-    //   33: getstatic 49	com/tencent/ditto/shell/DittoUIEngine:sInstance	Lcom/tencent/ditto/shell/DittoUIEngine;
-    //   36: astore_0
-    //   37: ldc 2
-    //   39: monitorexit
-    //   40: aload_0
-    //   41: areturn
-    //   42: astore_1
-    //   43: aload_0
-    //   44: monitorexit
-    //   45: aload_1
-    //   46: athrow
-    //   47: astore_0
-    //   48: ldc 2
-    //   50: monitorexit
-    //   51: aload_0
-    //   52: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   47	5	0	localObject2	Object
-    //   42	4	1	localObject3	Object
-    // Exception table:
-    //   from	to	target	type
-    //   15	31	42	finally
-    //   31	33	42	finally
-    //   43	45	42	finally
-    //   3	15	47	finally
-    //   33	37	47	finally
-    //   45	47	47	finally
+    try
+    {
+      if (sInstance == null) {
+        synchronized (INSTANCE_LOCK)
+        {
+          if (sInstance == null) {
+            sInstance = new DittoUIEngine();
+          }
+        }
+      }
+      ??? = sInstance;
+      return ???;
+    }
+    finally {}
   }
   
   private JSONObject generateBuffer(String paramString1, String arg2)
@@ -168,17 +140,24 @@ public class DittoUIEngine
       if (this.inflatedAreaBuffer.containsKey(paramString1)) {
         this.inflatedAreaBuffer.remove(paramString1);
       }
-      ArrayList localArrayList = new ArrayList();
-      this.inflatedAreaBuffer.put(paramString1, localArrayList);
+      Object localObject = new ArrayList();
+      this.inflatedAreaBuffer.put(paramString1, localObject);
       DittoUIEngine.FakeHost localFakeHost = new DittoUIEngine.FakeHost(this);
       int i = 0;
       while (i < 6)
       {
-        localArrayList.add(inflateDittoArea(localFakeHost, localJSONObject, null));
+        ((List)localObject).add(inflateDittoArea(localFakeHost, localJSONObject, null));
         i += 1;
       }
-      DittoLog.i("generated area buffer:" + paramString1);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("generated area buffer:");
+      ((StringBuilder)localObject).append(paramString1);
+      DittoLog.i(((StringBuilder)localObject).toString());
       return localJSONObject;
+    }
+    for (;;)
+    {
+      throw paramString1;
     }
   }
   
@@ -190,7 +169,12 @@ public class DittoUIEngine
       int i;
       try
       {
-        Object localObject1 = new File(g().mContext.getFilesDir().getAbsolutePath() + File.separator + this.subDirectoryPath + File.separator);
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(g().mContext.getFilesDir().getAbsolutePath());
+        ((StringBuilder)localObject1).append(File.separator);
+        ((StringBuilder)localObject1).append(this.subDirectoryPath);
+        ((StringBuilder)localObject1).append(File.separator);
+        localObject1 = new File(((StringBuilder)localObject1).toString());
         Object localObject2;
         Object localObject3;
         if (((File)localObject1).exists())
@@ -204,12 +188,17 @@ public class DittoUIEngine
             {
               localObject2 = localObject1[i];
               localObject3 = FileUtils.getMd5ByFile((File)localObject2);
-              DittoLog.w("DITTO_UI", "Layout File from sd card:" + ((File)localObject2).getName() + " md5:" + (String)localObject3);
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("Layout File from sd card:");
+              localStringBuilder.append(((File)localObject2).getName());
+              localStringBuilder.append(" md5:");
+              localStringBuilder.append((String)localObject3);
+              DittoLog.w("DITTO_UI", localStringBuilder.toString());
               if (TextUtils.isEmpty((CharSequence)localObject3)) {
-                break label288;
+                break label320;
               }
               localConcurrentHashMap.put(((File)localObject2).getName(), localObject3);
-              break label288;
+              break label320;
             }
           }
         }
@@ -235,7 +224,7 @@ public class DittoUIEngine
       {
         DittoLog.e("DITTO_UI", "", localException);
       }
-      label288:
+      label320:
       i += 1;
     }
   }
@@ -257,54 +246,51 @@ public class DittoUIEngine
   
   private DittoArea inflateDittoArea(DittoHost paramDittoHost, JSONObject paramJSONObject, DittoUIEngine.DittoUIEngineInflateListener paramDittoUIEngineInflateListener)
   {
-    int i = 0;
     if (paramJSONObject == null) {
-      paramDittoHost = null;
+      return null;
     }
-    Object localObject1;
-    ArrayMap localArrayMap;
-    do
+    Object localObject1 = DittoAreaEnv.findAreaClass(paramJSONObject.getString("class"));
+    Object localObject2 = paramJSONObject.getJSONObject("shell");
+    ArrayMap localArrayMap = new ArrayMap();
+    localObject2 = LayoutAttrSet.createFrom((JSONObject)localObject2, new DittoUIEngine.1(this, localArrayMap));
+    int i = 0;
+    localObject1 = (DittoArea)((Class)localObject1).getConstructor(new Class[] { DittoHost.class, LayoutAttrSet.class }).newInstance(new Object[] { paramDittoHost, localObject2 });
+    ((DittoArea)localObject1).doneInflate();
+    if ((((DittoArea)localObject1).getId() != null) && (paramDittoUIEngineInflateListener != null)) {
+      paramDittoUIEngineInflateListener.didInflatedArea((DittoArea)localObject1, ((DittoArea)localObject1).getId());
+    }
+    if (paramJSONObject.has("children"))
     {
-      do
+      paramJSONObject = paramJSONObject.getJSONArray("children");
+      if (paramJSONObject != null)
       {
-        return paramDittoHost;
-        localObject1 = DittoAreaEnv.findAreaClass(paramJSONObject.getString("class"));
-        Object localObject2 = paramJSONObject.getJSONObject("shell");
-        localArrayMap = new ArrayMap();
-        localObject2 = LayoutAttrSet.createFrom((JSONObject)localObject2, new DittoUIEngine.1(this, localArrayMap));
-        localObject1 = (DittoArea)((Class)localObject1).getConstructor(new Class[] { DittoHost.class, LayoutAttrSet.class }).newInstance(new Object[] { paramDittoHost, localObject2 });
-        ((DittoArea)localObject1).doneInflate();
-        if ((((DittoArea)localObject1).getId() != null) && (paramDittoUIEngineInflateListener != null)) {
-          paramDittoUIEngineInflateListener.didInflatedArea((DittoArea)localObject1, ((DittoArea)localObject1).getId());
-        }
-        if (paramJSONObject.has("children"))
+        localObject2 = (DittoAreaGroup)localObject1;
+        int j = paramJSONObject.length();
+        while (i < j)
         {
-          paramJSONObject = paramJSONObject.getJSONArray("children");
-          if (paramJSONObject != null)
-          {
-            localObject2 = (DittoAreaGroup)localObject1;
-            int j = paramJSONObject.length();
-            while (i < j)
-            {
-              DittoArea localDittoArea = inflateDittoArea(paramDittoHost, paramJSONObject.getJSONObject(i), paramDittoUIEngineInflateListener);
-              if (localDittoArea != null) {
-                ((DittoAreaGroup)localObject2).addChild(localDittoArea);
-              }
-              i += 1;
-            }
+          DittoArea localDittoArea = inflateDittoArea(paramDittoHost, paramJSONObject.getJSONObject(i), paramDittoUIEngineInflateListener);
+          if (localDittoArea != null) {
+            ((DittoAreaGroup)localObject2).addChild(localDittoArea);
           }
+          i += 1;
         }
-        paramDittoHost = (DittoHost)localObject1;
-      } while (paramDittoUIEngineInflateListener == null);
-      paramDittoHost = (DittoHost)localObject1;
-    } while (localArrayMap.size() == 0);
-    paramDittoUIEngineInflateListener.setOutKVCSet((DittoArea)localObject1, localArrayMap);
+      }
+    }
+    if ((paramDittoUIEngineInflateListener != null) && (localArrayMap.size() != 0)) {
+      paramDittoUIEngineInflateListener.setOutKVCSet((DittoArea)localObject1, localArrayMap);
+    }
     return localObject1;
   }
   
   private boolean isFirstBoot(String paramString)
   {
-    return !new File(this.mContext.getFilesDir().getAbsolutePath() + File.separator + this.subDirectoryPath + File.separator + "version", paramString).exists();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mContext.getFilesDir().getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(this.subDirectoryPath);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("version");
+    return new File(localStringBuilder.toString(), paramString).exists() ^ true;
   }
   
   /* Error */
@@ -312,7 +298,7 @@ public class DittoUIEngine
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 66	com/tencent/ditto/shell/DittoUIEngine:jsonCache	Ljava/util/HashMap;
+    //   1: getfield 64	com/tencent/ditto/shell/DittoUIEngine:jsonCache	Ljava/util/HashMap;
     //   4: aload_1
     //   5: invokevirtual 371	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   8: checkcast 165	org/json/JSONObject
@@ -320,7 +306,7 @@ public class DittoUIEngine
     //   12: aload_2
     //   13: astore_3
     //   14: aload_2
-    //   15: ifnonnull +37 -> 52
+    //   15: ifnonnull +94 -> 109
     //   18: aload_0
     //   19: aload_1
     //   20: invokespecial 374	com/tencent/ditto/shell/DittoUIEngine:loadLayoutContent	(Ljava/lang/String;)Ljava/lang/String;
@@ -328,61 +314,70 @@ public class DittoUIEngine
     //   25: aload_2
     //   26: astore_3
     //   27: aload 4
-    //   29: ifnull +23 -> 52
+    //   29: ifnull +80 -> 109
     //   32: new 165	org/json/JSONObject
     //   35: dup
     //   36: aload 4
     //   38: invokespecial 167	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   41: astore_3
     //   42: aload_0
-    //   43: getfield 66	com/tencent/ditto/shell/DittoUIEngine:jsonCache	Ljava/util/HashMap;
+    //   43: getfield 64	com/tencent/ditto/shell/DittoUIEngine:jsonCache	Ljava/util/HashMap;
     //   46: aload_1
     //   47: aload_3
     //   48: invokevirtual 375	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   51: pop
     //   52: aload_3
     //   53: areturn
-    //   54: astore_3
-    //   55: aconst_null
-    //   56: astore_2
-    //   57: ldc 155
-    //   59: new 106	java/lang/StringBuilder
-    //   62: dup
-    //   63: invokespecial 107	java/lang/StringBuilder:<init>	()V
-    //   66: aload_1
-    //   67: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   70: ldc_w 377
-    //   73: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   76: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   79: aload_3
-    //   80: invokestatic 158	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   83: aload_2
-    //   84: areturn
-    //   85: astore_3
-    //   86: goto -29 -> 57
-    //   89: astore 4
-    //   91: aload_3
-    //   92: astore_2
-    //   93: aload 4
-    //   95: astore_3
-    //   96: goto -39 -> 57
+    //   54: astore 4
+    //   56: aload_3
+    //   57: astore_2
+    //   58: aload 4
+    //   60: astore_3
+    //   61: goto +10 -> 71
+    //   64: astore_3
+    //   65: goto +6 -> 71
+    //   68: astore_3
+    //   69: aconst_null
+    //   70: astore_2
+    //   71: new 102	java/lang/StringBuilder
+    //   74: dup
+    //   75: invokespecial 103	java/lang/StringBuilder:<init>	()V
+    //   78: astore 4
+    //   80: aload 4
+    //   82: aload_1
+    //   83: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   86: pop
+    //   87: aload 4
+    //   89: ldc_w 377
+    //   92: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   95: pop
+    //   96: ldc 153
+    //   98: aload 4
+    //   100: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   103: aload_3
+    //   104: invokestatic 156	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   107: aload_2
+    //   108: astore_3
+    //   109: aload_3
+    //   110: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	99	0	this	DittoUIEngine
-    //   0	99	1	paramString	String
-    //   11	82	2	localObject1	Object
-    //   13	40	3	localObject2	Object
-    //   54	26	3	localException1	Exception
-    //   85	7	3	localException2	Exception
-    //   95	1	3	localObject3	Object
+    //   0	111	0	this	DittoUIEngine
+    //   0	111	1	paramString	String
+    //   11	97	2	localObject1	Object
+    //   13	48	3	localObject2	Object
+    //   64	1	3	localException1	Exception
+    //   68	36	3	localException2	Exception
+    //   108	2	3	localObject3	Object
     //   23	14	4	str	String
-    //   89	5	4	localException3	Exception
+    //   54	5	4	localException3	Exception
+    //   78	21	4	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   0	12	54	java/lang/Exception
-    //   18	25	85	java/lang/Exception
-    //   32	42	85	java/lang/Exception
-    //   42	52	89	java/lang/Exception
+    //   42	52	54	java/lang/Exception
+    //   18	25	64	java/lang/Exception
+    //   32	42	64	java/lang/Exception
+    //   0	12	68	java/lang/Exception
   }
   
   /* Error */
@@ -390,237 +385,261 @@ public class DittoUIEngine
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 4
-    //   3: aconst_null
-    //   4: astore_2
-    //   5: new 104	java/io/File
-    //   8: dup
-    //   9: new 106	java/lang/StringBuilder
-    //   12: dup
-    //   13: invokespecial 107	java/lang/StringBuilder:<init>	()V
-    //   16: invokestatic 207	com/tencent/ditto/shell/DittoUIEngine:g	()Lcom/tencent/ditto/shell/DittoUIEngine;
-    //   19: getfield 93	com/tencent/ditto/shell/DittoUIEngine:mContext	Landroid/content/Context;
-    //   22: invokevirtual 113	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   25: invokevirtual 116	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   28: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   31: getstatic 123	java/io/File:separator	Ljava/lang/String;
-    //   34: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: aload_0
-    //   38: getfield 61	com/tencent/ditto/shell/DittoUIEngine:subDirectoryPath	Ljava/lang/String;
-    //   41: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   44: getstatic 123	java/io/File:separator	Ljava/lang/String;
-    //   47: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   50: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   53: aload_1
-    //   54: invokespecial 129	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   57: astore_3
-    //   58: aload_3
-    //   59: invokevirtual 136	java/io/File:exists	()Z
-    //   62: ifeq +170 -> 232
-    //   65: aload_3
-    //   66: invokevirtual 380	java/io/File:isFile	()Z
-    //   69: ifeq +163 -> 232
-    //   72: new 106	java/lang/StringBuilder
-    //   75: dup
-    //   76: invokespecial 107	java/lang/StringBuilder:<init>	()V
-    //   79: astore 5
-    //   81: new 382	java/io/FileInputStream
-    //   84: dup
-    //   85: aload_3
-    //   86: invokespecial 385	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   89: astore_1
-    //   90: new 387	java/io/BufferedReader
+    //   1: astore_2
+    //   2: aconst_null
+    //   3: astore_3
+    //   4: new 102	java/lang/StringBuilder
+    //   7: dup
+    //   8: invokespecial 103	java/lang/StringBuilder:<init>	()V
+    //   11: astore 4
+    //   13: aload 4
+    //   15: invokestatic 207	com/tencent/ditto/shell/DittoUIEngine:g	()Lcom/tencent/ditto/shell/DittoUIEngine;
+    //   18: getfield 91	com/tencent/ditto/shell/DittoUIEngine:mContext	Landroid/content/Context;
+    //   21: invokevirtual 109	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   24: invokevirtual 114	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   27: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: pop
+    //   31: aload 4
+    //   33: getstatic 121	java/io/File:separator	Ljava/lang/String;
+    //   36: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: pop
+    //   40: aload 4
+    //   42: aload_0
+    //   43: getfield 59	com/tencent/ditto/shell/DittoUIEngine:subDirectoryPath	Ljava/lang/String;
+    //   46: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: pop
+    //   50: aload 4
+    //   52: getstatic 121	java/io/File:separator	Ljava/lang/String;
+    //   55: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: pop
+    //   59: new 111	java/io/File
+    //   62: dup
+    //   63: aload 4
+    //   65: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   68: aload_1
+    //   69: invokespecial 127	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   72: astore 4
+    //   74: aload 4
+    //   76: invokevirtual 134	java/io/File:exists	()Z
+    //   79: ifeq +135 -> 214
+    //   82: aload 4
+    //   84: invokevirtual 380	java/io/File:isFile	()Z
+    //   87: ifeq +127 -> 214
+    //   90: new 102	java/lang/StringBuilder
     //   93: dup
-    //   94: new 389	java/io/InputStreamReader
-    //   97: dup
-    //   98: aload_1
-    //   99: invokespecial 392	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   102: invokespecial 395	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   105: astore_2
-    //   106: aload_2
-    //   107: astore 4
-    //   109: aload_1
-    //   110: astore_3
-    //   111: aload_2
-    //   112: invokevirtual 398	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   115: astore 6
-    //   117: aload 6
-    //   119: ifnull +55 -> 174
-    //   122: aload_2
-    //   123: astore 4
-    //   125: aload_1
-    //   126: astore_3
-    //   127: aload 5
-    //   129: aload 6
-    //   131: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   134: pop
-    //   135: goto -29 -> 106
-    //   138: astore 5
-    //   140: aload_2
-    //   141: astore 4
+    //   94: invokespecial 103	java/lang/StringBuilder:<init>	()V
+    //   97: astore 5
+    //   99: new 382	java/io/FileInputStream
+    //   102: dup
+    //   103: aload 4
+    //   105: invokespecial 385	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   108: astore_1
+    //   109: new 387	java/io/BufferedReader
+    //   112: dup
+    //   113: new 389	java/io/InputStreamReader
+    //   116: dup
+    //   117: aload_1
+    //   118: invokespecial 392	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   121: invokespecial 395	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   124: astore 4
+    //   126: aload_1
+    //   127: astore_2
+    //   128: aload 4
+    //   130: astore_3
+    //   131: aload 4
+    //   133: invokevirtual 398	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   136: astore 6
+    //   138: aload 6
+    //   140: ifnull +19 -> 159
     //   143: aload_1
-    //   144: astore_3
-    //   145: ldc 155
-    //   147: ldc 59
-    //   149: aload 5
-    //   151: invokestatic 158	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   154: aload_2
-    //   155: ifnull +7 -> 162
-    //   158: aload_2
-    //   159: invokevirtual 401	java/io/BufferedReader:close	()V
-    //   162: aload_1
-    //   163: ifnull +7 -> 170
-    //   166: aload_1
-    //   167: invokevirtual 404	java/io/InputStream:close	()V
-    //   170: aconst_null
-    //   171: astore_3
-    //   172: aload_3
-    //   173: areturn
-    //   174: aload_2
-    //   175: astore 4
+    //   144: astore_2
+    //   145: aload 4
+    //   147: astore_3
+    //   148: aload 5
+    //   150: aload 6
+    //   152: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   155: pop
+    //   156: goto -30 -> 126
+    //   159: aload_1
+    //   160: astore_2
+    //   161: aload 4
+    //   163: astore_3
+    //   164: aload 5
+    //   166: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   169: invokevirtual 401	java/lang/String:trim	()Ljava/lang/String;
+    //   172: astore 5
+    //   174: aload 4
+    //   176: astore_3
     //   177: aload_1
-    //   178: astore_3
+    //   178: astore_2
     //   179: aload 5
-    //   181: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   184: invokevirtual 407	java/lang/String:trim	()Ljava/lang/String;
+    //   181: astore_1
+    //   182: goto +64 -> 246
+    //   185: astore_2
+    //   186: aload_1
     //   187: astore 5
-    //   189: aload 5
-    //   191: astore_3
+    //   189: aload 4
+    //   191: astore_1
     //   192: aload_2
     //   193: astore 4
-    //   195: aload_1
-    //   196: astore_2
-    //   197: aload_3
-    //   198: astore_1
-    //   199: aload 4
-    //   201: ifnull +8 -> 209
-    //   204: aload 4
-    //   206: invokevirtual 401	java/io/BufferedReader:close	()V
-    //   209: aload_1
-    //   210: astore_3
-    //   211: aload_2
-    //   212: ifnull -40 -> 172
-    //   215: aload_2
-    //   216: invokevirtual 404	java/io/InputStream:close	()V
-    //   219: aload_1
-    //   220: areturn
-    //   221: astore_2
-    //   222: ldc 155
-    //   224: ldc 59
-    //   226: aload_2
-    //   227: invokestatic 158	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   230: aload_1
-    //   231: areturn
-    //   232: aload_0
-    //   233: getfield 409	com/tencent/ditto/shell/DittoUIEngine:mJsonContentMap	Ljava/util/Map;
-    //   236: astore_3
-    //   237: aload_3
-    //   238: ifnull +96 -> 334
-    //   241: aload_3
-    //   242: aload_1
-    //   243: invokeinterface 410 2 0
-    //   248: checkcast 143	java/lang/String
-    //   251: astore_1
-    //   252: aconst_null
-    //   253: astore_3
-    //   254: aload_2
-    //   255: astore 4
-    //   257: aload_3
-    //   258: astore_2
-    //   259: goto -60 -> 199
-    //   262: astore_1
-    //   263: ldc 155
-    //   265: ldc 59
+    //   195: goto +98 -> 293
+    //   198: astore_3
+    //   199: goto +155 -> 354
+    //   202: astore 4
+    //   204: aconst_null
+    //   205: astore_2
+    //   206: aload_1
+    //   207: astore 5
+    //   209: aload_2
+    //   210: astore_1
+    //   211: goto +82 -> 293
+    //   214: aload_0
+    //   215: getfield 403	com/tencent/ditto/shell/DittoUIEngine:mJsonContentMap	Ljava/util/Map;
+    //   218: astore 4
+    //   220: aload 4
+    //   222: ifnull +20 -> 242
+    //   225: aload 4
+    //   227: aload_1
+    //   228: invokeinterface 404 2 0
+    //   233: checkcast 141	java/lang/String
+    //   236: astore_1
+    //   237: aconst_null
+    //   238: astore_2
+    //   239: goto +7 -> 246
+    //   242: aconst_null
+    //   243: astore_1
+    //   244: aload_1
+    //   245: astore_2
+    //   246: aload_3
+    //   247: ifnull +10 -> 257
+    //   250: aload_3
+    //   251: invokevirtual 407	java/io/BufferedReader:close	()V
+    //   254: goto +3 -> 257
+    //   257: aload_1
+    //   258: astore_3
+    //   259: aload_2
+    //   260: ifnull +81 -> 341
+    //   263: aload_2
+    //   264: invokevirtual 410	java/io/InputStream:close	()V
     //   267: aload_1
-    //   268: invokestatic 158	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   271: aconst_null
-    //   272: areturn
-    //   273: astore_2
-    //   274: aconst_null
-    //   275: astore_1
-    //   276: aload 4
-    //   278: ifnull +8 -> 286
-    //   281: aload 4
-    //   283: invokevirtual 401	java/io/BufferedReader:close	()V
-    //   286: aload_1
-    //   287: ifnull +7 -> 294
-    //   290: aload_1
-    //   291: invokevirtual 404	java/io/InputStream:close	()V
-    //   294: aload_2
-    //   295: athrow
-    //   296: astore_1
-    //   297: ldc 155
-    //   299: ldc 59
-    //   301: aload_1
-    //   302: invokestatic 158	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   305: goto -11 -> 294
-    //   308: astore_2
-    //   309: goto -33 -> 276
-    //   312: astore_2
-    //   313: aload_3
-    //   314: astore_1
-    //   315: goto -39 -> 276
-    //   318: astore 5
-    //   320: aconst_null
-    //   321: astore_2
-    //   322: aconst_null
-    //   323: astore_1
-    //   324: goto -184 -> 140
-    //   327: astore 5
-    //   329: aconst_null
-    //   330: astore_2
-    //   331: goto -191 -> 140
-    //   334: aconst_null
-    //   335: astore_3
-    //   336: aconst_null
-    //   337: astore_1
-    //   338: aload_2
-    //   339: astore 4
+    //   268: areturn
+    //   269: ldc 153
+    //   271: ldc 57
+    //   273: aload_2
+    //   274: invokestatic 156	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   277: aload_1
+    //   278: areturn
+    //   279: astore_3
+    //   280: aconst_null
+    //   281: astore_1
+    //   282: goto +72 -> 354
+    //   285: astore 4
+    //   287: aconst_null
+    //   288: astore 5
+    //   290: aload 5
+    //   292: astore_1
+    //   293: aload 5
+    //   295: astore_2
+    //   296: aload_1
+    //   297: astore_3
+    //   298: ldc 153
+    //   300: ldc 57
+    //   302: aload 4
+    //   304: invokestatic 156	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   307: aload_1
+    //   308: ifnull +10 -> 318
+    //   311: aload_1
+    //   312: invokevirtual 407	java/io/BufferedReader:close	()V
+    //   315: goto +3 -> 318
+    //   318: aload 5
+    //   320: ifnull +19 -> 339
+    //   323: aload 5
+    //   325: invokevirtual 410	java/io/InputStream:close	()V
+    //   328: goto +11 -> 339
+    //   331: ldc 153
+    //   333: ldc 57
+    //   335: aload_1
+    //   336: invokestatic 156	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   339: aconst_null
+    //   340: astore_3
     //   341: aload_3
-    //   342: astore_2
-    //   343: goto -144 -> 199
+    //   342: areturn
+    //   343: astore_1
+    //   344: aload_3
+    //   345: astore 4
+    //   347: aload_1
+    //   348: astore_3
+    //   349: aload_2
+    //   350: astore_1
+    //   351: aload 4
+    //   353: astore_2
+    //   354: aload_2
+    //   355: ifnull +10 -> 365
+    //   358: aload_2
+    //   359: invokevirtual 407	java/io/BufferedReader:close	()V
+    //   362: goto +3 -> 365
+    //   365: aload_1
+    //   366: ifnull +18 -> 384
+    //   369: aload_1
+    //   370: invokevirtual 410	java/io/InputStream:close	()V
+    //   373: goto +11 -> 384
+    //   376: ldc 153
+    //   378: ldc 57
+    //   380: aload_1
+    //   381: invokestatic 156	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   384: goto +5 -> 389
+    //   387: aload_3
+    //   388: athrow
+    //   389: goto -2 -> 387
+    //   392: astore_2
+    //   393: goto -124 -> 269
+    //   396: astore_1
+    //   397: goto -66 -> 331
+    //   400: astore_1
+    //   401: goto -25 -> 376
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	346	0	this	DittoUIEngine
-    //   0	346	1	paramString	String
-    //   4	212	2	localObject1	Object
-    //   221	34	2	localException	Exception
-    //   258	1	2	localObject2	Object
-    //   273	22	2	localObject3	Object
-    //   308	1	2	localObject4	Object
-    //   312	1	2	localObject5	Object
-    //   321	22	2	localObject6	Object
-    //   57	285	3	localObject7	Object
-    //   1	339	4	localObject8	Object
-    //   79	49	5	localStringBuilder	java.lang.StringBuilder
-    //   138	42	5	localIOException1	IOException
-    //   187	3	5	str1	String
-    //   318	1	5	localIOException2	IOException
-    //   327	1	5	localIOException3	IOException
-    //   115	15	6	str2	String
+    //   0	404	0	this	DittoUIEngine
+    //   0	404	1	paramString	String
+    //   1	178	2	str1	String
+    //   185	8	2	localIOException1	IOException
+    //   205	154	2	localObject1	Object
+    //   392	1	2	localException	Exception
+    //   3	174	3	localObject2	Object
+    //   198	53	3	localObject3	Object
+    //   258	1	3	str2	String
+    //   279	1	3	localObject4	Object
+    //   297	91	3	str3	String
+    //   11	183	4	localObject5	Object
+    //   202	1	4	localIOException2	IOException
+    //   218	8	4	localMap	Map
+    //   285	18	4	localIOException3	IOException
+    //   345	7	4	str4	String
+    //   97	227	5	localObject6	Object
+    //   136	15	6	str5	String
     // Exception table:
     //   from	to	target	type
-    //   111	117	138	java/io/IOException
-    //   127	135	138	java/io/IOException
-    //   179	189	138	java/io/IOException
-    //   204	209	221	java/lang/Exception
-    //   215	219	221	java/lang/Exception
-    //   158	162	262	java/lang/Exception
-    //   166	170	262	java/lang/Exception
-    //   5	90	273	finally
-    //   232	237	273	finally
-    //   241	252	273	finally
-    //   281	286	296	java/lang/Exception
-    //   290	294	296	java/lang/Exception
-    //   90	106	308	finally
-    //   111	117	312	finally
-    //   127	135	312	finally
-    //   145	154	312	finally
-    //   179	189	312	finally
-    //   5	90	318	java/io/IOException
-    //   232	237	318	java/io/IOException
-    //   241	252	318	java/io/IOException
-    //   90	106	327	java/io/IOException
+    //   131	138	185	java/io/IOException
+    //   148	156	185	java/io/IOException
+    //   164	174	185	java/io/IOException
+    //   109	126	198	finally
+    //   109	126	202	java/io/IOException
+    //   4	109	279	finally
+    //   214	220	279	finally
+    //   225	237	279	finally
+    //   4	109	285	java/io/IOException
+    //   214	220	285	java/io/IOException
+    //   225	237	285	java/io/IOException
+    //   131	138	343	finally
+    //   148	156	343	finally
+    //   164	174	343	finally
+    //   298	307	343	finally
+    //   250	254	392	java/lang/Exception
+    //   263	267	392	java/lang/Exception
+    //   311	315	396	java/lang/Exception
+    //   323	328	396	java/lang/Exception
+    //   358	362	400	java/lang/Exception
+    //   369	373	400	java/lang/Exception
   }
   
   private void modifyInflatedArea(DittoArea paramDittoArea, DittoHost paramDittoHost, DittoUIEngine.DittoUIEngineInflateListener paramDittoUIEngineInflateListener)
@@ -646,6 +665,7 @@ public class DittoUIEngine
   {
     loadJsonObject("qzone_canvas_ui_titleview.json");
     loadJsonObject("qzone_canvas_ui_feedcontent.json");
+    loadJsonObject("qzone_canvas_ui_birthday_card.json");
   }
   
   public static void setOuterGlobalData(DittoValue.GLOBAL paramGLOBAL)
@@ -722,36 +742,40 @@ public class DittoUIEngine
   
   public int getResourceId(String paramString)
   {
-    int j = 0;
-    int i;
     if (this.resourceIdCache.containsKey(paramString)) {
-      i = ((Integer)this.resourceIdCache.get(paramString)).intValue();
+      return ((Integer)this.resourceIdCache.get(paramString)).intValue();
     }
-    do
+    if (this.mRClass != null)
     {
-      do
+      if (TextUtils.isEmpty(paramString)) {
+        return 0;
+      }
+      String[] arrayOfString = paramString.split("/");
+      if (arrayOfString.length != 2)
       {
+        DittoLog.e(String.format("reference string:%s of incorrect format", new Object[] { paramString }));
+        return 0;
+      }
+      try
+      {
+        localObject = arrayOfString[0].substring(1, arrayOfString[0].length());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.mRClass.getName());
+        localStringBuilder.append("$");
+        localStringBuilder.append((String)localObject);
+        int i = Class.forName(localStringBuilder.toString()).getDeclaredField(arrayOfString[1]).getInt(null);
+        this.resourceIdCache.put(paramString, Integer.valueOf(i));
         return i;
-        i = j;
-      } while (this.mRClass == null);
-      i = j;
-    } while (TextUtils.isEmpty(paramString));
-    String[] arrayOfString = paramString.split("/");
-    if (arrayOfString.length != 2)
-    {
-      DittoLog.e(String.format("reference string:%s of incorrect format", new Object[] { paramString }));
-      return 0;
-    }
-    try
-    {
-      String str = arrayOfString[0].substring(1, arrayOfString[0].length());
-      i = Class.forName(this.mRClass.getName() + "$" + str).getDeclaredField(arrayOfString[1]).getInt(null);
-      this.resourceIdCache.put(paramString, Integer.valueOf(i));
-      return i;
-    }
-    catch (Exception localException)
-    {
-      DittoLog.e("DITTO_UI", "get resource id err:" + localException.getMessage() + "  idString:" + paramString, localException);
+      }
+      catch (Exception localException)
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("get resource id err:");
+        ((StringBuilder)localObject).append(localException.getMessage());
+        ((StringBuilder)localObject).append("  idString:");
+        ((StringBuilder)localObject).append(paramString);
+        DittoLog.e("DITTO_UI", ((StringBuilder)localObject).toString(), localException);
+      }
     }
     return 0;
   }
@@ -769,47 +793,60 @@ public class DittoUIEngine
       synchronized (this.inflatedAreaBuffer)
       {
         if (!this.inflatedAreaBuffer.containsKey(paramString)) {
-          break label266;
+          break label304;
         }
         List localList = (List)this.inflatedAreaBuffer.get(paramString);
         if (localList.size() == 0) {
-          break label266;
+          break label304;
         }
         localDittoArea = (DittoArea)localList.get(0);
         localList.remove(0);
         if (localList.size() == 0) {
           this.inflatedAreaBuffer.remove(paramString);
         }
-        DittoLog.i("area buffer used:" + paramString + "buffer remained:" + localList.size());
-        if (localDittoArea != null)
-        {
-          modifyInflatedArea(localDittoArea, paramDittoHost, paramDittoUIEngineInflateListener);
-          return localDittoArea;
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("area buffer used:");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("buffer remained:");
+        localStringBuilder.append(localList.size());
+        DittoLog.i(localStringBuilder.toString());
       }
-      if ((localDittoArea != null) || (paramBoolean)) {}
-      for (;;)
+      DittoArea localDittoArea = null;
+      if (localDittoArea != null)
       {
+        modifyInflatedArea(localDittoArea, paramDittoHost, paramDittoUIEngineInflateListener);
+        return localDittoArea;
+      }
+      if (localDittoArea == null)
+      {
+        if (paramBoolean) {}
         try
         {
           paramString = new JSONObject(paramString);
-          return inflateDittoArea(paramDittoHost, paramString, paramDittoUIEngineInflateListener);
-        }
-        catch (InvocationTargetException paramDittoHost)
-        {
-          DittoLog.e("DITTO_UI", "inflate err:" + paramDittoHost.getTargetException().getMessage(), paramDittoHost.getTargetException());
-          return null;
+          break label212;
+          paramString = loadJsonObject(paramString);
+          label212:
+          paramDittoHost = inflateDittoArea(paramDittoHost, paramString, paramDittoUIEngineInflateListener);
+          return paramDittoHost;
         }
         catch (Exception paramDittoHost)
         {
-          DittoLog.e("DITTO_UI", "inflate err:" + paramDittoHost.getMessage(), paramDittoHost);
-          continue;
+          paramString = new StringBuilder();
+          paramString.append("inflate err:");
+          paramString.append(paramDittoHost.getMessage());
+          DittoLog.e("DITTO_UI", paramString.toString(), paramDittoHost);
+          return null;
         }
-        paramString = loadJsonObject(paramString);
+        catch (InvocationTargetException paramDittoHost)
+        {
+          paramString = new StringBuilder();
+          paramString.append("inflate err:");
+          paramString.append(paramDittoHost.getTargetException().getMessage());
+          DittoLog.e("DITTO_UI", paramString.toString(), paramDittoHost.getTargetException());
+        }
       }
-      label266:
-      DittoArea localDittoArea = null;
-      continue;
+      return null;
+      label304:
       localDittoArea = null;
     }
   }
@@ -821,18 +858,21 @@ public class DittoUIEngine
       paramContext = inflateView(paramContext, loadJsonObject(paramString), paramViewGroup);
       return paramContext;
     }
-    catch (InvocationTargetException paramContext)
-    {
-      DittoLog.e("DITTO_UI", "inflate err:" + paramContext.getTargetException().getMessage(), paramContext.getTargetException());
-      return null;
-    }
     catch (Exception paramContext)
     {
-      for (;;)
-      {
-        DittoLog.e("DITTO_UI", "inflate err:" + paramContext.getMessage(), paramContext);
-      }
+      paramString = new StringBuilder();
+      paramString.append("inflate err:");
+      paramString.append(paramContext.getMessage());
+      DittoLog.e("DITTO_UI", paramString.toString(), paramContext);
     }
+    catch (InvocationTargetException paramContext)
+    {
+      paramString = new StringBuilder();
+      paramString.append("inflate err:");
+      paramString.append(paramContext.getTargetException().getMessage());
+      DittoLog.e("DITTO_UI", paramString.toString(), paramContext.getTargetException());
+    }
+    return null;
   }
   
   public View inflateView(Context paramContext, JSONObject paramJSONObject, ViewGroup paramViewGroup)
@@ -841,173 +881,175 @@ public class DittoUIEngine
       return null;
     }
     Object localObject1 = paramJSONObject.getString("View");
+    boolean bool = "merge".equals(localObject1);
+    int m = 0;
     Object localObject2;
-    int j;
     int i;
     Object localObject3;
     Object localObject4;
-    if ("merge".equals(localObject1))
-    {
-      if ((paramJSONObject.has("children")) && ((paramViewGroup instanceof ViewGroup)))
+    int j;
+    if (!bool) {
+      if ("include".equals(localObject1))
       {
-        localObject1 = paramJSONObject.getJSONArray("children");
-        if (localObject1 != null)
+        localObject2 = LayoutAttrSet.createFrom(paramJSONObject.getJSONObject("shell"));
+        localObject1 = ((LayoutAttrSet)localObject2).getAttr("layout", "");
+        localObject2 = ((LayoutAttrSet)localObject2).getAttr("id", "");
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
         {
-          localObject2 = (ViewGroup)paramViewGroup;
-          j = ((JSONArray)localObject1).length();
-          i = 0;
-          for (;;)
+          i = getResourceId((String)localObject1);
+          LayoutInflater.from(paramContext).inflate(i, paramViewGroup);
+          if (paramViewGroup != null)
           {
-            if (i >= j) {
-              break label854;
+            localObject1 = paramViewGroup.getChildAt(paramViewGroup.getChildCount() - 1);
+            paramViewGroup = (ViewGroup)localObject1;
+            if (TextUtils.isEmpty((CharSequence)localObject2)) {
+              break label638;
             }
-            localObject3 = inflateView(paramContext, ((JSONArray)localObject1).getJSONObject(i), (ViewGroup)localObject2);
-            if ((localObject3 != null) && (((View)localObject3).getParent() == null))
+            paramViewGroup = (ViewGroup)localObject1;
+            if (localObject1 == null) {
+              break label638;
+            }
+            ((View)localObject1).setId(getResourceId((String)localObject2));
+            paramViewGroup = (ViewGroup)localObject1;
+            break label638;
+          }
+        }
+        paramViewGroup = null;
+      }
+      else
+      {
+        paramViewGroup = DittoAreaEnv.findAreaClass((String)localObject1);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("inflateView name:");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        DittoLog.i("DITTO_UI", ((StringBuilder)localObject2).toString());
+        localObject2 = LayoutAttrSet.createFrom(paramJSONObject.getJSONObject("shell"));
+        paramViewGroup = paramViewGroup.getConstructor(new Class[] { Context.class, AttributeSet.class }).newInstance(new Object[] { paramContext, null });
+        if ((paramViewGroup instanceof ViewStub))
+        {
+          localObject1 = (View)paramViewGroup;
+          paramViewGroup = (ViewStub)paramViewGroup;
+          localObject3 = ((LayoutAttrSet)localObject2).getAttr("id", "");
+          localObject4 = ((LayoutAttrSet)localObject2).getAttr("inflatedId", "");
+          String str = ((LayoutAttrSet)localObject2).getAttr("layout", "");
+          if (!TextUtils.isEmpty((CharSequence)localObject3)) {
+            i = getResourceId((String)localObject3);
+          } else {
+            i = 0;
+          }
+          if (!TextUtils.isEmpty((CharSequence)localObject4)) {
+            j = getResourceId((String)localObject4);
+          } else {
+            j = 0;
+          }
+          int k;
+          if (!TextUtils.isEmpty(str)) {
+            k = getResourceId(str);
+          } else {
+            k = 0;
+          }
+          paramViewGroup.setId(i);
+          paramViewGroup.setInflatedId(j);
+          paramViewGroup.setLayoutResource(k);
+        }
+        else
+        {
+          paramViewGroup = (View)paramViewGroup;
+          localObject1 = ((LayoutAttrSet)localObject2).id;
+          if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+            paramViewGroup.setId(getResourceId((String)localObject1));
+          }
+          localObject1 = paramViewGroup;
+          if (((LayoutAttrSet)localObject2).mAttrs.containsKey("visibility"))
+          {
+            localObject3 = ((LayoutAttrSet)localObject2).getAttr("visibility", "visible");
+            if (TextUtils.equals("visible", (CharSequence)localObject3))
             {
-              localObject4 = (ViewGroup.MarginLayoutParams)((View)localObject3).getLayoutParams();
-              if (localObject4 == null) {
-                break label844;
+              paramViewGroup.setVisibility(0);
+              localObject1 = paramViewGroup;
+            }
+            else if (TextUtils.equals("gone", (CharSequence)localObject3))
+            {
+              paramViewGroup.setVisibility(8);
+              localObject1 = paramViewGroup;
+            }
+            else
+            {
+              localObject1 = paramViewGroup;
+              if (TextUtils.equals("invisible", (CharSequence)localObject3))
+              {
+                paramViewGroup.setVisibility(4);
+                localObject1 = paramViewGroup;
               }
-              if (!(localObject2 instanceof LinearLayout)) {
-                break;
+            }
+          }
+        }
+        paramViewGroup = new ViewGroup.MarginLayoutParams(((LayoutAttrSet)localObject2).width, ((LayoutAttrSet)localObject2).height);
+        paramViewGroup.leftMargin = ((LayoutAttrSet)localObject2).leftMargin;
+        paramViewGroup.topMargin = ((LayoutAttrSet)localObject2).topMargin;
+        paramViewGroup.rightMargin = ((LayoutAttrSet)localObject2).rightMargin;
+        paramViewGroup.bottomMargin = ((LayoutAttrSet)localObject2).bottomMargin;
+        ((View)localObject1).setLayoutParams(paramViewGroup);
+        ((View)localObject1).setPadding(((LayoutAttrSet)localObject2).leftPadding, ((LayoutAttrSet)localObject2).topPadding, ((LayoutAttrSet)localObject2).rightPadding, ((LayoutAttrSet)localObject2).bottomPadding);
+        paramViewGroup = (ViewGroup)localObject1;
+        if ((localObject1 instanceof LinearLayout))
+        {
+          ((LinearLayout)localObject1).setOrientation(((LayoutAttrSet)localObject2).orientation);
+          paramViewGroup = (ViewGroup)localObject1;
+        }
+      }
+    }
+    label638:
+    if ((paramJSONObject.has("children")) && ((paramViewGroup instanceof ViewGroup)))
+    {
+      localObject1 = paramJSONObject.getJSONArray("children");
+      if (localObject1 != null)
+      {
+        localObject2 = (ViewGroup)paramViewGroup;
+        j = ((JSONArray)localObject1).length();
+        i = m;
+        while (i < j)
+        {
+          localObject3 = inflateView(paramContext, ((JSONArray)localObject1).getJSONObject(i), (ViewGroup)localObject2);
+          if ((localObject3 != null) && (((View)localObject3).getParent() == null))
+          {
+            localObject4 = (ViewGroup.MarginLayoutParams)((View)localObject3).getLayoutParams();
+            if (localObject4 != null)
+            {
+              if ((localObject2 instanceof LinearLayout))
+              {
+                paramJSONObject = new LinearLayout.LayoutParams(((ViewGroup.MarginLayoutParams)localObject4).width, ((ViewGroup.MarginLayoutParams)localObject4).height);
+                paramJSONObject.leftMargin = ((ViewGroup.MarginLayoutParams)localObject4).leftMargin;
+                paramJSONObject.topMargin = ((ViewGroup.MarginLayoutParams)localObject4).topMargin;
+                paramJSONObject.rightMargin = ((ViewGroup.MarginLayoutParams)localObject4).rightMargin;
+                paramJSONObject.bottomMargin = ((ViewGroup.MarginLayoutParams)localObject4).bottomMargin;
               }
-              paramJSONObject = new LinearLayout.LayoutParams(((ViewGroup.MarginLayoutParams)localObject4).width, ((ViewGroup.MarginLayoutParams)localObject4).height);
-              paramJSONObject.leftMargin = ((ViewGroup.MarginLayoutParams)localObject4).leftMargin;
-              paramJSONObject.topMargin = ((ViewGroup.MarginLayoutParams)localObject4).topMargin;
-              paramJSONObject.rightMargin = ((ViewGroup.MarginLayoutParams)localObject4).rightMargin;
-              paramJSONObject.bottomMargin = ((ViewGroup.MarginLayoutParams)localObject4).bottomMargin;
-              label186:
+              else if ((localObject2 instanceof RelativeLayout))
+              {
+                paramJSONObject = new RelativeLayout.LayoutParams(((ViewGroup.MarginLayoutParams)localObject4).width, ((ViewGroup.MarginLayoutParams)localObject4).height);
+                paramJSONObject.leftMargin = ((ViewGroup.MarginLayoutParams)localObject4).leftMargin;
+                paramJSONObject.topMargin = ((ViewGroup.MarginLayoutParams)localObject4).topMargin;
+                paramJSONObject.rightMargin = ((ViewGroup.MarginLayoutParams)localObject4).rightMargin;
+                paramJSONObject.bottomMargin = ((ViewGroup.MarginLayoutParams)localObject4).bottomMargin;
+              }
+              else
+              {
+                paramJSONObject = null;
+              }
               if (paramJSONObject != null) {
                 ((ViewGroup)localObject2).addView((View)localObject3, paramJSONObject);
               }
             }
-            label198:
-            i += 1;
-          }
-        }
-      }
-    }
-    else if ("include".equals(localObject1))
-    {
-      localObject2 = LayoutAttrSet.createFrom(paramJSONObject.getJSONObject("shell"));
-      localObject1 = ((LayoutAttrSet)localObject2).getAttr("layout", "");
-      localObject2 = ((LayoutAttrSet)localObject2).getAttr("id", "");
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label879;
-      }
-      i = getResourceId((String)localObject1);
-      LayoutInflater.from(paramContext).inflate(i, paramViewGroup);
-      if (paramViewGroup == null) {
-        break label879;
-      }
-      localObject1 = paramViewGroup.getChildAt(paramViewGroup.getChildCount() - 1);
-      paramViewGroup = (ViewGroup)localObject1;
-      if (!TextUtils.isEmpty((CharSequence)localObject2))
-      {
-        paramViewGroup = (ViewGroup)localObject1;
-        if (localObject1 != null) {
-          ((View)localObject1).setId(getResourceId((String)localObject2));
-        }
-      }
-    }
-    label844:
-    label854:
-    label873:
-    label879:
-    for (paramViewGroup = (ViewGroup)localObject1;; paramViewGroup = null)
-    {
-      break;
-      paramViewGroup = DittoAreaEnv.findAreaClass((String)localObject1);
-      DittoLog.i("DITTO_UI", "inflateView name:" + (String)localObject1);
-      localObject2 = LayoutAttrSet.createFrom(paramJSONObject.getJSONObject("shell"));
-      paramViewGroup = paramViewGroup.getConstructor(new Class[] { Context.class, AttributeSet.class }).newInstance(new Object[] { paramContext, null });
-      String str;
-      if ((paramViewGroup instanceof ViewStub))
-      {
-        localObject1 = (View)paramViewGroup;
-        paramViewGroup = (ViewStub)paramViewGroup;
-        localObject3 = ((LayoutAttrSet)localObject2).getAttr("id", "");
-        localObject4 = ((LayoutAttrSet)localObject2).getAttr("inflatedId", "");
-        str = ((LayoutAttrSet)localObject2).getAttr("layout", "");
-        if (TextUtils.isEmpty((CharSequence)localObject3)) {
-          break label873;
-        }
-      }
-      for (i = getResourceId((String)localObject3);; i = 0)
-      {
-        if (!TextUtils.isEmpty((CharSequence)localObject4)) {}
-        for (j = getResourceId((String)localObject4);; j = 0)
-        {
-          if (!TextUtils.isEmpty(str)) {}
-          for (int k = getResourceId(str);; k = 0)
-          {
-            paramViewGroup.setId(i);
-            paramViewGroup.setInflatedId(j);
-            paramViewGroup.setLayoutResource(k);
-            for (;;)
+            else
             {
-              paramViewGroup = new ViewGroup.MarginLayoutParams(((LayoutAttrSet)localObject2).width, ((LayoutAttrSet)localObject2).height);
-              paramViewGroup.leftMargin = ((LayoutAttrSet)localObject2).leftMargin;
-              paramViewGroup.topMargin = ((LayoutAttrSet)localObject2).topMargin;
-              paramViewGroup.rightMargin = ((LayoutAttrSet)localObject2).rightMargin;
-              paramViewGroup.bottomMargin = ((LayoutAttrSet)localObject2).bottomMargin;
-              ((View)localObject1).setLayoutParams(paramViewGroup);
-              ((View)localObject1).setPadding(((LayoutAttrSet)localObject2).leftPadding, ((LayoutAttrSet)localObject2).topPadding, ((LayoutAttrSet)localObject2).rightPadding, ((LayoutAttrSet)localObject2).bottomPadding);
-              paramViewGroup = (ViewGroup)localObject1;
-              if (!(localObject1 instanceof LinearLayout)) {
-                break;
-              }
-              ((LinearLayout)localObject1).setOrientation(((LayoutAttrSet)localObject2).orientation);
-              paramViewGroup = (ViewGroup)localObject1;
-              break;
-              paramViewGroup = (View)paramViewGroup;
-              localObject1 = ((LayoutAttrSet)localObject2).id;
-              if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-                paramViewGroup.setId(getResourceId((String)localObject1));
-              }
-              localObject1 = paramViewGroup;
-              if (((LayoutAttrSet)localObject2).mAttrs.containsKey("visibility"))
-              {
-                localObject3 = ((LayoutAttrSet)localObject2).getAttr("visibility", "visible");
-                if (TextUtils.equals("visible", (CharSequence)localObject3))
-                {
-                  paramViewGroup.setVisibility(0);
-                  localObject1 = paramViewGroup;
-                }
-                else if (TextUtils.equals("gone", (CharSequence)localObject3))
-                {
-                  paramViewGroup.setVisibility(8);
-                  localObject1 = paramViewGroup;
-                }
-                else
-                {
-                  localObject1 = paramViewGroup;
-                  if (TextUtils.equals("invisible", (CharSequence)localObject3))
-                  {
-                    paramViewGroup.setVisibility(4);
-                    localObject1 = paramViewGroup;
-                  }
-                }
-              }
-            }
-            if ((localObject2 instanceof RelativeLayout))
-            {
-              paramJSONObject = new RelativeLayout.LayoutParams(((ViewGroup.MarginLayoutParams)localObject4).width, ((ViewGroup.MarginLayoutParams)localObject4).height);
-              paramJSONObject.leftMargin = ((ViewGroup.MarginLayoutParams)localObject4).leftMargin;
-              paramJSONObject.topMargin = ((ViewGroup.MarginLayoutParams)localObject4).topMargin;
-              paramJSONObject.rightMargin = ((ViewGroup.MarginLayoutParams)localObject4).rightMargin;
-              paramJSONObject.bottomMargin = ((ViewGroup.MarginLayoutParams)localObject4).bottomMargin;
-              break label186;
               ((ViewGroup)localObject2).addView((View)localObject3);
-              break label198;
-              return paramViewGroup;
             }
-            paramJSONObject = null;
-            break label186;
           }
+          i += 1;
         }
       }
     }
+    return paramViewGroup;
   }
   
   public void init(Context paramContext, Log paramLog)
@@ -1033,11 +1075,19 @@ public class DittoUIEngine
     this.subDirectoryPath = paramString2;
     if ((!TextUtils.isEmpty(paramString1)) && (isFirstBoot(paramString1)))
     {
-      paramDittoResources = localContext.getFilesDir().getAbsolutePath() + File.separator + paramString2 + File.separator;
+      paramDittoResources = new StringBuilder();
+      paramDittoResources.append(localContext.getFilesDir().getAbsolutePath());
+      paramDittoResources.append(File.separator);
+      paramDittoResources.append(paramString2);
+      paramDittoResources.append(File.separator);
+      paramDittoResources = paramDittoResources.toString();
       if (paramDittoResources != null) {
         FileUtils.deleteFile(new File(paramDittoResources));
       }
-      DittoLog.i("Clean the storage field when updated:" + paramDittoResources);
+      paramIReporter = new StringBuilder();
+      paramIReporter.append("Clean the storage field when updated:");
+      paramIReporter.append(paramDittoResources);
+      DittoLog.i(paramIReporter.toString());
       createVersionFile(paramString1);
     }
     this.mRClass = paramClass;
@@ -1046,105 +1096,130 @@ public class DittoUIEngine
     preloadJsonObjects();
   }
   
-  public void updateLayoutFile(Map<String, String> arg1)
+  public void updateLayoutFile(Map<String, String> paramMap)
   {
-    if ((??? == null) || (???.size() <= 0)) {}
-    for (;;)
+    if (paramMap != null)
     {
-      return;
+      if (paramMap.size() <= 0) {
+        return;
+      }
       try
       {
-        File localFile = new File(g().mContext.getFilesDir().getAbsolutePath() + File.separator + this.subDirectoryPath + File.separator);
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append(g().mContext.getFilesDir().getAbsolutePath());
+        ((StringBuilder)???).append(File.separator);
+        ((StringBuilder)???).append(this.subDirectoryPath);
+        ((StringBuilder)???).append(File.separator);
+        File localFile = new File(((StringBuilder)???).toString());
         if (!localFile.exists()) {
           localFile.mkdirs();
         }
         ??? = null;
-        Iterator localIterator = ???.entrySet().iterator();
-        ??? = (Map<String, String>)???;
-        while (localIterator.hasNext())
-        {
-          ??? = (Map.Entry)localIterator.next();
-          String str1 = (String)((Map.Entry)???).getKey();
-          String str2 = (String)((Map.Entry)???).getValue();
-          try
+        Iterator localIterator = paramMap.entrySet().iterator();
+        for (paramMap = (Map<String, String>)???; localIterator.hasNext(); paramMap = (Map<String, String>)???) {
+          for (;;)
           {
-            if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
-            {
-              localObject3 = generateBuffer(str1, str2);
-              synchronized (this.jsonCache)
-              {
-                this.jsonCache.put(str1, localObject3);
-                localObject3 = new File(localFile.getPath(), str1);
-                if (((File)localObject3).exists()) {
-                  ((File)localObject3).delete();
-                }
-                ((File)localObject3).createNewFile();
-                ??? = new FileOutputStream((File)localObject3);
-              }
-            }
-          }
-          catch (Exception localException1)
-          {
+            ??? = (Map.Entry)localIterator.next();
+            String str1 = (String)((Map.Entry)???).getKey();
+            String str2 = (String)((Map.Entry)???).getValue();
             try
             {
-              ((FileOutputStream)???).write(str2.getBytes());
-              ((FileOutputStream)???).close();
-              localObject3 = FileUtils.getMd5ByFile((File)localObject3);
+              if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2))) {
+                break;
+              }
+              ??? = generateBuffer(str1, str2);
+              synchronized (this.jsonCache)
+              {
+                this.jsonCache.put(str1, ???);
+                ??? = new File(localFile.getPath(), str1);
+                if (((File)???).exists()) {
+                  ((File)???).delete();
+                }
+                ((File)???).createNewFile();
+                ??? = new FileOutputStream((File)???);
+                try
+                {
+                  ((FileOutputStream)???).write(str2.getBytes());
+                  ((FileOutputStream)???).close();
+                  paramMap = FileUtils.getMd5ByFile((File)???);
+                  synchronized (this.fileMd5)
+                  {
+                    this.fileMd5.put(str1, paramMap);
+                    ??? = new StringBuilder();
+                    ((StringBuilder)???).append("update Layout File:");
+                    ((StringBuilder)???).append(str1);
+                    ((StringBuilder)???).append(" md5:");
+                    ((StringBuilder)???).append(paramMap);
+                    paramMap = ((StringBuilder)???).toString();
+                    DittoLog.i(paramMap);
+                    getReporter().haboReport("tencent.ditto.updateLayoutFile", 0, paramMap, 1);
+                  }
+                  localObject3 = finally;
+                }
+                catch (Exception localException2)
+                {
+                  paramMap = (Map<String, String>)???;
+                }
+              }
+              try
+              {
+                int j;
+                int i;
+                paramMap.close();
+                ??? = paramMap;
+              }
+              catch (Exception localException1)
+              {
+                for (;;)
+                {
+                  Map<String, String> localMap = paramMap;
+                }
+              }
             }
             catch (Exception localException3)
             {
-              for (;;)
+              j = -1;
+              if ((localException3 instanceof JSONException))
               {
-                Object localObject3;
-                int j;
-                ??? = localException1;
-                Object localObject2 = localException3;
-                continue;
-                int i = j;
+                i = -61442;
+              }
+              else
+              {
+                i = j;
                 if (Build.VERSION.SDK_INT >= 19)
                 {
-                  boolean bool = localObject2 instanceof ReflectiveOperationException;
                   i = j;
-                  if (bool) {
+                  if ((localException3 instanceof ReflectiveOperationException)) {
                     i = -61441;
                   }
                 }
               }
-            }
-            synchronized (this.fileMd5)
-            {
-              this.fileMd5.put(str1, localObject3);
-              ??? = "update Layout File:" + str1 + " md5:" + (String)localObject3;
-              DittoLog.i(???);
-              getReporter().haboReport("tencent.ditto.updateLayoutFile", 0, ???, 1);
-              ??? = (Map<String, String>)???;
-              continue;
-              localObject4 = finally;
-              throw localObject4;
-              localException1 = localException1;
-              j = -1;
-              if ((localException1 instanceof JSONException))
-              {
-                i = -61442;
-                DittoLog.e("DITTO_UI", "update file error! " + str1 + " -- " + str2 + "Exception:" + localException1.getMessage(), localException1);
-                getReporter().haboReport("tencent.ditto.updateLayoutFile", i, DittoLog.getTraceString(localException1), 1);
-                if (??? == null) {}
-              }
+              ??? = new StringBuilder();
+              ((StringBuilder)???).append("update file error! ");
+              ((StringBuilder)???).append(str1);
+              ((StringBuilder)???).append(" -- ");
+              ((StringBuilder)???).append(str2);
+              ((StringBuilder)???).append("Exception:");
+              ((StringBuilder)???).append(localException3.getMessage());
+              DittoLog.e("DITTO_UI", ((StringBuilder)???).toString(), localException3);
+              getReporter().haboReport("tencent.ditto.updateLayoutFile", i, DittoLog.getTraceString(localException3), 1);
+              ??? = paramMap;
+              if (paramMap == null) {}
             }
           }
         }
         return;
       }
-      catch (Exception ???)
+      catch (Exception paramMap)
       {
-        DittoLog.e("DITTO_UI", "updateLayoutFile error!", ???);
+        DittoLog.e("DITTO_UI", "updateLayoutFile error!", paramMap);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ditto.shell.DittoUIEngine
  * JD-Core Version:    0.7.0.1
  */

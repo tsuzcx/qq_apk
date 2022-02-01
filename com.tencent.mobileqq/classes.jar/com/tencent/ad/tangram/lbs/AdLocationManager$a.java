@@ -9,6 +9,7 @@ import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
 import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.process.AdProcessManager;
+import java.io.Serializable;
 import java.lang.ref.WeakReference;
 
 final class AdLocationManager$a
@@ -25,80 +26,79 @@ final class AdLocationManager$a
   
   public AdIPCManager.Result handle(AdIPCManager.Params paramParams)
   {
-    Object localObject3 = null;
     AdIPCManager.Result localResult = new AdIPCManager.Result();
-    Object localObject1 = AdProcessManager.INSTANCE.isOnMainProcess();
-    Object localObject2;
-    if (localObject1 != null) {
-      if (!((Boolean)localObject1).booleanValue())
-      {
-        localObject1 = null;
-        localObject2 = localObject3;
-      }
-    }
-    for (;;)
+    Object localObject = AdProcessManager.INSTANCE.isOnMainProcess();
+    AdLocation localAdLocation = null;
+    if ((localObject != null) && (((Boolean)localObject).booleanValue()))
     {
-      paramParams = AdLocation.merge((AdLocation)localObject1, (AdLocation)localObject2);
-      AdLocationManager.access$200(AdLocationManager.INSTANCE, paramParams);
-      AdLog.i("AdLocationManager", String.format("IPCHandler.handle result:%s mainProcess:%s childProcess:%s", new Object[] { paramParams, localObject1, localObject2 }));
-      if ((paramParams != null) && (paramParams.isValid()))
-      {
-        localObject1 = new Bundle();
-        ((Bundle)localObject1).putSerializable("LOCATION", paramParams);
-        localResult.bundle = ((Bundle)localObject1);
-      }
-      return localResult;
       localResult.success = true;
-      AdLocation localAdLocation = AdLocationManager.access$100(AdLocationManager.INSTANCE);
-      localObject2 = localObject3;
-      localObject1 = localAdLocation;
-      if (paramParams != null)
+      localObject = AdLocationManager.access$100(AdLocationManager.INSTANCE);
+      if (paramParams == null)
       {
-        localObject2 = localObject3;
-        localObject1 = localAdLocation;
-        if (paramParams.bundle != null)
+        paramParams = (AdIPCManager.Params)localObject;
+      }
+      else if (paramParams.bundle == null)
+      {
+        paramParams = (AdIPCManager.Params)localObject;
+      }
+      else if (!paramParams.bundle.containsKey("LOCATION"))
+      {
+        paramParams = (AdIPCManager.Params)localObject;
+      }
+      else
+      {
+        paramParams = paramParams.bundle.getSerializable("LOCATION");
+        if (paramParams == null)
         {
-          localObject2 = localObject3;
-          localObject1 = localAdLocation;
-          if (paramParams.bundle.containsKey("LOCATION"))
-          {
-            paramParams = paramParams.bundle.getSerializable("LOCATION");
-            localObject2 = localObject3;
-            localObject1 = localAdLocation;
-            if (paramParams != null)
-            {
-              localObject2 = localObject3;
-              localObject1 = localAdLocation;
-              if ((paramParams instanceof AdLocation))
-              {
-                localObject2 = (AdLocation)AdLocation.class.cast(paramParams);
-                localObject1 = localAdLocation;
-                continue;
-                localObject1 = null;
-                localObject2 = localObject3;
-              }
-            }
-          }
+          paramParams = (AdIPCManager.Params)localObject;
+        }
+        else if (!(paramParams instanceof AdLocation))
+        {
+          paramParams = (AdIPCManager.Params)localObject;
+        }
+        else
+        {
+          localAdLocation = (AdLocation)AdLocation.class.cast(paramParams);
+          paramParams = (AdIPCManager.Params)localObject;
         }
       }
     }
+    else
+    {
+      paramParams = null;
+    }
+    localObject = AdLocation.merge(paramParams, localAdLocation);
+    AdLocationManager.access$200(AdLocationManager.INSTANCE, (AdLocation)localObject);
+    AdLog.i("AdLocationManager", String.format("IPCHandler.handle result:%s mainProcess:%s childProcess:%s", new Object[] { localObject, paramParams, localAdLocation }));
+    if ((localObject != null) && (((AdLocation)localObject).isValid()))
+    {
+      paramParams = new Bundle();
+      paramParams.putSerializable("LOCATION", (Serializable)localObject);
+      localResult.bundle = paramParams;
+    }
+    return localResult;
   }
   
   public void updateCacheByIPC(Context paramContext, AdLocation paramAdLocation)
   {
     Object localObject = AdProcessManager.INSTANCE.isOnMainProcess();
-    if ((localObject == null) || (((Boolean)localObject).booleanValue())) {}
-    while (paramContext == null) {
-      return;
+    if (localObject != null)
+    {
+      if (((Boolean)localObject).booleanValue()) {
+        return;
+      }
+      if (paramContext == null) {
+        return;
+      }
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("IPC_ACTION", "GET_LBS_CACHE");
+      ((Bundle)localObject).putString("IPC_TO_PROCESS_NAME", AdProcessManager.INSTANCE.getMainProcessName());
+      if ((paramAdLocation != null) && (paramAdLocation.isValid())) {
+        ((Bundle)localObject).putSerializable("LOCATION", paramAdLocation);
+      }
+      AdIPCManager.INSTANCE.send(paramContext, new AdIPCManager.Params((Bundle)localObject), new WeakReference(this.ipcCallback));
+      AdLog.i("AdLocationManager", String.format("IPCHandler.updateCacheByIPC childProcess:%s", new Object[] { paramAdLocation }));
     }
-    localObject = new Bundle();
-    ((Bundle)localObject).putString("IPC_ACTION", "GET_LBS_CACHE");
-    ((Bundle)localObject).putString("IPC_TO_PROCESS_NAME", AdProcessManager.INSTANCE.getMainProcessName());
-    if ((paramAdLocation != null) && (paramAdLocation.isValid())) {
-      ((Bundle)localObject).putSerializable("LOCATION", paramAdLocation);
-    }
-    AdIPCManager.INSTANCE.send(paramContext, new AdIPCManager.Params((Bundle)localObject), new WeakReference(this.ipcCallback));
-    AdLog.i("AdLocationManager", String.format("IPCHandler.updateCacheByIPC childProcess:%s", new Object[] { paramAdLocation }));
   }
 }
 

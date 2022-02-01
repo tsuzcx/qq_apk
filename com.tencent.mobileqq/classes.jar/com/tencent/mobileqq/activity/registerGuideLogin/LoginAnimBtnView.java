@@ -53,22 +53,28 @@ public class LoginAnimBtnView
   
   private void g()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) && (!this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.isAnimating())) {
+    LottieDrawable localLottieDrawable = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+    if ((localLottieDrawable != null) && (!localLottieDrawable.isAnimating())) {
       this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.playAnimation();
     }
   }
   
   private void h()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) && (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.isAnimating())) {
+    LottieDrawable localLottieDrawable = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+    if ((localLottieDrawable != null) && (localLottieDrawable.isAnimating())) {
       this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.pauseAnimation();
     }
   }
   
   private void i()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LoginAnimBtnView", 2, "loadLottieAnimation mLottieDrawable:" + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadLottieAnimation mLottieDrawable:");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+      QLog.i("LoginAnimBtnView", 2, localStringBuilder.toString());
     }
     if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) {
       return;
@@ -89,8 +95,12 @@ public class LoginAnimBtnView
   
   public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LoginAnimBtnView", 2, "onResume " + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onResume ");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+      QLog.i("LoginAnimBtnView", 2, localStringBuilder.toString());
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) && (isEnabled())) {
       this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.resumeAnimation();
@@ -99,10 +109,15 @@ public class LoginAnimBtnView
   
   public void c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LoginAnimBtnView", 2, "onPause " + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onPause ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+      QLog.i("LoginAnimBtnView", 2, ((StringBuilder)localObject).toString());
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) && (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.isAnimating())) {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+    if ((localObject != null) && (((LottieDrawable)localObject).isAnimating())) {
       this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.pauseAnimation();
     }
   }
@@ -131,8 +146,12 @@ public class LoginAnimBtnView
   
   public void f()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LoginAnimBtnView", 2, "onDestroy " + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("onDestroy ");
+      ((StringBuilder)???).append(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+      QLog.i("LoginAnimBtnView", 2, ((StringBuilder)???).toString());
     }
     this.jdField_c_of_type_Boolean = true;
     removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
@@ -159,7 +178,7 @@ public class LoginAnimBtnView
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     try
     {
@@ -167,34 +186,14 @@ public class LoginAnimBtnView
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      try
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("onDraw error0:");
+      localStringBuilder2.append(localOutOfMemoryError.getMessage());
+      QLog.e("LoginAnimBtnView", 1, localStringBuilder2.toString());
+      LottieDrawable localLottieDrawable = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+      if (localLottieDrawable != null)
       {
-        int i = getMeasuredWidth();
-        int j = getMeasuredHeight();
-        if ((this.jdField_a_of_type_AndroidGraphicsPath == null) || (i != this.jdField_a_of_type_Int) || (j != this.jdField_b_of_type_Int))
-        {
-          int k = Math.min(i, j) / 2;
-          this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-          this.jdField_a_of_type_AndroidGraphicsPath.setFillType(Path.FillType.INVERSE_WINDING);
-          this.jdField_a_of_type_AndroidGraphicsPath.addCircle(i / 2, j / 2, k, Path.Direction.CW);
-          this.jdField_a_of_type_Int = i;
-          this.jdField_b_of_type_Int = j;
-        }
-        if ((isEnabled()) && (isPressed())) {
-          paramCanvas.drawColor(this.e);
-        }
-        paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-        return;
-      }
-      catch (Throwable paramCanvas)
-      {
-        QLog.e("LoginAnimBtnView", 1, "onDraw error2:" + paramCanvas.getMessage());
-      }
-      localOutOfMemoryError = localOutOfMemoryError;
-      QLog.e("LoginAnimBtnView", 1, "onDraw error0:" + localOutOfMemoryError.getMessage());
-      if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.cancelAnimation();
+        localLottieDrawable.cancelAnimation();
         this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.recycleBitmaps();
         this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.clearComposition();
         this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.setImageAssetDelegate(null);
@@ -203,20 +202,46 @@ public class LoginAnimBtnView
       this.jdField_a_of_type_Boolean = false;
       if (isEnabled()) {
         setBackgroundColor(this.d);
-      }
-      for (;;)
-      {
-        try
-        {
-          super.onDraw(paramCanvas);
-        }
-        catch (Throwable localThrowable)
-        {
-          QLog.e("LoginAnimBtnView", 1, "onDraw error1:" + localThrowable.getMessage());
-        }
-        break;
+      } else {
         setBackgroundColor(this.jdField_c_of_type_Int);
       }
+      try
+      {
+        super.onDraw(paramCanvas);
+      }
+      catch (Throwable localThrowable)
+      {
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("onDraw error1:");
+        localStringBuilder2.append(localThrowable.getMessage());
+        QLog.e("LoginAnimBtnView", 1, localStringBuilder2.toString());
+      }
+    }
+    try
+    {
+      int i = getMeasuredWidth();
+      int j = getMeasuredHeight();
+      if ((this.jdField_a_of_type_AndroidGraphicsPath == null) || (i != this.jdField_a_of_type_Int) || (j != this.jdField_b_of_type_Int))
+      {
+        int k = Math.min(i, j) / 2;
+        this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+        this.jdField_a_of_type_AndroidGraphicsPath.setFillType(Path.FillType.INVERSE_WINDING);
+        this.jdField_a_of_type_AndroidGraphicsPath.addCircle(i / 2, j / 2, k, Path.Direction.CW);
+        this.jdField_a_of_type_Int = i;
+        this.jdField_b_of_type_Int = j;
+      }
+      if ((isEnabled()) && (isPressed())) {
+        paramCanvas.drawColor(this.e);
+      }
+      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+      return;
+    }
+    catch (Throwable paramCanvas)
+    {
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("onDraw error2:");
+      localStringBuilder1.append(paramCanvas.getMessage());
+      QLog.e("LoginAnimBtnView", 1, localStringBuilder1.toString());
     }
   }
   
@@ -227,8 +252,14 @@ public class LoginAnimBtnView
     if (bool == paramBoolean) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("LoginAnimBtnView", 2, "setEnabled isEnabled:" + isEnabled() + "  mLottieDrawable:" + this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setEnabled isEnabled:");
+      localStringBuilder.append(isEnabled());
+      localStringBuilder.append("  mLottieDrawable:");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+      QLog.i("LoginAnimBtnView", 2, localStringBuilder.toString());
     }
     removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     post(this.jdField_a_of_type_JavaLangRunnable);
@@ -242,7 +273,7 @@ public class LoginAnimBtnView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView
  * JD-Core Version:    0.7.0.1
  */

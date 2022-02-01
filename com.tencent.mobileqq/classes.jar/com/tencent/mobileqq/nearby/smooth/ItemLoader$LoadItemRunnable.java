@@ -26,19 +26,23 @@ final class ItemLoader$LoadItemRunnable<Params, Result>
   {
     Process.setThreadPriority(10);
     this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.b.remove(this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest)) {}
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest)) {
       return;
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest.jdField_a_of_type_JavaLangInteger.intValue());
-      this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest.c = new SoftReference(localObject);
-    } while ((this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest.b == null) || (this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest)));
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a.post(new ItemLoader.DisplayItemRunnable(this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader, this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest, false));
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest.jdField_a_of_type_JavaLangInteger.intValue());
+    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest.c = new SoftReference(localObject);
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest.b != null)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest)) {
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a.post(new ItemLoader.DisplayItemRunnable(this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader, this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader$ItemRequest, false));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.smooth.ItemLoader.LoadItemRunnable
  * JD-Core Version:    0.7.0.1
  */

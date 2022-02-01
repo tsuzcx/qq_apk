@@ -1,9 +1,8 @@
 package com.tencent.av.ptu;
 
+import com.tencent.aelight.camera.download.api.IAEResUtil;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.download.AEResUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 
 public class AEKitResItemChecker
 {
@@ -23,49 +22,7 @@ public class AEKitResItemChecker
   
   public boolean a(VideoAppInterface paramVideoAppInterface)
   {
-    if (this.jdField_a_of_type_Int == 1) {}
-    label63:
-    label191:
-    for (;;)
-    {
-      return true;
-      int i;
-      if (!b())
-      {
-        long l1 = System.currentTimeMillis();
-        if ((paramVideoAppInterface != null) && (l1 > this.jdField_a_of_type_Long))
-        {
-          long l2 = AudioHelper.c();
-          if (PtuResChecker.b(this.b)) {
-            if (paramVideoAppInterface.g())
-            {
-              i = 1;
-              this.jdField_a_of_type_Int = i;
-              long l3 = AudioHelper.c();
-              QLog.w("PtuResChecker", 1, "check, packageIdx[" + this.b + "], isResReady[" + this.jdField_a_of_type_Int + "], cost[" + (l3 - l2) / 1000000L + "ms]");
-              this.jdField_a_of_type_Long = (l1 + 30000L);
-            }
-          }
-        }
-      }
-      for (;;)
-      {
-        if (this.jdField_a_of_type_Int == 1) {
-          break label191;
-        }
-        return false;
-        i = 0;
-        break;
-        PtuResChecker.a(paramVideoAppInterface.getApp(), this.b);
-        break label63;
-        if (QLog.isDevelopLevel())
-        {
-          QLog.w("PtuResChecker", 1, "check, call too frequency or app is null.");
-          continue;
-          this.jdField_a_of_type_Int = 1;
-        }
-      }
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public boolean b()
@@ -73,12 +30,12 @@ public class AEKitResItemChecker
     if (PtuResChecker.b(this.b)) {
       return PtuResChecker.b();
     }
-    return AEResUtil.b(PtuResChecker.a(this.b));
+    return ((IAEResUtil)QRoute.api(IAEResUtil.class)).isAEResExist(PtuResChecker.a(this.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ptu.AEKitResItemChecker
  * JD-Core Version:    0.7.0.1
  */

@@ -45,38 +45,35 @@ public final class DataSpec
   
   public DataSpec(Uri paramUri, byte[] paramArrayOfByte, long paramLong1, long paramLong2, long paramLong3, @Nullable String paramString, int paramInt)
   {
-    if (paramLong1 >= 0L)
-    {
-      bool = true;
-      Assertions.checkArgument(bool);
-      if (paramLong2 < 0L) {
-        break label103;
-      }
-      bool = true;
-      label28:
-      Assertions.checkArgument(bool);
-      if ((paramLong3 <= 0L) && (paramLong3 != -1L)) {
-        break label109;
+    boolean bool2 = true;
+    if (paramLong1 >= 0L) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    Assertions.checkArgument(bool1);
+    if (paramLong2 >= 0L) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    Assertions.checkArgument(bool1);
+    boolean bool1 = bool2;
+    if (paramLong3 <= 0L) {
+      if (paramLong3 == -1L) {
+        bool1 = bool2;
+      } else {
+        bool1 = false;
       }
     }
-    label103:
-    label109:
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkArgument(bool);
-      this.uri = paramUri;
-      this.postBody = paramArrayOfByte;
-      this.absoluteStreamPosition = paramLong1;
-      this.position = paramLong2;
-      this.length = paramLong3;
-      this.key = paramString;
-      this.flags = paramInt;
-      return;
-      bool = false;
-      break;
-      bool = false;
-      break label28;
-    }
+    Assertions.checkArgument(bool1);
+    this.uri = paramUri;
+    this.postBody = paramArrayOfByte;
+    this.absoluteStreamPosition = paramLong1;
+    this.position = paramLong2;
+    this.length = paramLong3;
+    this.key = paramString;
+    this.flags = paramInt;
   }
   
   public boolean isFlagSet(int paramInt)
@@ -86,13 +83,12 @@ public final class DataSpec
   
   public DataSpec subrange(long paramLong)
   {
-    long l = -1L;
-    if (this.length == -1L) {}
-    for (;;)
-    {
-      return subrange(paramLong, l);
-      l = this.length - paramLong;
+    long l2 = this.length;
+    long l1 = -1L;
+    if (l2 != -1L) {
+      l1 = l2 - paramLong;
     }
+    return subrange(paramLong, l1);
   }
   
   public DataSpec subrange(long paramLong1, long paramLong2)
@@ -105,12 +101,28 @@ public final class DataSpec
   
   public String toString()
   {
-    return "DataSpec[" + this.uri + ", " + Arrays.toString(this.postBody) + ", " + this.absoluteStreamPosition + ", " + this.position + ", " + this.length + ", " + this.key + ", " + this.flags + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DataSpec[");
+    localStringBuilder.append(this.uri);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(Arrays.toString(this.postBody));
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.absoluteStreamPosition);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.position);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.length);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.key);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.flags);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.upstream.DataSpec
  * JD-Core Version:    0.7.0.1
  */

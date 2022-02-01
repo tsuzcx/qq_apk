@@ -22,30 +22,27 @@ class AndroidCollector$CollectorHandler
   
   private void pushLog(LogItem paramLogItem)
   {
-    Object localObject = (Map)this.logMergeMap.get(paramLogItem.name);
-    if (localObject == null)
+    Object localObject2 = (Map)this.logMergeMap.get(paramLogItem.name);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      localObject = new HashMap();
-      this.logMergeMap.put(paramLogItem.name, localObject);
+      localObject1 = new HashMap();
+      this.logMergeMap.put(paramLogItem.name, localObject1);
     }
-    for (;;)
+    localObject2 = paramLogItem.getAggregationKey();
+    LogItem localLogItem = (LogItem)((Map)localObject1).get(localObject2);
+    if (localLogItem == null)
     {
-      String str = paramLogItem.getAggregationKey();
-      LogItem localLogItem = (LogItem)((Map)localObject).get(str);
-      if (localLogItem == null)
-      {
-        ((Map)localObject).put(str, paramLogItem);
-        return;
-      }
-      if (BeanConvert.mergeLogItem(localLogItem, paramLogItem))
-      {
-        localLogItem.timestamp = paramLogItem.timestamp;
-        return;
-      }
-      ((Map)localObject).remove(str);
-      ELog.warn("merge stat log failed, removed stat log of %s: %s", new Object[] { paramLogItem.name, str });
+      ((Map)localObject1).put(localObject2, paramLogItem);
       return;
     }
+    if (BeanConvert.mergeLogItem(localLogItem, paramLogItem))
+    {
+      localLogItem.timestamp = paramLogItem.timestamp;
+      return;
+    }
+    ((Map)localObject1).remove(localObject2);
+    ELog.warn("merge stat log failed, removed stat log of %s: %s", new Object[] { paramLogItem.name, localObject2 });
   }
   
   private void report()
@@ -63,17 +60,18 @@ class AndroidCollector$CollectorHandler
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 0)
     {
-    default: 
-      return;
-    case 0: 
-      pushLog((LogItem)paramMessage.obj);
+      if (i != 1) {
+        return;
+      }
+      report();
+      removeMessages(1);
+      sendEmptyMessageDelayed(1, AndroidCollector.access$100(this.this$0));
       return;
     }
-    report();
-    removeMessages(1);
-    sendEmptyMessageDelayed(1, AndroidCollector.access$100(this.this$0));
+    pushLog((LogItem)paramMessage.obj);
   }
   
   public void schedule()
@@ -83,7 +81,7 @@ class AndroidCollector$CollectorHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tfm.metrics.AndroidCollector.CollectorHandler
  * JD-Core Version:    0.7.0.1
  */

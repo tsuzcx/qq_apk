@@ -22,201 +22,128 @@ public class LottieCompositionParser
 {
   public static LottieComposition parse(JsonReader paramJsonReader)
   {
-    float f5 = Utils.dpScale();
+    float f4 = Utils.dpScale();
     LongSparseArray localLongSparseArray = new LongSparseArray();
-    ArrayList localArrayList1 = new ArrayList();
-    HashMap localHashMap1 = new HashMap();
+    ArrayList localArrayList2 = new ArrayList();
     HashMap localHashMap2 = new HashMap();
     HashMap localHashMap3 = new HashMap();
-    ArrayList localArrayList2 = new ArrayList();
+    HashMap localHashMap1 = new HashMap();
+    ArrayList localArrayList1 = new ArrayList();
     SparseArrayCompat localSparseArrayCompat = new SparseArrayCompat();
     LottieComposition localLottieComposition = new LottieComposition();
     paramJsonReader.beginObject();
+    int k = 0;
     int j = 0;
-    int i = 0;
     float f3 = 0.0F;
     float f2 = 0.0F;
     float f1 = 0.0F;
-    if (paramJsonReader.hasNext())
+    while (paramJsonReader.hasNext())
     {
       Object localObject = paramJsonReader.nextName();
-      int k = -1;
-      label212:
-      float f4;
       switch (((String)localObject).hashCode())
       {
       default: 
-        switch (k)
-        {
-        default: 
-          paramJsonReader.skipValue();
-          label276:
-          k = j;
-          f4 = f3;
-          f3 = f1;
-          f1 = f4;
-          j = i;
-          i = k;
+        break;
+      case 839250809: 
+        if (((String)localObject).equals("markers")) {
+          i = 10;
+        }
+        break;
+      case 97615364: 
+        if (((String)localObject).equals("fonts")) {
+          i = 8;
+        }
+        break;
+      case 94623709: 
+        if (((String)localObject).equals("chars")) {
+          i = 9;
+        }
+        break;
+      case 3553: 
+        if (((String)localObject).equals("op")) {
+          i = 3;
+        }
+        break;
+      case 3367: 
+        if (((String)localObject).equals("ip")) {
+          i = 2;
+        }
+        break;
+      case 3276: 
+        if (((String)localObject).equals("fr")) {
+          i = 4;
+        }
+        break;
+      case 119: 
+        if (((String)localObject).equals("w")) {
+          i = 0;
+        }
+        break;
+      case 118: 
+        if (((String)localObject).equals("v")) {
+          i = 5;
+        }
+        break;
+      case 104: 
+        if (((String)localObject).equals("h")) {
+          i = 1;
+        }
+        break;
+      case -1109732030: 
+        if (((String)localObject).equals("layers")) {
+          i = 6;
+        }
+        break;
+      case -1408207997: 
+        if (((String)localObject).equals("assets")) {
+          i = 7;
         }
         break;
       }
-      for (;;)
+      int i = -1;
+      switch (i)
       {
-        k = j;
-        f4 = f3;
-        j = i;
-        i = k;
-        f3 = f1;
-        f1 = f4;
+      default: 
+        paramJsonReader.skipValue();
         break;
-        if (!((String)localObject).equals("w")) {
-          break label212;
-        }
-        k = 0;
-        break label212;
-        if (!((String)localObject).equals("h")) {
-          break label212;
-        }
-        k = 1;
-        break label212;
-        if (!((String)localObject).equals("ip")) {
-          break label212;
-        }
-        k = 2;
-        break label212;
-        if (!((String)localObject).equals("op")) {
-          break label212;
-        }
-        k = 3;
-        break label212;
-        if (!((String)localObject).equals("fr")) {
-          break label212;
-        }
-        k = 4;
-        break label212;
-        if (!((String)localObject).equals("v")) {
-          break label212;
-        }
-        k = 5;
-        break label212;
-        if (!((String)localObject).equals("layers")) {
-          break label212;
-        }
-        k = 6;
-        break label212;
-        if (!((String)localObject).equals("assets")) {
-          break label212;
-        }
-        k = 7;
-        break label212;
-        if (!((String)localObject).equals("fonts")) {
-          break label212;
-        }
-        k = 8;
-        break label212;
-        if (!((String)localObject).equals("chars")) {
-          break label212;
-        }
-        k = 9;
-        break label212;
-        if (!((String)localObject).equals("markers")) {
-          break label212;
-        }
-        k = 10;
-        break label212;
-        k = paramJsonReader.nextInt();
-        i = j;
-        j = k;
-        f4 = f1;
-        f1 = f3;
-        f3 = f4;
-        continue;
-        k = paramJsonReader.nextInt();
-        j = i;
-        f4 = f1;
-        i = k;
-        f1 = f3;
-        f3 = f4;
-        continue;
-        f4 = (float)paramJsonReader.nextDouble();
-        k = i;
-        f1 = f3;
-        f3 = f4;
-        i = j;
-        j = k;
-        continue;
-        f2 = (float)paramJsonReader.nextDouble();
-        k = i;
-        f2 -= 0.01F;
-        f4 = f1;
-        i = j;
-        j = k;
-        f1 = f3;
-        f3 = f4;
-        continue;
-        f3 = (float)paramJsonReader.nextDouble();
-        k = i;
-        f4 = f1;
-        i = j;
-        j = k;
-        f1 = f3;
-        f3 = f4;
-        continue;
-        localObject = paramJsonReader.nextString().split("\\.");
-        if (Utils.isAtLeastVersion(Integer.parseInt(localObject[0]), Integer.parseInt(localObject[1]), Integer.parseInt(localObject[2]), 4, 4, 0)) {
-          break label276;
-        }
-        localLottieComposition.addWarning("Lottie only supports bodymovin >= 4.4.0");
-        k = i;
-        f4 = f1;
-        i = j;
-        j = k;
-        f1 = f3;
-        f3 = f4;
-        continue;
-        parseLayers(paramJsonReader, localLottieComposition, localArrayList1, localLongSparseArray);
-        k = i;
-        f4 = f1;
-        i = j;
-        j = k;
-        f1 = f3;
-        f3 = f4;
-        continue;
-        parseAssets(paramJsonReader, localLottieComposition, localHashMap1, localHashMap2);
-        k = i;
-        f4 = f1;
-        i = j;
-        j = k;
-        f1 = f3;
-        f3 = f4;
-        continue;
-        parseFonts(paramJsonReader, localHashMap3);
-        k = i;
-        f4 = f1;
-        i = j;
-        j = k;
-        f1 = f3;
-        f3 = f4;
-        continue;
+      case 10: 
+        parseMarkers(paramJsonReader, localLottieComposition, localArrayList1);
+        break;
+      case 9: 
         parseChars(paramJsonReader, localLottieComposition, localSparseArrayCompat);
-        k = i;
-        f4 = f1;
-        i = j;
-        j = k;
-        f1 = f3;
-        f3 = f4;
-        continue;
-        parseMarkers(paramJsonReader, localLottieComposition, localArrayList2);
-        k = i;
-        f4 = f1;
-        i = j;
-        j = k;
-        f1 = f3;
-        f3 = f4;
+        break;
+      case 8: 
+        parseFonts(paramJsonReader, localHashMap1);
+        break;
+      case 7: 
+        parseAssets(paramJsonReader, localLottieComposition, localHashMap2, localHashMap3);
+        break;
+      case 6: 
+        parseLayers(paramJsonReader, localLottieComposition, localArrayList2, localLongSparseArray);
+        break;
+      case 5: 
+        localObject = paramJsonReader.nextString().split("\\.");
+        if (!Utils.isAtLeastVersion(Integer.parseInt(localObject[0]), Integer.parseInt(localObject[1]), Integer.parseInt(localObject[2]), 4, 4, 0)) {
+          localLottieComposition.addWarning("Lottie only supports bodymovin >= 4.4.0");
+        }
+        break;
+      case 4: 
+        f1 = (float)paramJsonReader.nextDouble();
+        break;
+      case 3: 
+        f2 = (float)paramJsonReader.nextDouble() - 0.01F;
+        break;
+      case 2: 
+        f3 = (float)paramJsonReader.nextDouble();
+        break;
+      case 1: 
+        j = paramJsonReader.nextInt();
+        break;
       }
+      k = paramJsonReader.nextInt();
     }
     paramJsonReader.endObject();
-    localLottieComposition.init(new Rect(0, 0, (int)(i * f5), (int)(j * f5)), f1, f2, f3, localArrayList1, localLongSparseArray, localHashMap1, localHashMap2, localSparseArrayCompat, localHashMap3, localArrayList2);
+    localLottieComposition.init(new Rect(0, 0, (int)(k * f4), (int)(j * f4)), f3, f2, f1, localArrayList2, localLongSparseArray, localHashMap2, localHashMap3, localSparseArrayCompat, localHashMap1, localArrayList1);
     return localLottieComposition;
   }
   
@@ -228,85 +155,102 @@ public class LottieCompositionParser
       ArrayList localArrayList = new ArrayList();
       LongSparseArray localLongSparseArray = new LongSparseArray();
       paramJsonReader.beginObject();
-      Object localObject1 = null;
-      String str1 = null;
-      int j = 0;
+      String str = null;
+      Object localObject1 = str;
+      Object localObject2 = localObject1;
       int k = 0;
-      String str2 = null;
-      label48:
+      int j = 0;
       while (paramJsonReader.hasNext())
       {
-        Object localObject2 = paramJsonReader.nextName();
+        Object localObject3 = paramJsonReader.nextName();
         int i = -1;
-        switch (((String)localObject2).hashCode())
+        int m = ((String)localObject3).hashCode();
+        if (m != -1109732030)
         {
-        }
-        for (;;)
-        {
-          switch (i)
+          if (m != 104)
           {
-          default: 
-            paramJsonReader.skipValue();
-            break label48;
-            if (((String)localObject2).equals("id"))
+            if (m != 112)
             {
-              i = 0;
-              continue;
-              if (((String)localObject2).equals("layers"))
+              if (m != 117)
               {
-                i = 1;
-                continue;
-                if (((String)localObject2).equals("w"))
+                if (m != 119)
                 {
-                  i = 2;
-                  continue;
-                  if (((String)localObject2).equals("h"))
-                  {
-                    i = 3;
-                    continue;
-                    if (((String)localObject2).equals("p"))
-                    {
-                      i = 4;
-                      continue;
-                      if (((String)localObject2).equals("u")) {
-                        i = 5;
-                      }
-                    }
+                  if ((m == 3355) && (((String)localObject3).equals("id"))) {
+                    i = 0;
                   }
                 }
+                else if (((String)localObject3).equals("w")) {
+                  i = 2;
+                }
+              }
+              else if (((String)localObject3).equals("u")) {
+                i = 5;
               }
             }
-            break;
+            else if (((String)localObject3).equals("p")) {
+              i = 4;
+            }
+          }
+          else if (((String)localObject3).equals("h")) {
+            i = 3;
           }
         }
-        str2 = paramJsonReader.nextString();
-        continue;
-        paramJsonReader.beginArray();
-        while (paramJsonReader.hasNext())
-        {
-          localObject2 = LayerParser.parse(paramJsonReader, paramLottieComposition);
-          localLongSparseArray.put(((Layer)localObject2).getId(), localObject2);
-          localArrayList.add(localObject2);
+        else if (((String)localObject3).equals("layers")) {
+          i = 1;
         }
-        paramJsonReader.endArray();
-        continue;
-        k = paramJsonReader.nextInt();
-        continue;
-        j = paramJsonReader.nextInt();
-        continue;
-        str1 = paramJsonReader.nextString();
-        continue;
-        localObject1 = paramJsonReader.nextString();
+        if (i != 0)
+        {
+          if (i != 1)
+          {
+            if (i != 2)
+            {
+              if (i != 3)
+              {
+                if (i != 4)
+                {
+                  if (i != 5) {
+                    paramJsonReader.skipValue();
+                  } else {
+                    localObject2 = paramJsonReader.nextString();
+                  }
+                }
+                else {
+                  localObject1 = paramJsonReader.nextString();
+                }
+              }
+              else {
+                j = paramJsonReader.nextInt();
+              }
+            }
+            else {
+              k = paramJsonReader.nextInt();
+            }
+          }
+          else
+          {
+            paramJsonReader.beginArray();
+            while (paramJsonReader.hasNext())
+            {
+              localObject3 = LayerParser.parse(paramJsonReader, paramLottieComposition);
+              localLongSparseArray.put(((Layer)localObject3).getId(), localObject3);
+              localArrayList.add(localObject3);
+            }
+            paramJsonReader.endArray();
+          }
+        }
+        else {
+          str = paramJsonReader.nextString();
+        }
       }
       paramJsonReader.endObject();
-      if (str1 != null)
+      if (localObject1 != null)
       {
-        localObject1 = new LottieImageAsset(k, j, str2, str1, (String)localObject1);
+        localObject1 = new LottieImageAsset(k, j, str, (String)localObject1, (String)localObject2);
         paramMap1.put(((LottieImageAsset)localObject1).getId(), localObject1);
       }
       else
       {
-        paramMap.put(str2, localArrayList);
+        paramMap.put(str, localArrayList);
       }
     }
     paramJsonReader.endArray();
@@ -326,55 +270,52 @@ public class LottieCompositionParser
   private static void parseFonts(JsonReader paramJsonReader, Map<String, Font> paramMap)
   {
     paramJsonReader.beginObject();
-    label4:
     while (paramJsonReader.hasNext())
     {
       Object localObject = paramJsonReader.nextName();
       int i = -1;
-      switch (((String)localObject).hashCode())
-      {
+      if ((((String)localObject).hashCode() == 3322014) && (((String)localObject).equals("list"))) {
+        i = 0;
       }
-      for (;;)
+      if (i != 0)
       {
-        switch (i)
+        paramJsonReader.skipValue();
+      }
+      else
+      {
+        paramJsonReader.beginArray();
+        while (paramJsonReader.hasNext())
         {
-        default: 
-          paramJsonReader.skipValue();
-          break label4;
-          if (((String)localObject).equals("list")) {
-            i = 0;
-          }
-          break;
+          localObject = FontParser.parse(paramJsonReader);
+          paramMap.put(((Font)localObject).getName(), localObject);
         }
+        paramJsonReader.endArray();
       }
-      paramJsonReader.beginArray();
-      while (paramJsonReader.hasNext())
-      {
-        localObject = FontParser.parse(paramJsonReader);
-        paramMap.put(((Font)localObject).getName(), localObject);
-      }
-      paramJsonReader.endArray();
     }
     paramJsonReader.endObject();
   }
   
   private static void parseLayers(JsonReader paramJsonReader, LottieComposition paramLottieComposition, List<Layer> paramList, LongSparseArray<Layer> paramLongSparseArray)
   {
-    int i = 0;
     paramJsonReader.beginArray();
+    int i = 0;
     while (paramJsonReader.hasNext())
     {
-      Layer localLayer = LayerParser.parse(paramJsonReader, paramLottieComposition);
+      Object localObject = LayerParser.parse(paramJsonReader, paramLottieComposition);
       int j = i;
-      if (localLayer.getLayerType() == Layer.LayerType.IMAGE) {
+      if (((Layer)localObject).getLayerType() == Layer.LayerType.IMAGE) {
         j = i + 1;
       }
-      paramList.add(localLayer);
-      paramLongSparseArray.put(localLayer.getId(), localLayer);
+      paramList.add(localObject);
+      paramLongSparseArray.put(((Layer)localObject).getId(), localObject);
       i = j;
       if (j > 4)
       {
-        L.warn("You have " + j + " images. Lottie should primarily be used with shapes. If you are using Adobe Illustrator, convert the Illustrator layers to shape layers.");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("You have ");
+        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(" images. Lottie should primarily be used with shapes. If you are using Adobe Illustrator, convert the Illustrator layers to shape layers.");
+        L.warn(((StringBuilder)localObject).toString());
         i = j;
       }
     }
@@ -390,52 +331,53 @@ public class LottieCompositionParser
       paramJsonReader.beginObject();
       float f2 = 0.0F;
       float f1 = 0.0F;
-      label22:
       while (paramJsonReader.hasNext())
       {
         String str = paramJsonReader.nextName();
         int i = -1;
-        switch (str.hashCode())
+        int j = str.hashCode();
+        if (j != 3178)
         {
-        }
-        for (;;)
-        {
-          switch (i)
+          if (j != 3214)
           {
-          default: 
-            paramJsonReader.skipValue();
-            break label22;
-            if (str.equals("cm"))
-            {
-              i = 0;
-              continue;
-              if (str.equals("tm"))
-              {
-                i = 1;
-                continue;
-                if (str.equals("dr")) {
-                  i = 2;
-                }
-              }
+            if ((j == 3705) && (str.equals("tm"))) {
+              i = 1;
             }
-            break;
+          }
+          else if (str.equals("dr")) {
+            i = 2;
           }
         }
-        paramLottieComposition = paramJsonReader.nextString();
-        continue;
-        f1 = (float)paramJsonReader.nextDouble();
-        continue;
-        f2 = (float)paramJsonReader.nextDouble();
+        else if (str.equals("cm")) {
+          i = 0;
+        }
+        if (i != 0)
+        {
+          if (i != 1)
+          {
+            if (i != 2) {
+              paramJsonReader.skipValue();
+            } else {
+              f1 = (float)paramJsonReader.nextDouble();
+            }
+          }
+          else {
+            f2 = (float)paramJsonReader.nextDouble();
+          }
+        }
+        else {
+          paramLottieComposition = paramJsonReader.nextString();
+        }
       }
       paramJsonReader.endObject();
-      paramList.add(new Marker(paramLottieComposition, f1, f2));
+      paramList.add(new Marker(paramLottieComposition, f2, f1));
     }
     paramJsonReader.endArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.LottieCompositionParser
  * JD-Core Version:    0.7.0.1
  */

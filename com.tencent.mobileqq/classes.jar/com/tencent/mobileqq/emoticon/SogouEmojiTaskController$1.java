@@ -11,10 +11,15 @@ class SogouEmojiTaskController$1
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmojiTaskController", 2, "func onDismiss begins, mCurTaskId:" + this.a.a);
+    if (QLog.isColorLevel())
+    {
+      paramDialogInterface = new StringBuilder();
+      paramDialogInterface.append("func onDismiss begins, mCurTaskId:");
+      paramDialogInterface.append(this.a.a);
+      QLog.d("SogouEmojiTaskController", 2, paramDialogInterface.toString());
     }
-    this.a.a(this.a.a);
+    paramDialogInterface = this.a;
+    paramDialogInterface.a(paramDialogInterface.a);
     if (QLog.isColorLevel()) {
       QLog.d("SogouEmojiTaskController", 2, "func onDismiss ends");
     }
@@ -22,7 +27,7 @@ class SogouEmojiTaskController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.SogouEmojiTaskController.1
  * JD-Core Version:    0.7.0.1
  */

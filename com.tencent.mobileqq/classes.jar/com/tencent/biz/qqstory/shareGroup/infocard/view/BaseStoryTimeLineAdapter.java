@@ -58,22 +58,21 @@ public abstract class BaseStoryTimeLineAdapter
   {
     if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
     {
-      VideoCollectionItem localVideoCollectionItem2 = (VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-      VideoCollectionItem localVideoCollectionItem1;
-      if (localVideoCollectionItem2.isEmptyFakeItem)
+      Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      localObject = (VideoCollectionItem)((ArrayList)localObject).get(((ArrayList)localObject).size() - 1);
+      if (((VideoCollectionItem)localObject).isEmptyFakeItem)
       {
         if (this.jdField_a_of_type_JavaUtilArrayList.size() >= 2)
         {
-          localVideoCollectionItem1 = (VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 2);
-          if (TextUtils.isEmpty(localVideoCollectionItem1.collectionId)) {}
+          localObject = this.jdField_a_of_type_JavaUtilArrayList;
+          localObject = (VideoCollectionItem)((ArrayList)localObject).get(((ArrayList)localObject).size() - 2);
+          if (!TextUtils.isEmpty(((VideoCollectionItem)localObject).collectionId)) {
+            return localObject;
+          }
         }
       }
-      else {
-        do
-        {
-          return localVideoCollectionItem1;
-          localVideoCollectionItem1 = localVideoCollectionItem2;
-        } while (!TextUtils.isEmpty(localVideoCollectionItem2.collectionId));
+      else if (!TextUtils.isEmpty(((VideoCollectionItem)localObject).collectionId)) {
+        return localObject;
       }
     }
     return null;
@@ -99,16 +98,17 @@ public abstract class BaseStoryTimeLineAdapter
   
   protected void a(VideoCollectionItem paramVideoCollectionItem)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramVideoCollectionItem) > 0) {
-      SLog.b("Q.qqstory.home.BaseStoryTimeLineAdapter", "data already exist, id=%s, time=%d", paramVideoCollectionItem.collectionId, Long.valueOf(paramVideoCollectionItem.collectionTime));
-    }
-    do
+    if (this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramVideoCollectionItem) > 0)
     {
+      SLog.b("Q.qqstory.home.BaseStoryTimeLineAdapter", "data already exist, id=%s, time=%d", paramVideoCollectionItem.collectionId, Long.valueOf(paramVideoCollectionItem.collectionTime));
       return;
-      i = Collections.binarySearch(this.jdField_a_of_type_JavaUtilArrayList, paramVideoCollectionItem, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem$DataSortedComparator);
-    } while (i >= 0);
-    int i = -i;
-    this.jdField_a_of_type_JavaUtilArrayList.add(i - 1, paramVideoCollectionItem);
+    }
+    int i = Collections.binarySearch(this.jdField_a_of_type_JavaUtilArrayList, paramVideoCollectionItem, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem$DataSortedComparator);
+    if (i < 0)
+    {
+      i = -i;
+      this.jdField_a_of_type_JavaUtilArrayList.add(i - 1, paramVideoCollectionItem);
+    }
   }
   
   public void a(MemoriesInnerListView.OnInnerListRefreshListener paramOnInnerListRefreshListener, MyMemoriesListView.OnUIClickListener paramOnUIClickListener)
@@ -153,40 +153,40 @@ public abstract class BaseStoryTimeLineAdapter
   
   protected void b(List<VideoCollectionItem> paramList, boolean paramBoolean)
   {
-    if (paramList.size() == 0) {
-      a(true);
-    }
-    int j;
-    int i;
-    do
+    if (paramList.size() == 0)
     {
+      a(true);
       return;
-      a(false);
-      j = this.jdField_a_of_type_Int - UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 100.0F);
-      Iterator localIterator = paramList.iterator();
-      i = j;
-      while (localIterator.hasNext())
+    }
+    a(false);
+    int k = this.jdField_a_of_type_Int - UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 100.0F);
+    Iterator localIterator = paramList.iterator();
+    int j = k;
+    while (localIterator.hasNext())
+    {
+      VideoCollectionItem localVideoCollectionItem = (VideoCollectionItem)localIterator.next();
+      a(localVideoCollectionItem);
+      if (paramList.size() <= 3)
       {
-        VideoCollectionItem localVideoCollectionItem = (VideoCollectionItem)localIterator.next();
-        a(localVideoCollectionItem);
-        if (paramList.size() <= 3)
+        int i;
+        if (localVideoCollectionItem.collectionType == 0) {
+          i = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 65.0F);
+        }
+        for (;;)
         {
-          if (localVideoCollectionItem.collectionType == 0) {
-            i -= UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 65.0F);
-          }
-          for (;;)
-          {
-            break;
-            if (!TextUtils.isEmpty(com.tencent.biz.qqstory.utils.DateUtils.a(localVideoCollectionItem.collectionTime)[0])) {
-              i -= UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 190.0F);
-            } else {
-              i -= UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 150.0F);
-            }
+          j -= i;
+          break;
+          if (!TextUtils.isEmpty(com.tencent.biz.qqstory.utils.DateUtils.a(localVideoCollectionItem.collectionTime)[0])) {
+            i = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 190.0F);
+          } else {
+            i = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 150.0F);
           }
         }
       }
-    } while ((a(paramBoolean)) || (i == j) || (i <= 0));
-    this.jdField_a_of_type_JavaUtilArrayList.add(a(i));
+    }
+    if ((!a(paramBoolean)) && (j != k) && (j > 0)) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(a(j));
+    }
   }
   
   public void c(List<VideoCollectionItem> paramList, boolean paramBoolean)
@@ -197,27 +197,28 @@ public abstract class BaseStoryTimeLineAdapter
   
   protected void d(List<VideoCollectionItem> paramList, boolean paramBoolean)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
     if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
     {
-      VideoCollectionItem localVideoCollectionItem = (VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-      localObject1 = localObject2;
-      if (localVideoCollectionItem.isEmptyFakeItem)
+      localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      localObject = (VideoCollectionItem)((ArrayList)localObject).get(((ArrayList)localObject).size() - 1);
+      if (((VideoCollectionItem)localObject).isEmptyFakeItem)
       {
         SLog.d("Q.qqstory.home.BaseStoryTimeLineAdapter", "addData, has fake");
-        this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-        localObject1 = localVideoCollectionItem;
+        ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+        localArrayList.remove(localArrayList.size() - 1);
+        break label67;
       }
     }
+    Object localObject = null;
+    label67:
     SLog.a("Q.qqstory.home.BaseStoryTimeLineAdapter", "addData, new dataList=%s", paramList);
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
       a((VideoCollectionItem)paramList.next());
     }
-    if (localObject1 != null)
+    if (localObject != null)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+      this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
       SLog.b("Q.qqstory.home.BaseStoryTimeLineAdapter", "add fake item.");
     }
     a(paramBoolean);
@@ -245,17 +246,15 @@ public abstract class BaseStoryTimeLineAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    View localView = paramView;
     if (paramView == null) {
-      paramView = a(paramInt, paramViewGroup);
+      localView = a(paramInt, paramViewGroup);
     }
-    for (;;)
-    {
-      if (paramView != null) {
-        a(paramInt, paramView, paramViewGroup);
-      }
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
+    if (localView != null) {
+      a(paramInt, localView, paramViewGroup);
     }
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
   
   public int getViewTypeCount()
@@ -270,7 +269,7 @@ public abstract class BaseStoryTimeLineAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.infocard.view.BaseStoryTimeLineAdapter
  * JD-Core Version:    0.7.0.1
  */

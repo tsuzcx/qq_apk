@@ -22,7 +22,13 @@ class c$d
   c$d()
   {
     String str = Build.VERSION.RELEASE.replaceAll("|", "_").replaceAll("#", "_").replace("*", "_");
-    this.b = (c.e() + "," + c.d() + "," + str);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c.e());
+    localStringBuilder.append(",");
+    localStringBuilder.append(c.d());
+    localStringBuilder.append(",");
+    localStringBuilder.append(str);
+    this.b = localStringBuilder.toString();
     this.c = 0;
     this.d = 0L;
     this.e = 0L;
@@ -39,13 +45,40 @@ class c$d
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("");
-    localStringBuilder.append(this.a).append(":").append(5).append("|").append(this.i).append("|").append(this.j).append("|").append(this.k).append("|").append(this.l).append("|").append(this.m).append("|").append(this.e).append("|").append(this.d).append("|").append(this.f).append("|").append(this.c).append("|").append(this.b).append("|").append(this.g).append("|").append(this.h).append("#");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(":");
+    localStringBuilder.append(5);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("#");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.c.c.d
  * JD-Core Version:    0.7.0.1
  */

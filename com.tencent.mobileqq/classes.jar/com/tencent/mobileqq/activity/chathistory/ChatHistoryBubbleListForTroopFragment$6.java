@@ -13,22 +13,18 @@ class ChatHistoryBubbleListForTroopFragment$6
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt == 0)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
       ThreadManager.post(new ChatHistoryBubbleListForTroopFragment.6.1(this), 5, null, false);
       this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.a.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
       this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.a.notifyDataSetChanged();
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment.6
  * JD-Core Version:    0.7.0.1
  */

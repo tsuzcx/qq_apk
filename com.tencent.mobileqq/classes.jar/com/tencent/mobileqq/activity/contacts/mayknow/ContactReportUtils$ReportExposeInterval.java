@@ -25,30 +25,40 @@ public class ContactReportUtils$ReportExposeInterval
   
   ContactReportUtils$ReportExposeInterval()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_JavaUtilList = new LinkedList();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManagerV2.getSubThreadLooper());
-    a(localQQAppInterface);
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactReportUtils", 2, "create ReportExposeInterval, enable = " + this.jdField_a_of_type_Boolean + ", interval = " + this.jdField_a_of_type_Long);
+    a((QQAppInterface)localObject);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("create ReportExposeInterval, enable = ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(", interval = ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      QLog.d("ContactReportUtils", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   private void a(ContactReportUtils.ReportExposeInterval.ReportItem paramReportItem)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactReportUtils", 2, "really do delay report, mApp = " + this.jdField_a_of_type_JavaLangRefWeakReference);
-    }
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    QQAppInterface localQQAppInterface;
-    do
+    if (QLog.isColorLevel())
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("really do delay report, mApp = ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangRefWeakReference);
+      QLog.d("ContactReportUtils", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject == null) {
       return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localQQAppInterface == null);
-    ContactReportUtils.a(localQQAppInterface, paramReportItem.jdField_a_of_type_Int, paramReportItem.jdField_a_of_type_JavaUtilArrayList, paramReportItem.jdField_b_of_type_JavaUtilArrayList, paramReportItem.c, paramReportItem.d, paramReportItem.jdField_b_of_type_Int, paramReportItem.jdField_a_of_type_JavaLangString, true);
+    }
+    localObject = (QQAppInterface)((WeakReference)localObject).get();
+    if (localObject != null) {
+      ContactReportUtils.a((QQAppInterface)localObject, paramReportItem.jdField_a_of_type_Int, paramReportItem.jdField_a_of_type_JavaUtilArrayList, paramReportItem.jdField_b_of_type_JavaUtilArrayList, paramReportItem.c, paramReportItem.d, paramReportItem.jdField_b_of_type_Int, paramReportItem.jdField_a_of_type_JavaLangString, true);
+    }
   }
   
   private void a(QQAppInterface arg1)
@@ -56,10 +66,14 @@ public class ContactReportUtils$ReportExposeInterval
     if (??? != null)
     {
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(???);
-      ??? = BaseApplicationImpl.getApplication().getSharedPreferences("com.tencent.mobileqq.ReportExposeInterval_" + ???.getCurrentAccountUin(), 0);
-      ContactReportUtils.ReportExposeIntervalConfig localReportExposeIntervalConfig = new ContactReportUtils.ReportExposeIntervalConfig();
-      this.jdField_a_of_type_Boolean = ???.getBoolean("ReportExposeInterval_enable", localReportExposeIntervalConfig.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Long = ???.getLong("ReportExposeInterval_interval", localReportExposeIntervalConfig.jdField_a_of_type_Long);
+      Object localObject1 = BaseApplicationImpl.getApplication();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("com.tencent.mobileqq.ReportExposeInterval_");
+      localStringBuilder.append(???.getCurrentAccountUin());
+      ??? = ((BaseApplicationImpl)localObject1).getSharedPreferences(localStringBuilder.toString(), 0);
+      localObject1 = new ContactReportUtils.ReportExposeIntervalConfig();
+      this.jdField_a_of_type_Boolean = ???.getBoolean("ReportExposeInterval_enable", ((ContactReportUtils.ReportExposeIntervalConfig)localObject1).jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_Long = ???.getLong("ReportExposeInterval_interval", ((ContactReportUtils.ReportExposeIntervalConfig)localObject1).jdField_a_of_type_Long);
       synchronized (this.jdField_a_of_type_JavaLangObject)
       {
         this.jdField_a_of_type_JavaUtilList.clear();
@@ -100,17 +114,22 @@ public class ContactReportUtils$ReportExposeInterval
   
   public void a(QQAppInterface paramQQAppInterface, int paramInt1, ArrayList<String> arg3, ArrayList<String> paramArrayList2, ArrayList<Integer> paramArrayList, ArrayList<byte[]> paramArrayList3, int paramInt2, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactReportUtils", 2, "reportExpose delay, app = " + paramQQAppInterface);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportExpose delay, app = ");
+      ((StringBuilder)localObject).append(paramQQAppInterface);
+      QLog.d("ContactReportUtils", 2, ((StringBuilder)localObject).toString());
     }
     if (paramQQAppInterface == null) {
       return;
     }
-    QQAppInterface localQQAppInterface = null;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = null;
+    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localWeakReference != null) {
+      localObject = (QQAppInterface)localWeakReference.get();
     }
-    if (localQQAppInterface != paramQQAppInterface) {
+    if (localObject != paramQQAppInterface) {
       a(paramQQAppInterface);
     }
     paramQQAppInterface = new ContactReportUtils.ReportExposeInterval.ReportItem();
@@ -172,27 +191,27 @@ public class ContactReportUtils$ReportExposeInterval
       {
         localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
         this.jdField_a_of_type_JavaUtilList.clear();
-        if (localArrayList.isEmpty()) {
-          break label106;
+        if (!localArrayList.isEmpty())
+        {
+          ??? = localArrayList.iterator();
+          while (((Iterator)???).hasNext()) {
+            a((ContactReportUtils.ReportExposeInterval.ReportItem)((Iterator)???).next());
+          }
+          this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, this.jdField_a_of_type_Long);
+          return;
         }
-        ??? = localArrayList.iterator();
-        if (((Iterator)???).hasNext()) {
-          a((ContactReportUtils.ReportExposeInterval.ReportItem)((Iterator)???).next());
+        if (QLog.isColorLevel()) {
+          QLog.d("ContactReportUtils", 2, "last report size is 0, stop delay report");
         }
+        a();
+        return;
       }
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, this.jdField_a_of_type_Long);
     }
-    return;
-    label106:
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactReportUtils", 2, "last report size is 0, stop delay report");
-    }
-    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.mayknow.ContactReportUtils.ReportExposeInterval
  * JD-Core Version:    0.7.0.1
  */

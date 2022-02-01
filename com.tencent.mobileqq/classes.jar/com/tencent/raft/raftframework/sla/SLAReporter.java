@@ -47,13 +47,16 @@ public class SLAReporter
   {
     try
     {
-      PackageManager localPackageManager = paramContext.getPackageManager();
-      paramContext = (String)localPackageManager.getApplicationLabel(localPackageManager.getApplicationInfo(paramContext.getPackageName(), 0));
+      localObject = paramContext.getPackageManager();
+      paramContext = (String)((PackageManager)localObject).getApplicationLabel(((PackageManager)localObject).getApplicationInfo(paramContext.getPackageName(), 0));
       return paramContext;
     }
     catch (Exception paramContext)
     {
-      RLog.w("SLAReporter", new Object[] { "getApplicationName error: " + paramContext });
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getApplicationName error: ");
+      ((StringBuilder)localObject).append(paramContext);
+      RLog.w("SLAReporter", new Object[] { ((StringBuilder)localObject).toString() });
     }
     return "";
   }
@@ -67,7 +70,13 @@ public class SLAReporter
   {
     try
     {
-      paramString1 = this.baseURL + "&event_name=" + paramString1 + "&event_value=" + paramString2;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.baseURL);
+      localStringBuilder.append("&event_name=");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("&event_value=");
+      localStringBuilder.append(paramString2);
+      paramString1 = localStringBuilder.toString();
       return paramString1;
     }
     finally
@@ -86,29 +95,43 @@ public class SLAReporter
       while (paramList.hasNext())
       {
         Pair localPair = (Pair)paramList.next();
-        localStringBuilder.append("&").append((String)localPair.first).append("=").append((String)localPair.second);
+        localStringBuilder.append("&");
+        localStringBuilder.append((String)localPair.first);
+        localStringBuilder.append("=");
+        localStringBuilder.append((String)localPair.second);
       }
       paramList = localStringBuilder.toString();
+      return paramList;
     }
     finally {}
-    return paramList;
+    for (;;)
+    {
+      throw paramList;
+    }
   }
   
   private boolean hasInternetPermission()
   {
-    if (this.context != null)
+    Context localContext = this.context;
+    boolean bool3 = false;
+    boolean bool2 = false;
+    boolean bool1 = bool3;
+    if (localContext != null)
     {
-      if (Build.VERSION.SDK_INT >= 23) {
-        if (this.context.checkSelfPermission("android.permission.INTERNET") != 0) {}
-      }
-      while (this.context.checkCallingOrSelfPermission("android.permission.INTERNET") == 0)
+      if (Build.VERSION.SDK_INT >= 23)
       {
-        return true;
-        return false;
+        bool1 = bool2;
+        if (this.context.checkSelfPermission("android.permission.INTERNET") == 0) {
+          bool1 = true;
+        }
+        return bool1;
       }
-      return false;
+      bool1 = bool3;
+      if (this.context.checkCallingOrSelfPermission("android.permission.INTERNET") == 0) {
+        bool1 = true;
+      }
     }
-    return false;
+    return bool1;
   }
   
   private void initBuglyReport(Context paramContext)
@@ -118,63 +141,26 @@ public class SLAReporter
     paramContext.apply();
   }
   
-  /* Error */
   private void initIfNeeded()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 38	com/tencent/raft/raftframework/sla/SLAReporter:isInit	Z
-    //   6: istore_1
-    //   7: iload_1
-    //   8: ifeq +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: new 88	java/lang/StringBuilder
-    //   18: dup
-    //   19: ldc 197
-    //   21: invokespecial 200	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   24: putfield 120	com/tencent/raft/raftframework/sla/SLAReporter:baseURL	Ljava/lang/StringBuilder;
-    //   27: aload_0
-    //   28: getfield 120	com/tencent/raft/raftframework/sla/SLAReporter:baseURL	Ljava/lang/StringBuilder;
-    //   31: ldc 202
-    //   33: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   36: ldc 204
-    //   38: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   41: pop
-    //   42: aload_0
-    //   43: getfield 120	com/tencent/raft/raftframework/sla/SLAReporter:baseURL	Ljava/lang/StringBuilder;
-    //   46: ldc 206
-    //   48: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   51: ldc 208
-    //   53: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   56: pop
-    //   57: aload_0
-    //   58: getfield 120	com/tencent/raft/raftframework/sla/SLAReporter:baseURL	Ljava/lang/StringBuilder;
-    //   61: ldc 210
-    //   63: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   66: pop
-    //   67: aload_0
-    //   68: iconst_1
-    //   69: putfield 38	com/tencent/raft/raftframework/sla/SLAReporter:isInit	Z
-    //   72: goto -61 -> 11
-    //   75: astore_2
-    //   76: aload_0
-    //   77: monitorexit
-    //   78: aload_2
-    //   79: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	80	0	this	SLAReporter
-    //   6	2	1	bool	boolean
-    //   75	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	75	finally
-    //   14	72	75	finally
+    try
+    {
+      boolean bool = this.isInit;
+      if (bool) {
+        return;
+      }
+      this.baseURL = new StringBuilder("https://h.trace.qq.com/kv");
+      StringBuilder localStringBuilder = this.baseURL;
+      localStringBuilder.append("?attaid=");
+      localStringBuilder.append("0c500034918");
+      localStringBuilder = this.baseURL;
+      localStringBuilder.append("&token=");
+      localStringBuilder.append("4483379541");
+      this.baseURL.append("&client_type=android");
+      this.isInit = true;
+      return;
+    }
+    finally {}
   }
   
   private boolean isContextValidate(Context paramContext)
@@ -236,7 +222,12 @@ public class SLAReporter
     if (!hasInternetPermission()) {
       paramBoolean = false;
     }
-    RLog.d("SLAReporter", new Object[] { "set open: " + paramBoolean + " ,real: " + this.open });
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("set open: ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(" ,real: ");
+    localStringBuilder.append(this.open);
+    RLog.d("SLAReporter", new Object[] { localStringBuilder.toString() });
   }
   
   public void release()
@@ -251,24 +242,28 @@ public class SLAReporter
       return;
     }
     int i = applyForGroupId();
-    report("get_service_cost", String.valueOf((System.nanoTime() - paramLong) / 1000000.0D), i);
-    if (paramBoolean) {}
-    for (String str = "1";; str = "0")
-    {
-      report("get_service_success", str, i);
-      return;
+    double d = System.nanoTime() - paramLong;
+    Double.isNaN(d);
+    report("get_service_cost", String.valueOf(d / 1000000.0D), i);
+    String str;
+    if (paramBoolean) {
+      str = "1";
+    } else {
+      str = "0";
     }
+    report("get_service_success", str, i);
   }
   
   public void reportOnFrameworkStartup()
   {
-    if (!this.open) {}
-    do
-    {
+    if (!this.open) {
       return;
-      this.frameworkStartupNs = System.nanoTime();
-    } while (this.context == null);
-    initBuglyReport(this.context);
+    }
+    this.frameworkStartupNs = System.nanoTime();
+    Context localContext = this.context;
+    if (localContext != null) {
+      initBuglyReport(localContext);
+    }
   }
   
   public void reportOnFrameworkStartupFinish()
@@ -276,24 +271,27 @@ public class SLAReporter
     if (!this.open) {
       return;
     }
-    if (this.context != null) {
-      reportAppInfo(this.context);
-    }
-    for (;;)
+    Object localObject = this.context;
+    if (localObject != null)
     {
-      report("launch_cost", String.valueOf((System.nanoTime() - this.frameworkStartupNs) / 1000000.0D));
-      report("launch_success", "1");
-      return;
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(Pair.create("app_name", "RAFTAndroid"));
-      localArrayList.add(Pair.create("app_bundle_id", "com.tencent.raft"));
-      report(localArrayList);
+      reportAppInfo((Context)localObject);
     }
+    else
+    {
+      localObject = new ArrayList();
+      ((List)localObject).add(Pair.create("app_name", "RAFTAndroid"));
+      ((List)localObject).add(Pair.create("app_bundle_id", "com.tencent.raft"));
+      report((List)localObject);
+    }
+    double d = System.nanoTime() - this.frameworkStartupNs;
+    Double.isNaN(d);
+    report("launch_cost", String.valueOf(d / 1000000.0D));
+    report("launch_success", "1");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.raft.raftframework.sla.SLAReporter
  * JD-Core Version:    0.7.0.1
  */

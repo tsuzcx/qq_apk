@@ -17,13 +17,14 @@ public final class UrlQuery$UrlQueryRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uint32_result", "uint32_jump_result", "bytes_jump_url" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, UrlQueryRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uint32_result", "uint32_jump_result", "bytes_jump_url" }, new Object[] { localInteger, localInteger, localByteStringMicro }, UrlQueryRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.webview.UrlQuery.UrlQueryRsp
  * JD-Core Version:    0.7.0.1
  */

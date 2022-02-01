@@ -36,112 +36,131 @@ public class LebaSettingHandler
   
   public void a(String paramString, boolean paramBoolean, long paramLong)
   {
-    QLog.i("LebaSettingHandler", 1, " netSetPluginState : path = " + paramString + ";status = " + paramBoolean + ";time = " + paramLong);
-    BusinessInfoCheckUpdate.ReportReqBody localReportReqBody = new BusinessInfoCheckUpdate.ReportReqBody();
-    localReportReqBody.uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
-    localReportReqBody.clientver.set("8.5.5.5105");
-    localReportReqBody.platid.set(109);
-    localReportReqBody.platver.set(Build.VERSION.SDK_INT + "");
-    Object localObject = (IRedTouchManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IRedTouchManager.class, "");
-    localReportReqBody.appid.set(((IRedTouchManager)localObject).getAppIdByPath(paramString));
-    localObject = new JSONObject();
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(" netSetPluginState : path = ");
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append(";status = ");
+    ((StringBuilder)localObject1).append(paramBoolean);
+    ((StringBuilder)localObject1).append(";time = ");
+    ((StringBuilder)localObject1).append(paramLong);
+    QLog.i("LebaSettingHandler", 1, ((StringBuilder)localObject1).toString());
+    localObject1 = new BusinessInfoCheckUpdate.ReportReqBody();
+    ((BusinessInfoCheckUpdate.ReportReqBody)localObject1).uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
+    ((BusinessInfoCheckUpdate.ReportReqBody)localObject1).clientver.set("8.7.0.5295");
+    ((BusinessInfoCheckUpdate.ReportReqBody)localObject1).platid.set(109);
+    Object localObject2 = ((BusinessInfoCheckUpdate.ReportReqBody)localObject1).platver;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Build.VERSION.SDK_INT);
+    localStringBuilder.append("");
+    ((PBStringField)localObject2).set(localStringBuilder.toString());
+    localObject2 = (IRedTouchManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IRedTouchManager.class, "");
+    ((BusinessInfoCheckUpdate.ReportReqBody)localObject1).appid.set(((IRedTouchManager)localObject2).getAppIdByPath(paramString));
+    localObject2 = new JSONObject();
     try
     {
-      ((JSONObject)localObject).put("cmd", 4);
-      ((JSONObject)localObject).put("setting", paramBoolean);
-      ((JSONObject)localObject).put("modify_ts", paramLong);
-      localReportReqBody.buffer.set(((JSONObject)localObject).toString());
-      localObject = createToServiceMsg("RedTouchSvc.EntranceSetting");
-      ((ToServiceMsg)localObject).extraData.putInt("RedTouchSubCmd", 1);
-      ((ToServiceMsg)localObject).extraData.putInt("SettingAppid", localReportReqBody.appid.get());
-      ((ToServiceMsg)localObject).extraData.putBoolean("SettingStatus", paramBoolean);
-      ((ToServiceMsg)localObject).putWupBuffer(localReportReqBody.toByteArray());
-      super.sendPbReq((ToServiceMsg)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaSettingChangeProxy.a(paramString, paramBoolean, paramLong);
-      return;
+      ((JSONObject)localObject2).put("cmd", 4);
+      ((JSONObject)localObject2).put("setting", paramBoolean);
+      ((JSONObject)localObject2).put("modify_ts", paramLong);
+      ((BusinessInfoCheckUpdate.ReportReqBody)localObject1).buffer.set(((JSONObject)localObject2).toString());
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        QLog.e("LebaSettingHandler", 1, localJSONException, new Object[0]);
-      }
+      QLog.e("LebaSettingHandler", 1, localJSONException, new Object[0]);
     }
+    ToServiceMsg localToServiceMsg = createToServiceMsg("RedTouchSvc.EntranceSetting");
+    localToServiceMsg.extraData.putInt("RedTouchSubCmd", 1);
+    localToServiceMsg.extraData.putInt("SettingAppid", ((BusinessInfoCheckUpdate.ReportReqBody)localObject1).appid.get());
+    localToServiceMsg.extraData.putBoolean("SettingStatus", paramBoolean);
+    localToServiceMsg.putWupBuffer(((BusinessInfoCheckUpdate.ReportReqBody)localObject1).toByteArray());
+    super.sendPbReq(localToServiceMsg);
+    this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaSettingChangeProxy.a(paramString, paramBoolean, paramLong);
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return LebaSettingObserver.class;
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((!paramFromServiceMsg.getServiceCmd().equals("RedTouchSvc.EntranceSetting")) || (!paramFromServiceMsg.isSuccess())) {}
-    for (;;)
+    int i;
+    if (paramFromServiceMsg.getServiceCmd().equals("RedTouchSvc.EntranceSetting"))
     {
-      return;
+      if (!paramFromServiceMsg.isSuccess()) {
+        return;
+      }
       paramToServiceMsg = new BusinessInfoCheckUpdate.ReportRspBody();
       try
       {
         paramFromServiceMsg = (BusinessInfoCheckUpdate.ReportRspBody)paramToServiceMsg.mergeFrom((byte[])paramObject);
         paramToServiceMsg = paramFromServiceMsg;
-        if (paramToServiceMsg.code.get() == 0)
-        {
-          i = paramToServiceMsg.appid.get();
-          paramToServiceMsg = paramToServiceMsg.buffer.get();
-        }
       }
       catch (Exception paramFromServiceMsg)
       {
-        try
+        paramToServiceMsg.code.set(-1);
+        paramToServiceMsg.errmsg.set("prb.mergeFrom exception");
+        paramFromServiceMsg.printStackTrace();
+      }
+      if (paramToServiceMsg.code.get() == 0)
+      {
+        i = paramToServiceMsg.appid.get();
+        paramToServiceMsg = paramToServiceMsg.buffer.get();
+      }
+    }
+    label340:
+    for (;;)
+    {
+      try
+      {
+        paramToServiceMsg = new JSONObject(paramToServiceMsg);
+        if (paramToServiceMsg.getInt("cmd") == 4)
         {
-          int i;
-          paramToServiceMsg = new JSONObject(paramToServiceMsg);
-          if (paramToServiceMsg.getInt("cmd") == 4)
-          {
-            boolean bool = paramToServiceMsg.getBoolean("setting");
-            long l1 = paramToServiceMsg.getLong("modify_ts");
-            long l2 = paramToServiceMsg.getLong("server_ts");
-            if ((l1 != l2) && (l2 > 0L))
-            {
-              paramToServiceMsg = (ILebaHelperService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ILebaHelperService.class, "");
-              if (paramToServiceMsg != null) {
-                paramToServiceMsg.updateAppSetting(this.jdField_a_of_type_ComTencentCommonAppAppInterface, i, bool, l1, l2);
-              }
-            }
-            else
-            {
-              QLog.i("LebaSettingHandler", 1, " onReceiver, [" + i + "," + bool + "," + l1 + "," + l2 + "]");
-              notifyUI(2, true, Boolean.valueOf(bool));
-              return;
-            }
+          boolean bool = paramToServiceMsg.getBoolean("setting");
+          long l1 = paramToServiceMsg.getLong("modify_ts");
+          long l2 = paramToServiceMsg.getLong("server_ts");
+          if ((l1 == l2) || (l2 <= 0L)) {
+            break label340;
           }
-        }
-        catch (Exception paramToServiceMsg)
-        {
-          for (;;)
-          {
-            QLog.e("LebaSettingHandler", 1, paramToServiceMsg, new Object[0]);
-            return;
-            paramFromServiceMsg = paramFromServiceMsg;
-            paramToServiceMsg.code.set(-1);
-            paramToServiceMsg.errmsg.set("prb.mergeFrom exception");
-            paramFromServiceMsg.printStackTrace();
-            continue;
+          paramToServiceMsg = (ILebaHelperService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ILebaHelperService.class, "");
+          if (paramToServiceMsg != null) {
+            paramToServiceMsg.updateAppSetting(this.jdField_a_of_type_ComTencentCommonAppAppInterface, i, bool, l1, l2);
+          } else {
             QLog.d("LebaSettingHandler", 1, "onReceive lebaHelperService == null");
           }
-        }
-        catch (Throwable paramToServiceMsg)
-        {
+          paramToServiceMsg = new StringBuilder();
+          paramToServiceMsg.append(" onReceiver, [");
+          paramToServiceMsg.append(i);
+          paramToServiceMsg.append(",");
+          paramToServiceMsg.append(bool);
+          paramToServiceMsg.append(",");
+          paramToServiceMsg.append(l1);
+          paramToServiceMsg.append(",");
+          paramToServiceMsg.append(l2);
+          paramToServiceMsg.append("]");
+          paramToServiceMsg = paramToServiceMsg.toString();
+          try
+          {
+            QLog.i("LebaSettingHandler", 1, paramToServiceMsg);
+            notifyUI(2, true, Boolean.valueOf(bool));
+            return;
+          }
+          catch (Exception paramToServiceMsg) {}
           QLog.e("LebaSettingHandler", 1, paramToServiceMsg, new Object[0]);
         }
       }
+      catch (Throwable paramToServiceMsg)
+      {
+        QLog.e("LebaSettingHandler", 1, paramToServiceMsg, new Object[0]);
+        return;
+      }
+      catch (Exception paramToServiceMsg) {}
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.core.LebaSettingHandler
  * JD-Core Version:    0.7.0.1
  */

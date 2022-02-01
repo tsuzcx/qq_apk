@@ -26,15 +26,19 @@ import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vip.JceProtocol;
+import com.tencent.mobileqq.vas.api.IJce;
+import com.tencent.mobileqq.vas.api.IJce.Util;
+import com.tencent.mobileqq.vas.api.IVasSingedApi;
+import com.tencent.mobileqq.vas.util.VasUtil;
+import com.tencent.mobileqq.vip.IVipStatusManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.RoundRelativeLayout;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -64,17 +68,29 @@ public class StickyNoteVasAdapter
     this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter$AuthListener = new StickyNoteVasAdapter.2(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130847520);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130847388);
   }
   
   private Drawable a(String paramString1, String paramString2)
   {
     Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
     Object localObject = localDrawable;
-    if (!TextUtils.isEmpty(paramString2)) {}
-    try
+    if (!TextUtils.isEmpty(paramString2))
     {
-      paramString1 = new URL("sig_cover", paramString2, paramString1);
+      localObject = null;
+      try
+      {
+        paramString1 = new URL("sig_cover", paramString2, paramString1);
+      }
+      catch (MalformedURLException paramString2)
+      {
+        paramString1 = (String)localObject;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("StickyNoteVasAdapter", 2, paramString2.getMessage());
+          paramString1 = (String)localObject;
+        }
+      }
       localObject = localDrawable;
       if (paramString1 != null)
       {
@@ -90,78 +106,70 @@ public class StickyNoteVasAdapter
         }
         ((URLDrawable)localObject).setURLDrawableListener(this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener);
       }
-      return localObject;
     }
-    catch (MalformedURLException paramString1)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("StickyNoteVasAdapter", 2, paramString1.getMessage());
-        }
-        paramString1 = null;
-      }
-    }
+    return localObject;
   }
   
   private void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    String str3 = HardCodeUtil.a(2131704699);
-    String str2 = HardCodeUtil.a(2131719890);
-    String str1 = str2;
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      str1 = str2;
-      if (paramString2.contains("svip")) {
-        str1 = HardCodeUtil.a(2131719889);
-      }
+    String str2 = HardCodeUtil.a(2131704775);
+    String str1 = HardCodeUtil.a(2131719622);
+    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.contains("svip"))) {
+      str1 = HardCodeUtil.a(2131719621);
     }
-    DialogUtil.a(paramContext, 230, str3, paramString3, HardCodeUtil.a(2131704700), str1, new StickyNoteVasAdapter.3(this, paramContext, paramString1, paramString2, paramString4), new StickyNoteVasAdapter.4(this)).show();
+    DialogUtil.a(paramContext, 230, str2, paramString3, HardCodeUtil.a(2131704776), str1, new StickyNoteVasAdapter.3(this, paramContext, paramString1, paramString2, paramString4), new StickyNoteVasAdapter.4(this)).show();
   }
   
   public static boolean a(int paramInt)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    switch (paramInt)
+    if ((paramInt != 0) && (paramInt != 1))
     {
-    default: 
-      return false;
-    case 0: 
-    case 1: 
-      return true;
-    case 4: 
-      return VipUtils.c(localQQAppInterface);
-    case 5: 
-      return VipUtils.b(localQQAppInterface);
+      if (paramInt != 4)
+      {
+        if (paramInt != 5)
+        {
+          if ((paramInt != 6) && (paramInt != 21) && (paramInt != 22)) {}
+          return false;
+        }
+        return VasUtil.a(localQQAppInterface).getVipStatus().isSVip();
+      }
+      return VasUtil.a(localQQAppInterface).getVipStatus().isVip();
     }
-    return false;
+    return true;
   }
   
   public int a()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localArrayList == null) {
       return 0;
     }
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return localArrayList.size();
   }
   
   public int a(int paramInt)
   {
-    switch (paramInt)
+    if ((paramInt != 0) && (paramInt != 1))
     {
-    default: 
-      return 2130847824;
-    case 0: 
-    case 1: 
-      return 2130847823;
-    case 4: 
-      return 2130847828;
-    case 5: 
-      return 2130847827;
-    case 21: 
-      return 2130847826;
+      if (paramInt != 4)
+      {
+        if (paramInt != 5)
+        {
+          if (paramInt != 21)
+          {
+            if (paramInt != 22) {
+              return 2130847691;
+            }
+            return 2130847692;
+          }
+          return 2130847693;
+        }
+        return 2130847694;
+      }
+      return 2130847695;
     }
-    return 2130847825;
+    return 2130847690;
   }
   
   public Drawable a(Context paramContext, Drawable paramDrawable, boolean paramBoolean)
@@ -169,30 +177,38 @@ public class StickyNoteVasAdapter
     if (!paramBoolean) {
       return paramDrawable;
     }
-    return new LayerDrawable(new Drawable[] { paramDrawable, paramContext.getResources().getDrawable(2130850732) });
+    return new LayerDrawable(new Drawable[] { paramDrawable, paramContext.getResources().getDrawable(2130850658) });
   }
   
   public Drawable a(Context paramContext, String paramString, boolean paramBoolean)
   {
-    int i = 14606046;
+    int i;
     if (!TextUtils.isEmpty(paramString))
     {
-      String str = paramString;
-      if (!paramString.contains("#")) {
-        str = "#" + paramString;
+      Object localObject = paramString;
+      if (!paramString.contains("#"))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("#");
+        ((StringBuilder)localObject).append(paramString);
+        localObject = ((StringBuilder)localObject).toString();
       }
-      i = Color.parseColor(str);
+      i = Color.parseColor((String)localObject);
+    }
+    else
+    {
+      i = 14606046;
     }
     paramString = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[] { i + 1291845632, i + -2147483648 });
     if (!paramBoolean) {
       return paramString;
     }
-    return new LayerDrawable(new Drawable[] { paramString, paramContext.getResources().getDrawable(2130850732) });
+    return new LayerDrawable(new Drawable[] { paramString, paramContext.getResources().getDrawable(2130850658) });
   }
   
   public StickyNoteVasAdapter.BgHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = new StickyNoteVasAdapter.BgHolder(this, View.inflate(paramViewGroup.getContext(), 2131561546, null));
+    paramViewGroup = new StickyNoteVasAdapter.BgHolder(this, View.inflate(paramViewGroup.getContext(), 2131561387, null));
     if (paramInt == 1)
     {
       paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
@@ -204,10 +220,11 @@ public class StickyNoteVasAdapter
   
   public void a()
   {
-    if ((this.jdField_a_of_type_QCUniBusiSimpleItemDetail != null) && (this.jdField_a_of_type_Boolean))
+    UniBusiSimpleItemDetail localUniBusiSimpleItemDetail = this.jdField_a_of_type_QCUniBusiSimpleItemDetail;
+    if ((localUniBusiSimpleItemDetail != null) && (this.jdField_a_of_type_Boolean))
     {
       this.jdField_a_of_type_Boolean = false;
-      a(this.jdField_a_of_type_Int, this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId, this.jdField_a_of_type_QCUniBusiSimpleItemDetail.feeType, this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter$AuthListener);
+      a(this.jdField_a_of_type_Int, localUniBusiSimpleItemDetail.itemId, this.jdField_a_of_type_QCUniBusiSimpleItemDetail.feeType, this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter$AuthListener);
     }
   }
   
@@ -223,7 +240,7 @@ public class StickyNoteVasAdapter
       paramAuthListener.a(true, null);
       return;
     }
-    new JceProtocol("QC.UniBusinessUserInfoServer.UniBusinessUserInfoObj", "QcUniBusinessUserInfo.UniBusiGetOneItemWithCheck", "stReq", "stRsp").a("UniBusiGetOneItemWithCheck", new UniBusiGetOneItemWithCheckReq(JceProtocol.a(), paramInt1, paramInt2), new UniBusiGetOneItemWithCheckRsp(), new StickyNoteVasAdapter.5(this, paramAuthListener), false);
+    ((IJce)QRoute.api(IJce.class)).build("QC.UniBusinessUserInfoServer.UniBusinessUserInfoObj", "QcUniBusinessUserInfo.UniBusiGetOneItemWithCheck", "stReq", "stRsp").request("UniBusiGetOneItemWithCheck", new UniBusiGetOneItemWithCheckReq(IJce.Util.a(), paramInt1, paramInt2), new UniBusiGetOneItemWithCheckRsp(), new StickyNoteVasAdapter.5(this, paramAuthListener), false);
   }
   
   public void a(TextView paramTextView, int paramInt)
@@ -244,94 +261,92 @@ public class StickyNoteVasAdapter
   
   public void a(StickyNoteVasAdapter.BgHolder paramBgHolder, int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.get(paramInt) == null))
+    Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
+    if ((localObject1 != null) && (((ArrayList)localObject1).get(paramInt) != null))
     {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramBgHolder, paramInt, getItemId(paramInt));
-      return;
-    }
-    UniBusiSimpleItemDetail localUniBusiSimpleItemDetail = (UniBusiSimpleItemDetail)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    paramBgHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localUniBusiSimpleItemDetail.name);
-    boolean bool;
-    label72:
-    int i;
-    if (this.b == localUniBusiSimpleItemDetail.itemId)
-    {
-      bool = true;
-      if (this.c != localUniBusiSimpleItemDetail.itemId) {
-        break label308;
+      localObject1 = (UniBusiSimpleItemDetail)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      paramBgHolder.jdField_a_of_type_AndroidWidgetTextView.setText(((UniBusiSimpleItemDetail)localObject1).name);
+      boolean bool;
+      if (this.b == ((UniBusiSimpleItemDetail)localObject1).itemId) {
+        bool = true;
+      } else {
+        bool = false;
       }
-      i = 1;
-      label86:
+      int i;
+      if (this.c == ((UniBusiSimpleItemDetail)localObject1).itemId) {
+        i = 1;
+      } else {
+        i = 0;
+      }
       paramBgHolder.b.setVisibility(8);
       if (i != 0)
       {
         i = this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout.jdField_a_of_type_Int;
-        localObject = this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout;
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout;
         if (i == 2) {
           paramBgHolder.b.setVisibility(0);
         }
       }
-      QLog.d("StickyNoteVasAdapter", 1, " mAppId:" + this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_Int != 9) {
-        break label313;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(" mAppId:");
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+      QLog.d("StickyNoteVasAdapter", 1, ((StringBuilder)localObject2).toString());
+      if (this.jdField_a_of_type_Int == 9)
+      {
+        paramBgHolder.jdField_a_of_type_ComTencentWidgetRoundRelativeLayout.setBackgroundDrawable(a(paramBgHolder.jdField_a_of_type_ComTencentWidgetRoundRelativeLayout.getContext(), ((UniBusiSimpleItemDetail)localObject1).itemBgColor, bool));
+        i = (ScreenUtil.getRealWidth(paramBgHolder.itemView.getContext()) - ScreenUtil.dip2px(96.0F)) / 3;
+        localObject2 = paramBgHolder.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject2).width = i;
+        ((ViewGroup.LayoutParams)localObject2).height = ((int)(i * 0.57F));
+        paramBgHolder.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        paramBgHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a(String.valueOf(((UniBusiSimpleItemDetail)localObject1).itemId), ((UniBusiSimpleItemDetail)localObject1).image));
       }
-      paramBgHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout.setBackgroundDrawable(a(paramBgHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout.getContext(), localUniBusiSimpleItemDetail.itemBgColor, bool));
-      i = (ScreenUtil.getRealWidth(paramBgHolder.itemView.getContext()) - ScreenUtil.dip2px(96.0F)) / 3;
-      Object localObject = paramBgHolder.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject).width = i;
-      ((ViewGroup.LayoutParams)localObject).height = ((int)(i * 0.57F));
-      paramBgHolder.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      paramBgHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a(String.valueOf(localUniBusiSimpleItemDetail.itemId), localUniBusiSimpleItemDetail.image));
+      else
+      {
+        paramBgHolder.jdField_a_of_type_ComTencentWidgetRoundRelativeLayout.setBackgroundDrawable(a(paramBgHolder.jdField_a_of_type_ComTencentWidgetRoundRelativeLayout.getContext(), a(String.valueOf(((UniBusiSimpleItemDetail)localObject1).itemId), ((UniBusiSimpleItemDetail)localObject1).image), bool));
+      }
+      a(paramBgHolder.jdField_a_of_type_AndroidWidgetTextView, ((UniBusiSimpleItemDetail)localObject1).feeType);
+      paramBgHolder.jdField_a_of_type_ComTencentWidgetRoundRelativeLayout.setOnClickListener(new StickyNoteVasAdapter.1(this, (UniBusiSimpleItemDetail)localObject1));
     }
-    for (;;)
-    {
-      a(paramBgHolder.jdField_a_of_type_AndroidWidgetTextView, localUniBusiSimpleItemDetail.feeType);
-      paramBgHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout.setOnClickListener(new StickyNoteVasAdapter.1(this, localUniBusiSimpleItemDetail));
-      break;
-      bool = false;
-      break label72;
-      label308:
-      i = 0;
-      break label86;
-      label313:
-      paramBgHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout.setBackgroundDrawable(a(paramBgHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout.getContext(), a(String.valueOf(localUniBusiSimpleItemDetail.itemId), localUniBusiSimpleItemDetail.image), bool));
-    }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramBgHolder, paramInt, getItemId(paramInt));
   }
   
   public void a(ArrayList<UniBusiSimpleItemDetail> paramArrayList, boolean paramBoolean)
   {
-    int i;
-    if ((paramBoolean) && (this.jdField_a_of_type_JavaUtilArrayList != null))
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-      notifyDataSetChanged();
-      if (this.d != 0) {
-        if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-          i = 0;
-        }
+      ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+      if (localArrayList != null)
+      {
+        localArrayList.addAll(paramArrayList);
+        break label30;
       }
     }
-    for (;;)
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    label30:
+    notifyDataSetChanged();
+    if (this.d != 0)
     {
-      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      if (this.jdField_a_of_type_JavaUtilArrayList != null)
       {
-        if (((UniBusiSimpleItemDetail)this.jdField_a_of_type_JavaUtilArrayList.get(i)).itemId == this.d) {
-          this.jdField_a_of_type_QCUniBusiSimpleItemDetail = ((UniBusiSimpleItemDetail)this.jdField_a_of_type_JavaUtilArrayList.get(i));
-        }
-      }
-      else
-      {
-        if (this.jdField_a_of_type_QCUniBusiSimpleItemDetail != null)
+        int i = 0;
+        while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
         {
-          this.jdField_a_of_type_Boolean = true;
-          a(this.jdField_a_of_type_Int, this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId, -1, this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter$AuthListener);
+          if (((UniBusiSimpleItemDetail)this.jdField_a_of_type_JavaUtilArrayList.get(i)).itemId == this.d)
+          {
+            this.jdField_a_of_type_QCUniBusiSimpleItemDetail = ((UniBusiSimpleItemDetail)this.jdField_a_of_type_JavaUtilArrayList.get(i));
+            break;
+          }
+          i += 1;
         }
-        this.d = 0;
-        return;
-        this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-        break;
       }
-      i += 1;
+      paramArrayList = this.jdField_a_of_type_QCUniBusiSimpleItemDetail;
+      if (paramArrayList != null)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        a(this.jdField_a_of_type_Int, paramArrayList.itemId, -1, this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter$AuthListener);
+      }
+      this.d = 0;
     }
   }
   
@@ -340,75 +355,78 @@ public class StickyNoteVasAdapter
     notifyDataSetChanged();
     if (this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout$StickyNoteShopSetting != null)
     {
-      if (this.jdField_a_of_type_Int != 5) {
-        break label60;
+      int i = this.jdField_a_of_type_Int;
+      if (i == 5)
+      {
+        i = 0;
+        if (this.jdField_a_of_type_QCUniBusiSimpleItemDetail.stFontItem != null) {
+          i = this.jdField_a_of_type_QCUniBusiSimpleItemDetail.stFontItem.fontType;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout$StickyNoteShopSetting.b(this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId, i);
+        return;
       }
-      i = 0;
-      if (this.jdField_a_of_type_QCUniBusiSimpleItemDetail.stFontItem != null) {
-        i = this.jdField_a_of_type_QCUniBusiSimpleItemDetail.stFontItem.fontType;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout$StickyNoteShopSetting.b(this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId, i);
-    }
-    label60:
-    while (this.jdField_a_of_type_Int != 9) {
-      return;
-    }
-    int j = 16777215;
-    int i = j;
-    if (this.jdField_a_of_type_QCUniBusiSimpleItemDetail.stSigItem != null)
-    {
-      i = j;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_QCUniBusiSimpleItemDetail.stSigItem.fontColor)) {
-        i = Color.parseColor(this.jdField_a_of_type_QCUniBusiSimpleItemDetail.stSigItem.fontColor);
+      if (i == 9)
+      {
+        int j = 16777215;
+        i = j;
+        if (this.jdField_a_of_type_QCUniBusiSimpleItemDetail.stSigItem != null)
+        {
+          i = j;
+          if (!TextUtils.isEmpty(this.jdField_a_of_type_QCUniBusiSimpleItemDetail.stSigItem.fontColor)) {
+            i = Color.parseColor(this.jdField_a_of_type_QCUniBusiSimpleItemDetail.stSigItem.fontColor);
+          }
+        }
+        this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout$StickyNoteShopSetting.a(this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId, i);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout$StickyNoteShopSetting.a(this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId, i);
   }
   
   public void b(int paramInt)
   {
     this.d = paramInt;
     this.c = paramInt;
-    if (this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout != null) {
-      this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout.a(false);
+    StickyNoteShopLayout localStickyNoteShopLayout = this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout;
+    if (localStickyNoteShopLayout != null) {
+      localStickyNoteShopLayout.a(false);
     }
   }
   
   public void c(int paramInt)
   {
     this.b = -1;
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
-    for (;;)
-    {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
       return;
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    }
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      if (((UniBusiSimpleItemDetail)this.jdField_a_of_type_JavaUtilArrayList.get(i)).itemId == paramInt)
       {
-        if (((UniBusiSimpleItemDetail)this.jdField_a_of_type_JavaUtilArrayList.get(i)).itemId == paramInt)
-        {
-          this.b = paramInt;
-          this.jdField_a_of_type_QCUniBusiSimpleItemDetail = ((UniBusiSimpleItemDetail)this.jdField_a_of_type_JavaUtilArrayList.get(i));
-          notifyDataSetChanged();
-          return;
-        }
-        i += 1;
+        this.b = paramInt;
+        this.jdField_a_of_type_QCUniBusiSimpleItemDetail = ((UniBusiSimpleItemDetail)this.jdField_a_of_type_JavaUtilArrayList.get(i));
+        notifyDataSetChanged();
+        return;
       }
+      i += 1;
     }
   }
   
   public int getItemCount()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      int j = i;
-      if (this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout.jdField_a_of_type_Int == 2)
-      {
-        StickyNoteShopLayout localStickyNoteShopLayout = this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout;
-        j = Math.min(i, 30);
-      }
-      return j;
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    int i;
+    if (localObject == null) {
+      i = 0;
+    } else {
+      i = ((ArrayList)localObject).size();
     }
+    int j = i;
+    if (this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout.jdField_a_of_type_Int == 2)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout;
+      j = Math.min(i, 30);
+    }
+    return j;
   }
   
   public int getItemViewType(int paramInt)
@@ -421,7 +439,7 @@ public class StickyNoteVasAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.vas.StickyNoteVasAdapter
  * JD-Core Version:    0.7.0.1
  */

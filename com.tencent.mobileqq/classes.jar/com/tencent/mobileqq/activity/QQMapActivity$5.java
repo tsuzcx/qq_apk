@@ -11,29 +11,27 @@ class QQMapActivity$5
   
   public void onClick(View paramView)
   {
-    if (this.a.l) {
-      this.a.w();
-    }
-    for (;;)
+    if (this.a.fetchDataFailed)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ("group_activity".equals(this.a.o))
-      {
-        this.a.k();
-      }
-      else
-      {
-        this.a.setResult(-1, this.a.a());
-        this.a.finish();
-        this.a.d();
-      }
+      this.a.refresh();
     }
+    else if ("group_activity".equals(this.a.mFrom))
+    {
+      this.a.onTroopActivityCallback();
+    }
+    else
+    {
+      QQMapActivity localQQMapActivity = this.a;
+      localQQMapActivity.setResult(-1, localQQMapActivity.getLocationData());
+      this.a.finish();
+      this.a.sendSuccessCall();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQMapActivity.5
  * JD-Core Version:    0.7.0.1
  */

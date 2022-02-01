@@ -4,7 +4,6 @@ import UserGrowth.stGlobalConfig;
 import UserGrowth.stPopWindowsConfig;
 import android.app.Activity;
 import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJJumpUtils;
 import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
 import com.tencent.biz.pubaccount.weishi_new.download.WeishiDownloadUtil;
 import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
@@ -12,6 +11,8 @@ import com.tencent.biz.pubaccount.weishi_new.report.WSReportDc00898;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiScehmeUtil;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils.OnDownloadOpenWeishiGoH5Listener;
+import com.tencent.mobileqq.kandian.glue.router.api.IRIJJumpUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.net.URLDecoder;
 
 class RichBlockDialog$1
@@ -31,8 +32,11 @@ class RichBlockDialog$1
     if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
     {
       paramString = URLDecoder.decode(paramString);
-      RIJJumpUtils.a(RichBlockDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRichBlockDialog), paramString);
-      WSLog.a("weishi-813", "阻断rich弹窗:" + paramString);
+      ((IRIJJumpUtils)QRoute.api(IRIJJumpUtils.class)).jumpToUrl(RichBlockDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRichBlockDialog), paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("阻断rich弹窗:");
+      localStringBuilder.append(paramString);
+      WSLog.a("weishi-813", localStringBuilder.toString());
       WSReportDc00898.c(140, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRichBlockDialog.a.type, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRichBlockDialog.a.windowsid);
       WSPublicAccReport.getInstance().reportClickRichBlockPop(1000004, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRichBlockDialog.a.windowsid, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRichBlockDialog.a.trace_id, RichBlockDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRichBlockDialog), RichBlockDialog.b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRichBlockDialog));
       return;
@@ -45,9 +49,10 @@ class RichBlockDialog$1
     WSDownloadParams localWSDownloadParams = new WSDownloadParams();
     localWSDownloadParams.mScene = RichBlockDialog.b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRichBlockDialog);
     localWSDownloadParams.mLinkStrategyType = RichBlockDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRichBlockDialog).link_strategy_type;
-    paramInt = 401;
     if (!RichBlockDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRichBlockDialog)) {
       paramInt = 402;
+    } else {
+      paramInt = 401;
     }
     localWSDownloadParams.mEventId = paramInt;
     localWSDownloadParams.mTestId = WSReportDc00898.b();
@@ -61,7 +66,7 @@ class RichBlockDialog$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.RichBlockDialog.1
  * JD-Core Version:    0.7.0.1
  */

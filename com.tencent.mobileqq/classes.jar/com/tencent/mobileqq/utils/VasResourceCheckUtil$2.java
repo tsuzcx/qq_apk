@@ -12,30 +12,32 @@ final class VasResourceCheckUtil$2
 {
   public boolean handleMessage(Message paramMessage)
   {
-    QQAppInterface localQQAppInterface;
     if ((BaseApplicationImpl.getApplication().waitAppRuntime(null) instanceof QQAppInterface))
     {
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().waitAppRuntime(null);
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().waitAppRuntime(null);
       switch (paramMessage.what)
       {
+      default: 
+        break;
+      case 260: 
+        QQToast.a(localQQAppInterface.getApplication(), HardCodeUtil.a(2131715800), 0).a();
+        break;
+      case 259: 
+        QQToast.a(localQQAppInterface.getApplication(), HardCodeUtil.a(2131715798), 0).a();
+        break;
+      case 258: 
+        QQToast.a(localQQAppInterface.getApplication(), HardCodeUtil.a(2131715797), 0).a();
+        break;
+      case 257: 
+        QQToast.a(localQQAppInterface.getApplication(), HardCodeUtil.a(2131715799), 0).a();
       }
     }
-    for (;;)
-    {
-      return true;
-      QQToast.a(localQQAppInterface.getApplication(), HardCodeUtil.a(2131715876), 0).a();
-      continue;
-      QQToast.a(localQQAppInterface.getApplication(), HardCodeUtil.a(2131715875), 0).a();
-      continue;
-      QQToast.a(localQQAppInterface.getApplication(), HardCodeUtil.a(2131715874), 0).a();
-      continue;
-      QQToast.a(localQQAppInterface.getApplication(), HardCodeUtil.a(2131715877), 0).a();
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.VasResourceCheckUtil.2
  * JD-Core Version:    0.7.0.1
  */

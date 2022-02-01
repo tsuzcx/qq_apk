@@ -14,9 +14,10 @@ public class QZoneConversationStatusRequest
   
   public QZoneConversationStatusRequest(long paramLong, Map<Long, Long> paramMap)
   {
-    this.req.cmd = 4;
-    this.req.login_uin = paramLong;
-    this.req.strQua = QUA.getQUA3();
+    newest_feeds_req localnewest_feeds_req = this.req;
+    localnewest_feeds_req.cmd = 4;
+    localnewest_feeds_req.login_uin = paramLong;
+    localnewest_feeds_req.strQua = QUA.getQUA3();
     this.req.mapUinTimes = new HashMap();
     this.req.mapUinTimes.putAll(paramMap);
   }
@@ -48,7 +49,7 @@ public class QZoneConversationStatusRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QZoneConversationStatusRequest
  * JD-Core Version:    0.7.0.1
  */

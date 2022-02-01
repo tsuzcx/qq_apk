@@ -8,14 +8,15 @@ public class ObserverDispatcher
   
   public static ObserverDispatcher a()
   {
-    if (jdField_a_of_type_ComTencentQavObserverObserverDispatcher == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_ComTencentQavObserverObserverDispatcher == null) {
-        jdField_a_of_type_ComTencentQavObserverObserverDispatcher = new ObserverDispatcher();
+    if (jdField_a_of_type_ComTencentQavObserverObserverDispatcher == null) {
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (jdField_a_of_type_ComTencentQavObserverObserverDispatcher == null) {
+          jdField_a_of_type_ComTencentQavObserverObserverDispatcher = new ObserverDispatcher();
+        }
       }
-      return jdField_a_of_type_ComTencentQavObserverObserverDispatcher;
     }
+    return jdField_a_of_type_ComTencentQavObserverObserverDispatcher;
   }
   
   public void a()
@@ -26,7 +27,7 @@ public class ObserverDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qav.observer.ObserverDispatcher
  * JD-Core Version:    0.7.0.1
  */

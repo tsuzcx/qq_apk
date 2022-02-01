@@ -18,8 +18,12 @@ class VideoItemEventManager$2
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoItemEventManager", 2, "onReceive ===>" + paramContext);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReceive ===>");
+      localStringBuilder.append(paramContext);
+      QLog.d("VideoItemEventManager", 2, localStringBuilder.toString());
     }
     if ("android.intent.action.SCREEN_OFF".equals(paramContext))
     {
@@ -27,6 +31,7 @@ class VideoItemEventManager$2
       while (paramContext.hasNext()) {
         ((VideoItemEventManager.onVideoItemEventListener)paramContext.next()).b(false);
       }
+      return;
     }
     if ("android.intent.action.SCREEN_ON".equals(paramContext))
     {
@@ -34,6 +39,7 @@ class VideoItemEventManager$2
       while (paramContext.hasNext()) {
         ((VideoItemEventManager.onVideoItemEventListener)paramContext.next()).b(true);
       }
+      return;
     }
     if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
     {
@@ -41,6 +47,7 @@ class VideoItemEventManager$2
       while (paramContext.hasNext()) {
         ((VideoItemEventManager.onVideoItemEventListener)paramContext.next()).c(true);
       }
+      return;
     }
     if ("tencent.av.v2q.StopVideoChat".equals(paramContext))
     {
@@ -48,6 +55,7 @@ class VideoItemEventManager$2
       while (paramContext.hasNext()) {
         ((VideoItemEventManager.onVideoItemEventListener)paramContext.next()).c(false);
       }
+      return;
     }
     if ("VolumeBtnDown".equals(paramIntent.getAction()))
     {
@@ -55,18 +63,14 @@ class VideoItemEventManager$2
       while (paramContext.hasNext()) {
         ((VideoItemEventManager.onVideoItemEventListener)paramContext.next()).i();
       }
+      return;
     }
     if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
     {
       paramContext = paramIntent.getStringExtra("reason");
-      if (paramContext != null) {
-        break label294;
+      if (paramContext == null) {
+        return;
       }
-    }
-    for (;;)
-    {
-      return;
-      label294:
       if (paramContext.equals("homekey"))
       {
         paramContext = VideoItemEventManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager).iterator();
@@ -81,7 +85,7 @@ class VideoItemEventManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.VideoItemEventManager.2
  * JD-Core Version:    0.7.0.1
  */

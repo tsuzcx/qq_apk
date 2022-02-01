@@ -7,58 +7,48 @@ final class GapWorker$1
 {
   public int compare(GapWorker.Task paramTask1, GapWorker.Task paramTask2)
   {
-    int k = -1;
-    int m = 1;
-    int i;
-    int j;
-    if (paramTask1.view == null)
-    {
+    RecyclerView localRecyclerView = paramTask1.view;
+    int k = 1;
+    if (localRecyclerView == null) {
       i = 1;
-      if (paramTask2.view != null) {
-        break label48;
-      }
-      j = 1;
-      label25:
-      if (i == j) {
-        break label56;
-      }
-      if (paramTask1.view != null) {
-        break label54;
-      }
-      i = m;
+    } else {
+      i = 0;
     }
-    label48:
-    label54:
-    label56:
-    do
+    int j;
+    if (paramTask2.view == null) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    if (i != j)
     {
-      do
-      {
-        return i;
-        i = 0;
-        break;
-        j = 0;
-        break label25;
-        return -1;
-        if (paramTask1.immediate != paramTask2.immediate)
-        {
-          if (paramTask1.immediate) {}
-          for (i = k;; i = 1) {
-            return i;
-          }
-        }
-        j = paramTask2.viewVelocity - paramTask1.viewVelocity;
-        i = j;
-      } while (j != 0);
-      j = paramTask1.distanceToItem - paramTask2.distanceToItem;
-      i = j;
-    } while (j != 0);
+      if (paramTask1.view == null) {
+        return 1;
+      }
+      return -1;
+    }
+    if (paramTask1.immediate != paramTask2.immediate)
+    {
+      i = k;
+      if (paramTask1.immediate) {
+        i = -1;
+      }
+      return i;
+    }
+    int i = paramTask2.viewVelocity - paramTask1.viewVelocity;
+    if (i != 0) {
+      return i;
+    }
+    i = paramTask1.distanceToItem - paramTask2.distanceToItem;
+    if (i != 0) {
+      return i;
+    }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.GapWorker.1
  * JD-Core Version:    0.7.0.1
  */

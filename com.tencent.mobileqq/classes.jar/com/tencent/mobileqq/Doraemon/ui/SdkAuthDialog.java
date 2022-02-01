@@ -3,7 +3,6 @@ package com.tencent.mobileqq.Doraemon.ui;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
-import android.support.annotation.NonNull;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,16 +12,17 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class SdkAuthDialog
   extends ReportDialog
 {
-  public static boolean a;
+  public static final DownloadParams.DecodeHandler a;
+  public static boolean a = false;
   private Context jdField_a_of_type_AndroidContentContext;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -35,29 +35,29 @@ public class SdkAuthDialog
   
   static
   {
-    jdField_a_of_type_Boolean = false;
+    jdField_a_of_type_ComTencentImageDownloadParams$DecodeHandler = new SdkAuthDialog.5();
   }
   
-  public SdkAuthDialog(@NonNull Context paramContext)
+  public SdkAuthDialog(Context paramContext)
   {
-    super(paramContext, 2131755259);
+    super(paramContext, 2131755425);
     a(paramContext);
   }
   
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559655, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559533, null);
     setContentView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(paramContext, 2131362887));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(paramContext, 2131362899));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(paramContext, 2131363129));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(paramContext, 2131381054));
-    this.c = ((TextView)a(paramContext, 2131381082));
-    this.d = ((TextView)a(paramContext, 2131363117));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(paramContext, 2131362839));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(paramContext, 2131362851));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(paramContext, 2131363069));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(paramContext, 2131380319));
+    this.c = ((TextView)a(paramContext, 2131380347));
+    this.d = ((TextView)a(paramContext, 2131363057));
     this.d.setMovementMethod(ScrollingMovementMethod.getInstance());
-    this.e = ((TextView)a(paramContext, 2131370274));
-    this.f = ((TextView)a(paramContext, 2131377083));
+    this.e = ((TextView)a(paramContext, 2131369942));
+    this.f = ((TextView)a(paramContext, 2131376561));
     setCanceledOnTouchOutside(false);
     paramContext = getWindow();
     if (paramContext != null) {
@@ -100,8 +100,8 @@ public class SdkAuthDialog
     {
       paramString = URLDrawable.getDrawable(paramString, URLDrawable.URLDrawableOptions.obtain());
       ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-      paramString.setTag(URLDrawableDecodeHandler.b(localLayoutParams.width, localLayoutParams.height, UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 5.0F)));
-      paramString.setDecodeHandler(URLDrawableDecodeHandler.j);
+      paramString.setTag(new int[] { localLayoutParams.width, localLayoutParams.height, Utils.a(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) });
+      paramString.setDecodeHandler(jdField_a_of_type_ComTencentImageDownloadParams$DecodeHandler);
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
     }
   }
@@ -151,7 +151,7 @@ public class SdkAuthDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.ui.SdkAuthDialog
  * JD-Core Version:    0.7.0.1
  */

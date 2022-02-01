@@ -41,68 +41,85 @@ public class ReportKey
   
   public static ReportKey build(@NonNull BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
-    int j = 0;
+    Object localObject2 = paramAppInfo.buffer.get();
+    boolean bool = TextUtils.isEmpty((CharSequence)localObject2);
     Object localObject1 = "0";
-    Object localObject2 = "0";
-    Object localObject4 = paramAppInfo.buffer.get();
-    Object localObject3;
-    if (!TextUtils.isEmpty((CharSequence)localObject4)) {
-      localObject3 = localObject1;
-    }
-    for (;;)
+    int i;
+    if (!bool)
     {
       try
       {
-        localObject4 = new JSONObject((String)localObject4);
-        localObject3 = localObject1;
-        localObject1 = ((JSONObject)localObject4).getString("trace_id");
-        localObject3 = localObject1;
-        i = ((JSONObject)localObject4).getInt("trace_num");
-        i += 1;
-        int k;
-        paramAppInfo.printStackTrace();
-      }
-      catch (Exception paramAppInfo)
-      {
+        Object localObject3 = new JSONObject((String)localObject2);
+        localObject2 = ((JSONObject)localObject3).getString("trace_id");
         try
         {
-          localObject3 = ((JSONObject)localObject4).getString("ad_id");
-          localObject2 = localObject3;
-          k = paramAppInfo.uiAppId.get();
-          j = k;
-          localObject2 = localObject3;
-          return new ReportKey((String)localObject1, i, (String)localObject2, j, "vab_red", "vab_red");
+          i = ((JSONObject)localObject3).getInt("trace_num");
+          j = i + 1;
+          try
+          {
+            localObject3 = ((JSONObject)localObject3).getString("ad_id");
+            localObject1 = localObject3;
+            i = paramAppInfo.uiAppId.get();
+            paramAppInfo = (BusinessInfoCheckUpdate.AppInfo)localObject2;
+            localObject1 = localObject3;
+            k = i;
+          }
+          catch (Exception paramAppInfo)
+          {
+            i = j;
+          }
+          localObject3 = localObject2;
         }
         catch (Exception paramAppInfo)
         {
-          break label123;
+          i = 0;
         }
-        paramAppInfo = paramAppInfo;
-        i = 0;
+        localObject2 = localObject1;
         localObject1 = localObject3;
       }
-      label123:
-      continue;
-      int i = 0;
+      catch (Exception paramAppInfo)
+      {
+        localObject2 = "0";
+        i = 0;
+      }
+      paramAppInfo.printStackTrace();
+      paramAppInfo = (BusinessInfoCheckUpdate.AppInfo)localObject1;
+      localObject1 = localObject2;
     }
+    else
+    {
+      paramAppInfo = "0";
+      localObject1 = paramAppInfo;
+      i = 0;
+    }
+    int k = 0;
+    int j = i;
+    return new ReportKey(paramAppInfo, j, (String)localObject1, k, "vab_red", "vab_red");
   }
   
   public String buildTraceDetail()
   {
-    return "trace_detail_ad_id=" + this.adId + "&trace_detail_app_id=" + this.appId;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("trace_detail_ad_id=");
+    localStringBuilder.append(this.adId);
+    localStringBuilder.append("&trace_detail_app_id=");
+    localStringBuilder.append(this.appId);
+    return localStringBuilder.toString();
   }
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (ReportKey)paramObject;
-    } while ((this.traceNum == paramObject.traceNum) && (this.traceId.equals(paramObject.traceId)) && (this.adId.equals(paramObject.adId)) && (this.appId == paramObject.appId) && (this.pageAppId.equals(paramObject.pageAppId)) && (this.pageId.equals(paramObject.pageId)) && (this.schemaUrl.equals(paramObject.schemaUrl)));
+      return (this.traceNum == paramObject.traceNum) && (this.traceId.equals(paramObject.traceId)) && (this.adId.equals(paramObject.adId)) && (this.appId == paramObject.appId) && (this.pageAppId.equals(paramObject.pageAppId)) && (this.pageId.equals(paramObject.pageId)) && (this.schemaUrl.equals(paramObject.schemaUrl));
+    }
     return false;
   }
   
@@ -113,12 +130,24 @@ public class ReportKey
   
   public String toString()
   {
-    return "ReportKey{traceId='" + this.traceId + ", traceNum=" + this.traceNum + ", adId=" + this.adId + ", appId=" + this.appId + ", schemaUrl=" + this.schemaUrl + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ReportKey{traceId='");
+    localStringBuilder.append(this.traceId);
+    localStringBuilder.append(", traceNum=");
+    localStringBuilder.append(this.traceNum);
+    localStringBuilder.append(", adId=");
+    localStringBuilder.append(this.adId);
+    localStringBuilder.append(", appId=");
+    localStringBuilder.append(this.appId);
+    localStringBuilder.append(", schemaUrl=");
+    localStringBuilder.append(this.schemaUrl);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.mobilereport.ReportKey
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import dov.com.qq.im.ae.camera.ui.aiscene.TTAutoAISceneType;
+import com.tencent.aelight.camera.struct.camera.TTAutoAISceneType;
 
 public abstract interface CameraCaptureView$AISceneCallback
 {
@@ -10,7 +10,7 @@ public abstract interface CameraCaptureView$AISceneCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.AISceneCallback
  * JD-Core Version:    0.7.0.1
  */

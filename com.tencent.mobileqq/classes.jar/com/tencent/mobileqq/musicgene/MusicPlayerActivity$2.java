@@ -29,15 +29,12 @@ class MusicPlayerActivity$2
         String str = MusicPlayerActivity.a(this.a, paramComponentName);
         if (MusicPlayerActivity.b().containsKey(str)) {
           MusicPlayerActivity.a(this.a, (MusicPlayerActivity.SimpleSongInfo)MusicPlayerActivity.b().get(str), paramIBinder);
-        }
-        for (;;)
-        {
-          int i = MusicPlayerActivity.a(this.a).a();
-          Message.obtain(MusicPlayerActivity.a(this.a), 50, i, 0).sendToTarget();
-          MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramComponentName.c, paramComponentName.h, paramComponentName.g, String.valueOf(paramComponentName.a), paramComponentName.d, MusicPlayerActivity.a(this.a).c());
-          return;
+        } else {
           MusicPlayerActivity.a(this.a, paramComponentName.c, paramComponentName.h, paramComponentName.e, paramIBinder, false, false);
         }
+        int i = MusicPlayerActivity.a(this.a).a();
+        Message.obtain(MusicPlayerActivity.a(this.a), 50, i, 0).sendToTarget();
+        MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramComponentName.c, paramComponentName.h, paramComponentName.g, String.valueOf(paramComponentName.a), paramComponentName.d, MusicPlayerActivity.a(this.a).c());
       }
       return;
     }
@@ -58,7 +55,7 @@ class MusicPlayerActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.MusicPlayerActivity.2
  * JD-Core Version:    0.7.0.1
  */

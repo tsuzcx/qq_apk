@@ -13,17 +13,12 @@ import mqq.manager.Manager;
 public class PullActiveManager
   implements Manager
 {
-  public static String a;
+  public static String a = "QQ";
   public static String b = "extra_notify_msg";
   public Intent a;
   public RecentItemPullActivePush a;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private MessageForText jdField_a_of_type_ComTencentMobileqqDataMessageForText;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "QQ";
-  }
   
   public PullActiveManager(QQAppInterface paramQQAppInterface)
   {
@@ -46,14 +41,16 @@ public class PullActiveManager
     if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForText == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForText = ((MessageForText)MessageRecordFactory.a(-1000));
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msgtype = -1000;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.istroop = 9653;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.isread = false;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForText;
+      ((MessageForText)localObject).msgtype = -1000;
+      ((MessageForText)localObject).istroop = 9653;
+      ((MessageForText)localObject).isread = false;
+      ((MessageForText)localObject).selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.senderuin = AppConstants.PULL_ACTIVE_PUSH_UIN;
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.frienduin = AppConstants.PULL_ACTIVE_PUSH_UIN;
-      if (this.jdField_a_of_type_AndroidContentIntent != null) {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg = this.jdField_a_of_type_AndroidContentIntent.getStringExtra(b);
+      localObject = this.jdField_a_of_type_AndroidContentIntent;
+      if (localObject != null) {
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg = ((Intent)localObject).getStringExtra(b);
       }
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.time = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush.time;
     }
@@ -89,7 +86,7 @@ public class PullActiveManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.managers.PullActiveManager
  * JD-Core Version:    0.7.0.1
  */

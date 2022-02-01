@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.intervideo.now.dynamic;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.intervideo.nowproxy.NowPluginObserver;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class LoadingFragment$1
   implements NowPluginObserver
@@ -14,9 +14,9 @@ class LoadingFragment$1
   
   public void onCloseLoadingView()
   {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if (localFragmentActivity != null) {
-      localFragmentActivity.finish();
+    BaseActivity localBaseActivity = this.a.getBaseActivity();
+    if (localBaseActivity != null) {
+      localBaseActivity.finish();
     }
   }
   
@@ -33,7 +33,7 @@ class LoadingFragment$1
   {
     if (paramView != null)
     {
-      this.a.getActivity();
+      this.a.getBaseActivity();
       FrameLayout localFrameLayout = (FrameLayout)this.a.getView();
       if ((paramView != null) && (localFrameLayout != null)) {
         localFrameLayout.addView(paramView, new FrameLayout.LayoutParams(-1, -1));
@@ -43,7 +43,7 @@ class LoadingFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.LoadingFragment.1
  * JD-Core Version:    0.7.0.1
  */

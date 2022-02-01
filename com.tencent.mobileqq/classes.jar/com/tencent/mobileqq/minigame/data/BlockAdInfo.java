@@ -90,39 +90,50 @@ public class BlockAdInfo
   
   public boolean isValid()
   {
-    return (this.mLeft >= 0) && (this.mTop >= 0) && (this.mSize > 0) && ((this.mOri == 0) || (this.mOri == 90));
+    if ((this.mLeft >= 0) && (this.mTop >= 0) && (this.mSize > 0))
+    {
+      int i = this.mOri;
+      if ((i == 0) || (i == 90)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public void setAdMiniAppInfo(List<GdtAd> paramList)
   {
-    if ((paramList == null) || (paramList.size() < 1)) {
-      return;
-    }
-    this.mGdtAdInfoList = paramList;
-    this.mAdMiniAppInfoList.clear();
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
+    if (paramList != null)
     {
-      Object localObject = (GdtAd)localIterator.next();
-      paramList = "";
-      if ((localObject != null) && (((GdtAd)localObject).info != null) && (((GdtAd)localObject).info.display_info != null))
+      if (paramList.size() < 1) {
+        return;
+      }
+      this.mGdtAdInfoList = paramList;
+      this.mAdMiniAppInfoList.clear();
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
       {
-        if (((GdtAd)localObject).info.display_info.basic_info != null) {
-          paramList = ((GdtAd)localObject).info.display_info.basic_info.img.get();
-        }
-        String str = ((GdtAd)localObject).info.display_info.mini_program_id.get();
-        localObject = ((GdtAd)localObject).info.display_info.mini_program_name.get();
-        if ((!TextUtils.isEmpty(paramList)) && (!TextUtils.isEmpty(paramList)) && (!TextUtils.isEmpty(paramList)))
+        Object localObject = (GdtAd)localIterator.next();
+        if ((localObject != null) && (((GdtAd)localObject).info != null) && (((GdtAd)localObject).info.display_info != null))
         {
-          MiniAppInfo localMiniAppInfo = new MiniAppInfo();
-          localMiniAppInfo.appId = str;
-          localMiniAppInfo.iconUrl = paramList;
-          localMiniAppInfo.name = ((String)localObject);
-          this.mAdMiniAppInfoList.add(localMiniAppInfo);
+          if (((GdtAd)localObject).info.display_info.basic_info != null) {
+            paramList = ((GdtAd)localObject).info.display_info.basic_info.img.get();
+          } else {
+            paramList = "";
+          }
+          String str = ((GdtAd)localObject).info.display_info.mini_program_id.get();
+          localObject = ((GdtAd)localObject).info.display_info.mini_program_name.get();
+          if ((!TextUtils.isEmpty(paramList)) && (!TextUtils.isEmpty(paramList)) && (!TextUtils.isEmpty(paramList)))
+          {
+            MiniAppInfo localMiniAppInfo = new MiniAppInfo();
+            localMiniAppInfo.appId = str;
+            localMiniAppInfo.iconUrl = paramList;
+            localMiniAppInfo.name = ((String)localObject);
+            this.mAdMiniAppInfoList.add(localMiniAppInfo);
+          }
         }
       }
+      this.mSize = this.mGdtAdInfoList.size();
     }
-    this.mSize = this.mGdtAdInfoList.size();
   }
   
   public void setLeft(int paramInt)
@@ -147,7 +158,7 @@ public class BlockAdInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.data.BlockAdInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<shape android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/h4f" />
-    <item android:drawable="@drawable/h4a" android:left="14.0dip" android:top="14.0dip" android:right="14.0dip" android:bottom="14.0dip" />
-</layer-list>
+    <corners android:radius="24.0dip" />
+    <solid android:color="#80000000" />
+</shape>

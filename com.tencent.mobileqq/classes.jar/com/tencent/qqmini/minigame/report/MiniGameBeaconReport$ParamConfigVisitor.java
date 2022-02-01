@@ -22,22 +22,29 @@ final class MiniGameBeaconReport$ParamConfigVisitor
       MiniGameBeaconReport.ExclusiveVisitor.access$setSkipLevel$p(localExclusiveVisitor, MiniGameBeaconReport.ExclusiveVisitor.access$getSkipLevel$p(localExclusiveVisitor) - 1);
       return;
     }
-    TaskExecutionStatics localTaskExecutionStatics = (TaskExecutionStatics)MiniGameBeaconReport.ExclusiveVisitor.access$getStack$p(localExclusiveVisitor).get(CollectionsKt.getLastIndex(MiniGameBeaconReport.ExclusiveVisitor.access$getStack$p(localExclusiveVisitor)));
+    Object localObject = (TaskExecutionStatics)MiniGameBeaconReport.ExclusiveVisitor.access$getStack$p(localExclusiveVisitor).get(CollectionsKt.getLastIndex(MiniGameBeaconReport.ExclusiveVisitor.access$getStack$p(localExclusiveVisitor)));
     String str = MiniGameBeaconReport.access$getTaskName(MiniGameBeaconReport.INSTANCE, getStack());
     StringBuilder localStringBuilder = this.config;
-    if (!((Collection)localTaskExecutionStatics.getSubSteps()).isEmpty()) {}
-    for (int i = 1;; i = 0)
+    if ((((Collection)((TaskExecutionStatics)localObject).getSubSteps()).isEmpty() ^ true))
     {
-      if (i != 0)
-      {
-        localStringBuilder.append("game_launch 启动步骤 " + str + ' ' + ((TaskExecutionStatics)CollectionsKt.last(getStack())).getName() + "步骤总耗时 bigint");
-        localStringBuilder.append("\n");
-      }
-      localStringBuilder.append("game_launch 启动步骤 " + str + "_self " + ((TaskExecutionStatics)CollectionsKt.last(getStack())).getName() + "步骤自身耗时 bigint");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("game_launch 启动步骤 ");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(' ');
+      ((StringBuilder)localObject).append(((TaskExecutionStatics)CollectionsKt.last(getStack())).getName());
+      ((StringBuilder)localObject).append("步骤总耗时 bigint");
+      localStringBuilder.append(((StringBuilder)localObject).toString());
       localStringBuilder.append("\n");
-      MiniGameBeaconReport.ExclusiveVisitor.access$getStack$p(localExclusiveVisitor).remove(CollectionsKt.getLastIndex(MiniGameBeaconReport.ExclusiveVisitor.access$getStack$p(localExclusiveVisitor)));
-      return;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("game_launch 启动步骤 ");
+    ((StringBuilder)localObject).append(str);
+    ((StringBuilder)localObject).append("_self ");
+    ((StringBuilder)localObject).append(((TaskExecutionStatics)CollectionsKt.last(getStack())).getName());
+    ((StringBuilder)localObject).append("步骤自身耗时 bigint");
+    localStringBuilder.append(((StringBuilder)localObject).toString());
+    localStringBuilder.append("\n");
+    MiniGameBeaconReport.ExclusiveVisitor.access$getStack$p(localExclusiveVisitor).remove(CollectionsKt.getLastIndex(MiniGameBeaconReport.ExclusiveVisitor.access$getStack$p(localExclusiveVisitor)));
   }
   
   @NotNull
@@ -50,7 +57,7 @@ final class MiniGameBeaconReport$ParamConfigVisitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.report.MiniGameBeaconReport.ParamConfigVisitor
  * JD-Core Version:    0.7.0.1
  */

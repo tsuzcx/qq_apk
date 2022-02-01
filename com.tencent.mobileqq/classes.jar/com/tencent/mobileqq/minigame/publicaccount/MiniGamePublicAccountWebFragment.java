@@ -6,7 +6,6 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -25,7 +24,8 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.ark.ark;
+import androidx.fragment.app.FragmentActivity;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -33,10 +33,10 @@ import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.ark.api.IArkAPIService;
 import com.tencent.mobileqq.ark.multiproc.ArkMultiProcUtil;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.mini.api.IMiniAppService;
@@ -58,6 +58,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -107,34 +108,36 @@ public class MiniGamePublicAccountWebFragment
   
   private boolean checkTianshuData(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      try
+    }
+    try
+    {
+      JSONObject localJSONObject2 = new JSONObject(paramString);
+      JSONObject localJSONObject1 = localJSONObject2.optJSONObject("xmodal");
+      paramString = localJSONObject1;
+      if (localJSONObject1 == null)
       {
-        JSONObject localJSONObject2 = new JSONObject(paramString);
-        JSONObject localJSONObject1 = localJSONObject2.optJSONObject("xmodal");
+        localJSONObject1 = localJSONObject2.optJSONObject("notification");
         paramString = localJSONObject1;
-        if (localJSONObject1 == null)
-        {
-          paramString = localJSONObject2.optJSONObject("notification");
-          if (paramString == null) {}
-        }
-        else if (paramString.optBoolean("isFromPublicLandingPage", false))
-        {
-          paramString = paramString.optJSONObject("tianshuAdData");
-          if ((paramString != null) && (!TextUtils.isEmpty(paramString.optString("adId"))))
-          {
-            boolean bool = TextUtils.isEmpty(paramString.optString("appid"));
-            if (!bool) {
-              return true;
-            }
-          }
+        if (localJSONObject1 == null) {
+          return false;
         }
       }
-      catch (JSONException paramString) {}
+      if (!paramString.optBoolean("isFromPublicLandingPage", false)) {
+        return false;
+      }
+      paramString = paramString.optJSONObject("tianshuAdData");
+      if (paramString == null) {
+        return false;
+      }
+      if (TextUtils.isEmpty(paramString.optString("adId"))) {
+        return false;
+      }
+      boolean bool = TextUtils.isEmpty(paramString.optString("appid"));
+      return !bool;
     }
+    catch (JSONException paramString) {}
     return false;
   }
   
@@ -143,18 +146,31 @@ public class MiniGamePublicAccountWebFragment
     QIPCClientHelper.getInstance().callServer("MiniGamePublicAccountIPCModule", "action_get_mini_game_public_account_msg", null, this.getMsgCallback);
   }
   
+  private AppInterface getToolAppRuntime()
+  {
+    return (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web");
+  }
+  
   private int getWebHeaderHeight()
   {
-    if ((getActivity() != null) && (isAdded()))
+    Object localObject = getActivity();
+    int j = 0;
+    int i = j;
+    if (localObject != null)
     {
-      if (this.pagerContainer.getVisibility() == 0) {}
-      for (int i = this.pagerContainer.getMeasuredHeight();; i = this.emptyLayout.getMeasuredHeight())
+      i = j;
+      if (isAdded())
       {
-        float f = 0;
-        return (int)(AIOUtils.a(i + this.moreMsgLayout.getMeasuredHeight(), getResources()) + 20.0F + f);
+        if (this.pagerContainer.getVisibility() == 0) {
+          localObject = this.pagerContainer;
+        } else {
+          localObject = this.emptyLayout;
+        }
+        i = ((LinearLayout)localObject).getMeasuredHeight();
+        i = (int)(0 + (AIOUtils.a(i + this.moreMsgLayout.getMeasuredHeight(), getResources()) + 20.0F));
       }
     }
-    return 0;
+    return i;
   }
   
   private void gotoAccountDetail()
@@ -167,45 +183,46 @@ public class MiniGamePublicAccountWebFragment
   
   private void handleDefaultLoading()
   {
-    if (this.loadLayout == null) {
+    Object localObject1 = this.loadLayout;
+    if (localObject1 == null) {
       return;
     }
-    this.loadLayout.removeAllViews();
-    TextView localTextView = new TextView(getActivity());
+    ((LinearLayout)localObject1).removeAllViews();
+    localObject1 = new TextView(getActivity());
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
-    localLayoutParams.leftMargin = AIOUtils.a(7.0F, getActivity().getResources());
-    localTextView.setText(HardCodeUtil.a(2131710270));
-    localTextView.setTextColor(2130706432);
+    localLayoutParams.leftMargin = AIOUtils.b(7.0F, getActivity().getResources());
+    ((TextView)localObject1).setText(HardCodeUtil.a(2131710251));
+    ((TextView)localObject1).setTextColor(2130706432);
     ImageView localImageView = new ImageView(getActivity());
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = getActivity().getResources().getDrawable(2130847540);
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = getActivity().getResources().getDrawable(2130847540);
-    localImageView.setImageDrawable(URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_refresh_small_gray@2x.png", (URLDrawable.URLDrawableOptions)localObject));
+    Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = getActivity().getResources().getDrawable(2130847408);
+    ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = getActivity().getResources().getDrawable(2130847408);
+    localImageView.setImageDrawable(URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_refresh_small_gray@2x.png", (URLDrawable.URLDrawableOptions)localObject2));
     localImageView.setVisibility(0);
-    localObject = new RotateAnimation(0.0F, 359.0F, 1, 0.5F, 1, 0.5F);
-    ((Animation)localObject).setRepeatCount(-1);
-    ((Animation)localObject).setDuration(1000L);
-    localImageView.startAnimation((Animation)localObject);
-    localObject = new LinearLayout.LayoutParams(AIOUtils.a(15.0F, getActivity().getResources()), AIOUtils.a(15.0F, getActivity().getResources()));
-    this.loadLayout.addView(localImageView, (ViewGroup.LayoutParams)localObject);
-    this.loadLayout.addView(localTextView, localLayoutParams);
+    localObject2 = new RotateAnimation(0.0F, 359.0F, 1, 0.5F, 1, 0.5F);
+    ((Animation)localObject2).setRepeatCount(-1);
+    ((Animation)localObject2).setDuration(1000L);
+    localImageView.startAnimation((Animation)localObject2);
+    localObject2 = new LinearLayout.LayoutParams(AIOUtils.b(15.0F, getActivity().getResources()), AIOUtils.b(15.0F, getActivity().getResources()));
+    this.loadLayout.addView(localImageView, (ViewGroup.LayoutParams)localObject2);
+    this.loadLayout.addView((View)localObject1, localLayoutParams);
   }
   
   private void initHead(View paramView)
   {
-    this.headLayout = ((MiniGamePublicAccountHeadLayout)paramView.findViewById(2063794194));
-    this.webView = ((MiniGamePublicAccountWebView)paramView.findViewById(2063794195));
+    this.headLayout = ((MiniGamePublicAccountHeadLayout)paramView.findViewById(2030239765));
+    this.webView = ((MiniGamePublicAccountWebView)paramView.findViewById(2030239766));
     this.headLayout.attachToRootView();
     this.webView.attachHeaderView(this.headLayout);
-    this.pagerContainer = ((LinearLayout)this.headLayout.findViewById(2063794185));
-    this.viewPager = ((MiniGamePubViewpager)this.headLayout.findViewById(2063794178));
-    this.mIndicator = ((MiniGamePublicAccountViewPagerIndicator)this.headLayout.findViewById(2063794191));
-    this.moreMsgText = ((TextView)this.headLayout.findViewById(2063794190));
-    this.moreMsgBtn = ((TextView)this.headLayout.findViewById(2063794188));
-    this.moreMsgLayout = ((RelativeLayout)this.headLayout.findViewById(2063794189));
-    this.emptyLayout = ((LinearLayout)this.headLayout.findViewById(2063794176));
-    this.emptyImage = ((URLImageView)this.headLayout.findViewById(2063794177));
-    this.headerLayoutBg = this.headLayout.findViewById(2063794182);
+    this.pagerContainer = ((LinearLayout)this.headLayout.findViewById(2030239756));
+    this.viewPager = ((MiniGamePubViewpager)this.headLayout.findViewById(2030239748));
+    this.mIndicator = ((MiniGamePublicAccountViewPagerIndicator)this.headLayout.findViewById(2030239762));
+    this.moreMsgText = ((TextView)this.headLayout.findViewById(2030239761));
+    this.moreMsgBtn = ((TextView)this.headLayout.findViewById(2030239759));
+    this.moreMsgLayout = ((RelativeLayout)this.headLayout.findViewById(2030239760));
+    this.emptyLayout = ((LinearLayout)this.headLayout.findViewById(2030239746));
+    this.emptyImage = ((URLImageView)this.headLayout.findViewById(2030239747));
+    this.headerLayoutBg = this.headLayout.findViewById(2030239752);
     this.moreMsgBtn.setOnClickListener(this);
     this.emptyImage.setBackgroundURL("https://sola.gtimg.cn/aoi/sola/20200717141546_FIOiVDF9l3.png");
     this.pagerAdapter = this.mUiController.createAdapter(getActivity());
@@ -225,10 +242,10 @@ public class MiniGamePublicAccountWebFragment
     int i = ((DisplayMetrics)localObject).heightPixels;
     try
     {
-      this.loadLayout = ((LinearLayout)paramView.findViewById(2063794187));
-      int j = AIOUtils.a(418.0F, getActivity().getResources());
+      this.loadLayout = ((LinearLayout)paramView.findViewById(2030239758));
+      int j = AIOUtils.b(418.0F, getActivity().getResources());
       localObject = this.loadLayout.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject).height = AIOUtils.a(i - j, getActivity().getResources());
+      ((ViewGroup.LayoutParams)localObject).height = AIOUtils.b(i - j, getActivity().getResources());
       this.loadLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
       localObject = (IPreloadServiceProxy)BaseApplicationImpl.getApplication().peekAppRuntime().getRuntimeService(IPreloadServiceProxy.class, "multi");
       if (TextUtils.isEmpty(PreloadStaticApi.a("https://i.gtimg.cn/channel/imglib/202003/upload_0408e905d4fe21d5749b1902145804d9.png", false, 0).filePath))
@@ -237,20 +254,23 @@ public class MiniGamePublicAccountWebFragment
         ((IPreloadServiceProxy)localObject).getResPath("https://i.gtimg.cn/channel/imglib/202003/upload_0408e905d4fe21d5749b1902145804d9.png", new MiniGamePublicAccountWebFragment.3(this));
         return;
       }
+      ((IPreloadServiceProxy)localObject).getResPath("https://i.gtimg.cn/channel/imglib/202003/upload_0408e905d4fe21d5749b1902145804d9.png", new MiniGamePublicAccountWebFragment.4(this, paramView));
+      return;
     }
     catch (Exception paramView)
     {
-      this.loadLayout = null;
-      return;
+      label177:
+      break label177;
     }
-    ((IPreloadServiceProxy)localObject).getResPath("https://i.gtimg.cn/channel/imglib/202003/upload_0408e905d4fe21d5749b1902145804d9.png", new MiniGamePublicAccountWebFragment.4(this, paramView));
+    this.loadLayout = null;
   }
   
   private void refreshHead(int paramInt)
   {
-    if (this.pagerAdapter != null)
+    BaseHeaderAdapter localBaseHeaderAdapter = this.pagerAdapter;
+    if (localBaseHeaderAdapter != null)
     {
-      this.pagerAdapter.setData(this.mMsgInfoList);
+      localBaseHeaderAdapter.setData(this.mMsgInfoList);
       this.mIndicator.refreshIndicator();
       if (paramInt != -1) {
         ThreadManagerV2.getUIHandlerV2().postDelayed(new MiniGamePublicAccountWebFragment.9(this, paramInt), 200L);
@@ -260,32 +280,34 @@ public class MiniGamePublicAccountWebFragment
   
   private void reportBrowsetTime()
   {
-    if (this.startTime < 0L) {}
-    long l;
-    do
-    {
+    if (this.startTime < 0L) {
       return;
-      l = SystemClock.elapsedRealtime() - this.startTime;
-    } while (l <= 0L);
-    ((IMiniAppService)QRoute.api(IMiniAppService.class)).report4239Async("minigamechengzaiye", "top_news_ark_test", "period", String.valueOf(l), null, null);
+    }
+    long l = SystemClock.elapsedRealtime() - this.startTime;
+    if (l > 0L) {
+      ((IMiniAppService)QRoute.api(IMiniAppService.class)).report4239Async("minigamechengzaiye", "top_news_ark_test", "period", String.valueOf(l), null, null);
+    }
   }
   
   private void reportMsgExpose(int paramInt, boolean paramBoolean)
   {
-    if (paramInt < this.mMsgInfoList.size()) {}
-    for (QQGameMsgInfo localQQGameMsgInfo = (QQGameMsgInfo)this.mMsgInfoList.get(paramInt);; localQQGameMsgInfo = null)
-    {
-      if (localQQGameMsgInfo == null) {}
-      while (((Boolean)this.exposeReported.get(paramInt)).booleanValue()) {
-        return;
-      }
-      this.exposeReported.set(paramInt, Boolean.valueOf(true));
-      if (paramBoolean) {
-        ark.arkNotify(localQQGameMsgInfo.arkAppName, "msg_expose", localQQGameMsgInfo.arkMetaList, "json");
-      }
-      ((IMiniAppService)QRoute.api(IMiniAppService.class)).report4239Async("minigamechengzaiye", "top_news_ark_test", "expo", localQQGameMsgInfo.advId, null, null);
+    QQGameMsgInfo localQQGameMsgInfo;
+    if (paramInt < this.mMsgInfoList.size()) {
+      localQQGameMsgInfo = (QQGameMsgInfo)this.mMsgInfoList.get(paramInt);
+    } else {
+      localQQGameMsgInfo = null;
+    }
+    if (localQQGameMsgInfo == null) {
       return;
     }
+    if (((Boolean)this.exposeReported.get(paramInt)).booleanValue()) {
+      return;
+    }
+    this.exposeReported.set(paramInt, Boolean.valueOf(true));
+    if (paramBoolean) {
+      ((IArkAPIService)QRoute.api(IArkAPIService.class)).postArkNotify(localQQGameMsgInfo.arkAppName, "msg_expose", localQQGameMsgInfo.arkMetaList);
+    }
+    ((IMiniAppService)QRoute.api(IMiniAppService.class)).report4239Async("minigamechengzaiye", "top_news_ark_test", "expo", localQQGameMsgInfo.advId, null, null);
   }
   
   public void enterAIO(boolean paramBoolean)
@@ -301,15 +323,16 @@ public class MiniGamePublicAccountWebFragment
       localIntent.setClass(getActivity(), ChatActivity.class);
       localIntent.putExtra("uin", AppConstants.MINI_GAME_PUBLIC_ACCOUNT_UIN);
       localIntent.putExtra("uintype", 1008);
-      localIntent.putExtra("uinname", getString(2131694214));
+      localIntent.putExtra("uinname", getString(2131694179));
       localIntent.putExtra("entrance", 1);
       localIntent.putExtra("aio_msg_source", 0);
       getActivity().startActivity(localIntent);
       ((IMiniAppService)QRoute.api(IMiniAppService.class)).report4239Async("minigamechengzaiye", "top_news_more", "click", null, null, null);
-      if (paramBoolean) {
+      if (paramBoolean)
+      {
         getActivity().finish();
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -319,11 +342,11 @@ public class MiniGamePublicAccountWebFragment
   
   public void initTitle(View paramView)
   {
-    this.layoutTitleBar = paramView.findViewById(2063794186);
-    this.titleBar = ((MiniGamePublicAccountNavBar)paramView.findViewById(2063794196));
+    this.layoutTitleBar = paramView.findViewById(2030239757);
+    this.titleBar = ((MiniGamePublicAccountNavBar)paramView.findViewById(2030239767));
     this.titleBar.setTitleBarTransparent();
     this.navTitle = this.titleBar.getTitleTextView();
-    this.navTitle.setText(2131694214);
+    this.navTitle.setText(2131694179);
     this.navTitle.setTextColor(-1);
     this.titleBar.setOnItemSelectListener(new MiniGamePublicAccountWebFragment.6(this));
     initTitleEvent();
@@ -342,9 +365,9 @@ public class MiniGamePublicAccountWebFragment
     if (this.webView == null) {
       this.webView = new MiniGamePublicAccountWebView(getActivity());
     }
-    this.webViewBuilder = new MiniGamePublicAccountWebFragment.5(this, getActivity(), getActivity(), CmGameUtil.a(), this.webView);
-    this.webViewBuilder.setmTimeBeforeLoadUrl(System.currentTimeMillis());
-    new WebViewDirector(this.webViewBuilder).a(null, CmGameUtil.a(), null);
+    this.webViewBuilder = new MiniGamePublicAccountWebFragment.5(this, getActivity(), getActivity(), getToolAppRuntime(), this.webView);
+    this.webViewBuilder.setTimeBeforeLoadUrl(System.currentTimeMillis());
+    new WebViewDirector(this.webViewBuilder).a(null, getToolAppRuntime(), null);
     this.webView = ((MiniGamePublicAccountWebView)this.webViewBuilder.getWebView());
     this.webView.setWillNotCacheDrawing(false);
     this.webView.setDrawingCacheEnabled(true);
@@ -373,9 +396,9 @@ public class MiniGamePublicAccountWebFragment
             localHashMap.put("height", Integer.valueOf(paramInt));
           }
           localWebViewPluginEngine.a(this.webView.getUrl(), 8589934624L, localHashMap);
+          return;
         }
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -391,9 +414,7 @@ public class MiniGamePublicAccountWebFragment
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    default: 
+    if (paramView.getId() != 2030239759) {
       return;
     }
     enterAIO(false);
@@ -415,8 +436,8 @@ public class MiniGamePublicAccountWebFragment
         this.enterQQGamePubTime = (SystemClock.elapsedRealtime() - l);
       }
     }
-    paramLayoutInflater = paramLayoutInflater.inflate(2063859714, paramViewGroup, false);
-    this.rootView = paramLayoutInflater.findViewById(2063794198);
+    paramLayoutInflater = paramLayoutInflater.inflate(2030305283, paramViewGroup, false);
+    this.rootView = paramLayoutInflater.findViewById(2030239769);
     initHead(paramLayoutInflater);
     this.initUiTime = (SystemClock.elapsedRealtime() - this.startTime);
     this.initWebViewTime = initWebView();
@@ -430,18 +451,21 @@ public class MiniGamePublicAccountWebFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.pagerAdapter != null) {
-      this.pagerAdapter.onDestroy();
+    Object localObject = this.pagerAdapter;
+    if (localObject != null) {
+      ((BaseHeaderAdapter)localObject).onDestroy();
     }
-    if (this.webViewBuilder != null) {
-      this.webViewBuilder.onDestroy();
+    localObject = this.webViewBuilder;
+    if (localObject != null) {
+      ((MiniGamePublicAccountWebViewBuilder)localObject).onDestroy();
     }
   }
   
   public void onDestroyView()
   {
-    if (this.pagerAdapter != null) {
-      this.pagerAdapter.onDestroyView();
+    BaseHeaderAdapter localBaseHeaderAdapter = this.pagerAdapter;
+    if (localBaseHeaderAdapter != null) {
+      localBaseHeaderAdapter.onDestroyView();
     }
     super.onDestroyView();
   }
@@ -449,22 +473,26 @@ public class MiniGamePublicAccountWebFragment
   public void onPause()
   {
     super.onPause();
-    if (this.webViewBuilder != null) {
-      this.webViewBuilder.onPause();
+    Object localObject = this.webViewBuilder;
+    if (localObject != null) {
+      ((MiniGamePublicAccountWebViewBuilder)localObject).onPause();
     }
-    if (this.pagerAdapter != null) {
-      this.pagerAdapter.onPause();
+    localObject = this.pagerAdapter;
+    if (localObject != null) {
+      ((BaseHeaderAdapter)localObject).onPause();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.webViewBuilder != null) {
-      this.webViewBuilder.onResume();
+    Object localObject = this.webViewBuilder;
+    if (localObject != null) {
+      ((MiniGamePublicAccountWebViewBuilder)localObject).onResume();
     }
-    if (this.pagerAdapter != null) {
-      this.pagerAdapter.onResume();
+    localObject = this.pagerAdapter;
+    if (localObject != null) {
+      ((BaseHeaderAdapter)localObject).onResume();
     }
     try
     {
@@ -475,10 +503,7 @@ public class MiniGamePublicAccountWebFragment
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        QLog.w("MiniGamePublicAccountWebFragment", 1, "onResume catch: ", localThrowable);
-      }
+      QLog.w("MiniGamePublicAccountWebFragment", 1, "onResume catch: ", localThrowable);
     }
     QIPCClientHelper.getInstance().callServer("MiniGamePublicAccountIPCModule", "action_do_on_resume", null, null);
   }
@@ -490,7 +515,7 @@ public class MiniGamePublicAccountWebFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountWebFragment
  * JD-Core Version:    0.7.0.1
  */

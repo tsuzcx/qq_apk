@@ -37,10 +37,10 @@ public final class NotificationCompat$Action$WearableExtender
   {
     if (paramBoolean)
     {
-      this.mFlags |= paramInt;
+      this.mFlags = (paramInt | this.mFlags);
       return;
     }
-    this.mFlags &= (paramInt ^ 0xFFFFFFFF);
+    this.mFlags = ((paramInt ^ 0xFFFFFFFF) & this.mFlags);
   }
   
   public WearableExtender clone()
@@ -56,17 +56,21 @@ public final class NotificationCompat$Action$WearableExtender
   public NotificationCompat.Action.Builder extend(NotificationCompat.Action.Builder paramBuilder)
   {
     Bundle localBundle = new Bundle();
-    if (this.mFlags != 1) {
-      localBundle.putInt("flags", this.mFlags);
+    int i = this.mFlags;
+    if (i != 1) {
+      localBundle.putInt("flags", i);
     }
-    if (this.mInProgressLabel != null) {
-      localBundle.putCharSequence("inProgressLabel", this.mInProgressLabel);
+    CharSequence localCharSequence = this.mInProgressLabel;
+    if (localCharSequence != null) {
+      localBundle.putCharSequence("inProgressLabel", localCharSequence);
     }
-    if (this.mConfirmLabel != null) {
-      localBundle.putCharSequence("confirmLabel", this.mConfirmLabel);
+    localCharSequence = this.mConfirmLabel;
+    if (localCharSequence != null) {
+      localBundle.putCharSequence("confirmLabel", localCharSequence);
     }
-    if (this.mCancelLabel != null) {
-      localBundle.putCharSequence("cancelLabel", this.mCancelLabel);
+    localCharSequence = this.mCancelLabel;
+    if (localCharSequence != null) {
+      localBundle.putCharSequence("cancelLabel", localCharSequence);
     }
     paramBuilder.getExtras().putBundle("android.wearable.EXTENSIONS", localBundle);
     return paramBuilder;
@@ -146,7 +150,7 @@ public final class NotificationCompat$Action$WearableExtender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.NotificationCompat.Action.WearableExtender
  * JD-Core Version:    0.7.0.1
  */

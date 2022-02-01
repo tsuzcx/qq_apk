@@ -11,14 +11,15 @@ class SimpleHttpInterfaceTransfer$7
   
   public void onResponse(int paramInt, JSONObject paramJSONObject)
   {
-    if (this.jdField_a_of_type_ComTencentIliveOpensdkReporterinterfaceSimpleCoreUploadCallback != null) {
-      this.jdField_a_of_type_ComTencentIliveOpensdkReporterinterfaceSimpleCoreUploadCallback.onResponse(paramInt, paramJSONObject);
+    SimpleCoreUploadCallback localSimpleCoreUploadCallback = this.jdField_a_of_type_ComTencentIliveOpensdkReporterinterfaceSimpleCoreUploadCallback;
+    if (localSimpleCoreUploadCallback != null) {
+      localSimpleCoreUploadCallback.onResponse(paramInt, paramJSONObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avplayerservice.SimpleHttpInterfaceTransfer.7
  * JD-Core Version:    0.7.0.1
  */

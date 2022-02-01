@@ -25,7 +25,6 @@ import com.tencent.qqmini.miniapp.plugin.EmbeddedWidgetClientFactory;
 import com.tencent.qqmini.sdk.annotation.MiniKeep;
 import com.tencent.qqmini.sdk.core.Preloadable;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.core.utils.AppBrandUtil;
 import com.tencent.qqmini.sdk.core.utils.SoftKeyboardStateHelper;
 import com.tencent.qqmini.sdk.core.utils.SoftKeyboardStateHelper.SoftKeyboardStateListener;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
@@ -103,7 +102,7 @@ public class AppBrandPageContainer
   private MiniAppMonitorInfoView mMiniAppMonitorInfoView;
   private SoftKeyboardStateHelper mSoftKeyboardStateHelper;
   private List<SoftKeyboardStateHelper.SoftKeyboardStateListener> mSoftKeyboardStateListenerList = new CopyOnWriteArrayList();
-  private AppBrandPage redirectOldPage;
+  private ConcurrentLinkedQueue<AppBrandPage> redirectOldPages = new ConcurrentLinkedQueue();
   
   public AppBrandPageContainer(IMiniAppContext paramIMiniAppContext, EventListener paramEventListener)
   {
@@ -118,36 +117,36 @@ public class AppBrandPageContainer
   private void executeDownSubPackage(String paramString1, String paramString2)
   {
     WeakReference localWeakReference = new WeakReference(this);
-    if (this.mActivity != null) {}
-    for (ToastView localToastView = new ToastView(this.mActivity, this);; localToastView = null)
-    {
-      if (localToastView != null) {
-        localToastView.show(1, "loading", null, "正在加载模块...", -1, true);
-      }
-      com.tencent.qqmini.sdk.manager.ApkgManager.getInstance().downloadSubPack(this.mApkgInfo, this.mContext.getMiniAppInfo(), paramString1, getOnInitApkgListener(paramString1, paramString2, localWeakReference, localToastView));
-      return;
+    Object localObject = this.mActivity;
+    if (localObject != null) {
+      localObject = new ToastView((Context)localObject, this);
+    } else {
+      localObject = null;
     }
+    if (localObject != null) {
+      ((ToastView)localObject).show(1, "loading", null, "正在加载模块...", -1, true);
+    }
+    com.tencent.qqmini.sdk.manager.ApkgManager.getInstance().downloadSubPack(this.mApkgInfo, this.mContext.getMiniAppInfo(), paramString1, getOnInitApkgListener(paramString1, paramString2, localWeakReference, (ToastView)localObject));
   }
   
   private AppBrandPage getBrandPage()
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.appBrandPages != null)
+    Object localObject1 = this.appBrandPages;
+    if ((localObject1 != null) && (((LinkedList)localObject1).size() > 0))
     {
+      localObject2 = (AppBrandPage)this.appBrandPages.poll();
       localObject1 = localObject2;
-      if (this.appBrandPages.size() > 0)
+      if (localObject2 != null)
       {
-        localObject2 = (AppBrandPage)this.appBrandPages.poll();
+        ((AppBrandPage)localObject2).onPause();
         localObject1 = localObject2;
-        if (localObject2 != null)
-        {
-          ((AppBrandPage)localObject2).onPause();
-          localObject1 = localObject2;
-        }
       }
     }
-    localObject2 = localObject1;
+    else
+    {
+      localObject1 = null;
+    }
+    Object localObject2 = localObject1;
     if (localObject1 == null)
     {
       localObject2 = this.mAppBrandPagePool.getAppBrandPage(this.mContext, this);
@@ -158,51 +157,54 @@ public class AppBrandPageContainer
   
   private String getMenuButtonBoundingClientRect(NativeViewRequestEvent paramNativeViewRequestEvent)
   {
-    Object localObject = getCapsuleButton();
-    int j;
-    int i;
-    if (localObject != null)
+    Object localObject1 = getCapsuleButton();
+    if (localObject1 != null)
     {
-      j = (int)(((View)localObject).getWidth() / DisplayUtil.getDensity(this.mActivity));
-      i = (int)(((View)localObject).getHeight() / DisplayUtil.getDensity(this.mActivity));
-      int k = (int)(((View)localObject).getLeft() / DisplayUtil.getDensity(this.mActivity));
-      int m = (int)(((View)localObject).getTop() / DisplayUtil.getDensity(this.mActivity));
-      int n = (int)(((View)localObject).getRight() / DisplayUtil.getDensity(this.mActivity));
-      int i1 = (int)(((View)localObject).getBottom() / DisplayUtil.getDensity(this.mActivity));
-      localObject = new Rect(267, 34, 347, 64);
-      if (j == 0) {
-        break label334;
+      int i = (int)(((View)localObject1).getWidth() / DisplayUtil.getDensity(this.mActivity));
+      int j = (int)(((View)localObject1).getHeight() / DisplayUtil.getDensity(this.mActivity));
+      int k = (int)(((View)localObject1).getLeft() / DisplayUtil.getDensity(this.mActivity));
+      int m = (int)(((View)localObject1).getTop() / DisplayUtil.getDensity(this.mActivity));
+      int n = (int)(((View)localObject1).getRight() / DisplayUtil.getDensity(this.mActivity));
+      int i1 = (int)(((View)localObject1).getBottom() / DisplayUtil.getDensity(this.mActivity));
+      localObject1 = new Rect(267, 34, 347, 64);
+      if (i != 0)
+      {
+        localObject1 = new Rect(k, m, n, i1);
       }
-      localObject = new Rect(k, m, n, i1);
-    }
-    for (;;)
-    {
+      else
+      {
+        i = 80;
+        j = 30;
+      }
       try
       {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("width", j);
-        localJSONObject.put("height", i);
-        localJSONObject.put("top", ((Rect)localObject).top);
-        localJSONObject.put("right", ((Rect)localObject).right);
-        localJSONObject.put("bottom", ((Rect)localObject).bottom);
-        localJSONObject.put("left", ((Rect)localObject).left);
+        localObject2 = new JSONObject();
+        ((JSONObject)localObject2).put("width", i);
+        ((JSONObject)localObject2).put("height", j);
+        ((JSONObject)localObject2).put("top", ((Rect)localObject1).top);
+        ((JSONObject)localObject2).put("right", ((Rect)localObject1).right);
+        ((JSONObject)localObject2).put("bottom", ((Rect)localObject1).bottom);
+        ((JSONObject)localObject2).put("left", ((Rect)localObject1).left);
         paramNativeViewRequestEvent.ok();
-        QMLog.d("minisdk-start-AppBrandPageContainer", "getMenuButtonBoundingClientRect : " + localJSONObject.toString());
-        localObject = localJSONObject.toString();
-        return localObject;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getMenuButtonBoundingClientRect : ");
+        ((StringBuilder)localObject1).append(((JSONObject)localObject2).toString());
+        QMLog.d("minisdk-start-AppBrandPageContainer", ((StringBuilder)localObject1).toString());
+        localObject1 = ((JSONObject)localObject2).toString();
+        return localObject1;
       }
       catch (JSONException localJSONException)
       {
-        QMLog.e("minisdk-start-AppBrandPageContainer", paramNativeViewRequestEvent.event + " error.", localJSONException);
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(paramNativeViewRequestEvent.event);
+        ((StringBuilder)localObject2).append(" error.");
+        QMLog.e("minisdk-start-AppBrandPageContainer", ((StringBuilder)localObject2).toString(), localJSONException);
         return "";
       }
-      QMLog.e("minisdk-start-AppBrandPageContainer", "EVENT_GET_MENU_BUTTON_RECT view is null.");
-      paramNativeViewRequestEvent.fail();
-      return getMenuButtonDefaultValue();
-      label334:
-      i = 30;
-      j = 80;
     }
+    QMLog.e("minisdk-start-AppBrandPageContainer", "EVENT_GET_MENU_BUTTON_RECT view is null.");
+    paramNativeViewRequestEvent.fail();
+    return getMenuButtonDefaultValue();
   }
   
   private String getMenuButtonDefaultValue()
@@ -216,7 +218,10 @@ public class AppBrandPageContainer
       ((JSONObject)localObject).put("right", 347);
       ((JSONObject)localObject).put("bottom", 64);
       ((JSONObject)localObject).put("left", 267);
-      QMLog.d("minisdk-start-AppBrandPageContainer", "getMenuButtonDefaultValue : " + ((JSONObject)localObject).toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getMenuButtonDefaultValue : ");
+      localStringBuilder.append(((JSONObject)localObject).toString());
+      QMLog.d("minisdk-start-AppBrandPageContainer", localStringBuilder.toString());
       localObject = ((JSONObject)localObject).toString();
       return localObject;
     }
@@ -243,29 +248,22 @@ public class AppBrandPageContainer
   
   private AppBrandPage getPageByWebviewId(int paramInt)
   {
-    Object localObject;
-    if ((this.appBrandPages != null) || (this.appBrandPages.size() <= 0))
+    Object localObject = this.appBrandPages;
+    if (localObject == null)
     {
-      localObject = null;
-      return localObject;
-    }
-    int i = 0;
-    for (;;)
-    {
-      if (i >= this.appBrandPages.size()) {
-        break label71;
+      if (((LinkedList)localObject).size() <= 0) {
+        return null;
       }
-      AppBrandPage localAppBrandPage = (AppBrandPage)this.appBrandPages.get(i);
-      if (localAppBrandPage != null)
+      int i = 0;
+      while (i < this.appBrandPages.size())
       {
-        localObject = localAppBrandPage;
-        if (localAppBrandPage.getPageWebviewId() == paramInt) {
-          break;
+        localObject = (AppBrandPage)this.appBrandPages.get(i);
+        if ((localObject != null) && (((AppBrandPage)localObject).getPageWebviewId() == paramInt)) {
+          return localObject;
         }
+        i += 1;
       }
-      i += 1;
     }
-    label71:
     return null;
   }
   
@@ -293,7 +291,11 @@ public class AppBrandPageContainer
     try
     {
       boolean bool = new JSONObject(paramNativeViewRequestEvent.jsonParams).optBoolean("enableDebug");
-      if (bool != Boolean.valueOf(StorageUtil.getPreference().getBoolean(this.mContext.getMiniAppInfo().appId + "_debug", false)).booleanValue())
+      SharedPreferences localSharedPreferences = StorageUtil.getPreference();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.mContext.getMiniAppInfo().appId);
+      localStringBuilder.append("_debug");
+      if (bool != Boolean.valueOf(localSharedPreferences.getBoolean(localStringBuilder.toString(), false)).booleanValue())
       {
         this.mContext.getAttachedActivity().runOnUiThread(new AppBrandPageContainer.7(this, bool));
         return;
@@ -303,8 +305,10 @@ public class AppBrandPageContainer
     }
     catch (JSONException localJSONException)
     {
-      paramNativeViewRequestEvent.fail();
+      label108:
+      break label108;
     }
+    paramNativeViewRequestEvent.fail();
   }
   
   private void handleInitApkgResultSuc(ApkgInfo paramApkgInfo, String paramString1, WeakReference<AppBrandPageContainer> paramWeakReference, String paramString2)
@@ -314,44 +318,46 @@ public class AppBrandPageContainer
       paramApkgInfo = (AppBrandPageContainer)paramWeakReference.get();
       if (paramApkgInfo != null)
       {
-        if (!"navigateTo".equals(paramString2)) {
-          break label42;
+        if ("navigateTo".equals(paramString2))
+        {
+          paramApkgInfo.navigateTo(paramString1, -1);
+          return;
         }
-        paramApkgInfo.navigateTo(paramString1, -1);
+        if ("redirectTo".equals(paramString2))
+        {
+          paramApkgInfo.redirectTo(paramString1, -1);
+          return;
+        }
+        if ("appLaunch".equals(paramString2))
+        {
+          paramApkgInfo.launch(paramString1, "appLaunch");
+          return;
+        }
+        if ("reLaunch".equals(paramString2)) {
+          paramApkgInfo.launch(paramString1, "reLaunch");
+        }
       }
     }
-    label42:
-    do
+    else
     {
-      do
+      sendPageNotFoundEvent(paramString1);
+      paramString2 = new StringBuilder();
+      paramString2.append("Page not found.");
+      paramString2.append(paramString1);
+      QMLog.e("minisdk-start-AppBrandPageContainer", paramString2.toString());
+      if ((paramApkgInfo != null) && (paramApkgInfo.mAppConfigInfo != null))
       {
-        do
+        paramString1 = paramApkgInfo.mAppConfigInfo.entryPagePath;
+        if (isUrlFileExist(paramApkgInfo, paramString1))
         {
+          ((AppBrandPageContainer)paramWeakReference.get()).launch(paramString1, "appLaunch");
           return;
-          if ("redirectTo".equals(paramString2))
-          {
-            paramApkgInfo.redirectTo(paramString1, -1);
-            return;
-          }
-          if ("appLaunch".equals(paramString2))
-          {
-            paramApkgInfo.launch(paramString1, "appLaunch");
-            return;
-          }
-        } while (!"reLaunch".equals(paramString2));
-        paramApkgInfo.launch(paramString1, "reLaunch");
-        return;
-        sendPageNotFoundEvent(paramString1);
-        QMLog.e("minisdk-start-AppBrandPageContainer", "Page not found." + paramString1);
-      } while ((paramApkgInfo == null) || (paramApkgInfo.mAppConfigInfo == null));
-      paramString1 = paramApkgInfo.mAppConfigInfo.entryPagePath;
-      if (isUrlFileExist(paramApkgInfo, paramString1))
-      {
-        ((AppBrandPageContainer)paramWeakReference.get()).launch(paramString1, "appLaunch");
-        return;
+        }
+        if (isActivityValid()) {
+          this.mContext.getAttachedActivity().moveTaskToBack(false);
+        }
       }
-    } while (!isActivityValid());
-    this.mContext.getAttachedActivity().moveTaskToBack(false);
+    }
   }
   
   private void handleOnTabItemTap(int paramInt, String paramString1, String paramString2)
@@ -373,30 +379,28 @@ public class AppBrandPageContainer
   
   private String handlePageEvent(NativeViewRequestEvent paramNativeViewRequestEvent)
   {
-    if ("setEnableDebug".equals(paramNativeViewRequestEvent.event)) {
+    if ("setEnableDebug".equals(paramNativeViewRequestEvent.event))
+    {
       handleEventSetEnableDebug(paramNativeViewRequestEvent);
     }
-    for (;;)
+    else if ("setBackgroundTextStyle".equals(paramNativeViewRequestEvent.event))
     {
-      return null;
-      if ("setBackgroundTextStyle".equals(paramNativeViewRequestEvent.event))
-      {
-        handleEventSetBackgroundTextStyle(paramNativeViewRequestEvent);
+      handleEventSetBackgroundTextStyle(paramNativeViewRequestEvent);
+    }
+    else if ("setBackgroundColor".equals(paramNativeViewRequestEvent.event))
+    {
+      handleEventSetBackgroundColor(paramNativeViewRequestEvent);
+    }
+    else
+    {
+      if ("getMenuButtonBoundingClientRect".equals(paramNativeViewRequestEvent.event)) {
+        return getMenuButtonBoundingClientRect(paramNativeViewRequestEvent);
       }
-      else if ("setBackgroundColor".equals(paramNativeViewRequestEvent.event))
-      {
-        handleEventSetBackgroundColor(paramNativeViewRequestEvent);
-      }
-      else
-      {
-        if ("getMenuButtonBoundingClientRect".equals(paramNativeViewRequestEvent.event)) {
-          return getMenuButtonBoundingClientRect(paramNativeViewRequestEvent);
-        }
-        if ("reportKeyValue".equals(paramNativeViewRequestEvent.event)) {
-          reportKeyValue(paramNativeViewRequestEvent);
-        }
+      if ("reportKeyValue".equals(paramNativeViewRequestEvent.event)) {
+        reportKeyValue(paramNativeViewRequestEvent);
       }
     }
+    return null;
   }
   
   private void initMonitor()
@@ -412,236 +416,154 @@ public class AppBrandPageContainer
   
   private void initNetwork()
   {
-    if ((this.mMiniAppInfo != null) && (this.mMiniAppInfo.apkgInfo != null) && ((this.mMiniAppInfo.apkgInfo instanceof ApkgInfo))) {
+    MiniAppInfo localMiniAppInfo = this.mMiniAppInfo;
+    if ((localMiniAppInfo != null) && (localMiniAppInfo.apkgInfo != null) && ((this.mMiniAppInfo.apkgInfo instanceof ApkgInfo))) {
       ApkgInfo.initNetwork((ApkgInfo)this.mMiniAppInfo.apkgInfo);
     }
   }
   
   private boolean isActivityValid()
   {
-    return (this.mContext != null) && (this.mContext.getAttachedActivity() != null) && (!this.mContext.getAttachedActivity().isFinishing());
+    IMiniAppContext localIMiniAppContext = this.mContext;
+    return (localIMiniAppContext != null) && (localIMiniAppContext.getAttachedActivity() != null) && (!this.mContext.getAttachedActivity().isFinishing());
   }
   
-  /* Error */
   private boolean isIndexHtmlValid(String paramString)
   {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore 4
-    //   3: aload_0
-    //   4: getfield 572	com/tencent/qqmini/miniapp/core/page/AppBrandPageContainer:mMiniAppInfo	Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;
-    //   7: getfield 587	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:launchParam	Lcom/tencent/qqmini/sdk/launcher/model/LaunchParam;
-    //   10: getfield 592	com/tencent/qqmini/sdk/launcher/model/LaunchParam:isFlutterMode	Z
-    //   13: istore 5
-    //   15: iload 4
-    //   17: istore_3
-    //   18: aload_0
-    //   19: getfield 191	com/tencent/qqmini/miniapp/core/page/AppBrandPageContainer:mApkgInfo	Lcom/tencent/qqmini/sdk/launcher/core/model/ApkgInfo;
-    //   22: ifnull +286 -> 308
-    //   25: aload_1
-    //   26: astore 6
-    //   28: aload_1
-    //   29: invokestatic 598	com/tencent/qqmini/sdk/launcher/utils/AppBrandUtil:getUrlWithoutParams	(Ljava/lang/String;)Ljava/lang/String;
-    //   32: astore 7
-    //   34: iload 5
-    //   36: ifeq +109 -> 145
-    //   39: aload 7
-    //   41: astore 6
-    //   43: new 600	java/io/File
-    //   46: dup
-    //   47: aload_0
-    //   48: getfield 191	com/tencent/qqmini/miniapp/core/page/AppBrandPageContainer:mApkgInfo	Lcom/tencent/qqmini/sdk/launcher/core/model/ApkgInfo;
-    //   51: aload 7
-    //   53: invokevirtual 603	com/tencent/qqmini/sdk/launcher/core/model/ApkgInfo:getChildFileAbsolutePath	(Ljava/lang/String;)Ljava/lang/String;
-    //   56: invokespecial 604	java/io/File:<init>	(Ljava/lang/String;)V
-    //   59: invokestatic 610	com/tencent/qqmini/sdk/launcher/utils/FileUtils:readFileToStr	(Ljava/io/File;)Ljava/lang/String;
-    //   62: astore_1
-    //   63: aload 7
-    //   65: astore 6
-    //   67: iload 4
-    //   69: istore_3
-    //   70: aload_1
-    //   71: invokestatic 616	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   74: ifne +234 -> 308
-    //   77: aload 7
-    //   79: astore 6
-    //   81: aload_1
-    //   82: ldc_w 618
-    //   85: invokevirtual 622	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   88: iflt +74 -> 162
-    //   91: aload 7
-    //   93: astore 6
-    //   95: aload_1
-    //   96: ldc_w 624
-    //   99: invokevirtual 622	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   102: iflt +60 -> 162
-    //   105: iconst_1
-    //   106: istore_2
-    //   107: iload 4
-    //   109: istore_3
-    //   110: iload_2
-    //   111: ifne +197 -> 308
-    //   114: aload 7
-    //   116: astore 6
-    //   118: ldc 34
-    //   120: new 305	java/lang/StringBuilder
-    //   123: dup
-    //   124: invokespecial 306	java/lang/StringBuilder:<init>	()V
-    //   127: ldc_w 626
-    //   130: invokevirtual 312	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   133: aload_1
-    //   134: invokevirtual 312	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   137: invokevirtual 316	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   140: invokestatic 336	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   143: iconst_0
-    //   144: ireturn
-    //   145: aload 7
-    //   147: astore 6
-    //   149: aload_0
-    //   150: getfield 191	com/tencent/qqmini/miniapp/core/page/AppBrandPageContainer:mApkgInfo	Lcom/tencent/qqmini/sdk/launcher/core/model/ApkgInfo;
-    //   153: aload 7
-    //   155: invokevirtual 629	com/tencent/qqmini/sdk/launcher/core/model/ApkgInfo:readApkgToString	(Ljava/lang/String;)Ljava/lang/String;
-    //   158: astore_1
-    //   159: goto -96 -> 63
-    //   162: iconst_0
-    //   163: istore_2
-    //   164: goto -57 -> 107
-    //   167: astore 7
-    //   169: aload 6
-    //   171: invokestatic 598	com/tencent/qqmini/sdk/launcher/utils/AppBrandUtil:getUrlWithoutParams	(Ljava/lang/String;)Ljava/lang/String;
-    //   174: astore 8
-    //   176: iload 5
-    //   178: ifeq +88 -> 266
-    //   181: new 600	java/io/File
-    //   184: dup
-    //   185: aload_0
-    //   186: getfield 191	com/tencent/qqmini/miniapp/core/page/AppBrandPageContainer:mApkgInfo	Lcom/tencent/qqmini/sdk/launcher/core/model/ApkgInfo;
-    //   189: aload 8
-    //   191: invokevirtual 603	com/tencent/qqmini/sdk/launcher/core/model/ApkgInfo:getChildFileAbsolutePath	(Ljava/lang/String;)Ljava/lang/String;
-    //   194: invokespecial 604	java/io/File:<init>	(Ljava/lang/String;)V
-    //   197: astore_1
-    //   198: iload 5
-    //   200: ifeq +79 -> 279
-    //   203: aload_1
-    //   204: invokestatic 610	com/tencent/qqmini/sdk/launcher/utils/FileUtils:readFileToStr	(Ljava/io/File;)Ljava/lang/String;
-    //   207: astore 6
-    //   209: ldc 34
-    //   211: new 305	java/lang/StringBuilder
-    //   214: dup
-    //   215: invokespecial 306	java/lang/StringBuilder:<init>	()V
-    //   218: ldc_w 631
-    //   221: invokevirtual 312	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   224: aload 8
-    //   226: invokevirtual 312	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   229: ldc_w 633
-    //   232: invokevirtual 312	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   235: aload_1
-    //   236: invokevirtual 636	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   239: invokevirtual 312	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   242: ldc_w 638
-    //   245: invokevirtual 312	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   248: aload 6
-    //   250: invokevirtual 312	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   253: invokevirtual 316	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   256: aload 7
-    //   258: invokestatic 330	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   261: iconst_0
-    //   262: istore_3
-    //   263: goto +45 -> 308
-    //   266: aload_0
-    //   267: getfield 191	com/tencent/qqmini/miniapp/core/page/AppBrandPageContainer:mApkgInfo	Lcom/tencent/qqmini/sdk/launcher/core/model/ApkgInfo;
-    //   270: aload 8
-    //   272: invokevirtual 642	com/tencent/qqmini/sdk/launcher/core/model/ApkgInfo:getApkgFile	(Ljava/lang/String;)Ljava/io/File;
-    //   275: astore_1
-    //   276: goto -78 -> 198
-    //   279: aload_0
-    //   280: getfield 191	com/tencent/qqmini/miniapp/core/page/AppBrandPageContainer:mApkgInfo	Lcom/tencent/qqmini/sdk/launcher/core/model/ApkgInfo;
-    //   283: aload 8
-    //   285: invokevirtual 629	com/tencent/qqmini/sdk/launcher/core/model/ApkgInfo:readApkgToString	(Ljava/lang/String;)Ljava/lang/String;
-    //   288: astore 6
-    //   290: goto -81 -> 209
-    //   293: astore_1
-    //   294: ldc 34
-    //   296: ldc_w 332
-    //   299: aload_1
-    //   300: invokestatic 330	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   303: iconst_0
-    //   304: istore_3
-    //   305: goto +3 -> 308
-    //   308: iload_3
-    //   309: ireturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	310	0	this	AppBrandPageContainer
-    //   0	310	1	paramString	String
-    //   106	58	2	i	int
-    //   17	292	3	bool1	boolean
-    //   1	107	4	bool2	boolean
-    //   13	186	5	bool3	boolean
-    //   26	263	6	localObject	Object
-    //   32	122	7	str1	String
-    //   167	90	7	localThrowable	Throwable
-    //   174	110	8	str2	String
-    // Exception table:
-    //   from	to	target	type
-    //   28	34	167	java/lang/Throwable
-    //   43	63	167	java/lang/Throwable
-    //   70	77	167	java/lang/Throwable
-    //   81	91	167	java/lang/Throwable
-    //   95	105	167	java/lang/Throwable
-    //   118	143	167	java/lang/Throwable
-    //   149	159	167	java/lang/Throwable
-    //   169	176	293	java/lang/Throwable
-    //   181	198	293	java/lang/Throwable
-    //   203	209	293	java/lang/Throwable
-    //   209	261	293	java/lang/Throwable
-    //   266	276	293	java/lang/Throwable
-    //   279	290	293	java/lang/Throwable
+    boolean bool3 = this.mMiniAppInfo.launchParam.isFlutterMode;
+    Object localObject1 = this.mApkgInfo;
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (localObject1 != null) {
+      localObject1 = paramString;
+    }
+    for (;;)
+    {
+      try
+      {
+        String str = com.tencent.qqmini.sdk.launcher.utils.AppBrandUtil.getUrlWithoutParams(paramString);
+        if (bool3)
+        {
+          localObject1 = str;
+          paramString = FileUtils.readFileToStr(new File(this.mApkgInfo.getChildFileAbsolutePath(str)));
+        }
+        else
+        {
+          localObject1 = str;
+          paramString = this.mApkgInfo.readApkgToString(str);
+        }
+        localObject1 = str;
+        bool1 = bool2;
+        if (!TextUtils.isEmpty(paramString))
+        {
+          localObject1 = str;
+          if (paramString.indexOf("<script>") < 0) {
+            break label351;
+          }
+          localObject1 = str;
+          if (paramString.indexOf("</script>") < 0) {
+            break label351;
+          }
+          i = 1;
+          bool1 = bool2;
+          if (i == 0)
+          {
+            localObject1 = str;
+            localObject2 = new StringBuilder();
+            localObject1 = str;
+            ((StringBuilder)localObject2).append("url file cache invalid! content: ");
+            localObject1 = str;
+            ((StringBuilder)localObject2).append(paramString);
+            localObject1 = str;
+            QMLog.e("minisdk-start-AppBrandPageContainer", ((StringBuilder)localObject2).toString());
+            return false;
+          }
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        try
+        {
+          Object localObject2 = com.tencent.qqmini.sdk.launcher.utils.AppBrandUtil.getUrlWithoutParams((String)localObject1);
+          if (bool3) {
+            paramString = new File(this.mApkgInfo.getChildFileAbsolutePath((String)localObject2));
+          } else {
+            paramString = this.mApkgInfo.getApkgFile((String)localObject2);
+          }
+          if (bool3) {
+            localObject1 = FileUtils.readFileToStr(paramString);
+          } else {
+            localObject1 = this.mApkgInfo.readApkgToString((String)localObject2);
+          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("isUrlLocalFileValid exception! url= ");
+          localStringBuilder.append((String)localObject2);
+          localStringBuilder.append(" filePath=");
+          localStringBuilder.append(paramString.getAbsolutePath());
+          localStringBuilder.append(" htmlContent=");
+          localStringBuilder.append((String)localObject1);
+          QMLog.e("minisdk-start-AppBrandPageContainer", localStringBuilder.toString(), localThrowable);
+        }
+        catch (Throwable paramString)
+        {
+          QMLog.e("minisdk-start-AppBrandPageContainer", "", paramString);
+        }
+        bool1 = false;
+      }
+      return bool1;
+      label351:
+      int i = 0;
+    }
   }
   
   private boolean isMonitorViewShowing()
   {
-    return (this.mMiniAppMonitorInfoView != null) && (this.mMiniAppMonitorInfoView.getVisibility() == 0);
+    MiniAppMonitorInfoView localMiniAppMonitorInfoView = this.mMiniAppMonitorInfoView;
+    return (localMiniAppMonitorInfoView != null) && (localMiniAppMonitorInfoView.getVisibility() == 0);
   }
   
   private boolean isSubFileCacheValid(String paramString1, String paramString2)
   {
-    boolean bool2 = true;
-    bool1 = bool2;
-    if (this.mApkgInfo != null) {
+    Object localObject = this.mApkgInfo;
+    if (localObject != null) {
       try
       {
-        String str = this.mApkgInfo.getRootPath(paramString1);
-        bool1 = bool2;
-        if (!TextUtils.isEmpty(str))
+        localObject = ((ApkgInfo)localObject).getRootPath(paramString1);
+        if (!TextUtils.isEmpty((CharSequence)localObject))
         {
-          str = new File(com.tencent.qqmini.sdk.launcher.core.model.ApkgManager.getApkgFolderPath(this.mMiniAppInfo), str).getAbsolutePath();
-          if (TextUtils.isEmpty(str)) {
+          localObject = new File(com.tencent.qqmini.sdk.launcher.core.model.ApkgManager.getApkgFolderPath(this.mMiniAppInfo), (String)localObject).getAbsolutePath();
+          if (TextUtils.isEmpty((CharSequence)localObject)) {
             return true;
           }
-          if (this.mMiniAppInfo.launchParam.isFlutterMode) {}
-          for (paramString1 = FileUtils.readFileToStr(new File(str + File.separator + paramString2));; paramString1 = this.mApkgInfo.readApkgToString(paramString1))
+          if (this.mMiniAppInfo.launchParam.isFlutterMode)
           {
-            bool1 = bool2;
-            if (TextUtils.isEmpty(paramString1)) {
-              break;
-            }
-            bool1 = bool2;
-            if (!paramString1.contains(new String(new byte[20]))) {
-              break;
-            }
-            QMLog.e("minisdk-start-AppBrandPageContainer", paramString2 + " file invalid! ");
+            paramString1 = new StringBuilder();
+            paramString1.append((String)localObject);
+            paramString1.append(File.separator);
+            paramString1.append(paramString2);
+            paramString1 = FileUtils.readFileToStr(new File(paramString1.toString()));
+          }
+          else
+          {
+            paramString1 = this.mApkgInfo.readApkgToString(paramString1);
+          }
+          if ((!TextUtils.isEmpty(paramString1)) && (paramString1.contains(new String(new byte[20]))))
+          {
+            paramString1 = new StringBuilder();
+            paramString1.append(paramString2);
+            paramString1.append(" file invalid! ");
+            QMLog.e("minisdk-start-AppBrandPageContainer", paramString1.toString());
             return false;
           }
         }
-        return bool1;
       }
       catch (Throwable paramString1)
       {
         QMLog.e("minisdk-start-AppBrandPageContainer", "", paramString1);
-        bool1 = false;
+        return false;
       }
     }
+    return true;
   }
   
   private boolean isUrlFileExist(ApkgInfo paramApkgInfo, String paramString)
@@ -656,12 +578,13 @@ public class AppBrandPageContainer
   
   private boolean isUrlReady(String paramString)
   {
+    ApkgInfo localApkgInfo = this.mApkgInfo;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.mApkgInfo != null)
+    if (localApkgInfo != null)
     {
       bool1 = bool2;
-      if (this.mApkgInfo.isUrlResReady(paramString, this.mContext.getMiniAppInfo()))
+      if (localApkgInfo.isUrlResReady(paramString, this.mContext.getMiniAppInfo()))
       {
         bool1 = bool2;
         if (this.mApkgInfo.isUrlFileExist(paramString)) {
@@ -674,12 +597,13 @@ public class AppBrandPageContainer
   
   private void onSoftKeyClosed()
   {
-    if ((this.mSoftKeyboardStateListenerList != null) && (this.mSoftKeyboardStateListenerList.size() > 0))
+    Object localObject = this.mSoftKeyboardStateListenerList;
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      Iterator localIterator = this.mSoftKeyboardStateListenerList.iterator();
-      while (localIterator.hasNext())
+      localObject = this.mSoftKeyboardStateListenerList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        SoftKeyboardStateHelper.SoftKeyboardStateListener localSoftKeyboardStateListener = (SoftKeyboardStateHelper.SoftKeyboardStateListener)localIterator.next();
+        SoftKeyboardStateHelper.SoftKeyboardStateListener localSoftKeyboardStateListener = (SoftKeyboardStateHelper.SoftKeyboardStateListener)((Iterator)localObject).next();
         if (localSoftKeyboardStateListener != null) {
           localSoftKeyboardStateListener.onSoftKeyboardClosed();
         }
@@ -690,25 +614,27 @@ public class AppBrandPageContainer
   
   private void onSoftKeyOpened(int paramInt)
   {
-    if (this.mContext != null) {}
-    int i;
-    for (Object localObject = this.mContext.getAttachedActivity();; localObject = null)
+    Object localObject = this.mContext;
+    if (localObject != null) {
+      localObject = ((IMiniAppContext)localObject).getAttachedActivity();
+    } else {
+      localObject = null;
+    }
+    int i = paramInt;
+    if (localObject != null)
     {
       i = paramInt;
-      if (localObject != null)
+      if (DisplayUtil.hasNavBar((Context)localObject))
       {
         i = paramInt;
-        if (DisplayUtil.hasNavBar((Context)localObject))
-        {
-          i = paramInt;
-          if (DisplayUtil.isNavigationBarExist((Activity)localObject)) {
-            i = paramInt - DisplayUtil.getNavigationBarHeight((Context)localObject);
-          }
+        if (DisplayUtil.isNavigationBarExist((Activity)localObject)) {
+          i = paramInt - DisplayUtil.getNavigationBarHeight((Context)localObject);
         }
       }
-      if ((this.mSoftKeyboardStateListenerList == null) || (this.mSoftKeyboardStateListenerList.size() <= 0)) {
-        break;
-      }
+    }
+    localObject = this.mSoftKeyboardStateListenerList;
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
       localObject = this.mSoftKeyboardStateListenerList.iterator();
       while (((Iterator)localObject).hasNext())
       {
@@ -729,7 +655,11 @@ public class AppBrandPageContainer
       int i = Integer.parseInt(paramJSONObject[7]);
       if (i > 0)
       {
-        QMLog.e("minisdk-start-AppBrandPageContainer", paramNativeViewRequestEvent.event + " REPORT_EVENT_DISPLAY: " + i);
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append(paramNativeViewRequestEvent.event);
+        paramJSONObject.append(" REPORT_EVENT_DISPLAY: ");
+        paramJSONObject.append(i);
+        QMLog.e("minisdk-start-AppBrandPageContainer", paramJSONObject.toString());
         MiniReportManager.reportEventType(paramMiniAppInfo, 638, null, null, null, 0, "0", i, null);
       }
     }
@@ -739,66 +669,71 @@ public class AppBrandPageContainer
   {
     paramJSONObject = paramJSONObject.getString("value").split(",");
     int i = Integer.parseInt(paramJSONObject[0]);
-    long l;
     if ((9 == i) || (6 == i))
     {
-      l = Long.parseLong(paramJSONObject[1]);
+      long l = Long.parseLong(paramJSONObject[1]);
       l = Long.parseLong(paramJSONObject[4]) - l;
       if (l > 0L)
       {
-        QMLog.e("minisdk-start-AppBrandPageContainer", paramNativeViewRequestEvent.event + " REPORT_EVENT_SPEED: " + l);
-        if (9 != i) {
-          break label120;
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append(paramNativeViewRequestEvent.event);
+        paramJSONObject.append(" REPORT_EVENT_SPEED: ");
+        paramJSONObject.append(l);
+        QMLog.e("minisdk-start-AppBrandPageContainer", paramJSONObject.toString());
+        if (9 == i)
+        {
+          MiniReportManager.reportEventType(paramMiniAppInfo, 636, null, null, null, 0, "0", l, null);
+          return;
         }
-        MiniReportManager.reportEventType(paramMiniAppInfo, 636, null, null, null, 0, "0", l, null);
+        MiniReportManager.reportEventType(paramMiniAppInfo, 637, null, null, null, 0, "0", l, null);
       }
     }
-    return;
-    label120:
-    MiniReportManager.reportEventType(paramMiniAppInfo, 637, null, null, null, 0, "0", l, null);
   }
   
   private void reportKeyValue(NativeViewRequestEvent paramNativeViewRequestEvent)
   {
-    for (;;)
+    try
     {
-      int i;
-      Object localObject;
-      int j;
-      try
+      MiniAppInfo localMiniAppInfo = this.mContext.getMiniAppInfo();
+      Object localObject1 = new JSONObject(paramNativeViewRequestEvent.jsonParams).getJSONArray("dataArray");
+      int i = 0;
+      while (i < ((JSONArray)localObject1).length())
       {
-        MiniAppInfo localMiniAppInfo = this.mContext.getMiniAppInfo();
-        JSONArray localJSONArray = new JSONObject(paramNativeViewRequestEvent.jsonParams).getJSONArray("dataArray");
-        i = 0;
-        if (i < localJSONArray.length())
+        Object localObject2 = ((JSONArray)localObject1).getJSONObject(i);
+        int j = ((JSONObject)localObject2).getInt("key");
+        if (15496 == j)
         {
-          localObject = localJSONArray.getJSONObject(i);
-          j = ((JSONObject)localObject).getInt("key");
-          if (15496 == j) {
-            reportEventDisplay(paramNativeViewRequestEvent, localMiniAppInfo, (JSONObject)localObject);
-          } else if (13544 == j) {
-            reportEventSpeed(paramNativeViewRequestEvent, localMiniAppInfo, (JSONObject)localObject);
+          reportEventDisplay(paramNativeViewRequestEvent, localMiniAppInfo, (JSONObject)localObject2);
+        }
+        else if (13544 == j)
+        {
+          reportEventSpeed(paramNativeViewRequestEvent, localMiniAppInfo, (JSONObject)localObject2);
+        }
+        else if (13582 == j)
+        {
+          localObject2 = ((JSONObject)localObject2).getString("value");
+          try
+          {
+            MiniReportManager.reportJsError(localMiniAppInfo, getCurrentPageUrl(), (String)localObject2);
+          }
+          catch (Exception localException2)
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(paramNativeViewRequestEvent.event);
+            localStringBuilder.append(" REPORT_EVENT_JS_EXCEPTION: failed:");
+            QMLog.e("minisdk-start-AppBrandPageContainer", localStringBuilder.toString(), localException2);
           }
         }
-      }
-      catch (Exception localException1)
-      {
-        QMLog.e("minisdk-start-AppBrandPageContainer", paramNativeViewRequestEvent.event + " error.", localException1);
+        i += 1;
       }
       return;
-      if (13582 == j)
-      {
-        localObject = ((JSONObject)localObject).getString("value");
-        try
-        {
-          MiniReportManager.reportJsError(localException1, getCurrentPageUrl(), (String)localObject);
-        }
-        catch (Exception localException2)
-        {
-          QMLog.e("minisdk-start-AppBrandPageContainer", paramNativeViewRequestEvent.event + " REPORT_EVENT_JS_EXCEPTION: failed:", localException2);
-        }
-      }
-      i += 1;
+    }
+    catch (Exception localException1)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramNativeViewRequestEvent.event);
+      ((StringBuilder)localObject1).append(" error.");
+      QMLog.e("minisdk-start-AppBrandPageContainer", ((StringBuilder)localObject1).toString(), localException1);
     }
   }
   
@@ -809,89 +744,94 @@ public class AppBrandPageContainer
     {
       localJSONObject.put("scene", this.mMiniAppInfo.launchParam.scene);
       localJSONObject.put("appId", this.mContext.getMiniAppInfo().appId);
-      if (this.mEventListener != null) {
-        this.mEventListener.onWebViewEvent("onAppEnterBackground", localJSONObject.toString(), 0);
-      }
-      return;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-        QMLog.w("minisdk-start-AppBrandPageContainer", "onPause,paramsObj", localJSONException);
-      }
+      localJSONException.printStackTrace();
+      QMLog.w("minisdk-start-AppBrandPageContainer", "onPause,paramsObj", localJSONException);
+    }
+    EventListener localEventListener = this.mEventListener;
+    if (localEventListener != null) {
+      localEventListener.onWebViewEvent("onAppEnterBackground", localJSONObject.toString(), 0);
     }
   }
   
   private void sendForegroundToJs()
   {
-    Object localObject1;
-    boolean bool1;
-    if ((this.mFromReload) && (this.mEventListener != null) && (this.mEventListener.isFirstDomReady()) && (!TextUtils.isEmpty(this.mMiniAppInfo.launchParam.entryPath)))
+    if (this.mFromReload)
     {
-      localObject1 = this.mMiniAppInfo.launchParam.entryPath;
-      this.mFromReload = false;
-      bool1 = true;
+      localObject1 = this.mEventListener;
+      if ((localObject1 != null) && (((EventListener)localObject1).isFirstDomReady()) && (!TextUtils.isEmpty(this.mMiniAppInfo.launchParam.entryPath)))
+      {
+        bool1 = true;
+        localObject1 = this.mMiniAppInfo.launchParam.entryPath;
+        this.mFromReload = false;
+        break label64;
+      }
     }
-    for (;;)
+    Object localObject1 = null;
+    boolean bool1 = false;
+    label64:
+    boolean bool2 = ((Boolean)this.mContext.performAction(new AppBrandPageContainer.5(this))).booleanValue();
+    Object localObject2 = this.mEventListener;
+    if ((localObject2 != null) && ((((EventListener)localObject2).isFirstDomReady()) || (bool2)))
     {
-      boolean bool2 = ((Boolean)this.mContext.performAction(new AppBrandPageContainer.5(this))).booleanValue();
-      if ((this.mEventListener != null) && ((this.mEventListener.isFirstDomReady()) || (bool2)))
+      localObject2 = localObject1;
+      if (TextUtils.isEmpty((CharSequence)localObject1))
       {
-        Object localObject2 = localObject1;
-        if (TextUtils.isEmpty((CharSequence)localObject1))
+        localObject2 = localObject1;
+        if (getShowingPage() != null) {
+          localObject2 = getShowingPage().getCurShowingUrl();
+        }
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        localObject1 = com.tencent.qqmini.sdk.core.utils.AppBrandUtil.getAppLaunchInfo((String)localObject2, this.mMiniAppInfo);
+        try
         {
-          localObject2 = localObject1;
-          if (getShowingPage() != null) {
-            localObject2 = getShowingPage().getCurShowingUrl();
-          }
+          ((JSONObject)localObject1).put("reLaunch", bool1);
         }
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          localObject1 = AppBrandUtil.getAppLaunchInfo((String)localObject2, this.mMiniAppInfo);
-        }
-      }
-      try
-      {
-        ((JSONObject)localObject1).put("reLaunch", bool1);
-        QMLog.i("minisdk-start-AppBrandPageContainer", "appLaunchInfo : " + ((JSONObject)localObject1).toString());
-        this.mEventListener.onWebViewEvent("onAppEnterForeground", ((JSONObject)localObject1).toString(), 0);
-        initNetwork();
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
+        catch (Throwable localThrowable)
         {
           QMLog.e("minisdk-start-AppBrandPageContainer", "appLaunchInfo error.", localThrowable);
         }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("appLaunchInfo : ");
+        localStringBuilder.append(((JSONObject)localObject1).toString());
+        QMLog.i("minisdk-start-AppBrandPageContainer", localStringBuilder.toString());
+        this.mEventListener.onWebViewEvent("onAppEnterForeground", ((JSONObject)localObject1).toString(), 0);
       }
-      bool1 = false;
-      localObject1 = null;
+      initNetwork();
     }
   }
   
   private void sendPageNotFoundEvent(String paramString)
   {
-    for (boolean bool = false;; bool = true) {
-      try
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("path", paramString);
+      localJSONObject.put("query", com.tencent.qqmini.sdk.core.utils.AppBrandUtil.getQueryJson(paramString));
+      boolean bool2 = true;
+      boolean bool1 = bool2;
+      if (this.appBrandPages != null)
       {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("path", paramString);
-        localJSONObject.put("query", AppBrandUtil.getQueryJson(paramString));
-        if ((this.appBrandPages != null) && (this.appBrandPages.size() > 0))
-        {
-          localJSONObject.put("isEntryPage", bool);
-          QMLog.e("minisdk-start-AppBrandPageContainer", "onPageNotFound : " + localJSONObject.toString());
-          this.mContext.performAction(ServiceSubscribeEvent.obtain("onPageNotFound", localJSONObject.toString(), 0));
-          return;
+        bool1 = bool2;
+        if (this.appBrandPages.size() > 0) {
+          bool1 = false;
         }
       }
-      catch (JSONException paramString)
-      {
-        QMLog.e("minisdk-start-AppBrandPageContainer", "onPageNotFound error", paramString);
-        return;
-      }
+      localJSONObject.put("isEntryPage", bool1);
+      paramString = new StringBuilder();
+      paramString.append("onPageNotFound : ");
+      paramString.append(localJSONObject.toString());
+      QMLog.e("minisdk-start-AppBrandPageContainer", paramString.toString());
+      this.mContext.performAction(ServiceSubscribeEvent.obtain("onPageNotFound", localJSONObject.toString(), 0));
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QMLog.e("minisdk-start-AppBrandPageContainer", "onPageNotFound error", paramString);
     }
   }
   
@@ -906,21 +846,19 @@ public class AppBrandPageContainer
   
   public boolean addNativeView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    if (paramView == null) {}
-    NativeViewContainer localNativeViewContainer;
-    do
-    {
+    if (paramView == null) {
       return false;
-      localNativeViewContainer = getNativeViewContainer();
-    } while (localNativeViewContainer == null);
+    }
+    NativeViewContainer localNativeViewContainer = getNativeViewContainer();
+    if (localNativeViewContainer == null) {
+      return false;
+    }
     if (paramLayoutParams != null) {
       localNativeViewContainer.addView(paramView, paramLayoutParams);
-    }
-    for (;;)
-    {
-      return true;
+    } else {
       localNativeViewContainer.addView(paramView);
     }
+    return true;
   }
   
   public void cleanup(boolean paramBoolean)
@@ -929,80 +867,80 @@ public class AppBrandPageContainer
     while (localIterator.hasNext())
     {
       AppBrandPage localAppBrandPage = (AppBrandPage)localIterator.next();
-      if ((localAppBrandPage != null) && ((!paramBoolean) || (this.mApkgInfo == null) || (!this.mApkgInfo.isTabBarPage(localAppBrandPage.getCurShowingUrl()))))
-      {
-        localAppBrandPage.onPause();
-        localAppBrandPage.cleanUp();
-        removeView(localAppBrandPage);
-        localIterator.remove();
+      if (localAppBrandPage != null) {
+        if (paramBoolean)
+        {
+          ApkgInfo localApkgInfo = this.mApkgInfo;
+          if ((localApkgInfo != null) && (localApkgInfo.isTabBarPage(localAppBrandPage.getCurShowingUrl()))) {}
+        }
+        else
+        {
+          localAppBrandPage.onPause();
+          localAppBrandPage.cleanUp();
+          removeView(localAppBrandPage);
+          localIterator.remove();
+        }
       }
     }
   }
   
   public String dispatchEventToNativeView(NativeViewRequestEvent paramNativeViewRequestEvent)
   {
-    Object localObject2 = null;
-    Object localObject1;
     if (paramNativeViewRequestEvent.dispatchTarget == 3) {
-      localObject1 = handlePageEvent(paramNativeViewRequestEvent);
+      return handlePageEvent(paramNativeViewRequestEvent);
     }
-    Object localObject3;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return localObject1;
-            localObject3 = getShowingPage();
-            localObject1 = localObject2;
-          } while (localObject3 == null);
-          if (paramNativeViewRequestEvent.dispatchTarget == 0) {
-            return ((AppBrandPage)localObject3).handleNativeUIEvent(paramNativeViewRequestEvent);
-          }
-          localObject3 = ((AppBrandPage)localObject3).getPageWebviewContainer();
-          localObject1 = localObject2;
-        } while (localObject3 == null);
-        if (paramNativeViewRequestEvent.dispatchTarget == 1) {
-          return ((PageWebviewContainer)localObject3).handleNativeUIEvent(paramNativeViewRequestEvent);
-        }
-        localObject3 = ((PageWebviewContainer)localObject3).getNativeViewContainer();
-        localObject1 = localObject2;
-      } while (localObject3 == null);
-      localObject1 = localObject2;
-    } while (paramNativeViewRequestEvent.dispatchTarget != 2);
-    return ((NativeViewContainer)localObject3).handleNativeUIEvent(paramNativeViewRequestEvent);
+    Object localObject = getShowingPage();
+    if (localObject == null) {
+      return null;
+    }
+    if (paramNativeViewRequestEvent.dispatchTarget == 0) {
+      return ((AppBrandPage)localObject).handleNativeUIEvent(paramNativeViewRequestEvent);
+    }
+    localObject = ((AppBrandPage)localObject).getPageWebviewContainer();
+    if (localObject == null) {
+      return null;
+    }
+    if (paramNativeViewRequestEvent.dispatchTarget == 1) {
+      return ((PageWebviewContainer)localObject).handleNativeUIEvent(paramNativeViewRequestEvent);
+    }
+    localObject = ((PageWebviewContainer)localObject).getNativeViewContainer();
+    if (localObject == null) {
+      return null;
+    }
+    if (paramNativeViewRequestEvent.dispatchTarget == 2) {
+      return ((NativeViewContainer)localObject).handleNativeUIEvent(paramNativeViewRequestEvent);
+    }
+    return null;
   }
   
   public void dispatchEventToWebView(String paramString1, String paramString2, int[] paramArrayOfInt)
   {
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
-      paramArrayOfInt = new LinkedList(this.appBrandPages).iterator();
+    Object localObject;
+    if ((paramArrayOfInt != null) && (paramArrayOfInt.length != 0))
+    {
+      int j = paramArrayOfInt.length;
+      int i = 0;
+      while (i < j)
+      {
+        int k = paramArrayOfInt[i];
+        localObject = new LinkedList(this.appBrandPages).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          BrandPageWebview localBrandPageWebview = ((AppBrandPage)((Iterator)localObject).next()).getBrandPageWebviewById(k);
+          if (localBrandPageWebview != null) {
+            localBrandPageWebview.evaluateSubscribeJSInService(paramString1, paramString2, k);
+          }
+        }
+        i += 1;
+      }
+      return;
     }
+    paramArrayOfInt = new LinkedList(this.appBrandPages).iterator();
     while (paramArrayOfInt.hasNext())
     {
-      Object localObject = (AppBrandPage)paramArrayOfInt.next();
-      if ((localObject != null) && (((AppBrandPage)localObject).getBrandPageWebview() != null))
-      {
+      localObject = (AppBrandPage)paramArrayOfInt.next();
+      if ((localObject != null) && (((AppBrandPage)localObject).getBrandPageWebview() != null)) {
         ((AppBrandPage)localObject).getBrandPageWebview().evaluateSubscribeJSInService(paramString1, paramString2, ((AppBrandPage)localObject).getPageWebviewId());
-        continue;
-        int j = paramArrayOfInt.length;
-        int i = 0;
-        while (i < j)
-        {
-          int k = paramArrayOfInt[i];
-          localObject = new LinkedList(this.appBrandPages).iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            BrandPageWebview localBrandPageWebview = ((AppBrandPage)((Iterator)localObject).next()).getBrandPageWebviewById(k);
-            if (localBrandPageWebview != null) {
-              localBrandPageWebview.evaluateSubscribeJSInService(paramString1, paramString2, k);
-            }
-          }
-          i += 1;
-        }
       }
     }
   }
@@ -1020,28 +958,29 @@ public class AppBrandPageContainer
         this.lastTouchDownY = j;
         this.lastTouchDownTimeStamp = System.currentTimeMillis();
       }
-      for (;;)
+      else if (paramMotionEvent.getAction() == 1)
       {
-        return super.dispatchTouchEvent(paramMotionEvent);
-        if (paramMotionEvent.getAction() == 1)
-        {
-          this.lastTouchUpX = i;
-          this.lastTouchUpY = j;
-          if (this.lastClicks.size() > 10) {
-            this.lastClicks.poll();
-          }
-          QMLog.d("minisdk-start-AppBrandPageContainer", "wesley size: " + this.lastClicks.size() + " x:" + this.lastTouchDownX + " y:" + this.lastTouchDownY);
-          this.lastClicks.add(new AppBrandPageContainer.ClickPoint(this.lastTouchDownX, this.lastTouchDownY, this.lastTouchUpX, this.lastTouchUpY, this.lastTouchDownTimeStamp));
+        this.lastTouchUpX = i;
+        this.lastTouchUpY = j;
+        if (this.lastClicks.size() > 10) {
+          this.lastClicks.poll();
         }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("wesley size: ");
+        localStringBuilder.append(this.lastClicks.size());
+        localStringBuilder.append(" x:");
+        localStringBuilder.append(this.lastTouchDownX);
+        localStringBuilder.append(" y:");
+        localStringBuilder.append(this.lastTouchDownY);
+        QMLog.d("minisdk-start-AppBrandPageContainer", localStringBuilder.toString());
+        this.lastClicks.add(new AppBrandPageContainer.ClickPoint(this.lastTouchDownX, this.lastTouchDownY, this.lastTouchUpX, this.lastTouchUpY, this.lastTouchDownTimeStamp));
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QMLog.e("minisdk-start-AppBrandPageContainer", "dispatchTouchEvent failed,", localException);
-      }
+      QMLog.e("minisdk-start-AppBrandPageContainer", "dispatchTouchEvent failed,", localException);
     }
+    return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public boolean doDispatchKeyEvent(KeyEvent paramKeyEvent)
@@ -1049,15 +988,12 @@ public class AppBrandPageContainer
     try
     {
       getShowingPage().getBrandPageWebview().doDispatchKeyEvent(paramKeyEvent);
-      return false;
     }
     catch (Throwable paramKeyEvent)
     {
-      for (;;)
-      {
-        QMLog.e("minisdk-start-AppBrandPageContainer", "doDispatchKeyEvent error,", paramKeyEvent);
-      }
+      QMLog.e("minisdk-start-AppBrandPageContainer", "doDispatchKeyEvent error,", paramKeyEvent);
     }
+    return false;
   }
   
   public AppBrandPagePool getAppBrandPagePool()
@@ -1147,49 +1083,56 @@ public class AppBrandPageContainer
   public String getNaviBarStyle()
   {
     Object localObject = (AppBrandPage)this.appBrandPages.peek();
+    String str2 = "default";
+    String str1 = str2;
     if (localObject != null)
     {
       localObject = ((AppBrandPage)localObject).getNavBar();
+      str1 = str2;
       if (localObject != null) {
-        return ((NavigationBar)localObject).getNavbarStyle();
+        str1 = ((NavigationBar)localObject).getNavbarStyle();
       }
-      return "default";
     }
-    return "default";
+    return str1;
   }
   
   public int getNaviBarTextStyle()
   {
     Object localObject = (AppBrandPage)this.appBrandPages.peek();
+    int j = -1;
+    int i = j;
     if (localObject != null)
     {
       localObject = ((AppBrandPage)localObject).getNavBar();
+      i = j;
       if (localObject != null) {
-        return ((NavigationBar)localObject).getStatusNavigationBarTextStyle();
+        i = ((NavigationBar)localObject).getStatusNavigationBarTextStyle();
       }
-      return -1;
     }
-    return -1;
+    return i;
   }
   
   public int getNaviBarVisibility()
   {
     Object localObject = (AppBrandPage)this.appBrandPages.peek();
+    int j = 8;
+    int i = j;
     if (localObject != null)
     {
       localObject = ((AppBrandPage)localObject).getNavBar();
+      i = j;
       if (localObject != null) {
-        return ((NavigationBar)localObject).getVisibility();
+        i = ((NavigationBar)localObject).getVisibility();
       }
-      return 8;
     }
-    return 8;
+    return i;
   }
   
   public int getPageCount()
   {
-    if (this.appBrandPages != null) {
-      return this.appBrandPages.size();
+    LinkedList localLinkedList = this.appBrandPages;
+    if (localLinkedList != null) {
+      return localLinkedList.size();
     }
     return 0;
   }
@@ -1197,27 +1140,30 @@ public class AppBrandPageContainer
   public AppPageInfo getPageInfo(int paramInt)
   {
     AppPageInfo.Builder localBuilder = new AppPageInfo.Builder();
-    Object localObject = (AbsAppBrandPage)this.appBrandPages.peek();
-    if ((AppPageInfo.enableGetPageId(paramInt)) && (localObject != null) && (((AbsAppBrandPage)localObject).getCurrentPageWebview() != null)) {
-      localBuilder.setPageId(((AbsAppBrandPage)localObject).getCurrentPageWebview().getPageWebViewId());
+    AbsAppBrandPage localAbsAppBrandPage = (AbsAppBrandPage)this.appBrandPages.peek();
+    if ((AppPageInfo.enableGetPageId(paramInt)) && (localAbsAppBrandPage != null) && (localAbsAppBrandPage.getCurrentPageWebview() != null)) {
+      localBuilder.setPageId(localAbsAppBrandPage.getCurrentPageWebview().getPageWebViewId());
     }
-    if (AppPageInfo.enableGetPageUrl(paramInt)) {
-      if (localObject == null) {
-        break label114;
-      }
-    }
-    label114:
-    for (localObject = ((AbsAppBrandPage)localObject).getCurShowingUrl();; localObject = null)
+    if (AppPageInfo.enableGetPageUrl(paramInt))
     {
-      localBuilder.setPageUrl((String)localObject);
-      if (AppPageInfo.enableGetPageWindowWidth(paramInt)) {
-        localBuilder.setWindowWidth(getPageWebviewContainer().getWidth());
+      String str;
+      if (localAbsAppBrandPage != null) {
+        str = localAbsAppBrandPage.getCurShowingUrl();
+      } else {
+        str = null;
       }
-      if (AppPageInfo.enableGetPageWindowHeight(paramInt)) {
-        localBuilder.setWindowHeight(getPageWebviewContainer().getHeight());
-      }
-      return localBuilder.build();
+      localBuilder.setPageUrl(str);
     }
+    if ((AppPageInfo.enableGetWebViewUrl(paramInt)) && (localAbsAppBrandPage != null) && (localAbsAppBrandPage.getRootContainer() != null) && (localAbsAppBrandPage.getRootContainer().getNativeViewContainer() != null)) {
+      localBuilder.setWebViewUrl(localAbsAppBrandPage.getRootContainer().getNativeViewContainer().getInnerWebViewUrl());
+    }
+    if (AppPageInfo.enableGetPageWindowWidth(paramInt)) {
+      localBuilder.setWindowWidth(getPageWebviewContainer().getWidth());
+    }
+    if (AppPageInfo.enableGetPageWindowHeight(paramInt)) {
+      localBuilder.setWindowHeight(getPageWebviewContainer().getHeight());
+    }
+    return localBuilder.build();
   }
   
   public String getPageOrientation()
@@ -1260,7 +1206,8 @@ public class AppBrandPageContainer
   
   public int getShowingPageWebViewId()
   {
-    if ((this.appBrandPages != null) && (this.appBrandPages.peek() != null)) {
+    LinkedList localLinkedList = this.appBrandPages;
+    if ((localLinkedList != null) && (localLinkedList.peek() != null)) {
       return ((AppBrandPage)this.appBrandPages.peek()).getPageWebviewId();
     }
     return -1;
@@ -1269,15 +1216,17 @@ public class AppBrandPageContainer
   public int getTabBarVisibility()
   {
     Object localObject = (AppBrandPage)this.appBrandPages.peek();
+    int j = 8;
+    int i = j;
     if (localObject != null)
     {
       localObject = ((AppBrandPage)localObject).getTabBar();
+      i = j;
       if (localObject != null) {
-        return ((TabBar)localObject).getVisibility();
+        i = ((TabBar)localObject).getVisibility();
       }
-      return 8;
     }
-    return 8;
+    return i;
   }
   
   public void hideSoftInput(View paramView)
@@ -1293,15 +1242,17 @@ public class AppBrandPageContainer
   
   public void init(Object paramObject)
   {
-    if (this.mAppBrandPagePool != null) {
-      this.mAppBrandPagePool.preLoadAppBrandPage(this.mContext, this);
+    paramObject = this.mAppBrandPagePool;
+    if (paramObject != null) {
+      paramObject.preLoadAppBrandPage(this.mContext, this);
     }
   }
   
   public void initBaseJs(BaselibLoader.BaselibContent paramBaselibContent)
   {
-    if (this.mAppBrandPagePool != null) {
-      this.mAppBrandPagePool.initBaseJs(this, paramBaselibContent);
+    AppBrandPagePool localAppBrandPagePool = this.mAppBrandPagePool;
+    if (localAppBrandPagePool != null) {
+      localAppBrandPagePool.initBaseJs(this, paramBaselibContent);
     }
   }
   
@@ -1316,102 +1267,108 @@ public class AppBrandPageContainer
   
   public void launch(String paramString1, String paramString2)
   {
-    QMLog.i("minisdk-start-AppBrandPageContainer", "launch url : " + paramString1 + "; type : " + paramString2);
-    if ((!isUrlReady(paramString1)) || (!isUrlLocalFileValid(paramString1)))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("launch url : ");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append("; type : ");
+    ((StringBuilder)localObject).append(paramString2);
+    QMLog.i("minisdk-start-AppBrandPageContainer", ((StringBuilder)localObject).toString());
+    if ((isUrlReady(paramString1)) && (isUrlLocalFileValid(paramString1)))
     {
-      executeDownSubPackage(paramString1, paramString2);
+      localObject = this.mAppBrandPagePool.getAppBrandPage(this.mContext, this);
+      this.appBrandPages.push(localObject);
+      ((AppBrandPage)localObject).loadUrl(paramString1, paramString2, this.mEventListener);
+      addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
       return;
     }
-    AppBrandPage localAppBrandPage = this.mAppBrandPagePool.getAppBrandPage(this.mContext, this);
-    this.appBrandPages.push(localAppBrandPage);
-    localAppBrandPage.loadUrl(paramString1, paramString2, this.mEventListener);
-    addView(localAppBrandPage, new FrameLayout.LayoutParams(-1, -1));
+    executeDownSubPackage(paramString1, paramString2);
   }
   
   public boolean navigateBack(int paramInt1, int paramInt2)
   {
-    boolean bool2 = false;
-    QMLog.i("minisdk-start-AppBrandPageContainer", "navigateBack delta : " + paramInt1);
-    Object localObject = getShowingPage();
-    boolean bool1;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("navigateBack delta : ");
+    ((StringBuilder)localObject).append(paramInt1);
+    QMLog.i("minisdk-start-AppBrandPageContainer", ((StringBuilder)localObject).toString());
+    localObject = getShowingPage();
     if ((localObject != null) && (((AppBrandPage)localObject).handleBackPressed())) {
-      bool1 = true;
+      return true;
     }
-    int i;
-    do
+    int j = getPageCount();
+    int i = 0;
+    if (j >= 2)
     {
-      do
+      if (paramInt1 < 1) {
+        return false;
+      }
+      paramInt2 = paramInt1;
+      if (paramInt1 >= j) {
+        paramInt2 = j - 1;
+      }
+      localObject = this.appBrandPages.iterator();
+      paramInt1 = i;
+      while ((paramInt1 < paramInt2) && (this.appBrandPages.size() >= 1))
       {
-        return bool1;
-        i = getPageCount();
-        bool1 = bool2;
-      } while (i < 2);
-      bool1 = bool2;
-    } while (paramInt1 < 1);
-    paramInt2 = paramInt1;
-    if (paramInt1 >= i) {
-      paramInt2 = i - 1;
-    }
-    localObject = this.appBrandPages.iterator();
-    paramInt1 = 0;
-    for (;;)
-    {
-      if ((paramInt1 >= paramInt2) || (this.appBrandPages.size() < 1))
-      {
-        hideSoftInput(this);
-        localObject = (AppBrandPage)this.appBrandPages.peek();
-        if (localObject != null)
+        if (((Iterator)localObject).hasNext())
         {
-          ((AppBrandPage)localObject).onResume();
-          if (isActivityValid()) {
-            ((AppBrandPage)localObject).updateWidowInfo(this.mContext.getAttachedActivity());
+          AppBrandPage localAppBrandPage = (AppBrandPage)((Iterator)localObject).next();
+          if (localAppBrandPage != null)
+          {
+            Animation localAnimation = AnimationUtils.loadAnimation(AppLoaderFactory.g().getContext(), R.anim.mini_sdk_page_slide_out_to_right);
+            localAnimation.setDuration(200L);
+            localAnimation.setAnimationListener(new AppBrandPageContainer.4(this, localAppBrandPage));
+            localAppBrandPage.startAnimation(localAnimation);
+            localAppBrandPage.onPause();
+            ((Iterator)localObject).remove();
           }
-          this.mEventListener.onWebViewReady("navigateBack", ((AppBrandPage)localObject).getCurShowingUrl(), ((AppBrandPage)localObject).getPageWebviewId());
         }
-        return true;
+        paramInt1 += 1;
       }
-      if (((Iterator)localObject).hasNext())
+      hideSoftInput(this);
+      localObject = (AppBrandPage)this.appBrandPages.peek();
+      if (localObject != null)
       {
-        AppBrandPage localAppBrandPage = (AppBrandPage)((Iterator)localObject).next();
-        if (localAppBrandPage != null)
+        ((AppBrandPage)localObject).onResume();
+        if (isActivityValid())
         {
-          Animation localAnimation = AnimationUtils.loadAnimation(AppLoaderFactory.g().getContext(), R.anim.mini_sdk_page_slide_out_to_right);
-          localAnimation.setDuration(200L);
-          localAnimation.setAnimationListener(new AppBrandPageContainer.4(this, localAppBrandPage));
-          localAppBrandPage.startAnimation(localAnimation);
-          localAppBrandPage.onPause();
-          ((Iterator)localObject).remove();
+          ((AppBrandPage)localObject).updateWidowInfo(this.mContext.getAttachedActivity());
+          ((AppBrandPage)localObject).refreshOrientation();
         }
+        this.mEventListener.onWebViewReady("navigateBack", ((AppBrandPage)localObject).getCurShowingUrl(), ((AppBrandPage)localObject).getPageWebviewId());
       }
-      paramInt1 += 1;
+      return true;
     }
+    return false;
   }
   
   public void navigateTo(String paramString, int paramInt)
   {
-    QMLog.i("minisdk-start-AppBrandPageContainer", "navigateTo url : " + paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("navigateTo url : ");
+    ((StringBuilder)localObject).append(paramString);
+    QMLog.i("minisdk-start-AppBrandPageContainer", ((StringBuilder)localObject).toString());
     if (this.aliveWebViewCount > 10)
     {
       Toast.makeText(getContext(), "打开页面超过上限，请返回", 0).show();
       QMLog.e("minisdk-start-AppBrandPageContainer", "打开WebView数量超过上限");
       return;
     }
-    if ((!isUrlReady(paramString)) || (!isUrlLocalFileValid(paramString)))
+    if ((isUrlReady(paramString)) && (isUrlLocalFileValid(paramString)))
     {
-      executeDownSubPackage(paramString, "navigateTo");
+      localObject = (AppBrandPage)this.appBrandPages.peek();
+      if (localObject != null) {
+        ((AppBrandPage)localObject).onPause();
+      }
+      localObject = this.mAppBrandPagePool.getAppBrandPage(this.mContext, this);
+      this.appBrandPages.push(localObject);
+      ((AppBrandPage)localObject).loadUrl(paramString, "navigateTo", this.mEventListener);
+      if (!((AppBrandPage)localObject).isHomePage()) {
+        ((AppBrandPage)localObject).setVisibility(4);
+      }
+      addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
       return;
     }
-    AppBrandPage localAppBrandPage = (AppBrandPage)this.appBrandPages.peek();
-    if (localAppBrandPage != null) {
-      localAppBrandPage.onPause();
-    }
-    localAppBrandPage = this.mAppBrandPagePool.getAppBrandPage(this.mContext, this);
-    this.appBrandPages.push(localAppBrandPage);
-    localAppBrandPage.loadUrl(paramString, "navigateTo", this.mEventListener);
-    if (!localAppBrandPage.isHomePage()) {
-      localAppBrandPage.setVisibility(4);
-    }
-    addView(localAppBrandPage, new FrameLayout.LayoutParams(-1, -1));
+    executeDownSubPackage(paramString, "navigateTo");
   }
   
   public void notifyOnAddColorNote()
@@ -1432,18 +1389,14 @@ public class AppBrandPageContainer
   
   public void notifyOnPageWebViewPause(int paramInt)
   {
-    AppBrandPage localAppBrandPage = getPageByWebviewId(paramInt);
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (localAppBrandPage != null)
-    {
-      localObject1 = localObject2;
-      if (localAppBrandPage.getPageWebviewContainer() != null) {
-        localObject1 = localAppBrandPage.getPageWebviewContainer().getNativeViewContainer();
-      }
+    Object localObject = getPageByWebviewId(paramInt);
+    if ((localObject != null) && (((AppBrandPage)localObject).getPageWebviewContainer() != null)) {
+      localObject = ((AppBrandPage)localObject).getPageWebviewContainer().getNativeViewContainer();
+    } else {
+      localObject = null;
     }
-    if (localObject1 != null) {
-      ((NativeViewContainer)localObject1).notifyOnPageWebViewPause();
+    if (localObject != null) {
+      ((NativeViewContainer)localObject).notifyOnPageWebViewPause();
     }
   }
   
@@ -1467,31 +1420,40 @@ public class AppBrandPageContainer
   
   public void onDestroy()
   {
-    if (this.mAppBrandPagePool != null)
+    AppBrandPagePool localAppBrandPagePool = this.mAppBrandPagePool;
+    if (localAppBrandPagePool != null)
     {
-      this.mAppBrandPagePool.destroyCachePage();
+      localAppBrandPagePool.destroyCachePage();
       this.mAppBrandPagePool = null;
     }
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if ((this.mBroadcastReceiver != null) && (this.mActivity != null))
+    AppBrandPageContainer.MonitorBroadcastReceiver localMonitorBroadcastReceiver = this.mBroadcastReceiver;
+    if (localMonitorBroadcastReceiver != null)
     {
-      this.mActivity.unregisterReceiver(this.mBroadcastReceiver);
-      this.mBroadcastReceiver = null;
+      Activity localActivity = this.mActivity;
+      if (localActivity != null)
+      {
+        localActivity.unregisterReceiver(localMonitorBroadcastReceiver);
+        this.mBroadcastReceiver = null;
+      }
     }
   }
   
   public void onNewPageCompleted()
   {
-    if (this.redirectOldPage != null)
+    while (!this.redirectOldPages.isEmpty())
     {
-      this.redirectOldPage.onPause();
-      this.redirectOldPage.cleanUp();
-      removeView(this.redirectOldPage);
-      this.redirectOldPage = null;
+      AppBrandPage localAppBrandPage = (AppBrandPage)this.redirectOldPages.poll();
+      if (localAppBrandPage != null)
+      {
+        localAppBrandPage.onPause();
+        localAppBrandPage.cleanUp();
+        removeView(localAppBrandPage);
+      }
     }
   }
   
@@ -1541,29 +1503,36 @@ public class AppBrandPageContainer
   
   public void recyclePreLoadAppBrandPage()
   {
-    if (this.mAppBrandPagePool != null) {
-      this.mAppBrandPagePool.destroyPageWebviewCache();
+    AppBrandPagePool localAppBrandPagePool = this.mAppBrandPagePool;
+    if (localAppBrandPagePool != null) {
+      localAppBrandPagePool.destroyPageWebviewCache();
     }
   }
   
   public void redirectTo(String paramString, int paramInt)
   {
-    QMLog.i("minisdk-start-AppBrandPageContainer", "redirectTo url : " + paramString);
-    if ((!isUrlReady(paramString)) || (!isUrlLocalFileValid(paramString)))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("redirectTo url : ");
+    ((StringBuilder)localObject).append(paramString);
+    QMLog.i("minisdk-start-AppBrandPageContainer", ((StringBuilder)localObject).toString());
+    if ((isUrlReady(paramString)) && (isUrlLocalFileValid(paramString)))
     {
-      executeDownSubPackage(paramString, "redirectTo");
+      localObject = this.appBrandPages;
+      if ((localObject != null) && (((LinkedList)localObject).size() > 0))
+      {
+        localObject = (AppBrandPage)this.appBrandPages.poll();
+        this.redirectOldPages.add(localObject);
+      }
+      localObject = this.mAppBrandPagePool.getAppBrandPage(this.mContext, this);
+      this.appBrandPages.push(localObject);
+      ((AppBrandPage)localObject).loadUrl(paramString, "redirectTo", this.mEventListener);
+      if (!((AppBrandPage)localObject).isHomePage()) {
+        ((AppBrandPage)localObject).setVisibility(4);
+      }
+      addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
       return;
     }
-    if ((this.appBrandPages != null) && (this.appBrandPages.size() > 0)) {
-      this.redirectOldPage = ((AppBrandPage)this.appBrandPages.poll());
-    }
-    AppBrandPage localAppBrandPage = this.mAppBrandPagePool.getAppBrandPage(this.mContext, this);
-    this.appBrandPages.push(localAppBrandPage);
-    localAppBrandPage.loadUrl(paramString, "redirectTo", this.mEventListener);
-    if (!localAppBrandPage.isHomePage()) {
-      localAppBrandPage.setVisibility(4);
-    }
-    addView(localAppBrandPage, new FrameLayout.LayoutParams(-1, -1));
+    executeDownSubPackage(paramString, "redirectTo");
   }
   
   public boolean removeCoverView(int paramInt)
@@ -1577,23 +1546,27 @@ public class AppBrandPageContainer
   
   public boolean removeNativeView(View paramView)
   {
-    if (paramView == null) {}
-    NativeViewContainer localNativeViewContainer;
-    do
-    {
+    if (paramView == null) {
       return false;
-      localNativeViewContainer = getNativeViewContainer();
-    } while (localNativeViewContainer == null);
+    }
+    NativeViewContainer localNativeViewContainer = getNativeViewContainer();
+    if (localNativeViewContainer == null) {
+      return false;
+    }
     localNativeViewContainer.removeView(paramView);
     return true;
   }
   
   public void removeSoftKeyboardStateListener(SoftKeyboardStateHelper.SoftKeyboardStateListener paramSoftKeyboardStateListener)
   {
-    if ((paramSoftKeyboardStateListener == null) || (this.mSoftKeyboardStateListenerList == null)) {
-      return;
+    if (paramSoftKeyboardStateListener != null)
+    {
+      List localList = this.mSoftKeyboardStateListenerList;
+      if (localList == null) {
+        return;
+      }
+      localList.remove(paramSoftKeyboardStateListener);
     }
-    this.mSoftKeyboardStateListenerList.remove(paramSoftKeyboardStateListener);
   }
   
   public void resetCurShowingInputId()
@@ -1690,31 +1663,27 @@ public class AppBrandPageContainer
   
   public void switchTab(String paramString)
   {
-    QMLog.i("minisdk-start-AppBrandPageContainer", "switchTab url : " + paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("switchTab url : ");
+    ((StringBuilder)localObject).append(paramString);
+    QMLog.i("minisdk-start-AppBrandPageContainer", ((StringBuilder)localObject).toString());
     cleanup(true);
-    AppBrandPage localAppBrandPage = getBrandPage();
-    this.appBrandPages.push(localAppBrandPage);
-    localAppBrandPage.loadUrl(paramString, "switchTab", this.mEventListener);
+    localObject = getBrandPage();
+    this.appBrandPages.push(localObject);
+    ((AppBrandPage)localObject).loadUrl(paramString, "switchTab", this.mEventListener);
   }
   
   public boolean toggleDebugPanel()
   {
-    MiniAppInfo localMiniAppInfo;
-    if (this.mContext != null)
-    {
-      localMiniAppInfo = this.mContext.getMiniAppInfo();
-      if (DebugUtil.getDebugEnabled(localMiniAppInfo)) {
-        break label38;
-      }
+    Object localObject = this.mContext;
+    if (localObject != null) {
+      localObject = ((IMiniAppContext)localObject).getMiniAppInfo();
+    } else {
+      localObject = null;
     }
-    label38:
-    for (boolean bool = true;; bool = false)
-    {
-      DebugUtil.setDebugEnabled(localMiniAppInfo, bool);
-      return bool;
-      localMiniAppInfo = null;
-      break;
-    }
+    boolean bool = DebugUtil.getDebugEnabled((MiniAppInfo)localObject) ^ true;
+    DebugUtil.setDebugEnabled((MiniAppInfo)localObject, bool);
+    return bool;
   }
   
   public boolean toggleMonitorPanel()
@@ -1722,21 +1691,17 @@ public class AppBrandPageContainer
     Activity localActivity = this.mContext.getAttachedActivity();
     if (localActivity != null)
     {
-      if (this.mMiniAppMonitorInfoView != null) {
-        break label82;
+      Object localObject = this.mMiniAppMonitorInfoView;
+      if (localObject == null)
+      {
+        this.mMiniAppMonitorInfoView = new MiniAppMonitorInfoView(localActivity, null, 0);
+        localObject = new FrameLayout.LayoutParams(-2, -2);
+        ((FrameLayout.LayoutParams)localObject).gravity = 53;
+        localActivity.addContentView(this.mMiniAppMonitorInfoView, (ViewGroup.LayoutParams)localObject);
+        this.mMiniAppMonitorInfoView.setVisibility(0);
+        this.mMiniAppMonitorInfoView.startRefreshMonitorUi();
       }
-      this.mMiniAppMonitorInfoView = new MiniAppMonitorInfoView(localActivity, null, 0);
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
-      localLayoutParams.gravity = 53;
-      localActivity.addContentView(this.mMiniAppMonitorInfoView, localLayoutParams);
-      this.mMiniAppMonitorInfoView.setVisibility(0);
-      this.mMiniAppMonitorInfoView.startRefreshMonitorUi();
-    }
-    for (;;)
-    {
-      return isMonitorViewShowing();
-      label82:
-      if (this.mMiniAppMonitorInfoView.getVisibility() == 0)
+      else if (((MiniAppMonitorInfoView)localObject).getVisibility() == 0)
       {
         this.mMiniAppMonitorInfoView.stopRefreshMonitorUi();
         this.mMiniAppMonitorInfoView.setVisibility(8);
@@ -1747,11 +1712,12 @@ public class AppBrandPageContainer
         this.mMiniAppMonitorInfoView.setVisibility(0);
       }
     }
+    return isMonitorViewShowing();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.AppBrandPageContainer
  * JD-Core Version:    0.7.0.1
  */

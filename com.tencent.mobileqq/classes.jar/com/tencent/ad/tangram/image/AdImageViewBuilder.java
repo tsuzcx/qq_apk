@@ -32,8 +32,9 @@ public enum AdImageViewBuilder
   
   private static AdImageViewAdapter getAdapter()
   {
-    if (INSTANCE.adapter != null) {
-      return (AdImageViewAdapter)INSTANCE.adapter.get();
+    WeakReference localWeakReference = INSTANCE.adapter;
+    if (localWeakReference != null) {
+      return (AdImageViewAdapter)localWeakReference.get();
     }
     return null;
   }

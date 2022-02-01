@@ -16,7 +16,13 @@ class ThemeAndBubbleCommonJsPlugin$1
     {
       paramDialogInterface.put("result", 0);
       paramDialogInterface.put("message", "btn0 press");
-      this.this$0.callJs(this.val$callbackId + "(" + paramDialogInterface.toString() + ");");
+      ThemeAndBubbleCommonJsPlugin localThemeAndBubbleCommonJsPlugin = this.this$0;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.val$callbackId);
+      localStringBuilder.append("(");
+      localStringBuilder.append(paramDialogInterface.toString());
+      localStringBuilder.append(");");
+      localThemeAndBubbleCommonJsPlugin.callJs(localStringBuilder.toString());
       return;
     }
     catch (Exception paramDialogInterface)
@@ -27,7 +33,7 @@ class ThemeAndBubbleCommonJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ThemeAndBubbleCommonJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

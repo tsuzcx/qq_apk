@@ -32,17 +32,31 @@ public class StatValue
   
   public boolean equals(Object paramObject)
   {
-    return ((paramObject instanceof StatValue)) && (((StatValue)paramObject).count == this.count) && (((StatValue)paramObject).value == this.value) && (((StatValue)paramObject).policy == this.policy);
+    if ((paramObject instanceof StatValue))
+    {
+      paramObject = (StatValue)paramObject;
+      if ((paramObject.count == this.count) && (paramObject.value == this.value) && (paramObject.policy == this.policy)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public String toString()
   {
-    return "policy=" + this.policy + ", value=" + this.value + ", count=" + this.count;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("policy=");
+    localStringBuilder.append(this.policy);
+    localStringBuilder.append(", value=");
+    localStringBuilder.append(this.value);
+    localStringBuilder.append(", count=");
+    localStringBuilder.append(this.count);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tfm.metrics.StatValue
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ import mqq.app.NewIntent;
 class QzoneLbsServiceApiImpl$1
   extends LbsManagerServiceOnLocationChangeListener
 {
-  QzoneLbsServiceApiImpl$1(QzoneLbsServiceApiImpl paramQzoneLbsServiceApiImpl, String paramString, boolean paramBoolean, ArrayList paramArrayList, long paramLong, int paramInt1, int paramInt2, Map paramMap)
+  QzoneLbsServiceApiImpl$1(QzoneLbsServiceApiImpl paramQzoneLbsServiceApiImpl, String paramString, boolean paramBoolean, int paramInt1, ArrayList paramArrayList, long paramLong, int paramInt2, int paramInt3, Map paramMap)
   {
     super(paramString, paramBoolean);
   }
@@ -28,48 +28,47 @@ class QzoneLbsServiceApiImpl$1
     if (QLog.isColorLevel()) {
       QLog.i("QcircleLbsService", 1, "getBatchPoiFromServer");
     }
-    if ((paramSosoLbsInfo == null) && ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)))
+    if ((this.jdField_a_of_type_Int == 2) && (paramSosoLbsInfo == null))
     {
-      QLog.e("QcircleLbsService", 1, "getBatchPoiFromServer error, info == null && (gpsList == null || gpsList.size() == 0)");
-      return;
+      localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
+      if ((localObject1 == null) || (((ArrayList)localObject1).size() == 0))
+      {
+        QLog.e("QcircleLbsService", 1, "getBatchPoiFromServer error, info == null && (gpsList == null || gpsList.size() == 0)");
+        return;
+      }
     }
-    QQAppInterface localQQAppInterface = QzoneLbsServiceApiImpl.access$000(this.jdField_a_of_type_ComTencentQzonehubApiImplQzoneLbsServiceApiImpl);
-    if (localQQAppInterface == null)
+    Object localObject1 = QzoneLbsServiceApiImpl.access$000(this.jdField_a_of_type_ComTencentQzonehubApiImplQzoneLbsServiceApiImpl);
+    if (localObject1 == null)
     {
       QLog.e("QcircleLbsService", 1, "getBatchPoiFromServer app == null");
       return;
     }
     System.currentTimeMillis();
     long l = this.jdField_a_of_type_Long;
-    Object localObject = new ArrayList();
+    Object localObject2 = new ArrayList();
     if (paramSosoLbsInfo != null) {
-      ((ArrayList)localObject).add(((ISosoUtils)QRoute.api(ISosoUtils.class)).convertFromSoso(paramSosoLbsInfo.mLocation));
+      ((ArrayList)localObject2).add(((ISosoUtils)QRoute.api(ISosoUtils.class)).convertFromSoso(paramSosoLbsInfo.mLocation));
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    paramSosoLbsInfo = this.jdField_a_of_type_JavaUtilArrayList;
+    if (paramSosoLbsInfo != null)
     {
-      if (this.jdField_a_of_type_Int != 1) {
-        break label205;
-      }
-      ((ArrayList)localObject).add(LbsUtils.a((GpsInfo4LocalImage)this.jdField_a_of_type_JavaUtilArrayList.get(0)));
-    }
-    for (;;)
-    {
-      paramSosoLbsInfo = new GetBatchPoiRequest((ArrayList)localObject, this.b, this.jdField_a_of_type_JavaUtilMap, 0);
-      localObject = new QzoneCommonIntent(localQQAppInterface.getApplication(), QZoneCommonServlet.class);
-      ((QzoneCommonIntent)localObject).setRequest(paramSosoLbsInfo);
-      ((QzoneCommonIntent)localObject).setObserver(this.jdField_a_of_type_ComTencentQzonehubApiImplQzoneLbsServiceApiImpl);
-      localQQAppInterface.startServlet((NewIntent)localObject);
-      return;
-      label205:
-      if (this.jdField_a_of_type_Int == 2) {
-        ((ArrayList)localObject).addAll(LbsUtils.a(this.jdField_a_of_type_JavaUtilArrayList));
+      paramInt = this.b;
+      if (paramInt == 1) {
+        ((ArrayList)localObject2).add(LbsUtils.a((GpsInfo4LocalImage)paramSosoLbsInfo.get(0)));
+      } else if (paramInt == 2) {
+        ((ArrayList)localObject2).addAll(LbsUtils.a(paramSosoLbsInfo));
       }
     }
+    paramSosoLbsInfo = new GetBatchPoiRequest((ArrayList)localObject2, this.c, this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Int);
+    localObject2 = new QzoneCommonIntent(((QQAppInterface)localObject1).getApplication(), QZoneCommonServlet.class);
+    ((QzoneCommonIntent)localObject2).setRequest(paramSosoLbsInfo);
+    ((QzoneCommonIntent)localObject2).setObserver(this.jdField_a_of_type_ComTencentQzonehubApiImplQzoneLbsServiceApiImpl);
+    ((QQAppInterface)localObject1).startServlet((NewIntent)localObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qzonehub.api.impl.QzoneLbsServiceApiImpl.1
  * JD-Core Version:    0.7.0.1
  */

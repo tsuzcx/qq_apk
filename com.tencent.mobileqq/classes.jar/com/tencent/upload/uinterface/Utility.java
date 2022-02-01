@@ -19,11 +19,14 @@ public class Utility
   {
     try
     {
-      String str = new String();
+      Object localObject = new String();
       StringTokenizer localStringTokenizer = new StringTokenizer(paramString, "%");
-      int i;
-      for (paramString = str; localStringTokenizer.hasMoreElements(); paramString = paramString + (char)(i - 27)) {
-        i = Integer.parseInt((String)localStringTokenizer.nextElement());
+      for (paramString = (String)localObject; localStringTokenizer.hasMoreElements(); paramString = ((StringBuilder)localObject).toString())
+      {
+        int i = Integer.parseInt((String)localStringTokenizer.nextElement());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append((char)(i - 27));
       }
       return paramString;
     }
@@ -37,10 +40,10 @@ public class Utility
   public static final long getCurrentUploadServerTime()
   {
     long[] arrayOfLong = UploadConfiguration.getUploadServerTimePair();
-    if ((arrayOfLong == null) || (arrayOfLong.length != 2) || (arrayOfLong[0] <= 0L) || (arrayOfLong[1] <= 0L)) {
-      return System.currentTimeMillis() / 1000L;
+    if ((arrayOfLong != null) && (arrayOfLong.length == 2) && (arrayOfLong[0] > 0L) && (arrayOfLong[1] > 0L)) {
+      return arrayOfLong[0] + System.currentTimeMillis() / 1000L - arrayOfLong[1];
     }
-    return arrayOfLong[0] + System.currentTimeMillis() / 1000L - arrayOfLong[1];
+    return System.currentTimeMillis() / 1000L;
   }
   
   public static final void keepLongConnection(Context paramContext, Long paramLong, String paramString)
@@ -61,16 +64,15 @@ public class Utility
   
   public static final boolean needCompress2Webp(int paramInt1, int paramInt2)
   {
-    if ((paramInt2 == 2) && ((paramInt1 & 0x10) == 16)) {}
-    while ((paramInt2 != 2) && (paramInt2 != 3) && ((paramInt1 & 0x1) == 1)) {
+    if ((paramInt2 == 2) && ((paramInt1 & 0x10) == 16)) {
       return true;
     }
-    return false;
+    return (paramInt2 != 2) && (paramInt2 != 3) && ((paramInt1 & 0x1) == 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.uinterface.Utility
  * JD-Core Version:    0.7.0.1
  */

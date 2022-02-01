@@ -33,64 +33,60 @@ final class LeftSwipeReplyHelper$ItemTypeUtil
     return bool1;
   }
   
+  private boolean a(ChatMessage paramChatMessage, MessageForArkApp paramMessageForArkApp)
+  {
+    if ((!paramMessageForArkApp.isMultiMsg) && (paramMessageForArkApp.istroop == 0))
+    {
+      if ((!paramChatMessage.senderuin.equals(this.a.getCurrentUin())) && (paramChatMessage.isSupportReply())) {
+        return true;
+      }
+      if ((paramChatMessage.isSend()) && (paramChatMessage.isSupportReply()) && (paramChatMessage.extraflag != 32772) && (paramChatMessage.extraflag != 32768) && (paramChatMessage.istroop != 3000)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
   private boolean b(ChatMessage paramChatMessage)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    int i;
-    MessageForArkApp localMessageForArkApp;
+    boolean bool = true;
     if (paramChatMessage != null)
     {
-      i = a(this.a, paramChatMessage);
-      if (i != 81) {
-        break label152;
+      int i = a(this.a, paramChatMessage);
+      if (i == 81) {
+        return c(paramChatMessage);
       }
-      if (!(paramChatMessage instanceof MessageForArkApp)) {
-        break label150;
+      if ((i != 66) && (i != 42) && (i != 47) && (i != 89)) {
+        return true;
       }
-      localMessageForArkApp = (MessageForArkApp)paramChatMessage;
-      if ((localMessageForArkApp.isMultiMsg) || (localMessageForArkApp.istroop != 0)) {
-        break label150;
-      }
-      if ((paramChatMessage.senderuin.equals(this.a.getCurrentUin())) || (!paramChatMessage.isSupportReply())) {
-        break label95;
-      }
-      if (localMessageForArkApp.msg == null) {
-        break label90;
-      }
-      bool1 = true;
+      bool = false;
     }
-    label90:
-    label95:
-    do
+    return bool;
+  }
+  
+  private boolean c(ChatMessage paramChatMessage)
+  {
+    boolean bool3 = paramChatMessage instanceof MessageForArkApp;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bool3)
     {
-      do
-      {
-        for (;;)
-        {
-          return bool1;
-          bool1 = false;
-        }
-        if ((!paramChatMessage.isSend()) || (!paramChatMessage.isSupportReply()) || (paramChatMessage.extraflag == 32772) || (paramChatMessage.extraflag == 32768) || (paramChatMessage.istroop == 3000)) {
-          break;
-        }
-        bool1 = bool2;
-      } while (localMessageForArkApp.msg != null);
-      return false;
-      return false;
-      if ((i == 66) || (i == 42) || (i == 47)) {
-        break;
-      }
+      MessageForArkApp localMessageForArkApp = (MessageForArkApp)paramChatMessage;
       bool1 = bool2;
-    } while (i != 89);
-    label150:
-    label152:
-    return false;
+      if (a(paramChatMessage, localMessageForArkApp))
+      {
+        bool1 = bool2;
+        if (localMessageForArkApp.msg != null) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.LeftSwipeReplyHelper.ItemTypeUtil
  * JD-Core Version:    0.7.0.1
  */

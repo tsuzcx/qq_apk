@@ -13,17 +13,17 @@ public class DefaultCommonManagerImpl
 {
   public boolean copyFile(String paramString1, String paramString2)
   {
-    boolean bool = false;
     paramString1 = new File(paramString1);
-    if (paramString1.exists()) {}
-    try
-    {
-      bool = FileUtil.copyFile(paramString1, FileUtil.createFile(paramString2));
-      return bool;
-    }
-    catch (Throwable paramString1)
-    {
-      paramString1.printStackTrace();
+    if (paramString1.exists()) {
+      try
+      {
+        boolean bool = FileUtil.copyFile(paramString1, FileUtil.createFile(paramString2));
+        return bool;
+      }
+      catch (Throwable paramString1)
+      {
+        paramString1.printStackTrace();
+      }
     }
     return false;
   }
@@ -63,7 +63,10 @@ public class DefaultCommonManagerImpl
   
   public String getSeqConfigPath()
   {
-    return Environment.getExternalStorageDirectory() + "/A_VasUpdateSystem/seq/";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getExternalStorageDirectory());
+    localStringBuilder.append("/A_VasUpdateSystem/seq/");
+    return localStringBuilder.toString();
   }
   
   public long getServiceTime()
@@ -83,7 +86,7 @@ public class DefaultCommonManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.vas.update.module.impl.DefaultCommonManagerImpl
  * JD-Core Version:    0.7.0.1
  */

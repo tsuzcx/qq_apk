@@ -54,7 +54,7 @@ public class NativeImageImp
     measure(paramInt1, paramInt2);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     if ((this.mBorderBottomLeftRadius > 0) || (this.mBorderBottomRightRadius > 0) || (this.mBorderTopLeftRadius > 0) || (this.mBorderTopRightRadius > 0)) {
       VirtualViewUtils.clipCanvas(paramCanvas, getWidth(), getHeight(), 0, this.mBorderTopLeftRadius, this.mBorderTopRightRadius, this.mBorderBottomLeftRadius, this.mBorderBottomRightRadius);
@@ -82,7 +82,7 @@ public class NativeImageImp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.image.NativeImageImp
  * JD-Core Version:    0.7.0.1
  */

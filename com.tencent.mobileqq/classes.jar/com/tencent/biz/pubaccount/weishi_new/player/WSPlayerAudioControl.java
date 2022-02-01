@@ -28,15 +28,19 @@ public class WSPlayerAudioControl
   
   private void b()
   {
-    if (this.jdField_a_of_type_AndroidMediaAudioManager == null) {
+    AudioManager localAudioManager = this.jdField_a_of_type_AndroidMediaAudioManager;
+    if (localAudioManager == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
+    localAudioManager.abandonAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
   }
   
   public void a(boolean paramBoolean)
   {
-    WSLog.e("WSPlayerAudioControlLog", "[WSPlayerAudioControl.java][requestOrAbandonAudioFocus] isFocus:" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSPlayerAudioControl.java][requestOrAbandonAudioFocus] isFocus:");
+    localStringBuilder.append(paramBoolean);
+    WSLog.e("WSPlayerAudioControlLog", localStringBuilder.toString());
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
     if (paramBoolean)
@@ -49,7 +53,7 @@ public class WSPlayerAudioControl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerAudioControl
  * JD-Core Version:    0.7.0.1
  */

@@ -20,12 +20,18 @@ public class StoryUploadProgressView
   
   private void b(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(paramInt, this.jdField_a_of_type_JavaLangString + "_" + hashCode());
+    paramString = this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(hashCode());
+    paramString.setAnimProgress(paramInt, localStringBuilder.toString());
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setRadius(UIUtils.a(this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.getContext(), 8.0F), false);
+    MessageProgressView localMessageProgressView = this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView;
+    localMessageProgressView.setRadius(UIUtils.a(localMessageProgressView.getContext(), 8.0F), false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setShowCorner(false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
   }
@@ -55,12 +61,17 @@ public class StoryUploadProgressView
   
   public boolean a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.a(this.jdField_a_of_type_JavaLangString + "_" + hashCode());
+    MessageProgressView localMessageProgressView = this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(hashCode());
+    return localMessageProgressView.a(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryUploadProgressView
  * JD-Core Version:    0.7.0.1
  */

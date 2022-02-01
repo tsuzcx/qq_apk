@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.rich;
 
-import com.tencent.mobileqq.search.view.ISearchResultView;
+import com.tencent.mobileqq.search.base.view.ISearchResultView;
 
 public abstract interface IRichNodeView
   extends ISearchResultView
@@ -13,7 +13,7 @@ public abstract interface IRichNodeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.IRichNodeView
  * JD-Core Version:    0.7.0.1
  */

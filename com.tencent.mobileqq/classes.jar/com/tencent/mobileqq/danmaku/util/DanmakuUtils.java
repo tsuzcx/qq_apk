@@ -30,107 +30,97 @@ public class DanmakuUtils
     if (jdField_a_of_type_Float < 0.0F) {
       jdField_a_of_type_Float = DanmakuDependImp.a().a().a().getDisplayMetrics().density;
     }
-    return (int)(jdField_a_of_type_Float * paramFloat + 0.5F);
+    return (int)(paramFloat * jdField_a_of_type_Float + 0.5F);
   }
   
   public static int a(BaseDanmaku paramBaseDanmaku1, BaseDanmaku paramBaseDanmaku2)
   {
-    int i = 0;
-    if (paramBaseDanmaku1 == paramBaseDanmaku2) {}
-    int j;
-    do
-    {
-      do
-      {
-        return i;
-        if (paramBaseDanmaku1 == null) {
-          return -1;
-        }
-        if (paramBaseDanmaku2 == null) {
-          return 1;
-        }
-      } while (paramBaseDanmaku1.equals(paramBaseDanmaku2));
-      long l = paramBaseDanmaku1.d() - paramBaseDanmaku2.d();
-      if (l > 0L) {
-        return 1;
-      }
-      if (l < 0L) {
-        return -1;
-      }
-      i = paramBaseDanmaku1.b() - paramBaseDanmaku2.b();
-      if (i > 0) {
-        return -1;
-      }
-      if (i < 0) {
-        return 1;
-      }
-      i = paramBaseDanmaku1.e() - paramBaseDanmaku2.e();
-      if (i > 0) {
-        return 1;
-      }
-      if (i < 0) {
-        return -1;
-      }
-      i = paramBaseDanmaku1.c() - paramBaseDanmaku2.c();
-      if (i > 0) {
-        return -1;
-      }
-      if (i < 0) {
-        return 1;
-      }
-      l = paramBaseDanmaku1.c() - paramBaseDanmaku2.c();
-      if (l > 0L) {
-        return -1;
-      }
-      if (l < 0L) {
-        return 1;
-      }
-      j = paramBaseDanmaku1.a() - paramBaseDanmaku2.a();
-      if (j > 0) {
-        return 1;
-      }
-      i = j;
-    } while (j >= 0);
-    return -1;
+    if (paramBaseDanmaku1 == paramBaseDanmaku2) {
+      return 0;
+    }
+    if (paramBaseDanmaku1 == null) {
+      return -1;
+    }
+    if (paramBaseDanmaku2 == null) {
+      return 1;
+    }
+    if (paramBaseDanmaku1.equals(paramBaseDanmaku2)) {
+      return 0;
+    }
+    long l = paramBaseDanmaku1.d() - paramBaseDanmaku2.d();
+    if (l > 0L) {
+      return 1;
+    }
+    if (l < 0L) {
+      return -1;
+    }
+    int i = paramBaseDanmaku1.b() - paramBaseDanmaku2.b();
+    if (i > 0) {
+      return -1;
+    }
+    if (i < 0) {
+      return 1;
+    }
+    i = paramBaseDanmaku1.e() - paramBaseDanmaku2.e();
+    if (i > 0) {
+      return 1;
+    }
+    if (i < 0) {
+      return -1;
+    }
+    i = paramBaseDanmaku1.c() - paramBaseDanmaku2.c();
+    if (i > 0) {
+      return -1;
+    }
+    if (i < 0) {
+      return 1;
+    }
+    l = paramBaseDanmaku1.c() - paramBaseDanmaku2.c();
+    if (l > 0L) {
+      return -1;
+    }
+    if (l < 0L) {
+      return 1;
+    }
+    i = paramBaseDanmaku1.a() - paramBaseDanmaku2.a();
+    if (i > 0) {
+      return 1;
+    }
+    if (i < 0) {
+      return -1;
+    }
+    return i;
   }
   
   public static int a(BaseDanmaku paramBaseDanmaku1, BaseDanmaku paramBaseDanmaku2, long paramLong)
   {
-    int j = -1;
-    int i = j;
     if (!paramBaseDanmaku1.b(paramLong))
     {
-      if (!paramBaseDanmaku2.b(paramLong)) {
-        break label30;
+      if (paramBaseDanmaku2.b(paramLong)) {
+        return -1;
       }
-      i = j;
-    }
-    label30:
-    float[] arrayOfFloat1;
-    do
-    {
-      do
+      float[] arrayOfFloat1 = paramBaseDanmaku1.a(paramBaseDanmaku1.e());
+      float[] arrayOfFloat2 = paramBaseDanmaku2.a(paramBaseDanmaku1.e());
+      if (arrayOfFloat1 != null)
       {
-        float[] arrayOfFloat2;
-        do
-        {
-          do
-          {
-            return i;
-            arrayOfFloat1 = paramBaseDanmaku1.a(paramBaseDanmaku1.e());
-            arrayOfFloat2 = paramBaseDanmaku2.a(paramBaseDanmaku1.e());
-            i = j;
-          } while (arrayOfFloat1 == null);
-          i = j;
-        } while (arrayOfFloat2 == null);
-        j = (int)((arrayOfFloat2[0] - arrayOfFloat1[2]) / paramBaseDanmaku2.a());
+        if (arrayOfFloat2 == null) {
+          return -1;
+        }
+        int j = (int)((arrayOfFloat2[0] - arrayOfFloat1[2]) / paramBaseDanmaku2.c());
         arrayOfFloat1 = paramBaseDanmaku1.a(paramBaseDanmaku1.b());
         paramBaseDanmaku1 = paramBaseDanmaku2.a(paramBaseDanmaku1.b());
-        i = j;
-      } while (arrayOfFloat1 == null);
-      i = j;
-    } while (paramBaseDanmaku1 == null);
-    return Math.max(j, (int)((paramBaseDanmaku1[0] - arrayOfFloat1[2]) / paramBaseDanmaku2.a()));
+        int i = j;
+        if (arrayOfFloat1 != null)
+        {
+          i = j;
+          if (paramBaseDanmaku1 != null) {
+            i = Math.max(j, (int)((paramBaseDanmaku1[0] - arrayOfFloat1[2]) / paramBaseDanmaku2.c()));
+          }
+        }
+        return i;
+      }
+    }
+    return -1;
   }
   
   public static String a(long paramLong)
@@ -170,7 +160,7 @@ public class DanmakuUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.util.DanmakuUtils
  * JD-Core Version:    0.7.0.1
  */

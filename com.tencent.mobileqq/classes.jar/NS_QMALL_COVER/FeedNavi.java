@@ -30,17 +30,19 @@ public final class FeedNavi
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iItemId, 0);
-    if (this.strFeedNaviUrl != null) {
-      paramJceOutputStream.write(this.strFeedNaviUrl, 1);
+    String str = this.strFeedNaviUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strTextColor != null) {
-      paramJceOutputStream.write(this.strTextColor, 2);
+    str = this.strTextColor;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.FeedNavi
  * JD-Core Version:    0.7.0.1
  */

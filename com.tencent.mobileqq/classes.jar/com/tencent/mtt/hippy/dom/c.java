@@ -62,86 +62,74 @@ public class c<T>
     if (paramHippyMap == null) {
       return;
     }
-    Object localObject = paramT.getClass();
-    Map localMap = (Map)a.get(localObject);
-    label39:
-    label50:
-    String str;
-    c.a locala;
-    if (localMap == null)
-    {
-      localMap = a((Class)localObject);
-      localObject = paramHippyMap.keySet().iterator();
-      if (((Iterator)localObject).hasNext())
-      {
-        str = (String)((Iterator)localObject).next();
-        locala = (c.a)localMap.get(str);
-        if (locala == null) {}
-      }
+    Object localObject3 = paramT.getClass();
+    Object localObject2 = (Map)a.get(localObject3);
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = a((Class)localObject3);
     }
-    for (;;)
+    localObject2 = paramHippyMap.keySet().iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      int i;
-      try
-      {
-        if (paramHippyMap.get(str) != null) {
-          break label328;
-        }
-        str = locala.b;
-        i = -1;
-        switch (str.hashCode())
+      String str = (String)((Iterator)localObject2).next();
+      localObject3 = (c.a)((Map)localObject1).get(str);
+      if (localObject3 != null) {
+        try
         {
-        case 64711720: 
-          locala.a.invoke(paramT, new Object[] { null });
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        LogUtils.e("ControllerUpdateManager", localThrowable.getMessage(), localThrowable);
-        localThrowable.printStackTrace();
-      }
-      break label50;
-      if (str.equals("boolean"))
-      {
-        i = 0;
-        break label403;
-        if (str.equals("number"))
-        {
-          i = 1;
-          break label403;
-          if (str.equals("string"))
+          if (paramHippyMap.get(str) == null)
           {
-            i = 2;
-            break label403;
-            localThrowable.a.invoke(paramT, new Object[] { Boolean.valueOf(localThrowable.e) });
-            break label50;
-            localThrowable.a.invoke(paramT, new Object[] { ArgumentUtils.parseArgument(localThrowable.f[0], Double.valueOf(localThrowable.d)) });
-            break label50;
-            localThrowable.a.invoke(paramT, new Object[] { localThrowable.c });
-            break label50;
-            label328:
-            localThrowable.a.invoke(paramT, new Object[] { ArgumentUtils.parseArgument(localThrowable.f[0], paramHippyMap, str) });
-            break label50;
-            if ((!(paramHippyMap.get(str) instanceof HippyMap)) || (!str.equals("style"))) {
-              break label50;
+            str = ((c.a)localObject3).b;
+            int i = -1;
+            int j = str.hashCode();
+            if (j != -1034364087)
+            {
+              if (j != -891985903)
+              {
+                if ((j == 64711720) && (str.equals("boolean"))) {
+                  i = 0;
+                }
+              }
+              else if (str.equals("string")) {
+                i = 2;
+              }
             }
-            a(paramT, (HippyMap)paramHippyMap.get(str));
-            break label50;
-            break;
-            break label39;
+            else if (str.equals("number")) {
+              i = 1;
+            }
+            if (i != 0)
+            {
+              if (i != 1)
+              {
+                if (i != 2)
+                {
+                  ((c.a)localObject3).a.invoke(paramT, new Object[] { null });
+                  continue;
+                }
+                ((c.a)localObject3).a.invoke(paramT, new Object[] { ((c.a)localObject3).c });
+                continue;
+              }
+              ((c.a)localObject3).a.invoke(paramT, new Object[] { ArgumentUtils.parseArgument(localObject3.f[0], Double.valueOf(((c.a)localObject3).d)) });
+              continue;
+            }
+            ((c.a)localObject3).a.invoke(paramT, new Object[] { Boolean.valueOf(((c.a)localObject3).e) });
+            continue;
           }
+          ((c.a)localObject3).a.invoke(paramT, new Object[] { ArgumentUtils.parseArgument(localObject3.f[0], paramHippyMap, str) });
         }
-      }
-      label403:
-      switch (i)
-      {
+        catch (Throwable localThrowable)
+        {
+          LogUtils.e("ControllerUpdateManager", localThrowable.getMessage(), localThrowable);
+          localThrowable.printStackTrace();
+        }
+      } else if (((paramHippyMap.get(str) instanceof HippyMap)) && (str.equals("style"))) {
+        a(paramT, (HippyMap)paramHippyMap.get(str));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.c
  * JD-Core Version:    0.7.0.1
  */

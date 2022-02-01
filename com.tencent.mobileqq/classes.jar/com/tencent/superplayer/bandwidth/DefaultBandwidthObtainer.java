@@ -63,41 +63,51 @@ public class DefaultBandwidthObtainer
     long l3 = SystemClock.elapsedRealtime();
     long l4 = TrafficStats.getTotalRxBytes();
     long l1;
-    long l2;
-    if (i >= 28)
-    {
+    if (i >= 28) {
       l1 = getLoopbackRxBytesIn28();
-      if ((this.lastTotalRxBytes <= 0L) || (this.lastLoopBackBytes <= 0L)) {
-        break label214;
-      }
-      long l5 = l4 - this.lastTotalRxBytes;
-      long l6 = l1 - this.lastLoopBackBytes;
-      i = (int)Math.max((l3 - this.lastTimeStamp) / 1000L, 1L);
-      l2 = Math.max(0L, (l5 - l6) / 1024L) / i;
-      LogUtil.d("DefaultBandwidthObtainer", "calculateBandwidth: totalBytes=" + l5 + ", loopbackBytes=" + l6 + ", bandwidth=" + l2 + "kb/s");
-    }
-    for (;;)
-    {
-      LogUtil.d("DefaultBandwidthObtainer", "getCurrentBandwidth: bandwidth=" + l2 + "kb/s");
-      this.lastTotalRxBytes = l4;
-      this.lastLoopBackBytes = l1;
-      this.lastTimeStamp = l3;
-      return l2;
-      if (i >= 14)
-      {
-        l1 = getLoopbackRxBytesIn14();
-        break;
-      }
+    } else if (i >= 14) {
+      l1 = getLoopbackRxBytesIn14();
+    } else {
       l1 = 0L;
-      break;
-      label214:
-      l2 = 0L;
     }
+    long l5 = this.lastTotalRxBytes;
+    if (l5 > 0L)
+    {
+      l2 = this.lastLoopBackBytes;
+      if (l2 > 0L)
+      {
+        l5 = l4 - l5;
+        long l6 = l1 - l2;
+        i = (int)Math.max((l3 - this.lastTimeStamp) / 1000L, 1L);
+        l2 = Math.max(0L, (l5 - l6) / 1024L) / i;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("calculateBandwidth: totalBytes=");
+        localStringBuilder.append(l5);
+        localStringBuilder.append(", loopbackBytes=");
+        localStringBuilder.append(l6);
+        localStringBuilder.append(", bandwidth=");
+        localStringBuilder.append(l2);
+        localStringBuilder.append("kb/s");
+        LogUtil.d("DefaultBandwidthObtainer", localStringBuilder.toString());
+        break label199;
+      }
+    }
+    long l2 = 0L;
+    label199:
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getCurrentBandwidth: bandwidth=");
+    localStringBuilder.append(l2);
+    localStringBuilder.append("kb/s");
+    LogUtil.d("DefaultBandwidthObtainer", localStringBuilder.toString());
+    this.lastTotalRxBytes = l4;
+    this.lastLoopBackBytes = l1;
+    this.lastTimeStamp = l3;
+    return l2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.bandwidth.DefaultBandwidthObtainer
  * JD-Core Version:    0.7.0.1
  */

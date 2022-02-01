@@ -10,18 +10,21 @@ public class GdtUinAdapter
   public String getUIN()
   {
     Object localObject = BaseApplicationImpl.getApplication();
-    if (localObject == null) {}
-    do
+    if (localObject != null)
+    {
+      localObject = ((BaseApplicationImpl)localObject).getRuntime();
+      if (localObject != null) {}
+    }
+    else
     {
       return null;
-      localObject = ((BaseApplicationImpl)localObject).getRuntime();
-    } while (localObject == null);
+    }
     return ((AppRuntime)localObject).getAccount();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtUinAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,21 @@
 package com.tencent.mobileqq.data.dt;
 
-import com.tencent.beacon.upload.TunnelInfo;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.ProcessUtil;
-import com.tencent.mobileqq.vip.CUKingCardHelper;
+import com.tencent.mobileqq.vip.CUKingCardUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qqlive.module.videoreport.dtreport.api.IDTParamProvider;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import mqq.app.AppRuntime;
 
 public class QQDtConfig
   implements IDTParamProvider
 {
-  public static List<TunnelInfo> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new TunnelInfo("LOGDEBUGKEY00001"));
-    localArrayList.add(new TunnelInfo("00000R3FEU3ZKLWJ"));
-    localArrayList.add(new TunnelInfo("0P000B1E6X38P6V3"));
-    localArrayList.add(new TunnelInfo("0AND0NYZC34FOQCF"));
-    localArrayList.add(new TunnelInfo("00000QG6YX3X0LZH"));
-    return localArrayList;
-  }
+  private String a;
   
   private static void a(Map<String, Object> paramMap)
   {
@@ -64,7 +56,10 @@ public class QQDtConfig
   
   public String getGuid()
   {
-    return null;
+    if (TextUtils.isEmpty(this.a)) {
+      this.a = BaseApplication.getContext().getSharedPreferences("sp_msf_common", 4).getString("msf_guid", "");
+    }
+    return this.a;
   }
   
   public String getMainLogin()
@@ -89,21 +84,21 @@ public class QQDtConfig
   
   public String getQQ()
   {
-    Object localObject1 = null;
-    Object localObject2 = BaseApplicationImpl.getApplication();
-    if (localObject2 != null) {
-      localObject1 = ((BaseApplicationImpl)localObject2).peekAppRuntime();
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject != null) {
+      localObject = ((BaseApplicationImpl)localObject).peekAppRuntime();
+    } else {
+      localObject = null;
     }
-    if (localObject1 == null) {
-      localObject1 = "0";
+    if (localObject == null) {
+      return "0";
     }
-    do
-    {
-      return localObject1;
-      localObject2 = ((AppRuntime)localObject1).getAccount();
-      localObject1 = localObject2;
-    } while (localObject2 != null);
-    return "0";
+    String str = ((AppRuntime)localObject).getAccount();
+    localObject = str;
+    if (str == null) {
+      localObject = "0";
+    }
+    return localObject;
   }
   
   public String getQQOpenID()
@@ -113,17 +108,18 @@ public class QQDtConfig
   
   public String getSIMType()
   {
-    int j = -1;
     Object localObject = BaseApplicationImpl.getApplication();
-    int i = j;
     if (localObject != null)
     {
       localObject = ((BaseApplicationImpl)localObject).peekAppRuntime();
-      i = j;
-      if (localObject != null) {
-        i = CUKingCardHelper.a(((AppRuntime)localObject).getAccount());
+      if (localObject != null)
+      {
+        i = CUKingCardUtils.a(((AppRuntime)localObject).getAccount());
+        break label30;
       }
     }
+    int i = -1;
+    label30:
     if (i == 1) {
       return "1";
     }
@@ -157,10 +153,7 @@ public class QQDtConfig
   
   public void setEventDynamicParams(String paramString, Map<String, Object> paramMap) {}
   
-  public void setNonRealtimePublicDynamicParams(Map<String, Object> paramMap)
-  {
-    a(paramMap);
-  }
+  public void setNonRealtimePublicDynamicParams(Map<String, Object> paramMap) {}
   
   public void setRealtimePublicDynamicParams(Map<String, Object> paramMap)
   {
@@ -169,7 +162,7 @@ public class QQDtConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.dt.QQDtConfig
  * JD-Core Version:    0.7.0.1
  */

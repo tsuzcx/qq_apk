@@ -53,32 +53,26 @@ public class ElementExposureReporter
   private void detect(View paramView, Rect paramRect)
   {
     Log.d("LazyInitSequence", "detect view");
-    Rect localRect;
-    if (this.mFrontPageInfo != null) {
-      if (paramView == this.mFrontPageInfo.getPageView()) {
-        localRect = null;
-      }
+    Object localObject = this.mFrontPageInfo;
+    if ((localObject != null) && (paramView == ((PageInfo)localObject).getPageView())) {
+      localObject = null;
+    } else {
+      localObject = paramRect;
     }
-    for (;;)
-    {
-      ExposureDetector.detect(paramView, true, localRect, new ElementExposureReporter.ElementExposureCallBack(this, paramView, paramRect));
-      return;
-      localRect = paramRect;
-      continue;
-      localRect = paramRect;
-    }
+    ExposureDetector.detect(paramView, true, (Rect)localObject, new ElementExposureReporter.ElementExposureCallBack(this, paramView, paramRect));
   }
   
   private void dispatchElementReport(PageInfo paramPageInfo, int paramInt)
   {
     this.mDelayedIdleHandler.remove(this.mDetectionTask);
     ElementExposureReporter.DetectionTask.access$002(this.mDetectionTask, paramPageInfo);
-    if (paramInt == 0) {}
-    for (long l = 0L;; l = 320L)
-    {
-      this.mDelayedIdleHandler.post(this.mDetectionTask, l);
-      return;
+    long l;
+    if (paramInt == 0) {
+      l = 0L;
+    } else {
+      l = 320L;
     }
+    this.mDelayedIdleHandler.post(this.mDetectionTask, l);
   }
   
   private void elementReport(PageInfo paramPageInfo)
@@ -101,7 +95,7 @@ public class ElementExposureReporter
   
   private boolean exposureNotReported(long paramLong)
   {
-    return !this.mExposureRecorder.isExposed(paramLong);
+    return this.mExposureRecorder.isExposed(paramLong) ^ true;
   }
   
   public static ElementExposureReporter getInstance()
@@ -132,28 +126,31 @@ public class ElementExposureReporter
   
   private void markUnexposed(PageInfo paramPageInfo)
   {
-    if ((paramPageInfo == null) || (this.mExposureRecorder.getExposedRecords().size() == 0)) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.mExposureRecorder.getExposedRecords().entrySet().iterator();
-    while (localIterator.hasNext())
+    if (paramPageInfo != null)
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      Object localObject2 = null;
-      Object localObject1 = localObject2;
-      if (localEntry != null)
+      if (this.mExposureRecorder.getExposedRecords().size() == 0) {
+        return;
+      }
+      ArrayList localArrayList = new ArrayList();
+      Iterator localIterator = this.mExposureRecorder.getExposedRecords().entrySet().iterator();
+      while (localIterator.hasNext())
       {
-        localObject1 = localObject2;
-        if (localEntry.getValue() != null) {
-          localObject1 = ((IExposureRecorder.ExposureInfoWrapper)localEntry.getValue()).attachedPage.get();
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        Object localObject2 = null;
+        Object localObject1 = localObject2;
+        if (localEntry != null)
+        {
+          localObject1 = localObject2;
+          if (localEntry.getValue() != null) {
+            localObject1 = ((IExposureRecorder.ExposureInfoWrapper)localEntry.getValue()).attachedPage.get();
+          }
+        }
+        if ((localObject1 != null) && (localObject1.equals(paramPageInfo.getPage()))) {
+          localArrayList.add(localEntry.getKey());
         }
       }
-      if ((localObject1 != null) && (localObject1.equals(paramPageInfo.getPage()))) {
-        localArrayList.add(localEntry.getKey());
-      }
+      this.mExposureRecorder.markUnexposed(localArrayList);
     }
-    this.mExposureRecorder.markUnexposed(localArrayList);
   }
   
   private void printDebug()
@@ -161,20 +158,37 @@ public class ElementExposureReporter
     if (VideoReportInner.getInstance().isDebugMode())
     {
       Object localObject1 = new HashMap(this.mExposedIds);
-      Log.d("ElementExposureReporter", "run: new exposed view: count = " + this.mPreExposedViewInfoList.size());
-      Object localObject2 = this.mPreExposedViewInfoList.iterator();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("run: new exposed view: count = ");
+      ((StringBuilder)localObject2).append(this.mPreExposedViewInfoList.size());
+      Log.d("ElementExposureReporter", ((StringBuilder)localObject2).toString());
+      localObject2 = this.mPreExposedViewInfoList.iterator();
+      Object localObject3;
       while (((Iterator)localObject2).hasNext())
       {
-        ExposureElementInfo localExposureElementInfo = (ExposureElementInfo)((Iterator)localObject2).next();
-        Log.d("ElementExposureReporter", "    identifier: " + localExposureElementInfo.getIdentifier() + ", uniqueId = " + localExposureElementInfo.getUniqueId());
-        ((HashMap)localObject1).remove(Long.valueOf(localExposureElementInfo.getUniqueId()));
+        localObject3 = (ExposureElementInfo)((Iterator)localObject2).next();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("    identifier: ");
+        localStringBuilder.append(((ExposureElementInfo)localObject3).getIdentifier());
+        localStringBuilder.append(", uniqueId = ");
+        localStringBuilder.append(((ExposureElementInfo)localObject3).getUniqueId());
+        Log.d("ElementExposureReporter", localStringBuilder.toString());
+        ((HashMap)localObject1).remove(Long.valueOf(((ExposureElementInfo)localObject3).getUniqueId()));
       }
-      Log.d("ElementExposureReporter", "run: duplicate exposed view: count = " + ((HashMap)localObject1).size());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("run: duplicate exposed view: count = ");
+      ((StringBuilder)localObject2).append(((HashMap)localObject1).size());
+      Log.d("ElementExposureReporter", ((StringBuilder)localObject2).toString());
       localObject1 = ((HashMap)localObject1).entrySet().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (Map.Entry)((Iterator)localObject1).next();
-        Log.d("ElementExposureReporter", "    identifier: " + (String)((Map.Entry)localObject2).getValue() + ", uniqueId: " + ((Map.Entry)localObject2).getKey());
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("    identifier: ");
+        ((StringBuilder)localObject3).append((String)((Map.Entry)localObject2).getValue());
+        ((StringBuilder)localObject3).append(", uniqueId: ");
+        ((StringBuilder)localObject3).append(((Map.Entry)localObject2).getKey());
+        Log.d("ElementExposureReporter", ((StringBuilder)localObject3).toString());
       }
       Log.d("ElementExposureReporter", "run: ---------------");
     }
@@ -186,21 +200,25 @@ public class ElementExposureReporter
     detect(paramView, paramRect);
     if (VideoReportInner.getInstance().isDebugMode())
     {
-      paramView = new StringBuilder().append("run: delayDelta = ").append(paramLong).append(", ");
-      if (this.mPreExposedViewInfoList != null) {
-        break label108;
+      paramView = new StringBuilder();
+      paramView.append("run: delayDelta = ");
+      paramView.append(paramLong);
+      paramView.append(", ");
+      paramRect = this.mPreExposedViewInfoList;
+      int i;
+      if (paramRect == null) {
+        i = 0;
+      } else {
+        i = paramRect.size();
       }
+      paramView.append(i);
+      paramView.append(" exposed view found");
+      Log.d("ElementExposureReporter", paramView.toString());
     }
-    label108:
-    for (int i = 0;; i = this.mPreExposedViewInfoList.size())
-    {
-      Log.d("ElementExposureReporter", i + " exposed view found");
-      printDebug();
-      makeDirty(this.mExposedIds.keySet());
-      this.mPendingQueue.enqueue(this.mPreExposedViewInfoList, paramLong);
-      clearPreExposedContent();
-      return;
-    }
+    printDebug();
+    makeDirty(this.mExposedIds.keySet());
+    this.mPendingQueue.enqueue(this.mPreExposedViewInfoList, paramLong);
+    clearPreExposedContent();
   }
   
   public void onAppIn() {}
@@ -212,16 +230,24 @@ public class ElementExposureReporter
   
   public void onPageIn(@NonNull PageInfo paramPageInfo, @NonNull Set<PageInfo> paramSet, int paramInt)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("ElementExposureReporter", "onPageIn: pageInfo = " + paramPageInfo);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      paramSet = new StringBuilder();
+      paramSet.append("onPageIn: pageInfo = ");
+      paramSet.append(paramPageInfo);
+      Log.d("ElementExposureReporter", paramSet.toString());
     }
     dispatchElementReport(paramPageInfo, paramInt);
   }
   
   public void onPageOut(@NonNull PageInfo paramPageInfo, @NonNull Set<PageInfo> paramSet, boolean paramBoolean)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("ElementExposureReporter", "onPageOut: pageInfo = " + paramPageInfo);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPageOut: pageInfo = ");
+      localStringBuilder.append(paramPageInfo);
+      Log.d("ElementExposureReporter", localStringBuilder.toString());
     }
     paramPageInfo = paramSet.iterator();
     while (paramPageInfo.hasNext()) {
@@ -231,8 +257,12 @@ public class ElementExposureReporter
   
   public void onPageUpdate(PageInfo paramPageInfo, int paramInt)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("ElementExposureReporter", "onPageUpdate: pageInfo = " + paramPageInfo);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPageUpdate: pageInfo = ");
+      localStringBuilder.append(paramPageInfo);
+      Log.d("ElementExposureReporter", localStringBuilder.toString());
     }
     dispatchElementReport(paramPageInfo, paramInt);
   }
@@ -252,7 +282,7 @@ public class ElementExposureReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.element.ElementExposureReporter
  * JD-Core Version:    0.7.0.1
  */

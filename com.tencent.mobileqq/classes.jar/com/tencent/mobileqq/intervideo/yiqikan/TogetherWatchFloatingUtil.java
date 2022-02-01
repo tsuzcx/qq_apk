@@ -10,7 +10,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import com.tencent.mobileqq.qqfloatingwindow.impl.FloatingScreenReporter;
+import com.tencent.mobileqq.qqfloatingwindow.FloatingScreenReporter;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -21,13 +21,11 @@ import mqq.app.MobileQQ;
 
 public class TogetherWatchFloatingUtil
 {
-  private static volatile String a = null;
+  private static volatile String a;
   
   public static int a(Context paramContext, @Nonnull WatchTogetherFloatingData paramWatchTogetherFloatingData)
   {
-    int i = 1;
-    if (!BaseApplicationImpl.getApplication().getQQProcessName().endsWith(":tool")) {}
-    do
+    if (!BaseApplicationImpl.getApplication().getQQProcessName().endsWith(":tool"))
     {
       try
       {
@@ -37,25 +35,26 @@ public class TogetherWatchFloatingUtil
         paramContext.putExtra("com.tencent.mobileqq.webprocess.together.floating.data", paramWatchTogetherFloatingData);
         paramContext.setComponent(new ComponentName(MobileQQ.getContext(), "com.tencent.mobileqq.webprocess.WebProcessReceiver"));
         BaseApplicationImpl.getContext().sendBroadcast(paramContext, "com.tencent.msg.permission.pushnotify");
-        if (QLog.isColorLevel()) {
+        if (QLog.isColorLevel())
+        {
           QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "showFloatingWindow main..., data=", paramWatchTogetherFloatingData.toString() });
+          return 0;
         }
-        i = 0;
-        return i;
       }
       catch (Exception paramContext)
       {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("TogetherWatchFloatingUtil", 2, "showFloatingWindow fail...", paramContext);
-          }
+        if (QLog.isColorLevel()) {
+          QLog.d("TogetherWatchFloatingUtil", 2, "showFloatingWindow fail...", paramContext);
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "showFloatingWindow tool..., data=", paramWatchTogetherFloatingData.toString() });
-      }
-    } while (WatchFloatingWindowController.a().a(paramContext, paramWatchTogetherFloatingData) == 0);
+      return 0;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "showFloatingWindow tool..., data=", paramWatchTogetherFloatingData.toString() });
+    }
+    if (WatchFloatingWindowController.a().a(paramContext, paramWatchTogetherFloatingData) == 0) {
+      return 1;
+    }
     return 2;
   }
   
@@ -65,7 +64,7 @@ public class TogetherWatchFloatingUtil
       return null;
     }
     FloatingScreenReporter.b();
-    paramContext = DialogUtil.a(paramContext, 230, null, "一起看将收起为小窗进行展示，请开启QQ悬浮窗权限以正常使用功能。", paramContext.getString(2131690800), paramContext.getString(2131694615), new TogetherWatchFloatingUtil.1(paramContext), null);
+    paramContext = DialogUtil.a(paramContext, 230, null, "一起看将收起为小窗进行展示，请开启QQ悬浮窗权限以正常使用功能。", paramContext.getString(2131690728), paramContext.getString(2131694583), new TogetherWatchFloatingUtil.1(paramContext), null);
     paramContext.setCancelable(false);
     return paramContext;
   }
@@ -73,9 +72,9 @@ public class TogetherWatchFloatingUtil
   public static Dialog a(Context paramContext, Intent paramIntent)
   {
     paramContext = ActionSheet.create(paramContext);
-    paramContext.addButton(2131717086);
-    paramContext.addButton(2131690950, 3);
-    paramContext.addCancelButton(2131690800);
+    paramContext.addButton(2131716745);
+    paramContext.addButton(2131690878, 3);
+    paramContext.addCancelButton(2131690728);
     paramContext.setOnButtonClickListener(new TogetherWatchFloatingUtil.2(paramIntent, paramContext));
     return paramContext;
   }
@@ -103,27 +102,29 @@ public class TogetherWatchFloatingUtil
   
   public static void a(Context paramContext, @Nonnull WatchTogetherFloatingData paramWatchTogetherFloatingData)
   {
-    if ((BaseApplicationImpl.getApplication() == null) || (BaseApplicationImpl.getApplication().getQQProcessName() == null)) {}
-    boolean bool1;
-    boolean bool2;
-    do
+    if (BaseApplicationImpl.getApplication() != null)
     {
-      return;
-      if (BaseApplicationImpl.getApplication().getQQProcessName().endsWith(":tool")) {
-        break;
+      if (BaseApplicationImpl.getApplication().getQQProcessName() == null) {
+        return;
       }
-      bool1 = b(2, paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType());
-      bool2 = a();
-      if (QLog.isColorLevel()) {
-        QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "closeFloatingWindow isSameFloatingInfo=", Boolean.valueOf(bool1), "isFloatingInfoEmpty=", Boolean.valueOf(bool2) });
+      if (!BaseApplicationImpl.getApplication().getQQProcessName().endsWith(":tool"))
+      {
+        boolean bool1 = b(2, paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType());
+        boolean bool2 = a();
+        if (QLog.isColorLevel()) {
+          QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "closeFloatingWindow isSameFloatingInfo=", Boolean.valueOf(bool1), "isFloatingInfoEmpty=", Boolean.valueOf(bool2) });
+        }
+        if ((!bool1) && (!bool2)) {
+          return;
+        }
+        a = "";
+        paramContext = new Bundle();
+        paramContext.putSerializable("BUNDLE_KEY_UI_DATA", paramWatchTogetherFloatingData);
+        QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "WatchTogetherClientIPCModule", "ACTION_QUIT_WATCH_FLOATING_WINDOWS", paramContext, new TogetherWatchFloatingUtil.4());
+        return;
       }
-    } while ((!bool1) && (!bool2));
-    a = "";
-    paramContext = new Bundle();
-    paramContext.putSerializable("BUNDLE_KEY_UI_DATA", paramWatchTogetherFloatingData);
-    QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "WatchTogetherClientIPCModule", "ACTION_QUIT_WATCH_FLOATING_WINDOWS", paramContext, new TogetherWatchFloatingUtil.4());
-    return;
-    WatchFloatingWindowController.a().a(paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType(), true);
+      WatchFloatingWindowController.a().a(paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType(), true);
+    }
   }
   
   public static void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
@@ -131,19 +132,28 @@ public class TogetherWatchFloatingUtil
     if (QLog.isColorLevel()) {
       QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "setIsWatchFloatingShow isShow=", Boolean.valueOf(paramBoolean1), " uin=", paramString, " sessionType=", Integer.valueOf(paramInt) });
     }
-    if (!paramBoolean1) {}
-    for (a = "";; a = "2_" + paramString + "_" + paramInt)
+    Object localObject;
+    if (!paramBoolean1)
     {
-      if (7 == BaseApplicationImpl.sProcessId)
-      {
-        Bundle localBundle = new Bundle();
-        localBundle.putBoolean("BUNDLE_SET_KEY_REFRESH_UI", paramBoolean2);
-        localBundle.putBoolean("BUNDLE_SET_STATUS", paramBoolean1);
-        localBundle.putString("BUNDLE_SET_KEY_UIN", paramString);
-        localBundle.putInt("BUNDLE_SET_KEY_SESSION_TYPE", paramInt);
-        QIPCClientHelper.getInstance().callServer("TogetherBusinessIPCModule", "action_set_floating", localBundle, new TogetherWatchFloatingUtil.3());
-      }
-      return;
+      a = "";
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("2_");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(paramInt);
+      a = ((StringBuilder)localObject).toString();
+    }
+    if (7 == BaseApplicationImpl.sProcessId)
+    {
+      localObject = new Bundle();
+      ((Bundle)localObject).putBoolean("BUNDLE_SET_KEY_REFRESH_UI", paramBoolean2);
+      ((Bundle)localObject).putBoolean("BUNDLE_SET_STATUS", paramBoolean1);
+      ((Bundle)localObject).putString("BUNDLE_SET_KEY_UIN", paramString);
+      ((Bundle)localObject).putInt("BUNDLE_SET_KEY_SESSION_TYPE", paramInt);
+      QIPCClientHelper.getInstance().callServer("TogetherBusinessIPCModule", "action_set_floating", (Bundle)localObject, new TogetherWatchFloatingUtil.3());
     }
   }
   
@@ -154,21 +164,27 @@ public class TogetherWatchFloatingUtil
   
   public static boolean a(int paramInt1, String paramString, int paramInt2)
   {
-    if (paramInt1 != 2) {}
-    do
-    {
-      do
-      {
-        return false;
-        if (QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool")) {
-          break;
-        }
-        a = null;
-      } while (!QLog.isColorLevel());
-      QLog.d("TogetherWatchFloatingUtil", 2, "isWatchFloatingShow， tool process NOT EXIST");
+    if (paramInt1 != 2) {
       return false;
-    } while ((1 != BaseApplicationImpl.sProcessId) && (7 != BaseApplicationImpl.sProcessId));
-    paramString = paramInt1 + "_" + paramString + "_" + paramInt2;
+    }
+    if (!QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool"))
+    {
+      a = null;
+      if (QLog.isColorLevel()) {
+        QLog.d("TogetherWatchFloatingUtil", 2, "isWatchFloatingShow， tool process NOT EXIST");
+      }
+      return false;
+    }
+    if ((1 != BaseApplicationImpl.sProcessId) && (7 != BaseApplicationImpl.sProcessId)) {
+      return false;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt2);
+    paramString = localStringBuilder.toString();
     if (QLog.isColorLevel()) {
       QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "key=", paramString, " info=", a });
     }
@@ -182,12 +198,18 @@ public class TogetherWatchFloatingUtil
   
   public static boolean b(int paramInt1, String paramString, int paramInt2)
   {
-    return TextUtils.equals(paramInt1 + "_" + paramString + "_" + paramInt2, a);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt2);
+    return TextUtils.equals(localStringBuilder.toString(), a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.TogetherWatchFloatingUtil
  * JD-Core Version:    0.7.0.1
  */

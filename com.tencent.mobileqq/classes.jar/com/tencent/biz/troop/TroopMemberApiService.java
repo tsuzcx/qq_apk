@@ -15,29 +15,30 @@ import com.tencent.biz.TroopRedpoint.TroopRedTouchManager;
 import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.biz.apiproxy.QQMusicService;
 import com.tencent.biz.apiproxy.WebPushService;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.biz.pubaccount.readinjoy.plugin.ReadInJoySkinHelper;
-import com.tencent.biz.pubaccount.util.PAH5Manager;
+import com.tencent.biz.pubaccount.api.IPublicAccountH5Manager;
 import com.tencent.biz.webviewplugin.NewReportPlugin;
 import com.tencent.mobileqq.Doraemon.DoraemonBridge;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BizTroopObserver;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.ConditionSearchManager;
 import com.tencent.mobileqq.app.HotChatObserver;
-import com.tencent.mobileqq.app.HotchatSCHelper;
 import com.tencent.mobileqq.app.LBSObserver;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.QQMapActivityProxy;
-import com.tencent.mobileqq.app.TroopBusinessObserver;
 import com.tencent.mobileqq.app.WebPushObserver;
 import com.tencent.mobileqq.avatar.observer.AvatarObserver;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.hotchat.api.IHotChatSCHelper;
+import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.skin.api.IReadInJoySkinHelper;
+import com.tencent.mobileqq.kandian.biz.ugc.api.IRIJUgcUtils;
+import com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyObserver;
 import com.tencent.mobileqq.leba.ILebaHelperService;
 import com.tencent.mobileqq.leba.entity.LebaPluginInfo;
 import com.tencent.mobileqq.leba.entity.LebaViewItem;
@@ -47,16 +48,23 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.transfile.TransProcessorHandler;
 import com.tencent.mobileqq.transfile.api.ITransFileController;
+import com.tencent.mobileqq.troop.api.observer.TroopMngObserver;
+import com.tencent.mobileqq.troop.api.observer.TroopModifyObserver;
 import com.tencent.mobileqq.troop.api.observer.TroopObserver;
+import com.tencent.mobileqq.troop.association.api.TroopAssociationObserver;
 import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
-import com.tencent.mobileqq.troop.observer.TroopApiObserver;
+import com.tencent.mobileqq.troop.observer.TroopEssenceMsgObserver;
+import com.tencent.mobileqq.troop.troopapps.api.TroopAppObserver;
+import com.tencent.mobileqq.troop.troopmanager.api.TroopManagerBizObserver;
 import com.tencent.mobileqq.troop.utils.TroopFileManager;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.troop_homework.model.HWTroopFileStatusInfo;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.AppRuntime;
@@ -67,6 +75,8 @@ import mqq.observer.BusinessObserver;
 import oicq.wlogin_sdk.request.WFastLoginInfo;
 import oicq.wlogin_sdk.request.WUserSigInfo;
 import oicq.wlogin_sdk.request.WtloginHelper;
+import org.json.JSONException;
+import org.json.JSONObject;
 import tencent.im.group.nearbybanner.nearbybanner.ClientInfo;
 import tencent.im.group.nearbybanner.nearbybanner.ReqBody;
 import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
@@ -78,23 +88,27 @@ public class TroopMemberApiService
   final Messenger jdField_a_of_type_AndroidOsMessenger = new Messenger(new TroopMemberApiService.IncomingHandler(this));
   QQMusicService jdField_a_of_type_ComTencentBizApiproxyQQMusicService;
   WebPushService jdField_a_of_type_ComTencentBizApiproxyWebPushService;
-  public ReadInJoyObserver a;
-  ReadInJoySkinHelper jdField_a_of_type_ComTencentBizPubaccountReadinjoyPluginReadInJoySkinHelper = null;
-  PAH5Manager jdField_a_of_type_ComTencentBizPubaccountUtilPAH5Manager;
+  IPublicAccountH5Manager jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountH5Manager;
   DoraemonBridge jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonBridge = null;
-  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new TroopMemberApiService.6(this);
+  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new TroopMemberApiService.10(this);
   ConditionSearchManager jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager;
   HotChatObserver jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = new TroopMemberApiService.1(this);
-  HotchatSCHelper jdField_a_of_type_ComTencentMobileqqAppHotchatSCHelper = null;
   public LBSObserver a;
   QQMapActivityProxy jdField_a_of_type_ComTencentMobileqqAppQQMapActivityProxy;
-  TroopBusinessObserver jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver = new TroopMemberApiService.4(this);
   WebPushObserver jdField_a_of_type_ComTencentMobileqqAppWebPushObserver = new TroopMemberApiService.2(this);
   public AvatarObserver a;
+  IHotChatSCHelper jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatSCHelper = null;
+  IReadInJoySkinHelper jdField_a_of_type_ComTencentMobileqqKandianBizSkinApiIReadInJoySkinHelper = null;
+  public ReadInJoyObserver a;
   public NearbyCardObserver a;
-  TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new TroopMemberApiService.11(this);
-  TroopObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver = new TroopMemberApiService.3(this);
-  TroopApiObserver jdField_a_of_type_ComTencentMobileqqTroopObserverTroopApiObserver = new TroopMemberApiService.5(this);
+  TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new TroopMemberApiService.15(this);
+  TroopMngObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopMngObserver = new TroopMemberApiService.6(this);
+  TroopModifyObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopModifyObserver = new TroopMemberApiService.4(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver = new TroopMemberApiService.5(this);
+  TroopAssociationObserver jdField_a_of_type_ComTencentMobileqqTroopAssociationApiTroopAssociationObserver = new TroopMemberApiService.8(this);
+  TroopEssenceMsgObserver jdField_a_of_type_ComTencentMobileqqTroopObserverTroopEssenceMsgObserver = new TroopMemberApiService.9(this);
+  TroopAppObserver jdField_a_of_type_ComTencentMobileqqTroopTroopappsApiTroopAppObserver = new TroopMemberApiService.7(this);
+  TroopManagerBizObserver jdField_a_of_type_ComTencentMobileqqTroopTroopmanagerApiTroopManagerBizObserver = new TroopMemberApiService.3(this);
   String jdField_a_of_type_JavaLangString;
   ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   ConcurrentHashMap<String, Messenger> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
@@ -113,10 +127,23 @@ public class TroopMemberApiService
   
   public TroopMemberApiService()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new TroopMemberApiService.7(this);
-    this.jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver = new TroopMemberApiService.8(this);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver = new TroopMemberApiService.9(this);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new TroopMemberApiService.10(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new TroopMemberApiService.11(this);
+    this.jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver = new TroopMemberApiService.12(this);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver = new TroopMemberApiService.13(this);
+    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver = new TroopMemberApiService.14(this);
+  }
+  
+  private void a(int paramInt, boolean paramBoolean, Serializable paramSerializable, String paramString1, String paramString2)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", paramInt);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putSerializable("data", paramSerializable);
+    localBundle.putString("observerClassName", paramString1);
+    if (!TextUtils.isEmpty(paramString2)) {
+      localBundle.putString("processName", paramString2);
+    }
+    a(3, localBundle);
   }
   
   private void a(QQAppInterface paramQQAppInterface, long paramLong, HWTroopFileStatusInfo paramHWTroopFileStatusInfo, Bundle paramBundle)
@@ -125,12 +152,14 @@ public class TroopMemberApiService
       return;
     }
     FileInfo localFileInfo = new FileInfo();
-    if (!FileUtil.a(paramHWTroopFileStatusInfo.LocalFile)) {
+    if (!FileUtil.b(paramHWTroopFileStatusInfo.LocalFile)) {
       TroopFileTransferManager.a(paramQQAppInterface, paramLong).b();
     }
-    String str = "";
+    String str;
     if (!TextUtils.isEmpty(paramHWTroopFileStatusInfo.FileName)) {
       str = paramHWTroopFileStatusInfo.FileName;
+    } else {
+      str = "";
     }
     TroopFileManager.a(paramQQAppInterface, paramLong).a(paramHWTroopFileStatusInfo.Id);
     localFileInfo.d(str);
@@ -160,43 +189,35 @@ public class TroopMemberApiService
   
   private boolean a(long paramLong, boolean paramBoolean)
   {
-    if (!(this.app instanceof QQAppInterface)) {}
-    ILebaHelperService localILebaHelperService;
-    LebaViewItem localLebaViewItem;
-    do
-    {
+    if (!(this.app instanceof QQAppInterface)) {
       return false;
-      localILebaHelperService = (ILebaHelperService)this.app.getRuntimeService(ILebaHelperService.class, "multi");
-      localLebaViewItem = localILebaHelperService.getLebaViewItemById(paramLong);
-    } while ((localLebaViewItem == null) || (localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo == null));
-    boolean bool;
-    if (localLebaViewItem.jdField_a_of_type_Byte == 0)
-    {
-      bool = true;
-      label64:
-      if (paramBoolean == bool) {
-        break label150;
-      }
-      if (!paramBoolean) {
-        break label152;
-      }
     }
-    label150:
-    label152:
-    for (byte b1 = 0;; b1 = 1)
+    ILebaHelperService localILebaHelperService = (ILebaHelperService)this.app.getRuntimeService(ILebaHelperService.class, "multi");
+    LebaViewItem localLebaViewItem = localILebaHelperService.getLebaViewItemById(paramLong);
+    if (localLebaViewItem != null)
     {
-      localLebaViewItem.jdField_a_of_type_Byte = b1;
+      if (localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo == null) {
+        return false;
+      }
+      boolean bool;
+      if (localLebaViewItem.jdField_a_of_type_Byte == 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      if (paramBoolean == bool) {
+        return false;
+      }
+      localLebaViewItem.jdField_a_of_type_Byte = (paramBoolean ^ true);
       if (!(this.app instanceof QQAppInterface)) {
-        break;
+        return false;
       }
       localILebaHelperService.updateAppSetting(this.app, localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId, paramBoolean, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
       paramLong = NetConnInfoCenter.getServerTimeMillis();
       localILebaHelperService.netSetPluginState(String.valueOf(localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId), paramBoolean, paramLong);
       return true;
-      bool = false;
-      break label64;
-      break;
     }
+    return false;
   }
   
   public static boolean a(AppRuntime paramAppRuntime, BusinessObserver paramBusinessObserver)
@@ -210,7 +231,7 @@ public class TroopMemberApiService
       localObject = new nearbybanner.ClientInfo();
       ((nearbybanner.ClientInfo)localObject).uint32_lcd_height.set(j);
       ((nearbybanner.ClientInfo)localObject).uint32_lcd_width.set(i);
-      ((nearbybanner.ClientInfo)localObject).bytes_client_version.set(ByteStringMicro.copyFromUtf8("8.5.5.5105"));
+      ((nearbybanner.ClientInfo)localObject).bytes_client_version.set(ByteStringMicro.copyFromUtf8("8.7.0.5295"));
       ((nearbybanner.ClientInfo)localObject).uint32_os.set(0);
       localReqBody.msg_client_info.set((MessageMicro)localObject);
       localObject = new NewIntent(paramAppRuntime.getApplication(), ProtoServlet.class);
@@ -222,6 +243,46 @@ public class TroopMemberApiService
     }
     catch (Exception paramAppRuntime) {}
     return false;
+  }
+  
+  private static void b(boolean paramBoolean)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    for (;;)
+    {
+      try
+      {
+        boolean bool = ((IRIJUgcUtils)QRoute.api(IRIJUgcUtils.class)).needShowUploadVideoEntry();
+        int j = 0;
+        if (!bool) {
+          break label139;
+        }
+        i = 1;
+        localJSONObject.put("ugc_video_flag", i);
+        if (!((IRIJUgcUtils)QRoute.api(IRIJUgcUtils.class)).needShowCreateColumnEntry()) {
+          break label144;
+        }
+        i = 1;
+        localJSONObject.put("ugc_column_flag", i);
+        i = j;
+        if (paramBoolean) {
+          i = 1;
+        }
+        localJSONObject.put("ugc_topic_video", i);
+        localJSONObject.put("publisher_type", 1);
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountSimpleReportWithR5("0X800AC6D", 5, localJSONObject.toString());
+      return;
+      label139:
+      int i = 0;
+      continue;
+      label144:
+      i = 0;
+    }
   }
   
   public QQMusicService a()
@@ -242,84 +303,92 @@ public class TroopMemberApiService
   
   public void a(int paramInt, Bundle paramBundle)
   {
-    String str = null;
+    Object localObject = null;
     Message localMessage = Message.obtain(null, paramInt);
     Messenger localMessenger2 = this.jdField_b_of_type_AndroidOsMessenger;
     if (paramBundle != null) {
-      str = paramBundle.getString("processName");
+      localObject = paramBundle.getString("processName");
     }
     Messenger localMessenger1 = localMessenger2;
-    if (str != null)
+    if (localObject != null)
     {
+      ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
       localMessenger1 = localMessenger2;
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+      if (localConcurrentHashMap != null)
       {
         localMessenger1 = localMessenger2;
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str) != null) {
-          localMessenger1 = (Messenger)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+        if (localConcurrentHashMap.get(localObject) != null) {
+          localMessenger1 = (Messenger)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
         }
       }
     }
     localMessage.setData(paramBundle);
-    if (localMessenger1 != null) {}
-    try
-    {
-      localMessenger1.send(localMessage);
-      return;
-    }
-    catch (RemoteException paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("com.tencent.biz.troop.TroopMemberApiService", 2, "messeage not sent:" + paramBundle.getMessage());
+    if (localMessenger1 != null) {
+      try
+      {
+        localMessenger1.send(localMessage);
+        return;
+      }
+      catch (RemoteException paramBundle)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("messeage not sent:");
+          ((StringBuilder)localObject).append(paramBundle.getMessage());
+          QLog.e("com.tencent.biz.troop.TroopMemberApiService", 2, ((StringBuilder)localObject).toString());
+        }
+      }
     }
   }
   
   public void a(Bundle paramBundle)
   {
-    int j = 0;
-    Object localObject1;
+    int i;
     if ((this.app instanceof QQAppInterface))
     {
       localObject1 = (QQAppInterface)this.app;
       Object localObject2 = (TroopRedTouchManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.MGR_RED_TOUCH_EX);
-      i = j;
       if (localObject2 != null)
       {
         localObject2 = ((TroopRedTouchManager)localObject2).a(7);
-        i = j;
         if (localObject2 != null)
         {
           TroopRedTouchHandler.a((QQAppInterface)localObject1, (oidb_0x791.RedDotInfo)localObject2);
           localObject1 = (TroopRedTouchHandler)((QQAppInterface)this.app).getBusinessHandler(BusinessHandlerFactory.GET_RED_POINT_EX_HANDLER);
-          i = j;
           if (localObject1 != null) {
             ((TroopRedTouchHandler)localObject1).notifyUI(105, true, null);
           }
         }
       }
+      i = 0;
     }
-    for (int i = j;; i = 1)
+    else
     {
-      localObject1 = new Bundle();
-      if (paramBundle != null)
-      {
-        ((Bundle)localObject1).putInt("seq", paramBundle.getInt("seq", -1));
-        if (!TextUtils.isEmpty(paramBundle.getString("callback"))) {
-          ((Bundle)localObject1).putString("callback", paramBundle.getString("callback"));
-        }
-      }
-      ((Bundle)localObject1).putString("data", "{code:\"" + i + "\"}");
-      ((Bundle)localObject1).putString("method", "cleanDynamicRedPoint");
-      a(15, (Bundle)localObject1);
-      return;
+      i = 1;
       ReportController.b(null, "P_CliOper", "BizTechReport", "", "tribe", "clearreddot", 0, 1, "", "", "", "");
     }
+    Object localObject1 = new Bundle();
+    if (paramBundle != null)
+    {
+      ((Bundle)localObject1).putInt("seq", paramBundle.getInt("seq", -1));
+      if (!TextUtils.isEmpty(paramBundle.getString("callback"))) {
+        ((Bundle)localObject1).putString("callback", paramBundle.getString("callback"));
+      }
+    }
+    paramBundle = new StringBuilder();
+    paramBundle.append("{code:\"");
+    paramBundle.append(i);
+    paramBundle.append("\"}");
+    ((Bundle)localObject1).putString("data", paramBundle.toString());
+    ((Bundle)localObject1).putString("method", "cleanDynamicRedPoint");
+    a(15, (Bundle)localObject1);
   }
   
   public void a(String paramString1, String paramString2)
   {
     WtloginHelper localWtloginHelper = new WtloginHelper(this.app.getApplication().getApplicationContext());
-    localWtloginHelper.SetListener(new TroopMemberApiService.12(this, localWtloginHelper));
+    localWtloginHelper.SetListener(new TroopMemberApiService.16(this, localWtloginHelper));
     String str = this.app.getAccount();
     paramString1 = paramString1.getBytes();
     long l = Long.valueOf(paramString2).longValue();
@@ -333,29 +402,28 @@ public class TroopMemberApiService
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    Object localObject = this.app;
-    if ((localObject == null) || (!(localObject instanceof QQAppInterface))) {}
-    long l;
-    do
+    AppRuntime localAppRuntime = this.app;
+    if (localAppRuntime != null)
     {
-      do
-      {
+      if (!(localAppRuntime instanceof QQAppInterface)) {
         return;
-        if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(paramString4))) {
-          break;
+      }
+      if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(paramString4)))
+      {
+        long l = AnonymousChatHelper.a;
+        if (l == -1L) {
+          return;
         }
-      } while (!QLog.isColorLevel());
-      QLog.i("com.tencent.biz.troop.TroopMemberApiService", 2, "safetyReport param null");
-      return;
-      l = AnonymousChatHelper.a;
-    } while (l == -1L);
-    localObject = new Bundle();
-    ((Bundle)localObject).putLong("anonymousseq", l);
-    if (BaseActivity.sTopActivity != null) {}
-    for (paramString4 = BaseActivity.sTopActivity;; paramString4 = getApplicationContext())
-    {
-      NewReportPlugin.a((BaseActivity)paramString4, paramString2, null, null, paramString1, paramString3, 25029, null, (Bundle)localObject);
-      return;
+        paramString4 = new Bundle();
+        paramString4.putLong("anonymousseq", l);
+        if (QBaseActivity.sTopActivity != null) {
+          NewReportPlugin.a(QBaseActivity.sTopActivity, paramString2, null, null, paramString1, paramString3, 25029, null, paramString4);
+        }
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("com.tencent.biz.troop.TroopMemberApiService", 2, "safetyReport param null");
+      }
     }
   }
   
@@ -378,14 +446,18 @@ public class TroopMemberApiService
       ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver, true);
       ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver);
       ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver);
-      ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver);
+      ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsApiTroopAppObserver);
+      ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopMngObserver);
       ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
-      ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopObserverTroopApiObserver);
+      ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopModifyObserver);
+      ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopTroopmanagerApiTroopManagerBizObserver);
+      ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopAssociationApiTroopAssociationObserver);
+      ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopObserverTroopEssenceMsgObserver);
       ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver);
       ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver);
       this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqAppWebPushObserver);
     }
-    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver);
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
   }
   
   public void onDestroy()
@@ -399,9 +471,13 @@ public class TroopMemberApiService
       ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
       ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver);
       ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver);
-      ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver);
+      ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsApiTroopAppObserver);
+      ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopMngObserver);
       ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
-      ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopObserverTroopApiObserver);
+      ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopModifyObserver);
+      ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopTroopmanagerApiTroopManagerBizObserver);
+      ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopAssociationApiTroopAssociationObserver);
+      ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopObserverTroopEssenceMsgObserver);
       ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver);
       ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver);
       if (!TextUtils.isEmpty(this.app.getAccount())) {
@@ -409,25 +485,29 @@ public class TroopMemberApiService
       }
       this.app.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqAppWebPushObserver);
     }
-    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver);
-    if ((TextUtils.isEmpty(this.d)) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPluginReadInJoySkinHelper != null)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPluginReadInJoySkinHelper.a();
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
+    TextUtils.isEmpty(this.d);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinApiIReadInJoySkinHelper;
+    if (localObject != null) {
+      ((IReadInJoySkinHelper)localObject).a();
     }
     this.app = null;
     this.jdField_b_of_type_AndroidOsMessenger = null;
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+    localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      ((ConcurrentHashMap)localObject).clear();
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.b(this);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager;
+    if (localObject != null) {
+      ((ConditionSearchManager)localObject).b(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiService
  * JD-Core Version:    0.7.0.1
  */

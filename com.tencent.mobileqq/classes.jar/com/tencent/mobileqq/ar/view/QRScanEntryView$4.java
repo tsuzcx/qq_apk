@@ -14,52 +14,27 @@ class QRScanEntryView$4
   
   public void onClick(View paramView)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (QRScanEntryView.a(this.a))
     {
-      Object localObject = CameraProxy.a();
-      if (!QRScanEntryView.b(this.a))
+      if (CameraProxy.a().a(QRScanEntryView.b(this.a) ^ true))
       {
-        bool1 = true;
-        if (((CameraProxy)localObject).a(bool1))
-        {
-          localObject = this.a;
-          if (QRScanEntryView.b(this.a)) {
-            break label131;
-          }
-          bool1 = true;
-          label56:
-          QRScanEntryView.a((QRScanEntryView)localObject, bool1);
-          localObject = (QRSession)this.a.a;
-          bool1 = bool2;
-          if (!QRScanEntryView.b(this.a)) {
-            bool1 = true;
-          }
-          ((QRSession)localObject).a(bool1, 0L);
-          QRScanEntryView.a(this.a, true);
-          QRScanEntryView.b(this.a, QRScanEntryView.b(this.a));
-        }
+        QRScanEntryView localQRScanEntryView = this.a;
+        QRScanEntryView.a(localQRScanEntryView, QRScanEntryView.b(localQRScanEntryView) ^ true);
+        ((QRSession)this.a.a).a(QRScanEntryView.b(this.a) ^ true, 0L);
+        QRScanEntryView.a(this.a, true);
+        localQRScanEntryView = this.a;
+        QRScanEntryView.b(localQRScanEntryView, QRScanEntryView.b(localQRScanEntryView));
       }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bool1 = false;
-      break;
-      label131:
-      bool1 = false;
-      break label56;
-      if (QLog.isColorLevel()) {
-        QLog.d("AREngine_QRScanEntryView", 2, "initView click mFlashLightTips when view invisble.");
-      }
+    else if (QLog.isColorLevel()) {
+      QLog.d("AREngine_QRScanEntryView", 2, "initView click mFlashLightTips when view invisble.");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.QRScanEntryView.4
  * JD-Core Version:    0.7.0.1
  */

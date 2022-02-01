@@ -8,16 +8,17 @@ class ExcitingTransferEngine$1
   public void run()
   {
     ExcitingTransferEngine.ExcitingSendJobContent localExcitingSendJobContent = ExcitingTransferEngine.access$000(this.this$0, this.a);
-    if (localExcitingSendJobContent == null) {}
-    while (localExcitingSendJobContent.mListener == null) {
+    if (localExcitingSendJobContent == null) {
       return;
     }
-    localExcitingSendJobContent.mListener.onExcitingSendStart();
+    if (localExcitingSendJobContent.mListener != null) {
+      localExcitingSendJobContent.mListener.onExcitingSendStart();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferEngine.1
  * JD-Core Version:    0.7.0.1
  */

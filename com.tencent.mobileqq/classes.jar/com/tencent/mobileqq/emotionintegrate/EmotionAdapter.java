@@ -55,7 +55,8 @@ public class EmotionAdapter
   
   public EmoticonPreviewData a(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if ((localList != null) && (!localList.isEmpty()) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
       return (EmoticonPreviewData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
     return this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmoticonPreviewData;
@@ -83,10 +84,11 @@ public class EmotionAdapter
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList == null) {
       return 1;
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return localList.size();
   }
   
   public long getItemId(int paramInt)
@@ -96,45 +98,43 @@ public class EmotionAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    Object localObject = paramView;
     if (paramView == null) {
-      paramView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
+      localObject = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
     }
-    for (;;)
+    paramView = new StringBuilder();
+    paramView.append("getView position:");
+    paramView.append(paramInt);
+    com.tencent.qphone.base.util.QLog.d("EmotionAdapter", 1, paramView.toString());
+    paramView = this.jdField_a_of_type_JavaUtilList;
+    if ((paramView != null) && (!paramView.isEmpty())) {
+      paramView = (EmoticonPreviewData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    } else {
+      paramView = this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmoticonPreviewData;
+    }
+    Drawable localDrawable = paramView.a(this.jdField_a_of_type_AndroidContentContext);
+    if ((!paramView.a()) && (paramView.b())) {
+      ((URLImageView)localObject).setURLDrawableDownListener(this);
+    } else {
+      ((URLImageView)localObject).setURLDrawableDownListener(null);
+    }
+    if ((localDrawable instanceof PngFrameDrawable))
     {
-      com.tencent.qphone.base.util.QLog.d("EmotionAdapter", 1, "getView position:" + paramInt);
-      Object localObject;
-      Drawable localDrawable;
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
+      paramView = (PngFrameDrawable)localDrawable;
+      if (paramView.a() != null)
       {
-        localObject = (EmoticonPreviewData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-        localDrawable = ((EmoticonPreviewData)localObject).a(this.jdField_a_of_type_AndroidContentContext);
-        if ((((EmoticonPreviewData)localObject).a()) || (!((EmoticonPreviewData)localObject).b())) {
-          break label221;
-        }
-        ((URLImageView)paramView).setURLDrawableDownListener(this);
-        label110:
-        if ((!(localDrawable instanceof PngFrameDrawable)) || (((PngFrameDrawable)localDrawable).a() == null)) {
-          break label232;
-        }
-        int i = AIOUtils.a(100.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        localObject = a(((PngFrameDrawable)localDrawable).a(), i, i);
-        ((ImageView)paramView).setImageBitmap((Bitmap)localObject);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
-        this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001, paramInt, 0, localDrawable).sendToTarget();
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        localObject = this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmoticonPreviewData;
-        break;
-        label221:
-        ((URLImageView)paramView).setURLDrawableDownListener(null);
-        break label110;
-        label232:
-        ((ImageView)paramView).setImageDrawable(localDrawable);
+        int i = AIOUtils.b(100.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        paramView = a(paramView.a(), i, i);
+        ((ImageView)localObject).setImageBitmap(paramView);
+        break label205;
       }
     }
+    ((ImageView)localObject).setImageDrawable(localDrawable);
+    label205:
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
+    this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001, paramInt, 0, localDrawable).sendToTarget();
+    EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
+    return localObject;
   }
   
   public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
@@ -147,22 +147,18 @@ public class EmotionAdapter
   
   public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
+    int i;
     try
     {
       File localFile = paramURLDrawable.getFileInLocal();
-      if (localFile == null) {
-        break label74;
+      if (localFile != null) {
+        i = ImageUtil.d(localFile.getAbsolutePath());
       }
-      i = ImageUtil.d(localFile.getAbsolutePath());
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-        label74:
-        int i = 0;
-      }
+      localException.printStackTrace();
+      i = 0;
     }
     if (com.tencent.TMG.utils.QLog.isColorLevel()) {
       com.tencent.TMG.utils.QLog.d("EmotionAdapter", 0, "onLoadSuccessed,orientation");
@@ -174,7 +170,7 @@ public class EmotionAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.EmotionAdapter
  * JD-Core Version:    0.7.0.1
  */

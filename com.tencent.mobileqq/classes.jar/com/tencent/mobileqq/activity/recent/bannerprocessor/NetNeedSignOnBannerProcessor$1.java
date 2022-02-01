@@ -16,19 +16,23 @@ class NetNeedSignOnBannerProcessor$1
   
   public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "click move to url:" + this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("click move to url:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      QLog.d("Q.recent.banner", 2, ((StringBuilder)localObject).toString());
     }
-    Intent localIntent = new Intent(NetNeedSignOnBannerProcessor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorNetNeedSignOnBannerProcessor), QQBrowserDelegationActivity.class);
-    localIntent.putExtra("injectrecommend", true);
-    NetNeedSignOnBannerProcessor.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorNetNeedSignOnBannerProcessor).startActivity(localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString));
+    Object localObject = new Intent(NetNeedSignOnBannerProcessor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorNetNeedSignOnBannerProcessor), QQBrowserDelegationActivity.class);
+    ((Intent)localObject).putExtra("injectrecommend", true);
+    NetNeedSignOnBannerProcessor.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorNetNeedSignOnBannerProcessor).startActivity(((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString));
     ReportController.a(NetNeedSignOnBannerProcessor.c(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorNetNeedSignOnBannerProcessor).getAppRuntime(), "CliOper", "", "", "0X8004029", "0X8004029", 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.NetNeedSignOnBannerProcessor.1
  * JD-Core Version:    0.7.0.1
  */

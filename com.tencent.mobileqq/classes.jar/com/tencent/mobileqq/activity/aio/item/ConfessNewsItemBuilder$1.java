@@ -15,39 +15,30 @@ class ConfessNewsItemBuilder$1
   
   public void onClick(View paramView)
   {
-    Object localObject;
-    int i;
     if ((paramView instanceof ConfessNewsBgView))
     {
-      localObject = paramView.getTag();
+      Object localObject = paramView.getTag();
       if ((localObject instanceof MessageForConfessNews))
       {
         localObject = (MessageForConfessNews)localObject;
-        if (((MessageForConfessNews)localObject).istroop != 1) {
-          break label80;
+        int j = ((MessageForConfessNews)localObject).istroop;
+        int i = 1;
+        if (j != 1) {
+          i = 0;
         }
-        i = 1;
-        if (i == 0) {
-          break label85;
+        if (i != 0) {
+          TroopConfessUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, 2, ((MessageForConfessNews)localObject).strGroupUin, ((MessageForConfessNews)localObject).nTopicId, ((MessageForConfessNews)localObject).strConfessorUin, ((MessageForConfessNews)localObject).strRecUin);
+        } else {
+          ConfessMsgUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.getContext(), ((MessageForConfessNews)localObject).nTopicId, ((MessageForConfessNews)localObject).strConfessorUin, ((MessageForConfessNews)localObject).nConfessorSex, ((MessageForConfessNews)localObject).strRecUin);
         }
-        TroopConfessUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, 2, ((MessageForConfessNews)localObject).strGroupUin, ((MessageForConfessNews)localObject).nTopicId, ((MessageForConfessNews)localObject).strConfessorUin, ((MessageForConfessNews)localObject).strRecUin);
       }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label80:
-      i = 0;
-      break;
-      label85:
-      ConfessMsgUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.getContext(), ((MessageForConfessNews)localObject).nTopicId, ((MessageForConfessNews)localObject).strConfessorUin, ((MessageForConfessNews)localObject).nConfessorSex, ((MessageForConfessNews)localObject).strRecUin);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ConfessNewsItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

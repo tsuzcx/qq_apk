@@ -38,7 +38,7 @@ public class Mustache$Parser
     this.source = paramReader;
     for (;;)
     {
-      int i = nextChar();
+      i = nextChar();
       if (i == -1) {
         break;
       }
@@ -51,45 +51,113 @@ public class Mustache$Parser
         this.line += 1;
       }
     }
-    switch (this.state)
+    int i = this.state;
+    if (i != 1)
     {
+      if (i != 2)
+      {
+        if (i == 3) {
+          Mustache.restoreStartTag(this.text, this.delims);
+        }
+      }
+      else
+      {
+        Mustache.restoreStartTag(this.text, this.delims);
+        this.text.append(this.delims.end1);
+      }
     }
-    for (;;)
-    {
-      this.accum.addTextSegment(this.text);
-      return this.accum;
-      Mustache.restoreStartTag(this.text, this.delims);
-      continue;
-      Mustache.restoreStartTag(this.text, this.delims);
-      this.text.append(this.delims.end1);
-      continue;
+    else {
       this.text.append(this.delims.start1);
     }
+    this.accum.addTextSegment(this.text);
+    return this.accum;
   }
   
   protected void parseChar(char paramChar)
   {
-    switch (this.state)
+    int i = this.state;
+    if (i != 0)
     {
-    default: 
-    case 0: 
-    case 1: 
-    case 3: 
-      do
+      if (i != 1)
       {
-        do
+        if (i != 2)
         {
-          return;
-          if (paramChar != this.delims.start1) {
-            break;
+          if (i != 3) {
+            return;
           }
-          this.state = 1;
-          this.tagStartColumn = this.column;
-        } while (this.delims.start2 != 0);
-        parseChar('\000');
-        return;
-        this.text.append(paramChar);
-        return;
+          if (paramChar == this.delims.end1)
+          {
+            this.state = 2;
+            if (this.delims.end2 == 0) {
+              parseChar('\000');
+            }
+          }
+          else
+          {
+            if ((paramChar == this.delims.start1) && (this.text.length() > 0) && (this.text.charAt(0) != '!'))
+            {
+              Mustache.restoreStartTag(this.text, this.delims);
+              this.accum.addTextSegment(this.text);
+              this.tagStartColumn = this.column;
+              if (this.delims.start2 == 0)
+              {
+                this.accum.addTextSegment(this.text);
+                this.state = 3;
+                return;
+              }
+              this.state = 1;
+              return;
+            }
+            this.text.append(paramChar);
+          }
+        }
+        else
+        {
+          if (paramChar == this.delims.end2)
+          {
+            Object localObject;
+            StringBuilder localStringBuilder;
+            if (this.text.charAt(0) == '=')
+            {
+              localObject = this.delims;
+              localStringBuilder = this.text;
+              ((Mustache.Delims)localObject).updateDelims(localStringBuilder.substring(1, localStringBuilder.length() - 1));
+              this.text.setLength(0);
+              this.accum.addFauxSegment();
+            }
+            else
+            {
+              if ((this.delims.isStaches()) && (this.text.charAt(0) == this.delims.start1))
+              {
+                i = nextChar();
+                if (i != 125)
+                {
+                  if (i == -1) {
+                    localObject = "";
+                  } else {
+                    localObject = String.valueOf((char)i);
+                  }
+                  localStringBuilder = new StringBuilder();
+                  localStringBuilder.append("Invalid triple-mustache tag: {{");
+                  localStringBuilder.append(this.text);
+                  localStringBuilder.append("}}");
+                  localStringBuilder.append((String)localObject);
+                  throw new MustacheParseException(localStringBuilder.toString(), this.line);
+                }
+                this.text.replace(0, 1, "&");
+              }
+              this.accum = this.accum.addTagSegment(this.text, this.line);
+            }
+            this.state = 0;
+            return;
+          }
+          this.text.append(this.delims.end1);
+          this.state = 3;
+          parseChar(paramChar);
+        }
+      }
+      else
+      {
         if (paramChar == this.delims.start2)
         {
           this.accum.addTextSegment(this.text);
@@ -99,61 +167,20 @@ public class Mustache$Parser
         this.text.append(this.delims.start1);
         this.state = 0;
         parseChar(paramChar);
-        return;
-        if (paramChar != this.delims.end1) {
-          break;
-        }
-        this.state = 2;
-      } while (this.delims.end2 != 0);
-      parseChar('\000');
-      return;
-      if ((paramChar == this.delims.start1) && (this.text.length() > 0) && (this.text.charAt(0) != '!'))
-      {
-        Mustache.restoreStartTag(this.text, this.delims);
-        this.accum.addTextSegment(this.text);
-        this.tagStartColumn = this.column;
-        if (this.delims.start2 == 0)
-        {
-          this.accum.addTextSegment(this.text);
-          this.state = 3;
-          return;
-        }
-        this.state = 1;
-        return;
       }
-      this.text.append(paramChar);
-      return;
     }
-    if (paramChar == this.delims.end2)
+    else if (paramChar == this.delims.start1)
     {
-      if (this.text.charAt(0) == '=')
-      {
-        this.delims.updateDelims(this.text.substring(1, this.text.length() - 1));
-        this.text.setLength(0);
-        this.accum.addFauxSegment();
-      }
-      for (;;)
-      {
-        this.state = 0;
-        return;
-        if ((this.delims.isStaches()) && (this.text.charAt(0) == this.delims.start1))
-        {
-          int i = nextChar();
-          if (i != 125)
-          {
-            if (i == -1) {}
-            for (String str = "";; str = String.valueOf((char)i)) {
-              throw new MustacheParseException("Invalid triple-mustache tag: {{" + this.text + "}}" + str, this.line);
-            }
-          }
-          this.text.replace(0, 1, "&");
-        }
-        this.accum = this.accum.addTagSegment(this.text, this.line);
+      this.state = 1;
+      this.tagStartColumn = this.column;
+      if (this.delims.start2 == 0) {
+        parseChar('\000');
       }
     }
-    this.text.append(this.delims.end1);
-    this.state = 3;
-    parseChar(paramChar);
+    else
+    {
+      this.text.append(paramChar);
+    }
   }
 }
 

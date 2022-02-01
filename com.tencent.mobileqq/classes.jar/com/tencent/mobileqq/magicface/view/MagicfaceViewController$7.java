@@ -15,8 +15,13 @@ class MagicfaceViewController$7
   {
     long l1 = System.currentTimeMillis();
     long l2 = this.jdField_a_of_type_Long;
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicfaceViewController", 2, "【magicface】 cost =" + (l1 - l2) + "ms");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("【magicface】 cost =");
+      localStringBuilder.append(l1 - l2);
+      localStringBuilder.append("ms");
+      QLog.d("MagicfaceViewController", 2, localStringBuilder.toString());
     }
     boolean bool;
     if (this.jdField_a_of_type_Int == 0)
@@ -24,13 +29,12 @@ class MagicfaceViewController$7
       bool = this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.b();
       this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.c(bool);
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_AndroidOsHandler.post(new MagicfaceViewController.7.1(this, paramActionGlobalData));
-      return;
       bool = this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.c();
       this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.c(bool);
     }
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_AndroidOsHandler.post(new MagicfaceViewController.7.1(this, paramActionGlobalData));
   }
   
   public void b(ActionGlobalData paramActionGlobalData)
@@ -40,7 +44,7 @@ class MagicfaceViewController$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.view.MagicfaceViewController.7
  * JD-Core Version:    0.7.0.1
  */

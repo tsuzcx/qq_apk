@@ -34,40 +34,60 @@ class QZonePluginDownloadIPStracyConfig
   
   private void addConfigItem(Map<String, String> paramMap, String paramString1, String paramString2)
   {
-    if ((paramMap == null) || (paramString1 == null) || (paramString2 == null)) {
-      return;
+    if ((paramMap != null) && (paramString1 != null))
+    {
+      if (paramString2 == null) {
+        return;
+      }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append("||");
+      ((StringBuilder)localObject).append(paramString2);
+      localObject = ((StringBuilder)localObject).toString();
+      paramString1 = QzoneConfig.getInstance().getConfig(paramString1, paramString2);
+      if (QLog.isColorLevel())
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("addConfigItem, key=");
+        paramString2.append((String)localObject);
+        paramString2.append(", content=");
+        paramString2.append(paramString1);
+        QLog.d("QZonePluginDownloadIPStracyConfig", 2, paramString2.toString());
+      }
+      paramMap.put(localObject, paramString1);
     }
-    String str = paramString1 + "||" + paramString2;
-    paramString1 = QzoneConfig.getInstance().getConfig(paramString1, paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginDownloadIPStracyConfig", 2, "addConfigItem, key=" + str + ", content=" + paramString1);
-    }
-    paramMap.put(str, paramString1);
   }
   
   private void addSpecifyItem(Map<String, String> paramMap, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if ((paramMap == null) || (paramString1 == null) || (paramString2 == null)) {
-      return;
-    }
-    Object localObject = null;
-    paramString4 = QzoneConfig.getInstance().getConfig(paramString1, paramString3, paramString4);
-    paramString3 = paramString1 + "||" + paramString2;
-    paramString2 = QzoneConfig.getInstance().getConfig(paramString1, paramString2);
-    paramString1 = localObject;
-    if (!TextUtils.isEmpty(paramString2))
+    if ((paramMap != null) && (paramString1 != null))
     {
-      paramString1 = localObject;
-      if (!TextUtils.isEmpty(paramString4)) {
-        paramString1 = paramString2.replace("ips", paramString4);
+      if (paramString2 == null) {
+        return;
       }
+      Object localObject = null;
+      paramString3 = QzoneConfig.getInstance().getConfig(paramString1, paramString3, paramString4);
+      paramString4 = new StringBuilder();
+      paramString4.append(paramString1);
+      paramString4.append("||");
+      paramString4.append(paramString2);
+      paramString4 = paramString4.toString();
+      paramString2 = QzoneConfig.getInstance().getConfig(paramString1, paramString2);
+      paramString1 = localObject;
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        paramString1 = localObject;
+        if (!TextUtils.isEmpty(paramString3)) {
+          paramString1 = paramString2.replace("ips", paramString3);
+        }
+      }
+      if (TextUtils.isEmpty(paramString1))
+      {
+        paramMap.put(paramString4, paramString2);
+        return;
+      }
+      paramMap.put(paramString4, paramString1);
     }
-    if (TextUtils.isEmpty(paramString1))
-    {
-      paramMap.put(paramString3, paramString2);
-      return;
-    }
-    paramMap.put(paramString3, paramString1);
   }
   
   private void initConfig()
@@ -104,7 +124,7 @@ class QZonePluginDownloadIPStracyConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.plugin.QZonePluginDownloadIPStracyConfig
  * JD-Core Version:    0.7.0.1
  */

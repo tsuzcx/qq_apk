@@ -17,27 +17,28 @@ class UploaderProxyImpl$1
   
   public void run()
   {
-    Object localObject = MiniOkHttpClientFactory.getUploadClient();
+    Object localObject1 = MiniOkHttpClientFactory.getUploadClient();
     Request.Builder localBuilder = new Request.Builder();
-    localBuilder.tag(localObject).url(this.jdField_a_of_type_JavaLangString).addHeader("Charset", "utf-8").addHeader("connection", "keep-alive");
-    if (this.jdField_a_of_type_JavaUtilMap != null)
+    localBuilder.tag(localObject1).url(this.jdField_a_of_type_JavaLangString).addHeader("Charset", "utf-8").addHeader("connection", "keep-alive");
+    Object localObject2 = this.jdField_a_of_type_JavaUtilMap;
+    if (localObject2 != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-      while (localIterator.hasNext())
+      localObject2 = ((Map)localObject2).keySet().iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        String str = (String)localIterator.next();
+        String str = (String)((Iterator)localObject2).next();
         localBuilder.addHeader(str, (String)this.jdField_a_of_type_JavaUtilMap.get(str));
       }
     }
     localBuilder.method("POST", HttpUtil.a(this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_JavaUtilMap, this.c, this.d, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyUploaderProxy$UploadListener));
-    localObject = ((OkHttpClient)localObject).newCall(localBuilder.build());
-    ((Call)localObject).enqueue(new UploaderProxyImpl.1.1(this));
-    this.this$0.a.put(this.jdField_a_of_type_JavaLangString, localObject);
+    localObject1 = ((OkHttpClient)localObject1).newCall(localBuilder.build());
+    ((Call)localObject1).enqueue(new UploaderProxyImpl.1.1(this));
+    this.this$0.a.put(this.jdField_a_of_type_JavaLangString, localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.UploaderProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

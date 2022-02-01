@@ -14,19 +14,20 @@ class BaseActivity2$MyScreenReceiver
   {
     if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
     {
-      BaseActivity2.mAppForground = false;
-      GesturePWDUtils.setAppForground(paramContext, BaseActivity2.mAppForground);
-    }
-    while (!paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) {
+      BaseActivity2.h = false;
+      GesturePWDUtils.setAppForground(paramContext, BaseActivity2.h);
       return;
     }
-    BaseActivity2.mAppForground = GesturePWDUtils.isAppOnForegroundByTasks(paramContext, 0);
-    GesturePWDUtils.setAppForground(paramContext, BaseActivity2.mAppForground);
+    if (paramIntent.getAction().equals("android.intent.action.SCREEN_ON"))
+    {
+      BaseActivity2.h = GesturePWDUtils.isAppOnForegroundByTasks(paramContext, 0);
+      GesturePWDUtils.setAppForground(paramContext, BaseActivity2.h);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.BaseActivity2.MyScreenReceiver
  * JD-Core Version:    0.7.0.1
  */

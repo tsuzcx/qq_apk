@@ -45,7 +45,7 @@ public enum C2CPlusPanelAppConfigHelper
   INSTANCE;
   
   private static final String TAG = "PlusPanelHelper";
-  public final PlusPanelAppInfo[] entities = { new ArkAppManagerAppInfo(0), new ArkSampleAppInfo(0), new AudioCallAppInfo(0), new VideoCallAppInfo(0), new PokeAppInfo(0), new HotPicAppInfo(0), new LocationAppInfo(0), new FileAppInfo(0), new ListenTogetherAppInfo(0), new SingTogetherAppInfo(0), new FavoriteAppInfo(0), new MiniAppInfo(0), new DoodleAppInfo(0), new TransferAppInfo(0), new BusinessCardAppInfo(0), new GiftAppInfo(0), new TencentDocsAppInfo(0), new CMShowAppInfo(0), new ReceiptMsgAppInfo(0), new PicAppInfo(0), new ShootAppInfo(0), new RedPacketAppInfo(0), new ShareScreenAppInfo(0), new AVGameAppInfo(0), new TroopDingYueAppInfo(0), new TroopTouPiaoAppInfo(0), new QavWTAppInfo(0) };
+  private final PlusPanelAppInfo[] mEntities = { new ArkAppManagerAppInfo(0), new ArkSampleAppInfo(0), new AudioCallAppInfo(0), new VideoCallAppInfo(0), new PokeAppInfo(0), new HotPicAppInfo(0), new LocationAppInfo(0), new FileAppInfo(0), new ListenTogetherAppInfo(0), new SingTogetherAppInfo(0), new FavoriteAppInfo(0), new MiniAppInfo(0), new DoodleAppInfo(0), new TransferAppInfo(0), new BusinessCardAppInfo(0), new GiftAppInfo(0), new TencentDocsAppInfo(0), new CMShowAppInfo(0), new ReceiptMsgAppInfo(0), new PicAppInfo(0), new ShootAppInfo(0), new RedPacketAppInfo(0), new ShareScreenAppInfo(0), new AVGameAppInfo(0), new TroopDingYueAppInfo(0), new TroopTouPiaoAppInfo(0), new QavWTAppInfo(0) };
   
   private C2CPlusPanelAppConfigHelper() {}
   
@@ -56,6 +56,7 @@ public enum C2CPlusPanelAppConfigHelper
       Object localObject;
       if (StudyModeManager.a())
       {
+        QLog.d("PlusPanelHelper", 1, "getAppInfoOrder study mode");
         localObject = (AIOPlusPanelAppInfoOrderConfigProcessor.Config)QConfigManager.a().a(611);
         if (localObject != null) {
           return ((AIOPlusPanelAppInfoOrderConfigProcessor.Config)localObject).a;
@@ -63,6 +64,7 @@ public enum C2CPlusPanelAppConfigHelper
       }
       else
       {
+        QLog.d("PlusPanelHelper", 1, "getAppInfoOrder normal mode");
         boolean bool = SimpleUIUtil.a();
         localObject = (AIOPlusPanelAppInfoOrderConfigProcessor.Config)QConfigManager.a().a(495);
         if (localObject != null)
@@ -84,31 +86,23 @@ public enum C2CPlusPanelAppConfigHelper
   
   public boolean containsType(int paramInt)
   {
-    boolean bool2 = false;
-    PlusPanelAppInfo[] arrayOfPlusPanelAppInfo = this.entities;
+    PlusPanelAppInfo[] arrayOfPlusPanelAppInfo = this.mEntities;
     int j = arrayOfPlusPanelAppInfo.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        PlusPanelAppInfo localPlusPanelAppInfo = arrayOfPlusPanelAppInfo[i];
-        if ((localPlusPanelAppInfo != null) && (localPlusPanelAppInfo.getManageConfigID() == paramInt)) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        return bool1;
+      PlusPanelAppInfo localPlusPanelAppInfo = arrayOfPlusPanelAppInfo[i];
+      if ((localPlusPanelAppInfo != null) && (localPlusPanelAppInfo.getManageConfigID() == paramInt)) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   public IQConfigProcessor genProcess(int paramInt)
   {
-    PlusPanelAppInfo[] arrayOfPlusPanelAppInfo = this.entities;
+    PlusPanelAppInfo[] arrayOfPlusPanelAppInfo = this.mEntities;
     int j = arrayOfPlusPanelAppInfo.length;
     int i = 0;
     while (i < j)
@@ -124,7 +118,7 @@ public enum C2CPlusPanelAppConfigHelper
   
   public PlusPanelAppInfo getAppInfoByAppID(int paramInt)
   {
-    PlusPanelAppInfo[] arrayOfPlusPanelAppInfo = this.entities;
+    PlusPanelAppInfo[] arrayOfPlusPanelAppInfo = this.mEntities;
     int j = arrayOfPlusPanelAppInfo.length;
     int i = 0;
     while (i < j)
@@ -145,7 +139,7 @@ public enum C2CPlusPanelAppConfigHelper
       int i;
       try
       {
-        Object localObject1 = this.entities;
+        Object localObject1 = this.mEntities;
         int j = localObject1.length;
         i = 0;
         if (i < j)
@@ -186,7 +180,7 @@ public enum C2CPlusPanelAppConfigHelper
   List<Integer> getManageConfigIds()
   {
     ArrayList localArrayList = new ArrayList();
-    PlusPanelAppInfo[] arrayOfPlusPanelAppInfo = this.entities;
+    PlusPanelAppInfo[] arrayOfPlusPanelAppInfo = this.mEntities;
     int j = arrayOfPlusPanelAppInfo.length;
     int i = 0;
     while (i < j)
@@ -202,7 +196,7 @@ public enum C2CPlusPanelAppConfigHelper
   
   public String getRedDotID(int paramInt)
   {
-    PlusPanelAppInfo[] arrayOfPlusPanelAppInfo = this.entities;
+    PlusPanelAppInfo[] arrayOfPlusPanelAppInfo = this.mEntities;
     int j = arrayOfPlusPanelAppInfo.length;
     int i = 0;
     while (i < j)
@@ -219,8 +213,12 @@ public enum C2CPlusPanelAppConfigHelper
   List<PlusPanelAppInfo> sortAndFilterAioAppInfo()
   {
     SparseIntArray localSparseIntArray = getAppInfoOrder();
-    ArrayList localArrayList = new ArrayList(Arrays.asList(this.entities));
-    Iterator localIterator = localArrayList.iterator();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("sortAndFilterAioAppInfo orders: ");
+    ((StringBuilder)localObject).append(localSparseIntArray);
+    QLog.d("PlusPanelHelper", 1, ((StringBuilder)localObject).toString());
+    localObject = new ArrayList(Arrays.asList(this.mEntities));
+    Iterator localIterator = ((List)localObject).iterator();
     while (localIterator.hasNext())
     {
       PlusPanelAppInfo localPlusPanelAppInfo = (PlusPanelAppInfo)localIterator.next();
@@ -238,13 +236,13 @@ public enum C2CPlusPanelAppConfigHelper
         }
       }
     }
-    Collections.sort(localArrayList);
-    return localArrayList;
+    Collections.sort((List)localObject);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.C2CPlusPanelAppConfigHelper
  * JD-Core Version:    0.7.0.1
  */

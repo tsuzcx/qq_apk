@@ -14,49 +14,54 @@ public class ScenesRecommendItem
   
   public String a()
   {
-    if (this.a == null) {
+    ScenesRecommendItem.ScenesRecConfigItem localScenesRecConfigItem = this.a;
+    if (localScenesRecConfigItem == null) {
       return "";
     }
-    return this.a.jdField_a_of_type_JavaLangString;
+    return localScenesRecConfigItem.jdField_a_of_type_JavaLangString;
   }
   
   public List<String> a()
   {
-    if (this.a == null) {
+    ScenesRecommendItem.ScenesRecConfigItem localScenesRecConfigItem = this.a;
+    if (localScenesRecConfigItem == null) {
       return null;
     }
-    return this.a.jdField_a_of_type_JavaUtilList;
+    return localScenesRecConfigItem.jdField_a_of_type_JavaUtilList;
   }
   
   public void a(JSONObject paramJSONObject) {}
   
   public String b()
   {
-    if (this.a == null) {
+    ScenesRecommendItem.ScenesRecConfigItem localScenesRecConfigItem = this.a;
+    if (localScenesRecConfigItem == null) {
       return "";
     }
-    return this.a.b;
+    return localScenesRecConfigItem.b;
   }
   
   public String c()
   {
-    if (this.a == null) {
+    ScenesRecommendItem.ScenesRecConfigItem localScenesRecConfigItem = this.a;
+    if (localScenesRecConfigItem == null) {
       return "";
     }
-    return this.a.c;
+    return localScenesRecConfigItem.c;
   }
   
   public String d()
   {
-    if (this.a == null) {
+    ScenesRecommendItem.ScenesRecConfigItem localScenesRecConfigItem = this.a;
+    if (localScenesRecConfigItem == null) {
       return "";
     }
-    return this.a.d;
+    return localScenesRecConfigItem.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.scenesrecommend.ScenesRecommendItem
  * JD-Core Version:    0.7.0.1
  */

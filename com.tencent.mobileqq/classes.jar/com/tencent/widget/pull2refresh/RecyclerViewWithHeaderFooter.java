@@ -17,61 +17,68 @@ import java.util.List;
 public class RecyclerViewWithHeaderFooter
   extends RecyclerViewCompat
 {
-  private RecyclerViewHeaderViewAdapter.ContentDataObserver jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewHeaderViewAdapter$ContentDataObserver;
-  private RecyclerViewHeaderViewAdapter.OnBindHeaderObserver jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewHeaderViewAdapter$OnBindHeaderObserver;
-  private final List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
-  public boolean a;
-  private final List<View> b = new ArrayList();
+  private RecyclerViewHeaderViewAdapter.ContentDataObserver contentDataObserver;
+  private final List<View> mFooters = new ArrayList();
+  private final List<View> mHeaders = new ArrayList();
+  public boolean mInterceptTouchEvent = false;
+  private RecyclerViewHeaderViewAdapter.OnBindHeaderObserver onBindHeaderObserver;
   
   public RecyclerViewWithHeaderFooter(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = false;
   }
   
   public RecyclerViewWithHeaderFooter(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = false;
   }
   
   public RecyclerViewWithHeaderFooter(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Boolean = false;
   }
   
-  public void a(View paramView)
+  public void addFooterView(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramView);
+    this.mFooters.add(paramView);
   }
   
-  public boolean a(View paramView)
+  public void addHeaderView(View paramView)
   {
-    return this.jdField_a_of_type_JavaUtilList.contains(paramView);
+    this.mHeaders.add(paramView);
   }
   
-  public void b(View paramView)
+  public RecyclerViewHeaderViewAdapter.ContentDataObserver getContentDataObserver()
   {
-    this.jdField_a_of_type_JavaUtilList.remove(paramView);
+    return this.contentDataObserver;
   }
   
-  public int c()
+  public int getFooterViewsCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
+    List localList = this.mFooters;
+    if (localList != null) {
+      return localList.size();
     }
     return 0;
   }
   
-  public void c(View paramView)
+  public int getHeaderViewsCount()
   {
-    this.b.add(paramView);
+    List localList = this.mHeaders;
+    if (localList != null) {
+      return localList.size();
+    }
+    return 0;
+  }
+  
+  public boolean hasHeader(View paramView)
+  {
+    return this.mHeaders.contains(paramView);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.mInterceptTouchEvent)
     {
       super.onInterceptTouchEvent(paramMotionEvent);
       return true;
@@ -81,34 +88,44 @@ public class RecyclerViewWithHeaderFooter
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.mInterceptTouchEvent)
     {
       if (paramMotionEvent.getAction() == 1) {
-        this.jdField_a_of_type_Boolean = false;
+        this.mInterceptTouchEvent = false;
       }
       return true;
     }
     return super.onTouchEvent(paramMotionEvent);
   }
   
+  public void removeFooterView(View paramView)
+  {
+    this.mFooters.remove(paramView);
+  }
+  
+  public void removeHeaderView(View paramView)
+  {
+    this.mHeaders.remove(paramView);
+  }
+  
   public void setAdapter(RecyclerView.Adapter paramAdapter)
   {
     Object localObject;
-    if (this.jdField_a_of_type_JavaUtilList.size() <= 0)
+    if (this.mHeaders.size() <= 0)
     {
       localObject = paramAdapter;
-      if (this.b.size() <= 0) {}
+      if (this.mFooters.size() <= 0) {}
     }
     else
     {
       localObject = new RecyclerViewHeaderViewAdapter(paramAdapter);
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.mHeaders.iterator();
       while (localIterator.hasNext()) {
-        ((RecyclerViewHeaderViewAdapter)localObject).a((View)localIterator.next());
+        ((RecyclerViewHeaderViewAdapter)localObject).addHeader((View)localIterator.next());
       }
-      localIterator = this.b.iterator();
+      localIterator = this.mFooters.iterator();
       while (localIterator.hasNext()) {
-        ((RecyclerViewHeaderViewAdapter)localObject).c((View)localIterator.next());
+        ((RecyclerViewHeaderViewAdapter)localObject).addFooter((View)localIterator.next());
       }
       ((RecyclerViewHeaderViewAdapter)localObject).setHasStableIds(paramAdapter.hasStableIds());
       if ((getLayoutManager() instanceof GridLayoutManager))
@@ -116,14 +133,26 @@ public class RecyclerViewWithHeaderFooter
         paramAdapter = (GridLayoutManager)getLayoutManager();
         paramAdapter.setSpanSizeLookup(new HeaderSpanSizeLookup((RecyclerViewHeaderViewAdapter)localObject, paramAdapter));
       }
-      if (this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewHeaderViewAdapter$ContentDataObserver != null) {
-        ((RecyclerViewHeaderViewAdapter)localObject).a(this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewHeaderViewAdapter$ContentDataObserver);
+      paramAdapter = this.contentDataObserver;
+      if (paramAdapter != null) {
+        ((RecyclerViewHeaderViewAdapter)localObject).setContentDataObserver(paramAdapter);
       }
-      if (this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewHeaderViewAdapter$OnBindHeaderObserver != null) {
-        ((RecyclerViewHeaderViewAdapter)localObject).a(this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewHeaderViewAdapter$OnBindHeaderObserver);
+      paramAdapter = this.onBindHeaderObserver;
+      if (paramAdapter != null) {
+        ((RecyclerViewHeaderViewAdapter)localObject).setOnBindHeaderObserver(paramAdapter);
       }
     }
     super.setAdapter((RecyclerView.Adapter)localObject);
+  }
+  
+  public RecyclerViewWithHeaderFooter setContentDataObserver(RecyclerViewHeaderViewAdapter.ContentDataObserver paramContentDataObserver)
+  {
+    this.contentDataObserver = paramContentDataObserver;
+    RecyclerView.Adapter localAdapter = getAdapter();
+    if ((localAdapter != null) && ((localAdapter instanceof RecyclerViewHeaderViewAdapter))) {
+      ((RecyclerViewHeaderViewAdapter)localAdapter).setContentDataObserver(paramContentDataObserver);
+    }
+    return this;
   }
   
   public void setLayoutManager(RecyclerView.LayoutManager paramLayoutManager)
@@ -136,7 +165,7 @@ public class RecyclerViewWithHeaderFooter
       {
         paramLayoutManager = (GridLayoutManager)getLayoutManager();
         localObject = new HeaderSpanSizeLookup((RecyclerViewHeaderViewAdapter)localObject, paramLayoutManager);
-        ((HeaderSpanSizeLookup)localObject).a(paramLayoutManager.getSpanSizeLookup());
+        ((HeaderSpanSizeLookup)localObject).setSpanSizeLookup(paramLayoutManager.getSpanSizeLookup());
         paramLayoutManager.setSpanSizeLookup((GridLayoutManager.SpanSizeLookup)localObject);
       }
     }
@@ -144,9 +173,9 @@ public class RecyclerViewWithHeaderFooter
   
   public void setOnBindHeaderObserver(RecyclerViewHeaderViewAdapter.OnBindHeaderObserver paramOnBindHeaderObserver)
   {
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewHeaderViewAdapter$OnBindHeaderObserver = paramOnBindHeaderObserver;
+    this.onBindHeaderObserver = paramOnBindHeaderObserver;
     if ((getAdapter() instanceof RecyclerViewHeaderViewAdapter)) {
-      ((RecyclerViewHeaderViewAdapter)getAdapter()).a(paramOnBindHeaderObserver);
+      ((RecyclerViewHeaderViewAdapter)getAdapter()).setOnBindHeaderObserver(paramOnBindHeaderObserver);
     }
   }
   
@@ -157,7 +186,7 @@ public class RecyclerViewWithHeaderFooter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter
  * JD-Core Version:    0.7.0.1
  */

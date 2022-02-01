@@ -40,9 +40,10 @@ public class StoryBoss
   
   public StoryBoss(Context paramContext)
   {
-    this.jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor[0] = this.jdField_a_of_type_JavaUtilConcurrentExecutor;
-    this.jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor[1] = this.jdField_b_of_type_JavaUtilConcurrentExecutor;
-    this.jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor[2] = this.jdField_c_of_type_JavaUtilConcurrentExecutor;
+    paramContext = this.jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor;
+    paramContext[0] = this.jdField_a_of_type_JavaUtilConcurrentExecutor;
+    paramContext[1] = this.jdField_b_of_type_JavaUtilConcurrentExecutor;
+    paramContext[2] = this.jdField_c_of_type_JavaUtilConcurrentExecutor;
     this.jdField_a_of_type_ComTribeAsyncAsyncLightWeightExecutor = new LightWeightExecutor(StoryDispatcher.a().getDefaultLooper(), 100);
     this.jdField_a_of_type_ComTribeAsyncAsyncLightWeightExecutor.setMonitorListener(this);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(StoryDispatcher.a().getDefaultLooper());
@@ -68,8 +69,12 @@ public class StoryBoss
   {
     paramJob = prepareWorker(paramJob, paramJob.getJobType(), paramFutureListener, paramParams);
     this.jdField_a_of_type_ComTribeAsyncAsyncJobController.getDefaultHandler().handleExecute(this.jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor, paramJob);
-    if (paramJob != null) {
-      SLog.b("StoryBoss", "work hash code:" + paramJob.hashCode());
+    if (paramJob != null)
+    {
+      paramFutureListener = new StringBuilder();
+      paramFutureListener.append("work hash code:");
+      paramFutureListener.append(paramJob.hashCode());
+      SLog.b("StoryBoss", paramFutureListener.toString());
     }
     return paramJob;
   }
@@ -85,19 +90,24 @@ public class StoryBoss
   @NonNull
   public Executor getExecutor(int paramInt)
   {
-    Executor localExecutor = this.jdField_b_of_type_JavaUtilConcurrentExecutor;
-    switch (paramInt)
+    Executor localExecutor2 = this.jdField_b_of_type_JavaUtilConcurrentExecutor;
+    Executor localExecutor1 = localExecutor2;
+    if (paramInt != 2)
     {
-    default: 
-      return localExecutor;
-    case 2: 
-      return this.jdField_b_of_type_JavaUtilConcurrentExecutor;
-    case 4: 
-      return this.jdField_c_of_type_JavaUtilConcurrentExecutor;
-    case 8: 
-      return this.jdField_c_of_type_JavaUtilConcurrentExecutor;
+      if (paramInt != 4)
+      {
+        if (paramInt != 8)
+        {
+          if (paramInt != 16) {
+            return localExecutor2;
+          }
+          return this.jdField_a_of_type_JavaUtilConcurrentExecutor;
+        }
+        return this.jdField_c_of_type_JavaUtilConcurrentExecutor;
+      }
+      localExecutor1 = this.jdField_c_of_type_JavaUtilConcurrentExecutor;
     }
-    return this.jdField_a_of_type_JavaUtilConcurrentExecutor;
+    return localExecutor1;
   }
   
   @NonNull
@@ -120,7 +130,11 @@ public class StoryBoss
   
   public void onQueueExceedLimit(String paramString, int paramInt)
   {
-    SLog.e("StoryBoss", paramString + " onQueueExceedLimit, size = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" onQueueExceedLimit, size = ");
+    localStringBuilder.append(paramInt);
+    SLog.e("StoryBoss", localStringBuilder.toString());
     if (SystemClock.uptimeMillis() - this.jdField_b_of_type_Long > 7200000L) {
       this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
     }
@@ -129,25 +143,21 @@ public class StoryBoss
   public void onWorkerExceedTime(String paramString, List<Runnable> paramList, int paramInt)
   {
     Iterator localIterator = paramList.iterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
-      Runnable localRunnable = (Runnable)localIterator.next();
-      paramList = localRunnable.getClass().getSimpleName();
-      if (!(localRunnable instanceof Worker)) {
-        break label116;
+      Object localObject = (Runnable)localIterator.next();
+      paramList = localObject.getClass().getSimpleName();
+      if ((localObject instanceof Worker)) {
+        paramList = ((Worker)localObject).getJob().getClass().getSimpleName();
       }
-      paramList = ((Worker)localRunnable).getJob().getClass().getSimpleName();
-    }
-    label116:
-    for (;;)
-    {
-      SLog.e("StoryBoss", paramString + " onWorkerExceedTime, runnable = " + paramList);
-      if (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long <= 7200000L) {
-        break;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" onWorkerExceedTime, runnable = ");
+      ((StringBuilder)localObject).append(paramList);
+      SLog.e("StoryBoss", ((StringBuilder)localObject).toString());
+      if (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long > 7200000L) {
+        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
       }
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      break;
-      return;
     }
   }
   
@@ -182,7 +192,7 @@ public class StoryBoss
   @NonNull
   public <Params, Progress, Result> Worker<Progress, Result> prepareWorker(Job<Params, Progress, Result> paramJob, int paramInt, @Nullable FutureListener<Progress, Result> paramFutureListener, @Nullable Params paramParams)
   {
-    AssertUtils.a(paramJob);
+    AssertUtils.checkNotNull(paramJob);
     paramJob.setJobType(paramInt);
     paramJob.setParams(paramParams);
     paramParams = new Worker(paramJob);
@@ -233,7 +243,7 @@ public class StoryBoss
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.StoryBoss
  * JD-Core Version:    0.7.0.1
  */

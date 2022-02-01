@@ -7,74 +7,68 @@ public final class g
 {
   public static String getAndroidIdMD5Digest(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    if (!TextUtils.isEmpty(paramString))
     {
-      paramString = null;
-      String str;
-      do
+      paramString = d.md5(paramString, "UTF-8");
+      if (!TextUtils.isEmpty(paramString))
       {
-        return paramString;
-        paramString = d.md5(paramString, "UTF-8");
-        if (TextUtils.isEmpty(paramString)) {
-          break;
-        }
-        str = paramString.toLowerCase();
+        String str = paramString.toLowerCase();
         paramString = str;
-      } while (!TextUtils.isEmpty(str));
+        if (!TextUtils.isEmpty(str)) {
+          return paramString;
+        }
+      }
     }
+    paramString = null;
+    return paramString;
   }
   
   public static String getDeviceIdMD5Digest(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    if (!TextUtils.isEmpty(paramString))
     {
-      paramString = null;
-      String str;
-      do
+      paramString = paramString.toLowerCase();
+      if (!TextUtils.isEmpty(paramString))
       {
-        return paramString;
-        paramString = paramString.toLowerCase();
-        if (TextUtils.isEmpty(paramString)) {
-          break;
-        }
         paramString = d.md5(paramString, "UTF-8");
-        if (TextUtils.isEmpty(paramString)) {
-          break;
+        if (!TextUtils.isEmpty(paramString))
+        {
+          String str = paramString.toLowerCase();
+          paramString = str;
+          if (!TextUtils.isEmpty(str)) {
+            return paramString;
+          }
         }
-        str = paramString.toLowerCase();
-        paramString = str;
-      } while (!TextUtils.isEmpty(str));
+      }
     }
+    paramString = null;
+    return paramString;
   }
   
   public static String getMacAddressMD5Digest(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    if (!TextUtils.isEmpty(paramString))
     {
-      paramString = null;
-      String str;
-      do
+      paramString = paramString.replaceAll(":", "");
+      if (!TextUtils.isEmpty(paramString))
       {
-        return paramString;
-        paramString = paramString.replaceAll(":", "");
-        if (TextUtils.isEmpty(paramString)) {
-          break;
-        }
         paramString = paramString.toUpperCase();
-        if (TextUtils.isEmpty(paramString)) {
-          break;
+        if (!TextUtils.isEmpty(paramString))
+        {
+          paramString = d.md5(paramString, "UTF-8");
+          if (!TextUtils.isEmpty(paramString))
+          {
+            String str = paramString.toLowerCase();
+            paramString = str;
+            if (!TextUtils.isEmpty(str)) {
+              return paramString;
+            }
+          }
         }
-        paramString = d.md5(paramString, "UTF-8");
-        if (TextUtils.isEmpty(paramString)) {
-          break;
-        }
-        str = paramString.toLowerCase();
-        paramString = str;
-      } while (!TextUtils.isEmpty(str));
+      }
     }
+    paramString = null;
+    return paramString;
   }
 }
 

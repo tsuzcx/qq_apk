@@ -25,44 +25,51 @@ public final class RecentTabHaloPresenter$ReadStoryVideoEventReceiver
   
   private void b(RecentTabHaloPresenter paramRecentTabHaloPresenter, ReadStoryVideoEvent paramReadStoryVideoEvent)
   {
-    Object localObject = ((MsgTabStoryManager)RecentTabHaloPresenter.a(paramRecentTabHaloPresenter).getManager(QQManagerFactory.MSG_TAB_STORY_MANAGER)).a().a(3, "");
-    if ((localObject != null) && (paramReadStoryVideoEvent.b.equals(((MsgTabNodeInfo)localObject).e))) {
-      if (QLog.isColorLevel()) {
-        QLog.i(this.TAG, 2, "onEvent: invoked. Message: guideInfo: " + localObject);
-      }
-    }
-    MsgTabNodeInfo localMsgTabNodeInfo;
-    do
+    Object localObject1 = ((MsgTabStoryManager)RecentTabHaloPresenter.a(paramRecentTabHaloPresenter).getManager(QQManagerFactory.MSG_TAB_STORY_MANAGER)).a().a(3, "");
+    if ((localObject1 != null) && (paramReadStoryVideoEvent.b.equals(((MsgTabNodeInfo)localObject1).e)))
     {
+      if (QLog.isColorLevel())
+      {
+        paramRecentTabHaloPresenter = this.TAG;
+        paramReadStoryVideoEvent = new StringBuilder();
+        paramReadStoryVideoEvent.append("onEvent: invoked. Message: guideInfo: ");
+        paramReadStoryVideoEvent.append(localObject1);
+        QLog.i(paramRecentTabHaloPresenter, 2, paramReadStoryVideoEvent.toString());
+      }
       return;
-      localObject = (StoryHaloManager)RecentTabHaloPresenter.a(paramRecentTabHaloPresenter).getManager(QQManagerFactory.STORY_HALO_MANAGER);
-      localMsgTabNodeInfo = ((StoryHaloManager)localObject).b(paramReadStoryVideoEvent.jdField_a_of_type_JavaLangString);
-      if (QLog.isColorLevel()) {
-        QLog.i(this.TAG, 2, "syncHaloReadStatus: invoked. Message: haloNodeInfo: " + localMsgTabNodeInfo + "\nmanager: " + localObject);
-      }
-    } while (localMsgTabNodeInfo == null);
-    int i = localMsgTabNodeInfo.a.size() - 1;
-    for (;;)
+    }
+    localObject1 = (StoryHaloManager)RecentTabHaloPresenter.a(paramRecentTabHaloPresenter).getManager(QQManagerFactory.STORY_HALO_MANAGER);
+    MsgTabNodeInfo localMsgTabNodeInfo = ((StoryHaloManager)localObject1).b(paramReadStoryVideoEvent.jdField_a_of_type_JavaLangString);
+    Object localObject2;
+    if (QLog.isColorLevel())
     {
-      if (i >= 0)
+      localObject2 = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("syncHaloReadStatus: invoked. Message: haloNodeInfo: ");
+      localStringBuilder.append(localMsgTabNodeInfo);
+      localStringBuilder.append("\nmanager: ");
+      localStringBuilder.append(localObject1);
+      QLog.i((String)localObject2, 2, localStringBuilder.toString());
+    }
+    if (localMsgTabNodeInfo == null) {
+      return;
+    }
+    int i = localMsgTabNodeInfo.a.size() - 1;
+    while (i >= 0)
+    {
+      localObject2 = (MsgTabNodeVideoInfo)localMsgTabNodeInfo.a.get(i);
+      if ((((MsgTabNodeVideoInfo)localObject2).jdField_a_of_type_Long == paramReadStoryVideoEvent.jdField_a_of_type_Long) && (!((MsgTabNodeVideoInfo)localObject2).jdField_a_of_type_Boolean))
       {
-        MsgTabNodeVideoInfo localMsgTabNodeVideoInfo = (MsgTabNodeVideoInfo)localMsgTabNodeInfo.a.get(i);
-        if ((localMsgTabNodeVideoInfo.jdField_a_of_type_Long == paramReadStoryVideoEvent.jdField_a_of_type_Long) && (!localMsgTabNodeVideoInfo.jdField_a_of_type_Boolean))
-        {
-          localMsgTabNodeVideoInfo.jdField_a_of_type_Boolean = true;
-          localMsgTabNodeInfo.b -= 1;
-        }
-      }
-      else
-      {
-        ((StoryHaloManager)localObject).c(localMsgTabNodeInfo);
-        ((StoryHaloManager)localObject).b(localMsgTabNodeInfo);
-        paramRecentTabHaloPresenter = new RecentTabHaloPresenter.ReadStoryVideoEventReceiver.2(this, paramRecentTabHaloPresenter);
-        ThreadManager.getUIHandler().post(paramRecentTabHaloPresenter);
-        return;
+        ((MsgTabNodeVideoInfo)localObject2).jdField_a_of_type_Boolean = true;
+        localMsgTabNodeInfo.b -= 1;
+        break;
       }
       i -= 1;
     }
+    ((StoryHaloManager)localObject1).c(localMsgTabNodeInfo);
+    ((StoryHaloManager)localObject1).b(localMsgTabNodeInfo);
+    paramRecentTabHaloPresenter = new RecentTabHaloPresenter.ReadStoryVideoEventReceiver.2(this, paramRecentTabHaloPresenter);
+    ThreadManager.getUIHandler().post(paramRecentTabHaloPresenter);
   }
   
   public void a(@NonNull RecentTabHaloPresenter paramRecentTabHaloPresenter, @NonNull ReadStoryVideoEvent paramReadStoryVideoEvent)
@@ -77,7 +84,7 @@ public final class RecentTabHaloPresenter$ReadStoryVideoEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter.ReadStoryVideoEventReceiver
  * JD-Core Version:    0.7.0.1
  */

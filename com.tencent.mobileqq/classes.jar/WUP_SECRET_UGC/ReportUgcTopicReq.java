@@ -32,21 +32,24 @@ public final class ReportUgcTopicReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.uid != null) {
-      paramJceOutputStream.write(this.uid, 0);
+    String str = this.uid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.ugc_id != null) {
-      paramJceOutputStream.write(this.ugc_id, 1);
+    str = this.ugc_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.content != null) {
-      paramJceOutputStream.write(this.content, 2);
+    str = this.content;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.time, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     WUP_SECRET_UGC.ReportUgcTopicReq
  * JD-Core Version:    0.7.0.1
  */

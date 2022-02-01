@@ -11,28 +11,30 @@ public class SlideShowStoryConfigBean
   
   public static SlideShowStoryConfigBean a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      try
-      {
-        SlideShowStoryConfigBean localSlideShowStoryConfigBean = new SlideShowStoryConfigBean();
-        paramString = new JSONObject(paramString);
-        if (paramString.has("contents")) {
-          localSlideShowStoryConfigBean.a = paramString.getJSONArray("contents").toString();
-        }
-        return localSlideShowStoryConfigBean;
+    }
+    try
+    {
+      SlideShowStoryConfigBean localSlideShowStoryConfigBean = new SlideShowStoryConfigBean();
+      paramString = new JSONObject(paramString);
+      if (paramString.has("contents")) {
+        localSlideShowStoryConfigBean.a = paramString.getJSONArray("contents").toString();
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("SlideShowStoryConfigBean", 2, paramString.getMessage());
+      return localSlideShowStoryConfigBean;
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SlideShowStoryConfigBean", 2, paramString.getMessage());
+      }
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.SlideShowStoryConfigBean
  * JD-Core Version:    0.7.0.1
  */

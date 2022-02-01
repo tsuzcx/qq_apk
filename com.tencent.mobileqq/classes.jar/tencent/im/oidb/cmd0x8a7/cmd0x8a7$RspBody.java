@@ -21,14 +21,16 @@ public final class cmd0x8a7$RspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Boolean localBoolean = Boolean.valueOf(false);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48 }, new String[] { "bool_can_at_all", "uint32_remain_at_all_count_for_uin", "uint32_remain_at_all_count_for_group", "bytes_prompt_msg_1", "bytes_prompt_msg_2", "bool_show_at_all_lable" }, new Object[] { Boolean.valueOf(false), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Boolean.valueOf(false) }, RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48 }, new String[] { "bool_can_at_all", "uint32_remain_at_all_count_for_uin", "uint32_remain_at_all_count_for_group", "bytes_prompt_msg_1", "bytes_prompt_msg_2", "bool_show_at_all_lable" }, new Object[] { localBoolean, localInteger, localInteger, localByteStringMicro1, localByteStringMicro2, localBoolean }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8a7.cmd0x8a7.RspBody
  * JD-Core Version:    0.7.0.1
  */

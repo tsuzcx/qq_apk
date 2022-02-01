@@ -26,9 +26,10 @@ public abstract class MsgProcessRichMedia<T extends MessageRecord>
   {
     MsgBackupResEntity localMsgBackupResEntity = new MsgBackupResEntity();
     localMsgBackupResEntity.msgType = a();
-    if (this.b != null)
+    MessageRecord localMessageRecord = this.b;
+    if (localMessageRecord != null)
     {
-      MsgBackupUtil.a(this.b, localMsgBackupResEntity);
+      MsgBackupUtil.a(localMessageRecord, localMsgBackupResEntity);
       return localMsgBackupResEntity;
     }
     MsgBackupUtil.a(this.a, localMsgBackupResEntity);
@@ -42,7 +43,11 @@ public abstract class MsgProcessRichMedia<T extends MessageRecord>
       paramMap = new JSONObject(paramMap).toString();
       return paramMap;
     }
-    catch (Exception paramMap) {}
+    catch (Exception paramMap)
+    {
+      label14:
+      break label14;
+    }
     return null;
   }
   
@@ -86,7 +91,7 @@ public abstract class MsgProcessRichMedia<T extends MessageRecord>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.msgprocess.MsgProcessRichMedia
  * JD-Core Version:    0.7.0.1
  */

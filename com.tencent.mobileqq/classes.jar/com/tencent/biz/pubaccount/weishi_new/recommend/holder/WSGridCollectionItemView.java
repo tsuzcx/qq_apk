@@ -33,73 +33,68 @@ public class WSGridCollectionItemView
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendHolderWSGridCollectionHolder = paramWSGridCollectionHolder;
     this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView);
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    d();
+    b();
   }
   
   private void a(int paramInt1, int paramInt2, ArrayList<stCollection> paramArrayList)
   {
     int j = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendHolderWSGridCollectionHolder.getLayoutPosition();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter != null) {}
-    for (String str = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.a;; str = "")
+    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter;
+    if (localObject != null) {
+      localObject = ((WSRecommendAdapter)localObject).a;
+    } else {
+      localObject = "";
+    }
+    int i = 0;
+    while (i < paramInt2)
     {
-      int i = 0;
-      while (i < paramInt2)
+      WSCollectionItemData localWSCollectionItemData = new WSCollectionItemData((stCollection)paramArrayList.get(i), paramInt1);
+      WSGridFeedCollectionController localWSGridFeedCollectionController2 = (WSGridFeedCollectionController)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+      WSGridFeedCollectionController localWSGridFeedCollectionController1 = localWSGridFeedCollectionController2;
+      if (localWSGridFeedCollectionController2 == null)
       {
-        WSCollectionItemData localWSCollectionItemData = new WSCollectionItemData((stCollection)paramArrayList.get(i), paramInt1);
-        WSGridFeedCollectionController localWSGridFeedCollectionController2 = (WSGridFeedCollectionController)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-        WSGridFeedCollectionController localWSGridFeedCollectionController1 = localWSGridFeedCollectionController2;
-        if (localWSGridFeedCollectionController2 == null)
-        {
-          localWSGridFeedCollectionController1 = new WSGridFeedCollectionController(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
-          this.jdField_a_of_type_AndroidUtilSparseArray.append(i, localWSGridFeedCollectionController1);
-        }
-        localWSGridFeedCollectionController1.b(j);
-        localWSGridFeedCollectionController1.a(this.jdField_a_of_type_AndroidViewViewGroup);
-        localWSGridFeedCollectionController1.c(i);
-        localWSGridFeedCollectionController1.a(str);
-        localWSGridFeedCollectionController1.a(localWSCollectionItemData);
-        i += 1;
+        localWSGridFeedCollectionController1 = new WSGridFeedCollectionController(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+        this.jdField_a_of_type_AndroidUtilSparseArray.append(i, localWSGridFeedCollectionController1);
       }
-      return;
-    }
-  }
-  
-  private void d(int paramInt)
-  {
-    int i = paramInt;
-    if (paramInt + 1 >= this.jdField_a_of_type_AndroidUtilSparseArray.size()) {
-      return;
-    }
-    label16:
-    WSGridFeedCollectionController localWSGridFeedCollectionController;
-    if (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
-    {
-      localWSGridFeedCollectionController = (WSGridFeedCollectionController)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-      if (localWSGridFeedCollectionController != null) {
-        break label50;
-      }
-    }
-    for (;;)
-    {
+      localWSGridFeedCollectionController1.b(j);
+      localWSGridFeedCollectionController1.a(this.jdField_a_of_type_AndroidViewViewGroup);
+      localWSGridFeedCollectionController1.c(i);
+      localWSGridFeedCollectionController1.a((String)localObject);
+      localWSGridFeedCollectionController1.a(localWSCollectionItemData);
       i += 1;
-      break label16;
-      break;
-      label50:
-      localWSGridFeedCollectionController.e();
     }
   }
   
   private void e()
   {
     stCardInfo localstCardInfo = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.cardInfo;
-    Object localObject = localstCardInfo.collectionCardInfo;
-    WSLog.a("WSGridCollectionItemView", "setData :" + ((stCollectionCardInfo)localObject).toString());
-    String str = ((stCollectionCardInfo)localObject).title;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-    localObject = ((stCollectionCardInfo)localObject).collectionList;
-    int i = Math.min(((ArrayList)localObject).size(), 5);
-    a(localstCardInfo.cardType, i, (ArrayList)localObject);
-    d(i);
+    Object localObject1 = localstCardInfo.collectionCardInfo;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("setData :");
+    ((StringBuilder)localObject2).append(((stCollectionCardInfo)localObject1).toString());
+    WSLog.a("WSGridCollectionItemView", ((StringBuilder)localObject2).toString());
+    localObject2 = ((stCollectionCardInfo)localObject1).title;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
+    localObject1 = ((stCollectionCardInfo)localObject1).collectionList;
+    int i = Math.min(((ArrayList)localObject1).size(), 5);
+    a(localstCardInfo.cardType, i, (ArrayList)localObject1);
+    e(i);
+  }
+  
+  private void e(int paramInt)
+  {
+    int i = paramInt;
+    if (paramInt + 1 >= this.jdField_a_of_type_AndroidUtilSparseArray.size()) {
+      return;
+    }
+    while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+    {
+      WSGridFeedCollectionController localWSGridFeedCollectionController = (WSGridFeedCollectionController)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+      if (localWSGridFeedCollectionController != null) {
+        localWSGridFeedCollectionController.e();
+      }
+      i += 1;
+    }
   }
   
   public void a() {}
@@ -117,7 +112,14 @@ public class WSGridCollectionItemView
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter = paramWSRecommendAdapter;
   }
   
-  public void b() {}
+  public void b()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("initUI:");
+    localStringBuilder.append(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+    WSLog.a("WSGridCollectionItemView", localStringBuilder.toString());
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366634));
+  }
   
   public void b(int paramInt) {}
   
@@ -125,15 +127,13 @@ public class WSGridCollectionItemView
   
   public void c(int paramInt) {}
   
-  public void d()
-  {
-    WSLog.a("WSGridCollectionItemView", "initUI:" + this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366768));
-  }
+  public void d() {}
+  
+  public void d(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.WSGridCollectionItemView
  * JD-Core Version:    0.7.0.1
  */

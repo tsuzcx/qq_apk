@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
 import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.MessageHandler;
@@ -14,6 +15,7 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.service.message.QMessagePBElemDecoder;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.structmsg.StructMsgFactory;
@@ -29,6 +31,7 @@ import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp.LongStructMessageDownResp;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp.MultiMsgDownResp;
 import com.tencent.mobileqq.transfile.protohandler.RichProtoProc;
+import com.tencent.mobileqq.transfile.report.ProcessorReport;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -37,6 +40,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -90,6 +94,7 @@ public class StructLongMessageDownloadProcessor
   public static final String REPORTTAG = "StructLongMessageDownloadProcessorForReport";
   public static final String TAG = "StructLongMessageDownloadProcessor";
   private static ConcurrentHashMap<Long, HttpNetReq> downloadList = new ConcurrentHashMap();
+  QQAppInterface app = (QQAppInterface)this.app;
   private int connectionFlag = 0;
   boolean directDownload = true;
   private int directDownloadFlag = 5;
@@ -110,21 +115,7 @@ public class StructLongMessageDownloadProcessor
   
   public static String bytesToHexString(byte[] paramArrayOfByte)
   {
-    StringBuilder localStringBuilder = new StringBuilder("");
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      return null;
-    }
-    int i = 0;
-    while (i < paramArrayOfByte.length)
-    {
-      String str = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
-      if (str.length() < 2) {
-        localStringBuilder.append(0);
-      }
-      localStringBuilder.append(str);
-      i += 1;
-    }
-    return localStringBuilder.toString();
+    return QMessagePBElemDecoder.a(paramArrayOfByte);
   }
   
   public static void cancelPALongMsgTask(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
@@ -140,8 +131,12 @@ public class StructLongMessageDownloadProcessor
         if ((paramString.equals(((BaseTransProcessor)localObject).mUiRequest.mPeerUin)) && (paramLong == ((BaseTransProcessor)localObject).mUiRequest.mUniseq))
         {
           ((BaseTransProcessor)localObject).cancel();
-          if (QLog.isColorLevel()) {
-            QLog.d("cancelpic", 2, "cancel PALongMsg:" + ((BaseTransProcessor)localObject).mUiRequest.mUniseq);
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("cancel PALongMsg:");
+            localStringBuilder.append(((BaseTransProcessor)localObject).mUiRequest.mUniseq);
+            QLog.d("cancelpic", 2, localStringBuilder.toString());
           }
         }
       }
@@ -152,58 +147,77 @@ public class StructLongMessageDownloadProcessor
   {
     synchronized (DOWN_LOAD_TRANSFER_REQUESTS)
     {
-      if ((DOWN_LOAD_TRANSFER_REQUESTS == null) || (DOWN_LOAD_TRANSFER_REQUESTS.size() == 0) || (paramQQAppInterface == null)) {
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("StructLongMessageDownloadProcessor", 2, "deleteAllTask msgid" + paramLong);
-      }
-      if ((ITransFileController)paramQQAppInterface.getRuntimeService(ITransFileController.class) != null)
+      if ((DOWN_LOAD_TRANSFER_REQUESTS != null) && (DOWN_LOAD_TRANSFER_REQUESTS.size() != 0) && (paramQQAppInterface != null))
       {
-        Iterator localIterator = DOWN_LOAD_TRANSFER_REQUESTS.iterator();
-        while (localIterator.hasNext())
+        Object localObject;
+        if (QLog.isColorLevel())
         {
-          TransferRequest localTransferRequest = (TransferRequest)localIterator.next();
-          if (localTransferRequest.mUniseq == paramLong)
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("deleteAllTask msgid");
+          ((StringBuilder)localObject).append(paramLong);
+          QLog.d("StructLongMessageDownloadProcessor", 2, ((StringBuilder)localObject).toString());
+        }
+        if ((ITransFileController)paramQQAppInterface.getRuntimeService(ITransFileController.class) != null)
+        {
+          localObject = DOWN_LOAD_TRANSFER_REQUESTS.iterator();
+          while (((Iterator)localObject).hasNext())
           {
-            cancelPALongMsgTask(paramQQAppInterface, localTransferRequest.mPeerUin, localTransferRequest.mUniseq);
-            DOWN_LOAD_TRANSFER_REQUESTS.remove(localTransferRequest);
-            doReportForDelete(false, localTransferRequest.mSelfUin, localTransferRequest.mPeerUin, localTransferRequest.mUniseq, localTransferRequest);
+            TransferRequest localTransferRequest = (TransferRequest)((Iterator)localObject).next();
+            if (localTransferRequest.mUniseq == paramLong)
+            {
+              cancelPALongMsgTask(paramQQAppInterface, localTransferRequest.mPeerUin, localTransferRequest.mUniseq);
+              DOWN_LOAD_TRANSFER_REQUESTS.remove(localTransferRequest);
+              doReportForDelete(false, localTransferRequest.mSelfUin, localTransferRequest.mPeerUin, localTransferRequest.mUniseq, localTransferRequest);
+            }
           }
         }
+        return;
       }
       return;
+    }
+    for (;;)
+    {
+      throw paramQQAppInterface;
     }
   }
   
   public static void deleteTask(QQAppInterface paramQQAppInterface, String paramString)
   {
-    ArrayList localArrayList2;
     synchronized (DOWN_LOAD_TRANSFER_REQUESTS)
     {
-      if ((DOWN_LOAD_TRANSFER_REQUESTS == null) || (DOWN_LOAD_TRANSFER_REQUESTS.size() == 0) || (paramString == null) || (paramQQAppInterface == null)) {
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("StructLongMessageDownloadProcessor", 2, "deleteAllTask uin" + paramString);
-      }
-      localArrayList2 = new ArrayList();
-      if ((ITransFileController)paramQQAppInterface.getRuntimeService(ITransFileController.class) != null)
+      if ((DOWN_LOAD_TRANSFER_REQUESTS != null) && (DOWN_LOAD_TRANSFER_REQUESTS.size() != 0) && (paramString != null) && (paramQQAppInterface != null))
       {
-        Iterator localIterator = DOWN_LOAD_TRANSFER_REQUESTS.iterator();
-        while (localIterator.hasNext())
+        if (QLog.isColorLevel())
         {
-          TransferRequest localTransferRequest = (TransferRequest)localIterator.next();
-          if (paramString.equalsIgnoreCase(localTransferRequest.mPeerUin))
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("deleteAllTask uin");
+          ((StringBuilder)localObject).append(paramString);
+          QLog.d("StructLongMessageDownloadProcessor", 2, ((StringBuilder)localObject).toString());
+        }
+        Object localObject = new ArrayList();
+        if ((ITransFileController)paramQQAppInterface.getRuntimeService(ITransFileController.class) != null)
+        {
+          Iterator localIterator = DOWN_LOAD_TRANSFER_REQUESTS.iterator();
+          while (localIterator.hasNext())
           {
-            cancelPALongMsgTask(paramQQAppInterface, localTransferRequest.mPeerUin, localTransferRequest.mUniseq);
-            localArrayList2.add(localTransferRequest);
-            doReportForDelete(true, localTransferRequest.mSelfUin, localTransferRequest.mPeerUin, localTransferRequest.mUniseq, localTransferRequest);
+            TransferRequest localTransferRequest = (TransferRequest)localIterator.next();
+            if (paramString.equalsIgnoreCase(localTransferRequest.mPeerUin))
+            {
+              cancelPALongMsgTask(paramQQAppInterface, localTransferRequest.mPeerUin, localTransferRequest.mUniseq);
+              ((ArrayList)localObject).add(localTransferRequest);
+              doReportForDelete(true, localTransferRequest.mSelfUin, localTransferRequest.mPeerUin, localTransferRequest.mUniseq, localTransferRequest);
+            }
           }
         }
+        DOWN_LOAD_TRANSFER_REQUESTS.removeAll((Collection)localObject);
+        return;
       }
+      return;
     }
-    DOWN_LOAD_TRANSFER_REQUESTS.removeAll(localArrayList2);
+    for (;;)
+    {
+      throw paramQQAppInterface;
+    }
   }
   
   private boolean directDownloadIfCan()
@@ -211,76 +225,101 @@ public class StructLongMessageDownloadProcessor
     this.directDownload = true;
     this.directDownloadFlag = 5;
     MessageRecord localMessageRecord = this.mUiRequest.mRec;
-    if (localMessageRecord == null) {}
-    do
-    {
+    if (localMessageRecord == null) {
       return false;
-      localObject = localMessageRecord.getExtInfoFromExtStr("pub_long_msg_url");
-      str1 = localMessageRecord.getExtInfoFromExtStr("pub_long_msg_download_key");
-      this.selfUin = localMessageRecord.selfuin;
-      this.pUin = localMessageRecord.frienduin;
-    } while ((localObject == null) || ("".equals(localObject)) || (str1 == null) || ("".equals(str1)));
-    String str2 = (String)localObject + "&rkey=" + str1;
-    String str1 = FMTSrvAddrProvider.getInstance().getSrvAddrForPttDownload();
-    Object localObject = str1;
-    if (str1 == null)
-    {
-      localObject = FMTSrvAddrProvider.getInstance().getLongMsgIpSaver().getIp();
-      this.directDownloadFlag = 10;
-      this.connectionFlag = FMTSrvAddrProvider.getInstance().getLongMsgIpSaver().getConnectionFlag();
     }
-    if ((localObject == null) || (((String)localObject).length() == 0))
+    Object localObject1 = localMessageRecord.getExtInfoFromExtStr("pub_long_msg_url");
+    Object localObject2 = localMessageRecord.getExtInfoFromExtStr("pub_long_msg_download_key");
+    this.selfUin = localMessageRecord.selfuin;
+    this.pUin = localMessageRecord.frienduin;
+    if ((localObject1 != null) && (!"".equals(localObject1)) && (localObject2 != null))
     {
-      switch (FMTSrvAddrProvider.getInstance().getState())
+      if ("".equals(localObject2)) {
+        return false;
+      }
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append((String)localObject1);
+      ((StringBuilder)localObject3).append("&rkey=");
+      ((StringBuilder)localObject3).append((String)localObject2);
+      localObject3 = ((StringBuilder)localObject3).toString();
+      localObject2 = FMTSrvAddrProvider.getInstance().getSrvAddrForPttDownload();
+      localObject1 = localObject2;
+      if (localObject2 == null)
       {
-      default: 
+        localObject1 = FMTSrvAddrProvider.getInstance().getLongMsgIpSaver().getIp();
+        this.directDownloadFlag = 10;
+        this.connectionFlag = FMTSrvAddrProvider.getInstance().getLongMsgIpSaver().getConnectionFlag();
+      }
+      if ((localObject1 != null) && (((String)localObject1).length() != 0))
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append((String)localObject3);
+        localObject1 = ((StringBuilder)localObject2).toString();
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("directUrl = ");
+          ((StringBuilder)localObject2).append((String)localObject3);
+          ((StringBuilder)localObject2).append(",url:");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          QLog.d("StructLongMessageDownloadProcessor", 2, ((StringBuilder)localObject2).toString());
+        }
+        receiveFile(localMessageRecord.uniseq, (String)localObject1);
+        ThreadManager.getSubThreadHandler().postDelayed(this, 30000L);
+        return true;
+      }
+      if (FMTSrvAddrProvider.getInstance().getState() != 1)
+      {
         this.directDownloadFlag = 7;
         return false;
       }
       this.directDownloadFlag = 6;
-      return false;
     }
-    localObject = (String)localObject + str2;
-    if (QLog.isColorLevel()) {
-      QLog.d("StructLongMessageDownloadProcessor", 2, "directUrl = " + str2 + ",url:" + (String)localObject);
-    }
-    receiveFile(localMessageRecord.uniseq, (String)localObject);
-    ThreadManager.getSubThreadHandler().postDelayed(this, 30000L);
-    return true;
+    return false;
   }
   
   private void doReportForCancel()
   {
+    Object localObject1;
     if (QLog.isColorLevel())
     {
       QLog.d("StructLongMessageDownloadProcessor", 2, "LongMessage Download Beacon Report Cancel");
-      if (isOldLongMsg(this.mUiRequest.mRec)) {
-        QLog.d("PaOldLongMsg", 2, "msgId=uniseq:" + this.mUiRequest.mRec.uniseq + ", cancle download task!");
+      if (isOldLongMsg(this.mUiRequest.mRec))
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("msgId=uniseq:");
+        ((StringBuilder)localObject1).append(this.mUiRequest.mRec.uniseq);
+        ((StringBuilder)localObject1).append(", cancle download task!");
+        QLog.d("PaOldLongMsg", 2, ((StringBuilder)localObject1).toString());
       }
     }
-    if (isOldLongMsg(this.mUiRequest.mRec)) {}
-    HashMap localHashMap;
-    for (String str1 = "actOldLongMessageDownload";; str1 = "actLongMessageDownload")
+    if (isOldLongMsg(this.mUiRequest.mRec)) {
+      localObject1 = "actOldLongMessageDownload";
+    } else {
+      localObject1 = "actLongMessageDownload";
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_uin", this.selfUin);
+    localHashMap.put("param_puin", this.pUin);
+    localHashMap.put("param_channel", "0");
+    localHashMap.put("param_errcode", String.valueOf(7));
+    localHashMap.put("param_url", this.url);
+    if (QLog.isColorLevel())
     {
-      localHashMap = new HashMap();
-      localHashMap.put("param_uin", this.selfUin);
-      localHashMap.put("param_puin", this.pUin);
-      localHashMap.put("param_channel", "0");
-      localHashMap.put("param_errcode", String.valueOf(7));
-      localHashMap.put("param_url", this.url);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
       Iterator localIterator = localHashMap.entrySet().iterator();
       while (localIterator.hasNext())
       {
-        Object localObject = (Map.Entry)localIterator.next();
-        String str2 = (String)((Map.Entry)localObject).getKey();
-        localObject = (String)((Map.Entry)localObject).getValue();
-        QLog.d("StructLongMessageDownloadProcessorForReport", 2, str2 + (String)localObject);
+        Object localObject2 = (Map.Entry)localIterator.next();
+        String str = (String)((Map.Entry)localObject2).getKey();
+        localObject2 = (String)((Map.Entry)localObject2).getValue();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append((String)localObject2);
+        QLog.d("StructLongMessageDownloadProcessorForReport", 2, localStringBuilder.toString());
       }
     }
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, str1, false, 0L, 0L, localHashMap, "", true);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, (String)localObject1, false, 0L, 0L, localHashMap, "", true);
   }
   
   private static void doReportForDelete(boolean paramBoolean, String paramString1, String paramString2, long paramLong, TransferRequest paramTransferRequest)
@@ -288,121 +327,158 @@ public class StructLongMessageDownloadProcessor
     if (QLog.isColorLevel())
     {
       QLog.d("StructLongMessageDownloadProcessor", 2, "LongMessage Download Beacon Report Cancel");
-      if (isOldLongMsg(paramTransferRequest.mRec)) {
-        QLog.d("PaOldLongMsg", 2, "msgId=uniseq:" + paramTransferRequest.mRec.uniseq + ", delete download task!");
+      if (isOldLongMsg(paramTransferRequest.mRec))
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("msgId=uniseq:");
+        ((StringBuilder)localObject1).append(paramTransferRequest.mRec.uniseq);
+        ((StringBuilder)localObject1).append(", delete download task!");
+        QLog.d("PaOldLongMsg", 2, ((StringBuilder)localObject1).toString());
       }
     }
-    HashMap localHashMap;
-    if (isOldLongMsg(paramTransferRequest.mRec))
-    {
+    if (isOldLongMsg(paramTransferRequest.mRec)) {
       paramTransferRequest = "actOldLongMessageDownload";
-      localHashMap = new HashMap();
-      localHashMap.put("param_uin", paramString1);
-      localHashMap.put("param_puin", paramString2);
-      localHashMap.put("param_channel", "0");
-      if (!paramBoolean) {
-        break label264;
-      }
-      localHashMap.put("param_errcode", String.valueOf(11));
+    } else {
+      paramTransferRequest = "actLongMessageDownload";
     }
-    for (;;)
+    Object localObject1 = new HashMap();
+    ((HashMap)localObject1).put("param_uin", paramString1);
+    ((HashMap)localObject1).put("param_puin", paramString2);
+    ((HashMap)localObject1).put("param_channel", "0");
+    if (paramBoolean) {
+      ((HashMap)localObject1).put("param_errcode", String.valueOf(11));
+    } else {
+      ((HashMap)localObject1).put("param_errcode", String.valueOf(10));
+    }
+    paramString1 = new StringBuilder();
+    paramString1.append("");
+    paramString1.append(paramLong);
+    ((HashMap)localObject1).put("param_resid", paramString1.toString());
+    if (QLog.isColorLevel())
     {
-      localHashMap.put("param_resid", "" + paramLong);
-      if (!QLog.isColorLevel()) {
-        break label281;
-      }
-      paramString1 = localHashMap.entrySet().iterator();
+      paramString1 = ((HashMap)localObject1).entrySet().iterator();
       while (paramString1.hasNext())
       {
-        Object localObject = (Map.Entry)paramString1.next();
-        paramString2 = (String)((Map.Entry)localObject).getKey();
-        localObject = (String)((Map.Entry)localObject).getValue();
-        QLog.d("StructLongMessageDownloadProcessorForReport", 2, paramString2 + (String)localObject);
+        Object localObject2 = (Map.Entry)paramString1.next();
+        paramString2 = (String)((Map.Entry)localObject2).getKey();
+        localObject2 = (String)((Map.Entry)localObject2).getValue();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString2);
+        localStringBuilder.append((String)localObject2);
+        QLog.d("StructLongMessageDownloadProcessorForReport", 2, localStringBuilder.toString());
       }
-      paramTransferRequest = "actLongMessageDownload";
-      break;
-      label264:
-      localHashMap.put("param_errcode", String.valueOf(10));
     }
-    label281:
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, paramTransferRequest, false, 0L, 0L, localHashMap, "", true);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, paramTransferRequest, false, 0L, 0L, (HashMap)localObject1, "", true);
   }
   
-  public static void getStructLongMessage(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  public static void getStructLongMessage(AppInterface paramAppInterface, MessageRecord paramMessageRecord)
   {
-    for (;;)
+    synchronized (DOWN_LOAD_TRANSFER_REQUESTS)
     {
-      synchronized (DOWN_LOAD_TRANSFER_REQUESTS)
-      {
-        Object localObject = DOWN_LOAD_TRANSFER_REQUESTS.iterator();
-        if (((Iterator)localObject).hasNext())
-        {
-          if (((TransferRequest)((Iterator)localObject).next()).mUniseq != paramMessageRecord.uniseq) {
-            continue;
-          }
+      Object localObject = DOWN_LOAD_TRANSFER_REQUESTS.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (((TransferRequest)((Iterator)localObject).next()).mUniseq == paramMessageRecord.uniseq) {
           return;
         }
-        localObject = new TransferRequest();
-        ((TransferRequest)localObject).mIsUp = false;
-        ((TransferRequest)localObject).mPeerUin = paramMessageRecord.frienduin;
-        ((TransferRequest)localObject).mBusiType = 131079;
-        ((TransferRequest)localObject).mFileType = 131079;
-        ((TransferRequest)localObject).mUniseq = paramMessageRecord.uniseq;
-        ((TransferRequest)localObject).mRec = paramMessageRecord;
-        ((TransferRequest)localObject).mSelfUin = paramMessageRecord.selfuin;
-        if (((ITransFileController)paramQQAppInterface.getRuntimeService(ITransFileController.class)).transferAsync((TransferRequest)localObject)) {
-          DOWN_LOAD_TRANSFER_REQUESTS.add(localObject);
-        }
-        if (QLog.isColorLevel())
+      }
+      localObject = new TransferRequest();
+      ((TransferRequest)localObject).mIsUp = false;
+      ((TransferRequest)localObject).mPeerUin = paramMessageRecord.frienduin;
+      ((TransferRequest)localObject).mBusiType = 131079;
+      ((TransferRequest)localObject).mFileType = 131079;
+      ((TransferRequest)localObject).mUniseq = paramMessageRecord.uniseq;
+      ((TransferRequest)localObject).mRec = paramMessageRecord;
+      ((TransferRequest)localObject).mSelfUin = paramMessageRecord.selfuin;
+      if (((ITransFileController)paramAppInterface.getRuntimeService(ITransFileController.class, "")).transferAsync((TransferRequest)localObject)) {
+        DOWN_LOAD_TRANSFER_REQUESTS.add(localObject);
+      }
+      if (QLog.isColorLevel()) {
+        if (isOldLongMsg(paramMessageRecord))
         {
-          if (isOldLongMsg(paramMessageRecord))
-          {
-            QLog.d("StructLongMessageDownloadProcessor", 2, "getStructLongMessage(oldLongMsg) , messageRecord,msgid= " + paramMessageRecord.uniseq);
-            QLog.d("PaOldLongMsg", 2, "msgId=uniseq:" + paramMessageRecord.uniseq + ", getStructLongMessage");
-          }
+          paramAppInterface = new StringBuilder();
+          paramAppInterface.append("getStructLongMessage(oldLongMsg) , messageRecord,msgid= ");
+          paramAppInterface.append(paramMessageRecord.uniseq);
+          QLog.d("StructLongMessageDownloadProcessor", 2, paramAppInterface.toString());
+          paramAppInterface = new StringBuilder();
+          paramAppInterface.append("msgId=uniseq:");
+          paramAppInterface.append(paramMessageRecord.uniseq);
+          paramAppInterface.append(", getStructLongMessage");
+          QLog.d("PaOldLongMsg", 2, paramAppInterface.toString());
         }
         else
         {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("StructLongMessageDownloadProcessor", 2, "LongMessage Download time start: " + System.currentTimeMillis());
-          return;
+          paramAppInterface = new StringBuilder();
+          paramAppInterface.append("getStructLongMessage , messageRecord,msgid= ");
+          paramAppInterface.append(paramMessageRecord.uniseq);
+          QLog.d("StructLongMessageDownloadProcessor", 2, paramAppInterface.toString());
         }
       }
-      QLog.d("StructLongMessageDownloadProcessor", 2, "getStructLongMessage , messageRecord,msgid= " + paramMessageRecord.uniseq);
+      if (QLog.isColorLevel())
+      {
+        paramAppInterface = new StringBuilder();
+        paramAppInterface.append("LongMessage Download time start: ");
+        paramAppInterface.append(System.currentTimeMillis());
+        QLog.d("StructLongMessageDownloadProcessor", 2, paramAppInterface.toString());
+      }
+      return;
+    }
+    for (;;)
+    {
+      throw paramAppInterface;
     }
   }
   
   public static boolean isOldLongMsg(MessageRecord paramMessageRecord)
   {
-    if (paramMessageRecord == null) {}
-    while (StringUtil.a(paramMessageRecord.getExtInfoFromExtStr("pub_old_long_msg"))) {
+    if (paramMessageRecord == null) {
       return false;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("StructLongMessageDownloadProcessor", 2, "isOldLongMsg , messageRecord,msgid= " + paramMessageRecord.msgId + " uid= " + paramMessageRecord.msgUid + " msgseq= " + paramMessageRecord.msgseq + " uniseq=" + paramMessageRecord.uniseq);
+    if (!StringUtil.a(paramMessageRecord.getExtInfoFromExtStr("pub_old_long_msg")))
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isOldLongMsg , messageRecord,msgid= ");
+        localStringBuilder.append(paramMessageRecord.msgId);
+        localStringBuilder.append(" uid= ");
+        localStringBuilder.append(paramMessageRecord.msgUid);
+        localStringBuilder.append(" msgseq= ");
+        localStringBuilder.append(paramMessageRecord.msgseq);
+        localStringBuilder.append(" uniseq=");
+        localStringBuilder.append(paramMessageRecord.uniseq);
+        QLog.d("StructLongMessageDownloadProcessor", 2, localStringBuilder.toString());
+      }
+      return true;
     }
-    return true;
+    return false;
   }
   
   public static boolean isPALongMsg(MessageRecord paramMessageRecord)
   {
-    if (paramMessageRecord == null) {}
-    String str1;
-    String str2;
-    String str3;
-    do
-    {
+    if (paramMessageRecord == null) {
       return false;
-      str1 = paramMessageRecord.getExtInfoFromExtStr("pub_long_msg_url");
-      str2 = paramMessageRecord.getExtInfoFromExtStr("pub_long_msg_download_key");
-      str3 = paramMessageRecord.getExtInfoFromExtStr("pub_long_msg_resid");
-    } while ((StringUtil.a(str1)) || (StringUtil.a(str2)) || (StringUtil.a(str3)));
-    if (QLog.isColorLevel()) {
-      QLog.d("StructLongMessageDownloadProcessor", 2, "isPALongMsg , messageRecord,msgid= " + paramMessageRecord.msgId + " uid= " + paramMessageRecord.msgUid + " msgseq= " + paramMessageRecord.msgseq + " uniseq=" + paramMessageRecord.uniseq);
     }
-    return true;
+    Object localObject = paramMessageRecord.getExtInfoFromExtStr("pub_long_msg_url");
+    String str1 = paramMessageRecord.getExtInfoFromExtStr("pub_long_msg_download_key");
+    String str2 = paramMessageRecord.getExtInfoFromExtStr("pub_long_msg_resid");
+    if ((!StringUtil.a((String)localObject)) && (!StringUtil.a(str1)) && (!StringUtil.a(str2)))
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("isPALongMsg , messageRecord,msgid= ");
+        ((StringBuilder)localObject).append(paramMessageRecord.msgId);
+        ((StringBuilder)localObject).append(" uid= ");
+        ((StringBuilder)localObject).append(paramMessageRecord.msgUid);
+        ((StringBuilder)localObject).append(" msgseq= ");
+        ((StringBuilder)localObject).append(paramMessageRecord.msgseq);
+        ((StringBuilder)localObject).append(" uniseq=");
+        ((StringBuilder)localObject).append(paramMessageRecord.uniseq);
+        QLog.d("StructLongMessageDownloadProcessor", 2, ((StringBuilder)localObject).toString());
+      }
+      return true;
+    }
+    return false;
   }
   
   private static boolean isPALongMsg(IHttpCommunicatorListener paramIHttpCommunicatorListener)
@@ -425,50 +501,39 @@ public class StructLongMessageDownloadProcessor
   
   public static boolean needFetchOldLongMsg(MessageRecord paramMessageRecord)
   {
-    if (paramMessageRecord == null) {}
-    String str1;
-    String str2;
-    String str3;
-    do
-    {
+    if (paramMessageRecord == null) {
       return false;
-      str1 = paramMessageRecord.getExtInfoFromExtStr("pub_old_long_msg");
-      str2 = paramMessageRecord.getExtInfoFromExtStr("pub_long_msg_resid");
-      str3 = paramMessageRecord.getExtInfoFromExtStr("longMsg_State");
-    } while ((StringUtil.a(str1)) || (StringUtil.a(str3)) || (StringUtil.a(str2)));
-    if (QLog.isColorLevel()) {
-      QLog.d("StructLongMessageDownloadProcessor", 2, "needFetchOldLongMsg , messageRecord,msgid= " + paramMessageRecord.msgId + " uid= " + paramMessageRecord.msgUid + " msgseq= " + paramMessageRecord.msgseq + " uniseq=" + paramMessageRecord.uniseq);
     }
-    return true;
+    Object localObject = paramMessageRecord.getExtInfoFromExtStr("pub_old_long_msg");
+    String str1 = paramMessageRecord.getExtInfoFromExtStr("pub_long_msg_resid");
+    String str2 = paramMessageRecord.getExtInfoFromExtStr("longMsg_State");
+    if ((!StringUtil.a((String)localObject)) && (!StringUtil.a(str2)) && (!StringUtil.a(str1)))
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("needFetchOldLongMsg , messageRecord,msgid= ");
+        ((StringBuilder)localObject).append(paramMessageRecord.msgId);
+        ((StringBuilder)localObject).append(" uid= ");
+        ((StringBuilder)localObject).append(paramMessageRecord.msgUid);
+        ((StringBuilder)localObject).append(" msgseq= ");
+        ((StringBuilder)localObject).append(paramMessageRecord.msgseq);
+        ((StringBuilder)localObject).append(" uniseq=");
+        ((StringBuilder)localObject).append(paramMessageRecord.uniseq);
+        QLog.d("StructLongMessageDownloadProcessor", 2, ((StringBuilder)localObject).toString());
+      }
+      return true;
+    }
+    return false;
   }
   
   private byte[] parseOldLongMsgContent(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0))
+    int i;
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("StructLongMessageDownloadProcessor", 2, "parseOldLongMsgContent->null bodyData");
-      }
-      paramArrayOfByte = null;
-      return paramArrayOfByte;
-    }
-    int i = paramArrayOfByte.length;
-    Object localObject2;
-    Object localObject1;
-    if ((paramArrayOfByte[0] != 40) || (paramArrayOfByte[(i - 1)] != 41))
-    {
-      localObject2 = "unexpected body data, len=" + i + ", data=";
-      localObject1 = paramArrayOfByte.toString();
-      localObject2 = new StringBuilder().append((String)localObject2);
-      paramArrayOfByte = (byte[])localObject1;
-      if (((String)localObject1).length() > 20) {
-        paramArrayOfByte = ((String)localObject1).substring(0, 20);
-      }
-      paramArrayOfByte = paramArrayOfByte;
-      if (QLog.isColorLevel()) {
-        QLog.d("StructLongMessageDownloadProcessor", 2, "parseOldLongMsgContent->" + paramArrayOfByte);
-      }
-      return null;
+      i = paramArrayOfByte.length;
+      if ((paramArrayOfByte[0] != 40) || (paramArrayOfByte[(i - 1)] != 41)) {}
     }
     for (;;)
     {
@@ -479,133 +544,180 @@ public class StructLongMessageDownloadProcessor
         paramArrayOfByte.readByte();
         int k = paramArrayOfByte.readInt();
         j = paramArrayOfByte.readInt();
-        if ((k > i) || (j > i))
+        if ((k <= i) && (j <= i))
         {
-          if (!QLog.isColorLevel()) {
-            break label599;
+          if (k <= 0) {
+            break label643;
           }
-          QLog.d("StructLongMessageDownloadProcessor", 2, "parseOldLongMsgContent->unexpected length, headLen=" + k + ", bodyLen=" + j);
-          break label599;
+          localObject1 = new byte[k];
+          paramArrayOfByte.read((byte[])localObject1);
+          localObject2 = new im_msg_head.Head();
+          ((im_msg_head.Head)localObject2).mergeFrom((byte[])localObject1);
+          i = ((im_msg_head.HttpConnHead)((im_msg_head.Head)localObject2).msg_httpconn_head.get()).uint32_error_code.get();
+          break label645;
+          localObject1 = new byte[j];
+          paramArrayOfByte.read((byte[])localObject1);
+          paramArrayOfByte = new Cryptor().decrypt((byte[])localObject1, this.mMsgKey);
+          if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
+          {
+            localObject1 = new LongMsg.RspBody();
+            ((LongMsg.RspBody)localObject1).mergeFrom(paramArrayOfByte);
+            paramArrayOfByte = (LongMsg.MsgDownRsp)((LongMsg.RspBody)localObject1).rpt_msg_down_rsp.get(0);
+            if (paramArrayOfByte == null)
+            {
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.d("StructLongMessageDownloadProcessor", 2, "parseOldLongMsgContent->rspBody.rpt_msg_down_rsp == null");
+              return null;
+            }
+            if (!paramArrayOfByte.uint32_result.has())
+            {
+              if (!QLog.isColorLevel()) {
+                break label658;
+              }
+              QLog.d("StructLongMessageDownloadProcessor", 2, "parseOldLongMsgContent->uint32_result NOT exists");
+              return null;
+            }
+            if (paramArrayOfByte.uint32_result.get() != 0)
+            {
+              if (!QLog.isColorLevel()) {
+                break label660;
+              }
+              QLog.d("StructLongMessageDownloadProcessor", 2, "parseOldLongMsgContent->uint32_result != 0");
+              return null;
+            }
+            if (!paramArrayOfByte.bytes_msg_content.has())
+            {
+              if (!QLog.isColorLevel()) {
+                break label662;
+              }
+              QLog.d("StructLongMessageDownloadProcessor", 2, "parseOldLongMsgContent->bytes_msg_content NOT exists");
+              return null;
+            }
+            paramArrayOfByte = paramArrayOfByte.bytes_msg_content.get().toByteArray();
+            if (paramArrayOfByte != null) {
+              if (paramArrayOfByte.length > 0) {
+                break label664;
+              }
+            }
+            if (!QLog.isColorLevel()) {
+              break label666;
+            }
+            QLog.d("StructLongMessageDownloadProcessor", 2, "parseOldLongMsgContent->bytes_msg_content == null or empty");
+            return null;
+          }
+          if (!QLog.isColorLevel()) {
+            break label668;
+          }
+          QLog.d("StructLongMessageDownloadProcessor", 2, "parseOldLongMsgContent->after decrypt: dBodyBytes==null ||dBodyBytes.length<=0");
+          return null;
+          if (!QLog.isColorLevel()) {
+            break label670;
+          }
+          paramArrayOfByte = new StringBuilder();
+          paramArrayOfByte.append("parseOldLongMsgContent->bodyLen= ");
+          paramArrayOfByte.append(j);
+          paramArrayOfByte.append(" errCode= ");
+          paramArrayOfByte.append(i);
+          QLog.d("StructLongMessageDownloadProcessor", 2, paramArrayOfByte.toString());
+          return null;
         }
-        if (k <= 0) {
-          break label594;
+        if (QLog.isColorLevel())
+        {
+          paramArrayOfByte = new StringBuilder();
+          paramArrayOfByte.append("parseOldLongMsgContent->unexpected length, headLen=");
+          paramArrayOfByte.append(k);
+          paramArrayOfByte.append(", bodyLen=");
+          paramArrayOfByte.append(j);
+          QLog.d("StructLongMessageDownloadProcessor", 2, paramArrayOfByte.toString());
         }
-        localObject1 = new byte[k];
-        paramArrayOfByte.read((byte[])localObject1);
-        localObject2 = new im_msg_head.Head();
-        ((im_msg_head.Head)localObject2).mergeFrom((byte[])localObject1);
-        i = ((im_msg_head.HttpConnHead)((im_msg_head.Head)localObject2).msg_httpconn_head.get()).uint32_error_code.get();
+        return null;
       }
       catch (Exception paramArrayOfByte)
       {
         paramArrayOfByte.printStackTrace();
         return null;
       }
-      if (!QLog.isColorLevel()) {
-        break label612;
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("unexpected body data, len=");
+      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append(", data=");
+      String str = ((StringBuilder)localObject1).toString();
+      localObject1 = paramArrayOfByte.toString();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(str);
+      paramArrayOfByte = (byte[])localObject1;
+      if (((String)localObject1).length() > 20) {
+        paramArrayOfByte = ((String)localObject1).substring(0, 20);
       }
-      QLog.d("StructLongMessageDownloadProcessor", 2, "parseOldLongMsgContent->bodyLen= " + j + " errCode= " + i);
-      break label612;
-      localObject1 = new byte[j];
-      paramArrayOfByte.read((byte[])localObject1);
-      paramArrayOfByte = new Cryptor().decrypt((byte[])localObject1, this.mMsgKey);
-      if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0))
+      ((StringBuilder)localObject2).append(paramArrayOfByte);
+      paramArrayOfByte = ((StringBuilder)localObject2).toString();
+      if (QLog.isColorLevel())
       {
-        if (!QLog.isColorLevel()) {
-          break label614;
-        }
-        QLog.d("StructLongMessageDownloadProcessor", 2, "parseOldLongMsgContent->after decrypt: dBodyBytes==null ||dBodyBytes.length<=0");
-        break label614;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("parseOldLongMsgContent->");
+        ((StringBuilder)localObject1).append(paramArrayOfByte);
+        QLog.d("StructLongMessageDownloadProcessor", 2, ((StringBuilder)localObject1).toString());
       }
-      localObject1 = new LongMsg.RspBody();
-      ((LongMsg.RspBody)localObject1).mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (LongMsg.MsgDownRsp)((LongMsg.RspBody)localObject1).rpt_msg_down_rsp.get(0);
-      if (paramArrayOfByte == null)
-      {
-        if (!QLog.isColorLevel()) {
-          break label616;
-        }
-        QLog.d("StructLongMessageDownloadProcessor", 2, "parseOldLongMsgContent->rspBody.rpt_msg_down_rsp == null");
-        break label616;
-      }
-      if (!paramArrayOfByte.uint32_result.has())
-      {
-        if (!QLog.isColorLevel()) {
-          break label618;
-        }
-        QLog.d("StructLongMessageDownloadProcessor", 2, "parseOldLongMsgContent->uint32_result NOT exists");
-        break label618;
-      }
-      if (paramArrayOfByte.uint32_result.get() != 0)
-      {
-        if (!QLog.isColorLevel()) {
-          break label620;
-        }
-        QLog.d("StructLongMessageDownloadProcessor", 2, "parseOldLongMsgContent->uint32_result != 0");
-        break label620;
-      }
-      if (!paramArrayOfByte.bytes_msg_content.has())
-      {
-        if (!QLog.isColorLevel()) {
-          break label622;
-        }
-        QLog.d("StructLongMessageDownloadProcessor", 2, "parseOldLongMsgContent->bytes_msg_content NOT exists");
-        break label622;
-      }
-      localObject1 = paramArrayOfByte.bytes_msg_content.get().toByteArray();
-      if (localObject1 != null)
-      {
-        paramArrayOfByte = (byte[])localObject1;
-        if (localObject1.length > 0) {
-          break;
-        }
-      }
+      return null;
       if (QLog.isColorLevel()) {
-        QLog.d("StructLongMessageDownloadProcessor", 2, "parseOldLongMsgContent->bytes_msg_content == null or empty");
+        QLog.d("StructLongMessageDownloadProcessor", 2, "parseOldLongMsgContent->null bodyData");
       }
       return null;
-      label594:
+      label643:
       i = 0;
-      break label601;
-      label599:
-      return null;
-      label601:
+      label645:
       if (j > 0) {
         if (i == 0) {}
       }
     }
-    label612:
     return null;
-    label614:
+    label658:
     return null;
-    label616:
+    label660:
     return null;
-    label618:
+    label662:
     return null;
-    label620:
+    label664:
+    return paramArrayOfByte;
+    label666:
     return null;
-    label622:
+    label668:
+    return null;
+    label670:
     return null;
   }
   
   private void receiveFile(long paramLong, String paramString)
   {
-    HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.mCallback = this;
-    localHttpNetReq.mReqUrl = paramString;
-    localHttpNetReq.mHttpMethod = 0;
-    localHttpNetReq.mServerList = this.mIpList;
-    this.mNetEngine.sendReq(localHttpNetReq);
-    downloadList.put(Long.valueOf(paramLong), localHttpNetReq);
-    this.mNetReq = localHttpNetReq;
+    Object localObject = new HttpNetReq();
+    ((HttpNetReq)localObject).mCallback = this;
+    ((HttpNetReq)localObject).mReqUrl = paramString;
+    ((HttpNetReq)localObject).mHttpMethod = 0;
+    ((HttpNetReq)localObject).mServerList = this.mIpList;
+    this.mNetEngine.sendReq((NetReq)localObject);
+    downloadList.put(Long.valueOf(paramLong), localObject);
+    this.mNetReq = ((NetReq)localObject);
     FMTSrvAddrProvider.getInstance().getLongMsgIpSaver().saveIp(TransFileUtil.getIpAndPortFromUrl(paramString));
     this.url = paramString;
     this.mDownloadStartTime = System.nanoTime();
     if (QLog.isColorLevel())
     {
-      QLog.d("StructLongMessageDownloadProcessor", 2, "receiveFile->msgid:" + paramLong + ", url:" + paramString);
-      if (isOldLongMsg(this.mUiRequest.mRec)) {
-        QLog.d("PaOldLongMsg", 2, "msgId=uniseq:" + paramLong + ", receiveFile->url:" + paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("receiveFile->msgid:");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(", url:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("StructLongMessageDownloadProcessor", 2, ((StringBuilder)localObject).toString());
+      if (isOldLongMsg(this.mUiRequest.mRec))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("msgId=uniseq:");
+        ((StringBuilder)localObject).append(paramLong);
+        ((StringBuilder)localObject).append(", receiveFile->url:");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("PaOldLongMsg", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
@@ -642,127 +754,130 @@ public class StructLongMessageDownloadProcessor
     {
       this.errorCode = 15;
       onError();
-    }
-    String str;
-    Object localObject2;
-    do
-    {
-      do
-      {
-        return;
-        str = ((MessageRecord)localObject1).getExtInfoFromExtStr("pub_long_msg_resid");
-        if ((str != null) && (!str.equals(""))) {
-          break;
-        }
-      } while ((!isPALongMsg((MessageRecord)localObject1)) && (!isOldLongMsg((MessageRecord)localObject1)));
-      this.errorCode = 13;
-      onError();
       return;
-      if (!isOldLongMsg((MessageRecord)localObject1)) {
-        break;
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.d("StructLongMessageDownloadProcessor", 2, "sendGetUrlReq->oldLongMsg");
-        QLog.d("PaOldLongMsg", 2, "msgId=uniseq:" + ((MessageRecord)localObject1).uniseq + ", sendGetUrlReq");
-      }
-      localObject2 = new RichProto.RichProtoReq.MultiMsgDownReq();
-      ((RichProto.RichProtoReq.MultiMsgDownReq)localObject2).selfUin = ((MessageRecord)localObject1).selfuin;
-      ((RichProto.RichProtoReq.MultiMsgDownReq)localObject2).peerUin = ((MessageRecord)localObject1).frienduin;
-      ((RichProto.RichProtoReq.MultiMsgDownReq)localObject2).secondUin = ((MessageRecord)localObject1).frienduin;
-      ((RichProto.RichProtoReq.MultiMsgDownReq)localObject2).uinType = ((MessageRecord)localObject1).istroop;
-      ((RichProto.RichProtoReq.MultiMsgDownReq)localObject2).msgResId = str.getBytes();
-      localObject1 = new RichProto.RichProtoReq();
-      ((RichProto.RichProtoReq)localObject1).callback = this;
-      ((RichProto.RichProtoReq)localObject1).protoKey = "multi_msg_dw";
-      ((RichProto.RichProtoReq)localObject1).reqs.add(localObject2);
-      ((RichProto.RichProtoReq)localObject1).protoReqMgr = ((IProtoReqManager)this.app.getRuntimeService(IProtoReqManager.class, ""));
-      if (!isAppValid())
-      {
-        setError(9366, "illegal app", null, this.mStepUrl);
-        this.errorCode = 16;
-        onError();
-        return;
-      }
-    } while (!canDoNextStep());
-    this.mRichProtoReq = ((RichProto.RichProtoReq)localObject1);
-    RichProtoProc.procRichProtoReq((RichProto.RichProtoReq)localObject1);
-    for (;;)
+    }
+    String str = ((MessageRecord)localObject1).getExtInfoFromExtStr("pub_long_msg_resid");
+    if ((str != null) && (!str.equals("")))
     {
+      Object localObject2;
+      if (isOldLongMsg((MessageRecord)localObject1))
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.d("StructLongMessageDownloadProcessor", 2, "sendGetUrlReq->oldLongMsg");
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("msgId=uniseq:");
+          ((StringBuilder)localObject2).append(((MessageRecord)localObject1).uniseq);
+          ((StringBuilder)localObject2).append(", sendGetUrlReq");
+          QLog.d("PaOldLongMsg", 2, ((StringBuilder)localObject2).toString());
+        }
+        localObject2 = new RichProto.RichProtoReq.MultiMsgDownReq();
+        ((RichProto.RichProtoReq.MultiMsgDownReq)localObject2).selfUin = ((MessageRecord)localObject1).selfuin;
+        ((RichProto.RichProtoReq.MultiMsgDownReq)localObject2).peerUin = ((MessageRecord)localObject1).frienduin;
+        ((RichProto.RichProtoReq.MultiMsgDownReq)localObject2).secondUin = ((MessageRecord)localObject1).frienduin;
+        ((RichProto.RichProtoReq.MultiMsgDownReq)localObject2).uinType = ((MessageRecord)localObject1).istroop;
+        ((RichProto.RichProtoReq.MultiMsgDownReq)localObject2).msgResId = str.getBytes();
+        localObject1 = new RichProto.RichProtoReq();
+        ((RichProto.RichProtoReq)localObject1).callback = this;
+        ((RichProto.RichProtoReq)localObject1).protoKey = "multi_msg_dw";
+        ((RichProto.RichProtoReq)localObject1).reqs.add(localObject2);
+        ((RichProto.RichProtoReq)localObject1).protoReqMgr = ((IProtoReqManager)this.app.getRuntimeService(IProtoReqManager.class, ""));
+        if (!isAppValid())
+        {
+          this.mProcessorReport.setError(9366, "illegal app", null, this.mProcessorReport.mStepUrl);
+          this.errorCode = 16;
+          onError();
+          return;
+        }
+        if (!canDoNextStep()) {
+          return;
+        }
+        this.mRichProtoReq = ((RichProto.RichProtoReq)localObject1);
+        RichProtoProc.procRichProtoReq((RichProto.RichProtoReq)localObject1);
+      }
+      else
+      {
+        localObject2 = new RichProto.RichProtoReq();
+        ((RichProto.RichProtoReq)localObject2).callback = this;
+        ((RichProto.RichProtoReq)localObject2).protoKey = "pa_long_message";
+        ((RichProto.RichProtoReq)localObject2).protoReqMgr = ((IProtoReqManager)this.app.getRuntimeService(IProtoReqManager.class, ""));
+        if (!isAppValid())
+        {
+          this.mProcessorReport.setError(9366, "illegal app", null, this.mProcessorReport.mStepUrl);
+          this.errorCode = 16;
+          onError();
+          return;
+        }
+        if (!canDoNextStep()) {
+          return;
+        }
+        this.mRichProtoReq = ((RichProto.RichProtoReq)localObject2);
+        RichProto.RichProtoReq.LongStructMessageDownReq localLongStructMessageDownReq = new RichProto.RichProtoReq.LongStructMessageDownReq();
+        localLongStructMessageDownReq.strFileid = str;
+        localLongStructMessageDownReq.peerUin = ((MessageRecord)localObject1).frienduin;
+        ((RichProto.RichProtoReq)localObject2).reqs.add(localLongStructMessageDownReq);
+        RichProtoProc.procRichProtoReq((RichProto.RichProtoReq)localObject2);
+      }
       this.mSSOStartTime = System.nanoTime();
       return;
-      localObject2 = new RichProto.RichProtoReq();
-      ((RichProto.RichProtoReq)localObject2).callback = this;
-      ((RichProto.RichProtoReq)localObject2).protoKey = "pa_long_message";
-      ((RichProto.RichProtoReq)localObject2).protoReqMgr = ((IProtoReqManager)this.app.getRuntimeService(IProtoReqManager.class, ""));
-      if (!isAppValid())
-      {
-        setError(9366, "illegal app", null, this.mStepUrl);
-        this.errorCode = 16;
-        onError();
-        return;
-      }
-      if (!canDoNextStep()) {
-        break;
-      }
-      this.mRichProtoReq = ((RichProto.RichProtoReq)localObject2);
-      RichProto.RichProtoReq.LongStructMessageDownReq localLongStructMessageDownReq = new RichProto.RichProtoReq.LongStructMessageDownReq();
-      localLongStructMessageDownReq.strFileid = str;
-      localLongStructMessageDownReq.peerUin = ((MessageRecord)localObject1).frienduin;
-      ((RichProto.RichProtoReq)localObject2).reqs.add(localLongStructMessageDownReq);
-      RichProtoProc.procRichProtoReq((RichProto.RichProtoReq)localObject2);
     }
+    if ((!isPALongMsg((MessageRecord)localObject1)) && (!isOldLongMsg((MessageRecord)localObject1))) {
+      return;
+    }
+    this.errorCode = 13;
+    onError();
   }
   
   private void updateMessageDataBaseContent(int paramInt)
   {
-    MessageForStructing localMessageForStructing;
     if ((this.mUiRequest.mRec instanceof MessageForStructing))
     {
-      localMessageForStructing = (MessageForStructing)this.mUiRequest.mRec;
+      MessageForStructing localMessageForStructing = (MessageForStructing)this.mUiRequest.mRec;
       if (localMessageForStructing != null)
       {
-        if (paramInt != 2003) {
-          break label282;
-        }
-        localMessageForStructing.removeExtInfoToExtStr("pub_long_msg_url");
-        localMessageForStructing.removeExtInfoToExtStr("pub_long_msg_download_key");
-        localMessageForStructing.removeExtInfoToExtStr("pub_long_msg_resid");
-        if ((this.mStructingMsg instanceof StructMsgForGeneralShare))
+        if (paramInt == 2003)
         {
-          str = ((StructMsgForGeneralShare)this.mStructingMsg).mWarningTips;
-          if (!TextUtils.isEmpty(str)) {
-            localMessageForStructing.saveExtInfoToExtStr("pa_phone_msg_tip", str);
+          localMessageForStructing.removeExtInfoToExtStr("pub_long_msg_url");
+          localMessageForStructing.removeExtInfoToExtStr("pub_long_msg_download_key");
+          localMessageForStructing.removeExtInfoToExtStr("pub_long_msg_resid");
+          Object localObject = this.mStructingMsg;
+          if ((localObject instanceof StructMsgForGeneralShare))
+          {
+            localObject = ((StructMsgForGeneralShare)localObject).mWarningTips;
+            if (!TextUtils.isEmpty((CharSequence)localObject)) {
+              localMessageForStructing.saveExtInfoToExtStr("pa_phone_msg_tip", (String)localObject);
+            }
           }
+          long l = 0L;
+          if (localMessageForStructing.structingMsg != null) {
+            l = localMessageForStructing.structingMsg.msgId;
+          }
+          localMessageForStructing.structingMsg = this.mStructingMsg;
+          localMessageForStructing.structingMsg.msgId = l;
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("LongMessage data size: ");
+            ((StringBuilder)localObject).append(this.mStructingMsg.getBytes().length);
+            QLog.d("StructLongMessageDownloadProcessor", 2, ((StringBuilder)localObject).toString());
+          }
+          localMessageForStructing.msgData = this.mStructingMsg.getBytes();
+          this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, localMessageForStructing.uniseq, localMessageForStructing.msgData);
+          this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, localMessageForStructing.uniseq, "extStr", localMessageForStructing.extStr);
+          this.app.getMsgHandler().notifyUI(999, true, this.mUiRequest.mPeerUin);
+          return;
         }
-        l = 0L;
-        if (localMessageForStructing.structingMsg != null) {
-          l = localMessageForStructing.structingMsg.msgId;
+        if (paramInt == 2005)
+        {
+          localMessageForStructing.saveExtInfoToExtStr("longMsg_State", String.valueOf(2));
+          localMessageForStructing.structingMsg.mMsgBrief = HardCodeUtil.a(2131714389);
+          localMessageForStructing.msgData = localMessageForStructing.structingMsg.getBytes();
+          this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, localMessageForStructing.uniseq, localMessageForStructing.msgData);
+          this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, localMessageForStructing.uniseq, "extStr", localMessageForStructing.extStr);
+          this.app.getMsgHandler().notifyUI(999, true, this.mUiRequest.mPeerUin);
         }
-        localMessageForStructing.structingMsg = this.mStructingMsg;
-        localMessageForStructing.structingMsg.msgId = l;
-        if (QLog.isColorLevel()) {
-          QLog.d("StructLongMessageDownloadProcessor", 2, "LongMessage data size: " + this.mStructingMsg.getBytes().length);
-        }
-        localMessageForStructing.msgData = this.mStructingMsg.getBytes();
-        this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, localMessageForStructing.uniseq, localMessageForStructing.msgData);
-        this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, localMessageForStructing.uniseq, "extStr", localMessageForStructing.extStr);
-        this.app.getMsgHandler().notifyUI(999, true, this.mUiRequest.mPeerUin);
       }
     }
-    label282:
-    while (paramInt != 2005)
-    {
-      String str;
-      long l;
-      return;
-    }
-    localMessageForStructing.saveExtInfoToExtStr("longMsg_State", String.valueOf(2));
-    localMessageForStructing.structingMsg.mMsgBrief = HardCodeUtil.a(2131714468);
-    localMessageForStructing.msgData = localMessageForStructing.structingMsg.getBytes();
-    this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, localMessageForStructing.uniseq, localMessageForStructing.msgData);
-    this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, localMessageForStructing.uniseq, "extStr", localMessageForStructing.extStr);
-    this.app.getMsgHandler().notifyUI(999, true, this.mUiRequest.mPeerUin);
   }
   
   public void accountChanged()
@@ -776,26 +891,36 @@ public class StructLongMessageDownloadProcessor
   {
     synchronized (DOWN_LOAD_TRANSFER_REQUESTS)
     {
-      if ((DOWN_LOAD_TRANSFER_REQUESTS == null) || (DOWN_LOAD_TRANSFER_REQUESTS.size() == 0)) {
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("StructLongMessageDownloadProcessor", 2, "cancelAllTask msgid" + paramLong);
-      }
-      if ((ITransFileController)this.app.getRuntimeService(ITransFileController.class) != null)
+      if ((DOWN_LOAD_TRANSFER_REQUESTS != null) && (DOWN_LOAD_TRANSFER_REQUESTS.size() != 0))
       {
-        Iterator localIterator = DOWN_LOAD_TRANSFER_REQUESTS.iterator();
-        while (localIterator.hasNext())
+        Object localObject1;
+        if (QLog.isColorLevel())
         {
-          TransferRequest localTransferRequest = (TransferRequest)localIterator.next();
-          if (localTransferRequest.mUniseq == paramLong)
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("cancelAllTask msgid");
+          ((StringBuilder)localObject1).append(paramLong);
+          QLog.d("StructLongMessageDownloadProcessor", 2, ((StringBuilder)localObject1).toString());
+        }
+        if ((ITransFileController)this.app.getRuntimeService(ITransFileController.class) != null)
+        {
+          localObject1 = DOWN_LOAD_TRANSFER_REQUESTS.iterator();
+          while (((Iterator)localObject1).hasNext())
           {
-            cancelPALongMsgTask(this.app, localTransferRequest.mPeerUin, localTransferRequest.mUniseq);
-            DOWN_LOAD_TRANSFER_REQUESTS.remove(localTransferRequest);
+            TransferRequest localTransferRequest = (TransferRequest)((Iterator)localObject1).next();
+            if (localTransferRequest.mUniseq == paramLong)
+            {
+              cancelPALongMsgTask(this.app, localTransferRequest.mPeerUin, localTransferRequest.mUniseq);
+              DOWN_LOAD_TRANSFER_REQUESTS.remove(localTransferRequest);
+            }
           }
         }
+        return;
       }
       return;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
@@ -806,108 +931,121 @@ public class StructLongMessageDownloadProcessor
   
   protected void doReport(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StructLongMessageDownloadProcessor", 2, String.format("LongMessage Download Beacon Report ErrCode=%d mReportedFlag=%x ", new Object[] { Integer.valueOf(this.errorCode), Integer.valueOf(this.mReportedFlag) }) + hashCode());
-    }
-    if ((this.mIsOldDbRec) || ((paramBoolean) && ((this.mReportedFlag & 0x2) > 0)) || ((!paramBoolean) && ((this.mReportedFlag & 0x1) > 0))) {
-      return;
-    }
-    int j = this.mReportedFlag;
-    int i;
-    if (paramBoolean)
+    boolean bool = QLog.isColorLevel();
+    int i = 1;
+    Object localObject1;
+    if (bool)
     {
-      i = 2;
-      this.mReportedFlag = (i | j);
-      if (!isOldLongMsg(this.mUiRequest.mRec)) {
-        break label435;
-      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(String.format("LongMessage Download Beacon Report ErrCode=%d mReportedFlag=%x ", new Object[] { Integer.valueOf(this.errorCode), Integer.valueOf(this.mProcessorReport.mReportedFlag) }));
+      ((StringBuilder)localObject1).append(hashCode());
+      QLog.d("StructLongMessageDownloadProcessor", 2, ((StringBuilder)localObject1).toString());
     }
-    long l;
-    label435:
-    for (String str1 = "actOldLongMessageDownload";; str1 = "actLongMessageDownload")
+    if ((!this.mProcessorReport.mIsOldDbRec) && ((!paramBoolean) || ((this.mProcessorReport.mReportedFlag & 0x2) <= 0)))
     {
-      this.mEndTime = System.currentTimeMillis();
-      l = (System.nanoTime() - this.mStartTime) / 1000000L;
-      this.mReportInfo.put("param_uin", this.mUiRequest.mRec.selfuin);
-      this.mReportInfo.put("param_puin", this.mUiRequest.mRec.senderuin);
-      this.mReportInfo.put("param_resid", this.mUiRequest.mRec.getExtInfoFromExtStr("pub_long_msg_resid"));
-      this.mReportInfo.put("param_ip_source", "" + this.directDownloadFlag);
-      this.mReportInfo.put("param_channel", "0");
-      this.mReportInfo.put("param_errcode", String.valueOf(this.errorCode));
-      this.mReportInfo.put("param_url", this.url);
-      this.mReportInfo.put("param_http_error_code", String.valueOf(this.httpErrorCode));
-      this.mReportInfo.put("param_android_error_code", String.valueOf(this.errCode));
-      if (!QLog.isColorLevel()) {
-        break label443;
+      if ((!paramBoolean) && ((this.mProcessorReport.mReportedFlag & 0x1) > 0)) {
+        return;
       }
-      Iterator localIterator = this.mReportInfo.entrySet().iterator();
-      while (localIterator.hasNext())
+      localObject1 = this.mProcessorReport;
+      int j = this.mProcessorReport.mReportedFlag;
+      if (paramBoolean) {
+        i = 2;
+      }
+      ((ProcessorReport)localObject1).mReportedFlag = (i | j);
+      if (isOldLongMsg(this.mUiRequest.mRec)) {
+        localObject1 = "actOldLongMessageDownload";
+      } else {
+        localObject1 = "actLongMessageDownload";
+      }
+      this.mProcessorReport.mEndTime = System.currentTimeMillis();
+      long l = (System.nanoTime() - this.mProcessorReport.mStartTime) / 1000000L;
+      this.mProcessorReport.mReportInfo.put("param_uin", this.mUiRequest.mRec.selfuin);
+      this.mProcessorReport.mReportInfo.put("param_puin", this.mUiRequest.mRec.senderuin);
+      this.mProcessorReport.mReportInfo.put("param_resid", this.mUiRequest.mRec.getExtInfoFromExtStr("pub_long_msg_resid"));
+      Object localObject2 = this.mProcessorReport.mReportInfo;
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("");
+      ((StringBuilder)localObject3).append(this.directDownloadFlag);
+      ((HashMap)localObject2).put("param_ip_source", ((StringBuilder)localObject3).toString());
+      this.mProcessorReport.mReportInfo.put("param_channel", "0");
+      this.mProcessorReport.mReportInfo.put("param_errcode", String.valueOf(this.errorCode));
+      this.mProcessorReport.mReportInfo.put("param_url", this.url);
+      this.mProcessorReport.mReportInfo.put("param_http_error_code", String.valueOf(this.httpErrorCode));
+      this.mProcessorReport.mReportInfo.put("param_android_error_code", String.valueOf(this.mProcessorReport.errCode));
+      if (QLog.isColorLevel())
       {
-        Object localObject = (Map.Entry)localIterator.next();
-        String str2 = (String)((Map.Entry)localObject).getKey();
-        localObject = (String)((Map.Entry)localObject).getValue();
-        QLog.d("StructLongMessageDownloadProcessorForReport", 2, str2 + (String)localObject);
+        localObject2 = this.mProcessorReport.mReportInfo.entrySet().iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          Object localObject4 = (Map.Entry)((Iterator)localObject2).next();
+          localObject3 = (String)((Map.Entry)localObject4).getKey();
+          localObject4 = (String)((Map.Entry)localObject4).getValue();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject3);
+          localStringBuilder.append((String)localObject4);
+          QLog.d("StructLongMessageDownloadProcessorForReport", 2, localStringBuilder.toString());
+        }
       }
-      i = 1;
-      break;
-    }
-    label443:
-    if (paramBoolean) {
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, str1, true, l, this.mTotolLen, this.mReportInfo, "", true);
-    }
-    for (;;)
-    {
+      if (paramBoolean) {
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, (String)localObject1, true, l, this.mTotolLen, this.mProcessorReport.mReportInfo, "", true);
+      } else {
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, (String)localObject1, false, l, 0L, this.mProcessorReport.mReportInfo, "", true);
+      }
       setReportFlag();
-      return;
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, str1, false, l, 0L, this.mReportInfo, "", true);
     }
   }
   
   public void doReportForExpired(int paramInt, MessageRecord paramMessageRecord)
   {
+    Object localObject1;
     if (QLog.isColorLevel())
     {
       QLog.d("StructLongMessageDownloadProcessor", 2, "LongMessage Download Beacon Report Expired");
-      if (isOldLongMsg(this.mUiRequest.mRec)) {
-        QLog.d("PaOldLongMsg", 2, "msgId=uniseq:" + this.mUiRequest.mRec.uniseq + ", resource expired!");
+      if (isOldLongMsg(this.mUiRequest.mRec))
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("msgId=uniseq:");
+        ((StringBuilder)localObject1).append(this.mUiRequest.mRec.uniseq);
+        ((StringBuilder)localObject1).append(", resource expired!");
+        QLog.d("PaOldLongMsg", 2, ((StringBuilder)localObject1).toString());
       }
     }
-    if (isOldLongMsg(this.mUiRequest.mRec)) {}
-    HashMap localHashMap;
-    for (String str1 = "actOldLongMessageDownload";; str1 = "actLongMessageDownload")
+    if (isOldLongMsg(this.mUiRequest.mRec)) {
+      localObject1 = "actOldLongMessageDownload";
+    } else {
+      localObject1 = "actLongMessageDownload";
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_uin", paramMessageRecord.selfuin);
+    localHashMap.put("param_puin", paramMessageRecord.frienduin);
+    localHashMap.put("param_resid", paramMessageRecord.getExtInfoFromExtStr("pub_long_msg_resid"));
+    localHashMap.put("param_channel", "0");
+    localHashMap.put("param_errcode", String.valueOf(paramInt));
+    localHashMap.put("param_url", this.url);
+    if (QLog.isColorLevel())
     {
-      localHashMap = new HashMap();
-      localHashMap.put("param_uin", paramMessageRecord.selfuin);
-      localHashMap.put("param_puin", paramMessageRecord.frienduin);
-      localHashMap.put("param_resid", paramMessageRecord.getExtInfoFromExtStr("pub_long_msg_resid"));
-      localHashMap.put("param_channel", "0");
-      localHashMap.put("param_errcode", String.valueOf(paramInt));
-      localHashMap.put("param_url", this.url);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
       paramMessageRecord = localHashMap.entrySet().iterator();
       while (paramMessageRecord.hasNext())
       {
-        Object localObject = (Map.Entry)paramMessageRecord.next();
-        String str2 = (String)((Map.Entry)localObject).getKey();
-        localObject = (String)((Map.Entry)localObject).getValue();
-        QLog.d("StructLongMessageDownloadProcessorForReport", 2, str2 + (String)localObject);
+        Object localObject2 = (Map.Entry)paramMessageRecord.next();
+        String str = (String)((Map.Entry)localObject2).getKey();
+        localObject2 = (String)((Map.Entry)localObject2).getValue();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append((String)localObject2);
+        QLog.d("StructLongMessageDownloadProcessorForReport", 2, localStringBuilder.toString());
       }
     }
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, str1, false, 0L, 0L, localHashMap, "", true);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, (String)localObject1, false, 0L, 0L, localHashMap, "", true);
   }
   
   public boolean isResourceIDOutofDate(MessageRecord paramMessageRecord)
   {
-    if (paramMessageRecord == null) {}
-    long l;
-    do
-    {
+    if (paramMessageRecord == null) {
       return false;
-      l = NetConnInfoCenter.getServerTime();
-    } while (paramMessageRecord.time >= l - 604800L);
-    return true;
+    }
+    long l = NetConnInfoCenter.getServerTime();
+    return paramMessageRecord.time < l - 604800L;
   }
   
   public void notifyCancelTask()
@@ -922,7 +1060,7 @@ public class StructLongMessageDownloadProcessor
     if ((paramMessageRecord instanceof MessageForStructing))
     {
       MessageForStructing localMessageForStructing = (MessageForStructing)paramMessageRecord;
-      localMessageForStructing.structingMsg.mMsgBrief = HardCodeUtil.a(2131714467);
+      localMessageForStructing.structingMsg.mMsgBrief = HardCodeUtil.a(2131714388);
       localMessageForStructing.msgData = localMessageForStructing.structingMsg.getBytes();
       this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, localMessageForStructing.uniseq, localMessageForStructing.msgData);
       this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, localMessageForStructing.uniseq, "extStr", localMessageForStructing.extStr);
@@ -949,45 +1087,61 @@ public class StructLongMessageDownloadProcessor
     }
     if ((paramRichProtoResp != null) && (paramRichProtoResp.resps != null) && (paramRichProtoResp.resps.size() > 0) && ((paramRichProtoResp.resps.get(0) instanceof RichProto.RichProtoResp.MultiMsgDownResp)))
     {
-      paramRichProtoResp = (RichProto.RichProtoResp.MultiMsgDownResp)paramRichProtoResp.resps.get(0);
+      RichProto.RichProtoResp.MultiMsgDownResp localMultiMsgDownResp = (RichProto.RichProtoResp.MultiMsgDownResp)paramRichProtoResp.resps.get(0);
       if (QLog.isColorLevel())
       {
-        QLog.d("StructLongMessageDownloadProcessor", 2, "onBusiProtoResp->oldLongMsg procUrl:" + paramRichProtoResp.toString());
-        QLog.d("PaOldLongMsg", 2, "msgId=uniseq:" + this.mUiRequest.mRec.uniseq + ", onBusiProtoResp->oldLongMsg procUrl:" + paramRichProtoResp.toString());
+        paramRichProtoReq = new StringBuilder();
+        paramRichProtoReq.append("onBusiProtoResp->oldLongMsg procUrl:");
+        paramRichProtoReq.append(localMultiMsgDownResp.toString());
+        QLog.d("StructLongMessageDownloadProcessor", 2, paramRichProtoReq.toString());
+        paramRichProtoReq = new StringBuilder();
+        paramRichProtoReq.append("msgId=uniseq:");
+        paramRichProtoReq.append(this.mUiRequest.mRec.uniseq);
+        paramRichProtoReq.append(", onBusiProtoResp->oldLongMsg procUrl:");
+        paramRichProtoReq.append(localMultiMsgDownResp.toString());
+        QLog.d("PaOldLongMsg", 2, paramRichProtoReq.toString());
       }
-      if (paramRichProtoResp.result == 0) {
-        switch (paramRichProtoResp.mChannelType)
-        {
-        case 1: 
-        default: 
-          paramRichProtoReq = "http://";
-          ServerAddr localServerAddr = (ServerAddr)paramRichProtoResp.ipList.get(0);
-          paramRichProtoReq = paramRichProtoReq + localServerAddr.mIp;
-          if (localServerAddr.port != 80) {
-            paramRichProtoReq = paramRichProtoReq + ":" + localServerAddr.port;
+      if (localMultiMsgDownResp.result == 0)
+      {
+        int i = localMultiMsgDownResp.mChannelType;
+        paramRichProtoResp = "http://";
+        paramRichProtoReq = paramRichProtoResp;
+        if (i != 0) {
+          if (i != 2) {
+            paramRichProtoReq = paramRichProtoResp;
+          } else {
+            paramRichProtoReq = "https://";
           }
-          break;
         }
+        ServerAddr localServerAddr = (ServerAddr)localMultiMsgDownResp.ipList.get(0);
+        paramRichProtoResp = new StringBuilder();
+        paramRichProtoResp.append(paramRichProtoReq);
+        paramRichProtoResp.append(localServerAddr.mIp);
+        paramRichProtoResp = paramRichProtoResp.toString();
+        paramRichProtoReq = paramRichProtoResp;
+        if (localServerAddr.port != 80)
+        {
+          paramRichProtoReq = new StringBuilder();
+          paramRichProtoReq.append(paramRichProtoResp);
+          paramRichProtoReq.append(":");
+          paramRichProtoReq.append(localServerAddr.port);
+          paramRichProtoReq = paramRichProtoReq.toString();
+        }
+        paramRichProtoResp = new StringBuilder();
+        paramRichProtoResp.append(paramRichProtoReq);
+        paramRichProtoResp.append(localMultiMsgDownResp.urlParam);
+        paramRichProtoReq = paramRichProtoResp.toString();
+        this.mMsgKey = localMultiMsgDownResp.msgkey;
+        receiveFile(this.mUiRequest.mRec.uniseq, paramRichProtoReq);
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actOldLongMessageTimeSSO", true, (System.nanoTime() - this.mSSOStartTime) / 1000000L, 0L, null, "", true);
+        return;
       }
-    }
-    for (;;)
-    {
-      paramRichProtoReq = paramRichProtoReq + paramRichProtoResp.urlParam;
-      this.mMsgKey = paramRichProtoResp.msgkey;
-      receiveFile(this.mUiRequest.mRec.uniseq, paramRichProtoReq);
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actOldLongMessageTimeSSO", true, (System.nanoTime() - this.mSSOStartTime) / 1000000L, 0L, null, "", true);
-      return;
-      paramRichProtoReq = "http://";
-      break;
-      paramRichProtoReq = "https://";
-      break;
-      this.errorCode = 1;
-      onError();
-      return;
       this.errorCode = 1;
       onError();
       return;
     }
+    this.errorCode = 1;
+    onError();
   }
   
   public void onError()
@@ -995,9 +1149,18 @@ public class StructLongMessageDownloadProcessor
     super.onError();
     if (QLog.isColorLevel())
     {
-      QLog.d("StructLongMessageDownloadProcessor", 2, "msgId=" + this.mUiRequest.mRec.uniseq + ", receiveError");
-      if (isOldLongMsg(this.mUiRequest.mRec)) {
-        QLog.d("PaOldLongMsg", 2, "msgId=uniseq:" + this.mUiRequest.mRec.uniseq + ", receiveError");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("msgId=");
+      localStringBuilder.append(this.mUiRequest.mRec.uniseq);
+      localStringBuilder.append(", receiveError");
+      QLog.d("StructLongMessageDownloadProcessor", 2, localStringBuilder.toString());
+      if (isOldLongMsg(this.mUiRequest.mRec))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("msgId=uniseq:");
+        localStringBuilder.append(this.mUiRequest.mRec.uniseq);
+        localStringBuilder.append(", receiveError");
+        QLog.d("PaOldLongMsg", 2, localStringBuilder.toString());
       }
     }
     updateMessageDataBaseContent(2005);
@@ -1007,7 +1170,6 @@ public class StructLongMessageDownloadProcessor
   
   public void onResp(NetResp paramNetResp)
   {
-    i = 1;
     if (this.directDownload) {
       ThreadManager.getSubThreadHandler().removeCallbacks(this);
     }
@@ -1015,22 +1177,33 @@ public class StructLongMessageDownloadProcessor
       return;
     }
     super.onResp(paramNetResp);
-    this.errCode = paramNetResp.mErrCode;
-    if (QLog.isColorLevel()) {
-      QLog.d("StructLongMessageDownloadProcessor", 2, "LongMessage Download time end: " + System.currentTimeMillis());
+    this.mProcessorReport.errCode = paramNetResp.mErrCode;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("LongMessage Download time end: ");
+      ((StringBuilder)localObject).append(System.currentTimeMillis());
+      QLog.d("StructLongMessageDownloadProcessor", 2, ((StringBuilder)localObject).toString());
     }
     if ((paramNetResp.mReq instanceof HttpNetReq))
     {
-      logRichMediaEvent("onResp", "result:" + paramNetResp.mResult + " errCode:" + paramNetResp.mHttpCode + " errDesc:" + paramNetResp.mErrDesc);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("result:");
+      ((StringBuilder)localObject).append(paramNetResp.mResult);
+      ((StringBuilder)localObject).append(" errCode:");
+      ((StringBuilder)localObject).append(paramNetResp.mHttpCode);
+      ((StringBuilder)localObject).append(" errDesc:");
+      ((StringBuilder)localObject).append(paramNetResp.mErrDesc);
+      logRichMediaEvent("onResp", ((StringBuilder)localObject).toString());
       this.httpErrorCode = paramNetResp.mHttpCode;
-      HttpNetReq localHttpNetReq = (HttpNetReq)paramNetResp.mReq;
-      if (localHttpNetReq.mReqUrl != null)
+      localObject = (HttpNetReq)paramNetResp.mReq;
+      if (((HttpNetReq)localObject).mReqUrl != null)
       {
         Iterator localIterator = downloadList.entrySet().iterator();
         while (localIterator.hasNext())
         {
           Map.Entry localEntry = (Map.Entry)localIterator.next();
-          if (localHttpNetReq.mReqUrl.equals(((HttpNetReq)localEntry.getValue()).mReqUrl)) {
+          if (((HttpNetReq)localObject).mReqUrl.equals(((HttpNetReq)localEntry.getValue()).mReqUrl)) {
             downloadList.remove(localEntry.getKey());
           }
         }
@@ -1040,97 +1213,128 @@ public class StructLongMessageDownloadProcessor
       this.mNetReq.mCallback = null;
     }
     this.mNetReq = null;
-    if ((paramNetResp.mResult == 0) && (paramNetResp.mRespData != null) && (paramNetResp.mRespData.length > 0))
+    int i = paramNetResp.mResult;
+    int j = 0;
+    if ((i == 0) && (paramNetResp.mRespData != null) && (paramNetResp.mRespData.length > 0))
     {
       paramNetResp = paramNetResp.mRespData;
       this.mTotolLen = paramNetResp.length;
-      if ((!(this.mUiRequest.mRec instanceof MessageForStructing)) || (isOldLongMsg(this.mUiRequest.mRec))) {}
-      for (;;)
+      if (((this.mUiRequest.mRec instanceof MessageForStructing)) && (!isOldLongMsg(this.mUiRequest.mRec))) {}
+    }
+    try
+    {
+      if (QLog.isColorLevel())
       {
-        try
-        {
-          if (QLog.isColorLevel())
-          {
-            QLog.d("StructLongMessageDownloadProcessor", 2, "onResp->oldLongMsg");
-            QLog.d("PaOldLongMsg", 2, "msgId=uniseq:" + this.mUiRequest.mRec.uniseq + ", onResp->getStructMsgFromXmlBuff");
-          }
-          this.mStructingMsg = StructMsgFactory.a(parseOldLongMsgContent(paramNetResp), -1);
-        }
-        catch (Exception paramNetResp)
-        {
-          continue;
-          i = 0;
-          continue;
-        }
-        if ((this.mUiRequest.mRec.istroop == 1008) && (this.mStructingMsg != null) && ((TextUtils.isEmpty(this.mStructingMsg.mMsgBrief)) || (this.mStructingMsg.mEmptyMsgBriefModified))) {
-          this.mStructingMsg.mMsgBrief = AbsStructMsg.PA_DEFAULT_MSG_BRIEF;
-        }
-        if (this.mStructingMsg == null) {
-          continue;
-        }
-        this.errorCode = 0;
-        onSuccess();
-        if (!isOldLongMsg(this.mUiRequest.mRec)) {
-          continue;
-        }
+        QLog.d("StructLongMessageDownloadProcessor", 2, "onResp->oldLongMsg");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("msgId=uniseq:");
+        ((StringBuilder)localObject).append(this.mUiRequest.mRec.uniseq);
+        ((StringBuilder)localObject).append(", onResp->getStructMsgFromXmlBuff");
+        QLog.d("PaOldLongMsg", 2, ((StringBuilder)localObject).toString());
+      }
+      this.mStructingMsg = StructMsgFactory.a(parseOldLongMsgContent(paramNetResp), -1);
+    }
+    catch (Exception paramNetResp)
+    {
+      label437:
+      label449:
+      boolean bool;
+      int k;
+      break label437;
+    }
+    break label449;
+    this.mStructingMsg = StructMsgFactory.a(paramNetResp, -1);
+    if (this.mUiRequest.mRec.istroop == 1008)
+    {
+      paramNetResp = this.mStructingMsg;
+      if ((paramNetResp != null) && ((TextUtils.isEmpty(paramNetResp.mMsgBrief)) || (this.mStructingMsg.mEmptyMsgBriefModified))) {
+        this.mStructingMsg.mMsgBrief = AbsStructMsg.PA_DEFAULT_MSG_BRIEF;
+      }
+    }
+    if (this.mStructingMsg != null)
+    {
+      this.errorCode = 0;
+      onSuccess();
+      if (isOldLongMsg(this.mUiRequest.mRec))
+      {
         StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actOldLongMessageTimeDownload", true, (System.nanoTime() - this.mDownloadStartTime) / 1000000L, 0L, null, "", true);
         return;
-        this.mStructingMsg = StructMsgFactory.a(paramNetResp, -1);
       }
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actLongMessageTimeDownload", true, (System.nanoTime() - this.mDownloadStartTime) / 1000000L, 0L, null, "", true);
       return;
-      if ((this.url != null) && (!"".equals(this.url))) {
-        FMTSrvAddrProvider.getInstance().getLongMsgIpSaver().deleteIp(TransFileUtil.getIpAndPortFromUrl(this.url));
-      }
-      if (this.directDownload)
-      {
-        if (this.directDownloadFlag == 5) {}
-        for (i = 9;; i = 12)
-        {
-          this.directDownloadFlag = i;
-          requestUrlWhileDirectFailed();
-          return;
-        }
-      }
-      this.errorCode = 12;
-      onError();
-      return;
     }
-    if ((this.url != null) && (!"".equals(this.url))) {
+    paramNetResp = this.url;
+    if ((paramNetResp != null) && (!"".equals(paramNetResp))) {
       FMTSrvAddrProvider.getInstance().getLongMsgIpSaver().deleteIp(TransFileUtil.getIpAndPortFromUrl(this.url));
     }
-    if (((this.mUiRequest.mRec instanceof MessageForStructing)) && (isResourceIDOutofDate(this.mUiRequest.mRec)) && (399 < this.httpErrorCode) && (this.httpErrorCode < 500))
+    bool = this.directDownload;
+    i = 12;
+    if (bool)
     {
-      if (i != 0)
-      {
-        notifyResourceExpired(this.mUiRequest.mRec);
-        return;
+      if (this.directDownloadFlag == 5) {
+        i = 9;
       }
-      if ((paramNetResp.mErrCode == 9364) && (this.mNetworkChgRetryCount < 3))
-      {
-        this.mNetworkChgRetryCount += 1;
-        if (QLog.isColorLevel()) {
-          QLog.d("StructLongMessageDownloadProcessor", 2, "LongMessage Download Fail. Net Changed. Retry " + this.mNetworkChgRetryCount);
-        }
-        clearReprotInfo();
-        this.directDownloadFlag = 15;
-        sendGetUrlReq();
-        return;
-      }
-      if (this.directDownload)
-      {
-        if (this.directDownloadFlag == 5) {}
-        for (i = 8;; i = 11)
-        {
-          this.directDownloadFlag = i;
-          requestUrlWhileDirectFailed();
-          return;
-        }
-      }
-      this.errorCode = 14;
-      onError();
+      this.directDownloadFlag = i;
+      requestUrlWhileDirectFailed();
       return;
     }
+    this.errorCode = 12;
+    onError();
+    return;
+    Object localObject = this.url;
+    if ((localObject != null) && (!"".equals(localObject))) {
+      FMTSrvAddrProvider.getInstance().getLongMsgIpSaver().deleteIp(TransFileUtil.getIpAndPortFromUrl(this.url));
+    }
+    i = j;
+    if ((this.mUiRequest.mRec instanceof MessageForStructing))
+    {
+      i = j;
+      if (isResourceIDOutofDate(this.mUiRequest.mRec))
+      {
+        k = this.httpErrorCode;
+        i = j;
+        if (399 < k)
+        {
+          i = j;
+          if (k < 500) {
+            i = 1;
+          }
+        }
+      }
+    }
+    if (i != 0)
+    {
+      notifyResourceExpired(this.mUiRequest.mRec);
+      return;
+    }
+    if ((paramNetResp.mErrCode == 9364) && (this.mNetworkChgRetryCount < 3))
+    {
+      this.mNetworkChgRetryCount += 1;
+      if (QLog.isColorLevel())
+      {
+        paramNetResp = new StringBuilder();
+        paramNetResp.append("LongMessage Download Fail. Net Changed. Retry ");
+        paramNetResp.append(this.mNetworkChgRetryCount);
+        QLog.d("StructLongMessageDownloadProcessor", 2, paramNetResp.toString());
+      }
+      clearReprotInfo();
+      this.directDownloadFlag = 15;
+      sendGetUrlReq();
+      return;
+    }
+    if (this.directDownload)
+    {
+      if (this.directDownloadFlag == 5) {
+        i = 8;
+      } else {
+        i = 11;
+      }
+      this.directDownloadFlag = i;
+      requestUrlWhileDirectFailed();
+      return;
+    }
+    this.errorCode = 14;
+    onError();
   }
   
   public void onSuccess()
@@ -1138,9 +1342,18 @@ public class StructLongMessageDownloadProcessor
     super.onSuccess();
     if (QLog.isColorLevel())
     {
-      QLog.d("StructLongMessageDownloadProcessor", 2, "msgId=" + this.mUiRequest.mRec.uniseq + ", receiveSuccess");
-      if (isOldLongMsg(this.mUiRequest.mRec)) {
-        QLog.d("PaOldLongMsg", 2, "msgId=uniseq:" + this.mUiRequest.mRec.uniseq + ", receiveSuccess");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("msgId=");
+      localStringBuilder.append(this.mUiRequest.mRec.uniseq);
+      localStringBuilder.append(", receiveSuccess");
+      QLog.d("StructLongMessageDownloadProcessor", 2, localStringBuilder.toString());
+      if (isOldLongMsg(this.mUiRequest.mRec))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("msgId=uniseq:");
+        localStringBuilder.append(this.mUiRequest.mRec.uniseq);
+        localStringBuilder.append(", receiveSuccess");
+        QLog.d("PaOldLongMsg", 2, localStringBuilder.toString());
       }
     }
     updateMessageDataBaseContent(2003);
@@ -1158,16 +1371,18 @@ public class StructLongMessageDownloadProcessor
       this.mNetEngine.cancelReq(this.mNetReq);
       this.mNetReq = null;
     }
-    if (this.directDownloadFlag == 5) {}
-    for (int i = 13;; i = 14)
-    {
-      this.directDownloadFlag = i;
-      if ((this.url != null) && (!"".equals(this.url))) {
-        FMTSrvAddrProvider.getInstance().getLongMsgIpSaver().deleteIp(TransFileUtil.getIpAndPortFromUrl(this.url));
-      }
-      sendGetUrlReq();
-      return;
+    int i;
+    if (this.directDownloadFlag == 5) {
+      i = 13;
+    } else {
+      i = 14;
     }
+    this.directDownloadFlag = i;
+    String str = this.url;
+    if ((str != null) && (!"".equals(str))) {
+      FMTSrvAddrProvider.getInstance().getLongMsgIpSaver().deleteIp(TransFileUtil.getIpAndPortFromUrl(this.url));
+    }
+    sendGetUrlReq();
   }
   
   public void start()
@@ -1180,7 +1395,7 @@ public class StructLongMessageDownloadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor
  * JD-Core Version:    0.7.0.1
  */

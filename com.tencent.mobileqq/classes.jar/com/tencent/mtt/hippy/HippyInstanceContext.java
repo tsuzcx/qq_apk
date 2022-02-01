@@ -61,23 +61,25 @@ public final class HippyInstanceContext
   
   public Map getNativeParams()
   {
-    if (this.mModuleParams != null) {
-      return this.mModuleParams.nativeParams;
+    HippyEngine.ModuleLoadParams localModuleLoadParams = this.mModuleParams;
+    if (localModuleLoadParams != null) {
+      return localModuleLoadParams.nativeParams;
     }
     return null;
   }
   
   void notifyInstanceDestroy()
   {
-    Object localObject;
-    if (this.mModuleParams != null)
+    Object localObject = this.mModuleParams;
+    if (localObject != null)
     {
-      localObject = this.mModuleParams.nativeParams;
+      localObject = ((HippyEngine.ModuleLoadParams)localObject).nativeParams;
       if (localObject != null) {
         ((Map)localObject).clear();
       }
     }
-    if ((this.mDestroyListeners != null) && (this.mDestroyListeners.size() > 0))
+    localObject = this.mDestroyListeners;
+    if ((localObject != null) && (((WeakEventHub)localObject).size() > 0))
     {
       localObject = this.mDestroyListeners.getNotifyListeners().iterator();
       while (((Iterator)localObject).hasNext())
@@ -100,8 +102,12 @@ public final class HippyInstanceContext
   
   public void registerInstanceDestroyListener(HippyInstanceContext.InstanceDestroyListener paramInstanceDestroyListener)
   {
-    if ((paramInstanceDestroyListener != null) && (this.mDestroyListeners != null)) {
-      this.mDestroyListeners.registerListener(paramInstanceDestroyListener);
+    if (paramInstanceDestroyListener != null)
+    {
+      WeakEventHub localWeakEventHub = this.mDestroyListeners;
+      if (localWeakEventHub != null) {
+        localWeakEventHub.registerListener(paramInstanceDestroyListener);
+      }
     }
   }
   
@@ -112,47 +118,38 @@ public final class HippyInstanceContext
   
   public void setModuleParams(HippyEngine.ModuleLoadParams paramModuleLoadParams)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
     this.mModuleParams = paramModuleLoadParams;
-    if ((this.mModuleParams != null) && (this.mModuleParams.bundleLoader != null)) {
+    HippyEngine.ModuleLoadParams localModuleLoadParams = this.mModuleParams;
+    if ((localModuleLoadParams != null) && (localModuleLoadParams.bundleLoader != null))
+    {
       this.mBundleLoader = this.mModuleParams.bundleLoader;
+      return;
     }
-    do
+    if (!TextUtils.isEmpty(paramModuleLoadParams.jsAssetsPath)) {}
+    for (paramModuleLoadParams = new HippyAssetBundleLoader(paramModuleLoadParams.context, paramModuleLoadParams.jsAssetsPath, TextUtils.isEmpty(paramModuleLoadParams.codeCacheTag) ^ true, paramModuleLoadParams.codeCacheTag);; paramModuleLoadParams = new HippyFileBundleLoader(paramModuleLoadParams.jsFilePath, TextUtils.isEmpty(paramModuleLoadParams.codeCacheTag) ^ true, paramModuleLoadParams.codeCacheTag))
     {
+      this.mBundleLoader = paramModuleLoadParams;
       return;
-      if (!TextUtils.isEmpty(paramModuleLoadParams.jsAssetsPath))
-      {
-        localObject = paramModuleLoadParams.context;
-        String str = paramModuleLoadParams.jsAssetsPath;
-        if (!TextUtils.isEmpty(paramModuleLoadParams.codeCacheTag)) {}
-        for (;;)
-        {
-          this.mBundleLoader = new HippyAssetBundleLoader((Context)localObject, str, bool1, paramModuleLoadParams.codeCacheTag);
-          return;
-          bool1 = false;
-        }
+      if (TextUtils.isEmpty(paramModuleLoadParams.jsFilePath)) {
+        break;
       }
-    } while (TextUtils.isEmpty(paramModuleLoadParams.jsFilePath));
-    Object localObject = paramModuleLoadParams.jsFilePath;
-    if (!TextUtils.isEmpty(paramModuleLoadParams.codeCacheTag)) {}
-    for (bool1 = bool2;; bool1 = false)
-    {
-      this.mBundleLoader = new HippyFileBundleLoader((String)localObject, bool1, paramModuleLoadParams.codeCacheTag);
-      return;
     }
   }
   
   public void unregisterInstanceDestroyListener(HippyInstanceContext.InstanceDestroyListener paramInstanceDestroyListener)
   {
-    if ((paramInstanceDestroyListener != null) && (this.mDestroyListeners != null)) {
-      this.mDestroyListeners.unregisterListener(paramInstanceDestroyListener);
+    if (paramInstanceDestroyListener != null)
+    {
+      WeakEventHub localWeakEventHub = this.mDestroyListeners;
+      if (localWeakEventHub != null) {
+        localWeakEventHub.unregisterListener(paramInstanceDestroyListener);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippyInstanceContext
  * JD-Core Version:    0.7.0.1
  */

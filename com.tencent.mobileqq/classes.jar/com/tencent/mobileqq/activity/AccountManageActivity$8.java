@@ -14,23 +14,23 @@ class AccountManageActivity$8
   {
     AccountManageActivity.a(this.a).dismiss();
     paramView = AccountManageActivity.a(this.a).getActionMenuItem(paramInt);
-    if (paramView == null) {}
-    do
-    {
+    if (paramView == null) {
       return;
-      paramInt = paramView.action;
-      if (paramInt == 1)
-      {
-        AccountManageActivity.c(this.a);
-        return;
-      }
-    } while (paramInt != 2);
-    this.a.h();
+    }
+    paramInt = paramView.action;
+    if (paramInt == 1)
+    {
+      AccountManageActivity.c(this.a);
+      return;
+    }
+    if (paramInt == 2) {
+      this.a.h();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.8
  * JD-Core Version:    0.7.0.1
  */

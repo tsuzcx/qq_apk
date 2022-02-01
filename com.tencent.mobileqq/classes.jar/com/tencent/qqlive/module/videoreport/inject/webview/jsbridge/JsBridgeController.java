@@ -2,7 +2,6 @@ package com.tencent.qqlive.module.videoreport.inject.webview.jsbridge;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.qqlive.module.videoreport.inject.webview.WebViewCompatHelper;
 import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.jsinterface.JsInterface;
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -15,14 +14,15 @@ public class JsBridgeController
   
   private JsInterface fetchJsInterface(@NonNull Object paramObject)
   {
-    JsInterface localJsInterface = null;
     if (this.mJsInterfaceCache.containsKey(paramObject)) {
       localJsInterface = (JsInterface)this.mJsInterfaceCache.get(paramObject);
+    } else {
+      localJsInterface = null;
     }
     if (localJsInterface != null) {
       return localJsInterface;
     }
-    localJsInterface = new JsInterface(paramObject);
+    JsInterface localJsInterface = new JsInterface(paramObject);
     this.mJsInterfaceCache.put(paramObject, localJsInterface);
     return localJsInterface;
   }
@@ -30,6 +30,11 @@ public class JsBridgeController
   public static JsBridgeController getInstance()
   {
     return JsBridgeController.InstanceHolder.sInstance;
+  }
+  
+  private String getJsonBody(String paramString)
+  {
+    return paramString.substring(13);
   }
   
   private boolean isValidMessage(String paramString)
@@ -40,19 +45,20 @@ public class JsBridgeController
     return false;
   }
   
-  public boolean shouldIntercept(Object paramObject1, String paramString1, String paramString2, Object paramObject2)
+  public String shouldIntercept(Object paramObject, String paramString1, String paramString2)
   {
-    if (!isValidMessage(paramString1)) {}
-    while (paramObject1 == null) {
-      return false;
+    if (!isValidMessage(paramString1)) {
+      return "";
     }
-    WebViewCompatHelper.onJsConfirmResult(paramObject2, JsBridgeCall.call(fetchJsInterface(paramObject1), paramString1.substring("DtJsBridge://".length()), paramString2));
-    return true;
+    if (paramObject == null) {
+      return "";
+    }
+    return JsBridgeCall.call(fetchJsInterface(paramObject), getJsonBody(paramString1), paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController
  * JD-Core Version:    0.7.0.1
  */

@@ -13,9 +13,10 @@ class ChatHistoryTroopMemberFragment$14
   
   public void onClick(View paramView)
   {
-    this.a.f = false;
-    this.a.u = "";
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    ChatHistoryTroopMemberFragment localChatHistoryTroopMemberFragment = this.a;
+    localChatHistoryTroopMemberFragment.f = false;
+    localChatHistoryTroopMemberFragment.u = "";
+    localChatHistoryTroopMemberFragment.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     if (this.a.d != 22) {
       this.a.b.setVisibility(0);
@@ -28,7 +29,7 @@ class ChatHistoryTroopMemberFragment$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.14
  * JD-Core Version:    0.7.0.1
  */

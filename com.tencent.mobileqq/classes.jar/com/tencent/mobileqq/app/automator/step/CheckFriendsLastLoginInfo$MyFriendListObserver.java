@@ -7,27 +7,27 @@ class CheckFriendsLastLoginInfo$MyFriendListObserver
 {
   private CheckFriendsLastLoginInfo$MyFriendListObserver(CheckFriendsLastLoginInfo paramCheckFriendsLastLoginInfo) {}
   
-  public void onUpdateLastLoginInfo(boolean paramBoolean1, boolean paramBoolean2)
+  protected void onUpdateLastLoginInfo(boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i = 0;
-    if (!paramBoolean1) {
-      this.a.a(6);
-    }
-    for (;;)
+    if (!paramBoolean1)
     {
-      if (i != 0) {
-        this.a.a(7);
-      }
-      return;
-      if (paramBoolean2) {
-        i = 1;
-      }
+      this.a.setResult(6);
+    }
+    else if (paramBoolean2)
+    {
+      i = 1;
+      break label27;
+    }
+    int i = 0;
+    label27:
+    if (i != 0) {
+      this.a.setResult(7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.CheckFriendsLastLoginInfo.MyFriendListObserver
  * JD-Core Version:    0.7.0.1
  */

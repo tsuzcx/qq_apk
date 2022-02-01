@@ -11,14 +11,16 @@ class SavingAnimView$3
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    SavingAnimView.a(this.a, (SavingAnimView.b(this.a) + f) % 1.0F);
-    SavingAnimView.b(this.a, (f + SavingAnimView.c(this.a)) % 1.0F);
+    paramValueAnimator = this.a;
+    SavingAnimView.a(paramValueAnimator, (SavingAnimView.b(paramValueAnimator) + f) % 1.0F);
+    paramValueAnimator = this.a;
+    SavingAnimView.b(paramValueAnimator, (f + SavingAnimView.c(paramValueAnimator)) % 1.0F);
     this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.SavingAnimView.3
  * JD-Core Version:    0.7.0.1
  */

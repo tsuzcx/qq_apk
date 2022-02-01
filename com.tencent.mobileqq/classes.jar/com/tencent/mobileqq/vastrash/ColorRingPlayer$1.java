@@ -19,23 +19,22 @@ class ColorRingPlayer$1
     {
       ???.release();
       this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-      this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
-      this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer.c.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130847449));
+      ??? = this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer;
+      ???.jdField_a_of_type_Int = 0;
+      ???.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
+      this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer.c.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130847318));
       this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
-    }
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer$PlayerStatus)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer$PlayerStatus.jdField_a_of_type_Int = 6;
-      return;
-      ??? = finally;
-      throw ???;
+      synchronized (this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer$PlayerStatus)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer$PlayerStatus.jdField_a_of_type_Int = 6;
+        return;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vastrash.ColorRingPlayer.1
  * JD-Core Version:    0.7.0.1
  */

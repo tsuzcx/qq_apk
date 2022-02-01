@@ -38,7 +38,7 @@ public class CsTask
     {
       paramReqBody.a2.set(str);
       paramReqBody.platform.set(1);
-      paramReqBody.version.set("8.5.5");
+      paramReqBody.version.set("8.7.0");
       paramReqBody.original_id.set(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
       paramReqBody.original_key.set((String)localObject);
       paramReqBody.original_id_type.set(1);
@@ -86,7 +86,7 @@ public class CsTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.protocol.CsTask
  * JD-Core Version:    0.7.0.1
  */

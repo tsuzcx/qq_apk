@@ -37,6 +37,8 @@ public final class qqstory_service$MsgTabNodeInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -45,12 +47,12 @@ public final class qqstory_service$MsgTabNodeInfo
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro8 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 48, 58, 66, 72, 82, 90, 98, 104, 114, 120, 130, 136, 144, 800 }, new String[] { "uint32_node_type", "uint64_uid", "bytes_union_id", "rpt_msg_video_info_list", "uint64_req_time_stamp", "uint64_node_info_time_stamp", "bytes_title", "bytes_icon_url", "recommend_id", "link_url", "node_vid", "video_cover", "node_position", "recommend_name_icon", "uint64_cache_seq", "passthrough", "redpoint", "video_cover_type", "no_update" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro1, null, Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro2, localByteStringMicro3, Long.valueOf(0L), localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, Integer.valueOf(0), localByteStringMicro7, Long.valueOf(0L), localByteStringMicro8, Boolean.valueOf(false), Integer.valueOf(0), Integer.valueOf(0) }, MsgTabNodeInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 48, 58, 66, 72, 82, 90, 98, 104, 114, 120, 130, 136, 144, 800 }, new String[] { "uint32_node_type", "uint64_uid", "bytes_union_id", "rpt_msg_video_info_list", "uint64_req_time_stamp", "uint64_node_info_time_stamp", "bytes_title", "bytes_icon_url", "recommend_id", "link_url", "node_vid", "video_cover", "node_position", "recommend_name_icon", "uint64_cache_seq", "passthrough", "redpoint", "video_cover_type", "no_update" }, new Object[] { localInteger, localLong, localByteStringMicro1, null, localLong, localLong, localByteStringMicro2, localByteStringMicro3, localLong, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, localInteger, localByteStringMicro7, localLong, localByteStringMicro8, Boolean.valueOf(false), localInteger, localInteger }, MsgTabNodeInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.MsgTabNodeInfo
  * JD-Core Version:    0.7.0.1
  */

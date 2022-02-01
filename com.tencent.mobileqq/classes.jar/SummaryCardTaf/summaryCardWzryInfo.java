@@ -27,8 +27,9 @@ public final class summaryCardWzryInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.honorId, 0);
-    if (this.strRecord != null) {
-      paramJceOutputStream.write(this.strRecord, 1);
+    String str = this.strRecord;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }

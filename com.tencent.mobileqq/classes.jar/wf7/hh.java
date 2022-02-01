@@ -15,7 +15,10 @@ public class hh
   
   public hh(Context paramContext, String paramString)
   {
-    this.tf = paramContext.getSharedPreferences("wfsdk_" + paramString, 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("wfsdk_");
+    localStringBuilder.append(paramString);
+    this.tf = paramContext.getSharedPreferences(localStringBuilder.toString(), 0);
   }
   
   private SharedPreferences.Editor getEditor()
@@ -69,8 +72,9 @@ public class hh
   public boolean eQ()
   {
     this.th = false;
-    if (this.tg != null) {
-      return this.tg.commit();
+    SharedPreferences.Editor localEditor = this.tg;
+    if (localEditor != null) {
+      return localEditor.commit();
     }
     return true;
   }
@@ -117,7 +121,7 @@ public class hh
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.hh
  * JD-Core Version:    0.7.0.1
  */

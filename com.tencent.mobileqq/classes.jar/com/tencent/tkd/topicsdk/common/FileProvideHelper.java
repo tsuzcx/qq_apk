@@ -26,28 +26,26 @@ public class FileProvideHelper
   
   private static FileProvideHelper.PathStrategy a(Context paramContext, String paramString)
   {
-    FileProvideHelper.PathStrategy localPathStrategy1;
     synchronized (jdField_a_of_type_JavaUtilHashMap)
     {
       FileProvideHelper.PathStrategy localPathStrategy2 = (FileProvideHelper.PathStrategy)jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      localPathStrategy1 = localPathStrategy2;
-      if (localPathStrategy2 != null) {}
-    }
-    try
-    {
-      localPathStrategy1 = b(paramContext, paramString);
-      jdField_a_of_type_JavaUtilHashMap.put(paramString, localPathStrategy1);
+      FileProvideHelper.PathStrategy localPathStrategy1 = localPathStrategy2;
+      if (localPathStrategy2 == null) {
+        try
+        {
+          localPathStrategy1 = b(paramContext, paramString);
+          jdField_a_of_type_JavaUtilHashMap.put(paramString, localPathStrategy1);
+        }
+        catch (XmlPullParserException paramContext)
+        {
+          throw new IllegalArgumentException("Failed to parse android.support.FILE_PROVIDER_PATHS meta-data", paramContext);
+        }
+        catch (IOException paramContext)
+        {
+          throw new IllegalArgumentException("Failed to parse android.support.FILE_PROVIDER_PATHS meta-data", paramContext);
+        }
+      }
       return localPathStrategy1;
-    }
-    catch (IOException paramContext)
-    {
-      throw new IllegalArgumentException("Failed to parse android.support.FILE_PROVIDER_PATHS meta-data", paramContext);
-      paramContext = finally;
-      throw paramContext;
-    }
-    catch (XmlPullParserException paramContext)
-    {
-      throw new IllegalArgumentException("Failed to parse android.support.FILE_PROVIDER_PATHS meta-data", paramContext);
     }
   }
   
@@ -55,21 +53,17 @@ public class FileProvideHelper
   {
     int j = paramVarArgs.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       String str = paramVarArgs[i];
-      if (str == null) {
-        break label40;
+      File localFile = paramFile;
+      if (str != null) {
+        localFile = new File(paramFile, str);
       }
-      paramFile = new File(paramFile, str);
-    }
-    label40:
-    for (;;)
-    {
       i += 1;
-      break;
-      return paramFile;
+      paramFile = localFile;
     }
+    return paramFile;
   }
   
   @NotNull
@@ -93,86 +87,94 @@ public class FileProvideHelper
   private static FileProvideHelper.PathStrategy b(Context paramContext, String paramString)
   {
     FileProvideHelper.SimplePathStrategy localSimplePathStrategy = new FileProvideHelper.SimplePathStrategy(paramString);
-    Object localObject = paramContext.getPackageManager().resolveContentProvider(paramString, 128);
-    if (localObject == null) {
-      throw new IllegalArgumentException("Couldn't find meta-data for provider with authority " + paramString);
-    }
-    localObject = ((ProviderInfo)localObject).loadXmlMetaData(paramContext.getPackageManager(), "android.support.FILE_PROVIDER_PATHS");
-    if (localObject == null) {
+    ProviderInfo localProviderInfo = paramContext.getPackageManager().resolveContentProvider(paramString, 128);
+    if (localProviderInfo != null)
+    {
+      XmlResourceParser localXmlResourceParser = localProviderInfo.loadXmlMetaData(paramContext.getPackageManager(), "android.support.FILE_PROVIDER_PATHS");
+      if (localXmlResourceParser != null)
+      {
+        for (;;)
+        {
+          int i = localXmlResourceParser.next();
+          if (i == 1) {
+            break;
+          }
+          if (i == 2)
+          {
+            Object localObject = localXmlResourceParser.getName();
+            localProviderInfo = null;
+            String str1 = localXmlResourceParser.getAttributeValue(null, "name");
+            String str2 = localXmlResourceParser.getAttributeValue(null, "path");
+            if ("root-path".equals(localObject))
+            {
+              paramString = jdField_a_of_type_JavaIoFile;
+            }
+            else if ("files-path".equals(localObject))
+            {
+              paramString = paramContext.getFilesDir();
+            }
+            else if ("cache-path".equals(localObject))
+            {
+              paramString = paramContext.getCacheDir();
+            }
+            else if ("external-path".equals(localObject))
+            {
+              paramString = Environment.getExternalStorageDirectory();
+            }
+            else if ("external-files-path".equals(localObject))
+            {
+              localObject = a(paramContext, null);
+              paramString = localProviderInfo;
+              if (localObject.length > 0) {
+                paramString = localObject[0];
+              }
+            }
+            else if ("external-cache-path".equals(localObject))
+            {
+              localObject = a(paramContext);
+              paramString = localProviderInfo;
+              if (localObject.length > 0) {
+                paramString = localObject[0];
+              }
+            }
+            else
+            {
+              paramString = localProviderInfo;
+              if (Build.VERSION.SDK_INT >= 21)
+              {
+                paramString = localProviderInfo;
+                if ("external-media-path".equals(localObject))
+                {
+                  localObject = paramContext.getExternalMediaDirs();
+                  paramString = localProviderInfo;
+                  if (localObject.length > 0) {
+                    paramString = localObject[0];
+                  }
+                }
+              }
+            }
+            if (paramString != null) {
+              localSimplePathStrategy.a(str1, a(paramString, new String[] { str2 }));
+            }
+          }
+        }
+        return localSimplePathStrategy;
+      }
       throw new IllegalArgumentException("Missing android.support.FILE_PROVIDER_PATHS meta-data");
     }
-    label313:
+    paramContext = new StringBuilder();
+    paramContext.append("Couldn't find meta-data for provider with authority ");
+    paramContext.append(paramString);
+    paramContext = new IllegalArgumentException(paramContext.toString());
     for (;;)
     {
-      int i = ((XmlResourceParser)localObject).next();
-      String str1;
-      String str2;
-      if (i != 1)
-      {
-        if (i != 2) {
-          continue;
-        }
-        paramString = ((XmlResourceParser)localObject).getName();
-        str1 = ((XmlResourceParser)localObject).getAttributeValue(null, "name");
-        str2 = ((XmlResourceParser)localObject).getAttributeValue(null, "path");
-        if ("root-path".equals(paramString)) {
-          paramString = jdField_a_of_type_JavaIoFile;
-        }
-      }
-      for (;;)
-      {
-        if (paramString == null) {
-          break label313;
-        }
-        localSimplePathStrategy.a(str1, a(paramString, new String[] { str2 }));
-        break;
-        if ("files-path".equals(paramString))
-        {
-          paramString = paramContext.getFilesDir();
-        }
-        else if ("cache-path".equals(paramString))
-        {
-          paramString = paramContext.getCacheDir();
-        }
-        else if ("external-path".equals(paramString))
-        {
-          paramString = Environment.getExternalStorageDirectory();
-        }
-        else
-        {
-          if ("external-files-path".equals(paramString))
-          {
-            paramString = a(paramContext, null);
-            if (paramString.length > 0) {
-              paramString = paramString[0];
-            }
-          }
-          else if ("external-cache-path".equals(paramString))
-          {
-            paramString = a(paramContext);
-            if (paramString.length > 0) {
-              paramString = paramString[0];
-            }
-          }
-          else if ((Build.VERSION.SDK_INT >= 21) && ("external-media-path".equals(paramString)))
-          {
-            paramString = paramContext.getExternalMediaDirs();
-            if (paramString.length > 0)
-            {
-              paramString = paramString[0];
-              continue;
-              return localSimplePathStrategy;
-            }
-          }
-          paramString = null;
-        }
-      }
+      throw paramContext;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.common.FileProvideHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ class ChatSettingActivity$7
     super.onUpdate(paramInt, paramBoolean, paramObject);
     if (paramInt == 0)
     {
-      QQToast.a(BaseApplication.getContext(), 2131699091, 0).a();
+      QQToast.a(BaseApplication.getContext(), 2131699198, 0).a();
       if (this.a.e != null) {
         this.a.e.setVisibility(8);
       }
@@ -27,7 +27,7 @@ class ChatSettingActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingActivity.7
  * JD-Core Version:    0.7.0.1
  */

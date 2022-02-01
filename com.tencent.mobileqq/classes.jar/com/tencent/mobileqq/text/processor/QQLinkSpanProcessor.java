@@ -21,60 +21,70 @@ public class QQLinkSpanProcessor
   
   public void doGrab(GrabParams paramGrabParams, ISpanCallback paramISpanCallback)
   {
-    LinkSpanEntity localLinkSpanEntity = null;
-    if ((paramGrabParams == null) || (paramISpanCallback == null)) {}
-    Object localObject1;
-    label52:
-    do
+    if (paramGrabParams != null)
     {
-      return;
+      if (paramISpanCallback == null) {
+        return;
+      }
+      Object localObject1;
+      Object localObject2;
       if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
       {
         localObject1 = BaseApplicationImpl.getApplication().getRuntime();
         if (localObject1 != null) {
           jdField_a_of_type_JavaLangString = ((AppRuntime)localObject1).getAccount();
         }
-        if (jdField_a_of_type_JavaLangString != null) {
-          break;
+        localObject2 = jdField_a_of_type_JavaLangString;
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = "";
         }
-        localObject1 = "";
         jdField_a_of_type_JavaLangString = (String)localObject1;
       }
-    } while (paramGrabParams.text == null);
-    Object localObject2;
-    if ((jdField_a_of_type_JavaLangString.length() > 3) && (jdField_a_of_type_JavaLangString.charAt(jdField_a_of_type_JavaLangString.length() - 3) == '0') && (jdField_a_of_type_JavaLangString.charAt(jdField_a_of_type_JavaLangString.length() - 2) == '1'))
-    {
-      localObject1 = new HashMap();
-      ((HashMap)localObject1).put("length", paramGrabParams.text.length() + "");
-      localObject2 = StatisticCollector.getInstance(BaseApplication.getContext());
-      if (paramGrabParams.text.length() >= 1000) {
-        break label325;
-      }
-    }
-    label325:
-    for (boolean bool = true;; bool = false)
-    {
-      ((StatisticCollector)localObject2).collectPerformance(null, "qq_url_length_report", bool, 0L, 0L, (HashMap)localObject1, null);
-      if (paramGrabParams.text.length() >= 1000) {
-        break;
-      }
-      localObject2 = QQTextParseLinkUtil.a(paramGrabParams.text);
-      localObject1 = localLinkSpanEntity;
-      if ((paramGrabParams.message instanceof MessageRecord)) {
-        localObject1 = (MessageRecord)paramGrabParams.message;
-      }
-      if ((localObject2 == null) || (((List)localObject2).size() <= 0)) {
-        break;
-      }
-      paramGrabParams = ((List)localObject2).iterator();
-      while (paramGrabParams.hasNext())
+      if (paramGrabParams.text != null)
       {
-        localLinkSpanEntity = (LinkSpanEntity)paramGrabParams.next();
-        paramISpanCallback.addSpan(new LinkSpan(localLinkSpanEntity.jdField_a_of_type_JavaLangString, jdField_a_of_type_JavaLangString, (MessageRecord)localObject1), localLinkSpanEntity.jdField_a_of_type_Int, localLinkSpanEntity.b, 33);
+        if (jdField_a_of_type_JavaLangString.length() > 3)
+        {
+          localObject1 = jdField_a_of_type_JavaLangString;
+          if (((String)localObject1).charAt(((String)localObject1).length() - 3) == '0')
+          {
+            localObject1 = jdField_a_of_type_JavaLangString;
+            if (((String)localObject1).charAt(((String)localObject1).length() - 2) == '1')
+            {
+              localObject1 = new HashMap();
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append(paramGrabParams.text.length());
+              ((StringBuilder)localObject2).append("");
+              ((HashMap)localObject1).put("length", ((StringBuilder)localObject2).toString());
+              localObject2 = StatisticCollector.getInstance(BaseApplication.getContext());
+              boolean bool;
+              if (paramGrabParams.text.length() < 1000) {
+                bool = true;
+              } else {
+                bool = false;
+              }
+              ((StatisticCollector)localObject2).collectPerformance(null, "qq_url_length_report", bool, 0L, 0L, (HashMap)localObject1, null);
+            }
+          }
+        }
+        if (paramGrabParams.text.length() < 1000)
+        {
+          localObject2 = QQTextParseLinkUtil.a(paramGrabParams.text);
+          localObject1 = null;
+          if ((paramGrabParams.message instanceof MessageRecord)) {
+            localObject1 = (MessageRecord)paramGrabParams.message;
+          }
+          if ((localObject2 != null) && (((List)localObject2).size() > 0))
+          {
+            paramGrabParams = ((List)localObject2).iterator();
+            while (paramGrabParams.hasNext())
+            {
+              localObject2 = (LinkSpanEntity)paramGrabParams.next();
+              paramISpanCallback.addSpan(new LinkSpan(((LinkSpanEntity)localObject2).jdField_a_of_type_JavaLangString, jdField_a_of_type_JavaLangString, (MessageRecord)localObject1), ((LinkSpanEntity)localObject2).jdField_a_of_type_Int, ((LinkSpanEntity)localObject2).b, 33);
+            }
+          }
+        }
       }
-      break;
-      localObject1 = jdField_a_of_type_JavaLangString;
-      break label52;
     }
   }
   
@@ -95,7 +105,7 @@ public class QQLinkSpanProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.text.processor.QQLinkSpanProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -12,12 +12,15 @@ class MiniAppWorker$3
   
   public void handleException(JsContext paramJsContext, JsError paramJsError)
   {
-    QMLog.e("minisdk-worker", "X5Exception:" + paramJsError.getMessage());
+    paramJsContext = new StringBuilder();
+    paramJsContext.append("X5Exception:");
+    paramJsContext.append(paramJsError.getMessage());
+    QMLog.e("minisdk-worker", paramJsContext.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.worker.MiniAppWorker.3
  * JD-Core Version:    0.7.0.1
  */

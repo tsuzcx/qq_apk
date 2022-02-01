@@ -47,26 +47,24 @@ public class GetAdInfoRequest
     try
     {
       localStGetSdkAdInfoRsp.mergeFrom(paramArrayOfByte);
-      if (localStGetSdkAdInfoRsp != null)
-      {
-        paramJSONObject.put("sourceFrom", localStGetSdkAdInfoRsp.strSourceFrom.get());
-        paramJSONObject.put("category", localStGetSdkAdInfoRsp.strMiniCategory.get());
-        paramJSONObject.put("posId", localStGetSdkAdInfoRsp.strPosId.get());
-        return paramJSONObject;
-      }
+      paramJSONObject.put("sourceFrom", localStGetSdkAdInfoRsp.strSourceFrom.get());
+      paramJSONObject.put("category", localStGetSdkAdInfoRsp.strMiniCategory.get());
+      paramJSONObject.put("posId", localStGetSdkAdInfoRsp.strPosId.get());
+      return paramJSONObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      QMLog.d("GetAdRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("onResponse fail.");
+      paramJSONObject.append(paramArrayOfByte);
+      QMLog.d("GetAdRequest", paramJSONObject.toString());
     }
-    QMLog.d("GetAdRequest", "onResponse fail.rsp = null");
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.GetAdInfoRequest
  * JD-Core Version:    0.7.0.1
  */

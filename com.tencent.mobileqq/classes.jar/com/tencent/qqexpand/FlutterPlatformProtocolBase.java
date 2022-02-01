@@ -27,8 +27,9 @@ public abstract class FlutterPlatformProtocolBase
     localHashMap.put("function", paramString2);
     localHashMap.put("type", paramString3);
     localHashMap.put("action", "call");
-    if (this.mBaseApiDelegate != null) {
-      this.mBaseApiDelegate.doReport("expand_quality#succ_rate#channel", localHashMap);
+    paramString1 = this.mBaseApiDelegate;
+    if (paramString1 != null) {
+      paramString1.doReport("expand_quality#succ_rate#channel", localHashMap);
     }
   }
   
@@ -61,7 +62,7 @@ public abstract class FlutterPlatformProtocolBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqexpand.FlutterPlatformProtocolBase
  * JD-Core Version:    0.7.0.1
  */

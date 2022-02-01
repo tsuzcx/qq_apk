@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.config.business;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.qphone.base.util.QLog;
@@ -9,20 +7,22 @@ import com.tencent.qphone.base.util.QLog;
 public class PttWithTextSwitchProcessor
   extends IQConfigProcessor<PttWithTextSwitchBean>
 {
-  @NonNull
   public PttWithTextSwitchBean a(int paramInt)
   {
     return new PttWithTextSwitchBean();
   }
   
-  @Nullable
   public PttWithTextSwitchBean a(QConfItem[] paramArrayOfQConfItem)
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
       PttWithTextSwitchBean localPttWithTextSwitchBean = PttWithTextSwitchBean.a(paramArrayOfQConfItem[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("PttWithTextSwitchProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("PttWithTextSwitchProcessor", 2, localStringBuilder.toString());
       }
       return localPttWithTextSwitchBean;
     }
@@ -31,8 +31,12 @@ public class PttWithTextSwitchProcessor
   
   public void a(PttWithTextSwitchBean paramPttWithTextSwitchBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PttWithTextSwitchProcessor", 2, "onUpdate " + paramPttWithTextSwitchBean.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      localStringBuilder.append(paramPttWithTextSwitchBean.toString());
+      QLog.d("PttWithTextSwitchProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -70,7 +74,7 @@ public class PttWithTextSwitchProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.PttWithTextSwitchProcessor
  * JD-Core Version:    0.7.0.1
  */

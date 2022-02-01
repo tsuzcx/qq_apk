@@ -29,45 +29,50 @@ public class MiniMidasConsumeServlet
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    localBundle = new Bundle();
-    for (;;)
+    Bundle localBundle = new Bundle();
+    try
     {
-      try
+      localBundle.putInt("key_index", paramIntent.getIntExtra("key_index", -1));
+      if (paramFromServiceMsg != null)
       {
-        localBundle.putInt("key_index", paramIntent.getIntExtra("key_index", -1));
-        if (paramFromServiceMsg == null) {
-          continue;
-        }
-        localStQWebRsp = new PROTOCAL.StQWebRsp();
+        PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
         localStQWebRsp.mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
-        if (!paramFromServiceMsg.isSuccess()) {
-          continue;
+        if (paramFromServiceMsg.isSuccess())
+        {
+          localBundle.putParcelable("getMidasConsumeResult", paramFromServiceMsg);
+          localBundle.putInt("getMidasConsumeResultRetCode", (int)localStQWebRsp.retCode.get());
+          localBundle.putString("getMidasConsumeResultErrMsg", localStQWebRsp.errMsg.get().toStringUtf8());
+          notifyObserver(paramIntent, 1025, true, localBundle, MiniAppObserver.class);
         }
-        localBundle.putParcelable("getMidasConsumeResult", paramFromServiceMsg);
-        localBundle.putInt("getMidasConsumeResultRetCode", (int)localStQWebRsp.retCode.get());
-        localBundle.putString("getMidasConsumeResultErrMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-        notifyObserver(paramIntent, 1025, true, localBundle, MiniAppObserver.class);
+        else
+        {
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("onReceive. MiniAppPayServlet rsp = ");
+            localStringBuilder.append(localStQWebRsp);
+            QLog.d("MiniMidasConsumeServlet", 2, localStringBuilder.toString());
+          }
+          notifyObserver(paramIntent, 1025, false, localBundle, MiniAppObserver.class);
+        }
       }
-      catch (Throwable localThrowable)
+      else
       {
-        PROTOCAL.StQWebRsp localStQWebRsp;
-        QLog.e("MiniMidasConsumeServlet", 1, localThrowable + "onReceive error");
-        notifyObserver(paramIntent, 1025, false, localBundle, MiniAppObserver.class);
-        continue;
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("MiniMidasConsumeServlet", 2, "onReceive. inform MiniAppPayServlet resultcode fail.");
         }
-        QLog.d("MiniMidasConsumeServlet", 2, "onReceive. inform MiniAppPayServlet resultcode fail.");
         notifyObserver(paramIntent, 1025, false, localBundle, MiniAppObserver.class);
-        continue;
       }
-      doReport(paramIntent, paramFromServiceMsg);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniMidasConsumeServlet", 2, "onReceive. MiniAppPayServlet rsp = " + localStQWebRsp);
-      }
+    }
+    catch (Throwable localThrowable)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localThrowable);
+      localStringBuilder.append("onReceive error");
+      QLog.e("MiniMidasConsumeServlet", 1, localStringBuilder.toString());
       notifyObserver(paramIntent, 1025, false, localBundle, MiniAppObserver.class);
     }
+    doReport(paramIntent, paramFromServiceMsg);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -81,27 +86,14 @@ public class MiniMidasConsumeServlet
     int m = paramIntent.getIntExtra("key_topup_amount", -1);
     int n = paramIntent.getIntExtra("key_pay_channel", -1);
     int i1 = paramIntent.getIntExtra("key_pay_env", 0);
-    Object localObject1 = null;
-    if (arrayOfByte != null) {
+    if (arrayOfByte != null)
+    {
       localObject1 = new COMM.StCommonExt();
-    }
-    try
-    {
-      ((COMM.StCommonExt)localObject1).mergeFrom(arrayOfByte);
-      localObject2 = new PayRequest((String)localObject2, (COMM.StCommonExt)localObject1, str, i, k, m, n, i1).encode(paramIntent, j, getTraceId());
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = new byte[4];
+      try
+      {
+        ((COMM.StCommonExt)localObject1).mergeFrom(arrayOfByte);
       }
-      paramPacket.setSSOCommand("LightAppSvc.mini_app_pay.GamePay");
-      paramPacket.putSendData(WupUtil.a((byte[])localObject1));
-      paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-      super.onSend(paramIntent, paramPacket);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
         if (QLog.isColorLevel()) {
           QLog.e("MiniMidasConsumeServlet", 2, "onSend. mergeFrom extData exception!");
@@ -109,11 +101,24 @@ public class MiniMidasConsumeServlet
         localInvalidProtocolBufferMicroException.printStackTrace();
       }
     }
+    else
+    {
+      localObject1 = null;
+    }
+    localObject2 = new PayRequest((String)localObject2, (COMM.StCommonExt)localObject1, str, i, k, m, n, i1).encode(paramIntent, j, getTraceId());
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new byte[4];
+    }
+    paramPacket.setSSOCommand("LightAppSvc.mini_app_pay.GamePay");
+    paramPacket.putSendData(WupUtil.a((byte[])localObject1));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniMidasConsumeServlet
  * JD-Core Version:    0.7.0.1
  */

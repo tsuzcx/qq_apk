@@ -9,36 +9,40 @@ public class Messages$PositionMessage
   
   static PositionMessage fromMap(HashMap paramHashMap)
   {
-    Object localObject2 = null;
     PositionMessage localPositionMessage = new PositionMessage();
     Object localObject1 = paramHashMap.get("textureId");
+    Object localObject2 = null;
+    long l;
     if (localObject1 == null)
     {
       localObject1 = null;
-      localPositionMessage.textureId = ((Long)localObject1);
-      paramHashMap = paramHashMap.get("position");
-      if (paramHashMap == null)
-      {
-        paramHashMap = localObject2;
-        localPositionMessage.position = paramHashMap;
-        return localPositionMessage;
-      }
     }
     else
     {
-      if ((localObject1 instanceof Integer)) {}
-      for (l = ((Integer)localObject1).intValue();; l = ((Long)localObject1).longValue())
-      {
-        localObject1 = Long.valueOf(l);
-        break;
+      if ((localObject1 instanceof Integer)) {
+        l = ((Integer)localObject1).intValue();
+      } else {
+        l = ((Long)localObject1).longValue();
       }
+      localObject1 = Long.valueOf(l);
     }
-    if ((paramHashMap instanceof Integer)) {}
-    for (long l = ((Integer)paramHashMap).intValue();; l = ((Long)paramHashMap).longValue())
+    localPositionMessage.textureId = ((Long)localObject1);
+    paramHashMap = paramHashMap.get("position");
+    if (paramHashMap == null)
     {
-      paramHashMap = Long.valueOf(l);
-      break;
+      paramHashMap = localObject2;
     }
+    else
+    {
+      if ((paramHashMap instanceof Integer)) {
+        l = ((Integer)paramHashMap).intValue();
+      } else {
+        l = ((Long)paramHashMap).longValue();
+      }
+      paramHashMap = Long.valueOf(l);
+    }
+    localPositionMessage.position = paramHashMap;
+    return localPositionMessage;
   }
   
   public Long getPosition()
@@ -71,7 +75,7 @@ public class Messages$PositionMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.qflutter.qqcircle.video.Messages.PositionMessage
  * JD-Core Version:    0.7.0.1
  */

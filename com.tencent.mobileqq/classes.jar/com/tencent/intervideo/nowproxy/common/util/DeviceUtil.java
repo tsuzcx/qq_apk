@@ -15,17 +15,15 @@ public class DeviceUtil
   
   public static File createDir(File paramFile, String paramString)
   {
-    if ((paramFile == null) || (paramString == null) || (paramString.length() == 0)) {
-      paramFile = null;
-    }
-    do
+    if ((paramFile != null) && (paramString != null) && (paramString.length() != 0))
     {
+      paramFile = new File(paramFile, paramString);
+      if (!paramFile.exists()) {
+        paramFile.mkdirs();
+      }
       return paramFile;
-      paramString = new File(paramFile, paramString);
-      paramFile = paramString;
-    } while (paramString.exists());
-    paramString.mkdirs();
-    return paramString;
+    }
+    return null;
   }
   
   public static String getDeviceId(Context paramContext)
@@ -35,13 +33,16 @@ public class DeviceUtil
     }
     try
     {
-      paramContext = new File(getExternalFilesDir(paramContext, null).getAbsolutePath() + "/now/", "DEVICE_ID");
-      if (paramContext.exists()) {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getExternalFilesDir(paramContext, null).getAbsolutePath());
+      localStringBuilder.append("/now/");
+      paramContext = new File(localStringBuilder.toString(), "DEVICE_ID");
+      if (paramContext.exists())
+      {
         sDeviceId = readDeviceIdFromFile(paramContext);
       }
-      for (;;)
+      else
       {
-        return sDeviceId;
         sDeviceId = UUID.randomUUID().toString();
         paramContext.createNewFile();
         writeDeviceIdToFile(paramContext, sDeviceId);
@@ -49,11 +50,9 @@ public class DeviceUtil
     }
     catch (Exception paramContext)
     {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-      }
+      paramContext.printStackTrace();
     }
+    return sDeviceId;
   }
   
   public static int getDeviceIdHash(Context paramContext)
@@ -63,14 +62,26 @@ public class DeviceUtil
   
   public static File getExternalFilesDir(Context paramContext, String paramString)
   {
-    File localFile = paramContext.getExternalFilesDir(paramString);
-    if (localFile != null) {
-      return localFile;
+    Object localObject = paramContext.getExternalFilesDir(paramString);
+    if (localObject != null) {
+      return localObject;
     }
-    if (paramString == null) {
-      return createDir(getSDcardDir(paramContext), "/Android/data/" + paramContext.getPackageName() + "/files");
+    if (paramString == null)
+    {
+      paramString = getSDcardDir(paramContext);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("/Android/data/");
+      ((StringBuilder)localObject).append(paramContext.getPackageName());
+      ((StringBuilder)localObject).append("/files");
+      return createDir(paramString, ((StringBuilder)localObject).toString());
     }
-    return createDir(getSDcardDir(paramContext), "/Android/data/" + paramContext.getPackageName() + "/files/" + paramString);
+    localObject = getSDcardDir(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("/Android/data/");
+    localStringBuilder.append(paramContext.getPackageName());
+    localStringBuilder.append("/files/");
+    localStringBuilder.append(paramString);
+    return createDir((File)localObject, localStringBuilder.toString());
   }
   
   public static File getSDcardDir(Context paramContext)
@@ -80,37 +91,30 @@ public class DeviceUtil
     {
       try
       {
-        localFile = paramContext.getExternalFilesDir(null);
-        paramContext = localFile;
-        if (localFile == null) {
-          paramContext = Environment.getExternalStorageDirectory();
+        paramContext = paramContext.getExternalFilesDir(null);
+        if (paramContext != null) {
+          continue;
         }
+        paramContext = Environment.getExternalStorageDirectory();
+        return paramContext;
       }
       catch (Exception paramContext)
       {
-        paramContext.printStackTrace();
-        File localFile = new File("/mnt/sdcard");
-        if (localFile == null) {
-          continue;
-        }
-        paramContext = localFile;
-        if (localFile.exists()) {
-          continue;
-        }
-        localFile = new File("/storage/sdcard0");
-        if (localFile == null) {
-          break label78;
-        }
-        paramContext = localFile;
-        if (localFile.exists()) {
-          continue;
-        }
+        continue;
       }
+      paramContext.printStackTrace();
+      paramContext = new File("/mnt/sdcard");
+      if (paramContext.exists()) {
+        return paramContext;
+      }
+      paramContext = new File("/storage/sdcard0");
+      if (paramContext.exists()) {
+        return paramContext;
+      }
+      return null;
       return paramContext;
-      localFile = null;
+      paramContext = null;
     }
-    label78:
-    return null;
   }
   
   private static String readDeviceIdFromFile(File paramFile)
@@ -131,7 +135,7 @@ public class DeviceUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.common.util.DeviceUtil
  * JD-Core Version:    0.7.0.1
  */

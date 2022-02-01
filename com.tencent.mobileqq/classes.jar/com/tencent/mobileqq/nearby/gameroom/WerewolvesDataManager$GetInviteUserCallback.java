@@ -4,11 +4,11 @@ import java.util.List;
 
 abstract interface WerewolvesDataManager$GetInviteUserCallback
 {
-  public abstract void a(List<WerewolvesDataManager.InviteUser> paramList, boolean paramBoolean);
+  public abstract void a(List<InviteUser> paramList, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager.GetInviteUserCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -7,24 +7,11 @@ public final class EResponseResult
 {
   public static final int _eFail = 1;
   public static final int _eSucc = 0;
-  private static EResponseResult[] a;
-  public static final EResponseResult eFail;
-  public static final EResponseResult eSucc;
+  private static EResponseResult[] a = new EResponseResult[2];
+  public static final EResponseResult eFail = new EResponseResult(1, 1, "eFail");
+  public static final EResponseResult eSucc = new EResponseResult(0, 0, "eSucc");
   private String __T = new String();
   private int __value;
-  
-  static
-  {
-    if (!EResponseResult.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      a = new EResponseResult[2];
-      eSucc = new EResponseResult(0, 0, "eSucc");
-      eFail = new EResponseResult(1, 1, "eFail");
-      return;
-    }
-  }
   
   private EResponseResult(int paramInt1, int paramInt2, String paramString)
   {
@@ -36,15 +23,16 @@ public final class EResponseResult
   public static EResponseResult convert(int paramInt)
   {
     int i = 0;
-    while (i < a.length)
+    for (;;)
     {
-      if (a[i].value() == paramInt) {
+      EResponseResult[] arrayOfEResponseResult = a;
+      if (i >= arrayOfEResponseResult.length) {
+        break;
+      }
+      if (arrayOfEResponseResult[i].value() == paramInt) {
         return a[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -52,15 +40,16 @@ public final class EResponseResult
   public static EResponseResult convert(String paramString)
   {
     int i = 0;
-    while (i < a.length)
+    for (;;)
     {
-      if (a[i].toString().equals(paramString)) {
+      EResponseResult[] arrayOfEResponseResult = a;
+      if (i >= arrayOfEResponseResult.length) {
+        break;
+      }
+      if (arrayOfEResponseResult[i].toString().equals(paramString)) {
         return a[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -77,7 +66,7 @@ public final class EResponseResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.EResponseResult
  * JD-Core Version:    0.7.0.1
  */

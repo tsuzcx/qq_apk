@@ -23,7 +23,10 @@ class ApkForAppStoreFilePresenter$1
     if ((TextUtils.isEmpty(str)) || (localObject == null) || (!((QFileAppStorePromoteManager)localObject).a(this.a.jdField_a_of_type_AndroidAppActivity, str, ApkForAppStoreFilePresenter.a(this.a))))
     {
       int i = QFileUtils.b(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.e());
-      ReportController.b(null, "dc00898", "", "", "0X800A688", "0X800A688", 0, 0, i + "", "", "", "");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("");
+      ReportController.b(null, "dc00898", "", "", "0X800A688", "0X800A688", 0, 0, ((StringBuilder)localObject).toString(), "", "", "");
       localObject = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a();
       if (localObject != null)
       {
@@ -36,7 +39,7 @@ class ApkForAppStoreFilePresenter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.ApkForAppStoreFilePresenter.1
  * JD-Core Version:    0.7.0.1
  */

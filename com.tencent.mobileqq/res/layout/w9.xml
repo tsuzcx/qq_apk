@@ -15,6 +15,6 @@
     </RelativeLayout>
     <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/idm" android:layout_width="wrap_content" android:layout_height="16.699982dip" android:layout_marginBottom="20.699982dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
         <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/d98" />
-        <TextView android:textSize="12.0dip" android:textColor="#ffcecece" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pp4" />
+        <TextView android:textSize="12.0dip" android:textColor="#ffcecece" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pp4" />
     </LinearLayout>
 </RelativeLayout>

@@ -17,36 +17,38 @@ class TroopView$5
   
   public void a()
   {
+    Message localMessage;
     if (StudyModeManager.a())
     {
       localMessage = TroopView.a(this.a).obtainMessage(15);
       TroopView.a(this.a).sendMessage(localMessage);
-    }
-    do
-    {
       return;
-      if (!NetworkUtil.g(BaseApplication.getContext())) {
-        break label105;
-      }
-      if (this.a.a.size() <= 0) {
-        break;
-      }
-    } while ((TroopView.a(this.a) == null) || (TroopView.a(this.a) == null));
-    TroopView.a(this.a).c(TroopView.a(this.a).getCurrentItem());
-    return;
-    TroopView.b(this.a);
-    return;
-    label105:
-    if (QLog.isColorLevel()) {
-      QLog.d("addContacts.TroopView", 2, "refresh falied. network unavailable");
     }
-    Message localMessage = TroopView.a(this.a).obtainMessage(13);
-    TroopView.a(this.a).sendMessageDelayed(localMessage, 1000L);
+    if (NetworkUtil.isNetworkAvailable(BaseApplication.getContext()))
+    {
+      if (this.a.a.size() > 0)
+      {
+        if ((TroopView.a(this.a) != null) && (TroopView.a(this.a) != null)) {
+          TroopView.a(this.a).c(TroopView.a(this.a).getCurrentItem());
+        }
+      }
+      else {
+        TroopView.b(this.a);
+      }
+    }
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("addContacts.TroopView", 2, "refresh falied. network unavailable");
+      }
+      localMessage = TroopView.a(this.a).obtainMessage(13);
+      TroopView.a(this.a).sendMessageDelayed(localMessage, 1000L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView.5
  * JD-Core Version:    0.7.0.1
  */

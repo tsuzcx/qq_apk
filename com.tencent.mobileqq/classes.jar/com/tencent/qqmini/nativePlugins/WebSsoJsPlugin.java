@@ -52,13 +52,19 @@ public class WebSsoJsPlugin
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      return localJSONObject;
+      localObject = new JSONObject(paramRequestEvent.jsonParams);
+      return localObject;
     }
     catch (JSONException localJSONException)
     {
-      QLog.e("WebSsoJsPlugin", 1, "Failed to parse jsonParams=" + paramRequestEvent.jsonParams);
+      Object localObject;
+      label14:
+      break label14;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Failed to parse jsonParams=");
+    ((StringBuilder)localObject).append(paramRequestEvent.jsonParams);
+    QLog.e("WebSsoJsPlugin", 1, ((StringBuilder)localObject).toString());
     return null;
   }
   
@@ -74,23 +80,19 @@ public class WebSsoJsPlugin
   public void onCmdRsp(Intent paramIntent, String paramString, long paramLong, JSONObject paramJSONObject)
   {
     int i;
-    if (paramIntent != null)
-    {
+    if (paramIntent != null) {
       i = paramIntent.getIntExtra("mini_seq", -1);
-      if (i != -1) {
-        break label26;
-      }
-    }
-    label26:
-    RequestEvent localRequestEvent;
-    do
-    {
-      return;
+    } else {
       i = -1;
-      break;
-      localRequestEvent = (RequestEvent)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-      this.jdField_a_of_type_AndroidUtilSparseArray.remove(i);
-    } while (localRequestEvent == null);
+    }
+    if (i == -1) {
+      return;
+    }
+    RequestEvent localRequestEvent = (RequestEvent)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+    this.jdField_a_of_type_AndroidUtilSparseArray.remove(i);
+    if (localRequestEvent == null) {
+      return;
+    }
     paramIntent = paramJSONObject;
     if (paramJSONObject == null) {
       paramIntent = new JSONObject();
@@ -101,39 +103,35 @@ public class WebSsoJsPlugin
       paramJSONObject.put("cmd", paramString);
       paramJSONObject.put("ret", paramLong);
       paramJSONObject.put("rsp", paramIntent);
-      if (paramLong == 0L)
-      {
-        localRequestEvent.ok(paramJSONObject);
-        return;
-      }
     }
     catch (JSONException paramIntent)
     {
-      for (;;)
-      {
-        paramIntent.printStackTrace();
-      }
-      localRequestEvent.fail(paramJSONObject, "");
+      paramIntent.printStackTrace();
     }
+    if (paramLong == 0L)
+    {
+      localRequestEvent.ok(paramJSONObject);
+      return;
+    }
+    localRequestEvent.fail(paramJSONObject, "");
   }
   
   @JsEvent({"requestWebSSO"})
   public void requestWebSSO(RequestEvent paramRequestEvent)
   {
+    label150:
     try
     {
       Object localObject1 = a(paramRequestEvent);
-      if (localObject1 != null)
+      if (localObject1 == null) {
+        break label150;
+      }
+      JSONObject localJSONObject = ((JSONObject)localObject1).getJSONObject("data");
+      localObject1 = localJSONObject.getString("webssoCmdId");
+      localJSONObject = localJSONObject.getJSONObject("webssoReq");
+      Object localObject2 = getFilterCmds();
+      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (localObject2 != null) && (((HashSet)localObject2).contains(localObject1)))
       {
-        JSONObject localJSONObject = ((JSONObject)localObject1).getJSONObject("data");
-        localObject1 = localJSONObject.getString("webssoCmdId");
-        localJSONObject = localJSONObject.getJSONObject("webssoReq");
-        Object localObject2 = getFilterCmds();
-        if ((TextUtils.isEmpty((CharSequence)localObject1)) || (localObject2 == null) || (!((HashSet)localObject2).contains(localObject1)))
-        {
-          paramRequestEvent.fail(HardCodeUtil.a(2131716719));
-          return;
-        }
         int i = a();
         this.jdField_a_of_type_AndroidUtilSparseArray.put(i, paramRequestEvent);
         localObject2 = new Bundle();
@@ -141,19 +139,23 @@ public class WebSsoJsPlugin
         ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).requestWebSso((String)localObject1, localJSONObject, (Bundle)localObject2);
         return;
       }
+      paramRequestEvent.fail(HardCodeUtil.a(2131716369));
+      return;
     }
     catch (Throwable localThrowable)
     {
-      paramRequestEvent.fail(HardCodeUtil.a(2131716718));
-      if (QLog.isColorLevel()) {
-        QLog.w("WebSsoJsPlugin", 2, "requestWebSSO,decode param error");
-      }
+      label126:
+      break label126;
+    }
+    paramRequestEvent.fail(HardCodeUtil.a(2131716368));
+    if (QLog.isColorLevel()) {
+      QLog.w("WebSsoJsPlugin", 2, "requestWebSSO,decode param error");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.WebSsoJsPlugin
  * JD-Core Version:    0.7.0.1
  */

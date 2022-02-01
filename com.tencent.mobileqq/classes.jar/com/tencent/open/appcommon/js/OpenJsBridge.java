@@ -43,55 +43,65 @@ public class OpenJsBridge
     long l1 = System.currentTimeMillis();
     int j = paramList.size();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j) {
-        try
+      try
+      {
+        paramList.set(i, URLDecoder.decode((String)paramList.get(i), "UTF-8"));
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        localUnsupportedEncodingException.printStackTrace();
+        if (QLog.isDevelopLevel())
         {
-          paramList.set(i, URLDecoder.decode((String)paramList.get(i), "UTF-8"));
-          i += 1;
-        }
-        catch (UnsupportedEncodingException localUnsupportedEncodingException)
-        {
-          for (;;)
-          {
-            localUnsupportedEncodingException.printStackTrace();
-            if (QLog.isDevelopLevel()) {
-              QLog.i("OpenJsBridge", 4, "[getResult]decode failed: " + (String)paramList.get(i));
-            }
-          }
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[getResult]decode failed: ");
+          localStringBuilder.append((String)paramList.get(i));
+          QLog.i("OpenJsBridge", 4, localStringBuilder.toString());
         }
       }
+      i += 1;
     }
     long l2 = System.currentTimeMillis();
-    LogUtility.b("OpenJsBridge", "[getResult]time4-time3=" + (l2 - l1));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[getResult]time4-time3=");
+    localStringBuilder.append(l2 - l1);
+    LogUtility.b("OpenJsBridge", localStringBuilder.toString());
     paramString1 = (JsBridge.JsHandler)this.b.get(paramString1);
-    if (paramString1 != null) {
+    if (paramString1 != null)
+    {
       paramString1.call(paramString2, paramList, paramJsBridgeListener);
-    }
-    while (!(paramJsBridgeListener instanceof OpenJsBridge.OpenJsBridgeListener)) {
       return;
     }
-    ((OpenJsBridge.OpenJsBridgeListener)paramJsBridgeListener).b(paramString2);
+    if ((paramJsBridgeListener instanceof OpenJsBridge.OpenJsBridgeListener)) {
+      ((OpenJsBridge.OpenJsBridgeListener)paramJsBridgeListener).b(paramString2);
+    }
   }
   
   public boolean a(WebView paramWebView, String paramString)
   {
-    if (paramString == null) {}
-    Uri localUri;
-    do
-    {
+    if (paramString == null) {
       return false;
-      localUri = Uri.parse(paramString);
-    } while ((localUri == null) || (localUri.getScheme() == null) || (!localUri.getScheme().equals("jsbridge")));
-    LogUtility.b("OpenJsBridge", "[canHandleUrl] AsyncInterface_start:" + paramString);
-    ThreadManager.executeOnSubThread(new OpenJsBridge.1(this, paramString, paramWebView));
-    return true;
+    }
+    Object localObject = Uri.parse(paramString);
+    if ((localObject != null) && (((Uri)localObject).getScheme() != null))
+    {
+      if (!((Uri)localObject).getScheme().equals("jsbridge")) {
+        return false;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[canHandleUrl] AsyncInterface_start:");
+      ((StringBuilder)localObject).append(paramString);
+      LogUtility.b("OpenJsBridge", ((StringBuilder)localObject).toString());
+      ThreadManager.executeOnSubThread(new OpenJsBridge.1(this, paramString, paramWebView));
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcommon.js.OpenJsBridge
  * JD-Core Version:    0.7.0.1
  */

@@ -58,8 +58,14 @@ public final class HuaweiApiClient$Builder
   public Builder addApi(Api<? extends Api.ApiOptions.NotRequiredOptions> paramApi)
   {
     this.d.put(paramApi, null);
-    if ("HuaweiGame.API".equals(paramApi.getApiName())) {
-      HiAnalyticsUtil.getInstance().onEvent(this.a.getApplicationContext(), "15060106", "|" + System.currentTimeMillis());
+    if ("HuaweiGame.API".equals(paramApi.getApiName()))
+    {
+      paramApi = HiAnalyticsUtil.getInstance();
+      Context localContext = this.a.getApplicationContext();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("|");
+      localStringBuilder.append(System.currentTimeMillis());
+      paramApi.onEvent(localContext, "15060106", localStringBuilder.toString());
     }
     return this;
   }
@@ -130,12 +136,13 @@ public final class HuaweiApiClient$Builder
   
   public Builder allowLifeCycleManagement(Activity paramActivity, int paramInt, HuaweiApiClient.OnConnectionFailedListener paramOnConnectionFailedListener)
   {
-    if (paramInt < 0) {
-      throw new IllegalArgumentException("allowLifeCycleManagement id should be positive");
+    if (paramInt >= 0)
+    {
+      this.g = paramInt;
+      this.h = ((Activity)Preconditions.checkNotNull(paramActivity, "activity must not be Null."));
+      return this;
     }
-    this.g = paramInt;
-    this.h = ((Activity)Preconditions.checkNotNull(paramActivity, "activity must not be Null."));
-    return this;
+    throw new IllegalArgumentException("allowLifeCycleManagement id should be positive");
   }
   
   public Builder allowLifeCycleManagement(Activity paramActivity, HuaweiApiClient.OnConnectionFailedListener paramOnConnectionFailedListener)
@@ -186,7 +193,7 @@ public final class HuaweiApiClient$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.api.HuaweiApiClient.Builder
  * JD-Core Version:    0.7.0.1
  */

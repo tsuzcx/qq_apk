@@ -10,24 +10,29 @@ class MemoriesProfilePresenter$1
 {
   MemoriesProfilePresenter$1(MemoriesProfilePresenter paramMemoriesProfilePresenter) {}
   
-  public void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
-    if ((!paramBoolean) || (this.a.a == null) || (paramGetOnlineInfoResp == null) || (!TextUtils.equals(paramString, this.a.a.qq))) {}
-    while (MemoriesProfilePresenter.a(this.a) == null) {
-      return;
-    }
-    paramString = MemoriesProfilePresenter.a(this.a);
-    if (paramGetOnlineInfoResp.eIconType == 11) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    if ((paramBoolean) && (this.a.a != null) && (paramGetOnlineInfoResp != null))
     {
-      paramString.b(paramBoolean);
-      return;
+      if (!TextUtils.equals(paramString, this.a.a.qq)) {
+        return;
+      }
+      if (MemoriesProfilePresenter.a(this.a) != null)
+      {
+        paramString = MemoriesProfilePresenter.a(this.a);
+        if (paramGetOnlineInfoResp.eIconType == 11) {
+          paramBoolean = true;
+        } else {
+          paramBoolean = false;
+        }
+        paramString.b(paramBoolean);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.1
  * JD-Core Version:    0.7.0.1
  */

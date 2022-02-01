@@ -16,29 +16,28 @@ class ChatHistory$14
   
   public void onClick(View paramView)
   {
-    if (NetworkUtil.d(BaseApplication.getContext()))
+    if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
       this.a.jdField_a_of_type_ComTencentMobileqqBannerTipsBar.setVisibility(8);
       if (this.a.jdField_a_of_type_Int == 0) {
         this.a.l();
       }
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
       if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
         this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
       }
       this.a.jdField_a_of_type_ComTencentMobileqqBannerTipsBar.setVisibility(0);
-      this.a.c.setText(this.a.getString(2131692257));
+      this.a.c.setText(this.a.getString(2131692183));
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.14
  * JD-Core Version:    0.7.0.1
  */

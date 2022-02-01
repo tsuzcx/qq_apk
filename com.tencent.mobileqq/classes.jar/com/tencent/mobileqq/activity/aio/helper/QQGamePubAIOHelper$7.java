@@ -1,54 +1,46 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 class QQGamePubAIOHelper$7
   implements Runnable
 {
-  QQGamePubAIOHelper$7(QQGamePubAIOHelper paramQQGamePubAIOHelper, List paramList) {}
+  QQGamePubAIOHelper$7(QQGamePubAIOHelper paramQQGamePubAIOHelper) {}
   
   public void run()
   {
-    for (;;)
+    try
     {
-      int i;
-      try
-      {
-        QQGamePubAIOHelper.a().clear();
-        i = 0;
-        if (i < this.a.size())
-        {
-          MessageRecord localMessageRecord = (MessageRecord)this.a.get(i);
-          if (QQGamePubAIOHelper.a(localMessageRecord)) {
-            QQGamePubAIOHelper.a().add((MessageForArkApp)localMessageRecord);
-          }
-        }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("QQGamePubAIOHelper", 2, "updateMsgListFromDb... sTeamMsgList size- > " + QQGamePubAIOHelper.a().size());
-          }
-          QQGamePubAIOHelper.a(this.this$0, true);
-          if (!QQGamePubAIOHelper.a().isEmpty()) {
-            this.this$0.a(50L, 0);
-          }
-          return;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
+      if (!QQGamePubAIOHelper.a(this.this$0)) {
         return;
       }
-      i += 1;
+      long l = System.currentTimeMillis();
+      List localList = QQGamePubAIOHelper.a(this.this$0).getMessageFacade().a(QQGamePubAIOHelper.a(this.this$0).jdField_a_of_type_JavaLangString, QQGamePubAIOHelper.a(this.this$0).jdField_a_of_type_Int, new int[] { -5008 }, 100);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("queryTeamMsgFromDb... query aioList- > ,cost:");
+        localStringBuilder.append(System.currentTimeMillis() - l);
+        localStringBuilder.append(",size:");
+        localStringBuilder.append(localList.size());
+        QLog.i("QQGamePub_QQGamePubAIOHelper", 2, localStringBuilder.toString());
+      }
+      QQGamePubAIOHelper.a(this.this$0, localList);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("QQGamePub_QQGamePubAIOHelper", 1, localThrowable, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.QQGamePubAIOHelper.7
  * JD-Core Version:    0.7.0.1
  */

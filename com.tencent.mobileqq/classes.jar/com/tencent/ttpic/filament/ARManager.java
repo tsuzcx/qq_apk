@@ -45,9 +45,9 @@ public class ARManager
   
   private void clearNotHitAssets(long[] paramArrayOfLong1, long[] paramArrayOfLong2, Map<Long, HitDragInfo> paramMap)
   {
-    int j = 0;
     HashSet localHashSet = new HashSet();
     int k = paramArrayOfLong2.length;
+    int j = 0;
     int i = 0;
     while (i < k)
     {
@@ -98,7 +98,8 @@ public class ARManager
     if (this.isAR3DMaterial)
     {
       this.arFrameInfo = ((ArFrameInfo)paramAIAttr.getRealtimeData(AEDetectorType.AR_DETECT.value));
-      if ((this.arFrameInfo != null) && (!this.arFrameInfo.planeList.isEmpty()))
+      paramAIAttr = this.arFrameInfo;
+      if ((paramAIAttr != null) && (!paramAIAttr.planeList.isEmpty()))
       {
         paramAIAttr = this.filamentJNI.getCamera();
         paramAIAttr.setModelMatrix(this.arFrameInfo.cameraModelMatrix);
@@ -120,19 +121,23 @@ public class ARManager
   
   public void getCurDeviceOrientation(PTFaceAttr paramPTFaceAttr)
   {
-    switch (paramPTFaceAttr.getRotation())
+    int i = paramPTFaceAttr.getRotation();
+    if (i != 90)
     {
-    default: 
-      this.deviceOrientation = 0;
-      return;
-    case 90: 
-      this.deviceOrientation = 1;
-      return;
-    case 180: 
+      if (i != 180)
+      {
+        if (i != 270)
+        {
+          this.deviceOrientation = 0;
+          return;
+        }
+        this.deviceOrientation = 3;
+        return;
+      }
       this.deviceOrientation = 2;
       return;
     }
-    this.deviceOrientation = 3;
+    this.deviceOrientation = 1;
   }
   
   public void initArModleStatus()
@@ -143,19 +148,16 @@ public class ARManager
       if (this.filamentJNI != null)
       {
         int i = 0;
-        if (i < this.glbList.size())
+        while (i < this.glbList.size())
         {
           GLBItemJava localGLBItemJava = (GLBItemJava)this.glbList.get(i);
           if (localGLBItemJava.arTranslateType == 1) {
             this.filamentJNI.setHitTestAfterUnprojection(i, new float[] { this.midPoint[0] + localGLBItemJava.translate[0], this.midPoint[1] + localGLBItemJava.translate[1], this.midPoint[2] + localGLBItemJava.translate[2] });
-          }
-          for (;;)
-          {
-            this.filamentJNI.setFilamentAssetScale(i, localGLBItemJava.scale[0], localGLBItemJava.scaleRange);
-            i += 1;
-            break;
+          } else {
             this.filamentJNI.setHitTestAfterUnprojection(i, this.midPoint);
           }
+          this.filamentJNI.setFilamentAssetScale(i, localGLBItemJava.scale[0], localGLBItemJava.scaleRange);
+          i += 1;
         }
       }
     }
@@ -173,58 +175,54 @@ public class ARManager
   
   public void setArModelRotate(float[] paramArrayOfFloat)
   {
-    if (!this.isAR3DMaterial) {}
-    for (;;)
-    {
+    if (!this.isAR3DMaterial) {
       return;
-      if (this.filamentJNI != null)
+    }
+    if (this.filamentJNI != null)
+    {
+      int i = 0;
+      while (i < this.glbList.size())
       {
-        int i = 0;
-        while (i < this.glbList.size())
-        {
-          this.filamentJNI.setFilamentAssetRotate(i, paramArrayOfFloat);
-          i += 1;
-        }
+        this.filamentJNI.setFilamentAssetRotate(i, paramArrayOfFloat);
+        i += 1;
       }
     }
   }
   
   public void setArModelScale(float paramFloat)
   {
-    if (!this.isAR3DMaterial) {}
-    for (;;)
-    {
+    if (!this.isAR3DMaterial) {
       return;
-      paramFloat = (paramFloat - 1.0F) / 2.0F;
-      if (this.filamentJNI != null)
+    }
+    paramFloat = (paramFloat - 1.0F) / 2.0F;
+    if (this.filamentJNI != null)
+    {
+      int i = 0;
+      while (i < this.glbList.size())
       {
-        int i = 0;
-        while (i < this.glbList.size())
-        {
-          float[] arrayOfFloat = ((GLBItemJava)this.glbList.get(i)).scaleRange;
-          this.filamentJNI.setFilamentAssetScale(i, 1.0F + paramFloat, arrayOfFloat);
-          i += 1;
-        }
+        float[] arrayOfFloat = ((GLBItemJava)this.glbList.get(i)).scaleRange;
+        this.filamentJNI.setFilamentAssetScale(i, paramFloat + 1.0F, arrayOfFloat);
+        i += 1;
       }
     }
   }
   
   public void setDownEventUnProjectionPoint(ArrayList<float[]> paramArrayList)
   {
-    if (this.filamentJNI == null) {}
-    float[] arrayOfFloat;
-    do
-    {
+    Object localObject = this.filamentJNI;
+    if (localObject == null) {
       return;
-      while (!paramArrayList.hasNext())
-      {
-        this.filamentJNI.rotateArModelToFront(this.deviceOrientation);
-        this.isAssetHit = false;
-        paramArrayList = paramArrayList.iterator();
+    }
+    ((FilamentJNI)localObject).rotateArModelToFront(this.deviceOrientation);
+    this.isAssetHit = false;
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      localObject = (float[])paramArrayList.next();
+      if (this.filamentJNI.getHitTestFilamentAssets((float[])localObject).length > 0) {
+        this.isAssetHit = true;
       }
-      arrayOfFloat = (float[])paramArrayList.next();
-    } while (this.filamentJNI.getHitTestFilamentAssets(arrayOfFloat).length <= 0);
-    this.isAssetHit = true;
+    }
   }
   
   public void setFilamentJNI(FilamentJNI paramFilamentJNI)
@@ -239,35 +237,33 @@ public class ARManager
   
   public void setUnProjectionHitPoint(float[] paramArrayOfFloat, boolean paramBoolean)
   {
-    if (!this.isAR3DMaterial) {}
-    for (;;)
-    {
+    if (!this.isAR3DMaterial) {
       return;
-      if (this.filamentJNI != null)
+    }
+    if (this.filamentJNI != null)
+    {
+      int i = 0;
+      while (i < this.glbList.size())
       {
-        int i = 0;
-        while (i < this.glbList.size())
+        GLBItemJava localGLBItemJava = (GLBItemJava)this.glbList.get(i);
+        if (localGLBItemJava.arTranslateType == 1)
         {
-          GLBItemJava localGLBItemJava = (GLBItemJava)this.glbList.get(i);
-          if (localGLBItemJava.arTranslateType == 1)
+          int j = 0;
+          while (j < 3)
           {
-            int j = 0;
-            while (j < 3)
-            {
-              paramArrayOfFloat[j] += localGLBItemJava.translate[j];
-              j += 1;
-            }
+            paramArrayOfFloat[j] += localGLBItemJava.translate[j];
+            j += 1;
           }
-          this.filamentJNI.setHitTestAfterUnprojection(i, paramArrayOfFloat);
-          i += 1;
         }
+        this.filamentJNI.setHitTestAfterUnprojection(i, paramArrayOfFloat);
+        i += 1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filament.ARManager
  * JD-Core Version:    0.7.0.1
  */

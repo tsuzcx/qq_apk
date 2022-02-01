@@ -31,16 +31,11 @@ class DownloadManagerV2$3
         }
       }
     }
-    DownloadInfo localDownloadInfo;
-    String str;
-    for (;;)
+    try
     {
-      try
+      DownloadInfo localDownloadInfo = this.this$0.c("com.tencent.mobileqq");
+      if (localDownloadInfo != null)
       {
-        localDownloadInfo = this.this$0.c("com.tencent.mobileqq");
-        if (localDownloadInfo == null) {
-          return;
-        }
         if (localDownloadInfo.c != 0) {
           return;
         }
@@ -54,29 +49,32 @@ class DownloadManagerV2$3
             localObject1 = localTMAssistantDownloadTaskInfo.mSavePath;
             localObject2 = localTMAssistantDownloadTaskInfo;
           }
-          if (localObject2 != null) {
-            break;
-          }
+        }
+        else
+        {
+          localObject2 = this.this$0.a(localDownloadInfo.i);
+          localObject1 = localDownloadInfo.l;
+        }
+        if (localObject2 == null)
+        {
           DownloadManagerV2.a(this.this$0, localDownloadInfo);
           return;
         }
+        if ((((TMAssistantDownloadTaskInfo)localObject2).mState == 4) && (AppUtil.c((String)localObject1) <= CommonDataAdapter.a().a())) {
+          DownloadManagerV2.a(this.this$0, localDownloadInfo);
+        }
       }
-      catch (Exception localException)
-      {
-        LogUtility.c("DownloadManagerV2", "speical clear>>>", localException);
-        return;
-      }
-      localObject2 = this.this$0.a(localDownloadInfo.i);
-      str = localDownloadInfo.l;
+      else {}
     }
-    if ((((TMAssistantDownloadTaskInfo)localObject2).mState == 4) && (AppUtil.c(str) <= CommonDataAdapter.a().a())) {
-      DownloadManagerV2.a(this.this$0, localDownloadInfo);
+    catch (Exception localException)
+    {
+      LogUtility.c("DownloadManagerV2", "speical clear>>>", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.3
  * JD-Core Version:    0.7.0.1
  */

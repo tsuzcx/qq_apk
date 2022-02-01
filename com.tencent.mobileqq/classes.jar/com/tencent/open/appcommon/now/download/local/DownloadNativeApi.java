@@ -59,42 +59,37 @@ public class DownloadNativeApi
     DownloadInfo localDownloadInfo = a(paramDownloadTaskInfo);
     localDownloadInfo.g = 2;
     localDownloadInfo.jdField_c_of_type_Boolean = true;
-    if ((HttpUtil.getNetWorkType() != 1) && (paramActivity != null) && (paramDownloadTaskInfo.f)) {
+    if ((HttpUtil.getNetWorkType() != 1) && (paramActivity != null) && (paramDownloadTaskInfo.f))
+    {
       a(paramActivity, localDownloadInfo, paramDownloadTaskInfo);
     }
-    for (;;)
+    else
     {
-      return 200;
       DownloadCenterImpl.a().a(localDownloadInfo);
       this.jdField_a_of_type_ComTencentOpenAppcommonNowDownloadLocalDownloadCallbackNativeImpl.a(paramDownloadTaskInfo);
     }
+    return 200;
   }
   
   public int a(DownloadTaskInfo paramDownloadTaskInfo)
   {
-    int j = -1;
-    int i;
     if (!a()) {
-      i = 401;
+      return 401;
     }
-    int k;
-    do
-    {
-      do
-      {
-        return i;
-        i = j;
-      } while (paramDownloadTaskInfo == null);
-      paramDownloadTaskInfo = a(paramDownloadTaskInfo);
-      paramDownloadTaskInfo.g = 13;
-      paramDownloadTaskInfo.jdField_c_of_type_Int = 0;
-      k = DownloadCenterImpl.a().a(paramDownloadTaskInfo);
-      if (k == 1) {
-        return 1;
-      }
-      i = j;
-    } while (k != 0);
-    return 0;
+    if (paramDownloadTaskInfo == null) {
+      return -1;
+    }
+    paramDownloadTaskInfo = a(paramDownloadTaskInfo);
+    paramDownloadTaskInfo.g = 13;
+    paramDownloadTaskInfo.jdField_c_of_type_Int = 0;
+    int i = DownloadCenterImpl.a().a(paramDownloadTaskInfo);
+    if (i == 1) {
+      return 1;
+    }
+    if (i == 0) {
+      return 0;
+    }
+    return -1;
   }
   
   public int a(String paramString)
@@ -118,21 +113,25 @@ public class DownloadNativeApi
   
   public int a(List<DownloadTaskInfo> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return 400;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if (paramList != null)
     {
-      DownloadInfo localDownloadInfo = a((DownloadTaskInfo)paramList.next());
-      localDownloadInfo.jdField_c_of_type_Int = 0;
-      localArrayList.add(localDownloadInfo);
+      if (paramList.size() == 0) {
+        return 400;
+      }
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        DownloadInfo localDownloadInfo = a((DownloadTaskInfo)paramList.next());
+        localDownloadInfo.jdField_c_of_type_Int = 0;
+        localArrayList.add(localDownloadInfo);
+      }
+      if (DownloadCenterImpl.a().a(localArrayList) != 0) {
+        return 400;
+      }
+      return 200;
     }
-    if (DownloadCenterImpl.a().a(localArrayList) != 0) {
-      return 400;
-    }
-    return 200;
+    return 400;
   }
   
   public void a(Activity paramActivity, DownloadInfo paramDownloadInfo, DownloadTaskInfo paramDownloadTaskInfo)
@@ -160,7 +159,7 @@ public class DownloadNativeApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcommon.now.download.local.DownloadNativeApi
  * JD-Core Version:    0.7.0.1
  */

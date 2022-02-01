@@ -10,7 +10,7 @@ import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.mini.api.IMiniAppService;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.troop.utils.api.ITroopUtilsApi;
 
 final class TroopBlockUtils$1
   implements DialogInterface.OnClickListener
@@ -20,36 +20,28 @@ final class TroopBlockUtils$1
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    TroopInfo localTroopInfo;
     if (paramDialogInterface != null)
     {
-      localTroopInfo = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString);
+      TroopInfo localTroopInfo = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString);
       if (localTroopInfo != null)
       {
-        if (!localTroopInfo.isTroopOwner(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
-          break label135;
+        if (localTroopInfo.isTroopOwner(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+          paramDialogInterface = "0";
+        } else if (localTroopInfo.isAdmin()) {
+          paramDialogInterface = "1";
+        } else {
+          paramDialogInterface = "2";
         }
-        paramDialogInterface = "0";
+        paramDialogInterface = TroopBlockUtils.jdField_a_of_type_JavaLangString.replace("$GCODE$", this.jdField_a_of_type_JavaLangString).replace("$UIN$", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).replace("$ROLE$", paramDialogInterface);
+        ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.jdField_a_of_type_AndroidAppActivity, paramDialogInterface, 2016, ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).createEntryModel(localTroopInfo, this.jdField_a_of_type_JavaLangString), null);
       }
     }
-    for (;;)
-    {
-      paramDialogInterface = TroopBlockUtils.jdField_a_of_type_JavaLangString.replace("$GCODE$", this.jdField_a_of_type_JavaLangString).replace("$UIN$", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).replace("$ROLE$", paramDialogInterface);
-      ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.jdField_a_of_type_AndroidAppActivity, paramDialogInterface, 2016, TroopUtils.a(localTroopInfo, this.jdField_a_of_type_JavaLangString), null);
-      ReportController.b(null, "dc00898", "", "", "0X800B223", "0X800B223", 0, 0, "", "", "", "");
-      return;
-      label135:
-      if (localTroopInfo.isAdmin()) {
-        paramDialogInterface = "1";
-      } else {
-        paramDialogInterface = "2";
-      }
-    }
+    ReportController.b(null, "dc00898", "", "", "0X800B223", "0X800B223", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.blocktroop.TroopBlockUtils.1
  * JD-Core Version:    0.7.0.1
  */

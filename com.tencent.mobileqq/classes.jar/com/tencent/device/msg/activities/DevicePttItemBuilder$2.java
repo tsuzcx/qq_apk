@@ -20,7 +20,7 @@ class DevicePttItemBuilder$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.msg.activities.DevicePttItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

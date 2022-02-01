@@ -18,7 +18,7 @@ import java.util.List;
 public class HeadCropFilter
   extends VideoFilterBase
 {
-  private static final String TAG = HeadCropFilter.class.getSimpleName();
+  private static final String TAG = "HeadCropFilter";
   private float[] faceVertices = new float[1380];
   private int grayImageHeight;
   private int grayImageWidth;
@@ -68,23 +68,28 @@ public class HeadCropFilter
     if ((paramObject instanceof PTDetectInfo))
     {
       paramObject = (PTDetectInfo)paramObject;
-      if ((paramObject.facePoints == null) || (paramObject.facePoints.size() < 90))
+      if ((paramObject.facePoints != null) && (paramObject.facePoints.size() >= 90))
       {
-        setPositions(GlUtil.EMPTY_POSITIONS);
-        setCoordNum(4);
+        paramObject = FaceOffUtil.getFullCoords(VideoMaterial.copyList(paramObject.facePoints), 3.0F);
+        double d1 = this.width;
+        double d2 = this.mFaceDetScale;
+        Double.isNaN(d1);
+        int i = (int)(d1 * d2);
+        d1 = this.height;
+        d2 = this.mFaceDetScale;
+        Double.isNaN(d1);
+        setPositions(FaceOffUtil.initFacePositions(paramObject, i, (int)(d1 * d2), this.faceVertices));
+        setCoordNum(690);
+        return;
       }
+      setPositions(GlUtil.EMPTY_POSITIONS);
+      setCoordNum(4);
     }
-    else
-    {
-      return;
-    }
-    setPositions(FaceOffUtil.initFacePositions(FaceOffUtil.getFullCoords(VideoMaterial.copyList(paramObject.facePoints), 3.0F), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
-    setCoordNum(690);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.HeadCropFilter
  * JD-Core Version:    0.7.0.1
  */

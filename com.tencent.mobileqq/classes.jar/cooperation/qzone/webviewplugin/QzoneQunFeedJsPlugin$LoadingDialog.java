@@ -6,15 +6,14 @@ import android.content.res.Resources;
 import android.view.Window;
 import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class QzoneQunFeedJsPlugin$LoadingDialog
-  extends ReportDialog
+  extends Dialog
 {
   QzoneQunFeedJsPlugin$LoadingDialog(Context paramContext)
   {
-    super(paramContext, 2131755693);
-    setContentView(2131562402);
+    super(paramContext, 2131756040);
+    setContentView(2131562238);
     getWindow().setFlags(1024, 2048);
   }
   
@@ -27,24 +26,26 @@ public class QzoneQunFeedJsPlugin$LoadingDialog
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QzoneQunFeedJsPlugin", 2, localException, new Object[0]);
+      if (QLog.isColorLevel()) {
+        QLog.e("QzoneQunFeedJsPlugin", 2, localException, new Object[0]);
+      }
     }
   }
   
   public void setTitle(int paramInt)
   {
-    if (paramInt == 0) {}
-    for (String str = null;; str = getContext().getResources().getString(paramInt))
-    {
-      setTitle(str);
-      return;
+    String str;
+    if (paramInt == 0) {
+      str = null;
+    } else {
+      str = getContext().getResources().getString(paramInt);
     }
+    setTitle(str);
   }
   
   public void setTitle(String paramString)
   {
-    ((TextView)findViewById(2131379432)).setText(paramString);
+    ((TextView)findViewById(2131378784)).setText(paramString);
   }
   
   public void show()
@@ -56,14 +57,15 @@ public class QzoneQunFeedJsPlugin$LoadingDialog
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QzoneQunFeedJsPlugin", 2, localException, new Object[0]);
+      if (QLog.isColorLevel()) {
+        QLog.e("QzoneQunFeedJsPlugin", 2, localException, new Object[0]);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.LoadingDialog
  * JD-Core Version:    0.7.0.1
  */

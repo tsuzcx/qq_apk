@@ -21,47 +21,67 @@ public class MiniAppConfig
   
   public static boolean isValid(MiniAppConfig paramMiniAppConfig)
   {
-    return (paramMiniAppConfig != null) && (paramMiniAppConfig.config != null) && (!TextUtils.isEmpty(paramMiniAppConfig.config.mini_appid));
+    if (paramMiniAppConfig != null)
+    {
+      paramMiniAppConfig = paramMiniAppConfig.config;
+      if ((paramMiniAppConfig != null) && (!TextUtils.isEmpty(paramMiniAppConfig.mini_appid))) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public int getRuntimeType()
   {
-    if (this.config == null) {
+    ApkgConfig localApkgConfig = this.config;
+    if (localApkgConfig == null) {
       return 0;
     }
-    return this.config.getRuntimeType();
+    return localApkgConfig.getRuntimeType();
   }
   
   public boolean isDebugVersionChange(MiniAppConfig paramMiniAppConfig)
   {
-    boolean bool = true;
-    if ((paramMiniAppConfig == null) || (getRuntimeType() != 1) || (getRuntimeType() != paramMiniAppConfig.getRuntimeType())) {
-      bool = false;
-    }
-    while ((paramMiniAppConfig.config.mini_appid.equals(this.config.mini_appid)) && (!paramMiniAppConfig.config.qq_qr_code.equals(this.config.qq_qr_code))) {
-      return bool;
+    if ((paramMiniAppConfig != null) && (getRuntimeType() == 1))
+    {
+      if (getRuntimeType() != paramMiniAppConfig.getRuntimeType()) {
+        return false;
+      }
+      if ((paramMiniAppConfig.config.mini_appid.equals(this.config.mini_appid)) && (!paramMiniAppConfig.config.qq_qr_code.equals(this.config.qq_qr_code))) {
+        return true;
+      }
     }
     return false;
   }
   
   public boolean isInnerUser()
   {
-    return (this.config != null) && (this.config.isInnerUser());
+    ApkgConfig localApkgConfig = this.config;
+    return (localApkgConfig != null) && (localApkgConfig.isInnerUser());
   }
   
   public boolean isRiskOpen()
   {
-    return (this.config != null) && (this.config.isRiskOpen());
+    ApkgConfig localApkgConfig = this.config;
+    return (localApkgConfig != null) && (localApkgConfig.isRiskOpen());
   }
   
   public String toString()
   {
-    return "MiniAppConfig{config=" + this.config + ", launchParam=" + this.launchParam + ", baseLibInfo=" + this.baseLibInfo + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MiniAppConfig{config=");
+    localStringBuilder.append(this.config);
+    localStringBuilder.append(", launchParam=");
+    localStringBuilder.append(this.launchParam);
+    localStringBuilder.append(", baseLibInfo=");
+    localStringBuilder.append(this.baseLibInfo);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.apkg.MiniAppConfig
  * JD-Core Version:    0.7.0.1
  */

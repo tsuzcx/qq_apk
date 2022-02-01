@@ -62,52 +62,64 @@ public class CpuMonitor
   public boolean handleMessage(Message paramMessage)
   {
     ??? = this.statCollector.getStatInfo();
-    long l1;
-    if (??? != null) {
-      l1 = ???[0];
-    }
-    for (long l2 = ???[2];; l2 = 0L)
+    long l1 = 0L;
+    long l2;
+    if (??? != null)
     {
-      int i;
-      if (paramMessage.what == 0)
+      l2 = ???[0];
+      l1 = ???[2];
+    }
+    else
+    {
+      l2 = 0L;
+    }
+    int i;
+    if (paramMessage.what == 0)
+    {
+      StringBuilder localStringBuilder = ThreadTool.getReuseStringBuilder();
+      synchronized (this.otherProcessMap)
       {
-        StringBuilder localStringBuilder = ThreadTool.getReuseStringBuilder();
-        synchronized (this.otherProcessMap)
+        localStringBuilder.ensureCapacity(this.otherProcessMap.size() * 10);
+        Iterator localIterator = this.otherProcessMap.keySet().iterator();
+        while (localIterator.hasNext())
         {
-          localStringBuilder.ensureCapacity(this.otherProcessMap.size() * 10);
-          Iterator localIterator = this.otherProcessMap.keySet().iterator();
-          if (localIterator.hasNext())
-          {
-            Integer localInteger = (Integer)localIterator.next();
-            if (localStringBuilder.length() > 0) {
-              localStringBuilder.append("#");
-            }
-            localStringBuilder.append("[").append(localInteger).append(",").append(((CpuMonitor.ProcessCpu)this.otherProcessMap.get(localInteger)).monitorSecs).append(",").append(((CpuMonitor.ProcessCpu)this.otherProcessMap.get(localInteger)).cpuUsage).append("]");
+          Integer localInteger = (Integer)localIterator.next();
+          if (localStringBuilder.length() > 0) {
+            localStringBuilder.append("#");
           }
+          localStringBuilder.append("[");
+          localStringBuilder.append(localInteger);
+          localStringBuilder.append(",");
+          localStringBuilder.append(((CpuMonitor.ProcessCpu)this.otherProcessMap.get(localInteger)).monitorSecs);
+          localStringBuilder.append(",");
+          localStringBuilder.append(((CpuMonitor.ProcessCpu)this.otherProcessMap.get(localInteger)).cpuUsage);
+          localStringBuilder.append("]");
         }
         i = (int)(((Long)paramMessage.obj).longValue() / 1000L);
-        Logger.INSTANCE.i(new String[] { "QAPM_battery_CpuMonitor", "cpu, onStartup ", String.valueOf(i), "sec: ", String.valueOf(l2 - this.qqBaseUsage), "|", String.valueOf(l1 - this.deviceBaseUsage), "|", localStringBuilder.toString() });
-        BatteryLog.writeCommonLogByMonitor(new String[] { "cpu|fg|", String.valueOf(i), "|", String.valueOf(l2 - this.qqBaseUsage), "|", String.valueOf(l1 - this.deviceBaseUsage), "|", localStringBuilder.toString() });
-        if ((i == 1800) || (QQBatteryMonitor.debug)) {
-          BatteryLog.writeReportLogByMonitor(new String[] { "fg30Cpu", "|", String.valueOf(l2 - this.qqBaseUsage), "|", String.valueOf(l1 - this.deviceBaseUsage), "|", localStringBuilder.toString() });
+        Logger.INSTANCE.i(new String[] { "QAPM_battery_CpuMonitor", "cpu, onStartup ", String.valueOf(i), "sec: ", String.valueOf(l1 - this.qqBaseUsage), "|", String.valueOf(l2 - this.deviceBaseUsage), "|", localStringBuilder.toString() });
+        BatteryLog.writeCommonLogByMonitor(new String[] { "cpu|fg|", String.valueOf(i), "|", String.valueOf(l1 - this.qqBaseUsage), "|", String.valueOf(l2 - this.deviceBaseUsage), "|", localStringBuilder.toString() });
+        if ((i != 1800) && (!QQBatteryMonitor.debug)) {
+          break label691;
         }
-      }
-      for (;;)
-      {
+        BatteryLog.writeReportLogByMonitor(new String[] { "fg30Cpu", "|", String.valueOf(l1 - this.qqBaseUsage), "|", String.valueOf(l2 - this.deviceBaseUsage), "|", localStringBuilder.toString() });
         return false;
-        this.bgCollectCount -= 1L;
-        if (System.currentTimeMillis() - this.enterBgTimeStamp < this.dumpQqBgInterval + 5000L)
-        {
-          i = (int)(this.dumpQqBgInterval / 1000L);
-          Logger.INSTANCE.i(new String[] { "QAPM_battery_CpuMonitor", "cpu, bg", String.valueOf(i), "sec: ", String.valueOf(l2 - this.qqBaseUsageOnEnterBg), "/", String.valueOf(l1 - this.deviceBaseUsageOnEnterBg) });
-          BatteryLog.writeCommonLogByMonitor(new String[] { "cpu|bg|", String.valueOf(i), "|", String.valueOf(l2 - this.qqBaseUsageOnEnterBg), "|", String.valueOf(l1 - this.deviceBaseUsageOnEnterBg) });
-          if (i == 300) {
-            BatteryLog.writeReportLogByMonitor(new String[] { "bg5Cpu", "|", String.valueOf(l2 - this.qqBaseUsage), "|", String.valueOf(l1 - this.deviceBaseUsage) });
-          }
-        }
       }
-      l1 = 0L;
     }
+    this.bgCollectCount -= 1L;
+    long l3 = System.currentTimeMillis();
+    long l4 = this.enterBgTimeStamp;
+    long l5 = this.dumpQqBgInterval;
+    if (l3 - l4 < l5 + 5000L)
+    {
+      i = (int)(l5 / 1000L);
+      Logger.INSTANCE.i(new String[] { "QAPM_battery_CpuMonitor", "cpu, bg", String.valueOf(i), "sec: ", String.valueOf(l1 - this.qqBaseUsageOnEnterBg), "/", String.valueOf(l2 - this.deviceBaseUsageOnEnterBg) });
+      BatteryLog.writeCommonLogByMonitor(new String[] { "cpu|bg|", String.valueOf(i), "|", String.valueOf(l1 - this.qqBaseUsageOnEnterBg), "|", String.valueOf(l2 - this.deviceBaseUsageOnEnterBg) });
+      if (i == 300) {
+        BatteryLog.writeReportLogByMonitor(new String[] { "bg5Cpu", "|", String.valueOf(l1 - this.qqBaseUsage), "|", String.valueOf(l2 - this.deviceBaseUsage) });
+      }
+    }
+    label691:
+    return false;
   }
   
   public void onAppBackground()
@@ -147,7 +159,7 @@ public class CpuMonitor
           paramBundle = new CpuMonitor.ProcessCpu(this);
           this.otherProcessMap.put(Integer.valueOf(i), paramBundle);
         }
-        paramBundle.cpuUsage = (l + paramBundle.cpuUsage);
+        paramBundle.cpuUsage += l;
         paramBundle.monitorSecs += j;
         return;
       }
@@ -172,7 +184,7 @@ public class CpuMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.qqbattery.monitor.CpuMonitor
  * JD-Core Version:    0.7.0.1
  */

@@ -45,13 +45,15 @@ class AnimatorSet$Node
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      throw new AssertionError();
+      label21:
+      break label21;
     }
+    throw new AssertionError();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nineoldandroids.animation.AnimatorSet.Node
  * JD-Core Version:    0.7.0.1
  */

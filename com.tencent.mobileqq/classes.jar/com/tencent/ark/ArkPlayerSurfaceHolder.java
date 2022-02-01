@@ -45,19 +45,22 @@ public class ArkPlayerSurfaceHolder
   
   public void deinitialize()
   {
-    if (this.mSurface != null)
+    Object localObject = this.mSurface;
+    if (localObject != null)
     {
-      this.mSurface.release();
+      ((Surface)localObject).release();
       this.mSurface = null;
     }
-    if (this.mSurfaceTexture != null)
+    localObject = this.mSurfaceTexture;
+    if (localObject != null)
     {
-      this.mSurfaceTexture.release();
+      ((SurfaceTexture)localObject).release();
       this.mSurfaceTexture = null;
     }
-    if ((this.mOffscreenContext != null) && (this.mTextureID != 0))
+    localObject = this.mOffscreenContext;
+    if ((localObject != null) && (this.mTextureID != 0))
     {
-      this.mOffscreenContext.makeCurrent();
+      ((EGLContextHolder)localObject).makeCurrent();
       GLES20.glDeleteTextures(1, new int[] { this.mTextureID }, 0);
     }
     this.mTextureID = 0;
@@ -65,13 +68,15 @@ public class ArkPlayerSurfaceHolder
   
   public Surface getSurface()
   {
-    if (this.mSurface != null) {
-      return this.mSurface;
+    Object localObject = this.mSurface;
+    if (localObject != null) {
+      return localObject;
     }
-    if (this.mSurfaceTexture == null) {
+    localObject = this.mSurfaceTexture;
+    if (localObject == null) {
       return null;
     }
-    this.mSurface = new Surface(this.mSurfaceTexture);
+    this.mSurface = new Surface((SurfaceTexture)localObject);
     return this.mSurface;
   }
   
@@ -84,35 +89,39 @@ public class ArkPlayerSurfaceHolder
     if (this.mOffscreenContext == null) {
       this.mOffscreenContext = ArkViewModel.getOffscreenContext();
     }
-    if ((this.mOffscreenContext == null) || (!this.mOffscreenContext.makeCurrent()))
+    Object localObject = this.mOffscreenContext;
+    if ((localObject != null) && (((EGLContextHolder)localObject).makeCurrent()))
     {
-      ENV.logE("ArkApp.ArkPlayerSurfaceHolder", "initialize.makeCurrent.fail!!");
-      return false;
+      localObject = new int[1];
+      GLES20.glGenTextures(1, (int[])localObject, 0);
+      if (localObject[0] == 0)
+      {
+        Logger.logE("ArkApp.ArkPlayerSurfaceHolder", "initialize.glGenTextures.fail!!");
+        return false;
+      }
+      this.mTextureID = localObject[0];
+      GLES20.glBindTexture(36197, this.mTextureID);
+      GLES20.glTexParameterf(36197, 10241, 9729.0F);
+      GLES20.glTexParameterf(36197, 10240, 9729.0F);
+      GLES20.glTexParameteri(36197, 10242, 33071);
+      GLES20.glTexParameteri(36197, 10243, 33071);
+      this.mSurfaceTexture = new SurfaceTexture(this.mTextureID);
+      this.mSurfaceTexture.setOnFrameAvailableListener(this);
+      return true;
     }
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenTextures(1, arrayOfInt, 0);
-    if (arrayOfInt[0] == 0)
-    {
-      ENV.logE("ArkApp.ArkPlayerSurfaceHolder", "initialize.glGenTextures.fail!!");
-      return false;
-    }
-    this.mTextureID = arrayOfInt[0];
-    GLES20.glBindTexture(36197, this.mTextureID);
-    GLES20.glTexParameterf(36197, 10241, 9729.0F);
-    GLES20.glTexParameterf(36197, 10240, 9729.0F);
-    GLES20.glTexParameteri(36197, 10242, 33071);
-    GLES20.glTexParameteri(36197, 10243, 33071);
-    this.mSurfaceTexture = new SurfaceTexture(this.mTextureID);
-    this.mSurfaceTexture.setOnFrameAvailableListener(this);
-    return true;
+    Logger.logE("ArkApp.ArkPlayerSurfaceHolder", "initialize.makeCurrent.fail!!");
+    return false;
   }
   
   public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
-    if ((this.mSurfaceTexture == null) || (this.mOffscreenContext == null) || (this.mFrameCallback == 0L)) {
-      return;
+    if ((this.mSurfaceTexture != null) && (this.mOffscreenContext != null))
+    {
+      if (this.mFrameCallback == 0L) {
+        return;
+      }
+      DoDispathTask(new ArkPlayerSurfaceHolder.1(this));
     }
-    DoDispathTask(new ArkPlayerSurfaceHolder.1(this));
   }
 }
 

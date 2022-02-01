@@ -10,16 +10,18 @@ class ViolaRenderManager$2
   
   public void run()
   {
-    if (ViolaRenderManager.access$000(this.this$0).get(this.val$instanceId) == null) {}
-    while (this.val$task == null) {
+    if (ViolaRenderManager.access$000(this.this$0).get(this.val$instanceId) == null) {
       return;
     }
-    this.val$task.execute();
+    IRenderTask localIRenderTask = this.val$task;
+    if (localIRenderTask != null) {
+      localIRenderTask.execute();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.core.ViolaRenderManager.2
  * JD-Core Version:    0.7.0.1
  */

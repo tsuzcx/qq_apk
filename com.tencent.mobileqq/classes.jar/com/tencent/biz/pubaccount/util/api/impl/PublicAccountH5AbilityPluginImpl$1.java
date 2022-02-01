@@ -14,9 +14,7 @@ class PublicAccountH5AbilityPluginImpl$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1000) {
       return;
     }
     this.a.refuseConfig = false;
@@ -24,7 +22,7 @@ class PublicAccountH5AbilityPluginImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.1
  * JD-Core Version:    0.7.0.1
  */

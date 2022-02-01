@@ -1,19 +1,19 @@
 package cooperation.qzone;
 
-import android.content.DialogInterface;
-import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.IQzonePatchApi;
 
 final class QZoneHelper$7
-  extends DialogUtil.DialogOnClickAdapter
+  implements Runnable
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    ((IQzonePatchApi)QRoute.api(IQzonePatchApi.class)).getPatchList();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QZoneHelper.7
  * JD-Core Version:    0.7.0.1
  */

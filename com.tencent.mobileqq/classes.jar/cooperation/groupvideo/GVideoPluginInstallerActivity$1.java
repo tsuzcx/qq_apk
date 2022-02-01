@@ -15,29 +15,38 @@ class GVideoPluginInstallerActivity$1
   
   public void dispatchMessage(Message paramMessage)
   {
-    if (paramMessage == null) {}
-    do
-    {
+    if (paramMessage == null) {
       return;
-      switch (paramMessage.what)
+    }
+    int i = paramMessage.what;
+    if (i != 1)
+    {
+      if (i != 2)
       {
-      default: 
-        return;
-      case 1: 
-        GVideoPluginInstallerActivity.a(this.a);
+        if (i != 3)
+        {
+          if (i != 4) {
+            return;
+          }
+          this.a.finish();
+          return;
+        }
+        GVideoPluginInstallerActivity.access$100(this.a);
         return;
       }
-    } while ((!(paramMessage.obj instanceof String)) || (this.a.a == null));
-    this.a.a.setText((String)paramMessage.obj);
-    return;
-    GVideoPluginInstallerActivity.b(this.a);
-    return;
-    this.a.finish();
+      if (((paramMessage.obj instanceof String)) && (this.a.mTextView != null)) {
+        this.a.mTextView.setText((String)paramMessage.obj);
+      }
+    }
+    else
+    {
+      GVideoPluginInstallerActivity.access$000(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.groupvideo.GVideoPluginInstallerActivity.1
  * JD-Core Version:    0.7.0.1
  */

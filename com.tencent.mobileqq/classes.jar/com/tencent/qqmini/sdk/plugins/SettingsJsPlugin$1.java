@@ -21,7 +21,8 @@ class SettingsJsPlugin$1
       paramContext = paramIntent.getStringExtra("key_miniapp_address_info");
       if (SettingsJsPlugin.access$000(this.this$0) != null)
       {
-        SettingsJsPlugin.access$100(this.this$0, paramContext, SettingsJsPlugin.access$000(this.this$0));
+        paramIntent = this.this$0;
+        SettingsJsPlugin.access$100(paramIntent, paramContext, SettingsJsPlugin.access$000(paramIntent));
         SettingsJsPlugin.access$002(this.this$0, null);
       }
     }
@@ -29,7 +30,7 @@ class SettingsJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.SettingsJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

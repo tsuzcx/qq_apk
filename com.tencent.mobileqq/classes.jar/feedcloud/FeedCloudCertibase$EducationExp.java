@@ -10,17 +10,23 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class FeedCloudCertibase$EducationExp
   extends MessageMicro<EducationExp>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 48 }, new String[] { "schoolInfo", "collegeID", "collegeName", "degree", "enrollmentYear", "idx" }, new Object[] { null, "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, EducationExp.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField collegeID = PBField.initString("");
   public final PBStringField collegeName = PBField.initString("");
   public final PBInt32Field degree = PBField.initInt32(0);
   public final PBUInt32Field enrollmentYear = PBField.initUInt32(0);
   public final PBUInt32Field idx = PBField.initUInt32(0);
   public FeedCloudCertibase.SchoolBaseInfo schoolInfo = new FeedCloudCertibase.SchoolBaseInfo();
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 48 }, new String[] { "schoolInfo", "collegeID", "collegeName", "degree", "enrollmentYear", "idx" }, new Object[] { null, "", "", localInteger, localInteger, localInteger }, EducationExp.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     feedcloud.FeedCloudCertibase.EducationExp
  * JD-Core Version:    0.7.0.1
  */

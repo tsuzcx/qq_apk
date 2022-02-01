@@ -17,7 +17,7 @@ public class DefaultPanelBarLoader
     super(paramChatPanelBarContext);
   }
   
-  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
+  protected void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
     this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.o);
     b();
@@ -29,33 +29,29 @@ public class DefaultPanelBarLoader
     return false;
   }
   
-  public void c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
+  protected void c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
     boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarChatPanelBarContext.a().d();
     paramSessionInfo = this.jdField_a_of_type_JavaUtilList;
-    if (bool)
-    {
+    if (bool) {
       paramQQAppInterface = AIOPanelUtiles.p;
-      paramSessionInfo.add(paramQQAppInterface);
-      c();
-      paramSessionInfo = this.jdField_a_of_type_JavaUtilList;
-      if (!bool) {
-        break label70;
-      }
-    }
-    label70:
-    for (paramQQAppInterface = AIOPanelUtiles.i;; paramQQAppInterface = AIOPanelUtiles.e)
-    {
-      paramSessionInfo.add(paramQQAppInterface);
-      return;
+    } else {
       paramQQAppInterface = AIOPanelUtiles.l;
-      break;
     }
+    paramSessionInfo.add(paramQQAppInterface);
+    c();
+    paramSessionInfo = this.jdField_a_of_type_JavaUtilList;
+    if (bool) {
+      paramQQAppInterface = AIOPanelUtiles.i;
+    } else {
+      paramQQAppInterface = AIOPanelUtiles.e;
+    }
+    paramSessionInfo.add(paramQQAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatpanelbar.loader.DefaultPanelBarLoader
  * JD-Core Version:    0.7.0.1
  */

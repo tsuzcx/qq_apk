@@ -13,6 +13,10 @@ public class QCircleLpReportDc05504
   public static final String KEY_EXT_12 = "ext12";
   public static final String KEY_EXT_13 = "ext13";
   public static final String KEY_EXT_14 = "ext14";
+  public static final String KEY_EXT_15 = "ext15";
+  public static final String KEY_EXT_16 = "ext16";
+  public static final String KEY_EXT_17 = "ext17";
+  public static final String KEY_EXT_18 = "ext18";
   public static final String KEY_EXT_2 = "ext2";
   public static final String KEY_EXT_3 = "ext3";
   public static final String KEY_EXT_4 = "ext4";
@@ -47,16 +51,19 @@ public class QCircleLpReportDc05504
   
   private static boolean reportWithoutSessionCheck(int paramInt)
   {
-    if ((paramInt == 1) || (paramInt == 2) || (paramInt == 3)) {}
-    while (MobileQQ.sProcessId == 9) {
-      return true;
+    if ((paramInt != 1) && (paramInt != 2))
+    {
+      if (paramInt == 3) {
+        return true;
+      }
+      return MobileQQ.sProcessId == 9;
     }
-    return false;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleLpReportDc05504
  * JD-Core Version:    0.7.0.1
  */

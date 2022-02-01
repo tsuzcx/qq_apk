@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import com.tencent.biz.ui.CustomMenuBar;
+import android.content.Intent;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class PublicAccountChatPie$30$1
   implements Runnable
@@ -9,12 +10,15 @@ class PublicAccountChatPie$30$1
   
   public void run()
   {
-    this.a.a.a.clearAnimation();
+    Intent localIntent = new Intent();
+    localIntent.putExtra("isNeedFinish", true);
+    this.a.this$0.a.setResult(-1, localIntent);
+    this.a.this$0.q();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.30.1
  * JD-Core Version:    0.7.0.1
  */

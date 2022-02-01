@@ -82,7 +82,7 @@ public class DatalinePluginProxyActivity
     return "qqdataline.apk";
   }
   
-  public Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
+  protected Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
   {
     if (paramString.equals("com.qqdataline.activity.LiteWifiphotoActivity")) {
       return DatalinePluginProxyActivity.SingleTop.class;
@@ -97,29 +97,26 @@ public class DatalinePluginProxyActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    if (!TextUtils.isEmpty(this.mCreateErrorInfo)) {
-      if (paramBundle == null) {
-        break label65;
-      }
-    }
-    for (;;)
+    if (!TextUtils.isEmpty(this.mCreateErrorInfo))
     {
+      if (paramBundle == null) {
+        paramBundle = getIntent().getExtras();
+      }
       paramBundle = paramBundle.getString("pluginsdk_launchActivity");
       StringBuffer localStringBuffer = new StringBuffer("[插件Activity启动] ");
-      localStringBuffer.append(paramBundle).append(" ").append(this.mCreateErrorInfo);
+      localStringBuffer.append(paramBundle);
+      localStringBuffer.append(" ");
+      localStringBuffer.append(this.mCreateErrorInfo);
       QLog.e("qqdataline", 1, localStringBuffer.toString());
-      return;
-      label65:
-      paramBundle = getIntent().getExtras();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqdataline.DatalinePluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -16,87 +16,72 @@ public class HeaderScrollHelper
   
   private View a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollHelper$ScrollableContainer == null) {
+    HeaderScrollHelper.ScrollableContainer localScrollableContainer = this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollHelper$ScrollableContainer;
+    if (localScrollableContainer == null) {
       return null;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollHelper$ScrollableContainer.a();
+    return localScrollableContainer.a();
   }
   
   private boolean a(android.widget.AdapterView paramAdapterView)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramAdapterView != null)
+    if ((paramAdapterView != null) && (paramAdapterView.getFirstVisiblePosition() == 0))
     {
-      bool1 = bool2;
-      if (paramAdapterView.getFirstVisiblePosition() == 0)
-      {
-        paramAdapterView = paramAdapterView.getChildAt(0);
-        if (paramAdapterView != null)
-        {
-          bool1 = bool2;
-          if (paramAdapterView.getTop() != 0) {}
-        }
-        else
-        {
-          bool1 = true;
-        }
+      paramAdapterView = paramAdapterView.getChildAt(0);
+      if ((paramAdapterView == null) || (paramAdapterView.getTop() == 0)) {
+        return true;
       }
     }
-    return bool1;
+    return false;
   }
   
   private boolean a(ScrollView paramScrollView)
   {
-    return (paramScrollView == null) || (paramScrollView.getScrollY() <= 0);
+    boolean bool = true;
+    if (paramScrollView != null)
+    {
+      if (paramScrollView.getScrollY() <= 0) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   private boolean a(com.tencent.widget.AdapterView paramAdapterView)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramAdapterView != null)
+    if ((paramAdapterView != null) && (paramAdapterView.getFirstVisiblePosition() == 0))
     {
-      bool1 = bool2;
-      if (paramAdapterView.getFirstVisiblePosition() == 0)
-      {
-        paramAdapterView = paramAdapterView.getChildAt(0);
-        if (paramAdapterView != null)
-        {
-          bool1 = bool2;
-          if (paramAdapterView.getTop() != 0) {}
-        }
-        else
-        {
-          bool1 = true;
-        }
+      paramAdapterView = paramAdapterView.getChildAt(0);
+      if ((paramAdapterView == null) || (paramAdapterView.getTop() == 0)) {
+        return true;
       }
     }
-    return bool1;
+    return false;
   }
   
   @SuppressLint({"NewApi"})
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
     View localView = a();
-    if ((localView instanceof android.widget.AbsListView)) {
-      ((android.widget.AbsListView)localView).smoothScrollBy(paramInt2, paramInt3);
-    }
-    do
+    if ((localView instanceof android.widget.AbsListView))
     {
+      ((android.widget.AbsListView)localView).smoothScrollBy(paramInt2, paramInt3);
       return;
-      if ((localView instanceof com.tencent.widget.AbsListView))
-      {
-        ((com.tencent.widget.AbsListView)localView).smoothScrollBy(paramInt2, paramInt3);
-        return;
-      }
-      if ((localView instanceof ScrollView))
-      {
-        ((ScrollView)localView).fling(paramInt1);
-        return;
-      }
-    } while (!(localView instanceof WebView));
-    ((WebView)localView).flingScroll(0, paramInt1);
+    }
+    if ((localView instanceof com.tencent.widget.AbsListView))
+    {
+      ((com.tencent.widget.AbsListView)localView).smoothScrollBy(paramInt2, paramInt3);
+      return;
+    }
+    if ((localView instanceof ScrollView))
+    {
+      ((ScrollView)localView).fling(paramInt1);
+      return;
+    }
+    if ((localView instanceof WebView)) {
+      ((WebView)localView).flingScroll(0, paramInt1);
+    }
   }
   
   public void a(HeaderScrollHelper.ScrollableContainer paramScrollableContainer)
@@ -109,22 +94,20 @@ public class HeaderScrollHelper
     View localView = a();
     if (localView != null)
     {
-      if (!(localView instanceof ContactsFPSPinnedHeaderExpandableListView)) {
-        break label25;
+      if ((localView instanceof ContactsFPSPinnedHeaderExpandableListView))
+      {
+        ((ContactsFPSPinnedHeaderExpandableListView)localView).setChildViewCanAction(paramBoolean);
+        return;
       }
-      ((ContactsFPSPinnedHeaderExpandableListView)localView).setChildViewCanAction(paramBoolean);
-    }
-    label25:
-    do
-    {
-      return;
       if ((localView instanceof TroopFragment.ContactsPinnedHeaderExpandableListView))
       {
         ((TroopFragment.ContactsPinnedHeaderExpandableListView)localView).setChildViewCanAction(paramBoolean);
         return;
       }
-    } while (!(localView instanceof AlphabetPinnedHeaderListView));
-    ((AlphabetPinnedHeaderListView)localView).setChildViewCanAction(paramBoolean);
+      if ((localView instanceof AlphabetPinnedHeaderListView)) {
+        ((AlphabetPinnedHeaderListView)localView).setChildViewCanAction(paramBoolean);
+      }
+    }
   }
   
   public boolean a()
@@ -147,7 +130,7 @@ public class HeaderScrollHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.base.HeaderScrollHelper
  * JD-Core Version:    0.7.0.1
  */

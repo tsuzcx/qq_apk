@@ -33,10 +33,7 @@ class j
       }
       catch (Exception localException)
       {
-        for (;;)
-        {
-          QLog.d("MSFAliveJobService", 1, "MSF_Alive_Log MSFAliveJobService handleMessage e ", localException);
-        }
+        QLog.d("MSFAliveJobService", 1, "MSF_Alive_Log MSFAliveJobService handleMessage e ", localException);
       }
       this.a.jobFinished((JobParameters)paramMessage.obj, false);
       return true;
@@ -74,7 +71,7 @@ class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.service.j
  * JD-Core Version:    0.7.0.1
  */

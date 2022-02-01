@@ -27,14 +27,15 @@ public final class clear_count_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.clearType, 0);
-    if (this.LastUndealCountTime != null) {
-      paramJceOutputStream.write(this.LastUndealCountTime, 1);
+    String str = this.LastUndealCountTime;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_UNDEAL_COUNT.clear_count_req
  * JD-Core Version:    0.7.0.1
  */

@@ -8,6 +8,7 @@ import com.tencent.mtt.hippy.annotation.HippyMethod;
 import com.tencent.mtt.hippy.annotation.HippyNativeModule;
 import com.tencent.mtt.hippy.common.HippyArray;
 import com.tencent.mtt.hippy.modules.nativemodules.HippyNativeModuleBase;
+import com.tencent.mtt.hippy.utils.LogUtils;
 
 @HippyNativeModule(name="UtilsModule")
 public class UtilsModule
@@ -26,8 +27,9 @@ public class UtilsModule
     if (this.a == null) {
       this.a = ((Vibrator)this.mContext.getGlobalConfigs().getContext().getSystemService("vibrator"));
     }
-    if (this.a != null) {
-      this.a.cancel();
+    Vibrator localVibrator = this.a;
+    if (localVibrator != null) {
+      localVibrator.cancel();
     }
   }
   
@@ -37,51 +39,56 @@ public class UtilsModule
     if (this.a == null) {
       this.a = ((Vibrator)this.mContext.getGlobalConfigs().getContext().getSystemService("vibrator"));
     }
-    Object localObject1;
-    int i;
     if (this.a != null)
     {
-      Object localObject2 = null;
-      localObject1 = localObject2;
+      long[] arrayOfLong = null;
+      Object localObject = arrayOfLong;
       if (paramHippyArray != null)
       {
-        localObject1 = localObject2;
+        localObject = arrayOfLong;
         if (paramHippyArray.size() > 0)
         {
-          localObject1 = new long[paramHippyArray.size()];
-          i = 0;
+          arrayOfLong = new long[paramHippyArray.size()];
+          int i = 0;
+          for (;;)
+          {
+            localObject = arrayOfLong;
+            try
+            {
+              if (i < paramHippyArray.size())
+              {
+                arrayOfLong[i] = ((Integer)paramHippyArray.get(i)).intValue();
+                i += 1;
+              }
+            }
+            catch (Exception paramHippyArray)
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("vibrate: ");
+              ((StringBuilder)localObject).append(paramHippyArray.getMessage());
+              LogUtils.d("UtilsModule", ((StringBuilder)localObject).toString());
+              localObject = arrayOfLong;
+            }
+          }
         }
       }
-    }
-    try
-    {
-      while (i < paramHippyArray.size())
+      if (localObject != null)
       {
-        localObject1[i] = ((Integer)paramHippyArray.get(i)).intValue();
-        i += 1;
+        paramHippyArray = (HippyArray)localObject;
+        if (localObject.length != 0) {}
       }
+      else
+      {
+        paramHippyArray = new long[1];
+        paramHippyArray[0] = 1000L;
+      }
+      this.a.vibrate(paramHippyArray, paramInt);
     }
-    catch (Exception paramHippyArray)
-    {
-      label101:
-      break label101;
-    }
-    if (localObject1 != null)
-    {
-      paramHippyArray = (HippyArray)localObject1;
-      if (localObject1.length != 0) {}
-    }
-    else
-    {
-      paramHippyArray = new long[1];
-      paramHippyArray[0] = 1000L;
-    }
-    this.a.vibrate(paramHippyArray, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.utils.UtilsModule
  * JD-Core Version:    0.7.0.1
  */

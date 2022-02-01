@@ -45,75 +45,101 @@ public final class ForwardRsp
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.jdField_a_of_type_Int = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 18: 
-        this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
-        break;
-      case 26: 
-        this.jdField_a_of_type_ArrayOfByte = paramCodedInputByteBufferNano.readBytes();
-        break;
-      case 32: 
-        this.jdField_b_of_type_Int = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 40: 
-        this.c = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 48: 
-        this.d = paramCodedInputByteBufferNano.readUInt32();
+      if (i == 0) {
         break;
       }
-      this.jdField_b_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+      if (i != 8)
+      {
+        if (i != 18)
+        {
+          if (i != 26)
+          {
+            if (i != 32)
+            {
+              if (i != 40)
+              {
+                if (i != 48)
+                {
+                  if (i != 58)
+                  {
+                    if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+                      return this;
+                    }
+                  }
+                  else {
+                    this.jdField_b_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+                  }
+                }
+                else {
+                  this.d = paramCodedInputByteBufferNano.readUInt32();
+                }
+              }
+              else {
+                this.c = paramCodedInputByteBufferNano.readUInt32();
+              }
+            }
+            else {
+              this.jdField_b_of_type_Int = paramCodedInputByteBufferNano.readUInt32();
+            }
+          }
+          else {
+            this.jdField_a_of_type_ArrayOfByte = paramCodedInputByteBufferNano.readBytes();
+          }
+        }
+        else {
+          this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+        }
+      }
+      else {
+        this.jdField_a_of_type_Int = paramCodedInputByteBufferNano.readUInt32();
+      }
     }
+    return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    int k = this.jdField_a_of_type_Int;
     int i = j;
-    if (this.jdField_a_of_type_Int != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(1, this.jdField_a_of_type_Int);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeUInt32Size(1, k);
     }
-    j = i;
+    k = i;
     if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-      j = i + CodedOutputByteBufferNano.computeStringSize(2, this.jdField_a_of_type_JavaLangString);
+      k = i + CodedOutputByteBufferNano.computeStringSize(2, this.jdField_a_of_type_JavaLangString);
     }
-    i = j;
+    j = k;
     if (!Arrays.equals(this.jdField_a_of_type_ArrayOfByte, WireFormatNano.EMPTY_BYTES)) {
-      i = j + CodedOutputByteBufferNano.computeBytesSize(3, this.jdField_a_of_type_ArrayOfByte);
+      j = k + CodedOutputByteBufferNano.computeBytesSize(3, this.jdField_a_of_type_ArrayOfByte);
+    }
+    k = this.jdField_b_of_type_Int;
+    i = j;
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeUInt32Size(4, k);
+    }
+    k = this.c;
+    j = i;
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeUInt32Size(5, k);
+    }
+    k = this.d;
+    i = j;
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeUInt32Size(6, k);
     }
     j = i;
-    if (this.jdField_b_of_type_Int != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(4, this.jdField_b_of_type_Int);
-    }
-    i = j;
-    if (this.c != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(5, this.c);
-    }
-    j = i;
-    if (this.d != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(6, this.d);
-    }
-    i = j;
     if (!this.jdField_b_of_type_JavaLangString.equals("")) {
-      i = j + CodedOutputByteBufferNano.computeStringSize(7, this.jdField_b_of_type_JavaLangString);
+      j = i + CodedOutputByteBufferNano.computeStringSize(7, this.jdField_b_of_type_JavaLangString);
     }
-    return i;
+    return j;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.jdField_a_of_type_Int != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(1, this.jdField_a_of_type_Int);
+    int i = this.jdField_a_of_type_Int;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(1, i);
     }
     if (!this.jdField_a_of_type_JavaLangString.equals("")) {
       paramCodedOutputByteBufferNano.writeString(2, this.jdField_a_of_type_JavaLangString);
@@ -121,14 +147,17 @@ public final class ForwardRsp
     if (!Arrays.equals(this.jdField_a_of_type_ArrayOfByte, WireFormatNano.EMPTY_BYTES)) {
       paramCodedOutputByteBufferNano.writeBytes(3, this.jdField_a_of_type_ArrayOfByte);
     }
-    if (this.jdField_b_of_type_Int != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(4, this.jdField_b_of_type_Int);
+    i = this.jdField_b_of_type_Int;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(4, i);
     }
-    if (this.c != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(5, this.c);
+    i = this.c;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(5, i);
     }
-    if (this.d != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(6, this.d);
+    i = this.d;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(6, i);
     }
     if (!this.jdField_b_of_type_JavaLangString.equals("")) {
       paramCodedOutputByteBufferNano.writeString(7, this.jdField_b_of_type_JavaLangString);
@@ -138,7 +167,7 @@ public final class ForwardRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.msfilivehead.ForwardRsp
  * JD-Core Version:    0.7.0.1
  */

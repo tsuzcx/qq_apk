@@ -41,40 +41,36 @@ public class IndividualityRemoteCommand
     int i = paramBundle.getInt("com.tencent.individuality.individualityremotecommand.id", -1);
     if (-1 != i)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("IndividualityRemoteCommand", 4, "invoke: dataInvoke=" + paramBundle.toString());
+      if (QLog.isDevelopLevel())
+      {
+        paramOnInvokeFinishLinstener = new StringBuilder();
+        paramOnInvokeFinishLinstener.append("invoke: dataInvoke=");
+        paramOnInvokeFinishLinstener.append(paramBundle.toString());
+        QLog.i("IndividualityRemoteCommand", 4, paramOnInvokeFinishLinstener.toString());
       }
       paramOnInvokeFinishLinstener = (List)this.a.get(i);
-      if (paramOnInvokeFinishLinstener == null) {
-        break label100;
-      }
-      paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.iterator();
-      do
+      if (paramOnInvokeFinishLinstener != null)
       {
-        if (!paramOnInvokeFinishLinstener.hasNext()) {
-          break;
-        }
-      } while (!((IndividualityRemoteCommand.IRemoteCommandHandler)paramOnInvokeFinishLinstener.next()).a(i, paramBundle));
-    }
-    label100:
-    do
-    {
-      while (!paramOnInvokeFinishLinstener.hasNext())
-      {
-        do
-        {
-          return paramBundle;
-          paramOnInvokeFinishLinstener = (List)this.a.get(0);
-        } while (paramOnInvokeFinishLinstener == null);
         paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.iterator();
+        while (paramOnInvokeFinishLinstener.hasNext()) {
+          if (((IndividualityRemoteCommand.IRemoteCommandHandler)paramOnInvokeFinishLinstener.next()).a(i, paramBundle)) {
+            return paramBundle;
+          }
+        }
       }
-    } while (!((IndividualityRemoteCommand.IRemoteCommandHandler)paramOnInvokeFinishLinstener.next()).a(i, paramBundle));
+      paramOnInvokeFinishLinstener = (List)this.a.get(0);
+      if (paramOnInvokeFinishLinstener != null)
+      {
+        paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.iterator();
+        while ((paramOnInvokeFinishLinstener.hasNext()) && (!((IndividualityRemoteCommand.IRemoteCommandHandler)paramOnInvokeFinishLinstener.next()).a(i, paramBundle))) {}
+      }
+    }
     return paramBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqindividuality.ipc.IndividualityRemoteCommand
  * JD-Core Version:    0.7.0.1
  */

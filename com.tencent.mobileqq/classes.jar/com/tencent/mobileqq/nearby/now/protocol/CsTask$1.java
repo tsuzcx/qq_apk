@@ -14,7 +14,7 @@ class CsTask$1
 {
   CsTask$1(CsTask paramCsTask) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     if ((paramInt == 0) && (paramArrayOfByte != null))
     {
@@ -22,20 +22,32 @@ class CsTask$1
       try
       {
         localRspBody.mergeFrom(paramArrayOfByte);
-        QLog.i("QQ_NOW_TASK", 2, "err_msg:   " + localRspBody.err_msg.get());
-        if (!localRspBody.busi_buf.has()) {
-          break label202;
-        }
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$Callback != null) && (paramInt == 0))
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("err_msg:   ");
+        localStringBuilder.append(localRspBody.err_msg.get());
+        QLog.i("QQ_NOW_TASK", 2, localStringBuilder.toString());
+        if (localRspBody.busi_buf.has())
         {
-          this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$Callback.a(paramInt, localRspBody.busi_buf.get().toByteArray(), paramBundle);
+          if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$Callback != null) && (paramInt == 0))
+          {
+            this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$Callback.a(paramInt, localRspBody.busi_buf.get().toByteArray(), paramBundle);
+            return;
+          }
+          paramBundle = new StringBuilder();
+          paramBundle.append("err_msg1:   ");
+          paramBundle.append(localRspBody.err_msg.get());
+          QLog.i("QQ_NOW_TASK", 1, paramBundle.toString());
+          if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError == null) {
+            return;
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError.a(paramInt, paramArrayOfByte);
           return;
         }
-        QLog.i("QQ_NOW_TASK", 1, "err_msg1:   " + localRspBody.err_msg.get());
+        QLog.i("QQ_NOW_TASK", 1, "err_msg2:   ");
         if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError == null) {
           return;
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError.a(paramInt, paramArrayOfByte);
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError.a(paramInt, null);
         return;
       }
       catch (InvalidProtocolBufferMicroException paramArrayOfByte)
@@ -47,12 +59,6 @@ class CsTask$1
         }
       }
       this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError.a(paramInt, null);
-      return;
-      label202:
-      QLog.i("QQ_NOW_TASK", 1, "err_msg2:   ");
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError.a(paramInt, null);
-      }
     }
     else
     {
@@ -65,7 +71,7 @@ class CsTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.protocol.CsTask.1
  * JD-Core Version:    0.7.0.1
  */

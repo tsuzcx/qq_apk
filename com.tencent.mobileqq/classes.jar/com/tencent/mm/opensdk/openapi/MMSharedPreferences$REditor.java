@@ -41,71 +41,69 @@ class MMSharedPreferences$REditor
       this.cr.delete(c.b.CONTENT_URI, null, null);
       this.clear = false;
     }
-    Iterator localIterator = this.remove.iterator();
-    Object localObject1;
-    while (localIterator.hasNext())
+    Object localObject1 = this.remove.iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      localObject1 = (String)localIterator.next();
-      this.cr.delete(c.b.CONTENT_URI, "key = ?", new String[] { localObject1 });
+      localObject2 = (String)((Iterator)localObject1).next();
+      this.cr.delete(c.b.CONTENT_URI, "key = ?", new String[] { localObject2 });
     }
-    localIterator = this.values.entrySet().iterator();
-    label146:
-    label302:
-    label326:
-    while (localIterator.hasNext())
+    Object localObject2 = this.values.entrySet().iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      localObject1 = (Map.Entry)localIterator.next();
-      Object localObject2 = ((Map.Entry)localObject1).getValue();
-      if (localObject2 == null)
+      Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
+      Object localObject3 = localEntry.getValue();
+      if (localObject3 == null) {}
+      int i;
+      for (localObject1 = "unresolve failed, null value";; localObject1 = ((StringBuilder)localObject1).toString())
       {
-        Log.e("MicroMsg.SDK.PluginProvider.Resolver", "unresolve failed, null value");
+        Log.e("MicroMsg.SDK.PluginProvider.Resolver", (String)localObject1);
         i = 0;
-        if (i != 0) {
-          break label302;
-        }
-      }
-      for (int i = 0;; i = 1)
-      {
-        if (i == 0) {
-          break label326;
-        }
-        this.cr.update(c.b.CONTENT_URI, localContentValues, "key = ?", new String[] { (String)((Map.Entry)localObject1).getKey() });
         break;
-        if ((localObject2 instanceof Integer))
+        if ((localObject3 instanceof Integer))
         {
           i = 1;
-          break label146;
+          break;
         }
-        if ((localObject2 instanceof Long))
+        if ((localObject3 instanceof Long))
         {
           i = 2;
-          break label146;
+          break;
         }
-        if ((localObject2 instanceof String))
+        if ((localObject3 instanceof String))
         {
           i = 3;
-          break label146;
+          break;
         }
-        if ((localObject2 instanceof Boolean))
+        if ((localObject3 instanceof Boolean))
         {
           i = 4;
-          break label146;
+          break;
         }
-        if ((localObject2 instanceof Float))
+        if ((localObject3 instanceof Float))
         {
           i = 5;
-          break label146;
+          break;
         }
-        if ((localObject2 instanceof Double))
+        if ((localObject3 instanceof Double))
         {
           i = 6;
-          break label146;
+          break;
         }
-        Log.e("MicroMsg.SDK.PluginProvider.Resolver", "unresolve failed, unknown type=" + localObject2.getClass().toString());
+        localObject1 = new StringBuilder("unresolve failed, unknown type=");
+        ((StringBuilder)localObject1).append(localObject3.getClass().toString());
+      }
+      if (i == 0)
+      {
         i = 0;
-        break label146;
+      }
+      else
+      {
         localContentValues.put("type", Integer.valueOf(i));
-        localContentValues.put("value", localObject2.toString());
+        localContentValues.put("value", localObject3.toString());
+        i = 1;
+      }
+      if (i != 0) {
+        this.cr.update(c.b.CONTENT_URI, localContentValues, "key = ?", new String[] { (String)localEntry.getKey() });
       }
     }
     return true;
@@ -159,7 +157,7 @@ class MMSharedPreferences$REditor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.opensdk.openapi.MMSharedPreferences.REditor
  * JD-Core Version:    0.7.0.1
  */

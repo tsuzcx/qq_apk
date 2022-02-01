@@ -20,15 +20,12 @@ public class MarkAsReadRequest
     try
     {
       localRspMarkAsRead.mergeFrom(paramArrayOfByte);
-      return new MarkAsReadRequest.Response(localRspMarkAsRead);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      paramArrayOfByte.printStackTrace();
     }
+    return new MarkAsReadRequest.Response(localRspMarkAsRead);
   }
   
   public String a()
@@ -36,7 +33,7 @@ public class MarkAsReadRequest
     return a;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqMarkAsRead localReqMarkAsRead = new qqstory_service.ReqMarkAsRead();
     localReqMarkAsRead.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
@@ -45,7 +42,7 @@ public class MarkAsReadRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.MarkAsReadRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -18,36 +18,40 @@ public class TroopFeedParserHelper$AblumFeedParser
     localTroopFeedItem.type = 18;
     try
     {
-      localTroopFeedItem.title = (paramJSONObject.getString("album_name") + HardCodeUtil.a(2131715165) + paramJSONObject.getString("photo_num") + HardCodeUtil.a(2131715167));
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramJSONObject.getString("album_name"));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131715088));
+      ((StringBuilder)localObject).append(paramJSONObject.getString("photo_num"));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131715090));
+      localTroopFeedItem.title = ((StringBuilder)localObject).toString();
       localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
-      paramJSONObject = paramJSONObject.getJSONArray("content");
+      localObject = paramJSONObject.getJSONArray("content");
       int i = 0;
-      for (;;)
+      while (i < ((JSONArray)localObject).length())
       {
-        if (i < paramJSONObject.length())
+        paramJSONObject = ((JSONArray)localObject).getJSONObject(i);
+        if (paramJSONObject.getInt("type") == 3)
         {
-          JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
-          if (localJSONObject.getInt("type") == 3) {
-            localTroopFeedItem.picPath = (localJSONObject.getString("pic_url") + "200");
-          }
-        }
-        else
-        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramJSONObject.getString("pic_url"));
+          ((StringBuilder)localObject).append("200");
+          localTroopFeedItem.picPath = ((StringBuilder)localObject).toString();
           return localTroopFeedItem;
         }
         i += 1;
       }
-      return null;
+      return localTroopFeedItem;
     }
     catch (JSONException paramJSONObject)
     {
       paramJSONObject.printStackTrace();
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFeedParserHelper.AblumFeedParser
  * JD-Core Version:    0.7.0.1
  */

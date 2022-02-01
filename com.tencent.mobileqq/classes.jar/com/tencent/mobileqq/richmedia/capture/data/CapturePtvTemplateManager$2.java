@@ -11,7 +11,10 @@ final class CapturePtvTemplateManager$2
   
   public void run()
   {
-    FileUtils.a(CapturePtvTemplateManager.a.getPath() + File.separator, this.a, this.b);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(CapturePtvTemplateManager.a.getPath());
+    localStringBuilder.append(File.separator);
+    FileUtils.writeFile(localStringBuilder.toString(), this.a, this.b);
     if (QLog.isColorLevel()) {
       QLog.i("CapturePtvTemplateManager", 2, "save Config to file finish.");
     }
@@ -19,7 +22,7 @@ final class CapturePtvTemplateManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager.2
  * JD-Core Version:    0.7.0.1
  */

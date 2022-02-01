@@ -17,11 +17,13 @@ public abstract interface IBannerProcessor
   
   public abstract void a(Banner paramBanner, Message paramMessage);
   
-  public abstract void a(AppRuntime paramAppRuntime);
+  public abstract int b();
+  
+  public abstract void b(AppRuntime paramAppRuntime);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.banner.processor.IBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

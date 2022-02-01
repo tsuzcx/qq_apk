@@ -10,9 +10,7 @@ class DoodlePanel$3$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 1) {
       return;
     }
     DoodlePanel.a(this.a.a, false);
@@ -20,7 +18,7 @@ class DoodlePanel$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodlePanel.3.1
  * JD-Core Version:    0.7.0.1
  */

@@ -29,33 +29,37 @@ class VideoThumbVideoGenerator
   private CGSize calculateRenderSize()
   {
     CGSize localCGSize3 = new CGSize(this.mCoverWidth * 1.0F, this.mCoverHeight * 1.0F);
-    if ((checkTavSourceIsNull(this.mTavSource)) || (checkHeightAndWidth(this.mCoverHeight, this.mCoverWidth))) {
-      return localCGSize3;
-    }
-    CGSize localCGSize2 = this.mTavSource.getVideoComposition().getRenderSize().clone();
-    CGSize localCGSize1;
-    if (localCGSize2 != null)
+    if (!checkTavSourceIsNull(this.mTavSource))
     {
-      localCGSize1 = localCGSize2;
-      if (!checkHeightAndWidth(localCGSize2.height, localCGSize2.width)) {}
-    }
-    else
-    {
-      if (checkTavAsset(this.mTavSource)) {
+      if (checkHeightAndWidth(this.mCoverHeight, this.mCoverWidth)) {
         return localCGSize3;
       }
-      localCGSize1 = this.mTavSource.getAsset().getNaturalSize().clone();
-    }
-    float f = localCGSize1.width / localCGSize1.height;
-    if (f > 1.0F)
-    {
-      localCGSize1.height = (this.mCoverHeight * 1.0F);
-      localCGSize1.width = (f * localCGSize1.height);
+      CGSize localCGSize2 = this.mTavSource.getVideoComposition().getRenderSize().clone();
+      CGSize localCGSize1;
+      if (localCGSize2 != null)
+      {
+        localCGSize1 = localCGSize2;
+        if (!checkHeightAndWidth(localCGSize2.height, localCGSize2.width)) {}
+      }
+      else
+      {
+        if (checkTavAsset(this.mTavSource)) {
+          return localCGSize3;
+        }
+        localCGSize1 = this.mTavSource.getAsset().getNaturalSize().clone();
+      }
+      float f = localCGSize1.width / localCGSize1.height;
+      if (f > 1.0F)
+      {
+        localCGSize1.height = (this.mCoverHeight * 1.0F);
+        localCGSize1.width = (localCGSize1.height * f);
+        return localCGSize1;
+      }
+      localCGSize1.width = (this.mCoverWidth * 1.0F);
+      localCGSize1.height = (localCGSize1.width / f);
       return localCGSize1;
     }
-    localCGSize1.width = (this.mCoverWidth * 1.0F);
-    localCGSize1.height = (localCGSize1.width / f);
-    return localCGSize1;
+    return localCGSize3;
   }
   
   private boolean checkHeightAndWidth(float paramFloat1, float paramFloat2)
@@ -75,32 +79,37 @@ class VideoThumbVideoGenerator
   
   private boolean reInitImageGenerator()
   {
-    if (this.mImageGenerator == null) {}
-    try
-    {
-      this.mImageGenerator = new TAVSourceImageGenerator(this.mTavSource, calculateRenderSize());
-      RenderContextParams localRenderContextParams = new RenderContextParams();
-      localRenderContextParams.putParam("video_cover", "video_cover_param");
-      this.mImageGenerator.getAssetImageGenerator().setRenderContextParams(localRenderContextParams);
-      this.mImageGenerator.getAssetImageGenerator().setApertureMode(AssetImageGenerator.ApertureMode.aspectFill);
-      return true;
-    }
-    catch (Throwable localThrowable)
-    {
-      if ((localThrowable instanceof OutOfMemoryError)) {
-        this.mGenerateHandler.runnableFailAndReleaseCache();
+    if (this.mImageGenerator == null) {
+      try
+      {
+        this.mImageGenerator = new TAVSourceImageGenerator(this.mTavSource, calculateRenderSize());
+        RenderContextParams localRenderContextParams = new RenderContextParams();
+        localRenderContextParams.putParam("video_cover", "video_cover_param");
+        this.mImageGenerator.getAssetImageGenerator().setRenderContextParams(localRenderContextParams);
+        this.mImageGenerator.getAssetImageGenerator().setApertureMode(AssetImageGenerator.ApertureMode.aspectFill);
+      }
+      catch (Throwable localThrowable)
+      {
+        if ((localThrowable instanceof OutOfMemoryError)) {
+          this.mGenerateHandler.runnableFailAndReleaseCache();
+        }
+        return false;
       }
     }
-    return false;
+    return true;
   }
   
   private void releaseImageGenerator()
   {
     Logger.i("VideoThumbVideoGenerator", "releaseImageGenerator:");
-    Logger.i("VideoThumbVideoGenerator", "releaseImageGenerator:" + Thread.currentThread().getName());
-    if (this.mImageGenerator != null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("releaseImageGenerator:");
+    ((StringBuilder)localObject).append(Thread.currentThread().getName());
+    Logger.i("VideoThumbVideoGenerator", ((StringBuilder)localObject).toString());
+    localObject = this.mImageGenerator;
+    if (localObject != null)
     {
-      if (this.mImageGenerator.getAssetImageGenerator() != null) {
+      if (((TAVSourceImageGenerator)localObject).getAssetImageGenerator() != null) {
         this.mImageGenerator.getAssetImageGenerator().release();
       }
       this.mImageGenerator = null;
@@ -110,8 +119,9 @@ class VideoThumbVideoGenerator
   private void releaseQueue()
   {
     Logger.i("VideoThumbVideoGenerator", "releaseQueue:");
-    if (this.mVideoThumbTaskQueue != null) {
-      this.mVideoThumbTaskQueue.clear();
+    BlockingQueue localBlockingQueue = this.mVideoThumbTaskQueue;
+    if (localBlockingQueue != null) {
+      localBlockingQueue.clear();
     }
   }
   
@@ -128,21 +138,20 @@ class VideoThumbVideoGenerator
   
   public void generateCoverByTime(CMTime paramCMTime)
   {
-    Logger.i("VideoThumbVideoGenerator", "generateCoverByTime:" + paramCMTime.getTimeUs());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("generateCoverByTime:");
+    localStringBuilder.append(paramCMTime.getTimeUs());
+    Logger.i("VideoThumbVideoGenerator", localStringBuilder.toString());
     paramCMTime = new VideoThumbVideoGenerator.VideoThumbTask(System.currentTimeMillis(), paramCMTime);
     try
     {
       this.mVideoThumbTaskQueue.put(paramCMTime);
-      startGenerate();
-      return;
     }
     catch (InterruptedException paramCMTime)
     {
-      for (;;)
-      {
-        paramCMTime.printStackTrace();
-      }
+      paramCMTime.printStackTrace();
     }
+    startGenerate();
   }
   
   public void init(TAVSource paramTAVSource)
@@ -163,16 +172,19 @@ class VideoThumbVideoGenerator
   public void release()
   {
     Logger.i("VideoThumbVideoGenerator", "release:");
-    if (this.mRunnable != null) {
-      this.mRunnable.setRelease(true);
-    }
-    do
+    if (this.mRunnable != null)
     {
+      this.mRunnable.setRelease(true);
       return;
-      Logger.i("VideoThumbVideoGenerator", "release threadName:" + Thread.currentThread().getName());
-      releaseQueue();
-    } while (this.mGenerateHandler == null);
-    this.mGenerateHandler.postRunnable(new VideoThumbVideoGenerator.ReleaseRunnable(this, null));
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("release threadName:");
+    localStringBuilder.append(Thread.currentThread().getName());
+    Logger.i("VideoThumbVideoGenerator", localStringBuilder.toString());
+    releaseQueue();
+    if (this.mGenerateHandler != null) {
+      this.mGenerateHandler.postRunnable(new VideoThumbVideoGenerator.ReleaseRunnable(this, null));
+    }
   }
   
   public void resume()
@@ -186,7 +198,7 @@ class VideoThumbVideoGenerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weishi.module.edit.widget.playtrack.provider.VideoThumbVideoGenerator
  * JD-Core Version:    0.7.0.1
  */

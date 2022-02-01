@@ -25,31 +25,38 @@ public class DisplayUtils
   
   public static float a(Context paramContext, float paramFloat)
   {
-    return paramContext.getResources().getDisplayMetrics().densityDpi / 160.0F * paramFloat;
+    return paramFloat * (paramContext.getResources().getDisplayMetrics().densityDpi / 160.0F);
   }
   
   @SuppressLint({"NewApi"})
   public static int a(Context paramContext)
   {
-    int i = 0;
+    int i;
     if (Build.VERSION.SDK_INT >= 11) {
       i = ((ActivityManager)paramContext.getSystemService("activity")).getLauncherLargeIconSize();
+    } else {
+      i = 0;
     }
     int j = (int)paramContext.getResources().getDimension(17104896);
-    if (QLog.isColorLevel()) {
-      QLog.d("DisplayUtils", 2, "launcher icon size = " + i + " , app icon size = " + j);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("launcher icon size = ");
+      paramContext.append(i);
+      paramContext.append(" , app icon size = ");
+      paramContext.append(j);
+      QLog.d("DisplayUtils", 2, paramContext.toString());
     }
     return Math.max(i, j);
   }
   
   private static int a(Resources paramResources, String paramString)
   {
-    int i = 0;
-    int j = paramResources.getIdentifier(paramString, "dimen", "android");
-    if (j > 0) {
-      i = paramResources.getDimensionPixelSize(j);
+    int i = paramResources.getIdentifier(paramString, "dimen", "android");
+    if (i > 0) {
+      return paramResources.getDimensionPixelSize(i);
     }
-    return i;
+    return 0;
   }
   
   public static int a(TextView paramTextView, int paramInt)
@@ -64,106 +71,102 @@ public class DisplayUtils
   
   public static boolean a(Context paramContext)
   {
-    if (jdField_a_of_type_Int != -1) {
-      return jdField_a_of_type_Int == 1;
+    int i = jdField_a_of_type_Int;
+    if (i != -1) {
+      return i == 1;
     }
     Resources localResources = paramContext.getResources();
-    int i = localResources.getIdentifier("config_showNavigationBar", "bool", "android");
-    boolean bool;
+    i = localResources.getIdentifier("config_showNavigationBar", "bool", "android");
     if (i != 0)
     {
       bool = localResources.getBoolean(i);
-      if ("1".equals(jdField_a_of_type_JavaLangString)) {
-        bool = false;
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("XPanelContainer", 2, "hasNavbar=" + bool);
-      }
-      if (bool) {}
-      for (jdField_a_of_type_Int = 1;; jdField_a_of_type_Int = 0)
+      if (!"1".equals(jdField_a_of_type_JavaLangString))
       {
-        return bool;
         if (!"0".equals(jdField_a_of_type_JavaLangString)) {
-          break;
+          break label97;
         }
         bool = true;
-        break;
-        if (Build.VERSION.SDK_INT < 14) {
-          break label149;
-        }
-        if (!ViewConfiguration.get(paramContext).hasPermanentMenuKey())
-        {
-          bool = true;
-          break;
-        }
-        bool = false;
-        break;
+        break label97;
       }
-      label149:
-      bool = false;
     }
+    else if (Build.VERSION.SDK_INT >= 14)
+    {
+      bool = ViewConfiguration.get(paramContext).hasPermanentMenuKey() ^ true;
+      break label97;
+    }
+    boolean bool = false;
+    label97:
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("hasNavbar=");
+      paramContext.append(bool);
+      QLog.d("XPanelContainer", 2, paramContext.toString());
+    }
+    if (bool)
+    {
+      jdField_a_of_type_Int = 1;
+      return bool;
+    }
+    jdField_a_of_type_Int = 0;
+    return bool;
   }
   
   public static int b(Context paramContext)
   {
     Resources localResources = paramContext.getResources();
-    int i = 0;
-    if (Build.VERSION.SDK_INT >= 14) {
-      if (!jdField_a_of_type_Boolean) {
-        break label32;
-      }
-    }
-    label32:
-    for (paramContext = "navigation_bar_height";; paramContext = "navigation_bar_height_landscape")
+    if (Build.VERSION.SDK_INT >= 14)
     {
-      i = a(localResources, paramContext);
-      return i;
+      if (jdField_a_of_type_Boolean) {
+        paramContext = "navigation_bar_height";
+      } else {
+        paramContext = "navigation_bar_height_landscape";
+      }
+      return a(localResources, paramContext);
     }
+    return 0;
   }
   
   public static boolean b(@NonNull Context paramContext)
   {
     Object localObject = paramContext.getResources();
     int i = ((Resources)localObject).getIdentifier("config_showNavigationBar", "bool", "android");
-    if (i > 0) {}
-    for (boolean bool1 = ((Resources)localObject).getBoolean(i);; bool1 = false)
+    boolean bool1;
+    if (i > 0) {
+      bool1 = ((Resources)localObject).getBoolean(i);
+    } else {
+      bool1 = false;
+    }
+    try
     {
-      try
+      localObject = Class.forName("android.os.SystemProperties");
+      localObject = (String)((Class)localObject).getMethod("get", new Class[] { String.class }).invoke(localObject, new Object[] { "qemu.hw.mainkeys" });
+      i = Build.VERSION.SDK_INT;
+      if (i < 21) {
+        i = Settings.System.getInt(paramContext.getContentResolver(), "navigationbar_is_min", 0);
+      } else {
+        i = Settings.Global.getInt(paramContext.getContentResolver(), "navigationbar_is_min", 0);
+      }
+      if ((!"1".equals(localObject)) && (1 != i))
       {
-        localObject = Class.forName("android.os.SystemProperties");
-        localObject = (String)((Class)localObject).getMethod("get", new Class[] { String.class }).invoke(localObject, new Object[] { "qemu.hw.mainkeys" });
-        if (Build.VERSION.SDK_INT < 21) {}
-        for (i = Settings.System.getInt(paramContext.getContentResolver(), "navigationbar_is_min", 0);; i = Settings.Global.getInt(paramContext.getContentResolver(), "navigationbar_is_min", 0))
-        {
-          if ("1".equals(localObject)) {
-            break label146;
-          }
-          if (1 != i) {
-            break;
-          }
-          break label146;
-        }
         boolean bool2 = "0".equals(localObject);
         if (bool2) {
           return true;
         }
       }
-      catch (Exception paramContext)
+      else
       {
-        return bool1;
+        bool1 = false;
       }
       return bool1;
     }
-    label146:
-    return false;
+    catch (Exception paramContext) {}
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.DisplayUtils
  * JD-Core Version:    0.7.0.1
  */

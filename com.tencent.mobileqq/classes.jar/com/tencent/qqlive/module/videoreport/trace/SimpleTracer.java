@@ -20,16 +20,21 @@ public class SimpleTracer
   
   public static void end(String paramString)
   {
-    if (!VideoReportInner.getInstance().isDebugMode()) {}
-    Long localLong;
-    do
-    {
+    if (!VideoReportInner.getInstance().isDebugMode()) {
       return;
-      localLong = (Long)getBeginMap().remove(paramString);
-    } while (localLong == null);
+    }
+    Object localObject = (Long)getBeginMap().remove(paramString);
+    if (localObject == null) {
+      return;
+    }
     long l1 = System.currentTimeMillis();
-    long l2 = localLong.longValue();
-    Log.i("SimpleTracer", paramString + " cost " + (l1 - l2) + " ms.");
+    long l2 = ((Long)localObject).longValue();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(" cost ");
+    ((StringBuilder)localObject).append(l1 - l2);
+    ((StringBuilder)localObject).append(" ms.");
+    Log.i("SimpleTracer", ((StringBuilder)localObject).toString());
   }
   
   private static Map<String, Long> getBeginMap()
@@ -49,7 +54,7 @@ public class SimpleTracer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.trace.SimpleTracer
  * JD-Core Version:    0.7.0.1
  */

@@ -58,7 +58,7 @@ public class LiveActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreate(@Nullable Bundle paramBundle)
+  protected void onCreate(@Nullable Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     if (paramBundle != null) {
@@ -74,7 +74,7 @@ public class LiveActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.base.page.activity.LiveActivity
  * JD-Core Version:    0.7.0.1
  */

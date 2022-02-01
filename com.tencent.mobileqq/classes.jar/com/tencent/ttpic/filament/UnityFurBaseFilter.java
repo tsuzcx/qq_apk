@@ -16,7 +16,7 @@ public abstract class UnityFurBaseFilter
   extends VideoFilterBase
 {
   private static final boolean DEBUG = false;
-  private static final String TAG = UnityFurBaseFilter.class.getSimpleName();
+  private static final String TAG = "UnityFurBaseFilter";
   
   public UnityFurBaseFilter(ShaderCreateFactory.PROGRAM_TYPE paramPROGRAM_TYPE)
   {
@@ -53,7 +53,7 @@ public abstract class UnityFurBaseFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filament.UnityFurBaseFilter
  * JD-Core Version:    0.7.0.1
  */

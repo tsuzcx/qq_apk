@@ -36,18 +36,22 @@ class FPSSuspendedBall
   
   private void a(Context paramContext)
   {
-    setId(2131371821);
-    setBackgroundColor(paramContext.getResources().getColor(2131165370));
+    setId(2131371443);
+    setBackgroundColor(paramContext.getResources().getColor(2131165338));
     setText("60.00");
     setTextColor(-16711936);
     setGravity(17);
     setOnTouchListener(new FPSSuspendedBall.SuspendedBallTouchListener(this, null));
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams(-2, -2, 1000, 8, -3);
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.gravity = 53;
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = 250;
+    paramContext = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+    paramContext.gravity = 53;
+    paramContext.y = 250;
     float f = getTextSize();
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = ((int)(5.0F * f));
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = ((int)(f * 1.5D));
+    paramContext = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+    paramContext.width = ((int)(5.0F * f));
+    double d = f;
+    Double.isNaN(d);
+    paramContext.height = ((int)(d * 1.5D));
   }
   
   public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong1, long paramLong2)
@@ -55,28 +59,47 @@ class FPSSuspendedBall
     float f = getTextSize();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramFloat1);
-    if ((paramFloat2 > 0.0F) && (paramFloat3 > 0.0F)) {
-      localStringBuilder.append("\n").append(paramFloat2).append("%").append("\n").append(paramFloat3).append("%");
-    }
-    for (int i = 0 + (int)(4.0F * f);; i = 0 + (int)(f * 1.5D))
+    int i;
+    double d1;
+    if ((paramFloat2 > 0.0F) && (paramFloat3 > 0.0F))
     {
-      int j = i;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        localStringBuilder.append("\n").append(paramLong1).append("kb/s").append("\n").append(paramLong2).append("kb/s");
-        double d = i;
-        j = (int)(f * 2.5D + d);
-      }
-      if (this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height != j)
-      {
-        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = j;
-        if (getParent() != null) {
-          this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
-        }
-      }
-      setText(localStringBuilder.toString());
-      return;
+      localStringBuilder.append("\n");
+      localStringBuilder.append(paramFloat2);
+      localStringBuilder.append("%");
+      localStringBuilder.append("\n");
+      localStringBuilder.append(paramFloat3);
+      localStringBuilder.append("%");
+      i = (int)(4.0F * f) + 0;
     }
+    else
+    {
+      d1 = f;
+      Double.isNaN(d1);
+      i = (int)(d1 * 1.5D) + 0;
+    }
+    int j = i;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localStringBuilder.append("\n");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append("kb/s");
+      localStringBuilder.append("\n");
+      localStringBuilder.append(paramLong2);
+      localStringBuilder.append("kb/s");
+      d1 = i;
+      double d2 = f;
+      Double.isNaN(d2);
+      Double.isNaN(d1);
+      j = (int)(d1 + d2 * 2.5D);
+    }
+    if (this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height != j)
+    {
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = j;
+      if (getParent() != null) {
+        this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+      }
+    }
+    setText(localStringBuilder.toString());
   }
   
   public void a(Activity paramActivity, WindowManager paramWindowManager)
@@ -92,7 +115,7 @@ class FPSSuspendedBall
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.monitor.FPSSuspendedBall
  * JD-Core Version:    0.7.0.1
  */

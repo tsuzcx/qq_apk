@@ -21,20 +21,20 @@ public class LiveRoomInterface
   public EntityManagerFactory getQQEntityManagerFactory()
   {
     Object localObject1 = getAccount();
-    if (localObject1 == null) {
-      throw new IllegalStateException("Can not create a entity factory, the account is null.");
-    }
-    try
-    {
-      if (this.emFactoryQQ == null)
+    if (localObject1 != null) {
+      try
       {
-        localObject1 = QQEntityManagerFactoryProxy.a((String)localObject1, super.getEntityManagerFactory());
-        ((QQEntityManagerFactory)localObject1).verifyAuthentication();
-        this.emFactoryQQ = ((EntityManagerFactory)localObject1);
+        if (this.emFactoryQQ == null)
+        {
+          localObject1 = QQEntityManagerFactoryProxy.a((String)localObject1, super.getEntityManagerFactory());
+          ((QQEntityManagerFactory)localObject1).verifyAuthentication();
+          this.emFactoryQQ = ((EntityManagerFactory)localObject1);
+        }
+        return this.emFactoryQQ;
       }
-      return this.emFactoryQQ;
+      finally {}
     }
-    finally {}
+    throw new IllegalStateException("Can not create a entity factory, the account is null.");
   }
   
   public void onCreate(Bundle paramBundle)
@@ -44,7 +44,7 @@ public class LiveRoomInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomInterface
  * JD-Core Version:    0.7.0.1
  */

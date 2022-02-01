@@ -29,9 +29,9 @@ public class ReplyClickMovementMethod
     {
       int i = (int)paramMotionEvent.getX();
       int j = (int)paramMotionEvent.getY();
-      if (paramTextView.getTag(2131374320) != null)
+      if (paramTextView.getTag(2131373876) != null)
       {
-        ReplyedMessageSpan localReplyedMessageSpan = (ReplyedMessageSpan)paramTextView.getTag(2131374320);
+        ReplyedMessageSpan localReplyedMessageSpan = (ReplyedMessageSpan)paramTextView.getTag(2131373876);
         Drawable localDrawable = localReplyedMessageSpan.getDrawable();
         if ((localDrawable != null) && (new Rect(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight()).contains(i, j)))
         {
@@ -48,7 +48,7 @@ public class ReplyClickMovementMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.text.ReplyClickMovementMethod
  * JD-Core Version:    0.7.0.1
  */

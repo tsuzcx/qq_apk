@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class faiss_search_result
   extends JceStruct
@@ -38,20 +39,23 @@ public final class faiss_search_result
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.photolist != null) {
-      paramJceOutputStream.write(this.photolist, 0);
+    Object localObject = this.photolist;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.page_info != null) {
-      paramJceOutputStream.write(this.page_info, 1);
+    localObject = this.page_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.categoryid != null) {
-      paramJceOutputStream.write(this.categoryid, 2);
+    localObject = this.categoryid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.faiss_search_result
  * JD-Core Version:    0.7.0.1
  */

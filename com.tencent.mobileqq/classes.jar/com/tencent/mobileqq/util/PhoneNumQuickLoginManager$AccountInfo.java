@@ -45,12 +45,26 @@ public class PhoneNumQuickLoginManager$AccountInfo
   
   public String toString()
   {
-    return "AccountInfo{mMaskNick='" + this.mMaskNick + '\'' + ", mMaskUin='" + this.mMaskUin + '\'' + ", mImgUrl='" + this.mImgUrl + '\'' + ", mUinToken='" + Arrays.toString(this.mUinToken) + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AccountInfo{mMaskNick='");
+    localStringBuilder.append(this.mMaskNick);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mMaskUin='");
+    localStringBuilder.append(this.mMaskUin);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mImgUrl='");
+    localStringBuilder.append(this.mImgUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mUinToken='");
+    localStringBuilder.append(Arrays.toString(this.mUinToken));
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.PhoneNumQuickLoginManager.AccountInfo
  * JD-Core Version:    0.7.0.1
  */

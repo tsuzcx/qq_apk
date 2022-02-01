@@ -13,37 +13,40 @@ class KCWraperV2$2
   
   public void run()
   {
-    boolean bool = false;
-    int i = 0;
     Object localObject = KcSdkShellManager.getInstance().getKingCardInterface();
+    boolean bool2 = false;
+    boolean bool1 = false;
+    int i;
     if (localObject == null)
     {
       this.this$0.a("no KingCardInterface");
-      bool = false;
+      i = 0;
+      bool1 = bool2;
     }
-    for (;;)
+    else
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqVipTMSManager$Callback != null)
-      {
-        if (!this.jdField_a_of_type_Boolean) {
-          break;
-        }
-        ThreadManager.getUIHandler().post(new KCWraperV2.2.1(this, bool, i));
-      }
-      return;
       localObject = ((IKingCardInterface)localObject).getResult();
       if (((OrderCheckResult)localObject).kingcard > 0) {
-        bool = true;
+        bool1 = true;
       }
       i = ((OrderCheckResult)localObject).product;
       KCWraperV2.a(this.this$0, (OrderCheckResult)localObject);
     }
-    this.jdField_a_of_type_ComTencentMobileqqVipTMSManager$Callback.a(true, bool, i);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqVipTMSManager$Callback;
+    if (localObject != null)
+    {
+      if (this.jdField_a_of_type_Boolean)
+      {
+        ThreadManager.getUIHandler().post(new KCWraperV2.2.1(this, bool1, i));
+        return;
+      }
+      ((TMSManager.Callback)localObject).a(true, bool1, i);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.KCWraperV2.2
  * JD-Core Version:    0.7.0.1
  */

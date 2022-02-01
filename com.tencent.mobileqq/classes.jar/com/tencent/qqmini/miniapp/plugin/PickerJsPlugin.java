@@ -53,7 +53,13 @@ public class PickerJsPlugin
         int i = ((Calendar)localObject1).get(1);
         int j = ((Calendar)localObject1).get(2);
         int k = ((Calendar)localObject1).get(5);
-        localObject1 = i + "-" + (j + 1) + "" + k;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append("-");
+        ((StringBuilder)localObject1).append(j + 1);
+        ((StringBuilder)localObject1).append("");
+        ((StringBuilder)localObject1).append(k);
+        localObject1 = ((StringBuilder)localObject1).toString();
       }
       str = ((JSONObject)localObject2).optString("mode");
       localObject2 = ((JSONObject)localObject2).optString("fields");
@@ -126,40 +132,41 @@ public class PickerJsPlugin
   
   protected void updateDataPickerFields(DatePickerView paramDatePickerView, String paramString)
   {
-    if (paramDatePickerView == null) {}
-    do
-    {
+    if (paramDatePickerView == null) {
       return;
-      if (TextUtils.isEmpty(paramString))
-      {
-        paramDatePickerView.setYearVisible(0);
-        paramDatePickerView.setMonthOfYearVisible(0);
-        paramDatePickerView.setDayOfMonthVisible(0);
-        return;
-      }
-      if (paramString.equals("year"))
-      {
-        paramDatePickerView.setYearVisible(0);
-        paramDatePickerView.setMonthOfYearVisible(8);
-        paramDatePickerView.setDayOfMonthVisible(8);
-        return;
-      }
-      if (paramString.equals("month"))
-      {
-        paramDatePickerView.setYearVisible(0);
-        paramDatePickerView.setMonthOfYearVisible(0);
-        paramDatePickerView.setDayOfMonthVisible(8);
-        return;
-      }
-    } while (!paramString.equals("day"));
-    paramDatePickerView.setYearVisible(0);
-    paramDatePickerView.setMonthOfYearVisible(0);
-    paramDatePickerView.setDayOfMonthVisible(0);
+    }
+    if (TextUtils.isEmpty(paramString))
+    {
+      paramDatePickerView.setYearVisible(0);
+      paramDatePickerView.setMonthOfYearVisible(0);
+      paramDatePickerView.setDayOfMonthVisible(0);
+      return;
+    }
+    if (paramString.equals("year"))
+    {
+      paramDatePickerView.setYearVisible(0);
+      paramDatePickerView.setMonthOfYearVisible(8);
+      paramDatePickerView.setDayOfMonthVisible(8);
+      return;
+    }
+    if (paramString.equals("month"))
+    {
+      paramDatePickerView.setYearVisible(0);
+      paramDatePickerView.setMonthOfYearVisible(0);
+      paramDatePickerView.setDayOfMonthVisible(8);
+      return;
+    }
+    if (paramString.equals("day"))
+    {
+      paramDatePickerView.setYearVisible(0);
+      paramDatePickerView.setMonthOfYearVisible(0);
+      paramDatePickerView.setDayOfMonthVisible(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.PickerJsPlugin
  * JD-Core Version:    0.7.0.1
  */

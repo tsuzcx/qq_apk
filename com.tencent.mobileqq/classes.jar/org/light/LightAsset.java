@@ -27,6 +27,10 @@ public class LightAsset
   
   public native FontAsset[] getFontAssets();
   
+  public native int getVoiceEnvironment();
+  
+  public native int getVoiceKind();
+  
   public native boolean hasLut();
   
   public native boolean hasMakeup();
@@ -56,7 +60,17 @@ public class LightAsset
     return needRenderAbility("material.cyberpunk");
   }
   
+  public boolean needGravityInfo()
+  {
+    return needRenderAbility("material.gravityInfo");
+  }
+  
   public native boolean needRenderAbility(String paramString);
+  
+  public boolean needVoiceDecibel()
+  {
+    return needRenderAbility("material.voiceDecibel");
+  }
   
   public boolean stickerNeedMaskRecordTouchPoint()
   {
@@ -74,7 +88,7 @@ public class LightAsset
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.light.LightAsset
  * JD-Core Version:    0.7.0.1
  */

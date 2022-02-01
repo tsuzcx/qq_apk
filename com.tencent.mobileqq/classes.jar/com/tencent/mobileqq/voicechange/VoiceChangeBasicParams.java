@@ -2,16 +2,17 @@ package com.tencent.mobileqq.voicechange;
 
 public class VoiceChangeBasicParams
 {
-  int jdField_a_of_type_Int = 2;
-  String jdField_a_of_type_JavaLangString;
+  int a;
+  public String a;
   int b;
   int c = 2;
   int d;
-  int e;
+  public int e;
   public int f;
   
   public VoiceChangeBasicParams(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    this.jdField_a_of_type_Int = 2;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.b = paramInt1;
     this.d = paramInt2;
@@ -21,7 +22,7 @@ public class VoiceChangeBasicParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.voicechange.VoiceChangeBasicParams
  * JD-Core Version:    0.7.0.1
  */

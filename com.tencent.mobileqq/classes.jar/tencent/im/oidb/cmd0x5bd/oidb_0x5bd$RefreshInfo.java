@@ -26,15 +26,17 @@ public final class oidb_0x5bd$RefreshInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 50, 56, 66, 74, 80 }, new String[] { "bytes_id", "bytes_name", "uint32_begin_timestamp", "uint32_end_timestamp", "uint64_seq", "bytes_url", "uint32_is_ad", "msg_ad_click_report", "msg_ad_exposure_report", "uint64_ad_id" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro3, Integer.valueOf(0), null, null, Long.valueOf(0L) }, RefreshInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 50, 56, 66, 74, 80 }, new String[] { "bytes_id", "bytes_name", "uint32_begin_timestamp", "uint32_end_timestamp", "uint64_seq", "bytes_url", "uint32_is_ad", "msg_ad_click_report", "msg_ad_exposure_report", "uint64_ad_id" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localInteger, localInteger, localLong, localByteStringMicro3, localInteger, null, null, localLong }, RefreshInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo
  * JD-Core Version:    0.7.0.1
  */

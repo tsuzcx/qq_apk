@@ -13,7 +13,7 @@ public final class Status
   extends Result
   implements Parcelable
 {
-  public static final Parcelable.Creator<Status> CREATOR = new Status.1();
+  public static final Parcelable.Creator<Status> CREATOR = new Status.a();
   public static final Status CoreException;
   public static final Status FAILURE;
   public static final Status MessageNotFound;
@@ -86,16 +86,14 @@ public final class Status
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof Status)) {
-        break;
-      }
+    }
+    if ((paramObject instanceof Status))
+    {
       paramObject = (Status)paramObject;
-    } while ((this.statusCode == paramObject.statusCode) && (equal(this.statusMessage, paramObject.statusMessage)) && (equal(this.pendingIntent, paramObject.pendingIntent)));
-    return false;
+      return (this.statusCode == paramObject.statusCode) && (equal(this.statusMessage, paramObject.statusMessage)) && (equal(this.pendingIntent, paramObject.pendingIntent)) && (equal(this.intent, paramObject.intent));
+    }
     return false;
   }
   
@@ -107,6 +105,11 @@ public final class Status
   public PendingIntent getResolution()
   {
     return this.pendingIntent;
+  }
+  
+  public Intent getResolutionIntent()
+  {
+    return this.intent;
   }
   
   public Status getStatus()
@@ -131,7 +134,7 @@ public final class Status
   
   public int hashCode()
   {
-    return Arrays.hashCode(new Object[] { Integer.valueOf(this.statusCode), this.statusMessage, this.pendingIntent });
+    return Arrays.hashCode(new Object[] { Integer.valueOf(this.statusCode), this.statusMessage, this.pendingIntent, this.intent });
   }
   
   public boolean isCanceled()
@@ -149,41 +152,63 @@ public final class Status
     return this.statusCode <= 0;
   }
   
+  public void setIntent(Intent paramIntent)
+  {
+    this.intent = paramIntent;
+  }
+  
+  public void setPendingIntent(PendingIntent paramPendingIntent)
+  {
+    this.pendingIntent = paramPendingIntent;
+  }
+  
   public void startResolutionForResult(Activity paramActivity, int paramInt)
   {
     if (hasResolution())
     {
-      if (this.pendingIntent != null) {
-        paramActivity.startIntentSenderForResult(this.pendingIntent.getIntentSender(), paramInt, null, 0, 0, 0);
+      PendingIntent localPendingIntent = this.pendingIntent;
+      if (localPendingIntent != null)
+      {
+        paramActivity.startIntentSenderForResult(localPendingIntent.getIntentSender(), paramInt, null, 0, 0, 0);
+        return;
       }
+      paramActivity.startActivityForResult(this.intent, paramInt);
     }
-    else {
-      return;
-    }
-    paramActivity.startActivityForResult(this.intent, paramInt);
   }
   
   public String toString()
   {
-    return "{statusCode: " + this.statusCode + ", statusMessage: " + this.statusMessage + ", pendingIntent: " + this.pendingIntent + ", }";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{statusCode: ");
+    localStringBuilder.append(this.statusCode);
+    localStringBuilder.append(", statusMessage: ");
+    localStringBuilder.append(this.statusMessage);
+    localStringBuilder.append(", pendingIntent: ");
+    localStringBuilder.append(this.pendingIntent);
+    localStringBuilder.append(", intent: ");
+    localStringBuilder.append(this.intent);
+    localStringBuilder.append(",}");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeInt(this.statusCode);
     paramParcel.writeString(this.statusMessage);
-    if (this.pendingIntent != null) {
-      this.pendingIntent.writeToParcel(paramParcel, paramInt);
+    Object localObject = this.pendingIntent;
+    if (localObject != null) {
+      ((PendingIntent)localObject).writeToParcel(paramParcel, paramInt);
     }
     PendingIntent.writePendingIntentOrNullToParcel(this.pendingIntent, paramParcel);
-    if (this.intent != null) {
-      this.intent.writeToParcel(paramParcel, paramInt);
+    localObject = this.intent;
+    if (localObject != null) {
+      ((Intent)localObject).writeToParcel(paramParcel, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.support.api.client.Status
  * JD-Core Version:    0.7.0.1
  */

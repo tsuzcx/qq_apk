@@ -23,8 +23,9 @@ public final class BindPhoneInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strName != null) {
-      paramJceOutputStream.write(this.strName, 0);
+    String str = this.strName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
   }
 }

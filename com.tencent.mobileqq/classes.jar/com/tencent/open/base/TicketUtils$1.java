@@ -28,21 +28,30 @@ class TicketUtils$1
       if (this.a.jdField_a_of_type_MqqManagerWtloginManager != null) {
         this.a.jdField_a_of_type_MqqManagerWtloginManager.getBasicUserInfo(paramString, paramBundle);
       }
-      paramString = "" + paramBundle._uin;
+      paramString = new StringBuilder();
+      paramString.append("");
+      paramString.append(paramBundle._uin);
+      paramString = paramString.toString();
       if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
       {
-        util.LOGD("outA1 buff: " + util.buf_to_string(paramArrayOfByte));
+        paramBundle = new StringBuilder();
+        paramBundle.append("outA1 buff: ");
+        paramBundle.append(util.buf_to_string(paramArrayOfByte));
+        util.LOGD(paramBundle.toString());
         paramArrayOfByte = new RSACrypt(CommonDataAdapter.a().a()).EncryptData(this.a.a(CommonDataAdapter.a().a(), this.a.jdField_a_of_type_Long, 1L), paramArrayOfByte);
-        util.LOGD("encrypt buff:" + util.buf_to_string(paramArrayOfByte));
+        paramBundle = new StringBuilder();
+        paramBundle.append("encrypt buff:");
+        paramBundle.append(util.buf_to_string(paramArrayOfByte));
+        util.LOGD(paramBundle.toString());
         if (this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback != null) {
           this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback.a(paramString, paramArrayOfByte);
         }
       }
     }
-    while (this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback == null) {
-      return;
+    else if (this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback != null)
+    {
+      this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback.a();
     }
-    this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback.a();
   }
   
   public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
@@ -54,7 +63,7 @@ class TicketUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.base.TicketUtils.1
  * JD-Core Version:    0.7.0.1
  */

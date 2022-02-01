@@ -16,21 +16,23 @@ final class QZoneWebViewJsHandleLogic$4
   {
     try
     {
-      if (QUA.getQUA3().indexOf("GM") < 0) {
+      if (QUA.getQUA3().indexOf("GM") < 0)
+      {
         QZoneWebViewJsHandleLogic.handleUrl(QzoneConfig.getInstance().getConfig("H5Url", "DownloadQzoneClient", "https://m.qzone.com/client/fwd?bid=update&_wv=7"), this.val$context);
+        return;
       }
-      return;
     }
     catch (Exception paramDialogInterface)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("showQzoneAppDownloadDialog", 2, "simpleBrowserJump exception", paramDialogInterface);
+      if (QLog.isColorLevel()) {
+        QLog.e("showQzoneAppDownloadDialog", 2, "simpleBrowserJump exception", paramDialogInterface);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneWebViewJsHandleLogic.4
  * JD-Core Version:    0.7.0.1
  */

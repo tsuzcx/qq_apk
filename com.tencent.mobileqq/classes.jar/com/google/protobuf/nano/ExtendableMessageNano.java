@@ -14,8 +14,9 @@ public abstract class ExtendableMessageNano<M extends ExtendableMessageNano<M>>
   
   protected int computeSerializedSize()
   {
+    FieldArray localFieldArray = this.unknownFieldData;
     int j = 0;
-    if (this.unknownFieldData != null)
+    if (localFieldArray != null)
     {
       int i = 0;
       for (;;)
@@ -34,50 +35,62 @@ public abstract class ExtendableMessageNano<M extends ExtendableMessageNano<M>>
   
   public final <T> T getExtension(Extension<M, T> paramExtension)
   {
-    if (this.unknownFieldData == null) {}
-    FieldData localFieldData;
-    do
-    {
+    Object localObject = this.unknownFieldData;
+    if (localObject == null) {
       return null;
-      localFieldData = this.unknownFieldData.get(WireFormatNano.getTagFieldNumber(paramExtension.tag));
-    } while (localFieldData == null);
-    return localFieldData.getValue(paramExtension);
+    }
+    localObject = ((FieldArray)localObject).get(WireFormatNano.getTagFieldNumber(paramExtension.tag));
+    if (localObject == null) {
+      return null;
+    }
+    return ((FieldData)localObject).getValue(paramExtension);
   }
   
   public final boolean hasExtension(Extension<M, ?> paramExtension)
   {
-    if (this.unknownFieldData == null) {}
-    while (this.unknownFieldData.get(WireFormatNano.getTagFieldNumber(paramExtension.tag)) == null) {
+    FieldArray localFieldArray = this.unknownFieldData;
+    boolean bool = false;
+    if (localFieldArray == null) {
       return false;
     }
-    return true;
+    if (localFieldArray.get(WireFormatNano.getTagFieldNumber(paramExtension.tag)) != null) {
+      bool = true;
+    }
+    return bool;
   }
   
   public final <T> M setExtension(Extension<M, T> paramExtension, T paramT)
   {
-    FieldData localFieldData = null;
     int i = WireFormatNano.getTagFieldNumber(paramExtension.tag);
+    FieldData localFieldData = null;
     if (paramT == null)
     {
-      if (this.unknownFieldData != null)
+      paramExtension = this.unknownFieldData;
+      if (paramExtension != null)
       {
-        this.unknownFieldData.remove(i);
-        if (this.unknownFieldData.isEmpty()) {
+        paramExtension.remove(i);
+        if (this.unknownFieldData.isEmpty())
+        {
           this.unknownFieldData = null;
+          return this;
         }
       }
-      return this;
     }
-    if (this.unknownFieldData == null) {
-      this.unknownFieldData = new FieldArray();
-    }
-    while (localFieldData == null)
+    else
     {
-      this.unknownFieldData.put(i, new FieldData(paramExtension, paramT));
-      return this;
-      localFieldData = this.unknownFieldData.get(i);
+      FieldArray localFieldArray = this.unknownFieldData;
+      if (localFieldArray == null) {
+        this.unknownFieldData = new FieldArray();
+      } else {
+        localFieldData = localFieldArray.get(i);
+      }
+      if (localFieldData == null)
+      {
+        this.unknownFieldData.put(i, new FieldData(paramExtension, paramT));
+        return this;
+      }
+      localFieldData.setValue(paramExtension, paramT);
     }
-    localFieldData.setValue(paramExtension, paramT);
     return this;
   }
   
@@ -90,41 +103,38 @@ public abstract class ExtendableMessageNano<M extends ExtendableMessageNano<M>>
     int j = WireFormatNano.getTagFieldNumber(paramInt);
     UnknownFieldData localUnknownFieldData = new UnknownFieldData(paramInt, paramCodedInputByteBufferNano.getData(i, paramCodedInputByteBufferNano.getPosition() - i));
     paramCodedInputByteBufferNano = null;
-    if (this.unknownFieldData == null) {
+    Object localObject = this.unknownFieldData;
+    if (localObject == null) {
       this.unknownFieldData = new FieldArray();
+    } else {
+      paramCodedInputByteBufferNano = ((FieldArray)localObject).get(j);
     }
-    for (;;)
+    localObject = paramCodedInputByteBufferNano;
+    if (paramCodedInputByteBufferNano == null)
     {
-      Object localObject = paramCodedInputByteBufferNano;
-      if (paramCodedInputByteBufferNano == null)
-      {
-        localObject = new FieldData();
-        this.unknownFieldData.put(j, (FieldData)localObject);
-      }
-      ((FieldData)localObject).addUnknownField(localUnknownFieldData);
-      return true;
-      paramCodedInputByteBufferNano = this.unknownFieldData.get(j);
+      localObject = new FieldData();
+      this.unknownFieldData.put(j, (FieldData)localObject);
     }
+    ((FieldData)localObject).addUnknownField(localUnknownFieldData);
+    return true;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.unknownFieldData == null) {}
-    for (;;)
-    {
+    if (this.unknownFieldData == null) {
       return;
-      int i = 0;
-      while (i < this.unknownFieldData.size())
-      {
-        this.unknownFieldData.dataAt(i).writeTo(paramCodedOutputByteBufferNano);
-        i += 1;
-      }
+    }
+    int i = 0;
+    while (i < this.unknownFieldData.size())
+    {
+      this.unknownFieldData.dataAt(i).writeTo(paramCodedOutputByteBufferNano);
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.protobuf.nano.ExtendableMessageNano
  * JD-Core Version:    0.7.0.1
  */

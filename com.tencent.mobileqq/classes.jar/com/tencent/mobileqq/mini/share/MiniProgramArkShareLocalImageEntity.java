@@ -20,12 +20,20 @@ public class MiniProgramArkShareLocalImageEntity
   
   public String toString()
   {
-    return "MiniProgramArkShareLocalImageEntity{arkPath='" + this.arkPath + '\'' + ", localPath='" + this.localPath + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MiniProgramArkShareLocalImageEntity{arkPath='");
+    localStringBuilder.append(this.arkPath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", localPath='");
+    localStringBuilder.append(this.localPath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniProgramArkShareLocalImageEntity
  * JD-Core Version:    0.7.0.1
  */

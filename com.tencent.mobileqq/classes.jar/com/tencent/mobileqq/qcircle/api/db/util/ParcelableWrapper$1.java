@@ -22,62 +22,80 @@ final class ParcelableWrapper$1
     Object localObject2 = ParcelableWrapper.ParcableInfo.access$100((ParcelableWrapper.ParcableInfo)localObject3);
     localObject1 = ParcelableWrapper.ParcableInfo.access$200((ParcelableWrapper.ParcableInfo)localObject3);
     localObject3 = ParcelableWrapper.ParcableInfo.access$000((ParcelableWrapper.ParcableInfo)localObject3);
-    int i;
-    Field localField;
-    try
+    for (;;)
     {
-      localObject3 = (SmartParcelable)((Class)localObject3).newInstance();
-      ParcelableWrapper.access$502(localParcelableWrapper, (SmartParcelable)localObject3);
-      localObject2 = ((List)localObject2).iterator();
-      i = 0;
-      if (((Iterator)localObject2).hasNext())
+      try
       {
-        localField = (Field)((Iterator)localObject2).next();
+        localObject3 = (SmartParcelable)((Class)localObject3).newInstance();
+        ParcelableWrapper.access$502(localParcelableWrapper, (SmartParcelable)localObject3);
+        localObject2 = ((List)localObject2).iterator();
+        int i = 0;
+        Field localField;
+        if (((Iterator)localObject2).hasNext()) {
+          localField = (Field)((Iterator)localObject2).next();
+        }
         switch (((Integer)((List)localObject1).get(i)).intValue())
         {
+        case 14: 
+          localField.set(localObject3, paramParcel.createByteArray());
+          break;
+        case 13: 
+          localField.set(localObject3, paramParcel.createStringArray());
+          break;
+        case 12: 
+          localField.set(localObject3, paramParcel.readSerializable());
+          break;
+        case 11: 
+          localField.set(localObject3, ParcelableWrapper.readHashMap(paramParcel, ParcelableWrapper.access$600()));
+          break;
+        case 10: 
+          localField.set(localObject3, ParcelableWrapper.readArrayList(paramParcel, ParcelableWrapper.access$600()));
+          break;
+        case 9: 
+          localField.setByte(localObject3, paramParcel.readByte());
+          break;
+        case 8: 
+          localField.setFloat(localObject3, paramParcel.readFloat());
+          break;
+        case 7: 
+          localField.setDouble(localObject3, paramParcel.readDouble());
+          break;
+        case 6: 
+          localField.set(localObject3, ParcelableWrapper.access$500((ParcelableWrapper)paramParcel.readParcelable(ParcelableWrapper.access$600())));
+          break;
         case 5: 
           localField.set(localObject3, paramParcel.readString());
+          break;
+        case 4: 
+          localField.set(localObject3, paramParcel.readParcelable(ParcelableWrapper.access$600()));
+          break;
+        case 3: 
+          if (paramParcel.readByte() <= 0) {
+            break label456;
+          }
+          bool = true;
+          localField.setBoolean(localObject3, bool);
+          break;
+        case 2: 
+          localField.setLong(localObject3, paramParcel.readLong());
+          break;
+        case 1: 
+          localField.setInt(localObject3, paramParcel.readInt());
+          break;
+        case 0: 
+          localField.set(localObject3, paramParcel.readValue(ParcelableWrapper.access$600()));
+          i += 1;
+          continue;
+          return localParcelableWrapper;
         }
       }
-    }
-    catch (Exception paramParcel)
-    {
-      QLog.e("ParcelableWrapper", 1, "ParcelableWrapper.createFromParcel:", paramParcel);
-    }
-    return localParcelableWrapper;
-    localField.set(localObject3, ParcelableWrapper.access$500((ParcelableWrapper)paramParcel.readParcelable(ParcelableWrapper.access$600())));
-    break label446;
-    localField.setInt(localObject3, paramParcel.readInt());
-    break label446;
-    localField.set(localObject3, paramParcel.readParcelable(ParcelableWrapper.access$600()));
-    break label446;
-    if (paramParcel.readByte() > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localField.setBoolean(localObject3, bool);
-      break label446;
-      localField.setLong(localObject3, paramParcel.readLong());
-      break label446;
-      localField.setDouble(localObject3, paramParcel.readDouble());
-      break label446;
-      localField.setFloat(localObject3, paramParcel.readFloat());
-      break label446;
-      localField.setByte(localObject3, paramParcel.readByte());
-      break label446;
-      localField.set(localObject3, ParcelableWrapper.readArrayList(paramParcel, ParcelableWrapper.access$600()));
-      break label446;
-      localField.set(localObject3, ParcelableWrapper.readHashMap(paramParcel, ParcelableWrapper.access$600()));
-      break label446;
-      localField.set(localObject3, paramParcel.readSerializable());
-      break label446;
-      localField.set(localObject3, paramParcel.createStringArray());
-      break label446;
-      localField.set(localObject3, paramParcel.createByteArray());
-      break label446;
-      localField.set(localObject3, paramParcel.readValue(ParcelableWrapper.access$600()));
-      label446:
-      i += 1;
-      break;
+      catch (Exception paramParcel)
+      {
+        QLog.e("ParcelableWrapper", 1, "ParcelableWrapper.createFromParcel:", paramParcel);
+      }
+      continue;
+      label456:
+      boolean bool = false;
     }
   }
   
@@ -88,7 +106,7 @@ final class ParcelableWrapper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.db.util.ParcelableWrapper.1
  * JD-Core Version:    0.7.0.1
  */

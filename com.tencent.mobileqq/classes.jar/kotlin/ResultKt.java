@@ -139,12 +139,9 @@ public final class ResultKt
     }
     catch (Throwable paramObject)
     {
-      for (;;)
-      {
-        paramFunction1 = Result.Companion;
-        paramObject = Result.constructor-impl(createFailure(paramObject));
-      }
+      paramFunction1 = Result.Companion;
     }
+    return Result.constructor-impl(createFailure(paramObject));
   }
   
   @SinceKotlin(version="1.3")
@@ -185,14 +182,15 @@ public final class ResultKt
   @SinceKotlin(version="1.3")
   public static final void throwOnFailure(@NotNull Object paramObject)
   {
-    if ((paramObject instanceof Result.Failure)) {
-      throw ((Result.Failure)paramObject).exception;
+    if (!(paramObject instanceof Result.Failure)) {
+      return;
     }
+    throw ((Result.Failure)paramObject).exception;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.ResultKt
  * JD-Core Version:    0.7.0.1
  */

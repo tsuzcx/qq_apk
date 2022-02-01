@@ -15,11 +15,10 @@ import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
-import com.tencent.qqlive.module.videoreport.inject.fragment.ReportDialogFragment;
 import com.tencent.tkd.comment.util.CommonUtil;
 
 public class BaseBottomSheetDialogFragment
-  extends ReportDialogFragment
+  extends DialogFragment
 {
   private DialogInterface.OnDismissListener dismissListener;
   private boolean isShowing;
@@ -53,13 +52,13 @@ public class BaseBottomSheetDialogFragment
   
   public void dismiss()
   {
-    if (!this.isShowing) {}
-    Dialog localDialog;
-    do
-    {
+    if (!this.isShowing) {
       return;
-      localDialog = getDialog();
-    } while (localDialog == null);
+    }
+    Dialog localDialog = getDialog();
+    if (localDialog == null) {
+      return;
+    }
     CommonUtil.hideInputMethod(getActivity(), localDialog.getCurrentFocus());
     this.isShowing = false;
     getDialog().dismiss();
@@ -129,8 +128,9 @@ public class BaseBottomSheetDialogFragment
   {
     super.onDismiss(paramDialogInterface);
     this.isShowing = false;
-    if (this.dismissListener != null) {
-      this.dismissListener.onDismiss(paramDialogInterface);
+    DialogInterface.OnDismissListener localOnDismissListener = this.dismissListener;
+    if (localOnDismissListener != null) {
+      localOnDismissListener.onDismiss(paramDialogInterface);
     }
   }
   
@@ -155,17 +155,15 @@ public class BaseBottomSheetDialogFragment
   
   public void show(FragmentManager paramFragmentManager, String paramString)
   {
-    if (this.isShowing) {}
-    String str;
-    do
-    {
+    if (this.isShowing) {
       return;
-      this.isShowing = true;
-      str = paramString;
-      if (TextUtils.isEmpty(paramString)) {
-        str = getClass().getSimpleName();
-      }
-    } while (paramFragmentManager.findFragmentByTag(str) != null);
+    }
+    this.isShowing = true;
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = getClass().getSimpleName();
+    }
+    if (paramFragmentManager.findFragmentByTag(str) == null) {}
     try
     {
       super.show(paramFragmentManager, str);
@@ -173,15 +171,17 @@ public class BaseBottomSheetDialogFragment
     }
     catch (Exception paramString)
     {
-      paramFragmentManager = paramFragmentManager.beginTransaction();
-      paramFragmentManager.add(this, str);
-      paramFragmentManager.commitAllowingStateLoss();
+      label45:
+      break label45;
     }
+    paramFragmentManager = paramFragmentManager.beginTransaction();
+    paramFragmentManager.add(this, str);
+    paramFragmentManager.commitAllowingStateLoss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.adapt.BaseBottomSheetDialogFragment
  * JD-Core Version:    0.7.0.1
  */

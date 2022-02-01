@@ -52,37 +52,47 @@ public class MapViewJsPlugin
   
   private void insertMap(int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
-    Object localObject = (MapContext)this.mapContextArray.get(paramInt1);
-    if (QMLog.isColorLevel()) {
-      QMLog.d("MapViewJsPlugin", "insertMapView mapId=" + paramInt1 + ",mapContext=" + localObject);
+    Object localObject1 = (MapContext)this.mapContextArray.get(paramInt1);
+    if (QMLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("insertMapView mapId=");
+      ((StringBuilder)localObject2).append(paramInt1);
+      ((StringBuilder)localObject2).append(",mapContext=");
+      ((StringBuilder)localObject2).append(localObject1);
+      QMLog.d("MapViewJsPlugin", ((StringBuilder)localObject2).toString());
     }
-    if (localObject != null) {
+    if (localObject1 != null) {
       return;
     }
-    CoverView localCoverView = CoverViewAction.obtain(this.mMiniAppContext).get(paramInt1);
-    localObject = localCoverView;
-    if (localCoverView == null)
+    Object localObject2 = CoverViewAction.obtain(this.mMiniAppContext).get(paramInt1);
+    localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-        break label223;
+      if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+      {
+        localObject1 = new TencentMapOptions();
+        ((TencentMapOptions)localObject1).setSubInfo(paramString1, paramString2);
+        paramString1 = new CoverMapView(this.mContext, (TencentMapOptions)localObject1);
       }
-      localObject = new TencentMapOptions();
-      ((TencentMapOptions)localObject).setSubInfo(paramString1, paramString2);
-    }
-    label223:
-    for (paramString1 = new CoverMapView(this.mContext, (TencentMapOptions)localObject);; paramString1 = new CoverMapView(this.mContext))
-    {
-      paramString1.setContentDescription(paramInt1 + "_" + paramInt2);
+      else
+      {
+        paramString1 = new CoverMapView(this.mContext);
+      }
+      paramString2 = new StringBuilder();
+      paramString2.append(paramInt1);
+      paramString2.append("_");
+      paramString2.append(paramInt2);
+      paramString1.setContentDescription(paramString2.toString());
       paramString1.setParentId(paramInt2);
       CoverViewAction.obtain(this.mMiniAppContext).add(paramInt2, paramInt1, paramString1);
-      localObject = paramString1;
-      if (!(localObject instanceof CoverMapView)) {
-        break;
-      }
-      paramString1 = new MapContext(this.mMiniAppContext, (CoverMapView)localObject, paramInt1, getPageId());
+      localObject1 = paramString1;
+    }
+    if ((localObject1 instanceof CoverMapView))
+    {
+      paramString1 = new MapContext(this.mMiniAppContext, (CoverMapView)localObject1, paramInt1, getPageId());
       this.mapContextArray.put(paramInt1, paramString1);
-      ((CoverView)localObject).setTag("MiniAppMapTag");
-      return;
+      ((CoverView)localObject1).setTag("MiniAppMapTag");
     }
   }
   
@@ -190,7 +200,7 @@ public class MapViewJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.map.MapViewJsPlugin
  * JD-Core Version:    0.7.0.1
  */

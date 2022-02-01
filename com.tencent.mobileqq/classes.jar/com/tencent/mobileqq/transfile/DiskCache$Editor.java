@@ -15,7 +15,11 @@ public class DiskCache$Editor
       paramDiskCache.directory.mkdirs();
     }
     this.key = paramString;
-    this.dirtyFile = new File(paramDiskCache.directory, paramString + ".tmp");
+    paramDiskCache = paramDiskCache.directory;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".tmp");
+    this.dirtyFile = new File(paramDiskCache, localStringBuilder.toString());
   }
   
   void abort(boolean paramBoolean)
@@ -23,30 +27,39 @@ public class DiskCache$Editor
     if ((!paramBoolean) || (this.dirtyFile.length() <= 0L))
     {
       this.dirtyFile.delete();
-      QLog.d("DiskCache", 2, "dirtyFile delete as abort: " + this.dirtyFile.getPath());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("dirtyFile delete as abort: ");
+      localStringBuilder.append(this.dirtyFile.getPath());
+      QLog.d("DiskCache", 2, localStringBuilder.toString());
     }
   }
   
   File commit()
   {
-    File localFile = this.this$0.getCleanFile(this.key);
-    if (localFile.exists()) {
-      return localFile;
+    Object localObject = this.this$0.getCleanFile(this.key);
+    if (((File)localObject).exists()) {
+      return localObject;
     }
-    if ((!this.dirtyFile.exists()) || (this.dirtyFile.length() <= 0L))
+    if ((this.dirtyFile.exists()) && (this.dirtyFile.length() > 0L))
     {
-      QLog.d("DiskCache", 2, "dirtyFile delete: " + this.dirtyFile.getPath());
-      this.dirtyFile.delete();
-      throw new IOException("write 0 length file or null File");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("dirtyFile rename: ");
+      localStringBuilder.append(this.dirtyFile.getPath());
+      QLog.d("DiskCache", 2, localStringBuilder.toString());
+      this.dirtyFile.renameTo((File)localObject);
+      return localObject;
     }
-    QLog.d("DiskCache", 2, "dirtyFile rename: " + this.dirtyFile.getPath());
-    this.dirtyFile.renameTo(localFile);
-    return localFile;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("dirtyFile delete: ");
+    ((StringBuilder)localObject).append(this.dirtyFile.getPath());
+    QLog.d("DiskCache", 2, ((StringBuilder)localObject).toString());
+    this.dirtyFile.delete();
+    throw new IOException("write 0 length file or null File");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.DiskCache.Editor
  * JD-Core Version:    0.7.0.1
  */

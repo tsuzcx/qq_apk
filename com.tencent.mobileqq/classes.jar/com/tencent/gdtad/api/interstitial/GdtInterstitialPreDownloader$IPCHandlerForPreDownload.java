@@ -10,33 +10,29 @@ final class GdtInterstitialPreDownloader$IPCHandlerForPreDownload
 {
   public AdIPCManager.Result handle(AdIPCManager.Params paramParams)
   {
-    String str2 = null;
     AdIPCManager.Result localResult = new AdIPCManager.Result();
-    if (paramParams == null) {
-      if (paramParams == null) {
-        break label91;
-      }
-    }
-    label91:
-    for (String str1 = paramParams.getAction();; str1 = null)
+    if ((paramParams != null) && (paramParams.isValid()))
     {
-      if (paramParams != null) {
-        str2 = paramParams.getToProcessName();
-      }
-      GdtLog.b("GdtInterstitialPreDownloader", String.format("IPCHandlerForPreDownload.handle action:%s to:%s success:%b", new Object[] { str1, str2, Boolean.valueOf(localResult.success) }));
-      return localResult;
-      if (!paramParams.isValid()) {
-        break;
-      }
-      GdtInterstitialPreDownloader.a().a();
+      GdtInterstitialPreDownloader.a(GdtInterstitialPreDownloader.a());
       localResult.success = true;
-      break;
     }
+    String str2 = null;
+    String str1;
+    if (paramParams != null) {
+      str1 = paramParams.getAction();
+    } else {
+      str1 = null;
+    }
+    if (paramParams != null) {
+      str2 = paramParams.getToProcessName();
+    }
+    GdtLog.b("GdtInterstitialPreDownloader", String.format("IPCHandlerForPreDownload.handle action:%s to:%s success:%b", new Object[] { str1, str2, Boolean.valueOf(localResult.success) }));
+    return localResult;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtInterstitialPreDownloader.IPCHandlerForPreDownload
  * JD-Core Version:    0.7.0.1
  */

@@ -27,7 +27,11 @@ public class ConfigParser
     HashMap localHashMap = new HashMap();
     try
     {
-      a(localHashMap, DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>" + paramString).getBytes())).getDocumentElement().getChildNodes());
+      DocumentBuilder localDocumentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>");
+      localStringBuilder.append(paramString);
+      a(localHashMap, localDocumentBuilder.parse(new ByteArrayInputStream(localStringBuilder.toString().getBytes())).getDocumentElement().getChildNodes());
       return localHashMap;
     }
     catch (Exception paramString)
@@ -40,27 +44,30 @@ public class ConfigParser
   private static void a(int paramInt, byte[] paramArrayOfByte, String paramString)
   {
     paramArrayOfByte = new Cryptor().decrypt(paramArrayOfByte, a());
-    switch (paramInt)
+    if (paramInt != 3)
     {
-    case 3: 
-    default: 
-    case 4: 
-      do
+      if (paramInt != 4)
       {
+        if (paramInt != 12)
+        {
+          if (paramInt != 24) {
+            return;
+          }
+          Config.a.b();
+          Config.a.a(false);
+          a(Config.a, paramArrayOfByte, paramString);
+          return;
+        }
+        Config.b.b();
+        Config.b.a(false);
+        a(Config.b, paramArrayOfByte);
         return;
-        paramString = Config.a();
-      } while (paramString == null);
-      a(paramString.a, paramArrayOfByte);
-      return;
-    case 24: 
-      Config.a.b();
-      Config.a.a(false);
-      a(Config.a, paramArrayOfByte, paramString);
-      return;
+      }
+      paramString = Config.a();
+      if (paramString != null) {
+        a(paramString.a, paramArrayOfByte);
+      }
     }
-    Config.b.b();
-    Config.b.a(false);
-    a(Config.b, paramArrayOfByte);
   }
   
   private static void a(ConfigManager.UpdateStruct paramUpdateStruct, byte[] paramArrayOfByte)
@@ -71,37 +78,35 @@ public class ConfigParser
     paramUpdateStruct.jdField_a_of_type_Byte = paramArrayOfByte[i];
     i += 1;
     paramUpdateStruct.jdField_b_of_type_Byte = paramArrayOfByte[i];
-    int j = i + 1;
-    i = PkgTools.getShortData(paramArrayOfByte, j);
-    j += 2;
-    paramUpdateStruct.jdField_b_of_type_JavaLangString = PkgTools.getUTFString(paramArrayOfByte, j, i);
+    i += 1;
+    paramUpdateStruct.jdField_b_of_type_JavaLangString = PkgTools.getUTFString(paramArrayOfByte, i + 2, PkgTools.getShortData(paramArrayOfByte, i));
   }
   
   private static void a(ConfigRespStruct paramConfigRespStruct) {}
   
   private static void a(ConfigRespStruct paramConfigRespStruct, String paramString)
   {
-    int k = 2;
-    int m = 0;
-    int n = PkgTools.getShortData(paramConfigRespStruct.jdField_a_of_type_ArrayOfByte, 0);
-    int i = m;
-    int j = k;
+    Object localObject = paramConfigRespStruct.jdField_a_of_type_ArrayOfByte;
+    int i = 0;
+    int k = PkgTools.getShortData((byte[])localObject, 0);
     if (QLog.isColorLevel())
     {
-      QLog.d("ShanPing", 2, "config-huibao--decode---confighParse--itemNum = " + n);
-      j = k;
-      i = m;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("config-huibao--decode---confighParse--itemNum = ");
+      ((StringBuilder)localObject).append(k);
+      QLog.d("ShanPing", 2, ((StringBuilder)localObject).toString());
     }
-    while (i < n)
+    int j = 2;
+    while (i < k)
     {
-      k = PkgTools.getShortData(paramConfigRespStruct.jdField_a_of_type_ArrayOfByte, j);
-      m = j + 2;
-      j = PkgTools.getShortData(paramConfigRespStruct.jdField_a_of_type_ArrayOfByte, m);
-      m += 2;
-      byte[] arrayOfByte = new byte[j];
-      PkgTools.getBytesData(paramConfigRespStruct.jdField_a_of_type_ArrayOfByte, m, arrayOfByte, j);
-      j = m + j;
-      a(k, arrayOfByte, paramString);
+      int m = PkgTools.getShortData(paramConfigRespStruct.jdField_a_of_type_ArrayOfByte, j);
+      int n = j + 2;
+      j = PkgTools.getShortData(paramConfigRespStruct.jdField_a_of_type_ArrayOfByte, n);
+      n += 2;
+      localObject = new byte[j];
+      PkgTools.getBytesData(paramConfigRespStruct.jdField_a_of_type_ArrayOfByte, n, (byte[])localObject, j);
+      j = n + j;
+      a(m, (byte[])localObject, paramString);
       i += 1;
     }
     paramConfigRespStruct = Config.a();
@@ -112,33 +117,39 @@ public class ConfigParser
   
   private static void a(PicAndAdConf paramPicAndAdConf, byte[] paramArrayOfByte)
   {
-    int i = 0;
     if (QLog.isColorLevel()) {
       QLog.d("ShanPing", 2, "config-huibao--decode---confighParse--buildItem_FlashLogo = ");
     }
+    int i = 0;
     paramPicAndAdConf.jdField_a_of_type_Long = PkgTools.getLongData(paramArrayOfByte, 0);
     paramPicAndAdConf.b = (PkgTools.getLongData(paramArrayOfByte, 4) * 1000L);
     paramPicAndAdConf.c = (PkgTools.getLongData(paramArrayOfByte, 8) * 1000L);
     int k = paramArrayOfByte[12];
-    int m;
-    int n;
-    for (int j = 13; i < k; j = n + m)
+    int j = 13;
+    while (i < k)
     {
       long l = PkgTools.getLongData(paramArrayOfByte, j);
-      m = j + 4;
-      j = paramArrayOfByte[m];
-      n = m + 1 + 1;
-      m = PkgTools.getShortData(paramArrayOfByte, n);
+      j += 4;
+      int m = paramArrayOfByte[j];
+      int n = j + 1 + 1;
+      j = PkgTools.getShortData(paramArrayOfByte, n);
       n += 2;
-      String str1 = PkgTools.getUTFString(paramArrayOfByte, n, m);
-      n += m;
-      m = PkgTools.getShortData(paramArrayOfByte, n);
+      String str1 = PkgTools.getUTFString(paramArrayOfByte, n, j);
+      n += j;
+      j = PkgTools.getShortData(paramArrayOfByte, n);
       n += 2;
-      String str2 = PkgTools.getUTFString(paramArrayOfByte, n, m);
-      if (j == 1)
+      String str2 = PkgTools.getUTFString(paramArrayOfByte, n, j);
+      j = n + j;
+      if (m == 1)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ShanPing", 2, "flashlogo desc= " + str1 + " src addr = " + str2);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("flashlogo desc= ");
+          localStringBuilder.append(str1);
+          localStringBuilder.append(" src addr = ");
+          localStringBuilder.append(str2);
+          QLog.d("ShanPing", 2, localStringBuilder.toString());
         }
         str2 = paramPicAndAdConf.a(str1, (byte)3);
         paramPicAndAdConf.b(str2);
@@ -154,12 +165,18 @@ public class ConfigParser
     paramPicAndAdConf.b = (PkgTools.getLongData(paramArrayOfByte, 4) * 1000L);
     paramPicAndAdConf.c = (PkgTools.getLongData(paramArrayOfByte, 8) * 1000L);
     int k = paramArrayOfByte[12];
-    int j = 13;
+    Object localObject1;
+    Object localObject2;
     if (k > 0)
     {
       paramPicAndAdConf.c();
-      BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).edit().putBoolean("push_banner_display" + paramString, true).commit();
+      localObject1 = BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).edit();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("push_banner_display");
+      ((StringBuilder)localObject2).append(paramString);
+      ((SharedPreferences.Editor)localObject1).putBoolean(((StringBuilder)localObject2).toString(), true).commit();
     }
+    int j = 13;
     int i = 0;
     while (i < k)
     {
@@ -177,121 +194,145 @@ public class ConfigParser
       i1 += n;
       n = PkgTools.getShortData(paramArrayOfByte, i1);
       i1 += 2;
-      String str2 = PkgTools.getUTFString(paramArrayOfByte, i1, n);
+      localObject2 = PkgTools.getUTFString(paramArrayOfByte, i1, n);
       i1 += n;
       n = PkgTools.getShortData(paramArrayOfByte, i1);
       i1 += 2;
-      String str1 = PkgTools.getUTFString(paramArrayOfByte, i1, n);
+      localObject1 = PkgTools.getUTFString(paramArrayOfByte, i1, n);
       if (j == 1)
       {
-        str2 = paramPicAndAdConf.a(str2, (byte)3);
+        localObject2 = paramPicAndAdConf.a((String)localObject2, (byte)3);
         if (!a(String.valueOf(l1))) {
-          paramPicAndAdConf.b(str2);
+          paramPicAndAdConf.b((String)localObject2);
         }
-        paramPicAndAdConf.a(paramPicAndAdConf.a(l1, paramString, str2, str1, BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/ADPic/" + l1, "" + l2, (short)m));
+        Object localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(BaseApplication.getContext().getFilesDir().getAbsolutePath());
+        ((StringBuilder)localObject3).append("/ADPic/");
+        ((StringBuilder)localObject3).append(l1);
+        localObject3 = ((StringBuilder)localObject3).toString();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("");
+        localStringBuilder.append(l2);
+        paramPicAndAdConf.a(paramPicAndAdConf.a(l1, paramString, (String)localObject2, (String)localObject1, (String)localObject3, localStringBuilder.toString(), (short)m));
       }
       i += 1;
-      j = n + i1;
+      j = i1 + n;
     }
   }
   
   private static void a(HashMap<String, String> paramHashMap, NodeList paramNodeList)
   {
-    if ((paramNodeList == null) || (paramNodeList.getLength() == 0)) {
-      return;
-    }
-    int i = 0;
-    label16:
-    Node localNode;
-    if (i < paramNodeList.getLength())
+    if (paramNodeList != null)
     {
-      localNode = paramNodeList.item(i);
-      if (!(localNode instanceof Element)) {
-        break label67;
+      if (paramNodeList.getLength() == 0) {
+        return;
       }
-      if (localNode.hasChildNodes()) {
-        a(paramHashMap, localNode.getChildNodes());
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label16;
-      break;
-      label67:
-      if (localNode.getParentNode() != null) {
-        paramHashMap.put(localNode.getParentNode().getNodeName(), localNode.getNodeValue());
+      int i = 0;
+      while (i < paramNodeList.getLength())
+      {
+        Node localNode = paramNodeList.item(i);
+        if ((localNode instanceof Element))
+        {
+          if (localNode.hasChildNodes()) {
+            a(paramHashMap, localNode.getChildNodes());
+          }
+        }
+        else if (localNode.getParentNode() != null) {
+          paramHashMap.put(localNode.getParentNode().getNodeName(), localNode.getNodeValue());
+        }
+        i += 1;
       }
     }
   }
   
   private static void a(byte[] paramArrayOfByte, ConfigRespStruct paramConfigRespStruct)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 11)) {}
-    for (;;)
+    if (paramArrayOfByte != null)
     {
-      return;
-      if (paramArrayOfByte[0] == 2)
-      {
-        paramConfigRespStruct.b = PkgTools.getShortData(paramArrayOfByte, 1);
-        paramConfigRespStruct.jdField_a_of_type_Short = PkgTools.getShortData(paramArrayOfByte, 3);
-        paramConfigRespStruct.jdField_a_of_type_Long = (PkgTools.getLongData(paramArrayOfByte, 5) * 1000L);
-        paramConfigRespStruct.jdField_a_of_type_Byte = paramArrayOfByte[9];
-        int i = paramArrayOfByte.length - 10 - 1;
-        if (paramConfigRespStruct.jdField_a_of_type_Byte == 0)
-        {
-          paramConfigRespStruct.jdField_a_of_type_ArrayOfByte = new byte[i];
-          PkgTools.getBytesData(paramArrayOfByte, 10, paramConfigRespStruct.jdField_a_of_type_ArrayOfByte, i);
-        }
-        while (paramArrayOfByte.length != i + 10 + 1)
-        {
-          return;
-          paramConfigRespStruct.jdField_a_of_type_JavaLangString = PkgTools.getUTFString(paramArrayOfByte, 10, i);
-        }
+      if (paramArrayOfByte.length <= 11) {
+        return;
       }
+      if (paramArrayOfByte[0] != 2) {
+        return;
+      }
+      paramConfigRespStruct.b = PkgTools.getShortData(paramArrayOfByte, 1);
+      paramConfigRespStruct.jdField_a_of_type_Short = PkgTools.getShortData(paramArrayOfByte, 3);
+      paramConfigRespStruct.jdField_a_of_type_Long = (PkgTools.getLongData(paramArrayOfByte, 5) * 1000L);
+      paramConfigRespStruct.jdField_a_of_type_Byte = paramArrayOfByte[9];
+      int i = paramArrayOfByte.length - 10 - 1;
+      if (paramConfigRespStruct.jdField_a_of_type_Byte == 0)
+      {
+        paramConfigRespStruct.jdField_a_of_type_ArrayOfByte = new byte[i];
+        PkgTools.getBytesData(paramArrayOfByte, 10, paramConfigRespStruct.jdField_a_of_type_ArrayOfByte, i);
+      }
+      else
+      {
+        paramConfigRespStruct.jdField_a_of_type_JavaLangString = PkgTools.getUTFString(paramArrayOfByte, 10, i);
+      }
+      i = paramArrayOfByte.length;
     }
   }
   
   public static boolean a(String paramString)
   {
-    return new File(BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/ADPic/" + paramString).exists();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplication.getContext().getFilesDir().getAbsolutePath());
+    localStringBuilder.append("/ADPic/");
+    localStringBuilder.append(paramString);
+    return new File(localStringBuilder.toString()).exists();
   }
   
   public static boolean a(byte[] paramArrayOfByte, ConfigRespStruct paramConfigRespStruct, String paramString)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {}
-    do
+    if (paramArrayOfByte != null)
     {
-      do
-      {
+      if (paramArrayOfByte.length == 0) {
         return false;
-        a(paramArrayOfByte, paramConfigRespStruct);
-      } while (paramConfigRespStruct.b != 768);
+      }
+      a(paramArrayOfByte, paramConfigRespStruct);
+      if (paramConfigRespStruct.b != 768) {
+        return false;
+      }
       if (paramConfigRespStruct.jdField_a_of_type_Byte != 0)
       {
         a(paramConfigRespStruct);
         return false;
       }
-    } while ((paramConfigRespStruct.jdField_a_of_type_ArrayOfByte == null) || (paramConfigRespStruct.jdField_a_of_type_ArrayOfByte.length == 0));
-    a(paramConfigRespStruct, paramString);
-    return true;
+      if (paramConfigRespStruct.jdField_a_of_type_ArrayOfByte != null)
+      {
+        if (paramConfigRespStruct.jdField_a_of_type_ArrayOfByte.length == 0) {
+          return false;
+        }
+        a(paramConfigRespStruct, paramString);
+        return true;
+      }
+    }
+    return false;
   }
   
   private static byte[] a()
   {
-    String str = MD5.toMD5(Config.a() + AppSetting.d() + "E1D84CC825147ECD").substring(0, 16);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(Config.a());
+    ((StringBuilder)localObject).append(AppSetting.d());
+    ((StringBuilder)localObject).append("E1D84CC825147ECD");
+    localObject = MD5.toMD5(((StringBuilder)localObject).toString()).substring(0, 16);
     try
     {
-      byte[] arrayOfByte = str.getBytes("ISO8859_1");
+      byte[] arrayOfByte = ((String)localObject).getBytes("ISO8859_1");
       return arrayOfByte;
     }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException) {}
-    return str.getBytes();
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    {
+      label56:
+      break label56;
+    }
+    return ((String)localObject).getBytes();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.ConfigParser
  * JD-Core Version:    0.7.0.1
  */

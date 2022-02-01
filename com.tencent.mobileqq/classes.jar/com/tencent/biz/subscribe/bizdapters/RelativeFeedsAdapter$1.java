@@ -19,61 +19,62 @@ class RelativeFeedsAdapter$1
   
   public void a(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedListRsp paramStGetFeedListRsp)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
+    boolean bool2 = false;
+    boolean bool1 = false;
     if ((paramBoolean) && (paramLong == 0L))
     {
       this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.a().b(paramStGetFeedListRsp.livePageInfo.get());
-      if ((this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseLoadInfo.c()) || (this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseLoadInfo.d())) {
-        if ((paramStGetFeedListRsp.hotLive.get() == null) || (paramStGetFeedListRsp.hotLive.get().size() == 0)) {
-          if (RelativeFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter) != null)
-          {
-            this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.a();
-            RelativeFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter).b(true);
+      COMM.StCommonExt localStCommonExt;
+      if ((!this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseLoadInfo.c()) && (!this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseLoadInfo.d()))
+      {
+        if (this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseLoadInfo.e())
+        {
+          paramBaseRequest = this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter;
+          paramString = paramStGetFeedListRsp.hotLive.get();
+          localStCommonExt = paramStGetFeedListRsp.extInfo;
+          paramBoolean = bool1;
+          if (paramStGetFeedListRsp.isFinish.get() == 1) {
+            paramBoolean = true;
           }
+          paramBaseRequest.b(paramString, localStCommonExt, paramBoolean, paramStGetFeedListRsp.adAttchInfo.get());
         }
       }
-    }
-    label187:
-    do
-    {
-      do
+      else
       {
-        break label187;
-        break label187;
+        if ((paramStGetFeedListRsp.hotLive.get() != null) && (paramStGetFeedListRsp.hotLive.get().size() != 0))
+        {
+          if (RelativeFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter) != null) {
+            RelativeFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter).b(false);
+          }
+        }
+        else if (RelativeFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter) != null)
+        {
+          this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.a();
+          RelativeFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter).b(true);
+        }
         paramBaseRequest = this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter;
         paramString = paramStGetFeedListRsp.hotLive.get();
         localStCommonExt = paramStGetFeedListRsp.extInfo;
-        if (paramStGetFeedListRsp.isFinish.get() == 1) {}
-        for (paramBoolean = bool1;; paramBoolean = false)
-        {
-          paramBaseRequest.a(paramString, localStCommonExt, paramBoolean, paramStGetFeedListRsp.adAttchInfo.get());
-          this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.b("share_key_continue_feeds", new BlockMerger.ShareData(paramStGetFeedListRsp.hotLive.get()));
-          return;
-          if (RelativeFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter) == null) {
-            break;
-          }
-          RelativeFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter).b(false);
-          break;
+        paramBoolean = bool2;
+        if (paramStGetFeedListRsp.isFinish.get() == 1) {
+          paramBoolean = true;
         }
-      } while (!this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseLoadInfo.e());
-      paramBaseRequest = this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter;
-      paramString = paramStGetFeedListRsp.hotLive.get();
-      COMM.StCommonExt localStCommonExt = paramStGetFeedListRsp.extInfo;
-      if (paramStGetFeedListRsp.isFinish.get() == 1) {}
-      for (paramBoolean = bool2;; paramBoolean = false)
-      {
-        paramBaseRequest.b(paramString, localStCommonExt, paramBoolean, paramStGetFeedListRsp.adAttchInfo.get());
-        return;
+        paramBaseRequest.a(paramString, localStCommonExt, paramBoolean, paramStGetFeedListRsp.adAttchInfo.get());
+        this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.b("share_key_continue_feeds", new BlockMerger.ShareData(paramStGetFeedListRsp.hotLive.get()));
       }
+    }
+    else
+    {
       this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.d(false);
-    } while (((!this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseLoadInfo.c()) && (!this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseLoadInfo.d())) || (RelativeFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter) == null));
-    RelativeFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter).b(true);
+      if (((this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseLoadInfo.c()) || (this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseLoadInfo.d())) && (RelativeFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter) != null)) {
+        RelativeFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter).b(true);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.bizdapters.RelativeFeedsAdapter.1
  * JD-Core Version:    0.7.0.1
  */

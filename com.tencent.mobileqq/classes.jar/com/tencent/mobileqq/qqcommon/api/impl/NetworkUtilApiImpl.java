@@ -10,7 +10,7 @@ public class NetworkUtilApiImpl
 {
   public int getConnRetryTimes(int paramInt)
   {
-    return NetworkUtil.a(paramInt);
+    return NetworkUtil.getConnRetryTimes(paramInt);
   }
   
   public boolean is4G()
@@ -25,17 +25,17 @@ public class NetworkUtilApiImpl
   
   public boolean isNetworkAvailable()
   {
-    return NetworkUtil.a();
+    return NetworkUtil.isNetworkAvailable();
   }
   
   public boolean isWifi()
   {
-    return NetworkUtil.h(MobileQQ.sMobileQQ);
+    return NetworkUtil.isWifiConnected(MobileQQ.sMobileQQ);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qqcommon.api.impl.NetworkUtilApiImpl
  * JD-Core Version:    0.7.0.1
  */

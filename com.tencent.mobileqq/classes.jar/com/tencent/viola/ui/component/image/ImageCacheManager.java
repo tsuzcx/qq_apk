@@ -33,23 +33,24 @@ public class ImageCacheManager
   
   public void onGetDrawable(ImageCacheManager.ImageCacheKey paramImageCacheKey, Drawable paramDrawable)
   {
-    if (paramImageCacheKey == null) {}
-    do
-    {
+    if (paramImageCacheKey == null) {
       return;
-      this.downloadedDrawable.put(paramImageCacheKey, new WeakReference(paramDrawable));
-      this.requestingSet.remove(paramImageCacheKey);
-      localObject = (List)this.requestingCallbackMap.get(paramImageCacheKey);
-    } while (localObject == null);
-    Object localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      VImageView2 localVImageView2 = (VImageView2)((WeakReference)((Iterator)localObject).next()).get();
-      if (localVImageView2 != null) {
-        localVImageView2.trySetImage(paramDrawable);
-      }
     }
-    this.requestingCallbackMap.remove(paramImageCacheKey);
+    this.downloadedDrawable.put(paramImageCacheKey, new WeakReference(paramDrawable));
+    this.requestingSet.remove(paramImageCacheKey);
+    Object localObject = (List)this.requestingCallbackMap.get(paramImageCacheKey);
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        VImageView2 localVImageView2 = (VImageView2)((WeakReference)((Iterator)localObject).next()).get();
+        if (localVImageView2 != null) {
+          localVImageView2.trySetImage(paramDrawable);
+        }
+      }
+      this.requestingCallbackMap.remove(paramImageCacheKey);
+    }
   }
   
   public boolean recordRequest(VImageView2 paramVImageView2, String paramString, int paramInt1, int paramInt2, int paramInt3, Style paramStyle)
@@ -94,7 +95,7 @@ public class ImageCacheManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.component.image.ImageCacheManager
  * JD-Core Version:    0.7.0.1
  */

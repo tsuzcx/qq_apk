@@ -3,9 +3,9 @@ package com.tencent.av.smallscreen;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.av.utils.SeqUtil;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.common.app.business.BaseVideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.BaseActivity;
 
@@ -20,9 +20,18 @@ class FloatWindowPrivacyModel$1
     {
       int i = paramIntent.getIntExtra("SmallScreenState", -1);
       long l = SeqUtil.a(paramIntent);
-      boolean bool = SmallScreenUtils.c(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp());
-      if ((AudioHelper.e()) || (bool)) {
-        QLog.w("FloatWindowPrivacyModel", 1, "Receiver ACTION_SMALL_SCREEN_STATE, isFloatWindowOpAllowed[" + bool + "], state[" + i + "], seq[" + l + "]");
+      boolean bool = SmallScreenUtils.c(this.a.jdField_a_of_type_ComTencentCommonAppBusinessBaseVideoAppInterface.getApp());
+      if ((AudioHelper.b()) || (bool))
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("Receiver ACTION_SMALL_SCREEN_STATE, isFloatWindowOpAllowed[");
+        paramContext.append(bool);
+        paramContext.append("], state[");
+        paramContext.append(i);
+        paramContext.append("], seq[");
+        paramContext.append(l);
+        paramContext.append("]");
+        QLog.w("FloatWindowPrivacyModel", 1, paramContext.toString());
       }
       if (bool) {
         this.a.jdField_a_of_type_MqqAppBaseActivity.finish();
@@ -32,7 +41,7 @@ class FloatWindowPrivacyModel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.smallscreen.FloatWindowPrivacyModel.1
  * JD-Core Version:    0.7.0.1
  */

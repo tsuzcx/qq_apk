@@ -22,14 +22,14 @@ public class MaxHeightRecyclerView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(a, -2147483648));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.follow.joinGroup.MaxHeightRecyclerView
  * JD-Core Version:    0.7.0.1
  */

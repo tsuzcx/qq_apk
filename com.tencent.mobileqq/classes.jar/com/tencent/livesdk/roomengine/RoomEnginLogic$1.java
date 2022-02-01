@@ -16,27 +16,39 @@ class RoomEnginLogic$1
   
   public void onFail(int paramInt, String paramString)
   {
-    this.this$0.logInterface.e("RoomEnginLogic", "enterRoom--onFail--failCode=" + paramInt + ";errMsg=" + paramString, new Object[0]);
-    if (this.val$callback != null) {
-      this.val$callback.onFail(paramInt, paramString);
+    Object localObject = this.this$0.logInterface;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("enterRoom--onFail--failCode=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(";errMsg=");
+    localStringBuilder.append(paramString);
+    ((LogInterface)localObject).e("RoomEnginLogic", localStringBuilder.toString(), new Object[0]);
+    localObject = this.val$callback;
+    if (localObject != null) {
+      ((EnterExitRoomCallback)localObject).onFail(paramInt, paramString);
     }
   }
   
   public void onSuccess()
   {
-    LiveRoomInfo localLiveRoomInfo = this.this$0.roomServiceInterface.getLiveInfo().roomInfo;
-    this.this$0.logInterface.i("RoomEnginLogic", "onEnterRoom--roomid=" + localLiveRoomInfo.roomId, new Object[0]);
+    Object localObject = this.this$0.roomServiceInterface.getLiveInfo().roomInfo;
+    LogInterface localLogInterface = this.this$0.logInterface;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onEnterRoom--roomid=");
+    localStringBuilder.append(((LiveRoomInfo)localObject).roomId);
+    localLogInterface.i("RoomEnginLogic", localStringBuilder.toString(), new Object[0]);
     if (!this.val$enterRoomInfo.isLiteSdk) {
-      ((RoomPushServiceInterface)this.this$0.mServiceManager.getService(RoomPushServiceInterface.class)).setRoomInfo(localLiveRoomInfo.roomType, (int)localLiveRoomInfo.roomId);
+      ((RoomPushServiceInterface)this.this$0.mServiceManager.getService(RoomPushServiceInterface.class)).setRoomInfo(((LiveRoomInfo)localObject).roomType, (int)((LiveRoomInfo)localObject).roomId);
     }
-    if (this.val$callback != null) {
-      this.val$callback.onSuccess();
+    localObject = this.val$callback;
+    if (localObject != null) {
+      ((EnterExitRoomCallback)localObject).onSuccess();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.roomengine.RoomEnginLogic.1
  * JD-Core Version:    0.7.0.1
  */

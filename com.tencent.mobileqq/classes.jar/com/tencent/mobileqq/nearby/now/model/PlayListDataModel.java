@@ -2,9 +2,10 @@ package com.tencent.mobileqq.nearby.now.model;
 
 import android.net.Uri;
 import android.os.Bundle;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager;
+import com.tencent.mobileqq.nearby.now.protocol.INowShortVideoProtoManager;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.pb.now.FeedsProtocol.GetMediaDetailRsp;
 import com.tencent.pb.now.FeedsProtocol.MediaInfo;
 import com.tencent.pb.now.FeedsProtocol.PicFeedsInfo;
@@ -34,11 +35,11 @@ public class PlayListDataModel
       FeedsProtocol.MediaInfo localMediaInfo = (FeedsProtocol.MediaInfo)paramGetMediaDetailRsp.next();
       if ((localMediaInfo.type.get() != 1) && (localMediaInfo.type.get() != 2)) {
         if (localMediaInfo.type.get() == 3) {
-          a(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), (FeedsProtocol.ShortVideoInfo)localMediaInfo.short_video.get(), this.jdField_a_of_type_JavaUtilArrayList);
+          ((IModelUtil)QRoute.api(IModelUtil.class)).parseShortVideoData(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), localMediaInfo.short_video.get(), this.jdField_a_of_type_JavaUtilArrayList);
         } else if (localMediaInfo.type.get() == 5) {
-          a(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), (FeedsProtocol.PicFeedsInfo)localMediaInfo.pic_info.get(), this.jdField_a_of_type_JavaUtilArrayList);
+          ((IModelUtil)QRoute.api(IModelUtil.class)).parseImageData(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), localMediaInfo.pic_info.get(), this.jdField_a_of_type_JavaUtilArrayList);
         } else if (localMediaInfo.type.get() == 6) {
-          a(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), (FeedsProtocol.TextFeed)localMediaInfo.text_feed.get(), this.jdField_a_of_type_JavaUtilArrayList);
+          ((IModelUtil)QRoute.api(IModelUtil.class)).parseTextFeeds(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), localMediaInfo.text_feed.get(), this.jdField_a_of_type_JavaUtilArrayList);
         }
       }
     }
@@ -54,19 +55,31 @@ public class PlayListDataModel
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    new NowShortVideoProtoManager(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_b_of_type_JavaLangString + "&start=" + this.jdField_b_of_type_Int + "&num=" + 10, new PlayListDataModel.1(this));
+    INowShortVideoProtoManager localINowShortVideoProtoManager = ((INowShortVideoProtoManager)QRoute.api(INowShortVideoProtoManager.class)).init(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("&start=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("&num=");
+    localStringBuilder.append(10);
+    localINowShortVideoProtoManager.getMediaDetailInfo(localStringBuilder.toString(), new PlayListDataModel.1(this));
   }
   
   public void a(Bundle paramBundle)
   {
-    if ("1".equals(paramBundle.getString("isLocal"))) {}
-    do
-    {
+    if ("1".equals(paramBundle.getString("isLocal"))) {
       return;
-      paramBundle = paramBundle.getString("raw_url");
-      this.jdField_b_of_type_JavaLangString = Uri.parse(paramBundle).getQuery();
-    } while (!QLog.isColorLevel());
-    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "PlayListDataModel, url=" + paramBundle);
+    }
+    paramBundle = paramBundle.getString("raw_url");
+    this.jdField_b_of_type_JavaLangString = Uri.parse(paramBundle).getQuery();
+    if (QLog.isColorLevel())
+    {
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PlayListDataModel, url=");
+      localStringBuilder.append(paramBundle);
+      QLog.d(str, 2, localStringBuilder.toString());
+    }
   }
   
   public boolean a()
@@ -76,7 +89,7 @@ public class PlayListDataModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.model.PlayListDataModel
  * JD-Core Version:    0.7.0.1
  */

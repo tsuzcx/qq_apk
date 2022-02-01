@@ -20,21 +20,20 @@ class QWalletAIOLifeCycleHelper$2
       ReportController.b(QWalletAIOLifeCycleHelper.a(this.a), "P_CliOper", "Vip_pay_mywallet", "", "500", "idiom.tips.click", 0, 0, "", "", "", "");
       QWalletAIOLifeCycleHelper.a(this.a).a().postDelayed(new QWalletAIOLifeCycleHelper.2.1(this), 200L);
       this.a.a();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        QLog.e("QWalletAIOLifeCycleHelper", 1, "onclick  IdiomRedBagTips throw an exception: " + localThrowable);
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onclick  IdiomRedBagTips throw an exception: ");
+      localStringBuilder.append(localThrowable);
+      QLog.e("QWalletAIOLifeCycleHelper", 1, localStringBuilder.toString());
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.QWalletAIOLifeCycleHelper.2
  * JD-Core Version:    0.7.0.1
  */

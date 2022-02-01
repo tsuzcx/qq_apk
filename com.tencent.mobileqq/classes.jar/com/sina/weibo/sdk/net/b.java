@@ -19,28 +19,24 @@ public final class b
     paramd = new StringBuilder();
     Iterator localIterator = localBundle.keySet().iterator();
     int i = 1;
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       String str1 = (String)localIterator.next();
       if (i != 0) {
         i = 0;
-      }
-      for (;;)
-      {
-        for (;;)
-        {
-          String str2 = String.valueOf(localBundle.get(str1));
-          try
-          {
-            paramd.append(URLEncoder.encode(str1, "UTF-8")).append("=").append(URLEncoder.encode(str2, "UTF-8"));
-          }
-          catch (UnsupportedEncodingException localUnsupportedEncodingException)
-          {
-            localUnsupportedEncodingException.printStackTrace();
-          }
-        }
-        break;
+      } else {
         paramd.append("&");
+      }
+      String str2 = String.valueOf(localBundle.get(str1));
+      try
+      {
+        paramd.append(URLEncoder.encode(str1, "UTF-8"));
+        paramd.append("=");
+        paramd.append(URLEncoder.encode(str2, "UTF-8"));
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        localUnsupportedEncodingException.printStackTrace();
       }
     }
     try
@@ -72,181 +68,185 @@ public final class b
     // Byte code:
     //   0: aload_1
     //   1: invokeinterface 111 1 0
-    //   6: astore_3
-    //   7: aload_1
-    //   8: invokeinterface 114 1 0
-    //   13: astore 6
-    //   15: aload_3
-    //   16: astore 4
-    //   18: aload 6
-    //   20: ifnull +62 -> 82
-    //   23: aload_3
-    //   24: astore 4
-    //   26: aload 6
-    //   28: invokevirtual 118	android/os/Bundle:size	()I
-    //   31: ifeq +51 -> 82
-    //   34: aload_3
-    //   35: invokestatic 124	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   38: ifne +262 -> 300
-    //   41: aload_3
-    //   42: invokestatic 130	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   45: astore 5
-    //   47: aload 5
-    //   49: astore 4
-    //   51: aload 6
-    //   53: ifnull +15 -> 68
-    //   56: aload 6
-    //   58: invokevirtual 132	android/os/Bundle:isEmpty	()Z
-    //   61: ifeq +167 -> 228
-    //   64: aload 5
-    //   66: astore 4
-    //   68: aload 4
-    //   70: ifnull +230 -> 300
-    //   73: aload 4
-    //   75: invokevirtual 133	android/net/Uri:toString	()Ljava/lang/String;
-    //   78: astore_3
-    //   79: aload_3
-    //   80: astore 4
-    //   82: new 135	java/net/URL
-    //   85: dup
-    //   86: aload 4
-    //   88: invokespecial 138	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   91: invokevirtual 142	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   94: checkcast 101	java/net/HttpURLConnection
-    //   97: astore_3
-    //   98: aload_3
-    //   99: ldc 144
-    //   101: invokevirtual 147	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
-    //   104: aload_3
-    //   105: ldc 149
-    //   107: ldc 151
-    //   109: invokevirtual 154	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   112: aload_3
-    //   113: ldc 156
-    //   115: ldc 60
-    //   117: invokevirtual 154	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   120: new 28	android/os/Bundle
-    //   123: dup
-    //   124: invokespecial 157	android/os/Bundle:<init>	()V
-    //   127: astore 4
-    //   129: aload 4
-    //   131: ldc 159
-    //   133: ldc 161
-    //   135: invokevirtual 164	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   6: astore 5
+    //   8: aload_1
+    //   9: invokeinterface 114 1 0
+    //   14: astore 6
+    //   16: aload 5
+    //   18: astore 4
+    //   20: aload 6
+    //   22: ifnull +135 -> 157
+    //   25: aload 5
+    //   27: astore 4
+    //   29: aload 6
+    //   31: invokevirtual 118	android/os/Bundle:size	()I
+    //   34: ifeq +123 -> 157
+    //   37: aload 5
+    //   39: astore 4
+    //   41: aload 5
+    //   43: invokestatic 124	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   46: ifne +111 -> 157
+    //   49: aload 5
+    //   51: invokestatic 130	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   54: astore 4
+    //   56: aload 4
+    //   58: astore_3
+    //   59: aload 6
+    //   61: ifnull +82 -> 143
+    //   64: aload 6
+    //   66: invokevirtual 132	android/os/Bundle:isEmpty	()Z
+    //   69: ifeq +9 -> 78
+    //   72: aload 4
+    //   74: astore_3
+    //   75: goto +68 -> 143
+    //   78: aload 4
+    //   80: invokevirtual 136	android/net/Uri:buildUpon	()Landroid/net/Uri$Builder;
+    //   83: astore_3
+    //   84: aload 6
+    //   86: invokevirtual 32	android/os/Bundle:keySet	()Ljava/util/Set;
+    //   89: invokeinterface 38 1 0
+    //   94: astore 4
+    //   96: aload 4
+    //   98: invokeinterface 44 1 0
+    //   103: ifeq +35 -> 138
+    //   106: aload 4
+    //   108: invokeinterface 48 1 0
+    //   113: checkcast 50	java/lang/String
+    //   116: astore 7
+    //   118: aload_3
+    //   119: aload 7
+    //   121: aload 6
+    //   123: aload 7
+    //   125: invokevirtual 60	android/os/Bundle:get	(Ljava/lang/String;)Ljava/lang/Object;
+    //   128: invokestatic 64	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   131: invokevirtual 142	android/net/Uri$Builder:appendQueryParameter	(Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri$Builder;
+    //   134: pop
+    //   135: goto -39 -> 96
     //   138: aload_3
-    //   139: aload 4
-    //   141: invokestatic 166	com/sina/weibo/sdk/net/b:a	(Ljava/net/HttpURLConnection;Landroid/os/Bundle;)V
-    //   144: aload_3
-    //   145: iconst_1
-    //   146: invokevirtual 170	java/net/HttpURLConnection:setDoInput	(Z)V
-    //   149: aload_3
-    //   150: iconst_1
-    //   151: invokevirtual 173	java/net/HttpURLConnection:setDoOutput	(Z)V
-    //   154: aload_3
-    //   155: iconst_0
-    //   156: invokevirtual 176	java/net/HttpURLConnection:setUseCaches	(Z)V
-    //   159: aload_3
-    //   160: aload_1
-    //   161: invokeinterface 179 1 0
-    //   166: invokevirtual 183	java/net/HttpURLConnection:setReadTimeout	(I)V
-    //   169: aload_3
-    //   170: aload_1
-    //   171: invokeinterface 186 1 0
-    //   176: invokevirtual 189	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   139: invokevirtual 146	android/net/Uri$Builder:build	()Landroid/net/Uri;
+    //   142: astore_3
+    //   143: aload 5
+    //   145: astore 4
+    //   147: aload_3
+    //   148: ifnull +9 -> 157
+    //   151: aload_3
+    //   152: invokevirtual 147	android/net/Uri:toString	()Ljava/lang/String;
+    //   155: astore 4
+    //   157: new 149	java/net/URL
+    //   160: dup
+    //   161: aload 4
+    //   163: invokespecial 152	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   166: invokevirtual 156	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   169: checkcast 101	java/net/HttpURLConnection
+    //   172: astore_3
+    //   173: aload_3
+    //   174: ldc 158
+    //   176: invokevirtual 161	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   179: aload_3
-    //   180: invokevirtual 192	java/net/HttpURLConnection:connect	()V
-    //   183: aload_3
-    //   184: invokevirtual 196	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
-    //   187: aload_1
-    //   188: invokestatic 198	com/sina/weibo/sdk/net/b:a	(Ljava/io/OutputStream;Lcom/sina/weibo/sdk/net/d;)V
-    //   191: aload_3
-    //   192: invokevirtual 201	java/net/HttpURLConnection:getResponseCode	()I
-    //   195: istore_2
-    //   196: iload_2
-    //   197: sipush 200
-    //   200: if_icmpne +103 -> 303
-    //   203: aload_3
-    //   204: invokevirtual 205	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   207: astore_1
-    //   208: new 207	com/sina/weibo/sdk/net/g
-    //   211: dup
-    //   212: iload_2
-    //   213: aload_1
-    //   214: invokespecial 210	com/sina/weibo/sdk/net/g:<init>	(ILjava/io/InputStream;)V
-    //   217: astore_1
-    //   218: aload_3
-    //   219: ifnull +7 -> 226
-    //   222: aload_3
-    //   223: invokevirtual 213	java/net/HttpURLConnection:disconnect	()V
-    //   226: aload_1
-    //   227: areturn
-    //   228: aload 5
-    //   230: invokevirtual 217	android/net/Uri:buildUpon	()Landroid/net/Uri$Builder;
-    //   233: astore 4
-    //   235: aload 6
-    //   237: invokevirtual 32	android/os/Bundle:keySet	()Ljava/util/Set;
-    //   240: invokeinterface 38 1 0
-    //   245: astore 5
-    //   247: aload 5
-    //   249: invokeinterface 44 1 0
-    //   254: ifeq +36 -> 290
-    //   257: aload 5
-    //   259: invokeinterface 48 1 0
-    //   264: checkcast 50	java/lang/String
-    //   267: astore 7
-    //   269: aload 4
-    //   271: aload 7
-    //   273: aload 6
-    //   275: aload 7
-    //   277: invokevirtual 54	android/os/Bundle:get	(Ljava/lang/String;)Ljava/lang/Object;
-    //   280: invokestatic 58	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   283: invokevirtual 223	android/net/Uri$Builder:appendQueryParameter	(Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri$Builder;
-    //   286: pop
-    //   287: goto -40 -> 247
-    //   290: aload 4
-    //   292: invokevirtual 227	android/net/Uri$Builder:build	()Landroid/net/Uri;
-    //   295: astore 4
-    //   297: goto -229 -> 68
-    //   300: goto -221 -> 79
-    //   303: aload_3
-    //   304: invokevirtual 230	java/net/HttpURLConnection:getErrorStream	()Ljava/io/InputStream;
-    //   307: astore_1
-    //   308: goto -100 -> 208
+    //   180: ldc 163
+    //   182: ldc 165
+    //   184: invokevirtual 168	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   187: aload_3
+    //   188: ldc 170
+    //   190: ldc 66
+    //   192: invokevirtual 168	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   195: new 28	android/os/Bundle
+    //   198: dup
+    //   199: invokespecial 171	android/os/Bundle:<init>	()V
+    //   202: astore 4
+    //   204: aload 4
+    //   206: ldc 173
+    //   208: ldc 175
+    //   210: invokevirtual 178	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   213: aload_3
+    //   214: aload 4
+    //   216: invokestatic 180	com/sina/weibo/sdk/net/b:a	(Ljava/net/HttpURLConnection;Landroid/os/Bundle;)V
+    //   219: aload_3
+    //   220: iconst_1
+    //   221: invokevirtual 184	java/net/HttpURLConnection:setDoInput	(Z)V
+    //   224: aload_3
+    //   225: iconst_1
+    //   226: invokevirtual 187	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   229: aload_3
+    //   230: iconst_0
+    //   231: invokevirtual 190	java/net/HttpURLConnection:setUseCaches	(Z)V
+    //   234: aload_3
+    //   235: aload_1
+    //   236: invokeinterface 193 1 0
+    //   241: invokevirtual 197	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   244: aload_3
+    //   245: aload_1
+    //   246: invokeinterface 200 1 0
+    //   251: invokevirtual 203	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   254: aload_3
+    //   255: invokevirtual 206	java/net/HttpURLConnection:connect	()V
+    //   258: aload_3
+    //   259: invokevirtual 210	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   262: aload_1
+    //   263: invokestatic 212	com/sina/weibo/sdk/net/b:a	(Ljava/io/OutputStream;Lcom/sina/weibo/sdk/net/d;)V
+    //   266: aload_3
+    //   267: invokevirtual 215	java/net/HttpURLConnection:getResponseCode	()I
+    //   270: istore_2
+    //   271: iload_2
+    //   272: sipush 200
+    //   275: if_icmpne +11 -> 286
+    //   278: aload_3
+    //   279: invokevirtual 219	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   282: astore_1
+    //   283: goto +8 -> 291
+    //   286: aload_3
+    //   287: invokevirtual 222	java/net/HttpURLConnection:getErrorStream	()Ljava/io/InputStream;
+    //   290: astore_1
+    //   291: new 224	com/sina/weibo/sdk/net/g
+    //   294: dup
+    //   295: iload_2
+    //   296: aload_1
+    //   297: invokespecial 227	com/sina/weibo/sdk/net/g:<init>	(ILjava/io/InputStream;)V
+    //   300: astore_1
+    //   301: aload_3
+    //   302: ifnull +7 -> 309
+    //   305: aload_3
+    //   306: invokevirtual 230	java/net/HttpURLConnection:disconnect	()V
+    //   309: aload_1
+    //   310: areturn
     //   311: astore_1
-    //   312: new 232	java/lang/Throwable
-    //   315: dup
-    //   316: aload_1
-    //   317: invokevirtual 235	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   320: invokespecial 236	java/lang/Throwable:<init>	(Ljava/lang/String;)V
-    //   323: athrow
-    //   324: astore_1
-    //   325: aload_3
-    //   326: ifnull +7 -> 333
-    //   329: aload_3
-    //   330: invokevirtual 213	java/net/HttpURLConnection:disconnect	()V
-    //   333: aload_1
-    //   334: athrow
+    //   312: goto +16 -> 328
+    //   315: astore_1
+    //   316: new 232	java/lang/Throwable
+    //   319: dup
+    //   320: aload_1
+    //   321: invokevirtual 235	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   324: invokespecial 236	java/lang/Throwable:<init>	(Ljava/lang/String;)V
+    //   327: athrow
+    //   328: aload_3
+    //   329: ifnull +7 -> 336
+    //   332: aload_3
+    //   333: invokevirtual 230	java/net/HttpURLConnection:disconnect	()V
+    //   336: goto +5 -> 341
+    //   339: aload_1
+    //   340: athrow
+    //   341: goto -2 -> 339
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	335	0	this	b
-    //   0	335	1	paramd	d
-    //   195	18	2	i	int
-    //   6	324	3	localObject1	Object
-    //   16	280	4	localObject2	Object
-    //   45	213	5	localObject3	Object
-    //   13	261	6	localBundle	Bundle
-    //   267	9	7	str	String
+    //   0	344	0	this	b
+    //   0	344	1	paramd	d
+    //   270	26	2	i	int
+    //   58	275	3	localObject1	Object
+    //   18	197	4	localObject2	Object
+    //   6	138	5	str1	String
+    //   14	108	6	localBundle	Bundle
+    //   116	8	7	str2	String
     // Exception table:
     //   from	to	target	type
-    //   98	196	311	java/lang/Exception
-    //   203	208	311	java/lang/Exception
-    //   208	218	311	java/lang/Exception
-    //   303	308	311	java/lang/Exception
-    //   98	196	324	finally
-    //   203	208	324	finally
-    //   208	218	324	finally
-    //   303	308	324	finally
-    //   312	324	324	finally
+    //   173	271	311	finally
+    //   278	283	311	finally
+    //   286	291	311	finally
+    //   291	301	311	finally
+    //   316	328	311	finally
+    //   173	271	315	java/lang/Exception
+    //   278	283	315	java/lang/Exception
+    //   286	291	315	java/lang/Exception
+    //   291	301	315	java/lang/Exception
   }
 }
 

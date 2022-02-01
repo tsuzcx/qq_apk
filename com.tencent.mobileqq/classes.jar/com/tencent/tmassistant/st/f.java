@@ -21,21 +21,17 @@ class f
       ab.c("SDKReportManager2", ">>mPostHandler msg = MSG_POST_REPORT");
       SDKReportManager2.access$000(this.a);
     }
-    for (;;)
+    else if (paramMessage.what == 2)
     {
-      ab.c("SDKReportManager2", ">>mPostHandler handleMessage exit");
-      return;
-      if (paramMessage.what == 2)
-      {
-        ab.c("SDKReportManager2", ">>mPostHandler msg = MSG_BATCH_REPORT");
-        SDKReportManager2.access$100(this.a);
-      }
+      ab.c("SDKReportManager2", ">>mPostHandler msg = MSG_BATCH_REPORT");
+      SDKReportManager2.access$100(this.a);
     }
+    ab.c("SDKReportManager2", ">>mPostHandler handleMessage exit");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistant.st.f
  * JD-Core Version:    0.7.0.1
  */

@@ -29,17 +29,21 @@ public class LpReport_Retention_dc03208
   
   public static void report(String paramString, HashMap<String, String> paramHashMap)
   {
-    String str = null;
     if (paramHashMap != null) {
-      str = paramHashMap.toString();
+      paramHashMap = paramHashMap.toString();
+    } else {
+      paramHashMap = null;
     }
-    paramString = new LpReport_Retention_dc03208(paramString, str);
+    paramString = new LpReport_Retention_dc03208(paramString, paramHashMap);
     LpReportManager.getInstance().reportToDC03208(paramString, false, false);
   }
   
   public String getSimpleInfo()
   {
-    return "function:" + this.function;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("function:");
+    localStringBuilder.append(this.function);
+    return localStringBuilder.toString();
   }
   
   public Map<String, String> toMap()
@@ -61,7 +65,7 @@ public class LpReport_Retention_dc03208
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReport_Retention_dc03208
  * JD-Core Version:    0.7.0.1
  */

@@ -31,16 +31,21 @@ public class QzoneAioStoryFeedRequest
   
   public static CLIENT.StGetUserNewestStoryRsp onResponse(byte[] paramArrayOfByte)
   {
-    CLIENT.StGetUserNewestStoryRsp localStGetUserNewestStoryRsp = new CLIENT.StGetUserNewestStoryRsp();
+    Object localObject = new CLIENT.StGetUserNewestStoryRsp();
     try
     {
-      localStGetUserNewestStoryRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStGetUserNewestStoryRsp;
+      ((CLIENT.StGetUserNewestStoryRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (RFLog.isColorLevel()) {
-        RFLog.d("QzoneAioStoryFeedRequest", RFLog.CLR, "onResponse fail." + paramArrayOfByte);
+      if (RFLog.isColorLevel())
+      {
+        int i = RFLog.CLR;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        RFLog.d("QzoneAioStoryFeedRequest", i, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -53,7 +58,7 @@ public class QzoneAioStoryFeedRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.network.request.QzoneAioStoryFeedRequest
  * JD-Core Version:    0.7.0.1
  */

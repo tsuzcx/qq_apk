@@ -18,47 +18,27 @@ public final class DataTransferImpl$publishArticle$publishCallback$1
   public void a(int paramInt, @NotNull List<String> paramList)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "rowKeys");
-    Function4 localFunction4 = this.a;
-    int i;
-    Object localObject;
-    if (!((Collection)paramList).isEmpty())
-    {
-      i = 1;
-      if (i == 0) {
-        break label107;
-      }
-      localObject = (String)paramList.get(0);
-      label42:
-      localFunction4.invoke(Integer.valueOf(paramInt), "", localObject, "");
-      localObject = PublisherObserverController.a;
-      if (((Collection)paramList).isEmpty()) {
-        break label114;
-      }
-      i = 1;
-      label79:
-      if (i == 0) {
-        break label119;
-      }
+    Object localObject = this.a;
+    Collection localCollection = (Collection)paramList;
+    boolean bool = localCollection.isEmpty();
+    String str2 = "";
+    if ((bool ^ true)) {
+      str1 = (String)paramList.get(0);
+    } else {
+      str1 = "";
     }
-    label107:
-    label114:
-    label119:
-    for (paramList = (String)paramList.get(0);; paramList = "")
-    {
-      ((PublisherObserverController)localObject).c(paramInt, paramList);
-      return;
-      i = 0;
-      break;
-      localObject = "";
-      break label42;
-      i = 0;
-      break label79;
+    ((Function4)localObject).invoke(Integer.valueOf(paramInt), "", str1, "");
+    localObject = PublisherObserverController.a;
+    String str1 = str2;
+    if ((localCollection.isEmpty() ^ true)) {
+      str1 = (String)paramList.get(0);
     }
+    ((PublisherObserverController)localObject).c(paramInt, str1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.DataTransferImpl.publishArticle.publishCallback.1
  * JD-Core Version:    0.7.0.1
  */

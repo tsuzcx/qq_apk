@@ -12,13 +12,13 @@ class TroopMemberListActivity$23
   
   public void onClick(View paramView)
   {
-    this.a.a.setText("");
+    this.a.searchEditText.setText("");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.23
  * JD-Core Version:    0.7.0.1
  */

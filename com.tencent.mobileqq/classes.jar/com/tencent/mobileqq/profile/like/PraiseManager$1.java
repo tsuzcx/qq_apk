@@ -16,13 +16,16 @@ class PraiseManager$1
     }
     catch (Exception localException)
     {
-      QLog.e("PraiseManager", 1, "createPraiseInfo failed, id=" + this.jdField_a_of_type_Int, localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("createPraiseInfo failed, id=");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      QLog.e("PraiseManager", 1, localStringBuilder.toString(), localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.like.PraiseManager.1
  * JD-Core Version:    0.7.0.1
  */

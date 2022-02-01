@@ -204,7 +204,10 @@ public class t
       }
       util.saveGuidToFile(paramContext, util.string_to_buf(str));
       al = util.string_to_buf(str);
-      util.LOGI("get watch guid " + str, "");
+      paramContext = new StringBuilder();
+      paramContext.append("get watch guid ");
+      paramContext.append(str);
+      util.LOGI(paramContext.toString(), "");
       paramContext = al;
       return paramContext;
     }
@@ -214,37 +217,27 @@ public class t
   
   public static async_context b(long paramLong)
   {
-    for (;;)
+    synchronized (aG)
     {
-      synchronized (aG)
-      {
-        async_context localasync_context2 = (async_context)av.get(Long.valueOf(paramLong));
-        if (localasync_context2 == null)
+      async_context localasync_context2 = (async_context)av.get(Long.valueOf(paramLong));
+      async_context localasync_context1 = localasync_context2;
+      if (localasync_context2 == null) {
+        try
         {
-          for (;;)
+          localasync_context1 = new async_context();
+          try
           {
-            try
-            {
-              localasync_context1 = new async_context();
-            }
-            catch (Exception localException3)
-            {
-              async_context localasync_context1;
-              Exception localException1 = localException2;
-              Object localObject2 = localException3;
-              continue;
-            }
-            try
-            {
-              av.put(Long.valueOf(paramLong), localasync_context1);
-              return localasync_context1;
-            }
-            catch (Exception localException2) {}
+            av.put(Long.valueOf(paramLong), localasync_context1);
           }
-          util.printException(localasync_context2, "");
+          catch (Exception localException1) {}
+          util.printException(localException2, "");
+        }
+        catch (Exception localException2)
+        {
+          localasync_context1 = localasync_context2;
         }
       }
-      localException1 = localException2;
+      return localasync_context1;
     }
   }
   
@@ -310,188 +303,221 @@ public class t
   
   public static void c(long paramLong)
   {
-    synchronized (aG)
+    try
     {
-      try
+      synchronized (aG)
       {
         av.remove(Long.valueOf(paramLong));
-        return;
       }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          util.printException(localException, "");
-        }
-      }
+    }
+    catch (Exception localException)
+    {
+      util.printException(localException, "");
+      return;
     }
   }
   
   public static void d()
   {
     util.LOGI("init start", "");
+    int i2 = 0;
     aa = 0;
     a(u);
-    Object localObject2 = util.getGuidFromFile(u);
-    util.LOGI("get saved guid " + util.buf_to_string((byte[])localObject2), "");
+    byte[] arrayOfByte2 = util.getGuidFromFile(u);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("get saved guid ");
+    ((StringBuilder)localObject1).append(util.buf_to_string(arrayOfByte2));
+    util.LOGI(((StringBuilder)localObject1).toString(), "");
     localObject1 = util.generateGuid(u);
-    util.LOGI("get current guid " + util.buf_to_string((byte[])localObject1), "");
-    localObject3 = new String("%4;7t>;28<fc.5*6").getBytes();
-    if ((localObject2 == null) || (localObject2.length <= 0))
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("get current guid ");
+    ((StringBuilder)localObject2).append(util.buf_to_string((byte[])localObject1));
+    util.LOGI(((StringBuilder)localObject2).toString(), "");
+    byte[] arrayOfByte1 = new String("%4;7t>;28<fc.5*6").getBytes();
+    int i1;
+    if ((arrayOfByte2 != null) && (arrayOfByte2.length > 0))
     {
-      if ((localObject1 == null) || (localObject1.length <= 0))
+      Object localObject3;
+      if ((localObject1 != null) && (localObject1.length > 0))
       {
-        W = 0;
-        Y = 20;
-        localObject1 = localObject3;
-      }
-      for (;;)
-      {
-        util.saveGuidToFile(u, (byte[])localObject1);
-        X = 0;
-        V = 1;
-        c();
-        aa |= Y << 24 & 0xFF000000;
-        aa |= Z << 8 & 0xFF00;
-        B = (byte[])((byte[])localObject1).clone();
-        C = (byte[])((byte[])localObject1).clone();
-        util.LOGI("guid src " + Y, "");
-        ah = Build.VERSION.SDK_INT;
-        O = util.get_mac_addr(u);
-        if ((O != null) && (O.length > 0)) {
-          O = MD5.toMD5Byte(O);
-        }
-        S = util.get_bssid_addr(u);
-        if ((S != null) && (S.length > 0)) {
-          S = MD5.toMD5Byte(S);
-        }
-        T = util.get_ssid_addr(u);
-        P = util.get_android_id(u);
-        if ((P != null) && (P.length > 0)) {
-          P = MD5.toMD5Byte(P);
-        }
-        U = util.get_qimei(u);
-        M = util.get_IMSI(u);
-        if ((M != null) && (M.length > 0)) {
-          M = MD5.toMD5Byte(M);
-        }
-        D = util.get_sim_operator_name(u);
-        E = util.get_network_type(u);
-        if (util.get_saved_network_type(u) != E)
+        localObject2 = arrayOfByte2;
+        localObject3 = localObject1;
+        if (Arrays.equals(arrayOfByte1, arrayOfByte2))
         {
-          util.set_net_retry_type(u, 0);
-          util.save_network_type(u, E);
-        }
-        G = util.get_apn_string(u).getBytes();
-        ad = util.get_ksid(u);
-        F = util.get_apk_id(u);
-        H = util.get_apk_v(u, new String(F));
-        I = util.getPkgSigFromApkName(u, u.getPackageName());
-        R = util.getAppName(u);
-        localObject2 = Build.VERSION.RELEASE;
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = "";
-        }
-        localObject2 = localObject1;
-        if (16 < ((String)localObject1).length()) {
-          localObject2 = ((String)localObject1).substring(0, 16);
-        }
-        K = ((String)localObject2).getBytes();
-        localObject1 = Build.MODEL;
-        try
-        {
-          localObject2 = util.a.a(u, "ro.vivo.market.name");
-          boolean bool = TextUtils.isEmpty((CharSequence)localObject2);
-          if (bool) {
-            break label973;
-          }
-          localObject1 = localObject2;
-        }
-        catch (Throwable localThrowable)
-        {
-          for (;;)
+          localObject2 = arrayOfByte2;
+          localObject3 = localObject1;
+          if (aF)
           {
-            continue;
-            J = ((String)localObject1).getBytes();
-            continue;
-            Q = ((String)localObject1).getBytes();
-            continue;
-            int i1 = 0;
-            continue;
-            i1 = 0;
-            continue;
-            continue;
+            localObject2 = m();
+            if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).endsWith(":MSF"))) {
+              i1 = 1;
+            } else {
+              i1 = 0;
+            }
+            localObject2 = arrayOfByte2;
             localObject3 = localObject1;
-            localObject1 = localThrowable;
+            if (i1 != 0)
+            {
+              localObject2 = arrayOfByte2;
+              localObject3 = localObject1;
+              if (util.needChangeGuid(u))
+              {
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append("reset guid :");
+                ((StringBuilder)localObject2).append(util.buf_to_string(arrayOfByte2));
+                ((StringBuilder)localObject2).append("|");
+                ((StringBuilder)localObject2).append(util.buf_to_string((byte[])localObject1));
+                util.LOGI(((StringBuilder)localObject2).toString(), "");
+                c.a(u, arrayOfByte2, (byte[])localObject1);
+                util.saveGuidToFile(u, (byte[])localObject1);
+                localObject2 = localObject1;
+                localObject3 = localObject1;
+              }
+            }
           }
         }
-        if (localObject1 != null) {
-          break label943;
-        }
-        J = new byte[0];
-        localObject1 = Build.BRAND;
-        if (localObject1 != null) {
-          break label953;
-        }
-        Q = new byte[0];
-        if ((!util.isFileExist("/system/bin/su")) && (!util.isFileExist("/system/xbin/su")) && (!util.isFileExist("/sbin/su"))) {
-          break label963;
-        }
-        i1 = 1;
-        if (i1 != 1) {
-          break label968;
-        }
-        i1 = 1;
-        ab = i1;
-        ar = new c(u);
-        at = report_t.read_fromfile(u);
-        if (at == null) {
-          at = new Reporter();
-        }
-        if (util.need_pow_test(ao)) {
-          b.a();
-        }
-        util.LOGI("init ok os ver:" + new String(K) + " cur_guid:" + util.buf_to_string(B) + " svn " + 2463L + " at " + m(), "");
-        return;
-        W = 1;
-        Y = 17;
       }
-    }
-    if ((localObject1 == null) || (localObject1.length <= 0))
-    {
-      localObject1 = localObject2;
+      else
+      {
+        localObject3 = arrayOfByte1;
+        localObject2 = arrayOfByte2;
+      }
       aF = false;
-      if (!Arrays.equals((byte[])localObject3, (byte[])localObject1)) {
-        break label932;
+      if (Arrays.equals((byte[])localObject3, (byte[])localObject2)) {
+        X = 0;
+      } else {
+        X = 1;
       }
-    }
-    label932:
-    for (X = 0;; X = 1)
-    {
       W = 1;
       V = 0;
       Y = 1;
-      break;
-      if ((!Arrays.equals((byte[])localObject3, (byte[])localObject2)) || (!aF)) {
-        break label976;
-      }
-      localObject3 = m();
-      if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (((String)localObject3).endsWith(":MSF"))) {}
-      for (i1 = 1;; i1 = 0)
+      localObject1 = localObject2;
+    }
+    else
+    {
+      if ((localObject1 != null) && (localObject1.length > 0))
       {
-        if ((i1 == 0) || (!util.needChangeGuid(u))) {
-          break label976;
-        }
-        util.LOGI("reset guid :" + util.buf_to_string((byte[])localObject2) + "|" + util.buf_to_string((byte[])localObject1), "");
-        c.a(u, (byte[])localObject2, (byte[])localObject1);
-        util.saveGuidToFile(u, (byte[])localObject1);
-        localObject2 = localObject1;
-        localObject3 = localObject1;
+        W = 1;
+        Y = 17;
+      }
+      else
+      {
+        W = 0;
+        Y = 20;
+        localObject1 = arrayOfByte1;
+      }
+      util.saveGuidToFile(u, (byte[])localObject1);
+      X = 0;
+      V = 1;
+    }
+    c();
+    aa |= Y << 24 & 0xFF000000;
+    aa |= Z << 8 & 0xFF00;
+    B = (byte[])((byte[])localObject1).clone();
+    C = (byte[])((byte[])localObject1).clone();
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("guid src ");
+    ((StringBuilder)localObject1).append(Y);
+    util.LOGI(((StringBuilder)localObject1).toString(), "");
+    ah = Build.VERSION.SDK_INT;
+    O = util.get_mac_addr(u);
+    localObject1 = O;
+    if ((localObject1 != null) && (localObject1.length > 0)) {
+      O = MD5.toMD5Byte((byte[])localObject1);
+    }
+    S = util.get_bssid_addr(u);
+    localObject1 = S;
+    if ((localObject1 != null) && (localObject1.length > 0)) {
+      S = MD5.toMD5Byte((byte[])localObject1);
+    }
+    T = util.get_ssid_addr(u);
+    P = util.get_android_id(u);
+    localObject1 = P;
+    if ((localObject1 != null) && (localObject1.length > 0)) {
+      P = MD5.toMD5Byte((byte[])localObject1);
+    }
+    U = util.get_qimei(u);
+    M = util.get_IMSI(u);
+    localObject1 = M;
+    if ((localObject1 != null) && (localObject1.length > 0)) {
+      M = MD5.toMD5Byte((byte[])localObject1);
+    }
+    D = util.get_sim_operator_name(u);
+    E = util.get_network_type(u);
+    if (util.get_saved_network_type(u) != E)
+    {
+      util.set_net_retry_type(u, 0);
+      util.save_network_type(u, E);
+    }
+    G = util.get_apn_string(u).getBytes();
+    ad = util.get_ksid(u);
+    F = util.get_apk_id(u);
+    H = util.get_apk_v(u, new String(F));
+    localObject1 = u;
+    I = util.getPkgSigFromApkName((Context)localObject1, ((Context)localObject1).getPackageName());
+    R = util.getAppName(u);
+    localObject2 = Build.VERSION.RELEASE;
+    localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = "";
+    }
+    localObject2 = localObject1;
+    if (16 < ((String)localObject1).length()) {
+      localObject2 = ((String)localObject1).substring(0, 16);
+    }
+    K = ((String)localObject2).getBytes();
+    localObject1 = Build.MODEL;
+    try
+    {
+      localObject2 = util.a.a(u, "ro.vivo.market.name");
+      boolean bool = TextUtils.isEmpty((CharSequence)localObject2);
+      if (!bool) {
         localObject1 = localObject2;
-        break;
       }
     }
+    catch (Throwable localThrowable)
+    {
+      label845:
+      break label845;
+    }
+    if (localObject1 == null) {
+      J = new byte[0];
+    } else {
+      J = ((String)localObject1).getBytes();
+    }
+    localObject1 = Build.BRAND;
+    if (localObject1 == null) {
+      Q = new byte[0];
+    } else {
+      Q = ((String)localObject1).getBytes();
+    }
+    if ((!util.isFileExist("/system/bin/su")) && (!util.isFileExist("/system/xbin/su")) && (!util.isFileExist("/sbin/su"))) {
+      i1 = 0;
+    } else {
+      i1 = 1;
+    }
+    if (i1 == 1) {
+      i2 = 1;
+    }
+    ab = i2;
+    ar = new c(u);
+    at = report_t.read_fromfile(u);
+    if (at == null) {
+      at = new Reporter();
+    }
+    if (util.need_pow_test(ao)) {
+      b.a();
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("init ok os ver:");
+    ((StringBuilder)localObject1).append(new String(K));
+    ((StringBuilder)localObject1).append(" cur_guid:");
+    ((StringBuilder)localObject1).append(util.buf_to_string(B));
+    ((StringBuilder)localObject1).append(" svn ");
+    ((StringBuilder)localObject1).append(2473L);
+    ((StringBuilder)localObject1).append(" at ");
+    ((StringBuilder)localObject1).append(m());
+    util.LOGI(((StringBuilder)localObject1).toString(), "");
   }
   
   public static long f()
@@ -507,13 +533,14 @@ public class t
   @SuppressLint({"NewApi"})
   public static String m()
   {
-    if ((as != null) && (as.length() > 0)) {
+    Object localObject = as;
+    if ((localObject != null) && (((String)localObject).length() > 0)) {
       return as;
     }
     try
     {
       int i1 = Process.myPid();
-      Object localObject = ((ActivityManager)u.getSystemService("activity")).getRunningAppProcesses().iterator();
+      localObject = ((ActivityManager)u.getSystemService("activity")).getRunningAppProcesses().iterator();
       while (((Iterator)localObject).hasNext())
       {
         ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
@@ -539,7 +566,11 @@ public class t
       SecureRandom localSecureRandom = new SecureRandom();
       return localSecureRandom;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label10:
+      break label10;
+    }
     return null;
   }
   
@@ -577,21 +608,24 @@ public class t
     t localt = new t(null);
     localt.k = this.k;
     localt.l = this.l;
-    if (this.c != null) {
-      localt.c = ((byte[])this.c.clone());
+    byte[] arrayOfByte = this.c;
+    if (arrayOfByte != null) {
+      localt.c = ((byte[])arrayOfByte.clone());
     }
-    if ((this.n != null) && (this.p != null))
+    arrayOfByte = this.n;
+    if ((arrayOfByte != null) && (this.p != null))
     {
-      localt.n = ((byte[])this.n.clone());
+      localt.n = ((byte[])arrayOfByte.clone());
       localt.p = ((byte[])this.p.clone());
       localt.r = this.r;
     }
-    if (paramLong <= 0L) {}
-    for (localt.h = a();; localt.h = paramLong)
-    {
-      localt.c(u);
-      return localt;
+    if (paramLong <= 0L) {
+      localt.h = a();
+    } else {
+      localt.h = paramLong;
     }
+    localt.c(u);
+    return localt;
   }
   
   public WloginSigInfo a(long paramLong1, long paramLong2)
@@ -599,7 +633,9 @@ public class t
     try
     {
       WloginSigInfo localWloginSigInfo = ar.d(paramLong1, paramLong2);
-      if (localWloginSigInfo != null) {}
+      if (localWloginSigInfo != null) {
+        return localWloginSigInfo;
+      }
       return localWloginSigInfo;
     }
     finally
@@ -688,19 +724,15 @@ public class t
   
   public long b(String paramString)
   {
-    long l2 = 0L;
     try
     {
       paramString = ar.a(paramString, true);
-      long l1 = l2;
-      if (paramString != null)
+      if ((paramString != null) && (paramString._uin.longValue() != 0L))
       {
-        l1 = l2;
-        if (paramString._uin.longValue() != 0L) {
-          l1 = paramString._uin.longValue();
-        }
+        long l1 = paramString._uin.longValue();
+        return l1;
       }
-      return l1;
+      return 0L;
     }
     finally {}
   }
@@ -750,7 +782,9 @@ public class t
     try
     {
       WloginSimpleInfo localWloginSimpleInfo = ar.b(paramLong);
-      if (localWloginSimpleInfo != null) {}
+      if (localWloginSimpleInfo != null) {
+        return localWloginSimpleInfo;
+      }
       return localWloginSimpleInfo;
     }
     finally
@@ -783,7 +817,7 @@ public class t
   {
     try
     {
-      String str = ar.b(Long.valueOf(paramLong));
+      String str = ar.a(Long.valueOf(paramLong));
       return str;
     }
     finally
@@ -820,39 +854,37 @@ public class t
   public void i()
   {
     util.LOGD("close_connect", "close_connect");
-    if (this.ap != null) {}
-    try
+    Socket localSocket = this.ap;
+    if (localSocket != null)
     {
-      util.LOGD("close_connect", this.ap.toString());
-      this.ap.close();
-      this.ap = null;
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      try
+      {
+        util.LOGD("close_connect", localSocket.toString());
+        this.ap.close();
+      }
+      catch (Exception localException)
       {
         util.printException(localException, "");
       }
+      this.ap = null;
     }
   }
   
   public void j()
   {
-    if (this.aq != null) {}
-    try
+    Socket localSocket = this.aq;
+    if (localSocket != null)
     {
-      util.LOGD("close_transport_connect", this.aq.toString());
-      this.aq.close();
-      this.aq = null;
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      try
+      {
+        util.LOGD("close_transport_connect", localSocket.toString());
+        this.aq.close();
+      }
+      catch (Exception localException)
       {
         util.printException(localException, "");
       }
+      this.aq = null;
     }
   }
   
@@ -886,7 +918,7 @@ public class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.request.t
  * JD-Core Version:    0.7.0.1
  */

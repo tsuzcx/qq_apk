@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.extendfriend.wiget.ExtendFriendLabelFlowLayout android:id="@id/cfy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="-8.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="18.0dip" />
-</FrameLayout>
+    <FrameLayout android:id="@id/ode" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <RelativeLayout android:id="@id/mmv" android:background="@drawable/d02" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.48">
+        <FrameLayout android:id="@id/nei" android:background="#fff5f6fa" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/title" />
+        <View android:id="@id/e_1" android:background="#ffececec" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_above="@id/nei" />
+        <ImageView android:id="@id/a43" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="18.0dip" android:layout_marginTop="17.0dip" android:layout_marginBottom="18.0dip" android:src="@drawable/gok" android:layout_alignParentLeft="true" />
+        <TextView android:textColor="#ff03081a" android:ellipsize="end" android:id="@id/title" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="16.0dip" android:layout_marginTop="17.0dip" android:layout_marginBottom="18.0dip" android:maxLines="1" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</LinearLayout>

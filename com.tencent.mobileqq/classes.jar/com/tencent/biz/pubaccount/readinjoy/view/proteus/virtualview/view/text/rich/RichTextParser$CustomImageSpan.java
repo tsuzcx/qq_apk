@@ -24,31 +24,33 @@ public class RichTextParser$CustomImageSpan
   
   private Drawable getCachedDrawable()
   {
-    Object localObject = this.mDrawableRef;
-    Drawable localDrawable = null;
-    if (localObject != null) {
-      localDrawable = (Drawable)((WeakReference)localObject).get();
+    Object localObject1 = this.mDrawableRef;
+    if (localObject1 != null) {
+      localObject1 = (Drawable)((WeakReference)localObject1).get();
+    } else {
+      localObject1 = null;
     }
-    localObject = localDrawable;
-    if (localDrawable == null)
+    Object localObject2 = localObject1;
+    if (localObject1 == null)
     {
-      localObject = getDrawable();
-      this.mDrawableRef = new WeakReference(localObject);
+      localObject2 = getDrawable();
+      this.mDrawableRef = new WeakReference(localObject2);
     }
-    return localObject;
-  }
-  
-  private static int getTextAreaHeight(Paint paramPaint)
-  {
-    paramPaint = paramPaint.getFontMetricsInt();
-    return paramPaint.bottom - paramPaint.top;
+    return localObject2;
   }
   
   public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
   {
     paramCharSequence = getCachedDrawable();
+    Rect localRect = paramCharSequence.getBounds();
+    paramPaint = paramPaint.getFontMetricsInt();
+    paramInt1 = localRect.bottom;
+    paramInt2 = paramPaint.descent;
+    paramInt3 = paramPaint.descent;
+    paramInt5 = paramPaint.ascent;
+    int i = localRect.bottom;
     paramCanvas.save();
-    paramCanvas.translate(paramFloat, (getTextAreaHeight(paramPaint) - paramCharSequence.getBounds().bottom) / 2 + paramInt3);
+    paramCanvas.translate(paramFloat, paramInt4 - paramInt1 + paramInt2 - (paramInt3 - paramInt5 >> 1) + (i >> 1));
     paramCharSequence.draw(paramCanvas);
     paramCanvas.restore();
   }
@@ -68,7 +70,7 @@ public class RichTextParser$CustomImageSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.rich.RichTextParser.CustomImageSpan
  * JD-Core Version:    0.7.0.1
  */

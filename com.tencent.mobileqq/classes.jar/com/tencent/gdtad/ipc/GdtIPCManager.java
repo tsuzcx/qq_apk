@@ -11,15 +11,16 @@ public final class GdtIPCManager
   
   public static GdtIPCManager a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new GdtIPCManager();
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new GdtIPCManager();
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   public void a(Context paramContext)
@@ -29,7 +30,7 @@ public final class GdtIPCManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.ipc.GdtIPCManager
  * JD-Core Version:    0.7.0.1
  */

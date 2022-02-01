@@ -14,7 +14,12 @@ class DownloadDependRes$2
   
   public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    QLog.w(PromotionUtil.a, 1, "onServiceConnected, name[" + paramComponentName + "]");
+    String str = PromotionUtil.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onServiceConnected, name[");
+    localStringBuilder.append(paramComponentName);
+    localStringBuilder.append("]");
+    QLog.w(str, 1, localStringBuilder.toString());
     try
     {
       this.a.a = IArConfigManager.Stub.a(paramIBinder);
@@ -30,13 +35,18 @@ class DownloadDependRes$2
   
   public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    QLog.w(PromotionUtil.a, 1, "onServiceDisconnected, name[" + paramComponentName + "]");
+    String str = PromotionUtil.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onServiceDisconnected, name[");
+    localStringBuilder.append(paramComponentName);
+    localStringBuilder.append("]");
+    QLog.w(str, 1, localStringBuilder.toString());
     this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotionMgr.DownloadDependRes.2
  * JD-Core Version:    0.7.0.1
  */

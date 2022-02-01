@@ -147,11 +147,13 @@ public final class stTroopNum
     paramJceOutputStream.write(this.GroupCode, 1);
     paramJceOutputStream.write(this.cFlag, 2);
     paramJceOutputStream.write(this.dwGroupInfoSeq, 3);
-    if (this.strGroupName != null) {
-      paramJceOutputStream.write(this.strGroupName, 4);
+    Object localObject = this.strGroupName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.strGroupMemo != null) {
-      paramJceOutputStream.write(this.strGroupMemo, 5);
+    localObject = this.strGroupMemo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.dwGroupFlagExt, 6);
     paramJceOutputStream.write(this.dwGroupRankSeq, 7);
@@ -185,14 +187,15 @@ public final class stTroopNum
     paramJceOutputStream.write(this.dwGroupFlagExt4, 35);
     paramJceOutputStream.write(this.dwAppealDeadline, 36);
     paramJceOutputStream.write(this.dwGroupFlag, 37);
-    if (this.vecGroupRemark != null) {
-      paramJceOutputStream.write(this.vecGroupRemark, 38);
+    localObject = this.vecGroupRemark;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 38);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     friendlist.stTroopNum
  * JD-Core Version:    0.7.0.1
  */

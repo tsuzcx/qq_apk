@@ -16,15 +16,17 @@ class AdProxyImpl$SDKBannerAdView$3
   public void onExposure(WeakReference<View> paramWeakReference)
   {
     QLog.i("AdProxyImpl", 1, "bannerad onExposure");
-    if ((this.a.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo != null) && (this.a.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.report_info != null) && (this.a.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.report_info.exposure_url != null)) {
-      AdProxyImpl.SDKBannerAdView.a(this.a, this.a.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.report_info.exposure_url.get());
+    if ((this.a.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo != null) && (this.a.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.report_info != null) && (this.a.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.report_info.exposure_url != null))
+    {
+      paramWeakReference = this.a;
+      AdProxyImpl.SDKBannerAdView.a(paramWeakReference, paramWeakReference.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.report_info.exposure_url.get());
     }
     MiniAdAntiSpamReportUtil.a(this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext, this.a.i, System.currentTimeMillis(), this.a.b, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.SDKBannerAdView.3
  * JD-Core Version:    0.7.0.1
  */

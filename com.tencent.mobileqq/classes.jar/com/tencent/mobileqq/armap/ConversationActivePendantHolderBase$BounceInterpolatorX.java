@@ -9,24 +9,39 @@ class ConversationActivePendantHolderBase$BounceInterpolatorX
   
   public float getInterpolation(float paramFloat)
   {
-    if (paramFloat < 0.2094D) {
-      return (float)(-34.0D * (paramFloat - 0.18D) * (paramFloat - 0.18D) + 1.08D);
+    double d = paramFloat;
+    if (d < 0.2094D)
+    {
+      Double.isNaN(d);
+      d -= 0.18D;
+      return (float)(-34.0D * d * d + 1.08D);
     }
-    if (paramFloat < 0.404D) {
-      return (float)(5.9D * (paramFloat - 0.34D) * (paramFloat - 0.34D) + 0.95D);
+    if (d < 0.404D)
+    {
+      Double.isNaN(d);
+      d -= 0.34D;
+      return (float)(5.9D * d * d + 0.95D);
     }
-    if (paramFloat < 0.6045D) {
-      return (float)(-3.0D * (paramFloat - 0.53D) * (paramFloat - 0.53D) + 1.02D);
+    if (d < 0.6045D)
+    {
+      Double.isNaN(d);
+      d -= 0.53D;
+      return (float)(-3.0D * d * d + 1.02D);
     }
-    if (paramFloat < 0.8064D) {
-      return (float)((paramFloat - 0.72D) * (paramFloat - 0.72D) + 0.99D);
+    if (d < 0.8064D)
+    {
+      Double.isNaN(d);
+      d -= 0.72D;
+      return (float)(d * d + 0.99D);
     }
-    return (float)(-0.3D * (paramFloat - 0.915D) * (paramFloat - 0.915D) + 1.001D);
+    Double.isNaN(d);
+    d -= 0.915D;
+    return (float)(-0.3D * d * d + 1.001D);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ConversationActivePendantHolderBase.BounceInterpolatorX
  * JD-Core Version:    0.7.0.1
  */

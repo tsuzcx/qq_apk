@@ -15,7 +15,7 @@ class MultiVideoCtrlLayerUI4NewGroupChat$AutoCheckVideoRunnable
       QLog.d(this.this$0.d, 2, "AutoCheckVideoRunnable");
     }
     if (this.this$0.jdField_a_of_type_ComTencentAvVideoController != null) {
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().an = true;
+      this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().ab = true;
     }
     MultiVideoCtrlLayerUI4NewGroupChat.e(this.this$0);
     if (this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
@@ -25,7 +25,7 @@ class MultiVideoCtrlLayerUI4NewGroupChat$AutoCheckVideoRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUI4NewGroupChat.AutoCheckVideoRunnable
  * JD-Core Version:    0.7.0.1
  */

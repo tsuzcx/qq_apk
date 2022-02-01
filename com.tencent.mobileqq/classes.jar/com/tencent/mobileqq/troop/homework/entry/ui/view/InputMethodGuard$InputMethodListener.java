@@ -35,23 +35,22 @@ class InputMethodGuard$InputMethodListener
       InputMethodGuard.a(this.a, true);
       InputMethodGuard.a(this.a, j);
     }
-    for (;;)
+    else
     {
-      if ((InputMethodGuard.a(this.a) != null) && ((bool != InputMethodGuard.a(this.a)) || (InputMethodGuard.b(this.a)))) {
-        InputMethodGuard.a(this.a).b(InputMethodGuard.a(this.a), InputMethodGuard.a(this.a));
-      }
-      if (InputMethodGuard.b(this.a)) {
-        InputMethodGuard.b(this.a, false);
-      }
-      return;
       InputMethodGuard.a(this.a, false);
       InputMethodGuard.a(this.a, 0);
+    }
+    if ((InputMethodGuard.a(this.a) != null) && ((bool != InputMethodGuard.a(this.a)) || (InputMethodGuard.b(this.a)))) {
+      InputMethodGuard.a(this.a).b(InputMethodGuard.a(this.a), InputMethodGuard.a(this.a));
+    }
+    if (InputMethodGuard.b(this.a)) {
+      InputMethodGuard.b(this.a, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard.InputMethodListener
  * JD-Core Version:    0.7.0.1
  */

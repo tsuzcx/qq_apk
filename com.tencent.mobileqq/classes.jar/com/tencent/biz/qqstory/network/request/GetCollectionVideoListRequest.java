@@ -39,15 +39,12 @@ public class GetCollectionVideoListRequest
     try
     {
       localRspGetCollectionVideoList.mergeFrom(paramArrayOfByte);
-      return new GetCollectionVideoListResponse(this.jdField_c_of_type_JavaLangString, localRspGetCollectionVideoList);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      paramArrayOfByte.printStackTrace();
     }
+    return new GetCollectionVideoListResponse(this.jdField_c_of_type_JavaLangString, localRspGetCollectionVideoList);
   }
   
   public String a()
@@ -58,7 +55,7 @@ public class GetCollectionVideoListRequest
     return b;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqGetCollectionVideoList localReqGetCollectionVideoList = new qqstory_service.ReqGetCollectionVideoList();
     localReqGetCollectionVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_d_of_type_JavaLangString));
@@ -70,25 +67,39 @@ public class GetCollectionVideoListRequest
         localReqGetCollectionVideoList.time_zone.set(this.jdField_e_of_type_Int);
       }
     }
-    for (;;)
+    else
     {
-      AssertUtils.a(this.jdField_c_of_type_JavaLangString);
-      localReqGetCollectionVideoList.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
-      localReqGetCollectionVideoList.video_dir.set(this.g);
-      return localReqGetCollectionVideoList.toByteArray();
       localReqGetCollectionVideoList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_e_of_type_JavaLangString));
       localReqGetCollectionVideoList.identify.set(this.f);
     }
+    AssertUtils.checkNotNull(this.jdField_c_of_type_JavaLangString);
+    localReqGetCollectionVideoList.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    localReqGetCollectionVideoList.video_dir.set(this.g);
+    return localReqGetCollectionVideoList.toByteArray();
   }
   
   public String toString()
   {
-    return super.toString() + " GetCollectionVideoListRequest{targetUid=" + this.jdField_c_of_type_JavaLangString + ", startCookie='" + this.jdField_d_of_type_JavaLangString + ", count=" + this.jdField_c_of_type_Int + ", collectionId=" + this.jdField_d_of_type_Int + ", timeZoneOffset=" + this.jdField_e_of_type_Int + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" GetCollectionVideoListRequest{targetUid=");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(", startCookie='");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(", count=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", collectionId=");
+    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(", timeZoneOffset=");
+    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetCollectionVideoListRequest
  * JD-Core Version:    0.7.0.1
  */

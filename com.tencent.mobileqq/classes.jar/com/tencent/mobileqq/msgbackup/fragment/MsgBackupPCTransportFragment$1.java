@@ -16,35 +16,53 @@ class MsgBackupPCTransportFragment$1
   public void onItemSelect(View paramView, int paramInt)
   {
     int i = MsgBackupAuthProcessor.a().a();
-    switch (paramInt)
+    if (paramInt != 2)
     {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "page is in pc Link page! click cancel! bizType = " + i + ", pcHandler = " + this.a.e);
+      if (paramInt != 8) {
+        return;
       }
-      this.a.ay_();
-      return;
       MsgBackupManager.a = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "backup is going, page is in link page! click 收起按钮! sIsShouQiBtnClick= " + MsgBackupManager.a + ", curSpeed = " + this.a.a + ", hasFinishedCount = " + this.a.d);
+      if (QLog.isColorLevel())
+      {
+        paramView = new StringBuilder();
+        paramView.append("backup is going, page is in link page! click 收起按钮! sIsShouQiBtnClick= ");
+        paramView.append(MsgBackupManager.a);
+        paramView.append(", curSpeed = ");
+        paramView.append(this.a.a);
+        paramView.append(", hasFinishedCount = ");
+        paramView.append(this.a.d);
+        QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, paramView.toString());
       }
       MsgBackupManager.a().a().a(null);
-      MsgBackupManager.a().a(this.a.a, this.a.d, i, this.a.getActivity());
-      if (this.a.b != 1) {
-        break;
+      MsgBackupManager.a().a(this.a.a, this.a.d, i, this.a.getQBaseActivity());
+      if (this.a.b == 1)
+      {
+        if (this.a.f) {
+          MsgBackupReporter.a("0X800A260");
+        }
       }
-    } while (!this.a.e);
-    MsgBackupReporter.a("0X800A260");
-    return;
-    MsgBackupReporter.a("0X800A284");
+      else {
+        MsgBackupReporter.a("0X800A284");
+      }
+    }
+    else
+    {
+      if (QLog.isColorLevel())
+      {
+        paramView = new StringBuilder();
+        paramView.append("page is in pc Link page! click cancel! bizType = ");
+        paramView.append(i);
+        paramView.append(", pcHandler = ");
+        paramView.append(this.a.f);
+        QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, paramView.toString());
+      }
+      this.a.aJ_();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCTransportFragment.1
  * JD-Core Version:    0.7.0.1
  */

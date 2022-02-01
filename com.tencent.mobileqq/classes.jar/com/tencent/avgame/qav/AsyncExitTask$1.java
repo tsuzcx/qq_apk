@@ -14,14 +14,21 @@ final class AsyncExitTask$1
     long l = SystemClock.elapsedRealtime();
     QRoute.api(IDPCApi.class);
     AsyncExitTask.a(true);
-    if (QLog.isColorLevel()) {
-      QLog.i("AsyncExitTask", 2, "checkAndPreloadDpcMng, cost[" + (SystemClock.elapsedRealtime() - l) + "], model[" + Build.MODEL + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkAndPreloadDpcMng, cost[");
+      localStringBuilder.append(SystemClock.elapsedRealtime() - l);
+      localStringBuilder.append("], model[");
+      localStringBuilder.append(Build.MODEL);
+      localStringBuilder.append("]");
+      QLog.i("AsyncExitTask", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.qav.AsyncExitTask.1
  * JD-Core Version:    0.7.0.1
  */

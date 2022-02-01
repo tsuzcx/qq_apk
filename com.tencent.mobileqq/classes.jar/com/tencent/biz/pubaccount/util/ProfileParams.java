@@ -37,8 +37,9 @@ public class ProfileParams
   
   public String c()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams$CurLoginUsr != null) {
-      return this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams$CurLoginUsr.jdField_a_of_type_JavaLangString;
+    ProfileParams.CurLoginUsr localCurLoginUsr = this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams$CurLoginUsr;
+    if (localCurLoginUsr != null) {
+      return localCurLoginUsr.jdField_a_of_type_JavaLangString;
     }
     return null;
   }
@@ -60,7 +61,7 @@ public class ProfileParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.ProfileParams
  * JD-Core Version:    0.7.0.1
  */

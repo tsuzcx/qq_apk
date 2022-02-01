@@ -14,9 +14,7 @@ class VipSpecialCareHandler$1$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1) {
       return;
     }
     VipSpecialCareHandler.a(this.a.this$0, "-->request timeout");
@@ -25,7 +23,7 @@ class VipSpecialCareHandler$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.VipSpecialCareHandler.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -17,27 +17,36 @@ class TroopAllMessageSearchDialog$8
   
   public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onLongClick, position = " + paramInt);
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkSearchTroopAllMessageResultAdapter.getCount() <= 0) || (paramInt <= 0)) {}
-    do
+    if (QLog.isColorLevel())
     {
-      return true;
+      paramAdapterView = new StringBuilder();
+      paramAdapterView.append("onLongClick, position = ");
+      paramAdapterView.append(paramInt);
+      QLog.i("LinkMessageSearchDialog", 2, paramAdapterView.toString());
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkSearchTroopAllMessageResultAdapter.getCount() > 0)
+    {
+      if (paramInt <= 0) {
+        return true;
+      }
       paramAdapterView = (MessageItem)this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkSearchTroopAllMessageResultAdapter.getItem(paramInt - 1);
-    } while (paramAdapterView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem = paramAdapterView;
-    paramView.setSelected(true);
-    paramAdapterView = new QQCustomMenu();
-    paramAdapterView.a(2131365448, HardCodeUtil.a(2131715040), 2130839050);
-    paramAdapterView.a(2131367398, this.a.jdField_a_of_type_AndroidContentContext.getString(2131692687), 2130839059);
-    this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = BubbleContextMenu.a(paramView, paramAdapterView, TroopAllMessageSearchDialog.a(this.a), new TroopAllMessageSearchDialog.8.1(this, paramView));
+      if (paramAdapterView == null) {
+        return true;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem = paramAdapterView;
+      paramView.setSelected(true);
+      paramAdapterView = new QQCustomMenu();
+      paramAdapterView.a(2131365311, HardCodeUtil.a(2131714963), 2130838903);
+      paramAdapterView.a(2131367180, this.a.jdField_a_of_type_AndroidContentContext.getString(2131692644), 2130838912);
+      TroopAllMessageSearchDialog localTroopAllMessageSearchDialog = this.a;
+      localTroopAllMessageSearchDialog.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = BubbleContextMenu.a(paramView, paramAdapterView, TroopAllMessageSearchDialog.a(localTroopAllMessageSearchDialog), new TroopAllMessageSearchDialog.8.1(this, paramView));
+    }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.TroopAllMessageSearchDialog.8
  * JD-Core Version:    0.7.0.1
  */

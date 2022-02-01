@@ -13,7 +13,7 @@ class LifecycleRegistry$ObserverWithState
   
   void dispatchEvent(LifecycleOwner paramLifecycleOwner, Lifecycle.Event paramEvent)
   {
-    Lifecycle.State localState = LifecycleRegistry.getStateAfter(paramEvent);
+    Lifecycle.State localState = paramEvent.getTargetState();
     this.mState = LifecycleRegistry.min(this.mState, localState);
     this.mLifecycleObserver.onStateChanged(paramLifecycleOwner, paramEvent);
     this.mState = localState;
@@ -21,7 +21,7 @@ class LifecycleRegistry$ObserverWithState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.lifecycle.LifecycleRegistry.ObserverWithState
  * JD-Core Version:    0.7.0.1
  */

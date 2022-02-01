@@ -16,7 +16,7 @@ class MoreVideoInfoWidget$8$1$1
     super(paramString);
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
     StoryDispatcher.a().dispatch(this.jdField_a_of_type_ComTencentBizQqstoryModelDeleteStoryVideoEvent);
     return null;
@@ -24,7 +24,7 @@ class MoreVideoInfoWidget$8$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.MoreVideoInfoWidget.8.1.1
  * JD-Core Version:    0.7.0.1
  */

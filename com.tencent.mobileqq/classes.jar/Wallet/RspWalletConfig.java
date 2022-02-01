@@ -13,7 +13,7 @@ public final class RspWalletConfig
   public static final int ACTION_BATCH_CHANGE = 3;
   public static final int ACTION_INCRE_CHANGE = 2;
   public static final int ACTION_NOT_CHANGE = 1;
-  public static int RET_SUCC = 0;
+  public static int RET_SUCC;
   static Map<String, String> cache_mConfig = new HashMap();
   public int action = 0;
   public String commonMsg = "";
@@ -57,7 +57,26 @@ public final class RspWalletConfig
   
   public String toString()
   {
-    return "RspWalletConfig{result=" + this.result + ", reqType=" + this.reqType + ", seriesNo=" + this.seriesNo + ", refreshType=" + this.refreshType + ", refreshTime=" + this.refreshTime + ", action=" + this.action + ", commonMsg='" + this.commonMsg + '\'' + ", mConfig=" + this.mConfig + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RspWalletConfig{result=");
+    localStringBuilder.append(this.result);
+    localStringBuilder.append(", reqType=");
+    localStringBuilder.append(this.reqType);
+    localStringBuilder.append(", seriesNo=");
+    localStringBuilder.append(this.seriesNo);
+    localStringBuilder.append(", refreshType=");
+    localStringBuilder.append(this.refreshType);
+    localStringBuilder.append(", refreshTime=");
+    localStringBuilder.append(this.refreshTime);
+    localStringBuilder.append(", action=");
+    localStringBuilder.append(this.action);
+    localStringBuilder.append(", commonMsg='");
+    localStringBuilder.append(this.commonMsg);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mConfig=");
+    localStringBuilder.append(this.mConfig);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -68,17 +87,19 @@ public final class RspWalletConfig
     paramJceOutputStream.write(this.refreshType, 3);
     paramJceOutputStream.write(this.refreshTime, 4);
     paramJceOutputStream.write(this.action, 5);
-    if (this.commonMsg != null) {
-      paramJceOutputStream.write(this.commonMsg, 6);
+    Object localObject = this.commonMsg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.mConfig != null) {
-      paramJceOutputStream.write(this.mConfig, 7);
+    localObject = this.mConfig;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.RspWalletConfig
  * JD-Core Version:    0.7.0.1
  */

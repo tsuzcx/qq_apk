@@ -40,31 +40,31 @@ class C2CRoamMsgFetcher$Signal
     //   20: iconst_1
     //   21: ireturn
     //   22: astore_3
-    //   23: aload_0
-    //   24: monitorexit
-    //   25: aload_3
-    //   26: athrow
-    //   27: astore_3
-    //   28: aload_3
-    //   29: invokevirtual 28	java/lang/InterruptedException:printStackTrace	()V
+    //   23: aload_3
+    //   24: invokevirtual 28	java/lang/InterruptedException:printStackTrace	()V
+    //   27: aload_0
+    //   28: monitorexit
+    //   29: iconst_0
+    //   30: ireturn
+    //   31: astore_3
     //   32: aload_0
     //   33: monitorexit
-    //   34: iconst_0
-    //   35: ireturn
+    //   34: aload_3
+    //   35: athrow
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	36	0	this	Signal
     //   0	36	1	paramLong	long
-    //   22	4	3	localObject	Object
-    //   27	2	3	localInterruptedException	java.lang.InterruptedException
+    //   22	2	3	localInterruptedException	java.lang.InterruptedException
+    //   31	4	3	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   2	11	22	finally
-    //   13	18	22	finally
-    //   18	20	22	finally
-    //   23	25	22	finally
-    //   28	34	22	finally
-    //   13	18	27	java/lang/InterruptedException
+    //   13	18	22	java/lang/InterruptedException
+    //   2	11	31	finally
+    //   13	18	31	finally
+    //   18	20	31	finally
+    //   23	29	31	finally
+    //   32	34	31	finally
   }
   
   void b()
@@ -80,7 +80,7 @@ class C2CRoamMsgFetcher$Signal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.roam.C2CRoamMsgFetcher.Signal
  * JD-Core Version:    0.7.0.1
  */

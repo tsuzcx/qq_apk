@@ -11,7 +11,7 @@ public abstract interface Function5<P1, P2, P3, P4, P5, R>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.jvm.functions.Function5
  * JD-Core Version:    0.7.0.1
  */

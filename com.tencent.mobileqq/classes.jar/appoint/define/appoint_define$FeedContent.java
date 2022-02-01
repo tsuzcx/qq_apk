@@ -30,13 +30,14 @@ public final class appoint_define$FeedContent
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 42, 50, 56, 66, 74, 160, 168, 178, 184, 194, 202 }, new String[] { "rpt_str_pic_url", "msg_text", "str_href_url", "str_group_name", "str_group_bulletin", "uint32_feed_type", "str_poi_id", "str_poi_title", "uint32_effective_time", "uint32_expiation_time", "msg_locale", "uint32_feeds_index", "msg_ad", "bytes_private_data" }, new Object[] { "", null, "", "", "", Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), null, localByteStringMicro }, FeedContent.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 42, 50, 56, 66, 74, 160, 168, 178, 184, 194, 202 }, new String[] { "rpt_str_pic_url", "msg_text", "str_href_url", "str_group_name", "str_group_bulletin", "uint32_feed_type", "str_poi_id", "str_poi_title", "uint32_effective_time", "uint32_expiation_time", "msg_locale", "uint32_feeds_index", "msg_ad", "bytes_private_data" }, new Object[] { "", null, "", "", "", localInteger, "", "", localInteger, localInteger, null, localInteger, null, localByteStringMicro }, FeedContent.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     appoint.define.appoint_define.FeedContent
  * JD-Core Version:    0.7.0.1
  */

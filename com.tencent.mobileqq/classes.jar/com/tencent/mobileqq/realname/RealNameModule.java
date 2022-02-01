@@ -25,8 +25,9 @@ public class RealNameModule
   
   public static RealNameModule a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqRealnameRealNameModule != null) {
-      return jdField_a_of_type_ComTencentMobileqqRealnameRealNameModule;
+    ??? = jdField_a_of_type_ComTencentMobileqqRealnameRealNameModule;
+    if (??? != null) {
+      return ???;
     }
     synchronized (jdField_a_of_type_JavaLangObject)
     {
@@ -40,46 +41,59 @@ public class RealNameModule
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("RealName", 2, "onCall s: " + paramString);
-    }
-    if (paramBundle == null) {}
-    do
+    if (QLog.isColorLevel())
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCall s: ");
+      localStringBuilder.append(paramString);
+      QLog.i("RealName", 2, localStringBuilder.toString());
+    }
+    if (paramBundle == null) {
       return null;
-      paramInt = paramBundle.getInt("result");
-      paramBundle = paramBundle.getString("source");
-      if (QLog.isColorLevel()) {
-        QLog.i("RealName", 2, "result is : " + paramInt);
-      }
-      paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if ((paramBundle != null) && (paramString != null) && ((TextUtils.equals(paramBundle, "avgame")) || (TextUtils.equals(paramBundle, "watchtogether"))))
+    }
+    paramInt = paramBundle.getInt("result");
+    paramString = paramBundle.getString("source");
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("result is : ");
+      paramBundle.append(paramInt);
+      QLog.i("RealName", 2, paramBundle.toString());
+    }
+    paramBundle = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramString != null) && (paramBundle != null) && ((TextUtils.equals(paramString, "avgame")) || (TextUtils.equals(paramString, "watchtogether"))))
+    {
+      paramString = (ConfigHandler)paramBundle.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER);
+      if (paramString != null)
       {
-        paramBundle = (ConfigHandler)paramString.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER);
-        if (paramBundle != null)
-        {
-          if (paramInt == 0) {}
-          for (boolean bool = true;; bool = false)
-          {
-            if (bool) {
-              paramString.getPreferences().edit().putBoolean("has_auth_real_name_av", bool).commit();
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("RealName", 2, "notifyUI");
-            }
-            paramBundle.notifyUI(15, true, new Object[] { Boolean.valueOf(bool) });
-            return null;
-          }
+        boolean bool;
+        if (paramInt == 0) {
+          bool = true;
+        } else {
+          bool = false;
         }
+        if (bool) {
+          paramBundle.getPreferences().edit().putBoolean("has_auth_real_name_av", bool).commit();
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("RealName", 2, "notifyUI");
+        }
+        paramString.notifyUI(15, true, new Object[] { Boolean.valueOf(bool) });
+        return null;
       }
-    } while ((paramInt == 0) || (paramString == null));
-    ((ConfigHandler)paramString.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER)).f();
+    }
+    if (paramInt == 0) {
+      return null;
+    }
+    if (paramBundle != null) {
+      ((ConfigHandler)paramBundle.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER)).f();
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.realname.RealNameModule
  * JD-Core Version:    0.7.0.1
  */

@@ -10,32 +10,47 @@ public class DefaultLogger
   
   public void d(String paramString1, String paramString2)
   {
-    Log.d("DT#" + paramString1, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DT#");
+    localStringBuilder.append(paramString1);
+    Log.d(localStringBuilder.toString(), paramString2);
   }
   
   public void e(String paramString1, String paramString2)
   {
-    Log.e("DT#" + paramString1, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DT#");
+    localStringBuilder.append(paramString1);
+    Log.e(localStringBuilder.toString(), paramString2);
   }
   
   public void i(String paramString1, String paramString2)
   {
-    Log.i("DT#" + paramString1, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DT#");
+    localStringBuilder.append(paramString1);
+    Log.i(localStringBuilder.toString(), paramString2);
   }
   
   public void v(String paramString1, String paramString2)
   {
-    Log.v("DT#" + paramString1, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DT#");
+    localStringBuilder.append(paramString1);
+    Log.v(localStringBuilder.toString(), paramString2);
   }
   
   public void w(String paramString1, String paramString2)
   {
-    Log.w("DT#" + paramString1, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DT#");
+    localStringBuilder.append(paramString1);
+    Log.w(localStringBuilder.toString(), paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.inner.DefaultLogger
  * JD-Core Version:    0.7.0.1
  */

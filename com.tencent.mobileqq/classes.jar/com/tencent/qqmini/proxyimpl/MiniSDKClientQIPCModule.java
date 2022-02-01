@@ -46,7 +46,10 @@ public class MiniSDKClientQIPCModule
     MiniSDKClientQIPCModule localMiniSDKClientQIPCModule = a();
     try
     {
-      QMLog.i("MiniSDKClientQIPCModule", "register " + localMiniSDKClientQIPCModule);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("register ");
+      localStringBuilder.append(localMiniSDKClientQIPCModule);
+      QMLog.i("MiniSDKClientQIPCModule", localStringBuilder.toString());
       QIPCClientHelper.getInstance().register(localMiniSDKClientQIPCModule);
       return;
     }
@@ -58,30 +61,35 @@ public class MiniSDKClientQIPCModule
   
   private void a(Bundle paramBundle)
   {
-    int i;
     if (paramBundle != null)
     {
-      i = paramBundle.getInt("param_proc_badge_count");
-      if (QMLog.isDebugEnabled()) {
-        QMLog.d("MiniSDKClientQIPCModule", "count is " + i);
+      int i = paramBundle.getInt("param_proc_badge_count");
+      if (QMLog.isDebugEnabled())
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append("count is ");
+        paramBundle.append(i);
+        QMLog.d("MiniSDKClientQIPCModule", paramBundle.toString());
       }
       paramBundle = AppLoaderFactory.g().getCommonManager().getCurrentRuntime();
-      if ((paramBundle == null) || (paramBundle.getPage() == null)) {
-        QMLog.w("MiniSDKClientQIPCModule", "runtime or page is null");
+      if ((paramBundle != null) && (paramBundle.getPage() != null))
+      {
+        paramBundle = paramBundle.getPage().getCapsuleButton();
+        if (paramBundle == null)
+        {
+          QMLog.w("MiniSDKClientQIPCModule", "capsule button is null");
+          return;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(BaseApplicationImpl.getApplication().getQQProcessName());
+        localStringBuilder.append(" msg count = ");
+        localStringBuilder.append(i);
+        QMLog.i("MiniSDKClientQIPCModule", localStringBuilder.toString());
+        paramBundle.setUnReadCount(i, true);
+        return;
       }
+      QMLog.w("MiniSDKClientQIPCModule", "runtime or page is null");
     }
-    else
-    {
-      return;
-    }
-    paramBundle = paramBundle.getPage().getCapsuleButton();
-    if (paramBundle == null)
-    {
-      QMLog.w("MiniSDKClientQIPCModule", "capsule button is null");
-      return;
-    }
-    QMLog.i("MiniSDKClientQIPCModule", BaseApplicationImpl.getApplication().getQQProcessName() + " msg count = " + i);
-    paramBundle.setUnReadCount(i, true);
   }
   
   private void a(BaseRuntime paramBaseRuntime, String paramString)
@@ -114,28 +122,27 @@ public class MiniSDKClientQIPCModule
     try
     {
       JSONObject localJSONObject = new JSONObject(paramString);
-      if ((!localJSONObject.has("metaData")) || (!localJSONObject.optJSONObject("metaData").has("detail")) || (!localJSONObject.optJSONObject("metaData").optJSONObject("detail").has("preview"))) {
-        break label160;
-      }
-      String str = localJSONObject.optJSONObject("metaData").optJSONObject("detail").optString("preview");
-      if (!URLUtil.isNetworkUrl(str))
+      if ((localJSONObject.has("metaData")) && (localJSONObject.optJSONObject("metaData").has("detail")) && (localJSONObject.optJSONObject("metaData").optJSONObject("detail").has("preview")))
       {
-        Bundle localBundle = new Bundle();
-        localBundle.putString("preview", str);
-        QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_upload_image", localBundle, new MiniSDKClientQIPCModule.2(this, localJSONObject, paramCmdCallback));
+        String str = localJSONObject.optJSONObject("metaData").optJSONObject("detail").optString("preview");
+        if (!URLUtil.isNetworkUrl(str))
+        {
+          Bundle localBundle = new Bundle();
+          localBundle.putString("preview", str);
+          QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_upload_image", localBundle, new MiniSDKClientQIPCModule.2(this, localJSONObject, paramCmdCallback));
+          return;
+        }
+        b(paramString, paramCmdCallback);
         return;
       }
+      b(paramString, paramCmdCallback);
+      return;
     }
     catch (Throwable localThrowable)
     {
       QLog.e("MiniSDKClientQIPCModule", 1, "getReplaceJsonString error,", localThrowable);
       b(paramString, paramCmdCallback);
-      return;
     }
-    b(paramString, paramCmdCallback);
-    return;
-    label160:
-    b(paramString, paramCmdCallback);
   }
   
   private void a(JSONObject paramJSONObject1, BaseRuntime paramBaseRuntime, int paramInt, String paramString, boolean paramBoolean, JSONObject paramJSONObject2)
@@ -144,123 +151,111 @@ public class MiniSDKClientQIPCModule
     {
       paramJSONObject1.put("errMsg", paramString);
       paramJSONObject1.put("success", paramBoolean);
-      if (paramBaseRuntime.getJsService() != null)
-      {
-        paramString = paramBaseRuntime.getJsService();
-        paramJSONObject1 = paramJSONObject1.toString();
-        if (paramBaseRuntime.isMiniGame())
-        {
-          paramInt = -1;
-          paramString.evaluateSubscribeJS("onShareMessageToFriend", paramJSONObject1, paramInt);
-          return;
-        }
-      }
     }
     catch (JSONException paramString)
     {
-      for (;;)
-      {
-        QLog.e("MiniSDKClientQIPCModule", 1, "callOnShareMessageToFriend error,", paramString);
-        continue;
+      QLog.e("MiniSDKClientQIPCModule", 1, "callOnShareMessageToFriend error,", paramString);
+    }
+    if (paramBaseRuntime.getJsService() != null)
+    {
+      paramString = paramBaseRuntime.getJsService();
+      paramJSONObject1 = paramJSONObject1.toString();
+      if (paramBaseRuntime.isMiniGame()) {
+        paramInt = -1;
+      } else {
         paramInt = ActionBridge.PageActionBridge.getPageId(paramBaseRuntime);
       }
-      QLog.e("MiniSDKClientQIPCModule", 1, "runtime.getJsService == null");
+      paramString.evaluateSubscribeJS("onShareMessageToFriend", paramJSONObject1, paramInt);
+      return;
     }
+    QLog.e("MiniSDKClientQIPCModule", 1, "runtime.getJsService == null");
   }
   
   private void a(boolean paramBoolean)
   {
     BaseRuntime localBaseRuntime = AppLoaderFactory.g().getCommonManager().getCurrentRuntime();
-    if (localBaseRuntime == null) {
+    if (localBaseRuntime == null)
+    {
       QLog.e("MiniSDKClientQIPCModule", 1, "runtime == null");
-    }
-    ShareState localShareState;
-    Object localObject1;
-    for (;;)
-    {
       return;
-      localShareState = localBaseRuntime.getShareState();
-      if (localShareState == null)
-      {
-        QLog.e("MiniSDKClientQIPCModule", 1, "shareState == null");
-        return;
-      }
-      try
-      {
-        if (localShareState.requestEvent != null) {}
-        for (IJsService localIJsService = localShareState.requestEvent.jsService; localIJsService == null; localIJsService = localBaseRuntime.getJsService())
-        {
-          QLog.e("MiniSDKClientQIPCModule", 1, "jsService == null");
-          return;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          QLog.e("MiniSDKClientQIPCModule", 1, "runtime.getJsService exception", localThrowable);
-          localObject1 = null;
-        }
-        if ("raffleShare".equals(localShareState.shareEvent))
-        {
-          if (!paramBoolean) {
-            continue;
-          }
-          localObject2 = new JSONObject();
-          try
-          {
-            ((JSONObject)localObject2).put("state", "share");
-            localObject1.evaluateSubscribeJS("onMinigameRaffleStateChange", ((JSONObject)localObject2).toString(), 0);
-            return;
-          }
-          catch (JSONException localJSONException1)
-          {
-            for (;;)
-            {
-              QLog.e("MiniSDKClientQIPCModule", 1, "onShareCallback exception", localJSONException1);
-            }
-          }
-        }
-        if (!paramBoolean) {
-          break label299;
-        }
+    }
+    ShareState localShareState = localBaseRuntime.getShareState();
+    if (localShareState == null)
+    {
+      QLog.e("MiniSDKClientQIPCModule", 1, "shareState == null");
+      return;
+    }
+    Object localObject2 = null;
+    StringBuilder localStringBuilder;
+    try
+    {
+      IJsService localIJsService;
+      if (localShareState.requestEvent != null) {
+        localIJsService = localShareState.requestEvent.jsService;
+      } else {
+        localIJsService = localBaseRuntime.getJsService();
       }
     }
-    if ("requestFriendPayment".equals(localShareState.shareEvent)) {}
-    for (Object localObject2 = new JSONObject();; localObject2 = null)
+    catch (Throwable localThrowable)
     {
-      try
+      QLog.e("MiniSDKClientQIPCModule", 1, "runtime.getJsService exception", localThrowable);
+      localStringBuilder = null;
+    }
+    if (localStringBuilder == null)
+    {
+      QLog.e("MiniSDKClientQIPCModule", 1, "jsService == null");
+      return;
+    }
+    if ("raffleShare".equals(localShareState.shareEvent))
+    {
+      if (paramBoolean)
       {
-        ((JSONObject)localObject2).put("resultCode", 0);
-        localObject2 = ApiUtil.wrapCallbackOk(localShareState.shareEvent, (JSONObject)localObject2);
-        if (localObject2 != null)
+        localObject1 = new JSONObject();
+        try
         {
-          localObject2 = ((JSONObject)localObject2).toString();
-          localObject1.evaluateCallbackJs(localShareState.shareCallbackId, (String)localObject2);
-          QLog.i("MiniSDKClientQIPCModule", 1, "callback: " + (String)localObject2);
-          a(localJSONException1, "share_success");
-          return;
+          ((JSONObject)localObject1).put("state", "share");
         }
+        catch (JSONException localJSONException1)
+        {
+          QLog.e("MiniSDKClientQIPCModule", 1, "onShareCallback exception", localJSONException1);
+        }
+        localStringBuilder.evaluateSubscribeJS("onMinigameRaffleStateChange", ((JSONObject)localObject1).toString(), 0);
       }
-      catch (JSONException localJSONException2)
+      return;
+    }
+    Object localObject1 = "";
+    if (paramBoolean)
+    {
+      if ("requestFriendPayment".equals(localShareState.shareEvent))
       {
-        for (;;)
+        localJSONObject = new JSONObject();
+        try
+        {
+          localJSONObject.put("resultCode", 0);
+        }
+        catch (JSONException localJSONException2)
         {
           QLog.e("MiniSDKClientQIPCModule", 1, "API_PAY_BY_FRIEND put resultCode error", localJSONException2);
-          continue;
-          localObject2 = "";
         }
       }
-      label299:
-      localObject2 = ApiUtil.wrapCallbackFail(localShareState.shareEvent, null);
-      if (localObject2 != null) {}
-      for (localObject2 = ((JSONObject)localObject2).toString();; localObject2 = "")
-      {
-        localObject1.evaluateCallbackJs(localShareState.shareCallbackId, (String)localObject2);
-        a(localJSONException1, "share_fail");
-        return;
+      localJSONObject = ApiUtil.wrapCallbackOk(localShareState.shareEvent, localJSONObject);
+      if (localJSONObject != null) {
+        localObject1 = localJSONObject.toString();
       }
+      localStringBuilder.evaluateCallbackJs(localShareState.shareCallbackId, (String)localObject1);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("callback: ");
+      localStringBuilder.append((String)localObject1);
+      QLog.i("MiniSDKClientQIPCModule", 1, localStringBuilder.toString());
+      a(localBaseRuntime, "share_success");
+      return;
     }
+    JSONObject localJSONObject = ApiUtil.wrapCallbackFail(localShareState.shareEvent, null);
+    if (localJSONObject != null) {
+      localObject1 = localJSONObject.toString();
+    }
+    localStringBuilder.evaluateCallbackJs(localShareState.shareCallbackId, (String)localObject1);
+    a(localBaseRuntime, "share_fail");
   }
   
   public static void b()
@@ -271,7 +266,6 @@ public class MiniSDKClientQIPCModule
   
   private void b(Bundle paramBundle)
   {
-    int i = 0;
     Object localObject2 = AppLoaderFactory.g().getCommonManager().getCurrentRuntime();
     if (localObject2 == null)
     {
@@ -284,76 +278,75 @@ public class MiniSDKClientQIPCModule
       QLog.e("MiniSDKClientQIPCModule", 1, "onShareUpdatableMsgCallback shareState == null");
       return;
     }
-    for (Object localObject1 = null;; localObject1 = localObject2)
+    Object localObject1 = null;
+    try
     {
-      try
+      if (((ShareState)localObject4).requestEvent != null)
       {
-        if (((ShareState)localObject4).requestEvent == null) {
-          break label92;
-        }
         localObject2 = ((ShareState)localObject4).requestEvent.jsService;
         localObject1 = localObject2;
       }
-      catch (Throwable localThrowable1)
+      else
       {
-        for (;;)
-        {
-          label92:
-          QLog.e("MiniSDKClientQIPCModule", 1, "runtime.getJsService exception", localThrowable1);
-        }
-        boolean bool = paramBundle.getBoolean("miniAppShareIsComplete", false);
-        localObject3 = paramBundle.getString("miniAppShareEvent");
-        localObject4 = paramBundle.getString("miniAppShareAppid");
-        String str = paramBundle.getString("miniAppShareTemplateId");
-        j = paramBundle.getInt("miniAppShareCallbackId");
-        int k = paramBundle.getInt("miniAppShareUpdatableMsgFrom");
-        int m = paramBundle.getInt("miniAppShareSubScene", -1);
-        if (!bool) {
-          break label340;
-        }
-        int n = paramBundle.getInt("uintype");
-        if (n != 1) {
-          break label330;
-        }
-        for (;;)
-        {
-          paramBundle = paramBundle.getString("uin");
-          if (QLog.isColorLevel())
-          {
-            StringBuilder localStringBuilder = new StringBuilder("doCreateUpdatableMsgCallback");
-            localStringBuilder.append(", appid:").append((String)localObject4).append(", templateId:").append(str).append(", from:").append(k).append(", scene:").append(i).append(", uin:").append(paramBundle).append(", subScene:").append(m);
-            QLog.i("MiniSDKClientQIPCModule", 1, localStringBuilder.toString());
-          }
-          a(localObject1, (String)localObject3, (String)localObject4, str, k, i, m, paramBundle, j);
-          return;
-          if (n == 0) {
-            i = 1;
-          }
-        }
-        paramBundle = new JSONObject();
+        localObject2 = ((BaseRuntime)localObject2).getJsService();
+        localObject1 = localObject2;
       }
-      if (localObject1 != null) {
-        break;
-      }
+    }
+    catch (Throwable localThrowable1)
+    {
+      QLog.e("MiniSDKClientQIPCModule", 1, "runtime.getJsService exception", localThrowable1);
+    }
+    if (localObject1 == null)
+    {
       QLog.e("MiniSDKClientQIPCModule", 1, "jsService == null");
       return;
-      localObject2 = ((BaseRuntime)localObject2).getJsService();
     }
+    boolean bool = paramBundle.getBoolean("miniAppShareIsComplete", false);
+    Object localObject3 = paramBundle.getString("miniAppShareEvent");
+    localObject4 = paramBundle.getString("miniAppShareAppid");
+    String str = paramBundle.getString("miniAppShareTemplateId");
+    int j = paramBundle.getInt("miniAppShareCallbackId");
+    int k = paramBundle.getInt("miniAppShareUpdatableMsgFrom");
+    int m = paramBundle.getInt("miniAppShareSubScene", -1);
+    if (bool)
+    {
+      int i = paramBundle.getInt("uintype");
+      if ((i != 1) && (i == 0)) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      paramBundle = paramBundle.getString("uin");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder("doCreateUpdatableMsgCallback");
+        localStringBuilder.append(", appid:");
+        localStringBuilder.append((String)localObject4);
+        localStringBuilder.append(", templateId:");
+        localStringBuilder.append(str);
+        localStringBuilder.append(", from:");
+        localStringBuilder.append(k);
+        localStringBuilder.append(", scene:");
+        localStringBuilder.append(i);
+        localStringBuilder.append(", uin:");
+        localStringBuilder.append(paramBundle);
+        localStringBuilder.append(", subScene:");
+        localStringBuilder.append(m);
+        QLog.i("MiniSDKClientQIPCModule", 1, localStringBuilder.toString());
+      }
+      a(localObject1, (String)localObject3, (String)localObject4, str, k, i, m, paramBundle, j);
+      return;
+    }
+    paramBundle = new JSONObject();
     try
     {
-      label330:
-      label340:
       paramBundle.put("retCode", 1);
-      Object localObject3 = ApiUtil.wrapCallbackFail((String)localObject3, paramBundle, "用户取消");
+      localObject3 = ApiUtil.wrapCallbackFail((String)localObject3, paramBundle, "用户取消");
       paramBundle = (Bundle)localObject3;
     }
     catch (Throwable localThrowable2)
     {
-      for (;;)
-      {
-        int j;
-        localThrowable2.printStackTrace();
-      }
+      localThrowable2.printStackTrace();
     }
     localObject1.evaluateCallbackJs(j, paramBundle.toString());
   }
@@ -392,52 +385,55 @@ public class MiniSDKClientQIPCModule
       QLog.e("MiniSDKClientQIPCModule", 1, "shareState == null");
       return;
     }
-    String str1 = ((ShareState)localObject2).shareEvent;
-    Object localObject1 = ((ShareState)localObject2).shareOpenid;
-    String str2 = ((ShareState)localObject2).shareAppid;
-    String str3 = ((ShareState)localObject2).shareJson;
+    Object localObject1 = ((ShareState)localObject2).shareEvent;
+    Object localObject3 = ((ShareState)localObject2).shareOpenid;
+    String str1 = ((ShareState)localObject2).shareAppid;
+    String str2 = ((ShareState)localObject2).shareJson;
     int i = ((ShareState)localObject2).shareCallbackId;
     localObject2 = ((ShareState)localObject2).requestEvent;
     if (paramBoolean)
     {
-      a(localBaseRuntime, str1, (String)localObject1, str2, str3, i, (RequestEvent)localObject2);
+      a(localBaseRuntime, (String)localObject1, (String)localObject3, str1, str2, i, (RequestEvent)localObject2);
       return;
     }
     ((RequestEvent)localObject2).fail();
-    localObject1 = new JSONObject();
-    a((JSONObject)localObject1, localBaseRuntime, i, "cancel", false, ApiUtil.wrapCallbackFail(str1, (JSONObject)localObject1));
+    localObject3 = new JSONObject();
+    a((JSONObject)localObject3, localBaseRuntime, i, "cancel", false, ApiUtil.wrapCallbackFail((String)localObject1, (JSONObject)localObject3));
     a(localBaseRuntime, "shareMessageToFriend_fail");
-    a(localBaseRuntime, "share_" + ((RequestEvent)localObject2).event, "fail", 3, "cancel");
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("share_");
+    ((StringBuilder)localObject1).append(((RequestEvent)localObject2).event);
+    a(localBaseRuntime, ((StringBuilder)localObject1).toString(), "fail", 3, "cancel");
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniSDKClientQIPCModule", 2, "onCall main server action=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCall main server action=");
+      localStringBuilder.append(paramString);
+      QLog.d("MiniSDKClientQIPCModule", 2, localStringBuilder.toString());
     }
     if ("action_sync_unreadcount".equals(paramString)) {
       a(paramBundle);
+    } else if ("actionMiniShareSucCallback".equals(paramString)) {
+      a(true);
+    } else if ("actionMiniShareFailCallback".equals(paramString)) {
+      a(false);
+    } else if ("actionMiniDirectShareSucCallback".equals(paramString)) {
+      b(true);
+    } else if ("actionMiniDirectShareFailCallback".equals(paramString)) {
+      b(false);
+    } else if ((!"actionMiniReportEvent".equals(paramString)) && ("actionMiniCreateUpdatableMsgCallback".equals(paramString))) {
+      b(paramBundle);
     }
-    for (;;)
-    {
-      return null;
-      if ("actionMiniShareSucCallback".equals(paramString)) {
-        a(true);
-      } else if ("actionMiniShareFailCallback".equals(paramString)) {
-        a(false);
-      } else if ("actionMiniDirectShareSucCallback".equals(paramString)) {
-        b(true);
-      } else if ("actionMiniDirectShareFailCallback".equals(paramString)) {
-        b(false);
-      } else if ((!"actionMiniReportEvent".equals(paramString)) && ("actionMiniCreateUpdatableMsgCallback".equals(paramString))) {
-        b(paramBundle);
-      }
-    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniSDKClientQIPCModule
  * JD-Core Version:    0.7.0.1
  */

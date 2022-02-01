@@ -10,24 +10,28 @@ class SnapshotService$1
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(SnapshotService.a(), 2, "start once debug, webview id =" + SnapshotService.Snapshot.a(this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService$Snapshot) + ", seq=" + this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService$DebugCommand.a);
+    if (QLog.isColorLevel())
+    {
+      String str = SnapshotService.a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("start once debug, webview id =");
+      localStringBuilder.append(SnapshotService.Snapshot.a(this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService$Snapshot));
+      localStringBuilder.append(", seq=");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService$DebugCommand.a);
+      QLog.i(str, 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService$Snapshot.a.mWebview.invalidate();
     if (this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService$Snapshot.a.mWebview.getX5WebViewExtension() != null) {
       this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService$Snapshot.a.mWebview.loadUrl("javascript:window.scrollTo(0, 0);");
-    }
-    for (;;)
-    {
-      SnapshotService.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService$DebugCommand, this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService$Snapshot);
-      return;
+    } else {
       this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService$Snapshot.a.mWebview.pageUp(true);
     }
+    SnapshotService.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService$DebugCommand, this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService$Snapshot);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.unifiedebug.SnapshotService.1
  * JD-Core Version:    0.7.0.1
  */

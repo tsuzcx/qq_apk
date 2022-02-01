@@ -31,15 +31,16 @@ public class GetFeedVideoListResponse
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_JavaLangString = paramRspFriendStoryFeedVideoList.next_cookie.get().toStringUtf8();
     this.c = paramRspFriendStoryFeedVideoList.union_id.get().toStringUtf8();
-    if (paramRspFriendStoryFeedVideoList.is_end.get() == 1) {}
+    int i = paramRspFriendStoryFeedVideoList.is_end.get();
+    boolean bool = true;
+    if (i != 1) {
+      bool = false;
+    }
+    this.jdField_a_of_type_Boolean = bool;
     Object localObject1;
     Object localObject2;
-    for (;;)
+    if (paramRspFriendStoryFeedVideoList.share_group_video_info_list.has())
     {
-      this.jdField_a_of_type_Boolean = bool;
-      if (!paramRspFriendStoryFeedVideoList.share_group_video_info_list.has()) {
-        break;
-      }
       paramRspFriendStoryFeedVideoList = paramRspFriendStoryFeedVideoList.share_group_video_info_list.get().iterator();
       while (paramRspFriendStoryFeedVideoList.hasNext())
       {
@@ -48,7 +49,6 @@ public class GetFeedVideoListResponse
         ((StoryVideoItem)localObject2).convertFrom("Q.qqstory.net:GetFeedVideoListResponse", (qqstory_struct.ShareGroupVideoInfo)localObject1);
         this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
       }
-      bool = false;
     }
     if (paramRspFriendStoryFeedVideoList.multi_rcmd_feed_info_list.has())
     {
@@ -89,7 +89,7 @@ public class GetFeedVideoListResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetFeedVideoListResponse
  * JD-Core Version:    0.7.0.1
  */

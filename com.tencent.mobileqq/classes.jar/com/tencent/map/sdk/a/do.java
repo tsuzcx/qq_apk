@@ -26,26 +26,26 @@ public final class do
   
   public final do a(Type paramType, Object paramObject)
   {
+    boolean bool = true;
     eg.a(true);
     if ((paramObject instanceof dp)) {
       this.d.put(paramType, (dp)paramObject);
     }
     fd localfd = fd.a(paramType);
     List localList = this.e;
-    if (localfd.b == localfd.a) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localList.add(new ed.a(paramObject, localfd, bool, (byte)0));
-      if ((paramObject instanceof ee)) {
-        this.e.add(fc.a(fd.a(paramType), (ee)paramObject));
-      }
-      return this;
+    if (localfd.b != localfd.a) {
+      bool = false;
     }
+    localList.add(new ed.a(paramObject, localfd, bool, (byte)0));
+    if ((paramObject instanceof ee)) {
+      this.e.add(fc.a(fd.a(paramType), (ee)paramObject));
+    }
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.do
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import java.util.UUID;
 public class PttManager
 {
   private static final String TAG = "PTTManager";
-  private static PttManager s_instance = null;
+  private static PttManager s_instance;
   private Context context = null;
   Recorder.OnQQRecorderListener listener = new PttManager.4(this);
   private PCMPlayer pcmPlayer = null;
@@ -26,143 +26,148 @@ public class PttManager
   
   public static PttManager createInstance(Context paramContext)
   {
-    if (s_instance == null) {}
-    try
-    {
-      if (s_instance == null)
+    if (s_instance == null) {
+      try
       {
-        s_instance = new PttManager(paramContext);
-        s_instance.context = paramContext;
+        if (s_instance == null)
+        {
+          s_instance = new PttManager(paramContext);
+          s_instance.context = paramContext;
+        }
       }
-      return s_instance;
+      finally {}
     }
-    finally {}
+    return s_instance;
   }
   
   /* Error */
   public static int getFileSize(String paramString)
   {
     // Byte code:
-    //   0: new 68	java/io/FileInputStream
-    //   3: dup
-    //   4: aload_0
-    //   5: invokespecial 71	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   8: astore 4
-    //   10: aload 4
-    //   12: astore_3
-    //   13: aload 4
+    //   0: aconst_null
+    //   1: astore 5
+    //   3: aconst_null
+    //   4: astore_2
+    //   5: new 68	java/io/FileInputStream
+    //   8: dup
+    //   9: aload_0
+    //   10: invokespecial 71	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   13: astore_3
+    //   14: aload_3
     //   15: invokevirtual 75	java/io/FileInputStream:available	()I
-    //   18: istore_2
-    //   19: iload_2
-    //   20: istore_1
-    //   21: aload 4
-    //   23: ifnull +10 -> 33
-    //   26: aload 4
-    //   28: invokevirtual 78	java/io/FileInputStream:close	()V
-    //   31: iload_2
-    //   32: istore_1
-    //   33: ldc 8
-    //   35: ldc 80
-    //   37: iconst_2
-    //   38: anewarray 4	java/lang/Object
-    //   41: dup
-    //   42: iconst_0
-    //   43: aload_0
-    //   44: aastore
-    //   45: dup
-    //   46: iconst_1
-    //   47: iload_1
-    //   48: invokestatic 86	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   51: aastore
-    //   52: invokestatic 92	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   55: invokestatic 98	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
-    //   58: pop
-    //   59: iload_1
-    //   60: ireturn
-    //   61: astore_3
-    //   62: aload_3
-    //   63: invokevirtual 101	java/io/IOException:printStackTrace	()V
-    //   66: iload_2
-    //   67: istore_1
-    //   68: goto -35 -> 33
-    //   71: astore 5
-    //   73: aconst_null
-    //   74: astore 4
-    //   76: aload 4
-    //   78: astore_3
-    //   79: ldc 8
-    //   81: new 103	java/lang/StringBuilder
-    //   84: dup
-    //   85: invokespecial 104	java/lang/StringBuilder:<init>	()V
-    //   88: ldc 106
-    //   90: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   93: aload_0
-    //   94: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   97: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   100: invokestatic 117	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   103: pop
-    //   104: aload 4
-    //   106: astore_3
-    //   107: aload 5
-    //   109: invokevirtual 101	java/io/IOException:printStackTrace	()V
-    //   112: aload 4
-    //   114: ifnull +53 -> 167
-    //   117: aload 4
-    //   119: invokevirtual 78	java/io/FileInputStream:close	()V
-    //   122: iconst_0
-    //   123: istore_1
-    //   124: goto -91 -> 33
-    //   127: astore_3
-    //   128: aload_3
-    //   129: invokevirtual 101	java/io/IOException:printStackTrace	()V
-    //   132: iconst_0
-    //   133: istore_1
-    //   134: goto -101 -> 33
-    //   137: astore_0
-    //   138: aconst_null
-    //   139: astore_3
-    //   140: aload_3
-    //   141: ifnull +7 -> 148
-    //   144: aload_3
-    //   145: invokevirtual 78	java/io/FileInputStream:close	()V
-    //   148: aload_0
-    //   149: athrow
-    //   150: astore_3
-    //   151: aload_3
-    //   152: invokevirtual 101	java/io/IOException:printStackTrace	()V
-    //   155: goto -7 -> 148
-    //   158: astore_0
-    //   159: goto -19 -> 140
-    //   162: astore 5
-    //   164: goto -88 -> 76
-    //   167: iconst_0
-    //   168: istore_1
-    //   169: goto -136 -> 33
+    //   18: istore_1
+    //   19: aload_3
+    //   20: invokevirtual 78	java/io/FileInputStream:close	()V
+    //   23: goto +99 -> 122
+    //   26: astore_2
+    //   27: aload_2
+    //   28: invokevirtual 81	java/io/IOException:printStackTrace	()V
+    //   31: goto +91 -> 122
+    //   34: astore_0
+    //   35: aload_3
+    //   36: astore_2
+    //   37: goto +113 -> 150
+    //   40: astore 4
+    //   42: goto +12 -> 54
+    //   45: astore_0
+    //   46: goto +104 -> 150
+    //   49: astore 4
+    //   51: aload 5
+    //   53: astore_3
+    //   54: aload_3
+    //   55: astore_2
+    //   56: new 83	java/lang/StringBuilder
+    //   59: dup
+    //   60: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   63: astore 5
+    //   65: aload_3
+    //   66: astore_2
+    //   67: aload 5
+    //   69: ldc 86
+    //   71: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   74: pop
+    //   75: aload_3
+    //   76: astore_2
+    //   77: aload 5
+    //   79: aload_0
+    //   80: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   83: pop
+    //   84: aload_3
+    //   85: astore_2
+    //   86: ldc 8
+    //   88: aload 5
+    //   90: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   93: invokestatic 100	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   96: pop
+    //   97: aload_3
+    //   98: astore_2
+    //   99: aload 4
+    //   101: invokevirtual 81	java/io/IOException:printStackTrace	()V
+    //   104: aload_3
+    //   105: ifnull +15 -> 120
+    //   108: aload_3
+    //   109: invokevirtual 78	java/io/FileInputStream:close	()V
+    //   112: goto +8 -> 120
+    //   115: astore_2
+    //   116: aload_2
+    //   117: invokevirtual 81	java/io/IOException:printStackTrace	()V
+    //   120: iconst_0
+    //   121: istore_1
+    //   122: ldc 8
+    //   124: ldc 102
+    //   126: iconst_2
+    //   127: anewarray 4	java/lang/Object
+    //   130: dup
+    //   131: iconst_0
+    //   132: aload_0
+    //   133: aastore
+    //   134: dup
+    //   135: iconst_1
+    //   136: iload_1
+    //   137: invokestatic 108	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   140: aastore
+    //   141: invokestatic 114	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   144: invokestatic 117	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
+    //   147: pop
+    //   148: iload_1
+    //   149: ireturn
+    //   150: aload_2
+    //   151: ifnull +15 -> 166
+    //   154: aload_2
+    //   155: invokevirtual 78	java/io/FileInputStream:close	()V
+    //   158: goto +8 -> 166
+    //   161: astore_2
+    //   162: aload_2
+    //   163: invokevirtual 81	java/io/IOException:printStackTrace	()V
+    //   166: aload_0
+    //   167: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	172	0	paramString	String
-    //   20	149	1	i	int
-    //   18	49	2	j	int
-    //   12	1	3	localFileInputStream1	java.io.FileInputStream
-    //   61	2	3	localIOException1	java.io.IOException
-    //   78	29	3	localFileInputStream2	java.io.FileInputStream
-    //   127	2	3	localIOException2	java.io.IOException
-    //   139	6	3	localObject	Object
-    //   150	2	3	localIOException3	java.io.IOException
-    //   8	110	4	localFileInputStream3	java.io.FileInputStream
-    //   71	37	5	localIOException4	java.io.IOException
-    //   162	1	5	localIOException5	java.io.IOException
+    //   0	168	0	paramString	String
+    //   18	131	1	i	int
+    //   4	1	2	localObject1	Object
+    //   26	2	2	localIOException1	java.io.IOException
+    //   36	63	2	localObject2	Object
+    //   115	40	2	localIOException2	java.io.IOException
+    //   161	2	2	localIOException3	java.io.IOException
+    //   13	96	3	localObject3	Object
+    //   40	1	4	localIOException4	java.io.IOException
+    //   49	51	4	localIOException5	java.io.IOException
+    //   1	88	5	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   26	31	61	java/io/IOException
-    //   0	10	71	java/io/IOException
-    //   117	122	127	java/io/IOException
-    //   0	10	137	finally
-    //   144	148	150	java/io/IOException
-    //   13	19	158	finally
-    //   79	104	158	finally
-    //   107	112	158	finally
-    //   13	19	162	java/io/IOException
+    //   19	23	26	java/io/IOException
+    //   14	19	34	finally
+    //   14	19	40	java/io/IOException
+    //   5	14	45	finally
+    //   56	65	45	finally
+    //   67	75	45	finally
+    //   77	84	45	finally
+    //   86	97	45	finally
+    //   99	104	45	finally
+    //   5	14	49	java/io/IOException
+    //   108	112	115	java/io/IOException
+    //   154	158	161	java/io/IOException
   }
   
   public static PttManager getInstance()
@@ -186,7 +191,13 @@ public class PttManager
     String str1 = Build.MODEL;
     String str2 = Build.VERSION.SDK;
     int i = NetworkProvider.getNetTypeName(this.context);
-    return str1 + "_" + str2 + "_" + i;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(str2);
+    localStringBuilder.append("_");
+    localStringBuilder.append(i);
+    return localStringBuilder.toString();
   }
   
   public int getFileSeconds(String paramString)
@@ -221,7 +232,10 @@ public class PttManager
     }
     catch (Exception paramString)
     {
-      Log.e("PTTManager", "play recording failed! e = " + paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("play recording failed! e = ");
+      localStringBuilder.append(paramString);
+      Log.e("PTTManager", localStringBuilder.toString());
       paramPlayFileListener.onCompleted(20481, null);
     }
     return 0;
@@ -259,27 +273,23 @@ public class PttManager
   
   public int startRecording(String paramString, PttListener.RecordFileListener paramRecordFileListener)
   {
-    int i = 0;
     if (paramRecordFileListener == null) {
-      i = 4097;
+      return 4097;
     }
-    String str;
-    do
+    if (this.recorder.isRecording())
     {
-      return i;
-      if (this.recorder.isRecording())
-      {
-        Log.e("PTTManager", "is recording , not do again!");
-        paramRecordFileListener.onCompleted(4099, null);
-        return 0;
-      }
-      str = paramString;
-      if (TextUtils.isEmpty(paramString)) {
-        str = FileManager.getInstance().genSilkFileName();
-      }
-      this.recordFileListener = paramRecordFileListener;
-    } while (!this.recorder.initRecording());
-    this.recorder.start(str);
+      Log.e("PTTManager", "is recording , not do again!");
+      paramRecordFileListener.onCompleted(4099, null);
+      return 0;
+    }
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = FileManager.getInstance().genSilkFileName();
+    }
+    this.recordFileListener = paramRecordFileListener;
+    if (this.recorder.initRecording()) {
+      this.recorder.start(str);
+    }
     return 0;
   }
   

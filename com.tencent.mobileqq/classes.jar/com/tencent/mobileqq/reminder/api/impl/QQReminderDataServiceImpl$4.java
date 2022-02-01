@@ -23,30 +23,29 @@ class QQReminderDataServiceImpl$4
     ArrayList localArrayList = new ArrayList();
     QQReminderDataServiceImpl.access$400(this.this$0);
     Object localObject = QQReminderDataServiceImpl.access$500(this.this$0, NetConnInfoCenter.getServerTimeMillis());
-    if (localObject == null) {
+    if (localObject == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("ReminderDataManagerNew", 1, "async from db, msg list is null");
       }
     }
-    while (!QQReminderDataServiceImpl.access$600(this.this$0).get())
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReminderDataManagerNew", 1, new Object[] { "async from db, msg count: ", Integer.valueOf(((List)localObject).size()) });
+      }
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        localArrayList.add(((ReminderEntity)((Iterator)localObject).next()).getAcsMsg());
+      }
+    }
+    if (!QQReminderDataServiceImpl.access$600(this.this$0).get())
     {
       localObject = localArrayList.iterator();
-      for (;;)
+      while (((Iterator)localObject).hasNext())
       {
-        if (((Iterator)localObject).hasNext())
-        {
-          AcsMsg localAcsMsg = (AcsMsg)((Iterator)localObject).next();
-          QQReminderDataServiceImpl.access$700(this.this$0, localAcsMsg, 1);
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d("ReminderDataManagerNew", 1, new Object[] { "async from db, msg count: ", Integer.valueOf(((List)localObject).size()) });
-          }
-          localObject = ((List)localObject).iterator();
-          while (((Iterator)localObject).hasNext()) {
-            localArrayList.add(((ReminderEntity)((Iterator)localObject).next()).getAcsMsg());
-          }
-          break;
-        }
+        AcsMsg localAcsMsg = (AcsMsg)((Iterator)localObject).next();
+        QQReminderDataServiceImpl.access$700(this.this$0, localAcsMsg, 1);
       }
       QQReminderDataServiceImpl.access$600(this.this$0).set(true);
       QQReminderDataServiceImpl.access$800(this.this$0).edit().putString("sp_key_cache_list_time", QQReminderUtil.a(NetConnInfoCenter.getServerTimeMillis(), "yyyyMMdd")).apply();
@@ -56,7 +55,7 @@ class QQReminderDataServiceImpl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.reminder.api.impl.QQReminderDataServiceImpl.4
  * JD-Core Version:    0.7.0.1
  */

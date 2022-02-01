@@ -27,7 +27,10 @@ public class ProfileURLDrawableDownListener
     paramView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (paramView != null)
     {
-      QLog.e("Q.profilecard.FrdProfileCard", 1, this.jdField_a_of_type_JavaLangString + this.b);
+      paramURLDrawable = new StringBuilder();
+      paramURLDrawable.append(this.jdField_a_of_type_JavaLangString);
+      paramURLDrawable.append(this.b);
+      QLog.e("Q.profilecard.FrdProfileCard", 1, paramURLDrawable.toString());
       paramView.setVisibility(8);
     }
   }
@@ -46,7 +49,7 @@ public class ProfileURLDrawableDownListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ProfileURLDrawableDownListener
  * JD-Core Version:    0.7.0.1
  */

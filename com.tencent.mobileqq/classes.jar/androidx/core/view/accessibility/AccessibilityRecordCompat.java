@@ -69,23 +69,24 @@ public class AccessibilityRecordCompat
   @Deprecated
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
-      do
-      {
-        return true;
-        if (!(paramObject instanceof AccessibilityRecordCompat)) {
-          return false;
-        }
-        paramObject = (AccessibilityRecordCompat)paramObject;
-        if (this.mRecord != null) {
-          break;
-        }
-      } while (paramObject.mRecord == null);
+    if (this == paramObject) {
+      return true;
+    }
+    if (!(paramObject instanceof AccessibilityRecordCompat)) {
       return false;
-    } while (this.mRecord.equals(paramObject.mRecord));
-    return false;
+    }
+    paramObject = (AccessibilityRecordCompat)paramObject;
+    AccessibilityRecord localAccessibilityRecord = this.mRecord;
+    if (localAccessibilityRecord == null)
+    {
+      if (paramObject.mRecord != null) {
+        return false;
+      }
+    }
+    else if (!localAccessibilityRecord.equals(paramObject.mRecord)) {
+      return false;
+    }
+    return true;
   }
   
   @Deprecated
@@ -199,10 +200,11 @@ public class AccessibilityRecordCompat
   @Deprecated
   public int hashCode()
   {
-    if (this.mRecord == null) {
+    AccessibilityRecord localAccessibilityRecord = this.mRecord;
+    if (localAccessibilityRecord == null) {
       return 0;
     }
-    return this.mRecord.hashCode();
+    return localAccessibilityRecord.hashCode();
   }
   
   @Deprecated
@@ -369,7 +371,7 @@ public class AccessibilityRecordCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.accessibility.AccessibilityRecordCompat
  * JD-Core Version:    0.7.0.1
  */

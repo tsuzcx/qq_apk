@@ -33,26 +33,31 @@ public final class PlayerMessage
   
   public boolean blockUntilDelivered()
   {
-    for (;;)
+    try
     {
-      try
-      {
-        Assertions.checkState(this.isSent);
-        if (this.handler.getLooper().getThread() != Thread.currentThread())
-        {
-          bool = true;
-          Assertions.checkState(bool);
-          if (this.isProcessed) {
-            break;
-          }
-          wait();
-          continue;
-        }
-        bool = false;
+      Assertions.checkState(this.isSent);
+      if (this.handler.getLooper().getThread() == Thread.currentThread()) {
+        break label68;
       }
-      finally {}
+      bool = true;
     }
-    boolean bool = this.isDelivered;
+    finally
+    {
+      for (;;)
+      {
+        for (;;)
+        {
+          throw localObject;
+        }
+        label68:
+        boolean bool = false;
+      }
+    }
+    Assertions.checkState(bool);
+    while (!this.isProcessed) {
+      wait();
+    }
+    bool = this.isDelivered;
     return bool;
   }
   
@@ -100,7 +105,7 @@ public final class PlayerMessage
   {
     try
     {
-      this.isDelivered |= paramBoolean;
+      this.isDelivered = (paramBoolean | this.isDelivered);
       this.isProcessed = true;
       notifyAll();
       return;
@@ -114,105 +119,71 @@ public final class PlayerMessage
   
   public PlayerMessage send()
   {
-    if (!this.isSent) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      if (this.positionMs == -9223372036854775807L) {
-        Assertions.checkArgument(this.deleteAfterDelivery);
-      }
-      this.isSent = true;
-      this.sender.sendMessage(this);
-      return this;
+    Assertions.checkState(this.isSent ^ true);
+    if (this.positionMs == -9223372036854775807L) {
+      Assertions.checkArgument(this.deleteAfterDelivery);
     }
+    this.isSent = true;
+    this.sender.sendMessage(this);
+    return this;
   }
   
   public PlayerMessage setDeleteAfterDelivery(boolean paramBoolean)
   {
-    if (!this.isSent) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      this.deleteAfterDelivery = paramBoolean;
-      return this;
-    }
+    Assertions.checkState(this.isSent ^ true);
+    this.deleteAfterDelivery = paramBoolean;
+    return this;
   }
   
   public PlayerMessage setHandler(Handler paramHandler)
   {
-    if (!this.isSent) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      this.handler = paramHandler;
-      return this;
-    }
+    Assertions.checkState(this.isSent ^ true);
+    this.handler = paramHandler;
+    return this;
   }
   
   public PlayerMessage setPayload(@Nullable Object paramObject)
   {
-    if (!this.isSent) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      this.payload = paramObject;
-      return this;
-    }
+    Assertions.checkState(this.isSent ^ true);
+    this.payload = paramObject;
+    return this;
   }
   
   public PlayerMessage setPosition(int paramInt, long paramLong)
   {
-    boolean bool2 = true;
-    if (!this.isSent)
-    {
-      bool1 = true;
-      Assertions.checkState(bool1);
-      if (paramLong == -9223372036854775807L) {
-        break label80;
-      }
-    }
-    label80:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      Assertions.checkArgument(bool1);
-      if ((paramInt >= 0) && ((this.timeline.isEmpty()) || (paramInt < this.timeline.getWindowCount()))) {
-        break label86;
-      }
-      throw new IllegalSeekPositionException(this.timeline, paramInt, paramLong);
+    boolean bool2 = this.isSent;
+    boolean bool1 = true;
+    Assertions.checkState(bool2 ^ true);
+    if (paramLong == -9223372036854775807L) {
       bool1 = false;
-      break;
     }
-    label86:
-    this.windowIndex = paramInt;
-    this.positionMs = paramLong;
-    return this;
+    Assertions.checkArgument(bool1);
+    if ((paramInt >= 0) && ((this.timeline.isEmpty()) || (paramInt < this.timeline.getWindowCount())))
+    {
+      this.windowIndex = paramInt;
+      this.positionMs = paramLong;
+      return this;
+    }
+    throw new IllegalSeekPositionException(this.timeline, paramInt, paramLong);
   }
   
   public PlayerMessage setPosition(long paramLong)
   {
-    if (!this.isSent) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      this.positionMs = paramLong;
-      return this;
-    }
+    Assertions.checkState(this.isSent ^ true);
+    this.positionMs = paramLong;
+    return this;
   }
   
   public PlayerMessage setType(int paramInt)
   {
-    if (!this.isSent) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      this.type = paramInt;
-      return this;
-    }
+    Assertions.checkState(this.isSent ^ true);
+    this.type = paramInt;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.PlayerMessage
  * JD-Core Version:    0.7.0.1
  */

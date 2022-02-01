@@ -39,19 +39,27 @@ public class QQUserUIItem$UserID
   {
     if ((paramObject instanceof UserID))
     {
-      this.a = ((UserID)paramObject).a;
-      this.b = ((UserID)paramObject).b;
+      paramObject = (UserID)paramObject;
+      this.a = paramObject.a;
+      this.b = paramObject.b;
     }
   }
   
   public String toString()
   {
-    return "UserID{qq=" + this.a + ", unionId='" + this.b + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UserID{qq=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", unionId='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.QQUserUIItem.UserID
  * JD-Core Version:    0.7.0.1
  */

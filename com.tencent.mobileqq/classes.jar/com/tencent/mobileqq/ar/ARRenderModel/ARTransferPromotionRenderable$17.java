@@ -22,43 +22,50 @@ class ARTransferPromotionRenderable$17
     ARTransferPromotionRenderable.e(this.this$0);
     if (this.this$0.b != 4)
     {
-      QLog.d("ARTransferPromotionRenderable", 1, "not under nativeGameStatus:GameStatus_INSIDE_WORLD_360 mNativeGameStatus:" + this.this$0.b);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("not under nativeGameStatus:GameStatus_INSIDE_WORLD_360 mNativeGameStatus:");
+      ((StringBuilder)localObject).append(this.this$0.b);
+      QLog.d("ARTransferPromotionRenderable", 1, ((StringBuilder)localObject).toString());
       ARTransferPromotionRenderable.d(this.this$0, false);
-    }
-    ARTransferDoorConfigInfo.FragmentInfo localFragmentInfo;
-    do
-    {
-      do
-      {
-        return;
-        ThreadManager.getSubThreadHandler().post(new ARTransferPromotionRenderable.17.1(this, f));
-        if (!bool) {
-          break;
-        }
-      } while (ARTransferPromotionRenderable.a(this.this$0) == null);
-      ARTransferPromotionRenderable.a(this.this$0).b(2, 0);
       return;
-      localFragmentInfo = ARTransferPromotionRenderable.a(this.this$0).a((int)f);
-      if ((localFragmentInfo == null) || (TextUtils.isEmpty(localFragmentInfo.c))) {
-        break;
-      }
-    } while (ARTransferPromotionRenderable.a(this.this$0) != 6);
-    if (ARTransferPromotionRenderable.a(this.this$0).a()) {
-      ARTransferPromotionRenderable.a(this.this$0).b();
     }
-    ARTransferPromotionRenderable.a(this.this$0, localFragmentInfo);
-    ARTransferPromotionRenderable.a(this.this$0, new ARTransferPromotionRenderable.17.2(this));
-    ARTransferPromotionRenderable.a(this.this$0);
-    ThreadManager.getUIHandler().post(new ARTransferPromotionRenderable.17.3(this));
-    QLog.d("ARTransferPromotionRenderable", 1, "switchGameStatus ARPromotionConstant.GameStatus_WORLD_360_VIDEO_OVER fit current degree:" + f);
-    return;
+    ThreadManager.getSubThreadHandler().post(new ARTransferPromotionRenderable.17.1(this, f));
+    if (bool)
+    {
+      if (ARTransferPromotionRenderable.a(this.this$0) != null) {
+        ARTransferPromotionRenderable.a(this.this$0).b(2, 0);
+      }
+      return;
+    }
+    Object localObject = ARTransferPromotionRenderable.a(this.this$0).a((int)f);
+    if ((localObject != null) && (!TextUtils.isEmpty(((ARTransferDoorConfigInfo.FragmentInfo)localObject).c)))
+    {
+      if (ARTransferPromotionRenderable.a(this.this$0) != 6) {
+        return;
+      }
+      if (ARTransferPromotionRenderable.a(this.this$0).a()) {
+        ARTransferPromotionRenderable.a(this.this$0).b();
+      }
+      ARTransferPromotionRenderable.a(this.this$0, (ARTransferDoorConfigInfo.FragmentInfo)localObject);
+      ARTransferPromotionRenderable.a(this.this$0, new ARTransferPromotionRenderable.17.2(this));
+      ARTransferPromotionRenderable.a(this.this$0);
+      ThreadManager.getUIHandler().post(new ARTransferPromotionRenderable.17.3(this));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("switchGameStatus ARPromotionConstant.GameStatus_WORLD_360_VIDEO_OVER fit current degree:");
+      ((StringBuilder)localObject).append(f);
+      QLog.d("ARTransferPromotionRenderable", 1, ((StringBuilder)localObject).toString());
+      return;
+    }
     ARTransferPromotionRenderable.d(this.this$0, false);
-    QLog.d("ARTransferPromotionRenderable", 1, "switchGameStatus ARPromotionConstant.GameStatus_WORLD_360_VIDEO_OVER not fit degree " + f);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("switchGameStatus ARPromotionConstant.GameStatus_WORLD_360_VIDEO_OVER not fit degree ");
+    ((StringBuilder)localObject).append(f);
+    QLog.d("ARTransferPromotionRenderable", 1, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.17
  * JD-Core Version:    0.7.0.1
  */

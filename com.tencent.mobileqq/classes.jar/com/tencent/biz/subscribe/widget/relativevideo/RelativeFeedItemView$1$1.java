@@ -21,34 +21,33 @@ class RelativeFeedItemView$1$1
   public void a(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoLikeRsp paramStDoLikeRsp)
   {
     RelativeFeedItemView.a(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView, true);
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoLikeRsp == null))
+    if ((paramBoolean) && (paramLong == 0L) && (paramStDoLikeRsp != null))
     {
-      QQToast.a(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView.getContext(), 1, paramString, 0).a();
-      return;
-    }
-    int i;
-    if (paramStDoLikeRsp.like.status.get() == 1)
-    {
-      i = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.likeInfo.count.get() + 1;
-      paramString = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
-      if (paramStDoLikeRsp.like.status.get() != 1) {
-        break label268;
+      int i;
+      if (paramStDoLikeRsp.like.status.get() == 1) {
+        i = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.likeInfo.count.get() + 1;
+      } else {
+        i = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.likeInfo.count.get() - 1;
       }
-    }
-    label268:
-    for (paramBaseRequest = "like";; paramBaseRequest = "cancel_like")
-    {
-      VSReporter.a(paramString, "auth_feeds", paramBaseRequest, 0, 0, new String[] { "", RelativeFeedItemView.a(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView) + "", this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
+      paramString = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
+      if (paramStDoLikeRsp.like.status.get() == 1) {
+        paramBaseRequest = "like";
+      } else {
+        paramBaseRequest = "cancel_like";
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(RelativeFeedItemView.a(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView));
+      localStringBuilder.append("");
+      VSReporter.a(paramString, "auth_feeds", paramBaseRequest, 0, 0, new String[] { "", localStringBuilder.toString(), this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
       SimpleEventBus.getInstance().dispatchEvent(new PraisedUpdateEvents(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get(), paramStDoLikeRsp.like.status.get(), i));
       return;
-      i = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.likeInfo.count.get() - 1;
-      break;
     }
+    QQToast.a(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView.getContext(), 1, paramString, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView.1.1
  * JD-Core Version:    0.7.0.1
  */

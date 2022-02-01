@@ -16,10 +16,11 @@ public class WSFollowFeedUIDelegate
   
   private void a()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder != null) && (!this.jdField_a_of_type_Boolean))
+    WSFollowFeedHolder localWSFollowFeedHolder = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder;
+    if ((localWSFollowFeedHolder != null) && (!this.jdField_a_of_type_Boolean))
     {
       this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.c();
+      localWSFollowFeedHolder.c();
     }
   }
   
@@ -47,10 +48,20 @@ public class WSFollowFeedUIDelegate
   
   public void a(WSPlayerParam paramWSPlayerParam, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder != null) && (paramBoolean1) && (paramBoolean2)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.a(8, 400);
+    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder;
+    if ((localObject != null) && (paramBoolean1) && (paramBoolean2)) {
+      ((WSFollowFeedHolder)localObject).a(8, 400);
     }
-    WSLog.e("WS_VIDEO_PRE_PLAY", "[WSFollowFeedUIDelegate.java][onPrePlayFinished] title:" + paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.d + "\nisPreOutputFirstFrame:" + paramBoolean1 + ", isFirstFrameDrawSuccess:" + paramBoolean2 + "\nmFollowPlayableHolder:" + this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[WSFollowFeedUIDelegate.java][onPrePlayFinished] title:");
+    ((StringBuilder)localObject).append(paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.d);
+    ((StringBuilder)localObject).append("\nisPreOutputFirstFrame:");
+    ((StringBuilder)localObject).append(paramBoolean1);
+    ((StringBuilder)localObject).append(", isFirstFrameDrawSuccess:");
+    ((StringBuilder)localObject).append(paramBoolean2);
+    ((StringBuilder)localObject).append("\nmFollowPlayableHolder:");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder);
+    WSLog.e("WS_VIDEO_PRE_PLAY", ((StringBuilder)localObject).toString());
   }
   
   public boolean a(WSPlayerParam paramWSPlayerParam)
@@ -67,53 +78,58 @@ public class WSFollowFeedUIDelegate
       boolean bool = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper.b();
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.b(bool);
       paramWSPlayerParam = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder;
-      if (!bool) {
-        break label57;
+      int i;
+      if (bool) {
+        i = 8;
+      } else {
+        i = 0;
       }
-    }
-    label57:
-    for (int i = 8;; i = 0)
-    {
       paramWSPlayerParam.a(i, 0);
-      a();
-      return;
     }
+    a();
   }
   
   public void d(WSPlayerParam paramWSPlayerParam)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder != null)
+    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.b(true);
+      ((WSFollowFeedHolder)localObject).b(true);
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.a(8, 400);
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.c(true);
-      WSLog.a("WS_VIDEO_PLAYER", "[WSFollowFeedUIDelegate.java][onVideoStart] title:" + paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.d);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[WSFollowFeedUIDelegate.java][onVideoStart] title:");
+      ((StringBuilder)localObject).append(paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.d);
+      WSLog.a("WS_VIDEO_PLAYER", ((StringBuilder)localObject).toString());
     }
   }
   
   public void e(WSPlayerParam paramWSPlayerParam)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder != null)
+    paramWSPlayerParam = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder;
+    if (paramWSPlayerParam != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.b(false);
+      paramWSPlayerParam.b(false);
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.d(true);
     }
   }
   
   public void f(WSPlayerParam paramWSPlayerParam)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder != null)
+    paramWSPlayerParam = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder;
+    if (paramWSPlayerParam != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.b(true);
+      paramWSPlayerParam.b(true);
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.d(false);
     }
   }
   
   public void g(WSPlayerParam paramWSPlayerParam)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder != null)
+    paramWSPlayerParam = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder;
+    if (paramWSPlayerParam != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.b(false);
+      paramWSPlayerParam.b(false);
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.a(0, 0);
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.c(false);
     }
@@ -126,14 +142,15 @@ public class WSFollowFeedUIDelegate
   
   public void j(WSPlayerParam paramWSPlayerParam)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.a(0, 100);
+    paramWSPlayerParam = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder;
+    if (paramWSPlayerParam != null) {
+      paramWSPlayerParam.a(0, 100);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.presenter.WSFollowFeedUIDelegate
  * JD-Core Version:    0.7.0.1
  */

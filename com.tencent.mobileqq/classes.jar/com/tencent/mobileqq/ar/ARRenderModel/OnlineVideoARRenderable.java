@@ -87,17 +87,24 @@ class OnlineVideoARRenderable
     this.jdField_a_of_type_JavaLangString = paramOnlineVideoARRenderableInfo.jdField_b_of_type_JavaLangString;
     this.jdField_a_of_type_Long = paramOnlineVideoARRenderableInfo.jdField_b_of_type_Long;
     boolean bool = ARVideoUtil.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_OnlineVideoARRenderable", 2, "Construction mSoftwarePlayConfig:false  isRubbishDevice:" + bool + "  isSoftPlay:" + this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_a_of_type_Boolean);
+    if (QLog.isColorLevel())
+    {
+      paramARRenderMangerInnerCallback = new StringBuilder();
+      paramARRenderMangerInnerCallback.append("Construction mSoftwarePlayConfig:false  isRubbishDevice:");
+      paramARRenderMangerInnerCallback.append(bool);
+      paramARRenderMangerInnerCallback.append("  isSoftPlay:");
+      paramARRenderMangerInnerCallback.append(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_a_of_type_Boolean);
+      QLog.d("AREngine_OnlineVideoARRenderable", 2, paramARRenderMangerInnerCallback.toString());
     }
   }
   
   private int a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
   {
     paramInt1 -= 1;
-    if (this.jdField_a_of_type_ArrayOfJavaNioIntBuffer[0] == null)
+    IntBuffer[] arrayOfIntBuffer = this.jdField_a_of_type_ArrayOfJavaNioIntBuffer;
+    if (arrayOfIntBuffer[0] == null)
     {
-      this.jdField_a_of_type_ArrayOfJavaNioIntBuffer[0] = IntBuffer.allocate(1);
+      arrayOfIntBuffer[0] = IntBuffer.allocate(1);
       this.jdField_a_of_type_ArrayOfJavaNioIntBuffer[1] = IntBuffer.allocate(1);
       this.jdField_a_of_type_ArrayOfJavaNioIntBuffer[2] = IntBuffer.allocate(1);
     }
@@ -109,38 +116,42 @@ class OnlineVideoARRenderable
     GLES20.glTexParameterf(3553, 10240, 9729.0F);
     GLES20.glTexParameterf(3553, 10242, 33071.0F);
     GLES20.glTexParameterf(3553, 10243, 33071.0F);
-    if ((this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[paramInt1] == null) || (this.jdField_a_of_type_ArrayOfInt[paramInt1] != paramArrayOfByte.length)) {}
-    try
-    {
-      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[paramInt1] = ByteBuffer.allocateDirect(paramArrayOfByte.length);
-      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[paramInt1].order(ByteOrder.nativeOrder());
-      this.jdField_a_of_type_ArrayOfInt[paramInt1] = paramArrayOfByte.length;
-      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[paramInt1].put(paramArrayOfByte);
-      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[paramInt1].position(0);
-      GLES20.glTexImage2D(3553, 0, 6409, paramInt2, paramInt3, 0, 6409, 5121, this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[paramInt1]);
-      return n;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+    if ((this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[paramInt1] == null) || (this.jdField_a_of_type_ArrayOfInt[paramInt1] != paramArrayOfByte.length)) {
+      try
+      {
+        this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[paramInt1] = ByteBuffer.allocateDirect(paramArrayOfByte.length);
+        this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[paramInt1].order(ByteOrder.nativeOrder());
+      }
+      catch (Throwable localThrowable)
       {
         if (QLog.isColorLevel())
         {
-          QLog.d("AREngine_OnlineVideoARRenderable", 2, "textureYUV, exception=" + localThrowable.getMessage());
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("textureYUV, exception=");
+          localStringBuilder.append(localThrowable.getMessage());
+          QLog.d("AREngine_OnlineVideoARRenderable", 2, localStringBuilder.toString());
           localThrowable.printStackTrace();
         }
       }
     }
+    this.jdField_a_of_type_ArrayOfInt[paramInt1] = paramArrayOfByte.length;
+    this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[paramInt1].put(paramArrayOfByte);
+    this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[paramInt1].position(0);
+    GLES20.glTexImage2D(3553, 0, 6409, paramInt2, paramInt3, 0, 6409, 5121, this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[paramInt1]);
+    return n;
   }
   
   private void a()
   {
     QLog.d("AREngine_OnlineVideoARRenderable", 1, "initGl");
     Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenTextures(1, arrayOfInt, 0);
-    this.jdField_a_of_type_Int = arrayOfInt[0];
-    QLog.d("AREngine_OnlineVideoARRenderable", 1, "initGl, mTextureID=" + this.jdField_a_of_type_Int);
+    Object localObject = new int[1];
+    GLES20.glGenTextures(1, (int[])localObject, 0);
+    this.jdField_a_of_type_Int = localObject[0];
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("initGl, mTextureID=");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    QLog.d("AREngine_OnlineVideoARRenderable", 1, ((StringBuilder)localObject).toString());
     if (this.jdField_a_of_type_Int == 0) {
       return;
     }
@@ -165,7 +176,8 @@ class OnlineVideoARRenderable
   
   public void a(boolean paramBoolean)
   {
-    if (paramBoolean) {
+    if (paramBoolean)
+    {
       if (this.jdField_b_of_type_ComTencentMobileqqArKeyingKeyingBase == null)
       {
         this.jdField_b_of_type_ComTencentMobileqqArKeyingKeyingBase = KeyingManager.a(this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingParams, 3);
@@ -174,68 +186,67 @@ class OnlineVideoARRenderable
         this.jdField_b_of_type_ComTencentMobileqqArKeyingKeyingBase.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_a_of_type_Float, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_b_of_type_Float, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_c_of_type_Float);
       }
     }
-    while (this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase != null) {
-      return;
+    else if (this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase = KeyingManager.a(this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingParams, 1);
+      this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase.a(ARVideoUtil.jdField_a_of_type_ArrayOfFloat, ARVideoUtil.jdField_a_of_type_ArrayOfShort);
+      this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase.a("uniform int uDisplayType;\n", null, "    if(uDisplayType == 1){\n        // 需要渲染成圆形\n        float x = vTextureCoord.x;\n        float y = vTextureCoord.y;\n        // 圆心(0.5, 0.5), 0.25=0.5*0.5\n        if(pow(abs(x-0.5), 2.0) + pow(abs(y-0.5), 2.0) >= 0.25) {\n            gl_FragColor[3] = 0.0;\n        }\n    }\n", this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase$UserInterface);
+      this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_a_of_type_Float, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_b_of_type_Float, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_c_of_type_Float);
     }
-    this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase = KeyingManager.a(this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingParams, 1);
-    this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase.a(ARVideoUtil.jdField_a_of_type_ArrayOfFloat, ARVideoUtil.jdField_a_of_type_ArrayOfShort);
-    this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase.a("uniform int uDisplayType;\n", null, "    if(uDisplayType == 1){\n        // 需要渲染成圆形\n        float x = vTextureCoord.x;\n        float y = vTextureCoord.y;\n        // 圆心(0.5, 0.5), 0.25=0.5*0.5\n        if(pow(abs(x-0.5), 2.0) + pow(abs(y-0.5), 2.0) >= 0.25) {\n            gl_FragColor[3] = 0.0;\n        }\n    }\n", this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase$UserInterface);
-    this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_a_of_type_Float, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_b_of_type_Float, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_c_of_type_Float);
   }
   
   public void a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float[] paramArrayOfFloat3, float[] paramArrayOfFloat4)
   {
-    if ((!this.jdField_e_of_type_Boolean) || (paramArrayOfFloat2 == null) || (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo == null)) {
-      return;
-    }
-    GLES20.glBlendFunc(770, 771);
-    GLES20.glEnable(3042);
-    label54:
-    int n;
-    if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_b_of_type_Int == 1)
+    if ((this.jdField_e_of_type_Boolean) && (paramArrayOfFloat2 != null))
     {
-      paramArrayOfFloat1 = a(paramArrayOfFloat1, paramArrayOfFloat3, paramArrayOfFloat4);
-      if (this.jdField_i_of_type_Boolean) {
-        break label167;
+      if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo == null) {
+        return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase == null) {
-        a(this.jdField_i_of_type_Boolean);
+      GLES20.glBlendFunc(770, 771);
+      GLES20.glEnable(3042);
+      if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_b_of_type_Int == 1) {
+        paramArrayOfFloat1 = a(paramArrayOfFloat1, paramArrayOfFloat3, paramArrayOfFloat4);
+      } else {
+        paramArrayOfFloat1 = a(paramArrayOfFloat1, paramArrayOfFloat2, paramArrayOfFloat4);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase != null)
+      boolean bool = this.jdField_i_of_type_Boolean;
+      int n;
+      if (!bool)
       {
+        if (this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase == null) {
+          a(bool);
+        }
         paramArrayOfFloat2 = this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase;
-        n = this.jdField_a_of_type_Int;
-        paramArrayOfFloat3 = this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingParams;
-        paramArrayOfFloat4 = this.jdField_b_of_type_ArrayOfFloat;
-        paramArrayOfFloat2.a(new int[] { n }, paramArrayOfFloat3, paramArrayOfFloat1, paramArrayOfFloat4);
+        if (paramArrayOfFloat2 != null)
+        {
+          n = this.jdField_a_of_type_Int;
+          paramArrayOfFloat3 = this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingParams;
+          paramArrayOfFloat4 = this.jdField_b_of_type_ArrayOfFloat;
+          paramArrayOfFloat2.a(new int[] { n }, paramArrayOfFloat3, paramArrayOfFloat1, paramArrayOfFloat4);
+        }
       }
-    }
-    for (;;)
-    {
+      else
+      {
+        if (this.jdField_b_of_type_ComTencentMobileqqArKeyingKeyingBase == null) {
+          a(bool);
+        }
+        Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
+        paramArrayOfFloat2 = this.jdField_b_of_type_ComTencentMobileqqArKeyingKeyingBase;
+        if (paramArrayOfFloat2 != null)
+        {
+          n = this.jdField_g_of_type_Int;
+          int i1 = this.jdField_h_of_type_Int;
+          int i2 = this.jdField_i_of_type_Int;
+          paramArrayOfFloat3 = this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingParams;
+          paramArrayOfFloat4 = this.jdField_b_of_type_ArrayOfFloat;
+          paramArrayOfFloat2.a(new int[] { n, i1, i2 }, paramArrayOfFloat3, paramArrayOfFloat1, paramArrayOfFloat4);
+        }
+      }
       GLES20.glDisable(3042);
       GLES20.glBindTexture(3553, 0);
       GLES20.glBindTexture(36197, 0);
-      if (!this.m) {
-        break;
-      }
-      this.m = false;
-      return;
-      paramArrayOfFloat1 = a(paramArrayOfFloat1, paramArrayOfFloat2, paramArrayOfFloat4);
-      break label54;
-      label167:
-      if (this.jdField_b_of_type_ComTencentMobileqqArKeyingKeyingBase == null) {
-        a(this.jdField_i_of_type_Boolean);
-      }
-      Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
-      if (this.jdField_b_of_type_ComTencentMobileqqArKeyingKeyingBase != null)
-      {
-        paramArrayOfFloat2 = this.jdField_b_of_type_ComTencentMobileqqArKeyingKeyingBase;
-        n = this.jdField_g_of_type_Int;
-        int i1 = this.jdField_h_of_type_Int;
-        int i2 = this.jdField_i_of_type_Int;
-        paramArrayOfFloat3 = this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingParams;
-        paramArrayOfFloat4 = this.jdField_b_of_type_ArrayOfFloat;
-        paramArrayOfFloat2.a(new int[] { n, i1, i2 }, paramArrayOfFloat3, paramArrayOfFloat1, paramArrayOfFloat4);
+      if (this.m) {
+        this.m = false;
       }
     }
   }
@@ -243,43 +254,45 @@ class OnlineVideoARRenderable
   public float[] a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float[] paramArrayOfFloat3)
   {
     Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
-    if (c() == 2) {
+    if (c() == 2)
+    {
       if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo$ARVideoLayout != null)
       {
         Matrix.scaleM(this.jdField_a_of_type_ArrayOfFloat, 0, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo$ARVideoLayout.jdField_a_of_type_Float * paramArrayOfFloat1[0], this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo$ARVideoLayout.jdField_b_of_type_Float * paramArrayOfFloat1[1], 1.0F);
         Matrix.translateM(this.jdField_a_of_type_ArrayOfFloat, 0, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo$ARVideoLayout.jdField_c_of_type_Float, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo$ARVideoLayout.d, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo$ARVideoLayout.e);
       }
     }
-    for (;;)
+    else if ((paramArrayOfFloat2 != null) && (paramArrayOfFloat3 != null))
     {
-      return this.jdField_a_of_type_ArrayOfFloat;
-      if ((paramArrayOfFloat2 != null) && (paramArrayOfFloat3 != null)) {
-        break;
+      if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_c_of_type_Int != 1) {
+        Matrix.scaleM(this.jdField_a_of_type_ArrayOfFloat, 0, paramArrayOfFloat1[0], paramArrayOfFloat1[1], 1.0F);
       }
+      paramArrayOfFloat1 = this.jdField_a_of_type_ArrayOfFloat;
+      Matrix.multiplyMM(paramArrayOfFloat1, 0, paramArrayOfFloat2, 0, paramArrayOfFloat1, 0);
+      paramArrayOfFloat1 = this.jdField_a_of_type_ArrayOfFloat;
+      Matrix.multiplyMM(paramArrayOfFloat1, 0, paramArrayOfFloat3, 0, paramArrayOfFloat1, 0);
+    }
+    else
+    {
       this.jdField_a_of_type_ArrayOfFloat = new float[16];
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_c_of_type_Int == 1) {}
-    for (;;)
-    {
-      Matrix.multiplyMM(this.jdField_a_of_type_ArrayOfFloat, 0, paramArrayOfFloat2, 0, this.jdField_a_of_type_ArrayOfFloat, 0);
-      Matrix.multiplyMM(this.jdField_a_of_type_ArrayOfFloat, 0, paramArrayOfFloat3, 0, this.jdField_a_of_type_ArrayOfFloat, 0);
-      break;
-      Matrix.scaleM(this.jdField_a_of_type_ArrayOfFloat, 0, paramArrayOfFloat1[0], paramArrayOfFloat1[1], 1.0F);
-    }
+    return this.jdField_a_of_type_ArrayOfFloat;
   }
   
   public int b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_a_of_type_Int;
+    OnlineVideoARRenderableInfo localOnlineVideoARRenderableInfo = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo;
+    if (localOnlineVideoARRenderableInfo != null) {
+      return localOnlineVideoARRenderableInfo.jdField_a_of_type_Int;
     }
     return 4;
   }
   
   public int c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_b_of_type_Int;
+    OnlineVideoARRenderableInfo localOnlineVideoARRenderableInfo = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo;
+    if (localOnlineVideoARRenderableInfo != null) {
+      return localOnlineVideoARRenderableInfo.jdField_b_of_type_Int;
     }
     return 0;
   }
@@ -292,7 +305,10 @@ class OnlineVideoARRenderable
   @TargetApi(11)
   public void c()
   {
-    QLog.d("AREngine_OnlineVideoARRenderable", 1, "init, mHasSDKInit=" + this.jdField_b_of_type_Boolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("init, mHasSDKInit=");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    QLog.d("AREngine_OnlineVideoARRenderable", 1, localStringBuilder.toString());
     if (this.jdField_b_of_type_Boolean) {
       return;
     }
@@ -314,42 +330,53 @@ class OnlineVideoARRenderable
   
   public void d()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_OnlineVideoARRenderable", 2, "start, arResourceInfo=" + this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("start, arResourceInfo=");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo);
+      QLog.d("AREngine_OnlineVideoARRenderable", 2, ((StringBuilder)localObject).toString());
     }
-    if ((this.j) || (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer == null) || (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isPlaying())) {
+    if ((!this.j) && (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) && (!this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isPlaying()))
+    {
+      if ((this.jdField_a_of_type_Long >= 0L) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+      {
+        if (!this.jdField_b_of_type_Boolean)
+        {
+          QLog.d("AREngine_OnlineVideoARRenderable", 1, "init failed");
+          return;
+        }
+        this.jdField_c_of_type_Boolean = false;
+        this.jdField_e_of_type_Boolean = false;
+        this.jdField_f_of_type_Boolean = false;
+        this.jdField_g_of_type_Boolean = false;
+        this.jdField_c_of_type_Int = 1;
+        this.jdField_f_of_type_Int = 0;
+        this.l = false;
+        this.jdField_d_of_type_Boolean = true;
+        this.j = true;
+        localObject = AROnlineVideoUtil.a(this.jdField_a_of_type_JavaLangString);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("start, video dir=");
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append(", mSoftwarePlayConfig=");
+          localStringBuilder.append(false);
+          QLog.d("AREngine_OnlineVideoARRenderable", 2, localStringBuilder.toString());
+        }
+        a(this.jdField_a_of_type_JavaLangString);
+        return;
+      }
       if (QLog.isColorLevel()) {
-        QLog.d("AREngine_OnlineVideoARRenderable", 2, "start, mMediaPlayer == null || mMediaPlayer.isPlaying()");
+        QLog.d("AREngine_OnlineVideoARRenderable", 2, "start, mVideoSize < 0 || TextUtils.isEmpty(mVideoUrl)");
       }
-    }
-    do
-    {
-      return;
-      if ((this.jdField_a_of_type_Long >= 0L) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("AREngine_OnlineVideoARRenderable", 2, "start, mVideoSize < 0 || TextUtils.isEmpty(mVideoUrl)");
-    return;
-    if (!this.jdField_b_of_type_Boolean)
-    {
-      QLog.d("AREngine_OnlineVideoARRenderable", 1, "init failed");
       return;
     }
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_g_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = 1;
-    this.jdField_f_of_type_Int = 0;
-    this.l = false;
-    this.jdField_d_of_type_Boolean = true;
-    this.j = true;
-    String str = AROnlineVideoUtil.a(this.jdField_a_of_type_JavaLangString);
     if (QLog.isColorLevel()) {
-      QLog.d("AREngine_OnlineVideoARRenderable", 2, "start, video dir=" + str + ", mSoftwarePlayConfig=" + false);
+      QLog.d("AREngine_OnlineVideoARRenderable", 2, "start, mMediaPlayer == null || mMediaPlayer.isPlaying()");
     }
-    a(this.jdField_a_of_type_JavaLangString);
   }
   
   public boolean d()
@@ -379,39 +406,42 @@ class OnlineVideoARRenderable
     this.jdField_c_of_type_Int = 1;
     this.j = false;
     this.jdField_h_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.stop();
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.release();
-      if (this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase != null)
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
+      try
       {
-        this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase.b();
-        this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase = null;
+        this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.stop();
+        this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.release();
       }
-      if (this.jdField_b_of_type_ComTencentMobileqqArKeyingKeyingBase != null)
+      catch (Exception localException)
       {
-        this.jdField_b_of_type_ComTencentMobileqqArKeyingKeyingBase.b();
-        this.jdField_b_of_type_ComTencentMobileqqArKeyingKeyingBase = null;
-      }
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("decode_type", String.valueOf(this.jdField_f_of_type_Int));
-      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "immersed_ar_decode_type", true, 0L, 0L, localHashMap, "", false);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.d("AREngine_OnlineVideoARRenderable", 1, "onDestroy exception, msg=" + localException.getMessage());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onDestroy exception, msg=");
+        localStringBuilder.append(localException.getMessage());
+        QLog.d("AREngine_OnlineVideoARRenderable", 1, localStringBuilder.toString());
         if (QLog.isColorLevel()) {
           localException.printStackTrace();
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback != null) {
-          this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_a_of_type_JavaLangString);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback;
+        if (localObject != null) {
+          ((ARRenderMangerInnerCallback)localObject).a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_a_of_type_JavaLangString);
         }
       }
     }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase;
+    if (localObject != null)
+    {
+      ((KeyingBase)localObject).b();
+      this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingBase = null;
+    }
+    localObject = this.jdField_b_of_type_ComTencentMobileqqArKeyingKeyingBase;
+    if (localObject != null)
+    {
+      ((KeyingBase)localObject).b();
+      this.jdField_b_of_type_ComTencentMobileqqArKeyingKeyingBase = null;
+    }
+    localObject = new HashMap();
+    ((HashMap)localObject).put("decode_type", String.valueOf(this.jdField_f_of_type_Int));
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "immersed_ar_decode_type", true, 0L, 0L, (HashMap)localObject, "", false);
   }
   
   public void onCompletion(ISuperPlayer paramISuperPlayer)
@@ -419,28 +449,30 @@ class OnlineVideoARRenderable
     if (QLog.isColorLevel()) {
       QLog.d("AREngine_OnlineVideoARRenderable", 2, "onCompletion");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.b(2, this.jdField_e_of_type_Int - this.jdField_c_of_type_Int);
+    paramISuperPlayer = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback;
+    if (paramISuperPlayer != null) {
+      paramISuperPlayer.b(2, this.jdField_e_of_type_Int - this.jdField_c_of_type_Int);
     }
     if (this.jdField_c_of_type_Int >= this.jdField_e_of_type_Int)
     {
       this.jdField_f_of_type_Boolean = true;
       this.jdField_g_of_type_Boolean = false;
-    }
-    do
-    {
       return;
-      paramISuperPlayer = new OnlineVideoARRenderable.5(this);
-    } while (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback == null);
-    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(paramISuperPlayer);
+    }
+    paramISuperPlayer = new OnlineVideoARRenderable.5(this);
+    ARRenderMangerInnerCallback localARRenderMangerInnerCallback = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback;
+    if (localARRenderMangerInnerCallback != null) {
+      localARRenderMangerInnerCallback.a(paramISuperPlayer);
+    }
   }
   
   public void onDefinitionInfoUpdate(ISuperPlayer paramISuperPlayer, String paramString, ArrayList<String> paramArrayList) {}
   
   public boolean onError(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_a_of_type_JavaLangString);
+    paramISuperPlayer = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback;
+    if (paramISuperPlayer != null) {
+      paramISuperPlayer.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelOnlineVideoARRenderableInfo.jdField_a_of_type_JavaLangString);
     }
     f();
     return false;
@@ -470,44 +502,49 @@ class OnlineVideoARRenderable
   
   public void onVideoPrepared(ISuperPlayer paramISuperPlayer)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_OnlineVideoARRenderable", 2, "onVideoPrepared. mCanPlay=" + this.jdField_d_of_type_Boolean);
-    }
-    if (!this.jdField_d_of_type_Boolean) {}
-    for (;;)
+    if (QLog.isColorLevel())
     {
+      paramISuperPlayer = new StringBuilder();
+      paramISuperPlayer.append("onVideoPrepared. mCanPlay=");
+      paramISuperPlayer.append(this.jdField_d_of_type_Boolean);
+      QLog.d("AREngine_OnlineVideoARRenderable", 2, paramISuperPlayer.toString());
+    }
+    if (!this.jdField_d_of_type_Boolean) {
       return;
-      if (this.jdField_h_of_type_Boolean)
+    }
+    if (this.jdField_h_of_type_Boolean)
+    {
+      this.jdField_h_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.start();
+      return;
+    }
+    this.jdField_c_of_type_Boolean = true;
+    try
+    {
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.start();
+      this.jdField_g_of_type_Boolean = true;
+      if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback != null)
       {
-        this.jdField_h_of_type_Boolean = false;
-        this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.start();
+        this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.b(0, this.jdField_e_of_type_Int);
         return;
       }
-      this.jdField_c_of_type_Boolean = true;
-      try
-      {
-        this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.start();
-        this.jdField_g_of_type_Boolean = true;
-        if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback != null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.b(0, this.jdField_e_of_type_Int);
-          return;
-        }
+    }
+    catch (Exception paramISuperPlayer)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onVideoPrepared, exception=");
+      localStringBuilder.append(paramISuperPlayer.getMessage());
+      QLog.d("AREngine_OnlineVideoARRenderable", 1, localStringBuilder.toString());
+      if (QLog.isColorLevel()) {
+        paramISuperPlayer.printStackTrace();
       }
-      catch (Exception paramISuperPlayer)
-      {
-        QLog.d("AREngine_OnlineVideoARRenderable", 1, "onVideoPrepared, exception=" + paramISuperPlayer.getMessage());
-        if (QLog.isColorLevel()) {
-          paramISuperPlayer.printStackTrace();
-        }
-        f();
-      }
+      f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.OnlineVideoARRenderable
  * JD-Core Version:    0.7.0.1
  */

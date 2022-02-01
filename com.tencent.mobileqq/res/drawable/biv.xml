@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<inset android:insetLeft="9.5dip" android:insetRight="9.5dip" android:insetTop="8.0dip" android:insetBottom="8.0dip"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <shape>
-        <corners android:radius="3.0dip" />
-        <size android:height="3.0dip" android:width="20.0dip" />
-        <solid android:color="#ffffffff" />
-    </shape>
-</inset>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#7d000000" />
+            <corners android:radius="10.0dip" />
+        </shape>
+    </item>
+</selector>

@@ -33,13 +33,15 @@ public final class online_docs$DocMetaData
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 114, 122, 130, 138 }, new String[] { "doc_id", "title", "creator_uin", "create_ts", "last_modify_uin", "last_modify_ts", "owner_uin", "doc_type", "creator_uid", "last_modify_uid", "owner_uid", "doc_status", "status_change_ts", "doc_icon", "doc_type_desc", "doc_thumbnail", "short_url" }, new Object[] { null, localByteStringMicro, Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), "", "", "", "" }, DocMetaData.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 114, 122, 130, 138 }, new String[] { "doc_id", "title", "creator_uin", "create_ts", "last_modify_uin", "last_modify_ts", "owner_uin", "doc_type", "creator_uid", "last_modify_uid", "owner_uid", "doc_status", "status_change_ts", "doc_icon", "doc_type_desc", "doc_thumbnail", "short_url" }, new Object[] { null, localByteStringMicro, localLong, localInteger, localLong, localInteger, localLong, localInteger, localLong, localLong, localLong, localInteger, localInteger, "", "", "", "" }, DocMetaData.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xae9.online_docs.DocMetaData
  * JD-Core Version:    0.7.0.1
  */

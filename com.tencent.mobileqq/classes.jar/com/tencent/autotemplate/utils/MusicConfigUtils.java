@@ -17,17 +17,20 @@ public class MusicConfigUtils
       paramString = JsonUtils.parseRhythmTemplate(null, paramString).allData.iterator();
       while (paramString.hasNext())
       {
-        RhythmDataBean.PackedEffectPoints localPackedEffectPoints = (RhythmDataBean.PackedEffectPoints)paramString.next();
-        if ((localPackedEffectPoints != null) && (localPackedEffectPoints.name != null) && (localPackedEffectPoints.effectPoints != null) && (TextUtils.equals(localPackedEffectPoints.name, "StartValueTrail")) && (localPackedEffectPoints.effectPoints != null) && (!localPackedEffectPoints.effectPoints.isEmpty()))
+        localObject = (RhythmDataBean.PackedEffectPoints)paramString.next();
+        if ((localObject != null) && (((RhythmDataBean.PackedEffectPoints)localObject).name != null) && (((RhythmDataBean.PackedEffectPoints)localObject).effectPoints != null) && (TextUtils.equals(((RhythmDataBean.PackedEffectPoints)localObject).name, "StartValueTrail")) && (((RhythmDataBean.PackedEffectPoints)localObject).effectPoints != null) && (!((RhythmDataBean.PackedEffectPoints)localObject).effectPoints.isEmpty()))
         {
-          long l = ((TAVEffectPoint)localPackedEffectPoints.effectPoints.get(0)).getTime();
+          long l = ((TAVEffectPoint)((RhythmDataBean.PackedEffectPoints)localObject).effectPoints.get(0)).getTime();
           return l;
         }
       }
     }
     catch (Exception paramString)
     {
-      Log.e("MusicConfigUtils", "getMusicStartTime err:" + paramString);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getMusicStartTime err:");
+      ((StringBuilder)localObject).append(paramString);
+      Log.e("MusicConfigUtils", ((StringBuilder)localObject).toString());
     }
     return -1L;
   }

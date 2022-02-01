@@ -26,40 +26,32 @@ public class ImportantMsgEntryConfig
   {
     ImportantMsgEntryConfig localImportantMsgEntryConfig = new ImportantMsgEntryConfig();
     int i = 0;
-    if (i < paramArrayOfQConfItem.length)
+    while (i < paramArrayOfQConfItem.length)
     {
       Object localObject = paramArrayOfQConfItem[i].jdField_a_of_type_JavaLangString;
-      if (TextUtils.isEmpty((CharSequence)localObject)) {}
-      for (;;)
-      {
-        i += 1;
-        break;
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
         try
         {
           HashMap localHashMap = new HashMap();
-          localObject = new JSONObject((String)localObject);
+          localObject = new JSONObject((String)localObject).optJSONArray("configs");
           if (localObject != null)
           {
-            localObject = ((JSONObject)localObject).optJSONArray("configs");
-            if (localObject != null)
+            int j = 0;
+            while (j < ((JSONArray)localObject).length())
             {
-              int j = 0;
-              while (j < ((JSONArray)localObject).length())
+              int k = -1;
+              ImportantMsgEntryConfig.EntryConfig localEntryConfig = new ImportantMsgEntryConfig.EntryConfig();
+              JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(j);
+              if (localJSONObject != null)
               {
-                int k = -1;
-                ImportantMsgEntryConfig.EntryConfig localEntryConfig = new ImportantMsgEntryConfig.EntryConfig();
-                JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(j);
-                if (localJSONObject != null)
-                {
-                  k = localJSONObject.optInt("t");
-                  localEntryConfig.jdField_a_of_type_JavaLangString = localJSONObject.optString("url");
-                  localEntryConfig.jdField_a_of_type_Long = localJSONObject.optLong("id");
-                  localEntryConfig.jdField_a_of_type_Int = localJSONObject.optInt("titletype");
-                  localEntryConfig.b = localJSONObject.optString("deftitle");
-                }
-                localHashMap.put(Integer.valueOf(k), localEntryConfig);
-                j += 1;
+                k = localJSONObject.optInt("t");
+                localEntryConfig.jdField_a_of_type_JavaLangString = localJSONObject.optString("url");
+                localEntryConfig.jdField_a_of_type_Long = localJSONObject.optLong("id");
+                localEntryConfig.jdField_a_of_type_Int = localJSONObject.optInt("titletype");
+                localEntryConfig.b = localJSONObject.optString("deftitle");
               }
+              localHashMap.put(Integer.valueOf(k), localEntryConfig);
+              j += 1;
             }
           }
           localImportantMsgEntryConfig.a(localHashMap);
@@ -69,6 +61,7 @@ public class ImportantMsgEntryConfig
           localJSONException.printStackTrace();
         }
       }
+      i += 1;
     }
     if (QLog.isColorLevel()) {
       QLog.i("ImportantMsgEntryConfig", 2, localImportantMsgEntryConfig.toString());
@@ -97,7 +90,7 @@ public class ImportantMsgEntryConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMsgEntryConfig
  * JD-Core Version:    0.7.0.1
  */

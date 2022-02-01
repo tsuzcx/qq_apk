@@ -16,34 +16,34 @@ class AbsListView$PerformClick
   
   public void run()
   {
-    if (this.this$0.mDataChanged) {}
-    ListAdapter localListAdapter;
-    int i;
-    boolean bool;
-    View localView;
-    do
-    {
-      do
-      {
-        return;
-        localListAdapter = this.this$0.mAdapter;
-        i = this.mClickMotionPosition;
-        bool = AbsListView.access$500(this.this$0, i, this.this$0.mAdapter.getCount());
-      } while ((localListAdapter == null) || ((!bool) && (!AbsListView.access$600(this.this$0))) || (!sameWindow()));
-      localView = this.this$0.getChildAt(i - this.this$0.mFirstPosition);
-    } while ((localView == null) && (!AbsListView.access$600(this.this$0)));
-    AbsListView localAbsListView = this.this$0;
-    if (bool) {}
-    for (long l = localListAdapter.getItemId(i);; l = 0L)
-    {
-      localAbsListView.performItemClick(localView, i, l);
+    if (this.this$0.mDataChanged) {
       return;
+    }
+    ListAdapter localListAdapter = this.this$0.mAdapter;
+    int i = this.mClickMotionPosition;
+    Object localObject = this.this$0;
+    boolean bool = AbsListView.access$500((AbsListView)localObject, i, ((AbsListView)localObject).mAdapter.getCount());
+    if ((localListAdapter != null) && ((bool) || (AbsListView.access$600(this.this$0))) && (sameWindow()))
+    {
+      localObject = this.this$0;
+      localObject = ((AbsListView)localObject).getChildAt(i - ((AbsListView)localObject).mFirstPosition);
+      if ((localObject != null) || (AbsListView.access$600(this.this$0)))
+      {
+        AbsListView localAbsListView = this.this$0;
+        long l;
+        if (bool) {
+          l = localListAdapter.getItemId(i);
+        } else {
+          l = 0L;
+        }
+        localAbsListView.performItemClick((View)localObject, i, l);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.AbsListView.PerformClick
  * JD-Core Version:    0.7.0.1
  */

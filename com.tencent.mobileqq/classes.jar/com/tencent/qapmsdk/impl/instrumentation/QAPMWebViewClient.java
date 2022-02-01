@@ -28,14 +28,14 @@ public class QAPMWebViewClient
   {
     JsInjector.getInstance().onPageStarted(paramWebView);
     super.onPageStarted(paramWebView, paramString, paramBitmap);
-    if (Build.VERSION.SDK_INT < 19) {}
-    do
-    {
+    if (Build.VERSION.SDK_INT < 19) {
       return;
-      this.mainPageUrl = paramString;
-      WebViewX5Proxy.getInstance().setCodeTypeIsX5(false);
-    } while ((!WebViewX5Proxy.getInstance().getWebViewMonitorState()) || (paramWebView.getTag(33554432) != null));
-    paramWebView.addJavascriptInterface(QAPMJavaScriptBridge.getInstance(), "QAPMAndroidJsBridge");
+    }
+    this.mainPageUrl = paramString;
+    WebViewX5Proxy.getInstance().setCodeTypeIsX5(false);
+    if ((WebViewX5Proxy.getInstance().getWebViewMonitorState()) && (paramWebView.getTag(33554432) == null)) {
+      paramWebView.addJavascriptInterface(QAPMJavaScriptBridge.getInstance(), "QAPMAndroidJsBridge");
+    }
   }
   
   public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
@@ -61,7 +61,7 @@ public class QAPMWebViewClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.QAPMWebViewClient
  * JD-Core Version:    0.7.0.1
  */

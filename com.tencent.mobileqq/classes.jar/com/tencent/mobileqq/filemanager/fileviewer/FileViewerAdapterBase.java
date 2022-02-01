@@ -53,14 +53,14 @@ public abstract class FileViewerAdapterBase
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public boolean a()
-  {
-    return this.d;
-  }
-  
   public void b(boolean paramBoolean)
   {
     this.b = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.d;
   }
   
   public String f()
@@ -70,31 +70,37 @@ public abstract class FileViewerAdapterBase
   
   public String i()
   {
-    String str2 = "";
-    String str1 = str2;
-    if (c() > 0L)
+    long l = c();
+    String str = "";
+    Object localObject = str;
+    if (l > 0L)
     {
-      str1 = str2;
-      if (c() != 3) {
-        if ((e() == null) || (e().length() <= 0)) {
-          break label92;
+      localObject = str;
+      if (c() != 3)
+      {
+        int i;
+        if ((e() != null) && (e().length() > 0)) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        localObject = str;
+        if (i == 0)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("");
+          ((StringBuilder)localObject).append(BaseApplicationImpl.getContext().getString(2131692346));
+          ((StringBuilder)localObject).append(FileManagerUtil.a(c(), b()));
+          localObject = ((StringBuilder)localObject).toString();
         }
       }
     }
-    label92:
-    for (int i = 1;; i = 0)
-    {
-      str1 = str2;
-      if (i == 0) {
-        str1 = "" + BaseApplicationImpl.getContext().getString(2131692414) + FileManagerUtil.a(c(), b());
-      }
-      return str1;
-    }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileViewerAdapterBase
  * JD-Core Version:    0.7.0.1
  */

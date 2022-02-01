@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.qassistant.core;
 
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.NetReq;
 import com.tencent.mobileqq.transfile.NetworkCenter;
 import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppRuntime;
 
 final class LoadManager$1
   implements Runnable
@@ -17,14 +18,18 @@ final class LoadManager$1
   {
     try
     {
-      HttpNetReq localHttpNetReq = new HttpNetReq();
-      localHttpNetReq.mCallback = new LoadManager.1.1(this);
-      localHttpNetReq.mReqUrl = this.c;
-      localHttpNetReq.mHttpMethod = 0;
-      localHttpNetReq.mOutPath = this.jdField_a_of_type_JavaIoFile.getPath();
-      localHttpNetReq.mContinuErrorLimit = NetworkUtil.a(NetworkCenter.getInstance().getNetType());
-      ((IHttpEngineService)AssistantUtils.a().getRuntimeService(IHttpEngineService.class, "all")).sendReq(localHttpNetReq);
-      AssistantUtils.a(this.jdField_a_of_type_JavaLangString, "DownLoadZipFile startDownloadZipFile, url: " + this.c);
+      Object localObject = new HttpNetReq();
+      ((HttpNetReq)localObject).mCallback = new LoadManager.1.1(this);
+      ((HttpNetReq)localObject).mReqUrl = this.c;
+      ((HttpNetReq)localObject).mHttpMethod = 0;
+      ((HttpNetReq)localObject).mOutPath = this.jdField_a_of_type_JavaIoFile.getPath();
+      ((HttpNetReq)localObject).mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
+      ((IHttpEngineService)AssistantUtils.a().getRuntimeService(IHttpEngineService.class, "all")).sendReq((NetReq)localObject);
+      localObject = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("DownLoadZipFile startDownloadZipFile, url: ");
+      localStringBuilder.append(this.c);
+      AssistantUtils.a((String)localObject, localStringBuilder.toString());
       return;
     }
     catch (Exception localException)
@@ -36,7 +41,7 @@ final class LoadManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.core.LoadManager.1
  * JD-Core Version:    0.7.0.1
  */

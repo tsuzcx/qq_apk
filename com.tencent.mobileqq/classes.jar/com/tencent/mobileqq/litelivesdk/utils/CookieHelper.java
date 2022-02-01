@@ -9,71 +9,71 @@ public class CookieHelper
 {
   public static String a()
   {
-    Object localObject2 = BusinessManager.a.a();
+    Object localObject = BusinessManager.a.a();
     LoginResult localLoginResult = LoginManager.a.a();
-    label60:
+    String str2 = "";
+    if (localLoginResult == null) {
+      str1 = "";
+    } else {
+      str1 = String.valueOf(LoginManager.a.a().a);
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uin=o");
+    localStringBuilder.append(str1);
+    localStringBuilder.append(";skey=");
+    localStringBuilder.append("");
+    String str1 = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str1);
+    localStringBuilder.append(";versioncode=10001");
+    str1 = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str1);
+    localStringBuilder.append(";__client_type=");
     int i;
-    label114:
-    long l;
-    if (localLoginResult == null)
-    {
-      localObject1 = "";
-      StringBuilder localStringBuilder = new StringBuilder().append("uin=o").append((String)localObject1).append(";skey=");
-      if (0 == 0) {
-        break label244;
-      }
-      localObject1 = new String(null);
-      localObject1 = (String)localObject1;
-      localObject1 = (String)localObject1 + ";versioncode=10001";
-      localObject1 = new StringBuilder().append((String)localObject1).append(";__client_type=");
-      if (localObject2 != null) {
-        break label250;
-      }
+    if (localObject == null) {
       i = 0;
-      localObject1 = i;
-      localObject1 = new StringBuilder().append((String)localObject1).append(";ilive_uin=");
-      if (localLoginResult != null) {
-        break label259;
-      }
+    } else {
+      i = ((BusinessConfig)localObject).d;
+    }
+    localStringBuilder.append(i);
+    str1 = localStringBuilder.toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(str1);
+    ((StringBuilder)localObject).append(";ilive_uin=");
+    long l;
+    if (localLoginResult == null) {
       l = 0L;
-      label147:
-      localObject1 = l;
-      localObject2 = new StringBuilder().append((String)localObject1).append(";ilive_tinyid=");
-      if (localLoginResult != null) {
-        break label268;
-      }
-      localObject1 = "";
-      label182:
-      localObject1 = (String)localObject1;
-      localObject2 = new StringBuilder().append((String)localObject1).append(";ilive_a2=");
-      if (localLoginResult != null) {
-        break label277;
-      }
-    }
-    label259:
-    label268:
-    label277:
-    for (Object localObject1 = "";; localObject1 = localLoginResult.e)
-    {
-      return (String)localObject1;
-      localObject1 = String.valueOf(LoginManager.a.a().a);
-      break;
-      label244:
-      localObject1 = "";
-      break label60;
-      label250:
-      i = ((BusinessConfig)localObject2).d;
-      break label114;
+    } else {
       l = localLoginResult.a;
-      break label147;
-      localObject1 = localLoginResult.f;
-      break label182;
     }
+    ((StringBuilder)localObject).append(l);
+    str1 = ((StringBuilder)localObject).toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(str1);
+    ((StringBuilder)localObject).append(";ilive_tinyid=");
+    if (localLoginResult == null) {
+      str1 = "";
+    } else {
+      str1 = localLoginResult.f;
+    }
+    ((StringBuilder)localObject).append(str1);
+    str1 = ((StringBuilder)localObject).toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(str1);
+    ((StringBuilder)localObject).append(";ilive_a2=");
+    if (localLoginResult == null) {
+      str1 = str2;
+    } else {
+      str1 = localLoginResult.e;
+    }
+    ((StringBuilder)localObject).append(str1);
+    return ((StringBuilder)localObject).toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.utils.CookieHelper
  * JD-Core Version:    0.7.0.1
  */

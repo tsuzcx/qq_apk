@@ -9,7 +9,10 @@ class NetworkChangeNotifierAutoDetect$MyNetworkCallback$1
   
   public void run()
   {
-    TPDLProxyLog.d("NetworkChangeNotifierAutoDetect.java", 0, "tpdlnative", "onAvailable, netId:" + this.val$netId);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onAvailable, netId:");
+    localStringBuilder.append(this.val$netId);
+    TPDLProxyLog.d("NetworkChangeNotifierAutoDetect.java", 0, "tpdlnative", localStringBuilder.toString());
     NetworkChangeNotifierAutoDetect.access$300(this.this$1.this$0).onNetworkConnect(this.val$netId, this.val$connectionType);
     if (this.val$makeVpnDefault)
     {
@@ -20,7 +23,7 @@ class NetworkChangeNotifierAutoDetect$MyNetworkCallback$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.net.NetworkChangeNotifierAutoDetect.MyNetworkCallback.1
  * JD-Core Version:    0.7.0.1
  */

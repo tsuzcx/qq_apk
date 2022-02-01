@@ -39,25 +39,30 @@ public class ApolloRecordUtil
   {
     if (paramInt1 < paramInt3)
     {
-      QLog.e("ApolloRecordUtil", 1, "flipVerticalAndCropCenter originWidth < width error" + paramInt1 + "<" + paramInt3);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("flipVerticalAndCropCenter originWidth < width error");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append("<");
+      ((StringBuilder)localObject).append(paramInt3);
+      QLog.e("[cmshow]ApolloRecordUtil", 1, ((StringBuilder)localObject).toString());
       return paramArrayOfByte;
     }
-    byte[] arrayOfByte = new byte[paramInt2 * paramInt3 * 4];
+    Object localObject = new byte[paramInt2 * paramInt3 * 4];
     if (paramInt2 * paramInt1 * 4 <= paramArrayOfByte.length)
     {
       int i = paramInt2;
       while (i > 0)
       {
-        System.arraycopy(paramArrayOfByte, (i - 1) * paramInt1 * 4 + (paramInt1 - paramInt3) / 2 * 4, arrayOfByte, (paramInt2 - i) * paramInt3 * 4, paramInt3 * 4);
+        System.arraycopy(paramArrayOfByte, (i - 1) * paramInt1 * 4 + (paramInt1 - paramInt3) / 2 * 4, localObject, (paramInt2 - i) * paramInt3 * 4, paramInt3 * 4);
         i -= 1;
       }
     }
-    return arrayOfByte;
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloRecordUtil
  * JD-Core Version:    0.7.0.1
  */

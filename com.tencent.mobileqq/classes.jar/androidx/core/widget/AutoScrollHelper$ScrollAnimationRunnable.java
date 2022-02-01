@@ -14,30 +14,32 @@ class AutoScrollHelper$ScrollAnimationRunnable
     }
     if (this.this$0.mNeedsReset)
     {
-      this.this$0.mNeedsReset = false;
-      this.this$0.mScroller.start();
+      localObject = this.this$0;
+      ((AutoScrollHelper)localObject).mNeedsReset = false;
+      ((AutoScrollHelper)localObject).mScroller.start();
     }
-    AutoScrollHelper.ClampedScroller localClampedScroller = this.this$0.mScroller;
-    if ((localClampedScroller.isFinished()) || (!this.this$0.shouldAnimate()))
+    Object localObject = this.this$0.mScroller;
+    if ((!((AutoScrollHelper.ClampedScroller)localObject).isFinished()) && (this.this$0.shouldAnimate()))
     {
-      this.this$0.mAnimating = false;
+      if (this.this$0.mNeedsCancel)
+      {
+        AutoScrollHelper localAutoScrollHelper = this.this$0;
+        localAutoScrollHelper.mNeedsCancel = false;
+        localAutoScrollHelper.cancelTargetTouch();
+      }
+      ((AutoScrollHelper.ClampedScroller)localObject).computeScrollDelta();
+      int i = ((AutoScrollHelper.ClampedScroller)localObject).getDeltaX();
+      int j = ((AutoScrollHelper.ClampedScroller)localObject).getDeltaY();
+      this.this$0.scrollTargetBy(i, j);
+      ViewCompat.postOnAnimation(this.this$0.mTarget, this);
       return;
     }
-    if (this.this$0.mNeedsCancel)
-    {
-      this.this$0.mNeedsCancel = false;
-      this.this$0.cancelTargetTouch();
-    }
-    localClampedScroller.computeScrollDelta();
-    int i = localClampedScroller.getDeltaX();
-    int j = localClampedScroller.getDeltaY();
-    this.this$0.scrollTargetBy(i, j);
-    ViewCompat.postOnAnimation(this.this$0.mTarget, this);
+    this.this$0.mAnimating = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.widget.AutoScrollHelper.ScrollAnimationRunnable
  * JD-Core Version:    0.7.0.1
  */

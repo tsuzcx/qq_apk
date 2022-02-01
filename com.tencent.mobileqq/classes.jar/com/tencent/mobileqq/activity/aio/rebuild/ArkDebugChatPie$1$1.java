@@ -2,7 +2,8 @@ package com.tencent.mobileqq.activity.aio.rebuild;
 
 import com.tencent.ark.ArkDebugger.DebuggerCallback;
 import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.api.IArkThreadManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 
 class ArkDebugChatPie$1$1
@@ -18,7 +19,7 @@ class ArkDebugChatPie$1$1
   
   public boolean ReadyToRun(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    ArkAppCenter.a().postToMainThread(new ArkDebugChatPie.1.1.4(this, paramString4, paramString3, paramString1, paramString2));
+    ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToMainThread(new ArkDebugChatPie.1.1.4(this, paramString4, paramString3, paramString2, paramString1));
     QLog.d(this.a.this$0.b, 1, String.format("ArkDebugger ReadyToRun viewId: %s, metaData: %s, mode: %s", new Object[] { paramString1, paramString2, paramString3 }));
     return true;
   }
@@ -39,7 +40,7 @@ class ArkDebugChatPie$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1.1
  * JD-Core Version:    0.7.0.1
  */

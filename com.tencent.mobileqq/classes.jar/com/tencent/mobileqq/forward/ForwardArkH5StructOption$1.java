@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.forward;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.CheckShareUrlResult;
+import com.tencent.mobileqq.ark.secure.CheckShareUrlResult;
 import com.tencent.qphone.base.util.QLog;
 
 class ForwardArkH5StructOption$1
-  implements ArkAppModuleReg.CheckShareUrlResult
+  implements CheckShareUrlResult
 {
   ForwardArkH5StructOption$1(ForwardArkH5StructOption paramForwardArkH5StructOption) {}
   
@@ -19,7 +19,7 @@ class ForwardArkH5StructOption$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardArkH5StructOption.1
  * JD-Core Version:    0.7.0.1
  */

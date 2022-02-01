@@ -11,11 +11,17 @@ class DoubleVideoCtrlUI$13
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.d, 1, "showNoAnswerAnimation, onAnimationEnd, seq[" + this.jdField_a_of_type_Long + "]");
+    paramAnimation = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.d;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("showNoAnswerAnimation, onAnimationEnd, seq[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("]");
+    QLog.w(paramAnimation, 1, localStringBuilder.toString());
     if (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a != null)
     {
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.c = true;
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a.j();
+      paramAnimation = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI;
+      paramAnimation.c = true;
+      paramAnimation.a.j();
     }
     paramAnimation = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a();
     if (paramAnimation != null) {
@@ -27,7 +33,12 @@ class DoubleVideoCtrlUI$13
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.d, 1, "showNoAnswerAnimation, onAnimationStart, seq[" + this.jdField_a_of_type_Long + "]");
+    paramAnimation = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.d;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("showNoAnswerAnimation, onAnimationStart, seq[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("]");
+    QLog.w(paramAnimation, 1, localStringBuilder.toString());
     paramAnimation = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a();
     if (paramAnimation != null) {
       paramAnimation.g(this.jdField_a_of_type_Long);
@@ -36,7 +47,7 @@ class DoubleVideoCtrlUI$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoCtrlUI.13
  * JD-Core Version:    0.7.0.1
  */

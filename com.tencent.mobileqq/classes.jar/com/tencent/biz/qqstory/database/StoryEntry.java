@@ -25,12 +25,22 @@ public class StoryEntry
   
   public static String getTypeOrSelection(int paramInt1, int paramInt2)
   {
-    return "type IN (" + paramInt1 + "," + paramInt2 + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("type IN (");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
   
   public static String getTypeSelection(int paramInt)
   {
-    return "type=" + paramInt + "";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("type=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("");
+    return localStringBuilder.toString();
   }
   
   public static String getUidSelectionNoArg()
@@ -45,12 +55,50 @@ public class StoryEntry
   
   public String toString()
   {
-    return "StoryEntry{key='" + this.key + '\'' + ", type=" + this.type + ", unionId=" + this.unionId + ", updateTime=" + this.updateTime + ", coverUrl='" + this.coverUrl + '\'' + ", totalTime=" + this.totalTime + ", dbTime=" + this.dbTime + ", hasUnWatchVideo=" + this.hasUnWatchVideo + ", videoCount=" + this.videoCount + ", extra1='" + this.extra1 + '\'' + ", extra2='" + this.extra2 + '\'' + ", extra3='" + this.extra3 + '\'' + ", storyTitle='" + this.storyTitle + '\'' + ", mDoodleText='" + this.mDoodleText + '\'' + "} " + super.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("StoryEntry{key='");
+    localStringBuilder.append(this.key);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(", unionId=");
+    localStringBuilder.append(this.unionId);
+    localStringBuilder.append(", updateTime=");
+    localStringBuilder.append(this.updateTime);
+    localStringBuilder.append(", coverUrl='");
+    localStringBuilder.append(this.coverUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", totalTime=");
+    localStringBuilder.append(this.totalTime);
+    localStringBuilder.append(", dbTime=");
+    localStringBuilder.append(this.dbTime);
+    localStringBuilder.append(", hasUnWatchVideo=");
+    localStringBuilder.append(this.hasUnWatchVideo);
+    localStringBuilder.append(", videoCount=");
+    localStringBuilder.append(this.videoCount);
+    localStringBuilder.append(", extra1='");
+    localStringBuilder.append(this.extra1);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", extra2='");
+    localStringBuilder.append(this.extra2);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", extra3='");
+    localStringBuilder.append(this.extra3);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", storyTitle='");
+    localStringBuilder.append(this.storyTitle);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mDoodleText='");
+    localStringBuilder.append(this.mDoodleText);
+    localStringBuilder.append('\'');
+    localStringBuilder.append("} ");
+    localStringBuilder.append(super.toString());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.StoryEntry
  * JD-Core Version:    0.7.0.1
  */

@@ -29,15 +29,17 @@ final class AtomParsers$StszSampleSizeBox
   
   public int readNextSampleSize()
   {
-    if (this.fixedSampleSize == 0) {
-      return this.data.readUnsignedIntToInt();
+    int j = this.fixedSampleSize;
+    int i = j;
+    if (j == 0) {
+      i = this.data.readUnsignedIntToInt();
     }
-    return this.fixedSampleSize;
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.mp4.AtomParsers.StszSampleSizeBox
  * JD-Core Version:    0.7.0.1
  */

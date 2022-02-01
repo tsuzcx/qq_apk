@@ -30,21 +30,17 @@ class TroopPickerViewHelper$DateAdapter
       paramWheelPickerLayout.set(12, 0);
       this.jdField_a_of_type_Boolean = false;
     }
-    for (;;)
+    else if (i < TroopPickerViewHelper.b(paramTroopPickerViewHelper))
     {
-      this.jdField_a_of_type_JavaUtilDate = paramWheelPickerLayout.getTime();
-      return;
-      if (i < TroopPickerViewHelper.b(paramTroopPickerViewHelper))
-      {
-        paramWheelPickerLayout.set(11, TroopPickerViewHelper.b(paramTroopPickerViewHelper));
-        paramWheelPickerLayout.set(12, 0);
-      }
-      else
-      {
-        i = paramWheelPickerLayout.get(12);
-        paramWheelPickerLayout.add(12, TroopPickerViewHelper.c(paramTroopPickerViewHelper) - i % TroopPickerViewHelper.c(paramTroopPickerViewHelper));
-      }
+      paramWheelPickerLayout.set(11, TroopPickerViewHelper.b(paramTroopPickerViewHelper));
+      paramWheelPickerLayout.set(12, 0);
     }
+    else
+    {
+      i = paramWheelPickerLayout.get(12);
+      paramWheelPickerLayout.add(12, TroopPickerViewHelper.c(paramTroopPickerViewHelper) - i % TroopPickerViewHelper.c(paramTroopPickerViewHelper));
+    }
+    this.jdField_a_of_type_JavaUtilDate = paramWheelPickerLayout.getTime();
   }
   
   private String a(int paramInt)
@@ -62,23 +58,29 @@ class TroopPickerViewHelper$DateAdapter
     if (!this.jdField_a_of_type_Boolean) {
       paramInt = i + 1;
     }
-    if (paramInt != 0) {
-      localStringBuilder.append(this.jdField_a_of_type_JavaTextDateFormat.format(Long.valueOf(l2))).append(" ");
-    }
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      localStringBuilder.append(b(localCalendar.get(7)));
+      localStringBuilder.append(this.jdField_a_of_type_JavaTextDateFormat.format(Long.valueOf(l2)));
+      localStringBuilder.append(" ");
     }
-    for (;;)
+    if (paramInt != 0)
     {
-      return localStringBuilder.toString();
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          localStringBuilder.append(b(localCalendar.get(7)));
+        } else {
+          localStringBuilder.append("后天");
+        }
+      }
+      else {
+        localStringBuilder.append("明天");
+      }
+    }
+    else {
       localStringBuilder.append("今天");
-      continue;
-      localStringBuilder.append("明天");
-      continue;
-      localStringBuilder.append("后天");
     }
+    return localStringBuilder.toString();
   }
   
   private String b(int paramInt)
@@ -87,35 +89,37 @@ class TroopPickerViewHelper$DateAdapter
     {
     default: 
       return "";
-    case 1: 
-      return HardCodeUtil.a(2131715555);
-    case 2: 
-      return HardCodeUtil.a(2131715568);
-    case 3: 
-      return HardCodeUtil.a(2131715559);
-    case 4: 
-      return HardCodeUtil.a(2131715553);
-    case 5: 
-      return HardCodeUtil.a(2131715551);
+    case 7: 
+      return HardCodeUtil.a(2131715491);
     case 6: 
-      return HardCodeUtil.a(2131715567);
+      return HardCodeUtil.a(2131715489);
+    case 5: 
+      return HardCodeUtil.a(2131715473);
+    case 4: 
+      return HardCodeUtil.a(2131715475);
+    case 3: 
+      return HardCodeUtil.a(2131715481);
+    case 2: 
+      return HardCodeUtil.a(2131715490);
     }
-    return HardCodeUtil.a(2131715569);
+    return HardCodeUtil.a(2131715477);
   }
   
   public int a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return 0;
-    case 0: 
-      return TroopPickerViewHelper.d(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper);
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          return 0;
+        }
+        return (60 - a(new int[] { this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.a(0), this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.a(1) }).get(12)) / TroopPickerViewHelper.c(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper);
+      }
       paramInt = a(new int[] { this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.a(0) }).get(11);
       return TroopPickerViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper) - paramInt + 1;
     }
-    return (60 - a(new int[] { this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.a(0), this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.a(1) }).get(12)) / TroopPickerViewHelper.c(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper);
+    return TroopPickerViewHelper.d(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper);
   }
   
   public int a(Calendar paramCalendar, int paramInt)
@@ -140,16 +144,18 @@ class TroopPickerViewHelper$DateAdapter
   
   public String a(int paramInt1, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 0)
     {
-    default: 
-      return "";
-    case 0: 
-      return a(paramInt2);
-    case 1: 
+      if (paramInt1 != 1)
+      {
+        if (paramInt1 != 2) {
+          return "";
+        }
+        return String.format("%d分", new Object[] { Integer.valueOf(a(new int[] { this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.a(0), this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.a(1), paramInt2 }).get(12)) });
+      }
       return String.format("%d点", new Object[] { Integer.valueOf(a(new int[] { this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.a(0), paramInt2 }).get(11)) });
     }
-    return String.format("%d分", new Object[] { Integer.valueOf(a(new int[] { this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.a(0), this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.a(1), paramInt2 }).get(12)) });
+    return a(paramInt2);
   }
   
   public Calendar a(int... paramVarArgs)
@@ -199,7 +205,7 @@ class TroopPickerViewHelper$DateAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopPickerViewHelper.DateAdapter
  * JD-Core Version:    0.7.0.1
  */

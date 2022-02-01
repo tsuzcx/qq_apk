@@ -15,25 +15,23 @@ public class AudioPlayerHelper$AudioPlayerParameter
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == this) {}
-    do
-    {
+    if (paramObject == this) {
       return true;
-      if (paramObject == null) {
-        return false;
-      }
-      if (!(paramObject instanceof AudioPlayerParameter)) {
-        break;
-      }
+    }
+    if (paramObject == null) {
+      return false;
+    }
+    if ((paramObject instanceof AudioPlayerParameter))
+    {
       paramObject = (AudioPlayerParameter)paramObject;
-    } while ((paramObject.b == this.b) && (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (paramObject.jdField_a_of_type_Boolean == this.jdField_a_of_type_Boolean));
-    return false;
+      return (paramObject.b == this.b) && (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (paramObject.jdField_a_of_type_Boolean == this.jdField_a_of_type_Boolean);
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.audioplayer.AudioPlayerHelper.AudioPlayerParameter
  * JD-Core Version:    0.7.0.1
  */

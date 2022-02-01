@@ -19,16 +19,21 @@ class TroopMemberHistoryFragment$2
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.c) || (this.b <= 0)) {}
-    while ((paramInt != 0) || (this.b > this.jdField_a_of_type_Int)) {
-      return;
+    if ((!this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.c))
+    {
+      int i = this.b;
+      if (i <= 0) {
+        return;
+      }
+      if ((paramInt == 0) && (i <= this.jdField_a_of_type_Int)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.a(21);
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.a(21);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment.2
  * JD-Core Version:    0.7.0.1
  */

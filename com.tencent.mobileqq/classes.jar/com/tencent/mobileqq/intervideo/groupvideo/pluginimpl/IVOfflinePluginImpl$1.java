@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
 import android.os.Handler;
-import android.os.Message;
 import com.tencent.biz.common.offline.AsyncBack;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
@@ -14,46 +13,59 @@ class IVOfflinePluginImpl$1
   
   public void loaded(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(IVOfflinePluginImpl.access$000(this.this$0), 2, "checkOfflineUp, param = " + paramString + " code = " + paramInt);
+    Object localObject1;
+    StringBuilder localStringBuilder1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = IVOfflinePluginImpl.access$000(this.this$0);
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("checkOfflineUp, param = ");
+      localStringBuilder1.append(paramString);
+      localStringBuilder1.append(" code = ");
+      localStringBuilder1.append(paramInt);
+      QLog.i((String)localObject1, 2, localStringBuilder1.toString());
     }
     if (paramInt == 9)
     {
+      localStringBuilder1 = null;
+      Object localObject2;
       try
       {
-        localObject = new JSONObject(paramString);
-        paramString = (String)localObject;
+        localObject1 = new JSONObject(paramString);
       }
       catch (JSONException localJSONException)
       {
-        for (;;)
+        localJSONException.printStackTrace();
+        localObject2 = localStringBuilder1;
+        if (QLog.isColorLevel())
         {
-          Object localObject;
-          localJSONException.printStackTrace();
-          if (QLog.isColorLevel()) {
-            QLog.i(IVOfflinePluginImpl.access$000(this.this$0), 2, "checkUp loaded err:" + paramString);
-          }
-          paramString = null;
+          localObject2 = IVOfflinePluginImpl.access$000(this.this$0);
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("checkUp loaded err:");
+          localStringBuilder2.append(paramString);
+          QLog.i((String)localObject2, 2, localStringBuilder2.toString());
+          localObject2 = localStringBuilder1;
         }
       }
-      localObject = IVOfflinePluginImpl.access$100(this.this$0).obtainMessage();
-      ((Message)localObject).arg1 = 3;
-      ((Message)localObject).obj = paramString;
-      IVOfflinePluginImpl.access$100(this.this$0).sendMessage((Message)localObject);
-    }
-    while (paramInt != -1) {
+      paramString = IVOfflinePluginImpl.access$100(this.this$0).obtainMessage();
+      paramString.arg1 = 3;
+      paramString.obj = localObject2;
+      IVOfflinePluginImpl.access$100(this.this$0).sendMessage(paramString);
       return;
     }
-    paramString = IVOfflinePluginImpl.access$100(this.this$0).obtainMessage();
-    paramString.arg1 = 2;
-    IVOfflinePluginImpl.access$100(this.this$0).sendMessage(paramString);
+    if (paramInt == -1)
+    {
+      paramString = IVOfflinePluginImpl.access$100(this.this$0).obtainMessage();
+      paramString.arg1 = 2;
+      IVOfflinePluginImpl.access$100(this.this$0).sendMessage(paramString);
+    }
   }
   
   public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.pluginimpl.IVOfflinePluginImpl.1
  * JD-Core Version:    0.7.0.1
  */

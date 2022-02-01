@@ -13,34 +13,29 @@ class SignTextEditFragment$SignatureTopicObserver
 {
   private SignTextEditFragment$SignatureTopicObserver(SignTextEditFragment paramSignTextEditFragment) {}
   
-  public void e(boolean paramBoolean, Object paramObject)
+  protected void e(boolean paramBoolean, Object paramObject)
   {
-    if (paramObject == null) {
+    if (paramObject == null)
+    {
+      SignTextEditFragment.a(this.a, 2);
+      return;
+    }
+    paramObject = (Bundle)paramObject;
+    int i = paramObject.getInt("param_searchResult", 0);
+    paramObject = (ArrayList)paramObject.getSerializable("param_topicInfoList");
+    if ((paramObject != null) && (paramObject.size() > 0)) {
+      SignTextEditFragment.a(this.a, 4);
+    } else if (i == 0) {
+      SignTextEditFragment.a(this.a, 3);
+    } else {
       SignTextEditFragment.a(this.a, 2);
     }
-    for (;;)
-    {
-      return;
-      paramObject = (Bundle)paramObject;
-      int i = paramObject.getInt("param_searchResult", 0);
-      paramObject = (ArrayList)paramObject.getSerializable("param_topicInfoList");
-      if ((paramObject == null) || (paramObject.size() <= 0)) {
-        if (i == 0) {
-          SignTextEditFragment.a(this.a, 3);
-        }
-      }
-      while (this.a.jdField_a_of_type_ComTencentMobileqqAdapterTopicListAdapter.a(paramObject, true))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAdapterTopicListAdapter.notifyDataSetChanged();
-        return;
-        SignTextEditFragment.a(this.a, 2);
-        continue;
-        SignTextEditFragment.a(this.a, 4);
-      }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAdapterTopicListAdapter.a(paramObject, true)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterTopicListAdapter.notifyDataSetChanged();
     }
   }
   
-  public void f(boolean paramBoolean, Object paramObject)
+  protected void f(boolean paramBoolean, Object paramObject)
   {
     if (paramObject == null)
     {
@@ -54,34 +49,28 @@ class SignTextEditFragment$SignatureTopicObserver
     long l = ((Bundle)localObject).getLong("param_reqTs");
     localObject = (ArrayList)((Bundle)localObject).getSerializable("param_topicInfoList");
     int i;
-    if (localObject == null)
-    {
+    if (localObject == null) {
       i = 0;
-      if (QLog.isColorLevel()) {
-        QLog.i("SignTextEditFragment", 2, String.format("onGetTopicWithKey[%b,%d] key=[%s] [atIndex=%d, keyLen=%d],reqTs=%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i), paramObject, Integer.valueOf(j), Integer.valueOf(k), Long.valueOf(l) }));
-      }
-      if ((localObject != null) && (((List)localObject).size() > 0)) {
-        break label240;
-      }
+    } else {
+      i = ((List)localObject).size();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("SignTextEditFragment", 2, String.format("onGetTopicWithKey[%b,%d] key=[%s] [atIndex=%d, keyLen=%d],reqTs=%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i), paramObject, Integer.valueOf(j), Integer.valueOf(k), Long.valueOf(l) }));
+    }
+    if ((localObject != null) && (((List)localObject).size() > 0)) {
+      SignTextEditFragment.a(this.a, 4);
+    } else {
       SignTextEditFragment.a(this.a, 3);
     }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAdapterTopicListAdapter.a((List)localObject, false)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAdapterTopicListAdapter.notifyDataSetChanged();
-      }
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.setTag(new Object[] { Integer.valueOf(j), Integer.valueOf(k), paramObject, Long.valueOf(l) });
-      return;
-      i = ((List)localObject).size();
-      break;
-      label240:
-      SignTextEditFragment.a(this.a, 4);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAdapterTopicListAdapter.a((List)localObject, false)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterTopicListAdapter.notifyDataSetChanged();
     }
+    this.a.jdField_a_of_type_ComTencentWidgetXListView.setTag(new Object[] { Integer.valueOf(j), Integer.valueOf(k), paramObject, Long.valueOf(l) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignTextEditFragment.SignatureTopicObserver
  * JD-Core Version:    0.7.0.1
  */

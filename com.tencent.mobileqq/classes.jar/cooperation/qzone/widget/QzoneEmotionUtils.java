@@ -5,6 +5,8 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.emoticon.QQEmojiUtil;
 import com.tencent.mobileqq.emoticon.QQSysFaceUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.IQzoneResLoader;
 import common.config.service.QzoneConfig;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -12,8 +14,8 @@ import java.util.regex.Pattern;
 
 public class QzoneEmotionUtils
 {
-  public static final String EMO_GIRL = HardCodeUtil.a(2131711725);
-  public static final String EMO_MONEY = HardCodeUtil.a(2131711722);
+  public static final String EMO_GIRL = HardCodeUtil.a(((IQzoneResLoader)QRoute.api(IQzoneResLoader.class)).getStringId(4));
+  public static final String EMO_MONEY = HardCodeUtil.a(((IQzoneResLoader)QRoute.api(IQzoneResLoader.class)).getStringId(5));
   public static final String EMO_PREFIX = "[em]";
   public static final String EMO_TAIL = "[/em]";
   public static final String SIGN_ICON_URL_END = ".gif";
@@ -49,15 +51,20 @@ public class QzoneEmotionUtils
   
   public static String emCodeToQQcode(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      if (QQSysFaceUtil.getLocalIdFromEMCode(paramString) != -1) {
-        return QQSysFaceUtil.getFaceString(QQSysFaceUtil.getLocalIdFromEMCode(paramString));
-      }
-    } while (QQEmojiUtil.getLocalIdFromEMCode(paramString) == -1);
-    return QQEmojiUtil.getEmojiUnicode(QQEmojiUtil.getLocalIdFromEMCode(paramString)) + "";
+    }
+    if (QQSysFaceUtil.getLocalIdFromEMCode(paramString) != -1) {
+      return QQSysFaceUtil.getFaceString(QQSysFaceUtil.getLocalIdFromEMCode(paramString));
+    }
+    if (QQEmojiUtil.getLocalIdFromEMCode(paramString) != -1)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(QQEmojiUtil.getEmojiUnicode(QQEmojiUtil.getLocalIdFromEMCode(paramString)));
+      localStringBuilder.append("");
+      return localStringBuilder.toString();
+    }
+    return null;
   }
   
   public static String emCodesToQQcodes(String paramString)
@@ -81,8 +88,13 @@ public class QzoneEmotionUtils
     {
       String str1 = localMatcher.group();
       String str2 = getDescription(str1);
-      if (!TextUtils.isEmpty(str2)) {
-        paramString = paramString.replace(str1, "[" + str2.substring(1) + "]");
+      if (!TextUtils.isEmpty(str2))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[");
+        localStringBuilder.append(str2.substring(1));
+        localStringBuilder.append("]");
+        paramString = paramString.replace(str1, localStringBuilder.toString());
       }
     }
     return paramString;
@@ -90,34 +102,36 @@ public class QzoneEmotionUtils
   
   public static String getDescription(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      if (QQSysFaceUtil.getLocalIdFromEMCode(paramString) != -1) {
-        return QQSysFaceUtil.getFaceDescription(QQSysFaceUtil.getLocalIdFromEMCode(paramString));
-      }
-    } while (QQEmojiUtil.getLocalIdFromEMCode(paramString) == -1);
-    return QQEmojiUtil.getEmojiDescription(QQEmojiUtil.getLocalIdFromEMCode(paramString));
+    }
+    if (QQSysFaceUtil.getLocalIdFromEMCode(paramString) != -1) {
+      return QQSysFaceUtil.getFaceDescription(QQSysFaceUtil.getLocalIdFromEMCode(paramString));
+    }
+    if (QQEmojiUtil.getLocalIdFromEMCode(paramString) != -1) {
+      return QQEmojiUtil.getEmojiDescription(QQEmojiUtil.getLocalIdFromEMCode(paramString));
+    }
+    return null;
   }
   
   public static Drawable getDrawable(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      if (QQSysFaceUtil.getLocalIdFromEMCode(paramString) != -1) {
-        return QQSysFaceUtil.getFaceDrawable(QQSysFaceUtil.getLocalIdFromEMCode(paramString));
-      }
-    } while (QQEmojiUtil.getLocalIdFromEMCode(paramString) == -1);
-    return QQEmojiUtil.getEmojiDrawable(QQEmojiUtil.getLocalIdFromEMCode(paramString));
+    }
+    if (QQSysFaceUtil.getLocalIdFromEMCode(paramString) != -1) {
+      return QQSysFaceUtil.getFaceDrawable(QQSysFaceUtil.getLocalIdFromEMCode(paramString));
+    }
+    if (QQEmojiUtil.getLocalIdFromEMCode(paramString) != -1) {
+      return QQEmojiUtil.getEmojiDrawable(QQEmojiUtil.getLocalIdFromEMCode(paramString));
+    }
+    return null;
   }
   
   public static int getEmoCount(String paramString)
   {
-    int i = 0;
     paramString = SMILEY_PATTERN.matcher(paramString);
+    int i = 0;
     while (paramString.find()) {
       i += 1;
     }
@@ -131,24 +145,36 @@ public class QzoneEmotionUtils
   
   private static void init()
   {
-    int i = 1;
     try
     {
       ArrayList localArrayList = QQSysFaceUtil.getOrderList();
       if ((localArrayList != null) && (localArrayList.size() > 0))
       {
-        StringBuffer localStringBuffer = new StringBuffer("(" + QQSysFaceUtil.getFaceDescription(((Integer)localArrayList.get(0)).intValue()) + ")");
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("(");
+        ((StringBuilder)localObject2).append(QQSysFaceUtil.getFaceDescription(((Integer)localArrayList.get(0)).intValue()));
+        ((StringBuilder)localObject2).append(")");
+        localObject2 = new StringBuffer(((StringBuilder)localObject2).toString());
+        int i = 1;
         while (i < localArrayList.size())
         {
-          localStringBuffer.append("|(" + QQSysFaceUtil.getFaceDescription(((Integer)localArrayList.get(i)).intValue()) + ")");
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("|(");
+          localStringBuilder.append(QQSysFaceUtil.getFaceDescription(((Integer)localArrayList.get(i)).intValue()));
+          localStringBuilder.append(")");
+          ((StringBuffer)localObject2).append(localStringBuilder.toString());
           i += 1;
         }
-        pattern = Pattern.compile(localStringBuffer.toString().replace("吃瓜", "chigua"));
+        pattern = Pattern.compile(((StringBuffer)localObject2).toString().replace("吃瓜", "chigua"));
       }
       bInit = true;
       return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject1;
+    }
   }
   
   public static void loadEmoDrawable() {}
@@ -188,28 +214,33 @@ public class QzoneEmotionUtils
     if (!bInit) {
       init();
     }
-    if ((pattern == null) || (paramString == null)) {
-      return paramString;
-    }
-    int i = 0;
-    StringBuilder localStringBuilder = new StringBuilder(paramString.length());
-    Matcher localMatcher = friendRefPattern.matcher(paramString);
-    while (localMatcher.find())
+    Object localObject = paramString;
+    if (pattern != null)
     {
-      if (localMatcher.start() >= i)
-      {
-        localStringBuilder.append(replaceSlashCode(paramString.substring(i, localMatcher.start())));
-        localStringBuilder.append(paramString.substring(localMatcher.start(), localMatcher.end()));
+      if (paramString == null) {
+        return paramString;
       }
-      i = localMatcher.end();
+      int i = 0;
+      localObject = new StringBuilder(paramString.length());
+      Matcher localMatcher = friendRefPattern.matcher(paramString);
+      while (localMatcher.find())
+      {
+        if (localMatcher.start() >= i)
+        {
+          ((StringBuilder)localObject).append(replaceSlashCode(paramString.substring(i, localMatcher.start())));
+          ((StringBuilder)localObject).append(paramString.substring(localMatcher.start(), localMatcher.end()));
+        }
+        i = localMatcher.end();
+      }
+      ((StringBuilder)localObject).append(replaceSlashCode(paramString.substring(i, paramString.length())));
+      localObject = ((StringBuilder)localObject).toString();
     }
-    localStringBuilder.append(replaceSlashCode(paramString.substring(i, paramString.length())));
-    return localStringBuilder.toString();
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.widget.QzoneEmotionUtils
  * JD-Core Version:    0.7.0.1
  */

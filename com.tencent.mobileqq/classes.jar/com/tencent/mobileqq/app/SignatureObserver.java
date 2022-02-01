@@ -30,40 +30,40 @@ public class SignatureObserver
     case 4: 
     default: 
       return;
-    case 7: 
-      b(paramBoolean, paramObject);
-      return;
-    case 5: 
-      c(paramBoolean, paramObject);
-      return;
-    case 6: 
-      a(paramBoolean, paramObject);
-      return;
-    case 3: 
-      d(paramBoolean, paramObject);
-      return;
-    case 8: 
-      e(paramBoolean, paramObject);
-      return;
-    case 9: 
-      f(paramBoolean, paramObject);
-      return;
-    case 10: 
-      g(paramBoolean, paramObject);
-      return;
-    case 11: 
-      h(paramBoolean, paramObject);
+    case 13: 
+      j(paramBoolean, paramObject);
       return;
     case 12: 
       i(paramBoolean, paramObject);
       return;
+    case 11: 
+      h(paramBoolean, paramObject);
+      return;
+    case 10: 
+      g(paramBoolean, paramObject);
+      return;
+    case 9: 
+      f(paramBoolean, paramObject);
+      return;
+    case 8: 
+      e(paramBoolean, paramObject);
+      return;
+    case 7: 
+      b(paramBoolean, paramObject);
+      return;
+    case 6: 
+      a(paramBoolean, paramObject);
+      return;
+    case 5: 
+      c(paramBoolean, paramObject);
+      return;
     }
-    j(paramBoolean, paramObject);
+    d(paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.SignatureObserver
  * JD-Core Version:    0.7.0.1
  */

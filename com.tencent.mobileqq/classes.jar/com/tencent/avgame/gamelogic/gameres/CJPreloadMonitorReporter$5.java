@@ -1,10 +1,11 @@
 package com.tencent.avgame.gamelogic.gameres;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 import com.tencent.mobileqq.activity.springfestival.report.ReportConstant.Event;
 import com.tencent.mobileqq.activity.springfestival.report.ReportConstant.Res;
 import com.tencent.mobileqq.activity.springfestival.report.SpringHbReporter;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qwallet.IQWalletApi;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +18,7 @@ final class CJPreloadMonitorReporter$5
   {
     if (CJPreloadMonitorReporter.a(this.jdField_a_of_type_JavaLangString))
     {
-      String str = QWalletTools.c(this.jdField_a_of_type_JavaLangString);
+      String str = ((IQWalletApi)QRoute.api(IQWalletApi.class)).getEncodeUrl(this.jdField_a_of_type_JavaLangString);
       if (!TextUtils.isEmpty(str))
       {
         HashMap localHashMap = new HashMap();
@@ -29,7 +30,7 @@ final class CJPreloadMonitorReporter$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.gameres.CJPreloadMonitorReporter.5
  * JD-Core Version:    0.7.0.1
  */

@@ -36,21 +36,23 @@ class QQAppInterface$9
       }
       ((PushNoticeManager)this.this$0.getManager(QQManagerFactory.PUSH_NOTICE_MANAGER)).a(localQQNotificationManager, -1);
       PushNoticeUtil.a(this.this$0.getApplication());
-      if (QLog.isColorLevel()) {
+      if (QLog.isColorLevel())
+      {
         QLog.d("notification", 2, "removeNotification");
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("notification", 2, "removeNotification", localException);
+      if (QLog.isColorLevel()) {
+        QLog.d("notification", 2, "removeNotification", localException);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQAppInterface.9
  * JD-Core Version:    0.7.0.1
  */

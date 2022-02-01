@@ -20,15 +20,16 @@ public class FlutterMainQIPCModule
   
   public static FlutterMainQIPCModule a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new FlutterMainQIPCModule("FlutterMainQIPCModule");
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new FlutterMainQIPCModule("FlutterMainQIPCModule");
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   private void a(String paramString1, String paramString2)
@@ -38,13 +39,18 @@ public class FlutterMainQIPCModule
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (paramBundle == null) {}
-    for (paramBundle = "com.tencent.mobileqq:tool";; paramBundle = paramBundle.getString("FlutterCallerIpcProcessName", "com.tencent.mobileqq:tool"))
+    Object localObject = "com.tencent.mobileqq:tool";
+    if (paramBundle == null) {
+      paramBundle = (Bundle)localObject;
+    } else {
+      paramBundle = paramBundle.getString("FlutterCallerIpcProcessName", "com.tencent.mobileqq:tool");
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[onCall] procName=");
+    ((StringBuilder)localObject).append(paramBundle);
+    QLog.d("FlutterMainQIPCModule", 2, ((StringBuilder)localObject).toString());
+    if ("ACTION_INSTALL_ENGINE".equals(paramString))
     {
-      QLog.d("FlutterMainQIPCModule", 2, "[onCall] procName=" + paramBundle);
-      if (!"ACTION_INSTALL_ENGINE".equals(paramString)) {
-        break;
-      }
       a(paramBundle, "ACTION_INSTALL_RESULT");
       return EIPCResult.createSuccessResult(null);
     }
@@ -58,7 +64,7 @@ public class FlutterMainQIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.ipc.FlutterMainQIPCModule
  * JD-Core Version:    0.7.0.1
  */

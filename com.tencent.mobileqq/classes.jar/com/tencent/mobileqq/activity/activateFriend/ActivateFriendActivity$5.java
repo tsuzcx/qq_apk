@@ -14,28 +14,32 @@ class ActivateFriendActivity$5
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    }
-    for (;;)
-    {
-      return false;
-      if (ActivateFriendActivity.a(this.a) != null)
+      if (i != 2)
       {
-        ActivateFriendActivity.a(this.a).e();
-        continue;
+        if (i == 3)
+        {
+          paramMessage = (Bundle)paramMessage.obj;
+          this.a.a((AcsMsg)paramMessage.getSerializable("acsMsg"));
+        }
+      }
+      else
+      {
         paramMessage = (Bundle)paramMessage.obj;
         ActivateFriendActivity.a(this.a, (ArrayList)paramMessage.getSerializable("models"), (List)paramMessage.getSerializable("list"), paramMessage.getInt("count"));
-        continue;
-        paramMessage = (Bundle)paramMessage.obj;
-        this.a.a((AcsMsg)paramMessage.getSerializable("acsMsg"));
       }
     }
+    else if (ActivateFriendActivity.a(this.a) != null) {
+      ActivateFriendActivity.a(this.a).e();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity.5
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,8 @@ class AEFilterManager$2
   
   public void onLightNodeApplied()
   {
-    AEFilterManager.access$002(this.this$0, AEFilterManager.access$200(this.this$0).getAudioReader());
+    AEFilterManager localAEFilterManager = this.this$0;
+    AEFilterManager.access$002(localAEFilterManager, AEFilterManager.access$200(localAEFilterManager).getAudioReader());
     AEFilterManager.access$300(this.this$0);
   }
 }

@@ -111,51 +111,61 @@ public final class RespNeighborInfo
     paramJceOutputStream.write(this.lNBID, 0);
     paramJceOutputStream.write(this.iDistance, 1);
     paramJceOutputStream.write(this.lTime, 2);
-    if (this.strDescription != null) {
-      paramJceOutputStream.write(this.strDescription, 3);
+    Object localObject = this.strDescription;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.cGroupId, 4);
     paramJceOutputStream.write(this.cSex, 5);
     paramJceOutputStream.write(this.cAge, 6);
-    if (this.strPYFaceUrl != null) {
-      paramJceOutputStream.write(this.strPYFaceUrl, 7);
+    localObject = this.strPYFaceUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.strSchoolName != null) {
-      paramJceOutputStream.write(this.strSchoolName, 8);
+    localObject = this.strSchoolName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.strCompanyName != null) {
-      paramJceOutputStream.write(this.strCompanyName, 9);
+    localObject = this.strCompanyName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.strPYName != null) {
-      paramJceOutputStream.write(this.strPYName, 10);
+    localObject = this.strPYName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
     paramJceOutputStream.write(this.eMerchantType, 11);
-    if (this.strNick != null) {
-      paramJceOutputStream.write(this.strNick, 12);
+    localObject = this.strNick;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
     paramJceOutputStream.write(this.nFaceNum, 13);
-    if (this.strCertification != null) {
-      paramJceOutputStream.write(this.strCertification, 14);
+    localObject = this.strCertification;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
     paramJceOutputStream.write(this.shIntroType, 15);
-    if (this.vIntroContent != null) {
-      paramJceOutputStream.write(this.vIntroContent, 16);
+    localObject = this.vIntroContent;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 16);
     }
-    if (this.vFaceID != null) {
-      paramJceOutputStream.write(this.vFaceID, 17);
+    localObject = this.vFaceID;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 17);
     }
     paramJceOutputStream.write(this.iVoteIncrement, 18);
     paramJceOutputStream.write(this.bIsSingle, 19);
     paramJceOutputStream.write(this.iRank, 20);
     paramJceOutputStream.write(this.lTotalVisitorsNum, 21);
-    if (this.vipBaseInfo != null) {
-      paramJceOutputStream.write(this.vipBaseInfo, 22);
+    localObject = this.vipBaseInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 22);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NeighborSvc.RespNeighborInfo
  * JD-Core Version:    0.7.0.1
  */

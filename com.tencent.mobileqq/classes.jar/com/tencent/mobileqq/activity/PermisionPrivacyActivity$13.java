@@ -1,86 +1,98 @@
 package com.tencent.mobileqq.activity;
 
-import android.widget.CompoundButton;
 import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
-import mqq.app.AppRuntime;
 
 class PermisionPrivacyActivity$13
   extends CardObserver
 {
   PermisionPrivacyActivity$13(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onGetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2) {}
+  protected void onGetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  protected void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
     if ((paramString != null) && (paramString.equals(this.a.app.getCurrentAccountUin())))
     {
-      if (paramBoolean1) {
-        PermisionPrivacyActivity.a(this.a, this.a.d.a(), paramBoolean2);
+      if (paramBoolean1)
+      {
+        paramString = this.a;
+        PermisionPrivacyActivity.a(paramString, paramString.d.a(), paramBoolean2);
       }
-      return;
     }
-    QLog.e("Q.security", 2, "onGetAllowSeeLoginDays isSuccess " + paramBoolean1 + "isAllow:" + paramBoolean2 + "uin empty!");
-  }
-  
-  public void onGetAllowStrangerInviteToGroupSwitch(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if ((this.a.isFinishing()) || (this.a.app == null)) {
-      return;
-    }
-    if (!paramBoolean1)
+    else
     {
-      this.a.a(2131719116, 1);
-      Card localCard = ((FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.a.app.getCurrentAccountUin());
-      PermisionPrivacyActivity.a(this.a, this.a.e.a(), localCard.strangerInviteMeGroupOpen);
-      return;
+      paramString = new StringBuilder();
+      paramString.append("onGetAllowSeeLoginDays isSuccess ");
+      paramString.append(paramBoolean1);
+      paramString.append("isAllow:");
+      paramString.append(paramBoolean2);
+      paramString.append("uin empty!");
+      QLog.e("Q.security", 2, paramString.toString());
     }
-    PermisionPrivacyActivity.a(this.a, this.a.e.a(), paramBoolean2);
   }
   
-  public void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
+  protected void onGetAllowStrangerInviteToGroupSwitch(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if (!this.a.isFinishing())
+    {
+      if (this.a.app == null) {
+        return;
+      }
+      if (!paramBoolean1)
+      {
+        this.a.a(2131718834, 1);
+        localObject = ((FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.a.app.getCurrentAccountUin());
+        PermisionPrivacyActivity localPermisionPrivacyActivity = this.a;
+        PermisionPrivacyActivity.a(localPermisionPrivacyActivity, localPermisionPrivacyActivity.e.a(), ((Card)localObject).strangerInviteMeGroupOpen);
+        return;
+      }
+      Object localObject = this.a;
+      PermisionPrivacyActivity.a((PermisionPrivacyActivity)localObject, ((PermisionPrivacyActivity)localObject).e.a(), paramBoolean2);
+    }
+  }
+  
+  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
   {
     if ((paramBoolean1) && (!this.a.isFinishing()))
     {
-      if (paramBoolean2) {
-        break label107;
+      if (!paramBoolean2) {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(HardCodeUtil.a(2131699255));
+      } else {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(HardCodeUtil.a(2131699256));
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(HardCodeUtil.a(2131699151));
-    }
-    for (;;)
-    {
       if (QLog.isColorLevel())
       {
         Card localCard = ((FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.a.app.getCurrentAccountUin());
-        QLog.d("interactive", 2, "PermisionPrivacyActivity onGetCalReactiveDays isAllow= " + paramBoolean2 + "card.allowCalInteractive=" + localCard.allowCalInteractive);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("PermisionPrivacyActivity onGetCalReactiveDays isAllow= ");
+        localStringBuilder.append(paramBoolean2);
+        localStringBuilder.append("card.allowCalInteractive=");
+        localStringBuilder.append(localCard.allowCalInteractive);
+        QLog.d("interactive", 2, localStringBuilder.toString());
       }
-      return;
-      label107:
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(HardCodeUtil.a(2131699152));
     }
   }
   
-  public void onGetCardSwitch(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  protected void onGetCardSwitch(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
   {
     if (!this.a.app.getCurrentAccountUin().equals(paramString)) {
       return;
     }
-    PermisionPrivacyActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a(), paramBoolean2);
-    PermisionPrivacyActivity.a(this.a, PermisionPrivacyActivity.a(this.a), paramBoolean3);
+    paramString = this.a;
+    PermisionPrivacyActivity.a(paramString, paramString.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a(), paramBoolean2);
+    paramString = this.a;
+    PermisionPrivacyActivity.a(paramString, PermisionPrivacyActivity.a(paramString), paramBoolean3);
   }
   
-  public void onGetPrettyOwnerFlag(boolean paramBoolean, Object paramObject)
+  protected void onGetPrettyOwnerFlag(boolean paramBoolean, Object paramObject)
   {
     if (!paramBoolean) {
       return;
@@ -93,118 +105,79 @@ class PermisionPrivacyActivity$13
         paramBoolean = ((Boolean)paramObject).booleanValue();
         PermisionPrivacyActivity.a(this.a, paramBoolean);
         this.a.j.setChecked(paramBoolean);
-        QLog.e("vip_pretty.Q.security", 1, "onGetPrettyOwnerFlag " + paramBoolean);
+        paramObject = new StringBuilder();
+        paramObject.append("onGetPrettyOwnerFlag ");
+        paramObject.append(paramBoolean);
+        QLog.e("vip_pretty.Q.security", 1, paramObject.toString());
         return;
       }
-      catch (Exception paramObject)
+      catch (Exception localException)
       {
-        QLog.e("vip_pretty.Q.security", 1, "onGetPrettyOwnerFlag ex:" + paramObject);
-        return;
+        Object localObject;
+        continue;
       }
+      paramObject = new StringBuilder();
+      paramObject.append("onGetPrettyOwnerFlag ex:");
+      paramObject.append(localObject);
+      QLog.e("vip_pretty.Q.security", 1, paramObject.toString());
+      return;
       paramBoolean = false;
     }
   }
   
-  public void onSetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2) {}
+  protected void onSetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void onSetAllowSeeLoginDays(boolean paramBoolean)
+  protected void onSetAllowSeeLoginDays(boolean paramBoolean)
   {
     Card localCard = ((FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.a.app.getCurrentAccountUin());
-    PermisionPrivacyActivity.a(this.a, this.a.d.a(), localCard.allowPeopleSee);
+    PermisionPrivacyActivity localPermisionPrivacyActivity = this.a;
+    PermisionPrivacyActivity.a(localPermisionPrivacyActivity, localPermisionPrivacyActivity.d.a(), localCard.allowPeopleSee);
   }
   
-  public void onSetCalReactiveDays(boolean paramBoolean)
+  protected void onSetCalReactiveDays(boolean paramBoolean)
   {
-    StringBuilder localStringBuilder;
     if ((paramBoolean) && (!this.a.isFinishing()))
     {
       Card localCard = ((FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.a.app.getCurrentAccountUin());
-      if (localCard.allowCalInteractive) {
-        break label109;
+      if (!localCard.allowCalInteractive) {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(HardCodeUtil.a(2131699255));
+      } else {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(HardCodeUtil.a(2131699256));
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(HardCodeUtil.a(2131699151));
       if (QLog.isColorLevel())
       {
-        localStringBuilder = new StringBuilder().append("PermisionPrivacyActivity onSetCalReactiveDays isAllow= ");
-        if (localCard.allowCalInteractive) {
-          break label127;
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("PermisionPrivacyActivity onSetCalReactiveDays isAllow= ");
+        localStringBuilder.append(localCard.allowCalInteractive ^ true);
+        QLog.d("interactive", 2, localStringBuilder.toString());
       }
-    }
-    label109:
-    label127:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      QLog.d("interactive", 2, paramBoolean);
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(HardCodeUtil.a(2131699152));
-      break;
     }
   }
   
-  public void onSetCardSwitch(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  protected void onSetCardSwitch(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
   {
     if (!this.a.app.getCurrentAccountUin().equals(paramString)) {
       return;
     }
     if (!paramBoolean1) {
-      this.a.a(2131719116, 1);
+      this.a.a(2131718834, 1);
     }
     if (paramBoolean2)
     {
-      PermisionPrivacyActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a(), paramBoolean3);
+      paramString = this.a;
+      PermisionPrivacyActivity.a(paramString, paramString.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a(), paramBoolean3);
       return;
     }
-    PermisionPrivacyActivity.a(this.a, PermisionPrivacyActivity.a(this.a), paramBoolean3);
+    paramString = this.a;
+    PermisionPrivacyActivity.a(paramString, PermisionPrivacyActivity.a(paramString), paramBoolean3);
   }
   
-  public void onSetMedal(boolean paramBoolean)
+  protected void onSetMedal(boolean paramBoolean)
   {
-    int i = 1;
-    boolean bool = false;
-    if (!paramBoolean)
-    {
-      QQToast.a(this.a.app.getApp(), 1, this.a.getString(2131719116), 3000).b(this.a.getTitleBarHeight());
-      localObject1 = this.a;
-      localObject2 = this.a.i.a();
-      paramBoolean = bool;
-      if (!this.a.i.a().isChecked()) {
-        paramBoolean = true;
-      }
-      PermisionPrivacyActivity.a((PermisionPrivacyActivity)localObject1, (CompoundButton)localObject2, paramBoolean);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.security", 2, "PermisionPrivacyActivity onSetMedal failed");
-      }
-      return;
-    }
-    Object localObject1 = ((FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.a.app.getCurrentAccountUin());
-    if (!this.a.isFinishing())
-    {
-      localObject2 = this.a;
-      Switch localSwitch = this.a.i.a();
-      if (((Card)localObject1).medalSwitchDisable) {
-        break label261;
-      }
-      paramBoolean = true;
-      PermisionPrivacyActivity.a((PermisionPrivacyActivity)localObject2, localSwitch, paramBoolean);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.security", 2, "PermisionPrivacyActivity onSetMedal medalSwitchDisable= " + ((Card)localObject1).medalSwitchDisable);
-      }
-    }
-    Object localObject2 = this.a.app;
-    if (((Card)localObject1).medalSwitchDisable) {}
-    for (;;)
-    {
-      ReportController.b((AppRuntime)localObject2, "dc00898", "", "", "0X80073A0", "0X80073A0", i, 0, "", "", "", "");
-      return;
-      label261:
-      paramBoolean = false;
-      break;
-      i = 0;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  public void onSetPrettyOwnerFlag(boolean paramBoolean, Object paramObject)
+  protected void onSetPrettyOwnerFlag(boolean paramBoolean, Object paramObject)
   {
     if (!paramBoolean) {
       return;
@@ -216,21 +189,29 @@ class PermisionPrivacyActivity$13
       {
         paramBoolean = ((Boolean)paramObject).booleanValue();
         PermisionPrivacyActivity.a(this.a, paramBoolean);
-        QLog.e("vip_pretty.Q.security", 1, "onSetPrettyOwnerFlag " + paramBoolean);
+        paramObject = new StringBuilder();
+        paramObject.append("onSetPrettyOwnerFlag ");
+        paramObject.append(paramBoolean);
+        QLog.e("vip_pretty.Q.security", 1, paramObject.toString());
         return;
       }
-      catch (Exception paramObject)
+      catch (Exception localException)
       {
-        QLog.e("vip_pretty.Q.security", 1, "onSetPrettyOwnerFlag ex:" + paramObject);
-        return;
+        Object localObject;
+        continue;
       }
+      paramObject = new StringBuilder();
+      paramObject.append("onSetPrettyOwnerFlag ex:");
+      paramObject.append(localObject);
+      QLog.e("vip_pretty.Q.security", 1, paramObject.toString());
+      return;
       paramBoolean = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PermisionPrivacyActivity.13
  * JD-Core Version:    0.7.0.1
  */

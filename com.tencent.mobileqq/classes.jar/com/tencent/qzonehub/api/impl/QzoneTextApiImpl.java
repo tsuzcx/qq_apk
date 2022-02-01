@@ -23,25 +23,26 @@ public class QzoneTextApiImpl
   {
     String str2 = "";
     String str1 = str2;
-    if (paramEditable != null)
-    {
-      if (!(paramEditable instanceof QzoneTextBuilder)) {
-        break label37;
+    if (paramEditable != null) {
+      if ((paramEditable instanceof QzoneTextBuilder))
+      {
+        paramEditable = (QzoneTextBuilder)paramEditable;
+        str1 = str2;
+        if (paramEditable != null) {
+          return paramEditable.toPlainText();
+        }
       }
-      paramEditable = (QzoneTextBuilder)paramEditable;
-      str1 = str2;
-      if (paramEditable != null) {
-        str1 = paramEditable.toPlainText();
+      else
+      {
+        str1 = paramEditable.toString();
       }
     }
     return str1;
-    label37:
-    return paramEditable.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qzonehub.api.impl.QzoneTextApiImpl
  * JD-Core Version:    0.7.0.1
  */

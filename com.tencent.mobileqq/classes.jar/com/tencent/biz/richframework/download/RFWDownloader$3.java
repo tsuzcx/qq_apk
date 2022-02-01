@@ -13,19 +13,21 @@ class RFWDownloader$3
     if (SdCardUtil.getSdCardDirectory() == null)
     {
       RFLog.i("RFWDownloader", RFLog.USR, "downloadOrUpdateFile error, SdCardUtil.getSdCardDirectory() == null");
-      if (this.val$downloadListener != null) {
-        this.val$downloadListener.onRspCallback(false, "");
+      localRFWDownloadListener = this.val$downloadListener;
+      if (localRFWDownloadListener != null) {
+        localRFWDownloadListener.onRspCallback(false, "");
       }
     }
-    if (this.val$downloadListener != null) {
-      RFWDownloader.access$100(this.this$0, this.val$downloadUrl, this.val$downloadListener);
+    RFWDownloader.RFWDownloadListener localRFWDownloadListener = this.val$downloadListener;
+    if (localRFWDownloadListener != null) {
+      RFWDownloader.access$100(this.this$0, this.val$downloadUrl, localRFWDownloadListener);
     }
     RFWDownloader.access$700(this.this$0, this.val$downloadUrl, new RFWDownloader.3.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.download.RFWDownloader.3
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,10 @@ class WebProcessReceiver$2
   
   public void onDownloadFinish(int paramInt)
   {
-    QMLog.d("TBS_update", "tbs download finish result=" + paramInt);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("tbs download finish result=");
+    ((StringBuilder)localObject).append(paramInt);
+    QMLog.d("TBS_update", ((StringBuilder)localObject).toString());
     if ((paramInt != 100) && (paramInt != 120) && (paramInt != 122))
     {
       if (WebProcessReceiver.sTBSDownloading.compareAndSet(true, false))
@@ -24,74 +27,91 @@ class WebProcessReceiver$2
         long l1 = this.val$sp.getLong("tbs_download_cost", 0L);
         long l2 = System.currentTimeMillis();
         long l3 = this.val$start;
-        localEditor = this.val$sp.edit();
-        localEditor.putInt("tbs_download_count", i + 1);
-        localEditor.putLong("tbs_download_cost", l1 + (l2 - l3));
-        localEditor.commit();
-        if (QMLog.isColorLevel()) {
-          QMLog.d("TBS_update", "tbs download aborted:" + paramInt);
+        localObject = this.val$sp.edit();
+        ((SharedPreferences.Editor)localObject).putInt("tbs_download_count", i + 1);
+        ((SharedPreferences.Editor)localObject).putLong("tbs_download_cost", l1 + (l2 - l3));
+        ((SharedPreferences.Editor)localObject).commit();
+        if (QMLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("tbs download aborted:");
+          ((StringBuilder)localObject).append(paramInt);
+          QMLog.d("TBS_update", ((StringBuilder)localObject).toString());
         }
       }
-      SharedPreferences.Editor localEditor = this.val$sp.edit();
-      localEditor.putInt("tbs_download_complete", paramInt);
-      localEditor.remove("tbs_downloading");
-      localEditor.remove("tbs_download_progress");
-      localEditor.commit();
+      localObject = this.val$sp.edit();
+      ((SharedPreferences.Editor)localObject).putInt("tbs_download_complete", paramInt);
+      ((SharedPreferences.Editor)localObject).remove("tbs_downloading");
+      ((SharedPreferences.Editor)localObject).remove("tbs_download_progress");
+      ((SharedPreferences.Editor)localObject).commit();
     }
   }
   
   public void onDownloadProgress(int paramInt)
   {
-    if (QMLog.isColorLevel()) {
-      QMLog.d("TBS_update", "tbs download progress " + paramInt);
+    if (QMLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("tbs download progress ");
+      localStringBuilder.append(paramInt);
+      QMLog.d("TBS_update", localStringBuilder.toString());
     }
   }
   
   public void onInstallFinish(int paramInt)
   {
-    QMLog.d("TBS_update", "tbs download install finish result=" + paramInt);
-    if (paramInt == 200) {}
-    while (!WebProcessReceiver.sTBSDownloading.compareAndSet(true, false)) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("tbs download install finish result=");
+    ((StringBuilder)localObject).append(paramInt);
+    QMLog.d("TBS_update", ((StringBuilder)localObject).toString());
+    if (paramInt == 200) {
       return;
     }
-    QbSdk.setTbsListener(null);
-    long l1;
-    SharedPreferences.Editor localEditor;
-    if ((paramInt != 232) && (paramInt != 220))
+    if (WebProcessReceiver.sTBSDownloading.compareAndSet(true, false))
     {
-      int i = this.val$sp.getInt("tbs_download_count", 0);
-      l1 = this.val$sp.getLong("tbs_download_cost", 0L);
-      long l2 = System.currentTimeMillis();
-      long l3 = this.val$start;
-      localEditor = this.val$sp.edit();
-      localEditor.putInt("tbs_download_count", i + 1);
-      localEditor.putLong("tbs_download_cost", l1 + (l2 - l3));
-      localEditor.commit();
-      QMLog.d("TBS_update", "tbs install error:" + paramInt);
-    }
-    for (;;)
-    {
-      localEditor = this.val$sp.edit();
-      localEditor.putInt("tbs_download_complete", paramInt);
-      localEditor.remove("tbs_downloading");
-      localEditor.remove("tbs_download_progress");
-      localEditor.commit();
-      return;
-      this.val$sp.getInt("tbs_download_count", 0);
-      this.val$sp.getLong("tbs_download_cost", 0L);
-      System.currentTimeMillis();
-      l1 = this.val$start;
-      localEditor = this.val$sp.edit();
-      localEditor.remove("tbs_download_count");
-      localEditor.remove("tbs_download_cost");
-      localEditor.commit();
-      QMLog.d("TBS_update", "tbs install finished:" + paramInt);
+      QbSdk.setTbsListener(null);
+      long l1;
+      if ((paramInt != 232) && (paramInt != 220))
+      {
+        int i = this.val$sp.getInt("tbs_download_count", 0);
+        l1 = this.val$sp.getLong("tbs_download_cost", 0L);
+        long l2 = System.currentTimeMillis();
+        long l3 = this.val$start;
+        localObject = this.val$sp.edit();
+        ((SharedPreferences.Editor)localObject).putInt("tbs_download_count", i + 1);
+        ((SharedPreferences.Editor)localObject).putLong("tbs_download_cost", l1 + (l2 - l3));
+        ((SharedPreferences.Editor)localObject).commit();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("tbs install error:");
+        ((StringBuilder)localObject).append(paramInt);
+        QMLog.d("TBS_update", ((StringBuilder)localObject).toString());
+      }
+      else
+      {
+        this.val$sp.getInt("tbs_download_count", 0);
+        this.val$sp.getLong("tbs_download_cost", 0L);
+        System.currentTimeMillis();
+        l1 = this.val$start;
+        localObject = this.val$sp.edit();
+        ((SharedPreferences.Editor)localObject).remove("tbs_download_count");
+        ((SharedPreferences.Editor)localObject).remove("tbs_download_cost");
+        ((SharedPreferences.Editor)localObject).commit();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("tbs install finished:");
+        ((StringBuilder)localObject).append(paramInt);
+        QMLog.d("TBS_update", ((StringBuilder)localObject).toString());
+      }
+      localObject = this.val$sp.edit();
+      ((SharedPreferences.Editor)localObject).putInt("tbs_download_complete", paramInt);
+      ((SharedPreferences.Editor)localObject).remove("tbs_downloading");
+      ((SharedPreferences.Editor)localObject).remove("tbs_download_progress");
+      ((SharedPreferences.Editor)localObject).commit();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.receiver.WebProcessReceiver.2
  * JD-Core Version:    0.7.0.1
  */

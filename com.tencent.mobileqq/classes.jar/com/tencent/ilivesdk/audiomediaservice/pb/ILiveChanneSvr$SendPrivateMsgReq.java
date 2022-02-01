@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class ILiveChanneSvr$SendPrivateMsgReq
   extends MessageMicro<SendPrivateMsgReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 58 }, new String[] { "msg_head", "msg_body", "admin_account", "sub_type", "msg_sync_option", "account_type", "sync_ext" }, new Object[] { null, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null }, SendPrivateMsgReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field account_type = PBField.initUInt32(0);
   public final PBEnumField admin_account = PBField.initEnum(0);
   public ILiveChanneSvr.MsgBody msg_body = new ILiveChanneSvr.MsgBody();
@@ -17,10 +17,16 @@ public final class ILiveChanneSvr$SendPrivateMsgReq
   public final PBUInt32Field msg_sync_option = PBField.initUInt32(0);
   public final PBEnumField sub_type = PBField.initEnum(0);
   public ILiveChanneSvr.SyncExt sync_ext = new ILiveChanneSvr.SyncExt();
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 58 }, new String[] { "msg_head", "msg_body", "admin_account", "sub_type", "msg_sync_option", "account_type", "sync_ext" }, new Object[] { null, null, localInteger, localInteger, localInteger, localInteger, null }, SendPrivateMsgReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.audiomediaservice.pb.ILiveChanneSvr.SendPrivateMsgReq
  * JD-Core Version:    0.7.0.1
  */

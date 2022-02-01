@@ -16,7 +16,7 @@ class ChatHistory$19
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (NetworkUtil.d(BaseApplication.getContext()))
+    if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
       this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
       this.a.h();
@@ -29,12 +29,12 @@ class ChatHistory$19
       this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
     this.a.jdField_a_of_type_ComTencentMobileqqBannerTipsBar.setVisibility(0);
-    this.a.jdField_c_of_type_AndroidWidgetTextView.setText(this.a.getString(2131692257));
+    this.a.jdField_c_of_type_AndroidWidgetTextView.setText(this.a.getString(2131692183));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.19
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ public abstract class TimeMark
   
   public final boolean hasPassedNow()
   {
-    return !Duration.isNegative-impl(elapsedNow());
+    return Duration.isNegative-impl(elapsedNow()) ^ true;
   }
   
   @NotNull
@@ -35,7 +35,7 @@ public abstract class TimeMark
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.time.TimeMark
  * JD-Core Version:    0.7.0.1
  */

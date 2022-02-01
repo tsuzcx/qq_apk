@@ -18,24 +18,15 @@ public class FloatWindowUtil
   
   public static boolean a()
   {
-    boolean bool2 = false;
     SharedPreferences localSharedPreferences = new FloatWindowUtil.SharePreferenceUtil(BaseApplicationImpl.getContext(), "floatwindow_setting").a();
     long l = localSharedPreferences.getLong("last_open_permission_time", 0L);
     int i = localSharedPreferences.getInt("open_permission_count", 0);
-    boolean bool1 = bool2;
-    if (System.currentTimeMillis() - l >= 86400000L)
-    {
-      bool1 = bool2;
-      if (i <= 3) {
-        bool1 = true;
-      }
-    }
-    return bool1;
+    return (System.currentTimeMillis() - l >= 86400000L) && (i <= 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.now_live.floatwindow.FloatWindowUtil
  * JD-Core Version:    0.7.0.1
  */

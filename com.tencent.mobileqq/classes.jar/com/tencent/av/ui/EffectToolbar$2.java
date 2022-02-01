@@ -12,14 +12,20 @@ class EffectToolbar$2
   {
     if (EffectToolbar.access$200(this.this$0) != null)
     {
-      QLog.w("EffectToolbar", 1, "postSetCurrentItemById, id[" + this.jdField_a_of_type_JavaLangString + "], seq[" + this.jdField_a_of_type_Long + "]");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("postSetCurrentItemById, id[");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append("], seq[");
+      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append("]");
+      QLog.w("EffectToolbar", 1, localStringBuilder.toString());
       EffectToolbar.access$200(this.this$0).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.EffectToolbar.2
  * JD-Core Version:    0.7.0.1
  */

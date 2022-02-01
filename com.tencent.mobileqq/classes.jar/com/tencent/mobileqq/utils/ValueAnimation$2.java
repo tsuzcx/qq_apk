@@ -6,12 +6,12 @@ final class ValueAnimation$2
   public Float a(float paramFloat, Number paramNumber1, Number paramNumber2)
   {
     float f = paramNumber1.floatValue();
-    return Float.valueOf(f + (paramNumber2.floatValue() - f) * paramFloat);
+    return Float.valueOf(f + paramFloat * (paramNumber2.floatValue() - f));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ValueAnimation.2
  * JD-Core Version:    0.7.0.1
  */

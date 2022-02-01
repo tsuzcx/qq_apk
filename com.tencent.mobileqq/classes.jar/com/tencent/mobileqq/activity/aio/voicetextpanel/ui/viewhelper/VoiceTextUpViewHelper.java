@@ -20,15 +20,16 @@ public class VoiceTextUpViewHelper
   
   public void a(VoiceTextPanel paramVoiceTextPanel)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramVoiceTextPanel.findViewById(2131377787));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramVoiceTextPanel.findViewById(2131381815));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView = ((VoiceTextPttPlayView)paramVoiceTextPanel.findViewById(2131378269));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramVoiceTextPanel.findViewById(2131377215));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramVoiceTextPanel.findViewById(2131381033));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView = ((VoiceTextPttPlayView)paramVoiceTextPanel.findViewById(2131377680));
   }
   
   public void a(String paramString, RecordParams.RecorderParam paramRecorderParam, int paramInt, VoiceTextPanel paramVoiceTextPanel)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView.setDuration(paramInt, paramString, paramRecorderParam, paramVoiceTextPanel);
+    VoiceTextPttPlayView localVoiceTextPttPlayView = this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView;
+    if (localVoiceTextPttPlayView != null) {
+      localVoiceTextPttPlayView.setDuration(paramInt, paramString, paramRecorderParam, paramVoiceTextPanel);
     }
   }
   
@@ -40,21 +41,23 @@ public class VoiceTextUpViewHelper
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView.a();
+    VoiceTextPttPlayView localVoiceTextPttPlayView = this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView;
+    if (localVoiceTextPttPlayView != null) {
+      localVoiceTextPttPlayView.a();
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView.b();
+    VoiceTextPttPlayView localVoiceTextPttPlayView = this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPttPlayView;
+    if (localVoiceTextPttPlayView != null) {
+      localVoiceTextPttPlayView.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.ui.viewhelper.VoiceTextUpViewHelper
  * JD-Core Version:    0.7.0.1
  */

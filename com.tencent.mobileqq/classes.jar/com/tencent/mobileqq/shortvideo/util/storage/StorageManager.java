@@ -15,28 +15,21 @@ import java.util.Iterator;
 
 public class StorageManager
 {
-  public static long a;
-  static StorageManager jdField_a_of_type_ComTencentMobileqqShortvideoUtilStorageStorageManager = null;
+  public static long a = 57671680L;
+  static StorageManager jdField_a_of_type_ComTencentMobileqqShortvideoUtilStorageStorageManager;
   static final Object jdField_a_of_type_JavaLangObject = new Object();
-  public static long b;
+  public static long b = 209715200L;
   final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new StorageManager.1(this);
   StorageManager.OnSdCardChangedListener jdField_a_of_type_ComTencentMobileqqShortvideoUtilStorageStorageManager$OnSdCardChangedListener;
   public String a;
   HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   boolean jdField_a_of_type_Boolean;
-  public String b;
+  public String b = "";
   long c = 0L;
-  
-  static
-  {
-    jdField_a_of_type_Long = 57671680L;
-    jdField_b_of_type_Long = 209715200L;
-  }
   
   StorageManager()
   {
     this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
     c();
     b();
     IntentFilter localIntentFilter = new IntentFilter();
@@ -57,7 +50,7 @@ public class StorageManager
       paramString = new StatFs(paramString);
       long l = paramString.getAvailableBlocks();
       int i = paramString.getBlockSize();
-      return i * l;
+      return l * i;
     }
     catch (Exception paramString)
     {
@@ -70,87 +63,99 @@ public class StorageManager
   
   public static StorageManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqShortvideoUtilStorageStorageManager == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_ComTencentMobileqqShortvideoUtilStorageStorageManager == null) {
-        jdField_a_of_type_ComTencentMobileqqShortvideoUtilStorageStorageManager = new StorageManager();
+    if (jdField_a_of_type_ComTencentMobileqqShortvideoUtilStorageStorageManager == null) {
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (jdField_a_of_type_ComTencentMobileqqShortvideoUtilStorageStorageManager == null) {
+          jdField_a_of_type_ComTencentMobileqqShortvideoUtilStorageStorageManager = new StorageManager();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqShortvideoUtilStorageStorageManager;
     }
+    return jdField_a_of_type_ComTencentMobileqqShortvideoUtilStorageStorageManager;
   }
   
   /* Error */
   static boolean a(String paramString)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_1
-    //   2: invokestatic 133	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   5: invokevirtual 137	java/lang/Thread:getId	()J
-    //   8: lstore_2
-    //   9: new 139	java/io/File
-    //   12: dup
-    //   13: new 141	java/lang/StringBuilder
-    //   16: dup
-    //   17: invokespecial 142	java/lang/StringBuilder:<init>	()V
-    //   20: aload_0
-    //   21: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: ldc 148
-    //   26: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: lload_2
-    //   30: invokevirtual 151	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   33: invokevirtual 155	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   36: invokespecial 156	java/io/File:<init>	(Ljava/lang/String;)V
-    //   39: astore_0
-    //   40: aload_0
-    //   41: invokevirtual 159	java/io/File:exists	()Z
-    //   44: ifeq +22 -> 66
-    //   47: aload_0
-    //   48: invokevirtual 162	java/io/File:delete	()Z
-    //   51: ifeq +8 -> 59
+    //   0: invokestatic 129	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   3: invokevirtual 133	java/lang/Thread:getId	()J
+    //   6: lstore_1
+    //   7: new 135	java/lang/StringBuilder
+    //   10: dup
+    //   11: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   14: astore 5
+    //   16: aload 5
+    //   18: aload_0
+    //   19: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   22: pop
+    //   23: aload 5
+    //   25: ldc 142
+    //   27: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: pop
+    //   31: aload 5
+    //   33: lload_1
+    //   34: invokevirtual 145	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   37: pop
+    //   38: new 147	java/io/File
+    //   41: dup
+    //   42: aload 5
+    //   44: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   47: invokespecial 152	java/io/File:<init>	(Ljava/lang/String;)V
+    //   50: astore_0
+    //   51: iconst_0
+    //   52: istore 4
     //   54: aload_0
-    //   55: invokevirtual 165	java/io/File:createNewFile	()Z
-    //   58: istore_1
-    //   59: aload_0
-    //   60: invokevirtual 162	java/io/File:delete	()Z
-    //   63: pop
-    //   64: iload_1
-    //   65: ireturn
-    //   66: aload_0
-    //   67: invokevirtual 165	java/io/File:createNewFile	()Z
-    //   70: istore_1
-    //   71: goto -12 -> 59
-    //   74: astore 4
-    //   76: aload 4
-    //   78: invokevirtual 168	java/lang/Throwable:printStackTrace	()V
-    //   81: aload_0
-    //   82: invokevirtual 162	java/io/File:delete	()Z
-    //   85: pop
-    //   86: iconst_0
-    //   87: ireturn
-    //   88: astore 4
-    //   90: aload_0
-    //   91: invokevirtual 162	java/io/File:delete	()Z
-    //   94: pop
-    //   95: aload 4
-    //   97: athrow
+    //   55: invokevirtual 155	java/io/File:exists	()Z
+    //   58: ifeq +21 -> 79
+    //   61: iload 4
+    //   63: istore_3
+    //   64: aload_0
+    //   65: invokevirtual 158	java/io/File:delete	()Z
+    //   68: ifeq +34 -> 102
+    //   71: aload_0
+    //   72: invokevirtual 161	java/io/File:createNewFile	()Z
+    //   75: istore_3
+    //   76: goto +26 -> 102
+    //   79: aload_0
+    //   80: invokevirtual 161	java/io/File:createNewFile	()Z
+    //   83: istore_3
+    //   84: goto +18 -> 102
+    //   87: astore 5
+    //   89: goto +20 -> 109
+    //   92: astore 5
+    //   94: aload 5
+    //   96: invokevirtual 164	java/lang/Throwable:printStackTrace	()V
+    //   99: iload 4
+    //   101: istore_3
+    //   102: aload_0
+    //   103: invokevirtual 158	java/io/File:delete	()Z
+    //   106: pop
+    //   107: iload_3
+    //   108: ireturn
+    //   109: aload_0
+    //   110: invokevirtual 158	java/io/File:delete	()Z
+    //   113: pop
+    //   114: aload 5
+    //   116: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	98	0	paramString	String
-    //   1	70	1	bool	boolean
-    //   8	22	2	l	long
-    //   74	3	4	localThrowable	Throwable
-    //   88	8	4	localObject	Object
+    //   0	117	0	paramString	String
+    //   6	28	1	l	long
+    //   63	45	3	bool1	boolean
+    //   52	48	4	bool2	boolean
+    //   14	29	5	localStringBuilder	StringBuilder
+    //   87	1	5	localObject	Object
+    //   92	23	5	localThrowable	Throwable
     // Exception table:
     //   from	to	target	type
-    //   40	47	74	java/lang/Throwable
-    //   47	59	74	java/lang/Throwable
-    //   66	71	74	java/lang/Throwable
-    //   40	47	88	finally
-    //   47	59	88	finally
-    //   66	71	88	finally
-    //   76	81	88	finally
+    //   54	61	87	finally
+    //   64	76	87	finally
+    //   79	84	87	finally
+    //   94	99	87	finally
+    //   54	61	92	java/lang/Throwable
+    //   64	76	92	java/lang/Throwable
+    //   79	84	92	java/lang/Throwable
   }
   
   public void a()
@@ -169,30 +174,40 @@ public class StorageManager
   
   void b()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       return;
-      this.jdField_b_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "/Android/data/com.tencent.mobileqq/qq/video");
-      if (QLog.isColorLevel())
-      {
-        QLog.e("TAG", 2, "updateStorePath:storeVideoPath=" + this.jdField_b_of_type_JavaLangString);
-        QLog.e("TAG", 2, "updateStorePath:maxAvailableSizePath=" + this.jdField_a_of_type_JavaLangString);
-      }
-      try
-      {
-        File localFile = new File(this.jdField_b_of_type_JavaLangString);
-        if (!localFile.exists())
-        {
-          localFile.mkdirs();
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        this.jdField_a_of_type_JavaLangString = null;
-      }
     }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append("/Android/data/com.tencent.mobileqq/qq/video");
+    this.b = ((StringBuilder)localObject).toString();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateStorePath:storeVideoPath=");
+      ((StringBuilder)localObject).append(this.b);
+      QLog.e("TAG", 2, ((StringBuilder)localObject).toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateStorePath:maxAvailableSizePath=");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      QLog.e("TAG", 2, ((StringBuilder)localObject).toString());
+    }
+    try
+    {
+      localObject = new File(this.b);
+      if (((File)localObject).exists()) {
+        break label147;
+      }
+      ((File)localObject).mkdirs();
+      return;
+    }
+    catch (Exception localException)
+    {
+      label142:
+      label147:
+      break label142;
+    }
+    this.jdField_a_of_type_JavaLangString = null;
   }
   
   void c()
@@ -207,37 +222,39 @@ public class StorageManager
         this.jdField_a_of_type_JavaUtilHashMap.put("external_card", localObject1);
       }
       localObject1 = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      for (;;)
+      while (((Iterator)localObject1).hasNext())
       {
-        if (((Iterator)localObject1).hasNext())
+        String str = (String)((Iterator)localObject1).next();
+        try
         {
-          String str = (String)((Iterator)localObject1).next();
-          try
+          Object localObject3 = new File(str);
+          if ((((File)localObject3).exists()) && (((File)localObject3).canWrite()) && (a(str)))
           {
-            Object localObject3 = new File(str);
-            if ((((File)localObject3).exists()) && (((File)localObject3).canWrite()) && (a(str)))
+            localObject3 = new StatFs(str);
+            long l = ((StatFs)localObject3).getAvailableBlocks() * ((StatFs)localObject3).getBlockSize();
+            if ((l > 0L) && (this.c < l))
             {
-              localObject3 = new StatFs(str);
-              long l = ((StatFs)localObject3).getAvailableBlocks() * ((StatFs)localObject3).getBlockSize();
-              if ((l > 0L) && (this.c < l))
-              {
-                this.c = l;
-                this.jdField_a_of_type_JavaLangString = str;
-              }
+              this.c = l;
+              this.jdField_a_of_type_JavaLangString = str;
             }
           }
-          catch (Throwable localThrowable)
-          {
-            localThrowable.printStackTrace();
-          }
+        }
+        catch (Throwable localThrowable)
+        {
+          localThrowable.printStackTrace();
         }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.storage.StorageManager
  * JD-Core Version:    0.7.0.1
  */

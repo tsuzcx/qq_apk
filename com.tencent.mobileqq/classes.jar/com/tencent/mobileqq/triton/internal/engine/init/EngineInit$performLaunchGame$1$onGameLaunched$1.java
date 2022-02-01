@@ -17,28 +17,24 @@ final class EngineInit$performLaunchGame$1$onGameLaunched$1
   public final void run()
   {
     this.this$0.this$0.getEngineContext().setEngineState(EngineState.STOPPED);
-    GameLaunchCallback localGameLaunchCallback;
-    if (this.$statics.getSuccess())
-    {
+    if (this.$statics.getSuccess()) {
       EngineInit.access$getEngineContextImpl$p(this.this$0.this$0).getLifeCycleOwner().notifyOnGameLaunched((TritonEngine)EngineInit.access$getEngine$p(this.this$0.this$0));
-      localGameLaunchCallback = this.this$0.$gameLaunchCallback;
-      if (!this.$statics.getSuccess()) {
-        break label117;
-      }
-    }
-    label117:
-    for (Engine localEngine = EngineInit.access$getEngine$p(this.this$0.this$0);; localEngine = null)
-    {
-      localGameLaunchCallback.onGameLaunched((TritonEngine)localEngine, this.$statics);
-      return;
+    } else {
       EngineInit.access$getEngine$p(this.this$0.this$0).destroy();
-      break;
     }
+    GameLaunchCallback localGameLaunchCallback = this.this$0.$gameLaunchCallback;
+    Engine localEngine;
+    if (this.$statics.getSuccess()) {
+      localEngine = EngineInit.access$getEngine$p(this.this$0.this$0);
+    } else {
+      localEngine = null;
+    }
+    localGameLaunchCallback.onGameLaunched((TritonEngine)localEngine, this.$statics);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.engine.init.EngineInit.performLaunchGame.1.onGameLaunched.1
  * JD-Core Version:    0.7.0.1
  */

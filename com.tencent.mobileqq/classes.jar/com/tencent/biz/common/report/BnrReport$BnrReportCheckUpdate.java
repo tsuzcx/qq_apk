@@ -47,45 +47,45 @@ public class BnrReport$BnrReportCheckUpdate
     if (QLog.isColorLevel()) {
       QLog.d("BnrReport", 2, "handleCheckUpdateItemData");
     }
-    BnrReport.BNRConfigMsg localBNRConfigMsg;
-    if (paramRespItem.cResult == 2) {
+    Object localObject;
+    if (paramRespItem.cResult == 2)
+    {
       if (paramRespItem.eServiceID == 118)
       {
         paramRespItem = WupUtil.b(paramRespItem.vecUpdate);
-        if (paramRespItem != null) {
-          localBNRConfigMsg = new BnrReport.BNRConfigMsg();
+        if (paramRespItem != null)
+        {
+          localObject = new BnrReport.BNRConfigMsg();
+          try
+          {
+            ((BnrReport.BNRConfigMsg)localObject).mergeFrom(paramRespItem);
+            BnrReport.a((BnrReport.BNReportConfigRsp)((BnrReport.BNRConfigMsg)localObject).msg_rsp_body.get());
+            BnrReport.a(this.a, 74);
+          }
+          catch (Exception paramRespItem)
+          {
+            paramRespItem.printStackTrace();
+          }
+          catch (InvalidProtocolBufferMicroException paramRespItem)
+          {
+            paramRespItem.printStackTrace();
+          }
         }
       }
     }
-    for (;;)
+    else if (QLog.isColorLevel())
     {
-      try
-      {
-        localBNRConfigMsg.mergeFrom(paramRespItem);
-        BnrReport.a((BnrReport.BNReportConfigRsp)localBNRConfigMsg.msg_rsp_body.get());
-        BnrReport.a(this.a, 74);
-        BnrReport.a = false;
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramRespItem)
-      {
-        paramRespItem.printStackTrace();
-        continue;
-      }
-      catch (Exception paramRespItem)
-      {
-        paramRespItem.printStackTrace();
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("BnrReport", 2, "***handleCheckUpdateItemData fail respitem.cResult:" + paramRespItem.cResult);
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("***handleCheckUpdateItemData fail respitem.cResult:");
+      ((StringBuilder)localObject).append(paramRespItem.cResult);
+      QLog.d("BnrReport", 2, ((StringBuilder)localObject).toString());
     }
+    BnrReport.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.common.report.BnrReport.BnrReportCheckUpdate
  * JD-Core Version:    0.7.0.1
  */

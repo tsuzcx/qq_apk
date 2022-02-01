@@ -14,13 +14,16 @@ import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.drawer.BaseChatDrawer;
 import com.tencent.mobileqq.activity.aio.drawer.TroopAppShortcutDrawer;
+import com.tencent.mobileqq.activity.aio.helper.ChatDrawerHelper;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.utils.TroopNotificationHelper;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.troop.troopreddot.api.ITroopRedDotHandler;
+import com.tencent.mobileqq.troop.utils.api.ITroopSPUtilApi;
 import com.tencent.qphone.base.util.QLog;
 
 public class TroopAppShortcutHasNewAppNavBar
@@ -61,7 +64,10 @@ public class TroopAppShortcutHasNewAppNavBar
         return "troopapp_shortcut_guide_counts";
       }
     }
-    return "troopapp_shortcut_guide_counts" + ((QQAppInterface)localObject).getCurrentAccountUin();
+    paramQQAppInterface = new StringBuilder();
+    paramQQAppInterface.append("troopapp_shortcut_guide_counts");
+    paramQQAppInterface.append(((QQAppInterface)localObject).getCurrentAccountUin());
+    return paramQQAppInterface.toString();
   }
   
   public long a()
@@ -71,34 +77,38 @@ public class TroopAppShortcutHasNewAppNavBar
   
   public View a()
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561088, null);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131363034));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379392));
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560952, null);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362982));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378743));
     this.jdField_a_of_type_AndroidWidgetTextView.setText("管理员新增了应用");
     return localView;
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer != null))
+    Object localObject;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer.a();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer.b(false);
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer instanceof TroopAppShortcutDrawer)) {
-        ((TroopAppShortcutDrawer)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer).c(4);
+      localObject = ((ChatDrawerHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(124)).a;
+      if (localObject != null)
+      {
+        ((BaseChatDrawer)localObject).a();
+        ((BaseChatDrawer)localObject).b(false);
+        if ((localObject instanceof TroopAppShortcutDrawer)) {
+          ((TroopAppShortcutDrawer)localObject).c(4);
+        }
       }
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {}
-    for (String str = "";; str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b)
-    {
-      ReportController.b(null, "dc00898", "", str, "0X800AFB9", "0X800AFB9", 0, 0, String.valueOf(this.jdField_a_of_type_Long), "", "", "");
-      return;
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b;
+    } else {
+      localObject = "";
     }
+    ReportController.b(null, "dc00898", "", (String)localObject, "0X800AFB9", "0X800AFB9", 0, 0, String.valueOf(this.jdField_a_of_type_Long), "", "", "");
   }
   
   public boolean a()
   {
-    boolean bool = true;
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null)
     {
       QLog.d("NavigateBarManager.TroopAppShortcutHasNewAppNavBar", 1, "mChatPie == null");
@@ -108,12 +118,7 @@ public class TroopAppShortcutHasNewAppNavBar
     if (QLog.isColorLevel()) {
       QLog.d("NavigateBarManager.TroopAppShortcutHasNewAppNavBar", 2, String.format("needShow guide count: %s", new Object[] { Integer.valueOf(i) }));
     }
-    if ((TroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.d())) && (i >= 3)) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
+    return (((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).getTroopHasNewApp(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.d())) && (i >= 3);
   }
   
   public void b()
@@ -121,8 +126,8 @@ public class TroopAppShortcutHasNewAppNavBar
     ReportController.b(null, "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, "0X800AFB8", "0X800AFB8", 0, 0, String.valueOf(this.jdField_a_of_type_Long), "", "", "");
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
     {
-      TroopNotificationHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 101872323);
-      TroopUtils.a(this.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, false);
+      ((ITroopRedDotHandler)this.b.getBusinessHandler(BusinessHandlerFactory.TROOP_RED_DOT_HANDLER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 101872323);
+      ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setTroopHasNewApp(this.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, false);
     }
     this.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new TroopAppShortcutHasNewAppNavBar.1(this), 500L);
   }
@@ -146,7 +151,7 @@ public class TroopAppShortcutHasNewAppNavBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.navigate.TroopAppShortcutHasNewAppNavBar
  * JD-Core Version:    0.7.0.1
  */

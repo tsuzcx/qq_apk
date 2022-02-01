@@ -41,10 +41,10 @@ public class UploadJobContext
   
   public static UploadJobContext createInstance(String paramString, UploadFile paramUploadFile, UploadJobContext.StatusInfo paramStatusInfo)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramUploadFile == null) || (paramStatusInfo == null)) {
-      throw new IllegalArgumentException("The params jobOwnerUid, file, destDirKey and statusInfo should be valid.");
+    if ((!TextUtils.isEmpty(paramString)) && (paramUploadFile != null) && (paramStatusInfo != null)) {
+      return new UploadJobContext(paramString, paramUploadFile, paramStatusInfo);
     }
-    return new UploadJobContext(paramString, paramUploadFile, paramStatusInfo);
+    throw new IllegalArgumentException("The params jobOwnerUid, file, destDirKey and statusInfo should be valid.");
   }
   
   public void addListener(UploadManager.IUploadStatusListener paramIUploadStatusListener)
@@ -83,29 +83,30 @@ public class UploadJobContext
   {
     boolean bool1 = this.mStatusInfo.canRunning();
     boolean bool2 = paramUploadJobContext.mStatusInfo.canRunning();
-    if ((bool1) && (!bool2)) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return -1;
-          if ((!bool1) && (bool2)) {
-            return 1;
-          }
-          if ((!bool1) && (!bool2)) {
-            return 0;
-          }
-        } while (this.mRank > paramUploadJobContext.mRank);
-        if (this.mRank < paramUploadJobContext.mRank) {
-          return 1;
-        }
-      } while ((this.mPriority) && (!paramUploadJobContext.mPriority));
-      if ((!this.mPriority) && (paramUploadJobContext.mPriority)) {
-        return 1;
-      }
-    } while (this.mBirthTime < paramUploadJobContext.mBirthTime);
+    if ((bool1) && (!bool2)) {
+      return -1;
+    }
+    if ((!bool1) && (bool2)) {
+      return 1;
+    }
+    if ((!bool1) && (!bool2)) {
+      return 0;
+    }
+    if (this.mRank > paramUploadJobContext.mRank) {
+      return -1;
+    }
+    if (this.mRank < paramUploadJobContext.mRank) {
+      return 1;
+    }
+    if ((this.mPriority) && (!paramUploadJobContext.mPriority)) {
+      return -1;
+    }
+    if ((!this.mPriority) && (paramUploadJobContext.mPriority)) {
+      return 1;
+    }
+    if (this.mBirthTime < paramUploadJobContext.mBirthTime) {
+      return -1;
+    }
     if (this.mBirthTime > paramUploadJobContext.mBirthTime) {
       return 1;
     }
@@ -131,74 +132,64 @@ public class UploadJobContext
       paramUploadServerInfo.serverName = "empty";
       paramUploadServerInfo.serverIp = "empty";
     }
-    String str1;
-    int m;
-    int i;
-    int j;
-    label156:
+    Object localObject2 = this.mJobOwnerUid;
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = "";
+    }
+    int m = ((String)localObject1).length();
+    int i = 0;
     int k;
-    if (this.mJobOwnerUid == null)
+    for (int j = -1;; j = k)
     {
-      str1 = "";
-      m = str1.length();
-      i = 0;
-      j = -1;
+      k = m;
       if (i >= m) {
-        break label521;
-      }
-      if (j != -1) {
-        break label207;
-      }
-      k = j;
-      if (Character.isDigit(str1.charAt(i))) {
-        k = i;
-      }
-    }
-    label207:
-    do
-    {
-      i += 1;
-      j = k;
-      break label156;
-      str1 = this.mJobOwnerUid;
-      break;
-      k = j;
-    } while (Character.isDigit(str1.charAt(i)));
-    for (;;)
-    {
-      String str2;
-      if ((j > -1) && (i > j))
-      {
-        str1 = str1.substring(j, i);
-        UploadRequest.Builder localBuilder = new UploadRequest.Builder();
-        if (!TextUtils.isEmpty(paramUploadServerInfo.fileId)) {
-          break label467;
-        }
-        str2 = this.mFile.localPath + this.mFile.pDirKey;
-        label296:
-        paramUploadServerInfo = localBuilder.requestKey(str2).listener(paramIUploadListener).uin(Long.parseLong(str1)).fileId(paramUploadServerInfo.fileId).checkKey(paramUploadServerInfo.checkKey).serverName(paramUploadServerInfo.serverName).serverIp(paramUploadServerInfo.serverIp).serverPort(paramUploadServerInfo.serverPort).channelCount(paramUploadServerInfo.channelCount).businessData(localHashMap).uploadedSize(this.mStatusInfo.currSize);
-        paramIUploadListener = this.mStatisticsTimes.getStatisticsTimes();
-        paramUploadServerInfo.statisticTime(paramIUploadListener[0], paramIUploadListener[1], paramIUploadListener[2]);
-        if (!TextUtils.isEmpty(this.mFile.compressedPath)) {
-          break label476;
-        }
-        paramUploadServerInfo.path(this.mFile.localPath).sha(this.mFile.sha).sliceSha(this.mFile.sliceSha).size(this.mFile.fileSize);
-      }
-      for (;;)
-      {
-        this.mRequest = paramUploadServerInfo.build();
-        return;
-        str1 = "0";
         break;
-        label467:
-        str2 = paramUploadServerInfo.fileId;
-        break label296;
-        label476:
-        paramUploadServerInfo.path(this.mFile.compressedPath).sha(this.mFile.compressedSha).sliceSha(this.mFile.compressedSliceSha).size(this.mFile.compressedSize);
       }
-      label521:
-      i = m;
+      if (j == -1)
+      {
+        k = j;
+        if (Character.isDigit(((String)localObject1).charAt(i))) {
+          k = i;
+        }
+      }
+      else
+      {
+        k = j;
+        if (!Character.isDigit(((String)localObject1).charAt(i)))
+        {
+          k = i;
+          break;
+        }
+      }
+      i += 1;
     }
+    if ((j > -1) && (k > j)) {
+      localObject1 = ((String)localObject1).substring(j, k);
+    } else {
+      localObject1 = "0";
+    }
+    UploadRequest.Builder localBuilder = new UploadRequest.Builder();
+    if (TextUtils.isEmpty(paramUploadServerInfo.fileId))
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.mFile.localPath);
+      ((StringBuilder)localObject2).append(this.mFile.pDirKey);
+      localObject2 = ((StringBuilder)localObject2).toString();
+    }
+    else
+    {
+      localObject2 = paramUploadServerInfo.fileId;
+    }
+    paramUploadServerInfo = localBuilder.requestKey((String)localObject2).listener(paramIUploadListener).uin(Long.parseLong((String)localObject1)).fileId(paramUploadServerInfo.fileId).checkKey(paramUploadServerInfo.checkKey).serverName(paramUploadServerInfo.serverName).serverIp(paramUploadServerInfo.serverIp).serverPort(paramUploadServerInfo.serverPort).channelCount(paramUploadServerInfo.channelCount).businessData(localHashMap).uploadedSize(this.mStatusInfo.currSize);
+    paramIUploadListener = this.mStatisticsTimes.getStatisticsTimes();
+    paramUploadServerInfo.statisticTime(paramIUploadListener[0], paramIUploadListener[1], paramIUploadListener[2]);
+    if (TextUtils.isEmpty(this.mFile.compressedPath)) {
+      paramUploadServerInfo.path(this.mFile.localPath).sha(this.mFile.sha).sliceSha(this.mFile.sliceSha).size(this.mFile.fileSize);
+    } else {
+      paramUploadServerInfo.path(this.mFile.compressedPath).sha(this.mFile.compressedSha).sliceSha(this.mFile.compressedSliceSha).size(this.mFile.compressedSize);
+    }
+    this.mRequest = paramUploadServerInfo.build();
   }
   
   public long dbId()
@@ -320,7 +311,7 @@ public class UploadJobContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weiyun.transmission.upload.UploadJobContext
  * JD-Core Version:    0.7.0.1
  */

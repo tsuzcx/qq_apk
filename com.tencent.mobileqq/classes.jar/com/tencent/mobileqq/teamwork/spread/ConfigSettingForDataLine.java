@@ -12,7 +12,7 @@ import com.tencent.mobileqq.config.business.tendoc.TencentDocDataLineTipsConfigB
 import com.tencent.mobileqq.config.business.tendoc.TencentDocDataLineTipsConfigProcessor;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.teamwork.TeamWorkHandler;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkHandler;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -55,12 +55,15 @@ public class ConfigSettingForDataLine
     }
     try
     {
-      paramTencentDocDataLineTipsConfigBean.a(((TeamWorkHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_HANDLER)).a());
+      paramTencentDocDataLineTipsConfigBean.a(((ITeamWorkHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_HANDLER)).getTemplateListByHttp());
       return;
     }
     catch (Exception paramTencentDocDataLineTipsConfigBean)
     {
-      QLog.e("ConfigSettingForDataLine", 2, " getTemplateListFromCgi failed :" + paramTencentDocDataLineTipsConfigBean.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" getTemplateListFromCgi failed :");
+      localStringBuilder.append(paramTencentDocDataLineTipsConfigBean.toString());
+      QLog.e("ConfigSettingForDataLine", 2, localStringBuilder.toString());
       paramTencentDocDataLineTipsConfigBean.printStackTrace();
     }
   }
@@ -121,9 +124,14 @@ public class ConfigSettingForDataLine
   
   public boolean a()
   {
-    boolean bool = false;
     long l = System.currentTimeMillis();
-    this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_m_str_teamwork_dataline_tips_sp", 0).getLong("file_str_lstat_show_time_local", 0L);
+    BaseApplication localBaseApplication = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    ((StringBuilder)localObject).append("_m_str_teamwork_dataline_tips_sp");
+    localObject = ((StringBuilder)localObject).toString();
+    boolean bool = false;
+    this.jdField_a_of_type_Long = localBaseApplication.getSharedPreferences((String)localObject, 0).getLong("file_str_lstat_show_time_local", 0L);
     if (l - this.jdField_a_of_type_Long > a().b() * 1000) {
       bool = true;
     }
@@ -132,10 +140,11 @@ public class ConfigSettingForDataLine
   
   public String[] a(BaseTimDataLineTipsProcessor paramBaseTimDataLineTipsProcessor)
   {
-    int i = 0;
     Map localMap = a().a();
     Object localObject = a().a();
-    if ((paramBaseTimDataLineTipsProcessor instanceof BuddyFileDataLineMsgTips))
+    boolean bool = paramBaseTimDataLineTipsProcessor instanceof BuddyFileDataLineMsgTips;
+    int i = 0;
+    if (bool)
     {
       paramBaseTimDataLineTipsProcessor = FileUtil.a(paramBaseTimDataLineTipsProcessor.a());
       localObject = localMap.keySet().iterator();
@@ -153,6 +162,7 @@ public class ConfigSettingForDataLine
           i += 1;
         }
       }
+      return new String[0];
     }
     paramBaseTimDataLineTipsProcessor = new String[((List)localObject).size()];
     while (i < ((List)localObject).size())
@@ -161,7 +171,6 @@ public class ConfigSettingForDataLine
       i += 1;
     }
     return paramBaseTimDataLineTipsProcessor;
-    return new String[0];
   }
   
   public String b(BaseTimDataLineTipsProcessor paramBaseTimDataLineTipsProcessor)
@@ -191,7 +200,7 @@ public class ConfigSettingForDataLine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.ConfigSettingForDataLine
  * JD-Core Version:    0.7.0.1
  */

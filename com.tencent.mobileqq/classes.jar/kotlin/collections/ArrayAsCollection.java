@@ -47,16 +47,21 @@ final class ArrayAsCollection<T>
   {
     Intrinsics.checkParameterIsNotNull(paramCollection, "elements");
     paramCollection = (Iterable)paramCollection;
-    if (((Collection)paramCollection).isEmpty()) {
+    boolean bool1 = ((Collection)paramCollection).isEmpty();
+    boolean bool2 = true;
+    if (bool1) {
       return true;
     }
     paramCollection = paramCollection.iterator();
-    while (paramCollection.hasNext()) {
-      if (!contains(paramCollection.next())) {
-        return false;
+    do
+    {
+      bool1 = bool2;
+      if (!paramCollection.hasNext()) {
+        break;
       }
-    }
-    return true;
+    } while (contains(paramCollection.next()));
+    bool1 = false;
+    return bool1;
   }
   
   public int getSize()
@@ -119,7 +124,7 @@ final class ArrayAsCollection<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.collections.ArrayAsCollection
  * JD-Core Version:    0.7.0.1
  */

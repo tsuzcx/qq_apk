@@ -12,7 +12,7 @@ class FavEmosmViewPage$2
   
   public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.f();
+    this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.l();
     if (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
       this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
     }
@@ -21,7 +21,7 @@ class FavEmosmViewPage$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.FavEmosmViewPage.2
  * JD-Core Version:    0.7.0.1
  */

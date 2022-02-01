@@ -65,15 +65,14 @@ public class SuperPlayerOption
       localJSONObject.put("minBufferingPacketDurationMs", this.minBufferingPacketDurationMs);
       localJSONObject.put("audioFrameOutputOption", this.audioFrameOutputOption);
       localJSONObject.put("superPlayerDownOption", this.superPlayerDownOption.toJsonString());
-      return localJSONObject.toString();
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        LogUtil.e("SuperPlayerOption", "");
-      }
+      label113:
+      break label113;
     }
+    LogUtil.e("SuperPlayerOption", "");
+    return localJSONObject.toString();
   }
   
   public Map<String, String> toReportMap()
@@ -93,24 +92,45 @@ public class SuperPlayerOption
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder("SuperPlayerOption[").append("\n");
-    localStringBuilder.append("isPrePlay:").append(this.isPrePlay).append("\n");
-    localStringBuilder.append("enableCodecReuse:").append(this.enableCodecReuse).append("\n");
-    localStringBuilder.append("accurateSeekOnOpen:").append(this.accurateSeekOnOpen).append("\n");
-    localStringBuilder.append("enableVideoFrameCheck:").append(this.enableVideoFrameCheck).append("\n");
-    localStringBuilder.append("bufferPacketMinTotalDurationMs:").append(this.bufferPacketMinTotalDurationMs).append("\n");
-    localStringBuilder.append("preloadPacketDurationMs:").append(this.preloadPacketDurationMs).append("\n");
-    localStringBuilder.append("minBufferingPacketDurationMs:").append(this.minBufferingPacketDurationMs).append("\n");
-    localStringBuilder.append("audioFrameOutputOption:").append(this.audioFrameOutputOption).append("\n");
-    localStringBuilder.append("httpHeader:").append(this.httpHeader).append("\n");
-    localStringBuilder.append("superPlayerDownOption").append(this.superPlayerDownOption).append("\n");
+    StringBuilder localStringBuilder = new StringBuilder("SuperPlayerOption[");
+    localStringBuilder.append("\n");
+    localStringBuilder.append("isPrePlay:");
+    localStringBuilder.append(this.isPrePlay);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("enableCodecReuse:");
+    localStringBuilder.append(this.enableCodecReuse);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("accurateSeekOnOpen:");
+    localStringBuilder.append(this.accurateSeekOnOpen);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("enableVideoFrameCheck:");
+    localStringBuilder.append(this.enableVideoFrameCheck);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("bufferPacketMinTotalDurationMs:");
+    localStringBuilder.append(this.bufferPacketMinTotalDurationMs);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("preloadPacketDurationMs:");
+    localStringBuilder.append(this.preloadPacketDurationMs);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("minBufferingPacketDurationMs:");
+    localStringBuilder.append(this.minBufferingPacketDurationMs);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("audioFrameOutputOption:");
+    localStringBuilder.append(this.audioFrameOutputOption);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("httpHeader:");
+    localStringBuilder.append(this.httpHeader);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("superPlayerDownOption");
+    localStringBuilder.append(this.superPlayerDownOption);
+    localStringBuilder.append("\n");
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.api.SuperPlayerOption
  * JD-Core Version:    0.7.0.1
  */

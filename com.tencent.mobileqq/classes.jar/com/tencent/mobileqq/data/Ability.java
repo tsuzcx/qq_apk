@@ -21,17 +21,17 @@ public class Ability
   
   public void addAbility(int paramInt)
   {
-    this.flags |= paramInt;
+    this.flags = (paramInt | this.flags);
   }
   
   public void removeAbility(int paramInt)
   {
-    this.flags &= (paramInt ^ 0xFFFFFFFF);
+    this.flags = ((paramInt ^ 0xFFFFFFFF) & this.flags);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.Ability
  * JD-Core Version:    0.7.0.1
  */

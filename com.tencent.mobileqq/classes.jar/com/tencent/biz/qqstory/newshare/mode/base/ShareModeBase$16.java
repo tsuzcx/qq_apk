@@ -1,25 +1,19 @@
 package com.tencent.biz.qqstory.newshare.mode.base;
 
-import com.tencent.biz.qqstory.newshare.job.EncryptUrlJob;
-import com.tencent.biz.qqstory.newshare.model.ShareSinaData;
-
 class ShareModeBase$16
-  extends EncryptUrlJob
+  implements Runnable
 {
-  ShareModeBase$16(ShareModeBase paramShareModeBase, String paramString1, String paramString2, boolean paramBoolean, ShareSinaData paramShareSinaData)
-  {
-    super(paramString1, paramString2, paramBoolean);
-  }
+  ShareModeBase$16(ShareModeBase paramShareModeBase) {}
   
-  public boolean b()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.c = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
+    ShareModeBase localShareModeBase = this.this$0;
+    ShareModeBase.a(localShareModeBase, ShareModeBase.a(localShareModeBase));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase.16
  * JD-Core Version:    0.7.0.1
  */

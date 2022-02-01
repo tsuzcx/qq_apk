@@ -10,14 +10,17 @@ final class LiteActivity$28
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetXListView.getCount() > 2) {
-      LiteActivity.a(this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.jdField_a_of_type_ComTencentWidgetXListView, this.jdField_a_of_type_ComTencentWidgetXListView.getCount());
+    if (this.jdField_a_of_type_ComTencentWidgetXListView.getCount() > 2)
+    {
+      ScrollerRunnable localScrollerRunnable = this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable;
+      XListView localXListView = this.jdField_a_of_type_ComTencentWidgetXListView;
+      LiteActivity.a(localScrollerRunnable, localXListView, localXListView.getCount());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.LiteActivity.28
  * JD-Core Version:    0.7.0.1
  */

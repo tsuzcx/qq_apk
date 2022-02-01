@@ -21,16 +21,14 @@ class SafeIterableMap$Entry<K, V>
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == this) {}
-    do
-    {
+    if (paramObject == this) {
       return true;
-      if (!(paramObject instanceof Entry)) {
-        return false;
-      }
-      paramObject = (Entry)paramObject;
-    } while ((this.mKey.equals(paramObject.mKey)) && (this.mValue.equals(paramObject.mValue)));
-    return false;
+    }
+    if (!(paramObject instanceof Entry)) {
+      return false;
+    }
+    paramObject = (Entry)paramObject;
+    return (this.mKey.equals(paramObject.mKey)) && (this.mValue.equals(paramObject.mValue));
   }
   
   @NonNull
@@ -61,7 +59,7 @@ class SafeIterableMap$Entry<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.arch.core.internal.SafeIterableMap.Entry
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import android.net.NetworkInfo;
 
 public abstract class NetWorkUtil
 {
-  private static int a(NetworkInfo paramNetworkInfo)
+  public static int a(NetworkInfo paramNetworkInfo)
   {
     if ((paramNetworkInfo != null) && (paramNetworkInfo.isConnected()))
     {
@@ -19,10 +19,9 @@ public abstract class NetWorkUtil
         {
         default: 
           return 6;
-        case 1: 
-        case 2: 
-        case 4: 
-          return 2;
+        case 13: 
+        case 14: 
+          return 4;
         case 3: 
         case 5: 
         case 6: 
@@ -35,13 +34,13 @@ public abstract class NetWorkUtil
         case 15: 
           return 3;
         }
-        return 4;
+        return 2;
       }
     }
     return 0;
   }
   
-  private static NetworkInfo a(Context paramContext)
+  public static NetworkInfo a(Context paramContext)
   {
     paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
     if (paramContext != null) {
@@ -57,7 +56,7 @@ public abstract class NetWorkUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.utils.NetWorkUtil
  * JD-Core Version:    0.7.0.1
  */

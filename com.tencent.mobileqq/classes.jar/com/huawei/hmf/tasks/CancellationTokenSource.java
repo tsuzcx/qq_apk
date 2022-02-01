@@ -16,9 +16,10 @@ public class CancellationTokenSource
       {
         ((c)localObject2).c = true;
         localObject2 = ((c)localObject2).a.iterator();
-        if (((Iterator)localObject2).hasNext()) {
+        while (((Iterator)localObject2).hasNext()) {
           ((Runnable)((Iterator)localObject2).next()).run();
         }
+        return;
       }
     }
   }
@@ -30,7 +31,7 @@ public class CancellationTokenSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hmf.tasks.CancellationTokenSource
  * JD-Core Version:    0.7.0.1
  */

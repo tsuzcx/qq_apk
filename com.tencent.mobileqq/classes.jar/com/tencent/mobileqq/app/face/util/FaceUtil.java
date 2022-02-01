@@ -21,7 +21,10 @@ public class FaceUtil
   
   static
   {
-    jdField_a_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + "portrait/");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_PATH);
+    localStringBuilder.append("portrait/");
+    jdField_a_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
     b = null;
     jdField_a_of_type_Boolean = false;
   }
@@ -34,7 +37,11 @@ public class FaceUtil
   public static String a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString).append("temp").append("/").append(System.currentTimeMillis()).append("_portrait.tmp");
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("temp");
+    localStringBuilder.append("/");
+    localStringBuilder.append(System.currentTimeMillis());
+    localStringBuilder.append("_portrait.tmp");
     return VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
   }
   
@@ -42,7 +49,11 @@ public class FaceUtil
   {
     StringBuilder localStringBuilder = new StringBuilder();
     paramString = MD5.toMD5(MD5.toMD5(MD5.toMD5(paramString)));
-    localStringBuilder.append(jdField_a_of_type_JavaLangString).append("HDAvatar").append("/").append(paramString).append(".jpg");
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("HDAvatar");
+    localStringBuilder.append("/");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".jpg");
     return VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
   }
   
@@ -88,8 +99,9 @@ public class FaceUtil
     }
     catch (Exception paramAppRuntime)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("FaceUtil", 2, "", paramAppRuntime);
+      if (QLog.isColorLevel()) {
+        QLog.e("FaceUtil", 2, "", paramAppRuntime);
+      }
     }
   }
   
@@ -105,25 +117,22 @@ public class FaceUtil
   
   public static boolean a(String paramString)
   {
-    boolean bool2 = false;
     paramString = a(paramString);
     try
     {
       paramString = new File(paramString);
-      bool1 = bool2;
-      if (paramString.exists()) {
-        bool1 = paramString.delete();
+      if (paramString.exists())
+      {
+        boolean bool = paramString.delete();
+        return bool;
       }
     }
     catch (Exception paramString)
     {
-      do
-      {
-        boolean bool1 = bool2;
-      } while (!QLog.isColorLevel());
-      QLog.d("FaceUtil", 2, paramString.toString());
+      if (QLog.isColorLevel()) {
+        QLog.d("FaceUtil", 2, paramString.toString());
+      }
     }
-    return bool1;
     return false;
   }
   
@@ -136,37 +145,42 @@ public class FaceUtil
   {
     StringBuilder localStringBuilder = new StringBuilder();
     paramString = MD5.toMD5(MD5.toMD5(MD5.toMD5(paramString)));
-    localStringBuilder.append(jdField_a_of_type_JavaLangString).append("FHDAvatar").append("/").append(paramString).append(".jpg");
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("FHDAvatar");
+    localStringBuilder.append("/");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".jpg");
     return VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
   }
   
   public static boolean b(String paramString)
   {
-    boolean bool2 = false;
     paramString = b(paramString);
     try
     {
       paramString = new File(paramString);
-      bool1 = bool2;
-      if (paramString.exists()) {
-        bool1 = paramString.delete();
+      if (paramString.exists())
+      {
+        boolean bool = paramString.delete();
+        return bool;
       }
     }
     catch (Exception paramString)
     {
-      do
+      if (QLog.isColorLevel())
       {
-        boolean bool1 = bool2;
-      } while (!QLog.isColorLevel());
-      QLog.d("FaceUtil", 2, "clearFHDAvatar " + paramString.toString());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("clearFHDAvatar ");
+        localStringBuilder.append(paramString.toString());
+        QLog.d("FaceUtil", 2, localStringBuilder.toString());
+      }
     }
-    return bool1;
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.util.FaceUtil
  * JD-Core Version:    0.7.0.1
  */

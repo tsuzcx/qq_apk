@@ -19,74 +19,89 @@ abstract class ForwardSdkShareProcessor$ForwardStep
   
   protected void cancel()
   {
-    if (isFinished()) {}
-    for (;;)
-    {
+    if (isFinished()) {
       return;
-      this.isCancelled.set(true);
-      if ((this.lastSteps != null) && (this.lastSteps.length > 0))
+    }
+    this.isCancelled.set(true);
+    ForwardStep[] arrayOfForwardStep = this.lastSteps;
+    if ((arrayOfForwardStep != null) && (arrayOfForwardStep.length > 0))
+    {
+      int j = arrayOfForwardStep.length;
+      int i = 0;
+      while (i < j)
       {
-        ForwardStep[] arrayOfForwardStep = this.lastSteps;
-        int j = arrayOfForwardStep.length;
-        int i = 0;
-        while (i < j)
-        {
-          arrayOfForwardStep[i].cancel();
-          i += 1;
-        }
+        arrayOfForwardStep[i].cancel();
+        i += 1;
       }
     }
   }
   
   protected void doCancel()
   {
-    long l = 0L;
     this.isRunning.set(false);
-    if (this.beginTime != 0L) {
-      l = System.currentTimeMillis() - this.beginTime;
+    long l2 = this.beginTime;
+    long l1 = 0L;
+    if (l2 != 0L) {
+      l1 = System.currentTimeMillis() - this.beginTime;
     }
-    QLog.d("Q.share.ForwardSdkShareProcessor", 1, this.stepName + "|doCancel,cost=" + l);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.stepName);
+    localStringBuilder.append("|doCancel,cost=");
+    localStringBuilder.append(l1);
+    QLog.d("Q.share.ForwardSdkShareProcessor", 1, localStringBuilder.toString());
   }
   
   void doError()
   {
-    long l = 0L;
     this.isRunning.set(false);
-    if (this.beginTime != 0L) {
-      l = System.currentTimeMillis() - this.beginTime;
+    long l2 = this.beginTime;
+    long l1 = 0L;
+    if (l2 != 0L) {
+      l1 = System.currentTimeMillis() - this.beginTime;
     }
-    QLog.d("Q.share.ForwardSdkShareProcessor", 1, this.stepName + "|doError,cost=" + l);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.stepName);
+    localStringBuilder.append("|doError,cost=");
+    localStringBuilder.append(l1);
+    QLog.d("Q.share.ForwardSdkShareProcessor", 1, localStringBuilder.toString());
     this.this$0.onError();
   }
   
   void doNextStep()
   {
-    long l = 0L;
     this.isRunning.set(false);
-    if (this.beginTime != 0L) {
-      l = System.currentTimeMillis() - this.beginTime;
+    long l2 = this.beginTime;
+    long l1 = 0L;
+    if (l2 != 0L) {
+      l1 = System.currentTimeMillis() - this.beginTime;
     }
-    QLog.d("Q.share.ForwardSdkShareProcessor", 1, this.stepName + "|finished,cost=" + l);
-    ForwardStatisticsReporter.a(this.stepName, l);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.stepName);
+    localStringBuilder.append("|finished,cost=");
+    localStringBuilder.append(l1);
+    QLog.d("Q.share.ForwardSdkShareProcessor", 1, localStringBuilder.toString());
+    ForwardStatisticsReporter.a(this.stepName, l1);
     if ((this.nextStep != null) && (!this.isCancelled.get()))
     {
-      if (Looper.getMainLooper() == Looper.myLooper()) {
+      if (Looper.getMainLooper() == Looper.myLooper())
+      {
         ThreadManager.excute(new ForwardSdkShareProcessor.ForwardStep.1(this), 128, null, true);
+        return;
       }
+      this.nextStep.doStep();
     }
-    else {
-      return;
-    }
-    this.nextStep.doStep();
   }
   
   void doStep()
   {
-    QLog.d("Q.share.ForwardSdkShareProcessor", 1, this.stepName + "|doStep");
-    if ((this.lastSteps != null) && (this.lastSteps.length > 0))
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(this.stepName);
+    ((StringBuilder)localObject1).append("|doStep");
+    QLog.d("Q.share.ForwardSdkShareProcessor", 1, ((StringBuilder)localObject1).toString());
+    localObject1 = this.lastSteps;
+    if ((localObject1 != null) && (localObject1.length > 0))
     {
-      ForwardStep[] arrayOfForwardStep = this.lastSteps;
-      int m = arrayOfForwardStep.length;
+      int m = localObject1.length;
       int j = 0;
       int i = 1;
       for (;;)
@@ -95,12 +110,12 @@ abstract class ForwardSdkShareProcessor$ForwardStep
         if (j >= m) {
           break;
         }
-        ForwardStep localForwardStep = arrayOfForwardStep[j];
-        QLog.d("Q.share.ForwardSdkShareProcessor", 1, new Object[] { localForwardStep.stepName, "|finished=", Boolean.valueOf(localForwardStep.isFinished()), ", processing=", Boolean.valueOf(localForwardStep.isProcessing()) });
-        if (!localForwardStep.isFinished())
+        Object localObject2 = localObject1[j];
+        QLog.d("Q.share.ForwardSdkShareProcessor", 1, new Object[] { localObject2.stepName, "|finished=", Boolean.valueOf(localObject2.isFinished()), ", processing=", Boolean.valueOf(localObject2.isProcessing()) });
+        if (!localObject2.isFinished())
         {
-          if (!localForwardStep.isProcessing()) {
-            localForwardStep.doStep();
+          if (!localObject2.isProcessing()) {
+            localObject2.doStep();
           }
           i = 0;
         }
@@ -131,9 +146,9 @@ abstract class ForwardSdkShareProcessor$ForwardStep
   void setLastSteps(ForwardStep[] paramArrayOfForwardStep)
   {
     this.lastSteps = paramArrayOfForwardStep;
-    if ((this.lastSteps != null) && (this.lastSteps.length > 0))
+    paramArrayOfForwardStep = this.lastSteps;
+    if ((paramArrayOfForwardStep != null) && (paramArrayOfForwardStep.length > 0))
     {
-      paramArrayOfForwardStep = this.lastSteps;
       int j = paramArrayOfForwardStep.length;
       int i = 0;
       while (i < j)
@@ -146,7 +161,7 @@ abstract class ForwardSdkShareProcessor$ForwardStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ForwardSdkShareProcessor.ForwardStep
  * JD-Core Version:    0.7.0.1
  */

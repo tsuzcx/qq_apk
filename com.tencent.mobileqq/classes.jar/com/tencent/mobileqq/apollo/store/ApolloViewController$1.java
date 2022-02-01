@@ -2,10 +2,10 @@ package com.tencent.mobileqq.apollo.store;
 
 import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloRenderInterfaceImpl;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.IRenderCallback;
 import com.tencent.mobileqq.apollo.barrage.BarrageView;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloRenderInterfaceImpl;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloTextureView;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.IRenderCallback;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
 import java.util.HashMap;
@@ -18,65 +18,65 @@ class ApolloViewController$1
   public void a(int paramInt1, int paramInt2, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ApolloViewController", 2, new Object[] { "[onCompleteRender] taskId=", Integer.valueOf(paramInt1), ", roleName=", paramString, ", errCode=", Integer.valueOf(paramInt2) });
+      QLog.d("[cmshow]ApolloViewController", 2, new Object[] { "[onCompleteRender] taskId=", Integer.valueOf(paramInt1), ", roleName=", paramString, ", errCode=", Integer.valueOf(paramInt2) });
     }
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("ApolloViewController", 1, "[onCompleteRender] roleName null");
-    }
-    do
+    if (TextUtils.isEmpty(paramString))
     {
-      do
-      {
-        do
+      QLog.e("[cmshow]ApolloViewController", 1, "[onCompleteRender] roleName null");
+      return;
+    }
+    if (!ApolloViewController.a(this.a).containsKey(paramString))
+    {
+      QLog.e("[cmshow]ApolloViewController", 1, "[onCompleteRender] roleName not showing");
+      return;
+    }
+    if ((ApolloViewController.a(this.a) != null) && (!TextUtils.isEmpty(ApolloViewController.a(this.a).apolloId)) && (ApolloViewController.a(this.a).apolloId.equals(paramString)))
+    {
+      ApolloViewController.b(this.a);
+      if (this.a.a != 5) {
+        ApolloViewController.a(this.a, 1);
+      }
+      paramString = ApolloViewController.a(this.a).obtainMessage(18, 1, 0);
+      ApolloViewController.a(this.a).sendMessage(paramString);
+      ApolloViewController.a(this.a).stopLoopDelayed(15000L);
+      if (!TextUtils.isEmpty(ApolloViewController.a(this.a))) {
+        if (ApolloViewController.a(this.a))
         {
-          return;
-          if (!ApolloViewController.a(this.a).containsKey(paramString))
-          {
-            QLog.e("ApolloViewController", 1, "[onCompleteRender] roleName not showing");
-            return;
+          if ((ApolloViewController.a(this.a) == 1) && (ApolloViewController.a(this.a) != null)) {
+            ApolloViewController.a(this.a).b();
           }
-          if ((ApolloViewController.a(this.a) == null) || (TextUtils.isEmpty(ApolloViewController.a(this.a).apolloId)) || (!ApolloViewController.a(this.a).apolloId.equals(paramString))) {
-            break;
-          }
-          ApolloViewController.b(this.a);
-          if (this.a.c != 5) {
-            this.a.jdField_a_of_type_Int = 1;
-          }
-          paramString = ApolloViewController.a(this.a).obtainMessage(18, 1, 0);
-          ApolloViewController.a(this.a).sendMessage(paramString);
-          this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.stopLoopDelayed(15000L);
-        } while (TextUtils.isEmpty(ApolloViewController.a(this.a)));
-        if (!ApolloViewController.a(this.a)) {
-          break;
         }
-      } while ((ApolloViewController.a(this.a) != 1) || (this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView == null));
-      this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView.b();
-      return;
-      if (ApolloViewController.a(this.a) != 1) {
-        break;
+        else if (ApolloViewController.a(this.a) == 1)
+        {
+          if (ApolloViewController.a(this.a) != null) {
+            ApolloViewController.a(this.a).a(true);
+          }
+        }
+        else {
+          ApolloViewController.a(this.a).getRenderImpl().a(1, ApolloViewController.a(this.a).apolloId, "Bubble");
+        }
       }
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView.a(true);
-    return;
-    this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl().a(1, ApolloViewController.a(this.a).apolloId, "Bubble");
-    return;
-    synchronized (ApolloViewController.a(this.a))
+    }
+    else
     {
-      if (ApolloViewController.a(this.a).containsKey(paramString))
+      synchronized (ApolloViewController.a(this.a))
       {
-        Message localMessage = ApolloViewController.a(this.a).obtainMessage(28);
-        localMessage.obj = paramString;
-        ApolloViewController.a(this.a).sendMessage(localMessage);
-        this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.stopLoopDelayed(15000L);
+        if (ApolloViewController.a(this.a).containsKey(paramString))
+        {
+          Message localMessage = ApolloViewController.a(this.a).obtainMessage(28);
+          localMessage.obj = paramString;
+          ApolloViewController.a(this.a).sendMessage(localMessage);
+          ApolloViewController.a(this.a).stopLoopDelayed(15000L);
+        }
+        return;
       }
-      return;
     }
   }
   
   public void a(int paramInt, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ApolloViewController", 2, new Object[] { "[onStartRender] taskId=", Integer.valueOf(paramInt), ", roleName=", paramString });
+      QLog.d("[cmshow]ApolloViewController", 2, new Object[] { "[onStartRender] taskId=", Integer.valueOf(paramInt), ", roleName=", paramString });
     }
     if ((ApolloViewController.a(this.a) != null) && (!TextUtils.isEmpty(ApolloViewController.a(this.a).apolloId)) && (ApolloViewController.a(this.a).apolloId.equals(paramString))) {
       ApolloViewController.a(this.a);
@@ -85,7 +85,7 @@ class ApolloViewController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloViewController.1
  * JD-Core Version:    0.7.0.1
  */

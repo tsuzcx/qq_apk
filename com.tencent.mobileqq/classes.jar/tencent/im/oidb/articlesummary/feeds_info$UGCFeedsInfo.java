@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.kandian.community.pk_post.oidb_pk_post.PkPostAttribute;
+import tencent.im.oidb.pk_post.oidb_pk_post.PkPostAttribute;
 
 public final class feeds_info$UGCFeedsInfo
   extends MessageMicro<UGCFeedsInfo>
@@ -34,18 +34,19 @@ public final class feeds_info$UGCFeedsInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 90, 98, 106, 114, 122, 130, 138, 170, 178, 186, 194, 202, 210 }, new String[] { "enum_ugc_feeds_card_type", "uint64_cuin", "enum_ugc_feeds_src", "uint32_ugc_feeds_type", "msg_ugc_pic_info_list", "msg_ugc_video_info_list", "bytes_ugc_comments", "bytes_json_pic_list", "bytes_json_video_list", "bytes_json_content", "msg_at_multi_level", "rpt_msg_tag_info_list", "bytes_jump_url", "account_profile", "bytes_rich_text", "msg_pk_post_info", "msg_ugc_voice_info_list" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), null, null, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, null, null, localByteStringMicro5, null, localByteStringMicro6, null, null }, UGCFeedsInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 90, 98, 106, 114, 122, 130, 138, 170, 178, 186, 194, 202, 210 }, new String[] { "enum_ugc_feeds_card_type", "uint64_cuin", "enum_ugc_feeds_src", "uint32_ugc_feeds_type", "msg_ugc_pic_info_list", "msg_ugc_video_info_list", "bytes_ugc_comments", "bytes_json_pic_list", "bytes_json_video_list", "bytes_json_content", "msg_at_multi_level", "rpt_msg_tag_info_list", "bytes_jump_url", "account_profile", "bytes_rich_text", "msg_pk_post_info", "msg_ugc_voice_info_list" }, new Object[] { localInteger, Long.valueOf(0L), localInteger, localInteger, null, null, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, null, null, localByteStringMicro5, null, localByteStringMicro6, null, null }, UGCFeedsInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.articlesummary.feeds_info.UGCFeedsInfo
  * JD-Core Version:    0.7.0.1
  */

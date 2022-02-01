@@ -2,7 +2,7 @@ package com.tencent.mobileqq.colornote.list;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.colornote.ColorNoteController;
+import com.tencent.mobileqq.colornote.api.impl.ColorNoteControllerImpl;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
@@ -21,16 +21,18 @@ class ColorNoteListAdapter$OnItemClickListener
   
   public void onClick(View paramView)
   {
-    ColorNoteController.a(paramView.getContext(), (ColorNote)ColorNoteListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter).get(this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter$ViewHolder.getAdapterPosition()));
+    ColorNote localColorNote = (ColorNote)ColorNoteListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter).get(this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter$ViewHolder.getAdapterPosition());
+    ColorNoteControllerImpl.launch(paramView.getContext(), localColorNote);
     if (ColorNoteListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter) != null) {
       ColorNoteListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter).b();
     }
+    ColorNoteListAdapter.b(this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter, paramView, localColorNote);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.list.ColorNoteListAdapter.OnItemClickListener
  * JD-Core Version:    0.7.0.1
  */

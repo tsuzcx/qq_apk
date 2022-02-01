@@ -69,22 +69,20 @@ public class VerticalSeekBar
     localOptions.inTargetDensity = localResources.getDisplayMetrics().densityDpi;
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(localResources, 2130847779, localOptions);
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-      this.b = DisplayUtil.a(getContext(), 5.0F);
-      this.c = DisplayUtil.a(getContext(), 30.0F);
-      return;
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(localResources, 2130847646, localOptions);
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      for (;;)
-      {
-        QLog.e("VerticalSeekBar", 1, "thumb picture decode failed");
-      }
+      label90:
+      break label90;
     }
+    QLog.e("VerticalSeekBar", 1, "thumb picture decode failed");
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.b = DisplayUtil.a(getContext(), 5.0F);
+    this.c = DisplayUtil.a(getContext(), 30.0F);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int j = getMeasuredWidth();
@@ -92,30 +90,32 @@ public class VerticalSeekBar
     if (this.jdField_a_of_type_Int <= 0) {
       this.jdField_a_of_type_Int = ((int)((i - this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) / this.d * this.e));
     }
-    float f3 = j / 2;
-    float f2 = this.jdField_a_of_type_Int + this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() + this.b;
-    if (this.jdField_a_of_type_Int < this.b)
-    {
+    float f4 = j / 2;
+    int m = this.jdField_a_of_type_Int;
+    int n = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+    int k = this.b;
+    float f2 = m + n + k;
+    m = this.jdField_a_of_type_Int;
+    float f1;
+    if (m < k) {
       f1 = 0.0F;
-      paramCanvas.drawLine(f3, 0.0F, f3, f1, this.jdField_a_of_type_AndroidGraphicsPaint);
-      j = (j - this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) / 2;
-      this.jdField_a_of_type_AndroidGraphicsRect.set(j, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + j, this.jdField_a_of_type_Int + this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-      if (f2 <= i) {
-        break label214;
-      }
+    } else {
+      f1 = m - k;
     }
-    label214:
-    for (float f1 = i;; f1 = f2)
-    {
-      paramCanvas.drawLine(f3, f1, f3, i, this.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
-      f1 = this.jdField_a_of_type_Int - this.b;
-      break;
+    paramCanvas.drawLine(f4, 0.0F, f4, f1, this.jdField_a_of_type_AndroidGraphicsPaint);
+    j = (j - this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) / 2;
+    this.jdField_a_of_type_AndroidGraphicsRect.set(j, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + j, this.jdField_a_of_type_Int + this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+    float f3 = i;
+    if (f2 > f3) {
+      f1 = f3;
+    } else {
+      f1 = f2;
     }
+    paramCanvas.drawLine(f4, f1, f4, f3, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     paramInt2 = getMeasuredWidth();
@@ -128,79 +128,100 @@ public class VerticalSeekBar
     if (i < this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) {
       paramInt2 = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
     }
+    int j = this.c;
     i = paramInt1;
-    if (paramInt1 < this.c) {
-      i = this.c;
+    if (paramInt1 < j) {
+      i = j;
     }
     setMeasuredDimension(i, paramInt2);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    float f3 = 0.0F;
     if (!isEnabled()) {
       return false;
     }
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    float f1;
+    if (i != 0)
     {
-    }
-    do
-    {
-      for (;;)
+      float f2;
+      SeekBar.OnSeekBarChangeListener localOnSeekBarChangeListener;
+      if (i != 1)
       {
-        return true;
-        this.jdField_a_of_type_Float = paramMotionEvent.getY();
-        if ((this.jdField_a_of_type_Float > this.jdField_a_of_type_Int - this.b) && (this.jdField_a_of_type_Float < this.jdField_a_of_type_Int + this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() + this.b))
-        {
-          this.jdField_a_of_type_Boolean = true;
-          if (this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener != null) {
-            this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener.onStartTrackingTouch(null);
-          }
+        if (i != 2) {
+          return true;
         }
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        continue;
         if (this.jdField_a_of_type_Boolean)
         {
           f1 = paramMotionEvent.getY() - this.jdField_a_of_type_Float;
           f2 = getMeasuredHeight() - this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-          if ((this.jdField_a_of_type_Int + f1 <= f2) && (this.jdField_a_of_type_Int + f1 >= 0.0F))
+          i = this.jdField_a_of_type_Int;
+          if ((i + f1 <= f2) && (i + f1 >= 0.0F))
           {
-            this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Int + f1));
-            if (this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener != null)
+            this.jdField_a_of_type_Int = ((int)(i + f1));
+            localOnSeekBarChangeListener = this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener;
+            if (localOnSeekBarChangeListener != null)
             {
               this.e = ((int)(this.jdField_a_of_type_Int / f2 * this.d));
-              this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener.onProgressChanged(null, this.e, false);
+              localOnSeekBarChangeListener.onProgressChanged(null, this.e, false);
             }
           }
           this.jdField_a_of_type_Float = paramMotionEvent.getY();
           invalidate();
+          return true;
         }
       }
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener != null)) {
-        this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener.onStopTrackingTouch(null);
-      }
-      this.jdField_a_of_type_Boolean = false;
-    } while (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 100L);
-    float f2 = getMeasuredHeight() - this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-    float f4 = paramMotionEvent.getY() - this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
-    float f1 = f4;
-    if (f4 > f2) {
-      f1 = f2;
-    }
-    if (f1 < 0.0F) {
-      f1 = f3;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = ((int)f1);
-      if (this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener != null)
+      else
       {
-        this.e = ((int)(this.jdField_a_of_type_Int / f2 * this.d));
-        this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener.onProgressChanged(null, this.e, false);
+        if (this.jdField_a_of_type_Boolean)
+        {
+          localOnSeekBarChangeListener = this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener;
+          if (localOnSeekBarChangeListener != null) {
+            localOnSeekBarChangeListener.onStopTrackingTouch(null);
+          }
+        }
+        this.jdField_a_of_type_Boolean = false;
+        if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 100L)
+        {
+          float f3 = getMeasuredHeight() - this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+          f2 = paramMotionEvent.getY() - this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
+          f1 = f2;
+          if (f2 > f3) {
+            f1 = f3;
+          }
+          f2 = f1;
+          if (f1 < 0.0F) {
+            f2 = 0.0F;
+          }
+          this.jdField_a_of_type_Int = ((int)f2);
+          paramMotionEvent = this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener;
+          if (paramMotionEvent != null)
+          {
+            this.e = ((int)(this.jdField_a_of_type_Int / f3 * this.d));
+            paramMotionEvent.onProgressChanged(null, this.e, false);
+          }
+          invalidate();
+          return true;
+        }
       }
-      invalidate();
-      break;
     }
+    else
+    {
+      this.jdField_a_of_type_Float = paramMotionEvent.getY();
+      f1 = this.jdField_a_of_type_Float;
+      i = this.jdField_a_of_type_Int;
+      if ((f1 > i - this.b) && (f1 < i + this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() + this.b))
+      {
+        this.jdField_a_of_type_Boolean = true;
+        paramMotionEvent = this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener;
+        if (paramMotionEvent != null) {
+          paramMotionEvent.onStartTrackingTouch(null);
+        }
+      }
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+    }
+    return true;
   }
   
   public void setMaxProgress(int paramInt)
@@ -221,15 +242,16 @@ public class VerticalSeekBar
       if (getMeasuredHeight() >= 0) {
         this.jdField_a_of_type_Int = ((int)((getMeasuredHeight() - this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) / this.d * this.e));
       }
-      if (this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener != null) {
-        this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener.onProgressChanged(null, paramInt, true);
+      SeekBar.OnSeekBarChangeListener localOnSeekBarChangeListener = this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener;
+      if (localOnSeekBarChangeListener != null) {
+        localOnSeekBarChangeListener.onProgressChanged(null, paramInt, true);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.VerticalSeekBar
  * JD-Core Version:    0.7.0.1
  */

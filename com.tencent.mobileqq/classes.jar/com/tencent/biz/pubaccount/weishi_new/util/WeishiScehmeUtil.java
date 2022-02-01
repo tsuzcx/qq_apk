@@ -105,71 +105,87 @@ public class WeishiScehmeUtil
   
   private static String a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramInt1 > 0)
-    {
-      if (paramInt2 <= 0) {
-        break label72;
-      }
-      label8:
-      if (paramInt3 <= 0) {
-        break label77;
-      }
-    }
-    for (;;)
-    {
-      String str = paramInt1 + "_" + paramInt2 + "_" + paramInt3;
-      str = (String)jdField_a_of_type_JavaUtilHashMap.get(str);
-      if (TextUtils.isEmpty(str)) {
-        break label82;
-      }
-      return str;
+    if (paramInt1 <= 0) {
       paramInt1 = 0;
-      break;
-      label72:
+    }
+    if (paramInt2 <= 0) {
       paramInt2 = 0;
-      break label8;
-      label77:
+    }
+    if (paramInt3 <= 0) {
       paramInt3 = 0;
     }
-    label82:
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramInt3);
+    localObject = ((StringBuilder)localObject).toString();
+    localObject = (String)jdField_a_of_type_JavaUtilHashMap.get(localObject);
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      return localObject;
+    }
     return "2020020063";
   }
   
   public static String a(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    if ((paramstSimpleMetaFeed != null) && (!TextUtils.isEmpty(paramstSimpleMetaFeed.id))) {
-      return "weishi://feed?feed_id=" + paramstSimpleMetaFeed.id;
+    if ((paramstSimpleMetaFeed != null) && (!TextUtils.isEmpty(paramstSimpleMetaFeed.id)))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("weishi://feed?feed_id=");
+      localStringBuilder.append(paramstSimpleMetaFeed.id);
+      return localStringBuilder.toString();
     }
     return "weishi://main";
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2)
   {
-    paramString2 = WeishiUtils.b(paramString2);
-    WSLog.d("WeishiScehmeUtil", "openWeishi: scheme = " + paramString2);
+    paramString2 = WeishiUtils.c(paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("openWeishi: scheme = ");
+    localStringBuilder.append(paramString2);
+    WSLog.d("WeishiScehmeUtil", localStringBuilder.toString());
     jdField_a_of_type_Boolean = true;
     WeishiGuideUtils.a(paramContext, paramString1, paramString2);
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString2)))
+    if ((paramContext != null) && (!TextUtils.isEmpty(paramString2)))
     {
-      WSLog.d("WeishiScehmeUtil", "openWeishi context = " + paramContext + "scheme = " + paramString2);
+      Object localObject = paramString2;
+      if (!paramString2.contains("?"))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString2);
+        ((StringBuilder)localObject).append("?");
+        localObject = ((StringBuilder)localObject).toString();
+      }
+      paramString2 = (String)localObject;
+      if (!((String)localObject).contains("&logsour="))
+      {
+        paramString2 = a(paramInt1, paramInt2, paramInt3);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("&logsour=");
+        localStringBuilder.append(paramString2);
+        paramString2 = localStringBuilder.toString();
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("openWeishi final scheme = ");
+      ((StringBuilder)localObject).append(paramString2);
+      WSLog.c("WeishiScehmeUtil", ((StringBuilder)localObject).toString());
+      a(paramContext, paramString1, paramString2);
       return;
     }
-    String str = paramString2;
-    if (!paramString2.contains("?")) {
-      str = paramString2 + "?";
-    }
-    paramString2 = str;
-    if (!str.contains("&logsour="))
-    {
-      paramString2 = a(paramInt1, paramInt2, paramInt3);
-      paramString2 = str + "&logsour=" + paramString2;
-    }
-    WSLog.c("WeishiScehmeUtil", "openWeishi final scheme = " + paramString2);
-    a(paramContext, paramString1, paramString2);
+    paramString1 = new StringBuilder();
+    paramString1.append("openWeishi context = ");
+    paramString1.append(paramContext);
+    paramString1.append("scheme = ");
+    paramString1.append(paramString2);
+    WSLog.d("WeishiScehmeUtil", paramString1.toString());
   }
   
   public static boolean a(String paramString)
@@ -179,7 +195,7 @@ public class WeishiScehmeUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WeishiScehmeUtil
  * JD-Core Version:    0.7.0.1
  */

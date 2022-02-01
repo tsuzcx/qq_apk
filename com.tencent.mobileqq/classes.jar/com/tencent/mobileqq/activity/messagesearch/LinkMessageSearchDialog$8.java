@@ -12,15 +12,19 @@ class LinkMessageSearchDialog$8
   
   public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onLongClick, position = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramAdapterView = new StringBuilder();
+      paramAdapterView.append("onLongClick, position = ");
+      paramAdapterView.append(paramInt);
+      QLog.i("LinkMessageSearchDialog", 2, paramAdapterView.toString());
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.LinkMessageSearchDialog.8
  * JD-Core Version:    0.7.0.1
  */

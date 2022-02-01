@@ -4,7 +4,7 @@
     <RelativeLayout android:id="@id/emotion_panel" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/ja2">
         <com.tencent.mobileqq.emoticonview.EmoticonPanelViewPager android:id="@id/viewPager" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
         <ViewStub android:id="@id/l0r" android:visibility="invisible" android:layout="@layout/mw" android:inflatedId="@id/bpe" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <ViewStub android:id="@id/l0s" android:visibility="invisible" android:layout="@layout/ny" android:inflatedId="@id/c38" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ViewStub android:id="@id/l0s" android:visibility="invisible" android:layout="@layout/cx2" android:inflatedId="@id/c38" android:layout_width="fill_parent" android:layout_height="fill_parent" />
         <ViewStub android:id="@id/mfv" android:visibility="invisible" android:layout="@layout/c5o" android:inflatedId="@id/lby" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     </RelativeLayout>
     <ImageView android:id="@id/bvb" android:visibility="gone" android:layout_width="33.0dip" android:layout_height="30.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="23.0dip" android:src="@drawable/foa" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />

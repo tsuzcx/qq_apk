@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/o16" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:id="@id/mhl" android:background="#b2000000" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/mya" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:id="@id/mhk" android:layout_width="296.0dip" android:layout_height="470.0dip" />
+        <TextView android:textSize="17.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/mkq" android:background="@drawable/bk4" android:layout_width="236.0dip" android:layout_height="41.0dip" android:layout_marginBottom="20.0dip" android:text="我知道了" android:layout_alignBottom="@id/mhk" android:layout_centerHorizontal="true" />
+        <Button android:id="@id/mhj" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="40.0dip" android:layout_below="@id/mhk" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/mgw" android:padding="7.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="74.0dip" android:layout_centerHorizontal="true">
+        <ImageView android:background="@drawable/bk1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/gfd" android:scaleType="center" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/mgx" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textSize="14.0sp" android:textColor="#ff000000" android:gravity="center" android:id="@id/mgz" android:background="@drawable/bjw" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginBottom="8.0dip" android:text="@string/wgk" android:maxLines="1" />
+        <ImageView android:id="@id/lok" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="36.0dip" android:src="@drawable/bjx" android:layout_alignTop="@id/mgz" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <com.tencent.avgame.ui.GuideView android:id="@id/mhf" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/mhg" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textSize="13.0sp" android:textColor="#ff000000" android:gravity="center" android:id="@id/mhh" android:background="@drawable/bjw" android:paddingLeft="3.0dip" android:paddingRight="3.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginBottom="8.0dip" android:text="@string/wgj" android:maxLines="1" />
+        <ImageView android:id="@id/mj3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="36.0dip" android:src="@drawable/bjx" android:layout_alignTop="@id/mhh" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
 </RelativeLayout>

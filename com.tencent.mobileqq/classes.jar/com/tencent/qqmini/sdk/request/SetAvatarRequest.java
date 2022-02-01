@@ -44,32 +44,27 @@ public class SetAvatarRequest
   public JSONObject getResponse(byte[] paramArrayOfByte, JSONObject paramJSONObject)
   {
     if (paramArrayOfByte == null) {
-      paramJSONObject = null;
+      return null;
     }
-    for (;;)
+    INTERFACE.StSetUserAvatarRsp localStSetUserAvatarRsp = new INTERFACE.StSetUserAvatarRsp();
+    try
     {
+      localStSetUserAvatarRsp.mergeFrom(paramArrayOfByte);
       return paramJSONObject;
-      INTERFACE.StSetUserAvatarRsp localStSetUserAvatarRsp = new INTERFACE.StSetUserAvatarRsp();
-      try
-      {
-        localStSetUserAvatarRsp.mergeFrom(paramArrayOfByte);
-        if (localStSetUserAvatarRsp == null)
-        {
-          QMLog.d("SetAvatarRequest", "onResponse fail.rsp = null");
-          return null;
-        }
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        QMLog.d("SetAvatarRequest", "onResponse fail." + paramArrayOfByte);
-      }
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("onResponse fail.");
+      paramJSONObject.append(paramArrayOfByte);
+      QMLog.d("SetAvatarRequest", paramJSONObject.toString());
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.SetAvatarRequest
  * JD-Core Version:    0.7.0.1
  */

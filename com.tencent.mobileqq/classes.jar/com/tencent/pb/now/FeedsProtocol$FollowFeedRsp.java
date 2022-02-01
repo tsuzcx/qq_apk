@@ -21,13 +21,14 @@ public final class FeedsProtocol$FollowFeedRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42 }, new String[] { "result", "errmsg", "total", "end_flag", "msg_feeds" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), null }, FollowFeedRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42 }, new String[] { "result", "errmsg", "total", "end_flag", "msg_feeds" }, new Object[] { localInteger, localByteStringMicro, localInteger, localInteger, null }, FollowFeedRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.now.FeedsProtocol.FollowFeedRsp
  * JD-Core Version:    0.7.0.1
  */

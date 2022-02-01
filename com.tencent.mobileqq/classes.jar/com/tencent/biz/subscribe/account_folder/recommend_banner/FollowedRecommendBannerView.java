@@ -49,8 +49,9 @@ public class FollowedRecommendBannerView
   
   private COMM.StCommonExt a()
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerFollowedRecommendBannerModel != null) {
-      return this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerFollowedRecommendBannerModel.a();
+    FollowedRecommendBannerModel localFollowedRecommendBannerModel = this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerFollowedRecommendBannerModel;
+    if (localFollowedRecommendBannerModel != null) {
+      return localFollowedRecommendBannerModel.a();
     }
     return null;
   }
@@ -58,23 +59,20 @@ public class FollowedRecommendBannerView
   private void b()
   {
     StringBuilder localStringBuilder = new StringBuilder(SubscribeConstants.b(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
-    if (a() != null) {}
-    for (;;)
-    {
+    if (a() != null) {
       try
       {
         localStringBuilder.append(URLEncoder.encode(a().attachInfo.get(), "UTF-8"));
-        VSReporter.b(this.jdField_a_of_type_JavaLangString, "auth_person", "reco_more", 0, 0, new String[0]);
-        SubscribeLaucher.a(localStringBuilder.toString());
-        return;
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
         localUnsupportedEncodingException.printStackTrace();
-        continue;
       }
+    } else {
       QLog.d("FollowedRecommendBanner", 0, "jump more recommend H5 page with no attach info!");
     }
+    VSReporter.b(this.jdField_a_of_type_JavaLangString, "auth_person", "reco_more", 0, 0, new String[0]);
+    SubscribeLaucher.a(localStringBuilder.toString());
   }
   
   private void c()
@@ -112,10 +110,10 @@ public class FollowedRecommendBannerView
   protected void a(Context paramContext)
   {
     setOrientation(1);
-    inflate(paramContext, 2131558847, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131363464));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371886));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369839));
+    inflate(paramContext, 2131558745, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131363391));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371507));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369524));
     paramContext = new LinearLayoutManager(paramContext);
     paramContext.setOrientation(0);
     this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerFollowedRecommendBannerModel = new FollowedRecommendBannerModel();
@@ -134,20 +132,25 @@ public class FollowedRecommendBannerView
   public void a(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    if (this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerFollowedRecommendBannerModel != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerFollowedRecommendBannerModel.a(this.jdField_a_of_type_JavaLangString);
+    paramString = this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerFollowedRecommendBannerModel;
+    if (paramString != null) {
+      paramString.a(this.jdField_a_of_type_JavaLangString);
     }
   }
   
   public void a(List<RecommendInfoItem> paramList, boolean paramBoolean)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
+    if (paramList != null)
+    {
+      if (paramList.size() == 0) {
+        return;
+      }
+      RecommendBannerContentAdaper localRecommendBannerContentAdaper = this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerContentAdaper;
+      if (localRecommendBannerContentAdaper != null) {
+        localRecommendBannerContentAdaper.a(null, paramList);
+      }
+      c();
     }
-    if (this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerContentAdaper != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerContentAdaper.a(null, paramList);
-    }
-    c();
   }
   
   public boolean a()
@@ -155,7 +158,7 @@ public class FollowedRecommendBannerView
     return getVisibility() == 0;
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     clearAnimation();
     super.onDetachedFromWindow();
@@ -163,7 +166,7 @@ public class FollowedRecommendBannerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView
  * JD-Core Version:    0.7.0.1
  */

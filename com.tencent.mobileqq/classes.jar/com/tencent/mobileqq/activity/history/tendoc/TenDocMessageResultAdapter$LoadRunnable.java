@@ -24,13 +24,24 @@ class TenDocMessageResultAdapter$LoadRunnable
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TenDocMessageResultAdapter", 2, "loadMessageResult, run(), keyword = " + this.jdField_a_of_type_JavaLangString + ", loadType = " + this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("loadMessageResult, run(), keyword = ");
+      ((StringBuilder)???).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)???).append(", loadType = ");
+      ((StringBuilder)???).append(this.jdField_a_of_type_Int);
+      QLog.i("TenDocMessageResultAdapter", 2, ((StringBuilder)???).toString());
     }
     Object localObject2 = new ArrayList();
-    Object localObject4 = TenDocMessageResultAdapter.a(this.this$0, TenDocMessageResultAdapter.a(this.this$0), (ArrayList)localObject2);
-    if (QLog.isColorLevel()) {
-      QLog.i("TenDocMessageResultAdapter", 2, "loadMessageResult, get: messageItems[] = " + localObject2);
+    ??? = this.this$0;
+    Object localObject4 = TenDocMessageResultAdapter.a((TenDocMessageResultAdapter)???, TenDocMessageResultAdapter.a((TenDocMessageResultAdapter)???), (ArrayList)localObject2);
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("loadMessageResult, get: messageItems[] = ");
+      ((StringBuilder)???).append(localObject2);
+      QLog.i("TenDocMessageResultAdapter", 2, ((StringBuilder)???).toString());
     }
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
@@ -51,7 +62,7 @@ class TenDocMessageResultAdapter$LoadRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.tendoc.TenDocMessageResultAdapter.LoadRunnable
  * JD-Core Version:    0.7.0.1
  */

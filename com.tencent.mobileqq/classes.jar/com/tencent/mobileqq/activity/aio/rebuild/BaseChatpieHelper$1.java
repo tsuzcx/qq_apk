@@ -5,6 +5,7 @@ import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.friend.status.OnlineStatusUtils;
 import com.tencent.mobileqq.statistics.StatisticAssist;
 import com.tencent.mobileqq.utils.ContactUtils;
 
@@ -15,62 +16,88 @@ class BaseChatpieHelper$1
   
   public void run()
   {
-    String str2;
-    String str3;
-    String str1;
-    Object localObject;
-    if (this.jdField_a_of_type_Int == -1) {
+    Object localObject1;
+    Object localObject2;
+    Object localObject3;
+    label159:
+    String str;
+    Object localObject4;
+    if (this.jdField_a_of_type_Int == -1)
+    {
       if (BaseChatpieHelper.a(this.this$0).jdField_a_of_type_Int == 0)
       {
-        str2 = "";
-        str3 = "";
-        str1 = str2;
-        localObject = str3;
-        if (this.b != 2) {
-          break label156;
+        if (this.b == 2)
+        {
+          localObject1 = (FriendsManager)BaseChatpieHelper.a(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER);
+          if (BaseChatpieHelper.a(this.this$0).jdField_a_of_type_Int == 1008) {
+            return;
+          }
+          localObject2 = ((FriendsManager)localObject1).e(BaseChatpieHelper.a(this.this$0).jdField_a_of_type_JavaLangString);
+          if (localObject2 != null)
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("");
+            ((StringBuilder)localObject1).append(OnlineStatusUtils.a((Friends)localObject2));
+            localObject1 = ((StringBuilder)localObject1).toString();
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("");
+            ((StringBuilder)localObject3).append(ContactUtils.a((Friends)localObject2, BaseChatpieHelper.a(this.this$0)));
+            localObject2 = ((StringBuilder)localObject3).toString();
+            break label159;
+          }
         }
-        localObject = (FriendsManager)BaseChatpieHelper.a(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER);
-        if (BaseChatpieHelper.a(this.this$0).jdField_a_of_type_Int != 1008) {
-          break label75;
-        }
+        localObject1 = "";
+        localObject2 = localObject1;
+        localObject3 = BaseChatpieHelper.a(this.this$0);
+        str = BaseChatpieHelper.a(this.this$0).getAccount();
+        localObject4 = BaseChatpieHelper.a(this.this$0).jdField_a_of_type_JavaLangString;
+        Object localObject5 = new StringBuilder();
+        ((StringBuilder)localObject5).append(this.b);
+        ((StringBuilder)localObject5).append("");
+        localObject5 = ((StringBuilder)localObject5).toString();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(BaseChatpieHelper.a(this.this$0));
+        localStringBuilder.append("");
+        StatisticAssist.a((QQAppInterface)localObject3, "clt", str, (String)localObject4, "msg", (String)localObject5, "", "", (String)localObject1, (String)localObject2, localStringBuilder.toString());
+        BaseChatpieHelper.a(this.this$0, 0);
       }
     }
-    for (;;)
+    else
     {
-      return;
-      label75:
-      Friends localFriends = ((FriendsManager)localObject).e(BaseChatpieHelper.a(this.this$0).jdField_a_of_type_JavaLangString);
-      str1 = str2;
-      localObject = str3;
-      if (localFriends != null)
-      {
-        str1 = "" + ContactUtils.a(localFriends);
-        localObject = "" + ContactUtils.a(localFriends, BaseChatpieHelper.a(this.this$0));
+      localObject1 = null;
+      int i = BaseChatpieHelper.a(this.this$0).jdField_a_of_type_Int;
+      if (i != 0) {
+        if (i != 1) {
+          if (i != 3000) {
+            break label342;
+          }
+        }
       }
-      label156:
-      StatisticAssist.a(BaseChatpieHelper.a(this.this$0), "clt", BaseChatpieHelper.a(this.this$0).getAccount(), BaseChatpieHelper.a(this.this$0).jdField_a_of_type_JavaLangString, "msg", this.b + "", "", "", str1, (String)localObject, BaseChatpieHelper.a(this.this$0) + "");
-      BaseChatpieHelper.a(this.this$0, 0);
-      return;
-      localObject = null;
-      switch (BaseChatpieHelper.a(this.this$0).jdField_a_of_type_Int)
+      for (;;)
       {
+        localObject1 = "discuss";
+        continue;
+        localObject1 = "grp";
+        continue;
+        localObject1 = "clt";
       }
-      while (localObject != null)
+      label342:
+      if (localObject1 != null)
       {
-        StatisticAssist.a(BaseChatpieHelper.a(this.this$0), (String)localObject, BaseChatpieHelper.a(this.this$0).getAccount(), BaseChatpieHelper.a(this.this$0).jdField_a_of_type_JavaLangString, "pic", "", this.jdField_a_of_type_Int + "", this.jdField_a_of_type_JavaLangString, "", "", "");
-        return;
-        localObject = "clt";
-        continue;
-        localObject = "grp";
-        continue;
-        localObject = "discuss";
+        localObject2 = BaseChatpieHelper.a(this.this$0);
+        localObject3 = BaseChatpieHelper.a(this.this$0).getAccount();
+        str = BaseChatpieHelper.a(this.this$0).jdField_a_of_type_JavaLangString;
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject4).append("");
+        StatisticAssist.a((QQAppInterface)localObject2, (String)localObject1, (String)localObject3, str, "pic", "", ((StringBuilder)localObject4).toString(), this.jdField_a_of_type_JavaLangString, "", "", "");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.BaseChatpieHelper.1
  * JD-Core Version:    0.7.0.1
  */

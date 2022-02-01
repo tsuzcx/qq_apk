@@ -49,109 +49,128 @@ import org.json.JSONObject;
 public class MemoryClearManager
   implements IMemoryManager, IAPMMemoryClearListener, MemoryManager.IReportListener, IAppStateChangeListener
 {
-  private static MemoryClearManager jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryClearManager = null;
+  private static MemoryClearManager jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryClearManager;
   public static int l = 1;
   public static int m = 2;
-  int jdField_a_of_type_Int = -1;
-  long jdField_a_of_type_Long = 0L;
-  private LinkedList<String> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  private LinkedList<String> jdField_a_of_type_JavaUtilLinkedList;
   List<WeakReference<QQHashMap>> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
   private Vector<MemoryClearManager.IClearMemoryListener> jdField_a_of_type_JavaUtilVector;
   public boolean a;
-  int jdField_b_of_type_Int = -1;
-  long jdField_b_of_type_Long = 0L;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
   List<WeakReference<QQConcurrentHashMap>> jdField_b_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  int jdField_c_of_type_Int = 0;
-  long jdField_c_of_type_Long = -1L;
+  int jdField_c_of_type_Int;
+  long jdField_c_of_type_Long;
   List<WeakReference<QQLruCache>> jdField_c_of_type_JavaUtilList = new CopyOnWriteArrayList();
   public int d;
-  long jdField_d_of_type_Long = -1L;
+  long jdField_d_of_type_Long;
   List<WeakReference<LruCache>> jdField_d_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  public int e = 0;
-  int f = 0;
-  int g = 0;
-  public int h = 0;
-  public int i = 0;
-  public int j = 0;
-  public int k = 0;
-  private int n = -1;
+  public int e;
+  int f;
+  int g;
+  public int h;
+  public int i;
+  public int j;
+  public int k;
+  private int n;
   
   private MemoryClearManager()
   {
+    boolean bool = false;
     this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_c_of_type_Long = -1L;
+    this.jdField_d_of_type_Long = -1L;
     this.jdField_d_of_type_Int = 0;
-    SharedPreferences localSharedPreferences = MobileQQ.getContext().getSharedPreferences("CommonMemoryCacheSP", 0);
-    if (localSharedPreferences.contains("lastShotTime")) {
-      localSharedPreferences.edit().clear().commit();
+    this.e = 0;
+    this.f = 0;
+    this.g = 0;
+    this.h = 0;
+    this.i = 0;
+    this.j = 0;
+    this.k = 0;
+    this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+    this.n = -1;
+    Object localObject = MobileQQ.getContext().getSharedPreferences("CommonMemoryCacheSP", 0);
+    if (((SharedPreferences)localObject).contains("lastShotTime")) {
+      ((SharedPreferences)localObject).edit().clear().commit();
     }
-    localSharedPreferences = MobileQQ.getContext().getSharedPreferences("CommonMemoryCacheSP_" + MobileQQ.sProcessId, 0);
-    long l1 = localSharedPreferences.getLong("lastShotTime", 0L);
+    localObject = MobileQQ.getContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CommonMemoryCacheSP_");
+    localStringBuilder.append(MobileQQ.sProcessId);
+    localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
+    long l1 = ((SharedPreferences)localObject).getLong("lastShotTime", 0L);
     if (Math.abs(System.currentTimeMillis() - l1) >= 43200000L)
     {
       if (0.001F >= Math.random()) {
         bool = true;
       }
       this.jdField_a_of_type_Boolean = bool;
-      localSharedPreferences.edit().putLong("lastShotTime", System.currentTimeMillis()).putBoolean("lastShotResult", this.jdField_a_of_type_Boolean).apply();
+      ((SharedPreferences)localObject).edit().putLong("lastShotTime", System.currentTimeMillis()).putBoolean("lastShotResult", this.jdField_a_of_type_Boolean).apply();
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MemoryClearManager", 2, "MemoryClearManager init needReport= " + this.jdField_a_of_type_Boolean);
-      }
-      this.jdField_a_of_type_JavaUtilVector = new Vector();
-      return;
-      this.jdField_a_of_type_Boolean = localSharedPreferences.getBoolean("lastShotResult", false);
+      this.jdField_a_of_type_Boolean = ((SharedPreferences)localObject).getBoolean("lastShotResult", false);
     }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("MemoryClearManager init needReport= ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      QLog.d("MemoryClearManager", 2, ((StringBuilder)localObject).toString());
+    }
+    this.jdField_a_of_type_JavaUtilVector = new Vector();
   }
   
   private static int a()
   {
-    int i1;
-    int i2;
-    Object localObject;
-    if (GlobalImageCache.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+    Object localObject1 = GlobalImageCache.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    int i2 = 0;
+    int i1 = 0;
+    if (localObject1 != null)
     {
-      Iterator localIterator = GlobalImageCache.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-      i1 = 0;
+      localObject1 = GlobalImageCache.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
       i2 = i1;
-      if (!localIterator.hasNext()) {
-        break label89;
-      }
-      localObject = localIterator.next();
-      if ((localObject instanceof Bitmap)) {
-        i1 += Utils.getBitmapSize((Bitmap)localObject);
-      }
-    }
-    for (;;)
-    {
-      break;
-      if ((localObject instanceof BitmapDrawable))
+      if (((Iterator)localObject1).hasNext())
       {
-        localObject = ((BitmapDrawable)localObject).getBitmap();
-        if (localObject != null)
+        Object localObject2 = ((Iterator)localObject1).next();
+        if ((localObject2 instanceof Bitmap)) {}
+        for (i2 = Utils.getBitmapSize((Bitmap)localObject2);; i2 = Utils.getBitmapSize((Bitmap)localObject2))
         {
-          i1 += Utils.getBitmapSize((Bitmap)localObject);
-          continue;
-          i2 = 0;
-          label89:
-          return i2 / 1024;
+          i1 += i2;
+          break;
+          if (!(localObject2 instanceof BitmapDrawable)) {
+            break;
+          }
+          localObject2 = ((BitmapDrawable)localObject2).getBitmap();
+          if (localObject2 == null) {
+            break;
+          }
         }
       }
     }
+    return i2 / 1024;
   }
   
   public static MemoryClearManager a()
   {
-    if (jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryClearManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryClearManager == null) {
-        jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryClearManager = new MemoryClearManager();
+    if (jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryClearManager == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryClearManager == null) {
+          jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryClearManager = new MemoryClearManager();
+        }
       }
-      return jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryClearManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryClearManager;
   }
   
   private static String a(Exception paramException)
@@ -161,79 +180,67 @@ public class MemoryClearManager
     }
     StringBuilder localStringBuilder = new StringBuilder();
     paramException = paramException.getStackTrace();
-    int i2 = 0;
     int i1 = 1;
-    for (;;)
+    int i2 = 0;
+    while (i1 < paramException.length)
     {
-      String str;
-      if (i1 < paramException.length)
-      {
-        str = paramException[i1].toString();
-        if (localStringBuilder.length() != 0) {
-          break label91;
-        }
+      String str = paramException[i1].toString();
+      if (localStringBuilder.length() == 0) {
         localStringBuilder.append("[");
-      }
-      for (;;)
-      {
-        localStringBuilder.append(str);
-        i2 += 1;
-        if (i2 < 16) {
-          break;
-        }
-        if (localStringBuilder.length() > 0) {
-          localStringBuilder.append("]");
-        }
-        return localStringBuilder.toString();
-        label91:
+      } else {
         localStringBuilder.append(",");
+      }
+      localStringBuilder.append(str);
+      i2 += 1;
+      if (i2 >= 16) {
+        break;
       }
       i1 += 1;
     }
+    if (localStringBuilder.length() > 0) {
+      localStringBuilder.append("]");
+    }
+    return localStringBuilder.toString();
   }
   
   public static void a(String paramString, int paramInt)
   {
-    String str;
     if (a().jdField_a_of_type_Boolean)
     {
-      str = a(new IllegalStateException("reportMemoryMsg : " + paramInt));
-      if (QLog.isColorLevel()) {
-        QLog.d("CommonMemoryCache", 2, "reportMemoryMsg|stack= " + str);
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("reportMemoryMsg : ");
+      ((StringBuilder)localObject1).append(paramInt);
+      String str = a(new IllegalStateException(((StringBuilder)localObject1).toString()));
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("reportMemoryMsg|stack= ");
+        ((StringBuilder)localObject1).append(str);
+        QLog.d("CommonMemoryCache", 2, ((StringBuilder)localObject1).toString());
       }
-      localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
-      if (localObject == null) {
-        break label203;
+      Object localObject2 = MobileQQ.sMobileQQ;
+      localObject1 = null;
+      localObject2 = ((MobileQQ)localObject2).waitAppRuntime(null);
+      if (localObject2 != null) {
+        localObject2 = ((AppRuntime)localObject2).getAccount();
+      } else {
+        localObject2 = null;
       }
-    }
-    label203:
-    for (Object localObject = ((AppRuntime)localObject).getAccount();; localObject = null)
-    {
       HashMap localHashMap = new HashMap();
       localHashMap.put("param_stack", str);
       localHashMap.put("sProcessId", String.valueOf(MobileQQ.sProcessId));
       if (paramInt == m)
       {
-        str = "sImageCacheKey";
         localHashMap.put("key", paramString);
-        paramString = str;
+        localObject1 = "sImageCacheKey";
       }
-      for (;;)
+      else if (paramInt == l)
       {
-        if (paramString != null) {
-          StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance((String)localObject, paramString, true, 0L, 0L, localHashMap, "", true);
-        }
-        return;
-        if (paramInt == l)
-        {
-          str = "DexPathListHook";
-          localHashMap.put("name", paramString);
-          paramString = str;
-        }
-        else
-        {
-          paramString = null;
-        }
+        localHashMap.put("name", paramString);
+        localObject1 = "DexPathListHook";
+      }
+      if (localObject1 != null) {
+        StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance((String)localObject2, (String)localObject1, true, 0L, 0L, localHashMap, "", true);
       }
     }
   }
@@ -243,80 +250,79 @@ public class MemoryClearManager
     try
     {
       paramJSONObject.put("MemorySize", paramLong);
-      JSONObject localJSONObject1 = new JSONObject();
-      localJSONObject1.put("p_id", MagnifierSDK.b());
-      localJSONObject1.put("plugin", String.valueOf(22));
       JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("memorydata", paramJSONObject);
-      localJSONObject2.put("clientinfo", localJSONObject1);
-      localJSONObject2.put("newplugin", 129);
-      ReporterMachine.a(new ResultObject(0, "testcase", false, 1L, 1L, localJSONObject2, true, true, MagnifierSDK.jdField_a_of_type_Long));
-      if (QLog.isColorLevel()) {
-        QLog.d("MemoryClearManager", 2, "reportTOAPM : " + localJSONObject2.toString());
+      localJSONObject2.put("p_id", MagnifierSDK.b());
+      localJSONObject2.put("plugin", String.valueOf(22));
+      JSONObject localJSONObject1 = new JSONObject();
+      localJSONObject1.put("memorydata", paramJSONObject);
+      localJSONObject1.put("clientinfo", localJSONObject2);
+      localJSONObject1.put("newplugin", 129);
+      ReporterMachine.a(new ResultObject(0, "testcase", false, 1L, 1L, localJSONObject1, true, true, MagnifierSDK.jdField_a_of_type_Long));
+      if (QLog.isColorLevel())
+      {
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("reportTOAPM : ");
+        paramJSONObject.append(localJSONObject1.toString());
+        QLog.d("MemoryClearManager", 2, paramJSONObject.toString());
+        return;
       }
-      return;
     }
     catch (JSONException paramJSONObject)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("MemoryClearManager", 2, paramJSONObject, new Object[0]);
+      if (QLog.isColorLevel()) {
+        QLog.d("MemoryClearManager", 2, paramJSONObject, new Object[0]);
+      }
     }
   }
   
   private void a(JSONObject paramJSONObject, CacheInfo paramCacheInfo, int paramInt1, int paramInt2)
   {
-    if ((paramCacheInfo == null) || (paramJSONObject == null)) {
-      return;
-    }
-    for (;;)
+    if (paramCacheInfo != null)
     {
-      JSONObject localJSONObject;
+      if (paramJSONObject == null) {
+        return;
+      }
       try
       {
-        localJSONObject = new JSONObject();
+        JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("type", paramInt1);
         localJSONObject.put("action", paramInt2);
         localJSONObject.put("capacity", paramCacheInfo.capacity);
         localJSONObject.put("size", paramCacheInfo.size);
         localJSONObject.put("getCount", paramCacheInfo.getCount);
         localJSONObject.put("putCount", paramCacheInfo.putCount);
-        if (paramCacheInfo.putCount <= 0) {
-          break label306;
+        paramInt1 = paramCacheInfo.putCount;
+        if (paramInt1 > 0) {
+          localJSONObject.put("getRate", paramCacheInfo.getCount / paramCacheInfo.putCount);
+        } else {
+          localJSONObject.put("getRate", -1.0D);
         }
-        localJSONObject.put("getRate", paramCacheInfo.getCount / paramCacheInfo.putCount);
         localJSONObject.put("removeCount", paramCacheInfo.removeCount);
         localJSONObject.put("hitCount", paramCacheInfo.hitCount);
         localJSONObject.put("missCount", paramCacheInfo.missCount);
-        if ((paramCacheInfo.hitCount <= 0) && (paramCacheInfo.missCount <= 0)) {
-          break label321;
+        paramInt1 = paramCacheInfo.hitCount;
+        if ((paramInt1 <= 0) && (paramCacheInfo.missCount <= 0)) {
+          localJSONObject.put("hitRate", -1.0D);
+        } else {
+          localJSONObject.put("hitRate", paramCacheInfo.hitCount / (paramCacheInfo.hitCount + paramCacheInfo.missCount));
         }
-        localJSONObject.put("hitRate", paramCacheInfo.hitCount / (paramCacheInfo.hitCount + paramCacheInfo.missCount));
         localJSONObject.put("lifeTime", paramCacheInfo.lifeTime);
         localJSONObject.put("gapTime", paramCacheInfo.gapTime);
         localJSONObject.put("MemorySize", paramCacheInfo.mMemorySize);
         localJSONObject.put("ClearSize", paramCacheInfo.mClearSize);
-        if (!(paramCacheInfo instanceof HashMapInfo)) {
-          break label336;
+        if ((paramCacheInfo instanceof HashMapInfo)) {
+          localJSONObject.put("extra_traversalCount", ((HashMapInfo)paramCacheInfo).traversalCount);
+        } else if ((paramCacheInfo instanceof LruCacheInfo)) {
+          localJSONObject.put("extra_evictionCount", ((LruCacheInfo)paramCacheInfo).evictionCount);
         }
-        localJSONObject.put("extra_traversalCount", ((HashMapInfo)paramCacheInfo).traversalCount);
         paramJSONObject.put(String.valueOf(paramCacheInfo.tagId), localJSONObject);
         return;
       }
-      catch (JSONException paramJSONObject) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("MemoryClearManager", 2, paramJSONObject.toString());
-      return;
-      label306:
-      localJSONObject.put("getRate", -1.0D);
-      continue;
-      label321:
-      localJSONObject.put("hitRate", -1.0D);
-      continue;
-      label336:
-      if ((paramCacheInfo instanceof LruCacheInfo)) {
-        localJSONObject.put("extra_evictionCount", ((LruCacheInfo)paramCacheInfo).evictionCount);
+      catch (JSONException paramJSONObject)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("MemoryClearManager", 2, paramJSONObject.toString());
+        }
       }
     }
   }
@@ -328,75 +334,63 @@ public class MemoryClearManager
   
   private void b(int paramInt)
   {
-    label278:
-    label281:
-    label284:
-    label287:
-    for (;;)
+    try
     {
-      try
+      JSONObject localJSONObject = new JSONObject();
+      long l1 = 0L;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Object localObject2;
+      while (localIterator.hasNext())
       {
-        JSONObject localJSONObject = new JSONObject();
-        long l1 = 0L;
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        Object localObject2;
-        if (localIterator.hasNext())
+        localObject2 = (WeakReference)localIterator.next();
+        if (localObject2 != null)
         {
-          localObject2 = (WeakReference)localIterator.next();
-          if (localObject2 == null) {
-            break label281;
-          }
           localObject2 = (QQHashMap)((WeakReference)localObject2).get();
-          if (localObject2 == null) {
-            break label281;
-          }
-          localObject2 = ((QQHashMap)localObject2).getReportCacheInfo();
-          a(localJSONObject, (CacheInfo)localObject2, 1, paramInt);
-          l1 = ((CacheInfo)localObject2).mMemorySize + l1;
-          break label281;
-        }
-        localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-        if (localIterator.hasNext())
-        {
-          localObject2 = (WeakReference)localIterator.next();
-          if (localObject2 == null) {
-            break label278;
-          }
-          localObject2 = (QQConcurrentHashMap)((WeakReference)localObject2).get();
-          if (localObject2 == null) {
-            break label278;
-          }
-          localObject2 = ((QQConcurrentHashMap)localObject2).getReportCacheInfo();
-          a(localJSONObject, (CacheInfo)localObject2, 1, paramInt);
-          l1 = ((CacheInfo)localObject2).mMemorySize + l1;
-          break label284;
-        }
-        localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
-        if (localIterator.hasNext())
-        {
-          localObject2 = (WeakReference)localIterator.next();
           if (localObject2 != null)
           {
-            localObject2 = (QQLruCache)((WeakReference)localObject2).get();
-            if (localObject2 != null)
-            {
-              localObject2 = ((QQLruCache)localObject2).getCacheInfos();
-              a(localJSONObject, (CacheInfo)localObject2, 2, paramInt);
-              l1 = ((CacheInfo)localObject2).mMemorySize + l1;
-              break label287;
-            }
+            localObject2 = ((QQHashMap)localObject2).getReportCacheInfo();
+            a(localJSONObject, (CacheInfo)localObject2, 1, paramInt);
+            l1 += ((CacheInfo)localObject2).mMemorySize;
           }
         }
-        else
+      }
+      localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        localObject2 = (WeakReference)localIterator.next();
+        if (localObject2 != null)
         {
-          a(localJSONObject, l1);
-          return;
+          localObject2 = (QQConcurrentHashMap)((WeakReference)localObject2).get();
+          if (localObject2 != null)
+          {
+            localObject2 = ((QQConcurrentHashMap)localObject2).getReportCacheInfo();
+            a(localJSONObject, (CacheInfo)localObject2, 1, paramInt);
+            l1 += ((CacheInfo)localObject2).mMemorySize;
+          }
         }
       }
-      finally {}
-      break label287;
-      break label284;
-      continue;
+      localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        localObject2 = (WeakReference)localIterator.next();
+        if (localObject2 != null)
+        {
+          localObject2 = (QQLruCache)((WeakReference)localObject2).get();
+          if (localObject2 != null)
+          {
+            localObject2 = ((QQLruCache)localObject2).getCacheInfos();
+            a(localJSONObject, (CacheInfo)localObject2, 2, paramInt);
+            l1 += ((CacheInfo)localObject2).mMemorySize;
+          }
+        }
+      }
+      a(localJSONObject, l1);
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject1;
     }
   }
   
@@ -404,19 +398,24 @@ public class MemoryClearManager
   {
     synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
     {
-      if (this.jdField_a_of_type_JavaUtilLinkedList.size() <= 0) {
-        break label81;
+      if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
+      {
+        Object localObject1 = new StringBuilder(50);
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        while (localIterator.hasNext())
+        {
+          ((StringBuilder)localObject1).append((String)localIterator.next());
+          ((StringBuilder)localObject1).append("-");
+        }
+        localObject1 = ((StringBuilder)localObject1).toString();
+        return localObject1;
       }
-      StringBuilder localStringBuilder = new StringBuilder(50);
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
-      if (localIterator.hasNext()) {
-        localStringBuilder.append((String)localIterator.next()).append("-");
-      }
+      return "-1";
     }
-    String str = localObject.toString();
-    return str;
-    label81:
-    return "-1";
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public void a()
@@ -430,115 +429,132 @@ public class MemoryClearManager
     if (!this.jdField_a_of_type_Boolean) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MemoryClearManager", 2, "reportMemoryInfo|action= " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("reportMemoryInfo|action= ");
+      ((StringBuilder)localObject1).append(paramInt);
+      QLog.d("MemoryClearManager", 2, ((StringBuilder)localObject1).toString());
     }
     long l2 = System.currentTimeMillis();
-    SharedPreferences localSharedPreferences = MobileQQ.getContext().getSharedPreferences("CommonMemoryCacheSP_" + MobileQQ.sProcessId, 0);
-    if (paramInt == 1) {}
-    for (String str2 = "low_mem_report_rdm_time";; str2 = "bg_mem_report_rdm_time")
+    Object localObject1 = MobileQQ.getContext();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("CommonMemoryCacheSP_");
+    ((StringBuilder)localObject2).append(MobileQQ.sProcessId);
+    SharedPreferences localSharedPreferences = ((BaseApplication)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 0);
+    if (paramInt == 1) {
+      localObject2 = "low_mem_report_rdm_time";
+    } else {
+      localObject2 = "bg_mem_report_rdm_time";
+    }
+    long l1 = localSharedPreferences.getLong((String)localObject2, 0L);
+    if (l1 > 0L)
     {
-      long l1 = localSharedPreferences.getLong(str2, 0L);
-      HashMap localHashMap;
-      String str1;
-      label145:
-      long l3;
-      if (l1 > 0L) {
-        if (Math.abs(l2 - l1) > 3600000L)
-        {
-          localHashMap = new HashMap();
-          if (!MagnifierSDK.a().a().a.jdField_a_of_type_Boolean) {
-            break label537;
-          }
-          str1 = "1";
-          localHashMap.put("ClearEnable", str1);
-          localHashMap.put("DpcConfigId", MagnifierSDK.a().a().a.jdField_a_of_type_JavaLangString);
-          localHashMap.put("trimCount", String.valueOf(this.jdField_d_of_type_Int));
-          localHashMap.put("topTrimCount", String.valueOf(this.e));
-          localHashMap.put("secondTrimCount", String.valueOf(this.f));
-          localHashMap.put("thirdTrimCount", String.valueOf(this.g));
-          localHashMap.put("sProcessId", String.valueOf(MobileQQ.sProcessId));
-          l1 = Runtime.getRuntime().maxMemory() / 1024L;
-          l3 = Runtime.getRuntime().totalMemory() / 1024L;
-          int i1 = (int)(1000L * l3 / l1);
-          localHashMap.put("maxMemory", String.valueOf(l1));
-          localHashMap.put("totalMemory", String.valueOf(l3));
-          localHashMap.put("memoryPercent", String.valueOf(i1));
-          localHashMap.put("freeMemory", String.valueOf(Runtime.getRuntime().freeMemory() / 1024L));
-          localHashMap.put("clearTotalMem", String.valueOf(this.jdField_d_of_type_Long));
-          str1 = null;
-          if (paramInt != 2) {
-            break label545;
-          }
-          str1 = "memory_info_on_bg_guard";
-          localHashMap.put("memoryPss", String.valueOf(MemoryManager.a(Process.myPid()) / 1024L));
-          label402:
-          StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(null, str1, true, 0L, 0L, localHashMap, null);
-          localSharedPreferences.edit().putLong(str2, l2).commit();
-        }
-      }
-      for (;;)
+      if (Math.abs(l2 - l1) > 3600000L)
       {
-        if (MobileQQ.sProcessId != 1) {
-          break label644;
+        HashMap localHashMap = new HashMap();
+        if (MagnifierSDK.a().a().a.jdField_a_of_type_Boolean) {
+          localObject1 = "1";
+        } else {
+          localObject1 = "0";
         }
-        str1 = "cacheReportLastTime";
-        if (paramInt == 1) {
-          str1 = "lowReportLastTime";
+        localHashMap.put("ClearEnable", localObject1);
+        localHashMap.put("DpcConfigId", MagnifierSDK.a().a().a.jdField_a_of_type_JavaLangString);
+        localHashMap.put("trimCount", String.valueOf(this.jdField_d_of_type_Int));
+        localHashMap.put("topTrimCount", String.valueOf(this.e));
+        localHashMap.put("secondTrimCount", String.valueOf(this.f));
+        localHashMap.put("thirdTrimCount", String.valueOf(this.g));
+        localHashMap.put("sProcessId", String.valueOf(MobileQQ.sProcessId));
+        l1 = Runtime.getRuntime().maxMemory() / 1024L;
+        l3 = Runtime.getRuntime().totalMemory() / 1024L;
+        int i1 = (int)(1000L * l3 / l1);
+        localHashMap.put("maxMemory", String.valueOf(l1));
+        localHashMap.put("totalMemory", String.valueOf(l3));
+        localHashMap.put("memoryPercent", String.valueOf(i1));
+        localHashMap.put("freeMemory", String.valueOf(Runtime.getRuntime().freeMemory() / 1024L));
+        localHashMap.put("clearTotalMem", String.valueOf(this.jdField_d_of_type_Long));
+        if (paramInt == 2)
+        {
+          localHashMap.put("memoryPss", String.valueOf(MemoryManager.a(Process.myPid()) / 1024L));
+          localObject1 = "memory_info_on_bg_guard";
         }
-        l3 = localSharedPreferences.getLong(str1, 0L);
-        l1 = 43200000L;
-        if (paramInt == 1) {
-          l1 = 14400000L;
-        }
-        if (l3 <= 0L) {
-          break label646;
-        }
-        if (Math.abs(l2 - l3) <= l1) {
+        for (;;)
+        {
           break;
+          if (paramInt == 1)
+          {
+            localHashMap.put("everEnterStory", String.valueOf(this.h));
+            localHashMap.put("everEnterAIOCapture", String.valueOf(this.i));
+            localHashMap.put("enterStory", String.valueOf(this.j));
+            localHashMap.put("enterAIOCapture", String.valueOf(this.k));
+            localObject1 = "memory_info_on_low_report";
+          }
+          else
+          {
+            localObject1 = null;
+          }
         }
-        b(paramInt);
-        localSharedPreferences.edit().putLong(str1, l2).commit();
-        return;
-        label537:
-        str1 = "0";
-        break label145;
-        label545:
-        if (paramInt != 1) {
-          break label402;
-        }
-        str1 = "memory_info_on_low_report";
-        localHashMap.put("everEnterStory", String.valueOf(this.h));
-        localHashMap.put("everEnterAIOCapture", String.valueOf(this.i));
-        localHashMap.put("enterStory", String.valueOf(this.j));
-        localHashMap.put("enterAIOCapture", String.valueOf(this.k));
-        break label402;
-        localSharedPreferences.edit().putLong(str2, l2).apply();
+        StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(null, (String)localObject1, true, 0L, 0L, localHashMap, null);
+        localSharedPreferences.edit().putLong((String)localObject2, l2).commit();
       }
-      label644:
-      break;
-      label646:
-      localSharedPreferences.edit().putLong(str1, l2).commit();
+    }
+    else {
+      localSharedPreferences.edit().putLong((String)localObject2, l2).apply();
+    }
+    if (MobileQQ.sProcessId != 1) {
       return;
+    }
+    if (paramInt == 1) {
+      localObject1 = "lowReportLastTime";
+    } else {
+      localObject1 = "cacheReportLastTime";
+    }
+    long l3 = localSharedPreferences.getLong((String)localObject1, 0L);
+    l1 = 43200000L;
+    if (paramInt == 1) {
+      l1 = 14400000L;
+    }
+    if (l3 > 0L)
+    {
+      if (Math.abs(l2 - l3) > l1)
+      {
+        b(paramInt);
+        localSharedPreferences.edit().putLong((String)localObject1, l2).commit();
+      }
+    }
+    else {
+      localSharedPreferences.edit().putLong((String)localObject1, l2).commit();
     }
   }
   
   public void a(int paramInt, ClearMemoryConfig.MemoryLevelInfo paramMemoryLevelInfo)
   {
-    ClearMemoryConfig localClearMemoryConfig = MagnifierSDK.a().a().a;
-    if (QLog.isColorLevel()) {
-      QLog.d("MemoryClearManager", 2, "onNeedTrimMemory|clear= " + localClearMemoryConfig.jdField_a_of_type_Boolean + "configId" + localClearMemoryConfig.jdField_a_of_type_JavaLangString);
-    }
-    if ((a(paramMemoryLevelInfo.jdField_b_of_type_Int * localClearMemoryConfig.jdField_b_of_type_Int * 1000)) && (localClearMemoryConfig.jdField_a_of_type_Boolean)) {}
-    try
+    Object localObject = MagnifierSDK.a().a().a;
+    if (QLog.isColorLevel())
     {
-      b(paramInt, paramMemoryLevelInfo);
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onNeedTrimMemory|clear= ");
+      localStringBuilder.append(((ClearMemoryConfig)localObject).jdField_a_of_type_Boolean);
+      localStringBuilder.append("configId");
+      localStringBuilder.append(((ClearMemoryConfig)localObject).jdField_a_of_type_JavaLangString);
+      QLog.d("MemoryClearManager", 2, localStringBuilder.toString());
     }
-    catch (Exception paramMemoryLevelInfo)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("MemoryClearManager", 2, "clearMemory Exception= " + paramMemoryLevelInfo);
+    if ((a(paramMemoryLevelInfo.jdField_b_of_type_Int * ((ClearMemoryConfig)localObject).jdField_b_of_type_Int * 1000)) && (((ClearMemoryConfig)localObject).jdField_a_of_type_Boolean)) {
+      try
+      {
+        b(paramInt, paramMemoryLevelInfo);
+        return;
+      }
+      catch (Exception paramMemoryLevelInfo)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("clearMemory Exception= ");
+          ((StringBuilder)localObject).append(paramMemoryLevelInfo);
+          QLog.d("MemoryClearManager", 2, ((StringBuilder)localObject).toString());
+        }
+      }
     }
   }
   
@@ -559,32 +575,40 @@ public class MemoryClearManager
   public void a(boolean paramBoolean)
   {
     int i1 = (int)(Runtime.getRuntime().totalMemory() * 1000L / Runtime.getRuntime().maxMemory());
-    long l1;
-    String str1;
+    Object localObject1;
+    Object localObject4;
     if ((i1 > 600) && (i1 - this.n > 250) && (this.jdField_a_of_type_Boolean))
     {
-      l1 = System.currentTimeMillis();
-      ??? = MobileQQ.getContext().getSharedPreferences("CommonMemoryCacheSP_" + MobileQQ.sProcessId, 0);
+      long l1 = System.currentTimeMillis();
+      localObject1 = MobileQQ.getContext();
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("CommonMemoryCacheSP_");
+      ((StringBuilder)???).append(MobileQQ.sProcessId);
+      ??? = ((BaseApplication)localObject1).getSharedPreferences(((StringBuilder)???).toString(), 0);
       long l2 = ((SharedPreferences)???).getLong("memory_increase_report_time", 0L);
-      if (l2 <= 0L) {
-        break label385;
-      }
-      if (Math.abs(l1 - l2) >= 3600000L)
+      if (l2 > 0L)
       {
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("lastPer", String.valueOf(this.n));
-        localHashMap.put("curPer", String.valueOf(i1));
-        localHashMap.put("memInfo", a());
-        localHashMap.put("topActivity", ((IPerfApi)QRoute.api(IPerfApi.class)).getTopActivityName());
-        localHashMap.put("totalMemory", String.valueOf(Runtime.getRuntime().totalMemory() / 1024L));
-        localHashMap.put("MaxMemory", String.valueOf(Runtime.getRuntime().maxMemory() / 1024L));
-        if (!paramBoolean) {
-          break label377;
+        if (Math.abs(l1 - l2) >= 3600000L)
+        {
+          localObject4 = new HashMap();
+          ((HashMap)localObject4).put("lastPer", String.valueOf(this.n));
+          ((HashMap)localObject4).put("curPer", String.valueOf(i1));
+          ((HashMap)localObject4).put("memInfo", a());
+          ((HashMap)localObject4).put("topActivity", ((IPerfApi)QRoute.api(IPerfApi.class)).getTopActivityName());
+          ((HashMap)localObject4).put("totalMemory", String.valueOf(Runtime.getRuntime().totalMemory() / 1024L));
+          ((HashMap)localObject4).put("MaxMemory", String.valueOf(Runtime.getRuntime().maxMemory() / 1024L));
+          if (paramBoolean) {
+            localObject1 = "1";
+          } else {
+            localObject1 = "0";
+          }
+          ((HashMap)localObject4).put("isForeground", localObject1);
+          ((HashMap)localObject4).put("sProcessId", String.valueOf(MobileQQ.sProcessId));
+          StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(null, "MemoryIncreaseInfo", true, 0L, 0L, (HashMap)localObject4, "", true);
+          ((SharedPreferences)???).edit().putLong("memory_increase_report_time", l1);
         }
-        str1 = "1";
-        localHashMap.put("isForeground", str1);
-        localHashMap.put("sProcessId", String.valueOf(MobileQQ.sProcessId));
-        StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(null, "MemoryIncreaseInfo", true, 0L, 0L, localHashMap, "", true);
+      }
+      else {
         ((SharedPreferences)???).edit().putLong("memory_increase_report_time", l1);
       }
     }
@@ -595,23 +619,22 @@ public class MemoryClearManager
         if (this.jdField_a_of_type_JavaUtilLinkedList.size() >= 16)
         {
           this.jdField_a_of_type_JavaUtilLinkedList.poll();
-          break label421;
-          str1 = i1 + str1;
-          this.jdField_a_of_type_JavaUtilLinkedList.offer(str1);
+          break label437;
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append(i1);
+          ((StringBuilder)localObject4).append((String)localObject1);
+          localObject1 = ((StringBuilder)localObject4).toString();
+          this.jdField_a_of_type_JavaUtilLinkedList.offer(localObject1);
           this.n = i1;
           return;
-          label377:
-          str1 = "0";
-          break;
-          label385:
-          ((SharedPreferences)???).edit().putLong("memory_increase_report_time", l1);
-          continue;
-          str1 = "0";
         }
       }
-      label421:
+      label437:
+      String str;
       if (paramBoolean) {
-        String str2 = "1";
+        str = "1";
+      } else {
+        str = "0";
       }
     }
   }
@@ -652,7 +675,11 @@ public class MemoryClearManager
       if (((SharedPreferences)localObject).contains("trim_count")) {
         ((SharedPreferences)localObject).edit().clear().commit();
       }
-      localObject = MobileQQ.getContext().getSharedPreferences("mem_cache_oom_" + MobileQQ.sProcessId, 0).edit();
+      localObject = MobileQQ.getContext();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mem_cache_oom_");
+      localStringBuilder.append(MobileQQ.sProcessId);
+      localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
       ((SharedPreferences.Editor)localObject).putInt("trim_count", this.jdField_d_of_type_Int);
       ((SharedPreferences.Editor)localObject).putInt("img_size", GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.size() / 1024);
       ((SharedPreferences.Editor)localObject).putInt("img_init_maxsize", GlobalImageCache.jdField_a_of_type_Int / 1024);
@@ -682,16 +709,6 @@ public class MemoryClearManager
   
   public void b(int paramInt, ClearMemoryConfig.MemoryLevelInfo paramMemoryLevelInfo)
   {
-    long l6;
-    Object localObject3;
-    int i1;
-    long l2;
-    long l1;
-    int i3;
-    int i2;
-    long l3;
-    long l4;
-    int i10;
     for (;;)
     {
       try
@@ -699,306 +716,307 @@ public class MemoryClearManager
         if (QLog.isColorLevel()) {
           QLog.d("MemoryClearManager", 2, "clearMemory start");
         }
-        l6 = System.currentTimeMillis();
-        if ((paramInt != 1) && (paramInt != 2)) {
-          break label1344;
-        }
-        label301:
-        synchronized (this.jdField_a_of_type_JavaUtilVector)
-        {
-          localObject3 = this.jdField_a_of_type_JavaUtilVector.iterator();
-          i1 = 0;
-          if (((Iterator)localObject3).hasNext())
-          {
-            i1 += ((MemoryClearManager.IClearMemoryListener)((Iterator)localObject3).next()).a();
+        l4 = System.currentTimeMillis();
+        i6 = 0;
+        if (paramInt != 1) {
+          if (paramInt != 2) {
             continue;
           }
-          l2 = i1;
-          l1 = i1;
-          l1 = 0L + l1;
-          l2 = 0L + l2;
-          i3 = i1;
-          i1 = GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.size();
-          i2 = (int)(i1 * paramMemoryLevelInfo.jdField_b_of_type_Float);
-          l3 = i1;
-          GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.trimToSize(i2);
-          if ((paramMemoryLevelInfo.a > 0.0F) && (paramMemoryLevelInfo.a < 1.0F))
-          {
-            l4 = MemoryManager.a() * 1L / 32L;
-            if (GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.maxSize() >= l4) {
-              GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.resetMaxSize(paramMemoryLevelInfo.a);
-            }
-          }
-          i10 = 0 + (i1 - i2);
-          l4 = i10;
-          if (QLog.isColorLevel()) {
-            QLog.d("MemoryClearManager", 2, "clearMemory|sImageCache= " + i1);
-          }
-          i4 = 0;
-          i1 = 0;
-          if (GlobalImageCache.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-            break label1356;
-          }
-          ??? = GlobalImageCache.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-          if (!((Iterator)???).hasNext()) {
-            break;
-          }
-          localObject3 = ((Iterator)???).next();
-          if ((localObject3 instanceof Bitmap))
-          {
-            i2 = Utils.getBitmapSize((Bitmap)localObject3);
-            i1 = i2 + i1;
-          }
-        }
-        if (!(localObject3 instanceof BitmapDrawable)) {
-          break label1341;
         }
       }
-      finally {}
-      localObject3 = ((BitmapDrawable)localObject3).getBitmap();
-      if (localObject3 == null) {
-        break label1341;
-      }
-      i1 = Utils.getBitmapSize((Bitmap)localObject3) + i1;
-    }
-    GlobalImageCache.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    int i4 = i1;
-    break label1356;
-    label361:
-    ??? = this.jdField_c_of_type_JavaUtilList.iterator();
-    label478:
-    label621:
-    int i9;
-    if (((Iterator)???).hasNext())
-    {
-      localObject3 = (WeakReference)((Iterator)???).next();
-      if (localObject3 != null)
+      finally
       {
-        Object localObject4 = (QQLruCache)((WeakReference)localObject3).get();
-        if (localObject4 != null)
-        {
-          l3 = ((QQLruCache)localObject4).getCacheInfos().mMemorySize;
-          ((QQLruCache)localObject4).clearOnLowMemory((int)(((QQLruCache)localObject4).size() * paramMemoryLevelInfo.jdField_b_of_type_Float));
-          i1 = ((QQLruCache)localObject4).getCacheInfos().mClearSize + i1;
-          l1 += l3;
+        long l4;
+        Object localObject2;
+        int i9;
+        long l6;
+        continue;
+        throw paramMemoryLevelInfo;
+        continue;
+        long l1 = 0L;
+        long l2 = l1;
+        int i3 = 0;
+        continue;
+        i1 += i2;
+        continue;
+        int i4 = 0;
+        long l5 = i4;
+        l2 = l2 + l6 + l5;
+        l1 = l1 + l3 + l5;
+        if ((paramInt == 1) || (paramInt == 2)) {
+          continue;
         }
-        else
+        int i5 = 0;
+        continue;
+        l2 += i1;
+        i5 = i1;
+        if ((paramInt == 1) || (paramInt == 2)) {
+          continue;
+        }
+        int i1 = i6;
+        continue;
+        continue;
+        l2 += i1;
+        continue;
+        continue;
+        l2 += i2;
+        int i6 = i2;
+        int i7 = i1;
+        continue;
+        i6 = 0;
+        i7 = i1;
+        continue;
+        l1 = l2 + i1;
+        int i8 = i1;
+        continue;
+        i8 = 0;
+        long l3 = l1;
+        l1 = l2;
+        if (paramInt == 1) {
+          continue;
+        }
+        if (paramInt == 2) {
+          continue;
+        }
+        i1 = 0;
+        l2 = 0L;
+        continue;
+        continue;
+        int i2 = 0;
+        l2 = 0L;
+        i1 = i2;
+        l1 += l2;
+        continue;
+      }
+      synchronized (this.jdField_a_of_type_JavaUtilVector)
+      {
+        localObject2 = this.jdField_a_of_type_JavaUtilVector.iterator();
+        i1 = 0;
+        if (((Iterator)localObject2).hasNext())
         {
-          this.jdField_c_of_type_JavaUtilList.remove(localObject3);
-          break label1396;
-          ??? = this.jdField_d_of_type_JavaUtilList;
-          i2 = ((List)???).size();
-          localObject3 = ((List)???).iterator();
-          if (((Iterator)localObject3).hasNext())
-          {
-            localObject4 = (WeakReference)((Iterator)localObject3).next();
-            if (localObject4 == null) {
-              break label1427;
-            }
-            LruCache localLruCache = (LruCache)((WeakReference)localObject4).get();
-            if (localLruCache != null)
-            {
-              localLruCache.trimToSize((int)(localLruCache.size() * paramMemoryLevelInfo.jdField_b_of_type_Float));
-              i1 = localLruCache.getClearMemory() + i1;
-              break label1424;
-            }
-            ((List)???).remove(localObject4);
-            break label1427;
+          i1 += ((MemoryClearManager.IClearMemoryListener)((Iterator)localObject2).next()).a();
+          continue;
+        }
+        l1 = i1 + 0L;
+        l2 = l1;
+        i3 = i1;
+        i1 = GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.size();
+        i2 = (int)(i1 * paramMemoryLevelInfo.jdField_b_of_type_Float);
+        l3 = i1;
+        GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.trimToSize(i2);
+        if ((paramMemoryLevelInfo.a > 0.0F) && (paramMemoryLevelInfo.a < 1.0F))
+        {
+          l5 = MemoryManager.a() * 1L / 32L;
+          if (GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.maxSize() >= l5) {
+            GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.resetMaxSize(paramMemoryLevelInfo.a);
           }
-          if (!QLog.isColorLevel()) {
-            break label1430;
-          }
-          QLog.d("MemoryClearManager", 2, "clearMemory|LruCache List Size = " + i2);
-          break label1430;
+        }
+        i9 = i1 - i2 + 0;
+        l6 = i9;
+        if (QLog.isColorLevel())
+        {
+          ??? = new StringBuilder();
+          ((StringBuilder)???).append("clearMemory|sImageCache= ");
+          ((StringBuilder)???).append(i1);
+          QLog.d("MemoryClearManager", 2, ((StringBuilder)???).toString());
+        }
+        if (GlobalImageCache.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+        {
+          ??? = GlobalImageCache.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
           i1 = 0;
-          if (paramInt == 1)
+          if (((Iterator)???).hasNext())
           {
+            localObject2 = ((Iterator)???).next();
+            if ((localObject2 instanceof Bitmap))
+            {
+              i2 = Utils.getBitmapSize((Bitmap)localObject2);
+            }
+            else
+            {
+              if (!(localObject2 instanceof BitmapDrawable)) {
+                continue;
+              }
+              localObject2 = ((BitmapDrawable)localObject2).getBitmap();
+              if (localObject2 == null) {
+                continue;
+              }
+              i2 = Utils.getBitmapSize((Bitmap)localObject2);
+            }
+          }
+          else
+          {
+            GlobalImageCache.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+            i4 = i1;
+            continue;
+            ??? = this.jdField_c_of_type_JavaUtilList.iterator();
+            i1 = 0;
+            if (!((Iterator)???).hasNext()) {
+              continue;
+            }
+            localObject2 = (WeakReference)((Iterator)???).next();
+            if (localObject2 == null) {
+              continue;
+            }
+            Object localObject3 = (QQLruCache)((WeakReference)localObject2).get();
+            if (localObject3 != null)
+            {
+              l1 += ((QQLruCache)localObject3).getCacheInfos().mMemorySize;
+              ((QQLruCache)localObject3).clearOnLowMemory((int)(((QQLruCache)localObject3).size() * paramMemoryLevelInfo.jdField_b_of_type_Float));
+              i1 += ((QQLruCache)localObject3).getCacheInfos().mClearSize;
+              continue;
+            }
+            this.jdField_c_of_type_JavaUtilList.remove(localObject2);
+            continue;
+            ??? = this.jdField_d_of_type_JavaUtilList;
+            i2 = ((List)???).size();
+            localObject2 = ((List)???).iterator();
+            i1 = 0;
+            if (((Iterator)localObject2).hasNext())
+            {
+              localObject3 = (WeakReference)((Iterator)localObject2).next();
+              if (localObject3 == null) {
+                continue;
+              }
+              LruCache localLruCache = (LruCache)((WeakReference)localObject3).get();
+              if (localLruCache != null)
+              {
+                localLruCache.trimToSize((int)(localLruCache.size() * paramMemoryLevelInfo.jdField_b_of_type_Float));
+                i1 += localLruCache.getClearMemory();
+                continue;
+              }
+              ((List)???).remove(localObject3);
+              continue;
+            }
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            paramMemoryLevelInfo = new StringBuilder();
+            paramMemoryLevelInfo.append("clearMemory|LruCache List Size = ");
+            paramMemoryLevelInfo.append(i2);
+            QLog.d("MemoryClearManager", 2, paramMemoryLevelInfo.toString());
+            continue;
+            if (paramInt != 1) {
+              continue;
+            }
             paramMemoryLevelInfo = this.jdField_b_of_type_JavaUtilList.iterator();
+            i2 = 0;
             if (!paramMemoryLevelInfo.hasNext()) {
-              break label1449;
+              continue;
             }
             ??? = (WeakReference)paramMemoryLevelInfo.next();
             if (??? == null) {
-              break label1446;
+              continue;
             }
-            localObject3 = (QQConcurrentHashMap)((WeakReference)???).get();
-            if (localObject3 != null)
+            localObject2 = (QQConcurrentHashMap)((WeakReference)???).get();
+            if (localObject2 != null)
             {
-              l3 = ((QQConcurrentHashMap)localObject3).getReportCacheInfo().mMemorySize;
-              ((QQConcurrentHashMap)localObject3).onClearOnLowMemory();
-              i1 = ((HashMapInfo)((QQConcurrentHashMap)localObject3).getReportCacheInfo()).mClearSize + i1;
-              l1 += l3;
-              break label1443;
+              l1 += ((QQConcurrentHashMap)localObject2).getReportCacheInfo().mMemorySize;
+              ((QQConcurrentHashMap)localObject2).onClearOnLowMemory();
+              i2 += ((HashMapInfo)((QQConcurrentHashMap)localObject2).getReportCacheInfo()).mClearSize;
+              continue;
             }
             this.jdField_b_of_type_JavaUtilList.remove(???);
-            break label1446;
-            label733:
-            i1 = 0;
-            if (paramInt == 1)
-            {
-              paramMemoryLevelInfo = this.jdField_a_of_type_JavaUtilList.iterator();
-              if (!paramMemoryLevelInfo.hasNext()) {
-                break label1468;
-              }
-              ??? = (WeakReference)paramMemoryLevelInfo.next();
-              if (??? == null) {
-                break label1465;
-              }
-              localObject3 = (QQHashMap)((WeakReference)???).get();
-              if (localObject3 != null)
-              {
-                l3 = ((QQHashMap)localObject3).getReportCacheInfo().mMemorySize;
-                ((QQHashMap)localObject3).onClearOnLowMemory();
-                i1 = ((QQHashMap)localObject3).getReportCacheInfo().mClearSize + i1;
-                l1 += l3;
-                break label1462;
-              }
-              this.jdField_a_of_type_JavaUtilList.remove(???);
-              break label1465;
-              label842:
-              paramMemoryLevelInfo = SkinEngine.getInstances().releasePreloadDrawableCache();
-              Object localObject1;
-              l2 = localObject1;
-              i1 = i9;
-              if (paramMemoryLevelInfo.length < 2) {
-                break label1522;
-              }
-              if ((paramMemoryLevelInfo[0] instanceof Integer)) {
-                i2 = Integer.parseInt(paramMemoryLevelInfo[0].toString());
-              }
-              l2 = localObject1;
-              i1 = i2;
-              if (!(paramMemoryLevelInfo[1] instanceof Long)) {
-                break label1522;
-              }
-              l2 = Long.parseLong(paramMemoryLevelInfo[1].toString());
-              i1 = i2;
-              break label1522;
+            continue;
+            if (paramInt != 1) {
+              continue;
             }
+            paramMemoryLevelInfo = this.jdField_a_of_type_JavaUtilList.iterator();
+            i1 = 0;
+            l3 = l1;
+            if (!paramMemoryLevelInfo.hasNext()) {
+              continue;
+            }
+            ??? = (WeakReference)paramMemoryLevelInfo.next();
+            if (??? == null) {
+              continue;
+            }
+            localObject2 = (QQHashMap)((WeakReference)???).get();
+            if (localObject2 != null)
+            {
+              l3 += ((QQHashMap)localObject2).getReportCacheInfo().mMemorySize;
+              ((QQHashMap)localObject2).onClearOnLowMemory();
+              i1 += ((QQHashMap)localObject2).getReportCacheInfo().mClearSize;
+              continue;
+            }
+            this.jdField_a_of_type_JavaUtilList.remove(???);
+            continue;
+            paramMemoryLevelInfo = SkinEngine.getInstances().releasePreloadDrawableCache();
+            if (paramMemoryLevelInfo.length < 2) {
+              continue;
+            }
+            i1 = 0;
+            if ((paramMemoryLevelInfo[0] instanceof Integer)) {
+              i1 = Integer.parseInt(paramMemoryLevelInfo[0].toString());
+            }
+            i2 = i1;
+            if (!(paramMemoryLevelInfo[1] instanceof Long)) {
+              continue;
+            }
+            l2 = Long.parseLong(paramMemoryLevelInfo[1].toString());
+            continue;
+            DexPathListHook.a(MobileQQ.class.getClassLoader());
+            this.jdField_c_of_type_Long = (l1 / 1024L);
+            l3 /= 1024L;
+            this.jdField_d_of_type_Long += l1;
+            this.jdField_d_of_type_Int += 1;
+            this.jdField_c_of_type_Int = paramInt;
+            if (paramInt == 1) {
+              this.e += 1;
+            } else if (paramInt == 2) {
+              this.f += 1;
+            } else if (paramInt == 3) {
+              this.g += 1;
+            }
+            this.jdField_b_of_type_Long = System.currentTimeMillis();
+            this.jdField_b_of_type_Int = ((int)Runtime.getRuntime().totalMemory() / 1024);
+            l5 = System.currentTimeMillis();
+            paramMemoryLevelInfo = new StringBuilder(1024);
+            paramMemoryLevelInfo.append("totalMemory=");
+            paramMemoryLevelInfo.append(l3);
+            paramMemoryLevelInfo.append(", clearTotalMem=");
+            paramMemoryLevelInfo.append(this.jdField_d_of_type_Long);
+            paramMemoryLevelInfo.append(", trimCount=");
+            paramMemoryLevelInfo.append(this.jdField_d_of_type_Int);
+            paramMemoryLevelInfo.append(", trimCountTop=");
+            paramMemoryLevelInfo.append(this.e);
+            paramMemoryLevelInfo.append(", trimCountSecond=");
+            paramMemoryLevelInfo.append(this.f);
+            paramMemoryLevelInfo.append(", trimCountThrid=");
+            paramMemoryLevelInfo.append(this.g);
+            paramMemoryLevelInfo.append(", cleatType=");
+            paramMemoryLevelInfo.append(paramInt);
+            paramMemoryLevelInfo.append(", clearMemory=");
+            paramMemoryLevelInfo.append(l1);
+            paramMemoryLevelInfo.append("\nlistenerClearSize=");
+            paramMemoryLevelInfo.append(i3);
+            paramMemoryLevelInfo.append(", imageCacheMemory=");
+            paramMemoryLevelInfo.append(i9);
+            paramMemoryLevelInfo.append(", staticBitmapSize=");
+            paramMemoryLevelInfo.append(i4);
+            paramMemoryLevelInfo.append(", qqLruCacheMem=");
+            paramMemoryLevelInfo.append(i5);
+            paramMemoryLevelInfo.append(", lruCacheMem=");
+            paramMemoryLevelInfo.append(i7);
+            paramMemoryLevelInfo.append(", qqConcurrentMem=");
+            paramMemoryLevelInfo.append(i6);
+            paramMemoryLevelInfo.append(", qqHashMapMem=");
+            paramMemoryLevelInfo.append(i8);
+            paramMemoryLevelInfo.append(", skinEngineCount=");
+            paramMemoryLevelInfo.append(i1);
+            paramMemoryLevelInfo.append(", skinEngineSize=");
+            paramMemoryLevelInfo.append(l2);
+            paramMemoryLevelInfo.append(", cost=");
+            paramMemoryLevelInfo.append(String.valueOf(l5 - l4));
+            if (QLog.isColorLevel())
+            {
+              ??? = new StringBuilder();
+              ((StringBuilder)???).append("ClearMemory|result= \n");
+              ((StringBuilder)???).append(paramMemoryLevelInfo.toString());
+              QLog.d("MemoryClearManager", 2, ((StringBuilder)???).toString());
+            }
+            return;
           }
         }
-      }
-    }
-    for (;;)
-    {
-      DexPathListHook.a(MobileQQ.class.getClassLoader());
-      this.jdField_c_of_type_Long = (l4 / 1024L);
-      l1 = l3 / 1024L;
-      this.jdField_d_of_type_Long += l4;
-      this.jdField_d_of_type_Int += 1;
-      this.jdField_c_of_type_Int = paramInt;
-      if (paramInt == 1) {
-        this.e += 1;
-      }
-      int i5;
-      for (;;)
-      {
-        this.jdField_b_of_type_Long = System.currentTimeMillis();
-        this.jdField_b_of_type_Int = ((int)Runtime.getRuntime().totalMemory() / 1024);
-        l3 = System.currentTimeMillis();
-        paramMemoryLevelInfo = new StringBuilder(1024);
-        paramMemoryLevelInfo.append("totalMemory=").append(l1).append(", clearTotalMem=").append(this.jdField_d_of_type_Long).append(", trimCount=").append(this.jdField_d_of_type_Int).append(", trimCountTop=").append(this.e).append(", trimCountSecond=").append(this.f).append(", trimCountThrid=").append(this.g).append(", cleatType=").append(paramInt).append(", clearMemory=").append(l4).append("\nlistenerClearSize=").append(i3).append(", imageCacheMemory=").append(i10).append(", staticBitmapSize=").append(i4).append(", qqLruCacheMem=").append(i5).append(", lruCacheMem=").append(i6).append(", qqConcurrentMem=").append(i7).append(", qqHashMapMem=").append(i8).append(", skinEngineCount=").append(i1).append(", skinEngineSize=").append(l2).append(", cost=").append(String.valueOf(l3 - l6));
-        if (QLog.isColorLevel()) {
-          QLog.d("MemoryClearManager", 2, "ClearMemory|result= \n" + paramMemoryLevelInfo.toString());
-        }
-        return;
-        if (paramInt == 2) {
-          this.f += 1;
-        } else if (paramInt == 3) {
-          this.g += 1;
-        }
-      }
-      int i8 = 0;
-      l3 = l1;
-      l1 = l2;
-      break label1490;
-      int i7 = 0;
-      break label733;
-      label1341:
-      label1344:
-      label1356:
-      label1396:
-      do
-      {
-        i6 = 0;
-        break label621;
-        do
-        {
-          i5 = 0;
-          break label1409;
-          break label301;
-          i3 = 0;
-          l1 = 0L;
-          l2 = 0L;
-          break;
-          l2 = l2 + l4 + i4;
-          l1 = l3 + l1 + i4;
-          i1 = 0;
-          if (paramInt == 1) {
-            break label361;
-          }
-        } while (paramInt != 2);
-        break label361;
-        for (;;)
-        {
-          break;
-        }
-        l2 += i1;
-        i5 = i1;
-        i1 = 0;
-        if (paramInt == 1) {
-          break label478;
-        }
-      } while (paramInt != 2);
-      label1409:
-      break label478;
-      label1424:
-      label1427:
-      for (;;)
-      {
-        break;
-      }
-      label1430:
-      l2 += i1;
-      int i6 = i1;
-      break label621;
-      label1443:
-      label1446:
-      for (;;)
-      {
-        break;
-      }
-      label1449:
-      l2 += i1;
-      i7 = i1;
-      break label733;
-      label1462:
-      label1465:
-      for (;;)
-      {
-        break;
-      }
-      label1468:
-      l3 = i1;
-      l2 = l3 + l2;
-      l3 = l1;
-      l1 = l2;
-      i8 = i1;
-      label1490:
-      i1 = 0;
-      i9 = 0;
-      i2 = 0;
-      long l5 = 0L;
-      if (paramInt == 1) {
-        break label842;
-      }
-      l2 = l5;
-      l4 = l1;
-      if (paramInt == 2)
-      {
-        break label842;
-        label1522:
-        l4 = l1 + l2;
       }
     }
   }
@@ -1029,44 +1047,44 @@ public class MemoryClearManager
   
   public final void d()
   {
-    SharedPreferences localSharedPreferences = MobileQQ.getContext().getSharedPreferences("mem_cache_oom_" + MobileQQ.sProcessId, 0);
-    HashMap localHashMap;
-    if (localSharedPreferences.contains("trim_count"))
+    Object localObject1 = MobileQQ.getContext();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("mem_cache_oom_");
+    ((StringBuilder)localObject2).append(MobileQQ.sProcessId);
+    localObject2 = ((BaseApplication)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 0);
+    if (((SharedPreferences)localObject2).contains("trim_count"))
     {
-      localHashMap = new HashMap(23);
+      HashMap localHashMap = new HashMap(23);
       localHashMap.put("osVersion", String.valueOf(Build.VERSION.SDK_INT));
-      localHashMap.put("hackArtResult", String.valueOf(localSharedPreferences.getInt("hackArtResult", 0)));
-      localHashMap.put("trim_count", String.valueOf(localSharedPreferences.getInt("trim_count", -1)));
-      localHashMap.put("img_size", String.valueOf(localSharedPreferences.getInt("img_size", -1)));
-      localHashMap.put("img_init_maxsize", String.valueOf(localSharedPreferences.getInt("img_init_maxsize", -1)));
-      localHashMap.put("img_cur_maxsize", String.valueOf(localSharedPreferences.getInt("img_cur_maxsize", -1)));
-      localHashMap.put("img_hashmap_size", String.valueOf(localSharedPreferences.getInt("img_hashmap_size", -1)));
-      localHashMap.put("clear_type", String.valueOf(localSharedPreferences.getInt("clear_type", -1)));
-      localHashMap.put("clear_size", String.valueOf(localSharedPreferences.getLong("clear_size", -1L)));
-      localHashMap.put("clear_total_size", String.valueOf(localSharedPreferences.getLong("clear_total_size", -1L)));
-      localHashMap.put("total_memory_info", localSharedPreferences.getString("total_memory_info", "-1"));
-      localHashMap.put("max_heap", String.valueOf(localSharedPreferences.getLong("max_heap", -1L)));
-      localHashMap.put("total_size", String.valueOf(localSharedPreferences.getLong("total_size", -1L)));
-      localHashMap.put("heap_size", String.valueOf(localSharedPreferences.getLong("heap_size", -1L)));
-      localHashMap.put("free_size", String.valueOf(localSharedPreferences.getLong("free_size", -1L)));
-      localHashMap.put("heap_org_max", String.valueOf(localSharedPreferences.getLong("heap_org_max", -1L)));
-      localHashMap.put("topActivity", localSharedPreferences.getString("topActivity", "NULL"));
-      localHashMap.put("key_mem_info", localSharedPreferences.getString("key_mem_info", "NULL"));
-      localHashMap.put("clear_config_id", localSharedPreferences.getString("clear_config_id", "0"));
-      if (!localSharedPreferences.getBoolean("clear_config_enable", false)) {
-        break label575;
+      localHashMap.put("hackArtResult", String.valueOf(((SharedPreferences)localObject2).getInt("hackArtResult", 0)));
+      localHashMap.put("trim_count", String.valueOf(((SharedPreferences)localObject2).getInt("trim_count", -1)));
+      localHashMap.put("img_size", String.valueOf(((SharedPreferences)localObject2).getInt("img_size", -1)));
+      localHashMap.put("img_init_maxsize", String.valueOf(((SharedPreferences)localObject2).getInt("img_init_maxsize", -1)));
+      localHashMap.put("img_cur_maxsize", String.valueOf(((SharedPreferences)localObject2).getInt("img_cur_maxsize", -1)));
+      localHashMap.put("img_hashmap_size", String.valueOf(((SharedPreferences)localObject2).getInt("img_hashmap_size", -1)));
+      localHashMap.put("clear_type", String.valueOf(((SharedPreferences)localObject2).getInt("clear_type", -1)));
+      localHashMap.put("clear_size", String.valueOf(((SharedPreferences)localObject2).getLong("clear_size", -1L)));
+      localHashMap.put("clear_total_size", String.valueOf(((SharedPreferences)localObject2).getLong("clear_total_size", -1L)));
+      localHashMap.put("total_memory_info", ((SharedPreferences)localObject2).getString("total_memory_info", "-1"));
+      localHashMap.put("max_heap", String.valueOf(((SharedPreferences)localObject2).getLong("max_heap", -1L)));
+      localHashMap.put("total_size", String.valueOf(((SharedPreferences)localObject2).getLong("total_size", -1L)));
+      localHashMap.put("heap_size", String.valueOf(((SharedPreferences)localObject2).getLong("heap_size", -1L)));
+      localHashMap.put("free_size", String.valueOf(((SharedPreferences)localObject2).getLong("free_size", -1L)));
+      localHashMap.put("heap_org_max", String.valueOf(((SharedPreferences)localObject2).getLong("heap_org_max", -1L)));
+      localHashMap.put("topActivity", ((SharedPreferences)localObject2).getString("topActivity", "NULL"));
+      localHashMap.put("key_mem_info", ((SharedPreferences)localObject2).getString("key_mem_info", "NULL"));
+      localHashMap.put("clear_config_id", ((SharedPreferences)localObject2).getString("clear_config_id", "0"));
+      if (((SharedPreferences)localObject2).getBoolean("clear_config_enable", false)) {
+        localObject1 = "1";
+      } else {
+        localObject1 = "0";
       }
-    }
-    label575:
-    for (String str = "1";; str = "0")
-    {
-      localHashMap.put("clear_config_enable", str);
-      localHashMap.put("enter_aio_capture", String.valueOf(localSharedPreferences.getInt("enter_aio_capture", 0)));
-      localHashMap.put("enter_story_capture", String.valueOf(localSharedPreferences.getInt("enter_story_capture", 0)));
+      localHashMap.put("clear_config_enable", localObject1);
+      localHashMap.put("enter_aio_capture", String.valueOf(((SharedPreferences)localObject2).getInt("enter_aio_capture", 0)));
+      localHashMap.put("enter_story_capture", String.valueOf(((SharedPreferences)localObject2).getInt("enter_story_capture", 0)));
       localHashMap.put("sProcessId", String.valueOf(MobileQQ.sProcessId));
       StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(null, "memory_oom_Info", true, 0L, 0L, localHashMap, null);
-      localSharedPreferences.edit().remove("trim_count").commit();
-      return;
+      ((SharedPreferences)localObject2).edit().remove("trim_count").commit();
     }
   }
   
@@ -1080,7 +1098,7 @@ public class MemoryClearManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.opt.clearmemory.MemoryClearManager
  * JD-Core Version:    0.7.0.1
  */

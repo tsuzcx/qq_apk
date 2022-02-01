@@ -26,10 +26,11 @@ final class MQPSensitiveMsgUtil$6
   
   public void onClick(View paramView)
   {
+    paramView = MobileQQ.sMobileQQ.waitAppRuntime(null);
     int k = 0;
     int i = 0;
-    paramView = MobileQQ.sMobileQQ.waitAppRuntime(null);
     int j = k;
+    Iterator localIterator;
     Object localObject1;
     if (paramView != null)
     {
@@ -41,82 +42,68 @@ final class MQPSensitiveMsgUtil$6
         if (paramView == null) {
           return;
         }
-        localObject1 = paramView.getExtInfoFromExtStr("sens_msg_attr");
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {}
+        String str1 = paramView.getExtInfoFromExtStr("sens_msg_attr");
+        if (!TextUtils.isEmpty(str1))
+        {
+          try
+          {
+            j = Integer.parseInt(str1);
+            i = j;
+          }
+          catch (Exception localException)
+          {
+            localException.printStackTrace();
+          }
+        }
+        else if (this.jdField_a_of_type_ComTencentImsBankcode_info$BankcodeCtrlInfo.bankcode_elems.has())
+        {
+          localIterator = this.jdField_a_of_type_ComTencentImsBankcode_info$BankcodeCtrlInfo.bankcode_elems.get().iterator();
+          i = 0;
+          while (localIterator.hasNext())
+          {
+            localObject1 = (bankcode_info.BankcodeElem)localIterator.next();
+            if (((bankcode_info.BankcodeElem)localObject1).bankcode_attr.has()) {
+              j = ((bankcode_info.BankcodeElem)localObject1).bankcode_attr.get();
+            } else {
+              j = 0;
+            }
+            if (j > i) {
+              i = j;
+            }
+          }
+        }
+        paramView = paramView.getExtInfoFromExtStr("sens_msg_need_mask");
+        j = i;
+        if (!TextUtils.isEmpty(paramView))
+        {
+          bool = Boolean.parseBoolean(paramView);
+          break label216;
+        }
       }
     }
-    label106:
-    label364:
-    label369:
-    for (;;)
+    boolean bool = true;
+    i = j;
+    label216:
+    if (!this.jdField_a_of_type_Boolean)
     {
-      boolean bool;
-      try
-      {
-        j = Integer.parseInt((String)localObject1);
-        i = j;
+      if (!bool) {
+        return;
       }
-      catch (Exception localException)
-      {
-        Object localObject3;
-        String str1;
-        String str2;
-        localException.printStackTrace();
-        continue;
+      paramView = (Bundle)AntiFraudConfigFileUtil.a().a("SensMsgTipsCfg", "Action", 1, i);
+      if (paramView == null) {
+        return;
       }
-      paramView = paramView.getExtInfoFromExtStr("sens_msg_need_mask");
-      j = i;
-      Object localObject2;
-      if (!TextUtils.isEmpty(paramView))
+      localIterator = paramView.keySet().iterator();
+      while (localIterator.hasNext())
       {
-        bool = Boolean.parseBoolean(paramView);
-        if ((this.jdField_a_of_type_Boolean) || (!bool)) {
-          break label357;
-        }
-        paramView = (Bundle)AntiFraudConfigFileUtil.a().a("SensMsgTipsCfg", "Action", 1, i);
-        if (paramView == null) {
-          break;
-        }
-        localObject1 = paramView.keySet().iterator();
-        if (((Iterator)localObject1).hasNext())
+        Object localObject2 = paramView.getBundle((String)localIterator.next());
+        if ((localObject2 != null) && (((Bundle)localObject2).getString("Type").compareToIgnoreCase("showAlert") == 0))
         {
-          localObject3 = paramView.getBundle((String)((Iterator)localObject1).next());
-          if ((localObject3 == null) || (((Bundle)localObject3).getString("Type").compareToIgnoreCase("showAlert") != 0)) {
-            continue;
-          }
-          localObject2 = ((Bundle)localObject3).getString("AlertTitle");
-          str1 = ((Bundle)localObject3).getString("AlertText");
-          str2 = ((Bundle)localObject3).getString("AlertOtherBtnText");
-          localObject3 = ((Bundle)localObject3).getString("AlertCancelBtnText");
-          MQPSensitiveMsgUtil.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, (String)localObject2, str1, str2, (String)localObject3);
-          continue;
-        }
-        break;
-        if (!this.jdField_a_of_type_ComTencentImsBankcode_info$BankcodeCtrlInfo.bankcode_elems.has()) {
-          continue;
-        }
-        Iterator localIterator = this.jdField_a_of_type_ComTencentImsBankcode_info$BankcodeCtrlInfo.bankcode_elems.get().iterator();
-        i = 0;
-        if (!localIterator.hasNext()) {
-          break label369;
-        }
-        localObject2 = (bankcode_info.BankcodeElem)localIterator.next();
-        if (!((bankcode_info.BankcodeElem)localObject2).bankcode_attr.has()) {
-          break label364;
-        }
-      }
-      for (j = ((bankcode_info.BankcodeElem)localObject2).bankcode_attr.get();; j = 0)
-      {
-        if (j > i) {}
-        for (;;)
-        {
-          i = j;
-          break label299;
-          bool = true;
-          i = j;
-          break label106;
-          break;
-          j = i;
+          localObject1 = ((Bundle)localObject2).getString("AlertTitle");
+          String str2 = ((Bundle)localObject2).getString("AlertText");
+          String str3 = ((Bundle)localObject2).getString("AlertOtherBtnText");
+          localObject2 = ((Bundle)localObject2).getString("AlertCancelBtnText");
+          MQPSensitiveMsgUtil.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, (String)localObject1, str2, str3, (String)localObject2);
         }
       }
     }
@@ -130,7 +117,7 @@ final class MQPSensitiveMsgUtil$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mqp.app.sec.MQPSensitiveMsgUtil.6
  * JD-Core Version:    0.7.0.1
  */

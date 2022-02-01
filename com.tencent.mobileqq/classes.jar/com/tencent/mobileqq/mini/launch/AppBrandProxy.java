@@ -28,14 +28,15 @@ public class AppBrandProxy
   
   public static AppBrandProxy g()
   {
-    if (instance == null) {}
-    synchronized (lock)
-    {
-      if (instance == null) {
-        instance = new AppBrandProxy();
+    if (instance == null) {
+      synchronized (lock)
+      {
+        if (instance == null) {
+          instance = new AppBrandProxy();
+        }
       }
-      return instance;
     }
+    return instance;
   }
   
   public static boolean isMainProcess()
@@ -55,16 +56,18 @@ public class AppBrandProxy
   
   public void onAppBackground(String paramString, MiniAppConfig paramMiniAppConfig, Bundle paramBundle)
   {
-    if (this.mAppBrandProxyImpl != null) {
-      this.mAppBrandProxyImpl.onAppBackground(paramString, paramMiniAppConfig, paramBundle);
+    AppBrandProxyImpl localAppBrandProxyImpl = this.mAppBrandProxyImpl;
+    if (localAppBrandProxyImpl != null) {
+      localAppBrandProxyImpl.onAppBackground(paramString, paramMiniAppConfig, paramBundle);
     }
   }
   
   public void onAppForeground(String paramString)
   {
-    if (this.mMiniConfig != null)
+    MiniAppConfig localMiniAppConfig = this.mMiniConfig;
+    if (localMiniAppConfig != null)
     {
-      onAppForeground(paramString, this.mMiniConfig, null);
+      onAppForeground(paramString, localMiniAppConfig, null);
       return;
     }
     QLog.e("miniapp-start", 1, "onAppForeground but MiniConfig is still Null!!!");
@@ -105,8 +108,9 @@ public class AppBrandProxy
   
   public void onAppStop(String paramString, MiniAppConfig paramMiniAppConfig, Bundle paramBundle)
   {
-    if (this.mAppBrandProxyImpl != null) {
-      this.mAppBrandProxyImpl.onAppStop(paramString, paramMiniAppConfig, paramBundle);
+    AppBrandProxyImpl localAppBrandProxyImpl = this.mAppBrandProxyImpl;
+    if (localAppBrandProxyImpl != null) {
+      localAppBrandProxyImpl.onAppStop(paramString, paramMiniAppConfig, paramBundle);
     }
   }
   
@@ -114,7 +118,10 @@ public class AppBrandProxy
   {
     if (!isMainProcess())
     {
-      QLog.e("miniapp-process_AppBrandProxy", 1, "call preloadMiniApp not in MainProcess. pName=" + BaseApplicationImpl.getApplication().getQQProcessName());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("call preloadMiniApp not in MainProcess. pName=");
+      localStringBuilder.append(BaseApplicationImpl.getApplication().getQQProcessName());
+      QLog.e("miniapp-process_AppBrandProxy", 1, localStringBuilder.toString());
       return;
     }
     AppBrandLaunchManager.g().getHandler().post(new AppBrandProxy.1(this));
@@ -122,19 +129,22 @@ public class AppBrandProxy
   
   public void preloadPackage(@NonNull MiniAppInfo paramMiniAppInfo)
   {
-    if (isMainProcess()) {
+    if (isMainProcess())
+    {
       AppBrandLaunchManager.g().preloadPackage(paramMiniAppInfo);
-    }
-    while (this.mAppBrandProxyImpl == null) {
       return;
     }
-    this.mAppBrandProxyImpl.preloadPackage(paramMiniAppInfo);
+    AppBrandProxyImpl localAppBrandProxyImpl = this.mAppBrandProxyImpl;
+    if (localAppBrandProxyImpl != null) {
+      localAppBrandProxyImpl.preloadPackage(paramMiniAppInfo);
+    }
   }
   
   public void sendCmd(String paramString, Bundle paramBundle, CmdCallback paramCmdCallback)
   {
-    if (this.mAppBrandProxyImpl != null) {
-      this.mAppBrandProxyImpl.sendCmd(paramString, paramBundle, paramCmdCallback);
+    AppBrandProxyImpl localAppBrandProxyImpl = this.mAppBrandProxyImpl;
+    if (localAppBrandProxyImpl != null) {
+      localAppBrandProxyImpl.sendCmd(paramString, paramBundle, paramCmdCallback);
     }
   }
   
@@ -152,11 +162,15 @@ public class AppBrandProxy
   
   public void startMiniApp(Activity paramActivity, MiniAppConfig paramMiniAppConfig, ResultReceiver paramResultReceiver)
   {
-    QLog.i("miniapp-process_AppBrandProxy", 1, "[MiniEng]startMiniApp. pName=" + BaseApplicationImpl.getApplication().getQQProcessName());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[MiniEng]startMiniApp. pName=");
+    ((StringBuilder)localObject).append(BaseApplicationImpl.getApplication().getQQProcessName());
+    QLog.i("miniapp-process_AppBrandProxy", 1, ((StringBuilder)localObject).toString());
     if (!isMainProcess())
     {
-      if (this.mAppBrandProxyImpl != null) {
-        this.mAppBrandProxyImpl.startMiniApp(paramActivity, paramMiniAppConfig, paramResultReceiver);
+      localObject = this.mAppBrandProxyImpl;
+      if (localObject != null) {
+        ((AppBrandProxyImpl)localObject).startMiniApp(paramActivity, paramMiniAppConfig, paramResultReceiver);
       }
       return;
     }
@@ -165,7 +179,7 @@ public class AppBrandProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandProxy
  * JD-Core Version:    0.7.0.1
  */

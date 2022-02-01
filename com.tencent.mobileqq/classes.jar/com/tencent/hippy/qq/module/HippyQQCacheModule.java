@@ -34,34 +34,34 @@ public class HippyQQCacheModule
   @HippyMethod(name="multiGet")
   public void multiGet(HippyMap paramHippyMap, Promise paramPromise)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mCacheModule.multiGet(paramHippyMap, paramPromise);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mCacheModule.multiGet(paramHippyMap, paramPromise);
   }
   
   @HippyMethod(name="multiRemove")
   public void multiRemove(HippyMap paramHippyMap, Promise paramPromise)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mCacheModule.multiRemove(paramHippyMap, "");
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mCacheModule.multiRemove(paramHippyMap, "");
   }
   
   @HippyMethod(name="multiSet")
   public void multiSet(HippyMap paramHippyMap, Promise paramPromise)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mCacheModule.multiSet(paramHippyMap, "");
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mCacheModule.multiSet(paramHippyMap, "");
   }
   
   @HippyMethod(name="remove")
@@ -78,7 +78,7 @@ public class HippyQQCacheModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.module.HippyQQCacheModule
  * JD-Core Version:    0.7.0.1
  */

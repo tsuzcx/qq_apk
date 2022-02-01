@@ -56,8 +56,13 @@ public class EventListener
   
   private void checkUpdate()
   {
-    if (this.mRuntime != null) {}
-    for (Object localObject = this.mRuntime.getMiniAppInfo(); localObject == null; localObject = null)
+    Object localObject = this.mRuntime;
+    if (localObject != null) {
+      localObject = ((BaseAppBrandRuntime)localObject).getMiniAppInfo();
+    } else {
+      localObject = null;
+    }
+    if (localObject == null)
     {
       QMLog.i("EventListener", "checkUpdate -- miniapp is null, return.");
       return;
@@ -74,7 +79,10 @@ public class EventListener
       }
       catch (Exception localException)
       {
-        QMLog.e("EventListener", "updateJSONObject error." + localException);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("updateJSONObject error.");
+        localStringBuilder.append(localException);
+        QMLog.e("EventListener", localStringBuilder.toString());
         return;
       }
     }
@@ -105,8 +113,13 @@ public class EventListener
     paramString2 = new JSONObject(paramString2).optString("url", "");
     if (!TextUtils.isEmpty(paramString2))
     {
-      if ((paramApkgInfo != null) && (paramApkgInfo.isTabBarPage(paramString2))) {}
-      for (int i = 1; i != 0; i = 0) {
+      int i;
+      if ((paramApkgInfo != null) && (paramApkgInfo.isTabBarPage(paramString2))) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i != 0) {
         return ApiUtil.wrapCallbackFail(paramString1, null).toString();
       }
       AppBrandTask.runTaskOnUiThread(new EventListener.10(this, paramIAppBrandPageContainer, paramString2, paramRequestEvent));
@@ -119,8 +132,13 @@ public class EventListener
     paramString2 = new JSONObject(paramString2).optString("url", "");
     if (!TextUtils.isEmpty(paramString2))
     {
-      if ((paramApkgInfo != null) && (paramApkgInfo.isTabBarPage(paramString2))) {}
-      for (int i = 1; i != 0; i = 0) {
+      int i;
+      if ((paramApkgInfo != null) && (paramApkgInfo.isTabBarPage(paramString2))) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i != 0) {
         return paramRequestEvent.fail();
       }
       AppBrandTask.runTaskOnUiThread(new EventListener.11(this, paramIAppBrandPageContainer, paramString2, paramRequestEvent));
@@ -160,7 +178,10 @@ public class EventListener
   {
     if (this.mRuntime.getAttachedActivity() != null)
     {
-      QMLog.d("EventListener", "moveAppBrandToBack. | " + this);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("moveAppBrandToBack. | ");
+      localStringBuilder.append(this);
+      QMLog.d("EventListener", localStringBuilder.toString());
       if (!this.mRuntime.getAttachedActivity().moveTaskToBack(false))
       {
         QMLog.e("EventListener", "moveTaskToBack failed, finish the activity.");
@@ -193,75 +214,57 @@ public class EventListener
   
   public String onServiceNativeRequest(String paramString1, String paramString2, int paramInt)
   {
-    Object localObject;
     if ("initWeixinJSBridgeFinish".equals(paramString1))
     {
       this.mWeixinJSBridgeFinished = true;
       QMLog.i("EventListener", "WeixinJSBridge finished.");
-      localObject = ApiUtil.wrapCallbackOk(paramString1, null).toString();
+      return ApiUtil.wrapCallbackOk(paramString1, null).toString();
     }
-    IAppBrandService localIAppBrandService;
-    IAppBrandPageContainer localIAppBrandPageContainer;
-    JsPluginEngine localJsPluginEngine;
-    ApkgInfo localApkgInfo;
-    RequestEvent localRequestEvent;
-    String str;
-    do
+    IAppBrandService localIAppBrandService = this.mRuntime.appBrandService;
+    IAppBrandPageContainer localIAppBrandPageContainer = this.mRuntime.pageContainer;
+    JsPluginEngine localJsPluginEngine = this.mRuntime.jsPluginEngine;
+    ApkgInfo localApkgInfo = this.mRuntime.mApkgInfo;
+    RequestEvent localRequestEvent = new RequestEvent.Builder().setEvent(paramString1).setJsonParams(paramString2).setCallbackId(paramInt).setJsService(localIAppBrandService).build();
+    String str = interruptOnServiceNativeRequest(paramString1, paramString2, paramInt);
+    if (str != null) {
+      return str;
+    }
+    try
     {
-      return localObject;
-      localIAppBrandService = this.mRuntime.appBrandService;
-      localIAppBrandPageContainer = this.mRuntime.pageContainer;
-      localJsPluginEngine = this.mRuntime.jsPluginEngine;
-      localApkgInfo = this.mRuntime.mApkgInfo;
-      localRequestEvent = new RequestEvent.Builder().setEvent(paramString1).setJsonParams(paramString2).setCallbackId(paramInt).setJsService(localIAppBrandService).build();
-      str = interruptOnServiceNativeRequest(paramString1, paramString2, paramInt);
-      localObject = str;
-    } while (str != null);
-    for (;;)
-    {
-      try
+      if ("redirectTo".equals(paramString1)) {
+        return handleRedirectTo(paramString1, paramString2, localIAppBrandPageContainer, localApkgInfo, localRequestEvent);
+      }
+      if ("navigateTo".equals(paramString1)) {
+        return handleNavigateTo(paramString1, paramString2, localIAppBrandPageContainer, localApkgInfo, localRequestEvent);
+      }
+      if ("navigateBack".equals(paramString1)) {
+        return handleNavigateBack(paramString1, paramString2, localIAppBrandPageContainer, localRequestEvent);
+      }
+      if ("switchTab".equals(paramString1)) {
+        return handleSwitchTab(paramString1, paramString2, localIAppBrandPageContainer, localRequestEvent);
+      }
+      if ("reLaunch".equals(paramString1)) {
+        return handleRelaunch(paramString1, paramString2, localRequestEvent);
+      }
+      if ("exitMiniProgram".equals(paramString1)) {
+        AppBrandTask.runTaskOnUiThread(new EventListener.4(this));
+      } else if ("updateApp".equals(paramString1))
       {
-        if ("redirectTo".equals(paramString1)) {
-          return handleRedirectTo(paramString1, paramString2, localIAppBrandPageContainer, localApkgInfo, localRequestEvent);
-        }
-        if ("navigateTo".equals(paramString1)) {
-          return handleNavigateTo(paramString1, paramString2, localIAppBrandPageContainer, localApkgInfo, localRequestEvent);
-        }
-        if ("navigateBack".equals(paramString1)) {
-          return handleNavigateBack(paramString1, paramString2, localIAppBrandPageContainer, localRequestEvent);
-        }
-        if ("switchTab".equals(paramString1)) {
-          return handleSwitchTab(paramString1, paramString2, localIAppBrandPageContainer, localRequestEvent);
-        }
-        if ("reLaunch".equals(paramString1)) {
-          return handleRelaunch(paramString1, paramString2, localRequestEvent);
-        }
-        if ("exitMiniProgram".equals(paramString1))
-        {
-          AppBrandTask.runTaskOnUiThread(new EventListener.4(this));
-          if (localJsPluginEngine == null) {
-            break;
-          }
-          return localJsPluginEngine.handleNativeRequest(paramString1, paramString2, localIAppBrandService, paramInt);
-        }
-        if ("updateApp".equals(paramString1))
-        {
-          if (this.newVersionMiniAppInfo == null) {
-            continue;
-          }
+        if (this.newVersionMiniAppInfo != null) {
           AppBrandTask.runTaskOnUiThread(new EventListener.5(this));
-          continue;
-        }
-        if (!"flutter_launch".equals(paramString1)) {
-          continue;
         }
       }
-      catch (Throwable paramString1)
-      {
-        QMLog.e("EventListener", "", paramString1);
-        return "";
+      else if ("flutter_launch".equals(paramString1)) {
+        AppBrandTask.runTaskOnUiThread(new EventListener.6(this, localIAppBrandPageContainer, paramString1, paramString2, localRequestEvent));
       }
-      AppBrandTask.runTaskOnUiThread(new EventListener.6(this, localIAppBrandPageContainer, paramString1, paramString2, localRequestEvent));
+      if (localJsPluginEngine != null) {
+        return localJsPluginEngine.handleNativeRequest(paramString1, paramString2, localIAppBrandService, paramInt);
+      }
+      return "";
+    }
+    catch (Throwable paramString1)
+    {
+      QMLog.e("EventListener", "", paramString1);
     }
     return "";
   }
@@ -271,8 +274,14 @@ public class EventListener
     if (this.mRuntime.appBrandService == null) {
       return;
     }
-    if (QMLog.isColorLevel()) {
-      QMLog.d("EventListener", "EventListener  onWebViewEvent eventName=" + paramString1 + ",pageWebviewId=" + paramInt);
+    if (QMLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("EventListener  onWebViewEvent eventName=");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(",pageWebviewId=");
+      localStringBuilder.append(paramInt);
+      QMLog.d("EventListener", localStringBuilder.toString());
     }
     if ((paramString2 != null) && (paramString2.contains("__DOMReady")))
     {
@@ -288,11 +297,25 @@ public class EventListener
   {
     if ("initWeixinJSBridgeFinish".equals(paramString1))
     {
-      QMLog.d("EventListener", "onWebViewNativeRequest eventName=" + paramString1 + ",callbackId=" + paramInt);
+      paramString2 = new StringBuilder();
+      paramString2.append("onWebViewNativeRequest eventName=");
+      paramString2.append(paramString1);
+      paramString2.append(",callbackId=");
+      paramString2.append(paramInt);
+      QMLog.d("EventListener", paramString2.toString());
       return "";
     }
-    if (QMLog.isColorLevel()) {
-      QMLog.d("EventListener", "EventListener onWebViewNativeRequest eventName=" + paramString1 + ",callbackId=" + paramInt + "  (" + paramIJsService + ")");
+    if (QMLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("EventListener onWebViewNativeRequest eventName=");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(",callbackId=");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("  (");
+      localStringBuilder.append(paramIJsService);
+      localStringBuilder.append(")");
+      QMLog.d("EventListener", localStringBuilder.toString());
     }
     if ((paramString1.equals("remoteDebugInfo")) && ((this.mRuntime.appBrandService instanceof AppBrandRemoteService)))
     {
@@ -317,12 +340,13 @@ public class EventListener
     if (this.mRuntime.pageContainer != null) {
       this.mRuntime.pageContainer.cleanup(false);
     }
-    this.mRuntime.onLoadMiniAppInfo(this.mRuntime.getMiniAppInfo(), true, paramString);
+    BaseAppBrandRuntime localBaseAppBrandRuntime = this.mRuntime;
+    localBaseAppBrandRuntime.onLoadMiniAppInfo(localBaseAppBrandRuntime.getMiniAppInfo(), true, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.EventListener
  * JD-Core Version:    0.7.0.1
  */

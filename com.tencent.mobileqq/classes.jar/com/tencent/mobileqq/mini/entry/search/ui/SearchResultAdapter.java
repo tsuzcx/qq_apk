@@ -1,18 +1,23 @@
 package com.tencent.mobileqq.mini.entry.search.ui;
 
+import NS_STORE_APP_SEARCH.MiniAppSearch.CouponInfo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.text.SpannableString;
+import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.common.app.AppInterface;
@@ -23,6 +28,7 @@ import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.search.comm.SearchInfo;
 import com.tencent.mobileqq.mini.entry.search.data.MiniAppSearchDataManager;
 import com.tencent.mobileqq.mini.entry.search.data.MiniAppSearchDataManager.SearchResultDataChangedListener;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -37,6 +43,7 @@ public class SearchResultAdapter
   implements MiniAppSearchDataManager.SearchResultDataChangedListener
 {
   private static final int HIGH_LIGHT_COLOR = -14763268;
+  private static final String[] SYNTAX_SPECIAL_WORD = { "\\", "$", "(", ")", "*", "+", ".", "[", "]", "?", "^", "{", "}", "|" };
   private static final String TAG = "SearchResultAdapter";
   private List<SearchInfo> appList = new ArrayList();
   private WeakReference<Activity> mActivityReference;
@@ -50,210 +57,98 @@ public class SearchResultAdapter
     this.mRefer = paramInt;
   }
   
-  /* Error */
-  private static View createCouponView(NS_STORE_APP_SEARCH.MiniAppSearch.CouponInfo paramCouponInfo, View paramView)
+  private static View createCouponView(MiniAppSearch.CouponInfo paramCouponInfo, View paramView)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 56	NS_STORE_APP_SEARCH/MiniAppSearch$CouponInfo:leastPrice	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   4: invokevirtual 62	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   7: astore_3
-    //   8: aload_0
-    //   9: getfield 65	NS_STORE_APP_SEARCH/MiniAppSearch$CouponInfo:amt	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   12: invokevirtual 62	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   15: astore 4
-    //   17: aload_0
-    //   18: getfield 68	NS_STORE_APP_SEARCH/MiniAppSearch$CouponInfo:iconUrl	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   21: invokevirtual 62	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   24: astore 6
-    //   26: aload_3
-    //   27: invokestatic 74	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   30: invokevirtual 78	java/lang/Integer:intValue	()I
-    //   33: bipush 100
-    //   35: idiv
-    //   36: istore_2
-    //   37: iload_2
-    //   38: invokestatic 83	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   41: astore_0
-    //   42: aload 4
-    //   44: invokestatic 74	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   47: invokevirtual 78	java/lang/Integer:intValue	()I
-    //   50: bipush 100
-    //   52: idiv
-    //   53: istore_2
-    //   54: iload_2
-    //   55: invokestatic 83	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   58: astore_3
-    //   59: new 85	android/widget/LinearLayout
-    //   62: dup
-    //   63: aload_1
-    //   64: invokevirtual 91	android/view/View:getContext	()Landroid/content/Context;
-    //   67: invokespecial 94	android/widget/LinearLayout:<init>	(Landroid/content/Context;)V
-    //   70: astore 4
-    //   72: aload 4
-    //   74: iconst_0
-    //   75: invokevirtual 98	android/widget/LinearLayout:setOrientation	(I)V
-    //   78: new 100	android/widget/LinearLayout$LayoutParams
-    //   81: dup
-    //   82: bipush 254
-    //   84: ldc 101
-    //   86: invokestatic 107	com/tencent/mobileqq/utils/ViewUtils:b	(F)I
-    //   89: invokespecial 110	android/widget/LinearLayout$LayoutParams:<init>	(II)V
-    //   92: astore 5
-    //   94: aload 5
-    //   96: ldc 111
-    //   98: invokestatic 107	com/tencent/mobileqq/utils/ViewUtils:b	(F)I
-    //   101: putfield 114	android/widget/LinearLayout$LayoutParams:rightMargin	I
-    //   104: aload 4
-    //   106: aload 5
-    //   108: invokevirtual 118	android/widget/LinearLayout:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
-    //   111: new 120	android/widget/TextView
-    //   114: dup
-    //   115: aload_1
-    //   116: invokevirtual 91	android/view/View:getContext	()Landroid/content/Context;
-    //   119: invokespecial 121	android/widget/TextView:<init>	(Landroid/content/Context;)V
-    //   122: astore 7
-    //   124: new 100	android/widget/LinearLayout$LayoutParams
-    //   127: dup
-    //   128: ldc 122
-    //   130: invokestatic 107	com/tencent/mobileqq/utils/ViewUtils:b	(F)I
-    //   133: iconst_m1
-    //   134: invokespecial 110	android/widget/LinearLayout$LayoutParams:<init>	(II)V
-    //   137: astore 5
-    //   139: aload 5
-    //   141: bipush 17
-    //   143: putfield 125	android/widget/LinearLayout$LayoutParams:gravity	I
-    //   146: aload 7
-    //   148: aload_3
-    //   149: invokevirtual 129	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   152: aload 7
-    //   154: iconst_m1
-    //   155: invokevirtual 132	android/widget/TextView:setTextColor	(I)V
-    //   158: aload 7
-    //   160: iconst_1
-    //   161: ldc 133
-    //   163: invokevirtual 137	android/widget/TextView:setTextSize	(IF)V
-    //   166: aload 7
-    //   168: bipush 17
-    //   170: invokevirtual 140	android/widget/TextView:setGravity	(I)V
-    //   173: aload 7
-    //   175: aload 6
-    //   177: aconst_null
-    //   178: invokestatic 146	com/tencent/image/URLDrawable:getDrawable	(Ljava/lang/String;Lcom/tencent/image/URLDrawable$URLDrawableOptions;)Lcom/tencent/image/URLDrawable;
-    //   181: invokevirtual 150	android/widget/TextView:setBackgroundDrawable	(Landroid/graphics/drawable/Drawable;)V
-    //   184: aload 7
-    //   186: ldc 152
-    //   188: iconst_3
-    //   189: invokestatic 158	android/graphics/Typeface:create	(Ljava/lang/String;I)Landroid/graphics/Typeface;
-    //   192: invokevirtual 162	android/widget/TextView:setTypeface	(Landroid/graphics/Typeface;)V
-    //   195: aload 7
-    //   197: aload 5
-    //   199: invokevirtual 163	android/widget/TextView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
-    //   202: aload 4
-    //   204: aload 7
-    //   206: invokevirtual 167	android/widget/LinearLayout:addView	(Landroid/view/View;)V
-    //   209: new 120	android/widget/TextView
-    //   212: dup
-    //   213: aload_1
-    //   214: invokevirtual 91	android/view/View:getContext	()Landroid/content/Context;
-    //   217: invokespecial 121	android/widget/TextView:<init>	(Landroid/content/Context;)V
-    //   220: astore_1
-    //   221: new 100	android/widget/LinearLayout$LayoutParams
-    //   224: dup
-    //   225: bipush 254
-    //   227: iconst_m1
-    //   228: invokespecial 110	android/widget/LinearLayout$LayoutParams:<init>	(II)V
-    //   231: astore 6
-    //   233: aload 5
-    //   235: bipush 17
-    //   237: putfield 125	android/widget/LinearLayout$LayoutParams:gravity	I
-    //   240: ldc 168
-    //   242: invokestatic 107	com/tencent/mobileqq/utils/ViewUtils:b	(F)I
-    //   245: istore_2
-    //   246: aload_1
-    //   247: iload_2
-    //   248: iconst_0
-    //   249: iload_2
-    //   250: iconst_0
-    //   251: invokevirtual 172	android/widget/TextView:setPadding	(IIII)V
-    //   254: aload_1
-    //   255: new 174	java/lang/StringBuilder
-    //   258: dup
-    //   259: invokespecial 175	java/lang/StringBuilder:<init>	()V
-    //   262: aload_0
-    //   263: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   266: ldc 181
-    //   268: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   271: aload_3
-    //   272: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   275: ldc 183
-    //   277: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   280: invokevirtual 186	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   283: invokevirtual 129	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   286: aload_1
-    //   287: ldc 187
-    //   289: invokevirtual 132	android/widget/TextView:setTextColor	(I)V
-    //   292: aload_1
-    //   293: iconst_1
-    //   294: ldc 188
-    //   296: invokevirtual 137	android/widget/TextView:setTextSize	(IF)V
-    //   299: aload_1
-    //   300: bipush 17
-    //   302: invokevirtual 140	android/widget/TextView:setGravity	(I)V
-    //   305: aload_1
-    //   306: aload 6
-    //   308: invokevirtual 163	android/widget/TextView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
-    //   311: aload 4
-    //   313: aload_1
-    //   314: invokevirtual 167	android/widget/LinearLayout:addView	(Landroid/view/View;)V
-    //   317: aload 4
-    //   319: ldc 189
-    //   321: invokevirtual 192	android/widget/LinearLayout:setBackgroundResource	(I)V
-    //   324: aload 4
-    //   326: areturn
-    //   327: astore 5
-    //   329: aload_3
-    //   330: astore_0
-    //   331: aload 5
-    //   333: astore_3
-    //   334: ldc 13
-    //   336: iconst_1
-    //   337: new 174	java/lang/StringBuilder
-    //   340: dup
-    //   341: invokespecial 175	java/lang/StringBuilder:<init>	()V
-    //   344: ldc 194
-    //   346: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   349: aload_3
-    //   350: invokestatic 200	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   353: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   356: invokevirtual 186	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   359: invokestatic 206	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   362: aload 4
-    //   364: astore_3
-    //   365: goto -306 -> 59
-    //   368: astore_3
-    //   369: goto -35 -> 334
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	372	0	paramCouponInfo	NS_STORE_APP_SEARCH.MiniAppSearch.CouponInfo
-    //   0	372	1	paramView	View
-    //   36	214	2	i	int
-    //   7	358	3	localObject1	Object
-    //   368	1	3	localException1	Exception
-    //   15	348	4	localObject2	Object
-    //   92	142	5	localLayoutParams	android.widget.LinearLayout.LayoutParams
-    //   327	5	5	localException2	Exception
-    //   24	283	6	localObject3	Object
-    //   122	83	7	localTextView	TextView
-    // Exception table:
-    //   from	to	target	type
-    //   26	37	327	java/lang/Exception
-    //   42	54	368	java/lang/Exception
+    Object localObject1 = paramCouponInfo.leastPrice.get();
+    Object localObject3 = paramCouponInfo.amt.get();
+    Object localObject5 = paramCouponInfo.iconUrl.get();
+    paramCouponInfo = (MiniAppSearch.CouponInfo)localObject1;
+    Object localObject2;
+    try
+    {
+      localObject1 = String.valueOf(Integer.valueOf((String)localObject1).intValue() / 100);
+      paramCouponInfo = (MiniAppSearch.CouponInfo)localObject1;
+      localObject4 = String.valueOf(Integer.valueOf((String)localObject3).intValue() / 100);
+      paramCouponInfo = (MiniAppSearch.CouponInfo)localObject1;
+      localObject1 = localObject4;
+    }
+    catch (Exception localException)
+    {
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("createCouponView, covert exception:");
+      ((StringBuilder)localObject4).append(Log.getStackTraceString(localException));
+      QLog.e("SearchResultAdapter", 1, ((StringBuilder)localObject4).toString());
+      localObject2 = localObject3;
+    }
+    localObject3 = new LinearLayout(paramView.getContext());
+    ((LinearLayout)localObject3).setOrientation(0);
+    Object localObject4 = new LinearLayout.LayoutParams(-2, ViewUtils.b(33.0F));
+    ((LinearLayout.LayoutParams)localObject4).rightMargin = ViewUtils.b(20.0F);
+    ((LinearLayout)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject4);
+    TextView localTextView = new TextView(paramView.getContext());
+    localObject4 = new LinearLayout.LayoutParams(ViewUtils.b(39.0F), -1);
+    ((LinearLayout.LayoutParams)localObject4).gravity = 17;
+    localTextView.setText(localObject2);
+    localTextView.setTextColor(-1);
+    localTextView.setTextSize(1, 15.0F);
+    localTextView.setGravity(17);
+    localTextView.setBackgroundDrawable(URLDrawable.getDrawable((String)localObject5, null));
+    localTextView.setTypeface(Typeface.create("sans-serif-condensed", 3));
+    localTextView.setLayoutParams((ViewGroup.LayoutParams)localObject4);
+    ((LinearLayout)localObject3).addView(localTextView);
+    paramView = new TextView(paramView.getContext());
+    localObject5 = new LinearLayout.LayoutParams(-2, -1);
+    ((LinearLayout.LayoutParams)localObject4).gravity = 17;
+    int i = ViewUtils.b(7.0F);
+    paramView.setPadding(i, 0, i, 0);
+    localObject4 = new StringBuilder();
+    ((StringBuilder)localObject4).append(paramCouponInfo);
+    ((StringBuilder)localObject4).append("减");
+    ((StringBuilder)localObject4).append(localObject2);
+    ((StringBuilder)localObject4).append("券");
+    paramView.setText(((StringBuilder)localObject4).toString());
+    paramView.setTextColor(-7894119);
+    paramView.setTextSize(1, 12.0F);
+    paramView.setGravity(17);
+    paramView.setLayoutParams((ViewGroup.LayoutParams)localObject5);
+    ((LinearLayout)localObject3).addView(paramView);
+    ((LinearLayout)localObject3).setBackgroundResource(2130841053);
+    return localObject3;
+  }
+  
+  private static String escapeSyntaxSpecialWord(String paramString)
+  {
+    Object localObject = paramString;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      String[] arrayOfString = SYNTAX_SPECIAL_WORD;
+      int j = arrayOfString.length;
+      int i = 0;
+      for (;;)
+      {
+        localObject = paramString;
+        if (i >= j) {
+          break;
+        }
+        String str = arrayOfString[i];
+        localObject = paramString;
+        if (paramString.contains(str))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("\\");
+          ((StringBuilder)localObject).append(str);
+          localObject = paramString.replace(str, ((StringBuilder)localObject).toString());
+        }
+        i += 1;
+        paramString = (String)localObject;
+      }
+    }
+    return localObject;
   }
   
   public static Drawable getAvatarDrawable(Context paramContext, String paramString)
   {
-    paramContext = paramContext.getResources().getDrawable(2130840452);
+    paramContext = paramContext.getResources().getDrawable(2130840321);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mLoadingDrawable = paramContext;
     localURLDrawableOptions.mFailedDrawable = paramContext;
@@ -262,14 +157,14 @@ public class SearchResultAdapter
     localURLDrawableOptions.mRequestWidth = i;
     paramContext = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
     paramContext.setTag(URLDrawableDecodeHandler.a(ViewUtils.a(12.0F), ViewUtils.a(12.0F)));
-    paramContext.setDecodeHandler(URLDrawableDecodeHandler.p);
+    paramContext.setDecodeHandler(URLDrawableDecodeHandler.n);
     return paramContext;
   }
   
   public static SpannableString highLightKeyword(int paramInt, String paramString1, String paramString2)
   {
     paramString1 = new SpannableString(paramString1);
-    paramString2 = Pattern.compile(paramString2).matcher(paramString1);
+    paramString2 = Pattern.compile(escapeSyntaxSpecialWord(paramString2)).matcher(paramString1);
     while (paramString2.find())
     {
       int i = paramString2.start();
@@ -298,41 +193,44 @@ public class SearchResultAdapter
   {
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(paramViewGroup.getContext().getApplicationContext()).inflate(2131559519, paramViewGroup, false);
+      paramView = LayoutInflater.from(paramViewGroup.getContext().getApplicationContext()).inflate(2131559393, paramViewGroup, false);
       paramViewGroup = new SearchResultAdapter.SearchResultViewHolder();
-      paramViewGroup.icon = ((ImageView)paramView.findViewById(2131371607));
-      paramViewGroup.name = ((TextView)paramView.findViewById(2131371608));
-      paramViewGroup.category = ((TextView)paramView.findViewById(2131371609));
-      paramViewGroup.desc = ((TextView)paramView.findViewById(2131371606));
-      paramViewGroup.userNumDesc = ((TextView)paramView.findViewById(2131371618));
-      paramViewGroup.divider = paramView.findViewById(2131371612);
-      paramViewGroup.avatarContainer = ((LinearLayout)paramView.findViewById(2131371610));
-      paramViewGroup.payingFriendsDesc = ((TextView)paramView.findViewById(2131371614));
-      paramViewGroup.couponTitle = ((TextView)paramView.findViewById(2131371587));
-      paramViewGroup.pkRankingContainer = ((RelativeLayout)paramView.findViewById(2131371599));
-      paramViewGroup.couponScrollView = ((ViewGroup)paramView.findViewById(2131371586));
-      paramViewGroup.couponContainer = ((LinearLayout)paramView.findViewById(2131371585));
-      paramViewGroup.mRanking.add(new SearchResultAdapter.Item(paramView.findViewById(2131371485)));
-      paramViewGroup.mRanking.add(new SearchResultAdapter.Item(paramView.findViewById(2131371486)));
-      paramViewGroup.mRanking.add(new SearchResultAdapter.Item(paramView.findViewById(2131371487)));
-      paramViewGroup.mRanking.add(new SearchResultAdapter.Item(paramView.findViewById(2131371488)));
+      paramViewGroup.icon = ((ImageView)paramView.findViewById(2131371227));
+      paramViewGroup.name = ((TextView)paramView.findViewById(2131371228));
+      paramViewGroup.category = ((TextView)paramView.findViewById(2131371229));
+      paramViewGroup.desc = ((TextView)paramView.findViewById(2131371226));
+      paramViewGroup.userNumDesc = ((TextView)paramView.findViewById(2131371238));
+      paramViewGroup.divider = paramView.findViewById(2131371232);
+      paramViewGroup.avatarContainer = ((LinearLayout)paramView.findViewById(2131371230));
+      paramViewGroup.payingFriendsDesc = ((TextView)paramView.findViewById(2131371234));
+      paramViewGroup.couponTitle = ((TextView)paramView.findViewById(2131371207));
+      paramViewGroup.pkRankingContainer = ((RelativeLayout)paramView.findViewById(2131371219));
+      paramViewGroup.couponScrollView = ((ViewGroup)paramView.findViewById(2131371206));
+      paramViewGroup.couponContainer = ((LinearLayout)paramView.findViewById(2131371205));
+      paramViewGroup.mRanking.add(new SearchResultAdapter.Item(paramView.findViewById(2131371105)));
+      paramViewGroup.mRanking.add(new SearchResultAdapter.Item(paramView.findViewById(2131371106)));
+      paramViewGroup.mRanking.add(new SearchResultAdapter.Item(paramView.findViewById(2131371107)));
+      paramViewGroup.mRanking.add(new SearchResultAdapter.Item(paramView.findViewById(2131371108)));
       ((SearchResultAdapter.Item)paramViewGroup.mRanking.get(0)).mCrown.setVisibility(0);
       ((SearchResultAdapter.Item)paramViewGroup.mRanking.get(3)).setOutOfRankStyle();
       paramView.setTag(paramViewGroup);
     }
-    for (;;)
+    else
     {
-      SearchInfo localSearchInfo = (SearchInfo)this.appList.get(paramInt);
-      try
-      {
-        paramViewGroup.update(paramViewGroup, paramView, localSearchInfo, (Activity)this.mActivityReference.get(), this.mKeyword, this.mRefer);
-        return paramView;
-      }
-      catch (Exception paramViewGroup)
-      {
-        QLog.e("SearchResultAdapter", 1, "getView exception: " + Log.getStackTraceString(paramViewGroup));
-      }
       paramViewGroup = (SearchResultAdapter.SearchResultViewHolder)paramView.getTag();
+    }
+    Object localObject = (SearchInfo)this.appList.get(paramInt);
+    try
+    {
+      paramViewGroup.update(paramViewGroup, paramView, (SearchInfo)localObject, (Activity)this.mActivityReference.get(), this.mKeyword, this.mRefer);
+      return paramView;
+    }
+    catch (Exception paramViewGroup)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getView exception: ");
+      ((StringBuilder)localObject).append(Log.getStackTraceString(paramViewGroup));
+      QLog.e("SearchResultAdapter", 1, ((StringBuilder)localObject).toString());
     }
     return paramView;
   }
@@ -341,8 +239,9 @@ public class SearchResultAdapter
   {
     setData(((MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_SEARCH_MANAGER)).getSearchResultData());
     notifyDataSetChanged();
-    if (this.mDataChangedListener != null) {
-      this.mDataChangedListener.onResultDataChanged(true);
+    SearchResultAdapter.DataChangedListener localDataChangedListener = this.mDataChangedListener;
+    if (localDataChangedListener != null) {
+      localDataChangedListener.onResultDataChanged(true);
     }
   }
   
@@ -364,7 +263,7 @@ public class SearchResultAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.ui.SearchResultAdapter
  * JD-Core Version:    0.7.0.1
  */

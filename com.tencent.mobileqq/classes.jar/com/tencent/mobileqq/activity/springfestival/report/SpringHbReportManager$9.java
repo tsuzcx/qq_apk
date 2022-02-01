@@ -13,13 +13,17 @@ class SpringHbReportManager$9
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("shua2021report_SpringHbReportManager", 2, "resetSendingState,reqSeq：" + this.a);
-      }
-      Iterator localIterator = SpringHbReportManager.a(this.this$0).iterator();
-      while (localIterator.hasNext())
+      if (QLog.isColorLevel())
       {
-        SpringHbReportManager.ReportInfo localReportInfo = (SpringHbReportManager.ReportInfo)localIterator.next();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("resetSendingState,reqSeq：");
+        ((StringBuilder)localObject).append(this.a);
+        QLog.i("shua2021report_SpringHbReportManager", 2, ((StringBuilder)localObject).toString());
+      }
+      Object localObject = SpringHbReportManager.a(this.this$0).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        SpringHbReportManager.ReportInfo localReportInfo = (SpringHbReportManager.ReportInfo)((Iterator)localObject).next();
         if (localReportInfo.reqSeq == this.a) {
           localReportInfo.isSending = false;
         }
@@ -34,7 +38,7 @@ class SpringHbReportManager$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.report.SpringHbReportManager.9
  * JD-Core Version:    0.7.0.1
  */

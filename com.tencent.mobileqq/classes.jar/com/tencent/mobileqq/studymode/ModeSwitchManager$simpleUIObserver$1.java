@@ -9,7 +9,7 @@ import org.jetbrains.annotations.Nullable;
 public final class ModeSwitchManager$simpleUIObserver$1
   extends SimpleUIObserver
 {
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
   {
     this.a.a(false);
     if (StudyModeManager.b())
@@ -23,7 +23,7 @@ public final class ModeSwitchManager$simpleUIObserver$1
     }
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, @Nullable String paramString)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, @Nullable String paramString)
   {
     Iterator localIterator = ((Iterable)ModeSwitchManager.a(this.a)).iterator();
     while (localIterator.hasNext()) {
@@ -33,7 +33,7 @@ public final class ModeSwitchManager$simpleUIObserver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.ModeSwitchManager.simpleUIObserver.1
  * JD-Core Version:    0.7.0.1
  */

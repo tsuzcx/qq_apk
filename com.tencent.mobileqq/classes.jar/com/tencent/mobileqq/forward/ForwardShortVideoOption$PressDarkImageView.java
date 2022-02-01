@@ -37,41 +37,42 @@ class ForwardShortVideoOption$PressDarkImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void drawableStateChanged()
+  protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    Drawable localDrawable;
-    if (isPressed()) {
+    Object localObject;
+    if (isPressed())
+    {
       if (Build.VERSION.SDK_INT >= 11)
       {
         super.setAlpha(0.5F);
-        if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+        localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+        if (localObject != null)
         {
-          localDrawable = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
-          if (localDrawable != null) {
-            localDrawable.setColorFilter(BaseBubbleBuilder.jdField_a_of_type_AndroidGraphicsColorFilter);
+          localObject = ((ImageView)localObject).getDrawable();
+          if (localObject != null) {
+            ((Drawable)localObject).setColorFilter(BaseBubbleBuilder.jdField_a_of_type_AndroidGraphicsColorFilter);
           }
         }
       }
     }
-    do
+    else if (Build.VERSION.SDK_INT >= 11)
     {
-      do
+      super.setAlpha(1.0F);
+      localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+      if (localObject != null)
       {
-        do
-        {
-          return;
-        } while (Build.VERSION.SDK_INT < 11);
-        super.setAlpha(1.0F);
-      } while (this.jdField_a_of_type_AndroidWidgetImageView == null);
-      localDrawable = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
-    } while (localDrawable == null);
-    localDrawable.setColorFilter(null);
+        localObject = ((ImageView)localObject).getDrawable();
+        if (localObject != null) {
+          ((Drawable)localObject).setColorFilter(null);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardShortVideoOption.PressDarkImageView
  * JD-Core Version:    0.7.0.1
  */

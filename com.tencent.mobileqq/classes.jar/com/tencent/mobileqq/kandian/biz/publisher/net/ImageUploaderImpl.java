@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.kandian.biz.publisher.net;
 
 import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.ugc.upload.IImageUploadListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.upload.RIJUgcImageUploader;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.kandian.biz.ugc.upload.IImageUploadListener;
+import com.tencent.mobileqq.kandian.biz.ugc.upload.RIJUgcImageUploader;
 import com.tencent.tkd.topicsdk.interfaces.BaseUploader;
 import kotlin.Metadata;
 import kotlin.TypeCastException;
@@ -20,10 +20,10 @@ public final class ImageUploaderImpl
     Object localObject = BaseApplicationImpl.getApplication();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication()");
     localObject = ((BaseApplicationImpl)localObject).getRuntime();
-    if (localObject == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
+    if (localObject != null) {
+      return (QQAppInterface)localObject;
     }
-    return (QQAppInterface)localObject;
+    throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
   }
   
   public void a() {}
@@ -33,13 +33,16 @@ public final class ImageUploaderImpl
     Intrinsics.checkParameterIsNotNull(paramString, "p0");
   }
   
-  public void b() {}
-  
   public void b(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "path");
-    if (((CharSequence)paramString).length() == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (((CharSequence)paramString).length() == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return;
     }
     paramString = new RIJUgcImageUploader((Context)BaseApplicationImpl.getApplication(), a(), paramString);
@@ -49,7 +52,7 @@ public final class ImageUploaderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.net.ImageUploaderImpl
  * JD-Core Version:    0.7.0.1
  */

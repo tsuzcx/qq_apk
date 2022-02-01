@@ -13,9 +13,7 @@ class db$2
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1) {
       return;
     }
     ca.startScan();
@@ -23,7 +21,7 @@ class db$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.db.2
  * JD-Core Version:    0.7.0.1
  */

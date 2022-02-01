@@ -16,7 +16,7 @@ public class UpgradeDetailWrapper
   implements Parcelable
 {
   public static final Parcelable.Creator<UpgradeDetailWrapper> CREATOR = new UpgradeDetailWrapper.1();
-  static String a;
+  static String a = "UpgradeDetailWrapper";
   public int a;
   public ApkUpdateDetail a;
   public NewUpgradeConfig a;
@@ -27,11 +27,6 @@ public class UpgradeDetailWrapper
   public String b;
   public UpgradeInfo b;
   public boolean b;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "UpgradeDetailWrapper";
-  }
   
   public UpgradeDetailWrapper(UpgradeInfo paramUpgradeInfo, ApkUpdateDetail paramApkUpdateDetail)
   {
@@ -46,10 +41,13 @@ public class UpgradeDetailWrapper
   
   private void a(XmlPullParser paramXmlPullParser, String paramString)
   {
-    if (a(paramXmlPullParser, paramString)) {}
-    while ((b(paramXmlPullParser, paramString)) || (!c(paramXmlPullParser, paramString))) {
+    if (a(paramXmlPullParser, paramString)) {
       return;
     }
+    if (b(paramXmlPullParser, paramString)) {
+      return;
+    }
+    c(paramXmlPullParser, paramString);
   }
   
   private boolean a(XmlPullParser paramXmlPullParser, String paramString)
@@ -57,123 +55,117 @@ public class UpgradeDetailWrapper
     if (paramString.equalsIgnoreCase("configId"))
     {
       this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_a_of_type_Int = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("taskName"))
+    else if (paramString.equalsIgnoreCase("taskName"))
     {
       this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_a_of_type_JavaLangString = paramXmlPullParser.nextText();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("taskTime"))
+    else if (paramString.equalsIgnoreCase("taskTime"))
     {
       this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_a_of_type_Long = OlympicUtil.a(paramXmlPullParser.nextText());
-      return true;
     }
-    if (paramString.equalsIgnoreCase("showTime"))
+    else if (paramString.equalsIgnoreCase("showTime"))
     {
       this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_b_of_type_Long = OlympicUtil.a(paramXmlPullParser.nextText());
-      return true;
     }
-    if (paramString.equalsIgnoreCase("title"))
+    else if (paramString.equalsIgnoreCase("title"))
     {
       this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_b_of_type_JavaLangString = paramXmlPullParser.nextText();
       this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strTitle = this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_b_of_type_JavaLangString;
-      return true;
     }
-    if (paramString.equalsIgnoreCase("content"))
+    else if (paramString.equalsIgnoreCase("content"))
     {
       this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_c_of_type_JavaLangString = paramXmlPullParser.nextText();
       this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc = this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_c_of_type_JavaLangString;
-      return true;
     }
-    if (paramString.equalsIgnoreCase("desc"))
+    else if (paramString.equalsIgnoreCase("desc"))
     {
       this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_d_of_type_JavaLangString = paramXmlPullParser.nextText();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("installFail"))
+    else if (paramString.equalsIgnoreCase("installFail"))
     {
       this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_e_of_type_JavaLangString = paramXmlPullParser.nextText();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("info"))
+    else if (paramString.equalsIgnoreCase("info"))
     {
       this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_f_of_type_JavaLangString = paramXmlPullParser.nextText();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("yellowBar"))
+    else if (paramString.equalsIgnoreCase("yellowBar"))
     {
       this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_b_of_type_Int = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("barContent"))
+    else if (paramString.equalsIgnoreCase("barContent"))
     {
       this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.g = paramXmlPullParser.nextText();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("barContent2"))
+    else if (paramString.equalsIgnoreCase("barContent2"))
     {
       this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.h = paramXmlPullParser.nextText();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("lBtnText"))
+    else if (paramString.equalsIgnoreCase("lBtnText"))
     {
       this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.i = paramXmlPullParser.nextText();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("rBtnText"))
+    else if (paramString.equalsIgnoreCase("rBtnText"))
     {
       this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.j = paramXmlPullParser.nextText();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("downloadDialogMaxTimes"))
+    else if (paramString.equalsIgnoreCase("downloadDialogMaxTimes"))
     {
       this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_c_of_type_Int = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("downloadDialogDayRate"))
+    else if (paramString.equalsIgnoreCase("downloadDialogDayRate"))
     {
       this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_d_of_type_Int = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("installDialogMaxTimes"))
+    else if (paramString.equalsIgnoreCase("installDialogMaxTimes"))
     {
       this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_e_of_type_Int = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("installDialogDayRate"))
+    else if (paramString.equalsIgnoreCase("installDialogDayRate"))
     {
       this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_f_of_type_Int = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("preDownloadYYB"))
+    else
     {
+      if (!paramString.equalsIgnoreCase("preDownloadYYB")) {
+        break label612;
+      }
       this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_a_of_type_Boolean = paramXmlPullParser.nextText().equals("1");
-      return true;
     }
+    return true;
+    label612:
     return false;
   }
   
   private boolean b(XmlPullParser paramXmlPullParser, String paramString)
   {
-    if (paramString.equalsIgnoreCase("status"))
+    boolean bool2 = paramString.equalsIgnoreCase("status");
+    boolean bool1 = true;
+    if (bool2)
     {
       paramXmlPullParser = paramXmlPullParser.nextText();
-      if ("on".equalsIgnoreCase(paramXmlPullParser)) {
+      if ("on".equalsIgnoreCase(paramXmlPullParser))
+      {
         this.jdField_a_of_type_Int = 1;
-      }
-      while (!"off".equalsIgnoreCase(paramXmlPullParser)) {
         return true;
       }
-      this.jdField_a_of_type_Int = 2;
-      return true;
+      if ("off".equalsIgnoreCase(paramXmlPullParser))
+      {
+        this.jdField_a_of_type_Int = 2;
+        return true;
+      }
     }
-    if (paramString.equalsIgnoreCase("jumpMarketSupportPhone"))
+    else
     {
-      this.jdField_b_of_type_JavaLangString = paramXmlPullParser.nextText();
-      return true;
+      if (paramString.equalsIgnoreCase("jumpMarketSupportPhone"))
+      {
+        this.jdField_b_of_type_JavaLangString = paramXmlPullParser.nextText();
+        return true;
+      }
+      bool1 = false;
     }
-    return false;
+    return bool1;
   }
   
   private boolean c(XmlPullParser paramXmlPullParser, String paramString)
@@ -181,86 +173,154 @@ public class UpgradeDetailWrapper
     if (paramString.equalsIgnoreCase("iUpgradeSdkId"))
     {
       this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeSdkId = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("iUpgradeType"))
+    else if (paramString.equalsIgnoreCase("iUpgradeType"))
     {
       this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("iDownloadPageUrl"))
+    else if (paramString.equalsIgnoreCase("iDownloadPageUrl"))
     {
       this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strUrl = paramXmlPullParser.nextText();
-      this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradePageUrl = this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strUrl;
-      this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strNewUpgradeDescURL = this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strUrl;
-      return true;
+      paramXmlPullParser = this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo;
+      paramXmlPullParser.strUpgradePageUrl = paramXmlPullParser.strUrl;
+      paramXmlPullParser = this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo;
+      paramXmlPullParser.strNewUpgradeDescURL = paramXmlPullParser.strUrl;
     }
-    if (paramString.equalsIgnoreCase("iActionType"))
+    else if (paramString.equalsIgnoreCase("iActionType"))
     {
       this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.iActionType = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("bNewSwitch"))
+    else if (paramString.equalsIgnoreCase("bNewSwitch"))
     {
       this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.bNewSwitch = Byte.valueOf(paramXmlPullParser.nextText()).byteValue();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("iIncrementUpgrade"))
+    else if (paramString.equalsIgnoreCase("iIncrementUpgrade"))
     {
       this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.iIncrementUpgrade = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("iTipsType"))
+    else if (paramString.equalsIgnoreCase("iTipsType"))
     {
       this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.iTipsType = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("strProgressName"))
+    else if (paramString.equalsIgnoreCase("strProgressName"))
     {
       this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strProgressName = paramXmlPullParser.nextText();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("strNewSoftwareURL"))
+    else if (paramString.equalsIgnoreCase("strNewSoftwareURL"))
     {
       this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strNewSoftwareURL = paramXmlPullParser.nextText();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("strNewSoftwareMD5"))
+    else if (paramString.equalsIgnoreCase("strNewSoftwareMD5"))
     {
       this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strNewSoftwareMD5 = paramXmlPullParser.nextText();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("bGray"))
+    else if (paramString.equalsIgnoreCase("bGray"))
     {
       this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.bGray = Byte.valueOf(paramXmlPullParser.nextText()).byteValue();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("strButtonDesc"))
+    else if (paramString.equalsIgnoreCase("strButtonDesc"))
     {
       this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strButtonDesc = paramXmlPullParser.nextText();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("strCancelButtonDesc"))
+    else if (paramString.equalsIgnoreCase("strCancelButtonDesc"))
     {
       this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strCancelButtonDesc = paramXmlPullParser.nextText();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("iNewTimeStamp"))
+    else if (paramString.equalsIgnoreCase("iNewTimeStamp"))
     {
       this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.iNewTimeStamp = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
-      return true;
     }
-    if (paramString.equalsIgnoreCase("strNewTipsDescURL"))
+    else
     {
+      if (!paramString.equalsIgnoreCase("strNewTipsDescURL")) {
+        break label453;
+      }
       this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strNewTipsDescURL = paramXmlPullParser.nextText();
-      return true;
     }
+    return true;
+    label453:
     return false;
   }
   
   public void a()
   {
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "parsed wrapper info:\nmTempUpgradeInfo.iUpgradeSdkId=" + this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeSdkId + "\nmTempUpgradeInfo.iUpgradeType=" + this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType + "\nmTempUpgradeInfo.strUrl=" + this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strUrl + "\nmTempUpgradeInfo.strUpgradePageUrl=" + this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradePageUrl + "\nmTempUpgradeInfo.strNewUpgradeDescURL=" + this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strNewUpgradeDescURL + "\nmTempUpgradeInfo.iActionType=" + this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.iActionType + "\nmTempUpgradeInfo.bNewSwitch=" + this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.bNewSwitch + "\nmTempUpgradeInfo.iIncrementUpgrade=" + this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.iIncrementUpgrade + "\nmTempUpgradeInfo.iTipsType=" + this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.iTipsType + "\nmTempUpgradeInfo.strProgressName=" + this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strProgressName + "\nmTempUpgradeInfo.strNewSoftwareURL=" + this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strNewSoftwareURL + "\nmTempUpgradeInfo.strNewSoftwareMD5=" + this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strNewSoftwareMD5 + "\nmTempUpgradeInfo.bGray=" + this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.bGray + "\nmTempUpgradeInfo.strButtonDesc=" + this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strButtonDesc + "\nmTempUpgradeInfo.strCancelButtonDesc=" + this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strCancelButtonDesc + "\nmTempUpgradeInfo.strTitle=" + this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strTitle + "\nmTempUpgradeInfo.strUpgradeDesc=" + this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc + "\nmNewUpgradeConfig.dialog.id=" + this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_a_of_type_Int + "\nmNewUpgradeConfig.dialog.name=" + this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_a_of_type_JavaLangString + "\nmNewUpgradeConfig.dialog.time=" + this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_a_of_type_Long + "\nmNewUpgradeConfig.dialog.showTime=" + this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_b_of_type_Long + "\nmNewUpgradeConfig.dialog.title=" + this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_b_of_type_JavaLangString + "\nmNewUpgradeConfig.dialog.content=" + this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_c_of_type_JavaLangString + "\nmNewUpgradeConfig.dialog.desc=" + this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_d_of_type_JavaLangString + "\nmNewUpgradeConfig.dialog.installFail=" + this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_e_of_type_JavaLangString + "\nmNewUpgradeConfig.dialog.info=" + this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_f_of_type_JavaLangString + "\nmNewUpgradeConfig.dialog.rate=" + this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_b_of_type_Int + "\nmNewUpgradeConfig.dialog.barContent=" + this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.g + "\nmNewUpgradeConfig.dialog.barContent2=" + this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.h + "\nmNewUpgradeConfig.dialog.lBtnText=" + this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.i + "\nmNewUpgradeConfig.dialog.rBtnText=" + this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.j + "\nmNewUpgradeConfig.dialog.downloadDialogMaxTimes=" + this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_c_of_type_Int + "\nmNewUpgradeConfig.dialog.downloadDialogDayRate=" + this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_d_of_type_Int + "\nmNewUpgradeConfig.dialog.installDialogMaxTimes=" + this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_e_of_type_Int + "\nmNewUpgradeConfig.dialog.installDialogDayRate=" + this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_f_of_type_Int + "\npreloadSwitchConfigValue=" + this.jdField_a_of_type_Int + "\njumpMarketSupportPhone=" + this.jdField_b_of_type_JavaLangString);
+    String str = jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parsed wrapper info:\nmTempUpgradeInfo.iUpgradeSdkId=");
+    localStringBuilder.append(this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeSdkId);
+    localStringBuilder.append("\nmTempUpgradeInfo.iUpgradeType=");
+    localStringBuilder.append(this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
+    localStringBuilder.append("\nmTempUpgradeInfo.strUrl=");
+    localStringBuilder.append(this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strUrl);
+    localStringBuilder.append("\nmTempUpgradeInfo.strUpgradePageUrl=");
+    localStringBuilder.append(this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradePageUrl);
+    localStringBuilder.append("\nmTempUpgradeInfo.strNewUpgradeDescURL=");
+    localStringBuilder.append(this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strNewUpgradeDescURL);
+    localStringBuilder.append("\nmTempUpgradeInfo.iActionType=");
+    localStringBuilder.append(this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.iActionType);
+    localStringBuilder.append("\nmTempUpgradeInfo.bNewSwitch=");
+    localStringBuilder.append(this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.bNewSwitch);
+    localStringBuilder.append("\nmTempUpgradeInfo.iIncrementUpgrade=");
+    localStringBuilder.append(this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.iIncrementUpgrade);
+    localStringBuilder.append("\nmTempUpgradeInfo.iTipsType=");
+    localStringBuilder.append(this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.iTipsType);
+    localStringBuilder.append("\nmTempUpgradeInfo.strProgressName=");
+    localStringBuilder.append(this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strProgressName);
+    localStringBuilder.append("\nmTempUpgradeInfo.strNewSoftwareURL=");
+    localStringBuilder.append(this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strNewSoftwareURL);
+    localStringBuilder.append("\nmTempUpgradeInfo.strNewSoftwareMD5=");
+    localStringBuilder.append(this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strNewSoftwareMD5);
+    localStringBuilder.append("\nmTempUpgradeInfo.bGray=");
+    localStringBuilder.append(this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.bGray);
+    localStringBuilder.append("\nmTempUpgradeInfo.strButtonDesc=");
+    localStringBuilder.append(this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strButtonDesc);
+    localStringBuilder.append("\nmTempUpgradeInfo.strCancelButtonDesc=");
+    localStringBuilder.append(this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strCancelButtonDesc);
+    localStringBuilder.append("\nmTempUpgradeInfo.strTitle=");
+    localStringBuilder.append(this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
+    localStringBuilder.append("\nmTempUpgradeInfo.strUpgradeDesc=");
+    localStringBuilder.append(this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
+    localStringBuilder.append("\nmNewUpgradeConfig.dialog.id=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_a_of_type_Int);
+    localStringBuilder.append("\nmNewUpgradeConfig.dialog.name=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("\nmNewUpgradeConfig.dialog.time=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_a_of_type_Long);
+    localStringBuilder.append("\nmNewUpgradeConfig.dialog.showTime=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_b_of_type_Long);
+    localStringBuilder.append("\nmNewUpgradeConfig.dialog.title=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("\nmNewUpgradeConfig.dialog.content=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append("\nmNewUpgradeConfig.dialog.desc=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append("\nmNewUpgradeConfig.dialog.installFail=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append("\nmNewUpgradeConfig.dialog.info=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append("\nmNewUpgradeConfig.dialog.rate=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_b_of_type_Int);
+    localStringBuilder.append("\nmNewUpgradeConfig.dialog.barContent=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.g);
+    localStringBuilder.append("\nmNewUpgradeConfig.dialog.barContent2=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.h);
+    localStringBuilder.append("\nmNewUpgradeConfig.dialog.lBtnText=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.i);
+    localStringBuilder.append("\nmNewUpgradeConfig.dialog.rBtnText=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.j);
+    localStringBuilder.append("\nmNewUpgradeConfig.dialog.downloadDialogMaxTimes=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_c_of_type_Int);
+    localStringBuilder.append("\nmNewUpgradeConfig.dialog.downloadDialogDayRate=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_d_of_type_Int);
+    localStringBuilder.append("\nmNewUpgradeConfig.dialog.installDialogMaxTimes=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_e_of_type_Int);
+    localStringBuilder.append("\nmNewUpgradeConfig.dialog.installDialogDayRate=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_f_of_type_Int);
+    localStringBuilder.append("\npreloadSwitchConfigValue=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("\njumpMarketSupportPhone=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    QLog.d(str, 1, localStringBuilder.toString());
   }
   
   public void a(String paramString)
@@ -273,24 +333,25 @@ public class UpgradeDetailWrapper
       this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig = NewUpgradeConfig.getInstance();
       this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.prepareDialog();
     }
-    XmlPullParser localXmlPullParser = Xml.newPullParser();
+    Object localObject = Xml.newPullParser();
     try
     {
-      localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-      for (int i = localXmlPullParser.getEventType(); i != 1; i = localXmlPullParser.next()) {
+      ((XmlPullParser)localObject).setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
+      for (int i = ((XmlPullParser)localObject).getEventType(); i != 1; i = ((XmlPullParser)localObject).next()) {
         if (i == 2) {
-          a(localXmlPullParser, localXmlPullParser.getName());
+          a((XmlPullParser)localObject, ((XmlPullParser)localObject).getName());
         }
       }
       this.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.iAppid = AppSetting.a();
     }
     catch (Exception paramString)
     {
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog = null;
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "parseConfig fail." + paramString);
-      }
+      this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog = null;
+      localObject = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseConfig fail.");
+      localStringBuilder.append(paramString);
+      QLog.e((String)localObject, 1, localStringBuilder.toString());
     }
     a();
   }
@@ -327,7 +388,11 @@ public class UpgradeDetailWrapper
       paramParcel.writeString(this.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strNewSoftwareURL);
       paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
     }
-    while (this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail != null)
+    else
+    {
+      paramParcel.writeInt(0);
+    }
+    if (this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail != null)
     {
       paramParcel.writeInt(1);
       paramParcel.writeString(this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.fileMd5);
@@ -340,14 +405,13 @@ public class UpgradeDetailWrapper
       paramParcel.writeInt(this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.versioncode);
       paramParcel.writeString(this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.versionname);
       return;
-      paramParcel.writeInt(0);
     }
     paramParcel.writeInt(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.UpgradeDetailWrapper
  * JD-Core Version:    0.7.0.1
  */

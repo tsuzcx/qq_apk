@@ -34,9 +34,10 @@ public final class Video
   
   static
   {
-    cache_map_urls.put(Integer.valueOf(0), "");
+    Integer localInteger = Integer.valueOf(0);
+    cache_map_urls.put(localInteger, "");
     cache_cover = new HashMap();
-    cache_cover.put(Integer.valueOf(0), "");
+    cache_cover.put(localInteger, "");
   }
   
   public Video() {}
@@ -92,48 +93,57 @@ public final class Video
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.vid != null) {
-      paramJceOutputStream.write(this.vid, 1);
+    Object localObject = this.vid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.timestamp, 2);
     paramJceOutputStream.write(this.play_time, 3);
-    if (this.map_urls != null) {
-      paramJceOutputStream.write(this.map_urls, 4);
+    localObject = this.map_urls;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 4);
     }
     paramJceOutputStream.write(this.file_size, 5);
-    if (this.cover != null) {
-      paramJceOutputStream.write(this.cover, 6);
+    localObject = this.cover;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 6);
     }
     paramJceOutputStream.write(this.rights, 7);
     paramJceOutputStream.write(this.status, 8);
-    if (this.toast != null) {
-      paramJceOutputStream.write(this.toast, 9);
+    localObject = this.toast;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.tid != null) {
-      paramJceOutputStream.write(this.tid, 10);
+    localObject = this.tid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.desc != null) {
-      paramJceOutputStream.write(this.desc, 11);
+    localObject = this.desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
     paramJceOutputStream.write(this.visitor_num, 12);
-    if (this.ugckey != null) {
-      paramJceOutputStream.write(this.ugckey, 13);
+    localObject = this.ugckey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
     paramJceOutputStream.write(this.play_type, 14);
     paramJceOutputStream.write(this.width, 15);
     paramJceOutputStream.write(this.height, 16);
     paramJceOutputStream.write(this.appid, 17);
-    if (this.subid != null) {
-      paramJceOutputStream.write(this.subid, 18);
+    localObject = this.subid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 18);
     }
-    if (this.lloc != null) {
-      paramJceOutputStream.write(this.lloc, 19);
+    localObject = this.lloc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 19);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_VIDEO.Video
  * JD-Core Version:    0.7.0.1
  */

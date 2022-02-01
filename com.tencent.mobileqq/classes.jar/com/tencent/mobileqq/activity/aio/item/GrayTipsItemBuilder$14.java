@@ -24,20 +24,22 @@ class GrayTipsItemBuilder$14
     ReportController.b(null, "CliOper", "", "", "0X800A8D8", "0X800A8D8", this.jdField_a_of_type_Int, 0, "", "", "", "");
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      localObject = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + (String)localObject));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("tel:");
+      localStringBuilder.append((String)localObject);
+      localObject = new Intent("android.intent.action.DIAL", Uri.parse(localStringBuilder.toString()));
       paramView.getContext().startActivity((Intent)localObject);
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      QQToast.a(BaseApplicationImpl.getContext(), 2131695696, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 2131695710, 0).a();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.14
  * JD-Core Version:    0.7.0.1
  */

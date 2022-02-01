@@ -9,11 +9,17 @@ public class PtvFilterSoLoad$SVFilterSoLoadStatus
   
   private static boolean b()
   {
-    String str = PtvFilterSoLoad.c();
+    String str = PtvFilterSoLoad.b();
     synchronized (PtvFilterSoLoad.a())
     {
-      boolean bool1 = FileUtils.a(str + "libQMCF.so");
-      boolean bool2 = FileUtils.a(str + a[2]);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append("libQMCF.so");
+      boolean bool1 = FileUtils.fileExists(localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(a[2]);
+      boolean bool2 = FileUtils.fileExists(localStringBuilder.toString());
       if (QLog.isColorLevel()) {
         QLog.i("SVAF_SoLoad", 2, String.format("isArtFilterSoExist, qmcfso[%s], snpeso[%s]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
       }
@@ -23,7 +29,7 @@ public class PtvFilterSoLoad$SVFilterSoLoadStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad.SVFilterSoLoadStatus
  * JD-Core Version:    0.7.0.1
  */

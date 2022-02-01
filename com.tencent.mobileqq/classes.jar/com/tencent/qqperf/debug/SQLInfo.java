@@ -32,12 +32,29 @@ public class SQLInfo
   
   public String toString()
   {
-    return 1500 + this.jdField_a_of_type_Long + "," + this.jdField_a_of_type_JavaLangString + "," + this.jdField_b_of_type_JavaLangString + "," + this.c + "," + this.jdField_b_of_type_Long + "," + this.d + "," + this.e + "," + this.f + "\r\n";
+    StringBuilder localStringBuilder = new StringBuilder(1500);
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append("\r\n");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.debug.SQLInfo
  * JD-Core Version:    0.7.0.1
  */

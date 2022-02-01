@@ -54,7 +54,7 @@ public class LikesView
   private SpannableString a()
   {
     SpannableString localSpannableString = new SpannableString("  ");
-    int i = AIOUtils.a(20.0F, getResources());
+    int i = AIOUtils.b(20.0F, getResources());
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, i, i);
     localSpannableString.setSpan(new ImageSpan(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, 0), 0, 1, 33);
     return localSpannableString;
@@ -72,8 +72,8 @@ public class LikesView
     paramAttributeSet = getContext().getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.LikesView, 0, 0);
     try
     {
-      this.jdField_a_of_type_Int = paramAttributeSet.getColor(0, getResources().getColor(2131166485));
-      this.b = paramAttributeSet.getColor(1, getResources().getColor(2131166957));
+      this.jdField_a_of_type_Int = paramAttributeSet.getColor(0, getResources().getColor(2131166496));
+      this.b = paramAttributeSet.getColor(1, getResources().getColor(2131166976));
       return;
     }
     finally
@@ -84,8 +84,8 @@ public class LikesView
   
   private void b()
   {
-    this.c = getResources().getColor(2131166482);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130847805);
+    this.c = getResources().getColor(2131166493);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130847672);
   }
   
   public Drawable a()
@@ -96,17 +96,18 @@ public class LikesView
   public void a()
   {
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
       setVisibility(0);
       localSpannableStringBuilder.append(a());
       int i = 0;
       while (i < this.jdField_a_of_type_JavaUtilList.size())
       {
-        LikeItem localLikeItem = (LikeItem)this.jdField_a_of_type_JavaUtilList.get(i);
-        if (localLikeItem != null)
+        localObject = (LikeItem)this.jdField_a_of_type_JavaUtilList.get(i);
+        if (localObject != null)
         {
-          localSpannableStringBuilder.append(a(localLikeItem.a.b, localLikeItem.a.jdField_a_of_type_JavaLangString));
+          localSpannableStringBuilder.append(a(((LikeItem)localObject).a.b, ((LikeItem)localObject).a.jdField_a_of_type_JavaLangString));
           if (i != this.jdField_a_of_type_JavaUtilList.size() - 1) {
             localSpannableStringBuilder.append(", ");
           }
@@ -114,17 +115,15 @@ public class LikesView
         i += 1;
       }
       if (this.jdField_a_of_type_Long > 1L) {
-        localSpannableStringBuilder.append(String.format(getContext().getResources().getString(2131719431), new Object[] { Long.valueOf(this.jdField_a_of_type_Long) }));
+        localSpannableStringBuilder.append(String.format(getContext().getResources().getString(2131719149), new Object[] { Long.valueOf(this.jdField_a_of_type_Long) }));
+      } else {
+        localSpannableStringBuilder.append(getContext().getResources().getString(2131719148));
       }
-      for (;;)
-      {
-        setText(new QQText(localSpannableStringBuilder, 3, 12));
-        setTextColor(this.c);
-        setMovementMethod(new CommentMovementMethod(this.b, getContext().getResources().getColor(2131167305)));
-        setOnClickListener(new LikesView.1(this));
-        return;
-        localSpannableStringBuilder.append(getContext().getResources().getString(2131719430));
-      }
+      setText(new QQText(localSpannableStringBuilder, 3, 12));
+      setTextColor(this.c);
+      setMovementMethod(new CommentMovementMethod(this.b, getContext().getResources().getColor(2131167333)));
+      setOnClickListener(new LikesView.1(this));
+      return;
     }
     setVisibility(8);
   }
@@ -158,7 +157,7 @@ public class LikesView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.comment.widget.LikesView
  * JD-Core Version:    0.7.0.1
  */

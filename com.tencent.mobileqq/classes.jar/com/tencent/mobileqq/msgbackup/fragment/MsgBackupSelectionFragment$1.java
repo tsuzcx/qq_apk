@@ -20,22 +20,21 @@ class MsgBackupSelectionFragment$1
       this.a.a.clear();
       this.a.a.addAll(paramList);
     }
-    for (;;)
+    else if (MsgBackupSelectionFragment.a(this.a) == 0)
     {
-      paramList = MsgBackupSelectionFragment.a(this.a).obtainMessage(10000);
-      MsgBackupSelectionFragment.a(this.a).sendMessage(paramList);
-      return;
-      if (MsgBackupSelectionFragment.a(this.a) == 0) {
-        MsgBackupReporter.a("0X800A232");
-      } else if (MsgBackupManager.c) {
-        MsgBackupReporter.a("0X800A257");
-      }
+      MsgBackupReporter.a("0X800A232");
     }
+    else if (MsgBackupManager.c)
+    {
+      MsgBackupReporter.a("0X800A257");
+    }
+    paramList = MsgBackupSelectionFragment.a(this.a).obtainMessage(10000);
+    MsgBackupSelectionFragment.a(this.a).sendMessage(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment.1
  * JD-Core Version:    0.7.0.1
  */

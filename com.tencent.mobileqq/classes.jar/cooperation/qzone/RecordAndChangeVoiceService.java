@@ -8,10 +8,11 @@ import com.tencent.av.utils.TraeHelper;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.voicechange.IVoiceChangeHelper.IOnCompressFinish;
 import com.tencent.mobileqq.voicechange.IVoiceChangeListener;
+import com.tencent.mobileqq.voicechange.IVoiceChangeManager;
 import com.tencent.mobileqq.voicechange.VoiceChangeBasicParams;
-import com.tencent.mobileqq.voicechange.VoiceChangeManager;
-import com.tencent.mobileqq.voicechange.VoiceChangeParams.IOnCompressFinish;
 import com.tencent.mobileqq.widget.QQToast;
 import cooperation.qzone.util.QZLog;
 import cooperation.qzone.webviewplugin.QZonePublishSecretShuoShuoH5Plugin;
@@ -19,7 +20,7 @@ import cooperation.qzone.webviewplugin.QZonePublishVoiceShuoShuoH5Plugin;
 import eipc.EIPCClient;
 
 public class RecordAndChangeVoiceService
-  implements IVoiceChangeListener, VoiceChangeParams.IOnCompressFinish
+  implements IVoiceChangeHelper.IOnCompressFinish, IVoiceChangeListener
 {
   public static final String ACTION_TYPE = "com.tencent.qq.syncSecretShuoshuoMsgType";
   public static final String BROADCAST_SYNC_SECRET_SHUOSHUO_MESSAGE = "com.tencent.qq.syncSecretShuoshuoMsg";
@@ -45,15 +46,16 @@ public class RecordAndChangeVoiceService
   
   public static RecordAndChangeVoiceService getInstance()
   {
-    if (sRecordAndChangeVoiceService == null) {}
-    try
-    {
-      if (sRecordAndChangeVoiceService == null) {
-        sRecordAndChangeVoiceService = new RecordAndChangeVoiceService();
+    if (sRecordAndChangeVoiceService == null) {
+      try
+      {
+        if (sRecordAndChangeVoiceService == null) {
+          sRecordAndChangeVoiceService = new RecordAndChangeVoiceService();
+        }
       }
-      return sRecordAndChangeVoiceService;
+      finally {}
     }
-    finally {}
+    return sRecordAndChangeVoiceService;
   }
   
   public static void sendBroadcastSecretShuoshuoMsg(Context paramContext, int paramInt)
@@ -80,138 +82,135 @@ public class RecordAndChangeVoiceService
   public String encodeBase64File(String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aconst_null
-    //   4: astore_2
-    //   5: new 134	java/io/File
-    //   8: dup
-    //   9: aload_1
-    //   10: invokespecial 135	java/io/File:<init>	(Ljava/lang/String;)V
-    //   13: astore 5
-    //   15: new 137	java/io/FileInputStream
-    //   18: dup
-    //   19: aload 5
-    //   21: invokespecial 140	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   24: astore_3
-    //   25: aload_3
-    //   26: astore_1
+    //   0: new 134	java/io/File
+    //   3: dup
+    //   4: aload_1
+    //   5: invokespecial 135	java/io/File:<init>	(Ljava/lang/String;)V
+    //   8: astore 5
+    //   10: aconst_null
+    //   11: astore_1
+    //   12: aconst_null
+    //   13: astore_3
+    //   14: aconst_null
+    //   15: astore 4
+    //   17: new 137	java/io/FileInputStream
+    //   20: dup
+    //   21: aload 5
+    //   23: invokespecial 140	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   26: astore_2
     //   27: aload 4
-    //   29: astore_2
+    //   29: astore_1
     //   30: aload 5
     //   32: invokevirtual 144	java/io/File:length	()J
     //   35: l2i
     //   36: newarray byte
-    //   38: astore 4
-    //   40: aload_3
-    //   41: astore_1
-    //   42: aload 4
-    //   44: astore_2
-    //   45: aload_3
-    //   46: aload 4
-    //   48: invokevirtual 148	java/io/FileInputStream:read	([B)I
-    //   51: pop
-    //   52: aload 4
-    //   54: astore_1
-    //   55: aload_3
-    //   56: ifnull +10 -> 66
-    //   59: aload_3
-    //   60: invokevirtual 151	java/io/FileInputStream:close	()V
-    //   63: aload 4
-    //   65: astore_1
-    //   66: aload_1
-    //   67: ifnull +105 -> 172
-    //   70: aload_1
-    //   71: iconst_0
-    //   72: invokestatic 157	com/tencent/smtt/utils/Base64:encodeToString	([BI)Ljava/lang/String;
-    //   75: areturn
-    //   76: astore_1
-    //   77: ldc 23
-    //   79: iconst_1
-    //   80: aload_1
-    //   81: iconst_0
-    //   82: anewarray 4	java/lang/Object
-    //   85: invokestatic 163	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   88: aload 4
-    //   90: astore_1
-    //   91: goto -25 -> 66
-    //   94: astore 4
-    //   96: aconst_null
-    //   97: astore_3
-    //   98: aload_3
-    //   99: astore_1
-    //   100: ldc 23
-    //   102: iconst_1
-    //   103: aload 4
-    //   105: iconst_0
-    //   106: anewarray 4	java/lang/Object
-    //   109: invokestatic 163	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   112: aload_2
-    //   113: astore_1
+    //   38: astore_3
+    //   39: aload_3
+    //   40: astore_1
+    //   41: aload_2
+    //   42: aload_3
+    //   43: invokevirtual 148	java/io/FileInputStream:read	([B)I
+    //   46: pop
+    //   47: aload_2
+    //   48: invokevirtual 151	java/io/FileInputStream:close	()V
+    //   51: aload_3
+    //   52: astore_2
+    //   53: goto +84 -> 137
+    //   56: astore_1
+    //   57: ldc 23
+    //   59: iconst_1
+    //   60: aload_1
+    //   61: iconst_0
+    //   62: anewarray 4	java/lang/Object
+    //   65: invokestatic 157	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   68: aload_3
+    //   69: astore_2
+    //   70: goto +67 -> 137
+    //   73: astore_1
+    //   74: aload_2
+    //   75: astore_3
+    //   76: aload_1
+    //   77: astore_2
+    //   78: aload_3
+    //   79: astore_1
+    //   80: goto +70 -> 150
+    //   83: astore 4
+    //   85: aload_2
+    //   86: astore_3
+    //   87: aload_1
+    //   88: astore_2
+    //   89: goto +11 -> 100
+    //   92: astore_2
+    //   93: goto +57 -> 150
+    //   96: astore 4
+    //   98: aconst_null
+    //   99: astore_2
+    //   100: aload_3
+    //   101: astore_1
+    //   102: ldc 23
+    //   104: iconst_1
+    //   105: aload 4
+    //   107: iconst_0
+    //   108: anewarray 4	java/lang/Object
+    //   111: invokestatic 157	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   114: aload_3
-    //   115: ifnull -49 -> 66
+    //   115: ifnull +22 -> 137
     //   118: aload_3
     //   119: invokevirtual 151	java/io/FileInputStream:close	()V
-    //   122: aload_2
-    //   123: astore_1
-    //   124: goto -58 -> 66
-    //   127: astore_1
-    //   128: ldc 23
-    //   130: iconst_1
-    //   131: aload_1
-    //   132: iconst_0
-    //   133: anewarray 4	java/lang/Object
-    //   136: invokestatic 163	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   139: aload_2
-    //   140: astore_1
-    //   141: goto -75 -> 66
-    //   144: astore_2
-    //   145: aconst_null
-    //   146: astore_1
-    //   147: aload_1
-    //   148: ifnull +7 -> 155
-    //   151: aload_1
-    //   152: invokevirtual 151	java/io/FileInputStream:close	()V
-    //   155: aload_2
-    //   156: athrow
-    //   157: astore_1
-    //   158: ldc 23
-    //   160: iconst_1
-    //   161: aload_1
-    //   162: iconst_0
-    //   163: anewarray 4	java/lang/Object
-    //   166: invokestatic 163	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   169: goto -14 -> 155
-    //   172: ldc 165
-    //   174: areturn
-    //   175: astore_2
-    //   176: goto -29 -> 147
-    //   179: astore 4
-    //   181: goto -83 -> 98
+    //   122: goto +15 -> 137
+    //   125: astore_1
+    //   126: ldc 23
+    //   128: iconst_1
+    //   129: aload_1
+    //   130: iconst_0
+    //   131: anewarray 4	java/lang/Object
+    //   134: invokestatic 157	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   137: aload_2
+    //   138: ifnull +9 -> 147
+    //   141: aload_2
+    //   142: iconst_0
+    //   143: invokestatic 163	com/tencent/smtt/utils/Base64:encodeToString	([BI)Ljava/lang/String;
+    //   146: areturn
+    //   147: ldc 165
+    //   149: areturn
+    //   150: aload_1
+    //   151: ifnull +22 -> 173
+    //   154: aload_1
+    //   155: invokevirtual 151	java/io/FileInputStream:close	()V
+    //   158: goto +15 -> 173
+    //   161: astore_1
+    //   162: ldc 23
+    //   164: iconst_1
+    //   165: aload_1
+    //   166: iconst_0
+    //   167: anewarray 4	java/lang/Object
+    //   170: invokestatic 157	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   173: aload_2
+    //   174: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	184	0	this	RecordAndChangeVoiceService
-    //   0	184	1	paramString	String
-    //   4	136	2	arrayOfByte1	byte[]
-    //   144	12	2	localObject1	Object
-    //   175	1	2	localObject2	Object
-    //   24	95	3	localFileInputStream	java.io.FileInputStream
-    //   1	88	4	arrayOfByte2	byte[]
-    //   94	10	4	localThrowable1	java.lang.Throwable
-    //   179	1	4	localThrowable2	java.lang.Throwable
-    //   13	18	5	localFile	java.io.File
+    //   0	175	0	this	RecordAndChangeVoiceService
+    //   0	175	1	paramString	String
+    //   26	63	2	localObject1	Object
+    //   92	1	2	localObject2	Object
+    //   99	75	2	arrayOfByte	byte[]
+    //   13	106	3	localObject3	Object
+    //   15	13	4	localObject4	Object
+    //   83	1	4	localThrowable1	java.lang.Throwable
+    //   96	10	4	localThrowable2	java.lang.Throwable
+    //   8	23	5	localFile	java.io.File
     // Exception table:
     //   from	to	target	type
-    //   59	63	76	java/lang/Exception
-    //   15	25	94	java/lang/Throwable
-    //   118	122	127	java/lang/Exception
-    //   15	25	144	finally
-    //   151	155	157	java/lang/Exception
-    //   30	40	175	finally
-    //   45	52	175	finally
-    //   100	112	175	finally
-    //   30	40	179	java/lang/Throwable
-    //   45	52	179	java/lang/Throwable
+    //   47	51	56	java/lang/Exception
+    //   30	39	73	finally
+    //   41	47	73	finally
+    //   30	39	83	java/lang/Throwable
+    //   41	47	83	java/lang/Throwable
+    //   17	27	92	finally
+    //   102	114	92	finally
+    //   17	27	96	java/lang/Throwable
+    //   118	122	125	java/lang/Exception
+    //   154	158	161	java/lang/Exception
   }
   
   public void getMoodVoiceData(String paramString, int paramInt, QZonePublishSecretShuoShuoH5Plugin paramQZonePublishSecretShuoShuoH5Plugin)
@@ -222,15 +221,25 @@ public class RecordAndChangeVoiceService
       if (TextUtils.isEmpty(this.sVCSoPath))
       {
         QIPCClientHelper.getInstance().getClient().callServer("QzoneIPCModule", "startDownloadVoicechangeSo", null);
-        QQToast.a(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131713236), 1);
+        QQToast.a(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131713204), 1);
       }
       return;
     }
-    QZLog.d("RecordAndChangeVoiceService", 2, "getMoodVoiceData callback" + paramString + " voiceID " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getMoodVoiceData callback");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" voiceID ");
+    localStringBuilder.append(paramInt);
+    QZLog.d("RecordAndChangeVoiceService", 2, localStringBuilder.toString());
     this.base64Callback = paramString;
     this.mQZonePublishSecretShuoShuoH5Plugin = paramQZonePublishSecretShuoShuoH5Plugin;
-    VoiceChangeManager.a(BaseApplicationImpl.getContext(), this.voiceChangeParams, this.sVCSoPath, this);
-    VoiceChangeManager.a(this.recordPath, this);
+    ((IVoiceChangeManager)QRoute.api(IVoiceChangeManager.class)).requestToSend(BaseApplicationImpl.getContext(), this.voiceChangeParams, this.sVCSoPath, this);
+    try
+    {
+      ((IVoiceChangeManager)QRoute.api(IVoiceChangeManager.class)).queryStateByPath(this.recordPath, this);
+      return;
+    }
+    finally {}
   }
   
   public void getMoodVoiceRecordTime(String paramString, QZonePublishSecretShuoShuoH5Plugin paramQZonePublishSecretShuoShuoH5Plugin)
@@ -239,16 +248,23 @@ public class RecordAndChangeVoiceService
     if (this.voiceChangeParams == null) {
       return;
     }
-    if ((this.currentVoiceID == 0) || ((this.currentVoiceID != 0) && (this.changedVoiceTime == 0L)))
+    int i = this.currentVoiceID;
+    if ((i != 0) && ((i == 0) || (this.changedVoiceTime != 0L)))
     {
-      l = (this.recordTime + 500L) / 1000L;
+      l = (this.changedVoiceTime + 500L) / 1000L;
       paramQZonePublishSecretShuoShuoH5Plugin.onReplyGetMoodVoiceRecordTime(paramString, l);
-      QZLog.d("RecordAndChangeVoiceService", 2, "onReplyGetMoodVoiceRecordTime: " + l);
+      paramString = new StringBuilder();
+      paramString.append("onReplyGetMoodVoiceRecordTime: ");
+      paramString.append(l);
+      QZLog.d("RecordAndChangeVoiceService", 2, paramString.toString());
       return;
     }
-    long l = (this.changedVoiceTime + 500L) / 1000L;
+    long l = (this.recordTime + 500L) / 1000L;
     paramQZonePublishSecretShuoShuoH5Plugin.onReplyGetMoodVoiceRecordTime(paramString, l);
-    QZLog.d("RecordAndChangeVoiceService", 2, "onReplyGetMoodVoiceRecordTime: " + l);
+    paramString = new StringBuilder();
+    paramString.append("onReplyGetMoodVoiceRecordTime: ");
+    paramString.append(l);
+    QZLog.d("RecordAndChangeVoiceService", 2, paramString.toString());
   }
   
   public void onCompressFinished(String paramString, int paramInt1, int paramInt2)
@@ -257,7 +273,10 @@ public class RecordAndChangeVoiceService
     {
       StringBuilder localStringBuilder = new StringBuilder("data:audio/amr;base64,");
       localStringBuilder.append(encodeBase64File(paramString));
-      QZLog.d("RecordAndChangeVoiceService", 2, "base64=" + localStringBuilder.toString());
+      paramString = new StringBuilder();
+      paramString.append("base64=");
+      paramString.append(localStringBuilder.toString());
+      QZLog.d("RecordAndChangeVoiceService", 2, paramString.toString());
       this.mQZonePublishSecretShuoShuoH5Plugin.onReplyGetMoodVoiceData(this.base64Callback, localStringBuilder.toString());
       return;
     }
@@ -285,15 +304,15 @@ public class RecordAndChangeVoiceService
     if ((!TextUtils.isEmpty(this.recordPath)) && (this.recordTime > 0L))
     {
       this.voiceChangeParams = new VoiceChangeBasicParams(this.recordPath, i, j, k, 0);
-      switch (paramInt)
+      if (paramInt != 0)
       {
-      default: 
-        return;
-      case 0: 
-        sendBroadcastSecretShuoshuoMsg(BaseApplicationImpl.getContext(), 1);
+        if (paramInt != 1) {
+          return;
+        }
+        QZonePublishVoiceShuoShuoH5Plugin.onNotifyH5RecordOk();
         return;
       }
-      QZonePublishVoiceShuoShuoH5Plugin.onNotifyH5RecordOk();
+      sendBroadcastSecretShuoshuoMsg(BaseApplicationImpl.getContext(), 1);
       return;
     }
     sendBroadcastSecretShuoshuoMsg(BaseApplicationImpl.getContext(), 6);
@@ -309,49 +328,54 @@ public class RecordAndChangeVoiceService
       if (TextUtils.isEmpty(this.sVCSoPath))
       {
         QIPCClientHelper.getInstance().getClient().callServer("QzoneIPCModule", "startDownloadVoicechangeSo", null);
-        QQToast.a(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131713235), 1);
+        QQToast.a(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131713203), 1);
       }
-    }
-    while (this.voiceChangeParams == null) {
       return;
     }
-    this.currentVoiceID = paramInt;
-    this.voiceChangeParams.f = paramInt;
-    VoiceChangeManager.b(BaseApplicationImpl.getContext(), this.voiceChangeParams, this.sVCSoPath, this);
+    VoiceChangeBasicParams localVoiceChangeBasicParams = this.voiceChangeParams;
+    if (localVoiceChangeBasicParams != null)
+    {
+      this.currentVoiceID = paramInt;
+      localVoiceChangeBasicParams.f = paramInt;
+      ((IVoiceChangeManager)QRoute.api(IVoiceChangeManager.class)).requestToStart(BaseApplicationImpl.getContext(), this.voiceChangeParams, this.sVCSoPath, this);
+    }
   }
   
   public void playMoodVoice(String paramString, int paramInt, QZonePublishSecretShuoShuoH5Plugin paramQZonePublishSecretShuoShuoH5Plugin)
   {
-    QZLog.d("RecordAndChangeVoiceService", 2, "playMoodVoice voiceID: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("playMoodVoice voiceID: ");
+    localStringBuilder.append(paramInt);
+    QZLog.d("RecordAndChangeVoiceService", 2, localStringBuilder.toString());
     if (paramInt == 3) {
       this.changedVoiceTime = (((float)this.recordTime / 0.6F));
+    } else if (paramInt == 4) {
+      this.changedVoiceTime = (((float)this.recordTime * 0.5833333F));
+    } else {
+      this.changedVoiceTime = this.recordTime;
     }
-    for (;;)
-    {
-      long l = (this.changedVoiceTime + 500L) / 1000L;
-      paramQZonePublishSecretShuoShuoH5Plugin.onReplyPlayMoodVoice(paramString, l);
-      QZLog.d("RecordAndChangeVoiceService", 2, "onReplyPlayMoodVoice changeVoiceTime=" + this.changedVoiceTime + ", time = " + l);
-      playChangeVoiceAudio(paramInt);
-      return;
-      if (paramInt == 4) {
-        this.changedVoiceTime = (((float)this.recordTime * 0.5833333F));
-      } else {
-        this.changedVoiceTime = this.recordTime;
-      }
-    }
+    long l = (this.changedVoiceTime + 500L) / 1000L;
+    paramQZonePublishSecretShuoShuoH5Plugin.onReplyPlayMoodVoice(paramString, l);
+    paramString = new StringBuilder();
+    paramString.append("onReplyPlayMoodVoice changeVoiceTime=");
+    paramString.append(this.changedVoiceTime);
+    paramString.append(", time = ");
+    paramString.append(l);
+    QZLog.d("RecordAndChangeVoiceService", 2, paramString.toString());
+    playChangeVoiceAudio(paramInt);
   }
   
   public void stopPlayingMoodVoice()
   {
     QZLog.d("RecordAndChangeVoiceService", 2, "stopPlayingMoodVoice");
     if (this.voiceChangeParams != null) {
-      VoiceChangeManager.b(this.voiceChangeParams);
+      ((IVoiceChangeManager)QRoute.api(IVoiceChangeManager.class)).requestToPause(this.voiceChangeParams);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.RecordAndChangeVoiceService
  * JD-Core Version:    0.7.0.1
  */

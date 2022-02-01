@@ -39,13 +39,16 @@ public final class RegexKt
   private static final int toInt(@NotNull Iterable<? extends FlagEnum> paramIterable)
   {
     paramIterable = paramIterable.iterator();
-    for (int i = 0; paramIterable.hasNext(); i = ((FlagEnum)paramIterable.next()).getValue() | i) {}
+    int i = 0;
+    while (paramIterable.hasNext()) {
+      i |= ((FlagEnum)paramIterable.next()).getValue();
+    }
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.text.RegexKt
  * JD-Core Version:    0.7.0.1
  */

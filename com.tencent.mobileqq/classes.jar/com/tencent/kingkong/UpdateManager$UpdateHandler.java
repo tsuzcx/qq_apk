@@ -13,23 +13,27 @@ class UpdateManager$UpdateHandler
     paramMessage = paramMessage.getData();
     try
     {
-      String str = paramMessage.getString("PATCH_JSON_STRING");
+      localObject = paramMessage.getString("PATCH_JSON_STRING");
       boolean bool = paramMessage.getBoolean("PATCH_FORCE_UPDATE");
-      paramMessage = PatchInfo.a(new JSONObject(str));
-      if (paramMessage != null) {
+      paramMessage = PatchInfo.a(new JSONObject((String)localObject));
+      if (paramMessage != null)
+      {
         UpdateManager.a(paramMessage, bool);
+        return;
       }
-      return;
     }
     catch (Exception paramMessage)
     {
-      Common.Log.a("KingKongUpdateManager", "Update patch exception : " + paramMessage);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Update patch exception : ");
+      ((StringBuilder)localObject).append(paramMessage);
+      Common.Log.a("KingKongUpdateManager", ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.kingkong.UpdateManager.UpdateHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -34,14 +34,14 @@ public class DownloadInfo
   public static DownloadInfo get()
   {
     String str = getSP().getString("config", null);
-    if (TextUtils.isEmpty(str)) {}
-    DownloadInfo localDownloadInfo;
-    do
-    {
+    if (TextUtils.isEmpty(str)) {
       return null;
-      localDownloadInfo = new DownloadInfo();
-    } while (!localDownloadInfo.tryParse("QavGesture", str));
-    return localDownloadInfo;
+    }
+    DownloadInfo localDownloadInfo = new DownloadInfo();
+    if (localDownloadInfo.tryParse("QavGesture", str)) {
+      return localDownloadInfo;
+    }
+    return null;
   }
   
   public static SharedPreferences getSP()
@@ -49,7 +49,7 @@ public class DownloadInfo
     return BaseApplication.getContext().getSharedPreferences("config_qq.android.qavgesture", 4);
   }
   
-  public boolean parse(JSONObject paramJSONObject)
+  protected boolean parse(JSONObject paramJSONObject)
   {
     try
     {
@@ -78,12 +78,12 @@ public class DownloadInfo
   
   public String toString()
   {
-    return String.format("task_id[%s], time[%s], enable[%s], url_zip_so[%s], MD5_zip_so[%s], url_zip_model[%s], MD5_zip_model[%s], MD5_so[%s]", new Object[] { Integer.valueOf(this.task_id), Double.valueOf(this.time), Boolean.valueOf(this.enable), this.url_zip_so, this.MD5_zip_so, this.url_zip_model, this.MD5_zip_model, this.MD5_so });
+    return String.format("task_id[%s], time[%s], enable[%s], url_zip_so[%s], MD5_zip_so[%s], url_zip_model[%s], MD5_zip_model[%s], MD5_so[%s]", new Object[] { Integer.valueOf(this.taskId), Double.valueOf(this.time), Boolean.valueOf(this.enable), this.url_zip_so, this.MD5_zip_so, this.url_zip_model, this.MD5_zip_model, this.MD5_so });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.gesture.DownloadInfo
  * JD-Core Version:    0.7.0.1
  */

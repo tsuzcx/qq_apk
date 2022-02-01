@@ -9,7 +9,7 @@ public abstract class TimerTaskManager$TimerTaskRunnable
   
   public boolean a()
   {
-    return !this.a;
+    return this.a ^ true;
   }
   
   public final void run()
@@ -21,7 +21,7 @@ public abstract class TimerTaskManager$TimerTaskRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.common.TimerTaskManager.TimerTaskRunnable
  * JD-Core Version:    0.7.0.1
  */

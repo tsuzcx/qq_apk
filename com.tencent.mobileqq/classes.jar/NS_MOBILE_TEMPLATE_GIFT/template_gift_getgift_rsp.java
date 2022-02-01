@@ -38,17 +38,19 @@ public final class template_gift_getgift_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.is_diy, 0);
-    if (this.common_gift != null) {
-      paramJceOutputStream.write(this.common_gift, 1);
+    Object localObject = this.common_gift;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.diy_gift != null) {
-      paramJceOutputStream.write(this.diy_gift, 2);
+    localObject = this.diy_gift;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_TEMPLATE_GIFT.template_gift_getgift_rsp
  * JD-Core Version:    0.7.0.1
  */

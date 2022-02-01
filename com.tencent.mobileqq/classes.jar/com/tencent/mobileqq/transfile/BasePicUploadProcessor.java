@@ -5,31 +5,37 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
+import com.tencent.common.app.AppInterface;
 import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.PicBusUtil;
 import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.haoliyou.JumpShareUtils;
 import com.tencent.mobileqq.haoliyou.orion.ZhuoXusManager;
 import com.tencent.mobileqq.highway.config.ConfigManager;
-import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.msg.api.IMessageFacade;
+import com.tencent.mobileqq.pic.api.IDep;
+import com.tencent.mobileqq.pic.api.IPicHelper;
+import com.tencent.mobileqq.pic.api.IPicTransFile.IPicUploadPro;
 import com.tencent.mobileqq.pic.operator.AioQuickSendPicOperator;
 import com.tencent.mobileqq.pic.operator.AioQuickSendPicOperator.QuickSendObject;
-import com.tencent.mobileqq.richmedia.ordersend.OrderMediaMsgManager.IMsgSendingListener;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.richmedia.ordersend.IOrderMediaMsgService.IMsgSendingListener;
 import com.tencent.mobileqq.statistics.RichMediaBugReport;
 import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemImage;
+import com.tencent.mobileqq.structmsg.api.IMsgStructing;
 import com.tencent.mobileqq.transfile.chatpic.PicUploadExplicitError;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.PicUpReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp;
+import com.tencent.mobileqq.transfile.report.ProcessorReport;
+import com.tencent.mobileqq.utils.BaseImageUtil;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
-import cooperation.peak.PeakUtils;
 import java.io.FileNotFoundException;
 import java.io.RandomAccessFile;
 import java.net.URL;
@@ -38,7 +44,7 @@ import msf.msgsvc.msg_ctrl.MsgCtrl;
 
 public class BasePicUploadProcessor
   extends BaseUploadProcessor
-  implements Handler.Callback, OrderMediaMsgManager.IMsgSendingListener
+  implements Handler.Callback, IPicTransFile.IPicUploadPro, IOrderMediaMsgService.IMsgSendingListener
 {
   public static final int DELAY_SHOW_PROGRESS_TIME = 2000;
   public static final int SEND_PIC_AREA_LIMIT = 200000000;
@@ -47,6 +53,7 @@ public class BasePicUploadProcessor
   private static final String TAG = "BasePicUploadProcessor";
   Handler handler;
   protected AioQuickSendPicOperator.QuickSendObject mQuickSendObject;
+  protected boolean uploadSuccess = false;
   
   public BasePicUploadProcessor() {}
   
@@ -61,10 +68,68 @@ public class BasePicUploadProcessor
   {
     if (isDynamicPic())
     {
-      if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-        com.tencent.qphone.base.util.QLog.d("BasePicUploadProcessor", 2, "handleQuickSendFailed:" + getMessageForPic());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleQuickSendFailed:");
+        localStringBuilder.append(getMessageForPic());
+        QLog.d("BasePicUploadProcessor", 2, localStringBuilder.toString());
       }
-      URLDrawableHelper.getDrawable(getMessageForPic(), 65537, null, null).downloadImediatly();
+      ((IPicHelper)QRoute.api(IPicHelper.class)).getDrawable(getMessageForPic(), 65537, null, null).downloadImediatly();
+    }
+  }
+  
+  public static void reportActPSdoneAioDuration(long paramLong1, long paramLong2, boolean paramBoolean, double paramDouble)
+  {
+    Object localObject = new HashMap();
+    if ((paramLong1 <= 86400000L) && (paramDouble >= 0.0D) && (paramDouble <= 1.0D))
+    {
+      int i = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
+      int j = DeviceInfoUtil.f();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(i);
+      localStringBuilder.append("");
+      ((HashMap)localObject).put("param_netType", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append("");
+      ((HashMap)localObject).put("param_aio_duration", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("");
+      ((HashMap)localObject).put("param_second_trans", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(j);
+      localStringBuilder.append("");
+      ((HashMap)localObject).put("param_phone_type", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramLong2);
+      localStringBuilder.append("");
+      ((HashMap)localObject).put("param_pic_filesize", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramDouble);
+      localStringBuilder.append("");
+      ((HashMap)localObject).put("param_optimizePercent", localStringBuilder.toString());
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actPSdoneaioduration", false, 0L, 0L, (HashMap)localObject, "", false);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("reportActPSdoneAioDuration,aioduration =");
+        ((StringBuilder)localObject).append(paramLong1);
+        ((StringBuilder)localObject).append(",filesize = ");
+        ((StringBuilder)localObject).append(paramLong2);
+        ((StringBuilder)localObject).append(",isSecondTrans = ");
+        ((StringBuilder)localObject).append(paramBoolean);
+        ((StringBuilder)localObject).append(",phoneType = ");
+        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(",percent = ");
+        ((StringBuilder)localObject).append(paramDouble);
+        QLog.d("BasePicUploadProcessor", 2, ((StringBuilder)localObject).toString());
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("BasePicUploadProcessor", 2, "reportActPSdoneAioDuration,invalid arg,return!");
     }
   }
   
@@ -74,17 +139,22 @@ public class BasePicUploadProcessor
     {
       if ((!ZhuoXusManager.a().f()) && (!ZhuoXusManager.a().h()) && (!ZhuoXusManager.a().g()))
       {
-        if (com.tencent.TMG.utils.QLog.isColorLevel()) {
-          com.tencent.TMG.utils.QLog.d("BasePicUploadProcessor", 0, "a , s close !");
+        if (!QLog.isColorLevel()) {
+          return;
         }
+        QLog.d("BasePicUploadProcessor", 2, "a , s close !");
+        return;
       }
-      else if ((this.mUiRequest != null) && (this.mUiRequest.mRec != null) && ((this.mUiRequest.mRec instanceof MessageForPic)))
+      if (this.mUiRequest == null) {
+        return;
+      }
+      if ((this.mUiRequest.mRec != null) && ((this.mUiRequest.mRec instanceof MessageForPic)))
       {
-        msg_ctrl.MsgCtrl localMsgCtrl = JumpShareUtils.a(this.mUiRequest.mLocalPath);
+        msg_ctrl.MsgCtrl localMsgCtrl = ((IDep)QRoute.api(IDep.class)).getMsgCtrlForPicMsg(this.mUiRequest.mLocalPath);
         if (localMsgCtrl != null)
         {
           ((MessageForPic)this.mUiRequest.mRec).msgCtrl = localMsgCtrl;
-          this.mReportInfo.put("param_amc", "1");
+          this.mProcessorReport.mReportInfo.put("param_amc", "1");
           return;
         }
       }
@@ -93,6 +163,7 @@ public class BasePicUploadProcessor
     {
       localThrowable.printStackTrace();
     }
+    return;
   }
   
   public int cancel()
@@ -105,10 +176,21 @@ public class BasePicUploadProcessor
   
   protected void changeRequest(RichProto.RichProtoReq.PicUpReq paramPicUpReq)
   {
-    if ((this.mQuickSendObject != null) && (!this.mQuickSendObject.jdField_a_of_type_Boolean))
+    Object localObject = this.mQuickSendObject;
+    if ((localObject != null) && (!((AioQuickSendPicOperator.QuickSendObject)localObject).jdField_a_of_type_Boolean))
     {
-      if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-        com.tencent.qphone.base.util.QLog.d("BasePicUploadProcessor", 2, "changeRequest,file Size:" + paramPicUpReq.fileSize + " md5:" + paramPicUpReq.md5 + " busiType:" + this.mUiRequest.mBusiType + " quickSendObject:" + this.mQuickSendObject);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("changeRequest,file Size:");
+        ((StringBuilder)localObject).append(paramPicUpReq.fileSize);
+        ((StringBuilder)localObject).append(" md5:");
+        ((StringBuilder)localObject).append(paramPicUpReq.md5);
+        ((StringBuilder)localObject).append(" busiType:");
+        ((StringBuilder)localObject).append(this.mUiRequest.mBusiType);
+        ((StringBuilder)localObject).append(" quickSendObject:");
+        ((StringBuilder)localObject).append(this.mQuickSendObject);
+        QLog.d("BasePicUploadProcessor", 2, ((StringBuilder)localObject).toString());
       }
       paramPicUpReq.fileSize = this.mQuickSendObject.jdField_a_of_type_Long;
       paramPicUpReq.md5 = HexUtil.hexStr2Bytes(this.mQuickSendObject.jdField_a_of_type_JavaLangString);
@@ -120,13 +202,19 @@ public class BasePicUploadProcessor
   
   protected void changeRichText()
   {
-    if ((this.mQuickSendObject != null) && (!this.mQuickSendObject.jdField_a_of_type_Boolean))
+    Object localObject = this.mQuickSendObject;
+    if ((localObject != null) && (!((AioQuickSendPicOperator.QuickSendObject)localObject).jdField_a_of_type_Boolean))
     {
       this.mFileSize = this.mQuickSendObject.jdField_a_of_type_Long;
       this.mMd5Str = this.mQuickSendObject.jdField_a_of_type_JavaLangString;
       this.mLocalMd5 = HexUtil.hexStr2Bytes(this.mMd5Str);
-      if (getClass().equals(GroupPicUploadProcessor.class)) {
-        this.mFileName = (this.mMd5Str + "." + this.mExtName);
+      if (getClass().equals(GroupPicUploadProcessor.class))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.mMd5Str);
+        ((StringBuilder)localObject).append(".");
+        ((StringBuilder)localObject).append(this.mExtName);
+        this.mFileName = ((StringBuilder)localObject).toString();
       }
     }
   }
@@ -135,15 +223,16 @@ public class BasePicUploadProcessor
   {
     if (this.mUiRequest.mIsFastForward)
     {
-      setError(9333, "Server MD5 fast forward missed");
+      this.mProcessorReport.setError(9333, "Server MD5 fast forward missed", null, null);
       onError();
       return false;
     }
-    if ((this.mQuickSendObject != null) && (!this.mQuickSendObject.jdField_a_of_type_Boolean))
+    AioQuickSendPicOperator.QuickSendObject localQuickSendObject = this.mQuickSendObject;
+    if ((localQuickSendObject != null) && (!localQuickSendObject.jdField_a_of_type_Boolean))
     {
       this.mQuickSendObject.jdField_a_of_type_Boolean = true;
-      if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-        com.tencent.qphone.base.util.QLog.d("BasePicUploadProcessor", 2, "QuickSendFail");
+      if (QLog.isColorLevel()) {
+        QLog.d("BasePicUploadProcessor", 2, "QuickSendFail");
       }
       sendRequest();
       return false;
@@ -155,7 +244,7 @@ public class BasePicUploadProcessor
   {
     if ((this.mLocalMd5 == null) && (!getMd5()))
     {
-      setError(9041, "No Local MD5");
+      this.mProcessorReport.setError(9041, "No Local MD5", null, null);
       onError();
       return false;
     }
@@ -164,7 +253,7 @@ public class BasePicUploadProcessor
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
       localOptions.inJustDecodeBounds = true;
       localOptions.inSampleSize = 1;
-      ImageUtil.a(this.mUiRequest.mLocalPath, localOptions);
+      BaseImageUtil.a(this.mUiRequest.mLocalPath, localOptions);
       this.mHeight = localOptions.outHeight;
       this.mWidth = localOptions.outWidth;
       Object localObject = this.mUiRequest.mExtraObj;
@@ -172,37 +261,51 @@ public class BasePicUploadProcessor
       {
         this.mHeight = localOptions.outWidth;
         this.mWidth = localOptions.outHeight;
-        if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-          logRichMediaEvent("doStart", "raw pic is Landscape,swap w,h; options.outWidth = " + localOptions.outWidth + ",options.outHeight = " + localOptions.outHeight + ",mWidth = " + this.mWidth + ",mHeight = " + this.mHeight);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("raw pic is Landscape,swap w,h; options.outWidth = ");
+          ((StringBuilder)localObject).append(localOptions.outWidth);
+          ((StringBuilder)localObject).append(",options.outHeight = ");
+          ((StringBuilder)localObject).append(localOptions.outHeight);
+          ((StringBuilder)localObject).append(",mWidth = ");
+          ((StringBuilder)localObject).append(this.mWidth);
+          ((StringBuilder)localObject).append(",mHeight = ");
+          ((StringBuilder)localObject).append(this.mHeight);
+          logRichMediaEvent("doStart", ((StringBuilder)localObject).toString());
         }
       }
     }
-    if (this.mRaf == null) {
+    if (this.mRaf == null)
+    {
       try
       {
         this.mRaf = new RandomAccessFile(this.mUiRequest.mLocalPath, "r");
-        if (this.mRaf == null)
-        {
-          setError(9303, "read file error");
-          onError();
-          return false;
-        }
       }
       catch (FileNotFoundException localFileNotFoundException)
       {
-        for (;;)
-        {
-          localFileNotFoundException.printStackTrace();
-          this.mRaf = null;
-        }
+        localFileNotFoundException.printStackTrace();
+        this.mRaf = null;
+      }
+      if (this.mRaf == null)
+      {
+        this.mProcessorReport.setError(9303, "read file error", null, null);
+        onError();
+        return false;
       }
     }
     if (((this.mUiRequest.mRec instanceof MessageForPic)) && ((this.mHeight > 30000) || (this.mWidth > 30000) || (this.mWidth * this.mHeight > 200000000)))
     {
-      if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-        com.tencent.qphone.base.util.QLog.d("BasePicUploadProcessor", 2, "checkFileStandard fail，mHeight:" + this.mHeight + " mWidth:" + this.mWidth);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("checkFileStandard fail，mHeight:");
+        localStringBuilder.append(this.mHeight);
+        localStringBuilder.append(" mWidth:");
+        localStringBuilder.append(this.mWidth);
+        QLog.d("BasePicUploadProcessor", 2, localStringBuilder.toString());
       }
-      setError(90632, "PicOverStandard");
+      this.mProcessorReport.setError(90632, "PicOverStandard", null, null);
       onError();
       return false;
     }
@@ -211,63 +314,54 @@ public class BasePicUploadProcessor
   
   protected void doReport(boolean paramBoolean)
   {
-    if (this.errCode != 9333)
+    if (this.mProcessorReport.errCode != 9333)
     {
       super.doReport(paramBoolean);
-      if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-        break label22;
+      if (!QLog.isColorLevel()) {
+        return;
+      }
+      if (ConfigManager.mUseHardCodeIp == 1)
+      {
+        RichMediaBugReport.a("BDH_UPLOAD_USE_HARDCORD_IP", (String)this.mProcessorReport.mReportInfo.get("serverip"));
+        ConfigManager.mUseHardCodeIp = 0;
       }
     }
-    label22:
-    while (ConfigManager.mUseHardCodeIp != 1) {
-      return;
-    }
-    RichMediaBugReport.a("BDH_UPLOAD_USE_HARDCORD_IP", (String)this.mReportInfo.get("serverip"));
-    ConfigManager.mUseHardCodeIp = 0;
   }
   
   public int[] getImageInfo()
   {
     int[] arrayOfInt = new int[5];
     arrayOfInt[0] = ((int)this.mFileSize);
-    arrayOfInt[1] = PeakUtils.a(this.mUiRequest.mLocalPath);
+    arrayOfInt[1] = PicBusUtil.a(this.mUiRequest.mLocalPath);
     arrayOfInt[2] = this.mWidth;
     arrayOfInt[3] = this.mHeight;
     arrayOfInt[4] = 0;
-    int i = ImageUtil.a(this.mUiRequest.mLocalPath);
+    int i = BaseImageUtil.a(this.mUiRequest.mLocalPath);
     if ((i == 90) || (270 == i))
     {
       arrayOfInt[2] = this.mHeight;
       arrayOfInt[3] = this.mWidth;
     }
-    com.tencent.qphone.base.util.QLog.d("BasePicUploadProcessor", 1, "rotateDegree : " + i + ", params[2] : " + arrayOfInt[2] + " params[3] : " + arrayOfInt[3]);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("rotateDegree : ");
+    localStringBuilder.append(i);
+    localStringBuilder.append(", params[2] : ");
+    localStringBuilder.append(arrayOfInt[2]);
+    localStringBuilder.append(" params[3] : ");
+    localStringBuilder.append(arrayOfInt[3]);
+    QLog.d("BasePicUploadProcessor", 1, localStringBuilder.toString());
     return arrayOfInt;
   }
   
   protected MessageForPic getMessageForPic()
   {
-    Object localObject = this.mUiRequest.mRec;
-    if ((localObject instanceof MessageForPic)) {
-      localObject = (MessageForPic)localObject;
+    MessageRecord localMessageRecord = this.mUiRequest.mRec;
+    if ((localMessageRecord instanceof MessageForPic)) {
+      return (MessageForPic)localMessageRecord;
     }
-    MessageForPic localMessageForPic;
-    do
-    {
-      return localObject;
-      if (!(localObject instanceof MessageForStructing)) {
-        break;
-      }
-      localObject = (MessageForStructing)localObject;
-      if ((((MessageForStructing)localObject).structingMsg == null) || (!(((MessageForStructing)localObject).structingMsg instanceof StructMsgForImageShare))) {
-        break;
-      }
-      localObject = ((StructMsgForImageShare)((MessageForStructing)localObject).structingMsg).getFirstImageElement();
-      if (localObject == null) {
-        break;
-      }
-      localMessageForPic = ((StructMsgItemImage)localObject).a;
-      localObject = localMessageForPic;
-    } while (localMessageForPic != null);
+    if (((IMsgStructing)QRoute.api(IMsgStructing.class)).isMessageForStructing(localMessageRecord)) {
+      return ((IMsgStructing)QRoute.api(IMsgStructing.class)).getMessageForPic(localMessageRecord);
+    }
     return null;
   }
   
@@ -277,50 +371,68 @@ public class BasePicUploadProcessor
       return paramInt;
     }
     paramInt = 6;
-    switch (this.mUiRequest.mBusiType)
+    int i = this.mUiRequest.mBusiType;
+    if ((i != 1009) && (i != 1031) && (i != 1048)) {}
+    switch (i)
     {
-    }
-    for (;;)
-    {
-      if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-        com.tencent.qphone.base.util.QLog.d("BasePicUploadProcessor", 2, "getPicSourceReport:" + this.mUiRequest.mBusiType + " source:" + paramInt);
-      }
-      return paramInt;
-      paramInt = 2;
-      continue;
-      paramInt = 4;
-      continue;
-      paramInt = 1;
-      continue;
-      paramInt = 3;
-      continue;
+    default: 
+      break;
+    case 1053: 
       paramInt = 7;
+      break;
+    case 1052: 
+      paramInt = 2;
+      break;
+    case 1051: 
+      paramInt = 3;
+      break;
+    case 1050: 
+      paramInt = 1;
+      break;
+      paramInt = 4;
     }
+    if (QLog.isColorLevel())
+    {
+      paramMessageForPic = new StringBuilder();
+      paramMessageForPic.append("getPicSourceReport:");
+      paramMessageForPic.append(this.mUiRequest.mBusiType);
+      paramMessageForPic.append(" source:");
+      paramMessageForPic.append(paramInt);
+      QLog.d("BasePicUploadProcessor", 2, paramMessageForPic.toString());
+    }
+    return paramInt;
   }
   
   protected int getReportBizType()
   {
-    switch (this.mUiRequest.mBusiType)
+    int i = this.mUiRequest.mBusiType;
+    if (i != 1027)
     {
-    default: 
-      return 0;
-    case 1008: 
-      return 2;
-    case 1007: 
-      return 3;
-    case 1009: 
-    case 1031: 
+      if (i != 1031)
+      {
+        if (i != 1034) {
+          if (i != 1037) {
+            if (i == 1038) {}
+          }
+        }
+        switch (i)
+        {
+        default: 
+          return 0;
+        case 1008: 
+          return 2;
+        case 1007: 
+          return 3;
+        case 1006: 
+          return 5;
+          return 9;
+          return 8;
+          return 7;
+        }
+      }
       return 4;
-    case 1006: 
-      return 5;
-    case 1027: 
-      return 6;
-    case 1034: 
-      return 7;
-    case 1037: 
-      return 8;
     }
-    return 9;
+    return 6;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -337,6 +449,11 @@ public class BasePicUploadProcessor
     return (localMessageForPic != null) && (localMessageForPic.imageType == 2000);
   }
   
+  public boolean isUploadSuccess()
+  {
+    return this.uploadSuccess;
+  }
+  
   public void onBusiProtoResp(RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp)
   {
     this.handler.removeMessages(-255);
@@ -345,22 +462,14 @@ public class BasePicUploadProcessor
   void onError()
   {
     super.onError();
-    if ((this.mQuickSendObject != null) && (this.mQuickSendObject.jdField_a_of_type_Boolean)) {
+    AioQuickSendPicOperator.QuickSendObject localQuickSendObject = this.mQuickSendObject;
+    if ((localQuickSendObject != null) && (localQuickSendObject.jdField_a_of_type_Boolean)) {
       handleQuickSendFailed();
     }
     this.handler.removeMessages(-255);
-    if (this.mUiRequest != null)
-    {
-      if (!EmoticonManager.b(this.mUiRequest.mRec)) {
-        break label67;
-      }
-      EmoticonManager.b(String.valueOf(this.errCode), 3);
+    if (this.mUiRequest != null) {
+      ((IDep)QRoute.api(IDep.class)).reportEmotionPicMonitor(this.mUiRequest.mRec, String.valueOf(this.mProcessorReport.errCode), true);
     }
-    label67:
-    while (!EmoticonManager.a(this.mUiRequest.mRec)) {
-      return;
-    }
-    EmoticonManager.b(String.valueOf(this.errCode), 2);
   }
   
   public void onSendBegin(MessageRecord paramMessageRecord)
@@ -372,69 +481,65 @@ public class BasePicUploadProcessor
   
   void onSuccess()
   {
-    Object localObject2 = null;
     super.onSuccess();
     this.handler.removeMessages(-255);
-    if (this.mQuickSendObject != null)
+    Object localObject = this.mQuickSendObject;
+    if (localObject != null)
     {
-      localObject1 = this.mQuickSendObject.jdField_a_of_type_JavaLangString;
-      if (this.mQuickSendObject.jdField_a_of_type_Boolean) {
-        break label236;
-      }
-      if (localObject1 != null)
+      localObject = ((AioQuickSendPicOperator.QuickSendObject)localObject).jdField_a_of_type_JavaLangString;
+      if (!this.mQuickSendObject.jdField_a_of_type_Boolean)
       {
-        localObject1 = URLDrawableHelper.getURL((String)localObject1, 65537);
-        if (localObject1 == null) {
-          break label264;
+        if (localObject != null)
+        {
+          localObject = ((IPicHelper)QRoute.api(IPicHelper.class)).getURL((String)localObject, 65537);
+          if (localObject != null) {
+            localObject = ((URL)localObject).toString();
+          } else {
+            localObject = null;
+          }
+          if (!AbsDownloader.hasFile((String)localObject))
+          {
+            String str = AbsDownloader.getFilePath((String)localObject);
+            if (isDynamicPic())
+            {
+              localObject = this.mUiRequest.mLocalPath;
+            }
+            else
+            {
+              localObject = this.mQuickSendObject.jdField_a_of_type_JavaLangString;
+              localObject = ((IPicHelper)QRoute.api(IPicHelper.class)).getURL((String)localObject, 65537);
+              if (localObject != null) {
+                localObject = ((URL)localObject).toString();
+              } else {
+                localObject = null;
+              }
+              if (AbsDownloader.hasFile((String)localObject)) {
+                localObject = AbsDownloader.getFilePath((String)localObject);
+              } else {
+                localObject = this.mUiRequest.mLocalPath;
+              }
+            }
+            boolean bool = FileUtils.copyFile((String)localObject, str);
+            if (QLog.isColorLevel())
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("quick send copy file:");
+              ((StringBuilder)localObject).append(this.mUiRequest.mLocalPath);
+              ((StringBuilder)localObject).append(" to:");
+              ((StringBuilder)localObject).append(str);
+              ((StringBuilder)localObject).append(" ret:");
+              ((StringBuilder)localObject).append(bool);
+              QLog.d("BasePicUploadProcessor", 2, ((StringBuilder)localObject).toString());
+            }
+          }
         }
+      }
+      else {
+        handleQuickSendFailed();
       }
     }
-    label264:
-    for (Object localObject1 = ((URL)localObject1).toString();; localObject1 = null)
-    {
-      if (!AbsDownloader.hasFile((String)localObject1))
-      {
-        String str = AbsDownloader.getFilePath((String)localObject1);
-        if (!isDynamicPic()) {
-          break label183;
-        }
-        localObject1 = this.mUiRequest.mLocalPath;
-        boolean bool = FileUtils.d((String)localObject1, str);
-        if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-          com.tencent.qphone.base.util.QLog.d("BasePicUploadProcessor", 2, "quick send copy file:" + this.mUiRequest.mLocalPath + " to:" + str + " ret:" + bool);
-        }
-      }
-      label155:
-      if (this.mUiRequest != null)
-      {
-        if (!EmoticonManager.b(this.mUiRequest.mRec)) {
-          break label243;
-        }
-        EmoticonManager.b("0", 3);
-      }
-      label183:
-      label236:
-      label243:
-      while (!EmoticonManager.a(this.mUiRequest.mRec))
-      {
-        return;
-        URL localURL = URLDrawableHelper.getURL(this.mQuickSendObject.jdField_a_of_type_JavaLangString, 65537);
-        localObject1 = localObject2;
-        if (localURL != null) {
-          localObject1 = localURL.toString();
-        }
-        if (AbsDownloader.hasFile((String)localObject1))
-        {
-          localObject1 = AbsDownloader.getFilePath((String)localObject1);
-          break;
-        }
-        localObject1 = this.mUiRequest.mLocalPath;
-        break;
-        handleQuickSendFailed();
-        break label155;
-      }
-      EmoticonManager.b("0", 2);
-      return;
+    if (this.mUiRequest != null) {
+      ((IDep)QRoute.api(IDep.class)).reportEmotionPicMonitor(this.mUiRequest.mRec, null, true);
     }
   }
   
@@ -446,41 +551,39 @@ public class BasePicUploadProcessor
   protected void reportForServerMonitor(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
   {
     String str2 = this.mFileName;
-    if (this.mResid == null) {}
-    for (String str1 = this.mUuid;; str1 = this.mResid)
-    {
-      reportForServerMonitor("actRichMediaNetMonitor_picUp", paramBoolean, paramInt, paramString1, paramString2, str2, str1, null);
-      return;
+    String str1;
+    if (this.mResid == null) {
+      str1 = this.mUuid;
+    } else {
+      str1 = this.mResid;
     }
+    reportForServerMonitor("actRichMediaNetMonitor_picUp", paramBoolean, paramInt, paramString1, paramString2, str2, str1, null);
   }
   
   protected void reportQuickSend(boolean paramBoolean)
   {
-    HashMap localHashMap;
-    if ((this.mQuickSendObject != null) && (!this.mQuickSendObject.jdField_a_of_type_Boolean))
+    Object localObject = this.mQuickSendObject;
+    if ((localObject != null) && (!((AioQuickSendPicOperator.QuickSendObject)localObject).jdField_a_of_type_Boolean))
     {
-      localHashMap = new HashMap();
-      if (!paramBoolean) {
-        break label95;
+      HashMap localHashMap = new HashMap();
+      if (paramBoolean) {
+        localObject = "1";
+      } else {
+        localObject = "0";
       }
-    }
-    label95:
-    for (String str = "1";; str = "0")
-    {
-      localHashMap.put("param_succ_flag", str);
+      localHashMap.put("param_succ_flag", localObject);
       if (this.mUiRequest.mBusiType == 1042) {
         StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "HotPicQuickSend", paramBoolean, 0L, 0L, localHashMap, "");
       }
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "PicQuickSend", paramBoolean, 0L, 0L, localHashMap, "");
-      return;
     }
   }
   
   protected void sendRequest() {}
   
-  public void setError(int paramInt, String paramString1, String paramString2, BaseTransProcessor.StepInfo paramStepInfo)
+  public void setError(int paramInt, String paramString1, String paramString2, StepInfo paramStepInfo)
   {
-    super.setError(paramInt, paramString1, paramString2, paramStepInfo);
+    this.mProcessorReport.setError(paramInt, paramString1, paramString2, paramStepInfo);
     PicUploadExplicitError.uploadFailUpdateMsg(this.mUiRequest.mRec, paramInt, paramString1, paramString2);
   }
   
@@ -489,10 +592,37 @@ public class BasePicUploadProcessor
     super.start();
     this.handler.sendEmptyMessageDelayed(-255, 2000L);
   }
+  
+  void updateMessageData(MessageRecord paramMessageRecord) {}
+  
+  public void updateMessageDataBaseContent(boolean paramBoolean)
+  {
+    MessageRecord localMessageRecord;
+    if (this.mUiRequest.mRec != null)
+    {
+      localMessageRecord = this.mUiRequest.mRec;
+    }
+    else
+    {
+      localMessageRecord = ((IMessageFacade)this.app.getRuntimeService(IMessageFacade.class, "")).getMsgItemByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
+      logRichMediaEvent("updateDb", "findmsgbyMsgId,need fix");
+    }
+    if (localMessageRecord == null)
+    {
+      logRichMediaEvent("updateDb", "msg null");
+      return;
+    }
+    if (localMessageRecord.isMultiMsg)
+    {
+      logRichMediaEvent("updateDb", "is multiMsg");
+      return;
+    }
+    updateMessageData(localMessageRecord);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.BasePicUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

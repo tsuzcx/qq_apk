@@ -21,8 +21,9 @@ class ShortVideoPTVItemBuilder$ChatVideoView
   
   public void a(URLDrawable paramURLDrawable)
   {
-    if (this.a != null) {
-      this.a.setURLDrawableListener(null);
+    URLDrawable localURLDrawable = this.a;
+    if (localURLDrawable != null) {
+      localURLDrawable.setURLDrawableListener(null);
     }
     paramURLDrawable.setURLDrawableListener(this);
     this.a = paramURLDrawable;
@@ -31,7 +32,8 @@ class ShortVideoPTVItemBuilder$ChatVideoView
   
   public boolean a(String paramString)
   {
-    return (this.b == null) || (!this.b.getURL().getPath().equals(paramString));
+    URLDrawable localURLDrawable = this.b;
+    return (localURLDrawable == null) || (!localURLDrawable.getURL().getPath().equals(paramString));
   }
   
   public void b(URLDrawable paramURLDrawable)
@@ -64,16 +66,17 @@ class ShortVideoPTVItemBuilder$ChatVideoView
   public void setImageDrawable(Drawable paramDrawable)
   {
     super.setImageDrawable(paramDrawable);
-    if (this.a != null)
+    paramDrawable = this.a;
+    if (paramDrawable != null)
     {
-      this.a.setURLDrawableListener(null);
+      paramDrawable.setURLDrawableListener(null);
       this.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoPTVItemBuilder.ChatVideoView
  * JD-Core Version:    0.7.0.1
  */

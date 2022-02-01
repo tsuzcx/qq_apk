@@ -36,23 +36,23 @@ final class MediaDisplayLayout$DisplayViewHolder
   
   public MediaDisplayLayout$DisplayViewHolder(ViewGroup paramViewGroup)
   {
-    View localView = ((ViewGroup)localObject).findViewById(R.id.ak);
+    View localView = ((ViewGroup)localObject).findViewById(R.id.T);
     Intrinsics.checkExpressionValueIsNotNull(localView, "layout.findViewById(R.id.item_container)");
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView);
-    localView = ((ViewGroup)localObject).findViewById(R.id.bc);
+    localView = ((ViewGroup)localObject).findViewById(R.id.aB);
     Intrinsics.checkExpressionValueIsNotNull(localView, "layout.findViewById(R.id.rl_cover_container)");
     this.b = ((RelativeLayout)localView);
-    localView = ((ViewGroup)localObject).findViewById(R.id.bd);
+    localView = ((ViewGroup)localObject).findViewById(R.id.aC);
     Intrinsics.checkExpressionValueIsNotNull(localView, "layout.findViewById(R.id.rl_del_media)");
     this.c = ((RelativeLayout)localView);
-    localView = ((ViewGroup)localObject).findViewById(R.id.be);
+    localView = ((ViewGroup)localObject).findViewById(R.id.aD);
     Intrinsics.checkExpressionValueIsNotNull(localView, "layout.findViewById(R.id.rl_video_operator)");
     this.d = ((RelativeLayout)localView);
-    Object localObject = ((ViewGroup)localObject).findViewById(R.id.bw);
+    Object localObject = ((ViewGroup)localObject).findViewById(R.id.aR);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "layout.findViewById(R.id.tv_change_cover)");
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject);
     this.jdField_a_of_type_JavaLangString = "";
-    localObject = new RelativeLayout.LayoutParams(paramViewGroup.b(), paramViewGroup.b());
+    localObject = new RelativeLayout.LayoutParams(paramViewGroup.a(), paramViewGroup.a());
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramViewGroup.getContext());
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -64,12 +64,22 @@ final class MediaDisplayLayout$DisplayViewHolder
   {
     if (paramDisplayItem.getMedia().getType() == MediaType.VIDEO)
     {
-      if (((CharSequence)paramDisplayItem.getCoverPath()).length() > 0) {}
-      for (int i = 1; i != 0; i = 0) {
+      int i = ((CharSequence)paramDisplayItem.getCoverPath()).length();
+      int j = 1;
+      if (i > 0) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i != 0) {
         return paramDisplayItem.getCoverPath();
       }
-      if (((CharSequence)paramDisplayItem.getMergePath()).length() > 0) {}
-      for (i = 1; i != 0; i = 0) {
+      if (((CharSequence)paramDisplayItem.getMergePath()).length() > 0) {
+        i = j;
+      } else {
+        i = 0;
+      }
+      if (i != 0) {
         return paramDisplayItem.getMergePath();
       }
     }
@@ -92,30 +102,24 @@ final class MediaDisplayLayout$DisplayViewHolder
   {
     Intrinsics.checkParameterIsNotNull(paramDisplayItem, "item");
     String str = a(paramDisplayItem);
-    if (paramDisplayItem.getMedia().getType() == MediaType.PHOTO)
-    {
+    Object localObject = paramDisplayItem.getMedia().getType();
+    MediaType localMediaType = MediaType.PHOTO;
+    int i = 0;
+    if (localObject == localMediaType) {
       this.d.setVisibility(8);
-      this.jdField_a_of_type_JavaLangString = str;
-      if (((CharSequence)str).length() <= 0) {
-        break label119;
-      }
-    }
-    label119:
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        paramDisplayItem = com.tencent.tkd.topicsdk.framework.bridge.ImageLoader.a;
-        Context localContext = this.jdField_a_of_type_AndroidWidgetImageView.getContext();
-        Intrinsics.checkExpressionValueIsNotNull(localContext, "imageView.context");
-        paramDisplayItem.a(localContext).a(this.jdField_a_of_type_AndroidWidgetImageView).a(str);
-      }
-      return;
-      if (paramDisplayItem.getMedia().getType() != MediaType.VIDEO) {
-        break;
-      }
+    } else if (paramDisplayItem.getMedia().getType() == MediaType.VIDEO) {
       this.d.setVisibility(0);
-      break;
+    }
+    this.jdField_a_of_type_JavaLangString = str;
+    if (((CharSequence)str).length() > 0) {
+      i = 1;
+    }
+    if (i != 0)
+    {
+      paramDisplayItem = com.tencent.tkd.topicsdk.framework.bridge.ImageLoader.a;
+      localObject = this.jdField_a_of_type_AndroidWidgetImageView.getContext();
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "imageView.context");
+      paramDisplayItem.a((Context)localObject).a(this.jdField_a_of_type_AndroidWidgetImageView).a(str);
     }
   }
   
@@ -127,7 +131,7 @@ final class MediaDisplayLayout$DisplayViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.MediaDisplayLayout.DisplayViewHolder
  * JD-Core Version:    0.7.0.1
  */

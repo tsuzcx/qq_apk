@@ -1,26 +1,29 @@
 package com.tencent.mobileqq.activity.recent.guidebanner;
 
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.qphone.base.util.QLog;
 
 class NewerGuideBannerViewModel$3
   implements Runnable
 {
-  NewerGuideBannerViewModel$3(NewerGuideBannerViewModel paramNewerGuideBannerViewModel, String paramString, BaseActivity paramBaseActivity) {}
+  NewerGuideBannerViewModel$3(NewerGuideBannerViewModel paramNewerGuideBannerViewModel, String paramString, QBaseActivity paramQBaseActivity) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("NewerGuideBannerViewModel", 2, "[onContactsWebJump] allow");
     }
-    String str = this.jdField_a_of_type_JavaLangString + "&ab_auth=1";
-    NewerGuideBannerViewModel.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, str);
-    NewerGuideBannerViewModel.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append("&ab_auth=1");
+    localObject = ((StringBuilder)localObject).toString();
+    this.this$0.b(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, (String)localObject);
+    NewerGuideBannerViewModel.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.guidebanner.NewerGuideBannerViewModel.3
  * JD-Core Version:    0.7.0.1
  */

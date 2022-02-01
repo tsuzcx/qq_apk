@@ -22,13 +22,19 @@ public abstract class VideoHolderBase
   
   public VideoHolderBase(@NonNull ViewGroup paramViewGroup)
   {
-    this.jdField_b_of_type_JavaLangString = ("Q.qqstory.playernew." + getClass().getSimpleName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Q.qqstory.playernew.");
+    localStringBuilder.append(getClass().getSimpleName());
+    this.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData = null;
     this.jdField_a_of_type_Int = -1;
     this.jdField_b_of_type_Int = -1;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this));
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(System.identityHashCode(this));
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
     this.jdField_a_of_type_AndroidViewView = a(paramViewGroup);
   }
   
@@ -36,15 +42,24 @@ public abstract class VideoHolderBase
   
   public VideoHolderBase a(Class<? extends VideoHolderBase> paramClass)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoHolderContainer != null) {
-      return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoHolderContainer.b(paramClass);
+    VideoHolderContainer localVideoHolderContainer = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoHolderContainer;
+    if (localVideoHolderContainer != null) {
+      return localVideoHolderContainer.b(paramClass);
     }
     return null;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this) + "[" + paramInt1 + "," + paramInt2 + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(System.identityHashCode(this));
+    localStringBuilder.append("[");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("]");
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
     SLog.a(this.jdField_a_of_type_JavaLangString, "onPositionChanged, oldVer=%d, oldHor=%d, newVer=%d, newHor=%d", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_b_of_type_Int = paramInt2;
@@ -52,7 +67,15 @@ public abstract class VideoHolderBase
   
   public void a(int paramInt1, int paramInt2, @NonNull StoryPlayerVideoData paramStoryPlayerVideoData, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
   {
-    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this) + "[" + paramInt1 + "," + paramInt2 + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(System.identityHashCode(this));
+    localStringBuilder.append("[");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("]");
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_b_of_type_Int = paramInt2;
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData = paramStoryPlayerVideoData;
@@ -104,12 +127,20 @@ public abstract class VideoHolderBase
   
   public String toString()
   {
-    return "VideoHolderBase{, GroupPos=" + this.jdField_a_of_type_Int + ", VideoPos=" + this.jdField_b_of_type_Int + ", mData=" + this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VideoHolderBase{, GroupPos=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", VideoPos=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mData=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoHolderBase
  * JD-Core Version:    0.7.0.1
  */

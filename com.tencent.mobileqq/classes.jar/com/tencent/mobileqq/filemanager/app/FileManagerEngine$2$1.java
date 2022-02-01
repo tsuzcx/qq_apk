@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.app;
 
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.FileExecutor;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtil.FileExecutor;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tmassistant.appinfo.data.AppDetail;
 import java.util.concurrent.Executor;
@@ -13,8 +13,12 @@ class FileManagerEngine$2$1
   
   public void a()
   {
-    QLog.i("FileManagerEngine<FileAssistant>", 1, "waterTest, onGetAppDetailTimeLimit. apkName[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.yybApkName + "]");
-    FileManagerUtil.FileExecutor.a().execute(this.a.jdField_a_of_type_JavaLangRunnable);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("waterTest, onGetAppDetailTimeLimit. apkName[");
+    localStringBuilder.append(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.yybApkName);
+    localStringBuilder.append("]");
+    QLog.i("FileManagerEngine<FileAssistant>", 1, localStringBuilder.toString());
+    QQFileManagerUtil.FileExecutor.a().execute(this.a.jdField_a_of_type_JavaLangRunnable);
   }
   
   public void a(boolean paramBoolean, AppDetail paramAppDetail)
@@ -26,7 +30,7 @@ class FileManagerEngine$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FileManagerEngine.2.1
  * JD-Core Version:    0.7.0.1
  */

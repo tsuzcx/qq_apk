@@ -41,9 +41,9 @@ public class SmallScreenWatchTogether
     if (QLog.isDevelopLevel()) {
       QLog.w(this.jdField_a_of_type_JavaLangString, 4, "SmallScreenWatchTogether construtc");
     }
-    this.i = 2131559889;
-    this.j = paramContext.getResources().getDimensionPixelSize(2131297982);
-    this.k = paramContext.getResources().getDimensionPixelSize(2131297981);
+    this.i = 2013396995;
+    this.j = paramContext.getResources().getDimensionPixelSize(2131297976);
+    this.k = paramContext.getResources().getDimensionPixelSize(2131297975);
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
   }
   
@@ -51,28 +51,25 @@ public class SmallScreenWatchTogether
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidWidgetImageView.getContext(), null);
     if (paramBoolean) {
-      localActionSheet.addButton(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.getResources().getString(2131695979), 1);
+      localActionSheet.addButton(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.getResources().getString(2131695994), 1);
     }
-    localActionSheet.addButton(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.getResources().getString(2131695978), 3);
-    localActionSheet.addCancelButton(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.getResources().getString(2131695977));
+    localActionSheet.addButton(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.getResources().getString(2131695993), 3);
+    localActionSheet.addCancelButton(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.getResources().getString(2131695992));
     localActionSheet.setOnButtonClickListener(new SmallScreenWatchTogether.2(this, paramBoolean));
     Window localWindow = localActionSheet.getWindow();
-    WindowManager.LayoutParams localLayoutParams;
     if (localWindow != null)
     {
-      localLayoutParams = localWindow.getAttributes();
+      WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
       if (localLayoutParams != null) {
-        if (Build.VERSION.SDK_INT < 26) {
-          break label126;
+        if (Build.VERSION.SDK_INT >= 26) {
+          localLayoutParams.type = 2038;
+        } else {
+          localLayoutParams.type = 2002;
         }
       }
-    }
-    label126:
-    for (localLayoutParams.type = 2038;; localLayoutParams.type = 2002)
-    {
       localWindow.setAttributes(localLayoutParams);
-      return localActionSheet;
     }
+    return localActionSheet;
   }
   
   private void f()
@@ -81,50 +78,50 @@ public class SmallScreenWatchTogether
       return;
     }
     this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherVideoRenderHelper = new WatchTogetherVideoRenderHelper(true);
-    this.jdField_a_of_type_ComTencentAvWtogetherViewSmallScreenGLContentView = ((SmallScreenGLContentView)this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.findViewById(2131363183));
+    this.jdField_a_of_type_ComTencentAvWtogetherViewSmallScreenGLContentView = ((SmallScreenGLContentView)this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.findViewById(2013331456));
     this.jdField_a_of_type_ComTencentAvWtogetherViewSmallScreenGLContentView.setVideoRender(this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherVideoRenderHelper);
   }
   
   private void g()
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    WatchTogetherMediaPlayCtrl localWatchTogetherMediaPlayCtrl;
-    do
-    {
+    if (this.jdField_a_of_type_Boolean) {
       return;
-      this.jdField_a_of_type_Boolean = true;
-      if (QLog.isDevelopLevel()) {
-        QLog.w(this.jdField_a_of_type_JavaLangString, 4, "bindToVideoSink");
-      }
-      f();
-      this.jdField_a_of_type_ComTencentAvWtogetherViewSmallScreenGLContentView.onResume();
-      localWatchTogetherMediaPlayCtrl = VideoController.a().a();
-      if ((localWatchTogetherMediaPlayCtrl != null) && (localWatchTogetherMediaPlayCtrl.c())) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      }
-    } while (localWatchTogetherMediaPlayCtrl == null);
-    localWatchTogetherMediaPlayCtrl.a(this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherVideoRenderHelper);
-    localWatchTogetherMediaPlayCtrl.a(this);
-    localWatchTogetherMediaPlayCtrl.e();
+    }
+    this.jdField_a_of_type_Boolean = true;
+    if (QLog.isDevelopLevel()) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 4, "bindToVideoSink");
+    }
+    f();
+    this.jdField_a_of_type_ComTencentAvWtogetherViewSmallScreenGLContentView.onResume();
+    WatchTogetherMediaPlayCtrl localWatchTogetherMediaPlayCtrl = VideoController.a().a();
+    if ((localWatchTogetherMediaPlayCtrl != null) && (localWatchTogetherMediaPlayCtrl.c())) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    }
+    if (localWatchTogetherMediaPlayCtrl != null)
+    {
+      localWatchTogetherMediaPlayCtrl.a(this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherVideoRenderHelper);
+      localWatchTogetherMediaPlayCtrl.a(this);
+      localWatchTogetherMediaPlayCtrl.e();
+    }
   }
   
   private void h()
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    WatchTogetherMediaPlayCtrl localWatchTogetherMediaPlayCtrl;
-    do
-    {
+    if (!this.jdField_a_of_type_Boolean) {
       return;
-      this.jdField_a_of_type_Boolean = false;
-      if (QLog.isDevelopLevel()) {
-        QLog.w(this.jdField_a_of_type_JavaLangString, 4, "unBindToVideoSink");
-      }
-      this.jdField_a_of_type_ComTencentAvWtogetherViewSmallScreenGLContentView.onPause();
-      b();
-      localWatchTogetherMediaPlayCtrl = VideoController.a().a();
-    } while (localWatchTogetherMediaPlayCtrl == null);
-    localWatchTogetherMediaPlayCtrl.a("unBindToVideoSink", this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherVideoRenderHelper);
-    localWatchTogetherMediaPlayCtrl.b(this);
+    }
+    this.jdField_a_of_type_Boolean = false;
+    if (QLog.isDevelopLevel()) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 4, "unBindToVideoSink");
+    }
+    this.jdField_a_of_type_ComTencentAvWtogetherViewSmallScreenGLContentView.onPause();
+    b();
+    WatchTogetherMediaPlayCtrl localWatchTogetherMediaPlayCtrl = VideoController.a().a();
+    if (localWatchTogetherMediaPlayCtrl != null)
+    {
+      localWatchTogetherMediaPlayCtrl.a("unBindToVideoSink", this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherVideoRenderHelper);
+      localWatchTogetherMediaPlayCtrl.b(this);
+    }
   }
   
   public void a()
@@ -147,11 +144,11 @@ public class SmallScreenWatchTogether
   public void a(Context paramContext, LayoutInflater paramLayoutInflater, SmallScreenRelativeLayout.FloatListener paramFloatListener)
   {
     super.a(paramContext, paramLayoutInflater, paramFloatListener);
-    paramContext = (SmallScreenRelativeLayout)this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.findViewById(2131377540);
-    int i = AIOUtils.a(22.0F, paramContext.getResources());
+    paramContext = (SmallScreenRelativeLayout)this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.findViewById(2013331474);
+    int i = AIOUtils.b(22.0F, paramContext.getResources());
     paramContext.setIntercetRect(this.j - i, 0, this.j, i, new SmallScreenWatchTogether.1(this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.findViewById(2131381393));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.findViewById(2131381426));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.findViewById(2013331482));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.findViewById(2013331483));
   }
   
   public void a(View paramView)
@@ -192,21 +189,21 @@ public class SmallScreenWatchTogether
   {
     if (paramBoolean) {
       g();
-    }
-    for (;;)
-    {
-      super.a(paramBoolean, jdField_a_of_type_Int);
-      return;
+    } else {
       h();
     }
+    super.a(paramBoolean, jdField_a_of_type_Int);
   }
   
   public boolean a(int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_b_of_type_Boolean)) {
-      return false;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (this.jdField_b_of_type_Boolean) {
+        return false;
+      }
+      this.jdField_a_of_type_AndroidOsHandler.post(new SmallScreenWatchTogether.5(this));
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new SmallScreenWatchTogether.5(this));
     return false;
   }
   
@@ -217,9 +214,10 @@ public class SmallScreenWatchTogether
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null)
+    ActionSheet localActionSheet = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    if (localActionSheet != null)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      localActionSheet.dismiss();
       this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
       this.jdField_a_of_type_ComTencentWidgetActionSheet = null;
     }
@@ -245,7 +243,7 @@ public class SmallScreenWatchTogether
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenWatchTogether
  * JD-Core Version:    0.7.0.1
  */

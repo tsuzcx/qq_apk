@@ -21,39 +21,39 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForMarketFace;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.emoticonview.EmoticonCallback;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import com.tencent.widget.AbsListView.LayoutParams;
 import java.util.ArrayList;
 import java.util.List;
+import mqq.app.MobileQQ;
 
 public class RelatedEmotionPanel
   extends LinearLayout
-  implements DialogInterface.OnDismissListener, View.OnClickListener, RelatedEmoticonManager.Callback
+  implements DialogInterface.OnDismissListener, View.OnClickListener, IRelatedEmotionPanel, RelatedEmoticonManager.Callback
 {
   private static final int ITEM_TYPE_FIRST_LOAD_ERROR = 2;
   private static final int ITEM_TYPE_INIT = 0;
   private static final int ITEM_TYPE_LOAD_EMPTY = 3;
   private static final int ITEM_TYPE_NO_LOAD_MORE = 1;
   private static final String TAG = "RelatedEmotionPanel";
-  private QQAppInterface mApp;
+  private BaseQQAppInterface mApp;
   private EmoticonCallback mCallBack;
   private ChatMessage mChatMessage = null;
   protected String mCurFriendUin = "";
   private int mCurType = 0;
-  private RelatedEmotionPanel.IAIORelatedEmotionExpandHelper mEmotionExpandHelper;
+  private IAIORelatedEmotionExpandHelper mEmotionExpandHelper;
   private RelatedEmoticonListAdapter mEmotionSearchAdapter;
   protected View mFooterView;
   protected int mLastScrollState = 0;
@@ -78,7 +78,7 @@ public class RelatedEmotionPanel
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void initData(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, URLDrawable paramURLDrawable)
+  private void initData(BaseQQAppInterface paramBaseQQAppInterface, ChatMessage paramChatMessage, URLDrawable paramURLDrawable)
   {
     URLImageView localURLImageView = new URLImageView(getContext());
     LinearLayout localLinearLayout = new LinearLayout(getContext());
@@ -88,69 +88,63 @@ public class RelatedEmotionPanel
     ((LinearLayout.LayoutParams)localObject1).topMargin = ViewUtils.a(6.0F);
     localLinearLayout.addView(localURLImageView, (ViewGroup.LayoutParams)localObject1);
     localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    boolean bool = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
+    boolean bool = ThemeUtil.isNowThemeIsNight(MobileQQ.sMobileQQ.waitAppRuntime(null), false, null);
     Object localObject2 = new RelativeLayout.LayoutParams(-2, -2);
     ((RelativeLayout.LayoutParams)localObject2).addRule(13);
     TextView localTextView = new TextView(getContext());
-    localTextView.setId(2131379448);
+    localTextView.setId(2131378800);
     localTextView.setTextSize(12.0F);
-    View localView1;
-    View localView2;
-    if (bool)
-    {
+    if (bool) {
       localObject1 = "#8D8D93";
-      localTextView.setTextColor(Color.parseColor((String)localObject1));
-      localTextView.setText(getContext().getResources().getString(2131718515));
-      localTextView.setGravity(17);
-      localTextView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      localObject2 = new RelativeLayout(getContext());
-      localView1 = new View(getContext());
-      localView2 = new View(getContext());
-      if (!bool) {
-        break label621;
-      }
-    }
-    label621:
-    for (localObject1 = "#3D3D41";; localObject1 = "#EBEDF5")
-    {
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, ViewUtils.a(0.5F));
-      localLayoutParams.addRule(9);
-      localLayoutParams.addRule(15);
-      localLayoutParams.addRule(0, 2131379448);
-      localLayoutParams.leftMargin = ViewUtils.a(14.0F);
-      localLayoutParams.rightMargin = ViewUtils.a(12.0F);
-      localView1.setBackgroundColor(Color.parseColor((String)localObject1));
-      localView1.setLayoutParams(localLayoutParams);
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, ViewUtils.a(0.5F));
-      localLayoutParams.addRule(11);
-      localLayoutParams.addRule(15);
-      localLayoutParams.addRule(1, 2131379448);
-      localLayoutParams.leftMargin = ViewUtils.a(12.0F);
-      localLayoutParams.rightMargin = ViewUtils.a(14.0F);
-      localView2.setBackgroundColor(Color.parseColor((String)localObject1));
-      localView2.setLayoutParams(localLayoutParams);
-      ((RelativeLayout)localObject2).addView(localTextView);
-      ((RelativeLayout)localObject2).addView(localView1);
-      ((RelativeLayout)localObject2).addView(localView2);
-      localObject1 = new LinearLayout.LayoutParams(-1, -2);
-      ((LinearLayout.LayoutParams)localObject1).bottomMargin = ViewUtils.a(16.0F);
-      ((LinearLayout.LayoutParams)localObject1).topMargin = ViewUtils.a(20.0F);
-      localLinearLayout.addView((View)localObject2, (ViewGroup.LayoutParams)localObject1);
-      this.mRecyclerView = ((RecyclerView)findViewById(2131376816));
-      localURLImageView.setImageDrawable(paramURLDrawable);
-      this.mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), 1, false));
-      this.mRecyclerView.setVerticalScrollBarEnabled(false);
-      this.mEmotionSearchAdapter = new RelatedEmoticonListAdapter(paramQQAppInterface, getContext(), this.mCallBack);
-      this.mEmotionSearchAdapter.setReportMessage(this.mCurFriendUin, this.mCurType);
-      this.mRecyclerView.setAdapter(this.mEmotionSearchAdapter);
-      this.mEmotionSearchAdapter.setData(localLinearLayout, getFooterView(), new ArrayList());
-      this.mRecyclerView.setOnScrollListener(new RelatedEmotionPanel.3(this));
-      this.mRelatedEmoticonManager = new RelatedEmoticonManager(paramQQAppInterface, this);
-      this.mRelatedEmoticonManager.searchRelatedEmoticon(paramChatMessage, this.mCurType);
-      return;
+    } else {
       localObject1 = "#878B99";
-      break;
     }
+    localTextView.setTextColor(Color.parseColor((String)localObject1));
+    localTextView.setText(getContext().getResources().getString(2131718180));
+    localTextView.setGravity(17);
+    localTextView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    localObject2 = new RelativeLayout(getContext());
+    View localView1 = new View(getContext());
+    View localView2 = new View(getContext());
+    if (bool) {
+      localObject1 = "#3D3D41";
+    } else {
+      localObject1 = "#EBEDF5";
+    }
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, ViewUtils.a(0.5F));
+    localLayoutParams.addRule(9);
+    localLayoutParams.addRule(15);
+    localLayoutParams.addRule(0, 2131378800);
+    localLayoutParams.leftMargin = ViewUtils.a(14.0F);
+    localLayoutParams.rightMargin = ViewUtils.a(12.0F);
+    localView1.setBackgroundColor(Color.parseColor((String)localObject1));
+    localView1.setLayoutParams(localLayoutParams);
+    localLayoutParams = new RelativeLayout.LayoutParams(-1, ViewUtils.a(0.5F));
+    localLayoutParams.addRule(11);
+    localLayoutParams.addRule(15);
+    localLayoutParams.addRule(1, 2131378800);
+    localLayoutParams.leftMargin = ViewUtils.a(12.0F);
+    localLayoutParams.rightMargin = ViewUtils.a(14.0F);
+    localView2.setBackgroundColor(Color.parseColor((String)localObject1));
+    localView2.setLayoutParams(localLayoutParams);
+    ((RelativeLayout)localObject2).addView(localTextView);
+    ((RelativeLayout)localObject2).addView(localView1);
+    ((RelativeLayout)localObject2).addView(localView2);
+    localObject1 = new LinearLayout.LayoutParams(-1, -2);
+    ((LinearLayout.LayoutParams)localObject1).bottomMargin = ViewUtils.a(16.0F);
+    ((LinearLayout.LayoutParams)localObject1).topMargin = ViewUtils.a(20.0F);
+    localLinearLayout.addView((View)localObject2, (ViewGroup.LayoutParams)localObject1);
+    this.mRecyclerView = ((RecyclerView)findViewById(2131376308));
+    localURLImageView.setImageDrawable(paramURLDrawable);
+    this.mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), 1, false));
+    this.mRecyclerView.setVerticalScrollBarEnabled(false);
+    this.mEmotionSearchAdapter = new RelatedEmoticonListAdapter(paramBaseQQAppInterface, getContext(), this.mCallBack);
+    this.mEmotionSearchAdapter.setReportMessage(this.mCurFriendUin, this.mCurType);
+    this.mRecyclerView.setAdapter(this.mEmotionSearchAdapter);
+    this.mEmotionSearchAdapter.setData(localLinearLayout, getFooterView(), new ArrayList());
+    this.mRecyclerView.setOnScrollListener(new RelatedEmotionPanel.3(this));
+    this.mRelatedEmoticonManager = new RelatedEmoticonManager(paramBaseQQAppInterface, this);
+    this.mRelatedEmoticonManager.searchRelatedEmoticon(paramChatMessage, this.mCurType);
   }
   
   private void notifyFooterViewChange()
@@ -161,10 +155,10 @@ public class RelatedEmotionPanel
     if (QLog.isColorLevel()) {
       QLog.d("RelatedEmotionPanel", 2, "notifyFooterViewChange.");
     }
-    TextView localTextView1 = (TextView)this.mFooterView.findViewById(2131368563);
+    TextView localTextView1 = (TextView)this.mFooterView.findViewById(2131368306);
     localTextView1.setTextSize(14.0F);
-    View localView = this.mFooterView.findViewById(2131368562);
-    TextView localTextView2 = (TextView)this.mFooterView.findViewById(2131370757);
+    View localView = this.mFooterView.findViewById(2131368305);
+    TextView localTextView2 = (TextView)this.mFooterView.findViewById(2131370392);
     localTextView2.setTextSize(14.0F);
     localTextView1.setOnClickListener(this);
     ViewGroup.LayoutParams localLayoutParams = this.mFooterView.getLayoutParams();
@@ -174,33 +168,34 @@ public class RelatedEmotionPanel
       localLayoutParams.height = i;
       this.mFooterView.setLayoutParams(localLayoutParams);
     }
-    if (this.mLoadingStatus == 0)
+    i = this.mLoadingStatus;
+    if (i == 0)
     {
       localView.setVisibility(0);
-      localTextView2.setText(2131689939);
+      localTextView2.setText(2131689854);
       localTextView1.setVisibility(4);
       return;
     }
-    if (this.mLoadingStatus == 2)
+    if (i == 2)
     {
       localTextView1.setVisibility(0);
-      localTextView1.setText(2131689944);
+      localTextView1.setText(2131689859);
       localView.setVisibility(4);
       ReportController.b(this.mApp, "dc00898", "", this.mCurFriendUin, "0X800B11B", "0X800B11B", 0, 0, "", "", "", "");
       return;
     }
-    if (this.mLoadingStatus == 1)
+    if (i == 1)
     {
       localTextView1.setVisibility(0);
-      localTextView1.setText(2131718517);
+      localTextView1.setText(2131718182);
       localTextView1.setClickable(false);
       localView.setVisibility(4);
       return;
     }
-    if (this.mLoadingStatus == 3)
+    if (i == 3)
     {
       localTextView1.setVisibility(0);
-      localTextView1.setText(2131718516);
+      localTextView1.setText(2131718181);
       localTextView1.setClickable(false);
       localView.setVisibility(4);
       return;
@@ -213,7 +208,8 @@ public class RelatedEmotionPanel
   
   public void dismissEmotionSearchWinow()
   {
-    if ((this.mSearchPanelDialog != null) && (this.mSearchPanelDialog.isShowing())) {
+    Dialog localDialog = this.mSearchPanelDialog;
+    if ((localDialog != null) && (localDialog.isShowing())) {
       this.mSearchPanelDialog.dismiss();
     }
   }
@@ -222,7 +218,7 @@ public class RelatedEmotionPanel
   {
     if (this.mFooterView == null)
     {
-      this.mFooterView = View.inflate(getContext(), 2131558652, null);
+      this.mFooterView = View.inflate(getContext(), 2131561596, null);
       this.mFooterView.setBackgroundColor(0);
       this.mFooterView.setLayoutParams(new RecyclerView.LayoutParams(-1, ViewUtils.a(74.0F)));
     }
@@ -230,9 +226,9 @@ public class RelatedEmotionPanel
     return this.mFooterView;
   }
   
-  public void init(QQAppInterface paramQQAppInterface, EmoticonCallback paramEmoticonCallback, RelatedEmotionPanel.IAIORelatedEmotionExpandHelper paramIAIORelatedEmotionExpandHelper)
+  public void init(BaseQQAppInterface paramBaseQQAppInterface, EmoticonCallback paramEmoticonCallback, IAIORelatedEmotionExpandHelper paramIAIORelatedEmotionExpandHelper)
   {
-    this.mApp = paramQQAppInterface;
+    this.mApp = paramBaseQQAppInterface;
     this.mEmotionExpandHelper = paramIAIORelatedEmotionExpandHelper;
     this.mCallBack = paramEmoticonCallback;
   }
@@ -244,12 +240,13 @@ public class RelatedEmotionPanel
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131368563)
+    if (paramView.getId() == 2131368306)
     {
       this.mLoadingStatus = 0;
       notifyFooterViewChange();
-      if (this.mRelatedEmoticonManager != null) {
-        this.mRelatedEmoticonManager.searchRelatedEmoticon(this.mChatMessage, this.mCurType);
+      RelatedEmoticonManager localRelatedEmoticonManager = this.mRelatedEmoticonManager;
+      if (localRelatedEmoticonManager != null) {
+        localRelatedEmoticonManager.searchRelatedEmoticon(this.mChatMessage, this.mCurType);
       }
       ReportController.b(this.mApp, "dc00898", "", this.mCurFriendUin, "0X800B11C", "0X800B11C", 0, 0, "", "", "", "");
     }
@@ -263,11 +260,13 @@ public class RelatedEmotionPanel
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.mEmotionExpandHelper != null) {
-      this.mEmotionExpandHelper.onClosePanel();
+    paramDialogInterface = this.mEmotionExpandHelper;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.onClosePanel();
     }
-    if (this.mRelatedEmoticonManager != null) {
-      this.mRelatedEmoticonManager.onDestroy();
+    paramDialogInterface = this.mRelatedEmoticonManager;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.onDestroy();
     }
     this.mApp = null;
     this.mRecyclerView = null;
@@ -277,91 +276,116 @@ public class RelatedEmotionPanel
   
   public void onError(int paramInt)
   {
-    if ((this.mRecyclerView == null) || (this.mEmotionSearchAdapter == null)) {
-      return;
-    }
-    this.mLoadingStatus = 2;
-    if ((this.mEmotionSearchAdapter.getData() == null) || (this.mEmotionSearchAdapter.getData().isEmpty())) {
-      if (QLog.isColorLevel()) {
-        QLog.e("RelatedEmotionPanel", 4, " first load error " + paramInt);
-      }
-    }
-    for (;;)
+    if (this.mRecyclerView != null)
     {
-      notifyFooterViewChange();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.e("RelatedEmotionPanel", 4, " load more error " + paramInt);
+      Object localObject = this.mEmotionSearchAdapter;
+      if (localObject == null) {
+        return;
       }
+      this.mLoadingStatus = 2;
+      if ((((RelatedEmoticonListAdapter)localObject).getData() != null) && (!this.mEmotionSearchAdapter.getData().isEmpty()))
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(" load more error ");
+          ((StringBuilder)localObject).append(paramInt);
+          QLog.e("RelatedEmotionPanel", 4, ((StringBuilder)localObject).toString());
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(" first load error ");
+        ((StringBuilder)localObject).append(paramInt);
+        QLog.e("RelatedEmotionPanel", 4, ((StringBuilder)localObject).toString());
+      }
+      notifyFooterViewChange();
     }
   }
   
   public void onResult(RelatedEmoticonManager.RelatedEmotionSearchResult paramRelatedEmotionSearchResult)
   {
-    if ((this.mRecyclerView == null) || (this.mEmotionSearchAdapter == null) || (paramRelatedEmotionSearchResult == null)) {
-      return;
-    }
-    if ((isEmpty(this.mEmotionSearchAdapter.getData())) && (isEmpty(paramRelatedEmotionSearchResult.resultItems))) {
-      this.mLoadingStatus = 3;
-    }
-    for (;;)
+    if (this.mRecyclerView != null)
     {
-      notifyFooterViewChange();
-      return;
-      this.mLoadingStatus = 1;
-      ArrayList localArrayList = new ArrayList();
-      int i = 0;
-      while (i < paramRelatedEmotionSearchResult.resultItems.size())
+      Object localObject = this.mEmotionSearchAdapter;
+      if (localObject != null)
       {
-        RelatedEmoSearchEmoticonInfo localRelatedEmoSearchEmoticonInfo = new RelatedEmoSearchEmoticonInfo((RelatedEmoticonManager.RelatedEmotionSearchResult.SearchResultItem)paramRelatedEmotionSearchResult.resultItems.get(i), paramRelatedEmotionSearchResult.defaultCount);
-        localRelatedEmoSearchEmoticonInfo.setReportMessage(this.mCurFriendUin, this.mCurType, i);
-        localArrayList.add(localRelatedEmoSearchEmoticonInfo);
-        i += 1;
+        if (paramRelatedEmotionSearchResult == null) {
+          return;
+        }
+        if ((isEmpty(((RelatedEmoticonListAdapter)localObject).getData())) && (isEmpty(paramRelatedEmotionSearchResult.resultItems)))
+        {
+          this.mLoadingStatus = 3;
+        }
+        else
+        {
+          this.mLoadingStatus = 1;
+          localObject = new ArrayList();
+          int i = 0;
+          while (i < paramRelatedEmotionSearchResult.resultItems.size())
+          {
+            RelatedEmoSearchEmoticonInfo localRelatedEmoSearchEmoticonInfo = new RelatedEmoSearchEmoticonInfo((RelatedEmoticonManager.RelatedEmotionSearchResult.SearchResultItem)paramRelatedEmotionSearchResult.resultItems.get(i), paramRelatedEmotionSearchResult.defaultCount);
+            localRelatedEmoSearchEmoticonInfo.setReportMessage(this.mCurFriendUin, this.mCurType, i);
+            ((List)localObject).add(localRelatedEmoSearchEmoticonInfo);
+            i += 1;
+          }
+          this.mEmotionSearchAdapter.setData((List)localObject);
+        }
+        notifyFooterViewChange();
       }
-      this.mEmotionSearchAdapter.setData(localArrayList);
     }
   }
   
   public void showEmotionSearchWindow(ChatMessage paramChatMessage, URLDrawable paramURLDrawable, int paramInt)
   {
-    if ((!(paramChatMessage instanceof MessageForPic)) && (!(paramChatMessage instanceof MessageForMarketFace))) {}
-    while (((this.mSearchPanelDialog != null) && (this.mSearchPanelDialog.isShowing())) || (!(getContext() instanceof Activity)) || (((Activity)getContext()).isFinishing())) {
+    if ((!(paramChatMessage instanceof MessageForPic)) && (!(paramChatMessage instanceof MessageForMarketFace))) {
       return;
     }
-    this.mChatMessage = paramChatMessage;
-    this.mCurFriendUin = paramChatMessage.frienduin;
-    this.mCurType = paramChatMessage.istroop;
-    initData(this.mApp, paramChatMessage, paramURLDrawable);
-    paramChatMessage = new RelatedEmoSlideBottomPanel(getContext());
-    paramChatMessage.setContentHeight(paramInt);
-    paramChatMessage.setContentView(this);
-    paramChatMessage.setCallback(new RelatedEmotionPanel.1(this));
-    if (this.mSearchPanelDialog == null) {
-      this.mSearchPanelDialog = new ReportDialog(getContext(), 2131755176);
+    Object localObject = this.mSearchPanelDialog;
+    if ((localObject != null) && (((Dialog)localObject).isShowing())) {
+      return;
     }
-    this.mSearchPanelDialog.setContentView(paramChatMessage);
-    this.mSearchPanelDialog.setOnDismissListener(this);
-    this.mSearchPanelDialog.setOnKeyListener(new RelatedEmotionPanel.2(this, paramChatMessage));
-    paramURLDrawable = this.mSearchPanelDialog.getWindow();
-    if (paramURLDrawable != null)
+    if ((getContext() instanceof Activity))
     {
-      int i = ViewUtils.b() - ViewUtils.a(getContext());
-      paramInt = i;
-      if (i == 0) {
-        paramInt = -1;
+      if (((Activity)getContext()).isFinishing()) {
+        return;
       }
-      paramURLDrawable.setLayout(-1, paramInt);
-      WindowManager.LayoutParams localLayoutParams = paramURLDrawable.getAttributes();
-      localLayoutParams.gravity = 80;
-      paramURLDrawable.setAttributes(localLayoutParams);
+      this.mChatMessage = paramChatMessage;
+      this.mCurFriendUin = paramChatMessage.frienduin;
+      this.mCurType = paramChatMessage.istroop;
+      initData(this.mApp, paramChatMessage, paramURLDrawable);
+      paramChatMessage = new RelatedEmoSlideBottomPanel(getContext());
+      paramChatMessage.setContentHeight(paramInt);
+      paramChatMessage.setContentView(this);
+      paramChatMessage.setCallback(new RelatedEmotionPanel.1(this));
+      if (this.mSearchPanelDialog == null) {
+        this.mSearchPanelDialog = new ReportDialog(getContext(), 2131755340);
+      }
+      this.mSearchPanelDialog.setContentView(paramChatMessage);
+      this.mSearchPanelDialog.setOnDismissListener(this);
+      this.mSearchPanelDialog.setOnKeyListener(new RelatedEmotionPanel.2(this, paramChatMessage));
+      paramURLDrawable = this.mSearchPanelDialog.getWindow();
+      if (paramURLDrawable != null)
+      {
+        int i = ViewUtils.b() - ViewUtils.a(getContext());
+        paramInt = i;
+        if (i == 0) {
+          paramInt = -1;
+        }
+        paramURLDrawable.setLayout(-1, paramInt);
+        localObject = paramURLDrawable.getAttributes();
+        ((WindowManager.LayoutParams)localObject).gravity = 80;
+        paramURLDrawable.setAttributes((WindowManager.LayoutParams)localObject);
+      }
+      paramChatMessage.displayPanel();
+      this.mSearchPanelDialog.show();
     }
-    paramChatMessage.displayPanel();
-    this.mSearchPanelDialog.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.relateemo.RelatedEmotionPanel
  * JD-Core Version:    0.7.0.1
  */

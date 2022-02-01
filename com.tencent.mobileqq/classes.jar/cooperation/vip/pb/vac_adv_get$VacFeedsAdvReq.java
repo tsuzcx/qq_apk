@@ -25,13 +25,14 @@ public final class vac_adv_get$VacFeedsAdvReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 50, 58 }, new String[] { "qq", "adv_pos", "req_buffer", "page_num", "pre_feed_index", "recom_adv_pos", "attach_info" }, new Object[] { Long.valueOf(0L), Integer.valueOf(1), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), "", "" }, VacFeedsAdvReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 50, 58 }, new String[] { "qq", "adv_pos", "req_buffer", "page_num", "pre_feed_index", "recom_adv_pos", "attach_info" }, new Object[] { Long.valueOf(0L), Integer.valueOf(1), localByteStringMicro, localInteger, localInteger, "", "" }, VacFeedsAdvReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.pb.vac_adv_get.VacFeedsAdvReq
  * JD-Core Version:    0.7.0.1
  */

@@ -25,17 +25,17 @@ class DesktopDataManager$17
   
   public void run()
   {
-    AppInterface localAppInterface = MiniAppUtils.getAppInterface();
-    if (localAppInterface == null)
+    Object localObject1 = MiniAppUtils.getAppInterface();
+    if (localObject1 == null)
     {
       QLog.e("DesktopDataManager", 1, "initLocalDataRunnable, app is null.");
       return;
     }
     try
     {
-      Object localObject2 = new DesktopDataManager.17.1(this, DesktopDataManager.access$2600(this.this$0, localAppInterface));
+      Object localObject2 = new DesktopDataManager.17.1(this, DesktopDataManager.access$2600(this.this$0, (AppInterface)localObject1));
       this.this$0.runOnMainThread((Runnable)localObject2);
-      localObject2 = localAppInterface.getEntityManagerFactory().createEntityManager().query(MiniAppRedDotEntity.class, MiniAppRedDotEntity.class.getSimpleName(), false, null, null, null, null, null, null);
+      localObject2 = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager().query(MiniAppRedDotEntity.class, MiniAppRedDotEntity.class.getSimpleName(), false, null, null, null, null, null, null);
       if ((localObject2 != null) && (((List)localObject2).size() > 0))
       {
         localObject2 = ((List)localObject2).iterator();
@@ -48,35 +48,38 @@ class DesktopDataManager$17
         }
       }
       DesktopDataManager.access$2900(this.this$0);
+      localObject1 = (AppletsHandler)((AppInterface)localObject1).getBusinessHandler(BusinessHandlerFactory.APPLET_PUSH_HANDLER);
+      if (localObject1 != null) {
+        ((AppletsHandler)localObject1).c();
+      }
+      localObject1 = MiniAppConfProcessor.a("miniappgetpskeydomain", "qzone.qq.com");
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("getPskeyDomain : ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QLog.d("DesktopDataManager", 1, ((StringBuilder)localObject2).toString());
+        localObject1 = ((String)localObject1).split(",");
+        if (localObject1.length > 0)
+        {
+          localObject1 = ((TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2)).getPskey(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 16L, (String[])localObject1, new DesktopDataManager.17.2(this));
+          if ((localObject1 != null) && (!TextUtils.isEmpty(((Ticket)localObject1).getPSkey("qzone.qq.com")))) {
+            QLog.d("DesktopDataManager", 1, "pskey success.");
+          }
+        }
+      }
+      DesktopDataManager.access$3002(this.this$0, true);
+      return;
     }
     catch (Throwable localThrowable)
     {
       QLog.e("DesktopDataManager", 1, "initLocalDataRunnable error,", localThrowable);
-      return;
     }
-    Object localObject1 = (AppletsHandler)localThrowable.getBusinessHandler(BusinessHandlerFactory.APPLET_PUSH_HANDLER);
-    if (localObject1 != null) {
-      ((AppletsHandler)localObject1).c();
-    }
-    localObject1 = MiniAppConfProcessor.a("miniappgetpskeydomain", "qzone.qq.com");
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      QLog.d("DesktopDataManager", 1, "getPskeyDomain : " + (String)localObject1);
-      localObject1 = ((String)localObject1).split(",");
-      if (localObject1.length > 0)
-      {
-        localObject1 = ((TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2)).getPskey(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 16L, (String[])localObject1, new DesktopDataManager.17.2(this));
-        if ((localObject1 != null) && (!TextUtils.isEmpty(((Ticket)localObject1).getPSkey("qzone.qq.com")))) {
-          QLog.d("DesktopDataManager", 1, "pskey success.");
-        }
-      }
-    }
-    DesktopDataManager.access$3002(this.this$0, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.17
  * JD-Core Version:    0.7.0.1
  */

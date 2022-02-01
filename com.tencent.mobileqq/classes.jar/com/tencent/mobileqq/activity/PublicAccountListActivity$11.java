@@ -1,22 +1,24 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class PublicAccountListActivity$11
-  extends FriendListObserver
+  implements View.OnClickListener
 {
   PublicAccountListActivity$11(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      this.a.c();
-    }
+    this.a.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicAccountListActivity.11
  * JD-Core Version:    0.7.0.1
  */

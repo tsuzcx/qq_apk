@@ -12,7 +12,7 @@ public class AppsAioShortCutViewBuilder$ItemViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.AppsAioShortCutViewBuilder.ItemViewHolder
  * JD-Core Version:    0.7.0.1
  */

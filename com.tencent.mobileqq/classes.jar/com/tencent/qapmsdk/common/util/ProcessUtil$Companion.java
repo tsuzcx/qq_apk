@@ -20,11 +20,15 @@ public final class ProcessUtil$Companion
   @NotNull
   public final String getCurrentProcessName(@Nullable Context paramContext)
   {
-    if (((CharSequence)ProcessUtil.access$getCurrProcessName$cp()).length() > 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    if (((CharSequence)ProcessUtil.access$getCurrProcessName$cp()).length() > 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return ProcessUtil.access$getCurrProcessName$cp();
     }
-    i = Process.myPid();
+    int i = Process.myPid();
     if (paramContext != null) {}
     for (;;)
     {
@@ -36,30 +40,30 @@ public final class ProcessUtil$Companion
           localObject = null;
         }
         paramContext = (ActivityManager)localObject;
-        if (paramContext != null)
-        {
-          paramContext = paramContext.getRunningAppProcesses();
-          if (paramContext != null)
-          {
-            paramContext = paramContext.iterator();
-            if (paramContext.hasNext())
-            {
-              localObject = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-              if ((localObject == null) || (((ActivityManager.RunningAppProcessInfo)localObject).pid != i)) {
-                continue;
-              }
-              paramContext = ((ActivityManager.RunningAppProcessInfo)localObject).processName;
-              Intrinsics.checkExpressionValueIsNotNull(paramContext, "appProcess.processName");
-              ProcessUtil.access$setCurrProcessName$cp(paramContext);
-            }
-          }
+        if (paramContext == null) {
+          continue;
         }
+        paramContext = paramContext.getRunningAppProcesses();
+        if (paramContext == null) {
+          continue;
+        }
+        paramContext = paramContext.iterator();
+        if (!paramContext.hasNext()) {
+          continue;
+        }
+        localObject = (ActivityManager.RunningAppProcessInfo)paramContext.next();
+        if ((localObject == null) || (((ActivityManager.RunningAppProcessInfo)localObject).pid != i)) {
+          continue;
+        }
+        paramContext = ((ActivityManager.RunningAppProcessInfo)localObject).processName;
+        Intrinsics.checkExpressionValueIsNotNull(paramContext, "appProcess.processName");
+        ProcessUtil.access$setCurrProcessName$cp(paramContext);
       }
       catch (Exception paramContext)
       {
-        Logger.INSTANCE.exception("QAPM_common_ProcessUtil", (Throwable)paramContext);
         continue;
       }
+      Logger.INSTANCE.exception("QAPM_common_ProcessUtil", (Throwable)paramContext);
       return ProcessUtil.access$getCurrProcessName$cp();
       paramContext = null;
     }
@@ -73,7 +77,7 @@ public final class ProcessUtil$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.common.util.ProcessUtil.Companion
  * JD-Core Version:    0.7.0.1
  */

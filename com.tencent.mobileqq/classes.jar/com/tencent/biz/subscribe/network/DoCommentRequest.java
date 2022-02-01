@@ -47,14 +47,14 @@ public class DoCommentRequest
     return "CertifiedAccountSvc.certified_account_write.DoComment";
   }
   
-  public byte[] getRequestByteData()
+  protected byte[] getRequestByteData()
   {
     return this.req.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.network.DoCommentRequest
  * JD-Core Version:    0.7.0.1
  */

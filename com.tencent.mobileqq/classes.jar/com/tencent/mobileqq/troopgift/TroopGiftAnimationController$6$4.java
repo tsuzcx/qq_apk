@@ -16,17 +16,21 @@ class TroopGiftAnimationController$6$4
   {
     if ((paramInt1 == 0) && (paramInt2 == 1) && ((this.a.this$0.a instanceof TroopGiftToPersonalSurfaceView)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopGiftAnimationController", 2, "onLoadingStateChanged: curState = " + paramInt2);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onLoadingStateChanged: curState = ");
+        ((StringBuilder)localObject).append(paramInt2);
+        QLog.d("TroopGiftAnimationController", 2, ((StringBuilder)localObject).toString());
       }
-      Bitmap localBitmap = TroopUtils.a(this.a.this$0.a(String.valueOf(this.a.a.receiverUin), null));
-      this.a.this$0.a.b(new TroopGiftAnimationController.6.4.1(this, localBitmap));
+      Object localObject = TroopUtils.a(this.a.this$0.a(String.valueOf(this.a.a.receiverUin), null));
+      this.a.this$0.a.b(new TroopGiftAnimationController.6.4.1(this, (Bitmap)localObject));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftAnimationController.6.4
  * JD-Core Version:    0.7.0.1
  */

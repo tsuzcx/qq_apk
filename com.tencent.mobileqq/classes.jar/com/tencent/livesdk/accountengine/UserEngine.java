@@ -8,6 +8,7 @@ import com.tencent.falco.base.libapi.log.LogSdkServiceInterface;
 import com.tencent.falco.base.libapi.login.LoginRequest;
 import com.tencent.falco.base.libapi.login.LoginServiceInterface;
 import com.tencent.falco.base.libapi.web.WebInterface;
+import com.tencent.ilivesdk.anchortagserviceinterface.AnchorTagServiceInterface;
 import com.tencent.ilivesdk.avmediaservice_interface.AVMediaServiceInterface;
 import com.tencent.ilivesdk.avpreloadservice_interface.AVPreloadServiceInterface;
 import com.tencent.ilivesdk.coverservice_interface.CoverServiceInterface;
@@ -60,6 +61,7 @@ public class UserEngine
     this.scopeServices.add(LiveStartCusConfServiceInterface.class);
     this.scopeServices.add(FaceVerifyServiceInterface.class);
     this.scopeServices.add(AVPreloadServiceInterface.class);
+    this.scopeServices.add(AnchorTagServiceInterface.class);
     initNewServiceScope(ServiceEnginScope.User);
   }
   
@@ -149,6 +151,11 @@ public class UserEngine
     this.mUserEngineLogic.removeUserInitCallback(paramUserInitStateCallback);
   }
   
+  public void resetLoginState()
+  {
+    this.mUserEngineLogic.resetLoginState();
+  }
+  
   public void setCurrentRoomEngine(RoomEngine paramRoomEngine)
   {
     this.mUserEngineLogic.setCurrentRoomEngine(paramRoomEngine);
@@ -170,7 +177,7 @@ public class UserEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.accountengine.UserEngine
  * JD-Core Version:    0.7.0.1
  */

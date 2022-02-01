@@ -22,13 +22,14 @@ public final class submsgtype0x127$MsgBody
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48 }, new String[] { "uint64_seq", "uint32_action_type", "uint64_friend_uin", "uint64_oper_uin", "bytes_gray_tips", "join_state" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro, Integer.valueOf(1) }, MsgBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48 }, new String[] { "uint64_seq", "uint32_action_type", "uint64_friend_uin", "uint64_oper_uin", "bytes_gray_tips", "join_state" }, new Object[] { localLong, Integer.valueOf(0), localLong, localLong, localByteStringMicro, Integer.valueOf(1) }, MsgBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x210.submsgtype0x127.submsgtype0x127.MsgBody
  * JD-Core Version:    0.7.0.1
  */

@@ -20,10 +20,14 @@ class PTSComposer$1
     if ((localPTSAppInstance != null) && (localPTSAppInstance.getContext() == paramActivity))
     {
       this.this$0.destroy();
-      if (this.val$application != null)
+      paramActivity = this.val$application;
+      if (paramActivity != null)
       {
-        this.val$application.unregisterActivityLifecycleCallbacks(PTSComposer.access$100(this.this$0));
-        PTSLog.i("PTSComposer", "[unregisterActivityLifecycleCallbacks] finished, appInstance = " + localPTSAppInstance);
+        paramActivity.unregisterActivityLifecycleCallbacks(PTSComposer.access$100(this.this$0));
+        paramActivity = new StringBuilder();
+        paramActivity.append("[unregisterActivityLifecycleCallbacks] finished, appInstance = ");
+        paramActivity.append(localPTSAppInstance);
+        PTSLog.i("PTSComposer", paramActivity.toString());
       }
     }
   }
@@ -40,7 +44,7 @@ class PTSComposer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.core.PTSComposer.1
  * JD-Core Version:    0.7.0.1
  */

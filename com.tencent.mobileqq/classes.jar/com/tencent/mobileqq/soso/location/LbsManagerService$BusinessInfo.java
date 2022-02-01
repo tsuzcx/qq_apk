@@ -23,16 +23,17 @@ class LbsManagerService$BusinessInfo
   
   public int canUseMaxCacheInterval()
   {
-    if (this.realTimeRequirement == 5) {
+    int i = this.realTimeRequirement;
+    if (i == 5) {
       return 0;
     }
-    if (this.realTimeRequirement == 4) {
+    if (i == 4) {
       return 60000;
     }
-    if (this.realTimeRequirement == 3) {
+    if (i == 3) {
       return 180000;
     }
-    if (this.realTimeRequirement == 2) {
+    if (i == 2) {
       return 600000;
     }
     return 1800000;
@@ -41,13 +42,29 @@ class LbsManagerService$BusinessInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("businessId: ").append(this.businessId).append(",").append("reqLonAndLat: ").append(this.reqLonAndLat).append(",").append("realTimeRequirement: ").append(this.realTimeRequirement).append(",").append("requestDataLevel: ").append(this.requestDataLevel).append(",").append("reqGoon: ").append(this.reqGoon).append(",").append("canUseGps: ").append(this.canUseGps);
+    localStringBuilder.append("businessId: ");
+    localStringBuilder.append(this.businessId);
+    localStringBuilder.append(",");
+    localStringBuilder.append("reqLonAndLat: ");
+    localStringBuilder.append(this.reqLonAndLat);
+    localStringBuilder.append(",");
+    localStringBuilder.append("realTimeRequirement: ");
+    localStringBuilder.append(this.realTimeRequirement);
+    localStringBuilder.append(",");
+    localStringBuilder.append("requestDataLevel: ");
+    localStringBuilder.append(this.requestDataLevel);
+    localStringBuilder.append(",");
+    localStringBuilder.append("reqGoon: ");
+    localStringBuilder.append(this.reqGoon);
+    localStringBuilder.append(",");
+    localStringBuilder.append("canUseGps: ");
+    localStringBuilder.append(this.canUseGps);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soso.location.LbsManagerService.BusinessInfo
  * JD-Core Version:    0.7.0.1
  */

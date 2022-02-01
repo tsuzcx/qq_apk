@@ -31,15 +31,12 @@ public class GetSquareFeedIdListRequest
     try
     {
       localRspDiscoveryShareGroupList.mergeFrom(paramArrayOfByte);
-      return new GetSquareFeedIdListRequest.GetSquareFeedIdListResponse(localRspDiscoveryShareGroupList);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      paramArrayOfByte.printStackTrace();
     }
+    return new GetSquareFeedIdListRequest.GetSquareFeedIdListResponse(localRspDiscoveryShareGroupList);
   }
   
   public String a()
@@ -47,7 +44,7 @@ public class GetSquareFeedIdListRequest
     return jdField_a_of_type_JavaLangString;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqDiscoveryShareGroupList localReqDiscoveryShareGroupList = new qqstory_service.ReqDiscoveryShareGroupList();
     localReqDiscoveryShareGroupList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.b));
@@ -63,7 +60,7 @@ public class GetSquareFeedIdListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.square.GetSquareFeedIdListRequest
  * JD-Core Version:    0.7.0.1
  */

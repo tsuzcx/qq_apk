@@ -5,7 +5,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import java.util.List;
 import pb.unify.search.UnifySearchUnite.TabItemGroup;
-import pb.unite.search.UniteSearch.TabItemGroup;
+import tencent.im.oidb.search.UniteSearch.TabItemGroup;
 
 public class GroupTabModel
 {
@@ -16,25 +16,29 @@ public class GroupTabModel
   
   public GroupTabModel(UnifySearchUnite.TabItemGroup paramTabItemGroup)
   {
-    if (paramTabItemGroup == null) {
-      throw new RuntimeException("group is null in GroupTabModel Constructor.");
+    if (paramTabItemGroup != null)
+    {
+      this.jdField_a_of_type_JavaLangString = paramTabItemGroup.tab_name.get().toStringUtf8();
+      this.jdField_a_of_type_JavaUtilList = paramTabItemGroup.rpt_group_mask.get();
+      return;
     }
-    this.jdField_a_of_type_JavaLangString = paramTabItemGroup.tab_name.get().toStringUtf8();
-    this.jdField_a_of_type_JavaUtilList = paramTabItemGroup.rpt_group_mask.get();
+    throw new RuntimeException("group is null in GroupTabModel Constructor.");
   }
   
   public GroupTabModel(UniteSearch.TabItemGroup paramTabItemGroup)
   {
-    if (paramTabItemGroup == null) {
-      throw new RuntimeException("group is null in GroupTabModel Constructor.");
+    if (paramTabItemGroup != null)
+    {
+      this.jdField_a_of_type_JavaLangString = paramTabItemGroup.tab_name.get().toStringUtf8();
+      this.jdField_a_of_type_JavaUtilList = paramTabItemGroup.rpt_group_mask.get();
+      return;
     }
-    this.jdField_a_of_type_JavaLangString = paramTabItemGroup.tab_name.get().toStringUtf8();
-    this.jdField_a_of_type_JavaUtilList = paramTabItemGroup.rpt_group_mask.get();
+    throw new RuntimeException("group is null in GroupTabModel Constructor.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.GroupTabModel
  * JD-Core Version:    0.7.0.1
  */

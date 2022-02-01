@@ -6,11 +6,12 @@ import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SVIPHandler;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.vas.IndividuationUrlHelper;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.vas.svip.api.ISVIPHandler;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
 
 class ThumbItemBuilder$2
   implements View.OnClickListener
@@ -19,29 +20,39 @@ class ThumbItemBuilder$2
   
   public void onClick(View paramView)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemThumbItemBuilder.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    localIntent.putExtra("individuation_url_type", 40303);
-    String str = IndividuationUrlHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemThumbItemBuilder.jdField_a_of_type_AndroidContentContext, "call", "mvip.gongneng.anroid.individuation.web");
-    str = str + "&funcallId=" + this.jdField_a_of_type_Int;
-    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemThumbItemBuilder.jdField_a_of_type_AndroidContentContext, str, 524288L, localIntent, true, -1);
-    int i = ((SVIPHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemThumbItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).g();
-    if (i == 2) {
+    Object localObject1 = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemThumbItemBuilder.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    ((Intent)localObject1).putExtra("individuation_url_type", 40303);
+    Object localObject2 = IndividuationUrlHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemThumbItemBuilder.jdField_a_of_type_AndroidContentContext, "call", "mvip.gongneng.anroid.individuation.web");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject2);
+    localStringBuilder.append("&funcallId=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localObject2 = localStringBuilder.toString();
+    VasWebviewUtil.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemThumbItemBuilder.jdField_a_of_type_AndroidContentContext, (String)localObject2, 524288L, (Intent)localObject1, true, -1);
+    int j = ((ISVIPHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemThumbItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).g();
+    int i;
+    if (j == 2)
+    {
       i = 0;
     }
-    for (;;)
+    else
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemThumbItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004A25", "0X8004A25", 0, 0, "" + i, "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (i == 3) {
+      i = j;
+      if (j == 3) {
         i = 2;
       }
     }
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemThumbItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject2).append(i);
+    ReportController.b((AppRuntime)localObject1, "CliOper", "", "", "0X8004A25", "0X8004A25", 0, 0, ((StringBuilder)localObject2).toString(), "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ThumbItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

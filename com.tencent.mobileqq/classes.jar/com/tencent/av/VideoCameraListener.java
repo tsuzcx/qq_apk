@@ -5,8 +5,8 @@ import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.camera.CameraListener;
 import com.tencent.av.opengl.effects.CameraFrame;
 import com.tencent.av.opengl.effects.EffectsRenderController;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.av.utils.FramePerfData;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import mqq.util.WeakReference;
 
@@ -26,35 +26,32 @@ public class VideoCameraListener
   public int a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
     int i = this.jdField_a_of_type_ComTencentAvVideoController.a().d;
-    if (paramBoolean2) {
-      this.jdField_a_of_type_ComTencentAvVideoController.a().q = true;
-    }
     if (paramBoolean1)
     {
       this.jdField_a_of_type_ComTencentAvVideoController.a().n = false;
-      this.jdField_a_of_type_ComTencentAvVideoController.a().S = false;
-      this.jdField_a_of_type_ComTencentAvVideoController.a().a(paramLong, true);
-      if (this.jdField_a_of_type_ComTencentAvVideoController.a().d != 1) {
-        break label114;
-      }
-      this.jdField_a_of_type_ComTencentAvVideoController.a().a(paramLong, "afterOpenCamera.1", 2);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentAvVideoController.c(this.jdField_a_of_type_ComTencentAvVideoController.a().d);
-      return i;
-      label114:
-      if ((this.jdField_a_of_type_ComTencentAvVideoController.a().d == 3) || (this.jdField_a_of_type_ComTencentAvVideoController.a().d == 4)) {
+      this.jdField_a_of_type_ComTencentAvVideoController.a().H = false;
+      this.jdField_a_of_type_ComTencentAvVideoController.a().b(paramLong, true);
+      if (this.jdField_a_of_type_ComTencentAvVideoController.a().d == 1) {
+        this.jdField_a_of_type_ComTencentAvVideoController.a().a(paramLong, "afterOpenCamera.1", 2);
+      } else if ((this.jdField_a_of_type_ComTencentAvVideoController.a().d == 3) || (this.jdField_a_of_type_ComTencentAvVideoController.a().d == 4)) {
         this.jdField_a_of_type_ComTencentAvVideoController.a().a(paramLong, "afterOpenCamera.2", 4);
       }
+      VideoController localVideoController = this.jdField_a_of_type_ComTencentAvVideoController;
+      localVideoController.c(localVideoController.a().d);
     }
+    return i;
   }
   
   public void a()
   {
     long l = AudioHelper.b();
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraDataProcess", 2, "notifyCameraNoData, seq[" + l + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("notifyCameraNoData, seq[");
+      localStringBuilder.append(l);
+      localStringBuilder.append("]");
+      QLog.i("CameraDataProcess", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentAvVideoController.a.a(new Object[] { Integer.valueOf(38), Integer.valueOf(1), Long.valueOf(l) });
   }
@@ -67,60 +64,26 @@ public class VideoCameraListener
   public void a(long paramLong, boolean paramBoolean)
   {
     Object localObject = this.jdField_a_of_type_ComTencentAvVideoController.a();
-    if (((SessionInfo)localObject).d == 2) {
+    if (((SessionInfo)localObject).d == 2)
+    {
       if (paramBoolean)
       {
-        ((SessionInfo)localObject).a(paramLong, false);
+        ((SessionInfo)localObject).b(paramLong, false);
         if (!((SessionInfo)localObject).k)
         {
           ((SessionInfo)localObject).a(paramLong, "CloseCameraRunnable.1", 1);
-          ((SessionInfo)localObject).S = true;
+          ((SessionInfo)localObject).H = true;
         }
       }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentAvVideoController.c(((SessionInfo)localObject).d);
-      localObject = this.jdField_a_of_type_ComTencentAvUtilsFramePerfData;
-      this.jdField_a_of_type_ComTencentAvUtilsFramePerfData = null;
-      if (localObject != null) {
-        ((FramePerfData)localObject).d();
-      }
-      return;
-      if ((((SessionInfo)localObject).d == 4) && (!((SessionInfo)localObject).k)) {
-        ((SessionInfo)localObject).a(paramLong, "CloseCameraRunnable.2", 3);
-      }
+    else if ((((SessionInfo)localObject).d == 4) && (!((SessionInfo)localObject).k)) {
+      ((SessionInfo)localObject).a(paramLong, "CloseCameraRunnable.2", 3);
     }
-  }
-  
-  public void a(CameraFrame paramCameraFrame)
-  {
-    if (paramCameraFrame.a())
-    {
-      paramCameraFrame.b();
-      if (QLog.isColorLevel()) {
-        QLog.e("OnPreviewData", 2, "onPreviewData data is null");
-      }
-      return;
-    }
-    if (this.b)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("SurfaceTag", 2, "onPreviewData, first frame for switchCamera");
-      }
-      if (this.jdField_a_of_type_MqqUtilWeakReference != null) {
-        break label77;
-      }
-    }
-    label77:
-    for (VideoCameraListener.SwitchCameraListener localSwitchCameraListener = null;; localSwitchCameraListener = (VideoCameraListener.SwitchCameraListener)this.jdField_a_of_type_MqqUtilWeakReference.get())
-    {
-      if (localSwitchCameraListener != null) {
-        localSwitchCameraListener.a();
-      }
-      this.b = false;
-      super.a(paramCameraFrame);
-      return;
+    this.jdField_a_of_type_ComTencentAvVideoController.c(((SessionInfo)localObject).d);
+    localObject = this.jdField_a_of_type_ComTencentAvUtilsFramePerfData;
+    this.jdField_a_of_type_ComTencentAvUtilsFramePerfData = null;
+    if (localObject != null) {
+      ((FramePerfData)localObject).d();
     }
   }
   
@@ -128,8 +91,15 @@ public class VideoCameraListener
   {
     this.b = paramBoolean;
     this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramSwitchCameraListener);
-    if (QLog.isColorLevel()) {
-      QLog.i("SurfaceTag", 2, "setSwitchStart, isStart[" + paramBoolean + "], listener[" + paramSwitchCameraListener + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setSwitchStart, isStart[");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("], listener[");
+      localStringBuilder.append(paramSwitchCameraListener);
+      localStringBuilder.append("]");
+      QLog.i("SurfaceTag", 2, localStringBuilder.toString());
     }
   }
   
@@ -146,11 +116,17 @@ public class VideoCameraListener
   
   public void c()
   {
-    if (this.jdField_a_of_type_MqqUtilWeakReference != null) {
-      this.jdField_a_of_type_MqqUtilWeakReference.clear();
+    Object localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+    if (localObject != null) {
+      ((WeakReference)localObject).clear();
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("SurfaceTag", 2, "clearSwitchCameraListener, isStart[" + this.b + "]");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("clearSwitchCameraListener, isStart[");
+      ((StringBuilder)localObject).append(this.b);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("SurfaceTag", 2, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -161,10 +137,39 @@ public class VideoCameraListener
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = false;
   }
+  
+  public void onPreviewData(CameraFrame paramCameraFrame)
+  {
+    if (paramCameraFrame.a())
+    {
+      paramCameraFrame.b();
+      if (QLog.isColorLevel()) {
+        QLog.e("OnPreviewData", 2, "onPreviewData data is null");
+      }
+      return;
+    }
+    if (this.b)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("SurfaceTag", 2, "onPreviewData, first frame for switchCamera");
+      }
+      Object localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+      if (localObject == null) {
+        localObject = null;
+      } else {
+        localObject = (VideoCameraListener.SwitchCameraListener)((WeakReference)localObject).get();
+      }
+      if (localObject != null) {
+        ((VideoCameraListener.SwitchCameraListener)localObject).a();
+      }
+      this.b = false;
+    }
+    super.onPreviewData(paramCameraFrame);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoCameraListener
  * JD-Core Version:    0.7.0.1
  */

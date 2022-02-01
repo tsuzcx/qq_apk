@@ -7,7 +7,6 @@ import android.net.NetworkInfo.State;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.provider.Settings.System;
-import android.telephony.CellLocation;
 import android.telephony.TelephonyManager;
 import android.telephony.cdma.CdmaCellLocation;
 import android.telephony.gsm.GsmCellLocation;
@@ -31,26 +30,23 @@ public class HwNetworkUtil
   
   public static int getCarrierOperatorType(Context paramContext)
   {
-    int j = 1;
     paramContext = getIMSI();
-    int i = j;
-    if (paramContext != null)
-    {
-      if ((!paramContext.startsWith("46000")) && (!paramContext.startsWith("46002"))) {
-        break label34;
+    if (paramContext != null) {
+      if ((!paramContext.startsWith("46000")) && (!paramContext.startsWith("46002")))
+      {
+        if (paramContext.startsWith("46001")) {
+          return 3;
+        }
+        if (paramContext.startsWith("46003")) {
+          return 4;
+        }
       }
-      i = 2;
+      else
+      {
+        return 2;
+      }
     }
-    label34:
-    do
-    {
-      return i;
-      if (paramContext.startsWith("46001")) {
-        return 3;
-      }
-      i = j;
-    } while (!paramContext.startsWith("46003"));
-    return 4;
+    return 1;
   }
   
   public static int getCellId(Context paramContext)
@@ -61,15 +57,15 @@ public class HwNetworkUtil
     }
     try
     {
-      CellLocation localCellLocation = paramContext.getCellLocation();
-      if ((localCellLocation instanceof CdmaCellLocation))
+      localObject = paramContext.getCellLocation();
+      if ((localObject instanceof CdmaCellLocation))
       {
         paramContext = (CdmaCellLocation)paramContext.getCellLocation();
         if (paramContext != null) {
           return paramContext.getBaseStationId();
         }
       }
-      else if ((localCellLocation instanceof GsmCellLocation))
+      else if ((localObject instanceof GsmCellLocation))
       {
         paramContext = (GsmCellLocation)paramContext.getCellLocation();
         if (paramContext != null)
@@ -81,9 +77,14 @@ public class HwNetworkUtil
     }
     catch (Exception paramContext)
     {
+      Object localObject;
       paramContext.printStackTrace();
-      if (QLog.isColorLevel()) {
-        QLog.d("HwNetworkUtil", 2, "getCellId() error " + paramContext, paramContext);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getCellId() error ");
+        ((StringBuilder)localObject).append(paramContext);
+        QLog.d("HwNetworkUtil", 2, ((StringBuilder)localObject).toString(), paramContext);
       }
     }
     return -1;
@@ -98,7 +99,6 @@ public class HwNetworkUtil
       if ((paramContext != null) && (paramContext.getType() == 0)) {
         return paramContext.getExtraInfo();
       }
-      return null;
     }
     return null;
   }
@@ -107,35 +107,33 @@ public class HwNetworkUtil
   {
     paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
     if (paramContext.getSSID() == null) {
-      paramContext = null;
+      return null;
     }
-    String str;
-    do
-    {
-      return paramContext;
-      paramContext = paramContext.getBSSID();
-      if (paramContext == null) {
-        return null;
-      }
-      str = paramContext.replaceAll(":", "");
-      paramContext = str;
-    } while (!str.equals("<unknown ssid>"));
-    return null;
+    paramContext = paramContext.getBSSID();
+    if (paramContext == null) {
+      return null;
+    }
+    paramContext = paramContext.replaceAll(":", "");
+    if (paramContext.equals("<unknown ssid>")) {
+      return null;
+    }
+    return paramContext;
   }
   
   public static String getCurrentWifiSSID(Context paramContext)
   {
     paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
-    if ((paramContext == null) || (paramContext.getSSID() == null)) {
-      paramContext = null;
-    }
-    String str;
-    do
+    if (paramContext != null)
     {
+      if (paramContext.getSSID() == null) {
+        return null;
+      }
+      paramContext = paramContext.getSSID().replaceAll("\"", "");
+      if (paramContext.equals("<unknown ssid>")) {
+        return null;
+      }
       return paramContext;
-      str = paramContext.getSSID().replaceAll("\"", "");
-      paramContext = str;
-    } while (!str.equals("<unknown ssid>"));
+    }
     return null;
   }
   
@@ -148,7 +146,10 @@ public class HwNetworkUtil
     }
     catch (Exception localException)
     {
-      QLog.e("HwNetworkUtil", 1, "getIMSI() error " + localException, localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getIMSI() error ");
+      localStringBuilder.append(localException);
+      QLog.e("HwNetworkUtil", 1, localStringBuilder.toString(), localException);
     }
     return null;
   }
@@ -160,28 +161,28 @@ public class HwNetworkUtil
       Method localMethod = Class.forName("com.tencent.util.QQDeviceInfo").getMethod("getIMSI", new Class[] { String.class });
       return localMethod;
     }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      localClassNotFoundException.printStackTrace();
-      return null;
-    }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
       localNoSuchMethodException.printStackTrace();
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      localClassNotFoundException.printStackTrace();
     }
     return null;
   }
   
   public static String getNetworkName(Context paramContext)
   {
-    switch (getSystemNetwork(paramContext))
+    int i = getSystemNetwork(paramContext);
+    if (i != 1)
     {
-    default: 
-      return "UNKOWN";
-    case 1: 
-      return "Wi-Fi";
+      if ((i != 2) && (i != 3) && (i != 4)) {
+        return "UNKOWN";
+      }
+      return BdhUtils.getApnType(paramContext);
     }
-    return BdhUtils.getApnType(paramContext);
+    return "Wi-Fi";
   }
   
   public static int getNetworkType(Context paramContext)
@@ -203,79 +204,102 @@ public class HwNetworkUtil
     try
     {
       paramContext = paramContext.getActiveNetworkInfo();
-      if ((paramContext != null) && (paramContext.isAvailable())) {}
+    }
+    catch (Throwable paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    catch (SecurityException paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    paramContext = null;
+    if ((paramContext != null) && (paramContext.isAvailable())) {
       switch (paramContext.getType())
       {
       case 8: 
       default: 
-        return 0;
+        break;
+      case 9: 
+        return 5;
+      case 1: 
+      case 6: 
+        return 1;
+      case 0: 
+      case 2: 
+      case 3: 
+      case 4: 
+      case 5: 
+      case 7: 
+        int i = AppNetConnInfo.getMobileInfo();
+        if (i != 2)
+        {
+          if ((i != 3) && (i != 4)) {
+            return 2;
+          }
+          return 4;
+        }
+        return 3;
       }
     }
-    catch (SecurityException paramContext)
-    {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-        paramContext = null;
-      }
-    }
-    catch (Throwable paramContext)
-    {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-        paramContext = null;
-      }
-      return 5;
-    }
-    return 1;
-    switch (AppNetConnInfo.getMobileInfo())
-    {
-    default: 
-      return 2;
-    case 3: 
-    case 4: 
-      return 4;
-    }
-    return 3;
+    return 0;
   }
   
   public static boolean is3Gor4G(Context paramContext)
   {
-    int i;
     try
     {
-      i = ((TelephonyManager)paramContext.getSystemService("phone")).getNetworkType();
-      if (QLog.isColorLevel()) {
-        QLog.d("is3Gor4G", 2, "type:" + i);
-      }
-      if ((i == 0) && (paramContext != null))
+      int j = ((TelephonyManager)paramContext.getSystemService("phone")).getNetworkType();
+      if (QLog.isColorLevel())
       {
-        paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("type:");
+        localStringBuilder.append(j);
+        QLog.d("is3Gor4G", 2, localStringBuilder.toString());
+      }
+      int i = j;
+      if (j == 0)
+      {
+        i = j;
         if (paramContext != null)
         {
-          paramContext = paramContext.getActiveNetworkInfo();
-          if ((paramContext != null) && (paramContext.isConnected())) {
-            switch (paramContext.getType())
+          paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+          i = j;
+          if (paramContext != null)
+          {
+            paramContext = paramContext.getActiveNetworkInfo();
+            i = j;
+            if (paramContext != null)
             {
-            case 0: 
-              i = paramContext.getSubtype();
+              i = j;
+              if (paramContext.isConnected()) {
+                if (paramContext.getType() != 0) {
+                  i = j;
+                } else {
+                  i = paramContext.getSubtype();
+                }
+              }
             }
           }
         }
       }
+      if ((i == 8) || (i == 13) || (i == 3) || (i == 15) || (i == 10) || (i == 5) || (i == 14) || (i == 6) || (i == 9) || (i == 12)) {
+        return true;
+      }
     }
-    catch (Exception paramContext) {}
-    while ((i != 8) && (i != 13) && (i != 3) && (i != 15) && (i != 10) && (i != 5) && (i != 14) && (i != 6) && (i != 9) && (i != 12)) {
-      return false;
+    catch (Exception paramContext)
+    {
+      label175:
+      break label175;
     }
-    return true;
+    return false;
   }
   
   public static boolean isAirplaneModeOn(Context paramContext)
   {
+    paramContext = paramContext.getContentResolver();
     boolean bool = false;
-    if (Settings.System.getInt(paramContext.getContentResolver(), "airplane_mode_on", 0) != 0) {
+    if (Settings.System.getInt(paramContext, "airplane_mode_on", 0) != 0) {
       bool = true;
     }
     return bool;
@@ -288,17 +312,20 @@ public class HwNetworkUtil
       boolean bool = isMobileNetworkInfo(((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo());
       return bool;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label18:
+      break label18;
+    }
     return false;
   }
   
   public static boolean isMobileNetworkInfo(NetworkInfo paramNetworkInfo)
   {
-    if (paramNetworkInfo == null) {}
-    while ((paramNetworkInfo.getType() != 0) && (50 != paramNetworkInfo.getType())) {
+    if (paramNetworkInfo == null) {
       return false;
     }
-    return true;
+    return (paramNetworkInfo.getType() == 0) || (50 == paramNetworkInfo.getType());
   }
   
   public static boolean isNetSupport(Context paramContext)
@@ -340,30 +367,43 @@ public class HwNetworkUtil
   @Deprecated
   static boolean isNetworkConnected(Context paramContext)
   {
+    boolean bool2 = false;
     if (paramContext == null) {
       return false;
     }
     paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+    boolean bool1 = bool2;
     if (paramContext != null)
     {
       paramContext = paramContext.getActiveNetworkInfo();
-      if ((paramContext == null) || (!paramContext.isConnected())) {}
+      bool1 = bool2;
+      if (paramContext != null)
+      {
+        bool1 = bool2;
+        if (paramContext.isConnected()) {
+          bool1 = true;
+        }
+      }
     }
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    return bool1;
   }
   
   public static boolean isWifiConnected(Context paramContext)
   {
+    boolean bool2 = false;
     if (paramContext == null) {
       return false;
     }
     paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-    if ((paramContext != null) && (paramContext.getType() == 1)) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    boolean bool1 = bool2;
+    if (paramContext != null)
+    {
+      bool1 = bool2;
+      if (paramContext.getType() == 1) {
+        bool1 = true;
+      }
     }
+    return bool1;
   }
   
   public static boolean isWifiEnabled(Context paramContext)
@@ -379,7 +419,7 @@ public class HwNetworkUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.utils.HwNetworkUtil
  * JD-Core Version:    0.7.0.1
  */

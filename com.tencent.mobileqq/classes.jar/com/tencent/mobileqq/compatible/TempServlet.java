@@ -24,13 +24,12 @@ public class TempServlet
       paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
       paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
     }
-    for (;;)
+    else
     {
-      if ((getAppRuntime() instanceof BaseQQAppInterface)) {
-        ((AppInterface)getAppRuntime()).receiveToService(paramIntent, paramFromServiceMsg);
-      }
-      return;
       paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    }
+    if ((getAppRuntime() instanceof BaseQQAppInterface)) {
+      ((AppInterface)getAppRuntime()).receiveToService(paramIntent, paramFromServiceMsg);
     }
   }
   
@@ -54,7 +53,7 @@ public class TempServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.compatible.TempServlet
  * JD-Core Version:    0.7.0.1
  */

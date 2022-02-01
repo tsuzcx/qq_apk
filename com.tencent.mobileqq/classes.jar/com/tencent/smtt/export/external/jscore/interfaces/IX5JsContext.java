@@ -33,7 +33,7 @@ public abstract interface IX5JsContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.export.external.jscore.interfaces.IX5JsContext
  * JD-Core Version:    0.7.0.1
  */

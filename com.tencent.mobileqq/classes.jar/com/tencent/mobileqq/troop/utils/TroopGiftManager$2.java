@@ -19,80 +19,95 @@ class TroopGiftManager$2
 {
   TroopGiftManager$2(TroopGiftManager paramTroopGiftManager, TroopGiftCallback paramTroopGiftCallback) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     if (paramInt != 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. onResult error=" + paramInt + " data=" + paramArrayOfByte + " callback=" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(-1, "errorCode=" + paramInt);
-    }
-    do
-    {
-      return;
-      paramBundle = new Oidb_0xcd1.RspBody();
-      if (paramArrayOfByte != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. onResult erro data=" + null);
-    return;
-    for (;;)
-    {
-      try
+      if (QLog.isColorLevel())
       {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (!paramBundle.get_pack_rsp.has()) {
-          break;
-        }
-        paramArrayOfByte = new Oidb_0xcd1.GetPackageShopRsp();
-        paramArrayOfByte.mergeFrom(((Oidb_0xcd1.GetPackageShopRsp)paramBundle.get_pack_rsp.get()).toByteArray());
-        paramBundle = new ArrayList();
-        if (paramArrayOfByte.msg_stock.has())
+        paramBundle = new StringBuilder();
+        paramBundle.append("send_iodb_oxcd1. onResult error=");
+        paramBundle.append(paramInt);
+        paramBundle.append(" data=");
+        paramBundle.append(paramArrayOfByte);
+        paramBundle.append(" callback=");
+        paramBundle.append(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback);
+        QLog.i(".troop.send_gift", 2, paramBundle.toString());
+      }
+      paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback;
+      paramBundle = new StringBuilder();
+      paramBundle.append("errorCode=");
+      paramBundle.append(paramInt);
+      paramArrayOfByte.a(-1, paramBundle.toString());
+      return;
+    }
+    Object localObject1 = new Oidb_0xcd1.RspBody();
+    paramBundle = null;
+    if (paramArrayOfByte == null)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("send_iodb_oxcd1. onResult erro data=");
+        paramArrayOfByte.append(null);
+        QLog.i(".troop.send_gift", 2, paramArrayOfByte.toString());
+      }
+      return;
+    }
+    try
+    {
+      ((Oidb_0xcd1.RspBody)localObject1).mergeFrom(paramArrayOfByte);
+      if (((Oidb_0xcd1.RspBody)localObject1).get_pack_rsp.has())
+      {
+        Object localObject2 = new Oidb_0xcd1.GetPackageShopRsp();
+        ((Oidb_0xcd1.GetPackageShopRsp)localObject2).mergeFrom(((Oidb_0xcd1.GetPackageShopRsp)((Oidb_0xcd1.RspBody)localObject1).get_pack_rsp.get()).toByteArray());
+        localObject1 = new ArrayList();
+        if (((Oidb_0xcd1.GetPackageShopRsp)localObject2).msg_stock.has())
         {
-          List localList = paramArrayOfByte.msg_stock.get();
+          paramArrayOfByte = ((Oidb_0xcd1.GetPackageShopRsp)localObject2).msg_stock.get();
           paramInt = 0;
-          if (paramInt < localList.size())
+          while (paramInt < paramArrayOfByte.size())
           {
-            Oidb_0xcd1.StockItem localStockItem = (Oidb_0xcd1.StockItem)localList.get(paramInt);
+            Oidb_0xcd1.StockItem localStockItem = (Oidb_0xcd1.StockItem)paramArrayOfByte.get(paramInt);
             TroopGiftManager.PackGift localPackGift = new TroopGiftManager.PackGift();
             localPackGift.a = localStockItem.int32_productid.get();
             localPackGift.b = localStockItem.int32_amount.get();
-            paramBundle.add(localPackGift);
+            ((List)localObject1).add(localPackGift);
             paramInt += 1;
-            continue;
           }
         }
-        if (paramArrayOfByte.empty_package_page.has())
+        paramArrayOfByte = paramBundle;
+        if (((Oidb_0xcd1.GetPackageShopRsp)localObject2).empty_package_page.has())
         {
-          paramArrayOfByte = (Oidb_0xcd1.EmptyPackagePage)paramArrayOfByte.empty_package_page.get();
-          if (paramArrayOfByte != null)
-          {
-            paramArrayOfByte = new TroopGiftAioPanelData.EmptyPackagePage(paramArrayOfByte);
-            if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback == null) {
-              break;
-            }
-            this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(paramBundle, paramArrayOfByte);
-            return;
+          localObject2 = (Oidb_0xcd1.EmptyPackagePage)((Oidb_0xcd1.GetPackageShopRsp)localObject2).empty_package_page.get();
+          paramArrayOfByte = paramBundle;
+          if (localObject2 != null) {
+            paramArrayOfByte = new TroopGiftAioPanelData.EmptyPackagePage((Oidb_0xcd1.EmptyPackagePage)localObject2);
           }
         }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
+        if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback != null)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a((List)localObject1, paramArrayOfByte);
+          return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(-1, "InvalidProtocolBufferMicroException");
-        return;
       }
-      paramArrayOfByte = null;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append("send_iodb_oxcd1. InvalidProtocolBufferMicroException:");
+        paramBundle.append(paramArrayOfByte);
+        QLog.i(".troop.send_gift", 2, paramBundle.toString());
+      }
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(-1, "InvalidProtocolBufferMicroException");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopGiftManager.2
  * JD-Core Version:    0.7.0.1
  */

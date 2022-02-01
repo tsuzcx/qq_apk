@@ -18,10 +18,11 @@ class ReportPlugin$1
       Object localObject = new JSONObject(this.val$req.jsonParams);
       String str = ((JSONObject)localObject).getString("table");
       localObject = ((JSONObject)localObject).getJSONArray("reportArray");
-      if ((!TextUtils.isEmpty(str)) && (((JSONArray)localObject).length() > 0)) {
+      if ((!TextUtils.isEmpty(str)) && (((JSONArray)localObject).length() > 0))
+      {
         ReportPlugin.access$000(this.this$0, str, (JSONArray)localObject);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -31,7 +32,7 @@ class ReportPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.ReportPlugin.1
  * JD-Core Version:    0.7.0.1
  */

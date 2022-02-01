@@ -25,12 +25,12 @@ class FeedLikeLego$StoryCardClickableSpan
     }
     StoryApi.a(paramView.jdField_a_of_type_AndroidAppActivity, 12, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry.unionId);
     paramView = paramView.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.ownerId;
-    if (QQStoryContext.a().a(paramView)) {}
-    for (paramView = "2";; paramView = "1")
-    {
-      StoryReportor.a("play_video", "clk_like_name", 0, 0, new String[] { paramView, "", "", "" });
-      return;
+    if (QQStoryContext.a().a(paramView)) {
+      paramView = "2";
+    } else {
+      paramView = "1";
     }
+    StoryReportor.a("play_video", "clk_like_name", 0, 0, new String[] { paramView, "", "", "" });
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
@@ -42,7 +42,7 @@ class FeedLikeLego$StoryCardClickableSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedLikeLego.StoryCardClickableSpan
  * JD-Core Version:    0.7.0.1
  */

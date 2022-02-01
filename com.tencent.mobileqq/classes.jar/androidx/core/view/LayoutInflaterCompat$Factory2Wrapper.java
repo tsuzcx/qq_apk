@@ -29,12 +29,17 @@ class LayoutInflaterCompat$Factory2Wrapper
   @NonNull
   public String toString()
   {
-    return getClass().getName() + "{" + this.mDelegateFactory + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getClass().getName());
+    localStringBuilder.append("{");
+    localStringBuilder.append(this.mDelegateFactory);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.LayoutInflaterCompat.Factory2Wrapper
  * JD-Core Version:    0.7.0.1
  */

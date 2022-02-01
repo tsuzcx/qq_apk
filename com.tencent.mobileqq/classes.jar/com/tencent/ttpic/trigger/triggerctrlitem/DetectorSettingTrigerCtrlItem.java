@@ -18,26 +18,31 @@ public class DetectorSettingTrigerCtrlItem
   
   public void setDetectorSettingLisener(IStickerListener paramIStickerListener)
   {
-    if (paramIStickerListener == null) {
+    if (paramIStickerListener == null)
+    {
       this.mListener = null;
-    }
-    while (!(paramIStickerListener instanceof IDetectorSettingListener)) {
       return;
     }
-    this.mListener = ((IDetectorSettingListener)paramIStickerListener);
+    if ((paramIStickerListener instanceof IDetectorSettingListener)) {
+      this.mListener = ((IDetectorSettingListener)paramIStickerListener);
+    }
   }
   
   public void updateTriggerStatus(PTDetectInfo paramPTDetectInfo)
   {
     super.updateTriggerStatus(paramPTDetectInfo);
-    if ((isTriggered()) && (this.mListener != null)) {
-      this.mListener.disableDetector(this.mStickerItem.disableDetectors);
+    if (isTriggered())
+    {
+      paramPTDetectInfo = this.mListener;
+      if (paramPTDetectInfo != null) {
+        paramPTDetectInfo.disableDetector(this.mStickerItem.disableDetectors);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.trigger.triggerctrlitem.DetectorSettingTrigerCtrlItem
  * JD-Core Version:    0.7.0.1
  */

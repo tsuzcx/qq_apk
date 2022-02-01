@@ -53,25 +53,31 @@ public final class LbsInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.lbs_x != null) {
-      paramJceOutputStream.write(this.lbs_x, 0);
+    String str = this.lbs_x;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.lbs_y != null) {
-      paramJceOutputStream.write(this.lbs_y, 1);
+    str = this.lbs_y;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.lbs_nm != null) {
-      paramJceOutputStream.write(this.lbs_nm, 2);
+    str = this.lbs_nm;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.lbs_id, 3);
-    if (this.lbs_idnm != null) {
-      paramJceOutputStream.write(this.lbs_idnm, 4);
+    str = this.lbs_idnm;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.lbs_frd != null) {
-      paramJceOutputStream.write(this.lbs_frd, 5);
+    str = this.lbs_frd;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.lbs_type, 6);
-    if (this.s_lbs_id != null) {
-      paramJceOutputStream.write(this.s_lbs_id, 7);
+    str = this.s_lbs_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
     paramJceOutputStream.write(this.i_poi_num, 8);
     paramJceOutputStream.write(this.i_poi_type, 9);
@@ -80,7 +86,7 @@ public final class LbsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.LbsInfo
  * JD-Core Version:    0.7.0.1
  */

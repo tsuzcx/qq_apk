@@ -8,7 +8,7 @@ import android.os.Looper;
 public class GlobalHandlerThread
 {
   private static final byte[] INSTANCE_LOCK = new byte[0];
-  private static volatile GlobalHandlerThread mInstance = null;
+  private static volatile GlobalHandlerThread mInstance;
   private Handler mHandler;
   private HandlerThread mWorkThread;
   
@@ -23,20 +23,23 @@ public class GlobalHandlerThread
     }
     catch (Exception paramContext)
     {
-      this.mHandler = new Handler(Looper.getMainLooper());
+      label43:
+      break label43;
     }
+    this.mHandler = new Handler(Looper.getMainLooper());
   }
   
   public static GlobalHandlerThread getInstance(Context paramContext)
   {
-    if (mInstance == null) {}
-    synchronized (INSTANCE_LOCK)
-    {
-      if (mInstance == null) {
-        mInstance = new GlobalHandlerThread(paramContext);
+    if (mInstance == null) {
+      synchronized (INSTANCE_LOCK)
+      {
+        if (mInstance == null) {
+          mInstance = new GlobalHandlerThread(paramContext);
+        }
       }
-      return mInstance;
     }
+    return mInstance;
   }
   
   public Handler getHandler()
@@ -46,15 +49,16 @@ public class GlobalHandlerThread
   
   public Looper getLooper()
   {
-    if (this.mWorkThread != null) {
-      return this.mWorkThread.getLooper();
+    HandlerThread localHandlerThread = this.mWorkThread;
+    if (localHandlerThread != null) {
+      return localHandlerThread.getLooper();
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.downloader.GlobalHandlerThread
  * JD-Core Version:    0.7.0.1
  */

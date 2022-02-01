@@ -9,12 +9,13 @@ final class InnerAppReportDc4239$1
   
   public void run()
   {
-    MiniProgramLpReportDC04239.report(this.val$miniAppConfig, MiniProgramLpReportDC04239.getAppType(this.val$miniAppConfig), this.val$path, "inner_app", "from_api", this.val$reservesAction, this.val$reserves2, this.val$reserves3, null, null, null);
+    MiniAppConfig localMiniAppConfig = this.val$miniAppConfig;
+    MiniProgramLpReportDC04239.report(localMiniAppConfig, MiniProgramLpReportDC04239.getAppType(localMiniAppConfig), this.val$path, "inner_app", "from_api", this.val$reservesAction, this.val$reserves2, this.val$reserves3, null, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.InnerAppReportDc4239.1
  * JD-Core Version:    0.7.0.1
  */

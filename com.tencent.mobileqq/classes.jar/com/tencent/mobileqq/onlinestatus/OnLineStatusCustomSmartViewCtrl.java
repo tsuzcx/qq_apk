@@ -11,22 +11,23 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.av.utils.UITools.MyViewAlphaOnTouchListener;
-import com.tencent.avgame.gameroom.AVGameLottieHelper;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.config.QConfigManager;
 import com.tencent.mobileqq.config.business.OnlineAutoStatusBean;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.onlinestatus.config.AutoStatusElement;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.vas.CustomOnlineStatusManager;
+import com.tencent.mobileqq.onlinestatus.utils.LottieHelper;
+import com.tencent.mobileqq.onlinestatus.view.AutoStatusSelectView.MyViewAlphaOnTouchListener;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.QQTheme;
+import com.tencent.mobileqq.vas.onlinestatus.api.ICustomOnlineStatusManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime.Status;
+import mqq.app.MobileQQ;
 
 public class OnLineStatusCustomSmartViewCtrl
 {
@@ -47,39 +48,27 @@ public class OnLineStatusCustomSmartViewCtrl
   
   public static void a(View paramView, boolean paramBoolean1, TextView paramTextView, boolean paramBoolean2)
   {
-    boolean bool = ThemeUtil.isNowThemeIsNight(null, false, "");
+    boolean bool = QQTheme.a();
     paramView.setSelected(paramBoolean1);
     int i;
-    String str;
-    if (paramBoolean2)
-    {
-      i = 2130839566;
-      if (bool) {
-        i = 2130839564;
-      }
-      paramView.setBackgroundResource(i);
-      if (paramTextView != null)
-      {
-        if (!bool) {
-          break label71;
-        }
-        str = "#FFFFFF";
-      }
+    if (paramBoolean2) {
+      i = 2130839424;
+    } else {
+      i = 2130839423;
     }
-    for (;;)
+    if (bool) {
+      i = 2130839421;
+    }
+    paramView.setBackgroundResource(i);
+    if (paramTextView != null)
     {
-      paramTextView.setTextColor(Color.parseColor(str));
-      paramView.invalidate();
-      return;
-      i = 2130839565;
-      break;
-      label71:
-      if (paramBoolean1) {
-        str = "#FFFFFF";
-      } else {
+      String str = "#FFFFFF";
+      if ((!bool) && (!paramBoolean1)) {
         str = "#03081A";
       }
+      paramTextView.setTextColor(Color.parseColor(str));
     }
+    paramView.invalidate();
   }
   
   public View a()
@@ -90,10 +79,11 @@ public class OnLineStatusCustomSmartViewCtrl
   public void a()
   {
     this.c = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable == null) {
+    LottieDrawable localLottieDrawable = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+    if (localLottieDrawable == null) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.isAnimating()) {
+    if (localLottieDrawable.isAnimating()) {
       this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.stop();
     }
     this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.setFrame(0);
@@ -102,87 +92,94 @@ public class OnLineStatusCustomSmartViewCtrl
   public void a(Activity paramActivity)
   {
     View localView = this.jdField_a_of_type_AndroidViewView;
-    if ((localView == null) || (paramActivity == null)) {
-      return;
-    }
-    if (CustomOnlineStatusManager.a().a()) {
-      if (this.jdField_b_of_type_AndroidViewView != null) {
-        if (this.jdField_b_of_type_AndroidViewView.getVisibility() != 0) {
-          break label131;
-        }
-      }
-    }
-    label131:
-    for (int i = 9;; i = 0)
+    if (localView != null)
     {
-      paramActivity = (LinearLayout.LayoutParams)localView.getLayoutParams();
-      paramActivity.leftMargin = AIOUtils.a(i, localView.getResources());
-      localView.setLayoutParams(paramActivity);
-      localView.setVisibility(0);
-      paramActivity = (ImageView)localView.findViewById(2131370283);
-      paramActivity.setImageDrawable(paramActivity.getResources().getDrawable(2130837544));
-      paramActivity = (TextView)localView.findViewById(2131370312);
-      paramActivity.setText(2131691397);
-      a(localView, false, paramActivity, this.jdField_a_of_type_Boolean);
-      return;
+      if (paramActivity == null) {
+        return;
+      }
+      if (((ICustomOnlineStatusManager)QRoute.api(ICustomOnlineStatusManager.class)).featureEnable())
+      {
+        paramActivity = this.jdField_b_of_type_AndroidViewView;
+        if (paramActivity != null)
+        {
+          int i;
+          if (paramActivity.getVisibility() == 0) {
+            i = 9;
+          } else {
+            i = 0;
+          }
+          paramActivity = (LinearLayout.LayoutParams)localView.getLayoutParams();
+          paramActivity.leftMargin = Utils.a(i, localView.getResources());
+          localView.setLayoutParams(paramActivity);
+        }
+        localView.setVisibility(0);
+        paramActivity = (ImageView)localView.findViewById(2131369951);
+        paramActivity.setImageDrawable(paramActivity.getResources().getDrawable(2130837631));
+        paramActivity = (TextView)localView.findViewById(2131369980);
+        paramActivity.setText(2131691319);
+        a(localView, false, paramActivity, this.jdField_a_of_type_Boolean);
+        return;
+      }
       localView.setVisibility(8);
-      return;
     }
   }
   
   public void a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
   {
-    paramContext = View.inflate(paramContext, 2131558432, null);
-    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131365511);
-    this.jdField_b_of_type_AndroidViewView = paramContext.findViewById(2131365509);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370285));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370283));
+    paramContext = View.inflate(paramContext, 2131558460, null);
+    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131365357);
+    this.jdField_b_of_type_AndroidViewView = paramContext.findViewById(2131365355);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)this.jdField_b_of_type_AndroidViewView.findViewById(2131369953));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131369951));
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    localLayoutParams.topMargin = AIOUtils.a(9.0F, paramViewGroup.getResources());
-    localLayoutParams.leftMargin = AIOUtils.a(14.0F, paramViewGroup.getResources());
+    localLayoutParams.topMargin = Utils.a(9.0F, paramViewGroup.getResources());
+    localLayoutParams.leftMargin = Utils.a(14.0F, paramViewGroup.getResources());
     localLayoutParams.rightMargin = localLayoutParams.leftMargin;
     paramViewGroup.addView(paramContext, paramInt, localLayoutParams);
-    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new UITools.MyViewAlphaOnTouchListener());
-    this.jdField_b_of_type_AndroidViewView.setOnTouchListener(new UITools.MyViewAlphaOnTouchListener());
+    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new AutoStatusSelectView.MyViewAlphaOnTouchListener());
+    this.jdField_b_of_type_AndroidViewView.setOnTouchListener(new AutoStatusSelectView.MyViewAlphaOnTouchListener());
     if (this.jdField_b_of_type_Boolean) {
-      AVGameLottieHelper.a(BaseApplicationImpl.getContext(), "online_status_smart/data.json", "online_status_smart/images/", 24, 34, -1, new OnLineStatusCustomSmartViewCtrl.1(this));
+      LottieHelper.a(MobileQQ.getContext(), "online_status_smart/data.json", "online_status_smart/images/", 24, 34, -1, new OnLineStatusCustomSmartViewCtrl.1(this));
     }
   }
   
-  public void a(BaseActivity paramBaseActivity, AppRuntime.Status paramStatus, long paramLong)
+  public void a(QBaseActivity paramQBaseActivity, AppRuntime.Status paramStatus, long paramLong)
   {
     View localView = this.jdField_b_of_type_AndroidViewView;
-    if ((localView == null) || (paramBaseActivity == null) || (paramStatus == null)) {
-      return;
-    }
-    if (!OnlineStatusUtil.a())
+    if ((localView != null) && (paramQBaseActivity != null))
     {
-      localView.setVisibility(8);
-      a();
-      return;
-    }
-    OnlineStatusItem localOnlineStatusItem = ((OnlineAutoStatusBean)QConfigManager.a().a(652)).a.a;
-    localView.setVisibility(0);
-    TextView localTextView = (TextView)localView.findViewById(2131370312);
-    if (localOnlineStatusItem.b == null)
-    {
-      paramBaseActivity = "";
-      localTextView.setText(paramBaseActivity);
+      if (paramStatus == null) {
+        return;
+      }
+      if (!OnlineStatusUtil.a())
+      {
+        localView.setVisibility(8);
+        a();
+        return;
+      }
+      OnlineStatusItem localOnlineStatusItem = ((OnlineAutoStatusBean)QConfigManager.a().a(652)).a.a;
+      boolean bool2 = false;
+      localView.setVisibility(0);
+      TextView localTextView = (TextView)localView.findViewById(2131369980);
+      if (localOnlineStatusItem.b == null) {
+        paramQBaseActivity = "";
+      } else {
+        paramQBaseActivity = localOnlineStatusItem.b;
+      }
+      localTextView.setText(paramQBaseActivity);
       if (!a(paramStatus, paramLong)) {
         a(localOnlineStatusItem);
       }
-      paramBaseActivity = OnLineStatusHelper.a().a(AppRuntime.Status.online, 40001L);
-      if ((!OnlineStatusItem.a(paramStatus, paramLong)) || (!OnlineStatusUtil.b(paramBaseActivity))) {
-        break label162;
+      paramQBaseActivity = OnLineStatusHelper.a().a(AppRuntime.Status.online, 40001L);
+      boolean bool1 = bool2;
+      if (OnlineStatusItem.a(paramStatus, paramLong))
+      {
+        bool1 = bool2;
+        if (OnlineStatusUtil.b(paramQBaseActivity)) {
+          bool1 = true;
+        }
       }
-    }
-    label162:
-    for (boolean bool = true;; bool = false)
-    {
-      a(localView, bool, localTextView, this.jdField_a_of_type_Boolean);
-      return;
-      paramBaseActivity = localOnlineStatusItem.b;
-      break;
+      a(localView, bool1, localTextView, this.jdField_a_of_type_Boolean);
     }
   }
   
@@ -193,7 +190,7 @@ public class OnLineStatusCustomSmartViewCtrl
     this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
     if (!TextUtils.isEmpty(paramOnlineStatusItem.c))
     {
-      int i = AIOUtils.a(24.0F, this.jdField_a_of_type_AndroidWidgetImageView.getResources());
+      int i = Utils.a(24.0F, this.jdField_a_of_type_AndroidWidgetImageView.getResources());
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mRequestWidth = i;
       localURLDrawableOptions.mRequestHeight = i;
@@ -220,14 +217,13 @@ public class OnLineStatusCustomSmartViewCtrl
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
-    if ((paramStatus == AppRuntime.Status.online) && (paramLong == 40001L)) {
-      b();
-    }
-    for (;;)
+    if ((paramStatus == AppRuntime.Status.online) && (paramLong == 40001L))
     {
+      b();
       return true;
-      a();
     }
+    a();
+    return true;
   }
   
   public View b()
@@ -238,14 +234,15 @@ public class OnLineStatusCustomSmartViewCtrl
   public void b()
   {
     this.c = true;
-    if ((this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) && (!this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.isAnimating())) {
+    LottieDrawable localLottieDrawable = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+    if ((localLottieDrawable != null) && (!localLottieDrawable.isAnimating())) {
       this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.playAnimation();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnLineStatusCustomSmartViewCtrl
  * JD-Core Version:    0.7.0.1
  */

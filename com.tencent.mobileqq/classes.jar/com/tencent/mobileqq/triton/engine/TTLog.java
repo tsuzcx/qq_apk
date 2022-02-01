@@ -28,45 +28,57 @@ public final class TTLog
     paramArrayOfByte2 = new String(paramArrayOfByte2, Charsets.UTF_8);
     if (paramInt >= 100)
     {
-      switch (paramInt - 100 + 2)
+      paramInt = paramInt - 100 + 2;
+      if (paramInt != 3)
       {
-      default: 
-        Logger.cv$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
-        return;
-      case 4: 
+        if (paramInt != 4)
+        {
+          if (paramInt != 5)
+          {
+            if (paramInt != 6)
+            {
+              Logger.cv$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
+              return;
+            }
+            Logger.ce$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
+            return;
+          }
+          Logger.cw$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
+          return;
+        }
         Logger.ci$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
         return;
-      case 3: 
-        Logger.cd$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
-        return;
-      case 5: 
-        Logger.cw$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
+      }
+      Logger.cd$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
+      return;
+    }
+    paramInt += 2;
+    if (paramInt != 3)
+    {
+      if (paramInt != 4)
+      {
+        if (paramInt != 5)
+        {
+          if (paramInt != 6)
+          {
+            Logger.v$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
+            return;
+          }
+          Logger.e$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
+          return;
+        }
+        Logger.w$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
         return;
       }
-      Logger.ce$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
-      return;
-    }
-    switch (paramInt + 2)
-    {
-    default: 
-      Logger.v$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
-      return;
-    case 4: 
       Logger.i$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
       return;
-    case 3: 
-      Logger.d$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
-      return;
-    case 5: 
-      Logger.w$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
-      return;
     }
-    Logger.e$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
+    Logger.d$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.engine.TTLog
  * JD-Core Version:    0.7.0.1
  */

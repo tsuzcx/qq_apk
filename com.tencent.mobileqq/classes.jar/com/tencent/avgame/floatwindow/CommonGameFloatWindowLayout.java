@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import com.tencent.avgame.util.AVGameUtils;
+import com.tencent.avgame.util.AVGameUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -28,11 +28,11 @@ public class CommonGameFloatWindowLayout
   
   private void f()
   {
-    this.b = ((int)getResources().getDimension(2131296631));
-    this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131296632));
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558757, null);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369669));
-    Bitmap localBitmap = AVGameUtils.a("avgame_float_waiting@2x.png");
+    this.b = ((int)getResources().getDimension(2131296610));
+    this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131296611));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558656, null);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369368));
+    Bitmap localBitmap = AVGameUtil.a("avgame_float_waiting@2x.png");
     if (localBitmap != null) {
       this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
     }
@@ -51,7 +51,7 @@ public class CommonGameFloatWindowLayout
   {
     if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
-      Bitmap localBitmap = AVGameUtils.a("avgame_float_waiting@2x.png");
+      Bitmap localBitmap = AVGameUtil.a("avgame_float_waiting@2x.png");
       if (localBitmap != null) {
         this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
       }
@@ -60,25 +60,23 @@ public class CommonGameFloatWindowLayout
   
   public boolean a(FloatWindowParams paramFloatWindowParams)
   {
-    boolean bool = true;
     if (paramFloatWindowParams == null) {
       return false;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatWindowBaseLayout", 2, "updateFloatWindow isForeground: " + paramFloatWindowParams.jdField_a_of_type_Boolean);
-    }
-    if (paramFloatWindowParams.jdField_a_of_type_Boolean) {
-      if (a()) {}
-    }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      return bool;
-      bool = false;
-      continue;
-      if (b()) {
-        bool = false;
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateFloatWindow isForeground: ");
+      localStringBuilder.append(paramFloatWindowParams.jdField_a_of_type_Boolean);
+      QLog.d("FloatWindowBaseLayout", 2, localStringBuilder.toString());
     }
+    boolean bool;
+    if (paramFloatWindowParams.jdField_a_of_type_Boolean) {
+      bool = a();
+    } else {
+      bool = b();
+    }
+    return bool ^ true;
   }
   
   public int b(FloatWindowParams paramFloatWindowParams)
@@ -90,7 +88,7 @@ public class CommonGameFloatWindowLayout
   {
     if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
-      Bitmap localBitmap = AVGameUtils.a("avgame_float_playing@2x.png");
+      Bitmap localBitmap = AVGameUtil.a("avgame_float_playing@2x.png");
       if (localBitmap != null) {
         this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
       }
@@ -101,7 +99,7 @@ public class CommonGameFloatWindowLayout
   {
     if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
-      Bitmap localBitmap = AVGameUtils.a("avgame_float_you_play@2x.png");
+      Bitmap localBitmap = AVGameUtil.a("avgame_float_you_play@2x.png");
       if (localBitmap != null) {
         this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
       }
@@ -110,8 +108,9 @@ public class CommonGameFloatWindowLayout
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout$OnFloatWindowClickListener != null) {
-      this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout$OnFloatWindowClickListener.a();
+    CommonGameFloatWindowLayout.OnFloatWindowClickListener localOnFloatWindowClickListener = this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout$OnFloatWindowClickListener;
+    if (localOnFloatWindowClickListener != null) {
+      localOnFloatWindowClickListener.a();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
@@ -123,7 +122,7 @@ public class CommonGameFloatWindowLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.floatwindow.CommonGameFloatWindowLayout
  * JD-Core Version:    0.7.0.1
  */

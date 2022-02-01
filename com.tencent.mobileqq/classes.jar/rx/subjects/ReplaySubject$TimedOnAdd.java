@@ -17,17 +17,23 @@ final class ReplaySubject$TimedOnAdd<T>
   
   public void call(SubjectSubscriptionManager.SubjectObserver<T> paramSubjectObserver)
   {
-    if (!this.state.terminated) {}
-    for (ReplaySubject.NodeList.Node localNode = this.state.replayObserverFromIndexTest(this.state.head(), paramSubjectObserver, this.scheduler.now());; localNode = this.state.replayObserverFromIndex(this.state.head(), paramSubjectObserver))
+    Object localObject;
+    if (!this.state.terminated)
     {
-      paramSubjectObserver.index(localNode);
-      return;
+      localObject = this.state;
+      localObject = ((ReplaySubject.BoundedState)localObject).replayObserverFromIndexTest(((ReplaySubject.BoundedState)localObject).head(), paramSubjectObserver, this.scheduler.now());
     }
+    else
+    {
+      localObject = this.state;
+      localObject = ((ReplaySubject.BoundedState)localObject).replayObserverFromIndex(((ReplaySubject.BoundedState)localObject).head(), paramSubjectObserver);
+    }
+    paramSubjectObserver.index(localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.subjects.ReplaySubject.TimedOnAdd
  * JD-Core Version:    0.7.0.1
  */

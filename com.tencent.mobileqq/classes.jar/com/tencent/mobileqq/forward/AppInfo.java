@@ -5,12 +5,10 @@ import com.tencent.biz.webviewplugin.Share;
 import com.tencent.biz.webviewplugin.Share.IconUrlSize;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.open.agent.util.SSOLog;
 import com.tencent.protofile.getappinfo.GetAppInfoProto.Ads;
 import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
 import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.qconn.protofile.appType.AndroidInfo;
-import com.tencent.qconn.protofile.preAuth.PreAuthResponse;
-import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import tencent.im.oidb.oidb_0xd55.RspBody;
@@ -38,35 +36,23 @@ public class AppInfo
     while (paramList.hasNext())
     {
       Share.IconUrlSize localIconUrlSize = (Share.IconUrlSize)paramList.next();
-      if ("16".equals(localIconUrlSize.b.get()))
-      {
+      if ("16".equals(localIconUrlSize.b.get())) {
         i |= 0x1;
-      }
-      else if ("64".equals(localIconUrlSize.b.get()))
-      {
+      } else if ("64".equals(localIconUrlSize.b.get())) {
         i |= 0x2;
-      }
-      else
-      {
-        if (!"100".equals(localIconUrlSize.b.get())) {
-          break label96;
-        }
+      } else if ("100".equals(localIconUrlSize.b.get())) {
         i |= 0x4;
       }
     }
-    label96:
-    for (;;)
-    {
-      break;
-      return i;
-    }
+    return i;
   }
   
   public static int a(qqconnect.Appinfo paramAppinfo)
   {
-    int j = 0;
     if (paramAppinfo.icon_mini_url.has()) {
       j = 1;
+    } else {
+      j = 0;
     }
     int i;
     if (!paramAppinfo.icon_middle_url.has())
@@ -78,7 +64,7 @@ public class AppInfo
     {
       i = j | 0x2;
     }
-    j = i;
+    int j = i;
     if (paramAppinfo.icon_url.has()) {
       j = i | 0x4;
     }
@@ -100,105 +86,62 @@ public class AppInfo
     if (localAndroidInfo != null)
     {
       localAppInfo.jdField_a_of_type_Boolean = true;
-      if (!localAndroidInfo.sourceUrl.has()) {
-        break label183;
+      boolean bool = localAndroidInfo.sourceUrl.has();
+      String str = "";
+      if (bool) {
+        paramGetAppinfoResponse = localAndroidInfo.sourceUrl.get();
+      } else {
+        paramGetAppinfoResponse = "";
       }
-      paramGetAppinfoResponse = localAndroidInfo.sourceUrl.get();
       localAppInfo.c = paramGetAppinfoResponse;
-      if (!localAndroidInfo.messagetail.has()) {
-        break label189;
+      if (localAndroidInfo.messagetail.has()) {
+        paramGetAppinfoResponse = localAndroidInfo.messagetail.get();
+      } else {
+        paramGetAppinfoResponse = "";
       }
-      paramGetAppinfoResponse = localAndroidInfo.messagetail.get();
-      label131:
       localAppInfo.d = paramGetAppinfoResponse;
-      if (!localAndroidInfo.packName.has()) {
-        break label195;
+      paramGetAppinfoResponse = str;
+      if (localAndroidInfo.packName.has()) {
+        paramGetAppinfoResponse = localAndroidInfo.packName.get();
       }
-    }
-    label183:
-    label189:
-    label195:
-    for (paramGetAppinfoResponse = localAndroidInfo.packName.get();; paramGetAppinfoResponse = "")
-    {
       localAppInfo.e = paramGetAppinfoResponse;
-      QLog.d("SDK_LOGIN.AppInfo", 1, new Object[] { "convertToAppInfo AppInfo : ", localAppInfo.toString() });
-      return localAppInfo;
-      paramGetAppinfoResponse = "";
-      break;
-      paramGetAppinfoResponse = "";
-      break label131;
     }
-  }
-  
-  public static AppInfo a(preAuth.PreAuthResponse paramPreAuthResponse, appType.AndroidInfo paramAndroidInfo)
-  {
-    AppInfo localAppInfo = new AppInfo();
-    String str;
-    if (paramAndroidInfo.message_tail.has())
-    {
-      str = paramAndroidInfo.message_tail.get();
-      localAppInfo.d = str;
-      if (!paramAndroidInfo.pack_name.has()) {
-        break label172;
-      }
-      str = paramAndroidInfo.pack_name.get();
-      label49:
-      localAppInfo.e = str;
-      if (!paramAndroidInfo.source_url.has()) {
-        break label178;
-      }
-    }
-    label172:
-    label178:
-    for (paramAndroidInfo = paramAndroidInfo.source_url.get();; paramAndroidInfo = "")
-    {
-      localAppInfo.c = paramAndroidInfo;
-      localAppInfo.jdField_a_of_type_Boolean = true;
-      localAppInfo.jdField_a_of_type_JavaUtilList = Share.b(paramPreAuthResponse.icons_url);
-      if (!localAppInfo.jdField_a_of_type_JavaUtilList.isEmpty())
-      {
-        localAppInfo.jdField_a_of_type_JavaLangString = Share.a(localAppInfo.jdField_a_of_type_JavaUtilList, 16);
-        localAppInfo.b = Share.a(localAppInfo.jdField_a_of_type_JavaUtilList, 100);
-        localAppInfo.jdField_a_of_type_Int = a(localAppInfo.jdField_a_of_type_JavaUtilList);
-      }
-      QLog.d("SDK_LOGIN.AppInfo", 1, new Object[] { "convertToAppInfo AppInfo : ", localAppInfo.toString() });
-      return localAppInfo;
-      str = "";
-      break;
-      str = "";
-      break label49;
-    }
+    SSOLog.a("AppInfo", new Object[] { "convertToAppInfo AppInfo : ", localAppInfo.toString() });
+    return localAppInfo;
   }
   
   private static String a(qqconnect.Appinfo paramAppinfo, String paramString)
   {
+    boolean bool = paramAppinfo.mobile_app_info.has();
     Iterator localIterator = null;
     Object localObject2 = null;
     Object localObject1 = localIterator;
-    if (paramAppinfo.mobile_app_info.has())
+    if (bool)
     {
       localObject1 = localIterator;
       if (paramAppinfo.mobile_app_info.android_app_info.has())
       {
         localIterator = paramAppinfo.mobile_app_info.android_app_info.get().iterator();
         paramAppinfo = localObject2;
-        localObject1 = paramAppinfo;
-        if (localIterator.hasNext())
+        for (;;)
         {
+          localObject1 = paramAppinfo;
+          if (!localIterator.hasNext()) {
+            break;
+          }
           localObject1 = (qqconnect.AndroidAppInfo)localIterator.next();
           if (((qqconnect.AndroidAppInfo)localObject1).pack_name.has())
           {
-            localObject1 = ((qqconnect.AndroidAppInfo)localObject1).pack_name.get();
-            paramAppinfo = (qqconnect.Appinfo)localObject1;
-            if (!((String)localObject1).equals(paramString)) {}
+            paramAppinfo = ((qqconnect.AndroidAppInfo)localObject1).pack_name.get();
+            if (paramAppinfo.equals(paramString)) {
+              return paramString;
+            }
           }
         }
       }
     }
-    while (TextUtils.isEmpty((CharSequence)localObject1))
-    {
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
       return paramString;
-      break;
     }
     return localObject1;
   }
@@ -213,13 +156,13 @@ public class AppInfo
     paramAppInfo.c = localAppinfo.source_url.get();
     paramAppInfo.d = localAppinfo.app_name.get();
     paramAppInfo.e = a(localAppinfo, paramString);
-    if (paramRspBody.wording.has()) {}
-    for (paramRspBody = paramRspBody.wording.get();; paramRspBody = "")
-    {
-      paramAppInfo.f = paramRspBody;
-      QLog.d("SDK_LOGIN.AppInfo", 1, new Object[] { "fillAppInfo AppInfo : ", paramAppInfo.toString() });
-      return;
+    if (paramRspBody.wording.has()) {
+      paramRspBody = paramRspBody.wording.get();
+    } else {
+      paramRspBody = "";
     }
+    paramAppInfo.f = paramRspBody;
+    SSOLog.a("AppInfo", new Object[] { "fillAppInfo AppInfo : ", paramAppInfo.toString() });
   }
   
   public int a()
@@ -264,12 +207,29 @@ public class AppInfo
   
   public String toString()
   {
-    return "iconUrlMini=" + this.jdField_a_of_type_JavaLangString + ", iconUrlBig=" + this.b + ", appLackOfIcons=" + this.jdField_a_of_type_Int + ", isAndroidInfoExist=" + this.jdField_a_of_type_Boolean + ", sourceUrl=" + this.c + ", appName=" + this.d + ", pkgName=" + this.e + ", mErrorWording=" + this.f;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("iconUrlMini=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", iconUrlBig=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", appLackOfIcons=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", isAndroidInfoExist=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", sourceUrl=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", appName=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", pkgName=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", mErrorWording=");
+    localStringBuilder.append(this.f);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.AppInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -13,15 +13,19 @@ class WerewolvesHandler$2
     if (paramInt == 0) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("WerewolvesHandler", 2, "startAnotherRound, quitFailed: errorCode :" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramRspBody = new StringBuilder();
+      paramRspBody.append("startAnotherRound, quitFailed: errorCode :");
+      paramRspBody.append(paramInt);
+      QLog.d("WerewolvesHandler", 2, paramRspBody.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler$Callback.a(-1, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.WerewolvesHandler.2
  * JD-Core Version:    0.7.0.1
  */

@@ -36,28 +36,28 @@ class NewStyleCountryActivity$SearchDialog
     getWindow().setSoftInputMode(36);
     getWindow().addFlags(1024);
     getWindow().setBackgroundDrawable(new ColorDrawable());
-    setContentView(2131562019);
+    setContentView(2131561852);
     paramContext = getWindow().getAttributes();
     paramContext.x = 0;
     paramContext.y = 0;
     paramContext.width = -1;
     paramContext.windowAnimations = 16973824;
     paramContext.gravity = 51;
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366452));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366333));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
     this.jdField_a_of_type_AndroidWidgetEditText.setSelection(0);
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131368600));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131368340));
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    paramContext = (Button)findViewById(2131363942);
+    paramContext = (Button)findViewById(2131363868);
     paramContext.setVisibility(0);
     paramContext.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131376997);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372336));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131376483);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371921));
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718889);
-    findViewById(2131377618).setVisibility(8);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)findViewById(2131377642));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718604);
+    findViewById(2131377060).setVisibility(8);
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)findViewById(2131377082));
     this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity$SearchAdapter = new NewStyleCountryActivity.SearchAdapter(paramNewStyleCountryActivity, null);
     this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity$SearchAdapter);
     this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(this);
@@ -65,22 +65,19 @@ class NewStyleCountryActivity$SearchDialog
   
   void a(String paramString)
   {
-    if ((paramString.equals("")) || (paramString.trim().length() == 0))
+    if ((!paramString.equals("")) && (paramString.trim().length() != 0))
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity$SearchAdapter.a(paramString);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity$SearchAdapter.getCount() == 0) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    }
-    for (;;)
-    {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity$SearchAdapter.a(paramString);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity$SearchAdapter.getCount() == 0) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      } else {
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      }
       this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity$SearchAdapter.notifyDataSetChanged();
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
   
   public void afterTextChanged(Editable paramEditable)
@@ -109,37 +106,30 @@ class NewStyleCountryActivity$SearchDialog
     //   9: astore_1
     //   10: aload_0
     //   11: invokestatic 208	com/tencent/qqperf/monitor/memory/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
-    //   14: return
-    //   15: astore_1
-    //   16: aload_0
-    //   17: invokestatic 208	com/tencent/qqperf/monitor/memory/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
-    //   20: aload_1
-    //   21: athrow
+    //   14: aload_1
+    //   15: athrow
+    //   16: astore_1
+    //   17: goto -13 -> 4
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	22	0	this	SearchDialog
-    //   9	1	1	localException	java.lang.Exception
-    //   15	6	1	localObject	Object
+    //   0	20	0	this	SearchDialog
+    //   9	6	1	localObject	Object
+    //   16	1	1	localException	java.lang.Exception
     // Exception table:
     //   from	to	target	type
-    //   0	4	9	java/lang/Exception
-    //   0	4	15	finally
+    //   0	4	9	finally
+    //   0	4	16	java/lang/Exception
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131363942) {
+    if (i == 2131363868) {
       dismiss();
+    } else if (i == 2131368340) {
+      this.jdField_a_of_type_AndroidWidgetEditText.setText("");
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (i == 2131368600) {
-        this.jdField_a_of_type_AndroidWidgetEditText.setText("");
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -152,7 +142,7 @@ class NewStyleCountryActivity$SearchDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.NewStyleCountryActivity.SearchDialog
  * JD-Core Version:    0.7.0.1
  */

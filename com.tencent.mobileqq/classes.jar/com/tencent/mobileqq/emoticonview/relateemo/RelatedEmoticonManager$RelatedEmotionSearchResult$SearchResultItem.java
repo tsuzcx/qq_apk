@@ -5,7 +5,7 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 
 public class RelatedEmoticonManager$RelatedEmotionSearchResult$SearchResultItem
-  implements Parcelable
+  implements Parcelable, ISearchResultItem
 {
   public static final Parcelable.Creator<SearchResultItem> CREATOR = new RelatedEmoticonManager.RelatedEmotionSearchResult.SearchResultItem.1();
   public int height;
@@ -34,9 +34,64 @@ public class RelatedEmoticonManager$RelatedEmotionSearchResult$SearchResultItem
     return 0;
   }
   
+  public String getUrl()
+  {
+    return this.url;
+  }
+  
+  public void setHeight(int paramInt)
+  {
+    this.height = paramInt;
+  }
+  
+  public void setImgSize(int paramInt)
+  {
+    this.imgSize = paramInt;
+  }
+  
+  public void setMd5(String paramString)
+  {
+    this.md5 = paramString;
+  }
+  
+  public void setResourceId(String paramString)
+  {
+    this.resourceId = paramString;
+  }
+  
+  public void setUrl(String paramString)
+  {
+    this.url = paramString;
+  }
+  
+  public void setWidth(int paramInt)
+  {
+    this.width = paramInt;
+  }
+  
   public String toString()
   {
-    return "SearchResultItem{md5='" + this.md5 + '\'' + ", url='" + this.url + '\'' + ", resourceId='" + this.resourceId + '\'' + ", width=" + this.width + ", height=" + this.height + ", imgSize=" + this.imgSize + ", imgOther='" + this.imgOther + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SearchResultItem{md5='");
+    localStringBuilder.append(this.md5);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", url='");
+    localStringBuilder.append(this.url);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", resourceId='");
+    localStringBuilder.append(this.resourceId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", width=");
+    localStringBuilder.append(this.width);
+    localStringBuilder.append(", height=");
+    localStringBuilder.append(this.height);
+    localStringBuilder.append(", imgSize=");
+    localStringBuilder.append(this.imgSize);
+    localStringBuilder.append(", imgOther='");
+    localStringBuilder.append(this.imgOther);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -52,7 +107,7 @@ public class RelatedEmoticonManager$RelatedEmotionSearchResult$SearchResultItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.relateemo.RelatedEmoticonManager.RelatedEmotionSearchResult.SearchResultItem
  * JD-Core Version:    0.7.0.1
  */

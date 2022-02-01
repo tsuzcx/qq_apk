@@ -14,20 +14,16 @@ final class FreeWifiHelper$7
   
   public void addTypeTask(Runnable paramRunnable, int paramInt)
   {
-    int i = 16;
     if (paramInt == 3) {
-      i = 64;
+      paramInt = 64;
+    } else if (paramInt == 4) {
+      paramInt = 128;
+    } else if (paramInt == 2) {
+      paramInt = 32;
+    } else {
+      paramInt = 16;
     }
-    for (;;)
-    {
-      ThreadManagerV2.excute(paramRunnable, i, null, false);
-      return;
-      if (paramInt == 4) {
-        i = 128;
-      } else if (paramInt == 2) {
-        i = 32;
-      }
-    }
+    ThreadManagerV2.excute(paramRunnable, paramInt, null, false);
   }
   
   public Looper getSubThreadLooper()
@@ -37,7 +33,7 @@ final class FreeWifiHelper$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.wifi.FreeWifiHelper.7
  * JD-Core Version:    0.7.0.1
  */

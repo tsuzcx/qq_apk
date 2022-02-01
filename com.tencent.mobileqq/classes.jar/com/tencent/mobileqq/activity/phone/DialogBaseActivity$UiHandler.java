@@ -16,31 +16,34 @@ class DialogBaseActivity$UiHandler
   
   public void handleMessage(Message paramMessage)
   {
-    boolean bool = true;
-    DialogBaseActivity localDialogBaseActivity = (DialogBaseActivity)this.a.get();
-    if (localDialogBaseActivity == null) {
+    Object localObject = (DialogBaseActivity)this.a.get();
+    if (localObject == null) {
       return;
     }
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    boolean bool = true;
+    if (i != 1)
     {
-    default: 
-      throw new RuntimeException("Unknown message: " + paramMessage.what);
-    case 1: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (;;)
+      if (i == 2)
       {
-        localDialogBaseActivity.a(i, bool);
+        ((DialogBaseActivity)localObject).finish();
         return;
-        bool = false;
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Unknown message: ");
+      ((StringBuilder)localObject).append(paramMessage.what);
+      throw new RuntimeException(((StringBuilder)localObject).toString());
     }
-    localDialogBaseActivity.finish();
+    i = paramMessage.arg1;
+    if (paramMessage.arg2 != 1) {
+      bool = false;
+    }
+    ((DialogBaseActivity)localObject).doShowProgressDialog(i, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.DialogBaseActivity.UiHandler
  * JD-Core Version:    0.7.0.1
  */

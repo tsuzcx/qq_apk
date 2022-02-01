@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.onlinestatus.config;
 
-import org.jetbrains.annotations.NotNull;
+import android.support.annotation.NonNull;
 
 public class Category
 {
@@ -31,15 +31,37 @@ public class Category
     this.h = paramInt8;
   }
   
-  @NotNull
+  @NonNull
   public String toString()
   {
-    return "Category{level=" + this.jdField_a_of_type_Int + ", name=" + this.jdField_a_of_type_JavaLangString + ", internal=" + this.f + ", poiCount=" + this.b + ", poiDistance=" + this.c + ", locDistance=" + this.d + ", locAccuracy=" + this.e + ", validRate=" + this.jdField_a_of_type_Double + ", poiCacheSize=" + this.g + "poiCacheValidDistance" + this.h + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Category{level=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", name=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", internal=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", poiCount=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", poiDistance=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", locDistance=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", locAccuracy=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", validRate=");
+    localStringBuilder.append(this.jdField_a_of_type_Double);
+    localStringBuilder.append(", poiCacheSize=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append("poiCacheValidDistance");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.config.Category
  * JD-Core Version:    0.7.0.1
  */

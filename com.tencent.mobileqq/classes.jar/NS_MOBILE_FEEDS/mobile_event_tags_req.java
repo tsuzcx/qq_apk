@@ -30,15 +30,16 @@ public final class mobile_event_tags_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.count, 0);
-    if (this.content != null) {
-      paramJceOutputStream.write(this.content, 1);
+    String str = this.content;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.recom_type, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_event_tags_req
  * JD-Core Version:    0.7.0.1
  */

@@ -18,100 +18,98 @@ import cooperation.vip.tianshu.TianShuManager;
 
 public class TroopBusinessUtil
 {
-  public static final String a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = TroopBusinessUtil.class.getName();
-  }
+  public static final String a = "com.tencent.mobileqq.troop.utils.TroopBusinessUtil";
   
   public static TroopBusinessUtil.TroopBusinessMessage a(MessageRecord paramMessageRecord)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramMessageRecord != null)
+    TroopBusinessUtil.TroopBusinessMessage localTroopBusinessMessage;
+    if ((paramMessageRecord != null) && ("1".equals(paramMessageRecord.getExtInfoFromExtStr("troop_msg_has"))))
     {
-      localObject1 = localObject2;
-      if ("1".equals(paramMessageRecord.getExtInfoFromExtStr("troop_msg_has")))
+      localTroopBusinessMessage = new TroopBusinessUtil.TroopBusinessMessage();
+      localTroopBusinessMessage.jdField_a_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("troop_msg_flag"));
+      localTroopBusinessMessage.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("troop_msg_head_url");
+      localTroopBusinessMessage.jdField_b_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("troop_msg_head_click_url");
+      localTroopBusinessMessage.jdField_c_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("troop_msg_nickname");
+      localTroopBusinessMessage.jdField_d_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("troop_msg_rank_name");
+      try
       {
-        localObject1 = new TroopBusinessUtil.TroopBusinessMessage();
-        ((TroopBusinessUtil.TroopBusinessMessage)localObject1).jdField_a_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("troop_msg_flag"));
-        ((TroopBusinessUtil.TroopBusinessMessage)localObject1).jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("troop_msg_head_url");
-        ((TroopBusinessUtil.TroopBusinessMessage)localObject1).jdField_b_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("troop_msg_head_click_url");
-        ((TroopBusinessUtil.TroopBusinessMessage)localObject1).jdField_c_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("troop_msg_nickname");
-        ((TroopBusinessUtil.TroopBusinessMessage)localObject1).jdField_d_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("troop_msg_rank_name");
+        localTroopBusinessMessage.jdField_b_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("troop_msg_nick_color"));
+        localTroopBusinessMessage.jdField_c_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("troop_msg_rank_color"));
+        localTroopBusinessMessage.jdField_d_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("troop_msg_rank_bg_color"));
       }
-    }
-    try
-    {
-      ((TroopBusinessUtil.TroopBusinessMessage)localObject1).jdField_b_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("troop_msg_nick_color"));
-      ((TroopBusinessUtil.TroopBusinessMessage)localObject1).jdField_c_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("troop_msg_rank_color"));
-      ((TroopBusinessUtil.TroopBusinessMessage)localObject1).jdField_d_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("troop_msg_rank_bg_color"));
-      if ((paramMessageRecord != null) && (!TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("report_key_bytes_oac_msg_extend")))) {
-        TianShuManager.getInstance().cacheTraceInfo(paramMessageRecord.getExtInfoFromExtStr("report_key_bytes_oac_msg_extend"));
-      }
-      return localObject1;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "the color string cannot parse to int. " + localException.getMessage());
+        String str = jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("the color string cannot parse to int. ");
+        localStringBuilder.append(localException.getMessage());
+        QLog.e(str, 2, localStringBuilder.toString());
       }
     }
+    else
+    {
+      localTroopBusinessMessage = null;
+    }
+    if ((paramMessageRecord != null) && (!TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("report_key_bytes_oac_msg_extend")))) {
+      TianShuManager.getInstance().cacheTraceInfo(paramMessageRecord.getExtInfoFromExtStr("report_key_bytes_oac_msg_extend"));
+    }
+    return localTroopBusinessMessage;
   }
   
   public static void a(AppInterface paramAppInterface, Context paramContext, TroopBusinessUtil.TroopBusinessMessage paramTroopBusinessMessage)
   {
     try
     {
-      if (TextUtils.isEmpty(paramTroopBusinessMessage.jdField_b_of_type_JavaLangString)) {
-        return;
-      }
-      if (paramTroopBusinessMessage.jdField_b_of_type_JavaLangString.startsWith("http"))
+      if (!TextUtils.isEmpty(paramTroopBusinessMessage.jdField_b_of_type_JavaLangString))
       {
-        paramAppInterface = new Intent(paramContext, QQBrowserActivity.class);
-        paramAppInterface.putExtra("url", paramTroopBusinessMessage.jdField_b_of_type_JavaLangString);
-        ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).modifyIntentForSpecificBrowserIfNeeded(paramAppInterface, paramTroopBusinessMessage.jdField_b_of_type_JavaLangString);
-        paramContext.startActivity(paramAppInterface);
-        return;
-      }
-      if (!paramTroopBusinessMessage.jdField_b_of_type_JavaLangString.startsWith("mqqapi")) {
-        return;
-      }
-      if ((paramAppInterface instanceof QQAppInterface))
-      {
-        JumpParser.a((QQAppInterface)paramAppInterface, paramContext, paramTroopBusinessMessage.jdField_b_of_type_JavaLangString).a();
-        return;
+        if (paramTroopBusinessMessage.jdField_b_of_type_JavaLangString.startsWith("http"))
+        {
+          paramAppInterface = new Intent(paramContext, QQBrowserActivity.class);
+          paramAppInterface.putExtra("url", paramTroopBusinessMessage.jdField_b_of_type_JavaLangString);
+          ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).modifyIntentForSpecificBrowserIfNeeded(paramAppInterface, paramTroopBusinessMessage.jdField_b_of_type_JavaLangString);
+          paramContext.startActivity(paramAppInterface);
+          return;
+        }
+        if (paramTroopBusinessMessage.jdField_b_of_type_JavaLangString.startsWith("mqqapi"))
+        {
+          if ((paramAppInterface instanceof QQAppInterface))
+          {
+            JumpParser.a((QQAppInterface)paramAppInterface, paramContext, paramTroopBusinessMessage.jdField_b_of_type_JavaLangString).a();
+            return;
+          }
+          paramContext.startActivity(new Intent(paramContext, JumpActivity.class).setData(Uri.parse(paramTroopBusinessMessage.jdField_b_of_type_JavaLangString)));
+          return;
+        }
       }
     }
     catch (Exception paramAppInterface)
     {
       paramAppInterface.printStackTrace();
-      return;
     }
-    paramContext.startActivity(new Intent(paramContext, JumpActivity.class).setData(Uri.parse(paramTroopBusinessMessage.jdField_b_of_type_JavaLangString)));
   }
   
   public static void a(MessageRecord paramMessageRecord, TroopBusinessUtil.TroopBusinessMessage paramTroopBusinessMessage)
   {
-    if ((paramTroopBusinessMessage == null) || (paramMessageRecord == null)) {
-      return;
+    if (paramTroopBusinessMessage != null)
+    {
+      if (paramMessageRecord == null) {
+        return;
+      }
+      paramMessageRecord.saveExtInfoToExtStr("troop_msg_has", "1");
+      paramMessageRecord.saveExtInfoToExtStr("troop_msg_flag", String.valueOf(paramTroopBusinessMessage.jdField_a_of_type_Int));
+      paramMessageRecord.saveExtInfoToExtStr("troop_msg_head_url", paramTroopBusinessMessage.jdField_a_of_type_JavaLangString);
+      paramMessageRecord.saveExtInfoToExtStr("troop_msg_head_click_url", paramTroopBusinessMessage.jdField_b_of_type_JavaLangString);
+      paramMessageRecord.saveExtInfoToExtStr("troop_msg_nickname", paramTroopBusinessMessage.jdField_c_of_type_JavaLangString);
+      paramMessageRecord.saveExtInfoToExtStr("troop_msg_nick_color", String.valueOf(paramTroopBusinessMessage.jdField_b_of_type_Int));
+      paramMessageRecord.saveExtInfoToExtStr("troop_msg_rank_name", paramTroopBusinessMessage.jdField_d_of_type_JavaLangString);
+      paramMessageRecord.saveExtInfoToExtStr("troop_msg_rank_color", String.valueOf(paramTroopBusinessMessage.jdField_c_of_type_Int));
+      paramMessageRecord.saveExtInfoToExtStr("troop_msg_rank_bg_color", String.valueOf(paramTroopBusinessMessage.jdField_d_of_type_Int));
     }
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_has", "1");
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_flag", String.valueOf(paramTroopBusinessMessage.jdField_a_of_type_Int));
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_head_url", paramTroopBusinessMessage.jdField_a_of_type_JavaLangString);
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_head_click_url", paramTroopBusinessMessage.jdField_b_of_type_JavaLangString);
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_nickname", paramTroopBusinessMessage.jdField_c_of_type_JavaLangString);
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_nick_color", String.valueOf(paramTroopBusinessMessage.jdField_b_of_type_Int));
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_rank_name", paramTroopBusinessMessage.jdField_d_of_type_JavaLangString);
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_rank_color", String.valueOf(paramTroopBusinessMessage.jdField_c_of_type_Int));
-    paramMessageRecord.saveExtInfoToExtStr("troop_msg_rank_bg_color", String.valueOf(paramTroopBusinessMessage.jdField_d_of_type_Int));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopBusinessUtil
  * JD-Core Version:    0.7.0.1
  */

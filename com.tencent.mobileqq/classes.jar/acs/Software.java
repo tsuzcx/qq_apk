@@ -105,18 +105,20 @@ public final class Software
     paramJceOutputStream.write(this.sPrefix, 16);
     paramJceOutputStream.write(this.sFeedesc, 17);
     paramJceOutputStream.write(this.category, 18);
-    if (this.cpname != null) {
-      paramJceOutputStream.write(this.cpname, 19);
+    String str = this.cpname;
+    if (str != null) {
+      paramJceOutputStream.write(str, 19);
     }
     paramJceOutputStream.write(this.supportdevice, 20);
-    if (this.downloadCountDesc != null) {
-      paramJceOutputStream.write(this.downloadCountDesc, 21);
+    str = this.downloadCountDesc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 21);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acs.Software
  * JD-Core Version:    0.7.0.1
  */

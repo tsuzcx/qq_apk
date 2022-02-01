@@ -5,7 +5,6 @@ import android.os.Bundle;
 import com.tencent.mobileqq.observer.QZoneObserver;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.qboss.GetQbossRequest;
 import java.util.ArrayList;
 import mqq.app.MSFServlet;
 import mqq.app.Packet;
@@ -18,34 +17,42 @@ public class QzoneGetQbossServlet
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramFromServiceMsg != null) {}
-    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
+    int i;
+    if (paramFromServiceMsg != null) {
+      i = paramFromServiceMsg.getResultCode();
+    } else {
+      i = -1;
+    }
+    paramIntent = new Bundle();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("servlet result code is ");
+    localStringBuilder.append(i);
+    paramIntent.putString("msg", localStringBuilder.toString());
+    paramIntent.putString("requestType", this.jdField_a_of_type_JavaLangString);
+    paramIntent.putIntegerArrayList("appid", this.jdField_a_of_type_JavaUtilArrayList);
+    if (i == 1000)
     {
-      paramIntent = new Bundle();
-      paramIntent.putString("msg", "servlet result code is " + i);
-      paramIntent.putString("requestType", this.jdField_a_of_type_JavaLangString);
-      paramIntent.putIntegerArrayList("appid", this.jdField_a_of_type_JavaUtilArrayList);
-      if (i != 1000) {
-        break label148;
+      paramFromServiceMsg = GetQbossRequest.a(paramFromServiceMsg.getWupBuffer());
+      if (paramFromServiceMsg != null)
+      {
+        paramIntent.putInt("ret", 0);
+        paramIntent.putSerializable("data", paramFromServiceMsg);
+        notifyObserver(null, 1007, true, paramIntent, QZoneObserver.class);
+        return;
       }
-      paramFromServiceMsg = GetQbossRequest.onResponse(paramFromServiceMsg.getWupBuffer());
-      if (paramFromServiceMsg == null) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneGetQbossServlet", 2, "QZONE_GET_QBOSS_DATA fail, decode result is null");
       }
-      paramIntent.putInt("ret", 0);
-      paramIntent.putSerializable("data", paramFromServiceMsg);
-      notifyObserver(null, 1007, true, paramIntent, QZoneObserver.class);
+      paramIntent.putInt("ret", -2);
+      notifyObserver(null, 1007, false, paramIntent, QZoneObserver.class);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneGetQbossServlet", 2, "QZONE_GET_QBOSS_DATA fail, decode result is null");
-    }
-    paramIntent.putInt("ret", -2);
-    notifyObserver(null, 1007, false, paramIntent, QZoneObserver.class);
-    return;
-    label148:
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneGetQbossServlet", 2, "QZONE_GET_QBOSS_DATA fail, resultCode=" + i);
+    if (QLog.isColorLevel())
+    {
+      paramFromServiceMsg = new StringBuilder();
+      paramFromServiceMsg.append("QZONE_GET_QBOSS_DATA fail, resultCode=");
+      paramFromServiceMsg.append(i);
+      QLog.d("QzoneGetQbossServlet", 2, paramFromServiceMsg.toString());
     }
     paramIntent.putInt("ret", -3);
     notifyObserver(null, 1007, false, paramIntent, QZoneObserver.class);
@@ -66,17 +73,23 @@ public class QzoneGetQbossServlet
     paramIntent = (Intent)localObject;
     if (localObject == null)
     {
-      QLog.e("QzoneGetQbossServlet", 1, "onSend request encode result is null.cmd=" + localGetQbossRequest.uniKey());
+      paramIntent = new StringBuilder();
+      paramIntent.append("onSend request encode result is null.cmd=");
+      paramIntent.append(localGetQbossRequest.uniKey());
+      QLog.e("QzoneGetQbossServlet", 1, paramIntent.toString());
       paramIntent = new byte[4];
     }
     paramPacket.setTimeout(60000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + localGetQbossRequest.uniKey());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("SQQzoneSvc.");
+    ((StringBuilder)localObject).append(localGetQbossRequest.uniKey());
+    paramPacket.setSSOCommand(((StringBuilder)localObject).toString());
     paramPacket.putSendData(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QzoneGetQbossServlet
  * JD-Core Version:    0.7.0.1
  */

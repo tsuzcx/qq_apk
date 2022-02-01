@@ -31,7 +31,7 @@ public class LbsDataV2$PoiInfo
   
   public static PoiInfo clone(PoiInfo paramPoiInfo)
   {
-    LbsDataV2.GpsInfo localGpsInfo = null;
+    LbsDataV2.GpsInfo localGpsInfo1 = null;
     if (paramPoiInfo == null) {
       return null;
     }
@@ -40,10 +40,11 @@ public class LbsDataV2$PoiInfo
     localPoiInfo.dianPingId = paramPoiInfo.dianPingId;
     localPoiInfo.distance = paramPoiInfo.distance;
     localPoiInfo.districtCode = paramPoiInfo.districtCode;
-    if (paramPoiInfo.gpsInfo != null) {
-      localGpsInfo = paramPoiInfo.gpsInfo.clone();
+    LbsDataV2.GpsInfo localGpsInfo2 = paramPoiInfo.gpsInfo;
+    if (localGpsInfo2 != null) {
+      localGpsInfo1 = localGpsInfo2.clone();
     }
-    localPoiInfo.gpsInfo = localGpsInfo;
+    localPoiInfo.gpsInfo = localGpsInfo1;
     localPoiInfo.hotValue = paramPoiInfo.hotValue;
     localPoiInfo.phoneNumber = paramPoiInfo.phoneNumber;
     localPoiInfo.poiDefaultName = paramPoiInfo.poiDefaultName;
@@ -80,10 +81,58 @@ public class LbsDataV2$PoiInfo
   
   public String toString()
   {
-    if (this.gpsInfo != null) {
-      return " poiId: " + this.poiId + " poiName: " + this.poiName + " poiType: " + this.poiType + " poiTypeName: " + this.poiTypeName + " address: " + this.address + " districtCode: " + this.districtCode + " distance: " + this.distance + " phoneNumber: " + this.phoneNumber + "poiOrderType: " + this.poiOrderType + "poiNum: " + this.poiNum + " gpsInfo: " + this.gpsInfo.toString() + " ";
+    if (this.gpsInfo != null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" poiId: ");
+      localStringBuilder.append(this.poiId);
+      localStringBuilder.append(" poiName: ");
+      localStringBuilder.append(this.poiName);
+      localStringBuilder.append(" poiType: ");
+      localStringBuilder.append(this.poiType);
+      localStringBuilder.append(" poiTypeName: ");
+      localStringBuilder.append(this.poiTypeName);
+      localStringBuilder.append(" address: ");
+      localStringBuilder.append(this.address);
+      localStringBuilder.append(" districtCode: ");
+      localStringBuilder.append(this.districtCode);
+      localStringBuilder.append(" distance: ");
+      localStringBuilder.append(this.distance);
+      localStringBuilder.append(" phoneNumber: ");
+      localStringBuilder.append(this.phoneNumber);
+      localStringBuilder.append("poiOrderType: ");
+      localStringBuilder.append(this.poiOrderType);
+      localStringBuilder.append("poiNum: ");
+      localStringBuilder.append(this.poiNum);
+      localStringBuilder.append(" gpsInfo: ");
+      localStringBuilder.append(this.gpsInfo.toString());
+      localStringBuilder.append(" ");
+      return localStringBuilder.toString();
     }
-    return "poiId: " + this.poiId + "poiName: " + this.poiName + "poiType: " + this.poiType + "poiTypeName: " + this.poiTypeName + "address: " + this.address + "districtCode: " + this.districtCode + "distance: " + this.distance + "phoneNumber: " + this.phoneNumber + "poiOrderType: " + this.poiOrderType + "poiNum: " + this.poiNum + " dianPingId:" + this.dianPingId;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("poiId: ");
+    localStringBuilder.append(this.poiId);
+    localStringBuilder.append("poiName: ");
+    localStringBuilder.append(this.poiName);
+    localStringBuilder.append("poiType: ");
+    localStringBuilder.append(this.poiType);
+    localStringBuilder.append("poiTypeName: ");
+    localStringBuilder.append(this.poiTypeName);
+    localStringBuilder.append("address: ");
+    localStringBuilder.append(this.address);
+    localStringBuilder.append("districtCode: ");
+    localStringBuilder.append(this.districtCode);
+    localStringBuilder.append("distance: ");
+    localStringBuilder.append(this.distance);
+    localStringBuilder.append("phoneNumber: ");
+    localStringBuilder.append(this.phoneNumber);
+    localStringBuilder.append("poiOrderType: ");
+    localStringBuilder.append(this.poiOrderType);
+    localStringBuilder.append("poiNum: ");
+    localStringBuilder.append(this.poiNum);
+    localStringBuilder.append(" dianPingId:");
+    localStringBuilder.append(this.dianPingId);
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -107,17 +156,12 @@ public class LbsDataV2$PoiInfo
     paramParcel.writeString(this.province);
     paramParcel.writeString(this.city);
     paramParcel.writeString(this.district);
-    if (this.isRecomm) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      return;
-    }
+    paramParcel.writeByte((byte)this.isRecomm);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.LbsDataV2.PoiInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -17,41 +17,56 @@ class AdProxyImpl$3
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QLog.d("MiniLoadingAdManager", 1, "requestPreloadLoadingAd receive isSuc= " + paramBoolean);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("requestPreloadLoadingAd receive isSuc= ");
+    ((StringBuilder)localObject1).append(paramBoolean);
+    QLog.d("MiniLoadingAdManager", 1, ((StringBuilder)localObject1).toString());
     if (paramBoolean) {}
-    for (;;)
+    try
     {
-      try
+      Object localObject2 = (MiniAppAd.StGetAdRsp)paramJSONObject.get("response");
+      i = paramJSONObject.getInt("retCode");
+      localObject1 = paramJSONObject.getString("errMsg");
+      localObject2 = ((MiniAppAd.StGetAdRsp)localObject2).strAdsJson.get();
+      if (QLog.isColorLevel())
       {
-        Object localObject = (MiniAppAd.StGetAdRsp)paramJSONObject.get("response");
-        i = paramJSONObject.getInt("retCode");
-        String str = paramJSONObject.getString("errMsg");
-        localObject = ((MiniAppAd.StGetAdRsp)localObject).strAdsJson.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("MiniLoadingAdManager", 2, "requestPreloadLoadingAd receive retCode= " + i + " errMsg=" + str + " adJson=" + (String)localObject);
-        }
-        if ((i == 0) && (!TextUtils.isEmpty((CharSequence)localObject)))
-        {
-          MiniLoadingAdManager.downloadAndSaveLoadingAd((String)localObject, this.jdField_a_of_type_JavaLangString, this.b);
-          if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener != null) {
-            this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener.onPreloadAdReceive(i);
-          }
-          return;
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("requestPreloadLoadingAd receive retCode= ");
+        localStringBuilder.append(i);
+        localStringBuilder.append(" errMsg=");
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append(" adJson=");
+        localStringBuilder.append((String)localObject2);
+        QLog.d("MiniLoadingAdManager", 2, localStringBuilder.toString());
       }
-      catch (JSONException localJSONException) {}
-      if (paramJSONObject != null) {}
-      for (int i = paramJSONObject.optInt("retCode", -1); this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener != null; i = -1)
+      if ((i == 0) && (!TextUtils.isEmpty((CharSequence)localObject2)))
       {
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener.onPreloadAdReceive(i);
+        MiniLoadingAdManager.downloadAndSaveLoadingAd((String)localObject2, this.jdField_a_of_type_JavaLangString, this.b);
+        if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener != null) {
+          this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener.onPreloadAdReceive(i);
+        }
         return;
       }
+    }
+    catch (JSONException localJSONException)
+    {
+      int i;
+      label191:
+      break label191;
+    }
+    i = -1;
+    if (paramJSONObject != null) {
+      i = paramJSONObject.optInt("retCode", -1);
+    }
+    paramJSONObject = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener;
+    if (paramJSONObject != null) {
+      paramJSONObject.onPreloadAdReceive(i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.3
  * JD-Core Version:    0.7.0.1
  */

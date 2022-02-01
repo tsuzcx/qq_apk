@@ -22,16 +22,16 @@ public class ErrorCenter
   
   private void a(boolean paramBoolean1, int paramInt, String paramString, boolean paramBoolean2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoErrorErrorCenter$ErrorHandleCallback != null)
+    ErrorCenter.ErrorHandleCallback localErrorHandleCallback = this.jdField_a_of_type_ComTencentMobileqqShortvideoErrorErrorCenter$ErrorHandleCallback;
+    if (localErrorHandleCallback != null)
     {
-      if (paramBoolean1) {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoErrorErrorCenter$ErrorHandleCallback.a(paramInt, paramString, paramBoolean2);
+      if (paramBoolean1)
+      {
+        localErrorHandleCallback.a(paramInt, paramString, paramBoolean2);
+        return;
       }
+      localErrorHandleCallback.b(paramInt, paramString, paramBoolean2);
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoErrorErrorCenter$ErrorHandleCallback.b(paramInt, paramString, paramBoolean2);
   }
   
   public void a()
@@ -46,19 +46,26 @@ public class ErrorCenter
   
   public boolean a(Object paramObject, int paramInt, String paramString)
   {
-    if ((paramObject instanceof AudioCapture)) {}
-    switch (paramInt)
+    boolean bool2 = paramObject instanceof AudioCapture;
+    boolean bool1 = true;
+    if (bool2)
     {
-    default: 
-      return true;
+      if (paramInt != 3) {
+        return true;
+      }
+      paramObject = new StringBuilder();
+      paramObject.append(HardCodeUtil.a(2131704316));
+      paramObject.append(2001);
+      paramObject.append("）");
+      a(true, 2001, paramObject.toString(), true);
+      bool1 = false;
     }
-    a(true, 2001, HardCodeUtil.a(2131704225) + 2001 + "）", true);
-    return false;
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.error.ErrorCenter
  * JD-Core Version:    0.7.0.1
  */

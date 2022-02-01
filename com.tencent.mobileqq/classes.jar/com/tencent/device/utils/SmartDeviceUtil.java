@@ -75,94 +75,109 @@ public class SmartDeviceUtil
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, DeviceInfo paramDeviceInfo, String paramString, Bundle paramBundle)
   {
-    if (paramString == null) {}
-    do
+    if (paramString == null) {
+      return;
+    }
+    Object localObject = URLUtil.a(paramString);
+    if (localObject == null) {
+      return;
+    }
+    String str1 = (String)((Map)localObject).get("from");
+    paramString = str1;
+    if (TextUtils.isEmpty(str1)) {
+      paramString = "1";
+    }
+    for (;;)
     {
-      do
+      try
       {
-        return;
-        localObject = URLUtil.a(paramString);
-      } while (localObject == null);
-      str1 = (String)((Map)localObject).get("from");
-      paramString = str1;
-      if (TextUtils.isEmpty(str1)) {
-        paramString = "1";
-      }
-      for (;;)
-      {
-        try
+        if ("2".equals(paramString))
         {
-          if (!"2".equals(paramString)) {
-            break;
-          }
           paramDeviceInfo = new Intent();
           paramDeviceInfo.putExtra("nickname", paramQQAppInterface.getCurrentNickname());
           paramDeviceInfo.putExtra("bitmap", paramQQAppInterface.getFaceBitmap(paramQQAppInterface.getCurrentAccountUin(), (byte)2, false));
-          paramString = BaseApplicationImpl.getApplication().getSharedPreferences("smartdevice_entry", 4).getString("square_url_" + paramQQAppInterface.getCurrentAccountUin(), "");
-          if (!TextUtils.isEmpty(paramString))
-          {
+          paramString = BaseApplicationImpl.getApplication().getSharedPreferences("smartdevice_entry", 4);
+          paramBundle = new StringBuilder();
+          paramBundle.append("square_url_");
+          paramBundle.append(paramQQAppInterface.getCurrentAccountUin());
+          paramString = paramString.getString(paramBundle.toString(), "");
+          bool = TextUtils.isEmpty(paramString);
+          if (!bool) {
             paramDeviceInfo.putExtra("url", paramString);
-            SmartDevicePluginLoader.a().a((Activity)paramContext, paramQQAppInterface, paramQQAppInterface.getAccount(), paramDeviceInfo, "com.tencent.device.activities.DeviceSquareActivity", 0, null, SmartDevicePluginProxyActivity.class);
-            SmartDeviceReport.a(null, "Usr_NewDevice_Aio", 2, 0, 0);
-            return;
+          } else {
+            paramDeviceInfo.putExtra("url", "https://qzs.qq.com/open/mobile/iot_public_device_2/html/devDiscover.html");
           }
-        }
-        catch (Exception paramQQAppInterface)
-        {
-          LogUtility.c("SmartDeviceUtil", "jumpLightApp, Exception >>>", paramQQAppInterface);
+          SmartDevicePluginLoader.a().a((Activity)paramContext, paramQQAppInterface, paramQQAppInterface.getAccount(), paramDeviceInfo, "com.tencent.device.activities.DeviceSquareActivity", 0, null, SmartDevicePluginProxyActivity.class);
+          SmartDeviceReport.a(null, "Usr_NewDevice_Aio", 2, 0, 0);
           return;
         }
-        paramDeviceInfo.putExtra("url", "https://qzs.qq.com/open/mobile/iot_public_device_2/html/devDiscover.html");
+        boolean bool = "3".equals(paramString);
+        if (bool)
+        {
+          paramString = (String)((Map)localObject).get("din");
+          paramDeviceInfo = new Intent(paramContext, SplashActivity.class);
+          paramDeviceInfo.putExtra("fragment_id", 1);
+          paramDeviceInfo.putExtra("tab_index", FrameControllerUtil.c);
+          paramDeviceInfo.putExtra("from", "smartdevice");
+          paramDeviceInfo.setFlags(67108864);
+          ((SmartDeviceProxyMgr)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(paramString);
+          if ((paramContext instanceof SplashActivity))
+          {
+            paramQQAppInterface = (SplashActivity)paramContext;
+            paramDeviceInfo.putExtra("switch_anim", true);
+            paramQQAppInterface.openMainFragment(paramDeviceInfo);
+            return;
+          }
+          paramContext.startActivity(paramDeviceInfo);
+          if ((paramContext instanceof Activity)) {
+            ((Activity)paramContext).finish();
+          }
+        }
+        else
+        {
+          paramString = (String)((Map)localObject).get("hash");
+          String str2 = (String)((Map)localObject).get("param");
+          String str3 = (String)((Map)localObject).get("script");
+          str1 = (String)((Map)localObject).get("din");
+          localObject = new JSONObject();
+          bool = TextUtils.isEmpty(paramString);
+          if (!bool) {
+            ((JSONObject)localObject).put("hash", URLDecoder.decode(paramString, "UTF-8"));
+          }
+          if (!TextUtils.isEmpty(str2)) {
+            ((JSONObject)localObject).put("param", URLDecoder.decode(str2, "UTF-8"));
+          }
+          if (!TextUtils.isEmpty(str3)) {
+            ((JSONObject)localObject).put("script", URLDecoder.decode(str3, "UTF-8"));
+          }
+          if (paramBundle != null) {
+            break label564;
+          }
+          paramString = new Bundle();
+          paramBundle = ((JSONObject)localObject).toString();
+          if (!TextUtils.isEmpty(paramBundle)) {
+            paramString.putString("lightapp_init", paramBundle);
+          }
+          paramBundle = (SmartDeviceProxyMgr)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
+          if (paramDeviceInfo != null) {
+            break label570;
+          }
+          paramQQAppInterface = paramBundle.a(Long.parseLong(str1));
+          paramBundle.a((Activity)paramContext, paramQQAppInterface, false, paramString);
+          return;
+        }
       }
-      if (!"3".equals(paramString)) {
-        break;
-      }
-      paramString = (String)((Map)localObject).get("din");
-      paramDeviceInfo = new Intent(paramContext, SplashActivity.class);
-      paramDeviceInfo.putExtra("fragment_id", 1);
-      paramDeviceInfo.putExtra("tab_index", FrameControllerUtil.c);
-      paramDeviceInfo.putExtra("from", "smartdevice");
-      paramDeviceInfo.setFlags(67108864);
-      ((SmartDeviceProxyMgr)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(paramString);
-      if ((paramContext instanceof SplashActivity))
+      catch (Exception paramQQAppInterface)
       {
-        paramQQAppInterface = (SplashActivity)paramContext;
-        paramDeviceInfo.putExtra("switch_anim", true);
-        paramQQAppInterface.openMainFragment(paramDeviceInfo);
-        return;
+        LogUtility.c("SmartDeviceUtil", "jumpLightApp, Exception >>>", paramQQAppInterface);
       }
-      paramContext.startActivity(paramDeviceInfo);
-    } while (!(paramContext instanceof Activity));
-    ((Activity)paramContext).finish();
-    return;
-    paramString = (String)((Map)localObject).get("hash");
-    String str2 = (String)((Map)localObject).get("param");
-    String str3 = (String)((Map)localObject).get("script");
-    String str1 = (String)((Map)localObject).get("din");
-    Object localObject = new JSONObject();
-    if (!TextUtils.isEmpty(paramString)) {
-      ((JSONObject)localObject).put("hash", URLDecoder.decode(paramString, "UTF-8"));
+      return;
+      label564:
+      paramString = paramBundle;
+      continue;
+      label570:
+      paramQQAppInterface = paramDeviceInfo;
     }
-    if (!TextUtils.isEmpty(str2)) {
-      ((JSONObject)localObject).put("param", URLDecoder.decode(str2, "UTF-8"));
-    }
-    if (!TextUtils.isEmpty(str3)) {
-      ((JSONObject)localObject).put("script", URLDecoder.decode(str3, "UTF-8"));
-    }
-    paramString = paramBundle;
-    if (paramBundle == null) {
-      paramString = new Bundle();
-    }
-    paramBundle = ((JSONObject)localObject).toString();
-    if (!TextUtils.isEmpty(paramBundle)) {
-      paramString.putString("lightapp_init", paramBundle);
-    }
-    paramBundle = (SmartDeviceProxyMgr)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
-    paramQQAppInterface = paramDeviceInfo;
-    if (paramDeviceInfo == null) {
-      paramQQAppInterface = paramBundle.a(Long.parseLong(str1));
-    }
-    paramBundle.a((Activity)paramContext, paramQQAppInterface, false, paramString);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, JSONObject paramJSONObject, String paramString)
@@ -209,7 +224,7 @@ public class SmartDeviceUtil
   {
     ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", paramAppRuntime.getAccount(), "smart_device_proxy.cgi");
     paramBundle.putString("skey", ((TicketManager)paramAppRuntime.getManager(2)).getSkey(paramAppRuntime.getAccount()));
-    paramBundle.putString("version", "8.5.5");
+    paramBundle.putString("version", "8.7.0");
     Object localObject = new StringBuilder();
     Iterator localIterator = paramBundle.keySet().iterator();
     while (localIterator.hasNext())
@@ -221,10 +236,18 @@ public class SmartDeviceUtil
       if (((StringBuilder)localObject).length() != 0) {
         ((StringBuilder)localObject).append("&");
       }
-      ((StringBuilder)localObject).append(str).append("=").append(URLEncoder.encode(String.valueOf(paramBundle.get(str))));
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("=");
+      ((StringBuilder)localObject).append(URLEncoder.encode(String.valueOf(paramBundle.get(str))));
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("SmartDeviceUtil", 2, "url2=" + paramString1 + "?" + ((StringBuilder)localObject).toString());
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("url2=");
+      paramBundle.append(paramString1);
+      paramBundle.append("?");
+      paramBundle.append(((StringBuilder)localObject).toString());
+      QLog.d("SmartDeviceUtil", 2, paramBundle.toString());
     }
     paramBundle = new smart_device_proxy.CgiReq();
     paramBundle.str_cgiName.set(paramString1);
@@ -258,7 +281,7 @@ public class SmartDeviceUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.utils.SmartDeviceUtil
  * JD-Core Version:    0.7.0.1
  */

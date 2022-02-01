@@ -36,7 +36,14 @@ public class ThreeDimFilter
   
   private Bitmap getNextFrame(int paramInt)
   {
-    new StringBuilder().append(this.materialId).append(File.separator).append(this.item.id).append("_").append(paramInt).append(".png").toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.materialId);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(this.item.id);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(".png");
+    localStringBuilder.toString();
     return VideoMemoryManager.getInstance().loadImage(this.item.id, paramInt);
   }
   
@@ -69,21 +76,22 @@ public class ThreeDimFilter
     if ((paramObject instanceof PTDetectInfo))
     {
       paramObject = (PTDetectInfo)paramObject;
-      if ((paramObject.faceAngles != null) && (paramObject.faceAngles.length >= 3)) {}
+      if (paramObject.faceAngles != null)
+      {
+        if (paramObject.faceAngles.length < 3) {
+          return;
+        }
+        addParam(new UniformParam.Float3fParam("texRotate", paramObject.faceAngles[0] * 2.0F, paramObject.faceAngles[1] * 2.0F, paramObject.faceAngles[2]));
+        paramObject = getNextFrame(0);
+        this.mSphere.loadGLTexture(paramObject);
+        VideoMemoryManager.getInstance().recycleBitmap(this.item.id, paramObject);
+      }
     }
-    else
-    {
-      return;
-    }
-    addParam(new UniformParam.Float3fParam("texRotate", paramObject.faceAngles[0] * 2.0F, paramObject.faceAngles[1] * 2.0F, paramObject.faceAngles[2]));
-    paramObject = getNextFrame(0);
-    this.mSphere.loadGLTexture(paramObject);
-    VideoMemoryManager.getInstance().recycleBitmap(this.item.id, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.ThreeDimFilter
  * JD-Core Version:    0.7.0.1
  */

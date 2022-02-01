@@ -2,8 +2,8 @@ package com.tencent.hippy.qq.module;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.CacheModule;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.kandian.biz.viola.module.CacheModule;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.Promise;
@@ -49,19 +49,22 @@ public class QQCacheModule
       }
       return;
     }
-    paramString = FileUtils.a("viola_cache_file_" + paramString + "_" + ((AppRuntime)localObject).getAccount());
-    if ((paramString instanceof String)) {}
-    for (paramString = (String)paramString;; paramString = null)
-    {
-      localObject = paramString;
-      if (TextUtils.isEmpty(paramString)) {
-        localObject = new JSONObject().toString();
-      }
-      if ((paramPromise == null) || (!paramPromise.isCallback())) {
-        break;
-      }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("viola_cache_file_");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(((AppRuntime)localObject).getAccount());
+    localObject = FileUtils.readObject(localStringBuilder.toString());
+    paramString = null;
+    if ((localObject instanceof String)) {
+      paramString = (String)localObject;
+    }
+    localObject = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      localObject = new JSONObject().toString();
+    }
+    if ((paramPromise != null) && (paramPromise.isCallback())) {
       paramPromise.resolve(localObject);
-      return;
     }
   }
   
@@ -77,38 +80,26 @@ public class QQCacheModule
         localHippyMap.pushString("retmsg", "failed to getItem");
         paramPromise.resolve(localHippyMap);
       }
-    }
-    JSONObject localJSONObject1;
-    do
-    {
       return;
-      localJSONObject1 = new JSONObject();
-      JSONObject localJSONObject2 = new JSONObject();
-      for (;;)
+    }
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    try
+    {
+      JSONArray localJSONArray = paramJSONObject.getJSONArray("keys");
+      int i = 0;
+      while (i < localJSONArray.length())
       {
-        try
-        {
-          JSONArray localJSONArray = paramJSONObject.getJSONArray("keys");
-          i = 0;
-          if (i >= localJSONArray.length()) {
-            continue;
-          }
-          str = localJSONArray.getString(i);
-          paramJSONObject = FileUtils.a("viola_cache_file_" + str + "_" + localAppRuntime.getAccount());
-          if (!(paramJSONObject instanceof String)) {
-            continue;
-          }
-          paramJSONObject = (String)paramJSONObject;
-        }
-        catch (JSONException paramJSONObject)
-        {
-          int i;
-          String str;
-          Object localObject;
-          QLog.e("CacheModule", 1, "CacheModule multiGet:", paramJSONObject);
-          continue;
-          paramJSONObject = null;
-          continue;
+        String str = localJSONArray.getString(i);
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("viola_cache_file_");
+        paramJSONObject.append(str);
+        paramJSONObject.append("_");
+        paramJSONObject.append(localAppRuntime.getAccount());
+        Object localObject = FileUtils.readObject(paramJSONObject.toString());
+        paramJSONObject = null;
+        if ((localObject instanceof String)) {
+          paramJSONObject = (String)localObject;
         }
         localObject = paramJSONObject;
         if (TextUtils.isEmpty(paramJSONObject)) {
@@ -118,14 +109,21 @@ public class QQCacheModule
         i += 1;
       }
       localJSONObject1.put("data", localJSONObject2);
-    } while ((paramPromise == null) || (!paramPromise.isCallback()));
-    localHippyMap.pushJSONObject(localJSONObject1);
-    paramPromise.resolve(localHippyMap);
+    }
+    catch (JSONException paramJSONObject)
+    {
+      QLog.e("CacheModule", 1, "CacheModule multiGet:", paramJSONObject);
+    }
+    if ((paramPromise != null) && (paramPromise.isCallback()))
+    {
+      localHippyMap.pushJSONObject(localJSONObject1);
+      paramPromise.resolve(localHippyMap);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQCacheModule
  * JD-Core Version:    0.7.0.1
  */

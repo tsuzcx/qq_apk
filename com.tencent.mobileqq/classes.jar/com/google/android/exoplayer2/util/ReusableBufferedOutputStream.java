@@ -21,34 +21,27 @@ public final class ReusableBufferedOutputStream
   public void close()
   {
     this.closed = true;
-    Object localObject1 = null;
     try
     {
       flush();
-      try
-      {
-        label11:
-        this.out.close();
-        localObject2 = localObject1;
-      }
-      catch (Throwable localThrowable2)
-      {
-        for (;;)
-        {
-          Object localObject2;
-          if (localObject1 != null) {
-            Object localObject3 = localObject1;
-          }
-        }
-      }
-      if (localObject2 != null) {
-        Util.sneakyThrow(localObject2);
-      }
-      return;
+      Object localObject1 = null;
     }
-    catch (Throwable localThrowable1)
+    catch (Throwable localThrowable1) {}
+    Object localObject2;
+    try
     {
-      break label11;
+      this.out.close();
+      localObject2 = localThrowable1;
+    }
+    catch (Throwable localThrowable2)
+    {
+      localObject2 = localThrowable1;
+      if (localThrowable1 == null) {
+        localObject2 = localThrowable2;
+      }
+    }
+    if (localObject2 != null) {
+      Util.sneakyThrow((Throwable)localObject2);
     }
   }
   
@@ -62,7 +55,7 @@ public final class ReusableBufferedOutputStream
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.util.ReusableBufferedOutputStream
  * JD-Core Version:    0.7.0.1
  */

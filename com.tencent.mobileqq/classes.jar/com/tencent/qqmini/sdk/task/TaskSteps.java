@@ -61,11 +61,10 @@ public final class TaskSteps
   {
     int i = ((Collection)this.subTasks).size();
     int j = this.currentStepIndex;
-    if (j < 0) {}
-    while (i <= j) {
-      return null;
+    if ((j >= 0) && (i > j)) {
+      return (BaseTask)this.subTasks.get(j);
     }
-    return (BaseTask)this.subTasks.get(this.currentStepIndex);
+    return null;
   }
   
   @NotNull
@@ -84,24 +83,26 @@ public final class TaskSteps
   {
     int i = ((Collection)this.subTasks).size();
     int j = this.currentStepIndex;
-    if (j < 0) {}
-    while (i <= j) {
-      return false;
-    }
-    return true;
+    return (j >= 0) && (i > j);
   }
   
   public final void start()
   {
-    if (this.currentStepIndex != -1) {
-      throw ((Throwable)new IllegalStateException("already executing " + getCurrentStep() + '!'));
+    if (this.currentStepIndex == -1)
+    {
+      executeNextStep();
+      return;
     }
-    executeNextStep();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("already executing ");
+    localStringBuilder.append(getCurrentStep());
+    localStringBuilder.append('!');
+    throw ((Throwable)new IllegalStateException(localStringBuilder.toString()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.task.TaskSteps
  * JD-Core Version:    0.7.0.1
  */

@@ -47,35 +47,42 @@ public class IVOfflinePluginImpl
   
   private boolean checkModel()
   {
-    if ((!this.isCheckModel) && (this.mBusinessId != null) && (this.mAuthConfig != null))
+    if ((!this.isCheckModel) && (this.mBusinessId != null))
     {
-      this.isCheckModel = true;
-      Object localObject1 = this.mAuthConfig.a("ex_offline", "");
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      Object localObject1 = this.mAuthConfig;
+      if (localObject1 != null)
       {
-        localObject1 = ((String)localObject1).split(",");
-        Object localObject2 = Build.BRAND;
-        String str2 = Build.MODEL;
-        String str1 = Build.VERSION.RELEASE;
-        localObject2 = new StringBuilder((String)localObject2);
-        ((StringBuilder)localObject2).append(" ").append(str2);
-        str2 = ((StringBuilder)localObject2).toString().toLowerCase();
-        str1 = (" " + str1).toLowerCase();
-        int j = localObject1.length;
-        int i = 0;
-        while (i < j)
+        this.isCheckModel = true;
+        localObject1 = ((AuthorizeConfig)localObject1).a("ex_offline", "");
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
         {
-          localObject2 = localObject1[i].toLowerCase();
-          if ((((String)localObject2).contains(str2)) && (str1.startsWith((String)localObject2)))
+          localObject1 = ((String)localObject1).split(",");
+          Object localObject2 = Build.BRAND;
+          String str2 = Build.MODEL;
+          String str1 = Build.VERSION.RELEASE;
+          localObject2 = new StringBuilder((String)localObject2);
+          ((StringBuilder)localObject2).append(" ");
+          ((StringBuilder)localObject2).append(str2);
+          str2 = ((StringBuilder)localObject2).toString().toLowerCase();
+          ((StringBuilder)localObject2).append(" ");
+          ((StringBuilder)localObject2).append(str1);
+          str1 = ((StringBuilder)localObject2).toString().toLowerCase();
+          int j = localObject1.length;
+          int i = 0;
+          while (i < j)
           {
-            if (QLog.isColorLevel()) {
-              QLog.d(this.TAG, 2, "*****checkOfflineUrl: in ex offline");
+            localObject2 = localObject1[i].toLowerCase();
+            if ((((String)localObject2).contains(str2)) && (str1.startsWith((String)localObject2)))
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d(this.TAG, 2, "*****checkOfflineUrl: in ex offline");
+              }
+              this.mBusinessId = null;
+              this.ex = true;
+              return true;
             }
-            this.mBusinessId = null;
-            this.ex = true;
-            return true;
+            i += 1;
           }
-          i += 1;
         }
       }
     }
@@ -84,8 +91,10 @@ public class IVOfflinePluginImpl
   
   private void checkOfflineUp(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (!isCheckUpByNative(paramString)) {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    if (!isCheckUpByNative(paramString)) {
       return;
     }
     if (QLog.isColorLevel()) {
@@ -96,8 +105,10 @@ public class IVOfflinePluginImpl
   
   private void checkOfflineUpNotCallback(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (!isCheckUpByNative(paramString)) {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    if (!isCheckUpByNative(paramString)) {
       return;
     }
     if (QLog.isColorLevel()) {
@@ -111,45 +122,48 @@ public class IVOfflinePluginImpl
     if (QLog.isColorLevel()) {
       QLog.i(this.TAG, 2, "checkOfflineUrl");
     }
-    if ((TextUtils.isEmpty(paramString)) || (!Uri.parse(paramString).isHierarchical())) {}
-    for (;;)
+    if (!TextUtils.isEmpty(paramString))
     {
-      return paramString;
+      if (!Uri.parse(paramString).isHierarchical()) {
+        return paramString;
+      }
       try
       {
         this.mBusinessId = Uri.parse(paramString).getQueryParameter("_bid");
         if (this.mBid == null) {
           this.mBid = this.mBusinessId;
         }
-        if (TextUtils.isEmpty(this.mBusinessId))
-        {
-          this.mBusinessId = this.mAuthConfig.a(paramString);
-          if (this.mBid == null) {
-            this.mBid = this.mBusinessId;
-          }
-          if (!TextUtils.isEmpty(this.mBusinessId))
-          {
-            String str1 = HtmlOffline.a(paramString, "_bid=" + this.mBusinessId);
-            if (checkModel()) {
-              continue;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i(this.TAG, 2, "checkOfflineUrl:");
-            }
-            return str1;
-          }
-        }
       }
       catch (Exception localException)
       {
-        for (;;)
+        localException.printStackTrace();
+      }
+      if (TextUtils.isEmpty(this.mBusinessId))
+      {
+        this.mBusinessId = this.mAuthConfig.a(paramString);
+        if (this.mBid == null) {
+          this.mBid = this.mBusinessId;
+        }
+        if (!TextUtils.isEmpty(this.mBusinessId))
         {
-          localException.printStackTrace();
-          continue;
-          String str2 = paramString;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("_bid=");
+          ((StringBuilder)localObject).append(this.mBusinessId);
+          localObject = HtmlOffline.a(paramString, ((StringBuilder)localObject).toString());
+          break label156;
         }
       }
+      Object localObject = paramString;
+      label156:
+      if (checkModel()) {
+        return paramString;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i(this.TAG, 2, "checkOfflineUrl:");
+      }
+      return localObject;
     }
+    return paramString;
   }
   
   @SuppressLint({"HandlerLeak"})
@@ -160,43 +174,43 @@ public class IVOfflinePluginImpl
   
   private boolean isCheckUpByNative(String paramString)
   {
-    Object localObject2 = "0";
+    Object localObject1;
     try
     {
       String str = Uri.parse(paramString).getQueryParameter("_duck");
-      localObject2 = str;
-      if (TextUtils.isEmpty(str)) {
-        localObject2 = this.mAuthConfig.b(paramString);
-      }
-      if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).equals("1")))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("webviewLoadUrl", 4, "1 checkOfflineUp _duck=1");
-        }
-        return false;
-      }
     }
     catch (Exception localException)
     {
-      for (;;)
+      localException.printStackTrace();
+      if (QLog.isColorLevel())
       {
-        localException.printStackTrace();
-        Object localObject1 = localObject2;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("QQBrowserActivity", 2, "checkOfflineUpr:url parse exception:" + paramString);
-          localObject1 = localObject2;
-        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("checkOfflineUpr:url parse exception:");
+        ((StringBuilder)localObject1).append(paramString);
+        QLog.i("QQBrowserActivity", 2, ((StringBuilder)localObject1).toString());
       }
+      localObject1 = "0";
+    }
+    Object localObject2 = localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      localObject2 = this.mAuthConfig.b(paramString);
+    }
+    if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).equals("1")))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("webviewLoadUrl", 4, "1 checkOfflineUp _duck=1");
+      }
+      return false;
     }
     return true;
   }
   
   private void reloadCurrentUrl()
   {
-    if (this.mWebView != null)
+    WebView localWebView = this.mWebView;
+    if (localWebView != null)
     {
-      this.mWebView.loadUrl(this.mWebView.getUrl());
+      localWebView.loadUrl(localWebView.getUrl());
       if (QLog.isColorLevel()) {
         QLog.i(this.TAG, 2, "reloadCurrentUrl");
       }
@@ -220,23 +234,22 @@ public class IVOfflinePluginImpl
   
   public boolean isOfflineUrl(String paramString)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    if (TextUtils.isEmpty(this.mBusinessId))
+    boolean bool2 = TextUtils.isEmpty(this.mBusinessId);
+    boolean bool1 = true;
+    if (bool2)
     {
       checkOfflineUrl(paramString);
-      if (TextUtils.isEmpty(this.mBusinessId)) {
-        break label68;
-      }
+      bool1 = true ^ TextUtils.isEmpty(this.mBusinessId);
     }
-    label68:
-    for (bool1 = bool2;; bool1 = false)
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i(this.TAG, 2, "isOfflineUrl = " + bool1);
-      }
-      return bool1;
+      paramString = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isOfflineUrl = ");
+      localStringBuilder.append(bool1);
+      QLog.i(paramString, 2, localStringBuilder.toString());
     }
+    return bool1;
   }
   
   public void onDestroy()
@@ -246,118 +259,118 @@ public class IVOfflinePluginImpl
   
   public WebResourceResponse shouldInterceptRequest(String paramString)
   {
-    int i = 0;
-    int k = 0;
     if (QLog.isColorLevel()) {
       QLog.d(this.TAG, 2, "shouldInterceptRequest");
     }
-    if ((this.ex) || (TextUtils.isEmpty(paramString)) || (!paramString.startsWith("http"))) {}
-    label285:
-    do
+    if ((!this.ex) && (!TextUtils.isEmpty(paramString)))
     {
-      for (;;)
-      {
+      if (!paramString.startsWith("http")) {
         return null;
-        if ((!TextUtils.isEmpty(this.mBusinessId)) || ((!TextUtils.isEmpty(paramString)) && (paramString.contains("_bid="))))
+      }
+      if ((TextUtils.isEmpty(this.mBusinessId)) && ((TextUtils.isEmpty(paramString)) || (!paramString.contains("_bid="))))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(this.TAG, 2, "empty bid, shouldInterceptRequest return null");
+        }
+        return null;
+      }
+      if (checkModel())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i(this.TAG, 2, "checkModel, return null");
+        }
+        return null;
+      }
+      CharSequence localCharSequence;
+      try
+      {
+        String str = Uri.parse(paramString).getQueryParameter("_bid");
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        localCharSequence = null;
+      }
+      Object localObject = localCharSequence;
+      if (TextUtils.isEmpty(localCharSequence)) {
+        localObject = this.mBusinessId;
+      }
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        return null;
+      }
+      boolean bool = TextUtils.isEmpty(this.mBusinessId);
+      int k = 1;
+      int m = 0;
+      int j;
+      if ((!bool) && (((String)localObject).equals(this.mBusinessId)))
+      {
+        j = 0;
+      }
+      else
+      {
+        checkOfflineUpNotCallback(paramString);
+        if (this.mExBusinessIdList == null) {
+          this.mExBusinessIdList = new ArrayList();
+        }
+        int n = this.mExBusinessIdList.size();
+        j = 0;
+        int i;
+        for (;;)
         {
-          if (checkModel())
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.i(this.TAG, 2, "checkModel, return null");
-            return null;
+          i = m;
+          if (j >= n) {
+            break;
           }
-          try
+          if (((String)localObject).equals(this.mExBusinessIdList.get(j)))
           {
-            String str1 = Uri.parse(paramString).getQueryParameter("_bid");
-            str2 = str1;
-            if (TextUtils.isEmpty(str1)) {
-              str2 = this.mBusinessId;
-            }
-            if (!TextUtils.isEmpty(str2)) {
-              if ((TextUtils.isEmpty(this.mBusinessId)) || (!str2.equals(this.mBusinessId)))
-              {
-                checkOfflineUpNotCallback(paramString);
-                if (this.mExBusinessIdList == null) {
-                  this.mExBusinessIdList = new ArrayList();
-                }
-                int m = this.mExBusinessIdList.size();
-                i = 0;
-                int j = k;
-                if (i < m)
-                {
-                  if (str2.equals(this.mExBusinessIdList.get(i))) {
-                    j = 1;
-                  }
-                }
-                else
-                {
-                  if (j == 0) {
-                    this.mExBusinessIdList.add(str2);
-                  }
-                  if ((j != 0) || (HtmlOffline.c(str2))) {
-                    break label285;
-                  }
-                  if (!QLog.isColorLevel()) {
-                    continue;
-                  }
-                  QLog.d(this.TAG, 2, "verifySign fail to reload");
-                  return null;
-                }
-              }
-            }
-          }
-          catch (Exception localException)
-          {
-            String str2;
-            for (;;)
-            {
-              localException.printStackTrace();
-              Object localObject = null;
-              continue;
-              i += 1;
-            }
             i = 1;
-            if (((this.mOfflineLoadMode == 3) || (i != 0)) && (!HtmlOffline.a(str2, paramString)))
-            {
-              reloadCurrentUrl();
-              if (QLog.isColorLevel())
-              {
-                QLog.d(this.TAG, 2, "shouldInterceptRequest verify single fail to reload");
-                return null;
-              }
+            break;
+          }
+          j += 1;
+        }
+        if (i == 0) {
+          this.mExBusinessIdList.add(localObject);
+        }
+        j = k;
+        if (i == 0)
+        {
+          j = k;
+          if (!HtmlOffline.c((String)localObject))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d(this.TAG, 2, "verifySign fail to reload");
             }
-            else
-            {
-              paramString = HtmlOffline.a(str2, paramString);
-              if (paramString == null)
-              {
-                if (QLog.isColorLevel())
-                {
-                  QLog.d(this.TAG, 2, "shouldInterceptRequest return null");
-                  return null;
-                }
-              }
-              else
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d(this.TAG, 2, "shouldInterceptRequest , return local value");
-                }
-                return new WebResourceResponse(paramString.jdField_a_of_type_JavaLangString, "utf-8", paramString.jdField_a_of_type_JavaIoInputStream);
-              }
-            }
+            return null;
           }
         }
       }
-    } while (!QLog.isColorLevel());
-    QLog.d(this.TAG, 2, "empty bid, shouldInterceptRequest return null");
+      if (((this.mOfflineLoadMode == 3) || (j != 0)) && (!HtmlOffline.a((String)localObject, paramString)))
+      {
+        reloadCurrentUrl();
+        if (QLog.isColorLevel()) {
+          QLog.d(this.TAG, 2, "shouldInterceptRequest verify single fail to reload");
+        }
+        return null;
+      }
+      paramString = HtmlOffline.a((String)localObject, paramString);
+      if (paramString == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(this.TAG, 2, "shouldInterceptRequest return null");
+        }
+        return null;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(this.TAG, 2, "shouldInterceptRequest , return local value");
+      }
+      return new WebResourceResponse(paramString.jdField_a_of_type_JavaLangString, "utf-8", paramString.jdField_a_of_type_JavaIoInputStream);
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.pluginimpl.IVOfflinePluginImpl
  * JD-Core Version:    0.7.0.1
  */

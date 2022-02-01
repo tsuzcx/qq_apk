@@ -14,40 +14,43 @@ import mqq.app.MobileQQ;
 public class QQIndividualityPluginProxyService
   extends PluginProxyService
 {
-  private static IndividualityRemoteCommand jdField_a_of_type_CooperationQqindividualityIpcIndividualityRemoteCommand = null;
-  private static QQIndividualityRemoteProxy jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy = null;
+  private static IndividualityRemoteCommand jdField_a_of_type_CooperationQqindividualityIpcIndividualityRemoteCommand;
+  private static QQIndividualityRemoteProxy jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy;
   
   public static IndividualityRemoteCommand a()
   {
-    if (jdField_a_of_type_CooperationQqindividualityIpcIndividualityRemoteCommand == null) {}
-    try
-    {
-      if (jdField_a_of_type_CooperationQqindividualityIpcIndividualityRemoteCommand == null) {
-        jdField_a_of_type_CooperationQqindividualityIpcIndividualityRemoteCommand = new IndividualityRemoteCommand(BaseApplicationImpl.getApplication().getRuntime());
+    if (jdField_a_of_type_CooperationQqindividualityIpcIndividualityRemoteCommand == null) {
+      try
+      {
+        if (jdField_a_of_type_CooperationQqindividualityIpcIndividualityRemoteCommand == null) {
+          jdField_a_of_type_CooperationQqindividualityIpcIndividualityRemoteCommand = new IndividualityRemoteCommand(BaseApplicationImpl.getApplication().getRuntime());
+        }
       }
-      return jdField_a_of_type_CooperationQqindividualityIpcIndividualityRemoteCommand;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_CooperationQqindividualityIpcIndividualityRemoteCommand;
   }
   
   public static QQIndividualityRemoteProxy a()
   {
-    if (jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy == null) {}
-    try
-    {
-      if (jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy == null) {
-        jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy = new QQIndividualityRemoteProxy(BaseApplicationImpl.getApplication().getRuntime());
+    if (jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy == null) {
+      try
+      {
+        if (jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy == null) {
+          jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy = new QQIndividualityRemoteProxy(BaseApplicationImpl.getApplication().getRuntime());
+        }
       }
-      return jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy;
   }
   
   public static void a()
   {
-    if (jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy != null)
+    QQIndividualityRemoteProxy localQQIndividualityRemoteProxy = jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy;
+    if (localQQIndividualityRemoteProxy != null)
     {
-      jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy.b("qqindividuality_signature");
+      localQQIndividualityRemoteProxy.b("qqindividuality_signature");
       jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy = null;
     }
   }
@@ -84,7 +87,7 @@ public class QQIndividualityPluginProxyService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService
  * JD-Core Version:    0.7.0.1
  */

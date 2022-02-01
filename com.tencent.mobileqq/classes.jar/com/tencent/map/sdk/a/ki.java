@@ -26,47 +26,52 @@ public final class ki
   
   public final int a(CameraUpdate paramCameraUpdate)
   {
-    if (this.a == null) {
+    kw localkw = this.a;
+    if (localkw == null) {
       return -2147483648;
     }
-    return this.a.a(paramCameraUpdate);
+    return localkw.a(paramCameraUpdate);
   }
   
   public final int a(CameraUpdate paramCameraUpdate, long paramLong, TencentMap.CancelableCallback paramCancelableCallback)
   {
-    if (this.a == null) {
+    kw localkw = this.a;
+    if (localkw == null) {
       return -2147483648;
     }
-    return this.a.a(paramCameraUpdate, paramLong, paramCancelableCallback);
+    return localkw.a(paramCameraUpdate, paramLong, paramCancelableCallback);
   }
   
   public final CameraPosition a()
   {
-    if (this.a == null) {
+    kw localkw = this.a;
+    if (localkw == null) {
       return null;
     }
-    return this.a.a();
+    return localkw.a();
   }
   
   public final void a(LatLng paramLatLng, float paramFloat1, float paramFloat2, float paramFloat3, boolean paramBoolean)
   {
-    if (this.a == null) {
+    kw localkw = this.a;
+    if (localkw == null) {
       return;
     }
-    this.a.a(paramLatLng, paramFloat1, paramFloat2, paramFloat3, paramBoolean);
+    localkw.a(paramLatLng, paramFloat1, paramFloat2, paramFloat3, paramBoolean);
   }
   
   public final boolean b()
   {
-    if (this.a != null) {
-      return this.a.s();
+    kw localkw = this.a;
+    if (localkw != null) {
+      return localkw.s();
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.ki
  * JD-Core Version:    0.7.0.1
  */

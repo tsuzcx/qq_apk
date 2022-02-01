@@ -36,17 +36,17 @@ class HeartAnimator$FloatAnimation
   
   private static float a(int paramInt, float paramFloat)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return (float)Math.pow(paramFloat, 2.0D);
-    case 1: 
-      if (paramFloat < 0.8D) {
-        return 0.0F;
+      if (paramInt != 2) {
+        return (float)Math.pow(paramFloat, 2.0D);
       }
-      return 5.0F * paramFloat - 4.0F;
+      return paramFloat * 0.5F + 0.5F;
     }
-    return 0.5F * paramFloat + 0.5F;
+    if (paramFloat < 0.8D) {
+      return 0.0F;
+    }
+    return paramFloat * 5.0F - 4.0F;
   }
   
   @TargetApi(11)
@@ -73,7 +73,7 @@ class HeartAnimator$FloatAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.anim.HeartAnimator.FloatAnimation
  * JD-Core Version:    0.7.0.1
  */

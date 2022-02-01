@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="25.0dip" />
-    <solid android:color="#ffcecece" />
-</shape>
+    <item android:id="@android:id/background" android:drawable="@drawable/fz7" />
+    <item android:id="@android:id/secondaryProgress">
+        <scale android:scaleWidth="100%">
+            <selector>
+                <item android:state_enabled="false">
+                    <color android:color="@android:color/transparent" />
+                </item>
+                <item android:drawable="@drawable/fz0" />
+            </selector>
+        </scale>
+    </item>
+    <item android:id="@android:id/progress">
+        <scale android:scaleWidth="100%">
+            <selector>
+                <item android:state_enabled="false">
+                    <color android:color="@android:color/transparent" />
+                </item>
+                <item android:drawable="@drawable/fz0" />
+            </selector>
+        </scale>
+    </item>
+</layer-list>

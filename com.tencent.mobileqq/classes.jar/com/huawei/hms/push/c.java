@@ -1,28 +1,66 @@
 package com.huawei.hms.push;
 
-import android.content.Context;
-import android.content.Intent;
-import java.util.concurrent.Callable;
+import android.os.Bundle;
+import com.huawei.hms.support.log.HMSLog;
 
 public class c
-  implements Callable<Void>
 {
-  private Context a;
-  private Intent b;
-  private String c;
-  
-  public c(Context paramContext, Intent paramIntent, String paramString)
+  public static byte[] a(Bundle paramBundle, String paramString)
   {
-    this.a = paramContext;
-    this.b = paramIntent;
-    this.c = paramString;
+    try
+    {
+      paramString = paramBundle.getByteArray(paramString);
+      paramBundle = paramString;
+      if (paramString == null) {
+        paramBundle = new byte[0];
+      }
+      return paramBundle;
+    }
+    catch (Exception paramBundle)
+    {
+      paramString = new StringBuilder();
+      paramString.append("getByteArray exception");
+      paramString.append(paramBundle.getMessage());
+      HMSLog.i("BundleUtil", paramString.toString());
+    }
+    return new byte[0];
   }
   
-  public Void call()
+  public static String b(Bundle paramBundle, String paramString)
   {
-    this.a.sendBroadcast(this.b);
-    g.a(this.a, "push.setNotifyFlag", this.c, a.a);
+    try
+    {
+      paramBundle = paramBundle.getString(paramString);
+      return paramBundle;
+    }
+    catch (Exception paramBundle)
+    {
+      paramString = new StringBuilder();
+      paramString.append("getString exception");
+      paramString.append(paramBundle.getMessage());
+      HMSLog.i("BundleUtil", paramString.toString());
+    }
     return null;
+  }
+  
+  public static String c(Bundle paramBundle, String paramString)
+  {
+    try
+    {
+      paramBundle = paramBundle.getString(paramString);
+      if (paramBundle == null) {
+        return "";
+      }
+      return paramBundle;
+    }
+    catch (Exception paramBundle)
+    {
+      paramString = new StringBuilder();
+      paramString.append("getString exception");
+      paramString.append(paramBundle.getMessage());
+      HMSLog.i("BundleUtil", paramString.toString());
+    }
+    return "";
   }
 }
 

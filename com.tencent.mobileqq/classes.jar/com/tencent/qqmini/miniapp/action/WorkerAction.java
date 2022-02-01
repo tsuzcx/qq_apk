@@ -44,20 +44,23 @@ public class WorkerAction
   
   public Integer perform(BaseRuntime paramBaseRuntime)
   {
-    if (!(paramBaseRuntime instanceof AppBrandRuntime)) {
+    boolean bool = paramBaseRuntime instanceof AppBrandRuntime;
+    int i = 0;
+    if (!bool) {
       return Integer.valueOf(0);
     }
-    if (this.action == 1) {
+    int j = this.action;
+    if (j == 1) {
       return Integer.valueOf(((AppBrandRuntime)paramBaseRuntime).getMiniAppWorkerManager().createWorker(this.mWorkerName));
     }
-    if (this.action == 2)
+    if (j == 2)
     {
-      if ((paramBaseRuntime.getJsService() instanceof AppBrandService)) {}
-      for (int i = 1;; i = 0) {
-        return Integer.valueOf(i);
+      if ((paramBaseRuntime.getJsService() instanceof AppBrandService)) {
+        i = 1;
       }
+      return Integer.valueOf(i);
     }
-    if (this.action == 3) {
+    if (j == 3) {
       ((AppBrandRuntime)paramBaseRuntime).getMiniAppWorkerManager().stopWorker();
     }
     if (this.action == 4) {
@@ -66,9 +69,16 @@ public class WorkerAction
     if (this.action == 5)
     {
       paramBaseRuntime = paramBaseRuntime.getJsService();
-      String str = String.format("WeixinWorker.workerMsgHandler('" + Integer.valueOf(1) + "',%s)", new Object[] { this.mPostMsg });
-      QMLog.i("minisdk-worker", "[postMessageToMain] jsScript:" + str);
-      paramBaseRuntime.evaluateJs(str, new WorkerAction.1(this));
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("WeixinWorker.workerMsgHandler('");
+      ((StringBuilder)localObject).append(Integer.valueOf(1));
+      ((StringBuilder)localObject).append("',%s)");
+      localObject = String.format(((StringBuilder)localObject).toString(), new Object[] { this.mPostMsg });
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[postMessageToMain] jsScript:");
+      localStringBuilder.append((String)localObject);
+      QMLog.i("minisdk-worker", localStringBuilder.toString());
+      paramBaseRuntime.evaluateJs((String)localObject, new WorkerAction.1(this));
     }
     return null;
   }
@@ -95,7 +105,7 @@ public class WorkerAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.action.WorkerAction
  * JD-Core Version:    0.7.0.1
  */

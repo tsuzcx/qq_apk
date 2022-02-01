@@ -1,11 +1,13 @@
 package com.tencent.mobileqq.search.searchengine;
 
 import android.os.Bundle;
+import com.tencent.mobileqq.search.base.engine.ISearchEngine;
+import com.tencent.mobileqq.search.base.model.SearchRequest;
+import com.tencent.mobileqq.search.base.util.SearchStatisticsConstants;
+import com.tencent.mobileqq.search.business.group.model.GroupSearchModelMoreItem;
 import com.tencent.mobileqq.search.model.GroupSearchModeTitle;
-import com.tencent.mobileqq.search.model.GroupSearchModelMoreItem;
 import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
 import com.tencent.mobileqq.search.model.ISearchResultModel;
-import com.tencent.mobileqq.search.util.SearchStatisticsConstants;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +41,7 @@ class GroupSearchEngine$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.GroupSearchEngine.5
  * JD-Core Version:    0.7.0.1
  */

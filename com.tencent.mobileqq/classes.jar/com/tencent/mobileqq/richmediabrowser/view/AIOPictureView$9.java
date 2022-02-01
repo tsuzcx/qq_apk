@@ -1,40 +1,29 @@
 package com.tencent.mobileqq.richmediabrowser.view;
 
-import android.app.Activity;
-import android.support.annotation.RequiresApi;
-import com.tencent.biz.qrcode.activity.ScannerResult;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.RichMediaShareActionSheetUtil;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import java.util.ArrayList;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
+import com.tencent.mobileqq.richmediabrowser.model.AIOPictureModel;
 
 class AIOPictureView$9
-  implements Runnable
+  implements MessageQueue.IdleHandler
 {
-  AIOPictureView$9(AIOPictureView paramAIOPictureView, ScannerResult paramScannerResult, ArrayList paramArrayList) {}
+  AIOPictureView$9(AIOPictureView paramAIOPictureView) {}
   
-  @RequiresApi(api=5)
-  public void run()
+  public boolean queueIdle()
   {
-    if ((this.this$0.mContext == null) || (this.this$0.mContext.isFinishing())) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerResult.d())
+    AIOPictureData localAIOPictureData = this.a.a();
+    AIOPictureModel localAIOPictureModel = new AIOPictureModel();
+    if ((localAIOPictureData != null) && (localAIOPictureModel.a(localAIOPictureData, 4)) && (localAIOPictureModel.a(localAIOPictureData, 4) == null))
     {
-      RichMediaShareActionSheetUtil.a(55, this.jdField_a_of_type_JavaUtilArrayList, this.this$0.b, 0);
-      ReportController.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 0, 0, "", "", "", "");
+      this.a.g(true);
+      this.a.a();
     }
-    if (this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerResult.c())
-    {
-      RichMediaShareActionSheetUtil.a(56, this.jdField_a_of_type_JavaUtilArrayList, this.this$0.b, 0);
-      ReportController.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 1, 0, "", "", "", "");
-    }
-    this.this$0.a.updateUI();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOPictureView.9
  * JD-Core Version:    0.7.0.1
  */

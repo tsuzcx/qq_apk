@@ -8,7 +8,7 @@ import com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodul
 public class NowLiteWebViewFragment
   extends LiteLiveWebViewFragment
 {
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(new NowUIJs(getWebView(), getActivity(), this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter));
@@ -17,7 +17,7 @@ public class NowLiteWebViewFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.now_live.fragment.NowLiteWebViewFragment
  * JD-Core Version:    0.7.0.1
  */

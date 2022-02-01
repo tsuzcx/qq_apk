@@ -40,14 +40,17 @@ public class DbCacheDatabase
   {
     try
     {
-      DbCacheDatabase localDbCacheDatabase2 = (DbCacheDatabase)jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-      DbCacheDatabase localDbCacheDatabase1 = localDbCacheDatabase2;
-      if (localDbCacheDatabase2 == null)
+      DbCacheDatabase localDbCacheDatabase = (DbCacheDatabase)jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+      Object localObject = localDbCacheDatabase;
+      if (localDbCacheDatabase == null)
       {
-        localDbCacheDatabase1 = new DbCacheDatabase(paramContext, MD5Utils.encodeHexStr(String.valueOf(paramLong) + "_opensdk"), null, 74);
-        jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localDbCacheDatabase1);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(String.valueOf(paramLong));
+        ((StringBuilder)localObject).append("_opensdk");
+        localObject = new DbCacheDatabase(paramContext, MD5Utils.encodeHexStr(((StringBuilder)localObject).toString()), null, 74);
+        jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localObject);
       }
-      return localDbCacheDatabase1;
+      return localObject;
     }
     finally {}
   }
@@ -76,122 +79,114 @@ public class DbCacheDatabase
     //   0: aload_0
     //   1: monitorenter
     //   2: aconst_null
-    //   3: astore_1
+    //   3: astore_2
     //   4: aload_0
     //   5: invokespecial 106	android/database/sqlite/SQLiteOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   8: astore_2
-    //   9: aload_2
-    //   10: astore_1
-    //   11: aload_1
-    //   12: astore_2
-    //   13: aload_0
-    //   14: getfield 38	com/tencent/open/component/cache/database/DbCacheDatabase:jdField_a_of_type_Boolean	Z
-    //   17: ifeq +29 -> 46
-    //   20: aload_1
-    //   21: ifnull +7 -> 28
-    //   24: aload_1
-    //   25: invokevirtual 111	android/database/sqlite/SQLiteDatabase:close	()V
-    //   28: aload_0
-    //   29: invokevirtual 113	com/tencent/open/component/cache/database/DbCacheDatabase:a	()V
-    //   32: aload_0
-    //   33: invokespecial 106	android/database/sqlite/SQLiteOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   36: astore_2
-    //   37: aload_2
-    //   38: astore_1
-    //   39: aload_0
-    //   40: iconst_0
-    //   41: putfield 38	com/tencent/open/component/cache/database/DbCacheDatabase:jdField_a_of_type_Boolean	Z
-    //   44: aload_1
-    //   45: astore_2
-    //   46: aload_0
-    //   47: monitorexit
-    //   48: aload_2
-    //   49: areturn
-    //   50: astore_2
-    //   51: aload_0
-    //   52: invokevirtual 113	com/tencent/open/component/cache/database/DbCacheDatabase:a	()V
+    //   8: astore_1
+    //   9: aload_1
+    //   10: astore_2
+    //   11: aload_0
+    //   12: getfield 38	com/tencent/open/component/cache/database/DbCacheDatabase:jdField_a_of_type_Boolean	Z
+    //   15: ifeq +61 -> 76
+    //   18: aload_1
+    //   19: ifnull +7 -> 26
+    //   22: aload_1
+    //   23: invokevirtual 111	android/database/sqlite/SQLiteDatabase:close	()V
+    //   26: aload_0
+    //   27: invokevirtual 113	com/tencent/open/component/cache/database/DbCacheDatabase:a	()V
+    //   30: aload_0
+    //   31: invokespecial 106	android/database/sqlite/SQLiteOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   34: astore_2
+    //   35: aload_2
+    //   36: astore_1
+    //   37: aload_0
+    //   38: iconst_0
+    //   39: putfield 38	com/tencent/open/component/cache/database/DbCacheDatabase:jdField_a_of_type_Boolean	Z
+    //   42: aload_1
+    //   43: astore_2
+    //   44: goto +32 -> 76
+    //   47: astore_1
+    //   48: goto +55 -> 103
+    //   51: astore_1
+    //   52: goto +28 -> 80
     //   55: aload_0
-    //   56: invokespecial 106	android/database/sqlite/SQLiteOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   59: astore_2
-    //   60: aload_2
-    //   61: astore_1
-    //   62: aload_1
-    //   63: astore_2
-    //   64: aload_0
-    //   65: getfield 38	com/tencent/open/component/cache/database/DbCacheDatabase:jdField_a_of_type_Boolean	Z
-    //   68: ifeq -22 -> 46
-    //   71: aload_0
-    //   72: iconst_0
-    //   73: putfield 38	com/tencent/open/component/cache/database/DbCacheDatabase:jdField_a_of_type_Boolean	Z
-    //   76: aload_1
-    //   77: astore_2
-    //   78: goto -32 -> 46
-    //   81: astore_1
-    //   82: aload_0
-    //   83: monitorexit
-    //   84: aload_1
-    //   85: athrow
-    //   86: astore_1
+    //   56: invokevirtual 113	com/tencent/open/component/cache/database/DbCacheDatabase:a	()V
+    //   59: aload_0
+    //   60: invokespecial 106	android/database/sqlite/SQLiteOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   63: astore_1
+    //   64: aload_1
+    //   65: astore_2
+    //   66: aload_0
+    //   67: getfield 38	com/tencent/open/component/cache/database/DbCacheDatabase:jdField_a_of_type_Boolean	Z
+    //   70: ifeq +6 -> 76
+    //   73: goto -36 -> 37
+    //   76: aload_0
+    //   77: monitorexit
+    //   78: aload_2
+    //   79: areturn
+    //   80: aload_0
+    //   81: getfield 38	com/tencent/open/component/cache/database/DbCacheDatabase:jdField_a_of_type_Boolean	Z
+    //   84: ifeq +17 -> 101
     //   87: aload_0
-    //   88: getfield 38	com/tencent/open/component/cache/database/DbCacheDatabase:jdField_a_of_type_Boolean	Z
-    //   91: ifeq +29 -> 120
-    //   94: iconst_0
-    //   95: ifeq +11 -> 106
-    //   98: new 115	java/lang/NullPointerException
-    //   101: dup
-    //   102: invokespecial 116	java/lang/NullPointerException:<init>	()V
-    //   105: athrow
-    //   106: aload_0
-    //   107: invokevirtual 113	com/tencent/open/component/cache/database/DbCacheDatabase:a	()V
-    //   110: aload_0
-    //   111: invokespecial 106	android/database/sqlite/SQLiteOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   114: pop
-    //   115: aload_0
-    //   116: iconst_0
-    //   117: putfield 38	com/tencent/open/component/cache/database/DbCacheDatabase:jdField_a_of_type_Boolean	Z
-    //   120: aload_1
-    //   121: athrow
-    //   122: astore_2
-    //   123: goto -84 -> 39
-    //   126: astore_2
-    //   127: goto -65 -> 62
-    //   130: astore_2
-    //   131: goto -16 -> 115
+    //   88: invokevirtual 113	com/tencent/open/component/cache/database/DbCacheDatabase:a	()V
+    //   91: aload_0
+    //   92: invokespecial 106	android/database/sqlite/SQLiteOpenHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   95: pop
+    //   96: aload_0
+    //   97: iconst_0
+    //   98: putfield 38	com/tencent/open/component/cache/database/DbCacheDatabase:jdField_a_of_type_Boolean	Z
+    //   101: aload_1
+    //   102: athrow
+    //   103: aload_0
+    //   104: monitorexit
+    //   105: goto +5 -> 110
+    //   108: aload_1
+    //   109: athrow
+    //   110: goto -2 -> 108
+    //   113: astore_1
+    //   114: goto -59 -> 55
+    //   117: astore_2
+    //   118: goto -81 -> 37
+    //   121: astore_1
+    //   122: aload_2
+    //   123: astore_1
+    //   124: goto -60 -> 64
+    //   127: astore_2
+    //   128: goto -32 -> 96
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	134	0	this	DbCacheDatabase
-    //   3	74	1	localObject1	Object
-    //   81	4	1	localObject2	Object
-    //   86	35	1	localObject3	Object
-    //   8	41	2	localObject4	Object
-    //   50	1	2	localThrowable1	java.lang.Throwable
-    //   59	19	2	localObject5	Object
-    //   122	1	2	localThrowable2	java.lang.Throwable
-    //   126	1	2	localThrowable3	java.lang.Throwable
-    //   130	1	2	localThrowable4	java.lang.Throwable
+    //   0	131	0	this	DbCacheDatabase
+    //   8	35	1	localObject1	Object
+    //   47	1	1	localObject2	Object
+    //   51	1	1	localObject3	Object
+    //   63	46	1	localSQLiteDatabase	SQLiteDatabase
+    //   113	1	1	localThrowable1	java.lang.Throwable
+    //   121	1	1	localThrowable2	java.lang.Throwable
+    //   123	1	1	localThrowable3	java.lang.Throwable
+    //   3	76	2	localObject4	Object
+    //   117	6	2	localThrowable4	java.lang.Throwable
+    //   127	1	2	localThrowable5	java.lang.Throwable
     // Exception table:
     //   from	to	target	type
-    //   4	9	50	java/lang/Throwable
-    //   13	20	81	finally
-    //   24	28	81	finally
-    //   28	32	81	finally
-    //   32	37	81	finally
-    //   39	44	81	finally
-    //   46	48	81	finally
-    //   64	76	81	finally
-    //   82	84	81	finally
-    //   87	94	81	finally
-    //   98	106	81	finally
-    //   106	110	81	finally
-    //   110	115	81	finally
-    //   115	120	81	finally
-    //   120	122	81	finally
-    //   4	9	86	finally
-    //   51	55	86	finally
-    //   55	60	86	finally
-    //   32	37	122	java/lang/Throwable
-    //   55	60	126	java/lang/Throwable
-    //   110	115	130	java/lang/Throwable
+    //   11	18	47	finally
+    //   22	26	47	finally
+    //   26	30	47	finally
+    //   30	35	47	finally
+    //   37	42	47	finally
+    //   66	73	47	finally
+    //   76	78	47	finally
+    //   80	91	47	finally
+    //   91	96	47	finally
+    //   96	101	47	finally
+    //   101	103	47	finally
+    //   103	105	47	finally
+    //   4	9	51	finally
+    //   55	59	51	finally
+    //   59	64	51	finally
+    //   4	9	113	java/lang/Throwable
+    //   30	35	117	java/lang/Throwable
+    //   59	64	121	java/lang/Throwable
+    //   91	96	127	java/lang/Throwable
   }
   
   public void onCreate(SQLiteDatabase paramSQLiteDatabase) {}
@@ -208,7 +203,7 @@ public class DbCacheDatabase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.component.cache.database.DbCacheDatabase
  * JD-Core Version:    0.7.0.1
  */

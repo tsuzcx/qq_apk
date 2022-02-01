@@ -18,18 +18,17 @@ class SendBottomBar$18
       SendBottomBar.b(this.a, true);
       FileManagerReporter.a("0X800942B");
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       SendBottomBar.c(this.a, false);
       SendBottomBar.b(this.a, false);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.SendBottomBar.18
  * JD-Core Version:    0.7.0.1
  */

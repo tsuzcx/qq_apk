@@ -12,16 +12,6 @@ class NetworkChangeNotifierAutoDetect$MyNetworkCallback
 {
   private Network mVpnInPlace;
   
-  static
-  {
-    if (!NetworkChangeNotifierAutoDetect.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   private NetworkChangeNotifierAutoDetect$MyNetworkCallback(NetworkChangeNotifierAutoDetect paramNetworkChangeNotifierAutoDetect) {}
   
   private boolean ignoreConnectedInaccessibleVpn(Network paramNetwork, NetworkCapabilities paramNetworkCapabilities)
@@ -40,7 +30,8 @@ class NetworkChangeNotifierAutoDetect$MyNetworkCallback
   
   private boolean ignoreNetworkDueToVpn(Network paramNetwork)
   {
-    return (this.mVpnInPlace != null) && (!this.mVpnInPlace.equals(paramNetwork));
+    Network localNetwork = this.mVpnInPlace;
+    return (localNetwork != null) && (!localNetwork.equals(paramNetwork));
   }
   
   void initializeVpnInPlace()
@@ -77,7 +68,10 @@ class NetworkChangeNotifierAutoDetect$MyNetworkCallback
       return;
     }
     long l = NetworkUtil.networkToNetId(paramNetwork);
-    TPDLProxyLog.d("NetworkChangeNotifierAutoDetect.java", 0, "tpdlnative", "onCapabilitiesChanged, netId:" + l);
+    paramNetworkCapabilities = new StringBuilder();
+    paramNetworkCapabilities.append("onCapabilitiesChanged, netId:");
+    paramNetworkCapabilities.append(l);
+    TPDLProxyLog.d("NetworkChangeNotifierAutoDetect.java", 0, "tpdlnative", paramNetworkCapabilities.toString());
     int i = NetworkChangeNotifierAutoDetect.access$200(this.this$0).getConnectionType(paramNetwork);
     NetworkChangeNotifierAutoDetect.access$400(this.this$0, new NetworkChangeNotifierAutoDetect.MyNetworkCallback.2(this, l, i));
   }
@@ -88,37 +82,44 @@ class NetworkChangeNotifierAutoDetect$MyNetworkCallback
       return;
     }
     long l = NetworkUtil.networkToNetId(paramNetwork);
-    TPDLProxyLog.d("NetworkChangeNotifierAutoDetect.java", 0, "tpdlnative", "onLosing, netId:" + l);
+    paramNetwork = new StringBuilder();
+    paramNetwork.append("onLosing, netId:");
+    paramNetwork.append(l);
+    TPDLProxyLog.d("NetworkChangeNotifierAutoDetect.java", 0, "tpdlnative", paramNetwork.toString());
     NetworkChangeNotifierAutoDetect.access$400(this.this$0, new NetworkChangeNotifierAutoDetect.MyNetworkCallback.3(this, l));
   }
   
   public void onLost(Network paramNetwork)
   {
-    int i = 0;
-    if (ignoreNetworkDueToVpn(paramNetwork)) {}
-    do
-    {
+    if (ignoreNetworkDueToVpn(paramNetwork)) {
       return;
-      long l = NetworkUtil.networkToNetId(paramNetwork);
-      TPDLProxyLog.d("NetworkChangeNotifierAutoDetect.java", 0, "tpdlnative", "onLost, netId:" + l);
-      NetworkChangeNotifierAutoDetect.access$400(this.this$0, new NetworkChangeNotifierAutoDetect.MyNetworkCallback.4(this, l));
-    } while (this.mVpnInPlace == null);
-    assert (paramNetwork.equals(this.mVpnInPlace));
-    this.mVpnInPlace = null;
-    paramNetwork = NetworkUtil.getAllNetworksFiltered(NetworkChangeNotifierAutoDetect.access$200(this.this$0), paramNetwork);
-    int j = paramNetwork.length;
-    while (i < j)
-    {
-      onAvailable(paramNetwork[i]);
-      i += 1;
     }
-    i = this.this$0.getCurrentNetworkState().getConnectionType();
-    NetworkChangeNotifierAutoDetect.access$400(this.this$0, new NetworkChangeNotifierAutoDetect.MyNetworkCallback.5(this, i));
+    long l = NetworkUtil.networkToNetId(paramNetwork);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onLost, netId:");
+    ((StringBuilder)localObject).append(l);
+    localObject = ((StringBuilder)localObject).toString();
+    int i = 0;
+    TPDLProxyLog.d("NetworkChangeNotifierAutoDetect.java", 0, "tpdlnative", (String)localObject);
+    NetworkChangeNotifierAutoDetect.access$400(this.this$0, new NetworkChangeNotifierAutoDetect.MyNetworkCallback.4(this, l));
+    if (this.mVpnInPlace != null)
+    {
+      this.mVpnInPlace = null;
+      paramNetwork = NetworkUtil.getAllNetworksFiltered(NetworkChangeNotifierAutoDetect.access$200(this.this$0), paramNetwork);
+      int j = paramNetwork.length;
+      while (i < j)
+      {
+        onAvailable(paramNetwork[i]);
+        i += 1;
+      }
+      i = this.this$0.getCurrentNetworkState().getConnectionType();
+      NetworkChangeNotifierAutoDetect.access$400(this.this$0, new NetworkChangeNotifierAutoDetect.MyNetworkCallback.5(this, i));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.net.NetworkChangeNotifierAutoDetect.MyNetworkCallback
  * JD-Core Version:    0.7.0.1
  */

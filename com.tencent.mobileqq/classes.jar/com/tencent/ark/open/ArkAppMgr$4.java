@@ -1,28 +1,23 @@
 package com.tencent.ark.open;
 
-import com.tencent.ark.ArkEnvironmentManager;
+import com.tencent.ark.open.appmanage.AppUpdateTask.IUpdateAppByNameCallback;
+import com.tencent.ark.open.appmanage.AppUpdateTask.UpdateApp;
+import com.tencent.ark.open.appmanage.AppUpdateTask.UpdateTask;
+import java.util.HashMap;
 
 class ArkAppMgr$4
-  implements ArkAppMgr.IGetAppPathByNameCallback
+  implements AppUpdateTask.IUpdateAppByNameCallback
 {
-  ArkAppMgr$4(ArkAppMgr paramArkAppMgr, ArkAppMgr.GetCallBackResult paramGetCallBackResult, ArkAppMgr.IGetAppPathByNameCallbackTimeOut paramIGetAppPathByNameCallbackTimeOut) {}
+  ArkAppMgr$4(ArkAppMgr paramArkAppMgr) {}
   
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void onUpdateAppByName(AppUpdateTask.UpdateTask paramUpdateTask)
   {
-    ArkAppMgr.access$100().logI("ArkApp.ArkAppMgr", "getAppPathByNameTimeout onGetAppPathByName result =" + this.val$result);
-    synchronized (this.val$result)
+    synchronized (ArkAppMgr.access$100(this.this$0))
     {
-      this.val$result.retCode = paramInt;
-      this.val$result.msg = paramString;
-      this.val$result.appPath = paramAppPathInfo;
-      this.val$result.userdata = paramObject;
-      if (!this.val$result.hascalled)
-      {
-        this.val$result.hascalled = true;
-        this.val$cb.onGetAppPathByNameTimeout(this.val$result.retCode, this.val$result.msg, this.val$result.appPath, this.val$result.userdata);
-        return;
+      if (paramUpdateTask.appPathInfo != null) {
+        ArkAppMgr.access$100(this.this$0).put(paramUpdateTask.app.appName, paramUpdateTask.appPathInfo);
       }
-      ArkAppMgr.access$100().logI("ArkApp.ArkAppMgr", "getAppPathByNameTimeout onGetAppPathByName find called:" + this.val$result);
+      return;
     }
   }
 }

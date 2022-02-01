@@ -30,20 +30,27 @@ public class WebvttCue$Builder
       this.positionAnchor = -2147483648;
       return this;
     }
-    switch (WebvttCue.1.$SwitchMap$android$text$Layout$Alignment[this.textAlignment.ordinal()])
+    int i = WebvttCue.1.$SwitchMap$android$text$Layout$Alignment[this.textAlignment.ordinal()];
+    if (i != 1)
     {
-    default: 
-      Log.w("WebvttCueBuilder", "Unrecognized alignment: " + this.textAlignment);
-      this.positionAnchor = 0;
-      return this;
-    case 1: 
-      this.positionAnchor = 0;
-      return this;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Unrecognized alignment: ");
+          localStringBuilder.append(this.textAlignment);
+          Log.w("WebvttCueBuilder", localStringBuilder.toString());
+          this.positionAnchor = 0;
+          return this;
+        }
+        this.positionAnchor = 2;
+        return this;
+      }
       this.positionAnchor = 1;
       return this;
     }
-    this.positionAnchor = 2;
+    this.positionAnchor = 0;
     return this;
   }
   
@@ -131,7 +138,7 @@ public class WebvttCue$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.text.webvtt.WebvttCue.Builder
  * JD-Core Version:    0.7.0.1
  */

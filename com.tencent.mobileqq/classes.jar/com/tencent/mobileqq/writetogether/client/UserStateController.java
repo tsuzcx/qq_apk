@@ -86,60 +86,81 @@ public class UserStateController
         QLog.d("UserStateController", 2, "not in same year. ");
       }
       if (b()) {
-        return WriteTogetherUtils.a(this.jdField_a_of_type_AndroidContentContext.getString(2131720461), paramLong);
+        return WriteTogetherUtils.a(this.jdField_a_of_type_AndroidContentContext.getString(2131720176), paramLong);
       }
-      return WriteTogetherUtils.a(this.jdField_a_of_type_AndroidContentContext.getString(2131720462), paramString, paramLong);
+      return WriteTogetherUtils.a(this.jdField_a_of_type_AndroidContentContext.getString(2131720177), paramString, paramLong);
     }
+    StringBuilder localStringBuilder;
     if (paramInt > 604800000)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("UserStateController", 4, "last modified before " + paramInt / 604800000 + " 7 days");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("last modified before ");
+        localStringBuilder.append(paramInt / 604800000);
+        localStringBuilder.append(" 7 days");
+        QLog.d("UserStateController", 4, localStringBuilder.toString());
       }
       if (b()) {
-        return WriteTogetherUtils.b(this.jdField_a_of_type_AndroidContentContext.getString(2131720459), paramLong);
+        return WriteTogetherUtils.b(this.jdField_a_of_type_AndroidContentContext.getString(2131720174), paramLong);
       }
-      return WriteTogetherUtils.b(this.jdField_a_of_type_AndroidContentContext.getString(2131720460), paramString, paramLong);
+      return WriteTogetherUtils.b(this.jdField_a_of_type_AndroidContentContext.getString(2131720175), paramString, paramLong);
     }
     if (paramInt > 86400000)
     {
       paramInt /= 86400000;
-      if (QLog.isColorLevel()) {
-        QLog.d("UserStateController", 4, "last modified before " + paramInt + " day");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("last modified before ");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(" day");
+        QLog.d("UserStateController", 4, localStringBuilder.toString());
       }
       if (b()) {
-        return String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131720453), new Object[] { Integer.valueOf(paramInt) });
+        return String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131720168), new Object[] { Integer.valueOf(paramInt) });
       }
-      return String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131720454), new Object[] { paramString, Integer.valueOf(paramInt) });
+      return String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131720169), new Object[] { paramString, Integer.valueOf(paramInt) });
     }
     if (paramInt > 3600000)
     {
       paramInt /= 3600000;
-      if (QLog.isColorLevel()) {
-        QLog.d("UserStateController", 4, "last modified before " + paramInt + " hour");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("last modified before ");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(" hour");
+        QLog.d("UserStateController", 4, localStringBuilder.toString());
       }
       if (b()) {
-        return String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131720455), new Object[] { Integer.valueOf(paramInt) });
+        return String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131720170), new Object[] { Integer.valueOf(paramInt) });
       }
-      return String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131720456), new Object[] { paramString, Integer.valueOf(paramInt) });
+      return String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131720171), new Object[] { paramString, Integer.valueOf(paramInt) });
     }
     if (paramInt > 60000)
     {
       paramInt /= 60000;
-      if (QLog.isColorLevel()) {
-        QLog.d("UserStateController", 4, "last modified before " + paramInt + " min");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("last modified before ");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(" min");
+        QLog.d("UserStateController", 4, localStringBuilder.toString());
       }
       if (b()) {
-        return String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131720457), new Object[] { Integer.valueOf(paramInt) });
+        return String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131720172), new Object[] { Integer.valueOf(paramInt) });
       }
-      return String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131720458), new Object[] { paramString, Integer.valueOf(paramInt) });
+      return String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131720173), new Object[] { paramString, Integer.valueOf(paramInt) });
     }
     if (QLog.isColorLevel()) {
       QLog.d("UserStateController", 4, "last modified in 1 min");
     }
     if (b()) {
-      return this.jdField_a_of_type_AndroidContentContext.getString(2131720451);
+      return this.jdField_a_of_type_AndroidContentContext.getString(2131720166);
     }
-    return String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131720452), new Object[] { paramString });
+    return String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131720167), new Object[] { paramString });
   }
   
   private void a(Context paramContext)
@@ -154,89 +175,105 @@ public class UserStateController
   
   private void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UserStateController", 2, "[throwExceptionIfNeeded] reason: " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[throwExceptionIfNeeded] reason: ");
+      localStringBuilder.append(paramString);
+      QLog.d("UserStateController", 2, localStringBuilder.toString());
     }
   }
   
   private void a(boolean paramBoolean, UserLeaveMsg paramUserLeaveMsg)
   {
-    if ((!paramBoolean) || (paramUserLeaveMsg == null))
+    if ((paramBoolean) && (paramUserLeaveMsg != null))
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("[onUserLeave] failed. msg :");
-      if (paramUserLeaveMsg == null) {}
-      for (paramUserLeaveMsg = "msg is null";; paramUserLeaveMsg = paramUserLeaveMsg.toJson())
+      if (QLog.isColorLevel())
       {
-        QLog.e("UserStateController", 1, paramUserLeaveMsg);
-        return;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[onUserLeave] msg: ");
+        localStringBuilder.append(paramUserLeaveMsg.toJson());
+        QLog.d("UserStateController", 2, localStringBuilder.toString());
       }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("UserStateController", 2, "[onUserLeave] msg: " + paramUserLeaveMsg.toJson());
-    }
-    paramUserLeaveMsg = (UserLeaveMsg.Body)paramUserLeaveMsg.body;
-    if (paramUserLeaveMsg != null)
-    {
-      paramUserLeaveMsg = paramUserLeaveMsg.notice;
+      paramUserLeaveMsg = (UserLeaveMsg.Body)paramUserLeaveMsg.body;
       if (paramUserLeaveMsg != null)
       {
-        paramUserLeaveMsg = WriteTogetherUtils.a(paramUserLeaveMsg.userId);
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.a(paramUserLeaveMsg);
+        paramUserLeaveMsg = paramUserLeaveMsg.notice;
+        if (paramUserLeaveMsg != null)
+        {
+          paramUserLeaveMsg = WriteTogetherUtils.a(paramUserLeaveMsg.userId);
+          this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.a(paramUserLeaveMsg);
+          return;
+        }
+        QLog.e("UserStateController", 1, "[onUserLeave] notice is null");
         return;
       }
-      QLog.e("UserStateController", 1, "[onUserLeave] notice is null");
+      QLog.e("UserStateController", 1, "[onUserLeave] body is null");
       return;
     }
-    QLog.e("UserStateController", 1, "[onUserLeave] body is null");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[onUserLeave] failed. msg :");
+    if (paramUserLeaveMsg == null) {
+      paramUserLeaveMsg = "msg is null";
+    } else {
+      paramUserLeaveMsg = paramUserLeaveMsg.toJson();
+    }
+    localStringBuilder.append(paramUserLeaveMsg);
+    QLog.e("UserStateController", 1, localStringBuilder.toString());
   }
   
   private void a(boolean paramBoolean, UserNewInfoMsg paramUserNewInfoMsg)
   {
-    if ((!paramBoolean) || (paramUserNewInfoMsg == null))
+    if ((paramBoolean) && (paramUserNewInfoMsg != null))
     {
-      localObject = new StringBuilder().append("[onUserNewInfo] failed. msg: ");
-      if (paramUserNewInfoMsg == null) {}
-      for (paramUserNewInfoMsg = "msg is null";; paramUserNewInfoMsg = paramUserNewInfoMsg.toJson())
+      if (QLog.isColorLevel())
       {
-        QLog.e("UserStateController", 1, paramUserNewInfoMsg);
-        return;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[onUserNewInfo] msg: ");
+        ((StringBuilder)localObject).append(paramUserNewInfoMsg.toJson());
+        QLog.d("UserStateController", 2, ((StringBuilder)localObject).toString());
       }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("UserStateController", 2, "[onUserNewInfo] msg: " + paramUserNewInfoMsg.toJson());
-    }
-    Object localObject = (UserNewInfoMsg.Body)paramUserNewInfoMsg.body;
-    long l;
-    if (localObject != null)
-    {
-      localObject = ((UserNewInfoMsg.Body)localObject).notice;
+      localObject = (UserNewInfoMsg.Body)paramUserNewInfoMsg.body;
       if (localObject != null)
       {
-        l = ((UserNewInfoMsg.Notice)localObject).aliveTime;
-        if (l > 0L) {
-          break label283;
+        localObject = ((UserNewInfoMsg.Body)localObject).notice;
+        if (localObject != null)
+        {
+          long l2 = ((UserNewInfoMsg.Notice)localObject).aliveTime;
+          long l1 = l2;
+          if (l2 <= 0L) {
+            l1 = a();
+          }
+          localObject = WriteTogetherUtils.a(((UserNewInfoMsg.Notice)localObject).userId);
+          UserEditInfo localUserEditInfo = new UserEditInfo();
+          localUserEditInfo.a = WriteTogetherUtils.a(((UserNewInfoMsg.Body)paramUserNewInfoMsg.body).notice.userId);
+          localUserEditInfo.jdField_b_of_type_Int = WTConstants.jdField_a_of_type_ArrayOfInt[(((UserNewInfoMsg.Body)paramUserNewInfoMsg.body).notice.colorId % WTConstants.jdField_a_of_type_ArrayOfInt.length)];
+          localUserEditInfo.jdField_b_of_type_JavaLangString = a(localUserEditInfo.a);
+          if (QLog.isColorLevel())
+          {
+            paramUserNewInfoMsg = new StringBuilder();
+            paramUserNewInfoMsg.append("[onUserNewInfo] getNickName from ContactUtils: ");
+            paramUserNewInfoMsg.append(localUserEditInfo.jdField_b_of_type_JavaLangString);
+            QLog.d("UserStateController", 2, paramUserNewInfoMsg.toString());
+          }
+          this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.a((String)localObject, l1, localUserEditInfo);
+          return;
         }
-        l = a();
+        QLog.e("UserStateController", 1, "[onUserNewInfo] notice is null");
+        return;
       }
-    }
-    label283:
-    for (;;)
-    {
-      localObject = WriteTogetherUtils.a(((UserNewInfoMsg.Notice)localObject).userId);
-      UserEditInfo localUserEditInfo = new UserEditInfo();
-      localUserEditInfo.a = WriteTogetherUtils.a(((UserNewInfoMsg.Body)paramUserNewInfoMsg.body).notice.userId);
-      localUserEditInfo.jdField_b_of_type_Int = WTConstants.jdField_a_of_type_ArrayOfInt[(((UserNewInfoMsg.Body)paramUserNewInfoMsg.body).notice.colorId % WTConstants.jdField_a_of_type_ArrayOfInt.length)];
-      localUserEditInfo.jdField_b_of_type_JavaLangString = a(localUserEditInfo.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("UserStateController", 2, "[onUserNewInfo] getNickName from ContactUtils: " + localUserEditInfo.jdField_b_of_type_JavaLangString);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.a((String)localObject, l, localUserEditInfo);
-      return;
-      QLog.e("UserStateController", 1, "[onUserNewInfo] notice is null");
-      return;
       QLog.e("UserStateController", 1, "[onUserNewInfo] body is null");
       return;
     }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[onUserNewInfo] failed. msg: ");
+    if (paramUserNewInfoMsg == null) {
+      paramUserNewInfoMsg = "msg is null";
+    } else {
+      paramUserNewInfoMsg = paramUserNewInfoMsg.toJson();
+    }
+    ((StringBuilder)localObject).append(paramUserNewInfoMsg);
+    QLog.e("UserStateController", 1, ((StringBuilder)localObject).toString());
   }
   
   private boolean a()
@@ -252,24 +289,28 @@ public class UserStateController
   private void b(int paramInt1, int paramInt2)
   {
     boolean bool = true;
-    if (paramInt1 >= paramInt2) {
-      QLog.w("UserStateController", 1, "not reach the limit " + paramInt1 + ", with current " + paramInt2);
+    Object localObject;
+    if (paramInt1 >= paramInt2)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("not reach the limit ");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(", with current ");
+      ((StringBuilder)localObject).append(paramInt2);
+      QLog.w("UserStateController", 1, ((StringBuilder)localObject).toString());
+      return;
     }
-    do
+    if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a() != UserState.CHARACTERS_OVERSIZE) {
+      this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a(UserState.CHARACTERS_OVERSIZE);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a() == UserState.CHARACTERS_OVERSIZE)
     {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a() != UserState.CHARACTERS_OVERSIZE) {
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a(UserState.CHARACTERS_OVERSIZE);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiUserStateBar;
+      String str = String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131720178), new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
+      if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.b() != UserState.NEW_DOC) {
+        bool = false;
       }
-    } while (this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a() != UserState.CHARACTERS_OVERSIZE);
-    UserStateBar localUserStateBar = this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiUserStateBar;
-    String str = String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131720463), new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
-    if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.b() == UserState.NEW_DOC) {}
-    for (;;)
-    {
-      localUserStateBar.a(str, bool);
-      return;
-      bool = false;
+      ((UserStateBar)localObject).a(str, bool);
     }
   }
   
@@ -277,10 +318,10 @@ public class UserStateController
   {
     String str1 = this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.b();
     String str2 = this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.a();
-    if ((TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str1))) {
-      return true;
+    if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str1))) {
+      return str1.equals(str2);
     }
-    return str1.equals(str2);
+    return true;
   }
   
   private String c(String paramString)
@@ -312,19 +353,18 @@ public class UserStateController
   protected String a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
-      paramString = "";
+      return "";
     }
-    String str1;
-    do
+    String str2 = d(paramString);
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2))
     {
-      return paramString;
-      String str2 = d(paramString);
+      str2 = this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.a(paramString);
       str1 = str2;
-      if (!TextUtils.isEmpty(str2)) {
-        break;
+      if (TextUtils.isEmpty(str2)) {
+        str1 = paramString;
       }
-      str1 = this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.a(paramString);
-    } while (TextUtils.isEmpty(str1));
+    }
     return str1;
   }
   
@@ -350,7 +390,8 @@ public class UserStateController
       QLog.d("UserStateController", 4, "[onCommitComplete]");
     }
     this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.a(a());
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.b(this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.b());
+    IEditorModel localIEditorModel = this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel;
+    localIEditorModel.b(localIEditorModel.b());
     if (a())
     {
       if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a() == UserState.COMMIT_WHILE_ALERT) {
@@ -367,60 +408,58 @@ public class UserStateController
   
   public void a(int paramInt1, int paramInt2)
   {
-    UserStateController.OnCharacterOverSizeListener localOnCharacterOverSizeListener;
-    if (paramInt1 < paramInt2)
-    {
+    if (paramInt1 < paramInt2) {
       b(paramInt1, paramInt2);
-      if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController$OnCharacterOverSizeListener != null)
-      {
-        localOnCharacterOverSizeListener = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController$OnCharacterOverSizeListener;
-        if (paramInt1 >= paramInt2) {
-          break label92;
-        }
+    } else if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a() == UserState.CHARACTERS_OVERSIZE) {
+      if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.b() == UserState.NEW_DOC) {
+        this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a(UserState.NEW_DOC);
+      } else {
+        this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a(UserState.SAVING);
       }
     }
-    label92:
-    for (boolean bool = true;; bool = false)
+    UserStateController.OnCharacterOverSizeListener localOnCharacterOverSizeListener = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController$OnCharacterOverSizeListener;
+    if (localOnCharacterOverSizeListener != null)
     {
+      boolean bool;
+      if (paramInt1 < paramInt2) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       localOnCharacterOverSizeListener.a(bool);
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a() != UserState.CHARACTERS_OVERSIZE) {
-        break;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.b() == UserState.NEW_DOC)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a(UserState.NEW_DOC);
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a(UserState.SAVING);
-      break;
     }
   }
   
   public void a(int paramInt, String paramString)
   {
-    switch (paramInt)
+    if (paramInt != -2)
     {
-    default: 
-      return;
-    case 40401: 
-      b(this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.a(), this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.a().a.length());
-      return;
-    case -1: 
+      if (paramInt != -1)
+      {
+        if (paramInt != 40401)
+        {
+          switch (paramInt)
+          {
+          default: 
+            return;
+          case 65021: 
+          case 65023: 
+            this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a(UserState.SANCTION);
+            return;
+          case 65020: 
+            this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a(UserState.GAG, paramString);
+            return;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a(UserState.COMMIT_ERR);
+          return;
+        }
+        b(this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.a(), this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.a().a.length());
+        return;
+      }
       this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a(UserState.NET_ERR);
       return;
-    case -2: 
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a(UserState.NET_AVAIL);
-      return;
-    case 65020: 
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a(UserState.GAG, paramString);
-      return;
-    case 65019: 
-    case 65022: 
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a(UserState.COMMIT_ERR);
-      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a(UserState.SANCTION);
+    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a(UserState.NET_AVAIL);
   }
   
   public void a(UserStateController.OnCharacterOverSizeListener paramOnCharacterOverSizeListener)
@@ -438,127 +477,144 @@ public class UserStateController
     if ((paramType == Type.USER_NEWINFO) && ((paramObject instanceof UserNewInfoMsg)))
     {
       paramType = (UserNewInfoMsg)paramObject;
-      if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController$OnUserNewInfoListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController$OnUserNewInfoListener.a(paramBoolean, paramType);
+      paramObject = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController$OnUserNewInfoListener;
+      if (paramObject != null) {
+        paramObject.a(paramBoolean, paramType);
       }
       a(paramBoolean, paramType);
+      return;
     }
-    do
+    if ((paramType == Type.USER_LEAVE) && ((paramObject instanceof UserLeaveMsg)))
     {
-      do
-      {
-        return;
-        if ((paramType == Type.USER_LEAVE) && ((paramObject instanceof UserLeaveMsg)))
-        {
-          a(paramBoolean, (UserLeaveMsg)paramObject);
-          return;
-        }
-      } while (paramType != Type.CLIENT_READY);
+      a(paramBoolean, (UserLeaveMsg)paramObject);
+      return;
+    }
+    if (paramType == Type.CLIENT_READY)
+    {
       paramType = ((OnPostWrapper)((ClientReadyRespMsg)paramObject).body).onpost;
       if (paramType.result == 60010)
       {
         this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a(UserState.ROOM_FULL);
         return;
       }
-    } while ((!paramBoolean) || ((paramType.result != 0) && (paramType.result != 60009)) || (this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a() == UserState.ROOM_AVAILABLE) || (this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a() != UserState.ROOM_FULL));
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a(UserState.ROOM_AVAILABLE);
+      if ((paramBoolean) && ((paramType.result == 0) || (paramType.result == 60009)) && (this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a() != UserState.ROOM_AVAILABLE))
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a() != UserState.ROOM_FULL) {
+          return;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a(UserState.ROOM_AVAILABLE);
+      }
+    }
   }
   
   public void a(String paramString, List<String> paramList, boolean paramBoolean)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramList == null)) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList(paramList);
-    int j = localArrayList.size();
-    if (!paramBoolean) {
-      localArrayList.remove(paramString);
-    }
-    paramList = new StringBuilder();
-    if (!paramBoolean)
+    if (!TextUtils.isEmpty(paramString))
     {
-      paramString = b(a(paramString));
-      paramList.append(paramString).append("发起");
-      if (QLog.isColorLevel()) {
-        QLog.d("UserStateController", 2, "[onPartChange] get owner nick name: " + paramString);
+      if (paramList == null) {
+        return;
       }
-    }
-    TextPaint localTextPaint;
-    int i;
-    label158:
-    Object localObject;
-    label200:
-    label216:
-    float f1;
-    if (localArrayList.size() != 0)
-    {
+      ArrayList localArrayList = new ArrayList(paramList);
+      int j = localArrayList.size();
       if (!paramBoolean) {
-        paramList.append("，");
+        localArrayList.remove(paramString);
       }
-      localTextPaint = this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiUserStateBar.b();
-      if (paramBoolean)
+      paramList = new StringBuilder();
+      Object localObject1;
+      if (!paramBoolean)
       {
-        i = 1;
-        if (j <= i) {
-          break label414;
-        }
-        i = 1;
-        localObject = new StringBuilder();
-        if (i == 0) {
-          break label420;
-        }
-        paramString = "等" + j + "人";
-        localObject = ((StringBuilder)localObject).append(paramString);
-        if (!paramBoolean) {
-          break label426;
-        }
-        paramString = "正在输入";
-        localObject = paramString;
-        f1 = this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiUserStateBar.c();
-        float f2 = localTextPaint.measureText(WTConstants.jdField_a_of_type_JavaLangCharacter + paramList.toString());
-        float f3 = localTextPaint.measureText((String)localObject);
-        j = 3;
-        f1 = f1 - f2 - f3;
-        i = 0;
-        label292:
-        if ((i < localArrayList.size()) && (j > 0))
+        paramString = b(a(paramString));
+        paramList.append(paramString);
+        paramList.append("发起");
+        if (QLog.isColorLevel())
         {
-          paramString = a((String)localArrayList.get(i));
-          if (f1 >= this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiUserStateBar.d()) {
-            break label433;
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("[onPartChange] get owner nick name: ");
+          ((StringBuilder)localObject1).append(paramString);
+          QLog.d("UserStateController", 2, ((StringBuilder)localObject1).toString());
+        }
+      }
+      if (localArrayList.size() != 0)
+      {
+        if (!paramBoolean) {
+          paramList.append("，");
+        }
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiUserStateBar.b();
+        if (paramBoolean) {
+          i = 1;
+        } else {
+          i = 2;
+        }
+        if (j > i) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        Object localObject2 = new StringBuilder();
+        if (i != 0)
+        {
+          paramString = new StringBuilder();
+          paramString.append("等");
+          paramString.append(j);
+          paramString.append("人");
+          paramString = paramString.toString();
+        }
+        else
+        {
+          paramString = "";
+        }
+        ((StringBuilder)localObject2).append(paramString);
+        if (paramBoolean) {
+          paramString = "正在输入";
+        } else {
+          paramString = "一起写";
+        }
+        ((StringBuilder)localObject2).append(paramString);
+        localObject2 = ((StringBuilder)localObject2).toString();
+        float f = this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiUserStateBar.c();
+        paramString = new StringBuilder();
+        paramString.append(WTConstants.jdField_a_of_type_JavaLangCharacter);
+        paramString.append(paramList.toString());
+        f = f - ((TextPaint)localObject1).measureText(paramString.toString()) - ((TextPaint)localObject1).measureText((String)localObject2);
+        j = 0;
+        int i = 3;
+        while ((j < localArrayList.size()) && (i > 0))
+        {
+          paramString = a((String)localArrayList.get(j));
+          if (f < this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiUserStateBar.d()) {
+            break;
           }
+          paramString = TextUtils.ellipsize(paramString, this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiUserStateBar.b(), f, TextUtils.TruncateAt.END).toString();
+          paramList.append(paramString);
+          paramList.append(WTConstants.jdField_a_of_type_JavaLangCharacter);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(WTConstants.jdField_a_of_type_JavaLangCharacter);
+          f -= ((TextPaint)localObject1).measureText(localStringBuilder.toString());
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("[onPartChange] get partNickName: ");
+            localStringBuilder.append(paramString);
+            QLog.d("UserStateController", 2, localStringBuilder.toString());
+          }
+          j += 1;
+          i -= 1;
         }
         paramString = paramList.toString();
         if (WTConstants.jdField_a_of_type_JavaLangCharacter.charValue() == paramList.toString().charAt(paramList.length() - 1)) {
           paramString = paramList.substring(0, paramList.length() - 1);
         }
+        paramList = new StringBuilder();
+        paramList.append(paramString);
+        paramList.append((String)localObject2);
+        paramString = paramList.toString();
       }
-    }
-    for (paramString = paramString + (String)localObject;; paramString = paramList.toString())
-    {
+      else
+      {
+        paramString = paramList.toString();
+      }
       this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiUserStateBar.a(paramString);
-      return;
-      i = 2;
-      break;
-      label414:
-      i = 0;
-      break label158;
-      label420:
-      paramString = "";
-      break label200;
-      label426:
-      paramString = "一起写";
-      break label216;
-      label433:
-      paramString = TextUtils.ellipsize(paramString, this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiUserStateBar.b(), f1, TextUtils.TruncateAt.END).toString();
-      paramList.append(paramString).append(WTConstants.jdField_a_of_type_JavaLangCharacter);
-      f1 -= localTextPaint.measureText(paramString + WTConstants.jdField_a_of_type_JavaLangCharacter);
-      if (QLog.isColorLevel()) {
-        QLog.d("UserStateController", 2, "[onPartChange] get partNickName: " + paramString);
-      }
-      j -= 1;
-      i += 1;
-      break label292;
     }
   }
   
@@ -570,18 +626,21 @@ public class UserStateController
   public void b()
   {
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a();
-    if ((localObject != UserState.LAST_EDIT) && (localObject != UserState.SANCTION)) {}
-    long l;
-    do
-    {
+    if ((localObject != UserState.LAST_EDIT) && (localObject != UserState.SANCTION)) {
       return;
-      l = this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.a();
-      if (l > 0L) {
-        break;
+    }
+    long l = this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.a();
+    if (l <= 0L)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[updateSaveTime] last save time not init yet: ");
+        ((StringBuilder)localObject).append(l);
+        QLog.d("UserStateController", 2, ((StringBuilder)localObject).toString());
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("UserStateController", 2, "[updateSaveTime] last save time not init yet: " + l);
-    return;
+      return;
+    }
     localObject = a(l, (int)(a() - l), c(a(this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataIEditorModel.a())));
     this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiUserStateBar.a((String)localObject, 1);
   }
@@ -604,12 +663,15 @@ public class UserStateController
       return;
     }
     this.jdField_a_of_type_Boolean = false;
-    if ((this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a() == UserState.NEW_USER_HINT) || (this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a() == UserState.INACTIVATED) || (this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a() == UserState.ROOM_AVAILABLE) || (this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a() == UserState.LAST_EDIT))
+    if ((this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a() != UserState.NEW_USER_HINT) && (this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a() != UserState.INACTIVATED) && (this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a() != UserState.ROOM_AVAILABLE) && (this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a() != UserState.LAST_EDIT))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a(UserState.ALERT);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[onEditorActivated] trans from illegal state: ");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a());
+      a(localStringBuilder.toString());
       return;
     }
-    a("[onEditorActivated] trans from illegal state: " + this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a());
+    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a(UserState.ALERT);
   }
   
   public void f()
@@ -619,12 +681,15 @@ public class UserStateController
       this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a(UserState.NEW_USER_HINT);
       return;
     }
-    a("[onNewUserHintShow] trans from illegal state: " + this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[onNewUserHintShow] trans from illegal state: ");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineUserStateMachineController.a());
+    a(localStringBuilder.toString());
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131382064) {
+    if (paramView.getId() == 2131381266) {
       g();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -632,7 +697,7 @@ public class UserStateController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.client.UserStateController
  * JD-Core Version:    0.7.0.1
  */

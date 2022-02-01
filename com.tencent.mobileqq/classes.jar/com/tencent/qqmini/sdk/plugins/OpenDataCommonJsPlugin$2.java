@@ -13,46 +13,48 @@ class OpenDataCommonJsPlugin$2
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("getFriendCloudStorage callback appid:").append(OpenDataCommonJsPlugin.access$100(this.this$0).appId).append(", isSuc:").append(paramBoolean).append(", ret:");
-    Object localObject;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getFriendCloudStorage callback appid:");
+    localStringBuilder.append(OpenDataCommonJsPlugin.access$100(this.this$0).appId);
+    localStringBuilder.append(", isSuc:");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(", ret:");
     if (paramJSONObject != null) {
       localObject = paramJSONObject.toString();
+    } else {
+      localObject = "";
     }
-    for (;;)
+    localStringBuilder.append((String)localObject);
+    QMLog.i("OpenDataCommonJsPlugin", localStringBuilder.toString());
+    Object localObject = new JSONObject();
+    if (paramBoolean) {}
+    try
     {
-      QMLog.i("OpenDataCommonJsPlugin", (String)localObject);
-      localObject = new JSONObject();
-      if (paramBoolean) {
-        try
-        {
-          ((JSONObject)localObject).put("state", "success");
-          if ((paramJSONObject != null) && (paramJSONObject.get("data") != null)) {
-            ((JSONObject)localObject).put("data", paramJSONObject.get("data"));
-          }
-          for (;;)
-          {
-            this.val$req.ok((JSONObject)localObject);
-            return;
-            localObject = "";
-            break;
-            ((JSONObject)localObject).put("data", paramJSONObject);
-          }
-          ((JSONObject)localObject).put("state", "fail");
-        }
-        catch (Throwable paramJSONObject)
-        {
-          QMLog.e("OpenDataCommonJsPlugin", "getFriendCloudStorage error " + paramJSONObject.getMessage());
-          this.val$req.fail();
-          return;
-        }
+      ((JSONObject)localObject).put("state", "success");
+      if ((paramJSONObject != null) && (paramJSONObject.get("data") != null)) {
+        ((JSONObject)localObject).put("data", paramJSONObject.get("data"));
+      } else {
+        ((JSONObject)localObject).put("data", paramJSONObject);
       }
+      this.val$req.ok((JSONObject)localObject);
+      return;
     }
+    catch (Throwable paramJSONObject)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getFriendCloudStorage error ");
+      ((StringBuilder)localObject).append(paramJSONObject.getMessage());
+      QMLog.e("OpenDataCommonJsPlugin", ((StringBuilder)localObject).toString());
+      this.val$req.fail();
+    }
+    ((JSONObject)localObject).put("state", "fail");
     this.val$req.fail((JSONObject)localObject, null);
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.OpenDataCommonJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

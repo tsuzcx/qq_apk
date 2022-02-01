@@ -30,58 +30,59 @@ public class ForwardReplyMsgOption
   {
     String str2 = paramForwardBaseOption.c();
     String str1 = str2;
-    if (!TextUtils.isEmpty(str2))
-    {
-      if (!str2.startsWith(HardCodeUtil.a(2131704807))) {
-        break label216;
+    if (!TextUtils.isEmpty(str2)) {
+      if (str2.startsWith(HardCodeUtil.a(2131704883)))
+      {
+        str1 = str2.substring(4);
       }
-      str1 = str2.substring(4);
-    }
-    for (;;)
-    {
-      str2 = paramForwardBaseOption.jdField_a_of_type_AndroidOsBundle.getString("uin");
-      int i = paramForwardBaseOption.jdField_a_of_type_AndroidOsBundle.getInt("uintype", 0);
-      Intent localIntent = new Intent();
-      localIntent.setClass(paramForwardBaseOption.jdField_a_of_type_AndroidAppActivity, MiniChatActivity.class);
-      localIntent.addFlags(268435456);
-      localIntent.putExtra("uin", str2);
-      localIntent.putExtra("uintype", i);
-      localIntent.putExtra("uinname", str1);
-      localIntent.putExtra("public_fragment_window_feature", 1);
-      localIntent.putExtra("minaio_scaled_ration", paramForwardBaseOption.a(0.78F));
-      localIntent.putExtra("minaio_height_ration", 0.86F);
-      localIntent.putExtra("member_dialog_title", str1);
-      localIntent.putExtra("structmsg_uniseq", paramLong);
-      localIntent.putExtra("multi_forward_title", HardCodeUtil.a(2131704799));
-      localIntent.putExtra("multi_forward_type", 3);
-      localIntent.putExtra("key_mini_from", 4);
-      PublicFragmentActivity.Launcher.a(paramForwardBaseOption.jdField_a_of_type_AndroidAppActivity, localIntent, MiniChatActivity.class, MiniMultiForwardFragment.class);
-      return;
-      label216:
-      str1 = str2;
-      if (str2.startsWith(HardCodeUtil.a(2131704800))) {
-        str1 = str2.substring(3);
+      else
+      {
+        str1 = str2;
+        if (str2.startsWith(HardCodeUtil.a(2131704876))) {
+          str1 = str2.substring(3);
+        }
       }
     }
+    str2 = paramForwardBaseOption.jdField_a_of_type_AndroidOsBundle.getString("uin");
+    int i = paramForwardBaseOption.jdField_a_of_type_AndroidOsBundle.getInt("uintype", 0);
+    Intent localIntent = new Intent();
+    localIntent.setClass(paramForwardBaseOption.jdField_a_of_type_AndroidAppActivity, MiniChatActivity.class);
+    localIntent.addFlags(268435456);
+    localIntent.putExtra("uin", str2);
+    localIntent.putExtra("uintype", i);
+    localIntent.putExtra("uinname", str1);
+    localIntent.putExtra("public_fragment_window_feature", 1);
+    localIntent.putExtra("minaio_scaled_ration", paramForwardBaseOption.a(0.78F));
+    localIntent.putExtra("minaio_height_ration", 0.86F);
+    localIntent.putExtra("member_dialog_title", str1);
+    localIntent.putExtra("structmsg_uniseq", paramLong);
+    localIntent.putExtra("multi_forward_title", HardCodeUtil.a(2131704875));
+    localIntent.putExtra("multi_forward_type", 3);
+    localIntent.putExtra("key_mini_from", 4);
+    PublicFragmentActivity.Launcher.a(paramForwardBaseOption.jdField_a_of_type_AndroidAppActivity, localIntent, MiniChatActivity.class, MiniMultiForwardFragment.class);
   }
   
   protected View a()
   {
     View localView = super.a();
     if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null) {
-      localView.findViewById(2131367418).setOnClickListener(new ForwardReplyMsgOption.1(this));
+      localView.findViewById(2131367200).setOnClickListener(new ForwardReplyMsgOption.1(this));
     }
     return localView;
   }
   
   public String a()
   {
-    String str2 = super.a();
-    String str1 = str2;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null) {
-      str1 = HardCodeUtil.a(2131704801) + str2;
+    String str = super.a();
+    Object localObject = str;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131704877));
+      ((StringBuilder)localObject).append(str);
+      localObject = ((StringBuilder)localObject).toString();
     }
-    return str1;
+    return localObject;
   }
   
   public boolean a()
@@ -92,8 +93,12 @@ public class ForwardReplyMsgOption
       return bool;
     }
     this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = ((ForwardMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FORWARD_MSG_MANAGER)).a(l);
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardReplyMsgOption", 2, "ForwardReplyMsgOption preloadData mChatMessage=" + this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ForwardReplyMsgOption preloadData mChatMessage=");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      QLog.d("ForwardReplyMsgOption", 2, localStringBuilder.toString());
     }
     return bool;
   }
@@ -120,7 +125,7 @@ public class ForwardReplyMsgOption
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardReplyMsgOption
  * JD-Core Version:    0.7.0.1
  */

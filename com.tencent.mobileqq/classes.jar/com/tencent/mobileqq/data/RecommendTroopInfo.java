@@ -36,23 +36,25 @@ public class RecommendTroopInfo
   {
     try
     {
-      localObject = super.clone();
+      Object localObject = super.clone();
       return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      do
+      if (QLog.isColorLevel())
       {
-        Object localObject = this;
-      } while (!QLog.isColorLevel());
-      QLog.d("RecommendTroop", 2, "RecommendTroopInfo clone failed." + localCloneNotSupportedException.toString());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("RecommendTroopInfo clone failed.");
+        localStringBuilder.append(localCloneNotSupportedException.toString());
+        QLog.d("RecommendTroop", 2, localStringBuilder.toString());
+      }
     }
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.RecommendTroopInfo
  * JD-Core Version:    0.7.0.1
  */

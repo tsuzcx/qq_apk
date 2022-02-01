@@ -3,24 +3,12 @@ package com.tencent.mobileqq.apollo.api;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.apollo.ApolloPanelManager;
-import com.tencent.mobileqq.apollo.api.impl.aio.BubbleProducer;
-import com.tencent.mobileqq.apollo.api.listener.Save3DFaceListener;
-import com.tencent.mobileqq.apollo.api.model.ApolloActionData;
-import com.tencent.mobileqq.apollo.api.model.ApolloBaseInfo;
-import com.tencent.mobileqq.apollo.api.model.ApolloPandora;
-import com.tencent.mobileqq.apollo.lightGame.CmGameAudioManager;
-import com.tencent.mobileqq.apollo.lightGame.CmGameConnManager;
-import com.tencent.mobileqq.apollo.lightGame.CmGameTempSessionHandler;
-import com.tencent.mobileqq.apollo.player.GetFrameCallback;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.aio.core.BaseAIOContext;
+import com.tencent.mobileqq.apollo.model.ApolloBaseInfo;
 import com.tencent.mobileqq.qroute.annotation.Service;
-import java.lang.ref.WeakReference;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
-import mqq.app.AppRuntime;
 import mqq.app.api.IRuntimeService;
 import org.json.JSONObject;
 
@@ -38,49 +26,26 @@ public abstract interface IApolloManagerService
   
   public abstract void addToBulkPullMap(String paramString, int paramInt);
   
-  public abstract void bulkSaveOrUpdateApolloBaseInfos(List<ApolloBaseInfo> paramList);
-  
   public abstract void bulkUpdateUserDress();
   
   public abstract void checkActionJsonInterval();
   
-  public abstract void checkApolloPanelJsonCfg(boolean paramBoolean, String paramString, int paramInt);
-  
-  public abstract void clearBubble(String paramString);
-  
   public abstract void decodeApolloBubblePushData(byte[] paramArrayOfByte);
   
-  public abstract void downloadJson(int paramInt);
-  
-  public abstract void downloadResAndPanel(List<ApolloActionData> paramList, String paramString);
-  
+  @Deprecated
   public abstract ApolloBaseInfo getApolloBaseInfo(String paramString);
   
-  public abstract ApolloBaseInfo getApolloBaseInfoFromCache(String paramString);
-  
   public abstract String getApolloGameLocalVersion(int paramInt);
-  
-  public abstract ApolloPandora getApolloPandora(String paramString, boolean paramBoolean);
-  
-  public abstract ApolloPanelManager getApolloPanelManager();
   
   public abstract long getApolloResLocalTimestamp(int paramInt1, int paramInt2);
   
   public abstract int getApolloStatus(String paramString);
   
-  public abstract int getApolloUserStatus(AppRuntime paramAppRuntime);
+  public abstract int getApolloUserStatus();
   
-  public abstract BubbleProducer getBubbleProducer();
-  
-  public abstract CmGameAudioManager getCmGameAudioManager();
-  
-  public abstract CmGameConnManager getCmGameConnManager();
-  
-  public abstract int getCmShowStatus(QQAppInterface paramQQAppInterface, String paramString);
+  public abstract int getCmShowStatus(String paramString);
   
   public abstract boolean getConfigInitDone();
-  
-  public abstract CmGameTempSessionHandler getGameTempMsgHandler();
   
   public abstract String getPetBrandClickActionUrl(JSONObject paramJSONObject);
   
@@ -94,27 +59,23 @@ public abstract interface IApolloManagerService
   
   public abstract SharedPreferences getStandUpSp();
   
-  public abstract int getWhiteListStatus(AppRuntime paramAppRuntime);
-  
-  public abstract void handleCMSPlayerGetFrame(String paramString, ApolloActionData paramApolloActionData, GetFrameCallback paramGetFrameCallback);
+  public abstract int getWhiteListStatus();
   
   public abstract void initApolloConfig();
   
   public abstract void initCmShowBaseScript(boolean paramBoolean);
   
-  public abstract boolean is3dAvailable(QQAppInterface paramQQAppInterface);
+  public abstract boolean is3dAvailable();
   
   public abstract boolean is765GuideShowed();
   
   public abstract boolean is780GuideShowed();
   
-  public abstract boolean isApolloFuncOpen(Context paramContext);
-  
-  public abstract boolean isApolloFuncOpen(Context paramContext, Boolean paramBoolean);
-  
   public abstract boolean isApolloGameWhiteUser(String paramString);
   
   public abstract boolean isApolloSupport(Context paramContext);
+  
+  public abstract boolean isApolloSupport(Context paramContext, Boolean paramBoolean);
   
   public abstract boolean isHardwareSupport(Context paramContext);
   
@@ -124,25 +85,15 @@ public abstract interface IApolloManagerService
   
   public abstract boolean isInitDone();
   
-  public abstract boolean isMiniAppPlayed();
-  
   public abstract boolean isPlusWhiteList();
   
   public abstract void notify3dFlagUpdate(int paramInt1, int paramInt2);
   
-  public abstract void onAddOrDelGame();
-  
   public abstract void onDestroy();
-  
-  public abstract boolean parseActionPanelJSon();
-  
-  public abstract void predownloadForGameCenter(String paramString);
   
   public abstract int queryApolloSwitchSet(String paramString);
   
-  public abstract int queryStatusInConfig(QQAppInterface paramQQAppInterface, String paramString1, String paramString2);
-  
-  public abstract void removeAllS2CPushItem();
+  public abstract int queryStatusInConfig(String paramString1, String paramString2);
   
   public abstract boolean removeFromActionDownloadList(int paramInt);
   
@@ -150,11 +101,10 @@ public abstract interface IApolloManagerService
   
   public abstract void requestTianshuAdv();
   
-  public abstract void save3DFace(String paramString, Save3DFaceListener paramSave3DFaceListener);
-  
+  @Deprecated
   public abstract void saveOrUpdateApolloBaseInfo(ApolloBaseInfo paramApolloBaseInfo);
   
-  public abstract void saveOrUpdateApolloPandora(ApolloPandora paramApolloPandora);
+  public abstract void sendActionMessage(BaseAIOContext paramBaseAIOContext, int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4);
   
   public abstract void setActionDownloadList(Collection<Integer> paramCollection);
   
@@ -162,17 +112,7 @@ public abstract interface IApolloManagerService
   
   public abstract void setApolloEngineLockEnable(boolean paramBoolean);
   
-  public abstract void setApolloGameChatPie(WeakReference<BaseChatPie> paramWeakReference);
-  
-  public abstract void setCapsuleHadStolenAsync(String paramString);
-  
-  public abstract void setClickIgnore(boolean paramBoolean);
-  
   public abstract void setConfigInitDone(boolean paramBoolean);
-  
-  public abstract void setGetPlusStatus(boolean paramBoolean);
-  
-  public abstract void setNeedShowWorldCup(boolean paramBoolean);
   
   public abstract void setOpenType(int paramInt);
   
@@ -190,7 +130,7 @@ public abstract interface IApolloManagerService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.api.IApolloManagerService
  * JD-Core Version:    0.7.0.1
  */

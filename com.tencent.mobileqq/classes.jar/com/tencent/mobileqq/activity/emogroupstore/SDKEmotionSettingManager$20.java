@@ -13,10 +13,18 @@ class SDKEmotionSettingManager$20
       SDKEmotionSettingManager.a(this.this$0).dismiss();
     }
     SDKEmotionSettingManager.a(this.this$0, false);
-    if (this.a == this.b) {
-      SDKEmotionSettingManager.a(this.this$0, SDKEmotionSettingManager.a(this.this$0), Long.valueOf(SDKEmotionSettingManager.a(this.this$0)).longValue(), true);
+    SDKEmotionSettingManager localSDKEmotionSettingManager;
+    if (this.a == this.b)
+    {
+      localSDKEmotionSettingManager = this.this$0;
+      SDKEmotionSettingManager.a(localSDKEmotionSettingManager, SDKEmotionSettingManager.a(localSDKEmotionSettingManager), Long.valueOf(SDKEmotionSettingManager.a(this.this$0)).longValue(), true);
     }
-    while (this.a == 1)
+    else
+    {
+      localSDKEmotionSettingManager = this.this$0;
+      SDKEmotionSettingManager.a(localSDKEmotionSettingManager, SDKEmotionSettingManager.a(localSDKEmotionSettingManager), Long.valueOf(SDKEmotionSettingManager.a(this.this$0)).longValue(), true, null);
+    }
+    if (this.a == 1)
     {
       int j = -1;
       int i = j;
@@ -29,14 +37,13 @@ class SDKEmotionSettingManager$20
       }
       SDKEmotionSettingManager.a(this.this$0, i, null);
       return;
-      SDKEmotionSettingManager.a(this.this$0, SDKEmotionSettingManager.a(this.this$0), Long.valueOf(SDKEmotionSettingManager.a(this.this$0)).longValue(), true, null);
     }
     SDKEmotionSettingManager.a(this.this$0, this.b, this.c, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.SDKEmotionSettingManager.20
  * JD-Core Version:    0.7.0.1
  */

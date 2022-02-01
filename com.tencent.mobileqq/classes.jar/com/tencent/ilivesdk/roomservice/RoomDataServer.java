@@ -61,16 +61,20 @@ public class RoomDataServer
   
   public static void requestEnterRoom(Context paramContext, RoomServiceAdapter paramRoomServiceAdapter, EnterRoomInfo paramEnterRoomInfo, EnterRoomCallback paramEnterRoomCallback)
   {
-    paramRoomServiceAdapter.getLogger().i("RoomDataServer", "requestEnterRoom roomInfo=" + paramEnterRoomInfo.toString(), new Object[0]);
-    EnterReq localEnterReq = new EnterReq();
-    localEnterReq.roomid = paramEnterRoomInfo.roomId;
-    localEnterReq.source = paramEnterRoomInfo.source;
-    localEnterReq.machine = paramEnterRoomInfo.machine;
-    localEnterReq.programId = paramEnterRoomInfo.programId;
-    if (TextUtils.isEmpty(localEnterReq.machine)) {
-      localEnterReq.machine = DeviceInfoUtil.getDeviceID(paramContext);
+    Object localObject = paramRoomServiceAdapter.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("requestEnterRoom roomInfo=");
+    localStringBuilder.append(paramEnterRoomInfo.toString());
+    ((LogInterface)localObject).i("RoomDataServer", localStringBuilder.toString(), new Object[0]);
+    localObject = new EnterReq();
+    ((EnterReq)localObject).roomid = paramEnterRoomInfo.roomId;
+    ((EnterReq)localObject).source = paramEnterRoomInfo.source;
+    ((EnterReq)localObject).machine = paramEnterRoomInfo.machine;
+    ((EnterReq)localObject).programId = paramEnterRoomInfo.programId;
+    if (TextUtils.isEmpty(((EnterReq)localObject).machine)) {
+      ((EnterReq)localObject).machine = DeviceInfoUtil.getDeviceID(paramContext);
     }
-    paramContext = MessageNano.toByteArray(localEnterReq);
+    paramContext = MessageNano.toByteArray((MessageNano)localObject);
     paramRoomServiceAdapter.getChannel().send(1505, 4, paramContext, new RoomDataServer.1(paramEnterRoomInfo, paramEnterRoomCallback));
   }
   
@@ -85,7 +89,11 @@ public class RoomDataServer
   
   public static void requestWatchEnterRoom(Context paramContext, RoomServiceAdapter paramRoomServiceAdapter, EnterRoomInfo paramEnterRoomInfo, EnterRoomCallback paramEnterRoomCallback)
   {
-    paramRoomServiceAdapter.getLogger().i("RoomDataServer", "requestEnterRoom roomInfo=" + paramEnterRoomInfo.toString(), new Object[0]);
+    paramContext = paramRoomServiceAdapter.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("requestEnterRoom roomInfo=");
+    localStringBuilder.append(paramEnterRoomInfo.toString());
+    paramContext.i("RoomDataServer", localStringBuilder.toString(), new Object[0]);
     paramContext = new EnterRoomRequest();
     paramContext.roomId = paramEnterRoomInfo.roomId;
     paramContext.format = paramEnterRoomInfo.videoFormat;
@@ -100,7 +108,7 @@ public class RoomDataServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.roomservice.RoomDataServer
  * JD-Core Version:    0.7.0.1
  */

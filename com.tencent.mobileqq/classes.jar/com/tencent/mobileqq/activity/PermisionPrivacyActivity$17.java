@@ -14,20 +14,22 @@ class PermisionPrivacyActivity$17
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    PermisionPrivacyActivity.a(this.a, this.a.h.a(), paramBoolean);
+    PermisionPrivacyActivity localPermisionPrivacyActivity = this.a;
+    PermisionPrivacyActivity.a(localPermisionPrivacyActivity, localPermisionPrivacyActivity.h.a(), paramBoolean);
   }
   
   public void b(int paramInt, boolean paramBoolean)
   {
     if (paramInt == -1) {
-      PermisionPrivacyActivity.a(this.a, 2131719116);
+      PermisionPrivacyActivity.a(this.a, 2131718834);
     }
-    PermisionPrivacyActivity.a(this.a, this.a.h.a(), PermisionPrivacyActivity.a(this.a).b());
+    PermisionPrivacyActivity localPermisionPrivacyActivity = this.a;
+    PermisionPrivacyActivity.a(localPermisionPrivacyActivity, localPermisionPrivacyActivity.h.a(), PermisionPrivacyActivity.a(this.a).b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PermisionPrivacyActivity.17
  * JD-Core Version:    0.7.0.1
  */

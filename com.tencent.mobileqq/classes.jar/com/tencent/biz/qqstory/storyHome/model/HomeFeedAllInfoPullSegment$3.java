@@ -30,33 +30,40 @@ class HomeFeedAllInfoPullSegment$3
     if (??? == null)
     {
       paramErrorMessage = new BatchGetFeedLikeRequest.BatchGetFeedLikeResp(paramErrorMessage);
-      synchronized (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment)
+    }
+    else
+    {
+      if (paramErrorMessage.isFail()) {
+        SLog.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for like request");
+      }
+      LikeManager localLikeManager = (LikeManager)SuperManager.a(15);
+      Iterator localIterator = ???.jdField_a_of_type_JavaUtilList.iterator();
+      for (;;)
       {
-        HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment, paramErrorMessage);
-        HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment).remove(paramBatchGetFeedLikeRequest);
-        HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$GetFeedIdListResult);
-        return;
+        paramErrorMessage = ???;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        paramErrorMessage = (BatchGetFeedLikeRequest.FeedLikeInfo)localIterator.next();
+        localLikeManager.a(paramErrorMessage.jdField_a_of_type_JavaUtilList, paramErrorMessage.jdField_a_of_type_JavaLangString, false, true);
       }
     }
-    if (paramErrorMessage.isFail()) {
-      SLog.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for like request");
+    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment)
+    {
+      HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment, paramErrorMessage);
+      HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment).remove(paramBatchGetFeedLikeRequest);
+      HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$GetFeedIdListResult);
+      return;
     }
-    LikeManager localLikeManager = (LikeManager)SuperManager.a(15);
-    Iterator localIterator = ???.jdField_a_of_type_JavaUtilList.iterator();
     for (;;)
     {
-      paramErrorMessage = ???;
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      paramErrorMessage = (BatchGetFeedLikeRequest.FeedLikeInfo)localIterator.next();
-      localLikeManager.a(paramErrorMessage.jdField_a_of_type_JavaUtilList, paramErrorMessage.jdField_a_of_type_JavaLangString, false, true);
+      throw paramBatchGetFeedLikeRequest;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.HomeFeedAllInfoPullSegment.3
  * JD-Core Version:    0.7.0.1
  */

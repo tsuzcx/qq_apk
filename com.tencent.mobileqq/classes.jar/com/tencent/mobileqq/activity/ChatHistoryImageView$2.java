@@ -15,52 +15,51 @@ class ChatHistoryImageView$2
   public void run()
   {
     Object localObject;
-    long l;
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("[onImageListLoad]: ");
-      if (this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData == null)
-      {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[onImageListLoad]: ");
+      localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData;
+      if (localObject == null) {
         localObject = "null";
-        QLog.d("ChatHistoryImageView", 2, localObject);
+      } else {
+        localObject = Integer.valueOf(localObject.length);
       }
+      localStringBuilder.append(localObject);
+      QLog.d("ChatHistoryImageView", 2, localStringBuilder.toString());
     }
-    else
-    {
-      l = SystemClock.uptimeMillis();
-      if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && (!this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData, this.jdField_a_of_type_Int))) {
-        this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.b();
-      }
-      if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a() != 0) {
-        break label231;
-      }
+    long l = SystemClock.uptimeMillis();
+    if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && (!this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData, this.jdField_a_of_type_Int))) {
+      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.b();
+    }
+    if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a() == 0) {
       this.this$0.b.setVisibility(0);
-    }
-    for (;;)
-    {
-      if (!this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOPhotoListAdapter.a(false)) {
-        this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOPhotoListAdapter.notifyDataSetChanged();
-      }
-      if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData != null) {
-        this.this$0.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData, false);
-      }
-      if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$OperCallBack != null) {
-        this.this$0.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$OperCallBack.a();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatHistoryImageView", 2, "[onImageListLoad] cost: " + (SystemClock.uptimeMillis() - l));
-      }
-      return;
-      localObject = Integer.valueOf(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData.length);
-      break;
-      label231:
+    } else {
       this.this$0.b.setVisibility(4);
+    }
+    if (!this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOPhotoListAdapter.a(false)) {
+      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOPhotoListAdapter.notifyDataSetChanged();
+    }
+    if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData != null)
+    {
+      localObject = this.this$0;
+      ((ChatHistoryImageView)localObject).a(((ChatHistoryImageView)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData, false);
+    }
+    if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$OperCallBack != null) {
+      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$OperCallBack.a();
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[onImageListLoad] cost: ");
+      ((StringBuilder)localObject).append(SystemClock.uptimeMillis() - l);
+      QLog.d("ChatHistoryImageView", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryImageView.2
  * JD-Core Version:    0.7.0.1
  */

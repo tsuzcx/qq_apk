@@ -5,7 +5,7 @@ import com.tencent.mobileqq.profilecard.bussiness.guide.bean.ProfileGuide;
 import kotlin.Metadata;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilecard/bussiness/guide/handler/ProfileGuideObserver;", "Lcom/tencent/mobileqq/app/BusinessObserver;", "()V", "onGetProfileGuide", "", "success", "", "profileGuide", "Lcom/tencent/mobileqq/profilecard/bussiness/guide/bean/ProfileGuide;", "onReportProfileGuideRead", "onUpdate", "type", "", "data", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilecard/bussiness/guide/handler/ProfileGuideObserver;", "Lcom/tencent/mobileqq/app/BusinessObserver;", "()V", "onGetProfileGuide", "", "success", "", "profileGuide", "Lcom/tencent/mobileqq/profilecard/bussiness/guide/bean/ProfileGuide;", "onReportProfileGuideRead", "onUpdate", "type", "", "data", "", "Companion", "profilecard-impl_release"}, k=1, mv={1, 1, 16})
 public class ProfileGuideObserver
   implements BusinessObserver
 {
@@ -19,24 +19,25 @@ public class ProfileGuideObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, @Nullable Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      if (paramObject != null) {}
-      for (paramObject = (ProfileGuide)paramObject;; paramObject = null)
-      {
-        onGetProfileGuide(paramBoolean, paramObject);
+      if (paramInt != 2) {
         return;
       }
+      onReportProfileGuideRead(paramBoolean);
+      return;
     }
-    onReportProfileGuideRead(paramBoolean);
+    if (paramObject != null) {
+      paramObject = (ProfileGuide)paramObject;
+    } else {
+      paramObject = null;
+    }
+    onGetProfileGuide(paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.guide.handler.ProfileGuideObserver
  * JD-Core Version:    0.7.0.1
  */

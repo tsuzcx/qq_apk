@@ -12,7 +12,7 @@ class ChatHistoryImageView$4
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface = this.a;
-    ChatHistoryImageView.DownloadAndSaveTask localDownloadAndSaveTask = new ChatHistoryImageView.DownloadAndSaveTask(this.a, this.a.jdField_a_of_type_JavaUtilArrayList, true, false);
+    ChatHistoryImageView.DownloadAndSaveTask localDownloadAndSaveTask = new ChatHistoryImageView.DownloadAndSaveTask(paramDialogInterface, paramDialogInterface.jdField_a_of_type_JavaUtilArrayList, true, false);
     paramDialogInterface.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$DownloadAndSaveTask = localDownloadAndSaveTask;
     ThreadManager.post(localDownloadAndSaveTask, 5, null, true);
     if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity != null) {
@@ -22,7 +22,7 @@ class ChatHistoryImageView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryImageView.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,28 @@
 package cooperation.plugin;
 
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.app.Application;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.compact.LoadCompactDynamicFeature;
+import mqq.os.MqqHandler;
 
 final class IPluginManager$2
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+  implements Runnable
 {
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  IPluginManager$2(IPluginManager.PluginParams paramPluginParams, Context paramContext, IPluginManager.OnOpenPluginListener paramOnOpenPluginListener) {}
+  
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("plugin_tag", 2, "handleOtherProcess onPluginManagerLoaded");
-    }
-    IPluginManager.a(paramPluginManagerClient);
-    IPluginManager.a(null);
-    while (!IPluginManager.a().isEmpty())
-    {
-      paramPluginManagerClient = (IPluginManager.WaitingCommand)IPluginManager.a().poll();
-      if (paramPluginManagerClient != null) {
-        IPluginManager.b(paramPluginManagerClient.jdField_a_of_type_AndroidContentContext, paramPluginManagerClient.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams, paramPluginManagerClient.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener);
-      }
-    }
+    LoadCompactDynamicFeature.a().a(this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b, (Application)this.jdField_a_of_type_AndroidContentContext.getApplicationContext());
+    this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.a.putExtra("extra_is_plugin", true);
+    this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.a.putExtra("extra_plugin_id", this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b);
+    ThreadManager.getUIHandler().post(new IPluginManager.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.plugin.IPluginManager.2
  * JD-Core Version:    0.7.0.1
  */

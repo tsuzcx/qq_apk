@@ -1,42 +1,31 @@
 package com.tencent.richmediabrowser.presenter;
 
 import android.content.Intent;
-import android.view.ViewGroup;
-import com.tencent.richmediabrowser.model.BrowserBaseModel;
-import com.tencent.richmediabrowser.view.BrowserBaseView;
+import android.content.res.Configuration;
+import android.os.Bundle;
+import android.view.KeyEvent;
+import com.tencent.richmediabrowser.api.event.IActivityEvent;
 
 public class BasePresenter
+  implements IActivityEvent
 {
-  private static final String TAG = "BasePresenter";
-  public BrowserBaseModel baseModel;
-  public BrowserBaseView baseView;
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public void buildComplete() {}
-  
-  public void buildParams(Intent paramIntent) {}
-  
-  public void buildPresenter() {}
-  
-  public int getRotation(int paramInt)
+  public boolean onBackEvent()
   {
-    switch (paramInt)
-    {
-    case 4: 
-    case 5: 
-    case 7: 
-    default: 
-      return 0;
-    case 6: 
-      return 90;
-    case 3: 
-      return 180;
-    }
-    return 270;
+    return false;
   }
   
-  public void onCreate(ViewGroup paramViewGroup) {}
+  public void onConfigurationChanged(Configuration paramConfiguration) {}
+  
+  public void onCreate(Bundle paramBundle) {}
   
   public void onDestroy() {}
+  
+  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  {
+    return false;
+  }
   
   public void onPause() {}
   
@@ -46,21 +35,11 @@ public class BasePresenter
   
   public void onStop() {}
   
-  public void setGalleryModel(BrowserBaseModel paramBrowserBaseModel)
-  {
-    this.baseModel = paramBrowserBaseModel;
-  }
-  
-  public void setGalleryView(BrowserBaseView paramBrowserBaseView)
-  {
-    this.baseView = paramBrowserBaseView;
-  }
-  
-  public void setRelyPresenter(BasePresenter paramBasePresenter) {}
+  public void onWindowFocusChanged() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmediabrowser.presenter.BasePresenter
  * JD-Core Version:    0.7.0.1
  */

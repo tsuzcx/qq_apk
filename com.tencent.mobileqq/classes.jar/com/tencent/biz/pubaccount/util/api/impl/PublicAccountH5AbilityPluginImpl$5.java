@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.util.api.impl;
 
-import com.tencent.biz.pubaccount.readinjoy.push.RIJPushNotifyManager.IPushNotifyDialogCallback;
+import com.tencent.mobileqq.kandian.biz.push.api.IPushNotifyDialogCallback;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class PublicAccountH5AbilityPluginImpl$5
-  implements RIJPushNotifyManager.IPushNotifyDialogCallback
+  implements IPushNotifyDialogCallback
 {
   PublicAccountH5AbilityPluginImpl$5(PublicAccountH5AbilityPluginImpl paramPublicAccountH5AbilityPluginImpl, String paramString) {}
   
@@ -16,21 +16,17 @@ class PublicAccountH5AbilityPluginImpl$5
     {
       localJSONObject.put("button", paramInt1);
       localJSONObject.put("result", paramInt2);
-      this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-      return;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.5
  * JD-Core Version:    0.7.0.1
  */

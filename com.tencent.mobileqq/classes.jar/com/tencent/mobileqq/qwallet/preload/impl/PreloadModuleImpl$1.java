@@ -1,30 +1,38 @@
 package com.tencent.mobileqq.qwallet.preload.impl;
 
-import com.tencent.biz.common.offline.AsyncBack;
+import com.qwallet.temp.AsyncBackTemp;
 import com.tencent.qphone.base.util.QLog;
 
 class PreloadModuleImpl$1
-  implements AsyncBack
+  implements AsyncBackTemp
 {
   PreloadModuleImpl$1(PreloadModuleImpl paramPreloadModuleImpl) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadModule", 2, "checkUpByBusinessId loaded, code:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkUpByBusinessId loaded, code:");
+      localStringBuilder.append(paramInt);
+      QLog.d("PreloadModule", 2, localStringBuilder.toString());
     }
   }
   
-  public void progress(int paramInt)
+  public void a(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadModule", 2, "checkUpByBusinessId progress:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkUpByBusinessId progress:");
+      localStringBuilder.append(paramString);
+      QLog.d("PreloadModule", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadModuleImpl.1
  * JD-Core Version:    0.7.0.1
  */

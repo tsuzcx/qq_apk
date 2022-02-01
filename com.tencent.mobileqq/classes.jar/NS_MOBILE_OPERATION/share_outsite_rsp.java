@@ -46,30 +46,36 @@ public final class share_outsite_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 1);
+    Object localObject = this.msg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 2);
+    localObject = this.url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.iShareOutType, 3);
-    if (this.ark_sharedata != null) {
-      paramJceOutputStream.write(this.ark_sharedata, 4);
+    localObject = this.ark_sharedata;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.strProgramID != null) {
-      paramJceOutputStream.write(this.strProgramID, 5);
+    localObject = this.strProgramID;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.strProgramPath != null) {
-      paramJceOutputStream.write(this.strProgramPath, 6);
+    localObject = this.strProgramPath;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.strProgramMsg != null) {
-      paramJceOutputStream.write(this.strProgramMsg, 7);
+    localObject = this.strProgramMsg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.share_outsite_rsp
  * JD-Core Version:    0.7.0.1
  */

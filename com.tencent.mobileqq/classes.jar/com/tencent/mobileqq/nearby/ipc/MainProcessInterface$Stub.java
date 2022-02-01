@@ -37,33 +37,24 @@ public abstract class MainProcessInterface$Stub
   {
     Object localObject2 = null;
     Object localObject1 = null;
-    switch (paramInt1)
+    if (paramInt1 != 1)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
-      if (paramParcel1.readInt() != 0) {
-        localObject1 = (BasicTypeDataParcel)BasicTypeDataParcel.CREATOR.createFromParcel(paramParcel1);
-      }
-      paramParcel1 = a((BasicTypeDataParcel)localObject1);
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
+      if (paramInt1 != 2)
       {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-      }
-      for (;;)
-      {
+        if (paramInt1 != 3)
+        {
+          if (paramInt1 != 1598968902) {
+            return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+          }
+          paramParcel2.writeString("com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
+          return true;
+        }
+        paramParcel1.enforceInterface("com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
+        a(NearbyProcessInterface.Stub.a(paramParcel1.readStrongBinder()));
+        paramParcel2.writeNoException();
         return true;
-        paramParcel2.writeInt(0);
       }
-    case 2: 
       paramParcel1.enforceInterface("com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
-      localObject1 = localObject2;
       if (paramParcel1.readInt() != 0) {
         localObject1 = (Message)Message.CREATOR.createFromParcel(paramParcel1);
       }
@@ -73,22 +64,31 @@ public abstract class MainProcessInterface$Stub
       {
         paramParcel2.writeInt(1);
         paramParcel1.writeToParcel(paramParcel2, 1);
-      }
-      for (;;)
-      {
         return true;
-        paramParcel2.writeInt(0);
       }
+      paramParcel2.writeInt(0);
+      return true;
     }
     paramParcel1.enforceInterface("com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
-    a(NearbyProcessInterface.Stub.a(paramParcel1.readStrongBinder()));
+    localObject1 = localObject2;
+    if (paramParcel1.readInt() != 0) {
+      localObject1 = (BasicTypeDataParcel)BasicTypeDataParcel.CREATOR.createFromParcel(paramParcel1);
+    }
+    paramParcel1 = a((BasicTypeDataParcel)localObject1);
     paramParcel2.writeNoException();
+    if (paramParcel1 != null)
+    {
+      paramParcel2.writeInt(1);
+      paramParcel1.writeToParcel(paramParcel2, 1);
+      return true;
+    }
+    paramParcel2.writeInt(0);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.ipc.MainProcessInterface.Stub
  * JD-Core Version:    0.7.0.1
  */

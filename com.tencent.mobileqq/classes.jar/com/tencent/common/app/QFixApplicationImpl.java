@@ -31,16 +31,9 @@ import org.json.JSONObject;
 public class QFixApplicationImpl
   extends QFixApplication
 {
-  public static String a;
-  public static boolean a;
+  public static String a = "com.tencent.common.app.BaseApplicationImpl";
+  public static boolean a = false;
   private static String b;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "com.tencent.common.app.BaseApplicationImpl";
-    b = null;
-    jdField_a_of_type_Boolean = false;
-  }
   
   public QFixApplicationImpl()
   {
@@ -60,106 +53,118 @@ public class QFixApplicationImpl
   
   public static String a(Context paramContext)
   {
-    if (b != null) {
-      return b;
+    localObject1 = b;
+    if (localObject1 != null) {
+      return localObject1;
     }
+    localObject1 = null;
     try
     {
-      paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
-      if (paramContext == null) {
-        break label93;
-      }
-      paramContext = paramContext.iterator();
-      do
+      Object localObject2 = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
+      paramContext = (Context)localObject1;
+      if (localObject2 != null)
       {
-        if (!paramContext.hasNext()) {
-          break;
-        }
-        localObject = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-      } while ((localObject == null) || (((ActivityManager.RunningAppProcessInfo)localObject).pid != Process.myPid()));
-      paramContext = ((ActivityManager.RunningAppProcessInfo)localObject).processName;
+        localObject2 = ((List)localObject2).iterator();
+        do
+        {
+          paramContext = (Context)localObject1;
+          if (!((Iterator)localObject2).hasNext()) {
+            break;
+          }
+          paramContext = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject2).next();
+        } while ((paramContext == null) || (paramContext.pid != Process.myPid()));
+        paramContext = paramContext.processName;
+      }
     }
     catch (Exception paramContext)
     {
       for (;;)
       {
-        Object localObject;
-        paramContext = null;
-        continue;
-        paramContext = null;
+        paramContext = (Context)localObject1;
       }
     }
-    localObject = paramContext;
+    localObject1 = paramContext;
     if (paramContext == null) {
-      localObject = "com.tencent.mobileqq";
+      localObject1 = "com.tencent.mobileqq";
     }
-    b = (String)localObject;
-    return localObject;
+    b = (String)localObject1;
+    return localObject1;
   }
   
   private JSONObject a(String paramString)
   {
     for (;;)
     {
-      int j;
       int i;
+      Object localObject1;
+      int k;
       try
       {
-        if (TextUtils.isEmpty(paramString))
-        {
-          localJSONArray = new JSONArray();
-          if (localJSONArray.length() == 0) {
-            return null;
-          }
+        if (TextUtils.isEmpty(paramString)) {
+          paramString = new JSONArray();
+        } else {
+          paramString = new JSONArray(paramString);
         }
-        else
-        {
-          localJSONArray = new JSONArray(paramString);
-          continue;
+        if (paramString.length() == 0) {
+          return null;
         }
-        if (localJSONArray.length() != 1) {
-          break label139;
+        if (paramString.length() != 1) {
+          break label163;
         }
-        return localJSONArray.getJSONObject(0);
+        return paramString.getJSONObject(0);
       }
       catch (JSONException paramString)
       {
-        JSONArray localJSONArray;
         JSONObject localJSONObject;
-        int k;
-        Log.d("QFixAppImpl_PatchLogTag", "getLatestPatchConfig exception=" + paramString);
+        Object localObject2;
+        int j;
+        int m;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getLatestPatchConfig exception=");
+        ((StringBuilder)localObject1).append(paramString);
+        Log.d("QFixAppImpl_PatchLogTag", ((StringBuilder)localObject1).toString());
         return null;
       }
-      if (j < localJSONArray.length())
+      if (i < paramString.length())
       {
-        localJSONObject = localJSONArray.getJSONObject(j);
+        localJSONObject = paramString.getJSONObject(i);
+        localObject2 = localObject1;
+        j = k;
         if (localJSONObject != null)
         {
-          k = localJSONObject.optInt("patchVersion", 0);
-          if (k > i)
+          m = localJSONObject.optInt("patchVersion", 0);
+          localObject2 = localObject1;
+          j = k;
+          if (m > k)
           {
-            i = k;
-            paramString = localJSONObject;
-            j += 1;
-            continue;
+            localObject2 = localJSONObject;
+            j = m;
           }
         }
+        i += 1;
+        localObject1 = localObject2;
+        k = j;
       }
       else
       {
-        return paramString;
-        label139:
-        j = 0;
-        paramString = null;
+        return localObject1;
+        label163:
+        localObject1 = null;
         i = 0;
+        k = 0;
       }
     }
   }
   
   public static void a(Context paramContext)
   {
-    if (jdField_a_of_type_Boolean) {
-      paramContext.getSharedPreferences("hotpatch_preference", 4).edit().putInt("androidNTryCount" + b, 0).commit();
+    if (jdField_a_of_type_Boolean)
+    {
+      paramContext = paramContext.getSharedPreferences("hotpatch_preference", 4).edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("androidNTryCount");
+      localStringBuilder.append(b);
+      paramContext.putInt(localStringBuilder.toString(), 0).commit();
     }
   }
   
@@ -170,7 +175,11 @@ public class QFixApplicationImpl
       paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName;
       return paramContext;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label18:
+      break label18;
+    }
     return "";
   }
   
@@ -183,17 +192,16 @@ public class QFixApplicationImpl
       long l = paramContext.getLong("androidNCrashTime", 0L);
       if (i < 3)
       {
-        if (Math.abs(System.currentTimeMillis() - l) >= 3600000L) {
-          break label99;
+        if (Math.abs(System.currentTimeMillis() - l) < 3600000L)
+        {
+          paramContext.edit().putInt("androidNCrashCount", i + 1).commit();
+          paramContext.edit().putLong("androidNCrashTime", System.currentTimeMillis()).commit();
+          return;
         }
-        paramContext.edit().putInt("androidNCrashCount", i + 1).commit();
+        paramContext.edit().putInt("androidNCrashCount", 1).commit();
         paramContext.edit().putLong("androidNCrashTime", System.currentTimeMillis()).commit();
       }
     }
-    return;
-    label99:
-    paramContext.edit().putInt("androidNCrashCount", 1).commit();
-    paramContext.edit().putLong("androidNCrashTime", System.currentTimeMillis()).commit();
   }
   
   public SharedPreferences getSharedPreferences(String paramString, int paramInt)
@@ -214,183 +222,211 @@ public class QFixApplicationImpl
     SharedPreferences localSharedPreferences = getSharedPreferences("hotpatch_preference", 4);
     Object localObject1 = localSharedPreferences.getString("key_config_patch_dex", "");
     String str2 = a(this);
-    String str1 = "androidNTryCount" + str2;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("androidNTryCount");
+    ((StringBuilder)localObject2).append(str2);
+    String str1 = ((StringBuilder)localObject2).toString();
     localObject1 = a((String)localObject1);
-    boolean bool1;
-    if (localObject1 == null)
-    {
+    if (localObject1 == null) {
       Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable patch config is null");
-      bool1 = false;
     }
-    Object localObject2;
+    boolean bool1;
+    int i;
     for (;;)
     {
-      if (bool1)
-      {
-        i = localSharedPreferences.getInt(str1, 0);
-        localSharedPreferences.edit().putInt(str1, i + 1).commit();
-      }
-      Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable = " + bool1);
-      jdField_a_of_type_Boolean = bool1;
-      return bool1;
-      bool1 = ((JSONObject)localObject1).optBoolean("enable", false);
-      Log.d("QFixAppImpl_PatchLogTag", "" + bool1);
-      if (!bool1)
-      {
-        bool1 = false;
-      }
-      else
-      {
-        localObject2 = ((JSONObject)localObject1).optString("revision", "");
-        Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable revision=" + (String)localObject2 + ", " + "de12fadd");
-        if (!"de12fadd".equals(localObject2))
-        {
-          Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable revision not match.");
-          bool1 = false;
-        }
-        else
-        {
-          localObject2 = ((JSONObject)localObject1).optString("appVersion", "");
-          if ((TextUtils.isEmpty((CharSequence)localObject2)) || (!((String)localObject2).equals(b(this) + "." + a(this))))
-          {
-            Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable appVersion not match.");
-            bool1 = false;
-          }
-          else
-          {
-            localObject2 = ((JSONObject)localObject1).optJSONArray("patchItemConfigs");
-            if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0)) {
-              break;
-            }
-            Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable patchItemConfig is null");
-            bool1 = false;
-          }
-        }
-      }
-    }
-    int i = 0;
-    Object localObject3;
-    boolean bool2;
-    if (i < ((JSONArray)localObject2).length())
-    {
-      localObject1 = ((JSONArray)localObject2).optJSONObject(i);
-      if (localObject1 == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        localObject3 = ((JSONObject)localObject1).optString("process", "");
-        bool2 = TextUtils.isEmpty((CharSequence)localObject3);
-        if (!bool2)
-        {
-          localObject3 = ((String)localObject3).split(";");
-          int k = localObject3.length;
-          int j = 0;
-          for (;;)
-          {
-            bool1 = bool2;
-            if (j < k)
-            {
-              if (TextUtils.equals(localObject3[j], str2)) {
-                bool1 = true;
-              }
-            }
-            else
-            {
-              if (bool1) {
-                break label498;
-              }
-              Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable process not match.");
-              break;
-            }
-            j += 1;
-          }
-        }
-        label498:
-        localObject3 = ((JSONObject)localObject1).optString("systemVersion", "");
-        if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (!((String)localObject3).contains(String.valueOf(Build.VERSION.SDK_INT))))
-        {
-          Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable systemVersion not match.");
-        }
-        else
-        {
-          localObject3 = ((JSONObject)localObject1).optString("deviceInfo", "");
-          if ((TextUtils.isEmpty((CharSequence)localObject3)) || ((((String)localObject3).contains(Build.BRAND)) && (((String)localObject3).contains(Build.MODEL)))) {
-            break label598;
-          }
-          Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable device not match.");
-        }
-      }
-    }
-    for (;;)
-    {
-      label598:
-      if (localObject1 == null)
-      {
-        Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable patchItemConfig not match.");
-        bool1 = false;
-        break;
-      }
-      localObject2 = ((JSONObject)localObject1).optString("patchName", "");
-      if (TextUtils.isEmpty((CharSequence)localObject2))
-      {
-        Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable patchName is empty.");
-        bool1 = false;
-        break;
-      }
-      localObject3 = new File(PatchCommonUtil.getPatchDirPath(this) + File.separator + (String)localObject2);
-      if (!((File)localObject3).exists())
-      {
-        Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable patch file not exist.");
-        bool1 = false;
-        break;
-      }
-      i = ((JSONObject)localObject1).optInt("patchSize", 0);
-      if ((i <= 0) || (((File)localObject3).length() != i))
-      {
-        Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable patchSize not match.");
-        bool1 = false;
-        break;
-      }
-      bool2 = ((JSONObject)localObject1).optBoolean("nPatchEnable", false);
-      Log.d("QFixAppImpl_PatchLogTag", "nPatchEnable " + bool2);
-      bool1 = bool2;
-      if (!bool2) {
-        break;
-      }
-      if (!localSharedPreferences.getBoolean("key_verify_status_patch_" + (String)localObject2, false))
-      {
-        Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable patch verify failed.");
-        return false;
-      }
-      localObject1 = str2 + (String)localObject2;
-      if (localSharedPreferences.getInt("key_count_fail_install_patch_" + (String)localObject1, 0) >= 3)
-      {
-        bool1 = false;
-        break;
-      }
-      if (localSharedPreferences.getInt("key_count_fail_startup_patch_" + (String)localObject1, 0) > 5)
-      {
-        bool1 = false;
-        break;
-      }
-      i = localSharedPreferences.getInt(str1, 0);
-      Log.d("QFixAppImpl_PatchLogTag", "androidNTryCount " + i);
-      if (i >= 3)
-      {
-        bool1 = false;
-        break;
-      }
-      i = localSharedPreferences.getInt("androidNCrashCount", 0);
-      Log.d("QFixAppImpl_PatchLogTag", "androidNCrashCount " + i);
-      bool1 = bool2;
-      if (i < 3) {
-        break;
-      }
       bool1 = false;
       break;
-      localObject1 = null;
+      bool1 = ((JSONObject)localObject1).optBoolean("enable", false);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("");
+      ((StringBuilder)localObject2).append(bool1);
+      Log.d("QFixAppImpl_PatchLogTag", ((StringBuilder)localObject2).toString());
+      if (bool1)
+      {
+        for (;;)
+        {
+          localObject2 = ((JSONObject)localObject1).optString("revision", "");
+          Object localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("isAndroidNPatchEnable revision=");
+          ((StringBuilder)localObject3).append((String)localObject2);
+          ((StringBuilder)localObject3).append(", ");
+          ((StringBuilder)localObject3).append("01328a87");
+          Log.d("QFixAppImpl_PatchLogTag", ((StringBuilder)localObject3).toString());
+          if (!"01328a87".equals(localObject2))
+          {
+            Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable revision not match.");
+            break;
+          }
+          localObject2 = ((JSONObject)localObject1).optString("appVersion", "");
+          if (TextUtils.isEmpty((CharSequence)localObject2)) {
+            break label1073;
+          }
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append(b(this));
+          ((StringBuilder)localObject3).append(".");
+          ((StringBuilder)localObject3).append(a(this));
+          if (!((String)localObject2).equals(((StringBuilder)localObject3).toString())) {
+            break label1073;
+          }
+          localObject3 = ((JSONObject)localObject1).optJSONArray("patchItemConfigs");
+          if ((localObject3 == null) || (((JSONArray)localObject3).length() <= 0)) {
+            break label1061;
+          }
+          i = 0;
+          while (i < ((JSONArray)localObject3).length())
+          {
+            localObject2 = ((JSONArray)localObject3).optJSONObject(i);
+            if (localObject2 != null)
+            {
+              localObject1 = ((JSONObject)localObject2).optString("process", "");
+              boolean bool2 = TextUtils.isEmpty((CharSequence)localObject1);
+              if (!bool2)
+              {
+                localObject1 = ((String)localObject1).split(";");
+                int k = localObject1.length;
+                int j = 0;
+                for (;;)
+                {
+                  bool1 = bool2;
+                  if (j >= k) {
+                    break;
+                  }
+                  if (TextUtils.equals(localObject1[j], str2))
+                  {
+                    bool1 = true;
+                    break;
+                  }
+                  j += 1;
+                }
+                if (!bool1)
+                {
+                  Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable process not match.");
+                  break label549;
+                }
+              }
+              localObject1 = ((JSONObject)localObject2).optString("systemVersion", "");
+              if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).contains(String.valueOf(Build.VERSION.SDK_INT))))
+              {
+                Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable systemVersion not match.");
+              }
+              else
+              {
+                String str3 = ((JSONObject)localObject2).optString("deviceInfo", "");
+                localObject1 = localObject2;
+                if (TextUtils.isEmpty(str3)) {
+                  break label559;
+                }
+                if (str3.contains(Build.BRAND))
+                {
+                  localObject1 = localObject2;
+                  if (str3.contains(Build.MODEL)) {
+                    break label559;
+                  }
+                }
+                Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable device not match.");
+              }
+            }
+            label549:
+            i += 1;
+          }
+          localObject1 = null;
+          label559:
+          if (localObject1 == null)
+          {
+            Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable patchItemConfig not match.");
+            break;
+          }
+          localObject2 = ((JSONObject)localObject1).optString("patchName", "");
+          if (TextUtils.isEmpty((CharSequence)localObject2))
+          {
+            Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable patchName is empty.");
+            break;
+          }
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append(PatchCommonUtil.getPatchDirPath(this));
+          ((StringBuilder)localObject3).append(File.separator);
+          ((StringBuilder)localObject3).append((String)localObject2);
+          localObject3 = new File(((StringBuilder)localObject3).toString());
+          if (!((File)localObject3).exists())
+          {
+            Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable patch file not exist.");
+            break;
+          }
+          i = ((JSONObject)localObject1).optInt("patchSize", 0);
+          if ((i <= 0) || (((File)localObject3).length() != i)) {
+            break label1049;
+          }
+          bool1 = ((JSONObject)localObject1).optBoolean("nPatchEnable", false);
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("nPatchEnable ");
+          ((StringBuilder)localObject1).append(bool1);
+          Log.d("QFixAppImpl_PatchLogTag", ((StringBuilder)localObject1).toString());
+          if (!bool1) {
+            break label1085;
+          }
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("key_verify_status_patch_");
+          ((StringBuilder)localObject1).append((String)localObject2);
+          if (!localSharedPreferences.getBoolean(((StringBuilder)localObject1).toString(), false))
+          {
+            Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable patch verify failed.");
+            return false;
+          }
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(str2);
+          ((StringBuilder)localObject1).append((String)localObject2);
+          localObject1 = ((StringBuilder)localObject1).toString();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("key_count_fail_install_patch_");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          if (localSharedPreferences.getInt(((StringBuilder)localObject2).toString(), 0) < 3)
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("key_count_fail_startup_patch_");
+            ((StringBuilder)localObject2).append((String)localObject1);
+            if (localSharedPreferences.getInt(((StringBuilder)localObject2).toString(), 0) <= 5)
+            {
+              i = localSharedPreferences.getInt(str1, 0);
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("androidNTryCount ");
+              ((StringBuilder)localObject1).append(i);
+              Log.d("QFixAppImpl_PatchLogTag", ((StringBuilder)localObject1).toString());
+              if (i < 3)
+              {
+                i = localSharedPreferences.getInt("androidNCrashCount", 0);
+                localObject1 = new StringBuilder();
+                ((StringBuilder)localObject1).append("androidNCrashCount ");
+                ((StringBuilder)localObject1).append(i);
+                Log.d("QFixAppImpl_PatchLogTag", ((StringBuilder)localObject1).toString());
+                if (i < 3) {
+                  break label1085;
+                }
+              }
+            }
+          }
+        }
+        label1049:
+        Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable patchSize not match.");
+        continue;
+        label1061:
+        Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable patchItemConfig is null");
+        continue;
+        label1073:
+        Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable appVersion not match.");
+      }
     }
+    label1085:
+    if (bool1)
+    {
+      i = localSharedPreferences.getInt(str1, 0);
+      localSharedPreferences.edit().putInt(str1, i + 1).commit();
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("isAndroidNPatchEnable = ");
+    ((StringBuilder)localObject1).append(bool1);
+    Log.d("QFixAppImpl_PatchLogTag", ((StringBuilder)localObject1).toString());
+    jdField_a_of_type_Boolean = bool1;
+    return bool1;
   }
   
   public void startActivity(Intent paramIntent)
@@ -425,7 +461,7 @@ public class QFixApplicationImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.app.QFixApplicationImpl
  * JD-Core Version:    0.7.0.1
  */

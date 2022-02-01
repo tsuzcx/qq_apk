@@ -29,56 +29,59 @@ public class DiyPendantEntity
   
   public ArrayList<DiyPendantSticker> getStickerInfoList()
   {
-    if (this.stickerList != null) {
-      return this.stickerList;
+    Object localObject = this.stickerList;
+    if (localObject != null) {
+      return localObject;
     }
-    if (this.stickers != null) {}
-    try
-    {
-      this.stickerList = ((ArrayList)new ObjectInputStream(new ByteArrayInputStream(this.stickers)).readObject());
-      return new ArrayList();
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+    localObject = this.stickers;
+    if (localObject != null) {
+      try
+      {
+        this.stickerList = ((ArrayList)new ObjectInputStream(new ByteArrayInputStream((byte[])localObject)).readObject());
+      }
+      catch (Exception localException)
       {
         localException.printStackTrace();
       }
     }
+    return new ArrayList();
   }
   
   public byte[] setStickerInfoList(List<DiyAddonUser.UserStickerInfo> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return null;
-    }
-    try
+    if (paramList != null)
     {
-      this.stickerList = new ArrayList();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        localObject = (DiyAddonUser.UserStickerInfo)paramList.next();
-        this.stickerList.add(new DiyPendantSticker(((DiyAddonUser.UserStickerInfo)localObject).type.get(), ((DiyAddonUser.UserStickerInfo)localObject).stickerid.get(), ((DiyAddonUser.UserStickerInfo)localObject).angle.get(), ((DiyAddonUser.UserStickerInfo)localObject).text.get(), ((DiyAddonUser.UserStickerInfo)localObject).fontid.get(), ((DiyAddonUser.UserStickerInfo)localObject).fonttype.get(), ((DiyAddonUser.UserStickerInfo)localObject).fontcolor.get()));
+      if (paramList.isEmpty()) {
+        return null;
       }
-      paramList = new ByteArrayOutputStream();
+      try
+      {
+        this.stickerList = new ArrayList();
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          localObject = (DiyAddonUser.UserStickerInfo)paramList.next();
+          this.stickerList.add(new DiyPendantSticker(((DiyAddonUser.UserStickerInfo)localObject).type.get(), ((DiyAddonUser.UserStickerInfo)localObject).stickerid.get(), ((DiyAddonUser.UserStickerInfo)localObject).angle.get(), ((DiyAddonUser.UserStickerInfo)localObject).text.get(), ((DiyAddonUser.UserStickerInfo)localObject).fontid.get(), ((DiyAddonUser.UserStickerInfo)localObject).fonttype.get(), ((DiyAddonUser.UserStickerInfo)localObject).fontcolor.get()));
+        }
+        paramList = new ByteArrayOutputStream();
+        Object localObject = new ObjectOutputStream(paramList);
+        ((ObjectOutputStream)localObject).writeObject(this.stickerList);
+        ((ObjectOutputStream)localObject).flush();
+        this.stickers = paramList.toByteArray();
+        paramList = this.stickers;
+        return paramList;
+      }
+      catch (IOException paramList)
+      {
+        paramList.printStackTrace();
+      }
     }
-    catch (IOException paramList)
-    {
-      paramList.printStackTrace();
-      return null;
-    }
-    Object localObject = new ObjectOutputStream(paramList);
-    ((ObjectOutputStream)localObject).writeObject(this.stickerList);
-    ((ObjectOutputStream)localObject).flush();
-    this.stickers = paramList.toByteArray();
-    paramList = this.stickers;
-    return paramList;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.addon.DiyPendantEntity
  * JD-Core Version:    0.7.0.1
  */

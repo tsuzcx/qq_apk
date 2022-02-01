@@ -31,8 +31,14 @@ public final class UploadEnv
   public static boolean enableV6Switch(int paramInt)
   {
     int i = QzoneConfig.getInstance().getConfig("QzoneUploadSetting", "UploadEnableV6RouteForAll", 7);
-    if (paramInt != 1) {
-      QZLog.d("UploadEnv", 1, "enableV6Switch:" + (i >> paramInt & 0x1) + " type:" + paramInt);
+    if (paramInt != 1)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("enableV6Switch:");
+      localStringBuilder.append(i >> paramInt & 0x1);
+      localStringBuilder.append(" type:");
+      localStringBuilder.append(paramInt);
+      QZLog.d("UploadEnv", 1, localStringBuilder.toString());
     }
     return (i >> paramInt & 0x1) == 1;
   }
@@ -41,19 +47,23 @@ public final class UploadEnv
   {
     try
     {
-      NetworkInfo localNetworkInfo = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-      if (localNetworkInfo == null) {}
-      for (paramContext = "getActiveNetworkInfo null";; paramContext = localNetworkInfo.toString())
-      {
-        QLog.d("UploadEnv", 1, paramContext);
-        return localNetworkInfo;
+      localObject = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+      if (localObject == null) {
+        paramContext = "getActiveNetworkInfo null";
+      } else {
+        paramContext = ((NetworkInfo)localObject).toString();
       }
-      return null;
+      QLog.d("UploadEnv", 1, paramContext);
+      return localObject;
     }
     catch (Throwable paramContext)
     {
-      QLog.d("UploadEnv", 1, "fail to get active network info " + paramContext.toString());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("fail to get active network info ");
+      ((StringBuilder)localObject).append(paramContext.toString());
+      QLog.d("UploadEnv", 1, ((StringBuilder)localObject).toString());
     }
+    return null;
   }
   
   public static int getIpStack(int paramInt)
@@ -96,20 +106,28 @@ public final class UploadEnv
   
   public int getCurrentNetworkCategory()
   {
-    switch ()
+    int j = cooperation.qzone.util.NetworkState.getNetworkType();
+    int i = 1;
+    if (j != 1)
     {
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 4: 
-      return 6;
-    case 5: 
-      return 7;
-    case 3: 
-      return 2;
+      i = 3;
+      if (j != 2)
+      {
+        if (j != 3)
+        {
+          if (j != 4)
+          {
+            if (j != 5) {
+              return 0;
+            }
+            return 7;
+          }
+          return 6;
+        }
+        return 2;
+      }
     }
-    return 3;
+    return i;
   }
   
   public int getFileConcurrentCount()
@@ -119,16 +137,20 @@ public final class UploadEnv
   
   public int getMobileOperatorCategory()
   {
-    switch ()
+    int j = cooperation.qzone.util.NetworkState.getApnValue();
+    int i = 1;
+    if (j != 1)
     {
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 2;
+      i = 2;
+      if (j != 2)
+      {
+        i = 3;
+        if (j != 3) {
+          return 0;
+        }
+      }
     }
-    return 3;
+    return i;
   }
   
   public String getProviderName()
@@ -155,7 +177,12 @@ public final class UploadEnv
   {
     boolean bool = cooperation.qzone.util.NetworkState.isNetSupport();
     this.hasNetwork = isNetworkAvailable(BaseApplication.getContext());
-    QLog.d("upload2:", 2, "msf network isAvailable:" + bool + " observer:" + this.hasNetwork);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("msf network isAvailable:");
+    localStringBuilder.append(bool);
+    localStringBuilder.append(" observer:");
+    localStringBuilder.append(this.hasNetwork);
+    QLog.d("upload2:", 2, localStringBuilder.toString());
     return (bool) && (this.hasNetwork);
   }
   
@@ -177,19 +204,30 @@ public final class UploadEnv
   public boolean loadLibrary(String paramString)
   {
     boolean bool = this.mSoDownloader.loadLibrary(paramString);
-    QLog.d("UploadEnv", 1, "useDownloadedSo " + bool);
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("useDownloadedSo ");
+    localStringBuilder1.append(bool);
+    QLog.d("UploadEnv", 1, localStringBuilder1.toString());
     if (bool) {
       return true;
     }
     try
     {
-      QLog.d("UploadEnv", 1, "try to load library: " + paramString + " from system lib");
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("try to load library: ");
+      localStringBuilder1.append(paramString);
+      localStringBuilder1.append(" from system lib");
+      QLog.d("UploadEnv", 1, localStringBuilder1.toString());
       System.loadLibrary(paramString);
       return true;
     }
     catch (Throwable localThrowable)
     {
-      QLog.e("UploadEnv", 1, "cannot load library " + paramString + " from system lib", localThrowable);
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("cannot load library ");
+      localStringBuilder2.append(paramString);
+      localStringBuilder2.append(" from system lib");
+      QLog.e("UploadEnv", 1, localStringBuilder2.toString(), localThrowable);
     }
     return false;
   }
@@ -204,7 +242,7 @@ public final class UploadEnv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.UploadEnv
  * JD-Core Version:    0.7.0.1
  */

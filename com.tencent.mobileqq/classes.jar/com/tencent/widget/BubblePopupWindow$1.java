@@ -12,26 +12,27 @@ class BubblePopupWindow$1
   
   public void onScrollChanged()
   {
-    if (BubblePopupWindow.a(this.a) != null) {}
-    WindowManager.LayoutParams localLayoutParams;
-    for (View localView = (View)BubblePopupWindow.a(this.a).get();; localView = null)
-    {
-      if ((localView != null) && (BubblePopupWindow.a(this.a) != null))
-      {
-        localLayoutParams = (WindowManager.LayoutParams)BubblePopupWindow.a(this.a).getLayoutParams();
-        if (localLayoutParams != null) {
-          break;
-        }
-      }
-      return;
+    View localView;
+    if (BubblePopupWindow.access$000(this.this$0) != null) {
+      localView = (View)BubblePopupWindow.access$000(this.this$0).get();
+    } else {
+      localView = null;
     }
-    BubblePopupWindow.a(this.a, localView, localLayoutParams, BubblePopupWindow.a(this.a), BubblePopupWindow.b(this.a));
-    this.a.a(localLayoutParams.x, localLayoutParams.y, -1, -1, true);
+    if ((localView != null) && (BubblePopupWindow.access$100(this.this$0) != null))
+    {
+      WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)BubblePopupWindow.access$100(this.this$0).getLayoutParams();
+      if (localLayoutParams == null) {
+        return;
+      }
+      BubblePopupWindow localBubblePopupWindow = this.this$0;
+      BubblePopupWindow.access$400(localBubblePopupWindow, localView, localLayoutParams, BubblePopupWindow.access$200(localBubblePopupWindow), BubblePopupWindow.access$300(this.this$0));
+      this.this$0.update(localLayoutParams.x, localLayoutParams.y, -1, -1, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.BubblePopupWindow.1
  * JD-Core Version:    0.7.0.1
  */

@@ -24,17 +24,17 @@ import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 import com.tencent.mobileqq.activity.springfestival.entry.model.PopBannerData;
 import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qwallet.preload.IPreloadServiceAbs;
 import com.tencent.mobileqq.qwallet.preload.PreloadStaticApi;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.mobileqq.vas.apng.api.VasApngFactory;
-import com.tencent.mobileqq.vas.apng.api.VasApngFactory.Options;
+import com.tencent.mobileqq.vas.apng.api.ApngOptions;
+import com.tencent.mobileqq.vas.apng.api.IVasApngFactory;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.QwUtils;
 import org.jetbrains.annotations.Nullable;
 
 public class SpringPopBanner
@@ -56,49 +56,58 @@ public class SpringPopBanner
     try
     {
       Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      localObject = BaseApplicationImpl.getApplication().getSharedPreferences(((QQAppInterface)localObject).getCurrentAccountUin() + "_2021_shuayishua_popbanner", 0);
+      BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(((QQAppInterface)localObject).getCurrentAccountUin());
+      localStringBuilder.append("_2021_shuayishua_popbanner");
+      localObject = localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0);
       return localObject;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label50:
+      break label50;
+    }
     return null;
   }
   
   @Nullable
   private URLDrawable a(int paramInt, String paramString)
   {
-    Object localObject2 = null;
     if (paramInt == 0) {
-      localObject1 = URLDrawable.getFileDrawable(paramString, URLDrawable.URLDrawableOptions.obtain());
+      return URLDrawable.getFileDrawable(paramString, URLDrawable.URLDrawableOptions.obtain());
     }
-    boolean bool;
-    do
+    if (paramInt == 1)
     {
-      do
+      boolean bool = FileUtils.fileExists(paramString);
+      Object localObject;
+      if (QLog.isColorLevel())
       {
-        return localObject1;
-        localObject1 = localObject2;
-      } while (paramInt != 1);
-      bool = FileUtils.a(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("shua2021_SpringPopBanner", 2, "showHongbaoLayer apng exist = " + bool);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("showHongbaoLayer apng exist = ");
+        ((StringBuilder)localObject).append(bool);
+        QLog.d("shua2021_SpringPopBanner", 2, ((StringBuilder)localObject).toString());
       }
-      localObject1 = localObject2;
-    } while (!bool);
-    Object localObject1 = new VasApngFactory.Options();
-    ((VasApngFactory.Options)localObject1).a(URLDrawableHelper.TRANSPARENT);
-    return VasApngFactory.a("", (VasApngFactory.Options)localObject1, paramString);
+      if (bool)
+      {
+        localObject = new ApngOptions();
+        ((ApngOptions)localObject).a(URLDrawableHelperConstants.a);
+        return ((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable("", (ApngOptions)localObject, paramString);
+      }
+    }
+    return null;
   }
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = ((DragFrameLayout)this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a().findViewById(2131365297));
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a().getLayoutInflater().inflate(2131559345, this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout, false);
-    this.jdField_a_of_type_AndroidViewView.setId(2131374815);
-    this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131363528);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131363527).setBackgroundColor(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a().getColor(2131165506));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368490));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = ((DragFrameLayout)this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a().findViewById(2131365172));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a().getLayoutInflater().inflate(2131559221, this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout, false);
+    this.jdField_a_of_type_AndroidViewView.setId(2131374360);
+    this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131363455);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131363454).setBackgroundColor(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a().getColor(2131165482));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368238));
     this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new SpringPopBanner.1(this));
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368492);
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368240);
     localImageView.setOnTouchListener(UITools.a);
     localImageView.setOnClickListener(new SpringPopBanner.2(this));
   }
@@ -106,46 +115,38 @@ public class SpringPopBanner
   private void a(int paramInt, String paramString)
   {
     paramInt = ViewUtils.b();
-    int i = ViewUtils.a() - AIOUtils.a(20.0F, this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a()) * 2;
+    int i = ViewUtils.a() - AIOUtils.b(20.0F, this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a()) * 2;
     paramInt = (int)(paramInt * 0.6666667F);
-    if (0.8571429F > i / paramInt) {
-      paramInt = (int)(i / 0.8571429F);
+    float f1 = i;
+    float f2 = paramInt;
+    if (0.8571429F > f1 / f2) {
+      paramInt = (int)(f1 / 0.8571429F);
+    } else {
+      i = (int)(f2 * 0.8571429F);
     }
-    for (;;)
+    if ((paramInt > 0) && (i > 0))
     {
-      if ((paramInt > 0) && (i > 0))
-      {
-        paramString = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-        paramString.height = paramInt;
-        paramString.width = i;
-        this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramString);
-      }
-      return;
-      i = (int)(paramInt * 0.8571429F);
+      paramString = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+      paramString.height = paramInt;
+      paramString.width = i;
+      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramString);
     }
   }
   
   private void a(String paramString)
   {
     QLog.d("shua2021_SpringPopBanner", 1, String.format("clickAction url=%s", new Object[] { paramString }));
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      try
+    }
+    try
+    {
+      if (URLUtil.isNetworkUrl(paramString))
       {
-        if (URLUtil.isNetworkUrl(paramString))
-        {
-          Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a(), QQBrowserActivity.class);
-          localIntent.putExtra("url", paramString);
-          localIntent.putExtra("big_brother_source_key", "biz_src_jc_aio");
-          this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a().startActivity(localIntent);
-          return;
-        }
-      }
-      catch (Throwable paramString)
-      {
-        QLog.d("shua2021_SpringPopBanner", 1, paramString.getMessage(), paramString);
+        Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a(), QQBrowserActivity.class);
+        localIntent.putExtra("url", paramString);
+        localIntent.putExtra("big_brother_source_key", "biz_src_jc_aio");
+        this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a().startActivity(localIntent);
         return;
       }
       paramString = JumpParser.a((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a, this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a(), paramString);
@@ -154,14 +155,28 @@ public class SpringPopBanner
         paramString.a();
         return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("shua2021_SpringPopBanner", 2, "gotoWeb jumpUrl is illegal");
+      if (QLog.isColorLevel())
+      {
+        QLog.d("shua2021_SpringPopBanner", 2, "gotoWeb jumpUrl is illegal");
+        return;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      QLog.d("shua2021_SpringPopBanner", 1, paramString.getMessage(), paramString);
+    }
   }
   
   private void a(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("shua2021_SpringPopBanner", 2, "showHongbaoLayer | imgUrl is: " + paramString2 + " actionUrl: " + paramString3);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showHongbaoLayer | imgUrl is: ");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(" actionUrl: ");
+      localStringBuilder.append(paramString3);
+      QLog.d("shua2021_SpringPopBanner", 2, localStringBuilder.toString());
     }
     if (!HttpUtil.isValidUrl(paramString2))
     {
@@ -174,26 +189,25 @@ public class SpringPopBanner
   
   private void a(String paramString, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    SharedPreferences localSharedPreferences;
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      QLog.d("shua2021_SpringPopBanner", 1, String.format("setHasShown id=%s shown=%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) }));
-      localSharedPreferences = a();
-    } while (localSharedPreferences == null);
-    localSharedPreferences.edit().putBoolean(paramString, paramBoolean).apply();
+    }
+    QLog.d("shua2021_SpringPopBanner", 1, String.format("setHasShown id=%s shown=%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) }));
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putBoolean(paramString, paramBoolean).apply();
+    }
   }
   
   private boolean a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    SharedPreferences localSharedPreferences;
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      localSharedPreferences = a();
-    } while (localSharedPreferences == null);
+    }
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences == null) {
+      return false;
+    }
     boolean bool = localSharedPreferences.getBoolean(paramString, false);
     QLog.d("shua2021_SpringPopBanner", 1, String.format("hasShown id=%s %b", new Object[] { paramString, Boolean.valueOf(bool) }));
     return bool;
@@ -220,18 +234,18 @@ public class SpringPopBanner
   {
     QLog.d("shua2021_SpringPopBanner", 1, "hide");
     if (paramBoolean) {
-      QwUtils.a(this.jdField_a_of_type_AndroidViewView);
+      ViewUtils.a(this.jdField_a_of_type_AndroidViewView);
     }
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.findViewById(2131374815) != null;
+    return this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.findViewById(2131374360) != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.ui.SpringPopBanner
  * JD-Core Version:    0.7.0.1
  */

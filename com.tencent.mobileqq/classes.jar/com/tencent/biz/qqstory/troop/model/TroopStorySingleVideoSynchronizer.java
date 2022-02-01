@@ -20,6 +20,7 @@ import com.tencent.biz.qqstory.network.response.GetVideoFullInfoListResponse;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -37,7 +38,7 @@ public class TroopStorySingleVideoSynchronizer
   String jdField_b_of_type_JavaLangString;
   boolean jdField_b_of_type_Boolean;
   
-  public void a(int paramInt)
+  protected void a(int paramInt)
   {
     if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
       return;
@@ -48,8 +49,12 @@ public class TroopStorySingleVideoSynchronizer
   
   public void a(@NonNull GetVideoFullInfoListRequest paramGetVideoFullInfoListRequest, @Nullable GetVideoFullInfoListResponse paramGetVideoFullInfoListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.troopstory.singleSync", 2, "onResp code=" + paramErrorMessage.errorCode);
+    if (QLog.isColorLevel())
+    {
+      paramGetVideoFullInfoListRequest = new StringBuilder();
+      paramGetVideoFullInfoListRequest.append("onResp code=");
+      paramGetVideoFullInfoListRequest.append(paramErrorMessage.errorCode);
+      QLog.d("Q.qqstory.troopstory.singleSync", 2, paramGetVideoFullInfoListRequest.toString());
     }
     paramGetVideoFullInfoListRequest = new StoryVideoItem();
     paramGetVideoFullInfoListRequest.mVid = this.jdField_b_of_type_JavaLangString;
@@ -61,28 +66,29 @@ public class TroopStorySingleVideoSynchronizer
       {
         paramErrorMessage = (StoryVideoItem)paramGetVideoFullInfoListRequest.next();
         if (this.jdField_b_of_type_JavaLangString.equals(paramErrorMessage.mVid)) {
-          if (paramErrorMessage.mErrorCode != 0) {
-            break;
+          if (paramErrorMessage.mErrorCode == 0)
+          {
+            i = 1;
+            break label131;
           }
         }
       }
     }
-    for (int i = 1;; i = 0)
+    int i = 0;
+    label131:
+    if (i != 0)
     {
-      if (i != 0)
-      {
-        ((DownloadUrlManager)SuperManager.a(28)).a(paramGetVideoFullInfoListResponse.b);
-        a(paramGetVideoFullInfoListResponse.jdField_a_of_type_JavaUtilList, false);
-        return;
-      }
-      this.jdField_b_of_type_Boolean = true;
-      if (paramGetVideoFullInfoListResponse == null) {}
-      for (paramGetVideoFullInfoListRequest = new ArrayList();; paramGetVideoFullInfoListRequest = paramGetVideoFullInfoListResponse.jdField_a_of_type_JavaUtilList)
-      {
-        a(paramGetVideoFullInfoListRequest, false);
-        return;
-      }
+      ((DownloadUrlManager)SuperManager.a(28)).a(paramGetVideoFullInfoListResponse.b);
+      a(paramGetVideoFullInfoListResponse.jdField_a_of_type_JavaUtilList, false);
+      return;
     }
+    this.jdField_b_of_type_Boolean = true;
+    if (paramGetVideoFullInfoListResponse == null) {
+      paramGetVideoFullInfoListRequest = new ArrayList();
+    } else {
+      paramGetVideoFullInfoListRequest = paramGetVideoFullInfoListResponse.jdField_a_of_type_JavaUtilList;
+    }
+    a(paramGetVideoFullInfoListRequest, false);
   }
   
   protected void a(String paramString, StoryVideoItem paramStoryVideoItem)
@@ -103,8 +109,12 @@ public class TroopStorySingleVideoSynchronizer
       ThreadManager.getUIHandler().post(new TroopStorySingleVideoSynchronizer.2(this, paramStoryVideoItem));
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.troopstory.singleSync", 2, "need send storyId=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      paramStoryVideoItem = new StringBuilder();
+      paramStoryVideoItem.append("need send storyId=");
+      paramStoryVideoItem.append(paramString);
+      QLog.d("Q.qqstory.troopstory.singleSync", 2, paramStoryVideoItem.toString());
     }
     paramStoryVideoItem = new GetVideoFullInfoListRequest();
     paramStoryVideoItem.jdField_a_of_type_JavaUtilList.add(paramString);
@@ -113,18 +123,19 @@ public class TroopStorySingleVideoSynchronizer
   
   void a(List<StoryVideoItem> paramList, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller$OnFinishCallBack == null)
+    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller$OnFinishCallBack;
+    if (localObject == null)
     {
-      DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent localPlayerVideoListEvent = new DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent();
-      localPlayerVideoListEvent.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      localPlayerVideoListEvent.jdField_a_of_type_Boolean = paramBoolean;
-      localPlayerVideoListEvent.jdField_b_of_type_Boolean = true;
-      localPlayerVideoListEvent.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      localPlayerVideoListEvent.jdField_a_of_type_Int = paramList.size();
-      StoryDispatcher.a().dispatch(localPlayerVideoListEvent);
+      localObject = new DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent();
+      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).jdField_a_of_type_Boolean = paramBoolean;
+      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).jdField_b_of_type_Boolean = true;
+      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).jdField_a_of_type_JavaUtilList.addAll(paramList);
+      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).jdField_a_of_type_Int = paramList.size();
+      StoryDispatcher.a().dispatch((Dispatcher.Dispatchable)localObject);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller$OnFinishCallBack.a(paramList, this.jdField_b_of_type_Boolean);
+    ((IVidToVideoInfoPuller.OnFinishCallBack)localObject).a(paramList, this.jdField_b_of_type_Boolean);
     this.jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller$OnFinishCallBack = null;
   }
   
@@ -135,7 +146,7 @@ public class TroopStorySingleVideoSynchronizer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.troop.model.TroopStorySingleVideoSynchronizer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,14 @@
 package com.tencent.qqprotect.qsec;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.util.Pair;
-import com.tencent.ims.QQProtectCommon.QQProtectQueryHead;
-import com.tencent.ims.QSecControlBitsQuery.QSecCbQuery;
-import com.tencent.ims.QSecControlBitsQuery.QSecCbQueryBody;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqprotect.common.QPDirUtils;
-import com.tencent.qqprotect.common.QPMiscUtils;
 import java.io.File;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
-import mqq.app.MobileQQ;
 import org.json.JSONObject;
 
 public class QSecCbMgr
@@ -51,7 +38,11 @@ public class QSecCbMgr
   
   private String a()
   {
-    return QPDirUtils.a() + File.separator + "QSecCb.dat";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(QPDirUtils.a());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("QSecCb.dat");
+    return localStringBuilder.toString();
   }
   
   private void a()
@@ -71,60 +62,50 @@ public class QSecCbMgr
   private void a(String paramString)
   {
     LinkedList localLinkedList = new LinkedList();
-    for (;;)
+    try
     {
-      try
+      paramString = new JSONObject(paramString);
+      if (paramString.getInt("ver") != 1) {
+        return;
+      }
+      JSONObject localJSONObject = paramString.getJSONObject("cbs");
+      if (localJSONObject != null)
       {
-        paramString = new JSONObject(paramString);
-        if (paramString.getInt("ver") != 1) {
-          return;
-        }
-        JSONObject localJSONObject = paramString.getJSONObject("cbs");
-        if (localJSONObject == null) {
-          continue;
-        }
         Iterator localIterator = localJSONObject.keys();
-        if (localIterator == null) {
-          continue;
+        if (localIterator != null) {
+          while (localIterator.hasNext())
+          {
+            Object localObject = a((String)localIterator.next(), localJSONObject);
+            if (localObject != null)
+            {
+              paramString = (String)localObject;
+              if (((Integer)((Pair)localObject).first).intValue() == 3) {
+                paramString = new Pair(Integer.valueOf(3), Byte.valueOf((byte)0));
+              }
+              localObject = (Byte)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString.first);
+              if (localObject == null) {
+                localLinkedList.add(paramString);
+              } else if (((Byte)localObject).byteValue() != ((Byte)paramString.second).byteValue()) {
+                localLinkedList.add(paramString);
+              }
+              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString.first, paramString.second);
+            }
+          }
         }
-        if (!localIterator.hasNext()) {
-          continue;
-        }
-        localObject = a((String)localIterator.next(), localJSONObject);
-        if (localObject == null) {
-          continue;
-        }
-        paramString = (String)localObject;
-        if (((Integer)((Pair)localObject).first).intValue() == 3) {
-          paramString = new Pair(Integer.valueOf(3), Byte.valueOf((byte)0));
-        }
-        localObject = (Byte)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString.first);
-        if (localObject != null) {
-          continue;
-        }
-        localLinkedList.add(paramString);
       }
-      catch (Exception paramString)
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      b();
+      if (!localLinkedList.isEmpty())
       {
-        Object localObject;
-        paramString.printStackTrace();
-        b();
-        if (localLinkedList.isEmpty()) {
-          return;
-        }
         paramString = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-        if (!paramString.hasNext()) {
-          return;
+        while (paramString.hasNext()) {
+          ((QSecCbMgr.IControlBitChangeListener)paramString.next()).a(localLinkedList);
         }
-        ((QSecCbMgr.IControlBitChangeListener)paramString.next()).a(localLinkedList);
-        continue;
-        if (((Byte)localObject).byteValue() == ((Byte)paramString.second).byteValue()) {
-          continue;
-        }
-        localLinkedList.add(paramString);
-        continue;
       }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString.first, paramString.second);
     }
   }
   
@@ -132,93 +113,93 @@ public class QSecCbMgr
   private void a(byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: new 201	java/io/DataInputStream
-    //   3: dup
-    //   4: new 203	java/io/ByteArrayInputStream
-    //   7: dup
-    //   8: aload_1
-    //   9: invokespecial 205	java/io/ByteArrayInputStream:<init>	([B)V
-    //   12: invokespecial 208	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
-    //   15: astore 4
-    //   17: aload 4
-    //   19: astore_1
-    //   20: aload 4
-    //   22: invokevirtual 211	java/io/DataInputStream:readInt	()I
-    //   25: istore_3
-    //   26: aload 4
-    //   28: astore_1
-    //   29: aload 4
-    //   31: invokevirtual 214	java/io/DataInputStream:readByte	()B
-    //   34: istore_2
-    //   35: aload 4
-    //   37: astore_1
-    //   38: aload_0
-    //   39: getfield 18	com/tencent/qqprotect/qsec/QSecCbMgr:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   42: iload_3
-    //   43: invokestatic 53	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   46: iload_2
-    //   47: invokestatic 63	java/lang/Byte:valueOf	(B)Ljava/lang/Byte;
-    //   50: invokevirtual 179	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   53: pop
-    //   54: goto -37 -> 17
-    //   57: astore 5
-    //   59: aload 4
-    //   61: astore_1
-    //   62: aload 5
-    //   64: invokevirtual 215	java/io/IOException:printStackTrace	()V
-    //   67: aload 4
-    //   69: ifnull +8 -> 77
-    //   72: aload 4
-    //   74: invokevirtual 218	java/io/DataInputStream:close	()V
-    //   77: return
-    //   78: astore_1
-    //   79: aload_1
-    //   80: invokevirtual 215	java/io/IOException:printStackTrace	()V
-    //   83: return
-    //   84: astore 4
-    //   86: aconst_null
-    //   87: astore_1
-    //   88: aload_1
-    //   89: ifnull +7 -> 96
-    //   92: aload_1
-    //   93: invokevirtual 218	java/io/DataInputStream:close	()V
-    //   96: aload 4
-    //   98: athrow
-    //   99: astore_1
-    //   100: aload_1
-    //   101: invokevirtual 215	java/io/IOException:printStackTrace	()V
-    //   104: goto -8 -> 96
-    //   107: astore 4
-    //   109: goto -21 -> 88
-    //   112: astore 5
-    //   114: aconst_null
-    //   115: astore 4
-    //   117: goto -58 -> 59
+    //   0: aconst_null
+    //   1: astore 6
+    //   3: aconst_null
+    //   4: astore 4
+    //   6: new 201	java/io/DataInputStream
+    //   9: dup
+    //   10: new 203	java/io/ByteArrayInputStream
+    //   13: dup
+    //   14: aload_1
+    //   15: invokespecial 205	java/io/ByteArrayInputStream:<init>	([B)V
+    //   18: invokespecial 208	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   21: astore_1
+    //   22: aload_1
+    //   23: invokevirtual 211	java/io/DataInputStream:readInt	()I
+    //   26: istore_3
+    //   27: aload_1
+    //   28: invokevirtual 214	java/io/DataInputStream:readByte	()B
+    //   31: istore_2
+    //   32: aload_0
+    //   33: getfield 18	com/tencent/qqprotect/qsec/QSecCbMgr:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   36: iload_3
+    //   37: invokestatic 53	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   40: iload_2
+    //   41: invokestatic 63	java/lang/Byte:valueOf	(B)Ljava/lang/Byte;
+    //   44: invokevirtual 183	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   47: pop
+    //   48: goto -26 -> 22
+    //   51: astore 4
+    //   53: goto +48 -> 101
+    //   56: astore 5
+    //   58: goto +20 -> 78
+    //   61: astore 5
+    //   63: aload 4
+    //   65: astore_1
+    //   66: aload 5
+    //   68: astore 4
+    //   70: goto +31 -> 101
+    //   73: astore 5
+    //   75: aload 6
+    //   77: astore_1
+    //   78: aload_1
+    //   79: astore 4
+    //   81: aload 5
+    //   83: invokevirtual 215	java/io/IOException:printStackTrace	()V
+    //   86: aload_1
+    //   87: ifnull +13 -> 100
+    //   90: aload_1
+    //   91: invokevirtual 218	java/io/DataInputStream:close	()V
+    //   94: return
+    //   95: astore_1
+    //   96: aload_1
+    //   97: invokevirtual 215	java/io/IOException:printStackTrace	()V
+    //   100: return
+    //   101: aload_1
+    //   102: ifnull +15 -> 117
+    //   105: aload_1
+    //   106: invokevirtual 218	java/io/DataInputStream:close	()V
+    //   109: goto +8 -> 117
+    //   112: astore_1
+    //   113: aload_1
+    //   114: invokevirtual 215	java/io/IOException:printStackTrace	()V
+    //   117: goto +6 -> 123
+    //   120: aload 4
+    //   122: athrow
+    //   123: goto -3 -> 120
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	120	0	this	QSecCbMgr
-    //   0	120	1	paramArrayOfByte	byte[]
-    //   34	13	2	b	byte
-    //   25	18	3	i	int
-    //   15	58	4	localDataInputStream	java.io.DataInputStream
-    //   84	13	4	localObject1	Object
-    //   107	1	4	localObject2	Object
-    //   115	1	4	localObject3	Object
-    //   57	6	5	localIOException1	java.io.IOException
-    //   112	1	5	localIOException2	java.io.IOException
+    //   0	126	0	this	QSecCbMgr
+    //   0	126	1	paramArrayOfByte	byte[]
+    //   31	10	2	b	byte
+    //   26	11	3	i	int
+    //   4	1	4	localObject1	Object
+    //   51	13	4	localObject2	Object
+    //   68	53	4	localObject3	Object
+    //   56	1	5	localIOException1	java.io.IOException
+    //   61	6	5	localObject4	Object
+    //   73	9	5	localIOException2	java.io.IOException
+    //   1	75	6	localObject5	Object
     // Exception table:
     //   from	to	target	type
-    //   20	26	57	java/io/IOException
-    //   29	35	57	java/io/IOException
-    //   38	54	57	java/io/IOException
-    //   72	77	78	java/io/IOException
-    //   0	17	84	finally
-    //   92	96	99	java/io/IOException
-    //   20	26	107	finally
-    //   29	35	107	finally
-    //   38	54	107	finally
-    //   62	67	107	finally
-    //   0	17	112	java/io/IOException
+    //   22	48	51	finally
+    //   22	48	56	java/io/IOException
+    //   6	22	61	finally
+    //   81	86	61	finally
+    //   6	22	73	java/io/IOException
+    //   90	94	95	java/io/IOException
+    //   105	109	112	java/io/IOException
   }
   
   /* Error */
@@ -228,187 +209,211 @@ public class QSecCbMgr
     //   0: new 221	java/io/ByteArrayOutputStream
     //   3: dup
     //   4: invokespecial 222	java/io/ByteArrayOutputStream:<init>	()V
-    //   7: astore_2
+    //   7: astore_1
     //   8: new 224	java/io/DataOutputStream
     //   11: dup
-    //   12: aload_2
+    //   12: aload_1
     //   13: invokespecial 227	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   16: astore 4
-    //   18: aload_0
-    //   19: getfield 18	com/tencent/qqprotect/qsec/QSecCbMgr:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   22: invokevirtual 231	java/util/concurrent/ConcurrentHashMap:entrySet	()Ljava/util/Set;
-    //   25: invokeinterface 234 1 0
-    //   30: astore_1
-    //   31: aload_1
-    //   32: invokeinterface 146 1 0
-    //   37: ifeq +80 -> 117
-    //   40: aload_1
-    //   41: invokeinterface 150 1 0
-    //   46: checkcast 236	java/util/Map$Entry
-    //   49: astore_3
-    //   50: aload 4
-    //   52: aload_3
-    //   53: invokeinterface 239 1 0
-    //   58: checkcast 45	java/lang/Integer
-    //   61: invokevirtual 162	java/lang/Integer:intValue	()I
-    //   64: invokevirtual 243	java/io/DataOutputStream:writeInt	(I)V
-    //   67: aload 4
-    //   69: aload_3
-    //   70: invokeinterface 246 1 0
-    //   75: checkcast 60	java/lang/Byte
-    //   78: invokevirtual 197	java/lang/Byte:byteValue	()B
-    //   81: invokevirtual 249	java/io/DataOutputStream:writeByte	(I)V
-    //   84: goto -53 -> 31
-    //   87: astore_3
-    //   88: aload_2
-    //   89: astore_1
-    //   90: aload 4
-    //   92: astore_2
-    //   93: aload_3
-    //   94: invokevirtual 215	java/io/IOException:printStackTrace	()V
-    //   97: aload_1
-    //   98: ifnull +7 -> 105
-    //   101: aload_1
-    //   102: invokevirtual 250	java/io/ByteArrayOutputStream:close	()V
-    //   105: aload_2
-    //   106: ifnull +7 -> 113
-    //   109: aload_2
-    //   110: invokevirtual 251	java/io/DataOutputStream:close	()V
-    //   113: aconst_null
-    //   114: astore_2
-    //   115: aload_2
-    //   116: areturn
-    //   117: aload_2
-    //   118: invokevirtual 254	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   121: astore_1
-    //   122: aload_2
-    //   123: ifnull +7 -> 130
-    //   126: aload_2
-    //   127: invokevirtual 250	java/io/ByteArrayOutputStream:close	()V
-    //   130: aload_1
-    //   131: astore_2
-    //   132: aload 4
-    //   134: ifnull -19 -> 115
-    //   137: aload 4
-    //   139: invokevirtual 251	java/io/DataOutputStream:close	()V
-    //   142: aload_1
-    //   143: areturn
-    //   144: astore_2
-    //   145: aload_2
-    //   146: invokevirtual 215	java/io/IOException:printStackTrace	()V
-    //   149: aload_1
-    //   150: areturn
-    //   151: astore_2
-    //   152: aload_2
-    //   153: invokevirtual 215	java/io/IOException:printStackTrace	()V
-    //   156: goto -26 -> 130
-    //   159: astore_1
-    //   160: aload_1
-    //   161: invokevirtual 215	java/io/IOException:printStackTrace	()V
-    //   164: goto -59 -> 105
-    //   167: astore_1
-    //   168: aload_1
-    //   169: invokevirtual 215	java/io/IOException:printStackTrace	()V
-    //   172: goto -59 -> 113
-    //   175: astore_1
-    //   176: aconst_null
-    //   177: astore_3
+    //   16: astore 5
+    //   18: aload_1
+    //   19: astore_2
+    //   20: aload 5
+    //   22: astore_3
+    //   23: aload_0
+    //   24: getfield 18	com/tencent/qqprotect/qsec/QSecCbMgr:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   27: invokevirtual 231	java/util/concurrent/ConcurrentHashMap:entrySet	()Ljava/util/Set;
+    //   30: invokeinterface 234 1 0
+    //   35: astore 4
+    //   37: aload_1
+    //   38: astore_2
+    //   39: aload 5
+    //   41: astore_3
+    //   42: aload 4
+    //   44: invokeinterface 146 1 0
+    //   49: ifeq +69 -> 118
+    //   52: aload_1
+    //   53: astore_2
+    //   54: aload 5
+    //   56: astore_3
+    //   57: aload 4
+    //   59: invokeinterface 150 1 0
+    //   64: checkcast 236	java/util/Map$Entry
+    //   67: astore 6
+    //   69: aload_1
+    //   70: astore_2
+    //   71: aload 5
+    //   73: astore_3
+    //   74: aload 5
+    //   76: aload 6
+    //   78: invokeinterface 239 1 0
+    //   83: checkcast 45	java/lang/Integer
+    //   86: invokevirtual 162	java/lang/Integer:intValue	()I
+    //   89: invokevirtual 243	java/io/DataOutputStream:writeInt	(I)V
+    //   92: aload_1
+    //   93: astore_2
+    //   94: aload 5
+    //   96: astore_3
+    //   97: aload 5
+    //   99: aload 6
+    //   101: invokeinterface 246 1 0
+    //   106: checkcast 60	java/lang/Byte
+    //   109: invokevirtual 176	java/lang/Byte:byteValue	()B
+    //   112: invokevirtual 249	java/io/DataOutputStream:writeByte	(I)V
+    //   115: goto -78 -> 37
+    //   118: aload_1
+    //   119: astore_2
+    //   120: aload 5
+    //   122: astore_3
+    //   123: aload_1
+    //   124: invokevirtual 252	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   127: astore 4
+    //   129: aload_1
+    //   130: invokevirtual 253	java/io/ByteArrayOutputStream:close	()V
+    //   133: goto +8 -> 141
+    //   136: astore_1
+    //   137: aload_1
+    //   138: invokevirtual 215	java/io/IOException:printStackTrace	()V
+    //   141: aload 5
+    //   143: invokevirtual 254	java/io/DataOutputStream:close	()V
+    //   146: aload 4
+    //   148: areturn
+    //   149: astore_1
+    //   150: aload_1
+    //   151: invokevirtual 215	java/io/IOException:printStackTrace	()V
+    //   154: aload 4
+    //   156: areturn
+    //   157: astore_2
+    //   158: aload_1
+    //   159: astore 4
+    //   161: aload 5
+    //   163: astore_1
+    //   164: aload_2
+    //   165: astore 5
+    //   167: goto +37 -> 204
+    //   170: astore_2
+    //   171: aconst_null
+    //   172: astore_3
+    //   173: goto +83 -> 256
+    //   176: astore 5
     //   178: aconst_null
     //   179: astore_2
-    //   180: aload_3
-    //   181: ifnull +7 -> 188
-    //   184: aload_3
-    //   185: invokevirtual 250	java/io/ByteArrayOutputStream:close	()V
-    //   188: aload_2
-    //   189: ifnull +7 -> 196
-    //   192: aload_2
-    //   193: invokevirtual 251	java/io/DataOutputStream:close	()V
-    //   196: aload_1
-    //   197: athrow
-    //   198: astore_3
-    //   199: aload_3
-    //   200: invokevirtual 215	java/io/IOException:printStackTrace	()V
-    //   203: goto -15 -> 188
+    //   180: aload_1
+    //   181: astore 4
+    //   183: aload_2
+    //   184: astore_1
+    //   185: goto +19 -> 204
+    //   188: astore_2
+    //   189: aconst_null
+    //   190: astore_3
+    //   191: aload_3
+    //   192: astore_1
+    //   193: goto +63 -> 256
+    //   196: astore 5
+    //   198: aconst_null
+    //   199: astore 4
+    //   201: aload 4
+    //   203: astore_1
+    //   204: aload 4
     //   206: astore_2
-    //   207: aload_2
-    //   208: invokevirtual 215	java/io/IOException:printStackTrace	()V
-    //   211: goto -15 -> 196
-    //   214: astore_1
-    //   215: aconst_null
-    //   216: astore 4
-    //   218: aload_2
-    //   219: astore_3
-    //   220: aload 4
-    //   222: astore_2
-    //   223: goto -43 -> 180
-    //   226: astore_1
-    //   227: aload_2
-    //   228: astore_3
-    //   229: aload 4
-    //   231: astore_2
-    //   232: goto -52 -> 180
-    //   235: astore 4
-    //   237: aload_1
-    //   238: astore_3
-    //   239: aload 4
-    //   241: astore_1
-    //   242: goto -62 -> 180
-    //   245: astore_3
-    //   246: aconst_null
-    //   247: astore_1
-    //   248: aconst_null
-    //   249: astore_2
-    //   250: goto -157 -> 93
-    //   253: astore_3
-    //   254: aload_2
-    //   255: astore_1
-    //   256: aconst_null
-    //   257: astore_2
-    //   258: goto -165 -> 93
+    //   207: aload_1
+    //   208: astore_3
+    //   209: aload 5
+    //   211: invokevirtual 215	java/io/IOException:printStackTrace	()V
+    //   214: aload 4
+    //   216: ifnull +16 -> 232
+    //   219: aload 4
+    //   221: invokevirtual 253	java/io/ByteArrayOutputStream:close	()V
+    //   224: goto +8 -> 232
+    //   227: astore_2
+    //   228: aload_2
+    //   229: invokevirtual 215	java/io/IOException:printStackTrace	()V
+    //   232: aload_1
+    //   233: ifnull +14 -> 247
+    //   236: aload_1
+    //   237: invokevirtual 254	java/io/DataOutputStream:close	()V
+    //   240: aconst_null
+    //   241: areturn
+    //   242: astore_1
+    //   243: aload_1
+    //   244: invokevirtual 215	java/io/IOException:printStackTrace	()V
+    //   247: aconst_null
+    //   248: areturn
+    //   249: astore 4
+    //   251: aload_2
+    //   252: astore_1
+    //   253: aload 4
+    //   255: astore_2
+    //   256: aload_1
+    //   257: ifnull +15 -> 272
+    //   260: aload_1
+    //   261: invokevirtual 253	java/io/ByteArrayOutputStream:close	()V
+    //   264: goto +8 -> 272
+    //   267: astore_1
+    //   268: aload_1
+    //   269: invokevirtual 215	java/io/IOException:printStackTrace	()V
+    //   272: aload_3
+    //   273: ifnull +15 -> 288
+    //   276: aload_3
+    //   277: invokevirtual 254	java/io/DataOutputStream:close	()V
+    //   280: goto +8 -> 288
+    //   283: astore_1
+    //   284: aload_1
+    //   285: invokevirtual 215	java/io/IOException:printStackTrace	()V
+    //   288: goto +5 -> 293
+    //   291: aload_2
+    //   292: athrow
+    //   293: goto -2 -> 291
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	261	0	this	QSecCbMgr
-    //   30	120	1	localObject1	Object
-    //   159	2	1	localIOException1	java.io.IOException
-    //   167	2	1	localIOException2	java.io.IOException
-    //   175	22	1	localObject2	Object
-    //   214	1	1	localObject3	Object
-    //   226	12	1	localObject4	Object
-    //   241	15	1	localObject5	Object
-    //   7	125	2	localObject6	Object
-    //   144	2	2	localIOException3	java.io.IOException
-    //   151	2	2	localIOException4	java.io.IOException
-    //   179	14	2	localObject7	Object
-    //   206	13	2	localIOException5	java.io.IOException
-    //   222	36	2	localObject8	Object
-    //   49	21	3	localEntry	java.util.Map.Entry
-    //   87	7	3	localIOException6	java.io.IOException
-    //   177	8	3	localObject9	Object
-    //   198	2	3	localIOException7	java.io.IOException
-    //   219	20	3	localObject10	Object
-    //   245	1	3	localIOException8	java.io.IOException
-    //   253	1	3	localIOException9	java.io.IOException
-    //   16	214	4	localDataOutputStream	java.io.DataOutputStream
-    //   235	5	4	localObject11	Object
+    //   0	296	0	this	QSecCbMgr
+    //   7	123	1	localByteArrayOutputStream1	java.io.ByteArrayOutputStream
+    //   136	2	1	localIOException1	java.io.IOException
+    //   149	10	1	localIOException2	java.io.IOException
+    //   163	74	1	localObject1	Object
+    //   242	2	1	localIOException3	java.io.IOException
+    //   252	9	1	localObject2	Object
+    //   267	2	1	localIOException4	java.io.IOException
+    //   283	2	1	localIOException5	java.io.IOException
+    //   19	101	2	localByteArrayOutputStream2	java.io.ByteArrayOutputStream
+    //   157	8	2	localIOException6	java.io.IOException
+    //   170	1	2	localObject3	Object
+    //   179	5	2	localObject4	Object
+    //   188	1	2	localObject5	Object
+    //   206	1	2	localObject6	Object
+    //   227	25	2	localIOException7	java.io.IOException
+    //   255	37	2	localObject7	Object
+    //   22	255	3	localObject8	Object
+    //   35	185	4	localObject9	Object
+    //   249	5	4	localObject10	Object
+    //   16	150	5	localObject11	Object
+    //   176	1	5	localIOException8	java.io.IOException
+    //   196	14	5	localIOException9	java.io.IOException
+    //   67	33	6	localEntry	java.util.Map.Entry
     // Exception table:
     //   from	to	target	type
-    //   18	31	87	java/io/IOException
-    //   31	84	87	java/io/IOException
-    //   117	122	87	java/io/IOException
-    //   137	142	144	java/io/IOException
-    //   126	130	151	java/io/IOException
-    //   101	105	159	java/io/IOException
-    //   109	113	167	java/io/IOException
-    //   0	8	175	finally
-    //   184	188	198	java/io/IOException
-    //   192	196	206	java/io/IOException
-    //   8	18	214	finally
-    //   18	31	226	finally
-    //   31	84	226	finally
-    //   117	122	226	finally
-    //   93	97	235	finally
-    //   0	8	245	java/io/IOException
-    //   8	18	253	java/io/IOException
+    //   129	133	136	java/io/IOException
+    //   141	146	149	java/io/IOException
+    //   23	37	157	java/io/IOException
+    //   42	52	157	java/io/IOException
+    //   57	69	157	java/io/IOException
+    //   74	92	157	java/io/IOException
+    //   97	115	157	java/io/IOException
+    //   123	129	157	java/io/IOException
+    //   8	18	170	finally
+    //   8	18	176	java/io/IOException
+    //   0	8	188	finally
+    //   0	8	196	java/io/IOException
+    //   219	224	227	java/io/IOException
+    //   236	240	242	java/io/IOException
+    //   23	37	249	finally
+    //   42	52	249	finally
+    //   57	69	249	finally
+    //   74	92	249	finally
+    //   97	115	249	finally
+    //   123	129	249	finally
+    //   209	214	249	finally
+    //   260	264	267	java/io/IOException
+    //   276	280	283	java/io/IOException
   }
   
   private void b()
@@ -436,59 +441,157 @@ public class QSecCbMgr
     this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramIControlBitChangeListener);
   }
   
+  /* Error */
   public void a(boolean paramBoolean)
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.Cb", 2, "Start to query cb!");
-      }
-      Object localObject1 = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-      if (localObject1 == null) {
-        return;
-      }
-      localObject1 = ((QQAppInterface)localObject1).getApp().getSharedPreferences("QSecCbLqt", 0);
-      if (!paramBoolean)
-      {
-        long l1 = ((SharedPreferences)localObject1).getLong("qt", 0L);
-        long l2 = new Date().getTime();
-        l1 = l2 - l1;
-        if (l1 < 28800000L)
-        {
-          a(28800000L - l1);
-          return;
-        }
-      }
-      localObject1 = ((SharedPreferences)localObject1).edit();
-      ((SharedPreferences.Editor)localObject1).putLong("qt", new Date().getTime());
-      ((SharedPreferences.Editor)localObject1).commit();
-      localObject1 = QPMiscUtils.a(0);
-      if (localObject1 == null) {
-        return;
-      }
-      QSecControlBitsQuery.QSecCbQueryBody localQSecCbQueryBody = new QSecControlBitsQuery.QSecCbQueryBody();
-      QSecControlBitsQuery.QSecCbQuery localQSecCbQuery = new QSecControlBitsQuery.QSecCbQuery();
-      localQSecCbQueryBody.u32_cfg_id.set(1);
-      localQSecCbQueryBody.u32_qsec_ver.set(33751040);
-      localQSecCbQuery.cb_query_head.set((MessageMicro)localObject1);
-      localQSecCbQuery.cb_query_body.set(localQSecCbQueryBody);
-      SecSvcHandlerHelper.a("MobileQQprotect.QSecCb", localQSecCbQuery.toByteArray());
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-      return;
-    }
-    finally
-    {
-      a(28800000L);
-    }
+    // Byte code:
+    //   0: invokestatic 270	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +13 -> 16
+    //   6: ldc_w 272
+    //   9: iconst_2
+    //   10: ldc_w 274
+    //   13: invokestatic 278	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   16: getstatic 284	mqq/app/MobileQQ:sMobileQQ	Lmqq/app/MobileQQ;
+    //   19: aconst_null
+    //   20: invokevirtual 288	mqq/app/MobileQQ:waitAppRuntime	(Lmqq/app/BaseActivity;)Lmqq/app/AppRuntime;
+    //   23: checkcast 290	com/tencent/mobileqq/app/QQAppInterface
+    //   26: astore 6
+    //   28: aload 6
+    //   30: ifnonnull +11 -> 41
+    //   33: aload_0
+    //   34: ldc2_w 291
+    //   37: invokespecial 294	com/tencent/qqprotect/qsec/QSecCbMgr:a	(J)V
+    //   40: return
+    //   41: aload 6
+    //   43: invokevirtual 298	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   46: ldc_w 300
+    //   49: iconst_0
+    //   50: invokevirtual 306	com/tencent/qphone/base/util/BaseApplication:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   53: astore 6
+    //   55: iload_1
+    //   56: ifne +50 -> 106
+    //   59: aload 6
+    //   61: ldc_w 308
+    //   64: lconst_0
+    //   65: invokeinterface 314 4 0
+    //   70: lstore_2
+    //   71: new 316	java/util/Date
+    //   74: dup
+    //   75: invokespecial 317	java/util/Date:<init>	()V
+    //   78: invokevirtual 321	java/util/Date:getTime	()J
+    //   81: lstore 4
+    //   83: lload 4
+    //   85: lload_2
+    //   86: lsub
+    //   87: lstore_2
+    //   88: lload_2
+    //   89: ldc2_w 291
+    //   92: lcmp
+    //   93: ifge +13 -> 106
+    //   96: aload_0
+    //   97: ldc2_w 291
+    //   100: lload_2
+    //   101: lsub
+    //   102: invokespecial 294	com/tencent/qqprotect/qsec/QSecCbMgr:a	(J)V
+    //   105: return
+    //   106: aload 6
+    //   108: invokeinterface 325 1 0
+    //   113: astore 6
+    //   115: aload 6
+    //   117: ldc_w 308
+    //   120: new 316	java/util/Date
+    //   123: dup
+    //   124: invokespecial 317	java/util/Date:<init>	()V
+    //   127: invokevirtual 321	java/util/Date:getTime	()J
+    //   130: invokeinterface 331 4 0
+    //   135: pop
+    //   136: aload 6
+    //   138: invokeinterface 334 1 0
+    //   143: pop
+    //   144: iconst_0
+    //   145: invokestatic 339	com/tencent/qqprotect/common/QPMiscUtils:a	(I)Lcom/tencent/ims/QQProtectCommon$QQProtectQueryHead;
+    //   148: astore 6
+    //   150: aload 6
+    //   152: ifnonnull +11 -> 163
+    //   155: aload_0
+    //   156: ldc2_w 291
+    //   159: invokespecial 294	com/tencent/qqprotect/qsec/QSecCbMgr:a	(J)V
+    //   162: return
+    //   163: new 341	com/tencent/ims/QSecControlBitsQuery$QSecCbQueryBody
+    //   166: dup
+    //   167: invokespecial 342	com/tencent/ims/QSecControlBitsQuery$QSecCbQueryBody:<init>	()V
+    //   170: astore 7
+    //   172: new 344	com/tencent/ims/QSecControlBitsQuery$QSecCbQuery
+    //   175: dup
+    //   176: invokespecial 345	com/tencent/ims/QSecControlBitsQuery$QSecCbQuery:<init>	()V
+    //   179: astore 8
+    //   181: aload 7
+    //   183: getfield 349	com/tencent/ims/QSecControlBitsQuery$QSecCbQueryBody:u32_cfg_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   186: iconst_1
+    //   187: invokevirtual 354	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
+    //   190: aload 7
+    //   192: getfield 357	com/tencent/ims/QSecControlBitsQuery$QSecCbQueryBody:u32_qsec_ver	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   195: ldc_w 358
+    //   198: invokevirtual 354	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
+    //   201: aload 8
+    //   203: getfield 362	com/tencent/ims/QSecControlBitsQuery$QSecCbQuery:cb_query_head	Lcom/tencent/ims/QQProtectCommon$QQProtectQueryHead;
+    //   206: aload 6
+    //   208: invokevirtual 367	com/tencent/ims/QQProtectCommon$QQProtectQueryHead:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
+    //   211: aload 8
+    //   213: getfield 371	com/tencent/ims/QSecControlBitsQuery$QSecCbQuery:cb_query_body	Lcom/tencent/ims/QSecControlBitsQuery$QSecCbQueryBody;
+    //   216: aload 7
+    //   218: invokevirtual 372	com/tencent/ims/QSecControlBitsQuery$QSecCbQueryBody:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
+    //   221: ldc 25
+    //   223: aload 8
+    //   225: invokevirtual 373	com/tencent/ims/QSecControlBitsQuery$QSecCbQuery:toByteArray	()[B
+    //   228: invokestatic 376	com/tencent/qqprotect/qsec/SecSvcHandlerHelper:a	(Ljava/lang/String;[B)Z
+    //   231: pop
+    //   232: goto +15 -> 247
+    //   235: astore 6
+    //   237: goto +18 -> 255
+    //   240: astore 6
+    //   242: aload 6
+    //   244: invokevirtual 377	java/lang/Throwable:printStackTrace	()V
+    //   247: aload_0
+    //   248: ldc2_w 291
+    //   251: invokespecial 294	com/tencent/qqprotect/qsec/QSecCbMgr:a	(J)V
+    //   254: return
+    //   255: aload_0
+    //   256: ldc2_w 291
+    //   259: invokespecial 294	com/tencent/qqprotect/qsec/QSecCbMgr:a	(J)V
+    //   262: aload 6
+    //   264: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	265	0	this	QSecCbMgr
+    //   0	265	1	paramBoolean	boolean
+    //   70	31	2	l1	long
+    //   81	3	4	l2	long
+    //   26	181	6	localObject1	Object
+    //   235	1	6	localObject2	Object
+    //   240	23	6	localThrowable	java.lang.Throwable
+    //   170	47	7	localQSecCbQueryBody	com.tencent.ims.QSecControlBitsQuery.QSecCbQueryBody
+    //   179	45	8	localQSecCbQuery	com.tencent.ims.QSecControlBitsQuery.QSecCbQuery
+    // Exception table:
+    //   from	to	target	type
+    //   0	16	235	finally
+    //   16	28	235	finally
+    //   41	55	235	finally
+    //   59	83	235	finally
+    //   106	150	235	finally
+    //   163	232	235	finally
+    //   242	247	235	finally
+    //   0	16	240	java/lang/Throwable
+    //   16	28	240	java/lang/Throwable
+    //   41	55	240	java/lang/Throwable
+    //   59	83	240	java/lang/Throwable
+    //   106	150	240	java/lang/Throwable
+    //   163	232	240	java/lang/Throwable
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.QSecCbMgr
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ public final class QQCircleRead$ConfidentCircleMemberReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qqcircle.QQCircleRead.ConfidentCircleMemberReq
  * JD-Core Version:    0.7.0.1
  */

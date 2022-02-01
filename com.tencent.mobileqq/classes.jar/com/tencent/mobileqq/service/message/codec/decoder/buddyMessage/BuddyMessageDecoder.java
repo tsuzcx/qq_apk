@@ -36,20 +36,19 @@ public class BuddyMessageDecoder
   
   public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, DecodeProtoPkgContext paramDecodeProtoPkgContext)
   {
-    if (!((msg_comm.MsgHead)paramMsg.msg_head.get()).c2c_cmd.has()) {}
-    Decoder localDecoder;
-    do
-    {
+    if (!((msg_comm.MsgHead)paramMsg.msg_head.get()).c2c_cmd.has()) {
       return;
-      int i = paramMsg.msg_head.c2c_cmd.get();
-      localDecoder = (Decoder)this.a.a(Integer.valueOf(i));
-    } while (localDecoder == null);
-    localDecoder.a(paramMessageHandler, paramMsg, paramList, paramDecodeProtoPkgContext);
+    }
+    int i = paramMsg.msg_head.c2c_cmd.get();
+    Decoder localDecoder = (Decoder)this.a.a(Integer.valueOf(i));
+    if (localDecoder != null) {
+      localDecoder.a(paramMessageHandler, paramMsg, paramList, paramDecodeProtoPkgContext);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.buddyMessage.BuddyMessageDecoder
  * JD-Core Version:    0.7.0.1
  */

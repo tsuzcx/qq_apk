@@ -25,19 +25,23 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.AIOEmoticonUIHelper;
+import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.AIODepend.IPanelInteractionListener;
+import com.tencent.mobileqq.activity.aio.core.BaseAIOContext;
+import com.tencent.mobileqq.emosm.IEmoticonPanelHotPicSearchHelper;
+import com.tencent.mobileqq.emosm.IEmotionSearchPanel;
+import com.tencent.mobileqq.emoticonview.api.IEmosmService;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class EmotionSearchPanel
   extends RelativeLayout
-  implements View.OnClickListener
+  implements View.OnClickListener, IEmotionSearchPanel
 {
   private static final int ENTER_EXIT_ANIM_DRAUTION = 200;
   static final float EXIT_ANIM_CRITICAL_SHOW_SEARHCONTAINER = 0.99F;
@@ -47,9 +51,9 @@ public class EmotionSearchPanel
   public static final int STATE_NONE = 0;
   public static final int STATE_SOFT_PANEL_SHOW = 2;
   private static final String TAG = "EmotionSearchPanel";
-  public static int keyboardHeight = 0;
-  QQAppInterface app;
-  BaseChatPie chatPie;
+  public static int keyboardHeight;
+  BaseAIOContext aioContext;
+  BaseQQAppInterface app;
   View decorView;
   TextView emotionCancelBtn;
   EditText emotionInput;
@@ -63,6 +67,7 @@ public class EmotionSearchPanel
   boolean hasSetVisisble = false;
   boolean hasWord = false;
   EmoticonPanelHotPicSearchHelper helper;
+  IPanelInteractionListener interactionListener;
   boolean isClearWord = false;
   boolean isDestory = false;
   private boolean isExitNeedSearch = false;
@@ -97,7 +102,7 @@ public class EmotionSearchPanel
       startExitAinm();
     }
     hideSoftInput();
-    Object localObject = AIOEmoticonUIHelper.a(this.chatPie);
+    Object localObject = (EmoticonMainPanel)((IEmosmService)QRoute.api(IEmosmService.class)).tryGetEmoticonMainPanel(this.interactionListener);
     if (localObject != null)
     {
       localObject = (EmoticonPanelHotPicSearchHelper)((EmoticonMainPanel)localObject).getEmoController().getHelper(7);
@@ -108,10 +113,7 @@ public class EmotionSearchPanel
       }
       ((EmoticonPanelHotPicSearchHelper)localObject).setSearchContainerVisibility(4);
     }
-    localObject = (AIOEmoticonPanelHelper)this.chatPie.a(104);
-    if (localObject != null) {
-      ((AIOEmoticonPanelHelper)localObject).showEmoticonPanel(12);
-    }
+    ((IEmosmService)QRoute.api(IEmosmService.class)).showEmoticonPanel(this.aioContext, 12);
   }
   
   private int getEnterTextAnimStartPos()
@@ -163,50 +165,59 @@ public class EmotionSearchPanel
       this.emotionInput.setSelection(paramString.length());
       this.hasWord = true;
       this.searchCleanImg.setVisibility(0);
-      this.exitWidth = paramInt2;
-      if ((this.exitWidth <= 0) || (isNeedDoCenterMove(false))) {
-        this.exitWidth = ((int)this.screenWidth - this.halfcCancelBtnWidth);
-      }
-      if (!isNeedDoCenterMove(false))
-      {
-        setSearchInputLeftMargin(0);
-        setSearchInputRootWidth(this.exitWidth);
-      }
-      this.searchRootStartBottomMargin = (ScreenUtil.dip2px(10.0F) + paramInt1);
-      if (keyboardHeight <= 0) {
-        break label241;
-      }
-      paramString = AIOEmoticonUIHelper.a(this.chatPie);
-      if (paramString != null) {
-        paramString = (EmoticonPanelExtendHelper)paramString.getEmoController().getHelper(1);
-      }
     }
-    label241:
-    for (this.upAndDownDistance = (keyboardHeight - paramString.getOriginPanelHeight());; this.upAndDownDistance = (paramInt3 - ScreenUtil.dip2px(12.0F)))
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionSearchPanel", 2, "init initAnimStartParam =" + this.upAndDownDistance + " exitWidth =" + this.exitWidth);
-      }
-      return;
       this.hasWord = false;
       this.searchCleanImg.setVisibility(8);
-      break;
+    }
+    this.exitWidth = paramInt2;
+    if ((this.exitWidth <= 0) || (isNeedDoCenterMove(false))) {
+      this.exitWidth = ((int)this.screenWidth - this.halfcCancelBtnWidth);
+    }
+    if (!isNeedDoCenterMove(false))
+    {
+      setSearchInputLeftMargin(0);
+      setSearchInputRootWidth(this.exitWidth);
+    }
+    this.searchRootStartBottomMargin = (paramInt1 + ScreenUtil.dip2px(10.0F));
+    if (keyboardHeight > 0)
+    {
+      paramString = (EmoticonMainPanel)((IEmosmService)QRoute.api(IEmosmService.class)).tryGetEmoticonMainPanel(this.interactionListener);
+      if (paramString != null)
+      {
+        paramString = (EmoticonPanelExtendHelper)paramString.getEmoController().getHelper(1);
+        this.upAndDownDistance = (keyboardHeight - paramString.getOriginPanelHeight());
+      }
+    }
+    else
+    {
+      this.upAndDownDistance = (paramInt3 - ScreenUtil.dip2px(12.0F));
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("init initAnimStartParam =");
+      paramString.append(this.upAndDownDistance);
+      paramString.append(" exitWidth =");
+      paramString.append(this.exitWidth);
+      QLog.d("EmotionSearchPanel", 2, paramString.toString());
     }
   }
   
   private void initView()
   {
-    this.emotionInput = ((EditText)findViewById(2131366309));
-    this.emotionCancelBtn = ((TextView)findViewById(2131366308));
-    this.emotionSearchRoot = ((RelativeLayout)findViewById(2131366310));
-    this.emotionSearchBar = ((RelativeLayout)findViewById(2131366307));
-    this.maskBtmView = findViewById(2131371071);
-    this.maskBtmView.setBackgroundColor(getContext().getResources().getColor(2131165639));
-    this.emotionSearchBar.setBackgroundColor(getContext().getResources().getColor(2131165639));
-    this.emotionInputAnimLayout = ((RelativeLayout)findViewById(2131366296));
-    this.searchCleanImg = ((ImageView)findViewById(2131369800));
+    this.emotionInput = ((EditText)findViewById(2131366197));
+    this.emotionCancelBtn = ((TextView)findViewById(2131366196));
+    this.emotionSearchRoot = ((RelativeLayout)findViewById(2131366198));
+    this.emotionSearchBar = ((RelativeLayout)findViewById(2131366195));
+    this.maskBtmView = findViewById(2131370705);
+    this.maskBtmView.setBackgroundColor(getContext().getResources().getColor(2131165620));
+    this.emotionSearchBar.setBackgroundColor(getContext().getResources().getColor(2131165620));
+    this.emotionInputAnimLayout = ((RelativeLayout)findViewById(2131366184));
+    this.searchCleanImg = ((ImageView)findViewById(2131369487));
     this.searchCleanImg.setOnClickListener(this);
-    this.mask = ((FrameLayout)findViewById(2131371065));
+    this.mask = ((FrameLayout)findViewById(2131370699));
     this.emotionCancelBtn.setOnClickListener(this);
     this.mask.setOnClickListener(this);
     this.decorView = ((Activity)getContext()).getWindow().getDecorView();
@@ -214,28 +225,33 @@ public class EmotionSearchPanel
     this.emotionInputAnimLayout.setBackgroundDrawable(getShapeDrawable(18));
     if (ThemeUtil.isNowThemeIsNight(this.app, false, null)) {
       this.emotionInput.setTextColor(Color.parseColor("#B0B3BF"));
-    }
-    for (;;)
-    {
-      this.emotionInput.setOnEditorActionListener(new EmotionSearchPanel.1(this));
-      this.emotionInput.addTextChangedListener(new EmotionSearchPanel.2(this));
-      return;
+    } else {
       this.emotionInput.setTextColor(Color.parseColor("#03081A"));
     }
+    this.emotionInput.setOnEditorActionListener(new EmotionSearchPanel.1(this));
+    this.emotionInput.addTextChangedListener(new EmotionSearchPanel.2(this));
   }
   
   private boolean isNeedDoCenterMove(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      if ((!this.hasWord) && (!this.isExitNeedSearch)) {}
+      if ((this.hasWord) || (this.isExitNeedSearch)) {
+        return false;
+      }
     }
-    else {
-      while ((this.hasWord) || (this.isClearWord)) {
+    else
+    {
+      if (this.hasWord) {
+        break label38;
+      }
+      if (this.isClearWord) {
         return false;
       }
     }
     return true;
+    label38:
+    return false;
   }
   
   private void onExitAnimEnd()
@@ -243,11 +259,8 @@ public class EmotionSearchPanel
     if (QLog.isColorLevel()) {
       QLog.d("EmotionSearchPanel", 2, "onExitAnimEnd");
     }
-    Object localObject = (AIOEmoticonUIHelper)this.chatPie.a(105);
-    if (localObject != null) {
-      ((AIOEmoticonUIHelper)localObject).a(false, 0, false, null, 0);
-    }
-    localObject = AIOEmoticonUIHelper.a(this.chatPie);
+    ((IEmosmService)QRoute.api(IEmosmService.class)).setEmotionSearchPanelVisible(this.aioContext, false, 0, false, null, 0);
+    Object localObject = (EmoticonMainPanel)((IEmosmService)QRoute.api(IEmosmService.class)).tryGetEmoticonMainPanel(this.interactionListener);
     if (localObject != null)
     {
       localObject = (EmoticonPanelHotPicSearchHelper)((EmoticonMainPanel)localObject).getEmoController().getHelper(7);
@@ -264,14 +277,13 @@ public class EmotionSearchPanel
   {
     if (this.decorView != null)
     {
-      if (Build.VERSION.SDK_INT >= 16) {
+      if (Build.VERSION.SDK_INT >= 16)
+      {
         this.decorView.getViewTreeObserver().removeOnGlobalLayoutListener(this.onGlobalLayoutListener);
+        return;
       }
+      this.decorView.getViewTreeObserver().removeGlobalOnLayoutListener(this.onGlobalLayoutListener);
     }
-    else {
-      return;
-    }
-    this.decorView.getViewTreeObserver().removeGlobalOnLayoutListener(this.onGlobalLayoutListener);
   }
   
   private void reportCancel(int paramInt)
@@ -296,7 +308,7 @@ public class EmotionSearchPanel
     if ((paramFloat > 0.99F) && (!this.hasSetVisisble))
     {
       this.hasSetVisisble = true;
-      EmoticonMainPanel localEmoticonMainPanel = AIOEmoticonUIHelper.a(this.chatPie);
+      EmoticonMainPanel localEmoticonMainPanel = (EmoticonMainPanel)((IEmosmService)QRoute.api(IEmosmService.class)).tryGetEmoticonMainPanel(this.interactionListener);
       if (localEmoticonMainPanel != null) {
         ((EmoticonPanelHotPicSearchHelper)localEmoticonMainPanel.getEmoController().getHelper(7)).setSearchContainerVisibility(0);
       }
@@ -359,27 +371,44 @@ public class EmotionSearchPanel
   
   public void dissmissEmotionSearchWinow()
   {
-    if (this.emotionSearchPanelWindow != null) {
-      this.emotionSearchPanelWindow.dismiss();
+    PopupWindow localPopupWindow = this.emotionSearchPanelWindow;
+    if (localPopupWindow != null) {
+      localPopupWindow.dismiss();
     }
   }
   
   protected Drawable getShapeDrawable(int paramInt)
   {
-    if (ThemeUtil.isNowThemeIsNight(this.app, false, null)) {}
-    for (String str = "#1C1C1C";; str = "#F5F6FA") {
-      return ViewUtils.a(Color.parseColor(str), ViewUtils.a(paramInt));
+    String str;
+    if (ThemeUtil.isNowThemeIsNight(this.app, false, null)) {
+      str = "#1C1C1C";
+    } else {
+      str = "#F5F6FA";
     }
+    return ViewUtils.a(Color.parseColor(str), ViewUtils.a(paramInt));
   }
   
-  public void init(QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie, int paramInt1, boolean paramBoolean, String paramString, int paramInt2, int paramInt3, EmoticonPanelHotPicSearchHelper paramEmoticonPanelHotPicSearchHelper)
+  public void init(BaseQQAppInterface paramBaseQQAppInterface, IPanelInteractionListener paramIPanelInteractionListener, int paramInt1, boolean paramBoolean, String paramString, int paramInt2, int paramInt3, IEmoticonPanelHotPicSearchHelper paramIEmoticonPanelHotPicSearchHelper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionSearchPanel", 2, "init start searchRootStartBottomMargin=" + this.searchRootStartBottomMargin + " upDis=" + paramInt2 + " width=" + paramInt3 + " hasWord=" + this.hasWord + " keyboardHeight= " + keyboardHeight);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("init start searchRootStartBottomMargin=");
+      localStringBuilder.append(this.searchRootStartBottomMargin);
+      localStringBuilder.append(" upDis=");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(" width=");
+      localStringBuilder.append(paramInt3);
+      localStringBuilder.append(" hasWord=");
+      localStringBuilder.append(this.hasWord);
+      localStringBuilder.append(" keyboardHeight= ");
+      localStringBuilder.append(keyboardHeight);
+      QLog.d("EmotionSearchPanel", 2, localStringBuilder.toString());
     }
     setEmotionStatus(1);
-    this.chatPie = paramBaseChatPie;
-    this.app = paramQQAppInterface;
+    this.interactionListener = paramIPanelInteractionListener;
+    this.aioContext = paramIPanelInteractionListener.getAIOContext();
+    this.app = paramBaseQQAppInterface;
     this.isClearWord = paramBoolean;
     initView();
     if (paramBoolean)
@@ -388,30 +417,31 @@ public class EmotionSearchPanel
       this.emotionInput.setText("");
     }
     initAnimStartParam(paramString, paramInt1, paramInt3, paramInt2);
-    this.helper = paramEmoticonPanelHotPicSearchHelper;
+    this.helper = ((EmoticonPanelHotPicSearchHelper)paramIEmoticonPanelHotPicSearchHelper);
     startEntryAinm();
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i == 2131366196)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       reportCancel(1);
       this.isExitNeedSearch = false;
       doExit();
-      continue;
+    }
+    else if (i == 2131370699)
+    {
       reportCancel(2);
       this.isExitNeedSearch = false;
       doExit();
-      continue;
+    }
+    else if (i == 2131369487)
+    {
       this.emotionInput.setText("");
       this.searchCleanImg.setVisibility(8);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onDestory()
@@ -444,113 +474,123 @@ public class EmotionSearchPanel
       }
       this.emotionSearchPanelWindow.setClippingEnabled(false);
       this.emotionSearchPanelWindow.showAtLocation(this, 0, 0, 0);
-      if (QLog.isColorLevel()) {
+      if (QLog.isColorLevel())
+      {
         QLog.d("EmotionSearchPanel", 2, new Object[] { "showEmotionSearchWindow,height ", Integer.valueOf(this.emotionSearchPanelWindow.getHeight()) });
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("EmotionSearchPanel", 2, localThrowable, new Object[0]);
+      if (QLog.isColorLevel()) {
+        QLog.e("EmotionSearchPanel", 2, localThrowable, new Object[0]);
+      }
     }
   }
   
   public void startEntryAinm()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionSearchPanel", 2, "startEntryAinm =" + this.upAndDownDistance);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startEntryAinm =");
+      ((StringBuilder)localObject).append(this.upAndDownDistance);
+      QLog.d("EmotionSearchPanel", 2, ((StringBuilder)localObject).toString());
     }
     if (this.emotionSearchBar.getMeasuredHeight() == 0) {
       this.emotionSearchBar.measure(0, 0);
     }
-    Object localObject = AIOEmoticonUIHelper.a(this.chatPie);
+    Object localObject = (EmoticonMainPanel)((IEmosmService)QRoute.api(IEmosmService.class)).tryGetEmoticonMainPanel(this.interactionListener);
     if (localObject == null) {
       return;
     }
     int j = this.emotionSearchBar.getMeasuredHeight();
     localObject = (EmoticonPanelExtendHelper)((EmoticonMainPanel)localObject).getEmoController().getHelper(1);
     int i;
-    if (((EmoticonPanelExtendHelper)localObject).isPanelOpen()) {
-      if ((keyboardHeight > 0) && (Math.abs(keyboardHeight - ((EmoticonPanelExtendHelper)localObject).getOriginPanelHeight()) > 1))
-      {
-        i = 0;
-        label117:
-        i = -((EmoticonPanelExtendHelper)localObject).getMaxHeightSubNormalHeight(i) + j;
-      }
-    }
-    for (;;)
+    if (((EmoticonPanelExtendHelper)localObject).isPanelOpen())
     {
-      localObject = ValueAnimator.ofInt(new int[] { 0, i });
-      ((ValueAnimator)localObject).setDuration(200L);
-      ((ValueAnimator)localObject).setInterpolator(new LinearInterpolator());
-      ((ValueAnimator)localObject).addUpdateListener(new EmotionSearchPanel.6(this));
-      ((ValueAnimator)localObject).addListener(new EmotionSearchPanel.7(this));
-      ((ValueAnimator)localObject).start();
-      if (!isNeedDoCenterMove(false)) {
-        break;
-      }
-      startEnterLeftReduceAnim();
-      return;
       i = keyboardHeight;
-      break label117;
-      if (keyboardHeight <= 0) {
-        i = this.upAndDownDistance;
+      if ((i > 0) && (Math.abs(i - ((EmoticonPanelExtendHelper)localObject).getOriginPanelHeight()) > 1)) {
+        i = 0;
       } else {
-        i = ScreenUtil.dip2px(3.5F) + j;
+        i = keyboardHeight;
       }
+      i = -((EmoticonPanelExtendHelper)localObject).getMaxHeightSubNormalHeight(i) + j;
+    }
+    else if (keyboardHeight <= 0)
+    {
+      i = this.upAndDownDistance;
+    }
+    else
+    {
+      i = ScreenUtil.dip2px(3.5F) + j;
+    }
+    localObject = ValueAnimator.ofInt(new int[] { 0, i });
+    ((ValueAnimator)localObject).setDuration(200L);
+    ((ValueAnimator)localObject).setInterpolator(new LinearInterpolator());
+    ((ValueAnimator)localObject).addUpdateListener(new EmotionSearchPanel.6(this));
+    ((ValueAnimator)localObject).addListener(new EmotionSearchPanel.7(this));
+    ((ValueAnimator)localObject).start();
+    if (isNeedDoCenterMove(false)) {
+      startEnterLeftReduceAnim();
     }
   }
   
   public void startExitAinm()
   {
-    EmoticonMainPanel localEmoticonMainPanel = AIOEmoticonUIHelper.a(this.chatPie);
+    EmoticonMainPanel localEmoticonMainPanel = (EmoticonMainPanel)((IEmosmService)QRoute.api(IEmosmService.class)).tryGetEmoticonMainPanel(this.interactionListener);
     if (localEmoticonMainPanel == null) {
       return;
     }
     Object localObject = (EmoticonPanelExtendHelper)localEmoticonMainPanel.getEmoController().getHelper(1);
     int j = this.emotionSearchBar.getMeasuredHeight();
     int i;
-    if (this.isExitNeedSearch) {
-      if ((keyboardHeight > 0) && (Math.abs(keyboardHeight - ((EmoticonPanelExtendHelper)localObject).getOriginPanelHeight()) > 1))
-      {
-        i = 0;
-        label65:
-        i = ((EmoticonPanelExtendHelper)localObject).getMaxHeightSubNormalHeight(i) - j;
-      }
-    }
-    for (;;)
+    if (this.isExitNeedSearch)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionSearchPanel", 2, "startExitAinm isExitNeedSearch =" + this.isExitNeedSearch + " upDis=" + i + " upAndDownDistance=" + this.upAndDownDistance);
-      }
-      localObject = ValueAnimator.ofInt(new int[] { 0, i });
-      ((ValueAnimator)localObject).setDuration(200L);
-      ((ValueAnimator)localObject).setInterpolator(new LinearInterpolator());
-      ((ValueAnimator)localObject).addUpdateListener(new EmotionSearchPanel.8(this));
-      ((ValueAnimator)localObject).addListener(new EmotionSearchPanel.9(this));
-      ((ValueAnimator)localObject).start();
-      if (this.upAndDownDistance < 0) {
-        ((EmoticonPanelHotPicSearchHelper)localEmoticonMainPanel.getEmoController().getHelper(7)).setSearchContainerVisibility(4);
-      }
-      if (!isNeedDoCenterMove(true)) {
-        break;
-      }
-      startExitRightIncreaseAnim();
-      return;
       i = keyboardHeight;
-      break label65;
-      if (keyboardHeight <= 0) {
-        i = ((EmoticonPanelExtendHelper)localObject).getOriginPanelHeight() + j;
+      if ((i > 0) && (Math.abs(i - ((EmoticonPanelExtendHelper)localObject).getOriginPanelHeight()) > 1)) {
+        i = 0;
       } else {
-        i = ScreenUtil.dip2px(3.5F) + j;
+        i = keyboardHeight;
       }
+      i = ((EmoticonPanelExtendHelper)localObject).getMaxHeightSubNormalHeight(i) - j;
+    }
+    else if (keyboardHeight <= 0)
+    {
+      i = ((EmoticonPanelExtendHelper)localObject).getOriginPanelHeight() + j;
+    }
+    else
+    {
+      i = ScreenUtil.dip2px(3.5F) + j;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startExitAinm isExitNeedSearch =");
+      ((StringBuilder)localObject).append(this.isExitNeedSearch);
+      ((StringBuilder)localObject).append(" upDis=");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(" upAndDownDistance=");
+      ((StringBuilder)localObject).append(this.upAndDownDistance);
+      QLog.d("EmotionSearchPanel", 2, ((StringBuilder)localObject).toString());
+    }
+    localObject = ValueAnimator.ofInt(new int[] { 0, i });
+    ((ValueAnimator)localObject).setDuration(200L);
+    ((ValueAnimator)localObject).setInterpolator(new LinearInterpolator());
+    ((ValueAnimator)localObject).addUpdateListener(new EmotionSearchPanel.8(this));
+    ((ValueAnimator)localObject).addListener(new EmotionSearchPanel.9(this));
+    ((ValueAnimator)localObject).start();
+    if (this.upAndDownDistance < 0) {
+      ((EmoticonPanelHotPicSearchHelper)localEmoticonMainPanel.getEmoController().getHelper(7)).setSearchContainerVisibility(4);
+    }
+    if (isNeedDoCenterMove(true)) {
+      startExitRightIncreaseAnim();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionSearchPanel
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class SPBeaconReporter
 {
-  private static final String APP_KEY = "00000U7O8S3BLETM";
+  public static final String APP_KEY = "00000U7O8S3BLETM";
   private static final String TAG = ".SPBeaconReporter";
   
   public static void init()
@@ -27,7 +27,7 @@ public class SPBeaconReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.report.SPBeaconReporter
  * JD-Core Version:    0.7.0.1
  */

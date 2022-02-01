@@ -9,18 +9,19 @@ class MiniPie$4
   
   public void run()
   {
-    if (!this.this$0.jdField_a_of_type_Boolean) {
+    if (!this.this$0.jdField_a_of_type_Boolean)
+    {
       MiniPie.a(this.this$0);
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "EmotionPanel already added");
+    if (QLog.isColorLevel()) {
+      QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "EmotionPanel already added");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniPie.4
  * JD-Core Version:    0.7.0.1
  */

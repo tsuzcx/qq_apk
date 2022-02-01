@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
+import com.tencent.mobileqq.qqaudio.audioplayer.CommonAudioPlayer.UIAudioDeivceChangedListern;
+
 public abstract interface MediaPlayerManager$Listener
   extends CommonAudioPlayer.UIAudioDeivceChangedListern
 {
@@ -17,7 +19,7 @@ public abstract interface MediaPlayerManager$Listener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.MediaPlayerManager.Listener
  * JD-Core Version:    0.7.0.1
  */

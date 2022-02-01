@@ -16,23 +16,38 @@ class ViewPluginLoader$3
   
   public void loaded(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViewPluginLoader", 2, "checkUp loaded json = " + paramString + " code = " + paramInt);
-    }
-    if (paramInt == 0)
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      String str;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("checkUp loaded json = ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" code = ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("ViewPluginLoader", 2, ((StringBuilder)localObject).toString());
+    }
+    if (paramInt == 0) {
       try
       {
         paramString = new JSONObject(paramString).optJSONArray("data").optJSONObject(0);
-        str = paramString.optString("url");
+        localObject = paramString.optString("url");
         paramInt = paramString.optInt("filesize");
-        if ((str != null) && (str.endsWith("patch")))
+        if ((localObject != null) && (((String)localObject).endsWith("patch")))
         {
-          FileUtils.a(OfflineEnvHelper.a(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a) + this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a);
+          paramString = new StringBuilder();
+          paramString.append(OfflineEnvHelper.a(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a));
+          paramString.append(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a);
+          FileUtils.deleteDirectory(paramString.toString());
           this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.b();
           return;
         }
+        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (paramInt != 0))
+        {
+          this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a(paramString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+          return;
+        }
+        this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a();
+        return;
       }
       catch (Exception paramString)
       {
@@ -40,13 +55,6 @@ class ViewPluginLoader$3
         this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a();
         return;
       }
-      if ((!TextUtils.isEmpty(str)) && (paramInt != 0))
-      {
-        this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a(paramString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        return;
-      }
-      this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a();
-      return;
     }
     this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a();
   }
@@ -55,7 +63,7 @@ class ViewPluginLoader$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.viewplugin.ViewPluginLoader.3
  * JD-Core Version:    0.7.0.1
  */

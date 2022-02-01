@@ -1,6 +1,6 @@
 package com.tencent.biz.subscribe.fragments;
 
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.colornote.swipeback.OnColorNoteAnimFinishListener;
 
 class SubscribeBaseFragment$3
@@ -10,16 +10,16 @@ class SubscribeBaseFragment$3
   
   public void onColorNoteAnimFinish()
   {
-    if (this.a.getActivity() != null)
+    if (this.a.getBaseActivity() != null)
     {
-      this.a.getActivity().finish();
-      this.a.getActivity().overridePendingTransition(0, 0);
+      this.a.getBaseActivity().finish();
+      this.a.getBaseActivity().overridePendingTransition(0, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.fragments.SubscribeBaseFragment.3
  * JD-Core Version:    0.7.0.1
  */

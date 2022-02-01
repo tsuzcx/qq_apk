@@ -35,23 +35,26 @@ public class LpReportInfos
   
   public void addInfo(int paramInt, LpReportInfo paramLpReportInfo)
   {
-    if (paramLpReportInfo == null) {}
-    Map localMap;
-    do
-    {
-      return;
-      localMap = paramLpReportInfo.toMap();
-    } while ((localMap == null) || (localMap.size() == 0));
-    checkParams(paramInt, localMap, paramLpReportInfo);
-    if (this.infos.containsKey(Integer.valueOf(paramInt)))
-    {
-      ((REPORT_INFO)this.infos.get(Integer.valueOf(paramInt))).info.add(localMap);
+    if (paramLpReportInfo == null) {
       return;
     }
-    paramLpReportInfo = new ArrayList();
-    paramLpReportInfo.add(localMap);
-    paramLpReportInfo = new REPORT_INFO(paramInt, paramLpReportInfo);
-    this.infos.put(Integer.valueOf(paramInt), paramLpReportInfo);
+    Map localMap = paramLpReportInfo.toMap();
+    if (localMap != null)
+    {
+      if (localMap.size() == 0) {
+        return;
+      }
+      checkParams(paramInt, localMap, paramLpReportInfo);
+      if (this.infos.containsKey(Integer.valueOf(paramInt)))
+      {
+        ((REPORT_INFO)this.infos.get(Integer.valueOf(paramInt))).info.add(localMap);
+        return;
+      }
+      paramLpReportInfo = new ArrayList();
+      paramLpReportInfo.add(localMap);
+      paramLpReportInfo = new REPORT_INFO(paramInt, paramLpReportInfo);
+      this.infos.put(Integer.valueOf(paramInt), paramLpReportInfo);
+    }
   }
   
   public void clear()
@@ -73,25 +76,19 @@ public class LpReportInfos
   {
     Iterator localIterator = this.infos.values().iterator();
     int i = 0;
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       REPORT_INFO localREPORT_INFO = (REPORT_INFO)localIterator.next();
-      if ((localREPORT_INFO == null) || (localREPORT_INFO.info == null)) {
-        break label62;
+      if ((localREPORT_INFO != null) && (localREPORT_INFO.info != null)) {
+        i += localREPORT_INFO.info.size();
       }
-      i += localREPORT_INFO.info.size();
     }
-    label62:
-    for (;;)
-    {
-      break;
-      return i;
-    }
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfos
  * JD-Core Version:    0.7.0.1
  */

@@ -21,31 +21,32 @@ public final class MbmsHelper
   @Nullable
   public static CharSequence getBestNameForService(@NonNull Context paramContext, @NonNull ServiceInfo paramServiceInfo)
   {
-    if (Build.VERSION.SDK_INT < 28) {}
-    do
-    {
+    if (Build.VERSION.SDK_INT < 28) {
       return null;
-      paramContext = paramContext.getResources().getConfiguration().getLocales();
-      i = paramServiceInfo.getNamedContentLocales().size();
-    } while (i == 0);
+    }
+    paramContext = paramContext.getResources().getConfiguration().getLocales();
+    int i = paramServiceInfo.getNamedContentLocales().size();
+    if (i == 0) {
+      return null;
+    }
     String[] arrayOfString = new String[i];
+    i = 0;
     Iterator localIterator = paramServiceInfo.getNamedContentLocales().iterator();
-    int i = 0;
     while (localIterator.hasNext())
     {
       arrayOfString[i] = ((Locale)localIterator.next()).toLanguageTag();
       i += 1;
     }
     paramContext = paramContext.getFirstMatch(arrayOfString);
-    if (paramContext == null) {}
-    for (paramContext = null;; paramContext = paramServiceInfo.getNameForLocale(paramContext)) {
-      return paramContext;
+    if (paramContext == null) {
+      return null;
     }
+    return paramServiceInfo.getNameForLocale(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.telephony.mbms.MbmsHelper
  * JD-Core Version:    0.7.0.1
  */

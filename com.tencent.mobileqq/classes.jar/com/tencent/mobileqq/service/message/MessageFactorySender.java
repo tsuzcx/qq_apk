@@ -15,6 +15,7 @@ import MessageSvcPack.AccostMsg;
 import MessageSvcPack.SvcDelMsgInfo;
 import MessageSvcPack.SvcRequestDelMsgV2;
 import MessageSvcPack.SvcRequestDelRoamMsg;
+import MessageSvcPack.SvcRequestGetMsgV2;
 import MessageSvcPack.SvcRequestSendVideoMsg;
 import MessageSvcPack.SvcRequestSetRoamMsgAllUser;
 import OnlinePushPack.DelMsgInfo;
@@ -33,49 +34,60 @@ import android.os.Bundle;
 import com.qq.jce.wup.UniPacket;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.log.ReportLog;
+import com.tencent.imcore.message.InitMsgModule;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.MobileQQService;
-import com.tencent.mobileqq.streamtransfile.StreamDataManager;
-import com.tencent.mobileqq.transfile.protohandler.BaseHandler;
+import com.tencent.mobileqq.transfile.api.IBaseHandlerService;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
+import org.jetbrains.annotations.NotNull;
 import tencent.im.cs.ptt_reserve.ptt_reserve.ReserveStruct;
 import tencent.im.msg.im_msg_body.GeneralFlags;
 
 public class MessageFactorySender
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private static MessageFactorySender.Callback jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender$Callback;
   AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
+  AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  
+  static {}
   
   public static long a(long paramLong)
   {
-    return 0L | paramLong;
+    return paramLong | 0L;
   }
   
   private long a(String paramString)
   {
-    if ((paramString == null) || (paramString.length() <= 0)) {}
-    for (;;)
-    {
-      return 0L;
-      try
-      {
-        long l = Long.parseLong(paramString);
-        if (l >= 10000L) {
-          return l;
-        }
+    long l = 0L;
+    if (paramString != null) {
+      if (paramString.length() <= 0) {
+        return 0L;
       }
-      catch (NumberFormatException paramString) {}
     }
+    try
+    {
+      l = Long.parseLong(paramString);
+      if (l < 10000L) {
+        return 0L;
+      }
+      return l;
+    }
+    catch (NumberFormatException paramString) {}
     return 0L;
+  }
+  
+  public static void a(MessageFactorySender.Callback paramCallback)
+  {
+    jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender$Callback = paramCallback;
   }
   
   private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
@@ -97,11 +109,22 @@ public class MessageFactorySender
       while (((Iterator)localObject).hasNext())
       {
         DelMsgInfo localDelMsgInfo = (DelMsgInfo)((Iterator)localObject).next();
-        if (QLog.isColorLevel()) {
-          QLog.d("MessageHandler", 2, "createC2COnlinePushBuff uin: " + localDelMsgInfo.lFromUin + " seq: " + localDelMsgInfo.shMsgSeq);
+        StringBuilder localStringBuilder;
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("createC2COnlinePushBuff uin: ");
+          localStringBuilder.append(localDelMsgInfo.lFromUin);
+          localStringBuilder.append(" seq: ");
+          localStringBuilder.append(localDelMsgInfo.shMsgSeq);
+          QLog.d("MessageHandler", 2, localStringBuilder.toString());
         }
-        if ((localDelMsgInfo.vMsgCookies != null) && (QLog.isColorLevel())) {
-          QLog.d("MessageHandler", 2, "createC2COnlinePushBuff Cookies: " + HexUtil.bytes2HexStr(localDelMsgInfo.vMsgCookies));
+        if ((localDelMsgInfo.vMsgCookies != null) && (QLog.isColorLevel()))
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("createC2COnlinePushBuff Cookies: ");
+          localStringBuilder.append(HexUtil.bytes2HexStr(localDelMsgInfo.vMsgCookies));
+          QLog.d("MessageHandler", 2, localStringBuilder.toString());
         }
       }
     }
@@ -116,8 +139,14 @@ public class MessageFactorySender
     if ((paramToServiceMsg != null) && ((paramToServiceMsg instanceof DeviceInfo)))
     {
       localSvcRespPushMsg.deviceInfo = ((DeviceInfo)paramToServiceMsg);
-      if (QLog.isColorLevel()) {
-        QLog.d("MessageFactorySender", 2, "createC2COnlinePushBuff serviceType=" + i + " device=" + localSvcRespPushMsg.deviceInfo.strOSVer);
+      if (QLog.isColorLevel())
+      {
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("createC2COnlinePushBuff serviceType=");
+        paramToServiceMsg.append(i);
+        paramToServiceMsg.append(" device=");
+        paramToServiceMsg.append(localSvcRespPushMsg.deviceInfo.strOSVer);
+        QLog.d("MessageFactorySender", 2, paramToServiceMsg.toString());
       }
     }
     paramUniPacket.put("resp", localSvcRespPushMsg);
@@ -126,7 +155,6 @@ public class MessageFactorySender
   
   private boolean c(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    int j = 0;
     paramUniPacket.setEncodeName("utf-8");
     paramUniPacket.setServantName("MessageSvc");
     paramUniPacket.setFuncName("DelMsgV2");
@@ -137,6 +165,7 @@ public class MessageFactorySender
     long[] arrayOfLong = paramToServiceMsg.extraData.getLongArray("fromUin");
     Object localObject1 = paramToServiceMsg.extraData.getIntArray("msgTime");
     Object localObject2 = paramToServiceMsg.extraData.getShortArray("msgSeq");
+    int j = 0;
     int i;
     Object localObject3;
     if ((arrayOfLong != null) && (arrayOfLong.length > 0))
@@ -149,8 +178,18 @@ public class MessageFactorySender
         ((SvcDelMsgInfo)localObject3).uMsgTime = localObject1[i];
         ((SvcDelMsgInfo)localObject3).shMsgSeq = localObject2[i];
         localSvcRequestDelMsgV2.vDelInfos.add(localObject3);
-        if (QLog.isColorLevel()) {
-          QLog.d("MessageFactorySender", 2, "createDelMessageBuff i: " + i + " fromUin:" + arrayOfLong[i] + " msgTime: " + localObject1[i] + " msgSeq:" + localObject2[i]);
+        if (QLog.isColorLevel())
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("createDelMessageBuff i: ");
+          ((StringBuilder)localObject3).append(i);
+          ((StringBuilder)localObject3).append(" fromUin:");
+          ((StringBuilder)localObject3).append(arrayOfLong[i]);
+          ((StringBuilder)localObject3).append(" msgTime: ");
+          ((StringBuilder)localObject3).append(localObject1[i]);
+          ((StringBuilder)localObject3).append(" msgSeq:");
+          ((StringBuilder)localObject3).append(localObject2[i]);
+          QLog.d("MessageFactorySender", 2, ((StringBuilder)localObject3).toString());
         }
         i += 1;
       }
@@ -171,8 +210,18 @@ public class MessageFactorySender
         ((AccostMsg)localObject3).shMsgType = paramToServiceMsg[i];
         ((AccostMsg)localObject3).strMsg = new byte[1];
         localSvcRequestDelMsgV2.vAccostMsg.add(localObject3);
-        if (QLog.isColorLevel()) {
-          QLog.d("MessageFactorySender", 2, "createDelMessageBuff i: " + i + " accostFromUin:" + arrayOfLong[i] + " accostMsgId: " + localObject2[i] + " accostMsgType:" + paramToServiceMsg[i]);
+        if (QLog.isColorLevel())
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("createDelMessageBuff i: ");
+          ((StringBuilder)localObject3).append(i);
+          ((StringBuilder)localObject3).append(" accostFromUin:");
+          ((StringBuilder)localObject3).append(arrayOfLong[i]);
+          ((StringBuilder)localObject3).append(" accostMsgId: ");
+          ((StringBuilder)localObject3).append(localObject2[i]);
+          ((StringBuilder)localObject3).append(" accostMsgType:");
+          ((StringBuilder)localObject3).append(paramToServiceMsg[i]);
+          QLog.d("MessageFactorySender", 2, ((StringBuilder)localObject3).toString());
         }
         i += 1;
       }
@@ -181,154 +230,46 @@ public class MessageFactorySender
     return true;
   }
   
-  /* Error */
   private boolean d(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore 7
-    //   3: aload_0
-    //   4: monitorenter
-    //   5: aload_2
-    //   6: ldc 209
-    //   8: invokevirtual 44	com/qq/jce/wup/UniPacket:setServantName	(Ljava/lang/String;)V
-    //   11: aload_2
-    //   12: ldc_w 297
-    //   15: invokevirtual 49	com/qq/jce/wup/UniPacket:setFuncName	(Ljava/lang/String;)V
-    //   18: new 299	MessageSvcPack/SvcRequestGetMsgV2
-    //   21: dup
-    //   22: invokespecial 300	MessageSvcPack/SvcRequestGetMsgV2:<init>	()V
-    //   25: astore 10
-    //   27: aload 10
-    //   29: aload_0
-    //   30: aload_1
-    //   31: invokevirtual 217	com/tencent/qphone/base/remote/ToServiceMsg:getUin	()Ljava/lang/String;
-    //   34: invokespecial 302	com/tencent/mobileqq/service/message/MessageFactorySender:a	(Ljava/lang/String;)J
-    //   37: putfield 303	MessageSvcPack/SvcRequestGetMsgV2:lUin	J
-    //   40: aload 10
-    //   42: getfield 303	MessageSvcPack/SvcRequestGetMsgV2:lUin	J
-    //   45: lstore 8
-    //   47: lload 8
-    //   49: lconst_0
-    //   50: lcmp
-    //   51: ifne +8 -> 59
-    //   54: aload_0
-    //   55: monitorexit
-    //   56: iload 7
-    //   58: ireturn
-    //   59: aload_1
-    //   60: getfield 55	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   63: ldc_w 305
-    //   66: invokevirtual 63	android/os/Bundle:getInt	(Ljava/lang/String;)I
-    //   69: istore 5
-    //   71: aload_1
-    //   72: getfield 55	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   75: ldc_w 307
-    //   78: invokevirtual 311	android/os/Bundle:getByte	(Ljava/lang/String;)B
-    //   81: istore_3
-    //   82: aload_1
-    //   83: getfield 55	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   86: ldc_w 313
-    //   89: invokevirtual 168	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
-    //   92: astore 11
-    //   94: aload_1
-    //   95: getfield 55	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   98: ldc_w 315
-    //   101: invokevirtual 63	android/os/Bundle:getInt	(Ljava/lang/String;)I
-    //   104: istore 6
-    //   106: aload_1
-    //   107: getfield 55	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   110: ldc_w 317
-    //   113: invokevirtual 311	android/os/Bundle:getByte	(Ljava/lang/String;)B
-    //   116: istore 4
-    //   118: aload_1
-    //   119: getfield 55	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   122: ldc_w 319
-    //   125: invokevirtual 168	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
-    //   128: astore_1
-    //   129: aload 10
-    //   131: iload 5
-    //   133: putfield 322	MessageSvcPack/SvcRequestGetMsgV2:uDateTime	I
-    //   136: aload 10
-    //   138: iconst_1
-    //   139: putfield 326	MessageSvcPack/SvcRequestGetMsgV2:cMsgStoreType	B
-    //   142: aload 10
-    //   144: iconst_1
-    //   145: putfield 329	MessageSvcPack/SvcRequestGetMsgV2:cRecivePic	B
-    //   148: aload 10
-    //   150: bipush 15
-    //   152: putfield 332	MessageSvcPack/SvcRequestGetMsgV2:shAbility	S
-    //   155: aload 10
-    //   157: iload_3
-    //   158: putfield 334	MessageSvcPack/SvcRequestGetMsgV2:cChannel	B
-    //   161: aload 10
-    //   163: aload 11
-    //   165: putfield 336	MessageSvcPack/SvcRequestGetMsgV2:vCookies	[B
-    //   168: aload 10
-    //   170: iconst_0
-    //   171: putfield 339	MessageSvcPack/SvcRequestGetMsgV2:cUnFilter	B
-    //   174: aload 10
-    //   176: iload 6
-    //   178: putfield 341	MessageSvcPack/SvcRequestGetMsgV2:cSyncFlag	I
-    //   181: aload 10
-    //   183: bipush 20
-    //   185: putfield 344	MessageSvcPack/SvcRequestGetMsgV2:shLatestRambleNumber	S
-    //   188: aload 10
-    //   190: iconst_3
-    //   191: putfield 347	MessageSvcPack/SvcRequestGetMsgV2:shOtherRambleNumber	S
-    //   194: aload 10
-    //   196: iconst_1
-    //   197: putfield 350	MessageSvcPack/SvcRequestGetMsgV2:cChannelEx	B
-    //   200: aload 10
-    //   202: aload_1
-    //   203: putfield 352	MessageSvcPack/SvcRequestGetMsgV2:vSyncCookie	[B
-    //   206: aload 10
-    //   208: iconst_0
-    //   209: putfield 355	MessageSvcPack/SvcRequestGetMsgV2:cRambleFlag	B
-    //   212: aload 10
-    //   214: iconst_0
-    //   215: putfield 339	MessageSvcPack/SvcRequestGetMsgV2:cUnFilter	B
-    //   218: aload 10
-    //   220: iconst_0
-    //   221: putfield 358	MessageSvcPack/SvcRequestGetMsgV2:cInst	B
-    //   224: aload 10
-    //   226: iload 4
-    //   228: putfield 361	MessageSvcPack/SvcRequestGetMsgV2:cOnlineSyncFlag	B
-    //   231: aload 10
-    //   233: iconst_1
-    //   234: putfield 364	MessageSvcPack/SvcRequestGetMsgV2:cContextFlag	B
-    //   237: aload 10
-    //   239: lconst_1
-    //   240: putfield 367	MessageSvcPack/SvcRequestGetMsgV2:lGeneralAbi	J
-    //   243: aload_2
-    //   244: ldc_w 369
-    //   247: aload 10
-    //   249: invokevirtual 201	com/qq/jce/wup/UniPacket:put	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   252: iconst_1
-    //   253: istore 7
-    //   255: goto -201 -> 54
-    //   258: astore_1
-    //   259: aload_0
-    //   260: monitorexit
-    //   261: aload_1
-    //   262: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	263	0	this	MessageFactorySender
-    //   0	263	1	paramToServiceMsg	ToServiceMsg
-    //   0	263	2	paramUniPacket	UniPacket
-    //   81	77	3	b1	byte
-    //   116	111	4	b2	byte
-    //   69	63	5	i	int
-    //   104	73	6	j	int
-    //   1	253	7	bool	boolean
-    //   45	3	8	l	long
-    //   25	223	10	localSvcRequestGetMsgV2	MessageSvcPack.SvcRequestGetMsgV2
-    //   92	72	11	arrayOfByte	byte[]
-    // Exception table:
-    //   from	to	target	type
-    //   5	47	258	finally
-    //   59	252	258	finally
+    try
+    {
+      paramUniPacket.setServantName("MessageSvc");
+      paramUniPacket.setFuncName("GetMsgV4");
+      SvcRequestGetMsgV2 localSvcRequestGetMsgV2 = new SvcRequestGetMsgV2();
+      localSvcRequestGetMsgV2.lUin = a(paramToServiceMsg.getUin());
+      long l = localSvcRequestGetMsgV2.lUin;
+      if (l == 0L) {
+        return false;
+      }
+      int i = paramToServiceMsg.extraData.getInt("lastSeq");
+      byte b1 = paramToServiceMsg.extraData.getByte("cChannel");
+      byte[] arrayOfByte = paramToServiceMsg.extraData.getByteArray("vCookies");
+      int j = paramToServiceMsg.extraData.getInt("cSyncFlag");
+      byte b2 = paramToServiceMsg.extraData.getByte("onlineSyncFlag");
+      paramToServiceMsg = paramToServiceMsg.extraData.getByteArray("vSyncCookie");
+      localSvcRequestGetMsgV2.uDateTime = i;
+      localSvcRequestGetMsgV2.cMsgStoreType = 1;
+      localSvcRequestGetMsgV2.cRecivePic = 1;
+      localSvcRequestGetMsgV2.shAbility = 15;
+      localSvcRequestGetMsgV2.cChannel = b1;
+      localSvcRequestGetMsgV2.vCookies = arrayOfByte;
+      localSvcRequestGetMsgV2.cUnFilter = 0;
+      localSvcRequestGetMsgV2.cSyncFlag = j;
+      localSvcRequestGetMsgV2.shLatestRambleNumber = 20;
+      localSvcRequestGetMsgV2.shOtherRambleNumber = 3;
+      localSvcRequestGetMsgV2.cChannelEx = 1;
+      localSvcRequestGetMsgV2.vSyncCookie = paramToServiceMsg;
+      localSvcRequestGetMsgV2.cRambleFlag = 0;
+      localSvcRequestGetMsgV2.cUnFilter = 0;
+      localSvcRequestGetMsgV2.cInst = 0;
+      localSvcRequestGetMsgV2.cOnlineSyncFlag = b2;
+      localSvcRequestGetMsgV2.cContextFlag = 1;
+      localSvcRequestGetMsgV2.lGeneralAbi = 1L;
+      paramUniPacket.put("req_GetMsgV2", localSvcRequestGetMsgV2);
+      return true;
+    }
+    finally {}
   }
   
   private boolean e(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
@@ -401,48 +342,41 @@ public class MessageFactorySender
     localReqHeader.lMID = a(Long.parseLong(paramToServiceMsg.getUin()));
     localReqHeader.iAppID = AppSetting.a();
     long l1 = paramToServiceMsg.extraData.getLong("to");
-    Object localObject2 = paramToServiceMsg.extraData.getString("msg");
+    Object localObject3 = paramToServiceMsg.extraData.getString("msg");
     boolean bool = paramToServiceMsg.extraData.getBoolean("hello");
     byte b = paramToServiceMsg.extraData.getByte("cType");
-    Object localObject1 = paramToServiceMsg.extraData.getString("pyNickname");
+    Object localObject2 = paramToServiceMsg.extraData.getString("pyNickname");
     long l2 = paramToServiceMsg.extraData.getLong("msgSeq");
-    if (localObject1 == null) {
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
       localObject1 = "";
     }
-    for (;;)
-    {
-      long l3;
-      long l4;
-      int j;
-      if (b == 18)
-      {
-        localObject2 = ((String)localObject2).getBytes();
-        l3 = paramToServiceMsg.extraData.getLong("timeOut");
-        Object localObject3 = new MsgItem(b, (byte[])localObject2);
-        localObject2 = new ArrayList();
-        ((ArrayList)localObject2).add(localObject3);
-        localObject3 = new UserInfo();
-        ((UserInfo)localObject3).nickname = ((String)localObject1);
-        localObject1 = new RichMsg((ArrayList)localObject2, "", (UserInfo)localObject3, 0);
-        l4 = Long.valueOf(paramToServiceMsg.getUin()).longValue();
-        j = (int)(System.currentTimeMillis() / 1000L);
-        if (!bool) {
-          break label313;
-        }
-      }
-      label313:
-      for (int i = 1;; i = 2)
-      {
-        localObject1 = new ClientMsg(localReqHeader, new Msg((short)5, l2, l4, l1, j, i, ((RichMsg)localObject1).toByteArray(), 0L, 0L));
-        paramUniPacket.setServantName("AccostObj");
-        paramUniPacket.setFuncName("CMD_CLT_Msg");
-        paramUniPacket.put("ClientMsg", localObject1);
-        paramToServiceMsg.setTimeout(l3);
-        return true;
-        localObject2 = EmotionCodecUtils.a((String)localObject2);
-        break;
-      }
+    if (b == 18) {
+      localObject2 = ((String)localObject3).getBytes();
+    } else {
+      localObject2 = jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender$Callback.a((String)localObject3);
     }
+    long l3 = paramToServiceMsg.extraData.getLong("timeOut");
+    localObject3 = new MsgItem(b, (byte[])localObject2);
+    localObject2 = new ArrayList();
+    ((ArrayList)localObject2).add(localObject3);
+    localObject3 = new UserInfo();
+    ((UserInfo)localObject3).nickname = ((String)localObject1);
+    localObject1 = new RichMsg((ArrayList)localObject2, "", (UserInfo)localObject3, 0);
+    long l4 = Long.valueOf(paramToServiceMsg.getUin()).longValue();
+    int j = (int)(System.currentTimeMillis() / 1000L);
+    int i;
+    if (bool) {
+      i = 1;
+    } else {
+      i = 2;
+    }
+    localObject1 = new ClientMsg(localReqHeader, new Msg((short)5, l2, l4, l1, j, i, ((RichMsg)localObject1).toByteArray(), 0L, 0L));
+    paramUniPacket.setServantName("AccostObj");
+    paramUniPacket.setFuncName("CMD_CLT_Msg");
+    paramUniPacket.put("ClientMsg", localObject1);
+    paramToServiceMsg.setTimeout(l3);
+    return true;
   }
   
   private boolean j(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
@@ -499,11 +433,12 @@ public class MessageFactorySender
     localSvcRequestSendVideoMsg.cVerifyType = localBundle.getByte("cVerifyType");
     localSvcRequestSendVideoMsg.vMsg = localBundle.getByteArray("vMsg");
     paramUniPacket.put("req_SendVideoMsg", localSvcRequestSendVideoMsg);
-    paramToServiceMsg = "null";
     if (localSvcRequestSendVideoMsg.vMsg != null) {
       paramToServiceMsg = String.valueOf(localSvcRequestSendVideoMsg.vMsg[2]);
+    } else {
+      paramToServiceMsg = "null";
     }
-    ReportLog.a("Video", "Send video message :selfUin = " + localSvcRequestSendVideoMsg.lUin + " toUin = " + localSvcRequestSendVideoMsg.lPeerUin + " buffer[2] = " + paramToServiceMsg);
+    jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender$Callback.a(localSvcRequestSendVideoMsg, paramToServiceMsg);
     return true;
   }
   
@@ -517,76 +452,79 @@ public class MessageFactorySender
     localReqOffFilePack.lUIN = a(paramToServiceMsg.getUin());
     paramToServiceMsg = localBundle.getByteArray("filepath");
     int j;
-    long l;
-    if (paramToServiceMsg == null)
-    {
+    if (paramToServiceMsg == null) {
       j = 0;
-      l = a(localBundle.getString("uin"));
+    } else {
+      j = paramToServiceMsg.length;
     }
-    int i;
-    switch (k)
+    long l = a(localBundle.getString("uin"));
+    if (k != 0)
     {
-    default: 
-    case 0: 
-    case 1: 
-      for (;;)
+      if (k != 1)
       {
-        paramUniPacket.put("ReqOffFilePack", localReqOffFilePack);
-        return true;
-        j = paramToServiceMsg.length;
-        break;
-        if (paramToServiceMsg != null)
+        if (k != 2)
         {
-          localReqOffFilePack.vBody = new byte[10 + j];
-          localReqOffFilePack.vBody[0] = 3;
-          localReqOffFilePack.vBody[1] = 6;
-          PkgTools.Word2Byte(localReqOffFilePack.vBody, 2, (short)0);
-          PkgTools.Word2Byte(localReqOffFilePack.vBody, 4, (short)0);
-          PkgTools.Word2Byte(localReqOffFilePack.vBody, 6, (short)1);
-          PkgTools.Word2Byte(localReqOffFilePack.vBody, 8, (short)j);
-          PkgTools.copyData(localReqOffFilePack.vBody, 10, paramToServiceMsg, j);
-          continue;
-          localReqOffFilePack.vBody = new byte[13];
-          localReqOffFilePack.vBody[0] = 6;
-          PkgTools.DWord2Byte(localReqOffFilePack.vBody, 1, l);
-          PkgTools.DWord2Byte(localReqOffFilePack.vBody, 5, 0L);
-          PkgTools.DWord2Byte(localReqOffFilePack.vBody, 9, 0L);
+          if ((k != 3) && (k != 4))
+          {
+            if ((k == 5) && (paramToServiceMsg != null))
+            {
+              localReqOffFilePack.vBody = new byte[j + 10];
+              localReqOffFilePack.vBody[0] = 3;
+              localReqOffFilePack.vBody[1] = 6;
+              PkgTools.word2Byte(localReqOffFilePack.vBody, 2, (short)0);
+              PkgTools.word2Byte(localReqOffFilePack.vBody, 4, (short)0);
+              PkgTools.word2Byte(localReqOffFilePack.vBody, 6, (short)1);
+              PkgTools.word2Byte(localReqOffFilePack.vBody, 8, (short)j);
+              PkgTools.copyData(localReqOffFilePack.vBody, 10, paramToServiceMsg, j);
+            }
+          }
+          else
+          {
+            localBundle.getInt("vip_level");
+            byte[] arrayOfByte1 = localBundle.getByteArray("sig");
+            l = localBundle.getLong("filesize");
+            byte[] arrayOfByte2 = localBundle.getByteArray("filemd5");
+            localReqOffFilePack.vBody = a(arrayOfByte1, paramToServiceMsg, localBundle.getByteArray("filename"), arrayOfByte2, l);
+          }
+        }
+        else
+        {
+          int i = localBundle.getByte("result");
+          if (paramToServiceMsg != null) {
+            k = j + 8;
+          } else {
+            k = 8;
+          }
+          localReqOffFilePack.vBody = new byte[k];
+          localReqOffFilePack.vBody[0] = 2;
+          localReqOffFilePack.vBody[1] = i;
+          PkgTools.dWord2Byte(localReqOffFilePack.vBody, 2, l);
+          PkgTools.word2Byte(localReqOffFilePack.vBody, 6, (short)j);
+          PkgTools.copyData(localReqOffFilePack.vBody, 8, paramToServiceMsg, j);
         }
       }
-    case 2: 
-      i = localBundle.getByte("result");
-      if (paramToServiceMsg == null) {
-        break;
+      else
+      {
+        localReqOffFilePack.vBody = new byte[13];
+        localReqOffFilePack.vBody[0] = 6;
+        PkgTools.dWord2Byte(localReqOffFilePack.vBody, 1, l);
+        PkgTools.dWord2Byte(localReqOffFilePack.vBody, 5, 0L);
+        PkgTools.dWord2Byte(localReqOffFilePack.vBody, 9, 0L);
       }
     }
-    for (k = 8 + j;; k = 8)
+    else if (paramToServiceMsg != null)
     {
-      localReqOffFilePack.vBody = new byte[k];
-      localReqOffFilePack.vBody[0] = 2;
-      localReqOffFilePack.vBody[1] = i;
-      PkgTools.DWord2Byte(localReqOffFilePack.vBody, 2, l);
-      PkgTools.Word2Byte(localReqOffFilePack.vBody, 6, (short)j);
-      PkgTools.copyData(localReqOffFilePack.vBody, 8, paramToServiceMsg, j);
-      break;
-      localBundle.getInt("vip_level");
-      byte[] arrayOfByte1 = localBundle.getByteArray("sig");
-      l = localBundle.getLong("filesize");
-      byte[] arrayOfByte2 = localBundle.getByteArray("filemd5");
-      localReqOffFilePack.vBody = a(arrayOfByte1, paramToServiceMsg, localBundle.getByteArray("filename"), arrayOfByte2, l);
-      break;
-      if (paramToServiceMsg == null) {
-        break;
-      }
-      localReqOffFilePack.vBody = new byte[10 + j];
+      localReqOffFilePack.vBody = new byte[j + 10];
       localReqOffFilePack.vBody[0] = 3;
       localReqOffFilePack.vBody[1] = 6;
-      PkgTools.Word2Byte(localReqOffFilePack.vBody, 2, (short)0);
-      PkgTools.Word2Byte(localReqOffFilePack.vBody, 4, (short)0);
-      PkgTools.Word2Byte(localReqOffFilePack.vBody, 6, (short)1);
-      PkgTools.Word2Byte(localReqOffFilePack.vBody, 8, (short)j);
+      PkgTools.word2Byte(localReqOffFilePack.vBody, 2, (short)0);
+      PkgTools.word2Byte(localReqOffFilePack.vBody, 4, (short)0);
+      PkgTools.word2Byte(localReqOffFilePack.vBody, 6, (short)1);
+      PkgTools.word2Byte(localReqOffFilePack.vBody, 8, (short)j);
       PkgTools.copyData(localReqOffFilePack.vBody, 10, paramToServiceMsg, j);
-      break;
     }
+    paramUniPacket.put("ReqOffFilePack", localReqOffFilePack);
+    return true;
   }
   
   private boolean n(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
@@ -653,9 +591,9 @@ public class MessageFactorySender
     paramUniPacket.setServantName("StreamSvr");
     paramUniPacket.setFuncName("GetCSUploadStreamMsgBuf");
     long l1 = b(Long.valueOf(paramToServiceMsg.extraData.getString("uin")).longValue());
-    String str = paramToServiceMsg.extraData.getString("filepath");
-    Object localObject1 = paramToServiceMsg.extraData.getString("selfuin");
-    Object localObject2 = paramToServiceMsg.extraData.getString("uin");
+    Object localObject1 = paramToServiceMsg.extraData.getString("filepath");
+    Object localObject2 = paramToServiceMsg.extraData.getString("selfuin");
+    Object localObject3 = paramToServiceMsg.extraData.getString("uin");
     Short localShort = Short.valueOf(paramToServiceMsg.extraData.getShort("PackSeq"));
     int i = paramToServiceMsg.extraData.getInt("msgseq");
     long l2 = paramToServiceMsg.extraData.getLong("random");
@@ -664,92 +602,139 @@ public class MessageFactorySender
     long l5 = paramToServiceMsg.extraData.getLong("SubBubbleId");
     int j = paramToServiceMsg.extraData.getInt("DiyTextId");
     paramToServiceMsg = new StreamInfo();
-    paramToServiceMsg.lFromUIN = a((String)localObject1);
-    paramToServiceMsg.lToUIN = a((String)localObject2);
-    paramToServiceMsg.iMsgId = StreamDataManager.b(str);
+    paramToServiceMsg.lFromUIN = a((String)localObject2);
+    paramToServiceMsg.lToUIN = a((String)localObject3);
+    paramToServiceMsg.iMsgId = jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender$Callback.a((String)localObject1);
     paramToServiceMsg.type = 1;
     paramToServiceMsg.iSendTime = 0;
-    paramToServiceMsg.shPackNum = StreamDataManager.b(str);
-    paramToServiceMsg.shFlowLayer = StreamDataManager.a(str);
+    paramToServiceMsg.shPackNum = jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender$Callback.b((String)localObject1);
+    paramToServiceMsg.shFlowLayer = jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender$Callback.a((String)localObject1);
     paramToServiceMsg.pttTime = l4;
     paramToServiceMsg.pttFormat = l3;
     paramToServiceMsg.subBubbleId = l5;
-    int k = BaseHandler.getHandlerNetType();
+    int k = a();
     paramToServiceMsg.netType = k;
     if (localShort.shortValue() == 1)
     {
-      localObject1 = new ptt_reserve.ReserveStruct();
-      ((ptt_reserve.ReserveStruct)localObject1).uint32_change_voice.set(0);
-      ((ptt_reserve.ReserveStruct)localObject1).uint32_autototext_voice.set(0);
-      localObject2 = new im_msg_body.GeneralFlags();
-      ((im_msg_body.GeneralFlags)localObject2).uint32_bubble_sub_id.set((int)l5);
-      ((im_msg_body.GeneralFlags)localObject2).uint32_bubble_diy_text_id.set(j);
-      ((ptt_reserve.ReserveStruct)localObject1).bytes_general_flags.set(ByteStringMicro.copyFrom(((im_msg_body.GeneralFlags)localObject2).toByteArray()));
-      paramToServiceMsg.vPbData = ((ptt_reserve.ReserveStruct)localObject1).toByteArray();
+      localObject2 = new ptt_reserve.ReserveStruct();
+      ((ptt_reserve.ReserveStruct)localObject2).uint32_change_voice.set(0);
+      ((ptt_reserve.ReserveStruct)localObject2).uint32_autototext_voice.set(0);
+      localObject3 = new im_msg_body.GeneralFlags();
+      ((im_msg_body.GeneralFlags)localObject3).uint32_bubble_sub_id.set((int)l5);
+      ((im_msg_body.GeneralFlags)localObject3).uint32_bubble_diy_text_id.set(j);
+      ((ptt_reserve.ReserveStruct)localObject2).bytes_general_flags.set(ByteStringMicro.copyFrom(((im_msg_body.GeneralFlags)localObject3).toByteArray()));
+      paramToServiceMsg.vPbData = ((ptt_reserve.ReserveStruct)localObject2).toByteArray();
     }
     if (QLog.isColorLevel())
     {
-      QLog.d("RecordParams", 2, "C2CStreamUp: type[" + l3 + "] length[" + l4 + "]");
-      if (QLog.isColorLevel()) {
-        QLog.d("RecordParams", 2, "C2CStreamUp: net[" + k + "]");
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("C2CStreamUp: type[");
+      ((StringBuilder)localObject2).append(l3);
+      ((StringBuilder)localObject2).append("] length[");
+      ((StringBuilder)localObject2).append(l4);
+      ((StringBuilder)localObject2).append("]");
+      QLog.d("RecordParams", 2, ((StringBuilder)localObject2).toString());
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("C2CStreamUp: net[");
+        ((StringBuilder)localObject2).append(k);
+        ((StringBuilder)localObject2).append("]");
+        QLog.d("RecordParams", 2, ((StringBuilder)localObject2).toString());
       }
     }
-    localObject1 = new StreamData();
-    ((StreamData)localObject1).shPackSeq = localShort.shortValue();
-    if (((StreamData)localObject1).shPackSeq < paramToServiceMsg.shPackNum) {
+    localObject2 = new StreamData();
+    ((StreamData)localObject2).shPackSeq = localShort.shortValue();
+    if (((StreamData)localObject2).shPackSeq < paramToServiceMsg.shPackNum) {
       paramToServiceMsg.shPackNum = 0;
     }
-    ((StreamData)localObject1).vData = StreamDataManager.a(str, localShort.shortValue());
-    boolean bool = StreamDataManager.b(str);
+    ((StreamData)localObject2).vData = jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender$Callback.a((String)localObject1, localShort.shortValue());
+    boolean bool = jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender$Callback.a((String)localObject1);
     if (bool)
     {
       paramToServiceMsg.shPackNum = 0;
       paramToServiceMsg.oprType = 1;
-      StreamDataManager.a(str);
+      jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender$Callback.b((String)localObject1);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("StreamPtt", 2, "shPackSeq:" + localShort + " shPackNum:" + paramToServiceMsg.shPackNum + ",layer:" + paramToServiceMsg.shFlowLayer + ",msgId:" + paramToServiceMsg.iMsgId + " cancelled:" + bool);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("shPackSeq:");
+      ((StringBuilder)localObject1).append(localShort);
+      ((StringBuilder)localObject1).append(" shPackNum:");
+      ((StringBuilder)localObject1).append(paramToServiceMsg.shPackNum);
+      ((StringBuilder)localObject1).append(",layer:");
+      ((StringBuilder)localObject1).append(paramToServiceMsg.shFlowLayer);
+      ((StringBuilder)localObject1).append(",msgId:");
+      ((StringBuilder)localObject1).append(paramToServiceMsg.iMsgId);
+      ((StringBuilder)localObject1).append(" cancelled:");
+      ((StringBuilder)localObject1).append(bool);
+      QLog.d("StreamPtt", 2, ((StringBuilder)localObject1).toString());
     }
     new QQService.ReqHeader((short)0, paramUniPacket.getRequestId(), l1);
-    if ((i == 0) && (l2 == 0L)) {
-      paramUniPacket.put("CSUploadStreamMsg", new CSUploadStreamMsg((short)1, paramUniPacket.getRequestId(), paramToServiceMsg, (StreamData)localObject1, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet()));
-    }
-    for (;;)
+    if ((i == 0) && (l2 == 0L))
     {
+      paramUniPacket.put("CSUploadStreamMsg", a(paramUniPacket, paramToServiceMsg, (StreamData)localObject2, (short)1));
       return true;
-      paramToServiceMsg.msgSeq = i;
-      paramToServiceMsg.random = l2;
-      paramUniPacket.put("CSUploadStreamMsg", new CSUploadStreamMsg((short)10, paramUniPacket.getRequestId(), paramToServiceMsg, (StreamData)localObject1, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet()));
     }
+    paramToServiceMsg.msgSeq = i;
+    paramToServiceMsg.random = l2;
+    paramUniPacket.put("CSUploadStreamMsg", a(paramUniPacket, paramToServiceMsg, (StreamData)localObject2, (short)10));
+    return true;
   }
   
   private boolean s(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
     paramUniPacket.setServantName("StreamSvr");
     paramUniPacket.setFuncName("GetCSRespPushStreamMsgBuf");
-    String str1 = paramToServiceMsg.extraData.getString("filepath");
-    String str2 = paramToServiceMsg.extraData.getString("selfuin");
-    String str3 = paramToServiceMsg.extraData.getString("uin");
+    Object localObject = paramToServiceMsg.extraData.getString("filepath");
+    String str1 = paramToServiceMsg.extraData.getString("selfuin");
+    String str2 = paramToServiceMsg.extraData.getString("uin");
     Short localShort = Short.valueOf(paramToServiceMsg.extraData.getShort("PackSeq"));
     long l = paramToServiceMsg.extraData.getLong("lkey");
     paramToServiceMsg = new StreamInfo();
-    paramToServiceMsg.lFromUIN = a(str3);
-    paramToServiceMsg.lToUIN = a(str2);
-    paramToServiceMsg.iMsgId = StreamDataManager.b(str1);
+    paramToServiceMsg.lFromUIN = a(str2);
+    paramToServiceMsg.lToUIN = a(str1);
+    paramToServiceMsg.iMsgId = jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender$Callback.a((String)localObject);
     paramToServiceMsg.type = 1;
     paramToServiceMsg.iSendTime = 0;
     paramToServiceMsg.shPackNum = 0;
-    paramToServiceMsg.shFlowLayer = StreamDataManager.a(str1);
-    if (QLog.isColorLevel()) {
-      QLog.d("streamptt.recv", 2, "createReqpushStreamMsg ---streaminfo.lFromUIN= " + paramToServiceMsg.lFromUIN + "---streaminfo.shFlowLayer = " + paramToServiceMsg.shFlowLayer + "---streaminfo.lToUIN = " + paramToServiceMsg.lToUIN + "---streaminfo.iMsgId = " + paramToServiceMsg.iMsgId + "---PackSeq = " + localShort + "---lKey = " + l);
+    paramToServiceMsg.shFlowLayer = jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender$Callback.a((String)localObject);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("createReqpushStreamMsg ---streaminfo.lFromUIN= ");
+      ((StringBuilder)localObject).append(paramToServiceMsg.lFromUIN);
+      ((StringBuilder)localObject).append("---streaminfo.shFlowLayer = ");
+      ((StringBuilder)localObject).append(paramToServiceMsg.shFlowLayer);
+      ((StringBuilder)localObject).append("---streaminfo.lToUIN = ");
+      ((StringBuilder)localObject).append(paramToServiceMsg.lToUIN);
+      ((StringBuilder)localObject).append("---streaminfo.iMsgId = ");
+      ((StringBuilder)localObject).append(paramToServiceMsg.iMsgId);
+      ((StringBuilder)localObject).append("---PackSeq = ");
+      ((StringBuilder)localObject).append(localShort);
+      ((StringBuilder)localObject).append("---lKey = ");
+      ((StringBuilder)localObject).append(l);
+      QLog.d("streamptt.recv", 2, ((StringBuilder)localObject).toString());
     }
     paramUniPacket.put("CSRespPushStreamMsg", new CSRespPushStreamMsg((short)1, paramUniPacket.getRequestId(), paramToServiceMsg, localShort.shortValue(), l));
     return true;
   }
   
-  public void a(QQAppInterface paramQQAppInterface)
+  public int a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    return ((IBaseHandlerService)QRoute.api(IBaseHandlerService.class)).getHandlerNetType();
+  }
+  
+  @NotNull
+  public CSUploadStreamMsg a(UniPacket paramUniPacket, StreamInfo paramStreamInfo, StreamData paramStreamData, short paramShort)
+  {
+    return new CSUploadStreamMsg(paramShort, paramUniPacket.getRequestId(), paramStreamInfo, paramStreamData, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet());
+  }
+  
+  public void a(AppRuntime paramAppRuntime)
+  {
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
   }
   
   public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
@@ -813,146 +798,126 @@ public class MessageFactorySender
   
   public byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, long paramLong)
   {
-    int i1 = 2;
-    int i;
-    int j;
-    label17:
-    int k;
-    label24:
-    int m;
-    label32:
-    int n;
-    label40:
-    label44:
-    byte[] arrayOfByte;
-    if (paramArrayOfByte1 == null)
-    {
+    if (paramArrayOfByte1 == null) {
       i = 2;
-      if (paramArrayOfByte1 != null) {
-        break label341;
-      }
+    } else {
+      i = paramArrayOfByte1.length + 2;
+    }
+    int j;
+    if (paramArrayOfByte1 == null) {
       j = 2;
-      if (paramArrayOfByte3 != null) {
-        break label350;
-      }
+    } else {
+      j = paramArrayOfByte1.length + 2;
+    }
+    int k;
+    if (paramArrayOfByte3 == null) {
       k = 2;
-      if (paramArrayOfByte4 != null) {
-        break label359;
-      }
+    } else {
+      k = paramArrayOfByte3.length + 2;
+    }
+    int m;
+    if (paramArrayOfByte4 == null) {
       m = 1;
-      if (paramArrayOfByte4 != null) {
-        break label369;
-      }
+    } else {
+      m = paramArrayOfByte4.length + 1;
+    }
+    int n;
+    if (paramArrayOfByte4 == null) {
       n = 1;
-      if (paramArrayOfByte2 != null) {
-        break label379;
-      }
-      arrayOfByte = new byte[i1 + (n + (j + (5 + i) + 6 + k + m))];
-      arrayOfByte[0] = 1;
-      PkgTools.DWord2Byte(arrayOfByte, 1, 0L);
-      if (paramArrayOfByte1 == null) {
-        break label388;
-      }
-      PkgTools.Word2Byte(arrayOfByte, 5, (short)paramArrayOfByte1.length);
+    } else {
+      n = paramArrayOfByte4.length + 1;
+    }
+    int i1;
+    if (paramArrayOfByte2 == null) {
+      i1 = 2;
+    } else {
+      i1 = paramArrayOfByte2.length + 2;
+    }
+    byte[] arrayOfByte = new byte[i + 5 + j + 6 + k + m + n + i1];
+    arrayOfByte[0] = 1;
+    PkgTools.dWord2Byte(arrayOfByte, 1, 0L);
+    int i = 7;
+    if (paramArrayOfByte1 != null)
+    {
+      PkgTools.word2Byte(arrayOfByte, 5, (short)paramArrayOfByte1.length);
       PkgTools.copyData(arrayOfByte, 7, paramArrayOfByte1, paramArrayOfByte1.length);
-      i = paramArrayOfByte1.length + 7;
-      label112:
-      if (paramArrayOfByte1 == null) {
-        break label402;
-      }
-      PkgTools.Word2Byte(arrayOfByte, i, (short)paramArrayOfByte1.length);
+      i = 7 + paramArrayOfByte1.length;
+    }
+    else
+    {
+      PkgTools.word2Byte(arrayOfByte, 5, (short)0);
+    }
+    if (paramArrayOfByte1 != null)
+    {
+      PkgTools.word2Byte(arrayOfByte, i, (short)paramArrayOfByte1.length);
       i += 2;
       PkgTools.copyData(arrayOfByte, i, paramArrayOfByte1, paramArrayOfByte1.length);
       i += paramArrayOfByte1.length;
-      label149:
-      PkgTools.Word2Byte(arrayOfByte, i, (short)0);
+    }
+    else
+    {
+      PkgTools.word2Byte(arrayOfByte, i, (short)0);
       i += 2;
-      PkgTools.DWord2Byte(arrayOfByte, i, paramLong);
-      i += 4;
-      if (paramArrayOfByte3 == null) {
-        break label419;
-      }
-      PkgTools.Word2Byte(arrayOfByte, i, (short)paramArrayOfByte3.length);
+    }
+    PkgTools.word2Byte(arrayOfByte, i, (short)0);
+    i += 2;
+    PkgTools.dWord2Byte(arrayOfByte, i, paramLong);
+    i += 4;
+    if (paramArrayOfByte3 != null)
+    {
+      PkgTools.word2Byte(arrayOfByte, i, (short)paramArrayOfByte3.length);
       i += 2;
       PkgTools.copyData(arrayOfByte, i, paramArrayOfByte3, paramArrayOfByte3.length);
       i += paramArrayOfByte3.length;
-      label215:
-      if (paramArrayOfByte4 == null) {
-        break label436;
-      }
-      arrayOfByte[i] = ((byte)paramArrayOfByte4.length);
-      i += 1;
-      PkgTools.copyData(arrayOfByte, i, paramArrayOfByte4, paramArrayOfByte4.length);
-      i += paramArrayOfByte4.length;
-      label255:
-      if (paramArrayOfByte4 == null) {
-        break label451;
-      }
+    }
+    else
+    {
+      PkgTools.word2Byte(arrayOfByte, i, (short)0);
+      i += 2;
+    }
+    if (paramArrayOfByte4 != null)
+    {
       arrayOfByte[i] = ((byte)paramArrayOfByte4.length);
       i += 1;
       PkgTools.copyData(arrayOfByte, i, paramArrayOfByte4, paramArrayOfByte4.length);
       i += paramArrayOfByte4.length;
     }
-    for (;;)
+    else
     {
-      if (paramArrayOfByte2 == null) {
-        break label466;
-      }
-      PkgTools.Word2Byte(arrayOfByte, i, (short)paramArrayOfByte2.length);
-      i += 2;
-      PkgTools.copyData(arrayOfByte, i, paramArrayOfByte2, paramArrayOfByte2.length);
+      arrayOfByte[i] = 0;
+      i += 1;
+    }
+    if (paramArrayOfByte4 != null)
+    {
+      arrayOfByte[i] = ((byte)paramArrayOfByte4.length);
+      i += 1;
+      PkgTools.copyData(arrayOfByte, i, paramArrayOfByte4, paramArrayOfByte4.length);
+      i += paramArrayOfByte4.length;
+    }
+    else
+    {
+      arrayOfByte[i] = 0;
+      i += 1;
+    }
+    if (paramArrayOfByte2 != null)
+    {
+      PkgTools.word2Byte(arrayOfByte, i, (short)paramArrayOfByte2.length);
+      PkgTools.copyData(arrayOfByte, i + 2, paramArrayOfByte2, paramArrayOfByte2.length);
       i = paramArrayOfByte2.length;
       return arrayOfByte;
-      i = paramArrayOfByte1.length + 2;
-      break;
-      label341:
-      j = paramArrayOfByte1.length + 2;
-      break label17;
-      label350:
-      k = paramArrayOfByte3.length + 2;
-      break label24;
-      label359:
-      m = paramArrayOfByte4.length + 1;
-      break label32;
-      label369:
-      n = paramArrayOfByte4.length + 1;
-      break label40;
-      label379:
-      i1 = paramArrayOfByte2.length + 2;
-      break label44;
-      label388:
-      PkgTools.Word2Byte(arrayOfByte, 5, (short)0);
-      i = 7;
-      break label112;
-      label402:
-      PkgTools.Word2Byte(arrayOfByte, i, (short)0);
-      i += 2;
-      break label149;
-      label419:
-      PkgTools.Word2Byte(arrayOfByte, i, (short)0);
-      i += 2;
-      break label215;
-      label436:
-      arrayOfByte[i] = 0;
-      i += 1;
-      break label255;
-      label451:
-      arrayOfByte[i] = 0;
-      i += 1;
     }
-    label466:
-    PkgTools.Word2Byte(arrayOfByte, i, (short)0);
+    PkgTools.word2Byte(arrayOfByte, i, (short)0);
     return arrayOfByte;
   }
   
   long b(long paramLong)
   {
-    return 0xFFFFFFFF & paramLong;
+    return paramLong & 0xFFFFFFFF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.MessageFactorySender
  * JD-Core Version:    0.7.0.1
  */

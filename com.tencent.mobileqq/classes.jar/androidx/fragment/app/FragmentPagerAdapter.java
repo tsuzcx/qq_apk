@@ -36,7 +36,12 @@ public abstract class FragmentPagerAdapter
   
   private static String makeFragmentName(int paramInt, long paramLong)
   {
-    return "android:switcher:" + paramInt + ":" + paramLong;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("android:switcher:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramLong);
+    return localStringBuilder.toString();
   }
   
   public void destroyItem(@NonNull ViewGroup paramViewGroup, int paramInt, @NonNull Object paramObject)
@@ -53,18 +58,20 @@ public abstract class FragmentPagerAdapter
   
   public void finishUpdate(@NonNull ViewGroup paramViewGroup)
   {
-    if ((this.mCurTransaction == null) || (!this.mExecutingFinishUpdate)) {}
-    try
+    paramViewGroup = this.mCurTransaction;
+    if (paramViewGroup != null)
     {
-      this.mExecutingFinishUpdate = true;
-      this.mCurTransaction.commitNowAllowingStateLoss();
-      this.mExecutingFinishUpdate = false;
-      this.mCurTransaction = null;
-      return;
-    }
-    finally
-    {
-      this.mExecutingFinishUpdate = false;
+      if (!this.mExecutingFinishUpdate) {}
+      try
+      {
+        this.mExecutingFinishUpdate = true;
+        paramViewGroup.commitNowAllowingStateLoss();
+        this.mExecutingFinishUpdate = false;
+      }
+      finally
+      {
+        this.mExecutingFinishUpdate = false;
+      }
     }
   }
   
@@ -85,24 +92,27 @@ public abstract class FragmentPagerAdapter
     long l = getItemId(paramInt);
     Object localObject = makeFragmentName(paramViewGroup.getId(), l);
     localObject = this.mFragmentManager.findFragmentByTag((String)localObject);
-    if (localObject != null) {
-      this.mCurTransaction.attach((Fragment)localObject);
-    }
-    for (paramViewGroup = (ViewGroup)localObject;; paramViewGroup = (ViewGroup)localObject)
+    if (localObject != null)
     {
-      if (paramViewGroup != this.mCurrentPrimaryItem)
-      {
-        paramViewGroup.setMenuVisibility(false);
-        if (this.mBehavior != 1) {
-          break;
-        }
-        this.mCurTransaction.setMaxLifecycle(paramViewGroup, Lifecycle.State.STARTED);
-      }
-      return paramViewGroup;
+      this.mCurTransaction.attach((Fragment)localObject);
+      paramViewGroup = (ViewGroup)localObject;
+    }
+    else
+    {
       localObject = getItem(paramInt);
       this.mCurTransaction.add(paramViewGroup.getId(), (Fragment)localObject, makeFragmentName(paramViewGroup.getId(), l));
+      paramViewGroup = (ViewGroup)localObject;
     }
-    paramViewGroup.setUserVisibleHint(false);
+    if (paramViewGroup != this.mCurrentPrimaryItem)
+    {
+      paramViewGroup.setMenuVisibility(false);
+      if (this.mBehavior == 1)
+      {
+        this.mCurTransaction.setMaxLifecycle(paramViewGroup, Lifecycle.State.STARTED);
+        return paramViewGroup;
+      }
+      paramViewGroup.setUserVisibleHint(false);
+    }
     return paramViewGroup;
   }
   
@@ -122,50 +132,55 @@ public abstract class FragmentPagerAdapter
   public void setPrimaryItem(@NonNull ViewGroup paramViewGroup, int paramInt, @NonNull Object paramObject)
   {
     paramViewGroup = (Fragment)paramObject;
-    if (paramViewGroup != this.mCurrentPrimaryItem)
+    paramObject = this.mCurrentPrimaryItem;
+    if (paramViewGroup != paramObject)
     {
-      if (this.mCurrentPrimaryItem != null)
+      if (paramObject != null)
       {
-        this.mCurrentPrimaryItem.setMenuVisibility(false);
-        if (this.mBehavior != 1) {
-          break label118;
+        paramObject.setMenuVisibility(false);
+        if (this.mBehavior == 1)
+        {
+          if (this.mCurTransaction == null) {
+            this.mCurTransaction = this.mFragmentManager.beginTransaction();
+          }
+          this.mCurTransaction.setMaxLifecycle(this.mCurrentPrimaryItem, Lifecycle.State.STARTED);
         }
+        else
+        {
+          this.mCurrentPrimaryItem.setUserVisibleHint(false);
+        }
+      }
+      paramViewGroup.setMenuVisibility(true);
+      if (this.mBehavior == 1)
+      {
         if (this.mCurTransaction == null) {
           this.mCurTransaction = this.mFragmentManager.beginTransaction();
         }
-        this.mCurTransaction.setMaxLifecycle(this.mCurrentPrimaryItem, Lifecycle.State.STARTED);
+        this.mCurTransaction.setMaxLifecycle(paramViewGroup, Lifecycle.State.RESUMED);
       }
-      paramViewGroup.setMenuVisibility(true);
-      if (this.mBehavior != 1) {
-        break label129;
+      else
+      {
+        paramViewGroup.setUserVisibleHint(true);
       }
-      if (this.mCurTransaction == null) {
-        this.mCurTransaction = this.mFragmentManager.beginTransaction();
-      }
-      this.mCurTransaction.setMaxLifecycle(paramViewGroup, Lifecycle.State.RESUMED);
-    }
-    for (;;)
-    {
       this.mCurrentPrimaryItem = paramViewGroup;
-      return;
-      label118:
-      this.mCurrentPrimaryItem.setUserVisibleHint(false);
-      break;
-      label129:
-      paramViewGroup.setUserVisibleHint(true);
     }
   }
   
   public void startUpdate(@NonNull ViewGroup paramViewGroup)
   {
-    if (paramViewGroup.getId() == -1) {
-      throw new IllegalStateException("ViewPager with adapter " + this + " requires a view id");
+    if (paramViewGroup.getId() != -1) {
+      return;
     }
+    paramViewGroup = new StringBuilder();
+    paramViewGroup.append("ViewPager with adapter ");
+    paramViewGroup.append(this);
+    paramViewGroup.append(" requires a view id");
+    throw new IllegalStateException(paramViewGroup.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.fragment.app.FragmentPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,6 @@ import com.google.android.exoplayer2.extractor.PositionHolder;
 import com.google.android.exoplayer2.extractor.SeekMap;
 import com.google.android.exoplayer2.extractor.SeekMap.Unseekable;
 import com.google.android.exoplayer2.extractor.TrackOutput;
-import com.google.android.exoplayer2.text.cea.CeaUtil;
 import com.google.android.exoplayer2.util.Assertions;
 import com.google.android.exoplayer2.util.NalUnitUtil;
 import com.google.android.exoplayer2.util.ParsableByteArray;
@@ -117,78 +116,72 @@ public final class FragmentedMp4Extractor
   
   public FragmentedMp4Extractor(int paramInt, TimestampAdjuster paramTimestampAdjuster, Track paramTrack, DrmInitData paramDrmInitData, List<Format> paramList, @Nullable TrackOutput paramTrackOutput)
   {
-    if (paramTrack != null) {}
-    for (int i = 8;; i = 0)
-    {
-      this.flags = (i | paramInt);
-      this.timestampAdjuster = paramTimestampAdjuster;
-      this.sideloadedTrack = paramTrack;
-      this.sideloadedDrmInitData = paramDrmInitData;
-      this.closedCaptionFormats = Collections.unmodifiableList(paramList);
-      this.additionalEmsgTrackOutput = paramTrackOutput;
-      this.atomHeader = new ParsableByteArray(16);
-      this.nalStartCode = new ParsableByteArray(NalUnitUtil.NAL_START_CODE);
-      this.nalPrefix = new ParsableByteArray(5);
-      this.nalBuffer = new ParsableByteArray();
-      this.encryptionSignalByte = new ParsableByteArray(1);
-      this.defaultInitializationVector = new ParsableByteArray();
-      this.extendedTypeScratch = new byte[16];
-      this.containerAtoms = new Stack();
-      this.pendingMetadataSampleInfos = new ArrayDeque();
-      this.trackBundles = new SparseArray();
-      this.durationUs = -9223372036854775807L;
-      this.segmentIndexEarliestPresentationTimeUs = -9223372036854775807L;
-      enterReadingAtomHeaderState();
-      return;
+    int i;
+    if (paramTrack != null) {
+      i = 8;
+    } else {
+      i = 0;
     }
+    this.flags = (paramInt | i);
+    this.timestampAdjuster = paramTimestampAdjuster;
+    this.sideloadedTrack = paramTrack;
+    this.sideloadedDrmInitData = paramDrmInitData;
+    this.closedCaptionFormats = Collections.unmodifiableList(paramList);
+    this.additionalEmsgTrackOutput = paramTrackOutput;
+    this.atomHeader = new ParsableByteArray(16);
+    this.nalStartCode = new ParsableByteArray(NalUnitUtil.NAL_START_CODE);
+    this.nalPrefix = new ParsableByteArray(5);
+    this.nalBuffer = new ParsableByteArray();
+    this.encryptionSignalByte = new ParsableByteArray(1);
+    this.defaultInitializationVector = new ParsableByteArray();
+    this.extendedTypeScratch = new byte[16];
+    this.containerAtoms = new Stack();
+    this.pendingMetadataSampleInfos = new ArrayDeque();
+    this.trackBundles = new SparseArray();
+    this.durationUs = -9223372036854775807L;
+    this.segmentIndexEarliestPresentationTimeUs = -9223372036854775807L;
+    enterReadingAtomHeaderState();
   }
   
   private int appendSampleEncryptionData(FragmentedMp4Extractor.TrackBundle paramTrackBundle)
   {
     TrackFragment localTrackFragment = paramTrackBundle.fragment;
     int i = localTrackFragment.header.sampleDescriptionIndex;
-    Object localObject2;
-    label55:
-    int k;
-    if (localTrackFragment.trackEncryptionBox != null)
-    {
+    if (localTrackFragment.trackEncryptionBox != null) {
       localObject1 = localTrackFragment.trackEncryptionBox;
-      if (((TrackEncryptionBox)localObject1).initializationVectorSize == 0) {
-        break label148;
-      }
+    } else {
+      localObject1 = paramTrackBundle.track.getSampleDescriptionEncryptionBox(i);
+    }
+    if (((TrackEncryptionBox)localObject1).initializationVectorSize != 0)
+    {
       localObject2 = localTrackFragment.sampleEncryptionData;
       i = ((TrackEncryptionBox)localObject1).initializationVectorSize;
       localObject1 = localObject2;
-      k = localTrackFragment.sampleHasSubsampleEncryptionTable[paramTrackBundle.currentSampleIndex];
-      localObject2 = this.encryptionSignalByte.data;
-      if (k == 0) {
-        break label180;
-      }
     }
-    label148:
-    label180:
-    for (int j = 128;; j = 0)
+    else
     {
-      localObject2[0] = ((byte)(j | i));
-      this.encryptionSignalByte.setPosition(0);
-      paramTrackBundle = paramTrackBundle.output;
-      paramTrackBundle.sampleData(this.encryptionSignalByte, 1);
-      paramTrackBundle.sampleData((ParsableByteArray)localObject1, i);
-      if (k != 0) {
-        break label185;
-      }
-      return i + 1;
-      localObject1 = paramTrackBundle.track.getSampleDescriptionEncryptionBox(i);
-      break;
       localObject2 = ((TrackEncryptionBox)localObject1).defaultInitializationVector;
       this.defaultInitializationVector.reset((byte[])localObject2, localObject2.length);
       localObject1 = this.defaultInitializationVector;
       i = localObject2.length;
-      break label55;
     }
-    label185:
+    int k = localTrackFragment.sampleHasSubsampleEncryptionTable[paramTrackBundle.currentSampleIndex];
+    Object localObject2 = this.encryptionSignalByte.data;
+    if (k != 0) {
+      j = 128;
+    } else {
+      j = 0;
+    }
+    localObject2[0] = ((byte)(j | i));
+    this.encryptionSignalByte.setPosition(0);
+    paramTrackBundle = paramTrackBundle.output;
+    paramTrackBundle.sampleData(this.encryptionSignalByte, 1);
+    paramTrackBundle.sampleData((ParsableByteArray)localObject1, i);
+    if (k == 0) {
+      return i + 1;
+    }
     Object localObject1 = localTrackFragment.sampleEncryptionData;
-    j = ((ParsableByteArray)localObject1).readUnsignedShort();
+    int j = ((ParsableByteArray)localObject1).readUnsignedShort();
     ((ParsableByteArray)localObject1).skipBytes(-2);
     j = j * 6 + 2;
     paramTrackBundle.sampleData((ParsableByteArray)localObject1, j);
@@ -205,11 +198,11 @@ public final class FragmentedMp4Extractor
   {
     int j = paramList.size();
     int i = 0;
-    Object localObject2 = null;
-    if (i < j)
+    Object localObject1;
+    for (Object localObject2 = null; i < j; localObject2 = localObject1)
     {
       Object localObject3 = (Atom.LeafAtom)paramList.get(i);
-      Object localObject1 = localObject2;
+      localObject1 = localObject2;
       if (((Atom.LeafAtom)localObject3).type == Atom.TYPE_pssh)
       {
         localObject1 = localObject2;
@@ -218,19 +211,13 @@ public final class FragmentedMp4Extractor
         }
         localObject2 = ((Atom.LeafAtom)localObject3).data.data;
         localObject3 = PsshAtomUtil.parseUuid((byte[])localObject2);
-        if (localObject3 != null) {
-          break label100;
+        if (localObject3 == null) {
+          Log.w("FragmentedMp4Extractor", "Skipped pssh atom (failed to extract uuid)");
+        } else {
+          ((ArrayList)localObject1).add(new DrmInitData.SchemeData((UUID)localObject3, "video/mp4", (byte[])localObject2));
         }
-        Log.w("FragmentedMp4Extractor", "Skipped pssh atom (failed to extract uuid)");
       }
-      for (;;)
-      {
-        i += 1;
-        localObject2 = localObject1;
-        break;
-        label100:
-        ((ArrayList)localObject1).add(new DrmInitData.SchemeData((UUID)localObject3, "video/mp4", (byte[])localObject2));
-      }
+      i += 1;
     }
     if (localObject2 == null) {
       return null;
@@ -240,48 +227,52 @@ public final class FragmentedMp4Extractor
   
   private static FragmentedMp4Extractor.TrackBundle getNextFragmentRun(SparseArray<FragmentedMp4Extractor.TrackBundle> paramSparseArray)
   {
+    int j = paramSparseArray.size();
     Object localObject = null;
     long l1 = 9223372036854775807L;
-    int j = paramSparseArray.size();
     int i = 0;
-    FragmentedMp4Extractor.TrackBundle localTrackBundle;
-    if (i < j)
+    while (i < j)
     {
-      localTrackBundle = (FragmentedMp4Extractor.TrackBundle)paramSparseArray.valueAt(i);
-      if (localTrackBundle.currentTrackRunIndex != localTrackBundle.fragment.trunCount) {}
-    }
-    for (;;)
-    {
-      i += 1;
-      break;
-      long l2 = localTrackBundle.fragment.trunDataPosition[localTrackBundle.currentTrackRunIndex];
-      if (l2 < l1)
+      FragmentedMp4Extractor.TrackBundle localTrackBundle = (FragmentedMp4Extractor.TrackBundle)paramSparseArray.valueAt(i);
+      long l2;
+      if (localTrackBundle.currentTrackRunIndex == localTrackBundle.fragment.trunCount)
       {
-        localObject = localTrackBundle;
-        l1 = l2;
-        continue;
-        return localObject;
+        l2 = l1;
       }
+      else
+      {
+        long l3 = localTrackBundle.fragment.trunDataPosition[localTrackBundle.currentTrackRunIndex];
+        l2 = l1;
+        if (l3 < l1)
+        {
+          localObject = localTrackBundle;
+          l2 = l3;
+        }
+      }
+      i += 1;
+      l1 = l2;
     }
+    return localObject;
   }
   
   private void maybeInitExtraTracks()
   {
+    Object localObject = this.emsgTrackOutputs;
     int k = 0;
-    Object localObject;
     int i;
-    if (this.emsgTrackOutputs == null)
+    if (localObject == null)
     {
       this.emsgTrackOutputs = new TrackOutput[2];
-      if (this.additionalEmsgTrackOutput == null) {
-        break label222;
+      localObject = this.additionalEmsgTrackOutput;
+      if (localObject != null)
+      {
+        this.emsgTrackOutputs[0] = localObject;
+        i = 1;
       }
-      localObject = this.emsgTrackOutputs;
-      i = 1;
-      localObject[0] = this.additionalEmsgTrackOutput;
-    }
-    for (;;)
-    {
+      else
+      {
+        i = 0;
+      }
       int j = i;
       if ((this.flags & 0x4) != 0)
       {
@@ -297,56 +288,53 @@ public final class FragmentedMp4Extractor
         localObject[i].format(EMSG_FORMAT);
         i += 1;
       }
-      if (this.cea608TrackOutputs == null)
+    }
+    if (this.cea608TrackOutputs == null)
+    {
+      this.cea608TrackOutputs = new TrackOutput[this.closedCaptionFormats.size()];
+      i = k;
+      while (i < this.cea608TrackOutputs.length)
       {
-        this.cea608TrackOutputs = new TrackOutput[this.closedCaptionFormats.size()];
-        i = k;
-        while (i < this.cea608TrackOutputs.length)
-        {
-          localObject = this.extractorOutput.track(this.trackBundles.size() + 1 + i, 3);
-          ((TrackOutput)localObject).format((Format)this.closedCaptionFormats.get(i));
-          this.cea608TrackOutputs[i] = localObject;
-          i += 1;
-        }
+        localObject = this.extractorOutput.track(this.trackBundles.size() + 1 + i, 3);
+        ((TrackOutput)localObject).format((Format)this.closedCaptionFormats.get(i));
+        this.cea608TrackOutputs[i] = localObject;
+        i += 1;
       }
-      return;
-      label222:
-      i = 0;
     }
   }
   
   private void onContainerAtomRead(Atom.ContainerAtom paramContainerAtom)
   {
-    if (paramContainerAtom.type == Atom.TYPE_moov) {
-      onMoovContainerAtomRead(paramContainerAtom);
-    }
-    do
+    if (paramContainerAtom.type == Atom.TYPE_moov)
     {
+      onMoovContainerAtomRead(paramContainerAtom);
       return;
-      if (paramContainerAtom.type == Atom.TYPE_moof)
-      {
-        onMoofContainerAtomRead(paramContainerAtom);
-        return;
-      }
-    } while (this.containerAtoms.isEmpty());
-    ((Atom.ContainerAtom)this.containerAtoms.peek()).add(paramContainerAtom);
+    }
+    if (paramContainerAtom.type == Atom.TYPE_moof)
+    {
+      onMoofContainerAtomRead(paramContainerAtom);
+      return;
+    }
+    if (!this.containerAtoms.isEmpty()) {
+      ((Atom.ContainerAtom)this.containerAtoms.peek()).add(paramContainerAtom);
+    }
   }
   
   private void onEmsgLeafAtomRead(ParsableByteArray paramParsableByteArray)
   {
-    if ((this.emsgTrackOutputs == null) || (this.emsgTrackOutputs.length == 0)) {}
-    int j;
-    long l;
-    for (;;)
+    TrackOutput[] arrayOfTrackOutput = this.emsgTrackOutputs;
+    if (arrayOfTrackOutput != null)
     {
-      return;
+      if (arrayOfTrackOutput.length == 0) {
+        return;
+      }
       paramParsableByteArray.setPosition(12);
-      j = paramParsableByteArray.bytesLeft();
+      int j = paramParsableByteArray.bytesLeft();
       paramParsableByteArray.readNullTerminatedString();
       paramParsableByteArray.readNullTerminatedString();
-      l = paramParsableByteArray.readUnsignedInt();
+      long l = paramParsableByteArray.readUnsignedInt();
       l = Util.scaleLargeTimestamp(paramParsableByteArray.readUnsignedInt(), 1000000L, l);
-      TrackOutput[] arrayOfTrackOutput = this.emsgTrackOutputs;
+      arrayOfTrackOutput = this.emsgTrackOutputs;
       int k = arrayOfTrackOutput.length;
       int i = 0;
       while (i < k)
@@ -356,47 +344,51 @@ public final class FragmentedMp4Extractor
         localTrackOutput.sampleData(paramParsableByteArray, j);
         i += 1;
       }
-      if (this.segmentIndexEarliestPresentationTimeUs == -9223372036854775807L) {
-        break;
-      }
-      paramParsableByteArray = this.emsgTrackOutputs;
-      k = paramParsableByteArray.length;
-      i = 0;
-      while (i < k)
+      if (this.segmentIndexEarliestPresentationTimeUs != -9223372036854775807L)
       {
-        paramParsableByteArray[i].sampleMetadata(this.segmentIndexEarliestPresentationTimeUs + l, 1, j, 0, null);
-        i += 1;
+        paramParsableByteArray = this.emsgTrackOutputs;
+        k = paramParsableByteArray.length;
+        i = 0;
+        while (i < k)
+        {
+          paramParsableByteArray[i].sampleMetadata(this.segmentIndexEarliestPresentationTimeUs + l, 1, j, 0, null);
+          i += 1;
+        }
       }
+      this.pendingMetadataSampleInfos.addLast(new FragmentedMp4Extractor.MetadataSampleInfo(l, j));
+      this.pendingMetadataSampleBytes += j;
     }
-    this.pendingMetadataSampleInfos.addLast(new FragmentedMp4Extractor.MetadataSampleInfo(l, j));
-    this.pendingMetadataSampleBytes += j;
   }
   
   private void onLeafAtomRead(Atom.LeafAtom paramLeafAtom, long paramLong)
   {
-    if (!this.containerAtoms.isEmpty()) {
-      ((Atom.ContainerAtom)this.containerAtoms.peek()).add(paramLeafAtom);
-    }
-    do
+    if (!this.containerAtoms.isEmpty())
     {
+      ((Atom.ContainerAtom)this.containerAtoms.peek()).add(paramLeafAtom);
       return;
-      if (paramLeafAtom.type == Atom.TYPE_sidx)
-      {
-        paramLeafAtom = parseSidx(paramLeafAtom.data, paramLong);
-        this.segmentIndexEarliestPresentationTimeUs = ((Long)paramLeafAtom.first).longValue();
-        this.extractorOutput.seekMap((SeekMap)paramLeafAtom.second);
-        this.haveOutputSeekMap = true;
-        return;
-      }
-    } while (paramLeafAtom.type != Atom.TYPE_emsg);
-    onEmsgLeafAtomRead(paramLeafAtom.data);
+    }
+    if (paramLeafAtom.type == Atom.TYPE_sidx)
+    {
+      paramLeafAtom = parseSidx(paramLeafAtom.data, paramLong);
+      this.segmentIndexEarliestPresentationTimeUs = ((Long)paramLeafAtom.first).longValue();
+      this.extractorOutput.seekMap((SeekMap)paramLeafAtom.second);
+      this.haveOutputSeekMap = true;
+      return;
+    }
+    if (paramLeafAtom.type == Atom.TYPE_emsg) {
+      onEmsgLeafAtomRead(paramLeafAtom.data);
+    }
   }
   
   private void onMoofContainerAtomRead(Atom.ContainerAtom paramContainerAtom)
   {
     parseMoof(paramContainerAtom, this.trackBundles, this.flags, this.extendedTypeScratch);
-    if (this.sideloadedDrmInitData != null) {}
-    for (paramContainerAtom = null; paramContainerAtom != null; paramContainerAtom = getDrmInitDataFromAtoms(paramContainerAtom.leafChildren))
+    if (this.sideloadedDrmInitData != null) {
+      paramContainerAtom = null;
+    } else {
+      paramContainerAtom = getDrmInitDataFromAtoms(paramContainerAtom.leafChildren);
+    }
+    if (paramContainerAtom != null)
     {
       int j = this.trackBundles.size();
       int i = 0;
@@ -410,83 +402,67 @@ public final class FragmentedMp4Extractor
   
   private void onMoovContainerAtomRead(Atom.ContainerAtom paramContainerAtom)
   {
+    Object localObject1 = this.sideloadedTrack;
     boolean bool2 = true;
+    int m = 0;
     int k = 0;
-    int j = 0;
-    Object localObject1;
-    label39:
-    SparseArray localSparseArray;
-    long l;
-    label76:
-    Object localObject3;
-    if (this.sideloadedTrack == null)
-    {
+    boolean bool1;
+    if (localObject1 == null) {
       bool1 = true;
-      Assertions.checkState(bool1, "Unexpected moov box.");
-      if (this.sideloadedDrmInitData == null) {
-        break label153;
-      }
-      localObject1 = this.sideloadedDrmInitData;
-      localObject2 = paramContainerAtom.getContainerAtomOfType(Atom.TYPE_mvex);
-      localSparseArray = new SparseArray();
-      l = -9223372036854775807L;
-      m = ((Atom.ContainerAtom)localObject2).leafChildren.size();
-      i = 0;
-      if (i >= m) {
-        break label189;
-      }
-      localObject3 = (Atom.LeafAtom)((Atom.ContainerAtom)localObject2).leafChildren.get(i);
-      if (((Atom.LeafAtom)localObject3).type != Atom.TYPE_trex) {
-        break label165;
-      }
-      localObject3 = parseTrex(((Atom.LeafAtom)localObject3).data);
-      localSparseArray.put(((Integer)((Pair)localObject3).first).intValue(), ((Pair)localObject3).second);
-    }
-    for (;;)
-    {
-      i += 1;
-      break label76;
+    } else {
       bool1 = false;
-      break;
-      label153:
+    }
+    Assertions.checkState(bool1, "Unexpected moov box.");
+    localObject1 = this.sideloadedDrmInitData;
+    if (localObject1 == null) {
       localObject1 = getDrmInitDataFromAtoms(paramContainerAtom.leafChildren);
-      break label39;
-      label165:
-      if (((Atom.LeafAtom)localObject3).type == Atom.TYPE_mehd) {
+    }
+    Object localObject2 = paramContainerAtom.getContainerAtomOfType(Atom.TYPE_mvex);
+    SparseArray localSparseArray = new SparseArray();
+    int j = ((Atom.ContainerAtom)localObject2).leafChildren.size();
+    long l = -9223372036854775807L;
+    int i = 0;
+    Object localObject3;
+    while (i < j)
+    {
+      localObject3 = (Atom.LeafAtom)((Atom.ContainerAtom)localObject2).leafChildren.get(i);
+      if (((Atom.LeafAtom)localObject3).type == Atom.TYPE_trex)
+      {
+        localObject3 = parseTrex(((Atom.LeafAtom)localObject3).data);
+        localSparseArray.put(((Integer)((Pair)localObject3).first).intValue(), ((Pair)localObject3).second);
+      }
+      else if (((Atom.LeafAtom)localObject3).type == Atom.TYPE_mehd)
+      {
         l = parseMehd(((Atom.LeafAtom)localObject3).data);
       }
+      i += 1;
     }
-    label189:
-    Object localObject2 = new SparseArray();
-    int m = paramContainerAtom.containerChildren.size();
-    int i = 0;
-    if (i < m)
+    localObject2 = new SparseArray();
+    i = paramContainerAtom.containerChildren.size();
+    j = 0;
+    while (j < i)
     {
-      localObject3 = (Atom.ContainerAtom)paramContainerAtom.containerChildren.get(i);
-      Atom.LeafAtom localLeafAtom;
+      localObject3 = (Atom.ContainerAtom)paramContainerAtom.containerChildren.get(j);
       if (((Atom.ContainerAtom)localObject3).type == Atom.TYPE_trak)
       {
-        localLeafAtom = paramContainerAtom.getLeafAtomOfType(Atom.TYPE_mvhd);
-        if ((this.flags & 0x10) == 0) {
-          break label305;
+        Atom.LeafAtom localLeafAtom = paramContainerAtom.getLeafAtomOfType(Atom.TYPE_mvhd);
+        if ((this.flags & 0x10) != 0) {
+          bool1 = true;
+        } else {
+          bool1 = false;
         }
-      }
-      label305:
-      for (bool1 = true;; bool1 = false)
-      {
         localObject3 = AtomParsers.parseTrak((Atom.ContainerAtom)localObject3, localLeafAtom, l, (DrmInitData)localObject1, bool1, false);
         if (localObject3 != null) {
           ((SparseArray)localObject2).put(((Track)localObject3).id, localObject3);
         }
-        i += 1;
-        break;
       }
+      j += 1;
     }
-    m = ((SparseArray)localObject2).size();
+    j = ((SparseArray)localObject2).size();
     if (this.trackBundles.size() == 0)
     {
-      i = j;
-      while (i < m)
+      i = k;
+      while (i < j)
       {
         paramContainerAtom = (Track)((SparseArray)localObject2).valueAt(i);
         localObject1 = new FragmentedMp4Extractor.TrackBundle(this.extractorOutput.track(i, paramContainerAtom.type));
@@ -499,18 +475,18 @@ public final class FragmentedMp4Extractor
       this.extractorOutput.endTracks();
       return;
     }
-    if (this.trackBundles.size() == m) {}
-    for (boolean bool1 = bool2;; bool1 = false)
+    if (this.trackBundles.size() == j) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    Assertions.checkState(bool1);
+    i = m;
+    while (i < j)
     {
-      Assertions.checkState(bool1);
-      i = k;
-      while (i < m)
-      {
-        paramContainerAtom = (Track)((SparseArray)localObject2).valueAt(i);
-        ((FragmentedMp4Extractor.TrackBundle)this.trackBundles.get(paramContainerAtom.id)).init(paramContainerAtom, (DefaultSampleValues)localSparseArray.get(paramContainerAtom.id));
-        i += 1;
-      }
-      break;
+      paramContainerAtom = (Track)((SparseArray)localObject2).valueAt(i);
+      ((FragmentedMp4Extractor.TrackBundle)this.trackBundles.get(paramContainerAtom.id)).init(paramContainerAtom, (DefaultSampleValues)localSparseArray.get(paramContainerAtom.id));
+      i += 1;
     }
   }
   
@@ -562,66 +538,77 @@ public final class FragmentedMp4Extractor
       paramParsableByteArray.skipBytes(8);
     }
     int j = paramParsableByteArray.readUnsignedIntToInt();
-    if (j != 1) {
-      throw new ParserException("Unexpected saio entry count: " + j);
-    }
-    i = Atom.parseFullAtomVersion(i);
-    long l2 = paramTrackFragment.auxiliaryDataPosition;
-    if (i == 0) {}
-    for (long l1 = paramParsableByteArray.readUnsignedInt();; l1 = paramParsableByteArray.readUnsignedLongToLong())
+    if (j == 1)
     {
-      paramTrackFragment.auxiliaryDataPosition = (l1 + l2);
+      i = Atom.parseFullAtomVersion(i);
+      long l2 = paramTrackFragment.auxiliaryDataPosition;
+      long l1;
+      if (i == 0) {
+        l1 = paramParsableByteArray.readUnsignedInt();
+      } else {
+        l1 = paramParsableByteArray.readUnsignedLongToLong();
+      }
+      paramTrackFragment.auxiliaryDataPosition = (l2 + l1);
       return;
     }
+    paramParsableByteArray = new StringBuilder();
+    paramParsableByteArray.append("Unexpected saio entry count: ");
+    paramParsableByteArray.append(j);
+    throw new ParserException(paramParsableByteArray.toString());
   }
   
   private static void parseSaiz(TrackEncryptionBox paramTrackEncryptionBox, ParsableByteArray paramParsableByteArray, TrackFragment paramTrackFragment)
   {
-    boolean bool = true;
-    int n = paramTrackEncryptionBox.initializationVectorSize;
+    int m = paramTrackEncryptionBox.initializationVectorSize;
     paramParsableByteArray.setPosition(8);
-    if ((Atom.parseFullAtomFlags(paramParsableByteArray.readInt()) & 0x1) == 1) {
+    int i = Atom.parseFullAtomFlags(paramParsableByteArray.readInt());
+    boolean bool = true;
+    if ((i & 0x1) == 1) {
       paramParsableByteArray.skipBytes(8);
     }
-    int i = paramParsableByteArray.readUnsignedByte();
-    int m = paramParsableByteArray.readUnsignedIntToInt();
-    if (m != paramTrackFragment.sampleCount) {
-      throw new ParserException("Length mismatch: " + m + ", " + paramTrackFragment.sampleCount);
-    }
-    int k;
-    if (i == 0)
+    i = paramParsableByteArray.readUnsignedByte();
+    int n = paramParsableByteArray.readUnsignedIntToInt();
+    if (n == paramTrackFragment.sampleCount)
     {
-      paramTrackEncryptionBox = paramTrackFragment.sampleHasSubsampleEncryptionTable;
-      int j = 0;
-      i = 0;
-      k = i;
-      if (j < m)
+      if (i == 0)
       {
-        k = paramParsableByteArray.readUnsignedByte();
-        if (k > n) {}
-        for (bool = true;; bool = false)
+        paramTrackEncryptionBox = paramTrackFragment.sampleHasSubsampleEncryptionTable;
+        int j = 0;
+        i = 0;
+        for (;;)
         {
+          k = i;
+          if (j >= n) {
+            break;
+          }
+          k = paramParsableByteArray.readUnsignedByte();
+          i += k;
+          if (k > m) {
+            bool = true;
+          } else {
+            bool = false;
+          }
           paramTrackEncryptionBox[j] = bool;
           j += 1;
-          i += k;
-          break;
         }
       }
-    }
-    else
-    {
-      if (i <= n) {
-        break label195;
+      if (i <= m) {
+        bool = false;
       }
-    }
-    for (;;)
-    {
-      k = i * m + 0;
-      Arrays.fill(paramTrackFragment.sampleHasSubsampleEncryptionTable, 0, m, bool);
+      int k = i * n + 0;
+      Arrays.fill(paramTrackFragment.sampleHasSubsampleEncryptionTable, 0, n, bool);
       paramTrackFragment.initEncryptionData(k);
       return;
-      label195:
-      bool = false;
+    }
+    paramTrackEncryptionBox = new StringBuilder();
+    paramTrackEncryptionBox.append("Length mismatch: ");
+    paramTrackEncryptionBox.append(n);
+    paramTrackEncryptionBox.append(", ");
+    paramTrackEncryptionBox.append(paramTrackFragment.sampleCount);
+    paramTrackEncryptionBox = new ParserException(paramTrackEncryptionBox.toString());
+    for (;;)
+    {
+      throw paramTrackEncryptionBox;
     }
   }
   
@@ -629,21 +616,30 @@ public final class FragmentedMp4Extractor
   {
     paramParsableByteArray.setPosition(paramInt + 8);
     paramInt = Atom.parseFullAtomFlags(paramParsableByteArray.readInt());
-    if ((paramInt & 0x1) != 0) {
-      throw new ParserException("Overriding TrackEncryptionBox parameters is unsupported.");
-    }
-    if ((paramInt & 0x2) != 0) {}
-    for (boolean bool = true;; bool = false)
+    if ((paramInt & 0x1) == 0)
     {
-      paramInt = paramParsableByteArray.readUnsignedIntToInt();
-      if (paramInt == paramTrackFragment.sampleCount) {
-        break;
+      boolean bool;
+      if ((paramInt & 0x2) != 0) {
+        bool = true;
+      } else {
+        bool = false;
       }
-      throw new ParserException("Length mismatch: " + paramInt + ", " + paramTrackFragment.sampleCount);
+      paramInt = paramParsableByteArray.readUnsignedIntToInt();
+      if (paramInt == paramTrackFragment.sampleCount)
+      {
+        Arrays.fill(paramTrackFragment.sampleHasSubsampleEncryptionTable, 0, paramInt, bool);
+        paramTrackFragment.initEncryptionData(paramParsableByteArray.bytesLeft());
+        paramTrackFragment.fillEncryptionData(paramParsableByteArray);
+        return;
+      }
+      paramParsableByteArray = new StringBuilder();
+      paramParsableByteArray.append("Length mismatch: ");
+      paramParsableByteArray.append(paramInt);
+      paramParsableByteArray.append(", ");
+      paramParsableByteArray.append(paramTrackFragment.sampleCount);
+      throw new ParserException(paramParsableByteArray.toString());
     }
-    Arrays.fill(paramTrackFragment.sampleHasSubsampleEncryptionTable, 0, paramInt, bool);
-    paramTrackFragment.initEncryptionData(paramParsableByteArray.bytesLeft());
-    paramTrackFragment.fillEncryptionData(paramParsableByteArray);
+    throw new ParserException("Overriding TrackEncryptionBox parameters is unsupported.");
   }
   
   private static void parseSenc(ParsableByteArray paramParsableByteArray, TrackFragment paramTrackFragment)
@@ -655,59 +651,62 @@ public final class FragmentedMp4Extractor
   {
     paramParsableByteArray1.setPosition(8);
     int i = paramParsableByteArray1.readInt();
-    if (paramParsableByteArray1.readInt() != SAMPLE_GROUP_TYPE_seig) {}
-    for (;;)
-    {
+    if (paramParsableByteArray1.readInt() != SAMPLE_GROUP_TYPE_seig) {
       return;
-      if (Atom.parseFullAtomVersion(i) == 1) {
-        paramParsableByteArray1.skipBytes(4);
-      }
-      if (paramParsableByteArray1.readInt() != 1) {
-        throw new ParserException("Entry count in sbgp != 1 (unsupported).");
-      }
+    }
+    if (Atom.parseFullAtomVersion(i) == 1) {
+      paramParsableByteArray1.skipBytes(4);
+    }
+    if (paramParsableByteArray1.readInt() == 1)
+    {
       paramParsableByteArray2.setPosition(8);
       i = paramParsableByteArray2.readInt();
-      if (paramParsableByteArray2.readInt() == SAMPLE_GROUP_TYPE_seig)
+      if (paramParsableByteArray2.readInt() != SAMPLE_GROUP_TYPE_seig) {
+        return;
+      }
+      i = Atom.parseFullAtomVersion(i);
+      if (i == 1)
       {
-        i = Atom.parseFullAtomVersion(i);
-        if (i == 1)
-        {
-          if (paramParsableByteArray2.readUnsignedInt() == 0L) {
-            throw new ParserException("Variable length description in sgpd found (unsupported)");
-          }
-        }
-        else if (i >= 2) {
-          paramParsableByteArray2.skipBytes(4);
-        }
-        if (paramParsableByteArray2.readUnsignedInt() != 1L) {
-          throw new ParserException("Entry count in sgpd != 1 (unsupported).");
-        }
-        paramParsableByteArray2.skipBytes(1);
-        i = paramParsableByteArray2.readUnsignedByte();
-        if (paramParsableByteArray2.readUnsignedByte() == 1) {}
-        for (boolean bool = true; bool; bool = false)
-        {
-          int j = paramParsableByteArray2.readUnsignedByte();
-          byte[] arrayOfByte = new byte[16];
-          paramParsableByteArray2.readBytes(arrayOfByte, 0, arrayOfByte.length);
-          Object localObject = null;
-          paramParsableByteArray1 = localObject;
-          if (bool)
-          {
-            paramParsableByteArray1 = localObject;
-            if (j == 0)
-            {
-              int k = paramParsableByteArray2.readUnsignedByte();
-              paramParsableByteArray1 = new byte[k];
-              paramParsableByteArray2.readBytes(paramParsableByteArray1, 0, k);
-            }
-          }
-          paramTrackFragment.definesEncryptionData = true;
-          paramTrackFragment.trackEncryptionBox = new TrackEncryptionBox(bool, paramString, j, arrayOfByte, (i & 0xF0) >> 4, i & 0xF, paramParsableByteArray1);
-          return;
+        if (paramParsableByteArray2.readUnsignedInt() == 0L) {
+          throw new ParserException("Variable length description in sgpd found (unsupported)");
         }
       }
+      else if (i >= 2) {
+        paramParsableByteArray2.skipBytes(4);
+      }
+      if (paramParsableByteArray2.readUnsignedInt() == 1L)
+      {
+        paramParsableByteArray2.skipBytes(1);
+        i = paramParsableByteArray2.readUnsignedByte();
+        boolean bool;
+        if (paramParsableByteArray2.readUnsignedByte() == 1) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        if (!bool) {
+          return;
+        }
+        int j = paramParsableByteArray2.readUnsignedByte();
+        byte[] arrayOfByte = new byte[16];
+        paramParsableByteArray2.readBytes(arrayOfByte, 0, arrayOfByte.length);
+        if ((bool) && (j == 0))
+        {
+          int k = paramParsableByteArray2.readUnsignedByte();
+          paramParsableByteArray1 = new byte[k];
+          paramParsableByteArray2.readBytes(paramParsableByteArray1, 0, k);
+        }
+        else
+        {
+          paramParsableByteArray1 = null;
+        }
+        paramTrackFragment.definesEncryptionData = true;
+        paramTrackFragment.trackEncryptionBox = new TrackEncryptionBox(bool, paramString, j, arrayOfByte, (i & 0xF0) >> 4, i & 0xF, paramParsableByteArray1);
+        return;
+      }
+      throw new ParserException("Entry count in sgpd != 1 (unsupported).");
     }
+    throw new ParserException("Entry count in sbgp != 1 (unsupported).");
   }
   
   private static Pair<Long, ChunkIndex> parseSidx(ParsableByteArray paramParsableByteArray, long paramLong)
@@ -715,63 +714,50 @@ public final class FragmentedMp4Extractor
     paramParsableByteArray.setPosition(8);
     int i = Atom.parseFullAtomVersion(paramParsableByteArray.readInt());
     paramParsableByteArray.skipBytes(4);
-    long l5 = paramParsableByteArray.readUnsignedInt();
-    long l1;
-    long l2;
-    long l4;
-    int j;
-    int[] arrayOfInt;
-    long[] arrayOfLong1;
-    long[] arrayOfLong2;
-    long[] arrayOfLong3;
-    long l3;
+    long l4 = paramParsableByteArray.readUnsignedInt();
     if (i == 0)
     {
       l1 = paramParsableByteArray.readUnsignedInt();
-      l2 = paramParsableByteArray.readUnsignedInt() + paramLong;
-      paramLong = l1;
-      l1 = l2;
-      l4 = Util.scaleLargeTimestamp(paramLong, 1000000L, l5);
-      paramParsableByteArray.skipBytes(2);
-      j = paramParsableByteArray.readUnsignedShort();
-      arrayOfInt = new int[j];
-      arrayOfLong1 = new long[j];
-      arrayOfLong2 = new long[j];
-      arrayOfLong3 = new long[j];
-      l2 = l1;
-      i = 0;
-      l3 = paramLong;
-      l1 = l4;
-      paramLong = l2;
-      l2 = l3;
+      l2 = paramParsableByteArray.readUnsignedInt();
     }
-    for (;;)
+    else
     {
-      if (i >= j) {
-        break label245;
-      }
+      l1 = paramParsableByteArray.readUnsignedLongToLong();
+      l2 = paramParsableByteArray.readUnsignedLongToLong();
+    }
+    paramLong += l2;
+    long l3 = Util.scaleLargeTimestamp(l1, 1000000L, l4);
+    paramParsableByteArray.skipBytes(2);
+    i = paramParsableByteArray.readUnsignedShort();
+    int[] arrayOfInt = new int[i];
+    long[] arrayOfLong1 = new long[i];
+    long[] arrayOfLong2 = new long[i];
+    long[] arrayOfLong3 = new long[i];
+    long l2 = l1;
+    long l1 = l3;
+    int j = 0;
+    while (j < i)
+    {
       int k = paramParsableByteArray.readInt();
-      if ((0x80000000 & k) != 0)
+      if ((k & 0x80000000) == 0)
+      {
+        long l5 = paramParsableByteArray.readUnsignedInt();
+        arrayOfInt[j] = (k & 0x7FFFFFFF);
+        arrayOfLong1[j] = paramLong;
+        arrayOfLong3[j] = l1;
+        l2 += l5;
+        l1 = Util.scaleLargeTimestamp(l2, 1000000L, l4);
+        arrayOfLong2[j] = (l1 - arrayOfLong3[j]);
+        paramParsableByteArray.skipBytes(4);
+        paramLong += arrayOfInt[j];
+        j += 1;
+      }
+      else
       {
         throw new ParserException("Unhandled indirect reference");
-        l2 = paramParsableByteArray.readUnsignedLongToLong();
-        l1 = paramParsableByteArray.readUnsignedLongToLong() + paramLong;
-        paramLong = l2;
-        break;
       }
-      l3 = paramParsableByteArray.readUnsignedInt();
-      arrayOfInt[i] = (k & 0x7FFFFFFF);
-      arrayOfLong1[i] = paramLong;
-      arrayOfLong3[i] = l1;
-      l2 += l3;
-      l1 = Util.scaleLargeTimestamp(l2, 1000000L, l5);
-      arrayOfLong2[i] = (l1 - arrayOfLong3[i]);
-      paramParsableByteArray.skipBytes(4);
-      paramLong += arrayOfInt[i];
-      i += 1;
     }
-    label245:
-    return Pair.create(Long.valueOf(l4), new ChunkIndex(arrayOfInt, arrayOfLong1, arrayOfLong2, arrayOfLong3));
+    return Pair.create(Long.valueOf(l3), new ChunkIndex(arrayOfInt, arrayOfLong1, arrayOfLong2, arrayOfLong3));
   }
   
   private static long parseTfdt(ParsableByteArray paramParsableByteArray)
@@ -788,13 +774,13 @@ public final class FragmentedMp4Extractor
     paramParsableByteArray.setPosition(8);
     int k = Atom.parseFullAtomFlags(paramParsableByteArray.readInt());
     int i = paramParsableByteArray.readInt();
-    if ((paramInt & 0x8) == 0) {}
-    for (paramInt = i;; paramInt = 0)
-    {
-      paramSparseArray = (FragmentedMp4Extractor.TrackBundle)paramSparseArray.get(paramInt);
-      if (paramSparseArray != null) {
-        break;
-      }
+    if ((paramInt & 0x8) == 0) {
+      paramInt = i;
+    } else {
+      paramInt = 0;
+    }
+    paramSparseArray = (FragmentedMp4Extractor.TrackBundle)paramSparseArray.get(paramInt);
+    if (paramSparseArray == null) {
       return null;
     }
     if ((k & 0x1) != 0)
@@ -804,38 +790,29 @@ public final class FragmentedMp4Extractor
       paramSparseArray.fragment.auxiliaryDataPosition = l;
     }
     DefaultSampleValues localDefaultSampleValues = paramSparseArray.defaultSampleValues;
-    label113:
-    int j;
-    if ((k & 0x2) != 0)
-    {
+    if ((k & 0x2) != 0) {
       paramInt = paramParsableByteArray.readUnsignedIntToInt() - 1;
-      if ((k & 0x8) == 0) {
-        break label172;
-      }
-      i = paramParsableByteArray.readUnsignedIntToInt();
-      if ((k & 0x10) == 0) {
-        break label181;
-      }
-      j = paramParsableByteArray.readUnsignedIntToInt();
-      label127:
-      if ((k & 0x20) == 0) {
-        break label191;
-      }
-    }
-    label172:
-    label181:
-    label191:
-    for (k = paramParsableByteArray.readUnsignedIntToInt();; k = localDefaultSampleValues.flags)
-    {
-      paramSparseArray.fragment.header = new DefaultSampleValues(paramInt, i, j, k);
-      return paramSparseArray;
+    } else {
       paramInt = localDefaultSampleValues.sampleDescriptionIndex;
-      break;
-      i = localDefaultSampleValues.duration;
-      break label113;
-      j = localDefaultSampleValues.size;
-      break label127;
     }
+    if ((k & 0x8) != 0) {
+      i = paramParsableByteArray.readUnsignedIntToInt();
+    } else {
+      i = localDefaultSampleValues.duration;
+    }
+    int j;
+    if ((k & 0x10) != 0) {
+      j = paramParsableByteArray.readUnsignedIntToInt();
+    } else {
+      j = localDefaultSampleValues.size;
+    }
+    if ((k & 0x20) != 0) {
+      k = paramParsableByteArray.readUnsignedIntToInt();
+    } else {
+      k = localDefaultSampleValues.flags;
+    }
+    paramSparseArray.fragment.header = new DefaultSampleValues(paramInt, i, j, k);
+    return paramSparseArray;
   }
   
   private static void parseTraf(Atom.ContainerAtom paramContainerAtom, SparseArray<FragmentedMp4Extractor.TrackBundle> paramSparseArray, int paramInt, byte[] paramArrayOfByte)
@@ -875,25 +852,22 @@ public final class FragmentedMp4Extractor
     {
       localObject1 = ((Atom.LeafAtom)localObject1).data;
       localObject2 = ((Atom.LeafAtom)localObject2).data;
-      if (paramSparseArray == null) {
-        break label295;
+      if (paramSparseArray != null) {
+        paramSparseArray = paramSparseArray.schemeType;
+      } else {
+        paramSparseArray = null;
       }
-    }
-    label295:
-    for (paramSparseArray = paramSparseArray.schemeType;; paramSparseArray = null)
-    {
       parseSgpd((ParsableByteArray)localObject1, (ParsableByteArray)localObject2, paramSparseArray, localTrackFragment);
-      int i = paramContainerAtom.leafChildren.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        paramSparseArray = (Atom.LeafAtom)paramContainerAtom.leafChildren.get(paramInt);
-        if (paramSparseArray.type == Atom.TYPE_uuid) {
-          parseUuid(paramSparseArray.data, localTrackFragment, paramArrayOfByte);
-        }
-        paramInt += 1;
+    }
+    int i = paramContainerAtom.leafChildren.size();
+    paramInt = 0;
+    while (paramInt < i)
+    {
+      paramSparseArray = (Atom.LeafAtom)paramContainerAtom.leafChildren.get(paramInt);
+      if (paramSparseArray.type == Atom.TYPE_uuid) {
+        parseUuid(paramSparseArray.data, localTrackFragment, paramArrayOfByte);
       }
-      break;
+      paramInt += 1;
     }
   }
   
@@ -906,209 +880,173 @@ public final class FragmentedMp4Extractor
   private static int parseTrun(FragmentedMp4Extractor.TrackBundle paramTrackBundle, int paramInt1, long paramLong, int paramInt2, ParsableByteArray paramParsableByteArray, int paramInt3)
   {
     paramParsableByteArray.setPosition(8);
-    int i1 = Atom.parseFullAtomFlags(paramParsableByteArray.readInt());
+    int n = Atom.parseFullAtomFlags(paramParsableByteArray.readInt());
     Track localTrack = paramTrackBundle.track;
     paramTrackBundle = paramTrackBundle.fragment;
     DefaultSampleValues localDefaultSampleValues = paramTrackBundle.header;
     paramTrackBundle.trunLength[paramInt1] = paramParsableByteArray.readUnsignedIntToInt();
     paramTrackBundle.trunDataPosition[paramInt1] = paramTrackBundle.dataPosition;
-    Object localObject;
-    if ((i1 & 0x1) != 0)
+    if ((n & 0x1) != 0)
     {
       localObject = paramTrackBundle.trunDataPosition;
       localObject[paramInt1] += paramParsableByteArray.readInt();
     }
     int j;
-    int i;
-    int k;
-    label124:
-    int m;
-    label136:
-    int n;
-    if ((i1 & 0x4) != 0)
-    {
+    if ((n & 0x4) != 0) {
       j = 1;
-      i = localDefaultSampleValues.flags;
-      if (j != 0) {
-        i = paramParsableByteArray.readUnsignedIntToInt();
-      }
-      if ((i1 & 0x100) == 0) {
-        break label422;
-      }
+    } else {
+      j = 0;
+    }
+    int i = localDefaultSampleValues.flags;
+    if (j != 0) {
+      i = paramParsableByteArray.readUnsignedIntToInt();
+    }
+    int k;
+    if ((n & 0x100) != 0) {
       k = 1;
-      if ((i1 & 0x200) == 0) {
-        break label428;
-      }
+    } else {
+      k = 0;
+    }
+    int m;
+    if ((n & 0x200) != 0) {
       m = 1;
-      if ((i1 & 0x400) == 0) {
-        break label434;
-      }
-      n = 1;
-      label148:
-      if ((i1 & 0x800) == 0) {
-        break label440;
-      }
+    } else {
+      m = 0;
+    }
+    int i1;
+    if ((n & 0x400) != 0) {
       i1 = 1;
-      label160:
-      if ((localTrack.editListDurations == null) || (localTrack.editListDurations.length != 1) || (localTrack.editListDurations[0] != 0L)) {
-        break label518;
-      }
+    } else {
+      i1 = 0;
     }
-    label518:
-    for (long l1 = Util.scaleLargeTimestamp(localTrack.editListMediaTimes[0], 1000L, localTrack.timescale);; l1 = 0L)
+    if ((n & 0x800) != 0) {
+      n = 1;
+    } else {
+      n = 0;
+    }
+    Object localObject = localTrack.editListDurations;
+    long l2 = 0L;
+    long l1 = l2;
+    if (localObject != null)
     {
-      localObject = paramTrackBundle.sampleSizeTable;
-      int[] arrayOfInt = paramTrackBundle.sampleCompositionTimeOffsetTable;
-      long[] arrayOfLong = paramTrackBundle.sampleDecodingTimeTable;
-      boolean[] arrayOfBoolean = paramTrackBundle.sampleIsSyncFrameTable;
-      label253:
-      int i4;
-      label280:
-      int i2;
-      label299:
-      int i3;
-      if ((localTrack.type == 2) && ((paramInt2 & 0x1) != 0))
+      l1 = l2;
+      if (localTrack.editListDurations.length == 1)
       {
-        paramInt2 = 1;
-        i4 = paramInt3 + paramTrackBundle.trunLength[paramInt1];
-        long l2 = localTrack.timescale;
-        if (paramInt1 > 0) {
-          paramLong = paramTrackBundle.nextFragmentDecodeTime;
-        }
-        if (paramInt3 >= i4) {
-          break label510;
-        }
-        if (k == 0) {
-          break label452;
-        }
-        i2 = paramParsableByteArray.readUnsignedIntToInt();
-        if (m == 0) {
-          break label462;
-        }
-        i3 = paramParsableByteArray.readUnsignedIntToInt();
-        label311:
-        if ((paramInt3 != 0) || (j == 0)) {
-          break label472;
-        }
-        paramInt1 = i;
-        label324:
-        if (i1 == 0) {
-          break label495;
-        }
-        arrayOfInt[paramInt3] = ((int)(paramParsableByteArray.readInt() * 1000L / l2));
-        label348:
-        arrayOfLong[paramInt3] = (Util.scaleLargeTimestamp(paramLong, 1000L, l2) - l1);
-        localObject[paramInt3] = i3;
-        if (((paramInt1 >> 16 & 0x1) != 0) || ((paramInt2 != 0) && (paramInt3 != 0))) {
-          break label504;
+        l1 = l2;
+        if (localTrack.editListDurations[0] == 0L) {
+          l1 = Util.scaleLargeTimestamp(localTrack.editListMediaTimes[0], 1000L, localTrack.timescale);
         }
       }
-      label422:
-      label428:
-      label434:
-      label440:
-      label452:
-      label462:
-      label472:
-      label495:
-      label504:
-      for (int i5 = 1;; i5 = 0)
-      {
-        arrayOfBoolean[paramInt3] = i5;
-        paramLong += i2;
-        paramInt3 += 1;
-        break label280;
-        j = 0;
-        break;
-        k = 0;
-        break label124;
-        m = 0;
-        break label136;
-        n = 0;
-        break label148;
-        i1 = 0;
-        break label160;
-        paramInt2 = 0;
-        break label253;
-        i2 = localDefaultSampleValues.duration;
-        break label299;
-        i3 = localDefaultSampleValues.size;
-        break label311;
-        if (n != 0)
-        {
-          paramInt1 = paramParsableByteArray.readInt();
-          break label324;
-        }
-        paramInt1 = localDefaultSampleValues.flags;
-        break label324;
-        arrayOfInt[paramInt3] = 0;
-        break label348;
-      }
-      label510:
-      paramTrackBundle.nextFragmentDecodeTime = paramLong;
-      return i4;
     }
+    localObject = paramTrackBundle.sampleSizeTable;
+    int[] arrayOfInt = paramTrackBundle.sampleCompositionTimeOffsetTable;
+    long[] arrayOfLong = paramTrackBundle.sampleDecodingTimeTable;
+    boolean[] arrayOfBoolean = paramTrackBundle.sampleIsSyncFrameTable;
+    if ((localTrack.type == 2) && ((paramInt2 & 0x1) != 0)) {
+      paramInt2 = 1;
+    } else {
+      paramInt2 = 0;
+    }
+    int i3 = paramInt3 + paramTrackBundle.trunLength[paramInt1];
+    l2 = localTrack.timescale;
+    if (paramInt1 > 0) {
+      paramLong = paramTrackBundle.nextFragmentDecodeTime;
+    }
+    int i2 = paramInt3;
+    paramInt3 = i3;
+    while (i2 < paramInt3)
+    {
+      if (k != 0) {
+        i3 = paramParsableByteArray.readUnsignedIntToInt();
+      } else {
+        i3 = localDefaultSampleValues.duration;
+      }
+      int i4;
+      if (m != 0) {
+        i4 = paramParsableByteArray.readUnsignedIntToInt();
+      } else {
+        i4 = localDefaultSampleValues.size;
+      }
+      if ((i2 == 0) && (j != 0)) {
+        paramInt1 = i;
+      } else if (i1 != 0) {
+        paramInt1 = paramParsableByteArray.readInt();
+      } else {
+        paramInt1 = localDefaultSampleValues.flags;
+      }
+      if (n != 0) {
+        arrayOfInt[i2] = ((int)(paramParsableByteArray.readInt() * 1000L / l2));
+      } else {
+        arrayOfInt[i2] = 0;
+      }
+      arrayOfLong[i2] = (Util.scaleLargeTimestamp(paramLong, 1000L, l2) - l1);
+      localObject[i2] = i4;
+      int i5;
+      if (((paramInt1 >> 16 & 0x1) == 0) && ((paramInt2 == 0) || (i2 == 0))) {
+        i5 = 1;
+      } else {
+        i5 = 0;
+      }
+      arrayOfBoolean[i2] = i5;
+      long l3 = i3;
+      i2 += 1;
+      paramLong += l3;
+    }
+    paramTrackBundle.nextFragmentDecodeTime = paramLong;
+    return paramInt3;
   }
   
   private static void parseTruns(Atom.ContainerAtom paramContainerAtom, FragmentedMp4Extractor.TrackBundle paramTrackBundle, long paramLong, int paramInt)
   {
     paramContainerAtom = paramContainerAtom.leafChildren;
-    int i1 = paramContainerAtom.size();
-    int k = 0;
-    int j = 0;
+    int i2 = paramContainerAtom.size();
+    int i1 = 0;
     int i = 0;
+    int j = 0;
     Object localObject;
+    int n;
     int m;
-    if (k < i1)
+    for (int k = 0; i < i2; k = m)
     {
-      localObject = (Atom.LeafAtom)paramContainerAtom.get(k);
-      if (((Atom.LeafAtom)localObject).type != Atom.TYPE_trun) {
-        break label237;
-      }
-      localObject = ((Atom.LeafAtom)localObject).data;
-      ((ParsableByteArray)localObject).setPosition(12);
-      m = ((ParsableByteArray)localObject).readUnsignedIntToInt();
-      if (m <= 0) {
-        break label237;
-      }
-      m += j;
-      j = i + 1;
-      i = m;
-    }
-    for (;;)
-    {
-      m = k + 1;
-      k = j;
-      j = i;
-      i = k;
-      k = m;
-      break;
-      paramTrackBundle.currentTrackRunIndex = 0;
-      paramTrackBundle.currentSampleInTrackRun = 0;
-      paramTrackBundle.currentSampleIndex = 0;
-      paramTrackBundle.fragment.initTables(i, j);
-      i = 0;
-      k = 0;
-      j = 0;
-      while (i < i1)
+      localObject = (Atom.LeafAtom)paramContainerAtom.get(i);
+      n = j;
+      m = k;
+      if (((Atom.LeafAtom)localObject).type == Atom.TYPE_trun)
       {
-        localObject = (Atom.LeafAtom)paramContainerAtom.get(i);
-        int n = j;
+        localObject = ((Atom.LeafAtom)localObject).data;
+        ((ParsableByteArray)localObject).setPosition(12);
+        int i3 = ((ParsableByteArray)localObject).readUnsignedIntToInt();
+        n = j;
         m = k;
-        if (((Atom.LeafAtom)localObject).type == Atom.TYPE_trun)
+        if (i3 > 0)
         {
-          m = parseTrun(paramTrackBundle, j, paramLong, paramInt, ((Atom.LeafAtom)localObject).data, k);
+          m = k + i3;
           n = j + 1;
         }
-        i += 1;
-        j = n;
-        k = m;
       }
-      return;
-      label237:
-      m = i;
-      i = j;
-      j = m;
+      i += 1;
+      j = n;
+    }
+    paramTrackBundle.currentTrackRunIndex = 0;
+    paramTrackBundle.currentSampleInTrackRun = 0;
+    paramTrackBundle.currentSampleIndex = 0;
+    paramTrackBundle.fragment.initTables(j, k);
+    j = 0;
+    k = 0;
+    i = i1;
+    while (i < i2)
+    {
+      localObject = (Atom.LeafAtom)paramContainerAtom.get(i);
+      n = j;
+      m = k;
+      if (((Atom.LeafAtom)localObject).type == Atom.TYPE_trun)
+      {
+        m = parseTrun(paramTrackBundle, j, paramLong, paramInt, ((Atom.LeafAtom)localObject).data, k);
+        n = j + 1;
+      }
+      i += 1;
+      j = n;
+      k = m;
     }
   }
   
@@ -1142,308 +1080,162 @@ public final class FragmentedMp4Extractor
       this.atomSize = this.atomHeader.readUnsignedInt();
       this.atomType = this.atomHeader.readInt();
     }
-    if (this.atomSize == 1L)
+    long l1 = this.atomSize;
+    if (l1 == 1L)
     {
       paramExtractorInput.readFully(this.atomHeader.data, 8, 8);
       this.atomHeaderBytesRead += 8;
       this.atomSize = this.atomHeader.readUnsignedLongToLong();
     }
-    while (this.atomSize < this.atomHeaderBytesRead)
+    else if (l1 == 0L)
     {
-      throw new ParserException("Atom size less than header length (unsupported).");
-      if (this.atomSize == 0L)
+      long l2 = paramExtractorInput.getLength();
+      l1 = l2;
+      if (l2 == -1L)
       {
-        long l2 = paramExtractorInput.getLength();
         l1 = l2;
-        if (l2 == -1L)
+        if (!this.containerAtoms.isEmpty()) {
+          l1 = ((Atom.ContainerAtom)this.containerAtoms.peek()).endPosition;
+        }
+      }
+      if (l1 != -1L) {
+        this.atomSize = (l1 - paramExtractorInput.getPosition() + this.atomHeaderBytesRead);
+      }
+    }
+    if (this.atomSize >= this.atomHeaderBytesRead)
+    {
+      l1 = paramExtractorInput.getPosition() - this.atomHeaderBytesRead;
+      if (this.atomType == Atom.TYPE_moof)
+      {
+        int j = this.trackBundles.size();
+        int i = 0;
+        while (i < j)
         {
-          l1 = l2;
-          if (!this.containerAtoms.isEmpty()) {
-            l1 = ((Atom.ContainerAtom)this.containerAtoms.peek()).endPosition;
-          }
-        }
-        if (l1 != -1L) {
-          this.atomSize = (l1 - paramExtractorInput.getPosition() + this.atomHeaderBytesRead);
+          TrackFragment localTrackFragment = ((FragmentedMp4Extractor.TrackBundle)this.trackBundles.valueAt(i)).fragment;
+          localTrackFragment.atomPosition = l1;
+          localTrackFragment.auxiliaryDataPosition = l1;
+          localTrackFragment.dataPosition = l1;
+          i += 1;
         }
       }
-    }
-    long l1 = paramExtractorInput.getPosition() - this.atomHeaderBytesRead;
-    if (this.atomType == Atom.TYPE_moof)
-    {
-      int j = this.trackBundles.size();
-      int i = 0;
-      while (i < j)
+      if (this.atomType == Atom.TYPE_mdat)
       {
-        TrackFragment localTrackFragment = ((FragmentedMp4Extractor.TrackBundle)this.trackBundles.valueAt(i)).fragment;
-        localTrackFragment.atomPosition = l1;
-        localTrackFragment.auxiliaryDataPosition = l1;
-        localTrackFragment.dataPosition = l1;
-        i += 1;
+        this.currentTrackBundle = null;
+        this.endOfMdatPosition = (this.atomSize + l1);
+        if (!this.haveOutputSeekMap)
+        {
+          this.extractorOutput.seekMap(new SeekMap.Unseekable(this.durationUs, l1));
+          this.haveOutputSeekMap = true;
+        }
+        this.parserState = 2;
+        return true;
       }
-    }
-    if (this.atomType == Atom.TYPE_mdat)
-    {
-      this.currentTrackBundle = null;
-      this.endOfMdatPosition = (this.atomSize + l1);
-      if (!this.haveOutputSeekMap)
+      if (shouldParseContainerAtom(this.atomType))
       {
-        this.extractorOutput.seekMap(new SeekMap.Unseekable(this.durationUs, l1));
-        this.haveOutputSeekMap = true;
+        l1 = paramExtractorInput.getPosition() + this.atomSize - 8L;
+        this.containerAtoms.add(new Atom.ContainerAtom(this.atomType, l1));
+        if (this.atomSize == this.atomHeaderBytesRead)
+        {
+          processAtomEnded(l1);
+          return true;
+        }
+        enterReadingAtomHeaderState();
+        return true;
       }
-      this.parserState = 2;
-      return true;
-    }
-    if (shouldParseContainerAtom(this.atomType))
-    {
-      l1 = paramExtractorInput.getPosition() + this.atomSize - 8L;
-      this.containerAtoms.add(new Atom.ContainerAtom(this.atomType, l1));
-      if (this.atomSize == this.atomHeaderBytesRead) {
-        processAtomEnded(l1);
-      }
-    }
-    for (;;)
-    {
-      return true;
-      enterReadingAtomHeaderState();
-      continue;
       if (shouldParseLeafAtom(this.atomType))
       {
-        if (this.atomHeaderBytesRead != 8) {
-          throw new ParserException("Leaf atom defines extended atom size (unsupported).");
-        }
-        if (this.atomSize > 2147483647L) {
+        if (this.atomHeaderBytesRead == 8)
+        {
+          l1 = this.atomSize;
+          if (l1 <= 2147483647L)
+          {
+            this.atomData = new ParsableByteArray((int)l1);
+            System.arraycopy(this.atomHeader.data, 0, this.atomData.data, 0, 8);
+            this.parserState = 1;
+            return true;
+          }
           throw new ParserException("Leaf atom with length > 2147483647 (unsupported).");
         }
-        this.atomData = new ParsableByteArray((int)this.atomSize);
-        System.arraycopy(this.atomHeader.data, 0, this.atomData.data, 0, 8);
-        this.parserState = 1;
+        throw new ParserException("Leaf atom defines extended atom size (unsupported).");
       }
-      else
+      if (this.atomSize <= 2147483647L)
       {
-        if (this.atomSize > 2147483647L) {
-          throw new ParserException("Skipping atom with length > 2147483647 (unsupported).");
-        }
         this.atomData = null;
         this.parserState = 1;
+        return true;
       }
+      throw new ParserException("Skipping atom with length > 2147483647 (unsupported).");
+    }
+    paramExtractorInput = new ParserException("Atom size less than header length (unsupported).");
+    for (;;)
+    {
+      throw paramExtractorInput;
     }
   }
   
   private void readAtomPayload(ExtractorInput paramExtractorInput)
   {
     int i = (int)this.atomSize - this.atomHeaderBytesRead;
-    if (this.atomData != null)
+    ParsableByteArray localParsableByteArray = this.atomData;
+    if (localParsableByteArray != null)
     {
-      paramExtractorInput.readFully(this.atomData.data, 8, i);
+      paramExtractorInput.readFully(localParsableByteArray.data, 8, i);
       onLeafAtomRead(new Atom.LeafAtom(this.atomType, this.atomData), paramExtractorInput.getPosition());
     }
-    for (;;)
+    else
     {
-      processAtomEnded(paramExtractorInput.getPosition());
-      return;
       paramExtractorInput.skipFully(i);
     }
+    processAtomEnded(paramExtractorInput.getPosition());
   }
   
   private void readEncryptionData(ExtractorInput paramExtractorInput)
   {
-    FragmentedMp4Extractor.TrackBundle localTrackBundle = null;
-    long l = 9223372036854775807L;
     int j = this.trackBundles.size();
+    Object localObject1 = null;
+    long l1 = 9223372036854775807L;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       TrackFragment localTrackFragment = ((FragmentedMp4Extractor.TrackBundle)this.trackBundles.valueAt(i)).fragment;
-      if ((!localTrackFragment.sampleEncryptionDataNeedsFill) || (localTrackFragment.auxiliaryDataPosition >= l)) {
-        break label139;
+      Object localObject2 = localObject1;
+      long l2 = l1;
+      if (localTrackFragment.sampleEncryptionDataNeedsFill)
+      {
+        localObject2 = localObject1;
+        l2 = l1;
+        if (localTrackFragment.auxiliaryDataPosition < l1)
+        {
+          l2 = localTrackFragment.auxiliaryDataPosition;
+          localObject2 = (FragmentedMp4Extractor.TrackBundle)this.trackBundles.valueAt(i);
+        }
       }
-      l = localTrackFragment.auxiliaryDataPosition;
-      localTrackBundle = (FragmentedMp4Extractor.TrackBundle)this.trackBundles.valueAt(i);
+      i += 1;
+      localObject1 = localObject2;
+      l1 = l2;
     }
-    label139:
+    if (localObject1 == null)
+    {
+      this.parserState = 3;
+      return;
+    }
+    i = (int)(l1 - paramExtractorInput.getPosition());
+    if (i >= 0)
+    {
+      paramExtractorInput.skipFully(i);
+      localObject1.fragment.fillEncryptionData(paramExtractorInput);
+      return;
+    }
+    paramExtractorInput = new ParserException("Offset to encryption data was negative.");
     for (;;)
     {
-      i += 1;
-      break;
-      if (localTrackBundle == null)
-      {
-        this.parserState = 3;
-        return;
-      }
-      i = (int)(l - paramExtractorInput.getPosition());
-      if (i < 0) {
-        throw new ParserException("Offset to encryption data was negative.");
-      }
-      paramExtractorInput.skipFully(i);
-      localTrackBundle.fragment.fillEncryptionData(paramExtractorInput);
-      return;
+      throw paramExtractorInput;
     }
   }
   
   private boolean readSample(ExtractorInput paramExtractorInput)
   {
-    Object localObject;
-    int j;
-    Track localTrack;
-    TrackOutput localTrackOutput;
-    int k;
-    int n;
-    if (this.parserState == 3)
-    {
-      if (this.currentTrackBundle == null)
-      {
-        localObject = getNextFragmentRun(this.trackBundles);
-        if (localObject == null)
-        {
-          i = (int)(this.endOfMdatPosition - paramExtractorInput.getPosition());
-          if (i < 0) {
-            throw new ParserException("Offset to end of mdat was negative.");
-          }
-          paramExtractorInput.skipFully(i);
-          enterReadingAtomHeaderState();
-          return false;
-        }
-        j = (int)(localObject.fragment.trunDataPosition[localObject.currentTrackRunIndex] - paramExtractorInput.getPosition());
-        i = j;
-        if (j < 0)
-        {
-          Log.w("FragmentedMp4Extractor", "Ignoring negative offset to sample data.");
-          i = 0;
-        }
-        paramExtractorInput.skipFully(i);
-        this.currentTrackBundle = ((FragmentedMp4Extractor.TrackBundle)localObject);
-      }
-      this.sampleSize = this.currentTrackBundle.fragment.sampleSizeTable[this.currentTrackBundle.currentSampleIndex];
-      if (this.currentTrackBundle.fragment.definesEncryptionData)
-      {
-        this.sampleBytesWritten = appendSampleEncryptionData(this.currentTrackBundle);
-        this.sampleSize += this.sampleBytesWritten;
-        if (this.currentTrackBundle.track.sampleTransformation == 1)
-        {
-          this.sampleSize -= 8;
-          paramExtractorInput.skipFully(8);
-        }
-        this.parserState = 4;
-        this.sampleCurrentNalBytesRemaining = 0;
-      }
-    }
-    else
-    {
-      localObject = this.currentTrackBundle.fragment;
-      localTrack = this.currentTrackBundle.track;
-      localTrackOutput = this.currentTrackBundle.output;
-      k = this.currentTrackBundle.currentSampleIndex;
-      if (localTrack.nalUnitLengthFieldLength == 0) {
-        break label652;
-      }
-      byte[] arrayOfByte = this.nalPrefix.data;
-      arrayOfByte[0] = 0;
-      arrayOfByte[1] = 0;
-      arrayOfByte[2] = 0;
-      int m = localTrack.nalUnitLengthFieldLength;
-      n = 4 - localTrack.nalUnitLengthFieldLength;
-      label310:
-      if (this.sampleBytesWritten >= this.sampleSize) {
-        break label693;
-      }
-      if (this.sampleCurrentNalBytesRemaining != 0) {
-        break label468;
-      }
-      paramExtractorInput.readFully(arrayOfByte, n, m + 1);
-      this.nalPrefix.setPosition(0);
-      this.sampleCurrentNalBytesRemaining = (this.nalPrefix.readUnsignedIntToInt() - 1);
-      this.nalStartCode.setPosition(0);
-      localTrackOutput.sampleData(this.nalStartCode, 4);
-      localTrackOutput.sampleData(this.nalPrefix, 1);
-      if ((this.cea608TrackOutputs.length <= 0) || (!NalUnitUtil.isNalUnitSei(localTrack.format.sampleMimeType, arrayOfByte[4]))) {
-        break label462;
-      }
-    }
-    label462:
-    for (boolean bool = true;; bool = false)
-    {
-      this.processSeiNalUnitPayload = bool;
-      this.sampleBytesWritten += 5;
-      this.sampleSize += n;
-      break label310;
-      this.sampleBytesWritten = 0;
-      break;
-    }
-    label468:
-    if (this.processSeiNalUnitPayload)
-    {
-      this.nalBuffer.reset(this.sampleCurrentNalBytesRemaining);
-      paramExtractorInput.readFully(this.nalBuffer.data, 0, this.sampleCurrentNalBytesRemaining);
-      localTrackOutput.sampleData(this.nalBuffer, this.sampleCurrentNalBytesRemaining);
-      j = this.sampleCurrentNalBytesRemaining;
-      int i1 = NalUnitUtil.unescapeStream(this.nalBuffer.data, this.nalBuffer.limit());
-      ParsableByteArray localParsableByteArray = this.nalBuffer;
-      if ("video/hevc".equals(localTrack.format.sampleMimeType))
-      {
-        i = 1;
-        localParsableByteArray.setPosition(i);
-        this.nalBuffer.setLimit(i1);
-        CeaUtil.consume(((TrackFragment)localObject).getSamplePresentationTime(k) * 1000L, this.nalBuffer, this.cea608TrackOutputs);
-      }
-    }
-    label568:
-    for (int i = j;; i = localTrackOutput.sampleData(paramExtractorInput, this.sampleCurrentNalBytesRemaining, false))
-    {
-      this.sampleBytesWritten += i;
-      this.sampleCurrentNalBytesRemaining -= i;
-      break;
-      i = 0;
-      break label568;
-    }
-    label652:
-    while (this.sampleBytesWritten < this.sampleSize) {
-      this.sampleBytesWritten = (localTrackOutput.sampleData(paramExtractorInput, this.sampleSize - this.sampleBytesWritten, false) + this.sampleBytesWritten);
-    }
-    label693:
-    long l2 = ((TrackFragment)localObject).getSamplePresentationTime(k) * 1000L;
-    long l1 = l2;
-    if (this.timestampAdjuster != null) {
-      l1 = this.timestampAdjuster.adjustSampleTimestamp(l2);
-    }
-    if (localObject.sampleIsSyncFrameTable[k] != 0)
-    {
-      i = 1;
-      paramExtractorInput = null;
-      if (!((TrackFragment)localObject).definesEncryptionData) {
-        break label908;
-      }
-      i = 0x40000000 | i;
-      if (((TrackFragment)localObject).trackEncryptionBox == null) {
-        break label891;
-      }
-      paramExtractorInput = ((TrackFragment)localObject).trackEncryptionBox;
-      label771:
-      paramExtractorInput = paramExtractorInput.cryptoData;
-    }
-    label908:
-    for (;;)
-    {
-      localTrackOutput.sampleMetadata(l1, i, this.sampleSize, 0, paramExtractorInput);
-      outputPendingMetadataSamples(l1);
-      paramExtractorInput = this.currentTrackBundle;
-      paramExtractorInput.currentSampleIndex += 1;
-      paramExtractorInput = this.currentTrackBundle;
-      paramExtractorInput.currentSampleInTrackRun += 1;
-      if (this.currentTrackBundle.currentSampleInTrackRun == localObject.trunLength[this.currentTrackBundle.currentTrackRunIndex])
-      {
-        paramExtractorInput = this.currentTrackBundle;
-        paramExtractorInput.currentTrackRunIndex += 1;
-        this.currentTrackBundle.currentSampleInTrackRun = 0;
-        this.currentTrackBundle = null;
-      }
-      this.parserState = 3;
-      return true;
-      i = 0;
-      break;
-      label891:
-      paramExtractorInput = localTrack.getSampleDescriptionEncryptionBox(((TrackFragment)localObject).header.sampleDescriptionIndex);
-      break label771;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private static boolean shouldParseContainerAtom(int paramInt)
@@ -1459,9 +1251,10 @@ public final class FragmentedMp4Extractor
   public void init(ExtractorOutput paramExtractorOutput)
   {
     this.extractorOutput = paramExtractorOutput;
-    if (this.sideloadedTrack != null)
+    Track localTrack = this.sideloadedTrack;
+    if (localTrack != null)
     {
-      paramExtractorOutput = new FragmentedMp4Extractor.TrackBundle(paramExtractorOutput.track(0, this.sideloadedTrack.type));
+      paramExtractorOutput = new FragmentedMp4Extractor.TrackBundle(paramExtractorOutput.track(0, localTrack.type));
       paramExtractorOutput.init(this.sideloadedTrack, new DefaultSampleValues(0, 0, 0, 0));
       this.trackBundles.put(0, paramExtractorOutput);
       maybeInitExtraTracks();
@@ -1471,26 +1264,32 @@ public final class FragmentedMp4Extractor
   
   public int read(ExtractorInput paramExtractorInput, PositionHolder paramPositionHolder)
   {
-    for (;;)
+    do
     {
-      switch (this.parserState)
+      for (;;)
       {
-      default: 
-        if (!readSample(paramExtractorInput)) {
-          continue;
+        int i = this.parserState;
+        if (i == 0) {
+          break;
         }
-        return 0;
-      case 0: 
-        if (readAtomHeader(paramExtractorInput)) {
-          continue;
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (readSample(paramExtractorInput)) {
+              return 0;
+            }
+          }
+          else {
+            readEncryptionData(paramExtractorInput);
+          }
         }
-        return -1;
-      case 1: 
-        readAtomPayload(paramExtractorInput);
-        break;
+        else {
+          readAtomPayload(paramExtractorInput);
+        }
       }
-      readEncryptionData(paramExtractorInput);
-    }
+    } while (readAtomHeader(paramExtractorInput));
+    return -1;
   }
   
   public void release() {}
@@ -1517,7 +1316,7 @@ public final class FragmentedMp4Extractor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.mp4.FragmentedMp4Extractor
  * JD-Core Version:    0.7.0.1
  */

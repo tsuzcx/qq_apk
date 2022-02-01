@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class a
   extends JceStruct
@@ -40,21 +41,24 @@ public final class a
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.a != null) {
-      paramJceOutputStream.write(this.a, 1);
+    Object localObject = this.a;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.b != null) {
-      paramJceOutputStream.write(this.b, 2);
+    localObject = this.b;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.c != null) {
-      paramJceOutputStream.write(this.c, 3);
+    localObject = this.c;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.d, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msf.service.protocol.QQWiFi.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,9 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.selectmember.api.ISelectMemberApi;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
@@ -20,81 +22,85 @@ class TroopMemberListActivity$28
   
   public void OnClick(View paramView, int paramInt)
   {
-    if ((!TroopMemberListActivity.c(this.a)) && (paramInt >= 5)) {}
-    for (int i = paramInt + 1;; i = paramInt)
+    int i;
+    if ((!TroopMemberListActivity.access$1700(this.a)) && (paramInt >= 5)) {
+      i = paramInt + 1;
+    } else {
+      i = paramInt;
+    }
+    if (this.a.mIsQidianPrivateTroop)
     {
-      if (this.a.e) {
-        if (paramInt == 0) {
-          this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopMemberListActivity.28.1(this), 320L);
-        }
-      }
-      for (;;)
+      if (paramInt == 0)
       {
-        if ((this.a.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.a.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
-          this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+        this.a.mHandler.postDelayed(new TroopMemberListActivity.28.1(this), 320L);
+      }
+      else if (QLog.isColorLevel())
+      {
+        paramView = new StringBuilder();
+        paramView.append("mOnActionSheetClickListener.OnClick, error : which = ");
+        paramView.append(paramInt);
+        paramView.append(", troopUin = ");
+        paramView.append(this.a.mTroopUin);
+        QLog.d("TroopMemberListActivityget_troop_member", 2, paramView.toString());
+      }
+    }
+    else if (this.a.mFrom == 9)
+    {
+      if (i == 0)
+      {
+        paramView = this.a;
+        paramView.mIsInDeleteState = true;
+        paramView.mSlideLeftUin = "";
+        paramView.mRightManageBtn.setVisibility(0);
+        this.a.mTitleRightImgBtn.setVisibility(8);
+        this.a.mTitleSortImgBtn.setVisibility(8);
+        if (this.a.mAdapter != null) {
+          this.a.mAdapter.a();
         }
-        return;
-        if (QLog.isColorLevel())
+        ReportController.b(this.a.app, "P_CliOper", "Grp_pay", "", "un_pay_list", "Clk_del", 0, 0, this.a.mTroopUin, this.a.mMyTroopRole, "", "");
+      }
+    }
+    else if (i != 0)
+    {
+      if (i != 1)
+      {
+        if (i != 2)
         {
-          QLog.d("TroopMemberListActivityget_troop_member", 2, "mOnActionSheetClickListener.OnClick, error : which = " + paramInt + ", troopUin = " + this.a.jdField_b_of_type_JavaLangString);
-          continue;
-          if (this.a.d == 9) {
-            switch (i)
-            {
-            default: 
-              break;
-            case 0: 
-              this.a.c = true;
-              this.a.t = "";
-              this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-              this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-              this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-              if (this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter != null) {
-                this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.a();
-              }
-              ReportController.b(this.a.app, "P_CliOper", "Grp_pay", "", "un_pay_list", "Clk_del", 0, 0, this.a.jdField_b_of_type_JavaLangString, this.a.n, "", "");
-              break;
-            }
-          } else {
-            switch (i)
-            {
-            default: 
-              break;
-            case 0: 
-              this.a.l();
-              break;
-            case 1: 
-              if (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))
-              {
-                paramView = new Intent(this.a, SelectMemberActivity.class);
-                paramView.putExtra("param_from", 30);
-                paramView.putExtra("group_uin", this.a.jdField_b_of_type_JavaLangString);
-                paramView.putExtra("param_groupcode", this.a.jdField_a_of_type_JavaLangString);
-                paramView.putExtra("param_from", 30);
-                paramView.putExtra("param_subtype", 4);
-                paramView.putExtra("param_entrance", 30);
-                paramView.putExtra("param_max", 30);
-                paramView.putExtra("param_exit_animation", 3);
-                this.a.startActivity(paramView);
-                this.a.overridePendingTransition(2130771999, 0);
-                ReportController.b(this.a.app, "dc00899", "Grp_mber", "", "mber_list", "clk_Add", 0, 0, this.a.jdField_b_of_type_JavaLangString, "", "", "");
-              }
-              break;
-            case 2: 
-              this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopMemberListActivity.28.2(this), 320L);
-              break;
-            case 3: 
-              this.a.n();
-            }
+          if (i == 3) {
+            this.a.delTroopMember();
           }
         }
+        else {
+          this.a.mHandler.postDelayed(new TroopMemberListActivity.28.2(this), 320L);
+        }
       }
+      else if (!TextUtils.isEmpty(this.a.mTroopCode))
+      {
+        paramView = new Intent();
+        paramView.putExtra("param_from", 30);
+        paramView.putExtra("group_uin", this.a.mTroopUin);
+        paramView.putExtra("param_groupcode", this.a.mTroopCode);
+        paramView.putExtra("param_from", 30);
+        paramView.putExtra("param_subtype", 4);
+        paramView.putExtra("param_entrance", 30);
+        paramView.putExtra("param_max", 30);
+        paramView.putExtra("param_exit_animation", 3);
+        ((ISelectMemberApi)QRoute.api(ISelectMemberApi.class)).startSelectMemberActivity(this.a.app.getApplicationContext(), paramView);
+        this.a.overridePendingTransition(2130772011, 0);
+        ReportController.b(this.a.app, "dc00899", "Grp_mber", "", "mber_list", "clk_Add", 0, 0, this.a.mTroopUin, "", "", "");
+      }
+    }
+    else {
+      this.a.showMemberDstribute();
+    }
+    if ((this.a.mActionSheet != null) && (this.a.mActionSheet.isShowing())) {
+      this.a.mActionSheet.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.28
  * JD-Core Version:    0.7.0.1
  */

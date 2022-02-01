@@ -14,8 +14,9 @@ class QQMapView$2
   {
     if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView$QQMapViewObserver != null) && (!this.a.jdField_a_of_type_Boolean))
     {
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView$QQMapViewObserver.onMapScrollStart(new GeoPoint((int)(paramCameraPosition.target.getLatitude() * 1000000.0D), (int)(paramCameraPosition.target.getLongitude() * 1000000.0D)));
+      QQMapView localQQMapView = this.a;
+      localQQMapView.jdField_a_of_type_Boolean = true;
+      localQQMapView.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView$QQMapViewObserver.onMapScrollStart(new GeoPoint((int)(paramCameraPosition.target.getLatitude() * 1000000.0D), (int)(paramCameraPosition.target.getLongitude() * 1000000.0D)));
     }
   }
   
@@ -28,7 +29,7 @@ class QQMapView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQMapView.2
  * JD-Core Version:    0.7.0.1
  */

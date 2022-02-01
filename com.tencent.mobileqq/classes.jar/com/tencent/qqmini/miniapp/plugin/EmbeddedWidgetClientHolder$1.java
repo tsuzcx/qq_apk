@@ -13,27 +13,29 @@ class EmbeddedWidgetClientHolder$1
   
   public Boolean perform(BaseRuntime paramBaseRuntime)
   {
-    paramBaseRuntime = paramBaseRuntime.getPage();
-    if (!(paramBaseRuntime instanceof AppBrandPageContainer))
+    Object localObject = paramBaseRuntime.getPage();
+    boolean bool = localObject instanceof AppBrandPageContainer;
+    paramBaseRuntime = Boolean.valueOf(false);
+    if (!bool)
     {
       QMLog.d("Action", "Page is invalid");
-      return Boolean.valueOf(false);
+      return paramBaseRuntime;
     }
-    paramBaseRuntime = ((AppBrandPageContainer)paramBaseRuntime).getCurrentX5EmbeddedWidgetClientFactory();
-    if (paramBaseRuntime == null)
+    localObject = ((AppBrandPageContainer)localObject).getCurrentX5EmbeddedWidgetClientFactory();
+    if (localObject == null)
     {
       QMLog.d("Action", "factory is null");
-      return Boolean.valueOf(false);
+      return paramBaseRuntime;
     }
     if (EmbeddedWidgetClientHolder.access$000(this.this$0) == null) {
-      return Boolean.valueOf(false);
+      return paramBaseRuntime;
     }
-    return Boolean.valueOf(paramBaseRuntime.handleEmbeddedWidgetDestory(EmbeddedWidgetClientHolder.access$000(this.this$0).getWidgetId()));
+    return Boolean.valueOf(((EmbeddedWidgetClientFactory)localObject).handleEmbeddedWidgetDestory(EmbeddedWidgetClientHolder.access$000(this.this$0).getWidgetId()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.EmbeddedWidgetClientHolder.1
  * JD-Core Version:    0.7.0.1
  */

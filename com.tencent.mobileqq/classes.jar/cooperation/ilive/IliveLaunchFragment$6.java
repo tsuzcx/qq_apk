@@ -15,20 +15,20 @@ class IliveLaunchFragment$6
   
   public void run()
   {
-    Object localObject = this.this$0.getActivity();
+    Object localObject = this.this$0.getBaseActivity();
     if (localObject == null) {
       return;
     }
     IliveLaunchFragment.access$500(this.this$0, (Activity)localObject);
-    localObject = LayoutInflater.from((Context)localObject).inflate(2131562086, null);
-    IliveLaunchFragment.access$602(this.this$0, (TextView)((View)localObject).findViewById(2131380723));
-    IliveLaunchFragment.access$702(this.this$0, (ProgressBar)((View)localObject).findViewById(2131372818));
+    localObject = LayoutInflater.from((Context)localObject).inflate(2131561922, null);
+    IliveLaunchFragment.access$602(this.this$0, (TextView)((View)localObject).findViewById(2131379991));
+    IliveLaunchFragment.access$702(this.this$0, (ProgressBar)((View)localObject).findViewById(2131372395));
     IliveLaunchFragment.access$800(this.this$0).addView((View)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.IliveLaunchFragment.6
  * JD-Core Version:    0.7.0.1
  */

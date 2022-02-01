@@ -1,9 +1,9 @@
 package com.tencent.av.business.manager.zimu;
 
-import com.tencent.av.business.manager.EffectConfigBase.ItemBase;
+import com.tencent.av.business.manager.pendant.ItemBase;
 
 public class ZimuItem
-  extends EffectConfigBase.ItemBase
+  extends ItemBase
 {
   private String desc;
   private String iconurl;
@@ -18,7 +18,7 @@ public class ZimuItem
     return this.desc;
   }
   
-  public String getIconurl()
+  public String getIconUrl()
   {
     return this.iconurl;
   }
@@ -38,9 +38,14 @@ public class ZimuItem
     return this.platform;
   }
   
-  public String getResurl()
+  public String getResUrl()
   {
     return this.resurl;
+  }
+  
+  public String getVersion()
+  {
+    return "";
   }
   
   public boolean isUsable()
@@ -55,12 +60,30 @@ public class ZimuItem
   
   public String toString()
   {
-    return "id[" + this.id + "], iconurl[" + this.iconurl + "], usable[" + this.usable + "], resurl[" + this.resurl + "], md5[" + this.md5 + "], platform[" + this.platform + "], desc[" + this.desc + "], isDownloading[" + this.isDownloading + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("id[");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append("], iconurl[");
+    localStringBuilder.append(this.iconurl);
+    localStringBuilder.append("], usable[");
+    localStringBuilder.append(this.usable);
+    localStringBuilder.append("], resurl[");
+    localStringBuilder.append(this.resurl);
+    localStringBuilder.append("], md5[");
+    localStringBuilder.append(this.md5);
+    localStringBuilder.append("], platform[");
+    localStringBuilder.append(this.platform);
+    localStringBuilder.append("], desc[");
+    localStringBuilder.append(this.desc);
+    localStringBuilder.append("], isDownloading[");
+    localStringBuilder.append(this.isDownloading);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.zimu.ZimuItem
  * JD-Core Version:    0.7.0.1
  */

@@ -17,8 +17,9 @@ public class GameShareConfProcessor
   
   public static GameShareConfBean a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqGamecenterShareGameShareConfBean != null) {
-      return jdField_a_of_type_ComTencentMobileqqGamecenterShareGameShareConfBean;
+    GameShareConfBean localGameShareConfBean = jdField_a_of_type_ComTencentMobileqqGamecenterShareGameShareConfBean;
+    if (localGameShareConfBean != null) {
+      return localGameShareConfBean;
     }
     if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
       ThreadManager.executeOnSubThread(new GameShareConfProcessor.1());
@@ -44,18 +45,23 @@ public class GameShareConfProcessor
     if (QLog.isColorLevel()) {
       QLog.d("GameShare.ConfProcessor", 2, "[onParsed]");
     }
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length == 0) || (paramArrayOfQConfItem[0] == null)) {}
-    for (paramArrayOfQConfItem = new GameShareConfBean();; paramArrayOfQConfItem = GameShareConfBean.a(paramArrayOfQConfItem[0].a))
-    {
-      jdField_a_of_type_ComTencentMobileqqGamecenterShareGameShareConfBean = paramArrayOfQConfItem;
-      return paramArrayOfQConfItem;
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length != 0) && (paramArrayOfQConfItem[0] != null)) {
+      paramArrayOfQConfItem = GameShareConfBean.a(paramArrayOfQConfItem[0].a);
+    } else {
+      paramArrayOfQConfItem = new GameShareConfBean();
     }
+    jdField_a_of_type_ComTencentMobileqqGamecenterShareGameShareConfBean = paramArrayOfQConfItem;
+    return paramArrayOfQConfItem;
   }
   
   public void a(GameShareConfBean paramGameShareConfBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameShare.ConfProcessor", 2, "[onUpdate] newConf:" + paramGameShareConfBean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[onUpdate] newConf:");
+      localStringBuilder.append(paramGameShareConfBean);
+      QLog.d("GameShare.ConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -81,8 +87,12 @@ public class GameShareConfProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameShare.ConfProcessor", 2, "[onReqFailed] failCode=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[onReqFailed] failCode=");
+      localStringBuilder.append(paramInt);
+      QLog.d("GameShare.ConfProcessor", 2, localStringBuilder.toString());
     }
     QConfigManager.a().a(617);
   }
@@ -90,8 +100,14 @@ public class GameShareConfProcessor
   public void onReqNoReceive()
   {
     QConfigManager.a().a(617);
-    if (QLog.isColorLevel()) {
-      QLog.d("GameShare.ConfProcessor", 2, "onReqNoReceive: type=" + type() + "curContent:" + jdField_a_of_type_ComTencentMobileqqGamecenterShareGameShareConfBean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqNoReceive: type=");
+      localStringBuilder.append(type());
+      localStringBuilder.append("curContent:");
+      localStringBuilder.append(jdField_a_of_type_ComTencentMobileqqGamecenterShareGameShareConfBean);
+      QLog.d("GameShare.ConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -102,7 +118,7 @@ public class GameShareConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.share.GameShareConfProcessor
  * JD-Core Version:    0.7.0.1
  */

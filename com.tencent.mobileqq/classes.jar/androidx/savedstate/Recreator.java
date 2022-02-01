@@ -54,92 +54,119 @@ final class Recreator
     //   47: invokeinterface 67 2 0
     //   52: return
     //   53: astore_2
-    //   54: new 69	java/lang/RuntimeException
+    //   54: new 69	java/lang/StringBuilder
     //   57: dup
-    //   58: new 71	java/lang/StringBuilder
-    //   61: dup
-    //   62: invokespecial 72	java/lang/StringBuilder:<init>	()V
-    //   65: ldc 74
-    //   67: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   61: astore_3
+    //   62: aload_3
+    //   63: ldc 72
+    //   65: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   68: pop
+    //   69: aload_3
     //   70: aload_1
-    //   71: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   74: ldc 80
-    //   76: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   79: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   82: aload_2
-    //   83: invokespecial 87	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   86: athrow
-    //   87: astore_1
-    //   88: new 89	java/lang/IllegalStateException
-    //   91: dup
-    //   92: new 71	java/lang/StringBuilder
-    //   95: dup
-    //   96: invokespecial 72	java/lang/StringBuilder:<init>	()V
-    //   99: ldc 91
-    //   101: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   104: aload_2
-    //   105: invokevirtual 94	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   108: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   111: ldc 96
-    //   113: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   116: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   119: aload_1
-    //   120: invokespecial 97	java/lang/IllegalStateException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   123: athrow
-    //   124: astore_2
-    //   125: new 69	java/lang/RuntimeException
-    //   128: dup
-    //   129: new 71	java/lang/StringBuilder
-    //   132: dup
-    //   133: invokespecial 72	java/lang/StringBuilder:<init>	()V
-    //   136: ldc 99
-    //   138: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   141: aload_1
-    //   142: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   145: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   148: aload_2
-    //   149: invokespecial 87	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   152: athrow
+    //   71: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   74: pop
+    //   75: new 78	java/lang/RuntimeException
+    //   78: dup
+    //   79: aload_3
+    //   80: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   83: aload_2
+    //   84: invokespecial 85	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   87: athrow
+    //   88: astore_1
+    //   89: new 69	java/lang/StringBuilder
+    //   92: dup
+    //   93: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   96: astore_3
+    //   97: aload_3
+    //   98: ldc 87
+    //   100: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   103: pop
+    //   104: aload_3
+    //   105: aload_2
+    //   106: invokevirtual 90	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   109: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   112: pop
+    //   113: aload_3
+    //   114: ldc 92
+    //   116: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   119: pop
+    //   120: new 94	java/lang/IllegalStateException
+    //   123: dup
+    //   124: aload_3
+    //   125: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   128: aload_1
+    //   129: invokespecial 95	java/lang/IllegalStateException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   132: athrow
+    //   133: astore_2
+    //   134: new 69	java/lang/StringBuilder
+    //   137: dup
+    //   138: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   141: astore_3
+    //   142: aload_3
+    //   143: ldc 97
+    //   145: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   148: pop
+    //   149: aload_3
+    //   150: aload_1
+    //   151: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   154: pop
+    //   155: aload_3
+    //   156: ldc 99
+    //   158: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   161: pop
+    //   162: new 78	java/lang/RuntimeException
+    //   165: dup
+    //   166: aload_3
+    //   167: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   170: aload_2
+    //   171: invokespecial 85	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   174: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	153	0	this	Recreator
-    //   0	153	1	paramString	String
-    //   15	28	2	localObject	Object
-    //   53	52	2	localClassNotFoundException	java.lang.ClassNotFoundException
-    //   124	25	2	localException	java.lang.Exception
-    //   24	7	3	localConstructor	java.lang.reflect.Constructor
+    //   0	175	0	this	Recreator
+    //   0	175	1	paramString	String
+    //   15	28	2	localObject1	Object
+    //   53	53	2	localException	java.lang.Exception
+    //   133	38	2	localClassNotFoundException	java.lang.ClassNotFoundException
+    //   24	143	3	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   0	16	53	java/lang/ClassNotFoundException
-    //   16	25	87	java/lang/NoSuchMethodException
-    //   30	42	124	java/lang/Exception
+    //   30	42	53	java/lang/Exception
+    //   16	25	88	java/lang/NoSuchMethodException
+    //   0	16	133	java/lang/ClassNotFoundException
   }
   
   public void onStateChanged(LifecycleOwner paramLifecycleOwner, Lifecycle.Event paramEvent)
   {
-    if (paramEvent != Lifecycle.Event.ON_CREATE) {
-      throw new AssertionError("Next event must be ON_CREATE");
+    if (paramEvent == Lifecycle.Event.ON_CREATE)
+    {
+      paramLifecycleOwner.getLifecycle().removeObserver(this);
+      paramLifecycleOwner = this.mOwner.getSavedStateRegistry().consumeRestoredStateForKey("androidx.savedstate.Restarter");
+      if (paramLifecycleOwner == null) {
+        return;
+      }
+      paramLifecycleOwner = paramLifecycleOwner.getStringArrayList("classes_to_restore");
+      if (paramLifecycleOwner != null)
+      {
+        paramLifecycleOwner = paramLifecycleOwner.iterator();
+        while (paramLifecycleOwner.hasNext()) {
+          reflectiveNew((String)paramLifecycleOwner.next());
+        }
+        return;
+      }
+      throw new IllegalStateException("Bundle with restored state for the component \"androidx.savedstate.Restarter\" must contain list of strings by the key \"classes_to_restore\"");
     }
-    paramLifecycleOwner.getLifecycle().removeObserver(this);
-    paramLifecycleOwner = this.mOwner.getSavedStateRegistry().consumeRestoredStateForKey("androidx.savedstate.Restarter");
-    if (paramLifecycleOwner == null) {}
+    paramLifecycleOwner = new AssertionError("Next event must be ON_CREATE");
     for (;;)
     {
-      return;
-      paramLifecycleOwner = paramLifecycleOwner.getStringArrayList("classes_to_restore");
-      if (paramLifecycleOwner == null) {
-        throw new IllegalStateException("Bundle with restored state for the component \"androidx.savedstate.Restarter\" must contain list of strings by the key \"classes_to_restore\"");
-      }
-      paramLifecycleOwner = paramLifecycleOwner.iterator();
-      while (paramLifecycleOwner.hasNext()) {
-        reflectiveNew((String)paramLifecycleOwner.next());
-      }
+      throw paramLifecycleOwner;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.savedstate.Recreator
  * JD-Core Version:    0.7.0.1
  */

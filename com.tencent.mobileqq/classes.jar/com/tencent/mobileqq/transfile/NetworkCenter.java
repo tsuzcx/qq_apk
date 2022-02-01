@@ -7,19 +7,20 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class NetworkCenter
 {
   public static final String TAG = "NetworkCenter";
-  public static NetworkCenter sNC = null;
+  public static NetworkCenter sNC;
   
   public static NetworkCenter getInstance()
   {
-    if (sNC == null) {}
-    try
-    {
-      if (sNC == null) {
-        sNC = new NetworkCenter();
+    if (sNC == null) {
+      try
+      {
+        if (sNC == null) {
+          sNC = new NetworkCenter();
+        }
       }
-      return sNC;
+      finally {}
     }
-    finally {}
+    return sNC;
   }
   
   public String getApnType()
@@ -38,12 +39,12 @@ public class NetworkCenter
   
   public int getNetType()
   {
-    return NetworkUtil.a(BaseApplication.getContext());
+    return NetworkUtil.getSystemNetwork(BaseApplication.getContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.NetworkCenter
  * JD-Core Version:    0.7.0.1
  */

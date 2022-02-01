@@ -16,24 +16,30 @@ public class Utils
   
   public static boolean checkIfCPUx86()
   {
-    if (Build.VERSION.SDK_INT > 27) {}
-    String str;
-    do
-    {
+    if (Build.VERSION.SDK_INT > 27) {
       return false;
-      str = getSystemProperty("ro.product.cpu.abi", "arm");
-    } while (TextUtils.isEmpty(str));
+    }
+    String str = getSystemProperty("ro.product.cpu.abi", "arm");
+    if (TextUtils.isEmpty(str)) {
+      return false;
+    }
     return str.contains("x86");
   }
   
   public static String getAndromedaSoPath()
   {
-    return getQuicSoSavePath() + "libandromeda.so";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getQuicSoSavePath());
+    localStringBuilder.append("libandromeda.so");
+    return localStringBuilder.toString();
   }
   
   public static String getQuicEngineSoPath()
   {
-    return getQuicSoSavePath() + "libquic_engine.so";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getQuicSoSavePath());
+    localStringBuilder.append("libquic_engine.so");
+    return localStringBuilder.toString();
   }
   
   public static String getQuicSoSavePath()
@@ -44,7 +50,10 @@ public class Utils
       if (!((File)localObject).exists()) {
         ((File)localObject).mkdirs();
       }
-      localObject = ((File)localObject).getAbsolutePath() + File.separator;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(((File)localObject).getAbsolutePath());
+      localStringBuilder.append(File.separator);
+      localObject = localStringBuilder.toString();
       return localObject;
     }
     catch (NullPointerException localNullPointerException)
@@ -71,7 +80,7 @@ public class Utils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.quic.internal.Utils
  * JD-Core Version:    0.7.0.1
  */

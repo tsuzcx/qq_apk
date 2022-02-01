@@ -27,20 +27,27 @@ public final class stUserAuth
   
   public String toString()
   {
-    return "stUserAuth{show_confirm=" + this.show_confirm + ", schema=" + this.schema + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("stUserAuth{show_confirm=");
+    localStringBuilder.append(this.show_confirm);
+    localStringBuilder.append(", schema=");
+    localStringBuilder.append(this.schema);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.show_confirm, 0);
-    if (this.schema != null) {
-      paramJceOutputStream.write(this.schema, 1);
+    stSchema localstSchema = this.schema;
+    if (localstSchema != null) {
+      paramJceOutputStream.write(localstSchema, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stUserAuth
  * JD-Core Version:    0.7.0.1
  */

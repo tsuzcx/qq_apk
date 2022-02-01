@@ -13,22 +13,22 @@ class MagicfaceViewController$7$1
   public void run()
   {
     
-    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$7.jdField_a_of_type_Int == 0) {
+    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$7.jdField_a_of_type_Int == 0)
+    {
       this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$7.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.c();
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$7.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.setText("");
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$7.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_b_of_type_AndroidWidgetTextView.setText("");
-      return;
       ((View)this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$7.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_b_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView).setBackgroundColor(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.jdField_a_of_type_Int);
       this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$7.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.d();
     }
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$7.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.setText("");
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$7.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_b_of_type_AndroidWidgetTextView.setText("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.view.MagicfaceViewController.7.1
  * JD-Core Version:    0.7.0.1
  */

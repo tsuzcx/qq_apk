@@ -1,94 +1,44 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.ShieldListObserver;
-import com.tencent.mobileqq.util.Utils;
-import java.util.List;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.utils.SendMessageHandler;
 
 class StrangerChatPie$3
-  extends ShieldListObserver
+  extends MessageObserver
 {
   StrangerChatPie$3(StrangerChatPie paramStrangerChatPie) {}
   
-  public void a(boolean paramBoolean, List<Long> paramList)
+  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong)
   {
-    
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
-      return;
-    }
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1006) {
-      str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.f;
-    }
-    for (;;)
+    this.a.a(paramBoolean, paramString, paramLong);
+    if (paramString != null)
     {
-      if (paramList == null) {}
-      int k;
-      for (int i = 0;; i = paramList.size())
+      if (paramString.length() == 0) {
+        return;
+      }
+      if (paramString.equals(this.a.a.a))
       {
-        int j = 0;
-        k = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
+        paramString = this.a;
+        paramString.m = true;
+        paramString.a(262144, null, paramLong);
       }
-      if (k == 0) {
-        break;
-      }
-      ChatActivityUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBoolean, false);
-      if (!paramBoolean) {
-        break;
-      }
-      this.a.p();
-      return;
     }
   }
   
-  public void b(boolean paramBoolean, List<Long> paramList)
+  protected void onUpdateMsgContent(boolean paramBoolean, String paramString)
   {
-    int k = 0;
-    ChatActivityUtils.b();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
-      return;
-    }
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1006) {
-      str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.f;
-    }
-    for (;;)
-    {
-      if (paramList == null) {}
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k == 0) {
-        break;
-      }
-      ChatActivityUtils.b();
-      if (!paramBoolean) {
-        break;
-      }
-      this.a.p();
-      return;
-    }
+    this.a.e(65536);
+  }
+  
+  protected void onUpdateSendMsgError(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  {
+    StrangerChatPie.a(this.a, paramString1, paramInt1, paramInt2, paramLong2, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.StrangerChatPie.3
  * JD-Core Version:    0.7.0.1
  */

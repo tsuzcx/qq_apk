@@ -18,15 +18,12 @@ public class JsCallbackBuilder
       if (this.dataFormatter != null) {
         localJSONObject.put("data", this.dataFormatter.format());
       }
-      return localJSONObject.toString();
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    return localJSONObject.toString();
   }
   
   public JsCallbackBuilder setData(IJsEntityFormatter paramIJsEntityFormatter)
@@ -49,7 +46,7 @@ public class JsCallbackBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.entityformatter.JsCallbackBuilder
  * JD-Core Version:    0.7.0.1
  */

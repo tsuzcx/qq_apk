@@ -15,7 +15,7 @@ class ArkEGLApplicationContextManagerBase
     EGLContextHolder localEGLContextHolder = new EGLContextHolder();
     if (!localEGLContextHolder.create(EGL10.EGL_NO_CONTEXT, null, 1, 1))
     {
-      ENV.logE("ArkApp.ContextManager", "createOffscreenContext.create.fail");
+      Logger.logE("ArkApp.ContextManager", "createOffscreenContext.create.fail");
       localEGLContextHolder.release();
       return null;
     }

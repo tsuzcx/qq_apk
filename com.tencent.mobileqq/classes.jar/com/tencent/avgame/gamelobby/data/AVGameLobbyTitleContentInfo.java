@@ -22,14 +22,14 @@ public class AVGameLobbyTitleContentInfo
   
   public String a(Context paramContext, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return "";
-    case 0: 
-      return paramContext.getString(2131690462);
+      if (paramInt != 1) {
+        return "";
+      }
+      return paramContext.getString(2131690385);
     }
-    return paramContext.getString(2131690461);
+    return paramContext.getString(2131690386);
   }
   
   @NonNull
@@ -45,7 +45,7 @@ public class AVGameLobbyTitleContentInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelobby.data.AVGameLobbyTitleContentInfo
  * JD-Core Version:    0.7.0.1
  */

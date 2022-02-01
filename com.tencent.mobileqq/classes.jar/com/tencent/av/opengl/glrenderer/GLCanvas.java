@@ -51,15 +51,13 @@ public abstract interface GLCanvas
   
   public abstract void b(float paramFloat1, float paramFloat2, float paramFloat3);
   
-  public abstract void b(int paramInt1, int paramInt2);
-  
   public abstract void c();
   
   public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.glrenderer.GLCanvas
  * JD-Core Version:    0.7.0.1
  */

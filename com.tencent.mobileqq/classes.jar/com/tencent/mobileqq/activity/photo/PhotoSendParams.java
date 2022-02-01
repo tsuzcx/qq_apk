@@ -53,13 +53,20 @@ public class PhotoSendParams
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("PhotoSendParams:");
-    localStringBuilder.append("&thumbPath:").append(this.thumbPath);
-    localStringBuilder.append(" &rawMd5:").append(this.rawMd5);
-    localStringBuilder.append(" &rawPicPath:").append(this.rawPicPath);
-    localStringBuilder.append(" &rawHeight:").append(this.rawHeight);
-    localStringBuilder.append(" &rawWidth:").append(this.rawWidth);
-    localStringBuilder.append(" &rawDownloadUrl:").append(this.rawDownloadUrl);
-    localStringBuilder.append(" &picType:").append(this.picType);
+    localStringBuilder.append("&thumbPath:");
+    localStringBuilder.append(this.thumbPath);
+    localStringBuilder.append(" &rawMd5:");
+    localStringBuilder.append(this.rawMd5);
+    localStringBuilder.append(" &rawPicPath:");
+    localStringBuilder.append(this.rawPicPath);
+    localStringBuilder.append(" &rawHeight:");
+    localStringBuilder.append(this.rawHeight);
+    localStringBuilder.append(" &rawWidth:");
+    localStringBuilder.append(this.rawWidth);
+    localStringBuilder.append(" &rawDownloadUrl:");
+    localStringBuilder.append(this.rawDownloadUrl);
+    localStringBuilder.append(" &picType:");
+    localStringBuilder.append(this.picType);
     return localStringBuilder.toString();
   }
   
@@ -77,7 +84,7 @@ public class PhotoSendParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.PhotoSendParams
  * JD-Core Version:    0.7.0.1
  */

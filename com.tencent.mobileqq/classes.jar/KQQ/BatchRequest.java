@@ -38,8 +38,9 @@ public final class BatchRequest
   {
     paramJceOutputStream.write(this.type, 0);
     paramJceOutputStream.write(this.seq, 1);
-    if (this.buffer != null) {
-      paramJceOutputStream.write(this.buffer, 2);
+    byte[] arrayOfByte = this.buffer;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 2);
     }
   }
 }

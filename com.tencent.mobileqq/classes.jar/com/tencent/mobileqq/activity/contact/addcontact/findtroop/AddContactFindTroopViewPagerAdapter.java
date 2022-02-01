@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.contact.addcontact.findtroop;
 
-import android.support.v4.app.FragmentManager;
 import android.util.SparseArray;
+import androidx.fragment.app.FragmentManager;
 import com.tencent.mobileqq.activity.contacts.base.HeadViewScrollListener;
 import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsBaseFragment;
 import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPagerAdapter;
@@ -21,42 +21,47 @@ public class AddContactFindTroopViewPagerAdapter
   public ContactsBaseFragment a(int paramInt, boolean paramBoolean)
   {
     TabInfo localTabInfo = a(paramInt);
-    Object localObject;
+    Object localObject1;
     if ((localTabInfo != null) && ((localTabInfo instanceof AddContactFindTroopClassifyInfo)))
     {
       AddContactFindTroopClassifyInfo localAddContactFindTroopClassifyInfo = (AddContactFindTroopClassifyInfo)localTabInfo;
-      localObject = a(localTabInfo.c);
-      if ((localObject == null) && (paramBoolean))
+      Object localObject2 = a(localTabInfo.c);
+      localObject1 = localObject2;
+      if (localObject2 == null)
       {
-        localObject = new AddContactViewPagerTroopFragment();
-        ((AddContactViewPagerTroopFragment)localObject).jdField_a_of_type_Int = localAddContactFindTroopClassifyInfo.jdField_a_of_type_Int;
-        ((AddContactViewPagerTroopFragment)localObject).jdField_a_of_type_JavaLangString = localAddContactFindTroopClassifyInfo.jdField_a_of_type_JavaLangString;
-        ((AddContactViewPagerTroopFragment)localObject).b = localAddContactFindTroopClassifyInfo.d;
-        ((ContactsBaseFragment)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-        ((ContactsBaseFragment)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        ((ContactsBaseFragment)localObject).a(this);
-        ((ContactsBaseFragment)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsBaseFragment$RefreshDataListener);
-        ((ContactsBaseFragment)localObject).e(paramInt);
-        if ((localObject instanceof HeadViewScrollListener)) {
-          this.jdField_b_of_type_JavaUtilArrayList.add((HeadViewScrollListener)localObject);
+        localObject1 = localObject2;
+        if (paramBoolean)
+        {
+          localObject1 = new AddContactViewPagerTroopFragment();
+          localObject2 = (AddContactViewPagerTroopFragment)localObject1;
+          ((AddContactViewPagerTroopFragment)localObject2).jdField_a_of_type_Int = localAddContactFindTroopClassifyInfo.jdField_a_of_type_Int;
+          ((AddContactViewPagerTroopFragment)localObject2).jdField_a_of_type_JavaLangString = localAddContactFindTroopClassifyInfo.jdField_a_of_type_JavaLangString;
+          ((AddContactViewPagerTroopFragment)localObject2).b = localAddContactFindTroopClassifyInfo.d;
+          ((ContactsBaseFragment)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+          ((ContactsBaseFragment)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+          ((ContactsBaseFragment)localObject1).a(this);
+          ((ContactsBaseFragment)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsBaseFragment$RefreshDataListener);
+          ((ContactsBaseFragment)localObject1).e(paramInt);
+          if ((localObject1 instanceof HeadViewScrollListener)) {
+            this.jdField_b_of_type_JavaUtilArrayList.add((HeadViewScrollListener)localObject1);
+          }
+          this.jdField_a_of_type_AndroidUtilSparseArray.put(localTabInfo.c, localObject1);
         }
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(localTabInfo.c, localObject);
       }
     }
-    for (;;)
+    else
     {
-      if ((localObject != null) && ((localObject instanceof HeadViewScrollListener)) && (this.jdField_b_of_type_Int > 0)) {
-        ((HeadViewScrollListener)localObject).a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      }
-      return localObject;
-      continue;
-      localObject = null;
+      localObject1 = null;
     }
+    if ((localObject1 != null) && ((localObject1 instanceof HeadViewScrollListener)) && (this.jdField_b_of_type_Int > 0)) {
+      ((HeadViewScrollListener)localObject1).a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    }
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactFindTroopViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

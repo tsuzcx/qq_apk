@@ -14,15 +14,23 @@ public class GetUserInfoHandler$UpdateUserInfoEvent
   
   public String toString()
   {
-    if (this.a == null) {
-      return "UpdateUserInfoEvent " + super.toString();
+    if (this.a == null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("UpdateUserInfoEvent ");
+      localStringBuilder.append(super.toString());
+      return localStringBuilder.toString();
     }
-    return "UpdateUserInfoEvent " + this.a.toString() + super.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UpdateUserInfoEvent ");
+    localStringBuilder.append(this.a.toString());
+    localStringBuilder.append(super.toString());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent
  * JD-Core Version:    0.7.0.1
  */

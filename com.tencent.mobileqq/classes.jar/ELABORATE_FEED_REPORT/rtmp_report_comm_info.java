@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class rtmp_report_comm_info
   extends JceStruct
 {
-  static int cache_play_type = 0;
+  static int cache_play_type;
   public String appid = "";
   public long flow = 0L;
   public String network = "";
@@ -45,21 +45,26 @@ public final class rtmp_report_comm_info
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.play_id != null) {
-      paramJceOutputStream.write(this.play_id, 0);
+    String str = this.play_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.qua != null) {
-      paramJceOutputStream.write(this.qua, 1);
+    str = this.qua;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.network != null) {
-      paramJceOutputStream.write(this.network, 2);
+    str = this.network;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.appid != null) {
-      paramJceOutputStream.write(this.appid, 3);
+    str = this.appid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.play_type, 4);
-    if (this.room_id != null) {
-      paramJceOutputStream.write(this.room_id, 5);
+    str = this.room_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.uin, 6);
     paramJceOutputStream.write(this.flow, 7);
@@ -67,7 +72,7 @@ public final class rtmp_report_comm_info
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ELABORATE_FEED_REPORT.rtmp_report_comm_info
  * JD-Core Version:    0.7.0.1
  */

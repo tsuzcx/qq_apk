@@ -23,14 +23,15 @@ public final class cell_recomm_footer
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.text != null) {
-      paramJceOutputStream.write(this.text, 0);
+    String str = this.text;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_recomm_footer
  * JD-Core Version:    0.7.0.1
  */

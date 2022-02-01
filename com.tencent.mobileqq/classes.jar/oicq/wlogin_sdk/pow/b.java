@@ -25,7 +25,10 @@ public class b
     }
     catch (Throwable localThrowable)
     {
-      util.LOGI("asyncGetPerformance error " + Log.getStackTraceString(localThrowable), "");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("asyncGetPerformance error ");
+      localStringBuilder.append(Log.getStackTraceString(localThrowable));
+      util.LOGI(localStringBuilder.toString(), "");
     }
   }
   
@@ -39,7 +42,10 @@ public class b
     }
     catch (Throwable paramArrayOfByte)
     {
-      util.LOGI("aysncCalcPow error " + Log.getStackTraceString(paramArrayOfByte), "");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("aysncCalcPow error ");
+      localStringBuilder.append(Log.getStackTraceString(paramArrayOfByte));
+      util.LOGI(localStringBuilder.toString(), "");
     }
   }
   
@@ -58,16 +64,21 @@ public class b
     }
     catch (Throwable paramArrayOfByte)
     {
-      util.LOGI("syncCalcPow error " + Log.getStackTraceString(paramArrayOfByte), "");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("syncCalcPow error ");
+      localStringBuilder.append(Log.getStackTraceString(paramArrayOfByte));
+      util.LOGI(localStringBuilder.toString(), "");
     }
   }
   
   public void run()
   {
+    int i = this.a;
     byte[] arrayOfByte;
-    if (this.a == 0)
+    if (i == 0)
     {
-      if ((this.b != null) && (this.b.length > 0))
+      arrayOfByte = this.b;
+      if ((arrayOfByte != null) && (arrayOfByte.length > 0))
       {
         arrayOfByte = new ClientPow().a(this.b);
         if ((arrayOfByte != null) && (arrayOfByte.length != 0))
@@ -81,32 +92,40 @@ public class b
       util.LOGI("inBuf is null ", "");
       return;
     }
-    if (this.a == 1)
-    {
+    if (i == 1) {
       try
       {
         arrayOfByte = new ClientPow().nativeGetTestData();
         if ((arrayOfByte != null) && (arrayOfByte.length != 0))
         {
           oicq.wlogin_sdk.request.t.ao = arrayOfByte;
-          util.LOGI("get performance" + arrayOfByte.length, "");
+          localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("get performance");
+          localStringBuilder2.append(arrayOfByte.length);
+          util.LOGI(localStringBuilder2.toString(), "");
           return;
         }
+        util.LOGI("outBuf is null", "");
+        return;
       }
       catch (Throwable localThrowable)
       {
-        util.LOGI("getPerformance " + Log.getStackTraceString(localThrowable), "");
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("getPerformance ");
+        localStringBuilder2.append(Log.getStackTraceString(localThrowable));
+        util.LOGI(localStringBuilder2.toString(), "");
         return;
       }
-      util.LOGI("outBuf is null", "");
-      return;
     }
-    util.LOGI("error type:" + this.a, "");
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("error type:");
+    localStringBuilder1.append(this.a);
+    util.LOGI(localStringBuilder1.toString(), "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.pow.b
  * JD-Core Version:    0.7.0.1
  */

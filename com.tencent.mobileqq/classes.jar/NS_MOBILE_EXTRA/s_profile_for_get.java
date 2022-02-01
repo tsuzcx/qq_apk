@@ -81,22 +81,26 @@ public final class s_profile_for_get
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.nickname != null) {
-      paramJceOutputStream.write(this.nickname, 0);
+    Object localObject = this.nickname;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.gender, 1);
     paramJceOutputStream.write(this.islunar, 2);
     paramJceOutputStream.write(this.birthyear, 3);
     paramJceOutputStream.write(this.birthmonth, 4);
     paramJceOutputStream.write(this.birthday, 5);
-    if (this.country != null) {
-      paramJceOutputStream.write(this.country, 6);
+    localObject = this.country;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.province != null) {
-      paramJceOutputStream.write(this.province, 7);
+    localObject = this.province;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.city != null) {
-      paramJceOutputStream.write(this.city, 8);
+    localObject = this.city;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
     paramJceOutputStream.write(this.vip, 9);
     paramJceOutputStream.write(this.viplevel, 10);
@@ -104,21 +108,24 @@ public final class s_profile_for_get
     paramJceOutputStream.write(this.isBrandQzone, 12);
     paramJceOutputStream.write(this.limitsMask, 13);
     paramJceOutputStream.write(this.age, 14);
-    if (this.constellation != null) {
-      paramJceOutputStream.write(this.constellation, 15);
+    localObject = this.constellation;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 15);
     }
     paramJceOutputStream.write(this.systime, 16);
-    if (this.addressid != null) {
-      paramJceOutputStream.write(this.addressid, 17);
+    localObject = this.addressid;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 17);
     }
-    if (this.qzonedesc != null) {
-      paramJceOutputStream.write(this.qzonedesc, 18);
+    localObject = this.qzonedesc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 18);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_EXTRA.s_profile_for_get
  * JD-Core Version:    0.7.0.1
  */

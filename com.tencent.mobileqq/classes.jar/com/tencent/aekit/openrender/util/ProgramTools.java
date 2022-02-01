@@ -1,16 +1,10 @@
 package com.tencent.aekit.openrender.util;
 
 import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.res.Resources;
 import android.opengl.GLES20;
 import android.opengl.GLES31;
 import android.util.Log;
 import com.tencent.aekit.openrender.AEOpenRenderConfig;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
@@ -18,7 +12,7 @@ import java.nio.FloatBuffer;
 public class ProgramTools
 {
   public static final int PER_FLOAT_BYTE = 4;
-  private static final String TAG = ProgramTools.class.getSimpleName();
+  private static final String TAG = "ProgramTools";
   
   public static int createComputeProgram(String paramString)
   {
@@ -31,38 +25,52 @@ public class ProgramTools
     {
       localObject = GLES20.glGetShaderInfoLog(i);
       GLES20.glDeleteShader(i);
-      Log.e(TAG, "vertex shader compile, failed computerShader: [" + paramString + "]");
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("vertex shader compile, failed computerShader: [");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("]");
+      Log.e(str, localStringBuilder.toString());
       Log.e(TAG, (String)localObject);
       if (AEOpenRenderConfig.isEnableLog())
       {
-        if (paramString.length() < 100) {
-          break label149;
+        if (paramString.length() >= 100) {
+          i = paramString.length() - 100;
+        } else {
+          i = 0;
         }
-        i = paramString.length() - 100;
-        Log.e(TAG, "vertex shader compile, failed computerShader substring(index) : [" + paramString.substring(i) + "]");
+        str = TAG;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("vertex shader compile, failed computerShader substring(index) : [");
+        localStringBuilder.append(paramString.substring(i));
+        localStringBuilder.append("]");
+        Log.e(str, localStringBuilder.toString());
         Log.e(TAG, (String)localObject);
       }
-    }
-    label149:
-    int j;
-    do
-    {
       return 0;
-      i = 0;
-      break;
-      j = GLES20.glCreateProgram();
-      GLES20.glAttachShader(j, i);
-      GLES20.glLinkProgram(j);
-      GLES20.glGetProgramiv(j, 35714, (int[])localObject, 0);
-      if (localObject[0] != 0) {
-        break label251;
-      }
+    }
+    int j = GLES20.glCreateProgram();
+    GLES20.glAttachShader(j, i);
+    GLES20.glLinkProgram(j);
+    GLES20.glGetProgramiv(j, 35714, (int[])localObject, 0);
+    if (localObject[0] == 0)
+    {
       GLES20.glDeleteProgram(j);
-      Log.e(TAG, "link program,failed:" + GLES20.glGetProgramInfoLog(j));
-    } while (!AEOpenRenderConfig.isEnableLog());
-    Log.e(TAG, "link program,failed:" + GLES20.glGetProgramInfoLog(j));
-    return 0;
-    label251:
+      paramString = TAG;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("link program,failed:");
+      ((StringBuilder)localObject).append(GLES20.glGetProgramInfoLog(j));
+      Log.e(paramString, ((StringBuilder)localObject).toString());
+      if (AEOpenRenderConfig.isEnableLog())
+      {
+        paramString = TAG;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("link program,failed:");
+        ((StringBuilder)localObject).append(GLES20.glGetProgramInfoLog(j));
+        Log.e(paramString, ((StringBuilder)localObject).toString());
+      }
+      return 0;
+    }
     GLES20.glDeleteShader(i);
     return j;
   }
@@ -73,44 +81,60 @@ public class ProgramTools
     int j = GLES20.glCreateShader(35632);
     GLES20.glShaderSource(i, paramString1);
     GLES20.glShaderSource(j, paramString2);
-    int[] arrayOfInt = new int[1];
+    Object localObject = new int[1];
     GLES20.glCompileShader(i);
-    GLES20.glGetShaderiv(i, 35713, arrayOfInt, 0);
-    if (arrayOfInt[0] == 0)
+    GLES20.glGetShaderiv(i, 35713, (int[])localObject, 0);
+    StringBuilder localStringBuilder;
+    if (localObject[0] == 0)
     {
       paramString2 = GLES20.glGetShaderInfoLog(i);
       GLES20.glDeleteShader(i);
-      Log.e(TAG, "vertex shader compile,failed vertexShader Code : " + paramString1);
+      localObject = TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("vertex shader compile,failed vertexShader Code : ");
+      localStringBuilder.append(paramString1);
+      Log.e((String)localObject, localStringBuilder.toString());
       Log.e(TAG, paramString2);
-    }
-    int k;
-    do
-    {
       return null;
-      GLES20.glCompileShader(j);
-      GLES20.glGetShaderiv(j, 35713, arrayOfInt, 0);
-      if (arrayOfInt[0] == 0)
-      {
-        paramString1 = GLES20.glGetShaderInfoLog(j);
-        GLES20.glDeleteShader(j);
-        Log.e(TAG, "fragment shader compile,failed:" + paramString2);
-        Log.e(TAG, paramString1);
-        return null;
-      }
-      k = GLES20.glCreateProgram();
-      GLES20.glAttachShader(k, i);
-      GLES20.glAttachShader(k, j);
-      GLES20.glLinkProgram(k);
-      GLES20.glGetProgramiv(k, 35714, arrayOfInt, 0);
-      if (arrayOfInt[0] != 0) {
-        break;
-      }
+    }
+    GLES20.glCompileShader(j);
+    GLES20.glGetShaderiv(j, 35713, (int[])localObject, 0);
+    if (localObject[0] == 0)
+    {
+      paramString1 = GLES20.glGetShaderInfoLog(j);
+      GLES20.glDeleteShader(j);
+      localObject = TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("fragment shader compile,failed:");
+      localStringBuilder.append(paramString2);
+      Log.e((String)localObject, localStringBuilder.toString());
+      Log.e(TAG, paramString1);
+      return null;
+    }
+    int k = GLES20.glCreateProgram();
+    GLES20.glAttachShader(k, i);
+    GLES20.glAttachShader(k, j);
+    GLES20.glLinkProgram(k);
+    GLES20.glGetProgramiv(k, 35714, (int[])localObject, 0);
+    if (localObject[0] == 0)
+    {
       paramString1 = GLES20.glGetProgramInfoLog(k);
       GLES20.glDeleteProgram(k);
-      Log.e(TAG, "link program,failed:" + paramString1);
-    } while (!AEOpenRenderConfig.isEnableLog());
-    Log.e(TAG, "link program,failed:" + paramString1);
-    return null;
+      paramString2 = TAG;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("link program,failed:");
+      ((StringBuilder)localObject).append(paramString1);
+      Log.e(paramString2, ((StringBuilder)localObject).toString());
+      if (AEOpenRenderConfig.isEnableLog())
+      {
+        paramString2 = TAG;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("link program,failed:");
+        ((StringBuilder)localObject).append(paramString1);
+        Log.e(paramString2, ((StringBuilder)localObject).toString());
+      }
+      return null;
+    }
     GLES20.glDeleteShader(i);
     GLES20.glDeleteShader(j);
     return new ProgramTools.ProgramInfo(k, i, j);
@@ -145,77 +169,111 @@ public class ProgramTools
     GLES20.glTexImage2D(3553, 0, 6408, paramInt2, paramInt3, 0, 6408, 5121, null);
   }
   
-  private static String readTextFile(Context paramContext, int paramInt)
+  /* Error */
+  private static String readTextFile(android.content.Context paramContext, int paramInt)
   {
-    paramContext = paramContext.getResources().openRawResource(paramInt);
-    localBufferedReader = new BufferedReader(new InputStreamReader(paramContext));
-    StringBuilder localStringBuilder = new StringBuilder();
-    try
-    {
-      for (;;)
-      {
-        String str = localBufferedReader.readLine();
-        if (str == null) {
-          break;
-        }
-        localStringBuilder.append(str);
-        localStringBuilder.append("\n");
-      }
-      try
-      {
-        paramContext.close();
-        localBufferedReader.close();
-        throw localObject;
-      }
-      catch (IOException paramContext)
-      {
-        for (;;)
-        {
-          paramContext.printStackTrace();
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      localException = localException;
-      localException.printStackTrace();
-      for (;;)
-      {
-        try
-        {
-          paramContext.close();
-          localBufferedReader.close();
-          return null;
-        }
-        catch (IOException paramContext)
-        {
-          paramContext.printStackTrace();
-          return null;
-        }
-        try
-        {
-          paramContext.close();
-          localBufferedReader.close();
-          return localException.toString();
-        }
-        catch (IOException paramContext)
-        {
-          paramContext.printStackTrace();
-        }
-      }
-    }
-    finally {}
+    // Byte code:
+    //   0: aload_0
+    //   1: invokevirtual 156	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   4: iload_1
+    //   5: invokevirtual 162	android/content/res/Resources:openRawResource	(I)Ljava/io/InputStream;
+    //   8: astore_0
+    //   9: new 164	java/io/BufferedReader
+    //   12: dup
+    //   13: new 166	java/io/InputStreamReader
+    //   16: dup
+    //   17: aload_0
+    //   18: invokespecial 169	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   21: invokespecial 172	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   24: astore_2
+    //   25: new 52	java/lang/StringBuilder
+    //   28: dup
+    //   29: invokespecial 53	java/lang/StringBuilder:<init>	()V
+    //   32: astore_3
+    //   33: aload_2
+    //   34: invokevirtual 175	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   37: astore 4
+    //   39: aload 4
+    //   41: ifnull +20 -> 61
+    //   44: aload_3
+    //   45: aload 4
+    //   47: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   50: pop
+    //   51: aload_3
+    //   52: ldc 177
+    //   54: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   57: pop
+    //   58: goto -25 -> 33
+    //   61: aload_0
+    //   62: invokevirtual 182	java/io/InputStream:close	()V
+    //   65: aload_2
+    //   66: invokevirtual 183	java/io/BufferedReader:close	()V
+    //   69: goto +8 -> 77
+    //   72: astore_0
+    //   73: aload_0
+    //   74: invokevirtual 186	java/io/IOException:printStackTrace	()V
+    //   77: aload_3
+    //   78: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   81: areturn
+    //   82: astore_3
+    //   83: goto +25 -> 108
+    //   86: astore_3
+    //   87: aload_3
+    //   88: invokevirtual 187	java/lang/Exception:printStackTrace	()V
+    //   91: aload_0
+    //   92: invokevirtual 182	java/io/InputStream:close	()V
+    //   95: aload_2
+    //   96: invokevirtual 183	java/io/BufferedReader:close	()V
+    //   99: aconst_null
+    //   100: areturn
+    //   101: astore_0
+    //   102: aload_0
+    //   103: invokevirtual 186	java/io/IOException:printStackTrace	()V
+    //   106: aconst_null
+    //   107: areturn
+    //   108: aload_0
+    //   109: invokevirtual 182	java/io/InputStream:close	()V
+    //   112: aload_2
+    //   113: invokevirtual 183	java/io/BufferedReader:close	()V
+    //   116: goto +8 -> 124
+    //   119: astore_0
+    //   120: aload_0
+    //   121: invokevirtual 186	java/io/IOException:printStackTrace	()V
+    //   124: goto +5 -> 129
+    //   127: aload_3
+    //   128: athrow
+    //   129: goto -2 -> 127
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	132	0	paramContext	android.content.Context
+    //   0	132	1	paramInt	int
+    //   24	89	2	localBufferedReader	java.io.BufferedReader
+    //   32	46	3	localStringBuilder	StringBuilder
+    //   82	1	3	localObject	Object
+    //   86	42	3	localException	java.lang.Exception
+    //   37	9	4	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   61	69	72	java/io/IOException
+    //   33	39	82	finally
+    //   44	58	82	finally
+    //   87	91	82	finally
+    //   33	39	86	java/lang/Exception
+    //   44	58	86	java/lang/Exception
+    //   91	99	101	java/io/IOException
+    //   108	116	119	java/io/IOException
   }
   
   @TargetApi(18)
   public static void setupSSBufferObject(int paramInt1, int paramInt2, float[] paramArrayOfFloat, int paramInt3)
   {
-    FloatBuffer localFloatBuffer = ByteBuffer.allocateDirect(paramInt3 * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    paramInt3 *= 4;
+    FloatBuffer localFloatBuffer = ByteBuffer.allocateDirect(paramInt3).order(ByteOrder.nativeOrder()).asFloatBuffer();
     if (paramArrayOfFloat != null) {
       localFloatBuffer.put(paramArrayOfFloat).position(0);
     }
     GLES31.glBindBuffer(37074, paramInt1);
-    GLES31.glBufferData(37074, paramInt3 * 4, localFloatBuffer, 35044);
+    GLES31.glBufferData(37074, paramInt3, localFloatBuffer, 35044);
     GLES31.glBindBufferBase(37074, paramInt2, paramInt1);
   }
   
@@ -230,7 +288,12 @@ public class ProgramTools
     {
       localObject = GLES20.glGetShaderInfoLog(paramInt);
       GLES20.glDeleteShader(paramInt);
-      Log.e(TAG, "vertex shader test compile failed, shader : [" + paramString + "]");
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("vertex shader test compile failed, shader : [");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("]");
+      Log.e(str, localStringBuilder.toString());
       Log.e(TAG, (String)localObject);
       GLES20.glDeleteShader(paramInt);
       return false;

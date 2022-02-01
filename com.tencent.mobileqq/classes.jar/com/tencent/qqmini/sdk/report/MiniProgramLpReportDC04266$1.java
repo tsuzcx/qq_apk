@@ -33,14 +33,35 @@ final class MiniProgramLpReportDC04266$1
     }
     String str1 = MiniProgramReportHelper.launchIdForMiniAppConfig(this.val$miniAppConfig);
     String str2 = MiniReportManager.getEventName(this.val$eventType);
-    if (QMLog.isDebugEnabled())
-    {
-      if (TextUtils.isEmpty(str2))
+    if (QMLog.isDebugEnabled()) {
+      if (!TextUtils.isEmpty(str2))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("MiniReportManager  reportEventType() called with: eventType = [");
+        ((StringBuilder)localObject).append(this.val$eventType);
+        ((StringBuilder)localObject).append("]");
+        ((StringBuilder)localObject).append(str2);
+        ((StringBuilder)localObject).append("  retCode:");
+        ((StringBuilder)localObject).append(this.val$ssoCmdRetCode);
+        ((StringBuilder)localObject).append("  attachInfo: ");
+        ((StringBuilder)localObject).append(this.val$attachInfo);
+        ((StringBuilder)localObject).append("  timestamp: ");
+        ((StringBuilder)localObject).append(this.val$timestamp);
+        ((StringBuilder)localObject).append("  launchId: ");
+        ((StringBuilder)localObject).append(str1);
+        ((StringBuilder)localObject).append(" timecost: ");
+        ((StringBuilder)localObject).append(this.val$timeCost);
+        ((StringBuilder)localObject).append(" reserves1:");
+        ((StringBuilder)localObject).append(this.val$reserves1);
+        ((StringBuilder)localObject).append(" reserves2:");
+        ((StringBuilder)localObject).append(this.val$reserves2);
+        QMLog.d("MiniProgramLpReportDC04266", ((StringBuilder)localObject).toString());
+      }
+      else
       {
         QMLog.e("MiniProgramLpReportDC04266", "eventName not found!");
         throw new AssertionError("MiniProgramLpReportDC04266 eventName not found!");
       }
-      QMLog.d("MiniProgramLpReportDC04266", "MiniReportManager  reportEventType() called with: eventType = [" + this.val$eventType + "]" + str2 + "  retCode:" + this.val$ssoCmdRetCode + "  attachInfo: " + this.val$attachInfo + "  timestamp: " + this.val$timestamp + "  launchId: " + str1 + " timecost: " + this.val$timeCost + " reserves1:" + this.val$reserves1 + " reserves2:" + this.val$reserves2);
     }
     Object localObject = MiniProgramReportHelper.newAppQualityEntries(this.val$miniAppConfig, AppBrandUtil.getUrlWithoutParams(this.val$page), str2, this.val$attachInfo, this.val$ssoCmdName, String.valueOf(this.val$ssoCmdRetCode), this.val$appType, String.valueOf(this.val$timeCost), this.val$httpRequestThirdUrl, String.valueOf(this.val$timestamp), str1, this.val$reserves1, this.val$reserves2, this.val$reserves3, this.val$reserves4, this.val$renderMode);
     if (!QUAUtil.isQQApp()) {
@@ -52,8 +73,24 @@ final class MiniProgramLpReportDC04266$1
     {
       localObject = MiniProgramReportHelper.newSingleReportData(MiniProgramLpReportDC04266.access$100(), (List)localObject, null);
       MiniProgramReporter.getInstance().addData((APP_REPORT_TRANSFER.SingleDcData)localObject);
-      if (QMLog.isDebugEnabled()) {
-        QMLog.d("MiniProgramLpReportDC04266", "MiniReportManager  [5332] reportEventType() called with: eventType = [" + this.val$eventType + "]" + str2 + "  retCode:" + this.val$ssoCmdRetCode + "  attachInfo: " + this.val$attachInfo + "  timestamp: " + this.val$timestamp + "  launchId: " + str1 + " timecost: " + this.val$timeCost);
+      if (QMLog.isDebugEnabled())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("MiniReportManager  [5332] reportEventType() called with: eventType = [");
+        ((StringBuilder)localObject).append(this.val$eventType);
+        ((StringBuilder)localObject).append("]");
+        ((StringBuilder)localObject).append(str2);
+        ((StringBuilder)localObject).append("  retCode:");
+        ((StringBuilder)localObject).append(this.val$ssoCmdRetCode);
+        ((StringBuilder)localObject).append("  attachInfo: ");
+        ((StringBuilder)localObject).append(this.val$attachInfo);
+        ((StringBuilder)localObject).append("  timestamp: ");
+        ((StringBuilder)localObject).append(this.val$timestamp);
+        ((StringBuilder)localObject).append("  launchId: ");
+        ((StringBuilder)localObject).append(str1);
+        ((StringBuilder)localObject).append(" timecost: ");
+        ((StringBuilder)localObject).append(this.val$timeCost);
+        QMLog.d("MiniProgramLpReportDC04266", ((StringBuilder)localObject).toString());
       }
     }
     if (MiniProgramLpReportDC04266.access$200(this.val$eventType)) {
@@ -63,7 +100,7 @@ final class MiniProgramLpReportDC04266$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniProgramLpReportDC04266.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,27 +14,36 @@ public class NamedThreadFactory
   NamedThreadFactory(String paramString)
   {
     Object localObject = System.getSecurityManager();
-    if (localObject != null) {}
-    for (localObject = ((SecurityManager)localObject).getThreadGroup();; localObject = Thread.currentThread().getThreadGroup())
-    {
-      this.group = ((ThreadGroup)localObject);
-      if (paramString != null)
-      {
-        localObject = paramString;
-        if (!paramString.isEmpty()) {}
-      }
-      else
-      {
-        localObject = "violaThreadPool";
-      }
-      this.namePrefix = ((String)localObject + "-" + poolNumber.getAndIncrement() + "-thread-");
-      return;
+    if (localObject != null) {
+      localObject = ((SecurityManager)localObject).getThreadGroup();
+    } else {
+      localObject = Thread.currentThread().getThreadGroup();
     }
+    this.group = ((ThreadGroup)localObject);
+    if (paramString != null)
+    {
+      localObject = paramString;
+      if (!paramString.isEmpty()) {}
+    }
+    else
+    {
+      localObject = "violaThreadPool";
+    }
+    paramString = new StringBuilder();
+    paramString.append((String)localObject);
+    paramString.append("-");
+    paramString.append(poolNumber.getAndIncrement());
+    paramString.append("-thread-");
+    this.namePrefix = paramString.toString();
   }
   
   public Thread newThread(Runnable paramRunnable)
   {
-    paramRunnable = new Thread(this.group, paramRunnable, this.namePrefix + this.threadNumber.getAndIncrement(), 0L);
+    ThreadGroup localThreadGroup = this.group;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.namePrefix);
+    localStringBuilder.append(this.threadNumber.getAndIncrement());
+    paramRunnable = new Thread(localThreadGroup, paramRunnable, localStringBuilder.toString(), 0L);
     if (paramRunnable.isDaemon()) {
       paramRunnable.setDaemon(false);
     }
@@ -46,7 +55,7 @@ public class NamedThreadFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.core.NamedThreadFactory
  * JD-Core Version:    0.7.0.1
  */

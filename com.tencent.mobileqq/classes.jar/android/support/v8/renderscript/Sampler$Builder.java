@@ -57,47 +57,39 @@ public class Sampler$Builder
   
   public void setMagnification(Sampler.Value paramValue)
   {
-    if ((paramValue == Sampler.Value.NEAREST) || (paramValue == Sampler.Value.LINEAR))
-    {
-      this.mMag = paramValue;
-      return;
+    if ((paramValue != Sampler.Value.NEAREST) && (paramValue != Sampler.Value.LINEAR)) {
+      throw new IllegalArgumentException("Invalid value");
     }
-    throw new IllegalArgumentException("Invalid value");
+    this.mMag = paramValue;
   }
   
   public void setMinification(Sampler.Value paramValue)
   {
-    if ((paramValue == Sampler.Value.NEAREST) || (paramValue == Sampler.Value.LINEAR) || (paramValue == Sampler.Value.LINEAR_MIP_LINEAR) || (paramValue == Sampler.Value.LINEAR_MIP_NEAREST))
-    {
-      this.mMin = paramValue;
-      return;
+    if ((paramValue != Sampler.Value.NEAREST) && (paramValue != Sampler.Value.LINEAR) && (paramValue != Sampler.Value.LINEAR_MIP_LINEAR) && (paramValue != Sampler.Value.LINEAR_MIP_NEAREST)) {
+      throw new IllegalArgumentException("Invalid value");
     }
-    throw new IllegalArgumentException("Invalid value");
+    this.mMin = paramValue;
   }
   
   public void setWrapS(Sampler.Value paramValue)
   {
-    if ((paramValue == Sampler.Value.WRAP) || (paramValue == Sampler.Value.CLAMP) || (paramValue == Sampler.Value.MIRRORED_REPEAT))
-    {
-      this.mWrapS = paramValue;
-      return;
+    if ((paramValue != Sampler.Value.WRAP) && (paramValue != Sampler.Value.CLAMP) && (paramValue != Sampler.Value.MIRRORED_REPEAT)) {
+      throw new IllegalArgumentException("Invalid value");
     }
-    throw new IllegalArgumentException("Invalid value");
+    this.mWrapS = paramValue;
   }
   
   public void setWrapT(Sampler.Value paramValue)
   {
-    if ((paramValue == Sampler.Value.WRAP) || (paramValue == Sampler.Value.CLAMP) || (paramValue == Sampler.Value.MIRRORED_REPEAT))
-    {
-      this.mWrapT = paramValue;
-      return;
+    if ((paramValue != Sampler.Value.WRAP) && (paramValue != Sampler.Value.CLAMP) && (paramValue != Sampler.Value.MIRRORED_REPEAT)) {
+      throw new IllegalArgumentException("Invalid value");
     }
-    throw new IllegalArgumentException("Invalid value");
+    this.mWrapT = paramValue;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v8.renderscript.Sampler.Builder
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.multiaio.presenter.MultiAioContext;
 import com.tencent.mobileqq.multiaio.utils.GC;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 
 final class MultiAIOStarter$2
@@ -19,74 +19,71 @@ final class MultiAIOStarter$2
   
   public void run()
   {
-    Bitmap localBitmap2;
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) {
-        return;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing()) {
-        return;
-      }
-      Bitmap localBitmap1 = this.jdField_a_of_type_ComTencentMobileqqMultiaioPresenterMultiAioContext.a();
-      this.jdField_a_of_type_ComTencentMobileqqMultiaioPresenterMultiAioContext.a(null);
-      localBitmap2 = MultiAIOHelper.a(localBitmap1, this.jdField_a_of_type_ComTencentMobileqqMultiaioPresenterMultiAioContext.b(), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-      if (localBitmap2 == null)
+      if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null)
       {
-        QLog.e("MultiAIOStarter", 1, "run: decorViewBitmap == null");
+        if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing()) {
+          return;
+        }
+        Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqMultiaioPresenterMultiAioContext.a();
+        this.jdField_a_of_type_ComTencentMobileqqMultiaioPresenterMultiAioContext.a(null);
+        Bitmap localBitmap = MultiAIOHelper.a((Bitmap)localObject1, this.jdField_a_of_type_ComTencentMobileqqMultiaioPresenterMultiAioContext.b(), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+        if (localBitmap == null)
+        {
+          QLog.e("MultiAIOStarter", 1, "run: decorViewBitmap == null");
+          return;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqMultiaioPresenterMultiAioContext.b(localBitmap);
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
+        if (localObject1 == null) {
+          return;
+        }
+        Object localObject2 = new Bundle();
+        ((Bundle)localObject2).putParcelable("KEY_AIO_BITMAP", localBitmap);
+        ((QQAppInterface)localObject1).notifyObservers(MultiAIOFragment.class, 0, true, (Bundle)localObject2);
+        localBitmap = Bitmap.createScaledBitmap(localBitmap, (int)(localBitmap.getWidth() * 0.0625F), (int)(localBitmap.getHeight() * 0.0625F), false);
+        if (localBitmap == null)
+        {
+          QLog.e("MultiAIOStarter", 1, "run: scaledBitmap == null");
+          GC.a();
+          return;
+        }
+        localObject2 = new StackBlurManager(localBitmap).process(4);
+        if (localObject2 == null)
+        {
+          QLog.e("MultiAIOStarter", 1, "run: blured bitmap is null");
+          GC.a();
+          return;
+        }
+        Canvas localCanvas = new Canvas(localBitmap);
+        localCanvas.setDensity(((Bitmap)localObject2).getDensity());
+        localCanvas.drawColor(0);
+        localCanvas.drawBitmap((Bitmap)localObject2, 0.0F, 0.0F, null);
+        if ((!"1103".equals(ThemeUtil.curThemeId)) && (!"2920".equals(ThemeUtil.curThemeId))) {
+          localCanvas.drawColor(Color.parseColor("#7F03081A"));
+        } else {
+          localCanvas.drawColor(Color.parseColor("#4DEBEDF5"));
+        }
+        localCanvas.setBitmap(null);
+        this.jdField_a_of_type_ComTencentMobileqqMultiaioPresenterMultiAioContext.c(localBitmap);
+        localObject2 = new Bundle();
+        ((Bundle)localObject2).putParcelable("KEY_AIO_BITMAP_BLURED", localBitmap);
+        ((QQAppInterface)localObject1).notifyObservers(MultiAIOFragment.class, 1, true, (Bundle)localObject2);
         return;
       }
+      return;
     }
     catch (Throwable localThrowable)
     {
       QLog.e("MultiAIOStarter", 1, "run: ", localThrowable);
       GC.a();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqMultiaioPresenterMultiAioContext.b(localBitmap2);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
-    if (localQQAppInterface != null)
-    {
-      Object localObject = new Bundle();
-      ((Bundle)localObject).putParcelable("KEY_AIO_BITMAP", localBitmap2);
-      localQQAppInterface.notifyObservers(MultiAIOFragment.class, 0, true, (Bundle)localObject);
-      localBitmap2 = Bitmap.createScaledBitmap(localBitmap2, (int)(localBitmap2.getWidth() * 0.0625F), (int)(localBitmap2.getHeight() * 0.0625F), false);
-      if (localBitmap2 == null)
-      {
-        QLog.e("MultiAIOStarter", 1, "run: scaledBitmap == null");
-        GC.a();
-        return;
-      }
-      localObject = new StackBlurManager(localBitmap2).process(4);
-      if (localObject == null)
-      {
-        QLog.e("MultiAIOStarter", 1, "run: blured bitmap is null");
-        GC.a();
-        return;
-      }
-      Canvas localCanvas = new Canvas(localBitmap2);
-      localCanvas.setDensity(((Bitmap)localObject).getDensity());
-      localCanvas.drawColor(0);
-      localCanvas.drawBitmap((Bitmap)localObject, 0.0F, 0.0F, null);
-      if (("1103".equals(ThemeUtil.curThemeId)) || ("2920".equals(ThemeUtil.curThemeId))) {
-        localCanvas.drawColor(Color.parseColor("#4DEBEDF5"));
-      }
-      for (;;)
-      {
-        localCanvas.setBitmap(null);
-        this.jdField_a_of_type_ComTencentMobileqqMultiaioPresenterMultiAioContext.c(localBitmap2);
-        localObject = new Bundle();
-        ((Bundle)localObject).putParcelable("KEY_AIO_BITMAP_BLURED", localBitmap2);
-        localQQAppInterface.notifyObservers(MultiAIOFragment.class, 1, true, (Bundle)localObject);
-        return;
-        localCanvas.drawColor(Color.parseColor("#7F03081A"));
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.MultiAIOStarter.2
  * JD-Core Version:    0.7.0.1
  */

@@ -50,7 +50,11 @@ public class ReportParam
     this.opId = paramString;
     this.terminal = "Android";
     this.appName = Global.getApplicationContext().getPackageName();
-    this.appVer = (getVersionName() + '.' + getVersionCode());
+    paramString = new StringBuilder();
+    paramString.append(getVersionName());
+    paramString.append('.');
+    paramString.append(getVersionCode());
+    this.appVer = paramString.toString();
     this.platformName = Build.MODEL;
     this.platformVer = Build.VERSION.SDK_INT;
     this.userId = Noumenon.sHostInterface.getUserId();
@@ -98,25 +102,92 @@ public class ReportParam
   
   protected String getContent()
   {
-    return "ret_code" + '=' + this.retCode + ',' + "time_cost" + '=' + this.timeCost + ',' + "user_id" + '=' + this.userId + ',' + "terminal" + '=' + this.terminal + ',' + "app_name" + '=' + this.appName + ',' + "app_ver" + '=' + this.appVer + ',' + "platform_name" + '=' + this.platformName + ',' + "platform_ver" + '=' + this.platformVer;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ret_code");
+    localStringBuilder.append('=');
+    localStringBuilder.append(this.retCode);
+    localStringBuilder.append(',');
+    localStringBuilder.append("time_cost");
+    localStringBuilder.append('=');
+    localStringBuilder.append(this.timeCost);
+    localStringBuilder.append(',');
+    localStringBuilder.append("user_id");
+    localStringBuilder.append('=');
+    localStringBuilder.append(this.userId);
+    localStringBuilder.append(',');
+    localStringBuilder.append("terminal");
+    localStringBuilder.append('=');
+    localStringBuilder.append(this.terminal);
+    localStringBuilder.append(',');
+    localStringBuilder.append("app_name");
+    localStringBuilder.append('=');
+    localStringBuilder.append(this.appName);
+    localStringBuilder.append(',');
+    localStringBuilder.append("app_ver");
+    localStringBuilder.append('=');
+    localStringBuilder.append(this.appVer);
+    localStringBuilder.append(',');
+    localStringBuilder.append("platform_name");
+    localStringBuilder.append('=');
+    localStringBuilder.append(this.platformName);
+    localStringBuilder.append(',');
+    localStringBuilder.append("platform_ver");
+    localStringBuilder.append('=');
+    localStringBuilder.append(this.platformVer);
+    return localStringBuilder.toString();
   }
   
   public String getFlow()
   {
     Pair localPair = (Pair)Reporter.OP_CMDS.get(this.opId);
-    if ((localPair == null) || (TextUtils.isEmpty(this.userId))) {
-      return "";
+    if ((localPair != null) && (!TextUtils.isEmpty(this.userId)))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("uin");
+      localStringBuilder.append('=');
+      long l;
+      if (TextUtils.isDigitsOnly(this.userId)) {
+        l = Long.parseLong(this.userId);
+      } else {
+        l = this.userId.hashCode();
+      }
+      localStringBuilder.append(l);
+      localStringBuilder.append('&');
+      localStringBuilder.append("cmd");
+      localStringBuilder.append('=');
+      localStringBuilder.append(localPair.first);
+      localStringBuilder.append('&');
+      localStringBuilder.append("sub_cmd");
+      localStringBuilder.append('=');
+      localStringBuilder.append(localPair.second);
+      localStringBuilder.append('&');
+      localStringBuilder.append("log_content");
+      localStringBuilder.append('=');
+      localStringBuilder.append(getContent());
+      return localStringBuilder.toString();
     }
-    StringBuilder localStringBuilder = new StringBuilder().append("uin").append('=');
-    if (TextUtils.isDigitsOnly(this.userId)) {}
-    for (long l = Long.parseLong(this.userId);; l = this.userId.hashCode()) {
-      return l + '&' + "cmd" + '=' + localPair.first + '&' + "sub_cmd" + '=' + localPair.second + '&' + "log_content" + '=' + getContent();
-    }
+    return "";
   }
   
   public String getOp()
   {
-    return "src_id" + '=' + this.srcId + '&' + "op" + '=' + this.opId + '&' + "ret_code" + '=' + this.retCode + '&' + "time_cost" + '=' + this.timeCost;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("src_id");
+    localStringBuilder.append('=');
+    localStringBuilder.append(this.srcId);
+    localStringBuilder.append('&');
+    localStringBuilder.append("op");
+    localStringBuilder.append('=');
+    localStringBuilder.append(this.opId);
+    localStringBuilder.append('&');
+    localStringBuilder.append("ret_code");
+    localStringBuilder.append('=');
+    localStringBuilder.append(this.retCode);
+    localStringBuilder.append('&');
+    localStringBuilder.append("time_cost");
+    localStringBuilder.append('=');
+    localStringBuilder.append(this.timeCost);
+    return localStringBuilder.toString();
   }
   
   public long getTimeCost()
@@ -131,7 +202,7 @@ public class ReportParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.kwstudio.office.debug.ReportParam
  * JD-Core Version:    0.7.0.1
  */

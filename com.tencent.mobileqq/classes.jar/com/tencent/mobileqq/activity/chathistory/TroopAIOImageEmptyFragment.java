@@ -16,7 +16,7 @@ import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
 
 public class TroopAIOImageEmptyFragment
   extends IphoneTitleBarFragment
@@ -44,22 +44,22 @@ public class TroopAIOImageEmptyFragment
     {
       paramLayoutInflater = this.mContentView.getContext().getResources();
       paramViewGroup = URLDrawable.URLDrawableOptions.obtain();
-      paramViewGroup.mRequestWidth = AIOUtils.a(321.0F, paramLayoutInflater);
-      paramViewGroup.mRequestHeight = AIOUtils.a(200.0F, paramLayoutInflater);
-      paramViewGroup.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-      paramViewGroup.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
+      paramViewGroup.mRequestWidth = AIOUtils.b(321.0F, paramLayoutInflater);
+      paramViewGroup.mRequestHeight = AIOUtils.b(200.0F, paramLayoutInflater);
+      paramViewGroup.mLoadingDrawable = URLDrawableHelperConstants.a;
+      paramViewGroup.mFailedDrawable = URLDrawableHelperConstants.a;
       paramLayoutInflater = URLDrawable.getDrawable(this.b, paramViewGroup);
-      ((ImageView)this.mContentView.findViewById(2131379315)).setImageDrawable(paramLayoutInflater);
+      ((ImageView)this.mContentView.findViewById(2131378667)).setImageDrawable(paramLayoutInflater);
     }
-    ((TextView)this.mContentView.findViewById(2131379105)).setText(this.c);
+    ((TextView)this.mContentView.findViewById(2131378475)).setText(this.c);
   }
   
-  public int getContentLayoutId()
+  protected int getContentLayoutId()
   {
-    return 2131560740;
+    return 2131560628;
   }
   
-  public void init(Bundle paramBundle)
+  protected void init(Bundle paramBundle)
   {
     super.init(paramBundle);
     this.a = paramBundle.getString("title");
@@ -69,7 +69,7 @@ public class TroopAIOImageEmptyFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.TroopAIOImageEmptyFragment
  * JD-Core Version:    0.7.0.1
  */

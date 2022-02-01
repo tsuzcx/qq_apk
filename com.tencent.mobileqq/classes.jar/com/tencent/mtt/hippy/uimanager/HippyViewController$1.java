@@ -15,7 +15,10 @@ class HippyViewController$1
     if (!this.a.requestFocusFromTouch())
     {
       boolean bool = this.a.requestFocus();
-      LogUtils.d("requestFocus", "requestFocus result:" + bool);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("requestFocus result:");
+      localStringBuilder.append(bool);
+      LogUtils.d("requestFocus", localStringBuilder.toString());
     }
     HippyViewController.access$002(this.b, false);
     return false;
@@ -23,7 +26,7 @@ class HippyViewController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.HippyViewController.1
  * JD-Core Version:    0.7.0.1
  */

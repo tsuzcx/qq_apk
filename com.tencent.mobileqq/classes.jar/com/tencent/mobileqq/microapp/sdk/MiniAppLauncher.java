@@ -25,20 +25,23 @@ public class MiniAppLauncher
   
   public static boolean isMiniAppScheme(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (!paramString.startsWith("mqqapi://microapp/open")) {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    return true;
+    return paramString.startsWith("mqqapi://microapp/open");
   }
   
   public static boolean isMiniAppUrl(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((!paramString.startsWith("https://imgcache.qq.com/channel/mini_app/upgrade.html")) && (!paramString.startsWith("https://imgcache.qq.com/channel/mini_app/upgrade.html")) && (!paramString.startsWith("https://mp.weixin.qq.com/a/"))) {
+    boolean bool2 = TextUtils.isEmpty(paramString);
+    boolean bool1 = false;
+    if (bool2) {
       return false;
     }
-    return true;
+    if ((paramString.startsWith("https://imgcache.qq.com/channel/mini_app/upgrade.html")) || (paramString.startsWith("https://imgcache.qq.com/channel/mini_app/upgrade.html")) || (paramString.startsWith("https://mp.weixin.qq.com/a/"))) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public static boolean launchMiniApp(Context paramContext, LaunchParam paramLaunchParam)
@@ -46,22 +49,24 @@ public class MiniAppLauncher
     if ((paramContext != null) && (paramLaunchParam != null)) {}
     try
     {
-      if (!paramLaunchParam.isValid())
-      {
-        if (QLog.isColorLevel())
-        {
-          QLog.i("MiniAppLauncher", 2, "launchMiniApp param invalid :" + paramContext + "|" + paramLaunchParam);
-          return false;
-        }
-      }
-      else
+      if (paramLaunchParam.isValid())
       {
         if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
           return openMiniApp(paramContext, paramLaunchParam);
         }
-        ComIPCUtils.a(paramLaunchParam, null);
+        ComIPCUtils.lauchMiniApp(paramLaunchParam, null);
         return true;
       }
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("launchMiniApp param invalid :");
+        localStringBuilder.append(paramContext);
+        localStringBuilder.append("|");
+        localStringBuilder.append(paramLaunchParam);
+        QLog.i("MiniAppLauncher", 2, localStringBuilder.toString());
+      }
+      return false;
     }
     catch (Throwable paramContext)
     {
@@ -80,52 +85,54 @@ public class MiniAppLauncher
   
   public static boolean launchMiniApp(Context paramContext, String paramString1, StructMsgForGeneralShare paramStructMsgForGeneralShare, String paramString2)
   {
-    int j = 1212;
     if (paramStructMsgForGeneralShare == null) {
       return false;
     }
     LaunchParam localLaunchParam = new LaunchParam();
     localLaunchParam.miniAppId = paramString1;
+    int k = paramStructMsgForGeneralShare.uinType;
+    int j = 1212;
     int i = j;
-    switch (paramStructMsgForGeneralShare.uinType)
-    {
-    }
-    for (i = j;; i = 1213)
-    {
-      localLaunchParam.scene = i;
-      if (!TextUtils.isEmpty(paramString2)) {
-        localLaunchParam.entryPath = paramString2;
+    if (k != 0) {
+      if ((k != 1) && (k != 3000)) {
+        i = j;
+      } else {
+        i = 1213;
       }
-      return launchMiniApp(paramContext, localLaunchParam);
     }
+    localLaunchParam.scene = i;
+    if (!TextUtils.isEmpty(paramString2)) {
+      localLaunchParam.entryPath = paramString2;
+    }
+    return launchMiniApp(paramContext, localLaunchParam);
   }
   
   public static boolean launchMiniAppByScanCode(Context paramContext, String paramString)
   {
-    int j = 1207;
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
-      return false;
-    }
-    int i = j;
-    if (!paramString.startsWith("https://imgcache.qq.com/channel/mini_app/upgrade.html"))
+    if ((paramContext != null) && (!TextUtils.isEmpty(paramString)))
     {
-      if (!paramString.startsWith("https://imgcache.qq.com/channel/mini_app/upgrade.html")) {
-        break label67;
+      boolean bool = paramString.startsWith("https://imgcache.qq.com/channel/mini_app/upgrade.html");
+      int j = 1207;
+      int i = j;
+      if (!bool) {
+        if (paramString.startsWith("https://imgcache.qq.com/channel/mini_app/upgrade.html"))
+        {
+          i = j;
+        }
+        else
+        {
+          i = j;
+          if (paramString.startsWith("https://mp.weixin.qq.com/a/")) {
+            i = 1208;
+          }
+        }
       }
-      i = j;
-    }
-    for (;;)
-    {
       LaunchParam localLaunchParam = new LaunchParam();
       localLaunchParam.scene = i;
       localLaunchParam.extraKey = paramString;
       return launchMiniApp(paramContext, localLaunchParam);
-      label67:
-      i = j;
-      if (paramString.startsWith("https://mp.weixin.qq.com/a/")) {
-        i = 1208;
-      }
     }
+    return false;
   }
   
   public static void launchMiniAppByScheme(Context paramContext, String paramString)
@@ -140,8 +147,13 @@ public class MiniAppLauncher
     }
     Activity localActivity = (Activity)paramContext;
     paramContext = paramString;
-    if (paramInt != 1200) {
-      paramContext = paramString + "&scene=" + paramInt;
+    if (paramInt != 1200)
+    {
+      paramContext = new StringBuilder();
+      paramContext.append(paramString);
+      paramContext.append("&scene=");
+      paramContext.append(paramInt);
+      paramContext = paramContext.toString();
     }
     paramString = new Intent(localActivity, JumpActivity.class);
     paramString.setData(Uri.parse(paramContext));
@@ -150,61 +162,59 @@ public class MiniAppLauncher
   
   public static boolean launchMiniAppByScheme(Context paramContext, HashMap paramHashMap)
   {
-    if ((paramHashMap == null) || (paramContext == null)) {
-      return false;
+    if ((paramHashMap != null) && (paramContext != null))
+    {
+      str = (String)paramHashMap.get("mini_appid");
+      localObject1 = null;
     }
-    String str = (String)paramHashMap.get("mini_appid");
-    Object localObject1 = null;
     try
     {
       localObject2 = URLDecoder.decode((String)paramHashMap.get("entry_path"), "UTF-8");
       localObject1 = localObject2;
     }
-    catch (Throwable localThrowable2)
+    catch (Throwable localThrowable1)
     {
-      for (;;)
+      try
       {
-        Object localObject2;
-        continue;
-        int i = 1200;
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          break label76;
+        }
+        i = Integer.parseInt((String)localObject2);
+        Object localObject2 = (String)paramHashMap.get("qqwallet_appinfo");
+        paramHashMap = (HashMap)localObject2;
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          break label117;
+        }
+        try
+        {
+          paramHashMap = URLDecoder.decode((String)localObject2, "UTF-8");
+        }
+        catch (UnsupportedEncodingException paramHashMap)
+        {
+          paramHashMap.printStackTrace();
+          paramHashMap = (HashMap)localObject2;
+        }
+        localObject2 = new LaunchParam();
+        ((LaunchParam)localObject2).miniAppId = str;
+        ((LaunchParam)localObject2).entryPath = localObject1;
+        ((LaunchParam)localObject2).scene = i;
+        ((LaunchParam)localObject2).appInfo = paramHashMap;
+        return launchMiniApp(paramContext, (LaunchParam)localObject2);
+        return false;
+        localThrowable1 = localThrowable1;
+      }
+      catch (Throwable localThrowable2)
+      {
+        for (;;)
+        {
+          int j;
+          int i = j;
+        }
       }
     }
     localObject2 = (String)paramHashMap.get("scene");
-    i = 1200;
-    try
-    {
-      if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        break label168;
-      }
-      int j = Integer.parseInt((String)localObject2);
-      i = j;
-    }
-    catch (Throwable localThrowable1)
-    {
-      label75:
-      break label75;
-    }
-    localObject2 = (String)paramHashMap.get("qqwallet_appinfo");
-    paramHashMap = (HashMap)localObject2;
-    if (!TextUtils.isEmpty((CharSequence)localObject2)) {}
-    try
-    {
-      paramHashMap = URLDecoder.decode((String)localObject2, "UTF-8");
-      localObject2 = new LaunchParam();
-      ((LaunchParam)localObject2).miniAppId = str;
-      ((LaunchParam)localObject2).entryPath = localObject1;
-      ((LaunchParam)localObject2).scene = i;
-      ((LaunchParam)localObject2).appInfo = paramHashMap;
-      return launchMiniApp(paramContext, (LaunchParam)localObject2);
-    }
-    catch (UnsupportedEncodingException paramHashMap)
-    {
-      for (;;)
-      {
-        paramHashMap.printStackTrace();
-        paramHashMap = (HashMap)localObject2;
-      }
-    }
+    j = 1200;
+    i = j;
   }
   
   public static boolean navigateBackMiniApp(Context paramContext, String paramString1, String paramString2)
@@ -231,31 +241,31 @@ public class MiniAppLauncher
   
   private static boolean openMiniApp(Context paramContext, LaunchParam paramLaunchParam)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.i("MiniAppLauncher", 2, "launchMiniApp openMiniApp :" + paramLaunchParam);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("launchMiniApp openMiniApp :");
+      ((StringBuilder)localObject).append(paramLaunchParam);
+      QLog.i("MiniAppLauncher", 2, ((StringBuilder)localObject).toString());
     }
     long l = System.currentTimeMillis();
     if (l - mLastGameTime <= 1000L) {
-      bool = false;
+      return false;
     }
-    Intent localIntent;
-    do
-    {
-      return bool;
-      mLastGameTime = l;
-      paramLaunchParam.standardize();
-      localIntent = new Intent();
-      localIntent.putExtra("public_fragment_window_feature", 1);
-      localIntent.putExtra("launch_param", paramLaunchParam);
-    } while ((paramContext instanceof Activity));
-    localIntent.addFlags(268435456);
+    mLastGameTime = l;
+    paramLaunchParam.standardize();
+    Object localObject = new Intent();
+    ((Intent)localObject).putExtra("public_fragment_window_feature", 1);
+    ((Intent)localObject).putExtra("launch_param", paramLaunchParam);
+    if (!(paramContext instanceof Activity)) {
+      ((Intent)localObject).addFlags(268435456);
+    }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.sdk.MiniAppLauncher
  * JD-Core Version:    0.7.0.1
  */

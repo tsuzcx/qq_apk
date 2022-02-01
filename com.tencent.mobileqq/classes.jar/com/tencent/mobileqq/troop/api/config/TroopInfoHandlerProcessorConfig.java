@@ -23,28 +23,30 @@ public final class TroopInfoHandlerProcessorConfig
       if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
         return;
       }
-      if (TroopCustomizedProcessorRegister.c != null)
+      if (TroopCustomizedProcessorRegister.b != null)
       {
-        Iterator localIterator = TroopCustomizedProcessorRegister.c.iterator();
-        for (;;)
+        Iterator localIterator = TroopCustomizedProcessorRegister.b.iterator();
+        while (localIterator.hasNext())
         {
-          if (localIterator.hasNext())
+          Object localObject3 = (Class)localIterator.next();
+          try
           {
-            Object localObject3 = (Class)localIterator.next();
-            try
-            {
-              localObject3 = (AbsTroopInfoHandlerProcessor)((Class)localObject3).newInstance();
-              jdField_a_of_type_JavaUtilArrayList.add(localObject3);
-            }
-            catch (Throwable localThrowable)
-            {
-              QLog.e("TroopInfoHandlerProcessorConfig", 1, "Init Fail,", localThrowable);
-            }
+            localObject3 = (AbsTroopInfoHandlerProcessor)((Class)localObject3).newInstance();
+            jdField_a_of_type_JavaUtilArrayList.add(localObject3);
+          }
+          catch (Throwable localThrowable)
+          {
+            QLog.e("TroopInfoHandlerProcessorConfig", 1, "Init Fail,", localThrowable);
           }
         }
       }
+      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      return;
     }
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public static void a(@NonNull AppInterface paramAppInterface, TroopInfo paramTroopInfo, oidb_0x88d.GroupInfo paramGroupInfo)
@@ -57,7 +59,7 @@ public final class TroopInfoHandlerProcessorConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.config.TroopInfoHandlerProcessorConfig
  * JD-Core Version:    0.7.0.1
  */

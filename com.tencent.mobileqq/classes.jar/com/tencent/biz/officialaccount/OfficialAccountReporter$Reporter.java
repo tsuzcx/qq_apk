@@ -53,7 +53,10 @@ public final class OfficialAccountReporter$Reporter
     }
     catch (Exception localException)
     {
-      QLog.e("OfficialAccountReporter", 2, "getOacTriggle error: " + paramString, (Throwable)localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getOacTriggle error: ");
+      localStringBuilder.append(paramString);
+      QLog.e("OfficialAccountReporter", 2, localStringBuilder.toString(), (Throwable)localException);
     }
     return "";
   }
@@ -73,8 +76,9 @@ public final class OfficialAccountReporter$Reporter
     if (paramInt1 != 0) {
       ((Map)localHashMap).put("msg_type", String.valueOf(paramInt1));
     }
-    ((Map)localHashMap).put("reddot_num", String.valueOf(paramInt2));
-    ((Reporter)this).a("gouwu_list", "expo", paramString1, (Map)localHashMap);
+    paramString2 = (Map)localHashMap;
+    paramString2.put("reddot_num", String.valueOf(paramInt2));
+    ((Reporter)this).a("gouwu_list", "expo", paramString1, paramString2);
   }
   
   private final void a(String paramString1, String paramString2, CharSequence paramCharSequence, String paramString3, int paramInt1, int paramInt2)
@@ -92,8 +96,9 @@ public final class OfficialAccountReporter$Reporter
     if (paramInt1 != 0) {
       ((Map)localHashMap).put("msg_type", String.valueOf(paramInt1));
     }
-    ((Map)localHashMap).put("reddot_num", String.valueOf(paramInt2));
-    ((Reporter)this).a("msg_list", "expo", paramString1, (Map)localHashMap);
+    paramString2 = (Map)localHashMap;
+    paramString2.put("reddot_num", String.valueOf(paramInt2));
+    ((Reporter)this).a("msg_list", "expo", paramString1, paramString2);
   }
   
   private final void a(String paramString1, String paramString2, String paramString3, int paramInt)
@@ -146,11 +151,11 @@ public final class OfficialAccountReporter$Reporter
         ((Map)localHashMap).put(paramString2, paramMap);
       }
       ((Reporter)this).a(paramString3, localHashMap);
+      return;
     }
     catch (Exception paramString1)
     {
       QLog.e("OfficialAccountReporter", 2, (Throwable)paramString1, new Object[0]);
-      return;
     }
   }
   
@@ -210,8 +215,9 @@ public final class OfficialAccountReporter$Reporter
     if (paramInt1 != 0) {
       ((Map)localHashMap).put("msg_type", String.valueOf(paramInt1));
     }
-    ((Map)localHashMap).put("reddot_num", String.valueOf(paramInt2));
-    ((Reporter)this).a("msg_list", "click", paramString1, (Map)localHashMap);
+    paramString2 = (Map)localHashMap;
+    paramString2.put("reddot_num", String.valueOf(paramInt2));
+    ((Reporter)this).a("msg_list", "click", paramString1, paramString2);
   }
   
   private final void c(String paramString1, String paramString2, CharSequence paramCharSequence, long paramLong, int paramInt1, int paramInt2)
@@ -229,8 +235,9 @@ public final class OfficialAccountReporter$Reporter
     if (paramInt1 != 0) {
       ((Map)localHashMap).put("msg_type", String.valueOf(paramInt1));
     }
-    ((Map)localHashMap).put("reddot_num", String.valueOf(paramInt2));
-    ((Reporter)this).a("dingyue_list", "expo", paramString1, (Map)localHashMap);
+    paramString2 = (Map)localHashMap;
+    paramString2.put("reddot_num", String.valueOf(paramInt2));
+    ((Reporter)this).a("dingyue_list", "expo", paramString1, paramString2);
   }
   
   private final void d(String paramString1, String paramString2, CharSequence paramCharSequence, long paramLong, int paramInt1, int paramInt2)
@@ -264,9 +271,10 @@ public final class OfficialAccountReporter$Reporter
   {
     long l1 = SystemClock.elapsedRealtime();
     long l2 = OfficialAccountReporter.c();
-    if (l1 > ((Reporter)this).a() + l2)
+    Reporter localReporter = (Reporter)this;
+    if (l1 > l2 + localReporter.a())
     {
-      a((Reporter)this, "lockscreen_push", "click", paramString, null, 8, null);
+      a(localReporter, "lockscreen_push", "click", paramString, null, 8, null);
       OfficialAccountReporter.c(SystemClock.elapsedRealtime());
     }
   }
@@ -280,10 +288,11 @@ public final class OfficialAccountReporter$Reporter
     try
     {
       paramString1 = new JSONObject(paramString1);
-      if (paramString1.has(paramString2)) {
-        return paramString1.getString(paramString2);
+      if (paramString1.has(paramString2))
+      {
+        paramString1 = paramString1.getString(paramString2);
+        return paramString1;
       }
-      return "";
     }
     catch (Exception paramString1)
     {
@@ -308,12 +317,13 @@ public final class OfficialAccountReporter$Reporter
         {
           int i = paramActivity.getIntExtra("uintype", 0);
           paramActivity = paramActivity.getStringExtra("uin");
-          if ((i == 1008) || (i == 7230) || (i == 7120)) {
+          if ((i == 1008) || (i == 7230) || (i == 7120))
+          {
             ((Reporter)this).l(paramActivity);
+            return;
           }
         }
       }
-      return;
     }
     catch (Exception paramActivity)
     {
@@ -323,107 +333,107 @@ public final class OfficialAccountReporter$Reporter
   
   public final void a(@Nullable RecentBaseData paramRecentBaseData)
   {
-    if (paramRecentBaseData != null)
-    {
-      int i;
-      Object localObject1;
-      Object localObject2;
+    if (paramRecentBaseData != null) {
       try
       {
-        i = paramRecentBaseData.hashCode();
-        if (OfficialAccountReporter.a().contains(Integer.valueOf(i))) {
-          return;
-        }
-        if (!((Reporter)this).a()) {
-          return;
-        }
-        OfficialAccountReporter.a().add(Integer.valueOf(i));
-        if ((paramRecentBaseData instanceof RecentItemPublicAccountChatMsgData))
+        int i = paramRecentBaseData.hashCode();
+        if (!OfficialAccountReporter.a().contains(Integer.valueOf(i)))
         {
-          localObject1 = ((RecentItemPublicAccountChatMsgData)paramRecentBaseData).a();
-          if (localObject1 == null) {
+          if (!((Reporter)this).a()) {
             return;
           }
-          localObject2 = ((RecentItemPublicAccountChatMsgData)paramRecentBaseData).getRecentUserUin();
-          CharSequence localCharSequence = paramRecentBaseData.mLastMsg;
-          String str = ((Reporter)this).a(((Message)localObject1).extStr, "public_account_msg_id");
-          i = ((Message)localObject1).msgtype;
-          int j = paramRecentBaseData.mUnreadNum;
-          ((Reporter)this).a((String)localObject2, ((RecentItemPublicAccountChatMsgData)paramRecentBaseData).mReportKeyBytesOacMsgxtend, localCharSequence, str, i, j);
+          OfficialAccountReporter.a().add(Integer.valueOf(i));
+          Object localObject1;
+          Object localObject2;
+          if ((paramRecentBaseData instanceof RecentItemPublicAccountChatMsgData))
+          {
+            localObject1 = ((RecentItemPublicAccountChatMsgData)paramRecentBaseData).a();
+            if (localObject1 == null) {
+              return;
+            }
+            localObject2 = ((RecentItemPublicAccountChatMsgData)paramRecentBaseData).getRecentUserUin();
+            CharSequence localCharSequence = paramRecentBaseData.mLastMsg;
+            String str = ((Reporter)this).a(((Message)localObject1).extStr, "public_account_msg_id");
+            i = ((Message)localObject1).msgtype;
+            int j = paramRecentBaseData.mUnreadNum;
+            ((Reporter)this).a((String)localObject2, ((RecentItemPublicAccountChatMsgData)paramRecentBaseData).mReportKeyBytesOacMsgxtend, localCharSequence, str, i, j);
+            return;
+          }
+          if ((paramRecentBaseData instanceof RecentItemServiceAccountFolderData))
+          {
+            localObject1 = ((RecentItemServiceAccountFolderData)paramRecentBaseData).getRecentUserUin();
+            localObject2 = paramRecentBaseData.mLastMsg;
+            i = paramRecentBaseData.mUnreadNum;
+            ((Reporter)this).c((String)localObject1, ((RecentItemServiceAccountFolderData)paramRecentBaseData).mReportKeyBytesOacMsgxtend, (CharSequence)localObject2, 0L, 0, i);
+            return;
+          }
+          if ((paramRecentBaseData instanceof RecentItemEcShopAssitant))
+          {
+            localObject1 = ((RecentItemEcShopAssitant)paramRecentBaseData).getRecentUserUin();
+            localObject2 = paramRecentBaseData.mLastMsg;
+            i = paramRecentBaseData.mUnreadNum;
+            ((Reporter)this).a((String)localObject1, null, (CharSequence)localObject2, 0L, 0, i);
+          }
+        }
+        else
+        {
           return;
         }
       }
       catch (Exception paramRecentBaseData)
       {
         QLog.e("OfficialAccountReporter", 2, (Throwable)paramRecentBaseData, new Object[0]);
-        return;
       }
-      if ((paramRecentBaseData instanceof RecentItemServiceAccountFolderData))
-      {
-        localObject1 = ((RecentItemServiceAccountFolderData)paramRecentBaseData).getRecentUserUin();
-        localObject2 = paramRecentBaseData.mLastMsg;
-        i = paramRecentBaseData.mUnreadNum;
-        ((Reporter)this).c((String)localObject1, ((RecentItemServiceAccountFolderData)paramRecentBaseData).mReportKeyBytesOacMsgxtend, (CharSequence)localObject2, 0L, 0, i);
-        return;
-      }
-      if ((paramRecentBaseData instanceof RecentItemEcShopAssitant))
-      {
-        localObject1 = ((RecentItemEcShopAssitant)paramRecentBaseData).getRecentUserUin();
-        localObject2 = paramRecentBaseData.mLastMsg;
-        i = paramRecentBaseData.mUnreadNum;
-        ((Reporter)this).a((String)localObject1, null, (CharSequence)localObject2, 0L, 0, i);
-      }
-    }
+    } else {}
   }
   
   public final void a(@Nullable MessageRecord paramMessageRecord)
   {
-    if (paramMessageRecord == null) {}
-    for (;;)
-    {
+    if (paramMessageRecord == null) {
       return;
-      try
+    }
+    try
+    {
+      int i = paramMessageRecord.istroop;
+      String str1 = paramMessageRecord.frienduin;
+      String str2 = new JSONObject(paramMessageRecord.extStr).optString("report_key_bytes_oac_msg_extend");
+      String str3 = ((Reporter)this).a(paramMessageRecord.extStr, "public_account_msg_id");
+      int j = paramMessageRecord.msgtype;
+      if ((i == 1008) || (i == 7230) || (i == 7120))
       {
-        int i = paramMessageRecord.istroop;
-        String str1 = paramMessageRecord.frienduin;
-        String str2 = new JSONObject(paramMessageRecord.extStr).optString("report_key_bytes_oac_msg_extend");
-        String str3 = ((Reporter)this).a(paramMessageRecord.extStr, "public_account_msg_id");
-        int j = paramMessageRecord.msgtype;
-        if ((i == 1008) || (i == 7230) || (i == 7120))
-        {
-          ((Reporter)this).a(str1, str2, str3, j);
-          return;
-        }
+        ((Reporter)this).a(str1, str2, str3, j);
+        return;
       }
-      catch (Exception paramMessageRecord)
-      {
-        QLog.e("OfficialAccountReporter", 2, (Throwable)paramMessageRecord, new Object[0]);
-      }
+    }
+    catch (Exception paramMessageRecord)
+    {
+      QLog.e("OfficialAccountReporter", 2, (Throwable)paramMessageRecord, new Object[0]);
     }
   }
   
   public final void a(@Nullable AbsStructMsgElement paramAbsStructMsgElement, @Nullable String paramString)
   {
-    if (paramAbsStructMsgElement != null) {}
-    try
-    {
-      ((Reporter)this).a(paramAbsStructMsgElement.aa, paramAbsStructMsgElement.b, paramAbsStructMsgElement.ab, paramString);
-      return;
-    }
-    catch (Exception paramAbsStructMsgElement)
-    {
-      QLog.e("OfficialAccountReporter", 2, (Throwable)paramAbsStructMsgElement, new Object[0]);
+    if (paramAbsStructMsgElement != null) {
+      try
+      {
+        ((Reporter)this).a(paramAbsStructMsgElement.aa, paramAbsStructMsgElement.b, paramAbsStructMsgElement.ab, paramString);
+        return;
+      }
+      catch (Exception paramAbsStructMsgElement)
+      {
+        QLog.e("OfficialAccountReporter", 2, (Throwable)paramAbsStructMsgElement, new Object[0]);
+      }
     }
   }
   
   public final void a(@Nullable Object paramObject)
   {
-    Object localObject1;
-    Object localObject2;
-    int i;
     try
     {
+      Object localObject1;
+      Object localObject2;
       Object localObject3;
+      int i;
       if ((paramObject instanceof RecentItemPublicAccountChatMsgData))
       {
         localObject1 = ((RecentItemPublicAccountChatMsgData)paramObject).a();
@@ -448,19 +458,20 @@ public final class OfficialAccountReporter$Reporter
         ((Reporter)this).d((String)localObject1, (String)localObject2, (CharSequence)localObject3, 0L, 0, i);
         return;
       }
+      if ((paramObject instanceof RecentItemEcShopAssitant))
+      {
+        localObject1 = ((RecentItemEcShopAssitant)paramObject).getRecentUserUin();
+        localObject2 = ((RecentItemEcShopAssitant)paramObject).mLastMsg;
+        i = ((RecentItemEcShopAssitant)paramObject).mUnreadNum;
+        ((Reporter)this).b((String)localObject1, null, (CharSequence)localObject2, 0L, 0, i);
+        return;
+      }
     }
     catch (Exception paramObject)
     {
       QLog.e("OfficialAccountReporter", 2, (Throwable)paramObject, new Object[0]);
-      return;
     }
-    if ((paramObject instanceof RecentItemEcShopAssitant))
-    {
-      localObject1 = ((RecentItemEcShopAssitant)paramObject).getRecentUserUin();
-      localObject2 = ((RecentItemEcShopAssitant)paramObject).mLastMsg;
-      i = ((RecentItemEcShopAssitant)paramObject).mUnreadNum;
-      ((Reporter)this).b((String)localObject1, null, (CharSequence)localObject2, 0L, 0, i);
-    }
+    return;
   }
   
   public final void a(@Nullable String paramString)
@@ -547,10 +558,11 @@ public final class OfficialAccountReporter$Reporter
   
   public final void a(boolean paramBoolean, @Nullable Intent paramIntent)
   {
-    if ((!paramBoolean) || (paramIntent == null)) {}
-    for (;;)
+    if (paramBoolean)
     {
-      return;
+      if (paramIntent == null) {
+        return;
+      }
       try
       {
         int i = paramIntent.getIntExtra("uintype", -1);
@@ -615,25 +627,22 @@ public final class OfficialAccountReporter$Reporter
   {
     try
     {
-      long l1 = SystemClock.elapsedRealtime();
+      long l = SystemClock.elapsedRealtime();
       int i = ((Reporter)this).b();
-      long l2 = OfficialAccountReporter.d();
-      if (l1 <= i + l2) {
+      if (l <= OfficialAccountReporter.d() + i) {
         return;
       }
       i = ((Reporter)this).a();
-      if (OfficialAccountReporter.e() > 0L)
-      {
-        l2 = OfficialAccountReporter.e();
-        if (l1 <= i + l2) {}
-      }
-      else
-      {
-        OfficialAccountReporter.a().clear();
-        OfficialAccountReporter.d(SystemClock.elapsedRealtime());
-        QLog.d("OfficialAccountReporter", 2, "refreshAioExpoRecord " + (OfficialAccountReporter.e() - l1));
+      if ((OfficialAccountReporter.e() > 0L) && (l <= OfficialAccountReporter.e() + i)) {
         return;
       }
+      OfficialAccountReporter.a().clear();
+      OfficialAccountReporter.d(SystemClock.elapsedRealtime());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("refreshAioExpoRecord ");
+      localStringBuilder.append(OfficialAccountReporter.e() - l);
+      QLog.d("OfficialAccountReporter", 2, localStringBuilder.toString());
+      return;
     }
     catch (Exception localException)
     {
@@ -658,15 +667,16 @@ public final class OfficialAccountReporter$Reporter
   {
     try
     {
-      int i = ("" + paramString1 + paramInt + paramString2).hashCode();
-      long l1 = SystemClock.elapsedRealtime();
-      Object localObject = (Long)OfficialAccountReporter.a().get(Integer.valueOf(i));
-      if (localObject != null)
-      {
-        long l2 = ((Long)localObject).longValue();
-        if (l1 <= ((Reporter)this).a() + l2) {
-          return;
-        }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(paramString2);
+      int i = ((StringBuilder)localObject).toString().hashCode();
+      long l = SystemClock.elapsedRealtime();
+      localObject = (Long)OfficialAccountReporter.a().get(Integer.valueOf(i));
+      if ((localObject != null) && (l <= ((Long)localObject).longValue() + ((Reporter)this).a())) {
+        return;
       }
       localObject = new HashMap();
       ((Map)localObject).put("menu_id", String.valueOf(paramInt));
@@ -794,7 +804,7 @@ public final class OfficialAccountReporter$Reporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.officialaccount.OfficialAccountReporter.Reporter
  * JD-Core Version:    0.7.0.1
  */

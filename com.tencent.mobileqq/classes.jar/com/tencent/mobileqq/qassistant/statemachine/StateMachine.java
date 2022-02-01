@@ -102,8 +102,12 @@ public class StateMachine
   
   protected void b(Message paramMessage)
   {
-    if (StateMachine.SmHandler.a(this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineStateMachine$SmHandler)) {
-      b(" - unhandledMessage: msg.what=" + paramMessage.what);
+    if (StateMachine.SmHandler.a(this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineStateMachine$SmHandler))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" - unhandledMessage: msg.what=");
+      localStringBuilder.append(paramMessage.what);
+      b(localStringBuilder.toString());
     }
   }
   
@@ -139,7 +143,7 @@ public class StateMachine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.statemachine.StateMachine
  * JD-Core Version:    0.7.0.1
  */

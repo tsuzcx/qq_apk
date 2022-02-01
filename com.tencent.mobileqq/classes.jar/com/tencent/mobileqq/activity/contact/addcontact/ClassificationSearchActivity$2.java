@@ -17,35 +17,45 @@ class ClassificationSearchActivity$2
   {
     String str = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
     paramEditable = this.a.jdField_a_of_type_AndroidWidgetImageButton;
-    if (str.equals("")) {}
-    for (int i = 8;; i = 0)
+    if (str.equals("")) {
+      i = 8;
+    } else {
+      i = 0;
+    }
+    paramEditable.setVisibility(i);
+    int j = this.a.f;
+    int k = ClassificationSearchActivity.c;
+    int i = 2131690728;
+    if (j == k)
     {
-      paramEditable.setVisibility(i);
-      if (this.a.f != ClassificationSearchActivity.c) {
-        break;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.getResources().getString(2131690800));
-      if (AppSetting.d) {
-        this.a.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.a.jdField_a_of_type_AndroidWidgetButton.getText().toString());
-      }
-      if ((str.equals("")) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment != null))
+      this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.getResources().getString(2131690728));
+    }
+    else
+    {
+      Button localButton = this.a.jdField_a_of_type_AndroidWidgetButton;
+      if (!str.equals(""))
       {
-        if ((this.a.f != ClassificationSearchActivity.jdField_a_of_type_Int) && (this.a.f != ClassificationSearchActivity.d)) {
-          break label219;
-        }
-        ClassificationSearchActivity.a(this.a);
+        paramEditable = this.a.getResources();
+        i = 2131718623;
       }
-      return;
+      else
+      {
+        paramEditable = this.a.getResources();
+      }
+      localButton.setText(paramEditable.getString(i));
     }
-    Button localButton = this.a.jdField_a_of_type_AndroidWidgetButton;
-    if (!str.equals("")) {}
-    for (paramEditable = this.a.getResources().getString(2131718907);; paramEditable = this.a.getResources().getString(2131690800))
+    if (AppSetting.d) {
+      this.a.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.a.jdField_a_of_type_AndroidWidgetButton.getText().toString());
+    }
+    if ((str.equals("")) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment != null))
     {
-      localButton.setText(paramEditable);
-      break;
+      if ((this.a.f != ClassificationSearchActivity.jdField_a_of_type_Int) && (this.a.f != ClassificationSearchActivity.d))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
+        return;
+      }
+      ClassificationSearchActivity.a(this.a);
     }
-    label219:
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -54,7 +64,7 @@ class ClassificationSearchActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.2
  * JD-Core Version:    0.7.0.1
  */

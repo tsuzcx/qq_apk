@@ -4,6 +4,7 @@ import com.tencent.biz.pubaccount.NativeAd.report.IReportObj;
 import com.tencent.biz.pubaccount.NativeAd.report.ReportExKt;
 import com.tencent.biz.pubaccount.NativeAd.report.constant.ReportAction;
 import com.tencent.biz.pubaccount.NativeAd.report.util.AdReportUtil;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdReportData;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
@@ -11,17 +12,21 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/NativeAd/report/bean/VideoReportObj;", "Lcom/tencent/biz/pubaccount/NativeAd/report/IReportObj;", "()V", "videoBeginFrame", "", "videoBeginTime", "videoDuration", "videoEndFrame", "videoEndTime", "videoEndType", "videoPlayDuration", "Ljava/lang/Integer;", "videoPlayError", "videoPlayPostion", "videoPlayType", "videoReplayCount", "getKey", "", "parseAdReportData", "", "adReportData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;", "parseVideoEndType", "json", "Lorg/json/JSONObject;", "parseVideoPlayError", "parseVideoPlayType", "toJsonObject", "valid", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/NativeAd/report/bean/VideoReportObj;", "Lcom/tencent/biz/pubaccount/NativeAd/report/IReportObj;", "()V", "videoBeginFrame", "", "getVideoBeginFrame", "()I", "setVideoBeginFrame", "(I)V", "videoBeginTime", "getVideoBeginTime", "setVideoBeginTime", "videoDuration", "getVideoDuration", "setVideoDuration", "videoEndFrame", "getVideoEndFrame", "setVideoEndFrame", "videoEndTime", "getVideoEndTime", "setVideoEndTime", "videoEndType", "getVideoEndType", "setVideoEndType", "videoPlayDuration", "getVideoPlayDuration", "()Ljava/lang/Integer;", "setVideoPlayDuration", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "videoPlayError", "getVideoPlayError", "setVideoPlayError", "videoPlayPostion", "getVideoPlayPostion", "setVideoPlayPostion", "videoPlayType", "getVideoPlayType", "setVideoPlayType", "videoReplayCount", "getVideoReplayCount", "setVideoReplayCount", "getKey", "", "parseAdReportData", "", "adReportData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;", "parseVideoEndType", "json", "Lorg/json/JSONObject;", "parseVideoPlayError", "parseVideoPlayType", "toJsonObject", "valid", "", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class VideoReportObj
   extends IReportObj
 {
   private int jdField_a_of_type_Int;
+  @Nullable
   private Integer jdField_a_of_type_JavaLangInteger;
   private int jdField_b_of_type_Int;
+  @Nullable
   private Integer jdField_b_of_type_JavaLangInteger;
   private int jdField_c_of_type_Int = 1;
+  @Nullable
   private Integer jdField_c_of_type_JavaLangInteger;
   private int jdField_d_of_type_Int = 1;
+  @Nullable
   private Integer jdField_d_of_type_JavaLangInteger;
   private int e;
   private int f = 1;
@@ -32,10 +37,10 @@ public final class VideoReportObj
     if ((paramJSONObject != null) && (paramJSONObject.optBoolean("isClickReplay") == true)) {
       return 12;
     }
-    if ((paramJSONObject == null) || (paramJSONObject.optInt("videoReplayCount") != 0)) {
-      return 13;
+    if ((paramJSONObject != null) && (paramJSONObject.optInt("videoReplayCount") == 0)) {
+      return 11;
     }
-    return 11;
+    return 13;
   }
   
   private final int b(JSONObject paramJSONObject)
@@ -52,6 +57,17 @@ public final class VideoReportObj
       return 0;
     }
     return paramJSONObject.optInt("ps", 0);
+  }
+  
+  public final int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  @Nullable
+  public final Integer a()
+  {
+    return this.jdField_a_of_type_JavaLangInteger;
   }
   
   @NotNull
@@ -81,27 +97,25 @@ public final class VideoReportObj
   public void a(@NotNull AdReportData paramAdReportData)
   {
     Intrinsics.checkParameterIsNotNull(paramAdReportData, "adReportData");
-    if (AdReportUtil.a(paramAdReportData) != ReportAction.VIDEO_SEE_TIME) {}
-    do
-    {
+    if (AdReportUtil.a(paramAdReportData) != ReportAction.VIDEO_SEE_TIME) {
       return;
-      paramAdReportData = paramAdReportData.a();
-    } while (paramAdReportData == null);
+    }
+    JSONObject localJSONObject = paramAdReportData.a();
+    if (localJSONObject != null) {}
     try
     {
-      this.jdField_a_of_type_Int = paramAdReportData.optInt("bt");
-      this.jdField_b_of_type_Int = paramAdReportData.optInt("et");
-      this.jdField_c_of_type_Int = paramAdReportData.optInt("bf");
-      this.jdField_d_of_type_Int = paramAdReportData.optInt("ef");
-      if (paramAdReportData.optBoolean("isVideoFeedsRecommend")) {
-        this.e = 11;
-      }
-      this.jdField_c_of_type_JavaLangInteger = Integer.valueOf(a(paramAdReportData));
-      this.f = b(paramAdReportData);
-      this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(c(paramAdReportData));
-      this.g = paramAdReportData.optInt("duration");
+      this.jdField_a_of_type_Int = localJSONObject.optInt("bt");
+      this.jdField_b_of_type_Int = localJSONObject.optInt("et");
+      this.jdField_c_of_type_Int = localJSONObject.optInt("bf");
+      this.jdField_d_of_type_Int = localJSONObject.optInt("ef");
+      paramAdReportData = paramAdReportData.a().scene;
+      this.e = 0;
+      this.jdField_c_of_type_JavaLangInteger = Integer.valueOf(a(localJSONObject));
+      this.f = b(localJSONObject);
+      this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(c(localJSONObject));
+      this.g = localJSONObject.optInt("duration");
       this.jdField_b_of_type_JavaLangInteger = Integer.valueOf(this.jdField_b_of_type_Int - this.jdField_a_of_type_Int);
-      this.jdField_d_of_type_JavaLangInteger = Integer.valueOf(paramAdReportData.optInt("videoReplayCount"));
+      this.jdField_d_of_type_JavaLangInteger = Integer.valueOf(localJSONObject.optInt("videoReplayCount"));
       return;
     }
     catch (Throwable paramAdReportData) {}
@@ -112,10 +126,41 @@ public final class VideoReportObj
     int i = this.jdField_a_of_type_Int;
     return true;
   }
+  
+  public final int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  @Nullable
+  public final Integer b()
+  {
+    return this.jdField_c_of_type_JavaLangInteger;
+  }
+  
+  public final int c()
+  {
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public final int d()
+  {
+    return this.jdField_d_of_type_Int;
+  }
+  
+  public final int e()
+  {
+    return this.e;
+  }
+  
+  public final int f()
+  {
+    return this.f;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.report.bean.VideoReportObj
  * JD-Core Version:    0.7.0.1
  */

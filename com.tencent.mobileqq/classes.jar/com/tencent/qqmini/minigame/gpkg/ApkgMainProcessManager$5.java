@@ -18,7 +18,10 @@ class ApkgMainProcessManager$5
   
   public void onInitApkgInfo(int paramInt, ApkgInfo paramApkgInfo, String paramString)
   {
-    QMLog.d("ApkgMainProcessManager", "onInitApkgInfo load apkg in main process end " + paramApkgInfo);
+    paramString = new StringBuilder();
+    paramString.append("onInitApkgInfo load apkg in main process end ");
+    paramString.append(paramApkgInfo);
+    QMLog.d("ApkgMainProcessManager", paramString.toString());
     paramApkgInfo = (List)ApkgMainProcessManager.access$000(this.this$0).remove(this.val$miniAppConfig.appId);
     if (paramApkgInfo != null)
     {
@@ -42,7 +45,7 @@ class ApkgMainProcessManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.gpkg.ApkgMainProcessManager.5
  * JD-Core Version:    0.7.0.1
  */

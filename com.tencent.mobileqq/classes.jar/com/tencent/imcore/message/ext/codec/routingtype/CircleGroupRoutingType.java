@@ -1,5 +1,6 @@
 package com.tencent.imcore.message.ext.codec.routingtype;
 
+import com.tencent.common.app.AppInterface;
 import com.tencent.imcore.message.core.codec.RoutingType;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -13,7 +14,7 @@ import msf.msgsvc.msg_svc.BsnsTmp;
 import msf.msgsvc.msg_svc.RoutingHead;
 
 public class CircleGroupRoutingType
-  implements RoutingType
+  implements RoutingType<AppInterface>
 {
   public int a()
   {
@@ -25,15 +26,21 @@ public class CircleGroupRoutingType
     return false;
   }
   
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, AppInterface paramAppInterface)
   {
     msg_svc.BsnsTmp localBsnsTmp = new msg_svc.BsnsTmp();
     localBsnsTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramMessageRecord = paramQQAppInterface.getMsgCache().f(paramMessageRecord.frienduin);
+    paramMessageRecord = ((QQAppInterface)paramAppInterface).getMsgCache().f(paramMessageRecord.frienduin);
     if (paramMessageRecord != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("CircleGroupRoutingType", 2, "circleGroup------>" + HexUtil.bytes2HexStr(paramMessageRecord) + ",length:" + paramMessageRecord.length);
+      if (QLog.isColorLevel())
+      {
+        paramAppInterface = new StringBuilder();
+        paramAppInterface.append("circleGroup------>");
+        paramAppInterface.append(HexUtil.bytes2HexStr(paramMessageRecord));
+        paramAppInterface.append(",length:");
+        paramAppInterface.append(paramMessageRecord.length);
+        QLog.d("CircleGroupRoutingType", 2, paramAppInterface.toString());
       }
       localBsnsTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
     }
@@ -48,7 +55,7 @@ public class CircleGroupRoutingType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.routingtype.CircleGroupRoutingType
  * JD-Core Version:    0.7.0.1
  */

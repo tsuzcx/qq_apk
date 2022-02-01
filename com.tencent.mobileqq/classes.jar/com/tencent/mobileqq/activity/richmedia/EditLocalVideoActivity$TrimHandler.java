@@ -20,47 +20,74 @@ class EditLocalVideoActivity$TrimHandler
   
   public void handleMessage(Message paramMessage)
   {
-    if ((this.a == null) || (this.a.get() == null)) {}
-    EditLocalVideoActivity localEditLocalVideoActivity;
-    do
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      return;
-      localEditLocalVideoActivity = (EditLocalVideoActivity)this.a.get();
-      switch (paramMessage.what)
-      {
-      case 1000: 
-      default: 
-        return;
-      case 1001: 
-        EditLocalVideoActivity.b(localEditLocalVideoActivity);
-        return;
-      case 1103: 
-        EditLocalVideoActivity.a(localEditLocalVideoActivity);
-        return;
-      case 1102: 
-        EditLocalVideoActivity.a(localEditLocalVideoActivity, paramMessage);
+      if (((WeakReference)localObject).get() == null) {
         return;
       }
-    } while (EditLocalVideoActivity.a(localEditLocalVideoActivity) == null);
-    EditLocalVideoActivity.a(localEditLocalVideoActivity).requestLayout();
-    return;
-    EditLocalVideoActivity.c(localEditLocalVideoActivity);
-    return;
-    Toast.makeText(localEditLocalVideoActivity.getApplicationContext(), HardCodeUtil.a(2131703685), 1).show();
-    EditLocalVideoActivity.d(localEditLocalVideoActivity);
-    return;
-    localEditLocalVideoActivity.a("608", "3", "1", true);
-    LpReportInfo_pf00064.allReport(664, 3, 4);
-    paramMessage = (String)paramMessage.obj;
-    return;
-    localEditLocalVideoActivity.a("608", "3", "2", true);
-    return;
-    EditLocalVideoActivity.e(localEditLocalVideoActivity);
+      localObject = (EditLocalVideoActivity)this.a.get();
+      int i = paramMessage.what;
+      if (i != 1000) {
+        if (i != 1001)
+        {
+          if (i != 1006)
+          {
+            if (i != 1007)
+            {
+              if (i != 1009)
+              {
+                if (i != 9999)
+                {
+                  switch (i)
+                  {
+                  default: 
+                    return;
+                  case 1103: 
+                    EditLocalVideoActivity.a((EditLocalVideoActivity)localObject);
+                    return;
+                  case 1102: 
+                    EditLocalVideoActivity.a((EditLocalVideoActivity)localObject, paramMessage);
+                    return;
+                  case 1101: 
+                    Toast.makeText(((EditLocalVideoActivity)localObject).getApplicationContext(), HardCodeUtil.a(2131703813), 1).show();
+                    EditLocalVideoActivity.d((EditLocalVideoActivity)localObject);
+                    return;
+                  }
+                  if (EditLocalVideoActivity.a((EditLocalVideoActivity)localObject) != null) {
+                    EditLocalVideoActivity.a((EditLocalVideoActivity)localObject).requestLayout();
+                  }
+                }
+                else
+                {
+                  EditLocalVideoActivity.c((EditLocalVideoActivity)localObject);
+                }
+              }
+              else {
+                EditLocalVideoActivity.e((EditLocalVideoActivity)localObject);
+              }
+            }
+            else {
+              ((EditLocalVideoActivity)localObject).a("608", "3", "2", true);
+            }
+          }
+          else
+          {
+            ((EditLocalVideoActivity)localObject).a("608", "3", "1", true);
+            LpReportInfo_pf00064.allReport(664, 3, 4);
+            paramMessage = (String)paramMessage.obj;
+          }
+        }
+        else {
+          EditLocalVideoActivity.b((EditLocalVideoActivity)localObject);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity.TrimHandler
  * JD-Core Version:    0.7.0.1
  */

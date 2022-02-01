@@ -15,15 +15,12 @@ public class ArkAppPreloader
   
   public static boolean isAppPreloaded(String paramString)
   {
-    boolean bool = false;
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
     synchronized (sPreLoadApplications)
     {
-      if (sPreLoadApplications.containsKey(paramString)) {
-        bool = true;
-      }
+      boolean bool = sPreLoadApplications.containsKey(paramString);
       return bool;
     }
   }
@@ -32,7 +29,7 @@ public class ArkAppPreloader
   {
     if (paramString1 == null)
     {
-      ENV.logE("ArkApp.ArkAppPreloader", "profiling.preloadApp failed for appname is null");
+      Logger.logE("ArkApp.ArkAppPreloader", "profiling.preloadApp failed for appname is null");
       return;
     }
     paramPreloadAppCallback = new WeakReference(paramPreloadAppCallback);
@@ -43,7 +40,7 @@ public class ArkAppPreloader
     }
     catch (UnsatisfiedLinkError paramString1)
     {
-      ENV.logE("ArkApp.ArkAppPreloader", String.format("profiling.preloadApp, exception=%s", new Object[] { paramString1.getMessage() }));
+      Logger.logE("ArkApp.ArkAppPreloader", String.format("profiling.preloadApp, exception=%s", new Object[] { paramString1.getMessage() }));
     }
   }
   
@@ -58,14 +55,14 @@ public class ArkAppPreloader
         ark.arkSetStoragePath(paramString1, paramString2);
         ark.arkHTTPSetDownloadDirectory(paramString2);
         ArkViewModelBase.setArkHttpProxy();
-        ENV.logI("ArkApp.ArkAppPreloader", String.format("profiling.preloadCommon storagePath=%s.cachePath=%s", new Object[] { paramString1, paramString2 }));
+        Logger.logI("ArkApp.ArkAppPreloader", String.format("profiling.preloadCommon storagePath=%s.cachePath=%s", new Object[] { paramString1, paramString2 }));
         sArkCommonInit = true;
+        return;
       }
-      return;
     }
     catch (UnsatisfiedLinkError paramString1)
     {
-      ENV.logE("ArkApp.ArkAppPreloader", String.format("profiling.preloadCommon, exception=%s", new Object[] { paramString1.getMessage() }));
+      Logger.logE("ArkApp.ArkAppPreloader", String.format("profiling.preloadCommon, exception=%s", new Object[] { paramString1.getMessage() }));
     }
   }
   
@@ -78,45 +75,44 @@ public class ArkAppPreloader
     {
       synchronized (sPreLoadApplications)
       {
-        localObject2 = (ArkAppPreloader.PreloadAppInfo)sPreLoadApplications.get(paramString);
-        ENV.logI("ArkApp.ArkAppPreloader", String.format("profiling.releasePreloadApplicationAndReload.delay 5s releasing preloadApp:%s", new Object[] { paramString }));
-        if (localObject2 != null)
+        localObject4 = (ArkAppPreloader.PreloadAppInfo)sPreLoadApplications.get(paramString);
+        Logger.logI("ArkApp.ArkAppPreloader", String.format("profiling.releasePreloadApplicationAndReload.delay 5s releasing preloadApp:%s", new Object[] { paramString }));
+        String str1 = null;
+        localObject1 = null;
+        if (localObject4 != null)
         {
-          str5 = ((ArkAppPreloader.PreloadAppInfo)localObject2).appName;
-          str4 = ((ArkAppPreloader.PreloadAppInfo)localObject2).appPath;
-          str3 = ((ArkAppPreloader.PreloadAppInfo)localObject2).storagePath;
-          str2 = ((ArkAppPreloader.PreloadAppInfo)localObject2).resPath;
-          str1 = ((ArkAppPreloader.PreloadAppInfo)localObject2).cachePath;
-          if (((ArkAppPreloader.PreloadAppInfo)localObject2).callbackRef != null)
-          {
-            localObject1 = (ArkAppPreloader.PreloadAppCallback)((ArkAppPreloader.PreloadAppInfo)localObject2).callbackRef.get();
-            ark.Application localApplication = ((ArkAppPreloader.PreloadAppInfo)localObject2).application;
-            localObject2 = localObject1;
-            localObject1 = localApplication;
-            if (localObject1 != null)
-            {
-              ENV.logD("ArkApp.ArkAppPreloader", String.format("profiling.releasePreloadApplicationAndReload.delay 5s releasing.preloadApp.application=%h", new Object[] { localObject1 }));
-              ((ark.Application)localObject1).Release();
-              sPreLoadApplications.remove(paramString);
-            }
-            ENV.logD("ArkApp.ArkAppPreloader", String.format("profiling.releasePreloadApplicationAndReload.delay 5s preloadApp.appName=%s,path=%s,storagePath=%s,resPath=%s,cachePath=%s,cb=%h", new Object[] { str5, str4, str3, str2, str1, localObject2 }));
-            if ((TextUtils.isEmpty(str5)) || (localObject2 == null)) {
-              break;
-            }
-            ENV.logD("ArkApp.ArkAppPreloader", String.format("profiling.releasePreloadApplicationAndReload.delay 5s.begin.preload.App=%s", new Object[] { str5 }));
-            ((ArkAppPreloader.PreloadAppCallback)localObject2).onReleaseAndReload(str5, 2);
-            return;
+          str1 = ((ArkAppPreloader.PreloadAppInfo)localObject4).appName;
+          localObject3 = ((ArkAppPreloader.PreloadAppInfo)localObject4).appPath;
+          localObject2 = ((ArkAppPreloader.PreloadAppInfo)localObject4).storagePath;
+          String str2 = ((ArkAppPreloader.PreloadAppInfo)localObject4).resPath;
+          localObject5 = ((ArkAppPreloader.PreloadAppInfo)localObject4).cachePath;
+          if (((ArkAppPreloader.PreloadAppInfo)localObject4).callbackRef != null) {
+            localObject1 = (ArkAppPreloader.PreloadAppCallback)((ArkAppPreloader.PreloadAppInfo)localObject4).callbackRef.get();
           }
-          localObject1 = null;
+          localApplication = ((ArkAppPreloader.PreloadAppInfo)localObject4).application;
+          localObject4 = localObject1;
+          localObject1 = str2;
+          if (localApplication != null)
+          {
+            Logger.logD("ArkApp.ArkAppPreloader", String.format("profiling.releasePreloadApplicationAndReload.delay 5s releasing.preloadApp.application=%h", new Object[] { localApplication }));
+            localApplication.Release();
+            sPreLoadApplications.remove(paramString);
+          }
+          Logger.logD("ArkApp.ArkAppPreloader", String.format("profiling.releasePreloadApplicationAndReload.delay 5s preloadApp.appName=%s,path=%s,storagePath=%s,resPath=%s,cachePath=%s,cb=%h", new Object[] { str1, localObject3, localObject2, localObject1, localObject5, localObject4 }));
+          if ((!TextUtils.isEmpty(str1)) && (localObject4 != null))
+          {
+            Logger.logD("ArkApp.ArkAppPreloader", String.format("profiling.releasePreloadApplicationAndReload.delay 5s.begin.preload.App=%s", new Object[] { str1 }));
+            ((ArkAppPreloader.PreloadAppCallback)localObject4).onReleaseAndReload(str1, 2);
+          }
+          return;
         }
       }
-      Object localObject1 = null;
-      Object localObject2 = null;
-      String str1 = null;
-      String str2 = null;
-      String str3 = null;
-      String str4 = null;
-      String str5 = null;
+      ark.Application localApplication = null;
+      Object localObject4 = localApplication;
+      Object localObject3 = localObject4;
+      Object localObject2 = localObject3;
+      Object localObject1 = localObject2;
+      Object localObject5 = localObject1;
     }
   }
 }

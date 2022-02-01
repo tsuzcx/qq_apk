@@ -10,18 +10,17 @@ class BaseInviteFloatBarUICtr$1
   
   public boolean a(Bitmap paramBitmap, String paramString)
   {
-    boolean bool = false;
     if (this.a.a != null)
     {
       this.a.a.a(paramBitmap);
-      bool = true;
+      return true;
     }
-    return bool;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.BaseInviteFloatBarUICtr.1
  * JD-Core Version:    0.7.0.1
  */

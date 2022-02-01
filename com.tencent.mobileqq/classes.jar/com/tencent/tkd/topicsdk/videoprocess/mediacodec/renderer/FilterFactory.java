@@ -7,21 +7,23 @@ public class FilterFactory
 {
   public static GPUBaseFilter a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return new GPUBaseFilter();
-    case 102: 
+      if (paramInt != 102)
+      {
+        if (paramInt != 106) {
+          return new GPUBaseFilter();
+        }
+        return new GPUImagePixelationFilter();
+      }
       return new GPUOESBaseFilter();
-    case 0: 
-      return new GPUDrawPartFilter();
     }
-    return new GPUImagePixelationFilter();
+    return new GPUDrawPartFilter();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.mediacodec.renderer.FilterFactory
  * JD-Core Version:    0.7.0.1
  */

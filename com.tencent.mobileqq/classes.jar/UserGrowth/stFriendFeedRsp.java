@@ -41,21 +41,24 @@ public final class stFriendFeedRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.friendFeed != null) {
-      paramJceOutputStream.write(this.friendFeed, 0);
+    Object localObject = this.friendFeed;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
     paramJceOutputStream.write(this.isFinished, 1);
-    if (this.traceId != null) {
-      paramJceOutputStream.write(this.traceId, 2);
+    localObject = this.traceId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.mapExt != null) {
-      paramJceOutputStream.write(this.mapExt, 3);
+    localObject = this.mapExt;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stFriendFeedRsp
  * JD-Core Version:    0.7.0.1
  */

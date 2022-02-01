@@ -60,6 +60,7 @@ import com.tencent.mobileqq.data.DataLineMsgSet;
 import com.tencent.mobileqq.data.DataLineMsgSetList;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.emoticon.QQSysFaceUtil;
+import com.tencent.mobileqq.filemanager.api.IFMSettings;
 import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
 import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
@@ -97,6 +98,7 @@ import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.mobileqq.vas.svip.api.ISVIPHandler;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -117,7 +119,6 @@ import java.util.Timer;
 import mqq.app.NewIntent;
 import mqq.os.MqqHandler;
 import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
 import msf.msgsvc.msg_svc.PbSendMsgReq;
 import msf.msgsvc.msg_svc.PbSendMsgResp;
 import msf.msgsvc.msg_svc.RoutingHead;
@@ -148,8 +149,8 @@ public class DataLineHandler
   extends BusinessHandler
   implements LoginDevicesManager.IDevListRefreshListener, LiteTransferListenerCallback, LiteTransferOperatorCallback
 {
-  private static int jdField_e_of_type_Int = 0;
-  private static int f = 0;
+  private static int jdField_e_of_type_Int;
+  private static int f;
   public int a;
   private long jdField_a_of_type_Long = 0L;
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = null;
@@ -185,7 +186,7 @@ public class DataLineHandler
   private int jdField_d_of_type_Int = 0;
   private long jdField_d_of_type_Long = -1L;
   private boolean jdField_d_of_type_Boolean = false;
-  private boolean jdField_e_of_type_Boolean = false;
+  private boolean jdField_e_of_type_Boolean;
   private int g;
   private int h;
   
@@ -198,12 +199,13 @@ public class DataLineHandler
     this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper = new LiteTransferWrapper(this, this);
     this.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler = null;
     this.jdField_a_of_type_Boolean = false;
+    this.e = false;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler = new PrinterHandler(paramQQAppInterface);
     this.jdField_a_of_type_ComDatalineDataPrinterManager = new PrinterManager(paramQQAppInterface);
     this.jdField_a_of_type_ComDatalineCoreDirectForwarder = new DirectForwarder(paramQQAppInterface);
-    this.g = BaseApplication.getContext().getResources().getDimensionPixelSize(2131296846);
-    this.h = BaseApplication.getContext().getResources().getDimensionPixelSize(2131296845);
+    this.g = BaseApplication.getContext().getResources().getDimensionPixelSize(2131296826);
+    this.h = BaseApplication.getContext().getResources().getDimensionPixelSize(2131296825);
     k();
     this.jdField_a_of_type_AndroidContentBroadcastReceiver = new DataLineHandler.1(this);
     this.jdField_b_of_type_AndroidContentBroadcastReceiver = new DataLineHandler.2(this, paramQQAppInterface);
@@ -213,7 +215,10 @@ public class DataLineHandler
     localIntentFilter.addAction("mqq.intent.action.ACCOUNT_CHANGED");
     localIntentFilter.addAction("mqq.intent.action.ACCOUNT_KICKED");
     localIntentFilter.addAction("mqq.intent.action.FORCE_LOGOUT");
-    localIntentFilter.addAction("mqq.intent.action.EXIT_" + paramQQAppInterface.getApp().getPackageName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mqq.intent.action.EXIT_");
+    localStringBuilder.append(paramQQAppInterface.getApp().getPackageName());
+    localIntentFilter.addAction(localStringBuilder.toString());
     localIntentFilter.addAction("mqq.intent.action.LOGOUT");
     paramQQAppInterface.getApp().registerReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
     localIntentFilter = new IntentFilter();
@@ -235,15 +240,14 @@ public class DataLineHandler
   
   public static int a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    case 3: 
-    default: 
-      return -2005;
-    case 1: 
-      return -2000;
+      if (paramInt != 2) {
+        return -2005;
+      }
+      return -2009;
     }
-    return -2009;
+    return -2000;
   }
   
   private int a(MsgHeader paramMsgHeader)
@@ -251,106 +255,147 @@ public class DataLineHandler
     if (paramMsgHeader == null) {
       return 65793;
     }
-    switch (paramMsgHeader.uint32_src_ter_type)
+    int i = paramMsgHeader.uint32_src_ter_type;
+    if (i != 2)
     {
-    default: 
-      return 65793;
-    case 2: 
-      return 67586;
+      if (i != 3) {
+        return 65793;
+      }
+      return 68361;
     }
-    return 68361;
+    return 67586;
   }
   
   public static int a(FileManagerEntity paramFileManagerEntity)
   {
-    int j = 255;
+    int j = 2;
     if (paramFileManagerEntity == null)
     {
       QLog.i("DataLineHandler", 2, "转发文件, FileManagerEntity为空");
-      return j;
+      return 255;
     }
     int i;
-    if ((!TextUtils.isEmpty(paramFileManagerEntity.getFilePath())) && (new File(paramFileManagerEntity.getFilePath()).exists())) {
+    StringBuilder localStringBuilder;
+    if ((!TextUtils.isEmpty(paramFileManagerEntity.getFilePath())) && (new File(paramFileManagerEntity.getFilePath()).exists()))
+    {
       i = 0;
     }
-    for (;;)
+    else
     {
-      j = i;
-      if (!QLog.isDevelopLevel()) {
-        break;
+      int k = paramFileManagerEntity.getCloudType();
+      if (k != 10) {
+        i = j;
       }
-      QLog.i("DataLineHandler", 4, "是否可以转发到数据线, [" + paramFileManagerEntity.peerType + "]， name[" + paramFileManagerEntity.fileName + "], LocalPath[" + paramFileManagerEntity.getFilePath() + "], FileSize[" + paramFileManagerEntity.fileSize + "], fileFrom[" + i + "], peerType[" + paramFileManagerEntity.peerType + "], peerUin[" + paramFileManagerEntity.peerUin + "], cloudType[" + paramFileManagerEntity.getCloudType());
-      return i;
-      i = j;
-      switch (paramFileManagerEntity.getCloudType())
+      switch (k)
       {
+      default: 
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("FileManagerEntity->cloudType 转 ForwardFileInfo->type， 未识别的cloudType[");
+          localStringBuilder.append(paramFileManagerEntity.getCloudType());
+          QLog.e("dataline", 2, localStringBuilder.toString());
+        }
       case 3: 
       case 5: 
       case 6: 
       case 7: 
-      case 8: 
-      case 9: 
-      default: 
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("dataline", 2, "FileManagerEntity->cloudType 转 ForwardFileInfo->type， 未识别的cloudType[" + paramFileManagerEntity.getCloudType());
-          i = j;
-        }
-        break;
-      case 1: 
-        switch (paramFileManagerEntity.peerType)
-        {
-        default: 
-          if (QLog.isColorLevel())
-          {
-            QLog.i("DataLineHandler", 2, "转发文件, 未知的文件来源默认为C2C, peerType[" + paramFileManagerEntity.peerType + "]， name[" + paramFileManagerEntity.fileName + "], LocalPath[" + paramFileManagerEntity.getFilePath() + "], FileSize[" + paramFileManagerEntity.fileSize + "], fileFrom[" + 1 + "], peerUin[" + paramFileManagerEntity.peerUin + "], cloudType[" + paramFileManagerEntity.getCloudType());
-            i = 1;
-          }
-          break;
-        case 0: 
-          i = 1;
-          break;
-        case 3000: 
-          i = 3;
-          break;
-        case 1: 
-          i = 2;
-          break;
-        case 6000: 
-          i = 5;
-        }
+        i = 255;
         break;
       case 2: 
         i = 4;
         break;
-      case 4: 
-        i = 2;
-        break;
-      case 10: 
-        i = 6;
-        continue;
+      case 1: 
+        k = paramFileManagerEntity.peerType;
+        if (k != 0)
+        {
+          i = j;
+          if (k == 1) {
+            break label371;
+          }
+          if (k == 3000) {
+            break label363;
+          }
+          if (k == 6000) {
+            break label358;
+          }
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("转发文件, 未知的文件来源默认为C2C, peerType[");
+            localStringBuilder.append(paramFileManagerEntity.peerType);
+            localStringBuilder.append("]， name[");
+            localStringBuilder.append(paramFileManagerEntity.fileName);
+            localStringBuilder.append("], LocalPath[");
+            localStringBuilder.append(paramFileManagerEntity.getFilePath());
+            localStringBuilder.append("], FileSize[");
+            localStringBuilder.append(paramFileManagerEntity.fileSize);
+            localStringBuilder.append("], fileFrom[");
+            localStringBuilder.append(1);
+            localStringBuilder.append("], peerUin[");
+            localStringBuilder.append(paramFileManagerEntity.peerUin);
+            localStringBuilder.append("], cloudType[");
+            localStringBuilder.append(paramFileManagerEntity.getCloudType());
+            QLog.i("DataLineHandler", 2, localStringBuilder.toString());
+          }
+        }
         i = 1;
+        break label371;
+        label358:
+        i = 5;
+        break label371;
+        label363:
+        i = 3;
+        break label371;
+        i = 6;
       }
     }
+    label371:
+    if (QLog.isDevelopLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("是否可以转发到数据线, [");
+      localStringBuilder.append(paramFileManagerEntity.peerType);
+      localStringBuilder.append("]， name[");
+      localStringBuilder.append(paramFileManagerEntity.fileName);
+      localStringBuilder.append("], LocalPath[");
+      localStringBuilder.append(paramFileManagerEntity.getFilePath());
+      localStringBuilder.append("], FileSize[");
+      localStringBuilder.append(paramFileManagerEntity.fileSize);
+      localStringBuilder.append("], fileFrom[");
+      localStringBuilder.append(i);
+      localStringBuilder.append("], peerType[");
+      localStringBuilder.append(paramFileManagerEntity.peerType);
+      localStringBuilder.append("], peerUin[");
+      localStringBuilder.append(paramFileManagerEntity.peerUin);
+      localStringBuilder.append("], cloudType[");
+      localStringBuilder.append(paramFileManagerEntity.getCloudType());
+      QLog.i("DataLineHandler", 4, localStringBuilder.toString());
+    }
+    return i;
   }
   
   public static int a(String paramString, boolean paramBoolean)
   {
-    switch (FileManagerUtil.a(paramString))
-    {
-    default: 
-      if (!paramBoolean) {
-        break;
+    int j = FileManagerUtil.a(paramString);
+    int i = 2;
+    if (j != 0) {
+      if (j != 1)
+      {
+        if (j == 2) {
+          return i;
+        }
+        if (!paramBoolean) {
+          return 0;
+        }
       }
-    case 0: 
-      return 1;
-    case 1: 
-      return 3;
-    case 2: 
-      return 2;
+      else
+      {
+        return 3;
+      }
     }
-    return 0;
+    i = 1;
+    return i;
   }
   
   private Session a(FileManagerEntity paramFileManagerEntity)
@@ -365,27 +410,31 @@ public class DataLineHandler
     localSession.dwGroupIndex = paramFileManagerEntity.dlGourpIndex;
     if (paramFileManagerEntity.nFileType == 2) {
       localSession.emFileType = 2;
+    } else if (paramFileManagerEntity.nFileType == 0) {
+      localSession.emFileType = 1;
+    } else {
+      localSession.emFileType = 0;
     }
-    for (;;)
+    if (QFileAssistantUtils.a(paramFileManagerEntity.peerUin)) {
+      localSession.isFileAssist = true;
+    }
+    localSession.strFilePathSrc = FilePathUtil.b(paramFileManagerEntity.strFilePath);
+    localSession.strFilePathThumb = paramFileManagerEntity.strThumbPath;
+    localSession.uFileSizeSrc = paramFileManagerEntity.fileSize;
+    localSession.vFileMD5Src = HexUtil.hexStr2Bytes(paramFileManagerEntity.strFileMd5);
+    if ((QLog.isDevelopLevel()) && (paramFileManagerEntity.strFileMd5 != null))
     {
-      if (QFileAssistantUtils.a(paramFileManagerEntity.peerUin)) {
-        localSession.isFileAssist = true;
-      }
-      localSession.strFilePathSrc = FilePathUtil.c(paramFileManagerEntity.strFilePath);
-      localSession.strFilePathThumb = paramFileManagerEntity.strThumbPath;
-      localSession.uFileSizeSrc = paramFileManagerEntity.fileSize;
-      localSession.vFileMD5Src = HexUtil.hexStr2Bytes(paramFileManagerEntity.strFileMd5);
-      if ((QLog.isDevelopLevel()) && (paramFileManagerEntity.strFileMd5 != null)) {
-        QLog.d("DataLineHandler.NFRV", 4, "getSessionFromMsgRecord, uSessionID[" + paramFileManagerEntity.nSessionId + "], strMR[" + paramFileManagerEntity.strFileMd5 + "], filesize[" + paramFileManagerEntity.fileSize);
-      }
-      localSession.actionInfo = null;
-      return localSession;
-      if (paramFileManagerEntity.nFileType == 0) {
-        localSession.emFileType = 1;
-      } else {
-        localSession.emFileType = 0;
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getSessionFromMsgRecord, uSessionID[");
+      localStringBuilder.append(paramFileManagerEntity.nSessionId);
+      localStringBuilder.append("], strMR[");
+      localStringBuilder.append(paramFileManagerEntity.strFileMd5);
+      localStringBuilder.append("], filesize[");
+      localStringBuilder.append(paramFileManagerEntity.fileSize);
+      QLog.d("DataLineHandler.NFRV", 4, localStringBuilder.toString());
     }
+    localSession.actionInfo = null;
+    return localSession;
   }
   
   private ToServiceMsg a(boolean paramBoolean, int paramInt, long paramLong, msg_svc.PbSendMsgReq paramPbSendMsgReq)
@@ -408,40 +457,68 @@ public class DataLineHandler
     int i = paramString.lastIndexOf(".");
     String str2;
     String str1;
-    VFSFile localVFSFile;
     if (i >= 0)
     {
       str2 = paramString.substring(0, i);
       str1 = paramString.substring(i);
-      i = 1;
-      localVFSFile = new VFSFile(paramString);
     }
+    else
+    {
+      str1 = "";
+      str2 = paramString;
+    }
+    VFSFile localVFSFile = new VFSFile(paramString);
+    i = 1;
     int j;
     for (;;)
     {
       if (i > 512)
       {
-        return str2 + "(" + System.currentTimeMillis() + ")" + str1;
-        str1 = "";
-        str2 = paramString;
-        break;
+        paramString = new StringBuilder();
+        paramString.append(str2);
+        paramString.append("(");
+        paramString.append(System.currentTimeMillis());
+        paramString.append(")");
+        paramString.append(str1);
+        return paramString.toString();
       }
       j = i;
       if (!localVFSFile.exists()) {
-        break label209;
+        break;
       }
-      paramString = str2 + "(" + i + ")" + str1;
+      paramString = new StringBuilder();
+      paramString.append(str2);
+      paramString.append("(");
+      paramString.append(i);
+      paramString.append(")");
+      paramString.append(str1);
+      paramString = paramString.toString();
       localVFSFile = new VFSFile(paramString);
       i += 1;
     }
-    while (c(paramString))
+    for (;;)
     {
-      paramString = str2 + "(" + j + ")" + str1;
-      j += 1;
-      label209:
-      if (j > 512) {
-        return str2 + "(" + System.currentTimeMillis() + ")" + str1;
+      if (j > 512)
+      {
+        paramString = new StringBuilder();
+        paramString.append(str2);
+        paramString.append("(");
+        paramString.append(System.currentTimeMillis());
+        paramString.append(")");
+        paramString.append(str1);
+        return paramString.toString();
       }
+      if (!c(paramString)) {
+        break;
+      }
+      paramString = new StringBuilder();
+      paramString.append(str2);
+      paramString.append("(");
+      paramString.append(j);
+      paramString.append(")");
+      paramString.append(str1);
+      paramString = paramString.toString();
+      j += 1;
     }
     return paramString;
   }
@@ -460,9 +537,10 @@ public class DataLineHandler
     localTransMsgContext.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
     paramString = a(13, paramString, localTransMsgContext, l2, MessageUtils.b(l1), paramLong);
     paramArrayOfByte = new im_msg_head.InstInfo();
-    paramInt1 = 1;
     if (paramInt2 == 3) {
       paramInt1 = 1001;
+    } else {
+      paramInt1 = 1;
     }
     paramArrayOfByte.uint32_apppid.set(paramInt1);
     paramArrayOfByte.uint32_instid.set(0);
@@ -483,34 +561,52 @@ public class DataLineHandler
   {
     int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
     DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).a(paramLong);
-    if (localDataLineMsgRecord == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if (paramInt != 0) {
-          break;
-        }
-        localDataLineMsgRecord.thumbPath = paramString;
-      } while (localDataLineMsgRecord.isSend());
-      if (QLog.isColorLevel()) {
-        QLog.d("DataLineHandler", 2, "uSessionID[" + paramLong + "]OnSessionThumbUpdate: update");
-      }
-      a(10, true, new Object[] { Long.valueOf(paramLong) });
+    if (localDataLineMsgRecord == null) {
       return;
+    }
+    if (paramInt == 0)
+    {
+      localDataLineMsgRecord.thumbPath = paramString;
+      if (!localDataLineMsgRecord.isSend())
+      {
+        if (QLog.isColorLevel())
+        {
+          paramString = new StringBuilder();
+          paramString.append("uSessionID[");
+          paramString.append(paramLong);
+          paramString.append("]OnSessionThumbUpdate: update");
+          QLog.d("DataLineHandler", 2, paramString.toString());
+        }
+        a(10, true, new Object[] { Long.valueOf(paramLong) });
+      }
+    }
+    else
+    {
       if (paramInt == 1)
       {
         localDataLineMsgRecord.serverPath = paramString;
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).a(localDataLineMsgRecord.msgId, localDataLineMsgRecord.serverPath, localDataLineMsgRecord.md5);
         return;
       }
-    } while (paramInt != 2);
-    localDataLineMsgRecord.md5 = HexUtil.hexStr2Bytes(paramString);
-    if ((QLog.isDevelopLevel()) && (localDataLineMsgRecord.md5 != null)) {
-      QLog.d("DataLineHandler", 4, "SessionUpdateType_FileMD5, uSessionID[" + paramLong + "], strValuebuf[" + paramString + "], strMD5MR[" + HexUtil.bytes2HexStr(localDataLineMsgRecord.md5) + "], strMD5Notify" + paramString);
+      if (paramInt == 2)
+      {
+        localDataLineMsgRecord.md5 = HexUtil.hexStr2Bytes(paramString);
+        if ((QLog.isDevelopLevel()) && (localDataLineMsgRecord.md5 != null))
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("SessionUpdateType_FileMD5, uSessionID[");
+          localStringBuilder.append(paramLong);
+          localStringBuilder.append("], strValuebuf[");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append("], strMD5MR[");
+          localStringBuilder.append(HexUtil.bytes2HexStr(localDataLineMsgRecord.md5));
+          localStringBuilder.append("], strMD5Notify");
+          localStringBuilder.append(paramString);
+          QLog.d("DataLineHandler", 4, localStringBuilder.toString());
+        }
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).a(localDataLineMsgRecord.msgId, localDataLineMsgRecord.serverPath, localDataLineMsgRecord.md5);
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).a(localDataLineMsgRecord.msgId, localDataLineMsgRecord.serverPath, localDataLineMsgRecord.md5);
   }
   
   private void a(int paramInt1, FTNNotify paramFTNNotify, long paramLong, int paramInt2)
@@ -521,7 +617,7 @@ public class DataLineHandler
   
   private void a(int paramInt1, FileControl paramFileControl, long paramLong, int paramInt2)
   {
-    if (!NetworkUtil.d(BaseApplication.getContext())) {
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext())) {
       return;
     }
     SubMsgType0x7.MsgBody localMsgBody = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.MsgBodyFromFileControl(paramFileControl, paramLong, this.jdField_a_of_type_JavaLangString, paramInt2);
@@ -530,9 +626,8 @@ public class DataLineHandler
   
   private void a(int paramInt, MsgCSBody0x211 paramMsgCSBody0x211)
   {
-    switch (paramMsgCSBody0x211.uMsgSubType)
+    if (paramMsgCSBody0x211.uMsgSubType != 7)
     {
-    default: 
       QLog.d("DataLineHandler", 1, "SendPbMsg: cannot recognize the pb msg form 0X211");
       return;
     }
@@ -541,59 +636,64 @@ public class DataLineHandler
   
   private void a(int paramInt, MsgCSBody0x211_0x7 paramMsgCSBody0x211_0x7)
   {
-    int j = 0;
-    int k = 0;
-    int m = 0;
-    int n = 0;
-    int i1 = 0;
-    int i = 0;
     long l = paramMsgCSBody0x211_0x7.msgHeader.uint64_dst_uin;
-    switch (paramMsgCSBody0x211_0x7.uMsgSubCmd)
+    int i = paramMsgCSBody0x211_0x7.uMsgSubCmd;
+    if (i != 1)
     {
-    }
-    for (;;)
-    {
-      QLog.d("DataLineHandler", 1, "SendPbMsg: cannot recognize the pb msg form 0X211_0x7");
-      for (;;)
+      if (i != 2)
       {
-        return;
-        while (i < paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0x1_FTNNotifySrc.length)
+        if (i != 3)
         {
-          a(paramInt, paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0x1_FTNNotifySrc[i], l, paramMsgCSBody0x211_0x7.uMsgSubCmd);
+          switch (i)
+          {
+          default: 
+            break;
+          case 10: 
+            i = 0;
+            while (i < paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0xa_NFCNotifyThumb.length)
+            {
+              paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0xa_NFCNotifyThumb[i].bytes_originfile_md5 = null;
+              a(paramInt, paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0xa_NFCNotifyThumb[i], l, paramMsgCSBody0x211_0x7.uMsgSubCmd);
+              i += 1;
+            }
+          case 9: 
+            i = 0;
+            while (i < paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0x9_FTNNotifyThumb.length)
+            {
+              paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0x9_FTNNotifyThumb[i].bytes_originfile_md5 = null;
+              a(paramInt, paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0x9_FTNNotifyThumb[i], l, paramMsgCSBody0x211_0x7.uMsgSubCmd);
+              i += 1;
+            }
+          case 8: 
+            i = 0;
+            while (i < paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0x8_RFCInfoNotiy.length)
+            {
+              a(paramInt, paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0x8_RFCInfoNotiy[i], l, paramMsgCSBody0x211_0x7.uMsgSubCmd);
+              i += 1;
+            }
+          }
+          QLog.d("DataLineHandler", 1, "SendPbMsg: cannot recognize the pb msg form 0X211_0x7");
+          return;
+        }
+        i = 0;
+        while (i < paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0x3_FileControl.length)
+        {
+          a(paramInt, paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0x3_FileControl[i], l, paramMsgCSBody0x211_0x7.uMsgSubCmd);
           i += 1;
         }
-        continue;
-        while (j < paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0x2_NFCNotifySrc.length)
-        {
-          a(paramInt, paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0x2_NFCNotifySrc[j], l, paramMsgCSBody0x211_0x7.uMsgSubCmd);
-          j += 1;
-        }
-        continue;
-        while (k < paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0x3_FileControl.length)
-        {
-          a(paramInt, paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0x3_FileControl[k], l, paramMsgCSBody0x211_0x7.uMsgSubCmd);
-          k += 1;
-        }
-        continue;
-        while (m < paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0x9_FTNNotifyThumb.length)
-        {
-          paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0x9_FTNNotifyThumb[m].bytes_originfile_md5 = null;
-          a(paramInt, paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0x9_FTNNotifyThumb[m], l, paramMsgCSBody0x211_0x7.uMsgSubCmd);
-          m += 1;
-        }
-        continue;
-        while (n < paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0xa_NFCNotifyThumb.length)
-        {
-          paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0xa_NFCNotifyThumb[n].bytes_originfile_md5 = null;
-          a(paramInt, paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0xa_NFCNotifyThumb[n], l, paramMsgCSBody0x211_0x7.uMsgSubCmd);
-          n += 1;
-        }
       }
-      while (i1 < paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0x8_RFCInfoNotiy.length)
+      i = 0;
+      while (i < paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0x2_NFCNotifySrc.length)
       {
-        a(paramInt, paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0x8_RFCInfoNotiy[i1], l, paramMsgCSBody0x211_0x7.uMsgSubCmd);
-        i1 += 1;
+        a(paramInt, paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0x2_NFCNotifySrc[i], l, paramMsgCSBody0x211_0x7.uMsgSubCmd);
+        i += 1;
       }
+    }
+    i = 0;
+    while (i < paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0x1_FTNNotifySrc.length)
+    {
+      a(paramInt, paramMsgCSBody0x211_0x7.pMsgBody0x211_0x7_0x1_FTNNotifySrc[i], l, paramMsgCSBody0x211_0x7.uMsgSubCmd);
+      i += 1;
     }
   }
   
@@ -613,7 +713,8 @@ public class DataLineHandler
   {
     paramDataLineMsgRecord.bIsTransfering = false;
     c(paramDataLineMsgRecord.path);
-    if (paramDataLineMsgRecord.isSend()) {
+    if (paramDataLineMsgRecord.isSend())
+    {
       if (paramInt2 == 2)
       {
         paramDataLineMsgRecord.fileMsgStatus = 0L;
@@ -630,70 +731,73 @@ public class DataLineHandler
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).d(paramDataLineMsgRecord.msgId);
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).c();
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).b(paramDataLineMsgRecord.msgId);
-        if ((paramDataLineMsgRecord.nSessionState == 2) && (com.tencent.mobileqq.filemanager.util.FileUtil.a(paramDataLineMsgRecord.path))) {
+        if ((paramDataLineMsgRecord.nSessionState == 2) && (com.tencent.mobileqq.filemanager.util.FileUtil.b(paramDataLineMsgRecord.path))) {
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).b(paramDataLineMsgRecord.msgId, paramDataLineMsgRecord.path);
         }
         ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006223", "0X8006223", 0, 0, "", "", "", "");
       }
-    }
-    for (;;)
-    {
-      paramDataLineMsgRecord.nSessionState = 1;
-      return;
-      if ((paramInt2 == 32) || (paramInt2 == 11) || (paramInt2 == 8))
+      else if ((paramInt2 != 32) && (paramInt2 != 11) && (paramInt2 != 8))
       {
-        paramDataLineMsgRecord.fileMsgStatus = 2L;
+        paramDataLineMsgRecord.fileMsgStatus = 0L;
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).d(paramDataLineMsgRecord.msgId);
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).c(paramDataLineMsgRecord.msgId);
         ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006224", "0X8006224", 0, 0, "", "", "", "");
       }
       else
       {
-        paramDataLineMsgRecord.fileMsgStatus = 0L;
+        paramDataLineMsgRecord.fileMsgStatus = 2L;
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).d(paramDataLineMsgRecord.msgId);
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).c(paramDataLineMsgRecord.msgId);
         ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006224", "0X8006224", 0, 0, "", "", "", "");
-        continue;
-        if (paramInt2 == 2)
-        {
-          paramDataLineMsgRecord.fileMsgStatus = 0L;
-          e(paramDataLineMsgRecord);
-          if (!TextUtils.isEmpty(paramDataLineMsgRecord.thumbPath)) {
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).a(paramDataLineMsgRecord.msgId, paramDataLineMsgRecord.thumbPath);
-          }
-          String str = FilePathUtil.a(paramDataLineMsgRecord.path);
-          if (str != null)
-          {
-            FileUtils.e(paramDataLineMsgRecord.path);
-            paramDataLineMsgRecord.path = str;
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).b(paramDataLineMsgRecord.msgId, str);
-          }
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).d(paramDataLineMsgRecord.msgId);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).b(paramDataLineMsgRecord.msgId);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).c();
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006226", "0X8006226", 0, 0, "", "", "", "");
-        }
-        else if ((paramInt2 == 32) || (paramInt2 == 11) || (paramInt2 == 8))
-        {
-          paramDataLineMsgRecord.fileMsgStatus = 2L;
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).d(paramDataLineMsgRecord.msgId);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).c(paramDataLineMsgRecord.msgId);
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006227", "0X8006227", 0, 0, "", "", "", "");
-        }
-        else
-        {
-          if ((paramInt2 == 41) && (paramDataLineMsgRecord.fileMsgStatus == 1L) && (!paramDataLineMsgRecord.bIsTransfering))
-          {
-            QLog.w("DataLineHandler", 1, "uSessionID[" + paramDataLineMsgRecord.sessionid + "]_onSessionComplete. net fail. but comingfile is no start transfer");
-            return;
-          }
-          paramDataLineMsgRecord.fileMsgStatus = 0L;
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).d(paramDataLineMsgRecord.msgId);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).c(paramDataLineMsgRecord.msgId);
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006227", "0X8006227", 0, 0, "", "", "", "");
-        }
       }
     }
+    else
+    {
+      Object localObject;
+      if (paramInt2 == 2)
+      {
+        paramDataLineMsgRecord.fileMsgStatus = 0L;
+        e(paramDataLineMsgRecord);
+        if (!TextUtils.isEmpty(paramDataLineMsgRecord.thumbPath)) {
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).a(paramDataLineMsgRecord.msgId, paramDataLineMsgRecord.thumbPath);
+        }
+        localObject = FilePathUtil.c(paramDataLineMsgRecord.path);
+        if (localObject != null)
+        {
+          FileUtils.deleteFile(paramDataLineMsgRecord.path);
+          paramDataLineMsgRecord.path = ((String)localObject);
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).b(paramDataLineMsgRecord.msgId, (String)localObject);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).d(paramDataLineMsgRecord.msgId);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).b(paramDataLineMsgRecord.msgId);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).c();
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006226", "0X8006226", 0, 0, "", "", "", "");
+      }
+      else if ((paramInt2 != 32) && (paramInt2 != 11) && (paramInt2 != 8))
+      {
+        if ((paramInt2 == 41) && (paramDataLineMsgRecord.fileMsgStatus == 1L) && (!paramDataLineMsgRecord.bIsTransfering))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("uSessionID[");
+          ((StringBuilder)localObject).append(paramDataLineMsgRecord.sessionid);
+          ((StringBuilder)localObject).append("]_onSessionComplete. net fail. but comingfile is no start transfer");
+          QLog.w("DataLineHandler", 1, ((StringBuilder)localObject).toString());
+          return;
+        }
+        paramDataLineMsgRecord.fileMsgStatus = 0L;
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).d(paramDataLineMsgRecord.msgId);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).c(paramDataLineMsgRecord.msgId);
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006227", "0X8006227", 0, 0, "", "", "", "");
+      }
+      else
+      {
+        paramDataLineMsgRecord.fileMsgStatus = 2L;
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).d(paramDataLineMsgRecord.msgId);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).c(paramDataLineMsgRecord.msgId);
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006227", "0X8006227", 0, 0, "", "", "", "");
+      }
+    }
+    paramDataLineMsgRecord.nSessionState = 1;
   }
   
   private void a(int paramInt, SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, List<SubMsgType0x7.MsgBody.RNFCNotify> paramList)
@@ -733,65 +837,69 @@ public class DataLineHandler
   {
     int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
     DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).a(paramLong);
-    if (localDataLineMsgRecord == null) {}
-    do
+    if (localDataLineMsgRecord == null) {
+      return;
+    }
+    if ((localDataLineMsgRecord.isSend()) && (localDataLineMsgRecord.fileFrom == 0))
     {
-      do
+      if (paramInt == 2)
       {
-        return;
-        if ((!localDataLineMsgRecord.isSend()) || (localDataLineMsgRecord.fileFrom != 0)) {
-          break label266;
-        }
-        if (paramInt != 2) {
-          break;
-        }
         a(4, true, new Object[] { Long.valueOf(0L), Long.valueOf(paramLong), Float.valueOf(1.0F) });
         a(2, true, new Object[] { Long.valueOf(0L), Long.valueOf(paramLong), localDataLineMsgRecord.path });
-      } while (paramLong <= 0L);
-      FileManagerEntity localFileManagerEntity = localDataLineMsgRecord.trans2Entity();
-      if ((localFileManagerEntity != null) && (localFileManagerEntity.fileSize <= 20971520L))
+        if (paramLong > 0L)
+        {
+          FileManagerEntity localFileManagerEntity = localDataLineMsgRecord.trans2Entity();
+          if ((localFileManagerEntity != null) && (localFileManagerEntity.fileSize <= 20971520L))
+          {
+            ((DataLineMessageSpreadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TEAMWORK_SPREAD_MANAGER_DATALINE)).a(localDataLineMsgRecord, i);
+            return;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.e("AIOMessageSpreadManager", 1, "can't find File Msg sID:");
+          }
+        }
+      }
+      else
       {
-        ((DataLineMessageSpreadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TEAMWORK_SPREAD_MANAGER_DATALINE)).a(localDataLineMsgRecord, i);
+        if ((paramInt != 32) && (paramInt != 11) && (paramInt != 8))
+        {
+          a(2, false, new Object[] { Long.valueOf(0L), Long.valueOf(paramLong), localDataLineMsgRecord.path });
+          return;
+        }
+        a(2, false, new Object[] { Long.valueOf(0L), Long.valueOf(paramLong), localDataLineMsgRecord.path });
+      }
+    }
+    else
+    {
+      if (paramInt == 2)
+      {
+        a(4, true, new Object[] { Long.valueOf(0L), Long.valueOf(paramLong), Float.valueOf(1.0F) });
+        a(3, true, new Object[] { Long.valueOf(0L), Long.valueOf(paramLong), localDataLineMsgRecord.path });
         return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("AIOMessageSpreadManager", 1, "can't find File Msg sID:");
-    return;
-    if ((paramInt == 32) || (paramInt == 11) || (paramInt == 8))
-    {
-      a(2, false, new Object[] { Long.valueOf(0L), Long.valueOf(paramLong), localDataLineMsgRecord.path });
-      return;
-    }
-    a(2, false, new Object[] { Long.valueOf(0L), Long.valueOf(paramLong), localDataLineMsgRecord.path });
-    return;
-    label266:
-    if (paramInt == 2)
-    {
-      a(4, true, new Object[] { Long.valueOf(0L), Long.valueOf(paramLong), Float.valueOf(1.0F) });
-      a(3, true, new Object[] { Long.valueOf(0L), Long.valueOf(paramLong), localDataLineMsgRecord.path });
-      return;
-    }
-    if ((paramInt == 32) || (paramInt == 11) || (paramInt == 8))
-    {
+      if ((paramInt != 32) && (paramInt != 11) && (paramInt != 8))
+      {
+        a(3, false, new Object[] { Long.valueOf(0L), Long.valueOf(paramLong), localDataLineMsgRecord.path });
+        return;
+      }
       a(3, false, new Object[] { Long.valueOf(0L), Long.valueOf(paramLong), localDataLineMsgRecord.path });
-      return;
     }
-    a(3, false, new Object[] { Long.valueOf(0L), Long.valueOf(paramLong), localDataLineMsgRecord.path });
   }
   
   private void a(long paramLong1, long paramLong2, long paramLong3)
   {
-    if (paramLong3 == 0L) {}
-    for (float f1 = 0.0F;; f1 = (float)paramLong2 / (float)paramLong3)
-    {
-      int i = DataLineMsgRecord.getDevTypeBySeId(paramLong1);
-      DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).a(paramLong1);
-      if (localDataLineMsgRecord != null) {
-        localDataLineMsgRecord.progress = f1;
-      }
-      a(4, true, new Object[] { Long.valueOf(0L), Long.valueOf(paramLong1), Float.valueOf(f1) });
-      return;
+    float f1;
+    if (paramLong3 == 0L) {
+      f1 = 0.0F;
+    } else {
+      f1 = (float)paramLong2 / (float)paramLong3;
     }
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong1);
+    DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).a(paramLong1);
+    if (localDataLineMsgRecord != null) {
+      localDataLineMsgRecord.progress = f1;
+    }
+    a(4, true, new Object[] { Long.valueOf(0L), Long.valueOf(paramLong1), Float.valueOf(f1) });
   }
   
   private void a(Session paramSession)
@@ -804,190 +912,50 @@ public class DataLineHandler
   
   private void a(Session paramSession, NFCInfo paramNFCInfo)
   {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramSession.uSessionID);
-    if (localFileManagerEntity == null)
+    FileManagerEntity localFileManagerEntity2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramSession.uSessionID);
+    FileManagerEntity localFileManagerEntity1 = localFileManagerEntity2;
+    if (localFileManagerEntity2 == null)
     {
-      localFileManagerEntity = new FileManagerEntity();
-      localFileManagerEntity.nSessionId = paramSession.uSessionID;
-      localFileManagerEntity.strFilePath = paramSession.strFilePathSrc;
-      localFileManagerEntity.strMiddleThumPath = paramSession.strFilePathThumb;
-      localFileManagerEntity.fileName = paramSession.strFileNameSrc;
-      localFileManagerEntity.strFileMd5 = HexUtil.bytes2HexStr(paramSession.vFileMD5Src);
-      localFileManagerEntity.fileSize = paramSession.uFileSizeSrc;
-      localFileManagerEntity.uniseq = FileManagerUtil.a().longValue();
-      localFileManagerEntity.msgSeq = FileManagerUtil.a();
-      localFileManagerEntity.peerUin = QFileAssistantUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      localFileManagerEntity.peerType = 0;
-      localFileManagerEntity.bDelInFM = true;
-      localFileManagerEntity.bSend = false;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(localFileManagerEntity);
+      localFileManagerEntity1 = new FileManagerEntity();
+      localFileManagerEntity1.nSessionId = paramSession.uSessionID;
+      localFileManagerEntity1.strFilePath = paramSession.strFilePathSrc;
+      localFileManagerEntity1.strMiddleThumPath = paramSession.strFilePathThumb;
+      localFileManagerEntity1.fileName = paramSession.strFileNameSrc;
+      localFileManagerEntity1.strFileMd5 = HexUtil.bytes2HexStr(paramSession.vFileMD5Src);
+      localFileManagerEntity1.fileSize = paramSession.uFileSizeSrc;
+      localFileManagerEntity1.uniseq = FileManagerUtil.a().longValue();
+      localFileManagerEntity1.msgSeq = FileManagerUtil.a();
+      localFileManagerEntity1.peerUin = QFileAssistantUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      localFileManagerEntity1.peerType = 0;
+      localFileManagerEntity1.bDelInFM = true;
+      localFileManagerEntity1.bSend = false;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(localFileManagerEntity1);
     }
-    for (;;)
-    {
-      localFileManagerEntity.dlGourpIndex = paramSession.dwGroupIndex;
-      localFileManagerEntity.dlGroupCount = paramSession.dwGroupSize;
-      localFileManagerEntity.dlGroupId = paramSession.dwGroupID;
-      localFileManagerEntity.nfcServerIP = paramNFCInfo.dwServerIP;
-      localFileManagerEntity.nfcServerPort = paramNFCInfo.wServerPort;
-      localFileManagerEntity.nfcTokenKey = ((byte[])paramNFCInfo.vTokenKey.clone());
-      localFileManagerEntity.nfcUrlNotify = ((byte[])paramNFCInfo.vUrlNotify.clone());
-      localFileManagerEntity.cloudType = 11;
-      localFileManagerEntity.status = 2;
-      localFileManagerEntity.mContext = Integer.valueOf(a(paramSession.msgHeader));
-      QLog.i("DataLineHandler.NFRV", 1, "recvByNewFileassistant:" + localFileManagerEntity.nSessionId + ",gip:" + localFileManagerEntity.nfcServerIP + ",gport:" + localFileManagerEntity.nfcServerPort);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(localFileManagerEntity);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().c(localFileManagerEntity);
-      return;
-    }
+    localFileManagerEntity1.dlGourpIndex = paramSession.dwGroupIndex;
+    localFileManagerEntity1.dlGroupCount = paramSession.dwGroupSize;
+    localFileManagerEntity1.dlGroupId = paramSession.dwGroupID;
+    localFileManagerEntity1.nfcServerIP = paramNFCInfo.dwServerIP;
+    localFileManagerEntity1.nfcServerPort = paramNFCInfo.wServerPort;
+    localFileManagerEntity1.nfcTokenKey = ((byte[])paramNFCInfo.vTokenKey.clone());
+    localFileManagerEntity1.nfcUrlNotify = ((byte[])paramNFCInfo.vUrlNotify.clone());
+    localFileManagerEntity1.cloudType = 11;
+    localFileManagerEntity1.status = 2;
+    localFileManagerEntity1.mContext = Integer.valueOf(a(paramSession.msgHeader));
+    paramSession = new StringBuilder();
+    paramSession.append("recvByNewFileassistant:");
+    paramSession.append(localFileManagerEntity1.nSessionId);
+    paramSession.append(",gip:");
+    paramSession.append(localFileManagerEntity1.nfcServerIP);
+    paramSession.append(",gport:");
+    paramSession.append(localFileManagerEntity1.nfcServerPort);
+    QLog.i("DataLineHandler.NFRV", 1, paramSession.toString());
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(localFileManagerEntity1);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().c(localFileManagerEntity1);
   }
   
   private void a(Session paramSession, NFCInfo paramNFCInfo, FTNInfo paramFTNInfo, boolean paramBoolean)
   {
-    if (paramSession == null) {}
-    int j;
-    DataLineMsgRecord localDataLineMsgRecord;
-    int i;
-    label105:
-    label122:
-    do
-    {
-      return;
-      j = DataLineMsgRecord.getDevTypeBySeId(paramSession.uSessionID);
-      localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(j).a(paramSession.uSessionID);
-      if (localDataLineMsgRecord != null) {
-        break label609;
-      }
-      localDataLineMsgRecord = new DataLineMsgRecord();
-      localDataLineMsgRecord.msg = "";
-      localDataLineMsgRecord.msgtype = a(paramSession.emFileType);
-      localDataLineMsgRecord.sessionid = paramSession.uSessionID;
-      if (!paramSession.bSend) {
-        break;
-      }
-      i = 1;
-      localDataLineMsgRecord.issend = i;
-      if (!paramSession.bSend) {
-        break label536;
-      }
-      bool = true;
-      localDataLineMsgRecord.isread = bool;
-      if (!paramSession.bSend) {
-        break label542;
-      }
-      i = 0;
-      localDataLineMsgRecord.nOpType = i;
-      localDataLineMsgRecord.path = paramSession.strFilePathSrc;
-      localDataLineMsgRecord.fileFrom = paramSession.emFileFrom;
-      if (paramSession.vOfflineFileUUID != null) {
-        localDataLineMsgRecord.fileUuid = new String(paramSession.vOfflineFileUUID);
-      }
-      localDataLineMsgRecord.uOwnerUin = paramSession.uOwnerUin;
-      localDataLineMsgRecord.thumbPath = paramSession.strFilePathThumb;
-      localDataLineMsgRecord.md5 = paramSession.vFileMD5Src;
-      if (paramNFCInfo != null)
-      {
-        localDataLineMsgRecord.nServerIp = paramNFCInfo.dwServerIP;
-        localDataLineMsgRecord.nServerPort = paramNFCInfo.wServerPort;
-        localDataLineMsgRecord.vUrlNotify = paramNFCInfo.vUrlNotify;
-        localDataLineMsgRecord.vTokenKey = paramNFCInfo.vTokenKey;
-      }
-      if (paramFTNInfo != null) {
-        localDataLineMsgRecord.serverPath = paramFTNInfo.strFileIndex;
-      }
-    } while (localDataLineMsgRecord.path == null);
-    if ((paramSession.strFileNameSrc != null) && (paramSession.strFileNameSrc.length() > 0))
-    {
-      localDataLineMsgRecord.filename = paramSession.strFileNameSrc;
-      label286:
-      localDataLineMsgRecord.filesize = paramSession.uFileSizeSrc;
-      localDataLineMsgRecord.issuc = false;
-      localDataLineMsgRecord.vipBubbleID = b();
-      localDataLineMsgRecord.time = paramSession.uMsgTime;
-      localDataLineMsgRecord.groupId = paramSession.dwGroupID;
-      localDataLineMsgRecord.groupSize = paramSession.dwGroupSize;
-      localDataLineMsgRecord.groupIndex = paramSession.dwGroupIndex;
-      localDataLineMsgRecord.progress = 0.0F;
-      if (!paramBoolean) {
-        break label579;
-      }
-      localDataLineMsgRecord.fileMsgStatus = 0L;
-      label365:
-      paramNFCInfo = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(j);
-      if (paramSession.bSend) {
-        break label603;
-      }
-    }
-    label536:
-    label542:
-    label579:
-    label603:
-    for (boolean bool = true;; bool = false)
-    {
-      for (;;)
-      {
-        paramNFCInfo.a(localDataLineMsgRecord, bool);
-        paramNFCInfo = localDataLineMsgRecord;
-        paramNFCInfo.issuc = true;
-        paramNFCInfo.bIsTransfering = paramBoolean;
-        if ((paramBoolean) && (paramNFCInfo.nSessionState != 1) && ((!paramNFCInfo.isSend()) || (!FileManagerUtil.b(paramNFCInfo.path)))) {
-          b(paramNFCInfo.path);
-        }
-        if (!paramSession.bSend) {
-          break label677;
-        }
-        a(7, true, new Object[] { Long.valueOf(0L), Long.valueOf(paramSession.uSessionID), paramSession.strFilePathSrc, Byte.valueOf((byte)paramSession.emFileType), Boolean.valueOf(false), Boolean.valueOf(paramBoolean), Long.valueOf(paramNFCInfo.filesize) });
-        return;
-        i = 0;
-        break;
-        bool = false;
-        break label105;
-        i = 1;
-        break label122;
-        try
-        {
-          localDataLineMsgRecord.filename = new File(localDataLineMsgRecord.path).getName();
-        }
-        catch (Exception paramNFCInfo)
-        {
-          paramNFCInfo.printStackTrace();
-        }
-      }
-      break label286;
-      localDataLineMsgRecord.fileMsgStatus = 2L;
-      if (paramSession.bSend) {
-        break label365;
-      }
-      localDataLineMsgRecord.fileMsgStatus = 1L;
-      break label365;
-    }
-    label609:
-    if (paramBoolean) {}
-    for (localDataLineMsgRecord.fileMsgStatus = 0L;; localDataLineMsgRecord.fileMsgStatus = 2L)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(j).d(localDataLineMsgRecord.msgId);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(j).c(localDataLineMsgRecord.msgId);
-      paramNFCInfo = localDataLineMsgRecord;
-      break;
-    }
-    label677:
-    if (!paramBoolean)
-    {
-      paramFTNInfo = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getDataLineMsgProxy(j).b(paramSession.uSessionID);
-      if ((paramFTNInfo == null) || (!DataLineMsgSet.isSingle(paramFTNInfo))) {
-        break label788;
-      }
-      j();
-    }
-    for (;;)
-    {
-      a(6, true, new Object[] { Long.valueOf(0L), Long.valueOf(paramSession.uSessionID), paramSession.strFilePathSrc, Byte.valueOf((byte)paramSession.emFileType), Boolean.valueOf(false), Boolean.valueOf(paramBoolean), Long.valueOf(paramNFCInfo.filesize) });
-      return;
-      label788:
-      paramFTNInfo = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getDataLineMsgProxy(j).a(paramSession.dwGroupID);
-      if ((paramFTNInfo == null) || (paramFTNInfo.getComeCount() == 1)) {
-        j();
-      }
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private void a(DataLineMsgRecord paramDataLineMsgRecord, WeiYunFileInfo paramWeiYunFileInfo)
@@ -1010,124 +978,124 @@ public class DataLineHandler
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore_3
-    //   2: aconst_null
-    //   3: astore 4
-    //   5: new 1329	java/io/BufferedWriter
-    //   8: dup
-    //   9: new 1331	java/io/OutputStreamWriter
-    //   12: dup
-    //   13: new 1333	java/io/FileOutputStream
-    //   16: dup
-    //   17: aload_2
-    //   18: iconst_0
-    //   19: invokespecial 1336	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   22: invokespecial 1339	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;)V
-    //   25: invokespecial 1342	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
-    //   28: astore_2
-    //   29: aload_2
-    //   30: astore_3
-    //   31: aload_2
-    //   32: aload_1
-    //   33: invokevirtual 1345	java/io/BufferedWriter:write	(Ljava/lang/String;)V
-    //   36: aload_2
-    //   37: ifnull +7 -> 44
-    //   40: aload_2
-    //   41: invokevirtual 1348	java/io/BufferedWriter:close	()V
-    //   44: return
-    //   45: astore_1
-    //   46: aload_1
-    //   47: invokevirtual 1349	java/io/IOException:printStackTrace	()V
-    //   50: return
-    //   51: astore_1
-    //   52: aconst_null
-    //   53: astore_2
-    //   54: aload_2
-    //   55: astore_3
-    //   56: ldc_w 304
-    //   59: iconst_1
-    //   60: ldc_w 1351
-    //   63: invokestatic 379	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   66: aload_2
-    //   67: astore_3
-    //   68: aload_1
-    //   69: invokevirtual 1352	java/io/FileNotFoundException:printStackTrace	()V
-    //   72: aload_2
-    //   73: ifnull -29 -> 44
-    //   76: aload_2
-    //   77: invokevirtual 1348	java/io/BufferedWriter:close	()V
-    //   80: return
-    //   81: astore_1
-    //   82: aload_1
-    //   83: invokevirtual 1349	java/io/IOException:printStackTrace	()V
-    //   86: return
-    //   87: astore_2
-    //   88: aload 4
-    //   90: astore_1
-    //   91: aload_1
-    //   92: astore_3
-    //   93: ldc_w 304
-    //   96: iconst_1
-    //   97: ldc_w 1354
-    //   100: invokestatic 379	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1: astore 4
+    //   3: aconst_null
+    //   4: astore 5
+    //   6: aconst_null
+    //   7: astore_3
+    //   8: new 1218	java/io/BufferedWriter
+    //   11: dup
+    //   12: new 1220	java/io/OutputStreamWriter
+    //   15: dup
+    //   16: new 1222	java/io/FileOutputStream
+    //   19: dup
+    //   20: aload_2
+    //   21: iconst_0
+    //   22: invokespecial 1225	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   25: invokespecial 1228	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;)V
+    //   28: invokespecial 1231	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
+    //   31: astore_2
+    //   32: aload_2
+    //   33: aload_1
+    //   34: invokevirtual 1234	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   37: aload_2
+    //   38: invokevirtual 1237	java/io/BufferedWriter:close	()V
+    //   41: return
+    //   42: astore_1
+    //   43: aload_2
+    //   44: astore_3
+    //   45: goto +91 -> 136
+    //   48: astore_3
+    //   49: aload_2
+    //   50: astore_1
+    //   51: aload_3
+    //   52: astore_2
+    //   53: goto +19 -> 72
+    //   56: astore_3
+    //   57: aload_2
+    //   58: astore_1
+    //   59: aload_3
+    //   60: astore_2
+    //   61: goto +42 -> 103
+    //   64: astore_1
+    //   65: goto +71 -> 136
+    //   68: astore_2
+    //   69: aload 4
+    //   71: astore_1
+    //   72: aload_1
+    //   73: astore_3
+    //   74: ldc_w 300
+    //   77: iconst_1
+    //   78: ldc_w 1239
+    //   81: invokestatic 341	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   84: aload_1
+    //   85: astore_3
+    //   86: aload_2
+    //   87: invokevirtual 1242	java/io/IOException:printStackTrace	()V
+    //   90: aload_1
+    //   91: ifnull +44 -> 135
+    //   94: aload_1
+    //   95: invokevirtual 1237	java/io/BufferedWriter:close	()V
+    //   98: return
+    //   99: astore_2
+    //   100: aload 5
+    //   102: astore_1
     //   103: aload_1
     //   104: astore_3
-    //   105: aload_2
-    //   106: invokevirtual 1349	java/io/IOException:printStackTrace	()V
-    //   109: aload_1
-    //   110: ifnull -66 -> 44
-    //   113: aload_1
-    //   114: invokevirtual 1348	java/io/BufferedWriter:close	()V
-    //   117: return
-    //   118: astore_1
-    //   119: aload_1
-    //   120: invokevirtual 1349	java/io/IOException:printStackTrace	()V
-    //   123: return
-    //   124: astore_1
-    //   125: aload_3
-    //   126: ifnull +7 -> 133
-    //   129: aload_3
-    //   130: invokevirtual 1348	java/io/BufferedWriter:close	()V
-    //   133: aload_1
-    //   134: athrow
-    //   135: astore_2
-    //   136: aload_2
-    //   137: invokevirtual 1349	java/io/IOException:printStackTrace	()V
-    //   140: goto -7 -> 133
-    //   143: astore_1
-    //   144: goto -19 -> 125
-    //   147: astore_3
+    //   105: ldc_w 300
+    //   108: iconst_1
+    //   109: ldc_w 1244
+    //   112: invokestatic 341	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   115: aload_1
+    //   116: astore_3
+    //   117: aload_2
+    //   118: invokevirtual 1245	java/io/FileNotFoundException:printStackTrace	()V
+    //   121: aload_1
+    //   122: ifnull +13 -> 135
+    //   125: aload_1
+    //   126: invokevirtual 1237	java/io/BufferedWriter:close	()V
+    //   129: return
+    //   130: astore_1
+    //   131: aload_1
+    //   132: invokevirtual 1242	java/io/IOException:printStackTrace	()V
+    //   135: return
+    //   136: aload_3
+    //   137: ifnull +15 -> 152
+    //   140: aload_3
+    //   141: invokevirtual 1237	java/io/BufferedWriter:close	()V
+    //   144: goto +8 -> 152
+    //   147: astore_2
     //   148: aload_2
-    //   149: astore_1
-    //   150: aload_3
-    //   151: astore_2
-    //   152: goto -61 -> 91
-    //   155: astore_1
-    //   156: goto -102 -> 54
+    //   149: invokevirtual 1242	java/io/IOException:printStackTrace	()V
+    //   152: aload_1
+    //   153: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	159	0	this	DataLineHandler
-    //   0	159	1	paramString	String
-    //   0	159	2	paramFile	File
-    //   1	129	3	localObject1	Object
-    //   147	4	3	localIOException	java.io.IOException
-    //   3	86	4	localObject2	Object
+    //   0	154	0	this	DataLineHandler
+    //   0	154	1	paramString	String
+    //   0	154	2	paramFile	File
+    //   7	38	3	localFile	File
+    //   48	4	3	localIOException	java.io.IOException
+    //   56	4	3	localFileNotFoundException	java.io.FileNotFoundException
+    //   73	68	3	str	String
+    //   1	69	4	localObject1	Object
+    //   4	97	5	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   40	44	45	java/io/IOException
-    //   5	29	51	java/io/FileNotFoundException
-    //   76	80	81	java/io/IOException
-    //   5	29	87	java/io/IOException
-    //   113	117	118	java/io/IOException
-    //   5	29	124	finally
-    //   93	103	124	finally
-    //   105	109	124	finally
-    //   129	133	135	java/io/IOException
-    //   31	36	143	finally
-    //   56	66	143	finally
-    //   68	72	143	finally
-    //   31	36	147	java/io/IOException
-    //   31	36	155	java/io/FileNotFoundException
+    //   32	37	42	finally
+    //   32	37	48	java/io/IOException
+    //   32	37	56	java/io/FileNotFoundException
+    //   8	32	64	finally
+    //   74	84	64	finally
+    //   86	90	64	finally
+    //   105	115	64	finally
+    //   117	121	64	finally
+    //   8	32	68	java/io/IOException
+    //   8	32	99	java/io/FileNotFoundException
+    //   37	41	130	java/io/IOException
+    //   94	98	130	java/io/IOException
+    //   125	129	130	java/io/IOException
+    //   140	144	147	java/io/IOException
   }
   
   private void a(SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, List<SubMsgType0x7.MsgBody.FileControl> paramList)
@@ -1138,54 +1106,38 @@ public class DataLineHandler
   
   public static void a(SubMsgType0x7.MsgBody paramMsgBody, msg_svc.PbSendMsgReq paramPbSendMsgReq)
   {
-    if (!QFileAssistantUtils.a()) {
-      QLog.i("DataLineHandler", 1, "isNot new FileAssistant");
-    }
-    label129:
-    for (;;)
+    if (!QFileAssistantUtils.a())
     {
+      QLog.i("DataLineHandler", 1, "isNot new FileAssistant");
       return;
-      int i;
-      if (paramMsgBody.uint32_sub_cmd.has())
-      {
-        i = paramMsgBody.uint32_sub_cmd.get();
-        if (i != 1) {
-          break label66;
-        }
-        i = 1;
-      }
-      for (;;)
-      {
-        if (i == 0) {
-          break label129;
-        }
-        paramPbSendMsgReq.routing_head.trans_0x211.dataline_flag.set(1);
-        return;
-        i = -1;
-        break;
-        label66:
-        if ((i == 4) && (((SubMsgType0x7.MsgBody.GenericSubCmd)paramMsgBody.msg_subcmd_0x4_generic.get()).uint32_type.has()) && (((SubMsgType0x7.MsgBody.GenericSubCmd)paramMsgBody.msg_subcmd_0x4_generic.get()).uint32_type.get() == 1)) {
-          i = 1;
-        } else if (i == 9) {
-          i = 1;
-        } else {
-          i = 0;
-        }
-      }
+    }
+    int i;
+    if (paramMsgBody.uint32_sub_cmd.has()) {
+      i = paramMsgBody.uint32_sub_cmd.get();
+    } else {
+      i = -1;
+    }
+    if ((i == 1) || ((i == 4) && (((SubMsgType0x7.MsgBody.GenericSubCmd)paramMsgBody.msg_subcmd_0x4_generic.get()).uint32_type.has()) && (((SubMsgType0x7.MsgBody.GenericSubCmd)paramMsgBody.msg_subcmd_0x4_generic.get()).uint32_type.get() == 1)) || (i == 9)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      paramPbSendMsgReq.routing_head.trans_0x211.dataline_flag.set(1);
     }
   }
   
   static boolean a(Session paramSession, String paramString)
   {
     if (paramSession != null) {
-      if ((paramString == null) || (paramString.length() == 0))
+      if ((paramString != null) && (paramString.length() != 0))
       {
-        if ((paramSession.actionInfo != null) && (paramSession.actionInfo.strServiceName != null) && (paramSession.actionInfo.strServiceName.length() != 0)) {}
-      }
-      else {
-        while ((paramSession.actionInfo != null) && (paramSession.actionInfo.strServiceName != null) && (paramSession.actionInfo.strServiceName.equals(paramString))) {
+        if ((paramSession.actionInfo != null) && (paramSession.actionInfo.strServiceName != null) && (paramSession.actionInfo.strServiceName.equals(paramString))) {
           return true;
         }
+      }
+      else if ((paramSession.actionInfo == null) || (paramSession.actionInfo.strServiceName == null) || (paramSession.actionInfo.strServiceName.length() == 0)) {
+        return true;
       }
     }
     return false;
@@ -1198,15 +1150,16 @@ public class DataLineHandler
   
   private boolean a(TextMsgTask paramTextMsgTask)
   {
-    int j = 0;
-    int i = 0;
     StringBuffer localStringBuffer = new StringBuffer();
     int m = paramTextMsgTask.a(localStringBuffer);
+    int j = 0;
+    int i = 0;
     if (m == -1) {
       return false;
     }
-    int k;
-    if (this.jdField_a_of_type_Int == 0) {
+    int k = this.jdField_a_of_type_Int;
+    int n;
+    if (k == 0) {
       while (i < localStringBuffer.length())
       {
         j = i;
@@ -1215,59 +1168,52 @@ public class DataLineHandler
           j = i;
           if (i < localStringBuffer.length() - 1)
           {
-            k = QQSysFaceUtil.convertToServer(localStringBuffer.charAt(i + 1));
+            k = i + 1;
+            n = QQSysFaceUtil.convertToServer(localStringBuffer.charAt(k));
             j = i;
-            if (k >= 0)
+            if (n >= 0)
             {
-              localStringBuffer.setCharAt(i + 1, (char)k);
-              j = i + 1;
+              localStringBuffer.setCharAt(k, (char)n);
+              j = k;
             }
           }
         }
         i = j + 1;
       }
     }
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      i = j;
-      for (;;)
+    if (k == 1) {
+      for (i = j; i < localStringBuffer.length(); i = k + 1)
       {
-        if (i < localStringBuffer.length())
+        k = i;
+        if (localStringBuffer.charAt(i) == '\024')
         {
           k = i;
-          String str;
-          if (localStringBuffer.charAt(i) == '\024')
+          if (i < localStringBuffer.length() - 1)
           {
-            k = i;
-            if (i < localStringBuffer.length() - 1)
-            {
-              k = localStringBuffer.charAt(i + 1);
-              j = k;
-              if (k == 250) {
-                j = 10;
-              }
-              k = i;
-              if (j >= 0)
-              {
-                k = i;
-                if (j < EmotcationConstants.SYS_EMOTICON_SYMBOL.length) {
-                  str = EmotcationConstants.SYS_EMOTICON_SYMBOL[j];
-                }
-              }
+            n = i + 1;
+            k = localStringBuffer.charAt(n);
+            j = k;
+            if (k == 250) {
+              j = 10;
             }
-          }
-          try
-          {
-            localStringBuffer.replace(i + 1, i + 2, str);
-            k = i + str.length();
-            i = k + 1;
-          }
-          catch (StringIndexOutOfBoundsException localStringIndexOutOfBoundsException)
-          {
-            for (;;)
+            k = i;
+            if (j >= 0)
             {
-              localStringIndexOutOfBoundsException.printStackTrace();
-              QLog.d("DataLineHandler", 2, "SendSubText ipad emoj fail", localStringIndexOutOfBoundsException);
+              k = i;
+              if (j < EmotcationConstants.SYS_EMOTICON_SYMBOL.length)
+              {
+                String str = EmotcationConstants.SYS_EMOTICON_SYMBOL[j];
+                try
+                {
+                  localStringBuffer.replace(n, i + 2, str);
+                }
+                catch (StringIndexOutOfBoundsException localStringIndexOutOfBoundsException)
+                {
+                  localStringIndexOutOfBoundsException.printStackTrace();
+                  QLog.d("DataLineHandler", 2, "SendSubText ipad emoj fail", localStringIndexOutOfBoundsException);
+                }
+                k = i + str.length();
+              }
             }
           }
         }
@@ -1279,11 +1225,11 @@ public class DataLineHandler
   
   public static int b(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != -2009)
     {
-    default: 
-      return 0;
-    case -2000: 
+      if (paramInt != -2000) {
+        return 0;
+      }
       return 1;
     }
     return 2;
@@ -1291,42 +1237,41 @@ public class DataLineHandler
   
   private String b(String paramString)
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      paramString = "";
-      return paramString;
+    boolean bool = TextUtils.isEmpty(paramString);
+    String str = "";
+    if (bool) {
+      return "";
     }
     int i = paramString.lastIndexOf(".");
-    String str1;
-    String str2;
+    Object localObject = paramString;
     if (i >= 0)
     {
-      str1 = paramString.substring(0, i);
-      str2 = paramString.substring(i);
-      paramString = str1;
+      localObject = paramString.substring(0, i);
+      str = paramString.substring(i);
     }
-    for (;;)
+    ((String)localObject).replace('\\', '_');
+    ((String)localObject).replace('/', '_');
+    ((String)localObject).replace(':', '_');
+    ((String)localObject).replace('*', '_');
+    ((String)localObject).replace('?', '_');
+    ((String)localObject).replace('"', '_');
+    ((String)localObject).replace('<', '_');
+    ((String)localObject).replace('>', '_');
+    ((String)localObject).replace('|', '_');
+    paramString = (String)localObject;
+    if (((String)localObject).length() > 53) {
+      paramString = ((String)localObject).substring(0, 53);
+    }
+    localObject = paramString;
+    if (!TextUtils.isEmpty(str))
     {
-      paramString.replace('\\', '_');
-      paramString.replace('/', '_');
-      paramString.replace(':', '_');
-      paramString.replace('*', '_');
-      paramString.replace('?', '_');
-      paramString.replace('"', '_');
-      paramString.replace('<', '_');
-      paramString.replace('>', '_');
-      paramString.replace('|', '_');
-      str1 = paramString;
-      if (paramString.length() > 53) {
-        str1 = paramString.substring(0, 53);
-      }
-      paramString = str1;
-      if (TextUtils.isEmpty(str2)) {
-        break;
-      }
-      return str1 + "." + str2;
-      str2 = "";
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(".");
+      ((StringBuilder)localObject).append(str);
+      localObject = ((StringBuilder)localObject).toString();
     }
+    return localObject;
   }
   
   private void b(int paramInt, SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, List<SubMsgType0x7.MsgBody.NFCNotify> paramList, boolean paramBoolean)
@@ -1363,7 +1308,12 @@ public class DataLineHandler
       if ((!TextUtils.isEmpty(paramString)) && (!this.jdField_a_of_type_JavaUtilSet.contains(paramString)))
       {
         this.jdField_a_of_type_JavaUtilSet.add(paramString);
-        QLog.i("DataLineHandler", 1, "addRecvingFilePath[" + paramString + " size:" + this.jdField_a_of_type_JavaUtilSet.size());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("addRecvingFilePath[");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" size:");
+        localStringBuilder.append(this.jdField_a_of_type_JavaUtilSet.size());
+        QLog.i("DataLineHandler", 1, localStringBuilder.toString());
       }
       return;
     }
@@ -1376,15 +1326,18 @@ public class DataLineHandler
   
   private void b(ArrayList<Session> paramArrayList, boolean paramBoolean)
   {
-    boolean bool = true;
-    if (!NetworkUtil.d(BaseApplication.getContext())) {
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
+    {
       this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.showNoNetworkDialog();
+      return;
     }
-    while (paramArrayList.size() == 0) {
+    if (paramArrayList.size() == 0) {
       return;
     }
     LiteTransferWrapper localLiteTransferWrapper = this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper;
-    if (paramArrayList.size() == 1) {
+    int i = paramArrayList.size();
+    boolean bool = true;
+    if (i == 1) {
       bool = false;
     }
     localLiteTransferWrapper.SendGroup(paramArrayList, paramBoolean, bool);
@@ -1392,23 +1345,29 @@ public class DataLineHandler
   
   private void c(DataLineMsgRecord paramDataLineMsgRecord)
   {
-    if ((paramDataLineMsgRecord == null) || (!TextUtils.isEmpty(paramDataLineMsgRecord.path))) {
-      return;
-    }
-    String str2 = b(paramDataLineMsgRecord.filename);
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2))
+    if (paramDataLineMsgRecord != null)
     {
-      long l = System.currentTimeMillis();
-      str1 = new SimpleDateFormat("yyyyMMddHHmmssSS", Locale.US).format(new Date(l));
+      if (!TextUtils.isEmpty(paramDataLineMsgRecord.path)) {
+        return;
+      }
+      String str2 = b(paramDataLineMsgRecord.filename);
+      String str1 = str2;
+      if (TextUtils.isEmpty(str2))
+      {
+        long l = System.currentTimeMillis();
+        str1 = new SimpleDateFormat("yyyyMMddHHmmssSS", Locale.US).format(new Date(l));
+      }
+      str2 = FMSettings.a().getDefaultRecvPath();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str2);
+      localStringBuilder.append(str1);
+      str2 = localStringBuilder.toString();
+      str1 = str2;
+      if (FileUtils.fileExists(str2)) {
+        str1 = a(str2);
+      }
+      paramDataLineMsgRecord.path = str1;
     }
-    str2 = FMSettings.a().b();
-    str2 = str2 + str1;
-    str1 = str2;
-    if (FileUtils.a(str2)) {
-      str1 = a(str2);
-    }
-    paramDataLineMsgRecord.path = str1;
   }
   
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -1425,57 +1384,61 @@ public class DataLineHandler
     paramToServiceMsg.forwardTroopFileEntrance = 0;
     paramToServiceMsg.nOpType = 0;
     paramToServiceMsg.fileFrom = 5;
-    paramToServiceMsg.path = (AppConstants.SDCARD_FILE_SAVE_PATH + paramToServiceMsg.filename);
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess())) {}
-    for (int i = 2;; i = 36)
-    {
-      a(j, paramToServiceMsg, i);
-      new Handler(Looper.getMainLooper()).post(new DataLineHandler.8(this, l, i));
-      return;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_FILE_SAVE_PATH);
+    localStringBuilder.append(paramToServiceMsg.filename);
+    paramToServiceMsg.path = localStringBuilder.toString();
+    int i;
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess())) {
+      i = 2;
+    } else {
+      i = 36;
     }
+    a(j, paramToServiceMsg, i);
+    new Handler(Looper.getMainLooper()).post(new DataLineHandler.8(this, l, i));
   }
   
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    int i = 0;
     paramObject = new MsgSCBody();
     paramObject.uMsgType = 529;
     paramObject.msgBody0x211 = new MsgSCBody0x211();
     paramObject.msgBody0x211.uMsgSubType = 7;
     paramObject.msgBody0x211.msgBody0x211_0x7 = new MsgSCBody0x211_0x7();
     Long localLong = (Long)paramToServiceMsg.getAttribute("cookie");
-    MsgSCBody0x211_0x7 localMsgSCBody0x211_0x7;
-    if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.isSuccess()))
+    StringBuilder localStringBuilder;
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DataLineHandler", 2, "handleFTNNotify " + localLong.intValue() + " 发送信令，发送失败");
-      }
-      paramObject.bTimeOut = true;
-      if (paramFromServiceMsg != null)
+      if (QLog.isColorLevel())
       {
-        localMsgSCBody0x211_0x7 = paramObject.msgBody0x211.msgBody0x211_0x7;
-        if (!paramFromServiceMsg.isSuccess()) {
-          break label235;
-        }
-      }
-    }
-    for (;;)
-    {
-      localMsgSCBody0x211_0x7.uResult = i;
-      if (!((Boolean)paramToServiceMsg.getAttribute("sendFromNative", Boolean.valueOf(true))).booleanValue()) {
-        break label241;
-      }
-      this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.OnPbMsgReply(localLong.intValue(), paramObject);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("DataLineHandler", 2, "handleFTNNotify " + localLong.intValue() + " 发送信令，发送成功");
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleFTNNotify ");
+        localStringBuilder.append(localLong.intValue());
+        localStringBuilder.append(" 发送信令，发送成功");
+        QLog.d("DataLineHandler", 2, localStringBuilder.toString());
       }
       paramObject.bTimeOut = false;
-      break;
-      label235:
-      i = 1;
     }
-    label241:
+    else
+    {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleFTNNotify ");
+        localStringBuilder.append(localLong.intValue());
+        localStringBuilder.append(" 发送信令，发送失败");
+        QLog.d("DataLineHandler", 2, localStringBuilder.toString());
+      }
+      paramObject.bTimeOut = true;
+    }
+    if (paramFromServiceMsg != null) {
+      paramObject.msgBody0x211.msgBody0x211_0x7.uResult = (paramFromServiceMsg.isSuccess() ^ true);
+    }
+    if (((Boolean)paramToServiceMsg.getAttribute("sendFromNative", Boolean.valueOf(true))).booleanValue())
+    {
+      this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.OnPbMsgReply(localLong.intValue(), paramObject);
+      return;
+    }
     c(paramToServiceMsg, paramFromServiceMsg);
   }
   
@@ -1486,7 +1449,12 @@ public class DataLineHandler
       if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilSet.contains(paramString)))
       {
         this.jdField_a_of_type_JavaUtilSet.remove(paramString);
-        QLog.i("DataLineHandler", 1, "remRecvingFilePath[" + paramString + " size:" + this.jdField_a_of_type_JavaUtilSet.size());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("remRecvingFilePath[");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" size:");
+        localStringBuilder.append(this.jdField_a_of_type_JavaUtilSet.size());
+        QLog.i("DataLineHandler", 1, localStringBuilder.toString());
       }
       return;
     }
@@ -1499,146 +1467,151 @@ public class DataLineHandler
   
   private void c(List<SubMsgType0x7.MsgBody.MoloNotify> paramList)
   {
-    paramList = paramList.iterator();
-    Object localObject;
-    DataLineMsgRecord localDataLineMsgRecord;
-    int i;
-    while (paramList.hasNext())
+    Object localObject1 = paramList.iterator();
+    for (;;)
     {
-      localObject = (SubMsgType0x7.MsgBody.MoloNotify)paramList.next();
-      if (!((SubMsgType0x7.MsgBody.MoloNotify)localObject).bytes_buf.has())
+      int j;
+      boolean bool;
+      if (((Iterator)localObject1).hasNext())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("DataLineHandler", 2, "应用宝消息  moloHandler SubCmd0x5 do not has bytes_buf");
-        }
-      }
-      else
-      {
-        localDataLineMsgRecord = this.jdField_a_of_type_ComDatalineCoreMoloHandler.a(((SubMsgType0x7.MsgBody.MoloNotify)localObject).bytes_buf.get().toByteArray());
-        if (localDataLineMsgRecord == null)
+        Object localObject2 = (SubMsgType0x7.MsgBody.MoloNotify)((Iterator)localObject1).next();
+        if (!((SubMsgType0x7.MsgBody.MoloNotify)localObject2).bytes_buf.has())
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("DataLineHandler", 2, "应用宝消息 moloHandler dealWith return null");
+          if (!QLog.isColorLevel()) {
+            continue;
           }
+          QLog.d("DataLineHandler", 2, "应用宝消息  moloHandler SubCmd0x5 do not has bytes_buf");
+          continue;
+        }
+        paramList = this.jdField_a_of_type_ComDatalineCoreMoloHandler.a(((SubMsgType0x7.MsgBody.MoloNotify)localObject2).bytes_buf.get().toByteArray());
+        if (paramList == null)
+        {
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("DataLineHandler", 2, "应用宝消息 moloHandler dealWith return null");
+          continue;
+        }
+        int i;
+        if (((SubMsgType0x7.MsgBody.MoloNotify)localObject2).uint32_group_id.has()) {
+          i = ((SubMsgType0x7.MsgBody.MoloNotify)localObject2).uint32_group_id.get();
+        } else {
+          i = 0;
+        }
+        paramList.groupId = i;
+        if (((SubMsgType0x7.MsgBody.MoloNotify)localObject2).uint32_group_size.has()) {
+          i = ((SubMsgType0x7.MsgBody.MoloNotify)localObject2).uint32_group_size.get();
+        } else {
+          i = 0;
+        }
+        paramList.groupSize = i;
+        if (((SubMsgType0x7.MsgBody.MoloNotify)localObject2).uint32_group_curindex.has()) {
+          i = ((SubMsgType0x7.MsgBody.MoloNotify)localObject2).uint32_group_curindex.get();
+        } else {
+          i = 0;
+        }
+        paramList.groupIndex = i;
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("应用宝消息 groupId[");
+          ((StringBuilder)localObject2).append(paramList.groupId);
+          ((StringBuilder)localObject2).append("],size[");
+          ((StringBuilder)localObject2).append(paramList.groupSize);
+          ((StringBuilder)localObject2).append("],index[");
+          ((StringBuilder)localObject2).append(paramList.groupIndex);
+          ((StringBuilder)localObject2).append("], sessionid[");
+          ((StringBuilder)localObject2).append(paramList.sessionid);
+          ((StringBuilder)localObject2).append("], key[");
+          ((StringBuilder)localObject2).append(paramList.strMoloKey);
+          QLog.d("DataLineHandler", 2, ((StringBuilder)localObject2).toString());
+        }
+        if (paramList.groupSize == 1)
+        {
+          paramList.groupId = 0;
+          paramList.groupSize = 0;
+          paramList.groupIndex = 0;
+        }
+        if ((!DataLineMsgSet.isSingle(paramList)) && (c(paramList.groupId)))
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("应用宝消息msg record in deleted group, sessionid[");
+            ((StringBuilder)localObject1).append(paramList.sessionid);
+            QLog.d("DataLineHandler", 2, ((StringBuilder)localObject1).toString());
+          }
+          return;
+        }
+        j = DataLineMsgRecord.getDevTypeBySeId(paramList.sessionid);
+        a().getMessageFacade().a(j).a(paramList, true);
+        if ((!DataLineMsgSet.isSingle(paramList)) && (c(paramList.groupId)))
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("应用宝消息 msg record in deleted group 2, sessionid[");
+            ((StringBuilder)localObject1).append(paramList.sessionid);
+            QLog.d("DataLineHandler", 2, ((StringBuilder)localObject1).toString());
+          }
+          paramList = a().getDataLineMsgProxy(j).a(paramList.sessionid);
+          if (paramList != null) {
+            a(paramList);
+          }
+          return;
+        }
+        if (DataLineMsgSet.isSingle(paramList))
+        {
+          DataLineReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+          j();
         }
         else
         {
-          if (!((SubMsgType0x7.MsgBody.MoloNotify)localObject).uint32_group_id.has()) {
-            break label357;
-          }
-          i = ((SubMsgType0x7.MsgBody.MoloNotify)localObject).uint32_group_id.get();
-          localDataLineMsgRecord.groupId = i;
-          if (!((SubMsgType0x7.MsgBody.MoloNotify)localObject).uint32_group_size.has()) {
-            break label362;
-          }
-          i = ((SubMsgType0x7.MsgBody.MoloNotify)localObject).uint32_group_size.get();
-          label147:
-          localDataLineMsgRecord.groupSize = i;
-          if (!((SubMsgType0x7.MsgBody.MoloNotify)localObject).uint32_group_curindex.has()) {
-            break label367;
-          }
-          i = ((SubMsgType0x7.MsgBody.MoloNotify)localObject).uint32_group_curindex.get();
-          label173:
-          localDataLineMsgRecord.groupIndex = i;
-          if (QLog.isColorLevel()) {
-            QLog.d("DataLineHandler", 2, "应用宝消息 groupId[" + localDataLineMsgRecord.groupId + "],size[" + localDataLineMsgRecord.groupSize + "],index[" + localDataLineMsgRecord.groupIndex + "], sessionid[" + localDataLineMsgRecord.sessionid + "], key[" + localDataLineMsgRecord.strMoloKey);
-          }
-          if (localDataLineMsgRecord.groupSize == 1)
+          localObject2 = a().getDataLineMsgProxy(j).a(paramList.groupId);
+          if ((localObject2 == null) || (((DataLineMsgSet)localObject2).getComeCount() == 1))
           {
-            localDataLineMsgRecord.groupId = 0;
-            localDataLineMsgRecord.groupSize = 0;
-            localDataLineMsgRecord.groupIndex = 0;
-          }
-          if ((DataLineMsgSet.isSingle(localDataLineMsgRecord)) || (!c(localDataLineMsgRecord.groupId))) {
-            break label372;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("DataLineHandler", 2, "应用宝消息msg record in deleted group, sessionid[" + localDataLineMsgRecord.sessionid);
+            DataLineReportUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+            j();
           }
         }
-      }
-    }
-    label357:
-    label362:
-    label367:
-    label372:
-    int j;
-    do
-    {
-      return;
-      i = 0;
-      break;
-      i = 0;
-      break label147;
-      i = 0;
-      break label173;
-      j = DataLineMsgRecord.getDevTypeBySeId(localDataLineMsgRecord.sessionid);
-      a().getMessageFacade().a(j).a(localDataLineMsgRecord, true);
-      if ((DataLineMsgSet.isSingle(localDataLineMsgRecord)) || (!c(localDataLineMsgRecord.groupId))) {
-        break label484;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("DataLineHandler", 2, "应用宝消息 msg record in deleted group 2, sessionid[" + localDataLineMsgRecord.sessionid);
-      }
-      paramList = a().getDataLineMsgProxy(j).a(localDataLineMsgRecord.sessionid);
-    } while (paramList == null);
-    a(paramList);
-    return;
-    label484:
-    label503:
-    boolean bool;
-    if (DataLineMsgSet.isSingle(localDataLineMsgRecord))
-    {
-      DataLineReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      j();
-      bool = false;
-      if (!a(localDataLineMsgRecord.sessionid, localDataLineMsgRecord.groupId)) {
-        break label644;
-      }
-    }
-    for (;;)
-    {
-      a(6, true, new Object[] { Long.valueOf(0L), Long.valueOf(localDataLineMsgRecord.sessionid), localDataLineMsgRecord.path, Byte.valueOf(0), Boolean.valueOf(false), Boolean.valueOf(bool), Long.valueOf(localDataLineMsgRecord.filesize) });
-      break;
-      localObject = a().getDataLineMsgProxy(j).a(localDataLineMsgRecord.groupId);
-      if ((localObject != null) && (((DataLineMsgSet)localObject).getComeCount() != 1)) {
-        break label503;
-      }
-      DataLineReportUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      j();
-      break label503;
-      label644:
-      localDataLineMsgRecord.issuc = true;
-      localDataLineMsgRecord.fileMsgStatus = 1L;
-      bool = NetworkUtil.h(BaseApplication.getContext());
-      if (localDataLineMsgRecord.filesize <= 3145728L)
-      {
-        i = 1;
-        label678:
-        if ((!bool) && ((!getAutoDownload()) || (i == 0))) {
-          break label761;
+        if (a(paramList.sessionid, paramList.groupId))
+        {
+          bool = false;
         }
-        bool = true;
-        if (bool) {
-          localDataLineMsgRecord.fileMsgStatus = 0L;
+        else
+        {
+          paramList.issuc = true;
+          paramList.fileMsgStatus = 1L;
+          bool = NetworkUtil.isWifiConnected(BaseApplication.getContext());
+          if (paramList.filesize <= 3145728L) {
+            i = 1;
+          } else {
+            i = 0;
+          }
+          if ((!bool) && ((!getAutoDownload()) || (i == 0))) {
+            bool = false;
+          } else {
+            bool = true;
+          }
+          if (bool) {
+            paramList.fileMsgStatus = 0L;
+          }
         }
       }
       try
       {
         b(111);
-        this.jdField_a_of_type_ComDatalineCoreMoloHandler.a(localDataLineMsgRecord.strMoloKey);
+        this.jdField_a_of_type_ComDatalineCoreMoloHandler.a(paramList.strMoloKey);
         DataLineReportUtil.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        label734:
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(j).d(localDataLineMsgRecord.msgId);
+        label701:
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(j).d(paramList.msgId);
+        a(6, true, new Object[] { Long.valueOf(0L), Long.valueOf(paramList.sessionid), paramList.path, Byte.valueOf(0), Boolean.valueOf(false), Boolean.valueOf(bool), Long.valueOf(paramList.filesize) });
         continue;
-        i = 0;
-        break label678;
-        label761:
-        bool = false;
+        return;
       }
       catch (Exception localException)
       {
-        break label734;
+        break label701;
       }
     }
   }
@@ -1669,65 +1642,83 @@ public class DataLineHandler
   private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size()) {
-      if (!((TextMsgTask)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a().equals(paramToServiceMsg)) {}
-    }
-    for (paramToServiceMsg = (TextMsgTask)this.jdField_a_of_type_JavaUtilArrayList.get(i);; paramToServiceMsg = null)
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      if (paramToServiceMsg == null) {}
-      do
+      if (((TextMsgTask)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a().equals(paramToServiceMsg))
       {
-        return;
-        i += 1;
-        break;
-        paramToServiceMsg.a().progress = 1.0F;
-        i = DataLineMsgRecord.getDevTypeBySeId(paramToServiceMsg.a().longValue());
-        if (!paramFromServiceMsg.isSuccess())
-        {
-          paramToServiceMsg.a().issuc = false;
-          a(1, false, new Object[] { paramToServiceMsg.a(), paramToServiceMsg.a() });
-          return;
-        }
-        if (paramToServiceMsg.a())
-        {
-          paramToServiceMsg.a().issuc = true;
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).b(paramToServiceMsg.a().msgId);
-          this.jdField_a_of_type_JavaUtilArrayList.remove(paramToServiceMsg);
-          a(1, true, new Object[] { paramToServiceMsg.a(), paramToServiceMsg.a() });
-          return;
-        }
-      } while (a(paramToServiceMsg));
+        paramToServiceMsg = (TextMsgTask)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        break label64;
+      }
+      i += 1;
+    }
+    paramToServiceMsg = null;
+    label64:
+    if (paramToServiceMsg == null) {
+      return;
+    }
+    paramToServiceMsg.a().progress = 1.0F;
+    i = DataLineMsgRecord.getDevTypeBySeId(paramToServiceMsg.a().longValue());
+    if (!paramFromServiceMsg.isSuccess())
+    {
+      paramToServiceMsg.a().issuc = false;
+      a(1, false, new Object[] { paramToServiceMsg.a(), paramToServiceMsg.a() });
+      return;
+    }
+    if (paramToServiceMsg.a())
+    {
+      paramToServiceMsg.a().issuc = true;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).b(paramToServiceMsg.a().msgId);
+      this.jdField_a_of_type_JavaUtilArrayList.remove(paramToServiceMsg);
+      a(1, true, new Object[] { paramToServiceMsg.a(), paramToServiceMsg.a() });
+      return;
+    }
+    if (!a(paramToServiceMsg))
+    {
       paramToServiceMsg.a().issuc = false;
       this.jdField_a_of_type_JavaUtilArrayList.remove(paramToServiceMsg);
       a(1, false, new Object[] { paramToServiceMsg.a(), paramToServiceMsg.a() });
-      return;
     }
   }
   
   public static boolean d(int paramInt)
   {
-    switch (paramInt)
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (paramInt != 0)
     {
-    case 4: 
-    default: 
-      return false;
+      bool1 = bool2;
+      if (paramInt != 1)
+      {
+        bool1 = bool2;
+        if (paramInt != 2)
+        {
+          bool1 = bool2;
+          if (paramInt != 3)
+          {
+            bool1 = bool2;
+            if (paramInt != 5) {
+              bool1 = false;
+            }
+          }
+        }
+      }
     }
-    return true;
+    return bool1;
   }
   
   private void e(DataLineMsgRecord paramDataLineMsgRecord)
   {
     String str = paramDataLineMsgRecord.path;
-    if (FileManagerUtil.a(str) != 0) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (FileUtils.b(paramDataLineMsgRecord.thumbPath));
-      str = FileManagerUtil.a(str, 384, 384, null);
-    } while (TextUtils.isEmpty(str));
-    paramDataLineMsgRecord.thumbPath = str;
+    if (FileManagerUtil.a(str) != 0) {
+      return;
+    }
+    if (FileUtils.fileExistsAndNotEmpty(paramDataLineMsgRecord.thumbPath)) {
+      return;
+    }
+    str = FileManagerUtil.a(str, 384, 384, null);
+    if (!TextUtils.isEmpty(str)) {
+      paramDataLineMsgRecord.thumbPath = str;
+    }
   }
   
   private void f(int paramInt)
@@ -1745,11 +1736,14 @@ public class DataLineHandler
   private void h()
   {
     SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_PC_STATE";
-    if (localSharedPreferences.contains(str))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    ((StringBuilder)localObject).append("_PC_STATE");
+    localObject = ((StringBuilder)localObject).toString();
+    if (localSharedPreferences.contains((String)localObject))
     {
       this.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_Long = localSharedPreferences.getLong(str, 0L);
+      this.jdField_a_of_type_Long = localSharedPreferences.getLong((String)localObject, 0L);
       return;
     }
     this.jdField_b_of_type_Boolean = false;
@@ -1758,11 +1752,14 @@ public class DataLineHandler
   private void i()
   {
     SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_IPAD_STATE";
-    if (localSharedPreferences.contains(str))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    ((StringBuilder)localObject).append("_IPAD_STATE");
+    localObject = ((StringBuilder)localObject).toString();
+    if (localSharedPreferences.contains((String)localObject))
     {
       this.jdField_c_of_type_Boolean = true;
-      this.jdField_b_of_type_Long = localSharedPreferences.getLong(str, 0L);
+      this.jdField_b_of_type_Long = localSharedPreferences.getLong((String)localObject, 0L);
       return;
     }
     this.jdField_c_of_type_Boolean = false;
@@ -1770,12 +1767,13 @@ public class DataLineHandler
   
   private void j()
   {
-    if (this.jdField_a_of_type_Boolean == true) {}
-    for (boolean bool = false;; bool = true)
-    {
-      a().handleReceivedMessage(1, bool, false);
-      return;
+    boolean bool;
+    if (this.jdField_a_of_type_Boolean == true) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    a().handleReceivedMessage(1, bool, false);
   }
   
   private void k()
@@ -1804,7 +1802,7 @@ public class DataLineHandler
       return;
     }
     File localFile = new File((String)localObject);
-    if ((localFile == null) || (!localFile.exists()))
+    if (!localFile.exists())
     {
       QLog.i("DataLineHandler", 2, "==ruo  int to java GetThumbFilePathu 555 MinSize_for_CreateThumb e ");
       return;
@@ -1828,42 +1826,62 @@ public class DataLineHandler
   
   public void OnGroupComplete(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DataLineHandler", 2, "uGroupID[" + paramInt1 + "]OnGroupComplete 分组结束 emGroupStatus[" + paramInt2 + "]");
-    }
-    if (paramInt1 == 0) {}
-    DataLineMsgSet localDataLineMsgSet1;
-    do
+    if (QLog.isColorLevel())
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("uGroupID[");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append("]OnGroupComplete 分组结束 emGroupStatus[");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append("]");
+      QLog.d("DataLineHandler", 2, ((StringBuilder)localObject).toString());
+    }
+    if (paramInt1 == 0) {
       return;
-      DataLineMsgSet localDataLineMsgSet2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getDataLineMsgProxy(0).a(paramInt1);
-      localDataLineMsgSet1 = localDataLineMsgSet2;
-      if (localDataLineMsgSet2 == null) {
-        localDataLineMsgSet1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getDataLineMsgProxy(1).a(paramInt1);
-      }
-    } while (localDataLineMsgSet1 == null);
-    localDataLineMsgSet1.setTimeOut();
+    }
+    DataLineMsgSet localDataLineMsgSet = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getDataLineMsgProxy(0).a(paramInt1);
+    Object localObject = localDataLineMsgSet;
+    if (localDataLineMsgSet == null) {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getDataLineMsgProxy(1).a(paramInt1);
+    }
+    if (localObject == null) {
+      return;
+    }
+    ((DataLineMsgSet)localObject).setTimeOut();
     a(11, true, null);
   }
   
   public void OnGroupStart(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DataLineHandler", 2, "uGroupID[" + paramInt + "]OnGroupStart 分组开始");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("uGroupID[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("]OnGroupStart 分组开始");
+      QLog.d("DataLineHandler", 2, localStringBuilder.toString());
     }
     a(11, true, null);
   }
   
   public boolean OnQueryAutoDownload(long paramLong, byte paramByte)
   {
-    boolean bool1;
-    boolean bool2;
+    boolean bool2 = true;
+    boolean bool1 = bool2;
     if (paramByte == 2)
     {
-      bool1 = NetworkUtil.h(BaseApplication.getContext());
-      bool2 = QFileAssistantUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLong);
+      boolean bool3 = NetworkUtil.isWifiConnected(BaseApplication.getContext());
+      boolean bool4 = QFileAssistantUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLong);
+      bool1 = bool2;
+      if (!bool3)
+      {
+        if ((bool4) && (getAutoDownload())) {
+          return true;
+        }
+        bool1 = false;
+      }
     }
-    return (bool1) || ((bool2) && (getAutoDownload()));
+    return bool1;
   }
   
   public void OnSessionComplete(long paramLong, int paramInt1, int paramInt2)
@@ -1896,12 +1914,13 @@ public class DataLineHandler
       a(paramLong, paramInt1);
       return;
     }
-    if (paramInt1 == 2) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(16, bool, localObject);
-      return;
+    boolean bool;
+    if (paramInt1 == 2) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    a(16, bool, localObject);
   }
   
   public void OnSessionConnected(long paramLong, int paramInt1, int paramInt2)
@@ -1921,33 +1940,32 @@ public class DataLineHandler
       a(17, true, paramSession);
       return;
     }
-    if (paramSession.bSend)
-    {
+    if (paramSession.bSend) {
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006222", "0X8006222", 0, 0, "", "", "", "");
-      if ((paramSession.actionInfo != null) && (paramSession.actionInfo.strServiceName != null) && (paramSession.actionInfo.strServiceName.length() != 0)) {
-        break label257;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("DataLineHandler", 2, "uSessionID[" + paramSession.uSessionID + "]OnSessionNew Session创建");
-      }
-      Looper localLooper = Looper.getMainLooper();
-      if (Thread.currentThread() == localLooper.getThread()) {
-        break label246;
-      }
-      new Handler(localLooper).post(new DataLineHandler.11(this, paramSession, paramNFCInfo, paramFTNInfo));
-    }
-    for (;;)
-    {
-      a(paramSession);
-      return;
+    } else {
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006225", "0X8006225", 0, 0, "", "", "", "");
-      break;
-      label246:
+    }
+    if ((paramSession.actionInfo != null) && (paramSession.actionInfo.strServiceName != null) && (paramSession.actionInfo.strServiceName.length() != 0))
+    {
+      this.jdField_b_of_type_JavaUtilHashMap.put(Long.valueOf(paramSession.uSessionID), paramSession);
+      a(17, true, paramSession);
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("uSessionID[");
+      ((StringBuilder)localObject).append(paramSession.uSessionID);
+      ((StringBuilder)localObject).append("]OnSessionNew Session创建");
+      QLog.d("DataLineHandler", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = Looper.getMainLooper();
+    if (Thread.currentThread() != ((Looper)localObject).getThread()) {
+      new Handler((Looper)localObject).post(new DataLineHandler.11(this, paramSession, paramNFCInfo, paramFTNInfo));
+    } else {
       a(paramSession, paramNFCInfo, paramFTNInfo, false);
     }
-    label257:
-    this.jdField_b_of_type_JavaUtilHashMap.put(Long.valueOf(paramSession.uSessionID), paramSession);
-    a(17, true, paramSession);
+    a(paramSession);
   }
   
   public void OnSessionProgress(long paramLong1, long paramLong2, long paramLong3, int paramInt)
@@ -1964,7 +1982,11 @@ public class DataLineHandler
       a(paramLong1, paramLong2, paramLong3);
       return;
     }
-    a(15, true, new Object[] { localObject, Float.valueOf((float)((float)paramLong2 * 1.0D / (float)paramLong3)) });
+    double d1 = (float)paramLong2;
+    Double.isNaN(d1);
+    double d2 = (float)paramLong3;
+    Double.isNaN(d2);
+    a(15, true, new Object[] { localObject, Float.valueOf((float)(d1 * 1.0D / d2)) });
   }
   
   public void OnSessionStart(long paramLong)
@@ -1972,8 +1994,13 @@ public class DataLineHandler
     Object localObject = (Session)this.jdField_b_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
     if (localObject == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DataLineHandler", 2, "uSessionID[" + paramLong + "], OnSessionStart, Session开始");
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("uSessionID[");
+        ((StringBuilder)localObject).append(paramLong);
+        ((StringBuilder)localObject).append("], OnSessionStart, Session开始");
+        QLog.d("DataLineHandler", 2, ((StringBuilder)localObject).toString());
       }
       localObject = Looper.getMainLooper();
       if (Thread.currentThread() != ((Looper)localObject).getThread())
@@ -2005,20 +2032,30 @@ public class DataLineHandler
   
   public void SendPbMsg(int paramInt, MsgCSBody paramMsgCSBody)
   {
-    QLog.d("DataLineHandler", 1, "SendPbMsg: msgBody.uMsgType " + paramMsgCSBody.uMsgType);
-    switch (paramMsgCSBody.uMsgType)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SendPbMsg: msgBody.uMsgType ");
+    localStringBuilder.append(paramMsgCSBody.uMsgType);
+    QLog.d("DataLineHandler", 1, localStringBuilder.toString());
+    int i = paramMsgCSBody.uMsgType;
+    if (i != 529)
     {
-    default: 
-      QLog.d("DataLineHandler", 1, "SendPbMsg: cannot recognize the pb msg form JNI, cmd[" + paramMsgCSBody.uMsgType);
-      return;
-    case 529: 
-      a(paramInt, paramMsgCSBody.msgBody0x211);
-      return;
-    case 838: 
-      a(paramInt, paramMsgCSBody.msgBody0x346, null);
+      if (i != 837)
+      {
+        if (i != 838)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("SendPbMsg: cannot recognize the pb msg form JNI, cmd[");
+          localStringBuilder.append(paramMsgCSBody.uMsgType);
+          QLog.d("DataLineHandler", 1, localStringBuilder.toString());
+          return;
+        }
+        a(paramInt, paramMsgCSBody.msgBody0x346, null);
+        return;
+      }
+      a(paramInt, paramMsgCSBody.msgBody0x345);
       return;
     }
-    a(paramInt, paramMsgCSBody.msgBody0x345);
+    a(paramInt, paramMsgCSBody.msgBody0x211);
   }
   
   public int a()
@@ -2030,10 +2067,12 @@ public class DataLineHandler
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      QLog.e("DataLineHandler", 1, "native genGroupId failed");
-      return 0;
+      label10:
+      break label10;
     }
     catch (Exception localException) {}
+    QLog.e("DataLineHandler", 1, "native genGroupId failed");
+    return 0;
     return 0;
   }
   
@@ -2060,9 +2099,19 @@ public class DataLineHandler
   
   public long a(FileManagerEntity paramFileManagerEntity)
   {
-    String str = paramFileManagerEntity.fileName + "\n";
-    paramFileManagerEntity = str + paramFileManagerEntity.Uuid + "\n";
-    return a(paramFileManagerEntity + "来自:腾讯文档", 0).longValue();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramFileManagerEntity.fileName);
+    ((StringBuilder)localObject).append("\n");
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(paramFileManagerEntity.Uuid);
+    localStringBuilder.append("\n");
+    paramFileManagerEntity = localStringBuilder.toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramFileManagerEntity);
+    ((StringBuilder)localObject).append("来自:腾讯文档");
+    return a(((StringBuilder)localObject).toString(), 0).longValue();
   }
   
   public long a(String paramString1, String paramString2, int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
@@ -2093,7 +2142,6 @@ public class DataLineHandler
   
   public Session a(long paramLong)
   {
-    boolean bool = true;
     int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
     DataLineMsgRecord localDataLineMsgRecord = a().getMessageFacade().a(i).a(paramLong);
     if (localDataLineMsgRecord == null) {
@@ -2101,49 +2149,52 @@ public class DataLineHandler
     }
     Session localSession = new Session();
     localSession.uSessionID = localDataLineMsgRecord.sessionid;
-    if (localDataLineMsgRecord.issend == 1) {}
-    for (;;)
-    {
-      localSession.bSend = bool;
-      i = DataLineMsgRecord.getDevTypeBySeId(localDataLineMsgRecord.sessionid);
-      localSession.msgHeader = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.msgHeader(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue(), i);
-      localSession.dwGroupID = localDataLineMsgRecord.groupId;
-      localSession.dwGroupSize = localDataLineMsgRecord.groupSize;
-      localSession.dwGroupIndex = localDataLineMsgRecord.groupIndex;
-      localSession.emFileType = b(localDataLineMsgRecord.msgtype);
-      localSession.strFilePathSrc = FilePathUtil.c(localDataLineMsgRecord.path);
-      localSession.strFilePathThumb = localDataLineMsgRecord.thumbPath;
-      localSession.uFileSizeSrc = localDataLineMsgRecord.filesize;
-      localSession.vFileMD5Src = localDataLineMsgRecord.md5;
-      if ((QLog.isDevelopLevel()) && (localDataLineMsgRecord.md5 != null)) {
-        QLog.d("DataLineHandler", 4, "getSessionFromMsgRecord, uSessionID[" + localDataLineMsgRecord.sessionid + "], strMR[" + HexUtil.bytes2HexStr(localDataLineMsgRecord.md5) + "], filesize[" + localDataLineMsgRecord.filesize);
-      }
-      localSession.actionInfo = null;
-      return localSession;
+    i = localDataLineMsgRecord.issend;
+    boolean bool = true;
+    if (i != 1) {
       bool = false;
     }
+    localSession.bSend = bool;
+    i = DataLineMsgRecord.getDevTypeBySeId(localDataLineMsgRecord.sessionid);
+    localSession.msgHeader = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.msgHeader(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue(), i);
+    localSession.dwGroupID = localDataLineMsgRecord.groupId;
+    localSession.dwGroupSize = localDataLineMsgRecord.groupSize;
+    localSession.dwGroupIndex = localDataLineMsgRecord.groupIndex;
+    localSession.emFileType = b(localDataLineMsgRecord.msgtype);
+    localSession.strFilePathSrc = FilePathUtil.b(localDataLineMsgRecord.path);
+    localSession.strFilePathThumb = localDataLineMsgRecord.thumbPath;
+    localSession.uFileSizeSrc = localDataLineMsgRecord.filesize;
+    localSession.vFileMD5Src = localDataLineMsgRecord.md5;
+    if ((QLog.isDevelopLevel()) && (localDataLineMsgRecord.md5 != null))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getSessionFromMsgRecord, uSessionID[");
+      localStringBuilder.append(localDataLineMsgRecord.sessionid);
+      localStringBuilder.append("], strMR[");
+      localStringBuilder.append(HexUtil.bytes2HexStr(localDataLineMsgRecord.md5));
+      localStringBuilder.append("], filesize[");
+      localStringBuilder.append(localDataLineMsgRecord.filesize);
+      QLog.d("DataLineHandler", 4, localStringBuilder.toString());
+    }
+    localSession.actionInfo = null;
+    return localSession;
   }
   
   public Session a(FileManagerEntity paramFileManagerEntity, boolean paramBoolean)
   {
-    int i = 0;
+    int i;
     if (paramFileManagerEntity.nFileType == 0) {
       i = 1;
+    } else if (paramFileManagerEntity.nFileType == 2) {
+      i = 2;
+    } else {
+      i = 0;
     }
-    ArrayList localArrayList;
-    Object localObject;
-    for (;;)
-    {
-      localArrayList = new ArrayList();
-      localObject = paramFileManagerEntity.fileName;
-      localObject = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.genSession(0, paramFileManagerEntity.getFilePath(), paramFileManagerEntity.strMiddleThumPath, (String)localObject, i, 1, paramFileManagerEntity.nSessionId, paramFileManagerEntity.dlGroupId, paramFileManagerEntity.dlGroupCount, paramFileManagerEntity.dlGourpIndex);
-      if (localObject != null) {
-        break;
-      }
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = paramFileManagerEntity.fileName;
+    localObject = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.genSession(0, paramFileManagerEntity.getFilePath(), paramFileManagerEntity.strMiddleThumPath, (String)localObject, i, 1, paramFileManagerEntity.nSessionId, paramFileManagerEntity.dlGroupId, paramFileManagerEntity.dlGroupCount, paramFileManagerEntity.dlGourpIndex);
+    if (localObject == null) {
       return null;
-      if (paramFileManagerEntity.nFileType == 2) {
-        i = 2;
-      }
     }
     ((Session)localObject).uChannelType = 1;
     ((Session)localObject).isFileAssist = true;
@@ -2154,7 +2205,12 @@ public class DataLineHandler
       ((Session)localObject).uSessionID = l;
       paramFileManagerEntity.nSessionId = l;
     }
-    QLog.i("FileAssistantSender<FileAssistant>", 1, "doWlanSend[" + paramFileManagerEntity.nSessionId + "],Send fro Wlan target:" + this.jdField_c_of_type_Int);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doWlanSend[");
+    localStringBuilder.append(paramFileManagerEntity.nSessionId);
+    localStringBuilder.append("],Send fro Wlan target:");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    QLog.i("FileAssistantSender<FileAssistant>", 1, localStringBuilder.toString());
     ((Session)localObject).msgHeader = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.msgHeader(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue(), this.jdField_c_of_type_Int);
     b(localArrayList, paramBoolean);
     this.jdField_b_of_type_JavaUtilHashMap.put(Long.valueOf(((Session)localObject).uSessionID), localObject);
@@ -2171,8 +2227,12 @@ public class DataLineHandler
     int i = paramMsgBody.msg_header.uint32_dst_ter_type.get();
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
     byte[] arrayOfByte = paramMsgBody.toByteArray();
-    if (QLog.isColorLevel()) {
-      QLog.d("DataLineHandler", 2, "send0x211C2CDatalineMsg DataLineMsgRecord:" + paramLong);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("send0x211C2CDatalineMsg DataLineMsgRecord:");
+      localStringBuilder.append(paramLong);
+      QLog.d("DataLineHandler", 2, localStringBuilder.toString());
     }
     localObject = a((String)localObject, 7, arrayOfByte, paramLong, i);
     a(paramMsgBody, (msg_svc.PbSendMsgReq)localObject);
@@ -2207,8 +2267,12 @@ public class DataLineHandler
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
     int i = paramMsgBody.msg_header.uint32_dst_ter_type.get();
     byte[] arrayOfByte = paramMsgBody.toByteArray();
-    if (QLog.isColorLevel()) {
-      QLog.d("DataLineHandler", 2, "send0x211C2CDatalineMsg DataLineMsgRecord:" + paramLong2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("send0x211C2CDatalineMsg DataLineMsgRecord:");
+      localStringBuilder.append(paramLong2);
+      QLog.d("DataLineHandler", 2, localStringBuilder.toString());
     }
     localObject = a((String)localObject, 7, arrayOfByte, paramLong2, i);
     a(paramMsgBody, (msg_svc.PbSendMsgReq)localObject);
@@ -2217,44 +2281,32 @@ public class DataLineHandler
   
   public ToServiceMsg a(long paramLong, MsgCSBody0x345 paramMsgCSBody0x345)
   {
-    Object localObject = null;
-    byte[] arrayOfByte = null;
     cmd0x345.ReqBody localReqBody = new cmd0x345.ReqBody();
     localReqBody.uint32_sub_cmd.set(paramMsgCSBody0x345.uMsgSubType);
-    switch (paramMsgCSBody0x345.uMsgSubType)
+    int i = paramMsgCSBody0x345.uMsgSubType;
+    byte[] arrayOfByte = null;
+    Object localObject;
+    if (i != 7)
     {
-    default: 
       localObject = arrayOfByte;
-      if (QLog.isColorLevel()) {
-        QLog.d("DataLineHandler", 2, "send0x345Req, unknwon nCmdType:" + paramMsgCSBody0x345.uMsgSubType);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("send0x345Req, unknwon nCmdType:");
+        ((StringBuilder)localObject).append(paramMsgCSBody0x345.uMsgSubType);
+        QLog.d("DataLineHandler", 2, ((StringBuilder)localObject).toString());
+        localObject = arrayOfByte;
       }
-      break;
     }
-    for (localObject = arrayOfByte;; localObject = createToServiceMsg("GTalkFileAppSvr.CMD_DISCUSS_FILE", null))
+    else
     {
-      paramMsgCSBody0x345 = (MsgCSBody0x345)localObject;
-      if (localObject != null)
+      if (paramMsgCSBody0x345.subCmd0x6ReqBody == null)
       {
-        paramMsgCSBody0x345 = localReqBody.toByteArray();
-        arrayOfByte = new byte[paramMsgCSBody0x345.length + 4];
-        PkgTools.DWord2Byte(arrayOfByte, 0, paramMsgCSBody0x345.length + 4);
-        PkgTools.copyData(arrayOfByte, 4, paramMsgCSBody0x345, paramMsgCSBody0x345.length);
-        ((ToServiceMsg)localObject).putWupBuffer(arrayOfByte);
-        ((ToServiceMsg)localObject).addAttribute("cookie", Long.valueOf(paramLong));
-        ((ToServiceMsg)localObject).extraData.putInt("DATALINE_TRYINDEX", 0);
-        a((ToServiceMsg)localObject);
-        paramMsgCSBody0x345 = (MsgCSBody0x345)localObject;
-      }
-      do
-      {
-        return paramMsgCSBody0x345;
-        if (paramMsgCSBody0x345.subCmd0x6ReqBody != null) {
-          break;
+        if (QLog.isColorLevel()) {
+          QLog.d("DataLineHandler", 2, "send0x345Req, subCmd0x6ReqBody is empty");
         }
-        paramMsgCSBody0x345 = (MsgCSBody0x345)localObject;
-      } while (!QLog.isColorLevel());
-      QLog.d("DataLineHandler", 2, "send0x345Req, subCmd0x6ReqBody is empty");
-      return null;
+        return null;
+      }
       localObject = new cmd0x345.ReqBody.SubCmd0x6ReqBody();
       ((cmd0x345.ReqBody.SubCmd0x6ReqBody)localObject).uint32_dst_bus_id.set(paramMsgCSBody0x345.subCmd0x6ReqBody.uint32_dst_bus_id);
       ((cmd0x345.ReqBody.SubCmd0x6ReqBody)localObject).uint64_src_uin.set(paramMsgCSBody0x345.subCmd0x6ReqBody.uint64_src_uin);
@@ -2269,13 +2321,24 @@ public class DataLineHandler
       ((cmd0x345.ReqBody.SubCmd0x6ReqBody)localObject).str_src_parent_folder.set(paramMsgCSBody0x345.subCmd0x6ReqBody.str_src_parent_folder);
       ((cmd0x345.ReqBody.SubCmd0x6ReqBody)localObject).uint32_client_type.set(104);
       localReqBody.msg_subcmd_0x6_req_body.set((MessageMicro)localObject);
+      localObject = createToServiceMsg("GTalkFileAppSvr.CMD_DISCUSS_FILE", null);
     }
+    if (localObject != null)
+    {
+      paramMsgCSBody0x345 = localReqBody.toByteArray();
+      arrayOfByte = new byte[paramMsgCSBody0x345.length + 4];
+      PkgTools.dWord2Byte(arrayOfByte, 0, paramMsgCSBody0x345.length + 4);
+      PkgTools.copyData(arrayOfByte, 4, paramMsgCSBody0x345, paramMsgCSBody0x345.length);
+      ((ToServiceMsg)localObject).putWupBuffer(arrayOfByte);
+      ((ToServiceMsg)localObject).addAttribute("cookie", Long.valueOf(paramLong));
+      ((ToServiceMsg)localObject).extraData.putInt("DATALINE_TRYINDEX", 0);
+      a((ToServiceMsg)localObject);
+    }
+    return localObject;
   }
   
   public ToServiceMsg a(long paramLong, MsgCSBody0x346 paramMsgCSBody0x346, Bundle paramBundle)
   {
-    Object localObject2 = null;
-    Object localObject1 = null;
     cmd0x346.ReqBody localReqBody = new cmd0x346.ReqBody();
     localReqBody.uint32_cmd.set(paramMsgCSBody0x346.uMsgSubType);
     localReqBody.uint32_business_id.set(paramMsgCSBody0x346.uint32_business_id);
@@ -2283,58 +2346,76 @@ public class DataLineHandler
       localReqBody.uint32_business_id.set(38);
     }
     localReqBody.uint32_client_type.set(104);
-    PBUInt32Field localPBUInt32Field = localReqBody.uint32_seq;
+    Object localObject1 = localReqBody.uint32_seq;
     int i = f;
     f = i + 1;
-    localPBUInt32Field.set(i);
-    if (!this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.FillReqBody(paramMsgCSBody0x346, localReqBody))
-    {
-      paramMsgCSBody0x346 = (MsgCSBody0x346)localObject1;
-      return paramMsgCSBody0x346;
+    ((PBUInt32Field)localObject1).set(i);
+    boolean bool = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.FillReqBody(paramMsgCSBody0x346, localReqBody);
+    Object localObject2 = null;
+    if (!bool) {
+      return null;
     }
-    switch (paramMsgCSBody0x346.uMsgSubType)
+    i = paramMsgCSBody0x346.uMsgSubType;
+    if (i != 1200)
     {
-    }
-    for (;;)
-    {
-      localObject1 = localObject2;
-      if (QLog.isColorLevel())
+      if (i != 1400)
       {
-        QLog.d("DataLineHandler", 2, "send0x346Req, unknwon nCmdType:" + paramMsgCSBody0x346.uMsgSubType);
-        localObject1 = localObject2;
-      }
-      for (;;)
-      {
-        paramMsgCSBody0x346 = localReqBody.toByteArray();
-        localObject2 = new byte[paramMsgCSBody0x346.length + 4];
-        PkgTools.DWord2Byte((byte[])localObject2, 0, paramMsgCSBody0x346.length + 4);
-        PkgTools.copyData((byte[])localObject2, 4, paramMsgCSBody0x346, paramMsgCSBody0x346.length);
-        paramMsgCSBody0x346 = (MsgCSBody0x346)localObject1;
-        if (localObject1 == null) {
-          break;
-        }
-        ((ToServiceMsg)localObject1).putWupBuffer((byte[])localObject2);
-        ((ToServiceMsg)localObject1).addAttribute("cookie", Long.valueOf(paramLong));
-        ((ToServiceMsg)localObject1).extraData.putInt("DATALINE_TRYINDEX", 0);
-        if (paramBundle != null)
+        if (i != 1600)
         {
-          ((ToServiceMsg)localObject1).addAttribute("data", paramBundle);
-          ((ToServiceMsg)localObject1).addAttribute("sendFromNative", Boolean.valueOf(false));
+          if (i != 1700)
+          {
+            if (i != 1800)
+            {
+              if (i == 60100) {
+                localObject2 = createToServiceMsg("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_COPY_TO-60100", null);
+              }
+              localObject1 = localObject2;
+              if (QLog.isColorLevel())
+              {
+                localObject1 = new StringBuilder();
+                ((StringBuilder)localObject1).append("send0x346Req, unknwon nCmdType:");
+                ((StringBuilder)localObject1).append(paramMsgCSBody0x346.uMsgSubType);
+                QLog.d("DataLineHandler", 2, ((StringBuilder)localObject1).toString());
+                localObject1 = localObject2;
+              }
+            }
+            else
+            {
+              localObject1 = createToServiceMsg("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_HIT_V2-1800", null);
+            }
+          }
+          else {
+            localObject1 = createToServiceMsg("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_V3-1700", null);
+          }
         }
-        a((ToServiceMsg)localObject1);
-        return localObject1;
-        localObject1 = createToServiceMsg("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_V2-1600", null);
-        continue;
-        localObject1 = createToServiceMsg("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_V3-1700", null);
-        continue;
-        localObject1 = createToServiceMsg("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_HIT_V2-1800", null);
-        continue;
-        localObject1 = createToServiceMsg("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_DOWNLOAD-1200", null);
-        continue;
+        else {
+          localObject1 = createToServiceMsg("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_V2-1600", null);
+        }
+      }
+      else {
         localObject1 = createToServiceMsg("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_FILE_QUERY-1400", null);
       }
-      localObject2 = createToServiceMsg("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_COPY_TO-60100", null);
     }
+    else {
+      localObject1 = createToServiceMsg("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_DOWNLOAD-1200", null);
+    }
+    paramMsgCSBody0x346 = localReqBody.toByteArray();
+    localObject2 = new byte[paramMsgCSBody0x346.length + 4];
+    PkgTools.dWord2Byte((byte[])localObject2, 0, paramMsgCSBody0x346.length + 4);
+    PkgTools.copyData((byte[])localObject2, 4, paramMsgCSBody0x346, paramMsgCSBody0x346.length);
+    if (localObject1 != null)
+    {
+      ((ToServiceMsg)localObject1).putWupBuffer((byte[])localObject2);
+      ((ToServiceMsg)localObject1).addAttribute("cookie", Long.valueOf(paramLong));
+      ((ToServiceMsg)localObject1).extraData.putInt("DATALINE_TRYINDEX", 0);
+      if (paramBundle != null)
+      {
+        ((ToServiceMsg)localObject1).addAttribute("data", paramBundle);
+        ((ToServiceMsg)localObject1).addAttribute("sendFromNative", Boolean.valueOf(false));
+      }
+      a((ToServiceMsg)localObject1);
+    }
+    return localObject1;
   }
   
   public ToServiceMsg a(long paramLong1, String paramString, int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte, long paramLong2)
@@ -2361,7 +2442,7 @@ public class DataLineHandler
     paramDataLineMsgRecord = createToServiceMsg("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_DOWNLOAD-1200", null);
     localObject1 = ((cmd0x346.ReqBody)localObject1).toByteArray();
     localObject2 = new byte[localObject1.length + 4];
-    PkgTools.DWord2Byte((byte[])localObject2, 0, localObject1.length + 4);
+    PkgTools.dWord2Byte((byte[])localObject2, 0, localObject1.length + 4);
     PkgTools.copyData((byte[])localObject2, 4, (byte[])localObject1, localObject1.length);
     if (paramDataLineMsgRecord != null)
     {
@@ -2393,42 +2474,50 @@ public class DataLineHandler
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      QLog.e("DataLineHandler", 1, "genSessionId failed");
-      return Long.valueOf(0L);
+      break label20;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label15:
+      label20:
+      break label15;
+    }
+    return Long.valueOf(0L);
+    QLog.e("DataLineHandler", 1, "genSessionId failed");
     return Long.valueOf(0L);
   }
   
   public Long a(String paramString, int paramInt)
   {
-    if (paramString.length() == 0) {
-      return Long.valueOf(0L);
+    int i = paramString.length();
+    Long localLong1 = Long.valueOf(0L);
+    if (i == 0) {
+      return localLong1;
     }
-    Long localLong = a(0, paramInt);
+    Long localLong2 = a(0, paramInt);
     DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
-    localDataLineMsgRecord.msgId = localLong.longValue();
-    localDataLineMsgRecord.sessionid = localLong.longValue();
+    localDataLineMsgRecord.msgId = localLong2.longValue();
+    localDataLineMsgRecord.sessionid = localLong2.longValue();
     localDataLineMsgRecord.msg = paramString;
     localDataLineMsgRecord.msgtype = -1000;
     localDataLineMsgRecord.issend = 1;
     localDataLineMsgRecord.isread = true;
     localDataLineMsgRecord.issuc = false;
-    ((SVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localDataLineMsgRecord);
+    ((ISVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localDataLineMsgRecord);
     localDataLineMsgRecord.time = MessageCache.a();
-    localDataLineMsgRecord.sessionid = localLong.longValue();
+    localDataLineMsgRecord.sessionid = localLong2.longValue();
     localDataLineMsgRecord.progress = 0.0F;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt).a(localDataLineMsgRecord, false);
-    if (!NetworkUtil.d(BaseApplication.getContext())) {
-      return Long.valueOf(0L);
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext())) {
+      return localLong1;
     }
     localDataLineMsgRecord.issuc = true;
-    paramString = new TextMsgTask(paramString, localLong, localDataLineMsgRecord);
+    paramString = new TextMsgTask(paramString, localLong2, localDataLineMsgRecord);
     if (!a(paramString)) {
-      return Long.valueOf(0L);
+      return localLong1;
     }
     this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-    return localLong;
+    return localLong2;
   }
   
   public SubMsgType0x7.MsgBody a(DataLineMsgRecord paramDataLineMsgRecord, long paramLong)
@@ -2468,8 +2557,12 @@ public class DataLineHandler
   
   public void a(int paramInt, long paramLong, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DataLineHandler", 2, "manually cancel a file . session =" + paramLong);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("manually cancel a file . session =");
+      ((StringBuilder)localObject).append(paramLong);
+      QLog.d("DataLineHandler", 2, ((StringBuilder)localObject).toString());
     }
     if (paramLong == 0L)
     {
@@ -2477,22 +2570,22 @@ public class DataLineHandler
       return;
     }
     int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    DataLineMsgRecord localDataLineMsgRecord = a().getMessageFacade().a(i).a(paramLong);
-    if (localDataLineMsgRecord == null)
+    Object localObject = a().getMessageFacade().a(i).a(paramLong);
+    if (localObject == null)
     {
       this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.CancelGroup(paramInt, paramLong, 32, paramBoolean);
       return;
     }
-    localDataLineMsgRecord.fileMsgStatus = 2L;
-    localDataLineMsgRecord.bIsTransfering = false;
-    c(localDataLineMsgRecord.path);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).d(localDataLineMsgRecord.msgId);
-    if (localDataLineMsgRecord.strMoloKey != null)
+    ((DataLineMsgRecord)localObject).fileMsgStatus = 2L;
+    ((DataLineMsgRecord)localObject).bIsTransfering = false;
+    c(((DataLineMsgRecord)localObject).path);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).d(((DataLineMsgRecord)localObject).msgId);
+    if (((DataLineMsgRecord)localObject).strMoloKey != null)
     {
-      this.jdField_a_of_type_ComDatalineCoreMoloHandler.c(localDataLineMsgRecord.strMoloKey);
+      this.jdField_a_of_type_ComDatalineCoreMoloHandler.c(((DataLineMsgRecord)localObject).strMoloKey);
       return;
     }
-    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.CancelGroup(localDataLineMsgRecord.groupId, paramLong, 32, paramBoolean);
+    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.CancelGroup(((DataLineMsgRecord)localObject).groupId, paramLong, 32, paramBoolean);
   }
   
   public void a(int paramInt, boolean paramBoolean)
@@ -2503,162 +2596,159 @@ public class DataLineHandler
   
   public void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (this.jdField_a_of_type_JavaUtilTimer != null)
+    Timer localTimer = this.jdField_a_of_type_JavaUtilTimer;
+    if (localTimer != null)
     {
-      this.jdField_a_of_type_JavaUtilTimer.cancel();
+      localTimer.cancel();
       this.jdField_a_of_type_JavaUtilTimer = null;
     }
-    if (((paramInt == 3) || (paramInt == 2) || (paramInt == 1) || (paramInt == 8)) && (!this.jdField_d_of_type_Boolean)) {}
-    try
-    {
-      this.jdField_a_of_type_JavaUtilTimer = new Timer();
-      this.jdField_a_of_type_JavaUtilTimer.schedule(new DataLineHandler.4(this), 20000L);
-      notifyUI(paramInt, paramBoolean, paramObject);
-      return;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      for (;;)
+    if (((paramInt == 3) || (paramInt == 2) || (paramInt == 1) || (paramInt == 8)) && (!this.jdField_d_of_type_Boolean)) {
+      try
+      {
+        this.jdField_a_of_type_JavaUtilTimer = new Timer();
+        this.jdField_a_of_type_JavaUtilTimer.schedule(new DataLineHandler.4(this), 20000L);
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        localOutOfMemoryError.printStackTrace();
+      }
+      catch (IllegalStateException localIllegalStateException)
       {
         localIllegalStateException.printStackTrace();
       }
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        localOutOfMemoryError.printStackTrace();
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
+    notifyUI(paramInt, paramBoolean, paramObject);
   }
   
   protected void a(long paramLong1, long paramLong2, SubMsgType0x7.MsgBody.GenericSubCmd paramGenericSubCmd, SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader)
   {
     for (;;)
     {
-      TextMsgPush localTextMsgPush;
       Object localObject1;
       try
       {
         if (!paramGenericSubCmd.uint32_type.has()) {
           return;
         }
-        switch (paramGenericSubCmd.uint32_type.get())
+        i = paramGenericSubCmd.uint32_type.get();
+        if (i != 1)
         {
-        case 1: 
-          if (!paramGenericSubCmd.uint64_sessionid.has()) {
-            break label697;
+          if (i != 7) {
+            return;
           }
-          switch (paramMsgHeader.uint32_src_ter_type.get())
+          MsgBackupPushHandler.a().a(paramGenericSubCmd);
+          return;
+        }
+        if (!paramGenericSubCmd.uint64_sessionid.has()) {
+          return;
+        }
+        if (paramMsgHeader.uint32_src_ter_type.get() == 3) {
+          break label723;
+        }
+        i = 0;
+        long l2 = paramGenericSubCmd.uint64_sessionid.get();
+        long l1 = l2;
+        if (i == 1) {
+          l1 = l2 | 0x0;
+        }
+        if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(l1)))
+        {
+          paramMsgHeader = new TextMsgPush(Long.valueOf(paramGenericSubCmd.uint32_size.get()), Long.valueOf(l1));
+          this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(l1), paramMsgHeader);
+        }
+        else
+        {
+          paramMsgHeader = (TextMsgPush)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(l1));
+        }
+        if (!paramGenericSubCmd.bytes_buf.has()) {
+          return;
+        }
+        localObject1 = new String();
+        Object localObject2 = new SubMsgType0x7.MsgBody.GenericSubCmd.QQDataTextMsg();
+        ((SubMsgType0x7.MsgBody.GenericSubCmd.QQDataTextMsg)localObject2).mergeFrom(paramGenericSubCmd.bytes_buf.get().toByteArray());
+        localObject2 = ((SubMsgType0x7.MsgBody.GenericSubCmd.QQDataTextMsg)localObject2).rpt_msg_item.get().iterator();
+        Object localObject3;
+        if (((Iterator)localObject2).hasNext())
+        {
+          localObject3 = (SubMsgType0x7.MsgBody.GenericSubCmd.QQDataTextMsg.MsgItem)((Iterator)localObject2).next();
+          if ((!((SubMsgType0x7.MsgBody.GenericSubCmd.QQDataTextMsg.MsgItem)localObject3).uint32_type.has()) || (((SubMsgType0x7.MsgBody.GenericSubCmd.QQDataTextMsg.MsgItem)localObject3).uint32_type.get() != 1) || (!((SubMsgType0x7.MsgBody.GenericSubCmd.QQDataTextMsg.MsgItem)localObject3).bytes_text.has())) {
+            continue;
+          }
+          localObject3 = new String(((SubMsgType0x7.MsgBody.GenericSubCmd.QQDataTextMsg.MsgItem)localObject3).bytes_text.get().toByteArray());
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append((String)localObject3);
+          localObject1 = localStringBuilder.toString();
+          continue;
+        }
+        if (!paramGenericSubCmd.uint32_index.has()) {
+          return;
+        }
+        paramMsgHeader.a(paramGenericSubCmd.uint32_index.get(), (String)localObject1);
+        if (paramMsgHeader.a())
+        {
+          this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(l1));
+          localObject2 = new DataLineMsgRecord();
+          ((DataLineMsgRecord)localObject2).msgId = l1;
+          ((DataLineMsgRecord)localObject2).sessionid = l1;
+          if (i == 1)
           {
-          default: 
-            long l = paramGenericSubCmd.uint64_sessionid.get();
-            if (i != 1) {
-              break label694;
-            }
-            l |= 0x0;
-            if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(l)))
+            paramGenericSubCmd = paramMsgHeader.a();
+            i = 0;
+            if (i < EmotcationConstants.SYS_EMOTICON_SYMBOL.length)
             {
-              localTextMsgPush = new TextMsgPush(Long.valueOf(paramGenericSubCmd.uint32_size.get()), Long.valueOf(l));
-              this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(l), localTextMsgPush);
-              if (!paramGenericSubCmd.bytes_buf.has()) {
-                break label697;
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append('\024');
+              ((StringBuilder)localObject3).append(EmotcationConstants.SYS_EMOTICON_SYMBOL[i]);
+              localObject1 = paramGenericSubCmd;
+              if (paramGenericSubCmd.indexOf(((StringBuilder)localObject3).toString()) == -1) {
+                break label729;
               }
-              paramMsgHeader = new String();
-              localObject1 = new SubMsgType0x7.MsgBody.GenericSubCmd.QQDataTextMsg();
-              ((SubMsgType0x7.MsgBody.GenericSubCmd.QQDataTextMsg)localObject1).mergeFrom(paramGenericSubCmd.bytes_buf.get().toByteArray());
-              localObject1 = ((SubMsgType0x7.MsgBody.GenericSubCmd.QQDataTextMsg)localObject1).rpt_msg_item.get().iterator();
-              if (((Iterator)localObject1).hasNext())
-              {
-                Object localObject2 = (SubMsgType0x7.MsgBody.GenericSubCmd.QQDataTextMsg.MsgItem)((Iterator)localObject1).next();
-                if ((!((SubMsgType0x7.MsgBody.GenericSubCmd.QQDataTextMsg.MsgItem)localObject2).uint32_type.has()) || (((SubMsgType0x7.MsgBody.GenericSubCmd.QQDataTextMsg.MsgItem)localObject2).uint32_type.get() != 1) || (!((SubMsgType0x7.MsgBody.GenericSubCmd.QQDataTextMsg.MsgItem)localObject2).bytes_text.has())) {
-                  break label691;
-                }
-                localObject2 = new String(((SubMsgType0x7.MsgBody.GenericSubCmd.QQDataTextMsg.MsgItem)localObject2).bytes_text.get().toByteArray());
-                paramMsgHeader = paramMsgHeader + (String)localObject2;
-                break label705;
-              }
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append('\024');
+              ((StringBuilder)localObject1).append(EmotcationConstants.SYS_EMOTICON_SYMBOL[i]);
+              localObject1 = ((StringBuilder)localObject1).toString();
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append("\024");
+              ((StringBuilder)localObject3).append((char)i);
+              localObject1 = paramGenericSubCmd.replace((CharSequence)localObject1, ((StringBuilder)localObject3).toString());
+              break label729;
             }
-            else
-            {
-              localTextMsgPush = (TextMsgPush)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(l));
-              continue;
-            }
-            if (!paramGenericSubCmd.uint32_index.has()) {
-              break label697;
-            }
-            localTextMsgPush.a(paramGenericSubCmd.uint32_index.get(), paramMsgHeader);
-            if (!localTextMsgPush.a()) {
-              break label697;
-            }
-            this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(l));
-            localObject1 = new DataLineMsgRecord();
-            ((DataLineMsgRecord)localObject1).msgId = l;
-            ((DataLineMsgRecord)localObject1).sessionid = l;
-            if (i == 1)
-            {
-              paramGenericSubCmd = localTextMsgPush.a();
-              i = 0;
-              if (i < EmotcationConstants.SYS_EMOTICON_SYMBOL.length)
-              {
-                paramMsgHeader = paramGenericSubCmd;
-                if (paramGenericSubCmd.indexOf('\024' + EmotcationConstants.SYS_EMOTICON_SYMBOL[i]) == -1) {
-                  break label714;
-                }
-                paramMsgHeader = paramGenericSubCmd.replace('\024' + EmotcationConstants.SYS_EMOTICON_SYMBOL[i], "\024" + (char)i);
-                break label714;
-              }
-              ((DataLineMsgRecord)localObject1).msg = paramGenericSubCmd;
-              ((DataLineMsgRecord)localObject1).msgtype = -1000;
-              ((DataLineMsgRecord)localObject1).issend = 0;
-              ((DataLineMsgRecord)localObject1).isread = false;
-              ((DataLineMsgRecord)localObject1).time = paramLong1;
-              ((DataLineMsgRecord)localObject1).issuc = true;
-              ((DataLineMsgRecord)localObject1).sessionid = ((DataLineMsgRecord)localObject1).msgId;
-              ((DataLineMsgRecord)localObject1).shmsgseq = paramLong2;
-              i = DataLineMsgRecord.getDevTypeBySeId(((DataLineMsgRecord)localObject1).sessionid);
-              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).a((DataLineMsgRecord)localObject1, true);
-              j();
-              a(8, true, new Object[] { Integer.valueOf((int)paramLong1), localTextMsgPush.a(), Long.valueOf(((DataLineMsgRecord)localObject1).sessionid) });
-              return;
-            }
-            break;
+            ((DataLineMsgRecord)localObject2).msg = paramGenericSubCmd;
           }
-          break;
+          else
+          {
+            ((DataLineMsgRecord)localObject2).msg = paramMsgHeader.a();
+          }
+          ((DataLineMsgRecord)localObject2).msgtype = -1000;
+          ((DataLineMsgRecord)localObject2).issend = 0;
+          ((DataLineMsgRecord)localObject2).isread = false;
+          ((DataLineMsgRecord)localObject2).time = paramLong1;
+          ((DataLineMsgRecord)localObject2).issuc = true;
+          ((DataLineMsgRecord)localObject2).sessionid = ((DataLineMsgRecord)localObject2).msgId;
+          ((DataLineMsgRecord)localObject2).shmsgseq = paramLong2;
+          i = DataLineMsgRecord.getDevTypeBySeId(((DataLineMsgRecord)localObject2).sessionid);
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).a((DataLineMsgRecord)localObject2, true);
+          j();
+          a(8, true, new Object[] { Integer.valueOf((int)paramLong1), paramMsgHeader.a(), Long.valueOf(((DataLineMsgRecord)localObject2).sessionid) });
+          return;
         }
       }
       catch (Exception paramGenericSubCmd)
       {
         paramGenericSubCmd.printStackTrace();
-        return;
       }
-      ((DataLineMsgRecord)localObject1).msg = localTextMsgPush.a();
-      continue;
-      MsgBackupPushHandler.a().a(paramGenericSubCmd);
       return;
-      label691:
-      break label705;
-      label694:
+      label723:
+      int i = 1;
       continue;
-      label697:
-      return;
-      return;
-      int i = 0;
-      continue;
-      label705:
-      continue;
-      i = 1;
-      continue;
-      label714:
+      label729:
       i += 1;
-      paramGenericSubCmd = paramMsgHeader;
+      paramGenericSubCmd = (SubMsgType0x7.MsgBody.GenericSubCmd)localObject1;
     }
   }
   
@@ -2670,20 +2760,22 @@ public class DataLineHandler
   public void a(DataLineMsgRecord paramDataLineMsgRecord)
   {
     a(1004, a(paramDataLineMsgRecord, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue()), paramDataLineMsgRecord.sessionid);
-    OnSessionProgress(paramDataLineMsgRecord.sessionid, (paramDataLineMsgRecord.filesize * 0.8D), paramDataLineMsgRecord.filesize, 0);
+    long l = paramDataLineMsgRecord.sessionid;
+    double d1 = paramDataLineMsgRecord.filesize;
+    Double.isNaN(d1);
+    OnSessionProgress(l, (d1 * 0.8D), paramDataLineMsgRecord.filesize, 0);
   }
   
   public void a(DataLineMsgRecord paramDataLineMsgRecord, boolean paramBoolean)
   {
-    if (paramDataLineMsgRecord == null) {}
-    ArrayList localArrayList;
-    Session localSession;
-    do
-    {
+    if (paramDataLineMsgRecord == null) {
       return;
-      localArrayList = new ArrayList();
-      localSession = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.genSession(paramDataLineMsgRecord);
-    } while (localSession == null);
+    }
+    ArrayList localArrayList = new ArrayList();
+    Session localSession = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.genSession(paramDataLineMsgRecord);
+    if (localSession == null) {
+      return;
+    }
     if (0L == paramDataLineMsgRecord.sessionid) {
       localSession.uSessionID = a(0, this.jdField_a_of_type_Int).longValue();
     }
@@ -2705,7 +2797,7 @@ public class DataLineHandler
     if (paramFileManagerEntity.strThumbPath != null)
     {
       localDataLineMsgRecord.thumbPath = com.tencent.mobileqq.filemanager.util.FileUtil.a(com.tencent.mobileqq.filemanager.util.FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()), FileManagerUtil.a(paramFileManagerEntity.strThumbPath));
-      FileUtils.d(paramFileManagerEntity.strThumbPath, localDataLineMsgRecord.thumbPath);
+      FileUtils.copyFile(paramFileManagerEntity.strThumbPath, localDataLineMsgRecord.thumbPath);
     }
     localDataLineMsgRecord.filesize = paramFileManagerEntity.fileSize;
     localDataLineMsgRecord.busId = 25;
@@ -2718,7 +2810,7 @@ public class DataLineHandler
     localDataLineMsgRecord.issend = 1;
     localDataLineMsgRecord.isread = true;
     localDataLineMsgRecord.issuc = false;
-    ((SVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localDataLineMsgRecord);
+    ((ISVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localDataLineMsgRecord);
     localDataLineMsgRecord.time = MessageCache.a();
     localDataLineMsgRecord.progress = 0.2F;
     localDataLineMsgRecord.fileMsgStatus = 0L;
@@ -2764,7 +2856,7 @@ public class DataLineHandler
     localDataLineMsgRecord.issend = 1;
     localDataLineMsgRecord.isread = true;
     localDataLineMsgRecord.issuc = false;
-    ((SVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localDataLineMsgRecord);
+    ((ISVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localDataLineMsgRecord);
     localDataLineMsgRecord.time = MessageCache.a();
     localDataLineMsgRecord.progress = 0.2F;
     localDataLineMsgRecord.fileMsgStatus = 0L;
@@ -2783,24 +2875,24 @@ public class DataLineHandler
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    int i;
     if ((paramFromServiceMsg == null) || (paramFromServiceMsg.getResultCode() != 1000))
     {
-      i = paramToServiceMsg.extraData.getInt("DATALINE_TRYINDEX", -1);
-      if (i >= 0) {}
-    }
-    do
-    {
-      do
-      {
+      int i = paramToServiceMsg.extraData.getInt("DATALINE_TRYINDEX", -1);
+      if (i < 0) {
         return;
-        if (i < 3)
-        {
-          paramToServiceMsg.extraData.putInt("DATALINE_TRYINDEX", i + 1);
-          a(paramToServiceMsg);
-          return;
-        }
-      } while ((paramFromServiceMsg == null) || (paramFromServiceMsg.getServiceCmd() == null));
+      }
+      if (i < 3)
+      {
+        paramToServiceMsg.extraData.putInt("DATALINE_TRYINDEX", i + 1);
+        a(paramToServiceMsg);
+        return;
+      }
+    }
+    if (paramFromServiceMsg != null)
+    {
+      if (paramFromServiceMsg.getServiceCmd() == null) {
+        return;
+      }
       if (paramFromServiceMsg.getServiceCmd().equals("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_V2-1600"))
       {
         a(paramToServiceMsg, paramFromServiceMsg, 1610);
@@ -2841,8 +2933,14 @@ public class DataLineHandler
         b(paramToServiceMsg, paramFromServiceMsg);
         return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("DataLineHandler", 2, "<PbSendMsg><R><---handle0x346Rsp, unknown cmd:" + paramFromServiceMsg.getServiceCmd());
+      if (QLog.isColorLevel())
+      {
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("<PbSendMsg><R><---handle0x346Rsp, unknown cmd:");
+        paramToServiceMsg.append(paramFromServiceMsg.getServiceCmd());
+        QLog.d("DataLineHandler", 2, paramToServiceMsg.toString());
+      }
+    }
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, int paramInt)
@@ -2852,34 +2950,46 @@ public class DataLineHandler
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DataLineHandler", 2, "received a cmd=" + paramFromServiceMsg.getServiceCmd());
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("received a cmd=");
+      localStringBuilder.append(paramFromServiceMsg.getServiceCmd());
+      QLog.d("DataLineHandler", 2, localStringBuilder.toString());
     }
     if (paramFromServiceMsg.getServiceCmd().equals("MessageSvc.PbSendMsg"))
     {
-      if (!paramToServiceMsg.extraData.getBoolean("exit_push_0x211_key", false)) {
-        break label73;
-      }
-      MsgBackupPushHandler.a().a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
-    label73:
-    while ((paramToServiceMsg.extraData.getInt("ROUNTING_TYPE") != 13) || (!paramToServiceMsg.extraData.getBoolean("ISFROM_DATALINE"))) {
-      return;
-    }
-    if (paramFromServiceMsg.getResultCode() != 1000)
-    {
-      int i = paramToServiceMsg.extraData.getInt("DATALINE_TRYINDEX");
-      if (QLog.isColorLevel()) {
-        QLog.d("DataLineHandler", 2, "<PbSendMsg><R><---handle0x211C2CMessageError, retry = " + i);
-      }
-      if (i < 3)
+      if (paramToServiceMsg.extraData.getBoolean("exit_push_0x211_key", false))
       {
-        paramToServiceMsg.extraData.putInt("DATALINE_TRYINDEX", i + 1);
-        sendPbReq(paramToServiceMsg);
+        MsgBackupPushHandler.a().a(paramToServiceMsg, paramFromServiceMsg, paramObject);
         return;
       }
+      if (paramToServiceMsg.extraData.getInt("ROUNTING_TYPE") == 13)
+      {
+        if (!paramToServiceMsg.extraData.getBoolean("ISFROM_DATALINE")) {
+          return;
+        }
+        if (paramFromServiceMsg.getResultCode() != 1000)
+        {
+          int i = paramToServiceMsg.extraData.getInt("DATALINE_TRYINDEX");
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("<PbSendMsg><R><---handle0x211C2CMessageError, retry = ");
+            localStringBuilder.append(i);
+            QLog.d("DataLineHandler", 2, localStringBuilder.toString());
+          }
+          if (i < 3)
+          {
+            paramToServiceMsg.extraData.putInt("DATALINE_TRYINDEX", i + 1);
+            sendPbReq(paramToServiceMsg);
+            return;
+          }
+        }
+        b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      }
     }
-    b(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
   
   public void a(String paramString)
@@ -2890,9 +3000,13 @@ public class DataLineHandler
       return;
     }
     paramString = new QQText(paramString, 13, 32, 0).toPlainText(true);
-    String str = FMSettings.a().b() + FileManagerUtil.a() + ".txt";
-    a(paramString, new File(str));
-    a(str, null, 0, FileManagerUtil.a().longValue(), 0, 0, 0, false);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(FMSettings.a().getDefaultRecvPath());
+    ((StringBuilder)localObject).append(FileManagerUtil.a());
+    ((StringBuilder)localObject).append(".txt");
+    localObject = ((StringBuilder)localObject).toString();
+    a(paramString, new File((String)localObject));
+    a((String)localObject, null, 0, FileManagerUtil.a().longValue(), 0, 0, 0, false);
   }
   
   public void a(ArrayList<FileInfo> paramArrayList)
@@ -2902,121 +3016,112 @@ public class DataLineHandler
   
   public void a(ArrayList<FileInfo> paramArrayList, String paramString, byte[] paramArrayOfByte, long paramLong)
   {
-    if (paramArrayList == null) {}
-    int j;
-    int i;
-    ArrayList localArrayList;
-    Object localObject;
-    String str;
+    if (paramArrayList == null) {
+      return;
+    }
     for (;;)
     {
-      return;
-      j = paramArrayList.size();
-      if (j > 3) {
-        break;
-      }
-      i = 0;
-      while (i < j)
+      int j = paramArrayList.size();
+      Object localObject2;
+      Object localObject3;
+      if (j <= 3)
       {
-        localArrayList = new ArrayList();
-        localObject = ((FileInfo)paramArrayList.get(i)).c();
-        str = ((FileInfo)paramArrayList.get(i)).b();
-        localObject = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.genSession(0, (String)localObject, null, str, 0, 0, 0L, 0, 0, 0);
-        if (localObject != null)
-        {
-          localArrayList.add(localObject);
-          ((Session)localObject).uSessionID = a(0, this.jdField_a_of_type_Int).longValue();
-          ((Session)localObject).msgHeader = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.msgHeader(paramLong, this.jdField_a_of_type_Int);
-          this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService((Session)localObject, paramString, paramArrayOfByte);
-        }
-        if (localArrayList.size() > 0) {
-          b(localArrayList, false);
-        }
-        i += 1;
-      }
-    }
-    if ((j > 3) && (j < 50))
-    {
-      localArrayList = new ArrayList();
-      int k = a();
-      i = 0;
-      label199:
-      if (i < j)
-      {
-        localObject = ((FileInfo)paramArrayList.get(i)).c();
-        str = ((FileInfo)paramArrayList.get(i)).b();
-        localObject = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.genSession(0, (String)localObject, null, str, 0, 0, 0L, k, j, i);
-        if (localObject == null) {
-          break label634;
-        }
-        localArrayList.add(localObject);
-        ((Session)localObject).uSessionID = a(k, this.jdField_a_of_type_Int).longValue();
-        ((Session)localObject).msgHeader = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.msgHeader(paramLong, this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService((Session)localObject, paramString, paramArrayOfByte);
-        if (!DataLineMsgSet.isSingle(0, k)) {
-          break label634;
-        }
-        ((Session)localObject).dwGroupID = 0;
-        ((Session)localObject).dwGroupIndex = 0;
-        ((Session)localObject).dwGroupSize = 0;
-        if (localArrayList.size() > 0) {
-          b(localArrayList, false);
-        }
-        localArrayList = new ArrayList();
-      }
-    }
-    label412:
-    label631:
-    label634:
-    for (;;)
-    {
-      i += 1;
-      break label199;
-      if (localArrayList.size() <= 0) {
-        break;
-      }
-      b(localArrayList, false);
-      return;
-      j = a();
-      localArrayList = new ArrayList();
-      i = 0;
-      if (i < 50)
-      {
-        localObject = ((FileInfo)paramArrayList.get(i)).c();
-        str = ((FileInfo)paramArrayList.get(i)).b();
-        localObject = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.genSession(0, (String)localObject, null, str, 0, 0, 0L, j, 50, i);
-        if (localObject == null) {
-          break label631;
-        }
-        localArrayList.add(localObject);
-        ((Session)localObject).uSessionID = a(j, this.jdField_a_of_type_Int).longValue();
-        ((Session)localObject).msgHeader = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.msgHeader(paramLong, this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService((Session)localObject, paramString, paramArrayOfByte);
-        if (!DataLineMsgSet.isSingle(0, j)) {
-          break label631;
-        }
-        ((Session)localObject).dwGroupID = 0;
-        ((Session)localObject).dwGroupIndex = 0;
-        ((Session)localObject).dwGroupSize = 0;
-        if (localArrayList.size() > 0) {
-          b(localArrayList, false);
-        }
-        localArrayList = new ArrayList();
-      }
-      for (;;)
-      {
-        i += 1;
-        break label412;
-        if (localArrayList.size() > 0) {
-          b(localArrayList, false);
-        }
         i = 0;
-        while (i < 50)
+        while (i < j)
         {
-          paramArrayList.remove(0);
+          localObject1 = new ArrayList();
+          localObject2 = ((FileInfo)paramArrayList.get(i)).c();
+          localObject3 = ((FileInfo)paramArrayList.get(i)).b();
+          localObject2 = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.genSession(0, (String)localObject2, null, (String)localObject3, 0, 0, 0L, 0, 0, 0);
+          if (localObject2 != null)
+          {
+            ((ArrayList)localObject1).add(localObject2);
+            ((Session)localObject2).uSessionID = a(0, this.jdField_a_of_type_Int).longValue();
+            ((Session)localObject2).msgHeader = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.msgHeader(paramLong, this.jdField_a_of_type_Int);
+            this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService((Session)localObject2, paramString, paramArrayOfByte);
+          }
+          if (((ArrayList)localObject1).size() > 0) {
+            b((ArrayList)localObject1, false);
+          }
           i += 1;
         }
-        break;
+      }
+      if ((j > 3) && (j < 50))
+      {
+        localObject1 = new ArrayList();
+        i = a();
+        int k = 0;
+        while (k < j)
+        {
+          localObject2 = ((FileInfo)paramArrayList.get(k)).c();
+          localObject3 = ((FileInfo)paramArrayList.get(k)).b();
+          localObject3 = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.genSession(0, (String)localObject2, null, (String)localObject3, 0, 0, 0L, i, j, k);
+          if (localObject3 != null)
+          {
+            localObject2 = localObject1;
+            ((ArrayList)localObject2).add(localObject3);
+            int n = this.jdField_a_of_type_Int;
+            int m = i;
+            ((Session)localObject3).uSessionID = a(m, n).longValue();
+            ((Session)localObject3).msgHeader = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.msgHeader(paramLong, this.jdField_a_of_type_Int);
+            this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService((Session)localObject3, paramString, paramArrayOfByte);
+            if (DataLineMsgSet.isSingle(0, m))
+            {
+              ((Session)localObject3).dwGroupID = 0;
+              ((Session)localObject3).dwGroupIndex = 0;
+              ((Session)localObject3).dwGroupSize = 0;
+              if (((ArrayList)localObject2).size() > 0) {
+                b((ArrayList)localObject2, false);
+              }
+              localObject1 = new ArrayList();
+            }
+          }
+          k += 1;
+        }
+        if (((ArrayList)localObject1).size() > 0) {
+          b((ArrayList)localObject1, false);
+        }
+        return;
+      }
+      j = a();
+      Object localObject1 = new ArrayList();
+      int i = 0;
+      while (i < 50)
+      {
+        localObject3 = ((FileInfo)paramArrayList.get(i)).c();
+        String str = ((FileInfo)paramArrayList.get(i)).b();
+        ProtocolHelper localProtocolHelper = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper;
+        localObject2 = localObject1;
+        localObject3 = localProtocolHelper.genSession(0, (String)localObject3, null, str, 0, 0, 0L, j, 50, i);
+        localObject1 = localObject2;
+        if (localObject3 != null)
+        {
+          ((ArrayList)localObject2).add(localObject3);
+          ((Session)localObject3).uSessionID = a(j, this.jdField_a_of_type_Int).longValue();
+          ((Session)localObject3).msgHeader = this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.msgHeader(paramLong, this.jdField_a_of_type_Int);
+          this.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.fillService((Session)localObject3, paramString, paramArrayOfByte);
+          localObject1 = localObject2;
+          if (DataLineMsgSet.isSingle(0, j))
+          {
+            ((Session)localObject3).dwGroupID = 0;
+            ((Session)localObject3).dwGroupIndex = 0;
+            ((Session)localObject3).dwGroupSize = 0;
+            if (((ArrayList)localObject2).size() > 0) {
+              b((ArrayList)localObject2, false);
+            }
+            localObject1 = new ArrayList();
+          }
+        }
+        i += 1;
+      }
+      if (((ArrayList)localObject1).size() > 0) {
+        b((ArrayList)localObject1, false);
+      }
+      i = 0;
+      while (i < 50)
+      {
+        paramArrayList.remove(0);
+        i += 1;
       }
     }
   }
@@ -3051,10 +3156,11 @@ public class DataLineHandler
   
   public void a(List<LoginDevItem> paramList)
   {
-    if ((paramList == null) || (paramList.size() < 0)) {}
-    for (;;)
+    if (paramList != null)
     {
-      return;
+      if (paramList.size() < 0) {
+        return;
+      }
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
@@ -3080,136 +3186,648 @@ public class DataLineHandler
     this.jdField_a_of_type_CooperationQqdatalineIpcDatalineRemoteManager.a(paramMsg);
   }
   
+  /* Error */
   public void a(msg_comm.Msg paramMsg, SubMsgType0x7.MsgBody paramMsgBody)
   {
-    this.jdField_a_of_type_CooperationQqdatalineIpcDatalineRemoteManager.a(paramMsg, paramMsgBody);
-    DataLineMsgRecord localDataLineMsgRecord;
-    try
-    {
-      localDataLineMsgRecord = new DataLineMsgRecord();
-      localDataLineMsgRecord.shmsgseq = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.get();
-      localDataLineMsgRecord.time = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
-      localDataLineMsgRecord.msgId = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_uid.get();
-      if (!paramMsgBody.msg_header.has()) {
-        throw new Exception("msgBody do not has msg_header");
-      }
-    }
-    catch (Exception paramMsg)
-    {
-      paramMsg = paramMsg;
-      if (QLog.isColorLevel()) {
-        QLog.d("DataLineHandler", 2, "<<<<<<<<<<handleDataLinePushMsg_PB_0x211 Exception:" + paramMsg.toString() + ">>>>>>>>>>");
-      }
-      return;
-      if (!paramMsgBody.msg_header.uint32_src_app_id.has()) {
-        throw new Exception("msgBody do not has uint32_src_app_id");
-      }
-    }
-    finally {}
-    if (!paramMsgBody.msg_header.uint32_src_inst_id.has()) {
-      throw new Exception("msgBody do not has uint32_src_inst_id");
-    }
-    if (!paramMsgBody.msg_header.uint32_dst_app_id.has()) {
-      throw new Exception("msgBody do not has uint32_dst_app_id");
-    }
-    if (!paramMsgBody.msg_header.uint32_dst_inst_id.has()) {
-      throw new Exception("msgBody do not has uint32_dst_inst_id");
-    }
-    if (a(paramMsgBody.msg_header.uint32_src_app_id.get(), paramMsgBody.msg_header.uint32_src_inst_id.get())) {
-      throw new Exception("msgBody command from android");
-    }
-    if ((paramMsgBody.uint32_sub_cmd.get() != 5) && (!b(paramMsgBody.msg_header.uint32_dst_app_id.get(), paramMsgBody.msg_header.uint32_dst_inst_id.get()))) {
-      throw new Exception("msgBody command not for android");
-    }
-    Object localObject = (im_msg_head.InstInfo)((im_msg_head.InstCtrl)((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_inst_ctrl.get()).msg_from_inst.get();
-    paramMsgBody.msg_header.uint32_src_ter_type.set(((im_msg_head.InstInfo)localObject).enum_device_type.get());
-    QLog.d("DataLineHandler", 2, "DoCCPush msg time[" + localDataLineMsgRecord.time + "] mr.shmsgseq[" + localDataLineMsgRecord.shmsgseq + "] uint32_sub_cmd[" + paramMsgBody.uint32_sub_cmd.get() + "]");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramMsgBody.msg_header.uint32_src_ter_type.get()).e(localDataLineMsgRecord.time);
-    if (a(localDataLineMsgRecord, paramMsgBody.msg_header.uint32_src_ter_type.get()))
-    {
-      QLog.d("DataLineHandler", 2, "DoCCPush msg time[" + localDataLineMsgRecord.time + "] is repeated mr.shmsgseq[" + localDataLineMsgRecord.shmsgseq + "] uint32_sub_cmd[" + paramMsgBody.uint32_sub_cmd.get() + "]");
-      return;
-    }
-    localObject = (RegisterProxySvcPackHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.REGPRXYSVCPACK_HANDLER);
-    if ((localObject != null) && (((RegisterProxySvcPackHandler)localObject).d() != 1)) {
-      ((RegisterProxySvcPackHandler)localObject).e(1);
-    }
-    if (!paramMsgBody.uint32_sub_cmd.has()) {
-      throw new Exception("msgBody do not has uint32_sub_cmd");
-    }
-    QLog.d("DataLineHandler", 2, "DoCCPush msg time[" + localDataLineMsgRecord.time + "]  mr.shmsgseq[" + localDataLineMsgRecord.shmsgseq + "] uint32_sub_cmd[" + paramMsgBody.uint32_sub_cmd.get() + "]");
-    switch (paramMsgBody.uint32_sub_cmd.get())
-    {
-    case 1: 
-      if (QLog.isColorLevel()) {
-        QLog.d("DataLineHandler", 2, "0x211 0x7 0x1 文件原图中转通知");
-      }
-      if (!paramMsgBody.msg_header.uint64_dst_uin.has()) {
-        throw new Exception("msg_header do not has uint64_dst_uin");
-      }
-    case 4: 
-      if (QLog.isColorLevel()) {
-        QLog.d("DataLineHandler", 2, "0x211 0x7 0x4 通用协议");
-      }
-      if (!paramMsgBody.msg_subcmd_0x4_generic.has()) {
-        throw new Exception("msgBody do not has msg_subcmd_0x4_generic");
-      }
-      a(localDataLineMsgRecord.time, localDataLineMsgRecord.shmsgseq, paramMsgBody.msg_subcmd_0x4_generic, paramMsgBody.msg_header);
-      return;
-      a(((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get(), paramMsgBody.msg_header, paramMsgBody.rpt_msg_subcmd_0x1_ftn_notify.get(), false);
-      return;
-    case 2: 
-      if (QLog.isColorLevel()) {
-        QLog.d("DataLineHandler", 2, "0x211 0x7 0x2 文件原图近场通知");
-      }
-      if (!paramMsgBody.msg_header.uint64_dst_uin.has()) {
-        throw new Exception("msg_header do not has uint64_dst_uin");
-      }
-      b(((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get(), paramMsgBody.msg_header, paramMsgBody.rpt_msg_subcmd_0x2_nfc_notify.get(), false);
-      return;
-    case 3: 
-      if (QLog.isColorLevel()) {
-        QLog.d("DataLineHandler", 2, "0x211 0x7 0x3 文件控制命令");
-      }
-      a(paramMsgBody.msg_header, paramMsgBody.rpt_msg_subcmd_0x3_filecontrol.get());
-      return;
-    case 5: 
-      if (QLog.isColorLevel()) {
-        QLog.d("DataLineHandler", 2, "0x211 0x7 0x5 应用宝通知");
-      }
-      c(paramMsgBody.rpt_msg_subcmd_0x5_molo_notify.get());
-      return;
-    case 11: 
-      b(paramMsgBody.rpt_msg_subcmd_0xb_mpfile_notify.get());
-      return;
-    case 9: 
-      if (QLog.isColorLevel()) {
-        QLog.d("DataLineHandler", 2, "0x211 0x7 0x9 文件缩略图中转通知");
-      }
-      if (!paramMsgBody.msg_header.uint64_dst_uin.has()) {
-        throw new Exception("msg_header do not has uint64_dst_uin");
-      }
-      a(((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get(), paramMsgBody.msg_header, paramMsgBody.rpt_msg_subcmd_0x9_ftn_thumb_notify.get(), true);
-      return;
-    case 10: 
-      if (QLog.isColorLevel()) {
-        QLog.d("DataLineHandler", 2, "0x211 0x7 0xa 文件缩略图近场通知");
-      }
-      if (!paramMsgBody.msg_header.uint64_dst_uin.has()) {
-        throw new Exception("msg_header do not has uint64_dst_uin");
-      }
-      b(((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get(), paramMsgBody.msg_header, paramMsgBody.rpt_msg_subcmd_0xa_nfc_thumb_notify.get(), true);
-      return;
-    case 8: 
-      if (QLog.isColorLevel()) {
-        QLog.d("DataLineHandler", 2, "0x211 0x7 0x8 rfc信令");
-      }
-      if (!paramMsgBody.msg_header.uint64_dst_uin.has()) {
-        throw new Exception("msg_header do not has uint64_dst_uin");
-      }
-      a(((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get(), paramMsgBody.msg_header, paramMsgBody.rpt_msg_subcmd_0x8_rnfc_notify.get());
-      return;
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 265	com/tencent/mobileqq/app/DataLineHandler:jdField_a_of_type_CooperationQqdatalineIpcDatalineRemoteManager	Lcooperation/qqdataline/ipc/DatalineRemoteManager;
+    //   4: aload_1
+    //   5: aload_2
+    //   6: invokevirtual 2519	cooperation/qqdataline/ipc/DatalineRemoteManager:a	(Lmsf/msgcomm/msg_comm$Msg;Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody;)V
+    //   9: new 400	com/tencent/mobileqq/data/DataLineMsgRecord
+    //   12: dup
+    //   13: invokespecial 2175	com/tencent/mobileqq/data/DataLineMsgRecord:<init>	()V
+    //   16: astore 4
+    //   18: aload 4
+    //   20: aload_1
+    //   21: getfield 2525	msf/msgcomm/msg_comm$Msg:msg_head	Lmsf/msgcomm/msg_comm$MsgHead;
+    //   24: invokevirtual 2528	msf/msgcomm/msg_comm$MsgHead:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   27: checkcast 2527	msf/msgcomm/msg_comm$MsgHead
+    //   30: getfield 2531	msf/msgcomm/msg_comm$MsgHead:msg_seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   33: invokevirtual 1263	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   36: i2l
+    //   37: putfield 2307	com/tencent/mobileqq/data/DataLineMsgRecord:shmsgseq	J
+    //   40: aload 4
+    //   42: aload_1
+    //   43: getfield 2525	msf/msgcomm/msg_comm$Msg:msg_head	Lmsf/msgcomm/msg_comm$MsgHead;
+    //   46: invokevirtual 2528	msf/msgcomm/msg_comm$MsgHead:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   49: checkcast 2527	msf/msgcomm/msg_comm$MsgHead
+    //   52: getfield 2534	msf/msgcomm/msg_comm$MsgHead:msg_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   55: invokevirtual 1263	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   58: i2l
+    //   59: putfield 2195	com/tencent/mobileqq/data/DataLineMsgRecord:time	J
+    //   62: aload 4
+    //   64: aload_1
+    //   65: getfield 2525	msf/msgcomm/msg_comm$Msg:msg_head	Lmsf/msgcomm/msg_comm$MsgHead;
+    //   68: invokevirtual 2528	msf/msgcomm/msg_comm$MsgHead:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   71: checkcast 2527	msf/msgcomm/msg_comm$MsgHead
+    //   74: getfield 2537	msf/msgcomm/msg_comm$MsgHead:msg_uid	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   77: invokevirtual 2269	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   80: putfield 720	com/tencent/mobileqq/data/DataLineMsgRecord:msgId	J
+    //   83: aload_2
+    //   84: getfield 1960	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:msg_header	Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;
+    //   87: invokevirtual 2538	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader:has	()Z
+    //   90: ifeq +1173 -> 1263
+    //   93: aload_2
+    //   94: getfield 1960	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:msg_header	Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;
+    //   97: getfield 2541	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader:uint32_src_app_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   100: invokevirtual 962	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   103: ifeq +1149 -> 1252
+    //   106: aload_2
+    //   107: getfield 1960	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:msg_header	Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;
+    //   110: getfield 2544	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader:uint32_src_inst_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   113: invokevirtual 962	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   116: ifeq +1125 -> 1241
+    //   119: aload_2
+    //   120: getfield 1960	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:msg_header	Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;
+    //   123: getfield 2547	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader:uint32_dst_app_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   126: invokevirtual 962	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   129: ifeq +1101 -> 1230
+    //   132: aload_2
+    //   133: getfield 1960	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:msg_header	Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;
+    //   136: getfield 2550	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader:uint32_dst_inst_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   139: invokevirtual 962	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   142: ifeq +1077 -> 1219
+    //   145: aload_0
+    //   146: aload_2
+    //   147: getfield 1960	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:msg_header	Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;
+    //   150: getfield 2541	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader:uint32_src_app_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   153: invokevirtual 1263	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   156: aload_2
+    //   157: getfield 1960	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:msg_header	Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;
+    //   160: getfield 2544	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader:uint32_src_inst_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   163: invokevirtual 1263	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   166: invokevirtual 2552	com/tencent/mobileqq/app/DataLineHandler:a	(II)Z
+    //   169: ifne +1039 -> 1208
+    //   172: aload_2
+    //   173: getfield 1261	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:uint32_sub_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   176: invokevirtual 1263	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   179: iconst_5
+    //   180: if_icmpeq +44 -> 224
+    //   183: aload_0
+    //   184: aload_2
+    //   185: getfield 1960	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:msg_header	Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;
+    //   188: getfield 2547	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader:uint32_dst_app_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   191: invokevirtual 1263	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   194: aload_2
+    //   195: getfield 1960	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:msg_header	Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;
+    //   198: getfield 2550	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader:uint32_dst_inst_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   201: invokevirtual 1263	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   204: invokevirtual 2554	com/tencent/mobileqq/app/DataLineHandler:b	(II)Z
+    //   207: ifeq +6 -> 213
+    //   210: goto +14 -> 224
+    //   213: new 1540	java/lang/Exception
+    //   216: dup
+    //   217: ldc_w 2556
+    //   220: invokespecial 2557	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   223: athrow
+    //   224: aload_1
+    //   225: getfield 2525	msf/msgcomm/msg_comm$Msg:msg_head	Lmsf/msgcomm/msg_comm$MsgHead;
+    //   228: invokevirtual 2528	msf/msgcomm/msg_comm$MsgHead:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   231: checkcast 2527	msf/msgcomm/msg_comm$MsgHead
+    //   234: getfield 2560	msf/msgcomm/msg_comm$MsgHead:msg_inst_ctrl	Ltencent/im/msg/im_msg_head$InstCtrl;
+    //   237: invokevirtual 2561	tencent/im/msg/im_msg_head$InstCtrl:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   240: checkcast 665	tencent/im/msg/im_msg_head$InstCtrl
+    //   243: getfield 683	tencent/im/msg/im_msg_head$InstCtrl:msg_from_inst	Ltencent/im/msg/im_msg_head$InstInfo;
+    //   246: invokevirtual 2562	tencent/im/msg/im_msg_head$InstInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   249: checkcast 622	tencent/im/msg/im_msg_head$InstInfo
+    //   252: astore 5
+    //   254: aload_2
+    //   255: getfield 1960	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:msg_header	Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;
+    //   258: getfield 2267	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader:uint32_src_ter_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   261: aload 5
+    //   263: getfield 640	tencent/im/msg/im_msg_head$InstInfo:enum_device_type	Lcom/tencent/mobileqq/pb/PBEnumField;
+    //   266: invokevirtual 2563	com/tencent/mobileqq/pb/PBEnumField:get	()I
+    //   269: invokevirtual 633	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
+    //   272: new 215	java/lang/StringBuilder
+    //   275: dup
+    //   276: invokespecial 216	java/lang/StringBuilder:<init>	()V
+    //   279: astore 5
+    //   281: aload 5
+    //   283: ldc_w 2565
+    //   286: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   289: pop
+    //   290: aload 5
+    //   292: aload 4
+    //   294: getfield 2195	com/tencent/mobileqq/data/DataLineMsgRecord:time	J
+    //   297: invokevirtual 361	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   300: pop
+    //   301: aload 5
+    //   303: ldc_w 2567
+    //   306: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   309: pop
+    //   310: aload 5
+    //   312: aload 4
+    //   314: getfield 2307	com/tencent/mobileqq/data/DataLineMsgRecord:shmsgseq	J
+    //   317: invokevirtual 361	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   320: pop
+    //   321: aload 5
+    //   323: ldc_w 2569
+    //   326: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   329: pop
+    //   330: aload 5
+    //   332: aload_2
+    //   333: getfield 1261	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:uint32_sub_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   336: invokevirtual 1263	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   339: invokevirtual 337	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   342: pop
+    //   343: aload 5
+    //   345: ldc_w 1788
+    //   348: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   351: pop
+    //   352: ldc_w 300
+    //   355: iconst_2
+    //   356: aload 5
+    //   358: invokevirtual 234	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   361: invokestatic 499	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   364: aload_0
+    //   365: getfield 142	com/tencent/mobileqq/app/DataLineHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   368: invokevirtual 689	com/tencent/mobileqq/app/QQAppInterface:getMessageFacade	()Lcom/tencent/imcore/message/QQMessageFacade;
+    //   371: aload_2
+    //   372: getfield 1960	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:msg_header	Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;
+    //   375: getfield 2267	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader:uint32_src_ter_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   378: invokevirtual 1263	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   381: invokevirtual 694	com/tencent/imcore/message/QQMessageFacade:a	(I)Lcom/tencent/mobileqq/app/message/DatalineMessageManager;
+    //   384: aload 4
+    //   386: getfield 2195	com/tencent/mobileqq/data/DataLineMsgRecord:time	J
+    //   389: invokevirtual 2571	com/tencent/mobileqq/app/message/DatalineMessageManager:e	(J)V
+    //   392: aload_0
+    //   393: aload 4
+    //   395: aload_2
+    //   396: getfield 1960	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:msg_header	Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;
+    //   399: getfield 2267	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader:uint32_src_ter_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   402: invokevirtual 1263	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   405: invokevirtual 2574	com/tencent/mobileqq/app/DataLineHandler:a	(Lcom/tencent/mobileqq/data/DataLineMsgRecord;I)Z
+    //   408: ifeq +87 -> 495
+    //   411: new 215	java/lang/StringBuilder
+    //   414: dup
+    //   415: invokespecial 216	java/lang/StringBuilder:<init>	()V
+    //   418: astore_1
+    //   419: aload_1
+    //   420: ldc_w 2565
+    //   423: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   426: pop
+    //   427: aload_1
+    //   428: aload 4
+    //   430: getfield 2195	com/tencent/mobileqq/data/DataLineMsgRecord:time	J
+    //   433: invokevirtual 361	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   436: pop
+    //   437: aload_1
+    //   438: ldc_w 2576
+    //   441: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   444: pop
+    //   445: aload_1
+    //   446: aload 4
+    //   448: getfield 2307	com/tencent/mobileqq/data/DataLineMsgRecord:shmsgseq	J
+    //   451: invokevirtual 361	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   454: pop
+    //   455: aload_1
+    //   456: ldc_w 2569
+    //   459: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   462: pop
+    //   463: aload_1
+    //   464: aload_2
+    //   465: getfield 1261	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:uint32_sub_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   468: invokevirtual 1263	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   471: invokevirtual 337	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   474: pop
+    //   475: aload_1
+    //   476: ldc_w 1788
+    //   479: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   482: pop
+    //   483: ldc_w 300
+    //   486: iconst_2
+    //   487: aload_1
+    //   488: invokevirtual 234	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   491: invokestatic 499	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   494: return
+    //   495: aload_0
+    //   496: getfield 142	com/tencent/mobileqq/app/DataLineHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   499: getstatic 1735	com/tencent/mobileqq/app/BusinessHandlerFactory:REGPRXYSVCPACK_HANDLER	Ljava/lang/String;
+    //   502: invokevirtual 1739	com/tencent/mobileqq/app/QQAppInterface:getBusinessHandler	(Ljava/lang/String;)Lcom/tencent/mobileqq/app/BusinessHandler;
+    //   505: checkcast 1741	com/tencent/mobileqq/app/RegisterProxySvcPackHandler
+    //   508: astore 5
+    //   510: aload 5
+    //   512: ifnull +18 -> 530
+    //   515: aload 5
+    //   517: invokevirtual 2578	com/tencent/mobileqq/app/RegisterProxySvcPackHandler:d	()I
+    //   520: iconst_1
+    //   521: if_icmpeq +9 -> 530
+    //   524: aload 5
+    //   526: iconst_1
+    //   527: invokevirtual 2580	com/tencent/mobileqq/app/RegisterProxySvcPackHandler:e	(I)V
+    //   530: aload_2
+    //   531: getfield 1261	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:uint32_sub_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   534: invokevirtual 962	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   537: ifeq +660 -> 1197
+    //   540: new 215	java/lang/StringBuilder
+    //   543: dup
+    //   544: invokespecial 216	java/lang/StringBuilder:<init>	()V
+    //   547: astore 5
+    //   549: aload 5
+    //   551: ldc_w 2565
+    //   554: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   557: pop
+    //   558: aload 5
+    //   560: aload 4
+    //   562: getfield 2195	com/tencent/mobileqq/data/DataLineMsgRecord:time	J
+    //   565: invokevirtual 361	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   568: pop
+    //   569: aload 5
+    //   571: ldc_w 2582
+    //   574: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   577: pop
+    //   578: aload 5
+    //   580: aload 4
+    //   582: getfield 2307	com/tencent/mobileqq/data/DataLineMsgRecord:shmsgseq	J
+    //   585: invokevirtual 361	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   588: pop
+    //   589: aload 5
+    //   591: ldc_w 2569
+    //   594: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   597: pop
+    //   598: aload 5
+    //   600: aload_2
+    //   601: getfield 1261	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:uint32_sub_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   604: invokevirtual 1263	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   607: invokevirtual 337	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   610: pop
+    //   611: aload 5
+    //   613: ldc_w 1788
+    //   616: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   619: pop
+    //   620: ldc_w 300
+    //   623: iconst_2
+    //   624: aload 5
+    //   626: invokevirtual 234	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   629: invokestatic 499	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   632: aload_2
+    //   633: getfield 1261	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:uint32_sub_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   636: invokevirtual 1263	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   639: istore_3
+    //   640: iload_3
+    //   641: tableswitch	default:+59 -> 700, 1:+483->1124, 2:+410->1051, 3:+378->1019, 4:+318->959, 5:+290->931, 6:+59->700, 7:+59->700, 8:+218->859, 9:+145->786, 10:+72->713, 11:+60->701
+    //   701: aload_0
+    //   702: aload_2
+    //   703: getfield 2585	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:rpt_msg_subcmd_0xb_mpfile_notify	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   706: invokevirtual 2287	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   709: invokevirtual 2587	com/tencent/mobileqq/app/DataLineHandler:b	(Ljava/util/List;)V
+    //   712: return
+    //   713: invokestatic 332	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   716: ifeq +13 -> 729
+    //   719: ldc_w 300
+    //   722: iconst_2
+    //   723: ldc_w 2589
+    //   726: invokestatic 499	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   729: aload_2
+    //   730: getfield 1960	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:msg_header	Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;
+    //   733: getfield 2590	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader:uint64_dst_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   736: invokevirtual 958	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
+    //   739: ifeq +36 -> 775
+    //   742: aload_0
+    //   743: aload_1
+    //   744: getfield 2525	msf/msgcomm/msg_comm$Msg:msg_head	Lmsf/msgcomm/msg_comm$MsgHead;
+    //   747: invokevirtual 2528	msf/msgcomm/msg_comm$MsgHead:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   750: checkcast 2527	msf/msgcomm/msg_comm$MsgHead
+    //   753: getfield 2534	msf/msgcomm/msg_comm$MsgHead:msg_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   756: invokevirtual 1263	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   759: aload_2
+    //   760: getfield 1960	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:msg_header	Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;
+    //   763: aload_2
+    //   764: getfield 2593	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:rpt_msg_subcmd_0xa_nfc_thumb_notify	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   767: invokevirtual 2287	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   770: iconst_1
+    //   771: invokespecial 2595	com/tencent/mobileqq/app/DataLineHandler:b	(ILtencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;Ljava/util/List;Z)V
+    //   774: return
+    //   775: new 1540	java/lang/Exception
+    //   778: dup
+    //   779: ldc_w 2597
+    //   782: invokespecial 2557	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   785: athrow
+    //   786: invokestatic 332	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   789: ifeq +13 -> 802
+    //   792: ldc_w 300
+    //   795: iconst_2
+    //   796: ldc_w 2599
+    //   799: invokestatic 499	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   802: aload_2
+    //   803: getfield 1960	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:msg_header	Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;
+    //   806: getfield 2590	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader:uint64_dst_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   809: invokevirtual 958	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
+    //   812: ifeq +36 -> 848
+    //   815: aload_0
+    //   816: aload_1
+    //   817: getfield 2525	msf/msgcomm/msg_comm$Msg:msg_head	Lmsf/msgcomm/msg_comm$MsgHead;
+    //   820: invokevirtual 2528	msf/msgcomm/msg_comm$MsgHead:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   823: checkcast 2527	msf/msgcomm/msg_comm$MsgHead
+    //   826: getfield 2534	msf/msgcomm/msg_comm$MsgHead:msg_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   829: invokevirtual 1263	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   832: aload_2
+    //   833: getfield 1960	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:msg_header	Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;
+    //   836: aload_2
+    //   837: getfield 2602	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:rpt_msg_subcmd_0x9_ftn_thumb_notify	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   840: invokevirtual 2287	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   843: iconst_1
+    //   844: invokespecial 2604	com/tencent/mobileqq/app/DataLineHandler:a	(ILtencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;Ljava/util/List;Z)V
+    //   847: return
+    //   848: new 1540	java/lang/Exception
+    //   851: dup
+    //   852: ldc_w 2597
+    //   855: invokespecial 2557	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   858: athrow
+    //   859: invokestatic 332	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   862: ifeq +13 -> 875
+    //   865: ldc_w 300
+    //   868: iconst_2
+    //   869: ldc_w 2606
+    //   872: invokestatic 499	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   875: aload_2
+    //   876: getfield 1960	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:msg_header	Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;
+    //   879: getfield 2590	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader:uint64_dst_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   882: invokevirtual 958	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
+    //   885: ifeq +35 -> 920
+    //   888: aload_0
+    //   889: aload_1
+    //   890: getfield 2525	msf/msgcomm/msg_comm$Msg:msg_head	Lmsf/msgcomm/msg_comm$MsgHead;
+    //   893: invokevirtual 2528	msf/msgcomm/msg_comm$MsgHead:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   896: checkcast 2527	msf/msgcomm/msg_comm$MsgHead
+    //   899: getfield 2534	msf/msgcomm/msg_comm$MsgHead:msg_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   902: invokevirtual 1263	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   905: aload_2
+    //   906: getfield 1960	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:msg_header	Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;
+    //   909: aload_2
+    //   910: getfield 2609	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:rpt_msg_subcmd_0x8_rnfc_notify	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   913: invokevirtual 2287	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   916: invokespecial 2611	com/tencent/mobileqq/app/DataLineHandler:a	(ILtencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;Ljava/util/List;)V
+    //   919: return
+    //   920: new 1540	java/lang/Exception
+    //   923: dup
+    //   924: ldc_w 2597
+    //   927: invokespecial 2557	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   930: athrow
+    //   931: invokestatic 332	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   934: ifeq +13 -> 947
+    //   937: ldc_w 300
+    //   940: iconst_2
+    //   941: ldc_w 2613
+    //   944: invokestatic 499	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   947: aload_0
+    //   948: aload_2
+    //   949: getfield 2616	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:rpt_msg_subcmd_0x5_molo_notify	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   952: invokevirtual 2287	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   955: invokespecial 2618	com/tencent/mobileqq/app/DataLineHandler:c	(Ljava/util/List;)V
+    //   958: return
+    //   959: invokestatic 332	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   962: ifeq +13 -> 975
+    //   965: ldc_w 300
+    //   968: iconst_2
+    //   969: ldc_w 2620
+    //   972: invokestatic 499	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   975: aload_2
+    //   976: getfield 1267	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:msg_subcmd_0x4_generic	Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$GenericSubCmd;
+    //   979: invokevirtual 2621	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$GenericSubCmd:has	()Z
+    //   982: ifeq +26 -> 1008
+    //   985: aload_0
+    //   986: aload 4
+    //   988: getfield 2195	com/tencent/mobileqq/data/DataLineMsgRecord:time	J
+    //   991: aload 4
+    //   993: getfield 2307	com/tencent/mobileqq/data/DataLineMsgRecord:shmsgseq	J
+    //   996: aload_2
+    //   997: getfield 1267	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:msg_subcmd_0x4_generic	Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$GenericSubCmd;
+    //   1000: aload_2
+    //   1001: getfield 1960	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:msg_header	Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;
+    //   1004: invokevirtual 2623	com/tencent/mobileqq/app/DataLineHandler:a	(JJLtencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$GenericSubCmd;Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;)V
+    //   1007: return
+    //   1008: new 1540	java/lang/Exception
+    //   1011: dup
+    //   1012: ldc_w 2625
+    //   1015: invokespecial 2557	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   1018: athrow
+    //   1019: invokestatic 332	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1022: ifeq +13 -> 1035
+    //   1025: ldc_w 300
+    //   1028: iconst_2
+    //   1029: ldc_w 2627
+    //   1032: invokestatic 499	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1035: aload_0
+    //   1036: aload_2
+    //   1037: getfield 1960	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:msg_header	Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;
+    //   1040: aload_2
+    //   1041: getfield 2630	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:rpt_msg_subcmd_0x3_filecontrol	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   1044: invokevirtual 2287	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   1047: invokespecial 2632	com/tencent/mobileqq/app/DataLineHandler:a	(Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;Ljava/util/List;)V
+    //   1050: return
+    //   1051: invokestatic 332	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1054: ifeq +13 -> 1067
+    //   1057: ldc_w 300
+    //   1060: iconst_2
+    //   1061: ldc_w 2634
+    //   1064: invokestatic 499	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1067: aload_2
+    //   1068: getfield 1960	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:msg_header	Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;
+    //   1071: getfield 2590	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader:uint64_dst_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   1074: invokevirtual 958	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
+    //   1077: ifeq +36 -> 1113
+    //   1080: aload_0
+    //   1081: aload_1
+    //   1082: getfield 2525	msf/msgcomm/msg_comm$Msg:msg_head	Lmsf/msgcomm/msg_comm$MsgHead;
+    //   1085: invokevirtual 2528	msf/msgcomm/msg_comm$MsgHead:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   1088: checkcast 2527	msf/msgcomm/msg_comm$MsgHead
+    //   1091: getfield 2534	msf/msgcomm/msg_comm$MsgHead:msg_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1094: invokevirtual 1263	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   1097: aload_2
+    //   1098: getfield 1960	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:msg_header	Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;
+    //   1101: aload_2
+    //   1102: getfield 2637	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:rpt_msg_subcmd_0x2_nfc_notify	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   1105: invokevirtual 2287	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   1108: iconst_0
+    //   1109: invokespecial 2595	com/tencent/mobileqq/app/DataLineHandler:b	(ILtencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;Ljava/util/List;Z)V
+    //   1112: return
+    //   1113: new 1540	java/lang/Exception
+    //   1116: dup
+    //   1117: ldc_w 2597
+    //   1120: invokespecial 2557	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   1123: athrow
+    //   1124: invokestatic 332	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1127: ifeq +13 -> 1140
+    //   1130: ldc_w 300
+    //   1133: iconst_2
+    //   1134: ldc_w 2639
+    //   1137: invokestatic 499	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1140: aload_2
+    //   1141: getfield 1960	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:msg_header	Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;
+    //   1144: getfield 2590	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader:uint64_dst_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   1147: invokevirtual 958	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
+    //   1150: ifeq +36 -> 1186
+    //   1153: aload_0
+    //   1154: aload_1
+    //   1155: getfield 2525	msf/msgcomm/msg_comm$Msg:msg_head	Lmsf/msgcomm/msg_comm$MsgHead;
+    //   1158: invokevirtual 2528	msf/msgcomm/msg_comm$MsgHead:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   1161: checkcast 2527	msf/msgcomm/msg_comm$MsgHead
+    //   1164: getfield 2534	msf/msgcomm/msg_comm$MsgHead:msg_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1167: invokevirtual 1263	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   1170: aload_2
+    //   1171: getfield 1960	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:msg_header	Ltencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;
+    //   1174: aload_2
+    //   1175: getfield 2209	tencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody:rpt_msg_subcmd_0x1_ftn_notify	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   1178: invokevirtual 2287	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   1181: iconst_0
+    //   1182: invokespecial 2604	com/tencent/mobileqq/app/DataLineHandler:a	(ILtencent/im/s2c/msgtype0x211/submsgtype0x7/SubMsgType0x7$MsgBody$MsgHeader;Ljava/util/List;Z)V
+    //   1185: return
+    //   1186: new 1540	java/lang/Exception
+    //   1189: dup
+    //   1190: ldc_w 2597
+    //   1193: invokespecial 2557	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   1196: athrow
+    //   1197: new 1540	java/lang/Exception
+    //   1200: dup
+    //   1201: ldc_w 2641
+    //   1204: invokespecial 2557	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   1207: athrow
+    //   1208: new 1540	java/lang/Exception
+    //   1211: dup
+    //   1212: ldc_w 2643
+    //   1215: invokespecial 2557	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   1218: athrow
+    //   1219: new 1540	java/lang/Exception
+    //   1222: dup
+    //   1223: ldc_w 2645
+    //   1226: invokespecial 2557	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   1229: athrow
+    //   1230: new 1540	java/lang/Exception
+    //   1233: dup
+    //   1234: ldc_w 2647
+    //   1237: invokespecial 2557	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   1240: athrow
+    //   1241: new 1540	java/lang/Exception
+    //   1244: dup
+    //   1245: ldc_w 2649
+    //   1248: invokespecial 2557	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   1251: athrow
+    //   1252: new 1540	java/lang/Exception
+    //   1255: dup
+    //   1256: ldc_w 2651
+    //   1259: invokespecial 2557	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   1262: athrow
+    //   1263: new 1540	java/lang/Exception
+    //   1266: dup
+    //   1267: ldc_w 2653
+    //   1270: invokespecial 2557	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   1273: athrow
+    //   1274: astore_1
+    //   1275: goto +55 -> 1330
+    //   1278: astore_1
+    //   1279: invokestatic 332	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1282: ifeq +47 -> 1329
+    //   1285: new 215	java/lang/StringBuilder
+    //   1288: dup
+    //   1289: invokespecial 216	java/lang/StringBuilder:<init>	()V
+    //   1292: astore_2
+    //   1293: aload_2
+    //   1294: ldc_w 2655
+    //   1297: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1300: pop
+    //   1301: aload_2
+    //   1302: aload_1
+    //   1303: invokevirtual 2656	java/lang/Exception:toString	()Ljava/lang/String;
+    //   1306: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1309: pop
+    //   1310: aload_2
+    //   1311: ldc_w 2658
+    //   1314: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1317: pop
+    //   1318: ldc_w 300
+    //   1321: iconst_2
+    //   1322: aload_2
+    //   1323: invokevirtual 234	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1326: invokestatic 499	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1329: return
+    //   1330: aload_1
+    //   1331: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	1332	0	this	DataLineHandler
+    //   0	1332	1	paramMsg	msg_comm.Msg
+    //   0	1332	2	paramMsgBody	SubMsgType0x7.MsgBody
+    //   639	2	3	i	int
+    //   16	976	4	localDataLineMsgRecord	DataLineMsgRecord
+    //   252	373	5	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   9	210	1274	finally
+    //   213	224	1274	finally
+    //   224	494	1274	finally
+    //   495	510	1274	finally
+    //   515	530	1274	finally
+    //   530	640	1274	finally
+    //   701	712	1274	finally
+    //   713	729	1274	finally
+    //   729	774	1274	finally
+    //   775	786	1274	finally
+    //   786	802	1274	finally
+    //   802	847	1274	finally
+    //   848	859	1274	finally
+    //   859	875	1274	finally
+    //   875	919	1274	finally
+    //   920	931	1274	finally
+    //   931	947	1274	finally
+    //   947	958	1274	finally
+    //   959	975	1274	finally
+    //   975	1007	1274	finally
+    //   1008	1019	1274	finally
+    //   1019	1035	1274	finally
+    //   1035	1050	1274	finally
+    //   1051	1067	1274	finally
+    //   1067	1112	1274	finally
+    //   1113	1124	1274	finally
+    //   1124	1140	1274	finally
+    //   1140	1185	1274	finally
+    //   1186	1197	1274	finally
+    //   1197	1208	1274	finally
+    //   1208	1219	1274	finally
+    //   1219	1230	1274	finally
+    //   1230	1241	1274	finally
+    //   1241	1252	1274	finally
+    //   1252	1263	1274	finally
+    //   1263	1274	1274	finally
+    //   1279	1329	1274	finally
+    //   9	210	1278	java/lang/Exception
+    //   213	224	1278	java/lang/Exception
+    //   224	494	1278	java/lang/Exception
+    //   495	510	1278	java/lang/Exception
+    //   515	530	1278	java/lang/Exception
+    //   530	640	1278	java/lang/Exception
+    //   701	712	1278	java/lang/Exception
+    //   713	729	1278	java/lang/Exception
+    //   729	774	1278	java/lang/Exception
+    //   775	786	1278	java/lang/Exception
+    //   786	802	1278	java/lang/Exception
+    //   802	847	1278	java/lang/Exception
+    //   848	859	1278	java/lang/Exception
+    //   859	875	1278	java/lang/Exception
+    //   875	919	1278	java/lang/Exception
+    //   920	931	1278	java/lang/Exception
+    //   931	947	1278	java/lang/Exception
+    //   947	958	1278	java/lang/Exception
+    //   959	975	1278	java/lang/Exception
+    //   975	1007	1278	java/lang/Exception
+    //   1008	1019	1278	java/lang/Exception
+    //   1019	1035	1278	java/lang/Exception
+    //   1035	1050	1278	java/lang/Exception
+    //   1051	1067	1278	java/lang/Exception
+    //   1067	1112	1278	java/lang/Exception
+    //   1113	1124	1278	java/lang/Exception
+    //   1124	1140	1278	java/lang/Exception
+    //   1140	1185	1278	java/lang/Exception
+    //   1186	1197	1278	java/lang/Exception
+    //   1197	1208	1278	java/lang/Exception
+    //   1208	1219	1278	java/lang/Exception
+    //   1219	1230	1278	java/lang/Exception
+    //   1230	1241	1278	java/lang/Exception
+    //   1241	1252	1278	java/lang/Exception
+    //   1252	1263	1278	java/lang/Exception
+    //   1263	1274	1278	java/lang/Exception
   }
   
   public void a(msg_comm.Msg paramMsg, C2CType0x211_SubC2CType0x9.MsgBody paramMsgBody)
@@ -3226,21 +3844,20 @@ public class DataLineHandler
   public void a(boolean paramBoolean)
   {
     this.jdField_b_of_type_Boolean = paramBoolean;
-    SharedPreferences localSharedPreferences;
-    String str;
     if (!QFileAssistantUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
     {
-      localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
-      str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_PC_STATE";
-      if (this.jdField_b_of_type_Boolean) {
-        localSharedPreferences.edit().putLong(str, this.jdField_a_of_type_Long).commit();
+      SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject).append("_PC_STATE");
+      localObject = ((StringBuilder)localObject).toString();
+      if (this.jdField_b_of_type_Boolean)
+      {
+        localSharedPreferences.edit().putLong((String)localObject, this.jdField_a_of_type_Long).commit();
+        return;
       }
+      localSharedPreferences.edit().remove((String)localObject).commit();
     }
-    else
-    {
-      return;
-    }
-    localSharedPreferences.edit().remove(str).commit();
   }
   
   public boolean a()
@@ -3259,8 +3876,14 @@ public class DataLineHandler
   protected boolean a(int paramInt1, int paramInt2)
   {
     int i = AppSetting.a();
-    if ((paramInt1 == 1001) && (paramInt2 == i) && (QLog.isColorLevel())) {
-      QLog.d("DataLineHandler", 2, "msgBody command from android" + paramInt2 + " " + i);
+    if ((paramInt1 == 1001) && (paramInt2 == i) && (QLog.isColorLevel()))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("msgBody command from android");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(i);
+      QLog.d("DataLineHandler", 2, localStringBuilder.toString());
     }
     return false;
   }
@@ -3285,52 +3908,57 @@ public class DataLineHandler
   
   public boolean a(DataLineMsgRecord paramDataLineMsgRecord)
   {
-    boolean bool = false;
-    OnSessionProgress(paramDataLineMsgRecord.sessionid, (paramDataLineMsgRecord.filesize * 0.4D), paramDataLineMsgRecord.filesize, 0);
-    if ((0L != paramDataLineMsgRecord.filesize) && (paramDataLineMsgRecord.path != null) && (paramDataLineMsgRecord.path.length() != 0) && (paramDataLineMsgRecord.md5 != null) && (paramDataLineMsgRecord.md5.length != 0)) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      bool = true;
-      return bool;
+    long l = paramDataLineMsgRecord.sessionid;
+    double d1 = paramDataLineMsgRecord.filesize;
+    Double.isNaN(d1);
+    OnSessionProgress(l, (d1 * 0.4D), paramDataLineMsgRecord.filesize, 0);
+    if ((0L != paramDataLineMsgRecord.filesize) && (paramDataLineMsgRecord.path != null) && (paramDataLineMsgRecord.path.length() != 0) && (paramDataLineMsgRecord.md5 != null) && (paramDataLineMsgRecord.md5.length != 0)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      return true;
     }
     Object localObject2 = new cmd0x346.ReqBody();
     ((cmd0x346.ReqBody)localObject2).uint32_cmd.set(1400);
     ((cmd0x346.ReqBody)localObject2).uint32_client_type.set(104);
     Object localObject1 = ((cmd0x346.ReqBody)localObject2).uint32_seq;
-    i = f;
+    int i = f;
     f = i + 1;
     ((PBUInt32Field)localObject1).set(i);
     ((cmd0x346.ReqBody)localObject2).msg_file_query_req.setHasFlag(true);
     ((cmd0x346.ReqBody)localObject2).msg_file_query_req.uint64_uin.set(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue());
-    if ((2 == paramDataLineMsgRecord.fileFrom) || (4 == paramDataLineMsgRecord.fileFrom) || (6 == paramDataLineMsgRecord.fileFrom))
+    if ((2 != paramDataLineMsgRecord.fileFrom) && (4 != paramDataLineMsgRecord.fileFrom) && (6 != paramDataLineMsgRecord.fileFrom))
+    {
+      ((cmd0x346.ReqBody)localObject2).msg_file_query_req.bytes_uuid.set(ByteStringMicro.copyFrom(paramDataLineMsgRecord.fileUuid.getBytes()));
+      ((cmd0x346.ReqBody)localObject2).uint32_business_id.set(3);
+    }
+    else
     {
       ((cmd0x346.ReqBody)localObject2).msg_file_query_req.bytes_uuid.set(ByteStringMicro.copyFrom(paramDataLineMsgRecord.serverPath.getBytes()));
       ((cmd0x346.ReqBody)localObject2).uint32_business_id.set(38);
     }
-    for (;;)
+    localObject1 = createToServiceMsg("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_FILE_QUERY-1400", null);
+    ((ToServiceMsg)localObject1).addAttribute("sendFromNative", Boolean.valueOf(false));
+    localObject2 = ((cmd0x346.ReqBody)localObject2).toByteArray();
+    byte[] arrayOfByte = new byte[localObject2.length + 4];
+    PkgTools.dWord2Byte(arrayOfByte, 0, localObject2.length + 4);
+    PkgTools.copyData(arrayOfByte, 4, (byte[])localObject2, localObject2.length);
+    if (localObject1 != null)
     {
-      localObject1 = createToServiceMsg("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_FILE_QUERY-1400", null);
-      ((ToServiceMsg)localObject1).addAttribute("sendFromNative", Boolean.valueOf(false));
-      localObject2 = ((cmd0x346.ReqBody)localObject2).toByteArray();
-      byte[] arrayOfByte = new byte[localObject2.length + 4];
-      PkgTools.DWord2Byte(arrayOfByte, 0, localObject2.length + 4);
-      PkgTools.copyData(arrayOfByte, 4, (byte[])localObject2, localObject2.length);
-      if (localObject1 == null) {
-        break;
-      }
       ((ToServiceMsg)localObject1).putWupBuffer(arrayOfByte);
       ((ToServiceMsg)localObject1).addAttribute("cookie", Long.valueOf(paramDataLineMsgRecord.sessionid));
       ((ToServiceMsg)localObject1).extraData.putInt("DATALINE_TRYINDEX", 0);
       a((ToServiceMsg)localObject1);
-      return false;
-      ((cmd0x346.ReqBody)localObject2).msg_file_query_req.bytes_uuid.set(ByteStringMicro.copyFrom(paramDataLineMsgRecord.fileUuid.getBytes()));
-      ((cmd0x346.ReqBody)localObject2).uint32_business_id.set(3);
     }
+    return false;
   }
   
   public boolean a(DataLineMsgRecord paramDataLineMsgRecord, int paramInt)
   {
-    Object localObject;
+    boolean bool2 = true;
+    boolean bool1 = true;
     Iterator localIterator;
     MessageRecord localMessageRecord;
     if (paramInt == 3)
@@ -3356,69 +3984,60 @@ public class DataLineHandler
         }
       }
       localObject = this.jdField_b_of_type_JavaUtilList.iterator();
-      do
-      {
-        if (!((Iterator)localObject).hasNext()) {
-          break;
+      while (((Iterator)localObject).hasNext()) {
+        if (((Long)((Iterator)localObject).next()).longValue() == paramDataLineMsgRecord.shmsgseq) {
+          break label191;
         }
-      } while (((Long)((Iterator)localObject).next()).longValue() != paramDataLineMsgRecord.shmsgseq);
-    }
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      boolean bool2 = bool1;
+      }
+      bool1 = false;
+      label191:
       if (!bool1)
       {
         this.jdField_b_of_type_JavaUtilList.add(Long.valueOf(paramDataLineMsgRecord.shmsgseq));
-        bool2 = bool1;
-        if (this.jdField_b_of_type_JavaUtilList.size() > 120)
-        {
+        if (this.jdField_b_of_type_JavaUtilList.size() > 120) {
           this.jdField_b_of_type_JavaUtilList.remove(0);
-          bool2 = bool1;
         }
       }
-      return bool2;
-      if (this.jdField_a_of_type_JavaUtilList == null) {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      }
-      if (this.jdField_a_of_type_JavaUtilList.isEmpty())
+      return bool1;
+    }
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    }
+    if (this.jdField_a_of_type_JavaUtilList.isEmpty())
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getDataLineMsgProxy(0).a();
+      if ((localObject != null) && (((DataLineMsgSetList)localObject).size() > 0))
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getDataLineMsgProxy(0).a();
-        if ((localObject != null) && (((DataLineMsgSetList)localObject).size() > 0))
+        localObject = ((DataLineMsgSetList)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
         {
-          localObject = ((DataLineMsgSetList)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
+          localIterator = ((DataLineMsgSet)((Iterator)localObject).next()).values().iterator();
+          while (localIterator.hasNext())
           {
-            localIterator = ((DataLineMsgSet)((Iterator)localObject).next()).values().iterator();
-            while (localIterator.hasNext())
-            {
-              localMessageRecord = (MessageRecord)localIterator.next();
-              this.jdField_a_of_type_JavaUtilList.add(Long.valueOf(localMessageRecord.shmsgseq));
-            }
+            localMessageRecord = (MessageRecord)localIterator.next();
+            this.jdField_a_of_type_JavaUtilList.add(Long.valueOf(localMessageRecord.shmsgseq));
           }
         }
       }
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-      do
+    }
+    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      if (((Long)((Iterator)localObject).next()).longValue() == paramDataLineMsgRecord.shmsgseq)
       {
-        if (!((Iterator)localObject).hasNext()) {
-          break;
-        }
-      } while (((Long)((Iterator)localObject).next()).longValue() != paramDataLineMsgRecord.shmsgseq);
-      for (bool1 = true;; bool1 = false)
-      {
-        bool2 = bool1;
-        if (bool1) {
-          break;
-        }
-        this.jdField_a_of_type_JavaUtilList.add(Long.valueOf(paramDataLineMsgRecord.shmsgseq));
-        bool2 = bool1;
-        if (this.jdField_a_of_type_JavaUtilList.size() <= 120) {
-          break;
-        }
-        this.jdField_a_of_type_JavaUtilList.remove(0);
-        return bool1;
+        bool1 = bool2;
+        break label423;
       }
     }
+    bool1 = false;
+    label423:
+    if (!bool1)
+    {
+      this.jdField_a_of_type_JavaUtilList.add(Long.valueOf(paramDataLineMsgRecord.shmsgseq));
+      if (this.jdField_a_of_type_JavaUtilList.size() > 120) {
+        this.jdField_a_of_type_JavaUtilList.remove(0);
+      }
+    }
+    return bool1;
   }
   
   public boolean a(DataLineMsgSet paramDataLineMsgSet)
@@ -3433,12 +4052,16 @@ public class DataLineHandler
       DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
       if (localDataLineMsgRecord.strMoloKey != null)
       {
-        List localList = a().getDataLineMsgProxy(i).a(localDataLineMsgRecord.strMoloKey);
-        if ((localList == null) || (localList.size() == 1))
+        Object localObject = a().getDataLineMsgProxy(i).a(localDataLineMsgRecord.strMoloKey);
+        if ((localObject == null) || (((List)localObject).size() == 1))
         {
           this.jdField_a_of_type_ComDatalineCoreMoloHandler.d(localDataLineMsgRecord.strMoloKey);
-          if (QLog.isDevelopLevel()) {
-            QLog.d("DataLineHandler", 4, "删除应用宝消息 sessionid[" + localDataLineMsgRecord.sessionid);
+          if (QLog.isDevelopLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("删除应用宝消息 sessionid[");
+            ((StringBuilder)localObject).append(localDataLineMsgRecord.sessionid);
+            QLog.d("DataLineHandler", 4, ((StringBuilder)localObject).toString());
           }
         }
       }
@@ -3460,8 +4083,10 @@ public class DataLineHandler
     ArrayList localArrayList1 = new ArrayList();
     Object localObject1 = paramList.iterator();
     boolean bool1 = false;
+    Object localObject2;
     int i;
-    if (((Iterator)localObject1).hasNext())
+    Object localObject3;
+    while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (Long)((Iterator)localObject1).next();
       i = DataLineMsgRecord.getDevTypeBySeId(((Long)localObject2).longValue());
@@ -3476,85 +4101,88 @@ public class DataLineHandler
         this.jdField_a_of_type_ComDatalineCoreMoloHandler.a(((DataLineMsgRecord)localObject3).strMoloKey);
         bool1 = true;
       }
-      for (;;)
+      else
       {
-        break;
         localArrayList1.add(localObject2);
       }
     }
     ArrayList localArrayList2 = new ArrayList();
-    boolean bool2 = bool1;
-    DataLineMsgRecord localDataLineMsgRecord;
     if (localArrayList1.size() > 0)
     {
-      localObject2 = null;
       Iterator localIterator = paramList.iterator();
       localObject3 = null;
-      localObject1 = null;
-      paramList = (List<Long>)localObject2;
-      if (!localIterator.hasNext()) {
-        break label575;
-      }
-      localObject2 = (Long)localIterator.next();
-      i = DataLineMsgRecord.getDevTypeBySeId(((Long)localObject2).longValue());
-      localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).a(((Long)localObject2).longValue());
-      if (localDataLineMsgRecord == null)
+      paramList = null;
+      localObject1 = paramList;
+      while (localIterator.hasNext())
       {
-        QLog.e("DataLineHandler", 1, "uSessionID[" + localObject2 + "], prepareMsg: session not found");
-        bool2 = false;
+        localObject2 = (Long)localIterator.next();
+        i = DataLineMsgRecord.getDevTypeBySeId(((Long)localObject2).longValue());
+        DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).a(((Long)localObject2).longValue());
+        if (localDataLineMsgRecord == null)
+        {
+          paramList = new StringBuilder();
+          paramList.append("uSessionID[");
+          paramList.append(localObject2);
+          paramList.append("], prepareMsg: session not found");
+          QLog.e("DataLineHandler", 1, paramList.toString());
+          return false;
+        }
+        localArrayList2.add(localDataLineMsgRecord);
+        if ((localDataLineMsgRecord.filename != null) && (localDataLineMsgRecord.filesize != 0L) && ((localDataLineMsgRecord.md5 != null) || (!TextUtils.isEmpty(localDataLineMsgRecord.serverPath))))
+        {
+          c(localDataLineMsgRecord);
+          Object localObject4 = a(localDataLineMsgRecord.sessionid);
+          localObject2 = localObject3;
+          if (localObject3 == null) {
+            localObject2 = new ArrayList();
+          }
+          ((List)localObject2).add(localObject4);
+          localObject3 = new FTNInfo();
+          ((FTNInfo)localObject3).strFileIndex = localDataLineMsgRecord.serverPath;
+          localObject4 = localObject1;
+          if (localObject1 == null) {
+            localObject4 = new ArrayList();
+          }
+          ((List)localObject4).add(localObject3);
+          localObject3 = new NFCInfo();
+          ((NFCInfo)localObject3).dwServerIP = ((int)localDataLineMsgRecord.nServerIp);
+          ((NFCInfo)localObject3).wServerPort = ((short)(int)localDataLineMsgRecord.nServerPort);
+          ((NFCInfo)localObject3).vTokenKey = localDataLineMsgRecord.vTokenKey;
+          ((NFCInfo)localObject3).vUrlNotify = localDataLineMsgRecord.vUrlNotify;
+          localObject1 = paramList;
+          if (paramList == null) {
+            localObject1 = new ArrayList();
+          }
+          ((List)localObject1).add(localObject3);
+          localObject3 = localObject2;
+          paramList = (List<Long>)localObject1;
+          localObject1 = localObject4;
+        }
+        else
+        {
+          paramList = new StringBuilder();
+          paramList.append("uSessionID[");
+          paramList.append(localObject2);
+          paramList.append("], receive param err.filename:");
+          paramList.append(localDataLineMsgRecord.filename);
+          paramList.append(" filesize;");
+          paramList.append(localDataLineMsgRecord.filesize);
+          QLog.e("DataLineHandler", 1, paramList.toString());
+          return false;
+        }
       }
-    }
-    else
-    {
-      label291:
-      return bool2;
-    }
-    localArrayList2.add(localDataLineMsgRecord);
-    if ((localDataLineMsgRecord.filename == null) || (localDataLineMsgRecord.filesize == 0L) || ((localDataLineMsgRecord.md5 == null) && (TextUtils.isEmpty(localDataLineMsgRecord.serverPath))))
-    {
-      QLog.e("DataLineHandler", 1, "uSessionID[" + localObject2 + "], receive param err.filename:" + localDataLineMsgRecord.filename + " filesize;" + localDataLineMsgRecord.filesize);
-      return false;
-    }
-    c(localDataLineMsgRecord);
-    Object localObject4 = a(localDataLineMsgRecord.sessionid);
-    Object localObject2 = localObject3;
-    if (localObject3 == null) {
-      localObject2 = new ArrayList();
-    }
-    ((List)localObject2).add(localObject4);
-    localObject4 = new FTNInfo();
-    ((FTNInfo)localObject4).strFileIndex = localDataLineMsgRecord.serverPath;
-    Object localObject3 = localObject1;
-    if (localObject1 == null) {
-      localObject3 = new ArrayList();
-    }
-    ((List)localObject3).add(localObject4);
-    localObject1 = new NFCInfo();
-    ((NFCInfo)localObject1).dwServerIP = ((int)localDataLineMsgRecord.nServerIp);
-    ((NFCInfo)localObject1).wServerPort = ((short)(int)localDataLineMsgRecord.nServerPort);
-    ((NFCInfo)localObject1).vTokenKey = localDataLineMsgRecord.vTokenKey;
-    ((NFCInfo)localObject1).vUrlNotify = localDataLineMsgRecord.vUrlNotify;
-    if (paramList == null) {
-      paramList = new ArrayList();
-    }
-    for (;;)
-    {
-      paramList.add(localObject1);
-      localObject1 = localObject3;
-      localObject3 = localObject2;
-      break;
-      label575:
-      bool2 = bool1;
-      if (localObject3 == null) {
-        break label291;
-      }
-      localObject2 = this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper;
-      localObject3 = (Session[])((List)localObject3).toArray(new Session[((List)localObject3).size()]);
-      paramList = (NFCInfo[])paramList.toArray(new NFCInfo[paramList.size()]);
-      localObject1 = (FTNInfo[])((List)localObject1).toArray(new FTNInfo[((List)localObject1).size()]);
-      if (localArrayList1.size() == 1) {}
-      for (bool1 = false;; bool1 = true)
+      boolean bool2 = false;
+      if (localObject3 != null)
       {
+        localObject2 = this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper;
+        localObject3 = (Session[])((List)localObject3).toArray(new Session[((List)localObject3).size()]);
+        paramList = (NFCInfo[])paramList.toArray(new NFCInfo[paramList.size()]);
+        localObject1 = (FTNInfo[])((List)localObject1).toArray(new FTNInfo[((List)localObject1).size()]);
+        if (localArrayList1.size() == 1) {
+          bool1 = bool2;
+        } else {
+          bool1 = true;
+        }
         ((LiteTransferWrapper)localObject2).RecvGroup((Session[])localObject3, paramList, (FTNInfo[])localObject1, bool1);
         paramList = localArrayList2.iterator();
         while (paramList.hasNext())
@@ -3564,14 +4192,15 @@ public class DataLineHandler
           ((DataLineMsgRecord)localObject1).nSessionState = 2;
           b(((DataLineMsgRecord)localObject1).path);
         }
+        return true;
       }
-      return true;
     }
+    return bool1;
   }
   
   public int b()
   {
-    return ((SVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).b();
+    return ((ISVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).b();
   }
   
   protected void b() {}
@@ -3588,21 +4217,21 @@ public class DataLineHandler
       QLog.e("DatalineHandler", 1, "reSendWeiYunFile entity=null");
       return;
     }
-    if ((TextUtils.isEmpty(paramDataLineMsgRecord.strWeiyunId)) || (TextUtils.isEmpty(paramDataLineMsgRecord.filename)))
+    if ((!TextUtils.isEmpty(paramDataLineMsgRecord.strWeiyunId)) && (!TextUtils.isEmpty(paramDataLineMsgRecord.filename)))
     {
-      QLog.e("DatalineHandler", 1, "reSendWeiYunFile keyinfo=null");
+      WeiYunFileInfo localWeiYunFileInfo = new WeiYunFileInfo();
+      localWeiYunFileInfo.c = paramDataLineMsgRecord.filename;
+      localWeiYunFileInfo.jdField_a_of_type_Long = paramDataLineMsgRecord.filesize;
+      localWeiYunFileInfo.b = paramDataLineMsgRecord.strWeiyunDir;
+      localWeiYunFileInfo.jdField_a_of_type_JavaLangString = paramDataLineMsgRecord.strWeiyunId;
+      localWeiYunFileInfo.jdField_a_of_type_Int = paramDataLineMsgRecord.nWeiyunSrcType;
+      localWeiYunFileInfo.i = paramDataLineMsgRecord.strWeiyunMd5;
+      localWeiYunFileInfo.j = paramDataLineMsgRecord.strWeiyunSha;
+      paramDataLineMsgRecord.bNoInsertFm = true;
+      a(paramDataLineMsgRecord, localWeiYunFileInfo);
       return;
     }
-    WeiYunFileInfo localWeiYunFileInfo = new WeiYunFileInfo();
-    localWeiYunFileInfo.c = paramDataLineMsgRecord.filename;
-    localWeiYunFileInfo.jdField_a_of_type_Long = paramDataLineMsgRecord.filesize;
-    localWeiYunFileInfo.b = paramDataLineMsgRecord.strWeiyunDir;
-    localWeiYunFileInfo.jdField_a_of_type_JavaLangString = paramDataLineMsgRecord.strWeiyunId;
-    localWeiYunFileInfo.jdField_a_of_type_Int = paramDataLineMsgRecord.nWeiyunSrcType;
-    localWeiYunFileInfo.i = paramDataLineMsgRecord.strWeiyunMd5;
-    localWeiYunFileInfo.j = paramDataLineMsgRecord.strWeiyunSha;
-    paramDataLineMsgRecord.bNoInsertFm = true;
-    a(paramDataLineMsgRecord, localWeiYunFileInfo);
+    QLog.e("DatalineHandler", 1, "reSendWeiYunFile keyinfo=null");
   }
   
   public void b(FileManagerEntity paramFileManagerEntity)
@@ -3624,85 +4253,86 @@ public class DataLineHandler
   
   public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    int i = 0;
     MsgSCBody localMsgSCBody = new MsgSCBody();
     cmd0x345.RspBody localRspBody = new cmd0x345.RspBody();
     localMsgSCBody.uMsgType = 837;
+    int i = 0;
     localMsgSCBody.bTimeOut = false;
     if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {
       localMsgSCBody.bTimeOut = true;
     }
-    if (paramFromServiceMsg == null) {}
-    label121:
-    long l;
-    label192:
-    label199:
-    int j;
-    do
+    Object localObject = null;
+    if (paramFromServiceMsg != null)
     {
-      localMsgSCBody.msgBody0x345 = new MsgSCBody0x345();
-      paramFromServiceMsg = localMsgSCBody.msgBody0x345;
-      if (localRspBody.uint32_sub_cmd.has()) {
-        i = localRspBody.uint32_sub_cmd.get();
+      if (paramFromServiceMsg.getWupBuffer() != null)
+      {
+        int j = paramFromServiceMsg.getWupBuffer().length - 4;
+        if (j < 0) {
+          break label128;
+        }
+        byte[] arrayOfByte = new byte[j];
+        PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, j);
+        paramFromServiceMsg = arrayOfByte;
       }
-      paramFromServiceMsg.uMsgSubType = i;
-      paramFromServiceMsg = localMsgSCBody.msgBody0x345;
-      if (!localRspBody.uint32_return_code.has()) {
-        break;
+      else
+      {
+        paramFromServiceMsg = null;
       }
+      if (paramFromServiceMsg != null) {
+        try
+        {
+          localRspBody.mergeFrom(paramFromServiceMsg);
+        }
+        catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+        {
+          paramFromServiceMsg.printStackTrace();
+        }
+      }
+    }
+    label128:
+    localMsgSCBody.msgBody0x345 = new MsgSCBody0x345();
+    paramFromServiceMsg = localMsgSCBody.msgBody0x345;
+    if (localRspBody.uint32_sub_cmd.has()) {
+      i = localRspBody.uint32_sub_cmd.get();
+    }
+    paramFromServiceMsg.uMsgSubType = i;
+    paramFromServiceMsg = localMsgSCBody.msgBody0x345;
+    if (localRspBody.uint32_return_code.has()) {
       i = localRspBody.uint32_return_code.get();
-      paramFromServiceMsg.uint32_return_code = i;
-      switch (localMsgSCBody.msgBody0x345.uMsgSubType)
-      {
-      default: 
-        if (QLog.isColorLevel()) {
-          QLog.e("DataLineHandler", 2, "PBToMsgSCBody : msgtype is not cmd0x345[" + localMsgSCBody.msgBody0x345.uMsgSubType);
-        }
-        if (paramToServiceMsg != null) {
-          break label373;
-        }
-        l = 0L;
-        this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.OnPbMsgReply(Long.valueOf(l).intValue(), localMsgSCBody);
-        return;
-        if (paramFromServiceMsg.getWupBuffer() == null) {
-          break label391;
-        }
-        j = paramFromServiceMsg.getWupBuffer().length - 4;
-      }
-    } while (j < 0);
-    byte[] arrayOfByte = new byte[j];
-    PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, j);
-    label391:
-    for (paramFromServiceMsg = arrayOfByte; paramFromServiceMsg != null; paramFromServiceMsg = null)
-    {
-      try
-      {
-        localRspBody.mergeFrom(paramFromServiceMsg);
-      }
-      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-      {
-        paramFromServiceMsg.printStackTrace();
-      }
-      break;
+    } else {
       i = -1;
-      break label121;
-      if (localRspBody.msg_subcmd_0x6_rsp_body.has()) {}
-      for (paramFromServiceMsg = (cmd0x345.RspBody.SubCmd0x6RspBody)localRspBody.msg_subcmd_0x6_rsp_body.get();; paramFromServiceMsg = null)
+    }
+    paramFromServiceMsg.uint32_return_code = i;
+    if (localMsgSCBody.msgBody0x345.uMsgSubType != 7)
+    {
+      if (QLog.isColorLevel())
       {
-        if (paramFromServiceMsg == null) {
-          break label371;
-        }
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("PBToMsgSCBody : msgtype is not cmd0x345[");
+        paramFromServiceMsg.append(localMsgSCBody.msgBody0x345.uMsgSubType);
+        QLog.e("DataLineHandler", 2, paramFromServiceMsg.toString());
+      }
+    }
+    else
+    {
+      paramFromServiceMsg = localObject;
+      if (localRspBody.msg_subcmd_0x6_rsp_body.has()) {
+        paramFromServiceMsg = (cmd0x345.RspBody.SubCmd0x6RspBody)localRspBody.msg_subcmd_0x6_rsp_body.get();
+      }
+      if (paramFromServiceMsg != null)
+      {
         localMsgSCBody.msgBody0x345.subCmd0x6RspBody = new SubCmd0x6RspBody();
         localMsgSCBody.msgBody0x345.subCmd0x6RspBody.str_file_id = paramFromServiceMsg.str_file_id.get();
         localMsgSCBody.msgBody0x345.subCmd0x6RspBody.str_ret_msg = paramFromServiceMsg.str_ret_msg.get();
-        break;
       }
-      label371:
-      break label192;
-      label373:
-      l = ((Long)paramToServiceMsg.getAttribute("cookie")).longValue();
-      break label199;
     }
+    long l;
+    if (paramToServiceMsg == null) {
+      l = 0L;
+    } else {
+      l = ((Long)paramToServiceMsg.getAttribute("cookie")).longValue();
+    }
+    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.OnPbMsgReply(Long.valueOf(l).intValue(), localMsgSCBody);
   }
   
   public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, int paramInt)
@@ -3718,78 +4348,104 @@ public class DataLineHandler
   public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     msg_svc.PbSendMsgResp localPbSendMsgResp = new msg_svc.PbSendMsgResp();
+    StringBuilder localStringBuilder;
     try
     {
       localPbSendMsgResp = (msg_svc.PbSendMsgResp)localPbSendMsgResp.mergeFrom((byte[])paramObject);
-      if ((localPbSendMsgResp == null) || (!localPbSendMsgResp.result.has()))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("DataLineHandler", 2, "handle0x211C2CMessageResp::server did not return a valid result code, use 4 instead.");
-        }
-        i = 4;
-        if (QLog.isColorLevel()) {
-          QLog.d("DataLineHandler", 2, "<PbSendMsg><R><---handle0x211C2CMessageResp: ---ServiceCmd:" + paramToServiceMsg.getServiceCmd() + "----replyCode:" + i);
-        }
-        switch (paramToServiceMsg.extraData.getInt("DATALINE_CMD"))
-        {
-        }
-      }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        int i;
-        if (QLog.isColorLevel()) {
-          QLog.e("DataLineHandler", 2, "<---handle0x211C2CMessageResp::invalid.", localException);
-        }
-        Object localObject = null;
-        continue;
-        if (localObject.result.get() != 0)
-        {
-          i = localObject.result.get();
-          continue;
-          d(paramToServiceMsg, paramFromServiceMsg, paramObject);
-          return;
-          c(paramToServiceMsg, paramFromServiceMsg, paramObject);
-          return;
-          c(paramToServiceMsg, paramFromServiceMsg, paramObject);
-          return;
-          paramToServiceMsg = (Long)paramToServiceMsg.getAttribute("cookie");
-          if ((a(paramToServiceMsg.longValue()) == null) && (QLog.isColorLevel())) {
-            QLog.d("DataLineHandler", 2, "uSessionID[" + paramToServiceMsg + "]handleFileOperate: session not found");
-          }
-        }
-        else
-        {
-          i = 0;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.e("DataLineHandler", 2, "<---handle0x211C2CMessageResp::invalid.", localException);
       }
+      localStringBuilder = null;
+    }
+    int i;
+    if ((localStringBuilder != null) && (localStringBuilder.result.has()))
+    {
+      if (localStringBuilder.result.get() != 0) {
+        i = localStringBuilder.result.get();
+      } else {
+        i = 0;
+      }
+    }
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("DataLineHandler", 2, "handle0x211C2CMessageResp::server did not return a valid result code, use 4 instead.");
+      }
+      i = 4;
+    }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("<PbSendMsg><R><---handle0x211C2CMessageResp: ---ServiceCmd:");
+      localStringBuilder.append(paramToServiceMsg.getServiceCmd());
+      localStringBuilder.append("----replyCode:");
+      localStringBuilder.append(i);
+      QLog.d("DataLineHandler", 2, localStringBuilder.toString());
+    }
+    switch (paramToServiceMsg.extraData.getInt("DATALINE_CMD"))
+    {
+    case 1002: 
+    default: 
+    case 1005: 
+      paramToServiceMsg = (Long)paramToServiceMsg.getAttribute("cookie");
+      if (a(paramToServiceMsg.longValue()) == null)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramFromServiceMsg = new StringBuilder();
+          paramFromServiceMsg.append("uSessionID[");
+          paramFromServiceMsg.append(paramToServiceMsg);
+          paramFromServiceMsg.append("]handleFileOperate: session not found");
+          QLog.d("DataLineHandler", 2, paramFromServiceMsg.toString());
+        }
+        return;
+      }
+      break;
+    case 1004: 
+      c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    case 1003: 
+      c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    case 1001: 
+      d(paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
   }
   
   public void b(ArrayList<InstanceInfo> paramArrayList)
   {
     this.jdField_b_of_type_JavaUtilArrayList.clear();
-    if (paramArrayList == null) {}
-    do
-    {
+    if (paramArrayList == null) {
       return;
-      paramArrayList = paramArrayList.iterator();
-    } while (!paramArrayList.hasNext());
-    int i;
-    switch ((int)((InstanceInfo)paramArrayList.next()).iClientType)
-    {
-    default: 
-      i = -1;
     }
-    while (i != -1)
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
     {
-      this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(i));
-      break;
-      i = 0;
-      continue;
-      i = 1;
+      int i;
+      switch ((int)((InstanceInfo)paramArrayList.next()).iClientType)
+      {
+      default: 
+        i = -1;
+        break;
+      case 65805: 
+      case 68104: 
+      case 68361: 
+      case 72194: 
+        i = 1;
+        break;
+      case 65793: 
+      case 66818: 
+      case 66831: 
+      case 77313: 
+      case 81154: 
+        i = 0;
+      }
+      if (i != -1) {
+        this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(i));
+      }
     }
   }
   
@@ -3798,21 +4454,20 @@ public class DataLineHandler
   public void b(boolean paramBoolean)
   {
     this.jdField_c_of_type_Boolean = paramBoolean;
-    SharedPreferences localSharedPreferences;
-    String str;
     if (QFileAssistantUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
     {
-      localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
-      str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_IPAD_STATE";
-      if (this.jdField_c_of_type_Boolean) {
-        localSharedPreferences.edit().putLong(str, this.jdField_b_of_type_Long).commit();
+      SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject).append("_IPAD_STATE");
+      localObject = ((StringBuilder)localObject).toString();
+      if (this.jdField_c_of_type_Boolean)
+      {
+        localSharedPreferences.edit().putLong((String)localObject, this.jdField_b_of_type_Long).commit();
+        return;
       }
+      localSharedPreferences.edit().remove((String)localObject).commit();
     }
-    else
-    {
-      return;
-    }
-    localSharedPreferences.edit().remove(str).commit();
   }
   
   public boolean b()
@@ -3822,20 +4477,28 @@ public class DataLineHandler
   
   public boolean b(int paramInt)
   {
-    if ((this.jdField_b_of_type_JavaUtilArrayList == null) || (this.jdField_b_of_type_JavaUtilArrayList.isEmpty())) {
-      return false;
+    ArrayList localArrayList = this.jdField_b_of_type_JavaUtilArrayList;
+    if ((localArrayList != null) && (!localArrayList.isEmpty())) {
+      return this.jdField_b_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt));
     }
-    return this.jdField_b_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt));
+    return false;
   }
   
   protected boolean b(int paramInt1, int paramInt2)
   {
     int i = AppSetting.a();
-    if ((paramInt1 == 1001) && ((paramInt2 == i) || (paramInt2 == 0))) {}
-    while (!QLog.isColorLevel()) {
+    if ((paramInt1 == 1001) && ((paramInt2 == i) || (paramInt2 == 0))) {
       return true;
     }
-    QLog.d("DataLineHandler", 2, "msgBody command not for android" + paramInt2 + " " + i);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("msgBody command not for android");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(i);
+      QLog.d("DataLineHandler", 2, localStringBuilder.toString());
+    }
     return true;
   }
   
@@ -3888,30 +4551,34 @@ public class DataLineHandler
     localEditor.putBoolean("auto_receive_files", paramBoolean);
     localEditor.putBoolean("auto_receive_files_ipad", paramBoolean);
     localEditor.apply();
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      this.jdField_b_of_type_Int = i;
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 1;
+    } else {
+      i = 2;
     }
+    this.jdField_b_of_type_Int = i;
   }
   
   public boolean c()
   {
-    if (this.jdField_b_of_type_Int == 0)
+    int i = this.jdField_b_of_type_Int;
+    boolean bool1 = false;
+    if (i == 0)
     {
       SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
-      boolean bool1 = localSharedPreferences.getBoolean("auto_receive_files", false);
-      boolean bool2 = localSharedPreferences.getBoolean("auto_receive_files_ipad", false);
-      if ((!bool1) && (!bool2)) {
-        break label60;
+      boolean bool2 = localSharedPreferences.getBoolean("auto_receive_files", false);
+      boolean bool3 = localSharedPreferences.getBoolean("auto_receive_files_ipad", false);
+      if ((!bool2) && (!bool3)) {
+        this.jdField_b_of_type_Int = 2;
+      } else {
+        this.jdField_b_of_type_Int = 1;
       }
     }
-    label60:
-    for (this.jdField_b_of_type_Int = 1; this.jdField_b_of_type_Int == 1; this.jdField_b_of_type_Int = 2) {
-      return true;
+    if (this.jdField_b_of_type_Int == 1) {
+      bool1 = true;
     }
-    return false;
+    return bool1;
   }
   
   public boolean c(int paramInt)
@@ -3926,22 +4593,25 @@ public class DataLineHandler
   
   public void d()
   {
-    long l = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(String.valueOf(AppConstants.DATALINE_PC_UIN), 6000).time;
-    QLog.d("DataLineHandler", 2, "sendDatalineReadConfirm last time[" + l + "]");
-    ArrayList localArrayList;
+    long l = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getLastMessage(String.valueOf(AppConstants.DATALINE_PC_UIN), 6000).time;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("sendDatalineReadConfirm last time[");
+    ((StringBuilder)localObject).append(l);
+    ((StringBuilder)localObject).append("]");
+    QLog.d("DataLineHandler", 2, ((StringBuilder)localObject).toString());
     if ((l != 0L) && (l != this.jdField_c_of_type_Long))
     {
-      localArrayList = new ArrayList();
-      localArrayList.add(new Pair(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()), Long.valueOf(l)));
-      ((C2CMessageProcessor)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a("c2c_processor")).a(localArrayList);
+      localObject = new ArrayList();
+      ((ArrayList)localObject).add(new Pair(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()), Long.valueOf(l)));
+      ((C2CMessageProcessor)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a("c2c_processor")).a((ArrayList)localObject);
       this.jdField_c_of_type_Long = l;
     }
-    l = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(String.valueOf(AppConstants.DATALINE_IPAD_UIN), 6003).time;
+    l = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getLastMessage(String.valueOf(AppConstants.DATALINE_IPAD_UIN), 6003).time;
     if ((l != 0L) && (l != this.jdField_d_of_type_Long))
     {
-      localArrayList = new ArrayList();
-      localArrayList.add(new Pair(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()), Long.valueOf(l)));
-      ((C2CMessageProcessor)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a("c2c_processor")).a(localArrayList);
+      localObject = new ArrayList();
+      ((ArrayList)localObject).add(new Pair(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()), Long.valueOf(l)));
+      ((C2CMessageProcessor)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a("c2c_processor")).a((ArrayList)localObject);
       this.jdField_d_of_type_Long = l;
     }
   }
@@ -3991,7 +4661,7 @@ public class DataLineHandler
     synchronized (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)
     {
       this.jdField_d_of_type_Int += 1;
-      if (this.jdField_e_of_type_Boolean) {
+      if (this.e) {
         f(this.jdField_d_of_type_Int);
       }
       return;
@@ -4033,110 +4703,126 @@ public class DataLineHandler
   
   public void onDestroy()
   {
-    boolean bool2 = false;
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp() != null) && (this.jdField_b_of_type_AndroidContentBroadcastReceiver != null)) {}
-    try
+    QQAppInterface localQQAppInterface1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    StringBuilder localStringBuilder;
+    if ((localQQAppInterface1 != null) && (localQQAppInterface1.getApp() != null) && (this.jdField_b_of_type_AndroidContentBroadcastReceiver != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().unregisterReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver);
+      try
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().unregisterReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver);
+      }
+      catch (Exception localException1)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onDestroy fail unregisterReceiver exitReceiver:");
+        localStringBuilder.append(localException1);
+        QLog.e("DataLineHandler", 1, localStringBuilder.toString());
+      }
       this.jdField_b_of_type_AndroidContentBroadcastReceiver = null;
-      if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp() == null) || (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)) {}
     }
-    catch (Exception localException1)
+    QQAppInterface localQQAppInterface2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if ((localQQAppInterface2 != null) && (localQQAppInterface2.getApp() != null) && (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null))
     {
       try
       {
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-        this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-        if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp() != null) && (this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver != null))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
-          this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = null;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler != null)
-        {
-          AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
-          this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = null;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("DataLineHandler", 2, "--->>close cancel all task");
-        }
-        d(32);
-        boolean bool1 = bool2;
-        Object localObject;
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-        {
-          bool1 = bool2;
-          if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getDataLineMsgProxy(0) != null)
-          {
-            localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getDataLineMsgProxy(0).a();
-            bool1 = bool2;
-            if (localObject != null)
-            {
-              bool1 = bool2;
-              if (((DataLineMsgSetList)localObject).size() > 0)
-              {
-                localObject = ((DataLineMsgSetList)localObject).iterator();
-                do
-                {
-                  bool1 = bool2;
-                  if (!((Iterator)localObject).hasNext()) {
-                    break;
-                  }
-                } while (!((DataLineMsgSet)((Iterator)localObject).next()).hasSendingOrRecving());
-                bool1 = true;
-              }
-            }
-          }
-        }
-        bool2 = bool1;
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-        {
-          bool2 = bool1;
-          if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getDataLineMsgProxy(1) != null)
-          {
-            localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getDataLineMsgProxy(1).a();
-            bool2 = bool1;
-            if (localObject != null)
-            {
-              bool2 = bool1;
-              if (((DataLineMsgSetList)localObject).size() > 0)
-              {
-                localObject = ((DataLineMsgSetList)localObject).iterator();
-                do
-                {
-                  bool2 = bool1;
-                  if (!((Iterator)localObject).hasNext()) {
-                    break;
-                  }
-                } while (!((DataLineMsgSet)((Iterator)localObject).next()).hasSendingOrRecving());
-                bool2 = true;
-              }
-            }
-          }
-        }
-        this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.endLiteTransfer(bool2);
-        this.jdField_a_of_type_CooperationQqdatalineIpcDatalineRemoteManager.a();
-        this.jdField_a_of_type_ComDatalineCoreMoloHandler.a();
-        this.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.a();
-        this.jdField_a_of_type_ComDatalineCoreDirectForwarder.a();
-        if (this.jdField_a_of_type_JavaUtilTimer != null)
-        {
-          this.jdField_a_of_type_JavaUtilTimer.cancel();
-          this.jdField_a_of_type_JavaUtilTimer = null;
-        }
-        this.jdField_d_of_type_Boolean = true;
-        return;
-        localException1 = localException1;
-        QLog.e("DataLineHandler", 1, "onDestroy fail unregisterReceiver exitReceiver:" + localException1);
       }
       catch (Exception localException2)
       {
-        for (;;)
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onDestroy fail unregisterReceiver sdCardReceiver:");
+        localStringBuilder.append(localException2);
+        QLog.e("DataLineHandler", 1, localStringBuilder.toString());
+      }
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if ((localObject != null) && (((QQAppInterface)localObject).getApp() != null))
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver;
+      if (localObject != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver((BusinessObserver)localObject);
+        this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = null;
+      }
+    }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler;
+    if (localObject != null)
+    {
+      AppNetConnInfo.unregisterNetInfoHandler((INetInfoHandler)localObject);
+      this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = null;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DataLineHandler", 2, "--->>close cancel all task");
+    }
+    d(32);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localObject != null)
+    {
+      bool1 = bool2;
+      if (((QQAppInterface)localObject).getDataLineMsgProxy(0) != null)
+      {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getDataLineMsgProxy(0).a();
+        bool1 = bool2;
+        if (localObject != null)
         {
-          QLog.e("DataLineHandler", 1, "onDestroy fail unregisterReceiver sdCardReceiver:" + localException2);
+          bool1 = bool2;
+          if (((DataLineMsgSetList)localObject).size() > 0)
+          {
+            localObject = ((DataLineMsgSetList)localObject).iterator();
+            do
+            {
+              bool1 = bool2;
+              if (!((Iterator)localObject).hasNext()) {
+                break;
+              }
+            } while (!((DataLineMsgSet)((Iterator)localObject).next()).hasSendingOrRecving());
+            bool1 = true;
+          }
         }
       }
     }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    bool2 = bool1;
+    if (localObject != null)
+    {
+      bool2 = bool1;
+      if (((QQAppInterface)localObject).getDataLineMsgProxy(1) != null)
+      {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getDataLineMsgProxy(1).a();
+        bool2 = bool1;
+        if (localObject != null)
+        {
+          bool2 = bool1;
+          if (((DataLineMsgSetList)localObject).size() > 0)
+          {
+            localObject = ((DataLineMsgSetList)localObject).iterator();
+            do
+            {
+              bool2 = bool1;
+              if (!((Iterator)localObject).hasNext()) {
+                break;
+              }
+            } while (!((DataLineMsgSet)((Iterator)localObject).next()).hasSendingOrRecving());
+            bool2 = true;
+          }
+        }
+      }
+    }
+    this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.endLiteTransfer(bool2);
+    this.jdField_a_of_type_CooperationQqdatalineIpcDatalineRemoteManager.a();
+    this.jdField_a_of_type_ComDatalineCoreMoloHandler.a();
+    this.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.a();
+    this.jdField_a_of_type_ComDatalineCoreDirectForwarder.a();
+    localObject = this.jdField_a_of_type_JavaUtilTimer;
+    if (localObject != null)
+    {
+      ((Timer)localObject).cancel();
+      this.jdField_a_of_type_JavaUtilTimer = null;
+    }
+    this.jdField_d_of_type_Boolean = true;
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -4144,8 +4830,12 @@ public class DataLineHandler
     this.jdField_a_of_type_CooperationQqdatalineIpcDatalineRemoteManager.a(paramToServiceMsg, paramFromServiceMsg, (byte[])paramObject);
     if (msgCmdFilter(paramFromServiceMsg.getServiceCmd()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DataLineHandler", 2, "cmdfilter error=" + paramFromServiceMsg.getServiceCmd());
+      if (QLog.isColorLevel())
+      {
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("cmdfilter error=");
+        paramToServiceMsg.append(paramFromServiceMsg.getServiceCmd());
+        QLog.d("DataLineHandler", 2, paramToServiceMsg.toString());
       }
       return;
     }
@@ -4160,7 +4850,7 @@ public class DataLineHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.DataLineHandler
  * JD-Core Version:    0.7.0.1
  */

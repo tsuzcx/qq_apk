@@ -81,15 +81,16 @@ public class BubbleViewLayout
     }
     Resources localResources = this.jdField_a_of_type_AndroidContentResResources;
     float f1 = a(10.0F, localResources);
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, paramFloat1 - f1, paramFloat2);
+    } else {
+      this.jdField_a_of_type_AndroidGraphicsRectF.set(f1, 0.0F, paramFloat1, paramFloat2);
+    }
+    this.jdField_a_of_type_AndroidGraphicsPath.reset();
+    paramFloat2 = a(5.0F, localResources);
     float f2;
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, paramFloat1 - f1, paramFloat2);
-      this.jdField_a_of_type_AndroidGraphicsPath.reset();
-      paramFloat2 = a(5.0F, localResources);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label267;
-      }
       this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
       f1 = a(14.0F, localResources);
       f2 = a(8.0F, localResources);
@@ -103,13 +104,8 @@ public class BubbleViewLayout
       float f3 = a(14.0F, localResources);
       this.jdField_a_of_type_AndroidGraphicsPath.quadTo(paramFloat1 - f2, f3, paramFloat1 - paramFloat2, f1);
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_AndroidGraphicsPath.close();
-      return;
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(f1, 0.0F, paramFloat1, paramFloat2);
-      break;
-      label267:
       this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CCW);
       paramFloat1 = a(14.0F, localResources);
       f1 = a(8.0F, localResources);
@@ -123,6 +119,7 @@ public class BubbleViewLayout
       f2 = a(14.0F, localResources);
       this.jdField_a_of_type_AndroidGraphicsPath.quadTo(f1, f2, paramFloat1, paramFloat2);
     }
+    this.jdField_a_of_type_AndroidGraphicsPath.close();
   }
   
   public void a(boolean paramBoolean)
@@ -135,22 +132,22 @@ public class BubbleViewLayout
     this.c = paramBoolean;
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
-    if ((Build.VERSION.SDK_INT == 28) || (Build.VERSION.SDK_INT == 29))
+    if ((Build.VERSION.SDK_INT != 28) && (Build.VERSION.SDK_INT != 29))
     {
-      paramCanvas.setDrawFilter(new PaintFlagsDrawFilter(0, 3));
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+      paramCanvas.saveLayer(new RectF(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight()), this.jdField_b_of_type_AndroidGraphicsPaint, 31);
       super.dispatchDraw(paramCanvas);
+      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.restore();
       return;
     }
-    paramCanvas.saveLayer(new RectF(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight()), this.jdField_b_of_type_AndroidGraphicsPaint, 31);
+    paramCanvas.setDrawFilter(new PaintFlagsDrawFilter(0, 3));
+    paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
     super.dispatchDraw(paramCanvas);
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.restore();
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (paramBoolean) {
@@ -161,24 +158,26 @@ public class BubbleViewLayout
   public void setRadius(float paramFloat)
   {
     this.jdField_a_of_type_Float = a(paramFloat, this.jdField_a_of_type_AndroidContentResResources);
-    if (this.jdField_a_of_type_ArrayOfFloat != null) {
-      Arrays.fill(this.jdField_a_of_type_ArrayOfFloat, this.jdField_a_of_type_Float);
+    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+    if (arrayOfFloat != null) {
+      Arrays.fill(arrayOfFloat, this.jdField_a_of_type_Float);
     }
   }
   
   public void setRadiusTop(float paramFloat)
   {
     this.jdField_a_of_type_Float = a(paramFloat, this.jdField_a_of_type_AndroidContentResResources);
-    if (this.jdField_a_of_type_ArrayOfFloat != null)
+    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+    if (arrayOfFloat != null)
     {
-      Arrays.fill(this.jdField_a_of_type_ArrayOfFloat, 0, 4, this.jdField_a_of_type_Float);
+      Arrays.fill(arrayOfFloat, 0, 4, this.jdField_a_of_type_Float);
       Arrays.fill(this.jdField_a_of_type_ArrayOfFloat, 4, 8, 0.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.BubbleViewLayout
  * JD-Core Version:    0.7.0.1
  */

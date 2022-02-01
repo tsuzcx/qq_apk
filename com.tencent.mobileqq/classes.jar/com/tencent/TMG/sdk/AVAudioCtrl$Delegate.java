@@ -8,7 +8,10 @@ public class AVAudioCtrl$Delegate
   
   protected void onOutputModeChange(int paramInt)
   {
-    Log.d("SdkJni", "onOutputModeChange outputMode = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onOutputModeChange outputMode = ");
+    localStringBuilder.append(paramInt);
+    Log.d("SdkJni", localStringBuilder.toString());
   }
 }
 

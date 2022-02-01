@@ -34,14 +34,15 @@ public final class shuoshuo_privacy
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.mood_permission, 0);
-    if (this.mood_allowuins != null) {
-      paramJceOutputStream.write(this.mood_allowuins, 1);
+    ArrayList localArrayList = this.mood_allowuins;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.shuoshuo_privacy
  * JD-Core Version:    0.7.0.1
  */

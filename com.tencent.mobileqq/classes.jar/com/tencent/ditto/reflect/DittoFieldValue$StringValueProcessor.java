@@ -20,12 +20,15 @@ class DittoFieldValue$StringValueProcessor
   
   public void setValue(Object paramObject1, Object paramObject2)
   {
-    DittoLog.e("DITTO_UI", "trying to set value of a constant tpl:" + this.this$0.fieldName, new RuntimeException());
+    paramObject1 = new StringBuilder();
+    paramObject1.append("trying to set value of a constant tpl:");
+    paramObject1.append(this.this$0.fieldName);
+    DittoLog.e("DITTO_UI", paramObject1.toString(), new RuntimeException());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ditto.reflect.DittoFieldValue.StringValueProcessor
  * JD-Core Version:    0.7.0.1
  */

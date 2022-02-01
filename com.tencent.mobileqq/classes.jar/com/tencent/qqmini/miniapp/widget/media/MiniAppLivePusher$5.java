@@ -23,22 +23,25 @@ class MiniAppLivePusher$5
   public void onDownloadFailed(int paramInt, String paramString)
   {
     MiniAppLivePusher.access$300(this.this$0).remove(this.val$downloadId, this.val$BGMUrl);
-    QMLog.e("MiniAppLivePusher", "playBGM - download onDownloadFailed failed:" + paramString);
-    JSONObject localJSONObject = new JSONObject();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("playBGM - download onDownloadFailed failed:");
+    ((StringBuilder)localObject).append(paramString);
+    QMLog.e("MiniAppLivePusher", ((StringBuilder)localObject).toString());
+    localObject = new JSONObject();
     try
     {
-      localJSONObject.put("livePusherId", this.this$0.livePusherId);
-      localJSONObject.put("errMsg", paramString);
-      localJSONObject.put("errCode", 10003);
-      if (this.this$0.miniAppContextRef != null) {}
-      for (paramString = (IMiniAppContext)this.this$0.miniAppContextRef.get();; paramString = null)
-      {
-        if (paramString != null) {
-          paramString.performAction(ServiceSubscribeEvent.obtain("onLivePusherError", localJSONObject.toString(), this.this$0.webviewId));
-        }
-        this.val$req.jsService.evaluateSubscribeJS("onLivePusherError", localJSONObject.toString(), this.this$0.webviewId);
-        return;
+      ((JSONObject)localObject).put("livePusherId", this.this$0.livePusherId);
+      ((JSONObject)localObject).put("errMsg", paramString);
+      ((JSONObject)localObject).put("errCode", 10003);
+      if (this.this$0.miniAppContextRef != null) {
+        paramString = (IMiniAppContext)this.this$0.miniAppContextRef.get();
+      } else {
+        paramString = null;
       }
+      if (paramString != null) {
+        paramString.performAction(ServiceSubscribeEvent.obtain("onLivePusherError", ((JSONObject)localObject).toString(), this.this$0.webviewId));
+      }
+      this.val$req.jsService.evaluateSubscribeJS("onLivePusherError", ((JSONObject)localObject).toString(), this.this$0.webviewId);
       return;
     }
     catch (JSONException paramString)
@@ -65,7 +68,7 @@ class MiniAppLivePusher$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.media.MiniAppLivePusher.5
  * JD-Core Version:    0.7.0.1
  */

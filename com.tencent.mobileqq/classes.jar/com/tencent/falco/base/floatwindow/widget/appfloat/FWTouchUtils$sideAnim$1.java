@@ -24,28 +24,31 @@ final class FWTouchUtils$sideAnim$1
       localLayoutParams = this.$params;
       Intrinsics.checkExpressionValueIsNotNull(paramValueAnimator, "it");
       paramValueAnimator = paramValueAnimator.getAnimatedValue();
-      if (paramValueAnimator == null) {
+      if (paramValueAnimator != null) {
+        localLayoutParams.x = ((Integer)paramValueAnimator).intValue();
+      } else {
         throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
       }
-      localLayoutParams.x = ((Integer)paramValueAnimator).intValue();
     }
-    for (;;)
+    else
     {
-      this.$windowManager.updateViewLayout(this.$view, (ViewGroup.LayoutParams)this.$params);
-      return;
       localLayoutParams = this.$params;
       Intrinsics.checkExpressionValueIsNotNull(paramValueAnimator, "it");
       paramValueAnimator = paramValueAnimator.getAnimatedValue();
       if (paramValueAnimator == null) {
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
+        break label103;
       }
       localLayoutParams.y = ((Integer)paramValueAnimator).intValue();
     }
+    this.$windowManager.updateViewLayout(this.$view, (ViewGroup.LayoutParams)this.$params);
+    return;
+    label103:
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.floatwindow.widget.appfloat.FWTouchUtils.sideAnim.1
  * JD-Core Version:    0.7.0.1
  */

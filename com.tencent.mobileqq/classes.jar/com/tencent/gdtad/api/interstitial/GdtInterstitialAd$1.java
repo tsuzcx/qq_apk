@@ -12,17 +12,18 @@ class GdtInterstitialAd$1
   
   public void onCallback(AdIPCManager.Params paramParams, AdIPCManager.Result paramResult)
   {
-    if (paramResult != null) {}
-    for (boolean bool = paramResult.success;; bool = false)
-    {
-      GdtLog.b("GdtInterstitialAd", String.format("close.onCallback %b", new Object[] { Boolean.valueOf(bool) }));
-      return;
+    boolean bool;
+    if (paramResult != null) {
+      bool = paramResult.success;
+    } else {
+      bool = false;
     }
+    GdtLog.b("GdtInterstitialAd", String.format("close.onCallback %b", new Object[] { Boolean.valueOf(bool) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtInterstitialAd.1
  * JD-Core Version:    0.7.0.1
  */

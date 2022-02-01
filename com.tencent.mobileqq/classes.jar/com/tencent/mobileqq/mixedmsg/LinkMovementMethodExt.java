@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.mixedmsg;
 
-import android.content.Intent;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
+import android.os.Bundle;
 import android.text.Layout;
 import android.text.Selection;
 import android.text.Spannable;
@@ -15,8 +14,12 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.helper.FullScreenInputHelper;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.albumlogicImp.AlbumListCustomizationAIO;
+import com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoListCustomizationAIO;
+import com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoPreviewCustomizationAIO;
 import com.tencent.mobileqq.activity.richmedia.Size;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.LiuHaiUtils;
@@ -41,44 +44,46 @@ public class LinkMovementMethodExt
     if (jdField_a_of_type_ComTencentMobileqqMixedmsgLinkMovementMethodExt == null) {
       jdField_a_of_type_ComTencentMobileqqMixedmsgLinkMovementMethodExt = new LinkMovementMethodExt();
     }
-    jdField_a_of_type_ComTencentMobileqqMixedmsgLinkMovementMethodExt.c = paramInt;
-    jdField_a_of_type_ComTencentMobileqqMixedmsgLinkMovementMethodExt.jdField_a_of_type_JavaLangClass = paramClass;
-    return jdField_a_of_type_ComTencentMobileqqMixedmsgLinkMovementMethodExt;
+    LinkMovementMethodExt localLinkMovementMethodExt = jdField_a_of_type_ComTencentMobileqqMixedmsgLinkMovementMethodExt;
+    localLinkMovementMethodExt.c = paramInt;
+    localLinkMovementMethodExt.jdField_a_of_type_JavaLangClass = paramClass;
+    return localLinkMovementMethodExt;
   }
   
   public static void a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqMixedmsgLinkMovementMethodExt != null) {
-      jdField_a_of_type_ComTencentMobileqqMixedmsgLinkMovementMethodExt.jdField_a_of_type_Boolean = true;
+    LinkMovementMethodExt localLinkMovementMethodExt = jdField_a_of_type_ComTencentMobileqqMixedmsgLinkMovementMethodExt;
+    if (localLinkMovementMethodExt != null) {
+      localLinkMovementMethodExt.jdField_a_of_type_Boolean = true;
     }
   }
   
   public static void a(BaseChatPie paramBaseChatPie)
   {
-    if (jdField_a_of_type_ComTencentMobileqqMixedmsgLinkMovementMethodExt != null)
+    LinkMovementMethodExt localLinkMovementMethodExt = jdField_a_of_type_ComTencentMobileqqMixedmsgLinkMovementMethodExt;
+    if (localLinkMovementMethodExt != null)
     {
-      if (paramBaseChatPie != null) {
-        jdField_a_of_type_ComTencentMobileqqMixedmsgLinkMovementMethodExt.jdField_b_of_type_MqqUtilWeakReference = new WeakReference(paramBaseChatPie);
+      if (paramBaseChatPie != null)
+      {
+        localLinkMovementMethodExt.jdField_b_of_type_MqqUtilWeakReference = new WeakReference(paramBaseChatPie);
+        return;
       }
+      localLinkMovementMethodExt.jdField_b_of_type_MqqUtilWeakReference = null;
     }
-    else {
-      return;
-    }
-    jdField_a_of_type_ComTencentMobileqqMixedmsgLinkMovementMethodExt.jdField_b_of_type_MqqUtilWeakReference = null;
   }
   
   public static void a(FullScreenInputHelper paramFullScreenInputHelper)
   {
-    if (jdField_a_of_type_ComTencentMobileqqMixedmsgLinkMovementMethodExt != null)
+    LinkMovementMethodExt localLinkMovementMethodExt = jdField_a_of_type_ComTencentMobileqqMixedmsgLinkMovementMethodExt;
+    if (localLinkMovementMethodExt != null)
     {
-      if (paramFullScreenInputHelper != null) {
-        jdField_a_of_type_ComTencentMobileqqMixedmsgLinkMovementMethodExt.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramFullScreenInputHelper);
+      if (paramFullScreenInputHelper != null)
+      {
+        localLinkMovementMethodExt.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramFullScreenInputHelper);
+        return;
       }
+      localLinkMovementMethodExt.jdField_a_of_type_MqqUtilWeakReference = null;
     }
-    else {
-      return;
-    }
-    jdField_a_of_type_ComTencentMobileqqMixedmsgLinkMovementMethodExt.jdField_a_of_type_MqqUtilWeakReference = null;
   }
   
   public boolean a()
@@ -93,95 +98,116 @@ public class LinkMovementMethodExt
       this.jdField_a_of_type_Int = ((int)paramMotionEvent.getX());
       this.jdField_b_of_type_Int = ((int)paramMotionEvent.getY());
     }
-    int j;
-    int m;
-    int k;
-    Object[] arrayOfObject;
-    int n;
-    int i1;
-    boolean bool;
     if (paramMotionEvent.getAction() == 1)
     {
-      i = (int)paramMotionEvent.getX();
-      j = (int)paramMotionEvent.getY();
+      int i = (int)paramMotionEvent.getX();
+      int j = (int)paramMotionEvent.getY();
       if ((Math.abs(this.jdField_a_of_type_Int - i) < 10) && (Math.abs(this.jdField_b_of_type_Int - j) < 10))
       {
-        m = paramTextView.getTotalPaddingLeft();
-        k = paramTextView.getTotalPaddingTop();
+        int m = paramTextView.getTotalPaddingLeft();
+        int k = paramTextView.getTotalPaddingTop();
         i = i - m + paramTextView.getScrollX();
         j = j - k + paramTextView.getScrollY();
-        Layout localLayout = paramTextView.getLayout();
-        m = localLayout.getLineForVertical(j);
-        k = localLayout.getOffsetForHorizontal(m, i);
-        arrayOfObject = paramSpannable.getSpans(k, k, this.jdField_a_of_type_JavaLangClass);
+        Object localObject = paramTextView.getLayout();
+        m = ((Layout)localObject).getLineForVertical(j);
+        k = ((Layout)localObject).getOffsetForHorizontal(m, i);
+        Object[] arrayOfObject = paramSpannable.getSpans(k, k, this.jdField_a_of_type_JavaLangClass);
         if (arrayOfObject.length > 0)
         {
           Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(arrayOfObject[0]), paramSpannable.getSpanEnd(arrayOfObject[0]));
           paramSpannable = (BaseChatPie)this.jdField_b_of_type_MqqUtilWeakReference.get();
-          if ((!(arrayOfObject[0] instanceof ImageSpan)) || (paramSpannable == null)) {
-            return false;
-          }
-          k = localLayout.getLineTop(m);
-          m = localLayout.getLineBottom(m);
-          n = paramTextView.getTotalPaddingLeft();
-          paramMotionEvent = ((ImageSpan)arrayOfObject[0]).getDrawable().getBounds();
-          i1 = paramMotionEvent.width();
-          if ((i < this.c) || (i > i1 + this.c)) {
-            return false;
-          }
-          if ((j < k) || (j > m)) {
-            return false;
-          }
-          i1 = m - paramMotionEvent.height() - paramTextView.getScrollY() + paramTextView.getTotalPaddingTop() + LiuHaiUtils.a(BaseApplicationImpl.getContext());
-          if ((this.jdField_a_of_type_MqqUtilWeakReference != null) && (this.jdField_a_of_type_MqqUtilWeakReference.get() != null) && (((FullScreenInputHelper)this.jdField_a_of_type_MqqUtilWeakReference.get()).b()))
+          if (((arrayOfObject[0] instanceof ImageSpan)) && (paramSpannable != null))
           {
-            bool = true;
-            if (bool) {
-              break label730;
+            k = ((Layout)localObject).getLineTop(m);
+            m = ((Layout)localObject).getLineBottom(m);
+            int n = paramTextView.getTotalPaddingLeft();
+            paramMotionEvent = ((ImageSpan)arrayOfObject[0]).getDrawable().getBounds();
+            int i1 = paramMotionEvent.width();
+            int i2 = this.c;
+            if ((i >= i2) && (i <= i2 + i1))
+            {
+              if ((j >= k) && (j <= m))
+              {
+                i1 = m - paramMotionEvent.height() - paramTextView.getScrollY() + paramTextView.getTotalPaddingTop() + LiuHaiUtils.a(BaseApplicationImpl.getContext());
+                paramTextView = this.jdField_a_of_type_MqqUtilWeakReference;
+                boolean bool;
+                if ((paramTextView != null) && (paramTextView.get() != null) && (((FullScreenInputHelper)this.jdField_a_of_type_MqqUtilWeakReference.get()).c())) {
+                  bool = true;
+                } else {
+                  bool = false;
+                }
+                if (!bool)
+                {
+                  i = DisplayUtil.a(BaseApplicationImpl.getApplication()).jdField_b_of_type_Int;
+                  j = AIOUtils.b(50.0F, BaseApplicationImpl.getApplication().getResources());
+                }
+                else
+                {
+                  i = 0;
+                  j = 0;
+                }
+                if (bool) {
+                  paramTextView = new Rect(paramMotionEvent.left + n, paramMotionEvent.top + i1, paramMotionEvent.left + n + paramMotionEvent.width(), paramMotionEvent.top + paramMotionEvent.height() + i1);
+                } else {
+                  paramTextView = new Rect(paramMotionEvent.left + n, i - paramMotionEvent.height() - j, paramMotionEvent.left + n + paramMotionEvent.width(), i - j);
+                }
+                if (QLog.isColorLevel())
+                {
+                  localObject = new StringBuilder();
+                  ((StringBuilder)localObject).append("fullState:");
+                  ((StringBuilder)localObject).append(bool);
+                  ((StringBuilder)localObject).append(", top:");
+                  ((StringBuilder)localObject).append(k);
+                  ((StringBuilder)localObject).append(", bottom:");
+                  ((StringBuilder)localObject).append(m);
+                  ((StringBuilder)localObject).append(",padLeft:");
+                  ((StringBuilder)localObject).append(n);
+                  ((StringBuilder)localObject).append(", screenH:");
+                  ((StringBuilder)localObject).append(i);
+                  ((StringBuilder)localObject).append(", panelH:");
+                  ((StringBuilder)localObject).append(j);
+                  ((StringBuilder)localObject).append(", bounds:");
+                  ((StringBuilder)localObject).append(paramMotionEvent);
+                  ((StringBuilder)localObject).append(", rect:");
+                  ((StringBuilder)localObject).append(paramTextView);
+                  QLog.i("LinkMovementMethodExt", 2, ((StringBuilder)localObject).toString());
+                }
+                if (paramSpannable.a != null)
+                {
+                  paramMotionEvent = new ActivityURIRequest(paramSpannable.a, "/base/album/photopreview");
+                  paramMotionEvent.extra().putString("PhotoConst.SINGLE_PHOTO_PATH", ((ImageSpan)arrayOfObject[0]).getSource());
+                  paramMotionEvent.extra().putBoolean("input_full_screen_click", true);
+                  paramMotionEvent.extra().putBoolean("PhotoConst.SHOW_ALBUM", false);
+                  paramMotionEvent.extra().putBoolean("PhotoConst.SHOULD_SEND_RAW_PHOTO", false);
+                  paramMotionEvent.extra().putBoolean("PhotoConst.SHOW_MAGIC_USE_PASTER", false);
+                  paramMotionEvent.extra().putBoolean("showFlashPic", false);
+                  paramMotionEvent.extra().putParcelable("KEY_THUMBNAL_BOUND", paramTextView);
+                  paramMotionEvent.extra().putInt("enter_from", 1);
+                  paramMotionEvent.extra().putString("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationAIO.a);
+                  paramMotionEvent.extra().putString("KEY_ALBUM_LIST_CLASS_NAME", AlbumListCustomizationAIO.a);
+                  paramMotionEvent.extra().putString("KEY_PHOTO_PREVIEW_CLASS_NAME", PhotoPreviewCustomizationAIO.a);
+                  paramMotionEvent.setFlags(603979776);
+                  QRoute.startUri(paramMotionEvent);
+                  paramSpannable.ad();
+                }
+                this.jdField_a_of_type_Boolean = false;
+                return true;
+              }
+              return false;
             }
-            j = DisplayUtil.a(BaseApplicationImpl.getApplication()).jdField_b_of_type_Int;
+            return false;
           }
+          return false;
         }
       }
     }
-    for (int i = AIOUtils.a(50.0F, BaseApplicationImpl.getApplication().getResources());; i = 0)
-    {
-      if (bool) {}
-      for (paramTextView = new Rect(paramMotionEvent.left + n, paramMotionEvent.top + i1, paramMotionEvent.left + n + paramMotionEvent.width(), i1 + (paramMotionEvent.top + paramMotionEvent.height()));; paramTextView = new Rect(paramMotionEvent.left + n, j - paramMotionEvent.height() - i, paramMotionEvent.left + n + paramMotionEvent.width(), j - i))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("LinkMovementMethodExt", 2, "fullState:" + bool + ", top:" + k + ", bottom:" + m + ",padLeft:" + n + ", screenH:" + j + ", panelH:" + i + ", bounds:" + paramMotionEvent + ", rect:" + paramTextView);
-        }
-        if (paramSpannable.a != null)
-        {
-          paramMotionEvent = new Intent(paramSpannable.a, NewPhotoPreviewActivity.class);
-          paramMotionEvent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", ((ImageSpan)arrayOfObject[0]).getSource());
-          paramMotionEvent.putExtra("input_full_screen_click", true);
-          paramMotionEvent.putExtra("PhotoConst.SHOW_ALBUM", false);
-          paramMotionEvent.putExtra("PhotoConst.SHOULD_SEND_RAW_PHOTO", false);
-          paramMotionEvent.putExtra("PhotoConst.SHOW_MAGIC_USE_PASTER", false);
-          paramMotionEvent.putExtra("showFlashPic", false);
-          paramMotionEvent.putExtra("KEY_THUMBNAL_BOUND", paramTextView);
-          paramMotionEvent.putExtra("enter_from", 1);
-          paramMotionEvent.addFlags(603979776);
-          paramSpannable.a.startActivity(paramMotionEvent);
-          paramSpannable.aF();
-        }
-        this.jdField_a_of_type_Boolean = false;
-        return true;
-        bool = false;
-        break;
-      }
-      this.jdField_a_of_type_Boolean = true;
-      return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
-      label730:
-      j = 0;
-    }
+    this.jdField_a_of_type_Boolean = true;
+    return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mixedmsg.LinkMovementMethodExt
  * JD-Core Version:    0.7.0.1
  */

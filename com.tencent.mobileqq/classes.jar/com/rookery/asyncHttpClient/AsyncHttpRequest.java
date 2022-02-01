@@ -32,83 +32,113 @@ class AsyncHttpRequest
   
   private void a()
   {
-    if (!Thread.currentThread().isInterrupted()) {}
-    try
-    {
-      HttpResponse localHttpResponse = this.jdField_a_of_type_OrgApacheHttpImplClientAbstractHttpClient.execute(this.jdField_a_of_type_OrgApacheHttpClientMethodsHttpUriRequest, this.jdField_a_of_type_OrgApacheHttpProtocolHttpContext);
-      if ((!Thread.currentThread().isInterrupted()) && (this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler != null)) {
-        this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler.a(localHttpResponse);
-      }
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      do
+    if (!Thread.currentThread().isInterrupted()) {
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("Translator", 2, "[makeRequest]IOException:" + localIOException);
+        HttpResponse localHttpResponse = this.jdField_a_of_type_OrgApacheHttpImplClientAbstractHttpClient.execute(this.jdField_a_of_type_OrgApacheHttpClientMethodsHttpUriRequest, this.jdField_a_of_type_OrgApacheHttpProtocolHttpContext);
+        if ((!Thread.currentThread().isInterrupted()) && (this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler != null))
+        {
+          this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler.a(localHttpResponse);
+          return;
         }
-      } while (Thread.currentThread().isInterrupted());
-      throw localIOException;
+      }
+      catch (IOException localIOException)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[makeRequest]IOException:");
+          localStringBuilder.append(localIOException);
+          QLog.e("Translator", 2, localStringBuilder.toString());
+        }
+        if (Thread.currentThread().isInterrupted()) {
+          return;
+        }
+        throw localIOException;
+      }
     }
   }
   
   private void b()
   {
-    boolean bool = true;
-    Object localObject1 = null;
     Object localObject2 = this.jdField_a_of_type_OrgApacheHttpImplClientAbstractHttpClient.getHttpRequestRetryHandler();
-    IOException localIOException2;
+    Object localObject1 = null;
+    boolean bool = true;
     while (bool) {
       try
       {
         a();
         return;
       }
-      catch (UnknownHostException localUnknownHostException)
+      catch (NullPointerException localNullPointerException)
       {
-        while (this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler == null) {}
-        this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler.b(localUnknownHostException, "can't resolve host");
-        return;
-      }
-      catch (SocketException localSocketException)
-      {
-        while (this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler == null) {}
-        this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler.b(localSocketException, "can't resolve host");
-        return;
-      }
-      catch (SocketTimeoutException localSocketTimeoutException)
-      {
-        while (this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler == null) {}
-        this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler.b(localSocketTimeoutException, "socket time out");
-        return;
-      }
-      catch (IOException localIOException1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Translator", 2, "[makeRequestWithRetries]IOException:" + localIOException1);
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("[makeRequestWithRetries]NullPointerException:");
+          localStringBuilder2.append(localNullPointerException);
+          QLog.e("Translator", 2, localStringBuilder2.toString());
         }
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("NPE in HttpClient");
+        localStringBuilder2.append(localNullPointerException.getMessage());
+        IOException localIOException1 = new IOException(localStringBuilder2.toString());
         i = this.jdField_a_of_type_Int + 1;
         this.jdField_a_of_type_Int = i;
         bool = ((HttpRequestRetryHandler)localObject2).retryRequest(localIOException1, i, this.jdField_a_of_type_OrgApacheHttpProtocolHttpContext);
       }
-      catch (NullPointerException localNullPointerException)
+      catch (IOException localIOException2)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("Translator", 2, "[makeRequestWithRetries]NullPointerException:" + localNullPointerException);
+        StringBuilder localStringBuilder2;
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("[makeRequestWithRetries]IOException:");
+          localStringBuilder2.append(localIOException2);
+          QLog.e("Translator", 2, localStringBuilder2.toString());
         }
-        localIOException2 = new IOException("NPE in HttpClient" + localNullPointerException.getMessage());
         int i = this.jdField_a_of_type_Int + 1;
         this.jdField_a_of_type_Int = i;
         bool = ((HttpRequestRetryHandler)localObject2).retryRequest(localIOException2, i, this.jdField_a_of_type_OrgApacheHttpProtocolHttpContext);
       }
+      catch (SocketTimeoutException localSocketTimeoutException)
+      {
+        localObject2 = this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler;
+        if (localObject2 != null) {
+          ((AsyncHttpResponseHandler)localObject2).b(localSocketTimeoutException, "socket time out");
+        }
+        return;
+      }
+      catch (SocketException localSocketException)
+      {
+        localObject2 = this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler;
+        if (localObject2 != null) {
+          ((AsyncHttpResponseHandler)localObject2).b(localSocketException, "can't resolve host");
+        }
+        return;
+      }
+      catch (UnknownHostException localUnknownHostException)
+      {
+        localObject2 = this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler;
+        if (localObject2 != null) {
+          ((AsyncHttpResponseHandler)localObject2).b(localUnknownHostException, "can't resolve host");
+        }
+        return;
+      }
     }
     localObject2 = new ConnectException();
-    ((ConnectException)localObject2).initCause(localIOException2);
-    if (QLog.isColorLevel()) {
-      QLog.e("Translator", 2, "[makeRequestWithRetries] end function. Execption:" + localObject2);
+    ((ConnectException)localObject2).initCause(localUnknownHostException);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("[makeRequestWithRetries] end function. Execption:");
+      localStringBuilder1.append(localObject2);
+      QLog.e("Translator", 2, localStringBuilder1.toString());
     }
-    throw ((Throwable)localObject2);
+    for (;;)
+    {
+      throw ((Throwable)localObject2);
+    }
   }
   
   public void run()
@@ -119,21 +149,25 @@ class AsyncHttpRequest
         this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler.c();
       }
       b();
-      if (this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler != null) {
+      if (this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler != null)
+      {
         this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler.d();
+        return;
       }
-      return;
     }
     catch (IOException localIOException)
     {
-      while (this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler == null) {}
-      this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler.d();
-      if (this.jdField_a_of_type_Boolean)
+      AsyncHttpResponseHandler localAsyncHttpResponseHandler = this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler;
+      if (localAsyncHttpResponseHandler != null)
       {
-        this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler.a(localIOException, (byte[])null);
-        return;
+        localAsyncHttpResponseHandler.d();
+        if (this.jdField_a_of_type_Boolean)
+        {
+          this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler.a(localIOException, (byte[])null);
+          return;
+        }
+        this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler.b(localIOException, (String)null);
       }
-      this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler.b(localIOException, (String)null);
     }
   }
 }

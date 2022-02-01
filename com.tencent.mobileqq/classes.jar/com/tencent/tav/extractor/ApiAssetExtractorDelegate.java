@@ -1,12 +1,9 @@
 package com.tencent.tav.extractor;
 
-import android.annotation.TargetApi;
-import android.content.res.AssetFileDescriptor;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import android.support.annotation.NonNull;
-import java.io.FileDescriptor;
-import java.io.IOException;
+import java.nio.ByteBuffer;
 
 public class ApiAssetExtractorDelegate
   implements IAssetExtractorDelegate
@@ -30,109 +27,58 @@ public class ApiAssetExtractorDelegate
     }
   }
   
-  /* Error */
   public long getSampleTime()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 16	com/tencent/tav/extractor/ApiAssetExtractorDelegate:released	Z
-    //   6: ifne +15 -> 21
-    //   9: aload_0
-    //   10: getfield 21	com/tencent/tav/extractor/ApiAssetExtractorDelegate:mediaExtractor	Landroid/media/MediaExtractor;
-    //   13: invokevirtual 30	android/media/MediaExtractor:getSampleTime	()J
-    //   16: lstore_1
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: lload_1
-    //   20: lreturn
-    //   21: ldc2_w 31
-    //   24: lstore_1
-    //   25: goto -8 -> 17
-    //   28: astore_3
-    //   29: aload_0
-    //   30: monitorexit
-    //   31: aload_3
-    //   32: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	33	0	this	ApiAssetExtractorDelegate
-    //   16	9	1	l	long
-    //   28	4	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	17	28	finally
+    try
+    {
+      if (!this.released)
+      {
+        long l = this.mediaExtractor.getSampleTime();
+        return l;
+      }
+      return -1L;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  /* Error */
   public int getSampleTrackIndex()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 16	com/tencent/tav/extractor/ApiAssetExtractorDelegate:released	Z
-    //   6: ifne +15 -> 21
-    //   9: aload_0
-    //   10: getfield 21	com/tencent/tav/extractor/ApiAssetExtractorDelegate:mediaExtractor	Landroid/media/MediaExtractor;
-    //   13: invokevirtual 36	android/media/MediaExtractor:getSampleTrackIndex	()I
-    //   16: istore_1
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: iload_1
-    //   20: ireturn
-    //   21: iconst_m1
-    //   22: istore_1
-    //   23: goto -6 -> 17
-    //   26: astore_2
-    //   27: aload_0
-    //   28: monitorexit
-    //   29: aload_2
-    //   30: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	31	0	this	ApiAssetExtractorDelegate
-    //   16	7	1	i	int
-    //   26	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	17	26	finally
+    try
+    {
+      if (!this.released)
+      {
+        int i = this.mediaExtractor.getSampleTrackIndex();
+        return i;
+      }
+      return -1;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  /* Error */
   public final int getTrackCount()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 16	com/tencent/tav/extractor/ApiAssetExtractorDelegate:released	Z
-    //   6: ifne +15 -> 21
-    //   9: aload_0
-    //   10: getfield 21	com/tencent/tav/extractor/ApiAssetExtractorDelegate:mediaExtractor	Landroid/media/MediaExtractor;
-    //   13: invokevirtual 39	android/media/MediaExtractor:getTrackCount	()I
-    //   16: istore_1
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: iload_1
-    //   20: ireturn
-    //   21: iconst_0
-    //   22: istore_1
-    //   23: goto -6 -> 17
-    //   26: astore_2
-    //   27: aload_0
-    //   28: monitorexit
-    //   29: aload_2
-    //   30: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	31	0	this	ApiAssetExtractorDelegate
-    //   16	7	1	i	int
-    //   26	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	17	26	finally
+    try
+    {
+      if (!this.released)
+      {
+        int i = this.mediaExtractor.getTrackCount();
+        return i;
+      }
+      return 0;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   @NonNull
@@ -150,41 +96,22 @@ public class ApiAssetExtractorDelegate
     }
   }
   
-  /* Error */
-  public int readSampleData(@NonNull java.nio.ByteBuffer paramByteBuffer, int paramInt)
+  public int readSampleData(@NonNull ByteBuffer paramByteBuffer, int paramInt)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 16	com/tencent/tav/extractor/ApiAssetExtractorDelegate:released	Z
-    //   6: ifne +17 -> 23
-    //   9: aload_0
-    //   10: getfield 21	com/tencent/tav/extractor/ApiAssetExtractorDelegate:mediaExtractor	Landroid/media/MediaExtractor;
-    //   13: aload_1
-    //   14: iload_2
-    //   15: invokevirtual 49	android/media/MediaExtractor:readSampleData	(Ljava/nio/ByteBuffer;I)I
-    //   18: istore_2
-    //   19: aload_0
-    //   20: monitorexit
-    //   21: iload_2
-    //   22: ireturn
-    //   23: iconst_m1
-    //   24: istore_2
-    //   25: goto -6 -> 19
-    //   28: astore_1
-    //   29: aload_0
-    //   30: monitorexit
-    //   31: aload_1
-    //   32: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	33	0	this	ApiAssetExtractorDelegate
-    //   0	33	1	paramByteBuffer	java.nio.ByteBuffer
-    //   0	33	2	paramInt	int
-    // Exception table:
-    //   from	to	target	type
-    //   2	19	28	finally
+    try
+    {
+      if (!this.released)
+      {
+        paramInt = this.mediaExtractor.readSampleData(paramByteBuffer, paramInt);
+        return paramInt;
+      }
+      return -1;
+    }
+    finally
+    {
+      paramByteBuffer = finally;
+      throw paramByteBuffer;
+    }
   }
   
   public final void release()
@@ -233,56 +160,109 @@ public class ApiAssetExtractorDelegate
     }
   }
   
-  @TargetApi(24)
-  public final void setDataSource(@NonNull AssetFileDescriptor paramAssetFileDescriptor)
+  /* Error */
+  @android.annotation.TargetApi(24)
+  public final void setDataSource(@NonNull android.content.res.AssetFileDescriptor paramAssetFileDescriptor)
   {
-    try
-    {
-      this.mediaExtractor.setDataSource(paramAssetFileDescriptor);
-      return;
-    }
-    catch (IOException paramAssetFileDescriptor)
-    {
-      for (;;)
-      {
-        paramAssetFileDescriptor.printStackTrace();
-      }
-    }
-    finally {}
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 21	com/tencent/tav/extractor/ApiAssetExtractorDelegate:mediaExtractor	Landroid/media/MediaExtractor;
+    //   6: aload_1
+    //   7: invokevirtual 70	android/media/MediaExtractor:setDataSource	(Landroid/content/res/AssetFileDescriptor;)V
+    //   10: goto +12 -> 22
+    //   13: astore_1
+    //   14: goto +11 -> 25
+    //   17: astore_1
+    //   18: aload_1
+    //   19: invokevirtual 73	java/io/IOException:printStackTrace	()V
+    //   22: aload_0
+    //   23: monitorexit
+    //   24: return
+    //   25: aload_0
+    //   26: monitorexit
+    //   27: aload_1
+    //   28: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	29	0	this	ApiAssetExtractorDelegate
+    //   0	29	1	paramAssetFileDescriptor	android.content.res.AssetFileDescriptor
+    // Exception table:
+    //   from	to	target	type
+    //   2	10	13	finally
+    //   18	22	13	finally
+    //   2	10	17	java/io/IOException
   }
   
-  public final void setDataSource(@NonNull FileDescriptor paramFileDescriptor)
+  /* Error */
+  public final void setDataSource(@NonNull java.io.FileDescriptor paramFileDescriptor)
   {
-    try
-    {
-      this.mediaExtractor.setDataSource(paramFileDescriptor, 0L, 576460752303423487L);
-      return;
-    }
-    catch (IOException paramFileDescriptor)
-    {
-      for (;;)
-      {
-        paramFileDescriptor.printStackTrace();
-      }
-    }
-    finally {}
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 21	com/tencent/tav/extractor/ApiAssetExtractorDelegate:mediaExtractor	Landroid/media/MediaExtractor;
+    //   6: aload_1
+    //   7: lconst_0
+    //   8: ldc2_w 75
+    //   11: invokevirtual 79	android/media/MediaExtractor:setDataSource	(Ljava/io/FileDescriptor;JJ)V
+    //   14: goto +12 -> 26
+    //   17: astore_1
+    //   18: goto +11 -> 29
+    //   21: astore_1
+    //   22: aload_1
+    //   23: invokevirtual 73	java/io/IOException:printStackTrace	()V
+    //   26: aload_0
+    //   27: monitorexit
+    //   28: return
+    //   29: aload_0
+    //   30: monitorexit
+    //   31: aload_1
+    //   32: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	33	0	this	ApiAssetExtractorDelegate
+    //   0	33	1	paramFileDescriptor	java.io.FileDescriptor
+    // Exception table:
+    //   from	to	target	type
+    //   2	14	17	finally
+    //   22	26	17	finally
+    //   2	14	21	java/io/IOException
   }
   
-  public final void setDataSource(@NonNull String paramString)
+  /* Error */
+  public final void setDataSource(@NonNull java.lang.String paramString)
   {
-    try
-    {
-      this.mediaExtractor.setDataSource(paramString);
-      return;
-    }
-    catch (IOException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
-    }
-    finally {}
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 21	com/tencent/tav/extractor/ApiAssetExtractorDelegate:mediaExtractor	Landroid/media/MediaExtractor;
+    //   6: aload_1
+    //   7: invokevirtual 82	android/media/MediaExtractor:setDataSource	(Ljava/lang/String;)V
+    //   10: goto +12 -> 22
+    //   13: astore_1
+    //   14: goto +11 -> 25
+    //   17: astore_1
+    //   18: aload_1
+    //   19: invokevirtual 73	java/io/IOException:printStackTrace	()V
+    //   22: aload_0
+    //   23: monitorexit
+    //   24: return
+    //   25: aload_0
+    //   26: monitorexit
+    //   27: aload_1
+    //   28: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	29	0	this	ApiAssetExtractorDelegate
+    //   0	29	1	paramString	java.lang.String
+    // Exception table:
+    //   from	to	target	type
+    //   2	10	13	finally
+    //   18	22	13	finally
+    //   2	10	17	java/io/IOException
   }
   
   public void unselectTrack(int paramInt)
@@ -303,7 +283,7 @@ public class ApiAssetExtractorDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tav.extractor.ApiAssetExtractorDelegate
  * JD-Core Version:    0.7.0.1
  */

@@ -10,22 +10,31 @@ class TabBarView$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 0)
     {
-    default: 
-      return;
-    case 0: 
-      this.a.a = 0.0F;
-      paramMessage = this.a;
-      paramMessage.a = ((float)(paramMessage.a + 0.1D));
-      this.a.invalidate();
-      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
-      return;
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 2) {
+          return;
+        }
+        paramMessage = this.a;
+        TabBarView.a(paramMessage, paramMessage.o, this.a.n);
+        paramMessage = this.a;
+        paramMessage.a = 1.0F;
+        TabBarView.b(paramMessage, paramMessage.o, this.a.n);
+        paramMessage = this.a;
+        paramMessage.o = paramMessage.n;
+        this.a.invalidate();
+        TabBarView.a(this.a);
+        return;
+      }
       if (this.a.a < 1.0F)
       {
         paramMessage = this.a;
-        paramMessage.a = ((float)(paramMessage.a + 0.1D));
+        d = paramMessage.a;
+        Double.isNaN(d);
+        paramMessage.a = ((float)(d + 0.1D));
         this.a.invalidate();
         sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
         return;
@@ -33,17 +42,18 @@ class TabBarView$1
       sendMessageDelayed(TabBarView.a(this.a).obtainMessage(2), 10L);
       return;
     }
-    TabBarView.a(this.a, this.a.o, this.a.n);
-    this.a.a = 1.0F;
-    TabBarView.b(this.a, this.a.o, this.a.n);
-    this.a.o = this.a.n;
+    paramMessage = this.a;
+    paramMessage.a = 0.0F;
+    double d = paramMessage.a;
+    Double.isNaN(d);
+    paramMessage.a = ((float)(d + 0.1D));
     this.a.invalidate();
-    TabBarView.a(this.a);
+    sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TabBarView.1
  * JD-Core Version:    0.7.0.1
  */

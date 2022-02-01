@@ -23,17 +23,20 @@ public class AdFrequencyLimit
   
   public static int canShowInterstitialAdNow()
   {
-    long l = System.currentTimeMillis();
-    if (l - sGameStartTime < GAME_START_LIMIT) {
+    long l1 = System.currentTimeMillis();
+    if (l1 - sGameStartTime < GAME_START_LIMIT) {
       return ERROR_CODE_2001;
     }
-    if ((l - sRewardVideoAdLastShowedTime < LAST_SHOW_LIMIT) || (l - sInterstitialAdLastShowedTime < LAST_SHOW_LIMIT)) {
-      return ERROR_CODE_2002;
-    }
-    if ((sRewardVideoAdShowing) || (sInterstitialAdShowing)) {
+    long l2 = sRewardVideoAdLastShowedTime;
+    int i = LAST_SHOW_LIMIT;
+    if ((l1 - l2 >= i) && (l1 - sInterstitialAdLastShowedTime >= i))
+    {
+      if ((!sRewardVideoAdShowing) && (!sInterstitialAdShowing)) {
+        return 0;
+      }
       return ERROR_CODE_2003;
     }
-    return 0;
+    return ERROR_CODE_2002;
   }
   
   public static void setInterstitialAdShowing(boolean paramBoolean)
@@ -67,7 +70,7 @@ public class AdFrequencyLimit
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.AdFrequencyLimit
  * JD-Core Version:    0.7.0.1
  */

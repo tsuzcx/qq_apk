@@ -65,22 +65,28 @@ public class GLSurfaceUtil
   
   public static String a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return "Unknow error";
-    case 0: 
-      return "GL_NO_ERROR";
-    case 1280: 
-      return "GL_INVALID_ENUM";
-    case 1281: 
-      return "GL_INVALID_VALUE";
-    case 1282: 
-      return "GL_INVALID_OPERATION";
-    case 1285: 
+      if (paramInt != 1285)
+      {
+        if (paramInt != 1286)
+        {
+          switch (paramInt)
+          {
+          default: 
+            return "Unknow error";
+          case 1282: 
+            return "GL_INVALID_OPERATION";
+          case 1281: 
+            return "GL_INVALID_VALUE";
+          }
+          return "GL_INVALID_ENUM";
+        }
+        return "GL_INVALID_FRAMEBUFFER_OPERATION";
+      }
       return "GL_OUT_OF_MEMORY";
     }
-    return "GL_INVALID_FRAMEBUFFER_OPERATION";
+    return "GL_NO_ERROR";
   }
   
   private void a()
@@ -111,17 +117,16 @@ public class GLSurfaceUtil
     }
     try
     {
-      localObject2 = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130845415);
+      localObject2 = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130845288);
       localObject1 = localObject2;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      for (;;)
-      {
-        Object localObject2;
-        QLog.i("GLSurfaceUtil", 2, "decode hongbao filter mask oom!");
-      }
+      Object localObject2;
+      label424:
+      break label424;
     }
+    QLog.i("GLSurfaceUtil", 2, "decode hongbao filter mask oom!");
     if (localObject1 != null)
     {
       localObject2 = new int[1];
@@ -190,86 +195,120 @@ public class GLSurfaceUtil
   {
     paramInt1 = ImageFormat.getBitsPerPixel(paramInt1);
     float f1 = paramInt1 * 1.0F / 8.0F;
-    a("handleMessage:byteBufferProcessFrame:[getBufferSize]bitpixel=" + paramInt1 + " byteNum=" + f1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleMessage:byteBufferProcessFrame:[getBufferSize]bitpixel=");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" byteNum=");
+    localStringBuilder.append(f1);
+    a(localStringBuilder.toString());
     return (int)(paramInt2 * paramInt3 * f1);
   }
   
   public int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, byte[] paramArrayOfByte)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        int i = a(paramInt1, paramInt4, paramInt5);
-        if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= i)) {
-          break label332;
-        }
-        bool1 = true;
-        boolean bool2 = bool1;
-        if (bool1)
-        {
-          bool2 = bool1;
-          if (paramArrayOfByte.length == a(paramInt4, paramInt5)) {
-            bool2 = false;
-          }
-        }
-        if (bool2)
-        {
-          a("handleMessage:byteBufferProcessFrame:[data length error]dataLenErr=" + bool2 + " mPreviewWidth=" + paramInt4 + " mPreviewWidth" + paramInt4 + " mVideoFormat=" + paramInt1);
-          a("handleMessage:byteBufferProcessFrame:[data length error]dataLenErr=" + bool2 + " totalSize=" + i + " data.length=" + paramArrayOfByte.length);
-          return -1;
-        }
-        if ((this.jdField_a_of_type_JavaNioByteBuffer == null) || (!this.jdField_d_of_type_Boolean)) {
-          jdField_c_of_type_Boolean = false;
-        }
+      i = a(paramInt1, paramInt4, paramInt5);
+      if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= i)) {
+        break label403;
       }
-      catch (UnsatisfiedLinkError paramArrayOfByte)
-      {
-        paramInt1 = 0;
-        continue;
-        a("handleMessage:byteBufferProcessFrame:panelY=" + this.jdField_a_of_type_JavaNioByteBuffer);
-        return paramInt1;
-      }
-      try
-      {
-        CameraGLSurfaceView.initTotalBufferSize(paramInt4, paramInt5, paramInt1);
-        jdField_c_of_type_Boolean = true;
-        this.jdField_a_of_type_JavaNioByteBuffer = null;
-        this.jdField_b_of_type_JavaNioByteBuffer = null;
-        this.jdField_c_of_type_JavaNioByteBuffer = null;
-        a(paramInt2, paramInt3);
-        this.jdField_d_of_type_Boolean = true;
-        paramInt1 = CameraGLSurfaceView.processVideoFrame(paramArrayOfByte, paramInt4, paramInt5, paramInt1, paramInt6, false, this.jdField_a_of_type_JavaNioByteBuffer, this.jdField_b_of_type_JavaNioByteBuffer, this.jdField_c_of_type_JavaNioByteBuffer, jdField_b_of_type_Boolean);
-        if (this.jdField_a_of_type_JavaNioByteBuffer != null)
-        {
-          this.jdField_a_of_type_JavaNioByteBuffer.position(0);
-          this.jdField_b_of_type_JavaNioByteBuffer.position(0);
-          this.jdField_c_of_type_JavaNioByteBuffer.position(0);
-          return paramInt1;
-        }
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-      {
-        jdField_c_of_type_Boolean = false;
-        continue;
-      }
-      label332:
-      boolean bool1 = false;
+      bool1 = true;
     }
+    catch (UnsatisfiedLinkError paramArrayOfByte)
+    {
+      label403:
+      for (;;)
+      {
+        int i;
+        boolean bool2;
+        StringBuilder localStringBuilder;
+        label253:
+        continue;
+        label317:
+        boolean bool1 = false;
+      }
+    }
+    bool2 = bool1;
+    if (bool1)
+    {
+      bool2 = bool1;
+      if (paramArrayOfByte.length == a(paramInt4, paramInt5)) {
+        bool2 = false;
+      }
+    }
+    if (bool2)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleMessage:byteBufferProcessFrame:[data length error]dataLenErr=");
+      localStringBuilder.append(bool2);
+      localStringBuilder.append(" mPreviewWidth=");
+      localStringBuilder.append(paramInt4);
+      localStringBuilder.append(" mPreviewWidth");
+      localStringBuilder.append(paramInt4);
+      localStringBuilder.append(" mVideoFormat=");
+      localStringBuilder.append(paramInt1);
+      a(localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleMessage:byteBufferProcessFrame:[data length error]dataLenErr=");
+      localStringBuilder.append(bool2);
+      localStringBuilder.append(" totalSize=");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" data.length=");
+      localStringBuilder.append(paramArrayOfByte.length);
+      a(localStringBuilder.toString());
+      return -1;
+    }
+    if ((this.jdField_a_of_type_JavaNioByteBuffer == null) || (!this.jdField_d_of_type_Boolean)) {
+      jdField_c_of_type_Boolean = false;
+    }
+    try
+    {
+      CameraGLSurfaceView.initTotalBufferSize(paramInt4, paramInt5, paramInt1);
+      jdField_c_of_type_Boolean = true;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      break label253;
+    }
+    jdField_c_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaNioByteBuffer = null;
+    this.jdField_b_of_type_JavaNioByteBuffer = null;
+    this.jdField_c_of_type_JavaNioByteBuffer = null;
+    a(paramInt2, paramInt3);
+    this.jdField_d_of_type_Boolean = true;
+    paramInt1 = CameraGLSurfaceView.processVideoFrame(paramArrayOfByte, paramInt4, paramInt5, paramInt1, paramInt6, false, this.jdField_a_of_type_JavaNioByteBuffer, this.jdField_b_of_type_JavaNioByteBuffer, this.jdField_c_of_type_JavaNioByteBuffer, jdField_b_of_type_Boolean);
+    break label317;
+    paramInt1 = 0;
+    paramArrayOfByte = this.jdField_a_of_type_JavaNioByteBuffer;
+    if (paramArrayOfByte != null)
+    {
+      paramArrayOfByte.position(0);
+      this.jdField_b_of_type_JavaNioByteBuffer.position(0);
+      this.jdField_c_of_type_JavaNioByteBuffer.position(0);
+      return paramInt1;
+    }
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("handleMessage:byteBufferProcessFrame:panelY=");
+    paramArrayOfByte.append(this.jdField_a_of_type_JavaNioByteBuffer);
+    a(paramArrayOfByte.toString());
+    return paramInt1;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
     int i = paramInt1 * paramInt2;
-    if ((this.jdField_a_of_type_JavaNioByteBuffer == null) || (this.jdField_a_of_type_JavaNioByteBuffer.capacity() < i)) {
+    ByteBuffer localByteBuffer = this.jdField_a_of_type_JavaNioByteBuffer;
+    if ((localByteBuffer == null) || (localByteBuffer.capacity() < i)) {
       this.jdField_a_of_type_JavaNioByteBuffer = GLSurfaceUtil.GLDirectAllocate.a(0, i);
     }
     i = 0 + i;
     paramInt1 = paramInt1 / 2 * (paramInt2 / 2);
-    if ((this.jdField_b_of_type_JavaNioByteBuffer == null) || (this.jdField_b_of_type_JavaNioByteBuffer.capacity() < paramInt1)) {
+    localByteBuffer = this.jdField_b_of_type_JavaNioByteBuffer;
+    if ((localByteBuffer == null) || (localByteBuffer.capacity() < paramInt1)) {
       this.jdField_b_of_type_JavaNioByteBuffer = GLSurfaceUtil.GLDirectAllocate.a(i, paramInt1);
     }
-    if ((this.jdField_c_of_type_JavaNioByteBuffer == null) || (this.jdField_c_of_type_JavaNioByteBuffer.capacity() < paramInt1)) {
+    localByteBuffer = this.jdField_c_of_type_JavaNioByteBuffer;
+    if ((localByteBuffer == null) || (localByteBuffer.capacity() < paramInt1)) {
       this.jdField_c_of_type_JavaNioByteBuffer = GLSurfaceUtil.GLDirectAllocate.a(i + paramInt1, paramInt1);
     }
   }
@@ -278,17 +317,27 @@ public class GLSurfaceUtil
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqPortalHongbaoFilter = new HongbaoFilter();
-    }
-    for (this.jdField_a_of_type_Int = GLSurfaceUtil.GLVideoHelper.a("precision highp float;\nattribute vec4 position;\nattribute vec2 textureCoordinateIn;\nvarying   vec2 texturecoordinateOut;\nvoid main()\n{\ntexturecoordinateOut = textureCoordinateIn;\ngl_Position = position;\n}\n", "precision mediump float;\nvarying   vec2 texturecoordinateOut;\nuniform sampler2D SamplerY;\nuniform sampler2D SamplerU;\nuniform sampler2D SamplerV;\nuniform float percent1;\nuniform float percent2;\nuniform float percent3;\nuniform float percent4;\nuniform float percent5;\nuniform float percent6;\nuniform float percent7;\nuniform sampler2D inputImageTexture2;\nuniform float quality;\nuniform float add_red;\nuniform float red_m;\nuniform float green_m;\nuniform float blue_m;\nfloat percent_value(float min_percent, float percent)\n{\nfloat result_percent = 0.0;\nif(percent > 0.0)\nresult_percent = min(min_percent, percent);\nelse\nresult_percent = max(min_percent - 1.0, percent);\nreturn result_percent;\n}\nvoid main()\n{\nvec3 yuv;\nvec3 rgb;\nvec4 rgba;\nyuv.x = texture2D(SamplerY, texturecoordinateOut).r;\nyuv.y = texture2D(SamplerU, texturecoordinateOut).r-0.5;\nyuv.z = texture2D(SamplerV, texturecoordinateOut).r-0.5;\nrgb = mat3(      1,       1,      1,\n0,         -.34414, 1.772,\n1.402,     -.71414, 0) * yuv;\nfloat r = rgb.r;\nfloat g = rgb.g;\nfloat b = rgb.b;\nfloat max_c = max(r, max(g, b));\nfloat min_c = min(r, min(g, b));\nfloat median = r + g + b - max_c - min_c;\nfloat amount = max_c - median;\nfloat amount2 = median - min_c;\nfloat min_percent_r = 1.0 - r;\nfloat min_percent_g = 1.0 - g;\nfloat min_percent_b = 1.0 - b;\nfloat p;\nfloat gray = dot(rgb, vec3(0.299, 0.587, 0.114));\nfloat tmp_r = r;\nfloat tmp_g = g;\nfloat tmp_b = b;\nif(tmp_r == max_c) //red\n{\nfloat tmp_percent7 = percent7 * (1.0 - gray);\np = percent_value(min_percent_r, percent1 + tmp_percent7);\nr = r + amount * p;\np = percent_value(min_percent_g, percent4 + tmp_percent7);\ng = g + amount * p;\np = percent_value(min_percent_b, percent6 + tmp_percent7);\nb = b + amount * p;\n}\nif(tmp_b == max_c) //blue\n{\np = percent_value(min_percent_r, percent3);\nr = r + amount * p;\n}\nif(tmp_b == min_c) //yellow\n{\np = percent_value(min_percent_b, percent2);\nb = b + amount2 * p;\np = percent_value(min_percent_g, percent5);\ng = g + amount2 * p;\n}\nlowp vec4 color;\ncolor = vec4(r, g, b, 1.0);\ncolor *= quality;\nlowp vec4 newColor;\nnewColor = color;\nif(newColor.r > newColor.g && newColor.r > newColor.b)\n{\nnewColor.r *= 1.0 - red_m * add_red;\nnewColor.g *= 1.0 - green_m * add_red;\nnewColor.b *= 1.0 - blue_m * add_red;\n}\nnewColor.r = texture2D(inputImageTexture2, vec2(newColor.r,0.5)).r;\nnewColor.g = texture2D(inputImageTexture2, vec2(newColor.g,0.5)).g;\nnewColor.b = texture2D(inputImageTexture2, vec2(newColor.b,0.5)).b;\nnewColor.a = 1.0;\ngl_FragColor = newColor;\n}\n"); this.jdField_a_of_type_Int == 0; this.jdField_a_of_type_Int = GLSurfaceUtil.GLVideoHelper.a())
+    if (this.jdField_a_of_type_Boolean)
     {
-      CameraGLSurfaceView.a("GLVideoHelper.createShaderProgram: mGLProgram=" + this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqPortalHongbaoFilter = new HongbaoFilter();
+      this.jdField_a_of_type_Int = GLSurfaceUtil.GLVideoHelper.a("precision highp float;\nattribute vec4 position;\nattribute vec2 textureCoordinateIn;\nvarying   vec2 texturecoordinateOut;\nvoid main()\n{\ntexturecoordinateOut = textureCoordinateIn;\ngl_Position = position;\n}\n", "precision mediump float;\nvarying   vec2 texturecoordinateOut;\nuniform sampler2D SamplerY;\nuniform sampler2D SamplerU;\nuniform sampler2D SamplerV;\nuniform float percent1;\nuniform float percent2;\nuniform float percent3;\nuniform float percent4;\nuniform float percent5;\nuniform float percent6;\nuniform float percent7;\nuniform sampler2D inputImageTexture2;\nuniform float quality;\nuniform float add_red;\nuniform float red_m;\nuniform float green_m;\nuniform float blue_m;\nfloat percent_value(float min_percent, float percent)\n{\nfloat result_percent = 0.0;\nif(percent > 0.0)\nresult_percent = min(min_percent, percent);\nelse\nresult_percent = max(min_percent - 1.0, percent);\nreturn result_percent;\n}\nvoid main()\n{\nvec3 yuv;\nvec3 rgb;\nvec4 rgba;\nyuv.x = texture2D(SamplerY, texturecoordinateOut).r;\nyuv.y = texture2D(SamplerU, texturecoordinateOut).r-0.5;\nyuv.z = texture2D(SamplerV, texturecoordinateOut).r-0.5;\nrgb = mat3(      1,       1,      1,\n0,         -.34414, 1.772,\n1.402,     -.71414, 0) * yuv;\nfloat r = rgb.r;\nfloat g = rgb.g;\nfloat b = rgb.b;\nfloat max_c = max(r, max(g, b));\nfloat min_c = min(r, min(g, b));\nfloat median = r + g + b - max_c - min_c;\nfloat amount = max_c - median;\nfloat amount2 = median - min_c;\nfloat min_percent_r = 1.0 - r;\nfloat min_percent_g = 1.0 - g;\nfloat min_percent_b = 1.0 - b;\nfloat p;\nfloat gray = dot(rgb, vec3(0.299, 0.587, 0.114));\nfloat tmp_r = r;\nfloat tmp_g = g;\nfloat tmp_b = b;\nif(tmp_r == max_c) //red\n{\nfloat tmp_percent7 = percent7 * (1.0 - gray);\np = percent_value(min_percent_r, percent1 + tmp_percent7);\nr = r + amount * p;\np = percent_value(min_percent_g, percent4 + tmp_percent7);\ng = g + amount * p;\np = percent_value(min_percent_b, percent6 + tmp_percent7);\nb = b + amount * p;\n}\nif(tmp_b == max_c) //blue\n{\np = percent_value(min_percent_r, percent3);\nr = r + amount * p;\n}\nif(tmp_b == min_c) //yellow\n{\np = percent_value(min_percent_b, percent2);\nb = b + amount2 * p;\np = percent_value(min_percent_g, percent5);\ng = g + amount2 * p;\n}\nlowp vec4 color;\ncolor = vec4(r, g, b, 1.0);\ncolor *= quality;\nlowp vec4 newColor;\nnewColor = color;\nif(newColor.r > newColor.g && newColor.r > newColor.b)\n{\nnewColor.r *= 1.0 - red_m * add_red;\nnewColor.g *= 1.0 - green_m * add_red;\nnewColor.b *= 1.0 - blue_m * add_red;\n}\nnewColor.r = texture2D(inputImageTexture2, vec2(newColor.r,0.5)).r;\nnewColor.g = texture2D(inputImageTexture2, vec2(newColor.g,0.5)).g;\nnewColor.b = texture2D(inputImageTexture2, vec2(newColor.b,0.5)).b;\nnewColor.a = 1.0;\ngl_FragColor = newColor;\n}\n");
+    }
+    else
+    {
+      this.jdField_a_of_type_Int = GLSurfaceUtil.GLVideoHelper.a();
+    }
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("GLVideoHelper.createShaderProgram: mGLProgram=");
+      paramContext.append(this.jdField_a_of_type_Int);
+      CameraGLSurfaceView.a(paramContext.toString());
       return false;
     }
     a();
     a(this.jdField_b_of_type_ArrayOfInt, this.g, this.h);
-    GLES20.glGenTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
+    paramContext = this.jdField_a_of_type_ArrayOfInt;
+    GLES20.glGenTextures(paramContext.length, paramContext, 0);
     b();
     return true;
   }
@@ -305,16 +354,19 @@ public class GLSurfaceUtil
     if (!paramBoolean) {
       GLES20.glTexImage2D(3553, 0, 6409, paramInt1 / 2, paramInt2 / 2, 0, 6409, 5121, null);
     }
-    GLES20.glTexSubImage2D(3553, 0, 0, 0, paramInt1 / 2, paramInt2 / 2, 6409, 5121, paramByteBuffer2);
-    GLES20.glUniform1i(this.e, 1);
+    paramInt1 /= 2;
+    paramInt2 /= 2;
+    GLES20.glTexSubImage2D(3553, 0, 0, 0, paramInt1, paramInt2, 6409, 5121, paramByteBuffer2);
+    int i = this.e;
+    boolean bool = true;
+    GLES20.glUniform1i(i, 1);
     GLES20.glActiveTexture(33986);
-    boolean bool = paramBoolean;
     if (!paramBoolean)
     {
-      GLES20.glTexImage2D(3553, 0, 6409, paramInt1 / 2, paramInt2 / 2, 0, 6409, 5121, null);
-      bool = true;
+      GLES20.glTexImage2D(3553, 0, 6409, paramInt1, paramInt2, 0, 6409, 5121, null);
+      paramBoolean = bool;
     }
-    GLES20.glTexSubImage2D(3553, 0, 0, 0, paramInt1 / 2, paramInt2 / 2, 6409, 5121, paramByteBuffer3);
+    GLES20.glTexSubImage2D(3553, 0, 0, 0, paramInt1, paramInt2, 6409, 5121, paramByteBuffer3);
     GLES20.glUniform1i(this.f, 2);
     if (this.jdField_a_of_type_Boolean)
     {
@@ -325,15 +377,21 @@ public class GLSurfaceUtil
     }
     GLES20.glDrawArrays(6, 0, 4);
     paramInt1 = GLES20.glGetError();
-    if (paramInt1 != 0) {
-      a("glDrawFrame:err=" + paramInt1 + " errname=" + a(paramInt1));
+    if (paramInt1 != 0)
+    {
+      paramByteBuffer1 = new StringBuilder();
+      paramByteBuffer1.append("glDrawFrame:err=");
+      paramByteBuffer1.append(paramInt1);
+      paramByteBuffer1.append(" errname=");
+      paramByteBuffer1.append(a(paramInt1));
+      a(paramByteBuffer1.toString());
     }
-    return bool;
+    return paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.view.GLSurfaceUtil
  * JD-Core Version:    0.7.0.1
  */

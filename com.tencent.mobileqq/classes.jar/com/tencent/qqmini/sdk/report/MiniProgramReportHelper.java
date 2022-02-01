@@ -60,20 +60,21 @@ public class MiniProgramReportHelper
   
   private static String adjustRefer(String paramString)
   {
-    if ((QUAUtil.isQQMainApp()) || (QUAUtil.isTimApp()))
+    if ((!QUAUtil.isQQMainApp()) && (!QUAUtil.isTimApp()))
     {
-      if (paramString != null) {
-        return paramString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName());
+      localStringBuilder.append("_");
+      if (paramString == null) {
+        paramString = "1001";
       }
-      return "";
+      localStringBuilder.append(paramString);
+      return localStringBuilder.toString();
     }
-    StringBuilder localStringBuilder = new StringBuilder().append(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName()).append("_");
-    if (paramString != null) {}
-    for (;;)
-    {
+    if (paramString != null) {
       return paramString;
-      paramString = "1001";
     }
+    return "";
   }
   
   public static void assignAppLaunchId(MiniAppInfo paramMiniAppInfo)
@@ -83,7 +84,13 @@ public class MiniProgramReportHelper
     {
       String str2 = String.valueOf(System.currentTimeMillis());
       APP_ID_LAUNCH_ID_MAP.put(str1, str2);
-      QMLog.i("MiniProgramReportHelper", "[mini] assignAppLaunchId [appId= " + str1 + "] [launchId=" + str2 + "]");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[mini] assignAppLaunchId [appId= ");
+      localStringBuilder.append(str1);
+      localStringBuilder.append("] [launchId=");
+      localStringBuilder.append(str2);
+      localStringBuilder.append("]");
+      QMLog.i("MiniProgramReportHelper", localStringBuilder.toString());
     }
     MINI_APP_CONFIG_FOR_PRELOAD = paramMiniAppInfo;
   }
@@ -102,7 +109,12 @@ public class MiniProgramReportHelper
     {
       String str = String.valueOf(System.currentTimeMillis());
       LAUNCH_ID_MAP_MAIN_PROCESS.put(paramMiniAppInfo, str);
-      QMLog.e("MiniProgramReportHelper", "[mini] generateLaunchIdInMainProcess [appId= " + paramMiniAppInfo + "] [launchId=" + str);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[mini] generateLaunchIdInMainProcess [appId= ");
+      localStringBuilder.append(paramMiniAppInfo);
+      localStringBuilder.append("] [launchId=");
+      localStringBuilder.append(str);
+      QMLog.e("MiniProgramReportHelper", localStringBuilder.toString());
     }
   }
   
@@ -112,7 +124,12 @@ public class MiniProgramReportHelper
       return sDeviceInfo;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("a=").append(Build.VERSION.SDK_INT).append("&mem=").append(getDeviceRamSize()).append("&mo=").append(getModelName());
+    localStringBuilder.append("a=");
+    localStringBuilder.append(Build.VERSION.SDK_INT);
+    localStringBuilder.append("&mem=");
+    localStringBuilder.append(getDeviceRamSize());
+    localStringBuilder.append("&mo=");
+    localStringBuilder.append(getModelName());
     sDeviceInfo = localStringBuilder.toString();
     return sDeviceInfo;
   }
@@ -149,25 +166,22 @@ public class MiniProgramReportHelper
   
   private static String getMiniAppIdSafely(MiniAppInfo paramMiniAppInfo)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramMiniAppInfo != null)
-    {
-      localObject1 = localObject2;
-      if (paramMiniAppInfo.launchParam != null) {
-        localObject1 = paramMiniAppInfo.launchParam.miniAppId;
-      }
+    String str2;
+    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null)) {
+      str2 = paramMiniAppInfo.launchParam.miniAppId;
+    } else {
+      str2 = null;
     }
-    localObject2 = localObject1;
-    if (TextUtils.isEmpty((CharSequence)localObject1))
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2))
     {
-      localObject2 = localObject1;
+      str1 = str2;
       if (paramMiniAppInfo != null) {
-        localObject2 = paramMiniAppInfo.appId;
+        str1 = paramMiniAppInfo.appId;
       }
     }
-    paramMiniAppInfo = (MiniAppInfo)localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+    paramMiniAppInfo = str1;
+    if (TextUtils.isEmpty(str1)) {
       paramMiniAppInfo = "0000000000";
     }
     return paramMiniAppInfo;
@@ -180,7 +194,11 @@ public class MiniProgramReportHelper
     if ((str2 != null) && (str1 != null) && (str2.toLowerCase().startsWith(str1.toLowerCase()))) {
       return str2;
     }
-    return str1 + " " + str2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str1);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(str2);
+    return localStringBuilder.toString();
   }
   
   public static String getNetworkType()
@@ -218,82 +236,56 @@ public class MiniProgramReportHelper
     }
     COMM.Entry localEntry1 = newEntry("uid", LoginManager.getInstance().getAccount());
     COMM.Entry localEntry2 = newEntry("appid", getMiniAppIdSafely(paramMiniAppInfo));
-    paramString10 = newEntry("launchid", paramString10);
-    label77:
-    COMM.Entry localEntry3;
-    label90:
-    COMM.Entry localEntry4;
-    label126:
-    COMM.Entry localEntry5;
-    COMM.Entry localEntry6;
-    COMM.Entry localEntry7;
-    label162:
-    label221:
-    COMM.Entry localEntry8;
-    COMM.Entry localEntry9;
-    COMM.Entry localEntry10;
-    if (paramString2 != null)
-    {
-      paramString2 = newEntry("event", paramString2);
-      paramString9 = newEntry("timestamp", paramString9);
-      if (paramString1 == null) {
-        break label612;
-      }
-      localEntry3 = newEntry("page", paramString1);
-      if (paramString3 == null) {
-        break label618;
-      }
-      paramString3 = newEntry("attachinfo", paramString3);
-      localEntry4 = newEntry("appversion", ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppVersion());
-      if (paramMiniAppInfo == null) {
-        break label624;
-      }
-      paramString1 = paramMiniAppInfo.version;
-      localEntry5 = newEntry("miniapp_version", paramString1);
-      localEntry6 = newEntry("qua", QUAUtil.getPlatformQUA());
-      localEntry7 = newEntry("sdk_version", QUAUtil.getQUA());
-      if (paramString4 == null) {
-        break label630;
-      }
-      paramString4 = newEntry("cmd", paramString4);
-      paramString5 = newEntry("retcode", paramString5);
-      paramString7 = newEntry("time_cost", paramString7);
-      paramString8 = newEntry("third_url", paramString8);
-      if ((paramMiniAppInfo == null) || (paramMiniAppInfo.baseLibInfo == null)) {
-        break label637;
-      }
-      paramString1 = paramMiniAppInfo.baseLibInfo.baseLibVersion;
-      paramString1 = newEntry("baselib_version", paramString1);
-      localEntry8 = newEntry("x5_version", String.valueOf(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getTbsVersion()));
-      localEntry9 = newEntry("deviceinfo", getDeviceInfo());
-      paramString6 = newEntry("app_type", paramString6);
-      localEntry10 = newEntry("network_type", getNetworkType());
-      if ((paramMiniAppInfo == null) || (paramMiniAppInfo.launchParam == null)) {
-        break label643;
-      }
-    }
-    label643:
-    for (paramMiniAppInfo = String.valueOf(paramMiniAppInfo.launchParam.scene);; paramMiniAppInfo = "")
-    {
-      return new ArrayList(Arrays.asList(new COMM.Entry[] { localEntry1, localEntry2, paramString10, paramString2, paramString9, localEntry3, paramString3, localEntry4, localEntry5, localEntry6, localEntry7, paramString4, paramString5, paramString7, paramString8, paramString1, localEntry8, localEntry9, paramString6, localEntry10, newEntry("scene", paramMiniAppInfo), newEntry("source_app", ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getPlatformId()), newEntry("source_version", ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppVersion()), newEntry("source_uin_platform", QUAUtil.getLoginType()), newEntry("connect_openid", LoginManager.getInstance().getPayOpenId()), newEntry("connect_type", String.valueOf(LoginManager.getInstance().getLoginType())), newEntry("reverse1", paramString11), newEntry("reverse2", paramString12), newEntry("reverse3", paramString13), newEntry("reverse4", paramString14), newEntry("render_mode", paramString15), newEntry("busiType", PERF_LEVEL) }));
+    COMM.Entry localEntry3 = newEntry("launchid", paramString10);
+    paramString10 = "";
+    if (paramString2 == null) {
       paramString2 = "";
-      break;
-      label612:
-      paramString1 = "";
-      break label77;
-      label618:
-      paramString3 = "";
-      break label90;
-      label624:
-      paramString1 = "";
-      break label126;
-      label630:
-      paramString4 = "";
-      break label162;
-      label637:
-      paramString1 = "";
-      break label221;
     }
+    paramString2 = newEntry("event", paramString2);
+    paramString9 = newEntry("timestamp", paramString9);
+    if (paramString1 == null) {
+      paramString1 = "";
+    }
+    COMM.Entry localEntry4 = newEntry("page", paramString1);
+    if (paramString3 == null) {
+      paramString3 = "";
+    }
+    paramString3 = newEntry("attachinfo", paramString3);
+    COMM.Entry localEntry5 = newEntry("appversion", ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppVersion());
+    if (paramMiniAppInfo != null) {
+      paramString1 = paramMiniAppInfo.version;
+    } else {
+      paramString1 = "";
+    }
+    COMM.Entry localEntry6 = newEntry("miniapp_version", paramString1);
+    COMM.Entry localEntry7 = newEntry("qua", QUAUtil.getPlatformQUA());
+    COMM.Entry localEntry8 = newEntry("sdk_version", QUAUtil.getQUA());
+    if (paramString4 == null) {
+      paramString4 = "";
+    }
+    paramString4 = newEntry("cmd", paramString4);
+    paramString5 = newEntry("retcode", paramString5);
+    paramString7 = newEntry("time_cost", paramString7);
+    paramString8 = newEntry("third_url", paramString8);
+    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.baseLibInfo != null)) {
+      paramString1 = paramMiniAppInfo.baseLibInfo.baseLibVersion;
+    } else {
+      paramString1 = "";
+    }
+    COMM.Entry localEntry9 = newEntry("baselib_version", paramString1);
+    COMM.Entry localEntry10 = newEntry("x5_version", String.valueOf(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getTbsVersion()));
+    COMM.Entry localEntry11 = newEntry("deviceinfo", getDeviceInfo());
+    paramString6 = newEntry("app_type", paramString6);
+    COMM.Entry localEntry12 = newEntry("network_type", getNetworkType());
+    paramString1 = paramString10;
+    if (paramMiniAppInfo != null)
+    {
+      paramString1 = paramString10;
+      if (paramMiniAppInfo.launchParam != null) {
+        paramString1 = String.valueOf(paramMiniAppInfo.launchParam.scene);
+      }
+    }
+    return new ArrayList(Arrays.asList(new COMM.Entry[] { localEntry1, localEntry2, localEntry3, paramString2, paramString9, localEntry4, paramString3, localEntry5, localEntry6, localEntry7, localEntry8, paramString4, paramString5, paramString7, paramString8, localEntry9, localEntry10, localEntry11, paramString6, localEntry12, newEntry("scene", paramString1), newEntry("source_app", ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getPlatformId()), newEntry("source_version", ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppVersion()), newEntry("source_uin_platform", QUAUtil.getLoginType()), newEntry("connect_openid", LoginManager.getInstance().getPayOpenId()), newEntry("connect_type", String.valueOf(LoginManager.getInstance().getLoginType())), newEntry("reverse1", paramString11), newEntry("reverse2", paramString12), newEntry("reverse3", paramString13), newEntry("reverse4", paramString14), newEntry("render_mode", paramString15), newEntry("busiType", PERF_LEVEL) }));
   }
   
   public static List<COMM.Entry> newBaseBusinessEntries(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
@@ -306,32 +298,26 @@ public class MiniProgramReportHelper
   public static List<COMM.Entry> newBusinessEntries(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12)
   {
     ArrayList localArrayList = new ArrayList();
-    COMM.Entry localEntry1;
-    COMM.Entry localEntry2;
-    COMM.Entry localEntry3;
-    COMM.Entry localEntry4;
-    COMM.Entry localEntry5;
-    COMM.Entry localEntry6;
     if (paramMiniAppInfo != null)
     {
-      localEntry1 = newEntry("launchid", paramString12);
-      localEntry2 = newEntry("appid", paramMiniAppInfo.appId);
-      localEntry3 = newEntry("app_version", String.valueOf(paramMiniAppInfo.version));
-      localEntry4 = newEntry("app_classification", null);
-      localEntry5 = newEntry("app_tag", "");
-      if (!EnvUtils.isPkgDownloaded(paramMiniAppInfo)) {
-        break label493;
+      COMM.Entry localEntry1 = newEntry("launchid", paramString12);
+      COMM.Entry localEntry2 = newEntry("appid", paramMiniAppInfo.appId);
+      COMM.Entry localEntry3 = newEntry("app_version", String.valueOf(paramMiniAppInfo.version));
+      COMM.Entry localEntry4 = newEntry("app_classification", null);
+      COMM.Entry localEntry5 = newEntry("app_tag", "");
+      boolean bool = EnvUtils.isPkgDownloaded(paramMiniAppInfo);
+      String str = "1";
+      if (bool) {
+        paramString12 = "1";
+      } else {
+        paramString12 = "0";
       }
-      paramString12 = "1";
-      localEntry6 = newEntry("isPkgDownloaed", paramString12);
-      if (!EnvUtils.isX5Enabled(paramMiniAppInfo)) {
-        break label500;
+      COMM.Entry localEntry6 = newEntry("isPkgDownloaed", paramString12);
+      if (EnvUtils.isX5Enabled(paramMiniAppInfo)) {
+        paramString12 = str;
+      } else {
+        paramString12 = "0";
       }
-    }
-    label493:
-    label500:
-    for (paramString12 = "1";; paramString12 = "0")
-    {
       localArrayList.addAll(Arrays.asList(new COMM.Entry[] { localEntry1, localEntry2, localEntry3, localEntry4, localEntry5, localEntry6, newEntry("isX5Enabled", paramString12), newEntry("app_status", String.valueOf(paramMiniAppInfo.verType)) }));
       if (!TextUtils.isEmpty(paramMiniAppInfo.via)) {
         localArrayList.add(newEntry("via", paramMiniAppInfo.via));
@@ -339,20 +325,18 @@ public class MiniProgramReportHelper
       if (paramMiniAppInfo.baseLibInfo != null) {
         localArrayList.add(newEntry("app_js_version", paramMiniAppInfo.baseLibInfo.baseLibVersion));
       }
-      localArrayList.addAll(Arrays.asList(new COMM.Entry[] { newEntry("path", paramString1), newEntry("refer", adjustRefer(paramString2)), newEntry("actiontype", String.valueOf(paramString3)), newEntry("sub_actiontype", String.valueOf(paramString4)), newEntry("reserves_action", String.valueOf(paramString5)), newEntry("reserves2", String.valueOf(paramString6)), newEntry("reserves3", String.valueOf(paramString7)), newEntry("reserves4", String.valueOf(paramString8)), newEntry("reserves5", String.valueOf(paramString9)), newEntry("reserves6", String.valueOf(paramString10)), newEntry("app_type", String.valueOf(paramString11)), newEntry("sdk_version", QUAUtil.getQUA()) }));
-      if (paramMiniAppInfo != null)
-      {
-        if ((paramMiniAppInfo.launchParam != null) && (!TextUtils.isEmpty(paramMiniAppInfo.launchParam.reportData))) {
-          localArrayList.addAll(newReportEntries(paramMiniAppInfo.launchParam.reportData));
-        }
-        if ((paramMiniAppInfo.reportData != null) && (!TextUtils.isEmpty(paramMiniAppInfo.reportData))) {
-          localArrayList.addAll(newReportEntries(paramMiniAppInfo.reportData));
-        }
-      }
-      return localArrayList;
-      paramString12 = "0";
-      break;
     }
+    localArrayList.addAll(Arrays.asList(new COMM.Entry[] { newEntry("path", paramString1), newEntry("refer", adjustRefer(paramString2)), newEntry("actiontype", String.valueOf(paramString3)), newEntry("sub_actiontype", String.valueOf(paramString4)), newEntry("reserves_action", String.valueOf(paramString5)), newEntry("reserves2", String.valueOf(paramString6)), newEntry("reserves3", String.valueOf(paramString7)), newEntry("reserves4", String.valueOf(paramString8)), newEntry("reserves5", String.valueOf(paramString9)), newEntry("reserves6", String.valueOf(paramString10)), newEntry("app_type", String.valueOf(paramString11)), newEntry("sdk_version", QUAUtil.getQUA()) }));
+    if (paramMiniAppInfo != null)
+    {
+      if ((paramMiniAppInfo.launchParam != null) && (!TextUtils.isEmpty(paramMiniAppInfo.launchParam.reportData))) {
+        localArrayList.addAll(newReportEntries(paramMiniAppInfo.launchParam.reportData));
+      }
+      if ((paramMiniAppInfo.reportData != null) && (!TextUtils.isEmpty(paramMiniAppInfo.reportData))) {
+        localArrayList.addAll(newReportEntries(paramMiniAppInfo.reportData));
+      }
+    }
+    return localArrayList;
   }
   
   public static APP_REPORT_TRANSFER.StDataReportReq newDataReportReq(List<APP_REPORT_TRANSFER.SingleDcData> paramList)
@@ -514,101 +498,106 @@ public class MiniProgramReportHelper
   public static List<COMM.Entry> newVersionEntries(MiniAppInfo paramMiniAppInfo)
   {
     ArrayList localArrayList = new ArrayList();
-    COMM.Entry localEntry1;
-    COMM.Entry localEntry2;
-    COMM.Entry localEntry3;
-    COMM.Entry localEntry4;
-    COMM.Entry localEntry5;
     if (paramMiniAppInfo != null)
     {
-      localEntry1 = newEntry("appid", paramMiniAppInfo.appId);
-      localEntry2 = newEntry("app_version", String.valueOf(paramMiniAppInfo.version));
-      localEntry3 = newEntry("app_classification", null);
-      localEntry4 = newEntry("app_tag", "");
-      if (!EnvUtils.isPkgDownloaded(paramMiniAppInfo)) {
-        break label210;
+      COMM.Entry localEntry1 = newEntry("appid", paramMiniAppInfo.appId);
+      COMM.Entry localEntry2 = newEntry("app_version", String.valueOf(paramMiniAppInfo.version));
+      COMM.Entry localEntry3 = newEntry("app_classification", null);
+      COMM.Entry localEntry4 = newEntry("app_tag", "");
+      boolean bool = EnvUtils.isPkgDownloaded(paramMiniAppInfo);
+      String str2 = "1";
+      String str1;
+      if (bool) {
+        str1 = "1";
+      } else {
+        str1 = "0";
       }
-      str = "1";
-      localEntry5 = newEntry("isPkgDownloaed", str);
-      if (!EnvUtils.isX5Enabled(paramMiniAppInfo)) {
-        break label216;
+      COMM.Entry localEntry5 = newEntry("isPkgDownloaed", str1);
+      if (EnvUtils.isX5Enabled(paramMiniAppInfo)) {
+        str1 = str2;
+      } else {
+        str1 = "0";
       }
-    }
-    label210:
-    label216:
-    for (String str = "1";; str = "0")
-    {
-      localArrayList.addAll(Arrays.asList(new COMM.Entry[] { localEntry1, localEntry2, localEntry3, localEntry4, localEntry5, newEntry("isX5Enabled", str), newEntry("app_status", String.valueOf(paramMiniAppInfo.verType)) }));
+      localArrayList.addAll(Arrays.asList(new COMM.Entry[] { localEntry1, localEntry2, localEntry3, localEntry4, localEntry5, newEntry("isX5Enabled", str1), newEntry("app_status", String.valueOf(paramMiniAppInfo.verType)) }));
       if (!TextUtils.isEmpty(paramMiniAppInfo.via)) {
         localArrayList.add(newEntry("via", paramMiniAppInfo.via));
       }
       if (paramMiniAppInfo.baseLibInfo != null) {
         localArrayList.add(newEntry("app_js_version", paramMiniAppInfo.baseLibInfo.baseLibVersion));
       }
-      return localArrayList;
-      str = "0";
-      break;
     }
+    return localArrayList;
   }
   
   private static Map<String, String> parseReportData(String paramString)
   {
-    int i = 0;
-    String str1 = null;
-    localObject1 = null;
+    boolean bool = TextUtils.isEmpty(paramString);
+    Object localObject1 = null;
     Object localObject2 = null;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      localObject1 = str1;
+    label178:
+    String str1;
+    if (!bool) {
       try
       {
         String[] arrayOfString = paramString.split("&");
-        localObject1 = str1;
         int j = arrayOfString.length;
-        for (paramString = (String)localObject2;; paramString = (String)localObject2)
+        paramString = null;
+        int i = 0;
+        for (;;)
         {
-          localObject1 = paramString;
-          if (i >= j) {
-            break;
-          }
-          String str2 = arrayOfString[i];
-          localObject1 = paramString;
-          int k = str2.indexOf("=");
-          localObject2 = paramString;
-          if (k > 0)
+          if (i < j)
           {
+            String str3 = arrayOfString[i];
             localObject2 = paramString;
-            localObject1 = paramString;
-            if (k < str2.length() - 1)
+            try
             {
+              int k = str3.indexOf("=");
               localObject1 = paramString;
-              str1 = URLDecoder.decode(str2.substring(0, k), "UTF-8");
-              localObject1 = paramString;
-              str2 = URLDecoder.decode(str2.substring(k + 1), "UTF-8");
-              localObject2 = paramString;
-              if (paramString == null)
+              if (k > 0)
               {
                 localObject1 = paramString;
-                localObject2 = new HashMap();
+                localObject2 = paramString;
+                if (k < str3.length() - 1)
+                {
+                  localObject2 = paramString;
+                  String str2 = URLDecoder.decode(str3.substring(0, k), "UTF-8");
+                  localObject2 = paramString;
+                  str3 = URLDecoder.decode(str3.substring(k + 1), "UTF-8");
+                  localObject1 = paramString;
+                  if (paramString == null)
+                  {
+                    localObject2 = paramString;
+                    localObject1 = new HashMap();
+                  }
+                  localObject2 = localObject1;
+                  ((Map)localObject1).put(str2, str3);
+                }
               }
-              localObject1 = localObject2;
-              ((Map)localObject2).put(str1, str2);
+              i += 1;
+              paramString = (String)localObject1;
+            }
+            catch (Exception localException1)
+            {
+              paramString = (String)localObject2;
+              break label178;
             }
           }
-          i += 1;
         }
-        return localObject1;
+        return paramString;
       }
-      catch (Exception paramString)
+      catch (Exception localException2)
       {
-        QMLog.e("MiniProgramReportHelper", " parse reportData error.", paramString);
+        paramString = (String)localObject2;
+        QMLog.e("MiniProgramReportHelper", " parse reportData error.", localException2);
+        str1 = paramString;
       }
     }
+    return str1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniProgramReportHelper
  * JD-Core Version:    0.7.0.1
  */

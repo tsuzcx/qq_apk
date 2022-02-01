@@ -53,11 +53,12 @@ abstract class AbstractConcatenatedTimeline
   
   public int getFirstWindowIndex(boolean paramBoolean)
   {
-    int i = 0;
     if (this.childCount == 0) {
       return -1;
     }
-    if (this.isAtomic) {
+    boolean bool = this.isAtomic;
+    int i = 0;
+    if (bool) {
       paramBoolean = false;
     }
     if (paramBoolean) {
@@ -65,36 +66,33 @@ abstract class AbstractConcatenatedTimeline
     }
     while (getTimelineByChildIndex(i).isEmpty())
     {
-      j = getNextChildIndex(i, paramBoolean);
+      int j = getNextChildIndex(i, paramBoolean);
       i = j;
       if (j == -1) {
         return -1;
       }
     }
-    int j = getFirstWindowIndexByChildIndex(i);
-    return getTimelineByChildIndex(i).getFirstWindowIndex(paramBoolean) + j;
+    return getFirstWindowIndexByChildIndex(i) + getTimelineByChildIndex(i).getFirstWindowIndex(paramBoolean);
   }
   
   protected abstract int getFirstWindowIndexByChildIndex(int paramInt);
   
   public final int getIndexOfPeriod(Object paramObject)
   {
-    if (!(paramObject instanceof Pair)) {}
-    int i;
-    int j;
-    do
-    {
-      Object localObject;
-      do
-      {
-        return -1;
-        localObject = (Pair)paramObject;
-        paramObject = ((Pair)localObject).first;
-        localObject = ((Pair)localObject).second;
-        i = getChildIndexByChildUid(paramObject);
-      } while (i == -1);
-      j = getTimelineByChildIndex(i).getIndexOfPeriod(localObject);
-    } while (j == -1);
+    if (!(paramObject instanceof Pair)) {
+      return -1;
+    }
+    Object localObject = (Pair)paramObject;
+    paramObject = ((Pair)localObject).first;
+    localObject = ((Pair)localObject).second;
+    int i = getChildIndexByChildUid(paramObject);
+    if (i == -1) {
+      return -1;
+    }
+    int j = getTimelineByChildIndex(i).getIndexOfPeriod(localObject);
+    if (j == -1) {
+      return -1;
+    }
     return getFirstPeriodIndexByChildIndex(i) + j;
   }
   
@@ -109,26 +107,26 @@ abstract class AbstractConcatenatedTimeline
     int i;
     if (paramBoolean) {
       i = this.shuffleOrder.getLastIndex();
+    } else {
+      i = this.childCount - 1;
     }
     while (getTimelineByChildIndex(i).isEmpty())
     {
-      j = getPreviousChildIndex(i, paramBoolean);
+      int j = getPreviousChildIndex(i, paramBoolean);
       i = j;
-      if (j == -1)
-      {
+      if (j == -1) {
         return -1;
-        i = this.childCount - 1;
       }
     }
-    int j = getFirstWindowIndexByChildIndex(i);
-    return getTimelineByChildIndex(i).getLastWindowIndex(paramBoolean) + j;
+    return getFirstWindowIndexByChildIndex(i) + getTimelineByChildIndex(i).getLastWindowIndex(paramBoolean);
   }
   
   public int getNextWindowIndex(int paramInt1, int paramInt2, boolean paramBoolean)
   {
+    boolean bool = this.isAtomic;
     int j = 0;
     int i = paramInt2;
-    if (this.isAtomic)
+    if (bool)
     {
       i = paramInt2;
       if (paramInt2 == 1) {
@@ -139,13 +137,13 @@ abstract class AbstractConcatenatedTimeline
     int k = getChildIndexByWindowIndex(paramInt1);
     int m = getFirstWindowIndexByChildIndex(k);
     Timeline localTimeline = getTimelineByChildIndex(k);
-    if (i == 2) {}
-    for (paramInt2 = j;; paramInt2 = i)
-    {
-      paramInt1 = localTimeline.getNextWindowIndex(paramInt1 - m, paramInt2, paramBoolean);
-      if (paramInt1 == -1) {
-        break;
-      }
+    if (i == 2) {
+      paramInt2 = j;
+    } else {
+      paramInt2 = i;
+    }
+    paramInt1 = localTimeline.getNextWindowIndex(paramInt1 - m, paramInt2, paramBoolean);
+    if (paramInt1 != -1) {
       return m + paramInt1;
     }
     for (paramInt1 = getNextChildIndex(k, paramBoolean); (paramInt1 != -1) && (getTimelineByChildIndex(paramInt1).isEmpty()); paramInt1 = getNextChildIndex(paramInt1, paramBoolean)) {}
@@ -164,7 +162,7 @@ abstract class AbstractConcatenatedTimeline
     int j = getFirstWindowIndexByChildIndex(i);
     int k = getFirstPeriodIndexByChildIndex(i);
     getTimelineByChildIndex(i).getPeriod(paramInt - k, paramPeriod, paramBoolean);
-    paramPeriod.windowIndex = (j + paramPeriod.windowIndex);
+    paramPeriod.windowIndex += j;
     if (paramBoolean) {
       paramPeriod.uid = Pair.create(getChildUidByChildIndex(i), paramPeriod.uid);
     }
@@ -173,9 +171,10 @@ abstract class AbstractConcatenatedTimeline
   
   public int getPreviousWindowIndex(int paramInt1, int paramInt2, boolean paramBoolean)
   {
+    boolean bool = this.isAtomic;
     int j = 0;
     int i = paramInt2;
-    if (this.isAtomic)
+    if (bool)
     {
       i = paramInt2;
       if (paramInt2 == 1) {
@@ -186,13 +185,13 @@ abstract class AbstractConcatenatedTimeline
     int k = getChildIndexByWindowIndex(paramInt1);
     int m = getFirstWindowIndexByChildIndex(k);
     Timeline localTimeline = getTimelineByChildIndex(k);
-    if (i == 2) {}
-    for (paramInt2 = j;; paramInt2 = i)
-    {
-      paramInt1 = localTimeline.getPreviousWindowIndex(paramInt1 - m, paramInt2, paramBoolean);
-      if (paramInt1 == -1) {
-        break;
-      }
+    if (i == 2) {
+      paramInt2 = j;
+    } else {
+      paramInt2 = i;
+    }
+    paramInt1 = localTimeline.getPreviousWindowIndex(paramInt1 - m, paramInt2, paramBoolean);
+    if (paramInt1 != -1) {
       return m + paramInt1;
     }
     for (paramInt1 = getPreviousChildIndex(k, paramBoolean); (paramInt1 != -1) && (getTimelineByChildIndex(paramInt1).isEmpty()); paramInt1 = getPreviousChildIndex(paramInt1, paramBoolean)) {}
@@ -220,7 +219,7 @@ abstract class AbstractConcatenatedTimeline
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.AbstractConcatenatedTimeline
  * JD-Core Version:    0.7.0.1
  */

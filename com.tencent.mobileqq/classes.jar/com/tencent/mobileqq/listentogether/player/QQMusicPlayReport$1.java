@@ -13,20 +13,21 @@ final class QQMusicPlayReport$1
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = "1";; str = "0")
-    {
-      localHashMap.put("qqmusicplay_report_key_play_cache", str);
-      localHashMap.put("qqmusicplay_report_key_net_type", String.valueOf(this.jdField_a_of_type_Int));
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "qqmusicplay_report_tag_play_cache", true, 0L, 0L, localHashMap, "");
-      if (QLog.isColorLevel()) {}
-      return;
+    String str;
+    if (this.jdField_a_of_type_Boolean) {
+      str = "1";
+    } else {
+      str = "0";
     }
+    localHashMap.put("qqmusicplay_report_key_play_cache", str);
+    localHashMap.put("qqmusicplay_report_key_net_type", String.valueOf(this.jdField_a_of_type_Int));
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "qqmusicplay_report_tag_play_cache", true, 0L, 0L, localHashMap, "");
+    QLog.isColorLevel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.1
  * JD-Core Version:    0.7.0.1
  */

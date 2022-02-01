@@ -2,7 +2,6 @@ package com.tencent.biz.qrcode.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.activity.ForwardRecentTranslucentActivity;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.forward.ForwardBaseOption;
@@ -23,7 +22,7 @@ class QRDisplayActivity$31$1
     localBundle.putString("forward_thumb", this.jdField_a_of_type_JavaLangString);
     localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_JavaLangString);
     localBundle.putString("forward_extra", this.jdField_a_of_type_JavaLangString);
-    localBundle.putInt("key_req", ForwardRecentActivity.f);
+    localBundle.putInt("key_req", 1);
     localBundle.putInt("key_direct_show_uin_type", this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$31.a);
     localBundle.putString("key_direct_show_uin", this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$31.b);
     if ((6000 == this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$31.a) && (AppConstants.DATALINE_PC_UIN == this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$31.b)) {
@@ -36,7 +35,7 @@ class QRDisplayActivity$31$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.31.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,57 +14,57 @@ class SendMultiPictureHelper$2
 {
   SendMultiPictureHelper$2(SendMultiPictureHelper paramSendMultiPictureHelper) {}
   
-  public void a(long paramLong1, long paramLong2, String paramString, int paramInt)
+  protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
     QLog.w("SendMultiPictureHelper", 2, "OnFileTransferStart");
     if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
       this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(String.format(this.a.d, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(0) }));
     }
-    this.a.jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().c();
+    paramString = this.a;
+    paramString.jdField_a_of_type_JavaUtilList = paramString.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().c();
   }
   
-  public void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
     QLog.w("SendMultiPictureHelper", 2, "OnFileTransferProgress");
     if (this.a.jdField_a_of_type_JavaUtilList != null)
     {
       paramInt = 0;
-      if (paramInt >= this.a.jdField_a_of_type_JavaUtilArrayList.size()) {
-        break label232;
-      }
-      if (((SendMultiPictureHelper.SendingFileInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a != paramLong1) {}
-    }
-    for (;;)
-    {
-      if (paramInt != -1) {
-        paramInt = 0;
-      }
-      for (;;)
+      while (paramInt < this.a.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        if (paramInt < this.a.jdField_a_of_type_JavaUtilList.size())
+        if (((SendMultiPictureHelper.SendingFileInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a == paramLong1) {
+          break label74;
+        }
+        paramInt += 1;
+      }
+      paramInt = -1;
+      label74:
+      if (paramInt != -1)
+      {
+        paramInt = 0;
+        while (paramInt < this.a.jdField_a_of_type_JavaUtilList.size())
         {
           paramString = (FileManagerEntity)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-          if (paramString.uniseq != paramLong1) {
-            break label202;
-          }
-          if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
+          if (paramString.uniseq == paramLong1)
+          {
+            if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
+              break;
+            }
             this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(String.format(this.a.d, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf((int)(paramString.fProgress * 100.0F)) }));
+            return;
           }
+          paramInt += 1;
         }
-        return;
-        paramInt += 1;
-        break;
-        label202:
-        paramInt += 1;
       }
-      this.a.jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().c();
-      return;
-      label232:
-      paramInt = -1;
+    }
+    else
+    {
+      paramString = this.a;
+      paramString.jdField_a_of_type_JavaUtilList = paramString.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().c();
     }
   }
   
-  public void a(boolean paramBoolean, long paramLong1, long paramLong2, String arg6, int paramInt1, int paramInt2, String paramString2)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String arg6, int paramInt1, int paramInt2, String paramString2)
   {
     QLog.w("SendMultiPictureHelper", 2, "OnFileTransferEnd");
     if (!this.a.jdField_b_of_type_Boolean) {
@@ -78,7 +78,7 @@ class SendMultiPictureHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SendMultiPictureHelper.2
  * JD-Core Version:    0.7.0.1
  */

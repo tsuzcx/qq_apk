@@ -11,6 +11,7 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import tencent.im.oidb.location.RoomOperate.ReqRoomOperation;
 import tencent.im.oidb.location.RoomOperate.RspRoomOperation;
 import tencent.im.oidb.location.qq_lbs_share.ResultInfo;
@@ -19,44 +20,41 @@ import tencent.im.oidb.location.qq_lbs_share.RoomKey;
 public class RoomOperateHandler
   extends BaseProto<LocationHandler>
 {
-  private final ILocationShareService jdField_a_of_type_ComTencentMobileqqLocationApiILocationShareService;
-  private LocationHandler jdField_a_of_type_ComTencentMobileqqLocationNetLocationHandler;
-  
-  RoomOperateHandler(AppRuntime paramAppRuntime, LocationHandler paramLocationHandler)
-  {
-    super(paramAppRuntime);
-    this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationHandler = paramLocationHandler;
-    this.jdField_a_of_type_ComTencentMobileqqLocationApiILocationShareService = ((ILocationShareService)paramAppRuntime.getRuntimeService(ILocationShareService.class, ""));
-  }
-  
   private void a(int paramInt1, int paramInt2, long paramLong)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationHandler.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("RoomOperateHandler", 2, new Object[] { "requestOperateRoom: invoked. ", "operateType = [" + paramInt1 + "]  R_OPT_CREATE = 1; //创建房间 R_OPT_JOIN = 2; //加入 R_OPT_QUIT = 3; //退出\n", ", uinType = [" + paramInt2 + "], sessionUin = [" + paramLong + "], location = [" + localObject + "]" });
+    Object localObject1 = LocationShareLocationManager.a().a();
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("operateType = [");
+      ((StringBuilder)localObject2).append(paramInt1);
+      ((StringBuilder)localObject2).append("] ");
+      QLog.d("RoomOperateHandler", 2, new Object[] { "requestOperateRoom: invoked. ", ((StringBuilder)localObject2).toString(), " R_OPT_CREATE = 1; //创建房间", " R_OPT_JOIN = 2; //加入", " R_OPT_QUIT = 3; //退出\n", ", uinType = [", Integer.valueOf(paramInt2), "], sessionUin = [", Long.valueOf(paramLong), "], location = [", localObject1, "]" });
     }
-    if (localObject == null) {
+    if (localObject1 == null) {
       return;
     }
-    RoomOperate.ReqRoomOperation localReqRoomOperation = new RoomOperate.ReqRoomOperation();
-    qq_lbs_share.RoomKey localRoomKey = LocationProtoUtil.a(this.jdField_a_of_type_MqqAppAppRuntime, paramInt2, paramLong);
-    localReqRoomOperation.room_key.set(localRoomKey);
-    localReqRoomOperation.room_key.setHasFlag(true);
-    localReqRoomOperation.room_operation.set(paramInt1);
-    localReqRoomOperation.lat.set(((LatLng)localObject).latitude);
-    localReqRoomOperation.lon.set(((LatLng)localObject).longitude);
-    localObject = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_MqqAppAppRuntime.getAccount(), "QQLBSShareSvc.room_operation");
-    ((ToServiceMsg)localObject).extraData.putInt("OPT_ROOM_TYPE", paramInt1);
-    ((ToServiceMsg)localObject).extraData.putInt("uintype", paramInt2);
-    ((ToServiceMsg)localObject).extraData.putString("uin", String.valueOf(paramLong));
-    ((ToServiceMsg)localObject).putWupBuffer(localReqRoomOperation.toByteArray());
-    a().sendPbReq((ToServiceMsg)localObject);
+    Object localObject2 = new RoomOperate.ReqRoomOperation();
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    qq_lbs_share.RoomKey localRoomKey = LocationProtoUtil.a(localAppRuntime, paramInt2, paramLong);
+    ((RoomOperate.ReqRoomOperation)localObject2).room_key.set(localRoomKey);
+    ((RoomOperate.ReqRoomOperation)localObject2).room_key.setHasFlag(true);
+    ((RoomOperate.ReqRoomOperation)localObject2).room_operation.set(paramInt1);
+    ((RoomOperate.ReqRoomOperation)localObject2).lat.set(((LatLng)localObject1).latitude);
+    ((RoomOperate.ReqRoomOperation)localObject2).lon.set(((LatLng)localObject1).longitude);
+    localObject1 = new ToServiceMsg("mobileqq.service", localAppRuntime.getAccount(), "QQLBSShareSvc.room_operation");
+    ((ToServiceMsg)localObject1).extraData.putInt("OPT_ROOM_TYPE", paramInt1);
+    ((ToServiceMsg)localObject1).extraData.putInt("uintype", paramInt2);
+    ((ToServiceMsg)localObject1).extraData.putString("uin", String.valueOf(paramLong));
+    ((ToServiceMsg)localObject1).putWupBuffer(((RoomOperate.ReqRoomOperation)localObject2).toByteArray());
+    a().sendPbReq((ToServiceMsg)localObject1);
   }
   
   private void a(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
-    LocationProtoUtil.a(this.jdField_a_of_type_MqqAppAppRuntime, paramInt1, paramString, false);
-    this.jdField_a_of_type_ComTencentMobileqqLocationApiILocationShareService.notifyStateError(paramInt1, paramString, false);
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    LocationProtoUtil.a(localAppRuntime, paramInt1, paramString, false);
+    ((ILocationShareService)localAppRuntime.getRuntimeService(ILocationShareService.class, "")).notifyStateError(paramInt1, paramString, false);
     a().notifyUI(1, false, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt1), paramString });
   }
   
@@ -115,7 +113,7 @@ public class RoomOperateHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.net.RoomOperateHandler
  * JD-Core Version:    0.7.0.1
  */

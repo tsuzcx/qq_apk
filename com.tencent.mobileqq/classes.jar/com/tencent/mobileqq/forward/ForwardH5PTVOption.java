@@ -40,7 +40,7 @@ public class ForwardH5PTVOption
     {
       RecentUser localRecentUser = (RecentUser)paramList.next();
       if ((localRecentUser != null) && ((localRecentUser.getType() != 1006) || (a(ForwardAbility.ForwardAbilityType.h))) && (localRecentUser.getType() != 9501) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 7000)) {
-        if ((localRecentUser.getType() == 0) && (!Utils.a(localRecentUser.uin)) && (!Utils.c(localRecentUser.uin)) && (!CrmUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType())))
+        if ((localRecentUser.getType() == 0) && (!Utils.a(localRecentUser.uin)) && (!Utils.c(localRecentUser.uin)) && (!CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType())))
         {
           if ((localFriendsManager != null) && (localFriendsManager.b(localRecentUser.uin)) && ((i == 1) || (i == 13))) {
             localArrayList.add(localRecentUser);
@@ -70,30 +70,8 @@ public class ForwardH5PTVOption
     ArrayList localArrayList3 = new ArrayList();
     ArrayList localArrayList4 = new ArrayList();
     paramInt = paramBundle.getInt("uintype", -1);
-    if ((paramInt == 0) || (paramInt == 1004))
+    if ((paramInt != 0) && (paramInt != 1004))
     {
-      localArrayList1.add(paramBundle.getString("uin"));
-      localArrayList2.add("");
-      localArrayList3.add(paramBundle.getString("uinname"));
-      localArrayList4.add("1");
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
-      {
-        paramBundle = new Bundle();
-        paramBundle.putStringArrayList("choose_friend_uins", localArrayList1);
-        paramBundle.putStringArrayList("choose_friend_phones", localArrayList2);
-        paramBundle.putStringArrayList("choose_friend_names", localArrayList3);
-        paramBundle.putStringArrayList("choose_friend_types", localArrayList4);
-        this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramBundle);
-      }
-      if (this.jdField_a_of_type_AndroidAppActivity == null) {
-        break;
-      }
-      this.jdField_a_of_type_AndroidAppActivity.setResult(1);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-      return;
       if (paramInt == 1006)
       {
         localArrayList1.add("");
@@ -116,6 +94,27 @@ public class ForwardH5PTVOption
         localArrayList4.add("8");
       }
     }
+    else
+    {
+      localArrayList1.add(paramBundle.getString("uin"));
+      localArrayList2.add("");
+      localArrayList3.add(paramBundle.getString("uinname"));
+      localArrayList4.add("1");
+    }
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
+    {
+      paramBundle = new Bundle();
+      paramBundle.putStringArrayList("choose_friend_uins", localArrayList1);
+      paramBundle.putStringArrayList("choose_friend_phones", localArrayList2);
+      paramBundle.putStringArrayList("choose_friend_names", localArrayList3);
+      paramBundle.putStringArrayList("choose_friend_types", localArrayList4);
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramBundle);
+    }
+    if (this.jdField_a_of_type_AndroidAppActivity != null)
+    {
+      this.jdField_a_of_type_AndroidAppActivity.setResult(1);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+    }
   }
   
   public boolean a()
@@ -130,7 +129,7 @@ public class ForwardH5PTVOption
     String str2 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("choose_friend_title");
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
-      str1 = HardCodeUtil.a(2131704786);
+      str1 = HardCodeUtil.a(2131704862);
     }
     return str1;
   }
@@ -140,8 +139,12 @@ public class ForwardH5PTVOption
     this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("choose_friend_is_qqfriends", true);
     this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("choose_friend_is_contacts", false);
     int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("choose_friend_h5_type", 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("h5ptv", 2, "bType=" + i);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("bType=");
+      localStringBuilder.append(i);
+      QLog.d("h5ptv", 2, localStringBuilder.toString());
     }
     if ((i == 1) && (r())) {
       this.jdField_a_of_type_JavaUtilSet.add(jdField_b_of_type_JavaLangInteger);
@@ -167,7 +170,7 @@ public class ForwardH5PTVOption
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardH5PTVOption
  * JD-Core Version:    0.7.0.1
  */

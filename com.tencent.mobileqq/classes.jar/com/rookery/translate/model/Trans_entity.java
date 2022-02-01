@@ -23,12 +23,7 @@ public class Trans_entity
   
   public void a()
   {
-    if (!this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(bool);
-      return;
-    }
+    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(this.jdField_a_of_type_JavaLangBoolean.booleanValue() ^ true);
   }
 }
 

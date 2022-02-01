@@ -20,8 +20,9 @@ public class MutualMarkGrayTipsHelper$GrayTipHighlightItemInfo
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      return this.jdField_a_of_type_JavaLangString.contains("icon");
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (str != null) {
+      return str.contains("icon");
     }
     return false;
   }
@@ -31,20 +32,34 @@ public class MutualMarkGrayTipsHelper$GrayTipHighlightItemInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GrayTipHighlightItemInfo{");
-    localStringBuilder.append("old_key:").append(this.jdField_a_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("old_start:").append(this.jdField_b_of_type_Int).append(", ");
-    localStringBuilder.append("id:").append(this.jdField_b_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("start:").append(this.jdField_c_of_type_Int).append(", ");
-    localStringBuilder.append("end:").append(this.jdField_d_of_type_Int).append(", ");
-    localStringBuilder.append("key:").append(this.jdField_c_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("url:").append(this.jdField_d_of_type_JavaLangString).append(", ");
+    localStringBuilder.append("old_key:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("old_start:");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("id:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("start:");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("end:");
+    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("key:");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("url:");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(", ");
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.MutualMarkGrayTipsHelper.GrayTipHighlightItemInfo
  * JD-Core Version:    0.7.0.1
  */

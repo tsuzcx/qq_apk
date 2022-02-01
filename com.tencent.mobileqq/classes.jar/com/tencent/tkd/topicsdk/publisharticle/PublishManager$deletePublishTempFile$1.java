@@ -26,19 +26,19 @@ final class PublishManager$deletePublishTempFile$1
     try
     {
       TLog.b("PublishManager", "deletePublishTempFile");
-      File localFile = new File(TopicSDKHelperKt.b());
+      File localFile = new File(TopicSDKHelperKt.c());
       FileUtils.a(FileUtils.a, localFile, false, 2, null);
       return;
     }
     catch (Exception localException)
     {
-      TLog.c("PublishManager", "deletePublishTempFile exception", (Throwable)localException);
+      TLog.b("PublishManager", "deletePublishTempFile exception", (Throwable)localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.publisharticle.PublishManager.deletePublishTempFile.1
  * JD-Core Version:    0.7.0.1
  */

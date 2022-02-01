@@ -24,8 +24,9 @@ class MedalGuideView$8
     f = paramValueAnimator.getAnimatedFraction();
     if ((!this.a.jdField_a_of_type_Boolean) && (f >= 1.0F))
     {
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(3);
+      MedalGuideView localMedalGuideView = this.a;
+      localMedalGuideView.jdField_a_of_type_Boolean = true;
+      localMedalGuideView.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(3);
     }
     if (f >= 1.0F) {
       paramValueAnimator.removeAllUpdateListeners();
@@ -34,7 +35,7 @@ class MedalGuideView$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.medalwall.MedalGuideView.8
  * JD-Core Version:    0.7.0.1
  */

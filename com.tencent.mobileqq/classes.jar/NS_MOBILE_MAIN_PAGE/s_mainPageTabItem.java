@@ -32,21 +32,24 @@ public final class s_mainPageTabItem
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.icon != null) {
-      paramJceOutputStream.write(this.icon, 0);
+    String str = this.icon;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.content != null) {
-      paramJceOutputStream.write(this.content, 1);
+    str = this.content;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.jumpUrl != null) {
-      paramJceOutputStream.write(this.jumpUrl, 2);
+    str = this.jumpUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.order, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_mainPageTabItem
  * JD-Core Version:    0.7.0.1
  */

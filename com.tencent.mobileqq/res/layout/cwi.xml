@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="#fffafafa" android:layout_width="wrap_content" android:layout_height="75.0dip" android:minWidth="187.0dip"
+<RelativeLayout android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/l1" android:layout_width="75.0dip" android:layout_height="75.0dip" android:src="#ff777777" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <RelativeLayout android:id="@id/l3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_toRightOf="@id/l1" android:layout_centerVertical="true">
-        <TextView android:textSize="12.0dip" android:textColor="#ff000000" android:id="@id/l2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xwo" />
-        <TextView android:textSize="12.0dip" android:textColor="#ff777777" android:id="@id/l0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="124905人拥有" android:layout_below="@id/l2" />
+    <RelativeLayout android:id="@id/jp7" android:layout_width="fill_parent" android:layout_height="56.0dip">
+        <TextView android:id="@id/title" android:text="@string/yl2" style="@style/k6" />
+        <TextView android:textSize="14.0sp" android:textColor="#ffb0b3bf" android:id="@id/ocf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="@string/ykx" android:layout_toLeftOf="@id/yw" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/yw" android:background="@drawable/common_arrow_right_selector" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
     </RelativeLayout>
+    <RelativeLayout android:orientation="horizontal" android:id="@id/mlh" android:layout_width="fill_parent" android:layout_height="165.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="20.0dip" android:layout_below="@id/jp7">
+        <RelativeLayout android:orientation="vertical" android:id="@id/mle" android:background="@drawable/f93" android:layout_width="fill_parent" android:layout_height="145.0dip" android:layout_marginBottom="20.0dip" android:layout_alignParentBottom="true">
+            <View android:id="@id/e_3" android:background="#fff2f3f5" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="90.0dip" />
+            <View android:id="@id/e_4" android:background="#fff9f9fa" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="44.5dip" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/mlf" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="22.0dip" android:layout_marginRight="21.0dip" />
+    </RelativeLayout>
+    <RelativeLayout android:orientation="horizontal" android:id="@id/k9i" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="7.0dip" android:layout_below="@id/mlh" />
+    <RelativeLayout android:orientation="horizontal" android:id="@id/bhd" android:layout_width="fill_parent" android:layout_height="88.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="24.0dip" android:layout_below="@id/k9i" />
 </RelativeLayout>

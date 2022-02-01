@@ -24,8 +24,9 @@ public class VasCmdManagerImpl
   public boolean sendPbRequest(String paramString1, String paramString2, ICmdListener paramICmdListener)
   {
     this.jdField_a_of_type_ComTencentVasUpdateCallbackListenerICmdListener = paramICmdListener;
-    if (this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemApiIVasApolloExtensionHandler != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemApiIVasApolloExtensionHandler.requestQuickUpdate(paramString1, paramString2);
+    paramICmdListener = this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemApiIVasApolloExtensionHandler;
+    if (paramICmdListener != null) {
+      return paramICmdListener.requestQuickUpdate(paramString1, paramString2);
     }
     QLog.e("VasUpdate_VasCmdManagerImpl", 1, "sendPbRequest mRequestHandler = null");
     return false;
@@ -33,7 +34,7 @@ public class VasCmdManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.impl.VasCmdManagerImpl
  * JD-Core Version:    0.7.0.1
  */

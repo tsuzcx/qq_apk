@@ -35,17 +35,15 @@ public class BookShelfInsertServlet
     paramArrayOfByte = BookShelfInsertRequest.onResponse(paramArrayOfByte);
     if (paramArrayOfByte != null) {
       paramArrayOfByte = paramArrayOfByte.info.get();
+    } else {
+      paramArrayOfByte = null;
     }
-    JSONArray localJSONArray;
-    for (;;)
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.size() > 0))
     {
-      if ((paramArrayOfByte == null) || (paramArrayOfByte.size() <= 0)) {
-        break label229;
-      }
-      localJSONArray = new JSONArray();
+      JSONArray localJSONArray = new JSONArray();
       int i = 0;
-      label42:
-      if (i < paramArrayOfByte.size()) {
+      while (i < paramArrayOfByte.size())
+      {
         try
         {
           JSONObject localJSONObject = new JSONObject();
@@ -54,23 +52,17 @@ public class BookShelfInsertServlet
           localJSONObject.putOpt("msg", ((MiniBookShelf.Information)paramArrayOfByte.get(i)).msg.get());
           localJSONObject.putOpt("exist", Integer.valueOf(((MiniBookShelf.Information)paramArrayOfByte.get(i)).existStatus.get()));
           localJSONArray.put(localJSONObject);
-          i += 1;
-          break label42;
-          paramArrayOfByte = null;
         }
         catch (Throwable localThrowable)
         {
-          for (;;)
-          {
-            QLog.i("BookShelfInsertServlet", 1, "", localThrowable);
-          }
+          QLog.i("BookShelfInsertServlet", 1, "", localThrowable);
         }
+        i += 1;
       }
+      paramBundle.putString("key_result_data", localJSONArray.toString());
+      notifyObserver(paramIntent, 1080, true, paramBundle, MiniAppObserver.class);
+      return;
     }
-    paramBundle.putString("key_result_data", localJSONArray.toString());
-    notifyObserver(paramIntent, 1080, true, paramBundle, MiniAppObserver.class);
-    return;
-    label229:
     notifyObserver(paramIntent, 1080, false, paramBundle, MiniAppObserver.class);
   }
   
@@ -93,7 +85,7 @@ public class BookShelfInsertServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.BookShelfInsertServlet
  * JD-Core Version:    0.7.0.1
  */

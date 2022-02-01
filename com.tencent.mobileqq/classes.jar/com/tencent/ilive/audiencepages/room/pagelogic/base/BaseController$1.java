@@ -14,18 +14,20 @@ class BaseController$1
   
   public void onClick(Dialog paramDialog, CustomizedDialog.DialogBtn paramDialogBtn)
   {
-    if (this.this$0.getEvent() != null) {
+    if (this.this$0.getEvent() != null)
+    {
       this.this$0.getEvent().post(new RoomCloseEvent((short)5));
-    }
-    while (this.val$roomPageActionInterface == null) {
       return;
     }
-    this.val$roomPageActionInterface.finish();
+    paramDialog = this.val$roomPageActionInterface;
+    if (paramDialog != null) {
+      paramDialog.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.pagelogic.base.BaseController.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,21 +9,22 @@ public class UITools$MyViewAlphaOnTouchListener
 {
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
+      if ((i == 1) || (i == 3)) {
+        UITools.a(paramView, 1.0F);
+      }
     }
-    for (;;)
-    {
-      return false;
+    else {
       UITools.a(paramView, 0.5F);
-      continue;
-      UITools.a(paramView, 1.0F);
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.UITools.MyViewAlphaOnTouchListener
  * JD-Core Version:    0.7.0.1
  */

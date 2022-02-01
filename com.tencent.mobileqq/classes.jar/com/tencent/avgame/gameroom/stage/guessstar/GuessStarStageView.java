@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.avgame.gameroom.stage.util.FontStyleConfig;
+import com.tencent.avgame.data.FontStyleConfig;
 import com.tencent.avgame.ui.AVGameText;
 import com.tencent.avgame.util.UiUtils;
 
@@ -34,16 +34,16 @@ public class GuessStarStageView
   
   protected void b()
   {
-    LayoutInflater.from(getContext()).inflate(2131558774, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365404));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366914));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131379716));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379699));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379701));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131368017);
-    this.jdField_a_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131380233));
-    this.jdField_b_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131380234));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131370577);
+    LayoutInflater.from(getContext()).inflate(2131558673, this, true);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365268));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366776));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131379056));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379039));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379041));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131367771);
+    this.jdField_a_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379550));
+    this.jdField_b_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379551));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131370232);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, UiUtils.b());
     this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams().width = UiUtils.a();
@@ -80,7 +80,7 @@ public class GuessStarStageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.stage.guessstar.GuessStarStageView
  * JD-Core Version:    0.7.0.1
  */

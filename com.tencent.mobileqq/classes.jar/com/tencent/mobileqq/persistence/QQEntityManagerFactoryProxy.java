@@ -26,12 +26,13 @@ public final class QQEntityManagerFactoryProxy
   
   public static EntityManager a(EntityManagerFactory paramEntityManagerFactory)
   {
-    if (paramEntityManagerFactory.closed) {
-      throw new IllegalStateException("The EntityManagerFactory has been already closed");
+    if (!paramEntityManagerFactory.closed)
+    {
+      MessageRecordEntityManager localMessageRecordEntityManager = new MessageRecordEntityManager(paramEntityManagerFactory.dbHelper, paramEntityManagerFactory.mName);
+      paramEntityManagerFactory.closed = false;
+      return localMessageRecordEntityManager;
     }
-    MessageRecordEntityManager localMessageRecordEntityManager = new MessageRecordEntityManager(paramEntityManagerFactory.dbHelper, paramEntityManagerFactory.mName);
-    paramEntityManagerFactory.closed = false;
-    return localMessageRecordEntityManager;
+    throw new IllegalStateException("The EntityManagerFactory has been already closed");
   }
   
   public static QQEntityManagerFactoryProxy a(String paramString)
@@ -63,7 +64,8 @@ public final class QQEntityManagerFactoryProxy
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqPersistenceBridgeDefaultOnDBUpgradeCallback != null) && (this.jdField_a_of_type_ComTencentMobileqqPersistenceBridgeDefaultOnDBUpgradeCallback.a());
+    DefaultOnDBUpgradeCallback localDefaultOnDBUpgradeCallback = this.jdField_a_of_type_ComTencentMobileqqPersistenceBridgeDefaultOnDBUpgradeCallback;
+    return (localDefaultOnDBUpgradeCallback != null) && (localDefaultOnDBUpgradeCallback.a());
   }
   
   public SQLiteOpenHelper build(String paramString)
@@ -93,7 +95,7 @@ public final class QQEntityManagerFactoryProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -10,14 +10,15 @@ class LiteRoomWebModule$1$1
   
   public void onReceiveValue(String paramString)
   {
-    if (this.val$valueCallback != null) {
-      this.val$valueCallback.onReceiveValue(paramString);
+    JsBizAdapter.ValueCallback localValueCallback = this.val$valueCallback;
+    if (localValueCallback != null) {
+      localValueCallback.onReceiveValue(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.bizmodule.LiteRoomWebModule.1.1
  * JD-Core Version:    0.7.0.1
  */

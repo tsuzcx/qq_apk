@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,28 +59,33 @@ public final class PSMetaCategory
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.id != null) {
-      paramJceOutputStream.write(this.id, 0);
+    Object localObject = this.id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 1);
+    localObject = this.name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.subCategories != null) {
-      paramJceOutputStream.write(this.subCategories, 2);
+    localObject = this.subCategories;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.materials != null) {
-      paramJceOutputStream.write(this.materials, 3);
+    localObject = this.materials;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
     paramJceOutputStream.write(this.defaultFlag, 4);
     paramJceOutputStream.write(this.onlyFlag, 5);
-    if (this.additionalFields != null) {
-      paramJceOutputStream.write(this.additionalFields, 6);
+    localObject = this.additionalFields;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.PLAYSHOW_MATERIALS_GENERAL_DATASTRUCT.PSMetaCategory
  * JD-Core Version:    0.7.0.1
  */

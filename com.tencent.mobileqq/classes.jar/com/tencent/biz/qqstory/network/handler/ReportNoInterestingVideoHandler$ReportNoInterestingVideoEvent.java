@@ -16,12 +16,17 @@ public class ReportNoInterestingVideoHandler$ReportNoInterestingVideoEvent
   
   public String toString()
   {
-    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + "} ";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ReportEvent{vid='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append("} ");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.ReportNoInterestingVideoHandler.ReportNoInterestingVideoEvent
  * JD-Core Version:    0.7.0.1
  */

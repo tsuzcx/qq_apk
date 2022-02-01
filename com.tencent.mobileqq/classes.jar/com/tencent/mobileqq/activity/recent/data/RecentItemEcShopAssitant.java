@@ -39,132 +39,131 @@ public class RecentItemEcShopAssitant
   
   private void a()
   {
-    if ((this.mExtraInfo != null) && (HardCodeUtil.a(2131713124).equalsIgnoreCase(this.mExtraInfo.toString()))) {
+    if ((this.mExtraInfo != null) && (HardCodeUtil.a(2131713099).equalsIgnoreCase(this.mExtraInfo.toString()))) {
       this.mExtraInfo = "";
     }
   }
   
   private void a(Context paramContext, EcShopAssistantManager paramEcShopAssistantManager, MsgSummary paramMsgSummary, SharedPreferences paramSharedPreferences, int paramInt)
   {
-    if ((paramInt > this.mDisplayTime) || ((TextUtils.isEmpty(paramMsgSummary.strContent)) && (TextUtils.isEmpty(paramMsgSummary.suffix))))
+    long l = paramInt;
+    if ((l <= this.mDisplayTime) && ((!TextUtils.isEmpty(paramMsgSummary.strContent)) || (!TextUtils.isEmpty(paramMsgSummary.suffix))))
     {
-      long l = paramInt;
-      this.mDisplayTime = l;
-      this.newStrTime = l;
-      if (this.mUser != null) {
-        this.mUser.lastmsgtime = this.mDisplayTime;
-      }
-      String str = paramSharedPreferences.getString("str_ecshop_diy", null);
-      if (!TextUtils.isEmpty(str))
-      {
-        paramEcShopAssistantManager.d = true;
-        paramMsgSummary.strContent = str;
-        paramMsgSummary.suffix = null;
-        paramMsgSummary.strPrefix = null;
-      }
-      for (;;)
-      {
-        this.mExtraInfoColor = paramContext.getResources().getColor(2131167145);
-        if (paramSharedPreferences.contains("PUSH_TYPE_COLOR")) {}
-        try
-        {
-          this.mExtraInfoColor = Color.parseColor(paramSharedPreferences.getString("PUSH_TYPE_COLOR", ""));
-          if (paramSharedPreferences.getBoolean("folder_reddot", false))
-          {
-            int i = paramSharedPreferences.getInt("last_show_time1", 0);
-            int j = paramSharedPreferences.getInt("reddot_start", 0);
-            int k = paramSharedPreferences.getInt("reddot_end", 0);
-            int m = paramSharedPreferences.getInt("max_reddot_time", 0);
-            int n = (int)(System.currentTimeMillis() / 1000L);
-            if ((n != 0) && (j != 0) && (k != 0) && (m != 0))
-            {
-              if ((n >= j) && (n <= k) && (n - i < m))
-              {
-                paramEcShopAssistantManager.e = true;
-                if (paramInt > this.mDisplayTime) {
-                  this.mDisplayTime = paramInt;
-                }
-                this.mMsgExtroInfo = paramSharedPreferences.getString("PUSH_TYPE_NAME", "");
-              }
-            }
-            else
-            {
-              return;
-              if (!TextUtils.isEmpty(paramMsgSummary.suffix)) {
-                continue;
-              }
-              paramMsgSummary.strContent = paramContext.getString(2131691925);
-              paramMsgSummary.strPrefix = null;
-            }
-          }
-        }
-        catch (Exception paramMsgSummary)
-        {
-          for (;;)
-          {
-            QLog.e("RecentItemEcShopAssitant", 1, "parse color exception.");
-            this.mExtraInfoColor = paramContext.getResources().getColor(2131167145);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i("EcShopAssistantActivity", 2, "reddot out of date!");
-          }
-          paramEcShopAssistantManager.e = false;
-          this.mUnreadNum = 0;
-          this.mMsgExtroInfo = "";
-          return;
-        }
-      }
-      this.mMsgExtroInfo = "";
+      a(paramContext);
       return;
     }
-    a(paramContext);
+    this.mDisplayTime = l;
+    this.newStrTime = l;
+    if (this.mUser != null) {
+      this.mUser.lastmsgtime = this.mDisplayTime;
+    }
+    String str = paramSharedPreferences.getString("str_ecshop_diy", null);
+    if (!TextUtils.isEmpty(str))
+    {
+      paramEcShopAssistantManager.d = true;
+      paramMsgSummary.strContent = str;
+      paramMsgSummary.suffix = null;
+      paramMsgSummary.strPrefix = null;
+    }
+    else if (TextUtils.isEmpty(paramMsgSummary.suffix))
+    {
+      paramMsgSummary.strContent = paramContext.getString(2131691853);
+      paramMsgSummary.strPrefix = null;
+    }
+    this.mExtraInfoColor = paramContext.getResources().getColor(2131167170);
+    if (paramSharedPreferences.contains("PUSH_TYPE_COLOR")) {}
+    try
+    {
+      this.mExtraInfoColor = Color.parseColor(paramSharedPreferences.getString("PUSH_TYPE_COLOR", ""));
+    }
+    catch (Exception paramMsgSummary)
+    {
+      label189:
+      int i;
+      int j;
+      int k;
+      int m;
+      break label189;
+    }
+    QLog.e("RecentItemEcShopAssitant", 1, "parse color exception.");
+    this.mExtraInfoColor = paramContext.getResources().getColor(2131167170);
+    if (paramSharedPreferences.getBoolean("folder_reddot", false))
+    {
+      paramInt = paramSharedPreferences.getInt("last_show_time1", 0);
+      i = paramSharedPreferences.getInt("reddot_start", 0);
+      j = paramSharedPreferences.getInt("reddot_end", 0);
+      k = paramSharedPreferences.getInt("max_reddot_time", 0);
+      m = (int)(System.currentTimeMillis() / 1000L);
+      if ((m != 0) && (i != 0) && (j != 0) && (k != 0))
+      {
+        if ((m >= i) && (m <= j) && (m - paramInt < k))
+        {
+          paramEcShopAssistantManager.e = true;
+          if (l > this.mDisplayTime) {
+            this.mDisplayTime = l;
+          }
+          this.mMsgExtroInfo = paramSharedPreferences.getString("PUSH_TYPE_NAME", "");
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("EcShopAssistantActivity", 2, "reddot out of date!");
+        }
+        paramEcShopAssistantManager.e = false;
+        this.mUnreadNum = 0;
+        this.mMsgExtroInfo = "";
+      }
+    }
+    else
+    {
+      this.mMsgExtroInfo = "";
+    }
   }
   
   private void a(EcShopAssistantManager paramEcShopAssistantManager)
   {
-    StringBuilder localStringBuilder;
-    int i;
     if (AppSetting.d)
     {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.mTitleName).append(",");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.mTitleName);
+      localStringBuilder.append(",");
       if (this.mUnreadNum > 0)
       {
-        i = paramEcShopAssistantManager.a();
+        int i = paramEcShopAssistantManager.a();
         if ((i != 0) && (!paramEcShopAssistantManager.e)) {
-          break label110;
+          if (i == 1)
+          {
+            localStringBuilder.append("有一条未读");
+          }
+          else if (i == 2)
+          {
+            localStringBuilder.append("有两条未读");
+          }
+          else if (i > 0)
+          {
+            localStringBuilder.append("有");
+            localStringBuilder.append(i);
+            localStringBuilder.append("条未读,");
+          }
         }
       }
-      if (this.mMsgExtroInfo != null) {
-        localStringBuilder.append(this.mMsgExtroInfo + ",");
+      if (this.mMsgExtroInfo != null)
+      {
+        paramEcShopAssistantManager = new StringBuilder();
+        paramEcShopAssistantManager.append(this.mMsgExtroInfo);
+        paramEcShopAssistantManager.append(",");
+        localStringBuilder.append(paramEcShopAssistantManager.toString());
       }
-      if (this.mUnreadNum <= 0) {
-        break label163;
+      if (this.mUnreadNum > 0)
+      {
+        localStringBuilder.append(this.mShowTime);
       }
-      localStringBuilder.append(this.mShowTime);
-    }
-    for (;;)
-    {
+      else
+      {
+        localStringBuilder.append(this.mLastMsg);
+        localStringBuilder.append(",");
+        localStringBuilder.append(this.mShowTime);
+      }
       this.mContentDesc = localStringBuilder.toString();
-      return;
-      label110:
-      if (i == 1)
-      {
-        localStringBuilder.append("有一条未读");
-        break;
-      }
-      if (i == 2)
-      {
-        localStringBuilder.append("有两条未读");
-        break;
-      }
-      if (i <= 0) {
-        break;
-      }
-      localStringBuilder.append("有").append(i).append("条未读,");
-      break;
-      label163:
-      localStringBuilder.append(this.mLastMsg).append(",").append(this.mShowTime);
     }
   }
   
@@ -184,26 +183,34 @@ public class RecentItemEcShopAssitant
           paramMsgSummary.suffix = "";
           paramMsgSummary.strContent = "";
           paramEcShopAssistantManager = XMLMessageUtils.a(paramMessage);
-          if ((paramEcShopAssistantManager != null) && (paramEcShopAssistantManager.items != null) && (paramEcShopAssistantManager.items.size() != 0)) {
-            break label140;
+          if ((paramEcShopAssistantManager != null) && (paramEcShopAssistantManager.items != null) && (paramEcShopAssistantManager.items.size() != 0))
+          {
+            paramContext = ((PAMessage.Item)paramEcShopAssistantManager.items.get(0)).title;
+            paramQQAppInterface = paramContext;
+            if (((PAMessage.Item)paramEcShopAssistantManager.items.get(0)).cover == null)
+            {
+              paramQQAppInterface = paramContext;
+              if (((PAMessage.Item)paramEcShopAssistantManager.items.get(0)).digestList != null)
+              {
+                paramQQAppInterface = new StringBuilder();
+                paramQQAppInterface.append(paramContext);
+                paramQQAppInterface.append("：");
+                paramQQAppInterface.append((String)((PAMessage.Item)paramEcShopAssistantManager.items.get(0)).digestList.get(0));
+                paramQQAppInterface = paramQQAppInterface.toString();
+              }
+            }
+            paramMsgSummary.strContent = paramQQAppInterface;
+            return;
           }
           a(paramMessage, this.mUser.getType(), paramQQAppInterface, paramContext, paramMsgSummary);
         }
       }
-      return;
-      label140:
-      paramQQAppInterface = ((PAMessage.Item)paramEcShopAssistantManager.items.get(0)).title;
-      if ((((PAMessage.Item)paramEcShopAssistantManager.items.get(0)).cover == null) && (((PAMessage.Item)paramEcShopAssistantManager.items.get(0)).digestList != null)) {
-        paramQQAppInterface = paramQQAppInterface + "：" + (String)((PAMessage.Item)paramEcShopAssistantManager.items.get(0)).digestList.get(0);
-      }
-      for (;;)
-      {
-        paramMsgSummary.strContent = paramQQAppInterface;
-        return;
-      }
     }
-    this.mUnreadNum = 0;
-    this.mDisplayTime = 0L;
+    else
+    {
+      this.mUnreadNum = 0;
+      this.mDisplayTime = 0L;
+    }
   }
   
   public void a(Context paramContext)
@@ -213,95 +220,120 @@ public class RecentItemEcShopAssitant
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if ((paramQQAppInterface == null) || (paramContext == null)) {
-      return;
-    }
-    super.a(paramQQAppInterface, paramContext);
-    if (MiniAppConfProcessor.a("MiniAppEcShopNumMsgEnable", 1) == 1) {}
-    for (this.mUnreadFlag = 1;; this.mUnreadFlag = 2)
+    if (paramQQAppInterface != null)
     {
+      if (paramContext == null) {
+        return;
+      }
+      super.a(paramQQAppInterface, paramContext);
+      if (MiniAppConfProcessor.a("MiniAppEcShopNumMsgEnable", 1) == 1) {
+        this.mUnreadFlag = 1;
+      } else {
+        this.mUnreadFlag = 2;
+      }
       if (TextUtils.isEmpty(this.mTitleName)) {
-        this.mTitleName = paramContext.getString(2131691927);
+        this.mTitleName = paramContext.getString(2131691855);
       }
       if (!TextUtils.isEmpty(EcShopAssistantManager.c)) {
         this.mTitleName = EcShopAssistantManager.c;
       }
-      String str = null;
+      Object localObject2 = null;
       EcShopAssistantManager localEcShopAssistantManager = (EcShopAssistantManager)paramQQAppInterface.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
-      Object localObject2 = paramQQAppInterface.getMessageFacade();
-      Object localObject1 = str;
-      if (localObject2 != null)
+      Object localObject3 = paramQQAppInterface.getMessageFacade();
+      Object localObject1 = localObject2;
+      if (localObject3 != null)
       {
         EcShopData localEcShopData = localEcShopAssistantManager.a();
-        localObject1 = str;
+        localObject1 = localObject2;
         if (localEcShopData != null) {
-          localObject1 = ((QQMessageFacade)localObject2).a(localEcShopData.mUin, 1008);
+          localObject1 = ((QQMessageFacade)localObject3).getLastMessage(localEcShopData.mUin, 1008);
         }
       }
-      localObject2 = super.getMsgSummaryTemp();
-      a(paramQQAppInterface, paramContext, (Message)localObject1, localEcShopAssistantManager, (MsgSummary)localObject2);
-      str = paramQQAppInterface.getCurrentAccountUin();
-      localObject1 = str;
-      if (TextUtils.isEmpty(str)) {
+      localObject3 = super.getMsgSummaryTemp();
+      a(paramQQAppInterface, paramContext, (Message)localObject1, localEcShopAssistantManager, (MsgSummary)localObject3);
+      localObject2 = paramQQAppInterface.getCurrentAccountUin();
+      localObject1 = localObject2;
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
         localObject1 = "noLogin";
       }
-      localObject1 = paramContext.getSharedPreferences("ecshop_sp" + (String)localObject1, 0);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("ecshop_sp");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      localObject1 = paramContext.getSharedPreferences(((StringBuilder)localObject2).toString(), 0);
       int i = ((SharedPreferences)localObject1).getInt("last_show_time1", 0);
       localEcShopAssistantManager.d = false;
-      a(paramContext, localEcShopAssistantManager, (MsgSummary)localObject2, (SharedPreferences)localObject1, i);
+      a(paramContext, localEcShopAssistantManager, (MsgSummary)localObject3, (SharedPreferences)localObject1, i);
       a();
-      a(paramQQAppInterface, (MsgSummary)localObject2);
-      a(paramQQAppInterface, paramContext, (MsgSummary)localObject2);
+      a(paramQQAppInterface, (MsgSummary)localObject3);
+      a(paramQQAppInterface, paramContext, (MsgSummary)localObject3);
       if ((this.mUnreadNum == 0) && (localEcShopAssistantManager.e)) {
         this.mUnreadNum = 1;
       }
       a(localEcShopAssistantManager);
-      if (!QLog.isColorLevel()) {
-        break;
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("first string to show:");
+        paramQQAppInterface.append(((MsgSummary)localObject3).strPrefix);
+        QLog.i("EcShop", 2, paramQQAppInterface.toString());
       }
-      QLog.i("EcShop", 2, "first string to show:" + ((MsgSummary)localObject2).strPrefix);
-      return;
     }
   }
   
   public void a(QQAppInterface paramQQAppInterface, MsgSummary paramMsgSummary)
   {
-    EcShopData localEcShopData = null;
     this.mStatus = 0;
+    Object localObject1 = null;
     if (paramMsgSummary != null)
     {
       paramMsgSummary.bShowDraft = false;
       paramMsgSummary.mDraft = null;
     }
-    Object localObject = paramQQAppInterface.getMessageFacade();
-    if (localObject == null) {}
-    do
+    Object localObject2 = paramQQAppInterface.getMessageFacade();
+    if (localObject2 == null) {
+      return;
+    }
+    EcShopAssistantManager localEcShopAssistantManager = (EcShopAssistantManager)paramQQAppInterface.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
+    if (localEcShopAssistantManager != null) {
+      localObject1 = localEcShopAssistantManager.a();
+    }
+    if (localObject1 != null)
     {
-      EcShopAssistantManager localEcShopAssistantManager;
-      do
+      if (TextUtils.isEmpty(((EcShopData)localObject1).mUin)) {
+        return;
+      }
+      if (this.mDisplayTime < ((EcShopData)localObject1).mLastDraftTime)
       {
-        do
-        {
+        if (this.newStrTime > ((EcShopData)localObject1).mLastDraftTime) {
           return;
-          localEcShopAssistantManager = (EcShopAssistantManager)paramQQAppInterface.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
-          if (localEcShopAssistantManager != null) {
-            localEcShopData = localEcShopAssistantManager.a();
-          }
-        } while ((localEcShopData == null) || (TextUtils.isEmpty(localEcShopData.mUin)) || (this.mDisplayTime >= localEcShopData.mLastDraftTime) || (this.newStrTime > localEcShopData.mLastDraftTime));
+        }
         this.mStatus = 4;
-        localObject = ((QQMessageFacade)localObject).getDraftSummaryInfo(localEcShopData.mUin, 1008);
-      } while ((localObject == null) || (TextUtils.isEmpty(((DraftSummaryInfo)localObject).getSummary())));
-      this.mDisplayTime = ((DraftSummaryInfo)localObject).getTime();
-      localObject = ((DraftSummaryInfo)localObject).getSummary();
-      paramQQAppInterface = localEcShopAssistantManager.a(paramQQAppInterface, localEcShopData.mUin);
-    } while (paramMsgSummary == null);
-    paramMsgSummary.bShowDraft = true;
-    paramMsgSummary.mDraft = new QQText(paramQQAppInterface + ": " + (String)localObject, 3, 16);
+        localObject2 = ((QQMessageFacade)localObject2).getDraftSummaryInfo(((EcShopData)localObject1).mUin, 1008);
+        if (localObject2 != null)
+        {
+          if (TextUtils.isEmpty(((DraftSummaryInfo)localObject2).getSummary())) {
+            return;
+          }
+          this.mDisplayTime = ((DraftSummaryInfo)localObject2).getTime();
+          localObject2 = ((DraftSummaryInfo)localObject2).getSummary();
+          paramQQAppInterface = localEcShopAssistantManager.a(paramQQAppInterface, ((EcShopData)localObject1).mUin);
+          if (paramMsgSummary != null)
+          {
+            paramMsgSummary.bShowDraft = true;
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append(paramQQAppInterface);
+            ((StringBuilder)localObject1).append(": ");
+            ((StringBuilder)localObject1).append((String)localObject2);
+            paramMsgSummary.mDraft = new QQText(((StringBuilder)localObject1).toString(), 3, 16);
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemEcShopAssitant
  * JD-Core Version:    0.7.0.1
  */

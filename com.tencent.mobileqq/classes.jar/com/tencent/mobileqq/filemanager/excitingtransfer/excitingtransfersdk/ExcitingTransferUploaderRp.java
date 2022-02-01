@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk;
 
-import android.support.annotation.NonNull;
-
 public class ExcitingTransferUploaderRp
 {
   public boolean mbIsBigData = false;
@@ -23,15 +21,51 @@ public class ExcitingTransferUploaderRp
   public short mwServerPort = 0;
   public int mwTranferPlatform = -1;
   
-  @NonNull
   public String toString()
   {
-    return "TransferType:" + this.mcXTFTransferType + " m_wTranferPlatform:" + this.mwTranferPlatform + " m_wAppType:" + this.mwAppType + " m_nResult:" + this.mnResult + " m_nSrvReturCode:" + this.mnSrvReturCode + " m_strFileName:" + this.mstrFileName + " m_strSuffix:" + this.mstrSuffix + " m_u64FileSize:" + this.mu64FileSize + " m_uPeerUin:" + this.muPeerUin + " m_uGroupCode:" + this.muGroupCode + " m_bIsBigData:" + this.mbIsBigData + " m_u64TransferSpeed:" + this.mu64TransferSpeed + " m_u64HttpTime:" + this.mu64HttpTime + " m_u64TransferSize:" + this.mu64TransferSize + " m_strServerIp:" + this.mstrServerIp + " m_wServerPort:" + this.mwServerPort + " m_dwProxyType:" + this.mdwProxyType + " m_strFileUrl:" + this.mstrFileUrl;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TransferType:");
+    localStringBuilder.append(this.mcXTFTransferType);
+    localStringBuilder.append(" m_wTranferPlatform:");
+    localStringBuilder.append(this.mwTranferPlatform);
+    localStringBuilder.append(" m_wAppType:");
+    localStringBuilder.append(this.mwAppType);
+    localStringBuilder.append(" m_nResult:");
+    localStringBuilder.append(this.mnResult);
+    localStringBuilder.append(" m_nSrvReturCode:");
+    localStringBuilder.append(this.mnSrvReturCode);
+    localStringBuilder.append(" m_strFileName:");
+    localStringBuilder.append(this.mstrFileName);
+    localStringBuilder.append(" m_strSuffix:");
+    localStringBuilder.append(this.mstrSuffix);
+    localStringBuilder.append(" m_u64FileSize:");
+    localStringBuilder.append(this.mu64FileSize);
+    localStringBuilder.append(" m_uPeerUin:");
+    localStringBuilder.append(this.muPeerUin);
+    localStringBuilder.append(" m_uGroupCode:");
+    localStringBuilder.append(this.muGroupCode);
+    localStringBuilder.append(" m_bIsBigData:");
+    localStringBuilder.append(this.mbIsBigData);
+    localStringBuilder.append(" m_u64TransferSpeed:");
+    localStringBuilder.append(this.mu64TransferSpeed);
+    localStringBuilder.append(" m_u64HttpTime:");
+    localStringBuilder.append(this.mu64HttpTime);
+    localStringBuilder.append(" m_u64TransferSize:");
+    localStringBuilder.append(this.mu64TransferSize);
+    localStringBuilder.append(" m_strServerIp:");
+    localStringBuilder.append(this.mstrServerIp);
+    localStringBuilder.append(" m_wServerPort:");
+    localStringBuilder.append(this.mwServerPort);
+    localStringBuilder.append(" m_dwProxyType:");
+    localStringBuilder.append(this.mdwProxyType);
+    localStringBuilder.append(" m_strFileUrl:");
+    localStringBuilder.append(this.mstrFileUrl);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploaderRp
  * JD-Core Version:    0.7.0.1
  */

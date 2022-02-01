@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class cell_userinfo
   extends JceStruct
@@ -41,21 +42,24 @@ public final class cell_userinfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.user != null) {
-      paramJceOutputStream.write(this.user, 0);
+    Object localObject = this.user;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.action_desc != null) {
-      paramJceOutputStream.write(this.action_desc, 1);
+    localObject = this.action_desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.actiontype, 2);
-    if (this.luckyMoneyPics != null) {
-      paramJceOutputStream.write(this.luckyMoneyPics, 3);
+    localObject = this.luckyMoneyPics;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_userinfo
  * JD-Core Version:    0.7.0.1
  */

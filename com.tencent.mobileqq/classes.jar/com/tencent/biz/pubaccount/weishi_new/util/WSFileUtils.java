@@ -13,39 +13,59 @@ public class WSFileUtils
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    return a(paramT, FileUtils.a(paramString));
+    return a(paramT, FileUtils.readFile(paramString));
   }
   
   public static <T extends JceStruct> T a(T paramT, byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return null;
-    }
-    try
+    if (paramArrayOfByte != null)
     {
-      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
-      paramArrayOfByte.setServerEncoding("utf8");
-      paramT.readFrom(paramArrayOfByte);
-      return paramT;
-    }
-    catch (Exception paramT)
-    {
-      paramT.printStackTrace();
+      if (paramArrayOfByte.length == 0) {
+        return null;
+      }
+      try
+      {
+        paramArrayOfByte = new JceInputStream(paramArrayOfByte);
+        paramArrayOfByte.setServerEncoding("utf8");
+        paramT.readFrom(paramArrayOfByte);
+        return paramT;
+      }
+      catch (Exception paramT)
+      {
+        paramT.printStackTrace();
+      }
     }
     return null;
   }
   
   public static boolean a(JceStruct paramJceStruct, String paramString)
   {
-    if ((paramJceStruct == null) || (TextUtils.isEmpty(paramString))) {}
-    do
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramJceStruct != null)
     {
-      return false;
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
+      }
       paramJceStruct = a(paramJceStruct);
-    } while ((paramJceStruct == null) || (paramJceStruct.length <= 0));
-    boolean bool = FileUtils.a(paramJceStruct, paramString, false);
-    WSLog.d("WSFileUtils", "[WSFileUtils.java][saveDataToFile] path:" + paramString + ", writeSuccess:" + bool + ", bytesLength:" + paramJceStruct.length);
-    return bool;
+      bool1 = bool2;
+      if (paramJceStruct != null)
+      {
+        if (paramJceStruct.length <= 0) {
+          return false;
+        }
+        bool1 = FileUtils.writeFile(paramJceStruct, paramString, false);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[WSFileUtils.java][saveDataToFile] path:");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(", writeSuccess:");
+        localStringBuilder.append(bool1);
+        localStringBuilder.append(", bytesLength:");
+        localStringBuilder.append(paramJceStruct.length);
+        WSLog.d("WSFileUtils", localStringBuilder.toString());
+      }
+    }
+    return bool1;
   }
   
   public static byte[] a(JceStruct paramJceStruct)
@@ -69,7 +89,7 @@ public class WSFileUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WSFileUtils
  * JD-Core Version:    0.7.0.1
  */

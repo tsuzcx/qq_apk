@@ -9,12 +9,13 @@ class NearbyProfileEditTribePanel$4
   
   public void onDismiss()
   {
-    NearbyProfileEditTribePanel.a(this.a, this.a.c, false);
+    NearbyProfileEditTribePanel localNearbyProfileEditTribePanel = this.a;
+    NearbyProfileEditTribePanel.a(localNearbyProfileEditTribePanel, localNearbyProfileEditTribePanel.c, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel.4
  * JD-Core Version:    0.7.0.1
  */

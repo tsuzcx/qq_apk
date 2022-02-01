@@ -39,7 +39,8 @@ public class ReplyMsgForwardRequest
     this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest = paramMultiMsgRequest;
     this.jdField_a_of_type_ComTencentMobileqqMultimsgIMultiMsgRichUploadCallback = paramIMultiMsgRichUploadCallback;
     this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (!this.jdField_a_of_type_JavaUtilHashMap.isEmpty()))
+    paramQQAppInterface = this.jdField_a_of_type_JavaUtilHashMap;
+    if ((paramQQAppInterface != null) && (!paramQQAppInterface.isEmpty()))
     {
       paramQQAppInterface = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
       do
@@ -64,8 +65,11 @@ public class ReplyMsgForwardRequest
   
   public int a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest == null) {}
-    while (this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+    MultiMsgRequest localMultiMsgRequest = this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest;
+    if (localMultiMsgRequest == null) {
+      return -1;
+    }
+    if (localMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
       return -1;
     }
     return this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
@@ -73,10 +77,11 @@ public class ReplyMsgForwardRequest
   
   public String a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest == null) {
+    MultiMsgRequest localMultiMsgRequest = this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest;
+    if (localMultiMsgRequest == null) {
       return "";
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing == null) {
+    if (localMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing == null) {
       return "";
     }
     return String.valueOf(this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq);
@@ -87,9 +92,10 @@ public class ReplyMsgForwardRequest
     if (this.b == null)
     {
       this.b = new HashMap();
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.getSourceMessage() != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText;
+      if ((localObject1 != null) && (((MessageForReplyText)localObject1).getSourceMessage() != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
       {
-        Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.getSourceMessage();
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.getSourceMessage();
         Object localObject2;
         if ((localObject1 instanceof MessageForFile))
         {
@@ -97,7 +103,10 @@ public class ReplyMsgForwardRequest
           if ((localObject2 != null) && (((FileManagerEntity)localObject2).getCloudType() == 0))
           {
             QLog.i("ReplyMsgForwardRequest<QFile>", 1, "getForwardMessageList. init UploadSourceMsgList, find online file.");
-            localObject2 = HardCodeUtil.a(2131713357) + ((MessageRecord)localObject1).getExtInfoFromExtStr("_m_ForwardFileName");
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append(HardCodeUtil.a(2131713325));
+            ((StringBuilder)localObject2).append(((MessageRecord)localObject1).getExtInfoFromExtStr("_m_ForwardFileName"));
+            localObject2 = ((StringBuilder)localObject2).toString();
             localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a((MessageRecord)localObject1, (String)localObject2, true);
             this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.setSourceMessageRecord((MessageRecord)localObject2);
           }
@@ -108,7 +117,10 @@ public class ReplyMsgForwardRequest
           if ((i != 0) && (i != 3000) && (i != 1))
           {
             QLog.i("ReplyMsgForwardRequest<QFile>", 1, "getForwardMessageList. init UploadSourceMsgList, find unsupport chatType file.");
-            localObject2 = HardCodeUtil.a(2131713354) + ((MessageRecord)localObject1).getExtInfoFromExtStr("_m_ForwardFileName");
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append(HardCodeUtil.a(2131713322));
+            ((StringBuilder)localObject2).append(((MessageRecord)localObject1).getExtInfoFromExtStr("_m_ForwardFileName"));
+            localObject2 = ((StringBuilder)localObject2).toString();
             localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a((MessageRecord)localObject1, (String)localObject2, true);
             this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.setSourceMessageRecord((MessageRecord)localObject1);
           }
@@ -127,7 +139,10 @@ public class ReplyMsgForwardRequest
     if (paramInt == 1)
     {
       paramList1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.getSourceMessage();
-      paramList2 = HardCodeUtil.a(2131713356) + paramList1.getExtInfoFromExtStr("_m_ForwardFileName");
+      paramList2 = new StringBuilder();
+      paramList2.append(HardCodeUtil.a(2131713324));
+      paramList2.append(paramList1.getExtInfoFromExtStr("_m_ForwardFileName"));
+      paramList2 = paramList2.toString();
       paramList1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a(paramList1, paramList2, false);
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.setSourceMessageRecord(paramList1);
       this.jdField_a_of_type_ComTencentMobileqqMultimsgIMultiMsgRichUploadCallback.a(1, 2, this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest);
@@ -143,18 +158,28 @@ public class ReplyMsgForwardRequest
   public void a(String paramString, List<MessageRecord> paramList, MessageRecord paramMessageRecord, int paramInt)
   {
     paramString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFaildReason");
-    paramList = HardCodeUtil.a(2131713355) + paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    paramList = new StringBuilder();
+    paramList.append(HardCodeUtil.a(2131713323));
+    paramList.append(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName"));
+    paramList = paramList.toString();
     paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a(paramMessageRecord, paramList, false);
     this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.setSourceMessageRecord(paramMessageRecord);
-    QLog.i("ReplyMsgForwardRequest<QFile>", 1, "replaceDropForwardMsg hint[ + " + paramList + "reason[" + paramString + "]");
+    paramMessageRecord = new StringBuilder();
+    paramMessageRecord.append("replaceDropForwardMsg hint[ + ");
+    paramMessageRecord.append(paramList);
+    paramMessageRecord.append("reason[");
+    paramMessageRecord.append(paramString);
+    paramMessageRecord.append("]");
+    QLog.i("ReplyMsgForwardRequest<QFile>", 1, paramMessageRecord.toString());
   }
   
   public String b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest == null) {
+    MultiMsgRequest localMultiMsgRequest = this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest;
+    if (localMultiMsgRequest == null) {
       return "";
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+    if (localMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
       return "";
     }
     return String.valueOf(this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
@@ -162,7 +187,7 @@ public class ReplyMsgForwardRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.msgforward.ReplyMsgForwardRequest
  * JD-Core Version:    0.7.0.1
  */

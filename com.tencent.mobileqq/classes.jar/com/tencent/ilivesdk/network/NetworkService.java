@@ -22,12 +22,20 @@ public class NetworkService
   
   private void onNetWorkChange(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((this.mAdapter != null) && (this.mAdapter.getLogger() != null)) {
-      this.mAdapter.getLogger().i("networklog", "onNetWorkChange--close=" + paramBoolean1 + ";isWifi=" + paramBoolean2, new Object[0]);
+    Object localObject = this.mAdapter;
+    if ((localObject != null) && (((NetworkStateAdapter)localObject).getLogger() != null))
+    {
+      localObject = this.mAdapter.getLogger();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onNetWorkChange--close=");
+      localStringBuilder.append(paramBoolean1);
+      localStringBuilder.append(";isWifi=");
+      localStringBuilder.append(paramBoolean2);
+      ((LogInterface)localObject).i("networklog", localStringBuilder.toString(), new Object[0]);
     }
-    Iterator localIterator = this.networkListeners.iterator();
-    while (localIterator.hasNext()) {
-      ((OnNetworkListener)localIterator.next()).onNetWorkChange(paramBoolean1, paramBoolean2);
+    localObject = this.networkListeners.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((OnNetworkListener)((Iterator)localObject).next()).onNetWorkChange(paramBoolean1, paramBoolean2);
     }
   }
   
@@ -43,19 +51,23 @@ public class NetworkService
   
   public void handleNetwork(int paramInt)
   {
-    if (paramInt == 100) {}
-    for (this.networkConnected = false;; this.networkConnected = true) {
-      switch (paramInt)
-      {
-      default: 
-        return;
-      }
+    if (paramInt == 100) {
+      this.networkConnected = false;
+    } else {
+      this.networkConnected = true;
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 102: 
+      onNetWorkChange(false, false);
+      return;
+    case 101: 
+      onNetWorkChange(false, true);
+      return;
     }
     onNetWorkChange(true, false);
-    return;
-    onNetWorkChange(false, false);
-    return;
-    onNetWorkChange(false, true);
   }
   
   public void init(NetworkStateAdapter paramNetworkStateAdapter)
@@ -75,9 +87,10 @@ public class NetworkService
   
   public void onDestroy()
   {
-    if (this.mContext != null)
+    Context localContext = this.mContext;
+    if (localContext != null)
     {
-      this.mContext.unregisterReceiver(this.mNetworkReceiver);
+      localContext.unregisterReceiver(this.mNetworkReceiver);
       this.mContext = null;
     }
     this.networkListeners.clear();
@@ -91,7 +104,7 @@ public class NetworkService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.network.NetworkService
  * JD-Core Version:    0.7.0.1
  */

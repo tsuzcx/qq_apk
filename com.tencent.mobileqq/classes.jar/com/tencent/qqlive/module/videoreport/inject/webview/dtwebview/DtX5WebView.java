@@ -1,0 +1,75 @@
+package com.tencent.qqlive.module.videoreport.inject.webview.dtwebview;
+
+import android.content.Context;
+import android.support.annotation.Nullable;
+import android.util.AttributeSet;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.BridgeInterface;
+import com.tencent.smtt.sdk.WebView;
+import java.util.Map;
+
+public class DtX5WebView
+  extends WebView
+{
+  private JsBinderHelper mJsBinderHelper = new JsBinderHelper();
+  
+  public DtX5WebView(Context paramContext)
+  {
+    super(paramContext);
+  }
+  
+  public DtX5WebView(Context paramContext, AttributeSet paramAttributeSet)
+  {
+    super(paramContext, paramAttributeSet);
+  }
+  
+  public DtX5WebView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  {
+    super(paramContext, paramAttributeSet, paramInt);
+  }
+  
+  private void onLoad()
+  {
+    if (!this.mJsBinderHelper.allowInjectOnLoad()) {
+      return;
+    }
+    addJavascriptInterface(new BridgeInterface(this), "DTJsBridgeInterface");
+  }
+  
+  public void addJavascriptInterface(Object paramObject, String paramString)
+  {
+    if (this.mJsBinderHelper.interceptOnAddJavascriptInterface(paramString)) {
+      return;
+    }
+    super.addJavascriptInterface(paramObject, paramString);
+  }
+  
+  public void loadData(String paramString1, @Nullable String paramString2, @Nullable String paramString3)
+  {
+    super.loadData(paramString1, paramString2, paramString3);
+    onLoad();
+  }
+  
+  public void loadDataWithBaseURL(@Nullable String paramString1, String paramString2, @Nullable String paramString3, @Nullable String paramString4, @Nullable String paramString5)
+  {
+    super.loadDataWithBaseURL(paramString1, paramString2, paramString3, paramString4, paramString5);
+    onLoad();
+  }
+  
+  public void loadUrl(String paramString)
+  {
+    super.loadUrl(paramString);
+    onLoad();
+  }
+  
+  public void loadUrl(String paramString, Map<String, String> paramMap)
+  {
+    super.loadUrl(paramString, paramMap);
+    onLoad();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.qqlive.module.videoreport.inject.webview.dtwebview.DtX5WebView
+ * JD-Core Version:    0.7.0.1
+ */

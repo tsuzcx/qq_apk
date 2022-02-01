@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoyAd.ad.view;
 import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdJumpParams;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdSwitchUtil;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdUtils;
-import com.tencent.biz.pubaccount.util.ReadinJoyActionUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdActionUtilService;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.api.IReadInJoyModel;
+import com.tencent.mobileqq.qroute.QRoute;
 
 class ReadInJoyAdBrandOptimizationView$1
   implements View.OnClickListener
@@ -17,14 +17,13 @@ class ReadInJoyAdBrandOptimizationView$1
   
   public void onClick(View paramView)
   {
-    ReadInJoyAdUtils.a(ReadInJoyAdBrandOptimizationView.a(this.a), 1000, null);
-    ReadinJoyActionUtil.a((Activity)ReadInJoyAdBrandOptimizationView.a(this.a), ReadInJoyAdBrandOptimizationView.a(this.a), ReadInJoyAdBrandOptimizationView.a(this.a).a(), ReadInJoyAdBrandOptimizationView.a(this.a).e(), false, ReadInJoyAdSwitchUtil.b(ReadInJoyAdBrandOptimizationView.a(this.a)), new AdJumpParams());
-    EventCollector.getInstance().onViewClicked(paramView);
+    ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(ReadInJoyAdBrandOptimizationView.a(this.a), 1000, null);
+    ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).doActionAndReport((Activity)ReadInJoyAdBrandOptimizationView.a(this.a), ReadInJoyAdBrandOptimizationView.a(this.a), ReadInJoyAdBrandOptimizationView.a(this.a).a(), ReadInJoyAdBrandOptimizationView.a(this.a).c(), false, ReadInJoyAdSwitchUtil.b(ReadInJoyAdBrandOptimizationView.a(this.a)), new AdJumpParams());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdBrandOptimizationView.1
  * JD-Core Version:    0.7.0.1
  */

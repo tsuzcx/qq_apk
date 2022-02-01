@@ -1,0 +1,142 @@
+package com.tencent.mobileqq.startup.step;
+
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.splashad.SplashADUtil;
+import com.tencent.mobileqq.splashad.SplashADView;
+import com.tencent.mobileqq.startup.director.StartupDirector;
+import com.tencent.mobileqq.startup.director.StartupDirector.SplashCallBack;
+import com.tencent.mobileqq.vassplash.common.VasSplashUtil;
+import com.tencent.mobileqq.vassplash.model.SplashItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import cooperation.vip.ad.TianshuReportUtils;
+import java.lang.ref.WeakReference;
+import mqq.app.AppActivity;
+
+class SetSplash$VasSplashCallBack
+  extends StartupDirector.SplashCallBack
+{
+  WeakReference<SplashADView> a;
+  WeakReference<ImageView> b;
+  WeakReference<ImageView> c;
+  WeakReference<AppActivity> d;
+  
+  protected SetSplash$VasSplashCallBack(Object paramObject, SplashADView paramSplashADView, ImageView paramImageView1, ImageView paramImageView2, AppActivity paramAppActivity)
+  {
+    super(paramObject);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramSplashADView);
+    this.b = new WeakReference(paramImageView1);
+    this.c = new WeakReference(paramImageView2);
+    this.d = new WeakReference(paramAppActivity);
+  }
+  
+  protected void a()
+  {
+    try
+    {
+      SplashItem localSplashItem = (SplashItem)this.jdField_a_of_type_JavaLangObject;
+      this.jdField_a_of_type_Boolean = true;
+      SplashADView localSplashADView = (SplashADView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localSplashADView != null) {
+        localSplashADView.b = false;
+      }
+      if (localSplashItem.a != 2) {
+        return;
+      }
+      localSplashADView.d();
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QSplash@VasSplashUtil", 1, "show SplashAd end() error ", localException);
+    }
+  }
+  
+  protected void a(StartupDirector paramStartupDirector)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_JavaLangObject == null) {
+        return;
+      }
+      Object localObject = (SplashADView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      ImageView localImageView1 = (ImageView)this.b.get();
+      ImageView localImageView2 = (ImageView)this.c.get();
+      AppActivity localAppActivity = (AppActivity)this.d.get();
+      if (localObject != null)
+      {
+        if (localAppActivity == null) {
+          return;
+        }
+        SplashItem localSplashItem = (SplashItem)this.jdField_a_of_type_JavaLangObject;
+        QLog.i("QSplash@VasSplashUtil", 1, "bindView");
+        SplashADUtil.a = System.currentTimeMillis();
+        if (!((SplashADView)localObject).jdField_a_of_type_Boolean)
+        {
+          paramStartupDirector.a = 0L;
+          return;
+        }
+        ViewGroup localViewGroup = (ViewGroup)localAppActivity.findViewById(2131377782);
+        if (localViewGroup == null)
+        {
+          QLog.i("QSplash@VasSplashUtil", 1, "bindView fail, root is null");
+          paramStartupDirector.a = 0L;
+          return;
+        }
+        localViewGroup.addView((View)localObject, 0);
+        int i = localSplashItem.a;
+        if (i != 0)
+        {
+          if (i == 2)
+          {
+            QLog.i("QSplash@VasSplashUtil", 1, "show video");
+            ((SplashADView)localObject).b();
+            paramStartupDirector.a = 10000L;
+          }
+        }
+        else
+        {
+          if ((localImageView1 != null) && (localImageView2 != null))
+          {
+            localImageView1.setVisibility(8);
+            localImageView2.setVisibility(8);
+          }
+          paramStartupDirector.a = 3000L;
+        }
+        long l = SplashADUtil.a(BaseApplicationImpl.getApplication());
+        ImmersiveUtils.clearCoverForStatus(localAppActivity.getWindow(), true);
+        if (localSplashItem.c())
+        {
+          QLog.d("QSplash@VasSplashUtil", 1, "show UnionBannerSplash ");
+          SetSplash.a(localAppActivity);
+          paramStartupDirector = localSplashItem.b;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(l);
+          ((StringBuilder)localObject).append("");
+          VasSplashUtil.a(paramStartupDirector, ((StringBuilder)localObject).toString());
+          TianshuReportUtils.b(localSplashItem.b, 101, localSplashItem.j);
+        }
+        else
+        {
+          TianshuReportUtils.c(localSplashItem.b, 101, localSplashItem.j);
+        }
+        VasSplashUtil.a(localSplashItem.b, l, false);
+        return;
+      }
+      return;
+    }
+    catch (Exception paramStartupDirector)
+    {
+      QLog.e("QSplash@VasSplashUtil", 1, "show SplashAd bindView error ", paramStartupDirector);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.startup.step.SetSplash.VasSplashCallBack
+ * JD-Core Version:    0.7.0.1
+ */

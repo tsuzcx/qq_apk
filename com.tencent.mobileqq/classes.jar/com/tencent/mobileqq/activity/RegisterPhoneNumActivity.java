@@ -41,6 +41,7 @@ import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.vip.lianghao.RegisterLHAssistant;
 import com.tencent.mobileqq.widget.ConfigClearableEditText;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.app.AppRuntime;
@@ -64,34 +65,17 @@ public class RegisterPhoneNumActivity
   private ConfigClearableEditText editText;
   private CheckBox mCheckClause;
   private int mFromType = 0;
+  private boolean mIsBeforeFinish;
+  private boolean mIsValidPhoneNum = false;
   private LinearLayout mLayoutCheckClause;
   protected LoginUserPrivateHelper mLoginUserPrivateHelper;
   private QueryAccount mQueryAccount = null;
   private boolean mUserConfirmPrivacyPolicy;
   private Vibrator mVibrator;
-  private String strCountryName = HardCodeUtil.a(2131716898);
+  private String strCountryName = HardCodeUtil.a(2131716551);
   private TextView txtCountryCode;
   private TextView txtPrivacy;
   private TextView txtUsage;
-  
-  private boolean checkInputValid()
-  {
-    int i = 0;
-    try
-    {
-      String str = this.editText.getText().toString();
-      str = this.mQueryAccount.a(str);
-      if (str != null) {
-        i = 1;
-      }
-      return 0x1 & i;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("RegisterPhoneNumActivity", 1, new Object[] { "checkInputValid error : ", localException.getMessage() });
-    }
-    return true;
-  }
   
   private void clearTextSelMenu(EditText paramEditText)
   {
@@ -110,10 +94,11 @@ public class RegisterPhoneNumActivity
       if (this.mVibrator == null) {
         this.mVibrator = ((Vibrator)getSystemService("vibrator"));
       }
-      if (this.mVibrator != null) {
+      if (this.mVibrator != null)
+      {
         this.mVibrator.vibrate(50L);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -121,95 +106,107 @@ public class RegisterPhoneNumActivity
     }
   }
   
-  public static void expandViewTouchDelegate(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public static void expandViewTouchDelegate(View paramView, int paramInt)
   {
     if (paramView == null) {
       return;
     }
-    ((View)paramView.getParent()).post(new RegisterPhoneNumActivity.8(paramView, paramInt1, paramInt2, paramInt3, paramInt4));
+    paramView.post(new RegisterPhoneNumActivity.8(paramView, paramInt));
   }
   
   private void fillPhoneNum()
   {
     Intent localIntent = getIntent();
-    if (localIntent == null) {
-      QLog.d("RegisterPhoneNumActivity", 1, "fillPhoneNum null == intent");
-    }
-    int i;
-    do
+    if (localIntent == null)
     {
+      QLog.d("RegisterPhoneNumActivity", 1, "fillPhoneNum null == intent");
       return;
-      i = localIntent.getIntExtra("key_register_from", 0);
-      QLog.d("RegisterPhoneNumActivity", 1, new Object[] { "fillPhoneNum from=", Integer.valueOf(i) });
-    } while (i != 9);
-    this.editText.setText(localIntent.getStringExtra("key_phone_num"));
+    }
+    int i = localIntent.getIntExtra("key_register_from", 0);
+    QLog.d("RegisterPhoneNumActivity", 1, new Object[] { "fillPhoneNum from=", Integer.valueOf(i) });
+    if (i == 9) {
+      this.editText.setText(localIntent.getStringExtra("key_phone_num"));
+    }
   }
   
   @TargetApi(11)
   private void initViews()
   {
-    this.mLayoutCheckClause = ((LinearLayout)findViewById(2131370090));
-    this.mCheckClause = ((CheckBox)findViewById(2131364715));
+    this.mLayoutCheckClause = ((LinearLayout)findViewById(2131369768));
+    this.mCheckClause = ((CheckBox)findViewById(2131364602));
     int i = (int)DisplayUtils.a(this, 20.0F);
-    expandViewTouchDelegate(this.mCheckClause, i, i, i, i);
-    setTitleText(2131716971);
+    expandViewTouchDelegate(this.mCheckClause, i);
+    setTitleText(2131716624);
     setBackListener();
     setBarProgress(33);
-    findViewById(2131373437).setOnClickListener(this);
-    this.txtUsage = ((TextView)findViewById(2131380794));
+    findViewById(2131373016).setOnClickListener(this);
+    this.txtUsage = ((TextView)findViewById(2131380057));
     this.txtUsage.setOnClickListener(this);
-    this.txtUsage.setContentDescription(getString(2131716996) + getString(2131691194));
-    this.txtPrivacy = ((TextView)findViewById(2131380780));
+    TextView localTextView = this.txtUsage;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getString(2131716649));
+    localStringBuilder.append(getString(2131691115));
+    localTextView.setContentDescription(localStringBuilder.toString());
+    this.txtPrivacy = ((TextView)findViewById(2131380043));
     this.txtPrivacy.setOnClickListener(this);
-    this.txtPrivacy.setContentDescription(getString(2131716944) + getString(2131691194));
-    this.txtCountryCode = ((TextView)findViewById(2131380753));
-    this.txtCountryCode.setText("+" + this.countryCode);
+    localTextView = this.txtPrivacy;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getString(2131716597));
+    localStringBuilder.append(getString(2131691115));
+    localTextView.setContentDescription(localStringBuilder.toString());
+    this.txtCountryCode = ((TextView)findViewById(2131380021));
+    localTextView = this.txtCountryCode;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("+");
+    localStringBuilder.append(this.countryCode);
+    localTextView.setText(localStringBuilder.toString());
     this.txtCountryCode.setOnClickListener(this);
     setPressStateShow(this.txtCountryCode);
-    this.editText = ((ConfigClearableEditText)findViewById(2131372461));
+    this.editText = ((ConfigClearableEditText)findViewById(2131372044));
     this.editText.addTextChangedListener(this);
     clearTextSelMenu(this.editText);
     fillPhoneNum();
-    this.btnNextStep = ((Button)findViewById(2131364061));
+    this.btnNextStep = ((Button)findViewById(2131363982));
     this.btnNextStep.setOnClickListener(this);
+    findViewById(2131369768).setVisibility(0);
   }
   
   private static final boolean isNeedHideSoftkey(Context paramContext)
   {
-    int i = 0;
-    for (;;)
+    boolean bool = false;
+    int i;
+    try
     {
-      try
-      {
-        paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-        localPoint = new Point();
-        if (Build.VERSION.SDK_INT < 19) {
-          continue;
-        }
+      paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+      Point localPoint = new Point();
+      if (Build.VERSION.SDK_INT >= 19) {
         paramContext.getRealSize(localPoint);
-        j = localPoint.y;
-        if (j >= 1920) {
-          continue;
-        }
-        bool = true;
+      } else {
+        paramContext.getSize(localPoint);
       }
-      catch (Exception paramContext)
-      {
-        Point localPoint;
-        int j;
-        QLog.e("RegisterPhoneNumActivity", 2, "isNeedHideSoftkey", paramContext);
-        boolean bool = false;
-        continue;
-        bool = false;
-        continue;
-      }
+      int j = localPoint.y;
       i = j;
-      if (QLog.isColorLevel()) {
-        QLog.d("RegisterPhoneNumActivity", 2, "isNeedHideSoftkey, result=" + bool + ", mRealSizeHeight=" + i);
+      if (j < 1920)
+      {
+        bool = true;
+        i = j;
       }
-      return bool;
-      paramContext.getSize(localPoint);
     }
+    catch (Exception paramContext)
+    {
+      QLog.e("RegisterPhoneNumActivity", 2, "isNeedHideSoftkey", paramContext);
+      i = 0;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("isNeedHideSoftkey, result=");
+      paramContext.append(bool);
+      paramContext.append(", mRealSizeHeight=");
+      paramContext.append(i);
+      QLog.d("RegisterPhoneNumActivity", 2, paramContext.toString());
+    }
+    return bool;
   }
   
   private void setPressStateShow(View paramView)
@@ -217,11 +214,30 @@ public class RegisterPhoneNumActivity
     paramView.setOnTouchListener(new RegisterPhoneNumActivity.3(this));
   }
   
+  private void updateNextStepButton()
+  {
+    Object localObject = this.editText;
+    if (localObject == null) {
+      localObject = null;
+    } else {
+      localObject = ((ConfigClearableEditText)localObject).getText();
+    }
+    this.mIsValidPhoneNum = checkPhoneNumLength((Editable)localObject);
+    if (this.mIsValidPhoneNum)
+    {
+      this.btnNextStep.setBackgroundResource(2130841441);
+      this.btnNextStep.setEnabled(true);
+      return;
+    }
+    this.btnNextStep.setBackgroundResource(2130841442);
+  }
+  
   public void afterTextChanged(Editable paramEditable)
   {
+    this.phoneNum = this.editText.getText().toString();
     if (this.btnNextStep != null)
     {
-      this.btnNextStep.setEnabled(checkInputValid());
+      updateNextStepButton();
       RegisterManager.a().a(1);
     }
   }
@@ -230,8 +246,9 @@ public class RegisterPhoneNumActivity
   
   public boolean checkAgreementIsOk()
   {
-    if (this.mCheckClause != null) {
-      return this.mCheckClause.isChecked();
+    CheckBox localCheckBox = this.mCheckClause;
+    if (localCheckBox != null) {
+      return localCheckBox.isChecked();
     }
     return true;
   }
@@ -251,21 +268,25 @@ public class RegisterPhoneNumActivity
     {
       this.strCountryName = paramIntent.getStringExtra("k_name");
       this.countryCode = paramIntent.getStringExtra("k_code");
-      this.txtCountryCode.setText("+" + this.countryCode);
+      TextView localTextView = this.txtCountryCode;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("+");
+      localStringBuilder.append(this.countryCode);
+      localTextView.setText(localStringBuilder.toString());
       this.mCountryEnglishName = paramIntent.getStringExtra("k_english_name");
       RegisterOverseaHelper.a().a(this.mCountryEnglishName);
-      this.btnNextStep.setEnabled(checkInputValid());
+      updateNextStepButton();
     }
     this.mQueryAccount.a(paramInt1, paramInt2, paramIntent);
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     if (isNeedHideSoftkey(this)) {
       getWindow().setSoftInputMode(2);
     }
     super.doOnCreate(paramBundle);
-    setContentView(2131562023);
+    setContentView(2131559092);
     if (this.mRuntime == null) {
       this.mRuntime = getAppRuntime();
     }
@@ -273,6 +294,7 @@ public class RegisterPhoneNumActivity
     {
       QLog.d("RegisterPhoneNumActivity", 1, "doOnCreate app == null");
       finish();
+      this.mIsBeforeFinish = true;
       return true;
     }
     if (QLog.isDevelopLevel()) {
@@ -287,34 +309,35 @@ public class RegisterPhoneNumActivity
     ReportController.b(this.mRuntime, "CliOper", "", "", "0X8006650", "0X8006650", 0, 0, "", "", "", "");
     ReportController.a(this.mRuntime, "dc00898", "", "", "0X8007360", "0X8007360", 0, 0, "", "", "", "");
     ReportController.a(this.mRuntime, "dc00898", "", "", "0X8007360", "0X8007360", getIntent().getIntExtra("key_report_extra_from", 0), 0, "", "", "", "");
-    if ((this.mFrom == 2) || (this.mFrom == 3))
+    if ((this.mFrom != 2) && (this.mFrom != 3))
     {
-      this.mFromType = 1;
-      ReportController.a(this.mRuntime, "dc00898", "", "", "0X800B530", "0X800B530", this.mFromType, 0, "", "", "", "");
-      if (this.mFrom != -1) {
-        break label420;
+      if (this.mFrom == 1) {
+        this.mFromType = 2;
       }
-      ReportController.a(this.mRuntime, "new_reg_805", "reg_page", "page_exp", "", 1, "", "4", "", "", "", "", "", "", "");
     }
-    for (;;)
-    {
-      this.mLoginUserPrivateHelper = new LoginUserPrivateHelper();
-      paramBundle = new RegisterPhoneNumActivity.1(this);
-      this.mLoginUserPrivateHelper.a(paramBundle);
-      return true;
-      if (this.mFrom != 1) {
-        break;
-      }
-      this.mFromType = 2;
-      break;
-      label420:
+    else {
+      this.mFromType = 1;
+    }
+    ReportController.a(this.mRuntime, "dc00898", "", "", "0X800B530", "0X800B530", this.mFromType, 0, "", "", "", "");
+    if (this.mFrom == -1) {
+      ReportController.a(this.mRuntime, "new_reg_805", "reg_page", "page_exp", "", 1, "", "4", "", "", "", "", "", "", "");
+    } else {
       ReportController.a(this.mRuntime, "new_reg_805", "reg_page", "page_exp", "", 1, "", Integer.toString(this.mFrom), "", "", "", "", "", "", "");
     }
+    this.mLoginUserPrivateHelper = new LoginUserPrivateHelper();
+    paramBundle = new RegisterPhoneNumActivity.1(this);
+    this.mLoginUserPrivateHelper.a(paramBundle);
+    return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
+    if (this.mIsBeforeFinish)
+    {
+      QLog.e("RegisterPhoneNumActivity", 1, "runtime is null");
+      return;
+    }
     this.mQueryAccount.a();
     LoginUtils.a(this.mRuntime, getClass());
     ViewGroup localViewGroup = (ViewGroup)this.editText.getParent();
@@ -325,10 +348,10 @@ public class RegisterPhoneNumActivity
     RegisterManager.a().b();
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
-    this.btnNextStep.setEnabled(checkInputValid());
+    updateNextStepButton();
     RegisterManager.a().a(2);
   }
   
@@ -337,7 +360,7 @@ public class RegisterPhoneNumActivity
     return this.editText.getText().toString();
   }
   
-  public boolean isWrapContent()
+  protected boolean isWrapContent()
   {
     return false;
   }
@@ -346,97 +369,93 @@ public class RegisterPhoneNumActivity
   {
     int i = paramView.getId();
     int j = paramView.getId();
-    Object localObject;
-    if (j == 2131380753)
+    Object localObject1;
+    if ((j != 2131380021) && (j != 2131362980))
     {
-      localObject = new Intent(this, NewStyleCountryActivity.class);
-      ((Intent)localObject).putExtra("k_code", this.countryCode);
-      ((Intent)localObject).putExtra("k_name", this.strCountryName);
-      startActivityForResult((Intent)localObject, 1);
-    }
-    label341:
-    do
-    {
-      for (;;)
+      if (j == 2131363982)
       {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        if (j == 2131364061)
-        {
-          ReportController.b(this.mRuntime, "CliOper", "", "", "0X8006651", "0X8006651", 0, 0, "", "", "", "");
-          ReportController.a(this.mRuntime, "dc00898", "", "", "0X8007CC7", "0X8007CC7", 0, 0, "", "", "", "");
-          localObject = this.mRuntime;
-          if ((!TextUtils.isEmpty(this.strCountryName)) && (this.strCountryName.equals(getString(2131716897)))) {}
-          for (i = 1;; i = 2)
-          {
-            ReportController.a((AppRuntime)localObject, "dc00898", "", "", "0X8007CC7", "0X8007CC7", i, 0, "", "", "", "");
-            ReportController.b(this.mRuntime, "dc00898", "", "", "0X800B531", "0X800B531", this.mFromType, 0, "", "", getEditPhoneNum(), "");
-            ReportController.a(this.mRuntime, "new_reg_805", "reg_page", "next_clk", "", 1, "", "", "", "", "", "", "", "", "");
-            if (checkAgreementIsOk()) {
-              break label341;
-            }
-            localObject = AnimationUtils.loadAnimation(this, 2130772348);
-            this.mLayoutCheckClause.startAnimation((Animation)localObject);
-            doVibrate();
-            break;
-          }
-          if (this.mUserConfirmPrivacyPolicy)
-          {
-            if (this.mLoginUserPrivateHelper.a(this, false)) {
-              this.mQueryAccount.b();
-            }
-          }
-          else
-          {
-            localObject = new RegisterPhoneNumActivity.6(this, this);
-            PrivacyPolicyHelper.a(this, "", (DialogInterface.OnClickListener)localObject, (DialogInterface.OnClickListener)localObject).show();
-          }
+        ReportController.b(this.mRuntime, "CliOper", "", "", "0X8006651", "0X8006651", 0, 0, "", "", "", "");
+        ReportController.a(this.mRuntime, "dc00898", "", "", "0X8007CC7", "0X8007CC7", 0, 0, "", "", "", "");
+        localObject1 = this.mRuntime;
+        if ((!TextUtils.isEmpty(this.strCountryName)) && (this.strCountryName.equals(getString(2131716550)))) {
+          i = 1;
+        } else {
+          i = 2;
         }
-        else
+        ReportController.a((AppRuntime)localObject1, "dc00898", "", "", "0X8007CC7", "0X8007CC7", i, 0, "", "", "", "");
+        ReportController.b(this.mRuntime, "dc00898", "", "", "0X800B531", "0X800B531", this.mFromType, 0, "", "", getEditPhoneNum(), "");
+        ReportController.a(this.mRuntime, "new_reg_805", "reg_page", "next_clk", "", 1, "", "", "", "", "", "", "", "", "");
+        if (!this.mIsValidPhoneNum)
         {
-          if ((j != 2131380794) && (j != 2131380780)) {
-            break;
-          }
-          if (this.canGotoBrowser)
-          {
-            this.canGotoBrowser = false;
-            this.handler.postDelayed(new RegisterPhoneNumActivity.7(this), 1000L);
-            for (;;)
-            {
-              try
-              {
-                if (paramView.getId() != 2131380794) {
-                  continue;
-                }
-                localObject = "https://ti.qq.com/agreement/index.html";
-                startActivity(new Intent("android.intent.action.VIEW", Uri.parse((String)localObject)));
-              }
-              catch (Exception localException)
-              {
-                QLog.d("RegisterPhoneNumActivity", 1, "no system browser exp=", localException);
-                continue;
-              }
-              if (i != 2131380794) {
-                break label558;
-              }
-              ReportController.a(this.mRuntime, "new_reg_805", "reg_page", "terms_clk", "", 1, "", "", "", "", "", "", "", "", "");
-              break;
-              localObject = "https://ti.qq.com/agreement/privacy/index.html";
-            }
-            if (i == 2131380780) {
-              ReportController.a(this.mRuntime, "new_reg_805", "reg_page", "privacy_clk", "", 1, "", "", "", "", "", "", "", "", "");
-            }
-          }
+          QQToast.a(this, 1, 2131694818, 0).a();
+          break label665;
         }
+        if (!checkAgreementIsOk())
+        {
+          localObject1 = AnimationUtils.loadAnimation(this, 2130772380);
+          this.mLayoutCheckClause.startAnimation((Animation)localObject1);
+          doVibrate();
+          break label665;
+        }
+        if (this.mUserConfirmPrivacyPolicy)
+        {
+          if (!this.mLoginUserPrivateHelper.a(this, false)) {
+            break label665;
+          }
+          this.mQueryAccount.b();
+          break label665;
+        }
+        localObject1 = new RegisterPhoneNumActivity.6(this, this);
+        PrivacyPolicyHelper.a(this, "", (DialogInterface.OnClickListener)localObject1, (DialogInterface.OnClickListener)localObject1).show();
+        break label665;
       }
-    } while (j != 2131373437);
-    label558:
-    CheckBox localCheckBox = this.mCheckClause;
-    if (!this.mCheckClause.isChecked()) {}
-    for (boolean bool = true;; bool = false)
+      if ((j != 2131380057) && (j != 2131380043))
+      {
+        if (j != 2131373016) {
+          break label665;
+        }
+        localObject1 = this.mCheckClause;
+        ((CheckBox)localObject1).setChecked(((CheckBox)localObject1).isChecked() ^ true);
+        break label665;
+      }
+      if (!this.canGotoBrowser) {
+        break label665;
+      }
+      this.canGotoBrowser = false;
+      this.handler.postDelayed(new RegisterPhoneNumActivity.7(this), 1000L);
+    }
+    for (;;)
     {
-      localCheckBox.setChecked(bool);
-      break;
+      try
+      {
+        if (paramView.getId() != 2131380057) {
+          break label673;
+        }
+        localObject1 = "https://ti.qq.com/agreement/index.html";
+        startActivity(new Intent("android.intent.action.VIEW", Uri.parse((String)localObject1)));
+      }
+      catch (Exception localException)
+      {
+        QLog.d("RegisterPhoneNumActivity", 1, "no system browser exp=", localException);
+      }
+      if (i == 2131380057)
+      {
+        ReportController.a(this.mRuntime, "new_reg_805", "reg_page", "terms_clk", "", 1, "", "", "", "", "", "", "", "", "");
+      }
+      else if (i == 2131380043)
+      {
+        ReportController.a(this.mRuntime, "new_reg_805", "reg_page", "privacy_clk", "", 1, "", "", "", "", "", "", "", "", "");
+        break label665;
+        localObject2 = new Intent(this, NewStyleCountryActivity.class);
+        ((Intent)localObject2).putExtra("k_code", this.countryCode);
+        ((Intent)localObject2).putExtra("k_name", this.strCountryName);
+        startActivityForResult((Intent)localObject2, 1);
+      }
+      label665:
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label673:
+      Object localObject2 = "https://ti.qq.com/agreement/privacy/index.html";
     }
   }
   
@@ -451,7 +470,7 @@ public class RegisterPhoneNumActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterPhoneNumActivity
  * JD-Core Version:    0.7.0.1
  */

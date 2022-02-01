@@ -22,12 +22,20 @@ public class BlurRealFilter
   {
     this.previewWidth = ((int)paramFloat1);
     this.previewHeight = ((int)paramFloat2);
-    int i = 0;
-    if (this.mRadiusInPixels >= 1.0F)
+    float f = this.mRadiusInPixels;
+    int i;
+    if (f >= 1.0F)
     {
-      double d = Math.pow(this.mRadiusInPixels, 2.0D);
-      i = (int)Math.floor(Math.sqrt(Math.log(0.0039063F * Math.sqrt(6.283185307179586D * Math.pow(this.mRadiusInPixels, 2.0D))) * (-2.0D * d)));
+      double d1 = Math.pow(f, 2.0D);
+      double d2 = 0.0039063F;
+      double d3 = Math.sqrt(Math.pow(this.mRadiusInPixels, 2.0D) * 6.283185307179586D);
+      Double.isNaN(d2);
+      i = (int)Math.floor(Math.sqrt(d1 * -2.0D * Math.log(d2 * d3)));
       i += i % 2;
+    }
+    else
+    {
+      i = 0;
     }
     this.horizontal = new BaseFilter(HFGPUShaderFactory.gaussianFragmentShaderForOptimizedBlurOfRadius(i, this.mRadiusInPixels, true));
     this.vertical = new BaseFilter(HFGPUShaderFactory.gaussianFragmentShaderForOptimizedBlurOfRadius(i, this.mRadiusInPixels, false));
@@ -38,7 +46,7 @@ public class BlurRealFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.BlurRealFilter
  * JD-Core Version:    0.7.0.1
  */

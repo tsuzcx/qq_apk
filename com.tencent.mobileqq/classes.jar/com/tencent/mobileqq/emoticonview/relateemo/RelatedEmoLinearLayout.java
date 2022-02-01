@@ -53,49 +53,62 @@ public class RelatedEmoLinearLayout
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return true;
-      if ((!this.mHasPerformedLongPress) && (this.mPendingCheckForLongPress != null)) {
-        removeCallbacks(this.mPendingCheckForLongPress);
-      }
-      if (this.mPointView != null) {
-        this.mPointView.setAlpha(1.0F);
-      }
-      if ((this.mPointView != null) && (!this.mHasPerformedLongPress)) {
-        this.mPointView.performClick();
-      }
-      this.mPointView = null;
-      continue;
-      this.mHasPerformedLongPress = false;
-      this.mPointView = findPointChild(paramMotionEvent.getX(), paramMotionEvent.getY());
-      if (this.mPointView != null)
+      if (i != 1)
       {
-        this.mPointView.setAlpha(0.2F);
-        if (this.mPendingCheckForLongPress == null) {
-          this.mPendingCheckForLongPress = new RelatedEmoLinearLayout.CheckForLongPress(this, paramMotionEvent);
+        if (i != 3) {
+          return true;
         }
-        this.mPendingCheckForLongPress.rememberWindowAttachCount();
-        postDelayed(this.mPendingCheckForLongPress, ViewConfiguration.getLongPressTimeout());
-        continue;
         super.setPressed(false);
-        if (this.mPendingCheckForLongPress != null) {
-          removeCallbacks(this.mPendingCheckForLongPress);
+        paramMotionEvent = this.mPendingCheckForLongPress;
+        if (paramMotionEvent != null) {
+          removeCallbacks(paramMotionEvent);
         }
-        if (this.mPointView != null) {
-          this.mPointView.setAlpha(1.0F);
+        paramMotionEvent = this.mPointView;
+        if (paramMotionEvent != null) {
+          paramMotionEvent.setAlpha(1.0F);
         }
         this.mPointView = null;
+        return true;
       }
+      if (!this.mHasPerformedLongPress)
+      {
+        paramMotionEvent = this.mPendingCheckForLongPress;
+        if (paramMotionEvent != null) {
+          removeCallbacks(paramMotionEvent);
+        }
+      }
+      paramMotionEvent = this.mPointView;
+      if (paramMotionEvent != null) {
+        paramMotionEvent.setAlpha(1.0F);
+      }
+      paramMotionEvent = this.mPointView;
+      if ((paramMotionEvent != null) && (!this.mHasPerformedLongPress)) {
+        paramMotionEvent.performClick();
+      }
+      this.mPointView = null;
+      return true;
     }
+    this.mHasPerformedLongPress = false;
+    this.mPointView = findPointChild(paramMotionEvent.getX(), paramMotionEvent.getY());
+    View localView = this.mPointView;
+    if (localView != null)
+    {
+      localView.setAlpha(0.2F);
+      if (this.mPendingCheckForLongPress == null) {
+        this.mPendingCheckForLongPress = new RelatedEmoLinearLayout.CheckForLongPress(this, paramMotionEvent);
+      }
+      this.mPendingCheckForLongPress.rememberWindowAttachCount();
+      postDelayed(this.mPendingCheckForLongPress, ViewConfiguration.getLongPressTimeout());
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.relateemo.RelatedEmoLinearLayout
  * JD-Core Version:    0.7.0.1
  */

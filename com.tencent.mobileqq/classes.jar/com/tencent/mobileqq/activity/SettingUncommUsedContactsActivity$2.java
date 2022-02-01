@@ -14,32 +14,25 @@ class SettingUncommUsedContactsActivity$2
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    boolean bool = true;
-    if (((paramCompoundButton == this.a.a.a()) || (paramCompoundButton == this.a.b.a())) && (!NetworkUtil.d(this.a.getActivity())))
+    if (((paramCompoundButton == this.a.a.a()) || (paramCompoundButton == this.a.b.a())) && (!NetworkUtil.isNetSupport(this.a.getActivity())))
     {
-      this.a.a(2131694511, 0);
-      SettingUncommUsedContactsActivity localSettingUncommUsedContactsActivity = this.a;
-      if (!paramBoolean) {
-        SettingUncommUsedContactsActivity.a(localSettingUncommUsedContactsActivity, paramCompoundButton, bool);
-      }
+      this.a.a(2131694476, 0);
+      SettingUncommUsedContactsActivity.a(this.a, paramCompoundButton, paramBoolean ^ true);
     }
-    for (;;)
+    else if (paramCompoundButton == this.a.a.a())
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      bool = false;
-      break;
-      if (paramCompoundButton == this.a.a.a()) {
-        this.a.app.setNotAllowedSeeMyDongtai(paramBoolean, true);
-      } else if (paramCompoundButton == this.a.b.a()) {
-        this.a.app.setShieldHisDongtai(paramBoolean, true);
-      }
+      this.a.app.setNotAllowedSeeMyDongtai(paramBoolean, true);
     }
+    else if (paramCompoundButton == this.a.b.a())
+    {
+      this.a.app.setShieldHisDongtai(paramBoolean, true);
+    }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SettingUncommUsedContactsActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -66,36 +66,49 @@ final class ResolverState
       String str = (String)((Map.Entry)localObject).getKey();
       localObject = (String)((Map.Entry)localObject).getValue();
       FileSystem localFileSystem = (FileSystem)paramMap.get(localObject);
-      if (localFileSystem == null) {
-        throw new IllegalArgumentException("FileSystem '" + (String)localObject + "' for mount point '" + str + "' not exist.");
+      if (localFileSystem != null)
+      {
+        str = VFSUtils.macroResolve(str, paramMap1);
+        if (str != null) {
+          localArrayList.add(new ResolverState.MountPointEntry(str, (String)localObject, localFileSystem, -1));
+        }
       }
-      str = VFSUtils.macroResolve(str, paramMap1);
-      if (str != null) {
-        localArrayList.add(new ResolverState.MountPointEntry(str, (String)localObject, localFileSystem, -1));
+      else
+      {
+        paramMap = new StringBuilder();
+        paramMap.append("FileSystem '");
+        paramMap.append((String)localObject);
+        paramMap.append("' for mount point '");
+        paramMap.append(str);
+        paramMap.append("' not exist.");
+        throw new IllegalArgumentException(paramMap.toString());
       }
     }
     paramMap = (ResolverState.MountPointEntry[])localArrayList.toArray(new ResolverState.MountPointEntry[0]);
     Arrays.sort(paramMap, new ResolverState.1());
     int j = 1;
-    if (j < paramMap.length)
+    while (j < paramMap.length)
     {
       paramSortedMap = paramMap[j];
       paramMap1 = paramSortedMap.basePath;
       int i = j - 1;
       localArrayList = paramMap[i];
-      if (paramSortedMap.basePath.equals(localArrayList.basePath)) {
-        if (QLog.isColorLevel()) {
-          QLog.w("VFS.ResolverState", 2, "Oops, duplicated mount point detected: " + paramSortedMap.toString() + " <=> " + localArrayList.toString());
-        }
-      }
-      int k;
-      for (i = localArrayList.fallbackIndex;; i = k)
+      if (paramSortedMap.basePath.equals(localArrayList.basePath))
       {
-        if (i >= 0) {
-          paramMap[j] = new ResolverState.MountPointEntry(paramSortedMap.basePath, paramSortedMap.fileSystemName, paramSortedMap.fileSystem, i);
+        if (QLog.isColorLevel())
+        {
+          paramMap1 = new StringBuilder();
+          paramMap1.append("Oops, duplicated mount point detected: ");
+          paramMap1.append(paramSortedMap.toString());
+          paramMap1.append(" <=> ");
+          paramMap1.append(localArrayList.toString());
+          QLog.w("VFS.ResolverState", 2, paramMap1.toString());
         }
-        j += 1;
-        break;
+        i = localArrayList.fallbackIndex;
+      }
+      else
+      {
+        int k;
         do
         {
           localArrayList = paramMap[i];
@@ -105,7 +118,12 @@ final class ResolverState
           k = localArrayList.fallbackIndex;
           i = k;
         } while (k >= 0);
+        i = k;
       }
+      if (i >= 0) {
+        paramMap[j] = new ResolverState.MountPointEntry(paramSortedMap.basePath, paramSortedMap.fileSystemName, paramSortedMap.fileSystem, i);
+      }
+      j += 1;
     }
     VFSTrack.track("generateMountPoints", null);
     return Arrays.asList(paramMap);
@@ -212,77 +230,86 @@ final class ResolverState
   
   public String toString()
   {
-    return "schemes: " + this.mSchemeResolvers.size() + ", fileSystems: " + this.mFileSystems.size() + ", mountPoints: " + this.mMountPoints.size() + " (" + this.mActiveMountPoints + " active), envVars: " + this.mEnvVars.size();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("schemes: ");
+    localStringBuilder.append(this.mSchemeResolvers.size());
+    localStringBuilder.append(", fileSystems: ");
+    localStringBuilder.append(this.mFileSystems.size());
+    localStringBuilder.append(", mountPoints: ");
+    localStringBuilder.append(this.mMountPoints.size());
+    localStringBuilder.append(" (");
+    localStringBuilder.append(this.mActiveMountPoints);
+    localStringBuilder.append(" active), envVars: ");
+    localStringBuilder.append(this.mEnvVars.size());
+    return localStringBuilder.toString();
   }
   
   ResolverState update(Map<String, SchemeResolver> paramMap, Map<String, FileSystem> paramMap1, SortedMap<String, String> paramSortedMap, Map<String, String> paramMap2, FileSystem paramFileSystem)
   {
     VFSTrack.track(null, "update");
-    int i = 0;
+    int i;
     Object localObject1;
-    label39:
-    label53:
-    Object localObject2;
     if (paramMap.isEmpty())
     {
       paramMap = this.mSchemeResolvers;
-      if (!paramMap1.isEmpty()) {
-        break label173;
-      }
-      localObject1 = this.mFileSystems;
-      if (!paramSortedMap.isEmpty()) {
-        break label198;
-      }
-      paramSortedMap = this.mMountPoints;
-      if (!paramMap2.isEmpty()) {
-        break label226;
-      }
-      localObject2 = this.mEnvVars;
-      label69:
-      if (paramFileSystem != null) {
-        break label252;
-      }
-      paramFileSystem = this.mRootFileSystem;
-      label80:
-      if (i == 0) {
-        break label255;
-      }
+      i = 0;
     }
-    label173:
-    label198:
-    label226:
-    label252:
-    label255:
-    for (paramMap = new ResolverState(paramMap, (Map)localObject1, paramSortedMap, (Map)localObject2, paramFileSystem);; paramMap = this)
+    else
     {
-      if (paramMap1.isEmpty()) {
-        paramMap.mFileSystemsSnapshot = this.mFileSystemsSnapshot;
-      }
-      if (paramMap2.isEmpty()) {
-        paramMap.mEnvSnapshot = this.mEnvSnapshot;
-      }
-      VFSTrack.track("update", null);
-      return paramMap;
       localObject1 = new HashMap(this.mSchemeResolvers);
       mergeMap((Map)localObject1, paramMap);
-      i = 1;
       paramMap = (Map<String, SchemeResolver>)localObject1;
-      break;
+      i = 1;
+    }
+    if (paramMap1.isEmpty())
+    {
+      localObject1 = this.mFileSystems;
+    }
+    else
+    {
       localObject1 = new HashMap(this.mFileSystems);
       mergeMap((Map)localObject1, paramMap1);
       i = 1;
-      break label39;
+    }
+    Object localObject2;
+    if (paramSortedMap.isEmpty())
+    {
+      paramSortedMap = this.mMountPoints;
+    }
+    else
+    {
       localObject2 = new TreeMap(this.mMountPoints);
       mergeMap((Map)localObject2, paramSortedMap);
-      i = 1;
       paramSortedMap = (SortedMap<String, String>)localObject2;
-      break label53;
+      i = 1;
+    }
+    if (paramMap2.isEmpty())
+    {
+      localObject2 = this.mEnvVars;
+    }
+    else
+    {
       localObject2 = new HashMap(this.mEnvVars);
       mergeMap((Map)localObject2, paramMap2);
       i = 1;
-      break label69;
-      break label80;
     }
+    FileSystem localFileSystem = paramFileSystem;
+    if (paramFileSystem == null) {
+      localFileSystem = this.mRootFileSystem;
+    }
+    if (i != 0) {
+      paramMap = new ResolverState(paramMap, (Map)localObject1, paramSortedMap, (Map)localObject2, localFileSystem);
+    } else {
+      paramMap = this;
+    }
+    if (paramMap1.isEmpty()) {
+      paramMap.mFileSystemsSnapshot = this.mFileSystemsSnapshot;
+    }
+    if (paramMap2.isEmpty()) {
+      paramMap.mEnvSnapshot = this.mEnvSnapshot;
+    }
+    VFSTrack.track("update", null);
+    return paramMap;
   }
   
   Bundle writeToBundle()
@@ -340,7 +367,7 @@ final class ResolverState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.vfs.ResolverState
  * JD-Core Version:    0.7.0.1
  */

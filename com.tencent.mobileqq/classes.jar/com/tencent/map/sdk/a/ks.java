@@ -13,15 +13,16 @@ public final class ks
   
   public final IMapRenderView a()
   {
-    if (this.a == null) {
+    le localle = this.a;
+    if (localle == null) {
       return null;
     }
-    return this.a.v();
+    return localle.v();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.ks
  * JD-Core Version:    0.7.0.1
  */

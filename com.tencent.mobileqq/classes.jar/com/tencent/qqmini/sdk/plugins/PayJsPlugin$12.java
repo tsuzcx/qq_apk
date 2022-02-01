@@ -14,28 +14,33 @@ class PayJsPlugin$12
   
   public void onPayCallBack(PayProxy.PayResponse paramPayResponse)
   {
-    JSONObject localJSONObject = new JSONObject();
+    Object localObject = new JSONObject();
     try
     {
-      localJSONObject.put("resultCode", paramPayResponse.getResultCode());
+      ((JSONObject)localObject).put("resultCode", paramPayResponse.getResultCode());
       label19:
-      if ((paramPayResponse.getResultCode() == 0) && (paramPayResponse.getPayState() == 0)) {
-        PayJsPlugin.access$1600(this.this$0, this.val$req, localJSONObject);
-      }
-      for (;;)
+      if ((paramPayResponse.getResultCode() == 0) && (paramPayResponse.getPayState() == 0))
       {
-        QMLog.i("PayJsPlugin", "handleMidasGoodsPay onPayCallBack, , resultCode = " + paramPayResponse.getResultCode() + ", resultMsg = " + paramPayResponse.getResultMsg() + "extendInfo = " + paramPayResponse.getExtendInfo());
-        return;
-        if ((paramPayResponse.getResultCode() == 2) || (paramPayResponse.getPayState() == 1))
-        {
-          PayJsPlugin.access$000(this.this$0, this.val$req, localJSONObject);
-        }
-        else
-        {
-          String str = paramPayResponse.getResultMsg();
-          PayJsPlugin.access$700(this.this$0, this.val$req, localJSONObject, str);
-        }
+        PayJsPlugin.access$1600(this.this$0, this.val$req, (JSONObject)localObject);
       }
+      else if ((paramPayResponse.getResultCode() != 2) && (paramPayResponse.getPayState() != 1))
+      {
+        String str = paramPayResponse.getResultMsg();
+        PayJsPlugin.access$700(this.this$0, this.val$req, (JSONObject)localObject, str);
+      }
+      else
+      {
+        PayJsPlugin.access$000(this.this$0, this.val$req, (JSONObject)localObject);
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleMidasGoodsPay onPayCallBack, , resultCode = ");
+      ((StringBuilder)localObject).append(paramPayResponse.getResultCode());
+      ((StringBuilder)localObject).append(", resultMsg = ");
+      ((StringBuilder)localObject).append(paramPayResponse.getResultMsg());
+      ((StringBuilder)localObject).append("extendInfo = ");
+      ((StringBuilder)localObject).append(paramPayResponse.getExtendInfo());
+      QMLog.i("PayJsPlugin", ((StringBuilder)localObject).toString());
+      return;
     }
     catch (JSONException localJSONException)
     {
@@ -51,7 +56,7 @@ class PayJsPlugin$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.PayJsPlugin.12
  * JD-Core Version:    0.7.0.1
  */

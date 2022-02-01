@@ -29,14 +29,12 @@ public class i
   
   static boolean a(Context paramContext, String paramString)
   {
-    boolean bool = false;
     try
     {
       int i = paramContext.getPackageManager().checkPermission(paramString, paramContext.getPackageName());
       if (i == 0) {
-        bool = true;
+        return true;
       }
-      return bool;
     }
     catch (Throwable paramContext)
     {
@@ -57,18 +55,15 @@ public class i
   
   static String d(String paramString)
   {
-    String str;
     if (paramString == null) {
-      str = null;
+      return null;
     }
-    do
-    {
-      return str;
-      str = paramString;
-    } while (Build.VERSION.SDK_INT < 8);
+    if (Build.VERSION.SDK_INT < 8) {
+      return paramString;
+    }
     try
     {
-      str = new String(d.b(Base64.decode(paramString.getBytes("UTF-8"), 0)), "UTF-8").trim().replace("\t", "").replace("\n", "").replace("\r", "");
+      String str = new String(d.b(Base64.decode(paramString.getBytes("UTF-8"), 0)), "UTF-8").trim().replace("\t", "").replace("\n", "").replace("\r", "");
       return str;
     }
     catch (Throwable localThrowable)
@@ -80,18 +75,15 @@ public class i
   
   static String e(String paramString)
   {
-    String str;
     if (paramString == null) {
-      str = null;
+      return null;
     }
-    do
-    {
-      return str;
-      str = paramString;
-    } while (Build.VERSION.SDK_INT < 8);
+    if (Build.VERSION.SDK_INT < 8) {
+      return paramString;
+    }
     try
     {
-      str = new String(Base64.encode(d.a(paramString.getBytes("UTF-8")), 0), "UTF-8").trim().replace("\t", "").replace("\n", "").replace("\r", "");
+      String str = new String(Base64.encode(d.a(paramString.getBytes("UTF-8")), 0), "UTF-8").trim().replace("\t", "").replace("\n", "").replace("\r", "");
       return str;
     }
     catch (Throwable localThrowable)

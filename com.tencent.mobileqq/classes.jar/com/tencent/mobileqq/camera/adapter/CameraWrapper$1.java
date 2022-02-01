@@ -20,13 +20,13 @@ class CameraWrapper$1
       i = 1;
     }
     CameraWrapper.a(i);
-    this.a.edit().putInt("localsp_camera_num", i).commit();
+    this.a.edit().putInt("local_sp_camera_num", i).commit();
     QLog.d("Q.camera.CameraWrapper", 1, new Object[] { "getNumberOfCameras init, return ", Integer.valueOf(CameraWrapper.c()) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.camera.adapter.CameraWrapper.1
  * JD-Core Version:    0.7.0.1
  */

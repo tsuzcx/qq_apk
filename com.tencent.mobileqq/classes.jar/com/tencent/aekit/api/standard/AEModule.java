@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.aekit.api.standard.ai.AIManager;
 import com.tencent.aekit.api.standard.filter.AEFaceBeauty;
 import com.tencent.aekit.openrender.AEOpenRenderConfig;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
@@ -18,6 +17,7 @@ import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.filter.aifilter.NetworkRequest;
 import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
+import com.tencent.ttpic.openapi.initializer.MaskImagesInitializer;
 import com.tencent.ttpic.openapi.initializer.YTCommonInitializer;
 import com.tencent.ttpic.openapi.manager.FaceBeautyManager;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
@@ -36,23 +36,32 @@ public class AEModule
   private static final String AEKIT_VERSION = "2.0.0";
   private static final String AEKIT_VERSION_FILE = "aekit_meta.txt";
   public static final String DEFAULT_LICENSE_NAME = "com_tencent_2118.lic";
-  private static final String DEFAULT_RESOURCE_DIR = "tencent" + File.separator + "aekit";
+  private static final String DEFAULT_RESOURCE_DIR;
   private static final String TAG = "AEKitModule";
-  private static String aekitVersion = null;
-  private static boolean debugMode = false;
+  private static String aekitVersion;
+  private static boolean debugMode;
   private static boolean enableDefaultBasic3;
   private static boolean enableReducedMeidaLibrary;
   private static DecryptListener mDecryptListener = new AEModule.1();
   private static String mLicense;
   private static int mLicenseInitType;
   private static String mLutDirPath;
-  private static String mModelPath = null;
-  private static String mSoPath = null;
+  private static String mModelPath;
+  private static String mSoPath;
   private static NetworkRequest networkRequest;
   private static Context sContext;
   
   static
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tencent");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("aekit");
+    DEFAULT_RESOURCE_DIR = localStringBuilder.toString();
+    aekitVersion = null;
+    debugMode = false;
+    mModelPath = null;
+    mSoPath = null;
     mLutDirPath = null;
     enableDefaultBasic3 = false;
     enableReducedMeidaLibrary = false;
@@ -64,7 +73,6 @@ public class AEModule
   {
     ShaderManager.getInstance().clear();
     VideoMemoryManager.getInstance().clearBeautyCache();
-    AIManager.destroy();
   }
   
   public static Context getContext()
@@ -104,8 +112,12 @@ public class AEModule
     }
     try
     {
-      String str = getContext().getExternalFilesDir(null).getAbsolutePath() + File.separator + DEFAULT_RESOURCE_DIR;
-      return str;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(getContext().getExternalFilesDir(null).getAbsolutePath());
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append(DEFAULT_RESOURCE_DIR);
+      localObject = ((StringBuilder)localObject).toString();
+      return localObject;
     }
     catch (Exception localException)
     {
@@ -114,44 +126,46 @@ public class AEModule
     return null;
   }
   
+  @Deprecated
   public static String getVersion()
   {
     if (!TextUtils.isEmpty(aekitVersion)) {
       return aekitVersion;
     }
-    if (sContext == null) {
+    Object localObject = sContext;
+    if (localObject == null)
+    {
       aekitVersion = "2.0.0";
     }
-    for (;;)
+    else
     {
-      return aekitVersion;
-      String str = FileUtils.loadAssetsString(sContext, "aekit_meta.txt");
-      if (TextUtils.isEmpty(str)) {
+      localObject = FileUtils.loadAssetsString((Context)localObject, "aekit_meta.txt");
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
         aekitVersion = "2.0.0";
       } else {
-        aekitVersion = str.split("\n")[0];
+        aekitVersion = localObject.split("\n")[0];
       }
     }
+    return aekitVersion;
   }
   
+  @Deprecated
   public static String getVersion(Context paramContext)
   {
     if (aekitVersion == null)
     {
       paramContext = FileUtils.loadAssetsString(paramContext, "aekit_meta.txt");
-      if (!TextUtils.isEmpty(paramContext)) {
-        break label29;
+      if (TextUtils.isEmpty(paramContext)) {
+        aekitVersion = "2.0.0";
+      } else {
+        aekitVersion = paramContext.split("\n")[0];
       }
     }
-    label29:
-    for (aekitVersion = "2.0.0";; aekitVersion = paramContext.split("\n")[0]) {
-      return aekitVersion;
-    }
+    return aekitVersion;
   }
   
   private static boolean initImpl(Context paramContext, AEModuleConfig paramAEModuleConfig, boolean paramBoolean)
   {
-    boolean bool1 = false;
     mLutDirPath = paramAEModuleConfig.getLutDir();
     mModelPath = paramAEModuleConfig.getModelDir();
     enableDefaultBasic3 = paramAEModuleConfig.isEnableDefaultBasic3();
@@ -161,11 +175,12 @@ public class AEModule
     enableReducedMeidaLibrary = paramAEModuleConfig.isEnableReducedMeidaLibrary();
     networkRequest = paramAEModuleConfig.getNetworkRequest();
     SharedPreferences localSharedPreferences = paramAEModuleConfig.getPreferences();
-    boolean bool2 = paramAEModuleConfig.isFramebufferFetchEnable();
-    boolean bool3 = paramAEModuleConfig.isEnableResourceCheck();
-    boolean bool4 = paramAEModuleConfig.isEnableDataReport();
-    boolean bool5 = paramAEModuleConfig.isEnableProfiler();
-    boolean bool6 = paramAEModuleConfig.isEnableSoLoadCheck();
+    boolean bool1 = paramAEModuleConfig.isFramebufferFetchEnable();
+    boolean bool2 = paramAEModuleConfig.isEnableResourceCheck();
+    boolean bool3 = paramAEModuleConfig.isEnableDataReport();
+    boolean bool4 = paramAEModuleConfig.isEnableProfiler();
+    boolean bool5 = paramAEModuleConfig.isEnableSoLoadCheck();
+    boolean bool6 = paramAEModuleConfig.isCacheBeautyBitmaps();
     setContext(paramContext);
     AEBaseConfig.setContext(paramContext);
     debugMode = paramAEModuleConfig.isDebugMode();
@@ -175,41 +190,54 @@ public class AEModule
     if ((!TextUtils.isEmpty(mLutDirPath)) && (!FileUtils.isDirectoryWritable(mLutDirPath))) {
       mLutDirPath = null;
     }
-    LogUtils.d("AEModule", "ModelDir config.modelDir = " + mModelPath);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ModelDir config.modelDir = ");
+    localStringBuilder.append(mModelPath);
+    LogUtils.d("AEModule", localStringBuilder.toString());
     if ((!TextUtils.isEmpty(mModelPath)) && (!FileUtils.isDirectoryWritable(mModelPath)))
     {
-      LogUtils.d("AEModule", "ModelDir mModelPath = " + mModelPath + " and Directory is not Writable. reset");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ModelDir mModelPath = ");
+      localStringBuilder.append(mModelPath);
+      localStringBuilder.append(" and Directory is not Writable. reset");
+      LogUtils.d("AEModule", localStringBuilder.toString());
       mModelPath = null;
     }
     if ((!TextUtils.isEmpty(mSoPath)) && (!FileUtils.isDirectoryWritable(mSoPath)))
     {
-      LogUtils.d("AEModule", "ModelDir mSoPath = " + mSoPath + " and Directory is not Writable. reset");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ModelDir mSoPath = ");
+      localStringBuilder.append(mSoPath);
+      localStringBuilder.append(" and Directory is not Writable. reset");
+      LogUtils.d("AEModule", localStringBuilder.toString());
       mSoPath = null;
     }
-    LogUtils.d("AEModule", "ModelDir soAndModelDir = " + mModelPath);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ModelDir soAndModelDir = ");
+    localStringBuilder.append(mModelPath);
+    LogUtils.d("AEModule", localStringBuilder.toString());
     FeatureManager.setModelDir(mModelPath);
     FeatureManager.setSoDir(mSoPath);
-    FeatureManager.enableResourceCheck(bool3);
+    FeatureManager.enableResourceCheck(bool2);
     FeatureManager.createNoMedia();
-    FeatureManager.enableSoLoadCheck(bool6);
+    FeatureManager.enableSoLoadCheck(bool5);
+    FeatureManager.Features.MASK_IMAGES.setLoadBitmapsWhenInit(bool6);
     FaceBeautyManager.registerFaceBeauty(AEFaceBeauty.class.getName(), AEFaceBeauty.class);
     VideoPrefsUtil.init(paramContext, localSharedPreferences);
-    GLCapabilities.init(bool2);
+    GLCapabilities.init(bool1);
     AVReportCenter.getInstance().init(getContext());
-    AVReportCenter.getInstance().setEnable(bool4);
+    AVReportCenter.getInstance().setEnable(bool3);
     VideoFilterBase.setDumpFilterParams(paramAEModuleConfig.isEnableDumpFilterParams());
-    AEProfiler.getInstance().setEnable(bool5);
+    AEProfiler.getInstance().setEnable(bool4);
     FeatureManager.Features.YT_COMMON.setAuthMode(paramAEModuleConfig.getAuthMode());
-    if (paramAEModuleConfig.getIsLoadSo())
-    {
+    if (paramAEModuleConfig.getIsLoadSo()) {
       if (FeatureManager.loadBasicFeatures(paramBoolean)) {
         updateDeviceAttr(false);
+      } else {
+        return false;
       }
     }
-    else {
-      bool1 = true;
-    }
-    return bool1;
+    return true;
   }
   
   public static boolean initialize(Context paramContext, AEModuleConfig paramAEModuleConfig)
@@ -257,7 +285,10 @@ public class AEModule
   
   public static void updateDeviceAttr(boolean paramBoolean)
   {
-    LogUtils.d("AEKitModule", "updateDeviceAttr foceUpdate = " + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateDeviceAttr foceUpdate = ");
+    localStringBuilder.append(paramBoolean);
+    LogUtils.d("AEKitModule", localStringBuilder.toString());
     CfConfig.setDecryptListener(mDecryptListener);
     AsyncTask.THREAD_POOL_EXECUTOR.execute(new AEModule.2(paramBoolean));
   }

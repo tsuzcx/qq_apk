@@ -20,11 +20,12 @@ public final class qq_ad_get$QQAdGetRsp$AdInfo
   public final PBStringField ext_json = PBField.initString("");
   public final PBUInt32Field product_type = PBField.initUInt32(0);
   public qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo report_info = new qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo();
+  public qq_ad_get.QQAdGetRsp.AdInfo.RewardInfo reward_info = new qq_ad_get.QQAdGetRsp.AdInfo.RewardInfo();
   public qq_ad_get.QQAdGetRsp.AdInfo.WeChatAppInfo wechat_app_info = new qq_ad_get.QQAdGetRsp.AdInfo.WeChatAppInfo();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo
  * JD-Core Version:    0.7.0.1
  */

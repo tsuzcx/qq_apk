@@ -4,12 +4,14 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.text.TextUtils;
 import com.qq.jce.wup.UniPacket;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseProtocolCoder;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.onlinestatus.OnLineStatusHelper;
 import com.tencent.mobileqq.onlinestatus.OnlineStatusItem;
+import com.tencent.mobileqq.onlinestatus.api.IOnLineStatueHelperApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.msf.service.protocol.push.SvcReqRegister;
 import com.tencent.msf.service.protocol.push.SvcReqSetToken;
 import com.tencent.msf.service.protocol.push.SvcRespRegister;
@@ -41,27 +43,34 @@ public class OnlineStatusService
   private boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
     SvcReqSetToken localSvcReqSetToken = new SvcReqSetToken();
-    paramToServiceMsg = paramToServiceMsg.extraData.getString("push_token");
+    String str = paramToServiceMsg.extraData.getString("push_token");
+    paramToServiceMsg = paramToServiceMsg.extraData.getString("push_profileid");
     try
     {
-      localSvcReqSetToken.vNewToken = paramToServiceMsg.getBytes("utf-8");
-      localSvcReqSetToken.bEnterVersion = 37;
-      localSvcReqSetToken.bPushMsg = 1;
-      paramUniPacket.put("SvcReqSetToken", localSvcReqSetToken);
-      paramUniPacket.setServantName("PushService");
-      paramUniPacket.setFuncName("SvcReqSetToken");
-      if (QLog.isColorLevel()) {
-        QLog.d("OnlineStatusService", 2, "HPush_requestSetPushToken-encodeRequestMsg-handleReqSetPushToken:");
+      localSvcReqSetToken.vNewToken = str.getBytes("utf-8");
+      if (!TextUtils.isEmpty(paramToServiceMsg)) {
+        localSvcReqSetToken.vProfileID = paramToServiceMsg.getBytes("utf-8");
       }
-      return true;
     }
-    catch (UnsupportedEncodingException paramToServiceMsg)
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      for (;;)
-      {
-        paramToServiceMsg.printStackTrace();
-      }
+      localUnsupportedEncodingException.printStackTrace();
     }
+    localSvcReqSetToken.bEnterVersion = 37;
+    localSvcReqSetToken.bPushMsg = 1;
+    paramUniPacket.put("SvcReqSetToken", localSvcReqSetToken);
+    paramUniPacket.setServantName("PushService");
+    paramUniPacket.setFuncName("SvcReqSetToken");
+    if (QLog.isColorLevel())
+    {
+      paramUniPacket = new StringBuilder();
+      paramUniPacket.append("HPush_requestSetPushToken-encodeRequestMsg-handleReqSetPushToken:");
+      paramUniPacket.append(str);
+      paramUniPacket.append(",profileid = ");
+      paramUniPacket.append(paramToServiceMsg);
+      QLog.d("OnlineStatusService", 2, paramUniPacket.toString());
+    }
+    return true;
   }
   
   private Object b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -86,55 +95,52 @@ public class OnlineStatusService
     byte b;
     if (paramToServiceMsg.extraData.getBoolean("isAutoSet", false)) {
       b = 2;
+    } else {
+      b = 1;
     }
-    for (;;)
+    localSvcReqRegister.bIsSetStatus = b;
+    localSvcReqRegister.uExtOnlineStatus = paramToServiceMsg.extraData.getLong("extOnlineStatus", -1L);
+    int i = paramToServiceMsg.extraData.getInt("vendor_push_type", 1);
+    if (QLog.isColorLevel())
     {
-      localSvcReqRegister.bIsSetStatus = b;
-      localSvcReqRegister.uExtOnlineStatus = paramToServiceMsg.extraData.getLong("extOnlineStatus", -1L);
-      int i = paramToServiceMsg.extraData.getInt("vendor_push_type", 1);
-      if (QLog.isColorLevel()) {
-        QLog.d("OnlineStatusService", 2, "OnlineStatusService-handleReqSetOnlineStatus.vendor_push_type:" + i);
-      }
-      localVendorPushInfo.uVendorType = i;
-      if ((localStatus == AppRuntime.Status.online) && (OnlineStatusItem.a(localSvcReqRegister.uExtOnlineStatus))) {
-        localSvcReqRegister.iBatteryStatus = OnLineStatusHelper.a(paramToServiceMsg.extraData.getInt("batteryCapacity", 0), paramToServiceMsg.extraData.getInt("powerConnect", -1));
-      }
-      try
-      {
-        for (;;)
-        {
-          localSvcReqRegister.iOSVersion = Integer.parseInt(Build.VERSION.SDK);
-          if (!NetConnInfoCenter.isMobileConn()) {
-            break label371;
-          }
-          localSvcReqRegister.cNetType = 0;
-          localSvcReqRegister.vecGuid = NetConnInfoCenter.GUID;
-          localSvcReqRegister.strDevName = Build.MODEL;
-          localSvcReqRegister.strDevType = Build.MODEL;
-          localSvcReqRegister.strOSVer = Build.VERSION.RELEASE;
-          localSvcReqRegister.stVendorPushInfo = localVendorPushInfo;
-          paramUniPacket.put("SvcReqRegister", localSvcReqRegister);
-          paramUniPacket.setServantName("PushService");
-          paramUniPacket.setFuncName("SvcReqRegister");
-          return true;
-          b = 1;
-          break;
-          localSvcReqRegister.iBatteryStatus = 0;
-        }
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        for (;;)
-        {
-          paramToServiceMsg.printStackTrace();
-          continue;
-          label371:
-          if (NetConnInfoCenter.isWifiConn()) {
-            localSvcReqRegister.cNetType = 1;
-          }
-        }
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("OnlineStatusService-handleReqSetOnlineStatus.vendor_push_type:");
+      localStringBuilder.append(i);
+      QLog.d("OnlineStatusService", 2, localStringBuilder.toString());
     }
+    localVendorPushInfo.uVendorType = i;
+    if ((localStatus == AppRuntime.Status.online) && (OnlineStatusItem.a(localSvcReqRegister.uExtOnlineStatus)))
+    {
+      i = paramToServiceMsg.extraData.getInt("batteryCapacity", 0);
+      int j = paramToServiceMsg.extraData.getInt("powerConnect", -1);
+      localSvcReqRegister.iBatteryStatus = ((IOnLineStatueHelperApi)QRoute.api(IOnLineStatueHelperApi.class)).getSendBatteryStatus(i, j);
+    }
+    else
+    {
+      localSvcReqRegister.iBatteryStatus = 0;
+    }
+    try
+    {
+      localSvcReqRegister.iOSVersion = Integer.parseInt(Build.VERSION.SDK);
+    }
+    catch (Exception paramToServiceMsg)
+    {
+      paramToServiceMsg.printStackTrace();
+    }
+    if (NetConnInfoCenter.isMobileConn()) {
+      localSvcReqRegister.cNetType = 0;
+    } else if (NetConnInfoCenter.isWifiConn()) {
+      localSvcReqRegister.cNetType = 1;
+    }
+    localSvcReqRegister.vecGuid = NetConnInfoCenter.GUID;
+    localSvcReqRegister.strDevName = Build.MODEL;
+    localSvcReqRegister.strDevType = Build.MODEL;
+    localSvcReqRegister.strOSVer = Build.VERSION.RELEASE;
+    localSvcReqRegister.stVendorPushInfo = localVendorPushInfo;
+    paramUniPacket.put("SvcReqRegister", localSvcReqRegister);
+    paramUniPacket.setServantName("PushService");
+    paramUniPacket.setFuncName("SvcReqRegister");
+    return true;
   }
   
   public String[] cmdHeaderPrefix()
@@ -166,7 +172,7 @@ public class OnlineStatusService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.OnlineStatusService
  * JD-Core Version:    0.7.0.1
  */

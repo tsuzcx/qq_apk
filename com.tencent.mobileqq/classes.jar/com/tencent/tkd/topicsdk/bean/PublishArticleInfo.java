@@ -1,6 +1,9 @@
 package com.tencent.tkd.topicsdk.bean;
 
+import androidx.annotation.VisibleForTesting;
+import com.tencent.tkd.topicsdk.common.BitmapUtils;
 import com.tencent.tkd.topicsdk.common.FileUtils;
+import com.tencent.tkd.topicsdk.framework.ThreadManagerKt;
 import com.tencent.tkd.weibo.bean.EditObject;
 import com.tencent.tkd.weibo.bean.EditObject.EditObjectType;
 import java.io.Serializable;
@@ -11,14 +14,18 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import kotlin.Metadata;
+import kotlin.Pair;
 import kotlin.TypeCastException;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/bean/PublishArticleInfo;", "Ljava/io/Serializable;", "()V", "allowReprint", "", "getAllowReprint", "()Z", "setAllowReprint", "(Z)V", "circleId", "", "getCircleId", "()Ljava/lang/String;", "setCircleId", "(Ljava/lang/String;)V", "commentAfterPublish", "getCommentAfterPublish", "setCommentAfterPublish", "commodityInfo", "Lcom/tencent/tkd/topicsdk/bean/CommodityInfo;", "getCommodityInfo", "()Lcom/tencent/tkd/topicsdk/bean/CommodityInfo;", "setCommodityInfo", "(Lcom/tencent/tkd/topicsdk/bean/CommodityInfo;)V", "communityId", "getCommunityId", "setCommunityId", "content", "getContent", "contentId", "getContentId", "setContentId", "contentLength", "", "getContentLength", "()I", "setContentLength", "(I)V", "contentList", "", "Lcom/tencent/tkd/weibo/bean/EditObject;", "getContentList", "()Ljava/util/List;", "setContentList", "(Ljava/util/List;)V", "hasUploadFileSize", "", "getHasUploadFileSize", "()J", "setHasUploadFileSize", "(J)V", "imageList", "Ljava/util/ArrayList;", "Lcom/tencent/tkd/topicsdk/bean/ImageInfo;", "Lkotlin/collections/ArrayList;", "getImageList", "()Ljava/util/ArrayList;", "setImageList", "(Ljava/util/ArrayList;)V", "isFromDraft", "setFromDraft", "isPublishing", "setPublishing", "locationInfo", "Lcom/tencent/tkd/topicsdk/bean/LocationInfo;", "getLocationInfo", "()Lcom/tencent/tkd/topicsdk/bean/LocationInfo;", "setLocationInfo", "(Lcom/tencent/tkd/topicsdk/bean/LocationInfo;)V", "originContentInfo", "Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;", "getOriginContentInfo", "()Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;", "setOriginContentInfo", "(Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;)V", "privacySetting", "getPrivacySetting", "setPrivacySetting", "publishErrorCode", "getPublishErrorCode", "setPublishErrorCode", "publishErrorMsg", "getPublishErrorMsg", "setPublishErrorMsg", "publishId", "getPublishId", "setPublishId", "publishScene", "getPublishScene", "setPublishScene", "scene", "getScene", "setScene", "topicId", "getTopicId", "setTopicId", "totalFileSize", "getTotalFileSize", "videoInfo", "Lcom/tencent/tkd/topicsdk/bean/VideoInfo;", "getVideoInfo", "()Lcom/tencent/tkd/topicsdk/bean/VideoInfo;", "setVideoInfo", "(Lcom/tencent/tkd/topicsdk/bean/VideoInfo;)V", "videoUploadKey", "getVideoUploadKey", "setVideoUploadKey", "buildLocalPublishJsonData", "Lorg/json/JSONObject;", "calTotalFileSize", "hasImage", "hasText", "hasVideo", "putLocalContentInfo", "", "localPublishData", "putLocalImageData", "putLocalVideoInfo", "putRichContentInfo", "updateDisplayInfoInArticleInfo", "displayItems", "Lcom/tencent/tkd/topicsdk/bean/DisplayItem;", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/bean/PublishArticleInfo;", "Ljava/io/Serializable;", "()V", "allowReprint", "", "getAllowReprint", "()Z", "setAllowReprint", "(Z)V", "circleId", "", "getCircleId", "()Ljava/lang/String;", "setCircleId", "(Ljava/lang/String;)V", "commentAfterPublish", "getCommentAfterPublish", "setCommentAfterPublish", "commodityInfo", "Lcom/tencent/tkd/topicsdk/bean/CommodityInfo;", "getCommodityInfo", "()Lcom/tencent/tkd/topicsdk/bean/CommodityInfo;", "setCommodityInfo", "(Lcom/tencent/tkd/topicsdk/bean/CommodityInfo;)V", "communityId", "getCommunityId", "setCommunityId", "communityName", "getCommunityName", "setCommunityName", "content", "getContent", "contentId", "getContentId", "setContentId", "contentLength", "", "getContentLength", "()I", "setContentLength", "(I)V", "contentList", "", "Lcom/tencent/tkd/weibo/bean/EditObject;", "getContentList", "()Ljava/util/List;", "setContentList", "(Ljava/util/List;)V", "hasUploadFileSize", "", "getHasUploadFileSize", "()J", "setHasUploadFileSize", "(J)V", "imageList", "Ljava/util/ArrayList;", "Lcom/tencent/tkd/topicsdk/bean/ImageInfo;", "Lkotlin/collections/ArrayList;", "getImageList", "()Ljava/util/ArrayList;", "setImageList", "(Ljava/util/ArrayList;)V", "isFromDraft", "setFromDraft", "isPublishing", "setPublishing", "locationInfo", "Lcom/tencent/tkd/topicsdk/bean/LocationInfo;", "getLocationInfo", "()Lcom/tencent/tkd/topicsdk/bean/LocationInfo;", "setLocationInfo", "(Lcom/tencent/tkd/topicsdk/bean/LocationInfo;)V", "originContentInfo", "Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;", "getOriginContentInfo", "()Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;", "setOriginContentInfo", "(Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;)V", "privacySetting", "getPrivacySetting", "setPrivacySetting", "publishErrorCode", "getPublishErrorCode", "setPublishErrorCode", "publishErrorMsg", "getPublishErrorMsg", "setPublishErrorMsg", "publishId", "getPublishId", "setPublishId", "publishScene", "getPublishScene", "setPublishScene", "scene", "getScene", "setScene", "showPublishToast", "getShowPublishToast", "setShowPublishToast", "topicId", "getTopicId", "setTopicId", "totalFileSize", "getTotalFileSize", "videoInfo", "Lcom/tencent/tkd/topicsdk/bean/VideoInfo;", "getVideoInfo", "()Lcom/tencent/tkd/topicsdk/bean/VideoInfo;", "setVideoInfo", "(Lcom/tencent/tkd/topicsdk/bean/VideoInfo;)V", "videoUploadKey", "getVideoUploadKey", "setVideoUploadKey", "buildLocalPublishJsonData", "Lorg/json/JSONObject;", "calTotalFileSize", "hasImage", "hasText", "hasVideo", "initMediaByDisplayItems", "", "displayItems", "Lcom/tencent/tkd/topicsdk/bean/DisplayItem;", "putLocalContentInfo", "localPublishData", "putLocalImageData", "putLocalVideoInfo", "putRichContentInfo", "updateImageWH", "callback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "info", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
 public final class PublishArticleInfo
   implements Serializable
 {
@@ -34,6 +41,8 @@ public final class PublishArticleInfo
   private CommodityInfo commodityInfo;
   @NotNull
   private String communityId = "";
+  @NotNull
+  private String communityName = "";
   @NotNull
   private String contentId = "";
   private int contentLength;
@@ -58,6 +67,7 @@ public final class PublishArticleInfo
   private String publishScene = "";
   @NotNull
   private String scene = "";
+  private boolean showPublishToast = true;
   private long topicId;
   @Nullable
   private VideoInfo videoInfo;
@@ -72,72 +82,57 @@ public final class PublishArticleInfo
   
   private final void b(JSONObject paramJSONObject)
   {
-    int j = 1;
     JSONObject localJSONObject = new JSONObject();
     localJSONObject.putOpt("originText", getContent());
     localJSONObject.putOpt("titleLength", Integer.valueOf(this.contentLength));
-    if (!((Collection)this.contentList).isEmpty())
+    if ((((Collection)this.contentList).isEmpty() ^ true))
     {
-      i = 1;
-      if (i == 0) {
-        break label360;
-      }
-      if (((EditObject)this.contentList.get(0)).getType() != EditObject.EditObjectType.TYPE_NORMAL) {
-        break label379;
-      }
-      localJSONObject.putOpt("text", ((EditObject)this.contentList.get(0)).getWording());
-    }
-    label122:
-    label379:
-    for (int i = 1;; i = 0)
-    {
-      JSONArray localJSONArray = new JSONArray();
-      EditObject localEditObject;
-      Object localObject;
-      if (i != 0)
+      Object localObject1 = this.contentList;
+      int i = 0;
+      if (((EditObject)((List)localObject1).get(0)).getType() == EditObject.EditObjectType.TYPE_NORMAL)
       {
-        i = j;
-        j = this.contentList.size();
-        if (i >= j) {
-          break label338;
-        }
-        localEditObject = (EditObject)this.contentList.get(i);
-        if (localEditObject.getType() == EditObject.EditObjectType.TYPE_NORMAL) {
-          break label271;
-        }
-        localObject = new JSONObject();
-        ((JSONObject)localObject).putOpt("type", Integer.valueOf(localEditObject.getType().ordinal()));
-        ((JSONObject)localObject).putOpt("key", localEditObject.getKey());
-        ((JSONObject)localObject).putOpt("wording", localEditObject.getWording());
-        ((JSONObject)localObject).putOpt("href", localEditObject.getHref());
-        ((JSONObject)localObject).putOpt("avatarUrl", localEditObject.getAvatarUrl());
-        localJSONArray.put(localObject);
+        localJSONObject.putOpt("text", ((EditObject)this.contentList.get(0)).getWording());
+        i = 1;
       }
-      for (;;)
+      localObject1 = new JSONArray();
+      int j = this.contentList.size();
+      while (i < j)
       {
+        EditObject localEditObject = (EditObject)this.contentList.get(i);
+        Object localObject2;
+        if (localEditObject.getType() != EditObject.EditObjectType.TYPE_NORMAL)
+        {
+          localObject2 = new JSONObject();
+          ((JSONObject)localObject2).putOpt("type", Integer.valueOf(localEditObject.getType().ordinal()));
+          ((JSONObject)localObject2).putOpt("key", localEditObject.getKey());
+          ((JSONObject)localObject2).putOpt("wording", localEditObject.getWording());
+          ((JSONObject)localObject2).putOpt("href", localEditObject.getHref());
+          ((JSONObject)localObject2).putOpt("avatarUrl", localEditObject.getAvatarUrl());
+          ((JSONArray)localObject1).put(localObject2);
+        }
+        else
+        {
+          int k = ((JSONArray)localObject1).length() - 1;
+          localObject2 = ((JSONArray)localObject1).get(k);
+          if (localObject2 == null) {
+            break label313;
+          }
+          localObject2 = (JSONObject)localObject2;
+          ((JSONObject)localObject2).putOpt("text", localEditObject.getWording());
+          ((JSONArray)localObject1).put(k, localObject2);
+        }
         i += 1;
-        break label132;
-        i = 0;
-        break;
-        i = 0;
-        break label122;
-        int k = localJSONArray.length() - 1;
-        localObject = localJSONArray.get(k);
-        if (localObject == null) {
-          throw new TypeCastException("null cannot be cast to non-null type org.json.JSONObject");
-        }
-        localObject = (JSONObject)localObject;
-        ((JSONObject)localObject).putOpt("text", localEditObject.getWording());
-        localJSONArray.put(k, localObject);
+        continue;
+        label313:
+        throw new TypeCastException("null cannot be cast to non-null type org.json.JSONObject");
       }
-      localJSONObject.putOpt("textLevelList", localJSONArray);
-      for (;;)
-      {
-        paramJSONObject.putOpt("richTextInfo", localJSONObject);
-        return;
-        localJSONObject.putOpt("textLevelList", new JSONArray());
-      }
+      localJSONObject.putOpt("textLevelList", localObject1);
     }
+    else
+    {
+      localJSONObject.putOpt("textLevelList", new JSONArray());
+    }
+    paramJSONObject.putOpt("richTextInfo", localJSONObject);
   }
   
   private final void c(JSONObject paramJSONObject)
@@ -145,24 +140,19 @@ public final class PublishArticleInfo
     paramJSONObject.put("circleId", this.circleId);
     Object localObject1 = this.imageList;
     int i;
-    Object localObject2;
-    if (localObject1 != null)
-    {
+    if (localObject1 != null) {
       i = ((ArrayList)localObject1).size();
-      paramJSONObject.put("imageDataListCount", i);
-      localObject1 = new JSONArray();
-      localObject2 = this.imageList;
-      if (localObject2 != null) {
-        localObject2 = ((Iterable)localObject2).iterator();
-      }
+    } else {
+      i = 0;
     }
-    else
+    paramJSONObject.put("imageDataListCount", i);
+    localObject1 = new JSONArray();
+    Object localObject2 = this.imageList;
+    if (localObject2 != null)
     {
-      for (;;)
+      localObject2 = ((Iterable)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        if (!((Iterator)localObject2).hasNext()) {
-          break label258;
-        }
         Object localObject3 = (ImageInfo)((Iterator)localObject2).next();
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("imageWidth", ((ImageInfo)localObject3).getWidth());
@@ -173,19 +163,19 @@ public final class PublishArticleInfo
         localObject3 = FileUtils.a.a(((ImageInfo)localObject3).getFilePath());
         Locale localLocale = Locale.getDefault();
         Intrinsics.checkExpressionValueIsNotNull(localLocale, "Locale.getDefault()");
-        if (localObject3 == null)
+        if (localObject3 != null)
+        {
+          localObject3 = ((String)localObject3).toUpperCase(localLocale);
+          Intrinsics.checkExpressionValueIsNotNull(localObject3, "(this as java.lang.String).toUpperCase(locale)");
+          localJSONObject.put("isGif", Intrinsics.areEqual(localObject3, "GIF"));
+          ((JSONArray)localObject1).put(localJSONObject);
+        }
+        else
         {
           throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
-          i = 0;
-          break;
         }
-        localObject3 = ((String)localObject3).toUpperCase(localLocale);
-        Intrinsics.checkExpressionValueIsNotNull(localObject3, "(this as java.lang.String).toUpperCase(locale)");
-        localJSONObject.put("isGif", Intrinsics.areEqual(localObject3, "GIF"));
-        ((JSONArray)localObject1).put(localJSONObject);
       }
     }
-    label258:
     paramJSONObject.put("imageDataList", localObject1);
   }
   
@@ -207,49 +197,32 @@ public final class PublishArticleInfo
       localObject = FileUtils.a.a(((VideoInfo)localObject).getFilePath());
       Locale localLocale = Locale.getDefault();
       Intrinsics.checkExpressionValueIsNotNull(localLocale, "Locale.getDefault()");
-      if (localObject == null) {
-        throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+      if (localObject != null)
+      {
+        localObject = ((String)localObject).toUpperCase(localLocale);
+        Intrinsics.checkExpressionValueIsNotNull(localObject, "(this as java.lang.String).toUpperCase(locale)");
+        paramJSONObject.put("videoFormat", localObject);
+        return;
       }
-      localObject = ((String)localObject).toUpperCase(localLocale);
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "(this as java.lang.String).toUpperCase(locale)");
-      paramJSONObject.put("videoFormat", localObject);
+      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
     }
   }
   
   @NotNull
   public final JSONObject buildLocalPublishJsonData()
   {
-    JSONObject localJSONObject = new JSONObject();
-    a(localJSONObject);
-    if (hasVideo())
-    {
-      d(localJSONObject);
-      localJSONObject.put("fromDraft", this.isFromDraft);
-      if (!this.commentAfterPublish) {
-        break label72;
-      }
-    }
-    label72:
-    for (int i = 1;; i = 0)
-    {
-      localJSONObject.put("publishAndComment", i);
-      return localJSONObject;
-      if (!hasImage()) {
-        break;
-      }
-      c(localJSONObject);
-      break;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
+  @VisibleForTesting
   public final long calTotalFileSize()
   {
-    long l3 = 0L;
     Object localObject = this.imageList;
+    long l3 = 0L;
     if (localObject != null)
     {
       localObject = ((Iterable)localObject).iterator();
-      for (l1 = 0L;; l1 = ((ImageInfo)((Iterator)localObject).next()).getSize() + l1)
+      for (l1 = 0L;; l1 += ((ImageInfo)((Iterator)localObject).next()).getSize())
       {
         l2 = l1;
         if (!((Iterator)localObject).hasNext()) {
@@ -292,6 +265,12 @@ public final class PublishArticleInfo
   public final String getCommunityId()
   {
     return this.communityId;
+  }
+  
+  @NotNull
+  public final String getCommunityName()
+  {
+    return this.communityName;
   }
   
   @NotNull
@@ -381,6 +360,11 @@ public final class PublishArticleInfo
     return this.scene;
   }
   
+  public final boolean getShowPublishToast()
+  {
+    return this.showPublishToast;
+  }
+  
   public final long getTopicId()
   {
     return this.topicId;
@@ -405,18 +389,8 @@ public final class PublishArticleInfo
   
   public final boolean hasImage()
   {
-    if (this.imageList != null)
-    {
-      ArrayList localArrayList = this.imageList;
-      if (localArrayList != null)
-      {
-        if (!((Collection)localArrayList).isEmpty()) {}
-        for (int i = 1; i == 1; i = 0) {
-          return true;
-        }
-      }
-    }
-    return false;
+    ArrayList localArrayList = this.imageList;
+    return (localArrayList != null) && (localArrayList != null) && ((((Collection)localArrayList).isEmpty() ^ true) == true);
   }
   
   public final boolean hasText()
@@ -427,6 +401,29 @@ public final class PublishArticleInfo
   public final boolean hasVideo()
   {
     return this.videoInfo != null;
+  }
+  
+  public final void initMediaByDisplayItems(@NotNull ArrayList<DisplayItem> paramArrayList)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayList, "displayItems");
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = (VideoInfo)null;
+    Iterator localIterator = ((Iterable)paramArrayList).iterator();
+    paramArrayList = (ArrayList<DisplayItem>)localObject;
+    while (localIterator.hasNext())
+    {
+      localObject = (DisplayItem)localIterator.next();
+      if (((DisplayItem)localObject).getMedia().getType() == MediaType.PHOTO) {
+        localArrayList.add(ImageInfo.Companion.a((DisplayItem)localObject));
+      } else if (((DisplayItem)localObject).getMedia().getType() == MediaType.VIDEO) {
+        paramArrayList = VideoInfo.Companion.a((DisplayItem)localObject);
+      }
+    }
+    if (!(((Collection)localArrayList).isEmpty() ^ true)) {
+      localArrayList = null;
+    }
+    this.imageList = localArrayList;
+    this.videoInfo = paramArrayList;
   }
   
   public final boolean isFromDraft()
@@ -464,6 +461,12 @@ public final class PublishArticleInfo
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
     this.communityId = paramString;
+  }
+  
+  public final void setCommunityName(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
+    this.communityName = paramString;
   }
   
   public final void setContentId(@NotNull String paramString)
@@ -547,6 +550,11 @@ public final class PublishArticleInfo
     this.scene = paramString;
   }
   
+  public final void setShowPublishToast(boolean paramBoolean)
+  {
+    this.showPublishToast = paramBoolean;
+  }
+  
   public final void setTopicId(long paramLong)
   {
     this.topicId = paramLong;
@@ -563,68 +571,26 @@ public final class PublishArticleInfo
     this.videoUploadKey = paramString;
   }
   
-  public final void updateDisplayInfoInArticleInfo(@NotNull ArrayList<DisplayItem> paramArrayList)
+  public final void updateImageWH(@Nullable Function1<? super PublishArticleInfo, Unit> paramFunction1)
   {
-    Intrinsics.checkParameterIsNotNull(paramArrayList, "displayItems");
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = (VideoInfo)null;
-    Iterator localIterator = ((Iterable)paramArrayList).iterator();
-    paramArrayList = (ArrayList<DisplayItem>)localObject;
-    if (localIterator.hasNext())
+    Object localObject = this.imageList;
+    if (localObject != null)
     {
-      localObject = (DisplayItem)localIterator.next();
-      if (((DisplayItem)localObject).getMedia().getType() == MediaType.PHOTO)
+      localObject = ((Iterable)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        localObject = ((DisplayItem)localObject).getMedia();
-        ImageInfo localImageInfo = new ImageInfo();
-        localImageInfo.setFilePath(((Media)localObject).getFilePath());
-        localImageInfo.setWidth(((Media)localObject).getWidth());
-        localImageInfo.setHeight(((Media)localObject).getHeight());
-        localImageInfo.setSize(((Media)localObject).getSize());
-        localArrayList.add(localImageInfo);
+        ImageInfo localImageInfo = (ImageInfo)((Iterator)localObject).next();
+        Pair localPair = BitmapUtils.a.a(localImageInfo.getFilePath());
+        localImageInfo.setWidth(((Number)localPair.getFirst()).intValue());
+        localImageInfo.setHeight(((Number)localPair.getSecond()).intValue());
       }
     }
-    for (;;)
-    {
-      break;
-      if (((DisplayItem)localObject).getMedia().getType() == MediaType.VIDEO)
-      {
-        paramArrayList = new VideoInfo();
-        paramArrayList.setFilePath(((DisplayItem)localObject).getRealPath());
-        paramArrayList.setCoverPath(((DisplayItem)localObject).getCoverPath());
-        paramArrayList.setDuration(((DisplayItem)localObject).getRealDuration());
-        localObject = ((DisplayItem)localObject).getMedia();
-        paramArrayList.setCoverWidth(((Media)localObject).getWidth());
-        paramArrayList.setCoverHeight(((Media)localObject).getHeight());
-        paramArrayList.setWidth(((Media)localObject).getWidth());
-        paramArrayList.setHeight(((Media)localObject).getHeight());
-        paramArrayList.setFileSize(((Media)localObject).getSize());
-        continue;
-        int i;
-        if (!((Collection)localArrayList).isEmpty())
-        {
-          i = 1;
-          if (i == 0) {
-            break label275;
-          }
-        }
-        for (;;)
-        {
-          this.imageList = localArrayList;
-          this.videoInfo = paramArrayList;
-          return;
-          i = 0;
-          break;
-          label275:
-          localArrayList = null;
-        }
-      }
-    }
+    ThreadManagerKt.a((Function0)new PublishArticleInfo.updateImageWH.2(this, paramFunction1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.bean.PublishArticleInfo
  * JD-Core Version:    0.7.0.1
  */

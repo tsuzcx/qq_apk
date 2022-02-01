@@ -26,7 +26,7 @@ public class MediaModelUtils
     {
       MediaClipModel localMediaClipModel = (MediaClipModel)paramList.next();
       if (localMediaClipModel != null) {
-        l = localMediaClipModel.getResource().getScaleDuration() + l;
+        l += localMediaClipModel.getResource().getScaleDuration();
       }
     }
     return l;
@@ -34,7 +34,7 @@ public class MediaModelUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.util.MediaModelUtils
  * JD-Core Version:    0.7.0.1
  */

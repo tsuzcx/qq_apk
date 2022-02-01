@@ -18,41 +18,33 @@ class PushBannerProcessor$3
   
   public void onClick(View paramView)
   {
-    Object localObject = (PushBanner)paramView.getTag();
-    if (localObject != null) {
-      ((PushBanner)localObject).jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.k();
-    }
-    try
+    PushBanner localPushBanner = (PushBanner)paramView.getTag();
+    if (localPushBanner != null)
     {
-      if (!TextUtils.isEmpty(((PushBanner)localObject).jdField_a_of_type_JavaLangString))
+      localPushBanner.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.f();
+      int i = 0;
+      try
       {
-        i = Integer.parseInt(((PushBanner)localObject).jdField_a_of_type_JavaLangString);
-        ReportController.b(PushBannerProcessor.g(this.a).getAppRuntime(), "dc00898", "", "", "0X80087C1", "0X80087C1", i, 0, "", "", "", "");
-        localObject = new ConfigManager(PushBannerProcessor.h(this.a).getApplicationContext(), ConfigServlet.jdField_a_of_type_JavaLangString);
-        if (localObject != null)
-        {
-          ((ConfigManager)localObject).b();
-          ((ConfigManager)localObject).c();
+        if (!TextUtils.isEmpty(localPushBanner.jdField_a_of_type_JavaLangString)) {
+          i = Integer.parseInt(localPushBanner.jdField_a_of_type_JavaLangString);
         }
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
       }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      catch (Throwable localThrowable)
       {
         localThrowable.printStackTrace();
-        int i = 0;
-        continue;
         i = 0;
       }
+      ReportController.b(PushBannerProcessor.g(this.a).getAppRuntime(), "dc00898", "", "", "0X80087C1", "0X80087C1", i, 0, "", "", "", "");
+      ConfigManager localConfigManager = new ConfigManager(PushBannerProcessor.h(this.a).getApplicationContext(), ConfigServlet.jdField_a_of_type_JavaLangString);
+      localConfigManager.b();
+      localConfigManager.c();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.PushBannerProcessor.3
  * JD-Core Version:    0.7.0.1
  */

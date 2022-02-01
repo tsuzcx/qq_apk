@@ -25,6 +25,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -43,28 +44,24 @@ public class DeviceGroupChatMsgProcessor
   
   private long a(MessageForDeviceFile paramMessageForDeviceFile, View paramView, MessageForDeviceFile.DeviceFileItemCallback paramDeviceFileItemCallback)
   {
-    long l1;
-    if ((paramMessageForDeviceFile == null) || (TextUtils.isEmpty(paramMessageForDeviceFile.strMediaKey)))
+    if ((paramMessageForDeviceFile != null) && (!TextUtils.isEmpty(paramMessageForDeviceFile.strMediaKey)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DeviceGroupChatMsgProcessor", 2, "mr is null or strCoverKey is empty in downloadCoverFile!");
+      if (!NetworkUtil.isNetSupport(BaseApplication.getContext())) {
+        return 0L;
       }
-      l1 = 0L;
-      return l1;
-    }
-    if (!NetworkUtil.d(BaseApplication.getContext())) {
-      return 0L;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      DeviceFileObserver.CallbackPack localCallbackPack = (DeviceFileObserver.CallbackPack)localIterator.next();
-      if (localCallbackPack.a() == paramView) {
-        localCallbackPack.b = new WeakReference(paramDeviceFileItemCallback);
-      }
-    }
-    for (int i = 1;; i = 0)
-    {
+      int j = 0;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      DeviceFileObserver.CallbackPack localCallbackPack;
+      do
+      {
+        i = j;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localCallbackPack = (DeviceFileObserver.CallbackPack)localIterator.next();
+      } while (localCallbackPack.a() != paramView);
+      localCallbackPack.b = new WeakReference(paramDeviceFileItemCallback);
+      int i = 1;
       if (i == 0) {
         this.jdField_a_of_type_JavaUtilArrayList.add(new DeviceFileObserver.CallbackPack(this, paramView, paramDeviceFileItemCallback));
       }
@@ -73,53 +70,59 @@ public class DeviceGroupChatMsgProcessor
       }
       if (this.b.containsKey(Long.valueOf(paramMessageForDeviceFile.uniseq)))
       {
-        l1 = ((Long)this.b.get(Long.valueOf(paramMessageForDeviceFile.uniseq))).longValue();
-        if (MessageCache.a() - l1 < 3600L) {
+        l = ((Long)this.b.get(Long.valueOf(paramMessageForDeviceFile.uniseq))).longValue();
+        if (MessageCache.a() - l < 3600L) {
           return paramMessageForDeviceFile.uSessionID;
         }
       }
-      long l2 = ((DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForDeviceFile.strMediaKey, paramMessageForDeviceFile.strFileKey2, 3, 2154);
+      long l = ((DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForDeviceFile.strMediaKey, paramMessageForDeviceFile.strFileKey2, 3, 2154);
       paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramMessageForDeviceFile.frienduin, paramMessageForDeviceFile.istroop, paramMessageForDeviceFile.uniseq);
       if ((paramView instanceof MessageForDeviceFile)) {
-        ((MessageForDeviceFile)paramView).uSessionID = l2;
+        ((MessageForDeviceFile)paramView).uSessionID = l;
       }
-      paramMessageForDeviceFile.uSessionID = l2;
-      l1 = l2;
-      if (l2 == 0L) {
-        break;
+      paramMessageForDeviceFile.uSessionID = l;
+      if (l != 0L) {
+        a(l, paramMessageForDeviceFile.frienduin, paramMessageForDeviceFile.istroop, paramMessageForDeviceFile.uniseq);
       }
-      a(l2, paramMessageForDeviceFile.frienduin, paramMessageForDeviceFile.istroop, paramMessageForDeviceFile.uniseq);
-      return l2;
+      return l;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("DeviceGroupChatMsgProcessor", 2, "mr is null or strCoverKey is empty in downloadCoverFile!");
+    }
+    return 0L;
   }
   
   private MessageRecord a(long paramLong1, long paramLong2, JSONObject paramJSONObject)
   {
     int i = paramJSONObject.optInt("duration", 0);
-    String str = paramJSONObject.optString("file_key", "");
-    paramJSONObject = paramJSONObject.optString("fkey2", "");
-    MessageForDevPtt localMessageForDevPtt = (MessageForDevPtt)MessageRecordFactory.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.toString(paramLong2), null, 9501);
-    localMessageForDevPtt.url = "";
-    localMessageForDevPtt.urlAtServer = str;
-    localMessageForDevPtt.strFileKey2 = paramJSONObject;
-    localMessageForDevPtt.channeltype = 3;
-    localMessageForDevPtt.itemType = 2;
-    localMessageForDevPtt.sttAbility = 0;
-    localMessageForDevPtt.longPttVipFlag = 0;
-    localMessageForDevPtt.c2cViaOffline = true;
-    localMessageForDevPtt.msgtype = -4501;
-    localMessageForDevPtt.istroop = 9501;
-    localMessageForDevPtt.issend = 0;
-    localMessageForDevPtt.isread = false;
-    localMessageForDevPtt.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    localMessageForDevPtt.senderuin = Long.toString(paramLong1);
-    localMessageForDevPtt.frienduin = Long.toString(paramLong2);
-    localMessageForDevPtt.time = MessageCache.a();
-    localMessageForDevPtt.msg = (ContactUtils.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForDevPtt.senderuin, true) + ": " + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691366));
-    localMessageForDevPtt.voiceLength = i;
-    localMessageForDevPtt.extStr = "device_groupchat";
-    localMessageForDevPtt.serial();
-    return localMessageForDevPtt;
+    Object localObject = paramJSONObject.optString("file_key", "");
+    String str = paramJSONObject.optString("fkey2", "");
+    paramJSONObject = (MessageForDevPtt)MessageRecordFactory.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.toString(paramLong2), null, 9501);
+    paramJSONObject.url = "";
+    paramJSONObject.urlAtServer = ((String)localObject);
+    paramJSONObject.strFileKey2 = str;
+    paramJSONObject.channeltype = 3;
+    paramJSONObject.itemType = 2;
+    paramJSONObject.sttAbility = 0;
+    paramJSONObject.longPttVipFlag = 0;
+    paramJSONObject.c2cViaOffline = true;
+    paramJSONObject.msgtype = -4501;
+    paramJSONObject.istroop = 9501;
+    paramJSONObject.issend = 0;
+    paramJSONObject.isread = false;
+    paramJSONObject.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    paramJSONObject.senderuin = Long.toString(paramLong1);
+    paramJSONObject.frienduin = Long.toString(paramLong2);
+    paramJSONObject.time = MessageCache.a();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramJSONObject.senderuin, true));
+    ((StringBuilder)localObject).append(": ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691287));
+    paramJSONObject.msg = ((StringBuilder)localObject).toString();
+    paramJSONObject.voiceLength = i;
+    paramJSONObject.extStr = "device_groupchat";
+    paramJSONObject.serial();
+    return paramJSONObject;
   }
   
   private void a(long paramLong1, String paramString, int paramInt, long paramLong2)
@@ -128,11 +131,11 @@ public class DeviceGroupChatMsgProcessor
     {
       paramString = new DeviceFileObserver.SessionPack(this, paramString, paramInt, paramLong2);
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), paramString);
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("DeviceGroupChatMsgProcessor", 2, "found resume");
+    if (QLog.isColorLevel()) {
+      QLog.d("DeviceGroupChatMsgProcessor", 2, "found resume");
+    }
   }
   
   private MessageRecord b(long paramLong1, long paramLong2, JSONObject paramJSONObject)
@@ -154,7 +157,11 @@ public class DeviceGroupChatMsgProcessor
     localMessageForDeviceFile.msgStatus = 3;
     localMessageForDeviceFile.nFileStatus = 1;
     localMessageForDeviceFile.time = MessageCache.a();
-    localMessageForDeviceFile.msg = (ContactUtils.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForDeviceFile.senderuin, true) + ": " + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691641));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForDeviceFile.senderuin, true));
+    localStringBuilder.append(": ");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691563));
+    localMessageForDeviceFile.msg = localStringBuilder.toString();
     localMessageForDeviceFile.nFileMsgType = 2;
     localMessageForDeviceFile.extStr = "device_groupchat";
     localMessageForDeviceFile.strCoverKey = str2;
@@ -167,8 +174,8 @@ public class DeviceGroupChatMsgProcessor
   
   private void b(MessageRecord paramMessageRecord)
   {
-    int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    int j;
+    for (int i = 0; i < this.jdField_a_of_type_JavaUtilArrayList.size(); i = j + 1)
     {
       Object localObject = (DeviceFileObserver.CallbackPack)this.jdField_a_of_type_JavaUtilArrayList.get(i);
       View localView = ((DeviceFileObserver.CallbackPack)localObject).a();
@@ -176,15 +183,16 @@ public class DeviceGroupChatMsgProcessor
       if ((localView != null) && (localObject != null))
       {
         j = i;
-        if ((paramMessageRecord instanceof MessageForDeviceFile)) {
+        if ((paramMessageRecord instanceof MessageForDeviceFile))
+        {
           ((MessageForDeviceFile.DeviceFileItemCallback)localObject).a(localView, (MessageForDeviceFile)paramMessageRecord);
+          j = i;
         }
       }
-      for (int j = i;; j = i - 1)
+      else
       {
-        i = j + 1;
-        break;
         this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+        j = i - 1;
       }
     }
   }
@@ -199,25 +207,23 @@ public class DeviceGroupChatMsgProcessor
   
   protected MessageRecord a(long paramLong)
   {
-    Object localObject1 = (DeviceFileObserver.SessionPack)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
-    if (localObject1 == null) {
-      localObject1 = null;
+    Object localObject = (DeviceFileObserver.SessionPack)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+    if (localObject == null) {
+      return null;
     }
-    Object localObject2;
-    do
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface))
     {
-      return localObject1;
-      localObject2 = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(localObject2 instanceof QQAppInterface)) {
-        break;
+      localObject = ((QQAppInterface)localAppRuntime).getMessageFacade().a(((DeviceFileObserver.SessionPack)localObject).jdField_a_of_type_JavaLangString, ((DeviceFileObserver.SessionPack)localObject).jdField_a_of_type_Int, ((DeviceFileObserver.SessionPack)localObject).jdField_a_of_type_Long);
+      if (localObject == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("DeviceGroupChatMsgProcessor", 2, "device file msg null");
+        }
+        return null;
       }
-      localObject2 = ((QQAppInterface)localObject2).getMessageFacade().a(((DeviceFileObserver.SessionPack)localObject1).jdField_a_of_type_JavaLangString, ((DeviceFileObserver.SessionPack)localObject1).jdField_a_of_type_Int, ((DeviceFileObserver.SessionPack)localObject1).jdField_a_of_type_Long);
-      localObject1 = localObject2;
-    } while (localObject2 != null);
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceGroupChatMsgProcessor", 2, "device file msg null");
+      return localObject;
     }
-    return null;
     return null;
   }
   
@@ -225,9 +231,9 @@ public class DeviceGroupChatMsgProcessor
   {
     try
     {
-      localJSONObject = new JSONObject(paramDataPoint.mValue);
-      l2 = localJSONObject.optLong("from_uin");
-      l1 = l2;
+      JSONObject localJSONObject = new JSONObject(paramDataPoint.mValue);
+      long l2 = localJSONObject.optLong("from_uin");
+      long l1 = l2;
       if (0L == l2) {
         l1 = paramDataPoint.mDin;
       }
@@ -239,76 +245,69 @@ public class DeviceGroupChatMsgProcessor
       if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) && (String.valueOf(l1).equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
         return;
       }
-      localMessageRecord = null;
-      if (10011 != paramDataPoint.mProperityId) {
-        break label177;
+      localObject = null;
+      if (10011 == paramDataPoint.mProperityId) {
+        localObject = a(l1, l2, localJSONObject);
+      } else if (10010 == paramDataPoint.mProperityId) {
+        localObject = b(l1, l2, localJSONObject);
       }
-      localMessageRecord = a(l1, l2, localJSONObject);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a((MessageRecord)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      return;
     }
     catch (JSONException paramDataPoint)
     {
-      JSONObject localJSONObject;
-      long l2;
-      long l1;
-      MessageRecord localMessageRecord;
-      while (QLog.isColorLevel())
+      Object localObject;
+      if (QLog.isColorLevel())
       {
-        QLog.d("DeviceGroupChatMsgProcessor", 2, "getString from json error:" + paramDataPoint.getMessage());
-        return;
-        label177:
-        if (10010 == paramDataPoint.mProperityId) {
-          localMessageRecord = b(l1, l2, localJSONObject);
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getString from json error:");
+        ((StringBuilder)localObject).append(paramDataPoint.getMessage());
+        QLog.d("DeviceGroupChatMsgProcessor", 2, ((StringBuilder)localObject).toString());
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(localMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    return;
   }
   
   public void a(Session paramSession, boolean paramBoolean)
   {
-    MessageRecord localMessageRecord;
     if (!paramSession.bSend)
     {
-      localMessageRecord = a(paramSession.uSessionID);
-      if (localMessageRecord != null) {
-        break label21;
+      MessageRecord localMessageRecord = a(paramSession.uSessionID);
+      if (localMessageRecord == null) {
+        return;
       }
-    }
-    label21:
-    label156:
-    do
-    {
-      return;
-      MessageForDeviceFile localMessageForDeviceFile;
       if ((localMessageRecord instanceof MessageForDeviceFile))
       {
-        localMessageForDeviceFile = (MessageForDeviceFile)localMessageRecord;
-        if (localMessageForDeviceFile.uSessionID != paramSession.uSessionID) {
-          continue;
+        MessageForDeviceFile localMessageForDeviceFile = (MessageForDeviceFile)localMessageRecord;
+        if (localMessageForDeviceFile.uSessionID == paramSession.uSessionID)
+        {
+          localMessageForDeviceFile.filePath = paramSession.strFilePathSrc;
+          localMessageForDeviceFile.progress = 1.0F;
+          if (paramBoolean)
+          {
+            localMessageForDeviceFile.nFileStatus = 5;
+            this.b.remove(Long.valueOf(localMessageRecord.uniseq));
+          }
+          else
+          {
+            localMessageForDeviceFile.nFileStatus = 6;
+            this.b.put(Long.valueOf(localMessageRecord.uniseq), Long.valueOf(MessageCache.a()));
+          }
+          localMessageForDeviceFile.serial();
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(localMessageRecord.frienduin, 9501, localMessageRecord.uniseq, localMessageRecord.msgData);
+          if ((localMessageForDeviceFile.uSessionID == paramSession.uSessionID) && (paramBoolean)) {
+            b(localMessageForDeviceFile);
+          }
         }
-        localMessageForDeviceFile.filePath = paramSession.strFilePathSrc;
-        localMessageForDeviceFile.progress = 1.0F;
-        if (!paramBoolean) {
-          break label156;
+        else
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("DeviceGroupChatMsgProcessor", 2, "error:can not find session id in message record");
+          }
+          return;
         }
-        localMessageForDeviceFile.nFileStatus = 5;
-        this.b.remove(Long.valueOf(localMessageRecord.uniseq));
       }
-      for (;;)
-      {
-        localMessageForDeviceFile.serial();
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(localMessageRecord.frienduin, 9501, localMessageRecord.uniseq, localMessageRecord.msgData);
-        if ((localMessageForDeviceFile.uSessionID == paramSession.uSessionID) && (paramBoolean)) {
-          b(localMessageForDeviceFile);
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramSession.uSessionID));
-        return;
-        localMessageForDeviceFile.nFileStatus = 6;
-        this.b.put(Long.valueOf(localMessageRecord.uniseq), Long.valueOf(MessageCache.a()));
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("DeviceGroupChatMsgProcessor", 2, "error:can not find session id in message record");
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramSession.uSessionID));
+    }
   }
   
   public void a(MessageRecord paramMessageRecord)
@@ -325,41 +324,36 @@ public class DeviceGroupChatMsgProcessor
       }
       localMessageForDeviceFile.uSessionID = l;
     }
-    for (;;)
+    else
     {
-      if (l != 0L) {
-        a(l, paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq);
-      }
-      return;
       l = 0L;
+    }
+    if (l != 0L) {
+      a(l, paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq);
     }
   }
   
   public void b(Session paramSession)
   {
-    Object localObject;
     if (!paramSession.bSend)
     {
-      localObject = a(paramSession.uSessionID);
-      if (localObject != null) {
-        break label21;
+      Object localObject = a(paramSession.uSessionID);
+      if (localObject == null) {
+        return;
+      }
+      if ((localObject instanceof MessageForDeviceFile))
+      {
+        localObject = (MessageForDeviceFile)localObject;
+        if (((MessageForDeviceFile)localObject).uSessionID == paramSession.uSessionID) {
+          ((MessageForDeviceFile)localObject).nFileStatus = 2;
+        }
       }
     }
-    label21:
-    do
-    {
-      do
-      {
-        return;
-      } while (!(localObject instanceof MessageForDeviceFile));
-      localObject = (MessageForDeviceFile)localObject;
-    } while (((MessageForDeviceFile)localObject).uSessionID != paramSession.uSessionID);
-    ((MessageForDeviceFile)localObject).nFileStatus = 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.msg.data.DeviceGroupChatMsgProcessor
  * JD-Core Version:    0.7.0.1
  */

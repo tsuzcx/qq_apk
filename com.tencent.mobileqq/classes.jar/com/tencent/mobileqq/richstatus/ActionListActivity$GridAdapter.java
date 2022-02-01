@@ -24,10 +24,11 @@ class ActionListActivity$GridAdapter
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localArrayList == null) {
       return 0;
     }
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return localArrayList.size();
   }
   
   public Object getItem(int paramInt)
@@ -42,44 +43,40 @@ class ActionListActivity$GridAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    ActionListActivity.ActionViewHolder localActionViewHolder;
+    View localView = paramView;
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getLayoutInflater().inflate(2131563051, paramViewGroup, false);
-      localActionViewHolder = new ActionListActivity.ActionViewHolder(null);
-      localActionViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131378628));
-      localActionViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378629));
-      paramView.setTag(localActionViewHolder);
+      localView = this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getLayoutInflater().inflate(2131562875, paramViewGroup, false);
+      paramView = new ActionListActivity.ActionViewHolder(null);
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131378021));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378022));
+      localView.setTag(paramView);
     }
-    for (;;)
+    paramView = (ActionListActivity.ActionViewHolder)localView.getTag();
+    ActionInfo localActionInfo = ActionListActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity).a(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).intValue());
+    if ((localActionInfo != null) && (paramView.jdField_a_of_type_Int != localActionInfo.jdField_a_of_type_Int))
     {
-      localActionViewHolder = (ActionListActivity.ActionViewHolder)paramView.getTag();
-      ActionInfo localActionInfo = ActionListActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity).a(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).intValue());
-      if ((localActionInfo != null) && (localActionViewHolder.jdField_a_of_type_Int != localActionInfo.jdField_a_of_type_Int))
+      paramView.jdField_a_of_type_Int = localActionInfo.jdField_a_of_type_Int;
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new StatableBitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getResources(), ActionListActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity).a(localActionInfo.jdField_a_of_type_Int, 201), false, false));
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localActionInfo.c);
+      if (localActionInfo.b == 1)
       {
-        localActionViewHolder.jdField_a_of_type_Int = localActionInfo.jdField_a_of_type_Int;
-        localActionViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new StatableBitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getResources(), ActionListActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity).a(localActionInfo.jdField_a_of_type_Int, 201), false, false));
-        localActionViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localActionInfo.c);
-        if (localActionInfo.b != 1) {
-          break label226;
-        }
-        localActionViewHolder.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
       }
-      for (;;)
+      else
       {
-        paramView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity);
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        label226:
-        localActionViewHolder.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getResources().getDrawable(2130839414), null);
-        localActionViewHolder.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getResources().getDrawable(2130839270), null);
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
       }
     }
+    localView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity);
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.ActionListActivity.GridAdapter
  * JD-Core Version:    0.7.0.1
  */

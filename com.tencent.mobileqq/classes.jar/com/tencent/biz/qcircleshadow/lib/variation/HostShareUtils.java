@@ -20,71 +20,80 @@ public class HostShareUtils
   
   public void dismiss()
   {
-    if (this.mInstance != null) {
-      this.mInstance.dismiss();
+    IShareActionSheetApi localIShareActionSheetApi = this.mInstance;
+    if (localIShareActionSheetApi != null) {
+      localIShareActionSheetApi.dismiss();
     }
   }
   
   public boolean isShowing()
   {
-    if (this.mInstance != null) {
-      return this.mInstance.isShowing();
+    IShareActionSheetApi localIShareActionSheetApi = this.mInstance;
+    if (localIShareActionSheetApi != null) {
+      return localIShareActionSheetApi.isShowing();
     }
     return false;
   }
   
   public void setActionSheetClickListener(ShareActionSheetClickListener paramShareActionSheetClickListener)
   {
-    if (this.mInstance != null) {
-      this.mInstance.setActionSheetClickListener(paramShareActionSheetClickListener);
+    IShareActionSheetApi localIShareActionSheetApi = this.mInstance;
+    if (localIShareActionSheetApi != null) {
+      localIShareActionSheetApi.setActionSheetClickListener(paramShareActionSheetClickListener);
     }
   }
   
   public void setActionSheetItems(ShareConfig paramShareConfig)
   {
-    if (this.mInstance != null) {
-      this.mInstance.setActionSheetItems(paramShareConfig);
+    IShareActionSheetApi localIShareActionSheetApi = this.mInstance;
+    if (localIShareActionSheetApi != null) {
+      localIShareActionSheetApi.setActionSheetItems(paramShareConfig);
     }
   }
   
   public void setCancelListener(DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    if (this.mInstance != null) {
-      this.mInstance.setCancelListener(paramOnCancelListener);
+    IShareActionSheetApi localIShareActionSheetApi = this.mInstance;
+    if (localIShareActionSheetApi != null) {
+      localIShareActionSheetApi.setCancelListener(paramOnCancelListener);
     }
   }
   
   public void setOnDismissListener(DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    if (this.mInstance != null) {
-      this.mInstance.setOnDismissListener(paramOnDismissListener);
+    IShareActionSheetApi localIShareActionSheetApi = this.mInstance;
+    if (localIShareActionSheetApi != null) {
+      localIShareActionSheetApi.setOnDismissListener(paramOnDismissListener);
     }
   }
   
   public void setQCircleActionSheetClickListener(QCircleActionSheetClickListener paramQCircleActionSheetClickListener)
   {
-    if (this.mInstance != null) {
-      this.mInstance.setQCircleActionSheetClickListener(paramQCircleActionSheetClickListener);
+    IShareActionSheetApi localIShareActionSheetApi = this.mInstance;
+    if (localIShareActionSheetApi != null) {
+      localIShareActionSheetApi.setQCircleActionSheetClickListener(paramQCircleActionSheetClickListener);
     }
   }
   
   public void setRowVisibility(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.mInstance != null) {
-      this.mInstance.setRowVisibility(paramInt1, paramInt2, paramInt3);
+    IShareActionSheetApi localIShareActionSheetApi = this.mInstance;
+    if (localIShareActionSheetApi != null) {
+      localIShareActionSheetApi.setRowVisibility(paramInt1, paramInt2, paramInt3);
     }
   }
   
   public void show()
   {
-    if (this.mInstance != null) {
-      this.mInstance.show();
+    IShareActionSheetApi localIShareActionSheetApi = this.mInstance;
+    if (localIShareActionSheetApi != null) {
+      localIShareActionSheetApi.show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.variation.HostShareUtils
  * JD-Core Version:    0.7.0.1
  */

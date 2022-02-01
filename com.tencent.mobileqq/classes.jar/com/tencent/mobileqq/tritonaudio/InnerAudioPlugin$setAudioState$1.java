@@ -18,7 +18,7 @@ final class InnerAudioPlugin$setAudioState$1
   {
     try
     {
-      i = this.$arguments.getParams().optInt("audioId", -1);
+      int i = this.$arguments.getParams().optInt("audioId", -1);
       Object localObject1;
       if (this.$arguments.getParams().has("src"))
       {
@@ -28,58 +28,61 @@ final class InnerAudioPlugin$setAudioState$1
           ((AudioPlayerManager)localObject2).setMusicPath(i, (String)localObject1);
         }
       }
-      else if (this.$arguments.getParams().has("autoplay"))
+      else
       {
-        bool = this.$arguments.getParams().getBoolean("autoplay");
-        localObject1 = InnerAudioPlugin.access$getAudioPlayerManager$p(this.this$0);
-        if (localObject1 == null) {
-          return;
+        boolean bool;
+        if (this.$arguments.getParams().has("autoplay"))
+        {
+          bool = this.$arguments.getParams().getBoolean("autoplay");
+          localObject1 = InnerAudioPlugin.access$getAudioPlayerManager$p(this.this$0);
+          if (localObject1 != null) {
+            ((AudioPlayerManager)localObject1).setAutoplay(i, bool);
+          }
         }
-        ((AudioPlayerManager)localObject1).setAutoplay(i, bool);
+        else
+        {
+          double d;
+          if (this.$arguments.getParams().has("startTime"))
+          {
+            d = this.$arguments.getParams().getDouble("startTime");
+            localObject1 = InnerAudioPlugin.access$getAudioPlayerManager$p(this.this$0);
+            if (localObject1 != null) {
+              ((AudioPlayerManager)localObject1).setStartTime(i, (float)d);
+            }
+          }
+          else if (this.$arguments.getParams().has("loop"))
+          {
+            bool = this.$arguments.getParams().getBoolean("loop");
+            localObject1 = InnerAudioPlugin.access$getAudioPlayerManager$p(this.this$0);
+            if (localObject1 != null) {
+              ((AudioPlayerManager)localObject1).setLoop(i, bool);
+            }
+          }
+          else if (this.$arguments.getParams().has("volume"))
+          {
+            d = this.$arguments.getParams().getDouble("volume");
+            localObject1 = InnerAudioPlugin.access$getAudioPlayerManager$p(this.this$0);
+            if (localObject1 != null)
+            {
+              ((AudioPlayerManager)localObject1).setVolume(i, (float)d);
+              return;
+            }
+          }
+        }
       }
     }
     catch (JSONException localJSONException)
     {
-      int i;
-      boolean bool;
       Object localObject2 = InnerAudioPlugin.access$getLogger$p(this.this$0);
-      if (localObject2 != null)
-      {
+      if (localObject2 != null) {
         ((LogDelegate)localObject2).printLog(LogDelegate.Level.ERROR, "[audio]InnerAudioPlugin", "setAudioState exception:", (Throwable)localJSONException);
-        return;
-        double d;
-        AudioPlayerManager localAudioPlayerManager;
-        if (this.$arguments.getParams().has("startTime"))
-        {
-          d = this.$arguments.getParams().getDouble("startTime");
-          localAudioPlayerManager = InnerAudioPlugin.access$getAudioPlayerManager$p(this.this$0);
-          if (localAudioPlayerManager != null) {
-            localAudioPlayerManager.setStartTime(i, (float)d);
-          }
-        }
-        else if (this.$arguments.getParams().has("loop"))
-        {
-          bool = this.$arguments.getParams().getBoolean("loop");
-          localAudioPlayerManager = InnerAudioPlugin.access$getAudioPlayerManager$p(this.this$0);
-          if (localAudioPlayerManager != null) {
-            localAudioPlayerManager.setLoop(i, bool);
-          }
-        }
-        else if (this.$arguments.getParams().has("volume"))
-        {
-          d = this.$arguments.getParams().getDouble("volume");
-          localAudioPlayerManager = InnerAudioPlugin.access$getAudioPlayerManager$p(this.this$0);
-          if (localAudioPlayerManager != null) {
-            localAudioPlayerManager.setVolume(i, (float)d);
-          }
-        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tritonaudio.InnerAudioPlugin.setAudioState.1
  * JD-Core Version:    0.7.0.1
  */

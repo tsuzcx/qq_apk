@@ -6,10 +6,10 @@ import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.os.Handler;
 import android.text.TextUtils;
+import com.tencent.aelight.camera.qqstory.api.IAELaunchMusicConfigManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
 
 public class EditVideoMusicCache
 {
@@ -38,21 +38,21 @@ public class EditVideoMusicCache
       if (QLog.isColorLevel()) {
         QLog.d("MusicCache", 2, "songMid not exist");
       }
-      a(7, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698304));
+      a(7, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698369));
       return;
     }
-    if (!NetworkUtil.d(this.jdField_a_of_type_AndroidContentContext))
+    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_AndroidContentContext))
     {
       if (QLog.isColorLevel()) {
         QLog.d("MusicCache", 2, "Net not Support");
       }
-      a(7, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698309));
+      a(7, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698374));
       return;
     }
-    if (NetworkUtil.b(this.jdField_a_of_type_AndroidContentContext)) {
-      a(7, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698308));
+    if (NetworkUtil.isMobileNetWork(this.jdField_a_of_type_AndroidContentContext)) {
+      a(7, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698373));
     }
-    ((QIMMusicConfigManager)QIMManager.a(2)).a(paramString, this.jdField_a_of_type_Boolean, new EditVideoMusicCache.2(this));
+    ((IAELaunchMusicConfigManager)QRoute.api(IAELaunchMusicConfigManager.class)).getSingleFullMusicInfo(paramString, this.jdField_a_of_type_Boolean, new EditVideoMusicCache.2(this));
   }
   
   public void a()
@@ -68,7 +68,7 @@ public class EditVideoMusicCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.music.EditVideoMusicCache
  * JD-Core Version:    0.7.0.1
  */

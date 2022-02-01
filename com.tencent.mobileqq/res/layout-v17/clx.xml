@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center" android:layout_width="500.0dip" android:layout_height="fill_parent">
+        <ImageView android:id="@id/nn8" android:layout_width="@dimen/bdj" android:layout_height="@dimen/bdj" android:layout_marginLeft="@dimen/be6" android:layout_marginTop="@dimen/be7" android:src="@drawable/f23" android:layout_toRightOf="@id/nna" android:layout_alignParentTop="true" android:contentDescription="@string/wvv" android:layout_marginStart="@dimen/be6" android:layout_toEndOf="@id/nna" />
+        <ImageView android:id="@id/nna" android:layout_width="@dimen/beb" android:layout_height="@dimen/be_" android:layout_marginTop="@dimen/be2" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:contentDescription="@string/wvv" />
+        <RelativeLayout android:id="@id/nn7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/be4" android:layout_below="@id/nna" android:layout_centerHorizontal="true">
+            <ImageView android:id="@id/nn9" android:visibility="gone" android:layout_width="@dimen/bdx" android:layout_height="@dimen/bdw" android:contentDescription="@string/wvv" />
+            <ImageView android:id="@id/nn_" android:layout_width="@dimen/bdx" android:layout_height="@dimen/bdw" android:layout_marginRight="@dimen/be5" android:contentDescription="@string/wvv" android:layout_marginEnd="@dimen/be5" />
+            <ImageView android:id="@id/nnb" android:layout_width="@dimen/bdx" android:layout_height="@dimen/bdw" android:layout_marginLeft="@dimen/be5" android:contentDescription="@string/wvv" android:layout_marginStart="@dimen/be5" />
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/be0" android:textStyle="bold" android:textColor="#ffffffff" android:gravity="center" android:id="@id/nn6" android:layout_width="@dimen/be1" android:layout_height="@dimen/bdy" android:layout_marginTop="@dimen/bdz" android:text="@string/wy3" android:layout_below="@id/nn7" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</FrameLayout>

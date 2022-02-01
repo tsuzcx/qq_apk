@@ -3,6 +3,7 @@ package com.tencent.mobileqq.gamecenter.media;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
@@ -28,20 +29,21 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDisplayUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gamecenter.appointment.GameCenterUtils;
 import com.tencent.gamecenter.wadl.api.IQQGameNetService;
+import com.tencent.hippy.qq.api.IHippyAccessHelper;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import com.tencent.mobileqq.apollo.game.api.ICmGameHelper;
 import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
 import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
-import com.tencent.mobileqq.gamecenter.util.QQGameConfigUtil;
-import com.tencent.mobileqq.gamecenter.util.QQGameConstant;
 import com.tencent.mobileqq.gamecenter.view.VideoLoadingImage;
+import com.tencent.mobileqq.kandian.base.utils.api.IReadInJoyDisplayUtils;
+import com.tencent.mobileqq.qqgamepub.api.IQQGameHelper;
+import com.tencent.mobileqq.qqgamepub.data.GamePubAccountConstant;
 import com.tencent.mobileqq.qqvideoplatform.api.QQVideoPlaySDKManager;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -67,6 +69,7 @@ public class GameCenterVideoViewController
   extends FrameLayout
   implements Handler.Callback, View.OnClickListener, SeekBar.OnSeekBarChangeListener, ISuperPlayer.OnCompletionListener, ISuperPlayer.OnErrorListener, ISuperPlayer.OnInfoListener, ISuperPlayer.OnSeekCompleteListener, ISuperPlayer.OnVideoPreparedListener
 {
+  private static final String FILE_PROTOCOL_HEADER = "file://";
   public static final int MSG_TYPE_AUTO_PLAY = 13;
   public static final int MSG_TYPE_ENTER_FULLSCREEN = 8;
   public static final int MSG_TYPE_EXIT_FULLSCREEN = 9;
@@ -87,7 +90,7 @@ public class GameCenterVideoViewController
   public static final int SRC_GAME_CENTER = 1;
   public static final int SRC_PUB_ACCOUT = 2;
   public static final String TAG = "GameCenterVideoViewController";
-  public static int sPlayCount = 0;
+  public static int sPlayCount;
   private ImageView mAudioBtn;
   private RelativeLayout mControlPanel;
   private View mCoverContainer;
@@ -106,6 +109,7 @@ public class GameCenterVideoViewController
   private ViewGroup mFullScreenContainer;
   private boolean mIsAutoPlay = false;
   private boolean mIsFullScreen = false;
+  private boolean mIsLandscapeWhenFullScreen = true;
   private boolean mIsMute = false;
   private long mLastPlayTimestamp = 0L;
   private AtomicInteger mLastStatus = new AtomicInteger(0);
@@ -163,18 +167,17 @@ public class GameCenterVideoViewController
   
   private void handleVideoEvent(int paramInt)
   {
-    if (this.mSrc == 2)
-    {
-      if ((paramInt != 5) && (paramInt != 7) && (paramInt != 0)) {
-        break label28;
+    if (this.mSrc == 2) {
+      if ((paramInt != 5) && (paramInt != 7) && (paramInt != 0))
+      {
+        if (paramInt == 3) {
+          ((IQQGameHelper)QRoute.api(IQQGameHelper.class)).dispatchVideoEvent(6);
+        }
       }
-      GameVideoManager.b(5);
+      else {
+        ((IQQGameHelper)QRoute.api(IQQGameHelper.class)).dispatchVideoEvent(5);
+      }
     }
-    label28:
-    while (paramInt != 3) {
-      return;
-    }
-    GameVideoManager.b(6);
   }
   
   private void initSdkReady()
@@ -187,27 +190,27 @@ public class GameCenterVideoViewController
   private void initView()
   {
     initSdkReady();
-    this.mRootView = ((FrameLayout)LayoutInflater.from(getContext()).inflate(2131559294, this));
-    this.mVideoContainer = ((FrameLayout)this.mRootView.findViewById(2131381298));
-    this.mControlPanel = ((RelativeLayout)this.mRootView.findViewById(2131371075));
-    this.mOperateButton = ((URLImageView)this.mRootView.findViewById(2131372581));
-    this.mLoadingButton = ((VideoLoadingImage)this.mRootView.findViewById(2131361803));
-    this.mProgressTime = ((TextView)this.mRootView.findViewById(2131373577));
-    this.mVideoDuration = ((TextView)this.mRootView.findViewById(2131366081));
-    this.mVideoSeek = ((SeekBar)this.mRootView.findViewById(2131369140));
-    this.mAudioBtn = ((ImageView)this.mRootView.findViewById(2131381568));
-    this.mFullScreenBtn = ((ImageView)this.mRootView.findViewById(2131367657));
-    this.mCoverContainer = this.mRootView.findViewById(2131365426);
-    this.mCoverDuration = ((TextView)this.mRootView.findViewById(2131366079));
-    this.mCoverImage = ((URLImageView)this.mRootView.findViewById(2131365428));
+    this.mRootView = ((FrameLayout)LayoutInflater.from(getContext()).inflate(2131559167, this));
+    this.mVideoContainer = ((FrameLayout)this.mRootView.findViewById(2131380553));
+    this.mControlPanel = ((RelativeLayout)this.mRootView.findViewById(2131370709));
+    this.mOperateButton = ((URLImageView)this.mRootView.findViewById(2131372165));
+    this.mLoadingButton = ((VideoLoadingImage)this.mRootView.findViewById(2131361806));
+    this.mProgressTime = ((TextView)this.mRootView.findViewById(2131373157));
+    this.mVideoDuration = ((TextView)this.mRootView.findViewById(2131365998));
+    this.mVideoSeek = ((SeekBar)this.mRootView.findViewById(2131368873));
+    this.mAudioBtn = ((ImageView)this.mRootView.findViewById(2131380804));
+    this.mFullScreenBtn = ((ImageView)this.mRootView.findViewById(2131367411));
+    this.mCoverContainer = this.mRootView.findViewById(2131365291);
+    this.mCoverDuration = ((TextView)this.mRootView.findViewById(2131365996));
+    this.mCoverImage = ((URLImageView)this.mRootView.findViewById(2131365293));
     this.mRootView.setOnClickListener(this);
     this.mOperateButton.setOnClickListener(this);
     this.mVideoSeek.setOnSeekBarChangeListener(this);
     this.mAudioBtn.setOnClickListener(this);
     this.mFullScreenBtn.setOnClickListener(this);
-    this.mDanmakuLayout = ((DanmakuLayout)this.mRootView.findViewById(2131365529));
+    this.mDanmakuLayout = ((DanmakuLayout)this.mRootView.findViewById(2131365375));
     this.mDanmakuLayout.setTimeSupplier(new GameCenterVideoViewController.1(this), 150L);
-    this.mDanmakuSwitch = ((CheckBox)this.mRootView.findViewById(2131365528));
+    this.mDanmakuSwitch = ((CheckBox)this.mRootView.findViewById(2131365374));
     this.mDanmakuSwitch.setOnCheckedChangeListener(new GameCenterVideoViewController.2(this));
   }
   
@@ -236,30 +239,30 @@ public class GameCenterVideoViewController
       Object localObject = URLDrawable.URLDrawableOptions.obtain();
       if (paramBoolean)
       {
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = getResources().getDrawable(2130843459);
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = getResources().getDrawable(2130843459);
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = getResources().getDrawable(2130843373);
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = getResources().getDrawable(2130843373);
         localObject = URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_video_play@2x.png", (URLDrawable.URLDrawableOptions)localObject);
         this.mOperateButton.setImageDrawable((Drawable)localObject);
         return;
       }
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = getResources().getDrawable(2130843458);
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = getResources().getDrawable(2130843458);
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = getResources().getDrawable(2130843372);
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = getResources().getDrawable(2130843372);
       localObject = URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_video_stop@2x.png", (URLDrawable.URLDrawableOptions)localObject);
       this.mOperateButton.setImageDrawable((Drawable)localObject);
       return;
     }
     if (paramBoolean)
     {
-      this.mOperateButton.setImageResource(2130844477);
+      this.mOperateButton.setImageResource(2130844383);
       return;
     }
-    this.mOperateButton.setImageResource(2130844476);
+    this.mOperateButton.setImageResource(2130844382);
   }
   
   private void updateVideoProgress(int paramInt)
   {
     this.mVideoSeek.setProgress(paramInt);
-    this.mProgressTime.setText(ReadInJoyDisplayUtils.a(paramInt / 1000));
+    this.mProgressTime.setText(((IReadInJoyDisplayUtils)QRoute.api(IReadInJoyDisplayUtils.class)).getDisplayDuration(paramInt / 1000));
     postUpdateProgress(1000 - paramInt % 1000);
   }
   
@@ -271,28 +274,24 @@ public class GameCenterVideoViewController
   
   public void checkAndPlay()
   {
-    if ((NetworkUtil.g(getContext())) && (NetworkUtil.h(getContext())))
+    if ((NetworkUtil.isNetworkAvailable(getContext())) && (NetworkUtil.isWifiConnected(getContext())))
     {
       this.mIsAutoPlay = true;
-      arrayOfInt = new int[2];
+      int[] arrayOfInt = new int[2];
       getLocationOnScreen(arrayOfInt);
-      i = getHeight();
-      localDisplayMetrics = getResources().getDisplayMetrics();
-      if ((arrayOfInt[1] > AIOUtils.a(50.0F, getResources())) && (arrayOfInt[1] + i < (i + localDisplayMetrics.heightPixels) / 2 + AIOUtils.a(50.0F, getResources())) && (this.mCurrentStatus.get() == 0))
+      int i = getHeight();
+      DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
+      if ((arrayOfInt[1] > AIOUtils.b(50.0F, getResources())) && (arrayOfInt[1] + i < (i + localDisplayMetrics.heightPixels) / 2 + AIOUtils.b(50.0F, getResources())) && (this.mCurrentStatus.get() == 0))
       {
         this.mUiHandler.removeMessages(13);
         this.mUiHandler.sendEmptyMessage(13);
-        setMute(QQGameConstant.a);
+        setMute(GamePubAccountConstant.a);
       }
     }
-    while (!com.tencent.qphone.base.util.QLog.isColorLevel())
+    else if (com.tencent.qphone.base.util.QLog.isColorLevel())
     {
-      int[] arrayOfInt;
-      int i;
-      DisplayMetrics localDisplayMetrics;
-      return;
+      com.tencent.qphone.base.util.QLog.d("GameCenterVideoViewController", 1, "[checkAndPlay] network err or not wifi,auto play failed.");
     }
-    com.tencent.qphone.base.util.QLog.d("GameCenterVideoViewController", 1, "[checkAndPlay] network err or not wifi,auto play failed.");
   }
   
   public View createVideoView()
@@ -305,12 +304,13 @@ public class GameCenterVideoViewController
     }
     ISPlayerVideoView localISPlayerVideoView = SuperPlayerFactory.createPlayerVideoView(BaseApplicationImpl.getContext());
     this.mVideoPlayer = SuperPlayerFactory.createMediaPlayer(BaseApplicationImpl.getContext(), 106, localISPlayerVideoView);
-    if (this.mVideoPlayer == null)
+    ISuperPlayer localISuperPlayer = this.mVideoPlayer;
+    if (localISuperPlayer == null)
     {
       com.tencent.qphone.base.util.QLog.e("GameCenterVideoViewController", 1, "[createVideoView] create media player fail.");
       return null;
     }
-    this.mVideoPlayer.setOnCompletionListener(this);
+    localISuperPlayer.setOnCompletionListener(this);
     this.mVideoPlayer.setOnVideoPreparedListener(this);
     this.mVideoPlayer.setOnErrorListener(this);
     this.mVideoPlayer.setOnSeekCompleteListener(this);
@@ -354,10 +354,11 @@ public class GameCenterVideoViewController
   public long getCurrentPostion()
   {
     com.tencent.qphone.base.util.QLog.d("GameCenterVideoViewController", 4, "---> getCurrentPostion");
-    if (this.mVideoPlayer == null) {
+    ISuperPlayer localISuperPlayer = this.mVideoPlayer;
+    if (localISuperPlayer == null) {
       return 0L;
     }
-    return this.mVideoPlayer.getCurrentPositionMs();
+    return localISuperPlayer.getCurrentPositionMs();
   }
   
   public int getCurrentStatus()
@@ -372,16 +373,18 @@ public class GameCenterVideoViewController
   
   public long getDuration()
   {
-    if (this.mVideoPlayer == null) {
+    ISuperPlayer localISuperPlayer = this.mVideoPlayer;
+    if (localISuperPlayer == null) {
       return 0L;
     }
-    return this.mVideoPlayer.getDurationMs();
+    return localISuperPlayer.getDurationMs();
   }
   
   public boolean getOutputMute()
   {
-    if (this.mVideoPlayer != null) {
-      return this.mVideoPlayer.isOutputMute();
+    ISuperPlayer localISuperPlayer = this.mVideoPlayer;
+    if (localISuperPlayer != null) {
+      return localISuperPlayer.isOutputMute();
     }
     return false;
   }
@@ -393,62 +396,140 @@ public class GameCenterVideoViewController
   
   public boolean handleMessage(Message paramMessage)
   {
+    int j = paramMessage.what;
     int i = 8;
-    switch (paramMessage.what)
+    if (j != 1)
     {
-    case 3: 
-    case 6: 
-    case 7: 
-    default: 
-    case 1: 
-    case 2: 
-    case 4: 
-    case 5: 
-    case 8: 
-    case 9: 
-      do
+      if (j != 2)
       {
-        do
+        Object localObject;
+        if (j != 4)
         {
-          do
+          if (j != 5)
           {
-            do
+            switch (j)
             {
+            default: 
               return false;
-              if (this.mCurrentStatus.get() != 0)
-              {
-                paramMessage = this.mControlPanel;
-                if ((!this.mEnableFullScreen) && (!this.mEnableAudio) && (!this.mEnableProgress) && (this.mPlayBtnVisibility != 0)) {
-                  break label237;
-                }
+            case 17: 
+              paramMessage = this.mDanmakuSwitch;
+              if (this.mDanmakuSwitchStyle > 0) {
+                i = 0;
               }
-              for (i = 0;; i = 8)
+              paramMessage.setVisibility(i);
+              i = this.mDanmakuSwitchStyle;
+              if (i == 1) {
+                this.mDanmakuSwitch.setChecked(false);
+              } else if (i == 2) {
+                this.mDanmakuSwitch.setChecked(true);
+              }
+              checkView(this.mDanmakuSwitch);
+              return false;
+            case 16: 
+              this.mOperateButton.setVisibility(((Integer)paramMessage.obj).intValue());
+              return false;
+            case 15: 
+              setProgressVisibility(((Integer)paramMessage.obj).intValue());
+              return false;
+            case 14: 
+              ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).getFloadWindowInfo(this.mData.gameInfo.gameAppId);
+              return false;
+            case 13: 
+              if (this.mCurrentStatus.get() == 0)
               {
-                paramMessage.setVisibility(i);
-                checkView(this.mControlPanel);
-                if ((this.mData.type == 1) && (this.mData.videoDuration == 0)) {
-                  setProgressVisibility(4);
-                }
-                if (this.mEnableAudio)
+                if ((this.mNeedReport) && (this.mData != null))
                 {
-                  this.mAudioBtn.setVisibility(0);
-                  checkView(this.mAudioBtn);
+                  paramMessage = new HashMap();
+                  GameCenterUtils.a(paramMessage, this.mData.msgId);
+                  paramMessage.put(Integer.valueOf(2), this.mData.msgId);
+                  paramMessage.put(Integer.valueOf(6), this.mData.feedId);
+                  paramMessage.put(Integer.valueOf(4), "20");
+                  paramMessage.put(Integer.valueOf(43), this.mData.algorithmId);
+                  localObject = new StringBuilder();
+                  ((StringBuilder)localObject).append(this.mData.type);
+                  ((StringBuilder)localObject).append("");
+                  paramMessage.put(Integer.valueOf(44), ((StringBuilder)localObject).toString());
+                  GameCenterUtils.a(((ICmGameHelper)QRoute.api(ICmGameHelper.class)).getAppInterface(), "769", "205020", this.mData.gameInfo.gameAppId, "76902", "1", "160", paramMessage);
                 }
-                if (this.mEnableFullScreen)
-                {
-                  this.mFullScreenBtn.setVisibility(0);
-                  checkView(this.mFullScreenBtn);
-                }
-                this.mOperateButton.setVisibility(this.mPlayBtnVisibility);
-                hideControlPanel();
+                GameCenterVideoManager.a().a(this);
+                this.mOperateButton.setVisibility(8);
+                this.mLoadingButton.setVisibility(0);
+                play();
                 return false;
               }
-            } while (this.mCurrentStatus.get() == 5);
-            this.mControlPanel.setVisibility(8);
-          } while (this.mCurrentStatus.get() == 0);
-          this.mOperateButton.setVisibility(8);
-          this.mLoadingButton.setVisibility(8);
-          return false;
+              paramMessage = new StringBuilder();
+              paramMessage.append("[handleMessage] autoplay mCurrentStatus:");
+              paramMessage.append(this.mCurrentStatus.get());
+              com.tencent.qphone.base.util.QLog.e("GameCenterVideoViewController", 1, paramMessage.toString());
+              return false;
+            case 12: 
+              this.mFullScreenBtn.setVisibility(0);
+              checkView(this.mFullScreenBtn);
+              return false;
+            case 11: 
+              this.mAudioBtn.setVisibility(0);
+              checkView(this.mAudioBtn);
+              return false;
+            case 10: 
+              if (this.mVideoPlayer.isOutputMute())
+              {
+                this.mAudioBtn.setImageResource(2130840223);
+                return false;
+              }
+              this.mAudioBtn.setImageResource(2130840224);
+              return false;
+            case 9: 
+              if (!this.mIsFullScreen) {
+                break;
+              }
+              if (scanForActivity(getContext()) == null) {
+                return false;
+              }
+              this.mFullScreenContainer.removeView(this);
+              this.mParentView.addView(this, this.mOldlp);
+              scanForActivity(getContext()).getWindow().clearFlags(1024);
+              this.mVideoPlayer.setXYaxis(0);
+              if ((this.mIsLandscapeWhenFullScreen) && (getResources().getConfiguration().orientation != 1)) {
+                scanForActivity(getContext()).setRequestedOrientation(1);
+              }
+              this.mFullScreenBtn.setImageResource(2130840218);
+              this.mIsFullScreen = false;
+              return false;
+            case 8: 
+              if (this.mIsFullScreen) {
+                break;
+              }
+              if (scanForActivity(getContext()) == null) {
+                return false;
+              }
+              if (this.mParentView == null)
+              {
+                this.mParentView = ((ViewGroup)getParent());
+                this.mFullScreenContainer = ((ViewGroup)scanForActivity(getContext()).findViewById(16908290));
+              }
+              scanForActivity(getContext()).getWindow().setFlags(1024, 1024);
+              this.mOldlp = getLayoutParams();
+              this.mParentView.removeView(this);
+              if (this.mIsLandscapeWhenFullScreen) {
+                scanForActivity(getContext()).setRequestedOrientation(0);
+              }
+              paramMessage = new FrameLayout.LayoutParams(-1, -1);
+              this.mFullScreenContainer.addView(this, paramMessage);
+              this.mVideoPlayer.setXYaxis(0);
+              this.mFullScreenBtn.setImageResource(2130840219);
+              this.mIsFullScreen = true;
+              GameCenterVideoManager.a().a(this);
+              return false;
+            }
+          }
+          else
+          {
+            updateVideoProgress((int)this.mVideoPlayer.getCurrentPositionMs());
+            return false;
+          }
+        }
+        else
+        {
           if (this.mCurrentStatus.get() == 3)
           {
             this.mOperateButton.setVisibility(this.mPlayBtnVisibility);
@@ -464,29 +545,39 @@ public class GameCenterVideoViewController
             this.mLoadingButton.setVisibility(8);
             updateOperateButton(true);
             this.mCoverContainer.setVisibility(0);
-            if (!TextUtils.isEmpty(this.mData.coverImgUrl)) {}
-            try
-            {
-              this.mCoverImage.setImageURL(this.mData.coverImgUrl);
-              this.mControlPanel.setVisibility(8);
-              this.mProgressTime.setText(ReadInJoyDisplayUtils.a(0));
-              paramMessage = ReadInJoyDisplayUtils.a(this.mData.videoDuration);
-              this.mVideoDuration.setText(paramMessage);
-              if (this.mData.videoDuration == 0)
+            if (!TextUtils.isEmpty(this.mData.coverImgUrl)) {
+              try
               {
-                this.mCoverDuration.setText("");
-                return false;
+                paramMessage = ((IHippyAccessHelper)QRoute.api(IHippyAccessHelper.class)).getOfflineResPath(this.mData.coverImgUrl);
+                if (TextUtils.isEmpty(paramMessage))
+                {
+                  this.mCoverImage.setImageURL(this.mData.coverImgUrl);
+                }
+                else
+                {
+                  localObject = this.mCoverImage;
+                  StringBuilder localStringBuilder = new StringBuilder();
+                  localStringBuilder.append("file://");
+                  localStringBuilder.append(paramMessage);
+                  ((URLImageView)localObject).setImageURL(localStringBuilder.toString());
+                }
               }
-            }
-            catch (Exception paramMessage)
-            {
-              for (;;)
+              catch (Exception paramMessage)
               {
                 com.tencent.qphone.base.util.QLog.e("GameCenterVideoViewController", 1, paramMessage, new Object[0]);
               }
-              this.mCoverDuration.setText(paramMessage);
+            }
+            this.mControlPanel.setVisibility(8);
+            this.mProgressTime.setText(((IReadInJoyDisplayUtils)QRoute.api(IReadInJoyDisplayUtils.class)).getDisplayDuration(0));
+            paramMessage = ((IReadInJoyDisplayUtils)QRoute.api(IReadInJoyDisplayUtils.class)).getDisplayDuration(this.mData.videoDuration);
+            this.mVideoDuration.setText(paramMessage);
+            if (this.mData.videoDuration == 0)
+            {
+              this.mCoverDuration.setText("");
               return false;
             }
+            this.mCoverDuration.setText(paramMessage);
+            return false;
           }
           if (this.mCurrentStatus.get() == 5)
           {
@@ -499,99 +590,47 @@ public class GameCenterVideoViewController
           this.mLoadingButton.setVisibility(8);
           updateOperateButton(false);
           return false;
-          updateVideoProgress((int)this.mVideoPlayer.getCurrentPositionMs());
+        }
+      }
+      else if (this.mCurrentStatus.get() != 5)
+      {
+        this.mControlPanel.setVisibility(8);
+        if (this.mCurrentStatus.get() != 0)
+        {
+          this.mOperateButton.setVisibility(8);
+          this.mLoadingButton.setVisibility(8);
           return false;
-        } while ((this.mIsFullScreen) || (scanForActivity(getContext()) == null));
-        if (this.mParentView == null)
-        {
-          this.mParentView = ((ViewGroup)getParent());
-          this.mFullScreenContainer = ((ViewGroup)scanForActivity(getContext()).findViewById(16908290));
         }
-        scanForActivity(getContext()).getWindow().setFlags(1024, 1024);
-        this.mOldlp = getLayoutParams();
-        this.mParentView.removeView(this);
-        scanForActivity(getContext()).setRequestedOrientation(0);
-        paramMessage = new FrameLayout.LayoutParams(-1, -1);
-        this.mFullScreenContainer.addView(this, paramMessage);
-        this.mVideoPlayer.setXYaxis(2);
-        this.mFullScreenBtn.setImageResource(2130840350);
-        this.mIsFullScreen = true;
-        GameCenterVideoManager.a().a(this);
-        return false;
-      } while ((!this.mIsFullScreen) || (scanForActivity(getContext()) == null));
-      this.mFullScreenContainer.removeView(this);
-      this.mParentView.addView(this, this.mOldlp);
-      scanForActivity(getContext()).getWindow().clearFlags(1024);
-      this.mVideoPlayer.setXYaxis(0);
-      scanForActivity(getContext()).setRequestedOrientation(1);
-      this.mFullScreenBtn.setImageResource(2130840349);
-      this.mIsFullScreen = false;
-      return false;
-    case 10: 
-      if (this.mVideoPlayer.isOutputMute())
-      {
-        this.mAudioBtn.setImageResource(2130840354);
-        return false;
       }
-      this.mAudioBtn.setImageResource(2130840355);
-      return false;
-    case 12: 
-      this.mFullScreenBtn.setVisibility(0);
-      checkView(this.mFullScreenBtn);
-      return false;
-    case 11: 
-      this.mAudioBtn.setVisibility(0);
-      checkView(this.mAudioBtn);
-      return false;
-    case 15: 
-      setProgressVisibility(((Integer)paramMessage.obj).intValue());
-      return false;
-    case 16: 
-      this.mOperateButton.setVisibility(((Integer)paramMessage.obj).intValue());
-      return false;
-    case 13: 
-      if (this.mCurrentStatus.get() == 0)
-      {
-        if ((this.mNeedReport) && (this.mData != null))
-        {
-          paramMessage = new HashMap();
-          GameCenterUtils.a(paramMessage, this.mData.msgId);
-          paramMessage.put(Integer.valueOf(2), this.mData.msgId);
-          paramMessage.put(Integer.valueOf(6), this.mData.feedId);
-          paramMessage.put(Integer.valueOf(4), "20");
-          paramMessage.put(Integer.valueOf(43), this.mData.algorithmId);
-          paramMessage.put(Integer.valueOf(44), this.mData.type + "");
-          GameCenterUtils.a(CmGameUtil.a(), "769", "205020", this.mData.gameInfo.gameAppId, "76902", "1", "160", paramMessage);
-        }
-        GameCenterVideoManager.a().a(this);
-        this.mOperateButton.setVisibility(8);
-        this.mLoadingButton.setVisibility(0);
-        play();
-        return false;
-      }
-      com.tencent.qphone.base.util.QLog.e("GameCenterVideoViewController", 1, "[handleMessage] autoplay mCurrentStatus:" + this.mCurrentStatus.get());
-      return false;
-    case 14: 
-      label237:
-      ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).getFloadWindowInfo(this.mData.gameInfo.gameAppId);
-      return false;
     }
-    paramMessage = this.mDanmakuSwitch;
-    if (this.mDanmakuSwitchStyle > 0) {
-      i = 0;
-    }
-    paramMessage.setVisibility(i);
-    if (this.mDanmakuSwitchStyle == 1) {
-      this.mDanmakuSwitch.setChecked(false);
-    }
-    for (;;)
+    else
     {
-      checkView(this.mDanmakuSwitch);
-      return false;
-      if (this.mDanmakuSwitchStyle == 2) {
-        this.mDanmakuSwitch.setChecked(true);
+      if (this.mCurrentStatus.get() != 0)
+      {
+        paramMessage = this.mControlPanel;
+        if ((this.mEnableFullScreen) || (this.mEnableAudio) || (this.mEnableProgress) || (this.mPlayBtnVisibility == 0)) {
+          i = 0;
+        }
+        paramMessage.setVisibility(i);
+        checkView(this.mControlPanel);
+        if ((this.mData.type == 1) && (this.mData.videoDuration == 0)) {
+          setProgressVisibility(4);
+        }
+        if (this.mEnableAudio)
+        {
+          this.mAudioBtn.setVisibility(0);
+          checkView(this.mAudioBtn);
+        }
+        if (this.mEnableFullScreen)
+        {
+          this.mFullScreenBtn.setVisibility(0);
+          checkView(this.mFullScreenBtn);
+        }
       }
+      this.mOperateButton.setVisibility(this.mPlayBtnVisibility);
+      hideControlPanel();
     }
+    return false;
   }
   
   public void hideControlPanel()
@@ -609,96 +648,112 @@ public class GameCenterVideoViewController
   
   public void onClick(View paramView)
   {
-    boolean bool2 = false;
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131367411)
     {
-    default: 
-      if (this.mControlPanel.getVisibility() != 0) {
-        showControlPanel();
-      }
-      break;
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      HashMap localHashMap;
-      if (this.mCurrentStatus.get() == 0)
+      Object localObject;
+      if (i != 2131372165)
       {
-        if ((this.mNeedReport) && (!this.mIsAutoPlay))
+        if (i != 2131380804)
         {
-          localHashMap = new HashMap();
-          GameCenterUtils.a(localHashMap, this.mData.msgId);
-          localHashMap.put(Integer.valueOf(2), this.mData.msgId);
-          localHashMap.put(Integer.valueOf(6), this.mData.feedId);
-          localHashMap.put(Integer.valueOf(4), "20");
-          localHashMap.put(Integer.valueOf(43), this.mData.algorithmId);
-          localHashMap.put(Integer.valueOf(44), this.mData.type + "");
-          GameCenterUtils.a(CmGameUtil.a(), "769", "205023", this.mData.gameInfo.gameAppId, "76902", "1", "160", localHashMap);
+          if (this.mControlPanel.getVisibility() != 0) {
+            showControlPanel();
+          }
         }
-        GameCenterVideoManager.a().a(this);
-        this.mOperateButton.setVisibility(8);
-        this.mLoadingButton.setVisibility(0);
-        play();
-      }
-      else if (this.mCurrentStatus.get() == 3)
-      {
-        if (this.mNeedReport)
+        else
         {
-          localHashMap = new HashMap();
-          GameCenterUtils.a(localHashMap, this.mData.msgId);
-          localHashMap.put(Integer.valueOf(2), this.mData.msgId);
-          localHashMap.put(Integer.valueOf(6), this.mData.feedId);
-          localHashMap.put(Integer.valueOf(4), "20");
-          localHashMap.put(Integer.valueOf(42), getCurrentPostion() + "");
-          localHashMap.put(Integer.valueOf(43), this.mData.algorithmId);
-          localHashMap.put(Integer.valueOf(44), this.mData.type + "");
-          GameCenterUtils.a(CmGameUtil.a(), "769", "205034", this.mData.gameInfo.gameAppId, "76902", "1", "160", localHashMap);
-        }
-        pause();
-      }
-      else if (this.mCurrentStatus.get() == 5)
-      {
-        if (this.mNeedReport)
-        {
-          localHashMap = new HashMap();
-          GameCenterUtils.a(localHashMap, this.mData.msgId);
-          localHashMap.put(Integer.valueOf(2), this.mData.msgId);
-          localHashMap.put(Integer.valueOf(6), this.mData.feedId);
-          localHashMap.put(Integer.valueOf(4), "20");
-          localHashMap.put(Integer.valueOf(42), getCurrentPostion() + "");
-          localHashMap.put(Integer.valueOf(43), this.mData.algorithmId);
-          localHashMap.put(Integer.valueOf(44), this.mData.type + "");
-          GameCenterUtils.a(CmGameUtil.a(), "769", "205034", this.mData.gameInfo.gameAppId, "76902", "1", "160", localHashMap);
-        }
-        if ((this.mSrc == 2) && (sPlayCount == 0))
-        {
-          this.mUiHandler.removeMessages(14);
-          this.mUiHandler.sendEmptyMessageDelayed(14, QQGameConfigUtil.b - this.mPlayTime);
-        }
-        start();
-        continue;
-        if (this.mVideoPlayer != null)
-        {
-          if (!this.mVideoPlayer.isOutputMute()) {}
-          for (boolean bool1 = true;; bool1 = false)
+          localObject = this.mVideoPlayer;
+          if (localObject != null)
           {
-            QQGameConstant.a = bool1;
-            bool1 = bool2;
-            if (!this.mVideoPlayer.isOutputMute()) {
-              bool1 = true;
-            }
-            setMute(bool1);
-            break;
-          }
-          if (this.mIsFullScreen) {
-            exitFullScreen();
-          } else {
-            enterFullScreen();
+            GamePubAccountConstant.a = ((ISuperPlayer)localObject).isOutputMute() ^ true;
+            setMute(this.mVideoPlayer.isOutputMute() ^ true);
           }
         }
       }
+      else
+      {
+        StringBuilder localStringBuilder;
+        if (this.mCurrentStatus.get() == 0)
+        {
+          if ((this.mNeedReport) && (!this.mIsAutoPlay))
+          {
+            localObject = new HashMap();
+            GameCenterUtils.a((Map)localObject, this.mData.msgId);
+            ((Map)localObject).put(Integer.valueOf(2), this.mData.msgId);
+            ((Map)localObject).put(Integer.valueOf(6), this.mData.feedId);
+            ((Map)localObject).put(Integer.valueOf(4), "20");
+            ((Map)localObject).put(Integer.valueOf(43), this.mData.algorithmId);
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(this.mData.type);
+            localStringBuilder.append("");
+            ((Map)localObject).put(Integer.valueOf(44), localStringBuilder.toString());
+            GameCenterUtils.a(((ICmGameHelper)QRoute.api(ICmGameHelper.class)).getAppInterface(), "769", "205023", this.mData.gameInfo.gameAppId, "76902", "1", "160", (Map)localObject);
+          }
+          GameCenterVideoManager.a().a(this);
+          this.mOperateButton.setVisibility(8);
+          this.mLoadingButton.setVisibility(0);
+          play();
+        }
+        else if (this.mCurrentStatus.get() == 3)
+        {
+          if (this.mNeedReport)
+          {
+            localObject = new HashMap();
+            GameCenterUtils.a((Map)localObject, this.mData.msgId);
+            ((Map)localObject).put(Integer.valueOf(2), this.mData.msgId);
+            ((Map)localObject).put(Integer.valueOf(6), this.mData.feedId);
+            ((Map)localObject).put(Integer.valueOf(4), "20");
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(getCurrentPostion());
+            localStringBuilder.append("");
+            ((Map)localObject).put(Integer.valueOf(42), localStringBuilder.toString());
+            ((Map)localObject).put(Integer.valueOf(43), this.mData.algorithmId);
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(this.mData.type);
+            localStringBuilder.append("");
+            ((Map)localObject).put(Integer.valueOf(44), localStringBuilder.toString());
+            GameCenterUtils.a(((ICmGameHelper)QRoute.api(ICmGameHelper.class)).getAppInterface(), "769", "205034", this.mData.gameInfo.gameAppId, "76902", "1", "160", (Map)localObject);
+          }
+          pause();
+        }
+        else if (this.mCurrentStatus.get() == 5)
+        {
+          if (this.mNeedReport)
+          {
+            localObject = new HashMap();
+            GameCenterUtils.a((Map)localObject, this.mData.msgId);
+            ((Map)localObject).put(Integer.valueOf(2), this.mData.msgId);
+            ((Map)localObject).put(Integer.valueOf(6), this.mData.feedId);
+            ((Map)localObject).put(Integer.valueOf(4), "20");
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(getCurrentPostion());
+            localStringBuilder.append("");
+            ((Map)localObject).put(Integer.valueOf(42), localStringBuilder.toString());
+            ((Map)localObject).put(Integer.valueOf(43), this.mData.algorithmId);
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(this.mData.type);
+            localStringBuilder.append("");
+            ((Map)localObject).put(Integer.valueOf(44), localStringBuilder.toString());
+            GameCenterUtils.a(((ICmGameHelper)QRoute.api(ICmGameHelper.class)).getAppInterface(), "769", "205034", this.mData.gameInfo.gameAppId, "76902", "1", "160", (Map)localObject);
+          }
+          if ((this.mSrc == 2) && (sPlayCount == 0))
+          {
+            this.mUiHandler.removeMessages(14);
+            this.mUiHandler.sendEmptyMessageDelayed(14, 30000L - this.mPlayTime);
+          }
+          start();
+        }
+      }
     }
+    else if (this.mIsFullScreen)
+    {
+      exitFullScreen();
+    }
+    else
+    {
+      enterFullScreen();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onCompletion(ISuperPlayer paramISuperPlayer)
@@ -711,16 +766,35 @@ public class GameCenterVideoViewController
   
   public boolean onError(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    com.tencent.qphone.base.util.QLog.d("GameCenterVideoViewController", 4, "SuperPlayer onError:i" + paramInt1 + " i1" + paramInt2 + " i2" + paramInt3 + " s" + paramString);
+    paramISuperPlayer = new StringBuilder();
+    paramISuperPlayer.append("SuperPlayer onError:i");
+    paramISuperPlayer.append(paramInt1);
+    paramISuperPlayer.append(" i1");
+    paramISuperPlayer.append(paramInt2);
+    paramISuperPlayer.append(" i2");
+    paramISuperPlayer.append(paramInt3);
+    paramISuperPlayer.append(" s");
+    paramISuperPlayer.append(paramString);
+    com.tencent.qphone.base.util.QLog.d("GameCenterVideoViewController", 4, paramISuperPlayer.toString());
     release();
     this.mUiHandler.post(new GameCenterVideoViewController.3(this));
-    com.tencent.qphone.base.util.QLog.e("GameCenterVideoViewController", 1, "[onError] " + paramInt1 + ", " + paramInt2 + ", " + paramInt3);
+    paramISuperPlayer = new StringBuilder();
+    paramISuperPlayer.append("[onError] ");
+    paramISuperPlayer.append(paramInt1);
+    paramISuperPlayer.append(", ");
+    paramISuperPlayer.append(paramInt2);
+    paramISuperPlayer.append(", ");
+    paramISuperPlayer.append(paramInt3);
+    com.tencent.qphone.base.util.QLog.e("GameCenterVideoViewController", 1, paramISuperPlayer.toString());
     return false;
   }
   
   public boolean onInfo(ISuperPlayer paramISuperPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
   {
-    com.tencent.qphone.base.util.QLog.d("GameCenterVideoViewController", 4, "SuperPlayer onInfo:i i1 i2 " + paramObject);
+    paramISuperPlayer = new StringBuilder();
+    paramISuperPlayer.append("SuperPlayer onInfo:i i1 i2 ");
+    paramISuperPlayer.append(paramObject);
+    com.tencent.qphone.base.util.QLog.d("GameCenterVideoViewController", 4, paramISuperPlayer.toString());
     return false;
   }
   
@@ -728,8 +802,9 @@ public class GameCenterVideoViewController
   
   public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if (this.mOnProgressChangeListener != null) {
-      this.mOnProgressChangeListener.a(paramInt, this.mVideoId);
+    paramSeekBar = this.mOnProgressChangeListener;
+    if (paramSeekBar != null) {
+      paramSeekBar.a(paramInt, this.mVideoId);
     }
   }
   
@@ -737,8 +812,9 @@ public class GameCenterVideoViewController
   {
     com.tencent.qphone.base.util.QLog.d("GameCenterVideoViewController", 4, new Object[] { "onSeekComplete: ", Long.valueOf(getCurrentPostion()) });
     start();
-    if (this.mOnSeekListener != null) {
-      this.mOnSeekListener.a((int)getCurrentPostion(), this.mVideoId);
+    paramISuperPlayer = this.mOnSeekListener;
+    if (paramISuperPlayer != null) {
+      paramISuperPlayer.a((int)getCurrentPostion(), this.mVideoId);
     }
   }
   
@@ -750,8 +826,12 @@ public class GameCenterVideoViewController
   public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
     int i = paramSeekBar.getProgress();
-    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-      com.tencent.qphone.base.util.QLog.d("GameCenterVideoViewController", 2, "onStopTrackingTouch(): progress=" + i);
+    if (com.tencent.qphone.base.util.QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onStopTrackingTouch(): progress=");
+      localStringBuilder.append(i);
+      com.tencent.qphone.base.util.QLog.d("GameCenterVideoViewController", 2, localStringBuilder.toString());
     }
     seekTo(i);
     hideControlPanel();
@@ -775,9 +855,10 @@ public class GameCenterVideoViewController
         this.mUiHandler.removeMessages(14);
       }
       this.mPlayTime += System.currentTimeMillis() - this.mLastPlayTimestamp;
-      if (this.mVideoPlayer != null)
+      ISuperPlayer localISuperPlayer = this.mVideoPlayer;
+      if (localISuperPlayer != null)
       {
-        this.mVideoPlayer.pause();
+        localISuperPlayer.pause();
         setCurrentStatus(5);
         updateControlPanle();
       }
@@ -792,13 +873,14 @@ public class GameCenterVideoViewController
       if ((this.mSrc == 2) && (sPlayCount == 0))
       {
         this.mUiHandler.removeMessages(14);
-        this.mUiHandler.sendEmptyMessageDelayed(14, QQGameConfigUtil.b - this.mPlayTime);
+        this.mUiHandler.sendEmptyMessageDelayed(14, 30000L - this.mPlayTime);
       }
-    }
-    while (this.mCurrentStatus.get() == 3) {
       return;
     }
-    if (!NetworkUtil.g(getContext()))
+    if (this.mCurrentStatus.get() == 3) {
+      return;
+    }
+    if (!NetworkUtil.isNetworkAvailable(getContext()))
     {
       this.mUiHandler.post(new GameCenterVideoViewController.5(this));
       com.tencent.qphone.base.util.QLog.d("GameCenterVideoViewController", 2, "commentReport network error, stop request.");
@@ -806,10 +888,26 @@ public class GameCenterVideoViewController
       updateControlPanle();
       return;
     }
-    SuperPlayerVideoInfo localSuperPlayerVideoInfo;
-    if (TextUtils.isEmpty(this.mData.videoUrl)) {
+    Object localObject;
+    if (TextUtils.isEmpty(this.mData.videoUrl))
+    {
       if (this.mData.type == 1) {
-        localSuperPlayerVideoInfo = SuperPlayerFactory.createVideoInfoForTVideo(5590303, this.mData.videoVid);
+        localObject = SuperPlayerFactory.createVideoInfoForTVideo(5590303, this.mData.videoVid);
+      } else {
+        localObject = SuperPlayerFactory.createVideoInfoForTVideo(5590303, this.mData.videoVid);
+      }
+    }
+    else if (this.mData.type == 1)
+    {
+      localObject = SuperPlayerFactory.createVideoInfoForUrl(this.mData.videoUrl, 201, "");
+    }
+    else
+    {
+      localObject = ((IHippyAccessHelper)QRoute.api(IHippyAccessHelper.class)).getOfflineResPath(this.mData.videoUrl);
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        localObject = SuperPlayerFactory.createVideoInfoForUrl(this.mData.videoUrl, 104, "");
+      } else {
+        localObject = SuperPlayerFactory.createVideoInfoForUrl(this.mData.videoUrl, 104, "", (String)localObject);
       }
     }
     try
@@ -819,48 +917,44 @@ public class GameCenterVideoViewController
         this.mVideoContainer.removeView(this.mVideoView);
         this.mVideoView = null;
       }
-      label189:
+      label305:
       this.mVideoView = createVideoView();
-      if (this.mVideoView != null)
+      View localView = this.mVideoView;
+      if (localView != null)
       {
-        this.mVideoContainer.addView(this.mVideoView, -1, -1);
+        this.mVideoContainer.addView(localView, -1, -1);
         checkView(this.mVideoView);
       }
       if (this.mVideoPlayer != null)
       {
         setCurrentStatus(1);
-        this.mVideoPlayer.openMediaPlayer(getContext(), localSuperPlayerVideoInfo, 0L);
+        this.mVideoPlayer.openMediaPlayer(getContext(), (SuperPlayerVideoInfo)localObject, 0L);
       }
-      for (;;)
+      else
       {
-        setMute(this.mIsMute);
-        return;
-        localSuperPlayerVideoInfo = SuperPlayerFactory.createVideoInfoForTVideo(5590303, this.mData.videoVid);
-        break;
-        if (this.mData.type == 1)
-        {
-          localSuperPlayerVideoInfo = SuperPlayerFactory.createVideoInfoForUrl(this.mData.videoUrl, 201, "");
-          break;
-        }
-        localSuperPlayerVideoInfo = SuperPlayerFactory.createVideoInfoForUrl(this.mData.videoUrl, 101, "");
-        break;
         com.tencent.qphone.base.util.QLog.e("GameCenterVideoViewController", 1, "[play] mVideoPlayer is null");
       }
+      setMute(this.mIsMute);
+      return;
     }
     catch (Exception localException)
     {
-      break label189;
+      break label305;
     }
   }
   
   public void release()
   {
     setCurrentStatus(0);
-    if (this.mVideoPlayer != null)
+    Object localObject = this.mVideoPlayer;
+    if (localObject != null)
     {
-      this.mVideoPlayer.stop();
+      ((ISuperPlayer)localObject).stop();
       this.mVideoPlayer.release();
-      com.tencent.qphone.base.util.QLog.e("GameCenterVideoViewController", 1, "[release] release video ok:" + this.mVideoPlayer.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[release] release video ok:");
+      ((StringBuilder)localObject).append(this.mVideoPlayer.toString());
+      com.tencent.qphone.base.util.QLog.e("GameCenterVideoViewController", 1, ((StringBuilder)localObject).toString());
     }
     this.mUiHandler.removeCallbacksAndMessages(null);
     updateControlPanle();
@@ -882,21 +976,29 @@ public class GameCenterVideoViewController
   
   public void seekTo(int paramInt)
   {
-    if (this.mVideoPlayer != null) {
-      this.mVideoPlayer.seekTo(paramInt, 3);
+    ISuperPlayer localISuperPlayer = this.mVideoPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.seekTo(paramInt, 3);
     }
   }
   
   public void setCurrentStatus(int paramInt)
   {
-    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-      com.tencent.qphone.base.util.QLog.d("GameCenterVideoViewController", 2, "[setCurrentStatus] status:" + paramInt + ", obj:" + this);
+    if (com.tencent.qphone.base.util.QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[setCurrentStatus] status:");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", obj:");
+      ((StringBuilder)localObject).append(this);
+      com.tencent.qphone.base.util.QLog.d("GameCenterVideoViewController", 2, ((StringBuilder)localObject).toString());
     }
     this.mLastStatus.set(this.mCurrentStatus.get());
     this.mCurrentStatus.set(paramInt);
     handleVideoEvent(paramInt);
-    if (this.mStatusListener != null) {
-      this.mStatusListener.onVideoStatusChanged(paramInt, this.mVideoId);
+    Object localObject = this.mStatusListener;
+    if (localObject != null) {
+      ((GameCenterVideoViewController.VideoStatusChangeListener)localObject).onVideoStatusChanged(paramInt, this.mVideoId);
     }
   }
   
@@ -909,23 +1011,39 @@ public class GameCenterVideoViewController
   public void setData(FeedsItemData paramFeedsItemData, int paramInt)
   {
     this.mData = paramFeedsItemData;
-    if ((this.mVideoDurationValue > 0) && (this.mData != null) && (this.mData.videoDuration == 0)) {
-      this.mData.videoDuration = this.mVideoDurationValue;
+    if (this.mVideoDurationValue > 0)
+    {
+      paramFeedsItemData = this.mData;
+      if ((paramFeedsItemData != null) && (paramFeedsItemData.videoDuration == 0)) {
+        this.mData.videoDuration = this.mVideoDurationValue;
+      }
     }
     this.mSrc = paramInt;
     updateControlPanle();
   }
   
+  public void setIsLandscapeWhenFullScreen(boolean paramBoolean)
+  {
+    this.mIsLandscapeWhenFullScreen = paramBoolean;
+  }
+  
+  public void setLoadingIconStyle(int paramInt)
+  {
+    this.mLoadingButton.setStyle(paramInt);
+  }
+  
   public void setMute(boolean paramBoolean)
   {
     this.mIsMute = paramBoolean;
-    if (this.mVideoPlayer != null)
+    Object localObject = this.mVideoPlayer;
+    if (localObject != null)
     {
-      this.mVideoPlayer.setOutputMute(paramBoolean);
+      ((ISuperPlayer)localObject).setOutputMute(paramBoolean);
       this.mUiHandler.removeMessages(10);
       this.mUiHandler.sendEmptyMessageDelayed(10, 300L);
-      if (this.mStatusListener != null) {
-        this.mStatusListener.onAudioMute(paramBoolean, this.mVideoId);
+      localObject = this.mStatusListener;
+      if (localObject != null) {
+        ((GameCenterVideoViewController.VideoStatusChangeListener)localObject).onAudioMute(paramBoolean, this.mVideoId);
       }
     }
   }
@@ -947,25 +1065,27 @@ public class GameCenterVideoViewController
   
   public void setPlayEnabled(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      this.mPlayBtnVisibility = i;
-      Message.obtain(this.mUiHandler, 16, Integer.valueOf(this.mPlayBtnVisibility)).sendToTarget();
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 8;
     }
+    this.mPlayBtnVisibility = i;
+    Message.obtain(this.mUiHandler, 16, Integer.valueOf(this.mPlayBtnVisibility)).sendToTarget();
   }
   
   public void setProgressEnabled(boolean paramBoolean)
   {
     this.mEnableProgress = paramBoolean;
     Handler localHandler = this.mUiHandler;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 4)
-    {
-      Message.obtain(localHandler, 15, Integer.valueOf(i)).sendToTarget();
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 4;
     }
+    Message.obtain(localHandler, 15, Integer.valueOf(i)).sendToTarget();
   }
   
   public void setUIStyle(int paramInt)
@@ -977,8 +1097,9 @@ public class GameCenterVideoViewController
   public void setVideoDuration(int paramInt)
   {
     this.mVideoDurationValue = paramInt;
-    if (this.mData != null) {
-      this.mData.videoDuration = paramInt;
+    FeedsItemData localFeedsItemData = this.mData;
+    if (localFeedsItemData != null) {
+      localFeedsItemData.videoDuration = paramInt;
     }
   }
   
@@ -1001,9 +1122,10 @@ public class GameCenterVideoViewController
   
   public void start()
   {
-    if (this.mVideoPlayer != null)
+    ISuperPlayer localISuperPlayer = this.mVideoPlayer;
+    if (localISuperPlayer != null)
     {
-      this.mVideoPlayer.start();
+      localISuperPlayer.start();
       setCurrentStatus(3);
       updateControlPanle();
       this.mLastPlayTimestamp = System.currentTimeMillis();
@@ -1022,10 +1144,16 @@ public class GameCenterVideoViewController
         localHashMap.put(Integer.valueOf(2), this.mData.msgId);
         localHashMap.put(Integer.valueOf(6), this.mData.feedId);
         localHashMap.put(Integer.valueOf(4), "-1");
-        localHashMap.put(Integer.valueOf(42), getCurrentPostion() + "");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(getCurrentPostion());
+        localStringBuilder.append("");
+        localHashMap.put(Integer.valueOf(42), localStringBuilder.toString());
         localHashMap.put(Integer.valueOf(43), this.mData.algorithmId);
-        localHashMap.put(Integer.valueOf(44), this.mData.type + "");
-        GameCenterUtils.a(CmGameUtil.a(), "769", "205026", this.mData.gameInfo.gameAppId, "76902", "1", "160", localHashMap);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.mData.type);
+        localStringBuilder.append("");
+        localHashMap.put(Integer.valueOf(44), localStringBuilder.toString());
+        GameCenterUtils.a(((ICmGameHelper)QRoute.api(ICmGameHelper.class)).getAppInterface(), "769", "205026", this.mData.gameInfo.gameAppId, "76902", "1", "160", localHashMap);
       }
       this.mVideoPlayer.stop();
       setCurrentStatus(0);
@@ -1035,14 +1163,17 @@ public class GameCenterVideoViewController
   
   public void updateControlPanle()
   {
-    com.tencent.qphone.base.util.QLog.e("GameCenterVideoViewController", 1, "[updateControlPanle] " + this.mCurrentStatus.get());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[updateControlPanle] ");
+    localStringBuilder.append(this.mCurrentStatus.get());
+    com.tencent.qphone.base.util.QLog.e("GameCenterVideoViewController", 1, localStringBuilder.toString());
     this.mUiHandler.removeMessages(4);
     this.mUiHandler.sendEmptyMessage(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.media.GameCenterVideoViewController
  * JD-Core Version:    0.7.0.1
  */

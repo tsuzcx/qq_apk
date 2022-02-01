@@ -11,36 +11,23 @@ class k$2
   public android.webkit.WebResourceResponse shouldInterceptRequest(WebResourceRequest paramWebResourceRequest)
   {
     paramWebResourceRequest = new SystemWebViewClient.e(paramWebResourceRequest.getUrl().toString(), paramWebResourceRequest.isForMainFrame(), paramWebResourceRequest.isRedirect(), paramWebResourceRequest.hasGesture(), paramWebResourceRequest.getMethod(), paramWebResourceRequest.getRequestHeaders());
-    paramWebResourceRequest = this.a.shouldInterceptRequest(paramWebResourceRequest);
-    if (paramWebResourceRequest == null) {
-      paramWebResourceRequest = null;
+    Object localObject = this.a.shouldInterceptRequest(paramWebResourceRequest);
+    if (localObject == null) {
+      return null;
     }
-    android.webkit.WebResourceResponse localWebResourceResponse;
-    int i;
-    String str;
-    do
-    {
-      do
-      {
-        return paramWebResourceRequest;
-        localWebResourceResponse = new android.webkit.WebResourceResponse(paramWebResourceRequest.getMimeType(), paramWebResourceRequest.getEncoding(), paramWebResourceRequest.getData());
-        localWebResourceResponse.setResponseHeaders(paramWebResourceRequest.getResponseHeaders());
-        i = paramWebResourceRequest.getStatusCode();
-        str = paramWebResourceRequest.getReasonPhrase();
-        if (i != localWebResourceResponse.getStatusCode()) {
-          break;
-        }
-        paramWebResourceRequest = localWebResourceResponse;
-      } while (str == null);
-      paramWebResourceRequest = localWebResourceResponse;
-    } while (str.equals(localWebResourceResponse.getReasonPhrase()));
-    localWebResourceResponse.setStatusCodeAndReasonPhrase(i, str);
-    return localWebResourceResponse;
+    paramWebResourceRequest = new android.webkit.WebResourceResponse(((com.tencent.smtt.export.external.interfaces.WebResourceResponse)localObject).getMimeType(), ((com.tencent.smtt.export.external.interfaces.WebResourceResponse)localObject).getEncoding(), ((com.tencent.smtt.export.external.interfaces.WebResourceResponse)localObject).getData());
+    paramWebResourceRequest.setResponseHeaders(((com.tencent.smtt.export.external.interfaces.WebResourceResponse)localObject).getResponseHeaders());
+    int i = ((com.tencent.smtt.export.external.interfaces.WebResourceResponse)localObject).getStatusCode();
+    localObject = ((com.tencent.smtt.export.external.interfaces.WebResourceResponse)localObject).getReasonPhrase();
+    if ((i != paramWebResourceRequest.getStatusCode()) || ((localObject != null) && (!((String)localObject).equals(paramWebResourceRequest.getReasonPhrase())))) {
+      paramWebResourceRequest.setStatusCodeAndReasonPhrase(i, (String)localObject);
+    }
+    return paramWebResourceRequest;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.k.2
  * JD-Core Version:    0.7.0.1
  */

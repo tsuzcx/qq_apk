@@ -9,25 +9,25 @@ class CameraRendererable$1
   
   public void run()
   {
-    if (CameraRendererable.a(this.this$0) != null) {}
-    try
-    {
-      CameraRendererable.a(this.this$0).a();
-      return;
-    }
-    catch (Exception localException)
-    {
-      do
+    if (CameraRendererable.a(this.this$0) != null) {
+      try
+      {
+        CameraRendererable.a(this.this$0).a();
+        return;
+      }
+      catch (Exception localException)
       {
         localException.printStackTrace();
-      } while (!QLog.isColorLevel());
-      QLog.d(CameraRendererable.a(), 2, "requestRender", localException);
+        if (QLog.isColorLevel()) {
+          QLog.d(CameraRendererable.a(), 2, "requestRender", localException);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.CameraRendererable.1
  * JD-Core Version:    0.7.0.1
  */

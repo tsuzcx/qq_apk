@@ -79,13 +79,16 @@ public class AppRuntimeLoader
   
   private void setRuntimeBaselib()
   {
-    if ((this.mRuntime == null) || (this.baselibLoadTask.getBaselibContent() == null)) {
-      return;
+    if (this.mRuntime != null)
+    {
+      if (this.baselibLoadTask.getBaselibContent() == null) {
+        return;
+      }
+      ((BaseRuntimeImpl.BaselibProvider)this.mRuntime.getManager(BaseRuntimeImpl.BaselibProvider.class)).setBaseLib(this.baselibLoadTask.getBaselibContent());
     }
-    ((BaseRuntimeImpl.BaselibProvider)this.mRuntime.getManager(BaseRuntimeImpl.BaselibProvider.class)).setBaseLib(this.baselibLoadTask.getBaselibContent());
   }
   
-  public BaseRuntime createRuntime(Context paramContext)
+  protected BaseRuntime createRuntime(Context paramContext)
   {
     paramContext = new AppBrandRuntime(paramContext);
     paramContext.setRuntimeMsgObserver(this);
@@ -139,13 +142,12 @@ public class AppRuntimeLoader
       }
       notifyRuntimeEvent(3, new Object[0]);
     }
-    for (;;)
+    else
     {
-      super.onTaskDone(paramBaseTask);
-      return;
-      if (paramBaseTask == this.runtimeCreateTask)
+      Object localObject = this.runtimeCreateTask;
+      if (paramBaseTask == localObject)
       {
-        if (this.runtimeCreateTask.isSucceed()) {
+        if (((RuntimeCreateTask)localObject).isSucceed()) {
           setRuntimeBaselib();
         }
       }
@@ -153,50 +155,63 @@ public class AppRuntimeLoader
       {
         setRuntimeBaselib();
       }
-      else if (paramBaseTask == this.runtimeInitTask)
+      else
       {
-        if (this.runtimeInitTask.isSucceed())
+        localObject = this.runtimeInitTask;
+        if (paramBaseTask == localObject)
         {
-          notifyRuntimeEvent(4, new Object[0]);
-          onRuntimeLoadResult(0, "");
-        }
-        this.mIsRunning = false;
-      }
-      else if (paramBaseTask == this.miniAppInfoLoadTask)
-      {
-        QMLog.w("AppRuntimeLoader", "fromUpdate: " + this.fromUpdate + " threadId=" + Thread.currentThread().getId());
-        if (!this.fromUpdate)
-        {
-          this.mMiniAppInfo = this.miniAppInfoLoadTask.getMiniAppInfo();
-        }
-        else
-        {
-          this.fromUpdate = false;
-          MiniAppInfo localMiniAppInfo = this.miniAppInfoLoadTask.getMiniAppInfo();
-          boolean bool = MiniAppBaseInfo.isSameVersion(localMiniAppInfo, this.mMiniAppInfo);
-          ApkgBaseInfo localApkgBaseInfo = this.mMiniAppInfo.apkgInfo;
-          this.mMiniAppInfo = localMiniAppInfo;
-          this.mMiniAppInfo.apkgInfo = localApkgBaseInfo;
-          if (bool)
+          if (((RuntimeInitTask)localObject).isSucceed())
           {
-            if (!TextUtils.isEmpty(this.mMiniAppInfo.launchParam.entryPath)) {
-              this.mNeedReloadPage = true;
-            }
-            if (this.mRuntimeLoadListener != null) {
-              this.mRuntimeLoadListener.onResult(0, "", this);
-            }
+            notifyRuntimeEvent(4, new Object[0]);
+            onRuntimeLoadResult(0, "");
+          }
+          this.mIsRunning = false;
+        }
+        else if (paramBaseTask == this.miniAppInfoLoadTask)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("fromUpdate: ");
+          ((StringBuilder)localObject).append(this.fromUpdate);
+          ((StringBuilder)localObject).append(" threadId=");
+          ((StringBuilder)localObject).append(Thread.currentThread().getId());
+          QMLog.w("AppRuntimeLoader", ((StringBuilder)localObject).toString());
+          if (!this.fromUpdate)
+          {
+            this.mMiniAppInfo = this.miniAppInfoLoadTask.getMiniAppInfo();
           }
           else
           {
-            onMiniAppVersionUpdate();
+            this.fromUpdate = false;
+            localObject = this.miniAppInfoLoadTask.getMiniAppInfo();
+            boolean bool = MiniAppBaseInfo.isSameVersion((MiniAppBaseInfo)localObject, this.mMiniAppInfo);
+            ApkgBaseInfo localApkgBaseInfo = this.mMiniAppInfo.apkgInfo;
+            this.mMiniAppInfo = ((MiniAppInfo)localObject);
+            this.mMiniAppInfo.apkgInfo = localApkgBaseInfo;
+            if (bool)
+            {
+              if (!TextUtils.isEmpty(this.mMiniAppInfo.launchParam.entryPath)) {
+                this.mNeedReloadPage = true;
+              }
+              if (this.mRuntimeLoadListener != null) {
+                this.mRuntimeLoadListener.onResult(0, "", this);
+              }
+            }
+            else
+            {
+              onMiniAppVersionUpdate();
+            }
+          }
+        }
+        else
+        {
+          localObject = this.apkgLoadTask;
+          if ((paramBaseTask == localObject) && (((ApkgLoadAsyncTask)localObject).isSucceed()) && (this.mMiniAppInfo != null)) {
+            this.mMiniAppInfo.apkgInfo = this.apkgLoadTask.getApkgInfo();
           }
         }
       }
-      else if ((paramBaseTask == this.apkgLoadTask) && (this.apkgLoadTask.isSucceed()) && (this.mMiniAppInfo != null))
-      {
-        this.mMiniAppInfo.apkgInfo = this.apkgLoadTask.getApkgInfo();
-      }
     }
+    super.onTaskDone(paramBaseTask);
   }
   
   public void resetAndStart(MiniAppInfo paramMiniAppInfo)
@@ -216,7 +231,12 @@ public class AppRuntimeLoader
     if (paramMiniAppInfo.isFakeAppInfo())
     {
       this.fromUpdate = true;
-      QMLog.w("AppRuntimeLoader", "updateMiniAppInfoFromReload  fromUpdate: " + this.fromUpdate + " threadId=" + Thread.currentThread().getId());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateMiniAppInfoFromReload  fromUpdate: ");
+      localStringBuilder.append(this.fromUpdate);
+      localStringBuilder.append(" threadId=");
+      localStringBuilder.append(Thread.currentThread().getId());
+      QMLog.w("AppRuntimeLoader", localStringBuilder.toString());
       this.miniAppInfoLoadTask.reset();
       this.miniAppInfoLoadTask.setStatus(2);
       this.miniAppInfoLoadTask.setMiniAppInfo(paramMiniAppInfo);
@@ -227,7 +247,7 @@ public class AppRuntimeLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.AppRuntimeLoader
  * JD-Core Version:    0.7.0.1
  */

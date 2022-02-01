@@ -1,19 +1,16 @@
 package com.tencent.mobileqq.profilecard.base.container;
 
-import android.os.Bundle;
+import android.view.View;
 import android.widget.FrameLayout;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profilecard.base.component.AbsProfileComponent;
-import com.tencent.mobileqq.profilecard.base.factory.ProfileComponentFactory;
 import com.tencent.mobileqq.profilecard.base.framework.IComponentCenter;
-import com.tencent.mobileqq.profilecard.vas.component.background.AbsVasProfileBackgroundComponent;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProfileBgContainer
-  extends AbsProfileComponent<FrameLayout>
+  extends AbsProfileContainer<FrameLayout>
 {
-  private static final String TAG = "ProfileBgContainer";
-  private AbsVasProfileBackgroundComponent mBgComponent;
+  public static final String TAG = "ProfileBgContainer";
   private long mCurStyleId;
   
   public ProfileBgContainer(IComponentCenter paramIComponentCenter, ProfileCardInfo paramProfileCardInfo)
@@ -21,45 +18,27 @@ public class ProfileBgContainer
     super(paramIComponentCenter, paramProfileCardInfo);
   }
   
-  private boolean checkSwitchHeaderComponent(ProfileCardInfo paramProfileCardInfo)
+  private boolean checkReloadChildComponent(ProfileCardInfo paramProfileCardInfo)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramProfileCardInfo != null) {
-      if (this.mBgComponent != null)
-      {
-        bool1 = bool2;
-        if (this.mCurStyleId == paramProfileCardInfo.a) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-    }
-    return bool1;
+    return (paramProfileCardInfo != null) && (this.mCurStyleId != paramProfileCardInfo.curUseStyleId);
   }
   
-  private void destroyBgComponent()
+  protected void destroyChildComponent()
   {
-    if (this.mBgComponent != null)
-    {
-      removeComponent(this.mBgComponent);
-      this.mBgComponent.detachFromComponentCenter();
-      this.mBgComponent = null;
-      this.mCurStyleId = 0L;
-    }
+    super.destroyChildComponent();
+    this.mCurStyleId = 0L;
   }
   
-  private void initBgComponent()
+  protected List<Integer> getChildComponentTypeList()
   {
-    if (this.mBgComponent == null)
-    {
-      this.mBgComponent = ((AbsVasProfileBackgroundComponent)ProfileComponentFactory.create(1003, this.mComponentCenter, (ProfileCardInfo)this.mData));
-      this.mBgComponent.setContainerView(this.mViewContainer);
-      this.mBgComponent.attachToComponentCenter();
-      addComponent(this.mBgComponent);
-      this.mCurStyleId = ((ProfileCardInfo)this.mData).a;
-    }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(Integer.valueOf(1003));
+    return localArrayList;
+  }
+  
+  protected View getChildComponentViewContainer(int paramInt)
+  {
+    return (View)this.mViewContainer;
   }
   
   public String getComponentName()
@@ -72,33 +51,31 @@ public class ProfileBgContainer
     return 104;
   }
   
-  public void onCreate(BaseActivity paramBaseActivity, Bundle paramBundle)
+  protected void initChildComponent()
   {
-    super.onCreate(paramBaseActivity, paramBundle);
-    initBgComponent();
+    super.initChildComponent();
+    this.mCurStyleId = ((ProfileCardInfo)this.mData).curUseStyleId;
   }
   
   public boolean onDataUpdate(ProfileCardInfo paramProfileCardInfo)
   {
-    int i = 0;
-    if (checkSwitchHeaderComponent(paramProfileCardInfo))
+    int i;
+    if (checkReloadChildComponent(paramProfileCardInfo))
     {
-      destroyBgComponent();
-      initBgComponent();
+      destroyChildComponent();
+      initChildComponent();
       i = 1;
     }
-    return i | super.onDataUpdate(paramProfileCardInfo);
-  }
-  
-  public void onDestroy()
-  {
-    destroyBgComponent();
-    super.onDestroy();
+    else
+    {
+      i = 0;
+    }
+    return super.onDataUpdate(paramProfileCardInfo) | i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.container.ProfileBgContainer
  * JD-Core Version:    0.7.0.1
  */

@@ -12,14 +12,14 @@ public class FontBubbleHelper
   
   public int[] interestedIn()
   {
-    return new int[8];
+    return new int[9];
   }
   
   public void onMoveToState(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FontBubbleHelper
  * JD-Core Version:    0.7.0.1
  */

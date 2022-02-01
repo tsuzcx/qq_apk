@@ -20,42 +20,34 @@ class QRLoginMgrActivity$1
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    boolean bool = false;
     if (QLog.isColorLevel()) {
       QLog.d("QRLoginMgrActivity", 2, new Object[] { "qqmute onCheckedChanged:", Boolean.valueOf(paramBoolean) });
     }
-    if (!NetworkUtil.g(this.a))
+    if (!NetworkUtil.isNetworkAvailable(this.a))
     {
-      QQToast.a(QRLoginMgrActivity.a(this.a), 1, 2131696097, 0).b(this.a.getTitleBarHeight());
-      if (!paramBoolean) {
-        bool = true;
-      }
-      paramCompoundButton.setChecked(bool);
+      QQToast.a(QRLoginMgrActivity.a(this.a), 1, 2131696114, 0).b(this.a.getTitleBarHeight());
+      paramCompoundButton.setChecked(paramBoolean ^ true);
     }
-    for (;;)
+    else if (paramBoolean)
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      if (paramBoolean)
-      {
-        QQCustomDialog localQQCustomDialog = DialogUtil.a(QRLoginMgrActivity.a(this.a), 230);
-        localQQCustomDialog.setTitle(2131717034);
-        localQQCustomDialog.setMessage(2131717033);
-        localQQCustomDialog.setPositiveButton(2131694615, new QRLoginMgrActivity.1.1(this));
-        localQQCustomDialog.setNegativeButton(2131690800, new QRLoginMgrActivity.1.2(this, paramCompoundButton));
-        localQQCustomDialog.show();
-        ReportController.b(null, "dc00898", "", "", "0X800A475", "0X800A475", 0, 0, "", "", "", "");
-      }
-      else
-      {
-        ((RegisterProxySvcPackHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.REGPRXYSVCPACK_HANDLER)).a(paramBoolean);
-      }
+      QQCustomDialog localQQCustomDialog = DialogUtil.a(QRLoginMgrActivity.a(this.a), 230);
+      localQQCustomDialog.setTitle(2131716687);
+      localQQCustomDialog.setMessage(2131716686);
+      localQQCustomDialog.setPositiveButton(2131694583, new QRLoginMgrActivity.1.1(this));
+      localQQCustomDialog.setNegativeButton(2131690728, new QRLoginMgrActivity.1.2(this, paramCompoundButton));
+      localQQCustomDialog.show();
+      ReportController.b(null, "dc00898", "", "", "0X800A475", "0X800A475", 0, 0, "", "", "", "");
     }
+    else
+    {
+      ((RegisterProxySvcPackHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.REGPRXYSVCPACK_HANDLER)).a(paramBoolean);
+    }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRLoginMgrActivity.1
  * JD-Core Version:    0.7.0.1
  */

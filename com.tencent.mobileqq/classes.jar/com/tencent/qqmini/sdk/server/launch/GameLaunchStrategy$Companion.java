@@ -25,15 +25,18 @@ public final class GameLaunchStrategy$Companion
   private final <T> T getOrPutFist(@NotNull List<T> paramList, Function1<? super T, Boolean> paramFunction1, Function0<? extends T> paramFunction0)
   {
     Iterator localIterator = ((Iterable)paramList).iterator();
-    Object localObject;
-    do
+    while (localIterator.hasNext())
     {
-      if (!localIterator.hasNext()) {
-        break;
+      Object localObject = localIterator.next();
+      if (((Boolean)paramFunction1.invoke(localObject)).booleanValue())
+      {
+        paramFunction1 = localObject;
+        break label55;
       }
-      localObject = localIterator.next();
-    } while (!((Boolean)paramFunction1.invoke(localObject)).booleanValue());
-    for (paramFunction1 = localObject; paramFunction1 != null; paramFunction1 = null) {
+    }
+    paramFunction1 = null;
+    label55:
+    if (paramFunction1 != null) {
       return paramFunction1;
     }
     paramFunction1 = paramFunction0.invoke();
@@ -76,16 +79,18 @@ public final class GameLaunchStrategy$Companion
     Intrinsics.checkParameterIsNotNull(paramAppIdentity, "game");
     Intrinsics.checkParameterIsNotNull(paramList, "runningProcesses");
     Iterator localIterator = ((Iterable)paramList).iterator();
-    do
+    while (localIterator.hasNext())
     {
-      if (!localIterator.hasNext()) {
-        break;
-      }
       paramList = localIterator.next();
-    } while (!((GameLaunchStrategy.RunningProcessInfo)paramList).has(paramAppIdentity));
-    for (paramAppIdentity = paramList;; paramAppIdentity = null) {
-      return (GameLaunchStrategy.RunningProcessInfo)paramAppIdentity;
+      if (((GameLaunchStrategy.RunningProcessInfo)paramList).has(paramAppIdentity))
+      {
+        paramAppIdentity = paramList;
+        break label56;
+      }
     }
+    paramAppIdentity = null;
+    label56:
+    return (GameLaunchStrategy.RunningProcessInfo)paramAppIdentity;
   }
   
   @VisibleForTesting
@@ -97,47 +102,36 @@ public final class GameLaunchStrategy$Companion
     if (paramList1.isEmpty()) {
       return (MiniProcessorConfig)CollectionsKt.first(paramList);
     }
-    Iterator localIterator = ((Iterable)CollectionsKt.sortedWith((Iterable)paramList1, (Comparator)new GameLaunchStrategy.Companion.findProcessForLaunch..inlined.sortedByDescending.1())).iterator();
-    Object localObject;
-    int i;
-    if (localIterator.hasNext())
+    Iterable localIterable = (Iterable)paramList1;
+    Iterator localIterator = ((Iterable)CollectionsKt.sortedWith(localIterable, (Comparator)new GameLaunchStrategy.Companion.findProcessForLaunch..inlined.sortedByDescending.1())).iterator();
+    while (localIterator.hasNext())
     {
       localObject = localIterator.next();
-      if (!((GameLaunchStrategy.RunningProcessInfo)localObject).getFull())
-      {
-        i = 1;
-        label88:
-        if (i == 0) {
-          break label113;
-        }
+      if ((((GameLaunchStrategy.RunningProcessInfo)localObject).getFull() ^ true)) {
+        break label95;
       }
     }
-    for (;;)
-    {
-      localObject = (GameLaunchStrategy.RunningProcessInfo)localObject;
-      if (localObject == null) {
-        break label121;
-      }
+    Object localObject = null;
+    label95:
+    localObject = (GameLaunchStrategy.RunningProcessInfo)localObject;
+    if (localObject != null) {
       return ((GameLaunchStrategy.RunningProcessInfo)localObject).getConfig();
-      i = 0;
-      break label88;
-      label113:
-      break;
-      localObject = null;
     }
-    label121:
     if (paramList1.size() < paramList.size())
     {
       paramList = (Iterable)CollectionsKt.toSet((Iterable)paramList);
-      localObject = (Iterable)paramList1;
-      paramList1 = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault((Iterable)localObject, 10));
-      localObject = ((Iterable)localObject).iterator();
+      paramList1 = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault(localIterable, 10));
+      localObject = localIterable.iterator();
       while (((Iterator)localObject).hasNext()) {
         paramList1.add(((GameLaunchStrategy.RunningProcessInfo)((Iterator)localObject).next()).getConfig());
       }
       return (MiniProcessorConfig)CollectionsKt.first((Iterable)CollectionsKt.subtract(paramList, (Iterable)CollectionsKt.toSet((Iterable)paramList1)));
     }
-    throw ((Throwable)new IllegalStateException("all process are full, no idle process available"));
+    paramList = (Throwable)new IllegalStateException("all process are full, no idle process available");
+    for (;;)
+    {
+      throw paramList;
+    }
   }
   
   @VisibleForTesting
@@ -149,25 +143,27 @@ public final class GameLaunchStrategy$Companion
     if (paramList1.size() == paramList.size())
     {
       paramList = (Iterable)paramList1;
+      boolean bool = paramList instanceof Collection;
+      int j = 1;
       int i;
-      if (((paramList instanceof Collection)) && (((Collection)paramList).isEmpty())) {
-        i = 1;
-      }
-      while (i != 0)
+      if ((bool) && (((Collection)paramList).isEmpty()))
       {
-        return (GameLaunchStrategy.RunningProcessInfo)CollectionsKt.last(paramList1);
+        i = j;
+      }
+      else
+      {
         paramList = paramList.iterator();
-        for (;;)
+        do
         {
-          if (paramList.hasNext()) {
-            if (!((GameLaunchStrategy.RunningProcessInfo)paramList.next()).getFull())
-            {
-              i = 0;
-              break;
-            }
+          i = j;
+          if (!paramList.hasNext()) {
+            break;
           }
-        }
-        i = 1;
+        } while (((GameLaunchStrategy.RunningProcessInfo)paramList.next()).getFull());
+        i = 0;
+      }
+      if (i != 0) {
+        return (GameLaunchStrategy.RunningProcessInfo)CollectionsKt.last(paramList1);
       }
     }
     return null;
@@ -180,31 +176,32 @@ public final class GameLaunchStrategy$Companion
     Intrinsics.checkParameterIsNotNull(paramList, "processConfig");
     Intrinsics.checkParameterIsNotNull(paramList1, "runningProcesses");
     Object localObject = (Iterable)paramList1;
+    boolean bool = localObject instanceof Collection;
+    int j = 1;
     int i;
-    if (((localObject instanceof Collection)) && (((Collection)localObject).isEmpty())) {
-      i = 1;
-    }
-    while (i == 0)
+    if ((bool) && (((Collection)localObject).isEmpty()))
     {
-      return null;
-      localObject = ((Iterable)localObject).iterator();
-      for (;;)
+      i = j;
+    }
+    else
+    {
+      Iterator localIterator = ((Iterable)localObject).iterator();
+      do
       {
-        if (((Iterator)localObject).hasNext()) {
-          if (!((GameLaunchStrategy.RunningProcessInfo)((Iterator)localObject).next()).getFull())
-          {
-            i = 0;
-            break;
-          }
+        i = j;
+        if (!localIterator.hasNext()) {
+          break;
         }
-      }
-      i = 1;
+      } while (((GameLaunchStrategy.RunningProcessInfo)localIterator.next()).getFull());
+      i = 0;
+    }
+    if (i == 0) {
+      return null;
     }
     if (paramList1.size() == paramList.size()) {
       return null;
     }
     paramList = (Iterable)CollectionsKt.toSet((Iterable)paramList);
-    localObject = (Iterable)paramList1;
     paramList1 = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault((Iterable)localObject, 10));
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
@@ -225,7 +222,7 @@ public final class GameLaunchStrategy$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.launch.GameLaunchStrategy.Companion
  * JD-Core Version:    0.7.0.1
  */

@@ -15,21 +15,20 @@ class DiscussionInfoCardActivity$2
     if ((paramMotionEvent != null) && (this.a.a != null))
     {
       paramView = this.a.a;
-      if (paramMotionEvent.getAction() != 0) {
-        break label39;
+      float f;
+      if (paramMotionEvent.getAction() == 0) {
+        f = 0.5F;
+      } else {
+        f = 1.0F;
       }
-    }
-    label39:
-    for (float f = 0.5F;; f = 1.0F)
-    {
       paramView.setAlpha(f);
-      return false;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionInfoCardActivity.2
  * JD-Core Version:    0.7.0.1
  */

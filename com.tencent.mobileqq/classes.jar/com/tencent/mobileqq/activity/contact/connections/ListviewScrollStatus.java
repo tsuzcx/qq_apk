@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.contact.connections;
 
-import android.support.annotation.NonNull;
-
 public class ListviewScrollStatus
 {
   public int a;
@@ -15,15 +13,23 @@ public class ListviewScrollStatus
     this.c = paramInt3;
   }
   
-  @NonNull
   public String toString()
   {
-    return "TabLayoutStatus{, tabId=" + this.a + ", scrollPos=" + this.b + ", scrollTop='" + this.c + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TabLayoutStatus{, tabId=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", scrollPos=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", scrollTop='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.connections.ListviewScrollStatus
  * JD-Core Version:    0.7.0.1
  */

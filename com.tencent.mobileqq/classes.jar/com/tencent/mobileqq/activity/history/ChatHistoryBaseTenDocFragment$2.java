@@ -16,45 +16,51 @@ class ChatHistoryBaseTenDocFragment$2
   
   public void a(View paramView)
   {
-    if (paramView.getId() == 2131366452) {
+    if (paramView.getId() == 2131366333)
+    {
       ChatHistoryBaseTenDocFragment.a(this.a);
-    }
-    while ((paramView.getTag() instanceof String)) {
       return;
     }
-    TencentDocItem localTencentDocItem = ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)paramView.getTag()).a;
+    if ((paramView.getTag() instanceof String)) {
+      return;
+    }
+    Object localObject = ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)paramView.getTag()).a;
     if (this.a.c)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryHelperChatHistoryItemSelectHelper.a(localTencentDocItem);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryHelperChatHistoryItemSelectHelper.a(localObject);
       ChatHistoryBaseTenDocFragment.a(this.a).notifyDataSetChanged();
       return;
     }
-    paramView = "unknown";
-    if (FMConstants.b(localTencentDocItem.mUrl)) {
+    if (FMConstants.b(((TencentDocItem)localObject).mUrl)) {
       paramView = "doc";
     }
     for (;;)
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("url", localTencentDocItem.mUrl);
-      localBundle.putString("tdsourcetag", "s_qq_history_tab");
-      localBundle.putString("tdsourcetype", paramView + ChatHistoryBaseTenDocFragment.a(this.a));
-      TeamWorkDocEditBrowserActivity.a(ChatHistoryBaseTenDocFragment.a(this.a), localBundle, false);
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A16B", "0X800A16B", ChatHistoryBaseTenDocFragment.a(this.a), 0, "", "", "s_qq_history_tab", paramView);
-      return;
-      if (FMConstants.e(localTencentDocItem.mUrl)) {
+      break;
+      if (FMConstants.e(((TencentDocItem)localObject).mUrl)) {
         paramView = "form";
-      } else if (FMConstants.d(localTencentDocItem.mUrl)) {
+      } else if (FMConstants.d(((TencentDocItem)localObject).mUrl)) {
         paramView = "ppt";
-      } else if (FMConstants.c(localTencentDocItem.mUrl)) {
+      } else if (FMConstants.c(((TencentDocItem)localObject).mUrl)) {
         paramView = "sheet";
+      } else {
+        paramView = "unknown";
       }
     }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("url", ((TencentDocItem)localObject).mUrl);
+    localBundle.putString("tdsourcetag", "s_qq_history_tab");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramView);
+    ((StringBuilder)localObject).append(ChatHistoryBaseTenDocFragment.a(this.a));
+    localBundle.putString("tdsourcetype", ((StringBuilder)localObject).toString());
+    TeamWorkDocEditBrowserActivity.a(ChatHistoryBaseTenDocFragment.a(this.a), localBundle, false);
+    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A16B", "0X800A16B", ChatHistoryBaseTenDocFragment.a(this.a), 0, "", "", "s_qq_history_tab", paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment.2
  * JD-Core Version:    0.7.0.1
  */

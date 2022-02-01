@@ -23,8 +23,6 @@ final class em$b
   {
     em localem = this.a;
     em.c localc = localem.a(this.b.a);
-    Object localObject1;
-    Object localObject2;
     if (localc != null)
     {
       localem.a -= 1;
@@ -35,39 +33,72 @@ final class em$b
       if (localc == localem.d) {
         localem.d = em.c.h(localc);
       }
-      localObject1 = em.c.h(localc);
-      localObject2 = em.c.g(localc);
+      Object localObject1 = em.c.h(localc);
+      Object localObject2 = em.c.g(localc);
       if (localObject1 != null) {
         em.c.c((em.c)localObject1, (em.c)localObject2);
       }
       if (localObject2 != null) {
         em.c.e((em.c)localObject2, (em.c)localObject1);
       }
-      if ((em.c.b(localc) == null) || (em.c.c(localc) == null)) {
-        break label408;
-      }
-      if (localc != null) {
-        break label214;
-      }
-      localObject1 = null;
-      em.c.a(localc, em.c.a((em.c)localObject1));
-      em.c.a(localc, em.c.f((em.c)localObject1));
-    }
-    for (;;)
-    {
-      if (em.c.b((em.c)localObject1) != null)
+      localObject1 = localc;
+      if (em.c.b(localc) != null)
       {
+        localObject1 = localc;
+        if (em.c.c(localc) != null)
+        {
+          if (localc == null)
+          {
+            localObject2 = null;
+          }
+          else
+          {
+            if (em.c.c(localc) != null) {
+              for (localObject1 = em.c.c(localc);; localObject1 = em.c.b((em.c)localObject1))
+              {
+                localObject2 = localObject1;
+                if (em.c.b((em.c)localObject1) == null) {
+                  break;
+                }
+              }
+            }
+            localObject1 = em.c.d(localc);
+            Object localObject3 = localc;
+            for (;;)
+            {
+              localObject2 = localObject1;
+              if (localObject1 == null) {
+                break;
+              }
+              localObject2 = localObject1;
+              if (localObject3 != em.c.c((em.c)localObject1)) {
+                break;
+              }
+              localObject2 = em.c.d((em.c)localObject1);
+              localObject3 = localObject1;
+              localObject1 = localObject2;
+            }
+          }
+          em.c.a(localc, em.c.a((em.c)localObject2));
+          em.c.a(localc, em.c.f((em.c)localObject2));
+          localObject1 = localObject2;
+        }
+      }
+      if (em.c.b((em.c)localObject1) != null) {
         localObject2 = em.c.b((em.c)localObject1);
-        label156:
-        if (localObject2 == null) {
-          break label324;
-        }
+      } else {
+        localObject2 = em.c.c((em.c)localObject1);
+      }
+      if (localObject2 != null)
+      {
         em.c.d((em.c)localObject2, em.c.d((em.c)localObject1));
-        if (em.c.d((em.c)localObject1) != null) {
-          break label289;
+        if (em.c.d((em.c)localObject1) == null) {
+          localem.b = ((em.c)localObject2);
+        } else if (localObject1 == em.c.b(em.c.d((em.c)localObject1))) {
+          em.c.a(em.c.d((em.c)localObject1), (em.c)localObject2);
+        } else {
+          em.c.b(em.c.d((em.c)localObject1), (em.c)localObject2);
         }
-        localem.b = ((em.c)localObject2);
-        label182:
         em.c.a((em.c)localObject1, null);
         em.c.b((em.c)localObject1, null);
         em.c.d((em.c)localObject1, null);
@@ -75,44 +106,8 @@ final class em$b
           localem.a((em.c)localObject2);
         }
       }
-      label214:
-      do
+      else
       {
-        return;
-        if (em.c.c(localc) != null) {
-          for (localObject2 = em.c.c(localc);; localObject2 = em.c.b((em.c)localObject2))
-          {
-            localObject1 = localObject2;
-            if (em.c.b((em.c)localObject2) == null) {
-              break;
-            }
-          }
-        }
-        localObject2 = em.c.d(localc);
-        Object localObject3 = localc;
-        for (;;)
-        {
-          localObject1 = localObject2;
-          if (localObject2 == null) {
-            break;
-          }
-          localObject1 = localObject2;
-          if (localObject3 != em.c.c((em.c)localObject2)) {
-            break;
-          }
-          localObject1 = em.c.d((em.c)localObject2);
-          localObject3 = localObject2;
-          localObject2 = localObject1;
-        }
-        localObject2 = em.c.c((em.c)localObject1);
-        break label156;
-        if (localObject1 == em.c.b(em.c.d((em.c)localObject1)))
-        {
-          em.c.a(em.c.d((em.c)localObject1), (em.c)localObject2);
-          break label182;
-        }
-        em.c.b(em.c.d((em.c)localObject1), (em.c)localObject2);
-        break label182;
         if (em.c.d((em.c)localObject1) == null)
         {
           localem.b = null;
@@ -121,28 +116,22 @@ final class em$b
         if (!em.c.e((em.c)localObject1)) {
           localem.a((em.c)localObject1);
         }
-      } while (em.c.d((em.c)localObject1) == null);
-      label289:
-      label324:
-      if (localObject1 == em.c.b(em.c.d((em.c)localObject1))) {
-        em.c.a(em.c.d((em.c)localObject1), null);
-      }
-      for (;;)
-      {
-        em.c.d((em.c)localObject1, null);
-        return;
-        if (localObject1 == em.c.c(em.c.d((em.c)localObject1))) {
-          em.c.b(em.c.d((em.c)localObject1), null);
+        if (em.c.d((em.c)localObject1) != null)
+        {
+          if (localObject1 == em.c.b(em.c.d((em.c)localObject1))) {
+            em.c.a(em.c.d((em.c)localObject1), null);
+          } else if (localObject1 == em.c.c(em.c.d((em.c)localObject1))) {
+            em.c.b(em.c.d((em.c)localObject1), null);
+          }
+          em.c.d((em.c)localObject1, null);
         }
       }
-      label408:
-      localObject1 = localc;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.em.b
  * JD-Core Version:    0.7.0.1
  */

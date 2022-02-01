@@ -27,14 +27,15 @@ public final class PhotoCell
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.type, 0);
-    if (this.coverUrl != null) {
-      paramJceOutputStream.write(this.coverUrl, 1);
+    String str = this.coverUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QZONE_MQMSG.PhotoCell
  * JD-Core Version:    0.7.0.1
  */

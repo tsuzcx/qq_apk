@@ -33,20 +33,23 @@ public final class stQQGroupDetailRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.status, 0);
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 1);
+    String str = this.msg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.signature != null) {
-      paramJceOutputStream.write(this.signature, 2);
+    str = this.signature;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.schema != null) {
-      paramJceOutputStream.write(this.schema, 3);
+    str = this.schema;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stQQGroupDetailRsp
  * JD-Core Version:    0.7.0.1
  */

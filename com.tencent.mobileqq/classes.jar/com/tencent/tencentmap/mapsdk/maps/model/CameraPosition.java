@@ -37,26 +37,34 @@ public final class CameraPosition
   
   public final boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof CameraPosition)) {
-        return false;
-      }
-      paramObject = (CameraPosition)paramObject;
-    } while ((this.target.equals(paramObject.target)) && (Float.floatToIntBits(this.zoom) == Float.floatToIntBits(paramObject.zoom)) && (Float.floatToIntBits(this.tilt) == Float.floatToIntBits(paramObject.tilt)) && (Float.floatToIntBits(this.bearing) == Float.floatToIntBits(paramObject.bearing)));
-    return false;
+    }
+    if (!(paramObject instanceof CameraPosition)) {
+      return false;
+    }
+    paramObject = (CameraPosition)paramObject;
+    return (this.target.equals(paramObject.target)) && (Float.floatToIntBits(this.zoom) == Float.floatToIntBits(paramObject.zoom)) && (Float.floatToIntBits(this.tilt) == Float.floatToIntBits(paramObject.tilt)) && (Float.floatToIntBits(this.bearing) == Float.floatToIntBits(paramObject.bearing));
   }
   
   public final String toString()
   {
-    return "latlng:" + this.target.latitude + "," + this.target.longitude + ",zoom:" + this.zoom + ",tilt=" + this.tilt + ",bearing:" + this.bearing;
+    StringBuilder localStringBuilder = new StringBuilder("latlng:");
+    localStringBuilder.append(this.target.latitude);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.target.longitude);
+    localStringBuilder.append(",zoom:");
+    localStringBuilder.append(this.zoom);
+    localStringBuilder.append(",tilt=");
+    localStringBuilder.append(this.tilt);
+    localStringBuilder.append(",bearing:");
+    localStringBuilder.append(this.bearing);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.CameraPosition
  * JD-Core Version:    0.7.0.1
  */

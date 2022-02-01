@@ -25,22 +25,17 @@ public class ViewUtils
 {
   private static float DEVICE_DENSITY = 0.0F;
   private static float density = -1.0F;
-  private static int densityDPI;
-  public static int densityDpi;
-  public static float mDensity;
-  private static int pixelPerCM;
+  private static int densityDPI = -1;
+  public static int densityDpi = 0;
+  public static float mDensity = 0.0F;
+  private static int pixelPerCM = 0;
   private static float scaleDensity = -1.0F;
-  private static int screenHeight;
-  private static double screenSizeCM;
-  private static int screenWidth;
+  private static int screenHeight = -1;
+  private static double screenSizeCM = 0.0D;
+  private static int screenWidth = -1;
   
   static
   {
-    densityDPI = -1;
-    screenWidth = -1;
-    screenHeight = -1;
-    screenSizeCM = 0.0D;
-    pixelPerCM = 0;
     DisplayMetrics localDisplayMetrics = AppLoaderFactory.g().getContext().getResources().getDisplayMetrics();
     mDensity = localDisplayMetrics.density;
     densityDpi = localDisplayMetrics.densityDpi;
@@ -67,42 +62,44 @@ public class ViewUtils
   
   public static int dip2px(float paramFloat)
   {
-    return (int)(mDensity * paramFloat + 0.5F);
+    return (int)(paramFloat * mDensity + 0.5F);
   }
   
   public static int dpToPx(float paramFloat)
   {
-    return Math.round(getDensity() * paramFloat);
+    return Math.round(paramFloat * getDensity());
   }
   
   public static String getBreakString(Paint paramPaint, String paramString, float paramFloat)
   {
-    float f2 = 0.0F;
-    int i = 0;
     if (paramPaint == null) {
       return paramString;
     }
     for (;;)
     {
       float[] arrayOfFloat;
+      int i;
       float f1;
+      int j;
       try
       {
         if (TextUtils.isEmpty(paramString)) {
-          break;
+          return paramString;
         }
         arrayOfFloat = new float[paramString.length()];
         paramPaint.getTextWidths(paramString, arrayOfFloat);
+        float f2 = 0.0F;
+        i = 0;
         f1 = 0.0F;
         if (i < arrayOfFloat.length)
         {
           f1 += arrayOfFloat[i];
           if (f1 <= paramFloat) {
-            break label154;
+            break label155;
           }
         }
         if (i == arrayOfFloat.length) {
-          break;
+          return paramString;
         }
         f1 = paramPaint.measureText("...");
         if (i <= 0) {
@@ -111,7 +108,7 @@ public class ViewUtils
         paramFloat = f2;
         j = i;
         if (i > 1) {
-          break label163;
+          break label164;
         }
         return paramString.substring(0, i);
       }
@@ -120,84 +117,93 @@ public class ViewUtils
         QMLog.e("getBreakString", "getBreakString", paramPaint);
         return paramString;
       }
-      paramPaint = paramString.substring(0, i) + "...";
+      paramPaint = new StringBuilder();
+      paramPaint.append(paramString.substring(0, i));
+      paramPaint.append("...");
+      paramPaint = paramPaint.toString();
       return paramPaint;
-      int j = i;
-      if (i <= 0)
+      label155:
+      i += 1;
+      continue;
+      label164:
+      do
       {
-        continue;
-        label154:
-        i += 1;
-      }
-      else
-      {
-        label163:
         i = j - 1;
         paramFloat += arrayOfFloat[i];
-        if (paramFloat < f1) {}
-      }
+        if (paramFloat >= f1) {
+          break;
+        }
+        j = i;
+      } while (i > 0);
     }
   }
   
   public static void getChildPos(View paramView1, View paramView2, int[] paramArrayOfInt)
   {
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length < 2)) {}
-    label156:
+    int j;
+    int i;
+    if (paramArrayOfInt != null)
+    {
+      if (paramArrayOfInt.length < 2) {
+        return;
+      }
+      j = 0;
+      i = 0;
+    }
     for (;;)
     {
-      return;
-      int i = 0;
-      int j = 0;
+      int n = j;
+      int i1 = i;
       int k;
       int m;
       if (paramView1.getParent() != null)
       {
-        j = paramView1.getLeft() + j;
-        k = paramView1.getTop() + i;
+        k = j + paramView1.getLeft();
+        m = i + paramView1.getTop();
         if (paramView1.getParent() == paramView2)
         {
-          paramArrayOfInt[0] = j;
-          paramArrayOfInt[1] = k;
-          i = k;
-          m = j;
-          if (paramArrayOfInt.length >= 4)
-          {
-            paramArrayOfInt[2] = paramView1.getMeasuredWidth();
-            paramArrayOfInt[3] = paramView1.getMeasuredHeight();
-            m = j;
-            i = k;
+          paramArrayOfInt[0] = k;
+          paramArrayOfInt[1] = m;
+          n = k;
+          i1 = m;
+          if (paramArrayOfInt.length < 4) {
+            break label158;
           }
+          paramArrayOfInt[2] = paramView1.getMeasuredWidth();
+          paramArrayOfInt[3] = paramView1.getMeasuredHeight();
+          n = k;
+          i1 = m;
         }
       }
-      for (;;)
+      try
+      {
+        View localView = (View)paramView1.getParent();
+        j = k;
+        i = m;
+        paramView1 = localView;
+        if (paramArrayOfInt.length >= 4)
+        {
+          paramArrayOfInt[2] = localView.getMeasuredWidth();
+          paramArrayOfInt[3] = localView.getMeasuredHeight();
+          j = k;
+          i = m;
+          paramView1 = localView;
+        }
+      }
+      catch (ClassCastException paramView1)
       {
         for (;;)
         {
-          if (paramView2 != null) {
-            break label156;
-          }
-          paramArrayOfInt[0] = m;
-          paramArrayOfInt[1] = i;
-          return;
-          try
-          {
-            paramView1 = (View)paramView1.getParent();
-            if (paramArrayOfInt.length >= 4)
-            {
-              paramArrayOfInt[2] = paramView1.getMeasuredWidth();
-              paramArrayOfInt[3] = paramView1.getMeasuredHeight();
-            }
-            i = k;
-          }
-          catch (ClassCastException paramView1)
-          {
-            i = k;
-            m = j;
-          }
+          label158:
+          n = k;
+          i1 = m;
         }
-        continue;
-        m = j;
       }
+    }
+    if (paramView2 == null)
+    {
+      paramArrayOfInt[0] = n;
+      paramArrayOfInt[1] = i1;
     }
   }
   
@@ -220,16 +226,17 @@ public class ViewUtils
   
   public static float getDensity(Activity paramActivity)
   {
-    if ((paramActivity == null) || (paramActivity.getResources() == null)) {
-      return getDensity();
-    }
-    DisplayMetrics localDisplayMetrics = paramActivity.getResources().getDisplayMetrics();
-    if (Build.VERSION.SDK_INT >= 17)
+    if ((paramActivity != null) && (paramActivity.getResources() != null))
     {
-      localDisplayMetrics = new DisplayMetrics();
-      ((WindowManager)paramActivity.getSystemService("window")).getDefaultDisplay().getRealMetrics(localDisplayMetrics);
+      DisplayMetrics localDisplayMetrics = paramActivity.getResources().getDisplayMetrics();
+      if (Build.VERSION.SDK_INT >= 17)
+      {
+        localDisplayMetrics = new DisplayMetrics();
+        ((WindowManager)paramActivity.getSystemService("window")).getDefaultDisplay().getRealMetrics(localDisplayMetrics);
+      }
+      return localDisplayMetrics.density;
     }
-    return localDisplayMetrics.density;
+    return getDensity();
   }
   
   public static float getDensityDpi()
@@ -242,8 +249,11 @@ public class ViewUtils
   
   public static int getPixelPerCM()
   {
-    if (pixelPerCM <= 0) {
-      pixelPerCM = (int)(AppLoaderFactory.g().getContext().getResources().getDisplayMetrics().xdpi / 2.54D);
+    if (pixelPerCM <= 0)
+    {
+      double d = AppLoaderFactory.g().getContext().getResources().getDisplayMetrics().xdpi;
+      Double.isNaN(d);
+      pixelPerCM = (int)(d / 2.54D);
     }
     return pixelPerCM;
   }
@@ -259,29 +269,25 @@ public class ViewUtils
   public static int getScreenHeight()
   {
     if (screenHeight < 0) {
-      if (AppLoaderFactory.g().getContext().getResources().getConfiguration().orientation != 2) {
-        break label47;
+      if (AppLoaderFactory.g().getContext().getResources().getConfiguration().orientation == 2) {
+        screenHeight = AppLoaderFactory.g().getContext().getResources().getDisplayMetrics().widthPixels;
+      } else {
+        screenHeight = AppLoaderFactory.g().getContext().getResources().getDisplayMetrics().heightPixels;
       }
     }
-    label47:
-    for (screenHeight = AppLoaderFactory.g().getContext().getResources().getDisplayMetrics().widthPixels;; screenHeight = AppLoaderFactory.g().getContext().getResources().getDisplayMetrics().heightPixels) {
-      return screenHeight;
-    }
+    return screenHeight;
   }
   
   private static int getScreenHeightByConfig(Configuration paramConfiguration)
   {
-    int i = 0;
     if (paramConfiguration != null)
     {
       if (paramConfiguration.orientation == 2) {
-        i = dpToPx(paramConfiguration.screenWidthDp);
+        return dpToPx(paramConfiguration.screenWidthDp);
       }
+      return dpToPx(paramConfiguration.screenHeightDp);
     }
-    else {
-      return i;
-    }
-    return dpToPx(paramConfiguration.screenHeightDp);
+    return 0;
   }
   
   public static double getScreenSizeCM()
@@ -289,8 +295,10 @@ public class ViewUtils
     if (screenSizeCM <= 0.0D)
     {
       DisplayMetrics localDisplayMetrics = AppLoaderFactory.g().getContext().getResources().getDisplayMetrics();
-      double d = Math.pow(localDisplayMetrics.widthPixels, 2.0D);
-      screenSizeCM = Math.sqrt(Math.pow(localDisplayMetrics.heightPixels, 2.0D) + d) / getPixelPerCM();
+      double d1 = Math.sqrt(Math.pow(localDisplayMetrics.widthPixels, 2.0D) + Math.pow(localDisplayMetrics.heightPixels, 2.0D));
+      double d2 = getPixelPerCM();
+      Double.isNaN(d2);
+      screenSizeCM = d1 / d2;
     }
     return screenSizeCM;
   }
@@ -298,29 +306,25 @@ public class ViewUtils
   public static int getScreenWidth()
   {
     if (screenWidth < 0) {
-      if (AppLoaderFactory.g().getContext().getResources().getConfiguration().orientation != 2) {
-        break label47;
+      if (AppLoaderFactory.g().getContext().getResources().getConfiguration().orientation == 2) {
+        screenWidth = AppLoaderFactory.g().getContext().getResources().getDisplayMetrics().heightPixels;
+      } else {
+        screenWidth = AppLoaderFactory.g().getContext().getResources().getDisplayMetrics().widthPixels;
       }
     }
-    label47:
-    for (screenWidth = AppLoaderFactory.g().getContext().getResources().getDisplayMetrics().heightPixels;; screenWidth = AppLoaderFactory.g().getContext().getResources().getDisplayMetrics().widthPixels) {
-      return screenWidth;
-    }
+    return screenWidth;
   }
   
   private static int getScreenWidthByConfig(Configuration paramConfiguration)
   {
-    int i = 0;
     if (paramConfiguration != null)
     {
       if (paramConfiguration.orientation == 2) {
-        i = dpToPx(paramConfiguration.screenHeightDp);
+        return dpToPx(paramConfiguration.screenHeightDp);
       }
+      return dpToPx(paramConfiguration.screenWidthDp);
     }
-    else {
-      return i;
-    }
-    return dpToPx(paramConfiguration.screenWidthDp);
+    return 0;
   }
   
   public static float getSpValue(float paramFloat)
@@ -328,46 +332,39 @@ public class ViewUtils
     if (DEVICE_DENSITY == 0.0F) {
       DEVICE_DENSITY = densityDpi;
     }
-    return DEVICE_DENSITY * paramFloat / 160.0F;
+    return paramFloat * DEVICE_DENSITY / 160.0F;
   }
   
   public static int getStatusBarHeight(Context paramContext)
   {
-    int i = 0;
     paramContext = paramContext.getResources();
-    int j = paramContext.getIdentifier("status_bar_height", "dimen", "android");
-    if (j > 0) {
-      i = paramContext.getDimensionPixelSize(j);
+    int i = paramContext.getIdentifier("status_bar_height", "dimen", "android");
+    if (i > 0) {
+      return paramContext.getDimensionPixelSize(i);
     }
-    return i;
+    return 0;
   }
   
   public static int getTextWidth(Paint paramPaint, CharSequence paramCharSequence)
   {
     int j = 0;
-    int i = 0;
-    int k = j;
-    if (paramCharSequence != null)
+    if ((paramCharSequence != null) && (paramCharSequence.length() > 0))
     {
-      k = j;
-      if (paramCharSequence.length() > 0)
+      int m = paramCharSequence.length();
+      float[] arrayOfFloat = new float[m];
+      paramPaint.getTextWidths(paramCharSequence.toString(), arrayOfFloat);
+      int i = 0;
+      for (;;)
       {
-        int m = paramCharSequence.length();
-        float[] arrayOfFloat = new float[m];
-        paramPaint.getTextWidths(paramCharSequence.toString(), arrayOfFloat);
-        j = 0;
-        for (;;)
-        {
-          k = i;
-          if (j >= m) {
-            break;
-          }
-          k = (int)Math.ceil(arrayOfFloat[j]);
-          j += 1;
-          i = k + i;
+        k = i;
+        if (j >= m) {
+          break;
         }
+        i += (int)Math.ceil(arrayOfFloat[j]);
+        j += 1;
       }
     }
+    int k = 0;
     return k;
   }
   
@@ -378,11 +375,12 @@ public class ViewUtils
     }
     if ((paramView2 instanceof ViewGroup))
     {
-      int j = ((ViewGroup)paramView2).getChildCount();
+      paramView2 = (ViewGroup)paramView2;
+      int j = paramView2.getChildCount();
       int i = 0;
       while (i < j)
       {
-        if (isChildOf(paramView1, ((ViewGroup)paramView2).getChildAt(i))) {
+        if (isChildOf(paramView1, paramView2.getChildAt(i))) {
           return true;
         }
         i += 1;
@@ -410,84 +408,88 @@ public class ViewUtils
   @TargetApi(11)
   public static void setAlpha(View paramView, float paramFloat)
   {
-    if (Build.VERSION.SDK_INT >= 11) {
+    if (Build.VERSION.SDK_INT >= 11)
+    {
       paramView.setAlpha(paramFloat);
-    }
-    while (paramView.getBackground() == null) {
       return;
     }
-    paramView.getBackground().setAlpha((int)(255.0F * paramFloat));
+    if (paramView.getBackground() != null) {
+      paramView.getBackground().setAlpha((int)(paramFloat * 255.0F));
+    }
   }
   
   public static void setEnableForAllChild(View paramView, boolean paramBoolean)
   {
-    if (paramView == null) {}
-    for (;;)
-    {
+    if (paramView == null) {
       return;
-      paramView.setEnabled(paramBoolean);
-      if ((paramView instanceof ViewGroup))
-      {
-        paramView = (ViewGroup)paramView;
-        int j = paramView.getChildCount();
-        int i = 0;
-        while (i < j)
-        {
-          setEnableForAllChild(paramView.getChildAt(i), paramBoolean);
-          i += 1;
-        }
-      }
+    }
+    paramView.setEnabled(paramBoolean);
+    if (!(paramView instanceof ViewGroup)) {
+      return;
+    }
+    paramView = (ViewGroup)paramView;
+    int j = paramView.getChildCount();
+    int i = 0;
+    while (i < j)
+    {
+      setEnableForAllChild(paramView.getChildAt(i), paramBoolean);
+      i += 1;
     }
   }
   
   @TargetApi(11)
   public static void setPivotX(View paramView, float paramFloat)
   {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
+    if (paramView == null) {
       return;
     }
-    paramView.setPivotX(paramFloat);
+    if (Build.VERSION.SDK_INT >= 11) {
+      paramView.setPivotX(paramFloat);
+    }
   }
   
   @TargetApi(11)
   public static void setPivotY(View paramView, float paramFloat)
   {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
+    if (paramView == null) {
       return;
     }
-    paramView.setPivotY(paramFloat);
+    if (Build.VERSION.SDK_INT >= 11) {
+      paramView.setPivotY(paramFloat);
+    }
   }
   
   @TargetApi(11)
   public static void setRotation(View paramView, float paramFloat)
   {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
+    if (paramView == null) {
       return;
     }
-    paramView.setRotation(paramFloat);
+    if (Build.VERSION.SDK_INT >= 11) {
+      paramView.setRotation(paramFloat);
+    }
   }
   
   @TargetApi(11)
   public static void setScaleX(View paramView, float paramFloat)
   {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
+    if (paramView == null) {
       return;
     }
-    paramView.setScaleX(paramFloat);
+    if (Build.VERSION.SDK_INT >= 11) {
+      paramView.setScaleX(paramFloat);
+    }
   }
   
   @TargetApi(11)
   public static void setScaleY(View paramView, float paramFloat)
   {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
+    if (paramView == null) {
       return;
     }
-    paramView.setScaleY(paramFloat);
+    if (Build.VERSION.SDK_INT >= 11) {
+      paramView.setScaleY(paramFloat);
+    }
   }
   
   public static void setScreenSizeByConfig(Configuration paramConfiguration)
@@ -499,21 +501,23 @@ public class ViewUtils
   @TargetApi(11)
   public static void setTranslationX(View paramView, float paramFloat)
   {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
+    if (paramView == null) {
       return;
     }
-    paramView.setTranslationX(paramFloat);
+    if (Build.VERSION.SDK_INT >= 11) {
+      paramView.setTranslationX(paramFloat);
+    }
   }
   
   @TargetApi(11)
   public static void setTranslationY(View paramView, float paramFloat)
   {
-    if (paramView == null) {}
-    while (Build.VERSION.SDK_INT < 11) {
+    if (paramView == null) {
       return;
     }
-    paramView.setTranslationY(paramFloat);
+    if (Build.VERSION.SDK_INT >= 11) {
+      paramView.setTranslationY(paramFloat);
+    }
   }
   
   @TargetApi(16)
@@ -549,12 +553,12 @@ public class ViewUtils
   
   public static int spToPx(float paramFloat)
   {
-    return (int)(AppLoaderFactory.g().getContext().getResources().getDisplayMetrics().scaledDensity * paramFloat + 0.5F);
+    return (int)(paramFloat * AppLoaderFactory.g().getContext().getResources().getDisplayMetrics().scaledDensity + 0.5F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.ViewUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -7,6 +7,8 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkFileImportHandler;
+import com.tencent.mobileqq.teamwork.bean.TeamWorkFileImportInfo;
 import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONArray;
@@ -20,87 +22,110 @@ class TeamWorkFileImportJobForGroup$1
   
   public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
   {
-    int i = 0;
     JSONObject localJSONObject = new JSONObject();
+    int i = 0;
     if (paramBoolean) {
       if (paramDownloadFileRspBody != null)
       {
         paramInt = paramDownloadFileRspBody.int32_ret_code.get();
         if (paramInt != 0) {
-          break label549;
+          break label333;
         }
-        Object localObject = HexUtil.bytes2HexStr(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
-        paramBundle = (Bundle)localObject;
-        if (localObject != null) {
-          paramBundle = ((String)localObject).toLowerCase();
+        String str = HexUtil.bytes2HexStr(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
+        paramBundle = str;
+        if (str != null) {
+          paramBundle = str.toLowerCase();
         }
-        localObject = paramDownloadFileRspBody.str_download_ip.get();
-        String str = HexUtil.bytes2HexStr(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
-        if (QLog.isColorLevel()) {
-          QLog.i("TeamWorkFileImportJobForGroup", 2, "---onReqDownloadFileResult success ,ip: " + (String)localObject + ",param: " + str);
+        str = paramDownloadFileRspBody.str_download_ip.get();
+        paramDownloadFileRspBody = HexUtil.bytes2HexStr(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("---onReqDownloadFileResult success ,ip: ");
+          localStringBuilder.append(str);
+          localStringBuilder.append(",param: ");
+          localStringBuilder.append(paramDownloadFileRspBody);
+          QLog.i("TeamWorkFileImportJobForGroup", 2, localStringBuilder.toString());
         }
-        paramDownloadFileRspBody = new StringBuilder("http://");
-        paramDownloadFileRspBody.append((String)localObject).append("/ftn_handler/").append(str).append("/?fname=").append(HexUtil.String2HexString(this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString));
+        StringBuilder localStringBuilder = new StringBuilder("http://");
+        localStringBuilder.append(str);
+        localStringBuilder.append("/ftn_handler/");
+        localStringBuilder.append(paramDownloadFileRspBody);
+        localStringBuilder.append("/?fname=");
+        localStringBuilder.append(HexUtil.String2HexString(this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString));
         try
         {
-          localObject = new JSONArray();
-          ((JSONArray)localObject).put(0, paramDownloadFileRspBody.toString());
-          localJSONObject.put("urls", localObject);
-          localJSONObject.put("filename", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString);
-          localJSONObject.put("cookie", "FTN5K=" + paramBundle);
+          paramDownloadFileRspBody = new JSONArray();
+          paramDownloadFileRspBody.put(0, localStringBuilder.toString());
+          localJSONObject.put("urls", paramDownloadFileRspBody);
+          localJSONObject.put("filename", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString);
+          paramDownloadFileRspBody = new StringBuilder();
+          paramDownloadFileRspBody.append("FTN5K=");
+          paramDownloadFileRspBody.append(paramBundle);
+          localJSONObject.put("cookie", paramDownloadFileRspBody.toString());
           paramInt = 1;
-          if (paramInt != 0) {}
         }
         catch (Exception paramDownloadFileRspBody)
         {
-          label459:
-          QLog.e("TeamWorkFileImportJobForGroup", 1, "onReqDownloadFileResult json exception: " + paramDownloadFileRspBody.toString());
+          paramBundle = new StringBuilder();
+          paramBundle.append("onReqDownloadFileResult json exception: ");
+          paramBundle.append(paramDownloadFileRspBody.toString());
+          QLog.e("TeamWorkFileImportJobForGroup", 1, paramBundle.toString());
         }
       }
     }
+    for (;;)
+    {
+      paramInt = 0;
+      break;
+      label333:
+      paramDownloadFileRspBody = new StringBuilder();
+      paramDownloadFileRspBody.append("onReqDownloadFileResult retCode: ");
+      paramDownloadFileRspBody.append(paramInt);
+      QLog.e("TeamWorkFileImportJobForGroup", 1, paramDownloadFileRspBody.toString());
+      continue;
+      paramDownloadFileRspBody = new StringBuilder();
+      paramDownloadFileRspBody.append("onReqDownloadFileResult errorCode: ");
+      paramDownloadFileRspBody.append(paramInt);
+      QLog.e("TeamWorkFileImportJobForGroup", 1, paramDownloadFileRspBody.toString());
+    }
+    if (paramInt == 0) {}
     try
     {
-      localJSONObject.put("filename", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("filename", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString);
       localJSONObject.put("filetype", 3);
-      localJSONObject.put("fileid", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString);
-      localJSONObject.put("businesstype", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_b_of_type_Int);
-      localJSONObject.put("groupuin", Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.a));
-      localJSONObject.put("importoption", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.g);
+      localJSONObject.put("fileid", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString);
+      localJSONObject.put("businesstype", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_b_of_type_Int);
+      localJSONObject.put("groupuin", Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.a));
+      localJSONObject.put("importoption", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.g);
       if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null)
       {
         localJSONObject.put("md5", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5);
         localJSONObject.put("sha", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSHA);
       }
-      localJSONObject.put("filesize", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_d_of_type_Long);
-      this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.l = this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString;
-      this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.i = 3;
+      localJSONObject.put("filesize", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_d_of_type_Long);
+      this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.l = this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString;
+      this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.i = 3;
       i = 1;
     }
     catch (Exception paramDownloadFileRspBody)
     {
-      label549:
-      QLog.e("TeamWorkFileImportJobForGroup", 2, "put fileid exception: " + paramDownloadFileRspBody.toString());
-      break label459;
-      this.a.a(true);
+      paramBundle = new StringBuilder();
+      paramBundle.append("put fileid exception: ");
+      paramBundle.append(paramDownloadFileRspBody.toString());
+      QLog.e("TeamWorkFileImportJobForGroup", 2, paramBundle.toString());
     }
     if (((i != 0) || (paramInt != 0)) && (TeamWorkConvertUtils.a(localJSONObject)) && (TeamWorkFileImportJobForGroup.a(this.a, localJSONObject)))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportHandler.a(localJSONObject, this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, this.a.hashCode());
+      this.a.jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkFileImportHandler.fileImportFromUrl(localJSONObject, this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo, this.a.hashCode());
       return;
-      for (;;)
-      {
-        paramInt = 0;
-        break;
-        QLog.e("TeamWorkFileImportJobForGroup", 1, "onReqDownloadFileResult retCode: " + paramInt);
-        continue;
-        QLog.e("TeamWorkFileImportJobForGroup", 1, "onReqDownloadFileResult errorCode: " + paramInt);
-      }
     }
+    this.a.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkFileImportJobForGroup.1
  * JD-Core Version:    0.7.0.1
  */

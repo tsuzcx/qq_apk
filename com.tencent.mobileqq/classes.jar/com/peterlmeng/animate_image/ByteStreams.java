@@ -29,22 +29,21 @@ public final class ByteStreams
     if (paramInt2 >= 0)
     {
       int i = 0;
-      for (;;)
+      while (i < paramInt2)
       {
-        int j;
-        if (i < paramInt2)
-        {
-          j = paramInputStream.read(paramArrayOfByte, paramInt1 + i, paramInt2 - i);
-          if (j != -1) {}
-        }
-        else
-        {
+        int j = paramInputStream.read(paramArrayOfByte, paramInt1 + i, paramInt2 - i);
+        if (j == -1) {
           return i;
         }
         i += j;
       }
+      return i;
     }
-    throw new IndexOutOfBoundsException("len is negative");
+    paramInputStream = new IndexOutOfBoundsException("len is negative");
+    for (;;)
+    {
+      throw paramInputStream;
+    }
   }
   
   public static void readFully(InputStream paramInputStream, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -73,35 +72,31 @@ public final class ByteStreams
   {
     byte[] arrayOfByte = new byte[paramInt];
     int i = paramInt;
-    int k;
-    if (i > 0)
+    while (i > 0)
     {
       int j = paramInt - i;
-      k = paramInputStream.read(arrayOfByte, j, i);
+      int k = paramInputStream.read(arrayOfByte, j, i);
       if (k == -1) {
-        localObject = Arrays.copyOf(arrayOfByte, j);
+        return Arrays.copyOf(arrayOfByte, j);
       }
-    }
-    do
-    {
-      return localObject;
       i -= k;
-      break;
-      paramInt = paramInputStream.read();
-      localObject = arrayOfByte;
-    } while (paramInt == -1);
-    Object localObject = new ByteStreams.FastByteArrayOutputStream(null);
-    ((ByteStreams.FastByteArrayOutputStream)localObject).write(paramInt);
-    copy(paramInputStream, (OutputStream)localObject);
-    paramInputStream = new byte[arrayOfByte.length + ((ByteStreams.FastByteArrayOutputStream)localObject).size()];
+    }
+    paramInt = paramInputStream.read();
+    if (paramInt == -1) {
+      return arrayOfByte;
+    }
+    ByteStreams.FastByteArrayOutputStream localFastByteArrayOutputStream = new ByteStreams.FastByteArrayOutputStream(null);
+    localFastByteArrayOutputStream.write(paramInt);
+    copy(paramInputStream, localFastByteArrayOutputStream);
+    paramInputStream = new byte[arrayOfByte.length + localFastByteArrayOutputStream.size()];
     System.arraycopy(arrayOfByte, 0, paramInputStream, 0, arrayOfByte.length);
-    ((ByteStreams.FastByteArrayOutputStream)localObject).writeTo(paramInputStream, arrayOfByte.length);
+    localFastByteArrayOutputStream.writeTo(paramInputStream, arrayOfByte.length);
     return paramInputStream;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.peterlmeng.animate_image.ByteStreams
  * JD-Core Version:    0.7.0.1
  */

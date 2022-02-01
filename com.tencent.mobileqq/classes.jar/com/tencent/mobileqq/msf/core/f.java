@@ -13,29 +13,24 @@ public class f
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
     int k = 0;
-    int j = -1;
-    int m;
     int n;
-    if (i < arrayOfString.length)
+    for (int j = -1; i < arrayOfString.length; j = n)
     {
-      paramString = arrayOfString[i];
-      char[] arrayOfChar = paramString.toCharArray();
-      m = 0;
+      String str = arrayOfString[i];
+      paramString = str.toCharArray();
+      int m = 0;
       n = 0;
-      while ((m < arrayOfChar.length - 1) && (arrayOfChar[m] == '0'))
+      while ((m < paramString.length - 1) && (paramString[m] == '0'))
       {
         n += 1;
         m += 1;
       }
-      if (n <= 0) {
-        break label243;
+      paramString = str;
+      if (n > 0) {
+        paramString = str.substring(n);
       }
-      paramString = paramString.substring(n);
-    }
-    label243:
-    for (;;)
-    {
-      if (k == 0) {
+      if (k == 0)
+      {
         if ("0".equals(paramString))
         {
           m = k;
@@ -47,42 +42,42 @@ public class f
             m = k;
           }
         }
-      }
-      for (;;)
-      {
-        i += 1;
-        k = m;
-        j = n;
-        break;
-        localStringBuilder.append(paramString);
-        if (i < arrayOfString.length - 1) {
-          localStringBuilder.append(":");
-        }
-        m = k;
-        n = j;
-        if (j != -1)
+        else
         {
-          m = 1;
-          n = j;
-          continue;
           localStringBuilder.append(paramString);
+          if (i < arrayOfString.length - 1) {
+            localStringBuilder.append(":");
+          }
           m = k;
           n = j;
-          if (i < arrayOfString.length - 1)
+          if (j != -1)
           {
-            localStringBuilder.append(":");
-            m = k;
+            m = 1;
             n = j;
           }
         }
       }
-      return localStringBuilder.toString();
+      else
+      {
+        localStringBuilder.append(paramString);
+        m = k;
+        n = j;
+        if (i < arrayOfString.length - 1)
+        {
+          localStringBuilder.append(":");
+          n = j;
+          m = k;
+        }
+      }
+      i += 1;
+      k = m;
     }
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.f
  * JD-Core Version:    0.7.0.1
  */

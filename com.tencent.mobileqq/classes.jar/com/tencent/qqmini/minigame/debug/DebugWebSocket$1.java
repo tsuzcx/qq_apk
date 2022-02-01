@@ -15,12 +15,22 @@ class DebugWebSocket$1
     if (this.this$0.mOutListener != null) {
       this.this$0.mOutListener.onSocketClose(this.this$0, paramInt2);
     }
-    QMLog.e(this.this$0.TAG, "---onClose---code: " + paramInt2 + ",reason:" + paramString);
+    String str = this.this$0.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("---onClose---code: ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(",reason:");
+    localStringBuilder.append(paramString);
+    QMLog.e(str, localStringBuilder.toString());
   }
   
   public void onError(int paramInt1, int paramInt2, String paramString)
   {
-    QMLog.e(this.this$0.TAG, "onFailure " + paramString);
+    String str = this.this$0.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onFailure ");
+    localStringBuilder.append(paramString);
+    QMLog.e(str, localStringBuilder.toString());
     if (this.this$0.mOutListener != null) {
       this.this$0.mOutListener.onSocketFailure(this.this$0, paramInt2);
     }
@@ -44,7 +54,7 @@ class DebugWebSocket$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.debug.DebugWebSocket.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,12 @@ public class AuthJsPlugin
   @JsEvent({"login"})
   public void login(RequestEvent paramRequestEvent)
   {
-    QMLog.d("AuthJsPlugin", "call API_LOGIN callbackId:" + paramRequestEvent.callbackId + " PackageToolVersion:" + this.mApkgInfo.mAppConfigInfo.packageToolVersion);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("call API_LOGIN callbackId:");
+    localStringBuilder.append(paramRequestEvent.callbackId);
+    localStringBuilder.append(" PackageToolVersion:");
+    localStringBuilder.append(this.mApkgInfo.mAppConfigInfo.packageToolVersion);
+    QMLog.d("AuthJsPlugin", localStringBuilder.toString());
     this.mChannelProxy.login(this.mApkgInfo.appId, new AuthJsPlugin.1(this, paramRequestEvent));
   }
   
@@ -32,7 +37,7 @@ public class AuthJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.AuthJsPlugin
  * JD-Core Version:    0.7.0.1
  */

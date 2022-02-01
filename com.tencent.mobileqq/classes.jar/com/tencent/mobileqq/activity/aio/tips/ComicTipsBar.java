@@ -40,75 +40,78 @@ public class ComicTipsBar
   
   public View a(Object... paramVarArgs)
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131558688, null);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131558586, null);
     localView.setOnClickListener(new ComicTipsBar.1(this, localView));
-    TextView localTextView = (TextView)localView.findViewById(2131362554);
+    TextView localTextView = (TextView)localView.findViewById(2131362510);
     paramVarArgs = this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics();
     int j = (int)(localTextView.getPaint().measureText(this.c) / this.c.length());
-    int i;
-    if (paramVarArgs.widthPixels > paramVarArgs.heightPixels)
-    {
+    if (paramVarArgs.widthPixels > paramVarArgs.heightPixels) {
       i = paramVarArgs.heightPixels;
-      i = (int)((i - paramVarArgs.density * 65.0F) / j) - 8;
-      if (this.c.length() > i) {
-        this.c = (this.c.substring(0, i) + "...");
-      }
-      if ((this.jdField_a_of_type_Int < 100) || (this.jdField_a_of_type_Int > 300)) {
-        break label216;
-      }
-    }
-    label216:
-    for (paramVarArgs = HardCodeUtil.a(2131702223);; paramVarArgs = HardCodeUtil.a(2131702224))
-    {
-      this.jdField_a_of_type_JavaLangString = String.format(paramVarArgs, new Object[] { this.c });
-      localTextView.setText(this.jdField_a_of_type_JavaLangString);
-      return localView;
+    } else {
       i = paramVarArgs.widthPixels;
-      break;
     }
+    int i = (int)((i - paramVarArgs.density * 65.0F) / j) - 8;
+    if (this.c.length() > i)
+    {
+      paramVarArgs = new StringBuilder();
+      paramVarArgs.append(this.c.substring(0, i));
+      paramVarArgs.append("...");
+      this.c = paramVarArgs.toString();
+    }
+    i = this.jdField_a_of_type_Int;
+    if ((i >= 100) && (i <= 300)) {
+      paramVarArgs = HardCodeUtil.a(2131702357);
+    } else {
+      paramVarArgs = HardCodeUtil.a(2131702358);
+    }
+    this.jdField_a_of_type_JavaLangString = String.format(paramVarArgs, new Object[] { this.c });
+    localTextView.setText(this.jdField_a_of_type_JavaLangString);
+    return localView;
   }
   
   public void a(int paramInt, Object... paramVarArgs)
   {
-    if (paramInt != 1000) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if (QLog.isColorLevel()) {
-              QLog.d("ComicTipsBar", 2, "onAIOEvent() : TYPE_ON_SHOW =====>");
-            }
-            if ((this.jdField_a_of_type_AndroidAppActivity != null) && (this.jdField_a_of_type_AndroidAppActivity.getIntent() != null)) {
-              break;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d("ComicTipsBar", 2, "onAIOEvent() : intent is null");
-          return;
-          paramVarArgs = this.jdField_a_of_type_AndroidAppActivity.getIntent().getExtras();
-          if (paramVarArgs != null) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("ComicTipsBar", 2, "onAIOEvent() : data == null");
-        return;
-        this.jdField_a_of_type_Boolean = paramVarArgs.getBoolean("fromMessage", false);
-        this.b = paramVarArgs.getString("comicId");
-        this.c = paramVarArgs.getString("comicName");
-        this.jdField_a_of_type_Int = paramVarArgs.getInt("type", -1);
-        if (!TextUtils.isEmpty(this.c)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ComicTipsBar", 2, "onAIOEvent() : comicName is null");
+    if (paramInt != 1000) {
       return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ComicTipsBar", 2, "onAIOEvent() : TYPE_ON_SHOW =====>");
+    }
+    paramVarArgs = this.jdField_a_of_type_AndroidAppActivity;
+    if ((paramVarArgs != null) && (paramVarArgs.getIntent() != null))
+    {
+      paramVarArgs = this.jdField_a_of_type_AndroidAppActivity.getIntent().getExtras();
+      if (paramVarArgs == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ComicTipsBar", 2, "onAIOEvent() : data == null");
+        }
+        return;
+      }
+      this.jdField_a_of_type_Boolean = paramVarArgs.getBoolean("fromMessage", false);
+      this.b = paramVarArgs.getString("comicId");
+      this.c = paramVarArgs.getString("comicName");
+      this.jdField_a_of_type_Int = paramVarArgs.getInt("type", -1);
+      if (TextUtils.isEmpty(this.c))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ComicTipsBar", 2, "onAIOEvent() : comicName is null");
+        }
+        return;
+      }
       this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(this, new Object[0]);
-    } while (!QLog.isColorLevel());
-    QLog.d("ComicTipsBar", 2, "onAIOEvent() : show ReaderTipBar, bookName : " + this.c);
+      if (QLog.isColorLevel())
+      {
+        paramVarArgs = new StringBuilder();
+        paramVarArgs.append("onAIOEvent() : show ReaderTipBar, bookName : ");
+        paramVarArgs.append(this.c);
+        QLog.d("ComicTipsBar", 2, paramVarArgs.toString());
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ComicTipsBar", 2, "onAIOEvent() : intent is null");
+    }
   }
   
   public int[] a()
@@ -123,7 +126,7 @@ public class ComicTipsBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.ComicTipsBar
  * JD-Core Version:    0.7.0.1
  */

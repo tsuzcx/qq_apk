@@ -21,26 +21,33 @@ class PreloadServiceProxyImpl$5
     {
       paramInt = paramBundle.getInt("result_code");
       paramBundle = (IPreloadService.PathResult)paramBundle.getSerializable("path_result");
-      if (this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$OnGetPathListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$OnGetPathListener.onResult(paramInt, paramBundle);
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$OnGetPathListener;
+      if (localObject != null) {
+        ((IPreloadService.OnGetPathListener)localObject).onResult(paramInt, paramBundle);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadServiceProxy", 2, "downloadUrls" + paramBundle);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("downloadUrls");
+        ((StringBuilder)localObject).append(paramBundle);
+        QLog.d("PreloadServiceProxy", 2, ((StringBuilder)localObject).toString());
       }
     }
-    do
+    else
     {
-      return;
       if (QLog.isColorLevel()) {
         QLog.d("PreloadServiceProxy", 2, "downloadUrls IPC wrong");
       }
-    } while (this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$OnGetPathListener == null);
-    this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$OnGetPathListener.onResult(1, IPreloadService.PathResult.getFailRes(null));
+      paramBundle = this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$OnGetPathListener;
+      if (paramBundle != null) {
+        paramBundle.onResult(1, IPreloadService.PathResult.getFailRes(null));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadServiceProxyImpl.5
  * JD-Core Version:    0.7.0.1
  */

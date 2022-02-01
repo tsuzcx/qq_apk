@@ -31,28 +31,21 @@ class ProfileLabelEditorActivity$MyLabelGridViewAdapter
   
   private void a(ProfileLabelInfo paramProfileLabelInfo)
   {
-    Object localObject = null;
     Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.a().keySet().iterator();
-    if (localIterator.hasNext())
+    Object localObject = null;
+    while (localIterator.hasNext())
     {
       ProfileLabelInfo localProfileLabelInfo = (ProfileLabelInfo)localIterator.next();
-      if (!localProfileLabelInfo.labelId.equals(paramProfileLabelInfo.labelId)) {
-        break label114;
+      if (localProfileLabelInfo.labelId.equals(paramProfileLabelInfo.labelId)) {
+        localObject = localProfileLabelInfo;
       }
-      localObject = localProfileLabelInfo;
     }
-    label114:
-    for (;;)
+    if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.a(localObject)))
     {
-      break;
-      if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.a(localObject)))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.c(localObject, this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.a(localObject));
-        return;
-      }
-      a(paramProfileLabelInfo.labelId);
+      this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.c(localObject, this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.a(localObject));
       return;
     }
+    a(paramProfileLabelInfo.labelId);
   }
   
   private void a(Long paramLong)
@@ -88,33 +81,33 @@ class ProfileLabelEditorActivity$MyLabelGridViewAdapter
     View localView;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.getLayoutInflater().inflate(2131563083, null);
-      localView.setLayoutParams(new AbsListView.LayoutParams(-1, (int)(32.0F * this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Float)));
+      localView = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.getLayoutInflater().inflate(2131562910, null);
+      localView.setLayoutParams(new AbsListView.LayoutParams(-1, (int)(this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Float * 32.0F)));
       paramView = new ProfileLabelEditorActivity.Holder();
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378873));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378262));
       localView.setTag(paramView);
     }
-    for (;;)
+    else
     {
-      paramView.jdField_a_of_type_Int = paramInt;
-      int i = paramInt % ProfileActivity.a.length;
-      localView.setBackgroundResource(ProfileActivity.a[i][0]);
-      localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      i = ProfileActivity.a[i][1];
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((ProfileLabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labelName);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(((ProfileLabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labelName);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
       ProfileLabelEditorActivity.Holder localHolder = (ProfileLabelEditorActivity.Holder)paramView.getTag();
       localView = paramView;
       paramView = localHolder;
     }
+    paramView.jdField_a_of_type_Int = paramInt;
+    int i = paramInt % ProfileLabelEditorActivity.jdField_a_of_type_Array2dOfInt.length;
+    localView.setBackgroundResource(ProfileLabelEditorActivity.jdField_a_of_type_Array2dOfInt[i][0]);
+    localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    i = ProfileLabelEditorActivity.jdField_a_of_type_Array2dOfInt[i][1];
+    paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
+    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((ProfileLabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labelName);
+    paramView.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(((ProfileLabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labelName);
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ProfileLabelEditorActivity.MyLabelGridViewAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -12,68 +12,49 @@ class QQStoryShieldActivity$1
   
   public void a(boolean paramBoolean, QQStoryUserInfo paramQQStoryUserInfo)
   {
-    boolean bool = true;
     QQStoryShieldActivity.a(this.a);
-    Switch localSwitch;
     if ((paramBoolean) && (paramQQStoryUserInfo != null))
     {
       this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
       this.a.b.setOnCheckedChangeListener(null);
-      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
-      if (paramQQStoryUserInfo.isAllowed != 1) {
-        break label119;
+      Switch localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
+      int i = paramQQStoryUserInfo.isAllowed;
+      boolean bool = false;
+      if (i == 1) {
+        paramBoolean = true;
+      } else {
+        paramBoolean = false;
       }
-      paramBoolean = true;
       localSwitch.setChecked(paramBoolean);
       localSwitch = this.a.b;
-      if (paramQQStoryUserInfo.isInterested != 1) {
-        break label124;
+      paramBoolean = bool;
+      if (paramQQStoryUserInfo.isInterested == 1) {
+        paramBoolean = true;
       }
-    }
-    label119:
-    label124:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
       localSwitch.setChecked(paramBoolean);
       this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
       this.a.b.setOnCheckedChangeListener(this.a);
-      return;
-      paramBoolean = false;
-      break;
     }
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    boolean bool = true;
-    paramBoolean2 = true;
     this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.b();
     if (paramBoolean1) {
       return;
     }
-    QQToast.a(this.a, 2131694733, 0).b(this.a.getTitleBarHeight());
+    QQToast.a(this.a, 2131694712, 0).b(this.a.getTitleBarHeight());
     if (paramBoolean3)
     {
-      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
-      if (!this.a.jdField_a_of_type_ComTencentWidgetSwitch.isChecked()) {}
-      for (paramBoolean1 = paramBoolean2;; paramBoolean1 = false)
-      {
-        localSwitch.setChecked(paramBoolean1);
-        return;
-      }
-    }
-    Switch localSwitch = this.a.b;
-    if (!this.a.b.isChecked()) {}
-    for (paramBoolean1 = bool;; paramBoolean1 = false)
-    {
-      localSwitch.setChecked(paramBoolean1);
+      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(this.a.jdField_a_of_type_ComTencentWidgetSwitch.isChecked() ^ true);
       return;
     }
+    this.a.b.setChecked(this.a.b.isChecked() ^ true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.settings.QQStoryShieldActivity.1
  * JD-Core Version:    0.7.0.1
  */

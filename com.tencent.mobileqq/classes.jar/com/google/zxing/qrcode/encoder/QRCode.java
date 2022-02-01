@@ -59,16 +59,17 @@ public final class QRCode
     localStringBuilder.append(this.jdField_a_of_type_ComGoogleZxingQrcodeDecoderVersion);
     localStringBuilder.append("\n maskPattern: ");
     localStringBuilder.append(this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_ComGoogleZxingQrcodeEncoderByteMatrix == null) {
+    if (this.jdField_a_of_type_ComGoogleZxingQrcodeEncoderByteMatrix == null)
+    {
       localStringBuilder.append("\n matrix: null\n");
     }
-    for (;;)
+    else
     {
-      localStringBuilder.append(">>\n");
-      return localStringBuilder.toString();
       localStringBuilder.append("\n matrix:\n");
       localStringBuilder.append(this.jdField_a_of_type_ComGoogleZxingQrcodeEncoderByteMatrix.toString());
     }
+    localStringBuilder.append(">>\n");
+    return localStringBuilder.toString();
   }
 }
 

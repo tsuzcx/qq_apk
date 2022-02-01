@@ -13,31 +13,33 @@ class PipeLinearLayout$1
   public void run()
   {
     PipeLinearLayout.a(this.this$0);
-    Object localObject;
     if (PipeLinearLayout.a(this.this$0).size() == 0)
     {
-      localObject = new StringBuilder(PipeLinearLayout.a(this.this$0)).append("等").append(PipeLinearLayout.a(this.this$0).getText());
-      if (!PipeLinearLayout.a(this.this$0)) {}
-    }
-    do
-    {
-      return;
+      localObject = new StringBuilder(PipeLinearLayout.a(this.this$0));
+      ((StringBuilder)localObject).append("等");
+      ((StringBuilder)localObject).append(PipeLinearLayout.a(this.this$0).getText());
+      if (PipeLinearLayout.a(this.this$0)) {
+        return;
+      }
       PipeLinearLayout.a(this.this$0).post(new PipeLinearLayout.1.1(this, (StringBuilder)localObject));
       return;
-      localObject = new ArrayList();
-      Iterator localIterator = PipeLinearLayout.a(this.this$0).iterator();
-      while (localIterator.hasNext())
-      {
-        Long localLong = (Long)localIterator.next();
-        ((ArrayList)localObject).add(PipeLinearLayout.a(this.this$0, localLong.longValue()));
-      }
-    } while (PipeLinearLayout.a(this.this$0));
+    }
+    Object localObject = new ArrayList();
+    Iterator localIterator = PipeLinearLayout.a(this.this$0).iterator();
+    while (localIterator.hasNext())
+    {
+      Long localLong = (Long)localIterator.next();
+      ((ArrayList)localObject).add(PipeLinearLayout.a(this.this$0, localLong.longValue()));
+    }
+    if (PipeLinearLayout.a(this.this$0)) {
+      return;
+    }
     PipeLinearLayout.a(this.this$0).post(new PipeLinearLayout.1.2(this, (ArrayList)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.PipeLinearLayout.1
  * JD-Core Version:    0.7.0.1
  */

@@ -27,59 +27,63 @@ public class HttpCheckNavigateRightRequest
     this.req.targetAppId.set(paramString2);
   }
   
-  public byte[] getBusiBuf()
+  protected byte[] getBusiBuf()
   {
     return this.req.toByteArray();
   }
   
-  public String getCmdName()
+  protected String getCmdName()
   {
     return "CheckNavigateRight";
   }
   
-  public String getModule()
+  protected String getModule()
   {
     return "mini_app_info";
   }
   
-  public JSONObject onResponse(int paramInt, byte[] paramArrayOfByte)
+  protected JSONObject onResponse(int paramInt, byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte == null) {
       return null;
     }
     PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-    INTERFACE.StCheckNavigateRightRsp localStCheckNavigateRightRsp = new INTERFACE.StCheckNavigateRightRsp();
+    Object localObject = new INTERFACE.StCheckNavigateRightRsp();
     try
     {
       localStQWebRsp.mergeFrom(WupUtil.b(paramArrayOfByte));
-      localStCheckNavigateRightRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-      QLog.d("HttpCheckNavigateRightRequest", 1, "[miniapp-http].onResponse, retCode: " + localStQWebRsp.retCode.get() + ", errMsg: " + localStQWebRsp.errMsg.get().toStringUtf8());
-      if (localStCheckNavigateRightRsp != null)
+      ((INTERFACE.StCheckNavigateRightRsp)localObject).mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("[miniapp-http].onResponse, retCode: ");
+      paramArrayOfByte.append(localStQWebRsp.retCode.get());
+      paramArrayOfByte.append(", errMsg: ");
+      paramArrayOfByte.append(localStQWebRsp.errMsg.get().toStringUtf8());
+      QLog.d("HttpCheckNavigateRightRequest", 1, paramArrayOfByte.toString());
+      paramArrayOfByte = new JSONObject();
+      paramInt = ((INTERFACE.StCheckNavigateRightRsp)localObject).actionCode.get();
+      paramArrayOfByte.put("action_code", paramInt);
+      paramArrayOfByte.put("skip_local_check", ((INTERFACE.StCheckNavigateRightRsp)localObject).skipLocalCheck.get());
+      if (paramInt == 0)
       {
-        paramArrayOfByte = new JSONObject();
-        paramInt = localStCheckNavigateRightRsp.actionCode.get();
-        paramArrayOfByte.put("action_code", paramInt);
-        paramArrayOfByte.put("skip_local_check", localStCheckNavigateRightRsp.skipLocalCheck.get());
-        if (paramInt == 0) {
-          paramArrayOfByte.put("reason", localStCheckNavigateRightRsp.wording.get());
-        } else {
-          paramArrayOfByte.put("wording", localStCheckNavigateRightRsp.wording.get());
-        }
+        paramArrayOfByte.put("reason", ((INTERFACE.StCheckNavigateRightRsp)localObject).wording.get());
+        return paramArrayOfByte;
       }
+      paramArrayOfByte.put("wording", ((INTERFACE.StCheckNavigateRightRsp)localObject).wording.get());
+      return paramArrayOfByte;
     }
     catch (Exception paramArrayOfByte)
     {
-      QLog.e("HttpCheckNavigateRightRequest", 1, "onResponse fail." + Log.getStackTraceString(paramArrayOfByte));
-      return null;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onResponse fail.");
+      ((StringBuilder)localObject).append(Log.getStackTraceString(paramArrayOfByte));
+      QLog.e("HttpCheckNavigateRightRequest", 1, ((StringBuilder)localObject).toString());
     }
-    QLog.e("HttpCheckNavigateRightRequest", 1, "onResponse fail.rsp = null");
     return null;
-    return paramArrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.network.http.httpRequest.HttpCheckNavigateRightRequest
  * JD-Core Version:    0.7.0.1
  */

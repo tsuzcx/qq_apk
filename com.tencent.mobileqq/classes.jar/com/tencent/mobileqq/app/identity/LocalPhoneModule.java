@@ -72,10 +72,11 @@ public class LocalPhoneModule
   
   private void a(List<GetLocalPhone.LocalPhoneCodeData> paramList1, List<GetLocalPhone.LocalPhoneCodeData> paramList2)
   {
-    if ((paramList1 == null) || (paramList1.isEmpty())) {}
-    for (;;)
+    if (paramList1 != null)
     {
-      return;
+      if (paramList1.isEmpty()) {
+        return;
+      }
       paramList1 = paramList1.iterator();
       while (paramList1.hasNext())
       {
@@ -101,14 +102,8 @@ public class LocalPhoneModule
   private void a(GetLocalPhone.GetUrlRspBody paramGetUrlRspBody, LocalPhoneModule.UrlTokenCallback paramUrlTokenCallback)
   {
     Object localObject = paramGetUrlRspBody.rpt_local_phone_url.get();
-    if ((localObject == null) || (((List)localObject).isEmpty()))
+    if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
-      QLog.e("LocalPhoneModule", 1, "startGetUrlToken, urls is empty");
-      paramUrlTokenCallback.a(-100006, new Exception("startGetUrlToken, urls is empty"));
-    }
-    for (;;)
-    {
-      return;
       QLog.d("LocalPhoneModule", 1, new Object[] { "startGetUrlToken, urls size is ", Integer.valueOf(((List)localObject).size()) });
       this.c = paramGetUrlRspBody.str_msg_id.get();
       paramGetUrlRspBody = new LocalPhoneModule.5(this, ((List)localObject).size(), paramUrlTokenCallback);
@@ -121,7 +116,10 @@ public class LocalPhoneModule
         localSelfPhoneUrl.str_upload_url.set(((GetLocalPhone.LocalPhoneUploadUrl)localObject).str_upload_url.get());
         GateWayVerifyManager.a().a(localSelfPhoneUrl, paramGetUrlRspBody);
       }
+      return;
     }
+    QLog.e("LocalPhoneModule", 1, "startGetUrlToken, urls is empty");
+    paramUrlTokenCallback.a(-100006, new Exception("startGetUrlToken, urls is empty"));
   }
   
   private String b()
@@ -148,6 +146,12 @@ public class LocalPhoneModule
     return this.jdField_a_of_type_JavaLangString;
   }
   
+  public void a()
+  {
+    QLog.d("LocalPhoneModule", 1, "destroy module");
+    GateWayVerifyManager.a().a();
+  }
+  
   public void a(LocalPhoneModule.MaskPhoneCallback paramMaskPhoneCallback)
   {
     a(this.b, this.d, new LocalPhoneModule.1(this, paramMaskPhoneCallback));
@@ -160,7 +164,7 @@ public class LocalPhoneModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.LocalPhoneModule
  * JD-Core Version:    0.7.0.1
  */

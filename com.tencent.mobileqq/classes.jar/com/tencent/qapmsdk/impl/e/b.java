@@ -24,7 +24,7 @@ public class b
   implements Runnable
 {
   @Nullable
-  private static volatile b a = null;
+  private static volatile b a;
   @Nullable
   private String b = null;
   
@@ -40,18 +40,19 @@ public class b
   @Nullable
   public static b a(String paramString)
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new b();
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new b();
+        }
       }
-      if ((a != null) && (a.b == null)) {
-        a.b = paramString;
-      }
-      return a;
+      finally {}
     }
-    finally {}
+    if ((a != null) && (a.b == null)) {
+      a.b = paramString;
+    }
+    return a;
   }
   
   private void b()
@@ -59,49 +60,50 @@ public class b
     if (a.a().b().isEmpty()) {
       return;
     }
-    Object localObject1 = (Vector)a.a().b().clone();
+    Object localObject2 = (Vector)a.a().b().clone();
     a.a().b().clear();
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONArray localJSONArray;
+    Object localObject1 = new JSONObject();
     for (;;)
     {
       try
       {
-        localJSONObject1 = JsonDispose.copyJson(BaseInfo.pubJson, localJSONObject1);
-        localJSONObject1.put("zone", "default");
-        localJSONObject1.put("plugin", PluginCombination.startUpPlugin.plugin);
-        Object localObject2 = new JSONArray();
-        localJSONArray = new JSONArray();
-        localJSONObject1.put("immediates", localObject2);
-        localObject1 = ((Vector)localObject1).iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          break;
-        }
-        localObject2 = (TagItem)((Iterator)localObject1).next();
-        if ((!Double.isNaN(((TagItem)localObject2).eventTime)) && (((TagItem)localObject2).tagId != 9223372036854775807L))
+        localObject1 = JsonDispose.copyJson(BaseInfo.pubJson, (JSONObject)localObject1);
+        ((JSONObject)localObject1).put("zone", "default");
+        ((JSONObject)localObject1).put("plugin", PluginCombination.startUpPlugin.plugin);
+        Object localObject3 = new JSONArray();
+        JSONArray localJSONArray = new JSONArray();
+        ((JSONObject)localObject1).put("immediates", localObject3);
+        localObject2 = ((Vector)localObject2).iterator();
+        if (((Iterator)localObject2).hasNext())
         {
-          JSONObject localJSONObject2 = new JSONObject();
-          localJSONObject2.put("event_time", ((TagItem)localObject2).eventTime);
-          localJSONObject2.put("tag_id", ((TagItem)localObject2).tagId);
-          if (!Double.isNaN(((TagItem)localObject2).duringTime)) {
-            localJSONObject2.put("during_time", ((TagItem)localObject2).duringTime);
+          localObject3 = (TagItem)((Iterator)localObject2).next();
+          if ((Double.isNaN(((TagItem)localObject3).eventTime)) || (((TagItem)localObject3).tagId == 9223372036854775807L)) {
+            continue;
           }
-          localJSONObject2.put("type", ((TagItem)localObject2).type);
-          localJSONObject2.put("stage", ((TagItem)localObject2).stage);
-          localJSONObject2.put("sub_stage", ((TagItem)localObject2).subStage);
-          localJSONObject2.put("extra_info", ((TagItem)localObject2).extraInfo);
-          localJSONObject2.put("process_name", this.b);
-          int i;
-          if (((TagItem)localObject2).isSlow)
+          JSONObject localJSONObject = new JSONObject();
+          localJSONObject.put("event_time", ((TagItem)localObject3).eventTime);
+          localJSONObject.put("tag_id", ((TagItem)localObject3).tagId);
+          if (!Double.isNaN(((TagItem)localObject3).duringTime)) {
+            localJSONObject.put("during_time", ((TagItem)localObject3).duringTime);
+          }
+          localJSONObject.put("type", ((TagItem)localObject3).type);
+          localJSONObject.put("stage", ((TagItem)localObject3).stage);
+          localJSONObject.put("sub_stage", ((TagItem)localObject3).subStage);
+          localJSONObject.put("extra_info", ((TagItem)localObject3).extraInfo);
+          localJSONObject.put("process_name", this.b);
+          if (((TagItem)localObject3).isSlow)
           {
             i = 1;
-            localJSONObject2.put("is_slow", i);
-            localJSONArray.put(localJSONObject2);
+            localJSONObject.put("is_slow", i);
+            localJSONArray.put(localJSONObject);
           }
-          else
-          {
-            i = 0;
-          }
+        }
+        else
+        {
+          ((JSONObject)localObject1).put("manu_tags", localJSONArray);
+          localObject1 = new ResultObject(0, "Scenes target", true, 1L, 1L, (JSONObject)localObject1, true, false, BaseInfo.userMeta.uin);
+          ReporterMachine.INSTANCE.addResultObj((ResultObject)localObject1);
+          return;
         }
       }
       catch (Exception localException)
@@ -109,45 +111,41 @@ public class b
         Logger.INSTANCE.exception("QAPM_Impl_ReportRunnable", localException);
         return;
       }
+      int i = 0;
     }
-    localException.put("manu_tags", localJSONArray);
-    ResultObject localResultObject = new ResultObject(0, "Scenes target", true, 1L, 1L, localException, true, false, BaseInfo.userMeta.uin);
-    ReporterMachine.INSTANCE.addResultObj(localResultObject);
   }
   
   private void c()
   {
-    if ((a.a().c().isEmpty()) && (!PluginController.INSTANCE.canCollect(PluginCombination.loopStackPlugin.plugin))) {}
-    for (;;)
-    {
+    if ((a.a().c().isEmpty()) && (!PluginController.INSTANCE.canCollect(PluginCombination.loopStackPlugin.plugin))) {
       return;
-      Object localObject1 = (Vector)a.a().c().clone();
-      a.a().c().clear();
-      try
+    }
+    Object localObject1 = (Vector)a.a().c().clone();
+    a.a().c().clear();
+    try
+    {
+      localObject1 = ((Vector)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject1 = ((Vector)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
+        Object localObject2 = (SingleItem)((Iterator)localObject1).next();
+        if (((SingleItem)localObject2).costTime >= PluginCombination.startUpPlugin.threshold)
         {
-          Object localObject2 = (SingleItem)((Iterator)localObject1).next();
-          if (((SingleItem)localObject2).costTime >= PluginCombination.startUpPlugin.threshold)
-          {
-            JSONObject localJSONObject = new JSONObject();
-            localJSONObject.put("stage", ((SingleItem)localObject2).stage);
-            localJSONObject.put("event_time", ((SingleItem)localObject2).eventTime);
-            localJSONObject.put("cost_time", ((SingleItem)localObject2).costTime);
-            localJSONObject.put("stack", "");
-            localJSONObject.put("plugin", PluginCombination.loopStackPlugin.plugin);
-            localJSONObject.put("extra_data", ((SingleItem)localObject2).extraData);
-            localObject2 = new ResultObject(0, "Scenes single", true, 1L, 1L, localJSONObject, true, false, BaseInfo.userMeta.uin);
-            ReporterMachine.INSTANCE.addResultObj((ResultObject)localObject2, null, false);
-          }
+          JSONObject localJSONObject = new JSONObject();
+          localJSONObject.put("stage", ((SingleItem)localObject2).stage);
+          localJSONObject.put("event_time", ((SingleItem)localObject2).eventTime);
+          localJSONObject.put("cost_time", ((SingleItem)localObject2).costTime);
+          localJSONObject.put("stack", "");
+          localJSONObject.put("plugin", PluginCombination.loopStackPlugin.plugin);
+          localJSONObject.put("extra_data", ((SingleItem)localObject2).extraData);
+          localObject2 = new ResultObject(0, "Scenes single", true, 1L, 1L, localJSONObject, true, false, BaseInfo.userMeta.uin);
+          ReporterMachine.INSTANCE.addResultObj((ResultObject)localObject2, null, false);
         }
-        return;
       }
-      catch (JSONException localJSONException)
-      {
-        Logger.INSTANCE.exception("QAPM_Impl_ReportRunnable", localJSONException);
-      }
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      Logger.INSTANCE.exception("QAPM_Impl_ReportRunnable", localJSONException);
     }
   }
   
@@ -161,7 +159,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.e.b
  * JD-Core Version:    0.7.0.1
  */

@@ -53,55 +53,15 @@ public class DataLineObserver
     case 13: 
     default: 
       return;
-    case 1: 
+    case 21: 
+      b(((Long)((Object[])(Object[])paramObject)[0]).longValue());
+      return;
+    case 20: 
       paramObject = (Object[])paramObject;
-      a(paramBoolean, (Long)paramObject[0], (String)paramObject[1]);
+      a(((Long)paramObject[0]).longValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue());
       return;
-    case 2: 
-      paramObject = (Object[])paramObject;
-      localLong = (Long)paramObject[0];
-      b(paramBoolean, ((Long)paramObject[1]).longValue(), (String)paramObject[2]);
-      return;
-    case 3: 
-      paramObject = (Object[])paramObject;
-      localLong = (Long)paramObject[0];
-      a(paramBoolean, ((Long)paramObject[1]).longValue(), (String)paramObject[2]);
-      return;
-    case 4: 
-      paramObject = (Object[])paramObject;
-      ((Long)paramObject[0]).longValue();
-      a(((Long)paramObject[1]).longValue(), ((Float)paramObject[2]).floatValue());
-      return;
-    case 5: 
-      paramObject = (Object[])paramObject;
-      localLong = (Long)paramObject[0];
-      a(paramBoolean, ((Long)paramObject[1]).longValue());
-      return;
-    case 6: 
-      paramObject = (Object[])paramObject;
-      localLong = (Long)paramObject[0];
-      a(((Long)paramObject[1]).longValue(), (String)paramObject[2], ((Byte)paramObject[3]).byteValue(), ((Boolean)paramObject[4]).booleanValue(), ((Boolean)paramObject[5]).booleanValue(), ((Long)paramObject[6]).longValue());
-      return;
-    case 7: 
-      paramObject = (Object[])paramObject;
-      localLong = (Long)paramObject[0];
-      b(((Long)paramObject[1]).longValue(), (String)paramObject[2], ((Byte)paramObject[3]).byteValue(), ((Boolean)paramObject[4]).booleanValue(), ((Boolean)paramObject[5]).booleanValue(), ((Long)paramObject[6]).longValue());
-      return;
-    case 8: 
-      paramObject = (Object[])paramObject;
-      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], ((Long)paramObject[2]).longValue());
-      return;
-    case 9: 
-      a((String)((Object[])(Object[])paramObject)[0]);
-      return;
-    case 10: 
-      a(((Long)((Object[])(Object[])paramObject)[0]).longValue());
-      return;
-    case 11: 
-      a();
-      return;
-    case 12: 
-      b();
+    case 19: 
+      a(paramObject, paramBoolean);
       return;
     case 18: 
       a(paramBoolean, (Long)paramObject);
@@ -109,30 +69,70 @@ public class DataLineObserver
     case 17: 
       a((Session)paramObject);
       return;
-    case 14: 
-      b((Session)paramObject);
+    case 16: 
+      a((Session)paramObject, paramBoolean);
       return;
     case 15: 
       paramObject = (Object[])paramObject;
       a((Session)paramObject[0], ((Float)paramObject[1]).floatValue());
       return;
-    case 16: 
-      a((Session)paramObject, paramBoolean);
+    case 14: 
+      b((Session)paramObject);
       return;
-    case 19: 
-      a(paramObject, paramBoolean);
+    case 12: 
+      b();
       return;
-    case 21: 
-      b(((Long)((Object[])(Object[])paramObject)[0]).longValue());
+    case 11: 
+      a();
+      return;
+    case 10: 
+      a(((Long)((Object[])(Object[])paramObject)[0]).longValue());
+      return;
+    case 9: 
+      a((String)((Object[])(Object[])paramObject)[0]);
+      return;
+    case 8: 
+      paramObject = (Object[])paramObject;
+      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], ((Long)paramObject[2]).longValue());
+      return;
+    case 7: 
+      paramObject = (Object[])paramObject;
+      localLong = (Long)paramObject[0];
+      b(((Long)paramObject[1]).longValue(), (String)paramObject[2], ((Byte)paramObject[3]).byteValue(), ((Boolean)paramObject[4]).booleanValue(), ((Boolean)paramObject[5]).booleanValue(), ((Long)paramObject[6]).longValue());
+      return;
+    case 6: 
+      paramObject = (Object[])paramObject;
+      localLong = (Long)paramObject[0];
+      a(((Long)paramObject[1]).longValue(), (String)paramObject[2], ((Byte)paramObject[3]).byteValue(), ((Boolean)paramObject[4]).booleanValue(), ((Boolean)paramObject[5]).booleanValue(), ((Long)paramObject[6]).longValue());
+      return;
+    case 5: 
+      paramObject = (Object[])paramObject;
+      localLong = (Long)paramObject[0];
+      a(paramBoolean, ((Long)paramObject[1]).longValue());
+      return;
+    case 4: 
+      paramObject = (Object[])paramObject;
+      ((Long)paramObject[0]).longValue();
+      a(((Long)paramObject[1]).longValue(), ((Float)paramObject[2]).floatValue());
+      return;
+    case 3: 
+      paramObject = (Object[])paramObject;
+      localLong = (Long)paramObject[0];
+      a(paramBoolean, ((Long)paramObject[1]).longValue(), (String)paramObject[2]);
+      return;
+    case 2: 
+      paramObject = (Object[])paramObject;
+      localLong = (Long)paramObject[0];
+      b(paramBoolean, ((Long)paramObject[1]).longValue(), (String)paramObject[2]);
       return;
     }
     paramObject = (Object[])paramObject;
-    a(((Long)paramObject[0]).longValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue());
+    a(paramBoolean, (Long)paramObject[0], (String)paramObject[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.DataLineObserver
  * JD-Core Version:    0.7.0.1
  */

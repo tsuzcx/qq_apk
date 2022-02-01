@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="54.0dip"
+<RelativeLayout android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.vas.qvip.view.QvipArkView android:layout_gravity="center" android:id="@id/cvu" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</FrameLayout>
+    <com.tencent.mobileqq.widget.OverScrollRecyclerView android:id="@id/oeh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentBottom="true" />
+    <include layout="@layout/cnl" />
+</RelativeLayout>

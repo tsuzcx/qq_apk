@@ -12,22 +12,21 @@ import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import com.tencent.biz.PoiMapActivity;
 import com.tencent.biz.coupon.CouponActivity;
 import com.tencent.biz.eqq.CrmUtils;
+import com.tencent.biz.lebasearch.SearchProtocol;
+import com.tencent.biz.pubaccount.accountdetail.api.impl.PublicAccountDetailImpl;
+import com.tencent.biz.pubaccount.api.IPublicAccountDataManager;
 import com.tencent.biz.pubaccount.api.IPublicAccountManager;
 import com.tencent.biz.pubaccount.api.IPublicAccountManager.InitDoneObserver;
 import com.tencent.biz.pubaccount.api.IPublicAccountManager.refuseAcceptDone;
-import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
 import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
 import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
 import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
 import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
 import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
 import com.tencent.biz.subscribe.servlet.CertifiedAccountAbstractServlet;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -38,22 +37,20 @@ import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.rebuild.PlusPanelUtils;
 import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.activity.weather.WeatherDCReportHelper;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.app.proxy.RecentUserProxy;
-import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.data.PublicAccountInfo;
 import com.tencent.mobileqq.data.PublicAccountMenuEntity;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
+import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoySPEventReport;
 import com.tencent.mobileqq.microapp.sdk.MiniAppLauncher;
 import com.tencent.mobileqq.mini.api.IMiniAppService;
 import com.tencent.mobileqq.mp.mobileqq_mp.ActionInfo;
@@ -76,26 +73,29 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.gamecenter.AppLaucherHelper;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.structmsg.AbsStructMsgElement;
+import com.tencent.mobileqq.troop.troopphoto.api.ITroopPhotoHandler;
 import com.tencent.mobileqq.util.CommonUtil;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.AudioUtil;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.mobileqq.utils.JumpParser;
+import com.tencent.mobileqq.utils.QQAudioHelper;
+import com.tencent.mobileqq.weather.api.IWeatherReportApi;
 import com.tencent.mobileqq.webview.api.IWebProcessManagerService;
 import com.tencent.open.business.base.AppUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qzonehub.api.IQzoneRuntimeService;
 import com.tencent.widget.ActionSheet;
 import cooperation.qzone.PlatformInfor;
 import cooperation.qzone.QUA;
-import cooperation.qzone.contentbox.QZoneMsgManager;
 import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -127,9 +127,10 @@ public class PublicAccountManagerImpl
   public boolean hasPreloadWebProcessor = false;
   private long lastPreloadWebProcessorTime = 0L;
   BroadcastReceiver locationResultReceiver = null;
-  public WeakReference<QQAppInterface> mApp = new WeakReference(null);
+  public WeakReference<AppInterface> mApp = new WeakReference(null);
   private String mCurrentUin;
   boolean mIsNewMenu = false;
+  private boolean mKeepOldPublicAccountData = false;
   private long mLastReportTime = 0L;
   int mPicSource = 0;
   Map<String, List<mobileqq_mp.ButtonInfo>> mPublicAccountMenuButtonLists = new HashMap();
@@ -150,11 +151,12 @@ public class PublicAccountManagerImpl
     {
       localJSONObject.put("luin", paramLong1);
       localJSONObject.put("msg_id", paramLong2);
-      String str = paramString1;
+      String str2 = "";
+      String str1 = paramString1;
       if (paramString1 == null) {
-        str = "";
+        str1 = "";
       }
-      localJSONObject.put("order_id", str);
+      localJSONObject.put("order_id", str1);
       localJSONObject.put("ret_code", paramInt1);
       paramString1 = paramString2;
       if (paramString2 == null) {
@@ -168,17 +170,20 @@ public class PublicAccountManagerImpl
         paramString1 = "";
       }
       localJSONObject.put("reserve_1", paramString1);
-      paramString1 = paramString4;
-      if (paramString4 == null) {
-        paramString1 = "";
+      if (paramString4 != null) {
+        break label163;
       }
-      localJSONObject.put("reserve_2", paramString1);
+      paramString1 = str2;
     }
     catch (JSONException paramString1)
     {
-      label149:
-      break label149;
+      for (;;)
+      {
+        continue;
+        paramString1 = paramString4;
+      }
     }
+    localJSONObject.put("reserve_2", paramString1);
     return localJSONObject.toString();
   }
   
@@ -195,129 +200,144 @@ public class PublicAccountManagerImpl
     int m = localList.size();
     ArrayList localArrayList = new ArrayList();
     int j = 0;
-    int n;
-    int i;
-    for (;;)
+    while (j < m)
     {
-      if (j < m)
+      localObject = (RecentUser)localList.get(j);
+      if (((RecentUser)localObject).showUpTime != 0L)
       {
-        localObject = (RecentUser)localList.get(j);
-        if (((RecentUser)localObject).showUpTime == 0L)
+        int n = getMsgType(((RecentUser)localObject).uin, ((RecentUser)localObject).getType(), paramQQAppInterface);
+        int k = paramQQAppInterface.getConversationFacade().a(((RecentUser)localObject).uin, ((RecentUser)localObject).getType());
+        int i;
+        if (((RecentUser)localObject).getType() == 7120)
         {
-          j += 1;
+          i = k;
+          if (((EcShopAssistantManager)paramQQAppInterface.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER)).a(paramQQAppInterface) == 0) {
+            break label225;
+          }
         }
         else
         {
-          n = getMsgType(((RecentUser)localObject).uin, ((RecentUser)localObject).getType(), paramQQAppInterface);
-          i = paramQQAppInterface.getConversationFacade().a(((RecentUser)localObject).uin, ((RecentUser)localObject).getType());
-          if (((RecentUser)localObject).getType() == 7120)
-          {
-            if (((EcShopAssistantManager)paramQQAppInterface.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER)).a(paramQQAppInterface) == 0) {
-              break label420;
-            }
-            i = 1;
+          if (((RecentUser)localObject).getType() != 7210) {
+            break label196;
+          }
+          if (!SubscriptRecommendController.e(paramQQAppInterface)) {
+            break label180;
           }
         }
-      }
-    }
-    label156:
-    label420:
-    for (;;)
-    {
-      int k = i;
-      if (i != 0) {
-        k = 1;
-      }
-      if ((n == 1) || (n == 2)) {}
-      for (localObject = ((RecentUser)localObject).uin;; localObject = "0")
-      {
-        localObject = n + "&" + (String)localObject + "&" + (j + 1) + "&" + k;
-        if (QLog.isColorLevel()) {
-          QLog.d("PublicAccountManager", 2, "startReport s size= " + ((String)localObject).length());
+        label180:
+        label196:
+        do
+        {
+          for (;;)
+          {
+            i = 1;
+            break;
+            i = k;
+            if (TroopBarAssistantManager.a().a(paramQQAppInterface) == 0) {
+              break;
+            }
+          }
+          i = k;
+          if (((RecentUser)localObject).getType() != 7230) {
+            break;
+          }
+          i = k;
+        } while (ServiceAccountFolderManager.a().b() != 0);
+        label225:
+        k = i;
+        if (i != 0) {
+          k = 1;
+        }
+        if ((n != 1) && (n != 2)) {
+          localObject = "0";
+        } else {
+          localObject = ((RecentUser)localObject).uin;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(n);
+        localStringBuilder.append("&");
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("&");
+        localStringBuilder.append(j + 1);
+        localStringBuilder.append("&");
+        localStringBuilder.append(k);
+        localObject = localStringBuilder.toString();
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("startReport s size= ");
+          localStringBuilder.append(((String)localObject).length());
+          QLog.d("PublicAccountManager", 2, localStringBuilder.toString());
         }
         localArrayList.add(localObject);
-        break;
-        if (((RecentUser)localObject).getType() == 7210)
-        {
-          if (SubscriptRecommendController.e(paramQQAppInterface))
-          {
-            i = 1;
-            break label156;
-          }
-          if (TroopBarAssistantManager.a().a(paramQQAppInterface) != 0) {
-            i = 1;
-          }
-          break label156;
-        }
-        if ((((RecentUser)localObject).getType() != 7230) || (ServiceAccountFolderManager.a().b() == 0)) {
-          break label420;
-        }
-        i = 1;
-        break label156;
-        if (QLog.isColorLevel()) {
-          QLog.d("PublicAccountManager", 2, "startReport reportStr size= " + localArrayList.toString().length() + "  length=" + localArrayList.size());
-        }
-        if (localArrayList.size() != 0) {
-          return localArrayList.toString();
-        }
-        return "";
       }
+      j += 1;
     }
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("startReport reportStr size= ");
+      paramQQAppInterface.append(localArrayList.toString().length());
+      paramQQAppInterface.append("  length=");
+      paramQQAppInterface.append(localArrayList.size());
+      QLog.d("PublicAccountManager", 2, paramQQAppInterface.toString());
+    }
+    if (localArrayList.size() != 0) {
+      return localArrayList.toString();
+    }
+    return "";
   }
   
-  private static void handleUrlEvent(Context paramContext, QQAppInterface paramQQAppInterface, String paramString, mobileqq_mp.ButtonInfo paramButtonInfo)
+  private static void handleUrlEvent(Context paramContext, AppInterface paramAppInterface, String paramString, mobileqq_mp.ButtonInfo paramButtonInfo)
   {
-    Object localObject;
-    if ((paramContext instanceof FragmentActivity))
+    if ((paramContext instanceof BaseActivity))
     {
-      localObject = ((FragmentActivity)paramContext).getChatFragment();
+      localObject = ((BaseActivity)paramContext).getChatFragment();
       if (localObject != null)
       {
         localObject = ((ChatFragment)localObject).a();
         if ((localObject instanceof PublicAccountChatPie))
         {
           localObject = (PublicAccountChatPie)localObject;
-          ((PublicAccountChatPie)localObject).s += 1;
+          ((PublicAccountChatPie)localObject).o += 1;
         }
       }
     }
-    if (paramButtonInfo.url.has())
-    {
+    if (paramButtonInfo.url.has()) {
       paramButtonInfo = paramButtonInfo.url.get();
-      paramButtonInfo = new StringBuilder(paramButtonInfo);
-      if (paramButtonInfo.indexOf("?") >= 0) {
-        break label300;
-      }
-      paramButtonInfo.append("?");
-    }
-    for (;;)
-    {
-      paramButtonInfo.append("uin=" + paramQQAppInterface.getCurrentAccountUin());
-      paramButtonInfo.append("&puin=" + paramString);
-      localObject = new Intent(paramContext, PublicAccountBrowserImpl.class);
-      ((Intent)localObject).putExtra("from", QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", paramButtonInfo.toString());
-      ((Intent)localObject).putExtra("uin", paramQQAppInterface.getCurrentAccountUin());
-      ((Intent)localObject).putExtra("puin", paramString);
-      ((Intent)localObject).putExtra("assignBackText", paramContext.getResources().getString(2131690778));
-      ((Intent)localObject).putExtra("FORCE_BLANK_SCREEN_REPORTE", true);
-      ((Intent)localObject).putExtra("big_brother_source_key", ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getSourceId(paramString));
-      if (paramString.equalsIgnoreCase("2632129500")) {
-        ((Intent)localObject).putExtra("hide_operation_bar", true);
-      }
-      paramContext.startActivity((Intent)localObject);
-      return;
+    } else {
       paramButtonInfo = "";
-      break;
-      label300:
-      if (paramButtonInfo.indexOf("?") < paramButtonInfo.length() - 1) {
-        if (paramButtonInfo.indexOf("&") < 0) {
-          paramButtonInfo.append("&");
-        } else if (paramButtonInfo.lastIndexOf("&") < paramButtonInfo.length() - 1) {
-          paramButtonInfo.append("&");
-        }
+    }
+    paramButtonInfo = new StringBuilder(paramButtonInfo);
+    if (paramButtonInfo.indexOf("?") < 0) {
+      paramButtonInfo.append("?");
+    } else if (paramButtonInfo.indexOf("?") < paramButtonInfo.length() - 1) {
+      if (paramButtonInfo.indexOf("&") < 0) {
+        paramButtonInfo.append("&");
+      } else if (paramButtonInfo.lastIndexOf("&") < paramButtonInfo.length() - 1) {
+        paramButtonInfo.append("&");
       }
     }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("uin=");
+    ((StringBuilder)localObject).append(paramAppInterface.getCurrentAccountUin());
+    paramButtonInfo.append(((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("&puin=");
+    ((StringBuilder)localObject).append(paramString);
+    paramButtonInfo.append(((StringBuilder)localObject).toString());
+    localObject = new Intent(paramContext, PublicAccountBrowserImpl.class);
+    ((Intent)localObject).putExtra("from", QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", paramButtonInfo.toString());
+    ((Intent)localObject).putExtra("uin", paramAppInterface.getCurrentAccountUin());
+    ((Intent)localObject).putExtra("puin", paramString);
+    ((Intent)localObject).putExtra("assignBackText", paramContext.getResources().getString(2131690706));
+    ((Intent)localObject).putExtra("FORCE_BLANK_SCREEN_REPORTE", true);
+    ((Intent)localObject).putExtra("big_brother_source_key", ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getSourceId(paramString));
+    if (paramString.equalsIgnoreCase("2632129500")) {
+      ((Intent)localObject).putExtra("hide_operation_bar", true);
+    }
+    paramContext.startActivity((Intent)localObject);
   }
   
   private mobileqq_mp.SendMenuEventRequest initSendMenuEventRequest(int paramInt, String paramString, boolean paramBoolean)
@@ -332,47 +352,60 @@ public class PublicAccountManagerImpl
       localSendMenuEventRequest.key.set(paramString);
       localSendMenuEventRequest.msg_id.set(0L);
       localSendMenuEventRequest.s_type.set(1);
-      localSendMenuEventRequest.versionInfo.set("8.5.5,3,5105");
+      localSendMenuEventRequest.versionInfo.set("8.7.0,3,5295");
       localSendMenuEventRequest.menu_type.set(getPublicAccountMenuType(str));
       if (paramBoolean) {
         localSendMenuEventRequest.is_new_menu.set(paramBoolean);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("PublicAccountManager-init:", 2, "type:" + localSendMenuEventRequest.type.get() + " uin:" + localSendMenuEventRequest.uin.get() + " key:" + localSendMenuEventRequest.key.get() + " msg_id:" + localSendMenuEventRequest.msg_id.get() + " s_type:" + localSendMenuEventRequest.s_type.get() + " versionInfo:" + localSendMenuEventRequest.versionInfo.get() + " is_new_menu:" + localSendMenuEventRequest.is_new_menu.get());
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("type:");
+        paramString.append(localSendMenuEventRequest.type.get());
+        paramString.append(" uin:");
+        paramString.append(localSendMenuEventRequest.uin.get());
+        paramString.append(" key:");
+        paramString.append(localSendMenuEventRequest.key.get());
+        paramString.append(" msg_id:");
+        paramString.append(localSendMenuEventRequest.msg_id.get());
+        paramString.append(" s_type:");
+        paramString.append(localSendMenuEventRequest.s_type.get());
+        paramString.append(" versionInfo:");
+        paramString.append(localSendMenuEventRequest.versionInfo.get());
+        paramString.append(" is_new_menu:");
+        paramString.append(localSendMenuEventRequest.is_new_menu.get());
+        QLog.d("PublicAccountManager-init:", 2, paramString.toString());
       }
       return localSendMenuEventRequest;
     }
     catch (NumberFormatException paramString)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("PublicAccountManager", 2, "puin is invalid format:" + str);
-      }
+      label285:
+      break label285;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("puin is invalid format:");
+      paramString.append(str);
+      QLog.e("PublicAccountManager", 2, paramString.toString());
     }
     return null;
   }
   
-  public static boolean isFuWuHaoType(QQAppInterface paramQQAppInterface, String paramString)
+  public static boolean isFuWuHaoType(AppInterface paramAppInterface, String paramString)
   {
-    boolean bool = true;
-    paramQQAppInterface = (PublicAccountDataManager)paramQQAppInterface.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
-    PublicAccountInfo localPublicAccountInfo = paramQQAppInterface.b(paramString.toString());
+    paramAppInterface = (IPublicAccountDataManager)paramAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
+    PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)paramAppInterface.findPublicAccountInfo(paramString.toString());
     if (localPublicAccountInfo == null)
     {
-      paramQQAppInterface = paramQQAppInterface.a(paramString);
-      if (paramQQAppInterface == null) {
+      paramAppInterface = (PublicAccountDetailImpl)paramAppInterface.findAccountDetailInfo(paramString);
+      if (paramAppInterface == null) {
         return false;
       }
-      if ((paramQQAppInterface.accountFlag & 0x8EA00000) == 0) {}
-      for (bool = true;; bool = false) {
-        return bool;
-      }
+      return (paramAppInterface.accountFlag & 0x8EA00000) == 0;
     }
-    if ((localPublicAccountInfo.accountFlag & 0x8EA00000) == 0) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
+    return (localPublicAccountInfo.accountFlag & 0x8EA00000) == 0;
   }
   
   private boolean isMenuSettingOutDate(String paramString, Context paramContext)
@@ -381,27 +414,35 @@ public class PublicAccountManagerImpl
     {
       long l3 = ((Long)this.menuSettingLastSaveDateTimeMap.get(paramString)).longValue();
       long l4 = System.currentTimeMillis();
+      boolean bool = false;
       long l2 = paramContext.getSharedPreferences("menuEventSharePre", 0).getLong("menuCacheTime", -1L);
       long l1 = l2;
       if (l2 <= 0L) {
         l1 = 21600000L;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("PublicAccountManager-Menu", 2, "cacheTime(ms):" + l1);
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("cacheTime(ms):");
+        paramString.append(l1);
+        QLog.d("PublicAccountManager-Menu", 2, paramString.toString());
       }
-      return l4 - l3 >= l1;
+      if (l4 - l3 >= l1) {
+        bool = true;
+      }
+      return bool;
     }
     return true;
   }
   
-  private static void oldUrEventHandle(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, mobileqq_mp.ButtonInfo paramButtonInfo)
+  private static void oldUrEventHandle(AppInterface paramAppInterface, Context paramContext, String paramString, mobileqq_mp.ButtonInfo paramButtonInfo)
   {
-    if ((paramContext instanceof FragmentActivity))
+    if ((paramContext instanceof BaseActivity))
     {
-      Object localObject = (FragmentActivity)paramContext;
-      if (((FragmentActivity)localObject).getChatFragment() != null)
+      Object localObject = (BaseActivity)paramContext;
+      if (((BaseActivity)localObject).getChatFragment() != null)
       {
-        localObject = ((FragmentActivity)localObject).getChatFragment().a();
+        localObject = ((BaseActivity)localObject).getChatFragment().a();
         if ((localObject instanceof PublicAccountChatPie)) {
           ((PublicAccountChatPie)localObject).a.b();
         }
@@ -409,21 +450,21 @@ public class PublicAccountManagerImpl
     }
     if ((paramButtonInfo.item_id.has()) && (paramButtonInfo.item_id.get() == 5))
     {
-      paramQQAppInterface = new Intent(paramContext, CouponActivity.class);
-      paramQQAppInterface.putExtra("url", "https://web.p.qq.com/qqmpmobile/coupon/mycoupons.html?_bid=108");
-      paramQQAppInterface.putExtra("source", "1");
-      paramQQAppInterface.putExtra("from", 5);
-      paramContext.startActivity(paramQQAppInterface);
+      paramAppInterface = new Intent(paramContext, CouponActivity.class);
+      paramAppInterface.putExtra("url", "https://web.p.qq.com/qqmpmobile/coupon/mycoupons.html?_bid=108");
+      paramAppInterface.putExtra("source", "1");
+      paramAppInterface.putExtra("from", 5);
+      paramContext.startActivity(paramAppInterface);
       return;
     }
     if ((paramButtonInfo.item_id.has()) && (paramButtonInfo.item_id.get() == 6))
     {
-      paramQQAppInterface = new Intent(paramContext, CouponActivity.class);
+      paramAppInterface = new Intent(paramContext, CouponActivity.class);
       if (paramButtonInfo.url.has()) {
-        paramQQAppInterface.putExtra("url", paramButtonInfo.url.get());
+        paramAppInterface.putExtra("url", paramButtonInfo.url.get());
       }
-      paramQQAppInterface.putExtra("webStyle", "noBottomBar");
-      paramContext.startActivity(paramQQAppInterface);
+      paramAppInterface.putExtra("webStyle", "noBottomBar");
+      paramContext.startActivity(paramAppInterface);
       return;
     }
     if ((paramButtonInfo.url.has()) && (MiniAppLauncher.isMiniAppScheme(paramButtonInfo.url.get())))
@@ -436,194 +477,200 @@ public class PublicAccountManagerImpl
       ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(paramContext, paramButtonInfo.url.get(), 1035, null);
       return;
     }
-    handleUrlEvent(paramContext, paramQQAppInterface, paramString, paramButtonInfo);
+    handleUrlEvent(paramContext, paramAppInterface, paramString, paramButtonInfo);
   }
   
-  private void openAlbum(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  private void openAlbum(Context paramContext, AppInterface paramAppInterface, SessionInfo paramSessionInfo)
   {
     Uri localUri = CommonUtil.a();
+    int i = 0;
     if (localUri != null)
     {
       ActionSheet localActionSheet = ActionSheet.create((BaseActivity)paramContext);
-      String[] arrayOfString = paramContext.getResources().getStringArray(2130968667);
+      String[] arrayOfString = paramContext.getResources().getStringArray(2130968668);
       int j = arrayOfString.length;
-      int i = 0;
       while (i < j)
       {
         localActionSheet.addButton(arrayOfString[i]);
         i += 1;
       }
-      localActionSheet.addCancelButton(2131690800);
-      localActionSheet.setOnButtonClickListener(new PublicAccountManagerImpl.11(this, paramQQAppInterface, paramContext, localUri, paramSessionInfo, localActionSheet));
+      localActionSheet.addCancelButton(2131690728);
+      localActionSheet.setOnButtonClickListener(new PublicAccountManagerImpl.11(this, paramAppInterface, paramContext, localUri, paramSessionInfo, localActionSheet));
       localActionSheet.show();
     }
-    for (;;)
+    else
     {
-      if (this.picResultReceiver != null) {}
-      try
-      {
-        paramContext.unregisterReceiver(this.picResultReceiver);
-        label113:
-        this.picResultReceiver = null;
-        this.picResultReceiver = new PublicAccountManagerImpl.12(this);
-        paramQQAppInterface = new IntentFilter("com.tencent.biz.pubaccount.picResultAction");
-        paramContext.registerReceiver(this.picResultReceiver, paramQQAppInterface, "com.tencent.msg.permission.pushnotify", null);
-        this.mPicSource = 2;
-        return;
-        PlusPanelUtils.a(paramQQAppInterface, (Activity)paramContext, paramSessionInfo, null, null);
-        paramQQAppInterface = (TroopHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
-        if ((!TextUtils.isEmpty(paramSessionInfo.jdField_a_of_type_JavaLangString)) && (paramSessionInfo.jdField_a_of_type_Int == 1)) {
-          paramQQAppInterface.d(paramSessionInfo.jdField_a_of_type_JavaLangString, true);
-        }
-        ((BaseActivity)paramContext).setCanLock(false);
+      PlusPanelUtils.a((QQAppInterface)paramAppInterface, (Activity)paramContext, paramSessionInfo, null, null);
+      paramAppInterface = (ITroopPhotoHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_PHOTO_HANDLER);
+      if ((!TextUtils.isEmpty(paramSessionInfo.jdField_a_of_type_JavaLangString)) && (paramSessionInfo.jdField_a_of_type_Int == 1)) {
+        paramAppInterface.a(paramSessionInfo.jdField_a_of_type_JavaLangString, true);
       }
-      catch (Exception paramQQAppInterface)
-      {
-        break label113;
-      }
+      ((BaseActivity)paramContext).setCanLock(false);
+    }
+    paramAppInterface = this.picResultReceiver;
+    if (paramAppInterface != null) {}
+    try
+    {
+      paramContext.unregisterReceiver(paramAppInterface);
+      label177:
+      this.picResultReceiver = null;
+      this.picResultReceiver = new PublicAccountManagerImpl.12(this);
+      paramAppInterface = new IntentFilter("com.tencent.biz.pubaccount.picResultAction");
+      paramContext.registerReceiver(this.picResultReceiver, paramAppInterface, "com.tencent.msg.permission.pushnotify", null);
+      this.mPicSource = 2;
+      return;
+    }
+    catch (Exception paramAppInterface)
+    {
+      break label177;
     }
   }
   
-  private void openCamera(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  private void openCamera(Context paramContext, AppInterface paramAppInterface, SessionInfo paramSessionInfo)
   {
-    if (AudioHelper.b(0))
+    if (AudioUtil.a(0))
     {
-      DialogUtil.a(paramContext, 230, paramContext.getString(2131698445), paramContext.getString(2131698446), new PublicAccountManagerImpl.8(this), null).show();
+      DialogUtil.a(paramContext, 230, paramContext.getString(2131698511), paramContext.getString(2131698512), new PublicAccountManagerImpl.8(this), null).show();
       return;
     }
-    if (AudioHelper.a(0))
+    if (QQAudioHelper.a(0))
     {
-      DialogUtil.a(paramContext, 230, paramContext.getString(2131698445), paramContext.getString(2131698447), new PublicAccountManagerImpl.9(this), null).show();
+      DialogUtil.a(paramContext, 230, paramContext.getString(2131698511), paramContext.getString(2131698513), new PublicAccountManagerImpl.9(this), null).show();
       return;
     }
-    PlusPanelUtils.a(paramQQAppInterface, (BaseActivity)paramContext, 1, 0);
-    ((BaseActivity)paramContext).setCanLock(false);
-    if (this.picResultReceiver != null) {}
+    paramSessionInfo = (BaseActivity)paramContext;
+    PlusPanelUtils.a(paramAppInterface, paramSessionInfo, 1, 0);
+    paramSessionInfo.setCanLock(false);
+    paramAppInterface = this.picResultReceiver;
+    if (paramAppInterface != null) {}
     try
     {
-      paramContext.unregisterReceiver(this.picResultReceiver);
-      label115:
+      paramContext.unregisterReceiver(paramAppInterface);
+      label113:
       this.picResultReceiver = null;
       this.picResultReceiver = new PublicAccountManagerImpl.10(this);
-      paramQQAppInterface = new IntentFilter("com.tencent.biz.pubaccount.picResultAction");
-      paramContext.registerReceiver(this.picResultReceiver, paramQQAppInterface, "com.tencent.msg.permission.pushnotify", null);
+      paramAppInterface = new IntentFilter("com.tencent.biz.pubaccount.picResultAction");
+      paramContext.registerReceiver(this.picResultReceiver, paramAppInterface, "com.tencent.msg.permission.pushnotify", null);
       this.mPicSource = 1;
       return;
     }
-    catch (Exception paramQQAppInterface)
+    catch (Exception paramAppInterface)
     {
-      break label115;
+      break label113;
     }
   }
   
-  private void openInfoCard(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
+  private void openInfoCard(AppInterface paramAppInterface, Context paramContext, String paramString)
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("need_finish", true);
-    ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).gotoProfile(localIntent, paramQQAppInterface, paramContext, paramString, -1);
+    ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).gotoProfile(localIntent, paramAppInterface, paramContext, paramString, -1);
   }
   
-  private void openLocation(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  private void openLocation(Context paramContext, AppInterface paramAppInterface, SessionInfo paramSessionInfo)
   {
-    paramQQAppInterface = this.mTempKey;
+    paramAppInterface = this.mTempKey;
     boolean bool = this.mIsNewMenu;
     try
     {
-      ((FragmentActivity)paramContext).getChatFragment().a().aG();
+      ((BaseActivity)paramContext).getChatFragment().a().ae();
       Intent localIntent = new Intent(paramContext, PoiMapActivity.class);
       localIntent.putExtra("uintype", paramSessionInfo.jdField_a_of_type_Int);
-      ((FragmentActivity)paramContext).startActivityForResult(localIntent, 18);
-      ((BaseActivity)paramContext).setCanLock(false);
-      if (this.locationResultReceiver == null) {}
+      ((BaseActivity)paramContext).startActivityForResult(localIntent, 18);
     }
     catch (Exception paramSessionInfo)
     {
-      try
-      {
-        paramContext.unregisterReceiver(this.locationResultReceiver);
-        label84:
-        this.locationResultReceiver = null;
-        this.locationResultReceiver = new PublicAccountManagerImpl.13(this, paramQQAppInterface, bool);
-        paramQQAppInterface = new IntentFilter("com.tencent.biz.pubaccount.locationResultAction");
-        paramContext.registerReceiver(this.locationResultReceiver, paramQQAppInterface, "com.tencent.msg.permission.pushnotify", null);
-        return;
-        paramSessionInfo = paramSessionInfo;
-        paramSessionInfo.printStackTrace();
-      }
-      catch (Exception paramSessionInfo)
-      {
-        break label84;
-      }
+      paramSessionInfo.printStackTrace();
+    }
+    ((BaseActivity)paramContext).setCanLock(false);
+    paramSessionInfo = this.locationResultReceiver;
+    if (paramSessionInfo != null) {}
+    try
+    {
+      paramContext.unregisterReceiver(paramSessionInfo);
+      label91:
+      this.locationResultReceiver = null;
+      this.locationResultReceiver = new PublicAccountManagerImpl.13(this, paramAppInterface, bool);
+      paramAppInterface = new IntentFilter("com.tencent.biz.pubaccount.locationResultAction");
+      paramContext.registerReceiver(this.locationResultReceiver, paramAppInterface, "com.tencent.msg.permission.pushnotify", null);
+      return;
+    }
+    catch (Exception paramSessionInfo)
+    {
+      break label91;
     }
   }
   
-  private void openNewCityWeather(QQAppInterface paramQQAppInterface, MqqHandler paramMqqHandler)
+  private void openNewCityWeather(AppInterface paramAppInterface, MqqHandler paramMqqHandler)
   {
     if (paramMqqHandler != null) {
       paramMqqHandler.sendEmptyMessage(19);
     }
-    paramMqqHandler = BaseApplicationImpl.getApplication().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
-    float f1 = paramMqqHandler.getFloat("search_lbs_logitude", 0.0F);
-    float f2 = paramMqqHandler.getFloat("search_lbs_latitude", 0.0F);
-    ((PublicAccountHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT)).a(0, (int)(f2 * 1000000.0F), (int)(f1 * 1000000.0F), 0);
-    WeatherDCReportHelper.a().a(paramQQAppInterface, "aio_news_click");
+    paramMqqHandler = BaseApplicationImpl.getApplication().getSharedPreferences(paramAppInterface.getCurrentAccountUin(), 0);
+    float f1 = paramMqqHandler.getFloat(SearchProtocol.c, 0.0F);
+    float f2 = paramMqqHandler.getFloat(SearchProtocol.b, 0.0F);
+    ((PublicAccountHandlerImpl)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT)).sendLocRequest(0, (int)(f2 * 1000000.0F), (int)(f1 * 1000000.0F), 0);
+    ((IWeatherReportApi)QRoute.api(IWeatherReportApi.class)).reportWeather((QQAppInterface)paramAppInterface, "aio_news_click");
   }
   
-  private void openOtherCity(Context paramContext, QQAppInterface paramQQAppInterface)
+  private void openOtherCity(Context paramContext, AppInterface paramAppInterface)
   {
     Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
     localIntent.putExtra("url", "https://ti.qq.com/v2/city-selector/index?_wv=5127&redirect_url=%2F%2Fweather.mp.qq.com%2F&from=aio");
     localIntent.putExtra("fromAio", true);
     localIntent.putExtra("big_brother_source_key", "biz_src_gzh_weather");
     paramContext.startActivity(localIntent);
-    WeatherDCReportHelper.a().a(paramQQAppInterface, "aio_othercity_click");
+    ((IWeatherReportApi)QRoute.api(IWeatherReportApi.class)).reportWeather((QQAppInterface)paramAppInterface, "aio_othercity_click");
   }
   
   private void openScanner(Context paramContext, MqqHandler paramMqqHandler, boolean paramBoolean)
   {
-    Intent localIntent = new Intent(paramContext, ScannerActivity.class);
+    Intent localIntent = new Intent();
     localIntent.putExtra("from", PublicAccountManagerImpl.class.getName());
-    localIntent.putExtra("finishAfterSucc", true);
     localIntent.putExtra("scanForResult", paramBoolean);
-    if (this.scanResultReceiver != null) {}
+    BroadcastReceiver localBroadcastReceiver = this.scanResultReceiver;
+    if (localBroadcastReceiver != null) {}
     try
     {
-      paramContext.unregisterReceiver(this.scanResultReceiver);
-      label62:
+      paramContext.unregisterReceiver(localBroadcastReceiver);
+      label50:
       this.scanResultReceiver = null;
       this.scanResultReceiver = new PublicAccountManagerImpl.7(this, paramBoolean, paramMqqHandler);
       paramMqqHandler = new IntentFilter("com.tencent.biz.pubaccount.scanResultAction");
       paramContext.registerReceiver(this.scanResultReceiver, paramMqqHandler, "com.tencent.msg.permission.pushnotify", null);
-      paramContext.startActivity(localIntent);
+      RouteUtils.a(paramContext, localIntent, "/qrscan/scanner");
       return;
     }
     catch (Exception localException)
     {
-      break label62;
+      break label50;
     }
   }
   
-  public static void sendPayInfoRequest(Context paramContext, QQAppInterface paramQQAppInterface, String paramString)
+  public static void sendPayInfoRequest(Context paramContext, AppInterface paramAppInterface, String paramString)
   {
-    if ((paramQQAppInterface == null) || (paramContext == null) || (paramString == null)) {
-      return;
+    if ((paramAppInterface != null) && (paramContext != null))
+    {
+      if (paramString == null) {
+        return;
+      }
+      paramContext = new NewIntent(paramContext, PublicAccountServletImpl.class);
+      paramContext.putExtra("cmd", "send_pay_info");
+      mobileqq_mp.SendOrderPayEventRequest localSendOrderPayEventRequest = new mobileqq_mp.SendOrderPayEventRequest();
+      localSendOrderPayEventRequest.versionInfo.set("8.7.0,3,5295");
+      localSendOrderPayEventRequest.cmd.set(1);
+      localSendOrderPayEventRequest.body.set(paramString);
+      paramContext.putExtra("data", localSendOrderPayEventRequest.toByteArray());
+      paramContext.setObserver(new PublicAccountManagerImpl.16(paramContext));
+      paramAppInterface.startServlet(paramContext);
     }
-    paramContext = new NewIntent(paramContext, PublicAccountServletImpl.class);
-    paramContext.putExtra("cmd", "send_pay_info");
-    mobileqq_mp.SendOrderPayEventRequest localSendOrderPayEventRequest = new mobileqq_mp.SendOrderPayEventRequest();
-    localSendOrderPayEventRequest.versionInfo.set("8.5.5,3,5105");
-    localSendOrderPayEventRequest.cmd.set(1);
-    localSendOrderPayEventRequest.body.set(paramString);
-    paramContext.putExtra("data", localSendOrderPayEventRequest.toByteArray());
-    paramContext.setObserver(new PublicAccountManagerImpl.16(paramContext));
-    paramQQAppInterface.startServlet(paramContext);
   }
   
   private void sendReportRequest(mobileqq_mp.SendMenuEventRequest paramSendMenuEventRequest)
   {
     BusinessObserver localBusinessObserver = (BusinessObserver)this.mPublicAccountMenuEventObserver.get();
     Context localContext = (Context)this.mTempContext.get();
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.mApp.get();
+    AppInterface localAppInterface = (AppInterface)this.mApp.get();
     String str1 = this.mTempUin;
     NewIntent localNewIntent = new NewIntent(localContext, PublicAccountStQWebServletImpl.class);
     localNewIntent.putExtra("cmd", "CertifiedAccountSvc.certified_account_write.SendMenuEvent");
@@ -643,15 +690,14 @@ public class PublicAccountManagerImpl
     }
     localNewIntent.putExtra("traceid", str2);
     localNewIntent.putExtra("data", paramSendMenuEventRequest);
-    localNewIntent.setObserver(new PublicAccountManagerImpl.14(this, localNewIntent, localContext, str1, localBusinessObserver, localQQAppInterface));
-    if (localQQAppInterface != null) {
-      localQQAppInterface.startServlet(localNewIntent);
+    localNewIntent.setObserver(new PublicAccountManagerImpl.14(this, localNewIntent, localContext, str1, localBusinessObserver, localAppInterface));
+    if (localAppInterface != null) {
+      localAppInterface.startServlet(localNewIntent);
     }
   }
   
-  private static void tryHandleOpenApp(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, mobileqq_mp.ButtonInfo paramButtonInfo, String paramString2)
+  private static void tryHandleOpenApp(AppInterface paramAppInterface, Context paramContext, String paramString1, mobileqq_mp.ButtonInfo paramButtonInfo, String paramString2)
   {
-    boolean bool = true;
     long l = paramButtonInfo.actionInfo.appid.get();
     Object localObject = Uri.parse(paramString2);
     paramString2 = ((Uri)localObject).getScheme();
@@ -659,32 +705,28 @@ public class PublicAccountManagerImpl
     if ((!TextUtils.isEmpty(paramString2)) && (AppUtil.a(paramString2)))
     {
       AppLaucherHelper localAppLaucherHelper = new AppLaucherHelper();
-      int i;
-      Bundle localBundle;
-      int j;
-      if (AppLaucherHelper.a((String)localObject) == 0)
-      {
+      int i = AppLaucherHelper.a((String)localObject);
+      boolean bool = true;
+      if (i == 0) {
         i = 0;
-        localBundle = AppLaucherHelper.a((String)localObject);
-        j = localBundle.getInt("a_launch_mode", 268435456);
-        if (i == 0) {
-          break label136;
-        }
-        localAppLaucherHelper.a(paramQQAppInterface, paramContext, String.valueOf(l), (String)localObject, paramString2, j);
-      }
-      for (;;)
-      {
-        if (!bool) {
-          oldUrEventHandle(paramQQAppInterface, paramContext, paramString1, paramButtonInfo);
-        }
-        return;
+      } else {
         i = 1;
-        break;
-        label136:
+      }
+      Bundle localBundle = AppLaucherHelper.a((String)localObject);
+      int j = localBundle.getInt("a_launch_mode", 268435456);
+      if (i != 0) {
+        localAppLaucherHelper.a(paramAppInterface, paramContext, String.valueOf(l), (String)localObject, paramString2, j);
+      } else {
         bool = AppUtil.a(paramContext, paramString2, localBundle, j);
       }
+      if (!bool) {
+        oldUrEventHandle(paramAppInterface, paramContext, paramString1, paramButtonInfo);
+      }
     }
-    oldUrEventHandle(paramQQAppInterface, paramContext, paramString1, paramButtonInfo);
+    else
+    {
+      oldUrEventHandle(paramAppInterface, paramContext, paramString1, paramButtonInfo);
+    }
   }
   
   private void updateMenuSettingLocalDateTime(String paramString, long paramLong)
@@ -692,116 +734,130 @@ public class PublicAccountManagerImpl
     this.menuSettingLastSaveDateTimeMap.put(paramString, Long.valueOf(paramLong));
   }
   
-  public void addPublicAccountToRu(QQAppInterface paramQQAppInterface, String paramString)
+  public void addPublicAccountToRu(AppInterface paramAppInterface, String paramString)
   {
-    if (paramQQAppInterface == null) {}
-    while (!isFuWuHaoType(paramQQAppInterface, paramString)) {
+    if (paramAppInterface == null) {
+      return;
+    }
+    if (!isFuWuHaoType(paramAppInterface, paramString)) {
       return;
     }
     long l = NetConnInfoCenter.getServerTime();
-    RecentUserProxy localRecentUserProxy = paramQQAppInterface.getProxyManager().a();
+    RecentUserProxy localRecentUserProxy = ((QQAppInterface)paramAppInterface).getProxyManager().a();
     RecentUser localRecentUser = localRecentUserProxy.a(paramString, 1008);
     if (localRecentUser.lastmsgtime < l)
     {
       localRecentUser.lastmsgtime = l;
-      if (QLog.isColorLevel()) {
-        QLog.d("PublicAccountManager", 2, "addPublicAccountToRu->pUin:" + paramString + ", currentTime:" + l);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("addPublicAccountToRu->pUin:");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(", currentTime:");
+        localStringBuilder.append(l);
+        QLog.d("PublicAccountManager", 2, localStringBuilder.toString());
       }
     }
     localRecentUserProxy.b(localRecentUser);
-    ThreadManager.executeOnSubThread(new PublicAccountManagerImpl.15(this, paramQQAppInterface, paramString));
+    ThreadManager.executeOnSubThread(new PublicAccountManagerImpl.15(this, paramAppInterface, paramString));
   }
   
   public void clearBroadcastReceiver(Context paramContext)
   {
-    if (this.scanResultReceiver != null) {}
+    BroadcastReceiver localBroadcastReceiver = this.scanResultReceiver;
+    if (localBroadcastReceiver != null) {}
     try
     {
-      paramContext.unregisterReceiver(this.scanResultReceiver);
-      label15:
+      paramContext.unregisterReceiver(localBroadcastReceiver);
       this.scanResultReceiver = null;
-      if (this.picResultReceiver != null) {}
-      try
-      {
-        paramContext.unregisterReceiver(this.picResultReceiver);
-        label35:
-        this.picResultReceiver = null;
-        if (this.locationResultReceiver != null) {}
-        try
-        {
-          paramContext.unregisterReceiver(this.locationResultReceiver);
-          label55:
-          this.locationResultReceiver = null;
-          return;
-        }
-        catch (Exception paramContext)
-        {
-          break label55;
-        }
-      }
-      catch (Exception localException1)
-      {
-        break label35;
-      }
+      localBroadcastReceiver = this.picResultReceiver;
+      if (localBroadcastReceiver == null) {}
     }
     catch (Exception localException2)
     {
-      break label15;
+      try
+      {
+        paramContext.unregisterReceiver(localBroadcastReceiver);
+        this.picResultReceiver = null;
+        localBroadcastReceiver = this.locationResultReceiver;
+        if (localBroadcastReceiver == null) {}
+      }
+      catch (Exception localException2)
+      {
+        try
+        {
+          for (;;)
+          {
+            paramContext.unregisterReceiver(localBroadcastReceiver);
+            label52:
+            this.locationResultReceiver = null;
+            return;
+            localException1 = localException1;
+          }
+          localException2 = localException2;
+        }
+        catch (Exception paramContext)
+        {
+          break label52;
+        }
+      }
     }
   }
   
   public void clearOldPublicAccountData(String paramString)
   {
-    this.menuSettingLastSaveDateTimeMap.remove(paramString);
-    this.menuSettingSeqnoMap.remove(paramString);
-    this.mPublicAccountMenuButtonLists.remove(paramString);
-    this.mPublicAccountMenuType.remove(paramString);
-    this.mLastReportTime = 0L;
-    if (QLog.isColorLevel()) {
-      QLog.e("PublicAccountManager", 2, "left menu size:" + this.mPublicAccountMenuButtonLists.size());
+    if (!this.mKeepOldPublicAccountData)
+    {
+      this.menuSettingLastSaveDateTimeMap.remove(paramString);
+      this.menuSettingSeqnoMap.remove(paramString);
+      this.mPublicAccountMenuButtonLists.remove(paramString);
+      this.mPublicAccountMenuType.remove(paramString);
+      this.mLastReportTime = 0L;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("left menu size:");
+      paramString.append(this.mPublicAccountMenuButtonLists.size());
+      paramString.append(", ");
+      paramString.append(this.mKeepOldPublicAccountData);
+      QLog.e("PublicAccountManager", 2, paramString.toString());
     }
   }
   
-  public mobileqq_mp.ButtonInfo getButtonInfoByMenuId(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  public mobileqq_mp.ButtonInfo getButtonInfoByMenuId(AppInterface paramAppInterface, String paramString, int paramInt)
   {
-    List localList = getLocalPublicAccountMenuSetting(paramQQAppInterface, paramString);
-    if ((localList == null) || (localList.isEmpty()))
+    paramAppInterface = getLocalPublicAccountMenuSetting(paramAppInterface, paramString);
+    if (paramAppInterface != null)
     {
-      paramQQAppInterface = null;
-      return paramQQAppInterface;
-    }
-    int i = 0;
-    for (;;)
-    {
-      if (i >= localList.size()) {
-        break label190;
+      if (paramAppInterface.isEmpty()) {
+        return null;
       }
-      paramString = (mobileqq_mp.ButtonInfo)localList.get(i);
-      if (paramString.id.has())
+      int i = 0;
+      while (i < paramAppInterface.size())
       {
-        paramQQAppInterface = paramString;
-        if (paramString.id.get() == paramInt) {
-          break;
+        paramString = (mobileqq_mp.ButtonInfo)paramAppInterface.get(i);
+        if ((paramString.id.has()) && (paramString.id.get() == paramInt)) {
+          return paramString;
         }
-      }
-      if (paramString.sub_button.has())
-      {
-        paramQQAppInterface = paramString.sub_button.get();
-        if (paramQQAppInterface.size() > 0)
+        if (paramString.sub_button.has())
         {
-          int j = 0;
-          while (j < paramQQAppInterface.size())
+          paramString = paramString.sub_button.get();
+          if (paramString.size() > 0)
           {
-            if ((((mobileqq_mp.ButtonInfo)paramQQAppInterface.get(j)).id.has()) && (((mobileqq_mp.ButtonInfo)paramQQAppInterface.get(j)).id.get() == paramInt)) {
-              return (mobileqq_mp.ButtonInfo)paramQQAppInterface.get(j);
+            int j = 0;
+            while (j < paramString.size())
+            {
+              if ((((mobileqq_mp.ButtonInfo)paramString.get(j)).id.has()) && (((mobileqq_mp.ButtonInfo)paramString.get(j)).id.get() == paramInt)) {
+                return (mobileqq_mp.ButtonInfo)paramString.get(j);
+              }
+              j += 1;
             }
-            j += 1;
           }
         }
+        i += 1;
       }
-      i += 1;
     }
-    label190:
     return null;
   }
   
@@ -810,50 +866,46 @@ public class PublicAccountManagerImpl
     return this.mCurrentUin;
   }
   
-  List<mobileqq_mp.ButtonInfo> getLocalPublicAccountMenuSetting(QQAppInterface paramQQAppInterface, String paramString)
+  List<mobileqq_mp.ButtonInfo> getLocalPublicAccountMenuSetting(AppInterface paramAppInterface, String paramString)
   {
     return (List)this.mPublicAccountMenuButtonLists.get(paramString);
   }
   
-  public NewIntent getMenuSetting(Context paramContext, QQAppInterface paramQQAppInterface, String paramString, BusinessObserver paramBusinessObserver, boolean paramBoolean)
+  public NewIntent getMenuSetting(Context paramContext, AppInterface paramAppInterface, String paramString, BusinessObserver paramBusinessObserver, boolean paramBoolean)
   {
-    Object localObject1 = null;
-    label106:
-    NewIntent localNewIntent;
-    do
+    try
     {
-      long l;
-      try
+      long l = Long.valueOf(paramString).longValue();
+      if (!paramBoolean)
       {
-        l = Long.valueOf(paramString).longValue();
-        if ((paramBoolean) || (isMenuSettingOutDate("" + l, paramContext))) {
-          break label106;
-        }
-        paramContext = (Context)localObject1;
-        if (QLog.isColorLevel())
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("");
+        ((StringBuilder)localObject1).append(l);
+        if (!isMenuSettingOutDate(((StringBuilder)localObject1).toString(), paramContext))
         {
-          QLog.i("PublicAccountManager", 2, "menu setting not outdate yet--");
-          paramContext = (Context)localObject1;
+          if (QLog.isColorLevel()) {
+            QLog.i("PublicAccountManager", 2, "menu setting not outdate yet--");
+          }
+          return null;
         }
       }
-      catch (NumberFormatException paramContext)
-      {
-        do
-        {
-          paramContext = (Context)localObject1;
-        } while (!QLog.isColorLevel());
-        QLog.e("PublicAccountManager", 2, "puin is invalid format:" + paramString);
-        return null;
-      }
-      return paramContext;
       int i = 0;
-      if (this.menuSettingSeqnoMap.containsKey("" + l)) {
-        i = ((Integer)this.menuSettingSeqnoMap.get("" + l)).intValue();
+      Object localObject1 = this.menuSettingSeqnoMap;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("");
+      ((StringBuilder)localObject2).append(l);
+      if (((Map)localObject1).containsKey(((StringBuilder)localObject2).toString()))
+      {
+        localObject1 = this.menuSettingSeqnoMap;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("");
+        ((StringBuilder)localObject2).append(l);
+        i = ((Integer)((Map)localObject1).get(((StringBuilder)localObject2).toString())).intValue();
       }
-      Object localObject2 = new mobileqq_mp.GetPublicAccountMenuRequest();
+      localObject2 = new mobileqq_mp.GetPublicAccountMenuRequest();
       ((mobileqq_mp.GetPublicAccountMenuRequest)localObject2).seqno.set(i);
       ((mobileqq_mp.GetPublicAccountMenuRequest)localObject2).uin.set((int)l);
-      localNewIntent = new NewIntent(paramContext, PublicAccountStQWebServletImpl.class);
+      NewIntent localNewIntent = new NewIntent(paramContext, PublicAccountStQWebServletImpl.class);
       localNewIntent.putExtra("cmd", "CertifiedAccountSvc.certified_account_read.GetAccountMenu");
       localObject1 = new PROTOCAL.StQWebReq();
       ((PROTOCAL.StQWebReq)localObject1).Seq.set(-1L);
@@ -871,11 +923,25 @@ public class PublicAccountManagerImpl
       }
       localNewIntent.putExtra("traceid", str);
       localNewIntent.putExtra("data", (byte[])localObject1);
-      localNewIntent.setObserver(new PublicAccountManagerImpl.2(this, localNewIntent, paramQQAppInterface, paramString, paramContext, paramBusinessObserver));
-      paramContext = localNewIntent;
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.startServlet(localNewIntent);
-    return localNewIntent;
+      localNewIntent.setObserver(new PublicAccountManagerImpl.2(this, localNewIntent, paramAppInterface, paramString, paramContext, paramBusinessObserver));
+      if (paramAppInterface != null) {
+        paramAppInterface.startServlet(localNewIntent);
+      }
+      return localNewIntent;
+    }
+    catch (NumberFormatException paramContext)
+    {
+      label385:
+      break label385;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("puin is invalid format:");
+      paramContext.append(paramString);
+      QLog.e("PublicAccountManager", 2, paramContext.toString());
+    }
+    return null;
   }
   
   public int getMenusettingLocalSeqno(String paramString)
@@ -886,67 +952,82 @@ public class PublicAccountManagerImpl
     return 0;
   }
   
-  public long getMsgID(QQAppInterface paramQQAppInterface, String paramString)
+  public long getMsgID(AppInterface paramAppInterface, String paramString)
   {
-    return paramQQAppInterface.getApp().getSharedPreferences("history_msg_params_" + paramQQAppInterface.getAccount(), 0).getLong(paramString + "_msgid", 0L);
+    Object localObject = paramAppInterface.getApp();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("history_msg_params_");
+    localStringBuilder.append(paramAppInterface.getAccount());
+    paramAppInterface = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("_msgid");
+    return paramAppInterface.getLong(((StringBuilder)localObject).toString(), 0L);
   }
   
-  protected int getMsgType(String paramString, int paramInt, QQAppInterface paramQQAppInterface)
+  protected int getMsgType(String paramString, int paramInt, AppInterface paramAppInterface)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-    case 1008: 
-    case 1024: 
-      do
+      if (paramInt != 1)
       {
-        do
+        switch (paramInt)
         {
+        default: 
+          break;
+        case 9000: 
+          return 9;
+        case 7230: 
+          return 14;
+        case 7220: 
+          return 15;
+        case 7210: 
+          return 6;
+        case 7120: 
+          return 7;
+        case 7000: 
+          return 13;
+        case 6000: 
+          return 11;
+        case 5000: 
+          return 8;
+        case 4000: 
+          return 10;
+        case 3000: 
+          return 5;
+        case 1024: 
+          if (CrmUtils.b((QQAppInterface)paramAppInterface, paramString)) {
+            return 2;
+          }
+        case 1008: 
+          if (isFuWuHaoType(paramAppInterface, paramString)) {
+            return 1;
+          }
           return 0;
-        } while (!isFuWuHaoType(paramQQAppInterface, paramString));
-        return 1;
-      } while (!CrmUtils.b(paramQQAppInterface, paramString));
-      return 2;
-    case 0: 
-      return 3;
-    case 1: 
+        }
+        return 12;
+      }
       return 4;
-    case 3000: 
-      return 5;
-    case 7210: 
-      return 6;
-    case 7120: 
-      return 7;
-    case 5000: 
-      return 8;
-    case 9000: 
-      return 9;
-    case 4000: 
-      return 10;
-    case 6000: 
-      return 11;
-    case 1001: 
-      return 12;
-    case 7000: 
-      return 13;
-    case 7230: 
-      return 14;
     }
-    return 15;
+    return 3;
   }
   
   public int getPublicAccountAioClass(String paramString, AppInterface paramAppInterface)
   {
-    paramString = ((PublicAccountDataManager)paramAppInterface.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER)).b(paramString + "");
+    paramAppInterface = (IPublicAccountDataManager)paramAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("");
+    paramString = (PublicAccountInfo)paramAppInterface.findPublicAccountInfo(localStringBuilder.toString());
     if ((paramString != null) && (paramString.extendType == 2)) {
       return 1;
     }
     return 2;
   }
   
-  public List<mobileqq_mp.ButtonInfo> getPublicAccountMenuButtonList(QQAppInterface paramQQAppInterface, String paramString)
+  public List<mobileqq_mp.ButtonInfo> getPublicAccountMenuButtonList(AppInterface paramAppInterface, String paramString)
   {
-    return getLocalPublicAccountMenuSetting(paramQQAppInterface, paramString);
+    return getLocalPublicAccountMenuSetting(paramAppInterface, paramString);
   }
   
   public int getPublicAccountMenuType(String paramString)
@@ -957,213 +1038,217 @@ public class PublicAccountManagerImpl
     return 0;
   }
   
-  public void handleButtonEvent(String paramString1, Context paramContext, QQAppInterface paramQQAppInterface, String paramString2, int paramInt1, BusinessObserver paramBusinessObserver, MqqHandler paramMqqHandler, int paramInt2, SessionInfo paramSessionInfo)
+  public void handleButtonEvent(String paramString1, Context paramContext, AppInterface paramAppInterface, String paramString2, int paramInt1, BusinessObserver paramBusinessObserver, MqqHandler paramMqqHandler, int paramInt2, Object paramObject)
   {
-    mobileqq_mp.ButtonInfo localButtonInfo = getButtonInfoByMenuId(paramQQAppInterface, paramString2, paramInt1);
-    if (localButtonInfo == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e("PublicAccountManager", 2, "Can't find menu via menu id:" + paramInt1 + ".");
+    SessionInfo localSessionInfo = (SessionInfo)paramObject;
+    mobileqq_mp.ButtonInfo localButtonInfo = getButtonInfoByMenuId(paramAppInterface, paramString2, paramInt1);
+    if (localButtonInfo == null)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("Can't find menu via menu id:");
+        paramString1.append(paramInt1);
+        paramString1.append(".");
+        QLog.e("PublicAccountManager", 2, paramString1.toString());
+      }
+      return;
+    }
+    if ((localSessionInfo.jdField_a_of_type_Int == 1008) && (((paramInt2 == 1) && (!localButtonInfo.sub_button.has())) || (paramInt2 == 2))) {
+      addPublicAccountToRu(paramAppInterface, paramString2);
+    }
+    int i;
+    if (localButtonInfo.type.has()) {
+      i = localButtonInfo.type.get();
+    } else {
+      i = 0;
+    }
+    paramObject = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
+    boolean bool = localButtonInfo.name.has();
+    String str = "";
+    if (bool) {
+      paramString1 = localButtonInfo.name.get();
+    } else {
+      paramString1 = "";
+    }
+    paramObject.publicAccountReportClickEventForMigrate(null, "P_CliOper", "Pb_account_lifeservice", paramString2, "mp_caidan_click", "aio_caidan_click", 0, 0, String.valueOf(paramInt2), String.valueOf(paramInt1), paramString1, String.valueOf(i), false);
+    ((IReadInJoySPEventReport)QRoute.api(IReadInJoySPEventReport.class)).reportPubAioMenuAction(paramString2, paramInt1, paramInt2, localButtonInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    if ((i == 2) && (localButtonInfo.url.has())) {
+      paramString1 = AbsStructMsgElement.a(localButtonInfo.url.get());
+    } else {
+      paramString1 = "";
+    }
+    localStringBuilder.append("MENUID=");
+    localStringBuilder.append(String.valueOf(paramInt1));
+    localStringBuilder.append(";LEVELID=");
+    localStringBuilder.append(String.valueOf(paramInt2));
+    localStringBuilder.append(";NAME=");
+    if (localButtonInfo.name.has()) {
+      paramObject = localButtonInfo.name.get();
+    } else {
+      paramObject = "";
+    }
+    localStringBuilder.append(paramObject);
+    localStringBuilder.append(";REFERRER=");
+    localStringBuilder.append(paramString1);
+    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "P_CliOper", "Pb_account_lifeservice", paramString2, "0X8005D4B", "0X8005D4B", 0, 0, localStringBuilder.toString(), "", "", "", false);
+    this.mPublicAccountMenuEventObserver = new WeakReference(paramBusinessObserver);
+    this.mApp = new WeakReference(paramAppInterface);
+    this.mTempContext = new WeakReference(paramContext);
+    this.mTempUin = paramString2;
+    if (localButtonInfo.key.has()) {
+      paramString1 = localButtonInfo.key.get();
+    } else {
+      paramString1 = "";
+    }
+    this.mTempKey = paramString1;
+    if (localButtonInfo.is_new_menu.has()) {
+      bool = localButtonInfo.is_new_menu.get();
+    } else {
+      bool = false;
+    }
+    this.mIsNewMenu = bool;
+    if ((paramContext instanceof BaseActivity))
+    {
+      paramString1 = ((BaseActivity)paramContext).getChatFragment();
+      if (paramString1 != null)
+      {
+        paramString1 = paramString1.a();
+        if ((paramString1 instanceof PublicAccountChatPie))
+        {
+          paramString1 = (PublicAccountChatPie)paramString1;
+          paramString1.m += 1;
+        }
       }
     }
-    label118:
-    label761:
-    do
+    paramObject = null;
+    if (i != 1)
     {
-      return;
-      if ((paramSessionInfo.jdField_a_of_type_Int == 1008) && (((paramInt2 == 1) && (!localButtonInfo.sub_button.has())) || (paramInt2 == 2))) {
-        addPublicAccountToRu(paramQQAppInterface, paramString2);
-      }
-      int i;
-      Object localObject;
-      if (localButtonInfo.type.has())
+      if (i != 2)
       {
-        i = localButtonInfo.type.get();
-        localObject = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-        if (!localButtonInfo.name.has()) {
-          break label590;
+        if (i != 3) {
+          return;
         }
-        paramString1 = localButtonInfo.name.get();
-        ((IPublicAccountReportUtils)localObject).publicAccountReportClickEventForMigrate(null, "P_CliOper", "Pb_account_lifeservice", paramString2, "mp_caidan_click", "aio_caidan_click", 0, 0, String.valueOf(paramInt2), String.valueOf(paramInt1), paramString1, String.valueOf(i), false);
-        ReadinjoySPEventReport.a().a(paramString2, paramInt1, paramInt2, localButtonInfo);
-        localObject = new StringBuilder();
-        paramString1 = "";
-        if (i == 2)
+        if (localButtonInfo.event_id.has()) {
+          paramInt1 = localButtonInfo.event_id.get();
+        } else {
+          paramInt1 = 0;
+        }
+        if (paramInt1 != 1)
         {
-          if (!localButtonInfo.url.has()) {
-            break label596;
-          }
-          paramString1 = AbsStructMsgElement.a(localButtonInfo.url.get());
-        }
-        StringBuilder localStringBuilder = ((StringBuilder)localObject).append("MENUID=").append(String.valueOf(paramInt1)).append(";LEVELID=").append(String.valueOf(paramInt2)).append(";NAME=");
-        if (!localButtonInfo.name.has()) {
-          break label602;
-        }
-        localObject = localButtonInfo.name.get();
-        paramString1 = localStringBuilder.append((String)localObject).append(";REFERRER=").append(paramString1);
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "P_CliOper", "Pb_account_lifeservice", paramString2, "0X8005D4B", "0X8005D4B", 0, 0, paramString1.toString(), "", "", "", false);
-        this.mPublicAccountMenuEventObserver = new WeakReference(paramBusinessObserver);
-        this.mApp = new WeakReference(paramQQAppInterface);
-        this.mTempContext = new WeakReference(paramContext);
-        this.mTempUin = paramString2;
-        if (!localButtonInfo.key.has()) {
-          break label609;
-        }
-        paramString1 = localButtonInfo.key.get();
-        this.mTempKey = paramString1;
-        if (!localButtonInfo.is_new_menu.has()) {
-          break label615;
-        }
-      }
-      for (boolean bool = localButtonInfo.is_new_menu.get();; bool = false)
-      {
-        this.mIsNewMenu = bool;
-        if ((paramContext instanceof FragmentActivity))
-        {
-          paramString1 = ((FragmentActivity)paramContext).getChatFragment();
-          if (paramString1 != null)
+          switch (paramInt1)
           {
-            paramString1 = paramString1.a();
-            if ((paramString1 instanceof PublicAccountChatPie))
+          default: 
+            switch (paramInt1)
             {
-              paramString1 = (PublicAccountChatPie)paramString1;
-              paramString1.q += 1;
+            default: 
+              return;
+            case 1000002: 
+              openOtherCity(paramContext, paramAppInterface);
+              return;
             }
+            openNewCityWeather(paramAppInterface, paramMqqHandler);
+            return;
+          case 15: 
+            openLocation(paramContext, paramAppInterface, localSessionInfo);
+            return;
+          case 14: 
+            openAlbum(paramContext, paramAppInterface, localSessionInfo);
+            return;
+          case 13: 
+            openCamera(paramContext, paramAppInterface, localSessionInfo);
+            return;
+          case 12: 
+            openScanner(paramContext, paramMqqHandler, true);
+            return;
           }
+          openScanner(paramContext, paramMqqHandler, false);
+          return;
         }
-        switch (i)
+        openInfoCard(paramAppInterface, paramContext, paramString2);
+        reportEventTypeMenuEvent(null, 0, 1, -1, null);
+        return;
+      }
+      if (paramMqqHandler != null) {
+        paramMqqHandler.sendEmptyMessage(1001);
+      }
+      if (paramMqqHandler != null) {
+        paramMqqHandler.sendEmptyMessage(1001);
+      }
+      paramBusinessObserver = localButtonInfo.actionInfo.a_actionData.get();
+      paramMqqHandler = localButtonInfo.actionInfo.actionData.get();
+      paramString1 = paramBusinessObserver;
+      if (TextUtils.isEmpty(paramBusinessObserver)) {
+        paramString1 = paramMqqHandler;
+      }
+      paramBusinessObserver = str;
+      if (localButtonInfo.url.has()) {
+        paramBusinessObserver = localButtonInfo.url.get();
+      }
+      paramMqqHandler = paramObject;
+      if (localButtonInfo.media_id.has()) {
+        paramMqqHandler = localButtonInfo.media_id.get();
+      }
+      if (TextUtils.isEmpty(paramString1))
+      {
+        oldUrEventHandle(paramAppInterface, paramContext, paramString2, localButtonInfo);
+        return;
+      }
+      paramObject = JumpParser.a((QQAppInterface)paramAppInterface, paramContext, paramString1);
+      if (paramObject == null)
+      {
+        if (localButtonInfo.actionInfo.appid.has())
         {
-        default: 
+          tryHandleOpenApp(paramAppInterface, paramContext, paramString2, localButtonInfo, paramString1);
           return;
-        case 1: 
-          if (paramMqqHandler != null) {
-            paramMqqHandler.sendEmptyMessage(1001);
-          }
-          if ((!localButtonInfo.is_need_lbs.has()) || (!localButtonInfo.is_need_lbs.get())) {
-            break label621;
-          }
-          new Thread(this.getLocationThread).start();
-          return;
-          i = 0;
-          break label118;
-          paramString1 = "";
-          break label149;
-          paramString1 = "";
-          break label245;
-          localObject = "";
-          break label304;
-          paramString1 = "";
-          break label427;
         }
+        oldUrEventHandle(paramAppInterface, paramContext, paramString2, localButtonInfo);
+        reportUrlTypeMenuEvent(paramBusinessObserver, (mobileqq_mp.ActionInfo)localButtonInfo.actionInfo.get(), paramMqqHandler);
+        return;
+      }
+      if (TextUtils.isEmpty(paramObject.a()))
+      {
+        tryHandleOpenApp(paramAppInterface, paramContext, paramString2, localButtonInfo, paramString1);
+        return;
+      }
+      if (!paramObject.a())
+      {
+        oldUrEventHandle(paramAppInterface, paramContext, paramString2, localButtonInfo);
+        reportUrlTypeMenuEvent(paramBusinessObserver, (mobileqq_mp.ActionInfo)localButtonInfo.actionInfo.get(), paramMqqHandler);
+      }
+    }
+    else
+    {
+      if (paramMqqHandler != null) {
+        paramMqqHandler.sendEmptyMessage(1001);
+      }
+      if ((localButtonInfo.is_need_lbs.has()) && (localButtonInfo.is_need_lbs.get()))
+      {
+        new Thread(this.getLocationThread).start();
+        return;
       }
       if (paramMqqHandler != null) {
         paramMqqHandler.sendEmptyMessage(19);
       }
-      if (localButtonInfo.media_id.has()) {}
-      for (paramString1 = localButtonInfo.media_id.get();; paramString1 = null)
-      {
-        reportClickTypeMenuEvent(false, 0.0D, 0.0D, null, paramString1, this.mTempKey, this.mIsNewMenu);
-        return;
+      if (localButtonInfo.media_id.has()) {
+        paramString1 = localButtonInfo.media_id.get();
+      } else {
+        paramString1 = null;
       }
-      if (paramMqqHandler != null) {
-        paramMqqHandler.sendEmptyMessage(1001);
-      }
-      if (paramMqqHandler != null) {
-        paramMqqHandler.sendEmptyMessage(1001);
-      }
-      paramString1 = localButtonInfo.actionInfo.a_actionData.get();
-      paramBusinessObserver = localButtonInfo.actionInfo.actionData.get();
-      if (TextUtils.isEmpty(paramString1))
-      {
-        paramString1 = paramBusinessObserver;
-        if (!localButtonInfo.url.has()) {
-          break label802;
-        }
-        paramBusinessObserver = localButtonInfo.url.get();
-        if (!localButtonInfo.media_id.has()) {
-          break label809;
-        }
-      }
-      for (paramMqqHandler = localButtonInfo.media_id.get();; paramMqqHandler = null)
-      {
-        if (!TextUtils.isEmpty(paramString1)) {
-          break label815;
-        }
-        oldUrEventHandle(paramQQAppInterface, paramContext, paramString2, localButtonInfo);
-        return;
-        break;
-        paramBusinessObserver = "";
-        break label761;
-      }
-      paramSessionInfo = JumpParser.a(paramQQAppInterface, paramContext, paramString1);
-      if (paramSessionInfo == null)
-      {
-        if (localButtonInfo.actionInfo.appid.has())
-        {
-          tryHandleOpenApp(paramQQAppInterface, paramContext, paramString2, localButtonInfo, paramString1);
-          return;
-        }
-        oldUrEventHandle(paramQQAppInterface, paramContext, paramString2, localButtonInfo);
-        reportUrlTypeMenuEvent(paramBusinessObserver, (mobileqq_mp.ActionInfo)localButtonInfo.actionInfo.get(), paramMqqHandler);
-        return;
-      }
-      if (TextUtils.isEmpty(paramSessionInfo.a()))
-      {
-        tryHandleOpenApp(paramQQAppInterface, paramContext, paramString2, localButtonInfo, paramString1);
-        return;
-      }
-    } while (paramSessionInfo.a());
-    label149:
-    label245:
-    oldUrEventHandle(paramQQAppInterface, paramContext, paramString2, localButtonInfo);
-    label304:
-    label590:
-    label596:
-    label602:
-    label609:
-    label615:
-    label621:
-    reportUrlTypeMenuEvent(paramBusinessObserver, (mobileqq_mp.ActionInfo)localButtonInfo.actionInfo.get(), paramMqqHandler);
-    label427:
-    label815:
-    return;
-    label802:
-    label809:
-    if (localButtonInfo.event_id.has()) {}
-    for (paramInt1 = localButtonInfo.event_id.get();; paramInt1 = 0) {
-      switch (paramInt1)
-      {
-      default: 
-        return;
-      case 1: 
-        openInfoCard(paramQQAppInterface, paramContext, paramString2);
-        reportEventTypeMenuEvent(null, 0, 1, -1, null);
-        return;
-      }
+      reportClickTypeMenuEvent(false, 0.0D, 0.0D, null, paramString1, this.mTempKey, this.mIsNewMenu);
     }
-    openScanner(paramContext, paramMqqHandler, false);
-    return;
-    openScanner(paramContext, paramMqqHandler, true);
-    return;
-    openCamera(paramContext, paramQQAppInterface, paramSessionInfo);
-    return;
-    openAlbum(paramContext, paramQQAppInterface, paramSessionInfo);
-    return;
-    openLocation(paramContext, paramQQAppInterface, paramSessionInfo);
-    return;
-    openNewCityWeather(paramQQAppInterface, paramMqqHandler);
-    return;
-    openOtherCity(paramContext, paramQQAppInterface);
   }
   
-  public void handleUrlEvent(Context paramContext, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3)
+  public void handleUrlEvent(Context paramContext, AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3)
   {
     Intent localIntent = new Intent(paramContext, PublicAccountBrowserImpl.class);
     localIntent.putExtra("from", QQBrowserActivity.class);
     localIntent.putExtra("url", paramString1);
     localIntent.putExtra("click_from", paramString3);
-    localIntent.putExtra("uin", paramQQAppInterface.getCurrentAccountUin());
+    localIntent.putExtra("uin", paramAppInterface.getCurrentAccountUin());
     localIntent.putExtra("puin", paramString2);
-    localIntent.putExtra("assignBackText", paramContext.getResources().getString(2131690778));
+    localIntent.putExtra("assignBackText", paramContext.getResources().getString(2131690706));
     localIntent.putExtra("big_brother_source_key", ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getSourceId(paramString2));
     paramContext.startActivity(localIntent);
   }
@@ -1173,31 +1258,36 @@ public class PublicAccountManagerImpl
     return this.hasPreloadWebProcessor;
   }
   
-  public void init(Context paramContext, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, IPublicAccountManager.InitDoneObserver paramInitDoneObserver)
+  public void init(Context paramContext, AppInterface paramAppInterface, String paramString1, String paramString2, IPublicAccountManager.InitDoneObserver paramInitDoneObserver)
   {
     if ((paramString1 != null) && (!paramString1.equals(this.mCurrentUin))) {
       clearOldPublicAccountData(paramString1);
     }
     this.mCurrentUin = paramString1;
-    ThreadManager.executeOnSubThread(new PublicAccountManagerImpl.1(this, paramString2, paramQQAppInterface, paramInitDoneObserver, paramContext));
+    ThreadManager.executeOnSubThread(new PublicAccountManagerImpl.1(this, paramString2, paramAppInterface, paramInitDoneObserver, paramContext));
   }
   
-  public boolean preloadWebProcess(QQAppInterface paramQQAppInterface)
+  public boolean preloadWebProcess(AppInterface paramAppInterface)
   {
-    if (NetConnInfoCenter.getServerTimeMillis() < this.lastPreloadWebProcessorTime + 35000L) {}
-    do
-    {
+    if (NetConnInfoCenter.getServerTimeMillis() < this.lastPreloadWebProcessorTime + 35000L) {
       return false;
-      this.lastPreloadWebProcessorTime = NetConnInfoCenter.getServerTimeMillis();
-    } while ((DeviceInfoUtil.f()) || (FileUtils.a() <= 1.048576E+008F));
-    paramQQAppInterface = (IWebProcessManagerService)paramQQAppInterface.getRuntimeService(IWebProcessManagerService.class, "");
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.startWebProcess(-1, null);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountManager", 2, "startWebProcess  startWebProcess by userlist ad");
+    this.lastPreloadWebProcessorTime = NetConnInfoCenter.getServerTimeMillis();
+    if (!DeviceInfoUtil.h())
+    {
+      if (FileUtils.getAvailableInnernalMemorySize() <= 1.048576E+008F) {
+        return false;
+      }
+      paramAppInterface = (IWebProcessManagerService)paramAppInterface.getRuntimeService(IWebProcessManagerService.class, "");
+      if (paramAppInterface != null) {
+        paramAppInterface.startWebProcess(-1, null);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PublicAccountManager", 2, "startWebProcess  startWebProcess by userlist ad");
+      }
+      return true;
     }
-    return true;
+    return false;
   }
   
   public NewIntent refuseFollowAccount(String paramString, int paramInt, boolean paramBoolean, Context paramContext, AppInterface paramAppInterface, IPublicAccountManager.refuseAcceptDone paramrefuseAcceptDone)
@@ -1226,9 +1316,17 @@ public class PublicAccountManagerImpl
     }
   }
   
-  public void removeMsgID(QQAppInterface paramQQAppInterface, String paramString)
+  public void removeMsgID(AppInterface paramAppInterface, String paramString)
   {
-    paramQQAppInterface.getApp().getSharedPreferences("history_msg_params_" + paramQQAppInterface.getAccount(), 0).edit().remove(paramString + "_msgid").commit();
+    Object localObject = paramAppInterface.getApp();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("history_msg_params_");
+    localStringBuilder.append(paramAppInterface.getAccount());
+    paramAppInterface = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("_msgid");
+    paramAppInterface.remove(((StringBuilder)localObject).toString()).commit();
   }
   
   public void reportClickTypeMenuEvent(boolean paramBoolean1, double paramDouble1, double paramDouble2, String paramString1, String paramString2, String paramString3, boolean paramBoolean2)
@@ -1248,8 +1346,20 @@ public class PublicAccountManagerImpl
       if (paramString2 != null) {
         paramString3.media_id.set(paramString2);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("PublicAccountManager-Click:", 2, "is_need_lbs:" + paramString3.is_need_lbs.get() + " latitude:" + paramString3.latitude.get() + " longitude:" + paramString3.longitude.get() + " lbsAddressLabel:" + paramString3.lbsAddressLabel.get() + " media_id:" + paramString3.media_id.get());
+      if (QLog.isColorLevel())
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("is_need_lbs:");
+        paramString1.append(paramString3.is_need_lbs.get());
+        paramString1.append(" latitude:");
+        paramString1.append(paramString3.latitude.get());
+        paramString1.append(" longitude:");
+        paramString1.append(paramString3.longitude.get());
+        paramString1.append(" lbsAddressLabel:");
+        paramString1.append(paramString3.lbsAddressLabel.get());
+        paramString1.append(" media_id:");
+        paramString1.append(paramString3.media_id.get());
+        QLog.d("PublicAccountManager-Click:", 2, paramString1.toString());
       }
       sendReportRequest(paramString3);
     }
@@ -1272,8 +1382,16 @@ public class PublicAccountManagerImpl
       if (paramList != null) {
         localSendMenuEventRequest.picture_Md5s.set(paramList);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("PublicAccountManager-Event:", 2, "event_id:" + localSendMenuEventRequest.event_id.get() + " scan_result:" + localSendMenuEventRequest.scan_result.get() + " pictureCount:" + localSendMenuEventRequest.pictureCount.get());
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("event_id:");
+        paramString.append(localSendMenuEventRequest.event_id.get());
+        paramString.append(" scan_result:");
+        paramString.append(localSendMenuEventRequest.scan_result.get());
+        paramString.append(" pictureCount:");
+        paramString.append(localSendMenuEventRequest.pictureCount.get());
+        QLog.d("PublicAccountManager-Event:", 2, paramString.toString());
       }
       sendReportRequest(localSendMenuEventRequest);
     }
@@ -1291,43 +1409,74 @@ public class PublicAccountManagerImpl
       if (paramString1 != null) {
         paramString2.lbsAddressLabel.set(paramString1);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("PublicAccountManager-Location:", 2, "event_id:" + paramString2.event_id.get() + " is_need_lbs:" + paramString2.is_need_lbs.get() + " latitude:" + paramString2.latitude.get() + " longitude:" + paramString2.longitude.get() + " lbsAddressLabel:" + paramString2.lbsAddressLabel.get());
+      if (QLog.isColorLevel())
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("event_id:");
+        paramString1.append(paramString2.event_id.get());
+        paramString1.append(" is_need_lbs:");
+        paramString1.append(paramString2.is_need_lbs.get());
+        paramString1.append(" latitude:");
+        paramString1.append(paramString2.latitude.get());
+        paramString1.append(" longitude:");
+        paramString1.append(paramString2.longitude.get());
+        paramString1.append(" lbsAddressLabel:");
+        paramString1.append(paramString2.lbsAddressLabel.get());
+        QLog.d("PublicAccountManager-Location:", 2, paramString1.toString());
       }
       sendReportRequest(paramString2);
     }
   }
   
-  public void reportRecentList(QQAppInterface paramQQAppInterface)
+  public void reportRecentList(AppInterface paramAppInterface)
   {
     if (this.mLastReportTime == 0L)
     {
-      localObject = paramQQAppInterface.getApplication().getSharedPreferences("sp_public_account_with_cuin_" + paramQQAppInterface.getCurrentAccountUin(), 0);
-      if (localObject != null) {
-        this.mLastReportTime = ((SharedPreferences)localObject).getLong("recentlist_reported", 0L);
+      localObject1 = paramAppInterface.getApplication();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("sp_public_account_with_cuin_");
+      ((StringBuilder)localObject2).append(paramAppInterface.getCurrentAccountUin());
+      localObject1 = ((MobileQQ)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 0);
+      if (localObject1 != null) {
+        this.mLastReportTime = ((SharedPreferences)localObject1).getLong("recentlist_reported", 0L);
       }
     }
-    Object localObject = new Date(this.mLastReportTime);
-    Date localDate = new Date(NetConnInfoCenter.getServerTimeMillis());
+    Object localObject1 = new Date(this.mLastReportTime);
+    Object localObject2 = new Date(NetConnInfoCenter.getServerTimeMillis());
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountManager", 2, "reportRecentList today = " + localSimpleDateFormat.format(localDate) + ";lastdate = " + localSimpleDateFormat.format((Date)localObject));
-    }
-    if (localSimpleDateFormat.format(localDate).equals(localSimpleDateFormat.format((Date)localObject))) {}
-    do
+    if (QLog.isColorLevel())
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportRecentList today = ");
+      localStringBuilder.append(localSimpleDateFormat.format((Date)localObject2));
+      localStringBuilder.append(";lastdate = ");
+      localStringBuilder.append(localSimpleDateFormat.format((Date)localObject1));
+      QLog.d("PublicAccountManager", 2, localStringBuilder.toString());
+    }
+    if (localSimpleDateFormat.format((Date)localObject2).equals(localSimpleDateFormat.format((Date)localObject1))) {
       return;
-      localObject = getRecentReportDate(paramQQAppInterface);
-      if (QLog.isColorLevel()) {
-        QLog.d("PublicAccountManager", 2, "reportRecentList recentList= " + (String)localObject);
-      }
-      ReportController.b(null, "dc01160", "Pb_account_lifeservice", "", "0X800661D", "0X800661D", 0, 0, "", "", (String)localObject, "");
-      this.mLastReportTime = NetConnInfoCenter.getServerTimeMillis();
-      paramQQAppInterface = paramQQAppInterface.getApplication().getSharedPreferences("sp_public_account_with_cuin_" + paramQQAppInterface.getCurrentAccountUin(), 0);
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface = paramQQAppInterface.edit();
-    paramQQAppInterface.putLong("recentlist_reported", this.mLastReportTime);
-    paramQQAppInterface.commit();
+    }
+    localObject1 = getRecentReportDate((QQAppInterface)paramAppInterface);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("reportRecentList recentList= ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.d("PublicAccountManager", 2, ((StringBuilder)localObject2).toString());
+    }
+    ReportController.b(null, "dc01160", "Pb_account_lifeservice", "", "0X800661D", "0X800661D", 0, 0, "", "", (String)localObject1, "");
+    this.mLastReportTime = NetConnInfoCenter.getServerTimeMillis();
+    localObject1 = paramAppInterface.getApplication();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("sp_public_account_with_cuin_");
+    ((StringBuilder)localObject2).append(paramAppInterface.getCurrentAccountUin());
+    paramAppInterface = ((MobileQQ)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 0);
+    if (paramAppInterface != null)
+    {
+      paramAppInterface = paramAppInterface.edit();
+      paramAppInterface.putLong("recentlist_reported", this.mLastReportTime);
+      paramAppInterface.commit();
+    }
   }
   
   public void reportUrlTypeMenuEvent(String paramString1, mobileqq_mp.ActionInfo paramActionInfo, String paramString2)
@@ -1340,167 +1489,179 @@ public class PublicAccountManagerImpl
       if (paramString2 != null) {
         localSendMenuEventRequest.media_id.set(paramString2);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("PublicAccountManager-Url:", 2, "url:" + localSendMenuEventRequest.url.get() + " actionInfo:" + localSendMenuEventRequest.actionInfo.get() + " media_id:" + localSendMenuEventRequest.media_id.get());
+      if (QLog.isColorLevel())
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("url:");
+        paramString1.append(localSendMenuEventRequest.url.get());
+        paramString1.append(" actionInfo:");
+        paramString1.append(localSendMenuEventRequest.actionInfo.get());
+        paramString1.append(" media_id:");
+        paramString1.append(localSendMenuEventRequest.media_id.get());
+        QLog.d("PublicAccountManager-Url:", 2, paramString1.toString());
       }
       sendReportRequest(localSendMenuEventRequest);
     }
   }
   
-  public void requestQidiKefu(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, BusinessObserver paramBusinessObserver)
+  public void requestQidiKefu(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, BusinessObserver paramBusinessObserver)
   {
+    String str = "QD";
+    BaseActivity localBaseActivity = (BaseActivity)paramActivity;
     this.mTempUin = paramString1;
-    this.mTempContext = new WeakReference(paramBaseActivity);
-    paramString1 = new JSONObject();
+    this.mTempContext = new WeakReference(localBaseActivity);
+    paramActivity = new JSONObject();
     try
     {
-      paramString1.put("app", "QD");
+      paramActivity.put("app", "QD");
       if (paramString2 != null) {
-        paramString1.put("assignType", Long.parseLong(paramString2));
+        paramActivity.put("assignType", Long.parseLong(paramString2));
       }
       if (paramString3 != null) {
-        paramString1.put("assignKey", Long.parseLong(paramString3));
+        paramActivity.put("assignKey", Long.parseLong(paramString3));
       }
       if (paramString4 != null) {
-        paramString1.put("ext", paramString4);
+        paramActivity.put("ext", paramString4);
       }
       i = 0;
     }
-    catch (Exception paramString2)
+    catch (Exception paramString1)
     {
-      do
-      {
-        for (;;)
-        {
-          int i = 1;
-          continue;
-          paramString1 = paramString1.toString();
-        }
-        paramString1.menu_type.set(1001);
-        paramString2 = (QQAppInterface)this.mApp.get();
-        paramString2 = this.mTempUin;
-        paramString3 = new NewIntent(paramBaseActivity, PublicAccountStQWebServletImpl.class);
-        paramString3.putExtra("cmd", "CertifiedAccountSvc.certified_account_write.SendMenuEvent");
-        paramString2 = new PROTOCAL.StQWebReq();
-        paramString2.Seq.set(-1L);
-        paramString2.qua.set(QUA.getQUA3());
-        paramString2.deviceInfo.set(PlatformInfor.g().getDeviceInfor());
-        paramString2.busiBuff.set(ByteStringMicro.copyFrom(paramString1.toByteArray()));
-        paramString4 = CertifiedAccountAbstractServlet.a();
-        if (!TextUtils.isEmpty(paramString4)) {
-          paramString2.traceid.set(paramString4);
-        }
-        paramString2 = paramString2.toByteArray();
-        paramString1 = paramString2;
-        if (paramString2 == null) {
-          paramString1 = new byte[4];
-        }
-        paramString3.putExtra("traceid", paramString4);
-        paramString3.putExtra("data", paramString1);
-        paramString3.setObserver(paramBusinessObserver);
-      } while (paramBaseActivity.app == null);
-      paramBaseActivity.app.startServlet(paramString3);
+      int i;
+      label103:
+      break label103;
     }
-    if (i != 0)
-    {
-      paramString1 = "QD";
-      paramString1 = initSendMenuEventRequest(1, paramString1, false);
-      if (paramString1 != null) {
-        break label125;
-      }
+    i = 1;
+    if (i != 0) {
+      paramActivity = str;
+    } else {
+      paramActivity = paramActivity.toString();
     }
-    label125:
+    paramActivity = initSendMenuEventRequest(1, paramActivity, false);
+    if (paramActivity == null) {
+      return;
+    }
+    paramActivity.menu_type.set(1001);
+    paramString1 = (AppInterface)this.mApp.get();
+    paramString1 = this.mTempUin;
+    paramString2 = new NewIntent(localBaseActivity, PublicAccountStQWebServletImpl.class);
+    paramString2.putExtra("cmd", "CertifiedAccountSvc.certified_account_write.SendMenuEvent");
+    paramString1 = new PROTOCAL.StQWebReq();
+    paramString1.Seq.set(-1L);
+    paramString1.qua.set(QUA.getQUA3());
+    paramString1.deviceInfo.set(PlatformInfor.g().getDeviceInfor());
+    paramString1.busiBuff.set(ByteStringMicro.copyFrom(paramActivity.toByteArray()));
+    paramString3 = CertifiedAccountAbstractServlet.a();
+    if (!TextUtils.isEmpty(paramString3)) {
+      paramString1.traceid.set(paramString3);
+    }
+    paramString1 = paramString1.toByteArray();
+    paramActivity = paramString1;
+    if (paramString1 == null) {
+      paramActivity = new byte[4];
+    }
+    paramString2.putExtra("traceid", paramString3);
+    paramString2.putExtra("data", paramActivity);
+    paramString2.setObserver(paramBusinessObserver);
+    if (localBaseActivity.app != null) {
+      localBaseActivity.app.startServlet(paramString2);
+    }
   }
   
-  public void savePublicAccountMenuSetting(QQAppInterface paramQQAppInterface, String paramString, mobileqq_mp.GetPublicAccountMenuResponse paramGetPublicAccountMenuResponse)
+  public void savePublicAccountMenuSetting(AppInterface paramAppInterface, String paramString, mobileqq_mp.GetPublicAccountMenuResponse paramGetPublicAccountMenuResponse)
   {
     if (QLog.isDevelopLevel()) {
       QLog.d("PublicAccountManager", 4, "savePublicAccountMenuSetting");
     }
-    if (paramGetPublicAccountMenuResponse == null) {}
-    label19:
-    int i;
-    label43:
-    Object localObject;
-    PublicAccountMenuEntity localPublicAccountMenuEntity1;
-    label137:
-    label206:
-    do
-    {
-      do
-      {
-        break label19;
-        do
-        {
-          return;
-        } while (paramQQAppInterface == null);
-        if (!paramGetPublicAccountMenuResponse.seqno.has()) {
-          break;
-        }
-        i = paramGetPublicAccountMenuResponse.seqno.get();
-        updateMenuSettingLocalSeqno(paramString, i);
-        l = System.currentTimeMillis();
-        updateMenuSettingLocalDateTime(paramString, l);
-      } while (paramGetPublicAccountMenuResponse.toByteArray() == null);
-      localObject = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-      localPublicAccountMenuEntity1 = new PublicAccountMenuEntity(paramString, paramGetPublicAccountMenuResponse, l);
-      if (((EntityManager)localObject).find(PublicAccountMenuEntity.class, paramString) == null) {
-        break label391;
-      }
-      PublicAccountMenuEntity localPublicAccountMenuEntity2 = (PublicAccountMenuEntity)((EntityManager)localObject).find(PublicAccountMenuEntity.class, paramString);
-      if (localPublicAccountMenuEntity2 == null) {
-        break label381;
-      }
-      localPublicAccountMenuEntity2.clone(localPublicAccountMenuEntity1);
-      ((EntityManager)localObject).update(localPublicAccountMenuEntity2);
-      ((EntityManager)localObject).close();
-      localObject = paramGetPublicAccountMenuResponse.button_info.get();
-      long l = localPublicAccountMenuEntity1.savedDateTime;
-      this.menuSettingLastSaveDateTimeMap.put(paramString, Long.valueOf(l));
-      this.mPublicAccountMenuButtonLists.put(paramString, localObject);
-      if (!paramGetPublicAccountMenuResponse.menu_type.has()) {
-        break label401;
-      }
-      i = paramGetPublicAccountMenuResponse.menu_type.get();
-      this.mPublicAccountMenuType.put(paramString, Integer.valueOf(i));
-    } while (i == 0);
-    if (i == 1) {}
-    for (paramGetPublicAccountMenuResponse = "icon";; paramGetPublicAccountMenuResponse = "text")
-    {
-      ReportController.a(paramQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005EC2", "0X8005EC2", 0, 0, paramString, paramGetPublicAccountMenuResponse, "", "");
-      if ((((List)localObject).size() <= 0) || (((List)localObject).get(0) == null) || (!((mobileqq_mp.ButtonInfo)((List)localObject).get(0)).sub_button.has()) || (((mobileqq_mp.ButtonInfo)((List)localObject).get(0)).sub_button.get() == null)) {
-        break;
-      }
-      ReportController.a(paramQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005EC3", "0X8005EC3", 0, 0, paramString, String.valueOf(((mobileqq_mp.ButtonInfo)((List)localObject).get(0)).sub_button.get().size()), "", "");
+    if (paramGetPublicAccountMenuResponse == null) {
       return;
+    }
+    if (paramAppInterface == null) {
+      return;
+    }
+    int i;
+    if (paramGetPublicAccountMenuResponse.seqno.has()) {
+      i = paramGetPublicAccountMenuResponse.seqno.get();
+    } else {
       i = 0;
-      break label43;
-      label381:
+    }
+    updateMenuSettingLocalSeqno(paramString, i);
+    long l = System.currentTimeMillis();
+    updateMenuSettingLocalDateTime(paramString, l);
+    if (paramGetPublicAccountMenuResponse.toByteArray() == null) {
+      return;
+    }
+    Object localObject = paramAppInterface.getEntityManagerFactory().createEntityManager();
+    PublicAccountMenuEntity localPublicAccountMenuEntity1 = new PublicAccountMenuEntity(paramString, paramGetPublicAccountMenuResponse, l);
+    if (((EntityManager)localObject).find(PublicAccountMenuEntity.class, paramString) != null)
+    {
+      PublicAccountMenuEntity localPublicAccountMenuEntity2 = (PublicAccountMenuEntity)((EntityManager)localObject).find(PublicAccountMenuEntity.class, paramString);
+      if (localPublicAccountMenuEntity2 != null)
+      {
+        localPublicAccountMenuEntity2.clone(localPublicAccountMenuEntity1);
+        ((EntityManager)localObject).update(localPublicAccountMenuEntity2);
+      }
+      else
+      {
+        ((EntityManager)localObject).persist(localPublicAccountMenuEntity1);
+      }
+    }
+    else
+    {
       ((EntityManager)localObject).persist(localPublicAccountMenuEntity1);
-      break label137;
-      label391:
-      ((EntityManager)localObject).persist(localPublicAccountMenuEntity1);
-      break label137;
-      label401:
+    }
+    ((EntityManager)localObject).close();
+    localObject = paramGetPublicAccountMenuResponse.button_info.get();
+    l = localPublicAccountMenuEntity1.savedDateTime;
+    this.menuSettingLastSaveDateTimeMap.put(paramString, Long.valueOf(l));
+    this.mPublicAccountMenuButtonLists.put(paramString, localObject);
+    if (paramGetPublicAccountMenuResponse.menu_type.has()) {
+      i = paramGetPublicAccountMenuResponse.menu_type.get();
+    } else {
       i = 0;
-      break label206;
+    }
+    this.mPublicAccountMenuType.put(paramString, Integer.valueOf(i));
+    if (i != 0)
+    {
+      if (i == 1) {
+        paramGetPublicAccountMenuResponse = "icon";
+      } else {
+        paramGetPublicAccountMenuResponse = "text";
+      }
+      ReportController.a(paramAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005EC2", "0X8005EC2", 0, 0, paramString, paramGetPublicAccountMenuResponse, "", "");
+      if ((((List)localObject).size() > 0) && (((List)localObject).get(0) != null) && (((mobileqq_mp.ButtonInfo)((List)localObject).get(0)).sub_button.has()) && (((mobileqq_mp.ButtonInfo)((List)localObject).get(0)).sub_button.get() != null)) {
+        ReportController.a(paramAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005EC3", "0X8005EC3", 0, 0, paramString, String.valueOf(((mobileqq_mp.ButtonInfo)((List)localObject).get(0)).sub_button.get().size()), "", "");
+      }
     }
   }
   
-  public void sendMenuEventequest(Context paramContext, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, boolean paramBoolean, double paramDouble1, double paramDouble2, BusinessObserver paramBusinessObserver)
+  public void sendMenuEventequest(Context paramContext, AppInterface paramAppInterface, String paramString1, String paramString2, boolean paramBoolean, double paramDouble1, double paramDouble2, BusinessObserver paramBusinessObserver)
   {
-    sendMenuEventequest(paramContext, paramQQAppInterface, paramString1, paramString2, paramBoolean, paramDouble1, paramDouble2, paramBusinessObserver, 1, 0L, 0);
+    sendMenuEventequest(paramContext, paramAppInterface, paramString1, paramString2, paramBoolean, paramDouble1, paramDouble2, paramBusinessObserver, 1, 0L, 0);
   }
   
-  public void sendMenuEventequest(Context paramContext, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, boolean paramBoolean, double paramDouble1, double paramDouble2, BusinessObserver paramBusinessObserver, int paramInt1, long paramLong, int paramInt2)
+  public void sendMenuEventequest(Context paramContext, AppInterface paramAppInterface, String paramString1, String paramString2, boolean paramBoolean, double paramDouble1, double paramDouble2, BusinessObserver paramBusinessObserver, int paramInt1, long paramLong, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("reportsendMenuEventequest", 2, "key:" + paramString2 + "uin:" + paramString1 + "type:" + paramInt1 + "msg_id:" + paramLong + "s_type" + paramInt2);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("key:");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append("uin:");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append("type:");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append("msg_id:");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("s_type");
+      ((StringBuilder)localObject).append(paramInt2);
+      QLog.d("reportsendMenuEventequest", 2, ((StringBuilder)localObject).toString());
     }
     try
     {
       long l = Long.valueOf(paramString1).longValue();
-      Object localObject = new mobileqq_mp.SendMenuEventRequest();
+      localObject = new mobileqq_mp.SendMenuEventRequest();
       ((mobileqq_mp.SendMenuEventRequest)localObject).key.set(paramString2);
       ((mobileqq_mp.SendMenuEventRequest)localObject).uin.set((int)l);
       ((mobileqq_mp.SendMenuEventRequest)localObject).type.set(paramInt1);
@@ -1531,16 +1692,23 @@ public class PublicAccountManagerImpl
       }
       localNewIntent.putExtra("traceid", str);
       localNewIntent.putExtra("data", paramString2);
-      localNewIntent.setObserver(new PublicAccountManagerImpl.3(this, localNewIntent, paramContext, paramString1, paramBusinessObserver, paramQQAppInterface));
-      if (paramQQAppInterface != null) {
-        paramQQAppInterface.startServlet(localNewIntent);
+      localNewIntent.setObserver(new PublicAccountManagerImpl.3(this, localNewIntent, paramContext, paramString1, paramBusinessObserver, paramAppInterface));
+      if (paramAppInterface != null) {
+        paramAppInterface.startServlet(localNewIntent);
       }
       return;
     }
     catch (NumberFormatException paramContext)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("PublicAccountManager", 2, "puin is invalid format:" + paramString1);
+      label410:
+      break label410;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("puin is invalid format:");
+      paramContext.append(paramString1);
+      QLog.e("PublicAccountManager", 2, paramContext.toString());
     }
   }
   
@@ -1557,25 +1725,23 @@ public class PublicAccountManagerImpl
       localSendPublicAccountMessageReceiptRequest.uint64_unique_id.set(paramLong1);
       localSendPublicAccountMessageReceiptRequest.uint32_op.set(paramLong2);
     }
-    for (;;)
+    else if (paramInt == 2)
     {
-      localSendPublicAccountMessageReceiptRequest.receipt_type.set(paramInt);
-      localSendPublicAccountMessageReceiptRequest.pcuin.set(paramLong3);
-      localSendPublicAccountMessageReceiptRequest.cuin.set(paramLong4);
-      paramContext.putExtra("data", localSendPublicAccountMessageReceiptRequest.toByteArray());
-      paramContext.setObserver(new PublicAccountManagerImpl.6(this, paramContext));
-      if (paramAppInterface != null)
-      {
-        paramAppInterface.startServlet(paramContext);
-        if (TextUtils.equals("2290230341", String.valueOf(paramLong3))) {
-          ((QZoneMsgManager)paramAppInterface.getManager(QQManagerFactory.QZONE_MSG_MANAGER)).preLoadQZoneMsg();
-        }
-      }
-      return paramContext;
-      if (paramInt == 2) {
-        localSendPublicAccountMessageReceiptRequest.unique_ids.set(paramList);
+      localSendPublicAccountMessageReceiptRequest.unique_ids.set(paramList);
+    }
+    localSendPublicAccountMessageReceiptRequest.receipt_type.set(paramInt);
+    localSendPublicAccountMessageReceiptRequest.pcuin.set(paramLong3);
+    localSendPublicAccountMessageReceiptRequest.cuin.set(paramLong4);
+    paramContext.putExtra("data", localSendPublicAccountMessageReceiptRequest.toByteArray());
+    paramContext.setObserver(new PublicAccountManagerImpl.6(this, paramContext));
+    if (paramAppInterface != null)
+    {
+      paramAppInterface.startServlet(paramContext);
+      if (TextUtils.equals("2290230341", String.valueOf(paramLong3))) {
+        ((IQzoneRuntimeService)paramAppInterface.getRuntimeService(IQzoneRuntimeService.class, "")).preloadContentBox();
       }
     }
+    return paramContext;
   }
   
   public void setHasPreloadWebProcessor(boolean paramBoolean)
@@ -1583,9 +1749,22 @@ public class PublicAccountManagerImpl
     this.hasPreloadWebProcessor = paramBoolean;
   }
   
-  public void setMsgID(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
+  public void setKeepOldPublicAccountData(boolean paramBoolean)
   {
-    paramQQAppInterface.getApp().getSharedPreferences("history_msg_params_" + paramQQAppInterface.getAccount(), 0).edit().putLong(paramString + "_msgid", paramLong).commit();
+    this.mKeepOldPublicAccountData = paramBoolean;
+  }
+  
+  public void setMsgID(AppInterface paramAppInterface, String paramString, long paramLong)
+  {
+    Object localObject = paramAppInterface.getApp();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("history_msg_params_");
+    localStringBuilder.append(paramAppInterface.getAccount());
+    paramAppInterface = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("_msgid");
+    paramAppInterface.putLong(((StringBuilder)localObject).toString(), paramLong).commit();
   }
   
   public void updateMenuSettingLocalSeqno(String paramString, int paramInt)
@@ -1595,7 +1774,7 @@ public class PublicAccountManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountManagerImpl
  * JD-Core Version:    0.7.0.1
  */

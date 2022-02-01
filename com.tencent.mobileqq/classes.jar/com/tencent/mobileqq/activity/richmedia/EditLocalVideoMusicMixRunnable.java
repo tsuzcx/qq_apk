@@ -59,77 +59,99 @@ public class EditLocalVideoMusicMixRunnable
   public void run()
   {
     a();
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo.b == 0) {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo.b == 0)
+    {
       a(EditLocalVideoMusicMixHelper.a(this.jdField_a_of_type_JavaLangString));
-    }
-    ArrayList localArrayList;
-    String str;
-    do
-    {
-      do
-      {
-        return;
-        localArrayList = new ArrayList();
-        localObject1 = EditLocalVideoMusicMixHelper.c(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo.g);
-        QZLog.d("EditLocalVideoMusicMixR", 2, "step 1, run() returned: " + (String)localObject1);
-        localArrayList.add(localObject1);
-      } while (a((String)localObject1));
-      str = EditLocalVideoMusicMixHelper.b((String)localObject1);
-      QZLog.d("EditLocalVideoMusicMixR", 2, "step 2, run() returned: " + str);
-      localArrayList.add(str);
-    } while (a(str));
-    Object localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo;
-    ((QQStoryMusicInfo)localObject1).d -= 1000;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo.d > 0) {}
-    for (Object localObject2 = EditLocalVideoMusicMixHelper.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo.d, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo.e - this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo.d, str);; localObject2 = str)
-    {
-      QZLog.d("EditLocalVideoMusicMixR", 2, "step 3, run() returned: " + (String)localObject2);
-      localArrayList.add(localObject2);
-      if (a((String)localObject2)) {
-        break;
-      }
-      localObject1 = localObject2;
-      if (this.b - this.jdField_a_of_type_Long > this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo.f) {
-        localObject1 = EditLocalVideoMusicMixHelper.a((String)localObject2, (int)((this.b - this.jdField_a_of_type_Long) / this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo.f + 1L));
-      }
-      QZLog.d("EditLocalVideoMusicMixR", 2, "step 4, run() returned: " + (String)localObject1);
-      localArrayList.add(localObject1);
-      if (a((String)localObject1)) {
-        break;
-      }
-      localObject2 = localObject1;
-      if (this.jdField_a_of_type_Long > 0L)
-      {
-        str = EditLocalVideoMusicMixHelper.a(this.jdField_a_of_type_Long, str, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo.f);
-        localObject2 = EditLocalVideoMusicMixHelper.a(Arrays.asList(new String[] { str, localObject1 }));
-        localArrayList.add(str);
-      }
-      QZLog.d("EditLocalVideoMusicMixR", 2, "step 5, run() returned: " + (String)localObject2);
-      localArrayList.add(localObject2);
-      if (a((String)localObject2)) {
-        break;
-      }
-      localObject1 = EditLocalVideoMusicMixHelper.a(this.jdField_a_of_type_JavaLangString, (String)localObject2, this.c);
-      QZLog.d("EditLocalVideoMusicMixR", 2, "step 6, run() returned: " + (String)localObject1);
-      if (a((String)localObject1)) {
-        break;
-      }
-      localObject2 = localArrayList.iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        str = (String)((Iterator)localObject2).next();
-        if ((str != null) && (new File(str).delete())) {
-          QZLog.d("EditLocalVideoMusicMixR", 2, "step 7, run() clear: " + str);
-        }
-      }
-      a((String)localObject1);
       return;
     }
+    Object localObject3 = new ArrayList();
+    Object localObject1 = EditLocalVideoMusicMixHelper.c(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo.g);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("step 1, run() returned: ");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    QZLog.d("EditLocalVideoMusicMixR", 2, ((StringBuilder)localObject2).toString());
+    ((List)localObject3).add(localObject1);
+    if (a((String)localObject1)) {
+      return;
+    }
+    String str = EditLocalVideoMusicMixHelper.b((String)localObject1);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("step 2, run() returned: ");
+    ((StringBuilder)localObject1).append(str);
+    QZLog.d("EditLocalVideoMusicMixR", 2, ((StringBuilder)localObject1).toString());
+    ((List)localObject3).add(str);
+    if (a(str)) {
+      return;
+    }
+    localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo;
+    ((QQStoryMusicInfo)localObject1).d -= 1000;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo.d > 0) {
+      localObject2 = EditLocalVideoMusicMixHelper.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo.d, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo.e - this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo.d, str);
+    } else {
+      localObject2 = str;
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("step 3, run() returned: ");
+    ((StringBuilder)localObject1).append((String)localObject2);
+    QZLog.d("EditLocalVideoMusicMixR", 2, ((StringBuilder)localObject1).toString());
+    ((List)localObject3).add(localObject2);
+    if (a((String)localObject2)) {
+      return;
+    }
+    localObject1 = localObject2;
+    if (this.b - this.jdField_a_of_type_Long > this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo.f) {
+      localObject1 = EditLocalVideoMusicMixHelper.a((String)localObject2, (int)((this.b - this.jdField_a_of_type_Long) / this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo.f + 1L));
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("step 4, run() returned: ");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    QZLog.d("EditLocalVideoMusicMixR", 2, ((StringBuilder)localObject2).toString());
+    ((List)localObject3).add(localObject1);
+    if (a((String)localObject1)) {
+      return;
+    }
+    long l = this.jdField_a_of_type_Long;
+    localObject2 = localObject1;
+    if (l > 0L)
+    {
+      str = EditLocalVideoMusicMixHelper.a(l, str, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo.f);
+      localObject2 = EditLocalVideoMusicMixHelper.a(Arrays.asList(new String[] { str, localObject1 }));
+      ((List)localObject3).add(str);
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("step 5, run() returned: ");
+    ((StringBuilder)localObject1).append((String)localObject2);
+    QZLog.d("EditLocalVideoMusicMixR", 2, ((StringBuilder)localObject1).toString());
+    ((List)localObject3).add(localObject2);
+    if (a((String)localObject2)) {
+      return;
+    }
+    localObject1 = EditLocalVideoMusicMixHelper.a(this.jdField_a_of_type_JavaLangString, (String)localObject2, this.c);
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("step 6, run() returned: ");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    QZLog.d("EditLocalVideoMusicMixR", 2, ((StringBuilder)localObject2).toString());
+    if (a((String)localObject1)) {
+      return;
+    }
+    localObject2 = ((List)localObject3).iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      str = (String)((Iterator)localObject2).next();
+      if ((str != null) && (new File(str).delete()))
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("step 7, run() clear: ");
+        ((StringBuilder)localObject3).append(str);
+        QZLog.d("EditLocalVideoMusicMixR", 2, ((StringBuilder)localObject3).toString());
+      }
+    }
+    a((String)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.EditLocalVideoMusicMixRunnable
  * JD-Core Version:    0.7.0.1
  */

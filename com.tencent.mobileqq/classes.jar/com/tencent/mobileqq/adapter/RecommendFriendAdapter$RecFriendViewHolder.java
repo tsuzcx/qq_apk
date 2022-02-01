@@ -5,7 +5,7 @@ import com.tencent.mobileqq.data.MayKnowRecommend;
 import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
 
 class RecommendFriendAdapter$RecFriendViewHolder
-  extends FacePreloadBaseAdapter.ViewHolder
+  extends FacePreloadHolder.ViewHolder
 {
   public TextView a;
   public MayKnowRecommend a;
@@ -16,7 +16,7 @@ class RecommendFriendAdapter$RecFriendViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.RecommendFriendAdapter.RecFriendViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -8,6 +8,9 @@ import com.tencent.mobileqq.studymode.StudyModeChangeListener;
 public abstract interface IStudyModeManager
   extends QRouteApi
 {
+  public static final int NORMAL_MODE = 0;
+  public static final int STUDY_MODE = 1;
+  
   public abstract boolean getStudyModeSwitch();
   
   public abstract void registerStudyModeChangeListener(StudyModeChangeListener paramStudyModeChangeListener);
@@ -16,7 +19,7 @@ public abstract interface IStudyModeManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.api.IStudyModeManager
  * JD-Core Version:    0.7.0.1
  */

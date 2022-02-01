@@ -24,15 +24,16 @@ public abstract class Stopwatch
   
   private long getNanos()
   {
-    if (this.startNanos == 0L) {
-      throw new IllegalStateException("Test has not started");
+    if (this.startNanos != 0L)
+    {
+      long l2 = this.endNanos;
+      long l1 = l2;
+      if (l2 == 0L) {
+        l1 = this.clock.nanoTime();
+      }
+      return l1 - this.startNanos;
     }
-    long l2 = this.endNanos;
-    long l1 = l2;
-    if (l2 == 0L) {
-      l1 = this.clock.nanoTime();
-    }
-    return l1 - this.startNanos;
+    throw new IllegalStateException("Test has not started");
   }
   
   private void starting()
@@ -66,7 +67,7 @@ public abstract class Stopwatch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.rules.Stopwatch
  * JD-Core Version:    0.7.0.1
  */

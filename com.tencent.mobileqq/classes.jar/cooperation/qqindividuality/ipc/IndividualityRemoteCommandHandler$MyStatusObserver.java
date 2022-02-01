@@ -10,7 +10,7 @@ class IndividualityRemoteCommandHandler$MyStatusObserver
 {
   private IndividualityRemoteCommandHandler$MyStatusObserver(IndividualityRemoteCommandHandler paramIndividualityRemoteCommandHandler) {}
   
-  public void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList<RichStatus> paramArrayList, boolean paramBoolean3)
+  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList<RichStatus> paramArrayList, boolean paramBoolean3)
   {
     Bundle localBundle = new Bundle();
     localBundle.putBoolean("isSuccess", paramBoolean1);
@@ -25,7 +25,7 @@ class IndividualityRemoteCommandHandler$MyStatusObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqindividuality.ipc.IndividualityRemoteCommandHandler.MyStatusObserver
  * JD-Core Version:    0.7.0.1
  */

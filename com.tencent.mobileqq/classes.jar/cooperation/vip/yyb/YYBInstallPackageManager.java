@@ -21,15 +21,16 @@ public class YYBInstallPackageManager
   
   public static YYBInstallPackageManager a()
   {
-    if (jdField_a_of_type_CooperationVipYybYYBInstallPackageManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_CooperationVipYybYYBInstallPackageManager == null) {
-        jdField_a_of_type_CooperationVipYybYYBInstallPackageManager = new YYBInstallPackageManager();
+    if (jdField_a_of_type_CooperationVipYybYYBInstallPackageManager == null) {
+      try
+      {
+        if (jdField_a_of_type_CooperationVipYybYYBInstallPackageManager == null) {
+          jdField_a_of_type_CooperationVipYybYYBInstallPackageManager = new YYBInstallPackageManager();
+        }
       }
-      return jdField_a_of_type_CooperationVipYybYYBInstallPackageManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_CooperationVipYybYYBInstallPackageManager;
   }
   
   public static void a(long paramLong)
@@ -42,64 +43,70 @@ public class YYBInstallPackageManager
     }
   }
   
-  public void a(MobileCommConf paramMobileCommConf)
+  private void a(MobileCommConf paramMobileCommConf, long paramLong)
   {
-    if ((paramMobileCommConf == null) || (paramMobileCommConf.new_mobile_global_conf == null) || (paramMobileCommConf.new_mobile_user_conf == null) || (paramMobileCommConf.vecAppList == null) || (paramMobileCommConf.maxScanNum <= 0)) {}
-    long l;
-    ArrayList localArrayList;
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = paramMobileCommConf.vecAppList.iterator();
+    Object localObject;
     do
     {
       do
       {
-        do
-        {
-          return;
-          l = paramMobileCommConf.new_mobile_global_conf.version;
-        } while (paramMobileCommConf.new_mobile_user_conf.version < l);
-        if (QLog.isColorLevel()) {
-          QLog.d("YYBInstallPackageManager", 1, "invokeReport");
+        if (!localIterator.hasNext()) {
+          break;
         }
-        l = System.currentTimeMillis() / 1000L;
-      } while (((this.jdField_a_of_type_Long >= paramMobileCommConf.new_mobile_user_conf.uBeginTime) && (this.jdField_a_of_type_Long <= paramMobileCommConf.new_mobile_user_conf.uEndTime)) || (l < paramMobileCommConf.new_mobile_user_conf.uBeginTime) || (l > paramMobileCommConf.new_mobile_user_conf.uEndTime));
-      localArrayList = new ArrayList();
-      Iterator localIterator = paramMobileCommConf.vecAppList.iterator();
-      do
-      {
-        String str;
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          str = (String)localIterator.next();
-        } while (PackageUtil.a(BaseApplicationImpl.getApplication(), str));
-        localArrayList.add(str);
-      } while (localArrayList.size() < paramMobileCommConf.maxScanNum);
-    } while (localArrayList.size() <= 0);
-    this.jdField_a_of_type_Long = l;
-    a(this.jdField_a_of_type_Long);
-    paramMobileCommConf = new NewIntent(BaseApplicationImpl.getApplication(), YYBInstallPackageReportServlet.class);
-    try
+        localObject = (String)localIterator.next();
+      } while (PackageUtil.a(BaseApplicationImpl.getApplication(), (String)localObject));
+      localArrayList.add(localObject);
+    } while (localArrayList.size() < paramMobileCommConf.maxScanNum);
+    if (localArrayList.size() > 0)
     {
-      l = Long.parseLong(((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin());
-      paramMobileCommConf.putExtra("selfuin", l);
+      this.jdField_a_of_type_Long = paramLong;
+      a(this.jdField_a_of_type_Long);
+      paramMobileCommConf = new NewIntent(BaseApplicationImpl.getApplication(), YYBInstallPackageReportServlet.class);
+      paramLong = 0L;
+      try
+      {
+        long l = Long.parseLong(((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin());
+        paramLong = l;
+      }
+      catch (Exception localException)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("get uin error ");
+        ((StringBuilder)localObject).append(localException);
+        QLog.e("YYBInstallPackageManager", 1, ((StringBuilder)localObject).toString());
+      }
+      paramMobileCommConf.putExtra("selfuin", paramLong);
       paramMobileCommConf.putStringArrayListExtra("uninstall_app_list", localArrayList);
       BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMobileCommConf);
-      return;
     }
-    catch (Exception localException)
+  }
+  
+  public void a(MobileCommConf paramMobileCommConf)
+  {
+    if ((paramMobileCommConf != null) && (paramMobileCommConf.new_mobile_global_conf != null) && (paramMobileCommConf.new_mobile_user_conf != null) && (paramMobileCommConf.vecAppList != null))
     {
-      for (;;)
-      {
-        QLog.e("YYBInstallPackageManager", 1, "get uin error " + localException);
-        l = 0L;
+      if (paramMobileCommConf.maxScanNum <= 0) {
+        return;
+      }
+      long l = paramMobileCommConf.new_mobile_global_conf.version;
+      if (paramMobileCommConf.new_mobile_user_conf.version < l) {
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("YYBInstallPackageManager", 1, "invokeReport");
+      }
+      l = System.currentTimeMillis() / 1000L;
+      if (((this.jdField_a_of_type_Long < paramMobileCommConf.new_mobile_user_conf.uBeginTime) || (this.jdField_a_of_type_Long > paramMobileCommConf.new_mobile_user_conf.uEndTime)) && (l >= paramMobileCommConf.new_mobile_user_conf.uBeginTime) && (l <= paramMobileCommConf.new_mobile_user_conf.uEndTime)) {
+        a(paramMobileCommConf, l);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.yyb.YYBInstallPackageManager
  * JD-Core Version:    0.7.0.1
  */

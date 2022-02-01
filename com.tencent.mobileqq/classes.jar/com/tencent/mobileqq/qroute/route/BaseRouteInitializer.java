@@ -13,28 +13,45 @@ public abstract class BaseRouteInitializer
   
   protected void register(String paramString)
   {
-    if (this.routeRegister == null) {
-      Logger.warning("register fail for " + paramString + ", routeRegister not assigned");
+    StringBuilder localStringBuilder1;
+    if (this.routeRegister == null)
+    {
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("register fail for ");
+      localStringBuilder1.append(paramString);
+      localStringBuilder1.append(", routeRegister not assigned");
+      Logger.warning(localStringBuilder1.toString());
+      return;
     }
-    while (!this.registeredClassName.add(paramString)) {
+    if (!this.registeredClassName.add(paramString)) {
       return;
     }
     try
     {
       ((RouteInitializer)Class.forName(paramString).newInstance()).init(this.routeRegister);
-      Logger.info("register class for " + paramString);
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("register class for ");
+      localStringBuilder1.append(paramString);
+      Logger.info(localStringBuilder1.toString());
       return;
     }
     catch (Exception localException)
     {
-      Logger.warning("register class not found for " + paramString + ", " + localException.toString());
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("register class not found for ");
+      localStringBuilder2.append(paramString);
+      localStringBuilder2.append(", ");
+      localStringBuilder2.append(localException.toString());
+      Logger.warning(localStringBuilder2.toString());
     }
   }
   
   protected void register(String paramString1, String paramString2)
   {
-    if (this.routeRegister == null) {}
-    while (this.registeredActivityName.put(paramString1, paramString2) != null) {
+    if (this.routeRegister == null) {
+      return;
+    }
+    if (this.registeredActivityName.put(paramString1, paramString2) != null) {
       return;
     }
     this.routeRegister.register(paramString1, paramString2);
@@ -42,7 +59,7 @@ public abstract class BaseRouteInitializer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qroute.route.BaseRouteInitializer
  * JD-Core Version:    0.7.0.1
  */

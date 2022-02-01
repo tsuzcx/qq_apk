@@ -36,17 +36,17 @@ public class StandardMessageCodec
   private static final byte STRING = 7;
   private static final String TAG = "StandardMessageCodec#";
   private static final byte TRUE = 1;
-  private static final Charset UTF8;
+  private static final Charset UTF8 = Charset.forName("UTF8");
   
   static
   {
-    if (ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN) {}
-    for (boolean bool = true;; bool = false)
-    {
-      LITTLE_ENDIAN = bool;
-      UTF8 = Charset.forName("UTF8");
-      return;
+    boolean bool;
+    if (ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    LITTLE_ENDIAN = bool;
   }
   
   protected static final void readAlignment(ByteBuffer paramByteBuffer, int paramInt)
@@ -105,10 +105,12 @@ public class StandardMessageCodec
     if (LITTLE_ENDIAN)
     {
       paramByteArrayOutputStream.write(paramInt);
-      paramByteArrayOutputStream.write(paramInt >>> 8);
-      return;
+      paramInt >>>= 8;
     }
-    paramByteArrayOutputStream.write(paramInt >>> 8);
+    else
+    {
+      paramByteArrayOutputStream.write(paramInt >>> 8);
+    }
     paramByteArrayOutputStream.write(paramInt);
   }
   
@@ -124,12 +126,14 @@ public class StandardMessageCodec
       paramByteArrayOutputStream.write(paramInt);
       paramByteArrayOutputStream.write(paramInt >>> 8);
       paramByteArrayOutputStream.write(paramInt >>> 16);
-      paramByteArrayOutputStream.write(paramInt >>> 24);
-      return;
+      paramInt >>>= 24;
     }
-    paramByteArrayOutputStream.write(paramInt >>> 24);
-    paramByteArrayOutputStream.write(paramInt >>> 16);
-    paramByteArrayOutputStream.write(paramInt >>> 8);
+    else
+    {
+      paramByteArrayOutputStream.write(paramInt >>> 24);
+      paramByteArrayOutputStream.write(paramInt >>> 16);
+      paramByteArrayOutputStream.write(paramInt >>> 8);
+    }
     paramByteArrayOutputStream.write(paramInt);
   }
   
@@ -144,16 +148,18 @@ public class StandardMessageCodec
       paramByteArrayOutputStream.write((byte)(int)(paramLong >>> 32));
       paramByteArrayOutputStream.write((byte)(int)(paramLong >>> 40));
       paramByteArrayOutputStream.write((byte)(int)(paramLong >>> 48));
-      paramByteArrayOutputStream.write((byte)(int)(paramLong >>> 56));
-      return;
+      paramLong >>>= 56;
     }
-    paramByteArrayOutputStream.write((byte)(int)(paramLong >>> 56));
-    paramByteArrayOutputStream.write((byte)(int)(paramLong >>> 48));
-    paramByteArrayOutputStream.write((byte)(int)(paramLong >>> 40));
-    paramByteArrayOutputStream.write((byte)(int)(paramLong >>> 32));
-    paramByteArrayOutputStream.write((byte)(int)(paramLong >>> 24));
-    paramByteArrayOutputStream.write((byte)(int)(paramLong >>> 16));
-    paramByteArrayOutputStream.write((byte)(int)(paramLong >>> 8));
+    else
+    {
+      paramByteArrayOutputStream.write((byte)(int)(paramLong >>> 56));
+      paramByteArrayOutputStream.write((byte)(int)(paramLong >>> 48));
+      paramByteArrayOutputStream.write((byte)(int)(paramLong >>> 40));
+      paramByteArrayOutputStream.write((byte)(int)(paramLong >>> 32));
+      paramByteArrayOutputStream.write((byte)(int)(paramLong >>> 24));
+      paramByteArrayOutputStream.write((byte)(int)(paramLong >>> 16));
+      paramByteArrayOutputStream.write((byte)(int)(paramLong >>> 8));
+    }
     paramByteArrayOutputStream.write((byte)(int)paramLong);
   }
   
@@ -176,16 +182,14 @@ public class StandardMessageCodec
   
   public Object decodeMessage(ByteBuffer paramByteBuffer)
   {
-    Object localObject;
     if (paramByteBuffer == null) {
-      localObject = null;
+      return null;
     }
-    do
-    {
+    paramByteBuffer.order(ByteOrder.nativeOrder());
+    Object localObject = readValue(paramByteBuffer);
+    if (!paramByteBuffer.hasRemaining()) {
       return localObject;
-      paramByteBuffer.order(ByteOrder.nativeOrder());
-      localObject = readValue(paramByteBuffer);
-    } while (!paramByteBuffer.hasRemaining());
+    }
     throw new IllegalArgumentException("Message corrupted");
   }
   
@@ -214,7 +218,6 @@ public class StandardMessageCodec
     byte b2 = 0;
     byte b1 = 0;
     Object localObject2;
-    Object localObject1;
     switch (paramByte)
     {
     default: 
@@ -250,21 +253,20 @@ public class StandardMessageCodec
       localObject1 = new double[paramByte];
       readAlignment(paramByteBuffer, 8);
       paramByteBuffer.asDoubleBuffer().get((double[])localObject1);
-      paramByteBuffer.position(paramByte * 8 + paramByteBuffer.position());
-      return localObject1;
+      break;
     case 10: 
       paramByte = readSize(paramByteBuffer);
       localObject1 = new long[paramByte];
       readAlignment(paramByteBuffer, 8);
       paramByteBuffer.asLongBuffer().get((long[])localObject1);
-      paramByteBuffer.position(paramByte * 8 + paramByteBuffer.position());
+      paramByteBuffer.position(paramByteBuffer.position() + paramByte * 8);
       return localObject1;
     case 9: 
       paramByte = readSize(paramByteBuffer);
       localObject1 = new int[paramByte];
       readAlignment(paramByteBuffer, 4);
       paramByteBuffer.asIntBuffer().get((int[])localObject1);
-      paramByteBuffer.position(paramByte * 4 + paramByteBuffer.position());
+      paramByteBuffer.position(paramByteBuffer.position() + paramByte * 4);
       return localObject1;
     case 8: 
       return readBytes(paramByteBuffer);
@@ -284,7 +286,8 @@ public class StandardMessageCodec
     case 1: 
       return Boolean.valueOf(true);
     }
-    return null;
+    Object localObject1 = null;
+    return localObject1;
   }
   
   protected void writeValue(ByteArrayOutputStream paramByteArrayOutputStream, Object paramObject)
@@ -292,53 +295,48 @@ public class StandardMessageCodec
     int j = 0;
     int k = 0;
     int i = 0;
-    if ((paramObject == null) || (paramObject.equals(null))) {
-      paramByteArrayOutputStream.write(0);
-    }
-    for (;;)
+    if ((paramObject != null) && (!paramObject.equals(null)))
     {
-      return;
-      if (paramObject == Boolean.TRUE)
+      if (paramObject == Boolean.TRUE) {}
+      for (i = 1;; i = 2)
       {
-        paramByteArrayOutputStream.write(1);
+        paramByteArrayOutputStream.write(i);
         return;
-      }
-      if (paramObject == Boolean.FALSE)
-      {
-        paramByteArrayOutputStream.write(2);
-        return;
+        if (paramObject != Boolean.FALSE) {
+          break;
+        }
       }
       if ((paramObject instanceof Number))
       {
-        if (((paramObject instanceof Integer)) || ((paramObject instanceof Short)) || ((paramObject instanceof Byte)))
+        if ((!(paramObject instanceof Integer)) && (!(paramObject instanceof Short)) && (!(paramObject instanceof Byte)))
         {
-          paramByteArrayOutputStream.write(3);
-          writeInt(paramByteArrayOutputStream, ((Number)paramObject).intValue());
-          return;
-        }
-        if ((paramObject instanceof Long))
-        {
-          paramByteArrayOutputStream.write(4);
-          writeLong(paramByteArrayOutputStream, ((Long)paramObject).longValue());
-          return;
-        }
-        if (((paramObject instanceof Float)) || ((paramObject instanceof Double)))
-        {
+          if ((paramObject instanceof Long))
+          {
+            paramByteArrayOutputStream.write(4);
+            writeLong(paramByteArrayOutputStream, ((Long)paramObject).longValue());
+            return;
+          }
+          if ((!(paramObject instanceof Float)) && (!(paramObject instanceof Double)))
+          {
+            if ((paramObject instanceof BigInteger))
+            {
+              paramByteArrayOutputStream.write(5);
+              writeBytes(paramByteArrayOutputStream, ((BigInteger)paramObject).toString(16).getBytes(UTF8));
+              return;
+            }
+            paramByteArrayOutputStream = new StringBuilder();
+            paramByteArrayOutputStream.append("Unsupported Number type: ");
+            paramByteArrayOutputStream.append(paramObject.getClass());
+            throw new IllegalArgumentException(paramByteArrayOutputStream.toString());
+          }
           paramByteArrayOutputStream.write(6);
           writeAlignment(paramByteArrayOutputStream, 8);
           writeDouble(paramByteArrayOutputStream, ((Number)paramObject).doubleValue());
           return;
         }
-        if ((paramObject instanceof BigInteger))
-        {
-          paramByteArrayOutputStream.write(5);
-          writeBytes(paramByteArrayOutputStream, ((BigInteger)paramObject).toString(16).getBytes(UTF8));
-          return;
-        }
-        paramByteArrayOutputStream = new StringBuilder();
-        paramByteArrayOutputStream.append("Unsupported Number type: ");
-        paramByteArrayOutputStream.append(paramObject.getClass());
-        throw new IllegalArgumentException(paramByteArrayOutputStream.toString());
+        paramByteArrayOutputStream.write(3);
+        writeInt(paramByteArrayOutputStream, ((Number)paramObject).intValue());
+        return;
       }
       if ((paramObject instanceof String))
       {
@@ -365,7 +363,7 @@ public class StandardMessageCodec
           i += 1;
         }
       }
-      else if ((paramObject instanceof long[]))
+      if ((paramObject instanceof long[]))
       {
         paramByteArrayOutputStream.write(10);
         paramObject = (long[])paramObject;
@@ -379,7 +377,7 @@ public class StandardMessageCodec
           i += 1;
         }
       }
-      else if ((paramObject instanceof double[]))
+      if ((paramObject instanceof double[]))
       {
         paramByteArrayOutputStream.write(11);
         paramObject = (double[])paramObject;
@@ -393,7 +391,7 @@ public class StandardMessageCodec
           i += 1;
         }
       }
-      else if ((paramObject instanceof List))
+      if ((paramObject instanceof List))
       {
         paramByteArrayOutputStream.write(12);
         paramObject = (List)paramObject;
@@ -403,11 +401,8 @@ public class StandardMessageCodec
           writeValue(paramByteArrayOutputStream, paramObject.next());
         }
       }
-      else
+      if ((paramObject instanceof Map))
       {
-        if (!(paramObject instanceof Map)) {
-          break;
-        }
         paramByteArrayOutputStream.write(13);
         paramObject = (Map)paramObject;
         writeSize(paramByteArrayOutputStream, paramObject.size());
@@ -419,16 +414,17 @@ public class StandardMessageCodec
           writeValue(paramByteArrayOutputStream, localEntry.getValue());
         }
       }
+      paramByteArrayOutputStream = new StringBuilder();
+      paramByteArrayOutputStream.append("Unsupported value: ");
+      paramByteArrayOutputStream.append(paramObject);
+      throw new IllegalArgumentException(paramByteArrayOutputStream.toString());
     }
-    paramByteArrayOutputStream = new StringBuilder();
-    paramByteArrayOutputStream.append("Unsupported value: ");
-    paramByteArrayOutputStream.append(paramObject);
-    throw new IllegalArgumentException(paramByteArrayOutputStream.toString());
+    paramByteArrayOutputStream.write(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.common.StandardMessageCodec
  * JD-Core Version:    0.7.0.1
  */

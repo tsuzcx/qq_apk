@@ -95,18 +95,18 @@ public final class TofuAskAnonymouslyItemBuilder$LatestAnonymousInfo
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof LatestAnonymousInfo))
       {
         paramObject = (LatestAnonymousInfo)paramObject;
-        if ((this.jdField_a_of_type_Boolean != paramObject.jdField_a_of_type_Boolean) || (!Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long) || (this.jdField_b_of_type_Boolean != paramObject.jdField_b_of_type_Boolean) || (this.jdField_b_of_type_Long != paramObject.jdField_b_of_type_Long) || (this.c != paramObject.c)) {}
+        if ((this.jdField_a_of_type_Boolean == paramObject.jdField_a_of_type_Boolean) && (Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) && (this.jdField_b_of_type_Boolean == paramObject.jdField_b_of_type_Boolean) && (this.jdField_b_of_type_Long == paramObject.jdField_b_of_type_Long) && (this.c == paramObject.c)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public int hashCode()
@@ -117,12 +117,26 @@ public final class TofuAskAnonymouslyItemBuilder$LatestAnonymousInfo
   @NotNull
   public String toString()
   {
-    return "LatestAnonymousInfo(hasGetLatestInfo=" + this.jdField_a_of_type_Boolean + ", questId=" + this.jdField_a_of_type_JavaLangString + ", praiseNum=" + this.jdField_a_of_type_Long + ", beenPraised=" + this.jdField_b_of_type_Boolean + ", commentNum=" + this.jdField_b_of_type_Long + ", showTimes=" + this.c + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LatestAnonymousInfo(hasGetLatestInfo=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", questId=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", praiseNum=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", beenPraised=");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(", commentNum=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", showTimes=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TofuAskAnonymouslyItemBuilder.LatestAnonymousInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,66 @@
 package com.tencent.mobileqq.urldrawable;
 
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.qphone.base.util.QLog;
 
 final class URLDrawableDecodeHandler$11
   implements DownloadParams.DecodeHandler
 {
   public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    do
+    int i;
+    int j;
+    int k;
+    int m;
+    if (paramBitmap != null)
     {
-      do
+      if (paramDownloadParams == null) {
+        return paramBitmap;
+      }
+      paramDownloadParams = paramDownloadParams.tag;
+      if ((paramDownloadParams instanceof int[]))
       {
-        Object localObject;
-        do
+        paramDownloadParams = (int[])paramDownloadParams;
+        if (paramDownloadParams.length == 4)
         {
-          do
+          i = paramDownloadParams[0];
+          j = paramDownloadParams[1];
+          k = paramDownloadParams[2];
+          m = paramDownloadParams[3];
+          if (k > 0)
           {
-            return paramDownloadParams;
-            localObject = paramDownloadParams.tag;
-            paramDownloadParams = paramBitmap;
-          } while (!(localObject instanceof int[]));
-          paramDownloadParams = paramBitmap;
-        } while (((int[])localObject).length != 4);
-        paramDownloadParams = (int[])localObject;
-        if (paramDownloadParams[0] == 0) {
-          paramDownloadParams[0] = paramBitmap.getWidth();
+            if (m <= 0) {
+              return paramBitmap;
+            }
+            if ((k == paramBitmap.getWidth()) && (m == paramBitmap.getHeight())) {
+              return paramBitmap;
+            }
+          }
         }
-        if (paramDownloadParams[1] == 0) {
-          paramDownloadParams[1] = paramBitmap.getHeight();
-        }
-        paramBitmap = ImageUtil.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1], paramDownloadParams[2], paramDownloadParams[3]);
-        paramDownloadParams = paramBitmap;
-      } while (paramBitmap != null);
-      paramDownloadParams = paramBitmap;
-    } while (!QLog.isDevelopLevel());
-    QLog.w(URLDrawableDecodeHandler.a(), 2, "ROUND_CORNER_DECODER bitmap == null");
+      }
+    }
+    try
+    {
+      paramDownloadParams = Bitmap.createBitmap(k, m, Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas(paramDownloadParams);
+      Matrix localMatrix = new Matrix();
+      URLDrawableDecodeHandler.a(localMatrix, paramBitmap.getWidth(), paramBitmap.getHeight(), k, m, i, j);
+      localCanvas.drawBitmap(paramBitmap, localMatrix, new Paint(6));
+      return paramDownloadParams;
+    }
+    catch (OutOfMemoryError paramDownloadParams) {}
+    return paramBitmap;
     return paramBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler.11
  * JD-Core Version:    0.7.0.1
  */

@@ -15,16 +15,26 @@ public class PCMFrame
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("PCMFrame:");
-    if (this.jdField_a_of_type_ArrayOfByte == null) {}
-    for (int i = -1;; i = this.jdField_a_of_type_ArrayOfByte.length) {
-      return i + ", idx=" + this.jdField_a_of_type_Long + ", pts=" + this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PCMFrame:");
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    int i;
+    if (arrayOfByte == null) {
+      i = -1;
+    } else {
+      i = arrayOfByte.length;
     }
+    localStringBuilder.append(i);
+    localStringBuilder.append(", idx=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", pts=");
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.funchat.record.PCMFrame
  * JD-Core Version:    0.7.0.1
  */

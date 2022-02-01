@@ -2,123 +2,122 @@ package com.tencent.tkd.topicsdk.common;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.graphics.Point;
+import android.content.Context;
 import android.graphics.Rect;
-import android.os.Build.VERSION;
 import android.util.Log;
-import android.view.Display;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.Window;
-import android.view.WindowManager;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.Nullable;
 
-public class KeyBoardChangeListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/common/KeyBoardChangeListener;", "Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;", "contextObj", "", "(Ljava/lang/Object;)V", "listener", "Lcom/tencent/tkd/topicsdk/common/KeyBoardChangeListener$KeyboardListener;", "getListener", "()Lcom/tencent/tkd/topicsdk/common/KeyBoardChangeListener$KeyboardListener;", "setListener", "(Lcom/tencent/tkd/topicsdk/common/KeyBoardChangeListener$KeyboardListener;)V", "mContentView", "Landroid/view/View;", "mShowFlag", "", "mWindow", "Landroid/view/Window;", "destroy", "", "onGlobalLayout", "Companion", "KeyboardListener", "topicsdk-common_release"}, k=1, mv={1, 1, 16})
+public final class KeyBoardChangeListener
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
+  public static final KeyBoardChangeListener.Companion a;
   private View jdField_a_of_type_AndroidViewView;
   private Window jdField_a_of_type_AndroidViewWindow;
+  @Nullable
   private KeyBoardChangeListener.KeyboardListener jdField_a_of_type_ComTencentTkdTopicsdkCommonKeyBoardChangeListener$KeyboardListener;
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean jdField_a_of_type_Boolean;
+  
+  static
+  {
+    jdField_a_of_type_ComTencentTkdTopicsdkCommonKeyBoardChangeListener$Companion = new KeyBoardChangeListener.Companion(null);
+  }
   
   private KeyBoardChangeListener(Object paramObject)
   {
+    View localView;
+    if ((paramObject instanceof Activity))
+    {
+      paramObject = (Activity)paramObject;
+      localView = paramObject.findViewById(16908290);
+      Intrinsics.checkExpressionValueIsNotNull(localView, "contextObj.findViewById(android.R.id.content)");
+      this.jdField_a_of_type_AndroidViewView = localView;
+      paramObject = paramObject.getWindow();
+      Intrinsics.checkExpressionValueIsNotNull(paramObject, "contextObj.window");
+      this.jdField_a_of_type_AndroidViewWindow = paramObject;
+    }
+    else if ((paramObject instanceof Dialog))
+    {
+      paramObject = (Dialog)paramObject;
+      localView = paramObject.findViewById(16908290);
+      Intrinsics.checkExpressionValueIsNotNull(localView, "contextObj.findViewById(android.R.id.content)");
+      this.jdField_a_of_type_AndroidViewView = localView;
+      paramObject = paramObject.getWindow();
+      if (paramObject == null) {
+        Intrinsics.throwNpe();
+      }
+      this.jdField_a_of_type_AndroidViewWindow = paramObject;
+    }
+    paramObject = this.jdField_a_of_type_AndroidViewView;
     if (paramObject == null) {
-      Log.d("KeyboardChangeListener", "contextObj is null");
+      Intrinsics.throwUninitializedPropertyAccessException("mContentView");
     }
-    for (;;)
-    {
-      return;
-      if ((paramObject instanceof Activity))
-      {
-        this.jdField_a_of_type_AndroidViewView = a((Activity)paramObject);
-        this.jdField_a_of_type_AndroidViewWindow = ((Activity)paramObject).getWindow();
-      }
-      while ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewWindow != null))
-      {
-        a();
-        return;
-        if ((paramObject instanceof Dialog))
-        {
-          this.jdField_a_of_type_AndroidViewView = a((Dialog)paramObject);
-          this.jdField_a_of_type_AndroidViewWindow = ((Dialog)paramObject).getWindow();
-        }
-      }
-    }
+    paramObject.getViewTreeObserver().addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)this);
   }
   
-  private int a()
-  {
-    Display localDisplay = this.jdField_a_of_type_AndroidViewWindow.getWindowManager().getDefaultDisplay();
-    Point localPoint = new Point();
-    if (Build.VERSION.SDK_INT >= 17) {
-      localDisplay.getRealSize(localPoint);
-    }
-    for (;;)
-    {
-      return localPoint.y;
-      localDisplay.getSize(localPoint);
-    }
-  }
-  
-  private View a(Activity paramActivity)
-  {
-    return paramActivity.findViewById(16908290);
-  }
-  
-  private View a(Dialog paramDialog)
-  {
-    return paramDialog.findViewById(16908290);
-  }
-  
-  public static KeyBoardChangeListener a(Activity paramActivity)
-  {
-    return new KeyBoardChangeListener(paramActivity);
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(this);
-  }
-  
-  public void a(KeyBoardChangeListener.KeyboardListener paramKeyboardListener)
+  public final void a(@Nullable KeyBoardChangeListener.KeyboardListener paramKeyboardListener)
   {
     this.jdField_a_of_type_ComTencentTkdTopicsdkCommonKeyBoardChangeListener$KeyboardListener = paramKeyboardListener;
   }
   
   public void onGlobalLayout()
   {
-    if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidViewWindow == null)) {}
-    for (;;)
+    Object localObject1 = this.jdField_a_of_type_AndroidViewView;
+    if (localObject1 == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mContentView");
+    }
+    if (((View)localObject1).getHeight() == 0)
     {
+      Log.d("KeyboardChangeListener", "currHeight is 0");
       return;
-      if (this.jdField_a_of_type_AndroidViewView.getHeight() == 0)
-      {
-        Log.d("KeyboardChangeListener", "currHeight is 0");
-        return;
-      }
-      int i = a();
-      Rect localRect = new Rect();
-      this.jdField_a_of_type_AndroidViewWindow.getDecorView().getWindowVisibleDisplayFrame(localRect);
-      int j = localRect.bottom;
-      int k = i - j;
-      Log.d("KeyboardChangeListener", "onGlobalLayout() called  screenHeight " + i + " VisibleDisplayHeight " + j);
-      if (this.jdField_a_of_type_ComTencentTkdTopicsdkCommonKeyBoardChangeListener$KeyboardListener != null)
-      {
-        if (k > 300) {}
-        for (boolean bool = true; this.jdField_a_of_type_Boolean != bool; bool = false)
-        {
-          this.jdField_a_of_type_Boolean = bool;
-          this.jdField_a_of_type_ComTencentTkdTopicsdkCommonKeyBoardChangeListener$KeyboardListener.a(bool, k);
-          return;
-        }
+    }
+    localObject1 = DisplayUtils.a;
+    Object localObject2 = this.jdField_a_of_type_AndroidViewWindow;
+    if (localObject2 == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mWindow");
+    }
+    localObject2 = ((Window)localObject2).getContext();
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "mWindow.context");
+    int i = ((DisplayUtils)localObject1).b((Context)localObject2);
+    localObject1 = new Rect();
+    localObject2 = this.jdField_a_of_type_AndroidViewWindow;
+    if (localObject2 == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mWindow");
+    }
+    ((Window)localObject2).getDecorView().getWindowVisibleDisplayFrame((Rect)localObject1);
+    int j = ((Rect)localObject1).bottom;
+    int k = i - j;
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("onGlobalLayout() called screenHeight ");
+    ((StringBuilder)localObject1).append(i);
+    ((StringBuilder)localObject1).append(" VisibleDisplayHeight ");
+    ((StringBuilder)localObject1).append(j);
+    Log.d("KeyboardChangeListener", ((StringBuilder)localObject1).toString());
+    boolean bool;
+    if (k > 300) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if (this.jdField_a_of_type_Boolean != bool)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      localObject1 = this.jdField_a_of_type_ComTencentTkdTopicsdkCommonKeyBoardChangeListener$KeyboardListener;
+      if (localObject1 != null) {
+        ((KeyBoardChangeListener.KeyboardListener)localObject1).a(bool, k);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.common.KeyBoardChangeListener
  * JD-Core Version:    0.7.0.1
  */

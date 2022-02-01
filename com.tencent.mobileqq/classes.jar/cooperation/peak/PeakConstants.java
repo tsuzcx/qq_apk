@@ -89,7 +89,6 @@ public abstract interface PeakConstants
   public static final String EXTRA_HAS_ANTISHAKE = "extra_has_antishake";
   public static final String EXTRA_IS_FROM_P2V_EDIT = "extra_is_from_p2v_edit";
   public static final String FILTER_PHOTOLIST_TROOPALBUM_TOOLBAR = "filter_photolist_troopalbum_toolbar";
-  public static final int FIRST_SCREEN_PHOTO_SIZE_IN_RECENT_PHOTO = 12;
   public static final String FLAG_COMPRESSINFOLIST = "flag_compressinfolist";
   public static final String FROM_AIO_LONGSHOT = "PhotoConst.IS_FROM_FROM_AIO_LONGSHOT";
   public static final String FROM_DYNAMIC_ALBUM = "PhotoConst.IS_FROM_DYNAMIC_ALBUM";
@@ -170,12 +169,13 @@ public abstract interface PeakConstants
   public static final String KEY_EMOTION_SOURCE_WEBURL = "key_emotion_source_weburl";
   public static final String KEY_ENTRY_SOURCE = "entry_source";
   public static final String KEY_FROM_MP_MOBILE = "from_mobile_mp";
+  public static final String KEY_IMAGE_SUCAI_INFO = "key_image_sucai_info";
+  public static final String KEY_IS_CAPSULE_BUTTON = "key_is_capsule_button";
   public static final String KEY_IS_MULTI_FROWARD_MSG = "key_is_multi_forward_msg";
   public static final String KEY_IS_SYNC_QZONE = "key_is_sync_qzone";
   public static final String KEY_LATEST_MATERIAL = "PhotoConst.ae_latest_material";
   public static final String KEY_MIN_PHOTO_COUNT = "PhotoConst.KEY_MIN_PHOTO_COUNT";
   public static final String KEY_MULIT_EDIT_SOURTH_PATH = "key_multi_edit_source_path";
-  public static final String KEY_MULTI_EDIT_PIC = "key_multi_edit_pic";
   public static final String KEY_MULTI_FORWARD_SEQ = "key_multi_forward_seq";
   public static final String KEY_PIC_TO_EDIT_FROM = "key_pic_to_edit_from";
   public static final String KEY_PRESENDCONFIG = "key_presendconfig";
@@ -266,6 +266,13 @@ public abstract interface PeakConstants
   public static final String PLUGIN_NAME = "PhotoConst.PLUGIN_NAME";
   public static final String PRESEND_CONFIG_SP = "presend_config_sp";
   public static final String QCIRCLE_CLIENT_TRACEID = "qcircle_client_traceid";
+  public static final int QCIRCLE_FIRST_SCREEN_PHOTO_SIZE_IN_RECENT_PHOTO = 15;
+  public static final String QCIRCLE_PHOTOLIST_FIRST_ACTION = "QCIRCLE_PHOTOLIST_FIRST_ACTION";
+  public static final String QCIRCLE_PUBLISH_BACK_EDIT = "key_qcircle_publish_back_edit";
+  public static final String QCIRCLE_PUBLISH_FROM_PREVIEW = "key_qcircle_publish_from_preview";
+  public static final String QCIRCLE_PUBLISH_HAS_DRAFT = "key_qcircle_pulish_has_draft";
+  public static final String QCIRCLE_PUBLISH_OUTIMAGEPATH = "key_qcircle_publish_out_imagepath";
+  public static final String QCIRCLE_PUBLISH_USE_DRAFT = "key_qcircle_pulish_use_draft";
   public static final int QUALITY_NORMAL = 0;
   public static final int QUALITY_RAW = 3;
   public static final String QZONETAIL_TITLE = "魔法视频";
@@ -309,27 +316,27 @@ public abstract interface PeakConstants
   public static final String RECENT_IMAGES_LIMIT_SIZE = "PhotoConst.RECENT_IMAGES_LIMIT_SIZE";
   public static final String RECENT_IMAGES_LIMIT_WIDTH = "PhotoConst.RECENT_IMAGES_LIMIT_WIDTH";
   public static final String RECENT_IMAGES_MAX_COUNT = "PhotoConst.RECENT_IMAGES_MAX_COUNT";
-  public static final int REQUEST_ALBUMLIST_ACTIVITY_CANCEL_RETURN = 100007;
+  public static final int REQUEST_ALBUMLIST_ACTIVITY_CANCEL_RETURN = 10007;
   public static final String REQUEST_CODE = "peakconstant.request_code";
-  public static final int REQUEST_CODE_ALBUM_CHOOSE = 100009;
-  public static final int REQUEST_CODE_FOR_PHOTO_CROP = 100014;
-  public static final int REQUEST_CODE_FOR_PHOTO_PREVIEW = 100015;
-  public static final int REQUEST_CODE_FOR_PHOTO_PREVIEW_QCIRCLE = 100019;
-  public static final int REQUEST_CODE_FOR_TROOP_ALBUM = 100008;
-  public static final int REQUEST_CODE_INPUT_FULL_LIST_EDIT = 100018;
-  public static final int REQUEST_CODE_INPUT_FULL_SCREEN = 100017;
-  public static final int REQUEST_CODE_PHOTO_EDIT_FROM_CAMERA = 100011;
-  public static final int REQUEST_CODE_PHOTO_PREVIEW = 100010;
-  public static final int REQUEST_CODE_PHOTO_PREVIEW_NEED_BACK = 100012;
-  public static final int REQUEST_CODE_QZONE_ALBUM_CHOOSE = 100016;
-  public static final int REQUEST_CODE_TROOP_EFFECT_PIC = 100013;
+  public static final int REQUEST_CODE_ALBUM_CHOOSE = 10009;
+  public static final int REQUEST_CODE_FOR_PHOTO_CROP = 10014;
+  public static final int REQUEST_CODE_FOR_PHOTO_PREVIEW = 10015;
+  public static final int REQUEST_CODE_FOR_PHOTO_PREVIEW_QCIRCLE = 10019;
+  public static final int REQUEST_CODE_FOR_TROOP_ALBUM = 10008;
+  public static final int REQUEST_CODE_INPUT_FULL_LIST_EDIT = 10018;
+  public static final int REQUEST_CODE_INPUT_FULL_SCREEN = 10017;
+  public static final int REQUEST_CODE_PHOTO_EDIT_FROM_CAMERA = 10011;
+  public static final int REQUEST_CODE_PHOTO_PREVIEW = 10010;
+  public static final int REQUEST_CODE_PHOTO_PREVIEW_NEED_BACK = 10012;
+  public static final int REQUEST_CODE_QZONE_ALBUM_CHOOSE = 10016;
+  public static final int REQUEST_CODE_TROOP_EFFECT_PIC = 10013;
   public static final int REQUEST_GIF_EDIT = 130;
-  public static final int REQUEST_PHOTOLIST_ACTIVITY_CANCEL_RETURN = 100006;
-  public static final int REQUEST_PHOTOLIST_PANEL_SEND_RETURN = 100005;
+  public static final int REQUEST_PHOTOLIST_ACTIVITY_CANCEL_RETURN = 10006;
+  public static final int REQUEST_PHOTOLIST_PANEL_SEND_RETURN = 10005;
   public static final int REQUEST_PHOTOPLUS_DOODLE = 5;
   public static final int REQUEST_PHOTOPLUS_PASTER = 7;
   public static final int REQUEST_PHOTOPLUS_WATERMARK = 4;
-  public static final int REQUEST_PHOTOPREVIEW_RETURE = 100004;
+  public static final int REQUEST_PHOTOPREVIEW_RETURE = 10004;
   public static final int REQUEST_SELECT_COVER = 8;
   public static final int REQUEST_SHORTVIDEO_PREVIEW = 17;
   public static final int RESULT_CODE_BACK_TO_CANCEL_CHANGTU = 2;
@@ -354,10 +361,7 @@ public abstract interface PeakConstants
   public static final String SHOT_PHOTO_PATH = "shot_photo_path";
   public static final String SHOW_MAGIC_USE_PASTER = "PhotoConst.SHOW_MAGIC_USE_PASTER";
   public static final String SHOW_PHOTOPREVIEW_SELECTED_BOX = "show_photopreview_selected_box";
-  public static final int SOURCE_FROM_CUSTOM_CAMERA = 101;
   public static final int SOURCE_FROM_SHORTVIDEO_CAMERA = 103;
-  public static final int SOURCE_FROM_SYSTEM_CAMERA = 102;
-  public static final int SOURCE_FROM_UNKNOW = 6;
   public static final String SP_KEY_CMSHOW_FIRST_GUIDE_HAS_SHOWN = "sp_key_cmshow_first_guide_has_shown_";
   public static final String SP_KEY_VIDEO_ROLLBACK_COUNTS = "key_video_rollback_counts";
   public static final String SP_KEY_VIDEO_ROLLBACK_TIME = "key_video_rollback_time";
@@ -416,7 +420,7 @@ public abstract interface PeakConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.peak.PeakConstants
  * JD-Core Version:    0.7.0.1
  */

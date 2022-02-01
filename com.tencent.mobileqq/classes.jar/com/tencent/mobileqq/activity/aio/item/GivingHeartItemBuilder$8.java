@@ -6,9 +6,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.immersion.stickersampleapp.HapticManager;
 import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.apollo.api.script.ISpriteCommFunc;
-import com.tencent.mobileqq.apollo.api.script.ISpriteContext;
-import com.tencent.mobileqq.apollo.api.script.ISpriteUtil;
+import com.tencent.mobileqq.apollo.script.ISpriteContext;
+import com.tencent.mobileqq.apollo.script.api.ISpriteCommFunc;
+import com.tencent.mobileqq.apollo.script.api.ISpriteUtil;
 import com.tencent.mobileqq.data.MessageForPoke;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 import com.tencent.mobileqq.dinifly.ViewAnimation;
@@ -34,22 +34,12 @@ class GivingHeartItemBuilder$8
     if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isPlayed) {
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.setPlayed(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.b);
     }
-    if (!PokeItemHelper.a("fullscreen", this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.subId)) {
-      if (!((ISpriteUtil)QRoute.api(ISpriteUtil.class)).getSpriteContext(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.b).a()) {
-        break label222;
-      }
-    }
-    label222:
-    for (int i = 0;; i = 1)
+    if ((!PokeItemHelper.a("fullscreen", this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.subId)) && ((((ISpriteUtil)QRoute.api(ISpriteUtil.class)).getSpriteContext(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.b).a() ^ true)))
     {
-      if (i != 0)
-      {
-        ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.b, "vas_poke", false);
-        if (QLog.isColorLevel()) {
-          QLog.i("GivingHeart.sprite", 2, "show sprite (normal) in bubble.");
-        }
+      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.b, "vas_poke", false);
+      if (QLog.isColorLevel()) {
+        QLog.i("GivingHeart.sprite", 2, "show sprite (normal) in bubble.");
       }
-      return;
     }
   }
   
@@ -66,18 +56,15 @@ class GivingHeartItemBuilder$8
     }
     if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation.setEnableXCoordinateMirrored(false);
-    }
-    for (;;)
-    {
-      PokeItemHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView, null, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.subId, "view_aio");
-      return;
+    } else {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation.setEnableXCoordinateMirrored(true);
     }
+    PokeItemHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView, null, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.subId, "view_aio");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.8
  * JD-Core Version:    0.7.0.1
  */

@@ -29,26 +29,30 @@ public class ToastComponent
   
   public Toast makeToast(String paramString, int paramInt)
   {
-    View localView = LayoutInflater.from(this.context).inflate(2131559359, null, false);
-    ImageView localImageView = (ImageView)localView.findViewById(2131369852);
-    switch (paramInt)
+    View localView = LayoutInflater.from(this.context).inflate(2131559234, null, false);
+    ImageView localImageView = (ImageView)localView.findViewById(2131369538);
+    if (paramInt != 1)
     {
-    default: 
-      localImageView.setImageResource(2130840598);
+      if (paramInt != 2)
+      {
+        if (paramInt != 3) {
+          localImageView.setImageResource(2130840471);
+        } else {
+          localImageView.setImageResource(2130840472);
+        }
+      }
+      else {
+        localImageView.setImageResource(2130840473);
+      }
     }
-    for (;;)
-    {
-      ((TextView)localView.findViewById(2131380465)).setText(paramString);
-      paramString = new Toast(this.context);
-      paramString.setView(localView);
-      paramString.setGravity(49, 0, calOffset());
-      return paramString;
-      localImageView.setImageResource(2130840599);
-      continue;
-      localImageView.setImageResource(2130840600);
-      continue;
-      localImageView.setImageResource(2130840601);
+    else {
+      localImageView.setImageResource(2130840474);
     }
+    ((TextView)localView.findViewById(2131379776)).setText(paramString);
+    paramString = new Toast(this.context);
+    paramString.setView(localView);
+    paramString.setGravity(49, 0, calOffset());
+    return paramString;
   }
   
   public void onCreate(Context paramContext)
@@ -107,7 +111,7 @@ public class ToastComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.toast.ToastComponent
  * JD-Core Version:    0.7.0.1
  */

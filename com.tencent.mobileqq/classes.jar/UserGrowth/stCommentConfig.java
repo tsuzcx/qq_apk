@@ -23,19 +23,25 @@ public final class stCommentConfig
   
   public String toString()
   {
-    return "stCommentConfig{guideText='" + this.guideText + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("stCommentConfig{guideText='");
+    localStringBuilder.append(this.guideText);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.guideText != null) {
-      paramJceOutputStream.write(this.guideText, 0);
+    String str = this.guideText;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stCommentConfig
  * JD-Core Version:    0.7.0.1
  */

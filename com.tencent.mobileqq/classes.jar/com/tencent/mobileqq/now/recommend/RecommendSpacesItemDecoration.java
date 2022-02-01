@@ -20,10 +20,11 @@ public class RecommendSpacesItemDecoration
   
   public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
+    paramRecyclerView = paramView.getTag();
     int j = 0;
-    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof VideoCardHolder)))
+    if ((paramRecyclerView != null) && ((paramView.getTag() instanceof VideoCardHolder)))
     {
-      int k = ((VideoCardHolder)paramView.getTag()).a;
+      int m = ((VideoCardHolder)paramView.getTag()).a;
       int i = -1;
       if ((paramView.getLayoutParams() instanceof StaggeredGridLayoutManager.LayoutParams)) {
         i = ((StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams()).getSpanIndex();
@@ -32,30 +33,34 @@ public class RecommendSpacesItemDecoration
       {
         if (i % 2 == 0)
         {
-          paramRect.left = this.a;
-          if (k == 2) {}
-          for (i = this.a;; i = 0)
-          {
-            paramRect.top = i;
-            paramRect.right = (this.a / 2);
-            paramRect.bottom = this.a;
-            return;
+          int k = this.a;
+          paramRect.left = k;
+          i = j;
+          if (m == 2) {
+            i = k;
           }
-        }
-        paramRect.left = (this.a / 2);
-        i = j;
-        if (k == 3) {
+          paramRect.top = i;
           i = this.a;
+          paramRect.right = (i / 2);
+          paramRect.bottom = i;
+          return;
+        }
+        i = this.a;
+        paramRect.left = (i / 2);
+        if (m != 3) {
+          i = 0;
         }
         paramRect.top = i;
-        paramRect.right = this.a;
-        paramRect.bottom = this.a;
+        i = this.a;
+        paramRect.right = i;
+        paramRect.bottom = i;
         return;
       }
-      paramRect.left = (this.a / 2);
+      i = this.a;
+      paramRect.left = (i / 2);
       paramRect.top = 0;
-      paramRect.right = (this.a / 2);
-      paramRect.bottom = this.a;
+      paramRect.right = (i / 2);
+      paramRect.bottom = i;
       return;
     }
     paramRect.left = 0;
@@ -66,7 +71,7 @@ public class RecommendSpacesItemDecoration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.recommend.RecommendSpacesItemDecoration
  * JD-Core Version:    0.7.0.1
  */

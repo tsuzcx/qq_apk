@@ -5,13 +5,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.modelpay.PayReq;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -20,20 +20,21 @@ public class WXPayHelper
 {
   private static WXPayHelper jdField_a_of_type_ComTencentMobileqqWxapiWXPayHelper = null;
   private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private IWXAPI jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI = WXAPIFactory.createWXAPI(BaseApplicationImpl.getApplication().getApplicationContext(), this.jdField_a_of_type_JavaLangString, true);
+  private IWXAPI jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI = WXAPIFactory.createWXAPI(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, true);
   private String jdField_a_of_type_JavaLangString = "wx76a769350165bcff";
   private ArrayList<Handler> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
   
   public static WXPayHelper getInstance()
   {
-    if (jdField_a_of_type_ComTencentMobileqqWxapiWXPayHelper == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
-    {
-      if (jdField_a_of_type_ComTencentMobileqqWxapiWXPayHelper == null) {
-        jdField_a_of_type_ComTencentMobileqqWxapiWXPayHelper = new WXPayHelper();
+    if (jdField_a_of_type_ComTencentMobileqqWxapiWXPayHelper == null) {
+      synchronized (jdField_a_of_type_ArrayOfByte)
+      {
+        if (jdField_a_of_type_ComTencentMobileqqWxapiWXPayHelper == null) {
+          jdField_a_of_type_ComTencentMobileqqWxapiWXPayHelper = new WXPayHelper();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqWxapiWXPayHelper;
     }
+    return jdField_a_of_type_ComTencentMobileqqWxapiWXPayHelper;
   }
   
   public void addObserver(Handler paramHandler)
@@ -79,7 +80,7 @@ public class WXPayHelper
     synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      if (localIterator.hasNext())
+      while (localIterator.hasNext())
       {
         Handler localHandler = (Handler)localIterator.next();
         Message localMessage = new Message();
@@ -92,6 +93,11 @@ public class WXPayHelper
         localMessage.setData(localBundle);
         localHandler.sendMessage(localMessage);
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramBaseResp;
     }
   }
   
@@ -141,7 +147,7 @@ public class WXPayHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.wxapi.WXPayHelper
  * JD-Core Version:    0.7.0.1
  */

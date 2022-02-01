@@ -19,19 +19,21 @@ public abstract class AndroidCodecBase
 {
   public static MediaCodecInfo.CodecCapabilities getCodecCapabilities(MediaCodecInfo paramMediaCodecInfo, String paramString)
   {
-    Object localObject = null;
     try
     {
       paramMediaCodecInfo = paramMediaCodecInfo.getCapabilitiesForType(paramString);
       return paramMediaCodecInfo;
     }
-    catch (Exception localException)
+    catch (Exception paramMediaCodecInfo)
     {
-      do
+      if (AVCoreLog.isDevelopLevel())
       {
-        paramMediaCodecInfo = localObject;
-      } while (!AVCoreLog.isDevelopLevel());
-      AVCoreLog.e("AndroidCodec", "getCodecCapabilities, Exception, mime[" + paramString + "]", localException);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getCodecCapabilities, Exception, mime[");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("]");
+        AVCoreLog.e("AndroidCodec", localStringBuilder.toString(), paramMediaCodecInfo);
+      }
     }
     return null;
   }
@@ -51,84 +53,74 @@ public abstract class AndroidCodecBase
         }
         i += 1;
       }
-      return null;
     }
-    catch (Throwable paramString) {}
+    catch (Throwable paramString)
+    {
+      label41:
+      break label41;
+    }
+    return null;
   }
   
   @SuppressLint({"NewApi"})
   public static List<MediaCodecInfo> getDecoderInfos(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
-    for (;;)
+    try
     {
-      int i;
-      try
+      int k = MediaCodecList.getCodecCount();
+      int i = 0;
+      while (i < k)
       {
-        int k = MediaCodecList.getCodecCount();
-        i = 0;
-        if (i < k)
+        MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
+        if ((!localMediaCodecInfo.isEncoder()) && (!localMediaCodecInfo.getName().contains(".sw.")) && (!localMediaCodecInfo.getName().contains(".SW.")) && (!localMediaCodecInfo.getName().contains("google")) && (!localMediaCodecInfo.getName().contains("Google")) && (!localMediaCodecInfo.getName().contains("GOOGLE")))
         {
-          MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
-          if ((!localMediaCodecInfo.isEncoder()) && (!localMediaCodecInfo.getName().contains(".sw.")) && (!localMediaCodecInfo.getName().contains(".SW.")) && (!localMediaCodecInfo.getName().contains("google")) && (!localMediaCodecInfo.getName().contains("Google")) && (!localMediaCodecInfo.getName().contains("GOOGLE")))
+          String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
+          int j = 0;
+          while (j < arrayOfString.length)
           {
-            String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
-            int j = 0;
-            if (j < arrayOfString.length)
-            {
-              if (arrayOfString[j].equalsIgnoreCase(paramString)) {
-                localArrayList.add(localMediaCodecInfo);
-              }
-              j += 1;
-              continue;
+            if (arrayOfString[j].equalsIgnoreCase(paramString)) {
+              localArrayList.add(localMediaCodecInfo);
             }
+            j += 1;
           }
         }
-        else
-        {
-          return localArrayList;
-        }
+        i += 1;
       }
-      catch (Throwable paramString) {}
-      i += 1;
+      return localArrayList;
     }
+    catch (Throwable paramString) {}
+    return localArrayList;
   }
   
   public static List<MediaCodecInfo> getEndoderInfos(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
-    for (;;)
+    try
     {
-      int i;
-      try
+      int k = MediaCodecList.getCodecCount();
+      int i = 0;
+      while (i < k)
       {
-        int k = MediaCodecList.getCodecCount();
-        i = 0;
-        if (i < k)
+        MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
+        if ((localMediaCodecInfo.isEncoder()) && (!localMediaCodecInfo.getName().contains(".sw.")) && (!localMediaCodecInfo.getName().contains(".SW.")) && (!localMediaCodecInfo.getName().contains("google")) && (!localMediaCodecInfo.getName().contains("Google")) && (!localMediaCodecInfo.getName().contains("GOOGLE")))
         {
-          MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
-          if ((localMediaCodecInfo.isEncoder()) && (!localMediaCodecInfo.getName().contains(".sw.")) && (!localMediaCodecInfo.getName().contains(".SW.")) && (!localMediaCodecInfo.getName().contains("google")) && (!localMediaCodecInfo.getName().contains("Google")) && (!localMediaCodecInfo.getName().contains("GOOGLE")))
+          String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
+          int j = 0;
+          while (j < arrayOfString.length)
           {
-            String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
-            int j = 0;
-            if (j < arrayOfString.length)
-            {
-              if (arrayOfString[j].equalsIgnoreCase(paramString)) {
-                localArrayList.add(localMediaCodecInfo);
-              }
-              j += 1;
-              continue;
+            if (arrayOfString[j].equalsIgnoreCase(paramString)) {
+              localArrayList.add(localMediaCodecInfo);
             }
+            j += 1;
           }
         }
-        else
-        {
-          return localArrayList;
-        }
+        i += 1;
       }
-      catch (Throwable paramString) {}
-      i += 1;
+      return localArrayList;
     }
+    catch (Throwable paramString) {}
+    return localArrayList;
   }
   
   public abstract BufferData dequeueDecoderOutputBuffer(long paramLong);
@@ -167,7 +159,7 @@ public abstract class AndroidCodecBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avcore.jni.codec.AndroidCodecBase
  * JD-Core Version:    0.7.0.1
  */

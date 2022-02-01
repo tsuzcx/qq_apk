@@ -21,24 +21,27 @@ public abstract class UIBaseComponent
   
   public HttpInterface getHttp()
   {
-    if (this.uiBaseAdapter != null) {
-      return this.uiBaseAdapter.getHttp();
+    UIBaseAdapter localUIBaseAdapter = this.uiBaseAdapter;
+    if (localUIBaseAdapter != null) {
+      return localUIBaseAdapter.getHttp();
     }
     return null;
   }
   
   public ImageLoaderInterface getImageLoader()
   {
-    if (this.uiBaseAdapter != null) {
-      return this.uiBaseAdapter.getImageLoader();
+    UIBaseAdapter localUIBaseAdapter = this.uiBaseAdapter;
+    if (localUIBaseAdapter != null) {
+      return localUIBaseAdapter.getImageLoader();
     }
     return null;
   }
   
   public LogInterface getLog()
   {
-    if (this.uiBaseAdapter != null) {
-      return this.uiBaseAdapter.getLog();
+    UIBaseAdapter localUIBaseAdapter = this.uiBaseAdapter;
+    if (localUIBaseAdapter != null) {
+      return localUIBaseAdapter.getLog();
     }
     return null;
   }
@@ -69,16 +72,18 @@ public abstract class UIBaseComponent
   
   public void onCreate(View paramView)
   {
-    if (this.lifecycle != null) {
-      this.lifecycle.addObserver(this);
+    paramView = this.lifecycle;
+    if (paramView != null) {
+      paramView.addObserver(this);
     }
   }
   
   public void onDestroy()
   {
-    if (this.lifecycle != null)
+    Lifecycle localLifecycle = this.lifecycle;
+    if (localLifecycle != null)
     {
-      this.lifecycle.removeObserver(this);
+      localLifecycle.removeObserver(this);
       this.lifecycle = null;
     }
   }
@@ -92,7 +97,7 @@ public abstract class UIBaseComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.uicomponent.UIBaseComponent
  * JD-Core Version:    0.7.0.1
  */

@@ -12,14 +12,15 @@ class QFileAppStorePromoteManager$3
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     ReportController.b(null, "dc00898", "", "", "0X800AE40", "0X800AE40", 0, 0, "", "", "", "");
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileAppStorePromoteManager$IAppStoreRemindCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileAppStorePromoteManager$IAppStoreRemindCallback.a();
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileAppStorePromoteManager$IAppStoreRemindCallback;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileAppStorePromoteManager.3
  * JD-Core Version:    0.7.0.1
  */

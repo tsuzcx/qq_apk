@@ -29,7 +29,7 @@ public class DragFrameLayout
   extends FrameLayout
   implements IDragView.OnChangeModeListener
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130842581, 2130842582, 2130842583, 2130842584, 2130842585 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130842480, 2130842481, 2130842482, 2130842483, 2130842484 };
   private float jdField_a_of_type_Float;
   private final int jdField_a_of_type_Int;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
@@ -55,49 +55,46 @@ public class DragFrameLayout
   {
     super(paramContext);
     super.setWillNotDraw(false);
-    this.jdField_b_of_type_Int = ((int)(3.0F * getResources().getDisplayMetrics().density));
-    this.c = ((int)(12.0F * getResources().getDisplayMetrics().density));
-    this.jdField_a_of_type_Int = ((int)(48.0F * getResources().getDisplayMetrics().density));
+    this.jdField_b_of_type_Int = ((int)(getResources().getDisplayMetrics().density * 3.0F));
+    this.c = ((int)(getResources().getDisplayMetrics().density * 12.0F));
+    this.jdField_a_of_type_Int = ((int)(getResources().getDisplayMetrics().density * 48.0F));
   }
   
   public DragFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     super.setWillNotDraw(false);
-    this.jdField_b_of_type_Int = ((int)(3.0F * getResources().getDisplayMetrics().density));
-    this.c = ((int)(12.0F * getResources().getDisplayMetrics().density));
-    this.jdField_a_of_type_Int = ((int)(48.0F * getResources().getDisplayMetrics().density));
+    this.jdField_b_of_type_Int = ((int)(getResources().getDisplayMetrics().density * 3.0F));
+    this.c = ((int)(getResources().getDisplayMetrics().density * 12.0F));
+    this.jdField_a_of_type_Int = ((int)(getResources().getDisplayMetrics().density * 48.0F));
   }
   
   public DragFrameLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     super.setWillNotDraw(false);
-    this.jdField_b_of_type_Int = ((int)(3.0F * getResources().getDisplayMetrics().density));
-    this.c = ((int)(12.0F * getResources().getDisplayMetrics().density));
-    this.jdField_a_of_type_Int = ((int)(48.0F * getResources().getDisplayMetrics().density));
+    this.jdField_b_of_type_Int = ((int)(getResources().getDisplayMetrics().density * 3.0F));
+    this.c = ((int)(getResources().getDisplayMetrics().density * 12.0F));
+    this.jdField_a_of_type_Int = ((int)(getResources().getDisplayMetrics().density * 48.0F));
   }
   
   private static Bitmap a(View paramView)
   {
-    Object localObject3 = null;
     paramView.setDrawingCacheEnabled(true);
     Bitmap localBitmap = paramView.getDrawingCache();
-    Object localObject1 = localObject3;
     if (localBitmap != null) {}
     try
     {
-      localObject1 = localBitmap.copy(Bitmap.Config.ARGB_8888, false);
-      paramView.setDrawingCacheEnabled(false);
-      return localObject1;
+      localBitmap = localBitmap.copy(Bitmap.Config.ARGB_8888, false);
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        Object localObject2 = localObject3;
-      }
+      label26:
+      break label26;
     }
+    localBitmap = null;
+    paramView.setDrawingCacheEnabled(false);
+    return localBitmap;
   }
   
   public static DragFrameLayout a(Activity paramActivity)
@@ -116,85 +113,142 @@ public class DragFrameLayout
   
   private void a(float paramFloat1, float paramFloat2, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$OnDragListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$OnDragListener.a(paramFloat1, paramFloat2, paramInt, this.jdField_a_of_type_AndroidViewView);
+    DragFrameLayout.OnDragListener localOnDragListener = this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$OnDragListener;
+    if (localOnDragListener != null) {
+      localOnDragListener.a(paramFloat1, paramFloat2, paramInt, this.jdField_a_of_type_AndroidViewView);
     }
   }
   
   private void a(int paramInt)
   {
     this.d = paramInt;
-    if (QLog.isColorLevel()) {
-      QLog.d("Drag", 2, "setMode:" + this.d);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setMode:");
+      localStringBuilder.append(this.d);
+      QLog.d("Drag", 2, localStringBuilder.toString());
     }
   }
   
   private void a(Canvas paramCanvas)
   {
-    if (this.d == -1) {}
-    do
+    if (this.d == -1) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    int i = this.e;
+    if (i != 0) {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(i);
+    } else if (this.f == 1) {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-4797728);
+    } else {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-65536);
+    }
+    i = this.d;
+    if (i == 0)
     {
-      do
+      paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsPaint);
+      return;
+    }
+    float f3;
+    float f2;
+    float f1;
+    Object localObject;
+    if (i == 1)
+    {
+      paramCanvas.save();
+      i = this.g;
+      f3 = i / 1.5F;
+      f2 = i * (0.8F - this.jdField_a_of_type_Float * 0.45F / this.jdField_a_of_type_Int);
+      i = this.c;
+      f1 = f2;
+      if (f2 > i) {
+        f1 = i;
+      }
+      i = this.jdField_b_of_type_Int;
+      f2 = f1;
+      if (f1 < i) {
+        f2 = i;
+      }
+      if (QLog.isColorLevel())
       {
-        do
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("MODE_DRAG:");
+        ((StringBuilder)localObject).append(f2);
+        ((StringBuilder)localObject).append(" for ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_Float);
+        ((StringBuilder)localObject).append(", ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        QLog.d("Drag", 2, ((StringBuilder)localObject).toString());
+      }
+      paramCanvas.translate(this.jdField_a_of_type_AndroidGraphicsRect.centerX(), this.jdField_a_of_type_AndroidGraphicsRect.centerY());
+      paramCanvas.rotate((float)(Math.atan2(this.jdField_a_of_type_AndroidGraphicsPointF.y - this.jdField_a_of_type_AndroidGraphicsRect.centerY(), this.jdField_a_of_type_AndroidGraphicsPointF.x - this.jdField_a_of_type_AndroidGraphicsRect.centerX()) * 57.295779513082323D) - 90.0F);
+      paramCanvas.translate(-f3, -f2);
+      a(paramCanvas, f2, f3);
+      paramCanvas.restore();
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16711936);
+      paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsPointF.x - this.jdField_a_of_type_AndroidGraphicsRect.width() / 2.0F, this.jdField_a_of_type_AndroidGraphicsPointF.y - this.jdField_a_of_type_AndroidGraphicsRect.height() / 2.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+      return;
+    }
+    if ((i != 3) && (i != 6))
+    {
+      if (i == 2)
+      {
+        paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsPointF.x - this.jdField_a_of_type_AndroidGraphicsRect.width() / 2.0F, this.jdField_a_of_type_AndroidGraphicsPointF.y - this.jdField_a_of_type_AndroidGraphicsRect.height() / 2.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+        return;
+      }
+      if (i == 4)
+      {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$BornRunner;
+        if (localObject != null)
         {
-          return;
-          this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-          if (this.e != 0) {
-            this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
+          localObject = ((DragFrameLayout.BornRunner)localObject).a();
+          if (localObject != null) {
+            paramCanvas.drawBitmap((Bitmap)localObject, new Rect(0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight()), new RectF(this.jdField_a_of_type_AndroidGraphicsPointF.x - ((Bitmap)localObject).getWidth() / 2.0F, this.jdField_a_of_type_AndroidGraphicsPointF.y - ((Bitmap)localObject).getHeight() / 2.0F, this.jdField_a_of_type_AndroidGraphicsPointF.x + ((Bitmap)localObject).getWidth() / 2.0F, this.jdField_a_of_type_AndroidGraphicsPointF.y + ((Bitmap)localObject).getHeight() / 2.0F), this.jdField_a_of_type_AndroidGraphicsPaint);
           }
-          while (this.d == 0)
-          {
-            paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsPaint);
-            return;
-            if (this.f == 1) {
-              this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-4797728);
-            } else {
-              this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-65536);
-            }
+          postDelayed(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$BornRunner, 50L);
+        }
+      }
+      else if (i == 5)
+      {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$AllBornRunner;
+        if (localObject != null)
+        {
+          localObject = ((DragFrameLayout.AllBornRunner)localObject).a();
+          Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$AllBornRunner.a();
+          if ((localBitmap != null) && (((PointF)localObject).x > 0.0F) && (((PointF)localObject).y > 0.0F)) {
+            paramCanvas.drawBitmap(localBitmap, new Rect(0, 0, localBitmap.getWidth(), localBitmap.getHeight()), new RectF(((PointF)localObject).x - localBitmap.getWidth() / 2.0F, ((PointF)localObject).y - localBitmap.getHeight() / 2.0F, ((PointF)localObject).x + localBitmap.getWidth() / 2.0F, ((PointF)localObject).y + localBitmap.getHeight() / 2.0F), this.jdField_a_of_type_AndroidGraphicsPaint);
           }
-          if (this.d == 1)
+          if (DragFrameLayout.AllBornRunner.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$AllBornRunner) == -1)
           {
-            paramCanvas.save();
-            f3 = this.g / 1.5F;
-            f2 = this.g * (0.8F - 0.45F * this.jdField_a_of_type_Float / this.jdField_a_of_type_Int);
-            f1 = f2;
-            if (f2 > this.c) {
-              f1 = this.c;
-            }
-            f2 = f1;
-            if (f1 < this.jdField_b_of_type_Int) {
-              f2 = this.jdField_b_of_type_Int;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("Drag", 2, "MODE_DRAG:" + f2 + " for " + this.jdField_a_of_type_Float + ", " + this.jdField_a_of_type_Int);
-            }
-            paramCanvas.translate(this.jdField_a_of_type_AndroidGraphicsRect.centerX(), this.jdField_a_of_type_AndroidGraphicsRect.centerY());
-            paramCanvas.rotate((float)(Math.atan2(this.jdField_a_of_type_AndroidGraphicsPointF.y - this.jdField_a_of_type_AndroidGraphicsRect.centerY(), this.jdField_a_of_type_AndroidGraphicsPointF.x - this.jdField_a_of_type_AndroidGraphicsRect.centerX()) * 57.295779513082323D) - 90.0F);
-            paramCanvas.translate(-f3, -f2);
-            a(paramCanvas, f2, f3);
-            paramCanvas.restore();
-            this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16711936);
-            paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsPointF.x - this.jdField_a_of_type_AndroidGraphicsRect.width() / 2.0F, this.jdField_a_of_type_AndroidGraphicsPointF.y - this.jdField_a_of_type_AndroidGraphicsRect.height() / 2.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+            post(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$AllBornRunner);
             return;
           }
-          if ((this.d != 3) && (this.d != 6)) {
-            break;
-          }
-        } while ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$ShakeRunner == null) || (this.jdField_b_of_type_AndroidGraphicsBitmap == null));
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$ShakeRunner.a();
+          postDelayed(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$AllBornRunner, 25L);
+        }
+      }
+    }
+    else
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$ShakeRunner;
+      if ((localObject != null) && (this.jdField_b_of_type_AndroidGraphicsBitmap != null))
+      {
+        localObject = ((DragFrameLayout.ShakeRunner)localObject).a();
         this.jdField_a_of_type_AndroidGraphicsPointF.set((PointF)localObject);
         this.jdField_a_of_type_Float = ((float)Math.sqrt((this.jdField_a_of_type_AndroidGraphicsPointF.x - this.jdField_a_of_type_AndroidGraphicsRect.centerX()) * (this.jdField_a_of_type_AndroidGraphicsPointF.x - this.jdField_a_of_type_AndroidGraphicsRect.centerX()) + (this.jdField_a_of_type_AndroidGraphicsPointF.y - this.jdField_a_of_type_AndroidGraphicsRect.centerY()) * (this.jdField_a_of_type_AndroidGraphicsPointF.y - this.jdField_a_of_type_AndroidGraphicsRect.centerY())));
         paramCanvas.save();
-        float f3 = this.g / 1.5F;
-        float f2 = (1.0F - this.jdField_a_of_type_Float / this.jdField_a_of_type_Int) * f3;
-        float f1 = f2;
-        if (f2 > this.c / 2) {
-          f1 = this.c / 2;
+        f3 = this.g / 1.5F;
+        f2 = (1.0F - this.jdField_a_of_type_Float / this.jdField_a_of_type_Int) * f3;
+        i = this.c;
+        f1 = f2;
+        if (f2 > i / 2) {
+          f1 = i / 2;
         }
+        i = this.jdField_b_of_type_Int;
         f2 = f1;
-        if (f1 < this.jdField_b_of_type_Int) {
-          f2 = this.jdField_b_of_type_Int;
+        if (f1 < i) {
+          f2 = i;
         }
         paramCanvas.translate(this.jdField_a_of_type_AndroidGraphicsRect.centerX(), this.jdField_a_of_type_AndroidGraphicsRect.centerY());
         paramCanvas.rotate((float)(Math.atan2(this.jdField_a_of_type_AndroidGraphicsPointF.y - this.jdField_a_of_type_AndroidGraphicsRect.centerY(), this.jdField_a_of_type_AndroidGraphicsPointF.x - this.jdField_a_of_type_AndroidGraphicsRect.centerX()) * 57.295779513082323D) - 90.0F);
@@ -203,57 +257,33 @@ public class DragFrameLayout
         this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16711936);
         paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsPointF.x - this.jdField_a_of_type_AndroidGraphicsRect.width() / 2.0F, this.jdField_a_of_type_AndroidGraphicsPointF.y - this.jdField_a_of_type_AndroidGraphicsRect.height() / 2.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
         postDelayed(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$ShakeRunner, 60L);
-        return;
-        if (this.d == 2)
-        {
-          paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsPointF.x - this.jdField_a_of_type_AndroidGraphicsRect.width() / 2.0F, this.jdField_a_of_type_AndroidGraphicsPointF.y - this.jdField_a_of_type_AndroidGraphicsRect.height() / 2.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-          return;
-        }
-        if (this.d != 4) {
-          break;
-        }
-      } while (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$BornRunner == null);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$BornRunner.a();
-      if (localObject != null) {
-        paramCanvas.drawBitmap((Bitmap)localObject, new Rect(0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight()), new RectF(this.jdField_a_of_type_AndroidGraphicsPointF.x - ((Bitmap)localObject).getWidth() / 2.0F, this.jdField_a_of_type_AndroidGraphicsPointF.y - ((Bitmap)localObject).getHeight() / 2.0F, this.jdField_a_of_type_AndroidGraphicsPointF.x + ((Bitmap)localObject).getWidth() / 2.0F, this.jdField_a_of_type_AndroidGraphicsPointF.y + ((Bitmap)localObject).getHeight() / 2.0F), this.jdField_a_of_type_AndroidGraphicsPaint);
       }
-      postDelayed(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$BornRunner, 50L);
-      return;
-    } while ((this.d != 5) || (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$AllBornRunner == null));
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$AllBornRunner.a();
-    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$AllBornRunner.a();
-    if ((localBitmap != null) && (((PointF)localObject).x > 0.0F) && (((PointF)localObject).y > 0.0F)) {
-      paramCanvas.drawBitmap(localBitmap, new Rect(0, 0, localBitmap.getWidth(), localBitmap.getHeight()), new RectF(((PointF)localObject).x - localBitmap.getWidth() / 2.0F, ((PointF)localObject).y - localBitmap.getHeight() / 2.0F, ((PointF)localObject).x + localBitmap.getWidth() / 2.0F, ((PointF)localObject).y + localBitmap.getHeight() / 2.0F), this.jdField_a_of_type_AndroidGraphicsPaint);
     }
-    if (DragFrameLayout.AllBornRunner.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$AllBornRunner) == -1)
-    {
-      post(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$AllBornRunner);
-      return;
-    }
-    postDelayed(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$AllBornRunner, 25L);
   }
   
   private void a(Canvas paramCanvas, float paramFloat1, float paramFloat2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Drag", 2, "drawAtOrigion:" + paramFloat1 + ", " + paramFloat2);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("drawAtOrigion:");
+      ((StringBuilder)localObject).append(paramFloat1);
+      ((StringBuilder)localObject).append(", ");
+      ((StringBuilder)localObject).append(paramFloat2);
+      QLog.d("Drag", 2, ((StringBuilder)localObject).toString());
     }
-    float f1 = paramFloat1 + this.jdField_a_of_type_Float;
-    float f2 = paramFloat1 / 2.0F;
-    float f3 = this.jdField_a_of_type_Float;
-    float f4 = paramFloat1 / 2.0F;
-    float f5 = this.jdField_a_of_type_Float;
-    float f6 = paramFloat1 / 2.0F;
-    float f7 = this.jdField_a_of_type_Float;
-    float f8 = paramFloat1 / 2.0F;
-    float f9 = this.jdField_a_of_type_Float;
+    float f1 = this.jdField_a_of_type_Float;
+    float f3 = paramFloat1 / 2.0F;
+    float f2 = paramFloat2 - f3;
+    f3 = paramFloat2 + f3;
     paramCanvas.drawCircle(paramFloat2, paramFloat1, paramFloat1, this.jdField_a_of_type_AndroidGraphicsPaint);
-    Path localPath = new Path();
-    localPath.moveTo(paramFloat2 + paramFloat1, paramFloat1);
-    localPath.cubicTo(paramFloat2 + f6, paramFloat1 + 0.3F * f7, paramFloat2 + f8, paramFloat1 + 0.7F * f9, paramFloat2 + paramFloat2, 0.5F + f1);
-    localPath.lineTo(paramFloat2 - paramFloat2, 0.5F + f1);
-    localPath.cubicTo(paramFloat2 - f4, paramFloat1 + 0.7F * f5, paramFloat2 - f2, paramFloat1 + 0.3F * f3, paramFloat2 - paramFloat1, paramFloat1);
-    paramCanvas.drawPath(localPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    Object localObject = new Path();
+    ((Path)localObject).moveTo(paramFloat2 + paramFloat1, paramFloat1);
+    float f4 = 0.5F + (paramFloat1 + f1);
+    ((Path)localObject).cubicTo(f3, paramFloat1 + 0.3F * f1, f3, paramFloat1 + f1 * 0.7F, paramFloat2 + paramFloat2, f4);
+    ((Path)localObject).lineTo(paramFloat2 - paramFloat2, f4);
+    ((Path)localObject).cubicTo(f2, f1 * 0.7F + paramFloat1, f2, f1 * 0.3F + paramFloat1, paramFloat2 - paramFloat1, paramFloat1);
+    paramCanvas.drawPath((Path)localObject, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
   private void a(boolean paramBoolean)
@@ -263,7 +293,7 @@ public class DragFrameLayout
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((DragFrameLayout.OnDragModeChangedListener)localIterator.next()).a(paramBoolean, this.f, this);
+      ((DragFrameLayout.OnDragModeChangedListener)localIterator.next()).onChange(paramBoolean, this.f, this);
     }
   }
   
@@ -296,38 +326,49 @@ public class DragFrameLayout
         getHandler().removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$AllBornRunner);
         this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$AllBornRunner = null;
       }
-      if (this.d != 5) {
-        break label158;
+      boolean bool;
+      if (this.d == 5) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label158:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("DragFrameLayout", 2, new Object[] { "onPause call, mMode=" + this.d, " isDone=", Boolean.valueOf(bool) });
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPause call, mMode=");
+      localStringBuilder.append(this.d);
+      QLog.d("DragFrameLayout", 2, new Object[] { localStringBuilder.toString(), " isDone=", Boolean.valueOf(bool) });
       a(-1);
       a(bool);
       this.jdField_b_of_type_AndroidGraphicsBitmap = null;
       this.jdField_a_of_type_AndroidViewView = null;
-      return;
     }
   }
   
   public void a(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Drag", 2, "onModeChanged:" + paramView);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onModeChanged:");
+      ((StringBuilder)localObject).append(paramView);
+      QLog.d("Drag", 2, ((StringBuilder)localObject).toString());
     }
     this.e = 0;
     this.jdField_a_of_type_AndroidGraphicsBitmap = a(paramView);
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (localObject != null)
     {
-      this.e = this.jdField_a_of_type_AndroidGraphicsBitmap.getPixel(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2, 1);
-      if (QLog.isColorLevel()) {
-        QLog.d("Drag", 2, "getOrginalCachePixel:" + this.e);
+      this.e = ((Bitmap)localObject).getPixel(((Bitmap)localObject).getWidth() / 2, 1);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getOrginalCachePixel:");
+        ((StringBuilder)localObject).append(this.e);
+        QLog.d("Drag", 2, ((StringBuilder)localObject).toString());
       }
-      Object localObject = new Matrix();
+      localObject = new Matrix();
       ((Matrix)localObject).postScale(1.1F, 1.1F);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0, 0, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight(), (Matrix)localObject, true);
+      Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      this.jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(localBitmap, 0, 0, localBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight(), (Matrix)localObject, true);
       getGlobalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect);
       int i = this.jdField_a_of_type_AndroidGraphicsRect.left;
       int j = this.jdField_a_of_type_AndroidGraphicsRect.top;
@@ -343,17 +384,26 @@ public class DragFrameLayout
       i = this.jdField_a_of_type_AndroidGraphicsRect.width();
       j = this.jdField_a_of_type_AndroidGraphicsRect.height();
       localObject = this.jdField_a_of_type_AndroidGraphicsRect;
-      ((Rect)localObject).left = ((int)(((Rect)localObject).left - (i * 1.1F - i) / 2.0F));
+      float f1 = ((Rect)localObject).left;
+      float f2 = i;
+      f2 = (f2 * 1.1F - f2) / 2.0F;
+      ((Rect)localObject).left = ((int)(f1 - f2));
       localObject = this.jdField_a_of_type_AndroidGraphicsRect;
-      float f1 = ((Rect)localObject).right;
-      ((Rect)localObject).right = ((int)((i * 1.1F - i) / 2.0F + f1));
+      ((Rect)localObject).right = ((int)(((Rect)localObject).right + f2));
       localObject = this.jdField_a_of_type_AndroidGraphicsRect;
-      ((Rect)localObject).bottom = ((int)(((Rect)localObject).bottom + (j * 1.1F - j) / 2.0F));
+      f1 = ((Rect)localObject).bottom;
+      f2 = j;
+      f2 = (1.1F * f2 - f2) / 2.0F;
+      ((Rect)localObject).bottom = ((int)(f1 + f2));
       localObject = this.jdField_a_of_type_AndroidGraphicsRect;
-      ((Rect)localObject).top = ((int)(((Rect)localObject).top - (j * 1.1F - j) / 2.0F));
-      this.g = ((int)(Math.min(this.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_AndroidGraphicsRect.height()) * 0.8D));
-      if (this.g > this.c) {
-        this.g = this.c;
+      ((Rect)localObject).top = ((int)(((Rect)localObject).top - f2));
+      double d1 = Math.min(this.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_AndroidGraphicsRect.height());
+      Double.isNaN(d1);
+      this.g = ((int)(d1 * 0.8D));
+      i = this.g;
+      j = this.c;
+      if (i > j) {
+        this.g = j;
       }
       this.jdField_a_of_type_AndroidViewView = paramView;
       a(0);
@@ -361,8 +411,12 @@ public class DragFrameLayout
       paramView.setVisibility(4);
       invalidate();
       a(false);
-      if (QLog.isColorLevel()) {
-        QLog.d("Drag", 2, "init:" + this.jdField_a_of_type_AndroidGraphicsRect);
+      if (QLog.isColorLevel())
+      {
+        paramView = new StringBuilder();
+        paramView.append("init:");
+        paramView.append(this.jdField_a_of_type_AndroidGraphicsRect);
+        QLog.d("Drag", 2, paramView.toString());
       }
     }
   }
@@ -378,37 +432,33 @@ public class DragFrameLayout
   {
     if ((paramOnDragModeChangedListener != null) && (!this.jdField_a_of_type_JavaUtilList.contains(paramOnDragModeChangedListener)))
     {
-      if (!paramBoolean) {
+      if (!paramBoolean)
+      {
         this.jdField_a_of_type_JavaUtilList.add(paramOnDragModeChangedListener);
+        return;
       }
+      this.jdField_a_of_type_JavaUtilList.add(0, paramOnDragModeChangedListener);
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList.add(0, paramOnDragModeChangedListener);
   }
   
   public void addChildrenForAccessibility(ArrayList<View> paramArrayList)
   {
     super.addChildrenForAccessibility(paramArrayList);
     int i = 0;
-    View localView;
-    if (i < paramArrayList.size())
+    while (i < paramArrayList.size())
     {
       localView = (View)paramArrayList.get(i);
-      if (localView.getId() != 2131370129) {}
-    }
-    for (;;)
-    {
-      if (localView != null)
-      {
-        paramArrayList.remove(localView);
-        paramArrayList.add(0, localView);
+      if (localView.getId() == 2131369800) {
+        break label46;
       }
-      return;
       i += 1;
-      break;
-      localView = null;
+    }
+    View localView = null;
+    label46:
+    if (localView != null)
+    {
+      paramArrayList.remove(localView);
+      paramArrayList.add(0, localView);
     }
   }
   
@@ -429,93 +479,62 @@ public class DragFrameLayout
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool2 = true;
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
     int i = paramMotionEvent.getAction();
-    boolean bool1;
+    StringBuilder localStringBuilder;
     if (this.d == -1)
     {
-      if ((i == 0) && (QLog.isColorLevel())) {
-        QLog.d("Drag", 2, "Host.dispatchTouchEvent: Down At<" + paramMotionEvent.getX() + ", " + paramMotionEvent.getY() + ">");
-      }
-      bool1 = super.dispatchTouchEvent(paramMotionEvent);
-    }
-    do
-    {
-      do
+      if ((i == 0) && (QLog.isColorLevel()))
       {
-        do
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Host.dispatchTouchEvent: Down At<");
+        localStringBuilder.append(paramMotionEvent.getX());
+        localStringBuilder.append(", ");
+        localStringBuilder.append(paramMotionEvent.getY());
+        localStringBuilder.append(">");
+        QLog.d("Drag", 2, localStringBuilder.toString());
+      }
+      return super.dispatchTouchEvent(paramMotionEvent);
+    }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Host.dispatchTouchEvent: ");
+      localStringBuilder.append(paramMotionEvent.getAction());
+      localStringBuilder.append(" At<");
+      localStringBuilder.append(paramMotionEvent.getX());
+      localStringBuilder.append(", ");
+      localStringBuilder.append(paramMotionEvent.getY());
+      localStringBuilder.append(">");
+      QLog.d("Drag", 2, localStringBuilder.toString());
+    }
+    if ((this.d != 6) && (this.f == 4))
+    {
+      a(6);
+      paramMotionEvent = new RectF(this.jdField_a_of_type_AndroidGraphicsRect.centerX(), this.jdField_a_of_type_AndroidGraphicsRect.centerY(), this.jdField_a_of_type_AndroidGraphicsRect.centerX() - 6, this.jdField_a_of_type_AndroidGraphicsRect.centerY());
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$ShakeRunner = new DragFrameLayout.ShakeRunner(this, new PointF(this.jdField_a_of_type_AndroidGraphicsRect.centerX(), this.jdField_a_of_type_AndroidGraphicsRect.centerY()), paramMotionEvent);
+      invalidate();
+    }
+    if ((i != 3) && (i != 1))
+    {
+      if (i == 2)
+      {
+        i = this.d;
+        if ((i != 0) && (i != 1))
         {
-          do
+          if (i == 3) {
+            return true;
+          }
+          if (i == 2)
           {
-            do
-            {
-              do
-              {
-                return bool1;
-                if (QLog.isColorLevel()) {
-                  QLog.d("Drag", 2, "Host.dispatchTouchEvent: " + paramMotionEvent.getAction() + " At<" + paramMotionEvent.getX() + ", " + paramMotionEvent.getY() + ">");
-                }
-                if ((this.d != 6) && (this.f == 4))
-                {
-                  a(6);
-                  paramMotionEvent = new RectF(this.jdField_a_of_type_AndroidGraphicsRect.centerX(), this.jdField_a_of_type_AndroidGraphicsRect.centerY(), this.jdField_a_of_type_AndroidGraphicsRect.centerX() - 6, this.jdField_a_of_type_AndroidGraphicsRect.centerY());
-                  this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$ShakeRunner = new DragFrameLayout.ShakeRunner(this, new PointF(this.jdField_a_of_type_AndroidGraphicsRect.centerX(), this.jdField_a_of_type_AndroidGraphicsRect.centerY()), paramMotionEvent);
-                  invalidate();
-                }
-                if ((i != 3) && (i != 1)) {
-                  break;
-                }
-                a(this.jdField_a_of_type_AndroidGraphicsRect.centerX() - f1, this.jdField_a_of_type_AndroidGraphicsRect.centerY() - f2, -1);
-                if (this.d == 0)
-                {
-                  this.jdField_b_of_type_AndroidGraphicsBitmap = null;
-                  this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-                  this.jdField_a_of_type_AndroidViewView = null;
-                  a(-1);
-                  invalidate();
-                  a(false);
-                  return true;
-                }
-                if (this.d == 1)
-                {
-                  a(3);
-                  this.jdField_a_of_type_AndroidGraphicsPointF.set(f1, f2);
-                  paramMotionEvent = new RectF(this.jdField_a_of_type_AndroidGraphicsRect.centerX(), this.jdField_a_of_type_AndroidGraphicsRect.centerY(), this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y);
-                  this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$ShakeRunner = new DragFrameLayout.ShakeRunner(this, new PointF(this.jdField_a_of_type_AndroidGraphicsRect.centerX(), this.jdField_a_of_type_AndroidGraphicsRect.centerY()), paramMotionEvent);
-                  invalidate();
-                  return true;
-                }
-                bool1 = bool2;
-              } while (this.d == 3);
-              if (this.d == 2)
-              {
-                if ((float)Math.sqrt((f1 - this.jdField_a_of_type_AndroidGraphicsRect.centerX()) * (f1 - this.jdField_a_of_type_AndroidGraphicsRect.centerX()) + (f2 - this.jdField_a_of_type_AndroidGraphicsRect.centerY()) * (f2 - this.jdField_a_of_type_AndroidGraphicsRect.centerY())) < (this.g + this.jdField_a_of_type_Int) / 2)
-                {
-                  this.jdField_b_of_type_AndroidGraphicsBitmap = null;
-                  this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-                  this.jdField_a_of_type_AndroidViewView = null;
-                  a(-1);
-                  a(false);
-                }
-                for (;;)
-                {
-                  invalidate();
-                  return true;
-                  a(4);
-                  this.jdField_a_of_type_AndroidGraphicsPointF.set(f1, f2);
-                  this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$BornRunner = new DragFrameLayout.BornRunner(this, this.jdField_a_of_type_AndroidGraphicsPointF);
-                }
-              }
-              bool1 = bool2;
-            } while (this.d == 4);
-            bool1 = bool2;
-          } while (this.d != 6);
-          return true;
-          bool1 = bool2;
-        } while (i != 2);
-        if ((this.d == 0) || (this.d == 1))
+            this.jdField_a_of_type_AndroidGraphicsPointF.set(f1, f2);
+            a(this.jdField_a_of_type_AndroidGraphicsRect.centerX() - f1, this.jdField_a_of_type_AndroidGraphicsRect.centerY() - f2, 2);
+            invalidate();
+            return true;
+          }
+        }
+        else
         {
           float f3 = (float)Math.sqrt((f1 - this.jdField_a_of_type_AndroidGraphicsRect.centerX()) * (f1 - this.jdField_a_of_type_AndroidGraphicsRect.centerX()) + (f2 - this.jdField_a_of_type_AndroidGraphicsRect.centerY()) * (f2 - this.jdField_a_of_type_AndroidGraphicsRect.centerY()));
           if (f3 >= this.g + this.jdField_a_of_type_Int)
@@ -525,35 +544,68 @@ public class DragFrameLayout
             a(2);
             a(this.jdField_a_of_type_AndroidGraphicsRect.centerX() - f1, this.jdField_a_of_type_AndroidGraphicsRect.centerY() - f2, 2);
           }
-          for (;;)
+          else if (f3 >= 0.0F)
           {
-            invalidate();
-            return true;
-            if (f3 >= 0.0F)
-            {
-              this.jdField_a_of_type_Float = f3;
-              this.jdField_a_of_type_AndroidGraphicsPointF.set(f1, f2);
-              a(1);
-              a(this.jdField_a_of_type_AndroidGraphicsRect.centerX() - f1, this.jdField_a_of_type_AndroidGraphicsRect.centerY() - f2, 1);
-            }
-            else
-            {
-              a(0);
-              a(0.0F, 0.0F, 0);
-            }
+            this.jdField_a_of_type_Float = f3;
+            this.jdField_a_of_type_AndroidGraphicsPointF.set(f1, f2);
+            a(1);
+            a(this.jdField_a_of_type_AndroidGraphicsRect.centerX() - f1, this.jdField_a_of_type_AndroidGraphicsRect.centerY() - f2, 1);
           }
+          else
+          {
+            a(0);
+            a(0.0F, 0.0F, 0);
+          }
+          invalidate();
+          return true;
         }
-        bool1 = bool2;
-      } while (this.d == 3);
-      if (this.d == 2)
+      }
+    }
+    else
+    {
+      a(this.jdField_a_of_type_AndroidGraphicsRect.centerX() - f1, this.jdField_a_of_type_AndroidGraphicsRect.centerY() - f2, -1);
+      i = this.d;
+      if (i == 0)
       {
+        this.jdField_b_of_type_AndroidGraphicsBitmap = null;
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        this.jdField_a_of_type_AndroidViewView = null;
+        a(-1);
+        invalidate();
+        a(false);
+        return true;
+      }
+      if (i == 1)
+      {
+        a(3);
         this.jdField_a_of_type_AndroidGraphicsPointF.set(f1, f2);
-        a(this.jdField_a_of_type_AndroidGraphicsRect.centerX() - f1, this.jdField_a_of_type_AndroidGraphicsRect.centerY() - f2, 2);
+        paramMotionEvent = new RectF(this.jdField_a_of_type_AndroidGraphicsRect.centerX(), this.jdField_a_of_type_AndroidGraphicsRect.centerY(), this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y);
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$ShakeRunner = new DragFrameLayout.ShakeRunner(this, new PointF(this.jdField_a_of_type_AndroidGraphicsRect.centerX(), this.jdField_a_of_type_AndroidGraphicsRect.centerY()), paramMotionEvent);
         invalidate();
         return true;
       }
-      bool1 = bool2;
-    } while (this.d != 6);
+      if (i == 3) {
+        return true;
+      }
+      if (i == 2)
+      {
+        if ((float)Math.sqrt((f1 - this.jdField_a_of_type_AndroidGraphicsRect.centerX()) * (f1 - this.jdField_a_of_type_AndroidGraphicsRect.centerX()) + (f2 - this.jdField_a_of_type_AndroidGraphicsRect.centerY()) * (f2 - this.jdField_a_of_type_AndroidGraphicsRect.centerY())) < (this.g + this.jdField_a_of_type_Int) / 2)
+        {
+          this.jdField_b_of_type_AndroidGraphicsBitmap = null;
+          this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+          this.jdField_a_of_type_AndroidViewView = null;
+          a(-1);
+          a(false);
+        }
+        else
+        {
+          a(4);
+          this.jdField_a_of_type_AndroidGraphicsPointF.set(f1, f2);
+          this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout$BornRunner = new DragFrameLayout.BornRunner(this, this.jdField_a_of_type_AndroidGraphicsPointF);
+        }
+        invalidate();
+      }
+    }
     return true;
   }
   
@@ -569,7 +621,7 @@ public class DragFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.cur.DragFrameLayout
  * JD-Core Version:    0.7.0.1
  */

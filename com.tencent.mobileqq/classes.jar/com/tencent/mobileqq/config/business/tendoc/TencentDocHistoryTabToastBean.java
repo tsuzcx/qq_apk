@@ -11,26 +11,27 @@ public class TencentDocHistoryTabToastBean
   
   public static TencentDocHistoryTabToastBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length <= 0)) {
-      paramArrayOfQConfItem = null;
-    }
-    TencentDocHistoryTabToastBean localTencentDocHistoryTabToastBean;
-    do
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      return paramArrayOfQConfItem;
-      localTencentDocHistoryTabToastBean = new TencentDocHistoryTabToastBean();
+      TencentDocHistoryTabToastBean localTencentDocHistoryTabToastBean = new TencentDocHistoryTabToastBean();
       try
       {
         localTencentDocHistoryTabToastBean.a = new JSONObject(paramArrayOfQConfItem[0].a).getInt("show_limit");
         return localTencentDocHistoryTabToastBean;
       }
-      catch (JSONException localJSONException)
+      catch (JSONException paramArrayOfQConfItem)
       {
-        paramArrayOfQConfItem = localTencentDocHistoryTabToastBean;
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("exception = ");
+          localStringBuilder.append(paramArrayOfQConfItem.toString());
+          QLog.e("TencentDocHistoryTabToastBean", 1, localStringBuilder.toString());
+        }
+        return localTencentDocHistoryTabToastBean;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("TencentDocHistoryTabToastBean", 1, "exception = " + localJSONException.toString());
-    return localTencentDocHistoryTabToastBean;
+    }
+    return null;
   }
   
   public int a()
@@ -45,7 +46,7 @@ public class TencentDocHistoryTabToastBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocHistoryTabToastBean
  * JD-Core Version:    0.7.0.1
  */

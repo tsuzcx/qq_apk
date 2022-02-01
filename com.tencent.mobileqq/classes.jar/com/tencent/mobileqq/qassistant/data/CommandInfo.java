@@ -5,9 +5,9 @@ import java.util.List;
 public class CommandInfo
 {
   public int a;
+  public ConfirmSendInfo a;
   public JumpInfo a;
   public RecordInfo a;
-  public VoiceAssiatantRespInfo.ConfirmSendInfo a;
   public String a;
   public List<FriendItemInfo> a;
   public boolean a;
@@ -26,20 +26,20 @@ public class CommandInfo
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
+  public CommandInfo(int paramInt, String paramString, ConfirmSendInfo paramConfirmSendInfo)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqQassistantDataConfirmSendInfo = paramConfirmSendInfo;
+  }
+  
   public CommandInfo(int paramInt, String paramString, JumpInfo paramJumpInfo)
   {
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_ComTencentMobileqqQassistantDataJumpInfo = paramJumpInfo;
-  }
-  
-  public CommandInfo(int paramInt, String paramString, VoiceAssiatantRespInfo.ConfirmSendInfo paramConfirmSendInfo)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqQassistantDataVoiceAssiatantRespInfo$ConfirmSendInfo = paramConfirmSendInfo;
   }
   
   public CommandInfo(int paramInt, String paramString, List<FriendItemInfo> paramList)
@@ -52,7 +52,7 @@ public class CommandInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.data.CommandInfo
  * JD-Core Version:    0.7.0.1
  */

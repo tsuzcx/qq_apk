@@ -6,6 +6,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import photo_share_struct.client_attr;
@@ -202,75 +203,88 @@ public final class Album
     paramJceOutputStream.write(this.lastuploadtime, 6);
     paramJceOutputStream.write(this.priv, 7);
     paramJceOutputStream.write(this.total, 8);
-    if (this.question != null) {
-      paramJceOutputStream.write(this.question, 9);
+    Object localObject = this.question;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.answer != null) {
-      paramJceOutputStream.write(this.answer, 10);
+    localObject = this.answer;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
     paramJceOutputStream.write(this.allow_share, 11);
-    if (this.album_white_list != null) {
-      paramJceOutputStream.write(this.album_white_list, 12);
+    localObject = this.album_white_list;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 12);
     }
     paramJceOutputStream.write(this.svrtime, 13);
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 14);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 14);
     }
     paramJceOutputStream.write(this.birth_time, 15);
     paramJceOutputStream.write(this.type, 16);
     paramJceOutputStream.write(this.isSubscribe, 17);
     paramJceOutputStream.write(this.opmask, 18);
-    if (this.coverurl != null) {
-      paramJceOutputStream.write(this.coverurl, 19);
+    localObject = this.coverurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 19);
     }
-    if (this.bitmap != null) {
-      paramJceOutputStream.write(this.bitmap, 20);
+    localObject = this.bitmap;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 20);
     }
     paramJceOutputStream.write(this.birth_sexual, 21);
-    if (this.birth_nickname != null) {
-      paramJceOutputStream.write(this.birth_nickname, 22);
+    localObject = this.birth_nickname;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 22);
     }
     paramJceOutputStream.write(this.birth_year, 23);
     paramJceOutputStream.write(this.birth_month, 24);
     paramJceOutputStream.write(this.birth_day, 25);
     paramJceOutputStream.write(this.birth_type, 26);
     paramJceOutputStream.write(this.individual, 27);
-    if (this.material != null) {
-      paramJceOutputStream.write(this.material, 28);
+    localObject = this.material;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 28);
     }
-    if (this.albumowner != null) {
-      paramJceOutputStream.write(this.albumowner, 29);
+    localObject = this.albumowner;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 29);
     }
-    if (this.shareattrs != null) {
-      paramJceOutputStream.write(this.shareattrs, 30);
+    localObject = this.shareattrs;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 30);
     }
     paramJceOutputStream.write(this.is_share, 31);
     paramJceOutputStream.write(this.owner, 32);
     paramJceOutputStream.write(this.love_time, 33);
-    if (this.lover_events != null) {
-      paramJceOutputStream.write(this.lover_events, 34);
+    localObject = this.lover_events;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 34);
     }
     paramJceOutputStream.write(this.love_value, 35);
     paramJceOutputStream.write(this.recoded_days, 36);
     paramJceOutputStream.write(this.video_num, 37);
     paramJceOutputStream.write(this.photo_num, 38);
     paramJceOutputStream.write(this.recommend_album_type, 39);
-    if (this.ark_sharedata != null) {
-      paramJceOutputStream.write(this.ark_sharedata, 40);
+    localObject = this.ark_sharedata;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 40);
     }
     paramJceOutputStream.write(this.sort_type, 41);
     paramJceOutputStream.write(this.top_flag, 42);
     paramJceOutputStream.write(this.game_album_flag, 43);
     paramJceOutputStream.write(this.is_allow_sharer_upload, 44);
     paramJceOutputStream.write(this.is_allow_share, 45);
-    if (this.share_album_invate_ark != null) {
-      paramJceOutputStream.write(this.share_album_invate_ark, 46);
+    localObject = this.share_album_invate_ark;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 46);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.Album
  * JD-Core Version:    0.7.0.1
  */

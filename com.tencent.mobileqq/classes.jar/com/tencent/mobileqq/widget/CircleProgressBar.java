@@ -90,20 +90,26 @@ public class CircleProgressBar
     this.jdField_f_of_type_Int = paramContext.getColor(4, Color.parseColor("#999999"));
     this.jdField_g_of_type_Int = paramContext.getColor(0, Color.parseColor("#999999"));
     paramContext.recycle();
-    this.jdField_i_of_type_Float = ((this.jdField_c_of_type_Float - this.jdField_b_of_type_Float) / 2.0F);
-    this.n = (this.jdField_b_of_type_Float / 2.0F + this.jdField_i_of_type_Float / 2.0F);
-    this.jdField_j_of_type_Float = ((this.jdField_f_of_type_Float - this.jdField_b_of_type_Float) / 2.0F);
-    this.jdField_k_of_type_Float = ((this.jdField_g_of_type_Float - this.jdField_b_of_type_Float) / 2.0F);
-    this.l = ((this.jdField_h_of_type_Float - this.jdField_b_of_type_Float) / 2.0F);
-    this.m = this.jdField_i_of_type_Float;
-    this.o = (this.jdField_b_of_type_Float / 2.0F + this.jdField_j_of_type_Float / 2.0F);
-    this.p = (this.jdField_b_of_type_Float / 2.0F + this.jdField_k_of_type_Float / 2.0F);
-    this.q = (this.jdField_b_of_type_Float / 2.0F + this.l / 2.0F);
+    float f2 = this.jdField_c_of_type_Float;
+    float f1 = this.jdField_b_of_type_Float;
+    this.jdField_i_of_type_Float = ((f2 - f1) / 2.0F);
+    f2 = f1 / 2.0F;
+    float f3 = this.jdField_i_of_type_Float;
+    this.n = (f2 + f3 / 2.0F);
+    this.jdField_j_of_type_Float = ((this.jdField_f_of_type_Float - f1) / 2.0F);
+    this.jdField_k_of_type_Float = ((this.jdField_g_of_type_Float - f1) / 2.0F);
+    this.l = ((this.jdField_h_of_type_Float - f1) / 2.0F);
+    this.m = f3;
+    this.o = (f1 / 2.0F + this.jdField_j_of_type_Float / 2.0F);
+    this.p = (f1 / 2.0F + this.jdField_k_of_type_Float / 2.0F);
+    this.q = (f1 / 2.0F + this.l / 2.0F);
   }
   
   private double a(float paramFloat)
   {
-    return paramFloat / 360.0F * 2.0F * 3.141592653589793D;
+    double d1 = paramFloat / 360.0F * 2.0F;
+    Double.isNaN(d1);
+    return d1 * 3.141592653589793D;
   }
   
   public void a()
@@ -122,11 +128,18 @@ public class CircleProgressBar
   }
   
   @SuppressLint({"DrawAllocation"})
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     this.jdField_j_of_type_Int = (getWidth() / 2);
     this.jdField_k_of_type_Int = (getHeight() / 2);
+    Object localObject;
+    int i1;
+    float f1;
+    float f2;
+    int i2;
+    float f3;
+    float f4;
     float f5;
     float f6;
     if (!this.jdField_b_of_type_Boolean)
@@ -138,11 +151,39 @@ public class CircleProgressBar
       paramCanvas.drawCircle(this.jdField_j_of_type_Int, this.jdField_k_of_type_Int, this.n, this.jdField_a_of_type_AndroidGraphicsPaint);
       if (this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_AndroidGraphicsRectF.left = (this.jdField_j_of_type_Int - this.n);
-        this.jdField_a_of_type_AndroidGraphicsRectF.top = (this.jdField_k_of_type_Int - this.n);
-        this.jdField_a_of_type_AndroidGraphicsRectF.right = (this.jdField_j_of_type_Int + this.n);
-        this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (this.jdField_k_of_type_Int + this.n);
-        localObject = new LinearGradient((float)(this.jdField_j_of_type_Int + this.n * Math.sin(a(this.jdField_i_of_type_Int + 90))), (float)(this.jdField_k_of_type_Int - this.n * Math.cos(a(this.jdField_i_of_type_Int + 90))), (float)(this.jdField_j_of_type_Int + this.n * Math.sin(a(this.jdField_i_of_type_Int + 90 + this.jdField_d_of_type_Float))), (float)(this.jdField_k_of_type_Int - this.n * Math.cos(a(this.jdField_i_of_type_Int + 90 + this.jdField_d_of_type_Float))), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, Shader.TileMode.MIRROR);
+        localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+        i1 = this.jdField_j_of_type_Int;
+        f1 = i1;
+        f2 = this.n;
+        ((RectF)localObject).left = (f1 - f2);
+        i2 = this.jdField_k_of_type_Int;
+        ((RectF)localObject).top = (i2 - f2);
+        ((RectF)localObject).right = (i1 + f2);
+        ((RectF)localObject).bottom = (i2 + f2);
+        double d1 = i1;
+        double d2 = f2;
+        double d3 = Math.sin(a(this.jdField_i_of_type_Int + 90));
+        Double.isNaN(d2);
+        Double.isNaN(d1);
+        f1 = (float)(d1 + d2 * d3);
+        d1 = this.jdField_k_of_type_Int;
+        d2 = this.n;
+        d3 = Math.cos(a(this.jdField_i_of_type_Int + 90));
+        Double.isNaN(d2);
+        Double.isNaN(d1);
+        f2 = (float)(d1 - d2 * d3);
+        d1 = this.jdField_j_of_type_Int;
+        d2 = this.n;
+        d3 = Math.sin(a(this.jdField_i_of_type_Int + 90 + this.jdField_d_of_type_Float));
+        Double.isNaN(d2);
+        Double.isNaN(d1);
+        f3 = (float)(d1 + d2 * d3);
+        d1 = this.jdField_k_of_type_Int;
+        d2 = this.n;
+        d3 = Math.cos(a(this.jdField_i_of_type_Int + 90 + this.jdField_d_of_type_Float));
+        Double.isNaN(d2);
+        Double.isNaN(d1);
+        localObject = new LinearGradient(f1, f2, f3, (float)(d1 - d2 * d3), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, Shader.TileMode.MIRROR);
         this.jdField_a_of_type_AndroidGraphicsPaint.setShader((Shader)localObject);
         paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_i_of_type_Int, this.jdField_d_of_type_Float, false, this.jdField_a_of_type_AndroidGraphicsPaint);
         this.jdField_a_of_type_AndroidGraphicsPaint.setShader(null);
@@ -163,66 +204,86 @@ public class CircleProgressBar
       this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Float / 4.0F);
       f3 = this.jdField_a_of_type_AndroidTextTextPaint.descent();
       f5 = this.jdField_a_of_type_AndroidTextTextPaint.ascent();
-      paramCanvas.drawText(HardCodeUtil.a(2131701972), f4, f1 + f2 - (f3 + f5), this.jdField_a_of_type_AndroidTextTextPaint);
-      this.jdField_a_of_type_AndroidGraphicsPaint.reset();
-      return;
+      paramCanvas.drawText(HardCodeUtil.a(2131702112), f4, f1 + f2 - (f3 + f5), this.jdField_a_of_type_AndroidTextTextPaint);
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_g_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.m);
-    paramCanvas.drawCircle(this.jdField_j_of_type_Int, this.jdField_k_of_type_Int, this.n, this.jdField_a_of_type_AndroidGraphicsPaint);
-    float f4 = (float)(this.jdField_a_of_type_Long + this.jdField_b_of_type_Long + this.jdField_c_of_type_Long + this.jdField_d_of_type_Long);
-    float f2 = 360.0F * (float)this.jdField_a_of_type_Long / f4;
-    float f1 = f2;
-    if (f2 > 0.0F)
+    else
     {
-      f1 = f2;
-      if (f2 < this.r) {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_g_of_type_Int);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.m);
+      paramCanvas.drawCircle(this.jdField_j_of_type_Int, this.jdField_k_of_type_Int, this.n, this.jdField_a_of_type_AndroidGraphicsPaint);
+      long l1 = this.jdField_a_of_type_Long;
+      f4 = (float)(this.jdField_b_of_type_Long + l1 + this.jdField_c_of_type_Long + this.jdField_d_of_type_Long);
+      f2 = (float)l1 * 360.0F / f4;
+      if (f2 > 0.0F)
+      {
         f1 = this.r;
+        if (f2 < f1) {
+          f2 = f1;
+        }
       }
-    }
-    Object localObject = new RectF();
-    ((RectF)localObject).left = (this.jdField_j_of_type_Int - this.o);
-    ((RectF)localObject).top = (this.jdField_k_of_type_Int - this.o);
-    ((RectF)localObject).right = (this.jdField_j_of_type_Int + this.o);
-    ((RectF)localObject).bottom = (this.jdField_k_of_type_Int + this.o);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_d_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_j_of_type_Float);
-    paramCanvas.drawArc((RectF)localObject, -90.0F, f1, false, this.jdField_a_of_type_AndroidGraphicsPaint);
-    float f3 = 360.0F * (float)this.jdField_b_of_type_Long / f4;
-    f2 = f3;
-    if (f3 > 0.0F)
-    {
-      f2 = f3;
-      if (f3 < this.r) {
-        f2 = this.r;
+      localObject = new RectF();
+      i1 = this.jdField_j_of_type_Int;
+      f1 = i1;
+      f3 = this.o;
+      ((RectF)localObject).left = (f1 - f3);
+      i2 = this.jdField_k_of_type_Int;
+      ((RectF)localObject).top = (i2 - f3);
+      ((RectF)localObject).right = (i1 + f3);
+      ((RectF)localObject).bottom = (i2 + f3);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_d_of_type_Int);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_j_of_type_Float);
+      paramCanvas.drawArc((RectF)localObject, -90.0F, f2, false, this.jdField_a_of_type_AndroidGraphicsPaint);
+      f1 = (float)this.jdField_b_of_type_Long * 360.0F / f4;
+      if (f1 > 0.0F)
+      {
+        f3 = this.r;
+        if (f1 < f3) {
+          f1 = f3;
+        }
       }
-    }
-    ((RectF)localObject).left = (this.jdField_j_of_type_Int - this.p);
-    ((RectF)localObject).top = (this.jdField_k_of_type_Int - this.p);
-    ((RectF)localObject).right = (this.jdField_j_of_type_Int + this.p);
-    ((RectF)localObject).bottom = (this.jdField_k_of_type_Int + this.p);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_e_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_k_of_type_Float);
-    paramCanvas.drawArc((RectF)localObject, -90.0F + f1, f2, false, this.jdField_a_of_type_AndroidGraphicsPaint);
-    f3 = 360.0F * (float)this.jdField_c_of_type_Long / f4;
-    if ((f3 > 0.0F) && (f3 < this.r)) {
-      f3 = this.r;
-    }
-    for (;;)
-    {
-      ((RectF)localObject).left = (this.jdField_j_of_type_Int - this.q);
-      ((RectF)localObject).top = (this.jdField_k_of_type_Int - this.q);
-      ((RectF)localObject).right = (this.jdField_j_of_type_Int + this.q);
-      ((RectF)localObject).bottom = (this.jdField_k_of_type_Int + this.q);
+      i1 = this.jdField_j_of_type_Int;
+      f3 = i1;
+      f5 = this.p;
+      ((RectF)localObject).left = (f3 - f5);
+      i2 = this.jdField_k_of_type_Int;
+      ((RectF)localObject).top = (i2 - f5);
+      ((RectF)localObject).right = (i1 + f5);
+      ((RectF)localObject).bottom = (i2 + f5);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_e_of_type_Int);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_k_of_type_Float);
+      f5 = -90.0F + f2;
+      paramCanvas.drawArc((RectF)localObject, f5, f1, false, this.jdField_a_of_type_AndroidGraphicsPaint);
+      f2 = (float)this.jdField_c_of_type_Long * 360.0F / f4;
+      if (f2 > 0.0F)
+      {
+        f3 = this.r;
+        if (f2 < f3) {
+          f2 = f3;
+        }
+      }
+      i1 = this.jdField_j_of_type_Int;
+      f3 = i1;
+      f4 = this.q;
+      ((RectF)localObject).left = (f3 - f4);
+      i2 = this.jdField_k_of_type_Int;
+      ((RectF)localObject).top = (i2 - f4);
+      ((RectF)localObject).right = (i1 + f4);
+      ((RectF)localObject).bottom = (i2 + f4);
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_f_of_type_Int);
       this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.l);
-      paramCanvas.drawArc((RectF)localObject, -90.0F + f1 + f2, f3, false, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawArc((RectF)localObject, f5 + f1, f2, false, this.jdField_a_of_type_AndroidGraphicsPaint);
       this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_c_of_type_Int);
       this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
       this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Float);
-      localObject = "" + (this.jdField_a_of_type_Long + this.jdField_b_of_type_Long + this.jdField_c_of_type_Long) * 100L / (this.jdField_a_of_type_Long + this.jdField_b_of_type_Long + this.jdField_c_of_type_Long + this.jdField_d_of_type_Long);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      l1 = this.jdField_a_of_type_Long;
+      long l2 = this.jdField_b_of_type_Long;
+      long l3 = this.jdField_c_of_type_Long;
+      ((StringBuilder)localObject).append((l1 + l2 + l3) * 100L / (l1 + l2 + l3 + this.jdField_d_of_type_Long));
+      localObject = ((StringBuilder)localObject).toString();
       f4 = this.jdField_j_of_type_Int;
       f5 = this.jdField_a_of_type_AndroidTextTextPaint.measureText((String)localObject);
       f6 = this.jdField_e_of_type_Float;
@@ -236,9 +297,9 @@ public class CircleProgressBar
       this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Float / 4.0F);
       f3 = this.jdField_a_of_type_AndroidTextTextPaint.descent();
       f5 = this.jdField_a_of_type_AndroidTextTextPaint.ascent();
-      paramCanvas.drawText(HardCodeUtil.a(2131701973), f4, f1 + f2 - (f3 + f5), this.jdField_a_of_type_AndroidTextTextPaint);
-      break;
+      paramCanvas.drawText(HardCodeUtil.a(2131702113), f4, f1 + f2 - (f3 + f5), this.jdField_a_of_type_AndroidTextTextPaint);
     }
+    this.jdField_a_of_type_AndroidGraphicsPaint.reset();
   }
   
   public void setFinish(long paramLong1, long paramLong2, long paramLong3, long paramLong4, float paramFloat)
@@ -255,21 +316,24 @@ public class CircleProgressBar
   
   public void setPercent(int paramInt)
   {
-    if (paramInt < 100) {
-      this.jdField_a_of_type_JavaLangString = ("" + paramInt);
-    }
-    for (;;)
+    if (paramInt < 100)
     {
-      postInvalidate();
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramInt);
+      this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    }
+    else
+    {
       this.jdField_a_of_type_JavaLangString = "100";
       b();
     }
+    postInvalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CircleProgressBar
  * JD-Core Version:    0.7.0.1
  */

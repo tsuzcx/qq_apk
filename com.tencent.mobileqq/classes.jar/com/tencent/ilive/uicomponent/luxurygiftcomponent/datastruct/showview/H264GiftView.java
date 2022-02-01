@@ -17,14 +17,14 @@ import com.tencent.falco.base.libapi.imageloader.DisplayImageOptions;
 import com.tencent.falco.base.libapi.imageloader.DisplayImageOptions.Builder;
 import com.tencent.falco.base.libapi.imageloader.ImageLoaderInterface;
 import com.tencent.falco.base.libapi.log.LogInterface;
+import com.tencent.falco.base.libapi.lottie.LottieGiftInfo;
+import com.tencent.falco.base.libapi.lottie.LottieViewInterface;
 import com.tencent.falco.utils.ThreadCenter;
 import com.tencent.falco.utils.UIUtil;
-import com.tencent.ilive.uicomponent.luxurygiftcomponent_interface.LottieViewInterface;
 import com.tencent.ilive.uicomponent.luxurygiftcomponent_interface.LuxuryGiftAdapter;
 import com.tencent.ilive.uicomponent.luxurygiftcomponent_interface.model.LuxuryGiftData;
 import com.tencent.ilive.uicomponent.luxurygiftcomponent_interface.model.LuxuryGiftInfo;
 import com.tencent.ilive.uicomponent.luxurygiftcomponent_interface.model.PlayTimeMonitor;
-import com.tencent.ilive.uicomponent.luxurygiftcomponent_interface.showview.LottieGiftInfo;
 import com.tencent.ilivesdk.playview.view.PlayView;
 import com.tencent.ilivesdk.playview.view.VideoPLayListener;
 
@@ -99,7 +99,7 @@ public class H264GiftView
     addView(this.mPlayView, localLayoutParams);
     this.mPlayView.setPlayListener(this.iVideoPLay);
     this.mLuxuryGiftAdapter.getLogger().e("H264GiftShowView|GiftAnimation", " h264 init", new Object[0]);
-    this.mLottieView = this.mLuxuryGiftAdapter.createLottieView(paramContext, this.mLuxuryGiftAdapter);
+    this.mLottieView = this.mLuxuryGiftAdapter.getLuxuryGiftLottieView(paramContext);
     if (this.mLottieView == null) {
       this.mLottieView = new LottieView(paramContext, this.mLuxuryGiftAdapter);
     }
@@ -111,21 +111,25 @@ public class H264GiftView
   private void playInternal(LuxuryGiftInfo paramLuxuryGiftInfo, Bitmap paramBitmap)
   {
     LogInterface localLogInterface = this.mLuxuryGiftAdapter.getLogger();
-    StringBuilder localStringBuilder = new StringBuilder().append(" playInternal headBitmap is null? ");
-    if (paramBitmap == null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localLogInterface.e("H264GiftShowView|GiftAnimation", bool, new Object[0]);
-      this.mLottieView.setConfig(paramLuxuryGiftInfo.lottiePlayConfigFilePath, paramLuxuryGiftInfo.lottieConfigFilePath, this.mCurrentLottieGiftInfo, paramBitmap, new H264GiftView.5(this, paramLuxuryGiftInfo));
-      return;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" playInternal headBitmap is null? ");
+    boolean bool;
+    if (paramBitmap == null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    localStringBuilder.append(bool);
+    localLogInterface.e("H264GiftShowView|GiftAnimation", localStringBuilder.toString(), new Object[0]);
+    this.mLottieView.setConfig(paramLuxuryGiftInfo.lottiePlayConfigFilePath, paramLuxuryGiftInfo.lottieConfigFilePath, this.mCurrentLottieGiftInfo, paramBitmap, new H264GiftView.5(this, paramLuxuryGiftInfo));
   }
   
   private void reportTime()
   {
-    if (this.luxuryGiftData != null)
+    LuxuryGiftData localLuxuryGiftData = this.luxuryGiftData;
+    if (localLuxuryGiftData != null)
     {
-      this.luxuryGiftData.playTimeMonitor.loadToPlayTime = System.currentTimeMillis();
+      localLuxuryGiftData.playTimeMonitor.loadToPlayTime = System.currentTimeMillis();
       if (this.luxuryGiftData.consumerUin == this.mLuxuryGiftAdapter.getAccountUin())
       {
         long l = this.luxuryGiftData.playTimeMonitor.waitInQueueTime;
@@ -148,7 +152,7 @@ public class H264GiftView
     return this.mIsWorking;
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     this.mLuxuryGiftAdapter.getLogger().e("H264GiftShowView|GiftAnimation", "onAttachedToWindow", new Object[0]);
@@ -157,26 +161,28 @@ public class H264GiftView
   public void onDestory()
   {
     this.mLuxuryGiftAdapter.getLogger().e("H264GiftShowView|GiftAnimation", "onDestroy", new Object[0]);
-    if (this.mLottieView != null)
+    Object localObject = this.mLottieView;
+    if (localObject != null)
     {
-      this.mLottieView.cancelLoaderTask();
+      ((LottieViewInterface)localObject).cancelLoaderTask();
       this.mLottieView.clearAnimation();
       this.mLottieView.setVisibility(8);
     }
     this.mIsWorking = false;
-    if (this.mPlayView != null) {
-      this.mPlayView.stop();
+    localObject = this.mPlayView;
+    if (localObject != null) {
+      ((PlayView)localObject).stop();
     }
     this.mAnimationListener = null;
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.mLuxuryGiftAdapter.getLogger().e("H264GiftShowView|GiftAnimation", "onDetachedFromWindow", new Object[0]);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     int i = getContext().getResources().getDisplayMetrics().widthPixels;
@@ -185,36 +191,36 @@ public class H264GiftView
     if (paramInt1 < paramInt2) {
       paramInt1 = paramInt2;
     }
-    for (;;)
-    {
-      setMeasuredDimension(i, paramInt1);
-      return;
-    }
+    setMeasuredDimension(i, paramInt1);
   }
   
   public void play(LuxuryGiftInfo paramLuxuryGiftInfo)
   {
     boolean bool = true;
-    if ((paramLuxuryGiftInfo == null) || (TextUtils.isEmpty(paramLuxuryGiftInfo.mediaFilePath)))
+    if ((paramLuxuryGiftInfo != null) && (!TextUtils.isEmpty(paramLuxuryGiftInfo.mediaFilePath)))
     {
-      LogInterface localLogInterface = this.mLuxuryGiftAdapter.getLogger();
-      StringBuilder localStringBuilder = new StringBuilder().append(" h264GiftShowView giftInfo==");
-      if (paramLuxuryGiftInfo == null) {}
-      for (;;)
+      localLogInterface = this.mLuxuryGiftAdapter.getLogger();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("containerShow= ");
+      localStringBuilder.append(this.containerShow);
+      localLogInterface.e("H264GiftShowView|GiftAnimation", localStringBuilder.toString(), new Object[0]);
+      this.mIsWorking = true;
+      if (!this.mShowLottieAnimation)
       {
-        localLogInterface.e("H264GiftShowView|GiftAnimation", bool, new Object[0]);
+        ThreadCenter.postDefaultUITask(new H264GiftView.3(this, paramLuxuryGiftInfo));
         return;
-        bool = false;
       }
-    }
-    this.mLuxuryGiftAdapter.getLogger().e("H264GiftShowView|GiftAnimation", "containerShow= " + this.containerShow, new Object[0]);
-    this.mIsWorking = true;
-    if (!this.mShowLottieAnimation)
-    {
-      ThreadCenter.postDefaultUITask(new H264GiftView.3(this, paramLuxuryGiftInfo));
+      this.mLuxuryGiftAdapter.getImageLoaderInterface().displayImage(this.mCurrentLottieGiftInfo.jdField_b_of_type_JavaLangString, this.fakeImageView, getDisplayImageOptions(2130840463), new H264GiftView.4(this, paramLuxuryGiftInfo));
       return;
     }
-    this.mLuxuryGiftAdapter.getImageLoaderInterface().displayImage(this.mCurrentLottieGiftInfo.senderHeadUrl, this.fakeImageView, getDisplayImageOptions(2130840592), new H264GiftView.4(this, paramLuxuryGiftInfo));
+    LogInterface localLogInterface = this.mLuxuryGiftAdapter.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" h264GiftShowView giftInfo==");
+    if (paramLuxuryGiftInfo != null) {
+      bool = false;
+    }
+    localStringBuilder.append(bool);
+    localLogInterface.e("H264GiftShowView|GiftAnimation", localStringBuilder.toString(), new Object[0]);
   }
   
   public void setAnimationListener(IGiftAnimation paramIGiftAnimation)
@@ -232,16 +238,16 @@ public class H264GiftView
     if (paramLottieGiftInfo == null) {
       return;
     }
-    this.mCurrentLottieGiftInfo.senderName = paramLottieGiftInfo.senderName;
-    this.mCurrentLottieGiftInfo.senderHeadUrl = paramLottieGiftInfo.senderHeadUrl;
-    this.mCurrentLottieGiftInfo.effectId = paramLottieGiftInfo.effectId;
-    this.mCurrentLottieGiftInfo.giftName = paramLottieGiftInfo.giftName;
-    this.mCurrentLottieGiftInfo.effectNum = paramLottieGiftInfo.effectNum;
-    this.mCurrentLottieGiftInfo.comment = paramLottieGiftInfo.comment;
-    this.mCurrentLottieGiftInfo.anchorName = paramLottieGiftInfo.anchorName;
-    this.mCurrentLottieGiftInfo.anchorUin = paramLottieGiftInfo.anchorUin;
-    this.mCurrentLottieGiftInfo.linkMicComment = paramLottieGiftInfo.linkMicComment;
-    this.mCurrentLottieGiftInfo.mCurAnchorUin = paramLottieGiftInfo.mCurAnchorUin;
+    this.mCurrentLottieGiftInfo.jdField_a_of_type_JavaLangString = paramLottieGiftInfo.jdField_a_of_type_JavaLangString;
+    this.mCurrentLottieGiftInfo.jdField_b_of_type_JavaLangString = paramLottieGiftInfo.jdField_b_of_type_JavaLangString;
+    this.mCurrentLottieGiftInfo.c = paramLottieGiftInfo.c;
+    this.mCurrentLottieGiftInfo.d = paramLottieGiftInfo.d;
+    this.mCurrentLottieGiftInfo.e = paramLottieGiftInfo.e;
+    this.mCurrentLottieGiftInfo.f = paramLottieGiftInfo.f;
+    this.mCurrentLottieGiftInfo.g = paramLottieGiftInfo.g;
+    this.mCurrentLottieGiftInfo.jdField_a_of_type_Long = paramLottieGiftInfo.jdField_a_of_type_Long;
+    this.mCurrentLottieGiftInfo.h = paramLottieGiftInfo.h;
+    this.mCurrentLottieGiftInfo.jdField_b_of_type_Long = paramLottieGiftInfo.jdField_b_of_type_Long;
   }
   
   public void setPlayListener(IH264PlayL paramIH264PlayL)
@@ -256,25 +262,23 @@ public class H264GiftView
   
   public void showCtrls(boolean paramBoolean)
   {
+    Object localObject1 = this.mLuxuryGiftAdapter.getLogger();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("h264=");
+    ((StringBuilder)localObject2).append(paramBoolean);
+    localObject2 = ((StringBuilder)localObject2).toString();
     int i = 0;
-    this.mLuxuryGiftAdapter.getLogger().e("H264GiftShowView|GiftAnimation", "h264=" + paramBoolean, new Object[0]);
+    ((LogInterface)localObject1).e("H264GiftShowView|GiftAnimation", (String)localObject2, new Object[0]);
     this.containerShow = paramBoolean;
-    LottieViewInterface localLottieViewInterface;
     if (this.mLottieView.isAnimating())
     {
-      localLottieViewInterface = this.mLottieView;
+      localObject1 = this.mLottieView;
       if (!paramBoolean) {
-        break label84;
+        i = 4;
       }
+      ((LottieViewInterface)localObject1).setVisibility(i);
     }
-    for (;;)
-    {
-      localLottieViewInterface.setVisibility(i);
-      this.mPlayView.setContentVisible(paramBoolean);
-      return;
-      label84:
-      i = 4;
-    }
+    this.mPlayView.setContentVisible(paramBoolean);
   }
   
   public void stop()
@@ -288,14 +292,15 @@ public class H264GiftView
       this.mLuxuryGiftAdapter.getLogger().e("H264GiftShowView|GiftAnimation", " dismiss dialog", new Object[0]);
       this.mPopupWindow.dismiss();
     }
-    if (this.mAnimationListener != null) {
-      this.mAnimationListener.animationCancel();
+    IGiftAnimation localIGiftAnimation = this.mAnimationListener;
+    if (localIGiftAnimation != null) {
+      localIGiftAnimation.animationCancel();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.uicomponent.luxurygiftcomponent.datastruct.showview.H264GiftView
  * JD-Core Version:    0.7.0.1
  */

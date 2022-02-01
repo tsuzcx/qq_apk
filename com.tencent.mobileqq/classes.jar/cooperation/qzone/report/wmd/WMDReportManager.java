@@ -2,14 +2,15 @@ package cooperation.qzone.report.wmd;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.data.QZoneCommonServlet;
 import com.tencent.mobileqq.data.QzoneCommonIntent;
-import com.tencent.mobileqq.service.qzone.QZoneUnreadServletLogic.WMDConfig;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qzonehub.api.report.wmd.IWMDReport;
 import cooperation.qzone.QZoneCommonRequest;
 import java.util.ArrayList;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
 
@@ -30,33 +31,33 @@ public class WMDReportManager
   
   public WMDReportManager()
   {
-    QZoneUnreadServletLogic.WMDConfig localWMDConfig = new QZoneUnreadServletLogic.WMDConfig();
-    localWMDConfig.a();
-    this.reportTimeInternal = (localWMDConfig.d * 1000);
-    this.reportBatchNum = localWMDConfig.c;
-    this.reportId = localWMDConfig.a;
+    ((IWMDReport)QRoute.api(IWMDReport.class)).loadConfig();
+    this.reportTimeInternal = (((IWMDReport)QRoute.api(IWMDReport.class)).getReportTime() * 1000);
+    this.reportBatchNum = ((IWMDReport)QRoute.api(IWMDReport.class)).getReportCount();
+    this.reportId = ((IWMDReport)QRoute.api(IWMDReport.class)).getReportId();
   }
   
   public static WMDReportManager getInstance()
   {
-    if (reportManager == null) {}
-    try
-    {
-      if (reportManager == null) {
-        reportManager = new WMDReportManager();
+    if (reportManager == null) {
+      try
+      {
+        if (reportManager == null) {
+          reportManager = new WMDReportManager();
+        }
       }
-      return reportManager;
+      finally {}
     }
-    finally {}
+    return reportManager;
   }
   
   private boolean meetReportCondition()
   {
-    if ((this.storedMsgs != null) && (this.storedMsgs.size() >= this.reportBatchNum)) {}
-    while (System.currentTimeMillis() - this.lastReportTime > this.reportTimeInternal) {
+    ArrayList localArrayList = this.storedMsgs;
+    if ((localArrayList != null) && (localArrayList.size() >= this.reportBatchNum)) {
       return true;
     }
-    return false;
+    return System.currentTimeMillis() - this.lastReportTime > this.reportTimeInternal;
   }
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
@@ -68,36 +69,35 @@ public class WMDReportManager
       if (QLog.isColorLevel()) {
         QLog.i("WMDReportManager", 2, String.format("type :%d, success:%b, code:%d, msg:%s, bundle:%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), Integer.valueOf(i), str, paramBundle.toString() }));
       }
-      return;
     }
-    QLog.e("WMDReportManager", 1, "onReceive bundle is null");
+    else
+    {
+      QLog.e("WMDReportManager", 1, "onReceive bundle is null");
+    }
   }
   
   public void report(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("WMDReportManager", 1, "action is null");
-    }
-    for (;;)
+    if (TextUtils.isEmpty(paramString))
     {
+      QLog.e("WMDReportManager", 1, "action is null");
       return;
-      if (TextUtils.isEmpty(this.reportId))
-      {
-        QLog.e("WMDReportManager", 1, "reportId is null");
-        return;
-      }
-      if (this.lastReportTime == 0L) {
-        this.lastReportTime = System.currentTimeMillis();
-      }
-      synchronized (this.storedMsgs)
-      {
-        this.storedMsgs.add(paramString);
-        if (!meetReportCondition()) {
-          continue;
-        }
+    }
+    if (TextUtils.isEmpty(this.reportId))
+    {
+      QLog.e("WMDReportManager", 1, "reportId is null");
+      return;
+    }
+    if (this.lastReportTime == 0L) {
+      this.lastReportTime = System.currentTimeMillis();
+    }
+    synchronized (this.storedMsgs)
+    {
+      this.storedMsgs.add(paramString);
+      if (meetReportCondition()) {
         reportImediately();
-        return;
       }
+      return;
     }
   }
   
@@ -111,18 +111,21 @@ public class WMDReportManager
       Object localObject2 = (ArrayList)this.storedMsgs.clone();
       this.storedMsgs.clear();
       this.lastReportTime = System.currentTimeMillis();
-      ??? = new WMDReportReq(this.reportId, (ArrayList)localObject2, null);
-      localObject2 = new QzoneCommonIntent(BaseApplicationImpl.getContext(), QZoneCommonServlet.class);
-      ((QzoneCommonIntent)localObject2).setRequest((QZoneCommonRequest)???);
-      ((QzoneCommonIntent)localObject2).setObserver(this);
-      BaseApplicationImpl.getApplication().getRuntime().startServlet((NewIntent)localObject2);
+      localObject2 = new WMDReportReq(this.reportId, (ArrayList)localObject2, null);
+      ??? = new QzoneCommonIntent(MobileQQ.getContext(), QZoneCommonServlet.class);
+      ((QzoneCommonIntent)???).setRequest((QZoneCommonRequest)localObject2);
+      ((QzoneCommonIntent)???).setObserver(this);
+      localObject2 = MobileQQ.sMobileQQ.peekAppRuntime();
+      if (localObject2 != null) {
+        ((AppRuntime)localObject2).startServlet((NewIntent)???);
+      }
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.wmd.WMDReportManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,23 @@
 package com.tencent.mobileqq.richmediabrowser.view;
 
-import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
 
 class AIOVideoView$10
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   AIOVideoView$10(AIOVideoView paramAIOVideoView) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AIOVideoView.a(this.this$0, AIOVideoView.a(this.this$0, this.this$0.a.getCoverDrawable()));
+    BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoView", 4, "showSaveFileTips cancel");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOVideoView.10
  * JD-Core Version:    0.7.0.1
  */

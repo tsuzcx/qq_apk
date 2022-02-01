@@ -42,37 +42,40 @@ class ForwardTroopMemberControllerForMiniPie$TroopMemberRecyclerViewAdapter
     if (paramInt == ForwardTroopMemberControllerForMiniPie.b)
     {
       paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
-      int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297134);
+      int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297116);
+      float f = this.jdField_a_of_type_Float;
       paramInt = i;
-      if (this.jdField_a_of_type_Float != 0.0F) {
-        paramInt = (int)(i / this.jdField_a_of_type_Float);
+      if (f != 0.0F) {
+        paramInt = (int)(i / f);
       }
       paramViewGroup.setLayoutParams(new RelativeLayout.LayoutParams(-1, paramInt));
       return new ForwardTroopMemberControllerForMiniPie.ViewHolder(paramViewGroup);
     }
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559249, paramViewGroup, false);
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559125, paramViewGroup, false);
     if ((this.jdField_a_of_type_Float != 0.0F) && (paramViewGroup != null))
     {
       Object localObject1 = paramViewGroup.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject1).height = AIOUtils.a(80.0F / this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidContentContext.getResources());
+      ((ViewGroup.LayoutParams)localObject1).height = AIOUtils.b(80.0F / this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidContentContext.getResources());
       paramViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      localObject1 = (ImageView)paramViewGroup.findViewById(2131368996);
+      localObject1 = (ImageView)paramViewGroup.findViewById(2131368718);
       Object localObject2;
       if (localObject1 != null)
       {
         localObject2 = ((ImageView)localObject1).getLayoutParams();
         if (localObject2 != null)
         {
-          paramInt = AIOUtils.a(40.0F / this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidContentContext.getResources());
+          paramInt = AIOUtils.b(40.0F / this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidContentContext.getResources());
           ((ViewGroup.LayoutParams)localObject2).width = paramInt;
           ((ViewGroup.LayoutParams)localObject2).height = paramInt;
           ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
         }
       }
-      localObject1 = (TextView)paramViewGroup.findViewById(2131380813);
+      localObject1 = (TextView)paramViewGroup.findViewById(2131380076);
       if (localObject1 != null)
       {
-        ((TextView)localObject1).setTextSize(2, (int)(10.0D / this.jdField_a_of_type_Float));
+        double d = this.jdField_a_of_type_Float;
+        Double.isNaN(d);
+        ((TextView)localObject1).setTextSize(2, (int)(10.0D / d));
         localObject2 = (ViewGroup.MarginLayoutParams)((TextView)localObject1).getLayoutParams();
         ((ViewGroup.MarginLayoutParams)localObject2).setMargins((int)(((ViewGroup.MarginLayoutParams)localObject2).leftMargin / this.jdField_a_of_type_Float), (int)(((ViewGroup.MarginLayoutParams)localObject2).topMargin / this.jdField_a_of_type_Float), (int)(((ViewGroup.MarginLayoutParams)localObject2).rightMargin / this.jdField_a_of_type_Float), (int)(((ViewGroup.MarginLayoutParams)localObject2).bottomMargin / this.jdField_a_of_type_Float));
         ((TextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
@@ -83,41 +86,40 @@ class ForwardTroopMemberControllerForMiniPie$TroopMemberRecyclerViewAdapter
   
   public void a(ForwardTroopMemberControllerForMiniPie.ViewHolder paramViewHolder, int paramInt)
   {
-    if (paramViewHolder.a == ForwardTroopMemberControllerForMiniPie.b) {}
-    for (;;)
+    if ((paramViewHolder.a != ForwardTroopMemberControllerForMiniPie.b) && (paramViewHolder.a == ForwardTroopMemberControllerForMiniPie.a))
     {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-      return;
-      if (paramViewHolder.a == ForwardTroopMemberControllerForMiniPie.a)
-      {
-        int i = paramInt - 1;
-        if (i < 0) {
-          QLog.e("ForwardTroopMemberControllerForMiniPie", 2, "type normal in wrong index");
-        }
-        Pair localPair = (Pair)this.jdField_a_of_type_JavaUtilList.get(i);
-        if ((paramViewHolder instanceof ForwardTroopMemberControllerForMiniPie.TroopMemberViewHolder)) {
-          ((ForwardTroopMemberControllerForMiniPie.TroopMemberViewHolder)paramViewHolder).a((String)localPair.first, (String)localPair.second, this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder);
-        }
+      int i = paramInt - 1;
+      if (i < 0) {
+        QLog.e("ForwardTroopMemberControllerForMiniPie", 2, "type normal in wrong index");
+      }
+      Pair localPair = (Pair)this.jdField_a_of_type_JavaUtilList.get(i);
+      if ((paramViewHolder instanceof ForwardTroopMemberControllerForMiniPie.TroopMemberViewHolder)) {
+        ((ForwardTroopMemberControllerForMiniPie.TroopMemberViewHolder)paramViewHolder).a((String)localPair.first, (String)localPair.second, this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder);
       }
     }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
   public void a(List<Pair<String, String>> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return;
+    if (paramList != null)
+    {
+      if (paramList.isEmpty()) {
+        return;
+      }
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      notifyDataSetChanged();
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
   }
   
   public int getItemCount()
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      return 0;
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if ((localList != null) && (localList.size() != 0)) {
+      return this.jdField_a_of_type_JavaUtilList.size() + 1;
     }
-    return this.jdField_a_of_type_JavaUtilList.size() + 1;
+    return 0;
   }
   
   public int getItemViewType(int paramInt)
@@ -139,7 +141,7 @@ class ForwardTroopMemberControllerForMiniPie$TroopMemberRecyclerViewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardTroopMemberControllerForMiniPie.TroopMemberRecyclerViewAdapter
  * JD-Core Version:    0.7.0.1
  */

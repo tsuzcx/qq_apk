@@ -54,31 +54,37 @@ public final class cell_upper_banner
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.picdata != null) {
-      paramJceOutputStream.write(this.picdata, 0);
+    Object localObject = this.picdata;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 1);
+    localObject = this.title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.summary != null) {
-      paramJceOutputStream.write(this.summary, 2);
+    localObject = this.summary;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.button_title != null) {
-      paramJceOutputStream.write(this.button_title, 3);
+    localObject = this.button_title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.actionType, 4);
-    if (this.action_url != null) {
-      paramJceOutputStream.write(this.action_url, 5);
+    localObject = this.action_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.banner_type, 6);
-    if (this.extendInfo != null) {
-      paramJceOutputStream.write(this.extendInfo, 7);
+    localObject = this.extendInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_upper_banner
  * JD-Core Version:    0.7.0.1
  */

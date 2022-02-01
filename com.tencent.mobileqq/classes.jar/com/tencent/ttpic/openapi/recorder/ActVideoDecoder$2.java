@@ -13,25 +13,32 @@ class ActVideoDecoder$2
   {
     try
     {
-      BenchUtil.benchStart(ActVideoDecoder.access$600() + "[decodeNext]");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(ActVideoDecoder.access$600());
+      localStringBuilder.append("[decodeNext]");
+      BenchUtil.benchStart(localStringBuilder.toString());
       ActVideoDecoder.access$700(this.this$0);
-      BenchUtil.benchEnd(ActVideoDecoder.access$600() + "[decodeNext]");
-      ActVideoDecoder.access$802(this.this$0, false);
-      return;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(ActVideoDecoder.access$600());
+      localStringBuilder.append("[decodeNext]");
+      BenchUtil.benchEnd(localStringBuilder.toString());
     }
     catch (Exception localException)
     {
-      do
-      {
-        LogUtils.e(ActVideoDecoder.access$600(), "decodeNext error: ", localException, new Object[0]);
-      } while (!AEOpenRenderConfig.DEBUG);
-      throw localException;
+      LogUtils.e(ActVideoDecoder.access$600(), "decodeNext error: ", localException, new Object[0]);
+      if (AEOpenRenderConfig.DEBUG) {
+        break label102;
+      }
     }
+    ActVideoDecoder.access$802(this.this$0, false);
+    return;
+    label102:
+    throw localException;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.recorder.ActVideoDecoder.2
  * JD-Core Version:    0.7.0.1
  */

@@ -29,14 +29,15 @@ public final class stCompressedData
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.compressed != null) {
-      paramJceOutputStream.write(this.compressed, 100);
+    byte[] arrayOfByte = this.compressed;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 100);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stCompressedData
  * JD-Core Version:    0.7.0.1
  */

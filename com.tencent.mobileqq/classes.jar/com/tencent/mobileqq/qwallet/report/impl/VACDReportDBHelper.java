@@ -1,18 +1,13 @@
 package com.tencent.mobileqq.qwallet.report.impl;
 
-import VACDReport.ReportBody;
 import VACDReport.ReportHeader;
-import VACDReport.ReportInfo;
 import VACDReport.ReportItem;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.text.TextUtils;
 import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Map;
 import org.json.JSONObject;
 
 public final class VACDReportDBHelper
@@ -77,32 +72,39 @@ public final class VACDReportDBHelper
   
   private String a(ReportHeader paramReportHeader)
   {
-    if (paramReportHeader == null) {}
-    do
-    {
+    if (paramReportHeader == null) {
       return null;
-      try
+    }
+    try
+    {
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("platform", paramReportHeader.platform);
+      ((JSONObject)localObject).put("version", paramReportHeader.version);
+      ((JSONObject)localObject).put("uin", paramReportHeader.uin);
+      ((JSONObject)localObject).put("seqno", paramReportHeader.seqno);
+      ((JSONObject)localObject).put("sModule", paramReportHeader.sModule);
+      ((JSONObject)localObject).put("sAction", paramReportHeader.sAction);
+      ((JSONObject)localObject).put("iNetType", paramReportHeader.iNetType);
+      ((JSONObject)localObject).put("result", paramReportHeader.result);
+      ((JSONObject)localObject).put("createTime", paramReportHeader.createTime);
+      ((JSONObject)localObject).put("guid", paramReportHeader.guid);
+      ((JSONObject)localObject).put("imei", paramReportHeader.imei);
+      ((JSONObject)localObject).put("serverTime", paramReportHeader.startTime);
+      ((JSONObject)localObject).put("skey", paramReportHeader.sKey);
+      paramReportHeader = new String(Base64Util.encode(((JSONObject)localObject).toString().getBytes(), 0));
+      return paramReportHeader;
+    }
+    catch (Exception paramReportHeader)
+    {
+      Object localObject;
+      if (QLog.isColorLevel())
       {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("platform", paramReportHeader.platform);
-        localJSONObject.put("version", paramReportHeader.version);
-        localJSONObject.put("uin", paramReportHeader.uin);
-        localJSONObject.put("seqno", paramReportHeader.seqno);
-        localJSONObject.put("sModule", paramReportHeader.sModule);
-        localJSONObject.put("sAction", paramReportHeader.sAction);
-        localJSONObject.put("iNetType", paramReportHeader.iNetType);
-        localJSONObject.put("result", paramReportHeader.result);
-        localJSONObject.put("createTime", paramReportHeader.createTime);
-        localJSONObject.put("guid", paramReportHeader.guid);
-        localJSONObject.put("imei", paramReportHeader.imei);
-        localJSONObject.put("serverTime", paramReportHeader.startTime);
-        localJSONObject.put("skey", paramReportHeader.sKey);
-        paramReportHeader = new String(Base64Util.encode(localJSONObject.toString().getBytes(), 0));
-        return paramReportHeader;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("convertHeaderToString exception:  ");
+        ((StringBuilder)localObject).append(paramReportHeader.toString());
+        QLog.e("VACDReport", 2, ((StringBuilder)localObject).toString());
       }
-      catch (Exception paramReportHeader) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("VACDReport", 2, "convertHeaderToString exception:  " + paramReportHeader.toString());
+    }
     return null;
   }
   
@@ -131,359 +133,794 @@ public final class VACDReportDBHelper
   private void a(SQLiteDatabase paramSQLiteDatabase)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" CREATE TABLE IF NOT EXISTS ").append("ReportItem");
+    localStringBuilder.append(" CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append("ReportItem");
     localStringBuilder.append(" (");
-    localStringBuilder.append("seqno").append(" INTEGER(16) NOT NULL, ");
-    localStringBuilder.append("createTime").append(" INTEGER(16) NOT NULL, ");
-    localStringBuilder.append("type").append(" INTEGER DEFAULT 0, ");
-    localStringBuilder.append("content").append(" VARCHAR(255))");
+    localStringBuilder.append("seqno");
+    localStringBuilder.append(" INTEGER(16) NOT NULL, ");
+    localStringBuilder.append("createTime");
+    localStringBuilder.append(" INTEGER(16) NOT NULL, ");
+    localStringBuilder.append("type");
+    localStringBuilder.append(" INTEGER DEFAULT 0, ");
+    localStringBuilder.append("content");
+    localStringBuilder.append(" VARCHAR(255))");
     paramSQLiteDatabase.execSQL(localStringBuilder.toString());
   }
   
   private void b(SQLiteDatabase paramSQLiteDatabase)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" CREATE INDEX IF NOT EXISTS ").append("RTIndex");
-    localStringBuilder.append(" ON ").append("ReportItem").append('(');
-    localStringBuilder.append("seqno").append(',');
-    localStringBuilder.append("createTime").append(',');
-    localStringBuilder.append("type").append(')');
+    localStringBuilder.append(" CREATE INDEX IF NOT EXISTS ");
+    localStringBuilder.append("RTIndex");
+    localStringBuilder.append(" ON ");
+    localStringBuilder.append("ReportItem");
+    localStringBuilder.append('(');
+    localStringBuilder.append("seqno");
+    localStringBuilder.append(',');
+    localStringBuilder.append("createTime");
+    localStringBuilder.append(',');
+    localStringBuilder.append("type");
+    localStringBuilder.append(')');
     paramSQLiteDatabase.execSQL(localStringBuilder.toString());
   }
   
-  public Map<Long, ReportInfo> a(Map<Long, ReportInfo> paramMap)
+  /* Error */
+  public java.util.Map<java.lang.Long, VACDReport.ReportInfo> a(java.util.Map<java.lang.Long, VACDReport.ReportInfo> paramMap)
   {
-    for (;;)
-    {
-      Object localObject4;
-      Cursor localCursor2;
-      Object localObject2;
-      Object localObject1;
-      Cursor localCursor1;
-      Object localObject3;
-      try
-      {
-        long l1 = System.currentTimeMillis();
-        ArrayList localArrayList = new ArrayList();
-        localObject4 = null;
-        localCursor2 = null;
-        localObject2 = null;
-        localObject1 = null;
-        localCursor1 = localCursor2;
-        localObject3 = localObject4;
-        try
-        {
-          localSQLiteDatabase = getReadableDatabase();
-          localObject1 = localSQLiteDatabase;
-          localCursor1 = localCursor2;
-          localObject2 = localSQLiteDatabase;
-          localObject3 = localObject4;
-          localCursor2 = localSQLiteDatabase.rawQuery("SELECT i.* FROM ReportItem i ORDER BY i.seqno,i.createTime ASC", new String[0]);
-          if (localCursor2 == null) {
-            break label1254;
-          }
-          localObject1 = localSQLiteDatabase;
-          localCursor1 = localCursor2;
-          localObject2 = localSQLiteDatabase;
-          localObject3 = localCursor2;
-          if (localCursor2.getCount() <= 0) {
-            break label1254;
-          }
-          localObject1 = localSQLiteDatabase;
-          localCursor1 = localCursor2;
-          localObject2 = localSQLiteDatabase;
-          localObject3 = localCursor2;
-          int i = localCursor2.getColumnIndexOrThrow("seqno");
-          localObject1 = localSQLiteDatabase;
-          localCursor1 = localCursor2;
-          localObject2 = localSQLiteDatabase;
-          localObject3 = localCursor2;
-          int j = localCursor2.getColumnIndexOrThrow("content");
-          localObject1 = localSQLiteDatabase;
-          localCursor1 = localCursor2;
-          localObject2 = localSQLiteDatabase;
-          localObject3 = localCursor2;
-          int k = localCursor2.getColumnIndexOrThrow("type");
-          localObject1 = localSQLiteDatabase;
-          localCursor1 = localCursor2;
-          localObject2 = localSQLiteDatabase;
-          localObject3 = localCursor2;
-          localCursor2.moveToFirst();
-          localObject1 = localSQLiteDatabase;
-          localCursor1 = localCursor2;
-          localObject2 = localSQLiteDatabase;
-          localObject3 = localCursor2;
-          if (localCursor2.isAfterLast()) {
-            break label1254;
-          }
-          localObject1 = localSQLiteDatabase;
-          localCursor1 = localCursor2;
-          localObject2 = localSQLiteDatabase;
-          localObject3 = localCursor2;
-          l2 = localCursor2.getLong(i);
-          localObject1 = localSQLiteDatabase;
-          localCursor1 = localCursor2;
-          localObject2 = localSQLiteDatabase;
-          localObject3 = localCursor2;
-          m = localCursor2.getInt(k);
-          localObject1 = localSQLiteDatabase;
-          localCursor1 = localCursor2;
-          localObject2 = localSQLiteDatabase;
-          localObject3 = localCursor2;
-          localObject4 = localCursor2.getString(j);
-          localObject1 = localSQLiteDatabase;
-          localCursor1 = localCursor2;
-          localObject2 = localSQLiteDatabase;
-          localObject3 = localCursor2;
-          localReportInfo = (ReportInfo)paramMap.get(Long.valueOf(l2));
-          if (1 != m) {
-            break label903;
-          }
-          localObject1 = localSQLiteDatabase;
-          localCursor1 = localCursor2;
-          localObject2 = localSQLiteDatabase;
-          localObject3 = localCursor2;
-          localObject5 = a((String)localObject4);
-          if (localObject5 != null) {
-            continue;
-          }
-          localObject1 = localSQLiteDatabase;
-          localCursor1 = localCursor2;
-          localObject2 = localSQLiteDatabase;
-          localObject3 = localCursor2;
-          if (QLog.isDevelopLevel())
-          {
-            localObject1 = localSQLiteDatabase;
-            localCursor1 = localCursor2;
-            localObject2 = localSQLiteDatabase;
-            localObject3 = localCursor2;
-            QLog.e("VACDReport", 4, "loadAllLocalInfos header convert exception,seqno=" + l2);
-          }
-        }
-        catch (Throwable localThrowable)
-        {
-          SQLiteDatabase localSQLiteDatabase;
-          localObject2 = localObject1;
-          localObject3 = localCursor1;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          localObject2 = localObject1;
-          localObject3 = localCursor1;
-          QLog.e("VACDReport", 2, "loadAllLocalInfos exception:  " + localThrowable.toString());
-          if (localObject1 == null) {
-            continue;
-          }
-          try
-          {
-            localObject1.close();
-            if (localCursor1 != null) {
-              localCursor1.close();
-            }
-          }
-          catch (Exception localException3)
-          {
-            continue;
-          }
-          if (!QLog.isDevelopLevel()) {
-            continue;
-          }
-          QLog.d("VACDReport", 4, "loadAllLocalInfos, costTime=" + (System.currentTimeMillis() - l1) + ", reportInfoSize=" + paramMap.size() + ", seqnoList=" + localArrayList);
-          return paramMap;
-          localObject4 = localReportInfo;
-          if (localReportInfo != null) {
-            continue;
-          }
-          localObject1 = localThrowable;
-          localCursor1 = localCursor2;
-          localObject2 = localThrowable;
-          localObject3 = localCursor2;
-          localObject4 = new ReportInfo();
-          localObject1 = localThrowable;
-          localCursor1 = localCursor2;
-          localObject2 = localThrowable;
-          localObject3 = localCursor2;
-          paramMap.put(Long.valueOf(l2), localObject4);
-          localObject1 = localThrowable;
-          localCursor1 = localCursor2;
-          localObject2 = localThrowable;
-          localObject3 = localCursor2;
-          ((ReportInfo)localObject4).header = ((ReportHeader)localObject5);
-          localObject1 = localThrowable;
-          localCursor1 = localCursor2;
-          localObject2 = localThrowable;
-          localObject3 = localCursor2;
-          if (((ReportInfo)localObject4).body == null) {
-            continue;
-          }
-          localObject1 = localThrowable;
-          localCursor1 = localCursor2;
-          localObject2 = localThrowable;
-          localObject3 = localCursor2;
-          ((ReportInfo)localObject4).body.sKey = ((ReportHeader)localObject5).sKey;
-          localObject1 = localThrowable;
-          localCursor1 = localCursor2;
-          localObject2 = localThrowable;
-          localObject3 = localCursor2;
-          ((ReportInfo)localObject4).body.startTime = ((ReportHeader)localObject5).startTime;
-          localObject1 = localThrowable;
-          localCursor1 = localCursor2;
-          localObject2 = localThrowable;
-          localObject3 = localCursor2;
-          if ((!QLog.isColorLevel()) || ((m != 0) && (1 != m))) {
-            continue;
-          }
-          localObject1 = localThrowable;
-          localCursor1 = localCursor2;
-          localObject2 = localThrowable;
-          localObject3 = localCursor2;
-          if (localArrayList.contains(String.valueOf(l2))) {
-            continue;
-          }
-          localObject1 = localThrowable;
-          localCursor1 = localCursor2;
-          localObject2 = localThrowable;
-          localObject3 = localCursor2;
-          localArrayList.add(String.valueOf(l2));
-          continue;
-        }
-        finally
-        {
-          long l2;
-          int m;
-          ReportInfo localReportInfo;
-          Object localObject5;
-          if (localObject2 == null) {
-            continue;
-          }
-          try
-          {
-            localObject2.close();
-            if (localObject3 == null) {
-              continue;
-            }
-            ((Cursor)localObject3).close();
-          }
-          catch (Exception localException2)
-          {
-            continue;
-          }
-        }
-        localObject1 = localSQLiteDatabase;
-        localCursor1 = localCursor2;
-        localObject2 = localSQLiteDatabase;
-        localObject3 = localCursor2;
-        localCursor2.moveToNext();
-        continue;
-        if (m != 0) {
-          continue;
-        }
-      }
-      finally {}
-      label903:
-      if (localReportInfo == null)
-      {
-        localObject1 = localThrowable;
-        localCursor1 = localCursor2;
-        localObject2 = localThrowable;
-        localObject3 = localCursor2;
-        paramMap.put(Long.valueOf(l2), new ReportInfo());
-      }
-      else
-      {
-        localObject1 = localThrowable;
-        localCursor1 = localCursor2;
-        localObject2 = localThrowable;
-        localObject3 = localCursor2;
-        if (localReportInfo.body == null)
-        {
-          localObject1 = localThrowable;
-          localCursor1 = localCursor2;
-          localObject2 = localThrowable;
-          localObject3 = localCursor2;
-          localReportInfo.body = new ReportBody();
-          localObject1 = localThrowable;
-          localCursor1 = localCursor2;
-          localObject2 = localThrowable;
-          localObject3 = localCursor2;
-          localReportInfo.body.reportItems = new ArrayList(32);
-          localObject1 = localThrowable;
-          localCursor1 = localCursor2;
-          localObject2 = localThrowable;
-          localObject3 = localCursor2;
-          if (localReportInfo.header != null)
-          {
-            localObject1 = localThrowable;
-            localCursor1 = localCursor2;
-            localObject2 = localThrowable;
-            localObject3 = localCursor2;
-            localReportInfo.body.sKey = localReportInfo.header.sKey;
-            localObject1 = localThrowable;
-            localCursor1 = localCursor2;
-            localObject2 = localThrowable;
-            localObject3 = localCursor2;
-            localReportInfo.body.startTime = localReportInfo.header.startTime;
-          }
-        }
-        localObject1 = localThrowable;
-        localCursor1 = localCursor2;
-        localObject2 = localThrowable;
-        localObject3 = localCursor2;
-        localObject5 = a((String)localObject4);
-        if (localObject5 == null)
-        {
-          localObject1 = localThrowable;
-          localCursor1 = localCursor2;
-          localObject2 = localThrowable;
-          localObject3 = localCursor2;
-          if (QLog.isDevelopLevel())
-          {
-            localObject1 = localThrowable;
-            localCursor1 = localCursor2;
-            localObject2 = localThrowable;
-            localObject3 = localCursor2;
-            QLog.e("VACDReport", 4, "loadAllLocalInfos, item convert exception,content=" + (String)localObject4);
-          }
-        }
-        else
-        {
-          localObject1 = localThrowable;
-          localCursor1 = localCursor2;
-          localObject2 = localThrowable;
-          localObject3 = localCursor2;
-          localReportInfo.body.reportItems.add(localObject5);
-          continue;
-          label1254:
-          if (localThrowable != null) {}
-          try
-          {
-            localThrowable.close();
-            if (localCursor2 != null) {
-              localCursor2.close();
-            }
-          }
-          catch (Exception localException1) {}
-        }
-      }
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: invokestatic 231	java/lang/System:currentTimeMillis	()J
+    //   5: lstore 6
+    //   7: new 233	java/util/ArrayList
+    //   10: dup
+    //   11: invokespecial 234	java/util/ArrayList:<init>	()V
+    //   14: astore 17
+    //   16: aconst_null
+    //   17: astore 13
+    //   19: aconst_null
+    //   20: astore 11
+    //   22: aconst_null
+    //   23: astore 10
+    //   25: aconst_null
+    //   26: astore 12
+    //   28: aload_0
+    //   29: invokevirtual 238	com/tencent/mobileqq/qwallet/report/impl/VACDReportDBHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   32: astore 14
+    //   34: aload 12
+    //   36: astore 10
+    //   38: aload 14
+    //   40: astore 12
+    //   42: aload 13
+    //   44: astore 11
+    //   46: aload 14
+    //   48: ldc 240
+    //   50: iconst_0
+    //   51: anewarray 24	java/lang/String
+    //   54: invokevirtual 244	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   57: astore 13
+    //   59: aload 13
+    //   61: ifnull +970 -> 1031
+    //   64: aload 13
+    //   66: astore 10
+    //   68: aload 14
+    //   70: astore 12
+    //   72: aload 13
+    //   74: astore 11
+    //   76: aload 13
+    //   78: invokeinterface 250 1 0
+    //   83: ifle +948 -> 1031
+    //   86: aload 13
+    //   88: astore 10
+    //   90: aload 14
+    //   92: astore 12
+    //   94: aload 13
+    //   96: astore 11
+    //   98: aload 13
+    //   100: ldc 62
+    //   102: invokeinterface 253 2 0
+    //   107: istore 4
+    //   109: aload 13
+    //   111: astore 10
+    //   113: aload 14
+    //   115: astore 12
+    //   117: aload 13
+    //   119: astore 11
+    //   121: aload 13
+    //   123: ldc 205
+    //   125: invokeinterface 253 2 0
+    //   130: istore_3
+    //   131: aload 13
+    //   133: astore 10
+    //   135: aload 14
+    //   137: astore 12
+    //   139: aload 13
+    //   141: astore 11
+    //   143: aload 13
+    //   145: ldc 201
+    //   147: invokeinterface 253 2 0
+    //   152: istore_2
+    //   153: aload 13
+    //   155: astore 10
+    //   157: aload 14
+    //   159: astore 12
+    //   161: aload 13
+    //   163: astore 11
+    //   165: aload 13
+    //   167: invokeinterface 256 1 0
+    //   172: pop
+    //   173: aload 13
+    //   175: astore 10
+    //   177: aload 14
+    //   179: astore 12
+    //   181: aload 13
+    //   183: astore 11
+    //   185: aload 13
+    //   187: invokeinterface 259 1 0
+    //   192: ifne +839 -> 1031
+    //   195: aload 13
+    //   197: astore 10
+    //   199: aload 14
+    //   201: astore 12
+    //   203: aload 13
+    //   205: astore 11
+    //   207: aload 13
+    //   209: iload 4
+    //   211: invokeinterface 263 2 0
+    //   216: lstore 8
+    //   218: aload 13
+    //   220: astore 10
+    //   222: aload 14
+    //   224: astore 12
+    //   226: aload 13
+    //   228: astore 11
+    //   230: aload 13
+    //   232: iload_2
+    //   233: invokeinterface 267 2 0
+    //   238: istore 5
+    //   240: aload 13
+    //   242: astore 10
+    //   244: aload 14
+    //   246: astore 12
+    //   248: aload 13
+    //   250: astore 11
+    //   252: aload 13
+    //   254: iload_3
+    //   255: invokeinterface 271 2 0
+    //   260: astore 15
+    //   262: aload 13
+    //   264: astore 10
+    //   266: aload 14
+    //   268: astore 12
+    //   270: aload 13
+    //   272: astore 11
+    //   274: aload_1
+    //   275: lload 8
+    //   277: invokestatic 277	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   280: invokeinterface 283 2 0
+    //   285: checkcast 285	VACDReport/ReportInfo
+    //   288: astore 16
+    //   290: iconst_1
+    //   291: iload 5
+    //   293: if_icmpne +282 -> 575
+    //   296: aload 13
+    //   298: astore 10
+    //   300: aload 14
+    //   302: astore 12
+    //   304: aload 13
+    //   306: astore 11
+    //   308: aload_0
+    //   309: aload 15
+    //   311: invokespecial 287	com/tencent/mobileqq/qwallet/report/impl/VACDReportDBHelper:a	(Ljava/lang/String;)LVACDReport/ReportHeader;
+    //   314: astore 18
+    //   316: aload 18
+    //   318: ifnonnull +109 -> 427
+    //   321: aload 13
+    //   323: astore 10
+    //   325: aload 14
+    //   327: astore 12
+    //   329: aload 13
+    //   331: astore 11
+    //   333: invokestatic 290	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   336: ifeq +981 -> 1317
+    //   339: aload 13
+    //   341: astore 10
+    //   343: aload 14
+    //   345: astore 12
+    //   347: aload 13
+    //   349: astore 11
+    //   351: new 171	java/lang/StringBuilder
+    //   354: dup
+    //   355: invokespecial 172	java/lang/StringBuilder:<init>	()V
+    //   358: astore 15
+    //   360: aload 13
+    //   362: astore 10
+    //   364: aload 14
+    //   366: astore 12
+    //   368: aload 13
+    //   370: astore 11
+    //   372: aload 15
+    //   374: ldc_w 292
+    //   377: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   380: pop
+    //   381: aload 13
+    //   383: astore 10
+    //   385: aload 14
+    //   387: astore 12
+    //   389: aload 13
+    //   391: astore 11
+    //   393: aload 15
+    //   395: lload 8
+    //   397: invokevirtual 295	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   400: pop
+    //   401: aload 13
+    //   403: astore 10
+    //   405: aload 14
+    //   407: astore 12
+    //   409: aload 13
+    //   411: astore 11
+    //   413: ldc 181
+    //   415: iconst_4
+    //   416: aload 15
+    //   418: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   421: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   424: goto +893 -> 1317
+    //   427: aload 16
+    //   429: astore 15
+    //   431: aload 16
+    //   433: ifnonnull +50 -> 483
+    //   436: aload 13
+    //   438: astore 10
+    //   440: aload 14
+    //   442: astore 12
+    //   444: aload 13
+    //   446: astore 11
+    //   448: new 285	VACDReport/ReportInfo
+    //   451: dup
+    //   452: invokespecial 296	VACDReport/ReportInfo:<init>	()V
+    //   455: astore 15
+    //   457: aload 13
+    //   459: astore 10
+    //   461: aload 14
+    //   463: astore 12
+    //   465: aload 13
+    //   467: astore 11
+    //   469: aload_1
+    //   470: lload 8
+    //   472: invokestatic 277	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   475: aload 15
+    //   477: invokeinterface 299 3 0
+    //   482: pop
+    //   483: aload 13
+    //   485: astore 10
+    //   487: aload 14
+    //   489: astore 12
+    //   491: aload 13
+    //   493: astore 11
+    //   495: aload 15
+    //   497: aload 18
+    //   499: putfield 303	VACDReport/ReportInfo:header	LVACDReport/ReportHeader;
+    //   502: aload 13
+    //   504: astore 10
+    //   506: aload 14
+    //   508: astore 12
+    //   510: aload 13
+    //   512: astore 11
+    //   514: aload 15
+    //   516: getfield 307	VACDReport/ReportInfo:body	LVACDReport/ReportBody;
+    //   519: ifnull +801 -> 1320
+    //   522: aload 13
+    //   524: astore 10
+    //   526: aload 14
+    //   528: astore 12
+    //   530: aload 13
+    //   532: astore 11
+    //   534: aload 15
+    //   536: getfield 307	VACDReport/ReportInfo:body	LVACDReport/ReportBody;
+    //   539: aload 18
+    //   541: getfield 116	VACDReport/ReportHeader:sKey	Ljava/lang/String;
+    //   544: putfield 310	VACDReport/ReportBody:sKey	Ljava/lang/String;
+    //   547: aload 13
+    //   549: astore 10
+    //   551: aload 14
+    //   553: astore 12
+    //   555: aload 13
+    //   557: astore 11
+    //   559: aload 15
+    //   561: getfield 307	VACDReport/ReportInfo:body	LVACDReport/ReportBody;
+    //   564: aload 18
+    //   566: getfield 111	VACDReport/ReportHeader:startTime	J
+    //   569: putfield 311	VACDReport/ReportBody:startTime	J
+    //   572: goto +754 -> 1326
+    //   575: iload 5
+    //   577: ifne +749 -> 1326
+    //   580: aload 16
+    //   582: ifnonnull +37 -> 619
+    //   585: aload 13
+    //   587: astore 10
+    //   589: aload 14
+    //   591: astore 12
+    //   593: aload 13
+    //   595: astore 11
+    //   597: aload_1
+    //   598: lload 8
+    //   600: invokestatic 277	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   603: new 285	VACDReport/ReportInfo
+    //   606: dup
+    //   607: invokespecial 296	VACDReport/ReportInfo:<init>	()V
+    //   610: invokeinterface 299 3 0
+    //   615: pop
+    //   616: goto +701 -> 1317
+    //   619: aload 13
+    //   621: astore 10
+    //   623: aload 14
+    //   625: astore 12
+    //   627: aload 13
+    //   629: astore 11
+    //   631: aload 16
+    //   633: getfield 307	VACDReport/ReportInfo:body	LVACDReport/ReportBody;
+    //   636: ifnonnull +687 -> 1323
+    //   639: aload 13
+    //   641: astore 10
+    //   643: aload 14
+    //   645: astore 12
+    //   647: aload 13
+    //   649: astore 11
+    //   651: aload 16
+    //   653: new 309	VACDReport/ReportBody
+    //   656: dup
+    //   657: invokespecial 312	VACDReport/ReportBody:<init>	()V
+    //   660: putfield 307	VACDReport/ReportInfo:body	LVACDReport/ReportBody;
+    //   663: aload 13
+    //   665: astore 10
+    //   667: aload 14
+    //   669: astore 12
+    //   671: aload 13
+    //   673: astore 11
+    //   675: aload 16
+    //   677: getfield 307	VACDReport/ReportInfo:body	LVACDReport/ReportBody;
+    //   680: new 233	java/util/ArrayList
+    //   683: dup
+    //   684: bipush 32
+    //   686: invokespecial 315	java/util/ArrayList:<init>	(I)V
+    //   689: putfield 319	VACDReport/ReportBody:reportItems	Ljava/util/ArrayList;
+    //   692: aload 13
+    //   694: astore 10
+    //   696: aload 14
+    //   698: astore 12
+    //   700: aload 13
+    //   702: astore 11
+    //   704: aload 16
+    //   706: getfield 303	VACDReport/ReportInfo:header	LVACDReport/ReportHeader;
+    //   709: ifnull +614 -> 1323
+    //   712: aload 13
+    //   714: astore 10
+    //   716: aload 14
+    //   718: astore 12
+    //   720: aload 13
+    //   722: astore 11
+    //   724: aload 16
+    //   726: getfield 307	VACDReport/ReportInfo:body	LVACDReport/ReportBody;
+    //   729: aload 16
+    //   731: getfield 303	VACDReport/ReportInfo:header	LVACDReport/ReportHeader;
+    //   734: getfield 116	VACDReport/ReportHeader:sKey	Ljava/lang/String;
+    //   737: putfield 310	VACDReport/ReportBody:sKey	Ljava/lang/String;
+    //   740: aload 13
+    //   742: astore 10
+    //   744: aload 14
+    //   746: astore 12
+    //   748: aload 13
+    //   750: astore 11
+    //   752: aload 16
+    //   754: getfield 307	VACDReport/ReportInfo:body	LVACDReport/ReportBody;
+    //   757: aload 16
+    //   759: getfield 303	VACDReport/ReportInfo:header	LVACDReport/ReportHeader;
+    //   762: getfield 111	VACDReport/ReportHeader:startTime	J
+    //   765: putfield 311	VACDReport/ReportBody:startTime	J
+    //   768: goto +3 -> 771
+    //   771: aload 13
+    //   773: astore 10
+    //   775: aload 14
+    //   777: astore 12
+    //   779: aload 13
+    //   781: astore 11
+    //   783: aload_0
+    //   784: aload 15
+    //   786: invokespecial 321	com/tencent/mobileqq/qwallet/report/impl/VACDReportDBHelper:a	(Ljava/lang/String;)LVACDReport/ReportItem;
+    //   789: astore 18
+    //   791: aload 18
+    //   793: ifnonnull +109 -> 902
+    //   796: aload 13
+    //   798: astore 10
+    //   800: aload 14
+    //   802: astore 12
+    //   804: aload 13
+    //   806: astore 11
+    //   808: invokestatic 290	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   811: ifeq +197 -> 1008
+    //   814: aload 13
+    //   816: astore 10
+    //   818: aload 14
+    //   820: astore 12
+    //   822: aload 13
+    //   824: astore 11
+    //   826: new 171	java/lang/StringBuilder
+    //   829: dup
+    //   830: invokespecial 172	java/lang/StringBuilder:<init>	()V
+    //   833: astore 16
+    //   835: aload 13
+    //   837: astore 10
+    //   839: aload 14
+    //   841: astore 12
+    //   843: aload 13
+    //   845: astore 11
+    //   847: aload 16
+    //   849: ldc_w 323
+    //   852: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   855: pop
+    //   856: aload 13
+    //   858: astore 10
+    //   860: aload 14
+    //   862: astore 12
+    //   864: aload 13
+    //   866: astore 11
+    //   868: aload 16
+    //   870: aload 15
+    //   872: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   875: pop
+    //   876: aload 13
+    //   878: astore 10
+    //   880: aload 14
+    //   882: astore 12
+    //   884: aload 13
+    //   886: astore 11
+    //   888: ldc 181
+    //   890: iconst_4
+    //   891: aload 16
+    //   893: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   896: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   899: goto +109 -> 1008
+    //   902: aload 13
+    //   904: astore 10
+    //   906: aload 14
+    //   908: astore 12
+    //   910: aload 13
+    //   912: astore 11
+    //   914: aload 16
+    //   916: getfield 307	VACDReport/ReportInfo:body	LVACDReport/ReportBody;
+    //   919: getfield 319	VACDReport/ReportBody:reportItems	Ljava/util/ArrayList;
+    //   922: aload 18
+    //   924: invokevirtual 327	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   927: pop
+    //   928: goto +3 -> 931
+    //   931: aload 13
+    //   933: astore 10
+    //   935: aload 14
+    //   937: astore 12
+    //   939: aload 13
+    //   941: astore 11
+    //   943: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   946: ifeq +62 -> 1008
+    //   949: iload 5
+    //   951: ifeq +9 -> 960
+    //   954: iconst_1
+    //   955: iload 5
+    //   957: if_icmpne +51 -> 1008
+    //   960: aload 13
+    //   962: astore 10
+    //   964: aload 14
+    //   966: astore 12
+    //   968: aload 13
+    //   970: astore 11
+    //   972: aload 17
+    //   974: lload 8
+    //   976: invokestatic 330	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   979: invokevirtual 333	java/util/ArrayList:contains	(Ljava/lang/Object;)Z
+    //   982: ifne +26 -> 1008
+    //   985: aload 13
+    //   987: astore 10
+    //   989: aload 14
+    //   991: astore 12
+    //   993: aload 13
+    //   995: astore 11
+    //   997: aload 17
+    //   999: lload 8
+    //   1001: invokestatic 330	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   1004: invokevirtual 327	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   1007: pop
+    //   1008: aload 13
+    //   1010: astore 10
+    //   1012: aload 14
+    //   1014: astore 12
+    //   1016: aload 13
+    //   1018: astore 11
+    //   1020: aload 13
+    //   1022: invokeinterface 336 1 0
+    //   1027: pop
+    //   1028: goto -855 -> 173
+    //   1031: aload 14
+    //   1033: ifnull +296 -> 1329
+    //   1036: aload 14
+    //   1038: invokevirtual 339	android/database/sqlite/SQLiteDatabase:close	()V
+    //   1041: goto +288 -> 1329
+    //   1044: aload 11
+    //   1046: invokeinterface 340 1 0
+    //   1051: goto +132 -> 1183
+    //   1054: astore_1
+    //   1055: goto +217 -> 1272
+    //   1058: astore 15
+    //   1060: aload 14
+    //   1062: astore 13
+    //   1064: goto +15 -> 1079
+    //   1067: astore_1
+    //   1068: aconst_null
+    //   1069: astore 12
+    //   1071: goto +201 -> 1272
+    //   1074: astore 15
+    //   1076: aconst_null
+    //   1077: astore 13
+    //   1079: aload 11
+    //   1081: astore 10
+    //   1083: aload 13
+    //   1085: astore 12
+    //   1087: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1090: ifeq +75 -> 1165
+    //   1093: aload 11
+    //   1095: astore 10
+    //   1097: aload 13
+    //   1099: astore 12
+    //   1101: new 171	java/lang/StringBuilder
+    //   1104: dup
+    //   1105: invokespecial 172	java/lang/StringBuilder:<init>	()V
+    //   1108: astore 14
+    //   1110: aload 11
+    //   1112: astore 10
+    //   1114: aload 13
+    //   1116: astore 12
+    //   1118: aload 14
+    //   1120: ldc_w 342
+    //   1123: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1126: pop
+    //   1127: aload 11
+    //   1129: astore 10
+    //   1131: aload 13
+    //   1133: astore 12
+    //   1135: aload 14
+    //   1137: aload 15
+    //   1139: invokevirtual 343	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   1142: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1145: pop
+    //   1146: aload 11
+    //   1148: astore 10
+    //   1150: aload 13
+    //   1152: astore 12
+    //   1154: ldc 181
+    //   1156: iconst_2
+    //   1157: aload 14
+    //   1159: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1162: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1165: aload 13
+    //   1167: ifnull +8 -> 1175
+    //   1170: aload 13
+    //   1172: invokevirtual 339	android/database/sqlite/SQLiteDatabase:close	()V
+    //   1175: aload 11
+    //   1177: ifnull +6 -> 1183
+    //   1180: goto -136 -> 1044
+    //   1183: invokestatic 290	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   1186: ifeq +82 -> 1268
+    //   1189: new 171	java/lang/StringBuilder
+    //   1192: dup
+    //   1193: invokespecial 172	java/lang/StringBuilder:<init>	()V
+    //   1196: astore 10
+    //   1198: aload 10
+    //   1200: ldc_w 345
+    //   1203: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1206: pop
+    //   1207: aload 10
+    //   1209: invokestatic 231	java/lang/System:currentTimeMillis	()J
+    //   1212: lload 6
+    //   1214: lsub
+    //   1215: invokevirtual 295	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1218: pop
+    //   1219: aload 10
+    //   1221: ldc_w 347
+    //   1224: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1227: pop
+    //   1228: aload 10
+    //   1230: aload_1
+    //   1231: invokeinterface 350 1 0
+    //   1236: invokevirtual 353	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1239: pop
+    //   1240: aload 10
+    //   1242: ldc_w 355
+    //   1245: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1248: pop
+    //   1249: aload 10
+    //   1251: aload 17
+    //   1253: invokevirtual 358	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1256: pop
+    //   1257: ldc 181
+    //   1259: iconst_4
+    //   1260: aload 10
+    //   1262: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1265: invokestatic 361	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1268: aload_0
+    //   1269: monitorexit
+    //   1270: aload_1
+    //   1271: areturn
+    //   1272: aload 12
+    //   1274: ifnull +8 -> 1282
+    //   1277: aload 12
+    //   1279: invokevirtual 339	android/database/sqlite/SQLiteDatabase:close	()V
+    //   1282: aload 10
+    //   1284: ifnull +10 -> 1294
+    //   1287: aload 10
+    //   1289: invokeinterface 340 1 0
+    //   1294: aload_1
+    //   1295: athrow
+    //   1296: astore_1
+    //   1297: aload_0
+    //   1298: monitorexit
+    //   1299: goto +5 -> 1304
+    //   1302: aload_1
+    //   1303: athrow
+    //   1304: goto -2 -> 1302
+    //   1307: astore 10
+    //   1309: goto -126 -> 1183
+    //   1312: astore 10
+    //   1314: goto -20 -> 1294
+    //   1317: goto -309 -> 1008
+    //   1320: goto +6 -> 1326
+    //   1323: goto -552 -> 771
+    //   1326: goto -395 -> 931
+    //   1329: aload 13
+    //   1331: ifnull -148 -> 1183
+    //   1334: aload 13
+    //   1336: astore 11
+    //   1338: goto -294 -> 1044
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	1341	0	this	VACDReportDBHelper
+    //   0	1341	1	paramMap	java.util.Map<java.lang.Long, VACDReport.ReportInfo>
+    //   152	81	2	i	int
+    //   130	125	3	j	int
+    //   107	103	4	k	int
+    //   238	720	5	m	int
+    //   5	1208	6	l1	long
+    //   216	784	8	l2	long
+    //   23	1265	10	localObject1	Object
+    //   1307	1	10	localException1	Exception
+    //   1312	1	10	localException2	Exception
+    //   20	1317	11	localObject2	Object
+    //   26	1252	12	localObject3	Object
+    //   17	1318	13	localObject4	Object
+    //   32	1126	14	localObject5	Object
+    //   260	611	15	localObject6	Object
+    //   1058	1	15	localThrowable1	java.lang.Throwable
+    //   1074	64	15	localThrowable2	java.lang.Throwable
+    //   288	627	16	localObject7	Object
+    //   14	1238	17	localArrayList	java.util.ArrayList
+    //   314	609	18	localObject8	Object
+    // Exception table:
+    //   from	to	target	type
+    //   46	59	1054	finally
+    //   76	86	1054	finally
+    //   98	109	1054	finally
+    //   121	131	1054	finally
+    //   143	153	1054	finally
+    //   165	173	1054	finally
+    //   185	195	1054	finally
+    //   207	218	1054	finally
+    //   230	240	1054	finally
+    //   252	262	1054	finally
+    //   274	290	1054	finally
+    //   308	316	1054	finally
+    //   333	339	1054	finally
+    //   351	360	1054	finally
+    //   372	381	1054	finally
+    //   393	401	1054	finally
+    //   413	424	1054	finally
+    //   448	457	1054	finally
+    //   469	483	1054	finally
+    //   495	502	1054	finally
+    //   514	522	1054	finally
+    //   534	547	1054	finally
+    //   559	572	1054	finally
+    //   597	616	1054	finally
+    //   631	639	1054	finally
+    //   651	663	1054	finally
+    //   675	692	1054	finally
+    //   704	712	1054	finally
+    //   724	740	1054	finally
+    //   752	768	1054	finally
+    //   783	791	1054	finally
+    //   808	814	1054	finally
+    //   826	835	1054	finally
+    //   847	856	1054	finally
+    //   868	876	1054	finally
+    //   888	899	1054	finally
+    //   914	928	1054	finally
+    //   943	949	1054	finally
+    //   972	985	1054	finally
+    //   997	1008	1054	finally
+    //   1020	1028	1054	finally
+    //   1087	1093	1054	finally
+    //   1101	1110	1054	finally
+    //   1118	1127	1054	finally
+    //   1135	1146	1054	finally
+    //   1154	1165	1054	finally
+    //   46	59	1058	java/lang/Throwable
+    //   76	86	1058	java/lang/Throwable
+    //   98	109	1058	java/lang/Throwable
+    //   121	131	1058	java/lang/Throwable
+    //   143	153	1058	java/lang/Throwable
+    //   165	173	1058	java/lang/Throwable
+    //   185	195	1058	java/lang/Throwable
+    //   207	218	1058	java/lang/Throwable
+    //   230	240	1058	java/lang/Throwable
+    //   252	262	1058	java/lang/Throwable
+    //   274	290	1058	java/lang/Throwable
+    //   308	316	1058	java/lang/Throwable
+    //   333	339	1058	java/lang/Throwable
+    //   351	360	1058	java/lang/Throwable
+    //   372	381	1058	java/lang/Throwable
+    //   393	401	1058	java/lang/Throwable
+    //   413	424	1058	java/lang/Throwable
+    //   448	457	1058	java/lang/Throwable
+    //   469	483	1058	java/lang/Throwable
+    //   495	502	1058	java/lang/Throwable
+    //   514	522	1058	java/lang/Throwable
+    //   534	547	1058	java/lang/Throwable
+    //   559	572	1058	java/lang/Throwable
+    //   597	616	1058	java/lang/Throwable
+    //   631	639	1058	java/lang/Throwable
+    //   651	663	1058	java/lang/Throwable
+    //   675	692	1058	java/lang/Throwable
+    //   704	712	1058	java/lang/Throwable
+    //   724	740	1058	java/lang/Throwable
+    //   752	768	1058	java/lang/Throwable
+    //   783	791	1058	java/lang/Throwable
+    //   808	814	1058	java/lang/Throwable
+    //   826	835	1058	java/lang/Throwable
+    //   847	856	1058	java/lang/Throwable
+    //   868	876	1058	java/lang/Throwable
+    //   888	899	1058	java/lang/Throwable
+    //   914	928	1058	java/lang/Throwable
+    //   943	949	1058	java/lang/Throwable
+    //   972	985	1058	java/lang/Throwable
+    //   997	1008	1058	java/lang/Throwable
+    //   1020	1028	1058	java/lang/Throwable
+    //   28	34	1067	finally
+    //   28	34	1074	java/lang/Throwable
+    //   2	16	1296	finally
+    //   1036	1041	1296	finally
+    //   1044	1051	1296	finally
+    //   1170	1175	1296	finally
+    //   1183	1268	1296	finally
+    //   1277	1282	1296	finally
+    //   1287	1294	1296	finally
+    //   1294	1296	1296	finally
+    //   1036	1041	1307	java/lang/Exception
+    //   1044	1051	1307	java/lang/Exception
+    //   1170	1175	1307	java/lang/Exception
+    //   1277	1282	1312	java/lang/Exception
+    //   1287	1294	1312	java/lang/Exception
   }
   
   /* Error */
-  public void a(java.util.List<Long> paramList)
+  public void a(java.util.List<java.lang.Long> paramList)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_1
-    //   3: ifnull +16 -> 19
+    //   3: ifnull +593 -> 596
     //   6: aload_1
     //   7: invokeinterface 368 1 0
     //   12: istore 4
     //   14: iload 4
     //   16: ifeq +6 -> 22
-    //   19: aload_0
-    //   20: monitorexit
-    //   21: return
+    //   19: goto +577 -> 596
     //   22: aconst_null
     //   23: astore 6
     //   25: aconst_null
@@ -508,7 +945,7 @@ public final class VACDReportDBHelper
     //   64: astore 5
     //   66: aload 7
     //   68: astore 6
-    //   70: new 173	java/lang/StringBuilder
+    //   70: new 171	java/lang/StringBuilder
     //   73: dup
     //   74: iload_3
     //   75: bipush 14
@@ -536,748 +973,821 @@ public final class VACDReportDBHelper
     //   118: iload_3
     //   119: iconst_1
     //   120: isub
-    //   121: if_icmpge +350 -> 471
+    //   121: if_icmpge +478 -> 599
     //   124: aload 7
     //   126: astore 5
     //   128: aload 7
     //   130: astore 6
     //   132: aload 8
     //   134: ldc_w 384
-    //   137: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   137: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   140: pop
-    //   141: goto +330 -> 471
+    //   141: goto +458 -> 599
     //   144: aload 7
     //   146: astore 5
     //   148: aload 7
     //   150: astore 6
-    //   152: aload 7
-    //   154: new 173	java/lang/StringBuilder
-    //   157: dup
-    //   158: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   161: ldc_w 386
-    //   164: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   167: aload 8
-    //   169: invokevirtual 320	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   172: ldc_w 388
-    //   175: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   178: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   181: invokevirtual 212	android/database/sqlite/SQLiteDatabase:execSQL	(Ljava/lang/String;)V
-    //   184: aload 7
-    //   186: astore 5
-    //   188: aload 7
-    //   190: astore 6
-    //   192: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   195: ifeq +41 -> 236
-    //   198: aload 7
-    //   200: astore 5
-    //   202: aload 7
-    //   204: astore 6
-    //   206: ldc 171
-    //   208: iconst_2
-    //   209: new 173	java/lang/StringBuilder
-    //   212: dup
-    //   213: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   216: ldc_w 390
-    //   219: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   222: aload 8
-    //   224: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   227: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   230: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   233: invokestatic 323	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   236: aload 7
-    //   238: astore 5
-    //   240: aload 7
-    //   242: astore 6
-    //   244: aload 7
-    //   246: invokevirtual 393	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
-    //   249: aload 7
-    //   251: ifnull -232 -> 19
+    //   152: new 171	java/lang/StringBuilder
+    //   155: dup
+    //   156: invokespecial 172	java/lang/StringBuilder:<init>	()V
+    //   159: astore_1
+    //   160: aload 7
+    //   162: astore 5
+    //   164: aload 7
+    //   166: astore 6
+    //   168: aload_1
+    //   169: ldc_w 386
+    //   172: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   175: pop
+    //   176: aload 7
+    //   178: astore 5
+    //   180: aload 7
+    //   182: astore 6
+    //   184: aload_1
+    //   185: aload 8
+    //   187: invokevirtual 358	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   190: pop
+    //   191: aload 7
+    //   193: astore 5
+    //   195: aload 7
+    //   197: astore 6
+    //   199: aload_1
+    //   200: ldc_w 388
+    //   203: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   206: pop
+    //   207: aload 7
+    //   209: astore 5
+    //   211: aload 7
+    //   213: astore 6
+    //   215: aload 7
+    //   217: aload_1
+    //   218: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   221: invokevirtual 212	android/database/sqlite/SQLiteDatabase:execSQL	(Ljava/lang/String;)V
+    //   224: aload 7
+    //   226: astore 5
+    //   228: aload 7
+    //   230: astore 6
+    //   232: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   235: ifeq +71 -> 306
+    //   238: aload 7
+    //   240: astore 5
+    //   242: aload 7
+    //   244: astore 6
+    //   246: new 171	java/lang/StringBuilder
+    //   249: dup
+    //   250: invokespecial 172	java/lang/StringBuilder:<init>	()V
+    //   253: astore_1
     //   254: aload 7
-    //   256: invokevirtual 396	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   259: aload 7
-    //   261: invokevirtual 304	android/database/sqlite/SQLiteDatabase:close	()V
-    //   264: goto -245 -> 19
-    //   267: astore_1
-    //   268: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   271: ifeq -252 -> 19
-    //   274: ldc 171
-    //   276: iconst_2
-    //   277: new 173	java/lang/StringBuilder
-    //   280: dup
-    //   281: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   284: ldc_w 398
-    //   287: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   290: aload_1
-    //   291: invokevirtual 181	java/lang/Exception:toString	()Ljava/lang/String;
-    //   294: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   297: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   300: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   303: goto -284 -> 19
-    //   306: astore_1
-    //   307: aload_0
-    //   308: monitorexit
-    //   309: aload_1
-    //   310: athrow
-    //   311: astore_1
-    //   312: aload 5
-    //   314: astore 6
-    //   316: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   319: ifeq +36 -> 355
-    //   322: aload 5
-    //   324: astore 6
-    //   326: ldc 171
-    //   328: iconst_2
-    //   329: new 173	java/lang/StringBuilder
-    //   332: dup
-    //   333: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   336: ldc_w 400
-    //   339: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   342: aload_1
-    //   343: invokevirtual 181	java/lang/Exception:toString	()Ljava/lang/String;
-    //   346: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   349: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   352: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   355: aload 5
-    //   357: ifnull -338 -> 19
-    //   360: aload 5
-    //   362: invokevirtual 396	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   365: aload 5
-    //   367: invokevirtual 304	android/database/sqlite/SQLiteDatabase:close	()V
-    //   370: goto -351 -> 19
-    //   373: astore_1
-    //   374: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   377: ifeq -358 -> 19
-    //   380: ldc 171
-    //   382: iconst_2
-    //   383: new 173	java/lang/StringBuilder
-    //   386: dup
-    //   387: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   390: ldc_w 398
-    //   393: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   396: aload_1
-    //   397: invokevirtual 181	java/lang/Exception:toString	()Ljava/lang/String;
-    //   400: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   403: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   406: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   409: goto -390 -> 19
-    //   412: astore_1
-    //   413: aload 6
-    //   415: ifnull +13 -> 428
-    //   418: aload 6
-    //   420: invokevirtual 396	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   423: aload 6
-    //   425: invokevirtual 304	android/database/sqlite/SQLiteDatabase:close	()V
-    //   428: aload_1
-    //   429: athrow
-    //   430: astore 5
-    //   432: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   435: ifeq -7 -> 428
-    //   438: ldc 171
-    //   440: iconst_2
-    //   441: new 173	java/lang/StringBuilder
-    //   444: dup
-    //   445: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   448: ldc_w 398
-    //   451: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   454: aload 5
-    //   456: invokevirtual 181	java/lang/Exception:toString	()Ljava/lang/String;
-    //   459: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   462: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   465: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   468: goto -40 -> 428
-    //   471: iload_2
-    //   472: iconst_1
-    //   473: iadd
-    //   474: istore_2
-    //   475: goto -390 -> 85
+    //   256: astore 5
+    //   258: aload 7
+    //   260: astore 6
+    //   262: aload_1
+    //   263: ldc_w 390
+    //   266: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   269: pop
+    //   270: aload 7
+    //   272: astore 5
+    //   274: aload 7
+    //   276: astore 6
+    //   278: aload_1
+    //   279: aload 8
+    //   281: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   284: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   287: pop
+    //   288: aload 7
+    //   290: astore 5
+    //   292: aload 7
+    //   294: astore 6
+    //   296: ldc 181
+    //   298: iconst_2
+    //   299: aload_1
+    //   300: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   303: invokestatic 361	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   306: aload 7
+    //   308: astore 5
+    //   310: aload 7
+    //   312: astore 6
+    //   314: aload 7
+    //   316: invokevirtual 393	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
+    //   319: aload 7
+    //   321: ifnull +199 -> 520
+    //   324: aload 7
+    //   326: invokevirtual 396	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   329: aload 7
+    //   331: invokevirtual 339	android/database/sqlite/SQLiteDatabase:close	()V
+    //   334: goto +186 -> 520
+    //   337: astore_1
+    //   338: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   341: ifeq +179 -> 520
+    //   344: new 171	java/lang/StringBuilder
+    //   347: dup
+    //   348: invokespecial 172	java/lang/StringBuilder:<init>	()V
+    //   351: astore 5
+    //   353: aload 5
+    //   355: ldc_w 398
+    //   358: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   361: pop
+    //   362: aload 5
+    //   364: aload_1
+    //   365: invokevirtual 179	java/lang/Exception:toString	()Ljava/lang/String;
+    //   368: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   371: pop
+    //   372: aload 5
+    //   374: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   377: astore_1
+    //   378: ldc 181
+    //   380: iconst_2
+    //   381: aload_1
+    //   382: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   385: goto +135 -> 520
+    //   388: astore_1
+    //   389: goto +134 -> 523
+    //   392: astore_1
+    //   393: aload 6
+    //   395: astore 5
+    //   397: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   400: ifeq +58 -> 458
+    //   403: aload 6
+    //   405: astore 5
+    //   407: new 171	java/lang/StringBuilder
+    //   410: dup
+    //   411: invokespecial 172	java/lang/StringBuilder:<init>	()V
+    //   414: astore 7
+    //   416: aload 6
+    //   418: astore 5
+    //   420: aload 7
+    //   422: ldc_w 400
+    //   425: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   428: pop
+    //   429: aload 6
+    //   431: astore 5
+    //   433: aload 7
+    //   435: aload_1
+    //   436: invokevirtual 179	java/lang/Exception:toString	()Ljava/lang/String;
+    //   439: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   442: pop
+    //   443: aload 6
+    //   445: astore 5
+    //   447: ldc 181
+    //   449: iconst_2
+    //   450: aload 7
+    //   452: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   455: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   458: aload 6
+    //   460: ifnull +60 -> 520
+    //   463: aload 6
+    //   465: invokevirtual 396	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   468: aload 6
+    //   470: invokevirtual 339	android/database/sqlite/SQLiteDatabase:close	()V
+    //   473: goto +47 -> 520
+    //   476: astore_1
+    //   477: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   480: ifeq +40 -> 520
+    //   483: new 171	java/lang/StringBuilder
+    //   486: dup
+    //   487: invokespecial 172	java/lang/StringBuilder:<init>	()V
+    //   490: astore 5
+    //   492: aload 5
+    //   494: ldc_w 398
+    //   497: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   500: pop
+    //   501: aload 5
+    //   503: aload_1
+    //   504: invokevirtual 179	java/lang/Exception:toString	()Ljava/lang/String;
+    //   507: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   510: pop
+    //   511: aload 5
+    //   513: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   516: astore_1
+    //   517: goto -139 -> 378
+    //   520: aload_0
+    //   521: monitorexit
+    //   522: return
+    //   523: aload 5
+    //   525: ifnull +64 -> 589
+    //   528: aload 5
+    //   530: invokevirtual 396	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   533: aload 5
+    //   535: invokevirtual 339	android/database/sqlite/SQLiteDatabase:close	()V
+    //   538: goto +51 -> 589
+    //   541: astore 5
+    //   543: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   546: ifeq +43 -> 589
+    //   549: new 171	java/lang/StringBuilder
+    //   552: dup
+    //   553: invokespecial 172	java/lang/StringBuilder:<init>	()V
+    //   556: astore 6
+    //   558: aload 6
+    //   560: ldc_w 398
+    //   563: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   566: pop
+    //   567: aload 6
+    //   569: aload 5
+    //   571: invokevirtual 179	java/lang/Exception:toString	()Ljava/lang/String;
+    //   574: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   577: pop
+    //   578: ldc 181
+    //   580: iconst_2
+    //   581: aload 6
+    //   583: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   586: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   589: aload_1
+    //   590: athrow
+    //   591: astore_1
+    //   592: aload_0
+    //   593: monitorexit
+    //   594: aload_1
+    //   595: athrow
+    //   596: aload_0
+    //   597: monitorexit
+    //   598: return
+    //   599: iload_2
+    //   600: iconst_1
+    //   601: iadd
+    //   602: istore_2
+    //   603: goto -518 -> 85
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	478	0	this	VACDReportDBHelper
-    //   0	478	1	paramList	java.util.List<Long>
-    //   84	391	2	i	int
+    //   0	606	0	this	VACDReportDBHelper
+    //   0	606	1	paramList	java.util.List<java.lang.Long>
+    //   84	519	2	i	int
     //   61	60	3	j	int
     //   12	3	4	bool	boolean
-    //   26	340	5	localObject1	Object
-    //   430	25	5	localException	Exception
-    //   23	401	6	localObject2	Object
-    //   32	228	7	localSQLiteDatabase	SQLiteDatabase
-    //   81	142	8	localStringBuilder	StringBuilder
+    //   26	508	5	localObject1	Object
+    //   541	29	5	localException	Exception
+    //   23	559	6	localObject2	Object
+    //   32	419	7	localObject3	Object
+    //   81	199	8	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   254	264	267	java/lang/Exception
-    //   6	14	306	finally
-    //   254	264	306	finally
-    //   268	303	306	finally
-    //   360	370	306	finally
-    //   374	409	306	finally
-    //   418	428	306	finally
-    //   428	430	306	finally
-    //   432	468	306	finally
-    //   28	34	311	java/lang/Exception
-    //   42	47	311	java/lang/Exception
-    //   55	62	311	java/lang/Exception
-    //   70	83	311	java/lang/Exception
-    //   98	117	311	java/lang/Exception
-    //   132	141	311	java/lang/Exception
-    //   152	184	311	java/lang/Exception
-    //   192	198	311	java/lang/Exception
-    //   206	236	311	java/lang/Exception
-    //   244	249	311	java/lang/Exception
-    //   360	370	373	java/lang/Exception
-    //   28	34	412	finally
-    //   42	47	412	finally
-    //   55	62	412	finally
-    //   70	83	412	finally
-    //   98	117	412	finally
-    //   132	141	412	finally
-    //   152	184	412	finally
-    //   192	198	412	finally
-    //   206	236	412	finally
-    //   244	249	412	finally
-    //   316	322	412	finally
-    //   326	355	412	finally
-    //   418	428	430	java/lang/Exception
+    //   324	334	337	java/lang/Exception
+    //   28	34	388	finally
+    //   42	47	388	finally
+    //   55	62	388	finally
+    //   70	83	388	finally
+    //   98	117	388	finally
+    //   132	141	388	finally
+    //   152	160	388	finally
+    //   168	176	388	finally
+    //   184	191	388	finally
+    //   199	207	388	finally
+    //   215	224	388	finally
+    //   232	238	388	finally
+    //   246	254	388	finally
+    //   262	270	388	finally
+    //   278	288	388	finally
+    //   296	306	388	finally
+    //   314	319	388	finally
+    //   397	403	388	finally
+    //   407	416	388	finally
+    //   420	429	388	finally
+    //   433	443	388	finally
+    //   447	458	388	finally
+    //   28	34	392	java/lang/Exception
+    //   42	47	392	java/lang/Exception
+    //   55	62	392	java/lang/Exception
+    //   70	83	392	java/lang/Exception
+    //   98	117	392	java/lang/Exception
+    //   132	141	392	java/lang/Exception
+    //   152	160	392	java/lang/Exception
+    //   168	176	392	java/lang/Exception
+    //   184	191	392	java/lang/Exception
+    //   199	207	392	java/lang/Exception
+    //   215	224	392	java/lang/Exception
+    //   232	238	392	java/lang/Exception
+    //   246	254	392	java/lang/Exception
+    //   262	270	392	java/lang/Exception
+    //   278	288	392	java/lang/Exception
+    //   296	306	392	java/lang/Exception
+    //   314	319	392	java/lang/Exception
+    //   463	473	476	java/lang/Exception
+    //   528	538	541	java/lang/Exception
+    //   6	14	591	finally
+    //   324	334	591	finally
+    //   338	378	591	finally
+    //   378	385	591	finally
+    //   463	473	591	finally
+    //   477	517	591	finally
+    //   528	538	591	finally
+    //   543	589	591	finally
+    //   589	591	591	finally
   }
   
   /* Error */
   public void b(java.util.List<ReportItem> paramList)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aconst_null
-    //   4: astore_3
-    //   5: aload_0
-    //   6: monitorenter
-    //   7: aload_1
-    //   8: ifnull +14 -> 22
-    //   11: aload_1
-    //   12: invokeinterface 368 1 0
-    //   17: istore_2
-    //   18: iload_2
-    //   19: ifeq +6 -> 25
-    //   22: aload_0
-    //   23: monitorexit
-    //   24: return
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: ifnull +421 -> 424
+    //   6: aload_1
+    //   7: invokeinterface 368 1 0
+    //   12: istore_2
+    //   13: iload_2
+    //   14: ifeq +6 -> 20
+    //   17: goto +407 -> 424
+    //   20: aconst_null
+    //   21: astore 5
+    //   23: aconst_null
+    //   24: astore_3
     //   25: aload_0
     //   26: invokevirtual 371	com/tencent/mobileqq/qwallet/report/impl/VACDReportDBHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   29: astore 5
-    //   31: aload 5
-    //   33: astore_3
-    //   34: aload 5
-    //   36: astore 4
-    //   38: aload 5
-    //   40: invokevirtual 374	android/database/sqlite/SQLiteDatabase:beginTransaction	()V
-    //   43: aload 5
-    //   45: astore_3
-    //   46: aload 5
-    //   48: astore 4
-    //   50: new 403	android/content/ContentValues
-    //   53: dup
-    //   54: invokespecial 404	android/content/ContentValues:<init>	()V
-    //   57: astore 6
-    //   59: aload 5
-    //   61: astore_3
-    //   62: aload 5
-    //   64: astore 4
-    //   66: aload_1
-    //   67: invokeinterface 408 1 0
-    //   72: astore_1
-    //   73: aload 5
-    //   75: astore_3
-    //   76: aload 5
-    //   78: astore 4
-    //   80: aload_1
-    //   81: invokeinterface 413 1 0
-    //   86: ifeq +242 -> 328
-    //   89: aload 5
-    //   91: astore_3
-    //   92: aload 5
-    //   94: astore 4
-    //   96: aload_1
-    //   97: invokeinterface 417 1 0
-    //   102: checkcast 119	VACDReport/ReportItem
-    //   105: astore 7
-    //   107: aload 7
-    //   109: ifnull -36 -> 73
-    //   112: aload 5
-    //   114: astore_3
-    //   115: aload 5
-    //   117: astore 4
-    //   119: aload 6
-    //   121: invokevirtual 420	android/content/ContentValues:clear	()V
-    //   124: aload 5
-    //   126: astore_3
-    //   127: aload 5
-    //   129: astore 4
-    //   131: aload 6
-    //   133: ldc 62
-    //   135: aload 7
-    //   137: getfield 135	VACDReport/ReportItem:seqno	J
-    //   140: invokestatic 277	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   143: invokevirtual 423	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   146: aload 5
-    //   148: astore_3
-    //   149: aload 5
-    //   151: astore 4
-    //   153: aload 6
-    //   155: ldc 205
-    //   157: aload_0
-    //   158: aload 7
-    //   160: invokespecial 425	com/tencent/mobileqq/qwallet/report/impl/VACDReportDBHelper:a	(LVACDReport/ReportItem;)Ljava/lang/String;
-    //   163: invokevirtual 428	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   166: aload 5
-    //   168: astore_3
-    //   169: aload 5
-    //   171: astore 4
-    //   173: aload 6
-    //   175: ldc 96
-    //   177: aload 7
-    //   179: getfield 125	VACDReport/ReportItem:createTime	J
-    //   182: invokestatic 277	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   185: invokevirtual 423	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   188: aload 5
-    //   190: astore_3
-    //   191: aload 5
-    //   193: astore 4
-    //   195: aload 6
-    //   197: ldc 201
-    //   199: iconst_0
-    //   200: invokestatic 433	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   203: invokevirtual 436	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   206: aload 5
-    //   208: astore_3
-    //   209: aload 5
-    //   211: astore 4
-    //   213: aload 5
-    //   215: ldc 195
-    //   217: aconst_null
-    //   218: aload 6
-    //   220: invokevirtual 440	android/database/sqlite/SQLiteDatabase:insertOrThrow	(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
-    //   223: pop2
-    //   224: goto -151 -> 73
+    //   29: astore 4
+    //   31: aload 4
+    //   33: invokevirtual 374	android/database/sqlite/SQLiteDatabase:beginTransaction	()V
+    //   36: new 403	android/content/ContentValues
+    //   39: dup
+    //   40: invokespecial 404	android/content/ContentValues:<init>	()V
+    //   43: astore_3
+    //   44: aload_1
+    //   45: invokeinterface 408 1 0
+    //   50: astore_1
+    //   51: aload_1
+    //   52: invokeinterface 413 1 0
+    //   57: ifeq +86 -> 143
+    //   60: aload_1
+    //   61: invokeinterface 417 1 0
+    //   66: checkcast 119	VACDReport/ReportItem
+    //   69: astore 5
+    //   71: aload 5
+    //   73: ifnull -22 -> 51
+    //   76: aload_3
+    //   77: invokevirtual 420	android/content/ContentValues:clear	()V
+    //   80: aload_3
+    //   81: ldc 62
+    //   83: aload 5
+    //   85: getfield 135	VACDReport/ReportItem:seqno	J
+    //   88: invokestatic 277	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   91: invokevirtual 423	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   94: aload_3
+    //   95: ldc 205
+    //   97: aload_0
+    //   98: aload 5
+    //   100: invokespecial 425	com/tencent/mobileqq/qwallet/report/impl/VACDReportDBHelper:a	(LVACDReport/ReportItem;)Ljava/lang/String;
+    //   103: invokevirtual 428	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   106: aload_3
+    //   107: ldc 96
+    //   109: aload 5
+    //   111: getfield 125	VACDReport/ReportItem:createTime	J
+    //   114: invokestatic 277	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   117: invokevirtual 423	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   120: aload_3
+    //   121: ldc 201
+    //   123: iconst_0
+    //   124: invokestatic 433	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   127: invokevirtual 436	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   130: aload 4
+    //   132: ldc 195
+    //   134: aconst_null
+    //   135: aload_3
+    //   136: invokevirtual 440	android/database/sqlite/SQLiteDatabase:insertOrThrow	(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    //   139: pop2
+    //   140: goto -89 -> 51
+    //   143: aload 4
+    //   145: invokevirtual 393	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
+    //   148: aload 4
+    //   150: ifnull +200 -> 350
+    //   153: aload 4
+    //   155: invokevirtual 396	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   158: aload 4
+    //   160: invokevirtual 339	android/database/sqlite/SQLiteDatabase:close	()V
+    //   163: goto +187 -> 350
+    //   166: astore_1
+    //   167: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   170: ifeq +180 -> 350
+    //   173: new 171	java/lang/StringBuilder
+    //   176: dup
+    //   177: invokespecial 172	java/lang/StringBuilder:<init>	()V
+    //   180: astore_3
+    //   181: aload_3
+    //   182: ldc_w 442
+    //   185: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   188: pop
+    //   189: aload_3
+    //   190: aload_1
+    //   191: invokevirtual 179	java/lang/Exception:toString	()Ljava/lang/String;
+    //   194: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   197: pop
+    //   198: aload_3
+    //   199: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   202: astore_1
+    //   203: ldc 181
+    //   205: iconst_4
+    //   206: aload_1
+    //   207: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   210: goto +140 -> 350
+    //   213: astore_1
+    //   214: goto +139 -> 353
+    //   217: astore_3
+    //   218: aload 4
+    //   220: astore_1
+    //   221: aload_3
+    //   222: astore 4
+    //   224: goto +15 -> 239
     //   227: astore_1
     //   228: aload_3
     //   229: astore 4
-    //   231: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   234: ifeq +35 -> 269
-    //   237: aload_3
-    //   238: astore 4
-    //   240: ldc 171
-    //   242: iconst_4
-    //   243: new 173	java/lang/StringBuilder
-    //   246: dup
-    //   247: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   250: ldc_w 442
-    //   253: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   256: aload_1
-    //   257: invokevirtual 181	java/lang/Exception:toString	()Ljava/lang/String;
-    //   260: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   263: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   266: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   269: aload_3
-    //   270: ifnull -248 -> 22
-    //   273: aload_3
-    //   274: invokevirtual 396	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   277: aload_3
-    //   278: invokevirtual 304	android/database/sqlite/SQLiteDatabase:close	()V
-    //   281: goto -259 -> 22
-    //   284: astore_1
-    //   285: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   288: ifeq -266 -> 22
-    //   291: ldc 171
-    //   293: iconst_4
-    //   294: new 173	java/lang/StringBuilder
-    //   297: dup
-    //   298: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   301: ldc_w 444
-    //   304: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   307: aload_1
-    //   308: invokevirtual 181	java/lang/Exception:toString	()Ljava/lang/String;
-    //   311: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   314: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   317: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   320: goto -298 -> 22
-    //   323: astore_1
-    //   324: aload_0
-    //   325: monitorexit
-    //   326: aload_1
-    //   327: athrow
-    //   328: aload 5
-    //   330: astore_3
-    //   331: aload 5
-    //   333: astore 4
-    //   335: aload 5
-    //   337: invokevirtual 393	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
-    //   340: aload 5
-    //   342: ifnull -320 -> 22
-    //   345: aload 5
-    //   347: invokevirtual 396	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   350: aload 5
-    //   352: invokevirtual 304	android/database/sqlite/SQLiteDatabase:close	()V
-    //   355: goto -333 -> 22
-    //   358: astore_1
-    //   359: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   362: ifeq -340 -> 22
-    //   365: ldc 171
-    //   367: iconst_4
-    //   368: new 173	java/lang/StringBuilder
-    //   371: dup
-    //   372: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   375: ldc_w 444
-    //   378: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   381: aload_1
-    //   382: invokevirtual 181	java/lang/Exception:toString	()Ljava/lang/String;
-    //   385: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   388: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   391: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   394: goto -372 -> 22
-    //   397: astore_1
-    //   398: aload 4
-    //   400: ifnull +13 -> 413
-    //   403: aload 4
-    //   405: invokevirtual 396	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   408: aload 4
-    //   410: invokevirtual 304	android/database/sqlite/SQLiteDatabase:close	()V
-    //   413: aload_1
-    //   414: athrow
-    //   415: astore_3
-    //   416: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   419: ifeq -6 -> 413
-    //   422: ldc 171
-    //   424: iconst_4
-    //   425: new 173	java/lang/StringBuilder
-    //   428: dup
-    //   429: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   432: ldc_w 444
-    //   435: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   438: aload_3
-    //   439: invokevirtual 181	java/lang/Exception:toString	()Ljava/lang/String;
-    //   442: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   445: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   448: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   451: goto -38 -> 413
+    //   231: goto +122 -> 353
+    //   234: astore 4
+    //   236: aload 5
+    //   238: astore_1
+    //   239: aload_1
+    //   240: astore_3
+    //   241: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   244: ifeq +51 -> 295
+    //   247: aload_1
+    //   248: astore_3
+    //   249: new 171	java/lang/StringBuilder
+    //   252: dup
+    //   253: invokespecial 172	java/lang/StringBuilder:<init>	()V
+    //   256: astore 5
+    //   258: aload_1
+    //   259: astore_3
+    //   260: aload 5
+    //   262: ldc_w 444
+    //   265: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   268: pop
+    //   269: aload_1
+    //   270: astore_3
+    //   271: aload 5
+    //   273: aload 4
+    //   275: invokevirtual 179	java/lang/Exception:toString	()Ljava/lang/String;
+    //   278: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   281: pop
+    //   282: aload_1
+    //   283: astore_3
+    //   284: ldc 181
+    //   286: iconst_4
+    //   287: aload 5
+    //   289: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   292: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   295: aload_1
+    //   296: ifnull +54 -> 350
+    //   299: aload_1
+    //   300: invokevirtual 396	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   303: aload_1
+    //   304: invokevirtual 339	android/database/sqlite/SQLiteDatabase:close	()V
+    //   307: goto +43 -> 350
+    //   310: astore_1
+    //   311: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   314: ifeq +36 -> 350
+    //   317: new 171	java/lang/StringBuilder
+    //   320: dup
+    //   321: invokespecial 172	java/lang/StringBuilder:<init>	()V
+    //   324: astore_3
+    //   325: aload_3
+    //   326: ldc_w 442
+    //   329: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   332: pop
+    //   333: aload_3
+    //   334: aload_1
+    //   335: invokevirtual 179	java/lang/Exception:toString	()Ljava/lang/String;
+    //   338: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   341: pop
+    //   342: aload_3
+    //   343: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   346: astore_1
+    //   347: goto -144 -> 203
+    //   350: aload_0
+    //   351: monitorexit
+    //   352: return
+    //   353: aload 4
+    //   355: ifnull +62 -> 417
+    //   358: aload 4
+    //   360: invokevirtual 396	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   363: aload 4
+    //   365: invokevirtual 339	android/database/sqlite/SQLiteDatabase:close	()V
+    //   368: goto +49 -> 417
+    //   371: astore_3
+    //   372: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   375: ifeq +42 -> 417
+    //   378: new 171	java/lang/StringBuilder
+    //   381: dup
+    //   382: invokespecial 172	java/lang/StringBuilder:<init>	()V
+    //   385: astore 4
+    //   387: aload 4
+    //   389: ldc_w 442
+    //   392: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   395: pop
+    //   396: aload 4
+    //   398: aload_3
+    //   399: invokevirtual 179	java/lang/Exception:toString	()Ljava/lang/String;
+    //   402: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   405: pop
+    //   406: ldc 181
+    //   408: iconst_4
+    //   409: aload 4
+    //   411: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   414: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   417: aload_1
+    //   418: athrow
+    //   419: astore_1
+    //   420: aload_0
+    //   421: monitorexit
+    //   422: aload_1
+    //   423: athrow
+    //   424: aload_0
+    //   425: monitorexit
+    //   426: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	454	0	this	VACDReportDBHelper
-    //   0	454	1	paramList	java.util.List<ReportItem>
-    //   17	2	2	bool	boolean
-    //   4	327	3	localObject1	Object
-    //   415	24	3	localException	Exception
-    //   1	408	4	localObject2	Object
-    //   29	322	5	localSQLiteDatabase	SQLiteDatabase
-    //   57	162	6	localContentValues	android.content.ContentValues
-    //   105	73	7	localReportItem	ReportItem
+    //   0	427	0	this	VACDReportDBHelper
+    //   0	427	1	paramList	java.util.List<ReportItem>
+    //   12	2	2	bool	boolean
+    //   24	175	3	localObject1	Object
+    //   217	12	3	localException1	Exception
+    //   240	103	3	localObject2	Object
+    //   371	28	3	localException2	Exception
+    //   29	201	4	localObject3	Object
+    //   234	130	4	localException3	Exception
+    //   385	25	4	localStringBuilder	StringBuilder
+    //   21	267	5	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   25	31	227	java/lang/Exception
-    //   38	43	227	java/lang/Exception
-    //   50	59	227	java/lang/Exception
-    //   66	73	227	java/lang/Exception
-    //   80	89	227	java/lang/Exception
-    //   96	107	227	java/lang/Exception
-    //   119	124	227	java/lang/Exception
-    //   131	146	227	java/lang/Exception
-    //   153	166	227	java/lang/Exception
-    //   173	188	227	java/lang/Exception
-    //   195	206	227	java/lang/Exception
-    //   213	224	227	java/lang/Exception
-    //   335	340	227	java/lang/Exception
-    //   273	281	284	java/lang/Exception
-    //   11	18	323	finally
-    //   273	281	323	finally
-    //   285	320	323	finally
-    //   345	355	323	finally
-    //   359	394	323	finally
-    //   403	413	323	finally
-    //   413	415	323	finally
-    //   416	451	323	finally
-    //   345	355	358	java/lang/Exception
-    //   25	31	397	finally
-    //   38	43	397	finally
-    //   50	59	397	finally
-    //   66	73	397	finally
-    //   80	89	397	finally
-    //   96	107	397	finally
-    //   119	124	397	finally
-    //   131	146	397	finally
-    //   153	166	397	finally
-    //   173	188	397	finally
-    //   195	206	397	finally
-    //   213	224	397	finally
-    //   231	237	397	finally
-    //   240	269	397	finally
-    //   335	340	397	finally
-    //   403	413	415	java/lang/Exception
+    //   153	163	166	java/lang/Exception
+    //   31	51	213	finally
+    //   51	71	213	finally
+    //   76	140	213	finally
+    //   143	148	213	finally
+    //   31	51	217	java/lang/Exception
+    //   51	71	217	java/lang/Exception
+    //   76	140	217	java/lang/Exception
+    //   143	148	217	java/lang/Exception
+    //   25	31	227	finally
+    //   241	247	227	finally
+    //   249	258	227	finally
+    //   260	269	227	finally
+    //   271	282	227	finally
+    //   284	295	227	finally
+    //   25	31	234	java/lang/Exception
+    //   299	307	310	java/lang/Exception
+    //   358	368	371	java/lang/Exception
+    //   6	13	419	finally
+    //   153	163	419	finally
+    //   167	203	419	finally
+    //   203	210	419	finally
+    //   299	307	419	finally
+    //   311	347	419	finally
+    //   358	368	419	finally
+    //   372	417	419	finally
+    //   417	419	419	finally
   }
   
   /* Error */
   public void c(java.util.List<ReportHeader> paramList)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aconst_null
-    //   4: astore_3
-    //   5: aload_0
-    //   6: monitorenter
-    //   7: aload_1
-    //   8: ifnull +14 -> 22
-    //   11: aload_1
-    //   12: invokeinterface 368 1 0
-    //   17: istore_2
-    //   18: iload_2
-    //   19: ifeq +6 -> 25
-    //   22: aload_0
-    //   23: monitorexit
-    //   24: return
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: ifnull +412 -> 415
+    //   6: aload_1
+    //   7: invokeinterface 368 1 0
+    //   12: istore_2
+    //   13: iload_2
+    //   14: ifeq +6 -> 20
+    //   17: goto +398 -> 415
+    //   20: aconst_null
+    //   21: astore 5
+    //   23: aconst_null
+    //   24: astore_3
     //   25: aload_0
     //   26: invokevirtual 371	com/tencent/mobileqq/qwallet/report/impl/VACDReportDBHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   29: astore 5
-    //   31: aload 5
-    //   33: astore_3
-    //   34: aload 5
-    //   36: astore 4
-    //   38: aload 5
-    //   40: invokevirtual 374	android/database/sqlite/SQLiteDatabase:beginTransaction	()V
-    //   43: aload 5
-    //   45: astore_3
-    //   46: aload 5
-    //   48: astore 4
-    //   50: new 403	android/content/ContentValues
-    //   53: dup
-    //   54: invokespecial 404	android/content/ContentValues:<init>	()V
-    //   57: astore 6
-    //   59: aload 5
-    //   61: astore_3
-    //   62: aload 5
-    //   64: astore 4
-    //   66: aload_1
-    //   67: invokeinterface 408 1 0
-    //   72: astore_1
-    //   73: aload 5
-    //   75: astore_3
-    //   76: aload 5
-    //   78: astore 4
-    //   80: aload_1
-    //   81: invokeinterface 413 1 0
-    //   86: ifeq +233 -> 319
-    //   89: aload 5
-    //   91: astore_3
-    //   92: aload 5
-    //   94: astore 4
-    //   96: aload_1
-    //   97: invokeinterface 417 1 0
-    //   102: checkcast 44	VACDReport/ReportHeader
-    //   105: astore 7
-    //   107: aload 5
-    //   109: astore_3
-    //   110: aload 5
-    //   112: astore 4
-    //   114: aload 6
-    //   116: invokevirtual 420	android/content/ContentValues:clear	()V
-    //   119: aload 5
-    //   121: astore_3
-    //   122: aload 5
-    //   124: astore 4
-    //   126: aload 6
-    //   128: ldc 62
-    //   130: aload 7
-    //   132: getfield 69	VACDReport/ReportHeader:seqno	J
-    //   135: invokestatic 277	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   138: invokevirtual 423	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   141: aload 5
-    //   143: astore_3
-    //   144: aload 5
-    //   146: astore 4
-    //   148: aload 6
-    //   150: ldc 205
-    //   152: aload_0
-    //   153: aload 7
-    //   155: invokespecial 448	com/tencent/mobileqq/qwallet/report/impl/VACDReportDBHelper:a	(LVACDReport/ReportHeader;)Ljava/lang/String;
-    //   158: invokevirtual 428	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   161: aload 5
-    //   163: astore_3
-    //   164: aload 5
-    //   166: astore 4
-    //   168: aload 6
-    //   170: ldc 201
-    //   172: iconst_1
-    //   173: invokestatic 433	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   176: invokevirtual 436	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   179: aload 5
-    //   181: astore_3
-    //   182: aload 5
-    //   184: astore 4
-    //   186: aload 6
-    //   188: ldc 96
-    //   190: iconst_0
-    //   191: invokestatic 433	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   194: invokevirtual 436	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   197: aload 5
-    //   199: astore_3
-    //   200: aload 5
-    //   202: astore 4
-    //   204: aload 5
-    //   206: ldc 195
-    //   208: aconst_null
-    //   209: aload 6
-    //   211: invokevirtual 440	android/database/sqlite/SQLiteDatabase:insertOrThrow	(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
-    //   214: pop2
-    //   215: goto -142 -> 73
+    //   29: astore 4
+    //   31: aload 4
+    //   33: invokevirtual 374	android/database/sqlite/SQLiteDatabase:beginTransaction	()V
+    //   36: new 403	android/content/ContentValues
+    //   39: dup
+    //   40: invokespecial 404	android/content/ContentValues:<init>	()V
+    //   43: astore_3
+    //   44: aload_1
+    //   45: invokeinterface 408 1 0
+    //   50: astore_1
+    //   51: aload_1
+    //   52: invokeinterface 413 1 0
+    //   57: ifeq +77 -> 134
+    //   60: aload_1
+    //   61: invokeinterface 417 1 0
+    //   66: checkcast 44	VACDReport/ReportHeader
+    //   69: astore 5
+    //   71: aload_3
+    //   72: invokevirtual 420	android/content/ContentValues:clear	()V
+    //   75: aload_3
+    //   76: ldc 62
+    //   78: aload 5
+    //   80: getfield 69	VACDReport/ReportHeader:seqno	J
+    //   83: invokestatic 277	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   86: invokevirtual 423	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   89: aload_3
+    //   90: ldc 205
+    //   92: aload_0
+    //   93: aload 5
+    //   95: invokespecial 448	com/tencent/mobileqq/qwallet/report/impl/VACDReportDBHelper:a	(LVACDReport/ReportHeader;)Ljava/lang/String;
+    //   98: invokevirtual 428	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   101: aload_3
+    //   102: ldc 201
+    //   104: iconst_1
+    //   105: invokestatic 433	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   108: invokevirtual 436	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   111: aload_3
+    //   112: ldc 96
+    //   114: iconst_0
+    //   115: invokestatic 433	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   118: invokevirtual 436	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   121: aload 4
+    //   123: ldc 195
+    //   125: aconst_null
+    //   126: aload_3
+    //   127: invokevirtual 440	android/database/sqlite/SQLiteDatabase:insertOrThrow	(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    //   130: pop2
+    //   131: goto -80 -> 51
+    //   134: aload 4
+    //   136: invokevirtual 393	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
+    //   139: aload 4
+    //   141: ifnull +200 -> 341
+    //   144: aload 4
+    //   146: invokevirtual 396	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   149: aload 4
+    //   151: invokevirtual 339	android/database/sqlite/SQLiteDatabase:close	()V
+    //   154: goto +187 -> 341
+    //   157: astore_1
+    //   158: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   161: ifeq +180 -> 341
+    //   164: new 171	java/lang/StringBuilder
+    //   167: dup
+    //   168: invokespecial 172	java/lang/StringBuilder:<init>	()V
+    //   171: astore_3
+    //   172: aload_3
+    //   173: ldc_w 450
+    //   176: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   179: pop
+    //   180: aload_3
+    //   181: aload_1
+    //   182: invokevirtual 343	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   185: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   188: pop
+    //   189: aload_3
+    //   190: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   193: astore_1
+    //   194: ldc 181
+    //   196: iconst_2
+    //   197: aload_1
+    //   198: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   201: goto +140 -> 341
+    //   204: astore_1
+    //   205: goto +139 -> 344
+    //   208: astore_3
+    //   209: aload 4
+    //   211: astore_1
+    //   212: aload_3
+    //   213: astore 4
+    //   215: goto +15 -> 230
     //   218: astore_1
     //   219: aload_3
     //   220: astore 4
-    //   222: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   225: ifeq +35 -> 260
-    //   228: aload_3
-    //   229: astore 4
-    //   231: ldc 171
-    //   233: iconst_2
-    //   234: new 173	java/lang/StringBuilder
-    //   237: dup
-    //   238: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   241: ldc_w 450
-    //   244: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   247: aload_1
-    //   248: invokevirtual 181	java/lang/Exception:toString	()Ljava/lang/String;
-    //   251: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   254: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   257: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   260: aload_3
-    //   261: ifnull -239 -> 22
-    //   264: aload_3
-    //   265: invokevirtual 396	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   268: aload_3
-    //   269: invokevirtual 304	android/database/sqlite/SQLiteDatabase:close	()V
-    //   272: goto -250 -> 22
-    //   275: astore_1
-    //   276: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   279: ifeq -257 -> 22
-    //   282: ldc 171
-    //   284: iconst_2
-    //   285: new 173	java/lang/StringBuilder
-    //   288: dup
-    //   289: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   292: ldc_w 450
-    //   295: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   298: aload_1
-    //   299: invokevirtual 301	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   302: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   305: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   308: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   311: goto -289 -> 22
-    //   314: astore_1
-    //   315: aload_0
-    //   316: monitorexit
-    //   317: aload_1
-    //   318: athrow
-    //   319: aload 5
-    //   321: astore_3
-    //   322: aload 5
-    //   324: astore 4
-    //   326: aload 5
-    //   328: invokevirtual 393	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
-    //   331: aload 5
-    //   333: ifnull -311 -> 22
-    //   336: aload 5
-    //   338: invokevirtual 396	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   341: aload 5
-    //   343: invokevirtual 304	android/database/sqlite/SQLiteDatabase:close	()V
-    //   346: goto -324 -> 22
-    //   349: astore_1
-    //   350: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   353: ifeq -331 -> 22
-    //   356: ldc 171
-    //   358: iconst_2
-    //   359: new 173	java/lang/StringBuilder
-    //   362: dup
-    //   363: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   366: ldc_w 450
-    //   369: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   372: aload_1
-    //   373: invokevirtual 301	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   376: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   379: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   382: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   385: goto -363 -> 22
-    //   388: astore_1
-    //   389: aload 4
-    //   391: ifnull +13 -> 404
-    //   394: aload 4
-    //   396: invokevirtual 396	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   399: aload 4
-    //   401: invokevirtual 304	android/database/sqlite/SQLiteDatabase:close	()V
-    //   404: aload_1
-    //   405: athrow
-    //   406: astore_3
-    //   407: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   410: ifeq -6 -> 404
-    //   413: ldc 171
-    //   415: iconst_2
-    //   416: new 173	java/lang/StringBuilder
-    //   419: dup
-    //   420: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   423: ldc_w 450
-    //   426: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   429: aload_3
-    //   430: invokevirtual 301	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   433: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   436: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   439: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   442: goto -38 -> 404
+    //   222: goto +122 -> 344
+    //   225: astore 4
+    //   227: aload 5
+    //   229: astore_1
+    //   230: aload_1
+    //   231: astore_3
+    //   232: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   235: ifeq +51 -> 286
+    //   238: aload_1
+    //   239: astore_3
+    //   240: new 171	java/lang/StringBuilder
+    //   243: dup
+    //   244: invokespecial 172	java/lang/StringBuilder:<init>	()V
+    //   247: astore 5
+    //   249: aload_1
+    //   250: astore_3
+    //   251: aload 5
+    //   253: ldc_w 450
+    //   256: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   259: pop
+    //   260: aload_1
+    //   261: astore_3
+    //   262: aload 5
+    //   264: aload 4
+    //   266: invokevirtual 179	java/lang/Exception:toString	()Ljava/lang/String;
+    //   269: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   272: pop
+    //   273: aload_1
+    //   274: astore_3
+    //   275: ldc 181
+    //   277: iconst_2
+    //   278: aload 5
+    //   280: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   283: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   286: aload_1
+    //   287: ifnull +54 -> 341
+    //   290: aload_1
+    //   291: invokevirtual 396	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   294: aload_1
+    //   295: invokevirtual 339	android/database/sqlite/SQLiteDatabase:close	()V
+    //   298: goto +43 -> 341
+    //   301: astore_1
+    //   302: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   305: ifeq +36 -> 341
+    //   308: new 171	java/lang/StringBuilder
+    //   311: dup
+    //   312: invokespecial 172	java/lang/StringBuilder:<init>	()V
+    //   315: astore_3
+    //   316: aload_3
+    //   317: ldc_w 450
+    //   320: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   323: pop
+    //   324: aload_3
+    //   325: aload_1
+    //   326: invokevirtual 343	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   329: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   332: pop
+    //   333: aload_3
+    //   334: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   337: astore_1
+    //   338: goto -144 -> 194
+    //   341: aload_0
+    //   342: monitorexit
+    //   343: return
+    //   344: aload 4
+    //   346: ifnull +62 -> 408
+    //   349: aload 4
+    //   351: invokevirtual 396	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   354: aload 4
+    //   356: invokevirtual 339	android/database/sqlite/SQLiteDatabase:close	()V
+    //   359: goto +49 -> 408
+    //   362: astore_3
+    //   363: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   366: ifeq +42 -> 408
+    //   369: new 171	java/lang/StringBuilder
+    //   372: dup
+    //   373: invokespecial 172	java/lang/StringBuilder:<init>	()V
+    //   376: astore 4
+    //   378: aload 4
+    //   380: ldc_w 450
+    //   383: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   386: pop
+    //   387: aload 4
+    //   389: aload_3
+    //   390: invokevirtual 343	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   393: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   396: pop
+    //   397: ldc 181
+    //   399: iconst_2
+    //   400: aload 4
+    //   402: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   405: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   408: aload_1
+    //   409: athrow
+    //   410: astore_1
+    //   411: aload_0
+    //   412: monitorexit
+    //   413: aload_1
+    //   414: athrow
+    //   415: aload_0
+    //   416: monitorexit
+    //   417: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	445	0	this	VACDReportDBHelper
-    //   0	445	1	paramList	java.util.List<ReportHeader>
-    //   17	2	2	bool	boolean
-    //   4	318	3	localObject1	Object
-    //   406	24	3	localThrowable	Throwable
-    //   1	399	4	localObject2	Object
-    //   29	313	5	localSQLiteDatabase	SQLiteDatabase
-    //   57	153	6	localContentValues	android.content.ContentValues
-    //   105	49	7	localReportHeader	ReportHeader
+    //   0	418	0	this	VACDReportDBHelper
+    //   0	418	1	paramList	java.util.List<ReportHeader>
+    //   12	2	2	bool	boolean
+    //   24	166	3	localObject1	Object
+    //   208	12	3	localException1	Exception
+    //   231	103	3	localObject2	Object
+    //   362	28	3	localThrowable	java.lang.Throwable
+    //   29	192	4	localObject3	Object
+    //   225	130	4	localException2	Exception
+    //   376	25	4	localStringBuilder	StringBuilder
+    //   21	258	5	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   25	31	218	java/lang/Exception
-    //   38	43	218	java/lang/Exception
-    //   50	59	218	java/lang/Exception
-    //   66	73	218	java/lang/Exception
-    //   80	89	218	java/lang/Exception
-    //   96	107	218	java/lang/Exception
-    //   114	119	218	java/lang/Exception
-    //   126	141	218	java/lang/Exception
-    //   148	161	218	java/lang/Exception
-    //   168	179	218	java/lang/Exception
-    //   186	197	218	java/lang/Exception
-    //   204	215	218	java/lang/Exception
-    //   326	331	218	java/lang/Exception
-    //   264	272	275	java/lang/Throwable
-    //   11	18	314	finally
-    //   264	272	314	finally
-    //   276	311	314	finally
-    //   336	346	314	finally
-    //   350	385	314	finally
-    //   394	404	314	finally
-    //   404	406	314	finally
-    //   407	442	314	finally
-    //   336	346	349	java/lang/Throwable
-    //   25	31	388	finally
-    //   38	43	388	finally
-    //   50	59	388	finally
-    //   66	73	388	finally
-    //   80	89	388	finally
-    //   96	107	388	finally
-    //   114	119	388	finally
-    //   126	141	388	finally
-    //   148	161	388	finally
-    //   168	179	388	finally
-    //   186	197	388	finally
-    //   204	215	388	finally
-    //   222	228	388	finally
-    //   231	260	388	finally
-    //   326	331	388	finally
-    //   394	404	406	java/lang/Throwable
+    //   144	154	157	java/lang/Throwable
+    //   31	51	204	finally
+    //   51	131	204	finally
+    //   134	139	204	finally
+    //   31	51	208	java/lang/Exception
+    //   51	131	208	java/lang/Exception
+    //   134	139	208	java/lang/Exception
+    //   25	31	218	finally
+    //   232	238	218	finally
+    //   240	249	218	finally
+    //   251	260	218	finally
+    //   262	273	218	finally
+    //   275	286	218	finally
+    //   25	31	225	java/lang/Exception
+    //   290	298	301	java/lang/Throwable
+    //   349	359	362	java/lang/Throwable
+    //   6	13	410	finally
+    //   144	154	410	finally
+    //   158	194	410	finally
+    //   194	201	410	finally
+    //   290	298	410	finally
+    //   302	338	410	finally
+    //   349	359	410	finally
+    //   363	408	410	finally
+    //   408	410	410	finally
   }
   
   public void onCreate(SQLiteDatabase paramSQLiteDatabase)
@@ -1288,70 +1798,101 @@ public final class VACDReportDBHelper
   
   public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
-    if (paramInt1 < paramInt2)
+    for (;;)
     {
-      switch (paramInt1)
-      {
-      }
-      for (;;)
-      {
-        paramInt1 += 1;
-        break;
-        try
+      StringBuilder localStringBuilder;
+      if (paramInt1 < paramInt2) {
+        switch (paramInt1)
         {
-          paramSQLiteDatabase.execSQL("ALTER TABLE VACDReport ADD sendTime INTEGER(16) DEFAULT 0");
-        }
-        catch (Exception localException1) {}
-        continue;
-        try
-        {
-          paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS VACDReport");
+        default: 
+          break;
+        case 6: 
           try
           {
-            a(paramSQLiteDatabase);
+            b(paramSQLiteDatabase);
           }
-          catch (Exception localException2) {}
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.e("VACDReport", 2, "createReportItemTable exception:" + localException2.toString());
-        }
-        catch (Exception localException3)
-        {
-          for (;;)
+          catch (Exception localException1)
           {
-            if (QLog.isColorLevel()) {
-              QLog.e("VACDReport", 2, "VACDReport table is not exists");
+            if (!QLog.isColorLevel()) {
+              break;
             }
           }
-        }
-        try
-        {
-          paramSQLiteDatabase.execSQL("ALTER TABLE ReportItem ADD COLUMN status INTEGER DEFAULT 1");
-        }
-        catch (Exception localException4) {}
-        if (QLog.isColorLevel())
-        {
-          QLog.e("VACDReport", 2, " TABLE ReportItem add column status is exception=" + localException4.toString());
-          continue;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("createReportRecordTable exception=");
+          localStringBuilder.append(localException1.toString());
+          QLog.e("VACDReport", 2, localStringBuilder.toString());
+          break;
+        case 4: 
           try
           {
             paramSQLiteDatabase.execSQL("ALTER TABLE ReportItem ADD COLUMN send_time INTEGER(16) DEFAULT 9");
           }
-          catch (Exception localException5) {}
-          if (QLog.isColorLevel())
+          catch (Exception localException2)
           {
-            QLog.e("VACDReport", 2, " TABLE ReportItem add column send_time is exception=" + localException5.toString());
-            continue;
-            try
-            {
-              b(paramSQLiteDatabase);
-            }
-            catch (Exception localException6) {}
-            if (QLog.isColorLevel()) {
-              QLog.e("VACDReport", 2, "createReportRecordTable exception=" + localException6.toString());
+            if (!QLog.isColorLevel()) {
+              break;
             }
           }
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" TABLE ReportItem add column send_time is exception=");
+          localStringBuilder.append(localException2.toString());
+          QLog.e("VACDReport", 2, localStringBuilder.toString());
+          break;
+        case 3: 
+          try
+          {
+            paramSQLiteDatabase.execSQL("ALTER TABLE ReportItem ADD COLUMN status INTEGER DEFAULT 1");
+          }
+          catch (Exception localException3)
+          {
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+          }
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" TABLE ReportItem add column status is exception=");
+          localStringBuilder.append(localException3.toString());
+          QLog.e("VACDReport", 2, localStringBuilder.toString());
+          break;
+        }
+      }
+      try
+      {
+        paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS VACDReport");
+        break label253;
+        if (QLog.isColorLevel()) {
+          QLog.e("VACDReport", 2, "VACDReport table is not exists");
+        }
+        try
+        {
+          label253:
+          a(paramSQLiteDatabase);
+        }
+        catch (Exception localException4)
+        {
+          if (!QLog.isColorLevel()) {
+            break label319;
+          }
+        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("createReportItemTable exception:");
+        localStringBuilder.append(localException4.toString());
+        QLog.e("VACDReport", 2, localStringBuilder.toString());
+      }
+      catch (Exception localException5)
+      {
+        try
+        {
+          paramSQLiteDatabase.execSQL("ALTER TABLE VACDReport ADD sendTime INTEGER(16) DEFAULT 0");
+          label319:
+          paramInt1 += 1;
+          continue;
+          return;
+          localException5 = localException5;
+        }
+        catch (Exception localException6)
+        {
+          break label319;
         }
       }
     }
@@ -1359,7 +1900,7 @@ public final class VACDReportDBHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.report.impl.VACDReportDBHelper
  * JD-Core Version:    0.7.0.1
  */

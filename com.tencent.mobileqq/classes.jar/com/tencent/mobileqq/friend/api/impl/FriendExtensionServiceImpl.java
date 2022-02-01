@@ -35,36 +35,37 @@ public class FriendExtensionServiceImpl
   
   public ExtensionInfo getExtensionInfo(String paramString, boolean paramBoolean)
   {
-    Object localObject;
     if (TextUtils.isEmpty(paramString)) {
-      localObject = null;
+      return null;
     }
-    ExtensionInfo localExtensionInfo;
-    do
+    ExtensionInfo localExtensionInfo = this.mExtensionCache.a(paramString);
+    Object localObject = localExtensionInfo;
+    if (localExtensionInfo == null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return localObject;
-              localExtensionInfo = this.mExtensionCache.a(paramString);
-              localObject = localExtensionInfo;
-            } while (localExtensionInfo != null);
-            localObject = localExtensionInfo;
-          } while (!paramBoolean);
-          localObject = localExtensionInfo;
-        } while (this.mExtensionCache.a());
-        localExtensionInfo = this.mExtensionCache.b(paramString);
-        localObject = localExtensionInfo;
-      } while (localExtensionInfo != null);
       localObject = localExtensionInfo;
-    } while (!QLog.isColorLevel());
-    QLog.d("FriendExtensionServiceImpl", 2, "getExtensionInfoFromDB is null| friendUin: " + paramString);
-    return localExtensionInfo;
+      if (paramBoolean)
+      {
+        localObject = localExtensionInfo;
+        if (!this.mExtensionCache.a())
+        {
+          localExtensionInfo = this.mExtensionCache.b(paramString);
+          localObject = localExtensionInfo;
+          if (localExtensionInfo == null)
+          {
+            localObject = localExtensionInfo;
+            if (QLog.isColorLevel())
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("getExtensionInfoFromDB is null| friendUin: ");
+              ((StringBuilder)localObject).append(paramString);
+              QLog.d("FriendExtensionServiceImpl", 2, ((StringBuilder)localObject).toString());
+              localObject = localExtensionInfo;
+            }
+          }
+        }
+      }
+    }
+    return localObject;
   }
   
   public void initCache()
@@ -96,23 +97,23 @@ public class FriendExtensionServiceImpl
   
   public boolean saveExtensionInfoList(List<ExtensionInfo> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0))
+    if ((paramList != null) && (paramList.size() != 0))
     {
-      QLog.d("FriendExtensionServiceImpl", 1, "updateExtensionInfoList| infoList is empty!");
-      return false;
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
+      {
+        ExtensionInfo localExtensionInfo = (ExtensionInfo)localIterator.next();
+        this.mExtensionCache.a(localExtensionInfo);
+      }
+      return this.mExtensionCache.a(paramList);
     }
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
-    {
-      ExtensionInfo localExtensionInfo = (ExtensionInfo)localIterator.next();
-      this.mExtensionCache.a(localExtensionInfo);
-    }
-    return this.mExtensionCache.a(paramList);
+    QLog.d("FriendExtensionServiceImpl", 1, "updateExtensionInfoList| infoList is empty!");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.friend.api.impl.FriendExtensionServiceImpl
  * JD-Core Version:    0.7.0.1
  */

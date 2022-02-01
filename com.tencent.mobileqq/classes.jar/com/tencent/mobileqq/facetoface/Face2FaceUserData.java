@@ -13,20 +13,36 @@ public abstract class Face2FaceUserData
   
   public boolean equals(Object paramObject)
   {
-    if ((paramObject instanceof Face2FaceUserData))
+    boolean bool4 = paramObject instanceof Face2FaceUserData;
+    boolean bool3 = false;
+    boolean bool2 = false;
+    boolean bool1 = bool3;
+    if (bool4)
     {
       paramObject = (Face2FaceUserData)paramObject;
-      if (this.e == null) {
-        if ((this.a != paramObject.a) || (paramObject.e != null)) {}
-      }
-      while ((this.a == paramObject.a) && (this.e.equals(paramObject.e)))
+      String str = this.e;
+      if (str == null)
       {
-        return true;
-        return false;
+        bool1 = bool2;
+        if (this.a == paramObject.a)
+        {
+          bool1 = bool2;
+          if (paramObject.e == null) {
+            bool1 = true;
+          }
+        }
+        return bool1;
       }
-      return false;
+      bool1 = bool3;
+      if (this.a == paramObject.a)
+      {
+        bool1 = bool3;
+        if (str.equals(paramObject.e)) {
+          bool1 = true;
+        }
+      }
     }
-    return false;
+    return bool1;
   }
   
   public String toString()
@@ -36,7 +52,7 @@ public abstract class Face2FaceUserData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceUserData
  * JD-Core Version:    0.7.0.1
  */

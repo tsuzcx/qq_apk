@@ -13,48 +13,44 @@ class TroopPickerViewHelper$1
   {
     if (TroopPickerViewHelper.a(this.a) != null)
     {
-      if (paramInt1 != 0) {
-        break label212;
-      }
-      if (TroopPickerViewHelper.a(this.a) == null) {
-        break label288;
-      }
-      paramInt1 = TroopPickerViewHelper.a(this.a).a(TroopPickerViewHelper.a(this.a), paramInt2);
-      int i = TroopPickerViewHelper.a(this.a).a(TroopPickerViewHelper.a(this.a), paramInt2, paramInt1);
-      paramInt2 = paramInt1;
-      paramInt1 = i;
-    }
-    for (;;)
-    {
-      TroopPickerViewHelper.a(this.a).setSelection(1, paramInt2);
-      TroopPickerViewHelper.a(this.a).a(1);
-      TroopPickerViewHelper.a(this.a).setSelection(2, paramInt1);
-      TroopPickerViewHelper.a(this.a).a(2);
-      label212:
-      do
+      if (paramInt1 == 0)
       {
-        TroopPickerViewHelper.a(this.a, TroopPickerViewHelper.a(this.a).a(new int[] { TroopPickerViewHelper.a(this.a).a(0), TroopPickerViewHelper.a(this.a).a(1), TroopPickerViewHelper.a(this.a).a(2) }));
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopPickerViewHelper", 2, Arrays.toString(TroopPickerViewHelper.a(this.a).a(TroopPickerViewHelper.a(this.a).getTimeInMillis())));
+        if (TroopPickerViewHelper.a(this.a) != null)
+        {
+          paramInt1 = TroopPickerViewHelper.a(this.a).a(TroopPickerViewHelper.a(this.a), paramInt2);
+          paramInt2 = TroopPickerViewHelper.a(this.a).a(TroopPickerViewHelper.a(this.a), paramInt2, paramInt1);
         }
-        return;
-      } while (paramInt1 != 1);
-      if (TroopPickerViewHelper.a(this.a) != null) {}
-      for (paramInt1 = TroopPickerViewHelper.a(this.a).a(TroopPickerViewHelper.a(this.a), TroopPickerViewHelper.a(this.a).a(0), paramInt2);; paramInt1 = 0)
+        else
+        {
+          paramInt1 = 0;
+          paramInt2 = 0;
+        }
+        TroopPickerViewHelper.a(this.a).setSelection(1, paramInt1);
+        TroopPickerViewHelper.a(this.a).a(1);
+        TroopPickerViewHelper.a(this.a).setSelection(2, paramInt2);
+        TroopPickerViewHelper.a(this.a).a(2);
+      }
+      else if (paramInt1 == 1)
       {
+        if (TroopPickerViewHelper.a(this.a) != null) {
+          paramInt1 = TroopPickerViewHelper.a(this.a).a(TroopPickerViewHelper.a(this.a), TroopPickerViewHelper.a(this.a).a(0), paramInt2);
+        } else {
+          paramInt1 = 0;
+        }
         TroopPickerViewHelper.a(this.a).setSelection(2, paramInt1);
         TroopPickerViewHelper.a(this.a).a(2);
-        break;
       }
-      label288:
-      paramInt1 = 0;
-      paramInt2 = 0;
+      TroopPickerViewHelper localTroopPickerViewHelper = this.a;
+      TroopPickerViewHelper.a(localTroopPickerViewHelper, TroopPickerViewHelper.a(localTroopPickerViewHelper).a(new int[] { TroopPickerViewHelper.a(this.a).a(0), TroopPickerViewHelper.a(this.a).a(1), TroopPickerViewHelper.a(this.a).a(2) }));
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopPickerViewHelper", 2, Arrays.toString(TroopPickerViewHelper.a(this.a).a(TroopPickerViewHelper.a(this.a).getTimeInMillis())));
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopPickerViewHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,6 @@ public final class QAPMNameVerifier
 {
   public boolean verify(@NotNull String paramString, @NotNull SSLSession paramSSLSession)
   {
-    boolean bool1 = false;
     Intrinsics.checkParameterIsNotNull(paramString, "hostname");
     Intrinsics.checkParameterIsNotNull(paramSSLSession, "session");
     try
@@ -25,14 +24,12 @@ public final class QAPMNameVerifier
       URL localURL = new URL(BaseInfo.urlMeta.athenaDomain);
       if (!Intrinsics.areEqual(paramString, paramSSLSession.getHost()))
       {
-        boolean bool2 = Intrinsics.areEqual(paramString, localURL.getHost());
-        if (!bool2) {}
+        boolean bool = Intrinsics.areEqual(paramString, localURL.getHost());
+        if (!bool) {
+          return false;
+        }
       }
-      else
-      {
-        bool1 = true;
-      }
-      return bool1;
+      return true;
     }
     catch (MalformedURLException paramString) {}
     return false;
@@ -40,7 +37,7 @@ public final class QAPMNameVerifier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.base.reporter.uploaddata.verifier.QAPMNameVerifier
  * JD-Core Version:    0.7.0.1
  */

@@ -52,32 +52,39 @@ public class HttpAssembler
       localStringBuilder.append(paramString);
     }
     int i = 0;
-    if (i < arrayOfKey.length)
+    while (i < arrayOfKey.length)
     {
-      if ((paramStatistic[i] != null) && (!paramStatistic[i].equals(""))) {
-        if (localStringBuilder.length() != 0) {
-          break label106;
+      if (paramStatistic[i] != null)
+      {
+        Object localObject = paramStatistic[i];
+        paramString = "";
+        if (!localObject.equals(""))
+        {
+          if (localStringBuilder.length() != 0) {
+            paramString = "&";
+          }
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(arrayOfKey[i]);
+          localStringBuilder.append("=");
+          localStringBuilder.append(utf8encode(paramStatistic[i]));
         }
       }
-      label106:
-      for (paramString = "";; paramString = "&")
-      {
-        localStringBuilder.append(paramString);
-        localStringBuilder.append(arrayOfKey[i]).append("=").append(utf8encode(paramStatistic[i]));
-        i += 1;
-        break;
-      }
+      i += 1;
     }
     return localStringBuilder.toString();
   }
   
   public String format(String paramString, List<Statistic> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return null;
+    StringBuilder localStringBuilder;
+    if (paramList != null)
+    {
+      if (paramList.size() == 0) {
+        return null;
+      }
+      localStringBuilder = new StringBuilder();
+      if (paramString == null) {}
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramString != null) {}
     for (;;)
     {
       try
@@ -87,38 +94,45 @@ public class HttpAssembler
         paramString = ((Statistic)paramList.get(0)).getKeys();
         localStringBuilder.append("key=");
         i = 0;
+        if (i >= paramString.length) {
+          break label243;
+        }
+        Object localObject = paramString[i].getName();
+        if (i != 0) {
+          localStringBuilder.append(",");
+        }
+        localStringBuilder.append((String)localObject);
+        i += 1;
+        continue;
         if (i < paramString.length)
         {
-          Object localObject = paramString[i].getName();
-          if (i != 0) {
-            localStringBuilder.append(",");
+          int j = 0;
+          if (j >= paramList.size()) {
+            break label248;
           }
-          localStringBuilder.append((String)localObject);
-          i += 1;
+          localObject = (Statistic)paramList.get(j);
+          localStringBuilder.append("&");
+          j += 1;
+          localStringBuilder.append(j);
+          localStringBuilder.append("_");
+          localStringBuilder.append(i + 1);
+          localStringBuilder.append("=");
+          localStringBuilder.append(utf8encode(((Statistic)localObject).getValue(i)));
           continue;
-          if (i < paramString.length)
-          {
-            int j = 0;
-            if (j >= paramList.size()) {
-              break label232;
-            }
-            localObject = (Statistic)paramList.get(j);
-            localStringBuilder.append("&").append(j + 1).append("_").append(i + 1).append("=").append(utf8encode(((Statistic)localObject).getValue(i)));
-            j += 1;
-            continue;
-          }
-          localStringBuilder.append("&count=").append(paramList.size());
-          return localStringBuilder.toString();
         }
+        localStringBuilder.append("&count=");
+        localStringBuilder.append(paramList.size());
+        return localStringBuilder.toString();
       }
       catch (OutOfMemoryError paramString)
       {
         QZLog.e("HttpAssembler", "", paramString);
-        return null;
       }
+      return null;
+      label243:
       int i = 0;
       continue;
-      label232:
+      label248:
       i += 1;
     }
   }
@@ -135,7 +149,7 @@ public class HttpAssembler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.statistic.access.HttpAssembler
  * JD-Core Version:    0.7.0.1
  */

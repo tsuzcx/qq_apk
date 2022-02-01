@@ -36,41 +36,45 @@ public class TextHeaderView
   {
     if (!TextUtils.isEmpty(this.c))
     {
-      Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
-      localIntent.putExtra("url", this.c);
-      paramActivity.startActivity(localIntent);
+      localObject = new Intent(paramActivity, QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", this.c);
+      paramActivity.startActivity((Intent)localObject);
     }
-    for (;;)
+    else
     {
-      MobileReportManager.getInstance().reportAction("QQVipAccount", "1", "1", paramInt + 1 + "", "", "1", 102, 1);
-      try
-      {
-        QQVipHelper.a(118, paramQQVipMsgInfo, paramInt);
-        return;
-      }
-      catch (Throwable paramActivity)
-      {
-        paramActivity.printStackTrace();
-      }
       QQVipHelper.a(paramActivity);
+    }
+    paramActivity = MobileReportManager.getInstance();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramInt + 1);
+    ((StringBuilder)localObject).append("");
+    paramActivity.reportAction("QQVipAccount", "1", "1", ((StringBuilder)localObject).toString(), "", "1", 102, 1);
+    try
+    {
+      QQVipHelper.a(118, paramQQVipMsgInfo, paramInt);
+      return;
+    }
+    catch (Throwable paramActivity)
+    {
+      paramActivity.printStackTrace();
     }
   }
   
   public void a(QQVipMsgInfo paramQQVipMsgInfo, Activity paramActivity, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramQQVipMsgInfo.title;
-    this.jdField_b_of_type_JavaLangString = paramQQVipMsgInfo.contentText;
-    this.c = paramQQVipMsgInfo.url;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131562014, this, false));
+    this.jdField_a_of_type_JavaLangString = paramQQVipMsgInfo.mTitle;
+    this.jdField_b_of_type_JavaLangString = paramQQVipMsgInfo.mContentText;
+    this.c = paramQQVipMsgInfo.mUrl;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561847, this, false));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(0);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379432));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378784));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379091));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378460));
     this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131371065);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370699);
     URLDrawable localURLDrawable = URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/qzone/qzact/act/external/welling-test/qqvip/background_android@2x.png");
     this.jdField_a_of_type_AndroidViewView.setBackground(localURLDrawable);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365710).setOnClickListener(new TextHeaderView.1(this, paramActivity, paramInt, paramQQVipMsgInfo));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365547).setOnClickListener(new TextHeaderView.1(this, paramActivity, paramInt, paramQQVipMsgInfo));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new TextHeaderView.2(this, paramActivity, paramInt, paramQQVipMsgInfo));
     addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
     try
@@ -86,7 +90,7 @@ public class TextHeaderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.view.TextHeaderView
  * JD-Core Version:    0.7.0.1
  */

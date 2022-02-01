@@ -12,21 +12,21 @@ import com.tencent.qphone.base.util.QLog;
 public class GetRedpointStep
   extends AsyncStep
 {
-  public int a()
+  protected int doStep()
   {
     if (QLog.isColorLevel()) {
       QLog.i("GetRedpointStep", 2, "GetRedpointStep");
     }
     if (BaseActivity.mAppForground) {
-      ((IRedTouchServer)this.a.a.getRuntimeService(IRedTouchServer.class, "")).sendRedpointReq(false, false, 1);
+      ((IRedTouchServer)this.mAutomator.a.getRuntimeService(IRedTouchServer.class, "")).sendRedpointReq(false, false, 1);
     }
-    ((MedalWallMng)this.a.a.getManager(QQManagerFactory.MEDAL_WALL_MNG)).a();
+    ((MedalWallMng)this.mAutomator.a.getManager(QQManagerFactory.MEDAL_WALL_MNG)).a();
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetRedpointStep
  * JD-Core Version:    0.7.0.1
  */

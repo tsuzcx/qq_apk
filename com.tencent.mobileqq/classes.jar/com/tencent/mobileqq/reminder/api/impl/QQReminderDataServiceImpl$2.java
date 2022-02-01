@@ -15,28 +15,24 @@ class QQReminderDataServiceImpl$2
     if (this.a == null) {
       return;
     }
-    if (QQReminderDataServiceImpl.access$100(this.this$0) == null) {
-      QQReminderDataServiceImpl.access$102(this.this$0, (IQQReminderAlarmService)QQReminderDataServiceImpl.access$200(this.this$0).getRuntimeService(IQQReminderAlarmService.class, ""));
-    }
-    if (this.a.type == 0)
+    if (QQReminderDataServiceImpl.access$100(this.this$0) == null)
     {
-      if (QQReminderDataServiceImpl.access$100(this.this$0) == null) {
-        break label91;
+      QQReminderDataServiceImpl localQQReminderDataServiceImpl = this.this$0;
+      QQReminderDataServiceImpl.access$102(localQQReminderDataServiceImpl, (IQQReminderAlarmService)QQReminderDataServiceImpl.access$200(localQQReminderDataServiceImpl).getRuntimeService(IQQReminderAlarmService.class, ""));
+    }
+    if (this.a.type == 0) {
+      if (QQReminderDataServiceImpl.access$100(this.this$0) != null) {
+        QQReminderDataServiceImpl.access$100(this.this$0).setAlarmTimer(this.a);
+      } else {
+        QQReminderUtil.c(this.a);
       }
-      QQReminderDataServiceImpl.access$100(this.this$0).setAlarmTimer(this.a);
     }
-    for (;;)
-    {
-      QQReminderDataServiceImpl.access$300(this.this$0, this.a);
-      return;
-      label91:
-      QQReminderUtil.c(this.a);
-    }
+    QQReminderDataServiceImpl.access$300(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.reminder.api.impl.QQReminderDataServiceImpl.2
  * JD-Core Version:    0.7.0.1
  */

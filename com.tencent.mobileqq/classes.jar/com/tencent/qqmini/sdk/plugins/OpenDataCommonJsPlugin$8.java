@@ -13,34 +13,51 @@ class OpenDataCommonJsPlugin$8
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QMLog.d("OpenDataCommonJsPlugin", "modifyFriendInteractiveStorage receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("modifyFriendInteractiveStorage receive isSuc= ");
+    ((StringBuilder)localObject1).append(paramBoolean);
+    ((StringBuilder)localObject1).append(" ret=");
+    ((StringBuilder)localObject1).append(String.valueOf(paramJSONObject));
+    QMLog.d("OpenDataCommonJsPlugin", ((StringBuilder)localObject1).toString());
     if (paramJSONObject == null)
     {
       QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , ret == null");
       this.val$req.fail("request ret is null.");
       return;
     }
-    if (paramBoolean)
-    {
-      int i;
-      String str1;
+    if (paramBoolean) {
       try
       {
-        i = paramJSONObject.getInt("retCode");
-        str1 = paramJSONObject.getString("errMsg");
+        int i = paramJSONObject.getInt("retCode");
+        localObject1 = paramJSONObject.getString("errMsg");
         paramJSONObject = new JSONObject();
         if (i == 0)
         {
           this.val$req.ok();
           if ((!TextUtils.isEmpty(this.val$title)) && (!this.val$quiet.booleanValue()))
           {
-            str1 = this.val$object + this.val$action;
-            String str2 = "已" + this.val$action + "\n马上QQ告诉好友？";
-            this.this$0.doShowFriendInteractiveDialog(str1, str2, this.val$openid, this.val$nick, this.val$title, this.val$imageUrl, this.val$imageUrlId, this.val$req);
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append(this.val$object);
+            ((StringBuilder)localObject1).append(this.val$action);
+            localObject1 = ((StringBuilder)localObject1).toString();
+            Object localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("已");
+            ((StringBuilder)localObject2).append(this.val$action);
+            ((StringBuilder)localObject2).append("\n马上QQ告诉好友？");
+            localObject2 = ((StringBuilder)localObject2).toString();
+            this.this$0.doShowFriendInteractiveDialog((String)localObject1, (String)localObject2, this.val$openid, this.val$nick, this.val$title, this.val$imageUrl, this.val$imageUrlId, this.val$req);
           }
           OpenDataCommonJsPlugin.access$600(this.this$0, paramJSONObject, this.val$req, this.val$key);
           return;
         }
+        paramJSONObject.put("errMsg", localObject1);
+        paramJSONObject.put("errCode", i);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE ");
+        ((StringBuilder)localObject1).append(paramJSONObject.toString());
+        QMLog.e("OpenDataCommonJsPlugin", ((StringBuilder)localObject1).toString());
+        this.val$req.fail(paramJSONObject, "");
+        return;
       }
       catch (Exception paramJSONObject)
       {
@@ -48,11 +65,6 @@ class OpenDataCommonJsPlugin$8
         this.val$req.fail();
         return;
       }
-      paramJSONObject.put("errMsg", str1);
-      paramJSONObject.put("errCode", i);
-      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE " + paramJSONObject.toString());
-      this.val$req.fail(paramJSONObject, "");
-      return;
     }
     QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error , isSuc false");
     this.val$req.fail("request failed.");
@@ -60,7 +72,7 @@ class OpenDataCommonJsPlugin$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.OpenDataCommonJsPlugin.8
  * JD-Core Version:    0.7.0.1
  */

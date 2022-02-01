@@ -7,13 +7,13 @@ class AssociatedAccountActivity$8
   
   public void run()
   {
-    AssociatedAccountActivity.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
-    AssociatedAccountActivity.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+    AssociatedAccountActivity.access$1100(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
+    AssociatedAccountActivity.access$1200(this.this$0, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountActivity.8
  * JD-Core Version:    0.7.0.1
  */

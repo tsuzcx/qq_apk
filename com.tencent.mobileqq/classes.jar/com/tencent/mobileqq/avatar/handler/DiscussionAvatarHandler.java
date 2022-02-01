@@ -21,7 +21,7 @@ public class DiscussionAvatarHandler
     notifyUI(1, paramBoolean1, Pair.create(Boolean.valueOf(paramBoolean2), paramString));
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return DiscussionAvatarObserver.class;
   }
@@ -30,7 +30,7 @@ public class DiscussionAvatarHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.handler.DiscussionAvatarHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -60,8 +60,9 @@ public final class SDKUpgradeReq
     paramJceOutputStream.write(this.cProtocolVer, 1);
     paramJceOutputStream.write(this.vUin, 2);
     paramJceOutputStream.write(this.bSdkUpdateFlag, 3);
-    if (this.vAppid != null) {
-      paramJceOutputStream.write(this.vAppid, 4);
+    ArrayList localArrayList = this.vAppid;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 4);
     }
     paramJceOutputStream.write(this.iActionType, 5);
     paramJceOutputStream.write(this.iWidth, 6);
@@ -71,7 +72,7 @@ public final class SDKUpgradeReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     protocol.KQQConfig.SDKUpgradeReq
  * JD-Core Version:    0.7.0.1
  */

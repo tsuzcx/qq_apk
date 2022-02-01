@@ -27,7 +27,15 @@ public final class AdVideoCeilingAdapter$Params
   
   public boolean isValid()
   {
-    return (this.activity != null) && (this.activity.get() != null) && (this.ad != null) && (this.ad.isValid()) && (!TextUtils.isEmpty(this.webUrl)) && (!TextUtils.isEmpty(this.videoUrl)) && (this.style != -2147483648) && (this.videoStartPositionMillis >= 0L);
+    Object localObject = this.activity;
+    if ((localObject != null) && (((WeakReference)localObject).get() != null))
+    {
+      localObject = this.ad;
+      if ((localObject != null) && (((Ad)localObject).isValid()) && (!TextUtils.isEmpty(this.webUrl)) && (!TextUtils.isEmpty(this.videoUrl)) && (this.style != -2147483648) && (this.videoStartPositionMillis >= 0L)) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 

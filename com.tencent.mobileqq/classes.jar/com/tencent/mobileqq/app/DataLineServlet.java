@@ -34,28 +34,30 @@ public class DataLineServlet
     if (QLog.isColorLevel()) {
       QLog.d("DataLineServlet", 2, "onSend called");
     }
-    if (paramIntent == null) {
-      QLog.e("DataLineServlet", 1, "onSend : req is null");
-    }
-    do
+    if (paramIntent == null)
     {
+      QLog.e("DataLineServlet", 1, "onSend : req is null");
       return;
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent == null) {
-        break;
-      }
+    }
+    paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+    if (paramIntent != null)
+    {
       paramPacket.setSSOCommand(paramIntent.getServiceCmd());
       paramPacket.putSendData(paramIntent.getWupBuffer());
       paramPacket.setTimeout(paramIntent.getTimeout());
-    } while (paramIntent.isNeedCallback());
-    paramPacket.setNoResponse();
-    return;
-    QLog.e("DataLineServlet", 1, "onSend : toMsg is null");
+      if (!paramIntent.isNeedCallback()) {
+        paramPacket.setNoResponse();
+      }
+    }
+    else
+    {
+      QLog.e("DataLineServlet", 1, "onSend : toMsg is null");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.DataLineServlet
  * JD-Core Version:    0.7.0.1
  */

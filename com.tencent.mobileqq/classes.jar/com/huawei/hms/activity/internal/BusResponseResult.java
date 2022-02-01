@@ -4,32 +4,32 @@ import android.content.Intent;
 
 public class BusResponseResult
 {
-  private Intent a;
-  private int b;
+  private int code;
+  private Intent intent;
   
   public int getCode()
   {
-    return this.b;
+    return this.code;
   }
   
   public Intent getIntent()
   {
-    return this.a;
+    return this.intent;
   }
   
   public void setCode(int paramInt)
   {
-    this.b = paramInt;
+    this.code = paramInt;
   }
   
   public void setIntent(Intent paramIntent)
   {
-    this.a = paramIntent;
+    this.intent = paramIntent;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.activity.internal.BusResponseResult
  * JD-Core Version:    0.7.0.1
  */

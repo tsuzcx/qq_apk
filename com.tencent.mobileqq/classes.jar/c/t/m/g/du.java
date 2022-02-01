@@ -51,77 +51,67 @@ public final class du
   
   private static String a(String paramString)
   {
-    String str2 = "GBK";
-    String str1 = str2;
-    int i2;
-    int i1;
     if (paramString != null)
     {
       paramString = paramString.split(";");
-      i2 = paramString.length;
-      i1 = 0;
-    }
-    for (;;)
-    {
-      str1 = str2;
-      if (i1 < i2)
+      int i2 = paramString.length;
+      int i1 = 0;
+      while (i1 < i2)
       {
-        str1 = paramString[i1].trim();
-        int i3 = str1.indexOf("charset=");
+        String str = paramString[i1].trim();
+        int i3 = str.indexOf("charset=");
         if (-1 != i3) {
-          str1 = str1.substring(i3 + 8, str1.length());
+          return str.substring(i3 + 8, str.length());
         }
+        i1 += 1;
       }
-      else
-      {
-        return str1;
-      }
-      i1 += 1;
     }
+    return "GBK";
   }
   
   public static void a(String paramString, byte[] paramArrayOfByte, int paramInt, du.b paramb)
   {
-    for (;;)
+    try
     {
-      try
+      HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(paramString).openConnection();
+      localHttpURLConnection.setRequestProperty("User-Agent", "Dalvik/1.6.0 (Linux; U; Android 4.4; Nexus 5 Build/KRT16M)");
+      localHttpURLConnection.setRequestProperty("Content-Type", "application/octet-stream");
+      localHttpURLConnection.setRequestMethod("POST");
+      localHttpURLConnection.setConnectTimeout(10000);
+      localHttpURLConnection.setDoOutput(true);
+      localHttpURLConnection.setFixedLengthStreamingMode(paramArrayOfByte.length);
+      localHttpURLConnection.setRequestProperty("Connection", "close");
+      Object localObject = localHttpURLConnection.getOutputStream();
+      ((OutputStream)localObject).write(paramArrayOfByte);
+      ((OutputStream)localObject).flush();
+      ((OutputStream)localObject).close();
+      int i1 = localHttpURLConnection.getResponseCode();
+      if (i1 != 200)
       {
-        HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(paramString).openConnection();
-        localHttpURLConnection.setRequestProperty("User-Agent", "Dalvik/1.6.0 (Linux; U; Android 4.4; Nexus 5 Build/KRT16M)");
-        localHttpURLConnection.setRequestProperty("Content-Type", "application/octet-stream");
-        localHttpURLConnection.setRequestMethod("POST");
-        localHttpURLConnection.setConnectTimeout(10000);
-        localHttpURLConnection.setDoOutput(true);
-        localHttpURLConnection.setFixedLengthStreamingMode(paramArrayOfByte.length);
-        localHttpURLConnection.setRequestProperty("Connection", "close");
-        Object localObject = localHttpURLConnection.getOutputStream();
-        ((OutputStream)localObject).write(paramArrayOfByte);
-        ((OutputStream)localObject).flush();
-        ((OutputStream)localObject).close();
-        int i1 = localHttpURLConnection.getResponseCode();
-        switch (i1)
-        {
-        case 200: 
-          paramb.b("net sdk error: ".concat(String.valueOf(i1)));
-          localHttpURLConnection.disconnect();
-          return;
-          localObject = a(localHttpURLConnection.getHeaderField("content-type"));
-          paramb.a(new String(a(localHttpURLConnection.getInputStream()), (String)localObject));
-        }
+        paramb.b("net sdk error: ".concat(String.valueOf(i1)));
       }
-      catch (Throwable localThrowable)
+      else
       {
-        if ((paramInt <= 0) && (((localThrowable instanceof GeneralSecurityException)) || ((localThrowable instanceof SSLException))))
-        {
-          paramString = paramString.replaceAll("https:", "http:");
-          paramInt += 1;
-        }
-        else
-        {
-          paramb.b("tryTime=" + paramInt + "," + paramString + "," + Log.getStackTraceString(localThrowable));
-          return;
-        }
+        localObject = a(localHttpURLConnection.getHeaderField("content-type"));
+        paramb.a(new String(a(localHttpURLConnection.getInputStream()), (String)localObject));
       }
+      localHttpURLConnection.disconnect();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while ((paramInt <= 0) && (((localThrowable instanceof GeneralSecurityException)) || ((localThrowable instanceof SSLException))))
+      {
+        paramString = paramString.replaceAll("https:", "http:");
+        paramInt += 1;
+      }
+      paramArrayOfByte = new StringBuilder("tryTime=");
+      paramArrayOfByte.append(paramInt);
+      paramArrayOfByte.append(",");
+      paramArrayOfByte.append(paramString);
+      paramArrayOfByte.append(",");
+      paramArrayOfByte.append(Log.getStackTraceString(localThrowable));
+      paramb.b(paramArrayOfByte.toString());
     }
   }
   
@@ -160,26 +150,30 @@ public final class du
   
   public final String c()
   {
-    if ((TextUtils.isEmpty(this.e)) || (this.e.contains("0000"))) {
-      return "0123456789ABCDEF";
+    if ((!TextUtils.isEmpty(this.e)) && (!this.e.contains("0000"))) {
+      return this.e;
     }
-    return this.e;
+    return "0123456789ABCDEF";
   }
   
   public final String d()
   {
-    if (this.B == null) {
-      return "None";
+    String str2 = this.B;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "None";
     }
-    return this.B;
+    return str1;
   }
   
   public final String e()
   {
-    if (this.C == null) {
-      return "None";
+    String str2 = this.C;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "None";
     }
-    return this.C;
+    return str1;
   }
   
   public final String f()
@@ -187,7 +181,12 @@ public final class du
     if (this.r == null)
     {
       StringBuilder localStringBuilder = new StringBuilder(100);
-      localStringBuilder.append(a()).append("_").append(b()).append("_").append(c()).append("_QQGeoLocation");
+      localStringBuilder.append(a());
+      localStringBuilder.append("_");
+      localStringBuilder.append(b());
+      localStringBuilder.append("_");
+      localStringBuilder.append(c());
+      localStringBuilder.append("_QQGeoLocation");
       this.r = co.d(localStringBuilder.toString());
     }
     return this.r;
@@ -195,7 +194,7 @@ public final class du
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.du
  * JD-Core Version:    0.7.0.1
  */

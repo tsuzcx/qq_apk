@@ -28,25 +28,28 @@ public class UpdateAppJsPlugin
   @JsEvent({"updateQQApp"})
   public void updateQQApp(RequestEvent paramRequestEvent)
   {
-    if (this.mActivity == null)
+    Activity localActivity = this.mActivity;
+    if (localActivity == null)
     {
       QMLog.e("UpdateAppJsPlugin", "mActivity is null ?!!");
       return;
     }
     try
     {
-      this.mMiniAppProxy.getAppUpdate(this.mActivity, new UpdateAppJsPlugin.1(this, paramRequestEvent));
+      this.mMiniAppProxy.getAppUpdate(localActivity, new UpdateAppJsPlugin.1(this, paramRequestEvent));
       return;
     }
     catch (Exception paramRequestEvent)
     {
-      QMLog.e("UpdateAppJsPlugin", "Failed to updateQQApp");
+      label35:
+      break label35;
     }
+    QMLog.e("UpdateAppJsPlugin", "Failed to updateQQApp");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.UpdateAppJsPlugin
  * JD-Core Version:    0.7.0.1
  */

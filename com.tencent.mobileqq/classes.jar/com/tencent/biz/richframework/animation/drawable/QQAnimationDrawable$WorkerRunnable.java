@@ -19,32 +19,38 @@ class QQAnimationDrawable$WorkerRunnable
   
   public void run()
   {
-    Object localObject = new StringBuilder().append("WorkerRunnable run | drawtime:").append(this.jdField_a_of_type_Long).append(" main:");
-    if (Looper.myLooper() == Looper.getMainLooper()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("QQAnimationDrawable", 2, bool);
-      Process.setThreadPriority(10);
-      long l1 = SystemClock.uptimeMillis();
-      this.this$0.b = this.this$0.a(false, this.jdField_a_of_type_Int);
-      QQAnimationDrawable.a(this.this$0, this.jdField_a_of_type_Int);
-      if ((this.this$0.a == null) && (this.jdField_a_of_type_Int == 0)) {
-        this.this$0.a = this.this$0.b;
-      }
-      if (QQAnimationDrawable.a(this.this$0) != null) {
-        QQAnimationDrawable.a(this.this$0).a(this.jdField_a_of_type_Int);
-      }
-      localObject = this.this$0;
-      QQAnimationDrawable localQQAnimationDrawable = this.this$0;
-      long l2 = SystemClock.uptimeMillis();
-      ((QQAnimationDrawable)localObject).scheduleSelf(localQQAnimationDrawable, Math.max(this.jdField_a_of_type_Long - l1, 0L) + l2);
-      return;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("WorkerRunnable run | drawtime:");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(" main:");
+    boolean bool;
+    if (Looper.myLooper() == Looper.getMainLooper()) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    ((StringBuilder)localObject).append(bool);
+    QLog.d("QQAnimationDrawable", 2, ((StringBuilder)localObject).toString());
+    Process.setThreadPriority(10);
+    long l = SystemClock.uptimeMillis();
+    localObject = this.this$0;
+    ((QQAnimationDrawable)localObject).b = ((QQAnimationDrawable)localObject).a(false, this.jdField_a_of_type_Int);
+    QQAnimationDrawable.a(this.this$0, this.jdField_a_of_type_Int);
+    if ((this.this$0.a == null) && (this.jdField_a_of_type_Int == 0))
+    {
+      localObject = this.this$0;
+      ((QQAnimationDrawable)localObject).a = ((QQAnimationDrawable)localObject).b;
+    }
+    if (QQAnimationDrawable.a(this.this$0) != null) {
+      QQAnimationDrawable.a(this.this$0).a(this.jdField_a_of_type_Int);
+    }
+    localObject = this.this$0;
+    ((QQAnimationDrawable)localObject).scheduleSelf((Runnable)localObject, SystemClock.uptimeMillis() + Math.max(this.jdField_a_of_type_Long - l, 0L));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.animation.drawable.QQAnimationDrawable.WorkerRunnable
  * JD-Core Version:    0.7.0.1
  */

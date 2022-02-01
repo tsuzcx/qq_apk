@@ -39,9 +39,13 @@ public class InviteBaseData
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[uin=").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(",type=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(",phone=").append(this.c).append("]");
+    localStringBuilder.append("[uin=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",type=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",phone=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
   
@@ -57,7 +61,7 @@ public class InviteBaseData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.InviteBaseData
  * JD-Core Version:    0.7.0.1
  */

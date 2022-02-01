@@ -14,17 +14,28 @@ class TroopView$8
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("addContacts.TroopView", 2, "onRepeatClick. position:" + paramInt);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onRepeatClick. position:");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.i("addContacts.TroopView", 2, ((StringBuilder)localObject).toString());
     }
     if (paramInt != -1)
     {
       TroopView.a(this.a).setCurrentPosition(-1, false);
       int i = TroopView.a(this.a).getCurrentItem();
-      if (QLog.isColorLevel()) {
-        QLog.i("addContacts.TroopView", 2, "onCurrentTabClick. position:" + paramInt + " currentClassifyPos:" + i);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onCurrentTabClick. position:");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append(" currentClassifyPos:");
+        ((StringBuilder)localObject).append(i);
+        QLog.i("addContacts.TroopView", 2, ((StringBuilder)localObject).toString());
       }
-      Object localObject = TroopView.a(this.a).a(i, false);
+      localObject = TroopView.a(this.a).a(i, false);
       if (localObject != null)
       {
         localObject = (AddContactViewPagerTroopFragment)localObject;
@@ -37,7 +48,7 @@ class TroopView$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView.8
  * JD-Core Version:    0.7.0.1
  */

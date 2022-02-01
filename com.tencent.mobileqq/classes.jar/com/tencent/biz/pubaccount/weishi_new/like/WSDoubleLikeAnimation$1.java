@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.weishi_new.like;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.view.ViewGroup;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 import java.util.List;
 
 class WSDoubleLikeAnimation$1
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   WSDoubleLikeAnimation$1(WSDoubleLikeAnimation paramWSDoubleLikeAnimation, DiniFlyAnimationView paramDiniFlyAnimationView) {}
   
@@ -29,7 +29,7 @@ class WSDoubleLikeAnimation$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.like.WSDoubleLikeAnimation.1
  * JD-Core Version:    0.7.0.1
  */

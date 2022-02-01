@@ -27,14 +27,15 @@ public final class uin_nick_info
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.nick != null) {
-      paramJceOutputStream.write(this.nick, 1);
+    String str = this.nick;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     photo_share_struct.uin_nick_info
  * JD-Core Version:    0.7.0.1
  */

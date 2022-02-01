@@ -9,11 +9,17 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class HardWareCodecSSO$PowerInfo
   extends MessageMicro<PowerInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32 }, new String[] { "mark", "support", "max_width", "max_height" }, new Object[] { Long.valueOf(0L), Boolean.valueOf(false), Long.valueOf(0L), Long.valueOf(0L) }, PowerInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field mark = PBField.initUInt64(0L);
   public final PBUInt64Field max_height = PBField.initUInt64(0L);
   public final PBUInt64Field max_width = PBField.initUInt64(0L);
   public final PBBoolField support = PBField.initBool(false);
+  
+  static
+  {
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32 }, new String[] { "mark", "support", "max_width", "max_height" }, new Object[] { localLong, Boolean.valueOf(false), localLong, localLong }, PowerInfo.class);
+  }
 }
 
 

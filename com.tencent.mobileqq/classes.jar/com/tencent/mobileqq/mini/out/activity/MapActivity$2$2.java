@@ -11,17 +11,18 @@ class MapActivity$2$2
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface = this.this$1.this$0;
-    if (this.this$1.this$0.type == 2) {}
-    for (boolean bool = true;; bool = false)
-    {
-      MapActivity.access$300(paramDialogInterface, bool);
-      return;
+    boolean bool;
+    if (this.this$1.this$0.type == 2) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    MapActivity.access$300(paramDialogInterface, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.MapActivity.2.2
  * JD-Core Version:    0.7.0.1
  */

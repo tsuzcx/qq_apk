@@ -18,24 +18,29 @@ class VideoSprite$ErrorListener
   public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
     paramMediaPlayer = (VideoSprite)this.a.get();
-    if (paramMediaPlayer == null) {}
-    do
-    {
+    if (paramMediaPlayer == null) {
       return true;
-      if (QLog.isColorLevel()) {
-        QLog.e("VideoSprite", 2, "onError: " + paramInt1);
-      }
-    } while (paramInt1 != 1);
-    if (paramMediaPlayer.a != null) {
-      paramMediaPlayer.a.a();
     }
-    paramMediaPlayer.j();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onError: ");
+      localStringBuilder.append(paramInt1);
+      QLog.e("VideoSprite", 2, localStringBuilder.toString());
+    }
+    if (paramInt1 == 1)
+    {
+      if (paramMediaPlayer.a != null) {
+        paramMediaPlayer.a.a();
+      }
+      paramMediaPlayer.j();
+    }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.ErrorListener
  * JD-Core Version:    0.7.0.1
  */

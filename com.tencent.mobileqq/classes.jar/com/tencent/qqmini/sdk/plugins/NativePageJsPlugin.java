@@ -40,48 +40,51 @@ public class NativePageJsPlugin
     }
     for (;;)
     {
-      Object localObject1;
-      int i;
       try
       {
         localObject1 = new JSONObject(paramRequestEvent.jsonParams);
-        if (!((JSONObject)localObject1).has("api_name")) {
-          break label166;
-        }
-        ((JSONObject)localObject1).optString("api_name");
-        Object localObject2 = ((JSONObject)localObject1).optJSONObject("data");
-        localObject1 = ((JSONObject)localObject2).optString("card_type");
-        if (((String)localObject1).equals("public_account"))
+        if (((JSONObject)localObject1).has("api_name"))
         {
-          i = 1;
+          ((JSONObject)localObject1).optString("api_name");
+          Object localObject2 = ((JSONObject)localObject1).optJSONObject("data");
+          localObject1 = ((JSONObject)localObject2).optString("card_type");
+          if (((String)localObject1).equals("public_account"))
+          {
+            i = 1;
+          }
+          else
+          {
+            if (!((String)localObject1).equals("group")) {
+              break label187;
+            }
+            i = 2;
+          }
           localObject2 = ((JSONObject)localObject2).optString("uin");
           String str = getAppId();
           ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).checkBindingState(str, (String)localObject2, i, new NativePageJsPlugin.1(this, localActivity, str, (String)localObject2, (String)localObject1, paramRequestEvent));
+        }
+        else
+        {
+          paramRequestEvent.fail("params error.");
           return;
         }
       }
       catch (Exception localException)
       {
-        QMLog.e("NativePageJsPlugin", paramRequestEvent.event + " error.", localException);
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramRequestEvent.event);
+        ((StringBuilder)localObject1).append(" error.");
+        QMLog.e("NativePageJsPlugin", ((StringBuilder)localObject1).toString(), localException);
         return;
       }
-      if (((String)localObject1).equals("group"))
-      {
-        i = 2;
-        continue;
-        label166:
-        paramRequestEvent.fail("params error.");
-      }
-      else
-      {
-        i = 0;
-      }
+      label187:
+      int i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.NativePageJsPlugin
  * JD-Core Version:    0.7.0.1
  */

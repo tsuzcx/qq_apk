@@ -12,7 +12,7 @@ import rx.subscriptions.CompositeSubscription;
 final class OperatorZip$Zip<R>
   extends AtomicLong
 {
-  static final int THRESHOLD = (int)(RxRingBuffer.SIZE * 0.7D);
+  static final int THRESHOLD;
   private static final long serialVersionUID = 5995274816189928317L;
   final Observer<? super R> child;
   private final CompositeSubscription childSubscription = new CompositeSubscription();
@@ -20,6 +20,13 @@ final class OperatorZip$Zip<R>
   private AtomicLong requested;
   private volatile Object[] subscribers;
   private final FuncN<? extends R> zipFunction;
+  
+  static
+  {
+    double d = RxRingBuffer.SIZE;
+    Double.isNaN(d);
+    THRESHOLD = (int)(d * 0.7D);
+  }
   
   public OperatorZip$Zip(Subscriber<? super R> paramSubscriber, FuncN<? extends R> paramFuncN)
   {
@@ -30,8 +37,8 @@ final class OperatorZip$Zip<R>
   
   public void start(Observable[] paramArrayOfObservable, AtomicLong paramAtomicLong)
   {
-    int j = 0;
     Object[] arrayOfObject = new Object[paramArrayOfObservable.length];
+    int j = 0;
     int i = 0;
     while (i < paramArrayOfObservable.length)
     {
@@ -53,89 +60,87 @@ final class OperatorZip$Zip<R>
   void tick()
   {
     Object[] arrayOfObject = this.subscribers;
-    if (arrayOfObject == null) {}
-    while (getAndIncrement() != 0L) {
+    if (arrayOfObject == null) {
       return;
     }
-    int k = arrayOfObject.length;
-    Observer localObserver = this.child;
-    AtomicLong localAtomicLong = this.requested;
-    do
+    if (getAndIncrement() == 0L)
     {
-      for (;;)
+      int k = arrayOfObject.length;
+      Observer localObserver = this.child;
+      AtomicLong localAtomicLong = this.requested;
+      do
       {
-        Object localObject1 = new Object[k];
-        int i = 1;
-        int j = 0;
-        if (j < k)
-        {
-          RxRingBuffer localRxRingBuffer = ((OperatorZip.Zip.InnerSubscriber)arrayOfObject[j]).items;
-          Object localObject2 = localRxRingBuffer.peek();
-          if (localObject2 == null) {
-            i = 0;
-          }
-          for (;;)
-          {
-            j += 1;
-            break;
-            if (localRxRingBuffer.isCompleted(localObject2))
-            {
-              localObserver.onCompleted();
-              this.childSubscription.unsubscribe();
-              return;
-            }
-            localObject1[j] = localRxRingBuffer.getValue(localObject2);
-          }
-        }
-        if ((localAtomicLong.get() <= 0L) || (i == 0)) {
-          break;
-        }
         for (;;)
         {
-          try
+          Object localObject1 = new Object[k];
+          int i = 0;
+          int j = 1;
+          while (i < k)
           {
-            localObserver.onNext(this.zipFunction.call((Object[])localObject1));
-            localAtomicLong.decrementAndGet();
-            this.emitted += 1;
-            j = arrayOfObject.length;
-            i = 0;
-            if (i >= j) {
-              break;
-            }
-            localObject1 = ((OperatorZip.Zip.InnerSubscriber)arrayOfObject[i]).items;
-            ((RxRingBuffer)localObject1).poll();
-            if (((RxRingBuffer)localObject1).isCompleted(((RxRingBuffer)localObject1).peek()))
+            RxRingBuffer localRxRingBuffer = ((OperatorZip.Zip.InnerSubscriber)arrayOfObject[i]).items;
+            Object localObject2 = localRxRingBuffer.peek();
+            if (localObject2 == null)
             {
-              localObserver.onCompleted();
-              this.childSubscription.unsubscribe();
+              j = 0;
+            }
+            else
+            {
+              if (localRxRingBuffer.isCompleted(localObject2))
+              {
+                localObserver.onCompleted();
+                this.childSubscription.unsubscribe();
+                return;
+              }
+              localObject1[i] = localRxRingBuffer.getValue(localObject2);
+            }
+            i += 1;
+          }
+          if ((localAtomicLong.get() > 0L) && (j != 0)) {
+            try
+            {
+              localObserver.onNext(this.zipFunction.call((Object[])localObject1));
+              localAtomicLong.decrementAndGet();
+              this.emitted += 1;
+              j = arrayOfObject.length;
+              i = 0;
+              while (i < j)
+              {
+                localObject1 = ((OperatorZip.Zip.InnerSubscriber)arrayOfObject[i]).items;
+                ((RxRingBuffer)localObject1).poll();
+                if (((RxRingBuffer)localObject1).isCompleted(((RxRingBuffer)localObject1).peek()))
+                {
+                  localObserver.onCompleted();
+                  this.childSubscription.unsubscribe();
+                  return;
+                }
+                i += 1;
+              }
+              if (this.emitted > THRESHOLD)
+              {
+                j = arrayOfObject.length;
+                i = 0;
+                while (i < j)
+                {
+                  ((OperatorZip.Zip.InnerSubscriber)arrayOfObject[i]).requestMore(this.emitted);
+                  i += 1;
+                }
+                this.emitted = 0;
+              }
+            }
+            catch (Throwable localThrowable)
+            {
+              Exceptions.throwOrReport(localThrowable, localObserver, localObject1);
               return;
             }
           }
-          catch (Throwable localThrowable)
-          {
-            Exceptions.throwOrReport(localThrowable, localObserver, localObject1);
-            return;
-          }
-          i += 1;
         }
-        if (this.emitted > THRESHOLD)
-        {
-          j = localThrowable.length;
-          i = 0;
-          while (i < j)
-          {
-            ((OperatorZip.Zip.InnerSubscriber)localThrowable[i]).requestMore(this.emitted);
-            i += 1;
-          }
-          this.emitted = 0;
-        }
-      }
-    } while (decrementAndGet() > 0L);
+      } while (decrementAndGet() > 0L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorZip.Zip
  * JD-Core Version:    0.7.0.1
  */

@@ -36,7 +36,7 @@ public class GetBlackStatusRequest
     return a;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqGetBlackList localReqGetBlackList = new qqstory_service.ReqGetBlackList();
     localReqGetBlackList.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
@@ -45,7 +45,7 @@ public class GetBlackStatusRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetBlackStatusRequest
  * JD-Core Version:    0.7.0.1
  */

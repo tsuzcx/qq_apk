@@ -17,23 +17,23 @@ public class QCirclePluginInfoImpl
   
   public String getCurrentPluginInfo()
   {
-    if ((QCircleShadow.a().a() == null) || (QCircleShadow.a().a().getPluginInfo() == null)) {
-      return "";
+    if ((QCircleShadow.a().a() != null) && (QCircleShadow.a().a().getPluginInfo() != null)) {
+      return QCircleShadow.a().a().getPluginInfo().toString();
     }
-    return QCircleShadow.a().a().getPluginInfo().toString();
+    return "";
   }
   
   public int getCurrentPluginVersion()
   {
-    if ((QCircleShadow.a().a() == null) || (QCircleShadow.a().a().getPluginInfo() == null)) {
-      return -1;
+    if ((QCircleShadow.a().a() != null) && (QCircleShadow.a().a().getPluginInfo() != null)) {
+      return QCircleShadow.a().a().getPluginInfo().b();
     }
-    return QCircleShadow.a().a().getPluginInfo().b();
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.delegateimpl.QCirclePluginInfoImpl
  * JD-Core Version:    0.7.0.1
  */

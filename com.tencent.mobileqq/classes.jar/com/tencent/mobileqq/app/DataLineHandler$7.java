@@ -27,74 +27,70 @@ class DataLineHandler$7
   public void run()
   {
     Object localObject2 = new cmd0x346.RspBody();
-    int i;
-    Object localObject1;
-    if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg == null)
+    Object localObject3 = this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
+    if (localObject3 != null)
     {
-      i = ((cmd0x346.RspBody)localObject2).msg_file_query_rsp.int32_ret_code.get();
-      localObject1 = this.this$0.a.getMessageFacade().a(this.jdField_a_of_type_Int).a(this.jdField_a_of_type_Long);
-      if (i != 0) {
-        break label286;
+      byte[] arrayOfByte = null;
+      if (((FromServiceMsg)localObject3).getWupBuffer() != null)
+      {
+        i = this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer().length - 4;
+        if (i >= 0)
+        {
+          arrayOfByte = new byte[i];
+          PkgTools.copyData(arrayOfByte, 0, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer(), 4, i);
+        }
       }
+      else if (arrayOfByte != null)
+      {
+        try
+        {
+          ((cmd0x346.RspBody)localObject2).mergeFrom(arrayOfByte);
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+        {
+          localInvalidProtocolBufferMicroException.printStackTrace();
+        }
+      }
+    }
+    int i = ((cmd0x346.RspBody)localObject2).msg_file_query_rsp.int32_ret_code.get();
+    Object localObject1 = this.this$0.a.getMessageFacade().a(this.jdField_a_of_type_Int).a(this.jdField_a_of_type_Long);
+    if (i == 0)
+    {
       ((cmd0x346.RspBody)localObject2).msg_file_query_rsp.msg_file_info.str_file_name.get();
       ((cmd0x346.RspBody)localObject2).msg_file_query_rsp.msg_file_info.uint64_file_size.get();
       localObject2 = ((cmd0x346.RspBody)localObject2).msg_file_query_rsp.msg_file_info.bytes_10m_md5.get().toByteArray();
-      Object localObject3 = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getAttribute("data");
-      if ((localObject3 == null) || (!(localObject3 instanceof Bundle))) {
-        break label236;
-      }
-      localObject3 = (Bundle)localObject3;
-      if (!((Bundle)localObject3).getBoolean("newAssistant", false)) {
-        break label236;
-      }
-      localObject1 = ((Bundle)localObject3).getString("fileKey");
-      this.this$0.a.getFileTransferHandler().a(this.jdField_a_of_type_Long, (byte[])localObject2, (String)localObject1);
-    }
-    label236:
-    do
-    {
-      do
+      localObject3 = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getAttribute("data");
+      if ((localObject3 != null) && ((localObject3 instanceof Bundle)))
       {
-        for (;;)
+        localObject3 = (Bundle)localObject3;
+        if (((Bundle)localObject3).getBoolean("newAssistant", false))
         {
+          localObject1 = ((Bundle)localObject3).getString("fileKey");
+          this.this$0.a.getFileTransferHandler().a(this.jdField_a_of_type_Long, (byte[])localObject2, (String)localObject1);
           return;
-          localObject1 = null;
-          if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer() != null)
-          {
-            i = this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer().length - 4;
-            if (i < 0) {
-              break;
-            }
-            localObject1 = new byte[i];
-            PkgTools.copyData((byte[])localObject1, 0, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer(), 4, i);
-          }
-          if (localObject1 == null) {
-            break;
-          }
-          try
-          {
-            ((cmd0x346.RspBody)localObject2).mergeFrom((byte[])localObject1);
-          }
-          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-          {
-            localInvalidProtocolBufferMicroException.printStackTrace();
-          }
         }
-        break;
-      } while (localInvalidProtocolBufferMicroException == null);
-      localInvalidProtocolBufferMicroException.md5 = ((byte[])localObject2);
-      this.this$0.a.getMessageFacade().a(this.jdField_a_of_type_Int).a(localInvalidProtocolBufferMicroException.msgId, localInvalidProtocolBufferMicroException.serverPath, localInvalidProtocolBufferMicroException.md5);
-      this.this$0.a(localInvalidProtocolBufferMicroException);
+      }
+      if (localObject1 == null) {
+        return;
+      }
+      ((DataLineMsgRecord)localObject1).md5 = ((byte[])localObject2);
+      this.this$0.a.getMessageFacade().a(this.jdField_a_of_type_Int).a(((DataLineMsgRecord)localObject1).msgId, ((DataLineMsgRecord)localObject1).serverPath, ((DataLineMsgRecord)localObject1).md5);
+      this.this$0.a((DataLineMsgRecord)localObject1);
       return;
-      QLog.e("DatalineHandler<FileAssistant>", 1, "query file md5 return error:" + i);
-    } while (localInvalidProtocolBufferMicroException == null);
-    label286:
-    DataLineHandler.a(this.this$0, localInvalidProtocolBufferMicroException);
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("query file md5 return error:");
+    ((StringBuilder)localObject2).append(i);
+    QLog.e("DatalineHandler<FileAssistant>", 1, ((StringBuilder)localObject2).toString());
+    if (localObject1 == null) {
+      return;
+    }
+    DataLineHandler.a(this.this$0, (DataLineMsgRecord)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.DataLineHandler.7
  * JD-Core Version:    0.7.0.1
  */

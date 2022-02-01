@@ -30,7 +30,10 @@ class WriteTogetherWebSocketEngine$1
   
   public void onFailure(WebSocket paramWebSocket, Throwable paramThrowable, @Nullable Response paramResponse)
   {
-    QLog.e("WriteTogether.WriteTogetherWebSocketEngine", 1, "openWebSocketConn onFailure, e = " + Log.getStackTraceString(paramThrowable));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("openWebSocketConn onFailure, e = ");
+    localStringBuilder.append(Log.getStackTraceString(paramThrowable));
+    QLog.e("WriteTogether.WriteTogetherWebSocketEngine", 1, localStringBuilder.toString());
     if (this.a.a != null) {
       this.a.a.onFailure(paramWebSocket, paramThrowable, paramResponse);
     }
@@ -75,7 +78,7 @@ class WriteTogetherWebSocketEngine$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.websocket.WriteTogetherWebSocketEngine.1
  * JD-Core Version:    0.7.0.1
  */

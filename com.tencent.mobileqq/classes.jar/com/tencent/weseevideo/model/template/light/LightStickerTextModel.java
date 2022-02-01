@@ -42,18 +42,18 @@ public final class LightStickerTextModel
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof LightStickerTextModel))
       {
         paramObject = (LightStickerTextModel)paramObject;
-        if ((!Intrinsics.areEqual(this.stickerTextContent, paramObject.stickerTextContent)) || (this.stickerTextColor != paramObject.stickerTextColor)) {}
+        if ((Intrinsics.areEqual(this.stickerTextContent, paramObject.stickerTextContent)) && (this.stickerTextColor == paramObject.stickerTextColor)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public final int getStickerTextColor()
@@ -70,10 +70,13 @@ public final class LightStickerTextModel
   public int hashCode()
   {
     String str = this.stickerTextContent;
-    if (str != null) {}
-    for (int i = str.hashCode();; i = 0) {
-      return i * 31 + this.stickerTextColor;
+    int i;
+    if (str != null) {
+      i = str.hashCode();
+    } else {
+      i = 0;
     }
+    return i * 31 + this.stickerTextColor;
   }
   
   public final void setStickerTextColor(int paramInt)
@@ -89,12 +92,18 @@ public final class LightStickerTextModel
   @NotNull
   public String toString()
   {
-    return "LightStickerTextModel(stickerTextContent=" + this.stickerTextContent + ", stickerTextColor=" + this.stickerTextColor + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LightStickerTextModel(stickerTextContent=");
+    localStringBuilder.append(this.stickerTextContent);
+    localStringBuilder.append(", stickerTextColor=");
+    localStringBuilder.append(this.stickerTextColor);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.template.light.LightStickerTextModel
  * JD-Core Version:    0.7.0.1
  */

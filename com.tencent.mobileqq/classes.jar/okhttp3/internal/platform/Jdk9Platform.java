@@ -30,7 +30,11 @@ final class Jdk9Platform
       Jdk9Platform localJdk9Platform = new Jdk9Platform(SSLParameters.class.getMethod("setApplicationProtocols", new Class[] { [Ljava.lang.String.class }), SSLSocket.class.getMethod("getApplicationProtocol", new Class[0]));
       return localJdk9Platform;
     }
-    catch (NoSuchMethodException localNoSuchMethodException) {}
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      label37:
+      break label37;
+    }
     return null;
   }
   
@@ -44,15 +48,8 @@ final class Jdk9Platform
       paramSSLSocket.setSSLParameters(paramString);
       return;
     }
-    catch (IllegalAccessException paramSSLSocket)
-    {
-      throw Util.assertionError("unable to set ssl parameters", paramSSLSocket);
-    }
-    catch (InvocationTargetException paramSSLSocket)
-    {
-      label48:
-      break label48;
-    }
+    catch (InvocationTargetException paramSSLSocket) {}catch (IllegalAccessException paramSSLSocket) {}
+    throw Util.assertionError("unable to set ssl parameters", paramSSLSocket);
   }
   
   @Nullable
@@ -64,23 +61,14 @@ final class Jdk9Platform
       if (paramSSLSocket != null)
       {
         boolean bool = paramSSLSocket.equals("");
-        if (!bool) {}
+        if (!bool) {
+          return paramSSLSocket;
+        }
       }
-      else
-      {
-        paramSSLSocket = null;
-      }
-      return paramSSLSocket;
+      return null;
     }
-    catch (IllegalAccessException paramSSLSocket)
-    {
-      throw Util.assertionError("unable to get selected protocols", paramSSLSocket);
-    }
-    catch (InvocationTargetException paramSSLSocket)
-    {
-      label36:
-      break label36;
-    }
+    catch (InvocationTargetException paramSSLSocket) {}catch (IllegalAccessException paramSSLSocket) {}
+    throw Util.assertionError("unable to get selected protocols", paramSSLSocket);
   }
   
   public X509TrustManager trustManager(SSLSocketFactory paramSSLSocketFactory)
@@ -90,7 +78,7 @@ final class Jdk9Platform
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.platform.Jdk9Platform
  * JD-Core Version:    0.7.0.1
  */

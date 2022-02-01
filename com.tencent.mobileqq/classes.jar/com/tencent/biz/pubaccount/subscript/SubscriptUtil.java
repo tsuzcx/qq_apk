@@ -7,40 +7,42 @@ public class SubscriptUtil
 {
   public static String a(String paramString)
   {
-    String str1;
     if ((paramString != null) && (paramString.length() < 5)) {
-      str1 = (String)SubscriptConstants.a.get(paramString);
-    }
-    for (;;)
+      localObject1 = (String)SubscriptConstants.a.get(paramString);
+    } else if (paramString == null) {}
+    try
     {
-      String str3 = str1;
-      if (str1 == null) {
-        str3 = "";
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("SubscriptUtil", 2, "getUin subscribeID[" + paramString + "]'s uin: " + str3);
-      }
-      return str3;
-      String str2;
-      if (paramString != null) {
-        try
-        {
-          int i = Integer.parseInt(paramString);
-          str1 = String.valueOf(i);
-        }
-        catch (Exception localException)
-        {
-          str2 = (String)SubscriptConstants.a.get(paramString);
-        }
-      } else {
-        str2 = paramString;
-      }
+      localObject1 = String.valueOf(Integer.parseInt(paramString));
     }
+    catch (Exception localException)
+    {
+      label43:
+      Object localObject2;
+      break label43;
+    }
+    Object localObject1 = (String)SubscriptConstants.a.get(paramString);
+    break label61;
+    localObject1 = paramString;
+    label61:
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = "";
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getUin subscribeID[");
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append("]'s uin: ");
+      ((StringBuilder)localObject1).append((String)localObject2);
+      QLog.d("SubscriptUtil", 2, ((StringBuilder)localObject1).toString());
+    }
+    return localObject2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ class MultiForwardChatPie$10
 {
   MultiForwardChatPie$10(MultiForwardChatPie paramMultiForwardChatPie) {}
   
-  public void onTroopFileStatusUpdate(Object paramObject)
+  protected void a(Object paramObject)
   {
     if (MultiForwardChatPie.a(this.a) != null) {
       MultiForwardChatPie.a(this.a).notifyDataSetChanged();
@@ -17,7 +17,7 @@ class MultiForwardChatPie$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie.10
  * JD-Core Version:    0.7.0.1
  */

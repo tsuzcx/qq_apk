@@ -39,34 +39,30 @@ public class AndroidKeyProcessor
     }
     char c1 = (char)paramInt;
     int i;
-    char c2;
-    if ((0x80000000 & paramInt) != 0)
-    {
+    if ((0x80000000 & paramInt) != 0) {
       i = 1;
-      if (i == 0) {
-        break label71;
-      }
-      paramInt = 0x7FFFFFFF & paramInt;
-      if (this.combiningCharacter == 0) {
-        break label61;
-      }
-      this.combiningCharacter = KeyCharacterMap.getDeadChar(this.combiningCharacter, paramInt);
-      c2 = c1;
-    }
-    for (;;)
-    {
-      return Character.valueOf(c2);
+    } else {
       i = 0;
-      break;
-      label61:
+    }
+    char c2;
+    if (i != 0)
+    {
+      i = paramInt & 0x7FFFFFFF;
+      int j = this.combiningCharacter;
+      paramInt = i;
+      if (j != 0) {
+        paramInt = KeyCharacterMap.getDeadChar(j, i);
+      }
       this.combiningCharacter = paramInt;
       c2 = c1;
-      continue;
-      label71:
+    }
+    else
+    {
+      i = this.combiningCharacter;
       c2 = c1;
-      if (this.combiningCharacter != 0)
+      if (i != 0)
       {
-        paramInt = KeyCharacterMap.getDeadChar(this.combiningCharacter, paramInt);
+        paramInt = KeyCharacterMap.getDeadChar(i, paramInt);
         if (paramInt > 0) {
           c1 = (char)paramInt;
         }
@@ -74,6 +70,7 @@ public class AndroidKeyProcessor
         c2 = c1;
       }
     }
+    return Character.valueOf(c2);
   }
   
   public void destroy()
@@ -83,12 +80,11 @@ public class AndroidKeyProcessor
   
   public boolean onKeyDown(@NonNull KeyEvent paramKeyEvent)
   {
-    boolean bool = true;
     if (this.eventResponder.dispatchingKeyEvent) {
-      bool = false;
+      return false;
     }
-    while ((this.textInputPlugin.getLastInputConnection() != null) && (this.textInputPlugin.getInputMethodManager().isAcceptingText()) && (this.textInputPlugin.getLastInputConnection().sendKeyEvent(paramKeyEvent))) {
-      return bool;
+    if ((this.textInputPlugin.getLastInputConnection() != null) && (this.textInputPlugin.getInputMethodManager().isAcceptingText()) && (this.textInputPlugin.getLastInputConnection().sendKeyEvent(paramKeyEvent))) {
+      return true;
     }
     Object localObject = applyCombiningCharacterToBaseCharacter(paramKeyEvent.getUnicodeChar());
     long l = eventIdSerial;
@@ -115,7 +111,7 @@ public class AndroidKeyProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.android.AndroidKeyProcessor
  * JD-Core Version:    0.7.0.1
  */

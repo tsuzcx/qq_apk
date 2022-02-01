@@ -22,10 +22,10 @@ public class WeiyunTipsBarConfigBean
   
   public static WeiyunTipsBarConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length <= 0)) {
-      return null;
+    WeiyunTipsBarConfigBean localWeiyunTipsBarConfigBean;
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
+      localWeiyunTipsBarConfigBean = new WeiyunTipsBarConfigBean();
     }
-    localWeiyunTipsBarConfigBean = new WeiyunTipsBarConfigBean();
     try
     {
       paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].a);
@@ -39,6 +39,8 @@ public class WeiyunTipsBarConfigBean
       return localWeiyunTipsBarConfigBean;
     }
     catch (JSONException paramArrayOfQConfItem) {}
+    return null;
+    return localWeiyunTipsBarConfigBean;
   }
   
   public Map<String, WeiyunTipsBarConfigBean.WeiyunTipsBarConfigItem> a()
@@ -48,7 +50,7 @@ public class WeiyunTipsBarConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.WeiyunTipsBarConfigBean
  * JD-Core Version:    0.7.0.1
  */

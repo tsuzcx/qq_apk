@@ -10,13 +10,13 @@ class GameRoomInviteActivity$13$1
   
   public void a()
   {
-    this.a.a.a.setVisibility(8);
-    this.a.a.a(true);
+    this.a.a.mLoadingView.setVisibility(8);
+    this.a.a.init(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.13.1
  * JD-Core Version:    0.7.0.1
  */

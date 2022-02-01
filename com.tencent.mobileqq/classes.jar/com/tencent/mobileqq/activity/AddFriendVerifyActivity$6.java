@@ -30,42 +30,37 @@ class AddFriendVerifyActivity$6
     Object localObject;
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString().length() > 30)
     {
-      localObject = new ReportDialog(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 2131755842);
-      ((Dialog)localObject).setContentView(2131562946);
-      ((TextView)((Dialog)localObject).findViewById(2131365807)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131691184));
-      ((ProgressBar)((Dialog)localObject).findViewById(2131367330)).setVisibility(8);
-      ((ImageView)((Dialog)localObject).findViewById(2131380971)).setImageResource(2130839732);
+      localObject = new ReportDialog(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 2131756189);
+      ((Dialog)localObject).setContentView(2131562765);
+      ((TextView)((Dialog)localObject).findViewById(2131365644)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131691105));
+      ((ProgressBar)((Dialog)localObject).findViewById(2131367113)).setVisibility(8);
+      ((ImageView)((Dialog)localObject).findViewById(2131380236)).setImageResource(2130839590);
       ((Dialog)localObject).show();
     }
-    label351:
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
       this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a((String)localObject, false);
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131692035).equals(localObject)) && (!AddFriendVerifyActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity))) {
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131691954).equals(localObject)) && (!AddFriendVerifyActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity))) {
         AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim());
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity;
+      ((AddFriendVerifyActivity)localObject).b(((AddFriendVerifyActivity)localObject).jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim());
       if (this.jdField_a_of_type_Int == 0) {
         ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X800796F", "0X800796F", 0, 0, "", "", "", "");
-      }
-      for (;;)
-      {
-        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.c)) {
-          break label351;
-        }
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00899", "Qidian", "", "0X8008802", "ClickAddFriendButton", 0, 0, "1", "", "", "");
-        break;
+      } else {
         ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X8007976", "0X8007976", 0, 0, "", "", "", "");
       }
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.c)) {
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00899", "Qidian", "", "0X8008802", "ClickAddFriendButton", 0, 0, "1", "", "", "");
+      }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.6
  * JD-Core Version:    0.7.0.1
  */

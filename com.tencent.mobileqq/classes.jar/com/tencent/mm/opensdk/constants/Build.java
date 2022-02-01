@@ -38,7 +38,10 @@ public final class Build
   
   private Build()
   {
-    throw new RuntimeException(getClass().getSimpleName() + " should not be instantiated");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getClass().getSimpleName());
+    localStringBuilder.append(" should not be instantiated");
+    throw new RuntimeException(localStringBuilder.toString());
   }
   
   public static int getMajorVersion()
@@ -53,7 +56,7 @@ public final class Build
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.opensdk.constants.Build
  * JD-Core Version:    0.7.0.1
  */

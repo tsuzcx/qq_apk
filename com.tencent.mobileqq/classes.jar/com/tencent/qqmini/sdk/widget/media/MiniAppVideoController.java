@@ -20,7 +20,6 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import com.tencent.qqmini.sdk.core.manager.MiniAppFileManager;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.core.utils.ScreenOffOnListener;
 import com.tencent.qqmini.sdk.core.utils.StringUtil;
 import com.tencent.qqmini.sdk.launcher.core.IJsService;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
@@ -87,9 +86,10 @@ public class MiniAppVideoController
   
   private void avoidLockScreen()
   {
-    if (this.activity != null)
+    Activity localActivity = this.activity;
+    if (localActivity != null)
     {
-      this.activity.getWindow().addFlags(128);
+      localActivity.getWindow().addFlags(128);
       this.activity.getWindow().clearFlags(1);
       QMLog.d("MiniAppVideoController", "avoidLockScreen");
     }
@@ -103,7 +103,8 @@ public class MiniAppVideoController
       localJSONObject.put("data", this.data);
       localJSONObject.put("videoId", this.videoPlayerId);
       localJSONObject.put("fullScreen", this.config.isFullScreen);
-      if (this.miniAppContext != null) {
+      IMiniAppContext localIMiniAppContext = this.miniAppContext;
+      if (localIMiniAppContext != null) {
         this.miniAppContext.performAction(ServiceSubscribeEvent.obtain("onVideoFullScreenChange", localJSONObject.toString(), this.webViewId));
       }
       this.pageWebView.evaluateSubscribeJS("onVideoFullScreenChange", localJSONObject.toString(), this.webViewId);
@@ -125,16 +126,14 @@ public class MiniAppVideoController
       localJSONObject.put("fullScreen", this.config.isFullScreen);
       if (paramBoolean) {
         localJSONObject.put("direction", "horizontal");
-      }
-      for (;;)
-      {
-        if (this.miniAppContext != null) {
-          this.miniAppContext.performAction(ServiceSubscribeEvent.obtain("onVideoFullScreenChange", localJSONObject.toString(), this.webViewId));
-        }
-        this.pageWebView.evaluateSubscribeJS("onVideoFullScreenChange", localJSONObject.toString(), this.webViewId);
-        return;
+      } else {
         localJSONObject.put("direction", "vertical");
       }
+      IMiniAppContext localIMiniAppContext = this.miniAppContext;
+      if (localIMiniAppContext != null) {
+        this.miniAppContext.performAction(ServiceSubscribeEvent.obtain("onVideoFullScreenChange", localJSONObject.toString(), this.webViewId));
+      }
+      this.pageWebView.evaluateSubscribeJS("onVideoFullScreenChange", localJSONObject.toString(), this.webViewId);
       return;
     }
     catch (JSONException localJSONException)
@@ -145,35 +144,42 @@ public class MiniAppVideoController
   
   private void callbackOnVideoPlay()
   {
-    if ((this.miniAppContext != null) && (this.miniAppContext.isMiniGame()))
+    Object localObject1 = this.miniAppContext;
+    if ((localObject1 != null) && (((IMiniAppContext)localObject1).isMiniGame()))
     {
       callbackVideoStateChange("play");
       return;
     }
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("videoId", this.videoPlayerId);
-    localJSONObject.put("data", this.data);
-    if (this.miniAppContext != null) {
-      this.miniAppContext.performAction(ServiceSubscribeEvent.obtain("onVideoPlay", localJSONObject.toString(), this.webViewId));
+    localObject1 = new JSONObject();
+    ((JSONObject)localObject1).put("videoId", this.videoPlayerId);
+    ((JSONObject)localObject1).put("data", this.data);
+    Object localObject2 = this.miniAppContext;
+    if (localObject2 != null) {
+      ((IMiniAppContext)localObject2).performAction(ServiceSubscribeEvent.obtain("onVideoPlay", ((JSONObject)localObject1).toString(), this.webViewId));
     }
-    this.pageWebView.evaluateSubscribeJS("onVideoPlay", localJSONObject.toString(), this.webViewId);
-    QMLog.d("MiniAppVideoController", "OnVideoPreparedListener - onVideoPrepared evaluateSubcribeJS onVideoPlay = " + localJSONObject.toString());
+    this.pageWebView.evaluateSubscribeJS("onVideoPlay", ((JSONObject)localObject1).toString(), this.webViewId);
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("OnVideoPreparedListener - onVideoPrepared evaluateSubcribeJS onVideoPlay = ");
+    ((StringBuilder)localObject2).append(((JSONObject)localObject1).toString());
+    QMLog.d("MiniAppVideoController", ((StringBuilder)localObject2).toString());
   }
   
   private void callbackOnVideoWaiting()
   {
-    if ((this.miniAppContext != null) && (this.miniAppContext.isMiniGame()))
+    Object localObject = this.miniAppContext;
+    if ((localObject != null) && (((IMiniAppContext)localObject).isMiniGame()))
     {
       callbackVideoStateChange("waiting");
       return;
     }
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("videoId", this.videoPlayerId);
-    localJSONObject.put("data", this.data);
-    if (this.miniAppContext != null) {
-      this.miniAppContext.performAction(ServiceSubscribeEvent.obtain("onVideoWaiting", localJSONObject.toString(), this.webViewId));
+    localObject = new JSONObject();
+    ((JSONObject)localObject).put("videoId", this.videoPlayerId);
+    ((JSONObject)localObject).put("data", this.data);
+    IMiniAppContext localIMiniAppContext = this.miniAppContext;
+    if (localIMiniAppContext != null) {
+      localIMiniAppContext.performAction(ServiceSubscribeEvent.obtain("onVideoWaiting", ((JSONObject)localObject).toString(), this.webViewId));
     }
-    this.pageWebView.evaluateSubscribeJS("onVideoWaiting", localJSONObject.toString(), this.webViewId);
+    this.pageWebView.evaluateSubscribeJS("onVideoWaiting", ((JSONObject)localObject).toString(), this.webViewId);
   }
   
   private void callbackVideoStateChange(String paramString)
@@ -186,10 +192,19 @@ public class MiniAppVideoController
       localJSONObject.put("state", paramString);
       if ("timeUpdate".equals(paramString))
       {
-        localJSONObject.put("position", this.player.getCurrentPostion() / 1000.0D);
-        localJSONObject.put("duration", this.player.getDuration() / 1000.0D);
+        long l = this.player.getCurrentPostion();
+        double d = l;
+        Double.isNaN(d);
+        d /= 1000.0D;
+        localJSONObject.put("position", d);
+        l = this.player.getDuration();
+        d = l;
+        Double.isNaN(d);
+        d /= 1000.0D;
+        localJSONObject.put("duration", d);
       }
-      if (this.miniAppContext != null) {
+      paramString = this.miniAppContext;
+      if (paramString != null) {
         this.miniAppContext.performAction(ServiceSubscribeEvent.obtain("onVideoStateChange", localJSONObject.toString(), this.webViewId));
       }
       this.pageWebView.evaluateSubscribeJS("onVideoStateChange", localJSONObject.toString(), this.webViewId);
@@ -203,9 +218,10 @@ public class MiniAppVideoController
   
   private void cancelAvoidLockScreen()
   {
-    if (this.activity != null)
+    Activity localActivity = this.activity;
+    if (localActivity != null)
     {
-      this.activity.getWindow().clearFlags(128);
+      localActivity.getWindow().clearFlags(128);
       this.activity.getWindow().addFlags(1);
       QMLog.d("MiniAppVideoController", "cancelAvoidLockScreen");
     }
@@ -220,7 +236,12 @@ public class MiniAppVideoController
         int i = 0;
         while (i < paramMediaExtractor.getTrackCount())
         {
-          QMLog.d("VideoJsPlugin", "format for track " + i + " is " + paramMediaExtractor.getTrackFormat(i).getString("mime"));
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("format for track ");
+          localStringBuilder.append(i);
+          localStringBuilder.append(" is ");
+          localStringBuilder.append(paramMediaExtractor.getTrackFormat(i).getString("mime"));
+          QMLog.d("VideoJsPlugin", localStringBuilder.toString());
           if (paramMediaExtractor.getTrackFormat(i).getString("mime").startsWith("video/"))
           {
             paramMediaExtractor.selectTrack(i);
@@ -229,19 +250,25 @@ public class MiniAppVideoController
           i += 1;
         }
       }
-      return -1;
     }
-    catch (Exception paramMediaExtractor) {}
+    catch (Exception paramMediaExtractor)
+    {
+      label108:
+      break label108;
+    }
+    return -1;
   }
   
   private void getCachedCaptureImage()
   {
-    if ((this.cachedCaptureImage != null) && (!this.cachedCaptureImage.isRecycled()))
+    Bitmap localBitmap = this.cachedCaptureImage;
+    if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
       this.cachedCaptureImage.recycle();
       this.cachedCaptureImage = null;
     }
-    if ((this.cachedCaptureImage == null) || (this.cachedCaptureImage.isRecycled())) {
+    localBitmap = this.cachedCaptureImage;
+    if ((localBitmap == null) || (localBitmap.isRecycled())) {
       ThreadManager.getUIHandler().postDelayed(new MiniAppVideoController.18(this), 1000L);
     }
   }
@@ -305,21 +332,21 @@ public class MiniAppVideoController
   {
     if (this.ui.getStatusImgVisibility() == 0)
     {
-      if ((this.config.initialTime > 0.0D) && (getCurrentPos() == 0L)) {
+      if ((this.config.initialTime > 0.0D) && (getCurrentPos() == 0L))
+      {
         play((this.config.initialTime * 1000.0D));
+        return;
       }
+      play(getCurrentPos());
     }
-    else {
-      return;
-    }
-    play(getCurrentPos());
   }
   
   private void initPlayer(MiniAppVideoConfig paramMiniAppVideoConfig)
   {
     this.mAudioManager = ((AudioManager)this.activity.getSystemService("audio"));
-    if (this.mAudioManager != null) {
-      this.maxVolume = this.mAudioManager.getStreamMaxVolume(3);
+    paramMiniAppVideoConfig = this.mAudioManager;
+    if (paramMiniAppVideoConfig != null) {
+      this.maxVolume = paramMiniAppVideoConfig.getStreamMaxVolume(3);
     }
     this.player = new IVideoPlayerImpl(this.activity);
     this.listenerHolder = initPlayerListenerHolder();
@@ -335,16 +362,15 @@ public class MiniAppVideoController
   {
     if (!paramMiniAppVideoConfig.autoplay)
     {
-      if (StringUtil.isEmpty(paramMiniAppVideoConfig.poster)) {
-        break label22;
+      if (!StringUtil.isEmpty(paramMiniAppVideoConfig.poster))
+      {
+        setPoster();
+        return;
       }
-      setPoster();
+      if (!StringUtil.isEmpty(paramMiniAppVideoConfig.mUrls)) {
+        MediaUtils.getImageForVideo(this.miniAppContext, paramMiniAppVideoConfig.mUrls, new MiniAppVideoController.13(this));
+      }
     }
-    label22:
-    while (StringUtil.isEmpty(paramMiniAppVideoConfig.mUrls)) {
-      return;
-    }
-    MediaUtils.getImageForVideo(this.miniAppContext, paramMiniAppVideoConfig.mUrls, new MiniAppVideoController.13(this));
   }
   
   private void initUI()
@@ -356,9 +382,10 @@ public class MiniAppVideoController
   
   private boolean isLandscapeVideo()
   {
-    if (this.player != null)
+    IVideoPlayer localIVideoPlayer = this.player;
+    if (localIVideoPlayer != null)
     {
-      int j = this.player.getVideoWidth();
+      int j = localIVideoPlayer.getVideoWidth();
       int k = this.player.getVideoHeight();
       int i;
       if (j != 0)
@@ -371,13 +398,14 @@ public class MiniAppVideoController
         j = this.originWidth;
         i = this.originHeight;
       }
-      if ((this.rotation == 0) || (this.rotation == 180))
+      k = this.rotation;
+      if ((k != 0) && (k != 180))
       {
-        if (j < i) {
+        if (j > i) {
           return false;
         }
       }
-      else if (j > i) {
+      else if (j < i) {
         return false;
       }
     }
@@ -388,178 +416,213 @@ public class MiniAppVideoController
   private void parseOriVideoSize(String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 6
-    //   3: aload_1
-    //   4: invokestatic 662	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   7: ifne +134 -> 141
-    //   10: aload_1
-    //   11: ldc_w 664
-    //   14: invokevirtual 422	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   17: ifeq +124 -> 141
-    //   20: getstatic 389	android/os/Build$VERSION:SDK_INT	I
-    //   23: bipush 15
-    //   25: if_icmple +116 -> 141
-    //   28: new 666	java/io/FileInputStream
-    //   31: dup
-    //   32: aload_0
-    //   33: getfield 99	com/tencent/qqmini/sdk/widget/media/MiniAppVideoController:config	Lcom/tencent/qqmini/sdk/widget/media/MiniAppVideoConfig;
-    //   36: getfield 616	com/tencent/qqmini/sdk/widget/media/MiniAppVideoConfig:mUrls	Ljava/lang/String;
-    //   39: invokespecial 668	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   42: astore_3
-    //   43: new 391	android/media/MediaExtractor
-    //   46: dup
-    //   47: invokespecial 669	android/media/MediaExtractor:<init>	()V
-    //   50: astore 5
-    //   52: aload 5
-    //   54: aload_3
-    //   55: invokevirtual 673	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
-    //   58: invokevirtual 677	android/media/MediaExtractor:setDataSource	(Ljava/io/FileDescriptor;)V
-    //   61: aload_0
-    //   62: aload 5
-    //   64: invokespecial 679	com/tencent/qqmini/sdk/widget/media/MiniAppVideoController:getAndSelectVideoTrackIndex	(Landroid/media/MediaExtractor;)I
-    //   67: istore_2
-    //   68: iload_2
-    //   69: iconst_m1
-    //   70: if_icmple +53 -> 123
-    //   73: aload 5
-    //   75: iload_2
-    //   76: invokevirtual 408	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
-    //   79: astore_1
-    //   80: aload_1
-    //   81: ldc_w 681
-    //   84: invokevirtual 684	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
-    //   87: ifeq +14 -> 101
-    //   90: aload_0
-    //   91: aload_1
-    //   92: ldc_w 681
-    //   95: invokevirtual 688	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   98: putfield 654	com/tencent/qqmini/sdk/widget/media/MiniAppVideoController:rotation	I
-    //   101: aload_0
-    //   102: aload_1
-    //   103: ldc_w 690
-    //   106: invokevirtual 688	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   109: putfield 650	com/tencent/qqmini/sdk/widget/media/MiniAppVideoController:originWidth	I
-    //   112: aload_0
+    //   0: aload_1
+    //   1: invokestatic 668	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4: ifne +292 -> 296
+    //   7: aload_1
+    //   8: ldc_w 670
+    //   11: invokevirtual 428	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   14: ifeq +282 -> 296
+    //   17: getstatic 395	android/os/Build$VERSION:SDK_INT	I
+    //   20: bipush 15
+    //   22: if_icmple +274 -> 296
+    //   25: new 672	java/io/FileInputStream
+    //   28: dup
+    //   29: aload_0
+    //   30: getfield 99	com/tencent/qqmini/sdk/widget/media/MiniAppVideoController:config	Lcom/tencent/qqmini/sdk/widget/media/MiniAppVideoConfig;
+    //   33: getfield 622	com/tencent/qqmini/sdk/widget/media/MiniAppVideoConfig:mUrls	Ljava/lang/String;
+    //   36: invokespecial 674	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   39: astore_1
+    //   40: new 397	android/media/MediaExtractor
+    //   43: dup
+    //   44: invokespecial 675	android/media/MediaExtractor:<init>	()V
+    //   47: astore 5
+    //   49: aload_1
+    //   50: astore_3
+    //   51: aload 5
+    //   53: astore 4
+    //   55: aload 5
+    //   57: aload_1
+    //   58: invokevirtual 679	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
+    //   61: invokevirtual 683	android/media/MediaExtractor:setDataSource	(Ljava/io/FileDescriptor;)V
+    //   64: aload_1
+    //   65: astore_3
+    //   66: aload 5
+    //   68: astore 4
+    //   70: aload_0
+    //   71: aload 5
+    //   73: invokespecial 685	com/tencent/qqmini/sdk/widget/media/MiniAppVideoController:getAndSelectVideoTrackIndex	(Landroid/media/MediaExtractor;)I
+    //   76: istore_2
+    //   77: iload_2
+    //   78: iconst_m1
+    //   79: if_icmple +88 -> 167
+    //   82: aload_1
+    //   83: astore_3
+    //   84: aload 5
+    //   86: astore 4
+    //   88: aload 5
+    //   90: iload_2
+    //   91: invokevirtual 412	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
+    //   94: astore 6
+    //   96: aload_1
+    //   97: astore_3
+    //   98: aload 5
+    //   100: astore 4
+    //   102: aload 6
+    //   104: ldc_w 687
+    //   107: invokevirtual 690	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   110: ifeq +21 -> 131
     //   113: aload_1
-    //   114: ldc_w 692
-    //   117: invokevirtual 688	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   120: putfield 652	com/tencent/qqmini/sdk/widget/media/MiniAppVideoController:originHeight	I
-    //   123: aload_3
-    //   124: ifnull +7 -> 131
-    //   127: aload_3
-    //   128: invokevirtual 695	java/io/FileInputStream:close	()V
-    //   131: aload 5
-    //   133: ifnull +8 -> 141
-    //   136: aload 5
-    //   138: invokevirtual 698	android/media/MediaExtractor:release	()V
-    //   141: return
-    //   142: astore 4
-    //   144: aconst_null
-    //   145: astore_3
-    //   146: aload 6
-    //   148: astore_1
-    //   149: ldc 10
-    //   151: ldc_w 700
-    //   154: aload 4
-    //   156: invokestatic 706	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    //   159: pop
-    //   160: aload_3
-    //   161: ifnull +7 -> 168
-    //   164: aload_3
-    //   165: invokevirtual 695	java/io/FileInputStream:close	()V
-    //   168: aload_1
-    //   169: ifnull -28 -> 141
-    //   172: aload_1
-    //   173: invokevirtual 698	android/media/MediaExtractor:release	()V
-    //   176: return
-    //   177: astore_1
-    //   178: aconst_null
-    //   179: astore 4
-    //   181: aconst_null
-    //   182: astore_3
-    //   183: aload 4
-    //   185: ifnull +8 -> 193
-    //   188: aload 4
-    //   190: invokevirtual 695	java/io/FileInputStream:close	()V
-    //   193: aload_3
-    //   194: ifnull +7 -> 201
-    //   197: aload_3
-    //   198: invokevirtual 698	android/media/MediaExtractor:release	()V
-    //   201: aload_1
-    //   202: athrow
+    //   114: astore_3
+    //   115: aload 5
+    //   117: astore 4
+    //   119: aload_0
+    //   120: aload 6
+    //   122: ldc_w 687
+    //   125: invokevirtual 694	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   128: putfield 660	com/tencent/qqmini/sdk/widget/media/MiniAppVideoController:rotation	I
+    //   131: aload_1
+    //   132: astore_3
+    //   133: aload 5
+    //   135: astore 4
+    //   137: aload_0
+    //   138: aload 6
+    //   140: ldc_w 696
+    //   143: invokevirtual 694	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   146: putfield 656	com/tencent/qqmini/sdk/widget/media/MiniAppVideoController:originWidth	I
+    //   149: aload_1
+    //   150: astore_3
+    //   151: aload 5
+    //   153: astore 4
+    //   155: aload_0
+    //   156: aload 6
+    //   158: ldc_w 698
+    //   161: invokevirtual 694	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   164: putfield 658	com/tencent/qqmini/sdk/widget/media/MiniAppVideoController:originHeight	I
+    //   167: aload_1
+    //   168: invokevirtual 701	java/io/FileInputStream:close	()V
+    //   171: aload 5
+    //   173: astore_1
+    //   174: goto +88 -> 262
+    //   177: astore_3
+    //   178: aload_1
+    //   179: astore 6
+    //   181: aload 5
+    //   183: astore_1
+    //   184: aload_3
+    //   185: astore 5
+    //   187: goto +41 -> 228
+    //   190: astore_3
+    //   191: goto +13 -> 204
+    //   194: astore 4
+    //   196: aload_1
+    //   197: astore_3
+    //   198: goto +21 -> 219
+    //   201: astore_3
+    //   202: aconst_null
     //   203: astore_1
-    //   204: goto -73 -> 131
-    //   207: astore_3
-    //   208: goto -40 -> 168
-    //   211: astore 4
-    //   213: goto -20 -> 193
-    //   216: astore_1
+    //   204: aconst_null
+    //   205: astore 4
+    //   207: aload_1
+    //   208: astore 5
+    //   210: aload_3
+    //   211: astore_1
+    //   212: goto +59 -> 271
+    //   215: astore 4
     //   217: aconst_null
-    //   218: astore 5
-    //   220: aload_3
-    //   221: astore 4
-    //   223: aload 5
-    //   225: astore_3
-    //   226: goto -43 -> 183
-    //   229: astore_1
-    //   230: aload_3
-    //   231: astore 4
-    //   233: aload 5
-    //   235: astore_3
-    //   236: goto -53 -> 183
-    //   239: astore 4
-    //   241: aload_1
-    //   242: astore 5
-    //   244: aload 4
-    //   246: astore_1
-    //   247: aload_3
-    //   248: astore 4
-    //   250: aload 5
-    //   252: astore_3
-    //   253: goto -70 -> 183
-    //   256: astore 4
-    //   258: aload 6
-    //   260: astore_1
-    //   261: goto -112 -> 149
-    //   264: astore 4
-    //   266: aload 5
-    //   268: astore_1
-    //   269: goto -120 -> 149
+    //   218: astore_3
+    //   219: aconst_null
+    //   220: astore_1
+    //   221: aload 4
+    //   223: astore 5
+    //   225: aload_3
+    //   226: astore 6
+    //   228: aload 6
+    //   230: astore_3
+    //   231: aload_1
+    //   232: astore 4
+    //   234: ldc 10
+    //   236: ldc_w 703
+    //   239: aload 5
+    //   241: invokestatic 709	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   244: pop
+    //   245: aload 6
+    //   247: ifnull +11 -> 258
+    //   250: aload 6
+    //   252: invokevirtual 701	java/io/FileInputStream:close	()V
+    //   255: goto +3 -> 258
+    //   258: aload_1
+    //   259: ifnull +37 -> 296
+    //   262: aload_1
+    //   263: invokevirtual 712	android/media/MediaExtractor:release	()V
+    //   266: return
+    //   267: astore_1
+    //   268: aload_3
+    //   269: astore 5
+    //   271: aload 5
+    //   273: ifnull +11 -> 284
+    //   276: aload 5
+    //   278: invokevirtual 701	java/io/FileInputStream:close	()V
+    //   281: goto +3 -> 284
+    //   284: aload 4
+    //   286: ifnull +8 -> 294
+    //   289: aload 4
+    //   291: invokevirtual 712	android/media/MediaExtractor:release	()V
+    //   294: aload_1
+    //   295: athrow
+    //   296: return
+    //   297: astore_1
+    //   298: aload 5
+    //   300: astore_1
+    //   301: goto -39 -> 262
+    //   304: astore_3
+    //   305: goto -47 -> 258
+    //   308: astore_3
+    //   309: goto -25 -> 284
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	272	0	this	MiniAppVideoController
-    //   0	272	1	paramString	String
-    //   67	9	2	i	int
-    //   42	156	3	localFileInputStream	java.io.FileInputStream
-    //   207	14	3	localIOException1	java.io.IOException
-    //   225	28	3	localObject1	Object
-    //   142	13	4	localThrowable1	Throwable
-    //   179	10	4	localObject2	Object
-    //   211	1	4	localIOException2	java.io.IOException
-    //   221	11	4	localObject3	Object
-    //   239	6	4	localObject4	Object
-    //   248	1	4	localObject5	Object
-    //   256	1	4	localThrowable2	Throwable
-    //   264	1	4	localThrowable3	Throwable
-    //   50	217	5	localObject6	Object
-    //   1	258	6	localObject7	Object
+    //   0	312	0	this	MiniAppVideoController
+    //   0	312	1	paramString	String
+    //   76	15	2	i	int
+    //   50	101	3	str1	String
+    //   177	8	3	localThrowable1	Throwable
+    //   190	1	3	localObject1	Object
+    //   197	1	3	str2	String
+    //   201	10	3	localObject2	Object
+    //   218	51	3	localObject3	Object
+    //   304	1	3	localIOException1	java.io.IOException
+    //   308	1	3	localIOException2	java.io.IOException
+    //   53	101	4	localObject4	Object
+    //   194	1	4	localThrowable2	Throwable
+    //   205	1	4	localObject5	Object
+    //   215	7	4	localThrowable3	Throwable
+    //   232	58	4	str3	String
+    //   47	252	5	localObject6	Object
+    //   94	157	6	localObject7	Object
     // Exception table:
     //   from	to	target	type
-    //   28	43	142	java/lang/Throwable
-    //   28	43	177	finally
-    //   127	131	203	java/io/IOException
-    //   164	168	207	java/io/IOException
-    //   188	193	211	java/io/IOException
-    //   43	52	216	finally
-    //   52	68	229	finally
-    //   73	101	229	finally
-    //   101	123	229	finally
-    //   149	160	239	finally
-    //   43	52	256	java/lang/Throwable
-    //   52	68	264	java/lang/Throwable
-    //   73	101	264	java/lang/Throwable
-    //   101	123	264	java/lang/Throwable
+    //   55	64	177	java/lang/Throwable
+    //   70	77	177	java/lang/Throwable
+    //   88	96	177	java/lang/Throwable
+    //   102	113	177	java/lang/Throwable
+    //   119	131	177	java/lang/Throwable
+    //   137	149	177	java/lang/Throwable
+    //   155	167	177	java/lang/Throwable
+    //   40	49	190	finally
+    //   40	49	194	java/lang/Throwable
+    //   25	40	201	finally
+    //   25	40	215	java/lang/Throwable
+    //   55	64	267	finally
+    //   70	77	267	finally
+    //   88	96	267	finally
+    //   102	113	267	finally
+    //   119	131	267	finally
+    //   137	149	267	finally
+    //   155	167	267	finally
+    //   234	245	267	finally
+    //   167	171	297	java/io/IOException
+    //   250	255	304	java/io/IOException
+    //   276	281	308	java/io/IOException
   }
   
   private static String parseTimeString(long paramLong)
@@ -571,7 +634,11 @@ public class MiniAppVideoController
     }
     int i = (int)(l1 % 60L);
     paramLong = l1 / 60L;
-    return parseTwoBitNumString(paramLong) + ":" + parseTwoBitNumString(i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(parseTwoBitNumString(paramLong));
+    localStringBuilder.append(":");
+    localStringBuilder.append(parseTwoBitNumString(i));
+    return localStringBuilder.toString();
   }
   
   private static String parseTwoBitNumString(long paramLong)
@@ -579,22 +646,34 @@ public class MiniAppVideoController
     if (paramLong == 0L) {
       return "00";
     }
-    if (paramLong < 10L) {
-      return "0" + paramLong;
+    if (paramLong < 10L)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("0");
+      localStringBuilder.append(paramLong);
+      return localStringBuilder.toString();
     }
     return Long.toString(paramLong);
   }
   
   private String parseUrl(String paramString)
   {
+    boolean bool = paramString.startsWith("wxfile");
     String str = null;
-    if (paramString.startsWith("wxfile")) {
-      if (this.miniAppContext != null) {
-        str = ((MiniAppFileManager)this.miniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(paramString);
+    if (bool)
+    {
+      IMiniAppContext localIMiniAppContext = this.miniAppContext;
+      if (localIMiniAppContext != null) {
+        str = ((MiniAppFileManager)localIMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(paramString);
       }
-    }
-    while ((!paramString.startsWith("http")) && (!paramString.startsWith("https"))) {
       return str;
+    }
+    if (!paramString.startsWith("http"))
+    {
+      if (paramString.startsWith("https")) {
+        return paramString;
+      }
+      return null;
     }
     return paramString;
   }
@@ -602,29 +681,33 @@ public class MiniAppVideoController
   private void pause()
   {
     QMLog.d("MiniAppVideoController", "pause");
-    if (this.player == null) {}
-    do
-    {
+    Object localObject = this.player;
+    if (localObject == null) {
       return;
-      this.playingBefore = false;
-    } while (!this.player.isPlaying());
+    }
+    this.playingBefore = false;
+    if (!((IVideoPlayer)localObject).isPlaying()) {
+      return;
+    }
     cancelAvoidLockScreen();
     this.player.pause();
     this.isPause = true;
-    if ((this.miniAppContext != null) && (this.miniAppContext.isMiniGame()))
+    localObject = this.miniAppContext;
+    if ((localObject != null) && (((IMiniAppContext)localObject).isMiniGame()))
     {
       callbackVideoStateChange("pause");
       return;
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("videoId", this.videoPlayerId);
-      localJSONObject.put("data", this.data);
-      if (this.miniAppContext != null) {
-        this.miniAppContext.performAction(ServiceSubscribeEvent.obtain("onVideoPause", localJSONObject.toString(), this.webViewId));
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("videoId", this.videoPlayerId);
+      ((JSONObject)localObject).put("data", this.data);
+      IMiniAppContext localIMiniAppContext = this.miniAppContext;
+      if (localIMiniAppContext != null) {
+        this.miniAppContext.performAction(ServiceSubscribeEvent.obtain("onVideoPause", ((JSONObject)localObject).toString(), this.webViewId));
       }
-      this.pageWebView.evaluateSubscribeJS("onVideoPause", localJSONObject.toString(), this.webViewId);
+      this.pageWebView.evaluateSubscribeJS("onVideoPause", ((JSONObject)localObject).toString(), this.webViewId);
       return;
     }
     catch (JSONException localJSONException)
@@ -651,34 +734,39 @@ public class MiniAppVideoController
   private void start()
   {
     avoidLockScreen();
-    if ((this.player != null) && (this.player.getCurrentPostion() > 0L))
+    Object localObject1 = this.player;
+    if ((localObject1 != null) && (((IVideoPlayer)localObject1).getCurrentPostion() > 0L))
     {
       this.player.start();
-      if ((this.miniAppContext != null) && (this.miniAppContext.isMiniGame())) {
+      localObject1 = this.miniAppContext;
+      if ((localObject1 != null) && (((IMiniAppContext)localObject1).isMiniGame())) {
         callbackVideoStateChange("play");
+      } else {
+        try
+        {
+          localObject1 = new JSONObject();
+          ((JSONObject)localObject1).put("data", this.data);
+          Object localObject2 = this.miniAppContext;
+          if (localObject2 != null) {
+            this.miniAppContext.performAction(ServiceSubscribeEvent.obtain("onVideoPlay", ((JSONObject)localObject1).toString(), this.webViewId));
+          }
+          this.pageWebView.evaluateSubscribeJS("onVideoPlay", ((JSONObject)localObject1).toString(), this.webViewId);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("evaluateSubcribeJS onVideoPlay = ");
+          ((StringBuilder)localObject2).append(((JSONObject)localObject1).toString());
+          QMLog.d("MiniAppVideoController", ((StringBuilder)localObject2).toString());
+        }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+        }
       }
     }
-    for (;;)
+    else
     {
-      this.isPause = false;
-      return;
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("data", this.data);
-        if (this.miniAppContext != null) {
-          this.miniAppContext.performAction(ServiceSubscribeEvent.obtain("onVideoPlay", localJSONObject.toString(), this.webViewId));
-        }
-        this.pageWebView.evaluateSubscribeJS("onVideoPlay", localJSONObject.toString(), this.webViewId);
-        QMLog.d("MiniAppVideoController", "evaluateSubcribeJS onVideoPlay = " + localJSONObject.toString());
-      }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-      }
-      continue;
       play((this.config.initialTime * 1000.0D));
     }
+    this.isPause = false;
   }
   
   private void stop(boolean paramBoolean)
@@ -687,8 +775,9 @@ public class MiniAppVideoController
       smallScreen();
     }
     this.isVideoPrepared = false;
-    if (this.player != null) {
-      this.player.stop();
+    IVideoPlayer localIVideoPlayer = this.player;
+    if (localIVideoPlayer != null) {
+      localIVideoPlayer.stop();
     }
     ThreadManager.getUIHandler().post(new MiniAppVideoController.15(this));
   }
@@ -706,13 +795,14 @@ public class MiniAppVideoController
   private void updateBufferProgress(boolean paramBoolean)
   {
     MiniAppVideoController.12 local12 = new MiniAppVideoController.12(this);
-    if (!paramBoolean) {
+    if (!paramBoolean)
+    {
       local12.run();
-    }
-    while ((!this.isBufferStart) && (this.lastBufferProgress == 0)) {
       return;
     }
-    ThreadManager.getUIHandler().postDelayed(local12, 20L);
+    if ((this.isBufferStart) || (this.lastBufferProgress != 0)) {
+      ThreadManager.getUIHandler().postDelayed(local12, 20L);
+    }
   }
   
   private void updatePoster(MiniAppVideoConfig paramMiniAppVideoConfig)
@@ -730,7 +820,8 @@ public class MiniAppVideoController
       QMLog.e("MiniAppVideoController", "captureImage onCaptureImageListener is null");
       return;
     }
-    if (this.player == null)
+    IVideoPlayer localIVideoPlayer = this.player;
+    if (localIVideoPlayer == null)
     {
       QMLog.e("MiniAppVideoController", "captureImage video player is null");
       paramOnCaptureImageListener.onCaptureImageFailed();
@@ -738,41 +829,42 @@ public class MiniAppVideoController
     }
     try
     {
-      if (this.player.isPlaying()) {
-        break label117;
-      }
-      if ((this.cachedCaptureImage != null) && (!this.cachedCaptureImage.isRecycled()))
+      if (!localIVideoPlayer.isPlaying())
       {
-        paramOnCaptureImageListener.onCaptureImageSucceed(this.cachedCaptureImage);
+        if ((this.cachedCaptureImage != null) && (!this.cachedCaptureImage.isRecycled()))
+        {
+          paramOnCaptureImageListener.onCaptureImageSucceed(this.cachedCaptureImage);
+          return;
+        }
+        paramOnCaptureImageListener.onCaptureImageFailed();
         return;
       }
+      int i = this.ui.getPlayerViewWidth();
+      int j = this.ui.getPlayerViewHeight();
+      this.player.setOnCaptureImageListener(getCaptureImageListener(paramOnCaptureImageListener));
+      this.player.captureImageInTime(i, j);
+      return;
     }
     catch (Exception localException)
     {
-      QMLog.e("MiniAppVideoController", "captureImage video player fail!,e" + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("captureImage video player fail!,e");
+      localStringBuilder.append(localException);
+      QMLog.e("MiniAppVideoController", localStringBuilder.toString());
       paramOnCaptureImageListener.onCaptureImageFailed();
-      return;
     }
-    paramOnCaptureImageListener.onCaptureImageFailed();
-    return;
-    label117:
-    int i = this.ui.getPlayerViewWidth();
-    int j = this.ui.getPlayerViewHeight();
-    this.player.setOnCaptureImageListener(getCaptureImageListener(paramOnCaptureImageListener));
-    this.player.captureImageInTime(i, j);
   }
   
   public void fullScreen()
   {
     if (!this.isVideoPrepared)
     {
-      localMessage = new Message();
+      Message localMessage = new Message();
       localMessage.what = 2004;
       this.taskQueueRunAfterVideoPrepared.add(localMessage);
+      return;
     }
-    while (this.isBusyInChangeScreen)
-    {
-      Message localMessage;
+    if (this.isBusyInChangeScreen) {
       return;
     }
     QMLog.e("fullScreen - fullScreen()", "fullScreen() - config.isFullScreen = true");
@@ -783,16 +875,18 @@ public class MiniAppVideoController
   
   public long getCurrentPos()
   {
-    if (this.player == null) {
+    IVideoPlayer localIVideoPlayer = this.player;
+    if (localIVideoPlayer == null) {
       return 0L;
     }
-    return this.player.getCurrentPostion();
+    return localIVideoPlayer.getCurrentPostion();
   }
   
   public FrameLayout getUI()
   {
-    if (this.ui != null) {
-      return this.ui.getUI();
+    IVideoPlayerUI localIVideoPlayerUI = this.ui;
+    if (localIVideoPlayerUI != null) {
+      return localIVideoPlayerUI.getUI();
     }
     QMLog.e("MiniAppVideoController", "IVideoPlayerUI is null when doing getUI()!");
     return null;
@@ -808,44 +902,51 @@ public class MiniAppVideoController
   
   public boolean handleMessage(Message paramMessage)
   {
-    boolean bool = true;
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 2002)
     {
-    case 2003: 
-    default: 
-      bool = false;
-      return bool;
-    case 2002: 
-      long l = System.currentTimeMillis();
-      if ((this.player != null) && (this.player.isPlaying()))
-      {
-        this.ui.updatePlayingTime(parseTimeString(this.player.getCurrentPostion()));
-        this.ui.updateDanmuTime(this.player.getCurrentPostion());
-        if (!this.isChangingProgress) {
-          this.ui.setProgressByPlayingTime(this.player.getDuration(), this.player.getCurrentPostion());
-        }
-        if (!"com.tencent.qqmini.minigame.GameJsService".equals(this.pageWebView.getClass().getName())) {
-          break label180;
-        }
-        callbackVideoStateChange("timeUpdate");
+      if (i != 2004) {
+        return false;
       }
-      while (!this.isPause)
-      {
-        sendPlayingMsg(l + 200L - System.currentTimeMillis());
-        return true;
+      fullScreen();
+      return true;
+    }
+    long l1 = System.currentTimeMillis();
+    paramMessage = this.player;
+    if ((paramMessage != null) && (paramMessage.isPlaying()))
+    {
+      this.ui.updatePlayingTime(parseTimeString(this.player.getCurrentPostion()));
+      this.ui.updateDanmuTime(this.player.getCurrentPostion());
+      if (!this.isChangingProgress) {
+        this.ui.setProgressByPlayingTime(this.player.getDuration(), this.player.getCurrentPostion());
+      }
+      if ("com.tencent.qqmini.minigame.GameJsService".equals(this.pageWebView.getClass().getName())) {
+        callbackVideoStateChange("timeUpdate");
+      } else {
         try
         {
-          label180:
           paramMessage = new JSONObject();
           paramMessage.put("data", this.data);
-          paramMessage.put("position", this.player.getCurrentPostion() / 1000.0D);
-          paramMessage.put("duration", this.player.getDuration() / 1000.0D);
+          long l2 = this.player.getCurrentPostion();
+          double d = l2;
+          Double.isNaN(d);
+          d /= 1000.0D;
+          paramMessage.put("position", d);
+          l2 = this.player.getDuration();
+          d = l2;
+          Double.isNaN(d);
+          d /= 1000.0D;
+          paramMessage.put("duration", d);
           paramMessage.put("videoId", this.videoPlayerId);
-          if (this.miniAppContext != null) {
+          Object localObject = this.miniAppContext;
+          if (localObject != null) {
             this.miniAppContext.performAction(ServiceSubscribeEvent.obtain("onVideoTimeUpdate", paramMessage.toString(), this.webViewId));
           }
           this.pageWebView.evaluateSubscribeJS("onVideoTimeUpdate", paramMessage.toString(), this.webViewId);
-          QMLog.d("MiniAppVideoController", "evaluateSubcribeJS onVideoTimeUpdate = " + paramMessage.toString());
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("evaluateSubcribeJS onVideoTimeUpdate = ");
+          ((StringBuilder)localObject).append(paramMessage.toString());
+          QMLog.d("MiniAppVideoController", ((StringBuilder)localObject).toString());
         }
         catch (JSONException paramMessage)
         {
@@ -853,7 +954,9 @@ public class MiniAppVideoController
         }
       }
     }
-    fullScreen();
+    if (!this.isPause) {
+      sendPlayingMsg(l1 + 200L - System.currentTimeMillis());
+    }
     return true;
   }
   
@@ -898,10 +1001,11 @@ public class MiniAppVideoController
   public void operate()
   {
     QMLog.d("MiniAppVideoController", "operate");
-    if (this.player == null) {
+    IVideoPlayer localIVideoPlayer = this.player;
+    if (localIVideoPlayer == null) {
       return;
     }
-    if (this.player.isPlaying())
+    if (localIVideoPlayer.isPlaying())
     {
       pause();
       return;
@@ -927,8 +1031,10 @@ public class MiniAppVideoController
   
   public void play(long paramLong)
   {
-    if (this.player == null) {}
-    while (StringUtil.isEmpty(this.config.mUrls)) {
+    if (this.player == null) {
+      return;
+    }
+    if (StringUtil.isEmpty(this.config.mUrls)) {
       return;
     }
     this.isBufferStart = true;
@@ -963,27 +1069,30 @@ public class MiniAppVideoController
   public void release()
   {
     ThreadManager.getUIHandler().post(new MiniAppVideoController.16(this));
-    ScreenOffOnListener.getInstance().unRegistListener();
     this.handler.removeMessages(2002);
   }
   
   public boolean seekTo(int paramInt)
   {
-    if (this.player == null) {
+    Object localObject = this.player;
+    if (localObject == null) {
       return false;
     }
     if (paramInt < 0)
     {
-      this.player.seekTo(0);
+      ((IVideoPlayer)localObject).seekTo(0);
       return true;
     }
-    long l = this.player.getDuration();
+    long l = ((IVideoPlayer)localObject).getDuration();
     if ((l > 0L) && (paramInt > l))
     {
       this.player.seekTo((int)l);
       return true;
     }
-    this.config.initialTime = (paramInt / 1000.0D);
+    localObject = this.config;
+    double d = paramInt;
+    Double.isNaN(d);
+    ((MiniAppVideoConfig)localObject).initialTime = (d / 1000.0D);
     if (l > 0L) {
       this.player.seekTo(paramInt);
     }
@@ -1012,7 +1121,10 @@ public class MiniAppVideoController
   
   public void setVideoPath(String paramString)
   {
-    QMLog.d("MiniAppVideoController", "setVideoPath: " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setVideoPath: ");
+    localStringBuilder.append(paramString);
+    QMLog.d("MiniAppVideoController", localStringBuilder.toString());
     stop(false);
     this.ui.updateCenterBtn(this.config);
     this.ui.hideControllerPopContainer();
@@ -1034,7 +1146,10 @@ public class MiniAppVideoController
   public void smallScreen()
   {
     this.mCurrPos = this.player.getCurrentPostion();
-    QMLog.d("MiniAppVideoController", "smallScreen current pos is: " + this.mCurrPos);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("smallScreen current pos is: ");
+    localStringBuilder.append(this.mCurrPos);
+    QMLog.d("MiniAppVideoController", localStringBuilder.toString());
     ThreadManager.getUIHandler().post(new MiniAppVideoController.6(this));
   }
   
@@ -1061,7 +1176,7 @@ public class MiniAppVideoController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.media.MiniAppVideoController
  * JD-Core Version:    0.7.0.1
  */

@@ -22,58 +22,60 @@ public final class AdScreenStatusManager
   
   public static AdScreenStatusManager getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new AdScreenStatusManager();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new AdScreenStatusManager();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public void init(Context paramContext)
   {
-    if (this.initialized) {}
-    do
-    {
-      do
-      {
-        return;
-        try
-        {
-          if (this.initialized) {
-            return;
-          }
-        }
-        finally {}
-        this.initialized = true;
-      } while (paramContext == null);
-      paramContext = paramContext.getApplicationContext();
-    } while (paramContext == null);
+    if (this.initialized) {
+      return;
+    }
     for (;;)
     {
       try
       {
-        Object localObject = (PowerManager)paramContext.getSystemService("power");
-        if ((localObject != null) && (((PowerManager)localObject).isScreenOn()))
-        {
-          bool = true;
-          this.isScreenOn = bool;
-          localObject = new IntentFilter();
-          ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_OFF");
-          ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_ON");
-          paramContext.registerReceiver(this, (IntentFilter)localObject);
+        if (this.initialized) {
           return;
         }
+        boolean bool = true;
+        this.initialized = true;
+        if (paramContext == null) {
+          return;
+        }
+        paramContext = paramContext.getApplicationContext();
+        if (paramContext == null) {
+          return;
+        }
+        try
+        {
+          Object localObject = (PowerManager)paramContext.getSystemService("power");
+          if ((localObject != null) && (((PowerManager)localObject).isScreenOn()))
+          {
+            this.isScreenOn = bool;
+            localObject = new IntentFilter();
+            ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_OFF");
+            ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_ON");
+            paramContext.registerReceiver(this, (IntentFilter)localObject);
+            return;
+          }
+        }
+        catch (Throwable paramContext)
+        {
+          AdLog.e("AdScreenStatusManager", "init error :", paramContext);
+          return;
+        }
+        bool = false;
       }
-      catch (Throwable paramContext)
-      {
-        AdLog.e("AdScreenStatusManager", "init error :", paramContext);
-        return;
-      }
-      boolean bool = false;
+      finally {}
     }
   }
   
@@ -92,37 +94,35 @@ public final class AdScreenStatusManager
       }
       this.isScreenOn = true;
     }
-    for (;;)
+    else if ("android.intent.action.SCREEN_OFF".equals(paramContext))
     {
-      paramContext = this.listeners.iterator();
-      while (paramContext.hasNext())
-      {
-        paramIntent = (AdScreenStatusManager.a)paramContext.next();
-        if (paramIntent != null) {
-          paramIntent.onScreenStatusChanged(this.isScreenOn);
-        }
+      if (!this.isScreenOn) {
+        return;
       }
-      break;
-      if ("android.intent.action.SCREEN_OFF".equals(paramContext))
-      {
-        if (!this.isScreenOn) {
-          break;
-        }
-        this.isScreenOn = false;
+      this.isScreenOn = false;
+    }
+    paramContext = this.listeners.iterator();
+    while (paramContext.hasNext())
+    {
+      paramIntent = (AdScreenStatusManager.a)paramContext.next();
+      if (paramIntent != null) {
+        paramIntent.onScreenStatusChanged(this.isScreenOn);
       }
     }
   }
   
   public void registerListener(AdScreenStatusManager.a parama)
   {
-    if ((this.listeners != null) && (!this.listeners.contains(parama))) {
+    CopyOnWriteArrayList localCopyOnWriteArrayList = this.listeners;
+    if ((localCopyOnWriteArrayList != null) && (!localCopyOnWriteArrayList.contains(parama))) {
       this.listeners.add(parama);
     }
   }
   
   public void unRegisterListener(AdScreenStatusManager.a parama)
   {
-    if ((this.listeners != null) && (this.listeners.contains(parama))) {
+    CopyOnWriteArrayList localCopyOnWriteArrayList = this.listeners;
+    if ((localCopyOnWriteArrayList != null) && (localCopyOnWriteArrayList.contains(parama))) {
       this.listeners.remove(parama);
     }
   }

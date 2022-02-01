@@ -1,6 +1,7 @@
 package com.tencent.bugly.proguard;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -88,61 +89,77 @@ public final class ak
     paramj.a(this.a, 0);
     paramj.a(this.b, 1);
     paramj.a(this.c, 2);
-    if (this.d != null) {
-      paramj.a(this.d, 3);
+    Object localObject = this.d;
+    if (localObject != null) {
+      paramj.a((String)localObject, 3);
     }
-    if (this.e != null) {
-      paramj.a(this.e, 4);
+    localObject = this.e;
+    if (localObject != null) {
+      paramj.a((String)localObject, 4);
     }
-    if (this.f != null) {
-      paramj.a(this.f, 5);
+    localObject = this.f;
+    if (localObject != null) {
+      paramj.a((String)localObject, 5);
     }
-    if (this.g != null) {
-      paramj.a(this.g, 6);
+    localObject = this.g;
+    if (localObject != null) {
+      paramj.a((String)localObject, 6);
     }
-    if (this.h != null) {
-      paramj.a(this.h, 7);
+    localObject = this.h;
+    if (localObject != null) {
+      paramj.a((Map)localObject, 7);
     }
-    if (this.i != null) {
-      paramj.a(this.i, 8);
+    localObject = this.i;
+    if (localObject != null) {
+      paramj.a((String)localObject, 8);
     }
-    if (this.j != null) {
-      paramj.a(this.j, 9);
+    localObject = this.j;
+    if (localObject != null) {
+      paramj.a((k)localObject, 9);
     }
     paramj.a(this.k, 10);
-    if (this.l != null) {
-      paramj.a(this.l, 11);
+    localObject = this.l;
+    if (localObject != null) {
+      paramj.a((String)localObject, 11);
     }
-    if (this.m != null) {
-      paramj.a(this.m, 12);
+    localObject = this.m;
+    if (localObject != null) {
+      paramj.a((String)localObject, 12);
     }
-    if (this.n != null) {
-      paramj.a(this.n, 13);
+    localObject = this.n;
+    if (localObject != null) {
+      paramj.a((k)localObject, 13);
     }
-    if (this.o != null) {
-      paramj.a(this.o, 14);
+    localObject = this.o;
+    if (localObject != null) {
+      paramj.a((Collection)localObject, 14);
     }
-    if (this.p != null) {
-      paramj.a(this.p, 15);
+    localObject = this.p;
+    if (localObject != null) {
+      paramj.a((Collection)localObject, 15);
     }
-    if (this.q != null) {
-      paramj.a(this.q, 16);
+    localObject = this.q;
+    if (localObject != null) {
+      paramj.a((Collection)localObject, 16);
     }
-    if (this.r != null) {
-      paramj.a(this.r, 17);
+    localObject = this.r;
+    if (localObject != null) {
+      paramj.a((Map)localObject, 17);
     }
-    if (this.s != null) {
-      paramj.a(this.s, 18);
+    localObject = this.s;
+    if (localObject != null) {
+      paramj.a((Map)localObject, 18);
     }
-    if (this.t != null) {
-      paramj.a(this.t, 19);
+    localObject = this.t;
+    if (localObject != null) {
+      paramj.a((String)localObject, 19);
     }
     paramj.a(this.u, 20);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.bugly.proguard.ak
  * JD-Core Version:    0.7.0.1
  */

@@ -47,6 +47,7 @@ public class FaceInfo
   public FaceInfo()
   {
     this.jdField_a_of_type_ArrayOfLong = null;
+    int i2 = 0;
     this.jdField_e_of_type_Int = 0;
     int i1 = i2;
     if (this.jdField_a_of_type_ArrayOfLong == null)
@@ -81,97 +82,142 @@ public class FaceInfo
     {
     default: 
       return null;
-    case 0: 
-      return "TIME_BEGINE";
-    case 1: 
-      return "TIME_REQ_READY";
-    case 2: 
-      return "TIME_BEGIN_DOWNLOADINFO";
-    case 3: 
-      return "TIME_END_DOWNLOADINFO";
-    case 4: 
-      return "TIME_BEGIN_DOWNLOAD";
-    case 5: 
-      return "TIME_END_DOWNLOAD";
-    case 6: 
-      return "TIME_BEGIN_DECODE";
+    case 8: 
+      return "TIME_REQ_END";
     case 7: 
       return "TIME_END_DECODE";
+    case 6: 
+      return "TIME_BEGIN_DECODE";
+    case 5: 
+      return "TIME_END_DOWNLOAD";
+    case 4: 
+      return "TIME_BEGIN_DOWNLOAD";
+    case 3: 
+      return "TIME_END_DOWNLOADINFO";
+    case 2: 
+      return "TIME_BEGIN_DOWNLOADINFO";
+    case 1: 
+      return "TIME_REQ_READY";
     }
-    return "TIME_REQ_END";
+    return "TIME_BEGINE";
   }
   
   public static String a(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
-    if (paramInt1 == 32) {
-      localStringBuilder.append(paramInt1).append("_").append(paramInt2).append("_").append(paramString);
-    }
-    for (;;)
+    if (paramInt1 == 32)
     {
-      return localStringBuilder.toString();
-      if (paramInt1 == 16) {
-        localStringBuilder.append(paramInt1).append("_").append(paramInt2).append("_").append(paramString);
-      } else if (paramInt1 == 116) {
-        localStringBuilder.append(paramInt1).append("_").append(paramInt3).append("_").append(paramString);
-      } else {
-        localStringBuilder.append(paramInt1).append("_").append(paramString);
-      }
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramString);
     }
+    else if (paramInt1 == 16)
+    {
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramString);
+    }
+    else if (paramInt1 == 116)
+    {
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramInt3);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramString);
+    }
+    else
+    {
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramString);
+    }
+    return localStringBuilder.toString();
   }
   
   public static String a(int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4)
   {
     StringBuilder localStringBuilder = new StringBuilder(16);
-    switch (paramInt1)
+    if (paramInt1 != 4)
     {
-    }
-    for (;;)
-    {
-      localStringBuilder.append(paramString);
-      if (paramInt3 > 0) {
-        localStringBuilder.append("_").append(paramInt3);
+      if (paramInt1 != 16)
+      {
+        if (paramInt1 != 32)
+        {
+          if (paramInt1 != 101)
+          {
+            if (paramInt1 != 103)
+            {
+              if (paramInt1 == 116)
+              {
+                localStringBuilder.append("apollo_");
+                localStringBuilder.append(Integer.toString(paramInt4));
+                localStringBuilder.append("_");
+              }
+            }
+            else {
+              localStringBuilder.append("sub_");
+            }
+          }
+          else {
+            localStringBuilder.append("dis_g_");
+          }
+        }
+        else
+        {
+          localStringBuilder.append("stranger_");
+          localStringBuilder.append(Integer.toString(paramInt2));
+          localStringBuilder.append("_");
+        }
       }
-      return localStringBuilder.toString();
-      localStringBuilder.append("dis_g_");
-      continue;
-      localStringBuilder.append("troop_");
-      continue;
-      localStringBuilder.append("sub_");
-      continue;
-      localStringBuilder.append("stranger_").append(Integer.toString(paramInt2)).append("_");
-      continue;
-      localStringBuilder.append("qcall_").append(Integer.toString(paramInt2)).append("_");
-      continue;
-      localStringBuilder.append("apollo_").append(Integer.toString(paramInt4)).append("_");
+      else
+      {
+        localStringBuilder.append("qcall_");
+        localStringBuilder.append(Integer.toString(paramInt2));
+        localStringBuilder.append("_");
+      }
     }
+    else {
+      localStringBuilder.append("troop_");
+    }
+    localStringBuilder.append(paramString);
+    if (paramInt3 > 0)
+    {
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramInt3);
+    }
+    return localStringBuilder.toString();
   }
   
   public static String a(QQHeadInfo paramQQHeadInfo, int paramInt)
   {
-    String str2 = "";
-    String str1 = str2;
-    if (paramQQHeadInfo != null)
+    if ((paramQQHeadInfo != null) && (!TextUtils.isEmpty(paramQQHeadInfo.downLoadUrl)))
     {
-      str1 = str2;
-      if (!TextUtils.isEmpty(paramQQHeadInfo.downLoadUrl))
+      if (paramQQHeadInfo.dstUsrType == 116)
       {
-        if (paramQQHeadInfo.dstUsrType != 116) {
-          break label74;
-        }
-        str1 = paramQQHeadInfo.downLoadUrl + "_" + paramQQHeadInfo.sizeType + "_" + paramQQHeadInfo.uin;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramQQHeadInfo.downLoadUrl);
+        localStringBuilder.append("_");
+        localStringBuilder.append(paramQQHeadInfo.sizeType);
+        localStringBuilder.append("_");
+        localStringBuilder.append(paramQQHeadInfo.uin);
+        return localStringBuilder.toString();
       }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramQQHeadInfo.downLoadUrl);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramInt);
+      return localStringBuilder.toString();
     }
-    return str1;
-    label74:
-    return paramQQHeadInfo.downLoadUrl + "_" + paramInt;
+    return "";
   }
   
   public byte a()
   {
-    switch (this.jdField_a_of_type_Byte)
-    {
-    default: 
+    if (this.jdField_a_of_type_Byte != 1) {
       return 1;
     }
     return 0;
@@ -192,50 +238,88 @@ public class FaceInfo
   
   public void a(int paramInt1, int paramInt2)
   {
-    long l2 = 0L;
-    if (this.jdField_a_of_type_ArrayOfLong == null) {}
-    do
+    Object localObject = this.jdField_a_of_type_ArrayOfLong;
+    if (localObject == null) {
+      return;
+    }
+    if ((paramInt1 >= 0) && (paramInt1 < s))
     {
-      do
+      localObject[paramInt1] = System.currentTimeMillis();
+      if (QLog.isColorLevel())
       {
-        return;
-      } while ((paramInt1 < 0) || (paramInt1 >= s));
-      this.jdField_a_of_type_ArrayOfLong[paramInt1] = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.i("FaceInfo", 2, "markTime tag= " + paramInt1 + "mTimes[tag] = " + this.jdField_a_of_type_ArrayOfLong[paramInt1] + "this=" + this);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("markTime tag= ");
+        ((StringBuilder)localObject).append(paramInt1);
+        ((StringBuilder)localObject).append("mTimes[tag] = ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ArrayOfLong[paramInt1]);
+        ((StringBuilder)localObject).append("this=");
+        ((StringBuilder)localObject).append(this);
+        QLog.i("FaceInfo", 2, ((StringBuilder)localObject).toString());
       }
-    } while ((paramInt1 != r) || (!QLog.isColorLevel()));
-    StringBuilder localStringBuilder = new StringBuilder(260);
-    localStringBuilder.append("id=").append(this.jdField_a_of_type_JavaLangString).append(",").append("idType=").append(this.jdField_b_of_type_Int).append(",").append("headType=").append(this.jdField_a_of_type_Int).append(",").append("shape=").append(this.jdField_c_of_type_Int).append(" ,Times={");
-    paramInt1 = 0;
-    long l1 = 0L;
-    if (paramInt1 < this.jdField_a_of_type_ArrayOfLong.length)
-    {
-      localStringBuilder.append("[").append(a(paramInt1)).append(",");
-      localStringBuilder.append(this.jdField_a_of_type_ArrayOfLong[paramInt1]).append(",");
-      if (this.jdField_a_of_type_ArrayOfLong[paramInt1] > 0L) {
-        localStringBuilder.append(Math.abs(l1 - this.jdField_a_of_type_ArrayOfLong[paramInt1])).append("]");
-      }
-      for (;;)
+      if ((paramInt1 == r) && (QLog.isColorLevel()))
       {
-        if (this.jdField_a_of_type_ArrayOfLong[paramInt1] > 0L) {
-          l1 = this.jdField_a_of_type_ArrayOfLong[paramInt1];
+        localObject = new StringBuilder(260);
+        ((StringBuilder)localObject).append("id=");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(",");
+        ((StringBuilder)localObject).append("idType=");
+        ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+        ((StringBuilder)localObject).append(",");
+        ((StringBuilder)localObject).append("headType=");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(",");
+        ((StringBuilder)localObject).append("shape=");
+        ((StringBuilder)localObject).append(this.jdField_c_of_type_Int);
+        ((StringBuilder)localObject).append(" ,Times={");
+        paramInt1 = 0;
+        long l2 = 0L;
+        long l1 = 0L;
+        long[] arrayOfLong;
+        for (;;)
+        {
+          arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+          if (paramInt1 >= arrayOfLong.length) {
+            break;
+          }
+          ((StringBuilder)localObject).append("[");
+          ((StringBuilder)localObject).append(a(paramInt1));
+          ((StringBuilder)localObject).append(",");
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_ArrayOfLong[paramInt1]);
+          ((StringBuilder)localObject).append(",");
+          arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+          if (arrayOfLong[paramInt1] > 0L)
+          {
+            ((StringBuilder)localObject).append(Math.abs(l1 - arrayOfLong[paramInt1]));
+            ((StringBuilder)localObject).append("]");
+          }
+          else
+          {
+            ((StringBuilder)localObject).append("0");
+            ((StringBuilder)localObject).append("]");
+          }
+          arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+          if (arrayOfLong[paramInt1] > 0L) {
+            l1 = arrayOfLong[paramInt1];
+          }
+          paramInt1 += 1;
         }
-        paramInt1 += 1;
-        break;
-        localStringBuilder.append("0").append("]");
+        paramInt1 = r;
+        l1 = l2;
+        if (arrayOfLong[paramInt1] > 0L)
+        {
+          int i1 = j;
+          l1 = l2;
+          if (arrayOfLong[i1] > 0L) {
+            l1 = Math.abs(arrayOfLong[paramInt1] - arrayOfLong[i1]);
+          }
+        }
+        ((StringBuilder)localObject).append("}, cost = ");
+        ((StringBuilder)localObject).append(l1);
+        ((StringBuilder)localObject).append(", result = ");
+        ((StringBuilder)localObject).append(paramInt2);
+        QLog.i("FaceCost", 2, ((StringBuilder)localObject).toString());
       }
     }
-    l1 = l2;
-    if (this.jdField_a_of_type_ArrayOfLong[r] > 0L)
-    {
-      l1 = l2;
-      if (this.jdField_a_of_type_ArrayOfLong[j] > 0L) {
-        l1 = Math.abs(this.jdField_a_of_type_ArrayOfLong[r] - this.jdField_a_of_type_ArrayOfLong[j]);
-      }
-    }
-    localStringBuilder.append("}, cost = ").append(l1).append(", result = ").append(paramInt2);
-    QLog.i("FaceCost", 2, localStringBuilder.toString());
   }
   
   public void a(int paramInt1, String paramString, boolean paramBoolean1, byte paramByte, int paramInt2, boolean paramBoolean2, int paramInt3, int paramInt4, boolean paramBoolean3, int paramInt5)
@@ -275,44 +359,54 @@ public class FaceInfo
   
   public void a(Parcel paramParcel)
   {
-    boolean bool = true;
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_b_of_type_Int = paramParcel.readInt();
     this.jdField_c_of_type_Int = paramParcel.readInt();
     this.jdField_d_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_Byte = paramParcel.readByte();
-    if (paramParcel.readByte() == 1) {}
-    for (;;)
-    {
-      this.jdField_c_of_type_Boolean = bool;
-      this.jdField_d_of_type_JavaLangString = paramParcel.readString();
-      this.jdField_a_of_type_Long = paramParcel.readLong();
-      this.jdField_a_of_type_AvatarInfoQQHeadInfo = ((QQHeadInfo)paramParcel.readParcelable(getClass().getClassLoader()));
-      return;
+    int i1 = paramParcel.readByte();
+    boolean bool = true;
+    if (i1 != 1) {
       bool = false;
     }
+    this.jdField_c_of_type_Boolean = bool;
+    this.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_a_of_type_Long = paramParcel.readLong();
+    this.jdField_a_of_type_AvatarInfoQQHeadInfo = ((QQHeadInfo)paramParcel.readParcelable(getClass().getClassLoader()));
   }
   
   public boolean a(int paramInt, long paramLong)
   {
-    if (this.jdField_a_of_type_ArrayOfLong == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-        } while ((paramInt < 0) || (paramInt >= s));
-        if (this.jdField_a_of_type_ArrayOfLong[paramInt] != 0L) {
-          break;
-        }
-      } while (!QLog.isDevelopLevel());
-      QLog.i("FaceInfo", 2, "isTimeOut");
+    long[] arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+    boolean bool2 = false;
+    if (arrayOfLong == null) {
       return false;
-    } while (Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_ArrayOfLong[paramInt]) < paramLong);
-    return true;
+    }
+    boolean bool1 = bool2;
+    if (paramInt >= 0)
+    {
+      bool1 = bool2;
+      if (paramInt < s) {
+        if (arrayOfLong[paramInt] == 0L)
+        {
+          bool1 = bool2;
+          if (QLog.isDevelopLevel())
+          {
+            QLog.i("FaceInfo", 2, "isTimeOut");
+            return false;
+          }
+        }
+        else
+        {
+          bool1 = bool2;
+          if (Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_ArrayOfLong[paramInt]) >= paramLong) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String b()
@@ -345,41 +439,40 @@ public class FaceInfo
   public int hashCode()
   {
     int i2 = this.jdField_a_of_type_Int;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    for (int i1 = 0;; i1 = this.jdField_a_of_type_JavaLangString.hashCode()) {
-      return i1 | i2;
+    int i1;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      i1 = 0;
+    } else {
+      i1 = this.jdField_a_of_type_JavaLangString.hashCode();
     }
+    return i2 | i1;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("[").append(this.jdField_a_of_type_Int).append(",").append(this.jdField_b_of_type_Int).append(",").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.jdField_c_of_type_Int).append(",").append(this.jdField_d_of_type_Int).append("]");
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeInt(this.jdField_d_of_type_Int);
-    paramParcel.writeByte(this.jdField_a_of_type_Byte);
-    if (this.jdField_c_of_type_Boolean) {}
-    for (byte b1 = 1;; b1 = 0)
-    {
-      paramParcel.writeByte(b1);
-      paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-      paramParcel.writeLong(this.jdField_a_of_type_Long);
-      paramParcel.writeParcelable(this.jdField_a_of_type_AvatarInfoQQHeadInfo, 0);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceInfo
  * JD-Core Version:    0.7.0.1
  */

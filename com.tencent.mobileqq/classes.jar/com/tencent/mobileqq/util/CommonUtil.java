@@ -32,81 +32,96 @@ public class CommonUtil
   
   public static String a(ArrayList<String> paramArrayList, boolean paramBoolean)
   {
-    Time localTime = new Time();
-    localTime.setToNow();
+    Object localObject = new Time();
+    ((Time)localObject).setToNow();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("com.tencent.process.exit");
-    localStringBuilder.append(localTime.year).append(localTime.month + 1).append(localTime.monthDay);
-    localStringBuilder.append(localTime.hour);
-    if (paramBoolean)
-    {
-      localStringBuilder.append(localTime.minute - 1);
-      if (paramArrayList != null) {
-        break label134;
-      }
+    localStringBuilder.append(((Time)localObject).year);
+    localStringBuilder.append(((Time)localObject).month + 1);
+    localStringBuilder.append(((Time)localObject).monthDay);
+    localStringBuilder.append(((Time)localObject).hour);
+    if (paramBoolean) {
+      localStringBuilder.append(((Time)localObject).minute - 1);
+    } else {
+      localStringBuilder.append(((Time)localObject).minute);
     }
-    label134:
-    for (paramArrayList = "null";; paramArrayList = paramArrayList.toString())
-    {
-      localStringBuilder.append(paramArrayList);
-      paramArrayList = MD5.toMD5(localStringBuilder.toString());
-      return MD5.toMD5(paramArrayList + localStringBuilder.toString());
-      localStringBuilder.append(localTime.minute);
-      break;
+    if (paramArrayList == null) {
+      paramArrayList = "null";
+    } else {
+      paramArrayList = paramArrayList.toString();
     }
+    localStringBuilder.append(paramArrayList);
+    paramArrayList = MD5.toMD5(localStringBuilder.toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramArrayList);
+    ((StringBuilder)localObject).append(localStringBuilder.toString());
+    return MD5.toMD5(((StringBuilder)localObject).toString());
   }
   
   public static boolean a(long paramLong1, long paramLong2)
   {
-    if ((paramLong1 == 0L) || (paramLong2 == 0L)) {}
-    long l;
-    do
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramLong1 != 0L)
     {
-      return false;
-      l = System.currentTimeMillis();
-    } while ((l < paramLong1) || (l > paramLong2));
-    return true;
+      if (paramLong2 == 0L) {
+        return false;
+      }
+      long l = System.currentTimeMillis();
+      bool1 = bool2;
+      if (l >= paramLong1)
+      {
+        bool1 = bool2;
+        if (l <= paramLong2) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public static boolean a(String paramString, ArrayList<String> paramArrayList)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while ((!paramString.equals(a(paramArrayList, false))) && (!paramString.equals(a(paramArrayList, true)))) {
-      return false;
+    if (paramString != null)
+    {
+      if (paramString.length() == 0) {
+        return false;
+      }
+      if (!paramString.equals(a(paramArrayList, false))) {
+        return paramString.equals(a(paramArrayList, true));
+      }
+      return true;
     }
-    return true;
+    return false;
   }
   
   public static boolean a(ArrayList<String> paramArrayList, Context paramContext)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      bool1 = true;
-    }
-    do
+    if (paramArrayList != null)
     {
-      return bool1;
-      paramContext = MobileQQ.processName;
-      bool1 = bool2;
-    } while (paramContext == null);
-    int i = 0;
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i >= paramArrayList.size()) {
-        break;
-      }
-      if (paramContext.equals(paramArrayList.get(i))) {
+      if (paramArrayList.size() == 0) {
         return true;
       }
-      i += 1;
+      paramContext = MobileQQ.processName;
+      if (paramContext != null)
+      {
+        int i = 0;
+        while (i < paramArrayList.size())
+        {
+          if (paramContext.equals(paramArrayList.get(i))) {
+            return true;
+          }
+          i += 1;
+        }
+      }
+      return false;
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.CommonUtil
  * JD-Core Version:    0.7.0.1
  */

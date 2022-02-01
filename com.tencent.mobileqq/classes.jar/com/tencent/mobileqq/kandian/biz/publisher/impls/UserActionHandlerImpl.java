@@ -3,32 +3,41 @@ package com.tencent.mobileqq.kandian.biz.publisher.impls;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.net.Uri.Builder;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import androidx.core.app.ActivityCompat;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyActivityHelper;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.RIJUgcUtils;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyTopicSelectionFragment;
-import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.CoverSelectTabFragment;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaAccessHelper;
+import androidx.core.content.ContextCompat;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.kandian.biz.flutter.FlutterPageSetting;
+import com.tencent.mobileqq.kandian.biz.flutter.RIJFlutterUtils;
 import com.tencent.mobileqq.kandian.biz.publisher.TKDPublisherUtils;
 import com.tencent.mobileqq.kandian.biz.publisher.config.PublisherRemoteConfig;
+import com.tencent.mobileqq.kandian.biz.publisher.ktx.PublishArticleInfoExtKt;
+import com.tencent.mobileqq.kandian.biz.ugc.RIJUgcUtils;
+import com.tencent.mobileqq.kandian.biz.ugc.coverselect.CoverSelectTabFragment;
+import com.tencent.mobileqq.kandian.biz.ugc.entity.UgcVideo;
+import com.tencent.mobileqq.kandian.biz.ugc.selectmember.ReadInJoySelectMemberFragment;
+import com.tencent.mobileqq.kandian.glue.msf.api.IReadInJoyUserInfoModule;
+import com.tencent.mobileqq.kandian.glue.viola.ViolaAccessHelper;
+import com.tencent.mobileqq.kandian.repo.ugc.ResultRecord;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
+import com.tencent.mobileqq.qroute.route.URIRequest;
+import com.tencent.mobileqq.tribe.data.TroopBarPOI;
 import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
 import com.tencent.mobileqq.utils.AlbumUtil;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.tkd.topicsdk.bean.LocationInfo;
+import com.tencent.tkd.topicsdk.bean.PublishArticleInfo;
+import com.tencent.tkd.topicsdk.bean.VideoInfo;
 import com.tencent.tkd.topicsdk.coverselect.CoverSelectData;
 import com.tencent.tkd.topicsdk.coverselect.CoverSelectPage;
 import com.tencent.tkd.topicsdk.coverselect.CoverSelectPage.Companion;
@@ -39,7 +48,10 @@ import com.tencent.tkd.topicsdk.interfaces.IStorageConfig;
 import com.tencent.tkd.topicsdk.interfaces.IUserActionHandler;
 import com.tencent.tkd.weibo.bean.EditObject;
 import com.tencent.tkd.weibo.bean.EditObject.EditObjectType;
+import com.tencent.tkd.weibo.tweetTopic.TweetTopicView;
+import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import kotlin.Metadata;
 import kotlin.TypeCastException;
@@ -47,13 +59,13 @@ import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Intrinsics;
-import mqq.os.MqqHandler;
+import mqq.app.AppActivity;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/publisher/impls/UserActionHandlerImpl;", "Lcom/tencent/tkd/topicsdk/interfaces/IUserActionHandler;", "()V", "atContractCallback", "Lkotlin/Function2;", "Ljava/util/ArrayList;", "Lcom/tencent/tkd/weibo/bean/EditObject;", "Lkotlin/collections/ArrayList;", "Lkotlin/ParameterName;", "name", "editObjects", "Landroid/os/Bundle;", "outputBundle", "", "coverChangeObserver", "com/tencent/mobileqq/kandian/biz/publisher/impls/UserActionHandlerImpl$coverChangeObserver$1", "Lcom/tencent/mobileqq/kandian/biz/publisher/impls/UserActionHandlerImpl$coverChangeObserver$1;", "coverSelectData", "Lcom/tencent/tkd/topicsdk/coverselect/CoverSelectData;", "observer", "com/tencent/mobileqq/kandian/biz/publisher/impls/UserActionHandlerImpl$observer$1", "Lcom/tencent/mobileqq/kandian/biz/publisher/impls/UserActionHandlerImpl$observer$1;", "positionContractCallback", "Lkotlin/Function1;", "Lcom/tencent/tkd/topicsdk/bean/LocationInfo;", "locationInfo", "topicContractCallback", "editObject", "topicCoverClickCallback", "", "coverPath", "videoCoverSelectCallback", "closeViewFromMainTab", "activity", "Landroid/app/Activity;", "columnId", "", "from", "", "closeViewFromOtherEntry", "violaCallback", "handleAtContractData", "data", "Landroid/content/Intent;", "handleCoverSelectData", "handlePosContractData", "handleTopicContractData", "intent", "handleTopicCoverData", "path", "onAtButtonClicked", "inputBundle", "callback", "onLocationButtonClicked", "originLocationInfo", "newLocationInfo", "onPublishButtonClicked", "scene", "onRelease", "onTopicButtonClicked", "onTopicCoverChangeClicked", "onVideoCoverSelectClicked", "result", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/publisher/impls/UserActionHandlerImpl;", "Lcom/tencent/tkd/topicsdk/interfaces/IUserActionHandler;", "()V", "atContractCallback", "Lkotlin/Function2;", "Ljava/util/ArrayList;", "Lcom/tencent/tkd/weibo/bean/EditObject;", "Lkotlin/collections/ArrayList;", "Lkotlin/ParameterName;", "name", "editObjects", "Landroid/os/Bundle;", "outputBundle", "", "coverChangeObserver", "com/tencent/mobileqq/kandian/biz/publisher/impls/UserActionHandlerImpl$coverChangeObserver$1", "Lcom/tencent/mobileqq/kandian/biz/publisher/impls/UserActionHandlerImpl$coverChangeObserver$1;", "coverSelectData", "Lcom/tencent/tkd/topicsdk/coverselect/CoverSelectData;", "observer", "com/tencent/mobileqq/kandian/biz/publisher/impls/UserActionHandlerImpl$observer$1", "Lcom/tencent/mobileqq/kandian/biz/publisher/impls/UserActionHandlerImpl$observer$1;", "positionContractCallback", "Lkotlin/Function1;", "Lcom/tencent/tkd/topicsdk/bean/LocationInfo;", "locationInfo", "topicCoverClickCallback", "", "coverPath", "videoCoverSelectCallback", "checkAndAskLocationPermission", "activity", "Landroid/app/Activity;", "originLocationInfo", "closeViewFromOtherEntry", "columnId", "", "from", "", "violaCallback", "publishArticleInfo", "Lcom/tencent/tkd/topicsdk/bean/PublishArticleInfo;", "closeViewFromPersonalCenter", "handleAtContractData", "data", "Landroid/content/Intent;", "handleCoverSelectData", "handlePosContractData", "handleTopicCoverData", "path", "onAtButtonClicked", "inputBundle", "callback", "onLocationButtonClicked", "newLocationInfo", "onPublishButtonClicked", "onRelease", "onTopicButtonClicked", "editObject", "onTopicCoverChangeClicked", "onVideoCoverSelectClicked", "result", "startSelectPage", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class UserActionHandlerImpl
   implements IUserActionHandler
 {
@@ -65,8 +77,7 @@ public final class UserActionHandlerImpl
   private Function1<? super LocationInfo, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1;
   private Function2<? super ArrayList<EditObject>, ? super Bundle, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction2;
   private Function1<? super CoverSelectData, Unit> jdField_b_of_type_KotlinJvmFunctionsFunction1;
-  private Function2<? super EditObject, ? super Bundle, Unit> jdField_b_of_type_KotlinJvmFunctionsFunction2;
-  private Function2<? super String, ? super Bundle, Unit> c;
+  private Function2<? super String, ? super Bundle, Unit> jdField_b_of_type_KotlinJvmFunctionsFunction2;
   
   static
   {
@@ -79,139 +90,95 @@ public final class UserActionHandlerImpl
     DispatchManager.a.a(TopicCoverChangeEvent.class, (IEventObserver)this.jdField_a_of_type_ComTencentMobileqqKandianBizPublisherImplsUserActionHandlerImpl$coverChangeObserver$1);
   }
   
-  private final void a(Activity paramActivity, long paramLong, int paramInt)
-  {
-    paramInt = RIJUgcUtils.b();
-    if (paramLong != 0L)
-    {
-      paramActivity.finish();
-      if (RIJUgcUtils.j() == 2)
-      {
-        localObject = RIJUgcUtils.a() + paramLong;
-        ViolaAccessHelper.a((Context)paramActivity, "", (String)localObject, new Bundle(), false);
-      }
-      return;
-    }
-    if (paramInt == 2)
-    {
-      QLog.d("UserActionHandlerImpl", 0, "closeView | publish video without column ");
-      ThreadManager.getUIHandler().postDelayed((Runnable)new UserActionHandlerImpl.closeViewFromMainTab.1(paramActivity), 500L);
-      return;
-    }
-    paramActivity.finish();
-    Object localObject = ReadInJoyUtils.a();
-    if (localObject == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
-    }
-    ReadInJoyActivityHelper.a((QQAppInterface)localObject, (Context)paramActivity, 0, 0, null);
-  }
-  
-  private final void a(Activity paramActivity, long paramLong, int paramInt, String paramString)
+  private final void a(Activity paramActivity, long paramLong, int paramInt, String paramString, PublishArticleInfo paramPublishArticleInfo)
   {
     int k = 1;
     int i;
-    if (paramLong != 0L)
-    {
+    if (paramLong != 0L) {
       i = 1;
-      j = k;
-      if (paramInt != 3) {
-        if (paramInt != 4) {
-          break label101;
-        }
+    } else {
+      i = 0;
+    }
+    int j = k;
+    if (paramInt != 3) {
+      if (paramInt == 4) {
+        j = k;
+      } else {
+        j = 0;
       }
     }
-    label101:
-    for (int j = k;; j = 0)
+    if ((i != 0) && (j == 0))
     {
-      if ((i == 0) || (j != 0)) {
-        break label107;
-      }
       paramActivity.finish();
-      if (RIJUgcUtils.j() == 2)
+      if (RIJUgcUtils.i() == 2)
       {
-        paramString = RIJUgcUtils.a() + paramLong;
+        paramString = new StringBuilder();
+        paramString.append(RIJUgcUtils.a());
+        paramString.append(paramLong);
+        paramString = paramString.toString();
         ViolaAccessHelper.a((Context)paramActivity, "", paramString, new Bundle(), false);
       }
-      return;
-      i = 0;
-      break;
     }
-    label107:
-    Intent localIntent = new Intent();
-    localIntent.putExtra("key_column_id", paramLong);
-    localIntent.putExtra("arg_callback", paramString);
-    paramActivity.setResult(3, localIntent);
-    paramActivity.finish();
+    else
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_column_id", paramLong);
+      localIntent.putExtra("arg_callback", paramString);
+      paramActivity.setResult(3, localIntent);
+      paramActivity.finish();
+      RIJUgcUtils.a(PublishArticleInfoExtKt.a(paramPublishArticleInfo));
+    }
+  }
+  
+  private final void a(Activity paramActivity, LocationInfo paramLocationInfo)
+  {
+    int i;
+    if (ContextCompat.checkSelfPermission((Context)paramActivity, "android.permission.ACCESS_FINE_LOCATION") != -1) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0)
+    {
+      if (!(paramActivity instanceof AppActivity)) {
+        localObject = null;
+      } else {
+        localObject = paramActivity;
+      }
+      Object localObject = (AppActivity)localObject;
+      if (localObject != null) {
+        ((AppActivity)localObject).requestPermissions(new UserActionHandlerImpl.checkAndAskLocationPermission.1(this, paramActivity, paramLocationInfo), 50001, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+      }
+    }
+    else
+    {
+      b(paramActivity, paramLocationInfo);
+    }
   }
   
   private final void a(Intent paramIntent)
   {
-    Object localObject = (TopicInfo)paramIntent.getParcelableExtra("EXTRA_SELECTED_TOPIC");
-    int i;
-    if (localObject != null)
-    {
-      paramIntent = ((TopicInfo)localObject).a();
-      Intrinsics.checkExpressionValueIsNotNull(paramIntent, "topicInfo.topicTitle");
-      paramIntent = new EditObject(paramIntent, EditObject.EditObjectType.TYPE_TOPIC);
-      paramIntent.setKey(String.valueOf(((TopicInfo)localObject).b()));
-      CharSequence localCharSequence = (CharSequence)((TopicInfo)localObject).d();
-      if ((localCharSequence != null) && (localCharSequence.length() != 0)) {
-        break label136;
-      }
-      i = 1;
-      if (i != 0) {
-        break label141;
-      }
-      localObject = ((TopicInfo)localObject).d();
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "topicInfo.topicJumpUrl");
-      paramIntent.setHref((String)localObject);
-    }
-    for (;;)
-    {
-      localObject = this.jdField_b_of_type_KotlinJvmFunctionsFunction2;
-      if (localObject != null) {
-        paramIntent = (Unit)((Function2)localObject).invoke(paramIntent, this.jdField_a_of_type_AndroidOsBundle);
-      }
-      this.jdField_b_of_type_KotlinJvmFunctionsFunction2 = ((Function2)null);
-      this.jdField_a_of_type_AndroidOsBundle = ((Bundle)null);
-      return;
-      label136:
-      i = 0;
-      break;
-      label141:
-      QLog.e("UserActionHandlerImpl", 0, "topicInfo has empty url " + localObject);
-    }
-  }
-  
-  private final void a(String paramString)
-  {
-    Function2 localFunction2 = this.c;
-    if (localFunction2 != null) {
-      paramString = (Unit)localFunction2.invoke(paramString, this.jdField_a_of_type_AndroidOsBundle);
-    }
-    this.c = ((Function2)null);
-    this.jdField_a_of_type_AndroidOsBundle = ((Bundle)null);
-  }
-  
-  private final void b(Intent paramIntent)
-  {
     paramIntent = paramIntent.getParcelableArrayListExtra("result_set");
-    Intrinsics.checkExpressionValueIsNotNull(paramIntent, "data.getParcelableArrayL…ctivity.PARAM_RESULT_SET)");
+    Intrinsics.checkExpressionValueIsNotNull(paramIntent, "data.getParcelableArrayL…nstants.PARAM_RESULT_SET)");
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = paramIntent.iterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       ResultRecord localResultRecord = (ResultRecord)localIterator.next();
       Intrinsics.checkExpressionValueIsNotNull(localResultRecord, "i");
-      if (!TextUtils.isEmpty((CharSequence)localResultRecord.b())) {}
-      for (paramIntent = localResultRecord.b();; paramIntent = ReadInJoyUserInfoModule.a())
-      {
-        paramIntent = new EditObject('@' + paramIntent + ' ', EditObject.EditObjectType.TYPE_AT);
-        paramIntent.setKey(localResultRecord.a().toString());
-        paramIntent.setAtType(localResultRecord.a());
-        localArrayList.add(paramIntent);
-        break;
+      if (!TextUtils.isEmpty((CharSequence)localResultRecord.b())) {
+        paramIntent = localResultRecord.b();
+      } else {
+        paramIntent = ((IReadInJoyUserInfoModule)QRoute.api(IReadInJoyUserInfoModule.class)).getDefaultNickName();
       }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append('@');
+      localStringBuilder.append(paramIntent);
+      localStringBuilder.append(' ');
+      paramIntent = new EditObject(localStringBuilder.toString(), EditObject.EditObjectType.TYPE_AT);
+      paramIntent.setKey(localResultRecord.a().toString());
+      paramIntent.setAtType(localResultRecord.a());
+      localArrayList.add(paramIntent);
     }
     paramIntent = this.jdField_a_of_type_KotlinJvmFunctionsFunction2;
     if (paramIntent != null) {
@@ -221,7 +188,94 @@ public final class UserActionHandlerImpl
     this.jdField_a_of_type_AndroidOsBundle = ((Bundle)null);
   }
   
-  private final void c(Intent paramIntent)
+  private final void a(String paramString)
+  {
+    Function2 localFunction2 = this.jdField_b_of_type_KotlinJvmFunctionsFunction2;
+    if (localFunction2 != null) {
+      paramString = (Unit)localFunction2.invoke(paramString, this.jdField_a_of_type_AndroidOsBundle);
+    }
+    this.jdField_b_of_type_KotlinJvmFunctionsFunction2 = ((Function2)null);
+    this.jdField_a_of_type_AndroidOsBundle = ((Bundle)null);
+  }
+  
+  private final void b(Activity paramActivity, LocationInfo paramLocationInfo)
+  {
+    Intent localIntent = new Intent((Context)paramActivity, TroopBarPublishLocationSelectActivity.class);
+    if (paramLocationInfo != null) {
+      localIntent.putExtra("key_selected_poi", (Parcelable)new TroopBarPOI(paramLocationInfo.getUid(), "", paramLocationInfo.getName(), (int)paramLocationInfo.getLongitude(), paramLocationInfo.getAddr(), (int)paramLocationInfo.getLatitude(), ""));
+    }
+    ActivityCompat.startActivityForResult(paramActivity, localIntent, 50001, null);
+  }
+  
+  private final void b(Activity paramActivity, PublishArticleInfo paramPublishArticleInfo)
+  {
+    Object localObject = Aladdin.getConfig(462);
+    if ((localObject != null) && (((AladdinConfig)localObject).getIntegerFromString("intro_after_publish", 0) == 1))
+    {
+      int i = ((AladdinConfig)localObject).getIntegerFromString("intro_type", 0);
+      String str1 = ((AladdinConfig)localObject).getString("intro_title", "");
+      String str2 = ((AladdinConfig)localObject).getString("segue_button_left_title", "");
+      String str3 = ((AladdinConfig)localObject).getString("segue_button_left_url", "");
+      String str4 = ((AladdinConfig)localObject).getString("segue_button_right_title", "");
+      String str5 = ((AladdinConfig)localObject).getString("segue_button_right_url", "");
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("page", "RIJPublisherSuccessPage");
+      localObject = paramPublishArticleInfo.getVideoInfo();
+      if (localObject != null)
+      {
+        localObject = ((VideoInfo)localObject).getBackupCoverPath();
+        if (localObject != null) {
+          localObject = (String)localHashMap.put("intro_video_cover_local_url", localObject);
+        }
+      }
+      localObject = paramPublishArticleInfo.getVideoInfo();
+      if (localObject != null)
+      {
+        localObject = ((VideoInfo)localObject).getCoverUrl();
+        if (localObject != null) {
+          localObject = (String)localHashMap.put("intro_video_cover_network_url", localObject);
+        }
+      }
+      localObject = paramPublishArticleInfo.getVideoInfo();
+      FlutterPageSetting localFlutterPageSetting = null;
+      if (localObject != null) {
+        localObject = Integer.valueOf(((VideoInfo)localObject).getCoverWidth());
+      } else {
+        localObject = null;
+      }
+      localHashMap.put("cover_width", String.valueOf(localObject));
+      VideoInfo localVideoInfo = paramPublishArticleInfo.getVideoInfo();
+      localObject = localFlutterPageSetting;
+      if (localVideoInfo != null) {
+        localObject = Integer.valueOf(localVideoInfo.getCoverHeight());
+      }
+      localHashMap.put("cover_height", String.valueOf(localObject));
+      localHashMap.put("title", paramPublishArticleInfo.getContent());
+      localHashMap.put("intro_text", str1);
+      localHashMap.put("segue_button_left_title", str2);
+      localHashMap.put("segue_button_left_url", str3);
+      localHashMap.put("segue_button_right_title", str4);
+      localObject = Uri.parse(URLDecoder.decode(str5, "utf-8")).buildUpon();
+      ((Uri.Builder)localObject).appendQueryParameter("id", paramPublishArticleInfo.getCommunityId());
+      localHashMap.put("segue_button_right_url", ((Uri.Builder)localObject).toString());
+      paramPublishArticleInfo = RIJFlutterUtils.a;
+      localObject = (Context)paramActivity;
+      boolean bool;
+      if (i == 1) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      localFlutterPageSetting = new FlutterPageSetting();
+      localFlutterPageSetting.a(true);
+      localFlutterPageSetting.b(false);
+      localFlutterPageSetting.c(false);
+      paramPublishArticleInfo.a((Context)localObject, localHashMap, bool, localFlutterPageSetting);
+    }
+    paramActivity.finish();
+  }
+  
+  private final void b(Intent paramIntent)
   {
     TroopBarPOI localTroopBarPOI = (TroopBarPOI)paramIntent.getParcelableExtra("key_selected_poi");
     if (localTroopBarPOI == null)
@@ -231,40 +285,40 @@ public final class UserActionHandlerImpl
         paramIntent = (Unit)paramIntent.invoke(null);
       }
     }
-    Function1 localFunction1;
-    do
+    else
     {
-      this.jdField_a_of_type_KotlinJvmFunctionsFunction1 = ((Function1)null);
-      this.jdField_a_of_type_AndroidOsBundle = ((Bundle)null);
-      return;
-      localFunction1 = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
-    } while (localFunction1 == null);
-    LocationInfo localLocationInfo = new LocationInfo();
-    if (TextUtils.isEmpty((CharSequence)localTroopBarPOI.c))
-    {
-      paramIntent = localTroopBarPOI.d;
-      Intrinsics.checkExpressionValueIsNotNull(paramIntent, "mCurrentPOI.addr");
+      Function1 localFunction1 = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
+      if (localFunction1 != null)
+      {
+        LocationInfo localLocationInfo = new LocationInfo();
+        if (TextUtils.isEmpty((CharSequence)localTroopBarPOI.c))
+        {
+          paramIntent = localTroopBarPOI.d;
+          Intrinsics.checkExpressionValueIsNotNull(paramIntent, "mCurrentPOI.addr");
+        }
+        else
+        {
+          paramIntent = localTroopBarPOI.c;
+          Intrinsics.checkExpressionValueIsNotNull(paramIntent, "mCurrentPOI.name");
+        }
+        localLocationInfo.setName(paramIntent);
+        localLocationInfo.setLatitude(localTroopBarPOI.b);
+        localLocationInfo.setLongitude(localTroopBarPOI.jdField_a_of_type_Int);
+        paramIntent = localTroopBarPOI.d;
+        Intrinsics.checkExpressionValueIsNotNull(paramIntent, "mCurrentPOI.addr");
+        localLocationInfo.setAddr(paramIntent);
+        paramIntent = localTroopBarPOI.jdField_a_of_type_JavaLangString;
+        Intrinsics.checkExpressionValueIsNotNull(paramIntent, "mCurrentPOI.uid");
+        localLocationInfo.setUid(paramIntent);
+        localLocationInfo.setUserSelect(1);
+        paramIntent = (Unit)localFunction1.invoke(localLocationInfo);
+      }
     }
-    for (;;)
-    {
-      localLocationInfo.setName(paramIntent);
-      localLocationInfo.setLatitude(localTroopBarPOI.b);
-      localLocationInfo.setLongitude(localTroopBarPOI.jdField_a_of_type_Int);
-      paramIntent = localTroopBarPOI.d;
-      Intrinsics.checkExpressionValueIsNotNull(paramIntent, "mCurrentPOI.addr");
-      localLocationInfo.setAddr(paramIntent);
-      paramIntent = localTroopBarPOI.jdField_a_of_type_JavaLangString;
-      Intrinsics.checkExpressionValueIsNotNull(paramIntent, "mCurrentPOI.uid");
-      localLocationInfo.setUid(paramIntent);
-      localLocationInfo.setUserSelect(1);
-      paramIntent = (Unit)localFunction1.invoke(localLocationInfo);
-      break;
-      paramIntent = localTroopBarPOI.c;
-      Intrinsics.checkExpressionValueIsNotNull(paramIntent, "mCurrentPOI.name");
-    }
+    this.jdField_a_of_type_KotlinJvmFunctionsFunction1 = ((Function1)null);
+    this.jdField_a_of_type_AndroidOsBundle = ((Bundle)null);
   }
   
-  private final void d(Intent paramIntent)
+  private final void c(Intent paramIntent)
   {
     String str = paramIntent.getStringExtra("ARG_SELECTED_COVER");
     int i = paramIntent.getIntExtra("ARG_SELECTED_ITEM", 0);
@@ -290,49 +344,12 @@ public final class UserActionHandlerImpl
   
   public void a()
   {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction2 = ((Function2)null);
-    this.jdField_b_of_type_KotlinJvmFunctionsFunction2 = ((Function2)null);
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction1 = ((Function1)null);
-    this.c = ((Function2)null);
-    this.jdField_b_of_type_KotlinJvmFunctionsFunction1 = ((Function1)null);
-  }
-  
-  public void a(@NotNull Activity paramActivity, long paramLong, @NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
-    Intrinsics.checkParameterIsNotNull(paramString, "scene");
-    if (((CharSequence)paramString).length() > 0) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        for (;;)
-        {
-          try
-          {
-            paramString = new JSONObject(paramString);
-            i = paramString.optInt("key_from");
-            paramString = paramString.optString("key_callback", "");
-            switch (i)
-            {
-            case 1: 
-              Intrinsics.checkExpressionValueIsNotNull(paramString, "callback");
-              a(paramActivity, paramLong, i, paramString);
-              return;
-            }
-          }
-          catch (JSONException paramActivity)
-          {
-            QLog.d("UserActionHandlerImpl", 0, paramActivity.toString());
-            return;
-          }
-          a(paramActivity, paramLong, i);
-          return;
-          paramActivity.finish();
-          return;
-        }
-      }
-      return;
-    }
+    Function2 localFunction2 = (Function2)null;
+    this.jdField_a_of_type_KotlinJvmFunctionsFunction2 = localFunction2;
+    Function1 localFunction1 = (Function1)null;
+    this.jdField_a_of_type_KotlinJvmFunctionsFunction1 = localFunction1;
+    this.jdField_b_of_type_KotlinJvmFunctionsFunction2 = localFunction2;
+    this.jdField_b_of_type_KotlinJvmFunctionsFunction1 = localFunction1;
   }
   
   public void a(@NotNull Activity paramActivity, @Nullable Bundle paramBundle, @NotNull Function2<? super ArrayList<EditObject>, ? super Bundle, Unit> paramFunction2)
@@ -353,11 +370,45 @@ public final class UserActionHandlerImpl
     Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "callback");
     this.jdField_a_of_type_KotlinJvmFunctionsFunction1 = paramFunction1;
-    paramFunction1 = new Intent((Context)paramActivity, TroopBarPublishLocationSelectActivity.class);
-    if (paramLocationInfo != null) {
-      paramFunction1.putExtra("key_selected_poi", (Parcelable)new TroopBarPOI(paramLocationInfo.getUid(), "", paramLocationInfo.getName(), (int)paramLocationInfo.getLongitude(), paramLocationInfo.getAddr(), (int)paramLocationInfo.getLatitude(), ""));
+    a(paramActivity, paramLocationInfo);
+  }
+  
+  public void a(@NotNull Activity paramActivity, @NotNull PublishArticleInfo paramPublishArticleInfo)
+  {
+    Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
+    Intrinsics.checkParameterIsNotNull(paramPublishArticleInfo, "publishArticleInfo");
+    int i;
+    if (((CharSequence)paramPublishArticleInfo.getScene()).length() > 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    ActivityCompat.startActivityForResult(paramActivity, paramFunction1, 50001, null);
+    if (i != 0) {
+      try
+      {
+        Object localObject = new JSONObject(paramPublishArticleInfo.getScene());
+        i = ((JSONObject)localObject).optInt("key_from");
+        localObject = ((JSONObject)localObject).optString("key_callback", "");
+        if (i != 1)
+        {
+          if (i != 5)
+          {
+            long l = paramPublishArticleInfo.getTopicId();
+            Intrinsics.checkExpressionValueIsNotNull(localObject, "callback");
+            a(paramActivity, l, i, (String)localObject, paramPublishArticleInfo);
+            return;
+          }
+          paramActivity.finish();
+          return;
+        }
+        b(paramActivity, paramPublishArticleInfo);
+        return;
+      }
+      catch (JSONException paramActivity)
+      {
+        QLog.d("UserActionHandlerImpl", 2, paramActivity.toString());
+      }
+    }
   }
   
   public void a(@NotNull Activity paramActivity, @NotNull CoverSelectData paramCoverSelectData, @NotNull Function1<? super CoverSelectData, Unit> paramFunction1)
@@ -383,22 +434,31 @@ public final class UserActionHandlerImpl
   {
     Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "callback");
-    this.c = paramFunction2;
-    paramFunction2 = new Intent((Context)paramActivity, NewPhotoListActivity.class);
-    paramFunction2.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", paramActivity.getClass().getName());
-    paramFunction2.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
-    paramFunction2.putExtra("PhotoConst.IS_RECODE_LAST_ALBUMPATH", false);
-    paramFunction2.putExtra("PhotoConst.IS_SINGLE_MODE", true);
-    paramFunction2.putExtra("PhotoConst.IS_SINGLE_NEED_EDIT", true);
-    paramFunction2.putExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", true);
-    paramFunction2.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
-    String str = TKDPublisherUtils.a.a().b() + TKDPublisherUtils.a.a().a() + '/';
-    paramFunction2.putExtra("PhotoConst.TARGET_PATH", str + System.currentTimeMillis() + ".jpg");
-    paramFunction2.putExtra("PhotoConst.CLIP_WIDTH", 640);
-    paramFunction2.putExtra("PhotoConst.CLIP_HEIGHT", 640);
-    paramFunction2.putExtra("PhotoConst.TARGET_WIDTH", 640);
-    paramFunction2.putExtra("PhotoConst.TARGET_HEIGHT", 640);
-    paramActivity.startActivity(paramFunction2);
+    this.jdField_b_of_type_KotlinJvmFunctionsFunction2 = paramFunction2;
+    paramFunction2 = new ActivityURIRequest((Context)paramActivity, "/base/album/photolist");
+    paramFunction2.extra().putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", paramActivity.getClass().getName());
+    paramFunction2.extra().putString("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
+    paramFunction2.extra().putBoolean("PhotoConst.IS_RECODE_LAST_ALBUMPATH", false);
+    paramFunction2.extra().putBoolean("PhotoConst.IS_SINGLE_MODE", true);
+    paramFunction2.extra().putBoolean("PhotoConst.IS_SINGLE_NEED_EDIT", true);
+    paramFunction2.extra().putBoolean("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", true);
+    paramFunction2.extra().putBoolean("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(TKDPublisherUtils.a.a().b());
+    ((StringBuilder)localObject).append(TKDPublisherUtils.a.a().a());
+    ((StringBuilder)localObject).append('/');
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(System.currentTimeMillis());
+    localStringBuilder.append(".jpg");
+    localObject = localStringBuilder.toString();
+    paramFunction2.extra().putString("PhotoConst.TARGET_PATH", (String)localObject);
+    paramFunction2.extra().putInt("PhotoConst.CLIP_WIDTH", 640);
+    paramFunction2.extra().putInt("PhotoConst.CLIP_HEIGHT", 640);
+    paramFunction2.extra().putInt("PhotoConst.TARGET_WIDTH", 640);
+    paramFunction2.extra().putInt("PhotoConst.TARGET_HEIGHT", 640);
+    QRoute.startUri((URIRequest)paramFunction2);
     AlbumUtil.anim(paramActivity, false, true);
   }
   
@@ -406,14 +466,29 @@ public final class UserActionHandlerImpl
   {
     Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "callback");
-    this.jdField_b_of_type_KotlinJvmFunctionsFunction2 = paramFunction2;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    PublicFragmentActivity.a(paramActivity, new Intent(), ReadInJoyTopicSelectionFragment.class, 40001);
+    Object localObject = paramActivity.getWindow();
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "activity.window");
+    localObject = ((Window)localObject).getDecorView().findViewById(16908290);
+    if (localObject != null)
+    {
+      paramActivity = new TweetTopicView((ViewGroup)localObject, (Context)paramActivity, null);
+      boolean bool;
+      if (paramBundle != null) {
+        bool = paramBundle.getBoolean("allow_create_tweet_topic");
+      } else {
+        bool = false;
+      }
+      paramActivity.setAllowCreateNewTopic(bool);
+      paramActivity.setDismissListener((Function2)new UserActionHandlerImpl.onTopicButtonClicked..inlined.apply.lambda.1(paramBundle, paramFunction2));
+      paramActivity.a(paramBundle);
+      return;
+    }
+    throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.UserActionHandlerImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -19,23 +19,35 @@ public class PendingIPCTaskManager
     Queue localQueue = (Queue)this.a.get(paramString);
     if (localQueue != null)
     {
-      QLog.i("PendingIPCTaskManager", 1, "doPendingIPCTask enter----size = " + localQueue.size());
-      paramString = (PendingIPCTask)localQueue.poll();
-      if (paramString != null)
+      paramString = new StringBuilder();
+      paramString.append("doPendingIPCTask enter----size = ");
+      paramString.append(localQueue.size());
+      QLog.i("PendingIPCTaskManager", 1, paramString.toString());
+      for (paramString = (PendingIPCTask)localQueue.poll(); paramString != null; paramString = (PendingIPCTask)localQueue.poll())
       {
+        StringBuilder localStringBuilder;
         if (System.currentTimeMillis() - paramString.jdField_a_of_type_Long <= 10000L)
         {
-          QLog.i("PendingIPCTaskManager", 1, "doPendingIPCTask action = " + paramString.jdField_a_of_type_JavaLangString + " will Run");
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("doPendingIPCTask action = ");
+          localStringBuilder.append(paramString.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(" will Run");
+          QLog.i("PendingIPCTaskManager", 1, localStringBuilder.toString());
           QIPCServerHelper.getInstance().getServer().callClient("com.tencent.mobileqq:tool", 1, "LiteSDKClientModuleName", paramString.jdField_a_of_type_JavaLangString, paramString.jdField_a_of_type_AndroidOsBundle);
         }
-        for (;;)
+        else
         {
-          paramString = (PendingIPCTask)localQueue.poll();
-          break;
-          QLog.i("PendingIPCTaskManager", 1, "doPendingIPCTask action = " + paramString.jdField_a_of_type_JavaLangString + " already expire, will discard");
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("doPendingIPCTask action = ");
+          localStringBuilder.append(paramString.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(" already expire, will discard");
+          QLog.i("PendingIPCTaskManager", 1, localStringBuilder.toString());
         }
       }
-      QLog.i("PendingIPCTaskManager", 1, "doPendingIPCTask end----size = " + localQueue.size());
+      paramString = new StringBuilder();
+      paramString.append("doPendingIPCTask end----size = ");
+      paramString.append(localQueue.size());
+      QLog.i("PendingIPCTaskManager", 1, paramString.toString());
     }
   }
   
@@ -47,33 +59,38 @@ public class PendingIPCTaskManager
   
   public boolean a(String paramString1, String paramString2, Bundle paramBundle)
   {
-    Object localObject = (Queue)this.a.get(paramString1);
-    if (localObject == null)
+    Object localObject2 = (Queue)this.a.get(paramString1);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      localObject = new ConcurrentLinkedQueue();
-      this.a.put(paramString1, localObject);
+      localObject1 = new ConcurrentLinkedQueue();
+      this.a.put(paramString1, localObject1);
     }
-    for (paramString1 = (String)localObject;; paramString1 = (String)localObject)
+    localObject2 = ((Queue)localObject1).iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      localObject = paramString1.iterator();
-      while (((Iterator)localObject).hasNext())
+      paramString1 = (PendingIPCTask)((Iterator)localObject2).next();
+      if ((paramString2.equals(paramString1.jdField_a_of_type_JavaLangString)) && (!paramString2.equals("Action_Client_customizedBizSDKService")) && (!paramString2.equals("Action_Client_CustomizedBizModules")))
       {
-        PendingIPCTask localPendingIPCTask = (PendingIPCTask)((Iterator)localObject).next();
-        if ((paramString2.equals(localPendingIPCTask.jdField_a_of_type_JavaLangString)) && (!paramString2.equals("Action_Client_customizedBizSDKService")) && (!paramString2.equals("Action_Client_CustomizedBizModules")))
-        {
-          QLog.e("PendingIPCTaskManager", 1, "addPendingTask----action = " + paramString2 + " already exist, update and return");
-          localPendingIPCTask.jdField_a_of_type_Long = System.currentTimeMillis();
-          localPendingIPCTask.jdField_a_of_type_AndroidOsBundle = paramBundle;
-          return true;
-        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("addPendingTask----action = ");
+        ((StringBuilder)localObject1).append(paramString2);
+        ((StringBuilder)localObject1).append(" already exist, update and return");
+        QLog.e("PendingIPCTaskManager", 1, ((StringBuilder)localObject1).toString());
+        paramString1.jdField_a_of_type_Long = System.currentTimeMillis();
+        paramString1.jdField_a_of_type_AndroidOsBundle = paramBundle;
+        return true;
       }
-      QLog.i("PendingIPCTaskManager", 1, "addPendingTask----action = " + paramString2);
-      localObject = new PendingIPCTask();
-      ((PendingIPCTask)localObject).jdField_a_of_type_Long = System.currentTimeMillis();
-      ((PendingIPCTask)localObject).jdField_a_of_type_JavaLangString = paramString2;
-      ((PendingIPCTask)localObject).jdField_a_of_type_AndroidOsBundle = paramBundle;
-      return paramString1.add(localObject);
     }
+    paramString1 = new StringBuilder();
+    paramString1.append("addPendingTask----action = ");
+    paramString1.append(paramString2);
+    QLog.i("PendingIPCTaskManager", 1, paramString1.toString());
+    paramString1 = new PendingIPCTask();
+    paramString1.jdField_a_of_type_Long = System.currentTimeMillis();
+    paramString1.jdField_a_of_type_JavaLangString = paramString2;
+    paramString1.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    return ((Queue)localObject1).add(paramString1);
   }
   
   public void b(String paramString)
@@ -86,7 +103,7 @@ public class PendingIPCTaskManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.sdkimpl.ipc.PendingIPCTaskManager
  * JD-Core Version:    0.7.0.1
  */

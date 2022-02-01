@@ -13,15 +13,15 @@ class NearbyProfileDisplayTribePanel$12
   {
     if (paramLong > 0L)
     {
-      NearbyProfileDisplayTribePanel.c(this.a).setText(String.format(HardCodeUtil.a(2131707282), new Object[] { Long.valueOf(paramLong) }));
+      NearbyProfileDisplayTribePanel.c(this.a).setText(String.format(HardCodeUtil.a(2131707307), new Object[] { Long.valueOf(paramLong) }));
       return;
     }
-    NearbyProfileDisplayTribePanel.c(this.a).setText(HardCodeUtil.a(2131707380));
+    NearbyProfileDisplayTribePanel.c(this.a).setText(HardCodeUtil.a(2131707405));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.12
  * JD-Core Version:    0.7.0.1
  */

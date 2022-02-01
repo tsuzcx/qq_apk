@@ -25,14 +25,15 @@ public class CntHandler
   public void dispatchMessage(Message paramMessage)
   {
     super.dispatchMessage(paramMessage);
-    if (this.mCallback != null) {
-      this.mCallback.dispatchMsgFinished(paramMessage);
+    DispatchCallback localDispatchCallback = this.mCallback;
+    if (localDispatchCallback != null) {
+      localDispatchCallback.dispatchMsgFinished(paramMessage);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weiyun.transmission.utils.handler.CntHandler
  * JD-Core Version:    0.7.0.1
  */

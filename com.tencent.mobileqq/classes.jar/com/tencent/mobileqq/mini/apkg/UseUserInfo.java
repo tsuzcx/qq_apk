@@ -20,7 +20,17 @@ public class UseUserInfo
   
   public String toString()
   {
-    return "UseUserInfo{uin='" + this.uin + '\'' + ", avatar='" + this.avatar + '\'' + ", nick=" + this.nick + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UseUserInfo{uin='");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", avatar='");
+    localStringBuilder.append(this.avatar);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", nick=");
+    localStringBuilder.append(this.nick);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -32,7 +42,7 @@ public class UseUserInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.UseUserInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -57,26 +57,30 @@ public final class j
     paramJceOutputStream.write(this.b, 2);
     paramJceOutputStream.write(this.c, 3);
     paramJceOutputStream.write(this.d, 4);
-    if (this.e != null) {
-      paramJceOutputStream.write(this.e, 5);
+    String str = this.e;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.f != null) {
-      paramJceOutputStream.write(this.f, 6);
+    str = this.f;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.g != null) {
-      paramJceOutputStream.write(this.g, 7);
+    str = this.g;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
     paramJceOutputStream.write(this.h, 8);
     paramJceOutputStream.write(this.i, 9);
     paramJceOutputStream.write(this.j, 10);
-    if (this.k != null) {
-      paramJceOutputStream.write(this.k, 11);
+    str = this.k;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msf.service.protocol.e.j
  * JD-Core Version:    0.7.0.1
  */

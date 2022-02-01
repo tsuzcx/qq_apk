@@ -18,20 +18,20 @@ class StructingMsgItemBuilderMenuHelper$2
   public void run()
   {
     Object localObject = URLDrawableHelper.getURL(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemImage.a, 1);
-    if (localObject == null) {}
-    for (localObject = null;; localObject = ((URL)localObject).toString())
-    {
-      localObject = AbsDownloader.getFilePath((String)localObject);
-      QfavBuilder.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemImage.ae, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemImage.ad, this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemImage.c, (String)localObject, this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemImage.d).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage).a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-      QfavReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6, 3);
-      QfavReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2, 0, this.jdField_a_of_type_Int);
-      return;
+    if (localObject == null) {
+      localObject = null;
+    } else {
+      localObject = ((URL)localObject).toString();
     }
+    localObject = AbsDownloader.getFilePath((String)localObject);
+    QfavBuilder.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemImage.ae, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemImage.ad, this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemImage.c, (String)localObject, this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemImage.d).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage).a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+    QfavReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6, 3);
+    QfavReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2, 0, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilderMenuHelper.2
  * JD-Core Version:    0.7.0.1
  */

@@ -63,17 +63,20 @@ public class TroopFileTansferItemEntity
   public String zipInnerPath;
   public int zipType;
   
-  public Class<? extends Entity> getClassForTable()
+  protected Class<? extends Entity> getClassForTable()
   {
     return TroopFileTansferItemEntity.class;
   }
   
   public String getTableName()
   {
-    return "TroopFileTansferItemEntity" + this.troopuin;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TroopFileTansferItemEntity");
+    localStringBuilder.append(this.troopuin);
+    return localStringBuilder.toString();
   }
   
-  public void postRead()
+  protected void postRead()
   {
     this.Status = TroopFileInfo.FileStatus.a(this._sStatus);
     this._sStatus = null;
@@ -86,7 +89,7 @@ public class TroopFileTansferItemEntity
     prewrite();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     this._sStatus = TroopFileInfo.FileStatus.a(this.Status);
     this._sId = this.Id.toString();
@@ -94,7 +97,7 @@ public class TroopFileTansferItemEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.TroopFileTansferItemEntity
  * JD-Core Version:    0.7.0.1
  */

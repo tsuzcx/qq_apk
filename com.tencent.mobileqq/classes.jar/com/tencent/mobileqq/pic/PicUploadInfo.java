@@ -1,14 +1,9 @@
 package com.tencent.mobileqq.pic;
 
-import android.os.Handler;
-import android.text.TextUtils;
 import com.tencent.image.GifDrawable;
 import com.tencent.mobileqq.activity.photo.PhotoSendParams;
-import com.tencent.mobileqq.activity.photo.incompatiblephoto.PhotoIncompatibleBase;
-import com.tencent.mobileqq.activity.photo.incompatiblephoto.PhotoIncompatibleBaseDecorator;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.pic.operator.AioQuickSendPicOperator.QuickSendObject;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.pic.api.IPicHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
 import java.net.URL;
@@ -20,9 +15,9 @@ public class PicUploadInfo
   public PhotoSendParams a;
   public PicUploadExtra a;
   public PicUploadInfo.RetryInfo a;
-  public AioQuickSendPicOperator.QuickSendObject a;
   public ArrayList<Integer> a;
   public long b;
+  public Object b;
   public boolean b;
   public long c;
   public boolean c;
@@ -76,12 +71,14 @@ public class PicUploadInfo
   
   public int a()
   {
-    if (this.jdField_g_of_type_Int != -1) {
-      return this.jdField_g_of_type_Int;
+    int i1 = this.jdField_g_of_type_Int;
+    if (i1 != -1) {
+      return i1;
     }
-    if (this.jdField_g_of_type_JavaLangString != null)
+    String str = this.jdField_g_of_type_JavaLangString;
+    if (str != null)
     {
-      if (GifDrawable.isGifFile(new File(this.jdField_g_of_type_JavaLangString)))
+      if (GifDrawable.isGifFile(new File(str)))
       {
         this.jdField_g_of_type_Int = 0;
         return this.jdField_g_of_type_Int;
@@ -90,151 +87,131 @@ public class PicUploadInfo
     else {
       Logger.b("PIC_TAG_ERROR", "PicUploadInfo.getProtocolType", "localPath == null");
     }
-    if (this.jdField_h_of_type_Int == 2) {}
-    for (this.jdField_g_of_type_Int = 1;; this.jdField_g_of_type_Int = 0) {
-      return this.jdField_g_of_type_Int;
+    if (this.jdField_h_of_type_Int == 2) {
+      this.jdField_g_of_type_Int = 1;
+    } else {
+      this.jdField_g_of_type_Int = 0;
     }
+    return this.jdField_g_of_type_Int;
   }
   
   public String a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("\nPicUploadInfo");
-    localStringBuilder.append("\n |-").append("localPath:").append(this.jdField_g_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("protocolType:").append(this.jdField_g_of_type_Int);
-    localStringBuilder.append("\n |-").append("md5:").append(this.jdField_f_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("sendSizeSpec:").append(this.jdField_h_of_type_Int);
-    localStringBuilder.append("\n |-").append("thumbPath:").append(this.jdField_h_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("thumbWidth:").append(this.jdField_e_of_type_Int);
-    localStringBuilder.append("\n |-").append("thumbHeight:").append(this.jdField_f_of_type_Int);
-    localStringBuilder.append("\n |-").append("source_image_width:").append(this.j);
-    localStringBuilder.append("\n |-").append("source_image_height:").append(this.k);
-    localStringBuilder.append("\n |-").append("source_image_filesize:").append(this.jdField_c_of_type_Long);
-    localStringBuilder.append("\n |-").append("source_image_filesizeflag:").append(this.l);
-    localStringBuilder.append("\n |-").append("source_image_type:").append(this.m);
-    localStringBuilder.append("\n |-").append("entrance:").append(this.n);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("localPath:");
+    localStringBuilder.append(this.jdField_g_of_type_JavaLangString);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("protocolType:");
+    localStringBuilder.append(this.jdField_g_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("md5:");
+    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("sendSizeSpec:");
+    localStringBuilder.append(this.jdField_h_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("thumbPath:");
+    localStringBuilder.append(this.jdField_h_of_type_JavaLangString);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("thumbWidth:");
+    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("thumbHeight:");
+    localStringBuilder.append(this.jdField_f_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("source_image_width:");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("source_image_height:");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("source_image_filesize:");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("source_image_filesizeflag:");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("source_image_type:");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("entrance:");
+    localStringBuilder.append(this.n);
     return localStringBuilder.toString();
   }
   
   public boolean a()
   {
-    int i1 = 1;
-    if (this.jdField_h_of_type_Boolean)
+    StringBuilder localStringBuilder;
+    if (!FileUtils.fileExistsAndNotEmpty(this.jdField_g_of_type_JavaLangString))
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.rawMd5)) || (!FileUtils.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.thumbPath)))
-      {
-        StringBuilder localStringBuilder = new StringBuilder().append("qzone md5 invalid, md5:");
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams != null) {}
-        for (localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.rawMd5;; localObject = "")
-        {
-          a("checkPicInfo", (String)localObject);
-          return false;
-        }
-      }
-      if (((this.jdField_b_of_type_Int == 1000) || (this.jdField_b_of_type_Int == 1020) || (this.jdField_b_of_type_Int == 1004)) && (this.jdField_d_of_type_JavaLangString == null))
-      {
-        a("checkPicInfo", "secondId invalid,uinType:" + this.jdField_b_of_type_Int + ",secondId:" + this.jdField_d_of_type_JavaLangString);
-        return false;
-      }
-      if (a() == -1)
-      {
-        a("PicBaseInfo.check", "protocolType invalid,protocolType:" + this.jdField_g_of_type_Int);
-        return false;
-      }
-      return super.a();
-    }
-    if (!FileUtils.b(this.jdField_g_of_type_JavaLangString))
-    {
-      a("checkPicInfo", "path invalid,localPath:" + this.jdField_g_of_type_JavaLangString);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("path invalid,localPath:");
+      localStringBuilder.append(this.jdField_g_of_type_JavaLangString);
+      a("checkPicInfo", localStringBuilder.toString());
       return false;
     }
     if (((this.jdField_b_of_type_Int == 1000) || (this.jdField_b_of_type_Int == 1020) || (this.jdField_b_of_type_Int == 1004)) && (this.jdField_d_of_type_JavaLangString == null))
     {
-      a("checkPicInfo", "secondId invalid,uinType:" + this.jdField_b_of_type_Int + ",secondId:" + this.jdField_d_of_type_JavaLangString);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("secondId invalid,uinType:");
+      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append(",secondId:");
+      localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+      a("checkPicInfo", localStringBuilder.toString());
       return false;
     }
     if (a() == -1)
     {
-      a("PicBaseInfo.check", "protocolType invalid,protocolType:" + this.jdField_g_of_type_Int);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("protocolType invalid,protocolType:");
+      localStringBuilder.append(this.jdField_g_of_type_Int);
+      a("PicBaseInfo.check", localStringBuilder.toString());
       return false;
-    }
-    Object localObject = PhotoIncompatibleBase.a(this.jdField_g_of_type_JavaLangString);
-    if (localObject != null)
-    {
-      localObject = new PhotoIncompatibleBaseDecorator((PhotoIncompatibleBase)localObject);
-      if (this.jdField_g_of_type_Int == 1)
-      {
-        localObject = ((PhotoIncompatibleBaseDecorator)localObject).a();
-        if (localObject != null) {
-          this.jdField_g_of_type_JavaLangString = ((String)localObject);
-        }
-      }
-      while (i1 == 0)
-      {
-        ThreadManagerV2.getUIHandlerV2().post(new PicUploadInfo.1(this));
-        return false;
-        a("PicBaseInfo.check", "incompatible photo generate jpg fail");
-        for (;;)
-        {
-          i1 = 0;
-          break;
-          if (this.jdField_a_of_type_Int != 1006) {
-            break label486;
-          }
-          localObject = ((PhotoIncompatibleBaseDecorator)localObject).a();
-          if (localObject != null)
-          {
-            this.jdField_g_of_type_JavaLangString = ((String)localObject);
-            break;
-          }
-          a("PicBaseInfo.check", "incompatible photo generate jpg fail");
-        }
-        label486:
-        a("PicBaseInfo.check", "incompatible file,and not PROTOCOL_RAW_PIC:" + this.jdField_g_of_type_Int);
-        i1 = 0;
-      }
     }
     return super.a();
   }
   
   String b()
   {
-    int i1 = 65537;
     if (this.jdField_e_of_type_JavaLangString == null)
     {
       Logger.b("PIC_TAG_ERROR", "PicUploadInfo.getUrlString", "protocol == null");
       return null;
     }
-    if ("chatthumb".equals(this.jdField_e_of_type_JavaLangString)) {}
-    for (;;)
-    {
-      URL localURL = URLDrawableHelper.getURL(this, i1, null);
-      if (localURL == null) {
-        break;
-      }
-      return localURL.toString();
+    boolean bool = "chatthumb".equals(this.jdField_e_of_type_JavaLangString);
+    int i1 = 65537;
+    if (!bool) {
       if ("chatimg".equals(this.jdField_e_of_type_JavaLangString)) {
         i1 = 1;
       } else if ("chatraw".equals(this.jdField_e_of_type_JavaLangString)) {
         i1 = 131075;
       }
     }
+    URL localURL = ((IPicHelper)QRoute.api(IPicHelper.class)).getURL(this, i1, null);
+    if (localURL != null) {
+      return localURL.toString();
+    }
     return null;
   }
   
   public boolean c()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqPicPicUploadExtra != null) && (this.jdField_a_of_type_ComTencentMobileqqPicPicUploadExtra.a);
+    PicUploadExtra localPicUploadExtra = this.a;
+    return (localPicUploadExtra != null) && (localPicUploadExtra.a);
   }
   
   public boolean d()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqPicPicUploadExtra != null) && (this.jdField_a_of_type_ComTencentMobileqqPicPicUploadExtra.jdField_b_of_type_Boolean);
+    PicUploadExtra localPicUploadExtra = this.a;
+    return (localPicUploadExtra != null) && (localPicUploadExtra.jdField_b_of_type_Boolean);
   }
   
   public boolean e()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqPicPicUploadExtra != null) && (this.jdField_a_of_type_ComTencentMobileqqPicPicUploadExtra.jdField_c_of_type_Boolean);
+    PicUploadExtra localPicUploadExtra = this.a;
+    return (localPicUploadExtra != null) && (localPicUploadExtra.jdField_c_of_type_Boolean);
   }
   
   public String toString()
@@ -247,7 +224,7 @@ public class PicUploadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicUploadInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.fragment;
 
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
 import com.tencent.mobileqq.nearby.NearbyConstants;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcManager;
+import com.tencent.mobileqq.nearby.api.INearbyAppInterface;
+import com.tencent.mobileqq.nearby.ipc.INearbyProcManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 
@@ -13,33 +13,34 @@ final class NowLiveFragment$6
   public void run()
   {
     Object localObject = BaseApplicationImpl.getApplication().waitAppRuntime(null).getAppRuntime("module_nearby");
-    if ((localObject instanceof NearbyAppInterface))
+    if ((localObject instanceof INearbyAppInterface))
     {
-      localObject = (NearbyProcManager)((NearbyAppInterface)localObject).getManager(NearbyConstants.e);
+      localObject = (INearbyProcManager)((INearbyAppInterface)localObject).getManager(NearbyConstants.e);
       if (localObject != null)
       {
         if (QLog.isColorLevel()) {
           QLog.d("NowLiveFragment", 2, "pre login now plugin!");
         }
-        ((NearbyProcManager)localObject).d();
+        ((INearbyProcManager)localObject).c();
+        NowLiveFragment.a(true);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("NowLiveFragment", 2, "pre login now plugin! err npb null;");
       }
     }
-    while (!QLog.isColorLevel())
+    else if (QLog.isColorLevel())
     {
-      NowLiveFragment.a(true);
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("NowLiveFragment", 2, "pre login now plugin! err npb null;");
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("pre login now plugin! err runtime null or wrong! app = ");
+      localStringBuilder.append(localObject);
+      QLog.d("NowLiveFragment", 2, localStringBuilder.toString());
     }
-    QLog.d("NowLiveFragment", 2, "pre login now plugin! err runtime null or wrong! app = " + localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NowLiveFragment.6
  * JD-Core Version:    0.7.0.1
  */

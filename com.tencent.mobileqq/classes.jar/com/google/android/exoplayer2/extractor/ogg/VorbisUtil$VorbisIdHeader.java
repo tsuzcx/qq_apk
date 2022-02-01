@@ -29,15 +29,17 @@ public final class VorbisUtil$VorbisIdHeader
   
   public int getApproximateBitrate()
   {
-    if (this.bitrateNominal == 0) {
-      return (this.bitrateMin + this.bitrateMax) / 2;
+    int j = this.bitrateNominal;
+    int i = j;
+    if (j == 0) {
+      i = (this.bitrateMin + this.bitrateMax) / 2;
     }
-    return this.bitrateNominal;
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ogg.VorbisUtil.VorbisIdHeader
  * JD-Core Version:    0.7.0.1
  */

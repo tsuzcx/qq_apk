@@ -36,11 +36,12 @@ public class QQMusicPlayClient
   
   private void a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject != null)
     {
-      IConnCallback localIConnCallback = (IConnCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localIConnCallback != null) {
-        localIConnCallback.a(paramInt);
+      localObject = (IConnCallback)((WeakReference)localObject).get();
+      if (localObject != null) {
+        ((IConnCallback)localObject).a(paramInt);
       }
     }
   }
@@ -62,55 +63,60 @@ public class QQMusicPlayClient
   
   private void a(ISong paramISong)
   {
-    if (this.jdField_b_of_type_JavaLangRefWeakReference != null)
+    Object localObject = this.jdField_b_of_type_JavaLangRefWeakReference;
+    if (localObject != null)
     {
-      IPlayCallback localIPlayCallback = (IPlayCallback)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-      if (localIPlayCallback != null) {
-        localIPlayCallback.a(paramISong);
+      localObject = (IPlayCallback)((WeakReference)localObject).get();
+      if (localObject != null) {
+        ((IPlayCallback)localObject).a(paramISong);
       }
     }
   }
   
   private void a(String paramString, int paramInt)
   {
-    if (this.c != null)
+    Object localObject = this.c;
+    if (localObject != null)
     {
-      IStateChangeCallback localIStateChangeCallback = (IStateChangeCallback)this.c.get();
-      if (localIStateChangeCallback != null) {
-        localIStateChangeCallback.a(paramString, paramInt);
+      localObject = (IStateChangeCallback)((WeakReference)localObject).get();
+      if (localObject != null) {
+        ((IStateChangeCallback)localObject).a(paramString, paramInt);
       }
     }
   }
   
   private void a(String paramString, int paramInt1, int paramInt2)
   {
-    if (this.d != null)
+    Object localObject = this.d;
+    if (localObject != null)
     {
-      IProgressChangeCallback localIProgressChangeCallback = (IProgressChangeCallback)this.d.get();
-      if (localIProgressChangeCallback != null) {
-        localIProgressChangeCallback.a(paramString, paramInt1, paramInt2);
+      localObject = (IProgressChangeCallback)((WeakReference)localObject).get();
+      if (localObject != null) {
+        ((IProgressChangeCallback)localObject).a(paramString, paramInt1, paramInt2);
       }
     }
   }
   
   private void a(boolean paramBoolean)
   {
-    if (this.c != null)
+    Object localObject = this.c;
+    if (localObject != null)
     {
-      IStateChangeCallback localIStateChangeCallback = (IStateChangeCallback)this.c.get();
-      if (localIStateChangeCallback != null) {
-        localIStateChangeCallback.a(paramBoolean);
+      localObject = (IStateChangeCallback)((WeakReference)localObject).get();
+      if (localObject != null) {
+        ((IStateChangeCallback)localObject).a(paramBoolean);
       }
     }
   }
   
   private void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.c != null)
+    Object localObject = this.c;
+    if (localObject != null)
     {
-      IStateChangeCallback localIStateChangeCallback = (IStateChangeCallback)this.c.get();
-      if (localIStateChangeCallback != null) {
-        localIStateChangeCallback.a(paramBoolean1, paramBoolean2);
+      localObject = (IStateChangeCallback)((WeakReference)localObject).get();
+      if (localObject != null) {
+        ((IStateChangeCallback)localObject).a(paramBoolean1, paramBoolean2);
       }
     }
   }
@@ -123,8 +129,8 @@ public class QQMusicPlayClient
     //   1: monitorenter
     //   2: aload_0
     //   3: getfield 42	com/tencent/mobileqq/listentogether/player/QQMusicPlayClient:jdField_a_of_type_Boolean	Z
-    //   6: istore_1
-    //   7: iload_1
+    //   6: istore_2
+    //   7: iload_2
     //   8: ifne +6 -> 14
     //   11: aload_0
     //   12: monitorexit
@@ -161,38 +167,38 @@ public class QQMusicPlayClient
     //   75: aconst_null
     //   76: putfield 60	com/tencent/mobileqq/listentogether/player/QQMusicPlayClient:jdField_b_of_type_AndroidOsMessenger	Landroid/os/Messenger;
     //   79: aload_0
-    //   80: aload_0
-    //   81: getfield 40	com/tencent/mobileqq/listentogether/player/QQMusicPlayClient:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   84: invokevirtual 182	java/util/concurrent/atomic/AtomicInteger:get	()I
-    //   87: invokespecial 116	com/tencent/mobileqq/listentogether/player/QQMusicPlayClient:a	(I)V
-    //   90: goto -79 -> 11
-    //   93: astore_2
-    //   94: aload_0
-    //   95: monitorexit
-    //   96: aload_2
-    //   97: athrow
-    //   98: astore_2
-    //   99: invokestatic 153	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   102: ifeq +12 -> 114
-    //   105: ldc 97
-    //   107: iconst_2
-    //   108: ldc 184
-    //   110: aload_2
-    //   111: invokestatic 186	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   114: aload_0
-    //   115: getfield 40	com/tencent/mobileqq/listentogether/player/QQMusicPlayClient:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   118: iconst_m1
-    //   119: invokevirtual 179	java/util/concurrent/atomic/AtomicInteger:set	(I)V
-    //   122: aload_0
-    //   123: aconst_null
-    //   124: putfield 60	com/tencent/mobileqq/listentogether/player/QQMusicPlayClient:jdField_b_of_type_AndroidOsMessenger	Landroid/os/Messenger;
-    //   127: aload_0
+    //   80: getfield 40	com/tencent/mobileqq/listentogether/player/QQMusicPlayClient:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   83: invokevirtual 182	java/util/concurrent/atomic/AtomicInteger:get	()I
+    //   86: istore_1
+    //   87: aload_0
+    //   88: iload_1
+    //   89: invokespecial 116	com/tencent/mobileqq/listentogether/player/QQMusicPlayClient:a	(I)V
+    //   92: goto +47 -> 139
+    //   95: astore_3
+    //   96: goto +46 -> 142
+    //   99: astore_3
+    //   100: invokestatic 153	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   103: ifeq +12 -> 115
+    //   106: ldc 97
+    //   108: iconst_2
+    //   109: ldc 184
+    //   111: aload_3
+    //   112: invokestatic 186	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   115: aload_0
+    //   116: getfield 40	com/tencent/mobileqq/listentogether/player/QQMusicPlayClient:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   119: iconst_m1
+    //   120: invokevirtual 179	java/util/concurrent/atomic/AtomicInteger:set	(I)V
+    //   123: aload_0
+    //   124: aconst_null
+    //   125: putfield 60	com/tencent/mobileqq/listentogether/player/QQMusicPlayClient:jdField_b_of_type_AndroidOsMessenger	Landroid/os/Messenger;
     //   128: aload_0
     //   129: getfield 40	com/tencent/mobileqq/listentogether/player/QQMusicPlayClient:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
     //   132: invokevirtual 182	java/util/concurrent/atomic/AtomicInteger:get	()I
-    //   135: invokespecial 116	com/tencent/mobileqq/listentogether/player/QQMusicPlayClient:a	(I)V
-    //   138: goto -127 -> 11
-    //   141: astore_2
+    //   135: istore_1
+    //   136: goto -49 -> 87
+    //   139: aload_0
+    //   140: monitorexit
+    //   141: return
     //   142: aload_0
     //   143: getfield 40	com/tencent/mobileqq/listentogether/player/QQMusicPlayClient:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
     //   146: iconst_m1
@@ -205,27 +211,36 @@ public class QQMusicPlayClient
     //   157: getfield 40	com/tencent/mobileqq/listentogether/player/QQMusicPlayClient:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
     //   160: invokevirtual 182	java/util/concurrent/atomic/AtomicInteger:get	()I
     //   163: invokespecial 116	com/tencent/mobileqq/listentogether/player/QQMusicPlayClient:a	(I)V
-    //   166: aload_2
+    //   166: aload_3
     //   167: athrow
+    //   168: astore_3
+    //   169: aload_0
+    //   170: monitorexit
+    //   171: goto +5 -> 176
+    //   174: aload_3
+    //   175: athrow
+    //   176: goto -2 -> 174
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	168	0	this	QQMusicPlayClient
-    //   6	2	1	bool	boolean
-    //   93	4	2	localObject1	Object
-    //   98	13	2	localException	java.lang.Exception
-    //   141	26	2	localObject2	Object
+    //   0	179	0	this	QQMusicPlayClient
+    //   86	50	1	i	int
+    //   6	2	2	bool	boolean
+    //   95	1	3	localObject1	Object
+    //   99	68	3	localException	java.lang.Exception
+    //   168	7	3	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   2	7	93	finally
-    //   14	28	93	finally
-    //   28	50	93	finally
-    //   50	55	93	finally
-    //   66	90	93	finally
-    //   114	138	93	finally
-    //   142	168	93	finally
-    //   55	66	98	java/lang/Exception
-    //   55	66	141	finally
-    //   99	114	141	finally
+    //   55	66	95	finally
+    //   100	115	95	finally
+    //   55	66	99	java/lang/Exception
+    //   2	7	168	finally
+    //   14	28	168	finally
+    //   28	50	168	finally
+    //   50	55	168	finally
+    //   66	87	168	finally
+    //   87	92	168	finally
+    //   115	136	168	finally
+    //   142	168	168	finally
   }
   
   public int a()
@@ -299,31 +314,31 @@ public class QQMusicPlayClient
     //   113: iconst_0
     //   114: invokevirtual 179	java/util/concurrent/atomic/AtomicInteger:set	(I)V
     //   117: aload_0
-    //   118: aload_0
-    //   119: getfield 40	com/tencent/mobileqq/listentogether/player/QQMusicPlayClient:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   122: invokevirtual 182	java/util/concurrent/atomic/AtomicInteger:get	()I
-    //   125: invokespecial 116	com/tencent/mobileqq/listentogether/player/QQMusicPlayClient:a	(I)V
-    //   128: goto -109 -> 19
-    //   131: astore_2
-    //   132: aload_0
-    //   133: monitorexit
-    //   134: aload_2
-    //   135: athrow
-    //   136: astore_2
-    //   137: aload_2
-    //   138: invokevirtual 216	java/lang/Exception:printStackTrace	()V
-    //   141: ldc 97
-    //   143: iconst_1
-    //   144: ldc 218
-    //   146: aload_2
-    //   147: invokestatic 186	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   150: aload_0
+    //   118: getfield 40	com/tencent/mobileqq/listentogether/player/QQMusicPlayClient:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   121: invokevirtual 182	java/util/concurrent/atomic/AtomicInteger:get	()I
+    //   124: istore_1
+    //   125: aload_0
+    //   126: iload_1
+    //   127: invokespecial 116	com/tencent/mobileqq/listentogether/player/QQMusicPlayClient:a	(I)V
+    //   130: goto +32 -> 162
+    //   133: astore_2
+    //   134: goto +31 -> 165
+    //   137: astore_2
+    //   138: aload_2
+    //   139: invokevirtual 216	java/lang/Exception:printStackTrace	()V
+    //   142: ldc 97
+    //   144: iconst_1
+    //   145: ldc 218
+    //   147: aload_2
+    //   148: invokestatic 186	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   151: aload_0
     //   152: getfield 40	com/tencent/mobileqq/listentogether/player/QQMusicPlayClient:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
     //   155: invokevirtual 182	java/util/concurrent/atomic/AtomicInteger:get	()I
-    //   158: invokespecial 116	com/tencent/mobileqq/listentogether/player/QQMusicPlayClient:a	(I)V
-    //   161: goto -142 -> 19
-    //   164: astore_2
+    //   158: istore_1
+    //   159: goto -34 -> 125
+    //   162: aload_0
+    //   163: monitorexit
+    //   164: return
     //   165: aload_0
     //   166: aload_0
     //   167: getfield 40	com/tencent/mobileqq/listentogether/player/QQMusicPlayClient:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
@@ -331,25 +346,33 @@ public class QQMusicPlayClient
     //   173: invokespecial 116	com/tencent/mobileqq/listentogether/player/QQMusicPlayClient:a	(I)V
     //   176: aload_2
     //   177: athrow
+    //   178: astore_2
+    //   179: aload_0
+    //   180: monitorexit
+    //   181: goto +5 -> 186
+    //   184: aload_2
+    //   185: athrow
+    //   186: goto -2 -> 184
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	178	0	this	QQMusicPlayClient
-    //   14	2	1	i	int
+    //   0	189	0	this	QQMusicPlayClient
+    //   14	145	1	i	int
     //   45	55	2	localObject1	Object
-    //   131	4	2	localObject2	Object
-    //   136	11	2	localException	java.lang.Exception
-    //   164	13	2	localObject3	Object
+    //   133	1	2	localObject2	Object
+    //   137	40	2	localException	java.lang.Exception
+    //   178	7	2	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   2	15	131	finally
-    //   22	36	131	finally
-    //   36	95	131	finally
-    //   117	128	131	finally
-    //   150	161	131	finally
-    //   165	178	131	finally
-    //   95	117	136	java/lang/Exception
-    //   95	117	164	finally
-    //   137	150	164	finally
+    //   95	117	133	finally
+    //   138	151	133	finally
+    //   95	117	137	java/lang/Exception
+    //   2	15	178	finally
+    //   22	36	178	finally
+    //   36	95	178	finally
+    //   117	125	178	finally
+    //   125	130	178	finally
+    //   151	159	178	finally
+    //   165	178	178	finally
   }
   
   public void a(IConnCallback paramIConnCallback)
@@ -407,11 +430,11 @@ public class QQMusicPlayClient
   
   public boolean a(ISong paramISong)
   {
-    boolean bool = false;
     try
     {
       if (QLog.isColorLevel())
       {
+        boolean bool = false;
         if (this.jdField_b_of_type_AndroidOsMessenger != null) {
           bool = true;
         }
@@ -459,47 +482,27 @@ public class QQMusicPlayClient
     finally {}
   }
   
-  /* Error */
   public boolean d()
   {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_2
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: aload_0
-    //   5: getfield 40	com/tencent/mobileqq/listentogether/player/QQMusicPlayClient:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   8: invokevirtual 182	java/util/concurrent/atomic/AtomicInteger:get	()I
-    //   11: istore_1
-    //   12: iload_1
-    //   13: iconst_1
-    //   14: if_icmpne +7 -> 21
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: iload_2
-    //   20: ireturn
-    //   21: iconst_0
-    //   22: istore_2
-    //   23: goto -6 -> 17
-    //   26: astore_3
-    //   27: aload_0
-    //   28: monitorexit
-    //   29: aload_3
-    //   30: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	31	0	this	QQMusicPlayClient
-    //   11	4	1	i	int
-    //   1	22	2	bool	boolean
-    //   26	4	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   4	12	26	finally
+    try
+    {
+      int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+      boolean bool = true;
+      if (i != 1) {
+        bool = false;
+      }
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.player.QQMusicPlayClient
  * JD-Core Version:    0.7.0.1
  */

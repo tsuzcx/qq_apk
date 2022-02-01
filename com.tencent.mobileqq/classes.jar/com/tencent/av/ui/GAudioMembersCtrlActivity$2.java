@@ -11,14 +11,14 @@ class GAudioMembersCtrlActivity$2
 {
   GAudioMembersCtrlActivity$2(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public void a(long paramLong1, long paramLong2, ArrayList<VideoController.GAudioFriends> paramArrayList)
+  protected void a(long paramLong1, long paramLong2, ArrayList<VideoController.GAudioFriends> paramArrayList)
   {
     ThreadManager.getUIHandler().post(new GAudioMembersCtrlActivity.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.GAudioMembersCtrlActivity.2
  * JD-Core Version:    0.7.0.1
  */

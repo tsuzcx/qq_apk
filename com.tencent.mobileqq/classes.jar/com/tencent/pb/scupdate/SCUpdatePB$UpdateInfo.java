@@ -29,13 +29,14 @@ public final class SCUpdatePB$UpdateInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48, 56, 66, 72, 82, 88, 98 }, new String[] { "bid", "scid", "dst_version", "src_version", "delta_mode", "storage_mode", "compress_mode", "url", "filesize", "filecontent", "code", "extendinfo" }, new Object[] { Integer.valueOf(0), "", "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Long.valueOf(0L), localByteStringMicro, Integer.valueOf(0), null }, UpdateInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48, 56, 66, 72, 82, 88, 98 }, new String[] { "bid", "scid", "dst_version", "src_version", "delta_mode", "storage_mode", "compress_mode", "url", "filesize", "filecontent", "code", "extendinfo" }, new Object[] { localInteger, "", "", "", localInteger, localInteger, localInteger, "", Long.valueOf(0L), localByteStringMicro, localInteger, null }, UpdateInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.scupdate.SCUpdatePB.UpdateInfo
  * JD-Core Version:    0.7.0.1
  */

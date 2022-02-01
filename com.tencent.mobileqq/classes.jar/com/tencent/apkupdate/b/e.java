@@ -41,47 +41,37 @@ public final class e
   public final String a()
   {
     d locald = new d();
-    Object localObject;
-    String str;
-    if ("100".contains("BuildNo"))
-    {
-      localObject = "0000";
-      locald.c((String)localObject);
-      locald.d("");
-      locald.e(b);
-      localObject = new StringBuffer();
-      str = Build.VERSION.RELEASE;
-      if (!TextUtils.isEmpty(str)) {
-        break label214;
-      }
-      ((StringBuffer)localObject).append("NA");
+    locald.c("100");
+    locald.d("");
+    locald.e(b);
+    StringBuffer localStringBuffer = new StringBuffer();
+    String str = Build.VERSION.RELEASE;
+    Object localObject = str;
+    if (TextUtils.isEmpty(str)) {
+      localObject = "NA";
     }
-    for (;;)
-    {
-      ((StringBuffer)localObject).append("_");
-      ((StringBuffer)localObject).append(Build.VERSION.SDK_INT);
-      locald.f(((StringBuffer)localObject).toString());
-      locald.b(this.a.getResources().getDisplayMetrics().heightPixels);
-      locald.a(this.a.getResources().getDisplayMetrics().widthPixels);
-      locald.c(0);
-      localObject = new StringBuffer();
-      ((StringBuffer)localObject).append(a(Build.BRAND));
-      ((StringBuffer)localObject).append("_");
-      ((StringBuffer)localObject).append(a(Build.MODEL));
-      locald.a(((StringBuffer)localObject).toString());
-      locald.b("100");
-      Log.i("vivianliao", " qua :" + locald.a());
-      return locald.a();
-      localObject = "100";
-      break;
-      label214:
-      ((StringBuffer)localObject).append(str);
-    }
+    localStringBuffer.append((String)localObject);
+    localStringBuffer.append("_");
+    localStringBuffer.append(Build.VERSION.SDK_INT);
+    locald.f(localStringBuffer.toString());
+    locald.b(this.a.getResources().getDisplayMetrics().heightPixels);
+    locald.a(this.a.getResources().getDisplayMetrics().widthPixels);
+    locald.c(0);
+    localObject = new StringBuffer();
+    ((StringBuffer)localObject).append(a(Build.BRAND));
+    ((StringBuffer)localObject).append("_");
+    ((StringBuffer)localObject).append(a(Build.MODEL));
+    locald.a(((StringBuffer)localObject).toString());
+    locald.b("100");
+    localObject = new StringBuilder(" qua :");
+    ((StringBuilder)localObject).append(locald.a());
+    Log.i("vivianliao", ((StringBuilder)localObject).toString());
+    return locald.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.apkupdate.b.e
  * JD-Core Version:    0.7.0.1
  */

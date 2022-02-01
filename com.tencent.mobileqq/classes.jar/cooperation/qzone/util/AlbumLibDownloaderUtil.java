@@ -1,25 +1,26 @@
 package cooperation.qzone.util;
 
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qzonehub.api.IQzoneModuleManageApi;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.LocalMultiProcConfig;
 import cooperation.qzone.QzonePreDownloadManager;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
 import java.io.File;
+import mqq.app.MobileQQ;
 
 public class AlbumLibDownloaderUtil
 {
-  public static String BEAUTY_SO_LIB_NAME;
+  public static String BEAUTY_SO_LIB_NAME = "libdehaze.so";
   public static String GIF_SO_LIB_NAME = "libandroidndkgif.so";
   public static String LIB_QZONE_VISION_NAME = "libqzone_vision.so";
   public static String LIB_SHARED_NAME = "libc++_shared.so";
-  public static String OPEN_SO_LIB_NAME;
+  public static String OPEN_SO_LIB_NAME = "libopencv_java3.so";
   private static final String TAG = "AlbumLibDownloaderUtil";
-  public static File mAlbumDir = BaseApplicationImpl.getContext().getDir("qzonealbum", 0);
+  public static File mAlbumDir = MobileQQ.getContext().getDir("qzonealbum", 0);
   private static AlbumLibDownloaderUtil mInstance;
   private int BEAUTYSO_STATE = 2;
   private int GIFSO_STATE = 0;
@@ -43,12 +44,14 @@ public class AlbumLibDownloaderUtil
   private String mLibQzoneVisionSoMD5 = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideQzoneVisionSoMD5", "f428bc70e52b7eb3fba4327e123a779b");
   private String mLibQzoneVisionSoMD564 = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideQzoneVisionSoMD5", "b186c1e0ee3995717d84fb682afcd7b5");
   private long mOpenSoLength = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideCreateOpenSoLength", 9161452);
-  private final String mPicQulatityUnzipPath = mAlbumDir.getPath() + "/photoqulatity";
+  private final String mPicQulatityUnzipPath;
   
-  static
+  public AlbumLibDownloaderUtil()
   {
-    BEAUTY_SO_LIB_NAME = "libdehaze.so";
-    OPEN_SO_LIB_NAME = "libopencv_java3.so";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(mAlbumDir.getPath());
+    localStringBuilder.append("/photoqulatity");
+    this.mPicQulatityUnzipPath = localStringBuilder.toString();
   }
   
   private static void copyFileUsingApacheCommonsIO(File paramFile1, File paramFile2)
@@ -71,11 +74,10 @@ public class AlbumLibDownloaderUtil
   
   private boolean isLibLengthOk(String paramString, long paramLong)
   {
-    if (getSoLength(paramString) == 0L) {}
-    while (getSoLength(paramString) == paramLong) {
+    if (getSoLength(paramString) == 0L) {
       return true;
     }
-    return false;
+    return getSoLength(paramString) == paramLong;
   }
   
   public void download(String paramString1, String paramString2)
@@ -89,8 +91,12 @@ public class AlbumLibDownloaderUtil
       this.mDownloader = QzonePreDownloadManager.getInstance();
     }
     boolean bool = LocalMultiProcConfig.getBool(paramString1, false);
-    File localFile = new File(mAlbumDir.getAbsolutePath() + "/" + paramString2);
-    if ((bool) && (localFile.exists()) && (isLibLengthOk(paramString2, localFile.length())))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(mAlbumDir.getAbsolutePath());
+    ((StringBuilder)localObject).append("/");
+    ((StringBuilder)localObject).append(paramString2);
+    localObject = new File(((StringBuilder)localObject).toString());
+    if ((bool) && (((File)localObject).exists()) && (isLibLengthOk(paramString2, ((File)localObject).length())))
     {
       if (paramDownloadListener != null) {
         paramDownloadListener.onDownloadSucceed(null, null);
@@ -101,7 +107,11 @@ public class AlbumLibDownloaderUtil
       return;
     }
     paramDownloadListener = new AlbumLibDownloaderUtil.1(this, paramString2, paramDownloadListener, paramString1);
-    paramString2 = mAlbumDir.getAbsolutePath() + "/tmp" + paramString2;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(mAlbumDir.getAbsolutePath());
+    ((StringBuilder)localObject).append("/tmp");
+    ((StringBuilder)localObject).append(paramString2);
+    paramString2 = ((StringBuilder)localObject).toString();
     this.mDownloader.download(paramString1, paramString2, paramDownloadListener);
   }
   
@@ -112,15 +122,17 @@ public class AlbumLibDownloaderUtil
   
   public void downloadGifEncoderSo(Downloader.DownloadListener paramDownloadListener)
   {
-    if (this.mDownloadState[this.GIFSO_STATE] == 0)
+    boolean[] arrayOfBoolean = this.mDownloadState;
+    int i = this.GIFSO_STATE;
+    if (arrayOfBoolean[i] == 0)
     {
-      this.mDownloadState[this.GIFSO_STATE] = true;
+      arrayOfBoolean[i] = true;
       download(this.mGifSoDownloadUrl, GIF_SO_LIB_NAME, paramDownloadListener);
-    }
-    while (paramDownloadListener == null) {
       return;
     }
-    paramDownloadListener.onDownloadCanceled("lib is downloading");
+    if (paramDownloadListener != null) {
+      paramDownloadListener.onDownloadCanceled("lib is downloading");
+    }
   }
   
   public void downloadPhotoBeautySo()
@@ -130,25 +142,27 @@ public class AlbumLibDownloaderUtil
   
   public void downloadPhotoBeautySo(Downloader.DownloadListener paramDownloadListener)
   {
-    if (this.mDownloadState[this.BEAUTYSO_STATE] == 0)
+    boolean[] arrayOfBoolean = this.mDownloadState;
+    int i = this.BEAUTYSO_STATE;
+    if (arrayOfBoolean[i] == 0)
     {
-      this.mDownloadState[this.BEAUTYSO_STATE] = true;
+      arrayOfBoolean[i] = true;
       download(this.mBeautyDownloadUrl, BEAUTY_SO_LIB_NAME, paramDownloadListener);
-    }
-    while (paramDownloadListener == null) {
       return;
     }
-    paramDownloadListener.onDownloadCanceled("lib is downloading");
+    if (paramDownloadListener != null) {
+      paramDownloadListener.onDownloadCanceled("lib is downloading");
+    }
   }
   
   public void downloadPicBeautySo()
   {
-    QzoneModuleManager.getInstance().downloadModule("libandroidndkbeauty.so", new AlbumLibDownloaderUtil.3(this));
+    ((IQzoneModuleManageApi)QRoute.api(IQzoneModuleManageApi.class)).downloadModule("libandroidndkbeauty.so", new AlbumLibDownloaderUtil.3(this));
   }
   
   public void downloadPicQulatitySo()
   {
-    QzoneModuleManager.getInstance().downloadModule("pictureMarkerSo.zip", new AlbumLibDownloaderUtil.2(this));
+    ((IQzoneModuleManageApi)QRoute.api(IQzoneModuleManageApi.class)).downloadModule("pictureMarkerSo.zip", new AlbumLibDownloaderUtil.2(this));
   }
   
   public void forceDownloadBeautySo(Downloader.DownloadListener paramDownloadListener)
@@ -163,7 +177,11 @@ public class AlbumLibDownloaderUtil
   
   public String getLibPath(String paramString)
   {
-    return mAlbumDir.getAbsolutePath() + "/" + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(mAlbumDir.getAbsolutePath());
+    localStringBuilder.append("/");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   public long getSoLength(String paramString)
@@ -210,37 +228,59 @@ public class AlbumLibDownloaderUtil
   
   public boolean vertifySoIsOK(String paramString, boolean paramBoolean)
   {
-    File localFile = new File(getLibPath(paramString));
-    if (!localFile.exists())
+    Object localObject1 = new File(getLibPath(paramString));
+    if (!((File)localObject1).exists())
     {
-      QZLog.e("AlbumLibDownloaderUtil", 1, new Object[] { "vertifySoIsOK. file not exists. libName=" + paramString });
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("vertifySoIsOK. file not exists. libName=");
+      ((StringBuilder)localObject1).append(paramString);
+      QZLog.e("AlbumLibDownloaderUtil", 1, new Object[] { ((StringBuilder)localObject1).toString() });
       return false;
     }
-    if (localFile.length() == getSoLength(paramString)) {
+    Object localObject2;
+    if (((File)localObject1).length() == getSoLength(paramString))
+    {
       if (paramBoolean)
       {
-        String str1 = MD5Utils.encodeFileHexStr(getLibPath(paramString));
-        String str2 = getSoMD5(paramString);
-        if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str1)) && (str2.equalsIgnoreCase(str1)))
+        localObject2 = MD5Utils.encodeFileHexStr(getLibPath(paramString));
+        String str = getSoMD5(paramString);
+        if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject2)) && (str.equalsIgnoreCase((String)localObject2)))
         {
           LocalMultiProcConfig.putBool(paramString, false);
           return true;
         }
-        QZLog.e("AlbumLibDownloaderUtil", 1, new Object[] { "vertifySoIsOK. file md5 check failed. libName=" + paramString + " downloadMD5=" + str1 + " originalMD5=" + str2 });
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("vertifySoIsOK. file md5 check failed. libName=");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" downloadMD5=");
+        localStringBuilder.append((String)localObject2);
+        localStringBuilder.append(" originalMD5=");
+        localStringBuilder.append(str);
+        QZLog.e("AlbumLibDownloaderUtil", 1, new Object[] { localStringBuilder.toString() });
+      }
+      else
+      {
+        return true;
       }
     }
-    for (;;)
+    else
     {
-      localFile.delete();
-      return false;
-      return true;
-      QZLog.e("AlbumLibDownloaderUtil", 1, new Object[] { "vertifySoIsOK. file length check failed. libName=" + paramString + " file.length()=" + localFile.length() + " expect length=" + getSoLength(paramString) });
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("vertifySoIsOK. file length check failed. libName=");
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(" file.length()=");
+      ((StringBuilder)localObject2).append(((File)localObject1).length());
+      ((StringBuilder)localObject2).append(" expect length=");
+      ((StringBuilder)localObject2).append(getSoLength(paramString));
+      QZLog.e("AlbumLibDownloaderUtil", 1, new Object[] { ((StringBuilder)localObject2).toString() });
     }
+    ((File)localObject1).delete();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.AlbumLibDownloaderUtil
  * JD-Core Version:    0.7.0.1
  */

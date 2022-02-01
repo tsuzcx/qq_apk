@@ -6,14 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.biz.richframework.network.request.BaseRequest;
 import com.tencent.biz.richframework.network.request.SubscribePersonalDetailRequest;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troop.utils.TroopInfoUIUtil;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import common.config.service.QzoneConfig;
@@ -29,10 +30,13 @@ public class IliveEnterGroupHost
   
   public static void getAnchorGroupList(long paramLong, IliveHostCallback paramIliveHostCallback)
   {
-    QLog.i("IliveEnterGroupHost", 1, "IliveEnterGroupHost getAnchorGroupList uid = " + paramLong);
-    SubscribePersonalDetailRequest localSubscribePersonalDetailRequest = new SubscribePersonalDetailRequest(String.valueOf(paramLong), null);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("IliveEnterGroupHost getAnchorGroupList uid = ");
+    ((StringBuilder)localObject).append(paramLong);
+    QLog.i("IliveEnterGroupHost", 1, ((StringBuilder)localObject).toString());
+    localObject = new SubscribePersonalDetailRequest(String.valueOf(paramLong), null);
     paramIliveHostCallback = new IliveEnterGroupHost.1(paramIliveHostCallback);
-    VSNetworkHelper.getInstance().sendRequest(localSubscribePersonalDetailRequest, paramIliveHostCallback);
+    VSNetworkHelper.getInstance().sendRequest((BaseRequest)localObject, paramIliveHostCallback);
   }
   
   public static int getWNSConfig(String paramString1, String paramString2, int paramInt)
@@ -98,7 +102,7 @@ public class IliveEnterGroupHost
     {
       paramString1.printStackTrace();
     }
-    paramString1 = TroopInfoActivity.a(paramString1, 4);
+    paramString1 = TroopInfoUIUtil.a(paramString1, 4);
     paramString1.putInt("troop_info_from", 30);
     TroopUtils.a(BaseApplicationImpl.getContext(), paramString1, 2);
     return;
@@ -106,7 +110,7 @@ public class IliveEnterGroupHost
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.host.IliveEnterGroupHost
  * JD-Core Version:    0.7.0.1
  */

@@ -18,29 +18,40 @@ class AudioDecoder$MyMediaDataSource
   
   public long getSize()
   {
-    if (this.inputData == null) {
+    byte[] arrayOfByte = this.inputData;
+    if (arrayOfByte == null) {
       return -1L;
     }
-    return this.inputData.length;
+    return arrayOfByte.length;
   }
   
   public int readAt(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (this.inputData == null) {}
-    while ((paramLong < 0L) || (paramLong >= this.inputData.length)) {
+    byte[] arrayOfByte = this.inputData;
+    if (arrayOfByte == null) {
       return -1;
     }
-    if (paramInt2 + paramLong < this.inputData.length) {}
-    for (long l = paramInt2;; l = this.inputData.length - paramLong)
+    if (paramLong >= 0L)
     {
-      System.arraycopy(this.inputData, (int)paramLong, paramArrayOfByte, paramInt1, (int)l);
-      return (int)l;
+      if (paramLong >= arrayOfByte.length) {
+        return -1;
+      }
+      long l = paramInt2;
+      if (paramLong + l >= arrayOfByte.length) {
+        l = arrayOfByte.length - paramLong;
+      }
+      arrayOfByte = this.inputData;
+      paramInt2 = (int)paramLong;
+      int i = (int)l;
+      System.arraycopy(arrayOfByte, paramInt2, paramArrayOfByte, paramInt1, i);
+      return i;
     }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tritonaudio.webaudio.AudioDecoder.MyMediaDataSource
  * JD-Core Version:    0.7.0.1
  */

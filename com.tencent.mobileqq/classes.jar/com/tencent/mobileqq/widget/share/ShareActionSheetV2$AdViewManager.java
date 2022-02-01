@@ -12,12 +12,16 @@ public class ShareActionSheetV2$AdViewManager
   
   private void a()
   {
-    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewView != null))
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null)
     {
-      if (this.jdField_a_of_type_AndroidViewView.getParent() != null) {
-        ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.jdField_a_of_type_AndroidViewView);
+      View localView = this.jdField_a_of_type_AndroidViewView;
+      if (localView != null)
+      {
+        if (localView.getParent() != null) {
+          ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.jdField_a_of_type_AndroidViewView);
+        }
+        this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
       }
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
     }
   }
   
@@ -41,8 +45,9 @@ public class ShareActionSheetV2$AdViewManager
   
   void a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-      this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(paramInt);
+    ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+    if (localViewGroup != null) {
+      localViewGroup.setBackgroundColor(paramInt);
     }
   }
   
@@ -67,7 +72,7 @@ public class ShareActionSheetV2$AdViewManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.share.ShareActionSheetV2.AdViewManager
  * JD-Core Version:    0.7.0.1
  */

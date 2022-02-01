@@ -14,20 +14,18 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.kwstudio.office.preview.TdsReaderView;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.config.business.tendoc.TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalTbsViewManager.LocalTbsViewManagerCallback;
+import com.tencent.mobileqq.filemanager.fileview.LocalTbsViewManager.LocalTbsViewManagerCallback;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.filemanageraux.fileviewer.FileView.LocalTdsViewManager.LocalTdsViewManagerCallback;
-import com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsDebugView;
-import com.tencent.mobileqq.filemanageraux.util.TencentDocConvertABTestUtil;
 import com.tencent.mobileqq.filemanageraux.widget.DocCollectFormBanner;
 import com.tencent.mobileqq.filemanageraux.widget.DocCooperationBanner;
 import com.tencent.mobileqq.filemanageraux.widget.DocQBBottomView;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.teamwork.api.ITencentDocConvertABTestUtil;
+import com.tencent.mobileqq.teamwork.bean.TeamWorkFileImportInfo;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -41,7 +39,6 @@ import mqq.os.MqqHandler;
 public class SimpleFileViewer
   extends FileBrowserViewBase
 {
-  private TdsReaderView jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView;
   AsyncImageView jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
   public DocCollectFormBanner a;
   public DocCooperationBanner a;
@@ -58,8 +55,7 @@ public class SimpleFileViewer
   private TextView jdField_e_of_type_AndroidWidgetTextView;
   private View jdField_f_of_type_AndroidViewView;
   private TextView jdField_f_of_type_AndroidWidgetTextView;
-  private View jdField_g_of_type_AndroidViewView;
-  private TextView jdField_g_of_type_AndroidWidgetTextView;
+  private TextView g;
   private TextView h;
   private TextView i;
   private TextView j;
@@ -71,78 +67,58 @@ public class SimpleFileViewer
   
   private void a(QQAppInterface paramQQAppInterface, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
   {
-    Object localObject2 = this.jdField_a_of_type_AndroidAppActivity.getString(2131691950);
-    Object localObject1 = this.jdField_a_of_type_AndroidAppActivity.getString(2131691943);
-    Object localObject3 = TencentDocConvertABTestUtil.a();
-    Iterator localIterator;
-    Object localObject4;
-    if ((localObject3 != null) && (((List)localObject3).size() == 2)) {
-      if (this.jdField_b_of_type_Boolean)
-      {
-        localIterator = ((List)localObject3).iterator();
-        localObject3 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject3;
-        localObject4 = localObject2;
-        localObject3 = localObject1;
-        if (!localIterator.hasNext()) {
-          break label265;
-        }
-        localObject3 = (TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)localIterator.next();
-        if ((((TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)localObject3).a() != 0) || (TextUtils.isEmpty(((TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)localObject3).b())) || (TextUtils.isEmpty(((TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)localObject3).c()))) {
-          break label329;
-        }
-        localObject2 = ((TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)localObject3).b();
-        localObject1 = ((TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)localObject3).c();
-      }
-    }
-    for (;;)
+    Object localObject2 = this.jdField_a_of_type_AndroidAppActivity.getString(2131691875);
+    String str2 = this.jdField_a_of_type_AndroidAppActivity.getString(2131691868);
+    Object localObject3 = ((ITencentDocConvertABTestUtil)QRoute.api(ITencentDocConvertABTestUtil.class)).getWordingConfig();
+    Object localObject1 = localObject2;
+    String str1 = str2;
+    if (localObject3 != null)
     {
-      localObject3 = localObject2;
-      localObject2 = localObject1;
-      localObject1 = localObject3;
-      break;
-      localIterator = ((List)localObject3).iterator();
-      localObject3 = localObject1;
       localObject1 = localObject2;
-      localObject2 = localObject3;
-      localObject4 = localObject2;
-      localObject3 = localObject1;
-      if (localIterator.hasNext())
+      str1 = str2;
+      if (((List)localObject3).size() == 2)
       {
-        localObject3 = (TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)localIterator.next();
-        if ((((TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)localObject3).a() != 1) || (TextUtils.isEmpty(((TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)localObject3).b())) || (TextUtils.isEmpty(((TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)localObject3).c()))) {
-          break label316;
+        if (this.jdField_b_of_type_Boolean)
+        {
+          localObject3 = ((List)localObject3).iterator();
+          for (;;)
+          {
+            localObject1 = localObject2;
+            str1 = str2;
+            if (!((Iterator)localObject3).hasNext()) {
+              break;
+            }
+            localObject1 = (TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)((Iterator)localObject3).next();
+            if ((((TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)localObject1).a() == 0) && (!TextUtils.isEmpty(((TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)localObject1).b())) && (!TextUtils.isEmpty(((TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)localObject1).c())))
+            {
+              localObject2 = ((TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)localObject1).b();
+              str2 = ((TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)localObject1).c();
+            }
+          }
         }
-        localObject2 = ((TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)localObject3).b();
-        localObject1 = ((TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)localObject3).c();
+        localObject3 = ((List)localObject3).iterator();
+        for (;;)
+        {
+          localObject1 = localObject2;
+          str1 = str2;
+          if (!((Iterator)localObject3).hasNext()) {
+            break;
+          }
+          localObject1 = (TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)((Iterator)localObject3).next();
+          if ((((TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)localObject1).a() == 1) && (!TextUtils.isEmpty(((TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)localObject1).b())) && (!TextUtils.isEmpty(((TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)localObject1).c())))
+          {
+            localObject2 = ((TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)localObject1).b();
+            str2 = ((TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem)localObject1).c();
+          }
+        }
       }
-      for (;;)
-      {
-        localObject3 = localObject2;
-        localObject2 = localObject1;
-        localObject1 = localObject3;
-        break;
-        localObject3 = localObject2;
-        localObject4 = localObject1;
-        label265:
-        localObject1 = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidAppActivity, null);
-        ((ActionSheet)localObject1).setMainTitle((CharSequence)localObject3);
-        ((ActionSheet)localObject1).addButton(localObject4, 5);
-        ((ActionSheet)localObject1).addCancelButton(2131690800);
-        ((ActionSheet)localObject1).setOnButtonClickListener(new SimpleFileViewer.10(this, paramQQAppInterface, paramTeamWorkFileImportInfo, (ActionSheet)localObject1));
-        ((ActionSheet)localObject1).show();
-        return;
-        label316:
-        localObject3 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject3;
-      }
-      label329:
-      localObject3 = localObject1;
-      localObject1 = localObject2;
-      localObject2 = localObject3;
     }
+    localObject2 = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidAppActivity, null);
+    ((ActionSheet)localObject2).setMainTitle((CharSequence)localObject1);
+    ((ActionSheet)localObject2).addButton(str1, 5);
+    ((ActionSheet)localObject2).addCancelButton(2131690728);
+    ((ActionSheet)localObject2).setOnButtonClickListener(new SimpleFileViewer.7(this, paramQQAppInterface, paramTeamWorkFileImportInfo, (ActionSheet)localObject2));
+    ((ActionSheet)localObject2).show();
   }
   
   private boolean a(View paramView1, View paramView2, boolean paramBoolean)
@@ -155,14 +131,15 @@ public class SimpleFileViewer
         if (paramView2.getParent() != null) {
           ((ViewGroup)paramView2.getParent()).removeAllViews();
         }
-        if (paramBoolean) {}
-        for (paramView1 = new SimpleFileViewer.GestureRelativeLayout(this, this.jdField_a_of_type_AndroidAppActivity);; paramView1 = new RelativeLayout(this.jdField_a_of_type_AndroidAppActivity))
-        {
-          this.jdField_b_of_type_AndroidWidgetRelativeLayout = paramView1;
-          paramView1 = new RelativeLayout.LayoutParams(-1, -1);
-          this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(paramView2, 0, paramView1);
-          return true;
+        if (paramBoolean) {
+          paramView1 = new SimpleFileViewer.GestureRelativeLayout(this, this.jdField_a_of_type_AndroidAppActivity);
+        } else {
+          paramView1 = new RelativeLayout(this.jdField_a_of_type_AndroidAppActivity);
         }
+        this.jdField_b_of_type_AndroidWidgetRelativeLayout = paramView1;
+        paramView1 = new RelativeLayout.LayoutParams(-1, -1);
+        this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(paramView2, 0, paramView1);
+        return true;
       }
     }
     else if ((this.jdField_b_of_type_AndroidWidgetRelativeLayout != null) && (paramView1 != null) && (paramView2 != null) && (paramView1.hashCode() != paramView2.hashCode()))
@@ -180,7 +157,7 @@ public class SimpleFileViewer
     return false;
   }
   
-  private void g()
+  private void f()
   {
     ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent();
     if ((localViewGroup != null) && (this.jdField_b_of_type_AndroidWidgetRelativeLayout != null))
@@ -217,21 +194,22 @@ public class SimpleFileViewer
     QLog.i("FileBrowserViewBase", 4, "FileBrowserViewBase: SimpleFileViewer initFileView");
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2131560960, this.jdField_a_of_type_AndroidViewViewGroup, false);
+      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2131560835, this.jdField_a_of_type_AndroidViewViewGroup, false);
       this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView;
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366936));
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364380));
-      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366930));
-      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366927));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372540));
-      this.i = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361940));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366798));
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364278));
+      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366792));
+      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366789));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372125));
+      this.i = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361946));
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentTbsReaderTbsReaderView != null) {
-      this.jdField_a_of_type_ComTencentTbsReaderTbsReaderView.onSizeChanged(paramInt1, paramInt2);
+    TbsReaderView localTbsReaderView = this.jdField_a_of_type_ComTencentTbsReaderTbsReaderView;
+    if (localTbsReaderView != null) {
+      localTbsReaderView.onSizeChanged(paramInt1, paramInt2);
     }
   }
   
@@ -256,73 +234,71 @@ public class SimpleFileViewer
     ThreadManager.getUIHandler().post(new SimpleFileViewer.5(this, paramString, paramLocalTbsViewManagerCallback));
   }
   
-  public void a(String paramString, LocalTdsViewManager.LocalTdsViewManagerCallback paramLocalTdsViewManagerCallback)
-  {
-    ThreadManager.getUIHandler().post(new SimpleFileViewer.7(this, paramString, paramLocalTdsViewManagerCallback));
-  }
-  
   public void a(String paramString, Object paramObject)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocQBBottomView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocQBBottomView.a(paramString, paramObject);
+    DocQBBottomView localDocQBBottomView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocQBBottomView;
+    if (localDocQBBottomView != null) {
+      localDocQBBottomView.a(paramString, paramObject);
     }
   }
   
   public void a(String paramString, boolean paramBoolean)
   {
-    if (this.jdField_g_of_type_AndroidWidgetTextView == null) {
-      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364844));
+    if (this.g == null) {
+      this.g = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364730));
     }
-    TextView localTextView = this.jdField_g_of_type_AndroidWidgetTextView;
-    if (paramBoolean) {}
-    for (int k = 0;; k = 8)
-    {
-      localTextView.setVisibility(k);
-      this.jdField_g_of_type_AndroidWidgetTextView.setText(paramString);
-      return;
+    TextView localTextView = this.g;
+    int k;
+    if (paramBoolean) {
+      k = 0;
+    } else {
+      k = 8;
     }
+    localTextView.setVisibility(k);
+    this.g.setText(paramString);
   }
   
   public void a(boolean paramBoolean, String paramString, int paramInt, View.OnClickListener paramOnClickListener)
   {
     if (this.h == null) {
-      this.h = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377433));
+      this.h = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376880));
     }
     TextView localTextView = this.h;
-    if (paramBoolean) {}
-    for (int k = 0;; k = 8)
-    {
-      localTextView.setVisibility(k);
-      this.h.setText(paramString);
-      if (paramInt != 0) {
-        this.h.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(paramInt));
-      }
-      this.h.setOnClickListener(paramOnClickListener);
-      return;
+    int k;
+    if (paramBoolean) {
+      k = 0;
+    } else {
+      k = 8;
     }
+    localTextView.setVisibility(k);
+    this.h.setText(paramString);
+    if (paramInt != 0) {
+      this.h.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(paramInt));
+    }
+    this.h.setOnClickListener(paramOnClickListener);
   }
   
   public boolean a()
   {
-    return (this.jdField_b_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_d_of_type_AndroidViewView != null) && (this.jdField_f_of_type_AndroidViewView != null) && (this.jdField_f_of_type_AndroidViewView.getVisibility() == 0) && (this.jdField_b_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0) && (this.jdField_f_of_type_AndroidViewView.getVisibility() == 0);
+    if ((this.jdField_b_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_d_of_type_AndroidViewView != null))
+    {
+      View localView = this.jdField_e_of_type_AndroidViewView;
+      if ((localView != null) && (localView.getVisibility() == 0) && (this.jdField_b_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0) && (this.jdField_e_of_type_AndroidViewView.getVisibility() == 0)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public View b()
   {
-    return this.jdField_f_of_type_AndroidViewView;
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView != null) {
-      this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView.onSizeChanged(paramInt1, paramInt2);
-    }
+    return this.jdField_e_of_type_AndroidViewView;
   }
   
   public void b(View.OnClickListener paramOnClickListener)
   {
     if (this.j == null) {
-      this.j = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368130));
+      this.j = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367884));
     }
     this.j.setVisibility(0);
     this.j.setOnClickListener(paramOnClickListener);
@@ -330,9 +306,10 @@ public class SimpleFileViewer
   
   public void b(String paramString, View.OnClickListener paramOnClickListener)
   {
-    if (this.i != null)
+    TextView localTextView = this.i;
+    if (localTextView != null)
     {
-      this.i.setText(paramString);
+      localTextView.setText(paramString);
       this.i.setOnClickListener(paramOnClickListener);
       d(true);
     }
@@ -341,11 +318,6 @@ public class SimpleFileViewer
   public void b(String paramString, LocalTbsViewManager.LocalTbsViewManagerCallback paramLocalTbsViewManagerCallback)
   {
     ThreadManager.getUIHandler().post(new SimpleFileViewer.6(this, paramString, paramLocalTbsViewManagerCallback));
-  }
-  
-  public void b(String paramString, LocalTdsViewManager.LocalTdsViewManagerCallback paramLocalTdsViewManagerCallback)
-  {
-    ThreadManager.getUIHandler().post(new SimpleFileViewer.8(this, paramString, paramLocalTdsViewManagerCallback));
   }
   
   public void b(boolean paramBoolean)
@@ -358,8 +330,9 @@ public class SimpleFileViewer
   
   public void c()
   {
-    if ((this.jdField_f_of_type_AndroidViewView != null) && (this.jdField_f_of_type_AndroidViewView.getVisibility() == 0)) {
-      this.jdField_f_of_type_AndroidViewView.setVisibility(8);
+    View localView = this.jdField_e_of_type_AndroidViewView;
+    if ((localView != null) && (localView.getVisibility() == 0)) {
+      this.jdField_e_of_type_AndroidViewView.setVisibility(8);
     }
   }
   
@@ -385,7 +358,10 @@ public class SimpleFileViewer
   
   public void d()
   {
-    ThreadManager.getUIHandler().post(new SimpleFileViewer.4(this));
+    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing())) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    }
   }
   
   public void d(int paramInt)
@@ -400,49 +376,51 @@ public class SimpleFileViewer
       this.jdField_e_of_type_AndroidWidgetTextView.post(new SimpleFileViewer.1(this, paramString));
       return;
     }
-    this.jdField_e_of_type_AndroidWidgetTextView.setText(FileManagerUtil.a(paramString, false, this.jdField_e_of_type_AndroidWidgetTextView.getMeasuredWidth(), this.jdField_e_of_type_AndroidWidgetTextView.getPaint(), 2));
+    TextView localTextView = this.jdField_e_of_type_AndroidWidgetTextView;
+    localTextView.setText(FileManagerUtil.a(paramString, false, localTextView.getMeasuredWidth(), this.jdField_e_of_type_AndroidWidgetTextView.getPaint(), 2));
   }
   
   public void d(boolean paramBoolean)
   {
-    int k = 0;
     if (this.i != null)
     {
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-        break label49;
+      Object localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      int k = 0;
+      if (localObject != null)
+      {
+        if ((paramBoolean) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0))
+        {
+          this.i.setVisibility(0);
+          return;
+        }
+        this.i.setVisibility(8);
+        return;
       }
-      if ((paramBoolean) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0)) {
-        this.i.setVisibility(0);
+      localObject = this.i;
+      if (!paramBoolean) {
+        k = 8;
       }
-    }
-    else
-    {
-      return;
-    }
-    this.i.setVisibility(8);
-    return;
-    label49:
-    TextView localTextView = this.i;
-    if (paramBoolean) {}
-    for (;;)
-    {
-      localTextView.setVisibility(k);
-      return;
-      k = 8;
+      ((TextView)localObject).setVisibility(k);
     }
   }
   
   public void e()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    Object localObject = this.jdField_a_of_type_ComTencentTbsReaderTbsReaderView;
+    if (localObject != null) {
+      ((TbsReaderView)localObject).onStop();
+    }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocQBBottomView;
+    if (localObject != null) {
+      ((DocQBBottomView)localObject).a();
     }
   }
   
   public void e(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocQBBottomView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocQBBottomView.a(paramInt);
+    DocQBBottomView localDocQBBottomView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocQBBottomView;
+    if (localDocQBBottomView != null) {
+      localDocQBBottomView.a(paramInt);
     }
   }
   
@@ -454,42 +432,26 @@ public class SimpleFileViewer
   public void e(boolean paramBoolean)
   {
     TextView localTextView = this.jdField_f_of_type_AndroidWidgetTextView;
-    if (paramBoolean) {}
-    for (int k = 0;; k = 8)
-    {
-      localTextView.setVisibility(k);
-      return;
+    int k;
+    if (paramBoolean) {
+      k = 0;
+    } else {
+      k = 8;
     }
-  }
-  
-  public void f()
-  {
-    if (this.jdField_a_of_type_ComTencentTbsReaderTbsReaderView != null) {
-      this.jdField_a_of_type_ComTencentTbsReaderTbsReaderView.onStop();
-    }
-    if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView != null) {
-      this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView.onStop();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocQBBottomView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocQBBottomView.a();
-    }
+    localTextView.setVisibility(k);
   }
   
   public void f(int paramInt)
   {
-    View localView;
-    if (this.jdField_g_of_type_AndroidViewView != null)
+    View localView = this.jdField_f_of_type_AndroidViewView;
+    if (localView != null)
     {
-      localView = this.jdField_g_of_type_AndroidViewView;
-      if (paramInt <= 0) {
-        break label24;
+      if (paramInt > 0) {
+        paramInt = 0;
+      } else {
+        paramInt = 4;
       }
-    }
-    label24:
-    for (paramInt = 0;; paramInt = 4)
-    {
       localView.setVisibility(paramInt);
-      return;
     }
   }
   
@@ -510,42 +472,20 @@ public class SimpleFileViewer
   
   public void g(boolean paramBoolean)
   {
-    TextView localTextView;
-    if (this.j != null)
+    TextView localTextView = this.j;
+    if (localTextView != null)
     {
-      localTextView = this.j;
-      if (!paramBoolean) {
-        break label24;
+      int k;
+      if (paramBoolean) {
+        k = 0;
+      } else {
+        k = 8;
       }
-    }
-    label24:
-    for (int k = 0;; k = 8)
-    {
       localTextView.setVisibility(k);
-      return;
     }
   }
   
   public void h(String paramString)
-  {
-    RelativeLayout localRelativeLayout = this.jdField_b_of_type_AndroidWidgetRelativeLayout;
-    if ((localRelativeLayout == null) || (this.jdField_d_of_type_AndroidViewView == null)) {}
-    while (!TdsDebugView.a(paramString)) {
-      return;
-    }
-    if (this.jdField_e_of_type_AndroidViewView == null) {
-      this.jdField_e_of_type_AndroidViewView = new TdsDebugView(this.jdField_a_of_type_AndroidAppActivity, new SimpleFileViewer.9(this));
-    }
-    if (localRelativeLayout.indexOfChild(this.jdField_e_of_type_AndroidViewView) < 0)
-    {
-      paramString = new RelativeLayout.LayoutParams(-1, -1);
-      paramString.topMargin = ((int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131299166));
-      localRelativeLayout.addView(this.jdField_e_of_type_AndroidViewView, paramString);
-    }
-    this.jdField_e_of_type_AndroidViewView.setVisibility(0);
-  }
-  
-  public void i(String paramString)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
     {
@@ -561,7 +501,7 @@ public class SimpleFileViewer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer
  * JD-Core Version:    0.7.0.1
  */

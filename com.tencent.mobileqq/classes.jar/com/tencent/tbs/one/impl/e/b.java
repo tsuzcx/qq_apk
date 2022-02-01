@@ -50,9 +50,9 @@ public final class b
       a(paramTBSOneComponent.getName(), paramString1, paramString2, "can't assign receiver class to com.tencent.tbs.one.TBSOneEventReceiver", null);
       return;
     }
-    catch (ClassNotFoundException paramMap)
+    catch (Exception paramMap)
     {
-      a(paramTBSOneComponent.getName(), paramString1, paramString2, "can't load event receiver class", paramMap);
+      a(paramTBSOneComponent.getName(), paramString1, paramString2, "can't construct event receiver object", paramMap);
       return;
     }
     catch (NoSuchMethodException paramMap)
@@ -60,9 +60,9 @@ public final class b
       a(paramTBSOneComponent.getName(), paramString1, paramString2, "can't find constructor method for event receiver class", paramMap);
       return;
     }
-    catch (Exception paramMap)
+    catch (ClassNotFoundException paramMap)
     {
-      a(paramTBSOneComponent.getName(), paramString1, paramString2, "can't construct event receiver object", paramMap);
+      a(paramTBSOneComponent.getName(), paramString1, paramString2, "can't load event receiver class", paramMap);
     }
   }
   
@@ -96,30 +96,28 @@ public final class b
   public final void emit(String paramString, Map<String, Object> paramMap)
   {
     h localh = (h)this.a.get();
-    if (localh == null) {
-      a(paramString, "TBSOneManager is not alive");
-    }
-    for (;;)
+    if (localh == null)
     {
+      a(paramString, "TBSOneManager is not alive");
       return;
-      Object localObject = (List)localh.o.get(paramString);
-      if (localObject == null)
-      {
-        a(paramString, "no event receiver found");
-        return;
-      }
-      localObject = ((List)localObject).listIterator();
-      while (((ListIterator)localObject).hasNext())
-      {
-        g localg = (g)((ListIterator)localObject).next();
-        b(localh.e(localg.a), localg.b, paramString, paramMap);
-      }
+    }
+    Object localObject = (List)localh.o.get(paramString);
+    if (localObject == null)
+    {
+      a(paramString, "no event receiver found");
+      return;
+    }
+    localObject = ((List)localObject).listIterator();
+    while (((ListIterator)localObject).hasNext())
+    {
+      g localg = (g)((ListIterator)localObject).next();
+      b(localh.e(localg.a), localg.b, paramString, paramMap);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.e.b
  * JD-Core Version:    0.7.0.1
  */

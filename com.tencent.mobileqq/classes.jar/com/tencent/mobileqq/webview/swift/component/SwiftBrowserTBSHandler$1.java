@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.webview.swift.component;
 
+import android.app.Activity;
+import android.content.res.Resources;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.HardCodeUtil;
 
 class SwiftBrowserTBSHandler$1
   implements Runnable
@@ -15,19 +15,28 @@ class SwiftBrowserTBSHandler$1
     TextView localTextView = new TextView(this.this$0.a);
     localTextView.setBackgroundColor(2130706432);
     localTextView.setTextColor(2147483647);
-    StringBuilder localStringBuilder = new StringBuilder().append(HardCodeUtil.a(2131714572));
-    if (this.a == 0) {}
-    for (String str = "系统WebView";; str = "x5 " + this.a)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localTextView.getResources().getString(2131714489));
+    Object localObject;
+    if (this.a == 0)
     {
-      localTextView.setText(str);
-      this.this$0.a.addContentView(localTextView, new RelativeLayout.LayoutParams(-2, -2));
-      return;
+      localObject = "系统WebView";
     }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("x5 ");
+      ((StringBuilder)localObject).append(this.a);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    localStringBuilder.append((String)localObject);
+    localTextView.setText(localStringBuilder.toString());
+    this.this$0.a.addContentView(localTextView, new RelativeLayout.LayoutParams(-2, -2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler.1
  * JD-Core Version:    0.7.0.1
  */

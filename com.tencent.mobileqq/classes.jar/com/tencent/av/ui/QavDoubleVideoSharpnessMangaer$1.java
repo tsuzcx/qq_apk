@@ -21,8 +21,8 @@ class QavDoubleVideoSharpnessMangaer$1
     if (("tencent.video.q2v.SVIP.PAY".equals(paramContext)) && (QavDoubleVideoSharpnessMangaer.a(this.a) != null))
     {
       paramContext = QavDoubleVideoSharpnessMangaer.a(this.a).a();
-      if ((paramContext != null) && (paramContext.jdField_d_of_type_Int == 2)) {
-        QavDoubleVideoSharpnessMangaer.a(this.a).a(Long.valueOf(paramContext.jdField_d_of_type_JavaLangString).longValue(), QavDoubleVideoSharpnessMangaer.a(this.a));
+      if ((paramContext != null) && (paramContext.d == 2)) {
+        QavDoubleVideoSharpnessMangaer.a(this.a).a(Long.valueOf(paramContext.c).longValue(), QavDoubleVideoSharpnessMangaer.a(this.a));
       }
       this.a.e();
     }
@@ -30,7 +30,7 @@ class QavDoubleVideoSharpnessMangaer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.QavDoubleVideoSharpnessMangaer.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,14 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.biz.qrcode.activity.ScannerResult;
-import com.tencent.biz.qrcode.activity.ScannerUtils;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ar.codeEngine.MiniCodeController;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qrscan.ScannerResult;
+import com.tencent.mobileqq.qrscan.api.IMiniCodeApi;
+import com.tencent.mobileqq.qrscan.api.IScanUtilApi;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -27,7 +28,7 @@ public class SwiftBrowserLongClickHandler
 {
   int jdField_a_of_type_Int = 0;
   Activity jdField_a_of_type_AndroidAppActivity;
-  ScannerResult jdField_a_of_type_ComTencentBizQrcodeActivityScannerResult;
+  ScannerResult jdField_a_of_type_ComTencentMobileqqQrscanScannerResult;
   QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   CookieManager jdField_a_of_type_ComTencentSmttSdkCookieManager;
   public ActionSheet a;
@@ -45,272 +46,298 @@ public class SwiftBrowserLongClickHandler
     ThreadManager.excute(new SwiftBrowserLongClickHandler.4(this, paramString), 64, null, true);
   }
   
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidAppActivity = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a();
+    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
+    if ((localActivity instanceof QQBrowserActivity)) {
+      this.jdField_a_of_type_Int = ((QQBrowserActivity)localActivity).getTitleBarHeight();
+    }
+    ThreadManager.postImmediately(new SwiftBrowserLongClickHandler.1(this), null, true);
+  }
+  
   public void a(int paramInt, Bundle paramBundle)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 3) {
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
+    paramBundle = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    if ((paramBundle != null) && (paramBundle.isShowing())) {
       this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
     }
-    MiniCodeController.a().a(hashCode(), "SwiftBrowserLongClickHandler");
+    ((IMiniCodeApi)QRoute.api(IMiniCodeApi.class)).unInit(hashCode(), "SwiftBrowserLongClickHandler");
   }
   
   /* Error */
   void a(String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 6
-    //   3: new 79	java/io/File
-    //   6: dup
-    //   7: aload_1
-    //   8: invokespecial 81	java/io/File:<init>	(Ljava/lang/String;)V
-    //   11: astore 8
-    //   13: new 83	java/io/FileInputStream
-    //   16: dup
-    //   17: aload 8
-    //   19: invokespecial 86	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   22: astore 5
-    //   24: aload 5
-    //   26: invokevirtual 91	java/io/InputStream:read	()I
-    //   29: istore_2
-    //   30: aload 5
-    //   32: invokevirtual 91	java/io/InputStream:read	()I
-    //   35: istore_3
-    //   36: aload 5
-    //   38: invokevirtual 91	java/io/InputStream:read	()I
-    //   41: istore 4
-    //   43: iload_2
-    //   44: bipush 66
-    //   46: if_icmpne +177 -> 223
-    //   49: iload_3
-    //   50: bipush 77
-    //   52: if_icmpne +171 -> 223
-    //   55: ldc 93
-    //   57: astore_1
-    //   58: aload 5
-    //   60: ifnull +331 -> 391
-    //   63: aload 5
-    //   65: invokevirtual 96	java/io/InputStream:close	()V
-    //   68: aload_1
-    //   69: ifnull +288 -> 357
-    //   72: aload_0
-    //   73: getfield 98	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   76: invokestatic 104	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   79: invokevirtual 108	android/net/Uri:getLastPathSegment	()Ljava/lang/String;
-    //   82: astore 6
-    //   84: aload 6
-    //   86: invokestatic 114	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   89: ifeq +206 -> 295
-    //   92: ldc 116
-    //   94: astore 5
-    //   96: new 79	java/io/File
-    //   99: dup
-    //   100: getstatic 121	com/tencent/mobileqq/app/AppConstants:SDCARD_IMG_SAVE	Ljava/lang/String;
-    //   103: invokespecial 81	java/io/File:<init>	(Ljava/lang/String;)V
-    //   106: invokevirtual 124	java/io/File:mkdirs	()Z
-    //   109: pop
-    //   110: new 126	java/lang/StringBuilder
-    //   113: dup
-    //   114: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   117: getstatic 121	com/tencent/mobileqq/app/AppConstants:SDCARD_IMG_SAVE	Ljava/lang/String;
-    //   120: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   123: aload 5
-    //   125: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   128: aload_1
-    //   129: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   132: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   135: astore 7
-    //   137: new 79	java/io/File
-    //   140: dup
-    //   141: aload 7
-    //   143: invokespecial 81	java/io/File:<init>	(Ljava/lang/String;)V
-    //   146: astore 6
-    //   148: iconst_2
-    //   149: istore_2
-    //   150: aload 6
-    //   152: invokevirtual 137	java/io/File:exists	()Z
-    //   155: ifeq +174 -> 329
-    //   158: iload_2
-    //   159: ldc 138
-    //   161: if_icmpge +168 -> 329
-    //   164: new 126	java/lang/StringBuilder
-    //   167: dup
-    //   168: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   171: getstatic 121	com/tencent/mobileqq/app/AppConstants:SDCARD_IMG_SAVE	Ljava/lang/String;
-    //   174: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   177: aload 5
-    //   179: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   182: ldc 140
-    //   184: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   187: iload_2
-    //   188: invokevirtual 143	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   191: ldc 145
-    //   193: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   196: aload_1
-    //   197: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   200: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   203: astore 7
-    //   205: new 79	java/io/File
-    //   208: dup
-    //   209: aload 7
-    //   211: invokespecial 81	java/io/File:<init>	(Ljava/lang/String;)V
-    //   214: astore 6
-    //   216: iload_2
-    //   217: iconst_1
-    //   218: iadd
-    //   219: istore_2
-    //   220: goto -70 -> 150
-    //   223: iload_2
-    //   224: sipush 137
-    //   227: if_icmpne +167 -> 394
-    //   230: iload_3
-    //   231: bipush 80
-    //   233: if_icmpne +161 -> 394
-    //   236: ldc 147
-    //   238: astore_1
-    //   239: goto -181 -> 58
-    //   242: ldc 149
-    //   244: astore_1
-    //   245: goto -187 -> 58
-    //   248: astore 5
-    //   250: goto -182 -> 68
-    //   253: astore_1
-    //   254: aconst_null
-    //   255: astore 5
-    //   257: aload 5
-    //   259: ifnull +127 -> 386
-    //   262: aload 5
-    //   264: invokevirtual 96	java/io/InputStream:close	()V
-    //   267: aconst_null
-    //   268: astore_1
-    //   269: goto -201 -> 68
-    //   272: astore_1
-    //   273: aconst_null
-    //   274: astore_1
-    //   275: goto -207 -> 68
-    //   278: astore_1
-    //   279: aload 6
-    //   281: astore 5
-    //   283: aload 5
-    //   285: ifnull +8 -> 293
-    //   288: aload 5
-    //   290: invokevirtual 96	java/io/InputStream:close	()V
-    //   293: aload_1
-    //   294: athrow
-    //   295: aload 6
-    //   297: astore 5
-    //   299: aload 6
-    //   301: aload_1
-    //   302: invokevirtual 155	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   305: ifeq -209 -> 96
-    //   308: aload 6
-    //   310: iconst_0
-    //   311: aload 6
-    //   313: invokevirtual 158	java/lang/String:length	()I
-    //   316: aload_1
-    //   317: invokevirtual 158	java/lang/String:length	()I
-    //   320: isub
-    //   321: invokevirtual 162	java/lang/String:substring	(II)Ljava/lang/String;
-    //   324: astore 5
-    //   326: goto -230 -> 96
-    //   329: aload 8
-    //   331: aload 6
-    //   333: invokevirtual 166	java/io/File:renameTo	(Ljava/io/File;)Z
-    //   336: ifeq +21 -> 357
-    //   339: aload_0
-    //   340: getfield 33	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
-    //   343: new 168	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler$5
-    //   346: dup
-    //   347: aload_0
-    //   348: aload 7
-    //   350: invokespecial 169	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler$5:<init>	(Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler;Ljava/lang/String;)V
-    //   353: invokevirtual 173	android/app/Activity:runOnUiThread	(Ljava/lang/Runnable;)V
-    //   356: return
-    //   357: aload_0
-    //   358: getfield 33	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
-    //   361: new 175	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler$6
-    //   364: dup
-    //   365: aload_0
-    //   366: invokespecial 178	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler$6:<init>	(Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler;)V
-    //   369: invokevirtual 173	android/app/Activity:runOnUiThread	(Ljava/lang/Runnable;)V
-    //   372: return
-    //   373: astore 5
-    //   375: goto -82 -> 293
-    //   378: astore_1
-    //   379: goto -96 -> 283
-    //   382: astore_1
-    //   383: goto -126 -> 257
-    //   386: aconst_null
-    //   387: astore_1
-    //   388: goto -320 -> 68
-    //   391: goto -323 -> 68
-    //   394: iload_2
-    //   395: bipush 71
-    //   397: if_icmpne +15 -> 412
-    //   400: iload_3
-    //   401: bipush 73
-    //   403: if_icmpne +9 -> 412
-    //   406: ldc 180
-    //   408: astore_1
-    //   409: goto -351 -> 58
-    //   412: iload_2
-    //   413: sipush 255
-    //   416: if_icmpne +16 -> 432
-    //   419: iload_3
-    //   420: sipush 216
-    //   423: if_icmpne +9 -> 432
-    //   426: ldc 182
-    //   428: astore_1
-    //   429: goto -371 -> 58
-    //   432: bipush 82
-    //   434: iload_2
-    //   435: if_icmpne -193 -> 242
-    //   438: bipush 73
-    //   440: iload_3
-    //   441: if_icmpne -199 -> 242
-    //   444: bipush 70
-    //   446: iload 4
-    //   448: if_icmpne -206 -> 242
-    //   451: ldc 184
-    //   453: astore_1
-    //   454: goto -396 -> 58
+    //   0: new 107	java/io/File
+    //   3: dup
+    //   4: aload_1
+    //   5: invokespecial 109	java/io/File:<init>	(Ljava/lang/String;)V
+    //   8: astore 8
+    //   10: aconst_null
+    //   11: astore 6
+    //   13: aconst_null
+    //   14: astore_1
+    //   15: new 111	java/io/FileInputStream
+    //   18: dup
+    //   19: aload 8
+    //   21: invokespecial 114	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   24: astore 5
+    //   26: aload 5
+    //   28: invokevirtual 119	java/io/InputStream:read	()I
+    //   31: istore_2
+    //   32: aload 5
+    //   34: invokevirtual 119	java/io/InputStream:read	()I
+    //   37: istore_3
+    //   38: aload 5
+    //   40: invokevirtual 119	java/io/InputStream:read	()I
+    //   43: istore 4
+    //   45: iload_2
+    //   46: bipush 66
+    //   48: if_icmpne +354 -> 402
+    //   51: iload_3
+    //   52: bipush 77
+    //   54: if_icmpne +348 -> 402
+    //   57: ldc 121
+    //   59: astore_1
+    //   60: goto +6 -> 66
+    //   63: ldc 123
+    //   65: astore_1
+    //   66: aload 5
+    //   68: invokevirtual 126	java/io/InputStream:close	()V
+    //   71: aload_1
+    //   72: astore 6
+    //   74: goto +37 -> 111
+    //   77: astore_1
+    //   78: goto +10 -> 88
+    //   81: goto +22 -> 103
+    //   84: astore_1
+    //   85: aconst_null
+    //   86: astore 5
+    //   88: aload 5
+    //   90: ifnull +8 -> 98
+    //   93: aload 5
+    //   95: invokevirtual 126	java/io/InputStream:close	()V
+    //   98: aload_1
+    //   99: athrow
+    //   100: aconst_null
+    //   101: astore 5
+    //   103: aload 5
+    //   105: ifnull +6 -> 111
+    //   108: goto -42 -> 66
+    //   111: aload 6
+    //   113: ifnull +250 -> 363
+    //   116: aload_0
+    //   117: getfield 128	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   120: invokestatic 134	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   123: invokevirtual 138	android/net/Uri:getLastPathSegment	()Ljava/lang/String;
+    //   126: astore 5
+    //   128: aload 5
+    //   130: invokestatic 144	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   133: ifeq +9 -> 142
+    //   136: ldc 146
+    //   138: astore_1
+    //   139: goto +34 -> 173
+    //   142: aload 5
+    //   144: astore_1
+    //   145: aload 5
+    //   147: aload 6
+    //   149: invokevirtual 152	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   152: ifeq +21 -> 173
+    //   155: aload 5
+    //   157: iconst_0
+    //   158: aload 5
+    //   160: invokevirtual 155	java/lang/String:length	()I
+    //   163: aload 6
+    //   165: invokevirtual 155	java/lang/String:length	()I
+    //   168: isub
+    //   169: invokevirtual 159	java/lang/String:substring	(II)Ljava/lang/String;
+    //   172: astore_1
+    //   173: new 107	java/io/File
+    //   176: dup
+    //   177: getstatic 164	com/tencent/mobileqq/app/AppConstants:SDCARD_IMG_SAVE	Ljava/lang/String;
+    //   180: invokespecial 109	java/io/File:<init>	(Ljava/lang/String;)V
+    //   183: invokevirtual 167	java/io/File:mkdirs	()Z
+    //   186: pop
+    //   187: new 169	java/lang/StringBuilder
+    //   190: dup
+    //   191: invokespecial 170	java/lang/StringBuilder:<init>	()V
+    //   194: astore 5
+    //   196: aload 5
+    //   198: getstatic 164	com/tencent/mobileqq/app/AppConstants:SDCARD_IMG_SAVE	Ljava/lang/String;
+    //   201: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   204: pop
+    //   205: aload 5
+    //   207: aload_1
+    //   208: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   211: pop
+    //   212: aload 5
+    //   214: aload 6
+    //   216: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   219: pop
+    //   220: aload 5
+    //   222: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   225: astore 5
+    //   227: new 107	java/io/File
+    //   230: dup
+    //   231: aload 5
+    //   233: invokespecial 109	java/io/File:<init>	(Ljava/lang/String;)V
+    //   236: astore 7
+    //   238: iconst_2
+    //   239: istore_2
+    //   240: aload 7
+    //   242: invokevirtual 180	java/io/File:exists	()Z
+    //   245: ifeq +90 -> 335
+    //   248: iload_2
+    //   249: ldc 181
+    //   251: if_icmpge +84 -> 335
+    //   254: new 169	java/lang/StringBuilder
+    //   257: dup
+    //   258: invokespecial 170	java/lang/StringBuilder:<init>	()V
+    //   261: astore 5
+    //   263: aload 5
+    //   265: getstatic 164	com/tencent/mobileqq/app/AppConstants:SDCARD_IMG_SAVE	Ljava/lang/String;
+    //   268: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   271: pop
+    //   272: aload 5
+    //   274: aload_1
+    //   275: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   278: pop
+    //   279: aload 5
+    //   281: ldc 183
+    //   283: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   286: pop
+    //   287: aload 5
+    //   289: iload_2
+    //   290: invokevirtual 186	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   293: pop
+    //   294: aload 5
+    //   296: ldc 188
+    //   298: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   301: pop
+    //   302: aload 5
+    //   304: aload 6
+    //   306: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   309: pop
+    //   310: aload 5
+    //   312: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   315: astore 5
+    //   317: new 107	java/io/File
+    //   320: dup
+    //   321: aload 5
+    //   323: invokespecial 109	java/io/File:<init>	(Ljava/lang/String;)V
+    //   326: astore 7
+    //   328: iload_2
+    //   329: iconst_1
+    //   330: iadd
+    //   331: istore_2
+    //   332: goto -92 -> 240
+    //   335: aload 8
+    //   337: aload 7
+    //   339: invokevirtual 192	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   342: ifeq +21 -> 363
+    //   345: aload_0
+    //   346: getfield 33	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
+    //   349: new 194	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler$5
+    //   352: dup
+    //   353: aload_0
+    //   354: aload 5
+    //   356: invokespecial 195	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler$5:<init>	(Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler;Ljava/lang/String;)V
+    //   359: invokevirtual 199	android/app/Activity:runOnUiThread	(Ljava/lang/Runnable;)V
+    //   362: return
+    //   363: aload_0
+    //   364: getfield 33	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
+    //   367: new 201	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler$6
+    //   370: dup
+    //   371: aload_0
+    //   372: invokespecial 202	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler$6:<init>	(Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler;)V
+    //   375: invokevirtual 199	android/app/Activity:runOnUiThread	(Ljava/lang/Runnable;)V
+    //   378: return
+    //   379: astore 5
+    //   381: goto -281 -> 100
+    //   384: astore 7
+    //   386: goto -305 -> 81
+    //   389: astore 5
+    //   391: aload_1
+    //   392: astore 6
+    //   394: goto -283 -> 111
+    //   397: astore 5
+    //   399: goto -301 -> 98
+    //   402: iload_2
+    //   403: sipush 137
+    //   406: if_icmpne +15 -> 421
+    //   409: iload_3
+    //   410: bipush 80
+    //   412: if_icmpne +9 -> 421
+    //   415: ldc 204
+    //   417: astore_1
+    //   418: goto -352 -> 66
+    //   421: iload_2
+    //   422: bipush 71
+    //   424: if_icmpne +15 -> 439
+    //   427: iload_3
+    //   428: bipush 73
+    //   430: if_icmpne +9 -> 439
+    //   433: ldc 206
+    //   435: astore_1
+    //   436: goto -370 -> 66
+    //   439: iload_2
+    //   440: sipush 255
+    //   443: if_icmpne +16 -> 459
+    //   446: iload_3
+    //   447: sipush 216
+    //   450: if_icmpne +9 -> 459
+    //   453: ldc 208
+    //   455: astore_1
+    //   456: goto -390 -> 66
+    //   459: bipush 82
+    //   461: iload_2
+    //   462: if_icmpne -399 -> 63
+    //   465: bipush 73
+    //   467: iload_3
+    //   468: if_icmpne -405 -> 63
+    //   471: bipush 70
+    //   473: iload 4
+    //   475: if_icmpne -412 -> 63
+    //   478: ldc 210
+    //   480: astore_1
+    //   481: goto -415 -> 66
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	457	0	this	SwiftBrowserLongClickHandler
-    //   0	457	1	paramString	String
-    //   29	407	2	i	int
-    //   35	407	3	j	int
-    //   41	408	4	k	int
-    //   22	156	5	localObject1	Object
-    //   248	1	5	localIOException1	java.io.IOException
-    //   255	70	5	localObject2	Object
-    //   373	1	5	localIOException2	java.io.IOException
-    //   1	331	6	localObject3	Object
-    //   135	214	7	str	String
-    //   11	319	8	localFile	java.io.File
+    //   0	484	0	this	SwiftBrowserLongClickHandler
+    //   0	484	1	paramString	String
+    //   31	432	2	i	int
+    //   37	432	3	j	int
+    //   43	433	4	k	int
+    //   24	331	5	localObject	Object
+    //   379	1	5	localIOException1	java.io.IOException
+    //   389	1	5	localIOException2	java.io.IOException
+    //   397	1	5	localIOException3	java.io.IOException
+    //   11	382	6	str	String
+    //   236	102	7	localFile1	java.io.File
+    //   384	1	7	localIOException4	java.io.IOException
+    //   8	328	8	localFile2	java.io.File
     // Exception table:
     //   from	to	target	type
-    //   63	68	248	java/io/IOException
-    //   13	24	253	java/io/IOException
-    //   262	267	272	java/io/IOException
-    //   13	24	278	finally
-    //   288	293	373	java/io/IOException
-    //   24	43	378	finally
-    //   24	43	382	java/io/IOException
+    //   26	45	77	finally
+    //   15	26	84	finally
+    //   15	26	379	java/io/IOException
+    //   26	45	384	java/io/IOException
+    //   66	71	389	java/io/IOException
+    //   93	98	397	java/io/IOException
   }
   
   void a(String paramString, int paramInt)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, ScannerActivity.class);
+    Intent localIntent = new Intent();
     localIntent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", paramString);
     localIntent.putExtra("detectType", paramInt);
-    localIntent.putExtra("QRDecode", true);
-    localIntent.putExtra("QRDecodeResult", paramString);
-    localIntent.putExtra("preScanResult", this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerResult);
+    localIntent.putExtra("fromPicQRDecode", true);
+    localIntent.putExtra("preScanResult", this.jdField_a_of_type_ComTencentMobileqqQrscanScannerResult);
     String str = this.jdField_a_of_type_JavaLangString;
     paramString = str;
     if (!TextUtils.isEmpty(str))
@@ -320,38 +347,38 @@ public class SwiftBrowserLongClickHandler
         paramString = "";
       }
     }
-    localIntent.putExtra("report_params", ScannerUtils.a(null, paramString, null, null, null, 5));
-    this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+    localIntent.putExtra("report_params", ((IScanUtilApi)QRoute.api(IScanUtilApi.class)).buildQRScanReportParams(null, paramString, null, null, null, 5));
+    RouteUtils.a(this.jdField_a_of_type_AndroidAppActivity, localIntent, "/qrscan/scanner");
   }
   
   public boolean a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+    ??? = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    if ((??? != null) && (((QQProgressDialog)???).isShowing())) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
     }
     for (;;)
     {
       synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        if ((TextUtils.isEmpty(this.c)) || (!this.c.equals(this.jdField_b_of_type_JavaLangString)) || (this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerResult == null)) {
-          break label142;
-        }
-        bool2 = this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerResult.d();
-        bool1 = this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerResult.c();
-        if (bool2)
+        if ((!TextUtils.isEmpty(this.c)) && (this.c.equals(this.jdField_b_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqQrscanScannerResult != null))
         {
-          a(this.jdField_b_of_type_JavaLangString, 1);
-          return true;
+          bool1 = this.jdField_a_of_type_ComTencentMobileqqQrscanScannerResult.d();
+          bool2 = this.jdField_a_of_type_ComTencentMobileqqQrscanScannerResult.c();
+          if (bool1)
+          {
+            a(this.jdField_b_of_type_JavaLangString, 1);
+            return true;
+          }
+          if (bool2)
+          {
+            a(this.jdField_b_of_type_JavaLangString, 2);
+            return true;
+          }
+          QQToast.a(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 1, 2131690116, 1).b(this.jdField_a_of_type_Int);
+          return false;
         }
       }
-      if (bool1)
-      {
-        a(this.jdField_b_of_type_JavaLangString, 2);
-        return true;
-      }
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 1, 2131690200, 1).b(this.jdField_a_of_type_Int);
-      return false;
-      label142:
       boolean bool1 = false;
       boolean bool2 = false;
     }
@@ -359,148 +386,147 @@ public class SwiftBrowserLongClickHandler
   
   public boolean a(View paramView)
   {
-    int k = 0;
-    boolean bool1 = false;
-    if ((this.jdField_a_of_type_AndroidAppActivity == null) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing()))
+    Object localObject1 = this.jdField_a_of_type_AndroidAppActivity;
+    if (localObject1 != null)
     {
-      bool1 = true;
-      return bool1;
-    }
-    Object localObject;
-    int i;
-    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a() != null))
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a();
-      paramView = ((com.tencent.smtt.sdk.WebView)localObject).getX5HitTestResult();
-      if (paramView != null)
-      {
-        i = paramView.getType();
-        if (i == 8)
-        {
-          if (!(paramView.getData() instanceof IX5WebViewBase.HitTestResult.ImageAnchorData)) {
-            break label525;
-          }
-          paramView = ((IX5WebViewBase.HitTestResult.ImageAnchorData)paramView.getData()).mPicUrl;
-        }
+      if (((Activity)localObject1).isFinishing()) {
+        return true;
       }
-    }
-    for (;;)
-    {
-      label101:
-      localObject = ((com.tencent.smtt.sdk.WebView)localObject).getX5WebViewExtension();
+      localObject1 = "";
+      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext;
+      int j = 0;
       boolean bool2;
-      label150:
-      int j;
-      if (localObject != null)
+      if ((localObject2 != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a() != null))
       {
-        localObject = (Boolean)((IX5WebViewExtension)localObject).invokeMiscMethod("supportImageQuery", new Bundle());
-        if (localObject != null)
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a();
+        IX5WebViewBase.HitTestResult localHitTestResult = ((com.tencent.smtt.sdk.WebView)localObject2).getX5HitTestResult();
+        if (localHitTestResult != null)
         {
-          bool2 = ((Boolean)localObject).booleanValue();
-          bool1 = bool2;
-          localObject = paramView;
-          j = i;
-          if (QLog.isColorLevel())
+          int k = localHitTestResult.getType();
+          if (k == 8)
           {
-            QLog.d("SwiftBrowserLongClickHandler", 2, "isSupportImageQuery:" + bool2);
-            j = i;
-            localObject = paramView;
-            bool1 = bool2;
+            paramView = (View)localObject1;
+            i = k;
+            if ((localHitTestResult.getData() instanceof IX5WebViewBase.HitTestResult.ImageAnchorData))
+            {
+              paramView = ((IX5WebViewBase.HitTestResult.ImageAnchorData)localHitTestResult.getData()).mPicUrl;
+              i = k;
+            }
+          }
+          else
+          {
+            paramView = localHitTestResult.getExtra();
+            i = k;
           }
         }
-      }
-      for (;;)
-      {
-        if ((j != 8) && (j != 5))
+        else
         {
-          QLog.e("SwiftBrowserLongClickHandler", 1, "the type of HitTestResult is not image type.");
-          return false;
-          paramView = paramView.getExtra();
-          break label101;
-          paramView = ((com.tencent.smtt.sdk.WebView)localObject).getHitTestResult();
+          paramView = ((com.tencent.smtt.sdk.WebView)localObject2).getHitTestResult();
           if (paramView == null) {
-            break;
+            break label287;
           }
           i = paramView.getType();
           paramView = paramView.getExtra();
-          break label101;
-          QLog.e("SwiftBrowserLongClickHandler", 1, "X5WebView supportImageQuery invoke result is null.");
-          bool2 = false;
-          break label150;
-          QLog.e("SwiftBrowserLongClickHandler", 1, "X5WebView extension is null. can't get ability of supportImageQuery");
-          bool1 = false;
-          localObject = paramView;
-          j = i;
-          continue;
-          if (!(paramView instanceof android.webkit.WebView)) {
-            break label513;
-          }
-          paramView = ((android.webkit.WebView)paramView).getHitTestResult();
-          if (paramView == null) {
-            break;
-          }
-          j = paramView.getType();
-          localObject = paramView.getExtra();
-          bool1 = false;
-          continue;
         }
-        if (TextUtils.isEmpty((CharSequence)localObject))
+        localObject1 = ((com.tencent.smtt.sdk.WebView)localObject2).getX5WebViewExtension();
+        if (localObject1 != null)
         {
-          QLog.e("SwiftBrowserLongClickHandler", 1, "the image url of HitTestResult is empty.");
-          return false;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("SwiftBrowserLongClickHandler", 2, "showActionSheet");
-        }
-        this.jdField_a_of_type_JavaLangString = ((String)localObject);
-        i = k;
-        if ((this.jdField_a_of_type_AndroidAppActivity instanceof TeamWorkDocEditBrowserActivity)) {
-          i = 1;
-        }
-        this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.createMenuSheet(this.jdField_a_of_type_AndroidAppActivity);
-        if (bool1) {
-          this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131690774);
-        }
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131690773);
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131690772);
-        if (i != 0) {
-          this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131693300);
-        }
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.addCancelButton(2131690800);
-        d(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnButtonClickListenerV2(new SwiftBrowserLongClickHandler.2(this));
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new SwiftBrowserLongClickHandler.3(this));
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.setCanceledOnTouchOutside(true);
-        try
-        {
-          this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
-          return true;
-        }
-        catch (Exception paramView)
-        {
-          for (;;)
+          localObject1 = (Boolean)((IX5WebViewExtension)localObject1).invokeMiscMethod("supportImageQuery", new Bundle());
+          boolean bool1;
+          if (localObject1 != null)
           {
-            paramView.printStackTrace();
+            bool1 = ((Boolean)localObject1).booleanValue();
+          }
+          else
+          {
+            QLog.e("SwiftBrowserLongClickHandler", 1, "X5WebView supportImageQuery invoke result is null.");
+            bool1 = false;
+          }
+          bool2 = bool1;
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("isSupportImageQuery:");
+            ((StringBuilder)localObject1).append(bool1);
+            QLog.d("SwiftBrowserLongClickHandler", 2, ((StringBuilder)localObject1).toString());
+            bool2 = bool1;
           }
         }
-        label513:
-        localObject = "";
-        j = 0;
-        bool1 = false;
+        else
+        {
+          QLog.e("SwiftBrowserLongClickHandler", 1, "X5WebView extension is null. can't get ability of supportImageQuery");
+          bool2 = false;
+        }
+        break label331;
+        label287:
+        return false;
       }
-      label525:
-      paramView = "";
+      else
+      {
+        if ((paramView instanceof android.webkit.WebView))
+        {
+          paramView = ((android.webkit.WebView)paramView).getHitTestResult();
+          if (paramView != null)
+          {
+            i = paramView.getType();
+            paramView = paramView.getExtra();
+          }
+          else
+          {
+            return false;
+          }
+        }
+        else
+        {
+          paramView = "";
+          i = 0;
+        }
+        bool2 = false;
+      }
+      label331:
+      if ((i != 8) && (i != 5))
+      {
+        QLog.e("SwiftBrowserLongClickHandler", 1, "the type of HitTestResult is not image type.");
+        return false;
+      }
+      if (TextUtils.isEmpty(paramView))
+      {
+        QLog.e("SwiftBrowserLongClickHandler", 1, "the image url of HitTestResult is empty.");
+        return false;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("SwiftBrowserLongClickHandler", 2, "showActionSheet");
+      }
+      this.jdField_a_of_type_JavaLangString = paramView;
+      int i = j;
+      if ((this.jdField_a_of_type_AndroidAppActivity instanceof TeamWorkDocEditBrowserActivity)) {
+        i = 1;
+      }
+      this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.createMenuSheet(this.jdField_a_of_type_AndroidAppActivity);
+      if (bool2) {
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131690702);
+      }
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131690701);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131690700);
+      if (i != 0) {
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131693254);
+      }
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.addCancelButton(2131690728);
+      d(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnButtonClickListenerV2(new SwiftBrowserLongClickHandler.2(this));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new SwiftBrowserLongClickHandler.3(this));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.setCanceledOnTouchOutside(true);
+      try
+      {
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
+        return true;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
     }
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_AndroidAppActivity = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a();
-    if ((this.jdField_a_of_type_AndroidAppActivity instanceof QQBrowserActivity)) {
-      this.jdField_a_of_type_Int = ((QQBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight();
-    }
-    ThreadManager.postImmediately(new SwiftBrowserLongClickHandler.1(this), null, true);
+    return true;
   }
   
   void b(String paramString)
@@ -547,7 +573,7 @@ public class SwiftBrowserLongClickHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler
  * JD-Core Version:    0.7.0.1
  */

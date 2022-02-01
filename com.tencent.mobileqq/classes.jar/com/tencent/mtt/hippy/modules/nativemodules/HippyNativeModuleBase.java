@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class HippyNativeModuleBase
 {
-  public HippyEngineContext mContext;
+  protected HippyEngineContext mContext;
   private HashMap<String, Integer> mEventMaps;
   
   public HippyNativeModuleBase(HippyEngineContext paramHippyEngineContext)
@@ -43,23 +43,27 @@ public class HippyNativeModuleBase
   @HippyMethod(name="removeListener")
   public void removeListener(String paramString)
   {
-    if ((this.mEventMaps == null) || (!this.mEventMaps.containsKey(paramString))) {
-      return;
-    }
-    int i = ((Integer)this.mEventMaps.get(paramString)).intValue();
-    if (i == 1)
+    HashMap localHashMap = this.mEventMaps;
+    if (localHashMap != null)
     {
-      handleRemoveListener(paramString);
+      if (!localHashMap.containsKey(paramString)) {
+        return;
+      }
+      int i = ((Integer)this.mEventMaps.get(paramString)).intValue();
+      if (i == 1)
+      {
+        handleRemoveListener(paramString);
+        this.mEventMaps.remove(paramString);
+        return;
+      }
       this.mEventMaps.remove(paramString);
-      return;
+      this.mEventMaps.put(paramString, Integer.valueOf(i - 1));
     }
-    this.mEventMaps.remove(paramString);
-    this.mEventMaps.put(paramString, Integer.valueOf(i - 1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.HippyNativeModuleBase
  * JD-Core Version:    0.7.0.1
  */

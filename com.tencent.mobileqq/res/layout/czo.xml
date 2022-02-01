@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.viewpager.widget.ViewPager android:id="@id/viewPager" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/hv2" />
+    <com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup android:orientation="horizontal" android:id="@id/hv2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip" android:layout_above="@id/cf" android:layout_centerHorizontal="true" />
+    <LinearLayout android:gravity="center|right" android:orientation="horizontal" android:id="@id/cf" android:background="@drawable/igz" android:layout_width="fill_parent" android:layout_height="@dimen/bgy" android:layout_alignParentBottom="true">
+        <TextView android:id="@id/send_btn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:text="@string/yif" android:singleLine="true" android:includeFontPadding="false" style="@style/i0" />
+    </LinearLayout>
+</merge>

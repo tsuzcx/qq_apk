@@ -9,7 +9,7 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/anim/Translation;", "Lcom/tencent/xaction/api/base/BaseAnim;", "()V", "startX", "", "startY", "tx", "getTx", "()F", "setTx", "(F)V", "txPX", "", "getTxPX", "()I", "setTxPX", "(I)V", "ty", "getTy", "setTy", "tyPX", "getTyPX", "setTyPX", "doFrameUpdate", "", "animTime", "end", "preStart", "view", "Landroid/view/View;", "XActionEngine_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/anim/Translation;", "Lcom/tencent/xaction/api/base/BaseAnim;", "()V", "startX", "", "startY", "tx", "getTx", "()F", "setTx", "(F)V", "txPX", "", "getTxPX", "()I", "setTxPX", "(I)V", "ty", "getTy", "setTy", "tyPX", "getTyPX", "setTyPX", "doFrameUpdate", "", "animTime", "preStart", "view", "Landroid/view/View;", "XActionCore_release"}, k=1, mv={1, 1, 16})
 @Keep
 public final class Translation
   extends BaseAnim
@@ -17,23 +17,26 @@ public final class Translation
   private float startX;
   private float startY;
   private float tx;
-  private transient int txPX = -1;
+  private transient int txPX = ScreenUnit.a.a();
   private float ty;
-  private transient int tyPX = -1;
+  private transient int tyPX = ScreenUnit.a.a();
   
   public void doFrameUpdate(float paramFloat)
   {
     View localView = getView();
-    if (localView != null) {
-      localView.setTranslationX(this.startX + (this.txPX - this.startX) * paramFloat);
+    float f;
+    if (localView != null)
+    {
+      f = this.startX;
+      localView.setTranslationX(f + (this.txPX - f) * paramFloat);
     }
     localView = getView();
-    if (localView != null) {
-      localView.setTranslationY(this.startY + (this.tyPX - this.startY) * paramFloat);
+    if (localView != null)
+    {
+      f = this.startY;
+      localView.setTranslationY(f + (this.tyPX - f) * paramFloat);
     }
   }
-  
-  public void end() {}
   
   public final float getTx()
   {
@@ -87,7 +90,7 @@ public final class Translation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.anim.Translation
  * JD-Core Version:    0.7.0.1
  */

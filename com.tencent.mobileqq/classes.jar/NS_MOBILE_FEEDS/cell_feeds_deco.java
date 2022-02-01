@@ -29,14 +29,15 @@ public final class cell_feeds_deco
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.decoration != null) {
-      paramJceOutputStream.write(this.decoration, 0);
+    byte[] arrayOfByte = this.decoration;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_feeds_deco
  * JD-Core Version:    0.7.0.1
  */

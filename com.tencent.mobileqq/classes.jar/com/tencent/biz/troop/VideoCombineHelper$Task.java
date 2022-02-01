@@ -28,8 +28,13 @@ public abstract class VideoCombineHelper$Task
   public File a()
   {
     int i = this.c.indexOf("_");
-    Object localObject = this.c.substring(i + 1, this.c.length());
-    localObject = new File(VideoCombineHelper.jdField_a_of_type_JavaLangString + File.separator + (String)localObject);
+    Object localObject = this.c;
+    localObject = ((String)localObject).substring(i + 1, ((String)localObject).length());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(VideoCombineHelper.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append((String)localObject);
+    localObject = new File(localStringBuilder.toString());
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdirs();
     }
@@ -40,23 +45,28 @@ public abstract class VideoCombineHelper$Task
   
   public File b()
   {
-    File localFile = new File(VideoCombineHelper.jdField_a_of_type_JavaLangString + File.separator + "cache");
-    if (!localFile.exists()) {
-      localFile.mkdirs();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(VideoCombineHelper.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append("cache");
+    localObject = new File(((StringBuilder)localObject).toString());
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
     }
-    return localFile;
+    return localObject;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task != null) {
-      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task.a();
+    Task localTask = this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task;
+    if (localTask != null) {
+      localTask.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.VideoCombineHelper.Task
  * JD-Core Version:    0.7.0.1
  */

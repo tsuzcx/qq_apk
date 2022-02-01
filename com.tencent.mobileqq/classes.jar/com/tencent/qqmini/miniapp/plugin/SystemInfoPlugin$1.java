@@ -20,23 +20,20 @@ class SystemInfoPlugin$1
       try
       {
         localJSONObject.put("detectedMsg", ((LogBean)paramArrayList.get(0)).msg);
-        this.val$req.ok(localJSONObject);
-        return;
       }
       catch (Exception paramArrayList)
       {
-        for (;;)
-        {
-          QMLog.e("SystemInfoPlugin", "loadLogBeanList - onLoaded get a Exception:", paramArrayList);
-        }
+        QMLog.e("SystemInfoPlugin", "loadLogBeanList - onLoaded get a Exception:", paramArrayList);
       }
+      this.val$req.ok(localJSONObject);
+      return;
     }
     this.val$req.fail("no errMsg detected");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.SystemInfoPlugin.1
  * JD-Core Version:    0.7.0.1
  */

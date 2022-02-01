@@ -11,10 +11,14 @@ class AsyncExitTask$2
   public void run()
   {
     QLog.d("AsyncExitTask", 1, "asyncExitRoom.quitRoom start.");
-    if (this.a != null) {
-      AsyncExitTask.a(this.this$0, this.a.quitRoom(0));
+    ??? = this.a;
+    if (??? != null) {
+      AsyncExitTask.a(this.this$0, ((QQGAudioCtrl)???).quitRoom(0));
     }
-    QLog.d("AsyncExitTask", 1, "asyncExitRoom.quitRoom end. quitResult = " + AsyncExitTask.a(this.this$0));
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("asyncExitRoom.quitRoom end. quitResult = ");
+    ((StringBuilder)???).append(AsyncExitTask.a(this.this$0));
+    QLog.d("AsyncExitTask", 1, ((StringBuilder)???).toString());
     synchronized (AsyncExitTask.a(this.this$0))
     {
       AsyncExitTask.a(this.this$0).notify();
@@ -24,7 +28,7 @@ class AsyncExitTask$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.qav.AsyncExitTask.2
  * JD-Core Version:    0.7.0.1
  */

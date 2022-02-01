@@ -1,8 +1,11 @@
 package com.tencent.mobileqq.vas;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
@@ -13,12 +16,15 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.util.Pair;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.SafeBitmapFactory;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.anim.FriendProfileCardBgDrawable;
 import com.tencent.mobileqq.activity.aio.anim.VipPendantDrawable;
 import com.tencent.mobileqq.activity.aio.anim.VipPendantDrawable.MutilePlayInfo;
 import com.tencent.mobileqq.addon.DiyPendantDrawable;
@@ -33,11 +39,15 @@ import com.tencent.mobileqq.utils.AvatarPendantUtil;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.vas.updatesystem.api.IVasQuickUpdateService;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.qphone.base.util.QLog;
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -46,12 +56,13 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
+import org.jetbrains.annotations.Nullable;
 
 public class PendantInfo
   implements VipPendantDrawable.MutilePlayInfo
 {
   static int jdField_a_of_type_Int = 1000;
-  static ConcurrentHashMap<Long, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  static ConcurrentHashMap<Long, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   static int jdField_b_of_type_Int = 20;
   public static int c;
   public static int d = 2;
@@ -89,7 +100,6 @@ public class PendantInfo
   
   static
   {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     jdField_c_of_type_Int = 1;
   }
   
@@ -112,26 +122,67 @@ public class PendantInfo
     this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache = new PendantInfo.AnimationLruCache(this, jdField_b_of_type_Int);
   }
   
+  private int a(int paramInt, Integer paramInteger)
+  {
+    int i1 = paramInt;
+    if (paramInteger != null)
+    {
+      i1 = paramInt;
+      if (paramInteger.intValue() == 0)
+      {
+        i1 = paramInt;
+        if (paramInt == 2)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("PendantInfo", 2, "static pendant, abort dynamic request");
+          }
+          this.o = 5;
+          this.jdField_b_of_type_JavaLangString = AvatarPendantUtil.b(this.jdField_a_of_type_Long, this.o);
+          StringBuilder localStringBuilder = AIOUtils.a();
+          if (this.o == 2) {
+            paramInteger = "dynamic_pendant";
+          } else {
+            paramInteger = "static_pendant";
+          }
+          localStringBuilder.append(paramInteger);
+          localStringBuilder.append("_");
+          localStringBuilder.append(this.jdField_a_of_type_Long);
+          localStringBuilder.append("_");
+          localStringBuilder.append(this.o);
+          this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+          i1 = this.o;
+        }
+      }
+    }
+    return i1;
+  }
+  
   private int a(String paramString, int paramInt1, int paramInt2)
   {
     int i1 = paramInt1;
-    String str;
+    Object localObject;
     if (paramInt2 != -1)
     {
       int i2 = paramString.indexOf(",", paramInt2 + 6);
       i1 = paramInt1;
       if (i2 != -1) {
-        str = paramString.substring(paramInt2 + 7, i2);
+        localObject = paramString.substring(paramInt2 + 7, i2);
       }
     }
     try
     {
-      i1 = Integer.parseInt(str.trim());
+      i1 = Integer.parseInt(((String)localObject).trim());
       paramInt1 = i1;
       if (QLog.isColorLevel())
       {
         paramInt1 = i1;
-        QLog.d("PendantInfo", 2, "pendant type=" + i1);
+        localObject = new StringBuilder();
+        paramInt1 = i1;
+        ((StringBuilder)localObject).append("pendant type=");
+        paramInt1 = i1;
+        ((StringBuilder)localObject).append(i1);
+        paramInt1 = i1;
+        QLog.d("PendantInfo", 2, ((StringBuilder)localObject).toString());
       }
       paramInt1 = i1;
       this.n = i1;
@@ -140,26 +191,11 @@ public class PendantInfo
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        try
-        {
-          paramInt1 = Integer.parseInt(paramString.trim());
-          if (QLog.isColorLevel()) {
-            QLog.d("PendantInfo", 2, "pendant isDiy=" + paramInt1);
-          }
-          AvatarPendantUtil.b.put(Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(paramInt1));
-          return i1;
-        }
-        catch (Exception paramString)
-        {
-          a(1, 7, 0L);
-        }
-        localException = localException;
-        a(1, 7, 0L);
-        i1 = paramInt1;
-      }
+      label142:
+      break label142;
     }
+    a(1, 7, 0L);
+    i1 = paramInt1;
     paramInt1 = paramString.indexOf("\"isDiy\":");
     if (paramInt1 != -1)
     {
@@ -168,7 +204,104 @@ public class PendantInfo
         paramString = paramString.substring(paramInt1 + 8, paramInt2);
       }
     }
+    try
+    {
+      paramInt1 = Integer.parseInt(paramString.trim());
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("pendant isDiy=");
+        paramString.append(paramInt1);
+        QLog.d("PendantInfo", 2, paramString.toString());
+      }
+      AvatarPendantUtil.b.put(Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(paramInt1));
+      return i1;
+    }
+    catch (Exception paramString)
+    {
+      label259:
+      break label259;
+    }
+    a(1, 7, 0L);
     return i1;
+  }
+  
+  @Nullable
+  private Bitmap a(BitmapFactory.Options paramOptions, String paramString, InputStream paramInputStream, Bitmap paramBitmap, IllegalArgumentException paramIllegalArgumentException)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doDecodeNext, IllegalArgumentException=");
+    localStringBuilder.append(MsfSdkUtils.getStackTraceString(paramIllegalArgumentException));
+    QLog.e("PendantInfo", 1, localStringBuilder.toString());
+    paramOptions.inBitmap = null;
+    paramOptions.inMutable = false;
+    try
+    {
+      paramOptions = SafeBitmapFactory.decodeStream(new BufferedInputStream(paramInputStream), null, paramOptions);
+      paramBitmap = paramOptions;
+    }
+    catch (Exception paramOptions)
+    {
+      paramInputStream = new StringBuilder();
+      paramInputStream.append("doDecodeNext, try not reuse bitmap, exception=");
+      paramInputStream.append(MsfSdkUtils.getStackTraceString(paramOptions));
+      QLog.e("PendantInfo", 1, paramInputStream.toString());
+    }
+    catch (OutOfMemoryError paramOptions)
+    {
+      paramInputStream = new StringBuilder();
+      paramInputStream.append("doDecodeNext, try not reuse bitmap, oom=");
+      paramInputStream.append(MsfSdkUtils.getStackTraceString(paramOptions));
+      QLog.e("PendantInfo", 1, paramInputStream.toString());
+    }
+    paramOptions = new StringBuilder();
+    paramOptions.append("doDecodeNext, maybe reuse failed, path=");
+    paramOptions.append(paramString);
+    QLog.e("PendantInfo", 1, paramOptions.toString());
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      paramOptions = new StringBuilder();
+      paramOptions.append("doDecodeNext, mRecycleBitmap width=");
+      paramOptions.append(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
+      paramOptions.append(", height=");
+      paramOptions.append(this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+      QLog.e("PendantInfo", 1, paramOptions.toString());
+    }
+    if (paramBitmap != null)
+    {
+      paramOptions = new StringBuilder();
+      paramOptions.append("doDecodeNext, bitmap width=");
+      paramOptions.append(paramBitmap.getWidth());
+      paramOptions.append(", height=");
+      paramOptions.append(paramBitmap.getHeight());
+      QLog.e("PendantInfo", 1, paramOptions.toString());
+    }
+    return paramBitmap;
+  }
+  
+  @Nullable
+  private Bitmap a(PendantInfo.SourcesBigPng paramSourcesBigPng)
+  {
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inDensity = 320;
+    localOptions.inTargetDensity = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().densityDpi;
+    if (localOptions.inDensity < localOptions.inTargetDensity) {
+      localOptions.inDensity = localOptions.inTargetDensity;
+    }
+    try
+    {
+      paramSourcesBigPng = SafeBitmapFactory.decodeStream(new BufferedInputStream(new FileInputStream(paramSourcesBigPng.jdField_a_of_type_JavaLangString)), null, localOptions);
+      return paramSourcesBigPng;
+    }
+    catch (OutOfMemoryError paramSourcesBigPng)
+    {
+      label76:
+      break label76;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("PendantInfo", 2, "decodeFile failed OOM");
+    }
+    return null;
   }
   
   private QQAppInterface a()
@@ -180,24 +313,224 @@ public class PendantInfo
     return null;
   }
   
-  private void a(Message paramMessage)
+  private BufferedInputStream a(BitmapFactory.Options paramOptions, String paramString, BufferedInputStream paramBufferedInputStream)
   {
-    long l1 = paramMessage.getData().getLong("targetId");
-    if (g == l1)
+    BufferedInputStream localBufferedInputStream = paramBufferedInputStream;
+    if (Build.VERSION.SDK_INT > 11)
     {
-      paramMessage = this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.values().iterator();
-      while (paramMessage.hasNext())
+      localBufferedInputStream = paramBufferedInputStream;
+      if (paramOptions.inDensity <= paramOptions.inTargetDensity)
       {
-        Drawable localDrawable = (Drawable)paramMessage.next();
-        if ((localDrawable != null) && ((localDrawable instanceof VipPendantDrawable))) {
-          a((VipPendantDrawable)localDrawable, l1);
+        paramBufferedInputStream = new BitmapFactory.Options();
+        paramBufferedInputStream.inJustDecodeBounds = true;
+        localBufferedInputStream = new BufferedInputStream(new FileInputStream(paramString));
+        BitmapFactory.decodeStream(localBufferedInputStream, null, paramBufferedInputStream);
+        paramString = this.jdField_a_of_type_AndroidGraphicsBitmap;
+        if ((paramString != null) && (FriendProfileCardBgDrawable.a(paramString, paramBufferedInputStream.outWidth, paramBufferedInputStream.outHeight))) {
+          paramOptions.inBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+        } else {
+          paramOptions.inBitmap = null;
+        }
+        paramOptions.inMutable = true;
+        paramOptions.inSampleSize = 1;
+      }
+    }
+    return localBufferedInputStream;
+  }
+  
+  private void a(long paramLong1, long paramLong2, File paramFile)
+  {
+    if (paramFile.exists())
+    {
+      File localFile = new File(AvatarPendantUtil.b(paramLong1, 8));
+      if (DownloaderFactory.a(paramFile, localFile, true))
+      {
+        a();
+        paramFile = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(20);
+        if (a(paramFile, paramLong2)) {
+          this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramFile);
+        }
+      }
+      else
+      {
+        if (paramFile.exists()) {
+          paramFile.delete();
+        }
+        if (localFile.exists()) {
+          localFile.delete();
         }
       }
     }
-    paramMessage = (Drawable)this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.get(Long.valueOf(l1));
-    if ((paramMessage != null) && ((paramMessage instanceof VipPendantDrawable))) {
-      a((VipPendantDrawable)paramMessage, l1);
+  }
+  
+  private void a(Message paramMessage)
+  {
+    if (paramMessage.what == 16)
+    {
+      c(paramMessage);
+      return;
     }
+    if (paramMessage.what == 17)
+    {
+      f(paramMessage);
+      return;
+    }
+    if (paramMessage.what == 18)
+    {
+      b(paramMessage);
+      return;
+    }
+    if (paramMessage.what == 19)
+    {
+      d(paramMessage);
+      return;
+    }
+    if (paramMessage.what == 20) {
+      e(paramMessage);
+    }
+  }
+  
+  /* Error */
+  private void a(File paramFile, int paramInt, String paramString)
+  {
+    // Byte code:
+    //   0: iconst_m1
+    //   1: aload_0
+    //   2: getfield 108	com/tencent/mobileqq/vas/PendantInfo:p	I
+    //   5: if_icmpne +250 -> 255
+    //   8: iload_2
+    //   9: iconst_2
+    //   10: if_icmpne +245 -> 255
+    //   13: getstatic 54	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   16: aload_0
+    //   17: getfield 104	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_Long	J
+    //   20: invokestatic 244	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   23: invokevirtual 445	java/util/concurrent/ConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
+    //   26: ifeq +85 -> 111
+    //   29: aload_0
+    //   30: getstatic 54	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   33: aload_0
+    //   34: getfield 104	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_Long	J
+    //   37: invokestatic 244	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   40: invokevirtual 449	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   43: checkcast 161	java/lang/Integer
+    //   46: invokevirtual 165	java/lang/Integer:intValue	()I
+    //   49: putfield 108	com/tencent/mobileqq/vas/PendantInfo:p	I
+    //   52: invokestatic 171	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   55: ifeq +200 -> 255
+    //   58: new 196	java/lang/StringBuilder
+    //   61: dup
+    //   62: invokespecial 235	java/lang/StringBuilder:<init>	()V
+    //   65: astore_1
+    //   66: aload_1
+    //   67: ldc_w 451
+    //   70: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   73: pop
+    //   74: aload_1
+    //   75: aload_0
+    //   76: getfield 108	com/tencent/mobileqq/vas/PendantInfo:p	I
+    //   79: invokevirtual 208	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   82: pop
+    //   83: aload_1
+    //   84: ldc_w 453
+    //   87: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   90: pop
+    //   91: aload_1
+    //   92: aload_0
+    //   93: getfield 104	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_Long	J
+    //   96: invokevirtual 205	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   99: pop
+    //   100: ldc 173
+    //   102: iconst_2
+    //   103: aload_1
+    //   104: invokevirtual 212	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   107: invokestatic 178	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   110: return
+    //   111: aload_3
+    //   112: astore 4
+    //   114: aload_3
+    //   115: ifnonnull +134 -> 249
+    //   118: aload_3
+    //   119: astore 4
+    //   121: aload_1
+    //   122: invokevirtual 393	java/io/File:exists	()Z
+    //   125: ifeq +124 -> 249
+    //   128: aload_1
+    //   129: invokestatic 459	com/tencent/mobileqq/utils/FileUtils:readFileToString	(Ljava/io/File;)Ljava/lang/String;
+    //   132: astore 4
+    //   134: goto +115 -> 249
+    //   137: new 196	java/lang/StringBuilder
+    //   140: dup
+    //   141: invokespecial 235	java/lang/StringBuilder:<init>	()V
+    //   144: astore 4
+    //   146: aload 4
+    //   148: ldc_w 461
+    //   151: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   154: pop
+    //   155: aload 4
+    //   157: aload_1
+    //   158: invokevirtual 464	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   161: pop
+    //   162: ldc 173
+    //   164: iconst_2
+    //   165: aload 4
+    //   167: invokevirtual 212	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   170: invokestatic 276	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   173: aload_3
+    //   174: astore 4
+    //   176: goto +73 -> 249
+    //   179: astore 5
+    //   181: aload_3
+    //   182: astore 4
+    //   184: invokestatic 171	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   187: ifeq +62 -> 249
+    //   190: new 196	java/lang/StringBuilder
+    //   193: dup
+    //   194: invokespecial 235	java/lang/StringBuilder:<init>	()V
+    //   197: astore 4
+    //   199: aload 4
+    //   201: ldc_w 466
+    //   204: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   207: pop
+    //   208: aload 4
+    //   210: aload_1
+    //   211: invokevirtual 464	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   214: pop
+    //   215: aload 4
+    //   217: ldc_w 468
+    //   220: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   223: pop
+    //   224: aload 4
+    //   226: aload 5
+    //   228: invokestatic 274	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   231: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   234: pop
+    //   235: ldc 173
+    //   237: iconst_2
+    //   238: aload 4
+    //   240: invokevirtual 212	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   243: invokestatic 276	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   246: aload_3
+    //   247: astore 4
+    //   249: aload_0
+    //   250: aload 4
+    //   252: invokevirtual 470	com/tencent/mobileqq/vas/PendantInfo:a	(Ljava/lang/String;)V
+    //   255: return
+    //   256: astore 4
+    //   258: goto -121 -> 137
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	261	0	this	PendantInfo
+    //   0	261	1	paramFile	File
+    //   0	261	2	paramInt	int
+    //   0	261	3	paramString	String
+    //   112	139	4	localObject	Object
+    //   256	1	4	localOutOfMemoryError	OutOfMemoryError
+    //   179	48	5	localIOException	IOException
+    // Exception table:
+    //   from	to	target	type
+    //   128	134	179	java/io/IOException
+    //   128	134	256	java/lang/OutOfMemoryError
   }
   
   static boolean a(Message paramMessage, long paramLong)
@@ -217,98 +550,219 @@ public class PendantInfo
     }
     catch (ClassCastException paramMessage)
     {
-      QLog.e("PendantInfo", 1, "pendant can not display because of system error!");
+      label42:
+      break label42;
     }
+    QLog.e("PendantInfo", 1, "pendant can not display because of system error!");
     return false;
   }
   
   private void b(Message paramMessage)
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.q = a(this.q);
-    Bitmap localBitmap;
-    long l1;
-    if ((paramMessage.obj instanceof Bitmap))
+    if ((!this.jdField_a_of_type_Boolean) && (this.o == 2) && (this.r > 0))
     {
-      Object localObject = (Bitmap)paramMessage.obj;
-      if ((localObject != null) && (b() != localObject))
+      b(paramMessage.getData().getLong("targetId"));
+      return;
+    }
+    if ((!this.jdField_a_of_type_Boolean) && (this.o == 1)) {
+      d();
+    }
+  }
+  
+  private void c(long paramLong)
+  {
+    try
+    {
+      if (g == paramLong)
       {
-        localBitmap = a();
-        if (localBitmap != null)
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.values().iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-          if ((localBitmap.isMutable()) && (Build.VERSION.SDK_INT > 11)) {
-            this.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
+          localObject2 = (Drawable)((Iterator)localObject1).next();
+          if (localObject2 != null) {
+            ((Drawable)localObject2).invalidateSelf();
           }
         }
-        else {
-          a((Bitmap)localObject);
+      }
+      Object localObject1 = (Drawable)this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.get(Long.valueOf(paramLong));
+      if (localObject1 != null)
+      {
+        ((Drawable)localObject1).invalidateSelf();
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      Object localObject2;
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("handleMessage, exception:");
+        ((StringBuilder)localObject2).append(localException.getMessage());
+        QLog.d("PendantInfo", 2, ((StringBuilder)localObject2).toString());
+      }
+    }
+  }
+  
+  private void c(long paramLong, int paramInt)
+  {
+    int i1 = this.n;
+    Object localObject;
+    if ((i1 != -1) && (this.p != -1))
+    {
+      if (i1 != 0)
+      {
+        localObject = this.jdField_a_of_type_MqqOsMqqHandler;
+        if (localObject != null)
+        {
+          localObject = ((MqqHandler)localObject).obtainMessage(20);
+          if (a((Message)localObject, paramLong)) {
+            this.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)localObject);
+          }
+        }
+      }
+    }
+    else
+    {
+      if (a(new File(AvatarPendantUtil.b(this.jdField_a_of_type_Long, 4)), paramInt) > -1) {
+        i1 = 1;
+      } else {
+        i1 = 0;
+      }
+      if (i1 != 0)
+      {
+        if (this.n == 0)
+        {
+          QLog.d("PendantInfo", 2, "static type request dynamic resources");
+          return;
+        }
+        localObject = this.jdField_a_of_type_MqqOsMqqHandler;
+        if (localObject != null)
+        {
+          localObject = ((MqqHandler)localObject).obtainMessage(20);
+          if (a((Message)localObject, paramLong)) {
+            this.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)localObject);
+          }
         }
       }
       else
       {
-        l1 = paramMessage.getData().getLong("targetId");
-        try
-        {
-          if (g != l1) {
-            break label286;
-          }
-          paramMessage = this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.values().iterator();
-          while (paramMessage.hasNext())
-          {
-            localObject = (Drawable)paramMessage.next();
-            if (localObject != null) {
-              ((Drawable)localObject).invalidateSelf();
-            }
-          }
-          if (2 != this.o) {
-            break label272;
-          }
-        }
-        catch (Exception paramMessage)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("PendantInfo", 2, "handleMessage, exception:" + paramMessage.getMessage());
-          }
-        }
-        label190:
-        if (!this.jdField_c_of_type_Boolean) {
-          break label357;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("PendantInfo", 2, "cancel decode pendant in market:" + this.jdField_a_of_type_Long);
-        }
-        this.jdField_c_of_type_Boolean = false;
-        l1 = g;
-        this.q = 0;
-        this.r = 3;
+        a(paramInt, paramLong);
       }
     }
-    label272:
-    label286:
-    label357:
-    for (;;)
+  }
+  
+  private void c(Message paramMessage)
+  {
+    long l1 = paramMessage.getData().getLong("targetId");
+    if (g == l1)
     {
-      if (this.r == 0) {
-        this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$DecodeNextFrameTask = null;
-      }
-      do
+      paramMessage = this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.values().iterator();
+      while (paramMessage.hasNext())
       {
-        return;
-        localBitmap.recycle();
-        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-        break;
-        paramMessage = (Drawable)this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.get(Long.valueOf(l1));
-        if (paramMessage == null) {
-          break label190;
+        Drawable localDrawable = (Drawable)paramMessage.next();
+        if (localDrawable != null) {
+          localDrawable.invalidateSelf();
         }
-        paramMessage.invalidateSelf();
-        break label190;
+      }
+    }
+    paramMessage = (Drawable)this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.get(Long.valueOf(l1));
+    if (paramMessage != null) {
+      paramMessage.invalidateSelf();
+    }
+  }
+  
+  private void d(Message paramMessage)
+  {
+    long l1 = paramMessage.getData().getLong("targetId");
+    if (g == l1)
+    {
+      paramMessage = this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.values().iterator();
+      while (paramMessage.hasNext())
+      {
+        Drawable localDrawable = (Drawable)paramMessage.next();
+        if (localDrawable != null) {
+          a(localDrawable, true, 0L);
+        }
+      }
+    }
+    paramMessage = (Drawable)this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.get(Long.valueOf(l1));
+    if (paramMessage != null) {
+      a(paramMessage, false, 0L);
+    }
+  }
+  
+  private void e(Message paramMessage)
+  {
+    long l1 = paramMessage.getData().getLong("targetId");
+    if (g == l1)
+    {
+      paramMessage = this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.values().iterator();
+      while (paramMessage.hasNext())
+      {
+        Drawable localDrawable = (Drawable)paramMessage.next();
+        if ((localDrawable != null) && ((localDrawable instanceof VipPendantDrawable))) {
+          a((VipPendantDrawable)localDrawable, l1);
+        }
+      }
+    }
+    paramMessage = (Drawable)this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.get(Long.valueOf(l1));
+    if ((paramMessage != null) && ((paramMessage instanceof VipPendantDrawable))) {
+      a((VipPendantDrawable)paramMessage, l1);
+    }
+  }
+  
+  private void f(Message paramMessage)
+  {
+    this.jdField_b_of_type_Boolean = true;
+    this.q = a(this.q);
+    if ((paramMessage.obj instanceof Bitmap))
+    {
+      localObject = (Bitmap)paramMessage.obj;
+      if ((localObject != null) && (b() != localObject))
+      {
+        Bitmap localBitmap = a();
+        if (localBitmap != null) {
+          if ((localBitmap.isMutable()) && (Build.VERSION.SDK_INT > 11))
+          {
+            this.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
+          }
+          else
+          {
+            localBitmap.recycle();
+            this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+          }
+        }
+        a((Bitmap)localObject);
+      }
+      long l1 = paramMessage.getData().getLong("targetId");
+      c(l1);
+      if (2 == this.o)
+      {
+        if (this.jdField_c_of_type_Boolean)
+        {
+          paramMessage = new StringBuilder();
+          paramMessage.append("cancel decode pendant in market:");
+          paramMessage.append(this.jdField_a_of_type_Long);
+          QLog.d("PendantInfo", 2, paramMessage.toString());
+          this.jdField_c_of_type_Boolean = false;
+          l1 = g;
+          this.q = 0;
+          this.r = 3;
+        }
+        if (this.r == 0)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$DecodeNextFrameTask = null;
+          return;
+        }
         b(l1);
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("PendantInfo", 2, "wrong type , msg.obj = " + paramMessage.obj.getClass());
+      }
       return;
     }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("wrong type , msg.obj = ");
+    ((StringBuilder)localObject).append(paramMessage.obj.getClass());
+    QLog.d("PendantInfo", 2, ((StringBuilder)localObject).toString());
   }
   
   protected int a(int paramInt)
@@ -323,110 +777,49 @@ public class PendantInfo
   
   int a(File paramFile, int paramInt)
   {
-    int i1;
-    if (paramFile == null)
-    {
-      i1 = -1;
-      return i1;
+    if (paramFile == null) {
+      return -1;
     }
-    Integer localInteger = (Integer)AvatarPendantUtil.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(this.jdField_a_of_type_Long));
-    Object localObject1 = null;
-    Object localObject2;
-    if ((paramFile.exists()) && ((localInteger == null) || (-1 == this.n)))
-    {
-      localObject2 = FileUtils.a(paramFile);
-      if (localObject2 != null)
+    Integer localInteger2 = (Integer)AvatarPendantUtil.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(this.jdField_a_of_type_Long));
+    Object localObject3 = null;
+    Object localObject2 = null;
+    Integer localInteger1 = localInteger2;
+    Object localObject1 = localObject3;
+    if (paramFile.exists()) {
+      if (localInteger2 != null)
       {
-        localObject1 = new String((byte[])localObject2);
-        i1 = a((String)localObject1, -2147483648, ((String)localObject1).indexOf("\"type\":"));
-        label88:
+        localInteger1 = localInteger2;
+        localObject1 = localObject3;
+        if (-1 != this.n) {}
+      }
+      else
+      {
+        localObject1 = FileUtils.fileToBytes(paramFile);
+        int i1;
+        if (localObject1 != null)
+        {
+          localObject1 = new String((byte[])localObject1);
+          i1 = a((String)localObject1, -2147483648, ((String)localObject1).indexOf("\"type\":"));
+        }
+        else
+        {
+          i1 = -2147483648;
+          localObject1 = localObject2;
+        }
         if (i1 == -2147483648)
         {
           paramFile.delete();
           a(1, 7, 0L);
+          localInteger1 = localInteger2;
         }
-      }
-    }
-    for (;;)
-    {
-      if ((-1 == this.p) && (paramInt == 2))
-      {
-        if (!jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(this.jdField_a_of_type_Long))) {
-          break label348;
-        }
-        this.p = ((Integer)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(this.jdField_a_of_type_Long))).intValue();
-        if (QLog.isColorLevel()) {
-          QLog.d("PendantInfo", 2, "parsePendantConfig, read interval from cache=" + this.p + ", id=" + this.jdField_a_of_type_Long);
-        }
-      }
-      i1 = paramInt;
-      if (localInteger == null) {
-        break;
-      }
-      i1 = paramInt;
-      if (localInteger.intValue() != 0) {
-        break;
-      }
-      i1 = paramInt;
-      if (paramInt != 2) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PendantInfo", 2, "static pendant, abort dynamic request");
-      }
-      this.o = 5;
-      this.jdField_b_of_type_JavaLangString = AvatarPendantUtil.b(this.jdField_a_of_type_Long, this.o);
-      localObject1 = AIOUtils.a();
-      if (this.o == 2) {}
-      for (paramFile = "dynamic_pendant";; paramFile = "static_pendant") {
-        for (;;)
+        else
         {
-          this.jdField_a_of_type_JavaLangString = (paramFile + "_" + this.jdField_a_of_type_Long + "_" + this.o);
-          return this.o;
-          localInteger = (Integer)AvatarPendantUtil.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(this.jdField_a_of_type_Long));
-          break;
-          label348:
-          localObject2 = localObject1;
-          if (localObject1 == null)
-          {
-            localObject2 = localObject1;
-            if (!paramFile.exists()) {}
-          }
-          try
-          {
-            localObject2 = FileUtils.b(paramFile);
-            a((String)localObject2);
-          }
-          catch (IOException localIOException)
-          {
-            for (;;)
-            {
-              localObject2 = localObject1;
-              if (QLog.isColorLevel())
-              {
-                QLog.e("PendantInfo", 2, "parsePendantConfig, read config file exception: " + paramFile + ", " + MsfSdkUtils.getStackTraceString(localIOException));
-                localObject2 = localObject1;
-              }
-            }
-          }
-          catch (OutOfMemoryError localOutOfMemoryError)
-          {
-            for (;;)
-            {
-              Object localObject3 = localObject1;
-              if (QLog.isColorLevel())
-              {
-                QLog.e("PendantInfo", 2, "parsePendantConfig, read config file oom: " + paramFile);
-                localObject3 = localObject1;
-              }
-            }
-          }
+          localInteger1 = (Integer)AvatarPendantUtil.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(this.jdField_a_of_type_Long));
         }
       }
-      i1 = -2147483648;
-      break label88;
-      localObject1 = null;
     }
+    a(paramFile, paramInt, (String)localObject1);
+    return a(paramInt, localInteger1);
   }
   
   public Bitmap a()
@@ -434,568 +827,183 @@ public class PendantInfo
     return b();
   }
   
-  /* Error */
-  @android.annotation.TargetApi(11)
+  @TargetApi(11)
   protected Bitmap a(int paramInt1, Object paramObject, int paramInt2)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 6
-    //   3: aconst_null
-    //   4: astore 7
-    //   6: iload_1
-    //   7: iconst_2
-    //   8: if_icmpne +638 -> 646
-    //   11: aload_2
-    //   12: ifnonnull +10 -> 22
-    //   15: aload_0
-    //   16: iconst_1
-    //   17: putfield 85	com/tencent/mobileqq/vas/PendantInfo:jdField_b_of_type_Boolean	Z
-    //   20: aconst_null
-    //   21: areturn
-    //   22: new 447	android/graphics/BitmapFactory$Options
-    //   25: dup
-    //   26: invokespecial 448	android/graphics/BitmapFactory$Options:<init>	()V
-    //   29: astore 11
-    //   31: aload_2
-    //   32: checkcast 449	[Ljava/lang/String;
-    //   35: checkcast 449	[Ljava/lang/String;
-    //   38: astore_2
-    //   39: aload_2
-    //   40: iload_3
-    //   41: iconst_1
-    //   42: iadd
-    //   43: aload_2
-    //   44: arraylength
-    //   45: irem
-    //   46: aaload
-    //   47: astore 10
-    //   49: aload 11
-    //   51: sipush 320
-    //   54: putfield 452	android/graphics/BitmapFactory$Options:inDensity	I
-    //   57: aload 11
-    //   59: invokestatic 240	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   62: invokevirtual 456	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
-    //   65: invokevirtual 462	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
-    //   68: getfield 467	android/util/DisplayMetrics:densityDpi	I
-    //   71: putfield 470	android/graphics/BitmapFactory$Options:inTargetDensity	I
-    //   74: aload 11
-    //   76: getfield 452	android/graphics/BitmapFactory$Options:inDensity	I
-    //   79: aload 11
-    //   81: getfield 470	android/graphics/BitmapFactory$Options:inTargetDensity	I
-    //   84: if_icmpge +13 -> 97
-    //   87: aload 11
-    //   89: aload 11
-    //   91: getfield 470	android/graphics/BitmapFactory$Options:inTargetDensity	I
-    //   94: putfield 452	android/graphics/BitmapFactory$Options:inDensity	I
-    //   97: new 472	java/io/FileInputStream
-    //   100: dup
-    //   101: aload 10
-    //   103: invokespecial 474	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   106: astore 9
-    //   108: getstatic 329	android/os/Build$VERSION:SDK_INT	I
-    //   111: bipush 11
-    //   113: if_icmple +655 -> 768
-    //   116: aload 11
-    //   118: getfield 452	android/graphics/BitmapFactory$Options:inDensity	I
-    //   121: aload 11
-    //   123: getfield 470	android/graphics/BitmapFactory$Options:inTargetDensity	I
-    //   126: if_icmpgt +642 -> 768
-    //   129: new 447	android/graphics/BitmapFactory$Options
-    //   132: dup
-    //   133: invokespecial 448	android/graphics/BitmapFactory$Options:<init>	()V
-    //   136: astore 8
-    //   138: aload 8
-    //   140: iconst_1
-    //   141: putfield 477	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   144: new 479	java/io/BufferedInputStream
-    //   147: dup
-    //   148: new 472	java/io/FileInputStream
-    //   151: dup
-    //   152: aload 10
-    //   154: invokespecial 474	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   157: invokespecial 482	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   160: astore_2
-    //   161: aload_2
-    //   162: astore 5
-    //   164: aload_2
-    //   165: astore 4
-    //   167: aload_2
-    //   168: aconst_null
-    //   169: aload 8
-    //   171: invokestatic 488	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   174: pop
-    //   175: aload_2
-    //   176: astore 5
-    //   178: aload_2
-    //   179: astore 4
-    //   181: aload_0
-    //   182: getfield 331	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   185: ifnull +124 -> 309
-    //   188: aload_2
-    //   189: astore 5
-    //   191: aload_2
-    //   192: astore 4
-    //   194: aload_0
-    //   195: getfield 331	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   198: aload 8
-    //   200: getfield 491	android/graphics/BitmapFactory$Options:outWidth	I
-    //   203: aload 8
-    //   205: getfield 494	android/graphics/BitmapFactory$Options:outHeight	I
-    //   208: invokestatic 499	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:a	(Landroid/graphics/Bitmap;II)Z
-    //   211: ifeq +98 -> 309
-    //   214: aload_2
-    //   215: astore 5
-    //   217: aload_2
-    //   218: astore 4
-    //   220: aload 11
-    //   222: aload_0
-    //   223: getfield 331	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   226: putfield 502	android/graphics/BitmapFactory$Options:inBitmap	Landroid/graphics/Bitmap;
-    //   229: aload_2
-    //   230: astore 5
-    //   232: aload_2
-    //   233: astore 4
-    //   235: aload 11
-    //   237: iconst_1
-    //   238: putfield 505	android/graphics/BitmapFactory$Options:inMutable	Z
-    //   241: aload_2
-    //   242: astore 5
-    //   244: aload_2
-    //   245: astore 4
-    //   247: aload 11
-    //   249: iconst_1
-    //   250: putfield 508	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   253: aload_2
-    //   254: astore 5
-    //   256: aload_2
-    //   257: astore 4
-    //   259: new 479	java/io/BufferedInputStream
-    //   262: dup
-    //   263: aload 9
-    //   265: invokespecial 482	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   268: aconst_null
-    //   269: aload 11
-    //   271: invokestatic 511	com/tencent/image/SafeBitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   274: astore 8
-    //   276: aload 8
-    //   278: astore 4
-    //   280: aload_2
-    //   281: astore 5
-    //   283: aload 5
-    //   285: ifnull +8 -> 293
-    //   288: aload 5
-    //   290: invokevirtual 514	java/io/BufferedInputStream:close	()V
-    //   293: aload 9
-    //   295: invokevirtual 517	java/io/InputStream:close	()V
-    //   298: aload 4
-    //   300: areturn
-    //   301: astore_2
-    //   302: aload_2
-    //   303: invokevirtual 520	java/io/IOException:printStackTrace	()V
-    //   306: aload 4
-    //   308: areturn
-    //   309: aload_2
-    //   310: astore 5
-    //   312: aload_2
-    //   313: astore 4
-    //   315: aload 11
-    //   317: aconst_null
-    //   318: putfield 502	android/graphics/BitmapFactory$Options:inBitmap	Landroid/graphics/Bitmap;
-    //   321: goto -92 -> 229
-    //   324: astore_2
-    //   325: ldc 191
-    //   327: iconst_1
-    //   328: new 193	java/lang/StringBuilder
-    //   331: dup
-    //   332: invokespecial 194	java/lang/StringBuilder:<init>	()V
-    //   335: ldc_w 522
-    //   338: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   341: aload_2
-    //   342: invokestatic 435	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   345: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   348: invokevirtual 206	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   351: invokestatic 308	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   354: aload 7
-    //   356: astore 4
-    //   358: goto -75 -> 283
-    //   361: astore 5
-    //   363: aconst_null
-    //   364: astore_2
-    //   365: ldc 191
-    //   367: iconst_1
-    //   368: new 193	java/lang/StringBuilder
-    //   371: dup
-    //   372: invokespecial 194	java/lang/StringBuilder:<init>	()V
-    //   375: ldc_w 524
-    //   378: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   381: aload 5
-    //   383: invokestatic 435	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   386: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   389: invokevirtual 206	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   392: invokestatic 308	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   395: aload 11
-    //   397: aconst_null
-    //   398: putfield 502	android/graphics/BitmapFactory$Options:inBitmap	Landroid/graphics/Bitmap;
-    //   401: aload 11
-    //   403: iconst_0
-    //   404: putfield 505	android/graphics/BitmapFactory$Options:inMutable	Z
-    //   407: new 479	java/io/BufferedInputStream
-    //   410: dup
-    //   411: aload 9
-    //   413: invokespecial 482	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   416: aconst_null
-    //   417: aload 11
-    //   419: invokestatic 511	com/tencent/image/SafeBitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   422: astore 4
-    //   424: aload 4
-    //   426: astore 6
-    //   428: ldc 191
-    //   430: iconst_1
-    //   431: new 193	java/lang/StringBuilder
-    //   434: dup
-    //   435: invokespecial 194	java/lang/StringBuilder:<init>	()V
-    //   438: ldc_w 526
-    //   441: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   444: aload 10
-    //   446: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   449: invokevirtual 206	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   452: invokestatic 308	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   455: aload_0
-    //   456: getfield 331	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   459: ifnull +51 -> 510
-    //   462: ldc 191
-    //   464: iconst_1
-    //   465: new 193	java/lang/StringBuilder
-    //   468: dup
-    //   469: invokespecial 194	java/lang/StringBuilder:<init>	()V
-    //   472: ldc_w 528
-    //   475: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   478: aload_0
-    //   479: getfield 331	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   482: invokevirtual 531	android/graphics/Bitmap:getWidth	()I
-    //   485: invokevirtual 203	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   488: ldc_w 533
-    //   491: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   494: aload_0
-    //   495: getfield 331	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   498: invokevirtual 536	android/graphics/Bitmap:getHeight	()I
-    //   501: invokevirtual 203	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   504: invokevirtual 206	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   507: invokestatic 308	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   510: aload 6
-    //   512: astore 4
-    //   514: aload_2
-    //   515: astore 5
-    //   517: aload 6
-    //   519: ifnull -236 -> 283
-    //   522: ldc 191
-    //   524: iconst_1
-    //   525: new 193	java/lang/StringBuilder
-    //   528: dup
-    //   529: invokespecial 194	java/lang/StringBuilder:<init>	()V
-    //   532: ldc_w 538
-    //   535: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   538: aload 6
-    //   540: invokevirtual 531	android/graphics/Bitmap:getWidth	()I
-    //   543: invokevirtual 203	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   546: ldc_w 533
-    //   549: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   552: aload 6
-    //   554: invokevirtual 536	android/graphics/Bitmap:getHeight	()I
-    //   557: invokevirtual 203	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   560: invokevirtual 206	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   563: invokestatic 308	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   566: aload 6
-    //   568: astore 4
-    //   570: aload_2
-    //   571: astore 5
-    //   573: goto -290 -> 283
-    //   576: astore 4
-    //   578: ldc 191
-    //   580: iconst_1
-    //   581: new 193	java/lang/StringBuilder
-    //   584: dup
-    //   585: invokespecial 194	java/lang/StringBuilder:<init>	()V
-    //   588: ldc_w 540
-    //   591: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   594: aload 4
-    //   596: invokestatic 435	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   599: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   602: invokevirtual 206	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   605: invokestatic 308	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   608: goto -180 -> 428
-    //   611: astore 4
-    //   613: ldc 191
-    //   615: iconst_1
-    //   616: new 193	java/lang/StringBuilder
-    //   619: dup
-    //   620: invokespecial 194	java/lang/StringBuilder:<init>	()V
-    //   623: ldc_w 542
-    //   626: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   629: aload 4
-    //   631: invokestatic 435	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   634: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   637: invokevirtual 206	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   640: invokestatic 308	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   643: goto -215 -> 428
-    //   646: new 447	android/graphics/BitmapFactory$Options
-    //   649: dup
-    //   650: invokespecial 448	android/graphics/BitmapFactory$Options:<init>	()V
-    //   653: astore 4
-    //   655: aload_2
-    //   656: checkcast 544	com/tencent/mobileqq/vas/PendantInfo$SourcesBigPng
-    //   659: astore_2
-    //   660: aload 4
-    //   662: sipush 320
-    //   665: putfield 452	android/graphics/BitmapFactory$Options:inDensity	I
-    //   668: aload 4
-    //   670: invokestatic 240	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   673: invokevirtual 456	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
-    //   676: invokevirtual 462	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
-    //   679: getfield 467	android/util/DisplayMetrics:densityDpi	I
-    //   682: putfield 470	android/graphics/BitmapFactory$Options:inTargetDensity	I
-    //   685: aload 4
-    //   687: getfield 452	android/graphics/BitmapFactory$Options:inDensity	I
-    //   690: aload 4
-    //   692: getfield 470	android/graphics/BitmapFactory$Options:inTargetDensity	I
-    //   695: if_icmpge +13 -> 708
-    //   698: aload 4
-    //   700: aload 4
-    //   702: getfield 470	android/graphics/BitmapFactory$Options:inTargetDensity	I
-    //   705: putfield 452	android/graphics/BitmapFactory$Options:inDensity	I
-    //   708: new 479	java/io/BufferedInputStream
-    //   711: dup
-    //   712: new 472	java/io/FileInputStream
-    //   715: dup
-    //   716: aload_2
-    //   717: getfield 545	com/tencent/mobileqq/vas/PendantInfo$SourcesBigPng:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   720: invokespecial 474	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   723: invokespecial 482	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   726: aconst_null
-    //   727: aload 4
-    //   729: invokestatic 511	com/tencent/image/SafeBitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   732: astore_2
-    //   733: aload_2
-    //   734: areturn
-    //   735: astore_2
-    //   736: invokestatic 189	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   739: ifeq -719 -> 20
-    //   742: ldc 191
-    //   744: iconst_2
-    //   745: ldc_w 547
-    //   748: invokestatic 549	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   751: aconst_null
-    //   752: areturn
-    //   753: astore 5
-    //   755: aload 4
-    //   757: astore_2
-    //   758: goto -393 -> 365
-    //   761: astore_2
-    //   762: aconst_null
-    //   763: astore 5
-    //   765: goto -440 -> 325
-    //   768: aconst_null
-    //   769: astore_2
-    //   770: goto -517 -> 253
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	773	0	this	PendantInfo
-    //   0	773	1	paramInt1	int
-    //   0	773	2	paramObject	Object
-    //   0	773	3	paramInt2	int
-    //   165	404	4	localObject1	Object
-    //   576	19	4	localOutOfMemoryError	OutOfMemoryError
-    //   611	19	4	localException	Exception
-    //   653	103	4	localOptions1	android.graphics.BitmapFactory.Options
-    //   162	149	5	localObject2	Object
-    //   361	21	5	localIllegalArgumentException1	java.lang.IllegalArgumentException
-    //   515	57	5	localObject3	Object
-    //   753	1	5	localIllegalArgumentException2	java.lang.IllegalArgumentException
-    //   763	1	5	localObject4	Object
-    //   1	566	6	localObject5	Object
-    //   4	351	7	localObject6	Object
-    //   136	141	8	localObject7	Object
-    //   106	306	9	localFileInputStream	java.io.FileInputStream
-    //   47	398	10	str	String
-    //   29	389	11	localOptions2	android.graphics.BitmapFactory.Options
-    // Exception table:
-    //   from	to	target	type
-    //   288	293	301	java/io/IOException
-    //   293	298	301	java/io/IOException
-    //   167	175	324	java/lang/OutOfMemoryError
-    //   181	188	324	java/lang/OutOfMemoryError
-    //   194	214	324	java/lang/OutOfMemoryError
-    //   220	229	324	java/lang/OutOfMemoryError
-    //   235	241	324	java/lang/OutOfMemoryError
-    //   247	253	324	java/lang/OutOfMemoryError
-    //   259	276	324	java/lang/OutOfMemoryError
-    //   315	321	324	java/lang/OutOfMemoryError
-    //   108	161	361	java/lang/IllegalArgumentException
-    //   407	424	576	java/lang/OutOfMemoryError
-    //   407	424	611	java/lang/Exception
-    //   708	733	735	java/lang/OutOfMemoryError
-    //   167	175	753	java/lang/IllegalArgumentException
-    //   181	188	753	java/lang/IllegalArgumentException
-    //   194	214	753	java/lang/IllegalArgumentException
-    //   220	229	753	java/lang/IllegalArgumentException
-    //   235	241	753	java/lang/IllegalArgumentException
-    //   247	253	753	java/lang/IllegalArgumentException
-    //   259	276	753	java/lang/IllegalArgumentException
-    //   315	321	753	java/lang/IllegalArgumentException
-    //   108	161	761	java/lang/OutOfMemoryError
+    if (paramInt1 == 2)
+    {
+      if (paramObject == null)
+      {
+        this.jdField_b_of_type_Boolean = true;
+        return null;
+      }
+      Object localObject3 = new BitmapFactory.Options();
+      paramObject = (String[])paramObject;
+      String str = paramObject[((paramInt2 + 1) % paramObject.length)];
+      ((BitmapFactory.Options)localObject3).inDensity = 320;
+      ((BitmapFactory.Options)localObject3).inTargetDensity = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().densityDpi;
+      if (((BitmapFactory.Options)localObject3).inDensity < ((BitmapFactory.Options)localObject3).inTargetDensity) {
+        ((BitmapFactory.Options)localObject3).inDensity = ((BitmapFactory.Options)localObject3).inTargetDensity;
+      }
+      FileInputStream localFileInputStream = new FileInputStream(str);
+      Object localObject2 = null;
+      try
+      {
+        paramObject = a((BitmapFactory.Options)localObject3, str, null);
+        try
+        {
+          Bitmap localBitmap1 = SafeBitmapFactory.decodeStream(new BufferedInputStream(localFileInputStream), null, (BitmapFactory.Options)localObject3);
+        }
+        catch (IllegalArgumentException localIllegalArgumentException1) {}catch (OutOfMemoryError localOutOfMemoryError1) {}
+        Bitmap localBitmap2;
+        localObject3 = new StringBuilder();
+      }
+      catch (IllegalArgumentException localIllegalArgumentException2)
+      {
+        paramObject = null;
+        localBitmap2 = a((BitmapFactory.Options)localObject3, str, localFileInputStream, null, localIllegalArgumentException2);
+      }
+      catch (OutOfMemoryError localOutOfMemoryError2)
+      {
+        paramObject = null;
+      }
+      ((StringBuilder)localObject3).append("doDecodeNext, oom=");
+      ((StringBuilder)localObject3).append(MsfSdkUtils.getStackTraceString(localOutOfMemoryError2));
+      QLog.e("PendantInfo", 1, ((StringBuilder)localObject3).toString());
+      Object localObject1 = localObject2;
+      if (paramObject != null) {}
+      try
+      {
+        paramObject.close();
+        localFileInputStream.close();
+        return localObject1;
+      }
+      catch (IOException paramObject)
+      {
+        paramObject.printStackTrace();
+        return localObject1;
+      }
+    }
+    return a((PendantInfo.SourcesBigPng)paramObject);
   }
   
   public Drawable a(int paramInt1, long paramLong, String paramString, int paramInt2)
   {
     this.o = paramInt1;
-    StringBuilder localStringBuilder = AIOUtils.a();
-    Object localObject;
-    if (this.o == 2)
-    {
-      localObject = "dynamic_pendant";
-      this.jdField_a_of_type_JavaLangString = ((String)localObject + "_" + this.jdField_a_of_type_Long + "_" + this.o);
-      localObject = (Drawable)this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.get(Long.valueOf(paramLong));
-      if ((TextUtils.isEmpty(paramString)) || (paramInt2 <= 0)) {
-        break label205;
-      }
-      if ((localObject != null) && ((localObject instanceof DiyPendantDrawable))) {
-        break label256;
-      }
-      localObject = paramString + "_" + paramInt2;
-      paramString = new DiyPendantDrawable(BaseApplicationImpl.getApplication().getResources());
-      paramString.b((String)localObject);
-      paramString.a(this);
-      this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.put(Long.valueOf(paramLong), paramString);
+    Object localObject2 = AIOUtils.a();
+    Object localObject1;
+    if (this.o == 2) {
+      localObject1 = "dynamic_pendant";
+    } else {
+      localObject1 = "static_pendant";
     }
-    label256:
-    for (;;)
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("_");
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject2).append("_");
+    ((StringBuilder)localObject2).append(this.o);
+    this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
+    localObject2 = (Drawable)this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.get(Long.valueOf(paramLong));
+    if ((!TextUtils.isEmpty(paramString)) && (paramInt2 > 0))
     {
-      ThreadManager.post(new PendantInfo.2(this, paramInt1, paramLong, paramString), 8, null, true);
-      return paramString;
-      localObject = "static_pendant";
-      break;
-      label205:
-      if ((localObject == null) || ((localObject instanceof DiyPendantDrawable)))
+      if (localObject2 != null)
       {
-        paramString = new VipPendantDrawable(BaseApplicationImpl.getApplication().getResources());
-        paramString.a(this);
-        this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.put(Long.valueOf(paramLong), paramString);
+        localObject1 = localObject2;
+        if ((localObject2 instanceof DiyPendantDrawable)) {}
       }
       else
       {
-        paramString = (String)localObject;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramString);
+        ((StringBuilder)localObject1).append("_");
+        ((StringBuilder)localObject1).append(paramInt2);
+        paramString = ((StringBuilder)localObject1).toString();
+        localObject1 = new DiyPendantDrawable(BaseApplicationImpl.getApplication().getResources());
+        ((DiyPendantDrawable)localObject1).b(paramString);
+        ((DiyPendantDrawable)localObject1).a(this);
+        this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.put(Long.valueOf(paramLong), localObject1);
       }
     }
+    else if (localObject2 != null)
+    {
+      localObject1 = localObject2;
+      if (!(localObject2 instanceof DiyPendantDrawable)) {}
+    }
+    else
+    {
+      localObject1 = new VipPendantDrawable(BaseApplicationImpl.getApplication().getResources());
+      ((VipPendantDrawable)localObject1).a(this);
+      this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.put(Long.valueOf(paramLong), localObject1);
+    }
+    ThreadManager.post(new PendantInfo.2(this, paramInt1, paramLong, (Drawable)localObject1), 8, null, true);
+    return localObject1;
   }
   
-  /* Error */
   void a()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 114	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   6: astore_3
-    //   7: aload_3
-    //   8: ifnull +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: getfield 106	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_Long	J
-    //   18: bipush 8
-    //   20: invokestatic 408	com/tencent/mobileqq/utils/AvatarPendantUtil:b	(JI)Ljava/lang/String;
-    //   23: astore_3
-    //   24: aload_3
-    //   25: invokestatic 584	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Z
-    //   28: ifeq -17 -> 11
-    //   31: aload_3
-    //   32: invokestatic 587	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Ljava/util/ArrayList;
-    //   35: astore 4
-    //   37: aload 4
-    //   39: invokevirtual 592	java/util/ArrayList:size	()I
-    //   42: ifle -31 -> 11
-    //   45: aload_0
-    //   46: aload 4
-    //   48: invokevirtual 592	java/util/ArrayList:size	()I
-    //   51: anewarray 165	java/lang/String
-    //   54: putfield 114	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   57: new 193	java/lang/StringBuilder
-    //   60: dup
-    //   61: invokespecial 194	java/lang/StringBuilder:<init>	()V
-    //   64: astore 4
-    //   66: aload 4
-    //   68: aload_3
-    //   69: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   72: getstatic 595	java/io/File:separator	Ljava/lang/String;
-    //   75: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   78: pop
-    //   79: aload 4
-    //   81: invokevirtual 206	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   84: astore_3
-    //   85: iconst_0
-    //   86: istore_1
-    //   87: aload_0
-    //   88: getfield 114	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   91: arraylength
-    //   92: istore_2
-    //   93: iload_1
-    //   94: iload_2
-    //   95: if_icmpge -84 -> 11
-    //   98: aload_0
-    //   99: getfield 114	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   102: iload_1
-    //   103: invokestatic 415	com/tencent/mobileqq/activity/aio/AIOUtils:a	()Ljava/lang/StringBuilder;
-    //   106: aload_3
-    //   107: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   110: iload_1
-    //   111: iconst_1
-    //   112: iadd
-    //   113: invokevirtual 203	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   116: ldc_w 597
-    //   119: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   122: invokevirtual 206	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   125: aastore
-    //   126: iload_1
-    //   127: iconst_1
-    //   128: iadd
-    //   129: istore_1
-    //   130: goto -37 -> 93
-    //   133: astore_3
-    //   134: aload_0
-    //   135: monitorexit
-    //   136: aload_3
-    //   137: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	138	0	this	PendantInfo
-    //   86	44	1	i1	int
-    //   92	4	2	i2	int
-    //   6	101	3	localObject1	Object
-    //   133	4	3	localObject2	Object
-    //   35	45	4	localObject3	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	133	finally
-    //   14	85	133	finally
-    //   87	93	133	finally
-    //   98	126	133	finally
+    try
+    {
+      Object localObject1 = this.jdField_a_of_type_ArrayOfJavaLangString;
+      if (localObject1 != null) {
+        return;
+      }
+      localObject1 = AvatarPendantUtil.b(this.jdField_a_of_type_Long, 8);
+      if (FileUtils.fileExists((String)localObject1))
+      {
+        Object localObject3 = FileUtils.getChildFiles((String)localObject1);
+        int i1 = ((ArrayList)localObject3).size();
+        if (i1 <= 0) {
+          return;
+        }
+        this.jdField_a_of_type_ArrayOfJavaLangString = new String[((ArrayList)localObject3).size()];
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append((String)localObject1);
+        ((StringBuilder)localObject3).append(File.separator);
+        localObject1 = ((StringBuilder)localObject3).toString();
+        i1 = 0;
+        int i3 = this.jdField_a_of_type_ArrayOfJavaLangString.length;
+        while (i1 < i3)
+        {
+          localObject3 = this.jdField_a_of_type_ArrayOfJavaLangString;
+          StringBuilder localStringBuilder = AIOUtils.a();
+          localStringBuilder.append((String)localObject1);
+          int i2 = i1 + 1;
+          localStringBuilder.append(i2);
+          localStringBuilder.append(".png");
+          localObject3[i1] = localStringBuilder.toString();
+          i1 = i2;
+        }
+      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   void a(int paramInt1, int paramInt2, long paramLong)
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("PendantInfo", 2, "download pendant report actionResult=" + paramInt1 + ",pendantId=" + this.jdField_a_of_type_Long + ",type=" + paramInt2);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("download pendant report actionResult=");
+        localStringBuilder.append(paramInt1);
+        localStringBuilder.append(",pendantId=");
+        localStringBuilder.append(this.jdField_a_of_type_Long);
+        localStringBuilder.append(",type=");
+        localStringBuilder.append(paramInt2);
+        QLog.i("PendantInfo", 2, localStringBuilder.toString());
       }
-      int i1 = NetworkUtil.a(this.jdField_a_of_type_AndroidContentContext);
-      if (paramLong < 3600000L) {
-        VasWebviewUtil.reportVasStatus("AvatarPendant", "download", String.valueOf(this.jdField_a_of_type_Long), 0, 0, paramInt1, i1, String.valueOf(paramLong), String.valueOf(paramInt2));
+      int i1 = NetworkUtil.getSystemNetwork(this.jdField_a_of_type_AndroidContentContext);
+      if (paramLong < 3600000L)
+      {
+        VasWebviewUtil.a("AvatarPendant", "download", String.valueOf(this.jdField_a_of_type_Long), 0, 0, paramInt1, i1, String.valueOf(paramLong), String.valueOf(paramInt2));
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -1006,30 +1014,31 @@ public class PendantInfo
   void a(int paramInt, long paramLong)
   {
     QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface == null) {}
-    do
-    {
+    if (localQQAppInterface == null) {
       return;
-      File localFile = new File(AvatarPendantUtil.b(this.jdField_a_of_type_Long, 4));
-      if (!localFile.exists())
-      {
-        ((IVasQuickUpdateService)localQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(4L, AvatarPendantUtil.a(this.jdField_a_of_type_Long, 4), "PendantInfo");
-        this.jdField_a_of_type_JavaUtilMap.put(AvatarPendantUtil.a(this.jdField_a_of_type_Long, 4), Long.valueOf(paramInt));
-        return;
-      }
-      paramInt = a(localFile, paramInt);
-    } while (paramInt <= -1);
-    a(paramLong, paramInt);
+    }
+    File localFile = new File(AvatarPendantUtil.b(this.jdField_a_of_type_Long, 4));
+    if (!localFile.exists())
+    {
+      ((IVasQuickUpdateService)localQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(4L, AvatarPendantUtil.a(this.jdField_a_of_type_Long, 4), "PendantInfo");
+      this.jdField_a_of_type_JavaUtilMap.put(AvatarPendantUtil.a(this.jdField_a_of_type_Long, 4), Long.valueOf(paramInt));
+      return;
+    }
+    paramInt = a(localFile, paramInt);
+    if (paramInt > -1) {
+      a(paramLong, paramInt);
+    }
   }
   
   public void a(long paramLong)
   {
     File localFile = new File(AvatarPendantUtil.b(this.jdField_a_of_type_Long, 4));
-    int i1 = 1;
     if (this.jdField_a_of_type_JavaUtilMap.containsKey(AvatarPendantUtil.a(this.jdField_a_of_type_Long, 4))) {
       i1 = ((Long)this.jdField_a_of_type_JavaUtilMap.get(AvatarPendantUtil.a(this.jdField_a_of_type_Long, 4))).intValue();
+    } else {
+      i1 = 1;
     }
-    i1 = a(localFile, i1);
+    int i1 = a(localFile, i1);
     if (i1 > -1) {
       a(paramLong, i1);
     }
@@ -1037,28 +1046,39 @@ public class PendantInfo
   
   void a(long paramLong, int paramInt)
   {
-    if (paramInt == 2) {}
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      if (this.jdField_a_of_type_JavaUtilList.contains(Long.valueOf(this.jdField_a_of_type_Long)))
+    if (paramInt == 2) {
+      synchronized (this.jdField_a_of_type_JavaUtilList)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("PendantInfo", 2, "downloadPendantDrawable pendant " + this.jdField_a_of_type_Long + " is downloading");
+        StringBuilder localStringBuilder;
+        if (this.jdField_a_of_type_JavaUtilList.contains(Long.valueOf(this.jdField_a_of_type_Long)))
+        {
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("downloadPendantDrawable pendant ");
+            localStringBuilder.append(this.jdField_a_of_type_Long);
+            localStringBuilder.append(" is downloading");
+            QLog.d("PendantInfo", 2, localStringBuilder.toString());
+          }
+          return;
         }
-        return;
-      }
-      this.jdField_a_of_type_JavaUtilList.add(Long.valueOf(this.jdField_a_of_type_Long));
-      if (QLog.isColorLevel()) {
-        QLog.d("PendantInfo", 2, "downloadPendantDrawable pendant " + this.jdField_a_of_type_Long + " add to list");
-      }
-      ??? = a();
-      if (??? != null)
-      {
-        ((IVasQuickUpdateService)((QQAppInterface)???).getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(4L, AvatarPendantUtil.a(this.jdField_a_of_type_Long, paramInt), "PendantInfo");
-        this.jdField_a_of_type_JavaUtilMap.put(AvatarPendantUtil.a(this.jdField_a_of_type_Long, paramInt), Long.valueOf(paramLong));
-        return;
+        this.jdField_a_of_type_JavaUtilList.add(Long.valueOf(this.jdField_a_of_type_Long));
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("downloadPendantDrawable pendant ");
+          localStringBuilder.append(this.jdField_a_of_type_Long);
+          localStringBuilder.append(" add to list");
+          QLog.d("PendantInfo", 2, localStringBuilder.toString());
+        }
       }
     }
+    ??? = a();
+    if (??? == null) {
+      return;
+    }
+    ((IVasQuickUpdateService)((QQAppInterface)???).getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(4L, AvatarPendantUtil.a(this.jdField_a_of_type_Long, paramInt), "PendantInfo");
+    this.jdField_a_of_type_JavaUtilMap.put(AvatarPendantUtil.a(this.jdField_a_of_type_Long, paramInt), Long.valueOf(paramLong));
   }
   
   void a(Bitmap paramBitmap)
@@ -1066,50 +1086,49 @@ public class PendantInfo
     int i1 = Utils.a(paramBitmap);
     BitmapDrawable localBitmapDrawable = new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), paramBitmap);
     localBitmapDrawable.setTargetDensity(BaseApplicationImpl.getApplication().getResources().getDisplayMetrics());
-    StringBuilder localStringBuilder;
     if (this.jdField_a_of_type_JavaLangString == null)
     {
       if (QLog.isDevelopLevel()) {
         QLog.d("PendantInfo", 4, "setPendantBitmap cache key equal null");
       }
-      localStringBuilder = AIOUtils.a();
-      if (this.o != 2) {
-        break label138;
+      StringBuilder localStringBuilder = AIOUtils.a();
+      if (this.o == 2) {
+        paramBitmap = "dynamic_pendant";
+      } else {
+        paramBitmap = "static_pendant";
       }
+      localStringBuilder.append(paramBitmap);
+      localStringBuilder.append("_");
+      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append("_");
+      localStringBuilder.append(this.o);
+      this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
     }
-    label138:
-    for (paramBitmap = "dynamic_pendant";; paramBitmap = "static_pendant")
-    {
-      this.jdField_a_of_type_JavaLangString = (paramBitmap + "_" + this.jdField_a_of_type_Long + "_" + this.o);
-      GlobalImageCache.a.put(this.jdField_a_of_type_JavaLangString, new Pair(localBitmapDrawable.getConstantState(), Integer.valueOf(i1)));
-      return;
-    }
+    GlobalImageCache.a.put(this.jdField_a_of_type_JavaLangString, new Pair(localBitmapDrawable.getConstantState(), Integer.valueOf(i1)));
   }
   
   void a(Drawable paramDrawable, boolean paramBoolean, long paramLong)
   {
-    if (paramDrawable == null) {}
-    for (;;)
-    {
+    if (paramDrawable == null) {
       return;
-      try
-      {
-        d();
-        this.r = 0;
-        if ((paramDrawable instanceof VipPendantDrawable)) {
-          ((VipPendantDrawable)paramDrawable).a(this.jdField_b_of_type_JavaLangString);
-        }
-        paramDrawable = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(16);
-        if (paramBoolean) {
-          paramLong = g;
-        }
-        if (!a(paramDrawable, paramLong)) {
-          continue;
-        }
+    }
+    try
+    {
+      d();
+      this.r = 0;
+      if ((paramDrawable instanceof VipPendantDrawable)) {
+        ((VipPendantDrawable)paramDrawable).a(this.jdField_b_of_type_JavaLangString);
+      }
+      paramDrawable = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(16);
+      if (paramBoolean) {
+        paramLong = g;
+      }
+      if (a(paramDrawable, paramLong)) {
         this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramDrawable);
       }
-      finally {}
+      return;
     }
+    finally {}
   }
   
   public void a(View paramView, int paramInt, long paramLong)
@@ -1119,106 +1138,102 @@ public class PendantInfo
   
   public void a(View paramView, int paramInt1, long paramLong, String paramString, int paramInt2)
   {
-    if (SimpleUIUtil.a()) {
+    if (SimpleUIUtil.a())
+    {
       if (QLog.isColorLevel()) {
         QLog.i("PendantInfo", 2, "setDrawable, SimpleUIMode is open now");
       }
-    }
-    do
-    {
       return;
-      this.jdField_b_of_type_JavaLangString = AvatarPendantUtil.b(this.jdField_a_of_type_Long, paramInt1);
-      paramString = a(paramInt1, paramLong, paramString, paramInt2);
-      if ((paramView instanceof BaseChatItemLayout))
-      {
-        ((BaseChatItemLayout)paramView).setPendantImage(paramString);
-        return;
-      }
-    } while (!(paramView instanceof ImageView));
-    ((ImageView)paramView).setImageDrawable(paramString);
+    }
+    this.jdField_b_of_type_JavaLangString = AvatarPendantUtil.b(this.jdField_a_of_type_Long, paramInt1);
+    paramString = a(paramInt1, paramLong, paramString, paramInt2);
+    if ((paramView instanceof BaseChatItemLayout))
+    {
+      ((BaseChatItemLayout)paramView).setPendantImage(paramString);
+      return;
+    }
+    if ((paramView instanceof ImageView)) {
+      ((ImageView)paramView).setImageDrawable(paramString);
+    }
   }
   
   void a(VipPendantDrawable paramVipPendantDrawable, long paramLong)
   {
-    if ((paramVipPendantDrawable == null) || (this.jdField_a_of_type_ArrayOfJavaLangString == null)) {}
-    label151:
-    label172:
-    for (;;)
+    if (paramVipPendantDrawable != null)
     {
-      return;
-      paramVipPendantDrawable.a(this.jdField_a_of_type_ArrayOfJavaLangString, this.p);
-      this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_ArrayOfJavaLangString;
-      this.s = this.jdField_a_of_type_ArrayOfJavaLangString.length;
+      String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      if (arrayOfString == null) {
+        return;
+      }
+      paramVipPendantDrawable.a(arrayOfString, this.p);
+      paramVipPendantDrawable = this.jdField_a_of_type_ArrayOfJavaLangString;
+      this.jdField_a_of_type_JavaLangObject = paramVipPendantDrawable;
+      this.s = paramVipPendantDrawable.length;
       boolean bool;
-      if ((!this.jdField_c_of_type_Boolean) && (this.r > 3))
-      {
+      if ((!this.jdField_c_of_type_Boolean) && (this.r > 3)) {
         bool = true;
-        if (paramLong != i) {
-          break label151;
-        }
+      } else {
+        bool = false;
+      }
+      int i1 = i;
+      if (paramLong == i1)
+      {
         this.jdField_c_of_type_Boolean = false;
         this.r = l;
-        b(i);
+        b(i1);
       }
-      for (;;)
+      else if (!bool)
       {
-        if (!QLog.isColorLevel()) {
-          break label172;
-        }
-        QLog.d("PendantInfo", 2, "setPngsDrawable repeatCount:" + this.r + ",targetID:" + paramLong + ",pendantInMarket:" + bool);
-        return;
-        bool = false;
-        break;
-        if (!bool)
-        {
-          this.r = m;
-          b(g);
-        }
+        this.r = m;
+        b(g);
+      }
+      if (QLog.isColorLevel())
+      {
+        paramVipPendantDrawable = new StringBuilder();
+        paramVipPendantDrawable.append("setPngsDrawable repeatCount:");
+        paramVipPendantDrawable.append(this.r);
+        paramVipPendantDrawable.append(",targetID:");
+        paramVipPendantDrawable.append(paramLong);
+        paramVipPendantDrawable.append(",pendantInMarket:");
+        paramVipPendantDrawable.append(bool);
+        QLog.d("PendantInfo", 2, paramVipPendantDrawable.toString());
       }
     }
   }
   
   void a(String paramString)
   {
-    int i1;
     if (paramString != null)
     {
       i1 = paramString.indexOf("\"interval\":");
-      if (i1 == -1) {
-        break label111;
-      }
-      int i2 = paramString.indexOf(",", i1 + 10);
-      if (i2 == -1) {
-        break label111;
-      }
-      paramString = paramString.substring(i1 + 11, i2);
-      if (paramString == null) {
-        break label111;
-      }
-    }
-    for (;;)
-    {
-      try
+      if (i1 != -1)
       {
-        i1 = Integer.parseInt(paramString.trim());
-        if (-2147483648 != i1)
+        int i2 = paramString.indexOf(",", i1 + 10);
+        if (i2 != -1)
         {
-          this.p = i1;
-          jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.p));
-          return;
+          paramString = paramString.substring(i1 + 11, i2);
+          if (paramString == null) {}
         }
       }
-      catch (Exception paramString)
-      {
-        i1 = -2147483648;
-        continue;
-        this.p = k;
-        a(1, 7, 0L);
-        return;
-      }
-      label111:
-      i1 = -2147483648;
     }
+    try
+    {
+      i1 = Integer.parseInt(paramString.trim());
+    }
+    catch (Exception paramString)
+    {
+      label58:
+      break label58;
+    }
+    int i1 = -2147483648;
+    if (-2147483648 != i1)
+    {
+      this.p = i1;
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.p));
+      return;
+    }
+    this.p = k;
+    a(1, 7, 0L);
   }
   
   public void a(boolean paramBoolean)
@@ -1227,14 +1242,18 @@ public class PendantInfo
     try
     {
       Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(18);
-      if (a(localMessage, g)) {
+      if (a(localMessage, g))
+      {
         this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(localMessage, jdField_a_of_type_Int);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      QLog.e("PendantInfo", 2, "bundle exception" + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("bundle exception");
+      localStringBuilder.append(localException.getMessage());
+      QLog.e("PendantInfo", 2, localStringBuilder.toString());
     }
   }
   
@@ -1246,35 +1265,33 @@ public class PendantInfo
   
   Bitmap b()
   {
+    Object localObject;
     if (this.jdField_a_of_type_JavaLangString == null)
     {
       if (QLog.isDevelopLevel()) {
         QLog.d("PendantInfo", 4, "getPendantBitmap cache key equal null");
       }
       StringBuilder localStringBuilder = AIOUtils.a();
-      if (this.o == 2)
-      {
+      if (this.o == 2) {
         localObject = "dynamic_pendant";
-        this.jdField_a_of_type_JavaLangString = ((String)localObject + "_" + this.jdField_a_of_type_Long + "_" + this.o);
+      } else {
+        localObject = "static_pendant";
       }
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("_");
+      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append("_");
+      localStringBuilder.append(this.o);
+      this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
     }
-    else
-    {
-      if (GlobalImageCache.a == null) {
-        break label137;
-      }
+    if (GlobalImageCache.a != null) {
+      localObject = (Pair)GlobalImageCache.a.get(this.jdField_a_of_type_JavaLangString);
+    } else {
+      localObject = null;
     }
-    label137:
-    for (Object localObject = (Pair)GlobalImageCache.a.get(this.jdField_a_of_type_JavaLangString);; localObject = null)
-    {
-      if ((localObject == null) || (((Pair)localObject).first == null)) {
-        break label142;
-      }
+    if ((localObject != null) && (((Pair)localObject).first != null)) {
       return ((BitmapDrawable)((Drawable.ConstantState)((Pair)localObject).first).newDrawable(BaseApplicationImpl.getApplication().getResources())).getBitmap();
-      localObject = "static_pendant";
-      break;
     }
-    label142:
     return null;
   }
   
@@ -1285,23 +1302,24 @@ public class PendantInfo
   
   protected void b(long paramLong)
   {
-    long l1;
-    long l2;
     if ((this.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Boolean))
     {
       this.jdField_b_of_type_Boolean = false;
-      l1 = SystemClock.uptimeMillis();
-      l2 = this.p;
+      long l1 = SystemClock.uptimeMillis();
+      long l2 = this.p;
       this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$DecodeNextFrameTask = new PendantInfo.DecodeNextFrameTask(this, this.jdField_a_of_type_ArrayOfJavaLangString, paramLong);
-    }
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$DecodeNextFrameTask.execute(new Long[] { Long.valueOf(l1 + l2), Long.valueOf(this.q), Long.valueOf(this.o) });
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("PendantInfo", 1, "decodeBigImage, e=" + MsfSdkUtils.getStackTraceString(localException));
+      try
+      {
+        this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$DecodeNextFrameTask.execute(new Long[] { Long.valueOf(l1 + l2), Long.valueOf(this.q), Long.valueOf(this.o) });
+        return;
+      }
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("decodeBigImage, e=");
+        localStringBuilder.append(MsfSdkUtils.getStackTraceString(localException));
+        QLog.e("PendantInfo", 1, localStringBuilder.toString());
+      }
     }
   }
   
@@ -1311,52 +1329,39 @@ public class PendantInfo
     if (this.jdField_a_of_type_JavaUtilMap.containsKey(AvatarPendantUtil.a(this.jdField_a_of_type_Long, paramInt))) {
       l1 = ((Long)this.jdField_a_of_type_JavaUtilMap.get(AvatarPendantUtil.a(this.jdField_a_of_type_Long, paramInt))).longValue();
     }
-    File localFile;
     if ((2 == paramInt) && (this.n == 1))
     {
-      ??? = new File(AvatarPendantUtil.b(paramLong, paramInt));
-      if (((File)???).exists())
-      {
-        localFile = new File(AvatarPendantUtil.b(paramLong, 8));
-        if (!DownloaderFactory.a((File)???, localFile, true)) {
-          break label228;
-        }
-        a();
-        ??? = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(20);
-        if (a((Message)???, l1)) {
-          this.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)???);
-        }
-      }
-    }
-    label228:
-    do
-    {
+      a(paramLong, l1, new File(AvatarPendantUtil.b(paramLong, paramInt)));
       synchronized (this.jdField_a_of_type_JavaUtilList)
       {
+        StringBuilder localStringBuilder;
         if (this.jdField_a_of_type_JavaUtilList.contains(Long.valueOf(paramLong)))
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("PendantInfo", 2, "onDoneDownloadImage remove " + paramLong + " from list");
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("onDoneDownloadImage remove ");
+            localStringBuilder.append(paramLong);
+            localStringBuilder.append(" from list");
+            QLog.d("PendantInfo", 2, localStringBuilder.toString());
           }
           this.jdField_a_of_type_JavaUtilList.remove(Long.valueOf(paramLong));
         }
-        while (!QLog.isColorLevel())
+        else if (QLog.isColorLevel())
         {
-          return;
-          if (((File)???).exists()) {
-            ((File)???).delete();
-          }
-          if (!localFile.exists()) {
-            break;
-          }
-          localFile.delete();
-          break;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onDoneDownloadImage remove ");
+          localStringBuilder.append(paramLong);
+          localStringBuilder.append(" fail, list not contain");
+          QLog.d("PendantInfo", 2, localStringBuilder.toString());
         }
-        QLog.d("PendantInfo", 2, "onDoneDownloadImage remove " + paramLong + " fail, list not contain");
+        return;
       }
-      ??? = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(19);
-    } while (!a((Message)???, g));
-    this.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)???);
+    }
+    ??? = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(19);
+    if (a((Message)???, g)) {
+      this.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)???);
+    }
   }
   
   public void c()
@@ -1372,7 +1377,7 @@ public class PendantInfo
       if (((this.jdField_a_of_type_JavaLangObject instanceof PendantInfo.SourcesBigPng)) && (a()))
       {
         if ((this.jdField_a_of_type_JavaLangObject != null) && (((PendantInfo.SourcesBigPng)this.jdField_a_of_type_JavaLangObject).jdField_a_of_type_JavaLangString != null) && (((PendantInfo.SourcesBigPng)this.jdField_a_of_type_JavaLangObject).jdField_a_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString))) {
-          return;
+          break label244;
         }
         if (this.jdField_a_of_type_Boolean) {}
       }
@@ -1385,25 +1390,32 @@ public class PendantInfo
         this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
         return;
       }
+      this.jdField_a_of_type_JavaLangObject = new PendantInfo.SourcesBigPng(this, this.jdField_b_of_type_JavaLangString);
+      this.r = 0;
+      this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$DecodeNextFrameTask = new PendantInfo.DecodeNextFrameTask(this, this.jdField_a_of_type_JavaLangObject, g);
+      long l1 = SystemClock.uptimeMillis();
+      long l2 = this.p;
+      this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$DecodeNextFrameTask.execute(new Long[] { Long.valueOf(l1 + l2), Long.valueOf(this.q), Long.valueOf(this.o) });
+      return;
     }
     catch (Exception localException)
     {
-      QLog.e("PendantInfo", 1, "decodeBigImage, e=" + MsfSdkUtils.getStackTraceString(localException));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("decodeBigImage, e=");
+      localStringBuilder.append(MsfSdkUtils.getStackTraceString(localException));
+      QLog.e("PendantInfo", 1, localStringBuilder.toString());
       return;
     }
-    this.jdField_a_of_type_JavaLangObject = new PendantInfo.SourcesBigPng(this, this.jdField_b_of_type_JavaLangString);
-    this.r = 0;
-    this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$DecodeNextFrameTask = new PendantInfo.DecodeNextFrameTask(this, this.jdField_a_of_type_JavaLangObject, g);
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = this.p;
-    this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$DecodeNextFrameTask.execute(new Long[] { Long.valueOf(l1 + l2), Long.valueOf(this.q), Long.valueOf(this.o) });
+    label244:
+    return;
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$DecodeNextFrameTask != null)
+    PendantInfo.DecodeNextFrameTask localDecodeNextFrameTask = this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$DecodeNextFrameTask;
+    if (localDecodeNextFrameTask != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$DecodeNextFrameTask.cancel(false);
+      localDecodeNextFrameTask.cancel(false);
       this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$DecodeNextFrameTask = null;
     }
     this.jdField_b_of_type_Boolean = true;
@@ -1411,7 +1423,7 @@ public class PendantInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.PendantInfo
  * JD-Core Version:    0.7.0.1
  */

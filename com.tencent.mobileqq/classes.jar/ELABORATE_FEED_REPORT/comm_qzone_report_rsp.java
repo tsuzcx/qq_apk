@@ -27,14 +27,15 @@ public final class comm_qzone_report_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iRetCode, 0);
-    if (this.strErrorMsg != null) {
-      paramJceOutputStream.write(this.strErrorMsg, 1);
+    String str = this.strErrorMsg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ELABORATE_FEED_REPORT.comm_qzone_report_rsp
  * JD-Core Version:    0.7.0.1
  */

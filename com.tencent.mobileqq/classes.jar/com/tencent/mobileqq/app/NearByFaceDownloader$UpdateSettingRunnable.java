@@ -30,13 +30,22 @@ class NearByFaceDownloader$UpdateSettingRunnable
     localObject2 = ((String)localObject2).substring(((String)localObject2).lastIndexOf("/") + 1);
     if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).endsWith("jpg_")))
     {
-      localObject1 = (String)localObject1 + File.separator + ((String)localObject2).substring(0, ((String)localObject2).lastIndexOf("jpg_")) + "png";
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(((String)localObject2).substring(0, ((String)localObject2).lastIndexOf("jpg_")));
+      localStringBuilder.append("png");
+      localObject1 = localStringBuilder.toString();
       localObject2 = new File((String)localObject1);
       if (((File)localObject2).exists())
       {
         ((File)localObject2).delete();
-        if (QLog.isColorLevel()) {
-          QLog.i("qqhead", 2, "delete old file,oldpath=" + (String)localObject1);
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("delete old file,oldpath=");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          QLog.i("qqhead", 2, ((StringBuilder)localObject2).toString());
         }
       }
     }
@@ -44,7 +53,7 @@ class NearByFaceDownloader$UpdateSettingRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.NearByFaceDownloader.UpdateSettingRunnable
  * JD-Core Version:    0.7.0.1
  */

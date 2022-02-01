@@ -168,53 +168,64 @@ public class QZoneClickReport$ReportInfo
   
   public JSONObject toJSON()
   {
-    if (!TextUtils.isEmpty(this.extraInfo)) {}
-    Object localObject;
-    for (JSONObject localJSONObject = new JSONObject(this.extraInfo);; localJSONObject = new JSONObject())
-    {
-      localJSONObject.put("touin", this.toUin);
-      localJSONObject.put("network_type", String.valueOf(this.networkType));
-      localJSONObject.put("tabletype", this.tabletype);
-      if (!this.useMapMode) {
-        break;
-      }
-      if ((this.mapReportInfo == null) || (this.mapReportInfo.isEmpty())) {
-        break label366;
-      }
-      localObject = this.mapReportInfo.entrySet().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-        localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
-      }
+    JSONObject localJSONObject;
+    if (!TextUtils.isEmpty(this.extraInfo)) {
+      localJSONObject = new JSONObject(this.extraInfo);
+    } else {
+      localJSONObject = new JSONObject();
     }
-    if (!localJSONObject.has("refer")) {
-      localJSONObject.put("refer", this.referId);
-    }
-    localJSONObject.put("actiontype", this.actionType);
-    localJSONObject.put("subactiontype", this.subactionType);
+    localJSONObject.put("touin", this.toUin);
+    localJSONObject.put("network_type", String.valueOf(this.networkType));
     localJSONObject.put("tabletype", this.tabletype);
-    localJSONObject.put("domain_type", this.domain_type);
-    localJSONObject.put("reserves", this.reserves);
-    localJSONObject.put("source_type", this.sourceType);
-    localJSONObject.put("source_from", this.sourceFrom);
-    localJSONObject.put("source_to", this.sourceTo);
-    localJSONObject.put("mergenum", this.mergenum);
-    localJSONObject.put("reserves10", this.reserves10);
-    if (this.reservesExt != null)
+    Object localObject1;
+    Object localObject2;
+    if (this.useMapMode)
     {
-      int j = this.reservesExt.size();
-      int i = 0;
-      while (i < j)
+      localObject1 = this.mapReportInfo;
+      if ((localObject1 != null) && (!((Map)localObject1).isEmpty()))
       {
-        localObject = (String)this.reservesExt.get(i);
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          localJSONObject.put("reserves" + (i + 2), localObject);
+        localObject1 = this.mapReportInfo.entrySet().iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (Map.Entry)((Iterator)localObject1).next();
+          localJSONObject.put((String)((Map.Entry)localObject2).getKey(), ((Map.Entry)localObject2).getValue());
         }
-        i += 1;
       }
     }
-    label366:
+    else
+    {
+      if (!localJSONObject.has("refer")) {
+        localJSONObject.put("refer", this.referId);
+      }
+      localJSONObject.put("actiontype", this.actionType);
+      localJSONObject.put("subactiontype", this.subactionType);
+      localJSONObject.put("tabletype", this.tabletype);
+      localJSONObject.put("domain_type", this.domain_type);
+      localJSONObject.put("reserves", this.reserves);
+      localJSONObject.put("source_type", this.sourceType);
+      localJSONObject.put("source_from", this.sourceFrom);
+      localJSONObject.put("source_to", this.sourceTo);
+      localJSONObject.put("mergenum", this.mergenum);
+      localJSONObject.put("reserves10", this.reserves10);
+      localObject1 = this.reservesExt;
+      if (localObject1 != null)
+      {
+        int j = ((ArrayList)localObject1).size();
+        int i = 0;
+        while (i < j)
+        {
+          localObject1 = (String)this.reservesExt.get(i);
+          if (!TextUtils.isEmpty((CharSequence)localObject1))
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("reserves");
+            ((StringBuilder)localObject2).append(i + 2);
+            localJSONObject.put(((StringBuilder)localObject2).toString(), localObject1);
+          }
+          i += 1;
+        }
+      }
+    }
     localJSONObject.put("read_source", this.readSource);
     localJSONObject.put("time", String.valueOf(this.time));
     localJSONObject.put("info", this.info);
@@ -224,7 +235,7 @@ public class QZoneClickReport$ReportInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QZoneClickReport.ReportInfo
  * JD-Core Version:    0.7.0.1
  */

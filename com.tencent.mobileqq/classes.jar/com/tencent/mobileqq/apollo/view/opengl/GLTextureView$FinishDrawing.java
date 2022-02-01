@@ -7,17 +7,17 @@ class GLTextureView$FinishDrawing
   
   public void run()
   {
-    if (this.this$0.mGLThread.a())
+    if (GLTextureView.access$200(this.this$0).a())
     {
-      GLTextureView.access$300(this.this$0);
+      GLTextureView.access$400(this.this$0);
       return;
     }
-    this.this$0.mGLThread.b(this);
+    GLTextureView.access$200(this.this$0).b(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.opengl.GLTextureView.FinishDrawing
  * JD-Core Version:    0.7.0.1
  */

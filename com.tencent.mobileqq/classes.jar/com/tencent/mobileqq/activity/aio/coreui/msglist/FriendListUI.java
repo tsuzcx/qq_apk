@@ -5,10 +5,10 @@ import android.view.View;
 import com.tencent.imcore.message.C2CMessageManager;
 import com.tencent.imcore.message.C2CMessageManager.C2CReplyContext;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.RefreshMessageContext;
+import com.tencent.imcore.message.RefreshMessageContext;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.activity.aio.ChatAdapter1;
 import com.tencent.mobileqq.activity.aio.ChatContext;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.AIOContext;
 import com.tencent.mobileqq.activity.aio.roam.C2CRoamMsgFetcher;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -47,18 +47,18 @@ public class FriendListUI
   public void b()
   {
     super.b();
-    if ((this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext != null) && (this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext.jdField_a_of_type_ComTencentImcoreMessageIRoamMsgFetcher != null))
+    if ((this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext != null) && (this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.jdField_a_of_type_ComTencentImcoreMessageIRoamMsgFetcher != null))
     {
-      ((C2CRoamMsgFetcher)this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext.jdField_a_of_type_ComTencentImcoreMessageIRoamMsgFetcher).a();
-      this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext.jdField_a_of_type_ComTencentImcoreMessageIRoamMsgFetcher = null;
+      ((C2CRoamMsgFetcher)this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.jdField_a_of_type_ComTencentImcoreMessageIRoamMsgFetcher).a();
+      this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.jdField_a_of_type_ComTencentImcoreMessageIRoamMsgFetcher = null;
     }
   }
   
   public void c()
   {
     super.c();
-    if (!Utils.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext.jdField_a_of_type_ComTencentImcoreMessageIRoamMsgFetcher = new C2CRoamMsgFetcher(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+    if (!Utils.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.jdField_a_of_type_ComTencentImcoreMessageIRoamMsgFetcher = new C2CRoamMsgFetcher(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().jdField_a_of_type_JavaLangString);
     }
   }
   
@@ -67,15 +67,15 @@ public class FriendListUI
     if (QLog.isColorLevel()) {
       QLog.d("FriendListUI", 2, "FriendChatPie onViewCompleteVisableAndReleased");
     }
-    SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    if (((this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.getCount() > 0)) || (!Utils.b(localSessionInfo.jdField_a_of_type_JavaLangString)))
+    BaseSessionInfo localBaseSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a();
+    if (((this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.getCount() > 0)) || (!Utils.b(localBaseSessionInfo.jdField_a_of_type_JavaLangString)))
     {
       if (this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageManager$C2CReplyContext.b)
       {
         this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-        ((ChatContext)this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext.jdField_a_of_type_JavaLangObject).a(this.jdField_a_of_type_Long);
-        this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext.e = true;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a().a(localSessionInfo.jdField_a_of_type_JavaLangString, localSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext, this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageManager$C2CReplyContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+        ((ChatContext)this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.jdField_a_of_type_JavaLangObject).a(this.jdField_a_of_type_Long);
+        this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.e = true;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getMessageFacade().a().a(localBaseSessionInfo.jdField_a_of_type_JavaLangString, localBaseSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext, this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageManager$C2CReplyContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a());
         this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageManager$C2CReplyContext.b = false;
         return true;
       }
@@ -88,7 +88,7 @@ public class FriendListUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.FriendListUI
  * JD-Core Version:    0.7.0.1
  */

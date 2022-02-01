@@ -26,17 +26,20 @@ public class CommentFloatDialogController$GetDetailFeedItemObserver
   public void onError(@NonNull Error paramError)
   {
     super.onError(paramError);
-    if (((ErrorMessage)paramError).errorCode == 2223)
+    paramError = (ErrorMessage)paramError;
+    if (paramError.errorCode == 2223)
     {
-      CommentFloatDialogController.a(this.a, CommentFloatDialogController.a(this.a), new ErrorMessage(), false);
+      paramError = this.a;
+      CommentFloatDialogController.a(paramError, CommentFloatDialogController.a(paramError), new ErrorMessage(), false);
       return;
     }
-    CommentFloatDialogController.a(this.a, CommentFloatDialogController.a(this.a), (ErrorMessage)paramError, false);
+    CommentFloatDialogController localCommentFloatDialogController = this.a;
+    CommentFloatDialogController.a(localCommentFloatDialogController, CommentFloatDialogController.a(localCommentFloatDialogController), paramError, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialogController.GetDetailFeedItemObserver
  * JD-Core Version:    0.7.0.1
  */

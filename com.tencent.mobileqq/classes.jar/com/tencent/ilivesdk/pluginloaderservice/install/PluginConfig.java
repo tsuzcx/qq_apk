@@ -36,11 +36,11 @@ public class PluginConfig
   
   public static PluginConfig a(String paramString, File paramFile)
   {
-    int j = 0;
     Object localObject1 = new JSONObject(paramString);
     paramString = new PluginConfig();
     paramString.jdField_a_of_type_Int = ((JSONObject)localObject1).getInt("version");
     Object localObject2 = ((JSONObject)localObject1).optJSONArray("compact_version");
+    int j = 0;
     int i;
     if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0))
     {
@@ -80,24 +80,28 @@ public class PluginConfig
   
   private static String[] a(JSONObject paramJSONObject, String paramString)
   {
+    JSONArray localJSONArray = paramJSONObject.optJSONArray(paramString);
     int i = 0;
-    paramJSONObject = paramJSONObject.optJSONArray(paramString);
-    if (paramJSONObject != null)
+    if (localJSONArray != null)
     {
-      paramString = new String[paramJSONObject.length()];
-      while (i < paramJSONObject.length())
+      paramString = new String[localJSONArray.length()];
+      for (;;)
       {
-        paramString[i] = paramJSONObject.getString(i);
+        paramJSONObject = paramString;
+        if (i >= localJSONArray.length()) {
+          break;
+        }
+        paramString[i] = localJSONArray.getString(i);
         i += 1;
       }
-      return paramString;
     }
-    return new String[0];
+    paramJSONObject = new String[0];
+    return paramJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.pluginloaderservice.install.PluginConfig
  * JD-Core Version:    0.7.0.1
  */

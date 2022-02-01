@@ -44,7 +44,7 @@ public final class Circle
     paramLatLng[0] = (d5 * d6);
     paramLatLng[1] = (d6 * d1);
     paramLatLng[2] = d2;
-    localObject[0] = (d4 * d3);
+    localObject[0] = (d3 * d4);
     localObject[1] = (d4 * d7);
     localObject[2] = d8;
     return Math.asin(Math.sqrt((paramLatLng[0] - localObject[0]) * (paramLatLng[0] - localObject[0]) + (paramLatLng[1] - localObject[1]) * (paramLatLng[1] - localObject[1]) + (paramLatLng[2] - localObject[2]) * (paramLatLng[2] - localObject[2])) / 2.0D) * 12742001.579854401D < getRadius();
@@ -81,19 +81,16 @@ public final class Circle
   
   public final List<gg> getMapElements()
   {
-    kh localkh;
-    String str;
-    if (this.c != null)
+    kh localkh = this.c;
+    if (localkh != null)
     {
-      localkh = this.c;
-      str = this.b;
-      if (localkh.a != null) {}
+      String str = this.b;
+      if (localkh.a == null) {
+        return null;
+      }
+      return localkh.a.b(str);
     }
-    else
-    {
-      return null;
-    }
-    return localkh.a.b(str);
+    return null;
   }
   
   public final double getRadius()
@@ -128,8 +125,9 @@ public final class Circle
   
   public final boolean isClickable()
   {
-    if (this.a != null) {
-      return this.a.isClickable();
+    CircleOptions localCircleOptions = this.a;
+    if (localCircleOptions != null) {
+      return localCircleOptions.isClickable();
     }
     return false;
   }
@@ -141,24 +139,22 @@ public final class Circle
   
   public final void remove()
   {
-    if (this.c == null) {}
-    kh localkh;
-    String str;
-    do
-    {
+    kh localkh = this.c;
+    if (localkh == null) {
       return;
-      localkh = this.c;
-      str = this.b;
-    } while (localkh.a == null);
-    localkh.a.a(str);
+    }
+    String str = this.b;
+    if (localkh.a != null) {
+      localkh.a.a(str);
+    }
   }
   
   public final void setCenter(LatLng paramLatLng)
   {
-    if (this.c == null) {
+    kh localkh = this.c;
+    if (localkh == null) {
       return;
     }
-    kh localkh = this.c;
     String str = this.b;
     if (localkh.a != null) {
       localkh.a.a(str, paramLatLng);
@@ -183,15 +179,18 @@ public final class Circle
   
   public final void setLevel(int paramInt)
   {
-    if ((paramInt < OverlayLevel.OverlayLevelAboveRoads) || (paramInt > OverlayLevel.OverlayLevelAboveLabels)) {
-      return;
+    if (paramInt >= OverlayLevel.OverlayLevelAboveRoads)
+    {
+      if (paramInt > OverlayLevel.OverlayLevelAboveLabels) {
+        return;
+      }
+      kh localkh = this.c;
+      String str = this.b;
+      if (localkh.a != null) {
+        localkh.a.c(str, paramInt);
+      }
+      this.a.level(paramInt);
     }
-    kh localkh = this.c;
-    String str = this.b;
-    if (localkh.a != null) {
-      localkh.a.c(str, paramInt);
-    }
-    this.a.level(paramInt);
   }
   
   public final void setOptions(CircleOptions paramCircleOptions)
@@ -206,11 +205,13 @@ public final class Circle
   
   public final void setRadius(double paramDouble)
   {
-    if (paramDouble < 0.0D) {}
-    while (this.c == null) {
+    if (paramDouble < 0.0D) {
       return;
     }
     kh localkh = this.c;
+    if (localkh == null) {
+      return;
+    }
     String str = this.b;
     if (localkh.a != null) {
       localkh.a.a(str, paramDouble);
@@ -269,7 +270,7 @@ public final class Circle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.Circle
  * JD-Core Version:    0.7.0.1
  */

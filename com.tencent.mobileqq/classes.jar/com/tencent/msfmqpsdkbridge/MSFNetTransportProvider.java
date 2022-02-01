@@ -35,71 +35,67 @@ public class MSFNetTransportProvider
     if (this.mCodecMap == null) {
       this.mCodecMap = new LinkedHashMap();
     }
-    Object localObject2;
-    if (this.mCodecMap.containsKey(paramString))
-    {
-      localObject2 = (INetTransportProvider.INetTransportCodec)this.mCodecMap.get(paramString);
-      return localObject2;
+    if (this.mCodecMap.containsKey(paramString)) {
+      return (INetTransportProvider.INetTransportCodec)this.mCodecMap.get(paramString);
     }
-    Object localObject1;
     if ((TextUtils.equals(paramString, "intchk")) || (TextUtils.equals(paramString, "app_scan")) || (TextUtils.equals(paramString, "sig_check")))
     {
-      if (!this.mServiceNameMap.containsValue(paramString)) {
-        break label182;
-      }
-      localObject2 = this.mServiceNameMap.keySet().iterator();
-      do
+      if (this.mServiceNameMap.containsValue(paramString))
       {
-        if (!((Iterator)localObject2).hasNext()) {
-          break;
+        Iterator localIterator = this.mServiceNameMap.keySet().iterator();
+        while (localIterator.hasNext())
+        {
+          localObject = (String)localIterator.next();
+          if (((String)this.mServiceNameMap.get(localObject)).equalsIgnoreCase(paramString)) {
+            break label144;
+          }
         }
-        localObject1 = (String)((Iterator)localObject2).next();
-      } while (!((String)this.mServiceNameMap.get(localObject1)).equalsIgnoreCase(paramString));
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
-      for (localObject1 = new MSFCodec((String)localObject1);; localObject1 = null)
-      {
-        localObject2 = localObject1;
-        if (localObject1 == null) {
-          break;
-        }
-        this.mCodecMap.put(paramString, localObject1);
-        return localObject1;
       }
-      label182:
-      localObject1 = null;
+      localObject = null;
+      label144:
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localObject = new MSFCodec((String)localObject);
+        break label165;
+      }
     }
+    Object localObject = null;
+    label165:
+    if (localObject != null) {
+      this.mCodecMap.put(paramString, localObject);
+    }
+    return localObject;
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return null;
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((paramObject == null) || (!paramFromServiceMsg.isSuccess())) {}
-    label11:
-    do
+    if (paramObject != null)
     {
-      do
-      {
-        do
-        {
-          break label11;
-          do
-          {
-            return;
-          } while (this.mEventListenerMap == null);
-          paramObject = paramFromServiceMsg.getServiceCmd();
-        } while (!this.mServiceNameMap.containsKey(paramObject));
-        paramObject = (String)this.mServiceNameMap.get(paramObject);
-      } while (!this.mEventListenerMap.containsKey(paramObject));
+      if (!paramFromServiceMsg.isSuccess()) {
+        return;
+      }
+      if (this.mEventListenerMap == null) {
+        return;
+      }
+      paramObject = paramFromServiceMsg.getServiceCmd();
+      if (!this.mServiceNameMap.containsKey(paramObject)) {
+        return;
+      }
+      paramObject = (String)this.mServiceNameMap.get(paramObject);
+      if (!this.mEventListenerMap.containsKey(paramObject)) {
+        return;
+      }
       paramObject = (INetTransportProvider.INetTransportEventListener)this.mEventListenerMap.get(paramObject);
-    } while (paramObject == null);
-    paramObject.a(paramToServiceMsg, paramFromServiceMsg);
+      if (paramObject == null) {
+        return;
+      }
+      paramObject.a(paramToServiceMsg, paramFromServiceMsg);
+    }
   }
   
   public int send(Object paramObject)
@@ -112,8 +108,10 @@ public class MSFNetTransportProvider
   
   public void setNetTransportEventListener(String paramString, INetTransportProvider.INetTransportEventListener paramINetTransportEventListener)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (paramINetTransportEventListener == null) {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    if (paramINetTransportEventListener == null) {
       return;
     }
     if (this.mEventListenerMap == null) {
@@ -124,7 +122,7 @@ public class MSFNetTransportProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msfmqpsdkbridge.MSFNetTransportProvider
  * JD-Core Version:    0.7.0.1
  */

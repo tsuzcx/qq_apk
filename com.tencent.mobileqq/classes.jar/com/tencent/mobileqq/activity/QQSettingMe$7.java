@@ -1,38 +1,40 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.activity.weather.WeatherServlet;
-import com.tencent.mobileqq.soso.location.SosoInterfaceOnLocationListener;
-import com.tencent.mobileqq.soso.location.data.SosoLbsInfo;
-import com.tencent.mobileqq.soso.location.data.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class QQSettingMe$7
-  extends SosoInterfaceOnLocationListener
+  implements View.OnTouchListener
 {
-  QQSettingMe$7(QQSettingMe paramQQSettingMe, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  QQSettingMe$7(QQSettingMe paramQQSettingMe, ImageView paramImageView, TextView paramTextView, View paramView) {}
   
-  public void onLocationFinish(int paramInt, SosoLbsInfo paramSosoLbsInfo)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, "onLocationFinish errCode:" + paramInt + ",info:" + paramSosoLbsInfo);
-    }
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-      paramInt = (int)(paramSosoLbsInfo.mLocation.mLat02 * 1000000.0D);
-      int i = (int)(paramSosoLbsInfo.mLocation.mLon02 * 1000000.0D);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "onLocationFinish latitude:" + paramInt + ",longtitude:" + i);
+      if ((i == 1) || (i == 3))
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
+        this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+        this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
       }
-      WeatherServlet.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, i, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
     }
+    else
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.5F);
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.5F);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.7
  * JD-Core Version:    0.7.0.1
  */

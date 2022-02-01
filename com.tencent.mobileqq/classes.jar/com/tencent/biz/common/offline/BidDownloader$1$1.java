@@ -7,20 +7,16 @@ class BidDownloader$1$1
   
   public void run()
   {
-    if (this.a.a.b == 1) {}
-    for (;;)
-    {
+    if (this.a.a.b == 1) {
       try
       {
         Thread.sleep(5000L);
-        this.a.a.b();
-        return;
       }
       catch (InterruptedException localInterruptedException1)
       {
         localInterruptedException1.printStackTrace();
-        continue;
       }
+    } else {
       try
       {
         Thread.sleep(10000L);
@@ -30,11 +26,12 @@ class BidDownloader$1$1
         localInterruptedException2.printStackTrace();
       }
     }
+    this.a.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.common.offline.BidDownloader.1.1
  * JD-Core Version:    0.7.0.1
  */

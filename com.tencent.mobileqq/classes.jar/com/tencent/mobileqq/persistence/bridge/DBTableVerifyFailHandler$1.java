@@ -14,15 +14,21 @@ class DBTableVerifyFailHandler$1
   public void run()
   {
     QBaseActivity localQBaseActivity = QBaseActivity.sTopActivity;
-    QLog.d("DBVerifyFailToastHandler", 1, "handleErrorReport top activity: " + localQBaseActivity);
-    if (localQBaseActivity != null) {
-      DialogUtil.a(localQBaseActivity, BaseApplication.getContext().getString(2131720404, new Object[] { this.a, this.a }), 2131692161, 2131691335, new DBTableVerifyFailHandler.1.1(this), new DBTableVerifyFailHandler.1.2(this)).show();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handleErrorReport top activity: ");
+    ((StringBuilder)localObject).append(localQBaseActivity);
+    QLog.d("DBVerifyFailToastHandler", 1, ((StringBuilder)localObject).toString());
+    if (localQBaseActivity != null)
+    {
+      localObject = BaseApplication.getContext();
+      String str = this.a;
+      DialogUtil.a(localQBaseActivity, ((BaseApplication)localObject).getString(2131720143, new Object[] { str, str }), 2131692081, 2131691256, new DBTableVerifyFailHandler.1.1(this), new DBTableVerifyFailHandler.1.2(this)).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.bridge.DBTableVerifyFailHandler.1
  * JD-Core Version:    0.7.0.1
  */

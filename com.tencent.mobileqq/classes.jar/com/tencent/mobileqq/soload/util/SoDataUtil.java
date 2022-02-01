@@ -7,6 +7,8 @@ import android.os.Process;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.soload.biz.entity.LoadParam.LoadItem;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,6 +18,23 @@ public class SoDataUtil
 {
   private static Boolean jdField_a_of_type_JavaLangBoolean = null;
   private static final Map<String, SharedPreferences> jdField_a_of_type_JavaUtilMap = new HashMap();
+  
+  public static int a(String paramString)
+  {
+    try
+    {
+      boolean bool = new File(paramString).exists();
+      if (bool) {
+        return 2;
+      }
+      return 1;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("getFileExistStatus", 1, paramString, new Object[0]);
+    }
+    return 3;
+  }
   
   public static long a()
   {
@@ -39,424 +58,395 @@ public class SoDataUtil
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 8
-    //   3: new 64	java/io/File
-    //   6: dup
-    //   7: aload_0
-    //   8: invokespecial 67	java/io/File:<init>	(Ljava/lang/String;)V
-    //   11: astore_0
-    //   12: aload_0
-    //   13: invokevirtual 71	java/io/File:exists	()Z
-    //   16: istore_2
-    //   17: iload_2
-    //   18: ifne +63 -> 81
-    //   21: iconst_0
-    //   22: ifeq +11 -> 33
-    //   25: new 73	java/lang/NullPointerException
-    //   28: dup
-    //   29: invokespecial 74	java/lang/NullPointerException:<init>	()V
-    //   32: athrow
-    //   33: iconst_0
-    //   34: ifeq +11 -> 45
-    //   37: new 73	java/lang/NullPointerException
-    //   40: dup
-    //   41: invokespecial 74	java/lang/NullPointerException:<init>	()V
-    //   44: athrow
-    //   45: iconst_0
-    //   46: ifeq +11 -> 57
-    //   49: new 73	java/lang/NullPointerException
-    //   52: dup
-    //   53: invokespecial 74	java/lang/NullPointerException:<init>	()V
-    //   56: athrow
-    //   57: aload 8
-    //   59: astore_3
-    //   60: iconst_0
-    //   61: ifeq +11 -> 72
-    //   64: new 73	java/lang/NullPointerException
-    //   67: dup
-    //   68: invokespecial 74	java/lang/NullPointerException:<init>	()V
-    //   71: athrow
-    //   72: aload_3
-    //   73: areturn
-    //   74: astore_0
-    //   75: aload_0
-    //   76: invokevirtual 77	java/io/IOException:printStackTrace	()V
-    //   79: aconst_null
-    //   80: areturn
-    //   81: new 79	java/io/FileInputStream
-    //   84: dup
-    //   85: aload_0
-    //   86: invokespecial 82	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   89: astore 4
-    //   91: new 84	java/io/ByteArrayOutputStream
-    //   94: dup
-    //   95: invokespecial 85	java/io/ByteArrayOutputStream:<init>	()V
-    //   98: astore 5
-    //   100: sipush 1024
-    //   103: newarray byte
-    //   105: astore_0
+    //   1: astore 7
+    //   3: aconst_null
+    //   4: astore 5
+    //   6: new 26	java/io/File
+    //   9: dup
+    //   10: aload_0
+    //   11: invokespecial 29	java/io/File:<init>	(Ljava/lang/String;)V
+    //   14: astore_0
+    //   15: aload_0
+    //   16: invokevirtual 33	java/io/File:exists	()Z
+    //   19: ifne +5 -> 24
+    //   22: aconst_null
+    //   23: areturn
+    //   24: new 84	java/io/FileInputStream
+    //   27: dup
+    //   28: aload_0
+    //   29: invokespecial 87	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   32: astore_0
+    //   33: new 89	java/io/ByteArrayOutputStream
+    //   36: dup
+    //   37: invokespecial 90	java/io/ByteArrayOutputStream:<init>	()V
+    //   40: astore 4
+    //   42: sipush 1024
+    //   45: newarray byte
+    //   47: astore_2
+    //   48: aload_0
+    //   49: aload_2
+    //   50: invokevirtual 94	java/io/FileInputStream:read	([B)I
+    //   53: istore_1
+    //   54: iload_1
+    //   55: iconst_m1
+    //   56: if_icmpeq +14 -> 70
+    //   59: aload 4
+    //   61: aload_2
+    //   62: iconst_0
+    //   63: iload_1
+    //   64: invokevirtual 98	java/io/ByteArrayOutputStream:write	([BII)V
+    //   67: goto -19 -> 48
+    //   70: new 100	java/io/ByteArrayInputStream
+    //   73: dup
+    //   74: aload 4
+    //   76: invokevirtual 104	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   79: invokespecial 107	java/io/ByteArrayInputStream:<init>	([B)V
+    //   82: astore_2
+    //   83: new 109	java/io/ObjectInputStream
+    //   86: dup
+    //   87: aload_2
+    //   88: invokespecial 112	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   91: astore_3
+    //   92: aload_3
+    //   93: invokevirtual 116	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   96: astore 5
+    //   98: aload_3
+    //   99: invokevirtual 119	java/io/ObjectInputStream:close	()V
+    //   102: aload_2
+    //   103: invokevirtual 120	java/io/ByteArrayInputStream:close	()V
     //   106: aload 4
-    //   108: aload_0
-    //   109: invokevirtual 89	java/io/FileInputStream:read	([B)I
-    //   112: istore_1
-    //   113: iload_1
-    //   114: iconst_m1
-    //   115: if_icmpeq +102 -> 217
-    //   118: aload 5
-    //   120: aload_0
-    //   121: iconst_0
-    //   122: iload_1
-    //   123: invokevirtual 93	java/io/ByteArrayOutputStream:write	([BII)V
-    //   126: goto -20 -> 106
+    //   108: invokevirtual 121	java/io/ByteArrayOutputStream:close	()V
+    //   111: aload_0
+    //   112: invokevirtual 122	java/io/FileInputStream:close	()V
+    //   115: aload 5
+    //   117: areturn
+    //   118: astore_0
+    //   119: aload_0
+    //   120: invokevirtual 125	java/io/IOException:printStackTrace	()V
+    //   123: aload 5
+    //   125: areturn
+    //   126: astore 5
+    //   128: aload_0
     //   129: astore 6
-    //   131: aconst_null
+    //   131: aload_2
     //   132: astore 7
     //   134: aload 5
-    //   136: astore_3
-    //   137: aconst_null
-    //   138: astore 8
-    //   140: aload 4
-    //   142: astore_0
+    //   136: astore_0
+    //   137: aload_3
+    //   138: astore 5
+    //   140: aload 6
+    //   142: astore_2
     //   143: aload 7
-    //   145: astore 5
-    //   147: aload 8
-    //   149: astore 4
-    //   151: aload 6
-    //   153: invokevirtual 94	java/lang/Exception:printStackTrace	()V
-    //   156: aload 6
-    //   158: athrow
-    //   159: astore 8
-    //   161: aload 5
-    //   163: astore 6
-    //   165: aload_3
-    //   166: astore 5
-    //   168: aload_0
-    //   169: astore 7
-    //   171: aload 6
-    //   173: astore_3
-    //   174: aload 8
-    //   176: astore_0
-    //   177: aload_3
-    //   178: ifnull +7 -> 185
-    //   181: aload_3
-    //   182: invokevirtual 99	java/io/ObjectInputStream:close	()V
-    //   185: aload 4
-    //   187: ifnull +8 -> 195
-    //   190: aload 4
-    //   192: invokevirtual 102	java/io/ByteArrayInputStream:close	()V
-    //   195: aload 5
-    //   197: ifnull +8 -> 205
-    //   200: aload 5
-    //   202: invokevirtual 103	java/io/ByteArrayOutputStream:close	()V
-    //   205: aload 7
-    //   207: ifnull +8 -> 215
-    //   210: aload 7
-    //   212: invokevirtual 104	java/io/FileInputStream:close	()V
-    //   215: aload_0
-    //   216: athrow
-    //   217: new 101	java/io/ByteArrayInputStream
-    //   220: dup
-    //   221: aload 5
-    //   223: invokevirtual 108	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   226: invokespecial 111	java/io/ByteArrayInputStream:<init>	([B)V
-    //   229: astore 6
-    //   231: new 96	java/io/ObjectInputStream
-    //   234: dup
-    //   235: aload 6
-    //   237: invokespecial 114	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
-    //   240: astore_3
-    //   241: aload_3
-    //   242: invokevirtual 118	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   245: astore_0
-    //   246: aload_3
-    //   247: ifnull +7 -> 254
-    //   250: aload_3
-    //   251: invokevirtual 99	java/io/ObjectInputStream:close	()V
-    //   254: aload 6
-    //   256: ifnull +8 -> 264
-    //   259: aload 6
-    //   261: invokevirtual 102	java/io/ByteArrayInputStream:close	()V
-    //   264: aload 5
-    //   266: ifnull +8 -> 274
-    //   269: aload 5
-    //   271: invokevirtual 103	java/io/ByteArrayOutputStream:close	()V
-    //   274: aload_0
+    //   145: astore_3
+    //   146: goto +329 -> 475
+    //   149: astore 6
+    //   151: aload_0
+    //   152: astore 5
+    //   154: aload_2
+    //   155: astore 7
+    //   157: aload 6
+    //   159: astore_0
+    //   160: aload 4
+    //   162: astore 6
+    //   164: aload_0
+    //   165: astore 4
+    //   167: aload_3
+    //   168: astore_0
+    //   169: aload 5
+    //   171: astore_2
+    //   172: aload 7
+    //   174: astore_3
+    //   175: goto +219 -> 394
+    //   178: astore 5
+    //   180: aload_0
+    //   181: astore 6
+    //   183: aload_2
+    //   184: astore 7
+    //   186: aload 5
+    //   188: astore_0
+    //   189: aload_3
+    //   190: astore 5
+    //   192: aload 6
+    //   194: astore_2
+    //   195: aload 7
+    //   197: astore_3
+    //   198: goto +270 -> 468
+    //   201: astore 5
+    //   203: aload_0
+    //   204: astore_3
+    //   205: aload_2
+    //   206: astore 6
+    //   208: aload 5
+    //   210: astore_0
+    //   211: aload 7
+    //   213: astore 5
+    //   215: aload_3
+    //   216: astore_2
+    //   217: aload 6
+    //   219: astore_3
+    //   220: goto +255 -> 475
+    //   223: astore 6
+    //   225: aload_0
+    //   226: astore_3
+    //   227: aload_2
+    //   228: astore 5
+    //   230: aload 6
+    //   232: astore_0
+    //   233: aconst_null
+    //   234: astore_2
+    //   235: aload 4
+    //   237: astore 6
+    //   239: aload_0
+    //   240: astore 4
+    //   242: aload_2
+    //   243: astore_0
+    //   244: aload_3
+    //   245: astore_2
+    //   246: aload 5
+    //   248: astore_3
+    //   249: goto +145 -> 394
+    //   252: astore 7
+    //   254: aload_0
+    //   255: astore_3
+    //   256: aload_2
+    //   257: astore 6
+    //   259: aload 7
+    //   261: astore_0
+    //   262: aload_3
+    //   263: astore_2
+    //   264: aload 6
+    //   266: astore_3
+    //   267: goto +201 -> 468
+    //   270: astore 6
+    //   272: aload_0
+    //   273: astore_2
+    //   274: aconst_null
     //   275: astore_3
-    //   276: aload 4
-    //   278: ifnull -206 -> 72
-    //   281: aload 4
-    //   283: invokevirtual 104	java/io/FileInputStream:close	()V
-    //   286: aload_0
-    //   287: areturn
-    //   288: astore_3
-    //   289: aload_3
-    //   290: invokevirtual 77	java/io/IOException:printStackTrace	()V
-    //   293: aload_0
-    //   294: areturn
-    //   295: astore_3
-    //   296: aconst_null
-    //   297: astore 7
-    //   299: aconst_null
-    //   300: astore 5
-    //   302: aconst_null
-    //   303: astore 4
-    //   305: aconst_null
-    //   306: astore_0
-    //   307: aload_3
-    //   308: invokevirtual 119	java/lang/OutOfMemoryError:printStackTrace	()V
-    //   311: aload_0
-    //   312: ifnull +7 -> 319
-    //   315: aload_0
-    //   316: invokevirtual 99	java/io/ObjectInputStream:close	()V
-    //   319: aload 4
-    //   321: ifnull +8 -> 329
-    //   324: aload 4
-    //   326: invokevirtual 102	java/io/ByteArrayInputStream:close	()V
-    //   329: aload 5
-    //   331: ifnull +8 -> 339
-    //   334: aload 5
-    //   336: invokevirtual 103	java/io/ByteArrayOutputStream:close	()V
-    //   339: aload 8
+    //   276: aload 7
+    //   278: astore 5
+    //   280: aload 6
+    //   282: astore_0
+    //   283: goto +192 -> 475
+    //   286: astore 5
+    //   288: aload_0
+    //   289: astore_2
+    //   290: aconst_null
+    //   291: astore_3
+    //   292: aload_3
+    //   293: astore_0
+    //   294: aload 4
+    //   296: astore 6
+    //   298: aload 5
+    //   300: astore 4
+    //   302: goto +92 -> 394
+    //   305: astore 6
+    //   307: aload_0
+    //   308: astore_2
+    //   309: aconst_null
+    //   310: astore_3
+    //   311: aload 6
+    //   313: astore_0
+    //   314: goto +154 -> 468
+    //   317: astore 6
+    //   319: aload_0
+    //   320: astore_2
+    //   321: aconst_null
+    //   322: astore_3
+    //   323: aload_3
+    //   324: astore 4
+    //   326: aload 7
+    //   328: astore 5
+    //   330: aload 6
+    //   332: astore_0
+    //   333: goto +142 -> 475
+    //   336: astore 4
+    //   338: aload_0
+    //   339: astore_2
+    //   340: aconst_null
     //   341: astore_3
-    //   342: aload 7
-    //   344: ifnull -272 -> 72
-    //   347: aload 7
-    //   349: invokevirtual 104	java/io/FileInputStream:close	()V
-    //   352: aconst_null
-    //   353: areturn
-    //   354: astore_0
-    //   355: aload_0
-    //   356: invokevirtual 77	java/io/IOException:printStackTrace	()V
-    //   359: aconst_null
-    //   360: areturn
-    //   361: astore_3
-    //   362: aload_3
-    //   363: invokevirtual 77	java/io/IOException:printStackTrace	()V
-    //   366: goto -151 -> 215
-    //   369: astore_0
-    //   370: aconst_null
-    //   371: astore 7
-    //   373: aconst_null
-    //   374: astore 5
-    //   376: aconst_null
-    //   377: astore 4
-    //   379: aconst_null
-    //   380: astore_3
-    //   381: goto -204 -> 177
-    //   384: astore_0
-    //   385: aconst_null
-    //   386: astore 5
-    //   388: aconst_null
-    //   389: astore 6
-    //   391: aconst_null
-    //   392: astore_3
-    //   393: aload 4
-    //   395: astore 7
-    //   397: aload 6
-    //   399: astore 4
-    //   401: goto -224 -> 177
-    //   404: astore_0
-    //   405: aconst_null
-    //   406: astore 6
-    //   408: aconst_null
-    //   409: astore_3
-    //   410: aload 4
-    //   412: astore 7
-    //   414: aload 6
-    //   416: astore 4
-    //   418: goto -241 -> 177
-    //   421: astore_0
-    //   422: aconst_null
-    //   423: astore_3
-    //   424: aload 4
-    //   426: astore 7
-    //   428: aload 6
-    //   430: astore 4
-    //   432: goto -255 -> 177
-    //   435: astore_0
-    //   436: aload 4
-    //   438: astore 7
-    //   440: aload 6
-    //   442: astore 4
-    //   444: goto -267 -> 177
-    //   447: astore 6
-    //   449: aload_0
-    //   450: astore_3
-    //   451: aload 6
-    //   453: astore_0
-    //   454: goto -277 -> 177
-    //   457: astore_3
-    //   458: aconst_null
-    //   459: astore 5
-    //   461: aconst_null
-    //   462: astore 6
-    //   464: aconst_null
-    //   465: astore_0
-    //   466: aload 4
-    //   468: astore 7
-    //   470: aload 6
-    //   472: astore 4
-    //   474: goto -167 -> 307
-    //   477: astore_3
-    //   478: aconst_null
-    //   479: astore 6
-    //   481: aconst_null
-    //   482: astore_0
-    //   483: aload 4
-    //   485: astore 7
-    //   487: aload 6
-    //   489: astore 4
-    //   491: goto -184 -> 307
-    //   494: astore_3
-    //   495: aconst_null
-    //   496: astore_0
-    //   497: aload 4
-    //   499: astore 7
-    //   501: aload 6
-    //   503: astore 4
-    //   505: goto -198 -> 307
-    //   508: astore 7
-    //   510: aload_3
-    //   511: astore_0
-    //   512: aload 7
-    //   514: astore_3
-    //   515: aload 4
-    //   517: astore 7
-    //   519: aload 6
-    //   521: astore 4
-    //   523: goto -216 -> 307
-    //   526: astore 6
-    //   528: aconst_null
-    //   529: astore_3
-    //   530: aconst_null
-    //   531: astore 4
-    //   533: aconst_null
-    //   534: astore 5
-    //   536: aconst_null
-    //   537: astore_0
-    //   538: goto -387 -> 151
-    //   541: astore 6
-    //   543: aconst_null
-    //   544: astore 7
-    //   546: aconst_null
-    //   547: astore 5
-    //   549: aload 4
-    //   551: astore_0
-    //   552: aconst_null
-    //   553: astore_3
-    //   554: aload 7
-    //   556: astore 4
-    //   558: goto -407 -> 151
-    //   561: astore 7
-    //   563: aload 4
-    //   565: astore_0
-    //   566: aload 5
-    //   568: astore_3
-    //   569: aload 6
-    //   571: astore 4
-    //   573: aconst_null
-    //   574: astore 5
-    //   576: aload 7
-    //   578: astore 6
-    //   580: goto -429 -> 151
-    //   583: astore 9
-    //   585: aload 5
-    //   587: astore 7
-    //   589: aload 6
-    //   591: astore 5
-    //   593: aload_3
-    //   594: astore 8
-    //   596: aload 4
-    //   598: astore_0
-    //   599: aload 9
-    //   601: astore 6
-    //   603: aload 7
-    //   605: astore_3
-    //   606: aload 5
-    //   608: astore 4
-    //   610: aload 8
-    //   612: astore 5
-    //   614: goto -463 -> 151
+    //   342: aload_3
+    //   343: astore 6
+    //   345: aload 6
+    //   347: astore_0
+    //   348: goto +46 -> 394
+    //   351: astore 6
+    //   353: aload_0
+    //   354: astore_2
+    //   355: aconst_null
+    //   356: astore_3
+    //   357: aload_3
+    //   358: astore 4
+    //   360: aload 6
+    //   362: astore_0
+    //   363: goto +105 -> 468
+    //   366: astore_0
+    //   367: aconst_null
+    //   368: astore_3
+    //   369: aload_3
+    //   370: astore 4
+    //   372: aload 4
+    //   374: astore_2
+    //   375: aload 7
+    //   377: astore 5
+    //   379: goto +96 -> 475
+    //   382: astore 4
+    //   384: aconst_null
+    //   385: astore_3
+    //   386: aload_3
+    //   387: astore 6
+    //   389: aload 6
+    //   391: astore_0
+    //   392: aload_0
+    //   393: astore_2
+    //   394: aload 4
+    //   396: invokevirtual 126	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   399: aload_0
+    //   400: ifnull +10 -> 410
+    //   403: aload_0
+    //   404: invokevirtual 119	java/io/ObjectInputStream:close	()V
+    //   407: goto +3 -> 410
+    //   410: aload_3
+    //   411: ifnull +7 -> 418
+    //   414: aload_3
+    //   415: invokevirtual 120	java/io/ByteArrayInputStream:close	()V
+    //   418: aload 6
+    //   420: ifnull +8 -> 428
+    //   423: aload 6
+    //   425: invokevirtual 121	java/io/ByteArrayOutputStream:close	()V
+    //   428: aload_2
+    //   429: ifnull +13 -> 442
+    //   432: aload_2
+    //   433: invokevirtual 122	java/io/FileInputStream:close	()V
+    //   436: aconst_null
+    //   437: areturn
+    //   438: aload_0
+    //   439: invokevirtual 125	java/io/IOException:printStackTrace	()V
+    //   442: aconst_null
+    //   443: areturn
+    //   444: astore 7
+    //   446: aload_0
+    //   447: astore 5
+    //   449: aload 6
+    //   451: astore 4
+    //   453: aload 7
+    //   455: astore_0
+    //   456: goto +19 -> 475
+    //   459: astore_0
+    //   460: aconst_null
+    //   461: astore_3
+    //   462: aload_3
+    //   463: astore 4
+    //   465: aload 4
+    //   467: astore_2
+    //   468: aload_0
+    //   469: invokevirtual 127	java/lang/Exception:printStackTrace	()V
+    //   472: aload_0
+    //   473: athrow
+    //   474: astore_0
+    //   475: aload 5
+    //   477: ifnull +11 -> 488
+    //   480: aload 5
+    //   482: invokevirtual 119	java/io/ObjectInputStream:close	()V
+    //   485: goto +3 -> 488
+    //   488: aload_3
+    //   489: ifnull +7 -> 496
+    //   492: aload_3
+    //   493: invokevirtual 120	java/io/ByteArrayInputStream:close	()V
+    //   496: aload 4
+    //   498: ifnull +8 -> 506
+    //   501: aload 4
+    //   503: invokevirtual 121	java/io/ByteArrayOutputStream:close	()V
+    //   506: aload_2
+    //   507: ifnull +14 -> 521
+    //   510: aload_2
+    //   511: invokevirtual 122	java/io/FileInputStream:close	()V
+    //   514: goto +7 -> 521
+    //   517: aload_2
+    //   518: invokevirtual 125	java/io/IOException:printStackTrace	()V
+    //   521: goto +5 -> 526
+    //   524: aload_0
+    //   525: athrow
+    //   526: goto -2 -> 524
+    //   529: astore_0
+    //   530: goto -92 -> 438
+    //   533: astore_2
+    //   534: goto -17 -> 517
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	617	0	paramString	String
-    //   112	11	1	i	int
-    //   16	2	2	bool	boolean
-    //   59	217	3	localObject1	Object
-    //   288	2	3	localIOException1	java.io.IOException
-    //   295	13	3	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   341	1	3	localObject2	Object
-    //   361	2	3	localIOException2	java.io.IOException
-    //   380	71	3	str	String
-    //   457	1	3	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   477	1	3	localOutOfMemoryError3	java.lang.OutOfMemoryError
-    //   494	17	3	localOutOfMemoryError4	java.lang.OutOfMemoryError
-    //   514	92	3	localObject3	Object
-    //   89	520	4	localObject4	Object
-    //   98	515	5	localObject5	Object
-    //   129	28	6	localException1	java.lang.Exception
-    //   163	278	6	localObject6	Object
-    //   447	5	6	localObject7	Object
-    //   462	58	6	localObject8	Object
-    //   526	1	6	localException2	java.lang.Exception
-    //   541	29	6	localException3	java.lang.Exception
-    //   578	24	6	localObject9	Object
-    //   132	368	7	localObject10	Object
-    //   508	5	7	localOutOfMemoryError5	java.lang.OutOfMemoryError
-    //   517	38	7	localObject11	Object
-    //   561	16	7	localException4	java.lang.Exception
-    //   587	17	7	localObject12	Object
-    //   1	147	8	localObject13	Object
-    //   159	181	8	localObject14	Object
-    //   594	17	8	localObject15	Object
-    //   583	17	9	localException5	java.lang.Exception
+    //   0	537	0	paramString	String
+    //   53	11	1	i	int
+    //   47	471	2	localObject1	Object
+    //   533	1	2	localIOException	java.io.IOException
+    //   91	402	3	localObject2	Object
+    //   40	285	4	localObject3	Object
+    //   336	1	4	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   358	15	4	localObject4	Object
+    //   382	13	4	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   451	51	4	localObject5	Object
+    //   4	120	5	localObject6	Object
+    //   126	9	5	localObject7	Object
+    //   138	32	5	localObject8	Object
+    //   178	9	5	localException1	java.lang.Exception
+    //   190	1	5	localObject9	Object
+    //   201	8	5	localObject10	Object
+    //   213	66	5	localObject11	Object
+    //   286	13	5	localOutOfMemoryError3	java.lang.OutOfMemoryError
+    //   328	153	5	localObject12	Object
+    //   129	12	6	str	String
+    //   149	9	6	localOutOfMemoryError4	java.lang.OutOfMemoryError
+    //   162	56	6	localObject13	Object
+    //   223	8	6	localOutOfMemoryError5	java.lang.OutOfMemoryError
+    //   237	28	6	localObject14	Object
+    //   270	11	6	localObject15	Object
+    //   296	1	6	localObject16	Object
+    //   305	7	6	localException2	java.lang.Exception
+    //   317	14	6	localObject17	Object
+    //   343	3	6	localObject18	Object
+    //   351	10	6	localException3	java.lang.Exception
+    //   387	63	6	localObject19	Object
+    //   1	211	7	localObject20	Object
+    //   252	124	7	localException4	java.lang.Exception
+    //   444	10	7	localObject21	Object
     // Exception table:
     //   from	to	target	type
-    //   25	33	74	java/io/IOException
-    //   37	45	74	java/io/IOException
-    //   49	57	74	java/io/IOException
-    //   64	72	74	java/io/IOException
-    //   100	106	129	java/lang/Exception
-    //   106	113	129	java/lang/Exception
-    //   118	126	129	java/lang/Exception
-    //   217	231	129	java/lang/Exception
-    //   151	159	159	finally
-    //   250	254	288	java/io/IOException
-    //   259	264	288	java/io/IOException
-    //   269	274	288	java/io/IOException
-    //   281	286	288	java/io/IOException
-    //   3	17	295	java/lang/OutOfMemoryError
-    //   81	91	295	java/lang/OutOfMemoryError
-    //   315	319	354	java/io/IOException
-    //   324	329	354	java/io/IOException
-    //   334	339	354	java/io/IOException
-    //   347	352	354	java/io/IOException
-    //   181	185	361	java/io/IOException
-    //   190	195	361	java/io/IOException
-    //   200	205	361	java/io/IOException
-    //   210	215	361	java/io/IOException
-    //   3	17	369	finally
-    //   81	91	369	finally
-    //   91	100	384	finally
-    //   100	106	404	finally
-    //   106	113	404	finally
-    //   118	126	404	finally
-    //   217	231	404	finally
-    //   231	241	421	finally
-    //   241	246	435	finally
-    //   307	311	447	finally
-    //   91	100	457	java/lang/OutOfMemoryError
-    //   100	106	477	java/lang/OutOfMemoryError
-    //   106	113	477	java/lang/OutOfMemoryError
-    //   118	126	477	java/lang/OutOfMemoryError
-    //   217	231	477	java/lang/OutOfMemoryError
-    //   231	241	494	java/lang/OutOfMemoryError
-    //   241	246	508	java/lang/OutOfMemoryError
-    //   3	17	526	java/lang/Exception
-    //   81	91	526	java/lang/Exception
-    //   91	100	541	java/lang/Exception
-    //   231	241	561	java/lang/Exception
-    //   241	246	583	java/lang/Exception
+    //   98	115	118	java/io/IOException
+    //   92	98	126	finally
+    //   92	98	149	java/lang/OutOfMemoryError
+    //   92	98	178	java/lang/Exception
+    //   83	92	201	finally
+    //   83	92	223	java/lang/OutOfMemoryError
+    //   83	92	252	java/lang/Exception
+    //   42	48	270	finally
+    //   48	54	270	finally
+    //   59	67	270	finally
+    //   70	83	270	finally
+    //   42	48	286	java/lang/OutOfMemoryError
+    //   48	54	286	java/lang/OutOfMemoryError
+    //   59	67	286	java/lang/OutOfMemoryError
+    //   70	83	286	java/lang/OutOfMemoryError
+    //   42	48	305	java/lang/Exception
+    //   48	54	305	java/lang/Exception
+    //   59	67	305	java/lang/Exception
+    //   70	83	305	java/lang/Exception
+    //   33	42	317	finally
+    //   33	42	336	java/lang/OutOfMemoryError
+    //   33	42	351	java/lang/Exception
+    //   6	22	366	finally
+    //   24	33	366	finally
+    //   6	22	382	java/lang/OutOfMemoryError
+    //   24	33	382	java/lang/OutOfMemoryError
+    //   394	399	444	finally
+    //   6	22	459	java/lang/Exception
+    //   24	33	459	java/lang/Exception
+    //   468	474	474	finally
+    //   403	407	529	java/io/IOException
+    //   414	418	529	java/io/IOException
+    //   423	428	529	java/io/IOException
+    //   432	436	529	java/io/IOException
+    //   480	485	533	java/io/IOException
+    //   492	496	533	java/io/IOException
+    //   501	506	533	java/io/IOException
+    //   510	514	533	java/io/IOException
   }
   
   private static String a()
@@ -471,7 +461,12 @@ public class SoDataUtil
   {
     try
     {
-      paramLoadItem = a("dynamic_so_load").getString("key_last_succ_" + paramLoadItem.name + a(), "");
+      SharedPreferences localSharedPreferences = a("dynamic_so_load");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_last_succ_");
+      localStringBuilder.append(paramLoadItem.name);
+      localStringBuilder.append(a());
+      paramLoadItem = localSharedPreferences.getString(localStringBuilder.toString(), "");
       return paramLoadItem;
     }
     catch (Throwable paramLoadItem)
@@ -531,7 +526,12 @@ public class SoDataUtil
   {
     try
     {
-      a("dynamic_so_load").edit().putString("key_last_succ_" + paramLoadItem.name + a(), paramString).apply();
+      SharedPreferences.Editor localEditor = a("dynamic_so_load").edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_last_succ_");
+      localStringBuilder.append(paramLoadItem.name);
+      localStringBuilder.append(a());
+      localEditor.putString(localStringBuilder.toString(), paramString).apply();
       return;
     }
     catch (Throwable paramLoadItem)
@@ -548,243 +548,229 @@ public class SoDataUtil
     //   1: astore 4
     //   3: aconst_null
     //   4: astore_3
-    //   5: new 64	java/io/File
-    //   8: dup
-    //   9: aload_1
-    //   10: invokespecial 67	java/io/File:<init>	(Ljava/lang/String;)V
-    //   13: astore_1
-    //   14: aload_1
-    //   15: invokevirtual 71	java/io/File:exists	()Z
-    //   18: ifne +26 -> 44
-    //   21: aload_1
-    //   22: invokevirtual 212	java/io/File:getParentFile	()Ljava/io/File;
-    //   25: invokevirtual 71	java/io/File:exists	()Z
-    //   28: ifne +11 -> 39
-    //   31: aload_1
-    //   32: invokevirtual 212	java/io/File:getParentFile	()Ljava/io/File;
-    //   35: invokevirtual 215	java/io/File:mkdirs	()Z
-    //   38: pop
-    //   39: aload_1
-    //   40: invokevirtual 218	java/io/File:createNewFile	()Z
-    //   43: pop
-    //   44: new 220	java/io/FileOutputStream
-    //   47: dup
-    //   48: aload_1
-    //   49: invokespecial 221	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   52: astore_1
-    //   53: new 84	java/io/ByteArrayOutputStream
-    //   56: dup
-    //   57: invokespecial 85	java/io/ByteArrayOutputStream:<init>	()V
-    //   60: astore_3
-    //   61: new 223	java/io/ObjectOutputStream
-    //   64: dup
-    //   65: aload_3
-    //   66: invokespecial 226	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   69: astore_2
+    //   5: aconst_null
+    //   6: astore 7
+    //   8: new 26	java/io/File
+    //   11: dup
+    //   12: aload_1
+    //   13: invokespecial 29	java/io/File:<init>	(Ljava/lang/String;)V
+    //   16: astore_1
+    //   17: aload_1
+    //   18: invokevirtual 33	java/io/File:exists	()Z
+    //   21: ifne +26 -> 47
+    //   24: aload_1
+    //   25: invokevirtual 218	java/io/File:getParentFile	()Ljava/io/File;
+    //   28: invokevirtual 33	java/io/File:exists	()Z
+    //   31: ifne +11 -> 42
+    //   34: aload_1
+    //   35: invokevirtual 218	java/io/File:getParentFile	()Ljava/io/File;
+    //   38: invokevirtual 221	java/io/File:mkdirs	()Z
+    //   41: pop
+    //   42: aload_1
+    //   43: invokevirtual 224	java/io/File:createNewFile	()Z
+    //   46: pop
+    //   47: new 226	java/io/FileOutputStream
+    //   50: dup
+    //   51: aload_1
+    //   52: invokespecial 227	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   55: astore_2
+    //   56: new 89	java/io/ByteArrayOutputStream
+    //   59: dup
+    //   60: invokespecial 90	java/io/ByteArrayOutputStream:<init>	()V
+    //   63: astore_1
+    //   64: aload 4
+    //   66: astore_3
+    //   67: aload_1
+    //   68: astore 4
     //   70: aload_2
-    //   71: aload_0
-    //   72: invokevirtual 230	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
-    //   75: aload_2
-    //   76: invokevirtual 233	java/io/ObjectOutputStream:flush	()V
-    //   79: aload_3
-    //   80: aload_1
-    //   81: invokevirtual 236	java/io/ByteArrayOutputStream:writeTo	(Ljava/io/OutputStream;)V
-    //   84: aload_2
-    //   85: ifnull +7 -> 92
-    //   88: aload_2
-    //   89: invokevirtual 237	java/io/ObjectOutputStream:close	()V
-    //   92: aload_3
-    //   93: ifnull +7 -> 100
-    //   96: aload_3
-    //   97: invokevirtual 103	java/io/ByteArrayOutputStream:close	()V
-    //   100: aload_1
-    //   101: ifnull +7 -> 108
+    //   71: astore 6
+    //   73: new 229	java/io/ObjectOutputStream
+    //   76: dup
+    //   77: aload_1
+    //   78: invokespecial 232	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   81: astore 5
+    //   83: aload 5
+    //   85: aload_0
+    //   86: invokevirtual 236	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   89: aload 5
+    //   91: invokevirtual 239	java/io/ObjectOutputStream:flush	()V
+    //   94: aload_1
+    //   95: aload_2
+    //   96: invokevirtual 242	java/io/ByteArrayOutputStream:writeTo	(Ljava/io/OutputStream;)V
+    //   99: aload 5
+    //   101: invokevirtual 243	java/io/ObjectOutputStream:close	()V
     //   104: aload_1
-    //   105: invokevirtual 238	java/io/FileOutputStream:close	()V
-    //   108: return
-    //   109: astore_0
-    //   110: aload_0
-    //   111: invokevirtual 77	java/io/IOException:printStackTrace	()V
-    //   114: return
-    //   115: astore 4
-    //   117: aconst_null
-    //   118: astore_0
-    //   119: aconst_null
-    //   120: astore_2
-    //   121: aload_3
+    //   105: invokevirtual 121	java/io/ByteArrayOutputStream:close	()V
+    //   108: aload_2
+    //   109: invokevirtual 244	java/io/FileOutputStream:close	()V
+    //   112: return
+    //   113: astore 4
+    //   115: aload 5
+    //   117: astore_3
+    //   118: aload_1
+    //   119: astore_0
+    //   120: aload 4
     //   122: astore_1
-    //   123: aload 4
-    //   125: astore_3
-    //   126: aload_3
-    //   127: invokevirtual 156	java/lang/Throwable:printStackTrace	()V
-    //   130: aload_2
-    //   131: ifnull +7 -> 138
-    //   134: aload_2
-    //   135: invokevirtual 237	java/io/ObjectOutputStream:close	()V
-    //   138: aload_0
-    //   139: ifnull +7 -> 146
-    //   142: aload_0
-    //   143: invokevirtual 103	java/io/ByteArrayOutputStream:close	()V
-    //   146: aload_1
-    //   147: ifnull -39 -> 108
-    //   150: aload_1
-    //   151: invokevirtual 238	java/io/FileOutputStream:close	()V
-    //   154: return
-    //   155: astore_0
-    //   156: aload_0
-    //   157: invokevirtual 77	java/io/IOException:printStackTrace	()V
-    //   160: return
-    //   161: astore_0
-    //   162: aconst_null
-    //   163: astore_3
-    //   164: aconst_null
-    //   165: astore_2
-    //   166: aload 4
-    //   168: astore_1
-    //   169: aload_2
-    //   170: ifnull +7 -> 177
+    //   123: goto +111 -> 234
+    //   126: astore_3
+    //   127: aload_1
+    //   128: astore_0
+    //   129: aload_3
+    //   130: astore_1
+    //   131: goto +48 -> 179
+    //   134: astore_3
+    //   135: aload 7
+    //   137: astore 5
+    //   139: aload_1
+    //   140: astore_0
+    //   141: aload_3
+    //   142: astore_1
+    //   143: goto +36 -> 179
+    //   146: astore_1
+    //   147: aconst_null
+    //   148: astore_0
+    //   149: goto +85 -> 234
+    //   152: astore_1
+    //   153: aconst_null
+    //   154: astore_0
+    //   155: aload 7
+    //   157: astore 5
+    //   159: goto +20 -> 179
+    //   162: astore_1
+    //   163: aconst_null
+    //   164: astore_2
+    //   165: aload_2
+    //   166: astore_0
+    //   167: goto +67 -> 234
+    //   170: astore_1
+    //   171: aconst_null
+    //   172: astore_2
     //   173: aload_2
-    //   174: invokevirtual 237	java/io/ObjectOutputStream:close	()V
-    //   177: aload_3
-    //   178: ifnull +7 -> 185
-    //   181: aload_3
-    //   182: invokevirtual 103	java/io/ByteArrayOutputStream:close	()V
-    //   185: aload_1
-    //   186: ifnull +7 -> 193
-    //   189: aload_1
-    //   190: invokevirtual 238	java/io/FileOutputStream:close	()V
-    //   193: aload_0
-    //   194: athrow
-    //   195: astore_1
-    //   196: aload_1
-    //   197: invokevirtual 77	java/io/IOException:printStackTrace	()V
-    //   200: goto -7 -> 193
-    //   203: astore_0
-    //   204: aconst_null
-    //   205: astore_3
-    //   206: aconst_null
-    //   207: astore_2
-    //   208: goto -39 -> 169
-    //   211: astore_0
-    //   212: aconst_null
-    //   213: astore_2
-    //   214: goto -45 -> 169
-    //   217: astore_0
-    //   218: goto -49 -> 169
-    //   221: astore 4
-    //   223: aload_0
-    //   224: astore_3
-    //   225: aload 4
-    //   227: astore_0
-    //   228: goto -59 -> 169
-    //   231: astore_3
-    //   232: aconst_null
-    //   233: astore_2
-    //   234: aconst_null
-    //   235: astore_0
-    //   236: goto -110 -> 126
-    //   239: astore 4
-    //   241: aload_3
-    //   242: astore_0
-    //   243: aconst_null
-    //   244: astore_2
-    //   245: aload 4
-    //   247: astore_3
-    //   248: goto -122 -> 126
-    //   251: astore 4
-    //   253: aload_3
-    //   254: astore_0
-    //   255: aload 4
-    //   257: astore_3
-    //   258: goto -132 -> 126
+    //   174: astore_0
+    //   175: aload 7
+    //   177: astore 5
+    //   179: aload 5
+    //   181: astore_3
+    //   182: aload_0
+    //   183: astore 4
+    //   185: aload_2
+    //   186: astore 6
+    //   188: aload_1
+    //   189: invokevirtual 162	java/lang/Throwable:printStackTrace	()V
+    //   192: aload 5
+    //   194: ifnull +11 -> 205
+    //   197: aload 5
+    //   199: invokevirtual 243	java/io/ObjectOutputStream:close	()V
+    //   202: goto +3 -> 205
+    //   205: aload_0
+    //   206: ifnull +7 -> 213
+    //   209: aload_0
+    //   210: invokevirtual 121	java/io/ByteArrayOutputStream:close	()V
+    //   213: aload_2
+    //   214: ifnull +12 -> 226
+    //   217: aload_2
+    //   218: invokevirtual 244	java/io/FileOutputStream:close	()V
+    //   221: return
+    //   222: aload_0
+    //   223: invokevirtual 125	java/io/IOException:printStackTrace	()V
+    //   226: return
+    //   227: astore_1
+    //   228: aload 6
+    //   230: astore_2
+    //   231: aload 4
+    //   233: astore_0
+    //   234: aload_3
+    //   235: ifnull +10 -> 245
+    //   238: aload_3
+    //   239: invokevirtual 243	java/io/ObjectOutputStream:close	()V
+    //   242: goto +3 -> 245
+    //   245: aload_0
+    //   246: ifnull +7 -> 253
+    //   249: aload_0
+    //   250: invokevirtual 121	java/io/ByteArrayOutputStream:close	()V
+    //   253: aload_2
+    //   254: ifnull +14 -> 268
+    //   257: aload_2
+    //   258: invokevirtual 244	java/io/FileOutputStream:close	()V
+    //   261: goto +7 -> 268
+    //   264: aload_0
+    //   265: invokevirtual 125	java/io/IOException:printStackTrace	()V
+    //   268: aload_1
+    //   269: athrow
+    //   270: astore_0
+    //   271: goto -49 -> 222
+    //   274: astore_0
+    //   275: goto -11 -> 264
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	261	0	paramObject	Object
-    //   0	261	1	paramString	String
-    //   69	176	2	localObjectOutputStream	java.io.ObjectOutputStream
-    //   4	221	3	localObject1	Object
-    //   231	11	3	localThrowable1	Throwable
-    //   247	11	3	localThrowable2	Throwable
-    //   1	1	4	localObject2	Object
-    //   115	52	4	localThrowable3	Throwable
-    //   221	5	4	localObject3	Object
-    //   239	7	4	localThrowable4	Throwable
-    //   251	5	4	localThrowable5	Throwable
+    //   0	278	0	paramObject	Object
+    //   0	278	1	paramString	String
+    //   55	203	2	localObject1	Object
+    //   4	114	3	localObject2	Object
+    //   126	4	3	localThrowable1	Throwable
+    //   134	8	3	localThrowable2	Throwable
+    //   181	58	3	localObject3	Object
+    //   1	68	4	str	String
+    //   113	8	4	localObject4	Object
+    //   183	49	4	localObject5	Object
+    //   81	117	5	localObject6	Object
+    //   71	158	6	localObject7	Object
+    //   6	170	7	localObject8	Object
     // Exception table:
     //   from	to	target	type
-    //   88	92	109	java/io/IOException
-    //   96	100	109	java/io/IOException
-    //   104	108	109	java/io/IOException
-    //   5	39	115	java/lang/Throwable
-    //   39	44	115	java/lang/Throwable
-    //   44	53	115	java/lang/Throwable
-    //   134	138	155	java/io/IOException
-    //   142	146	155	java/io/IOException
-    //   150	154	155	java/io/IOException
-    //   5	39	161	finally
-    //   39	44	161	finally
-    //   44	53	161	finally
-    //   173	177	195	java/io/IOException
-    //   181	185	195	java/io/IOException
-    //   189	193	195	java/io/IOException
-    //   53	61	203	finally
-    //   61	70	211	finally
-    //   70	84	217	finally
-    //   126	130	221	finally
-    //   53	61	231	java/lang/Throwable
-    //   61	70	239	java/lang/Throwable
-    //   70	84	251	java/lang/Throwable
+    //   83	99	113	finally
+    //   83	99	126	java/lang/Throwable
+    //   73	83	134	java/lang/Throwable
+    //   56	64	146	finally
+    //   56	64	152	java/lang/Throwable
+    //   8	42	162	finally
+    //   42	47	162	finally
+    //   47	56	162	finally
+    //   8	42	170	java/lang/Throwable
+    //   42	47	170	java/lang/Throwable
+    //   47	56	170	java/lang/Throwable
+    //   73	83	227	finally
+    //   188	192	227	finally
+    //   99	112	270	java/io/IOException
+    //   197	202	270	java/io/IOException
+    //   209	213	270	java/io/IOException
+    //   217	221	270	java/io/IOException
+    //   238	242	274	java/io/IOException
+    //   249	253	274	java/io/IOException
+    //   257	261	274	java/io/IOException
   }
   
   public static boolean a()
   {
-    if (jdField_a_of_type_JavaLangBoolean == null)
-    {
-      if (Build.VERSION.SDK_INT >= 21) {
-        break label28;
-      }
-      jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-    }
-    for (;;)
-    {
-      return jdField_a_of_type_JavaLangBoolean.booleanValue();
-      label28:
-      if (Build.VERSION.SDK_INT >= 23) {
+    if (jdField_a_of_type_JavaLangBoolean == null) {
+      if (Build.VERSION.SDK_INT < 21) {
+        jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
+      } else if (Build.VERSION.SDK_INT >= 23) {
         jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(Process.is64Bit());
       } else {
         jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
       }
     }
+    return jdField_a_of_type_JavaLangBoolean.booleanValue();
   }
   
   public static boolean a(String paramString1, String paramString2)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if ((paramString1 == null) && (paramString2 == null)) {
-      bool1 = true;
+      return true;
     }
-    do
-    {
-      do
-      {
-        return bool1;
-        if (paramString1 == null) {
-          break;
-        }
-        bool1 = bool2;
-      } while (paramString2 == null);
-      if (paramString1 != null) {
-        break;
-      }
-      bool1 = bool2;
-    } while (paramString2 != null);
+    if ((paramString1 != null) && (paramString2 == null)) {
+      return false;
+    }
+    if ((paramString1 == null) && (paramString2 != null)) {
+      return false;
+    }
     return paramString1.equals(paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soload.util.SoDataUtil
  * JD-Core Version:    0.7.0.1
  */

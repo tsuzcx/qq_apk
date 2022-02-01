@@ -6,7 +6,10 @@ public class PDUtil
   
   public static int byte2int(byte[] paramArrayOfByte)
   {
-    return paramArrayOfByte[3] & 0xFF | (paramArrayOfByte[2] & 0xFF) << 8 | (paramArrayOfByte[1] & 0xFF) << 16 | (paramArrayOfByte[0] & 0xFF) << 24;
+    int i = paramArrayOfByte[3];
+    int j = paramArrayOfByte[2];
+    int k = paramArrayOfByte[1];
+    return (paramArrayOfByte[0] & 0xFF) << 24 | i & 0xFF | (j & 0xFF) << 8 | (k & 0xFF) << 16;
   }
   
   public static boolean check(byte[] paramArrayOfByte)
@@ -41,15 +44,18 @@ public class PDUtil
     }
     catch (OutOfMemoryError paramArrayOfByte)
     {
-      UploadLog.e("PDUtil", "OutOfMemoryError !!!");
+      label32:
+      break label32;
     }
+    UploadLog.e("PDUtil", "OutOfMemoryError !!!");
     return null;
   }
   
   public static byte[] decodeJce(byte[] paramArrayOfByte)
   {
+    boolean bool = check(paramArrayOfByte);
     byte[] arrayOfByte2 = null;
-    if (!check(paramArrayOfByte)) {
+    if (!bool) {
       return null;
     }
     byte[] arrayOfByte1 = arrayOfByte2;
@@ -66,8 +72,10 @@ public class PDUtil
     }
     catch (OutOfMemoryError paramArrayOfByte)
     {
-      UploadLog.e("PDUtil", "OutOfMemoryError !!!");
+      label68:
+      break label68;
     }
+    UploadLog.e("PDUtil", "OutOfMemoryError !!!");
     return arrayOfByte1;
   }
   
@@ -90,8 +98,10 @@ public class PDUtil
     }
     catch (OutOfMemoryError paramArrayOfByte)
     {
-      UploadLog.e("PDUtil", "OutOfMemoryError !!!");
+      label61:
+      break label61;
     }
+    UploadLog.e("PDUtil", "OutOfMemoryError !!!");
     return -1;
   }
   
@@ -109,8 +119,10 @@ public class PDUtil
     }
     catch (OutOfMemoryError paramArrayOfByte)
     {
-      UploadLog.e("PDUtil", "OutOfMemoryError !!!");
+      label35:
+      break label35;
     }
+    UploadLog.e("PDUtil", "OutOfMemoryError !!!");
     return -1;
   }
   
@@ -128,8 +140,10 @@ public class PDUtil
     }
     catch (OutOfMemoryError paramArrayOfByte)
     {
-      UploadLog.e("PDUtil", "OutOfMemoryError !!!");
+      label35:
+      break label35;
     }
+    UploadLog.e("PDUtil", "OutOfMemoryError !!!");
     return -1;
   }
   
@@ -152,8 +166,10 @@ public class PDUtil
     }
     catch (OutOfMemoryError paramArrayOfByte)
     {
-      UploadLog.e("PDUtil", "OutOfMemoryError !!!");
+      label99:
+      break label99;
     }
+    UploadLog.e("PDUtil", "OutOfMemoryError !!!");
     return arrayOfByte1;
   }
   
@@ -183,17 +199,26 @@ public class PDUtil
   public static void printHexString(String paramString, byte[] paramArrayOfByte)
   {
     UploadLog.e("PDUtil", paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
     while (i < paramArrayOfByte.length)
     {
       String str = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
       paramString = str;
-      if (str.length() == 1) {
-        paramString = '0' + str;
+      if (str.length() == 1)
+      {
+        paramString = new StringBuilder();
+        paramString.append('0');
+        paramString.append(str);
+        paramString = paramString.toString();
       }
-      UploadLog.e("PDUtil", "printHexString:" + paramString.toUpperCase());
+      localStringBuilder.append(paramString.toUpperCase());
       i += 1;
     }
+    paramString = new StringBuilder();
+    paramString.append("printHexString:");
+    paramString.append(localStringBuilder.toString());
+    UploadLog.e("PDUtil", paramString.toString());
   }
   
   public static byte[] short2byte(int paramInt)
@@ -220,7 +245,7 @@ public class PDUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.utils.PDUtil
  * JD-Core Version:    0.7.0.1
  */

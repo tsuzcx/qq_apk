@@ -28,30 +28,35 @@ public class CameraConfig
   public void onSensorOrientationChanged(int paramInt1, int paramInt2)
   {
     CameraConfig.DeviceCameraOrientation localDeviceCameraOrientation = CameraConfig.DeviceCameraOrientation.ROTATION_0;
-    if (Math.abs(paramInt2) > Math.abs(paramInt1)) {
+    if (Math.abs(paramInt2) > Math.abs(paramInt1))
+    {
       if (paramInt2 > 1) {
         localDeviceCameraOrientation = CameraConfig.DeviceCameraOrientation.ROTATION_0;
+      } else if (paramInt2 < -1) {
+        localDeviceCameraOrientation = CameraConfig.DeviceCameraOrientation.ROTATION_180;
       }
     }
-    for (;;)
+    else if (paramInt1 > 1) {
+      localDeviceCameraOrientation = CameraConfig.DeviceCameraOrientation.ROTATION_90;
+    } else if (paramInt1 < -1) {
+      localDeviceCameraOrientation = CameraConfig.DeviceCameraOrientation.ROTATION_270;
+    }
+    if (this.recognizedOrientation != localDeviceCameraOrientation)
     {
-      if ((this.recognizedOrientation != localDeviceCameraOrientation) && ((Math.abs(paramInt1 - this.lastXAxis) > this.eps) || (Math.abs(paramInt2 - this.lastXAxis) > this.eps)))
+      float f = paramInt1;
+      if ((Math.abs(f - this.lastXAxis) > this.eps) || (Math.abs(paramInt2 - this.lastXAxis) > this.eps))
       {
-        Log.d("CameraConfig", "orientation is changed from" + this.recognizedOrientation + " to " + localDeviceCameraOrientation + ", and current XAxis:" + paramInt1);
-        this.lastXAxis = paramInt1;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("orientation is changed from");
+        localStringBuilder.append(this.recognizedOrientation);
+        localStringBuilder.append(" to ");
+        localStringBuilder.append(localDeviceCameraOrientation);
+        localStringBuilder.append(", and current XAxis:");
+        localStringBuilder.append(paramInt1);
+        Log.d("CameraConfig", localStringBuilder.toString());
+        this.lastXAxis = f;
         this.recognizedOrientation = localDeviceCameraOrientation;
         onSensorOrientationChanged(localDeviceCameraOrientation);
-      }
-      return;
-      if (paramInt2 < -1)
-      {
-        localDeviceCameraOrientation = CameraConfig.DeviceCameraOrientation.ROTATION_180;
-        continue;
-        if (paramInt1 > 1) {
-          localDeviceCameraOrientation = CameraConfig.DeviceCameraOrientation.ROTATION_90;
-        } else if (paramInt1 < -1) {
-          localDeviceCameraOrientation = CameraConfig.DeviceCameraOrientation.ROTATION_270;
-        }
       }
     }
   }
@@ -90,7 +95,7 @@ public class CameraConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.light.CameraConfig
  * JD-Core Version:    0.7.0.1
  */

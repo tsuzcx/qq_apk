@@ -15,26 +15,36 @@ final class t
     {
       synchronized ()
       {
+        StatLogger localStatLogger;
+        StringBuilder localStringBuilder;
         if (StatServiceImpl.g().size() >= StatConfig.getMaxParallelTimmingEvents())
         {
-          StatServiceImpl.f().error("The number of page events exceeds the maximum value " + Integer.toString(StatConfig.getMaxParallelTimmingEvents()));
+          localStatLogger = StatServiceImpl.f();
+          localStringBuilder = new StringBuilder("The number of page events exceeds the maximum value ");
+          localStringBuilder.append(Integer.toString(StatConfig.getMaxParallelTimmingEvents()));
+          localStatLogger.error(localStringBuilder.toString());
           return;
         }
         StatServiceImpl.b(this.a);
         if (StatServiceImpl.g().containsKey(StatServiceImpl.h()))
         {
-          StatServiceImpl.f().e("Duplicate PageID : " + StatServiceImpl.h() + ", onResume() repeated?");
+          localStatLogger = StatServiceImpl.f();
+          localStringBuilder = new StringBuilder("Duplicate PageID : ");
+          localStringBuilder.append(StatServiceImpl.h());
+          localStringBuilder.append(", onResume() repeated?");
+          localStatLogger.e(localStringBuilder.toString());
           return;
         }
+        StatServiceImpl.g().put(StatServiceImpl.h(), Long.valueOf(System.currentTimeMillis()));
+        StatServiceImpl.a(this.b, true, this.c);
+        return;
       }
-      StatServiceImpl.g().put(StatServiceImpl.h(), Long.valueOf(System.currentTimeMillis()));
+      return;
     }
     catch (Throwable localThrowable)
     {
       StatServiceImpl.f().e(localThrowable);
-      return;
     }
-    StatServiceImpl.a(this.b, true, this.c);
   }
 }
 

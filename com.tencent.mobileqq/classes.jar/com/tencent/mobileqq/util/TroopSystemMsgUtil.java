@@ -2,7 +2,6 @@ package com.tencent.mobileqq.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.ContactUtils;
@@ -15,52 +14,50 @@ public class TroopSystemMsgUtil
 {
   public static String a(Context paramContext, String paramString)
   {
-    Object localObject = null;
-    SharedPreferences localSharedPreferences = paramContext.getSharedPreferences(String.valueOf(AppConstants.SYSTEM_MSG_UIN), 0);
-    paramString = "troop_question_" + paramString;
-    paramContext = localObject;
-    if (localSharedPreferences.contains(paramString)) {
-      paramContext = localSharedPreferences.getString(paramString, null);
+    paramContext = paramContext.getSharedPreferences(String.valueOf(AppConstants.SYSTEM_MSG_UIN), 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("troop_answer_");
+    localStringBuilder.append(paramString);
+    paramString = localStringBuilder.toString();
+    if (paramContext.contains(paramString)) {
+      return paramContext.getString(paramString, null);
     }
-    return paramContext;
+    return null;
   }
   
   public static String a(String paramString)
   {
-    Object localObject = null;
     Matcher localMatcher = Pattern.compile("\\d+", 2).matcher(paramString);
-    for (paramString = localObject; localMatcher.find(); paramString = localMatcher.group()) {}
+    for (paramString = null; localMatcher.find(); paramString = localMatcher.group()) {}
     return paramString;
   }
   
   public static String a(String paramString, QQAppInterface paramQQAppInterface)
   {
     List localList = a(paramString);
-    String str2;
+    String str1 = paramString;
     if (localList.size() > 0)
     {
       int i = 0;
-      String str1 = paramString;
-      str2 = str1;
-      if (i < localList.size())
+      str1 = paramString;
+      while (i < localList.size())
       {
-        String str3 = (String)localList.get(i);
-        str2 = "\"" + str3 + "\"";
-        int j = paramString.indexOf(str2);
-        if (str2.length() + j == paramString.length()) {}
-        for (str2 = ContactUtils.a(paramQQAppInterface, str3, true);; str2 = ContactUtils.c(paramQQAppInterface, str3, true))
-        {
-          str1 = a(str1, str3, str2);
-          i += 1;
-          break;
+        String str2 = (String)localList.get(i);
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("\"");
+        ((StringBuilder)localObject).append(str2);
+        ((StringBuilder)localObject).append("\"");
+        localObject = ((StringBuilder)localObject).toString();
+        if (paramString.indexOf((String)localObject) + ((String)localObject).length() == paramString.length()) {
+          localObject = ContactUtils.a(paramQQAppInterface, str2, true);
+        } else {
+          localObject = ContactUtils.a(paramQQAppInterface, str2, true);
         }
+        str1 = a(str1, str2, (String)localObject);
+        i += 1;
       }
     }
-    else
-    {
-      str2 = paramString;
-    }
-    return str2;
+    return str1;
   }
   
   public static String a(String paramString1, String paramString2, String paramString3)
@@ -70,7 +67,11 @@ public class TroopSystemMsgUtil
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString3);
-    return paramString1.replace("\"" + paramString2 + "\"", localStringBuilder.toString());
+    paramString3 = new StringBuilder();
+    paramString3.append("\"");
+    paramString3.append(paramString2);
+    paramString3.append("\"");
+    return paramString1.replace(paramString3.toString(), localStringBuilder.toString());
   }
   
   private static List<String> a(String paramString)
@@ -89,67 +90,18 @@ public class TroopSystemMsgUtil
     return localArrayList;
   }
   
-  public static void a(Context paramContext, String paramString, int paramInt)
-  {
-    paramContext = paramContext.getSharedPreferences(String.valueOf(AppConstants.SYSTEM_MSG_UIN), 0);
-    paramString = "troop_option_" + paramString;
-    paramContext.edit().putInt(paramString, paramInt).commit();
-  }
-  
-  public static void a(Context paramContext, String paramString, long paramLong)
-  {
-    paramContext = paramContext.getSharedPreferences(String.valueOf(AppConstants.SYSTEM_MSG_UIN), 0);
-    paramString = "troop_flagEx_" + paramString;
-    paramContext.edit().putLong(paramString, paramLong).commit();
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2)
-  {
-    paramContext = paramContext.getSharedPreferences(String.valueOf(AppConstants.SYSTEM_MSG_UIN), 0);
-    paramString1 = "troop_name_" + paramString1;
-    paramContext.edit().putString(paramString1, paramString2).commit();
-  }
-  
-  public static String b(Context paramContext, String paramString)
-  {
-    Object localObject = null;
-    SharedPreferences localSharedPreferences = paramContext.getSharedPreferences(String.valueOf(AppConstants.SYSTEM_MSG_UIN), 0);
-    paramString = "troop_answer_" + paramString;
-    paramContext = localObject;
-    if (localSharedPreferences.contains(paramString)) {
-      paramContext = localSharedPreferences.getString(paramString, null);
-    }
-    return paramContext;
-  }
-  
   public static String b(String paramString)
   {
-    Object localObject = null;
-    Matcher localMatcher = Pattern.compile("\"\\d+\"", 2).matcher(paramString);
-    paramString = localObject;
-    if (localMatcher.find()) {
-      paramString = localMatcher.group();
+    paramString = Pattern.compile("\"\\d+\"", 2).matcher(paramString);
+    if (paramString.find()) {
+      return paramString.group();
     }
-    return paramString;
-  }
-  
-  public static void b(Context paramContext, String paramString1, String paramString2)
-  {
-    paramContext = paramContext.getSharedPreferences(String.valueOf(AppConstants.SYSTEM_MSG_UIN), 0);
-    paramString1 = "troop_question_" + paramString1;
-    paramContext.edit().putString(paramString1, paramString2).commit();
-  }
-  
-  public static void c(Context paramContext, String paramString1, String paramString2)
-  {
-    paramContext = paramContext.getSharedPreferences(String.valueOf(AppConstants.SYSTEM_MSG_UIN), 0);
-    paramString1 = "troop_answer_" + paramString1;
-    paramContext.edit().putString(paramString1, paramString2).commit();
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.TroopSystemMsgUtil
  * JD-Core Version:    0.7.0.1
  */

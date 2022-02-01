@@ -51,13 +51,11 @@ public class GamePreConnectManager
   
   public static void connectHost(MiniGamePkg paramMiniGamePkg)
   {
-    if (PRE_CONNECTION_LIMIT <= 0) {}
-    do
+    if (PRE_CONNECTION_LIMIT <= 0) {
+      return;
+    }
+    if ((paramMiniGamePkg != null) && (connectHostEnable(paramMiniGamePkg.appId)))
     {
-      do
-      {
-        return;
-      } while ((paramMiniGamePkg == null) || (!connectHostEnable(paramMiniGamePkg.appId)));
       List localList = getSavedHost(paramMiniGamePkg.appId);
       if ((localList != null) && (!localList.isEmpty()))
       {
@@ -66,60 +64,52 @@ public class GamePreConnectManager
         return;
       }
       GameLog.getInstance().i("GamePreConnectManager", "connect remote host");
-    } while ((paramMiniGamePkg.appConfig == null) || (paramMiniGamePkg.appConfig.config == null) || (paramMiniGamePkg.appConfig.config.requestDomainList == null) || (paramMiniGamePkg.appConfig.config.requestDomainList.size() <= 0));
-    connectHost(paramMiniGamePkg.appConfig.config.requestDomainList);
+      if ((paramMiniGamePkg.appConfig != null) && (paramMiniGamePkg.appConfig.config != null) && (paramMiniGamePkg.appConfig.config.requestDomainList != null) && (paramMiniGamePkg.appConfig.config.requestDomainList.size() > 0)) {
+        connectHost(paramMiniGamePkg.appConfig.config.requestDomainList);
+      }
+    }
   }
   
   private static void connectHost(List<String> paramList)
   {
     paramList = paramList.iterator();
     int i = 0;
-    String str;
-    if (paramList.hasNext())
+    while (paramList.hasNext())
     {
-      str = (String)paramList.next();
-      if (i < PRE_CONNECTION_LIMIT) {}
-    }
-    else
-    {
-      return;
-    }
-    if (tryConnectHost("https://" + str)) {
-      i += 1;
-    }
-    for (;;)
-    {
-      break;
+      String str = (String)paramList.next();
+      if (i >= PRE_CONNECTION_LIMIT) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("https://");
+      localStringBuilder.append(str);
+      if (tryConnectHost(localStringBuilder.toString())) {
+        i += 1;
+      }
     }
   }
   
   private static boolean connectHostEnable(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((TextUtils.isEmpty(PRE_CONNECT_BLACK_APP_ID_LIST)) || (TextUtils.isEmpty(paramString)))
+    if (!TextUtils.isEmpty(PRE_CONNECT_BLACK_APP_ID_LIST))
     {
-      bool1 = true;
-      return bool1;
-    }
-    String[] arrayOfString = PRE_CONNECT_BLACK_APP_ID_LIST.split(",");
-    if ((arrayOfString != null) && (arrayOfString.length > 0))
-    {
-      int j = arrayOfString.length;
-      int i = 0;
-      for (;;)
+      if (TextUtils.isEmpty(paramString)) {
+        return true;
+      }
+      String[] arrayOfString = PRE_CONNECT_BLACK_APP_ID_LIST.split(",");
+      if ((arrayOfString != null) && (arrayOfString.length > 0))
       {
-        if (i >= j) {
-          break label76;
+        int j = arrayOfString.length;
+        int i = 0;
+        while (i < j)
+        {
+          if (paramString.equals(arrayOfString[i])) {
+            return false;
+          }
+          i += 1;
         }
-        bool1 = bool2;
-        if (paramString.equals(arrayOfString[i])) {
-          break;
-        }
-        i += 1;
       }
     }
-    label76:
     return true;
   }
   
@@ -135,13 +125,21 @@ public class GamePreConnectManager
   {
     try
     {
-      String str = new URL(paramString).getHost();
-      return str;
+      localObject = new URL(paramString).getHost();
+      return localObject;
     }
     catch (MalformedURLException localMalformedURLException)
     {
-      GameLog.getInstance().e("GamePreConnectManager", "getHost exception " + paramString);
+      Object localObject;
+      label14:
+      StringBuilder localStringBuilder;
+      break label14;
     }
+    localObject = GameLog.getInstance();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getHost exception ");
+    localStringBuilder.append(paramString);
+    ((GameLog)localObject).e("GamePreConnectManager", localStringBuilder.toString());
     return null;
   }
   
@@ -157,13 +155,27 @@ public class GamePreConnectManager
   public static boolean isMiniAppRecentlyLaunched()
   {
     lastMiniAppLaunched = StorageUtil.getPreference().getLong("key_mini_app_last_use_time", 0L);
-    long l = System.currentTimeMillis();
-    if ((lastMiniAppLaunched != 0L) && (l - lastMiniAppLaunched < MINI_APP_PRECONNECTION_DURATION_MS)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("GamePreConnectManager", 1, "current time = " + l + "ms; lastMiniAppLaunchedTime = " + lastMiniAppLaunched + "ms; time interval = " + (l - lastMiniAppLaunched) + "ms; miniAppPreconnectionDuration = " + MINI_APP_PRECONNECTION_DURATION_MS + "ms; isMiniAppRecentlyLaunched = " + bool);
-      return bool;
+    long l1 = System.currentTimeMillis();
+    long l2 = lastMiniAppLaunched;
+    boolean bool;
+    if ((l2 != 0L) && (l1 - l2 < MINI_APP_PRECONNECTION_DURATION_MS)) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("current time = ");
+    localStringBuilder.append(l1);
+    localStringBuilder.append("ms; lastMiniAppLaunchedTime = ");
+    localStringBuilder.append(lastMiniAppLaunched);
+    localStringBuilder.append("ms; time interval = ");
+    localStringBuilder.append(l1 - lastMiniAppLaunched);
+    localStringBuilder.append("ms; miniAppPreconnectionDuration = ");
+    localStringBuilder.append(MINI_APP_PRECONNECTION_DURATION_MS);
+    localStringBuilder.append("ms; isMiniAppRecentlyLaunched = ");
+    localStringBuilder.append(bool);
+    QLog.d("GamePreConnectManager", 1, localStringBuilder.toString());
+    return bool;
   }
   
   public static void onUrlConnect(String paramString, int paramInt)
@@ -211,11 +223,15 @@ public class GamePreConnectManager
   {
     try
     {
-      GameLog.getInstance().i("GamePreConnectManager", "try pre-connect:" + paramString);
+      Object localObject = GameLog.getInstance();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("try pre-connect:");
+      localStringBuilder.append(paramString);
+      ((GameLog)localObject).i("GamePreConnectManager", localStringBuilder.toString());
       long l = System.currentTimeMillis();
-      Request.Builder localBuilder = new Request.Builder().url(paramString).addHeader("Connection", "keep-alive").head();
+      localObject = new Request.Builder().url(paramString).addHeader("Connection", "keep-alive").head();
       paramString = new GamePreConnectManager.4(paramString, l);
-      MiniOkHttpClientFactory.getRequestClient().newCall(localBuilder.build()).enqueue(paramString);
+      MiniOkHttpClientFactory.getRequestClient().newCall(((Request.Builder)localObject).build()).enqueue(paramString);
       return true;
     }
     catch (RuntimeException paramString)
@@ -227,7 +243,7 @@ public class GamePreConnectManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GamePreConnectManager
  * JD-Core Version:    0.7.0.1
  */

@@ -23,8 +23,8 @@ public class VideoManager
 {
   private static final String TAG = "VideoManager";
   private static volatile VideoManager instance;
-  public static volatile int sElapsedMs = 0;
-  public static volatile long sEstimateBitrate = 0L;
+  public static volatile int sElapsedMs;
+  public static volatile long sEstimateBitrate;
   private VideoProxy proxy = new VideoProxy();
   
   private void cancelAsync(String paramString, boolean paramBoolean)
@@ -34,10 +34,10 @@ public class VideoManager
   
   public static VideoManager getInstance()
   {
-    if (instance == null) {
-      throw new IllegalStateException("Video SDK has not been initialized! Call init() first!");
+    if (instance != null) {
+      return instance;
     }
-    return instance;
+    throw new IllegalStateException("Video SDK has not been initialized! Call init() first!");
   }
   
   public static boolean hasInit()
@@ -108,33 +108,34 @@ public class VideoManager
     }
     catch (Exception localException)
     {
-      PlayerUtils.log(6, "VideoManager", "failed clear cache. msg=" + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed clear cache. msg=");
+      localStringBuilder.append(localException.getMessage());
+      PlayerUtils.log(6, "VideoManager", localStringBuilder.toString());
     }
   }
   
   public void clearCacheByInfo(SegmentVideoInfo paramSegmentVideoInfo)
   {
-    if ((paramSegmentVideoInfo == null) || (paramSegmentVideoInfo.getStreams() == null)) {
-      label11:
-      return;
-    } else {
-      paramSegmentVideoInfo = paramSegmentVideoInfo.getStreams().values().iterator();
-    }
-    for (;;)
+    if (paramSegmentVideoInfo != null)
     {
-      if (!paramSegmentVideoInfo.hasNext()) {
-        break label11;
+      if (paramSegmentVideoInfo.getStreams() == null) {
+        return;
       }
-      Object localObject = (SegmentVideoInfo.StreamInfo)paramSegmentVideoInfo.next();
-      if ((localObject == null) || (((SegmentVideoInfo.StreamInfo)localObject).segmentInfos == null)) {
-        break;
-      }
-      localObject = ((SegmentVideoInfo.StreamInfo)localObject).segmentInfos.iterator();
-      while (((Iterator)localObject).hasNext())
+      paramSegmentVideoInfo = paramSegmentVideoInfo.getStreams().values().iterator();
+      while (paramSegmentVideoInfo.hasNext())
       {
-        SegmentVideoInfo.SegmentInfo localSegmentInfo = (SegmentVideoInfo.SegmentInfo)((Iterator)localObject).next();
-        if ((localSegmentInfo != null) && (!TextUtils.isEmpty(localSegmentInfo.url))) {
-          clearCacheByUrl(localSegmentInfo.url);
+        Object localObject = (SegmentVideoInfo.StreamInfo)paramSegmentVideoInfo.next();
+        if ((localObject != null) && (((SegmentVideoInfo.StreamInfo)localObject).segmentInfos != null))
+        {
+          localObject = ((SegmentVideoInfo.StreamInfo)localObject).segmentInfos.iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            SegmentVideoInfo.SegmentInfo localSegmentInfo = (SegmentVideoInfo.SegmentInfo)((Iterator)localObject).next();
+            if ((localSegmentInfo != null) && (!TextUtils.isEmpty(localSegmentInfo.url))) {
+              clearCacheByUrl(localSegmentInfo.url);
+            }
+          }
         }
       }
     }
@@ -149,7 +150,12 @@ public class VideoManager
     }
     catch (Exception localException)
     {
-      PlayerUtils.log(6, "VideoManager", "failed clear cache by url. url=" + paramString + " msg=" + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed clear cache by url. url=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" msg=");
+      localStringBuilder.append(localException.getMessage());
+      PlayerUtils.log(6, "VideoManager", localStringBuilder.toString());
     }
   }
   
@@ -235,26 +241,30 @@ public class VideoManager
   
   public boolean isCached(SegmentVideoInfo.StreamInfo paramStreamInfo)
   {
-    if ((paramStreamInfo == null) || (!paramStreamInfo.isValid())) {
-      return false;
-    }
-    if (PlayerUtils.isOnMainThread())
+    if (paramStreamInfo != null)
     {
-      paramStreamInfo = ThreadUtils.submitTaskCatchAll(new VideoManager.IsStreamInfoCachedCallable(this, paramStreamInfo), 800, true, "isCached", "VideoManager");
-      if (paramStreamInfo != null) {
-        return ((Boolean)paramStreamInfo).booleanValue();
-      }
-      return false;
-    }
-    paramStreamInfo = paramStreamInfo.segmentInfos.iterator();
-    while (paramStreamInfo.hasNext())
-    {
-      SegmentVideoInfo.SegmentInfo localSegmentInfo = (SegmentVideoInfo.SegmentInfo)paramStreamInfo.next();
-      if (!this.proxy.isCached(localSegmentInfo.url)) {
+      if (!paramStreamInfo.isValid()) {
         return false;
       }
+      if (PlayerUtils.isOnMainThread())
+      {
+        paramStreamInfo = ThreadUtils.submitTaskCatchAll(new VideoManager.IsStreamInfoCachedCallable(this, paramStreamInfo), 800, true, "isCached", "VideoManager");
+        if (paramStreamInfo != null) {
+          return ((Boolean)paramStreamInfo).booleanValue();
+        }
+        return false;
+      }
+      paramStreamInfo = paramStreamInfo.segmentInfos.iterator();
+      while (paramStreamInfo.hasNext())
+      {
+        SegmentVideoInfo.SegmentInfo localSegmentInfo = (SegmentVideoInfo.SegmentInfo)paramStreamInfo.next();
+        if (!this.proxy.isCached(localSegmentInfo.url)) {
+          return false;
+        }
+      }
+      return true;
     }
-    return true;
+    return false;
   }
   
   public boolean isCached(String paramString)
@@ -265,28 +275,32 @@ public class VideoManager
   public boolean preload(String paramString, long paramLong1, long paramLong2, int paramInt)
   {
     boolean bool1;
-    if (getCachedBytesFromStart(paramString) < paramLong1)
-    {
+    if (getCachedBytesFromStart(paramString) < paramLong1) {
       bool1 = true;
-      if (getCachedBytesFromEnd(paramString) > 0L) {
-        break label70;
-      }
-    }
-    label70:
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      if ((bool1) || (bool2)) {
-        break label76;
-      }
-      PlayerUtils.log(4, "VideoManager", "preloadSync skipped: url=" + paramString);
-      return false;
+    } else {
       bool1 = false;
-      break;
     }
-    label76:
+    boolean bool2;
+    if (getCachedBytesFromEnd(paramString) <= 0L) {
+      bool2 = true;
+    } else {
+      bool2 = false;
+    }
+    StringBuilder localStringBuilder1;
+    if ((!bool1) && (!bool2))
+    {
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("preloadSync skipped: url=");
+      localStringBuilder1.append(paramString);
+      PlayerUtils.log(4, "VideoManager", localStringBuilder1.toString());
+      return false;
+    }
     if (PlayerUtils.isHLSStream(paramString))
     {
-      PlayerUtils.log(4, "VideoManager", "preloadSync skipped m3u8 is not supported: url=" + paramString);
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("preloadSync skipped m3u8 is not supported: url=");
+      localStringBuilder1.append(paramString);
+      PlayerUtils.log(4, "VideoManager", localStringBuilder1.toString());
       return false;
     }
     try
@@ -296,38 +310,43 @@ public class VideoManager
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        PlayerUtils.log(6, "VideoManager", "preloadSync error: url=" + paramString + " msg=" + localException.getMessage());
-      }
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("preloadSync error: url=");
+      localStringBuilder2.append(paramString);
+      localStringBuilder2.append(" msg=");
+      localStringBuilder2.append(localException.getMessage());
+      PlayerUtils.log(6, "VideoManager", localStringBuilder2.toString());
     }
+    return true;
   }
   
   public boolean preload(String paramString, long paramLong1, long paramLong2, int paramInt, boolean paramBoolean, DownloadListener paramDownloadListener)
   {
     boolean bool;
-    if (getCachedBytesFromStart(paramString) < paramLong1)
-    {
+    if (getCachedBytesFromStart(paramString) < paramLong1) {
       bool = true;
-      if ((paramBoolean) || (getCachedBytesFromEnd(paramString) > 0L)) {
-        break label75;
-      }
-    }
-    label75:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      if ((bool) || (paramBoolean)) {
-        break label81;
-      }
-      PlayerUtils.log(4, "VideoManager", "preload_log 不需要预加载 preloadSync skipped: url=" + paramString);
-      return false;
+    } else {
       bool = false;
-      break;
     }
-    label81:
+    if ((!paramBoolean) && (getCachedBytesFromEnd(paramString) <= 0L)) {
+      paramBoolean = true;
+    } else {
+      paramBoolean = false;
+    }
+    if ((!bool) && (!paramBoolean))
+    {
+      paramDownloadListener = new StringBuilder();
+      paramDownloadListener.append("preload_log 不需要预加载 preloadSync skipped: url=");
+      paramDownloadListener.append(paramString);
+      PlayerUtils.log(4, "VideoManager", paramDownloadListener.toString());
+      return false;
+    }
     if (PlayerUtils.isHLSStream(paramString))
     {
-      PlayerUtils.log(4, "VideoManager", "preload_log preloadSync skipped m3u8 is not supported: url=" + paramString);
+      paramDownloadListener = new StringBuilder();
+      paramDownloadListener.append("preload_log preloadSync skipped m3u8 is not supported: url=");
+      paramDownloadListener.append(paramString);
+      PlayerUtils.log(4, "VideoManager", paramDownloadListener.toString());
       return false;
     }
     try
@@ -337,11 +356,14 @@ public class VideoManager
     }
     catch (Exception paramDownloadListener)
     {
-      for (;;)
-      {
-        PlayerUtils.log(6, "VideoManager", "preload_log preloadSync error: url=" + paramString + " msg=" + paramDownloadListener.getMessage());
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("preload_log preloadSync error: url=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" msg=");
+      localStringBuilder.append(paramDownloadListener.getMessage());
+      PlayerUtils.log(6, "VideoManager", localStringBuilder.toString());
     }
+    return true;
   }
   
   public void preloadMedia(List<String> paramList, int paramInt, long paramLong, PreloadListener paramPreloadListener)
@@ -386,7 +408,7 @@ public class VideoManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.proxy.VideoManager
  * JD-Core Version:    0.7.0.1
  */

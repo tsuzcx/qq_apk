@@ -67,7 +67,10 @@ public class ReportAudioTrack
   
   public final String getPlayerId__()
   {
-    return "AudioTrack_" + hashCode();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AudioTrack_");
+    localStringBuilder.append(hashCode());
+    return localStringBuilder.toString();
   }
   
   public final int getPlayerType__()
@@ -147,7 +150,7 @@ public class ReportAudioTrack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.audio.playback.ReportAudioTrack
  * JD-Core Version:    0.7.0.1
  */

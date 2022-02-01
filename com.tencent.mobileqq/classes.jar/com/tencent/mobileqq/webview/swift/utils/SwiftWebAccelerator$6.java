@@ -1,38 +1,57 @@
 package com.tencent.mobileqq.webview.swift.utils;
 
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
 import com.tencent.mobileqq.log.VipWebViewReportLog;
-import com.tencent.mobileqq.vas.IndividuationUrlHelper;
+import com.tencent.mobileqq.webview.swift.injector.ISwiftWebAcceleratorInjector;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 class SwiftWebAccelerator$6
   implements Runnable
 {
-  SwiftWebAccelerator$6(SwiftWebAccelerator paramSwiftWebAccelerator, long paramLong) {}
+  SwiftWebAccelerator$6(SwiftWebAccelerator paramSwiftWebAccelerator, long paramLong, Bundle paramBundle) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
-    QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_FireOthers.run cost " + (l - this.a) + "ms.");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("doThreadedStep_FireOthers.run cost ");
+    ((StringBuilder)localObject).append(l - this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append("ms.");
+    QLog.i("WebLog_SwiftWebAccelerator", 1, ((StringBuilder)localObject).toString());
     l = System.currentTimeMillis();
     if (!VipWebViewReportLog.a())
     {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().waitAppRuntime(null);
-      VipWebViewReportLog.a(BaseApplicationImpl.sApplication.getApplicationContext(), localAppRuntime);
+      localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
+      VipWebViewReportLog.a(MobileQQ.sMobileQQ.getApplicationContext(), (AppRuntime)localObject);
     }
-    QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_FireOthers:load http core data config, cost " + (System.currentTimeMillis() - l) + "ms.");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("doThreadedStep_FireOthers:load http core data config, cost ");
+    ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+    ((StringBuilder)localObject).append("ms.");
+    QLog.i("WebLog_SwiftWebAccelerator", 1, ((StringBuilder)localObject).toString());
     l = System.currentTimeMillis();
     SwiftWebViewUtils.a();
-    QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_FireOthers:load cdn cache config, cost " + (System.currentTimeMillis() - l) + "ms.");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("doThreadedStep_FireOthers:load cdn cache config, cost ");
+    ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+    ((StringBuilder)localObject).append("ms.");
+    QLog.i("WebLog_SwiftWebAccelerator", 1, ((StringBuilder)localObject).toString());
     l = System.currentTimeMillis();
-    IndividuationUrlHelper.a(BaseApplicationImpl.sApplication.getRuntime());
-    QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_FireOthers:load Individuation url config, cost " + (System.currentTimeMillis() - l) + "ms.");
+    if (SwiftWebAccelerator.a() != null) {
+      SwiftWebAccelerator.a().b(this.jdField_a_of_type_AndroidOsBundle);
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("doThreadedStep_FireOthers:load Individuation url config, cost ");
+    ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+    ((StringBuilder)localObject).append("ms.");
+    QLog.i("WebLog_SwiftWebAccelerator", 1, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.6
  * JD-Core Version:    0.7.0.1
  */

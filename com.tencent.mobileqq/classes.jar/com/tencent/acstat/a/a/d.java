@@ -14,27 +14,29 @@ public class d
   static d a(String paramString)
   {
     d locald = new d();
-    if (i.b(paramString)) {}
-    try
-    {
-      paramString = new JSONObject(paramString);
-      if (!paramString.isNull("ui")) {
-        locald.a = paramString.getString("ui");
+    if (i.b(paramString)) {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        if (!paramString.isNull("ui")) {
+          locald.a = paramString.getString("ui");
+        }
+        if (!paramString.isNull("mc")) {
+          locald.b = paramString.getString("mc");
+        }
+        if (!paramString.isNull("mid")) {
+          locald.c = paramString.getString("mid");
+        }
+        if (!paramString.isNull("ts"))
+        {
+          locald.d = paramString.getLong("ts");
+          return locald;
+        }
       }
-      if (!paramString.isNull("mc")) {
-        locald.b = paramString.getString("mc");
+      catch (JSONException paramString)
+      {
+        Log.w("MID", "", paramString);
       }
-      if (!paramString.isNull("mid")) {
-        locald.c = paramString.getString("mid");
-      }
-      if (!paramString.isNull("ts")) {
-        locald.d = paramString.getLong("ts");
-      }
-      return locald;
-    }
-    catch (JSONException paramString)
-    {
-      Log.w("MID", "", paramString);
     }
     return locald;
   }

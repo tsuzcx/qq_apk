@@ -3,7 +3,6 @@ package com.tencent.mobileqq.activity.aio.stickerbubble;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -39,20 +38,18 @@ public class StickerBubbleAnimationViewHolder
   
   private void a(ViewGroup paramViewGroup, View paramView)
   {
-    new RelativeLayout.LayoutParams(-1, -1);
-    if (paramView.getParent() != null) {
+    if (paramView.getParent() != null)
+    {
       if (paramView.getParent() != paramViewGroup)
       {
         ((ViewGroup)paramView.getParent()).removeView(paramView);
         paramViewGroup.addView(paramView);
       }
     }
-    for (;;)
-    {
-      paramView.bringToFront();
-      return;
+    else {
       paramViewGroup.addView(paramView);
     }
+    paramView.bringToFront();
   }
   
   private void a(List<WeakReference<StickerBubbleAnimationViewHolder.AnimationViewCallback>> paramList)
@@ -67,8 +64,13 @@ public class StickerBubbleAnimationViewHolder
           localAnimationViewCallback.a();
         }
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw paramList;
+    }
   }
   
   private void b(List<WeakReference<StickerBubbleAnimationViewHolder.AnimationViewCallback>> paramList)
@@ -91,8 +93,12 @@ public class StickerBubbleAnimationViewHolder
     paramContext = d(paramContext);
     if (this.jdField_b_of_type_Boolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleAnimationViewHolder", 2, "hideSendAnimationView: " + paramContext);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("hideSendAnimationView: ");
+        localStringBuilder.append(paramContext);
+        QLog.d("StickerBubbleAnimationViewHolder", 2, localStringBuilder.toString());
       }
       a(paramContext);
       this.jdField_b_of_type_Boolean = false;
@@ -105,8 +111,14 @@ public class StickerBubbleAnimationViewHolder
     paramContext = d(paramContext);
     if (!this.jdField_b_of_type_Boolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleAnimationViewHolder", 2, "showSendAnimationView: " + paramContext.getParent() + " / " + paramViewGroup);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("showSendAnimationView: ");
+        localStringBuilder.append(paramContext.getParent());
+        localStringBuilder.append(" / ");
+        localStringBuilder.append(paramViewGroup);
+        QLog.d("StickerBubbleAnimationViewHolder", 2, localStringBuilder.toString());
       }
       a(paramViewGroup, paramContext);
       this.jdField_b_of_type_Boolean = true;
@@ -148,8 +160,12 @@ public class StickerBubbleAnimationViewHolder
     paramContext = c(paramContext);
     if (this.jdField_a_of_type_Boolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleAnimationViewHolder", 2, "hideReceiveAnimationView: " + paramContext);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("hideReceiveAnimationView: ");
+        localStringBuilder.append(paramContext);
+        QLog.d("StickerBubbleAnimationViewHolder", 2, localStringBuilder.toString());
       }
       a(paramContext);
       this.jdField_a_of_type_Boolean = false;
@@ -162,8 +178,14 @@ public class StickerBubbleAnimationViewHolder
     paramContext = c(paramContext);
     if (!this.jdField_a_of_type_Boolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleAnimationViewHolder", 2, "showReceiveAnimationView: " + paramContext.getParent() + " / " + paramViewGroup);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("showReceiveAnimationView: ");
+        localStringBuilder.append(paramContext.getParent());
+        localStringBuilder.append(" / ");
+        localStringBuilder.append(paramViewGroup);
+        QLog.d("StickerBubbleAnimationViewHolder", 2, localStringBuilder.toString());
       }
       a(paramViewGroup, paramContext);
       this.jdField_a_of_type_Boolean = true;
@@ -189,9 +211,13 @@ public class StickerBubbleAnimationViewHolder
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView == null)
     {
+      if (PEPanelHelper.a == null) {
+        PEPanelHelper.b();
+      }
       this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = new StickerBubbleAnimationView(paramContext);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setShowText(false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setId(2131378493);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setShowText(false, PEPanelHelper.a);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.a();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setId(2131377906);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setAnimationCallback(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView$StickerBubbleAnimationCallback);
     }
     return this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
@@ -201,8 +227,13 @@ public class StickerBubbleAnimationViewHolder
   {
     if (this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView == null)
     {
+      if (PEPanelHelper.a == null) {
+        PEPanelHelper.b();
+      }
       this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView = new StickerBubbleAnimationView(paramContext);
-      this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setId(2131378493);
+      this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setShowText(true, PEPanelHelper.a);
+      this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.a();
+      this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setId(2131377906);
       this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.setAnimationCallback(this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView$StickerBubbleAnimationCallback);
     }
     return this.jdField_b_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView;
@@ -210,7 +241,7 @@ public class StickerBubbleAnimationViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder
  * JD-Core Version:    0.7.0.1
  */

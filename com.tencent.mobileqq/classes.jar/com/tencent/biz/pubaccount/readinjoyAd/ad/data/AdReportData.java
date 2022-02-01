@@ -4,9 +4,9 @@ import android.content.Context;
 import android.os.Bundle;
 import com.tencent.biz.pubaccount.NativeAd.report.constant.ActionEntity;
 import com.tencent.biz.pubaccount.NativeAd.report.constant.ReportAction;
-import com.tencent.biz.pubaccount.VideoAdInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.kandian.biz.ad.entity.VideoAdInfo;
 import org.json.JSONObject;
 
 public class AdReportData
@@ -17,9 +17,9 @@ public class AdReportData
   private Bundle jdField_a_of_type_AndroidOsBundle;
   private ActionEntity jdField_a_of_type_ComTencentBizPubaccountNativeAdReportConstantActionEntity;
   private ReportAction jdField_a_of_type_ComTencentBizPubaccountNativeAdReportConstantReportAction;
-  private VideoAdInfo jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo;
   private AdvertisementInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private VideoAdInfo jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo;
   private Integer jdField_a_of_type_JavaLangInteger;
   private String jdField_a_of_type_JavaLangString;
   private JSONObject jdField_a_of_type_OrgJsonJSONObject;
@@ -66,11 +66,6 @@ public class AdReportData
     return this.jdField_a_of_type_ComTencentBizPubaccountNativeAdReportConstantReportAction;
   }
   
-  public VideoAdInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo;
-  }
-  
   public AdvertisementInfo a()
   {
     return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
@@ -112,12 +107,6 @@ public class AdReportData
     return this;
   }
   
-  public AdReportData a(VideoAdInfo paramVideoAdInfo)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo = paramVideoAdInfo;
-    return this;
-  }
-  
   public AdReportData a(AdvertisementInfo paramAdvertisementInfo)
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = paramAdvertisementInfo;
@@ -127,6 +116,12 @@ public class AdReportData
   public AdReportData a(AppInterface paramAppInterface)
   {
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    return this;
+  }
+  
+  public AdReportData a(VideoAdInfo paramVideoAdInfo)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo = paramVideoAdInfo;
     return this;
   }
   
@@ -159,6 +154,11 @@ public class AdReportData
   public AppInterface a()
   {
     return this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+  }
+  
+  public VideoAdInfo a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo;
   }
   
   public Integer a()
@@ -260,8 +260,12 @@ public class AdReportData
   
   public int d()
   {
-    if ((this.jdField_c_of_type_Int <= 0) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.clickPos > 0)) {
-      this.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.clickPos;
+    if (this.jdField_c_of_type_Int <= 0)
+    {
+      AdvertisementInfo localAdvertisementInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
+      if ((localAdvertisementInfo != null) && (localAdvertisementInfo.clickPos > 0)) {
+        this.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.clickPos;
+      }
     }
     return this.jdField_c_of_type_Int;
   }
@@ -301,7 +305,7 @@ public class AdReportData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdReportData
  * JD-Core Version:    0.7.0.1
  */

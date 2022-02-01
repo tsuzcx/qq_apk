@@ -18,8 +18,12 @@ public class WSSharePreferencesUtil
   @NotNull
   private static String a()
   {
-    if (WeishiUtils.a() != 0L) {
-      return "weishi_usergrowth" + WeishiUtils.a();
+    if (WeishiUtils.a() != 0L)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("weishi_usergrowth");
+      localStringBuilder.append(WeishiUtils.a());
+      return localStringBuilder.toString();
     }
     return "weishi_usergrowth";
   }
@@ -62,7 +66,7 @@ public class WSSharePreferencesUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WSSharePreferencesUtil
  * JD-Core Version:    0.7.0.1
  */

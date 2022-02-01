@@ -1,6 +1,6 @@
 package com.tencent.thumbplayer.core.player;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 public class TPNativePlayerSurfaceRenderInfo$TPVideoCropInfo
 {
@@ -14,12 +14,25 @@ public class TPNativePlayerSurfaceRenderInfo$TPVideoCropInfo
   @NonNull
   public String toString()
   {
-    return "width:" + this.width + ", height:" + this.height + ", cropLeft:" + this.cropLeft + ", cropRight:" + this.cropRight + ", cropTop:" + this.cropTop + ", cropBottom:" + this.cropBottom;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("width:");
+    localStringBuilder.append(this.width);
+    localStringBuilder.append(", height:");
+    localStringBuilder.append(this.height);
+    localStringBuilder.append(", cropLeft:");
+    localStringBuilder.append(this.cropLeft);
+    localStringBuilder.append(", cropRight:");
+    localStringBuilder.append(this.cropRight);
+    localStringBuilder.append(", cropTop:");
+    localStringBuilder.append(this.cropTop);
+    localStringBuilder.append(", cropBottom:");
+    localStringBuilder.append(this.cropBottom);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.player.TPNativePlayerSurfaceRenderInfo.TPVideoCropInfo
  * JD-Core Version:    0.7.0.1
  */

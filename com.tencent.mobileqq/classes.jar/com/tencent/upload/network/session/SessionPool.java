@@ -69,40 +69,50 @@ public class SessionPool
       createSession(localUploadRoute);
       UploadLog.d("SessionPool", "changeRoute get next route !");
     }
-    for (;;)
+    else
     {
-      return true;
       UploadLog.d("SessionPool", "changeRoute network is not available return");
     }
+    return true;
   }
   
   private void createSession(int paramInt, UploadRoute paramUploadRoute)
   {
+    try
+    {
+      Object localObject1 = getTag();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("createSession num: ");
+      ((StringBuilder)localObject2).append(paramInt);
+      ((StringBuilder)localObject2).append(" route:");
+      ((StringBuilder)localObject2).append(paramUploadRoute);
+      UploadLog.d((String)localObject1, ((StringBuilder)localObject2).toString());
+      this.mCurrentRoute = paramUploadRoute.clone();
+      int i = 0;
+      while (i < paramInt)
+      {
+        localObject1 = new UploadSession(this.mThread.getLooper(), this, this.mFileType);
+        if (((UploadSession)localObject1).open(paramUploadRoute))
+        {
+          localObject2 = getTag();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("createSession open success !! id:");
+          localStringBuilder.append(localObject1.hashCode());
+          UploadLog.d((String)localObject2, localStringBuilder.toString());
+          this.mDetectingSession.add(localObject1);
+        }
+        else
+        {
+          UploadLog.e(getTag(), "createSession open fail !!");
+        }
+        i += 1;
+      }
+      return;
+    }
+    finally {}
     for (;;)
     {
-      int i;
-      try
-      {
-        UploadLog.d(getTag(), "createSession num: " + paramInt + " route:" + paramUploadRoute);
-        this.mCurrentRoute = paramUploadRoute.clone();
-        i = 0;
-        if (i < paramInt)
-        {
-          UploadSession localUploadSession = new UploadSession(this.mThread.getLooper(), this, this.mFileType);
-          if (localUploadSession.open(paramUploadRoute))
-          {
-            UploadLog.d(getTag(), "createSession open success !! id:" + localUploadSession.hashCode());
-            this.mDetectingSession.add(localUploadSession);
-          }
-          else
-          {
-            UploadLog.e(getTag(), "createSession open fail !!");
-          }
-        }
-      }
-      finally {}
-      return;
-      i += 1;
+      throw paramUploadRoute;
     }
   }
   
@@ -110,7 +120,11 @@ public class SessionPool
   {
     if (paramUploadRoute == null)
     {
-      UploadLog.d(getTag(), "create session route == " + paramUploadRoute);
+      String str = getTag();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("create session route == ");
+      localStringBuilder.append(paramUploadRoute);
+      UploadLog.d(str, localStringBuilder.toString());
       return;
     }
     createSession(this.mPoolInitSize, paramUploadRoute);
@@ -123,15 +137,20 @@ public class SessionPool
   
   private String getTag()
   {
-    return "SessionPool-" + this.mFileType;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SessionPool-");
+    localStringBuilder.append(this.mFileType);
+    return localStringBuilder.toString();
   }
   
   private void initHandler(Looper paramLooper)
   {
-    if (paramLooper == null) {
-      throw new IllegalArgumentException("initHandler Exception looper == null !!");
+    if (paramLooper != null)
+    {
+      this.mWorkHandler = new SessionPool.WorkThreadHandler(this, paramLooper);
+      return;
     }
-    this.mWorkHandler = new SessionPool.WorkThreadHandler(this, paramLooper);
+    throw new IllegalArgumentException("initHandler Exception looper == null !!");
   }
   
   private void initNetworkListener()
@@ -164,19 +183,24 @@ public class SessionPool
   
   public static boolean isNetworkUnavailable(int paramInt)
   {
-    Object localObject = UploadConfiguration.getNetworkUnavailableRetCode();
-    UploadLog.i("SessionPool", "check network unavailable code, retCodeList:" + (String)localObject + ", targetCode:" + paramInt);
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    Object localObject1 = UploadConfiguration.getNetworkUnavailableRetCode();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("check network unavailable code, retCodeList:");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(", targetCode:");
+    ((StringBuilder)localObject2).append(paramInt);
+    UploadLog.i("SessionPool", ((StringBuilder)localObject2).toString());
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      localObject = ((String)localObject).split(",");
-      if ((localObject != null) && (localObject.length > 0))
+      localObject1 = ((String)localObject1).split(",");
+      if ((localObject1 != null) && (localObject1.length > 0))
       {
-        int j = localObject.length;
+        int j = localObject1.length;
         int i = 0;
         while (i < j)
         {
-          String str = localObject[i].trim();
-          if ((!TextUtils.isEmpty(str)) && (str.equals(String.valueOf(paramInt))))
+          localObject2 = localObject1[i].trim();
+          if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).equals(String.valueOf(paramInt))))
           {
             UploadLog.i("SessionPool", "check network unavailable: true");
             return true;
@@ -197,7 +221,13 @@ public class SessionPool
   private boolean needChangeNextRoute(int paramInt)
   {
     Object localObject = UploadConfiguration.getChangeRouteRetCode();
-    UploadLog.i(getTag(), "check needChangeNextRoute, retCodeList:" + (String)localObject + ", targetCode:" + paramInt);
+    String str = getTag();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("check needChangeNextRoute, retCodeList:");
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(", targetCode:");
+    localStringBuilder.append(paramInt);
+    UploadLog.i(str, localStringBuilder.toString());
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       localObject = ((String)localObject).split(",");
@@ -207,7 +237,7 @@ public class SessionPool
         int i = 0;
         while (i < j)
         {
-          String str = localObject[i].trim();
+          str = localObject[i].trim();
           if ((!TextUtils.isEmpty(str)) && (str.equals(String.valueOf(paramInt))))
           {
             UploadLog.i(getTag(), "check needChangeNextRoute: true");
@@ -228,12 +258,14 @@ public class SessionPool
   
   private void setPoolInitSize()
   {
-    switch (SessionPool.2.$SwitchMap$com$tencent$upload$utils$Const$FileType[this.mFileType.ordinal()])
+    int i = SessionPool.2.$SwitchMap$com$tencent$upload$utils$Const$FileType[this.mFileType.ordinal()];
+    if (i != 1)
     {
-    default: 
-      this.mPoolInitSize = 1;
-      return;
-    case 1: 
+      if (i != 2)
+      {
+        this.mPoolInitSize = 1;
+        return;
+      }
       this.mPoolInitSize = 2;
       return;
     }
@@ -242,20 +274,25 @@ public class SessionPool
   
   public void allIpFailed()
   {
-    if (this.mListener != null) {
-      this.mListener.allIpFailed(this);
+    SessionPool.PoolStateListener localPoolStateListener = this.mListener;
+    if (localPoolStateListener != null) {
+      localPoolStateListener.allIpFailed(this);
     }
   }
   
   public void cleanSessions()
   {
-    UploadLog.d(getTag(), "cleanSessions --- " + this.mSessionQueue.size());
-    Iterator localIterator = this.mSessionQueue.iterator();
-    while (localIterator.hasNext())
+    Object localObject1 = getTag();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("cleanSessions --- ");
+    ((StringBuilder)localObject2).append(this.mSessionQueue.size());
+    UploadLog.d((String)localObject1, ((StringBuilder)localObject2).toString());
+    localObject1 = this.mSessionQueue.iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      IUploadSession localIUploadSession = (IUploadSession)localIterator.next();
-      if (isSessionValid(localIUploadSession)) {
-        localIUploadSession.close();
+      localObject2 = (IUploadSession)((Iterator)localObject1).next();
+      if (isSessionValid((IUploadSession)localObject2)) {
+        ((IUploadSession)localObject2).close();
       }
     }
     this.mSessionQueue.clear();
@@ -311,7 +348,13 @@ public class SessionPool
   
   public void notifyIdle()
   {
-    UploadLog.d(getTag(), "notifyIdle --- mSessionQueue size:" + this.mSessionQueue.size() + " mDetectingSession size:" + this.mDetectingSession.size());
+    String str = getTag();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("notifyIdle --- mSessionQueue size:");
+    localStringBuilder.append(this.mSessionQueue.size());
+    localStringBuilder.append(" mDetectingSession size:");
+    localStringBuilder.append(this.mDetectingSession.size());
+    UploadLog.d(str, localStringBuilder.toString());
     if ((this.mSessionQueue.size() == 0) && (this.mDetectingSession.size() == 0)) {
       this.mListener.onSessionPoolError(this, Const.UploadRetCode.NO_SESSION.getCode());
     }
@@ -319,7 +362,11 @@ public class SessionPool
   
   public void offer(IUploadSession paramIUploadSession)
   {
-    UploadLog.d(getTag(), "offer session --- id:" + paramIUploadSession.hashCode());
+    String str = getTag();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("offer session --- id:");
+    localStringBuilder.append(paramIUploadSession.hashCode());
+    UploadLog.d(str, localStringBuilder.toString());
     if ((paramIUploadSession.getState() == IUploadSession.SessionState.ESTABLISHED) && (!this.mSessionQueue.contains(paramIUploadSession))) {
       this.mSessionQueue.offer(paramIUploadSession);
     }
@@ -328,68 +375,97 @@ public class SessionPool
   
   public void onOpenFailed(IUploadSession paramIUploadSession, int paramInt, String paramString)
   {
-    if (paramIUploadSession != null) {}
-    for (;;)
-    {
+    if (paramIUploadSession != null) {
       try
       {
-        boolean bool = this.mDetectingSession.contains(paramIUploadSession);
-        if (!bool) {
+        if (this.mDetectingSession.contains(paramIUploadSession))
+        {
+          paramString = new StringBuilder();
+          paramString.append("[connect] ");
+          paramString.append(getTag());
+          paramString = paramString.toString();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("failed to open session:");
+          localStringBuilder.append(paramIUploadSession.hashCode());
+          UploadLog.i(paramString, localStringBuilder.toString());
+          this.mDetectingSession.remove(paramIUploadSession);
+          paramString = new StringBuilder();
+          paramString.append("[connect] ");
+          paramString.append(getTag());
+          paramString = paramString.toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onOpenFailed remove from mDetectingSession, current size:");
+          localStringBuilder.append(this.mDetectingSession.size());
+          UploadLog.i(paramString, localStringBuilder.toString());
+          if ((paramIUploadSession.getUploadRoute().isDuplicate(this.mCurrentRoute)) && (this.mSessionQueue.size() == 0) && (this.mDetectingSession.size() == 0)) {
+            if (isNetworkAvailable())
+            {
+              paramIUploadSession = this.mRouteStrategy.next(this.mCurrentRoute, 0);
+              if (paramIUploadSession == null)
+              {
+                paramIUploadSession = new StringBuilder();
+                paramIUploadSession.append("[connect] ");
+                paramIUploadSession.append(getTag());
+                paramIUploadSession = paramIUploadSession.toString();
+                paramString = new StringBuilder();
+                paramString.append("all ip failed, mCurrentRoute:");
+                paramString.append(this.mCurrentRoute);
+                UploadLog.i(paramIUploadSession, paramString.toString());
+                allIpFailed();
+                return;
+              }
+              createSession(paramIUploadSession);
+            }
+            else
+            {
+              paramIUploadSession = new StringBuilder();
+              paramIUploadSession.append("[connect] ");
+              paramIUploadSession.append(getTag());
+              UploadLog.w(paramIUploadSession.toString(), "network is not available !!");
+            }
+          }
           return;
         }
-        UploadLog.i("[connect] " + getTag(), "failed to open session:" + paramIUploadSession.hashCode());
-        this.mDetectingSession.remove(paramIUploadSession);
-        UploadLog.i("[connect] " + getTag(), "onOpenFailed remove from mDetectingSession, current size:" + this.mDetectingSession.size());
-        if ((!paramIUploadSession.getUploadRoute().isDuplicate(this.mCurrentRoute)) || (this.mSessionQueue.size() != 0) || (this.mDetectingSession.size() != 0)) {
-          continue;
-        }
-        if (!isNetworkAvailable()) {
-          break label274;
-        }
-        paramIUploadSession = this.mRouteStrategy.next(this.mCurrentRoute, 0);
-        if (paramIUploadSession == null)
-        {
-          UploadLog.i("[connect] " + getTag(), "all ip failed, mCurrentRoute:" + this.mCurrentRoute);
-          allIpFailed();
-          continue;
-        }
-        createSession(paramIUploadSession);
       }
       finally {}
-      continue;
-      label274:
-      UploadLog.w("[connect] " + getTag(), "network is not available !!");
     }
   }
   
   public void onOpenSucceed(IUploadSession paramIUploadSession)
   {
-    if (paramIUploadSession != null) {}
-    for (;;)
-    {
+    if (paramIUploadSession != null) {
       try
       {
-        boolean bool = this.mDetectingSession.contains(paramIUploadSession);
-        if (!bool) {
-          return;
-        }
-        notify();
-        UploadLog.i("[connect] " + getTag(), "session is ready --- id:" + paramIUploadSession.hashCode());
-        this.mDetectingSession.remove(paramIUploadSession);
-        this.mSessionQueue.offer(paramIUploadSession);
-        if ((this.mSessionQueue.size() == 1) && (!this.mInited))
+        if (this.mDetectingSession.contains(paramIUploadSession))
         {
-          UploadLog.i("[connect] " + getTag(), "sessionPool is inited now !");
-          this.mInited = true;
-          this.mListener.onSessionPoolRestore(this.mFileType);
-          continue;
-        }
-        if (this.mSessionQueue.size() <= 0) {
-          continue;
+          notify();
+          Object localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("[connect] ");
+          ((StringBuilder)localObject).append(getTag());
+          localObject = ((StringBuilder)localObject).toString();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("session is ready --- id:");
+          localStringBuilder.append(paramIUploadSession.hashCode());
+          UploadLog.i((String)localObject, localStringBuilder.toString());
+          this.mDetectingSession.remove(paramIUploadSession);
+          this.mSessionQueue.offer(paramIUploadSession);
+          if ((this.mSessionQueue.size() == 1) && (!this.mInited))
+          {
+            paramIUploadSession = new StringBuilder();
+            paramIUploadSession.append("[connect] ");
+            paramIUploadSession.append(getTag());
+            UploadLog.i(paramIUploadSession.toString(), "sessionPool is inited now !");
+            this.mInited = true;
+            this.mListener.onSessionPoolRestore(this.mFileType);
+          }
+          else if (this.mSessionQueue.size() > 0)
+          {
+            this.mInited = true;
+          }
+          return;
         }
       }
       finally {}
-      this.mInited = true;
     }
   }
   
@@ -398,169 +474,182 @@ public class SessionPool
     if (paramIUploadSession == null) {
       return;
     }
-    UploadLog.w("[connect] " + getTag(), "onSessionClosed ! Session:" + paramIUploadSession.hashCode());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[connect] ");
+    ((StringBuilder)localObject).append(getTag());
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onSessionClosed ! Session:");
+    localStringBuilder.append(paramIUploadSession.hashCode());
+    UploadLog.w((String)localObject, localStringBuilder.toString());
     this.mSessionQueue.remove(paramIUploadSession);
     notifyIdle();
   }
   
   public void onSessionError(IUploadSession paramIUploadSession, int paramInt, String paramString)
   {
-    if (paramIUploadSession == null) {}
-    for (;;)
-    {
+    if (paramIUploadSession == null) {
       return;
-      try
+    }
+    try
+    {
+      boolean bool = isNetworkAvailable();
+      this.mLastErrorCode = paramInt;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[connect] ");
+      ((StringBuilder)localObject).append(getTag());
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSessionError ! Session:");
+      localStringBuilder.append(paramIUploadSession.hashCode());
+      localStringBuilder.append(" errCode=");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" errMsg=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" networkAvailable=");
+      localStringBuilder.append(bool);
+      UploadLog.w((String)localObject, localStringBuilder.toString());
+      this.mSessionQueue.remove(paramIUploadSession);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[connect] ");
+      ((StringBuilder)localObject).append(getTag());
+      localObject = ((StringBuilder)localObject).toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("remove session ");
+      localStringBuilder.append(paramIUploadSession.hashCode());
+      localStringBuilder.append(" queue size: ");
+      localStringBuilder.append(this.mSessionQueue.size());
+      UploadLog.w((String)localObject, localStringBuilder.toString());
+      if (needChangeNextRoute(paramInt))
       {
-        boolean bool = isNetworkAvailable();
-        this.mLastErrorCode = paramInt;
-        UploadLog.w("[connect] " + getTag(), "onSessionError ! Session:" + paramIUploadSession.hashCode() + " errCode=" + paramInt + " errMsg=" + paramString + " networkAvailable=" + bool);
-        this.mSessionQueue.remove(paramIUploadSession);
-        UploadLog.w("[connect] " + getTag(), "remove session " + paramIUploadSession.hashCode() + " queue size: " + this.mSessionQueue.size());
-        if (!needChangeNextRoute(paramInt)) {
-          break label341;
-        }
-        UploadLog.w("[connect] " + getTag(), "[dochangeRoute] errCode=" + paramInt + " errMsg=" + paramString + " currentRoute=" + paramIUploadSession.getUploadRoute().toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[connect] ");
+        ((StringBuilder)localObject).append(getTag());
+        localObject = ((StringBuilder)localObject).toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[dochangeRoute] errCode=");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(" errMsg=");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" currentRoute=");
+        localStringBuilder.append(paramIUploadSession.getUploadRoute().toString());
+        UploadLog.w((String)localObject, localStringBuilder.toString());
         if (changeRoute(6))
         {
-          UploadLog.i("[connect] " + getTag(), "changeRoute success");
-          continue;
+          paramIUploadSession = new StringBuilder();
+          paramIUploadSession.append("[connect] ");
+          paramIUploadSession.append(getTag());
+          UploadLog.i(paramIUploadSession.toString(), "changeRoute success");
         }
-      }
-      finally {}
-      UploadLog.i("[connect] " + getTag(), "changeRoute failed, allIpFailed");
-      allIpFailed();
-      continue;
-      label341:
-      if ((paramInt == Const.UploadRetCode.EINPROGRESS.getCode()) || (paramInt == Const.UploadRetCode.EAGAIN.getCode()) || (paramInt == Const.UploadRetCode.EHOSTUNREACH.getCode()) || (paramInt == Const.UploadRetCode.ENETUNREACH.getCode()) || (paramInt == Const.UploadRetCode.ENETDOWN.getCode()) || (paramInt == Const.UploadRetCode.ETIMEDOUT.getCode()) || (paramInt == Const.UploadRetCode.ECONNABORTED.getCode()))
-      {
-        UploadLog.w("[connect] " + getTag(), "errCode=" + paramInt + " 网络异常 !");
-      }
-      else if ((paramInt == 30100) || (paramInt == Const.UploadRetCode.NETWORK_NOT_AVAILABLE.getCode()))
-      {
-        UploadLog.w("[connect] " + getTag(), "errCode=" + paramInt + " 网络不可用 !");
+        else
+        {
+          paramIUploadSession = new StringBuilder();
+          paramIUploadSession.append("[connect] ");
+          paramIUploadSession.append(getTag());
+          UploadLog.i(paramIUploadSession.toString(), "changeRoute failed, allIpFailed");
+          allIpFailed();
+        }
       }
       else
       {
-        UploadLog.i("[connect] " + getTag(), "reconnect session: " + paramIUploadSession.hashCode());
+        if ((paramInt == Const.UploadRetCode.EINPROGRESS.getCode()) || (paramInt == Const.UploadRetCode.EAGAIN.getCode()) || (paramInt == Const.UploadRetCode.EHOSTUNREACH.getCode()) || (paramInt == Const.UploadRetCode.ENETUNREACH.getCode()) || (paramInt == Const.UploadRetCode.ENETDOWN.getCode()) || (paramInt == Const.UploadRetCode.ETIMEDOUT.getCode()) || (paramInt == Const.UploadRetCode.ECONNABORTED.getCode())) {
+          break label720;
+        }
+        if ((paramInt == 30100) || (paramInt == Const.UploadRetCode.NETWORK_NOT_AVAILABLE.getCode())) {
+          break label649;
+        }
+        paramString = new StringBuilder();
+        paramString.append("[connect] ");
+        paramString.append(getTag());
+        paramString = paramString.toString();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("reconnect session: ");
+        ((StringBuilder)localObject).append(paramIUploadSession.hashCode());
+        UploadLog.i(paramString, ((StringBuilder)localObject).toString());
         paramIUploadSession.close();
         paramIUploadSession.open(paramIUploadSession.getUploadRoute());
         this.mDetectingSession.add(paramIUploadSession);
       }
+      return;
+      label649:
+      paramIUploadSession = new StringBuilder();
+      paramIUploadSession.append("[connect] ");
+      paramIUploadSession.append(getTag());
+      paramIUploadSession = paramIUploadSession.toString();
+      paramString = new StringBuilder();
+      paramString.append("errCode=");
+      paramString.append(paramInt);
+      paramString.append(" 网络不可用 !");
+      UploadLog.w(paramIUploadSession, paramString.toString());
+      return;
+      label720:
+      paramIUploadSession = new StringBuilder();
+      paramIUploadSession.append("[connect] ");
+      paramIUploadSession.append(getTag());
+      paramIUploadSession = paramIUploadSession.toString();
+      paramString = new StringBuilder();
+      paramString.append("errCode=");
+      paramString.append(paramInt);
+      paramString.append(" 网络异常 !");
+      UploadLog.w(paramIUploadSession, paramString.toString());
+      return;
     }
+    finally {}
   }
   
-  /* Error */
   public IUploadSession poll()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 85	com/tencent/upload/network/session/SessionPool:mSessionQueue	Ljava/util/concurrent/BlockingQueue;
-    //   6: invokeinterface 351 1 0
-    //   11: ifeq +23 -> 34
-    //   14: aload_0
-    //   15: getfield 85	com/tencent/upload/network/session/SessionPool:mSessionQueue	Ljava/util/concurrent/BlockingQueue;
-    //   18: invokeinterface 530 1 0
-    //   23: checkcast 300	com/tencent/upload/network/session/IUploadSession
-    //   26: invokeinterface 533 1 0
-    //   31: ifeq +100 -> 131
-    //   34: aload_0
-    //   35: getfield 85	com/tencent/upload/network/session/SessionPool:mSessionQueue	Ljava/util/concurrent/BlockingQueue;
-    //   38: invokeinterface 351 1 0
-    //   43: ifle +105 -> 148
-    //   46: aload_0
-    //   47: getfield 85	com/tencent/upload/network/session/SessionPool:mSessionQueue	Ljava/util/concurrent/BlockingQueue;
-    //   50: invokeinterface 535 1 0
-    //   55: checkcast 300	com/tencent/upload/network/session/IUploadSession
-    //   58: astore_1
-    //   59: aload_1
-    //   60: invokeinterface 533 1 0
-    //   65: ifeq +20 -> 85
-    //   68: aload_1
-    //   69: invokeinterface 368 1 0
-    //   74: aload_0
-    //   75: getfield 85	com/tencent/upload/network/session/SessionPool:mSessionQueue	Ljava/util/concurrent/BlockingQueue;
-    //   78: aload_1
-    //   79: invokeinterface 467 2 0
-    //   84: pop
-    //   85: aload_0
-    //   86: invokespecial 97	com/tencent/upload/network/session/SessionPool:getTag	()Ljava/lang/String;
-    //   89: ldc_w 537
-    //   92: invokestatic 105	com/tencent/upload/utils/UploadLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   95: aload_0
-    //   96: iconst_1
-    //   97: aload_0
-    //   98: getfield 118	com/tencent/upload/network/session/SessionPool:mCurrentRoute	Lcom/tencent/upload/network/route/UploadRoute;
-    //   101: invokespecial 201	com/tencent/upload/network/session/SessionPool:createSession	(ILcom/tencent/upload/network/route/UploadRoute;)V
-    //   104: aload_0
-    //   105: invokespecial 97	com/tencent/upload/network/session/SessionPool:getTag	()Ljava/lang/String;
-    //   108: ldc_w 539
-    //   111: invokestatic 105	com/tencent/upload/utils/UploadLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   114: aload_0
-    //   115: ldc2_w 540
-    //   118: invokevirtual 545	java/lang/Object:wait	(J)V
-    //   121: aload_0
-    //   122: invokespecial 97	com/tencent/upload/network/session/SessionPool:getTag	()Ljava/lang/String;
-    //   125: ldc_w 547
-    //   128: invokestatic 105	com/tencent/upload/utils/UploadLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   131: aload_0
-    //   132: getfield 85	com/tencent/upload/network/session/SessionPool:mSessionQueue	Ljava/util/concurrent/BlockingQueue;
-    //   135: invokeinterface 535 1 0
-    //   140: checkcast 300	com/tencent/upload/network/session/IUploadSession
-    //   143: astore_1
-    //   144: aload_0
-    //   145: monitorexit
-    //   146: aload_1
-    //   147: areturn
-    //   148: aload_0
-    //   149: invokespecial 97	com/tencent/upload/network/session/SessionPool:getTag	()Ljava/lang/String;
-    //   152: ldc_w 549
-    //   155: invokestatic 105	com/tencent/upload/utils/UploadLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   158: goto -73 -> 85
-    //   161: astore_1
-    //   162: aload_0
-    //   163: monitorexit
-    //   164: aload_1
-    //   165: athrow
-    //   166: astore_1
-    //   167: ldc 17
-    //   169: new 137	java/lang/StringBuilder
-    //   172: dup
-    //   173: invokespecial 138	java/lang/StringBuilder:<init>	()V
-    //   176: ldc_w 551
-    //   179: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   182: aload_1
-    //   183: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   186: invokevirtual 155	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   189: invokestatic 105	com/tencent/upload/utils/UploadLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   192: goto -71 -> 121
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	195	0	this	SessionPool
-    //   58	89	1	localIUploadSession	IUploadSession
-    //   161	4	1	localObject	Object
-    //   166	17	1	localInterruptedException	java.lang.InterruptedException
-    // Exception table:
-    //   from	to	target	type
-    //   2	34	161	finally
-    //   34	85	161	finally
-    //   85	114	161	finally
-    //   114	121	161	finally
-    //   121	131	161	finally
-    //   131	144	161	finally
-    //   148	158	161	finally
-    //   167	192	161	finally
-    //   114	121	166	java/lang/InterruptedException
+    try
+    {
+      if ((this.mSessionQueue.size() == 0) || (((IUploadSession)this.mSessionQueue.peek()).isExpired()))
+      {
+        if (this.mSessionQueue.size() > 0)
+        {
+          IUploadSession localIUploadSession1 = (IUploadSession)this.mSessionQueue.poll();
+          if (localIUploadSession1.isExpired())
+          {
+            localIUploadSession1.close();
+            this.mSessionQueue.remove(localIUploadSession1);
+          }
+        }
+        else
+        {
+          UploadLog.d(getTag(), "queue size == 0");
+        }
+        UploadLog.d(getTag(), "create one session !");
+        createSession(1, this.mCurrentRoute);
+        UploadLog.d(getTag(), "wait 30s start...");
+        try
+        {
+          wait(30000L);
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("poll exception ");
+          localStringBuilder.append(localInterruptedException);
+          UploadLog.d("SessionPool", localStringBuilder.toString());
+        }
+        UploadLog.d(getTag(), "wait 30s end...");
+      }
+      IUploadSession localIUploadSession2 = (IUploadSession)this.mSessionQueue.poll();
+      return localIUploadSession2;
+    }
+    finally {}
   }
   
   public void rebuildSessions()
   {
-    UploadLog.d("SessionPool", getTag() + " rebuildSessions");
-    if (this.mWorkHandler != null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(getTag());
+    ((StringBuilder)localObject).append(" rebuildSessions");
+    UploadLog.d("SessionPool", ((StringBuilder)localObject).toString());
+    localObject = this.mWorkHandler;
+    if (localObject != null)
     {
-      this.mWorkHandler.removeMessages(110001);
-      this.mWorkHandler.sendMessageDelayed(this.mWorkHandler.obtainMessage(110001), 1000L);
+      ((Handler)localObject).removeMessages(110001);
+      localObject = this.mWorkHandler;
+      ((Handler)localObject).sendMessageDelayed(((Handler)localObject).obtainMessage(110001), 1000L);
     }
   }
   
@@ -571,8 +660,9 @@ public class SessionPool
   
   public void removeCloseTimer()
   {
-    if (this.mWorkHandler != null) {
-      this.mWorkHandler.removeMessages(110000);
+    Handler localHandler = this.mWorkHandler;
+    if (localHandler != null) {
+      localHandler.removeMessages(110000);
     }
   }
   
@@ -593,7 +683,11 @@ public class SessionPool
     this.mClosed = false;
     this.mInited = false;
     createSession(this.mPoolInitSize, paramUploadRoute);
-    UploadLog.d(getTag(), "reset session pool with redirect route: " + paramUploadRoute);
+    String str = getTag();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("reset session pool with redirect route: ");
+    localStringBuilder.append(paramUploadRoute);
+    UploadLog.d(str, localStringBuilder.toString());
   }
   
   public void saveRoute(UploadRoute paramUploadRoute)
@@ -601,21 +695,31 @@ public class SessionPool
     this.mLastErrorCode = 0;
     if ((TextUtils.isEmpty(this.oldIp)) || (!paramUploadRoute.getIp().equalsIgnoreCase(this.oldIp)))
     {
-      UploadLog.d(getTag(), "save recent route: " + paramUploadRoute);
+      Object localObject = getTag();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("save recent route: ");
+      localStringBuilder.append(paramUploadRoute);
+      UploadLog.d((String)localObject, localStringBuilder.toString());
       this.oldIp = paramUploadRoute.getIp();
-      if (this.mRouteStrategy != null) {
-        this.mRouteStrategy.save(paramUploadRoute);
+      localObject = this.mRouteStrategy;
+      if (localObject != null) {
+        ((IUploadRouteStrategy)localObject).save(paramUploadRoute);
       }
     }
   }
   
   public void setCloseTimer()
   {
-    UploadLog.d("SessionPool", getTag() + " setCloseTimer");
-    if (this.mWorkHandler != null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(getTag());
+    ((StringBuilder)localObject).append(" setCloseTimer");
+    UploadLog.d("SessionPool", ((StringBuilder)localObject).toString());
+    localObject = this.mWorkHandler;
+    if (localObject != null)
     {
-      this.mWorkHandler.removeMessages(110000);
-      this.mWorkHandler.sendMessageDelayed(this.mWorkHandler.obtainMessage(110000), 240000L);
+      ((Handler)localObject).removeMessages(110000);
+      localObject = this.mWorkHandler;
+      ((Handler)localObject).sendMessageDelayed(((Handler)localObject).obtainMessage(110000), 240000L);
     }
   }
   
@@ -633,7 +737,7 @@ public class SessionPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.network.session.SessionPool
  * JD-Core Version:    0.7.0.1
  */

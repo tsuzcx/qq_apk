@@ -35,13 +35,18 @@ public class TPHeadsetPluginCallbackToNative
   
   public void onHeadsetPlugin(Set<Integer> paramSet1, Set<Integer> paramSet2)
   {
-    TPNativeLog.printLog(2, "TPHeadsetPluginCallback", "onHeadsetPlugin: oldOutputs: " + paramSet1 + ", newOutputs: " + paramSet2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onHeadsetPlugin: oldOutputs: ");
+    localStringBuilder.append(paramSet1);
+    localStringBuilder.append(", newOutputs: ");
+    localStringBuilder.append(paramSet2);
+    TPNativeLog.printLog(2, "TPHeadsetPluginCallback", localStringBuilder.toString());
     _onAudioRouteChanged(paramSet1, paramSet2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPHeadsetPluginCallbackToNative
  * JD-Core Version:    0.7.0.1
  */

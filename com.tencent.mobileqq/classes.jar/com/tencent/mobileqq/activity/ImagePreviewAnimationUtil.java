@@ -6,10 +6,11 @@ public class ImagePreviewAnimationUtil
 {
   public static float a(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 > 641.0F) || (paramInt2 > 641.0F)) {
-      return Math.min(641.0F / paramInt1, 641.0F / paramInt2);
+    float f = paramInt1;
+    if ((f <= 641.0F) && (paramInt2 <= 641.0F)) {
+      return 1.0F;
     }
-    return 1.0F;
+    return Math.min(641.0F / f, 641.0F / paramInt2);
   }
   
   public static Rect a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -22,12 +23,13 @@ public class ImagePreviewAnimationUtil
     {
       localRect.right = paramInt3;
       localRect.bottom = ((int)(paramInt3 * 1.0F / f));
-    }
-    while (paramInt1 < paramInt2) {
       return localRect;
     }
-    localRect.bottom = paramInt4;
-    localRect.right = ((int)(f * paramInt4));
+    if (paramInt1 >= paramInt2)
+    {
+      localRect.bottom = paramInt4;
+      localRect.right = ((int)(paramInt4 * f));
+    }
     return localRect;
   }
   
@@ -41,152 +43,147 @@ public class ImagePreviewAnimationUtil
     paramRect.left = ((int)(paramRect.left * paramFloat));
     paramRect.right = ((int)(paramRect.right * paramFloat));
     paramRect.top = ((int)(paramRect.top * paramFloat));
-    paramRect.bottom = ((int)(paramRect.bottom * paramFloat));
+    paramRect.bottom = ((int)(paramFloat * paramRect.bottom));
   }
   
   public static Rect b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int i = paramInt2 * paramInt3 / paramInt1;
-    if (paramInt1 >= paramInt3) {
-      if (paramInt4 >= i)
-      {
-        i = 17;
-        paramInt3 = 0;
-        paramInt4 = 0;
-      }
-    }
-    for (;;)
+    int j = paramInt2 * paramInt3 / paramInt1;
+    int i = 48;
+    if (paramInt1 >= paramInt3)
     {
-      if (i == 17) {}
-      for (;;)
+      if (paramInt4 < j)
       {
-        return new Rect(0, 0, paramInt1, paramInt2);
-        if ((paramInt4 * 1.5F >= i) && (i > paramInt4))
+        float f = paramInt4;
+        if ((1.5F * f < j) || (j <= paramInt4))
         {
-          i = 17;
-          paramInt3 = 0;
-          paramInt4 = 0;
-          break;
+          double d1 = j;
+          double d2 = paramInt4;
+          Double.isNaN(d2);
+          if (d1 > d2 * 1.5D)
+          {
+            paramInt4 = (int)(f / (paramInt3 / paramInt1));
+            break label136;
+          }
         }
-        if (i <= 1.5D * paramInt4) {
-          break label190;
-        }
-        float f = paramInt3 / paramInt1;
-        paramInt3 = (int)(paramInt4 / f);
-        i = 48;
-        paramInt4 = paramInt1;
-        break;
-        if (paramInt2 < paramInt4)
-        {
-          i = 17;
-          paramInt3 = 0;
-          paramInt4 = 0;
-          break;
-        }
-        if ((paramInt2 > paramInt4) && (paramInt2 < paramInt4 * 1.5F))
-        {
-          i = 17;
-          paramInt3 = 0;
-          paramInt4 = 0;
-          break;
-        }
-        if (paramInt2 <= paramInt4 * 1.5F) {
-          break label190;
-        }
-        int j = 48;
-        i = paramInt1;
-        paramInt3 = paramInt4;
-        paramInt4 = i;
-        i = j;
-        break;
-        paramInt1 = paramInt4;
-        paramInt2 = paramInt3;
       }
-      label190:
-      i = 17;
-      paramInt3 = 0;
-      paramInt4 = 0;
     }
+    else {
+      if (paramInt2 >= paramInt4) {
+        break label106;
+      }
+    }
+    label106:
+    while (((paramInt2 > paramInt4) && (paramInt2 < paramInt4 * 1.5F)) || (paramInt2 <= paramInt4 * 1.5F))
+    {
+      paramInt4 = 0;
+      paramInt3 = 0;
+      i = 17;
+      break;
+    }
+    label136:
+    paramInt3 = paramInt1;
+    if (i != 17)
+    {
+      paramInt2 = paramInt4;
+      paramInt1 = paramInt3;
+    }
+    return new Rect(0, 0, paramInt1, paramInt2);
   }
   
   public static Rect c(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    float f = 1.0F;
     int i = paramInt2 * paramInt3 / paramInt1;
+    float f1;
+    int k;
     int j;
-    if (paramInt1 >= paramInt3) {
+    if (paramInt1 >= paramInt3)
+    {
       if (paramInt4 >= i)
       {
-        f = paramInt3 / paramInt1;
-        paramInt2 = (int)(paramInt2 * f);
-        j = 17;
-        paramInt1 = paramInt3;
-        i = 0;
+        f1 = paramInt3 / paramInt1;
+        paramInt1 = (int)(paramInt2 * f1);
+        paramInt2 = paramInt3;
       }
+      for (i = 17;; i = 48)
+      {
+        k = 0;
+        j = i;
+        i = k;
+        break label239;
+        f1 = paramInt4;
+        if ((1.5F * f1 >= i) && (i > paramInt4))
+        {
+          f1 /= paramInt2;
+          break;
+        }
+        double d1 = i;
+        double d2 = paramInt4;
+        Double.isNaN(d2);
+        if (d1 <= d2 * 1.5D) {
+          break label231;
+        }
+        f1 = paramInt3 / paramInt1;
+        paramInt2 = paramInt3;
+        paramInt1 = paramInt4;
+      }
+    }
+    if (paramInt2 < paramInt4)
+    {
+      i = paramInt2;
+      paramInt2 = paramInt1;
     }
     for (;;)
     {
-      Rect localRect = new Rect(0, 0, paramInt1, paramInt2);
-      if (j == 17) {
-        localRect.offset((paramInt3 - paramInt1) / 2, (paramInt4 - paramInt2) / 2);
-      }
-      while ((j != 48) || (i == 0))
+      j = 17;
+      k = 0;
+      paramInt1 = i;
+      i = k;
+      for (;;)
       {
-        return localRect;
-        if ((paramInt4 * 1.5F >= i) && (i > paramInt4))
+        f1 = 1.0F;
+        break label239;
+        if (paramInt2 > paramInt4)
         {
-          f = paramInt4 / paramInt2;
-          paramInt1 = (int)(paramInt1 * f);
-          j = 17;
-          paramInt2 = paramInt4;
-          i = 0;
-          break;
-        }
-        if (i <= 1.5D * paramInt4) {
-          break label272;
-        }
-        f = paramInt3 / paramInt1;
-        j = 48;
-        paramInt2 = paramInt4;
-        paramInt1 = paramInt3;
-        i = 0;
-        break;
-        if (paramInt2 < paramInt4)
-        {
-          i = 0;
-          j = 17;
-          break;
-        }
-        if ((paramInt2 > paramInt4) && (paramInt2 < paramInt4 * 1.5F))
-        {
-          f = paramInt4 / paramInt2;
-          paramInt1 = (int)(paramInt1 * f);
-          j = 17;
-          paramInt2 = paramInt4;
-          i = 0;
-          break;
+          f1 = paramInt2;
+          float f2 = paramInt4;
+          if (f1 < f2 * 1.5F)
+          {
+            f1 = f2 / f1;
+            paramInt2 = (int)(paramInt1 * f1);
+            paramInt1 = paramInt4;
+            break;
+          }
         }
         if (paramInt2 <= paramInt4 * 1.5F) {
-          break label272;
+          break label231;
         }
-        i = 1;
+        k = paramInt4;
         j = 48;
-        paramInt2 = paramInt4;
-        break;
+        i = 1;
+        paramInt2 = paramInt1;
+        paramInt1 = k;
       }
-      localRect.offset((int)(paramInt3 - f * paramInt1) / 2, 0);
-      return localRect;
-      label272:
-      i = 0;
-      j = 17;
+      label231:
       paramInt2 = 0;
-      paramInt1 = 0;
+      i = 0;
     }
+    label239:
+    Rect localRect = new Rect(0, 0, paramInt2, paramInt1);
+    if (j == 17)
+    {
+      localRect.offset((paramInt3 - paramInt2) / 2, (paramInt4 - paramInt1) / 2);
+      return localRect;
+    }
+    if ((j == 48) && (i != 0)) {
+      localRect.offset((int)(paramInt3 - paramInt2 * f1) / 2, 0);
+    }
+    return localRect;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ImagePreviewAnimationUtil
  * JD-Core Version:    0.7.0.1
  */

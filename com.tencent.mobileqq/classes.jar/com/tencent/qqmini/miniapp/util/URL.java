@@ -19,41 +19,40 @@ public class URL
   
   public URL(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      this.fullUrl = paramString;
-      Object localObject = paramString;
-      if (paramString.contains("://")) {
-        localObject = paramString.replaceFirst("^.*://", "");
-      }
-      if (!((String)localObject).contains("?"))
+    }
+    this.fullUrl = paramString;
+    Object localObject1 = paramString;
+    if (paramString.contains("://")) {
+      localObject1 = paramString.replaceFirst("^.*://", "");
+    }
+    if (!((String)localObject1).contains("?"))
+    {
+      this.path = ((String)localObject1);
+      return;
+    }
+    paramString = ((String)localObject1).split("\\?");
+    this.path = paramString[0];
+    this.query = paramString[1];
+    localObject1 = this.query.split("&");
+    int j = localObject1.length;
+    int i = 0;
+    while (i < j)
+    {
+      paramString = localObject1[i];
+      if (paramString.contains("="))
       {
-        this.path = ((String)localObject);
-        return;
-      }
-      paramString = ((String)localObject).split("\\?");
-      this.path = paramString[0];
-      this.query = paramString[1];
-      localObject = this.query.split("&");
-      int j = localObject.length;
-      int i = 0;
-      while (i < j)
-      {
-        paramString = localObject[i];
-        if (paramString.contains("="))
-        {
-          String[] arrayOfString = paramString.split("=");
-          String str = arrayOfString[0];
+        paramString = paramString.split("=");
+        Object localObject2 = paramString[0];
+        if (paramString.length > 1) {
+          paramString = paramString[1];
+        } else {
           paramString = "";
-          if (arrayOfString.length > 1) {
-            paramString = arrayOfString[1];
-          }
-          this.queryParam.put(str, paramString);
         }
-        i += 1;
+        this.queryParam.put(localObject2, paramString);
       }
+      i += 1;
     }
   }
   
@@ -68,14 +67,25 @@ public class URL
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        this.query = (this.query + str + "=" + (String)paramMap.get(str) + "&");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.query);
+        localStringBuilder.append(str);
+        localStringBuilder.append("=");
+        localStringBuilder.append((String)paramMap.get(str));
+        localStringBuilder.append("&");
+        this.query = localStringBuilder.toString();
       }
     }
     this.fullUrl = paramString;
     if (!TextUtils.isEmpty(this.query))
     {
-      this.query = this.query.substring(0, this.query.length() - 1);
-      this.fullUrl = (paramString + "?" + this.query);
+      paramMap = this.query;
+      this.query = paramMap.substring(0, paramMap.length() - 1);
+      paramMap = new StringBuilder();
+      paramMap.append(paramString);
+      paramMap.append("?");
+      paramMap.append(this.query);
+      this.fullUrl = paramMap.toString();
     }
   }
   
@@ -102,30 +112,43 @@ public class URL
   public void setQueryParam(Map<String, String> paramMap)
   {
     this.queryParam = paramMap;
+    String str1 = "";
+    String str2 = str1;
     if (paramMap != null)
     {
       Iterator localIterator = paramMap.keySet().iterator();
-      for (String str1 = "";; str1 = str1 + str2 + "=" + (String)paramMap.get(str2) + "&")
+      for (;;)
       {
         str2 = str1;
         if (!localIterator.hasNext()) {
           break;
         }
         str2 = (String)localIterator.next();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str1);
+        localStringBuilder.append(str2);
+        localStringBuilder.append("=");
+        localStringBuilder.append((String)paramMap.get(str2));
+        localStringBuilder.append("&");
+        str1 = localStringBuilder.toString();
       }
     }
-    String str2 = "";
     this.query = str2;
     if (!TextUtils.isEmpty(this.query))
     {
-      this.query = this.query.substring(0, this.query.length() - 1);
-      this.fullUrl = (this.path + "?" + this.query);
+      paramMap = this.query;
+      this.query = paramMap.substring(0, paramMap.length() - 1);
+      paramMap = new StringBuilder();
+      paramMap.append(this.path);
+      paramMap.append("?");
+      paramMap.append(this.query);
+      this.fullUrl = paramMap.toString();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.util.URL
  * JD-Core Version:    0.7.0.1
  */

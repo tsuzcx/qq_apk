@@ -24,13 +24,13 @@ public final class SoftHashMap<K, V>
   
   private static int a(int paramInt)
   {
-    paramInt = paramInt >>> 20 ^ paramInt >>> 12 ^ paramInt;
+    paramInt ^= paramInt >>> 20 ^ paramInt >>> 12;
     return paramInt >>> 4 ^ paramInt >>> 7 ^ paramInt;
   }
   
   private static int a(int paramInt1, int paramInt2)
   {
-    return paramInt2 - 1 & paramInt1;
+    return paramInt1 & paramInt2 - 1;
   }
   
   private static int a(Object paramObject)
@@ -62,15 +62,13 @@ public final class SoftHashMap<K, V>
         {
           if (localObject2 == localEntry2) {
             this.jdField_a_of_type_ArrayOfCommonQzoneComponentCacheCommonSoftHashMap$Entry[i] = localEntry1;
-          }
-          for (;;)
-          {
-            SoftHashMap.Entry.a(localEntry2, null);
-            SoftHashMap.Entry.a(localEntry2, null);
-            this.jdField_a_of_type_Int -= 1;
-            break;
+          } else {
             SoftHashMap.Entry.a(localObject2, localEntry1);
           }
+          SoftHashMap.Entry.a(localEntry2, null);
+          SoftHashMap.Entry.a(localEntry2, null);
+          this.jdField_a_of_type_Int -= 1;
+          break;
         }
         localObject2 = localObject1;
         localObject1 = localEntry1;
@@ -106,7 +104,7 @@ public final class SoftHashMap<K, V>
     {
       Object localObject = paramArrayOfEntry1[i];
       paramArrayOfEntry1[i] = null;
-      if (localObject != null)
+      while (localObject != null)
       {
         SoftHashMap.Entry localEntry = SoftHashMap.Entry.a((SoftHashMap.Entry)localObject);
         if (((SoftHashMap.Entry)localObject).get() == null)
@@ -115,14 +113,13 @@ public final class SoftHashMap<K, V>
           SoftHashMap.Entry.a((SoftHashMap.Entry)localObject, null);
           this.jdField_a_of_type_Int -= 1;
         }
-        for (;;)
+        else
         {
-          localObject = localEntry;
-          break;
           int j = a(SoftHashMap.Entry.a((SoftHashMap.Entry)localObject), paramArrayOfEntry2.length);
           SoftHashMap.Entry.a((SoftHashMap.Entry)localObject, paramArrayOfEntry2[j]);
           paramArrayOfEntry2[j] = localObject;
         }
+        localObject = localEntry;
       }
       i += 1;
     }
@@ -160,36 +157,34 @@ public final class SoftHashMap<K, V>
   
   private SoftHashMap.Entry<K, V> b(Object paramObject)
   {
-    if (!(paramObject instanceof Map.Entry)) {}
-    for (;;)
-    {
+    if (!(paramObject instanceof Map.Entry)) {
       return null;
-      SoftHashMap.Entry[] arrayOfEntry = a();
-      Map.Entry localEntry1 = (Map.Entry)paramObject;
-      int i = a(b(localEntry1.getKey()));
-      int j = a(i, arrayOfEntry.length);
-      paramObject = arrayOfEntry[j];
-      Object localObject = paramObject;
-      while (paramObject != null)
-      {
-        SoftHashMap.Entry localEntry = SoftHashMap.Entry.a(paramObject);
-        if ((i == SoftHashMap.Entry.a(paramObject)) && (paramObject.equals(localEntry1)))
-        {
-          this.c += 1;
-          this.jdField_a_of_type_Int -= 1;
-          if (localObject == paramObject) {
-            arrayOfEntry[j] = localEntry;
-          }
-          for (;;)
-          {
-            return paramObject;
-            SoftHashMap.Entry.a(localObject, localEntry);
-          }
-        }
-        localObject = paramObject;
-        paramObject = localEntry;
-      }
     }
+    SoftHashMap.Entry[] arrayOfEntry = a();
+    Map.Entry localEntry1 = (Map.Entry)paramObject;
+    int i = a(b(localEntry1.getKey()));
+    int j = a(i, arrayOfEntry.length);
+    paramObject = arrayOfEntry[j];
+    Object localObject = paramObject;
+    while (paramObject != null)
+    {
+      SoftHashMap.Entry localEntry = SoftHashMap.Entry.a(paramObject);
+      if ((i == SoftHashMap.Entry.a(paramObject)) && (paramObject.equals(localEntry1)))
+      {
+        this.c += 1;
+        this.jdField_a_of_type_Int -= 1;
+        if (localObject == paramObject)
+        {
+          arrayOfEntry[j] = localEntry;
+          return paramObject;
+        }
+        SoftHashMap.Entry.a(localObject, localEntry);
+        return paramObject;
+      }
+      localObject = paramObject;
+      paramObject = localEntry;
+    }
+    return null;
   }
   
   private static <K> K b(K paramK)
@@ -321,20 +316,17 @@ public final class SoftHashMap<K, V>
   
   public void putAll(Map<? extends K, ? extends V> paramMap)
   {
-    int i = 1073741824;
-    int j = paramMap.size();
-    if (j == 0) {
+    int i = paramMap.size();
+    if (i == 0) {
       return;
     }
-    if (j > this.jdField_b_of_type_Int)
+    if (i > this.jdField_b_of_type_Int)
     {
-      j = (int)(j / this.jdField_a_of_type_Float + 1.0F);
-      if (j <= 1073741824) {
-        break label126;
+      int j = (int)(i / this.jdField_a_of_type_Float + 1.0F);
+      i = j;
+      if (j > 1073741824) {
+        i = 1073741824;
       }
-    }
-    for (;;)
-    {
       j = this.jdField_a_of_type_ArrayOfCommonQzoneComponentCacheCommonSoftHashMap$Entry.length;
       while (j < i) {
         j <<= 1;
@@ -342,15 +334,12 @@ public final class SoftHashMap<K, V>
       if (j > this.jdField_a_of_type_ArrayOfCommonQzoneComponentCacheCommonSoftHashMap$Entry.length) {
         a(j);
       }
-      paramMap = paramMap.entrySet().iterator();
-      while (paramMap.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)paramMap.next();
-        put(localEntry.getKey(), localEntry.getValue());
-      }
-      break;
-      label126:
-      i = j;
+    }
+    paramMap = paramMap.entrySet().iterator();
+    while (paramMap.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)paramMap.next();
+      put(localEntry.getKey(), localEntry.getValue());
     }
   }
   
@@ -371,12 +360,10 @@ public final class SoftHashMap<K, V>
         this.jdField_a_of_type_Int -= 1;
         if (localObject1 == paramObject) {
           arrayOfEntry[j] = localEntry;
-        }
-        for (;;)
-        {
-          return SoftHashMap.Entry.a(paramObject);
+        } else {
           SoftHashMap.Entry.a(localObject1, localEntry);
         }
+        return SoftHashMap.Entry.a(paramObject);
       }
       localObject1 = paramObject;
       paramObject = localEntry;
@@ -406,7 +393,7 @@ public final class SoftHashMap<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     common.qzone.component.cache.common.SoftHashMap
  * JD-Core Version:    0.7.0.1
  */

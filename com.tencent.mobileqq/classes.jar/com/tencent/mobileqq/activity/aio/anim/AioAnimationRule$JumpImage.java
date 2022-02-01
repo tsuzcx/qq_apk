@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.util.MQLruCache;
 import android.util.DisplayMetrics;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ApngDrawable;
 import com.tencent.image.GifDrawable;
 import com.tencent.mobileqq.app.GlobalImageCache;
 import com.tencent.mobileqq.emoticon.QQEmojiUtil;
@@ -24,13 +25,22 @@ public class AioAnimationRule$JumpImage
 {
   public static final int a;
   static final int b = DisplayUtil.a(BaseApplicationImpl.getContext(), 44.0F);
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  int c;
+  public String a;
+  boolean a;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
   
   static
   {
-    jdField_a_of_type_Int = (int)(32.0F * BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density + 0.5F);
+    jdField_a_of_type_Int = (int)(BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density * 32.0F + 0.5F);
+  }
+  
+  public AioAnimationRule$JumpImage()
+  {
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public static int a(String paramString)
@@ -40,6 +50,9 @@ public class AioAnimationRule$JumpImage
     }
     if (paramString.equalsIgnoreCase("Face")) {
       return 1;
+    }
+    if (paramString.equalsIgnoreCase("Apng")) {
+      return 6;
     }
     if (paramString.equalsIgnoreCase("Image")) {
       return 2;
@@ -61,134 +74,181 @@ public class AioAnimationRule$JumpImage
     int i;
     if (paramJumpImage.jdField_a_of_type_Boolean) {
       i = b;
+    } else {
+      i = jdField_a_of_type_Int;
     }
-    switch (paramJumpImage.c)
+    int j = paramJumpImage.c;
+    if (j != 0)
     {
-    case 3: 
-    default: 
-      paramContext = null;
-    case 0: 
-    case 1: 
-      do
+      if (j != 1)
       {
-        do
+        if (j != 2)
         {
-          return paramContext;
-          i = jdField_a_of_type_Int;
-          break;
-          int j = Integer.valueOf(paramJumpImage.jdField_a_of_type_JavaLangString).intValue();
-          if (j < 0) {
-            break label106;
+          if (j != 4)
+          {
+            if (j != 5)
+            {
+              if (j != 6) {
+                return null;
+              }
+              return b(paramContext, paramJumpImage);
+            }
+            return d(paramContext, paramJumpImage);
           }
-          paramJumpImage = QQEmojiUtil.getEmojiDrawable(j);
-          paramContext = paramJumpImage;
-        } while (paramJumpImage == null);
-        paramJumpImage.setBounds(new Rect(0, 0, i, i));
-        return paramJumpImage;
-        return null;
-        paramJumpImage = a(paramJumpImage.jdField_a_of_type_JavaLangString);
-        paramContext = paramJumpImage;
-      } while (paramJumpImage == null);
-      paramJumpImage.setBounds(new Rect(0, 0, i, i));
-      return paramJumpImage;
-    case 2: 
-      String str2 = AioAnimationConfigHelper.jdField_a_of_type_JavaLangString + paramJumpImage.jdField_a_of_type_JavaLangString;
-      String str1 = "JumpImage:" + str2;
-      Bitmap localBitmap2 = (Bitmap)GlobalImageCache.a.get(str1);
-      Bitmap localBitmap1 = localBitmap2;
-      if (localBitmap2 == null)
-      {
-        localBitmap2 = BitmapManager.a(str2);
-        if (localBitmap2 == null) {
-          break label266;
+          return e(paramContext, paramJumpImage);
         }
-        GlobalImageCache.a.put(str1, localBitmap2);
-        localBitmap1 = localBitmap2;
-      }
-      for (;;)
-      {
-        paramContext = new BitmapDrawable(paramContext.getResources(), localBitmap1);
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(AioAnimationConfigHelper.a);
+        ((StringBuilder)localObject).append(paramJumpImage.e);
+        String str1 = ((StringBuilder)localObject).toString();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("JumpImage:");
+        ((StringBuilder)localObject).append(str1);
+        String str2 = ((StringBuilder)localObject).toString();
+        Bitmap localBitmap = (Bitmap)GlobalImageCache.a.get(str2);
+        localObject = localBitmap;
+        if (localBitmap == null)
+        {
+          localBitmap = BitmapManager.a(str1);
+          if (localBitmap != null)
+          {
+            GlobalImageCache.a.put(str2, localBitmap);
+            localObject = localBitmap;
+          }
+          else
+          {
+            localObject = localBitmap;
+            if (QLog.isColorLevel())
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("decodeFile error, fileName: ");
+              ((StringBuilder)localObject).append(paramJumpImage.e);
+              QLog.e("AioAnimationRule", 2, ((StringBuilder)localObject).toString());
+              localObject = localBitmap;
+            }
+          }
+        }
+        paramContext = new BitmapDrawable(paramContext.getResources(), (Bitmap)localObject);
         paramContext.setBounds(new Rect(0, 0, i, i));
         return paramContext;
-        label266:
-        localBitmap1 = localBitmap2;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("AioAnimationRule", 2, "decodeFile error, fileName: " + paramJumpImage.jdField_a_of_type_JavaLangString);
-          localBitmap1 = localBitmap2;
-        }
       }
-    case 4: 
-      label106:
-      return d(paramContext, paramJumpImage);
+      paramContext = a(paramJumpImage.e);
+      if (paramContext != null) {
+        paramContext.setBounds(new Rect(0, 0, i, i));
+      }
+      return paramContext;
     }
-    return c(paramContext, paramJumpImage);
+    j = Integer.valueOf(paramJumpImage.e).intValue();
+    if (j >= 0)
+    {
+      paramContext = QQEmojiUtil.getEmojiDrawable(j);
+      if (paramContext != null) {
+        paramContext.setBounds(new Rect(0, 0, i, i));
+      }
+      return paramContext;
+    }
+    return null;
   }
   
   public static Drawable a(String paramString)
   {
     int j = EmotcationConstants.SYS_EMOTICON_SYMBOL.length;
     int i = 0;
-    if (i < j) {
+    while (i < j)
+    {
       if (paramString.equals(EmotcationConstants.SYS_EMOTICON_SYMBOL[i]))
       {
         j = i;
-        if (QLog.isColorLevel()) {
-          QLog.d("AioAnimationRule", 2, "find str = " + paramString + ", index = " + i);
+        if (!QLog.isColorLevel()) {
+          break label90;
         }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("find str = ");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(", index = ");
+        localStringBuilder.append(i);
+        QLog.d("AioAnimationRule", 2, localStringBuilder.toString());
+        j = i;
+        break label90;
       }
+      i += 1;
     }
-    for (j = i;; j = -1)
-    {
-      if (j < 0)
-      {
-        return null;
-        i += 1;
-        break;
-      }
-      return TextUtils.getSysEmotcationDrawable(j, false);
+    j = -1;
+    label90:
+    if (j < 0) {
+      return null;
     }
+    return TextUtils.getSysEmotcationDrawable(j, false);
   }
   
   private static Drawable b(Context paramContext, JumpImage paramJumpImage)
   {
-    String str2 = AioAnimationConfigHelper.jdField_a_of_type_JavaLangString + paramJumpImage.jdField_a_of_type_JavaLangString;
-    String str1 = "JumpImage:" + str2;
-    Bitmap localBitmap2 = (Bitmap)GlobalImageCache.a.get(str1);
-    Bitmap localBitmap1 = localBitmap2;
-    if (localBitmap2 == null)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AioAnimationConfigHelper.a);
+    localStringBuilder.append(paramJumpImage.e);
+    paramJumpImage = new File(localStringBuilder.toString());
+    try
     {
-      localBitmap2 = BitmapManager.a(str2);
-      if (localBitmap2 == null) {
-        break label100;
-      }
-      GlobalImageCache.a.put(str1, localBitmap2);
-      localBitmap1 = localBitmap2;
+      paramContext = new ApngDrawable(paramJumpImage, paramContext.getResources());
+      return paramContext;
     }
-    for (;;)
+    catch (Exception paramContext)
     {
-      return new BitmapDrawable(paramContext.getResources(), localBitmap1);
-      label100:
-      localBitmap1 = localBitmap2;
-      if (QLog.isColorLevel())
-      {
-        QLog.e("AioAnimationRule", 2, "decodeFile error, fileName: " + paramJumpImage.jdField_a_of_type_JavaLangString);
-        localBitmap1 = localBitmap2;
-      }
+      QLog.e("AioAnimationRule", 1, "[getApngDrawable] get apng drawable error", paramContext);
     }
+    return null;
   }
   
   private static Drawable c(Context paramContext, JumpImage paramJumpImage)
   {
-    paramJumpImage = b(paramContext, paramJumpImage);
-    float f = paramContext.getResources().getDisplayMetrics().density;
-    paramJumpImage.setBounds(new Rect(0, 0, (int)(paramJumpImage.getIntrinsicWidth() * f), (int)(f * paramJumpImage.getIntrinsicHeight())));
-    return paramJumpImage;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(AioAnimationConfigHelper.a);
+    ((StringBuilder)localObject).append(paramJumpImage.e);
+    String str1 = ((StringBuilder)localObject).toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("JumpImage:");
+    ((StringBuilder)localObject).append(str1);
+    String str2 = ((StringBuilder)localObject).toString();
+    Bitmap localBitmap = (Bitmap)GlobalImageCache.a.get(str2);
+    localObject = localBitmap;
+    if (localBitmap == null)
+    {
+      localBitmap = BitmapManager.a(str1);
+      if (localBitmap != null)
+      {
+        GlobalImageCache.a.put(str2, localBitmap);
+        localObject = localBitmap;
+      }
+      else
+      {
+        localObject = localBitmap;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("decodeFile error, fileName: ");
+          ((StringBuilder)localObject).append(paramJumpImage.e);
+          QLog.e("AioAnimationRule", 2, ((StringBuilder)localObject).toString());
+          localObject = localBitmap;
+        }
+      }
+    }
+    return new BitmapDrawable(paramContext.getResources(), (Bitmap)localObject);
   }
   
   private static Drawable d(Context paramContext, JumpImage paramJumpImage)
   {
-    paramJumpImage = new File(AioAnimationConfigHelper.jdField_a_of_type_JavaLangString + paramJumpImage.jdField_a_of_type_JavaLangString);
+    paramJumpImage = c(paramContext, paramJumpImage);
+    float f = paramContext.getResources().getDisplayMetrics().density;
+    paramJumpImage.setBounds(new Rect(0, 0, (int)(paramJumpImage.getIntrinsicWidth() * f), (int)(paramJumpImage.getIntrinsicHeight() * f)));
+    return paramJumpImage;
+  }
+  
+  private static Drawable e(Context paramContext, JumpImage paramJumpImage)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AioAnimationConfigHelper.a);
+    localStringBuilder.append(paramJumpImage.e);
+    paramJumpImage = new File(localStringBuilder.toString());
     try
     {
       paramContext = new GifDrawable(paramJumpImage, paramContext.getResources());
@@ -203,7 +263,7 @@ public class AioAnimationRule$JumpImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.AioAnimationRule.JumpImage
  * JD-Core Version:    0.7.0.1
  */

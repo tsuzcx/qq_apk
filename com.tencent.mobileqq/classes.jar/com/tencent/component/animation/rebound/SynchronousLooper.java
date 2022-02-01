@@ -22,8 +22,10 @@ public class SynchronousLooper
     this.mRunning = true;
     for (;;)
     {
-      if (this.mSpringSystem.getIsIdle()) {}
-      while (!this.mRunning) {
+      if (this.mSpringSystem.getIsIdle()) {
+        return;
+      }
+      if (!this.mRunning) {
         return;
       }
       this.mSpringSystem.loop(this.mTimeStep);
@@ -37,7 +39,7 @@ public class SynchronousLooper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.animation.rebound.SynchronousLooper
  * JD-Core Version:    0.7.0.1
  */

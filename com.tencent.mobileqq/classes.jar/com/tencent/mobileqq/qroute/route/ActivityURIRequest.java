@@ -23,14 +23,27 @@ public class ActivityURIRequest
   
   protected static String normalizePath(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return "";
+    if ((paramString != null) && (paramString.length() != 0))
+    {
+      Object localObject = paramString;
+      if (!paramString.startsWith("/"))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("/");
+        ((StringBuilder)localObject).append(paramString);
+        localObject = ((StringBuilder)localObject).toString();
+      }
+      paramString = new StringBuilder();
+      paramString.append("qroute://page");
+      paramString.append((String)localObject);
+      return paramString.toString();
     }
-    String str = paramString;
-    if (!paramString.startsWith("/")) {
-      str = "/" + paramString;
-    }
-    return "qroute://page" + str;
+    return "";
+  }
+  
+  public Uri data()
+  {
+    return (Uri)this.request.getField(Uri.class, "com.tencent.mobileqq.qroute.route.data");
   }
   
   public Bundle extra()
@@ -53,6 +66,11 @@ public class ActivityURIRequest
   public URIRequest getRequest()
   {
     return this.request;
+  }
+  
+  public String intentAction()
+  {
+    return (String)this.request.getField(String.class, "com.tencent.mobileqq.qroute.route.intentAction");
   }
   
   public Bundle options()
@@ -86,9 +104,21 @@ public class ActivityURIRequest
     return (Integer)this.request.getField(Integer.class, "com.tencent.mobileqq.qroute.route.requestCode", null);
   }
   
+  public ActivityURIRequest setData(Uri paramUri)
+  {
+    this.request.putField("com.tencent.mobileqq.qroute.route.data", paramUri);
+    return this;
+  }
+  
   public ActivityURIRequest setFlags(int paramInt)
   {
     this.request.putField("com.tencent.mobileqq.qroute.route.flags", Integer.valueOf(paramInt));
+    return this;
+  }
+  
+  public ActivityURIRequest setIntentAction(String paramString)
+  {
+    this.request.putField("com.tencent.mobileqq.qroute.route.intentAction", paramString);
     return this;
   }
   
@@ -116,14 +146,25 @@ public class ActivityURIRequest
     return this;
   }
   
+  public ActivityURIRequest setType(String paramString)
+  {
+    this.request.putField("com.tencent.mobileqq.qroute.route.type", paramString);
+    return this;
+  }
+  
   public StartActivityAction startActivityAction()
   {
     return (StartActivityAction)this.request.getField(StartActivityAction.class, "com.tencent.mobileqq.qroute.route.action");
   }
+  
+  public String type()
+  {
+    return (String)this.request.getField(String.class, "com.tencent.mobileqq.qroute.route.type");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qroute.route.ActivityURIRequest
  * JD-Core Version:    0.7.0.1
  */

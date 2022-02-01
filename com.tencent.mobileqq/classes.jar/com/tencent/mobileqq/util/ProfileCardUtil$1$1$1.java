@@ -10,12 +10,12 @@ class ProfileCardUtil$1$1$1
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getApplication().getBaseContext(), 2, 2131717963, 0).a();
+    QQToast.a(BaseApplicationImpl.getApplication().getBaseContext(), 2, 2131717622, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.ProfileCardUtil.1.1.1
  * JD-Core Version:    0.7.0.1
  */

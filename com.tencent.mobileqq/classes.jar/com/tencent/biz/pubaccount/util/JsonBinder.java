@@ -9,7 +9,7 @@ import com.google.gson.LongSerializationPolicy;
 public class JsonBinder
 {
   private static JsonBinder jdField_a_of_type_ComTencentBizPubaccountUtilJsonBinder;
-  private static final String jdField_a_of_type_JavaLangString = JsonBinder.class.getName();
+  private static final String jdField_a_of_type_JavaLangString = "com.tencent.biz.pubaccount.util.JsonBinder";
   private Gson jdField_a_of_type_ComGoogleGsonGson = new GsonBuilder().serializeSpecialFloatingPointValues().setLongSerializationPolicy(LongSerializationPolicy.STRING).create();
   
   public static JsonBinder a()
@@ -29,32 +29,48 @@ public class JsonBinder
     }
     catch (JsonSyntaxException paramString)
     {
-      Log.e(jdField_a_of_type_JavaLangString, "form json error.");
-      return null;
+      StringBuilder localStringBuilder;
+      break label141;
     }
     catch (InstantiationException paramString)
     {
-      for (;;)
-      {
-        Log.e(jdField_a_of_type_JavaLangString, paramClass.getName() + "clazz new instance instantiation error.");
-      }
+      break label101;
     }
     catch (IllegalAccessException paramString)
     {
-      for (;;)
-      {
-        Log.e(jdField_a_of_type_JavaLangString, paramClass.getName() + "clazz IllegalAccessException error.");
-      }
+      break label61;
     }
     catch (NumberFormatException paramString)
     {
-      for (;;)
-      {
-        Log.e(jdField_a_of_type_JavaLangString, paramClass.getName() + "clazz NumberFormatException error.");
-      }
+      break label21;
     }
     paramString = this.jdField_a_of_type_ComGoogleGsonGson.fromJson(paramString, paramClass);
     return paramString;
+    label21:
+    paramString = jdField_a_of_type_JavaLangString;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramClass.getName());
+    localStringBuilder.append("clazz NumberFormatException error.");
+    Log.e(paramString, localStringBuilder.toString());
+    break label150;
+    label61:
+    paramString = jdField_a_of_type_JavaLangString;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramClass.getName());
+    localStringBuilder.append("clazz IllegalAccessException error.");
+    Log.e(paramString, localStringBuilder.toString());
+    break label150;
+    label101:
+    paramString = jdField_a_of_type_JavaLangString;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramClass.getName());
+    localStringBuilder.append("clazz new instance instantiation error.");
+    Log.e(paramString, localStringBuilder.toString());
+    break label150;
+    label141:
+    Log.e(jdField_a_of_type_JavaLangString, "form json error.");
+    label150:
+    return null;
   }
   
   public String a(Object paramObject)
@@ -64,7 +80,7 @@ public class JsonBinder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.JsonBinder
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,10 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.mobileqq.theme.ThemeSwitchManager;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.api.IVasService;
+import com.tencent.mobileqq.vas.manager.api.IThemeSwitchManager;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
+import com.tencent.mobileqq.vas.util.VasUtil;
 import com.tencent.theme.SkinEngine;
 
 class ThemeJsPlugin$ThemeSwitchListener$1
@@ -12,7 +14,7 @@ class ThemeJsPlugin$ThemeSwitchListener$1
   
   public void run()
   {
-    this.this$1.this$0.mThemeSwitchManager.a();
+    VasUtil.a().getThemeSwitchManager().doScreenShot();
     SkinEngine.getInstances().setSkinRootPath(this.this$1.this$0.app.getApp(), this.val$themeUnzipPath);
     ThemeUtil.setCurrentThemeIdVersion(this.this$1.this$0.app, this.val$newThemeId, "20000000");
     this.this$1.postSwitch(0);
@@ -20,7 +22,7 @@ class ThemeJsPlugin$ThemeSwitchListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ThemeJsPlugin.ThemeSwitchListener.1
  * JD-Core Version:    0.7.0.1
  */

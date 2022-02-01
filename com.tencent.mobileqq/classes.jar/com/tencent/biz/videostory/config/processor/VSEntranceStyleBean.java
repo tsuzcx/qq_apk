@@ -46,12 +46,19 @@ public class VSEntranceStyleBean
   
   public String toString()
   {
-    return "k = icon_image_url, value = " + this.jdField_a_of_type_JavaLangString + "\n k = config, value = " + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "\n k = md5, value = " + this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("k = icon_image_url, value = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("\n k = config, value = ");
+    localStringBuilder.append(this.jdField_a_of_type_OrgJsonJSONObject.toString());
+    localStringBuilder.append("\n k = md5, value = ");
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.config.processor.VSEntranceStyleBean
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,25 @@
 package com.tencent.mobileqq.nearby.picbrowser;
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
-import android.view.MotionEvent;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.picbrowser.PicBrowserActivity;
+import com.tencent.mobileqq.qroute.route.annotation.RoutePage;
 
+@RoutePage(desc="附近资料卡头像", path="/nearby/profile/pic/browser")
 public class NearbyProfilePicBrowserActivity
   extends PicBrowserActivity
 {
-  boolean a;
+  boolean bShowDelPicAndSetHeadView = false;
   
-  public NearbyProfilePicBrowserActivity()
+  protected boolean doOnCreate(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  @Override
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
-  {
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
-    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
-    return bool;
-  }
-  
-  public boolean doOnCreate(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("intent_param_show_del_pic_and_set_head", false);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager = new NearbyProfilePicBrowserActivity.CustomGalleryManager(this);; this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager = new NearbyProfilePicBrowserActivity.1(this)) {
-      return super.doOnCreate(paramBundle);
+    this.bShowDelPicAndSetHeadView = getIntent().getBooleanExtra("intent_param_show_del_pic_and_set_head", false);
+    if (this.bShowDelPicAndSetHeadView) {
+      this.mGalleryManager = new NearbyProfilePicBrowserActivity.CustomGalleryManager(this);
+    } else {
+      this.mGalleryManager = new NearbyProfilePicBrowserActivity.1(this);
     }
+    return super.doOnCreate(paramBundle);
   }
   
   public void finish()
@@ -39,17 +27,10 @@ public class NearbyProfilePicBrowserActivity
     super.finish();
     overridePendingTransition(0, 0);
   }
-  
-  @Override
-  public void onConfigurationChanged(Configuration paramConfiguration)
-  {
-    super.onConfigurationChanged(paramConfiguration);
-    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

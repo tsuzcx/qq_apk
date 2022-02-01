@@ -17,7 +17,7 @@ import java.util.Locale;
 public class SearchHistoryAdapter
   extends BaseAdapter
 {
-  private static final String jdField_a_of_type_JavaLangString = SearchHistoryAdapter.class.getSimpleName();
+  private static final String jdField_a_of_type_JavaLangString = "SearchHistoryAdapter";
   private Context jdField_a_of_type_AndroidContentContext;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private MqqWeakReferenceHandler jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
@@ -32,30 +32,43 @@ public class SearchHistoryAdapter
   
   public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "loadHistory, keyword = " + paramString);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localObject = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadHistory, keyword = ");
+      localStringBuilder.append(paramString);
+      QLog.i((String)localObject, 2, localStringBuilder.toString());
     }
     if (paramString == null) {
       return;
     }
-    String[] arrayOfString = HistoryChatMsgSearchKeyUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    Object localObject = HistoryChatMsgSearchKeyUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     this.jdField_a_of_type_JavaUtilList.clear();
-    if (arrayOfString != null)
+    if (localObject != null)
     {
-      int j = arrayOfString.length;
+      int j = localObject.length;
       int i = 0;
       while (i < j)
       {
-        String str = arrayOfString[i];
-        if (a(str, paramString)) {
-          this.jdField_a_of_type_JavaUtilList.add(new HistoryItem(str));
+        localStringBuilder = localObject[i];
+        if (a(localStringBuilder, paramString)) {
+          this.jdField_a_of_type_JavaUtilList.add(new HistoryItem(localStringBuilder));
         }
         i += 1;
       }
     }
     notifyDataSetChanged();
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "loadHistory, keyword = " + paramString + ", histories = " + this.jdField_a_of_type_JavaUtilList.toString());
+    if (QLog.isColorLevel())
+    {
+      localObject = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadHistory, keyword = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", histories = ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.toString());
+      QLog.i((String)localObject, 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(3);
   }
@@ -86,25 +99,25 @@ public class SearchHistoryAdapter
     View localView;
     if (paramView == null)
     {
-      localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559460, null);
+      localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559334, null);
       paramView = new SearchHistoryAdapter.HistoryHolder(null);
-      paramView.a = ((TextView)localView.findViewById(2131379091));
+      paramView.a = ((TextView)localView.findViewById(2131378460));
       localView.setTag(paramView);
     }
-    for (;;)
+    else
     {
-      paramView.a.setText(localHistoryItem.jdField_a_of_type_JavaLangString);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
       SearchHistoryAdapter.HistoryHolder localHistoryHolder = (SearchHistoryAdapter.HistoryHolder)paramView.getTag();
       localView = paramView;
       paramView = localHistoryHolder;
     }
+    paramView.a.setText(localHistoryItem.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.SearchHistoryAdapter
  * JD-Core Version:    0.7.0.1
  */

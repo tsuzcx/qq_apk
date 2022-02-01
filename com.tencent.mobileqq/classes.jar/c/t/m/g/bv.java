@@ -69,31 +69,21 @@ public final class bv
   private static int c(int paramInt)
   {
     String str;
-    if (paramInt == 0)
-    {
+    if (paramInt == 0) {
       str = "http_platform_update_interval_succ";
-      if (paramInt != 0) {
-        break label48;
-      }
-      paramInt = 1800000;
-    }
-    for (;;)
-    {
-      return x.a.a(str, 60000, 3600000, paramInt);
-      if ((paramInt == -4) || (paramInt == -3))
-      {
-        str = "http_platform_update_interval_nonet";
-        break;
-      }
+    } else if ((paramInt != -4) && (paramInt != -3)) {
       str = "http_platform_update_interval_fail";
-      break;
-      label48:
-      if ((paramInt == -4) || (paramInt == -3)) {
-        paramInt = 60000;
-      } else {
-        paramInt = 300000;
-      }
+    } else {
+      str = "http_platform_update_interval_nonet";
     }
+    if (paramInt == 0) {
+      paramInt = 1800000;
+    } else if ((paramInt != -4) && (paramInt != -3)) {
+      paramInt = 300000;
+    } else {
+      paramInt = 60000;
+    }
+    return x.a.a(str, 60000, 3600000, paramInt);
   }
   
   public static bv c()
@@ -108,18 +98,19 @@ public final class bv
   
   public final void a(int paramInt)
   {
-    if ((paramInt == 1) || (paramInt == 2))
+    if ((paramInt != 1) && (paramInt != 2))
     {
-      this.e.removeCallbacks(this.h);
-      this.e.post(this.h);
-    }
-    while ((paramInt != 3) && (paramInt != 4)) {
+      if ((paramInt == 3) || (paramInt == 4))
+      {
+        paramInt = x.a.a("detect_platform_update_random_interval", 0, 1440, 10);
+        paramInt = new Random().nextInt(paramInt);
+        int k = c(0);
+        af.a().a(this.g, false, k + paramInt * 60 * 1000);
+      }
       return;
     }
-    paramInt = x.a.a("detect_platform_update_random_interval", 0, 1440, 10);
-    paramInt = new Random().nextInt(paramInt);
-    int k = c(0);
-    af.a().a(this.g, false, paramInt * 60 * 1000 + k);
+    this.e.removeCallbacks(this.h);
+    this.e.post(this.h);
   }
   
   public final void a(bj parambj)
@@ -156,7 +147,7 @@ public final class bv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.bv
  * JD-Core Version:    0.7.0.1
  */

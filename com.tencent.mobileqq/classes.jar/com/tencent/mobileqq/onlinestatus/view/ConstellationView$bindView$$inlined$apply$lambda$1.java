@@ -16,7 +16,9 @@ final class ConstellationView$bindView$$inlined$apply$lambda$1
   
   public final void onClick(View paramView)
   {
-    ConstellationView.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewConstellationView, (Activity)this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewConstellationView.a(), (Function0)new ConstellationView.bindView..inlined.apply.lambda.1.1(this), (Function0)new ConstellationView.bindView..inlined.apply.lambda.1.2(this));
+    ConstellationView localConstellationView = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewConstellationView;
+    ConstellationView.a(localConstellationView, (Activity)localConstellationView.a(), (Function0)new ConstellationView.bindView..inlined.apply.lambda.1.1(this), (Function0)new ConstellationView.bindView..inlined.apply.lambda.1.2(this));
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewConstellationView.a.a(1040);
     this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewConstellationView.dismiss();
     ReportHelperKt.a("0X800AF44", 0, null, null, 14, null);
     ReportHelperKt.a("0X8009DE0", 1040, null, null, 12, null);
@@ -25,7 +27,7 @@ final class ConstellationView$bindView$$inlined$apply$lambda$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.ConstellationView.bindView..inlined.apply.lambda.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.thumbplayer.api.proxy;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public abstract interface ITPPreloadProxy
 {
@@ -16,11 +17,13 @@ public abstract interface ITPPreloadProxy
   
   public abstract int startPreload(String paramString, TPDownloadParamData paramTPDownloadParamData, ITPPreloadProxy.IPreloadListener paramIPreloadListener);
   
+  public abstract int startPreload(String paramString, TPDownloadParamData paramTPDownloadParamData, Map<String, String> paramMap, ITPPreloadProxy.IPreloadListener paramIPreloadListener);
+  
   public abstract void stopPreload(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.api.proxy.ITPPreloadProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -18,9 +18,17 @@ public class FlutterFragmentActivity
   implements FlutterActivityDelegate.ViewFactory, PluginRegistry, FlutterView.Provider
 {
   private final FlutterActivityDelegate delegate = new FlutterActivityDelegate(this, this);
-  private final FlutterActivityEvents eventDelegate = this.delegate;
-  private final PluginRegistry pluginRegistry = this.delegate;
-  private final FlutterView.Provider viewProvider = this.delegate;
+  private final FlutterActivityEvents eventDelegate;
+  private final PluginRegistry pluginRegistry;
+  private final FlutterView.Provider viewProvider;
+  
+  public FlutterFragmentActivity()
+  {
+    FlutterActivityDelegate localFlutterActivityDelegate = this.delegate;
+    this.eventDelegate = localFlutterActivityDelegate;
+    this.viewProvider = localFlutterActivityDelegate;
+    this.pluginRegistry = localFlutterActivityDelegate;
+  }
   
   public FlutterNativeView createFlutterNativeView()
   {
@@ -51,7 +59,7 @@ public class FlutterFragmentActivity
     return this.pluginRegistry.hasPlugin(paramString);
   }
   
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if (!this.eventDelegate.onActivityResult(paramInt1, paramInt2, paramIntent)) {
       super.onActivityResult(paramInt1, paramInt2, paramIntent);
@@ -72,13 +80,13 @@ public class FlutterFragmentActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     this.eventDelegate.onCreate(paramBundle);
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     this.eventDelegate.onDestroy();
     super.onDestroy();
@@ -89,19 +97,19 @@ public class FlutterFragmentActivity
     this.eventDelegate.onLowMemory();
   }
   
-  public void onNewIntent(Intent paramIntent)
+  protected void onNewIntent(Intent paramIntent)
   {
     super.onNewIntent(paramIntent);
     this.eventDelegate.onNewIntent(paramIntent);
   }
   
-  public void onPause()
+  protected void onPause()
   {
     super.onPause();
     this.eventDelegate.onPause();
   }
   
-  public void onPostResume()
+  protected void onPostResume()
   {
     super.onPostResume();
     this.eventDelegate.onPostResume();
@@ -113,13 +121,13 @@ public class FlutterFragmentActivity
     this.eventDelegate.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void onStart()
+  protected void onStart()
   {
     super.onStart();
     this.eventDelegate.onStart();
   }
   
-  public void onStop()
+  protected void onStop()
   {
     this.eventDelegate.onStop();
     super.onStop();
@@ -152,7 +160,7 @@ public class FlutterFragmentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.app.FlutterFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

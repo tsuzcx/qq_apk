@@ -13,12 +13,20 @@ public class MiniAppEvent
   
   public String toString()
   {
-    return "MiniAppEvent {, isSuccess=" + this.jdField_a_of_type_Boolean + ", type=" + this.jdField_a_of_type_Int + ", src=" + this.jdField_a_of_type_JavaLangString + " }";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MiniAppEvent {, isSuccess=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", src=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" }");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.miniapp.MiniAppEvent
  * JD-Core Version:    0.7.0.1
  */

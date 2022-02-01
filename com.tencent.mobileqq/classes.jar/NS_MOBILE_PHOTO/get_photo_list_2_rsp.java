@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,24 +43,25 @@ public final class get_photo_list_2_rsp
   
   static
   {
-    Object localObject = new s_picdata();
-    cache_photolist.add(localObject);
+    Object localObject1 = new s_picdata();
+    cache_photolist.add(localObject1);
     cache_shareinfo = new s_outshare();
     cache_recommand_album = new ArrayList();
-    localObject = new Album();
-    cache_recommand_album.add(localObject);
+    localObject1 = new Album();
+    cache_recommand_album.add(localObject1);
     cache_user = new s_videoflow_user();
     cache_features = new HashMap();
-    localObject = (byte[])new byte[1];
-    ((byte[])localObject)[0] = 0;
-    cache_features.put(Integer.valueOf(0), localObject);
+    localObject1 = Integer.valueOf(0);
+    Object localObject2 = (byte[])new byte[1];
+    ((byte[])localObject2)[0] = 0;
+    cache_features.put(localObject1, localObject2);
     cache_recommend_photos = new RecommendPhotos();
     cache_pos = new stPhotoPoiAreaList();
     cache_timeline = new ArrayList();
-    localObject = new TimeLine();
-    cache_timeline.add(localObject);
+    localObject2 = new TimeLine();
+    cache_timeline.add(localObject2);
     cache_busi_param = new HashMap();
-    cache_busi_param.put(Integer.valueOf(0), "");
+    cache_busi_param.put(localObject1, "");
   }
   
   public get_photo_list_2_rsp() {}
@@ -114,40 +116,49 @@ public final class get_photo_list_2_rsp
     paramJceOutputStream.write(this.appid, 4);
     paramJceOutputStream.write(this.total, 5);
     paramJceOutputStream.write(this.finish, 6);
-    if (this.shareinfo != null) {
-      paramJceOutputStream.write(this.shareinfo, 7);
+    Object localObject = this.shareinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
     paramJceOutputStream.write(this.lossy_service, 8);
-    if (this.recommand_album != null) {
-      paramJceOutputStream.write(this.recommand_album, 9);
+    localObject = this.recommand_album;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 9);
     }
-    if (this.user != null) {
-      paramJceOutputStream.write(this.user, 11);
+    localObject = this.user;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 11);
     }
-    if (this.features != null) {
-      paramJceOutputStream.write(this.features, 12);
+    localObject = this.features;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 12);
     }
-    if (this.recommend_photos != null) {
-      paramJceOutputStream.write(this.recommend_photos, 13);
+    localObject = this.recommend_photos;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 13);
     }
-    if (this.pos != null) {
-      paramJceOutputStream.write(this.pos, 14);
+    localObject = this.pos;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 14);
     }
-    if (this.timeline != null) {
-      paramJceOutputStream.write(this.timeline, 15);
+    localObject = this.timeline;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 15);
     }
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 16);
+    localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 16);
     }
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 17);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 17);
     }
     paramJceOutputStream.write(this.photo_search_status, 18);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.get_photo_list_2_rsp
  * JD-Core Version:    0.7.0.1
  */

@@ -17,23 +17,24 @@ class DebugPromoteTaskCode$4
     if (!TextUtils.isEmpty(this.a))
     {
       localList = this.this$0.a.a(Collections.singletonList(this.a), 1);
-      if (localList.isEmpty()) {}
-    }
-    do
-    {
-      this.this$0.a.b((PromoteTaskEntry)localList.get(0));
-      do
+      if (!localList.isEmpty())
       {
+        this.this$0.a.b((PromoteTaskEntry)localList.get(0));
         return;
-      } while (TextUtils.isEmpty(this.b));
+      }
+    }
+    if (!TextUtils.isEmpty(this.b))
+    {
       localList = this.this$0.a.b(this.b, 1);
-    } while (localList.isEmpty());
-    this.this$0.a.b((PromoteTaskEntry)localList.get(0));
+      if (!localList.isEmpty()) {
+        this.this$0.a.b((PromoteTaskEntry)localList.get(0));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode.4
  * JD-Core Version:    0.7.0.1
  */

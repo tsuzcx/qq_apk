@@ -1,10 +1,10 @@
 package com.tencent.avgame.floatwindow;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class FloatWindowController$5
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   FloatWindowController$5(FloatWindowController paramFloatWindowController, int paramInt1, int paramInt2) {}
   
@@ -28,7 +28,7 @@ class FloatWindowController$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.floatwindow.FloatWindowController.5
  * JD-Core Version:    0.7.0.1
  */

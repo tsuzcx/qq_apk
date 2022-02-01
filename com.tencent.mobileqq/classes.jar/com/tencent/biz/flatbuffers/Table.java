@@ -24,7 +24,7 @@ public class Table
   protected int a(int paramInt)
   {
     if (a(paramInt, 4)) {
-      return this.jdField_a_of_type_JavaNioByteBuffer.getInt(paramInt) + paramInt;
+      return paramInt + this.jdField_a_of_type_JavaNioByteBuffer.getInt(paramInt);
     }
     return -1;
   }
@@ -54,8 +54,9 @@ public class Table
     if (!a(i, paramInt + 4)) {
       return null;
     }
-    localByteBuffer.position(i + 4);
-    localByteBuffer.limit(i + 4 + paramInt);
+    i += 4;
+    localByteBuffer.position(i);
+    localByteBuffer.limit(i + paramInt);
     paramInt = (int)(paramInt * localCharsetDecoder.maxCharsPerByte());
     Object localObject2 = (CharBuffer)c.get();
     Object localObject1;
@@ -97,7 +98,7 @@ public class Table
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.flatbuffers.Table
  * JD-Core Version:    0.7.0.1
  */

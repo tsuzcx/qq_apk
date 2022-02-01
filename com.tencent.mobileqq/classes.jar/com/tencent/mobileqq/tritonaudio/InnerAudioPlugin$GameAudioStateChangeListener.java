@@ -21,38 +21,44 @@ public final class InnerAudioPlugin$GameAudioStateChangeListener
   
   private final void evaluateAudioError(int paramInt)
   {
-    int i = paramInt;
-    JSONObject localJSONObject;
+    int i;
+    if (paramInt != -1010) {
+      if (paramInt != -1007) {
+        if ((paramInt != -1004) && (paramInt != -110)) {
+          if (paramInt != 1)
+          {
+            if ((paramInt == 100) || (paramInt == 200)) {
+              break label92;
+            }
+            i = paramInt;
+          }
+        }
+      }
+    }
     switch (paramInt)
     {
     default: 
       i = -1;
-    case 10001: 
-    case 10002: 
-    case 10003: 
-    case 10004: 
-      localJSONObject = new JSONObject();
-      localJSONObject.put("audioId", this.audioId);
-      localJSONObject.put("state", "error");
-      localJSONObject.put("errCode", i);
-      if (i != 10001) {
-        break;
-      }
-    }
-    for (String str = "系统错误";; str = "未知错误, 请复用InnerAudioContext实例、及时释放无用实例")
-    {
-      localJSONObject.put("errMsg", str);
-      this.arguments.subscribe("onAudioStateChange", localJSONObject.toString());
-      return;
+      break;
       i = 10002;
       break;
+      label92:
       i = 10001;
       break;
       i = 10003;
-      break;
-      i = -1;
-      break;
     }
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("audioId", this.audioId);
+    localJSONObject.put("state", "error");
+    localJSONObject.put("errCode", i);
+    String str;
+    if (i == 10001) {
+      str = "系统错误";
+    } else {
+      str = "未知错误, 请复用InnerAudioContext实例、及时释放无用实例";
+    }
+    localJSONObject.put("errMsg", str);
+    this.arguments.subscribe("onAudioStateChange", localJSONObject.toString());
   }
   
   private final void evaluateAudioState(String paramString)
@@ -115,7 +121,7 @@ public final class InnerAudioPlugin$GameAudioStateChangeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tritonaudio.InnerAudioPlugin.GameAudioStateChangeListener
  * JD-Core Version:    0.7.0.1
  */

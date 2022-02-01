@@ -35,38 +35,41 @@ public class TogetherSingDelegate
   private void a(String paramString, int paramInt)
   {
     TogetherControlManager localTogetherControlManager = (TogetherControlManager)this.a.getManager(QQManagerFactory.TOGETHER_CONTROLLER_MANAGER);
-    if (paramInt == 4) {
-      ReportController.b(this.a, "dc00899", "c2c_AIO", "", "sing_tab", "clk_join_suc", 0, 1, paramString, "", "", "");
-    }
-    do
+    if (paramInt == 4)
     {
+      ReportController.b(this.a, "dc00899", "c2c_AIO", "", "sing_tab", "clk_join_suc", 0, 1, paramString, "", "", "");
       return;
-      if (paramInt == 9)
-      {
-        ReportController.b(this.a, "dc00899", "c2c_AIO", "", "sing_tab", "clk_singark_suc", 0, 1, paramString, "", "", "");
-        return;
-      }
-      if (paramInt == 1)
-      {
-        localTogetherControlManager.a("sing_tab", "clk_join_suc", 0, paramString);
-        return;
-      }
-    } while (paramInt != 8);
-    localTogetherControlManager.a("sing_tab", "clk_setsing_suc", 0, paramString);
+    }
+    if (paramInt == 9)
+    {
+      ReportController.b(this.a, "dc00899", "c2c_AIO", "", "sing_tab", "clk_singark_suc", 0, 1, paramString, "", "", "");
+      return;
+    }
+    if (paramInt == 1)
+    {
+      localTogetherControlManager.a("sing_tab", "clk_join_suc", 0, paramString);
+      return;
+    }
+    if (paramInt == 8) {
+      localTogetherControlManager.a("sing_tab", "clk_setsing_suc", 0, paramString);
+    }
   }
   
   private boolean a(boolean paramBoolean, Bundle paramBundle, String paramString, Context paramContext, int paramInt)
   {
-    if ((!paramBoolean) || (paramInt <= 0)) {
-      return true;
-    }
-    paramString = ((FetchOpenIdManager)this.a.getManager(QQManagerFactory.FETCH_OPENID_MANAGER)).a(Long.parseLong(paramString), paramInt, true);
-    if (TextUtils.isEmpty(paramString))
+    if (paramBoolean)
     {
-      Toast.makeText(paramContext, "加载中，请稍后再试。", 1).show();
-      return false;
+      if (paramInt <= 0) {
+        return true;
+      }
+      paramString = ((FetchOpenIdManager)this.a.getManager(QQManagerFactory.FETCH_OPENID_MANAGER)).a(Long.parseLong(paramString), paramInt, true);
+      if (TextUtils.isEmpty(paramString))
+      {
+        Toast.makeText(paramContext, "加载中，请稍后再试。", 1).show();
+        return false;
+      }
+      paramBundle.putString("TOGETHER_BUNDLE_KEY_C2C_FRIEND_OPENID", paramString);
     }
-    paramBundle.putString("TOGETHER_BUNDLE_KEY_C2C_FRIEND_OPENID", paramString);
     return true;
   }
   
@@ -78,76 +81,89 @@ public class TogetherSingDelegate
   public int a(int paramInt1, String paramString, Context paramContext, int paramInt2, Map<String, TogetherSession> paramMap, Bundle paramBundle)
   {
     a(paramString, paramInt2);
-    Object localObject = "4_" + paramInt1 + "_" + paramString;
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherSingDelegate", 2, "TogetherSingDelegate start SCHEMA=" + (String)localObject + " from=" + paramInt2);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("4_");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramString);
+    localObject = ((StringBuilder)localObject).toString();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("TogetherSingDelegate start SCHEMA=");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(" from=");
+      localStringBuilder.append(paramInt2);
+      QLog.d("TogetherSingDelegate", 2, localStringBuilder.toString());
     }
     int i;
     if (paramInt1 == 2) {
       i = 2080;
+    } else {
+      i = 2081;
     }
-    while (((paramInt2 == 4) || (paramInt2 == 1) || (paramInt2 == 9) || (paramInt2 == 8)) && (paramMap != null) && (paramMap.get(localObject) != null))
+    if (((paramInt2 == 4) || (paramInt2 == 1) || (paramInt2 == 9) || (paramInt2 == 8)) && (paramMap != null) && (paramMap.get(localObject) != null))
     {
       paramMap = (SingTogetherSession)paramMap.get(localObject);
       if (!TextUtils.isEmpty(paramMap.b))
       {
         ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(paramContext, paramMap.b, i, null);
         return 1;
-        i = 2081;
       }
-      else if (QLog.isColorLevel())
-      {
+      if (QLog.isColorLevel()) {
         QLog.d("TogetherSingDelegate", 2, "TogetherSingDelegate start SCHEMA is empty");
       }
     }
     if (TextUtils.isEmpty(""))
     {
       localObject = ((SingTogetherConfigBean)QConfigManager.a().a(551)).a(4);
+      boolean bool;
       if ((localObject != null) && (((SingTogetherConfigBean.GeneralTogetherItem)localObject).c != 1))
       {
         bool = TextUtils.isEmpty(((SingTogetherConfigBean.GeneralTogetherItem)localObject).a);
-        if (bool)
-        {
+        if (bool) {
           paramMap = "mqqapi://miniapp/open?_atype=0&_mappid=1109995692&_mvid=&_path=%2Fpages%2Findex%2Fmain&_vt=3&_sig=87d212c596d5dd75907b38e2a96705ec4d7eef6a557f4cbba1f69df0d0d991fc";
-          if (!bool) {
-            break label309;
-          }
-          paramInt2 = 2;
-          label271:
-          if (paramInt1 != 2) {
-            break label319;
-          }
-        }
-        label309:
-        label319:
-        for (bool = true;; bool = false)
-        {
-          if (a(bool, paramBundle, paramString, paramContext, ((SingTogetherConfigBean.GeneralTogetherItem)localObject).d)) {
-            break label325;
-          }
-          return 0;
+        } else {
           paramMap = ((SingTogetherConfigBean.GeneralTogetherItem)localObject).a;
-          break;
-          paramInt2 = ((SingTogetherConfigBean.GeneralTogetherItem)localObject).b;
-          break label271;
         }
-        label325:
+        if (bool) {
+          paramInt2 = 2;
+        } else {
+          paramInt2 = ((SingTogetherConfigBean.GeneralTogetherItem)localObject).b;
+        }
+        if (paramInt1 == 2) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        if (!a(bool, paramBundle, paramString, paramContext, ((SingTogetherConfigBean.GeneralTogetherItem)localObject).d)) {
+          return 0;
+        }
         TogetherUtils.a(this.a, paramInt2, paramMap, null, paramBundle, paramInt1);
         return 2;
       }
-      if (paramInt1 == 2) {}
-      for (boolean bool = true; !a(bool, paramBundle, paramString, paramContext, 1109995692); bool = false) {
+      if (paramInt1 == 2) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      if (!a(bool, paramBundle, paramString, paramContext, 1109995692)) {
         return 0;
       }
-      if (paramInt1 == 1) {}
-      for (paramString = TogetherUtils.a("mqqapi://miniapp/open?_atype=0&_mappid=1109995692&_mvid=&_path=%2Fpages%2Findex%2Fmain&_vt=3&_sig=87d212c596d5dd75907b38e2a96705ec4d7eef6a557f4cbba1f69df0d0d991fc", paramBundle);; paramString = TogetherUtils.b("mqqapi://miniapp/open?_atype=0&_mappid=1109995692&_mvid=&_path=%2Fpages%2Findex%2Fmain&_vt=3&_sig=87d212c596d5dd75907b38e2a96705ec4d7eef6a557f4cbba1f69df0d0d991fc", paramBundle))
-      {
-        ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(paramContext, paramString, i, null);
-        if (QLog.isColorLevel()) {
-          QLog.d("TogetherSingDelegate", 2, "TogetherSingDelegate start SCHEMA=" + paramString);
-        }
-        return 3;
+      if (paramInt1 == 1) {
+        paramString = TogetherUtils.a("mqqapi://miniapp/open?_atype=0&_mappid=1109995692&_mvid=&_path=%2Fpages%2Findex%2Fmain&_vt=3&_sig=87d212c596d5dd75907b38e2a96705ec4d7eef6a557f4cbba1f69df0d0d991fc", paramBundle);
+      } else {
+        paramString = TogetherUtils.b("mqqapi://miniapp/open?_atype=0&_mappid=1109995692&_mvid=&_path=%2Fpages%2Findex%2Fmain&_vt=3&_sig=87d212c596d5dd75907b38e2a96705ec4d7eef6a557f4cbba1f69df0d0d991fc", paramBundle);
       }
+      ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(paramContext, paramString, i, null);
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("TogetherSingDelegate start SCHEMA=");
+        paramContext.append(paramString);
+        QLog.d("TogetherSingDelegate", 2, paramContext.toString());
+      }
+      return 3;
     }
     return -1;
   }
@@ -191,7 +207,7 @@ public class TogetherSingDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.singtogether.TogetherSingDelegate
  * JD-Core Version:    0.7.0.1
  */

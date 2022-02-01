@@ -20,27 +20,30 @@ public class FilePicMesProgressTextView
   
   public void setProgress(int paramInt)
   {
-    if ((this.d) && (this.jdField_a_of_type_Boolean)) {
-      setText(paramInt + "%");
-    }
-    for (;;)
+    if ((this.d) && (this.jdField_a_of_type_Boolean))
     {
-      Drawable localDrawable = getBackground();
-      if (localDrawable != null)
-      {
-        localDrawable.setLevel((100 - paramInt) * 100);
-        if (((localDrawable instanceof AIOSendMask)) && (!this.jdField_a_of_type_Boolean)) {
-          ((AIOSendMask)localDrawable).a(this.jdField_a_of_type_Int, this.b);
-        }
-      }
-      return;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("%");
+      setText(((StringBuilder)localObject).toString());
+    }
+    else
+    {
       setText("");
+    }
+    Object localObject = getBackground();
+    if (localObject != null)
+    {
+      ((Drawable)localObject).setLevel((100 - paramInt) * 100);
+      if (((localObject instanceof AIOSendMask)) && (!this.jdField_a_of_type_Boolean)) {
+        ((AIOSendMask)localObject).a(this.jdField_a_of_type_Int, this.b);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.customviews.FilePicMesProgressTextView
  * JD-Core Version:    0.7.0.1
  */

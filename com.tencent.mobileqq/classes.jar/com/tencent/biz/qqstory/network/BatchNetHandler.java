@@ -21,9 +21,10 @@ public abstract class BatchNetHandler
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_Int < 1)
+    int i = this.jdField_a_of_type_Int;
+    if (i < 1)
     {
-      this.jdField_a_of_type_Int += 1;
+      this.jdField_a_of_type_Int = (i + 1);
       SLog.d("Q.qqstory.net:BatchNetHandler", String.format("retry request , retry count = %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
       a();
       return true;
@@ -33,21 +34,23 @@ public abstract class BatchNetHandler
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a(this);
+    BatchHandlerListPuller localBatchHandlerListPuller = this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller;
+    if (localBatchHandlerListPuller != null) {
+      localBatchHandlerListPuller.a(this);
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.b(this);
+    BatchHandlerListPuller localBatchHandlerListPuller = this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller;
+    if (localBatchHandlerListPuller != null) {
+      localBatchHandlerListPuller.b(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.BatchNetHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -49,46 +49,38 @@ public class PictureAdapter
   
   public boolean a(List<String> paramList)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (paramList == this.jdField_a_of_type_JavaUtilList) {
-      bool1 = true;
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (paramList == localList) {
+      return true;
     }
-    do
+    if (paramList != null)
     {
-      do
+      if (localList == null) {
+        return false;
+      }
+      if (paramList.size() != this.jdField_a_of_type_JavaUtilList.size()) {
+        return false;
+      }
+      int i = 0;
+      while (i < paramList.size())
       {
-        do
-        {
-          return bool1;
-          bool1 = bool2;
-        } while (paramList == null);
-        bool1 = bool2;
-      } while (this.jdField_a_of_type_JavaUtilList == null);
-      bool1 = bool2;
-    } while (paramList.size() != this.jdField_a_of_type_JavaUtilList.size());
-    int i = 0;
-    for (;;)
-    {
-      if (i >= paramList.size()) {
-        break label101;
+        if (!((String)paramList.get(i)).equals(this.jdField_a_of_type_JavaUtilList.get(i))) {
+          return false;
+        }
+        i += 1;
       }
-      bool1 = bool2;
-      if (!((String)paramList.get(i)).equals(this.jdField_a_of_type_JavaUtilList.get(i))) {
-        break;
-      }
-      i += 1;
+      return true;
     }
-    label101:
-    return true;
+    return false;
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList == null) {
       return 0;
     }
-    return Math.min(this.jdField_a_of_type_JavaUtilList.size(), 4);
+    return Math.min(localList.size(), 4);
   }
   
   public Object getItem(int paramInt)
@@ -109,38 +101,33 @@ public class PictureAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    View localView;
-    Object localObject;
+    PictureAdapter.ViewHolder localViewHolder;
     if (paramView == null)
     {
-      paramView = new PictureAdapter.ViewHolder();
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558934, null);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)localView.findViewById(2131378223));
-      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131369101);
-      localView.setTag(paramView);
-      localObject = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.post(new PictureAdapter.1(this, paramView, (String)localObject));
-      if ((this.jdField_a_of_type_Boolean) || (!a((String)localObject))) {
-        break label152;
-      }
-      paramView.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      localViewHolder = new PictureAdapter.ViewHolder();
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558832, null);
+      localViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131377638));
+      localViewHolder.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131368822);
+      paramView.setTag(localViewHolder);
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (PictureAdapter.ViewHolder)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label152:
-      paramView.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      localViewHolder = (PictureAdapter.ViewHolder)paramView.getTag();
     }
+    String str = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    localViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.post(new PictureAdapter.1(this, localViewHolder, str));
+    if ((!this.jdField_a_of_type_Boolean) && (a(str))) {
+      localViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    } else {
+      localViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.PictureAdapter
  * JD-Core Version:    0.7.0.1
  */

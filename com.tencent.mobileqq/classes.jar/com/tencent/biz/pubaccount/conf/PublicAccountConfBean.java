@@ -2,14 +2,17 @@ package com.tencent.biz.pubaccount.conf;
 
 import android.content.Context;
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountConfigUtil;
 import com.tencent.biz.pubaccount.util.api.IPublicAccountConfigUtil.PublicAccountConfigFolder;
 import com.tencent.biz.pubaccount.util.api.impl.PublicAccountConfigUtilImpl;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.config.IQStorageSafable;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.mobileqq.config.QStorage;
 import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
@@ -38,7 +41,10 @@ public class PublicAccountConfBean
     }
     catch (QStorageInstantiateException localQStorageInstantiateException)
     {
-      QLog.i("PublicAccountCenterUrlConfProcessor", 1, "loadConfig l :" + paramString, localQStorageInstantiateException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadConfig l :");
+      localStringBuilder.append(paramString);
+      QLog.i("PublicAccountCenterUrlConfProcessor", 1, localStringBuilder.toString(), localQStorageInstantiateException);
     }
     return null;
   }
@@ -59,23 +65,26 @@ public class PublicAccountConfBean
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
       if ((localAppRuntime instanceof QQAppInterface)) {
         SharedPreUtils.f(((QQAppInterface)localAppRuntime).getApplication(), this.jdField_a_of_type_JavaLangString);
       }
     }
-    while (!QLog.isColorLevel())
+    else if (QLog.isColorLevel())
     {
-      AppRuntime localAppRuntime;
-      return;
+      QLog.e("PublicAccountConfProcessor", 2, "updateEqqConfig fail");
     }
-    QLog.e("PublicAccountConfProcessor", 2, "updateEqqConfig fail");
   }
   
   public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountConfProcessor", 2, "parseConfigXml xml: " + paramString);
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("parseConfigXml xml: ");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.d("PublicAccountConfProcessor", 2, ((StringBuilder)localObject1).toString());
     }
     try
     {
@@ -85,18 +94,22 @@ public class PublicAccountConfBean
         paramString = paramString.trim();
         paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8"))).getElementsByTagName("public-account-folder");
         int j = paramString.getLength();
-        Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-        if ((localObject1 instanceof QQAppInterface))
+        Object localObject2 = BaseApplicationImpl.getApplication().getRuntime();
+        if ((localObject2 instanceof QQAppInterface))
         {
-          QQAppInterface localQQAppInterface = (QQAppInterface)localObject1;
-          localObject1 = ((AppRuntime)localObject1).getApplication();
+          localObject1 = (QQAppInterface)localObject2;
+          localObject2 = ((AppRuntime)localObject2).getApplication();
           this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(j);
           int i = 0;
           while (i < j)
           {
-            Object localObject2 = (Element)paramString.item(i);
-            localObject2 = new IPublicAccountConfigUtil.PublicAccountConfigFolder(localQQAppInterface, (Context)localObject1, Integer.parseInt(((Element)localObject2).getElementsByTagName("id").item(0).getFirstChild().getNodeValue()), ((Element)localObject2).getElementsByTagName("name").item(0).getFirstChild().getNodeValue(), ((Element)localObject2).getElementsByTagName("icon").item(0).getFirstChild().getNodeValue());
-            this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+            Object localObject3 = (Element)paramString.item(i);
+            int k = Integer.parseInt(((Element)localObject3).getElementsByTagName("id").item(0).getFirstChild().getNodeValue());
+            String str = ((Element)localObject3).getElementsByTagName("name").item(0).getFirstChild().getNodeValue();
+            localObject3 = ((Element)localObject3).getElementsByTagName("icon").item(0).getFirstChild().getNodeValue();
+            IPublicAccountConfigUtil.PublicAccountConfigFolder localPublicAccountConfigFolder = new IPublicAccountConfigUtil.PublicAccountConfigFolder();
+            ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).initPublicAccountConfigFolder(localPublicAccountConfigFolder, (AppInterface)localObject1, (Context)localObject2, k, str, (String)localObject3);
+            this.jdField_a_of_type_JavaUtilArrayList.add(localPublicAccountConfigFolder);
             i += 1;
           }
           this.jdField_a_of_type_Boolean = true;
@@ -126,7 +139,7 @@ public class PublicAccountConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.conf.PublicAccountConfBean
  * JD-Core Version:    0.7.0.1
  */

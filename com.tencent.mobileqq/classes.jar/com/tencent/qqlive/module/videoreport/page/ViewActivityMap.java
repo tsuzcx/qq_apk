@@ -31,13 +31,13 @@ class ViewActivityMap
   
   Activity getActivity(View paramView)
   {
-    if (paramView == null) {}
-    Context localContext;
-    do
-    {
+    if (paramView == null) {
       return null;
-      localContext = paramView.getContext();
-    } while (localContext == null);
+    }
+    Context localContext = paramView.getContext();
+    if (localContext == null) {
+      return null;
+    }
     WeakReference localWeakReference = (WeakReference)this.mViewActivityMap.get(localContext);
     paramView = localWeakReference;
     if (localWeakReference == null)
@@ -50,7 +50,7 @@ class ViewActivityMap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.page.ViewActivityMap
  * JD-Core Version:    0.7.0.1
  */

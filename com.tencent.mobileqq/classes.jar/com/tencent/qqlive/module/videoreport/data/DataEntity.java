@@ -8,10 +8,12 @@ import java.util.Map;
 public class DataEntity
 {
   @Nullable
-  IElementDynamicParams dynamicParams;
+  IElementDynamicParams elementDynamicParams;
   String elementId;
   Map<String, Object> elementParams;
   SparseArray<ElementDataEntity> elementVirtualParentParams;
+  @Nullable
+  IDynamicParams eventDynamicParams;
   Map<String, Object> innerParams;
   String pageContentId;
   String pageId;
@@ -26,12 +28,13 @@ public class DataEntity
     }
     ElementDataEntity localElementDataEntity = new ElementDataEntity();
     localElementDataEntity.elementId = paramElementDataEntity.elementId;
-    if (paramElementDataEntity.elementParams == null) {}
-    for (paramElementDataEntity = localObject;; paramElementDataEntity = new HashMap(paramElementDataEntity.elementParams))
-    {
-      localElementDataEntity.elementParams = paramElementDataEntity;
-      return localElementDataEntity;
+    if (paramElementDataEntity.elementParams == null) {
+      paramElementDataEntity = localObject;
+    } else {
+      paramElementDataEntity = new HashMap(paramElementDataEntity.elementParams);
     }
+    localElementDataEntity.elementParams = paramElementDataEntity;
+    return localElementDataEntity;
   }
   
   private SparseArray<ElementDataEntity> copyVirtualParentParams(SparseArray<ElementDataEntity> paramSparseArray)
@@ -51,57 +54,75 @@ public class DataEntity
   
   DataEntity copy()
   {
-    Object localObject2 = null;
     DataEntity localDataEntity = new DataEntity();
     localDataEntity.elementId = this.elementId;
-    if (this.elementParams == null)
-    {
+    Object localObject1 = this.elementParams;
+    Object localObject2 = null;
+    if (localObject1 == null) {
       localObject1 = null;
-      localDataEntity.elementParams = ((Map)localObject1);
-      localDataEntity.dynamicParams = this.dynamicParams;
-      localDataEntity.elementVirtualParentParams = copyVirtualParentParams(this.elementVirtualParentParams);
-      localDataEntity.pageId = this.pageId;
-      localDataEntity.pageContentId = this.pageContentId;
-      if (this.pageParams != null) {
-        break label127;
-      }
-      localObject1 = null;
-      label77:
-      localDataEntity.pageParams = ((Map)localObject1);
-      if (this.innerParams != null) {
-        break label142;
-      }
-      localObject1 = null;
-      label91:
-      localDataEntity.innerParams = ((Map)localObject1);
-      if (this.parentEntity != null) {
-        break label157;
-      }
+    } else {
+      localObject1 = new HashMap((Map)localObject1);
     }
-    label142:
-    label157:
-    for (Object localObject1 = localObject2;; localObject1 = this.parentEntity.copy())
-    {
-      localDataEntity.parentEntity = ((DataEntity)localObject1);
-      return localDataEntity;
-      localObject1 = new HashMap(this.elementParams);
-      break;
-      label127:
-      localObject1 = new HashMap(this.pageParams);
-      break label77;
-      localObject1 = new HashMap(this.innerParams);
-      break label91;
+    localDataEntity.elementParams = ((Map)localObject1);
+    localDataEntity.elementDynamicParams = this.elementDynamicParams;
+    localDataEntity.elementVirtualParentParams = copyVirtualParentParams(this.elementVirtualParentParams);
+    localDataEntity.pageId = this.pageId;
+    localDataEntity.pageContentId = this.pageContentId;
+    localObject1 = this.pageParams;
+    if (localObject1 == null) {
+      localObject1 = null;
+    } else {
+      localObject1 = new HashMap((Map)localObject1);
     }
+    localDataEntity.pageParams = ((Map)localObject1);
+    localObject1 = this.innerParams;
+    if (localObject1 == null) {
+      localObject1 = null;
+    } else {
+      localObject1 = new HashMap((Map)localObject1);
+    }
+    localDataEntity.innerParams = ((Map)localObject1);
+    localObject1 = this.parentEntity;
+    if (localObject1 == null) {
+      localObject1 = localObject2;
+    } else {
+      localObject1 = ((DataEntity)localObject1).copy();
+    }
+    localDataEntity.parentEntity = ((DataEntity)localObject1);
+    localDataEntity.eventDynamicParams = this.eventDynamicParams;
+    return localDataEntity;
+  }
+  
+  public IDynamicParams getEventDynamicParams()
+  {
+    return this.eventDynamicParams;
   }
   
   public String toString()
   {
-    return "DataEntity{elementId='" + this.elementId + '\'' + ", elementParams=" + this.elementParams + ", pageId='" + this.pageId + '\'' + ", pageContentId='" + this.pageContentId + '\'' + ", pageParams=" + this.pageParams + ", innerParams=" + this.innerParams + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DataEntity{elementId='");
+    localStringBuilder.append(this.elementId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", elementParams=");
+    localStringBuilder.append(this.elementParams);
+    localStringBuilder.append(", pageId='");
+    localStringBuilder.append(this.pageId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", pageContentId='");
+    localStringBuilder.append(this.pageContentId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", pageParams=");
+    localStringBuilder.append(this.pageParams);
+    localStringBuilder.append(", innerParams=");
+    localStringBuilder.append(this.innerParams);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.data.DataEntity
  * JD-Core Version:    0.7.0.1
  */

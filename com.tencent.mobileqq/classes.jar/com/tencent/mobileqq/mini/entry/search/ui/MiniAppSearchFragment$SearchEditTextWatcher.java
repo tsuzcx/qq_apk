@@ -29,18 +29,19 @@ class MiniAppSearchFragment$SearchEditTextWatcher
     if (localDataChangedListener != null) {
       localDataChangedListener.onTextChanged(paramCharSequence.toString());
     }
-    if (!TextUtils.isEmpty(paramCharSequence)) {
+    if (!TextUtils.isEmpty(paramCharSequence))
+    {
       ((MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_SEARCH_MANAGER)).sendSearchAppRequest(paramCharSequence.toString());
-    }
-    while (localDataChangedListener == null) {
       return;
     }
-    localDataChangedListener.onResultDataChanged(false);
+    if (localDataChangedListener != null) {
+      localDataChangedListener.onResultDataChanged(false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.ui.MiniAppSearchFragment.SearchEditTextWatcher
  * JD-Core Version:    0.7.0.1
  */

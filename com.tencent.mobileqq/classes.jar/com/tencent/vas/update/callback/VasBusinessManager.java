@@ -22,16 +22,13 @@ public abstract class VasBusinessManager
   {
     int j = paramArrayOfBaseUpdateBusiness.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       BaseUpdateBusiness localBaseUpdateBusiness = paramArrayOfBaseUpdateBusiness[i];
-      if ((localBaseUpdateBusiness == null) || (localBaseUpdateBusiness.getBid() <= 0L)) {}
-      for (;;)
-      {
-        i += 1;
-        break;
+      if ((localBaseUpdateBusiness != null) && (localBaseUpdateBusiness.getBid() > 0L)) {
         this.mNotificationModule.addObserver(Long.valueOf(localBaseUpdateBusiness.getBid()), localBaseUpdateBusiness);
       }
+      i += 1;
     }
   }
   
@@ -45,18 +42,24 @@ public abstract class VasBusinessManager
   
   public BaseUpdateBusiness getBusinessCallback(long paramLong)
   {
-    if (this.mNotificationModule.getObserver(Long.valueOf(paramLong)) == null) {
-      throw new NullPointerException("bid doesn't resiter or has been register , you need to reuse the same bid callback ， bid = " + paramLong);
+    if (this.mNotificationModule.getObserver(Long.valueOf(paramLong)) != null) {
+      return (BaseUpdateBusiness)this.mNotificationModule.getObserver(Long.valueOf(paramLong));
     }
-    return (BaseUpdateBusiness)this.mNotificationModule.getObserver(Long.valueOf(paramLong));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("bid doesn't resiter or has been register , you need to reuse the same bid callback ， bid = ");
+    localStringBuilder.append(paramLong);
+    throw new NullPointerException(localStringBuilder.toString());
   }
   
   public <T extends IBusinessCallback> T getBusinessCallback(Class<T> paramClass)
   {
-    if (this.mNotificationModule.getObserver(paramClass) == null) {
-      throw new NullPointerException("bid has been register , you need to reuse the same bid callback，class = " + paramClass);
+    if (this.mNotificationModule.getObserver(paramClass) != null) {
+      return this.mNotificationModule.getObserver(paramClass);
     }
-    return this.mNotificationModule.getObserver(paramClass);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("bid has been register , you need to reuse the same bid callback，class = ");
+    localStringBuilder.append(paramClass);
+    throw new NullPointerException(localStringBuilder.toString());
   }
   
   public void onDestory()
@@ -88,7 +91,7 @@ public abstract class VasBusinessManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.vas.update.callback.VasBusinessManager
  * JD-Core Version:    0.7.0.1
  */

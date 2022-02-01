@@ -50,36 +50,42 @@ public abstract class WSVerticalVideoHolder
     return null;
   }
   
-  private void b(int paramInt)
+  private int c(stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    WSPlayerUtils.PlayerLayoutParams localPlayerLayoutParams = new WSPlayerUtils.PlayerLayoutParams(a(), a(), paramstSimpleMetaFeed.video.width, paramstSimpleMetaFeed.video.height, b(), a());
+    int i = a(paramstSimpleMetaFeed);
+    paramstSimpleMetaFeed = new StringBuilder();
+    paramstSimpleMetaFeed.append("[WSVerticalVideoHolder.java][calculatePlayerLayoutRatio] videoScaleType:");
+    paramstSimpleMetaFeed.append(i);
+    paramstSimpleMetaFeed.append(", ");
+    paramstSimpleMetaFeed.append(localPlayerLayoutParams.toString());
+    WSLog.e("WSVerticalVideoHolder", paramstSimpleMetaFeed.toString());
+    if (i != -1)
+    {
+      if (i != 1)
+      {
+        if (i != 2) {
+          return WSPlayerUtils.b(localPlayerLayoutParams);
+        }
+        return WSPlayerUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.getBaseActivity(), localPlayerLayoutParams, new WSVerticalVideoHolder.1(this));
+      }
+      return WSPlayerUtils.b(localPlayerLayoutParams);
+    }
+    return WSPlayerUtils.a(localPlayerLayoutParams);
+  }
+  
+  private void c(int paramInt)
   {
     View localView = b();
     if (localView == null) {
       return;
     }
-    if ((paramInt == 0) || (paramInt == 1) || (paramInt == 2))
+    if ((paramInt != 0) && (paramInt != 1) && (paramInt != 2))
     {
-      localView.setVisibility(0);
+      localView.setVisibility(8);
       return;
     }
-    localView.setVisibility(8);
-  }
-  
-  private int c(stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    WSPlayerUtils.PlayerLayoutParams localPlayerLayoutParams = new WSPlayerUtils.PlayerLayoutParams(a(), a(), paramstSimpleMetaFeed.video.width, paramstSimpleMetaFeed.video.height, b(), a());
-    int i = a(paramstSimpleMetaFeed);
-    WSLog.e("WSVerticalVideoHolder", "[WSVerticalVideoHolder.java][calculatePlayerLayoutRatio] videoScaleType:" + i + ", " + localPlayerLayoutParams.toString());
-    switch (i)
-    {
-    case 0: 
-    default: 
-      return WSPlayerUtils.b(localPlayerLayoutParams);
-    case -1: 
-      return WSPlayerUtils.a(localPlayerLayoutParams);
-    case 1: 
-      return WSPlayerUtils.b(localPlayerLayoutParams);
-    }
-    return WSPlayerUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.getActivity(), localPlayerLayoutParams, new WSVerticalVideoHolder.1(this));
+    localView.setVisibility(0);
   }
   
   public int a()
@@ -105,6 +111,7 @@ public abstract class WSVerticalVideoHolder
     {
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(b());
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(c());
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.c(paramInt + 1);
     }
     if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView != null) {
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView.b(paramInt);
@@ -113,7 +120,7 @@ public abstract class WSVerticalVideoHolder
   
   public void a(WSVerticalItemData paramWSVerticalItemData)
   {
-    super.a(paramWSVerticalItemData);
+    super.bindData(paramWSVerticalItemData);
     if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView != null) {
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView.a(paramWSVerticalItemData);
     }
@@ -136,6 +143,13 @@ public abstract class WSVerticalVideoHolder
   
   public abstract void b();
   
+  public void b(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView.c(paramInt);
+    }
+  }
+  
   protected boolean b()
   {
     return true;
@@ -151,21 +165,21 @@ public abstract class WSVerticalVideoHolder
   public void d()
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView.c();
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView.d();
     }
   }
   
-  public void h()
+  public void onViewDetachedFromWindow()
   {
-    super.h();
+    super.onViewDetachedFromWindow();
     if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView.b();
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalVideoHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -13,119 +13,101 @@ class AVGameLottieHelper$1$1
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokevirtual 29	com/tencent/mobileqq/dinifly/LottieImageAsset:getFileName	()Ljava/lang/String;
+    //   1: invokevirtual 27	com/tencent/mobileqq/dinifly/LottieImageAsset:getFileName	()Ljava/lang/String;
     //   4: astore_1
-    //   5: new 31	java/lang/StringBuilder
+    //   5: new 29	java/lang/StringBuilder
     //   8: dup
-    //   9: invokespecial 32	java/lang/StringBuilder:<init>	()V
-    //   12: aload_0
-    //   13: getfield 12	com/tencent/avgame/gameroom/AVGameLottieHelper$1$1:a	Lcom/tencent/avgame/gameroom/AVGameLottieHelper$1;
-    //   16: getfield 37	com/tencent/avgame/gameroom/AVGameLottieHelper$1:a	Ljava/lang/String;
-    //   19: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   22: aload_1
-    //   23: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   26: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   29: astore_1
-    //   30: new 46	java/io/File
-    //   33: dup
-    //   34: aload_1
-    //   35: invokespecial 49	java/io/File:<init>	(Ljava/lang/String;)V
-    //   38: invokevirtual 53	java/io/File:exists	()Z
-    //   41: istore_2
-    //   42: iload_2
-    //   43: ifne +57 -> 100
-    //   46: invokestatic 58	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   49: ifeq +37 -> 86
-    //   52: ldc 60
-    //   54: iconst_2
-    //   55: new 31	java/lang/StringBuilder
-    //   58: dup
-    //   59: invokespecial 32	java/lang/StringBuilder:<init>	()V
-    //   62: ldc 62
-    //   64: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: iload_2
-    //   68: invokevirtual 65	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   71: ldc 67
-    //   73: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   76: aload_1
-    //   77: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   80: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   83: invokestatic 71	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   86: iconst_0
-    //   87: ifeq +11 -> 98
-    //   90: new 73	java/lang/NullPointerException
-    //   93: dup
-    //   94: invokespecial 74	java/lang/NullPointerException:<init>	()V
-    //   97: athrow
-    //   98: aconst_null
-    //   99: areturn
-    //   100: aload_1
-    //   101: invokestatic 79	com/tencent/avgame/gameroom/AVGameLottieHelper:a	(Ljava/lang/String;)Landroid/graphics/Bitmap;
-    //   104: astore_3
-    //   105: iconst_0
-    //   106: ifeq +11 -> 117
-    //   109: new 73	java/lang/NullPointerException
-    //   112: dup
-    //   113: invokespecial 74	java/lang/NullPointerException:<init>	()V
-    //   116: athrow
-    //   117: aload_3
-    //   118: areturn
-    //   119: astore_1
-    //   120: ldc 60
-    //   122: iconst_2
-    //   123: ldc 81
-    //   125: aload_1
-    //   126: invokestatic 85	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   129: iconst_0
-    //   130: ifeq -32 -> 98
-    //   133: new 73	java/lang/NullPointerException
-    //   136: dup
-    //   137: invokespecial 74	java/lang/NullPointerException:<init>	()V
-    //   140: athrow
-    //   141: astore_1
-    //   142: aconst_null
-    //   143: areturn
-    //   144: astore_1
-    //   145: iconst_0
-    //   146: ifeq +11 -> 157
-    //   149: new 73	java/lang/NullPointerException
-    //   152: dup
-    //   153: invokespecial 74	java/lang/NullPointerException:<init>	()V
-    //   156: athrow
-    //   157: aload_1
-    //   158: athrow
-    //   159: astore_1
-    //   160: aconst_null
-    //   161: areturn
-    //   162: astore_1
-    //   163: goto -46 -> 117
-    //   166: astore_3
-    //   167: goto -10 -> 157
+    //   9: invokespecial 30	java/lang/StringBuilder:<init>	()V
+    //   12: astore_3
+    //   13: aload_3
+    //   14: aload_0
+    //   15: getfield 12	com/tencent/avgame/gameroom/AVGameLottieHelper$1$1:a	Lcom/tencent/avgame/gameroom/AVGameLottieHelper$1;
+    //   18: getfield 35	com/tencent/avgame/gameroom/AVGameLottieHelper$1:a	Ljava/lang/String;
+    //   21: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   24: pop
+    //   25: aload_3
+    //   26: aload_1
+    //   27: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: pop
+    //   31: aload_3
+    //   32: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   35: astore_1
+    //   36: new 44	java/io/File
+    //   39: dup
+    //   40: aload_1
+    //   41: invokespecial 47	java/io/File:<init>	(Ljava/lang/String;)V
+    //   44: invokevirtual 51	java/io/File:exists	()Z
+    //   47: istore_2
+    //   48: iload_2
+    //   49: ifne +55 -> 104
+    //   52: invokestatic 56	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   55: ifeq +74 -> 129
+    //   58: new 29	java/lang/StringBuilder
+    //   61: dup
+    //   62: invokespecial 30	java/lang/StringBuilder:<init>	()V
+    //   65: astore_3
+    //   66: aload_3
+    //   67: ldc 58
+    //   69: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   72: pop
+    //   73: aload_3
+    //   74: iload_2
+    //   75: invokevirtual 61	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   78: pop
+    //   79: aload_3
+    //   80: ldc 63
+    //   82: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   85: pop
+    //   86: aload_3
+    //   87: aload_1
+    //   88: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   91: pop
+    //   92: ldc 65
+    //   94: iconst_2
+    //   95: aload_3
+    //   96: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   99: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   102: aconst_null
+    //   103: areturn
+    //   104: aload_1
+    //   105: invokestatic 74	com/tencent/avgame/gameroom/AVGameLottieHelper:a	(Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   108: astore_1
+    //   109: aload_1
+    //   110: areturn
+    //   111: astore_1
+    //   112: goto +15 -> 127
+    //   115: astore_1
+    //   116: ldc 65
+    //   118: iconst_2
+    //   119: ldc 76
+    //   121: aload_1
+    //   122: invokestatic 80	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   125: aconst_null
+    //   126: areturn
+    //   127: aload_1
+    //   128: athrow
+    //   129: aconst_null
+    //   130: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	170	0	this	1
-    //   0	170	1	paramLottieImageAsset	com.tencent.mobileqq.dinifly.LottieImageAsset
-    //   41	27	2	bool	boolean
-    //   104	14	3	localBitmap	android.graphics.Bitmap
-    //   166	1	3	localException	java.lang.Exception
+    //   0	131	0	this	1
+    //   0	131	1	paramLottieImageAsset	com.tencent.mobileqq.dinifly.LottieImageAsset
+    //   47	28	2	bool	boolean
+    //   12	84	3	localStringBuilder	java.lang.StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   0	42	119	java/lang/Throwable
-    //   46	86	119	java/lang/Throwable
-    //   100	105	119	java/lang/Throwable
-    //   133	141	141	java/lang/Exception
-    //   0	42	144	finally
-    //   46	86	144	finally
-    //   100	105	144	finally
-    //   120	129	144	finally
-    //   90	98	159	java/lang/Exception
-    //   109	117	162	java/lang/Exception
-    //   149	157	166	java/lang/Exception
+    //   0	48	111	finally
+    //   52	102	111	finally
+    //   104	109	111	finally
+    //   116	125	111	finally
+    //   0	48	115	java/lang/Throwable
+    //   52	102	115	java/lang/Throwable
+    //   104	109	115	java/lang/Throwable
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.AVGameLottieHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

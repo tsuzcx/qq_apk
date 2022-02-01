@@ -3,6 +3,7 @@ package com.tencent.tkd.comment.publisher.qq.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
+import com.tencent.tkd.comment.publisher.qq.bridge.QQUrlImageBridge;
 import com.tencent.tkd.comment.publisher.qq.model.TkdCommentLinkData;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,6 +14,7 @@ public class TkdCommentLinkView
 {
   private List<TkdCommentLinkData> data;
   private TkdCommentLinkView.OnLinkDeleteLinstener linkDeleteLinstener;
+  public QQUrlImageBridge urlImageBridge;
   
   public TkdCommentLinkView(Context paramContext)
   {
@@ -40,10 +42,11 @@ public class TkdCommentLinkView
   
   public List<TkdCommentLinkData> getData()
   {
-    if (this.data == null) {
+    List localList = this.data;
+    if (localList == null) {
       return Collections.emptyList();
     }
-    return Collections.unmodifiableList(this.data);
+    return Collections.unmodifiableList(localList);
   }
   
   public TkdCommentLinkView.OnLinkDeleteLinstener getLinkDeleteLinstener()
@@ -58,7 +61,7 @@ public class TkdCommentLinkView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.widget.TkdCommentLinkView
  * JD-Core Version:    0.7.0.1
  */

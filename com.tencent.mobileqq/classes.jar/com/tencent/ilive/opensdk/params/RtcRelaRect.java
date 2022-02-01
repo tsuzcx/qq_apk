@@ -19,12 +19,20 @@ public class RtcRelaRect
   
   public String toString()
   {
-    return " " + this.x + "," + this.y + "," + this.w + "," + this.h;
+    StringBuilder localStringBuilder = new StringBuilder(" ");
+    localStringBuilder.append(this.x);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.y);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.w);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.h);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.opensdk.params.RtcRelaRect
  * JD-Core Version:    0.7.0.1
  */

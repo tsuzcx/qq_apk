@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.activity.springfestival.entry;
 
 import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.springfestival.entry.model.ZipRes;
-import java.util.List;
 import org.jetbrains.annotations.Nullable;
 
 public abstract interface IPreloadRes
@@ -18,8 +16,6 @@ public abstract interface IPreloadRes
   
   public abstract void a(IPreloadRes.OnDownloadCallback paramOnDownloadCallback);
   
-  public abstract boolean a(List<ZipRes> paramList, int paramInt);
-  
   @Nullable
   public abstract String b(String paramString);
   
@@ -29,7 +25,7 @@ public abstract interface IPreloadRes
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.IPreloadRes
  * JD-Core Version:    0.7.0.1
  */

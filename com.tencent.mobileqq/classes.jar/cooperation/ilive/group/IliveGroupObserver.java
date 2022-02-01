@@ -14,39 +14,38 @@ public class IliveGroupObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    Object localObject2 = null;
-    switch (paramInt)
-    {
-    }
-    Object[] arrayOfObject;
-    do
-    {
+    if (paramInt != 1) {
       return;
-      arrayOfObject = (Object[])paramObject;
-    } while (arrayOfObject == null);
-    if ((arrayOfObject.length > 1) && (arrayOfObject[0] != null) && ((arrayOfObject[0] instanceof String))) {}
-    for (paramObject = (String)arrayOfObject[0];; paramObject = null)
+    }
+    Object[] arrayOfObject = (Object[])paramObject;
+    if (arrayOfObject == null) {
+      return;
+    }
+    paramInt = arrayOfObject.length;
+    Object localObject2 = null;
+    if ((paramInt > 1) && (arrayOfObject[0] != null) && ((arrayOfObject[0] instanceof String))) {
+      paramObject = (String)arrayOfObject[0];
+    } else {
+      paramObject = null;
+    }
+    Object localObject1 = localObject2;
+    if (arrayOfObject.length == 2)
     {
-      Object localObject1 = localObject2;
-      if (arrayOfObject.length == 2)
+      localObject1 = localObject2;
+      if (arrayOfObject[1] != null)
       {
         localObject1 = localObject2;
-        if (arrayOfObject[1] != null)
-        {
-          localObject1 = localObject2;
-          if ((arrayOfObject[1] instanceof IliveGroupTipsEntity)) {
-            localObject1 = (IliveGroupTipsEntity)arrayOfObject[1];
-          }
+        if ((arrayOfObject[1] instanceof IliveGroupTipsEntity)) {
+          localObject1 = (IliveGroupTipsEntity)arrayOfObject[1];
         }
       }
-      ThreadManagerV2.getUIHandlerV2().post(new IliveGroupObserver.1(this, paramObject, (IliveGroupTipsEntity)localObject1));
-      return;
     }
+    ThreadManagerV2.getUIHandlerV2().post(new IliveGroupObserver.1(this, paramObject, (IliveGroupTipsEntity)localObject1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.group.IliveGroupObserver
  * JD-Core Version:    0.7.0.1
  */

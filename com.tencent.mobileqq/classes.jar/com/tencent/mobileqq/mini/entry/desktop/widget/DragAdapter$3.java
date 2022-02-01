@@ -10,14 +10,15 @@ class DragAdapter$3
   
   public void run()
   {
-    if (this.val$tempDragVh != null) {
-      this.val$tempDragVh.itemView.setAlpha(1.0F);
+    RecyclerView.ViewHolder localViewHolder = this.val$tempDragVh;
+    if (localViewHolder != null) {
+      localViewHolder.itemView.setAlpha(1.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.widget.DragAdapter.3
  * JD-Core Version:    0.7.0.1
  */

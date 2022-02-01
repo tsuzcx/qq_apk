@@ -7,7 +7,7 @@ import java.util.List;
 public class PtuToolsInitializer
   extends Feature
 {
-  private static final String TAG = PtuToolsInitializer.class.getSimpleName();
+  private static final String TAG = "PtuToolsInitializer";
   private static final SharedLibraryInfo[] sharedLibraries = { new SharedLibraryInfo("pitu_tools"), new SharedLibraryInfo("pitu_device") };
   
   protected boolean destroyImpl()
@@ -37,7 +37,7 @@ public class PtuToolsInitializer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.initializer.PtuToolsInitializer
  * JD-Core Version:    0.7.0.1
  */

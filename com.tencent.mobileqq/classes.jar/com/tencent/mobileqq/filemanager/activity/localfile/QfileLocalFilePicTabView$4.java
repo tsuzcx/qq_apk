@@ -20,21 +20,17 @@ class QfileLocalFilePicTabView$4
   
   public void a(int paramInt1, int paramInt2)
   {
-    boolean bool = false;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_Int = -2147483648;
     this.b = 2147483647;
     FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getChild(paramInt1, paramInt2);
-    if (localFileInfo == null) {}
-    do
-    {
+    if (localFileInfo == null) {
       return;
-      if (!FMDataCache.a(localFileInfo)) {
-        bool = true;
-      }
-      this.jdField_a_of_type_Boolean = bool;
-    } while (!QfileLocalFilePicTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView, localFileInfo, this.jdField_a_of_type_Boolean));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.p();
+    }
+    this.jdField_a_of_type_Boolean = (FMDataCache.a(localFileInfo) ^ true);
+    if (QfileLocalFilePicTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView, localFileInfo, this.jdField_a_of_type_Boolean)) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.p();
+    }
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -42,49 +38,40 @@ class QfileLocalFilePicTabView$4
     if (paramInt1 != paramInt3) {
       return;
     }
-    paramInt3 = Math.min(paramInt2, paramInt4);
-    int i = Math.max(paramInt2, paramInt4);
+    int i = Math.min(paramInt2, paramInt4);
+    int j = Math.max(paramInt2, paramInt4);
     if (paramInt4 < paramInt2) {
       this.b = Math.min(paramInt4, this.b);
+    } else {
+      this.jdField_a_of_type_Int = Math.max(paramInt4, this.jdField_a_of_type_Int);
+    }
+    paramInt2 = i;
+    QfileLocalFilePicTabView localQfileLocalFilePicTabView;
+    while (paramInt2 <= j)
+    {
+      localQfileLocalFilePicTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView;
+      QfileLocalFilePicTabView.a(localQfileLocalFilePicTabView, (FileInfo)localQfileLocalFilePicTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getChild(paramInt1, paramInt2), this.jdField_a_of_type_Boolean);
+      paramInt2 += 1;
+    }
+    paramInt2 = this.b;
+    for (;;)
+    {
+      paramInt3 = j;
+      if (paramInt2 >= i) {
+        break;
+      }
+      localQfileLocalFilePicTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView;
+      QfileLocalFilePicTabView.a(localQfileLocalFilePicTabView, (FileInfo)localQfileLocalFilePicTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getChild(paramInt1, paramInt2), this.jdField_a_of_type_Boolean ^ true);
+      paramInt2 += 1;
     }
     for (;;)
     {
-      paramInt2 = paramInt3;
-      while (paramInt2 <= i)
-      {
-        QfileLocalFilePicTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView, (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getChild(paramInt1, paramInt2), this.jdField_a_of_type_Boolean);
-        paramInt2 += 1;
-      }
-      this.jdField_a_of_type_Int = Math.max(paramInt4, this.jdField_a_of_type_Int);
-    }
-    paramInt2 = this.b;
-    QfileLocalFilePicTabView localQfileLocalFilePicTabView;
-    FileInfo localFileInfo;
-    boolean bool;
-    if (paramInt2 < paramInt3)
-    {
-      localQfileLocalFilePicTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView;
-      localFileInfo = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getChild(paramInt1, paramInt2);
-      if (!this.jdField_a_of_type_Boolean) {}
-      for (bool = true;; bool = false)
-      {
-        QfileLocalFilePicTabView.a(localQfileLocalFilePicTabView, localFileInfo, bool);
-        paramInt2 += 1;
+      paramInt3 += 1;
+      if (paramInt3 > this.jdField_a_of_type_Int) {
         break;
       }
-    }
-    paramInt2 = i + 1;
-    if (paramInt2 <= this.jdField_a_of_type_Int)
-    {
       localQfileLocalFilePicTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView;
-      localFileInfo = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getChild(paramInt1, paramInt2);
-      if (!this.jdField_a_of_type_Boolean) {}
-      for (bool = true;; bool = false)
-      {
-        QfileLocalFilePicTabView.a(localQfileLocalFilePicTabView, localFileInfo, bool);
-        paramInt2 += 1;
-        break;
-      }
+      QfileLocalFilePicTabView.a(localQfileLocalFilePicTabView, (FileInfo)localQfileLocalFilePicTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getChild(paramInt1, paramInt3), this.jdField_a_of_type_Boolean ^ true);
     }
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.p();
   }
@@ -112,7 +99,7 @@ class QfileLocalFilePicTabView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView.4
  * JD-Core Version:    0.7.0.1
  */

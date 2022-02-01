@@ -32,13 +32,15 @@ public final class ilive_feeds_tmem$FeedsTmem
   
   static
   {
+    Integer localInteger1 = Integer.valueOf(0);
+    Integer localInteger2 = Integer.valueOf(1);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50, 58, 64, 72, 82, 90, 98, 104, 112, 122, 128 }, new String[] { "publish_uin", "create_time", "feed_type", "feed_source", "feed_status", "feeds_id", "feed_info", "view_times", "up_status", "pic_info", "live_info", "chang_info", "nowid", "bg_color", "lbs_info", "local_video_flag" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, null, Integer.valueOf(0), Integer.valueOf(1), null, null, null, Long.valueOf(0L), Integer.valueOf(0), null, Integer.valueOf(0) }, FeedsTmem.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50, 58, 64, 72, 82, 90, 98, 104, 112, 122, 128 }, new String[] { "publish_uin", "create_time", "feed_type", "feed_source", "feed_status", "feeds_id", "feed_info", "view_times", "up_status", "pic_info", "live_info", "chang_info", "nowid", "bg_color", "lbs_info", "local_video_flag" }, new Object[] { Long.valueOf(0L), localInteger1, localInteger2, localInteger1, localInteger1, localByteStringMicro, null, localInteger1, localInteger2, null, null, null, Long.valueOf(0L), localInteger1, null, localInteger1 }, FeedsTmem.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_tmem.FeedsTmem
  * JD-Core Version:    0.7.0.1
  */

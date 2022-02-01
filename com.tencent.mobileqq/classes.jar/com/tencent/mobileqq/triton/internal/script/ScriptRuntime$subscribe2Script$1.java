@@ -14,19 +14,22 @@ final class ScriptRuntime$subscribe2Script$1
     try
     {
       ScriptRuntime.Companion.access$nativeSubscribe2Script(ScriptRuntime.Companion, ScriptRuntime.access$getNativeHandle$p(this.this$0), "WeixinJSBridge.subscribeHandler", this.$eventName, this.$params);
-      Unit localUnit1 = Unit.INSTANCE;
+      localUnit = Unit.INSTANCE;
       return;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      ScriptRuntime.Companion.access$nativeSubscribe2Script(ScriptRuntime.Companion, ScriptRuntime.access$getNativeHandle$p(this.this$0), "WeixinJSBridge.subscribeHandler", this.$eventName, this.$params);
-      Unit localUnit2 = Unit.INSTANCE;
+      Unit localUnit;
+      label28:
+      break label28;
     }
+    ScriptRuntime.Companion.access$nativeSubscribe2Script(ScriptRuntime.Companion, ScriptRuntime.access$getNativeHandle$p(this.this$0), "WeixinJSBridge.subscribeHandler", this.$eventName, this.$params);
+    localUnit = Unit.INSTANCE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.script.ScriptRuntime.subscribe2Script.1
  * JD-Core Version:    0.7.0.1
  */

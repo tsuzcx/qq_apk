@@ -15,30 +15,29 @@ class DetailCommentHelper$2
   {
     if (paramMotionEvent.getAction() == 0)
     {
-      if (DetailCommentHelper.a(this.a)) {
-        break label105;
+      if (!DetailCommentHelper.a(this.a))
+      {
+        paramView = this.a;
+        paramView.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(DetailCommentHelper.a(paramView), DetailCommentHelper.a(this.a), this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, DetailCommentHelper.a(this.a).jdField_a_of_type_Boolean);
+        DetailCommentHelper.a(this.a).jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
+        paramView = this.a;
+        boolean bool;
+        if (paramView.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView != null) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        DetailCommentHelper.a(paramView, bool);
+        return false;
       }
-      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(DetailCommentHelper.a(this.a), DetailCommentHelper.a(this.a), this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, DetailCommentHelper.a(this.a).jdField_a_of_type_Boolean);
-      DetailCommentHelper.a(this.a).jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
-      paramView = this.a;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
-        break label100;
-      }
+      this.a.b();
     }
-    label100:
-    for (boolean bool = true;; bool = false)
-    {
-      DetailCommentHelper.a(paramView, bool);
-      return false;
-    }
-    label105:
-    this.a.b();
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper.2
  * JD-Core Version:    0.7.0.1
  */

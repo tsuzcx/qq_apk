@@ -29,146 +29,134 @@ public class JsonConfig
   
   private void c()
   {
-    Object localObject1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("cmdConfig", null);
+    Object localObject1 = this.jdField_a_of_type_AndroidContentSharedPreferences;
+    Object localObject2 = null;
+    localObject1 = ((SharedPreferences)localObject1).getString("cmdConfig", null);
     if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
-    for (;;)
+    try
     {
-      try
-      {
-        localObject1 = new JSONObject((String)localObject1);
-        if (localObject1 != null) {
-          break label123;
-        }
-      }
-      catch (JSONException localJSONException1)
-      {
-        try
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("AuthorizeConfig", 2, "now read cmdConfig {\"*.qq.com\":[\"*\"],\"*.tencent.com\":[\"*\"],\"*.soso.com\":[\"*\"],\"*.paipai.com\":[\"*\"],\"*.tenpay.com\":[\"*\"],\"*.yixun.com\":[\"*\"],\"*.myapp.com\":[\"*\"],\"pub.idqqimg.com\":[\"*\"],\"*.qzone.com\":[\"*\"],\"*.weishi.com\":[\"*\"],\"*.weiyun.com\":[\"*\"],\"*\":[\"InputClickEvent.onClickInputCtrl\",\"HtmlViewer.showHTML\",\"Troop.addGroupApp\", \"deviceapp.*\"]}");
-          }
-          JSONObject localJSONObject = new JSONObject("{\"*.qq.com\":[\"*\"],\"*.tencent.com\":[\"*\"],\"*.soso.com\":[\"*\"],\"*.paipai.com\":[\"*\"],\"*.tenpay.com\":[\"*\"],\"*.yixun.com\":[\"*\"],\"*.myapp.com\":[\"*\"],\"pub.idqqimg.com\":[\"*\"],\"*.qzone.com\":[\"*\"],\"*.weishi.com\":[\"*\"],\"*.weiyun.com\":[\"*\"],\"*\":[\"InputClickEvent.onClickInputCtrl\",\"HtmlViewer.showHTML\",\"Troop.addGroupApp\", \"deviceapp.*\"]}");
-          localObject1 = localJSONObject;
-          if (localObject1 != null) {
-            break label126;
-          }
-          QLog.e("AuthorizeConfig", 1, "cmdJsonObject is null!");
-          return;
-        }
-        catch (JSONException localJSONException2)
-        {
-          if (!QLog.isColorLevel()) {
-            break label123;
-          }
-          QLog.d("AuthorizeConfig", 2, "Decode mCmdConfig error");
-        }
-        localJSONException1 = localJSONException1;
-        if (QLog.isColorLevel()) {
-          QLog.d("AuthorizeConfig", 2, "Decode mCmdConfig error");
-        }
-        localObject2 = null;
-        continue;
-      }
+      localObject1 = new JSONObject((String)localObject1);
+    }
+    catch (JSONException localJSONException1)
+    {
+      label37:
+      break label37;
+    }
+    localObject1 = localObject2;
+    if (QLog.isColorLevel())
+    {
+      QLog.d("AuthorizeConfig", 2, "Decode mCmdConfig error");
+      localObject1 = localObject2;
+      break label71;
       QLog.e("AuthorizeConfig", 2, "now error! old mPref have no value for cmdConfig!");
-      Object localObject2 = null;
-      continue;
-      label123:
-      continue;
-      label126:
-      JSONArray localJSONArray1 = localObject2.names();
-      if ((localJSONArray1 == null) || (localJSONArray1.length() == 0))
-      {
-        QLog.e("AuthorizeConfig", 1, "domain Name are all empty!");
-        return;
+      localObject1 = localObject2;
+    }
+    label71:
+    if (localObject1 == null) {}
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("AuthorizeConfig", 2, "now read cmdConfig {\"*.qq.com\":[\"*\"],\"*.tencent.com\":[\"*\"],\"*.soso.com\":[\"*\"],\"*.paipai.com\":[\"*\"],\"*.tenpay.com\":[\"*\"],\"*.yixun.com\":[\"*\"],\"*.myapp.com\":[\"*\"],\"pub.idqqimg.com\":[\"*\"],\"*.qzone.com\":[\"*\"],\"*.weishi.com\":[\"*\"],\"*.weiyun.com\":[\"*\"],\"*\":[\"InputClickEvent.onClickInputCtrl\",\"HtmlViewer.showHTML\",\"Troop.addGroupApp\", \"deviceapp.*\"]}");
       }
+      localObject2 = new JSONObject("{\"*.qq.com\":[\"*\"],\"*.tencent.com\":[\"*\"],\"*.soso.com\":[\"*\"],\"*.paipai.com\":[\"*\"],\"*.tenpay.com\":[\"*\"],\"*.yixun.com\":[\"*\"],\"*.myapp.com\":[\"*\"],\"pub.idqqimg.com\":[\"*\"],\"*.qzone.com\":[\"*\"],\"*.weishi.com\":[\"*\"],\"*.weiyun.com\":[\"*\"],\"*\":[\"InputClickEvent.onClickInputCtrl\",\"HtmlViewer.showHTML\",\"Troop.addGroupApp\", \"deviceapp.*\"]}");
+      localObject1 = localObject2;
+    }
+    catch (JSONException localJSONException2)
+    {
+      label106:
+      int i;
+      break label106;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AuthorizeConfig", 2, "Decode mCmdConfig error");
+    }
+    if (localObject1 == null)
+    {
+      QLog.e("AuthorizeConfig", 1, "cmdJsonObject is null!");
+      return;
+    }
+    localObject2 = ((JSONObject)localObject1).names();
+    if ((localObject2 != null) && (((JSONArray)localObject2).length() != 0))
+    {
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      int i = 0;
-      while (i < localJSONArray1.length())
+      i = 0;
+      while (i < ((JSONArray)localObject2).length())
       {
         HashSet localHashSet = new HashSet(20);
-        String str = localJSONArray1.optString(i);
-        JSONArray localJSONArray2 = localObject2.optJSONArray(str);
-        if ((localJSONArray2 != null) && (localJSONArray2.length() > 0))
+        String str = ((JSONArray)localObject2).optString(i);
+        JSONArray localJSONArray = ((JSONObject)localObject1).optJSONArray(str);
+        if ((localJSONArray != null) && (localJSONArray.length() > 0))
         {
           int j = 0;
-          while (j < localJSONArray2.length())
+          while (j < localJSONArray.length())
           {
-            localHashSet.add(localJSONArray2.optString(j));
+            localHashSet.add(localJSONArray.optString(j));
             j += 1;
           }
           this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localHashSet);
         }
         i += 1;
       }
+      return;
     }
+    QLog.e("AuthorizeConfig", 1, "domain Name are all empty!");
   }
   
   private void d()
   {
     Object localObject1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("cmd_config_new", "");
-    if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
-    for (;;)
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      int i;
-      Object localObject3;
-      int j;
-      String str;
+      Object localObject2;
       try
       {
         localObject1 = new JSONArray((String)localObject1);
-        if ((localObject1 == null) || (((JSONArray)localObject1).length() <= 0)) {
-          break label221;
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-        int m = ((JSONArray)localObject1).length();
-        i = 0;
-        if (i >= m) {
-          break label220;
-        }
-        localObject3 = ((JSONArray)localObject1).optJSONObject(i);
-        JSONArray localJSONArray1 = ((JSONObject)localObject3).optJSONArray("api");
-        JSONArray localJSONArray2 = ((JSONObject)localObject3).optJSONArray("match");
-        int n = localJSONArray2.length();
-        j = 0;
-        if (j >= n) {
-          break label249;
-        }
-        str = localJSONArray2.optString(j);
-        Set localSet = (Set)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
-        localObject3 = localSet;
-        if (localSet == null) {
-          localObject3 = new HashSet(20);
-        }
-        int i1 = localJSONArray1.length();
-        int k = 0;
-        if (k >= i1) {
-          break label230;
-        }
-        ((Set)localObject3).add(localJSONArray1.optString(k));
-        k += 1;
-        continue;
       }
       catch (Exception localException)
       {
         if (QLog.isColorLevel()) {
           QLog.e("AuthorizeConfig", 2, "Js Api Config JSONArray error!", localException);
         }
-        Object localObject2 = null;
-        continue;
+        localObject2 = null;
       }
-      QLog.e("AuthorizeConfig", 1, "get Js Api Config From Pref is empty!");
-      label220:
-      return;
-      label221:
+      if ((localObject2 != null) && (localObject2.length() > 0))
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+        int m = localObject2.length();
+        int i = 0;
+        while (i < m)
+        {
+          Object localObject3 = localObject2.optJSONObject(i);
+          JSONArray localJSONArray1 = ((JSONObject)localObject3).optJSONArray("api");
+          JSONArray localJSONArray2 = ((JSONObject)localObject3).optJSONArray("match");
+          int n = localJSONArray2.length();
+          int j = 0;
+          while (j < n)
+          {
+            String str = localJSONArray2.optString(j);
+            Set localSet = (Set)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+            localObject3 = localSet;
+            if (localSet == null) {
+              localObject3 = new HashSet(20);
+            }
+            int i1 = localJSONArray1.length();
+            int k = 0;
+            while (k < i1)
+            {
+              ((Set)localObject3).add(localJSONArray1.optString(k));
+              k += 1;
+            }
+            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localObject3);
+            j += 1;
+          }
+          i += 1;
+        }
+        return;
+      }
       QLog.e("AuthorizeConfig", 1, "Js Api Config JSONArray From Pref is empty");
       return;
-      label230:
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localObject3);
-      j += 1;
-      continue;
-      label249:
-      i += 1;
     }
+    QLog.e("AuthorizeConfig", 1, "get Js Api Config From Pref is empty!");
   }
   
   public int a(String paramString1, String paramString2)
@@ -235,534 +223,861 @@ public class JsonConfig
   public String a(android.content.SharedPreferences.Editor paramEditor, String paramString)
   {
     // Byte code:
-    //   0: new 56	org/json/JSONObject
-    //   3: dup
-    //   4: aload_2
-    //   5: invokespecial 59	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   8: astore 10
-    //   10: ldc 126
-    //   12: astore 9
-    //   14: aload 10
-    //   16: ldc 212
-    //   18: invokevirtual 215	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   21: astore 12
-    //   23: new 14	java/util/concurrent/ConcurrentHashMap
-    //   26: dup
-    //   27: bipush 50
-    //   29: invokespecial 17	java/util/concurrent/ConcurrentHashMap:<init>	(I)V
-    //   32: astore 11
-    //   34: aload 12
-    //   36: ifnull +165 -> 201
-    //   39: aload 12
-    //   41: invokevirtual 94	org/json/JSONArray:length	()I
-    //   44: ifle +157 -> 201
-    //   47: aload_1
-    //   48: ldc 124
-    //   50: aload 12
-    //   52: invokevirtual 218	org/json/JSONArray:toString	()Ljava/lang/String;
-    //   55: invokeinterface 224 3 0
-    //   60: pop
-    //   61: aload_1
-    //   62: ldc 42
-    //   64: ldc 126
-    //   66: invokeinterface 224 3 0
-    //   71: pop
-    //   72: aload 12
-    //   74: invokevirtual 94	org/json/JSONArray:length	()I
-    //   77: istore 6
-    //   79: iconst_0
-    //   80: istore_3
-    //   81: iload_3
-    //   82: iload 6
-    //   84: if_icmpge +145 -> 229
-    //   87: aload 12
-    //   89: iload_3
-    //   90: invokevirtual 131	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
-    //   93: astore_2
-    //   94: aload_2
-    //   95: ldc 133
-    //   97: invokevirtual 110	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   100: astore 13
-    //   102: aload_2
-    //   103: ldc 135
-    //   105: invokevirtual 110	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   108: astore 14
-    //   110: aload 14
-    //   112: invokevirtual 94	org/json/JSONArray:length	()I
-    //   115: istore 7
-    //   117: iconst_0
-    //   118: istore 4
-    //   120: iload 4
-    //   122: iload 7
-    //   124: if_icmpge +760 -> 884
-    //   127: aload 14
-    //   129: iload 4
-    //   131: invokevirtual 226	org/json/JSONArray:getString	(I)Ljava/lang/String;
-    //   134: astore 15
-    //   136: aload 11
-    //   138: aload 15
-    //   140: invokevirtual 139	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   143: checkcast 112	java/util/Set
-    //   146: astore_2
-    //   147: aload_2
-    //   148: ifnonnull +731 -> 879
-    //   151: new 101	java/util/HashSet
-    //   154: dup
-    //   155: bipush 20
-    //   157: invokespecial 102	java/util/HashSet:<init>	(I)V
-    //   160: astore_2
-    //   161: iconst_0
-    //   162: istore 5
-    //   164: aload 13
-    //   166: invokevirtual 94	org/json/JSONArray:length	()I
-    //   169: istore 8
-    //   171: iload 5
-    //   173: iload 8
-    //   175: if_icmpge +36 -> 211
-    //   178: aload_2
-    //   179: aload 13
-    //   181: iload 5
-    //   183: invokevirtual 226	org/json/JSONArray:getString	(I)Ljava/lang/String;
-    //   186: invokeinterface 116 2 0
-    //   191: pop
-    //   192: iload 5
-    //   194: iconst_1
-    //   195: iadd
-    //   196: istore 5
-    //   198: goto -27 -> 171
-    //   201: ldc 67
-    //   203: iconst_1
-    //   204: ldc 228
-    //   206: invokestatic 73	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   209: aconst_null
-    //   210: areturn
-    //   211: aload 11
-    //   213: aload 15
-    //   215: aload_2
-    //   216: invokevirtual 120	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   219: pop
-    //   220: iload 4
-    //   222: iconst_1
-    //   223: iadd
-    //   224: istore 4
-    //   226: goto -106 -> 120
-    //   229: invokestatic 234	android/os/Message:obtain	()Landroid/os/Message;
-    //   232: astore_2
-    //   233: aload_2
-    //   234: iconst_1
-    //   235: putfield 238	android/os/Message:what	I
-    //   238: aload_2
-    //   239: aload 11
-    //   241: putfield 242	android/os/Message:obj	Ljava/lang/Object;
-    //   244: aload_0
-    //   245: getfield 32	com/tencent/biz/authorize/JsonConfig:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
-    //   248: aload_2
-    //   249: invokevirtual 248	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
-    //   252: pop
-    //   253: aload 9
-    //   255: astore_2
-    //   256: aload_1
-    //   257: ldc 250
-    //   259: aload 10
-    //   261: ldc 250
-    //   263: invokevirtual 215	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   266: invokevirtual 218	org/json/JSONArray:toString	()Ljava/lang/String;
-    //   269: invokeinterface 224 3 0
-    //   274: pop
-    //   275: aload_1
-    //   276: ldc 207
-    //   278: aload 10
-    //   280: ldc 252
-    //   282: invokevirtual 256	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   285: invokevirtual 257	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   288: invokeinterface 224 3 0
-    //   293: pop
-    //   294: aload_1
-    //   295: ldc_w 259
-    //   298: aload 10
-    //   300: ldc_w 261
-    //   303: invokevirtual 256	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   306: invokevirtual 257	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   309: invokeinterface 224 3 0
-    //   314: pop
-    //   315: aload_1
-    //   316: ldc_w 263
-    //   319: aload 10
-    //   321: ldc_w 263
-    //   324: invokevirtual 256	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   327: invokevirtual 257	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   330: invokeinterface 224 3 0
-    //   335: pop
-    //   336: new 56	org/json/JSONObject
-    //   339: dup
-    //   340: invokespecial 265	org/json/JSONObject:<init>	()V
-    //   343: astore 9
-    //   345: aload 10
-    //   347: ldc_w 267
-    //   350: invokevirtual 215	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   353: astore 11
-    //   355: aload 11
-    //   357: invokevirtual 94	org/json/JSONArray:length	()I
-    //   360: istore 5
-    //   362: iconst_0
-    //   363: istore_3
-    //   364: iload_3
-    //   365: iload 5
-    //   367: if_icmpge +268 -> 635
-    //   370: aload 11
-    //   372: iload_3
-    //   373: invokevirtual 269	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   376: astore 13
-    //   378: aload 13
-    //   380: ldc_w 271
-    //   383: invokevirtual 215	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   386: astore 12
-    //   388: aload 13
-    //   390: ldc 135
-    //   392: invokevirtual 215	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   395: astore 13
-    //   397: iconst_0
-    //   398: istore 4
-    //   400: aload 13
-    //   402: invokevirtual 94	org/json/JSONArray:length	()I
-    //   405: istore 6
-    //   407: iload 4
-    //   409: iload 6
-    //   411: if_icmpge +217 -> 628
-    //   414: aload 9
-    //   416: aload 13
-    //   418: iload 4
-    //   420: invokevirtual 226	org/json/JSONArray:getString	(I)Ljava/lang/String;
-    //   423: aload 12
-    //   425: invokevirtual 274	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   428: pop
-    //   429: iload 4
-    //   431: iconst_1
-    //   432: iadd
-    //   433: istore 4
-    //   435: goto -28 -> 407
-    //   438: astore_2
-    //   439: new 276	java/lang/StringBuilder
-    //   442: dup
-    //   443: invokespecial 277	java/lang/StringBuilder:<init>	()V
-    //   446: ldc 126
-    //   448: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   451: aload_2
-    //   452: invokevirtual 284	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   455: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   458: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   461: astore_2
-    //   462: goto -206 -> 256
-    //   465: astore_2
-    //   466: new 276	java/lang/StringBuilder
-    //   469: dup
-    //   470: invokespecial 277	java/lang/StringBuilder:<init>	()V
-    //   473: ldc 126
-    //   475: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   478: aload_2
-    //   479: invokevirtual 286	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   482: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   485: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   488: astore_2
-    //   489: goto -233 -> 256
-    //   492: astore 9
-    //   494: new 276	java/lang/StringBuilder
-    //   497: dup
-    //   498: invokespecial 277	java/lang/StringBuilder:<init>	()V
-    //   501: aload_2
-    //   502: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   505: ldc_w 288
-    //   508: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   511: aload 9
-    //   513: invokevirtual 289	org/json/JSONException:getMessage	()Ljava/lang/String;
-    //   516: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   519: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   522: astore_2
-    //   523: goto -248 -> 275
-    //   526: astore 9
-    //   528: new 276	java/lang/StringBuilder
-    //   531: dup
-    //   532: invokespecial 277	java/lang/StringBuilder:<init>	()V
-    //   535: aload_2
-    //   536: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   539: ldc_w 288
-    //   542: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   545: aload 9
-    //   547: invokevirtual 289	org/json/JSONException:getMessage	()Ljava/lang/String;
-    //   550: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   553: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   556: astore_2
-    //   557: goto -263 -> 294
-    //   560: astore 9
-    //   562: new 276	java/lang/StringBuilder
-    //   565: dup
-    //   566: invokespecial 277	java/lang/StringBuilder:<init>	()V
-    //   569: aload_2
-    //   570: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   573: ldc_w 288
-    //   576: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   579: aload 9
-    //   581: invokevirtual 289	org/json/JSONException:getMessage	()Ljava/lang/String;
-    //   584: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   587: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   590: astore_2
-    //   591: goto -276 -> 315
-    //   594: astore 9
-    //   596: new 276	java/lang/StringBuilder
-    //   599: dup
-    //   600: invokespecial 277	java/lang/StringBuilder:<init>	()V
-    //   603: aload_2
-    //   604: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   607: ldc_w 288
-    //   610: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   613: aload 9
-    //   615: invokevirtual 289	org/json/JSONException:getMessage	()Ljava/lang/String;
-    //   618: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   621: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   624: astore_2
-    //   625: goto -289 -> 336
-    //   628: iload_3
-    //   629: iconst_1
-    //   630: iadd
-    //   631: istore_3
-    //   632: goto -268 -> 364
-    //   635: aload_1
-    //   636: ldc_w 267
-    //   639: aload 9
-    //   641: invokevirtual 257	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   644: invokeinterface 224 3 0
-    //   649: pop
-    //   650: aload_1
-    //   651: ldc_w 291
-    //   654: aload 10
-    //   656: ldc_w 291
-    //   659: invokevirtual 295	org/json/JSONObject:getLong	(Ljava/lang/String;)J
-    //   662: invokeinterface 299 4 0
-    //   667: pop
-    //   668: getstatic 302	com/tencent/biz/AuthorizeConfig:a	[Ljava/lang/String;
-    //   671: astore 11
-    //   673: aload 11
-    //   675: arraylength
-    //   676: istore 4
-    //   678: iconst_0
-    //   679: istore_3
-    //   680: iload_3
-    //   681: iload 4
-    //   683: if_icmpge +199 -> 882
-    //   686: aload 11
-    //   688: iload_3
-    //   689: aaload
-    //   690: astore 12
-    //   692: aload 10
-    //   694: aload 12
-    //   696: invokevirtual 215	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   699: astore 13
-    //   701: aload_1
-    //   702: aload 12
-    //   704: aload 13
-    //   706: invokevirtual 218	org/json/JSONArray:toString	()Ljava/lang/String;
-    //   709: invokeinterface 224 3 0
-    //   714: pop
-    //   715: aload_2
-    //   716: astore 9
-    //   718: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   721: ifeq +44 -> 765
-    //   724: ldc 67
-    //   726: iconst_2
-    //   727: new 276	java/lang/StringBuilder
-    //   730: dup
-    //   731: invokespecial 277	java/lang/StringBuilder:<init>	()V
-    //   734: ldc_w 304
-    //   737: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   0: ldc 140
+    //   2: astore 14
+    //   4: ldc 212
+    //   6: astore 9
+    //   8: ldc 126
+    //   10: astore 18
+    //   12: new 56	org/json/JSONObject
+    //   15: dup
+    //   16: aload_2
+    //   17: invokespecial 59	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   20: astore 19
+    //   22: aload 14
+    //   24: astore 12
+    //   26: aload 9
+    //   28: astore 10
+    //   30: aload 14
+    //   32: astore 13
+    //   34: aload 9
+    //   36: astore 11
+    //   38: aload 19
+    //   40: ldc 214
+    //   42: invokevirtual 217	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   45: astore 15
+    //   47: aload 14
+    //   49: astore 12
+    //   51: aload 9
+    //   53: astore 10
+    //   55: aload 14
+    //   57: astore 13
+    //   59: aload 9
+    //   61: astore 11
+    //   63: new 14	java/util/concurrent/ConcurrentHashMap
+    //   66: dup
+    //   67: bipush 50
+    //   69: invokespecial 17	java/util/concurrent/ConcurrentHashMap:<init>	(I)V
+    //   72: astore 20
+    //   74: aload 15
+    //   76: ifnull +472 -> 548
+    //   79: aload 14
+    //   81: astore 12
+    //   83: aload 9
+    //   85: astore 10
+    //   87: aload 14
+    //   89: astore 13
+    //   91: aload 9
+    //   93: astore 11
+    //   95: aload 15
+    //   97: invokevirtual 94	org/json/JSONArray:length	()I
+    //   100: ifle +448 -> 548
+    //   103: aload 14
+    //   105: astore 12
+    //   107: aload 9
+    //   109: astore 10
+    //   111: aload 14
+    //   113: astore 13
+    //   115: aload 9
+    //   117: astore 11
+    //   119: aload_1
+    //   120: ldc 124
+    //   122: aload 15
+    //   124: invokevirtual 220	org/json/JSONArray:toString	()Ljava/lang/String;
+    //   127: invokeinterface 226 3 0
+    //   132: pop
+    //   133: aload 14
+    //   135: astore 12
+    //   137: aload 9
+    //   139: astore 10
+    //   141: aload 14
+    //   143: astore 13
+    //   145: aload 9
+    //   147: astore 11
+    //   149: aload_1
+    //   150: ldc 42
+    //   152: ldc 126
+    //   154: invokeinterface 226 3 0
+    //   159: pop
+    //   160: aload 14
+    //   162: astore 12
+    //   164: aload 9
+    //   166: astore 10
+    //   168: aload 14
+    //   170: astore 13
+    //   172: aload 9
+    //   174: astore 11
+    //   176: aload 15
+    //   178: invokevirtual 94	org/json/JSONArray:length	()I
+    //   181: istore_3
+    //   182: iconst_0
+    //   183: istore 4
+    //   185: aload 14
+    //   187: astore_2
+    //   188: iload 4
+    //   190: iload_3
+    //   191: if_icmpge +266 -> 457
+    //   194: aload_2
+    //   195: astore 12
+    //   197: aload 9
+    //   199: astore 10
+    //   201: aload_2
+    //   202: astore 13
+    //   204: aload 9
+    //   206: astore 11
+    //   208: aload 15
+    //   210: iload 4
+    //   212: invokevirtual 136	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
+    //   215: astore 14
+    //   217: aload_2
+    //   218: astore 12
+    //   220: aload 9
+    //   222: astore 10
+    //   224: aload_2
+    //   225: astore 13
+    //   227: aload 9
+    //   229: astore 11
+    //   231: aload 14
+    //   233: ldc 138
+    //   235: invokevirtual 108	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   238: astore 21
+    //   240: aload_2
+    //   241: astore 12
+    //   243: aload 9
+    //   245: astore 10
+    //   247: aload_2
+    //   248: astore 13
+    //   250: aload 9
+    //   252: astore 11
+    //   254: aload 14
+    //   256: aload_2
+    //   257: invokevirtual 108	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   260: astore 16
+    //   262: aload_2
+    //   263: astore 12
+    //   265: aload 9
+    //   267: astore 10
+    //   269: aload_2
+    //   270: astore 13
+    //   272: aload 9
+    //   274: astore 11
+    //   276: aload 16
+    //   278: invokevirtual 94	org/json/JSONArray:length	()I
+    //   281: istore 5
+    //   283: iconst_0
+    //   284: istore 6
+    //   286: iload 6
+    //   288: iload 5
+    //   290: if_icmpge +1123 -> 1413
+    //   293: aload_2
+    //   294: astore 12
+    //   296: aload 9
+    //   298: astore 10
+    //   300: aload_2
+    //   301: astore 13
+    //   303: aload 9
+    //   305: astore 11
+    //   307: aload 16
+    //   309: iload 6
+    //   311: invokevirtual 228	org/json/JSONArray:getString	(I)Ljava/lang/String;
+    //   314: astore 22
+    //   316: aload_2
+    //   317: astore 12
+    //   319: aload 9
+    //   321: astore 10
+    //   323: aload_2
+    //   324: astore 13
+    //   326: aload 9
+    //   328: astore 11
+    //   330: aload 20
+    //   332: aload 22
+    //   334: invokevirtual 144	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   337: checkcast 110	java/util/Set
+    //   340: astore 17
+    //   342: aload 17
+    //   344: ifnonnull +1036 -> 1380
+    //   347: new 99	java/util/HashSet
+    //   350: dup
+    //   351: bipush 20
+    //   353: invokespecial 100	java/util/HashSet:<init>	(I)V
+    //   356: astore 17
+    //   358: goto +3 -> 361
+    //   361: aload 9
+    //   363: astore 10
+    //   365: aload 21
+    //   367: invokevirtual 94	org/json/JSONArray:length	()I
+    //   370: istore 7
+    //   372: iconst_0
+    //   373: istore 8
+    //   375: iload 8
+    //   377: iload 7
+    //   379: if_icmpge +41 -> 420
+    //   382: aload_2
+    //   383: astore 13
+    //   385: aload 10
+    //   387: astore 11
+    //   389: aload_2
+    //   390: astore 14
+    //   392: aload 10
+    //   394: astore 12
+    //   396: aload 17
+    //   398: aload 21
+    //   400: iload 8
+    //   402: invokevirtual 228	org/json/JSONArray:getString	(I)Ljava/lang/String;
+    //   405: invokeinterface 114 2 0
+    //   410: pop
+    //   411: iload 8
+    //   413: iconst_1
+    //   414: iadd
+    //   415: istore 8
+    //   417: goto -42 -> 375
+    //   420: aload_2
+    //   421: astore 13
+    //   423: aload 10
+    //   425: astore 11
+    //   427: aload_2
+    //   428: astore 14
+    //   430: aload 10
+    //   432: astore 12
+    //   434: aload 20
+    //   436: aload 22
+    //   438: aload 17
+    //   440: invokevirtual 118	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   443: pop
+    //   444: iload 6
+    //   446: iconst_1
+    //   447: iadd
+    //   448: istore 6
+    //   450: aload 10
+    //   452: astore 9
+    //   454: goto -168 -> 286
+    //   457: aload_2
+    //   458: astore 13
+    //   460: aload 9
+    //   462: astore 11
+    //   464: aload_2
+    //   465: astore 14
+    //   467: aload 9
+    //   469: astore 12
+    //   471: invokestatic 234	android/os/Message:obtain	()Landroid/os/Message;
+    //   474: astore 15
+    //   476: aload_2
+    //   477: astore 13
+    //   479: aload 9
+    //   481: astore 11
+    //   483: aload_2
+    //   484: astore 14
+    //   486: aload 9
+    //   488: astore 12
+    //   490: aload 15
+    //   492: iconst_1
+    //   493: putfield 238	android/os/Message:what	I
+    //   496: aload_2
+    //   497: astore 13
+    //   499: aload 9
+    //   501: astore 11
+    //   503: aload_2
+    //   504: astore 14
+    //   506: aload 9
+    //   508: astore 12
+    //   510: aload 15
+    //   512: aload 20
+    //   514: putfield 242	android/os/Message:obj	Ljava/lang/Object;
+    //   517: aload_2
+    //   518: astore 11
+    //   520: aload 9
+    //   522: astore 10
+    //   524: aload_2
+    //   525: astore 12
+    //   527: aload 9
+    //   529: astore 13
+    //   531: aload_0
+    //   532: getfield 32	com/tencent/biz/authorize/JsonConfig:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   535: aload 15
+    //   537: invokevirtual 248	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
+    //   540: pop
+    //   541: aload 18
+    //   543: astore 10
+    //   545: goto +160 -> 705
+    //   548: ldc 140
+    //   550: astore 12
+    //   552: ldc 212
+    //   554: astore 13
+    //   556: aload 12
+    //   558: astore 11
+    //   560: aload 13
+    //   562: astore 10
+    //   564: ldc 67
+    //   566: iconst_1
+    //   567: ldc 250
+    //   569: invokestatic 78	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   572: aconst_null
+    //   573: areturn
+    //   574: astore_2
+    //   575: aload 11
+    //   577: astore 9
+    //   579: aload 10
+    //   581: astore 11
+    //   583: goto +20 -> 603
+    //   586: astore_2
+    //   587: aload 13
+    //   589: astore 10
+    //   591: goto +69 -> 660
+    //   594: astore_2
+    //   595: aload 12
+    //   597: astore 9
+    //   599: aload 10
+    //   601: astore 11
+    //   603: new 252	java/lang/StringBuilder
+    //   606: dup
+    //   607: invokespecial 254	java/lang/StringBuilder:<init>	()V
+    //   610: astore 10
+    //   612: aload 10
+    //   614: ldc 126
+    //   616: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   619: pop
+    //   620: aload 10
+    //   622: aload_2
+    //   623: invokevirtual 261	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   626: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   629: pop
+    //   630: aload 10
+    //   632: invokevirtual 262	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   635: astore 10
+    //   637: aload 9
+    //   639: astore_2
+    //   640: aload 11
+    //   642: astore 9
+    //   644: goto +61 -> 705
+    //   647: astore_2
+    //   648: aload 13
+    //   650: astore 9
+    //   652: aload 11
+    //   654: astore 10
+    //   656: aload 9
+    //   658: astore 12
+    //   660: new 252	java/lang/StringBuilder
+    //   663: dup
+    //   664: invokespecial 254	java/lang/StringBuilder:<init>	()V
+    //   667: astore 9
+    //   669: aload 9
+    //   671: ldc 126
+    //   673: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   676: pop
+    //   677: aload 9
+    //   679: aload_2
+    //   680: invokevirtual 263	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   683: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   686: pop
+    //   687: aload 9
+    //   689: invokevirtual 262	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   692: astore 11
+    //   694: aload 10
+    //   696: astore 9
+    //   698: aload 12
+    //   700: astore_2
+    //   701: aload 11
+    //   703: astore 10
+    //   705: aload_1
+    //   706: ldc_w 265
+    //   709: aload 19
+    //   711: ldc_w 265
+    //   714: invokevirtual 217	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   717: invokevirtual 220	org/json/JSONArray:toString	()Ljava/lang/String;
+    //   720: invokeinterface 226 3 0
+    //   725: pop
+    //   726: goto +49 -> 775
+    //   729: astore 11
+    //   731: new 252	java/lang/StringBuilder
+    //   734: dup
+    //   735: invokespecial 254	java/lang/StringBuilder:<init>	()V
+    //   738: astore 12
     //   740: aload 12
-    //   742: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   745: ldc_w 306
-    //   748: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   751: aload 13
-    //   753: invokevirtual 309	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   756: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   759: invokestatic 82	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   762: aload_2
-    //   763: astore 9
-    //   765: iload_3
-    //   766: iconst_1
-    //   767: iadd
-    //   768: istore_3
-    //   769: aload 9
-    //   771: astore_2
-    //   772: goto -92 -> 680
-    //   775: astore 9
-    //   777: new 276	java/lang/StringBuilder
-    //   780: dup
-    //   781: invokespecial 277	java/lang/StringBuilder:<init>	()V
-    //   784: aload_2
-    //   785: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   788: ldc_w 288
-    //   791: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   794: aload 9
-    //   796: invokevirtual 284	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   799: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   802: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   805: astore_2
-    //   806: goto -156 -> 650
-    //   809: astore 9
-    //   811: ldc 67
-    //   813: iconst_1
-    //   814: new 276	java/lang/StringBuilder
-    //   817: dup
-    //   818: invokespecial 277	java/lang/StringBuilder:<init>	()V
-    //   821: ldc_w 311
-    //   824: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   827: aload 9
-    //   829: invokevirtual 284	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   832: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   835: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   838: invokestatic 73	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   841: goto -173 -> 668
-    //   844: astore 9
-    //   846: new 276	java/lang/StringBuilder
-    //   849: dup
-    //   850: invokespecial 277	java/lang/StringBuilder:<init>	()V
-    //   853: aload_2
-    //   854: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   857: ldc_w 288
-    //   860: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   863: aload 9
-    //   865: invokevirtual 289	org/json/JSONException:getMessage	()Ljava/lang/String;
-    //   868: invokevirtual 281	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   871: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   874: astore 9
-    //   876: goto -111 -> 765
-    //   879: goto -718 -> 161
-    //   882: aload_2
-    //   883: areturn
-    //   884: iload_3
-    //   885: iconst_1
-    //   886: iadd
-    //   887: istore_3
-    //   888: goto -807 -> 81
+    //   742: aload 10
+    //   744: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   747: pop
+    //   748: aload 12
+    //   750: ldc_w 267
+    //   753: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   756: pop
+    //   757: aload 12
+    //   759: aload 11
+    //   761: invokevirtual 268	org/json/JSONException:getMessage	()Ljava/lang/String;
+    //   764: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   767: pop
+    //   768: aload 12
+    //   770: invokevirtual 262	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   773: astore 10
+    //   775: aload_1
+    //   776: ldc 207
+    //   778: aload 19
+    //   780: ldc_w 270
+    //   783: invokevirtual 274	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   786: invokevirtual 275	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   789: invokeinterface 226 3 0
+    //   794: pop
+    //   795: goto +49 -> 844
+    //   798: astore 11
+    //   800: new 252	java/lang/StringBuilder
+    //   803: dup
+    //   804: invokespecial 254	java/lang/StringBuilder:<init>	()V
+    //   807: astore 12
+    //   809: aload 12
+    //   811: aload 10
+    //   813: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   816: pop
+    //   817: aload 12
+    //   819: ldc_w 267
+    //   822: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   825: pop
+    //   826: aload 12
+    //   828: aload 11
+    //   830: invokevirtual 268	org/json/JSONException:getMessage	()Ljava/lang/String;
+    //   833: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   836: pop
+    //   837: aload 12
+    //   839: invokevirtual 262	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   842: astore 10
+    //   844: aload_1
+    //   845: ldc_w 277
+    //   848: aload 19
+    //   850: ldc_w 279
+    //   853: invokevirtual 274	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   856: invokevirtual 275	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   859: invokeinterface 226 3 0
+    //   864: pop
+    //   865: goto +49 -> 914
+    //   868: astore 11
+    //   870: new 252	java/lang/StringBuilder
+    //   873: dup
+    //   874: invokespecial 254	java/lang/StringBuilder:<init>	()V
+    //   877: astore 12
+    //   879: aload 12
+    //   881: aload 10
+    //   883: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   886: pop
+    //   887: aload 12
+    //   889: ldc_w 267
+    //   892: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   895: pop
+    //   896: aload 12
+    //   898: aload 11
+    //   900: invokevirtual 268	org/json/JSONException:getMessage	()Ljava/lang/String;
+    //   903: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   906: pop
+    //   907: aload 12
+    //   909: invokevirtual 262	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   912: astore 10
+    //   914: aload_1
+    //   915: ldc_w 281
+    //   918: aload 19
+    //   920: ldc_w 281
+    //   923: invokevirtual 274	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   926: invokevirtual 275	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   929: invokeinterface 226 3 0
+    //   934: pop
+    //   935: goto +49 -> 984
+    //   938: astore 11
+    //   940: new 252	java/lang/StringBuilder
+    //   943: dup
+    //   944: invokespecial 254	java/lang/StringBuilder:<init>	()V
+    //   947: astore 12
+    //   949: aload 12
+    //   951: aload 10
+    //   953: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   956: pop
+    //   957: aload 12
+    //   959: ldc_w 267
+    //   962: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   965: pop
+    //   966: aload 12
+    //   968: aload 11
+    //   970: invokevirtual 268	org/json/JSONException:getMessage	()Ljava/lang/String;
+    //   973: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   976: pop
+    //   977: aload 12
+    //   979: invokevirtual 262	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   982: astore 10
+    //   984: new 56	org/json/JSONObject
+    //   987: dup
+    //   988: invokespecial 282	org/json/JSONObject:<init>	()V
+    //   991: astore 11
+    //   993: aload 19
+    //   995: ldc_w 284
+    //   998: invokevirtual 217	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   1001: astore 12
+    //   1003: aload 12
+    //   1005: invokevirtual 94	org/json/JSONArray:length	()I
+    //   1008: istore 5
+    //   1010: iconst_0
+    //   1011: istore_3
+    //   1012: iload_3
+    //   1013: iload 5
+    //   1015: if_icmpge +70 -> 1085
+    //   1018: aload 12
+    //   1020: iload_3
+    //   1021: invokevirtual 286	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   1024: astore 14
+    //   1026: aload 14
+    //   1028: ldc_w 288
+    //   1031: invokevirtual 217	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   1034: astore 13
+    //   1036: aload 14
+    //   1038: aload_2
+    //   1039: invokevirtual 217	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   1042: astore 14
+    //   1044: aload 14
+    //   1046: invokevirtual 94	org/json/JSONArray:length	()I
+    //   1049: istore 6
+    //   1051: iconst_0
+    //   1052: istore 4
+    //   1054: iload 4
+    //   1056: iload 6
+    //   1058: if_icmpge +388 -> 1446
+    //   1061: aload 11
+    //   1063: aload 14
+    //   1065: iload 4
+    //   1067: invokevirtual 228	org/json/JSONArray:getString	(I)Ljava/lang/String;
+    //   1070: aload 13
+    //   1072: invokevirtual 291	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   1075: pop
+    //   1076: iload 4
+    //   1078: iconst_1
+    //   1079: iadd
+    //   1080: istore 4
+    //   1082: goto -28 -> 1054
+    //   1085: aload_1
+    //   1086: ldc_w 284
+    //   1089: aload 11
+    //   1091: invokevirtual 275	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   1094: invokeinterface 226 3 0
+    //   1099: pop
+    //   1100: goto +47 -> 1147
+    //   1103: astore_2
+    //   1104: new 252	java/lang/StringBuilder
+    //   1107: dup
+    //   1108: invokespecial 254	java/lang/StringBuilder:<init>	()V
+    //   1111: astore 11
+    //   1113: aload 11
+    //   1115: aload 10
+    //   1117: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1120: pop
+    //   1121: aload 11
+    //   1123: ldc_w 267
+    //   1126: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1129: pop
+    //   1130: aload 11
+    //   1132: aload_2
+    //   1133: invokevirtual 263	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   1136: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1139: pop
+    //   1140: aload 11
+    //   1142: invokevirtual 262	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1145: astore 10
+    //   1147: aload_1
+    //   1148: aload 9
+    //   1150: aload 19
+    //   1152: aload 9
+    //   1154: invokevirtual 295	org/json/JSONObject:getLong	(Ljava/lang/String;)J
+    //   1157: invokeinterface 299 4 0
+    //   1162: pop
+    //   1163: goto +43 -> 1206
+    //   1166: astore_2
+    //   1167: new 252	java/lang/StringBuilder
+    //   1170: dup
+    //   1171: invokespecial 254	java/lang/StringBuilder:<init>	()V
+    //   1174: astore 9
+    //   1176: aload 9
+    //   1178: ldc_w 301
+    //   1181: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1184: pop
+    //   1185: aload 9
+    //   1187: aload_2
+    //   1188: invokevirtual 263	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   1191: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1194: pop
+    //   1195: ldc 67
+    //   1197: iconst_1
+    //   1198: aload 9
+    //   1200: invokevirtual 262	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1203: invokestatic 78	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1206: getstatic 304	com/tencent/biz/AuthorizeConfig:a	[Ljava/lang/String;
+    //   1209: astore 9
+    //   1211: aload 9
+    //   1213: arraylength
+    //   1214: istore 4
+    //   1216: iconst_0
+    //   1217: istore_3
+    //   1218: iload_3
+    //   1219: iload 4
+    //   1221: if_icmpge +148 -> 1369
+    //   1224: aload 9
+    //   1226: iload_3
+    //   1227: aaload
+    //   1228: astore 11
+    //   1230: aload 19
+    //   1232: aload 11
+    //   1234: invokevirtual 217	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   1237: astore 12
+    //   1239: aload_1
+    //   1240: aload 11
+    //   1242: aload 12
+    //   1244: invokevirtual 220	org/json/JSONArray:toString	()Ljava/lang/String;
+    //   1247: invokeinterface 226 3 0
+    //   1252: pop
+    //   1253: aload 10
+    //   1255: astore_2
+    //   1256: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1259: ifeq +100 -> 1359
+    //   1262: new 252	java/lang/StringBuilder
+    //   1265: dup
+    //   1266: invokespecial 254	java/lang/StringBuilder:<init>	()V
+    //   1269: astore_2
+    //   1270: aload_2
+    //   1271: ldc_w 306
+    //   1274: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1277: pop
+    //   1278: aload_2
+    //   1279: aload 11
+    //   1281: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1284: pop
+    //   1285: aload_2
+    //   1286: ldc_w 308
+    //   1289: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1292: pop
+    //   1293: aload_2
+    //   1294: aload 12
+    //   1296: invokevirtual 311	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1299: pop
+    //   1300: ldc 67
+    //   1302: iconst_2
+    //   1303: aload_2
+    //   1304: invokevirtual 262	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1307: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1310: aload 10
+    //   1312: astore_2
+    //   1313: goto +46 -> 1359
+    //   1316: astore_2
+    //   1317: new 252	java/lang/StringBuilder
+    //   1320: dup
+    //   1321: invokespecial 254	java/lang/StringBuilder:<init>	()V
+    //   1324: astore 11
+    //   1326: aload 11
+    //   1328: aload 10
+    //   1330: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1333: pop
+    //   1334: aload 11
+    //   1336: ldc_w 267
+    //   1339: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1342: pop
+    //   1343: aload 11
+    //   1345: aload_2
+    //   1346: invokevirtual 268	org/json/JSONException:getMessage	()Ljava/lang/String;
+    //   1349: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1352: pop
+    //   1353: aload 11
+    //   1355: invokevirtual 262	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1358: astore_2
+    //   1359: iload_3
+    //   1360: iconst_1
+    //   1361: iadd
+    //   1362: istore_3
+    //   1363: aload_2
+    //   1364: astore 10
+    //   1366: goto -148 -> 1218
+    //   1369: aload 10
+    //   1371: areturn
+    //   1372: astore_1
+    //   1373: goto +12 -> 1385
+    //   1376: astore_1
+    //   1377: goto +23 -> 1400
+    //   1380: goto -1019 -> 361
+    //   1383: astore 11
+    //   1385: aload 9
+    //   1387: astore 10
+    //   1389: aload_2
+    //   1390: astore 9
+    //   1392: aload 11
+    //   1394: astore_2
+    //   1395: goto -796 -> 599
+    //   1398: astore 11
+    //   1400: aload 9
+    //   1402: astore 10
+    //   1404: aload_2
+    //   1405: astore 9
+    //   1407: aload 11
+    //   1409: astore_2
+    //   1410: goto -754 -> 656
+    //   1413: iload 4
+    //   1415: iconst_1
+    //   1416: iadd
+    //   1417: istore 4
+    //   1419: goto -1231 -> 188
+    //   1422: astore_2
+    //   1423: aload 13
+    //   1425: astore 9
+    //   1427: aload 11
+    //   1429: astore 10
+    //   1431: goto -832 -> 599
+    //   1434: astore_2
+    //   1435: aload 14
+    //   1437: astore 9
+    //   1439: aload 12
+    //   1441: astore 10
+    //   1443: goto -787 -> 656
+    //   1446: iload_3
+    //   1447: iconst_1
+    //   1448: iadd
+    //   1449: istore_3
+    //   1450: goto -438 -> 1012
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	891	0	this	JsonConfig
-    //   0	891	1	paramEditor	android.content.SharedPreferences.Editor
-    //   0	891	2	paramString	String
-    //   80	808	3	i	int
-    //   118	566	4	j	int
-    //   162	206	5	k	int
-    //   77	335	6	m	int
-    //   115	10	7	n	int
-    //   169	7	8	i1	int
-    //   12	403	9	localObject1	Object
-    //   492	20	9	localJSONException1	JSONException
-    //   526	20	9	localJSONException2	JSONException
-    //   560	20	9	localJSONException3	JSONException
-    //   594	46	9	localJSONException4	JSONException
-    //   716	54	9	str1	String
-    //   775	20	9	localException1	Exception
-    //   809	19	9	localException2	Exception
-    //   844	20	9	localJSONException5	JSONException
-    //   874	1	9	str2	String
-    //   8	685	10	localJSONObject	JSONObject
-    //   32	655	11	localObject2	Object
-    //   21	720	12	localJSONArray1	JSONArray
-    //   100	652	13	localObject3	Object
-    //   108	20	14	localJSONArray2	JSONArray
-    //   134	80	15	str3	String
+    //   0	1453	0	this	JsonConfig
+    //   0	1453	1	paramEditor	android.content.SharedPreferences.Editor
+    //   0	1453	2	paramString	String
+    //   181	1182	3	i	int
+    //   183	1039	4	j	int
+    //   281	735	5	k	int
+    //   284	775	6	m	int
+    //   370	10	7	n	int
+    //   373	43	8	i1	int
+    //   6	1219	9	localObject1	Object
+    //   28	1342	10	localObject2	Object
+    //   36	666	11	localObject3	Object
+    //   729	31	11	localJSONException1	JSONException
+    //   798	31	11	localJSONException2	JSONException
+    //   868	31	11	localJSONException3	JSONException
+    //   938	31	11	localJSONException4	JSONException
+    //   991	363	11	localObject4	Object
+    //   24	1271	12	localObject5	Object
+    //   32	1039	13	localObject6	Object
+    //   2	1062	14	localObject7	Object
+    //   45	491	15	localObject8	Object
+    //   260	48	16	localJSONArray1	JSONArray
+    //   340	99	17	localObject9	Object
+    //   10	532	18	str1	String
+    //   20	1211	19	localJSONObject	JSONObject
+    //   72	441	20	localConcurrentHashMap	ConcurrentHashMap
+    //   238	161	21	localJSONArray2	JSONArray
+    //   314	123	22	str2	String
     // Exception table:
     //   from	to	target	type
-    //   14	34	438	java/lang/Exception
-    //   39	79	438	java/lang/Exception
-    //   87	117	438	java/lang/Exception
-    //   127	147	438	java/lang/Exception
-    //   151	161	438	java/lang/Exception
-    //   164	171	438	java/lang/Exception
-    //   178	192	438	java/lang/Exception
-    //   201	209	438	java/lang/Exception
-    //   211	220	438	java/lang/Exception
-    //   229	253	438	java/lang/Exception
-    //   14	34	465	java/lang/OutOfMemoryError
-    //   39	79	465	java/lang/OutOfMemoryError
-    //   87	117	465	java/lang/OutOfMemoryError
-    //   127	147	465	java/lang/OutOfMemoryError
-    //   151	161	465	java/lang/OutOfMemoryError
-    //   164	171	465	java/lang/OutOfMemoryError
-    //   178	192	465	java/lang/OutOfMemoryError
-    //   201	209	465	java/lang/OutOfMemoryError
-    //   211	220	465	java/lang/OutOfMemoryError
-    //   229	253	465	java/lang/OutOfMemoryError
-    //   256	275	492	org/json/JSONException
-    //   275	294	526	org/json/JSONException
-    //   294	315	560	org/json/JSONException
-    //   315	336	594	org/json/JSONException
-    //   336	362	775	java/lang/Exception
-    //   370	397	775	java/lang/Exception
-    //   400	407	775	java/lang/Exception
-    //   414	429	775	java/lang/Exception
-    //   635	650	775	java/lang/Exception
-    //   650	668	809	java/lang/Exception
-    //   692	715	844	org/json/JSONException
-    //   718	762	844	org/json/JSONException
+    //   531	541	574	java/lang/OutOfMemoryError
+    //   564	572	574	java/lang/OutOfMemoryError
+    //   531	541	586	java/lang/Exception
+    //   564	572	586	java/lang/Exception
+    //   38	47	594	java/lang/OutOfMemoryError
+    //   63	74	594	java/lang/OutOfMemoryError
+    //   95	103	594	java/lang/OutOfMemoryError
+    //   119	133	594	java/lang/OutOfMemoryError
+    //   149	160	594	java/lang/OutOfMemoryError
+    //   176	182	594	java/lang/OutOfMemoryError
+    //   208	217	594	java/lang/OutOfMemoryError
+    //   231	240	594	java/lang/OutOfMemoryError
+    //   254	262	594	java/lang/OutOfMemoryError
+    //   276	283	594	java/lang/OutOfMemoryError
+    //   307	316	594	java/lang/OutOfMemoryError
+    //   330	342	594	java/lang/OutOfMemoryError
+    //   38	47	647	java/lang/Exception
+    //   63	74	647	java/lang/Exception
+    //   95	103	647	java/lang/Exception
+    //   119	133	647	java/lang/Exception
+    //   149	160	647	java/lang/Exception
+    //   176	182	647	java/lang/Exception
+    //   208	217	647	java/lang/Exception
+    //   231	240	647	java/lang/Exception
+    //   254	262	647	java/lang/Exception
+    //   276	283	647	java/lang/Exception
+    //   307	316	647	java/lang/Exception
+    //   330	342	647	java/lang/Exception
+    //   705	726	729	org/json/JSONException
+    //   775	795	798	org/json/JSONException
+    //   844	865	868	org/json/JSONException
+    //   914	935	938	org/json/JSONException
+    //   984	1010	1103	java/lang/Exception
+    //   1018	1051	1103	java/lang/Exception
+    //   1061	1076	1103	java/lang/Exception
+    //   1085	1100	1103	java/lang/Exception
+    //   1147	1163	1166	java/lang/Exception
+    //   1230	1253	1316	org/json/JSONException
+    //   1256	1310	1316	org/json/JSONException
+    //   347	358	1383	java/lang/OutOfMemoryError
+    //   365	372	1383	java/lang/OutOfMemoryError
+    //   347	358	1398	java/lang/Exception
+    //   365	372	1398	java/lang/Exception
+    //   396	411	1422	java/lang/OutOfMemoryError
+    //   434	444	1422	java/lang/OutOfMemoryError
+    //   471	476	1422	java/lang/OutOfMemoryError
+    //   490	496	1422	java/lang/OutOfMemoryError
+    //   510	517	1422	java/lang/OutOfMemoryError
+    //   396	411	1434	java/lang/Exception
+    //   434	444	1434	java/lang/Exception
+    //   471	476	1434	java/lang/Exception
+    //   490	496	1434	java/lang/Exception
+    //   510	517	1434	java/lang/Exception
   }
   
   public JSONArray a(String paramString)
   {
-    Object localObject1;
     if (!a()) {
-      localObject1 = this.jdField_a_of_type_ComTencentBizAuthorizeAbstractConfig.a(paramString);
+      return this.jdField_a_of_type_ComTencentBizAuthorizeAbstractConfig.a(paramString);
     }
-    do
+    Object localObject3 = this.jdField_a_of_type_AndroidContentSharedPreferences;
+    Object localObject2 = null;
+    Object localObject1 = null;
+    localObject3 = ((SharedPreferences)localObject3).getString(paramString, null);
+    if (localObject3 != null) {}
+    try
     {
-      for (;;)
+      localObject2 = new JSONArray((String)localObject3);
+    }
+    catch (JSONException localJSONException2)
+    {
+      label92:
+      break label97;
+    }
+    try
+    {
+      if (QLog.isColorLevel())
       {
-        return localObject1;
-        localObject1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(paramString, null);
-        if (localObject1 == null) {
-          break label128;
-        }
-        try
-        {
-          localJSONArray = new JSONArray((String)localObject1);
-          localObject1 = localJSONArray;
-          try
-          {
-            if (QLog.isColorLevel())
-            {
-              QLog.e("AuthorizeConfig", 2, "Load server config for " + paramString);
-              return localJSONArray;
-            }
-          }
-          catch (JSONException localJSONException1) {}
-        }
-        catch (JSONException localJSONException2)
-        {
-          for (;;)
-          {
-            Object localObject2;
-            JSONArray localJSONArray = null;
-          }
-        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("Load server config for ");
+        ((StringBuilder)localObject1).append(paramString);
+        QLog.e("AuthorizeConfig", 2, ((StringBuilder)localObject1).toString());
       }
-      localObject2 = localJSONArray;
-    } while (!QLog.isColorLevel());
-    QLog.w("AuthorizeConfig", 2, "Decode " + paramString + " Config error");
-    return localJSONArray;
-    label128:
-    return null;
+      return localObject2;
+    }
+    catch (JSONException localJSONException1)
+    {
+      break label92;
+    }
+    localObject1 = localObject2;
+    label97:
+    localObject2 = localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("Decode ");
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(" Config error");
+      QLog.w("AuthorizeConfig", 2, ((StringBuilder)localObject2).toString());
+      localObject2 = localObject1;
+    }
+    return localObject2;
   }
   
   public JSONObject a()
   {
-    JSONObject localJSONObject = null;
     if (!a()) {
-      localJSONObject = this.jdField_a_of_type_ComTencentBizAuthorizeAbstractConfig.a();
+      return this.jdField_a_of_type_ComTencentBizAuthorizeAbstractConfig.a();
     }
-    String str;
-    do
-    {
-      return localJSONObject;
-      str = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("schemes", null);
-    } while (str == null);
-    return new JSONObject(str);
+    Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences;
+    JSONObject localJSONObject = null;
+    localObject = ((SharedPreferences)localObject).getString("schemes", null);
+    if (localObject != null) {
+      localJSONObject = new JSONObject((String)localObject);
+    }
+    return localJSONObject;
   }
   
   public void a()
@@ -773,7 +1088,7 @@ public class JsonConfig
   public boolean a()
   {
     ((FlatBuffersConfig)this.jdField_a_of_type_ComTencentBizAuthorizeAbstractConfig).b();
-    return !this.jdField_a_of_type_ComTencentBizAuthorizeAbstractConfig.a();
+    return this.jdField_a_of_type_ComTencentBizAuthorizeAbstractConfig.a() ^ true;
   }
   
   public String b()
@@ -799,7 +1114,7 @@ public class JsonConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.authorize.JsonConfig
  * JD-Core Version:    0.7.0.1
  */

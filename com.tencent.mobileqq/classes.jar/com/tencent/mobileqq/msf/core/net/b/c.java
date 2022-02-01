@@ -16,13 +16,17 @@ public class c
       b.set(false);
       return paramString;
     }
-    QLog.d("NetworkToolsHelper", 1, "Stop traceroute host: " + paramString + " by another task running");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Stop traceroute host: ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" by another task running");
+    QLog.d("NetworkToolsHelper", 1, localStringBuilder.toString());
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.b.c
  * JD-Core Version:    0.7.0.1
  */

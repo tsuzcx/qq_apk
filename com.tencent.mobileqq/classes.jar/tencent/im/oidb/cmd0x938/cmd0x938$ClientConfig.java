@@ -21,15 +21,16 @@ public final class cmd0x938$ClientConfig
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50 }, new String[] { "uint32_show_list", "uint32_show_card", "uint64_next_time", "bytes_card_url_h", "bytes_card_url_g", "bytes_list_jump_url" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3 }, ClientConfig.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50 }, new String[] { "uint32_show_list", "uint32_show_card", "uint64_next_time", "bytes_card_url_h", "bytes_card_url_g", "bytes_list_jump_url" }, new Object[] { localInteger, localInteger, Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3 }, ClientConfig.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x938.cmd0x938.ClientConfig
  * JD-Core Version:    0.7.0.1
  */

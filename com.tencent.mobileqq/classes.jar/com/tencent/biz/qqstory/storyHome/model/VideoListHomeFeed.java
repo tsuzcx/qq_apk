@@ -7,7 +7,7 @@ import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.takevideo.tag.TagItem.TagInfoBase;
 import com.tencent.biz.qqstory.utils.AssertUtils;
-import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.biz.qqstory.utils.DateUtils;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -37,7 +37,7 @@ public abstract class VideoListHomeFeed<T extends VideoListFeedItem>
   private boolean a(String paramString)
   {
     Calendar localCalendar = Calendar.getInstance();
-    paramString = UIUtils.a(paramString);
+    paramString = DateUtils.a(paramString);
     return (localCalendar.get(1) + 0 <= paramString[0]) && (localCalendar.get(2) + 1 <= paramString[1]) && (localCalendar.get(5) + 0 <= paramString[2]);
   }
   
@@ -64,60 +64,43 @@ public abstract class VideoListHomeFeed<T extends VideoListFeedItem>
     this.jdField_c_of_type_JavaUtilHashSet.add(paramStoryVideoItem.mVid);
     paramStoryVideoItem = this.jdField_c_of_type_JavaUtilList.iterator();
     paramInt = 0;
-    if (paramStoryVideoItem.hasNext())
-    {
-      if (!StoryVideoItem.isFakeVid(((StoryVideoItem)paramStoryVideoItem.next()).mVid)) {
-        break label131;
-      }
-      paramInt += 1;
-    }
-    label131:
-    for (;;)
-    {
-      break;
-      if (paramInt != 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.jdField_a_of_type_Boolean = bool;
-        SLog.d("Q.qqstory.home.data.VideoListHomeFeed", "feed id %s, fake video count:%d", new Object[] { ((VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem).feedId, Integer.valueOf(paramInt) });
-        AssertUtils.a();
-        return;
+    while (paramStoryVideoItem.hasNext()) {
+      if (StoryVideoItem.isFakeVid(((StoryVideoItem)paramStoryVideoItem.next()).mVid)) {
+        paramInt += 1;
       }
     }
+    boolean bool;
+    if (paramInt != 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.jdField_a_of_type_Boolean = bool;
+    SLog.d("Q.qqstory.home.data.VideoListHomeFeed", "feed id %s, fake video count:%d", new Object[] { ((VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem).feedId, Integer.valueOf(paramInt) });
+    AssertUtils.mainThreadCheck();
   }
   
   public void a(StoryVideoItem paramStoryVideoItem)
   {
     this.jdField_c_of_type_JavaUtilList.remove(paramStoryVideoItem);
     this.jdField_c_of_type_JavaUtilHashSet.remove(paramStoryVideoItem.mVid);
-    AssertUtils.a();
+    AssertUtils.mainThreadCheck();
   }
   
   public void a(StoryVideoItem paramStoryVideoItem, boolean paramBoolean)
   {
-    boolean bool1 = true;
     if (this.jdField_c_of_type_JavaUtilHashSet.contains(paramStoryVideoItem.mVid)) {
       this.jdField_c_of_type_JavaUtilList.remove(paramStoryVideoItem);
     }
     this.jdField_c_of_type_JavaUtilList.add(0, paramStoryVideoItem);
     this.jdField_c_of_type_JavaUtilHashSet.add(paramStoryVideoItem.mVid);
     this.jdField_a_of_type_Boolean = true;
-    boolean bool2;
     if (paramBoolean)
     {
-      bool2 = a(a().date);
-      SLog.b("Q.qqstory.home.data.VideoListHomeFeed", "sort today=%b before %s", Boolean.valueOf(bool2), this.jdField_c_of_type_JavaUtilList);
-      paramStoryVideoItem = this.jdField_c_of_type_JavaUtilList;
-      if (bool2) {
-        break label129;
-      }
-    }
-    label129:
-    for (paramBoolean = bool1;; paramBoolean = false)
-    {
-      Collections.sort(paramStoryVideoItem, new VideoListHomeFeed.StoryVideoListComp(paramBoolean));
-      SLog.b("Q.qqstory.home.data.VideoListHomeFeed", "sort today=%b after %s", Boolean.valueOf(bool2), this.jdField_c_of_type_JavaUtilList);
-      return;
+      paramBoolean = a(a().date);
+      SLog.b("Q.qqstory.home.data.VideoListHomeFeed", "sort today=%b before %s", Boolean.valueOf(paramBoolean), this.jdField_c_of_type_JavaUtilList);
+      Collections.sort(this.jdField_c_of_type_JavaUtilList, new VideoListHomeFeed.StoryVideoListComp(paramBoolean ^ true));
+      SLog.b("Q.qqstory.home.data.VideoListHomeFeed", "sort today=%b after %s", Boolean.valueOf(paramBoolean), this.jdField_c_of_type_JavaUtilList);
     }
   }
   
@@ -137,8 +120,10 @@ public abstract class VideoListHomeFeed<T extends VideoListFeedItem>
     }
     catch (ConcurrentModificationException localConcurrentModificationException)
     {
-      SLog.d("Q.qqstory.home.data.VideoListHomeFeed", "video item size:%d", new Object[] { Integer.valueOf(this.jdField_c_of_type_JavaUtilList.size()) });
+      label40:
+      break label40;
     }
+    SLog.d("Q.qqstory.home.data.VideoListHomeFeed", "video item size:%d", new Object[] { Integer.valueOf(this.jdField_c_of_type_JavaUtilList.size()) });
     return false;
   }
   
@@ -167,36 +152,22 @@ public abstract class VideoListHomeFeed<T extends VideoListFeedItem>
       this.jdField_c_of_type_JavaUtilHashSet.clear();
     }
     paramList = paramList.iterator();
-    if (paramList.hasNext())
+    while (paramList.hasNext())
     {
       StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramList.next();
       if (this.jdField_c_of_type_JavaUtilHashSet.contains(localStoryVideoItem.mVid)) {
         this.jdField_c_of_type_JavaUtilList.remove(localStoryVideoItem);
-      }
-      for (;;)
-      {
-        this.jdField_c_of_type_JavaUtilList.add(localStoryVideoItem);
-        if (!StoryVideoItem.isFakeVid(localStoryVideoItem.mVid)) {
-          break;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        break;
+      } else {
         this.jdField_c_of_type_JavaUtilHashSet.add(localStoryVideoItem.mVid);
+      }
+      this.jdField_c_of_type_JavaUtilList.add(localStoryVideoItem);
+      if (StoryVideoItem.isFakeVid(localStoryVideoItem.mVid)) {
+        this.jdField_a_of_type_Boolean = true;
       }
     }
     paramBoolean = a(a().date);
-    if ((!(a() instanceof TagFeedItem)) && (a().assignType() != 7))
-    {
-      paramList = this.jdField_c_of_type_JavaUtilList;
-      if (paramBoolean) {
-        break label173;
-      }
-    }
-    label173:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      Collections.sort(paramList, new VideoListHomeFeed.StoryVideoListComp(paramBoolean));
-      return;
+    if ((!(a() instanceof TagFeedItem)) && (a().assignType() != 7)) {
+      Collections.sort(this.jdField_c_of_type_JavaUtilList, new VideoListHomeFeed.StoryVideoListComp(paramBoolean ^ true));
     }
   }
   
@@ -207,12 +178,17 @@ public abstract class VideoListHomeFeed<T extends VideoListFeedItem>
   
   public String toString()
   {
-    return "hasFakeVideo=" + this.jdField_a_of_type_Boolean + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem + String.format("video=%d,like=%d,comment=%d", new Object[] { Integer.valueOf(this.jdField_c_of_type_JavaUtilList.size()), Integer.valueOf(this.b.size()), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("hasFakeVideo=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem);
+    localStringBuilder.append(String.format("video=%d,like=%d,comment=%d", new Object[] { Integer.valueOf(this.jdField_c_of_type_JavaUtilList.size()), Integer.valueOf(this.b.size()), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) }));
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.VideoListHomeFeed
  * JD-Core Version:    0.7.0.1
  */

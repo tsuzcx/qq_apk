@@ -20,14 +20,15 @@ public final class ILiveGiftSite
   
   public static ILiveGiftSite[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new ILiveGiftSite[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new ILiveGiftSite[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static ILiveGiftSite parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -48,7 +49,7 @@ public final class ILiveGiftSite
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     return super.computeSerializedSize() + CodedOutputByteBufferNano.computeUInt32Size(1, this.x) + CodedOutputByteBufferNano.computeUInt32Size(2, this.y);
   }
@@ -58,20 +59,26 @@ public final class ILiveGiftSite
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.x = paramCodedInputByteBufferNano.readUInt32();
+      if (i == 0) {
         break;
       }
-      this.y = paramCodedInputByteBufferNano.readUInt32();
+      if (i != 8)
+      {
+        if (i != 16)
+        {
+          if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+            return this;
+          }
+        }
+        else {
+          this.y = paramCodedInputByteBufferNano.readUInt32();
+        }
+      }
+      else {
+        this.x = paramCodedInputByteBufferNano.readUInt32();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
@@ -83,7 +90,7 @@ public final class ILiveGiftSite
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.payGiftSvr.nano.ILiveGiftSite
  * JD-Core Version:    0.7.0.1
  */

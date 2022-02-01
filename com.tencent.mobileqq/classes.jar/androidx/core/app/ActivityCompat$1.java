@@ -3,7 +3,7 @@ package androidx.core.app;
 import android.app.Activity;
 import android.content.pm.PackageManager;
 
-final class ActivityCompat$1
+class ActivityCompat$1
   implements Runnable
 {
   ActivityCompat$1(String[] paramArrayOfString, Activity paramActivity, int paramInt) {}
@@ -25,7 +25,7 @@ final class ActivityCompat$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.ActivityCompat.1
  * JD-Core Version:    0.7.0.1
  */

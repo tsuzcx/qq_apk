@@ -11,42 +11,37 @@ public class SysEmoApiImpl
 {
   public Drawable getEmoDrawable(int paramInt1, int paramInt2)
   {
-    Drawable localDrawable = null;
     if (paramInt1 == 1) {
-      localDrawable = QQSysFaceUtil.getFaceDrawable(paramInt2);
+      return QQSysFaceUtil.getFaceDrawable(paramInt2);
     }
-    while (paramInt1 != 2) {
-      return localDrawable;
+    if (paramInt1 == 2) {
+      return QQEmojiUtil.getEmojiDrawable(paramInt2);
     }
-    return QQEmojiUtil.getEmojiDrawable(paramInt2);
+    return null;
   }
   
   public Drawable getEmoDrawableFromEMCode(String paramString)
   {
-    Object localObject = null;
     int i = QQSysFaceUtil.getLocalIdFromEMCode(paramString);
     if (i != -1) {
-      paramString = QQSysFaceUtil.getFaceDrawable(i);
+      return QQSysFaceUtil.getFaceDrawable(i);
     }
-    do
-    {
-      return paramString;
-      i = QQEmojiUtil.getLocalIdFromEMCode(paramString);
-      paramString = localObject;
-    } while (i == -1);
-    return QQEmojiUtil.getEmojiDrawable(i);
+    i = QQEmojiUtil.getLocalIdFromEMCode(paramString);
+    if (i != -1) {
+      return QQEmojiUtil.getEmojiDrawable(i);
+    }
+    return null;
   }
   
   public String getEmoString(int paramInt1, int paramInt2)
   {
-    String str = null;
     if (paramInt1 == 1) {
-      str = QQSysFaceUtil.getFaceString(paramInt2);
+      return QQSysFaceUtil.getFaceString(paramInt2);
     }
-    while (paramInt1 != 2) {
-      return str;
+    if (paramInt1 == 2) {
+      return TextUtils.getEmojiString(paramInt2);
     }
-    return TextUtils.getEmojiString(paramInt2);
+    return null;
   }
   
   public Drawable getEmojiDrawable(int paramInt)
@@ -74,7 +69,7 @@ public class SysEmoApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qqemoticon.api.impl.SysEmoApiImpl
  * JD-Core Version:    0.7.0.1
  */

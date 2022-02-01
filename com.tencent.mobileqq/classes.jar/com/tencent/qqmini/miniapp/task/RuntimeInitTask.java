@@ -27,9 +27,10 @@ public class RuntimeInitTask
     MiniAppInfo localMiniAppInfo = getRuntimeLoader().getMiniAppInfo();
     IAppBrandService localIAppBrandService = getAppBrandService();
     this.appBrandRuntime = ((BaseAppBrandRuntime)getRuntimeLoader().getRuntime());
-    if ((this.appBrandRuntime != null) && (localIAppBrandService != null) && (localMiniAppInfo != null))
+    BaseAppBrandRuntime localBaseAppBrandRuntime = this.appBrandRuntime;
+    if ((localBaseAppBrandRuntime != null) && (localIAppBrandService != null) && (localMiniAppInfo != null))
     {
-      this.appBrandRuntime.init(localIAppBrandService);
+      localBaseAppBrandRuntime.init(localIAppBrandService);
       this.appBrandRuntime.loadMiniApp(localMiniAppInfo);
       localIAppBrandService.setApkgInfo((ApkgInfo)localMiniAppInfo.apkgInfo);
       onTaskSucceed();
@@ -65,7 +66,7 @@ public class RuntimeInitTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.task.RuntimeInitTask
  * JD-Core Version:    0.7.0.1
  */

@@ -50,44 +50,50 @@ class an
   
   public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(this.c)) {
-      throw new IOException("Halley set empty bizHost");
-    }
-    new StringBuilder("customized createSocket. host: ").append(this.c);
-    try
+    if (!TextUtils.isEmpty(this.c))
     {
-      if (Build.VERSION.SDK_INT < 17)
+      new StringBuilder("customized createSocket. host: ").append(this.c);
+      try
       {
-        paramSocket = (SSLSocket)((SSLCertificateSocketFactory)SSLCertificateSocketFactory.getInsecure(10000, new SSLSessionCache(m.a()))).createSocket(paramSocket, this.c, paramInt, paramBoolean);
+        if (Build.VERSION.SDK_INT < 17)
+        {
+          paramSocket = (SSLSocket)((SSLCertificateSocketFactory)SSLCertificateSocketFactory.getInsecure(10000, new SSLSessionCache(m.a()))).createSocket(paramSocket, this.c, paramInt, paramBoolean);
+          paramSocket.setEnabledProtocols(paramSocket.getSupportedProtocols());
+          paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { this.c });
+          paramSocket.startHandshake();
+          return paramSocket;
+        }
+        paramString = (SSLCertificateSocketFactory)SSLCertificateSocketFactory.getInsecure(10000, new SSLSessionCache(m.a()));
+        paramSocket = (SSLSocket)paramString.createSocket(paramSocket, this.c, paramInt, paramBoolean);
+        paramString.setUseSessionTickets(paramSocket, true);
         paramSocket.setEnabledProtocols(paramSocket.getSupportedProtocols());
-        paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { this.c });
+        paramString.setHostname(paramSocket, this.c);
         paramSocket.startHandshake();
         return paramSocket;
       }
-      paramString = (SSLCertificateSocketFactory)SSLCertificateSocketFactory.getInsecure(10000, new SSLSessionCache(m.a()));
-      paramSocket = (SSLSocket)paramString.createSocket(paramSocket, this.c, paramInt, paramBoolean);
-      paramString.setUseSessionTickets(paramSocket, true);
-      paramSocket.setEnabledProtocols(paramSocket.getSupportedProtocols());
-      paramString.setHostname(paramSocket, this.c);
-      paramSocket.startHandshake();
-      return paramSocket;
+      catch (Throwable paramSocket)
+      {
+        this.a = true;
+        throw new IOException("HalleySNI exception: ".concat(String.valueOf(paramSocket)));
+      }
     }
-    catch (Throwable paramSocket)
-    {
-      this.a = true;
-      throw new IOException("HalleySNI exception: ".concat(String.valueOf(paramSocket)));
-    }
+    throw new IOException("Halley set empty bizHost");
   }
   
   public boolean equals(Object paramObject)
   {
-    if ((TextUtils.isEmpty(this.c)) || (!(paramObject instanceof an))) {}
-    do
+    if (!TextUtils.isEmpty(this.c))
     {
-      return false;
+      if (!(paramObject instanceof an)) {
+        return false;
+      }
       paramObject = ((an)paramObject).c;
-    } while (TextUtils.isEmpty(paramObject));
-    return this.c.equals(paramObject);
+      if (TextUtils.isEmpty(paramObject)) {
+        return false;
+      }
+      return this.c.equals(paramObject);
+    }
+    return false;
   }
   
   public String[] getDefaultCipherSuites()
@@ -102,7 +108,7 @@ class an
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.an
  * JD-Core Version:    0.7.0.1
  */

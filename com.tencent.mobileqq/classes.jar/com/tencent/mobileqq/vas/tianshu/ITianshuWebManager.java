@@ -9,13 +9,13 @@ public abstract interface ITianshuWebManager
   extends IVasManager
 {
   @NotNull
-  public abstract String a();
+  public abstract String getTraceInfoOfLastClick();
   
-  public abstract void a(@NotNull String paramString);
+  public abstract void setTraceInfoOfLastClick(@NotNull String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.tianshu.ITianshuWebManager
  * JD-Core Version:    0.7.0.1
  */

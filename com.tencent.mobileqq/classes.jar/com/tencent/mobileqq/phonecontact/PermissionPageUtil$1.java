@@ -9,16 +9,18 @@ class PermissionPageUtil$1
   
   public void run()
   {
-    String str = null;
+    String str;
     if ("Xiaomi".equals(Build.MANUFACTURER)) {
       str = PermissionPageUtil.a();
+    } else {
+      str = null;
     }
     PermissionPageUtil.a(String.format("PermissionPageUtil init [%s, %s]", new Object[] { Build.MANUFACTURER, str }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.phonecontact.PermissionPageUtil.1
  * JD-Core Version:    0.7.0.1
  */

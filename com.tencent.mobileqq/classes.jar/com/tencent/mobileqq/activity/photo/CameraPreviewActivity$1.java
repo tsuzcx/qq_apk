@@ -13,22 +13,22 @@ class CameraPreviewActivity$1
   
   public void onClick(View paramView)
   {
-    if (CameraPreviewActivity.a(this.a, (String)CameraPreviewActivity.a(this.a).get(0))) {}
-    for (;;)
+    CameraPreviewActivity localCameraPreviewActivity = this.a;
+    if (!CameraPreviewActivity.a(localCameraPreviewActivity, (String)CameraPreviewActivity.a(localCameraPreviewActivity).get(0)))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       if (this.a.b) {
         ReportController.b(this.a.app, "CliOper", "", "", "0X8004D96", "0X8004D96", 0, 0, "", "", "", "");
       }
-      PhotoUtils.sendPhoto(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 2, true);
+      localCameraPreviewActivity = this.a;
+      PhotoUtils.sendPhoto(localCameraPreviewActivity, localCameraPreviewActivity.getIntent(), CameraPreviewActivity.a(this.a), 2, true);
       paramView.setClickable(false);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.CameraPreviewActivity.1
  * JD-Core Version:    0.7.0.1
  */

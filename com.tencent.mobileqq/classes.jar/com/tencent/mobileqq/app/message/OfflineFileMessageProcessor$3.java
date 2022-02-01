@@ -2,7 +2,7 @@ package com.tencent.mobileqq.app.message;
 
 import android.os.Bundle;
 import com.tencent.imcore.message.BaseMessageProcessor.RequestBuilder;
-import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.BaseMessageHandler;
 import com.tencent.mobileqq.service.message.MessageProtoCodec;
 import com.tencent.mobileqq.service.message.TransMsgContext;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -37,7 +37,7 @@ class OfflineFileMessageProcessor$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.OfflineFileMessageProcessor.3
  * JD-Core Version:    0.7.0.1
  */

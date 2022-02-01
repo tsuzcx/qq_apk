@@ -12,11 +12,17 @@ import android.widget.ImageView;
 public class RoundRectImageView
   extends ImageView
 {
-  private int jdField_a_of_type_Int;
-  private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private int b = 0;
-  private int c;
-  private int d;
+  public static final int MODE_ALL = 1;
+  public static final int MODE_BOTTOM = 5;
+  public static final int MODE_LEFT = 2;
+  public static final int MODE_NONE = 0;
+  public static final int MODE_RIGHT = 4;
+  public static final int MODE_TOP = 3;
+  private int mLastRadius;
+  private int mLastRoundMode;
+  private int mRadius;
+  private int mRoundMode = 0;
+  private Path mRoundPath = new Path();
   
   public RoundRectImageView(Context paramContext)
   {
@@ -31,73 +37,87 @@ public class RoundRectImageView
   public RoundRectImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidGraphicsPath.setFillType(Path.FillType.EVEN_ODD);
+    this.mRoundPath.setFillType(Path.FillType.EVEN_ODD);
   }
   
-  private void a()
+  private void checkPathChanged()
   {
-    if ((this.c == this.jdField_a_of_type_Int) && (this.d == this.b)) {
+    if ((this.mLastRadius == this.mRadius) && (this.mLastRoundMode == this.mRoundMode)) {
       return;
     }
     int i = getWidth();
     int j = getHeight();
-    this.c = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    switch (this.b)
+    this.mLastRadius = this.mRadius;
+    this.mRoundPath.reset();
+    int k = this.mRoundMode;
+    if (k != 1)
     {
-    default: 
-      return;
-    case 1: 
-      this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(new RectF(0.0F, 0.0F, i, j), this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, Path.Direction.CW);
-      return;
-    case 2: 
-      localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+      if (k != 2)
+      {
+        if (k != 3)
+        {
+          if (k != 4)
+          {
+            if (k != 5) {
+              return;
+            }
+            localPath = this.mRoundPath;
+            localRectF = new RectF(0.0F, 0.0F, i, j);
+            i = this.mRadius;
+            f1 = i;
+            f2 = i;
+            f3 = i;
+            f4 = i;
+            localDirection = Path.Direction.CW;
+            localPath.addRoundRect(localRectF, new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f1, f2, f3, f4 }, localDirection);
+            return;
+          }
+          localPath = this.mRoundPath;
+          localRectF = new RectF(0.0F, 0.0F, i, j);
+          i = this.mRadius;
+          f1 = i;
+          f2 = i;
+          f3 = i;
+          f4 = i;
+          localDirection = Path.Direction.CW;
+          localPath.addRoundRect(localRectF, new float[] { 0.0F, 0.0F, f1, f2, f3, f4, 0.0F, 0.0F }, localDirection);
+          return;
+        }
+        localPath = this.mRoundPath;
+        localRectF = new RectF(0.0F, 0.0F, i, j);
+        i = this.mRadius;
+        f1 = i;
+        f2 = i;
+        f3 = i;
+        f4 = i;
+        localDirection = Path.Direction.CW;
+        localPath.addRoundRect(localRectF, new float[] { f1, f2, f3, f4, 0.0F, 0.0F, 0.0F, 0.0F }, localDirection);
+        return;
+      }
+      localPath = this.mRoundPath;
       localRectF = new RectF(0.0F, 0.0F, i, j);
-      f1 = this.jdField_a_of_type_Int;
-      f2 = this.jdField_a_of_type_Int;
-      f3 = this.jdField_a_of_type_Int;
-      f4 = this.jdField_a_of_type_Int;
-      localDirection = Path.Direction.CW;
+      i = this.mRadius;
+      float f1 = i;
+      float f2 = i;
+      float f3 = i;
+      float f4 = i;
+      Path.Direction localDirection = Path.Direction.CW;
       localPath.addRoundRect(localRectF, new float[] { f1, f2, 0.0F, 0.0F, 0.0F, 0.0F, f3, f4 }, localDirection);
       return;
-    case 3: 
-      localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-      localRectF = new RectF(0.0F, 0.0F, i, j);
-      f1 = this.jdField_a_of_type_Int;
-      f2 = this.jdField_a_of_type_Int;
-      f3 = this.jdField_a_of_type_Int;
-      f4 = this.jdField_a_of_type_Int;
-      localDirection = Path.Direction.CW;
-      localPath.addRoundRect(localRectF, new float[] { f1, f2, f3, f4, 0.0F, 0.0F, 0.0F, 0.0F }, localDirection);
-      return;
-    case 4: 
-      localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-      localRectF = new RectF(0.0F, 0.0F, i, j);
-      f1 = this.jdField_a_of_type_Int;
-      f2 = this.jdField_a_of_type_Int;
-      f3 = this.jdField_a_of_type_Int;
-      f4 = this.jdField_a_of_type_Int;
-      localDirection = Path.Direction.CW;
-      localPath.addRoundRect(localRectF, new float[] { 0.0F, 0.0F, f1, f2, f3, f4, 0.0F, 0.0F }, localDirection);
-      return;
     }
-    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+    Path localPath = this.mRoundPath;
     RectF localRectF = new RectF(0.0F, 0.0F, i, j);
-    float f1 = this.jdField_a_of_type_Int;
-    float f2 = this.jdField_a_of_type_Int;
-    float f3 = this.jdField_a_of_type_Int;
-    float f4 = this.jdField_a_of_type_Int;
-    Path.Direction localDirection = Path.Direction.CW;
-    localPath.addRoundRect(localRectF, new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f1, f2, f3, f4 }, localDirection);
+    i = this.mRadius;
+    localPath.addRoundRect(localRectF, i, i, Path.Direction.CW);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.b != 0)
+    if (this.mRoundMode != 0)
     {
       int i = paramCanvas.save();
-      a();
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+      checkPathChanged();
+      paramCanvas.clipPath(this.mRoundPath);
       super.draw(paramCanvas);
       paramCanvas.restoreToCount(i);
       return;
@@ -107,13 +127,13 @@ public class RoundRectImageView
   
   public void setCornerRadiusAndMode(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.mRadius = paramInt1;
+    this.mRoundMode = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.RoundRectImageView
  * JD-Core Version:    0.7.0.1
  */

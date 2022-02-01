@@ -42,16 +42,17 @@ public abstract class AbsWindow
   
   public static AbsWindow a(DanmakuContext paramDanmakuContext, CacheDrawManager paramCacheDrawManager, Comparator<BaseDanmaku> paramComparator, PlayerTimer paramPlayerTimer, DanmakuDrawTimer paramDanmakuDrawTimer)
   {
-    return new R2LWindow(paramDanmakuContext, paramCacheDrawManager, paramComparator, paramPlayerTimer, paramDanmakuDrawTimer);
+    return paramDanmakuContext.a(paramDanmakuContext, paramCacheDrawManager, paramComparator, paramPlayerTimer, paramDanmakuDrawTimer);
   }
   
   private void a(Canvas paramCanvas, DanmakuContext paramDanmakuContext, long paramLong)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (paramCanvas != null))
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    if ((localObject != null) && (paramCanvas != null))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((IDMViewOverlayDrawer)localIterator.next()).a(paramCanvas, paramDanmakuContext, paramLong);
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((IDMViewOverlayDrawer)((Iterator)localObject).next()).a(paramCanvas, paramDanmakuContext, paramLong);
       }
     }
   }
@@ -88,6 +89,11 @@ public abstract class AbsWindow
     this.jdField_a_of_type_JavaUtilTreeSet.add(paramBaseDanmaku);
   }
   
+  public void a(DanmakuDrawTimer paramDanmakuDrawTimer)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDanmakuToolDanmakuDrawTimer = paramDanmakuDrawTimer;
+  }
+  
   public abstract void b();
   
   public abstract void b(Canvas paramCanvas, long paramLong);
@@ -96,9 +102,9 @@ public abstract class AbsWindow
   {
     paramBaseDanmaku.c(true);
     paramBaseDanmaku.d(true);
-    float f = paramBaseDanmaku.f();
+    float f = paramBaseDanmaku.h();
     DanmakuMeasureManager.a(this.jdField_a_of_type_ComTencentMobileqqDanmakuInjectDanmakuContext, paramBaseDanmaku);
-    paramBaseDanmaku.c((paramBaseDanmaku.f() + paramBaseDanmaku.f()) / (f + paramBaseDanmaku.f()));
+    paramBaseDanmaku.c((paramBaseDanmaku.h() + paramBaseDanmaku.f()) / (f + paramBaseDanmaku.f()));
   }
   
   public abstract void c();
@@ -114,7 +120,7 @@ public abstract class AbsWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.core.AbsWindow
  * JD-Core Version:    0.7.0.1
  */

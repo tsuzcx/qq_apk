@@ -2,6 +2,8 @@ package com.tencent.tkd.comment.publisher.qq.bridge;
 
 public abstract interface QQLogBridge
 {
+  public static final QQLogBridge EMPTY = new QQLogBridge.1();
+  
   public abstract void d(String paramString1, String paramString2);
   
   public abstract void e(String paramString1, String paramString2);
@@ -12,7 +14,7 @@ public abstract interface QQLogBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.bridge.QQLogBridge
  * JD-Core Version:    0.7.0.1
  */

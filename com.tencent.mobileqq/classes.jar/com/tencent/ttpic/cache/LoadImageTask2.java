@@ -34,28 +34,34 @@ public class LoadImageTask2
   
   protected Boolean doInBackground(Void... paramVarArgs)
   {
-    if (this.cache == null) {
-      return Boolean.valueOf(false);
+    paramVarArgs = this.cache;
+    Boolean localBoolean = Boolean.valueOf(false);
+    if (paramVarArgs == null) {
+      return localBoolean;
     }
     Iterator localIterator = this.resourceList.iterator();
-    label167:
     while (localIterator.hasNext())
     {
       paramVarArgs = (String)localIterator.next();
       if (isCancelled()) {
-        return Boolean.valueOf(false);
+        return localBoolean;
       }
-      Object localObject = this.dataPath + File.separator + paramVarArgs;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.dataPath);
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append(paramVarArgs);
+      localObject = ((StringBuilder)localObject).toString();
       localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, this.sampleSize);
-      if (TextUtils.isEmpty(this.materialId)) {}
-      for (;;)
+      if (!TextUtils.isEmpty(this.materialId))
       {
-        if ((!BitmapUtils.isLegal((Bitmap)localObject)) || (this.cache.containsKey(paramVarArgs))) {
-          break label167;
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.materialId);
+        localStringBuilder.append(File.separator);
+        localStringBuilder.append(paramVarArgs);
+        paramVarArgs = localStringBuilder.toString();
+      }
+      if ((BitmapUtils.isLegal((Bitmap)localObject)) && (!this.cache.containsKey(paramVarArgs))) {
         this.cache.put(paramVarArgs, localObject);
-        break;
-        paramVarArgs = this.materialId + File.separator + paramVarArgs;
       }
     }
     return Boolean.valueOf(true);
@@ -68,34 +74,26 @@ public class LoadImageTask2
       return;
     }
     Iterator localIterator = this.resourceList.iterator();
-    label23:
-    label79:
-    label108:
-    for (;;)
+    while (localIterator.hasNext())
     {
-      if (localIterator.hasNext())
+      paramBoolean = (String)localIterator.next();
+      if (!TextUtils.isEmpty(this.materialId))
       {
-        paramBoolean = (String)localIterator.next();
-        if (!TextUtils.isEmpty(this.materialId)) {
-          break label79;
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.materialId);
+        localStringBuilder.append(File.separator);
+        localStringBuilder.append(paramBoolean);
+        paramBoolean = localStringBuilder.toString();
       }
-      for (;;)
-      {
-        if (!this.cache.containsKey(paramBoolean)) {
-          break label108;
-        }
+      if (this.cache.containsKey(paramBoolean)) {
         this.cache.remove(paramBoolean);
-        break label23;
-        break;
-        paramBoolean = this.materialId + File.separator + paramBoolean;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.cache.LoadImageTask2
  * JD-Core Version:    0.7.0.1
  */

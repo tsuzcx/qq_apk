@@ -15,14 +15,20 @@ class MsgTabNodeListLoader$17
   
   public void a(@NonNull QQStoryGuideRequest paramQQStoryGuideRequest, @Nullable QQStoryGuideRequest.QQStoryGuideResponse paramQQStoryGuideResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, "requestQQStoryGuide onCmdRespond = " + paramQQStoryGuideResponse + " ,errorMsg = " + paramErrorMessage);
+    if (QLog.isColorLevel())
+    {
+      paramQQStoryGuideRequest = new StringBuilder();
+      paramQQStoryGuideRequest.append("requestQQStoryGuide onCmdRespond = ");
+      paramQQStoryGuideRequest.append(paramQQStoryGuideResponse);
+      paramQQStoryGuideRequest.append(" ,errorMsg = ");
+      paramQQStoryGuideRequest.append(paramErrorMessage);
+      QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, paramQQStoryGuideRequest.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.17
  * JD-Core Version:    0.7.0.1
  */

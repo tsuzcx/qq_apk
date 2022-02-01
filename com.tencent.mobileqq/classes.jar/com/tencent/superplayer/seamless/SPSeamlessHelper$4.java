@@ -12,8 +12,9 @@ class SPSeamlessHelper$4
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    if (this.val$animatorListener != null) {
-      this.val$animatorListener.onAnimationCancel(paramAnimator);
+    Animator.AnimatorListener localAnimatorListener = this.val$animatorListener;
+    if (localAnimatorListener != null) {
+      localAnimatorListener.onAnimationCancel(paramAnimator);
     }
   }
   
@@ -24,21 +25,23 @@ class SPSeamlessHelper$4
   
   public void onAnimationRepeat(Animator paramAnimator)
   {
-    if (this.val$animatorListener != null) {
-      this.val$animatorListener.onAnimationRepeat(paramAnimator);
+    Animator.AnimatorListener localAnimatorListener = this.val$animatorListener;
+    if (localAnimatorListener != null) {
+      localAnimatorListener.onAnimationRepeat(paramAnimator);
     }
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    if (this.val$animatorListener != null) {
-      this.val$animatorListener.onAnimationStart(paramAnimator);
+    Animator.AnimatorListener localAnimatorListener = this.val$animatorListener;
+    if (localAnimatorListener != null) {
+      localAnimatorListener.onAnimationStart(paramAnimator);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.seamless.SPSeamlessHelper.4
  * JD-Core Version:    0.7.0.1
  */

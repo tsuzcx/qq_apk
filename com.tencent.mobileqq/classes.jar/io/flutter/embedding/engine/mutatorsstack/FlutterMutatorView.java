@@ -41,7 +41,8 @@ public class FlutterMutatorView
   private Matrix getPlatformViewMatrix()
   {
     Matrix localMatrix = new Matrix(this.mutatorsStack.getFinalMatrix());
-    localMatrix.preScale(1.0F / this.screenDensity, 1.0F / this.screenDensity);
+    float f = this.screenDensity;
+    localMatrix.preScale(1.0F / f, 1.0F / f);
     localMatrix.postTranslate(-this.left, -this.top);
     return localMatrix;
   }
@@ -81,22 +82,33 @@ public class FlutterMutatorView
     }
     Matrix localMatrix = new Matrix();
     int i = paramMotionEvent.getAction();
-    if (i != 0) {
-      if (i != 2) {
-        localMatrix.postTranslate(this.left, this.top);
+    float f;
+    if (i != 0)
+    {
+      if (i != 2)
+      {
+        f = this.left;
+        i = this.top;
+      }
+      else
+      {
+        localMatrix.postTranslate(this.prevLeft, this.prevTop);
+        this.prevLeft = this.left;
+        this.prevTop = this.top;
+        break label120;
       }
     }
-    for (;;)
+    else
     {
-      return this.androidTouchProcessor.onTouchEvent(paramMotionEvent, localMatrix);
-      localMatrix.postTranslate(this.prevLeft, this.prevTop);
-      this.prevLeft = this.left;
-      this.prevTop = this.top;
-      continue;
-      this.prevLeft = this.left;
-      this.prevTop = this.top;
-      localMatrix.postTranslate(this.left, this.top);
+      int j = this.left;
+      this.prevLeft = j;
+      i = this.top;
+      this.prevTop = i;
+      f = j;
     }
+    localMatrix.postTranslate(f, i);
+    label120:
+    return this.androidTouchProcessor.onTouchEvent(paramMotionEvent, localMatrix);
   }
   
   public void readyToDisplay(@NonNull FlutterMutatorsStack paramFlutterMutatorsStack, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -113,7 +125,7 @@ public class FlutterMutatorView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.mutatorsstack.FlutterMutatorView
  * JD-Core Version:    0.7.0.1
  */

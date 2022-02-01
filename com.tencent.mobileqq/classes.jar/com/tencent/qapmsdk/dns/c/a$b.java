@@ -16,106 +16,100 @@ class a$b
   {
     Object localObject1 = com.tencent.qapmsdk.dns.a.c.a().a(paramString);
     if ((localObject1 != null) && (((List)localObject1).size() > 0)) {
-      localObject1 = b.a(paramString, paramList);
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return localObject1;
-          SystemClock.elapsedRealtime();
-          localObject2 = com.tencent.qapmsdk.dns.a.a.a().b(paramString);
-          localObject1 = paramList;
-        } while (localObject2 == null);
-        localObject2 = ((com.tencent.qapmsdk.dns.b.a)localObject2).b;
-        localObject1 = paramList;
-      } while (localObject2 == null);
-      localObject1 = paramList;
-    } while (((CopyOnWriteArrayList)localObject2).size() == 0);
-    ArrayList localArrayList = new ArrayList();
-    localObject1 = d;
-    int j = localObject1.length;
-    int i = 0;
-    int k;
-    while (i < j)
-    {
-      k = localObject1[i];
-      localArrayList.add(new ArrayList());
-      i += 1;
-    }
-    localObject1 = null;
-    double d1 = 1.7976931348623157E+308D;
-    Iterator localIterator = ((CopyOnWriteArrayList)localObject2).iterator();
-    Object localObject3;
-    if (localIterator.hasNext())
-    {
-      localObject3 = (com.tencent.qapmsdk.dns.b.c)localIterator.next();
-      j = 0;
-      double d2 = d1;
-      localObject2 = localObject1;
-      if (((com.tencent.qapmsdk.dns.b.c)localObject3).c < d1)
-      {
-        d2 = ((com.tencent.qapmsdk.dns.b.c)localObject3).c;
-        localObject2 = localObject3;
-      }
-      i = 0;
-      for (;;)
-      {
-        d1 = d2;
-        localObject1 = localObject2;
-        if (i >= d.length) {
-          break;
-        }
-        k = d[i];
-        if ((((com.tencent.qapmsdk.dns.b.c)localObject3).c >= j) && (((com.tencent.qapmsdk.dns.b.c)localObject3).c < k))
-        {
-          ((List)localArrayList.get(i)).add(localObject3);
-          d1 = d2;
-          localObject1 = localObject2;
-          break;
-        }
-        j += k;
-        i += 1;
-      }
-    }
-    Object localObject2 = localArrayList.iterator();
-    while (((Iterator)localObject2).hasNext())
-    {
-      localObject3 = (List)((Iterator)localObject2).next();
-      i = ((List)localObject3).size();
-      if (i > 0) {
-        localObject1 = (com.tencent.qapmsdk.dns.b.c)((List)localObject3).get(new Random().nextInt(i));
-      }
-    }
-    for (;;)
-    {
-      if (localObject1 != null)
-      {
-        j = paramList.indexOf(((com.tencent.qapmsdk.dns.b.c)localObject1).a);
-        paramString = new ArrayList();
-        paramString.add(((com.tencent.qapmsdk.dns.b.c)localObject1).a);
-        i = 0;
-        if (i < paramList.size())
-        {
-          if (i == j) {}
-          for (;;)
-          {
-            i += 1;
-            break;
-            paramString.add(paramList.get(i));
-          }
-        }
-        return paramString;
-      }
       return b.a(paramString, paramList);
     }
+    SystemClock.elapsedRealtime();
+    localObject1 = com.tencent.qapmsdk.dns.a.a.a().b(paramString);
+    if (localObject1 != null)
+    {
+      Object localObject2 = ((com.tencent.qapmsdk.dns.b.a)localObject1).b;
+      if (localObject2 != null)
+      {
+        if (((CopyOnWriteArrayList)localObject2).size() == 0) {
+          return paramList;
+        }
+        ArrayList localArrayList = new ArrayList();
+        localObject1 = d;
+        int j = localObject1.length;
+        int k = 0;
+        int i = 0;
+        int m;
+        while (i < j)
+        {
+          m = localObject1[i];
+          localArrayList.add(new ArrayList());
+          i += 1;
+        }
+        localObject1 = null;
+        double d1 = 1.7976931348623157E+308D;
+        Iterator localIterator = ((CopyOnWriteArrayList)localObject2).iterator();
+        if (localIterator.hasNext())
+        {
+          localObject3 = (com.tencent.qapmsdk.dns.b.c)localIterator.next();
+          localObject2 = localObject1;
+          double d2 = d1;
+          if (((com.tencent.qapmsdk.dns.b.c)localObject3).c < d1)
+          {
+            d2 = ((com.tencent.qapmsdk.dns.b.c)localObject3).c;
+            localObject2 = localObject3;
+          }
+          i = 0;
+          j = 0;
+          for (;;)
+          {
+            int[] arrayOfInt = d;
+            localObject1 = localObject2;
+            d1 = d2;
+            if (i >= arrayOfInt.length) {
+              break;
+            }
+            m = arrayOfInt[i];
+            if ((((com.tencent.qapmsdk.dns.b.c)localObject3).c >= j) && (((com.tencent.qapmsdk.dns.b.c)localObject3).c < m))
+            {
+              ((List)localArrayList.get(i)).add(localObject3);
+              localObject1 = localObject2;
+              d1 = d2;
+              break;
+            }
+            j += m;
+            i += 1;
+          }
+        }
+        Object localObject3 = localArrayList.iterator();
+        do
+        {
+          localObject2 = localObject1;
+          if (!((Iterator)localObject3).hasNext()) {
+            break;
+          }
+          localObject2 = (List)((Iterator)localObject3).next();
+          i = ((List)localObject2).size();
+        } while (i <= 0);
+        localObject2 = (com.tencent.qapmsdk.dns.b.c)((List)localObject2).get(new Random().nextInt(i));
+        if (localObject2 != null)
+        {
+          j = paramList.indexOf(((com.tencent.qapmsdk.dns.b.c)localObject2).a);
+          paramString = new ArrayList();
+          paramString.add(((com.tencent.qapmsdk.dns.b.c)localObject2).a);
+          i = k;
+          while (i < paramList.size())
+          {
+            if (i != j) {
+              paramString.add(paramList.get(i));
+            }
+            i += 1;
+          }
+          return paramString;
+        }
+        return b.a(paramString, paramList);
+      }
+    }
+    return paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.dns.c.a.b
  * JD-Core Version:    0.7.0.1
  */

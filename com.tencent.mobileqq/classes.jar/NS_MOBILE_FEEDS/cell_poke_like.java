@@ -33,15 +33,16 @@ public final class cell_poke_like
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.emotion_id != null) {
-      paramJceOutputStream.write(this.emotion_id, 0);
+    ArrayList localArrayList = this.emotion_id;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
     paramJceOutputStream.write(this.count, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_poke_like
  * JD-Core Version:    0.7.0.1
  */

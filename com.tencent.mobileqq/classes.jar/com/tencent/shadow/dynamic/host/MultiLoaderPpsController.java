@@ -74,56 +74,60 @@ public class MultiLoaderPpsController
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
-    int i;
     try
     {
       localParcel1.writeInterfaceToken(MultiLoaderPpsBinder.DESCRIPTOR);
       localParcel1.writeString(paramString1);
       localParcel1.writeString(paramString2);
       this.mRemote.transact(2, localParcel1, localParcel2, 0);
-      i = localParcel2.readInt();
-      if (i == 1) {
-        throw new FailedException(localParcel2);
+      int i = localParcel2.readInt();
+      if (i != 1)
+      {
+        if (i == 0) {
+          return;
+        }
+        paramString1 = new StringBuilder();
+        paramString1.append("不认识的Code==");
+        paramString1.append(i);
+        throw new RuntimeException(paramString1.toString());
       }
+      throw new FailedException(localParcel2);
     }
     finally
     {
       localParcel2.recycle();
       localParcel1.recycle();
     }
-    if (i != 0) {
-      throw new RuntimeException("不认识的Code==" + i);
-    }
-    localParcel2.recycle();
-    localParcel1.recycle();
   }
   
   public void loadRuntimeForPlugin(String paramString1, String paramString2)
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
-    int i;
     try
     {
       localParcel1.writeInterfaceToken(MultiLoaderPpsBinder.DESCRIPTOR);
       localParcel1.writeString(paramString1);
       localParcel1.writeString(paramString2);
       this.mRemote.transact(1, localParcel1, localParcel2, 0);
-      i = localParcel2.readInt();
-      if (i == 1) {
-        throw new FailedException(localParcel2);
+      int i = localParcel2.readInt();
+      if (i != 1)
+      {
+        if (i == 0) {
+          return;
+        }
+        paramString1 = new StringBuilder();
+        paramString1.append("不认识的Code==");
+        paramString1.append(i);
+        throw new RuntimeException(paramString1.toString());
       }
+      throw new FailedException(localParcel2);
     }
     finally
     {
       localParcel2.recycle();
       localParcel1.recycle();
     }
-    if (i != 0) {
-      throw new RuntimeException("不认识的Code==" + i);
-    }
-    localParcel2.recycle();
-    localParcel1.recycle();
   }
   
   public void setUuidManagerForPlugin(String paramString, IBinder paramIBinder)
@@ -148,7 +152,7 @@ public class MultiLoaderPpsController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.shadow.dynamic.host.MultiLoaderPpsController
  * JD-Core Version:    0.7.0.1
  */

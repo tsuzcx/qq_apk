@@ -16,7 +16,7 @@ import mqq.manager.Manager;
 public class InputStatusPushManager
   implements Manager
 {
-  private static final String jdField_a_of_type_JavaLangString = InputStatusPushManager.class.getSimpleName();
+  private static final String jdField_a_of_type_JavaLangString = "InputStatusPushManager";
   private Handler jdField_a_of_type_AndroidOsHandler;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private Runnable jdField_a_of_type_JavaLangRunnable = new InputStatusPushManager.1(this);
@@ -46,7 +46,8 @@ public class InputStatusPushManager
   
   private boolean a()
   {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && ((this.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof LimitChatPie))) {
+    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if ((localWeakReference != null) && ((localWeakReference.get() instanceof LimitChatPie))) {
       return c();
     }
     return b();
@@ -95,12 +96,27 @@ public class InputStatusPushManager
   
   public void a(long paramLong1, long paramLong2, long paramLong3, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "receive fromUin =" + paramLong1 + "，toUin，timeStamp =" + paramLong3 + "，interval =" + paramInt1 + "，showTime =" + paramInt2 + "，eventType = " + paramInt3 + "，statusText =" + paramString);
+    Object localObject2;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("receive fromUin =");
+      ((StringBuilder)localObject2).append(paramLong1);
+      ((StringBuilder)localObject2).append("，toUin，timeStamp =");
+      ((StringBuilder)localObject2).append(paramLong3);
+      ((StringBuilder)localObject2).append("，interval =");
+      ((StringBuilder)localObject2).append(paramInt1);
+      ((StringBuilder)localObject2).append("，showTime =");
+      ((StringBuilder)localObject2).append(paramInt2);
+      ((StringBuilder)localObject2).append("，eventType = ");
+      ((StringBuilder)localObject2).append(paramInt3);
+      ((StringBuilder)localObject2).append("，statusText =");
+      ((StringBuilder)localObject2).append(paramString);
+      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
-    String str1;
-    boolean bool;
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (a()))
+    Object localObject1 = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if ((localObject1 != null) && (((WeakReference)localObject1).get() != null) && (a()))
     {
       a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       if (a() != null)
@@ -108,43 +124,38 @@ public class InputStatusPushManager
         a().a = (paramInt1 * 1000);
         a().b = paramLong3;
       }
-      str1 = ((BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      String str2 = ((BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      if ((TextUtils.equals(str1, String.valueOf(paramLong1))) && (TextUtils.equals(str2, String.valueOf(paramLong2))))
+      localObject1 = ((BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      localObject2 = ((BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      if ((TextUtils.equals((CharSequence)localObject1, String.valueOf(paramLong1))) && (TextUtils.equals((CharSequence)localObject2, String.valueOf(paramLong2))))
       {
-        if (paramInt3 == 2) {
-          break label284;
+        boolean bool;
+        if (paramInt3 != 2) {
+          bool = true;
+        } else {
+          bool = false;
         }
-        bool = true;
-        if (!bool) {
-          break label300;
-        }
-        str1 = paramString;
-        if (TextUtils.isEmpty(paramString))
+        if (bool)
         {
-          if (paramInt3 != 1) {
-            break label290;
+          localObject1 = paramString;
+          if (TextUtils.isEmpty(paramString))
+          {
+            if (paramInt3 == 1) {
+              paramInt1 = 2131705860;
+            } else {
+              paramInt1 = 2131705861;
+            }
+            localObject1 = HardCodeUtil.a(paramInt1);
           }
-          str1 = HardCodeUtil.a(2131705813);
+          a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, paramInt2 * 1000);
         }
-        label246:
-        a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, paramInt2 * 1000);
+        else
+        {
+          localObject1 = "";
+        }
+        if (a() != null) {
+          a().a(bool, (String)localObject1);
+        }
       }
-    }
-    for (;;)
-    {
-      if (a() != null) {
-        a().a(bool, str1);
-      }
-      return;
-      label284:
-      bool = false;
-      break;
-      label290:
-      str1 = HardCodeUtil.a(2131705814);
-      break label246;
-      label300:
-      str1 = "";
     }
   }
   
@@ -155,14 +166,15 @@ public class InputStatusPushManager
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (localHandler != null) {
+      localHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.inputstatus.InputStatusPushManager
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,11 @@ class MiniProgramReporter$2
   {
     if (paramBoolean)
     {
-      QMLog.d("MiniProgramReporter", "performDataReportViaSSO  onDcReport() called with: isSuc = [true], ret = [" + paramJSONObject + "]");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("performDataReportViaSSO  onDcReport() called with: isSuc = [true], ret = [");
+      localStringBuilder.append(paramJSONObject);
+      localStringBuilder.append("]");
+      QMLog.d("MiniProgramReporter", localStringBuilder.toString());
       return;
     }
     QMLog.e("MiniProgramReporter", "performDataReportViaSSO onDcReport: sso command failed, try again");
@@ -23,7 +27,7 @@ class MiniProgramReporter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniProgramReporter.2
  * JD-Core Version:    0.7.0.1
  */

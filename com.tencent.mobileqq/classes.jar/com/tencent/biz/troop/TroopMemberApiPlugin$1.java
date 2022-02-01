@@ -1,10 +1,11 @@
 package com.tencent.biz.troop;
 
 import android.os.Bundle;
+import com.tencent.mobileqq.troop.api.ITroopMemberApiClientApi.Callback;
 import com.tencent.qphone.base.util.QLog;
 
 class TroopMemberApiPlugin$1
-  implements TroopMemberApiClient.Callback
+  implements ITroopMemberApiClientApi.Callback
 {
   TroopMemberApiPlugin$1(TroopMemberApiPlugin paramTroopMemberApiPlugin, String paramString) {}
   
@@ -15,16 +16,21 @@ class TroopMemberApiPlugin$1
     {
       paramBundle = paramBundle.getString("data");
       this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d(this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.TAG, 2, "getTroopBarPublishInfo() in callback isSuccess=" + bool);
+    if (QLog.isColorLevel())
+    {
+      paramBundle = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getTroopBarPublishInfo() in callback isSuccess=");
+      localStringBuilder.append(bool);
+      QLog.d(paramBundle, 2, localStringBuilder.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiPlugin.1
  * JD-Core Version:    0.7.0.1
  */

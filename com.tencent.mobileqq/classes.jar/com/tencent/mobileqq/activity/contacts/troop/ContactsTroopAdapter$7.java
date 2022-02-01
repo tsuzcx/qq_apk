@@ -1,12 +1,8 @@
 package com.tencent.mobileqq.activity.contacts.troop;
 
 import android.view.View;
-import com.tencent.mobileqq.app.BizTroopHandler;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.statistics.ReportTask;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
@@ -17,42 +13,12 @@ class ContactsTroopAdapter$7
   
   public void OnClick(View paramView, int paramInt)
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo;
-    boolean bool;
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      bool = true;
-      paramView.a((DiscussionInfo)localObject, bool);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label155;
-      }
-      paramInt = 1;
-      label43:
-      paramView = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.uin;
-      ((BizTroopHandler)this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.a.getBusinessHandler(BusinessHandlerFactory.BIZ_TROOP_HANDLER)).notifyUI(18, true, new Object[] { paramView, Integer.valueOf(paramInt), Integer.valueOf(0), null });
-      localObject = new ReportTask(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.a).a("dc00899").b("Grp_Dis_set").c("Grp_contactlist");
-      if (!this.jdField_a_of_type_Boolean) {
-        break label160;
-      }
-    }
-    label155:
-    label160:
-    for (paramView = "Clk_unstick";; paramView = "Clk_stick")
-    {
-      ((ReportTask)localObject).d(paramView).a();
-      return;
-      bool = false;
-      break;
-      paramInt = 0;
-      break label43;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter.7
  * JD-Core Version:    0.7.0.1
  */

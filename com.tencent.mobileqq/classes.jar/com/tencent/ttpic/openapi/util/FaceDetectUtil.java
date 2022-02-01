@@ -39,23 +39,22 @@ public class FaceDetectUtil
   public static final int ILLEGAL_SMALL_FACE = 1;
   public static final int LEGAL_NORMAL_FACE = 0;
   public static final int MIN_EYE_WIDTH = 20;
-  public static final String TAG = FaceDetectUtil.class.getSimpleName();
+  public static final String TAG = "FaceDetectUtil";
   
   public static List<PointF> array2List(PointF[] paramArrayOfPointF)
   {
     ArrayList localArrayList = new ArrayList();
-    if (paramArrayOfPointF == null) {}
-    for (;;)
-    {
+    if (paramArrayOfPointF == null) {
       return localArrayList;
-      int j = paramArrayOfPointF.length;
-      int i = 0;
-      while (i < j)
-      {
-        localArrayList.add(paramArrayOfPointF[i]);
-        i += 1;
-      }
     }
+    int j = paramArrayOfPointF.length;
+    int i = 0;
+    while (i < j)
+    {
+      localArrayList.add(paramArrayOfPointF[i]);
+      i += 1;
+    }
+    return localArrayList;
   }
   
   private static boolean canUseTTPicDetect()
@@ -65,13 +64,13 @@ public class FaceDetectUtil
   
   public static int checkLegalFace(FaceParam paramFaceParam, int paramInt)
   {
-    if (paramFaceParam == null) {}
-    int i;
-    do
-    {
+    if (paramFaceParam == null) {
       return 1;
-      i = distance(paramFaceParam.mLeftEyeCenter, paramFaceParam.mRightEyeCenter);
-    } while (i < 20);
+    }
+    int i = distance(paramFaceParam.mLeftEyeCenter, paramFaceParam.mRightEyeCenter);
+    if (i < 20) {
+      return 1;
+    }
     if (i > paramInt) {
       return 2;
     }
@@ -142,32 +141,29 @@ public class FaceDetectUtil
   public static List<FaceParams> doPicFaceDetect(Bitmap paramBitmap, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
     ArrayList localArrayList = new ArrayList();
-    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
-      return null;
-    }
-    Object localObject;
-    if (canUseTTPicDetect())
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      localObject = new TTpicBitmapFaceDetect();
+      Object localObject;
+      if (canUseTTPicDetect()) {
+        localObject = new TTpicBitmapFaceDetect();
+      } else {
+        localObject = new AndroidFaceDetect();
+      }
       ((FaceDetect)localObject).needDetectFaceFeatures(paramBoolean1);
       ((FaceDetect)localObject).needDetectFaceGender(paramBoolean2);
       ((FaceDetect)localObject).detectFace(paramBitmap);
       if (((FaceDetect)localObject).detectedFace()) {
         localArrayList.addAll(pickAvailableFaces((FaceDetect)localObject, paramInt));
       }
-      if (!(localObject instanceof TTpicBitmapFaceDetect)) {
-        break label108;
+      if ((localObject instanceof TTpicBitmapFaceDetect))
+      {
+        ((TTpicBitmapFaceDetect)localObject).destroy();
+        return localArrayList;
       }
-      ((TTpicBitmapFaceDetect)localObject).destroy();
-    }
-    for (;;)
-    {
-      return localArrayList;
-      localObject = new AndroidFaceDetect();
-      break;
-      label108:
       ((FaceDetect)localObject).release();
+      return localArrayList;
     }
+    return null;
   }
   
   public static List<FaceParam> doPicFaceDetectbyManual(Bitmap paramBitmap, Point paramPoint1, Point paramPoint2)
@@ -178,75 +174,51 @@ public class FaceDetectUtil
   public static List<FaceParam> doPicFaceDetectbyManual(Bitmap paramBitmap, Rect paramRect, Point paramPoint1, Point paramPoint2)
   {
     ArrayList localArrayList = new ArrayList();
-    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
-      return null;
-    }
-    TTpicBitmapFaceDetect localTTpicBitmapFaceDetect = new TTpicBitmapFaceDetect();
-    localTTpicBitmapFaceDetect.needDetectFaceFeatures(true);
-    localTTpicBitmapFaceDetect.needDetectFaceGender(true);
-    localTTpicBitmapFaceDetect.detectFaceByManual(paramBitmap, paramRect, paramPoint1, paramPoint2);
-    int i = 0;
-    while (i < localTTpicBitmapFaceDetect.getFaceCount())
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      localArrayList.add(localTTpicBitmapFaceDetect.getFaceParams(i));
-      i += 1;
+      TTpicBitmapFaceDetect localTTpicBitmapFaceDetect = new TTpicBitmapFaceDetect();
+      localTTpicBitmapFaceDetect.needDetectFaceFeatures(true);
+      localTTpicBitmapFaceDetect.needDetectFaceGender(true);
+      localTTpicBitmapFaceDetect.detectFaceByManual(paramBitmap, paramRect, paramPoint1, paramPoint2);
+      int i = 0;
+      while (i < localTTpicBitmapFaceDetect.getFaceCount())
+      {
+        localArrayList.add(localTTpicBitmapFaceDetect.getFaceParams(i));
+        i += 1;
+      }
+      return localArrayList;
     }
-    return localArrayList;
+    return null;
   }
   
   public static List<PointF> facePointf83to90(List<PointF> paramList)
   {
-    if ((paramList == null) || (paramList.size() < 83)) {
-      return paramList;
+    if (paramList != null)
+    {
+      if (paramList.size() < 83) {
+        return paramList;
+      }
+      while (paramList.size() < 90) {
+        paramList.add(new PointF());
+      }
+      while (paramList.size() > 90) {
+        paramList.remove(paramList.size() - 1);
+      }
+      ((PointF)paramList.get(83)).x = (((PointF)paramList.get(55)).x + (((PointF)paramList.get(63)).x - ((PointF)paramList.get(55)).x) / 2.0F);
+      ((PointF)paramList.get(83)).y = (((PointF)paramList.get(55)).y + (((PointF)paramList.get(63)).y - ((PointF)paramList.get(55)).y) / 2.0F);
+      ((PointF)paramList.get(84)).x = (((PointF)paramList.get(23)).x + (((PointF)paramList.get(31)).x - ((PointF)paramList.get(23)).x) / 2.0F);
+      ((PointF)paramList.get(84)).y = (((PointF)paramList.get(23)).y + (((PointF)paramList.get(31)).y - ((PointF)paramList.get(23)).y) / 2.0F);
+      ((PointF)paramList.get(85)).x = (((PointF)paramList.get(59)).x + (((PointF)paramList.get(77)).x - ((PointF)paramList.get(59)).x) / 2.0F);
+      ((PointF)paramList.get(85)).y = (((PointF)paramList.get(59)).y + (((PointF)paramList.get(77)).y - ((PointF)paramList.get(59)).y) / 2.0F);
+      ((PointF)paramList.get(86)).x = (((PointF)paramList.get(35)).x + (((PointF)paramList.get(35)).x - ((PointF)paramList.get(6)).x));
+      ((PointF)paramList.get(86)).y = (((PointF)paramList.get(35)).y + (((PointF)paramList.get(35)).y - ((PointF)paramList.get(6)).y));
+      ((PointF)paramList.get(87)).x = (((PointF)paramList.get(64)).x + (((PointF)paramList.get(64)).x - ((PointF)paramList.get(9)).x) * 1.4F);
+      ((PointF)paramList.get(87)).y = (((PointF)paramList.get(64)).y + (((PointF)paramList.get(64)).y - ((PointF)paramList.get(9)).y) * 1.4F);
+      ((PointF)paramList.get(88)).x = (((PointF)paramList.get(45)).x + (((PointF)paramList.get(45)).x - ((PointF)paramList.get(12)).x));
+      ((PointF)paramList.get(88)).y = (((PointF)paramList.get(45)).y + (((PointF)paramList.get(45)).y - ((PointF)paramList.get(12)).y));
+      ((PointF)paramList.get(89)).x = (((PointF)paramList.get(83)).x + (((PointF)paramList.get(83)).x - ((PointF)paramList.get(59)).x));
+      ((PointF)paramList.get(89)).y = (((PointF)paramList.get(83)).y + (((PointF)paramList.get(83)).y - ((PointF)paramList.get(59)).y));
     }
-    while (paramList.size() < 90) {
-      paramList.add(new PointF());
-    }
-    while (paramList.size() > 90) {
-      paramList.remove(paramList.size() - 1);
-    }
-    PointF localPointF = (PointF)paramList.get(83);
-    float f = ((PointF)paramList.get(55)).x;
-    localPointF.x = ((((PointF)paramList.get(63)).x - ((PointF)paramList.get(55)).x) / 2.0F + f);
-    localPointF = (PointF)paramList.get(83);
-    f = ((PointF)paramList.get(55)).y;
-    localPointF.y = ((((PointF)paramList.get(63)).y - ((PointF)paramList.get(55)).y) / 2.0F + f);
-    localPointF = (PointF)paramList.get(84);
-    f = ((PointF)paramList.get(23)).x;
-    localPointF.x = ((((PointF)paramList.get(31)).x - ((PointF)paramList.get(23)).x) / 2.0F + f);
-    localPointF = (PointF)paramList.get(84);
-    f = ((PointF)paramList.get(23)).y;
-    localPointF.y = ((((PointF)paramList.get(31)).y - ((PointF)paramList.get(23)).y) / 2.0F + f);
-    localPointF = (PointF)paramList.get(85);
-    f = ((PointF)paramList.get(59)).x;
-    localPointF.x = ((((PointF)paramList.get(77)).x - ((PointF)paramList.get(59)).x) / 2.0F + f);
-    localPointF = (PointF)paramList.get(85);
-    f = ((PointF)paramList.get(59)).y;
-    localPointF.y = ((((PointF)paramList.get(77)).y - ((PointF)paramList.get(59)).y) / 2.0F + f);
-    localPointF = (PointF)paramList.get(86);
-    f = ((PointF)paramList.get(35)).x;
-    localPointF.x = (((PointF)paramList.get(35)).x - ((PointF)paramList.get(6)).x + f);
-    localPointF = (PointF)paramList.get(86);
-    f = ((PointF)paramList.get(35)).y;
-    localPointF.y = (((PointF)paramList.get(35)).y - ((PointF)paramList.get(6)).y + f);
-    localPointF = (PointF)paramList.get(87);
-    f = ((PointF)paramList.get(64)).x;
-    localPointF.x = ((((PointF)paramList.get(64)).x - ((PointF)paramList.get(9)).x) * 1.4F + f);
-    localPointF = (PointF)paramList.get(87);
-    f = ((PointF)paramList.get(64)).y;
-    localPointF.y = ((((PointF)paramList.get(64)).y - ((PointF)paramList.get(9)).y) * 1.4F + f);
-    localPointF = (PointF)paramList.get(88);
-    f = ((PointF)paramList.get(45)).x;
-    localPointF.x = (((PointF)paramList.get(45)).x - ((PointF)paramList.get(12)).x + f);
-    localPointF = (PointF)paramList.get(88);
-    f = ((PointF)paramList.get(45)).y;
-    localPointF.y = (((PointF)paramList.get(45)).y - ((PointF)paramList.get(12)).y + f);
-    localPointF = (PointF)paramList.get(89);
-    f = ((PointF)paramList.get(83)).x;
-    localPointF.x = (((PointF)paramList.get(83)).x - ((PointF)paramList.get(59)).x + f);
-    localPointF = (PointF)paramList.get(89);
-    f = ((PointF)paramList.get(83)).y;
-    localPointF.y = (((PointF)paramList.get(83)).y - ((PointF)paramList.get(59)).y + f);
     return paramList;
   }
   
@@ -259,7 +231,8 @@ public class FaceDetectUtil
     int i = 0;
     while (i < paramArrayOfFloat.length / 2)
     {
-      arrayOfPointF[i] = new PointF(paramArrayOfFloat[(i * 2)], paramArrayOfFloat[(i * 2 + 1)]);
+      int j = i * 2;
+      arrayOfPointF[i] = new PointF(paramArrayOfFloat[j], paramArrayOfFloat[(j + 1)]);
       i += 1;
     }
     return arrayOfPointF;
@@ -275,64 +248,88 @@ public class FaceDetectUtil
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (TTFaceOriginDataModel)((Iterator)localObject1).next();
-      localObject3 = new float['¼'];
-      int i = 0;
-      while (i < 67)
+      localObject4 = new float['¼'];
+      int j = 0;
+      int i;
+      int k;
+      for (;;)
       {
-        localObject3[(i * 2)] = localObject2.facePoint[(i + 21)][0];
-        localObject3[(i * 2 + 1)] = localObject2.facePoint[(i + 21)][1];
+        i = 67;
+        if (j >= 67) {
+          break;
+        }
+        i = j * 2;
+        localObject3 = ((TTFaceOriginDataModel)localObject2).facePoint;
+        k = j + 21;
+        localObject4[i] = localObject3[k][0];
+        localObject4[(i + 1)] = localObject2.facePoint[k][1];
+        j += 1;
+      }
+      for (;;)
+      {
+        j = 88;
+        if (i >= 88) {
+          break;
+        }
+        j = i * 2;
+        localObject3 = ((TTFaceOriginDataModel)localObject2).facePoint;
+        k = i - 67;
+        localObject4[j] = localObject3[k][0];
+        localObject4[(j + 1)] = localObject2.facePoint[k][1];
         i += 1;
       }
-      i = 67;
-      while (i < 88)
+      while (j < 94)
       {
-        localObject3[(i * 2)] = localObject2.facePoint[(i - 67)][0];
-        localObject3[(i * 2 + 1)] = localObject2.facePoint[(i - 67)][1];
-        i += 1;
+        i = j * 2;
+        localObject4[i] = localObject2.facePoint[j][0];
+        localObject4[(i + 1)] = localObject2.facePoint[j][1];
+        j += 1;
       }
-      i = 88;
-      while (i < 94)
-      {
-        localObject3[(i * 2)] = localObject2.facePoint[i][0];
-        localObject3[(i * 2 + 1)] = localObject2.facePoint[i][1];
-        i += 1;
-      }
-      localObject4 = new FaceInfo();
-      ((FaceInfo)localObject4).points = YoutuPointsUtil.transformYTPointsToPtuPoints((float[])localObject3);
-      ((FaceInfo)localObject4).irisPoints = YoutuPointsUtil.getIrisPoints((float[])localObject3);
-      ((FaceInfo)localObject4).pointsVis = YoutuPointsUtil.transformYTPointsVisToPtuPoints(((TTFaceOriginDataModel)localObject2).facePointVisible);
-      ((FaceInfo)localObject4).pointsVis = YoutuPointsUtil.smoothYTPointsVisPoints(((FaceInfo)localObject4).pointsVis);
-      ((FaceInfo)localObject4).angles[0] = ((float)(((TTFaceOriginDataModel)localObject2).pitch * 3.141592653589793D / 180.0D) * -1.0F);
-      ((FaceInfo)localObject4).angles[1] = ((float)(((TTFaceOriginDataModel)localObject2).yaw * 3.141592653589793D / 180.0D) * -1.0F);
-      ((FaceInfo)localObject4).angles[2] = ((float)(((TTFaceOriginDataModel)localObject2).roll * 3.141592653589793D / 180.0D) * -1.0F);
-      ((FaceInfo)localObject4).pitch = ((TTFaceOriginDataModel)localObject2).pitch;
-      ((FaceInfo)localObject4).yaw = ((TTFaceOriginDataModel)localObject2).yaw;
-      ((FaceInfo)localObject4).roll = ((TTFaceOriginDataModel)localObject2).roll;
-      ((FaceInfo)localObject4).scale = 0.0F;
-      ((FaceInfo)localObject4).tx = 0.0F;
-      ((FaceInfo)localObject4).ty = 0.0F;
-      ((FaceInfo)localObject4).denseFaceModel = null;
-      ((FaceInfo)localObject4).transform = null;
-      ((FaceInfo)localObject4).expressionWeights = null;
-      ((FaceInfo)localObject4).gender = GenderType.FEMALE.value;
-      localArrayList.add(localObject4);
+      localObject3 = new FaceInfo();
+      ((FaceInfo)localObject3).points = YoutuPointsUtil.transformYTPointsToPtuPoints((float[])localObject4);
+      ((FaceInfo)localObject3).irisPoints = YoutuPointsUtil.getIrisPoints((float[])localObject4);
+      ((FaceInfo)localObject3).pointsVis = YoutuPointsUtil.transformYTPointsVisToPtuPoints(((TTFaceOriginDataModel)localObject2).facePointVisible);
+      ((FaceInfo)localObject3).pointsVis = YoutuPointsUtil.smoothYTPointsVisPoints(((FaceInfo)localObject3).pointsVis);
+      localObject4 = ((FaceInfo)localObject3).angles;
+      double d = ((TTFaceOriginDataModel)localObject2).pitch;
+      Double.isNaN(d);
+      localObject4[0] = ((float)(d * 3.141592653589793D / 180.0D) * -1.0F);
+      localObject4 = ((FaceInfo)localObject3).angles;
+      d = ((TTFaceOriginDataModel)localObject2).yaw;
+      Double.isNaN(d);
+      localObject4[1] = ((float)(d * 3.141592653589793D / 180.0D) * -1.0F);
+      localObject4 = ((FaceInfo)localObject3).angles;
+      d = ((TTFaceOriginDataModel)localObject2).roll;
+      Double.isNaN(d);
+      localObject4[2] = ((float)(d * 3.141592653589793D / 180.0D) * -1.0F);
+      ((FaceInfo)localObject3).pitch = ((TTFaceOriginDataModel)localObject2).pitch;
+      ((FaceInfo)localObject3).yaw = ((TTFaceOriginDataModel)localObject2).yaw;
+      ((FaceInfo)localObject3).roll = ((TTFaceOriginDataModel)localObject2).roll;
+      ((FaceInfo)localObject3).scale = 0.0F;
+      ((FaceInfo)localObject3).tx = 0.0F;
+      ((FaceInfo)localObject3).ty = 0.0F;
+      ((FaceInfo)localObject3).denseFaceModel = null;
+      ((FaceInfo)localObject3).transform = null;
+      ((FaceInfo)localObject3).expressionWeights = null;
+      ((FaceInfo)localObject3).gender = GenderType.FEMALE.value;
+      localArrayList.add(localObject3);
     }
-    Object localObject7 = new ArrayList();
     Object localObject6 = new ArrayList();
-    localObject1 = new ArrayList();
     Object localObject5 = new ArrayList();
     Object localObject2 = new ArrayList();
-    Object localObject3 = new HashSet();
-    Object localObject4 = new HashMap();
-    ((Set)localObject3).add(Integer.valueOf(1));
+    localObject1 = new ArrayList();
+    Object localObject3 = new ArrayList();
+    Object localObject4 = new HashSet();
+    HashMap localHashMap = new HashMap();
+    ((Set)localObject4).add(Integer.valueOf(1));
     Iterator localIterator = localArrayList.iterator();
     while (localIterator.hasNext())
     {
       FaceInfo localFaceInfo = (FaceInfo)localIterator.next();
-      ((List)localObject7).add(localFaceInfo.points);
-      ((List)localObject6).add(localFaceInfo.irisPoints);
-      ((List)localObject1).add(localFaceInfo.pointsVis);
-      ((List)localObject5).add(localFaceInfo.angles);
+      ((List)localObject6).add(localFaceInfo.points);
+      ((List)localObject5).add(localFaceInfo.irisPoints);
+      ((List)localObject2).add(localFaceInfo.pointsVis);
+      ((List)localObject1).add(localFaceInfo.angles);
       FaceStatus localFaceStatus = new FaceStatus();
       localFaceStatus.pitch = localFaceInfo.pitch;
       localFaceStatus.yaw = localFaceInfo.yaw;
@@ -348,32 +345,30 @@ public class FaceDetectUtil
       localFaceStatus.age = localFaceInfo.age;
       localFaceStatus.faceID = localFaceInfo.faceId;
       localFaceStatus.eyeEulerAngle = localFaceInfo.eyeEulerAngle;
-      ((List)localObject2).add(localFaceStatus);
+      ((List)localObject3).add(localFaceStatus);
     }
-    localObject7 = AlgoUtils.rotatePointsForList((List)localObject7, paramInt1, paramInt2, paramInt3);
     localObject6 = AlgoUtils.rotatePointsForList((List)localObject6, paramInt1, paramInt2, paramInt3);
-    localObject5 = AlgoUtils.rotateAngles((List)localObject5, -paramInt3);
+    localObject5 = AlgoUtils.rotatePointsForList((List)localObject5, paramInt1, paramInt2, paramInt3);
+    localObject1 = AlgoUtils.rotateAngles((List)localObject1, -paramInt3);
     if (paramList.size() > 0)
     {
-      ((Set)localObject3).add(Integer.valueOf(PTFaceAttr.PTExpression.FACE_DETECT.value));
-      ((Map)localObject4).put(Integer.valueOf(PTFaceAttr.PTExpression.FACE_DETECT.value), new FaceActionCounter(1, System.currentTimeMillis()));
+      ((Set)localObject4).add(Integer.valueOf(PTFaceAttr.PTExpression.FACE_DETECT.value));
+      localHashMap.put(Integer.valueOf(PTFaceAttr.PTExpression.FACE_DETECT.value), new FaceActionCounter(1, System.currentTimeMillis()));
     }
     paramList = Pair.create(Integer.valueOf(255), null);
-    return new PTFaceAttr(new PTFaceAttr.Builder().facePoints((List)localObject7).irisPoints((List)localObject6).faceAngles((List)localObject5).pointsVis((List)localObject1).faceInfoList(localArrayList).histogram(paramList).faceStatusList((List)localObject2).faceActionCounter((Map)localObject4).triggeredExpression((Set)localObject3).faceDetectScale(1.0D).timeStamp(System.currentTimeMillis()).rotation(0).faceDetector(null));
+    return new PTFaceAttr(new PTFaceAttr.Builder().facePoints((List)localObject6).irisPoints((List)localObject5).faceAngles((List)localObject1).pointsVis((List)localObject2).faceInfoList(localArrayList).histogram(paramList).faceStatusList((List)localObject3).faceActionCounter(localHashMap).triggeredExpression((Set)localObject4).faceDetectScale(1.0D).timeStamp(System.currentTimeMillis()).rotation(0).faceDetector(null));
   }
   
   public static void getAngleFromFaceParams(List<FaceParams> paramList, HashMap<FaceParam, float[]> paramHashMap)
   {
-    if (paramHashMap == null) {}
-    for (;;)
-    {
+    if (paramHashMap == null) {
       return;
-      int i = 0;
-      while (i < paramList.size())
-      {
-        paramHashMap.put(((FaceParams)paramList.get(i)).getFaceParam(), ((FaceParams)paramList.get(i)).getFaceAngles());
-        i += 1;
-      }
+    }
+    int i = 0;
+    while (i < paramList.size())
+    {
+      paramHashMap.put(((FaceParams)paramList.get(i)).getFaceParam(), ((FaceParams)paramList.get(i)).getFaceAngles());
+      i += 1;
     }
   }
   
@@ -428,42 +423,33 @@ public class FaceDetectUtil
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     FaceParams localFaceParams;
-    if (i < paramFaceDetect.getFaceCount())
+    while (i < paramFaceDetect.getFaceCount())
     {
       localFaceParams = new FaceParams();
       localFaceParams.setFaceParam(paramFaceDetect.getFaceParams(i));
       if ((paramInt != -1) || (checkLegalFace(localFaceParams.getFaceParam(), paramInt) != 1))
       {
-        if (!(paramFaceDetect instanceof TTpicBitmapFaceDetect)) {
-          break label91;
+        if ((paramFaceDetect instanceof TTpicBitmapFaceDetect)) {
+          localFaceParams.setFaceAngles(((TTpicBitmapFaceDetect)paramFaceDetect).getFaceAngles(i));
+        } else {
+          localFaceParams.setFaceAngles(new float[] { 0.0F, 0.0F, 0.0F });
         }
-        localFaceParams.setFaceAngles(((TTpicBitmapFaceDetect)paramFaceDetect).getFaceAngles(i));
-      }
-      for (;;)
-      {
         localArrayList.add(localFaceParams);
-        i += 1;
-        break;
-        label91:
-        localFaceParams.setFaceAngles(new float[] { 0.0F, 0.0F, 0.0F });
       }
+      i += 1;
     }
     if ((localArrayList.isEmpty()) && (paramFaceDetect.getFaceCount() != 0))
     {
       localFaceParams = new FaceParams();
       localFaceParams.setFaceParam((FaceParam)paramFaceDetect.mFaceParams.get(0));
-      if (!(paramFaceDetect instanceof TTpicBitmapFaceDetect)) {
-        break label188;
+      if ((paramFaceDetect instanceof TTpicBitmapFaceDetect)) {
+        localFaceParams.setFaceAngles(((TTpicBitmapFaceDetect)paramFaceDetect).getFaceAngles(0));
+      } else {
+        localFaceParams.setFaceAngles(new float[] { 0.0F, 0.0F, 0.0F });
       }
-      localFaceParams.setFaceAngles(((TTpicBitmapFaceDetect)paramFaceDetect).getFaceAngles(0));
-    }
-    for (;;)
-    {
       localArrayList.add(localFaceParams);
-      return localArrayList;
-      label188:
-      localFaceParams.setFaceAngles(new float[] { 0.0F, 0.0F, 0.0F });
     }
+    return localArrayList;
   }
   
   public static PointF[] ulsee2Orig(PointF[] paramArrayOfPointF)
@@ -476,7 +462,7 @@ public class FaceDetectUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.FaceDetectUtil
  * JD-Core Version:    0.7.0.1
  */

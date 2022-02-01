@@ -8,6 +8,7 @@ import android.os.Parcelable;
 import android.util.Log;
 import android.util.SparseArray;
 import androidx.annotation.RequiresApi;
+import androidx.core.graphics.drawable.IconCompat;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -47,8 +48,8 @@ class NotificationCompatJellybean
   
   public static SparseArray<Bundle> buildActionExtrasMap(List<Bundle> paramList)
   {
-    Object localObject1 = null;
     int j = paramList.size();
+    Object localObject1 = null;
     int i = 0;
     while (i < j)
     {
@@ -70,7 +71,6 @@ class NotificationCompatJellybean
   
   private static boolean ensureActionReflectionReadyLocked()
   {
-    boolean bool = true;
     if (sActionsAccessFailed) {
       return false;
     }
@@ -85,28 +85,18 @@ class NotificationCompatJellybean
         sActionsField = Notification.class.getDeclaredField("actions");
         sActionsField.setAccessible(true);
       }
-      if (!sActionsAccessFailed) {
-        return bool;
-      }
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      for (;;)
-      {
-        Log.e("NotificationCompat", "Unable to access notification actions", localClassNotFoundException);
-        sActionsAccessFailed = true;
-      }
     }
     catch (NoSuchFieldException localNoSuchFieldException)
     {
-      for (;;)
-      {
-        Log.e("NotificationCompat", "Unable to access notification actions", localNoSuchFieldException);
-        sActionsAccessFailed = true;
-        continue;
-        bool = false;
-      }
+      Log.e("NotificationCompat", "Unable to access notification actions", localNoSuchFieldException);
+      sActionsAccessFailed = true;
     }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      Log.e("NotificationCompat", "Unable to access notification actions", localClassNotFoundException);
+      sActionsAccessFailed = true;
+    }
+    return sActionsAccessFailed ^ true;
   }
   
   private static RemoteInput fromBundle(Bundle paramBundle)
@@ -140,37 +130,35 @@ class NotificationCompatJellybean
   
   public static NotificationCompat.Action getAction(Notification paramNotification, int paramInt)
   {
-    for (;;)
+    synchronized (sActionsLock)
     {
-      synchronized (sActionsLock)
+      try
       {
-        try
+        Object localObject2 = getActionObjectsLocked(paramNotification);
+        if (localObject2 != null)
         {
-          Object localObject2 = getActionObjectsLocked(paramNotification);
-          if (localObject2 != null)
-          {
-            localObject2 = localObject2[paramInt];
-            paramNotification = getExtras(paramNotification);
-            if (paramNotification == null) {
-              break label107;
-            }
-            paramNotification = paramNotification.getSparseParcelableArray("android.support.actionExtras");
-            if (paramNotification == null) {
-              break label107;
-            }
-            paramNotification = (Bundle)paramNotification.get(paramInt);
-            paramNotification = readAction(sActionIconField.getInt(localObject2), (CharSequence)sActionTitleField.get(localObject2), (PendingIntent)sActionIntentField.get(localObject2), paramNotification);
-            return paramNotification;
+          localObject2 = localObject2[paramInt];
+          paramNotification = getExtras(paramNotification);
+          if (paramNotification == null) {
+            break label109;
           }
-        }
-        catch (IllegalAccessException paramNotification)
-        {
-          Log.e("NotificationCompat", "Unable to access notification actions", paramNotification);
-          sActionsAccessFailed = true;
-          return null;
+          paramNotification = paramNotification.getSparseParcelableArray("android.support.actionExtras");
+          if (paramNotification == null) {
+            break label109;
+          }
+          paramNotification = (Bundle)paramNotification.get(paramInt);
+          paramNotification = readAction(sActionIconField.getInt(localObject2), (CharSequence)sActionTitleField.get(localObject2), (PendingIntent)sActionIntentField.get(localObject2), paramNotification);
+          return paramNotification;
         }
       }
-      label107:
+      catch (IllegalAccessException paramNotification)
+      {
+        Log.e("NotificationCompat", "Unable to access notification actions", paramNotification);
+        sActionsAccessFailed = true;
+        return null;
+      }
+      throw paramNotification;
+      label109:
       paramNotification = null;
     }
   }
@@ -195,10 +183,13 @@ class NotificationCompatJellybean
   static NotificationCompat.Action getActionFromBundle(Bundle paramBundle)
   {
     Bundle localBundle = paramBundle.getBundle("extras");
-    if (localBundle != null) {}
-    for (boolean bool = localBundle.getBoolean("android.support.allowGeneratedReplies", false);; bool = false) {
-      return new NotificationCompat.Action(paramBundle.getInt("icon"), paramBundle.getCharSequence("title"), (PendingIntent)paramBundle.getParcelable("actionIntent"), paramBundle.getBundle("extras"), fromBundleArray(getBundleArrayFromBundle(paramBundle, "remoteInputs")), fromBundleArray(getBundleArrayFromBundle(paramBundle, "dataOnlyRemoteInputs")), bool, paramBundle.getInt("semanticAction"), paramBundle.getBoolean("showsUserInterface"), false);
+    boolean bool;
+    if (localBundle != null) {
+      bool = localBundle.getBoolean("android.support.allowGeneratedReplies", false);
+    } else {
+      bool = false;
     }
+    return new NotificationCompat.Action(paramBundle.getInt("icon"), paramBundle.getCharSequence("title"), (PendingIntent)paramBundle.getParcelable("actionIntent"), paramBundle.getBundle("extras"), fromBundleArray(getBundleArrayFromBundle(paramBundle, "remoteInputs")), fromBundleArray(getBundleArrayFromBundle(paramBundle, "dataOnlyRemoteInputs")), bool, paramBundle.getInt("semanticAction"), paramBundle.getBoolean("showsUserInterface"), false);
   }
   
   private static Object[] getActionObjectsLocked(Notification paramNotification)
@@ -208,55 +199,105 @@ class NotificationCompatJellybean
       if (!ensureActionReflectionReadyLocked()) {
         return null;
       }
-    }
-    return null;
-  }
-  
-  private static Bundle[] getBundleArrayFromBundle(Bundle paramBundle, String paramString)
-  {
-    Object localObject = paramBundle.getParcelableArray(paramString);
-    if (((localObject instanceof Bundle[])) || (localObject == null)) {
-      return (Bundle[])localObject;
-    }
-    localObject = (Bundle[])Arrays.copyOf((Object[])localObject, localObject.length, [Landroid.os.Bundle.class);
-    paramBundle.putParcelableArray(paramString, (Parcelable[])localObject);
-    return localObject;
-  }
-  
-  static Bundle getBundleForAction(NotificationCompat.Action paramAction)
-  {
-    Bundle localBundle2 = new Bundle();
-    localBundle2.putInt("icon", paramAction.getIcon());
-    localBundle2.putCharSequence("title", paramAction.getTitle());
-    localBundle2.putParcelable("actionIntent", paramAction.getActionIntent());
-    if (paramAction.getExtras() != null) {}
-    for (Bundle localBundle1 = new Bundle(paramAction.getExtras());; localBundle1 = new Bundle())
-    {
-      localBundle1.putBoolean("android.support.allowGeneratedReplies", paramAction.getAllowGeneratedReplies());
-      localBundle2.putBundle("extras", localBundle1);
-      localBundle2.putParcelableArray("remoteInputs", toBundleArray(paramAction.getRemoteInputs()));
-      localBundle2.putBoolean("showsUserInterface", paramAction.getShowsUserInterface());
-      localBundle2.putInt("semanticAction", paramAction.getSemanticAction());
-      return localBundle2;
-    }
-  }
-  
-  public static Bundle getExtras(Notification paramNotification)
-  {
-    Object localObject1;
-    Bundle localBundle;
-    synchronized (sExtrasLock)
-    {
-      if (sExtrasFieldAccessFailed) {
+      try
+      {
+        paramNotification = (Object[])sActionsField.get(paramNotification);
+        return paramNotification;
+      }
+      catch (IllegalAccessException paramNotification)
+      {
+        Log.e("NotificationCompat", "Unable to access notification actions", paramNotification);
+        sActionsAccessFailed = true;
         return null;
       }
     }
   }
   
+  private static Bundle[] getBundleArrayFromBundle(Bundle paramBundle, String paramString)
+  {
+    Object localObject = paramBundle.getParcelableArray(paramString);
+    if ((!(localObject instanceof Bundle[])) && (localObject != null))
+    {
+      localObject = (Bundle[])Arrays.copyOf((Object[])localObject, localObject.length, [Landroid.os.Bundle.class);
+      paramBundle.putParcelableArray(paramString, (Parcelable[])localObject);
+      return localObject;
+    }
+    return (Bundle[])localObject;
+  }
+  
+  static Bundle getBundleForAction(NotificationCompat.Action paramAction)
+  {
+    Bundle localBundle = new Bundle();
+    Object localObject = paramAction.getIconCompat();
+    int i;
+    if (localObject != null) {
+      i = ((IconCompat)localObject).getResId();
+    } else {
+      i = 0;
+    }
+    localBundle.putInt("icon", i);
+    localBundle.putCharSequence("title", paramAction.getTitle());
+    localBundle.putParcelable("actionIntent", paramAction.getActionIntent());
+    if (paramAction.getExtras() != null) {
+      localObject = new Bundle(paramAction.getExtras());
+    } else {
+      localObject = new Bundle();
+    }
+    ((Bundle)localObject).putBoolean("android.support.allowGeneratedReplies", paramAction.getAllowGeneratedReplies());
+    localBundle.putBundle("extras", (Bundle)localObject);
+    localBundle.putParcelableArray("remoteInputs", toBundleArray(paramAction.getRemoteInputs()));
+    localBundle.putBoolean("showsUserInterface", paramAction.getShowsUserInterface());
+    localBundle.putInt("semanticAction", paramAction.getSemanticAction());
+    return localBundle;
+  }
+  
+  public static Bundle getExtras(Notification paramNotification)
+  {
+    synchronized (sExtrasLock)
+    {
+      if (sExtrasFieldAccessFailed) {
+        return null;
+      }
+      try
+      {
+        if (sExtrasField == null)
+        {
+          localObject1 = Notification.class.getDeclaredField("extras");
+          if (!Bundle.class.isAssignableFrom(((Field)localObject1).getType()))
+          {
+            Log.e("NotificationCompat", "Notification.extras field is not of type Bundle");
+            sExtrasFieldAccessFailed = true;
+            return null;
+          }
+          ((Field)localObject1).setAccessible(true);
+          sExtrasField = (Field)localObject1;
+        }
+        Bundle localBundle = (Bundle)sExtrasField.get(paramNotification);
+        Object localObject1 = localBundle;
+        if (localBundle == null)
+        {
+          localObject1 = new Bundle();
+          sExtrasField.set(paramNotification, localObject1);
+        }
+        return localObject1;
+      }
+      catch (NoSuchFieldException paramNotification)
+      {
+        Log.e("NotificationCompat", "Unable to access notification extras", paramNotification);
+      }
+      catch (IllegalAccessException paramNotification)
+      {
+        Log.e("NotificationCompat", "Unable to access notification extras", paramNotification);
+      }
+      sExtrasFieldAccessFailed = true;
+      return null;
+    }
+  }
+  
   public static NotificationCompat.Action readAction(int paramInt, CharSequence paramCharSequence, PendingIntent paramPendingIntent, Bundle paramBundle)
   {
-    RemoteInput[] arrayOfRemoteInput2 = null;
     RemoteInput[] arrayOfRemoteInput1;
+    RemoteInput[] arrayOfRemoteInput2;
     boolean bool;
     if (paramBundle != null)
     {
@@ -264,12 +305,13 @@ class NotificationCompatJellybean
       arrayOfRemoteInput2 = fromBundleArray(getBundleArrayFromBundle(paramBundle, "android.support.dataRemoteInputs"));
       bool = paramBundle.getBoolean("android.support.allowGeneratedReplies");
     }
-    for (;;)
+    else
     {
-      return new NotificationCompat.Action(paramInt, paramCharSequence, paramPendingIntent, paramBundle, arrayOfRemoteInput1, arrayOfRemoteInput2, bool, 0, true, false);
-      bool = false;
       arrayOfRemoteInput1 = null;
+      arrayOfRemoteInput2 = arrayOfRemoteInput1;
+      bool = false;
     }
+    return new NotificationCompat.Action(paramInt, paramCharSequence, paramPendingIntent, paramBundle, arrayOfRemoteInput1, arrayOfRemoteInput2, bool, 0, true, false);
   }
   
   private static Bundle toBundle(RemoteInput paramRemoteInput)
@@ -310,7 +352,14 @@ class NotificationCompatJellybean
   
   public static Bundle writeActionAndGetExtras(Notification.Builder paramBuilder, NotificationCompat.Action paramAction)
   {
-    paramBuilder.addAction(paramAction.getIcon(), paramAction.getTitle(), paramAction.getActionIntent());
+    IconCompat localIconCompat = paramAction.getIconCompat();
+    int i;
+    if (localIconCompat != null) {
+      i = localIconCompat.getResId();
+    } else {
+      i = 0;
+    }
+    paramBuilder.addAction(i, paramAction.getTitle(), paramAction.getActionIntent());
     paramBuilder = new Bundle(paramAction.getExtras());
     if (paramAction.getRemoteInputs() != null) {
       paramBuilder.putParcelableArray("android.support.remoteInputs", toBundleArray(paramAction.getRemoteInputs()));
@@ -324,7 +373,7 @@ class NotificationCompatJellybean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.NotificationCompatJellybean
  * JD-Core Version:    0.7.0.1
  */

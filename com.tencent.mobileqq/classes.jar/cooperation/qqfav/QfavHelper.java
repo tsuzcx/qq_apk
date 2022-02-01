@@ -77,10 +77,14 @@ public final class QfavHelper
     String str3 = paramBundle.getString("key_fav_file_forward_name");
     long l = paramBundle.getLong("key_fav_file_forward_file_size", 0L);
     paramBundle = paramBundle.getString("forward_filepath");
-    if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)) || (arrayOfByte == null)) {
-      return null;
+    if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
+    {
+      if (arrayOfByte == null) {
+        return null;
+      }
+      return FileManagerUtil.a(str1, str2, paramBundle, str3, l, HexUtil.bytes2HexStr(arrayOfByte), paramString, paramInt);
     }
-    return FileManagerUtil.a(str1, str2, paramBundle, str3, l, HexUtil.bytes2HexStr(arrayOfByte), paramString, paramInt);
+    return null;
   }
   
   public static FileManagerEntity a(FavFileInfo paramFavFileInfo, String paramString, int paramInt)
@@ -93,71 +97,87 @@ public final class QfavHelper
     String str3 = paramFavFileInfo.c;
     long l = paramFavFileInfo.jdField_b_of_type_Long;
     String str4 = paramFavFileInfo.e;
-    if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)) || (paramFavFileInfo.n == null)) {
-      return null;
+    if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
+    {
+      if (paramFavFileInfo.n == null) {
+        return null;
+      }
+      return FileManagerUtil.a(str1, str2, str4, str3, l, paramFavFileInfo.n, paramString, paramInt);
     }
-    return FileManagerUtil.a(str1, str2, str4, str3, l, paramFavFileInfo.n, paramString, paramInt);
+    return null;
   }
   
   public static ClassLoader a()
   {
-    Object localObject = BaseApplicationImpl.getApplication().getApplicationContext();
+    Object localObject2 = BaseApplicationImpl.getApplication().getApplicationContext();
+    Object localObject1 = null;
     try
     {
-      localObject = PluginStatic.getOrCreateClassLoader((Context)localObject, "qqfav.apk");
-      QLog.i("qqfavQfavHelper#getClassLoader", 1, "Exception =" + QLog.getStackTraceString(localException1));
+      localObject2 = PluginStatic.getOrCreateClassLoader((Context)localObject2, "qqfav.apk");
+      localObject1 = localObject2;
+      BasicClassTypeUtil.setClassLoader(true, (ClassLoader)localObject2);
+      return localObject2;
     }
-    catch (Exception localException1)
+    catch (Exception localException)
     {
-      try
-      {
-        BasicClassTypeUtil.setClassLoader(true, (ClassLoader)localObject);
-        return localObject;
-      }
-      catch (Exception localException2)
-      {
-        break label24;
-      }
-      localException1 = localException1;
-      localObject = null;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Exception =");
+      localStringBuilder.append(QLog.getStackTraceString(localException));
+      QLog.i("qqfavQfavHelper#getClassLoader", 1, localStringBuilder.toString());
     }
-    label24:
-    return localObject;
+    return localObject1;
   }
   
   public static Object a(String paramString, Class<?>[] paramArrayOfClass, Object[] paramArrayOfObject)
   {
-    for (;;)
+    try
     {
       try
       {
-        Class localClass = Class.forName(paramString);
-        if (localClass == null) {
-          QLog.i("qqfavQfavHelper#createInstance", 1, "className =" + paramString + ",cls == null");
-        }
-        paramArrayOfClass = localClass.getDeclaredConstructor(paramArrayOfClass).newInstance(paramArrayOfObject);
-        if (paramArrayOfClass != null) {
-          break;
-        }
-        QLog.i("qqfavQfavHelper#createInstance", 4, "className =" + paramString + ",retObj == null");
-      }
-      catch (ClassNotFoundException localClassNotFoundException)
-      {
-        localObject = a();
-        if (localObject != null)
-        {
-          localObject = ((ClassLoader)localObject).loadClass(paramString);
-          continue;
-        }
+        localObject = Class.forName(paramString);
       }
       catch (Exception paramString)
       {
-        QLog.i("qqfavQfavHelper#createInstance", 1, "Exception =" + QLog.getStackTraceString(paramString));
-        return null;
+        break label132;
       }
-      Object localObject = null;
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      Object localObject;
+      label12:
+      StringBuilder localStringBuilder;
+      label132:
+      break label12;
+    }
+    localObject = a();
+    if (localObject != null) {
+      localObject = ((ClassLoader)localObject).loadClass(paramString);
+    } else {
+      localObject = null;
+    }
+    if (localObject == null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("className =");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",cls == null");
+      QLog.i("qqfavQfavHelper#createInstance", 1, localStringBuilder.toString());
+    }
+    paramArrayOfClass = ((Class)localObject).getDeclaredConstructor(paramArrayOfClass).newInstance(paramArrayOfObject);
+    if (paramArrayOfClass == null)
+    {
+      paramArrayOfObject = new StringBuilder();
+      paramArrayOfObject.append("className =");
+      paramArrayOfObject.append(paramString);
+      paramArrayOfObject.append(",retObj == null");
+      QLog.i("qqfavQfavHelper#createInstance", 4, paramArrayOfObject.toString());
     }
     return paramArrayOfClass;
+    paramArrayOfClass = new StringBuilder();
+    paramArrayOfClass.append("Exception =");
+    paramArrayOfClass.append(QLog.getStackTraceString(paramString));
+    QLog.i("qqfavQfavHelper#createInstance", 1, paramArrayOfClass.toString());
+    return null;
   }
   
   public static ArrayList<byte[]> a()
@@ -167,19 +187,16 @@ public final class QfavHelper
     try
     {
       ((JSONObject)localObject).put("isLongVideo", true);
-      localObject = ((JSONObject)localObject).toString().getBytes();
-      if (localObject != null) {
-        localArrayList.add(localObject);
-      }
-      return localArrayList;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    localObject = ((JSONObject)localObject).toString().getBytes();
+    if (localObject != null) {
+      localArrayList.add(localObject);
+    }
+    return localArrayList;
   }
   
   public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl)
@@ -208,25 +225,24 @@ public final class QfavHelper
     }
     catch (Throwable paramContext)
     {
-      do
-      {
-        paramContext.printStackTrace();
-      } while (paramOnPluginInstallListener == null);
-      try
-      {
-        paramOnPluginInstallListener.onInstallError("qqfav.apk", -1);
-        return;
-      }
-      catch (RemoteException paramContext)
-      {
-        paramContext.printStackTrace();
+      paramContext.printStackTrace();
+      if (paramOnPluginInstallListener != null) {
+        try
+        {
+          paramOnPluginInstallListener.onInstallError("qqfav.apk", -1);
+          return;
+        }
+        catch (RemoteException paramContext)
+        {
+          paramContext.printStackTrace();
+        }
       }
     }
   }
   
   public static void a(Context paramContext, String paramString1, boolean paramBoolean1, String paramString2, boolean paramBoolean2)
   {
-    a(paramContext, paramString1, paramBoolean1, paramString2, paramBoolean2, 2131692259);
+    a(paramContext, paramString1, paramBoolean1, paramString2, paramBoolean2, 2131692185);
   }
   
   @TargetApi(9)
@@ -237,127 +253,149 @@ public final class QfavHelper
     }
     QQToast localQQToast = new QQToast(paramContext);
     localQQToast.d(2000);
-    String str = paramString1;
     if (TextUtils.isEmpty(paramString1)) {
-      str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      paramString1 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
     }
+    Object localObject;
     if (paramBoolean1)
     {
       localQQToast.b(2);
       localQQToast.a(QQToast.a(2));
       localQQToast.c(paramInt);
-      if (!a(paramContext).getBoolean("pref_first_collection_" + str, true)) {}
+      paramString2 = a(paramContext);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("pref_first_collection_");
+      ((StringBuilder)localObject).append(paramString1);
+      if (!paramString2.getBoolean(((StringBuilder)localObject).toString(), true)) {
+        break label670;
+      }
     }
-    for (;;)
+    try
     {
-      try
+      localObject = paramContext.getString(2131692230);
+      if (paramBoolean2) {
+        paramString2 = paramContext.getString(2131692224);
+      } else {
+        paramString2 = paramContext.getString(2131692229);
+      }
+      paramString2 = DialogUtil.a(paramContext, 230, (String)localObject, paramString2, 2131690728, 2131692228, new QfavHelper.1(), null);
+      if (paramContext != BaseApplicationImpl.getContext()) {
+        break label713;
+      }
+      if (Build.VERSION.SDK_INT >= 19)
       {
-        paramString2 = paramContext.getString(2131692303);
-        if (!paramBoolean2) {
-          continue;
-        }
-        paramString1 = paramContext.getString(2131692298);
-        paramString1 = DialogUtil.a(paramContext, 230, paramString2, paramString1, 2131690800, 2131692301, new QfavHelper.1(), null);
-        if (paramContext != BaseApplicationImpl.getContext()) {
-          break label647;
-        }
-        if (Build.VERSION.SDK_INT < 19) {
-          continue;
-        }
-        if (Build.VERSION.SDK_INT < 26) {
-          continue;
-        }
-        paramString1.getWindow().setType(2038);
-        paramInt = 1;
-        int j = 1;
-        int i = j;
-        if (paramInt != 0)
+        if (Build.VERSION.SDK_INT >= 26)
         {
-          i = j;
-          if (Build.VERSION.SDK_INT >= 23)
-          {
-            i = j;
-            if (!Settings.canDrawOverlays(paramContext)) {
-              i = 0;
-            }
-          }
+          paramString2.getWindow().setType(2038);
         }
-        if ((paramInt == 0) || (i != 0)) {
-          continue;
-        }
-        paramString1 = new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION");
-        paramString1.addFlags(268435456);
-        BaseApplicationImpl.getApplication().startActivity(paramString1);
-      }
-      catch (Throwable paramString1)
-      {
-        QLog.e("qqfav", 1, "First collection guide error. Uin=" + str + ", flag=" + a(paramContext).getBoolean(new StringBuilder().append("pref_first_collection_").append(str).toString(), true));
-        continue;
-        a(paramContext).edit().putBoolean("pref_first_collection_" + str, false).apply();
-        continue;
-      }
-      localQQToast.b(paramContext.getResources().getDimensionPixelSize(2131299166) - (int)(5.0F * paramContext.getResources().getDisplayMetrics().density));
-      return;
-      paramString1 = paramContext.getString(2131692302);
-      continue;
-      if (Build.VERSION.SDK_INT > 24)
-      {
-        paramString1.getWindow().setType(2003);
-        paramInt = 1;
-      }
-      else
-      {
-        paramString1.getWindow().setType(2005);
-        paramInt = 0;
-        continue;
-        paramString1.getWindow().setType(2003);
-        paramInt = 1;
-        continue;
-        paramString1.setMessageCount(null).show();
-        if (9 > Build.VERSION.SDK_INT)
+        else if (Build.VERSION.SDK_INT > 24)
         {
-          a(paramContext).edit().putBoolean("pref_first_collection_" + str, false).commit();
-          if (QLog.isColorLevel()) {
-            QLog.d("qqfav", 2, "First collection guide shown. Uin=" + str + ", flag=" + a(paramContext).getBoolean(new StringBuilder().append("pref_first_collection_").append(str).toString(), true));
-          }
+          paramString2.getWindow().setType(2003);
         }
         else
         {
+          paramString2.getWindow().setType(2005);
+          break label713;
+        }
+      }
+      else {
+        paramString2.getWindow().setType(2003);
+      }
+    }
+    catch (Throwable paramString2)
+    {
+      for (;;)
+      {
+        StringBuilder localStringBuilder;
+        label670:
+        continue;
+        paramInt = 1;
+        continue;
+        paramInt = 0;
+        continue;
+        int i = 1;
+      }
+    }
+    if ((paramInt != 0) && (Build.VERSION.SDK_INT >= 23) && (!Settings.canDrawOverlays(paramContext)))
+    {
+      i = 0;
+      if ((paramInt != 0) && (i == 0))
+      {
+        paramString2 = new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION");
+        paramString2.addFlags(268435456);
+        BaseApplicationImpl.getApplication().startActivity(paramString2);
+      }
+      else
+      {
+        paramString2.setMessageCount(null).show();
+        if (9 > Build.VERSION.SDK_INT)
+        {
+          paramString2 = a(paramContext).edit();
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("pref_first_collection_");
+          ((StringBuilder)localObject).append(paramString1);
+          paramString2.putBoolean(((StringBuilder)localObject).toString(), false).commit();
+        }
+        else
+        {
+          paramString2 = a(paramContext).edit();
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("pref_first_collection_");
+          ((StringBuilder)localObject).append(paramString1);
+          paramString2.putBoolean(((StringBuilder)localObject).toString(), false).apply();
+        }
+        if (QLog.isColorLevel())
+        {
+          paramString2 = new StringBuilder();
+          paramString2.append("First collection guide shown. Uin=");
+          paramString2.append(paramString1);
+          paramString2.append(", flag=");
+          localObject = a(paramContext);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("pref_first_collection_");
+          localStringBuilder.append(paramString1);
+          paramString2.append(((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), true));
+          QLog.d("qqfav", 2, paramString2.toString());
+          break label670;
+          paramString2 = new StringBuilder();
+          paramString2.append("First collection guide error. Uin=");
+          paramString2.append(paramString1);
+          paramString2.append(", flag=");
+          localObject = a(paramContext);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("pref_first_collection_");
+          localStringBuilder.append(paramString1);
+          paramString2.append(((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), true));
+          QLog.e("qqfav", 1, paramString2.toString());
+          break label670;
           localQQToast.b(1);
           localQQToast.a(QQToast.a(1));
-          if (paramString2 == null)
-          {
-            localQQToast.c(2131692260);
-          }
-          else
-          {
+          if (paramString2 == null) {
+            localQQToast.c(2131692186);
+          } else {
             localQQToast.a(paramString2);
-            continue;
-            label647:
-            paramInt = 0;
           }
         }
       }
+      localQQToast.b(paramContext.getResources().getDimensionPixelSize(2131299168) - (int)(paramContext.getResources().getDisplayMetrics().density * 5.0F));
+      return;
     }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, List<FavFileInfo> paramList, String paramString, int paramInt)
   {
-    if ((paramList == null) || (paramQQAppInterface == null)) {}
-    label94:
-    for (;;)
+    if (paramList != null)
     {
-      return;
+      if (paramQQAppInterface == null) {
+        return;
+      }
       paramList = paramList.iterator();
-      for (;;)
+      while (paramList.hasNext())
       {
-        if (!paramList.hasNext()) {
-          break label94;
-        }
         FavFileInfo localFavFileInfo = (FavFileInfo)paramList.next();
         FileManagerEntity localFileManagerEntity = a(localFavFileInfo, paramString, paramInt);
         if (localFileManagerEntity == null) {
-          break;
+          return;
         }
         localFileManagerEntity.strThumbPath = localFavFileInfo.a();
         localFileManagerEntity.strMiddleThumPath = localFavFileInfo.i;
@@ -371,12 +409,17 @@ public final class QfavHelper
   {
     Object localObject = BaseApplicationImpl.getApplication();
     int i;
-    if (Build.VERSION.SDK_INT > 10)
-    {
+    if (Build.VERSION.SDK_INT > 10) {
       i = 4;
-      if (!((BaseApplicationImpl)localObject).getSharedPreferences("QfavNeedReupload", i).getBoolean(paramAppRuntime.getAccount() + "QfavNeedReupload", false)) {
-        break label111;
-      }
+    } else {
+      i = 0;
+    }
+    localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("QfavNeedReupload", i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramAppRuntime.getAccount());
+    localStringBuilder.append("QfavNeedReupload");
+    if (((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), false))
+    {
       if (QLog.isColorLevel()) {
         QLog.i("qqfav", 2, "reuploadQfavItems: flag=true");
       }
@@ -384,15 +427,11 @@ public final class QfavHelper
       ((Intent)localObject).setPackage(MobileQQ.getContext().getPackageName());
       ((Intent)localObject).putExtra("nOperation", 5);
       QfavPluginProxyReceiver.a(paramAppRuntime, (Intent)localObject);
-    }
-    label111:
-    while (!QLog.isColorLevel())
-    {
       return;
-      i = 0;
-      break;
     }
-    QLog.i("qqfav", 2, "reuploadQfavItems: flag=false");
+    if (QLog.isColorLevel()) {
+      QLog.i("qqfav", 2, "reuploadQfavItems: flag=false");
+    }
   }
   
   public static boolean a()
@@ -422,26 +461,31 @@ public final class QfavHelper
   
   public static boolean a(Activity paramActivity, String paramString, Intent paramIntent, int paramInt, boolean paramBoolean)
   {
-    if (paramIntent == null) {}
-    for (paramIntent = new Intent();; paramIntent = new Intent(paramIntent))
-    {
-      paramIntent.putExtra("nOperation", 2);
-      paramIntent.putExtra("bShowProgress", paramBoolean);
-      paramIntent.putExtra("begin", System.currentTimeMillis());
-      QfavUtil.a(paramString);
-      if (!QfavRequestQueue.a().a())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("qqfav", 2, "openPluginActivityForResult need pending data." + paramIntent.toString());
-        }
-        byte[] arrayOfByte = QfavRequestQueue.a().a();
-        if ((arrayOfByte == null) && (QLog.isColorLevel())) {
-          QLog.d("qqfav", 2, "openPluginActivityForResult pending data error.");
-        }
-        paramIntent.putExtra("pendingData", arrayOfByte);
-      }
-      return QfavPluginProxyActivity.a(paramActivity, paramString, paramIntent, paramInt);
+    if (paramIntent == null) {
+      paramIntent = new Intent();
+    } else {
+      paramIntent = new Intent(paramIntent);
     }
+    paramIntent.putExtra("nOperation", 2);
+    paramIntent.putExtra("bShowProgress", paramBoolean);
+    paramIntent.putExtra("begin", System.currentTimeMillis());
+    QfavUtil.a(paramString);
+    if (!QfavRequestQueue.a().a())
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("openPluginActivityForResult need pending data.");
+        ((StringBuilder)localObject).append(paramIntent.toString());
+        QLog.d("qqfav", 2, ((StringBuilder)localObject).toString());
+      }
+      Object localObject = QfavRequestQueue.a().a();
+      if ((localObject == null) && (QLog.isColorLevel())) {
+        QLog.d("qqfav", 2, "openPluginActivityForResult pending data error.");
+      }
+      paramIntent.putExtra("pendingData", (byte[])localObject);
+    }
+    return QfavPluginProxyActivity.a(paramActivity, paramString, paramIntent, paramInt);
   }
   
   public static boolean a(Context paramContext)
@@ -540,31 +584,34 @@ public final class QfavHelper
       return true;
     }
     Object localObject2 = new QfavHelper.2();
-    if (paramBoolean) {}
-    synchronized (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
+    if (paramBoolean) {
+      ??? = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
+    }
+    synchronized (localObject2)
     {
       PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getApplication(), new QfavHelper.3((Runnable)localObject2));
       localObject2 = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-      if (??? == localObject2) {}
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("qqfav", 2, "wait(IS_PLUGININSTALLED) qqfav.apk");
+      if (??? == localObject2) {
+        try
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("qqfav", 2, "wait(IS_PLUGININSTALLED) qqfav.apk");
+          }
+          jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.wait(5000L);
         }
-        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.wait(5000L);
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
+        catch (InterruptedException localInterruptedException)
         {
           localInterruptedException.printStackTrace();
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("qqfav", 2, "qqfav.apk, IS_PLUGININSTALLED = " + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("qqfav.apk, IS_PLUGININSTALLED = ");
+        ((StringBuilder)???).append(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
+        QLog.i("qqfav", 2, ((StringBuilder)???).toString());
       }
       return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-      ??? = localObject2;
     }
   }
   
@@ -579,8 +626,10 @@ public final class QfavHelper
     }
     catch (JSONException localJSONException)
     {
-      QLog.i("qqfav", 2, "publicAccountLinkBizData: JSONException error");
+      label27:
+      break label27;
     }
+    QLog.i("qqfav", 2, "publicAccountLinkBizData: JSONException error");
     return null;
   }
   
@@ -594,7 +643,7 @@ public final class QfavHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqfav.QfavHelper
  * JD-Core Version:    0.7.0.1
  */

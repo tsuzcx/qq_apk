@@ -8,7 +8,7 @@ class ChatSettingActivity$20
 {
   ChatSettingActivity$20(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void onGetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
+  protected void onGetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
   {
     if ((paramBoolean1) && (this.a.d != null) && (paramBoolean2 != this.a.d.a()))
     {
@@ -18,7 +18,7 @@ class ChatSettingActivity$20
     }
   }
   
-  public void onSetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
+  protected void onSetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
   {
     if ((paramBoolean1) && (this.a.d != null) && (paramBoolean2 != this.a.d.a()))
     {
@@ -30,7 +30,7 @@ class ChatSettingActivity$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingActivity.20
  * JD-Core Version:    0.7.0.1
  */

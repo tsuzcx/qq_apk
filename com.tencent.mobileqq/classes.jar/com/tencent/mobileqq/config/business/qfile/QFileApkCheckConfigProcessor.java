@@ -20,7 +20,11 @@ public class QFileApkCheckConfigProcessor
   @NonNull
   public QFileApkCheckConfigBean a(int paramInt)
   {
-    QLog.i("QFileApkCheckConfigProcessor", 1, "migrateOldOrDefaultContent: type[" + paramInt + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("migrateOldOrDefaultContent: type[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    QLog.i("QFileApkCheckConfigProcessor", 1, localStringBuilder.toString());
     return new QFileApkCheckConfigBean();
   }
   
@@ -28,39 +32,46 @@ public class QFileApkCheckConfigProcessor
   public QFileApkCheckConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
     QLog.i("QFileApkCheckConfigProcessor", 1, "onParsed");
-    if (paramArrayOfQConfItem != null) {
-      try
+    if (paramArrayOfQConfItem != null) {}
+    try
+    {
+      if (paramArrayOfQConfItem.length > 0)
       {
-        if (paramArrayOfQConfItem.length > 0)
-        {
-          paramArrayOfQConfItem = (QFileApkCheckConfigBean)QStorage.a(paramArrayOfQConfItem[0].a, QFileApkCheckConfigBean.class);
-          return paramArrayOfQConfItem;
-        }
+        paramArrayOfQConfItem = (QFileApkCheckConfigBean)QStorage.a(paramArrayOfQConfItem[0].a, QFileApkCheckConfigBean.class);
+        return paramArrayOfQConfItem;
       }
-      catch (QStorageInstantiateException paramArrayOfQConfItem) {}
+    }
+    catch (QStorageInstantiateException paramArrayOfQConfItem)
+    {
+      label34:
+      break label34;
     }
     return null;
   }
   
   public void a(QFileApkCheckConfigBean paramQFileApkCheckConfigBean)
   {
-    if (paramQFileApkCheckConfigBean == null) {
-      QLog.i("QFileApkCheckConfigProcessor", 1, "apkcheckConfig onUpdate: newConf is null.");
-    }
-    for (;;)
+    if (paramQFileApkCheckConfigBean == null)
     {
+      QLog.i("QFileApkCheckConfigProcessor", 1, "apkcheckConfig onUpdate: newConf is null.");
       return;
-      QLog.i("QFileApkCheckConfigProcessor", 1, "apkcheckConfig onUpdate");
-      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject instanceof QQAppInterface)) {}
-      for (localObject = (QQAppInterface)localObject; localObject != null; localObject = null)
-      {
-        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("file_config_" + ((QQAppInterface)localObject).getCurrentUin(), 0).edit();
-        localEditor.putBoolean("apkcheck_enable_switch", paramQFileApkCheckConfigBean.a);
-        localEditor.apply();
-        ((IQFileConfigManager)((QQAppInterface)localObject).getRuntimeService(IQFileConfigManager.class, "")).setMMApkFileCheckEnable(paramQFileApkCheckConfigBean.a);
-        return;
-      }
+    }
+    QLog.i("QFileApkCheckConfigProcessor", 1, "apkcheckConfig onUpdate");
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    QQAppInterface localQQAppInterface = null;
+    if ((localObject instanceof QQAppInterface)) {
+      localQQAppInterface = (QQAppInterface)localObject;
+    }
+    if (localQQAppInterface != null)
+    {
+      localObject = localQQAppInterface.getApp();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("file_config_");
+      localStringBuilder.append(localQQAppInterface.getCurrentUin());
+      localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
+      ((SharedPreferences.Editor)localObject).putBoolean("apkcheck_enable_switch", paramQFileApkCheckConfigBean.a);
+      ((SharedPreferences.Editor)localObject).apply();
+      ((IQFileConfigManager)localQQAppInterface.getRuntimeService(IQFileConfigManager.class, "")).setMMApkFileCheckEnable(paramQFileApkCheckConfigBean.a);
     }
   }
   
@@ -86,7 +97,11 @@ public class QFileApkCheckConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.i("QFileApkCheckConfigProcessor", 1, "onReqFailed: failCode[" + paramInt + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReqFailed: failCode[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    QLog.i("QFileApkCheckConfigProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -96,7 +111,7 @@ public class QFileApkCheckConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileApkCheckConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

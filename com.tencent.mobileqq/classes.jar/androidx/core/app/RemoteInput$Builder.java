@@ -18,10 +18,12 @@ public final class RemoteInput$Builder
   
   public RemoteInput$Builder(@NonNull String paramString)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("Result key can't be null");
+    if (paramString != null)
+    {
+      this.mResultKey = paramString;
+      return;
     }
-    this.mResultKey = paramString;
+    throw new IllegalArgumentException("Result key can't be null");
   }
   
   @NonNull
@@ -87,7 +89,7 @@ public final class RemoteInput$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.RemoteInput.Builder
  * JD-Core Version:    0.7.0.1
  */

@@ -12,8 +12,8 @@ import com.tencent.av.business.manager.EffectConfigBase;
 import com.tencent.av.business.manager.pendant.PendantItem;
 import com.tencent.av.opengl.config.EffectFaceDeviceConfig;
 import com.tencent.av.opengl.effects.EffectsRenderController;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
@@ -35,52 +35,49 @@ public class EffectFilterTools
   
   public static String a(String paramString)
   {
-    if ((paramString == null) || (paramString.equals(""))) {}
-    int i;
-    int j;
-    do
+    String str = paramString;
+    if (paramString != null)
     {
-      return paramString;
-      i = paramString.lastIndexOf(".");
-      j = paramString.lastIndexOf(File.separator);
-      if (j != -1) {
-        break;
+      if (paramString.equals("")) {
+        return paramString;
       }
-    } while (i == -1);
-    return paramString.substring(0, i);
-    if (i == -1) {
-      return paramString.substring(j + 1);
+      int i = paramString.lastIndexOf(".");
+      int j = paramString.lastIndexOf(File.separator);
+      if (j == -1)
+      {
+        if (i == -1) {
+          return paramString;
+        }
+        return paramString.substring(0, i);
+      }
+      if (i == -1) {
+        return paramString.substring(j + 1);
+      }
+      if (j < i) {
+        return paramString.substring(j + 1, i);
+      }
+      str = paramString.substring(j + 1);
     }
-    if (j < i) {}
-    for (paramString = paramString.substring(j + 1, i);; paramString = paramString.substring(j + 1)) {
-      return paramString;
-    }
+    return str;
   }
   
   public static boolean a(Context paramContext)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (jdField_a_of_type_Boolean) {
-      bool1 = jdField_a_of_type_Boolean;
+    boolean bool = jdField_a_of_type_Boolean;
+    if (bool) {
+      return bool;
     }
-    do
+    if (!EffectsRenderController.f())
     {
-      do
-      {
-        return bool1;
-        if (!EffectsRenderController.g())
-        {
-          AVLog.printColorLog("EffectFilterTools", "isSupport Error: 1");
-          return false;
-        }
-        bool1 = bool2;
-      } while (!EffectsRenderController.a(4, 1400000L));
-      if (paramContext == null) {
-        break;
-      }
-      bool1 = bool2;
-    } while (TextUtils.isEmpty(QAVConfig.b(132).a));
+      AVLog.printColorLog("EffectFilterTools", "isSupport Error: 1");
+      return false;
+    }
+    if (!EffectsRenderController.a(4, 1400000L)) {
+      return false;
+    }
+    if ((paramContext != null) && (TextUtils.isEmpty(QAVConfig.b(132).a))) {
+      return false;
+    }
     paramContext = EffectFaceDeviceConfig.a();
     if ((paramContext != null) && (!paramContext.a()))
     {
@@ -96,14 +93,11 @@ public class EffectFilterTools
     if (paramPendantItem == null) {
       return false;
     }
-    if (!PendantItem.isOnlySupportOldFilter(paramPendantItem.getKind())) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("EffectFilterTools", 2, String.format("isSupportFilter, support[%s], kind[%s], id[%s]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramPendantItem.getKind()), paramPendantItem.getId() }));
-      }
-      return bool;
+    boolean bool = PendantItem.isOnlySupportOldFilter(paramPendantItem.getKind()) ^ true;
+    if (QLog.isColorLevel()) {
+      QLog.i("EffectFilterTools", 2, String.format("isSupportFilter, support[%s], kind[%s], id[%s]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramPendantItem.getKind()), paramPendantItem.getId() }));
     }
+    return bool;
   }
   
   public int a()
@@ -116,18 +110,21 @@ public class EffectFilterTools
     return this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc;
   }
   
-  public Class<?> a()
+  protected Class<?> a()
   {
     return FilterItem.class;
   }
   
   public String a(FilterItem paramFilterItem)
   {
-    if ((paramFilterItem != null) && (!TextUtils.isEmpty(paramFilterItem.getResurl())) && (!TextUtils.isEmpty(paramFilterItem.getId())))
+    if ((paramFilterItem != null) && (!TextUtils.isEmpty(paramFilterItem.getResUrl())) && (!TextUtils.isEmpty(paramFilterItem.getId())))
     {
       String str = b(paramFilterItem);
-      paramFilterItem = a(paramFilterItem.getResurl());
-      return str + paramFilterItem;
+      paramFilterItem = a(paramFilterItem.getResUrl());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(paramFilterItem);
+      return localStringBuilder.toString();
     }
     return null;
   }
@@ -142,11 +139,9 @@ public class EffectFilterTools
     return localArrayList;
   }
   
-  public void a(long paramLong, int paramInt, String paramString1, String paramString2)
+  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
   {
-    switch (paramInt)
-    {
-    default: 
+    if ((paramInt != 2) && (paramInt != 3)) {
       return;
     }
     a(paramLong, null);
@@ -170,46 +165,49 @@ public class EffectFilterTools
     return b(paramLong, paramFilterItem);
   }
   
-  public boolean a(String paramString)
+  protected boolean a(String paramString)
   {
+    super.c();
+    paramString = this.jdField_a_of_type_JavaUtilList;
     boolean bool2 = false;
-    super.b();
     boolean bool1 = bool2;
-    int i;
-    int j;
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    if (paramString != null)
     {
       paramString = this.jdField_a_of_type_JavaUtilList.iterator();
-      i = 0;
-      j = 0;
-      if (paramString.hasNext())
+      int i = 0;
+      int j = 0;
+      while (paramString.hasNext())
       {
         FilterItem localFilterItem = (FilterItem)paramString.next();
         long l = AudioHelper.b();
-        if (AudioHelper.e()) {
-          QLog.w("EffectFilterTools", 1, "preDownloadResource, seq[" + l + "], res[" + localFilterItem.getResurl() + "], icon[" + localFilterItem.getIconurl() + "]");
+        if (AudioHelper.b())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("preDownloadResource, seq[");
+          localStringBuilder.append(l);
+          localStringBuilder.append("], res[");
+          localStringBuilder.append(localFilterItem.getResUrl());
+          localStringBuilder.append("], icon[");
+          localStringBuilder.append(localFilterItem.getIconUrl());
+          localStringBuilder.append("]");
+          QLog.w("EffectFilterTools", 1, localStringBuilder.toString());
         }
-        if (localFilterItem.getPredownload() != 1) {
-          break label185;
-        }
-        j += 1;
-        if ((!TextUtils.isEmpty(localFilterItem.getResurl())) && (!localFilterItem.isUsable())) {
-          a(l, localFilterItem);
+        if (localFilterItem.getPredownload() == 1)
+        {
+          j += 1;
+          if ((!TextUtils.isEmpty(localFilterItem.getResUrl())) && (!localFilterItem.isUsable())) {
+            a(l, localFilterItem);
+          } else {
+            i += 1;
+          }
         }
       }
-    }
-    label185:
-    for (;;)
-    {
-      break;
-      i += 1;
-      continue;
       bool1 = bool2;
       if (i == j) {
         bool1 = true;
       }
-      return bool1;
     }
+    return bool1;
   }
   
   boolean b(long paramLong, FilterItem paramFilterItem)
@@ -221,21 +219,21 @@ public class EffectFilterTools
       localSessionInfo.a.clear(2);
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc = null;
     }
-    for (;;)
+    else
     {
-      if (paramFilterItem != null) {
-        EffectFilterTools.DataReport.a((FilterItem)a());
-      }
-      return bool;
       localSessionInfo.a.set(2);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc = new FilterDesc(Integer.valueOf(paramFilterItem.getFilterId()).intValue(), paramFilterItem.getPredownload(), paramFilterItem.getResurl(), paramFilterItem.getMd5(), paramFilterItem.getIconurl(), paramFilterItem.getIconMd5(), paramFilterItem.getId(), 0, b(paramFilterItem));
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc = new FilterDesc(Integer.valueOf(paramFilterItem.getFilterId()).intValue(), paramFilterItem.getPredownload(), paramFilterItem.getResUrl(), paramFilterItem.getMd5(), paramFilterItem.getIconUrl(), paramFilterItem.getIconMd5(), paramFilterItem.getId(), 0, b(paramFilterItem));
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.type = paramFilterItem.getFiltertype();
     }
+    if (paramFilterItem != null) {
+      EffectFilterTools.DataReport.a((FilterItem)a());
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.filter.EffectFilterTools
  * JD-Core Version:    0.7.0.1
  */

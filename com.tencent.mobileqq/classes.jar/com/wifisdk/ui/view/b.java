@@ -176,19 +176,15 @@ public class b
     Object localObject = getItem(paramInt);
     if (i == 2) {
       localObject = a((hp)localObject, paramView);
+    } else if (i == 3) {
+      localObject = a((hq)localObject, paramView);
+    } else if (i == 1) {
+      localObject = a((ho)localObject, paramView);
+    } else {
+      localObject = new View(this.mContext);
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject;
-      if (i == 3) {
-        localObject = a((hq)localObject, paramView);
-      } else if (i == 1) {
-        localObject = a((ho)localObject, paramView);
-      } else {
-        localObject = new View(this.mContext);
-      }
-    }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localObject;
   }
   
   public int getViewTypeCount()
@@ -205,7 +201,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.wifisdk.ui.view.b
  * JD-Core Version:    0.7.0.1
  */

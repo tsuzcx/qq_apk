@@ -10,23 +10,21 @@ class RegisterBaseActivity$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 101) {
       return;
     }
-    this.a.closeDialog();
+    this.a.a();
     String str = paramMessage.obj.toString();
     paramMessage = str;
     if (str == null) {
-      paramMessage = this.a.getString(2131720376);
+      paramMessage = this.a.getString(2131720115);
     }
-    this.a.notifyToast(paramMessage, 1);
+    this.a.a(paramMessage, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterBaseActivity.1
  * JD-Core Version:    0.7.0.1
  */

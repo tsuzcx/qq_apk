@@ -18,8 +18,10 @@ public class FocusLiveStreamDataImpl
   {
     NowQQLiveFocusProto.GetAnchorOnline1Req localGetAnchorOnline1Req = new NowQQLiveFocusProto.GetAnchorOnline1Req();
     String str = UserInfoMgr.a();
-    if (TextUtils.isEmpty(str)) {}
-    while (this.b) {
+    if (TextUtils.isEmpty(str)) {
+      return;
+    }
+    if (this.b) {
       return;
     }
     this.b = true;
@@ -41,7 +43,7 @@ public class FocusLiveStreamDataImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.focusanchor.focusdata.FocusLiveStreamDataImpl
  * JD-Core Version:    0.7.0.1
  */

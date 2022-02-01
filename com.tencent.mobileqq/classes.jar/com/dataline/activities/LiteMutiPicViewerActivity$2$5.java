@@ -12,7 +12,7 @@ class LiteMutiPicViewerActivity$2$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.LiteMutiPicViewerActivity.2.5
  * JD-Core Version:    0.7.0.1
  */

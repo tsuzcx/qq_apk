@@ -18,20 +18,30 @@ public class ArResourceDownload$DownloadInfo
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
-    localStringBuffer.append("type=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", url='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", md5='").append(this.jdField_b_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", fileName='").append(this.c).append('\'');
-    localStringBuffer.append(", fileSize=").append(this.jdField_a_of_type_Long);
-    localStringBuffer.append(", downloadSize=").append(this.jdField_b_of_type_Long);
-    localStringBuffer.append(", req=").append(this.jdField_a_of_type_Boolean);
+    localStringBuffer.append("type=");
+    localStringBuffer.append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", url='");
+    localStringBuffer.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", md5='");
+    localStringBuffer.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", fileName='");
+    localStringBuffer.append(this.c);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", fileSize=");
+    localStringBuffer.append(this.jdField_a_of_type_Long);
+    localStringBuffer.append(", downloadSize=");
+    localStringBuffer.append(this.jdField_b_of_type_Long);
+    localStringBuffer.append(", req=");
+    localStringBuffer.append(this.jdField_a_of_type_Boolean);
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArResourceDownload.DownloadInfo
  * JD-Core Version:    0.7.0.1
  */

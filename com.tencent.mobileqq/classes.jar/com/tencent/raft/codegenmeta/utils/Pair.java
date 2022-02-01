@@ -23,32 +23,48 @@ public class Pair<A, B>
   
   public boolean equals(Object paramObject)
   {
-    return ((paramObject instanceof Pair)) && (equalsImp(this.fst, ((Pair)paramObject).fst)) && (equalsImp(this.snd, ((Pair)paramObject).snd));
+    if ((paramObject instanceof Pair))
+    {
+      Object localObject = this.fst;
+      paramObject = (Pair)paramObject;
+      if ((equalsImp(localObject, paramObject.fst)) && (equalsImp(this.snd, paramObject.snd))) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public int hashCode()
   {
-    if (this.fst == null)
+    Object localObject = this.fst;
+    if (localObject == null)
     {
-      if (this.snd == null) {
+      localObject = this.snd;
+      if (localObject == null) {
         return 0;
       }
-      return this.snd.hashCode() + 1;
+      return localObject.hashCode() + 1;
     }
     if (this.snd == null) {
-      return this.fst.hashCode() + 2;
+      return localObject.hashCode() + 2;
     }
-    return this.fst.hashCode() * 17 + this.snd.hashCode();
+    return localObject.hashCode() * 17 + this.snd.hashCode();
   }
   
   public String toString()
   {
-    return "Pair[" + this.fst + "," + this.snd + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Pair[");
+    localStringBuilder.append(this.fst);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.snd);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.raft.codegenmeta.utils.Pair
  * JD-Core Version:    0.7.0.1
  */

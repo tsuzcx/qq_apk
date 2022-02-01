@@ -13,32 +13,26 @@ class MsgNotifyPushForSpecialCareDialog$4
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i;
     if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
     {
-      if (paramMotionEvent.getAction() != 1) {
-        break label45;
+      int i;
+      if (paramMotionEvent.getAction() == 1) {
+        i = 255;
+      } else {
+        i = 127;
       }
-      i = 255;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label51;
+      if (Build.VERSION.SDK_INT >= 16) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
+      } else {
+        this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
     }
-    for (;;)
-    {
-      return false;
-      label45:
-      i = 127;
-      break;
-      label51:
-      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.msgnotify.MsgNotifyPushForSpecialCareDialog.4
  * JD-Core Version:    0.7.0.1
  */

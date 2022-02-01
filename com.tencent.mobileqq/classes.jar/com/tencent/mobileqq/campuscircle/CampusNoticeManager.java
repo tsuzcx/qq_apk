@@ -53,17 +53,18 @@ public class CampusNoticeManager
   
   public MessageForText a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData == null) {
+    RecentItemNoticeData localRecentItemNoticeData = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData;
+    if (localRecentItemNoticeData == null) {
       return null;
     }
-    RecentItemNoticeData localRecentItemNoticeData = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData;
     if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForText == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForText = ((MessageForText)MessageRecordFactory.a(-1000));
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msgtype = -1000;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.istroop = 1030;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.isread = false;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      MessageForText localMessageForText = this.jdField_a_of_type_ComTencentMobileqqDataMessageForText;
+      localMessageForText.msgtype = -1000;
+      localMessageForText.istroop = 1030;
+      localMessageForText.isread = false;
+      localMessageForText.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.senderuin = AppConstants.CAMPUS_NOTICE_UIN;
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.frienduin = AppConstants.CAMPUS_NOTICE_UIN;
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg = localRecentItemNoticeData.wording;
@@ -90,242 +91,244 @@ public class CampusNoticeManager
     //   12: aload_0
     //   13: getfield 27	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   16: getfield 110	com/tencent/mobileqq/app/QQAppInterface:isBackgroundPause	Z
-    //   19: ifne +18 -> 37
+    //   19: ifne +27 -> 46
     //   22: aload_0
     //   23: getfield 27	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   26: getfield 113	com/tencent/mobileqq/app/QQAppInterface:isBackgroundStop	Z
-    //   29: ifne +8 -> 37
+    //   29: ifne +17 -> 46
     //   32: iload 7
-    //   34: ifeq +413 -> 447
-    //   37: aload_0
-    //   38: monitorenter
-    //   39: aload_0
-    //   40: getfield 20	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_Int	I
-    //   43: iconst_1
-    //   44: iadd
-    //   45: istore_1
+    //   34: ifeq +6 -> 40
+    //   37: goto +9 -> 46
+    //   40: aconst_null
+    //   41: astore 4
+    //   43: goto +299 -> 342
     //   46: aload_0
-    //   47: iload_1
-    //   48: putfield 20	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_Int	I
-    //   51: aload_0
-    //   52: monitorexit
-    //   53: new 115	android/content/Intent
-    //   56: dup
-    //   57: aload_0
-    //   58: getfield 27	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   61: invokevirtual 118	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   64: ldc 120
-    //   66: invokespecial 123	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
-    //   69: astore 8
-    //   71: aload 8
-    //   73: ldc 125
-    //   75: iconst_1
-    //   76: invokevirtual 129	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
-    //   79: pop
+    //   47: monitorenter
+    //   48: aload_0
+    //   49: getfield 20	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_Int	I
+    //   52: iconst_1
+    //   53: iadd
+    //   54: istore_1
+    //   55: aload_0
+    //   56: iload_1
+    //   57: putfield 20	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_Int	I
+    //   60: aload_0
+    //   61: monitorexit
+    //   62: new 115	android/content/Intent
+    //   65: dup
+    //   66: aload_0
+    //   67: getfield 27	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   70: invokevirtual 118	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   73: ldc 120
+    //   75: invokespecial 123	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   78: astore 8
     //   80: aload 8
-    //   82: ldc 131
-    //   84: iconst_4
+    //   82: ldc 125
+    //   84: iconst_1
     //   85: invokevirtual 129	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
     //   88: pop
     //   89: aload 8
-    //   91: ldc 132
-    //   93: invokevirtual 136	android/content/Intent:setFlags	(I)Landroid/content/Intent;
-    //   96: pop
-    //   97: aload 8
-    //   99: ldc 138
-    //   101: iconst_3
-    //   102: invokevirtual 129	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   91: ldc 131
+    //   93: iconst_4
+    //   94: invokevirtual 129	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   97: pop
+    //   98: aload 8
+    //   100: ldc 132
+    //   102: invokevirtual 136	android/content/Intent:setFlags	(I)Landroid/content/Intent;
     //   105: pop
     //   106: aload 8
-    //   108: ldc 140
-    //   110: aload 5
-    //   112: invokevirtual 143	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   115: pop
-    //   116: aload 8
-    //   118: ldc 145
-    //   120: ldc 147
-    //   122: invokevirtual 143	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   125: pop
-    //   126: aload 8
-    //   128: ldc 149
-    //   130: sipush 1030
-    //   133: invokevirtual 129	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
-    //   136: pop
-    //   137: aload 8
-    //   139: ldc 151
-    //   141: lload_2
-    //   142: invokestatic 155	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   145: invokevirtual 143	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   148: pop
-    //   149: aload 8
-    //   151: ldc 157
-    //   153: ldc 159
-    //   155: invokevirtual 143	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   158: pop
-    //   159: aload 8
-    //   161: ldc 161
-    //   163: iload_1
-    //   164: invokevirtual 129	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   108: ldc 138
+    //   110: iconst_3
+    //   111: invokevirtual 129	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   114: pop
+    //   115: aload 8
+    //   117: ldc 140
+    //   119: aload 5
+    //   121: invokevirtual 143	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   124: pop
+    //   125: aload 8
+    //   127: ldc 145
+    //   129: ldc 147
+    //   131: invokevirtual 143	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   134: pop
+    //   135: aload 8
+    //   137: ldc 149
+    //   139: sipush 1030
+    //   142: invokevirtual 129	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   145: pop
+    //   146: aload 8
+    //   148: ldc 151
+    //   150: lload_2
+    //   151: invokestatic 155	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   154: invokevirtual 143	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   157: pop
+    //   158: aload 8
+    //   160: ldc 157
+    //   162: ldc 159
+    //   164: invokevirtual 143	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   167: pop
-    //   168: invokestatic 167	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   171: ifeq +35 -> 206
-    //   174: ldc 169
-    //   176: iconst_2
-    //   177: iconst_4
-    //   178: anewarray 4	java/lang/Object
-    //   181: dup
-    //   182: iconst_0
-    //   183: ldc 171
-    //   185: aastore
-    //   186: dup
-    //   187: iconst_1
-    //   188: iload_1
-    //   189: invokestatic 176	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   192: aastore
-    //   193: dup
-    //   194: iconst_2
-    //   195: ldc 178
-    //   197: aastore
-    //   198: dup
-    //   199: iconst_3
-    //   200: aload 5
-    //   202: aastore
-    //   203: invokestatic 182	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   206: aload_0
-    //   207: getfield 31	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData	Lcom/tencent/mobileqq/activity/recent/data/RecentItemNoticeData;
-    //   210: ifnull +12 -> 222
-    //   213: aload_0
-    //   214: getfield 31	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData	Lcom/tencent/mobileqq/activity/recent/data/RecentItemNoticeData;
-    //   217: aload 8
-    //   219: invokevirtual 185	com/tencent/mobileqq/activity/recent/data/RecentItemNoticeData:a	(Landroid/content/Intent;)V
-    //   222: new 187	com/tencent/qphone/base/remote/ToServiceMsg
-    //   225: dup
-    //   226: ldc 189
-    //   228: aload_0
-    //   229: getfield 27	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   232: invokevirtual 58	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   235: ldc 191
-    //   237: invokespecial 194	com/tencent/qphone/base/remote/ToServiceMsg:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   240: astore 5
-    //   242: aload 5
-    //   244: getfield 198	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   247: ldc 200
-    //   249: iconst_3
-    //   250: anewarray 91	java/lang/String
-    //   253: dup
-    //   254: iconst_0
-    //   255: aload 4
-    //   257: aastore
-    //   258: dup
-    //   259: iconst_1
-    //   260: aload 6
-    //   262: aastore
-    //   263: dup
-    //   264: iconst_2
-    //   265: aload 4
-    //   267: aastore
-    //   268: invokevirtual 206	android/os/Bundle:putStringArray	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   271: aload 5
-    //   273: getfield 198	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   276: ldc 208
-    //   278: aload 8
-    //   280: invokevirtual 212	android/os/Bundle:putParcelable	(Ljava/lang/String;Landroid/os/Parcelable;)V
-    //   283: aload 5
-    //   285: getfield 198	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   288: ldc 214
-    //   290: aconst_null
+    //   168: aload 8
+    //   170: ldc 161
+    //   172: iload_1
+    //   173: invokevirtual 129	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   176: pop
+    //   177: invokestatic 167	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   180: ifeq +35 -> 215
+    //   183: ldc 169
+    //   185: iconst_2
+    //   186: iconst_4
+    //   187: anewarray 4	java/lang/Object
+    //   190: dup
+    //   191: iconst_0
+    //   192: ldc 171
+    //   194: aastore
+    //   195: dup
+    //   196: iconst_1
+    //   197: iload_1
+    //   198: invokestatic 176	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   201: aastore
+    //   202: dup
+    //   203: iconst_2
+    //   204: ldc 178
+    //   206: aastore
+    //   207: dup
+    //   208: iconst_3
+    //   209: aload 5
+    //   211: aastore
+    //   212: invokestatic 182	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   215: aload_0
+    //   216: getfield 31	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData	Lcom/tencent/mobileqq/activity/recent/data/RecentItemNoticeData;
+    //   219: astore 5
+    //   221: aload 5
+    //   223: ifnull +10 -> 233
+    //   226: aload 5
+    //   228: aload 8
+    //   230: invokevirtual 185	com/tencent/mobileqq/activity/recent/data/RecentItemNoticeData:a	(Landroid/content/Intent;)V
+    //   233: new 187	com/tencent/qphone/base/remote/ToServiceMsg
+    //   236: dup
+    //   237: ldc 189
+    //   239: aload_0
+    //   240: getfield 27	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   243: invokevirtual 58	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   246: ldc 191
+    //   248: invokespecial 194	com/tencent/qphone/base/remote/ToServiceMsg:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   251: astore 5
+    //   253: aload 5
+    //   255: getfield 198	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   258: ldc 200
+    //   260: iconst_3
+    //   261: anewarray 91	java/lang/String
+    //   264: dup
+    //   265: iconst_0
+    //   266: aload 4
+    //   268: aastore
+    //   269: dup
+    //   270: iconst_1
+    //   271: aload 6
+    //   273: aastore
+    //   274: dup
+    //   275: iconst_2
+    //   276: aload 4
+    //   278: aastore
+    //   279: invokevirtual 206	android/os/Bundle:putStringArray	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   282: aload 5
+    //   284: getfield 198	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   287: ldc 208
+    //   289: aload 8
     //   291: invokevirtual 212	android/os/Bundle:putParcelable	(Ljava/lang/String;Landroid/os/Parcelable;)V
-    //   294: aload_0
-    //   295: getfield 27	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   298: aload 5
-    //   300: invokevirtual 218	com/tencent/mobileqq/app/QQAppInterface:sendToService	(Lcom/tencent/qphone/base/remote/ToServiceMsg;)V
-    //   303: aload_0
-    //   304: getfield 25	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   307: astore 4
-    //   309: aload 4
-    //   311: monitorenter
-    //   312: aload_0
-    //   313: getfield 25	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   316: iload_1
-    //   317: invokestatic 176	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   320: invokevirtual 221	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   323: pop
-    //   324: aload 4
-    //   326: monitorexit
-    //   327: aload 8
-    //   329: astore 4
-    //   331: iload 7
-    //   333: ifeq +98 -> 431
-    //   336: aload_0
-    //   337: getfield 27	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   340: getstatic 226	com/tencent/mobileqq/app/QQManagerFactory:QQLS_DATA_MANAGER	I
-    //   343: invokevirtual 230	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   346: checkcast 232	com/tencent/mobileqq/managers/QQLSRecentManager
-    //   349: astore 5
-    //   351: aload 9
-    //   353: aload_0
-    //   354: getfield 27	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   357: invokevirtual 58	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   360: aload 9
-    //   362: ldc 233
-    //   364: invokevirtual 239	android/content/Context:getString	(I)Ljava/lang/String;
-    //   367: ldc 241
-    //   369: iconst_1
-    //   370: invokestatic 247	com/tencent/mobileqq/msf/sdk/SettingCloneUtil:readValue	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Z
-    //   373: ifeq +44 -> 417
-    //   376: invokestatic 167	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   379: ifeq +11 -> 390
-    //   382: ldc 169
-    //   384: iconst_2
-    //   385: ldc 249
-    //   387: invokestatic 252	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   390: aload 5
-    //   392: aload_0
-    //   393: getfield 27	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   396: getstatic 67	com/tencent/mobileqq/app/AppConstants:CAMPUS_NOTICE_UIN	Ljava/lang/String;
-    //   399: sipush 1030
-    //   402: iconst_0
-    //   403: getstatic 67	com/tencent/mobileqq/app/AppConstants:CAMPUS_NOTICE_UIN	Ljava/lang/String;
-    //   406: sipush 1030
-    //   409: aload 4
-    //   411: invokestatic 257	com/tencent/mobileqq/managers/MsgPushReportHelper:a	(Ljava/lang/String;ILandroid/content/Intent;)I
-    //   414: invokevirtual 260	com/tencent/mobileqq/managers/QQLSRecentManager:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;IZI)V
-    //   417: aload_0
-    //   418: getfield 27	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   421: invokevirtual 264	com/tencent/mobileqq/app/QQAppInterface:getMessageFacade	()Lcom/tencent/imcore/message/QQMessageFacade;
-    //   424: aload_0
-    //   425: invokevirtual 266	com/tencent/mobileqq/campuscircle/CampusNoticeManager:a	()Lcom/tencent/mobileqq/activity/recent/RecentBaseData;
-    //   428: invokevirtual 272	com/tencent/imcore/message/QQMessageFacade:notifyObservers	(Ljava/lang/Object;)V
-    //   431: return
-    //   432: astore 4
-    //   434: aload_0
-    //   435: monitorexit
-    //   436: aload 4
-    //   438: athrow
-    //   439: astore 5
-    //   441: aload 4
-    //   443: monitorexit
-    //   444: aload 5
-    //   446: athrow
-    //   447: aconst_null
-    //   448: astore 4
-    //   450: goto -119 -> 331
+    //   294: aload 5
+    //   296: getfield 198	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   299: ldc 214
+    //   301: aconst_null
+    //   302: invokevirtual 212	android/os/Bundle:putParcelable	(Ljava/lang/String;Landroid/os/Parcelable;)V
+    //   305: aload_0
+    //   306: getfield 27	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   309: aload 5
+    //   311: invokevirtual 218	com/tencent/mobileqq/app/QQAppInterface:sendToService	(Lcom/tencent/qphone/base/remote/ToServiceMsg;)V
+    //   314: aload_0
+    //   315: getfield 25	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   318: astore 4
+    //   320: aload 4
+    //   322: monitorenter
+    //   323: aload_0
+    //   324: getfield 25	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   327: iload_1
+    //   328: invokestatic 176	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   331: invokevirtual 221	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   334: pop
+    //   335: aload 4
+    //   337: monitorexit
+    //   338: aload 8
+    //   340: astore 4
+    //   342: iload 7
+    //   344: ifeq +98 -> 442
+    //   347: aload_0
+    //   348: getfield 27	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   351: getstatic 226	com/tencent/mobileqq/app/QQManagerFactory:QQLS_DATA_MANAGER	I
+    //   354: invokevirtual 230	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   357: checkcast 232	com/tencent/mobileqq/managers/QQLSRecentManager
+    //   360: astore 5
+    //   362: aload 9
+    //   364: aload_0
+    //   365: getfield 27	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   368: invokevirtual 58	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   371: aload 9
+    //   373: ldc 233
+    //   375: invokevirtual 239	android/content/Context:getString	(I)Ljava/lang/String;
+    //   378: ldc 241
+    //   380: iconst_1
+    //   381: invokestatic 247	com/tencent/mobileqq/msf/sdk/SettingCloneUtil:readValue	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Z
+    //   384: ifeq +44 -> 428
+    //   387: invokestatic 167	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   390: ifeq +11 -> 401
+    //   393: ldc 169
+    //   395: iconst_2
+    //   396: ldc 249
+    //   398: invokestatic 252	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   401: aload 5
+    //   403: aload_0
+    //   404: getfield 27	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   407: getstatic 67	com/tencent/mobileqq/app/AppConstants:CAMPUS_NOTICE_UIN	Ljava/lang/String;
+    //   410: sipush 1030
+    //   413: iconst_0
+    //   414: getstatic 67	com/tencent/mobileqq/app/AppConstants:CAMPUS_NOTICE_UIN	Ljava/lang/String;
+    //   417: sipush 1030
+    //   420: aload 4
+    //   422: invokestatic 257	com/tencent/mobileqq/managers/MsgPushReportHelper:a	(Ljava/lang/String;ILandroid/content/Intent;)I
+    //   425: invokevirtual 260	com/tencent/mobileqq/managers/QQLSRecentManager:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;IZI)V
+    //   428: aload_0
+    //   429: getfield 27	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   432: invokevirtual 264	com/tencent/mobileqq/app/QQAppInterface:getMessageFacade	()Lcom/tencent/imcore/message/QQMessageFacade;
+    //   435: aload_0
+    //   436: invokevirtual 266	com/tencent/mobileqq/campuscircle/CampusNoticeManager:a	()Lcom/tencent/mobileqq/activity/recent/RecentBaseData;
+    //   439: invokevirtual 272	com/tencent/imcore/message/QQMessageFacade:notifyObservers	(Ljava/lang/Object;)V
+    //   442: return
+    //   443: astore 5
+    //   445: aload 4
+    //   447: monitorexit
+    //   448: aload 5
+    //   450: athrow
+    //   451: astore 4
+    //   453: aload_0
+    //   454: monitorexit
+    //   455: aload 4
+    //   457: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	453	0	this	CampusNoticeManager
-    //   0	453	1	paramInt	int
-    //   0	453	2	paramLong	long
-    //   0	453	5	paramString2	String
-    //   0	453	6	paramString3	String
-    //   10	322	7	bool	boolean
-    //   69	259	8	localIntent	android.content.Intent
-    //   3	358	9	localBaseApplication	com.tencent.qphone.base.util.BaseApplication
+    //   0	458	0	this	CampusNoticeManager
+    //   0	458	1	paramInt	int
+    //   0	458	2	paramLong	long
+    //   0	458	5	paramString2	String
+    //   0	458	6	paramString3	String
+    //   10	333	7	bool	boolean
+    //   78	261	8	localIntent	android.content.Intent
+    //   3	369	9	localBaseApplication	com.tencent.qphone.base.util.BaseApplication
     // Exception table:
     //   from	to	target	type
-    //   39	53	432	finally
-    //   434	436	432	finally
-    //   312	327	439	finally
-    //   441	444	439	finally
+    //   323	338	443	finally
+    //   445	448	443	finally
+    //   48	62	451	finally
+    //   453	455	451	finally
   }
   
   public void a(QQNotificationManager arg1)
@@ -354,15 +357,16 @@ public class CampusNoticeManager
             localQQNotificationManager.cancelUseTag("CampusNoticeManager_removeNotification", "campus_notification_tag", localInteger.intValue());
           }
         }
+        this.jdField_a_of_type_JavaUtilArrayList.clear();
+        return;
       }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      return;
     }
     catch (Exception ???)
     {
       if (QLog.isColorLevel()) {
         QLog.d("CampusNoticeManager", 2, "setReaded", ???);
       }
-      return;
     }
   }
   
@@ -373,73 +377,74 @@ public class CampusNoticeManager
     }
     int i = paramMQQCampusNotify.uint32_type.get();
     long l1 = paramMQQCampusNotify.uint64_from_uin.get();
-    if (paramMQQCampusNotify.str_wording.has()) {}
-    for (String str3 = paramMQQCampusNotify.str_wording.get();; str3 = null)
+    boolean bool = paramMQQCampusNotify.str_wording.has();
+    Object localObject = null;
+    String str2;
+    if (bool) {
+      str2 = paramMQQCampusNotify.str_wording.get();
+    } else {
+      str2 = null;
+    }
+    CharSequence localCharSequence;
+    if (paramMQQCampusNotify.str_target.has())
     {
-      String str1;
-      if (paramMQQCampusNotify.str_target.has())
-      {
-        str1 = paramMQQCampusNotify.str_target.get();
-        if (TextUtils.isEmpty(str1)) {}
-      }
-      for (;;)
-      {
-        Object localObject;
-        long l2;
+      String str3 = paramMQQCampusNotify.str_target.get();
+      String str1 = str3;
+      if (!TextUtils.isEmpty(str3)) {
         try
         {
-          str1 = new String(Base64.a(str1), "UTF-8");
-          if (!paramMQQCampusNotify.str_source.has()) {
-            break label378;
-          }
-          paramMQQCampusNotify = paramMQQCampusNotify.str_source.get();
-          localObject = paramMQQCampusNotify;
-          if (paramMQQCampusNotify == null) {
-            localObject = "";
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i("CampusNoticeManager", 2, String.format(Locale.getDefault(), "onReceiveNotice [type: %d uin: %d wording: %s url: %s from: %s", new Object[] { Integer.valueOf(i), Long.valueOf(l1), str3, str1, localObject }));
-          }
-          if ((TextUtils.isEmpty(str3)) || (TextUtils.isEmpty(str1))) {
-            break;
-          }
-          paramMQQCampusNotify = new PushReportController.PushReportItem();
-          paramMQQCampusNotify.e = "0X800923D";
-          paramMQQCampusNotify.d = "收到Push协议";
-          PushReportController.a(str1, paramMQQCampusNotify);
-          PushReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMQQCampusNotify);
-          l2 = MessageCache.a();
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData == null)
-          {
-            paramMQQCampusNotify = new RecentUser();
-            paramMQQCampusNotify.uin = AppConstants.CAMPUS_NOTICE_UIN;
-            paramMQQCampusNotify.msgType = 1030;
-            paramMQQCampusNotify.setType(1030);
-            this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData = new RecentItemNoticeData(paramMQQCampusNotify);
-            this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.a(i, l1, str3, str1, (String)localObject, l2);
-            a(i, l1, str3, str1, (String)localObject);
-            return;
-          }
+          str1 = new String(Base64.a(str3), "UTF-8");
         }
         catch (Exception localException)
         {
           if (QLog.isColorLevel()) {
             QLog.i("CampusNoticeManager", 2, "decode url fail ", localException);
           }
-          str2 = null;
-          continue;
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.a(i, l1, str3, str2, (String)localObject, l2)) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.a(i, l1, str3, str2, (String)localObject, l2);
-        a(i, l1, str3, str2, (String)localObject);
+      }
+    }
+    else
+    {
+      localCharSequence = null;
+    }
+    if (paramMQQCampusNotify.str_source.has()) {
+      localObject = paramMQQCampusNotify.str_source.get();
+    }
+    if (localObject == null) {
+      paramMQQCampusNotify = "";
+    } else {
+      paramMQQCampusNotify = (SubMsgType0x27.MQQCampusNotify)localObject;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("CampusNoticeManager", 2, String.format(Locale.getDefault(), "onReceiveNotice [type: %d uin: %d wording: %s url: %s from: %s", new Object[] { Integer.valueOf(i), Long.valueOf(l1), str2, localCharSequence, paramMQQCampusNotify }));
+    }
+    if (!TextUtils.isEmpty(str2))
+    {
+      if (TextUtils.isEmpty(localCharSequence)) {
         return;
-        label378:
-        paramMQQCampusNotify = null;
-        continue;
-        continue;
-        String str2 = null;
+      }
+      localObject = new PushReportController.PushReportItem();
+      ((PushReportController.PushReportItem)localObject).e = "0X800923D";
+      ((PushReportController.PushReportItem)localObject).d = "收到Push协议";
+      PushReportController.a(localCharSequence, (PushReportController.PushReportItem)localObject);
+      PushReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (PushReportController.PushReportItem)localObject);
+      long l2 = MessageCache.a();
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData;
+      if (localObject == null)
+      {
+        localObject = new RecentUser();
+        ((RecentUser)localObject).uin = AppConstants.CAMPUS_NOTICE_UIN;
+        ((RecentUser)localObject).msgType = 1030;
+        ((RecentUser)localObject).setType(1030);
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData = new RecentItemNoticeData((RecentUser)localObject);
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.a(i, l1, str2, localCharSequence, paramMQQCampusNotify, l2);
+        a(i, l1, str2, localCharSequence, paramMQQCampusNotify);
+        return;
+      }
+      if (!((RecentItemNoticeData)localObject).a(i, l1, str2, localCharSequence, paramMQQCampusNotify, l2))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.a(i, l1, str2, localCharSequence, paramMQQCampusNotify, l2);
+        a(i, l1, str2, localCharSequence, paramMQQCampusNotify);
       }
     }
   }
@@ -453,7 +458,7 @@ public class CampusNoticeManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.campuscircle.CampusNoticeManager
  * JD-Core Version:    0.7.0.1
  */

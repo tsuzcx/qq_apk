@@ -34,18 +34,8 @@ public class HomeFeedPresenter$FeedInteractiveRec
       return;
     }
     localObject = (CommentLikeHomeFeed)localObject;
-    if ((paramFeedInfoChangeEvent.b == 1) || (paramFeedInfoChangeEvent.b == 2))
+    if ((paramFeedInfoChangeEvent.b != 1) && (paramFeedInfoChangeEvent.b != 2))
     {
-      if (paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null) {
-        ((CommentLikeFeedItem)((CommentLikeHomeFeed)localObject).a).mCommentCount = paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount;
-      }
-      ((CommentLikeHomeFeed)localObject).a(((CommentManager)SuperManager.a(17)).a(paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString, false), true);
-      SLog.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s comment update after count:%d", paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString, Integer.valueOf(((CommentLikeHomeFeed)localObject).b().size()));
-    }
-    for (;;)
-    {
-      HomeFeedPresenter.a(paramHomeFeedPresenter).b(paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString);
-      return;
       if (paramFeedInfoChangeEvent.b == 3)
       {
         if (paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
@@ -56,6 +46,15 @@ public class HomeFeedPresenter$FeedInteractiveRec
         ((CommentLikeHomeFeed)localObject).b(((LikeManager)SuperManager.a(15)).a(paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString, false), true);
       }
     }
+    else
+    {
+      if (paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null) {
+        ((CommentLikeFeedItem)((CommentLikeHomeFeed)localObject).a).mCommentCount = paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount;
+      }
+      ((CommentLikeHomeFeed)localObject).a(((CommentManager)SuperManager.a(17)).a(paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString, false), true);
+      SLog.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s comment update after count:%d", paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString, Integer.valueOf(((CommentLikeHomeFeed)localObject).b().size()));
+    }
+    HomeFeedPresenter.a(paramHomeFeedPresenter).b(paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString);
   }
   
   public Class acceptEventClass()
@@ -67,7 +66,7 @@ public class HomeFeedPresenter$FeedInteractiveRec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.FeedInteractiveRec
  * JD-Core Version:    0.7.0.1
  */

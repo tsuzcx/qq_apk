@@ -7,8 +7,10 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.data.NoC2CExtensionInfo;
-import com.tencent.mobileqq.ptt.PttVoiceChangePreSender;
+import com.tencent.mobileqq.pttlogic.api.IPttUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.lang.ref.WeakReference;
+import mqq.app.AppRuntime;
 
 class ListenChangeVoicePanel$4
   implements Runnable
@@ -17,44 +19,46 @@ class ListenChangeVoicePanel$4
   
   public void run()
   {
-    if ((ListenChangeVoicePanel.a(this.this$0).get() == null) || (this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-      return;
-    }
-    Object localObject = (FriendsManager)((QQAppInterface)ListenChangeVoicePanel.a(this.this$0).get()).getManager(QQManagerFactory.FRIENDS_MANAGER);
-    int i;
-    if (!((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).p())
+    if (ListenChangeVoicePanel.a(this.this$0).get() != null)
     {
-      localObject = ((FriendsManager)localObject).a(((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).a.jdField_a_of_type_JavaLangString, ((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).a.jdField_a_of_type_Int, true);
-      if (localObject == null) {
-        break label216;
+      if (this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+        return;
       }
-      i = ((NoC2CExtensionInfo)localObject).pttChangeVoiceType;
-    }
-    for (;;)
-    {
+      Object localObject = (FriendsManager)((QQAppInterface)ListenChangeVoicePanel.a(this.this$0).get()).getManager(QQManagerFactory.FRIENDS_MANAGER);
+      if (!((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).h())
+      {
+        localObject = ((FriendsManager)localObject).a(((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).a.jdField_a_of_type_JavaLangString, ((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).a.jdField_a_of_type_Int, true);
+        if (localObject != null)
+        {
+          i = ((NoC2CExtensionInfo)localObject).pttChangeVoiceType;
+          break label164;
+        }
+      }
+      else
+      {
+        localObject = ((FriendsManager)localObject).a(((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).a.jdField_a_of_type_JavaLangString, true);
+        if (localObject != null)
+        {
+          i = ((ExtensionInfo)localObject).pttChangeVoiceType;
+          break label164;
+        }
+      }
+      int i = -1;
+      label164:
       if ((i != -1) && (i >= 0) && (ListenChangeVoicePanel.a(this.this$0).length > i))
       {
         ListenChangeVoicePanel.a(this.this$0, i);
         ListenChangeVoicePanel.a(this.this$0)[i] = 1;
       }
-      if (ListenChangeVoicePanel.jdField_a_of_type_ComTencentMobileqqPttPttVoiceChangePreSender != null) {
-        break;
-      }
-      ListenChangeVoicePanel.jdField_a_of_type_ComTencentMobileqqPttPttVoiceChangePreSender = new PttVoiceChangePreSender();
-      return;
-      localObject = ((FriendsManager)localObject).a(((BaseChatPie)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).a.jdField_a_of_type_JavaLangString, true);
-      if (localObject != null) {
-        i = ((ExtensionInfo)localObject).pttChangeVoiceType;
-      } else {
-        label216:
-        i = -1;
+      if (ListenChangeVoicePanel.jdField_a_of_type_ComTencentMobileqqPttIPttVoiceChangePreSender == null) {
+        ListenChangeVoicePanel.jdField_a_of_type_ComTencentMobileqqPttIPttVoiceChangePreSender = ((IPttUtils)QRoute.api(IPttUtils.class)).createPttVoiceChangePreSender((AppRuntime)ListenChangeVoicePanel.a(this.this$0).get());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel.4
  * JD-Core Version:    0.7.0.1
  */

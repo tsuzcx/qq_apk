@@ -20,19 +20,18 @@ public class QZoneNotifyHandler
   {
     if ("QzoneService.GetNewAndUnread".equals(paramToServiceMsg.getServiceCmd()))
     {
-      if (paramObject == null) {
+      if (paramObject == null)
+      {
         notifyUI(1, false, null);
+        return;
       }
+      notifyUI(1, true, null);
     }
-    else {
-      return;
-    }
-    notifyUI(1, true, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.QZoneNotifyHandler
  * JD-Core Version:    0.7.0.1
  */

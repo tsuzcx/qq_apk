@@ -16,7 +16,7 @@ class ChatHistorySettingFragment$4$1
   public void run()
   {
     ChatHistorySettingFragment.a(this.a.a).getMsgHandler().d(true);
-    ChatHistorySettingFragment.a(this.a.a).getMessageFacade().h();
+    ChatHistorySettingFragment.a(this.a.a).getMessageFacade().j();
     TroopAssistantManager.a().j(ChatHistorySettingFragment.a(this.a.a));
     this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
     MqqHandler localMqqHandler = ChatHistorySettingFragment.a(this.a.a).getHandler(Conversation.class);
@@ -27,7 +27,7 @@ class ChatHistorySettingFragment$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.ChatHistorySettingFragment.4.1
  * JD-Core Version:    0.7.0.1
  */

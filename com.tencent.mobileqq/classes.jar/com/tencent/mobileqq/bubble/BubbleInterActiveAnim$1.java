@@ -16,9 +16,7 @@ class BubbleInterActiveAnim$1
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1) {
       return;
     }
     paramMessage = (Pair)paramMessage.obj;
@@ -27,7 +25,7 @@ class BubbleInterActiveAnim$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleInterActiveAnim.1
  * JD-Core Version:    0.7.0.1
  */

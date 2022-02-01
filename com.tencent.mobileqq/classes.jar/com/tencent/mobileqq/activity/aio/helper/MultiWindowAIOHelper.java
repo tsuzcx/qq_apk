@@ -43,14 +43,18 @@ public class MultiWindowAIOHelper
   private MultiAioContext a()
   {
     BaseActivity localBaseActivity = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a();
-    if ((localBaseActivity == null) || (localBaseActivity.isFinishing())) {}
-    int i;
-    do
+    if (localBaseActivity != null)
     {
-      return null;
-      i = localBaseActivity.getIntent().getIntExtra("KEY_MULTI_WINDOW_AIO_CONTEXT_ID", -1);
-    } while (i == -1);
-    return ((MultiAIOManager)localBaseActivity.app.getManager(QQManagerFactory.AIO_MULTI_WINDOW_MANAGER)).b(i);
+      if (localBaseActivity.isFinishing()) {
+        return null;
+      }
+      int i = localBaseActivity.getIntent().getIntExtra("KEY_MULTI_WINDOW_AIO_CONTEXT_ID", -1);
+      if (i == -1) {
+        return null;
+      }
+      return ((MultiAIOManager)localBaseActivity.app.getManager(QQManagerFactory.AIO_MULTI_WINDOW_MANAGER)).b(i);
+    }
+    return null;
   }
   
   private void b()
@@ -114,44 +118,49 @@ public class MultiWindowAIOHelper
       QLog.d("MultiWindowAIOHelper", 2, "tryRestoreListViewState() called");
     }
     Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1;
-    Object localObject2;
     if (localObject1 != null)
     {
       localObject1 = ((ChatAdapter1)localObject1).a();
-      i = a();
+      int i = a();
       if ((localObject1 != null) && (((List)localObject1).size() == i))
       {
         localObject1 = a();
         if ((localObject1 != null) && (((MultiAioContext)localObject1).a()))
         {
-          localObject2 = ((MultiAioContext)localObject1).a();
+          Object localObject2 = ((MultiAioContext)localObject1).a();
           if (localObject2 != null)
           {
             localObject2 = ((MultiAioContainer)localObject2).a();
-            if (localObject2 != null) {
-              break label100;
+            if (localObject2 == null)
+            {
+              QLog.e("MultiWindowAIOHelper", 1, "tryRestoreListViewState: listView == null");
+              return;
             }
-            QLog.e("MultiWindowAIOHelper", 1, "tryRestoreListViewState: listView == null");
+            i = ((ListView)localObject2).getLastVisiblePosition();
+            View localView = ((ListView)localObject2).getChildAt(((ListView)localObject2).getChildCount() - 1);
+            int j = ((ListView)localObject2).getBottom() - localView.getBottom();
+            if (QLog.isColorLevel())
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("tryRestoreListViewState() anchorPosition = ");
+              ((StringBuilder)localObject2).append(i);
+              ((StringBuilder)localObject2).append(", specifyBottom = ");
+              ((StringBuilder)localObject2).append(j);
+              QLog.d("MultiWindowAIOHelper", 2, ((StringBuilder)localObject2).toString());
+            }
+            this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setOnLayoutListener(null);
+            this.jdField_a_of_type_AndroidOsHandler.post(new MultiWindowAIOHelper.3(this, i, j));
+            this.jdField_a_of_type_AndroidOsHandler.postDelayed(new MultiWindowAIOHelper.4(this, (MultiAioContext)localObject1), 350L);
           }
         }
       }
     }
-    return;
-    label100:
-    int i = ((ListView)localObject2).getLastVisiblePosition();
-    View localView = ((ListView)localObject2).getChildAt(((ListView)localObject2).getChildCount() - 1);
-    int j = ((ListView)localObject2).getBottom() - localView.getBottom();
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiWindowAIOHelper", 2, "tryRestoreListViewState() anchorPosition = " + i + ", specifyBottom = " + j);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setOnLayoutListener(null);
-    this.jdField_a_of_type_AndroidOsHandler.post(new MultiWindowAIOHelper.3(this, i, j));
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new MultiWindowAIOHelper.4(this, (MultiAioContext)localObject1), 350L);
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 != null)) {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    if ((localObject != null) && (((BaseChatPie)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 != null)) {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.d();
     }
     long l = SystemClock.elapsedRealtime();
@@ -159,11 +168,15 @@ public class MultiWindowAIOHelper
     {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 300L);
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("MultiWindowAIOHelper", 2, "AIO start multi window!  but list idle time lower 2s!  please wait... dif time = " + (l - this.jdField_a_of_type_Long));
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("AIO start multi window!  but list idle time lower 2s!  please wait... dif time = ");
+      ((StringBuilder)localObject).append(l - this.jdField_a_of_type_Long);
+      QLog.d("MultiWindowAIOHelper", 2, ((StringBuilder)localObject).toString());
+    }
   }
   
   public String getTag()
@@ -173,48 +186,48 @@ public class MultiWindowAIOHelper
   
   public int[] interestedIn()
   {
-    return new int[] { 4, 6, 8, 9, 10, 14, 17 };
+    return new int[] { 4, 7, 9, 10, 11, 15, 18 };
   }
   
   public void onMoveToState(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 4)
     {
-    case 7: 
-    case 11: 
-    case 12: 
-    case 13: 
-    case 15: 
-    case 16: 
-    default: 
-      return;
-    case 4: 
-      d();
-      return;
-    case 5: 
+      if (paramInt != 5)
+      {
+        if (paramInt != 7) {
+          if (paramInt != 15) {
+            if (paramInt == 18) {}
+          }
+        }
+        switch (paramInt)
+        {
+        default: 
+          return;
+        case 11: 
+          h();
+          return;
+        case 10: 
+          g();
+          return;
+          b();
+          return;
+          i();
+          return;
+          f();
+        }
+        c();
+        return;
+      }
       e();
       return;
-    case 6: 
-      f();
-    case 8: 
-      c();
-      return;
-    case 9: 
-      g();
-      return;
-    case 10: 
-      h();
-      return;
-    case 14: 
-      i();
-      return;
     }
-    b();
+    d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.MultiWindowAIOHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -8,12 +8,17 @@ public class FollowUserRspModel
   
   public String toString()
   {
-    return "ret:" + this.ret + " msg:" + this.msg;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ret:");
+    localStringBuilder.append(this.ret);
+    localStringBuilder.append(" msg:");
+    localStringBuilder.append(this.msg);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.minicardservice_interface.model.FollowUserRspModel
  * JD-Core Version:    0.7.0.1
  */

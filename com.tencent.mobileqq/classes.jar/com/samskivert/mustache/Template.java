@@ -32,17 +32,19 @@ public class Template
   
   protected Object checkForMissing(String paramString, int paramInt, boolean paramBoolean, Object paramObject)
   {
-    Object localObject = paramObject;
     if (paramObject == NO_FETCHER_FOUND)
     {
       if (paramBoolean) {
-        localObject = null;
+        return null;
       }
+      paramObject = new StringBuilder();
+      paramObject.append("No method or field with name '");
+      paramObject.append(paramString);
+      paramObject.append("' on line ");
+      paramObject.append(paramInt);
+      throw new MustacheException.Context(paramObject.toString(), paramString, paramInt);
     }
-    else {
-      return localObject;
-    }
-    throw new MustacheException.Context("No method or field with name '" + paramString + "' on line " + paramInt, paramString, paramInt);
+    return paramObject;
   }
   
   protected Template.Fragment createFragment(Template.Segment[] paramArrayOfSegment, Template.Context paramContext)
@@ -88,10 +90,18 @@ public class Template
     {
       if (paramContext == NO_FETCHER_FOUND)
       {
-        if (!paramBoolean) {
-          throw new MustacheException.Context("Missing context for compound variable '" + paramString + "' on line " + paramInt + ". '" + arrayOfString[(i - 1)] + "' was not found.", paramString, paramInt);
+        if (paramBoolean) {
+          return null;
         }
-        return null;
+        paramContext = new StringBuilder();
+        paramContext.append("Missing context for compound variable '");
+        paramContext.append(paramString);
+        paramContext.append("' on line ");
+        paramContext.append(paramInt);
+        paramContext.append(". '");
+        paramContext.append(arrayOfString[(i - 1)]);
+        paramContext.append("' was not found.");
+        throw new MustacheException.Context(paramContext.toString(), paramString, paramInt);
       }
       if (paramContext == null) {
         return null;
@@ -104,25 +114,18 @@ public class Template
   
   protected Object getSectionValue(Template.Context paramContext, String paramString, int paramInt)
   {
-    if (!this._compiler.strictSections) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramString = getValue(paramContext, paramString, paramInt, bool);
-      paramContext = paramString;
-      if (paramString == null) {
-        paramContext = Collections.emptyList();
-      }
-      return paramContext;
+    paramString = getValue(paramContext, paramString, paramInt, this._compiler.strictSections ^ true);
+    paramContext = paramString;
+    if (paramString == null) {
+      paramContext = Collections.emptyList();
     }
+    return paramContext;
   }
   
   protected Object getValue(Template.Context paramContext, String paramString, int paramInt, boolean paramBoolean)
   {
-    Object localObject1;
-    if (paramString.equals("-first"))
-    {
-      localObject1 = Boolean.valueOf(paramContext.onFirst);
-      return localObject1;
+    if (paramString.equals("-first")) {
+      return Boolean.valueOf(paramContext.onFirst);
     }
     if (paramString.equals("-last")) {
       return Boolean.valueOf(paramContext.onLast);
@@ -133,18 +136,13 @@ public class Template
     if (this._compiler.standardsMode) {
       return checkForMissing(paramString, paramInt, paramBoolean, getValueIn(paramContext.data, paramString, paramInt));
     }
-    for (Template.Context localContext = paramContext;; localContext = localContext.parent)
+    for (Template.Context localContext = paramContext; localContext != null; localContext = localContext.parent)
     {
-      if (localContext == null) {
-        break label127;
-      }
-      Object localObject2 = getValueIn(localContext.data, paramString, paramInt);
-      localObject1 = localObject2;
-      if (localObject2 != NO_FETCHER_FOUND) {
-        break;
+      Object localObject = getValueIn(localContext.data, paramString, paramInt);
+      if (localObject != NO_FETCHER_FOUND) {
+        return localObject;
       }
     }
-    label127:
     if ((!paramString.equals(".")) && (paramString.indexOf(".") != -1)) {
       return getCompoundValue(paramContext, paramString, paramInt, paramBoolean);
     }
@@ -156,41 +154,53 @@ public class Template
     if (isThisName(paramString)) {
       return paramObject;
     }
-    if (paramObject == null) {
-      throw new NullPointerException("Null context for variable '" + paramString + "' on line " + paramInt);
-    }
-    Template.Key localKey = new Template.Key(paramObject.getClass(), paramString);
-    Object localObject = (Mustache.VariableFetcher)this._fcache.get(localKey);
-    Mustache.VariableFetcher localVariableFetcher1;
-    if (localObject != null) {
-      try
-      {
-        localObject = ((Mustache.VariableFetcher)localObject).get(paramObject, paramString);
-        return localObject;
-      }
-      catch (Exception localException)
-      {
-        localVariableFetcher1 = this._compiler.collector.createFetcher(paramObject, localKey.name);
-      }
-    }
-    for (;;)
+    Template.Key localKey;
+    if (paramObject != null)
     {
-      Mustache.VariableFetcher localVariableFetcher2 = localVariableFetcher1;
-      if (localVariableFetcher1 == null) {
-        localVariableFetcher2 = NOT_FOUND_FETCHER;
-      }
-      try
-      {
-        paramObject = localVariableFetcher2.get(paramObject, paramString);
-        this._fcache.put(localKey, localVariableFetcher2);
-        return paramObject;
-      }
-      catch (Exception paramObject)
-      {
-        throw new MustacheException.Context("Failure fetching variable '" + paramString + "' on line " + paramInt, paramString, paramInt, paramObject);
-      }
-      localVariableFetcher1 = this._compiler.collector.createFetcher(paramObject, localKey.name);
+      localKey = new Template.Key(paramObject.getClass(), paramString);
+      localObject1 = (Mustache.VariableFetcher)this._fcache.get(localKey);
+      if (localObject1 == null) {}
     }
+    try
+    {
+      localObject1 = ((Mustache.VariableFetcher)localObject1).get(paramObject, paramString);
+      return localObject1;
+    }
+    catch (Exception localException)
+    {
+      label62:
+      Object localObject2;
+      break label62;
+    }
+    Object localObject1 = this._compiler.collector.createFetcher(paramObject, localKey.name);
+    break label105;
+    localObject1 = this._compiler.collector.createFetcher(paramObject, localKey.name);
+    label105:
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = NOT_FOUND_FETCHER;
+    }
+    try
+    {
+      paramObject = ((Mustache.VariableFetcher)localObject2).get(paramObject, paramString);
+      this._fcache.put(localKey, localObject2);
+      return paramObject;
+    }
+    catch (Exception paramObject)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Failure fetching variable '");
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append("' on line ");
+      ((StringBuilder)localObject1).append(paramInt);
+      throw new MustacheException.Context(((StringBuilder)localObject1).toString(), paramString, paramInt, paramObject);
+    }
+    paramObject = new StringBuilder();
+    paramObject.append("Null context for variable '");
+    paramObject.append(paramString);
+    paramObject.append("' on line ");
+    paramObject.append(paramInt);
+    throw new NullPointerException(paramObject.toString());
   }
   
   protected Object getValueOrDefault(Template.Context paramContext, String paramString, int paramInt)

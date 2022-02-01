@@ -28,63 +28,63 @@ public class StatReportHttpEngine
     this.a = paramIStatReportListener;
   }
   
-  public void onFinished(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
+  protected void onFinished(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
   {
-    Log.i("StatReportHttpRequest", "errorCode: " + paramInt);
-    Response localResponse = ProtocolPackage.unpackPackage(paramArrayOfByte2);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("errorCode: ");
+    ((StringBuilder)localObject).append(paramInt);
+    Log.i("StatReportHttpRequest", ((StringBuilder)localObject).toString());
+    localObject = ProtocolPackage.unpackPackage(paramArrayOfByte2);
     paramArrayOfByte1 = ProtocolPackage.unpackRequestPackage(paramArrayOfByte1);
-    if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.head != null)) {}
-    for (int i = paramArrayOfByte1.head.requestId;; i = 0)
+    int i;
+    if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.head != null)) {
+      i = paramArrayOfByte1.head.requestId;
+    } else {
+      i = 0;
+    }
+    if ((paramArrayOfByte2 == null) && (this.a != null))
     {
-      if ((paramArrayOfByte2 == null) && (this.a != null))
+      Log.i("StatReportHttpRequest", "response is null");
+      this.a.a(i, null, null, paramInt);
+      return;
+    }
+    if (this.a != null) {
+      if ((localObject != null) && (((Response)localObject).body != null))
       {
-        Log.i("StatReportHttpRequest", "response is null");
-        this.a.a(i, null, null, paramInt);
-        return;
-      }
-      if (this.a != null)
-      {
-        if ((localResponse == null) || (localResponse.body == null)) {
-          break label225;
-        }
-        paramArrayOfByte1 = ProtocolPackage.unpageageJceResponse(localResponse.body, StatReportResponse.class);
-        if (paramArrayOfByte1 == null) {
-          break label208;
-        }
-        if (paramInt != 0) {
-          break label191;
-        }
-        if ((paramArrayOfByte1 instanceof StatReportResponse))
+        paramArrayOfByte1 = ProtocolPackage.unpageageJceResponse(((Response)localObject).body, StatReportResponse.class);
+        if (paramArrayOfByte1 != null)
         {
-          paramArrayOfByte1 = (StatReportResponse)paramArrayOfByte1;
-          if (paramArrayOfByte1.ret != 0) {
-            break label171;
+          if (paramInt == 0)
+          {
+            if ((paramArrayOfByte1 instanceof StatReportResponse))
+            {
+              paramArrayOfByte1 = (StatReportResponse)paramArrayOfByte1;
+              if (paramArrayOfByte1.ret == 0) {
+                this.a.a(i, null, paramArrayOfByte1, 0);
+              } else {
+                this.a.a(i, null, paramArrayOfByte1, paramArrayOfByte1.ret);
+              }
+            }
           }
-          this.a.a(i, null, paramArrayOfByte1, 0);
+          else {
+            this.a.a(i, null, null, paramInt);
+          }
+        }
+        else {
+          this.a.a(i, null, null, paramInt);
         }
       }
-      for (;;)
+      else
       {
-        Log.i("StatReportHttpRequest", "exit");
-        return;
-        label171:
-        this.a.a(i, null, paramArrayOfByte1, paramArrayOfByte1.ret);
-        continue;
-        label191:
-        this.a.a(i, null, null, paramInt);
-        continue;
-        label208:
-        this.a.a(i, null, null, paramInt);
-        continue;
-        label225:
         this.a.a(i, null, null, paramInt);
       }
     }
+    Log.i("StatReportHttpRequest", "exit");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcircle.module.StatReportHttpEngine
  * JD-Core Version:    0.7.0.1
  */

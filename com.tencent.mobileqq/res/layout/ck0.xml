@@ -1,22 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="56.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <View android:id="@id/lyk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="56.0dip" />
-    <com.tencent.mobileqq.widget.QQBlurView android:id="@id/nod" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="56.0dip" />
-    <com.tencent.widget.PatchedButton android:textSize="14.0dip" android:textColor="@color/skin_aio_send_button" android:id="@id/max" android:background="@drawable/hfv" android:clickable="true" android:layout_width="60.0dip" android:layout_height="29.0dip" android:layout_marginRight="16.0dip" android:text="@string/isb" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <LinearLayout android:gravity="center_vertical" android:id="@id/nef" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_centerVertical="true">
-        <RelativeLayout android:id="@id/o1i" android:layout_width="30.5dip" android:layout_height="30.5dip">
-            <com.tencent.mobileqq.widget.RoundImageView android:id="@id/o0s" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_centerInParent="true" android:contentDescription="@null" app:qwRadius="100.0dip" />
-        </RelativeLayout>
-        <com.tencent.mobileqq.widget.RoundImageView android:id="@id/o0t" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="-5.0dip" android:contentDescription="@null" app:qwRadius="100.0dip" />
-        <FrameLayout android:id="@id/myz" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="-5.0dip">
-            <com.tencent.mobileqq.widget.RoundImageView android:id="@id/o0u" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@null" app:qwRadius="100.0dip" />
-            <com.tencent.mobileqq.widget.RoundImageView android:id="@id/o0v" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="#ff000000" android:contentDescription="@null" android:alpha="0.55" app:qwRadius="100.0dip" />
-            <TextView android:textSize="10.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/ofc" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        </FrameLayout>
+<RelativeLayout android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ViewStub android:id="@id/mmj" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:gravity="bottom" android:layout_gravity="bottom" android:id="@id/mmi" android:layout="@layout/cjt" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/iag" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
+        <include layout="@layout/cl3" />
+        <ViewStub android:layout_gravity="center" android:id="@id/mr1" android:layout="@layout/cjy" android:layout_width="24.0dip" android:layout_height="24.0dip" />
     </LinearLayout>
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:layout_marginRight="13.0dip" android:layout_toLeftOf="@id/max" android:layout_toRightOf="@id/nef" android:layout_centerVertical="true">
-        <TextView android:textSize="14.0dip" android:textColor="@color/skin_aio_listen_together_black" android:ellipsize="end" android:id="@id/mb0" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
-        <TextView android:textSize="10.0dip" android:textColor="@color/skin_aio_listen_together_grey" android:ellipsize="end" android:id="@id/maz" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/mb0" android:layout_alignParentLeft="true" />
-    </RelativeLayout>
+    <ViewStub android:id="@id/ni2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </RelativeLayout>

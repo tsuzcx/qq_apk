@@ -1,15 +1,6 @@
 package com.tencent.biz.qqstory.storyHome.memory.controller;
 
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.QQStoryManager;
 import com.tencent.biz.qqstory.base.QQStoryObserver;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.widget.QQToast;
 
 class QQStoryMemoriesPresenter$1
   extends QQStoryObserver
@@ -18,42 +9,12 @@ class QQStoryMemoriesPresenter$1
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
   {
-    paramInt = 1;
-    if ((this.a.a == null) || (!TextUtils.equals(paramString, this.a.a.uid))) {
-      return;
-    }
-    if (paramBoolean1)
-    {
-      paramString = this.a.a;
-      if (paramBoolean2)
-      {
-        paramString.isSubscribe = paramInt;
-        paramString = (QQStoryManager)PlayModeUtils.a().getManager(QQManagerFactory.QQSTORY_MANAGER);
-        if (!paramBoolean2) {
-          break label128;
-        }
-        if (!paramString.h()) {
-          paramString.b();
-        }
-        QQToast.a(PlayModeUtils.a(), 2, HardCodeUtil.a(2131710914), 0).a();
-      }
-      for (;;)
-      {
-        QQStoryMemoriesPresenter.a(this.a).e();
-        QQStoryMemoriesPresenter.a(this.a).c();
-        return;
-        paramInt = 0;
-        break;
-        label128:
-        QQToast.a(PlayModeUtils.a(), 2, HardCodeUtil.a(2131710910), 0).a();
-      }
-    }
-    QQToast.a(PlayModeUtils.a(), 1, HardCodeUtil.a(2131710919), 0).a();
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.controller.QQStoryMemoriesPresenter.1
  * JD-Core Version:    0.7.0.1
  */

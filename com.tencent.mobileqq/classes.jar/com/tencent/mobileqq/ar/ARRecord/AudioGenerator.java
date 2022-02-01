@@ -21,28 +21,35 @@ public class AudioGenerator
     this.b = paramInt2;
     this.c = paramInt3;
     this.d = 0;
-    if ((this.c != 8) && (this.c != 16)) {
-      throw new RuntimeException(String.format("bit deepth must be 8 or 16, current is %s", new Object[] { Integer.valueOf(this.c) }));
+    paramInt1 = this.c;
+    if (paramInt1 != 8)
+    {
+      if (paramInt1 == 16) {
+        return;
+      }
+      throw new RuntimeException(String.format("bit deepth must be 8 or 16, current is %s", new Object[] { Integer.valueOf(paramInt1) }));
     }
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaIoBufferedInputStream != null) {}
-    try
-    {
-      this.jdField_a_of_type_JavaIoBufferedInputStream.close();
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      localIOException.printStackTrace();
+    BufferedInputStream localBufferedInputStream = this.jdField_a_of_type_JavaIoBufferedInputStream;
+    if (localBufferedInputStream != null) {
+      try
+      {
+        localBufferedInputStream.close();
+        return;
+      }
+      catch (IOException localIOException)
+      {
+        localIOException.printStackTrace();
+      }
     }
   }
   
   public byte[] a(long paramLong)
   {
-    int i = (int)(this.jdField_a_of_type_Int * paramLong / 1000L) * this.b * (this.c / 8);
+    int i = (int)(paramLong * this.jdField_a_of_type_Int / 1000L) * this.b * (this.c / 8);
     byte[] arrayOfByte1 = new byte[i];
     byte[] arrayOfByte2 = new byte[i];
     i = this.jdField_a_of_type_JavaIoBufferedInputStream.read(arrayOfByte1, this.d, i);
@@ -55,7 +62,7 @@ public class AudioGenerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.AudioGenerator
  * JD-Core Version:    0.7.0.1
  */

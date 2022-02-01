@@ -24,15 +24,17 @@ public abstract class ProxyWebViewClient
   
   public void doUpdateVisitedHistory(IX5WebViewBase paramIX5WebViewBase, String paramString, boolean paramBoolean)
   {
-    if (this.mWebViewClient != null) {
-      this.mWebViewClient.doUpdateVisitedHistory(paramIX5WebViewBase, paramString, paramBoolean);
+    IX5WebViewClient localIX5WebViewClient = this.mWebViewClient;
+    if (localIX5WebViewClient != null) {
+      localIX5WebViewClient.doUpdateVisitedHistory(paramIX5WebViewBase, paramString, paramBoolean);
     }
   }
   
   public void onContentSizeChanged(IX5WebViewBase paramIX5WebViewBase, int paramInt1, int paramInt2)
   {
-    if (this.mWebViewClient != null) {
-      this.mWebViewClient.onContentSizeChanged(paramIX5WebViewBase, paramInt1, paramInt2);
+    IX5WebViewClient localIX5WebViewClient = this.mWebViewClient;
+    if (localIX5WebViewClient != null) {
+      localIX5WebViewClient.onContentSizeChanged(paramIX5WebViewBase, paramInt1, paramInt2);
     }
   }
   
@@ -40,15 +42,17 @@ public abstract class ProxyWebViewClient
   
   public void onFormResubmission(IX5WebViewBase paramIX5WebViewBase, Message paramMessage1, Message paramMessage2)
   {
-    if (this.mWebViewClient != null) {
-      this.mWebViewClient.onFormResubmission(paramIX5WebViewBase, paramMessage1, paramMessage2);
+    IX5WebViewClient localIX5WebViewClient = this.mWebViewClient;
+    if (localIX5WebViewClient != null) {
+      localIX5WebViewClient.onFormResubmission(paramIX5WebViewBase, paramMessage1, paramMessage2);
     }
   }
   
   public void onLoadResource(IX5WebViewBase paramIX5WebViewBase, String paramString)
   {
-    if (this.mWebViewClient != null) {
-      this.mWebViewClient.onLoadResource(paramIX5WebViewBase, paramString);
+    IX5WebViewClient localIX5WebViewClient = this.mWebViewClient;
+    if (localIX5WebViewClient != null) {
+      localIX5WebViewClient.onLoadResource(paramIX5WebViewBase, paramString);
     }
   }
   
@@ -58,8 +62,9 @@ public abstract class ProxyWebViewClient
   
   public void onPageFinished(IX5WebViewBase paramIX5WebViewBase, String paramString)
   {
-    if (this.mWebViewClient != null) {
-      this.mWebViewClient.onPageFinished(paramIX5WebViewBase, paramString);
+    IX5WebViewClient localIX5WebViewClient = this.mWebViewClient;
+    if (localIX5WebViewClient != null) {
+      localIX5WebViewClient.onPageFinished(paramIX5WebViewBase, paramString);
     }
   }
   
@@ -67,78 +72,89 @@ public abstract class ProxyWebViewClient
   
   public void onPageStarted(IX5WebViewBase paramIX5WebViewBase, String paramString, Bitmap paramBitmap)
   {
-    if (this.mWebViewClient != null) {
-      this.mWebViewClient.onPageStarted(paramIX5WebViewBase, paramString, paramBitmap);
+    IX5WebViewClient localIX5WebViewClient = this.mWebViewClient;
+    if (localIX5WebViewClient != null) {
+      localIX5WebViewClient.onPageStarted(paramIX5WebViewBase, paramString, paramBitmap);
     }
   }
   
   public void onReceivedClientCertRequest(IX5WebViewBase paramIX5WebViewBase, ClientCertRequest paramClientCertRequest)
   {
-    if (this.mWebViewClient != null) {
-      this.mWebViewClient.onReceivedClientCertRequest(paramIX5WebViewBase, paramClientCertRequest);
+    IX5WebViewClient localIX5WebViewClient = this.mWebViewClient;
+    if (localIX5WebViewClient != null) {
+      localIX5WebViewClient.onReceivedClientCertRequest(paramIX5WebViewBase, paramClientCertRequest);
     }
   }
   
   public void onReceivedError(IX5WebViewBase paramIX5WebViewBase, int paramInt, String paramString1, String paramString2)
   {
-    if (this.mWebViewClient != null) {
-      this.mWebViewClient.onReceivedError(paramIX5WebViewBase, paramInt, paramString1, paramString2);
+    IX5WebViewClient localIX5WebViewClient = this.mWebViewClient;
+    if (localIX5WebViewClient != null) {
+      localIX5WebViewClient.onReceivedError(paramIX5WebViewBase, paramInt, paramString1, paramString2);
     }
   }
   
   public void onReceivedError(IX5WebViewBase paramIX5WebViewBase, WebResourceRequest paramWebResourceRequest, WebResourceError paramWebResourceError)
   {
-    if (this.mWebViewClient != null) {
-      this.mWebViewClient.onReceivedError(paramIX5WebViewBase, paramWebResourceRequest, paramWebResourceError);
+    IX5WebViewClient localIX5WebViewClient = this.mWebViewClient;
+    if (localIX5WebViewClient != null) {
+      localIX5WebViewClient.onReceivedError(paramIX5WebViewBase, paramWebResourceRequest, paramWebResourceError);
     }
   }
   
   public void onReceivedHttpAuthRequest(IX5WebViewBase paramIX5WebViewBase, HttpAuthHandler paramHttpAuthHandler, String paramString1, String paramString2)
   {
-    if (this.mWebViewClient != null) {
-      this.mWebViewClient.onReceivedHttpAuthRequest(paramIX5WebViewBase, paramHttpAuthHandler, paramString1, paramString2);
+    IX5WebViewClient localIX5WebViewClient = this.mWebViewClient;
+    if (localIX5WebViewClient != null) {
+      localIX5WebViewClient.onReceivedHttpAuthRequest(paramIX5WebViewBase, paramHttpAuthHandler, paramString1, paramString2);
     }
   }
   
   public void onReceivedHttpError(IX5WebViewBase paramIX5WebViewBase, WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse)
   {
-    if (this.mWebViewClient != null) {
-      this.mWebViewClient.onReceivedHttpError(paramIX5WebViewBase, paramWebResourceRequest, paramWebResourceResponse);
+    IX5WebViewClient localIX5WebViewClient = this.mWebViewClient;
+    if (localIX5WebViewClient != null) {
+      localIX5WebViewClient.onReceivedHttpError(paramIX5WebViewBase, paramWebResourceRequest, paramWebResourceResponse);
     }
   }
   
   public void onReceivedLoginRequest(IX5WebViewBase paramIX5WebViewBase, String paramString1, String paramString2, String paramString3)
   {
-    if (this.mWebViewClient != null) {
-      this.mWebViewClient.onReceivedLoginRequest(paramIX5WebViewBase, paramString1, paramString2, paramString3);
+    IX5WebViewClient localIX5WebViewClient = this.mWebViewClient;
+    if (localIX5WebViewClient != null) {
+      localIX5WebViewClient.onReceivedLoginRequest(paramIX5WebViewBase, paramString1, paramString2, paramString3);
     }
   }
   
   public void onReceivedSslError(IX5WebViewBase paramIX5WebViewBase, SslErrorHandler paramSslErrorHandler, SslError paramSslError)
   {
-    if (this.mWebViewClient != null) {
-      this.mWebViewClient.onReceivedSslError(paramIX5WebViewBase, paramSslErrorHandler, paramSslError);
+    IX5WebViewClient localIX5WebViewClient = this.mWebViewClient;
+    if (localIX5WebViewClient != null) {
+      localIX5WebViewClient.onReceivedSslError(paramIX5WebViewBase, paramSslErrorHandler, paramSslError);
     }
   }
   
   public void onScaleChanged(IX5WebViewBase paramIX5WebViewBase, float paramFloat1, float paramFloat2)
   {
-    if (this.mWebViewClient != null) {
-      this.mWebViewClient.onScaleChanged(paramIX5WebViewBase, paramFloat1, paramFloat2);
+    IX5WebViewClient localIX5WebViewClient = this.mWebViewClient;
+    if (localIX5WebViewClient != null) {
+      localIX5WebViewClient.onScaleChanged(paramIX5WebViewBase, paramFloat1, paramFloat2);
     }
   }
   
   public void onTooManyRedirects(IX5WebViewBase paramIX5WebViewBase, Message paramMessage1, Message paramMessage2)
   {
-    if (this.mWebViewClient != null) {
-      this.mWebViewClient.onTooManyRedirects(paramIX5WebViewBase, paramMessage1, paramMessage2);
+    IX5WebViewClient localIX5WebViewClient = this.mWebViewClient;
+    if (localIX5WebViewClient != null) {
+      localIX5WebViewClient.onTooManyRedirects(paramIX5WebViewBase, paramMessage1, paramMessage2);
     }
   }
   
   public void onUnhandledKeyEvent(IX5WebViewBase paramIX5WebViewBase, KeyEvent paramKeyEvent)
   {
-    if (this.mWebViewClient != null) {
-      this.mWebViewClient.onUnhandledKeyEvent(paramIX5WebViewBase, paramKeyEvent);
+    IX5WebViewClient localIX5WebViewClient = this.mWebViewClient;
+    if (localIX5WebViewClient != null) {
+      localIX5WebViewClient.onUnhandledKeyEvent(paramIX5WebViewBase, paramKeyEvent);
     }
   }
   
@@ -149,46 +165,52 @@ public abstract class ProxyWebViewClient
   
   public WebResourceResponse shouldInterceptRequest(IX5WebViewBase paramIX5WebViewBase, WebResourceRequest paramWebResourceRequest)
   {
-    if (this.mWebViewClient != null) {
-      return this.mWebViewClient.shouldInterceptRequest(paramIX5WebViewBase, paramWebResourceRequest);
+    IX5WebViewClient localIX5WebViewClient = this.mWebViewClient;
+    if (localIX5WebViewClient != null) {
+      return localIX5WebViewClient.shouldInterceptRequest(paramIX5WebViewBase, paramWebResourceRequest);
     }
     return null;
   }
   
   public WebResourceResponse shouldInterceptRequest(IX5WebViewBase paramIX5WebViewBase, WebResourceRequest paramWebResourceRequest, Bundle paramBundle)
   {
-    if (this.mWebViewClient != null) {
-      return this.mWebViewClient.shouldInterceptRequest(paramIX5WebViewBase, paramWebResourceRequest, paramBundle);
+    IX5WebViewClient localIX5WebViewClient = this.mWebViewClient;
+    if (localIX5WebViewClient != null) {
+      return localIX5WebViewClient.shouldInterceptRequest(paramIX5WebViewBase, paramWebResourceRequest, paramBundle);
     }
     return null;
   }
   
   public WebResourceResponse shouldInterceptRequest(IX5WebViewBase paramIX5WebViewBase, String paramString)
   {
-    if (this.mWebViewClient != null) {
-      return this.mWebViewClient.shouldInterceptRequest(paramIX5WebViewBase, paramString);
+    IX5WebViewClient localIX5WebViewClient = this.mWebViewClient;
+    if (localIX5WebViewClient != null) {
+      return localIX5WebViewClient.shouldInterceptRequest(paramIX5WebViewBase, paramString);
     }
     return null;
   }
   
   public boolean shouldOverrideKeyEvent(IX5WebViewBase paramIX5WebViewBase, KeyEvent paramKeyEvent)
   {
-    return (this.mWebViewClient != null) && (this.mWebViewClient.shouldOverrideKeyEvent(paramIX5WebViewBase, paramKeyEvent));
+    IX5WebViewClient localIX5WebViewClient = this.mWebViewClient;
+    return (localIX5WebViewClient != null) && (localIX5WebViewClient.shouldOverrideKeyEvent(paramIX5WebViewBase, paramKeyEvent));
   }
   
   public boolean shouldOverrideUrlLoading(IX5WebViewBase paramIX5WebViewBase, WebResourceRequest paramWebResourceRequest)
   {
-    return (this.mWebViewClient != null) && (this.mWebViewClient.shouldOverrideUrlLoading(paramIX5WebViewBase, paramWebResourceRequest));
+    IX5WebViewClient localIX5WebViewClient = this.mWebViewClient;
+    return (localIX5WebViewClient != null) && (localIX5WebViewClient.shouldOverrideUrlLoading(paramIX5WebViewBase, paramWebResourceRequest));
   }
   
   public boolean shouldOverrideUrlLoading(IX5WebViewBase paramIX5WebViewBase, String paramString)
   {
-    return (this.mWebViewClient != null) && (this.mWebViewClient.shouldOverrideUrlLoading(paramIX5WebViewBase, paramString));
+    IX5WebViewClient localIX5WebViewClient = this.mWebViewClient;
+    return (localIX5WebViewClient != null) && (localIX5WebViewClient.shouldOverrideUrlLoading(paramIX5WebViewBase, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.export.external.proxy.ProxyWebViewClient
  * JD-Core Version:    0.7.0.1
  */

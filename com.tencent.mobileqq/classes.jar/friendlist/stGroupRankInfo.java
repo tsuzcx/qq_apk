@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class stGroupRankInfo
   extends JceStruct
@@ -65,26 +66,30 @@ public final class stGroupRankInfo
     paramJceOutputStream.write(this.dwGroupCode, 0);
     paramJceOutputStream.write(this.cGroupRankSysFlag, 1);
     paramJceOutputStream.write(this.cGroupRankUserFlag, 2);
-    if (this.vecRankMap != null) {
-      paramJceOutputStream.write(this.vecRankMap, 3);
+    Object localObject = this.vecRankMap;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
     paramJceOutputStream.write(this.dwGroupRankSeq, 4);
-    if (this.strOwnerName != null) {
-      paramJceOutputStream.write(this.strOwnerName, 5);
+    localObject = this.strOwnerName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.strAdminName != null) {
-      paramJceOutputStream.write(this.strAdminName, 6);
+    localObject = this.strAdminName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
     paramJceOutputStream.write(this.dwOfficeMode, 7);
     paramJceOutputStream.write(this.cGroupRankUserFlagNew, 8);
-    if (this.vecRankMapNew != null) {
-      paramJceOutputStream.write(this.vecRankMapNew, 9);
+    localObject = this.vecRankMapNew;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     friendlist.stGroupRankInfo
  * JD-Core Version:    0.7.0.1
  */

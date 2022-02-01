@@ -70,24 +70,20 @@ public abstract class BitmapPool
   
   protected boolean handleRecyleData(BucketPool<Bitmap>.Bucket<Bitmap> paramBucketPool, Bitmap paramBitmap)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    if (paramBucketPool.dataList.size() < paramBucketPool.itemSize) {
-      if (paramBucketPool.allocCount > paramBucketPool.itemSize + 2)
-      {
-        bool1 = bool2;
-        if (paramBucketPool.dataList.size() > paramBucketPool.itemSize / 4 + 1) {}
-      }
-      else
-      {
-        paramBucketPool.dataList.add(paramBitmap);
-        bool1 = false;
-      }
+    boolean bool;
+    if ((paramBucketPool.dataList.size() < paramBucketPool.itemSize) && ((paramBucketPool.allocCount <= paramBucketPool.itemSize + 2) || (paramBucketPool.dataList.size() <= paramBucketPool.itemSize / 4 + 1)))
+    {
+      paramBucketPool.dataList.add(paramBitmap);
+      bool = false;
     }
-    if (bool1) {
+    else
+    {
+      bool = true;
+    }
+    if (bool) {
       paramBucketPool.allocCount -= 1;
     }
-    return bool1;
+    return bool;
   }
   
   protected void hit(int paramInt, Bitmap paramBitmap)
@@ -106,19 +102,19 @@ public abstract class BitmapPool
   
   public void release(Bitmap paramBitmap)
   {
-    if (paramBitmap == null) {}
-    for (;;)
-    {
+    if (paramBitmap == null) {
       return;
-      try
-      {
-        if (!paramBitmap.isMutable()) {
-          continue;
-        }
-        super.release(paramBitmap);
-      }
-      finally {}
     }
+    try
+    {
+      boolean bool = paramBitmap.isMutable();
+      if (!bool) {
+        return;
+      }
+      super.release(paramBitmap);
+      return;
+    }
+    finally {}
   }
   
   protected void releaseData(Bitmap paramBitmap)
@@ -132,7 +128,7 @@ public abstract class BitmapPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.BitmapPool
  * JD-Core Version:    0.7.0.1
  */

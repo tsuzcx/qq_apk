@@ -14,11 +14,13 @@ public class BodySegMaskFactory
   
   private void clearGaussinBlur()
   {
-    if (this.mGaussinNoMaskFilter != null) {
-      this.mGaussinNoMaskFilter.clear();
+    Object localObject = this.mGaussinNoMaskFilter;
+    if (localObject != null) {
+      ((GaussinNoMaskFilter)localObject).clear();
     }
-    if (this.tmpFrame != null) {
-      this.tmpFrame.clear();
+    localObject = this.tmpFrame;
+    if (localObject != null) {
+      ((Frame)localObject).clear();
     }
     this.mGaussinNoMaskFilter = null;
     this.tmpFrame = null;
@@ -42,9 +44,11 @@ public class BodySegMaskFactory
       if (this.tmpFrame == null) {
         this.tmpFrame = new Frame();
       }
-      return;
     }
-    clearGaussinBlur();
+    else
+    {
+      clearGaussinBlur();
+    }
   }
   
   public void pause() {}
@@ -54,10 +58,11 @@ public class BodySegMaskFactory
     if ((paramPTSegAttr != null) && (paramPTSegAttr.getMaskFrame() != null))
     {
       paramPTSegAttr = paramPTSegAttr.getMaskFrame();
+      GaussinNoMaskFilter localGaussinNoMaskFilter = this.mGaussinNoMaskFilter;
       paramPTFaceAttr = paramPTSegAttr;
-      if (this.mGaussinNoMaskFilter != null)
+      if (localGaussinNoMaskFilter != null)
       {
-        this.mGaussinNoMaskFilter.updateVideoSize(paramPTSegAttr.width, paramPTSegAttr.height);
+        localGaussinNoMaskFilter.updateVideoSize(paramPTSegAttr.width, paramPTSegAttr.height);
         paramPTFaceAttr = this.mGaussinNoMaskFilter.RenderProcess(paramPTSegAttr, this.tmpFrame);
       }
       return paramPTFaceAttr;
@@ -79,7 +84,7 @@ public class BodySegMaskFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.blurmaskfilter.BodySegMaskFactory
  * JD-Core Version:    0.7.0.1
  */

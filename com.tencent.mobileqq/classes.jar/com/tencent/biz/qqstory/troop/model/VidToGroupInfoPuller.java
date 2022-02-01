@@ -60,19 +60,15 @@ public class VidToGroupInfoPuller
     }
     paramList = new ArrayList();
     int j;
-    for (int i = 0;; i = j)
+    for (int i = 0; i < localArrayList.size(); i = j)
     {
-      if (i < localArrayList.size())
-      {
-        j = Math.min(localArrayList.size(), i + 20);
-        if (i < j) {}
-      }
-      else
-      {
-        return new BatchHandlerListPuller(paramList);
+      j = Math.min(localArrayList.size(), i + 20);
+      if (i >= j) {
+        break;
       }
       paramList.add(new VidToBasicInfoHandler(localArrayList.subList(i, j)));
     }
+    return new BatchHandlerListPuller(paramList);
   }
   
   public void a()
@@ -86,81 +82,69 @@ public class VidToGroupInfoPuller
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 3);
+    int i = this.jdField_a_of_type_Int;
+    boolean bool = true;
+    if (i != 1)
+    {
+      if (i == 3) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   protected boolean a(List<String> paramList, ErrorMessage paramErrorMessage, boolean paramBoolean1, boolean paramBoolean2)
   {
-    boolean bool3 = false;
     ArrayList localArrayList = new ArrayList();
     Object localObject = paramList.iterator();
-    StoryVideoItem localStoryVideoItem;
-    boolean bool1;
-    if (((Iterator)localObject).hasNext())
+    while (((Iterator)localObject).hasNext())
     {
       paramList = (String)((Iterator)localObject).next();
-      localStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryModelStoryManager.a(paramList);
+      StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryModelStoryManager.a(paramList);
       if (localStoryVideoItem == null)
       {
         localObject = new StoryVideoItem();
         ((StoryVideoItem)localObject).mStoryType = 2;
         ((StoryVideoItem)localObject).mVid = paramList;
-        bool1 = true;
       }
+      while ((!paramBoolean1) && ((TextUtils.isEmpty(localStoryVideoItem.getVideoUrl())) || (TextUtils.isEmpty(localStoryVideoItem.getThumbUrl()))))
+      {
+        bool = true;
+        break;
+      }
+      localArrayList.add(localStoryVideoItem);
     }
-    for (;;)
+    boolean bool = false;
+    if (bool) {
+      localArrayList.clear();
+    }
+    paramList = new DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent();
+    paramList.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    paramList.jdField_a_of_type_Boolean = (paramBoolean1 ^ true);
+    paramList.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    paramList.b = (bool ^ true);
+    paramList.jdField_a_of_type_JavaUtilList = localArrayList;
+    paramList.jdField_a_of_type_Int = localArrayList.size();
+    StoryDispatcher.a().dispatch(paramList);
+    if (paramBoolean1)
     {
-      label80:
-      if (bool1) {
-        localArrayList.clear();
-      }
-      paramList = new DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent();
-      paramList.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-      boolean bool2;
-      if (!paramBoolean1)
+      int i = this.jdField_a_of_type_Int;
+      if (i == 1)
       {
-        bool2 = true;
-        label112:
-        paramList.jdField_a_of_type_Boolean = bool2;
-        paramList.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-        bool2 = bool3;
-        if (!bool1) {
-          bool2 = true;
-        }
-        paramList.b = bool2;
-        paramList.jdField_a_of_type_JavaUtilList = localArrayList;
-        paramList.jdField_a_of_type_Int = localArrayList.size();
-        StoryDispatcher.a().dispatch(paramList);
-        if (paramBoolean1)
-        {
-          if (this.jdField_a_of_type_Int != 1) {
-            break label241;
-          }
-          this.jdField_a_of_type_Int = 2;
-        }
+        this.jdField_a_of_type_Int = 2;
+        return bool;
       }
-      label241:
-      do
+      if (i == 3)
       {
-        do
-        {
-          return bool1;
-          if ((!paramBoolean1) && ((TextUtils.isEmpty(localStoryVideoItem.getVideoUrl())) || (TextUtils.isEmpty(localStoryVideoItem.getThumbUrl()))))
-          {
-            bool1 = true;
-            break label80;
-          }
-          localArrayList.add(localStoryVideoItem);
-          break;
-          bool2 = false;
-          break label112;
-        } while (this.jdField_a_of_type_Int != 3);
         this.jdField_a_of_type_Int = 4;
-      } while (this.jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller$OnFinishCallBack == null);
-      this.jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller$OnFinishCallBack.a(localArrayList, paramBoolean2);
-      return bool1;
-      bool1 = false;
+        paramList = this.jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller$OnFinishCallBack;
+        if (paramList != null) {
+          paramList.a(localArrayList, paramBoolean2);
+        }
+      }
     }
+    return bool;
   }
   
   public void b()
@@ -178,7 +162,7 @@ public class VidToGroupInfoPuller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.troop.model.VidToGroupInfoPuller
  * JD-Core Version:    0.7.0.1
  */

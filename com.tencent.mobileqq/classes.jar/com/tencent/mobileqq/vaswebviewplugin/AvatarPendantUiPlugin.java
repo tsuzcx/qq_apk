@@ -32,71 +32,99 @@ public class AvatarPendantUiPlugin
   void OnActivityResume()
   {
     super.OnActivityResume();
-    this.activity.setTitle(HardCodeUtil.a(2131700955));
+    this.activity.setTitle(HardCodeUtil.a(2131701098));
   }
   
   public String decodeUrl(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AvatarPendantUiPlugin", 2, "Decode pendant market url: " + paramString);
-    }
-    if (paramString == null)
+    if (QLog.isColorLevel())
     {
-      paramString = null;
-      return paramString;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Decode pendant market url: ");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.i("AvatarPendantUiPlugin", 2, ((StringBuilder)localObject1).toString());
     }
-    String str = paramString.replace("[client]", "androidQQ").replace("[version]", "8.5.5.5105").replace("[system]", Build.VERSION.RELEASE).replace("[device]", Build.DEVICE);
-    Intent localIntent = super.getInfoIntent();
-    if (localIntent.getBooleanExtra("key_update_flag", false)) {}
-    for (paramString = "1";; paramString = "0")
+    if (paramString == null) {
+      return null;
+    }
+    Object localObject2 = paramString.replace("[client]", "androidQQ").replace("[version]", "8.7.0.5295").replace("[system]", Build.VERSION.RELEASE).replace("[device]", Build.DEVICE);
+    Object localObject1 = super.getInfoIntent();
+    if (((Intent)localObject1).getBooleanExtra("key_update_flag", false)) {
+      paramString = "1";
+    } else {
+      paramString = "0";
+    }
+    paramString = ((String)localObject2).replace("[updateFlag]", paramString);
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject2).append(((Intent)localObject1).getIntExtra("updateId", 0));
+    paramString = paramString.replace("[updateId]", ((StringBuilder)localObject2).toString());
+    if (QLog.isColorLevel())
     {
-      str = str.replace("[updateFlag]", paramString).replace("[updateId]", "" + localIntent.getIntExtra("updateId", 0));
-      paramString = str;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("AvatarPendantUiPlugin", 2, "After decode pendant market url: " + str);
-      return str;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("After decode pendant market url: ");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.i("AvatarPendantUiPlugin", 2, ((StringBuilder)localObject1).toString());
     }
+    return paramString;
   }
   
   protected boolean excuteEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    if ((paramLong == 8589934605L) && (paramMap != null))
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramLong == 8589934605L)
     {
-      paramString = (Intent)paramMap.get("intent");
-      if (paramString != null)
+      bool1 = bool2;
+      if (paramMap != null)
       {
-        paramString = paramString.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
+        paramString = (Intent)paramMap.get("intent");
+        bool1 = bool2;
         if (paramString != null)
         {
-          if ((sJsHandler == null) || (sCallbackId == null)) {
-            return false;
-          }
-          paramMap = new Bundle();
-          paramMap.putString("path", paramString);
-          paramString = DataFactory.a("changeAvatar", sCallbackId, sJsHandler.getIPCResponseKey(), paramMap);
-          paramMap = new JSONObject();
-          try
+          paramString = paramString.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
+          bool1 = bool2;
+          if (paramString != null)
           {
-            paramMap.put("result", 0);
-            super.callJs(sCallbackId + "(" + paramMap.toString() + ");");
-            sJsHandler.sendRemoteReq(paramString, false, false);
-            return true;
-          }
-          catch (JSONException paramMap)
-          {
-            for (;;)
+            bool1 = bool2;
+            if (sJsHandler != null)
             {
-              if (QLog.isColorLevel()) {
-                QLog.e("AvatarPendantUiPlugin", 2, "Failed to notify starting upload avatar:" + paramMap.getMessage());
+              if (sCallbackId == null) {
+                return false;
               }
+              paramMap = new Bundle();
+              paramMap.putString("path", paramString);
+              paramString = DataFactory.a("changeAvatar", sCallbackId, sJsHandler.getIPCResponseKey(), paramMap);
+              paramMap = new JSONObject();
+              try
+              {
+                paramMap.put("result", 0);
+                localStringBuilder = new StringBuilder();
+                localStringBuilder.append(sCallbackId);
+                localStringBuilder.append("(");
+                localStringBuilder.append(paramMap.toString());
+                localStringBuilder.append(");");
+                super.callJs(localStringBuilder.toString());
+              }
+              catch (JSONException paramMap)
+              {
+                StringBuilder localStringBuilder;
+                if (QLog.isColorLevel())
+                {
+                  localStringBuilder = new StringBuilder();
+                  localStringBuilder.append("Failed to notify starting upload avatar:");
+                  localStringBuilder.append(paramMap.getMessage());
+                  QLog.e("AvatarPendantUiPlugin", 2, localStringBuilder.toString());
+                }
+              }
+              sJsHandler.sendRemoteReq(paramString, false, false);
+              bool1 = true;
             }
           }
         }
       }
     }
-    return false;
+    return bool1;
   }
   
   protected long getPluginBusiness()
@@ -109,7 +137,7 @@ public class AvatarPendantUiPlugin
     return 35L;
   }
   
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  protected boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     if ((paramLong == 32L) && (!TextUtils.isEmpty(paramString)) && (paramString.contains("_bid=160"))) {
       ReportController.b(null, "CliOper", "", "", "PendantMarket", "StartLoad", 0, 0, "", "", "", "");
@@ -119,16 +147,24 @@ public class AvatarPendantUiPlugin
   
   public boolean onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AvatarPendantUiPlugin", 2, "onActivityResult, requestCode=" + paramInt1 + ", resultCode=" + paramInt2 + ", data=" + paramIntent);
-    }
     Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onActivityResult, requestCode=");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(", resultCode=");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append(", data=");
+      ((StringBuilder)localObject).append(paramIntent);
+      QLog.i("AvatarPendantUiPlugin", 2, ((StringBuilder)localObject).toString());
+    }
     if (paramInt1 == 1)
     {
       if (paramInt2 == -1)
       {
         if (sUploadPhotoUri == null) {
-          break label394;
+          break label465;
         }
         paramIntent = ImageUtil.b(this.activity, sUploadPhotoUri);
         paramInt1 = Math.min(482, ProfileCardUtil.a(this.activity));
@@ -140,47 +176,61 @@ public class AvatarPendantUiPlugin
         return true;
       }
       if ((paramInt2 != 0) || (sJsHandler == null) || (sCallbackId == null)) {
-        break label394;
+        break label465;
       }
       try
       {
         paramIntent = new JSONObject();
         paramIntent.put("result", 2);
-        super.callJs(sCallbackId + "(" + paramIntent.toString() + ");");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(sCallbackId);
+        ((StringBuilder)localObject).append("(");
+        ((StringBuilder)localObject).append(paramIntent.toString());
+        ((StringBuilder)localObject).append(");");
+        super.callJs(((StringBuilder)localObject).toString());
         return true;
       }
       catch (JSONException paramIntent)
       {
-        for (;;)
+        if (QLog.isColorLevel())
         {
-          if (QLog.isColorLevel()) {
-            QLog.e("AvatarPendantUiPlugin", 2, "cancel select photo: " + paramIntent.getMessage());
-          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("cancel select photo: ");
+          ((StringBuilder)localObject).append(paramIntent.getMessage());
+          QLog.e("AvatarPendantUiPlugin", 2, ((StringBuilder)localObject).toString());
         }
+        return true;
       }
     }
     if ((paramInt1 == 4) && (paramInt2 == -1) && (paramIntent != null) && (sJsHandler != null))
     {
       paramIntent.getStringExtra("callbackSn");
-      paramIntent = paramIntent.getStringExtra("result");
+      localObject = paramIntent.getStringExtra("result");
       try
       {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("result", paramIntent);
-        super.callJs(sCallbackId + "(" + ((JSONObject)localObject).toString() + ");");
+        paramIntent = new JSONObject();
+        paramIntent.put("result", localObject);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(sCallbackId);
+        ((StringBuilder)localObject).append("(");
+        ((StringBuilder)localObject).append(paramIntent.toString());
+        ((StringBuilder)localObject).append(");");
+        super.callJs(((StringBuilder)localObject).toString());
         return true;
       }
       catch (JSONException paramIntent)
       {
-        for (;;)
+        if (QLog.isColorLevel())
         {
-          if (QLog.isColorLevel()) {
-            QLog.e("AvatarPendantUiPlugin", 2, "Open service failed: " + paramIntent.getMessage());
-          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("Open service failed: ");
+          ((StringBuilder)localObject).append(paramIntent.getMessage());
+          QLog.e("AvatarPendantUiPlugin", 2, ((StringBuilder)localObject).toString());
         }
+        return true;
       }
     }
-    label394:
+    label465:
     return false;
   }
   
@@ -193,7 +243,7 @@ public class AvatarPendantUiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.AvatarPendantUiPlugin
  * JD-Core Version:    0.7.0.1
  */

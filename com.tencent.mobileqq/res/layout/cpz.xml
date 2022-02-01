@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@drawable/e9s" android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/k_e" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="22.0dip" android:layout_marginBottom="-22.0dip" android:text="测试弹幕1" android:maxEms="10" android:singleLine="true" android:layout_alignParentBottom="true" />
-    <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/k_i" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="22.0dip" android:layout_marginBottom="-22.0dip" android:text="测试弹幕2" android:maxEms="10" android:singleLine="true" android:layout_alignParentBottom="true" />
-    <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/k_k" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="22.0dip" android:layout_marginBottom="-22.0dip" android:text="测试弹幕3" android:maxEms="10" android:singleLine="true" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="38.0dip">
+        <TextView android:textSize="@dimen/ayk" android:textColor="#ff8f8f8f" android:layout_gravity="center_vertical" android:id="@id/kbs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/y_t" android:includeFontPadding="false" />
+        <ImageView android:layout_gravity="center|right" android:id="@id/mn_" android:padding="6.0dip" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="6.0dip" android:src="@drawable/drl" />
+    </FrameLayout>
+</LinearLayout>

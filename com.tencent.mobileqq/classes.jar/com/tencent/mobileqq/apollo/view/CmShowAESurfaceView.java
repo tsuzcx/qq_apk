@@ -16,8 +16,13 @@ import android.view.animation.LinearInterpolator;
 import androidx.annotation.RequiresApi;
 import com.tencent.aekit.api.standard.filter.AEFilterManager;
 import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.aelight.camera.api.IAEMaterialManager;
+import com.tencent.aelight.camera.download.api.AEResInfo;
+import com.tencent.aelight.camera.download.api.IAEKitForQQ;
+import com.tencent.aelight.camera.download.api.IAEResUtil;
 import com.tencent.filter.BaseFilter;
 import com.tencent.mobileqq.apollo.statistics.product.ApolloDtReportUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.PTFaceAttr;
@@ -25,11 +30,6 @@ import com.tencent.ttpic.openapi.filter.SpaceFilter;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.util.FrameUtil;
-import dov.com.qq.im.ae.AEKitForQQ;
-import dov.com.qq.im.ae.data.AEMaterialManager;
-import dov.com.qq.im.ae.download.AEResInfo;
-import dov.com.qq.im.ae.download.AEResUtil;
-import dov.com.qq.im.ae.util.AEQLog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -87,7 +87,9 @@ public class CmShowAESurfaceView
   
   private float a(MotionEvent paramMotionEvent)
   {
-    float f1 = (float)((paramMotionEvent.getX() - this.jdField_a_of_type_AndroidGraphicsPointF.x) / this.jdField_a_of_type_Int * 360.0F * 3.141592653589793D / 180.0D);
+    double d1 = (paramMotionEvent.getX() - this.jdField_a_of_type_AndroidGraphicsPointF.x) / this.jdField_a_of_type_Int * 360.0F;
+    Double.isNaN(d1);
+    float f1 = (float)(d1 * 3.141592653589793D / 180.0D);
     this.jdField_a_of_type_AndroidGraphicsPointF.x = paramMotionEvent.getX(0);
     this.jdField_a_of_type_AndroidGraphicsPointF.y = paramMotionEvent.getY(0);
     return f1;
@@ -95,48 +97,50 @@ public class CmShowAESurfaceView
   
   private void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter.applyFilterChain(true, paramInt1, paramInt2);
+    SpaceFilter localSpaceFilter = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter;
+    float f1 = paramInt1;
+    float f2 = paramInt2;
+    localSpaceFilter.applyFilterChain(true, f1, f2);
     this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter.setRenderMode(2);
-    this.jdField_a_of_type_ComTencentFilterBaseFilter.applyFilterChain(true, paramInt1, paramInt2);
+    this.jdField_a_of_type_ComTencentFilterBaseFilter.applyFilterChain(true, f1, f2);
     this.jdField_a_of_type_ComTencentFilterBaseFilter.setRenderMode(2);
   }
   
   private void a(VideoMaterial paramVideoMaterial)
   {
-    QLog.d("CmShowAESurfaceView", 2, "[cmshowFirstTime][updateCmshowMaterial]:" + paramVideoMaterial.getDataPath());
-    if (AEMaterialManager.a(paramVideoMaterial))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[cmshowFirstTime][updateCmshowMaterial]:");
+    localStringBuilder.append(paramVideoMaterial.getDataPath());
+    QLog.d("[cmshow]CmShowAESurfaceView", 2, localStringBuilder.toString());
+    if (((IAEMaterialManager)QRoute.api(IAEMaterialManager.class)).isSpecialTemplate(paramVideoMaterial))
     {
-      AEQLog.a("PreCheckAERes", "[setMaterial] set special template");
-      if (!AEResUtil.a(AEResInfo.jdField_c_of_type_DovComQqImAeDownloadAEResInfo)) {
-        break label131;
-      }
-      AEQLog.a("PreCheckAERes", "[setMaterial] version check success");
-      if (!FeatureManager.ensureMaterialSoLoaded(paramVideoMaterial)) {
-        break label121;
-      }
-      AEQLog.a("PreCheckAERes", "[setMaterial] so load success");
-      long l = AEResUtil.a(paramVideoMaterial);
-      if (l != 0L)
+      QLog.d("PreCheckAERes", 2, "[setMaterial] set special template");
+      if (((IAEResUtil)QRoute.api(IAEResUtil.class)).checkAEResVersionOK(AEResInfo.LIGHT_RES_BASE_PACKAGE))
       {
-        AEQLog.a("PreCheckAERes", "[setMaterial] bundleStatus not ready, go fetch bundles ...");
-        AEResUtil.a(getContext(), l);
+        QLog.d("PreCheckAERes", 2, "[setMaterial] version check success");
+        if (FeatureManager.ensureMaterialSoLoaded(paramVideoMaterial))
+        {
+          QLog.d("PreCheckAERes", 2, "[setMaterial] so load success");
+          long l = ((IAEResUtil)QRoute.api(IAEResUtil.class)).checkBundleStatus(paramVideoMaterial);
+          if (l != 0L)
+          {
+            QLog.d("PreCheckAERes", 2, "[setMaterial] bundleStatus not ready, go fetch bundles ...");
+            ((IAEResUtil)QRoute.api(IAEResUtil.class)).fetchBundles(getContext(), l);
+            return;
+          }
+          QLog.d("PreCheckAERes", 2, "[setMaterial] bundleStatus ready, apply material...");
+        }
+        else
+        {
+          QLog.e("PreCheckAERes", 2, "[setMaterial] so load failed");
+        }
       }
-    }
-    else
-    {
-      return;
-    }
-    AEQLog.a("PreCheckAERes", "[setMaterial] bundleStatus ready, apply material...");
-    for (;;)
-    {
+      else
+      {
+        QLog.e("PreCheckAERes", 2, "[setMaterial] version check failed");
+      }
       this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.updateMaterialGL(paramVideoMaterial);
       this.jdField_d_of_type_Boolean = true;
-      return;
-      label121:
-      AEQLog.d("PreCheckAERes", "[setMaterial] so load failed");
-      continue;
-      label131:
-      AEQLog.d("PreCheckAERes", "[setMaterial] version check failed");
     }
   }
   
@@ -150,11 +154,10 @@ public class CmShowAESurfaceView
   
   private boolean a(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsRect == null) {}
-    while ((paramMotionEvent.getX() < this.jdField_a_of_type_AndroidGraphicsRect.right) && (paramMotionEvent.getX() > this.jdField_a_of_type_AndroidGraphicsRect.left) && (paramMotionEvent.getY() < this.jdField_a_of_type_AndroidGraphicsRect.bottom) && (paramMotionEvent.getY() > this.jdField_a_of_type_AndroidGraphicsRect.top)) {
+    if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
       return true;
     }
-    return false;
+    return (paramMotionEvent.getX() < this.jdField_a_of_type_AndroidGraphicsRect.right) && (paramMotionEvent.getX() > this.jdField_a_of_type_AndroidGraphicsRect.left) && (paramMotionEvent.getY() < this.jdField_a_of_type_AndroidGraphicsRect.bottom) && (paramMotionEvent.getY() > this.jdField_a_of_type_AndroidGraphicsRect.top);
   }
   
   private int[] a(int paramInt1, int paramInt2)
@@ -176,7 +179,12 @@ public class CmShowAESurfaceView
   
   private void b(int paramInt1, int paramInt2)
   {
-    QLog.d("CmShowAESurfaceView", 2, "[initAEFilterManager]厘米秀渲染分辨率：" + paramInt1 + "|" + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[initAEFilterManager]厘米秀渲染分辨率：");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramInt2);
+    QLog.d("[cmshow]CmShowAESurfaceView", 2, localStringBuilder.toString());
     this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager = new AEFilterManager();
     this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.initInGL(paramInt1, paramInt2);
     this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.switchAbilityInLightNode("ai.face.enable", false);
@@ -188,13 +196,13 @@ public class CmShowAESurfaceView
   private void d()
   {
     this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.add(AEResInfo.j);
-    this.jdField_a_of_type_JavaUtilList.add(AEResInfo.k);
+    this.jdField_a_of_type_JavaUtilList.add(AEResInfo.LIGHT_RES_BUNDLE_ACE3D);
+    this.jdField_a_of_type_JavaUtilList.add(AEResInfo.LIGHT_RES_BUNDLE_3DMM);
     setEGLContextClientVersion(2);
     setEGLConfigChooser(8, 8, 8, 8, 0, 0);
     setRenderer(this);
     setRenderMode(0);
-    QLog.i("CmShowAESurfaceView", 1, "init complete.");
+    QLog.i("[cmshow]CmShowAESurfaceView", 1, "init complete.");
   }
   
   private void e()
@@ -220,12 +228,18 @@ public class CmShowAESurfaceView
     while (localIterator.hasNext())
     {
       Object localObject = (AEResInfo)localIterator.next();
-      String str = AEResUtil.c((AEResInfo)localObject);
-      localObject = ((AEResInfo)localObject).jdField_c_of_type_JavaLangString;
+      String str = ((IAEResUtil)QRoute.api(IAEResUtil.class)).getLightBundleDir((AEResInfo)localObject);
+      localObject = ((AEResInfo)localObject).agentType;
       if ((this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager != null) && (!StringUtil.a(str)))
       {
-        QLog.d("CmShowAESurfaceView", 2, "[refreshBundlePath] bundlePath =" + str);
-        QLog.d("CmShowAESurfaceView", 2, "[refreshBundlePath] agentType =" + (String)localObject);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[refreshBundlePath] bundlePath =");
+        localStringBuilder.append(str);
+        QLog.d("[cmshow]CmShowAESurfaceView", 2, localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[refreshBundlePath] agentType =");
+        localStringBuilder.append((String)localObject);
+        QLog.d("[cmshow]CmShowAESurfaceView", 2, localStringBuilder.toString());
         this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.setLightBundle(str, (String)localObject);
       }
     }
@@ -247,18 +261,21 @@ public class CmShowAESurfaceView
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    AEQLog.d("CmShowAESurfaceView", "[cmshowFirstTime][cmShowSetKapuModel] AEFilterManager is null , pending to set kapuModel");
+    QLog.e("[cmshow]CmShowAESurfaceView", 2, "[cmshowFirstTime][cmShowSetKapuModel] AEFilterManager is null , pending to set kapuModel");
   }
   
   public void a(CameraController.CameraViewType paramCameraViewType)
   {
     if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager != null)
     {
-      QLog.e("CmShowAESurfaceView", 2, "[cmshowFirstTime][cmShowSetKapuCameraViewType] type = " + paramCameraViewType);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[cmshowFirstTime][cmShowSetKapuCameraViewType] type = ");
+      localStringBuilder.append(paramCameraViewType);
+      QLog.e("[cmshow]CmShowAESurfaceView", 2, localStringBuilder.toString());
       this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.cmShowSetKapuCameraViewType(paramCameraViewType);
       return;
     }
-    QLog.e("CmShowAESurfaceView", 2, "[cmshowFirstTime][cmShowSetKapuCameraViewType] mAeFilterManager is null, set viewType failed!");
+    QLog.e("[cmshow]CmShowAESurfaceView", 2, "[cmshowFirstTime][cmShowSetKapuCameraViewType] mAeFilterManager is null, set viewType failed!");
   }
   
   public void b()
@@ -270,7 +287,7 @@ public class CmShowAESurfaceView
     this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(this.jdField_a_of_type_AndroidAnimationAnimatorListenerAdapter);
     if (Looper.getMainLooper().getThread() == Thread.currentThread())
     {
-      QLog.i("CmShowAESurfaceView", 1, "mAnimator.start().");
+      QLog.i("[cmshow]CmShowAESurfaceView", 1, "mAnimator.start().");
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
       return;
     }
@@ -285,22 +302,23 @@ public class CmShowAESurfaceView
     }
     if (Looper.getMainLooper().getThread() == Thread.currentThread())
     {
-      QLog.i("CmShowAESurfaceView", 1, "cancelAnimator().");
+      QLog.i("[cmshow]CmShowAESurfaceView", 1, "cancelAnimator().");
       this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeListener(this.jdField_a_of_type_AndroidAnimationAnimatorListenerAdapter);
-      return;
       removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       post(this.jdField_b_of_type_JavaLangRunnable);
     }
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.removeListener(this.jdField_a_of_type_AndroidAnimationAnimatorListenerAdapter);
   }
   
   public void onDrawFrame(GL10 paramGL10)
   {
-    FrameUtil.clearFrame(this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame, this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[2], this.jdField_a_of_type_ArrayOfFloat[3], this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    paramGL10 = this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame;
+    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+    FrameUtil.clearFrame(paramGL10, arrayOfFloat[0], arrayOfFloat[1], arrayOfFloat[2], arrayOfFloat[3], this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
     PTFaceAttr.EmptyFaceAttr.setTimeStamp(System.currentTimeMillis());
     int i = this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.drawFrame(this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId(), false, this.jdField_a_of_type_Long);
     this.jdField_a_of_type_ComTencentFilterBaseFilter.setRotationAndFlip(0, 0, 1);
@@ -309,7 +327,7 @@ public class CmShowAESurfaceView
     paramGL10.unlock();
     if ((this.jdField_d_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaLangString != null))
     {
-      QLog.e("CmShowAESurfaceView", 2, "[cmshowFirstTime][cmShowSetKapuModel][pendingSetKapuModel]");
+      QLog.e("[cmshow]CmShowAESurfaceView", 2, "[cmshowFirstTime][cmShowSetKapuModel][pendingSetKapuModel]");
       a(this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgLightCameraController$CmShowCallback);
       this.jdField_d_of_type_Boolean = false;
     }
@@ -324,7 +342,13 @@ public class CmShowAESurfaceView
   @RequiresApi(api=16)
   public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
-    QLog.i("CmShowAESurfaceView", 1, "onSurfaceChanged ,(" + paramInt1 + "," + paramInt2 + ")");
+    paramGL10 = new StringBuilder();
+    paramGL10.append("onSurfaceChanged ,(");
+    paramGL10.append(paramInt1);
+    paramGL10.append(",");
+    paramGL10.append(paramInt2);
+    paramGL10.append(")");
+    QLog.i("[cmshow]CmShowAESurfaceView", 1, paramGL10.toString());
     this.jdField_c_of_type_Int = paramInt1;
     this.jdField_d_of_type_Int = paramInt2;
     e();
@@ -333,29 +357,29 @@ public class CmShowAESurfaceView
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    QLog.i("CmShowAESurfaceView", 1, "onSurfaceCreated.");
-    if (!this.jdField_b_of_type_Boolean) {
-      if ((!AEKitForQQ.a()) || (!FeatureManager.loadBasicFeatures())) {
-        break label106;
-      }
-    }
-    label106:
-    for (boolean bool = true;; bool = false)
+    QLog.i("[cmshow]CmShowAESurfaceView", 1, "onSurfaceCreated.");
+    if (!this.jdField_b_of_type_Boolean)
     {
-      this.jdField_b_of_type_Boolean = bool;
-      paramGL10 = a(getMeasuredWidth(), getMeasuredHeight());
-      this.jdField_a_of_type_Int = paramGL10[0];
-      this.jdField_b_of_type_Int = paramGL10[1];
-      if (!this.jdField_b_of_type_Boolean) {
-        break;
+      boolean bool;
+      if ((((IAEKitForQQ)QRoute.api(IAEKitForQQ.class)).init()) && (FeatureManager.loadBasicFeatures())) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      this.jdField_b_of_type_Boolean = bool;
+    }
+    paramGL10 = a(getMeasuredWidth(), getMeasuredHeight());
+    this.jdField_a_of_type_Int = paramGL10[0];
+    this.jdField_b_of_type_Int = paramGL10[1];
+    if (this.jdField_b_of_type_Boolean)
+    {
       a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       b(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       a();
       a(this.jdField_b_of_type_JavaLangString);
       return;
     }
-    QLog.e("CmShowAESurfaceView", 2, "[onSurfaceCreated]初始化AEKit失败！");
+    QLog.e("[cmshow]CmShowAESurfaceView", 2, "[onSurfaceCreated]初始化AEKit失败！");
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -363,26 +387,45 @@ public class CmShowAESurfaceView
     if (!a(paramMotionEvent)) {
       return false;
     }
-    switch (paramMotionEvent.getActionMasked())
+    int i = paramMotionEvent.getActionMasked();
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
+      if (i != 1) {
+        if (i != 2)
+        {
+          if (i != 5)
+          {
+            if (i != 6) {
+              return true;
+            }
+          }
+          else
+          {
+            this.f = 2;
+            return true;
+          }
+        }
+        else
+        {
+          if (this.f != 1) {
+            break label122;
+          }
+          setTouchRotate(new float[] { 0.0F, a(paramMotionEvent), 0.0F });
+          return true;
+        }
+      }
+      this.f = 0;
+      f();
       return true;
+    }
+    else
+    {
       this.f = 1;
       this.jdField_a_of_type_AndroidGraphicsPointF.x = paramMotionEvent.getX(0);
       this.jdField_a_of_type_AndroidGraphicsPointF.y = paramMotionEvent.getY(0);
-      continue;
-      this.f = 2;
-      continue;
-      if (this.f == 1)
-      {
-        setTouchRotate(new float[] { 0.0F, a(paramMotionEvent), 0.0F });
-        continue;
-        this.f = 0;
-        f();
-      }
     }
+    label122:
+    return true;
   }
   
   public void setBackgroundColor(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -402,7 +445,7 @@ public class CmShowAESurfaceView
       a(paramString);
       return;
     }
-    QLog.e("CmShowAESurfaceView", 2, "[cmshowFirstTime][updateCmshowMaterial]mAeFilterManager is null, pending set material");
+    QLog.e("[cmshow]CmShowAESurfaceView", 2, "[cmshowFirstTime][updateCmshowMaterial]mAeFilterManager is null, pending set material");
     this.jdField_b_of_type_JavaLangString = paramString;
   }
   
@@ -425,12 +468,12 @@ public class CmShowAESurfaceView
   {
     c();
     super.surfaceDestroyed(paramSurfaceHolder);
-    QLog.i("CmShowAESurfaceView", 1, "surfaceDestroyed.");
+    QLog.i("[cmshow]CmShowAESurfaceView", 1, "surfaceDestroyed.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.CmShowAESurfaceView
  * JD-Core Version:    0.7.0.1
  */

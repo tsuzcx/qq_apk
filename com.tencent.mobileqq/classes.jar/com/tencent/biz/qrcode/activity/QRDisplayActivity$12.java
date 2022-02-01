@@ -15,48 +15,44 @@ class QRDisplayActivity$12
     if (this.a.h) {
       return;
     }
-    this.a.h = true;
-    switch (paramInt)
+    paramView = this.a;
+    paramView.h = true;
+    if (paramInt != 0)
     {
-    }
-    for (;;)
-    {
-      this.a.b.dismiss();
-      return;
-      if (!this.a.jdField_a_of_type_Boolean)
+      if (paramInt != 1)
       {
-        this.a.g();
-        if ((this.a.g & 0x1) != 0)
+        if ((paramInt == 2) && (!paramView.jdField_a_of_type_Boolean))
         {
-          ReportController.b(this.a.app, "P_CliOper", "flag1", "", "0X800416E", "0X800416E", 0, 0, "", "", "", "");
-          continue;
-          if (!this.a.jdField_a_of_type_Boolean)
-          {
-            this.a.h();
-            if ((this.a.g & 0x1) != 0)
-            {
-              ReportController.b(this.a.app, "P_CliOper", "flag1", "", "0X8004170", "0X8004170", 0, 0, "", "", "", "");
-              continue;
-              if (!this.a.jdField_a_of_type_Boolean)
-              {
-                this.a.e();
-                if ((this.a.g & 0x1) != 0) {
-                  ReportController.b(this.a.app, "P_CliOper", "flag1", "", "0X8004171", "0X8004171", 0, 0, "", "", "", "");
-                }
-                if (this.a.jdField_c_of_type_Int == 2) {
-                  ReportController.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_save", 0, 0, this.a.jdField_c_of_type_JavaLangString, "", "", String.valueOf(this.a.jdField_a_of_type_Int));
-                }
-              }
-            }
+          this.a.e();
+          if ((this.a.g & 0x1) != 0) {
+            ReportController.b(this.a.app, "P_CliOper", "flag1", "", "0X8004171", "0X8004171", 0, 0, "", "", "", "");
+          }
+          if (this.a.jdField_c_of_type_Int == 2) {
+            ReportController.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_save", 0, 0, this.a.jdField_c_of_type_JavaLangString, "", "", String.valueOf(this.a.jdField_a_of_type_Int));
           }
         }
       }
+      else if (!paramView.jdField_a_of_type_Boolean)
+      {
+        this.a.h();
+        if ((this.a.g & 0x1) != 0) {
+          ReportController.b(this.a.app, "P_CliOper", "flag1", "", "0X8004170", "0X8004170", 0, 0, "", "", "", "");
+        }
+      }
     }
+    else if (!paramView.jdField_a_of_type_Boolean)
+    {
+      this.a.g();
+      if ((this.a.g & 0x1) != 0) {
+        ReportController.b(this.a.app, "P_CliOper", "flag1", "", "0X800416E", "0X800416E", 0, 0, "", "", "", "");
+      }
+    }
+    this.a.b.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.12
  * JD-Core Version:    0.7.0.1
  */

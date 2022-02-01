@@ -30,53 +30,37 @@ public class SafeIterableMap<K, V>
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
     if (paramObject == this) {
-      bool1 = true;
+      return true;
     }
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (!(paramObject instanceof SafeIterableMap));
-      localObject1 = (SafeIterableMap)paramObject;
-      bool1 = bool2;
-    } while (size() != ((SafeIterableMap)localObject1).size());
+    if (!(paramObject instanceof SafeIterableMap)) {
+      return false;
+    }
+    Object localObject1 = (SafeIterableMap)paramObject;
+    if (size() != ((SafeIterableMap)localObject1).size()) {
+      return false;
+    }
     paramObject = iterator();
-    Object localObject1 = ((SafeIterableMap)localObject1).iterator();
-    for (;;)
+    localObject1 = ((SafeIterableMap)localObject1).iterator();
+    while ((paramObject.hasNext()) && (((Iterator)localObject1).hasNext()))
     {
-      if ((paramObject.hasNext()) && (((Iterator)localObject1).hasNext()))
-      {
-        Map.Entry localEntry = (Map.Entry)paramObject.next();
-        Object localObject2 = ((Iterator)localObject1).next();
-        if (localEntry == null)
-        {
-          bool1 = bool2;
-          if (localObject2 != null) {
-            break;
-          }
-        }
-        if ((localEntry != null) && (!localEntry.equals(localObject2))) {
-          return false;
-        }
+      Map.Entry localEntry = (Map.Entry)paramObject.next();
+      Object localObject2 = ((Iterator)localObject1).next();
+      if (((localEntry == null) && (localObject2 != null)) || ((localEntry != null) && (!localEntry.equals(localObject2)))) {
+        return false;
       }
     }
-    if ((!paramObject.hasNext()) && (!((Iterator)localObject1).hasNext())) {}
-    for (boolean bool1 = true;; bool1 = false) {
-      return bool1;
-    }
+    return (!paramObject.hasNext()) && (!((Iterator)localObject1).hasNext());
   }
   
   protected SafeIterableMap.Entry<K, V> get(K paramK)
   {
-    for (SafeIterableMap.Entry localEntry = this.mStart;; localEntry = localEntry.mNext) {
-      if ((localEntry == null) || (localEntry.mKey.equals(paramK))) {
+    for (SafeIterableMap.Entry localEntry = this.mStart; localEntry != null; localEntry = localEntry.mNext) {
+      if (localEntry.mKey.equals(paramK)) {
         return localEntry;
       }
     }
+    return localEntry;
   }
   
   @NonNull
@@ -103,14 +87,15 @@ public class SafeIterableMap<K, V>
   {
     paramK = new SafeIterableMap.Entry(paramK, paramV);
     this.mSize += 1;
-    if (this.mEnd == null)
+    paramV = this.mEnd;
+    if (paramV == null)
     {
       this.mStart = paramK;
       this.mEnd = this.mStart;
       return paramK;
     }
-    this.mEnd.mNext = paramK;
-    paramK.mPrevious = this.mEnd;
+    paramV.mNext = paramK;
+    paramK.mPrevious = paramV;
     this.mEnd = paramK;
     return paramK;
   }
@@ -139,24 +124,19 @@ public class SafeIterableMap<K, V>
         ((SafeIterableMap.SupportRemove)localIterator.next()).supportRemove(paramK);
       }
     }
-    if (paramK.mPrevious != null)
-    {
+    if (paramK.mPrevious != null) {
       paramK.mPrevious.mNext = paramK.mNext;
-      if (paramK.mNext == null) {
-        break label134;
-      }
-      paramK.mNext.mPrevious = paramK.mPrevious;
-    }
-    for (;;)
-    {
-      paramK.mNext = null;
-      paramK.mPrevious = null;
-      return paramK.mValue;
+    } else {
       this.mStart = paramK.mNext;
-      break;
-      label134:
+    }
+    if (paramK.mNext != null) {
+      paramK.mNext.mPrevious = paramK.mPrevious;
+    } else {
       this.mEnd = paramK.mPrevious;
     }
+    paramK.mNext = null;
+    paramK.mPrevious = null;
+    return paramK.mValue;
   }
   
   public int size()
@@ -182,7 +162,7 @@ public class SafeIterableMap<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.arch.core.internal.SafeIterableMap
  * JD-Core Version:    0.7.0.1
  */

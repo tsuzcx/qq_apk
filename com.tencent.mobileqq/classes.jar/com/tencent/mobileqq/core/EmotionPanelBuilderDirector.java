@@ -27,8 +27,18 @@ public class EmotionPanelBuilderDirector
       this.c = (l1 - l2);
       paramIEmotionPanelBuilder = paramIEmotionPanelBuilder.buildComplete();
       this.d = (System.currentTimeMillis() - l1);
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionPanelBuilderDirector", 2, "buildParamsTime = " + this.a + ", buildViewTime = " + this.b + ", buildDataTime = " + this.c + ", buildCompleteTime = " + this.d);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("buildParamsTime = ");
+        localStringBuilder.append(this.a);
+        localStringBuilder.append(", buildViewTime = ");
+        localStringBuilder.append(this.b);
+        localStringBuilder.append(", buildDataTime = ");
+        localStringBuilder.append(this.c);
+        localStringBuilder.append(", buildCompleteTime = ");
+        localStringBuilder.append(this.d);
+        QLog.d("EmotionPanelBuilderDirector", 2, localStringBuilder.toString());
       }
       return paramIEmotionPanelBuilder;
     }
@@ -37,7 +47,7 @@ public class EmotionPanelBuilderDirector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.core.EmotionPanelBuilderDirector
  * JD-Core Version:    0.7.0.1
  */

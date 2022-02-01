@@ -25,26 +25,27 @@ public class fe
   
   public static final String k(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      return "";
-    }
-    StringBuffer localStringBuffer = new StringBuffer(paramArrayOfByte.length);
-    int i = 0;
-    while (i < paramArrayOfByte.length)
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
     {
-      String str = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
-      if (str.length() < 2) {
-        localStringBuffer.append(0);
+      StringBuffer localStringBuffer = new StringBuffer(paramArrayOfByte.length);
+      int i = 0;
+      while (i < paramArrayOfByte.length)
+      {
+        String str = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
+        if (str.length() < 2) {
+          localStringBuffer.append(0);
+        }
+        localStringBuffer.append(str.toUpperCase());
+        i += 1;
       }
-      localStringBuffer.append(str.toUpperCase());
-      i += 1;
+      return localStringBuffer.toString();
     }
-    return localStringBuffer.toString();
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.fe
  * JD-Core Version:    0.7.0.1
  */

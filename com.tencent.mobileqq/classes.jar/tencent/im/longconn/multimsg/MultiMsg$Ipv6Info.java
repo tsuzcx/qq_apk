@@ -17,13 +17,14 @@ public final class MultiMsg$Ipv6Info
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "bytes_ip_v6_addr", "uint32_ip_v6_port", "uint32_is_https_addr" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, Ipv6Info.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "bytes_ip_v6_addr", "uint32_ip_v6_port", "uint32_is_https_addr" }, new Object[] { localByteStringMicro, localInteger, localInteger }, Ipv6Info.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.longconn.multimsg.MultiMsg.Ipv6Info
  * JD-Core Version:    0.7.0.1
  */

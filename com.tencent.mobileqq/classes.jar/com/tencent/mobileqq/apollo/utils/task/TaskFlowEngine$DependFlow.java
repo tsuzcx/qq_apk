@@ -17,33 +17,34 @@ public class TaskFlowEngine$DependFlow
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (!((BaseTask)((Iterator)localObject).next()).a())
+        {
+          i = 1;
+          break label47;
         }
-      } while (((BaseTask)localIterator.next()).a());
-    }
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskBaseTask.c();
       }
-      return;
+    }
+    int i = 0;
+    label47:
+    if (i == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskBaseTask.c();
     }
   }
   
   public boolean a(BaseTask paramBaseTask)
   {
-    return (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.contains(paramBaseTask));
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    return (localList != null) && (localList.contains(paramBaseTask));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.task.TaskFlowEngine.DependFlow
  * JD-Core Version:    0.7.0.1
  */

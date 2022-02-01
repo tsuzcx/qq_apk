@@ -64,8 +64,9 @@ public class NotificationElementBuilder
   
   private void b()
   {
-    Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getIntentByMessage(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentImcoreMessageMessage, true);
-    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a(localIntent);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localObject = ((QQAppInterface)localObject).getIntentByMessage(((QQAppInterface)localObject).getApp(), this.jdField_a_of_type_ComTencentImcoreMessageMessage, true);
+    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a((Intent)localObject);
     a().putExtra("entrance", 6);
     a().putExtra("key_notification_click_action", true);
   }
@@ -92,25 +93,24 @@ public class NotificationElementBuilder
     if (localObject != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement = ((BaseUinTypeProcessor)localObject).a(this.jdField_a_of_type_ComTencentImcoreMessageMessage);
-      if (this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement != null) {}
+      if (this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement == null) {
+        return null;
+      }
+      i = ((BaseUinTypeProcessor)localObject).a(this.jdField_a_of_type_ComTencentImcoreMessageMessage);
+      if (a() == null)
+      {
+        localObject = new Intent();
+        this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a((Intent)localObject);
+      }
+      a().putExtra("KEY_NOTIFY_ID_FROM_PROCESSOR", i);
+      a().putExtra("param_notifyid", i);
+      c();
+      if (QLog.isColorLevel()) {
+        QLog.d("[NotificationRebuild] NotificationElementBuilder", 2, new Object[] { "[create] build: invoked. ", " notificationElement: ", this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement });
+      }
+      return this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement;
     }
-    else
-    {
-      return null;
-    }
-    i = ((BaseUinTypeProcessor)localObject).a(this.jdField_a_of_type_ComTencentImcoreMessageMessage);
-    if (a() == null)
-    {
-      localObject = new Intent();
-      this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a((Intent)localObject);
-    }
-    a().putExtra("KEY_NOTIFY_ID_FROM_PROCESSOR", i);
-    a().putExtra("param_notifyid", i);
-    c();
-    if (QLog.isColorLevel()) {
-      QLog.d("[NotificationRebuild] NotificationElementBuilder", 2, new Object[] { "[create] build: invoked. ", " notificationElement: ", this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement });
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement;
+    return null;
   }
   
   @NotNull
@@ -123,15 +123,33 @@ public class NotificationElementBuilder
     if (a() != null) {
       localBundle = a().getExtras();
     }
-    if (a() != null) {}
-    for (String str = String.valueOf(a().getHeight());; str = "using default bitmap") {
-      return "NotificationElementBuilder{contentIntentExtras=" + localBundle + ", ticker='" + a() + '\'' + ", contentTitle='" + b() + '\'' + ", notificationContentText='" + c() + '\'' + ", notificationIconBitmapStr=" + str + '}';
+    String str;
+    if (a() != null) {
+      str = String.valueOf(a().getHeight());
+    } else {
+      str = "using default bitmap";
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("NotificationElementBuilder{contentIntentExtras=");
+    localStringBuilder.append(localBundle);
+    localStringBuilder.append(", ticker='");
+    localStringBuilder.append(a());
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", contentTitle='");
+    localStringBuilder.append(b());
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", notificationContentText='");
+    localStringBuilder.append(c());
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", notificationIconBitmapStr=");
+    localStringBuilder.append(str);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.notification.struct.NotificationElementBuilder
  * JD-Core Version:    0.7.0.1
  */

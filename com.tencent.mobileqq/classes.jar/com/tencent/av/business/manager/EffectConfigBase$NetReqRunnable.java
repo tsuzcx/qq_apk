@@ -19,21 +19,23 @@ class EffectConfigBase$NetReqRunnable
   {
     try
     {
-      if ((this.this$0.a != null) && (this.a != null)) {
+      if ((this.this$0.a != null) && (this.a != null))
+      {
         ((IHttpEngineService)this.this$0.a.getRuntimeService(IHttpEngineService.class, "all")).sendReq(this.a);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      localException.printStackTrace();
+      if (QLog.isColorLevel()) {
+        localException.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.EffectConfigBase.NetReqRunnable
  * JD-Core Version:    0.7.0.1
  */

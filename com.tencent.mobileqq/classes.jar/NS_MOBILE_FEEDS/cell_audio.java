@@ -31,14 +31,15 @@ public final class cell_audio
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.audio != null) {
-      paramJceOutputStream.write(this.audio, 0);
+    ArrayList localArrayList = this.audio;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_audio
  * JD-Core Version:    0.7.0.1
  */

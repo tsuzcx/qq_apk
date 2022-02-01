@@ -20,13 +20,14 @@ public final class QQCircleDitto$RecomFeedsInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42 }, new String[] { "dittoID", "pattonID", "dittoData", "index", "busiReport" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), localByteStringMicro }, RecomFeedsInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42 }, new String[] { "dittoID", "pattonID", "dittoData", "index", "busiReport" }, new Object[] { localInteger, localInteger, null, localInteger, localByteStringMicro }, RecomFeedsInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qqcircle.QQCircleDitto.RecomFeedsInfo
  * JD-Core Version:    0.7.0.1
  */

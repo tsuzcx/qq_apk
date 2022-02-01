@@ -22,45 +22,62 @@ public class BrowserScrollListener
   public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
     super.onScrollStateChanged(paramRecyclerView, paramInt);
-    BrowserLogHelper.getInstance().getGalleryLog().d("BrowserScrollListener", 4, "newState = " + paramInt);
+    Object localObject = BrowserLogHelper.getInstance().getGalleryLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("newState = ");
+    localStringBuilder.append(paramInt);
+    ((IBrowserLog)localObject).d("BrowserScrollListener", 4, localStringBuilder.toString());
     if ((paramInt == 0) || (paramInt == 1))
     {
       this.mTotalDistance = 0;
       this.mScreenWidthPx = ScreenUtils.getScreenWidth(paramRecyclerView.getContext());
     }
-    if ((paramInt == 0) && (this.mMainBrowserPresenter != null) && (paramRecyclerView.getChildCount() > 0)) {}
-    try
-    {
-      int i = this.mMainBrowserPresenter.getCurrentPosition();
-      int j = ((RecyclerView.LayoutParams)paramRecyclerView.getChildAt(0).getLayoutParams()).getViewAdapterPosition();
-      int k = this.mMainBrowserPresenter.getLastVisibleItemPosition();
-      BrowserLogHelper.getInstance().getGalleryLog().d("BrowserScrollListener", 4, "currentPosition = " + i + " viewPosition = " + j + " lastVisibleItemPosition = " + k);
-      if ((i != j) && (i != k))
+    if ((paramInt == 0) && (this.mMainBrowserPresenter != null) && (paramRecyclerView.getChildCount() > 0)) {
+      try
       {
-        BrowserLogHelper.getInstance().getGalleryLog().d("BrowserScrollListener", 4, "onItemSelect position = " + j);
-        this.mMainBrowserPresenter.resetItemView(i);
-        this.mMainBrowserPresenter.onItemSelect(j);
-      }
-    }
-    catch (Exception paramRecyclerView)
-    {
-      do
-      {
-        for (;;)
+        int i = this.mMainBrowserPresenter.getCurrentPosition();
+        int j = ((RecyclerView.LayoutParams)paramRecyclerView.getChildAt(0).getLayoutParams()).getViewAdapterPosition();
+        int k = this.mMainBrowserPresenter.getLastVisibleItemPosition();
+        paramRecyclerView = BrowserLogHelper.getInstance().getGalleryLog();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("currentPosition = ");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(" viewPosition = ");
+        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(" lastVisibleItemPosition = ");
+        ((StringBuilder)localObject).append(k);
+        paramRecyclerView.d("BrowserScrollListener", 4, ((StringBuilder)localObject).toString());
+        if ((i != j) && (i != k))
         {
-          BrowserLogHelper.getInstance().getGalleryLog().d("BrowserScrollListener", 4, "onScrollStateChanged exception = " + paramRecyclerView.getMessage());
+          paramRecyclerView = BrowserLogHelper.getInstance().getGalleryLog();
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("onItemSelect position = ");
+          ((StringBuilder)localObject).append(j);
+          paramRecyclerView.d("BrowserScrollListener", 4, ((StringBuilder)localObject).toString());
+          this.mMainBrowserPresenter.resetItemView(i);
+          this.mMainBrowserPresenter.onItemSelect(j);
         }
-      } while (paramInt != 0);
-      this.mItemScrollListener.onScrollEnd();
-    }
-    if (this.mItemScrollListener != null)
-    {
-      if (paramInt == 1) {
-        this.mItemScrollListener.onScrollStart();
+      }
+      catch (Exception paramRecyclerView)
+      {
+        localObject = BrowserLogHelper.getInstance().getGalleryLog();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onScrollStateChanged exception = ");
+        localStringBuilder.append(paramRecyclerView.getMessage());
+        ((IBrowserLog)localObject).d("BrowserScrollListener", 4, localStringBuilder.toString());
       }
     }
-    else {
-      return;
+    paramRecyclerView = this.mItemScrollListener;
+    if (paramRecyclerView != null)
+    {
+      if (paramInt == 1)
+      {
+        paramRecyclerView.onScrollStart();
+        return;
+      }
+      if (paramInt == 0) {
+        paramRecyclerView.onScrollEnd();
+      }
     }
   }
   
@@ -85,7 +102,7 @@ public class BrowserScrollListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.recyclerview.BrowserScrollListener
  * JD-Core Version:    0.7.0.1
  */

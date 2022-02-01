@@ -14,7 +14,7 @@ class WebProcessManager$2
 {
   WebProcessManager$2(WebProcessManager paramWebProcessManager) {}
   
-  public void b(boolean paramBoolean, Object paramObject)
+  protected void b(boolean paramBoolean, Object paramObject)
   {
     int j = -1;
     int i = j;
@@ -24,16 +24,21 @@ class WebProcessManager$2
       if ((paramObject instanceof Bundle))
       {
         paramObject = (Bundle)paramObject;
-        i = paramObject.getInt("ad_bbq_code", -1);
-        if (i == 0)
+        j = paramObject.getInt("ad_bbq_code", -1);
+        i = j;
+        if (j == 0)
         {
           paramObject = paramObject.getString("ad_bbq_message");
           Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+          i = j;
           if ((localObject instanceof QQAppInterface))
           {
             localObject = (BabyQHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.BABY_Q_HANDLER);
-            if (localObject != null) {
+            i = j;
+            if (localObject != null)
+            {
               ((BabyQHandler)localObject).b(paramObject);
+              i = j;
             }
           }
         }
@@ -43,14 +48,18 @@ class WebProcessManager$2
     paramObject.setPackage(BaseApplicationImpl.getApplication().getPackageName());
     paramObject.putExtra("result", i);
     BaseApplicationImpl.getApplication().sendBroadcast(paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("WebProcessManager", 2, "babyq observer return result=" + i);
+    if (QLog.isColorLevel())
+    {
+      paramObject = new StringBuilder();
+      paramObject.append("babyq observer return result=");
+      paramObject.append(i);
+      QLog.d("WebProcessManager", 2, paramObject.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.WebProcessManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,6 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import android.view.View;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.qphone.base.util.QLog;
 
 public class PokeEmoItemView
   extends View
@@ -34,29 +33,34 @@ public class PokeEmoItemView
   public PokeEmoItemView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_b_of_type_Int = AIOUtils.a(16.0F, paramContext.getResources());
-    this.c = AIOUtils.a(80.0F, paramContext.getResources());
-    this.jdField_a_of_type_Int = AIOUtils.a(2.0F, paramContext.getResources());
+    this.jdField_b_of_type_Int = AIOUtils.b(16.0F, paramContext.getResources());
+    this.c = AIOUtils.b(80.0F, paramContext.getResources());
+    this.jdField_a_of_type_Int = AIOUtils.b(2.0F, paramContext.getResources());
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#FFDC4F"));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(AIOUtils.a(24.0F, paramContext.getResources()));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(AIOUtils.b(24.0F, paramContext.getResources()));
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint(this.jdField_a_of_type_AndroidGraphicsPaint);
     this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#418DFF"));
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(AIOUtils.a(4.0F, paramContext.getResources()));
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(AIOUtils.b(4.0F, paramContext.getResources()));
   }
   
   private float a(long paramLong)
   {
-    if (this.jdField_a_of_type_Long == 0L) {
+    long l = this.jdField_a_of_type_Long;
+    if (l == 0L) {
       return 0.0F;
     }
-    double d1 = (paramLong - this.jdField_a_of_type_Long) % 400L / 400.0D * 20.0D;
-    if (d1 < 10.0D) {}
-    for (d1 -= 5.0D;; d1 = 10.0D - (d1 - 10.0D) - 5.0D) {
-      return (float)d1;
+    double d1 = (paramLong - l) % 400L;
+    Double.isNaN(d1);
+    d1 = d1 / 400.0D * 20.0D;
+    if (d1 < 10.0D) {
+      d1 -= 5.0D;
+    } else {
+      d1 = 10.0D - (d1 - 10.0D) - 5.0D;
     }
+    return (float)d1;
   }
   
   public boolean a()
@@ -64,40 +68,39 @@ public class PokeEmoItemView
     return this.jdField_a_of_type_Boolean;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     String str = this.jdField_a_of_type_JavaLangString;
-    int i = getMeasuredWidth();
-    int j = this.d;
+    int k = getMeasuredWidth();
+    int i = this.d;
     int m = this.c;
-    int n = this.d;
-    int i1 = this.jdField_b_of_type_Int;
-    int i2 = this.jdField_a_of_type_Int;
-    int k = paramCanvas.save();
+    int n = this.jdField_b_of_type_Int;
+    int i1 = this.jdField_a_of_type_Int;
+    int j = paramCanvas.save();
     if (this.jdField_b_of_type_Boolean) {
-      paramCanvas.translate(i - m - (n - i1) - i2, 0.0F);
+      paramCanvas.translate(k - m - (i - n) - i1, 0.0F);
     }
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    if (localObject != null) {
+      ((Drawable)localObject).draw(paramCanvas);
     }
     long l = SystemClock.uptimeMillis();
-    m = this.c - this.jdField_b_of_type_Int;
-    Paint.FontMetricsInt localFontMetricsInt = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt();
-    n = getMeasuredHeight() - localFontMetricsInt.descent - 4;
-    paramCanvas.rotate(a(l), j / 2 + m, localFontMetricsInt.ascent / 2 + n);
-    paramCanvas.drawText(str, m, n, this.jdField_b_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawText(str, m, n, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PokeEmoItemView", 4, String.format("mImgWidth:%d,measureW:%d,mTextWidth:%d,mTextOffset:%d,left:%d,mText:%s", new Object[] { Integer.valueOf(this.c), Integer.valueOf(i), Integer.valueOf(this.d), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(m), this.jdField_a_of_type_JavaLangString }));
-    }
-    paramCanvas.restoreToCount(k);
+    k = this.c - this.jdField_b_of_type_Int;
+    localObject = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt();
+    m = getMeasuredHeight() - ((Paint.FontMetricsInt)localObject).descent - 4;
+    paramCanvas.rotate(a(l), i / 2 + k, ((Paint.FontMetricsInt)localObject).ascent / 2 + m);
+    float f1 = k;
+    float f2 = m;
+    paramCanvas.drawText(str, f1, f2, this.jdField_b_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawText(str, f1, f2, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.restoreToCount(j);
     if (this.jdField_a_of_type_Long == 0L) {
       this.jdField_a_of_type_Long = l;
     }
     postDelayed(this, this.e);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
   }
@@ -111,8 +114,10 @@ public class PokeEmoItemView
   
   public void setImageDrawable(Drawable paramDrawable)
   {
-    if (paramDrawable != null) {
-      paramDrawable.setBounds(0, 0, this.c, this.c);
+    if (paramDrawable != null)
+    {
+      int i = this.c;
+      paramDrawable.setBounds(0, 0, i, i);
     }
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
     invalidate(getLeft(), getTop(), getRight(), getBottom());
@@ -130,28 +135,29 @@ public class PokeEmoItemView
       this.d = ((int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText(paramString));
       invalidate(getLeft(), getTop(), getRight(), getBottom());
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      return;
       this.d = 0;
     }
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
   public void setTypeFace(Typeface paramTypeface)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    while (paramTypeface == null) {
+    if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(paramTypeface);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setTypeface(paramTypeface);
+    if (paramTypeface != null)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(paramTypeface);
+      this.jdField_b_of_type_AndroidGraphicsPaint.setTypeface(paramTypeface);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerbubble.PokeEmoItemView
  * JD-Core Version:    0.7.0.1
  */

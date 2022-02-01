@@ -79,72 +79,73 @@ public class MiniGameAdBannerPopup
         }
         if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null))
         {
-          QLog.d("MiniGameAdBannerPopup", 1, new Object[] { "allowShowForAppId", " check if appid " + paramMiniAppConfig.config.appId + " in whitelist " + APPID_WHITE_LIST + " or blacklist " + APPID_BLACK_LIST });
-          String[] arrayOfString;
+          Object localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(" check if appid ");
+          ((StringBuilder)localObject1).append(paramMiniAppConfig.config.appId);
+          ((StringBuilder)localObject1).append(" in whitelist ");
+          ((StringBuilder)localObject1).append(APPID_WHITE_LIST);
+          ((StringBuilder)localObject1).append(" or blacklist ");
+          ((StringBuilder)localObject1).append(APPID_BLACK_LIST);
+          QLog.d("MiniGameAdBannerPopup", 1, new Object[] { "allowShowForAppId", ((StringBuilder)localObject1).toString() });
+          boolean bool = TextUtils.isEmpty(APPID_WHITE_LIST);
           int j;
-          String str;
-          if (!TextUtils.isEmpty(APPID_WHITE_LIST))
+          Object localObject2;
+          if (!bool)
           {
-            if (APPID_WHITE_LIST.contains(","))
-            {
-              arrayOfString = APPID_WHITE_LIST.split(",");
-              if (arrayOfString == null) {
-                break;
-              }
-              j = arrayOfString.length;
-              i = 0;
-              if (i >= j) {
-                break;
-              }
-              str = arrayOfString[i];
-              if (str == null) {
-                break label280;
-              }
-              if (!str.equals(paramMiniAppConfig.config.appId)) {
-                break label280;
-              }
+            if (APPID_WHITE_LIST.contains(",")) {
+              localObject1 = APPID_WHITE_LIST.split(",");
+            } else {
+              localObject1 = APPID_WHITE_LIST.split(";");
             }
-            else
-            {
-              arrayOfString = APPID_WHITE_LIST.split(";");
-              continue;
+            if (localObject1 == null) {
+              break;
             }
+            j = localObject1.length;
+            i = 0;
+            if (i >= j) {
+              break;
+            }
+            localObject2 = localObject1[i];
+            if ((localObject2 == null) || (!localObject2.equals(paramMiniAppConfig.config.appId))) {
+              break label317;
+            }
+            return true;
           }
-          else if (!TextUtils.isEmpty(APPID_BLACK_LIST))
+          if (!TextUtils.isEmpty(APPID_BLACK_LIST))
           {
-            if (APPID_BLACK_LIST.contains(","))
+            if (APPID_BLACK_LIST.contains(",")) {
+              localObject1 = APPID_BLACK_LIST.split(",");
+            } else {
+              localObject1 = APPID_BLACK_LIST.split(";");
+            }
+            if (localObject1 != null)
             {
-              arrayOfString = APPID_BLACK_LIST.split(",");
-              if (arrayOfString == null) {
-                break label278;
-              }
-              j = arrayOfString.length;
+              j = localObject1.length;
               i = 0;
-              if (i >= j) {
-                break label278;
-              }
-              str = arrayOfString[i];
-              if ((str != null) && (str.equals(paramMiniAppConfig.config.appId))) {
-                return false;
+              if (i < j)
+              {
+                localObject2 = localObject1[i];
+                if (localObject2 != null)
+                {
+                  bool = localObject2.equals(paramMiniAppConfig.config.appId);
+                  if (bool) {
+                    return false;
+                  }
+                }
+                i += 1;
+                continue;
               }
             }
-            else
-            {
-              arrayOfString = APPID_BLACK_LIST.split(";");
-              continue;
-            }
-            i += 1;
-            continue;
+            return true;
           }
         }
-        return true;
       }
       catch (Exception paramMiniAppConfig)
       {
         QLog.e("MiniGameAdBannerPopup", 1, "allowShowForAppId", paramMiniAppConfig);
       }
-      label278:
-      label280:
+      return true;
+      label317:
       i += 1;
     }
     return false;
@@ -152,75 +153,80 @@ public class MiniGameAdBannerPopup
   
   private static boolean allowShowForRefer(MiniAppConfig paramMiniAppConfig)
   {
-    try
+    for (;;)
     {
-      if ((TextUtils.isEmpty(REFER_WHITE_LIST)) && (TextUtils.isEmpty(REFER_BLACK_LIST))) {
-        return true;
-      }
-      if ((paramMiniAppConfig != null) && (paramMiniAppConfig.launchParam != null))
+      int i;
+      try
       {
-        QLog.d("MiniGameAdBannerPopup", 1, new Object[] { "allowShowForRefer", " check if scene " + paramMiniAppConfig.launchParam.scene + " in whitelist " + REFER_WHITE_LIST + " or blacklist " + REFER_BLACK_LIST });
-        String[] arrayOfString;
-        int j;
-        int i;
-        if (!TextUtils.isEmpty(REFER_WHITE_LIST))
+        if ((TextUtils.isEmpty(REFER_WHITE_LIST)) && (TextUtils.isEmpty(REFER_BLACK_LIST))) {
+          return true;
+        }
+        if ((paramMiniAppConfig != null) && (paramMiniAppConfig.launchParam != null))
         {
-          if (REFER_WHITE_LIST.contains(",")) {}
-          for (arrayOfString = REFER_WHITE_LIST.split(",");; arrayOfString = REFER_WHITE_LIST.split(";"))
+          Object localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(" check if scene ");
+          ((StringBuilder)localObject).append(paramMiniAppConfig.launchParam.scene);
+          ((StringBuilder)localObject).append(" in whitelist ");
+          ((StringBuilder)localObject).append(REFER_WHITE_LIST);
+          ((StringBuilder)localObject).append(" or blacklist ");
+          ((StringBuilder)localObject).append(REFER_BLACK_LIST);
+          QLog.d("MiniGameAdBannerPopup", 1, new Object[] { "allowShowForRefer", ((StringBuilder)localObject).toString() });
+          boolean bool = TextUtils.isEmpty(REFER_WHITE_LIST);
+          int j;
+          if (!bool)
           {
-            if (arrayOfString == null) {
-              break label266;
+            if (REFER_WHITE_LIST.contains(",")) {
+              localObject = REFER_WHITE_LIST.split(",");
+            } else {
+              localObject = REFER_WHITE_LIST.split(";");
             }
-            j = arrayOfString.length;
+            if (localObject == null) {
+              break;
+            }
+            j = localObject.length;
             i = 0;
-            for (;;)
-            {
-              if (i >= j) {
-                break label266;
-              }
-              if (Integer.parseInt(arrayOfString[i]) == paramMiniAppConfig.launchParam.scene) {
-                break;
-              }
-              i += 1;
+            if (i >= j) {
+              break;
             }
+            if (Integer.parseInt(localObject[i]) != paramMiniAppConfig.launchParam.scene) {
+              break label305;
+            }
+            return true;
           }
-        }
-        if (!TextUtils.isEmpty(REFER_BLACK_LIST)) {
-          if (REFER_BLACK_LIST.contains(","))
+          if (!TextUtils.isEmpty(REFER_BLACK_LIST))
           {
-            arrayOfString = REFER_BLACK_LIST.split(",");
-            if (arrayOfString != null)
+            if (REFER_BLACK_LIST.contains(",")) {
+              localObject = REFER_BLACK_LIST.split(",");
+            } else {
+              localObject = REFER_BLACK_LIST.split(";");
+            }
+            if (localObject != null)
             {
-              j = arrayOfString.length;
+              j = localObject.length;
               i = 0;
-            }
-          }
-          else
-          {
-            for (;;)
-            {
-              if (i >= j) {
-                break label264;
-              }
-              if (Integer.parseInt(arrayOfString[i]) == paramMiniAppConfig.launchParam.scene)
+              if (i < j)
               {
-                return false;
-                arrayOfString = REFER_BLACK_LIST.split(";");
-                break;
+                int k = Integer.parseInt(localObject[i]);
+                int m = paramMiniAppConfig.launchParam.scene;
+                if (k == m) {
+                  return false;
+                }
+                i += 1;
+                continue;
               }
-              i += 1;
             }
+            return true;
           }
         }
+      }
+      catch (Exception paramMiniAppConfig)
+      {
+        QLog.e("MiniGameAdBannerPopup", 1, "allowShowForRefer", paramMiniAppConfig);
       }
       return true;
+      label305:
+      i += 1;
     }
-    catch (Exception paramMiniAppConfig)
-    {
-      QLog.e("MiniGameAdBannerPopup", 1, "allowShowForRefer", paramMiniAppConfig);
-    }
-    label264:
-    label266:
     return false;
   }
   
@@ -231,222 +237,150 @@ public class MiniGameAdBannerPopup
   
   private static void checkShouldShowInternal(Context paramContext, MiniAppConfig paramMiniAppConfig)
   {
-    if ((paramContext == null) || (paramMiniAppConfig == null) || (!paramMiniAppConfig.isEngineTypeMiniGame())) {
-      return;
-    }
-    try
+    if ((paramContext != null) && (paramMiniAppConfig != null))
     {
-      TianShuAdPosItemData localTianShuAdPosItemData = new TianShuAdPosItemData();
-      localTianShuAdPosItemData.jdField_a_of_type_Int = 258;
-      localTianShuAdPosItemData.b = 1;
-      GET_AD_CALLBACK = new MiniGameAdBannerPopup.GetAdCallback(paramContext, paramMiniAppConfig);
-      TianShuManager.getInstance().requestAdv(Collections.singletonList(localTianShuAdPosItemData), GET_AD_CALLBACK);
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      QLog.e("MiniGameAdBannerPopup", 1, "requestAdBannerPopupInfo", paramContext);
+      if (!paramMiniAppConfig.isEngineTypeMiniGame()) {
+        return;
+      }
+      try
+      {
+        TianShuAdPosItemData localTianShuAdPosItemData = new TianShuAdPosItemData();
+        localTianShuAdPosItemData.jdField_a_of_type_Int = 258;
+        localTianShuAdPosItemData.b = 1;
+        GET_AD_CALLBACK = new MiniGameAdBannerPopup.GetAdCallback(paramContext, paramMiniAppConfig);
+        TianShuManager.getInstance().requestAdv(Collections.singletonList(localTianShuAdPosItemData), GET_AD_CALLBACK);
+        return;
+      }
+      catch (Exception paramContext)
+      {
+        QLog.e("MiniGameAdBannerPopup", 1, "requestAdBannerPopupInfo", paramContext);
+      }
     }
   }
   
   private static void handleGetAdResult(Context paramContext, MiniAppConfig paramMiniAppConfig, boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    Iterator localIterator = null;
-    Object localObject7 = null;
-    Object localObject9 = null;
     Object localObject6 = null;
-    Object localObject4 = null;
-    Object localObject1 = null;
-    Object localObject2 = null;
-    Object localObject8 = null;
-    Object localObject3 = null;
-    Object localObject5;
+    String str = null;
     if ((paramBoolean) && (paramGetAdsRsp != null))
     {
-      if (paramGetAdsRsp.mapAds.isEmpty()) {
-        break label975;
-      }
-      paramGetAdsRsp = (TianShuAccess.RspEntry)paramGetAdsRsp.mapAds.get(0);
-      if ((paramGetAdsRsp != null) && (paramGetAdsRsp.value != null) && (!paramGetAdsRsp.value.lst.isEmpty()))
+      if (!paramGetAdsRsp.mapAds.isEmpty())
       {
-        TianShuAccess.AdItem localAdItem = (TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0);
-        if ((localAdItem != null) && (localAdItem.argList != null) && (!localAdItem.argList.isEmpty()))
+        paramGetAdsRsp = (TianShuAccess.RspEntry)paramGetAdsRsp.mapAds.get(0);
+        if ((paramGetAdsRsp != null) && (paramGetAdsRsp.value != null) && (!paramGetAdsRsp.value.lst.isEmpty()))
         {
-          localIterator = localAdItem.argList.get().iterator();
-          paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject7;
-          localObject1 = localObject6;
-          localObject9 = localAdItem;
-          localObject8 = localObject3;
-          localObject4 = localObject2;
-          localObject6 = localObject1;
-          localObject7 = paramGetAdsRsp;
-          if (localIterator.hasNext())
+          TianShuAccess.AdItem localAdItem = (TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0);
+          if ((localAdItem != null) && (localAdItem.argList != null) && (!localAdItem.argList.isEmpty()))
           {
-            localObject4 = (TianShuAccess.MapEntry)localIterator.next();
-            if ("type".equals(((TianShuAccess.MapEntry)localObject4).key.get()))
-            {
-              localObject4 = ((TianShuAccess.MapEntry)localObject4).value.get();
-              paramGetAdsRsp = localObject2;
-              localObject2 = localObject4;
-              localObject4 = localObject3;
-              localObject3 = localObject2;
-              localObject2 = localObject1;
-              localObject1 = paramGetAdsRsp;
-              paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject4;
-            }
+            Iterator localIterator = localAdItem.argList.get().iterator();
+            localObject2 = null;
+            localObject1 = localObject2;
+            paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject1;
             for (;;)
             {
-              localObject4 = localObject3;
-              localObject6 = localObject2;
-              localObject3 = paramGetAdsRsp;
-              localObject2 = localObject1;
-              localObject1 = localObject6;
-              paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject4;
-              break;
-              if ("url".equals(((TianShuAccess.MapEntry)localObject4).key.get()))
-              {
-                localObject6 = ((TianShuAccess.MapEntry)localObject4).value.get();
-                localObject4 = paramGetAdsRsp;
-                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject3;
-                localObject1 = localObject2;
-                localObject2 = localObject6;
-                localObject3 = localObject4;
+              localObject6 = str;
+              localObject8 = localAdItem;
+              localObject7 = localObject2;
+              Object localObject3 = localObject1;
+              localObject5 = paramGetAdsRsp;
+              if (!localIterator.hasNext()) {
+                break;
               }
-              else if ("text".equals(((TianShuAccess.MapEntry)localObject4).key.get()))
-              {
-                localObject6 = ((TianShuAccess.MapEntry)localObject4).value.get();
-                localObject2 = localObject1;
-                localObject4 = paramGetAdsRsp;
-                localObject1 = localObject6;
-                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject3;
-                localObject3 = localObject4;
-              }
-              else if ("pic".equals(((TianShuAccess.MapEntry)localObject4).key.get()))
-              {
-                localObject6 = ((TianShuAccess.MapEntry)localObject4).value.get();
-                localObject3 = localObject1;
-                localObject4 = paramGetAdsRsp;
-                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject6;
-                localObject1 = localObject2;
-                localObject2 = localObject3;
-                localObject3 = localObject4;
-              }
-              else if ("appid_on".equals(((TianShuAccess.MapEntry)localObject4).key.get()))
-              {
-                APPID_WHITE_LIST = ((TianShuAccess.MapEntry)localObject4).value.get();
-                localObject4 = localObject1;
-                localObject6 = paramGetAdsRsp;
-                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject3;
-                localObject1 = localObject2;
-                localObject2 = localObject4;
-                localObject3 = localObject6;
-              }
-              else if ("appid_off".equals(((TianShuAccess.MapEntry)localObject4).key.get()))
-              {
-                APPID_BLACK_LIST = ((TianShuAccess.MapEntry)localObject4).value.get();
-                localObject4 = localObject1;
-                localObject6 = paramGetAdsRsp;
-                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject3;
-                localObject1 = localObject2;
-                localObject2 = localObject4;
-                localObject3 = localObject6;
-              }
-              else if ("refer_on".equals(((TianShuAccess.MapEntry)localObject4).key.get()))
-              {
-                REFER_WHITE_LIST = ((TianShuAccess.MapEntry)localObject4).value.get();
-                localObject4 = localObject1;
-                localObject6 = paramGetAdsRsp;
-                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject3;
-                localObject1 = localObject2;
-                localObject2 = localObject4;
-                localObject3 = localObject6;
-              }
-              else if ("refer_off".equals(((TianShuAccess.MapEntry)localObject4).key.get()))
-              {
-                REFER_BLACK_LIST = ((TianShuAccess.MapEntry)localObject4).value.get();
-                localObject4 = localObject1;
-                localObject6 = paramGetAdsRsp;
-                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject3;
-                localObject1 = localObject2;
-                localObject2 = localObject4;
-                localObject3 = localObject6;
-              }
-              else if (("show_time".equals(((TianShuAccess.MapEntry)localObject4).key.get())) && (!TextUtils.isEmpty(((TianShuAccess.MapEntry)localObject4).value.get())))
-              {
+              localObject3 = (TianShuAccess.MapEntry)localIterator.next();
+              if ("type".equals(((TianShuAccess.MapEntry)localObject3).key.get())) {
+                str = ((TianShuAccess.MapEntry)localObject3).value.get();
+              } else if ("url".equals(((TianShuAccess.MapEntry)localObject3).key.get())) {
+                localObject2 = ((TianShuAccess.MapEntry)localObject3).value.get();
+              } else if ("text".equals(((TianShuAccess.MapEntry)localObject3).key.get())) {
+                localObject1 = ((TianShuAccess.MapEntry)localObject3).value.get();
+              } else if ("pic".equals(((TianShuAccess.MapEntry)localObject3).key.get())) {
+                paramGetAdsRsp = ((TianShuAccess.MapEntry)localObject3).value.get();
+              } else if ("appid_on".equals(((TianShuAccess.MapEntry)localObject3).key.get())) {
+                APPID_WHITE_LIST = ((TianShuAccess.MapEntry)localObject3).value.get();
+              } else if ("appid_off".equals(((TianShuAccess.MapEntry)localObject3).key.get())) {
+                APPID_BLACK_LIST = ((TianShuAccess.MapEntry)localObject3).value.get();
+              } else if ("refer_on".equals(((TianShuAccess.MapEntry)localObject3).key.get())) {
+                REFER_WHITE_LIST = ((TianShuAccess.MapEntry)localObject3).value.get();
+              } else if ("refer_off".equals(((TianShuAccess.MapEntry)localObject3).key.get())) {
+                REFER_BLACK_LIST = ((TianShuAccess.MapEntry)localObject3).value.get();
+              } else if (("show_time".equals(((TianShuAccess.MapEntry)localObject3).key.get())) && (!TextUtils.isEmpty(((TianShuAccess.MapEntry)localObject3).value.get()))) {
                 try
                 {
-                  SHOW_DELAY_SECONDS_AFTER_GAME_LAUNCH = Integer.parseInt(((TianShuAccess.MapEntry)localObject4).value.get());
-                  localObject4 = localObject1;
-                  localObject6 = paramGetAdsRsp;
-                  paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject3;
-                  localObject1 = localObject2;
-                  localObject2 = localObject4;
-                  localObject3 = localObject6;
+                  SHOW_DELAY_SECONDS_AFTER_GAME_LAUNCH = Integer.parseInt(((TianShuAccess.MapEntry)localObject3).value.get());
                 }
                 catch (Exception localException)
                 {
                   QLog.e("MiniGameAdBannerPopup", 1, "handleGetAdResult", localException);
                 }
               }
-              else
-              {
-                localObject5 = localObject1;
-                localObject6 = paramGetAdsRsp;
-                paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject3;
-                localObject1 = localObject2;
-                localObject2 = localObject5;
-                localObject3 = localObject6;
-              }
             }
           }
+          QLog.e("MiniGameAdBannerPopup", 1, new Object[] { "onGetAdvs", " no ad item" });
         }
         else
         {
-          QLog.e("MiniGameAdBannerPopup", 1, new Object[] { "onGetAdvs", " no ad item" });
-          paramGetAdsRsp = null;
-          localObject7 = localIterator;
-          localObject6 = localObject9;
-          localObject9 = paramGetAdsRsp;
+          QLog.e("MiniGameAdBannerPopup", 1, new Object[] { "onGetAdvs", " no ad data" });
         }
-        localObject2 = localObject9;
-        localObject1 = localObject6;
-        paramGetAdsRsp = localObject8;
-        label775:
-        QLog.d("MiniGameAdBannerPopup", 1, new Object[] { "handleGetAdResult", " appid whitelist " + APPID_WHITE_LIST + "\n appid blacklist " + APPID_BLACK_LIST + "\n refer whitelist " + REFER_WHITE_LIST + "\n refer blacklist " + REFER_BLACK_LIST + "\n show time " + SHOW_DELAY_SECONDS_AFTER_GAME_LAUNCH });
-        if (allowShowForAppId(paramMiniAppConfig)) {
-          break label997;
-        }
-        if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null)) {
-          QLog.e("MiniGameAdBannerPopup", 1, new Object[] { "handleGetAdResult", " not allow for appid " + paramMiniAppConfig.config.appId });
-        }
+        localObject8 = null;
+        localObject7 = localObject8;
+        localObject4 = localObject7;
+        Object localObject5 = localObject4;
+        localObject2 = localObject5;
+        localObject1 = localObject4;
+        paramGetAdsRsp = localObject6;
+        break label602;
       }
     }
-    label975:
-    label997:
-    do
+    else {
+      QLog.e("MiniGameAdBannerPopup", 1, new Object[] { "onGetAdvs", " no ad result" });
+    }
+    Object localObject4 = null;
+    paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject4;
+    Object localObject1 = paramGetAdsRsp;
+    Object localObject2 = localObject1;
+    Object localObject8 = localObject2;
+    Object localObject7 = localObject2;
+    localObject2 = localObject1;
+    localObject1 = paramGetAdsRsp;
+    paramGetAdsRsp = (TianShuAccess.GetAdsRsp)localObject4;
+    label602:
+    localObject4 = new StringBuilder();
+    ((StringBuilder)localObject4).append(" appid whitelist ");
+    ((StringBuilder)localObject4).append(APPID_WHITE_LIST);
+    ((StringBuilder)localObject4).append("\n appid blacklist ");
+    ((StringBuilder)localObject4).append(APPID_BLACK_LIST);
+    ((StringBuilder)localObject4).append("\n refer whitelist ");
+    ((StringBuilder)localObject4).append(REFER_WHITE_LIST);
+    ((StringBuilder)localObject4).append("\n refer blacklist ");
+    ((StringBuilder)localObject4).append(REFER_BLACK_LIST);
+    ((StringBuilder)localObject4).append("\n show time ");
+    ((StringBuilder)localObject4).append(SHOW_DELAY_SECONDS_AFTER_GAME_LAUNCH);
+    QLog.d("MiniGameAdBannerPopup", 1, new Object[] { "handleGetAdResult", ((StringBuilder)localObject4).toString() });
+    if (!allowShowForAppId(paramMiniAppConfig))
     {
-      do
+      if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null))
       {
-        return;
-        QLog.e("MiniGameAdBannerPopup", 1, new Object[] { "onGetAdvs", " no ad data" });
-        break;
-        QLog.e("MiniGameAdBannerPopup", 1, new Object[] { "onGetAdvs", " no ad result" });
-        localObject2 = null;
-        localObject7 = null;
-        localObject3 = null;
-        paramGetAdsRsp = null;
-        localObject5 = localObject1;
-        localObject1 = localObject3;
-        break label775;
-        if (allowShowForRefer(paramMiniAppConfig)) {
-          break label1061;
-        }
-      } while ((paramMiniAppConfig == null) || (paramMiniAppConfig.launchParam == null));
-      QLog.e("MiniGameAdBannerPopup", 1, new Object[] { "handleGetAdResult", " not allow for refer " + paramMiniAppConfig.launchParam.scene });
+        paramContext = new StringBuilder();
+        paramContext.append(" not allow for appid ");
+        paramContext.append(paramMiniAppConfig.config.appId);
+        QLog.e("MiniGameAdBannerPopup", 1, new Object[] { "handleGetAdResult", paramContext.toString() });
+      }
       return;
-    } while ((localObject7 == null) || (localObject1 == null) || (localObject5 == null) || (paramGetAdsRsp == null) || (localObject2 == null));
-    label1061:
-    ThreadManagerV2.getUIHandlerV2().postDelayed(new MiniGameAdBannerPopup.2(paramContext, (String)localObject7, localObject5, paramGetAdsRsp, (String)localObject1, localObject2), TimeUnit.SECONDS.toMillis(SHOW_DELAY_SECONDS_AFTER_GAME_LAUNCH));
+    }
+    if (!allowShowForRefer(paramMiniAppConfig))
+    {
+      if ((paramMiniAppConfig != null) && (paramMiniAppConfig.launchParam != null))
+      {
+        paramContext = new StringBuilder();
+        paramContext.append(" not allow for refer ");
+        paramContext.append(paramMiniAppConfig.launchParam.scene);
+        QLog.e("MiniGameAdBannerPopup", 1, new Object[] { "handleGetAdResult", paramContext.toString() });
+      }
+      return;
+    }
+    if ((paramGetAdsRsp != null) && (localObject7 != null) && (localObject1 != null) && (localObject2 != null) && (localObject8 != null)) {
+      ThreadManagerV2.getUIHandlerV2().postDelayed(new MiniGameAdBannerPopup.2(paramContext, paramGetAdsRsp, (String)localObject1, (String)localObject2, localObject7, (TianShuAccess.AdItem)localObject8), TimeUnit.SECONDS.toMillis(SHOW_DELAY_SECONDS_AFTER_GAME_LAUNCH));
+    }
   }
   
   @NotNull
@@ -454,7 +388,11 @@ public class MiniGameAdBannerPopup
   {
     int i = (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
     TianShuReportData localTianShuReportData = new TianShuReportData();
-    localTianShuReportData.b = (String.valueOf(CommonDataAdapter.a().a()) + '_' + i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(String.valueOf(CommonDataAdapter.a().a()));
+    localStringBuilder.append('_');
+    localStringBuilder.append(i);
+    localTianShuReportData.b = localStringBuilder.toString();
     localTianShuReportData.d = paramInt;
     localTianShuReportData.jdField_e_of_type_Int = 1;
     localTianShuReportData.g = String.valueOf(paramAdItem.iAdId.get());
@@ -473,47 +411,54 @@ public class MiniGameAdBannerPopup
   
   private static void showAdBannerPopupWindow(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, TianShuAccess.AdItem paramAdItem)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (TextUtils.isEmpty(paramString4))) {}
-    do
+    if ((paramContext != null) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
     {
-      do
-      {
+      if (TextUtils.isEmpty(paramString4)) {
         return;
-      } while (!(paramContext instanceof Activity));
-      localObject = (Activity)paramContext;
-    } while ((((Activity)localObject).isFinishing()) || ((Build.VERSION.SDK_INT >= 17) && (((Activity)localObject).isDestroyed())));
-    View localView = LayoutInflater.from(paramContext).inflate(2131559526, null);
-    ImageView localImageView = (ImageView)localView.findViewById(2131371625);
-    TextView localTextView = (TextView)localView.findViewById(2131371628);
-    Object localObject = (LinearLayout)localView.findViewById(2131371626);
-    Dialog localDialog = new Dialog(paramContext);
-    localDialog.setCancelable(false);
-    if (localDialog.getWindow() != null)
-    {
-      localDialog.getWindow().requestFeature(1);
-      localDialog.getWindow().setBackgroundDrawableResource(17170445);
+      }
+      if (!(paramContext instanceof Activity)) {
+        return;
+      }
+      Object localObject = (Activity)paramContext;
+      if (!((Activity)localObject).isFinishing())
+      {
+        if ((Build.VERSION.SDK_INT >= 17) && (((Activity)localObject).isDestroyed())) {
+          return;
+        }
+        View localView = LayoutInflater.from(paramContext).inflate(2131559400, null);
+        ImageView localImageView = (ImageView)localView.findViewById(2131371245);
+        TextView localTextView = (TextView)localView.findViewById(2131371248);
+        localObject = (LinearLayout)localView.findViewById(2131371246);
+        Dialog localDialog = new Dialog(paramContext);
+        localDialog.setCancelable(false);
+        if (localDialog.getWindow() != null)
+        {
+          localDialog.getWindow().requestFeature(1);
+          localDialog.getWindow().setBackgroundDrawableResource(17170445);
+        }
+        localDialog.setContentView(localView, new ViewGroup.LayoutParams(-1, -1));
+        localDialog.setOnShowListener(new MiniGameAdBannerPopup.3(paramAdItem, paramString1));
+        localImageView.setOnClickListener(new MiniGameAdBannerPopup.4(localDialog, paramAdItem, paramString1));
+        if (!TextUtils.isEmpty(paramString2)) {
+          localTextView.setText(paramString2);
+        }
+        paramString2 = new MiniGameAdBannerPopup.BottomCornerURLImageView(paramContext);
+        paramString2.setAdjustViewBounds(true);
+        paramString2.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        paramString2.setClickable(true);
+        paramString2.setImageDrawable(URLDrawable.getDrawable(paramString3));
+        paramString2.setOnClickListener(new MiniGameAdBannerPopup.5(localDialog, paramContext, paramString4, paramAdItem, paramString1));
+        paramContext = new LinearLayout.LayoutParams(-1, (int)TypedValue.applyDimension(1, 229.0F, paramContext.getResources().getDisplayMetrics()));
+        paramContext.gravity = 1;
+        ((LinearLayout)localObject).addView(paramString2, paramContext);
+        localDialog.show();
+      }
     }
-    localDialog.setContentView(localView, new ViewGroup.LayoutParams(-1, -1));
-    localDialog.setOnShowListener(new MiniGameAdBannerPopup.3(paramAdItem, paramString1));
-    localImageView.setOnClickListener(new MiniGameAdBannerPopup.4(localDialog, paramAdItem, paramString1));
-    if (!TextUtils.isEmpty(paramString2)) {
-      localTextView.setText(paramString2);
-    }
-    paramString2 = new MiniGameAdBannerPopup.BottomCornerURLImageView(paramContext);
-    paramString2.setAdjustViewBounds(true);
-    paramString2.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    paramString2.setClickable(true);
-    paramString2.setImageDrawable(URLDrawable.getDrawable(paramString3));
-    paramString2.setOnClickListener(new MiniGameAdBannerPopup.5(localDialog, paramContext, paramString4, paramAdItem, paramString1));
-    paramContext = new LinearLayout.LayoutParams(-1, (int)TypedValue.applyDimension(1, 229.0F, paramContext.getResources().getDisplayMetrics()));
-    paramContext.gravity = 1;
-    ((LinearLayout)localObject).addView(paramString2, paramContext);
-    localDialog.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.MiniGameAdBannerPopup
  * JD-Core Version:    0.7.0.1
  */

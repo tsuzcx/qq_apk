@@ -26,32 +26,32 @@ public class TenDocOCRExportObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    }
-    do
-    {
-      do
+      if (paramInt != 2)
       {
-        do
+        if (paramInt != 3)
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-              } while (paramObject == null);
-              paramObject = (Object[])paramObject;
-            } while (paramObject.length != 2);
-            a((String)paramObject[0], (String)paramObject[1]);
+          if (paramInt != 4) {
             return;
-            a();
+          }
+          if (paramObject == null) {
             return;
-          } while (paramObject == null);
+          }
           paramObject = (Object[])paramObject;
-        } while (paramObject.length != 1);
+          if (paramObject.length != 1) {
+            return;
+          }
+          a(((Integer)paramObject[0]).intValue());
+          return;
+        }
+        if (paramObject == null) {
+          return;
+        }
+        paramObject = (Object[])paramObject;
+        if (paramObject.length != 1) {
+          return;
+        }
         try
         {
           paramObject = (JSONObject)paramObject[0];
@@ -63,6 +63,11 @@ public class TenDocOCRExportObserver
             a(paramBoolean, paramObject);
             return;
           }
+          paramObject = new StringBuilder();
+          paramObject.append(paramInt);
+          paramObject.append("");
+          a(paramObject.toString(), "");
+          return;
         }
         catch (Exception paramObject)
         {
@@ -70,17 +75,21 @@ public class TenDocOCRExportObserver
           a(paramObject.toString(), "");
           return;
         }
-        a(paramInt + "", "");
-        return;
-      } while (paramObject == null);
+      }
+      a();
+    }
+    else if (paramObject != null)
+    {
       paramObject = (Object[])paramObject;
-    } while (paramObject.length != 1);
-    a(((Integer)paramObject[0]).intValue());
+      if (paramObject.length == 2) {
+        a((String)paramObject[0], (String)paramObject[1]);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TenDocOCRExportObserver
  * JD-Core Version:    0.7.0.1
  */

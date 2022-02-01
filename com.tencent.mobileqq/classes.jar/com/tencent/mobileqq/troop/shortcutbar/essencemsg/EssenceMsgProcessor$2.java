@@ -1,17 +1,13 @@
 package com.tencent.mobileqq.troop.shortcutbar.essencemsg;
 
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.shortcutbar.TroopShortcutBarObserver;
 
 class EssenceMsgProcessor$2
   extends TroopShortcutBarObserver
 {
-  EssenceMsgProcessor$2(EssenceMsgProcessor paramEssenceMsgProcessor, QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  EssenceMsgProcessor$2(EssenceMsgProcessor paramEssenceMsgProcessor) {}
   
-  public void a(long paramLong, boolean paramBoolean, int paramInt)
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
   {
     if (paramInt == 0)
     {
@@ -23,7 +19,7 @@ class EssenceMsgProcessor$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.essencemsg.EssenceMsgProcessor.2
  * JD-Core Version:    0.7.0.1
  */

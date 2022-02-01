@@ -14,60 +14,69 @@ class UrlSecurityCheckManager$3
 {
   UrlSecurityCheckManager$3(UrlSecurityCheckManager paramUrlSecurityCheckManager) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("urlSecMgr", 2, "receive PasswdUrlReport code=" + paramInt);
-    }
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {
-      if ((QLog.isColorLevel()) && (paramArrayOfByte == null)) {
-        break label231;
-      }
-    }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      try
-      {
-        paramBundle = ((PasswdUrlReport.RspBody)new PasswdUrlReport.RspBody().mergeFrom(paramArrayOfByte)).upload_rsp_item.ret_msg.get();
-        StringBuilder localStringBuilder = new StringBuilder().append("PasswdUrlReport error code=").append(paramInt);
-        if (paramArrayOfByte == null)
-        {
-          paramArrayOfByte = ", data=null";
-          QLog.i("urlSecMgr", 2, paramArrayOfByte);
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        paramBundle = "";
-        continue;
-        paramArrayOfByte = ", msg=" + paramBundle;
-        continue;
-      }
+      paramBundle = new StringBuilder();
+      paramBundle.append("receive PasswdUrlReport code=");
+      paramBundle.append(paramInt);
+      QLog.i("urlSecMgr", 2, paramBundle.toString());
+    }
+    if ((paramInt == 0) && (paramArrayOfByte != null))
+    {
       paramBundle = new PasswdUrlReport.RspBody();
       try
       {
         paramBundle.mergeFrom(paramArrayOfByte);
         if (!QLog.isColorLevel()) {
-          continue;
+          break label253;
         }
         QLog.d("urlSecMgr", 2, new Object[] { "parse PasswdUrlReport result res=", Integer.valueOf(paramBundle.result.get()), " retCode=", Integer.valueOf(paramBundle.upload_rsp_item.ret_code.get()) });
         return;
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
-      if (QLog.isColorLevel())
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        QLog.i("urlSecMgr", 2, "parse error", paramArrayOfByte);
-        return;
-        label231:
-        paramBundle = "";
+        if (!QLog.isColorLevel()) {
+          break label253;
+        }
       }
+      QLog.i("urlSecMgr", 2, "parse error", paramArrayOfByte);
     }
+    else if ((QLog.isColorLevel()) && (paramArrayOfByte == null)) {}
+    try
+    {
+      paramBundle = ((PasswdUrlReport.RspBody)new PasswdUrlReport.RspBody().mergeFrom(paramArrayOfByte)).upload_rsp_item.ret_msg.get();
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      label172:
+      StringBuilder localStringBuilder;
+      break label172;
+    }
+    paramBundle = "";
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PasswdUrlReport error code=");
+    localStringBuilder.append(paramInt);
+    if (paramArrayOfByte == null)
+    {
+      paramArrayOfByte = ", data=null";
+    }
+    else
+    {
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append(", msg=");
+      paramArrayOfByte.append(paramBundle);
+      paramArrayOfByte = paramArrayOfByte.toString();
+    }
+    localStringBuilder.append(paramArrayOfByte);
+    QLog.i("urlSecMgr", 2, localStringBuilder.toString());
+    label253:
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.UrlSecurityCheckManager.3
  * JD-Core Version:    0.7.0.1
  */

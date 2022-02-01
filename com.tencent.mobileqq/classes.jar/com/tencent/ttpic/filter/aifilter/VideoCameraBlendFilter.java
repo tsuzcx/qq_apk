@@ -27,21 +27,24 @@ public class VideoCameraBlendFilter
   
   private boolean needRotate(int paramInt1, int paramInt2)
   {
-    if (this.rotateType >= 0) {
-      if (this.rotateType == 1) {
-        if (paramInt1 * 1.05D >= paramInt2) {}
-      }
-    }
-    do
+    int i = this.rotateType;
+    double d;
+    if (i >= 0)
     {
-      return true;
-      return false;
-      return false;
-      if (((this.randomHeight <= 0.0F) || (this.picRatio <= 0.0F)) && ((this.topX < 0.0F) || (this.topY < 0.0F) || (this.bottomX < 0.0F) || (this.bottomY < 0.0F))) {
-        break;
+      if (i == 1)
+      {
+        d = paramInt1;
+        Double.isNaN(d);
+        return d * 1.05D < paramInt2;
       }
-    } while (paramInt1 * 1.05D < paramInt2);
-    return false;
+      return false;
+    }
+    if (((this.randomHeight > 0.0F) && (this.picRatio > 0.0F)) || ((this.topX >= 0.0F) && (this.topY >= 0.0F) && (this.bottomX >= 0.0F) && (this.bottomY >= 0.0F)))
+    {
+      d = paramInt1;
+      Double.isNaN(d);
+      return d * 1.05D < paramInt2;
+    }
     return false;
   }
   
@@ -53,86 +56,110 @@ public class VideoCameraBlendFilter
   
   public void beforeRender(int paramInt1, int paramInt2, int paramInt3)
   {
-    float[] arrayOfFloat;
     float f1;
     float f2;
     if ((this.randomHeight > 0.0F) && (this.picRatio > 0.0F))
     {
-      arrayOfFloat = new float[5];
+      float[] arrayOfFloat = new float[5];
+      double d1;
+      double d2;
       if (!needRotate(paramInt2, paramInt3))
       {
         f1 = this.randomHeight;
         f2 = this.picRatio * f1 * paramInt3 / paramInt2;
-        arrayOfFloat[0] = ((float)Math.min(Math.max(this.random1 * (1.0D - f2), 0.0D), 1.0D - f2));
-        arrayOfFloat[1] = ((float)Math.min(Math.max(this.random2 * (1.0D - f1), 0.0D), 1.0D - f1));
+        d1 = this.random1;
+        d2 = f2;
+        Double.isNaN(d2);
+        d2 = 1.0D - d2;
+        Double.isNaN(d1);
+        arrayOfFloat[0] = ((float)Math.min(Math.max(d1 * d2, 0.0D), d2));
+        d1 = this.random2;
+        d2 = f1;
+        Double.isNaN(d2);
+        d2 = 1.0D - d2;
+        Double.isNaN(d1);
+        arrayOfFloat[1] = ((float)Math.min(Math.max(d1 * d2, 0.0D), d2));
         arrayOfFloat[2] = arrayOfFloat[0];
         arrayOfFloat[3] = (arrayOfFloat[1] + this.randomHeight);
         arrayOfFloat[4] = this.picRatio;
-        setTop(arrayOfFloat[0], arrayOfFloat[1]);
-        setBottom(arrayOfFloat[2], arrayOfFloat[3]);
-        setPicRatio(arrayOfFloat[4]);
+      }
+      else
+      {
+        f1 = this.randomHeight;
+        f2 = this.picRatio * f1 * paramInt2 / paramInt3;
+        d1 = this.random1;
+        d2 = f2;
+        Double.isNaN(d2);
+        d2 = 1.0D - d2;
+        Double.isNaN(d1);
+        arrayOfFloat[0] = ((float)Math.min(Math.max(d1 * d2, 0.0D), d2));
+        d1 = this.random2;
+        d2 = f1;
+        Double.isNaN(d2);
+        d2 = 1.0D - d2;
+        Double.isNaN(d1);
+        arrayOfFloat[1] = ((float)Math.min(Math.max(d1 * d2, 0.0D), d2));
+        arrayOfFloat[2] = arrayOfFloat[0];
+        arrayOfFloat[3] = (arrayOfFloat[1] + this.randomHeight);
+        arrayOfFloat[4] = this.picRatio;
+      }
+      setTop(arrayOfFloat[0], arrayOfFloat[1]);
+      setBottom(arrayOfFloat[2], arrayOfFloat[3]);
+      setPicRatio(arrayOfFloat[4]);
+    }
+    if ((this.topX >= 0.0F) && (this.topY >= 0.0F) && (this.bottomX >= 0.0F) && (this.bottomY >= 0.0F) && (paramInt2 > 0) && (paramInt3 > 0)) {
+      if (!needRotate(paramInt2, paramInt3))
+      {
+        f2 = this.bottomY - this.topY;
+        f1 = this.picRatio * f2 * paramInt3 / paramInt2;
+        if (this.topX < 0.0F) {
+          this.topX = 0.0F;
+        }
+        if (this.topX + f1 > 1.0F) {
+          this.topX = (1.0F - f1);
+        }
+        if (this.topY < 0.0F)
+        {
+          this.topY = 0.0F;
+          this.bottomY = f2;
+        }
+        if (this.bottomY > 1.0F)
+        {
+          this.bottomY = 1.0F;
+          this.topY = (this.bottomY - f2);
+        }
+        f2 = this.topX;
+        setPositions(AlgoUtils.calPositions(f2, this.bottomY, f2 + f1, this.topY, 1, 1));
+        setTexCords(GlUtil.ORIGIN_TEX_COORDS);
+      }
+      else
+      {
+        f2 = this.bottomY;
+        float f3 = f2 - this.topY;
+        f1 = this.picRatio * f3 * paramInt2 / paramInt3;
+        if (1.0F - f2 < 0.0F)
+        {
+          this.bottomY = 1.0F;
+          this.topY = (this.bottomY - f3);
+        }
+        if (1.0F - this.topY > 1.0F)
+        {
+          this.topY = 0.0F;
+          this.bottomY = f3;
+        }
+        if (this.topX + f1 > 1.0F) {
+          this.topX = (1.0F - f1);
+        }
+        if (this.topX < 0.0F) {
+          this.topX = 0.0F;
+        }
+        f2 = this.bottomY;
+        f3 = this.topX;
+        setPositions(AlgoUtils.calPositions(1.0F - f2, f3 + f1, 1.0F - this.topY, f3, 1, 1));
+        setTexCords(new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F });
       }
     }
-    else if ((this.topX >= 0.0F) && (this.topY >= 0.0F) && (this.bottomX >= 0.0F) && (this.bottomY >= 0.0F) && (paramInt2 > 0) && (paramInt3 > 0))
-    {
-      if (needRotate(paramInt2, paramInt3)) {
-        break label482;
-      }
-      f1 = this.bottomY - this.topY;
-      f2 = this.picRatio * f1 * paramInt3 / paramInt2;
-      if (this.topX < 0.0F) {
-        this.topX = 0.0F;
-      }
-      if (this.topX + f2 > 1.0F) {
-        this.topX = (1.0F - f2);
-      }
-      if (this.topY < 0.0F)
-      {
-        this.topY = 0.0F;
-        this.bottomY = f1;
-      }
-      if (this.bottomY > 1.0F)
-      {
-        this.bottomY = 1.0F;
-        this.topY = (this.bottomY - f1);
-      }
-      setPositions(AlgoUtils.calPositions(this.topX, this.bottomY, f2 + this.topX, this.topY, 1, 1));
-      setTexCords(GlUtil.ORIGIN_TEX_COORDS);
-    }
-    for (;;)
-    {
-      super.beforeRender(paramInt1, paramInt2, paramInt3);
-      return;
-      f1 = this.randomHeight;
-      f2 = this.picRatio * f1 * paramInt2 / paramInt3;
-      arrayOfFloat[0] = ((float)Math.min(Math.max(this.random1 * (1.0D - f2), 0.0D), 1.0D - f2));
-      arrayOfFloat[1] = ((float)Math.min(Math.max(this.random2 * (1.0D - f1), 0.0D), 1.0D - f1));
-      arrayOfFloat[2] = arrayOfFloat[0];
-      arrayOfFloat[3] = (arrayOfFloat[1] + this.randomHeight);
-      arrayOfFloat[4] = this.picRatio;
-      break;
-      label482:
-      f1 = this.bottomY - this.topY;
-      f2 = this.picRatio * f1 * paramInt2 / paramInt3;
-      if (1.0F - this.bottomY < 0.0F)
-      {
-        this.bottomY = 1.0F;
-        this.topY = (this.bottomY - f1);
-      }
-      if (1.0F - this.topY > 1.0F)
-      {
-        this.topY = 0.0F;
-        this.bottomY = f1;
-      }
-      if (this.topX + f2 > 1.0F) {
-        this.topX = (1.0F - f2);
-      }
-      if (this.topX < 0.0F) {
-        this.topX = 0.0F;
-      }
-      setPositions(AlgoUtils.calPositions(1.0F - this.bottomY, f2 + this.topX, 1.0F - this.topY, this.topX, 1, 1));
-      setTexCords(new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F });
-    }
+    super.beforeRender(paramInt1, paramInt2, paramInt3);
   }
   
   public boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)
@@ -177,7 +204,7 @@ public class VideoCameraBlendFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.aifilter.VideoCameraBlendFilter
  * JD-Core Version:    0.7.0.1
  */

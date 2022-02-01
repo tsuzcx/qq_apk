@@ -1,22 +1,27 @@
 package com.tencent.tavcut.session;
 
-import android.util.SparseArray;
-import com.tencent.weseevideo.editor.sticker.StickerController;
-import com.tencent.weseevideo.model.effect.StickerModel;
+import com.tencent.weseevideo.model.MediaModel;
+import com.tencent.weseevideo.model.ModelExtKt;
+import com.tencent.weseevideo.model.effect.GestureModel;
+import com.tencent.weseevideo.model.effect.MediaEffectModel;
+import java.util.List;
 
 class TAVCutImageSession$20
   implements Runnable
 {
-  TAVCutImageSession$20(TAVCutImageSession paramTAVCutImageSession, int paramInt, StickerModel paramStickerModel) {}
+  TAVCutImageSession$20(TAVCutImageSession paramTAVCutImageSession, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    this.this$0.addSticker((StickerController)this.this$0.stickerControllers.get(this.val$index), this.val$stickerModel);
+    MediaModel localMediaModel = (MediaModel)this.this$0.mediaModels.get(this.val$index);
+    localMediaModel.getMediaEffectModel().getGestureModel().reset();
+    ModelExtKt.updateFrameFillMode(localMediaModel, this.val$fillMode);
+    this.this$0.render(this.val$index);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutImageSession.20
  * JD-Core Version:    0.7.0.1
  */

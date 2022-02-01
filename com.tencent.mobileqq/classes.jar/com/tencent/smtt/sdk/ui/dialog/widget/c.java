@@ -35,10 +35,11 @@ public class c
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.g.left = 0.0F;
-    this.g.top = 0.0F;
-    this.g.right = paramInt1;
-    this.g.bottom = paramInt2;
+    RectF localRectF = this.g;
+    localRectF.left = 0.0F;
+    localRectF.top = 0.0F;
+    localRectF.right = paramInt1;
+    localRectF.bottom = paramInt2;
   }
   
   public void draw(Canvas paramCanvas)
@@ -50,15 +51,11 @@ public class c
     Path localPath = this.e;
     RectF localRectF = this.g;
     float f1 = this.a;
-    float f2 = this.a;
-    float f3 = this.b;
-    float f4 = this.b;
-    float f5 = this.d;
-    float f6 = this.d;
-    float f7 = this.c;
-    float f8 = this.c;
+    float f2 = this.b;
+    float f3 = this.d;
+    float f4 = this.c;
     Path.Direction localDirection = Path.Direction.CCW;
-    localPath.addRoundRect(localRectF, new float[] { f1, f2, f3, f4, f5, f6, f7, f8 }, localDirection);
+    localPath.addRoundRect(localRectF, new float[] { f1, f1, f2, f2, f3, f3, f4, f4 }, localDirection);
     this.e.close();
     paramCanvas.drawPath(this.e, this.f);
   }
@@ -82,7 +79,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.ui.dialog.widget.c
  * JD-Core Version:    0.7.0.1
  */

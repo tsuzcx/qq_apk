@@ -24,60 +24,78 @@ final class GameGrowthGuardianManager$2
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       try
       {
         paramJSONObject = (INTERFACE.StJudgeTimingRsp)paramJSONObject.get("response");
-        if (paramJSONObject != null) {
-          QMLog.d("GameGrowthGuardianManager", "onReceived() called with: success = [" + paramBoolean + "], stJudgeTimingRsp = [ next = " + paramJSONObject.nextDuration.get() + ", " + paramJSONObject.loginTraceId.get() + ", " + paramJSONObject.loginInstructions.size() + ", " + paramJSONObject.timingTraceId.get() + ", " + paramJSONObject.timingInstructions.size() + "]");
+        Object localObject;
+        if (paramJSONObject != null)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("onReceived() called with: success = [");
+          ((StringBuilder)localObject).append(paramBoolean);
+          ((StringBuilder)localObject).append("], stJudgeTimingRsp = [ next = ");
+          ((StringBuilder)localObject).append(paramJSONObject.nextDuration.get());
+          ((StringBuilder)localObject).append(", ");
+          ((StringBuilder)localObject).append(paramJSONObject.loginTraceId.get());
+          ((StringBuilder)localObject).append(", ");
+          ((StringBuilder)localObject).append(paramJSONObject.loginInstructions.size());
+          ((StringBuilder)localObject).append(", ");
+          ((StringBuilder)localObject).append(paramJSONObject.timingTraceId.get());
+          ((StringBuilder)localObject).append(", ");
+          ((StringBuilder)localObject).append(paramJSONObject.timingInstructions.size());
+          ((StringBuilder)localObject).append("]");
+          QMLog.d("GameGrowthGuardianManager", ((StringBuilder)localObject).toString());
         }
         if ((this.val$miniAppInfo.isEngineTypeMiniApp()) && (!GameWnsUtils.enableInstructionsForMiniApp()))
         {
           QMLog.e("GameGrowthGuardianManager", "disable Instructions for miniApp!!");
           return;
         }
-        if (paramJSONObject == null) {
-          break label244;
-        }
-        if (!paramJSONObject.loginInstructions.isEmpty())
+        if (paramJSONObject != null)
         {
-          Iterator localIterator = paramJSONObject.loginInstructions.get().iterator();
-          while (localIterator.hasNext()) {
-            ((INTERFACE.GuardInstruction)localIterator.next()).type.set(7);
+          if (!paramJSONObject.loginInstructions.isEmpty())
+          {
+            localObject = paramJSONObject.loginInstructions.get().iterator();
+            while (((Iterator)localObject).hasNext()) {
+              ((INTERFACE.GuardInstruction)((Iterator)localObject).next()).type.set(7);
+            }
+            paramJSONObject.timingInstructions.get().addAll(0, paramJSONObject.loginInstructions.get());
           }
-          paramJSONObject.timingInstructions.get().addAll(0, paramJSONObject.loginInstructions.get());
+          GameGrowthGuardianManager.access$202(paramJSONObject.extInfo);
+        }
+        if (!GameGrowthGuardianManager.access$300())
+        {
+          QMLog.e("GameGrowthGuardianManager", "not in foreground, not allowed to show dialog or send heartbeat");
+          return;
+        }
+        GameGrowthGuardianManager.GuardInstructionDialog.tryBuildAndShow(this.val$context, this.val$miniAppInfo, paramJSONObject, 0);
+        if ((this.val$judgeTimingRequestFactType == 11) || (this.val$judgeTimingRequestFactType == 12))
+        {
+          int j = 300;
+          int i = j;
+          if (paramJSONObject != null)
+          {
+            i = j;
+            if (paramJSONObject.nextDuration.get() > 0) {
+              i = paramJSONObject.nextDuration.get();
+            }
+          }
+          GameGrowthGuardianManager.access$402(new GameGrowthGuardianManager.2.1(this));
+          ThreadManager.getUIHandler().postDelayed(GameGrowthGuardianManager.access$400(), TimeUnit.SECONDS.toMillis(i));
+          return;
         }
       }
       catch (Exception paramJSONObject)
       {
         QMLog.e("GameGrowthGuardianManager", "JudgeTiming error ", paramJSONObject);
-        return;
-      }
-      GameGrowthGuardianManager.access$202(paramJSONObject.extInfo);
-      label244:
-      if (!GameGrowthGuardianManager.access$300())
-      {
-        QMLog.e("GameGrowthGuardianManager", "not in foreground, not allowed to show dialog or send heartbeat");
-        return;
-      }
-      GameGrowthGuardianManager.GuardInstructionDialog.tryBuildAndShow(this.val$context, this.val$miniAppInfo, paramJSONObject, 0);
-      if ((this.val$judgeTimingRequestFactType == 11) || (this.val$judgeTimingRequestFactType == 12))
-      {
-        if ((paramJSONObject != null) && (paramJSONObject.nextDuration.get() > 0)) {}
-        for (int i = paramJSONObject.nextDuration.get();; i = 300)
-        {
-          GameGrowthGuardianManager.access$402(new GameGrowthGuardianManager.2.1(this));
-          ThreadManager.getUIHandler().postDelayed(GameGrowthGuardianManager.access$400(), TimeUnit.SECONDS.toMillis(i));
-          return;
-        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.GameGrowthGuardianManager.2
  * JD-Core Version:    0.7.0.1
  */

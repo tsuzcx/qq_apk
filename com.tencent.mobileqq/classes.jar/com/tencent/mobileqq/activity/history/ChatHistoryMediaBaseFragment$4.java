@@ -11,14 +11,14 @@ class ChatHistoryMediaBaseFragment$4
   public boolean a(boolean paramBoolean)
   {
     if (paramBoolean) {
-      WeiyunAIOUtils.a(this.a.getActivity());
+      WeiyunAIOUtils.a(this.a.getBaseActivity());
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment.4
  * JD-Core Version:    0.7.0.1
  */

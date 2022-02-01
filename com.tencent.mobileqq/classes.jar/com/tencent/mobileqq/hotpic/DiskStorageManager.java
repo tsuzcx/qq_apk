@@ -21,10 +21,12 @@ public class DiskStorageManager
   
   public DiskStorageManager(int paramInt)
   {
-    if (paramInt <= 0) {
-      throw new IllegalArgumentException("Max count must be positive number!");
+    if (paramInt > 0)
+    {
+      this.jdField_a_of_type_Int = paramInt;
+      return;
     }
-    this.jdField_a_of_type_Int = paramInt;
+    throw new IllegalArgumentException("Max count must be positive number!");
   }
   
   private void a(List<File> paramList)
@@ -36,27 +38,25 @@ public class DiskStorageManager
       return;
     }
     paramList = paramList.iterator();
-    label31:
-    File localFile;
-    if (paramList.hasNext())
+    while (paramList.hasNext())
     {
-      localFile = (File)paramList.next();
-      if (a(localFile, 0L, i)) {
-        break label112;
+      File localFile = (File)paramList.next();
+      if (!a(localFile, 0L, i))
+      {
+        localFile.length();
+        if (localFile.delete())
+        {
+          i -= 1;
+        }
+        else
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("delte file ");
+          localStringBuilder.append(localFile.getName());
+          localStringBuilder.append(" fail");
+          Log.d("DiskStorageManager", localStringBuilder.toString());
+        }
       }
-      localFile.length();
-      if (!localFile.delete()) {
-        break label79;
-      }
-      i -= 1;
-    }
-    label79:
-    label112:
-    for (;;)
-    {
-      break label31;
-      break;
-      Log.d("DiskStorageManager", "delte file " + localFile.getName() + " fail");
     }
   }
   
@@ -77,7 +77,7 @@ public class DiskStorageManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.DiskStorageManager
  * JD-Core Version:    0.7.0.1
  */

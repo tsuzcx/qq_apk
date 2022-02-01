@@ -1,6 +1,7 @@
 package com.tencent.gamecenter.common.util;
 
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
@@ -14,31 +15,38 @@ class ScreenshotManager$3
   
   public void run()
   {
-    QLog.i("ScreenshotManager", 1, "addMaskAsync mRemoveCall=" + ScreenshotManager.a(this.this$0));
-    if ((ScreenshotManager.a(this.this$0) != null) && (!ScreenshotManager.a(this.this$0))) {}
-    try
-    {
-      if (ScreenshotManager.a(this.this$0) == null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("addMaskAsync mRemoveCall=");
+    ((StringBuilder)localObject).append(ScreenshotManager.a(this.this$0));
+    QLog.i("ScreenshotManager", 1, ((StringBuilder)localObject).toString());
+    if ((ScreenshotManager.a(this.this$0) != null) && (!ScreenshotManager.a(this.this$0))) {
+      try
       {
-        ScreenshotManager.a(this.this$0, new ImageView(this.a.getContext()));
-        ScreenshotManager.a(this.this$0).setScaleType(ImageView.ScaleType.FIT_XY);
+        if (ScreenshotManager.a(this.this$0) == null)
+        {
+          ScreenshotManager.a(this.this$0, new ImageView(this.a.getContext()));
+          ScreenshotManager.a(this.this$0).setScaleType(ImageView.ScaleType.FIT_XY);
+        }
+        ScreenshotManager.a(this.this$0).setImageBitmap(ScreenshotManager.a(this.this$0));
+        this.this$0.a();
+        localObject = new FrameLayout.LayoutParams(-1, -1);
+        ((ViewGroup)this.a.getParent()).addView(ScreenshotManager.a(this.this$0), (ViewGroup.LayoutParams)localObject);
+        ScreenshotManager.a(this.this$0).setVisibility(0);
+        return;
       }
-      ScreenshotManager.a(this.this$0).setImageBitmap(ScreenshotManager.a(this.this$0));
-      this.this$0.a();
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
-      ((ViewGroup)this.a.getParent()).addView(ScreenshotManager.a(this.this$0), localLayoutParams);
-      ScreenshotManager.a(this.this$0).setVisibility(0);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ScreenshotManager", 1, "addMaskAsync e=" + localThrowable.toString());
+      catch (Throwable localThrowable)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("addMaskAsync e=");
+        localStringBuilder.append(localThrowable.toString());
+        QLog.e("ScreenshotManager", 1, localStringBuilder.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gamecenter.common.util.ScreenshotManager.3
  * JD-Core Version:    0.7.0.1
  */

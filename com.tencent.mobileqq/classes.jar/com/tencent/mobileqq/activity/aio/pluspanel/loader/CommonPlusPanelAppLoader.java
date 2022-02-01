@@ -23,23 +23,24 @@ public class CommonPlusPanelAppLoader
     localPluginData.jdField_a_of_type_JavaLangString = paramPlusPanelAppInfo.getAppName();
     localPluginData.e = paramPlusPanelAppInfo.actionType;
     localPluginData.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPlusPanelAppInfo);
-    if (localPluginData.jdField_b_of_type_Int == 204) {
+    if (localPluginData.jdField_b_of_type_Int == 204)
+    {
       if (!ShortVideoUtils.isHotPicConfiginitied) {
         ShortVideoUtils.isHotPicConfiginitied = true;
       }
     }
-    for (;;)
-    {
-      localPluginData.jdField_b_of_type_JavaLangString = (paramPlusPanelAppInfo.getAppName() + HardCodeUtil.a(2131708294));
-      return localPluginData;
-      if (localPluginData.jdField_b_of_type_Int == 209) {
-        localPluginData.jdField_a_of_type_Boolean = AioPanelMiniAppManager.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b();
-      } else if (paramPlusPanelAppInfo.getAppID() == 101761547) {
-        localPluginData.jdField_a_of_type_Boolean = ListenTogetherUtils.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "listen_together_c2c_aio_red_dot_show", true, false);
-      } else {
-        localPluginData.jdField_a_of_type_Boolean = false;
-      }
+    else if (localPluginData.jdField_b_of_type_Int == 209) {
+      localPluginData.jdField_a_of_type_Boolean = AioPanelMiniAppManager.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b();
+    } else if (paramPlusPanelAppInfo.getAppID() == 101761547) {
+      localPluginData.jdField_a_of_type_Boolean = ListenTogetherUtils.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "listen_together_c2c_aio_red_dot_show", true, false);
+    } else {
+      localPluginData.jdField_a_of_type_Boolean = false;
     }
+    paramBaseChatPie = new StringBuilder();
+    paramBaseChatPie.append(paramPlusPanelAppInfo.getAppName());
+    paramBaseChatPie.append(HardCodeUtil.a(2131708303));
+    localPluginData.jdField_b_of_type_JavaLangString = paramBaseChatPie.toString();
+    return localPluginData;
   }
   
   public void a(BaseChatPie paramBaseChatPie)
@@ -53,7 +54,7 @@ public class CommonPlusPanelAppLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.loader.CommonPlusPanelAppLoader
  * JD-Core Version:    0.7.0.1
  */

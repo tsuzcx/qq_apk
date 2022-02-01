@@ -50,12 +50,15 @@ class TavMixerEffect
   @Nullable
   public String effectId()
   {
-    return "MixEffect" + Integer.toHexString(hashCode());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MixEffect");
+    localStringBuilder.append(Integer.toHexString(hashCode()));
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavMixerEffect
  * JD-Core Version:    0.7.0.1
  */

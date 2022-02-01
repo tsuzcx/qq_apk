@@ -31,18 +31,19 @@ public class JefsClass$CancelableRunnable
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.jdField_a_of_type_Boolean)
+    {
       JefsClass.a(JefsClass.getInstance(), this.jdField_a_of_type_ComTencentMobileqqBigbrotherWeakOuterRefRunnable);
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("TeleScreen|JefsClass", 2, "canceled");
+    if (QLog.isColorLevel()) {
+      QLog.d("TeleScreen|JefsClass", 2, "canceled");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable
  * JD-Core Version:    0.7.0.1
  */

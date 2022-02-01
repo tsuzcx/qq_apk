@@ -10,6 +10,8 @@ public abstract class ChatHistoryViewBase
   
   public abstract View a();
   
+  public void a(int paramInt) {}
+  
   public void a(long paramLong) {}
   
   public void b() {}
@@ -29,9 +31,7 @@ public abstract class ChatHistoryViewBase
   
   public abstract void f();
   
-  public void j_(int paramInt) {}
-  
-  protected void l()
+  protected void k()
   {
     this.i = false;
     new Handler().postDelayed(new ChatHistoryViewBase.1(this), 1500L);
@@ -39,7 +39,7 @@ public abstract class ChatHistoryViewBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryViewBase
  * JD-Core Version:    0.7.0.1
  */

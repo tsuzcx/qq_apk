@@ -24,50 +24,68 @@ class MiniAppUtils$8$1
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("MiniAppUtils", 1, "doStartMiniApp, useUserApp request is " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("doStartMiniApp, useUserApp request is ");
+      ((StringBuilder)localObject1).append(paramBoolean);
+      QLog.w("MiniAppUtils", 1, ((StringBuilder)localObject1).toString());
     }
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
     if (paramBoolean)
     {
-      String str = "retain_confirm_" + this.this$0.val$appConfig.config.appId + "_" + localAppRuntime.getAccount() + "_" + this.val$refer + "_" + this.val$via;
-      StorageUtil.getPreference().edit().putString(str, paramJSONObject.toString()).apply();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("retain_confirm_");
+      ((StringBuilder)localObject2).append(this.this$0.val$appConfig.config.appId);
+      ((StringBuilder)localObject2).append("_");
+      ((StringBuilder)localObject2).append(((AppRuntime)localObject1).getAccount());
+      ((StringBuilder)localObject2).append("_");
+      ((StringBuilder)localObject2).append(this.val$refer);
+      ((StringBuilder)localObject2).append("_");
+      ((StringBuilder)localObject2).append(this.val$via);
+      localObject2 = ((StringBuilder)localObject2).toString();
+      StorageUtil.getPreference().edit().putString((String)localObject2, paramJSONObject.toString()).apply();
     }
-    if (!this.val$isFromPullDownEntry) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (!(localAppRuntime instanceof QQAppInterface));
-        paramBoolean = MiniAppConfProcessor.e();
-        if (QLog.isColorLevel()) {
-          QLog.d("MiniAppUtils", 2, "updatePullDownEntryListData, check needClearPublicAccountRedDot: " + paramBoolean);
-        }
-        if (paramBoolean)
-        {
-          paramJSONObject = (AppletsHandler)((QQAppInterface)localAppRuntime).getBusinessHandler(BusinessHandlerFactory.APPLET_PUSH_HANDLER);
-          if (paramJSONObject != null) {
-            paramJSONObject.a(this.this$0.val$appConfig.config.appId);
-          }
-        }
-        if (!MiniAppConfProcessor.c()) {
-          break;
-        }
-        paramJSONObject = (DesktopDataManager)localAppRuntime.getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER);
-      } while (paramJSONObject == null);
-      paramJSONObject.removeRedDotData(this.this$0.val$appConfig.config.appId);
+    if (!this.val$isFromPullDownEntry) {
       return;
-      paramJSONObject = (MiniAppUserAppInfoListManager)localAppRuntime.getManager(QQManagerFactory.MINI_APP_ITEM_MANAGER);
-    } while (paramJSONObject == null);
-    paramJSONObject.removeRedDotData(this.this$0.val$appConfig.config.appId);
+    }
+    if ((localObject1 instanceof QQAppInterface))
+    {
+      paramBoolean = MiniAppConfProcessor.e();
+      if (QLog.isColorLevel())
+      {
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("updatePullDownEntryListData, check needClearPublicAccountRedDot: ");
+        paramJSONObject.append(paramBoolean);
+        QLog.d("MiniAppUtils", 2, paramJSONObject.toString());
+      }
+      if (paramBoolean)
+      {
+        paramJSONObject = (AppletsHandler)((QQAppInterface)localObject1).getBusinessHandler(BusinessHandlerFactory.APPLET_PUSH_HANDLER);
+        if (paramJSONObject != null) {
+          paramJSONObject.a(this.this$0.val$appConfig.config.appId);
+        }
+      }
+      if (MiniAppConfProcessor.c())
+      {
+        paramJSONObject = (DesktopDataManager)((AppRuntime)localObject1).getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER);
+        if (paramJSONObject != null) {
+          paramJSONObject.removeRedDotData(this.this$0.val$appConfig.config.appId);
+        }
+      }
+      else
+      {
+        paramJSONObject = (MiniAppUserAppInfoListManager)((AppRuntime)localObject1).getManager(QQManagerFactory.MINI_APP_ITEM_MANAGER);
+        if (paramJSONObject != null) {
+          paramJSONObject.removeRedDotData(this.this$0.val$appConfig.config.appId);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUtils.8.1
  * JD-Core Version:    0.7.0.1
  */

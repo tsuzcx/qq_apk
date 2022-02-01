@@ -35,15 +35,20 @@ public class ScenesRecReportData
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ScenesRecReportData", 2, "convert error:" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("convert error:");
+        localStringBuilder.append(localException);
+        QLog.e("ScenesRecReportData", 2, localStringBuilder.toString());
+      }
     }
     return localJSONObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.scenesrecommend.ScenesRecReportData
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,10 @@ public class UIThreadUtils
   
   public static void assertOnUiThread()
   {
-    if (Looper.getMainLooper().getThread() != Thread.currentThread()) {
-      throw new RuntimeException("must run on ui thread!");
+    if (Looper.getMainLooper().getThread() == Thread.currentThread()) {
+      return;
     }
+    throw new RuntimeException("must run on ui thread!");
   }
   
   public static boolean isOnUiThread()
@@ -26,7 +27,7 @@ public class UIThreadUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.utils.UIThreadUtils
  * JD-Core Version:    0.7.0.1
  */

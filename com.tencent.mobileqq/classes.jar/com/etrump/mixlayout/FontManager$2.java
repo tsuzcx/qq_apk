@@ -9,14 +9,14 @@ class FontManager$2
   
   public void run()
   {
-    this.this$0.a(true);
-    VasUtils.a(this.this$0.a);
+    FontManager.a(this.this$0, true);
+    VasUtils.a(FontManager.a(this.this$0));
     FontManager.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.FontManager.2
  * JD-Core Version:    0.7.0.1
  */

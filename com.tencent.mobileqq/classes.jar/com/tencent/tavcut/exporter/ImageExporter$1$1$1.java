@@ -1,6 +1,7 @@
 package com.tencent.tavcut.exporter;
 
 import android.graphics.Bitmap;
+import android.graphics.PointF;
 import android.media.ExifInterface;
 import android.support.annotation.Nullable;
 import com.tencent.tavcut.util.BitmapUtil;
@@ -12,6 +13,7 @@ import com.tencent.weseevideo.composition.image.WSImageRender.ImageRenderCallbac
 import com.tencent.weseevideo.editor.sticker.StickerController;
 import java.io.IOException;
 import java.util.List;
+import java.util.List<Landroid.graphics.PointF;>;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingDeque;
@@ -22,91 +24,100 @@ class ImageExporter$1$1$1
 {
   ImageExporter$1$1$1(ImageExporter.1.1 param1, VideoRenderChainManager paramVideoRenderChainManager, WSImageRender paramWSImageRender) {}
   
-  public void onCompletion(@Nullable Bitmap paramBitmap)
+  public void onCompletion(@Nullable Bitmap paramBitmap, @Nullable List<PointF> paramList)
   {
-    ImageExporter.access$500(this.this$2.this$1.this$0).countDown();
-    DurationUtil.end("imageRender.render");
-    int k = 0;
-    int i;
+    DurationUtil.start("imageRender.inRender");
     if (!BitmapUtil.isValidBitmap(paramBitmap))
     {
-      this.this$2.val$errorMsgs.add("image render result is an invalid bitmap! output path = " + this.this$2.val$outputPath);
-      i = k;
-      if ((i != 0) && (this.this$2.this$1.val$callback != null)) {
-        this.this$2.this$1.val$callback.onImageExport(this.this$2.val$outputPath);
-      }
-      if (this.this$2.val$resultCount.incrementAndGet() == ImageExporter.access$000(this.this$2.this$1.this$0).size())
-      {
-        Logger.d(ImageExporter.access$600(this.this$2.this$1.this$0), "cost time: =========== " + (System.currentTimeMillis() - this.this$2.val$beginTime));
-        if (this.this$2.this$1.val$callback != null)
-        {
-          if (!this.this$2.val$errorMsgs.isEmpty()) {
-            break label518;
-          }
-          this.this$2.this$1.val$callback.onExportComplete();
-        }
-      }
+      paramBitmap = this.this$2.val$errorMsgs;
+      paramList = new StringBuilder();
+      paramList.append("image render result is an invalid bitmap! output path = ");
+      paramList.append(this.this$2.val$outputPath);
+      paramBitmap.add(paramList.toString());
     }
-    for (;;)
+    else
     {
-      for (;;)
+      if (ImageExporter.access$600(this.this$2.this$1.this$0) != null) {
+        i = ImageExporter.access$600(this.this$2.this$1.this$0).getMaxExportSize();
+      } else {
+        i = -1;
+      }
+      if (i != -1)
       {
-        this.this$2.this$1.val$executorService.shutdown();
-        this.val$videoRenderChainManager.release();
-        this.this$2.val$stickerController.destroy();
-        this.val$imageRender.release();
-        return;
-        if (ImageExporter.access$200(this.this$2.this$1.this$0) != null) {}
-        Bitmap localBitmap2;
-        for (int j = ImageExporter.access$200(this.this$2.this$1.this$0).getMaxExportSize();; j = -1)
+        DurationUtil.start("scaleBitmap");
+        Object localObject = BitmapUtil.scaleBitmap(paramBitmap, i);
+        DurationUtil.end("scaleBitmap");
+        if (!BitmapUtil.isValidBitmap((Bitmap)localObject))
         {
-          i = k;
-          if (j == -1) {
-            break;
-          }
-          DurationUtil.start("scaleBitmap");
-          localBitmap2 = BitmapUtil.scaleBitmap(paramBitmap, j);
-          DurationUtil.end("scaleBitmap");
-          if (BitmapUtil.isValidBitmap(localBitmap2)) {
-            break label379;
-          }
-          this.this$2.val$errorMsgs.add("scale bitmap failed! output path = " + this.this$2.val$outputPath);
-          i = k;
-          break;
+          paramBitmap = this.this$2.val$errorMsgs;
+          paramList = new StringBuilder();
+          paramList.append("scale bitmap failed! output path = ");
+          paramList.append(this.this$2.val$outputPath);
+          paramBitmap.add(paramList.toString());
         }
-        label379:
-        Bitmap localBitmap1 = paramBitmap;
-        if (localBitmap2 != paramBitmap) {
-          localBitmap1 = localBitmap2;
-        }
-        try
+        else
         {
-          DurationUtil.start("saveBitmap");
-          if (!BitmapUtil.saveBitmap(localBitmap1, ImageExporter.access$200(this.this$2.this$1.this$0).getFormat(), ImageExporter.access$200(this.this$2.this$1.this$0).getQuality(), this.this$2.val$outputPath, new ExifInterface(this.this$2.val$sourcePath)))
+          paramList = paramBitmap;
+          if (localObject != paramBitmap) {
+            paramList = (List<PointF>)localObject;
+          }
+          try
           {
-            this.this$2.val$errorMsgs.add("image save failed! output path = " + this.this$2.val$outputPath);
-            i = k;
+            DurationUtil.start("saveBitmap");
+            if (!BitmapUtil.saveBitmap(paramList, ImageExporter.access$600(this.this$2.this$1.this$0).getFormat(), ImageExporter.access$600(this.this$2.this$1.this$0).getQuality(), this.this$2.val$outputPath, new ExifInterface(this.this$2.val$sourcePath)))
+            {
+              paramBitmap = this.this$2.val$errorMsgs;
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("image save failed! output path = ");
+              ((StringBuilder)localObject).append(this.this$2.val$outputPath);
+              paramBitmap.add(((StringBuilder)localObject).toString());
+              paramList.recycle();
+              break label327;
+            }
+            DurationUtil.end("saveBitmap");
           }
-        }
-        catch (IOException paramBitmap)
-        {
-          Logger.e(paramBitmap);
+          catch (IOException paramBitmap)
+          {
+            Logger.e(paramBitmap);
+          }
+          paramList.recycle();
+          i = 1;
+          break label329;
         }
       }
-      for (;;)
-      {
-        i = 1;
-        break;
-        DurationUtil.end("saveBitmap");
-      }
-      label518:
-      this.this$2.this$1.val$callback.onFailed(this.this$2.val$errorMsgs);
     }
+    label327:
+    int i = 0;
+    label329:
+    if ((i != 0) && (this.this$2.this$1.val$callback != null)) {
+      this.this$2.this$1.val$callback.onImageExport(this.this$2.val$outputPath);
+    }
+    if (this.this$2.val$resultCount.incrementAndGet() == ImageExporter.access$000(this.this$2.this$1.this$0).size())
+    {
+      paramBitmap = ImageExporter.access$500(this.this$2.this$1.this$0);
+      paramList = new StringBuilder();
+      paramList.append("cost time: =========== ");
+      paramList.append(System.currentTimeMillis() - this.this$2.val$beginTime);
+      Logger.d(paramBitmap, paramList.toString());
+      if (this.this$2.this$1.val$callback != null) {
+        if (this.this$2.val$errorMsgs.isEmpty()) {
+          this.this$2.this$1.val$callback.onExportComplete();
+        } else {
+          this.this$2.this$1.val$callback.onFailed(this.this$2.val$errorMsgs);
+        }
+      }
+      this.this$2.this$1.val$executorService.shutdown();
+    }
+    this.val$videoRenderChainManager.release();
+    this.this$2.val$stickerController.destroy();
+    this.val$imageRender.release();
+    ImageExporter.access$900(this.this$2.this$1.this$0).countDown();
+    DurationUtil.end("imageRender.inRender");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.exporter.ImageExporter.1.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -28,19 +28,21 @@ public class JsonWriter
       REPLACEMENT_CHARS[i] = String.format("\\u%04x", new Object[] { Integer.valueOf(i) });
       i += 1;
     }
-    REPLACEMENT_CHARS[34] = "\\\"";
-    REPLACEMENT_CHARS[92] = "\\\\";
-    REPLACEMENT_CHARS[9] = "\\t";
-    REPLACEMENT_CHARS[8] = "\\b";
-    REPLACEMENT_CHARS[10] = "\\n";
-    REPLACEMENT_CHARS[13] = "\\r";
-    REPLACEMENT_CHARS[12] = "\\f";
-    HTML_SAFE_REPLACEMENT_CHARS = (String[])REPLACEMENT_CHARS.clone();
-    HTML_SAFE_REPLACEMENT_CHARS[60] = "\\u003c";
-    HTML_SAFE_REPLACEMENT_CHARS[62] = "\\u003e";
-    HTML_SAFE_REPLACEMENT_CHARS[38] = "\\u0026";
-    HTML_SAFE_REPLACEMENT_CHARS[61] = "\\u003d";
-    HTML_SAFE_REPLACEMENT_CHARS[39] = "\\u0027";
+    String[] arrayOfString = REPLACEMENT_CHARS;
+    arrayOfString[34] = "\\\"";
+    arrayOfString[92] = "\\\\";
+    arrayOfString[9] = "\\t";
+    arrayOfString[8] = "\\b";
+    arrayOfString[10] = "\\n";
+    arrayOfString[13] = "\\r";
+    arrayOfString[12] = "\\f";
+    HTML_SAFE_REPLACEMENT_CHARS = (String[])arrayOfString.clone();
+    arrayOfString = HTML_SAFE_REPLACEMENT_CHARS;
+    arrayOfString[60] = "\\u003c";
+    arrayOfString[62] = "\\u003e";
+    arrayOfString[38] = "\\u0026";
+    arrayOfString[61] = "\\u003d";
+    arrayOfString[39] = "\\u0027";
   }
   
   public JsonWriter(Writer paramWriter)
@@ -48,10 +50,12 @@ public class JsonWriter
     push(6);
     this.separator = ":";
     this.serializeNulls = true;
-    if (paramWriter == null) {
-      throw new NullPointerException("out == null");
+    if (paramWriter != null)
+    {
+      this.out = paramWriter;
+      return;
     }
-    this.out = paramWriter;
+    throw new NullPointerException("out == null");
   }
   
   private void beforeName()
@@ -59,42 +63,51 @@ public class JsonWriter
     int i = peek();
     if (i == 5) {
       this.out.write(44);
+    } else {
+      if (i != 3) {
+        break label37;
+      }
     }
-    while (i == 3)
-    {
-      newline();
-      replaceTop(4);
-      return;
-    }
+    newline();
+    replaceTop(4);
+    return;
+    label37:
     throw new IllegalStateException("Nesting problem.");
   }
   
   private void beforeValue()
   {
-    switch (peek())
+    int i = peek();
+    if (i != 1)
     {
-    case 3: 
-    case 5: 
-    default: 
-      throw new IllegalStateException("Nesting problem.");
-    case 7: 
-      if (!this.lenient) {
-        throw new IllegalStateException("JSON must have only one top-level value.");
+      if (i != 2)
+      {
+        if (i != 4)
+        {
+          if (i != 6) {
+            if (i == 7)
+            {
+              if (!this.lenient) {
+                throw new IllegalStateException("JSON must have only one top-level value.");
+              }
+            }
+            else {
+              throw new IllegalStateException("Nesting problem.");
+            }
+          }
+          replaceTop(7);
+          return;
+        }
+        this.out.append(this.separator);
+        replaceTop(5);
+        return;
       }
-    case 6: 
-      replaceTop(7);
-      return;
-    case 1: 
-      replaceTop(2);
-      newline();
-      return;
-    case 2: 
       this.out.append(',');
       newline();
       return;
     }
-    this.out.append(this.separator);
-    replaceTop(5);
+    replaceTop(2);
+    newline();
   }
   
   private JsonWriter close(int paramInt1, int paramInt2, String paramString)
@@ -103,31 +116,33 @@ public class JsonWriter
     if ((i != paramInt2) && (i != paramInt1)) {
       throw new IllegalStateException("Nesting problem.");
     }
-    if (this.deferredName != null) {
-      throw new IllegalStateException("Dangling name: " + this.deferredName);
+    if (this.deferredName == null)
+    {
+      this.stackSize -= 1;
+      if (i == paramInt2) {
+        newline();
+      }
+      this.out.write(paramString);
+      return this;
     }
-    this.stackSize -= 1;
-    if (i == paramInt2) {
-      newline();
-    }
-    this.out.write(paramString);
-    return this;
+    paramString = new StringBuilder();
+    paramString.append("Dangling name: ");
+    paramString.append(this.deferredName);
+    throw new IllegalStateException(paramString.toString());
   }
   
   private void newline()
   {
-    if (this.indent == null) {}
-    for (;;)
-    {
+    if (this.indent == null) {
       return;
-      this.out.write("\n");
-      int i = 1;
-      int j = this.stackSize;
-      while (i < j)
-      {
-        this.out.write(this.indent);
-        i += 1;
-      }
+    }
+    this.out.write("\n");
+    int j = this.stackSize;
+    int i = 1;
+    while (i < j)
+    {
+      this.out.write(this.indent);
+      i += 1;
     }
   }
   
@@ -141,24 +156,27 @@ public class JsonWriter
   
   private int peek()
   {
-    if (this.stackSize == 0) {
-      throw new IllegalStateException("JsonWriter is closed.");
+    int i = this.stackSize;
+    if (i != 0) {
+      return this.stack[(i - 1)];
     }
-    return this.stack[(this.stackSize - 1)];
+    throw new IllegalStateException("JsonWriter is closed.");
   }
   
   private void push(int paramInt)
   {
-    if (this.stackSize == this.stack.length)
-    {
-      arrayOfInt = new int[this.stackSize * 2];
-      System.arraycopy(this.stack, 0, arrayOfInt, 0, this.stackSize);
-      this.stack = arrayOfInt;
-    }
-    int[] arrayOfInt = this.stack;
     int i = this.stackSize;
+    int[] arrayOfInt1 = this.stack;
+    if (i == arrayOfInt1.length)
+    {
+      int[] arrayOfInt2 = new int[i * 2];
+      System.arraycopy(arrayOfInt1, 0, arrayOfInt2, 0, i);
+      this.stack = arrayOfInt2;
+    }
+    arrayOfInt1 = this.stack;
+    i = this.stackSize;
     this.stackSize = (i + 1);
-    arrayOfInt[i] = paramInt;
+    arrayOfInt1[i] = paramInt;
   }
   
   private void replaceTop(int paramInt)
@@ -168,52 +186,50 @@ public class JsonWriter
   
   private void string(String paramString)
   {
-    int j = 0;
-    if (this.htmlSafe) {}
-    int m;
-    int i;
-    int n;
+    String[] arrayOfString;
+    if (this.htmlSafe) {
+      arrayOfString = HTML_SAFE_REPLACEMENT_CHARS;
+    } else {
+      arrayOfString = REPLACEMENT_CHARS;
+    }
+    this.out.write("\"");
+    int m = paramString.length();
+    int i = 0;
     int k;
-    for (String[] arrayOfString = HTML_SAFE_REPLACEMENT_CHARS;; arrayOfString = REPLACEMENT_CHARS)
+    for (int j = 0; i < m; j = k)
     {
-      this.out.write("\"");
-      m = paramString.length();
-      i = 0;
-      for (;;)
+      int n = paramString.charAt(i);
+      String str1;
+      if (n < 128)
       {
-        if (i >= m) {
-          break label153;
-        }
-        n = paramString.charAt(i);
-        if (n >= 128) {
-          break;
-        }
         String str2 = arrayOfString[n];
         str1 = str2;
-        if (str2 != null) {
-          break label101;
+        if (str2 == null)
+        {
+          k = j;
+          break label143;
         }
-        k = j;
-        i += 1;
-        j = k;
       }
-    }
-    if (n == 8232) {}
-    for (String str1 = "\\u2028";; str1 = "\\u2029")
-    {
-      label101:
+      else if (n == 8232)
+      {
+        str1 = "\\u2028";
+      }
+      else
+      {
+        k = j;
+        if (n != 8233) {
+          break label143;
+        }
+        str1 = "\\u2029";
+      }
       if (j < i) {
         this.out.write(paramString, j, i - j);
       }
       this.out.write(str1);
       k = i + 1;
-      break;
-      k = j;
-      if (n != 8233) {
-        break;
-      }
+      label143:
+      i += 1;
     }
-    label153:
     if (j < m) {
       this.out.write(paramString, j, m - j);
     }
@@ -246,10 +262,12 @@ public class JsonWriter
   {
     this.out.close();
     int i = this.stackSize;
-    if ((i > 1) || ((i == 1) && (this.stack[(i - 1)] != 7))) {
-      throw new IOException("Incomplete document");
+    if ((i <= 1) && ((i != 1) || (this.stack[(i - 1)] == 7)))
+    {
+      this.stackSize = 0;
+      return;
     }
-    this.stackSize = 0;
+    throw new IOException("Incomplete document");
   }
   
   public JsonWriter endArray()
@@ -264,10 +282,12 @@ public class JsonWriter
   
   public void flush()
   {
-    if (this.stackSize == 0) {
-      throw new IllegalStateException("JsonWriter is closed.");
+    if (this.stackSize != 0)
+    {
+      this.out.flush();
+      return;
     }
-    this.out.flush();
+    throw new IllegalStateException("JsonWriter is closed.");
   }
   
   public final boolean getSerializeNulls()
@@ -298,34 +318,37 @@ public class JsonWriter
   
   public JsonWriter name(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("name == null");
-    }
-    if (this.deferredName != null) {
+    if (paramString != null)
+    {
+      if (this.deferredName == null)
+      {
+        if (this.stackSize != 0)
+        {
+          this.deferredName = paramString;
+          return this;
+        }
+        throw new IllegalStateException("JsonWriter is closed.");
+      }
       throw new IllegalStateException();
     }
-    if (this.stackSize == 0) {
-      throw new IllegalStateException("JsonWriter is closed.");
-    }
-    this.deferredName = paramString;
-    return this;
+    throw new NullPointerException("name == null");
   }
   
   public JsonWriter nullValue()
   {
-    if (this.deferredName != null)
-    {
-      if (this.serializeNulls) {
+    if (this.deferredName != null) {
+      if (this.serializeNulls)
+      {
         writeDeferredName();
       }
+      else
+      {
+        this.deferredName = null;
+        return this;
+      }
     }
-    else
-    {
-      beforeValue();
-      this.out.write("null");
-      return this;
-    }
-    this.deferredName = null;
+    beforeValue();
+    this.out.write("null");
     return this;
   }
   
@@ -359,8 +382,12 @@ public class JsonWriter
   public JsonWriter value(double paramDouble)
   {
     writeDeferredName();
-    if ((!this.lenient) && ((Double.isNaN(paramDouble)) || (Double.isInfinite(paramDouble)))) {
-      throw new IllegalArgumentException("Numeric values must be finite, but was " + paramDouble);
+    if ((!this.lenient) && ((Double.isNaN(paramDouble)) || (Double.isInfinite(paramDouble))))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Numeric values must be finite, but was ");
+      localStringBuilder.append(paramDouble);
+      throw new IllegalArgumentException(localStringBuilder.toString());
     }
     beforeValue();
     this.out.append(Double.toString(paramDouble));
@@ -383,12 +410,13 @@ public class JsonWriter
     writeDeferredName();
     beforeValue();
     Writer localWriter = this.out;
-    if (paramBoolean.booleanValue()) {}
-    for (paramBoolean = "true";; paramBoolean = "false")
-    {
-      localWriter.write(paramBoolean);
-      return this;
+    if (paramBoolean.booleanValue()) {
+      paramBoolean = "true";
+    } else {
+      paramBoolean = "false";
     }
+    localWriter.write(paramBoolean);
+    return this;
   }
   
   public JsonWriter value(Number paramNumber)
@@ -397,12 +425,16 @@ public class JsonWriter
       return nullValue();
     }
     writeDeferredName();
-    String str = paramNumber.toString();
-    if ((!this.lenient) && ((str.equals("-Infinity")) || (str.equals("Infinity")) || (str.equals("NaN")))) {
-      throw new IllegalArgumentException("Numeric values must be finite, but was " + paramNumber);
+    Object localObject = paramNumber.toString();
+    if ((!this.lenient) && ((((String)localObject).equals("-Infinity")) || (((String)localObject).equals("Infinity")) || (((String)localObject).equals("NaN"))))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Numeric values must be finite, but was ");
+      ((StringBuilder)localObject).append(paramNumber);
+      throw new IllegalArgumentException(((StringBuilder)localObject).toString());
     }
     beforeValue();
-    this.out.append(str);
+    this.out.append((CharSequence)localObject);
     return this;
   }
   
@@ -422,17 +454,19 @@ public class JsonWriter
     writeDeferredName();
     beforeValue();
     Writer localWriter = this.out;
-    if (paramBoolean) {}
-    for (String str = "true";; str = "false")
-    {
-      localWriter.write(str);
-      return this;
+    String str;
+    if (paramBoolean) {
+      str = "true";
+    } else {
+      str = "false";
     }
+    localWriter.write(str);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.stream.JsonWriter
  * JD-Core Version:    0.7.0.1
  */

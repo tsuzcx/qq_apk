@@ -37,7 +37,7 @@ public class VideoFilterManager$GetFilterListRequest
     return StoryApi.a("StorySvc.video_filter_list");
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqGetFilterList localReqGetFilterList = new qqstory_service.ReqGetFilterList();
     localReqGetFilterList.count.set(this.c);
@@ -47,7 +47,7 @@ public class VideoFilterManager$GetFilterListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.filter.VideoFilterManager.GetFilterListRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -36,17 +36,17 @@ public abstract class RecyclerView$Adapter<VH extends RecyclerView.ViewHolder>
     {
       TraceCompat.beginSection("RV CreateView");
       paramViewGroup = onCreateViewHolder(paramViewGroup, paramInt);
-      if (paramViewGroup.itemView.getParent() != null) {
-        throw new IllegalStateException("ViewHolder views must not be attached when created. Ensure that you are not passing 'true' to the attachToRoot parameter of LayoutInflater.inflate(..., boolean attachToRoot)");
+      if (paramViewGroup.itemView.getParent() == null)
+      {
+        paramViewGroup.mItemViewType = paramInt;
+        return paramViewGroup;
       }
+      throw new IllegalStateException("ViewHolder views must not be attached when created. Ensure that you are not passing 'true' to the attachToRoot parameter of LayoutInflater.inflate(..., boolean attachToRoot)");
     }
     finally
     {
       TraceCompat.endSection();
     }
-    paramViewGroup.mItemViewType = paramInt;
-    TraceCompat.endSection();
-    return paramViewGroup;
   }
   
   public abstract int getItemCount();
@@ -153,10 +153,12 @@ public abstract class RecyclerView$Adapter<VH extends RecyclerView.ViewHolder>
   
   public void setHasStableIds(boolean paramBoolean)
   {
-    if (hasObservers()) {
-      throw new IllegalStateException("Cannot change whether this adapter has stable IDs while the adapter has registered observers.");
+    if (!hasObservers())
+    {
+      this.mHasStableIds = paramBoolean;
+      return;
     }
-    this.mHasStableIds = paramBoolean;
+    throw new IllegalStateException("Cannot change whether this adapter has stable IDs while the adapter has registered observers.");
   }
   
   public void unregisterAdapterDataObserver(@NonNull RecyclerView.AdapterDataObserver paramAdapterDataObserver)
@@ -166,7 +168,7 @@ public abstract class RecyclerView$Adapter<VH extends RecyclerView.ViewHolder>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.RecyclerView.Adapter
  * JD-Core Version:    0.7.0.1
  */

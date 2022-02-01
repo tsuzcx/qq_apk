@@ -1,38 +1,20 @@
 package com.tencent.mobileqq.vashealth;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.superplayer.api.ISuperPlayer;
-import java.util.HashMap;
+import android.widget.ProgressBar;
 
 class HealthBusinessPlugin$8
-  implements View.OnClickListener
+  implements Runnable
 {
-  HealthBusinessPlugin$8(HealthBusinessPlugin paramHealthBusinessPlugin, String paramString, Context paramContext) {}
+  HealthBusinessPlugin$8(HealthBusinessPlugin paramHealthBusinessPlugin) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).isOutputMute())
-    {
-      ((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).setOutputMute(false);
-      ((ImageView)paramView).setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846735));
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      ((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).setOutputMute(true);
-      ((ImageView)paramView).setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846734));
-    }
+    this.this$0.a.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.HealthBusinessPlugin.8
  * JD-Core Version:    0.7.0.1
  */

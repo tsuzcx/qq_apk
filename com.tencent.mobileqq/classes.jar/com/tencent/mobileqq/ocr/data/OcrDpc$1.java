@@ -11,14 +11,18 @@ final class OcrDpc$1
     if (paramBoolean) {
       OcrDpc.a();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.ocr.dpc", 2, "onDpcPullFinished, hasChanged=" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDpcPullFinished, hasChanged=");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("Q.ocr.dpc", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.data.OcrDpc.1
  * JD-Core Version:    0.7.0.1
  */

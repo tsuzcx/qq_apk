@@ -7,8 +7,8 @@ import android.media.AudioManager;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.MsgRevokeListener;
 import com.tencent.mobileqq.activity.aio.photo.AIOGalleryMsgRevokeMgr;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryMsgRevokeMgr.MsgRevokeListener;
 import com.tencent.mobileqq.activity.photo.VideoPlayMedioInfo;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.drawable.EmptyDrawable;
@@ -16,9 +16,9 @@ import com.tencent.mobileqq.mediafocus.MediaFocusManager;
 import com.tencent.mobileqq.mediafocus.MediaFocusManager.OnMediaFocusChangeListener;
 import com.tencent.mobileqq.qqfloatingwindow.FloatingScreenParams;
 import com.tencent.mobileqq.qqfloatingwindow.FloatingScreenParams.FloatingBuilder;
+import com.tencent.mobileqq.qqfloatingwindow.FloatingScreenReporter;
+import com.tencent.mobileqq.qqfloatingwindow.IQQFloatingPermission;
 import com.tencent.mobileqq.qqfloatingwindow.IQQFloatingWindow;
-import com.tencent.mobileqq.qqfloatingwindow.impl.FloatingScreenPermission;
-import com.tencent.mobileqq.qqfloatingwindow.impl.FloatingScreenReporter;
 import com.tencent.mobileqq.qqfloatingwindow.listener.IVideoOuterStatusListener;
 import com.tencent.mobileqq.qqvideoplatform.api.QQVideoViewFactory;
 import com.tencent.mobileqq.qqvideoplatform.api.SceneID;
@@ -34,7 +34,7 @@ import java.net.URL;
 import mqq.os.MqqHandler;
 
 public class TVKVideoController
-  implements AIOGalleryMsgRevokeMgr.MsgRevokeListener
+  implements MsgRevokeListener
 {
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
@@ -55,59 +55,59 @@ public class TVKVideoController
   
   private VideoPlayParam a(VideoPlayMedioInfo paramVideoPlayMedioInfo)
   {
-    boolean bool = true;
     this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam = new VideoPlayParam();
-    this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam.mIsMute = false;
-    this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam.mSceneId = 116;
-    this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam.mSceneName = SceneID.a(116);
-    this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam.mNeedPlayProgress = true;
+    VideoPlayParam localVideoPlayParam = this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam;
+    localVideoPlayParam.mIsMute = false;
+    localVideoPlayParam.mSceneId = 116;
+    localVideoPlayParam.mSceneName = SceneID.a(116);
+    localVideoPlayParam = this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam;
+    localVideoPlayParam.mNeedPlayProgress = true;
     if (paramVideoPlayMedioInfo != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam.mStartPlayPosMs = paramVideoPlayMedioInfo.e;
-      VideoPlayParam localVideoPlayParam = this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam;
-      if (paramVideoPlayMedioInfo.jdField_a_of_type_Boolean) {
-        break label116;
+      localVideoPlayParam.mStartPlayPosMs = paramVideoPlayMedioInfo.e;
+      this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam.mIsLocal = (true ^ paramVideoPlayMedioInfo.jdField_a_of_type_Boolean);
+      if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam.mIsLocal)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam.mVideoPath = paramVideoPlayMedioInfo.jdField_a_of_type_JavaLangString;
       }
-      localVideoPlayParam.mIsLocal = bool;
-      if (!this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam.mIsLocal) {
-        break label121;
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam.mUrls = paramVideoPlayMedioInfo.jdField_a_of_type_ArrayOfJavaLangString;
+        this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam.mSavePath = paramVideoPlayMedioInfo.jdField_a_of_type_JavaLangString;
       }
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam.mVideoPath = paramVideoPlayMedioInfo.jdField_a_of_type_JavaLangString;
     }
-    for (;;)
-    {
-      a(this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam);
-      return this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam;
-      label116:
-      bool = false;
-      break;
-      label121:
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam.mUrls = paramVideoPlayMedioInfo.jdField_a_of_type_ArrayOfJavaLangString;
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam.mSavePath = paramVideoPlayMedioInfo.jdField_a_of_type_JavaLangString;
-    }
+    a(this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam);
+    return this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam;
   }
   
   private void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TVKVideoController", 2, "onSeek === progress : " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onSeek === progress : ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("TVKVideoController", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.seekTo(paramInt);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView;
+    if (localObject != null) {
+      ((BaseVideoView)localObject).seekTo(paramInt);
     }
   }
   
   private void a(int paramInt1, int paramInt2)
   {
-    int i = 401;
     if (paramInt1 == 1) {
-      i = 402;
+      paramInt1 = 402;
+    } else {
+      paramInt1 = 401;
     }
     if (paramInt2 == 14011001) {
-      i = 403;
+      paramInt1 = 403;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIVideoOuterStatusListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIVideoOuterStatusListener.onVideoError(i);
+    IVideoOuterStatusListener localIVideoOuterStatusListener = this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIVideoOuterStatusListener;
+    if (localIVideoOuterStatusListener != null) {
+      localIVideoOuterStatusListener.onVideoError(paramInt1);
     }
   }
   
@@ -123,8 +123,9 @@ public class TVKVideoController
       if (QLog.isColorLevel()) {
         QLog.d("TVKVideoController", 2, "onPlay ===");
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView != null) {
-        this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.play();
+      BaseVideoView localBaseVideoView = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView;
+      if (localBaseVideoView != null) {
+        localBaseVideoView.play();
       }
       this.jdField_a_of_type_Int = 4;
     }
@@ -136,8 +137,9 @@ public class TVKVideoController
     if (QLog.isColorLevel()) {
       QLog.d("TVKVideoController", 2, "onPause ===");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.pause();
+    BaseVideoView localBaseVideoView = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView;
+    if (localBaseVideoView != null) {
+      localBaseVideoView.pause();
     }
     this.jdField_a_of_type_Int = 6;
   }
@@ -145,7 +147,8 @@ public class TVKVideoController
   private void e()
   {
     MediaFocusManager.a().a(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusManager$OnMediaFocusChangeListener);
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
       ((AudioManager)((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getSystemService("audio")).abandonAudioFocus(null);
     }
   }
@@ -167,13 +170,21 @@ public class TVKVideoController
   
   private void g()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIVideoOuterStatusListener != null) && (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView != null))
+    if (this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIVideoOuterStatusListener != null)
     {
-      long l = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.getVideoDurationMs();
-      if (QLog.isColorLevel()) {
-        QLog.d("TVKVideoController", 2, "mVideoView.getVideoDurationMs = " + l);
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView;
+      if (localObject != null)
+      {
+        long l = ((BaseVideoView)localObject).getVideoDurationMs();
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("mVideoView.getVideoDurationMs = ");
+          ((StringBuilder)localObject).append(l);
+          QLog.d("TVKVideoController", 2, ((StringBuilder)localObject).toString());
+        }
+        this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIVideoOuterStatusListener.onVideoStart((int)l);
       }
-      this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIVideoOuterStatusListener.onVideoStart((int)l);
     }
   }
   
@@ -200,8 +211,9 @@ public class TVKVideoController
     }
     this.jdField_a_of_type_Long = paramLong1;
     this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo = paramVideoPlayMedioInfo;
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.e = paramLong2;
-    this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam = a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo);
+    paramVideoPlayMedioInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo;
+    paramVideoPlayMedioInfo.e = paramLong2;
+    this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam = a(paramVideoPlayMedioInfo);
     this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView = ((BaseVideoView)QQVideoViewFactory.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 0L, this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam, null));
     AIOGalleryMsgRevokeMgr.a().a(this);
   }
@@ -210,33 +222,39 @@ public class TVKVideoController
   {
     this.b = paramInt1;
     this.c = paramInt2;
-    Object localObject;
-    if (FileUtils.b(paramString))
+    if (FileUtils.fileExistsAndNotEmpty(paramString))
     {
       paramString = ShortVideoUtils.getThumbUrl(paramString);
       if (paramString != null)
       {
         paramString = paramString.toString();
-        if (!TextUtils.isEmpty(paramString)) {
-          localObject = new EmptyDrawable(Color.rgb(214, 214, 214), paramInt1, paramInt2);
+        if (!TextUtils.isEmpty(paramString))
+        {
+          Object localObject = new EmptyDrawable(Color.rgb(214, 214, 214), paramInt1, paramInt2);
+          try
+          {
+            localObject = URLDrawable.getDrawable(paramString, (Drawable)localObject, (Drawable)localObject);
+            if (((URLDrawable)localObject).getStatus() != 1) {
+              ((URLDrawable)localObject).downloadImediatly();
+            }
+            if ((localObject instanceof URLDrawable))
+            {
+              this.jdField_a_of_type_ComTencentImageURLDrawable = ((URLDrawable)localObject);
+              return;
+            }
+          }
+          catch (Exception localException)
+          {
+            if (QLog.isColorLevel())
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("initCover():  getDrawable Exception, coverUrl=");
+              localStringBuilder.append(paramString);
+              QLog.e("TVKVideoController", 2, localStringBuilder.toString(), localException);
+            }
+          }
         }
       }
-    }
-    try
-    {
-      localObject = URLDrawable.getDrawable(paramString, (Drawable)localObject, (Drawable)localObject);
-      if (((URLDrawable)localObject).getStatus() != 1) {
-        ((URLDrawable)localObject).downloadImediatly();
-      }
-      if ((localObject instanceof URLDrawable)) {
-        this.jdField_a_of_type_ComTencentImageURLDrawable = ((URLDrawable)localObject);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("TVKVideoController", 2, "initCover():  getDrawable Exception, coverUrl=" + paramString, localException);
     }
   }
   
@@ -245,22 +263,24 @@ public class TVKVideoController
     if (QLog.isColorLevel()) {
       QLog.d("TVKVideoController", 2, new Object[] { "initTVKVideoController with path:", paramString });
     }
-    File localFile = new File(paramString);
-    if (localFile.exists()) {}
-    for (long l = localFile.length();; l = 0L)
-    {
-      this.jdField_a_of_type_Long = paramLong1;
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo = new VideoPlayMedioInfo();
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.b = l;
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.d = l;
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.e = paramLong2;
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam = a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo);
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView = ((BaseVideoView)QQVideoViewFactory.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 0L, this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam, null));
-      AIOGalleryMsgRevokeMgr.a().a(this);
-      return;
+    Object localObject = new File(paramString);
+    long l;
+    if (((File)localObject).exists()) {
+      l = ((File)localObject).length();
+    } else {
+      l = 0L;
     }
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo = new VideoPlayMedioInfo();
+    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo;
+    ((VideoPlayMedioInfo)localObject).jdField_a_of_type_Boolean = false;
+    ((VideoPlayMedioInfo)localObject).jdField_a_of_type_JavaLangString = paramString;
+    ((VideoPlayMedioInfo)localObject).b = l;
+    ((VideoPlayMedioInfo)localObject).d = l;
+    ((VideoPlayMedioInfo)localObject).e = paramLong2;
+    this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam = a((VideoPlayMedioInfo)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView = ((BaseVideoView)QQVideoViewFactory.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 0L, this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam, null));
+    AIOGalleryMsgRevokeMgr.a().a(this);
   }
   
   public boolean a(int paramInt1, int paramInt2, int paramInt3)
@@ -269,37 +289,41 @@ public class TVKVideoController
     if ((paramInt2 > 0) && (paramInt3 > 0))
     {
       f1 = paramInt2 / paramInt3;
-      if (f1 <= 1.0F) {
-        break label185;
-      }
-      f1 = 1.0F / f1;
     }
-    label175:
-    label185:
-    for (;;)
+    else
     {
-      if (paramInt2 > paramInt3) {}
-      for (boolean bool = true;; bool = false)
+      f2 = 0.5625F;
+      f1 = f2;
+      if (QLog.isColorLevel())
       {
-        FloatingScreenParams localFloatingScreenParams = new FloatingScreenParams.FloatingBuilder().setIsHorizontal(bool).setRatio(f1).setCanMove(true).setCanZoom(true).build();
-        if (((IQQFloatingWindow)QRoute.api(IQQFloatingWindow.class)).enterFloatingScreen(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView, localFloatingScreenParams, FloatingScreenReporter.a(paramInt1)) != 1) {
-          break label175;
-        }
-        FloatingScreenPermission.enterPermissionRequestDialog((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-        return false;
-        float f2 = 0.5625F;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("videoWidth or videoHeight Wrong. videoWidth = ");
+        ((StringBuilder)localObject).append(paramInt2);
+        ((StringBuilder)localObject).append(" videoHeight = ");
+        ((StringBuilder)localObject).append(paramInt3);
+        QLog.d("TVKVideoController", 2, ((StringBuilder)localObject).toString());
         f1 = f2;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("TVKVideoController", 2, "videoWidth or videoHeight Wrong. videoWidth = " + paramInt2 + " videoHeight = " + paramInt3);
-        f1 = f2;
-        break;
       }
-      a();
-      f();
-      return true;
     }
+    float f2 = f1;
+    if (f1 > 1.0F) {
+      f2 = 1.0F / f1;
+    }
+    boolean bool;
+    if (paramInt2 > paramInt3) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    Object localObject = new FloatingScreenParams.FloatingBuilder().setIsHorizontal(bool).setRatio(f2).setCanMove(true).setCanZoom(true).build();
+    if (((IQQFloatingWindow)QRoute.api(IQQFloatingWindow.class)).enterFloatingScreen(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView, (FloatingScreenParams)localObject, FloatingScreenReporter.a(paramInt1)) == 1)
+    {
+      ((IQQFloatingPermission)QRoute.api(IQQFloatingPermission.class)).enterPermissionRequestDialog((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+      return false;
+    }
+    a();
+    f();
+    return true;
   }
   
   public void b()
@@ -307,14 +331,16 @@ public class TVKVideoController
     if (QLog.isColorLevel()) {
       QLog.d("TVKVideoController", 2, "destory!");
     }
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
       ((AudioManager)((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getSystemService("audio")).abandonAudioFocus(null);
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo = null;
     this.jdField_a_of_type_JavaLangRefWeakReference = null;
     this.jdField_a_of_type_ComTencentImageURLDrawable = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.releasePlayer(false);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView;
+    if (localObject != null) {
+      ((BaseVideoView)localObject).releasePlayer(false);
     }
     this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView = null;
     MediaFocusManager.a().a(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusManager$OnMediaFocusChangeListener);
@@ -323,7 +349,7 @@ public class TVKVideoController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qqfloatingscreen.videoview.TVKVideoController
  * JD-Core Version:    0.7.0.1
  */

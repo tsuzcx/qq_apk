@@ -3,17 +3,15 @@ package com.tencent.widget;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.qqui.R.styleable;
-import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -53,143 +51,213 @@ public class QFormMultiLineItem
   
   public static Drawable getSelectorByType(Resources paramResources, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return paramResources.getDrawable(2130839575);
-    case 0: 
-      return paramResources.getDrawable(2130839575);
-    case 1: 
-      return paramResources.getDrawable(2130839591);
-    case 2: 
-      return paramResources.getDrawable(2130839585);
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3) {
+            return paramResources.getDrawable(2130839433);
+          }
+          return paramResources.getDrawable(2130839440);
+        }
+        return paramResources.getDrawable(2130839443);
+      }
+      return paramResources.getDrawable(2130839449);
     }
-    return paramResources.getDrawable(2130839582);
+    return paramResources.getDrawable(2130839433);
   }
   
+  /* Error */
   private void initTypedArray(AttributeSet paramAttributeSet)
   {
-    paramAttributeSet = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.Y);
-    try
-    {
-      if (this.mLineNum < 0) {
-        this.mLineNum = paramAttributeSet.getInt(R.styleable.A, 2);
-      }
-      this.mImageWidth = paramAttributeSet.getDimensionPixelSize(R.styleable.y, 0);
-      this.mImageHeight = paramAttributeSet.getDimensionPixelSize(R.styleable.x, 0);
-      this.minHeight = paramAttributeSet.getDimensionPixelSize(R.styleable.B, 0);
-      int i = getResources().getDimensionPixelSize(2131296774);
-      int j = getResources().getDimensionPixelSize(2131296776);
-      int k = getResources().getDimensionPixelSize(2131296772);
-      this.mMarginLeft = paramAttributeSet.getDimensionPixelSize(R.styleable.z, i);
-      this.mMarginRight = paramAttributeSet.getDimensionPixelSize(R.styleable.D, j);
-      this.mMarginBetweenPictureAndText = paramAttributeSet.getDimensionPixelSize(R.styleable.C, k);
-      this.mBgType = paramAttributeSet.getInteger(R.styleable.w, 0);
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("FormMultiLineItem", 2, localException.toString());
-      }
-      return;
-    }
-    finally
-    {
-      paramAttributeSet.recycle();
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: invokevirtual 76	com/tencent/widget/QFormMultiLineItem:getContext	()Landroid/content/Context;
+    //   4: aload_1
+    //   5: getstatic 82	com/tencent/mobileqq/qqui/R$styleable:aw	[I
+    //   8: invokevirtual 88	android/content/Context:obtainStyledAttributes	(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
+    //   11: astore_1
+    //   12: aload_0
+    //   13: getfield 34	com/tencent/widget/QFormMultiLineItem:mLineNum	I
+    //   16: ifge +15 -> 31
+    //   19: aload_0
+    //   20: aload_1
+    //   21: getstatic 91	com/tencent/mobileqq/qqui/R$styleable:al	I
+    //   24: iconst_2
+    //   25: invokevirtual 97	android/content/res/TypedArray:getInt	(II)I
+    //   28: putfield 34	com/tencent/widget/QFormMultiLineItem:mLineNum	I
+    //   31: aload_0
+    //   32: aload_1
+    //   33: getstatic 100	com/tencent/mobileqq/qqui/R$styleable:aj	I
+    //   36: iconst_0
+    //   37: invokevirtual 103	android/content/res/TypedArray:getDimensionPixelSize	(II)I
+    //   40: putfield 44	com/tencent/widget/QFormMultiLineItem:mImageWidth	I
+    //   43: aload_0
+    //   44: aload_1
+    //   45: getstatic 106	com/tencent/mobileqq/qqui/R$styleable:ai	I
+    //   48: iconst_0
+    //   49: invokevirtual 103	android/content/res/TypedArray:getDimensionPixelSize	(II)I
+    //   52: putfield 42	com/tencent/widget/QFormMultiLineItem:mImageHeight	I
+    //   55: aload_0
+    //   56: aload_1
+    //   57: getstatic 109	com/tencent/mobileqq/qqui/R$styleable:am	I
+    //   60: iconst_0
+    //   61: invokevirtual 103	android/content/res/TypedArray:getDimensionPixelSize	(II)I
+    //   64: putfield 40	com/tencent/widget/QFormMultiLineItem:minHeight	I
+    //   67: aload_0
+    //   68: invokevirtual 113	com/tencent/widget/QFormMultiLineItem:getResources	()Landroid/content/res/Resources;
+    //   71: ldc 114
+    //   73: invokevirtual 117	android/content/res/Resources:getDimensionPixelSize	(I)I
+    //   76: istore_2
+    //   77: aload_0
+    //   78: invokevirtual 113	com/tencent/widget/QFormMultiLineItem:getResources	()Landroid/content/res/Resources;
+    //   81: ldc 118
+    //   83: invokevirtual 117	android/content/res/Resources:getDimensionPixelSize	(I)I
+    //   86: istore_3
+    //   87: aload_0
+    //   88: invokevirtual 113	com/tencent/widget/QFormMultiLineItem:getResources	()Landroid/content/res/Resources;
+    //   91: ldc 119
+    //   93: invokevirtual 117	android/content/res/Resources:getDimensionPixelSize	(I)I
+    //   96: istore 4
+    //   98: aload_0
+    //   99: aload_1
+    //   100: getstatic 122	com/tencent/mobileqq/qqui/R$styleable:ak	I
+    //   103: iload_2
+    //   104: invokevirtual 103	android/content/res/TypedArray:getDimensionPixelSize	(II)I
+    //   107: putfield 46	com/tencent/widget/QFormMultiLineItem:mMarginLeft	I
+    //   110: aload_0
+    //   111: aload_1
+    //   112: getstatic 125	com/tencent/mobileqq/qqui/R$styleable:ao	I
+    //   115: iload_3
+    //   116: invokevirtual 103	android/content/res/TypedArray:getDimensionPixelSize	(II)I
+    //   119: putfield 48	com/tencent/widget/QFormMultiLineItem:mMarginRight	I
+    //   122: aload_0
+    //   123: aload_1
+    //   124: getstatic 128	com/tencent/mobileqq/qqui/R$styleable:an	I
+    //   127: iload 4
+    //   129: invokevirtual 103	android/content/res/TypedArray:getDimensionPixelSize	(II)I
+    //   132: putfield 50	com/tencent/widget/QFormMultiLineItem:mMarginBetweenPictureAndText	I
+    //   135: aload_0
+    //   136: aload_1
+    //   137: getstatic 131	com/tencent/mobileqq/qqui/R$styleable:ah	I
+    //   140: iconst_0
+    //   141: invokevirtual 134	android/content/res/TypedArray:getInteger	(II)I
+    //   144: putfield 136	com/tencent/widget/QFormMultiLineItem:mBgType	I
+    //   147: goto +27 -> 174
+    //   150: astore 5
+    //   152: goto +27 -> 179
+    //   155: astore 5
+    //   157: invokestatic 142	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   160: ifeq +14 -> 174
+    //   163: ldc 144
+    //   165: iconst_2
+    //   166: aload 5
+    //   168: invokevirtual 148	java/lang/Exception:toString	()Ljava/lang/String;
+    //   171: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   174: aload_1
+    //   175: invokevirtual 155	android/content/res/TypedArray:recycle	()V
+    //   178: return
+    //   179: aload_1
+    //   180: invokevirtual 155	android/content/res/TypedArray:recycle	()V
+    //   183: aload 5
+    //   185: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	186	0	this	QFormMultiLineItem
+    //   0	186	1	paramAttributeSet	AttributeSet
+    //   76	28	2	i	int
+    //   86	30	3	j	int
+    //   96	32	4	k	int
+    //   150	1	5	localObject	Object
+    //   155	29	5	localException	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   12	31	150	finally
+    //   31	147	150	finally
+    //   157	174	150	finally
+    //   12	31	155	java/lang/Exception
+    //   31	147	155	java/lang/Exception
   }
   
   private void initView()
   {
-    if ((this.mLineNum < 2) && (this.mLineNum > 0)) {
+    int i = this.mLineNum;
+    if ((i < 2) && (i > 0)) {
       throw new RuntimeException("mLineNum < 2, recommend to use FormSimpleItem");
     }
-    int m = getResources().getDimensionPixelSize(2131296784);
-    int j = getResources().getDimensionPixelSize(2131296793);
-    int k = getResources().getDimensionPixelSize(2131296782);
-    int i;
-    QMultiImageTextView localQMultiImageTextView;
-    RelativeLayout.LayoutParams localLayoutParams;
-    if (this.mLineNum == 2)
+    int m = getResources().getDimensionPixelSize(2131296764);
+    int j = getResources().getDimensionPixelSize(2131296773);
+    int k = getResources().getDimensionPixelSize(2131296762);
+    if (this.mLineNum == 2) {
+      i = getResources().getDimensionPixelSize(2131296747);
+    } else {
+      i = getResources().getDimensionPixelSize(2131296763);
+    }
+    this.mMarginLine = k;
+    setBackgroundDrawable(getSelectorByType(getResources(), this.mBgType));
+    setMinimumHeight(this.minHeight);
+    setPadding(this.mMarginLeft, 0, this.mMarginRight, 0);
+    this.mHeaderView = new ImageView(getContext());
+    this.mHeaderView.setId(2131367165);
+    this.mHeaderView.setFocusable(false);
+    this.mHeaderView.setClickable(false);
+    this.mHeaderView.setScaleType(ImageView.ScaleType.FIT_XY);
+    addView(this.mHeaderView);
+    this.mLines = new ArrayList();
+    QMultiImageTextView localQMultiImageTextView = new QMultiImageTextView(getContext());
+    localQMultiImageTextView.setId(2131367163);
+    localQMultiImageTextView.setTextSize(0, m);
+    localQMultiImageTextView.setTextColor(getResources().getColor(2131167124));
+    localQMultiImageTextView.setSingleLine(true);
+    localQMultiImageTextView.setDuplicateParentStateEnabled(true);
+    localQMultiImageTextView.setEllipsize(TextUtils.TruncateAt.END);
+    localQMultiImageTextView.setText(HardCodeUtil.a(2131704824));
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams.addRule(1, 2131367165);
+    localLayoutParams.bottomMargin = i;
+    localLayoutParams.leftMargin = this.mMarginBetweenPictureAndText;
+    this.mLines.add(localQMultiImageTextView);
+    addView(localQMultiImageTextView, localLayoutParams);
+    i = 1;
+    while (i < this.mLineNum)
     {
-      i = getResources().getDimensionPixelSize(2131296767);
-      this.mMarginLine = k;
-      setBackgroundDrawable(getSelectorByType(getResources(), this.mBgType));
-      setMinimumHeight(this.minHeight);
-      setPadding(this.mMarginLeft, 0, this.mMarginRight, 0);
-      this.mHeaderView = new ImageView(getContext());
-      this.mHeaderView.setId(2131367383);
-      this.mHeaderView.setFocusable(false);
-      this.mHeaderView.setClickable(false);
-      this.mHeaderView.setScaleType(ImageView.ScaleType.FIT_XY);
-      addView(this.mHeaderView);
-      this.mLines = new ArrayList();
-      localQMultiImageTextView = new QMultiImageTextView(getContext());
-      localQMultiImageTextView.setId(2131367381);
-      localQMultiImageTextView.setTextSize(0, m);
-      localQMultiImageTextView.setTextColor(getResources().getColor(2131167100));
-      localQMultiImageTextView.setSingleLine(true);
-      localQMultiImageTextView.setDuplicateParentStateEnabled(true);
-      localQMultiImageTextView.setEllipsize(TextUtils.TruncateAt.END);
-      localQMultiImageTextView.setText(HardCodeUtil.a(2131704748));
-      localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.addRule(1, 2131367383);
-      localLayoutParams.bottomMargin = i;
-      localLayoutParams.leftMargin = this.mMarginBetweenPictureAndText;
-      this.mLines.add(localQMultiImageTextView);
-      addView(localQMultiImageTextView, localLayoutParams);
-      i = 1;
-      label314:
-      if (i >= this.mLineNum) {
-        return;
-      }
       localQMultiImageTextView = new QMultiImageTextView(getContext());
       localQMultiImageTextView.setTextSize(0, j);
-      localQMultiImageTextView.setTextColor(getResources().getColor(2131167119));
+      localQMultiImageTextView.setTextColor(getResources().getColor(2131167144));
       localQMultiImageTextView.setSingleLine(true);
       localQMultiImageTextView.setDuplicateParentStateEnabled(true);
       localQMultiImageTextView.setEllipsize(TextUtils.TruncateAt.END);
-      localQMultiImageTextView.setText(HardCodeUtil.a(2131704750));
+      localQMultiImageTextView.setText(HardCodeUtil.a(2131704826));
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.leftMargin = this.mMarginBetweenPictureAndText;
-      localLayoutParams.addRule(1, 2131367383);
-      if (i != 1) {
-        break label487;
+      localLayoutParams.addRule(1, 2131367165);
+      if (i == 1) {
+        localQMultiImageTextView.setId(2131367169);
+      } else if (i == 2) {
+        localQMultiImageTextView.setId(2131367170);
       }
-      localQMultiImageTextView.setId(2131367387);
-    }
-    for (;;)
-    {
       if (i != this.mLineNum - 1) {
         localLayoutParams.bottomMargin = k;
       }
       addView(localQMultiImageTextView, localLayoutParams);
       this.mLines.add(localQMultiImageTextView);
       i += 1;
-      break label314;
-      i = getResources().getDimensionPixelSize(2131296783);
-      break;
-      label487:
-      if (i == 2) {
-        localQMultiImageTextView.setId(2131367388);
-      }
     }
   }
   
   private void setLineLayout(int paramInt1, int paramInt2, int paramInt3)
   {
-    paramInt3 = 0;
-    paramInt2 = paramInt1;
-    paramInt1 = paramInt3;
-    while (paramInt1 < this.mLineNum)
+    paramInt2 = 0;
+    while (paramInt2 < this.mLineNum)
     {
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((QMultiImageTextView)this.mLines.get(paramInt1)).getLayoutParams();
-      localLayoutParams.topMargin = paramInt2;
+      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((QMultiImageTextView)this.mLines.get(paramInt2)).getLayoutParams();
+      localLayoutParams.topMargin = paramInt1;
       localLayoutParams.leftMargin = this.mMarginBetweenPictureAndText;
-      paramInt2 += ((QMultiImageTextView)this.mLines.get(paramInt1)).getMeasuredHeight();
-      ((QMultiImageTextView)this.mLines.get(paramInt1)).setLayoutParams(localLayoutParams);
-      paramInt1 += 1;
+      paramInt1 += ((QMultiImageTextView)this.mLines.get(paramInt2)).getMeasuredHeight();
+      ((QMultiImageTextView)this.mLines.get(paramInt2)).setLayoutParams(localLayoutParams);
+      paramInt2 += 1;
     }
   }
   
@@ -200,75 +268,56 @@ public class QFormMultiLineItem
   
   public QMultiImageTextView getLineAt(int paramInt)
   {
-    if ((paramInt >= this.mLineNum) || (paramInt < 0)) {
-      throw new RuntimeException("Qui MultiLineItem array index out of range");
+    if ((paramInt < this.mLineNum) && (paramInt >= 0)) {
+      return (QMultiImageTextView)this.mLines.get(paramInt);
     }
-    return (QMultiImageTextView)this.mLines.get(paramInt);
+    throw new RuntimeException("Qui MultiLineItem array index out of range");
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
-    if (this.mImageHeight == 0)
-    {
+    if (this.mImageHeight == 0) {
       if (this.mLineNum == 2) {
-        this.mImageHeight = getResources().getDimensionPixelSize(2131296766);
+        this.mImageHeight = getResources().getDimensionPixelSize(2131296746);
+      } else {
+        this.mImageHeight = getResources().getDimensionPixelSize(2131296761);
       }
     }
-    else
-    {
-      if (this.mImageWidth == 0)
-      {
-        if (this.mLineNum != 2) {
-          break label226;
-        }
-        this.mImageWidth = getResources().getDimensionPixelSize(2131296766);
-      }
-      label58:
-      if (this.minHeight == 0) {
-        if (this.mLineNum != 2) {
-          break label243;
-        }
+    if (this.mImageWidth == 0) {
+      if (this.mLineNum == 2) {
+        this.mImageWidth = getResources().getDimensionPixelSize(2131296746);
+      } else {
+        this.mImageWidth = getResources().getDimensionPixelSize(2131296761);
       }
     }
-    RelativeLayout.LayoutParams localLayoutParams;
-    int j;
-    int i;
-    label226:
-    label243:
-    for (this.minHeight = getResources().getDimensionPixelSize(2131296765);; this.minHeight = getResources().getDimensionPixelSize(2131296780))
-    {
-      setMinimumHeight(this.minHeight);
-      setPadding(this.mMarginLeft, 0, this.mMarginRight, 0);
-      localLayoutParams = new RelativeLayout.LayoutParams(this.mImageWidth, this.mImageHeight);
-      this.mHeaderView.setLayoutParams(localLayoutParams);
-      localLayoutParams.addRule(9, -1);
-      localLayoutParams.addRule(15, -1);
-      j = 0;
-      i = 0;
-      while (j < this.mLineNum)
-      {
-        ((QMultiImageTextView)this.mLines.get(j)).measure(paramInt1, paramInt2);
-        i += ((QMultiImageTextView)this.mLines.get(j)).getMeasuredHeight();
-        j += 1;
+    if (this.minHeight == 0) {
+      if (this.mLineNum == 2) {
+        this.minHeight = getResources().getDimensionPixelSize(2131296745);
+      } else {
+        this.minHeight = getResources().getDimensionPixelSize(2131296760);
       }
-      this.mImageHeight = getResources().getDimensionPixelSize(2131296781);
-      break;
-      this.mImageWidth = getResources().getDimensionPixelSize(2131296781);
-      break label58;
+    }
+    setMinimumHeight(this.minHeight);
+    int i = this.mMarginLeft;
+    int k = this.mMarginRight;
+    int j = 0;
+    setPadding(i, 0, k, 0);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(this.mImageWidth, this.mImageHeight);
+    this.mHeaderView.setLayoutParams(localLayoutParams);
+    localLayoutParams.addRule(9, -1);
+    localLayoutParams.addRule(15, -1);
+    i = 0;
+    while (j < this.mLineNum)
+    {
+      ((QMultiImageTextView)this.mLines.get(j)).measure(paramInt1, paramInt2);
+      i += ((QMultiImageTextView)this.mLines.get(j)).getMeasuredHeight();
+      j += 1;
     }
     this.mHeaderView.measure(paramInt1, paramInt2);
-    if ((this.mHeaderView.getMeasuredHeight() > i) || (this.mLineNum <= 3))
+    if ((this.mHeaderView.getMeasuredHeight() <= i) && (this.mLineNum > 3))
     {
-      j = this.mMarginLine;
-      int k = this.mLineNum;
-      setLineLayout((this.minHeight - (j * (k - 1) + i)) / 2, paramInt1, paramInt2);
-    }
-    for (;;)
-    {
-      super.onMeasure(paramInt1, paramInt2);
-      return;
-      i = getResources().getDimensionPixelSize(2131296778);
-      j = getResources().getDimensionPixelSize(2131296773);
+      i = getResources().getDimensionPixelSize(2131296758);
+      j = getResources().getDimensionPixelSize(2131296753);
       localLayoutParams = (RelativeLayout.LayoutParams)this.mHeaderView.getLayoutParams();
       localLayoutParams.topMargin = i;
       this.mHeaderView.setLayoutParams(localLayoutParams);
@@ -277,6 +326,13 @@ public class QFormMultiLineItem
       localLayoutParams.bottomMargin = j;
       ((QMultiImageTextView)this.mLines.get(this.mLineNum - 1)).setLayoutParams(localLayoutParams);
     }
+    else
+    {
+      j = this.mMarginLine;
+      k = this.mLineNum;
+      setLineLayout((this.minHeight - (i + j * (k - 1))) / 2, paramInt1, paramInt2);
+    }
+    super.onMeasure(paramInt1, paramInt2);
   }
   
   public void setAllTextColor(int paramInt)
@@ -303,8 +359,9 @@ public class QFormMultiLineItem
   
   public void setHeaderView(int paramInt)
   {
-    if (this.mHeaderView != null) {
-      this.mHeaderView.setImageResource(paramInt);
+    ImageView localImageView = this.mHeaderView;
+    if (localImageView != null) {
+      localImageView.setImageResource(paramInt);
     }
   }
   
@@ -316,48 +373,50 @@ public class QFormMultiLineItem
   
   public void setLineNum(int paramInt)
   {
-    if (paramInt < 2) {
-      throw new RuntimeException("recommend to use >=2 lineNum, or use FormSingleItem widget");
-    }
-    if (this.mLineNum == paramInt) {}
-    for (;;)
+    if (paramInt >= 2)
     {
+      int i = this.mLineNum;
+      if (i != paramInt) {
+        if (i < paramInt)
+        {
+          int j = getResources().getDimensionPixelSize(2131296773);
+          int k = this.mLineNum;
+          i = 0;
+          while (i < paramInt - k)
+          {
+            localObject = new QMultiImageTextView(getContext());
+            ((QMultiImageTextView)localObject).setTextSize(0, j);
+            ((QMultiImageTextView)localObject).setTextColor(getResources().getColor(2131167144));
+            ((QMultiImageTextView)localObject).setSingleLine(true);
+            ((QMultiImageTextView)localObject).setDuplicateParentStateEnabled(true);
+            ((QMultiImageTextView)localObject).setEllipsize(TextUtils.TruncateAt.END);
+            ((QMultiImageTextView)localObject).setText(HardCodeUtil.a(2131704825));
+            RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+            localLayoutParams.leftMargin = this.mMarginBetweenPictureAndText;
+            localLayoutParams.addRule(1, 2131367165);
+            this.mLines.add(localObject);
+            addView((View)localObject, localLayoutParams);
+            i += 1;
+          }
+          this.mLineNum = paramInt;
+        }
+        else if (i > paramInt)
+        {
+          while (i > paramInt)
+          {
+            this.mLines.remove(this.mLineNum - 1);
+            i -= 1;
+          }
+          this.mLineNum = paramInt;
+        }
+      }
       postInvalidate();
       return;
-      int i;
-      if (this.mLineNum < paramInt)
-      {
-        int j = getResources().getDimensionPixelSize(2131296793);
-        int k = this.mLineNum;
-        i = 0;
-        while (i < paramInt - k)
-        {
-          QMultiImageTextView localQMultiImageTextView = new QMultiImageTextView(getContext());
-          localQMultiImageTextView.setTextSize(0, j);
-          localQMultiImageTextView.setTextColor(getResources().getColor(2131167119));
-          localQMultiImageTextView.setSingleLine(true);
-          localQMultiImageTextView.setDuplicateParentStateEnabled(true);
-          localQMultiImageTextView.setEllipsize(TextUtils.TruncateAt.END);
-          localQMultiImageTextView.setText(HardCodeUtil.a(2131704749));
-          RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-          localLayoutParams.leftMargin = this.mMarginBetweenPictureAndText;
-          localLayoutParams.addRule(1, 2131367383);
-          this.mLines.add(localQMultiImageTextView);
-          addView(localQMultiImageTextView, localLayoutParams);
-          i += 1;
-        }
-        this.mLineNum = paramInt;
-      }
-      else if (this.mLineNum > paramInt)
-      {
-        i = this.mLineNum;
-        while (i > paramInt)
-        {
-          this.mLines.remove(this.mLineNum - 1);
-          i -= 1;
-        }
-        this.mLineNum = paramInt;
-      }
+    }
+    Object localObject = new RuntimeException("recommend to use >=2 lineNum, or use FormSingleItem widget");
+    for (;;)
+    {
+      throw ((Throwable)localObject);
     }
   }
   
@@ -374,7 +433,7 @@ public class QFormMultiLineItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.QFormMultiLineItem
  * JD-Core Version:    0.7.0.1
  */

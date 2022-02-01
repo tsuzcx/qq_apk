@@ -1,74 +1,39 @@
 package com.tencent.turingfd.sdk.xq;
 
-public final class Caelum
-  extends case
-  implements Cloneable
+import android.content.Context;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+public class Caelum
 {
-  public static Bootes Q = new Bootes();
-  public int R = 0;
-  public Bootes S = null;
-  public long U = 0L;
+  public static String DEFAULT_CHARSET = "UTF-8";
+  public static int dh = -1;
+  public Map<Integer, instanceof> eh;
+  public Map<Integer, protected> fh;
+  public String gh = "";
+  public Context mContext;
   
-  public void a(byte parambyte)
+  public Caelum(Map<Integer, instanceof> paramMap, Map<Integer, protected> paramMap1)
   {
-    parambyte.a(this.R, 0);
-    Bootes localBootes = this.S;
-    if (localBootes != null) {
-      parambyte.a(localBootes, 1);
-    }
-    parambyte.a(this.U, 2);
+    this.eh = paramMap;
+    this.fh = paramMap1;
   }
   
-  public void a(try paramtry)
+  public final long b(long paramLong)
   {
-    this.R = paramtry.a(this.R, 0, true);
-    this.S = ((Bootes)paramtry.a(Q, 1, false));
-    this.U = paramtry.a(this.U, 2, true);
-  }
-  
-  public Object clone()
-  {
-    Object localObject1 = null;
-    try
+    Iterator localIterator = this.eh.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Integer localInteger = (Integer)localIterator.next();
+      this.fh.put(localInteger, Andromeda.a(paramLong).a());
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      while (m) {}
-      throw new AssertionError();
-    }
-    return localObject1;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == null) {}
-    do
-    {
-      return false;
-      paramObject = (Caelum)paramObject;
-    } while ((!char.equals(this.R, paramObject.R)) || (!char.equals(this.S, paramObject.S)) || (!char.a(this.U, paramObject.U)));
-    return true;
-  }
-  
-  public int hashCode()
-  {
-    try
-    {
-      throw new Exception("");
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return 0;
+    return paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Caelum
  * JD-Core Version:    0.7.0.1
  */

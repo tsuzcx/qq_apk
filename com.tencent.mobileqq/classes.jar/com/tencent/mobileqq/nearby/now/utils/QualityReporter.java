@@ -6,28 +6,15 @@ import com.tencent.qphone.base.util.QLog;
 
 public class QualityReporter
 {
-  protected static int a;
-  protected static long a;
-  protected static String a;
+  protected static int a = 0;
+  protected static long a = 0L;
+  protected static String a = "";
   protected static int b;
   protected static long b;
   protected static long c;
   protected static long d;
   protected static long e;
   protected static long f;
-  
-  static
-  {
-    jdField_a_of_type_Long = 0L;
-    jdField_b_of_type_Long = 0L;
-    c = 0L;
-    d = 0L;
-    e = 0L;
-    f = 0L;
-    jdField_a_of_type_Int = 0;
-    jdField_b_of_type_Int = 0;
-    jdField_a_of_type_JavaLangString = "";
-  }
   
   public static long a()
   {
@@ -37,8 +24,12 @@ public class QualityReporter
   public static void a()
   {
     jdField_b_of_type_Long = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportStartGetVideoInfoTime,time = " + jdField_b_of_type_Long);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportStartGetVideoInfoTime,time = ");
+      localStringBuilder.append(jdField_b_of_type_Long);
+      QLog.i("QualityReporter", 2, localStringBuilder.toString());
     }
   }
   
@@ -51,74 +42,71 @@ public class QualityReporter
     e = 0L;
     f = 0L;
     jdField_a_of_type_Int = 0;
-    jdField_a_of_type_JavaLangString = HttpUtil.getNetWorkType() + "";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(HttpUtil.getNetWorkType());
+    localStringBuilder.append("");
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
     jdField_a_of_type_Long = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportEntryTime,time = " + jdField_a_of_type_Long);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportEntryTime,time = ");
+      localStringBuilder.append(jdField_a_of_type_Long);
+      QLog.i("QualityReporter", 2, localStringBuilder.toString());
     }
   }
   
   public static void a(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportVideoLoad,time =  feedid = " + paramString + " loadingTime =" + jdField_a_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportVideoLoad,time =  feedid = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" loadingTime =");
+      localStringBuilder.append(jdField_a_of_type_Int);
+      QLog.i("QualityReporter", 2, localStringBuilder.toString());
     }
-    ReportController.b(null, "dc02676", "grp_lbs", paramString, "video_quality", "play_load_again", paramInt, 0, String.valueOf(jdField_a_of_type_Int), "", "", "||" + paramString + "|||" + jdField_a_of_type_JavaLangString);
+    int i = jdField_a_of_type_Int;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("||");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("|||");
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    ReportController.b(null, "dc02676", "grp_lbs", paramString, "video_quality", "play_load_again", paramInt, 0, String.valueOf(i), "", "", localStringBuilder.toString());
   }
   
   public static void a(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportVideoPlayResult,time = feedid = " + paramString1 + " playType=" + paramInt + " errCode=" + paramString2 + " subErrCode=" + paramString3);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportVideoPlayResult,time = feedid = ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" playType=");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" errCode=");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(" subErrCode=");
+      localStringBuilder.append(paramString3);
+      QLog.i("QualityReporter", 2, localStringBuilder.toString());
     }
-    ReportController.b(null, "dc02676", "grp_lbs", paramString1, "video_quality", "play_result", paramInt, 0, paramString2, paramString3, "", "||" + paramString1 + "|||" + jdField_a_of_type_JavaLangString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("||");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("|||");
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    ReportController.b(null, "dc02676", "grp_lbs", paramString1, "video_quality", "play_result", paramInt, 0, paramString2, paramString3, "", localStringBuilder.toString());
   }
   
   public static void a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean)
   {
-    if (jdField_b_of_type_Int == 2) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, " reportVideoSurportPlayOnline,time =  feedid = " + paramString1 + " reportType=" + paramInt + " downloadProgress=" + paramString2 + " videoSize=" + paramString3 + "downloadedSize=" + paramString4 + "waitTime=" + (System.currentTimeMillis() - jdField_a_of_type_Long) + " isPlaying = " + paramBoolean + " startPlayTime =  " + f);
-    }
-    int i;
-    if (paramBoolean)
-    {
-      i = 1;
-      paramString5 = new StringBuilder().append(System.currentTimeMillis() - jdField_a_of_type_Long).append("|");
-      if (f != 0L) {
-        break label212;
-      }
-    }
-    label212:
-    for (int j = 1;; j = 2)
-    {
-      ReportController.b(null, "dc02676", "grp_lbs", paramString1, "video_quality", "play_support_online", paramInt, i, paramString2, paramString3, paramString4, j + "|" + paramString1 + "|||" + jdField_a_of_type_JavaLangString);
-      return;
-      i = 0;
-      break;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge Z and I\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public static void a(String paramString, int paramInt, boolean paramBoolean)
   {
-    if (jdField_b_of_type_Int != 0) {
-      return;
-    }
-    long l1 = f - e;
-    long l2 = c - jdField_b_of_type_Long;
-    long l3 = d - jdField_a_of_type_Long;
-    long l4 = f - jdField_a_of_type_Long;
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportVideoPlayLoadTime,videoLoadTime = " + l1 + " getVideoInfoTime = " + l2 + " initVideoListUITime =" + l3 + " allTimeConsume=" + l4 + " feedsid=" + paramString + " playType=" + paramInt + " isUrlProvide=" + paramBoolean);
-    }
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      ReportController.b(null, "dc02676", "grp_lbs", paramString, "video_quality", "play_loading_time", paramInt, i, String.valueOf(l1), String.valueOf(l2), String.valueOf(l3), String.valueOf(l4) + "||" + paramString + "|||" + jdField_a_of_type_JavaLangString);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge Z and I\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public static long b()
@@ -129,32 +117,48 @@ public class QualityReporter
   public static void b()
   {
     c = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportFinisGetVideoInfoTime,time = " + c);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportFinisGetVideoInfoTime,time = ");
+      localStringBuilder.append(c);
+      QLog.i("QualityReporter", 2, localStringBuilder.toString());
     }
   }
   
   public static void c()
   {
     d = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportUIInitFinishTime,time = " + d);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportUIInitFinishTime,time = ");
+      localStringBuilder.append(d);
+      QLog.i("QualityReporter", 2, localStringBuilder.toString());
     }
   }
   
   public static void d()
   {
     e = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportInitToPlayTime,time = " + e);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportInitToPlayTime,time = ");
+      localStringBuilder.append(e);
+      QLog.i("QualityReporter", 2, localStringBuilder.toString());
     }
   }
   
   public static void e()
   {
     f = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportStartPlayTime,time = " + f);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportStartPlayTime,time = ");
+      localStringBuilder.append(f);
+      QLog.i("QualityReporter", 2, localStringBuilder.toString());
     }
   }
   
@@ -165,7 +169,7 @@ public class QualityReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.utils.QualityReporter
  * JD-Core Version:    0.7.0.1
  */

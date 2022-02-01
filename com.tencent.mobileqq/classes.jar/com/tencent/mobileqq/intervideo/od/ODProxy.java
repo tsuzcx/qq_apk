@@ -1,121 +1,19 @@
 package com.tencent.mobileqq.intervideo.od;
 
 import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.intervideo.IVPluginInfo;
-import com.tencent.mobileqq.intervideo.LoginKeyHelper;
-import com.tencent.mobileqq.intervideo.LoginKeyHelper.AccountInfo;
-import com.tencent.mobileqq.intervideo.LoginKeyHelper.GetLoginKeyListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.intervideo.ILoginKeyHelper.GetLoginKeyListener;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
 import mqq.manager.Manager;
 
 public class ODProxy
-  implements LoginKeyHelper.GetLoginKeyListener, Manager
+  implements ILoginKeyHelper.GetLoginKeyListener, Manager
 {
-  QQAppInterface a;
+  AppInterface a;
   
-  public ODProxy(QQAppInterface paramQQAppInterface)
+  public ODProxy(AppInterface paramAppInterface)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  public static Bundle a(IVPluginInfo paramIVPluginInfo, LoginKeyHelper paramLoginKeyHelper)
-  {
-    int m = 0;
-    Bundle localBundle = new Bundle();
-    for (;;)
-    {
-      try
-      {
-        localObject1 = ((BaseApplicationImpl)MobileQQ.getContext()).waitAppRuntime(null);
-        str2 = ((AppRuntime)localObject1).getAccount();
-        localObject2 = (FriendsManager)((AppRuntime)localObject1).getManager(QQManagerFactory.FRIENDS_MANAGER);
-        localObject3 = ((FriendsManager)localObject2).e(str2);
-        if (localObject3 == null) {
-          break label471;
-        }
-        localObject1 = ((Friends)localObject3).name;
-        j = ((Friends)localObject3).gender;
-        i = ((Friends)localObject3).age;
-        localObject3 = ((FriendsManager)localObject2).a(str2);
-        if (localObject3 == null) {
-          break label453;
-        }
-        k = (int)((Card)localObject3).lBirthday;
-        localObject2 = ((Card)localObject3).strCountry;
-        str1 = ((Card)localObject3).strProvince;
-        localObject3 = ((Card)localObject3).strCity;
-      }
-      catch (Exception paramIVPluginInfo)
-      {
-        String str2;
-        paramIVPluginInfo.printStackTrace();
-        return localBundle;
-      }
-      localBundle.putString("nickname", (String)localObject1);
-      localBundle.putLong("roomid", paramIVPluginInfo.a);
-      localBundle.putInt("authtype", 1);
-      localBundle.putString("authid", paramLoginKeyHelper.a().b);
-      localBundle.putInt("gender", j);
-      localBundle.putInt("vastype", 2);
-      localBundle.putLong("hostid", Long.parseLong(str2));
-      localBundle.putString("authkey", paramLoginKeyHelper.a().a);
-      localBundle.putString("appid", paramIVPluginInfo.b);
-      localBundle.putString("vasname", paramIVPluginInfo.g);
-      localBundle.putString("userdata", paramIVPluginInfo.d);
-      localBundle.putInt("fromid", Integer.parseInt(paramIVPluginInfo.e));
-      localBundle.putInt("age", i);
-      localBundle.putInt("birthyear", n);
-      localBundle.putInt("birthmonth", m);
-      localBundle.putInt("birthday", k);
-      localBundle.putBoolean("loghost", true);
-      localBundle.putBoolean("reporthost", true);
-      localBundle.putString("backType", paramIVPluginInfo.h);
-      localBundle.putInt("isGroupCode", paramIVPluginInfo.c);
-      localBundle.putString("openType", paramIVPluginInfo.i);
-      localBundle.putString("extra", paramIVPluginInfo.j);
-      localBundle.putString("payToken", paramLoginKeyHelper.a().c);
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        localBundle.putString("addrCountry", (String)localObject2);
-      }
-      if (!TextUtils.isEmpty(str1)) {
-        localBundle.putString("addrProv", str1);
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-        localBundle.putString("addrCity", (String)localObject3);
-      }
-      return localBundle;
-      int n = k >>> 16;
-      m = (0xFF00 & k) >>> 8;
-      k &= 0xFF;
-      continue;
-      label453:
-      Object localObject2 = "";
-      int k = 0;
-      String str1 = "";
-      Object localObject3 = "";
-      break label482;
-      label471:
-      int i = 0;
-      int j = 0;
-      Object localObject1 = "";
-      continue;
-      label482:
-      if (k == 0)
-      {
-        n = 1995;
-        k = 0;
-      }
-    }
+    this.a = paramAppInterface;
   }
   
   public void a() {}
@@ -135,7 +33,7 @@ public class ODProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.od.ODProxy
  * JD-Core Version:    0.7.0.1
  */

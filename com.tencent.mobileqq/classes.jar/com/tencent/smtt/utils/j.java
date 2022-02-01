@@ -15,7 +15,7 @@ import com.tencent.smtt.sdk.WebView;
 
 public class j
 {
-  private static String a = null;
+  private static String a;
   private static String b = "GA";
   private static String c = "GE";
   private static String d = "9422";
@@ -27,7 +27,11 @@ public class j
   
   private static String a()
   {
-    return " " + Build.MODEL.replaceAll("[ |\\/|\\_|\\&|\\|]", "") + " ";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" ");
+    localStringBuilder.append(Build.MODEL.replaceAll("[ |\\/|\\_|\\&|\\|]", ""));
+    localStringBuilder.append(" ");
+    return localStringBuilder.toString();
   }
   
   public static String a(Context paramContext)
@@ -42,108 +46,111 @@ public class j
   private static String a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, boolean paramBoolean)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    String str = b(paramContext) + "*" + c(paramContext);
-    for (;;)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(b(paramContext));
+    ((StringBuilder)localObject).append("*");
+    ((StringBuilder)localObject).append(c(paramContext));
+    String str2 = ((StringBuilder)localObject).toString();
+    try
     {
+      localObject = paramContext.getApplicationContext().getApplicationInfo();
+      PackageInfo localPackageInfo = paramContext.getPackageManager().getPackageInfo(((ApplicationInfo)localObject).packageName, 0);
+      localObject = ((ApplicationInfo)localObject).packageName;
       try
       {
-        localObject1 = paramContext.getApplicationContext().getApplicationInfo();
-        localObject3 = paramContext.getPackageManager().getPackageInfo(((ApplicationInfo)localObject1).packageName, 0);
-        localObject1 = ((ApplicationInfo)localObject1).packageName;
+        if (!TextUtils.isEmpty(paramString7)) {
+          break label137;
+        }
+        paramString7 = localPackageInfo.versionName;
       }
       catch (PackageManager.NameNotFoundException localNameNotFoundException1)
       {
-        Object localObject1;
-        Object localObject3;
-        boolean bool;
-        paramString7 = "";
-        localNameNotFoundException1.printStackTrace();
-        localObject2 = "";
-        continue;
-        if (d(paramContext))
-        {
-          paramContext = "PAD";
-          continue;
-        }
+        paramString7 = (String)localObject;
       }
-      try
-      {
-        bool = TextUtils.isEmpty(paramString7);
-        if (bool) {
-          continue;
-        }
-        localObject3 = localObject1;
-        localObject1 = paramString7;
-        paramString7 = (String)localObject3;
-        localObject3 = a(paramString7);
-        if (!"QB".equals(localObject3)) {
-          continue;
-        }
-        if (!paramBoolean) {
-          break label448;
-        }
-        paramContext = "PAD";
-      }
-      catch (PackageManager.NameNotFoundException localNameNotFoundException2)
-      {
-        paramString7 = (String)localObject2;
-        localObject2 = localNameNotFoundException2;
-        continue;
-        paramContext = "PHONE";
-        continue;
-      }
-      localStringBuilder.append("QV").append("=").append("3");
-      a(localStringBuilder, "PL", "ADR");
-      a(localStringBuilder, "PR", (String)localObject3);
-      a(localStringBuilder, "PP", paramString7);
-      a(localStringBuilder, "PPVN", (String)localObject1);
-      if (!TextUtils.isEmpty(paramString1)) {
-        a(localStringBuilder, "TBSVC", paramString1);
-      }
-      a(localStringBuilder, "CO", "SYS");
-      if (!TextUtils.isEmpty(paramString2)) {
-        a(localStringBuilder, "COVC", paramString2);
-      }
-      a(localStringBuilder, "PB", paramString4);
-      a(localStringBuilder, "VE", paramString3);
-      a(localStringBuilder, "DE", paramContext);
-      paramContext = paramString6;
-      if (TextUtils.isEmpty(paramString6)) {
-        paramContext = "0";
-      }
-      a(localStringBuilder, "CHID", paramContext);
-      a(localStringBuilder, "LCID", paramString5);
-      paramContext = a();
-      try
-      {
-        paramString1 = new String(paramContext.getBytes("UTF-8"), "ISO8859-1");
-        paramContext = paramString1;
-      }
-      catch (Exception paramString1)
-      {
-        continue;
-      }
-      if (!TextUtils.isEmpty(paramContext)) {
-        a(localStringBuilder, "MO", paramContext);
-      }
-      a(localStringBuilder, "RL", str);
-      paramContext = Build.VERSION.RELEASE;
-      try
-      {
-        paramString1 = new String(paramContext.getBytes("UTF-8"), "ISO8859-1");
-        paramContext = paramString1;
-      }
-      catch (Exception paramString1)
-      {
-        continue;
-      }
-      if (!TextUtils.isEmpty(paramContext)) {
-        a(localStringBuilder, "OS", paramContext);
-      }
-      a(localStringBuilder, "API", Build.VERSION.SDK_INT + "");
-      return localStringBuilder.toString();
-      paramString7 = ((PackageInfo)localObject3).versionName;
+      localNameNotFoundException2.printStackTrace();
     }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException2)
+    {
+      paramString7 = "";
+    }
+    String str1 = "";
+    localObject = paramString7;
+    paramString7 = str1;
+    label137:
+    String str3 = a((String)localObject);
+    boolean bool = "QB".equals(str3);
+    str1 = "PAD";
+    if (bool)
+    {
+      if (paramBoolean)
+      {
+        paramContext = str1;
+        break label189;
+      }
+    }
+    else if (d(paramContext))
+    {
+      paramContext = str1;
+      break label189;
+    }
+    paramContext = "PHONE";
+    label189:
+    localStringBuilder.append("QV");
+    localStringBuilder.append("=");
+    localStringBuilder.append("3");
+    a(localStringBuilder, "PL", "ADR");
+    a(localStringBuilder, "PR", str3);
+    a(localStringBuilder, "PP", (String)localObject);
+    a(localStringBuilder, "PPVN", paramString7);
+    if (!TextUtils.isEmpty(paramString1)) {
+      a(localStringBuilder, "TBSVC", paramString1);
+    }
+    a(localStringBuilder, "CO", "SYS");
+    if (!TextUtils.isEmpty(paramString2)) {
+      a(localStringBuilder, "COVC", paramString2);
+    }
+    a(localStringBuilder, "PB", paramString4);
+    a(localStringBuilder, "VE", paramString3);
+    a(localStringBuilder, "DE", paramContext);
+    if (TextUtils.isEmpty(paramString6)) {
+      paramString6 = "0";
+    }
+    a(localStringBuilder, "CHID", paramString6);
+    a(localStringBuilder, "LCID", paramString5);
+    paramContext = a();
+    label414:
+    try
+    {
+      paramString1 = new String(paramContext.getBytes("UTF-8"), "ISO8859-1");
+      paramContext = paramString1;
+    }
+    catch (Exception paramString1)
+    {
+      label368:
+      break label368;
+    }
+    if (!TextUtils.isEmpty(paramContext)) {
+      a(localStringBuilder, "MO", paramContext);
+    }
+    a(localStringBuilder, "RL", str2);
+    paramContext = Build.VERSION.RELEASE;
+    try
+    {
+      paramString1 = new String(paramContext.getBytes("UTF-8"), "ISO8859-1");
+      paramContext = paramString1;
+    }
+    catch (Exception paramString1)
+    {
+      break label414;
+    }
+    if (!TextUtils.isEmpty(paramContext)) {
+      a(localStringBuilder, "OS", paramContext);
+    }
+    paramContext = new StringBuilder();
+    paramContext.append(Build.VERSION.SDK_INT);
+    paramContext.append("");
+    a(localStringBuilder, "API", paramContext.toString());
+    return localStringBuilder.toString();
   }
   
   private static String a(String paramString)
@@ -165,7 +172,10 @@ public class j
   
   private static void a(StringBuilder paramStringBuilder, String paramString1, String paramString2)
   {
-    paramStringBuilder.append("&").append(paramString1).append("=").append(paramString2);
+    paramStringBuilder.append("&");
+    paramStringBuilder.append(paramString1);
+    paramStringBuilder.append("=");
+    paramStringBuilder.append(paramString2);
   }
   
   private static int b(Context paramContext)
@@ -188,23 +198,27 @@ public class j
   
   private static boolean d(Context paramContext)
   {
-    boolean bool = true;
     if (h) {
       return i;
     }
-    try
+    for (;;)
     {
-      if (Math.min(b(paramContext), c(paramContext)) * 160 / e(paramContext) >= 700) {}
-      for (;;)
+      try
       {
-        i = bool;
-        h = true;
-        return i;
-        bool = false;
+        if (Math.min(b(paramContext), c(paramContext)) * 160 / e(paramContext) >= 700)
+        {
+          bool = true;
+          i = bool;
+          h = true;
+          return i;
+        }
       }
-      return false;
+      catch (Throwable paramContext)
+      {
+        return false;
+      }
+      boolean bool = false;
     }
-    catch (Throwable paramContext) {}
   }
   
   private static int e(Context paramContext)
@@ -222,7 +236,7 @@ public class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.utils.j
  * JD-Core Version:    0.7.0.1
  */

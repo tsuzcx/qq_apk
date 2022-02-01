@@ -32,8 +32,18 @@ class ReadInJoyAdPopSheetDialog$7
     super.onPageFinished(paramWebView, paramString);
     if (QLog.isColorLevel())
     {
-      QLog.d(ReadInJoyAdPopSheetDialog.a(), 2, "loadForm onPageFinished url:" + paramString + ", costTime:" + (SystemClock.currentThreadTimeMillis() - ReadInJoyAdPopSheetDialog.b(this.a)));
-      QLog.d(ReadInJoyAdPopSheetDialog.a(), 2, "onPageFinished: TOTAL costTime=" + (SystemClock.currentThreadTimeMillis() - ReadInJoyAdPopSheetDialog.c(this.a)));
+      paramWebView = ReadInJoyAdPopSheetDialog.a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadForm onPageFinished url:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", costTime:");
+      localStringBuilder.append(SystemClock.currentThreadTimeMillis() - ReadInJoyAdPopSheetDialog.b(this.a));
+      QLog.d(paramWebView, 2, localStringBuilder.toString());
+      paramWebView = ReadInJoyAdPopSheetDialog.a();
+      paramString = new StringBuilder();
+      paramString.append("onPageFinished: TOTAL costTime=");
+      paramString.append(SystemClock.currentThreadTimeMillis() - ReadInJoyAdPopSheetDialog.c(this.a));
+      QLog.d(paramWebView, 2, paramString.toString());
     }
     if (ReadInJoyAdPopSheetDialog.a(this.a) != null) {
       ReadInJoyAdPopSheetDialog.a(this.a).a((byte)2);
@@ -50,8 +60,17 @@ class ReadInJoyAdPopSheetDialog$7
   
   public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ReadInJoyAdPopSheetDialog.a(), 2, "onReceivedError:" + paramInt + "，" + paramString1 + ", " + paramString2);
+    if (QLog.isColorLevel())
+    {
+      paramWebView = ReadInJoyAdPopSheetDialog.a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReceivedError:");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("，");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(paramString2);
+      QLog.d(paramWebView, 2, localStringBuilder.toString());
     }
   }
   
@@ -62,44 +81,44 @@ class ReadInJoyAdPopSheetDialog$7
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ReadInJoyAdPopSheetDialog.a(), 2, "shouldOverrideUrlLoading url:" + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = ReadInJoyAdPopSheetDialog.a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("shouldOverrideUrlLoading url:");
+      localStringBuilder.append(paramString);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
     if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {
       return true;
     }
     Object localObject = ((CustomWebView)paramWebView).getPluginEngine();
-    if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
+    if ((!paramString.startsWith("file://")) && (!paramString.startsWith("data:")) && (!paramString.startsWith("http://")) && (!paramString.startsWith("https://")))
     {
-      if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
-      for (boolean bool = true;; bool = false) {
-        return bool;
+      paramString = Uri.parse(paramString);
+      localObject = paramString.getScheme();
+      if (AuthorizeConfig.a().a(paramWebView.getUrl(), (String)localObject).booleanValue())
+      {
+        paramWebView = new Intent("android.intent.action.VIEW", paramString);
+        paramWebView.addFlags(268435456);
+        try
+        {
+          this.mContext.startActivity(paramWebView);
+          return false;
+        }
+        catch (ActivityNotFoundException paramWebView)
+        {
+          Log.e("AbsWebView", paramWebView.toString());
+        }
       }
-    }
-    paramString = Uri.parse(paramString);
-    localObject = paramString.getScheme();
-    if (AuthorizeConfig.a().a(paramWebView.getUrl(), (String)localObject).booleanValue())
-    {
-      paramWebView = new Intent("android.intent.action.VIEW", paramString);
-      paramWebView.addFlags(268435456);
-    }
-    try
-    {
-      this.mContext.startActivity(paramWebView);
       return false;
     }
-    catch (ActivityNotFoundException paramWebView)
-    {
-      for (;;)
-      {
-        Log.e("AbsWebView", paramWebView.toString());
-      }
-    }
+    return (localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdPopSheetDialog.7
  * JD-Core Version:    0.7.0.1
  */

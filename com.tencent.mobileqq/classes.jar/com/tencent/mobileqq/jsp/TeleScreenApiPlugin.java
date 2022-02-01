@@ -43,60 +43,63 @@ public class TeleScreenApiPlugin
   
   private void a(String paramString)
   {
-    for (;;)
+    try
     {
-      Object localObject;
-      try
+      localObject = new JSONObject(paramString);
+      paramString = ((JSONObject)localObject).optString("businessId");
+      str1 = ((JSONObject)localObject).optString("openlink");
+      str2 = ((JSONObject)localObject).optString("packageName");
+      localObject = ((JSONObject)localObject).optString("callback");
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        localObject = new JSONObject(paramString);
-        paramString = ((JSONObject)localObject).optString("businessId");
-        String str1 = ((JSONObject)localObject).optString("openlink");
-        String str2 = ((JSONObject)localObject).optString("packageName");
-        localObject = ((JSONObject)localObject).optString("callback");
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break label207;
-        }
         TeleScreenApiPlugin.1 local1 = new TeleScreenApiPlugin.1(this, (String)localObject);
         i = TeleScreen.a().a(local1);
         if (this.jdField_a_of_type_AndroidSupportV4UtilArraySet == null) {
           this.jdField_a_of_type_AndroidSupportV4UtilArraySet = new ArraySet();
         }
         this.jdField_a_of_type_AndroidSupportV4UtilArraySet.add(Integer.valueOf(i));
-        try
-        {
-          if (!TextUtils.isEmpty(str1))
-          {
-            Utils.a(this.jdField_a_of_type_AndroidAppActivity, str1, paramString, i);
-            return;
-          }
-          if (TextUtils.isEmpty(str2)) {
-            break label183;
-          }
-          PackageUtil.a(this.jdField_a_of_type_AndroidAppActivity, str2, null, paramString, i);
-          return;
-        }
-        catch (ActivityNotFoundException paramString)
-        {
-          if (TextUtils.isEmpty((CharSequence)localObject)) {
-            break;
-          }
-        }
-        callJs((String)localObject, new String[] { "{\"openresult\":-3}" });
-        return;
       }
-      catch (Exception paramString)
+      else
       {
-        QLog.e(this.TAG, 1, paramString, new Object[0]);
+        i = 0;
+      }
+    }
+    catch (Exception paramString)
+    {
+      Object localObject;
+      String str1;
+      String str2;
+      int i;
+      label172:
+      QLog.e(this.TAG, 1, paramString, new Object[0]);
+    }
+    try
+    {
+      if (!TextUtils.isEmpty(str1))
+      {
+        Utils.a(this.jdField_a_of_type_AndroidAppActivity, str1, paramString, i);
         return;
       }
-      label183:
+      if (!TextUtils.isEmpty(str2))
+      {
+        PackageUtil.a(this.jdField_a_of_type_AndroidAppActivity, str2, null, paramString, i);
+        return;
+      }
       if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break;
+        break label210;
       }
       callJs((String)localObject, new String[] { "{\"openresult\":-3}" });
       return;
-      label207:
-      int i = 0;
+    }
+    catch (ActivityNotFoundException paramString)
+    {
+      label210:
+      break label172;
+    }
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      callJs((String)localObject, new String[] { "{\"openresult\":-3}" });
+      return;
     }
   }
   
@@ -105,7 +108,7 @@ public class TeleScreenApiPlugin
     return 8L;
   }
   
-  public Object handleEvent(String paramString, long paramLong)
+  protected Object handleEvent(String paramString, long paramLong)
   {
     if ((paramLong == 8L) && (paramString != null)) {
       try
@@ -126,18 +129,17 @@ public class TeleScreenApiPlugin
     return super.handleEvent(paramString, paramLong);
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    boolean bool = false;
     if ("Gdt".equals(paramString2))
     {
       addOpenApiListenerIfNeeded(paramString3, paramJsBridgeListener);
       if (("Openlink".equals(paramString3)) && (paramVarArgs.length > 0)) {
         a(paramVarArgs[0]);
       }
-      bool = true;
+      return true;
     }
-    return bool;
+    return false;
   }
   
   public boolean isNeedPreCreatePlugin(Intent paramIntent, String paramString1, String paramString2)
@@ -145,20 +147,21 @@ public class TeleScreenApiPlugin
     return true;
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
     this.jdField_a_of_type_AndroidAppActivity = a();
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
-    if (this.jdField_a_of_type_AndroidSupportV4UtilArraySet != null)
+    Object localObject = this.jdField_a_of_type_AndroidSupportV4UtilArraySet;
+    if (localObject != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_AndroidSupportV4UtilArraySet.iterator();
-      while (localIterator.hasNext())
+      localObject = ((ArraySet)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        int i = ((Integer)localIterator.next()).intValue();
+        int i = ((Integer)((Iterator)localObject).next()).intValue();
         TeleScreen.a().a(i);
       }
       this.jdField_a_of_type_AndroidSupportV4UtilArraySet.clear();
@@ -168,7 +171,7 @@ public class TeleScreenApiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.TeleScreenApiPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -25,12 +25,61 @@ public class StartLiveInfo
   
   public String toString()
   {
-    return "StartLiveInfo{roomId=" + this.roomId + ", programId='" + this.programId + '\'' + ", roomName='" + this.roomName + '\'' + ", roomLogo='" + this.roomLogo + '\'' + ", roomLogoTime=" + this.roomLogoTime + ", roomLogo_16_9='" + this.roomLogo_16_9 + '\'' + ", roomLogo_16_9_Time=" + this.roomLogo_16_9_Time + ", roomLogo_3_4='" + this.roomLogo_3_4 + '\'' + ", roomLogo_3_4_Time=" + this.roomLogo_3_4_Time + ", lng='" + this.lng + '\'' + ", lat='" + this.lat + '\'' + ", city='" + this.city + '\'' + ", phoneModel='" + this.phoneModel + '\'' + ", isOpenGift=" + this.isOpenGift + ", tags=" + this.tags + ", source='" + this.source + '\'' + ", logoEdited=" + this.logoEdited + ", machine='" + this.machine + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("StartLiveInfo{roomId=");
+    localStringBuilder.append(this.roomId);
+    localStringBuilder.append(", programId='");
+    localStringBuilder.append(this.programId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", roomName='");
+    localStringBuilder.append(this.roomName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", roomLogo='");
+    localStringBuilder.append(this.roomLogo);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", roomLogoTime=");
+    localStringBuilder.append(this.roomLogoTime);
+    localStringBuilder.append(", roomLogo_16_9='");
+    localStringBuilder.append(this.roomLogo_16_9);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", roomLogo_16_9_Time=");
+    localStringBuilder.append(this.roomLogo_16_9_Time);
+    localStringBuilder.append(", roomLogo_3_4='");
+    localStringBuilder.append(this.roomLogo_3_4);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", roomLogo_3_4_Time=");
+    localStringBuilder.append(this.roomLogo_3_4_Time);
+    localStringBuilder.append(", lng='");
+    localStringBuilder.append(this.lng);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", lat='");
+    localStringBuilder.append(this.lat);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", city='");
+    localStringBuilder.append(this.city);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", phoneModel='");
+    localStringBuilder.append(this.phoneModel);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", isOpenGift=");
+    localStringBuilder.append(this.isOpenGift);
+    localStringBuilder.append(", tags=");
+    localStringBuilder.append(this.tags);
+    localStringBuilder.append(", source='");
+    localStringBuilder.append(this.source);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", logoEdited=");
+    localStringBuilder.append(this.logoEdited);
+    localStringBuilder.append(", machine='");
+    localStringBuilder.append(this.machine);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.startliveservice_interface.model.StartLiveInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -64,34 +64,40 @@ public final class mobile_detail_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.detail_data != null) {
-      paramJceOutputStream.write(this.detail_data, 0);
+    Object localObject = this.detail_data;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
     paramJceOutputStream.write(this.hasmore, 1);
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 2);
+    localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.type_info, 3);
     paramJceOutputStream.write(this.wait_time, 4);
-    if (this.extend_info != null) {
-      paramJceOutputStream.write(this.extend_info, 5);
+    localObject = this.extend_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 5);
     }
     paramJceOutputStream.write(this.hasmore_essence, 6);
-    if (this.attach_info_essence != null) {
-      paramJceOutputStream.write(this.attach_info_essence, 7);
+    localObject = this.attach_info_essence;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.life_moment_info != null) {
-      paramJceOutputStream.write(this.life_moment_info, 8);
+    localObject = this.life_moment_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 8);
     }
-    if (this.ugc_detail_adv != null) {
-      paramJceOutputStream.write(this.ugc_detail_adv, 9);
+    localObject = this.ugc_detail_adv;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
     paramJceOutputStream.write(this.refresh_type, 10);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_detail_rsp
  * JD-Core Version:    0.7.0.1
  */

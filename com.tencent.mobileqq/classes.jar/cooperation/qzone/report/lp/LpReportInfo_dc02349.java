@@ -25,53 +25,57 @@ public class LpReportInfo_dc02349
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    if (this.uin <= 1000L) {}
-    for (String str = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount();; str = String.valueOf(this.uin))
-    {
-      localHashMap.put("uin", str);
-      LpReportUtils.safePut(localHashMap, "qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
-      localHashMap.put("downloadType", String.valueOf(this.downloadType));
-      localHashMap.put("isHttp2", String.valueOf(this.isHttp2));
-      localHashMap.put("retCode", String.valueOf(this.retCode));
-      LpReportUtils.safePut(localHashMap, "downloadUrl", this.downloadUrl);
-      LpReportUtils.safePut(localHashMap, "errMsg", this.errMsg);
-      return localHashMap;
+    long l = this.uin;
+    String str;
+    if (l <= 1000L) {
+      str = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount();
+    } else {
+      str = String.valueOf(l);
     }
+    localHashMap.put("uin", str);
+    LpReportUtils.safePut(localHashMap, "qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
+    localHashMap.put("downloadType", String.valueOf(this.downloadType));
+    localHashMap.put("isHttp2", String.valueOf(this.isHttp2));
+    localHashMap.put("retCode", String.valueOf(this.retCode));
+    LpReportUtils.safePut(localHashMap, "downloadUrl", this.downloadUrl);
+    LpReportUtils.safePut(localHashMap, "errMsg", this.errMsg);
+    return localHashMap;
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    for (;;)
+    localStringBuilder = new StringBuilder();
+    try
     {
-      int i;
-      try
+      Field[] arrayOfField = getClass().getDeclaredFields();
+      int i = 0;
+      while (i < arrayOfField.length)
       {
-        Field[] arrayOfField = getClass().getDeclaredFields();
-        i = 0;
-        if (i < arrayOfField.length)
+        localStringBuilder.append(arrayOfField[i].getName());
+        Object localObject = arrayOfField[i].get(this);
+        if (localObject != null)
         {
-          localStringBuilder.append(arrayOfField[i].getName());
-          Object localObject = arrayOfField[i].get(this);
-          if (localObject != null) {
-            localStringBuilder.append(":").append(localObject).append("\n");
-          } else {
-            localStringBuilder.append(":null \n");
-          }
+          localStringBuilder.append(":");
+          localStringBuilder.append(localObject);
+          localStringBuilder.append("\n");
         }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
+        else
+        {
+          localStringBuilder.append(":null \n");
+        }
+        i += 1;
       }
       return localStringBuilder.toString();
-      i += 1;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc02349
  * JD-Core Version:    0.7.0.1
  */

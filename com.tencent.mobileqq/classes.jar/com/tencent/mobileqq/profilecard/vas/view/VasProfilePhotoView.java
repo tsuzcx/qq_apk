@@ -7,14 +7,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.hotchat.anim.HeartLayout;
 import com.tencent.mobileqq.profile.DataTag;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.ProfileCardTemplate;
 import com.tencent.mobileqq.profile.view.QzonePhotoView;
 import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
+import com.tencent.mobileqq.profilecard.template.ITemplateUtils;
 import com.tencent.mobileqq.vas.avatar.AvatarLayout;
 import com.tencent.mobileqq.widget.ProfileNameView;
 import com.tencent.mobileqq.widget.VoteView;
@@ -23,57 +23,55 @@ import java.util.HashMap;
 public class VasProfilePhotoView
   extends AbsProfileHeaderView
 {
-  public VasProfilePhotoView(BaseActivity paramBaseActivity, ProfileCardInfo paramProfileCardInfo)
+  public VasProfilePhotoView(QBaseActivity paramQBaseActivity, ProfileCardInfo paramProfileCardInfo)
   {
-    super(paramBaseActivity, paramProfileCardInfo);
-    this.mActivity = paramBaseActivity;
-    this.mApp = paramBaseActivity.app;
-    this.mCardInfo = paramProfileCardInfo;
+    super(paramQBaseActivity, paramProfileCardInfo);
   }
   
   private View initMainView(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131562188, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131562025, this, true);
   }
   
   private void updateAvatarArea(ProfileCardInfo paramProfileCardInfo, Context paramContext, View paramView)
   {
-    AvatarLayout localAvatarLayout = (AvatarLayout)paramView.findViewById(2131369058);
+    AvatarLayout localAvatarLayout = (AvatarLayout)paramView.findViewById(2131368780);
     localAvatarLayout.setVisibility(0);
-    ProfileCardTemplate.a((ImageView)paramView.findViewById(2131369059), "src", paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate, "commonFaceBackground");
-    DataTag localDataTag = new DataTag(1, null);
-    localAvatarLayout.setTag(localDataTag);
+    Object localObject = (ImageView)paramView.findViewById(2131368781);
+    this.templateUtils.updateViewAttr((View)localObject, "src", paramProfileCardInfo.currentTemplate, "commonFaceBackground");
+    localObject = new DataTag(1, null);
+    localAvatarLayout.setTag(localObject);
     localAvatarLayout.setOnClickListener(this.mOnClickListener);
-    if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0) {}
-    for (paramContext = paramContext.getString(2131691276);; paramContext = paramContext.getString(2131691275))
-    {
-      localAvatarLayout.setContentDescription(paramContext);
-      localAvatarLayout.a(0, localAvatarLayout.findViewById(2131363511), false);
-      this.mHeaderChildMap.put("map_key_face", localAvatarLayout);
-      this.mHeaderChildMap.put("map_key_face_stoke", paramView.findViewById(2131369059));
-      super.updateAvatar(paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
-      paramContext = (ImageView)paramView.findViewById(2131368891);
-      paramContext.setVisibility(4);
-      paramContext.setOnClickListener(this.mOnClickListener);
-      paramContext.setTag(localDataTag);
-      this.mHeaderChildMap.put("map_key_avatar_pendant", paramContext);
-      super.updateAvatarPendantImage(paramProfileCardInfo, true);
-      return;
+    if (paramProfileCardInfo.allInOne.pa == 0) {
+      paramContext = paramContext.getString(2131691197);
+    } else {
+      paramContext = paramContext.getString(2131691196);
     }
+    localAvatarLayout.setContentDescription(paramContext);
+    localAvatarLayout.a(0, localAvatarLayout.findViewById(2131363438), false);
+    this.mHeaderChildMap.put("map_key_face", localAvatarLayout);
+    this.mHeaderChildMap.put("map_key_face_stoke", paramView.findViewById(2131368781));
+    super.updateAvatar(paramProfileCardInfo.allInOne);
+    paramContext = (ImageView)paramView.findViewById(2131368617);
+    paramContext.setVisibility(4);
+    paramContext.setOnClickListener(this.mOnClickListener);
+    paramContext.setTag(localObject);
+    this.mHeaderChildMap.put("map_key_avatar_pendant", paramContext);
+    super.updateAvatarPendantImage(paramProfileCardInfo, true);
   }
   
   private void updateBaseInfoArea(ProfileCardInfo paramProfileCardInfo, View paramView)
   {
-    paramView = (TextView)paramView.findViewById(2131369065);
-    ProfileCardTemplate.a(paramView, "color", paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate, "photoAddressColor");
+    paramView = (TextView)paramView.findViewById(2131368787);
+    this.templateUtils.updateViewAttr(paramView, "color", paramProfileCardInfo.currentTemplate, "photoAddressColor");
     this.mHeaderChildMap.put("map_key_sex_age_area", paramView);
     super.updateSexAgeArea(paramProfileCardInfo);
   }
   
   private void updateHeadArea(ProfileCardInfo paramProfileCardInfo, View paramView)
   {
-    paramView = (ProfileNameView)paramView.findViewById(2131369073);
-    ProfileCardTemplate.a(paramView, "color", paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate, "photoNickNameColor");
+    paramView = (ProfileNameView)paramView.findViewById(2131368795);
+    this.templateUtils.updateViewAttr(paramView, "color", paramProfileCardInfo.currentTemplate, "photoNickNameColor");
     paramView.setVisibility(0);
     paramView.setClickable(true);
     paramView.setClickListener(this.mOnClickListener);
@@ -83,8 +81,8 @@ public class VasProfilePhotoView
   
   private void updateLikeArea(ProfileCardInfo paramProfileCardInfo, View paramView)
   {
-    VoteView localVoteView = (VoteView)findViewById(2131381767);
-    paramView = (HeartLayout)paramView.findViewById(2131368400);
+    VoteView localVoteView = (VoteView)findViewById(2131380996);
+    paramView = (HeartLayout)paramView.findViewById(2131368151);
     paramView.setEnabled(false);
     localVoteView.setHeartLayout(this.mApp, paramView);
     this.mHeaderChildMap.put("map_key_like", localVoteView);
@@ -93,15 +91,16 @@ public class VasProfilePhotoView
   
   private void updatePhotoWallArea(ProfileCardInfo paramProfileCardInfo, View paramView)
   {
-    paramView = (QzonePhotoView)paramView.findViewById(2131375417);
+    paramView = (QzonePhotoView)paramView.findViewById(2131374935);
+    paramView.setTemplateUtils(this.templateUtils);
     paramView.a(this.mActivity, paramProfileCardInfo);
     this.mHeaderChildMap.put("map_key_qzonecover", paramView);
-    ProfileCardTemplate.a(paramView, "background", paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate, "commonMaskBackground");
+    this.templateUtils.updateViewAttr(paramView, "background", paramProfileCardInfo.currentTemplate, "commonMaskBackground");
   }
   
   private void updateTipsArea(View paramView)
   {
-    paramView = (LinearLayout)paramView.findViewById(2131369104);
+    paramView = (LinearLayout)paramView.findViewById(2131368825);
     this.mHeaderChildMap.put("map_key_tips", paramView);
   }
   
@@ -114,7 +113,7 @@ public class VasProfilePhotoView
     return super.intercept(paramView, paramMotionEvent);
   }
   
-  public void onInit(ProfileCardInfo paramProfileCardInfo)
+  protected void onInit(ProfileCardInfo paramProfileCardInfo)
   {
     Context localContext = getContext();
     View localView = initMainView(localContext);
@@ -146,7 +145,7 @@ public class VasProfilePhotoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.view.VasProfilePhotoView
  * JD-Core Version:    0.7.0.1
  */

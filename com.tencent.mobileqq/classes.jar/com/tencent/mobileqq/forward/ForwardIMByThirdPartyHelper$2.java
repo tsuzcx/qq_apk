@@ -18,7 +18,7 @@ class ForwardIMByThirdPartyHelper$2
   {
     if (paramInt == 1)
     {
-      ForwardIMByThirdPartyHelper.a(this.a).i(true);
+      ForwardIMByThirdPartyHelper.a(this.a).g(true);
       paramDialogInterface = new Intent();
       paramDialogInterface.putExtra("is_change_account", true);
       paramDialogInterface = AIOUtils.a(paramDialogInterface, new int[] { 2 });
@@ -42,7 +42,7 @@ class ForwardIMByThirdPartyHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardIMByThirdPartyHelper.2
  * JD-Core Version:    0.7.0.1
  */

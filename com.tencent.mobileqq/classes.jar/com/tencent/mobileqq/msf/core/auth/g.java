@@ -15,26 +15,29 @@ class g
   
   public void run()
   {
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("", this.a, "login.chgTok_A2D2");
-    localToServiceMsg.setMsfCommand(MsfCommand._msf_refreToken);
-    localToServiceMsg.getAttributes().put("to_login_token_cmdhead", Integer.valueOf(9));
-    localToServiceMsg.getAttributes().put("refresh_token_src", "AccountTokenChecker");
-    localToServiceMsg.setRequestSsoSeq(MsfCore.getNextSeq());
-    localToServiceMsg.setAppId(this.b.e.a.getMsfAppid());
-    localToServiceMsg.setTimeout(30000L);
+    Object localObject = new ToServiceMsg("", this.a, "login.chgTok_A2D2");
+    ((ToServiceMsg)localObject).setMsfCommand(MsfCommand._msf_refreToken);
+    ((ToServiceMsg)localObject).getAttributes().put("to_login_token_cmdhead", Integer.valueOf(9));
+    ((ToServiceMsg)localObject).getAttributes().put("refresh_token_src", "AccountTokenChecker");
+    ((ToServiceMsg)localObject).setRequestSsoSeq(MsfCore.getNextSeq());
+    ((ToServiceMsg)localObject).setAppId(this.b.e.a.getMsfAppid());
+    ((ToServiceMsg)localObject).setTimeout(30000L);
     HashMap localHashMap = new HashMap();
     RequestCustomSig localRequestCustomSig = new RequestCustomSig();
     localRequestCustomSig.ulCustumFlag = 34869344L;
     localRequestCustomSig.reserved = new byte[0];
     localHashMap.put("RequestCustomSig", localRequestCustomSig);
-    localToServiceMsg.getAttributes().put("to_login_token_map", localHashMap);
-    this.b.e.a.changeTokenAfterLogin(localToServiceMsg, true);
-    QLog.d("MSF.C.TokenChecker", 1, "checkToken renew A/D for " + MsfSdkUtils.getShortUin(this.a));
+    ((ToServiceMsg)localObject).getAttributes().put("to_login_token_map", localHashMap);
+    this.b.e.a.changeTokenAfterLogin((ToServiceMsg)localObject, true);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("checkToken renew A/D for ");
+    ((StringBuilder)localObject).append(MsfSdkUtils.getShortUin(this.a));
+    QLog.d("MSF.C.TokenChecker", 1, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.auth.g
  * JD-Core Version:    0.7.0.1
  */

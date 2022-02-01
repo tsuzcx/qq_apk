@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.shortvideo;
 
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.editor.database.PublishVideoEntry;
 
 abstract interface EncodeVideoTask$EncodeProcessListener
 {
@@ -14,7 +14,7 @@ abstract interface EncodeVideoTask$EncodeProcessListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.EncodeProcessListener
  * JD-Core Version:    0.7.0.1
  */

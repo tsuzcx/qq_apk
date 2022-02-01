@@ -37,48 +37,53 @@ public abstract class URLUtil
   public static String a(String paramString1, String paramString2)
   {
     StringBuilder localStringBuilder = new StringBuilder(paramString1);
-    int j = 0;
-    int i = -1;
-    int k;
-    if (j < localStringBuilder.length())
+    int n = -1;
+    int k = 0;
+    int j;
+    for (int i = -1;; i = j)
     {
-      if (localStringBuilder.charAt(j) != '?')
+      j = n;
+      if (k >= localStringBuilder.length()) {
+        break;
+      }
+      if (localStringBuilder.charAt(k) != '?')
       {
-        k = i;
-        if (localStringBuilder.charAt(j) != '&') {}
+        j = i;
+        if (localStringBuilder.charAt(k) != '&') {}
       }
       else
       {
-        if (!paramString2.equals(localStringBuilder.substring(j + 1, j + 1 + paramString2.length()))) {
-          break label86;
+        m = k + 1;
+        if (paramString2.equals(localStringBuilder.substring(m, paramString2.length() + m)))
+        {
+          j = m;
         }
-        k = j + 1;
+        else
+        {
+          j = i;
+          if (i > 0)
+          {
+            j = m;
+            break;
+          }
+        }
       }
-      label86:
-      do
-      {
-        j += 1;
-        i = k;
-        break;
-        k = i;
-      } while (i <= 0);
-      j += 1;
+      k += 1;
     }
-    for (;;)
+    if (i < 0) {
+      return paramString1;
+    }
+    int m = j;
+    k = i;
+    if (j < 0)
     {
-      if (i < 0) {
-        return paramString1;
-      }
-      int m = j;
-      k = i;
-      if (j < 0)
-      {
-        k = i - 1;
-        m = localStringBuilder.length();
-      }
-      return localStringBuilder.substring(0, k) + localStringBuilder.substring(m, localStringBuilder.length());
-      j = -1;
+      k = i - 1;
+      m = localStringBuilder.length();
     }
+    paramString1 = new StringBuilder();
+    paramString1.append(localStringBuilder.substring(0, k));
+    paramString1.append(localStringBuilder.substring(m, localStringBuilder.length()));
+    return paramString1.toString();
   }
   
   public static String a(String paramString1, String paramString2, String paramString3)
@@ -86,50 +91,72 @@ public abstract class URLUtil
     char c = '?';
     int i = paramString1.indexOf('?');
     int j = paramString1.indexOf('#');
-    if (i == -1) {}
-    for (;;)
-    {
-      paramString2 = c + a(paramString2) + '=' + a(paramString3);
-      if (j != -1) {
-        break;
-      }
-      return paramString1 + paramString2;
+    if (i != -1) {
       c = '&';
     }
-    return paramString1.substring(0, j) + paramString2 + paramString1.substring(j);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c);
+    localStringBuilder.append(a(paramString2));
+    localStringBuilder.append('=');
+    localStringBuilder.append(a(paramString3));
+    paramString3 = localStringBuilder.toString();
+    if (j == -1)
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append(paramString3);
+      paramString1 = paramString2;
+    }
+    else
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1.substring(0, j));
+      paramString2.append(paramString3);
+      paramString2.append(paramString1.substring(j));
+      paramString1 = paramString2;
+    }
+    return paramString1.toString();
+  }
+  
+  public static String a(Map<String, String> paramMap, String paramString)
+  {
+    return (String)paramMap.get(paramString);
   }
   
   public static Map<String, String> a(String paramString)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
     if (paramString != null)
     {
       int i = paramString.indexOf("?");
-      localObject1 = localObject2;
-      if (-1 != i) {
-        localObject1 = b(paramString.substring(i + 1));
+      if (-1 != i)
+      {
+        paramString = b(paramString.substring(i + 1));
+        break label32;
       }
     }
-    paramString = (String)localObject1;
-    if (localObject1 == null) {
-      paramString = new HashMap();
+    paramString = null;
+    label32:
+    Object localObject = paramString;
+    if (paramString == null) {
+      localObject = new HashMap();
     }
-    return paramString;
+    return localObject;
   }
   
   public static boolean a(String paramString)
   {
-    if ((paramString == null) || (paramString.equals(""))) {}
-    for (;;)
+    if (paramString != null)
     {
-      return false;
+      if (paramString.equals("")) {
+        return false;
+      }
       try
       {
         paramString = new URI(paramString);
-        if ((paramString.getHost() != null) && ((paramString.getScheme().equalsIgnoreCase("http")) || (paramString.getScheme().equalsIgnoreCase("https")))) {
-          return true;
+        if (paramString.getHost() == null) {
+          return false;
         }
+        return (paramString.getScheme().equalsIgnoreCase("http")) || (paramString.getScheme().equalsIgnoreCase("https"));
       }
       catch (URISyntaxException paramString)
       {
@@ -157,48 +184,58 @@ public abstract class URLUtil
     char c = '?';
     int i = paramString1.indexOf('?');
     int j = paramString1.indexOf('#');
-    if (i == -1) {}
-    for (;;)
-    {
-      paramString2 = c + paramString2 + '=' + paramString3;
-      if (j != -1) {
-        break;
-      }
-      return paramString1 + paramString2;
+    if (i != -1) {
       c = '&';
     }
-    return paramString1.substring(0, j) + paramString2 + paramString1.substring(j);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c);
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append('=');
+    localStringBuilder.append(paramString3);
+    paramString3 = localStringBuilder.toString();
+    if (j == -1)
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append(paramString3);
+      paramString1 = paramString2;
+    }
+    else
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1.substring(0, j));
+      paramString2.append(paramString3);
+      paramString2.append(paramString1.substring(j));
+      paramString1 = paramString2;
+    }
+    return paramString1.toString();
   }
   
   public static Map<String, String> b(String paramString)
   {
-    int i = 0;
     HashMap localHashMap = new HashMap();
-    for (;;)
+    try
     {
-      try
+      paramString = paramString.split("&");
+      int j = paramString.length;
+      int i = 0;
+      while (i < j)
       {
-        paramString = paramString.split("&");
-        int j = paramString.length;
-        if (i < j)
-        {
-          String[] arrayOfString = paramString[i].split("=");
-          if ((arrayOfString == null) || (arrayOfString.length != 2)) {
-            break label72;
-          }
+        String[] arrayOfString = paramString[i].split("=");
+        if ((arrayOfString != null) && (arrayOfString.length == 2)) {
           localHashMap.put(arrayOfString[0], URLDecoder.decode(arrayOfString[1]));
         }
+        i += 1;
       }
-      catch (Exception paramString) {}
       return localHashMap;
-      label72:
-      i += 1;
     }
+    catch (Exception paramString) {}
+    return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.URLUtil
  * JD-Core Version:    0.7.0.1
  */

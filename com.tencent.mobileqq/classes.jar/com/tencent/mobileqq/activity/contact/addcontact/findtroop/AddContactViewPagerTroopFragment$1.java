@@ -18,18 +18,16 @@ class AddContactViewPagerTroopFragment$1
       this.jdField_a_of_type_Float = paramView.getAlpha();
       paramView.setAlpha(this.jdField_a_of_type_Float * 0.5F);
     }
-    for (;;)
+    else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
     {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-        paramView.setAlpha(this.jdField_a_of_type_Float);
-      }
+      paramView.setAlpha(this.jdField_a_of_type_Float);
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment.1
  * JD-Core Version:    0.7.0.1
  */

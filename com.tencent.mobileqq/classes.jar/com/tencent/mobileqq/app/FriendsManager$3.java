@@ -11,12 +11,12 @@ class FriendsManager$3
   
   public void a(List<Groups> paramList)
   {
-    ((FriendListHandler)FriendsManager.a(this.a).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(103, true, null);
+    ((FriendListHandler)FriendsManager.a(this.a).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(101, true, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.FriendsManager.3
  * JD-Core Version:    0.7.0.1
  */

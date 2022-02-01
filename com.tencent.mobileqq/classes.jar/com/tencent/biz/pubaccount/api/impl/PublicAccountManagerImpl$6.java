@@ -19,41 +19,63 @@ class PublicAccountManagerImpl$6
     if (paramBoolean) {}
     try
     {
-      paramBundle = paramBundle.getByteArray("data");
-      mobileqq_mp.SendPublicAccountMessageReceiptResponse localSendPublicAccountMessageReceiptResponse = new mobileqq_mp.SendPublicAccountMessageReceiptResponse();
-      localSendPublicAccountMessageReceiptResponse.mergeFrom(paramBundle);
-      boolean bool = paramBoolean;
-      if (localSendPublicAccountMessageReceiptResponse.ret_info.has())
+      try
       {
-        bool = paramBoolean;
-        if (localSendPublicAccountMessageReceiptResponse.ret_info.ret_code.has())
+        paramBundle = paramBundle.getByteArray("data");
+        localObject = new mobileqq_mp.SendPublicAccountMessageReceiptResponse();
+        ((mobileqq_mp.SendPublicAccountMessageReceiptResponse)localObject).mergeFrom(paramBundle);
+        boolean bool = paramBoolean;
+        if (((mobileqq_mp.SendPublicAccountMessageReceiptResponse)localObject).ret_info.has())
         {
-          paramInt = localSendPublicAccountMessageReceiptResponse.ret_info.ret_code.get();
           bool = paramBoolean;
-          if (paramInt != 0L) {
-            bool = false;
+          if (((mobileqq_mp.SendPublicAccountMessageReceiptResponse)localObject).ret_info.ret_code.has())
+          {
+            paramInt = ((mobileqq_mp.SendPublicAccountMessageReceiptResponse)localObject).ret_info.ret_code.get();
+            bool = paramBoolean;
+            if (paramInt != 0L) {
+              bool = false;
+            }
           }
         }
+        if (!QLog.isColorLevel()) {
+          break label219;
+        }
+        paramBundle = new StringBuilder();
+        paramBundle.append("sendMsgArriveReceipt response :");
+        paramBundle.append(String.valueOf(bool));
+        paramBundle = paramBundle.toString();
       }
-      return;
+      finally
+      {
+        Object localObject;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("sendMsgArriveReceipt response :");
+          ((StringBuilder)localObject).append(String.valueOf(paramBoolean));
+          QLog.i("PublicAccountManager", 2, ((StringBuilder)localObject).toString());
+        }
+      }
     }
     catch (Exception paramBundle)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("PublicAccountManager", 2, "sendMsgArriveReceipt response :" + String.valueOf(false));
-      return;
+      label177:
+      label219:
+      break label177;
     }
-    finally
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("PublicAccountManager", 2, "sendMsgArriveReceipt response :" + String.valueOf(paramBoolean));
-      }
+      paramBundle = new StringBuilder();
+      paramBundle.append("sendMsgArriveReceipt response :");
+      paramBundle.append(String.valueOf(false));
+      paramBundle = paramBundle.toString();
+      QLog.i("PublicAccountManager", 2, paramBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountManagerImpl.6
  * JD-Core Version:    0.7.0.1
  */

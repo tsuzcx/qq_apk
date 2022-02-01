@@ -58,7 +58,13 @@ class VideoCombineHelper$DownLoadTask
   private String a(String paramString1, String paramString2)
   {
     paramString1 = UUID.nameUUIDFromBytes(paramString1.getBytes());
-    paramString1 = b().getAbsolutePath() + File.separator + "v_" + paramString1.toString() + paramString2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(b().getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("v_");
+    localStringBuilder.append(paramString1.toString());
+    localStringBuilder.append(paramString2);
+    paramString1 = localStringBuilder.toString();
     paramString2 = new File(paramString1);
     if (!paramString2.getParentFile().exists()) {
       paramString2.mkdirs();
@@ -69,82 +75,90 @@ class VideoCombineHelper$DownLoadTask
   public void a()
   {
     long l = System.currentTimeMillis();
-    Object localObject2 = new Bundle();
-    VideoCombineHelper.CombineParams localCombineParams = a();
-    if (localCombineParams.jdField_b_of_type_Boolean)
+    Object localObject3 = new Bundle();
+    Object localObject1 = a();
+    if (((VideoCombineHelper.CombineParams)localObject1).jdField_b_of_type_Boolean)
     {
       this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.b(this);
       return;
     }
-    Object localObject1 = new ArrayList();
-    Object localObject3;
+    Object localObject2 = new ArrayList();
+    Object localObject4;
     if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
     {
-      localObject3 = new DownloadTask(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilHashMap, this.c);
-      ((DownloadTask)localObject3).b = 3;
-      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a().a((DownloadTask)localObject3, new VideoCombineHelper.DownLoadTask.1(this, localCombineParams, (ArrayList)localObject1, l), (Bundle)localObject2);
-      label111:
-      if (QLog.isColorLevel()) {
-        QLog.d(".troop.VideoCombineHelper", 2, "start Download key = " + this.c);
-      }
+      localObject4 = new DownloadTask(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilHashMap, this.c);
+      ((DownloadTask)localObject4).b = 3;
+      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a().startDownload((DownloadTask)localObject4, new VideoCombineHelper.DownLoadTask.1(this, (VideoCombineHelper.CombineParams)localObject1, (ArrayList)localObject2, l), (Bundle)localObject3);
     }
-    else
+    for (;;)
     {
+      int i;
       try
       {
-        localObject2 = localCombineParams.jdField_b_of_type_JavaUtilArrayList.iterator();
-        int i = 1;
-        while (((Iterator)localObject2).hasNext())
+        localObject3 = ((VideoCombineHelper.CombineParams)localObject1).jdField_b_of_type_JavaUtilArrayList.iterator();
+        i = 1;
+        if (((Iterator)localObject3).hasNext())
         {
-          localObject3 = (String)((Iterator)localObject2).next();
-          File localFile = new File(a() + File.separator + "v_" + i + ".mp4");
-          ((ArrayList)localObject1).add(localFile.getAbsolutePath());
-          if (localFile.exists())
-          {
-            i += 1;
+          localObject4 = (String)((Iterator)localObject3).next();
+          Object localObject5 = new StringBuilder();
+          ((StringBuilder)localObject5).append(a());
+          ((StringBuilder)localObject5).append(File.separator);
+          ((StringBuilder)localObject5).append("v_");
+          ((StringBuilder)localObject5).append(i);
+          ((StringBuilder)localObject5).append(".mp4");
+          localObject5 = new File(((StringBuilder)localObject5).toString());
+          ((ArrayList)localObject2).add(((File)localObject5).getAbsolutePath());
+          if (((File)localObject5).exists()) {
+            break label501;
           }
-          else
-          {
-            if (!localFile.exists()) {
-              localFile.createNewFile();
-            }
-            FileUtils.a(new File((String)localObject3), localFile);
-            i += 1;
+          if (!((File)localObject5).exists()) {
+            ((File)localObject5).createNewFile();
           }
+          FileUtils.a(new File((String)localObject4), (File)localObject5);
         }
-        b();
       }
       catch (IOException localIOException)
       {
         QLog.e(".troop.VideoCombineHelper", 1, localIOException, new Object[0]);
         this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this);
-        localCombineParams.jdField_b_of_type_JavaUtilArrayList = ((ArrayList)localObject1);
+        ((VideoCombineHelper.CombineParams)localObject1).jdField_b_of_type_JavaUtilArrayList = ((ArrayList)localObject2);
         this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.b(this);
-        this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task = new VideoCombineHelper.CombineTask(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener, this.c, localCombineParams.jdField_b_of_type_JavaUtilArrayList, localCombineParams.d, localCombineParams.c);
-        localObject1 = (AppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("modular_web");
-        if (!VideoEnvironment.checkAndLoadAVCodec()) {}
+        this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task = new VideoCombineHelper.CombineTask(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener, this.c, ((VideoCombineHelper.CombineParams)localObject1).jdField_b_of_type_JavaUtilArrayList, ((VideoCombineHelper.CombineParams)localObject1).d, ((VideoCombineHelper.CombineParams)localObject1).c);
+        localObject2 = (AppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("modular_web");
+        if (VideoEnvironment.checkAndLoadAVCodec())
+        {
+          b();
+        }
+        else if (((VideoCombineHelper.CombineParams)localObject1).jdField_a_of_type_Boolean)
+        {
+          this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.b(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task);
+        }
+        else
+        {
+          this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task.d = "lib not ready";
+          this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task);
+        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("downLoadTime = ");
+        ((StringBuilder)localObject1).append(System.currentTimeMillis() - l);
+        QLog.d(".troop.trace_video_combine", 2, ((StringBuilder)localObject1).toString());
       }
-    }
-    for (;;)
-    {
-      QLog.d(".troop.trace_video_combine", 2, "downLoadTime = " + (System.currentTimeMillis() - l));
-      break label111;
-      break;
-      if (localCombineParams.jdField_a_of_type_Boolean)
+      if (QLog.isColorLevel())
       {
-        this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.b(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("start Download key = ");
+        ((StringBuilder)localObject1).append(this.c);
+        QLog.d(".troop.VideoCombineHelper", 2, ((StringBuilder)localObject1).toString());
       }
-      else
-      {
-        this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task.d = "lib not ready";
-        this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task);
-      }
+      return;
+      label501:
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.VideoCombineHelper.DownLoadTask
  * JD-Core Version:    0.7.0.1
  */

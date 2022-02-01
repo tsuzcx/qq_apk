@@ -22,14 +22,15 @@ public class DoLikeRequest
       return;
     }
     PBUInt32Field localPBUInt32Field = this.req.likeType;
-    if (paramStFeed.likeInfo.status.get() == 0) {}
-    for (int i = 1;; i = 0)
-    {
-      localPBUInt32Field.set(i);
-      this.req.like.set(paramStFeed.likeInfo);
-      this.req.feed.set(paramStFeed);
-      return;
+    int i;
+    if (paramStFeed.likeInfo.status.get() == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    localPBUInt32Field.set(i);
+    this.req.like.set(paramStFeed.likeInfo);
+    this.req.feed.set(paramStFeed);
   }
   
   public MessageMicro decode(byte[] paramArrayOfByte)
@@ -52,14 +53,14 @@ public class DoLikeRequest
     return "CertifiedAccountSvc.certified_account_write.DoLike";
   }
   
-  public byte[] getRequestByteData()
+  protected byte[] getRequestByteData()
   {
     return this.req.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.network.DoLikeRequest
  * JD-Core Version:    0.7.0.1
  */

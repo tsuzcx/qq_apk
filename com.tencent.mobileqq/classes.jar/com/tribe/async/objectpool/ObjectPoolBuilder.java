@@ -32,19 +32,21 @@ public class ObjectPoolBuilder<T>
   
   public ObjectPool<T> build()
   {
-    if (this.mClock == null) {
-      throw new IllegalArgumentException("Must add a clock to the object pool builder");
+    if (this.mClock != null)
+    {
+      Object localObject2 = this.mAllocator;
+      Object localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = new ObjectPool.BasicAllocator(this.mClazz);
+      }
+      localObject1 = new ObjectPool(this.mClazz, this.mMinSize, this.mMaxSize, this.mIncrementSize, this.mCompactionDelayMs, (ObjectPool.Allocator)localObject1, this.mClock);
+      localObject2 = this.mManager;
+      if (localObject2 != null) {
+        ((ObjectPoolManager)localObject2).addPool(this.mClazz, (ObjectPool)localObject1);
+      }
+      return localObject1;
     }
-    ObjectPool.Allocator localAllocator = this.mAllocator;
-    Object localObject = localAllocator;
-    if (localAllocator == null) {
-      localObject = new ObjectPool.BasicAllocator(this.mClazz);
-    }
-    localObject = new ObjectPool(this.mClazz, this.mMinSize, this.mMaxSize, this.mIncrementSize, this.mCompactionDelayMs, (ObjectPool.Allocator)localObject, this.mClock);
-    if (this.mManager != null) {
-      this.mManager.addPool(this.mClazz, (ObjectPool)localObject);
-    }
-    return localObject;
+    throw new IllegalArgumentException("Must add a clock to the object pool builder");
   }
   
   public ObjectPool.Allocator<T> getAllocator()
@@ -115,7 +117,7 @@ public class ObjectPoolBuilder<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tribe.async.objectpool.ObjectPoolBuilder
  * JD-Core Version:    0.7.0.1
  */

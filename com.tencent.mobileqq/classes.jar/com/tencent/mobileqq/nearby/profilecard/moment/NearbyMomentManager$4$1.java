@@ -22,22 +22,24 @@ class NearbyMomentManager$4$1
       }
       localObject = new ArrayList();
     }
-    for (;;)
+    else
     {
-      ThreadManager.getUIHandler().post(new NearbyMomentManager.4.1.1(this, (List)localObject));
-      return;
       localObject = localList;
       if (QLog.isColorLevel())
       {
-        QLog.i("NearbyMomentManager", 2, "momentFeedInfoList, size=" + this.jdField_a_of_type_JavaUtilList.size());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("momentFeedInfoList, size=");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilList.size());
+        QLog.i("NearbyMomentManager", 2, ((StringBuilder)localObject).toString());
         localObject = localList;
       }
     }
+    ThreadManager.getUIHandler().post(new NearbyMomentManager.4.1.1(this, (List)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.4.1
  * JD-Core Version:    0.7.0.1
  */

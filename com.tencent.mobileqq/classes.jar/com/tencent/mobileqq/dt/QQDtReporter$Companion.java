@@ -10,21 +10,22 @@ public final class QQDtReporter$Companion
   @Nullable
   public final QQDtReporter a()
   {
-    if (QQDtReporter.a() == null) {}
-    try
-    {
-      if (QQDtReporter.a() == null) {
-        QQDtReporter.a(new QQDtReporter(null));
+    if (QQDtReporter.a() == null) {
+      try
+      {
+        if (QQDtReporter.a() == null) {
+          QQDtReporter.a(new QQDtReporter(null));
+        }
+        Unit localUnit = Unit.INSTANCE;
       }
-      Unit localUnit = Unit.INSTANCE;
-      return QQDtReporter.a();
+      finally {}
     }
-    finally {}
+    return QQDtReporter.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dt.QQDtReporter.Companion
  * JD-Core Version:    0.7.0.1
  */

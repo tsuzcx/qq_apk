@@ -5,12 +5,11 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.cache.QZoneFilePath;
 import java.io.File;
+import mqq.app.MobileQQ;
 
 public class MediaUtil
 {
@@ -19,28 +18,31 @@ public class MediaUtil
   
   public static String getCameraPath(String paramString)
   {
-    return QZoneFilePath.DCIM_CAMERA_PATH + File.separator + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(QZoneFilePath.DCIM_CAMERA_PATH);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   private static Activity getRealActivity(Activity paramActivity)
   {
-    Activity localActivity;
     if (paramActivity == null) {
-      localActivity = null;
+      return null;
     }
-    do
-    {
-      return localActivity;
-      localActivity = paramActivity;
-    } while (!(paramActivity instanceof BasePluginActivity));
-    return ((BasePluginActivity)paramActivity).getOutActivity();
+    Activity localActivity = paramActivity;
+    if ((paramActivity instanceof BasePluginActivity)) {
+      localActivity = ((BasePluginActivity)paramActivity).getOutActivity();
+    }
+    return localActivity;
   }
   
   public static boolean saveBitmapToSystemAlbumJpg(Activity paramActivity, Bitmap paramBitmap, int paramInt, String paramString)
   {
+    int i = Build.VERSION.SDK_INT;
     boolean bool2 = true;
     boolean bool1 = bool2;
-    if (Build.VERSION.SDK_INT >= 23)
+    if (i >= 23)
     {
       bool1 = bool2;
       if (paramActivity != null) {
@@ -57,160 +59,148 @@ public class MediaUtil
   private static boolean saveBitmapToSystemAlbumJpg(Bitmap paramBitmap, int paramInt, String paramString)
   {
     // Byte code:
-    //   0: iconst_1
-    //   1: istore 4
-    //   3: new 47	java/io/File
-    //   6: dup
-    //   7: new 35	java/lang/StringBuilder
-    //   10: dup
-    //   11: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   14: getstatic 41	cooperation/qzone/cache/QZoneFilePath:DCIM_CAMERA_PATH	Ljava/lang/String;
-    //   17: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   20: getstatic 50	java/io/File:separator	Ljava/lang/String;
-    //   23: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   26: aload_2
-    //   27: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   33: invokespecial 84	java/io/File:<init>	(Ljava/lang/String;)V
-    //   36: astore 6
-    //   38: aload 6
-    //   40: invokevirtual 88	java/io/File:exists	()Z
-    //   43: ifne +7 -> 50
-    //   46: aload_0
-    //   47: ifnonnull +5 -> 52
-    //   50: iconst_0
-    //   51: ireturn
-    //   52: aload 6
-    //   54: invokevirtual 91	java/io/File:createNewFile	()Z
-    //   57: istore_3
-    //   58: iload_3
-    //   59: ifne +18 -> 77
-    //   62: iconst_0
-    //   63: ifeq -13 -> 50
-    //   66: new 93	java/lang/NullPointerException
-    //   69: dup
-    //   70: invokespecial 94	java/lang/NullPointerException:<init>	()V
-    //   73: athrow
-    //   74: astore_0
-    //   75: iconst_0
-    //   76: ireturn
-    //   77: new 96	java/io/BufferedOutputStream
-    //   80: dup
-    //   81: new 98	java/io/FileOutputStream
-    //   84: dup
-    //   85: aload 6
-    //   87: invokespecial 101	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   90: invokespecial 104	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   93: astore 5
-    //   95: aload 5
-    //   97: astore_2
-    //   98: aload_0
-    //   99: getstatic 110	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   102: iload_1
-    //   103: aload 5
-    //   105: invokevirtual 116	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   108: pop
+    //   0: new 35	java/lang/StringBuilder
+    //   3: dup
+    //   4: invokespecial 36	java/lang/StringBuilder:<init>	()V
+    //   7: astore_3
+    //   8: aload_3
+    //   9: getstatic 41	cooperation/qzone/cache/QZoneFilePath:DCIM_CAMERA_PATH	Ljava/lang/String;
+    //   12: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15: pop
+    //   16: aload_3
+    //   17: getstatic 50	java/io/File:separator	Ljava/lang/String;
+    //   20: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: pop
+    //   24: aload_3
+    //   25: aload_2
+    //   26: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: pop
+    //   30: new 47	java/io/File
+    //   33: dup
+    //   34: aload_3
+    //   35: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   38: invokespecial 84	java/io/File:<init>	(Ljava/lang/String;)V
+    //   41: astore 5
+    //   43: aload 5
+    //   45: invokevirtual 88	java/io/File:exists	()Z
+    //   48: ifne +136 -> 184
+    //   51: aload_0
+    //   52: ifnonnull +5 -> 57
+    //   55: iconst_0
+    //   56: ireturn
+    //   57: aconst_null
+    //   58: astore 4
+    //   60: aconst_null
+    //   61: astore_3
+    //   62: aload_3
+    //   63: astore_2
+    //   64: aload 5
+    //   66: invokevirtual 91	java/io/File:createNewFile	()Z
+    //   69: ifne +5 -> 74
+    //   72: iconst_0
+    //   73: ireturn
+    //   74: aload_3
+    //   75: astore_2
+    //   76: new 93	java/io/BufferedOutputStream
+    //   79: dup
+    //   80: new 95	java/io/FileOutputStream
+    //   83: dup
+    //   84: aload 5
+    //   86: invokespecial 98	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   89: invokespecial 101	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   92: astore_3
+    //   93: aload_0
+    //   94: getstatic 107	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   97: iload_1
+    //   98: aload_3
+    //   99: invokevirtual 113	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   102: pop
+    //   103: new 115	android/content/Intent
+    //   106: dup
+    //   107: ldc 117
     //   109: aload 5
-    //   111: astore_2
-    //   112: new 118	android/content/Intent
-    //   115: dup
-    //   116: ldc 120
-    //   118: aload 6
-    //   120: invokestatic 126	android/net/Uri:fromFile	(Ljava/io/File;)Landroid/net/Uri;
-    //   123: invokespecial 129	android/content/Intent:<init>	(Ljava/lang/String;Landroid/net/Uri;)V
-    //   126: astore_0
-    //   127: aload 5
-    //   129: astore_2
-    //   130: invokestatic 135	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   133: aload_0
-    //   134: invokevirtual 141	com/tencent/qphone/base/util/BaseApplication:sendBroadcast	(Landroid/content/Intent;)V
-    //   137: iload 4
-    //   139: istore_3
-    //   140: aload 5
-    //   142: ifnull +11 -> 153
-    //   145: aload 5
-    //   147: invokevirtual 144	java/io/BufferedOutputStream:close	()V
-    //   150: iload 4
-    //   152: istore_3
-    //   153: iload_3
-    //   154: ireturn
-    //   155: astore 6
-    //   157: aconst_null
-    //   158: astore_0
-    //   159: aload_0
-    //   160: astore_2
-    //   161: ldc 11
-    //   163: iconst_1
-    //   164: ldc 146
-    //   166: aload 6
-    //   168: invokestatic 152	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   171: aload_0
-    //   172: ifnull +7 -> 179
-    //   175: aload_0
-    //   176: invokevirtual 144	java/io/BufferedOutputStream:close	()V
-    //   179: iconst_0
-    //   180: istore_3
-    //   181: goto -28 -> 153
-    //   184: astore_0
-    //   185: iconst_0
-    //   186: istore_3
-    //   187: goto -34 -> 153
-    //   190: astore_0
-    //   191: aconst_null
-    //   192: astore_2
-    //   193: aload_2
-    //   194: ifnull +7 -> 201
-    //   197: aload_2
-    //   198: invokevirtual 144	java/io/BufferedOutputStream:close	()V
-    //   201: aload_0
-    //   202: athrow
-    //   203: astore_0
-    //   204: iload 4
-    //   206: istore_3
-    //   207: goto -54 -> 153
-    //   210: astore_2
-    //   211: goto -10 -> 201
-    //   214: astore_0
-    //   215: goto -22 -> 193
-    //   218: astore 6
-    //   220: aload 5
-    //   222: astore_0
-    //   223: goto -64 -> 159
+    //   111: invokestatic 123	android/net/Uri:fromFile	(Ljava/io/File;)Landroid/net/Uri;
+    //   114: invokespecial 126	android/content/Intent:<init>	(Ljava/lang/String;Landroid/net/Uri;)V
+    //   117: astore_0
+    //   118: getstatic 132	mqq/app/MobileQQ:sMobileQQ	Lmqq/app/MobileQQ;
+    //   121: aload_0
+    //   122: invokevirtual 136	mqq/app/MobileQQ:sendBroadcast	(Landroid/content/Intent;)V
+    //   125: aload_3
+    //   126: invokevirtual 139	java/io/BufferedOutputStream:close	()V
+    //   129: iconst_1
+    //   130: ireturn
+    //   131: astore_0
+    //   132: aload_3
+    //   133: astore_2
+    //   134: goto +40 -> 174
+    //   137: astore_2
+    //   138: aload_3
+    //   139: astore_0
+    //   140: aload_2
+    //   141: astore_3
+    //   142: goto +11 -> 153
+    //   145: astore_0
+    //   146: goto +28 -> 174
+    //   149: astore_3
+    //   150: aload 4
+    //   152: astore_0
+    //   153: aload_0
+    //   154: astore_2
+    //   155: ldc 11
+    //   157: iconst_1
+    //   158: ldc 141
+    //   160: aload_3
+    //   161: invokestatic 147	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   164: aload_0
+    //   165: ifnull +7 -> 172
+    //   168: aload_0
+    //   169: invokevirtual 139	java/io/BufferedOutputStream:close	()V
+    //   172: iconst_0
+    //   173: ireturn
+    //   174: aload_2
+    //   175: ifnull +7 -> 182
+    //   178: aload_2
+    //   179: invokevirtual 139	java/io/BufferedOutputStream:close	()V
+    //   182: aload_0
+    //   183: athrow
+    //   184: iconst_0
+    //   185: ireturn
+    //   186: astore_0
+    //   187: iconst_1
+    //   188: ireturn
+    //   189: astore_0
+    //   190: goto -18 -> 172
+    //   193: astore_2
+    //   194: goto -12 -> 182
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	226	0	paramBitmap	Bitmap
-    //   0	226	1	paramInt	int
-    //   0	226	2	paramString	String
-    //   57	150	3	bool1	boolean
-    //   1	204	4	bool2	boolean
-    //   93	128	5	localBufferedOutputStream	java.io.BufferedOutputStream
-    //   36	83	6	localFile	File
-    //   155	12	6	localException1	java.lang.Exception
-    //   218	1	6	localException2	java.lang.Exception
+    //   0	197	0	paramBitmap	Bitmap
+    //   0	197	1	paramInt	int
+    //   0	197	2	paramString	String
+    //   7	135	3	localObject1	Object
+    //   149	12	3	localException	java.lang.Exception
+    //   58	93	4	localObject2	Object
+    //   41	69	5	localFile	File
     // Exception table:
     //   from	to	target	type
-    //   66	74	74	java/io/IOException
-    //   52	58	155	java/lang/Exception
-    //   77	95	155	java/lang/Exception
-    //   175	179	184	java/io/IOException
-    //   52	58	190	finally
-    //   77	95	190	finally
-    //   145	150	203	java/io/IOException
-    //   197	201	210	java/io/IOException
-    //   98	109	214	finally
-    //   112	127	214	finally
-    //   130	137	214	finally
-    //   161	171	214	finally
-    //   98	109	218	java/lang/Exception
-    //   112	127	218	java/lang/Exception
-    //   130	137	218	java/lang/Exception
+    //   93	125	131	finally
+    //   93	125	137	java/lang/Exception
+    //   64	72	145	finally
+    //   76	93	145	finally
+    //   155	164	145	finally
+    //   64	72	149	java/lang/Exception
+    //   76	93	149	java/lang/Exception
+    //   125	129	186	java/io/IOException
+    //   168	172	189	java/io/IOException
+    //   178	182	193	java/io/IOException
   }
   
   public static boolean saveFileToQqAlbum(Activity paramActivity, String paramString1, String paramString2, String paramString3)
   {
+    int i = Build.VERSION.SDK_INT;
     boolean bool2 = true;
     boolean bool1 = bool2;
-    if (Build.VERSION.SDK_INT >= 23)
+    if (i >= 23)
     {
       bool1 = bool2;
       if (paramActivity != null) {
@@ -236,35 +226,38 @@ public class MediaUtil
         QLog.e("MediaUtil", 1, "srcFile not exists, SaveFileToQqAlbum failed.");
         return false;
       }
+      Object localObject = new File(paramString2);
+      if (!((File)localObject).exists()) {
+        ((File)localObject).mkdirs();
+      }
+      if (((File)localObject).exists())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString2);
+        ((StringBuilder)localObject).append(File.separator);
+        ((StringBuilder)localObject).append(paramString3);
+        paramString2 = new File(((StringBuilder)localObject).toString());
+        FileUtils.copyFile(paramString1, paramString2);
+        paramString1 = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", Uri.fromFile(paramString2));
+        MobileQQ.sMobileQQ.sendBroadcast(paramString1);
+        return true;
+      }
+      QLog.e("MediaUtil", 1, "mkdirs failed, SaveFileToQqAlbum failed.");
+      return true;
     }
     catch (Throwable paramString1)
     {
       QLog.e("MediaUtil", 1, "saveFileToQqAlbum failed:", paramString1);
-      return false;
     }
-    File localFile = new File(paramString2);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    if (localFile.exists())
-    {
-      paramString2 = new File(paramString2 + File.separator + paramString3);
-      FileUtils.copyFile(paramString1, paramString2);
-      paramString1 = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", Uri.fromFile(paramString2));
-      BaseApplicationImpl.getContext().sendBroadcast(paramString1);
-    }
-    else
-    {
-      QLog.e("MediaUtil", 1, "mkdirs failed, SaveFileToQqAlbum failed.");
-    }
-    return true;
+    return false;
   }
   
   public static boolean saveFileToSystemAlbum(Activity paramActivity, String paramString1, String paramString2)
   {
+    int i = Build.VERSION.SDK_INT;
     boolean bool2 = true;
     boolean bool1 = bool2;
-    if (Build.VERSION.SDK_INT >= 23)
+    if (i >= 23)
     {
       bool1 = bool2;
       if (paramActivity != null) {
@@ -282,10 +275,14 @@ public class MediaUtil
     try
     {
       paramString1 = new File(paramString1);
-      paramString2 = new File(QZoneFilePath.DCIM_CAMERA_PATH + File.separator + paramString2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(QZoneFilePath.DCIM_CAMERA_PATH);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(paramString2);
+      paramString2 = new File(localStringBuilder.toString());
       FileUtils.copyFile(paramString1, paramString2);
       paramString1 = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", Uri.fromFile(paramString2));
-      BaseApplicationImpl.getContext().sendBroadcast(paramString1);
+      MobileQQ.sMobileQQ.sendBroadcast(paramString1);
       return true;
     }
     catch (Throwable paramString1)
@@ -297,7 +294,7 @@ public class MediaUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.MediaUtil
  * JD-Core Version:    0.7.0.1
  */

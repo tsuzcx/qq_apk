@@ -25,20 +25,23 @@ public final class CSPullConchs
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.reserved != 0) {
-      paramJceOutputStream.write(this.reserved, 0);
+    int i = this.reserved;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 0);
     }
-    if (this.cmdId != 0) {
-      paramJceOutputStream.write(this.cmdId, 1);
+    i = this.cmdId;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
-    if (this.busiType != 0) {
-      paramJceOutputStream.write(this.busiType, 2);
+    i = this.busiType;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MConch.CSPullConchs
  * JD-Core Version:    0.7.0.1
  */

@@ -12,17 +12,22 @@ final class SDKMiniProgramLpReportDC04239$10
   
   public void run()
   {
-    if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion()) {
-      QMLog.d("MiniProgramLpReportDC04239", "reportApiInvoke() called with args: " + this.val$eventName);
+    if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportApiInvoke() called with args: ");
+      ((StringBuilder)localObject).append(this.val$eventName);
+      QMLog.d("MiniProgramLpReportDC04239", ((StringBuilder)localObject).toString());
     }
-    if (this.val$miniAppConfig != null) {
-      SDKMiniProgramLpReportDC04239.access$300(this.val$miniAppConfig, SDKMiniProgramLpReportDC04239.getAppType(this.val$miniAppConfig), null, "inner-app", "from_api", this.val$eventName);
+    Object localObject = this.val$miniAppConfig;
+    if (localObject != null) {
+      SDKMiniProgramLpReportDC04239.access$300((MiniAppInfo)localObject, SDKMiniProgramLpReportDC04239.getAppType((MiniAppInfo)localObject), null, "inner-app", "from_api", this.val$eventName);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239.10
  * JD-Core Version:    0.7.0.1
  */

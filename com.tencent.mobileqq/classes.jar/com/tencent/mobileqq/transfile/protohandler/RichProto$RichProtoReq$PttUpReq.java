@@ -23,13 +23,16 @@ public class RichProto$RichProtoReq$PttUpReq
     localStringBuilder.append(this.voiceLength);
     localStringBuilder.append(" autoToText:");
     localStringBuilder.append(this.autoToText);
-    localStringBuilder.append(" type:").append(this.voiceType).append(" audioPanel:").append(this.audioPanelType);
+    localStringBuilder.append(" type:");
+    localStringBuilder.append(this.voiceType);
+    localStringBuilder.append(" audioPanel:");
+    localStringBuilder.append(this.audioPanelType);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.PttUpReq
  * JD-Core Version:    0.7.0.1
  */

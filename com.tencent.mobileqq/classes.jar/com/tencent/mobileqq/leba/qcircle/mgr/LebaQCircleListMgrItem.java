@@ -40,18 +40,18 @@ public class LebaQCircleListMgrItem
             paramArrayList.remove(localLebaViewItem);
           }
         }
-        if ((!QzoneConfig.isQQCircleShowLebaEntrance(StudyModeManager.a())) || (!QzoneConfig.isQQCircleShowSwitchButton())) {
-          break;
-        }
-        Object localObject = new LebaViewItem();
-        ((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo = new LebaPluginInfo();
-        ((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId = 1001L;
-        if (QzoneConfig.isQQCircleShowLebaBySwitchButton(StudyModeManager.a()))
+        if ((QzoneConfig.isQQCircleShowLebaEntrance(StudyModeManager.a())) && (QzoneConfig.isQQCircleShowSwitchButton()))
         {
+          localObject = new LebaViewItem();
+          ((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo = new LebaPluginInfo();
+          ((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId = 1001L;
+          if (!QzoneConfig.isQQCircleShowLebaBySwitchButton(StudyModeManager.a())) {
+            break label205;
+          }
           i = 0;
           ((LebaViewItem)localObject).jdField_a_of_type_Byte = ((byte)i);
-          ((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.strResName = HardCodeUtil.a(2131719715);
-          ((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.strResURL = "https://sola.gtimg.cn/aoi/sola/20201012111557_48i6yoJLfi.png";
+          ((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.strResName = HardCodeUtil.a(2131719438);
+          ((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.strResURL = "https://wezone-theme.cdn-go.cn/url-resource/latest/defaultmode/870/functionlist/functionist_wezone.png";
           QLog.e("LebaQCircleListMgrItem", 1, "showQcircleItem");
           paramArrayList.add(0, localObject);
           return;
@@ -59,49 +59,42 @@ public class LebaQCircleListMgrItem
       }
       catch (Exception paramArrayList)
       {
-        QLog.e("LebaQCircleListMgrItem", 1, "getQcircleItem" + paramArrayList);
-        return;
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getQcircleItem");
+        ((StringBuilder)localObject).append(paramArrayList);
+        QLog.e("LebaQCircleListMgrItem", 1, ((StringBuilder)localObject).toString());
       }
+      return;
+      label205:
       int i = 1;
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    String str = "";
-    Object localObject;
-    HashMap localHashMap;
-    if (paramBoolean)
-    {
+    String str = "1";
+    if (paramBoolean) {
       localObject = "1";
-      localHashMap = new HashMap();
-      if ((StudyModeManager.a()) || (!paramBoolean)) {
-        break label127;
-      }
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(str))
-      {
-        localHashMap.put("qqcircle_entrance_enable_on_children_mode", str);
-        QzoneConfig.getInstance().updateOneConfig("qqcircle", "qqcircle_entrance_enable_on_children_mode", str);
-      }
-      localHashMap.put("qqcircle_entrance_enable", localObject);
-      QzoneConfig.getInstance().updateOneConfig("qqcircle", "qqcircle_entrance_enable", (String)localObject);
-      localObject = new HashMap();
-      ((HashMap)localObject).put("qqcircle", localHashMap);
-      localObject = new QCircleSetMultiCircleWnsConfigRequest((HashMap)localObject);
-      VSNetworkHelper.getInstance().sendRequest((BaseRequest)localObject, new LebaQCircleListMgrItem.1(this, paramBoolean, str));
-      return;
+    } else {
       localObject = "0";
-      break;
-      label127:
-      if (paramBoolean) {
-        str = "1";
-      } else {
-        str = "0";
-      }
     }
+    HashMap localHashMap = new HashMap();
+    if ((!StudyModeManager.a()) && (paramBoolean)) {
+      str = "";
+    } else if (!paramBoolean) {
+      str = "0";
+    }
+    if (!TextUtils.isEmpty(str))
+    {
+      localHashMap.put("qqcircle_entrance_enable_on_children_mode", str);
+      QzoneConfig.getInstance().updateOneConfig("qqcircle", "qqcircle_entrance_enable_on_children_mode", str);
+    }
+    localHashMap.put("qqcircle_entrance_enable", localObject);
+    QzoneConfig.getInstance().updateOneConfig("qqcircle", "qqcircle_entrance_enable", (String)localObject);
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("qqcircle", localHashMap);
+    localObject = new QCircleSetMultiCircleWnsConfigRequest((HashMap)localObject);
+    VSNetworkHelper.getInstance().sendRequest((BaseRequest)localObject, new LebaQCircleListMgrItem.1(this, paramBoolean, str));
   }
   
   public boolean a(RedTouch paramRedTouch, LebaViewItem paramLebaViewItem, boolean paramBoolean)
@@ -116,7 +109,7 @@ public class LebaQCircleListMgrItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.qcircle.mgr.LebaQCircleListMgrItem
  * JD-Core Version:    0.7.0.1
  */

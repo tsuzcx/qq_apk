@@ -12,7 +12,6 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.text.TextUtils;
@@ -22,20 +21,23 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoListCustomizationProfileCustomCover;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.SVIPHandler;
 import com.tencent.mobileqq.app.SVIPObserver;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+import com.tencent.mobileqq.profilecard.base.utils.ProfileCardUtils;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.util.ProfileCardUtil;
 import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.vas.VasExtensionManager;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.vas.svip.api.ISVIPHandler;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.mobileqq.widget.QQProgressNotifier;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -84,26 +86,27 @@ public class CustomCoverFragment
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
       startTitleProgress();
-      ((SVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).f(this.f);
+      ((ISVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).f(this.f);
     }
   }
   
   private void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localQQAppInterface != null)
     {
       this.e = paramInt;
-      ((SVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).g(paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(0, getString(2131698870), 0, this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
-      VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "defaultcard", "set_defaultcard", "", 1, 0, 0, "", Integer.toString(paramInt), "");
+      ((ISVIPHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).g(paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(0, getString(2131698949), 0, this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
+      VasWebviewUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "defaultcard", "set_defaultcard", "", 1, 0, 0, "", Integer.toString(paramInt), "");
     }
   }
   
-  private void a(FragmentActivity paramFragmentActivity)
+  private void a(BaseActivity paramBaseActivity)
   {
-    this.jdField_a_of_type_AndroidNetUri = FriendProfileCardActivity.a(paramFragmentActivity, 1021);
-    ReportController.b(paramFragmentActivity.app, "CliOper", "", "", "0X8006A89", "0X8006A89", 0, 0, "", "", "", "");
-    VasWebviewUtil.reportCommercialDrainage(paramFragmentActivity.app.getCurrentAccountUin(), "defaultcard", "photo_takeaphoto", "", 1, 0, 0, "", "", "");
+    this.jdField_a_of_type_AndroidNetUri = ProfileCardUtils.enterSnapshot(paramBaseActivity, 1021);
+    ReportController.b(paramBaseActivity.app, "CliOper", "", "", "0X8006A89", "0X8006A89", 0, 0, "", "", "", "");
+    VasWebviewUtil.a(paramBaseActivity.app.getCurrentAccountUin(), "defaultcard", "photo_takeaphoto", "", 1, 0, 0, "", "", "");
   }
   
   private void a(List<profileItem> paramList)
@@ -125,16 +128,16 @@ public class CustomCoverFragment
   private void a(boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    if (localImageView != null)
     {
-      if (paramBoolean) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840790);
+      if (paramBoolean)
+      {
+        localImageView.setImageResource(2130840665);
+        return;
       }
+      localImageView.setImageResource(2130840663);
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840788);
   }
   
   public String a(int paramInt)
@@ -142,25 +145,28 @@ public class CustomCoverFragment
     ProfileCardManager.DefaultCardItem localDefaultCardItem = this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardManager.a(paramInt, false);
     if ((localDefaultCardItem != null) && (!TextUtils.isEmpty(localDefaultCardItem.c)))
     {
-      QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "getItemCoverUrl: " + localDefaultCardItem.c);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getItemCoverUrl: ");
+      localStringBuilder.append(localDefaultCardItem.c);
+      QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, localStringBuilder.toString());
       return localDefaultCardItem.c;
     }
     QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "getItemCoverUrl: null");
     return "";
   }
   
-  public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
+  protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    setTitle(getResources().getString(2131693326));
+    setTitle(getResources().getString(2131693281));
     if (this.mLeftBackText != null) {
       this.mLeftBackText.setText("");
     }
     if (this.leftView != null) {
       this.leftView.setText("");
     }
-    this.jdField_c_of_type_Boolean = getActivity().getIntent().getBooleanExtra("is_default_key", true);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getActivity().app;
+    this.jdField_c_of_type_Boolean = getBaseActivity().getIntent().getBooleanExtra("is_default_key", true);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getBaseActivity().app;
     this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardManager = ((VasExtensionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).jdField_a_of_type_ComTencentMobileqqProfileProfileCardManager;
     int i = ViewUtils.a(3.0F);
     this.jdField_a_of_type_Int = ((ViewUtils.a() - i * 2) / 3);
@@ -168,33 +174,33 @@ public class CustomCoverFragment
     this.jdField_a_of_type_JavaUtilVector = new Vector();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
     ((VasExtensionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).jdField_a_of_type_ComTencentMobileqqProfileProfileCardManager.jdField_a_of_type_AndroidOsHandler = this.jdField_a_of_type_AndroidOsHandler;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(getActivity(), 2131561555);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(getActivity(), 2131561396);
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getActivity().getResources().getDrawable(2130851250);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.mContentView.findViewById(2131376816));
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, 1));
-      this.jdField_a_of_type_ComTencentMobileqqProfileCustomCoverFragment$RecycleViewAdapter = new CustomCoverFragment.RecycleViewAdapter(this);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqProfileCustomCoverFragment$RecycleViewAdapter);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new CustomCoverFragment.SpaceItemDecoration(this, i));
-      a();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "doOnCreateView: mIsDefaultTypeCard=" + this.jdField_c_of_type_Boolean);
-      }
-      return;
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getActivity().getResources().getDrawable(2130851161);
     }
     catch (Exception paramLayoutInflater)
     {
-      for (;;)
-      {
-        QLog.e("Q.profilecard.FrdProfileCard.CustomCoverFragment", 1, "doOnCreateView: ", paramLayoutInflater);
-      }
+      QLog.e("Q.profilecard.FrdProfileCard.CustomCoverFragment", 1, "doOnCreateView: ", paramLayoutInflater);
+    }
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.mContentView.findViewById(2131376308));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, 1));
+    this.jdField_a_of_type_ComTencentMobileqqProfileCustomCoverFragment$RecycleViewAdapter = new CustomCoverFragment.RecycleViewAdapter(this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqProfileCustomCoverFragment$RecycleViewAdapter);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new CustomCoverFragment.SpaceItemDecoration(this, i));
+    a();
+    if (QLog.isColorLevel())
+    {
+      paramLayoutInflater = new StringBuilder();
+      paramLayoutInflater.append("doOnCreateView: mIsDefaultTypeCard=");
+      paramLayoutInflater.append(this.jdField_c_of_type_Boolean);
+      QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, paramLayoutInflater.toString());
     }
   }
   
-  public int getContentLayoutId()
+  protected int getContentLayoutId()
   {
-    return 2131562173;
+    return 2131562010;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -218,21 +224,21 @@ public class CustomCoverFragment
     if (paramInt1 == 1021) {
       localIntent.putExtra("upload_uri_key", this.jdField_a_of_type_AndroidNetUri);
     }
-    if ((paramInt1 == 1020) || (paramInt1 == 1021))
+    if ((paramInt1 != 1020) && (paramInt1 != 1021))
     {
-      if (paramInt2 == -1)
+      if ((paramInt1 == 2001) && (paramInt2 == -1))
       {
-        localIntent.putExtra("req_code_key", paramInt1);
+        QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onActivityResult: ");
+        paramInt1 = localIntent.getIntExtra("cover_id_key", 0);
+        localIntent.putExtra("req_code_key", 2002);
+        localIntent.putExtra("card_url_key", a(paramInt1));
         getActivity().setResult(paramInt2, localIntent);
         getActivity().finish();
       }
     }
-    else if ((paramInt1 == 2001) && (paramInt2 == -1))
+    else if (paramInt2 == -1)
     {
-      QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onActivityResult: ");
-      paramInt1 = localIntent.getIntExtra("cover_id_key", 0);
-      localIntent.putExtra("req_code_key", 2002);
-      localIntent.putExtra("card_url_key", a(paramInt1));
+      localIntent.putExtra("req_code_key", paramInt1);
       getActivity().setResult(paramInt2, localIntent);
       getActivity().finish();
       return;
@@ -242,74 +248,83 @@ public class CustomCoverFragment
   
   public void onClick(View paramView)
   {
-    FragmentActivity localFragmentActivity = getActivity();
-    if ((localFragmentActivity == null) || (localFragmentActivity.app == null)) {}
-    for (;;)
+    BaseActivity localBaseActivity = getBaseActivity();
+    if ((localBaseActivity != null) && (localBaseActivity.app != null))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      Object localObject;
-      switch (paramView.getId())
+      int i = paramView.getId();
+      if (i != 2131361963)
       {
-      default: 
-        break;
-      case 2131361950: 
-        if (Build.VERSION.SDK_INT >= 23) {
-          if (localFragmentActivity.checkSelfPermission("android.permission.CAMERA") != 0) {
-            localFragmentActivity.requestPermissions(new CustomCoverFragment.4(this, localFragmentActivity), 1, new String[] { "android.permission.CAMERA" });
+        Object localObject;
+        if (i != 2131361969)
+        {
+          if (i == 2131361982)
+          {
+            localObject = new Bundle();
+            ((Bundle)localObject).putInt("key_personal_album_enter_model", 2);
+            ((Bundle)localObject).putInt("_input_max", 1);
+            ((Bundle)localObject).putBoolean("key_multiple_model_need_download_img", true);
+            QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
+            localUserInfo.qzone_uin = localBaseActivity.app.getCurrentAccountUin();
+            ((Bundle)localObject).putString("keyAction", "actionSelectPicture");
+            ((Bundle)localObject).putBoolean("key_need_change_to_jpg", true);
+            QZoneHelper.forwardToPersonalAlbumSelect(localBaseActivity, localUserInfo, (Bundle)localObject, 1020);
+            ReportController.b(localBaseActivity.app, "CliOper", "", "", "0X8006A88", "0X8006A88", 0, 0, "", "", "", "");
+            VasWebviewUtil.a(localBaseActivity.app.getCurrentAccountUin(), "defaultcard", "photo_qzone", "", 1, 0, 0, "", "", "");
           }
         }
-        break;
-      case 2131361956: 
-        localObject = new Intent(localFragmentActivity, NewPhotoListActivity.class);
-        ((Intent)localObject).putExtra("enter_from", 44);
-        ((Intent)localObject).putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", localFragmentActivity.getClass().getName());
-        ((Intent)localObject).putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
-        ((Intent)localObject).putExtra("PhotoConst.IS_RECODE_LAST_ALBUMPATH", false);
-        ((Intent)localObject).putExtra("PhotoConst.IS_SINGLE_MODE", true);
-        ((Intent)localObject).putExtra("PhotoConst.IS_SINGLE_NEED_EDIT", true);
-        ((Intent)localObject).putExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", true);
-        ((Intent)localObject).putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
-        int i = ProfileCardUtil.c(localFragmentActivity);
-        int j = ProfileCardUtil.d(localFragmentActivity);
-        ((Intent)localObject).putExtra("PhotoConst.CLIP_WIDTH", i);
-        ((Intent)localObject).putExtra("PhotoConst.CLIP_HEIGHT", j);
-        ((Intent)localObject).putExtra("PhotoConst.32_Bit_Config", true);
-        ((Intent)localObject).putExtra("PhotoConst.TARGET_WIDTH", i);
-        ((Intent)localObject).putExtra("PhotoConst.TARGET_HEIGHT", j);
-        ((Intent)localObject).putExtra("PhotoConst.TARGET_PATH", ProfileCardUtil.a(localFragmentActivity.app));
-        ((Intent)localObject).putExtra("PhotoConst.MAXUM_SELECTED_NUM", 1);
-        ((Intent)localObject).putExtra("action_cover_pick_gallery", true);
-        startActivity((Intent)localObject);
-        AlbumUtil.anim(localFragmentActivity, false, true);
-        ReportController.b(localFragmentActivity.app, "CliOper", "", "", "0X8006A87", "0X8006A87", 0, 0, "", "", "", "");
-        VasWebviewUtil.reportCommercialDrainage(localFragmentActivity.app.getCurrentAccountUin(), "defaultcard", "photo_album", "", 1, 0, 0, "", "", "");
-        break;
-      case 2131361966: 
-        localObject = new Bundle();
-        ((Bundle)localObject).putInt("key_personal_album_enter_model", 2);
-        ((Bundle)localObject).putInt("_input_max", 1);
-        ((Bundle)localObject).putBoolean("key_multiple_model_need_download_img", true);
-        QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
-        localUserInfo.qzone_uin = localFragmentActivity.app.getCurrentAccountUin();
-        ((Bundle)localObject).putString("keyAction", "actionSelectPicture");
-        ((Bundle)localObject).putBoolean("key_need_change_to_jpg", true);
-        QZoneHelper.forwardToPersonalAlbumSelect(localFragmentActivity, localUserInfo, (Bundle)localObject, 1020);
-        ReportController.b(localFragmentActivity.app, "CliOper", "", "", "0X8006A88", "0X8006A88", 0, 0, "", "", "", "");
-        VasWebviewUtil.reportCommercialDrainage(localFragmentActivity.app.getCurrentAccountUin(), "defaultcard", "photo_qzone", "", 1, 0, 0, "", "", "");
-        continue;
-        a(localFragmentActivity);
-        continue;
-        a(localFragmentActivity);
+        else
+        {
+          localObject = new Intent(localBaseActivity, NewPhotoListActivity.class);
+          ((Intent)localObject).putExtra("enter_from", 44);
+          ((Intent)localObject).putExtra("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationProfileCustomCover.a);
+          ((Intent)localObject).putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", localBaseActivity.getClass().getName());
+          ((Intent)localObject).putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
+          ((Intent)localObject).putExtra("PhotoConst.IS_RECODE_LAST_ALBUMPATH", false);
+          ((Intent)localObject).putExtra("PhotoConst.IS_SINGLE_MODE", true);
+          ((Intent)localObject).putExtra("PhotoConst.IS_SINGLE_NEED_EDIT", true);
+          ((Intent)localObject).putExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", true);
+          ((Intent)localObject).putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
+          i = ProfileCardUtil.c(localBaseActivity);
+          int j = ProfileCardUtil.d(localBaseActivity);
+          ((Intent)localObject).putExtra("PhotoConst.CLIP_WIDTH", i);
+          ((Intent)localObject).putExtra("PhotoConst.CLIP_HEIGHT", j);
+          ((Intent)localObject).putExtra("PhotoConst.32_Bit_Config", true);
+          ((Intent)localObject).putExtra("PhotoConst.TARGET_WIDTH", i);
+          ((Intent)localObject).putExtra("PhotoConst.TARGET_HEIGHT", j);
+          ((Intent)localObject).putExtra("PhotoConst.TARGET_PATH", ProfileCardUtil.a(localBaseActivity.app));
+          ((Intent)localObject).putExtra("PhotoConst.MAXUM_SELECTED_NUM", 1);
+          ((Intent)localObject).putExtra("action_cover_pick_gallery", true);
+          startActivity((Intent)localObject);
+          AlbumUtil.anim(localBaseActivity, false, true);
+          ReportController.b(localBaseActivity.app, "CliOper", "", "", "0X8006A87", "0X8006A87", 0, 0, "", "", "", "");
+          VasWebviewUtil.a(localBaseActivity.app.getCurrentAccountUin(), "defaultcard", "photo_album", "", 1, 0, 0, "", "", "");
+        }
+      }
+      else if (Build.VERSION.SDK_INT >= 23)
+      {
+        if (localBaseActivity.checkSelfPermission("android.permission.CAMERA") != 0) {
+          localBaseActivity.requestPermissions(new CustomCoverFragment.4(this, localBaseActivity), 1, new String[] { "android.permission.CAMERA" });
+        } else {
+          a(localBaseActivity);
+        }
+      }
+      else
+      {
+        a(localBaseActivity);
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardManager != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardManager.jdField_a_of_type_AndroidOsHandler = null;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      ProfileCardManager localProfileCardManager = this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardManager;
+      if (localProfileCardManager != null) {
+        localProfileCardManager.jdField_a_of_type_AndroidOsHandler = null;
+      }
     }
   }
   
@@ -328,22 +343,24 @@ public class CustomCoverFragment
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppSVIPObserver);
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localQQAppInterface != null) {
+      localQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppSVIPObserver);
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppSVIPObserver);
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localQQAppInterface != null) {
+      localQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppSVIPObserver);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.CustomCoverFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -10,15 +10,21 @@ class TroopHWJsPlugin$UploadMediaEntry$2
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopHWJsPlugin", 2, "start upload!id = " + this.a.jdField_a_of_type_Int + " type = " + this.a.b);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("start upload!id = ");
+      localStringBuilder.append(this.a.jdField_a_of_type_Int);
+      localStringBuilder.append(" type = ");
+      localStringBuilder.append(this.a.b);
+      QLog.d("TroopHWJsPlugin", 2, localStringBuilder.toString());
     }
     this.a.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry.2
  * JD-Core Version:    0.7.0.1
  */

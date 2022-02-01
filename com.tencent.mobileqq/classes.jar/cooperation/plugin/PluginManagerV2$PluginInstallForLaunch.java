@@ -2,6 +2,7 @@ package cooperation.plugin;
 
 import android.app.ProgressDialog;
 import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
 import com.tencent.qphone.base.util.QLog;
 
 class PluginManagerV2$PluginInstallForLaunch
@@ -9,6 +10,7 @@ class PluginManagerV2$PluginInstallForLaunch
 {
   long jdField_a_of_type_Long = 0L;
   private PluginManagerV2.LaunchState jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState;
+  boolean jdField_a_of_type_Boolean;
   
   public PluginManagerV2$PluginInstallForLaunch(PluginManagerV2 paramPluginManagerV2, PluginManagerV2.LaunchState paramLaunchState)
   {
@@ -17,7 +19,10 @@ class PluginManagerV2$PluginInstallForLaunch
   
   public void onInstallBegin(String paramString)
   {
-    QLog.d("plugin_tag", 1, "onInstallBegin." + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onInstallBegin.");
+    localStringBuilder.append(paramString);
+    QLog.d("plugin_tag", 1, localStringBuilder.toString());
     if ((!this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_AndroidAppProgressDialog != null)) {
       this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_AndroidAppProgressDialog.show();
     }
@@ -26,8 +31,12 @@ class PluginManagerV2$PluginInstallForLaunch
   
   public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "onInstallDownloadProgress." + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onInstallDownloadProgress.");
+      localStringBuilder.append(paramString);
+      QLog.d("plugin_tag", 2, localStringBuilder.toString());
     }
     if ((!this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_AndroidAppProgressDialog != null))
     {
@@ -38,56 +47,67 @@ class PluginManagerV2$PluginInstallForLaunch
   
   public void onInstallError(String paramString, int paramInt)
   {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onInstallError.");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(",");
+    ((StringBuilder)localObject).append(paramInt);
+    localObject = ((StringBuilder)localObject).toString();
     boolean bool = true;
-    QLog.d("plugin_tag", 1, "onInstallError." + paramString + "," + paramInt);
-    PluginManagerV2.LaunchState localLaunchState = this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState;
-    if ((localLaunchState != null) && (localLaunchState.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener != null))
+    QLog.d("plugin_tag", 1, (String)localObject);
+    localObject = this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState;
+    if ((localObject != null) && (((PluginManagerV2.LaunchState)localObject).jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener != null))
     {
       paramString = this.jdField_a_of_type_CooperationPluginPluginManagerV2.a(paramString);
       if ((paramString != null) && (paramString.mInstalledPath != null)) {
-        localLaunchState.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.d = paramString.mInstalledPath;
+        ((PluginManagerV2.LaunchState)localObject).jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.d = paramString.mInstalledPath;
       }
-      paramString = localLaunchState.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener;
-      if (paramInt != 2) {
-        break label116;
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        paramString = ((PluginManagerV2.LaunchState)localObject).jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener;
+        if (paramInt != 2) {
+          bool = false;
+        }
+        paramString.a(bool, ((PluginManagerV2.LaunchState)localObject).jdField_a_of_type_AndroidContentContext, ((PluginManagerV2.LaunchState)localObject).jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
       }
-    }
-    for (;;)
-    {
-      paramString.a(bool, localLaunchState.jdField_a_of_type_AndroidContentContext, localLaunchState.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
-      return;
-      label116:
-      bool = false;
     }
   }
   
   public void onInstallFinish(String paramString)
   {
-    long l = 0L;
-    QLog.d("plugin_tag", 1, "onInstallFinish." + paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onInstallFinish.");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.d("plugin_tag", 1, ((StringBuilder)localObject).toString());
     paramString = this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState;
     if ((paramString != null) && (!paramString.jdField_a_of_type_Boolean) && (paramString.jdField_a_of_type_AndroidAppProgressDialog != null)) {
       paramString.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
     }
     if ((paramString != null) && (paramString.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener != null))
     {
-      PluginInfo localPluginInfo = PluginManagerV2.a(this.jdField_a_of_type_CooperationPluginPluginManagerV2).a(paramString.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b);
-      if ((localPluginInfo != null) && (localPluginInfo.mInstalledPath != null))
+      localObject = PluginManagerV2.a(this.jdField_a_of_type_CooperationPluginPluginManagerV2).a(paramString.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b);
+      if ((localObject != null) && (((PluginInfo)localObject).mInstalledPath != null))
       {
-        paramString.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.d = localPluginInfo.mInstalledPath;
-        paramString.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.a(localPluginInfo);
+        paramString.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.d = ((PluginInfo)localObject).mInstalledPath;
+        paramString.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.a((PluginBaseInfo)localObject);
       }
-      paramString.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener.a(true, paramString.jdField_a_of_type_AndroidContentContext, paramString.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        paramString.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener.a(true, paramString.jdField_a_of_type_AndroidContentContext, paramString.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
+        PluginManagerV2.a(this.jdField_a_of_type_CooperationPluginPluginManagerV2, paramString.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
+      }
     }
-    if (this.jdField_a_of_type_Long != 0L) {
-      l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    long l2 = this.jdField_a_of_type_Long;
+    long l1 = 0L;
+    if (l2 != 0L) {
+      l1 = System.currentTimeMillis() - this.jdField_a_of_type_Long;
     }
-    this.jdField_a_of_type_CooperationPluginPluginManagerV2.a(this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b, "pluginDownloadCost", l);
+    this.jdField_a_of_type_CooperationPluginPluginManagerV2.a(this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b, "pluginDownloadCost", l1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.plugin.PluginManagerV2.PluginInstallForLaunch
  * JD-Core Version:    0.7.0.1
  */

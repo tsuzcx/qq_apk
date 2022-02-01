@@ -13,14 +13,20 @@ class SmartThreadExecutor$SmartThreadFactory$1
   public void run()
   {
     super.run();
-    Log.i("SmartThreadFactory", "run: new thread start " + getName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("run: new thread start ");
+    localStringBuilder.append(getName());
+    Log.i("SmartThreadFactory", localStringBuilder.toString());
     this.val$r.run();
-    Log.i("SmartThreadFactory", "run: new thread end " + getName());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("run: new thread end ");
+    localStringBuilder.append(getName());
+    Log.i("SmartThreadFactory", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.utils.thread.SmartThreadExecutor.SmartThreadFactory.1
  * JD-Core Version:    0.7.0.1
  */

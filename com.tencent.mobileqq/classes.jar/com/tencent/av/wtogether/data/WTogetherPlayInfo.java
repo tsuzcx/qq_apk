@@ -35,48 +35,55 @@ public class WTogetherPlayInfo
   public long a()
   {
     long l4 = System.currentTimeMillis();
-    long l3 = this.jdField_a_of_type_Long;
-    long l2 = l3;
-    long l1;
+    long l2 = this.jdField_a_of_type_Long;
+    long l3 = l2;
     if (this.jdField_a_of_type_Int == 0)
     {
-      l2 = l3;
-      if (this.jdField_a_of_type_Long != 0L)
+      l3 = l2;
+      if (l2 != 0L)
       {
-        l2 = this.jdField_b_of_type_Long;
-        l1 = l3;
-        if (this.jdField_b_of_type_Long != 0L)
+        l3 = this.jdField_b_of_type_Long;
+        long l1 = l2;
+        if (l3 != 0L)
         {
-          l1 = l3;
-          if (l4 - l2 > 0L) {
-            l1 = this.jdField_a_of_type_Long + ((float)(l4 - this.jdField_b_of_type_Long) * this.jdField_a_of_type_Float);
+          l1 = l2;
+          if (l4 - l3 > 0L) {
+            l1 = l2 + ((float)(l4 - l3) * this.jdField_a_of_type_Float);
           }
         }
-        if (l1 >= this.jdField_a_of_type_Long) {
-          break label98;
-        }
         l2 = this.jdField_a_of_type_Long;
+        if (l1 < l2) {
+          return l2;
+        }
+        l2 = this.c;
+        l3 = l1;
+        if (l2 > 0L)
+        {
+          l3 = l1;
+          if (l1 > l2) {
+            return l2;
+          }
+        }
       }
     }
-    label98:
-    do
-    {
-      do
-      {
-        return l2;
-        l2 = l1;
-      } while (this.c <= 0L);
-      l2 = l1;
-    } while (l1 <= this.c);
-    return this.c;
+    return l3;
   }
   
   public void a(int paramInt, String paramString)
   {
     if (this.jdField_a_of_type_Int != paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("WTogetherPlayInfo", 2, "updatePlayState, [" + this.jdField_a_of_type_Int + "-->" + paramInt + "], from[" + paramString + "]");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("updatePlayState, [");
+        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append("-->");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append("], from[");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("]");
+        QLog.i("WTogetherPlayInfo", 2, localStringBuilder.toString());
       }
       this.jdField_a_of_type_Int = paramInt;
     }
@@ -84,17 +91,20 @@ public class WTogetherPlayInfo
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo != null) && (this.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo.jdField_b_of_type_Int == 1) && (this.jdField_b_of_type_Int <= 0);
+    WTVideoInfo localWTVideoInfo = this.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo;
+    return (localWTVideoInfo != null) && (localWTVideoInfo.jdField_b_of_type_Int == 1) && (this.jdField_b_of_type_Int <= 0);
   }
   
   public boolean a(WTVideoInfo paramWTVideoInfo)
   {
-    return (this.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo != null) && (this.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo.a(paramWTVideoInfo));
+    WTVideoInfo localWTVideoInfo = this.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo;
+    return (localWTVideoInfo != null) && (localWTVideoInfo.a(paramWTVideoInfo));
   }
   
   public boolean b()
   {
-    return (this.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo != null) && (this.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo.c());
+    WTVideoInfo localWTVideoInfo = this.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo;
+    return (localWTVideoInfo != null) && (localWTVideoInfo.c());
   }
   
   public boolean c()
@@ -104,23 +114,42 @@ public class WTogetherPlayInfo
   
   public String toString()
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PlayInfo{playState: ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", playTimeMills: ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", playRate: ");
+    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(", leftTime: ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", lastSyncTimeMills: ");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", durationTimeMills: ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", fileInfo: ");
+    Object localObject1 = this.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo;
     Object localObject2 = null;
-    StringBuilder localStringBuilder = new StringBuilder().append("PlayInfo{playState: ").append(this.jdField_a_of_type_Int).append(", playTimeMills: ").append(this.jdField_a_of_type_Long).append(", playRate: ").append(this.jdField_a_of_type_Float).append(", leftTime: ").append(this.jdField_b_of_type_Int).append(", lastSyncTimeMills: ").append(this.jdField_b_of_type_Long).append(", durationTimeMills: ").append(this.c).append(", fileInfo: ");
-    if (this.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo != null) {}
-    for (Object localObject1 = this.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo.toString();; localObject1 = null)
-    {
-      localStringBuilder = localStringBuilder.append((String)localObject1).append(", videoInfo: ");
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo != null) {
-        localObject1 = this.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo.toString();
-      }
-      return (String)localObject1 + "}";
+    if (localObject1 != null) {
+      localObject1 = ((WTFileInfo)localObject1).toString();
+    } else {
+      localObject1 = null;
     }
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(", videoInfo: ");
+    WTVideoInfo localWTVideoInfo = this.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo;
+    localObject1 = localObject2;
+    if (localWTVideoInfo != null) {
+      localObject1 = localWTVideoInfo.toString();
+    }
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.data.WTogetherPlayInfo
  * JD-Core Version:    0.7.0.1
  */

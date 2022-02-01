@@ -21,16 +21,19 @@ final class SingleOperatorZip$1
     CompositeSubscription localCompositeSubscription = new CompositeSubscription();
     paramSingleSubscriber.add(localCompositeSubscription);
     int i = 0;
-    for (;;)
+    while ((i < this.val$singles.length) && (!localCompositeSubscription.isUnsubscribed()))
     {
-      if ((i >= this.val$singles.length) || (localCompositeSubscription.isUnsubscribed()) || (localAtomicBoolean.get())) {}
-      SingleOperatorZip.1.1 local1;
-      do
-      {
+      if (localAtomicBoolean.get()) {
         return;
-        local1 = new SingleOperatorZip.1.1(this, arrayOfObject, i, localAtomicInteger, paramSingleSubscriber, localAtomicBoolean);
-        localCompositeSubscription.add(local1);
-      } while ((localCompositeSubscription.isUnsubscribed()) || (localAtomicBoolean.get()));
+      }
+      SingleOperatorZip.1.1 local1 = new SingleOperatorZip.1.1(this, arrayOfObject, i, localAtomicInteger, paramSingleSubscriber, localAtomicBoolean);
+      localCompositeSubscription.add(local1);
+      if (localCompositeSubscription.isUnsubscribed()) {
+        break;
+      }
+      if (localAtomicBoolean.get()) {
+        return;
+      }
       this.val$singles[i].subscribe(local1);
       i += 1;
     }
@@ -38,7 +41,7 @@ final class SingleOperatorZip$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.SingleOperatorZip.1
  * JD-Core Version:    0.7.0.1
  */

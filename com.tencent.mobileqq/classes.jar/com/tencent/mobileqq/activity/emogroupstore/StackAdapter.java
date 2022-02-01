@@ -10,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.pic.compress.Utils;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
+import com.tencent.mobileqq.utils.BaseImageUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +32,9 @@ public class StackAdapter
   
   public int getItemCount()
   {
-    if (this.a != null) {
-      return this.a.size();
+    List localList = this.a;
+    if (localList != null) {
+      return localList.size();
     }
     return 0;
   }
@@ -41,25 +42,18 @@ public class StackAdapter
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
     ImageView localImageView = ((StackAdapter.MyViewHolder)paramViewHolder).a;
-    if (!TextUtils.isEmpty((String)this.a.get(paramInt)))
-    {
-      if (paramInt != 0) {
-        break label108;
+    if (!TextUtils.isEmpty((String)this.a.get(paramInt))) {
+      if (paramInt == 0)
+      {
+        String str = (String)this.a.get(paramInt);
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        localURLDrawableOptions.mFailedDrawable = URLDrawableHelperConstants.a;
+        localURLDrawableOptions.mLoadingDrawable = URLDrawableHelperConstants.a;
+        localURLDrawableOptions.mPlayGifImage = BaseImageUtil.b(str);
+        localURLDrawableOptions.mUseAutoScaleParams = true;
+        localImageView.setImageDrawable(URLDrawable.getFileDrawable(str, localURLDrawableOptions));
       }
-      String str = (String)this.a.get(paramInt);
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
-      localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-      localURLDrawableOptions.mPlayGifImage = Utils.a(str);
-      localURLDrawableOptions.mUseAutoScaleParams = true;
-      localImageView.setImageDrawable(URLDrawable.getFileDrawable(str, localURLDrawableOptions));
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-      return;
-      label108:
-      if (paramInt == 1)
+      else if (paramInt == 1)
       {
         localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         localImageView.setPadding(0, 0, 0, 0);
@@ -74,16 +68,17 @@ public class StackAdapter
         localImageView.setBackgroundColor(Color.parseColor("#48989EB4"));
       }
     }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return new StackAdapter.MyViewHolder(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559203, paramViewGroup, false));
+    return new StackAdapter.MyViewHolder(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559087, paramViewGroup, false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.StackAdapter
  * JD-Core Version:    0.7.0.1
  */

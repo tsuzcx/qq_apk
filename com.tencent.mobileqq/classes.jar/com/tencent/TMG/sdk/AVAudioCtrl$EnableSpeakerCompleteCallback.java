@@ -8,7 +8,12 @@ public class AVAudioCtrl$EnableSpeakerCompleteCallback
   
   protected void onComplete(boolean paramBoolean, int paramInt)
   {
-    Log.d("SdkJni", "EnableSpeakerCompleteCallback.OnComplete. enable = " + paramBoolean + "  result = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EnableSpeakerCompleteCallback.OnComplete. enable = ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("  result = ");
+    localStringBuilder.append(paramInt);
+    Log.d("SdkJni", localStringBuilder.toString());
   }
 }
 

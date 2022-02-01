@@ -29,14 +29,16 @@ public final class ProtocolVideoState$NotifyVideoArriveByVideoSvrResp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 56 }, new String[] { "Result", "Uin", "RoomID", "VideoID", "sessionid", "uuid", "video_kind" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0) }, NotifyVideoArriveByVideoSvrResp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 56 }, new String[] { "Result", "Uin", "RoomID", "VideoID", "sessionid", "uuid", "video_kind" }, new Object[] { localInteger, localLong, localLong, localInteger, localByteStringMicro1, localByteStringMicro2, localInteger }, NotifyVideoArriveByVideoSvrResp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avplayerservice.push.ProtocolVideoState.NotifyVideoArriveByVideoSvrResp
  * JD-Core Version:    0.7.0.1
  */

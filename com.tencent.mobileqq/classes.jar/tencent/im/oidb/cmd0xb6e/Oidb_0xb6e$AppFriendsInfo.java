@@ -27,7 +27,7 @@ public final class Oidb_0xb6e$AppFriendsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb6e.Oidb_0xb6e.AppFriendsInfo
  * JD-Core Version:    0.7.0.1
  */

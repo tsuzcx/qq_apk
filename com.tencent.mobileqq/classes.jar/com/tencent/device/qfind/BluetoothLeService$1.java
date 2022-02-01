@@ -16,94 +16,132 @@ class BluetoothLeService$1
   
   public void onCharacteristicChanged(BluetoothGatt paramBluetoothGatt, BluetoothGattCharacteristic paramBluetoothGattCharacteristic)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("DeviceBLE_EX", 2, "onCharacteristicChanged uuid=" + paramBluetoothGattCharacteristic.getUuid());
-    }
-    GattInfo localGattInfo = BluetoothLeService.a(this.a, paramBluetoothGatt);
-    if ((localGattInfo != null) && (paramBluetoothGattCharacteristic == localGattInfo.jdField_b_of_type_AndroidBluetoothBluetoothGattCharacteristic))
+    if (QLog.isColorLevel())
     {
-      BluetoothLeService.a(this.a, "com.tencent.device.ble.ACTION_DATA_AVAILABLE", 0, paramBluetoothGatt, localGattInfo.jdField_b_of_type_AndroidBluetoothBluetoothGattCharacteristic, false);
-      if (QLog.isColorLevel()) {
-        QLog.i("DeviceBLE_EX", 2, "btvalue=" + HexUtil.bytes2HexStr(paramBluetoothGattCharacteristic.getValue()));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onCharacteristicChanged uuid=");
+      ((StringBuilder)localObject).append(paramBluetoothGattCharacteristic.getUuid());
+      QLog.i("DeviceBLE_EX", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = BluetoothLeService.a(this.a, paramBluetoothGatt);
+    if ((localObject != null) && (paramBluetoothGattCharacteristic == ((GattInfo)localObject).jdField_b_of_type_AndroidBluetoothBluetoothGattCharacteristic))
+    {
+      BluetoothLeService.a(this.a, "com.tencent.device.ble.ACTION_DATA_AVAILABLE", 0, paramBluetoothGatt, ((GattInfo)localObject).jdField_b_of_type_AndroidBluetoothBluetoothGattCharacteristic, false);
+      if (QLog.isColorLevel())
+      {
+        paramBluetoothGatt = new StringBuilder();
+        paramBluetoothGatt.append("btvalue=");
+        paramBluetoothGatt.append(HexUtil.bytes2HexStr(paramBluetoothGattCharacteristic.getValue()));
+        QLog.i("DeviceBLE_EX", 2, paramBluetoothGatt.toString());
       }
     }
   }
   
   public void onCharacteristicWrite(BluetoothGatt paramBluetoothGatt, BluetoothGattCharacteristic paramBluetoothGattCharacteristic, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("DeviceBLE_EX", 2, "onCharacteristicWrite status=" + paramInt + ",uuid=" + paramBluetoothGattCharacteristic.getUuid());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onCharacteristicWrite status=");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(",uuid=");
+      ((StringBuilder)localObject).append(paramBluetoothGattCharacteristic.getUuid());
+      QLog.i("DeviceBLE_EX", 2, ((StringBuilder)localObject).toString());
     }
-    GattInfo localGattInfo = BluetoothLeService.a(this.a, paramBluetoothGatt);
+    Object localObject = BluetoothLeService.a(this.a, paramBluetoothGatt);
     if (paramInt == 0)
     {
-      if ((localGattInfo != null) && (paramBluetoothGattCharacteristic == localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGattCharacteristic))
+      if ((localObject != null) && (paramBluetoothGattCharacteristic == ((GattInfo)localObject).jdField_a_of_type_AndroidBluetoothBluetoothGattCharacteristic))
       {
-        if (localGattInfo.jdField_a_of_type_ArrayOfByte != null) {
-          BluetoothLeService.a(this.a, localGattInfo);
+        if (((GattInfo)localObject).jdField_a_of_type_ArrayOfByte != null)
+        {
+          BluetoothLeService.a(this.a, (GattInfo)localObject);
+          return;
         }
+        BluetoothLeService.a(this.a, "com.tencent.device.ble.ACTION_DATA_WRITE_RST", paramInt, paramBluetoothGatt, null, true);
       }
-      else {
-        return;
-      }
-      BluetoothLeService.a(this.a, "com.tencent.device.ble.ACTION_DATA_WRITE_RST", paramInt, paramBluetoothGatt, null, true);
-      return;
     }
-    BluetoothLeService.a(this.a, "com.tencent.device.ble.ACTION_DATA_WRITE_RST", paramInt, paramBluetoothGatt, null, false);
+    else {
+      BluetoothLeService.a(this.a, "com.tencent.device.ble.ACTION_DATA_WRITE_RST", paramInt, paramBluetoothGatt, null, false);
+    }
   }
   
   public void onConnectionStateChange(BluetoothGatt paramBluetoothGatt, int paramInt1, int paramInt2)
   {
     GattInfo localGattInfo = BluetoothLeService.a(this.a, paramBluetoothGatt);
-    if (localGattInfo == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("DeviceBLE_EX", 2, "onConnectionStateChange but no gattInfo newState=" + paramInt2);
-      }
-    }
-    for (;;)
+    if (localGattInfo == null)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("DeviceBLE_EX", 2, "onConnectionStateChange status=" + paramInt1 + " newState=" + paramInt2);
-      }
-      if ((paramInt1 != 0) || (paramInt2 == 0))
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("DeviceBLE_EX", 2, "Disconnected from GATT server. status:" + paramInt1);
+        paramBluetoothGatt = new StringBuilder();
+        paramBluetoothGatt.append("onConnectionStateChange but no gattInfo newState=");
+        paramBluetoothGatt.append(paramInt2);
+        QLog.i("DeviceBLE_EX", 2, paramBluetoothGatt.toString());
+      }
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onConnectionStateChange status=");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" newState=");
+      localStringBuilder.append(paramInt2);
+      QLog.i("DeviceBLE_EX", 2, localStringBuilder.toString());
+    }
+    if ((paramInt1 == 0) && (paramInt2 != 0))
+    {
+      if (paramInt2 != 2) {
+        break label273;
+      }
+      localGattInfo.jdField_b_of_type_Int = 2;
+      BluetoothLeService.a(this.a, "com.tencent.device.ble.ACTION_GATT_CONNECTED", paramInt1, paramBluetoothGatt, null, false);
+    }
+    try
+    {
+      Thread.sleep(200L);
+      label150:
+      boolean bool = localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGatt.discoverServices();
+      if (QLog.isColorLevel())
+      {
+        QLog.i("DeviceBLE_EX", 2, "Connected to GATT server.");
+        paramBluetoothGatt = new StringBuilder();
+        paramBluetoothGatt.append("Attempting to start service discovery:");
+        paramBluetoothGatt.append(bool);
+        QLog.i("DeviceBLE_EX", 2, paramBluetoothGatt.toString());
+        return;
+        if (QLog.isColorLevel())
+        {
+          paramBluetoothGatt = new StringBuilder();
+          paramBluetoothGatt.append("Disconnected from GATT server. status:");
+          paramBluetoothGatt.append(paramInt1);
+          QLog.i("DeviceBLE_EX", 2, paramBluetoothGatt.toString());
         }
         paramInt2 = localGattInfo.jdField_a_of_type_Int;
         this.a.b(localGattInfo.jdField_a_of_type_Int);
         BluetoothLeService.a(this.a, "com.tencent.device.ble.ACTION_GATT_DISCONNECTED", paramInt1, paramInt2);
-        return;
       }
-      if (paramInt2 != 2) {
-        continue;
-      }
-      localGattInfo.jdField_b_of_type_Int = 2;
-      BluetoothLeService.a(this.a, "com.tencent.device.ble.ACTION_GATT_CONNECTED", paramInt1, paramBluetoothGatt, null, false);
-      try
-      {
-        Thread.sleep(200L);
-        label186:
-        boolean bool = localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGatt.discoverServices();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("DeviceBLE_EX", 2, "Connected to GATT server.");
-        QLog.i("DeviceBLE_EX", 2, "Attempting to start service discovery:" + bool);
-        return;
-      }
-      catch (Throwable paramBluetoothGatt)
-      {
-        break label186;
-      }
+      label273:
+      return;
+    }
+    catch (Throwable paramBluetoothGatt)
+    {
+      break label150;
     }
   }
   
   public void onDescriptorWrite(BluetoothGatt paramBluetoothGatt, BluetoothGattDescriptor paramBluetoothGattDescriptor, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("DeviceBLE_EX", 2, "onDescriptorWrite uuid=" + paramBluetoothGattDescriptor.getUuid() + ",status=" + paramInt + ",value=" + paramBluetoothGattDescriptor.getValue());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDescriptorWrite uuid=");
+      localStringBuilder.append(paramBluetoothGattDescriptor.getUuid());
+      localStringBuilder.append(",status=");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(",value=");
+      localStringBuilder.append(paramBluetoothGattDescriptor.getValue());
+      QLog.i("DeviceBLE_EX", 2, localStringBuilder.toString());
     }
     BluetoothLeService.a(this.a, paramBluetoothGatt);
     if (paramInt == 0)
@@ -120,15 +158,13 @@ class BluetoothLeService$1
     if (paramInt == 0)
     {
       localGattInfo = BluetoothLeService.a(this.a, paramBluetoothGatt);
-      if (localGattInfo == null) {
+      if (localGattInfo == null)
+      {
         if (QLog.isColorLevel()) {
           QLog.w("DeviceBLE_EX", 2, "onServicesDiscovered gattInfo is null");
         }
+        return;
       }
-    }
-    for (;;)
-    {
-      return;
       localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGattService = localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGatt.getService(UUID.fromString(BluetoothLeService.a));
       if (localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGattService != null)
       {
@@ -144,36 +180,37 @@ class BluetoothLeService$1
         if (localGattInfo.c == null) {
           localGattInfo.c = localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGattService.getCharacteristic(UUID.fromString(BluetoothLeService.d));
         }
-        if ((localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGattCharacteristic == null) || ((localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGattCharacteristic.getProperties() & 0x8) == 0) || (localGattInfo.jdField_b_of_type_AndroidBluetoothBluetoothGattCharacteristic == null) || ((localGattInfo.jdField_b_of_type_AndroidBluetoothBluetoothGattCharacteristic.getProperties() & 0x20) == 0) || (localGattInfo.c == null) || ((localGattInfo.c.getProperties() & 0x2) == 0))
-        {
-          BluetoothLeService.a(this.a, "com.tencent.device.ble.ACTION_GATT_NOT_QQ", paramInt, paramBluetoothGatt, null, false);
-          return;
-        }
+        if ((localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGattCharacteristic == null) || ((localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGattCharacteristic.getProperties() & 0x8) == 0) || (localGattInfo.jdField_b_of_type_AndroidBluetoothBluetoothGattCharacteristic == null) || ((localGattInfo.jdField_b_of_type_AndroidBluetoothBluetoothGattCharacteristic.getProperties() & 0x20) == 0) || (localGattInfo.c == null) || ((localGattInfo.c.getProperties() & 0x2) == 0)) {}
       }
-      try
+    }
+    try
+    {
+      Thread.sleep(1000L);
+      label247:
+      this.a.a(paramBluetoothGatt, localGattInfo.jdField_b_of_type_AndroidBluetoothBluetoothGattCharacteristic, true);
+      return;
+      BluetoothLeService.a(this.a, "com.tencent.device.ble.ACTION_GATT_NOT_QQ", paramInt, paramBluetoothGatt, null, false);
+      return;
+      BluetoothLeService.a(this.a, "com.tencent.device.ble.ACTION_GATT_NOT_QQ", paramInt, paramBluetoothGatt, null, false);
+      return;
+      if (QLog.isColorLevel())
       {
-        Thread.sleep(1000L);
-        label258:
-        this.a.a(paramBluetoothGatt, localGattInfo.jdField_b_of_type_AndroidBluetoothBluetoothGattCharacteristic, true);
-        return;
-        BluetoothLeService.a(this.a, "com.tencent.device.ble.ACTION_GATT_NOT_QQ", paramInt, paramBluetoothGatt, null, false);
-        return;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.w("DeviceBLE_EX", 2, "onServicesDiscovered received: " + paramInt);
-        return;
+        paramBluetoothGatt = new StringBuilder();
+        paramBluetoothGatt.append("onServicesDiscovered received: ");
+        paramBluetoothGatt.append(paramInt);
+        QLog.w("DeviceBLE_EX", 2, paramBluetoothGatt.toString());
       }
-      catch (Throwable localThrowable)
-      {
-        break label258;
-      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      break label247;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.qfind.BluetoothLeService.1
  * JD-Core Version:    0.7.0.1
  */

@@ -3,52 +3,32 @@ package cooperation.qwallet.plugin;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.impl.QWalletHelperImpl;
-import mqq.os.MqqHandler;
+import com.qwallet.temp.IQWalletApiProxy;
+import com.tencent.mobileqq.qroute.QRoute;
 
 public abstract class QWalletPayBridge
 {
   public static final String TAG = "Q.qwallet.pay.QWalletPayBridge";
   
-  public static boolean launchBackground(Context paramContext, AppInterface paramAppInterface, Bundle paramBundle)
+  public static boolean launchBackground(Context paramContext, Bundle paramBundle)
   {
     if (paramBundle != null) {
       paramBundle.putInt("launch_type", 1);
     }
-    return launchPlugin(paramContext, paramAppInterface, paramBundle);
+    return ((IQWalletApiProxy)QRoute.api(IQWalletApiProxy.class)).launchPlugin(paramContext, paramBundle);
   }
   
-  public static boolean launchForeground(Activity paramActivity, AppInterface paramAppInterface, Bundle paramBundle)
+  public static boolean launchForeground(Activity paramActivity, Bundle paramBundle)
   {
     if (paramBundle != null) {
       paramBundle.putInt("launch_type", 0);
     }
-    return launchPlugin(paramActivity, paramAppInterface, paramBundle);
-  }
-  
-  private static boolean launchPlugin(Context paramContext, AppInterface paramAppInterface, Bundle paramBundle)
-  {
-    if ((paramContext == null) || (paramBundle == null) || (paramAppInterface == null)) {
-      return false;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qwallet.pay.QWalletPayBridge", 2, "launchPlugin comeFrom = " + paramBundle.getInt("comeForm"));
-    }
-    QWalletHelperImpl.launchPayBridgeService(paramContext, paramAppInterface, paramBundle);
-    if ((paramBundle.getInt("launch_type", 0) == 0) && ((paramContext instanceof Activity)))
-    {
-      paramContext = (Activity)paramContext;
-      ThreadManager.getSubThreadHandler().post(new QWalletPayBridge.1(paramAppInterface, paramContext));
-    }
-    return true;
+    return ((IQWalletApiProxy)QRoute.api(IQWalletApiProxy.class)).launchPlugin(paramActivity, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletPayBridge
  * JD-Core Version:    0.7.0.1
  */

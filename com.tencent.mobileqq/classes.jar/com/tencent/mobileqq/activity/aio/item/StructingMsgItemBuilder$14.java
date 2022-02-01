@@ -7,11 +7,11 @@ class StructingMsgItemBuilder$14
 {
   StructingMsgItemBuilder$14(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void a() {}
+  public void onDismiss() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.14
  * JD-Core Version:    0.7.0.1
  */

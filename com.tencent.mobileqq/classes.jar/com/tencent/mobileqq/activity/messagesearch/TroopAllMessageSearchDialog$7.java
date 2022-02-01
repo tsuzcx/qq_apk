@@ -17,27 +17,41 @@ class TroopAllMessageSearchDialog$7
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkSearchTroopAllMessageResultAdapter.getCount() <= 0) || (paramInt <= 0)) {}
-    do
+    if (QLog.isColorLevel())
     {
-      return;
-      paramAdapterView = (MessageItem)this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkSearchTroopAllMessageResultAdapter.getItem(paramInt - 1);
-    } while (paramAdapterView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, mRecordCount = " + this.a.jdField_a_of_type_Int + ",needSearchInCloud:" + this.a.b);
+      paramAdapterView = new StringBuilder();
+      paramAdapterView.append("onItemClick, position = ");
+      paramAdapterView.append(paramInt);
+      QLog.i("LinkMessageSearchDialog", 2, paramAdapterView.toString());
     }
-    paramView = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-    ChatHistoryBubbleListForTroopFragment.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, paramView, paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq, -1, 2);
-    this.a.a(true);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkSearchTroopAllMessageResultAdapter.getCount() > 0)
+    {
+      if (paramInt <= 0) {
+        return;
+      }
+      paramAdapterView = (MessageItem)this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkSearchTroopAllMessageResultAdapter.getItem(paramInt - 1);
+      if (paramAdapterView == null) {
+        return;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      if (QLog.isColorLevel())
+      {
+        paramView = new StringBuilder();
+        paramView.append("onItemClick, mRecordCount = ");
+        paramView.append(this.a.jdField_a_of_type_Int);
+        paramView.append(",needSearchInCloud:");
+        paramView.append(this.a.b);
+        QLog.i("LinkMessageSearchDialog", 2, paramView.toString());
+      }
+      paramView = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+      ChatHistoryBubbleListForTroopFragment.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, paramView, paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq, -1, 2);
+      this.a.a(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.TroopAllMessageSearchDialog.7
  * JD-Core Version:    0.7.0.1
  */

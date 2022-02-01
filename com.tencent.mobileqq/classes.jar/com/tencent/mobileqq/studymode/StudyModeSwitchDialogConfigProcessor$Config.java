@@ -19,19 +19,24 @@ public final class StudyModeSwitchDialogConfigProcessor$Config
       QLog.d("StudyModeSwitchDialogConfigProcessor", 2, paramString);
     }
     if (!TextUtils.isEmpty((CharSequence)paramString)) {}
-    try
+    for (;;)
     {
-      if (new JSONObject(paramString).optInt("ConfigEnableStudyModeGuide", 0) == 1) {}
-      for (boolean bool = true;; bool = false)
+      try
       {
+        if (new JSONObject(paramString).optInt("ConfigEnableStudyModeGuide", 0) != 1) {
+          break label71;
+        }
+        bool = true;
         this.a = bool;
         return;
       }
+      catch (Throwable paramString)
+      {
+        QLog.e("StudyModeSwitchDialogConfigProcessor", 1, paramString, new Object[0]);
+      }
       return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("StudyModeSwitchDialogConfigProcessor", 1, paramString, new Object[0]);
+      label71:
+      boolean bool = false;
     }
   }
   
@@ -42,7 +47,7 @@ public final class StudyModeSwitchDialogConfigProcessor$Config
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.StudyModeSwitchDialogConfigProcessor.Config
  * JD-Core Version:    0.7.0.1
  */

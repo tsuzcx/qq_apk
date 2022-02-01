@@ -41,25 +41,23 @@ public class GetUserInfoExtraRequest
     try
     {
       localStGetUserInfoExtraRsp.mergeFrom(paramArrayOfByte);
-      if (localStGetUserInfoExtraRsp != null)
-      {
-        paramJSONObject.put("encryptedData", localStGetUserInfoExtraRsp.encryptedData.get());
-        paramJSONObject.put("iv", localStGetUserInfoExtraRsp.iv.get());
-        return paramJSONObject;
-      }
+      paramJSONObject.put("encryptedData", localStGetUserInfoExtraRsp.encryptedData.get());
+      paramJSONObject.put("iv", localStGetUserInfoExtraRsp.iv.get());
+      return paramJSONObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      QMLog.d("GetUserInfoExtraRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("onResponse fail.");
+      paramJSONObject.append(paramArrayOfByte);
+      QMLog.d("GetUserInfoExtraRequest", paramJSONObject.toString());
     }
-    QMLog.d("GetUserInfoExtraRequest", "onResponse fail.rsp = null");
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.GetUserInfoExtraRequest
  * JD-Core Version:    0.7.0.1
  */

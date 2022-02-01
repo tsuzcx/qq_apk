@@ -7,18 +7,18 @@ import com.tencent.mobileqq.activity.aio.voicetextpanel.model.VoiceTextStateMode
 import com.tencent.mobileqq.activity.aio.voicetextpanel.model.VoiceTextSttState;
 import com.tencent.mobileqq.activity.aio.voicetextpanel.model.VoiceTextUIState;
 import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel;
-import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.AppRuntime;
 
 public abstract class VoiceTextBaseViewHelpr
 {
   protected Context a;
   protected VoiceTextUserOpListener a;
   protected VoiceTextStateModel a;
-  protected QQAppInterface a;
+  protected AppRuntime a;
   
-  public VoiceTextBaseViewHelpr(QQAppInterface paramQQAppInterface, VoiceTextStateModel paramVoiceTextStateModel)
+  public VoiceTextBaseViewHelpr(AppRuntime paramAppRuntime, VoiceTextStateModel paramVoiceTextStateModel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel = paramVoiceTextStateModel;
   }
   
@@ -54,7 +54,7 @@ public abstract class VoiceTextBaseViewHelpr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.ui.viewhelper.VoiceTextBaseViewHelpr
  * JD-Core Version:    0.7.0.1
  */

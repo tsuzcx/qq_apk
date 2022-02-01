@@ -20,17 +20,20 @@ public class TextMsgTask
     this.jdField_b_of_type_JavaLangLong = paramLong;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
+    int i = 0;
     this.jdField_b_of_type_Int = 0;
     this.jdField_a_of_type_Int = ((this.jdField_a_of_type_JavaLangString.length() + 160 - 1) / 160);
-    if (i < this.jdField_a_of_type_JavaLangString.length())
+    while (i < this.jdField_a_of_type_JavaLangString.length())
     {
-      if (i + 160 > this.jdField_a_of_type_JavaLangString.length()) {}
-      for (int j = this.jdField_a_of_type_JavaLangString.length() - i;; j = 160)
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangString.substring(i, j + i));
-        i += 160;
-        break;
+      int k = i + 160;
+      int j;
+      if (k > this.jdField_a_of_type_JavaLangString.length()) {
+        j = this.jdField_a_of_type_JavaLangString.length() - i;
+      } else {
+        j = 160;
       }
+      this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangString.substring(i, j + i));
+      i = k;
     }
     this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord = paramDataLineMsgRecord;
   }
@@ -83,7 +86,7 @@ public class TextMsgTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.TextMsgTask
  * JD-Core Version:    0.7.0.1
  */

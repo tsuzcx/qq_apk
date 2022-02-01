@@ -52,10 +52,11 @@ public class ARMatrixUtil
     {
       nearRectWidth = 56.25F;
       float f4 = renderHeight * 1.0F / renderWidth;
-      float f1 = -nearRectWidth / 2.0F;
-      float f2 = nearRectWidth / 2.0F;
-      float f3 = -nearRectWidth / 2.0F * f4;
-      f4 = nearRectWidth / 2.0F * f4;
+      float f5 = nearRectWidth;
+      float f1 = -f5 / 2.0F;
+      float f2 = f5 / 2.0F;
+      float f3 = -f5 / 2.0F * f4;
+      f4 = f5 / 2.0F * f4;
       nearRectHeight = f4 - f3;
       near = paramFloat1;
       far = paramFloat2;
@@ -102,7 +103,7 @@ public class ARMatrixUtil
     }
     paramArrayOfFloat2[0] = (cos(arrayOfFloat[0]) * cos(arrayOfFloat[1]) * 1.0F);
     paramArrayOfFloat2[1] = (sin(arrayOfFloat[0]) * cos(arrayOfFloat[1]) * 1.0F);
-    paramArrayOfFloat2[2] = (-1.0F * sin(arrayOfFloat[1]));
+    paramArrayOfFloat2[2] = (sin(arrayOfFloat[1]) * -1.0F);
     paramArrayOfFloat2[4] = ((cos(arrayOfFloat[0]) * sin(arrayOfFloat[1]) * sin(arrayOfFloat[2]) - sin(arrayOfFloat[0]) * cos(arrayOfFloat[2])) * 1.0F);
     paramArrayOfFloat2[5] = ((sin(arrayOfFloat[0]) * sin(arrayOfFloat[1]) * sin(arrayOfFloat[2]) + cos(arrayOfFloat[0]) * cos(arrayOfFloat[2])) * 1.0F);
     paramArrayOfFloat2[6] = (cos(arrayOfFloat[1]) * sin(arrayOfFloat[2]) * 1.0F);
@@ -128,9 +129,9 @@ public class ARMatrixUtil
   
   public static void setIsInBlackList(String paramString)
   {
-    boolean bool2 = false;
     String[] arrayOfString = blackList;
     int j = arrayOfString.length;
+    boolean bool2 = false;
     int i = 0;
     while (i < j)
     {
@@ -200,34 +201,31 @@ public class ARMatrixUtil
   
   public static void startOrientationSensor()
   {
-    boolean bool;
     if (orientationProvider == null)
     {
-      if ((!hasGyroscope()) || (isInBlackList)) {
-        break label60;
+      boolean bool;
+      if ((hasGyroscope()) && (!isInBlackList)) {
+        bool = true;
+      } else {
+        bool = false;
       }
-      bool = true;
       canUseImprovedSensorProvider = bool;
-      if (!canUseImprovedSensorProvider) {
-        break label65;
+      Object localObject;
+      if (canUseImprovedSensorProvider) {
+        localObject = new ImprovedOrientationSensor2Provider((SensorManager)AEModule.getContext().getSystemService("sensor"));
+      } else {
+        localObject = new SimpleOrientationSensorProvider((SensorManager)AEModule.getContext().getSystemService("sensor"));
       }
-    }
-    label60:
-    label65:
-    for (Object localObject = new ImprovedOrientationSensor2Provider((SensorManager)AEModule.getContext().getSystemService("sensor"));; localObject = new SimpleOrientationSensorProvider((SensorManager)AEModule.getContext().getSystemService("sensor")))
-    {
       orientationProvider = (OrientationProvider)localObject;
-      orientationProvider.start();
-      return;
-      bool = false;
-      break;
     }
+    orientationProvider.start();
   }
   
   public static void stopOrientationSensor()
   {
-    if (orientationProvider != null) {
-      orientationProvider.stop();
+    OrientationProvider localOrientationProvider = orientationProvider;
+    if (localOrientationProvider != null) {
+      localOrientationProvider.stop();
     }
   }
   
@@ -275,7 +273,7 @@ public class ARMatrixUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.ar.ARMatrixUtil
  * JD-Core Version:    0.7.0.1
  */

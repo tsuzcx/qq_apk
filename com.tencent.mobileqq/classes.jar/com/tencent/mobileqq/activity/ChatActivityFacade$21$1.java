@@ -6,13 +6,12 @@ import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.UinTypeUtil;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.confess.ConfessMsgUtil;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.data.MessageForMarketFace;
 import com.tencent.mobileqq.data.RecentEmotion;
-import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.emosm.api.IEmoticonManagerService;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -26,60 +25,57 @@ class ChatActivityFacade$21$1
   {
     this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace.sendFaceName = this.this$0.jdField_a_of_type_ComTencentMobileqqDataEmoticon.name;
     this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace.msgVia = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.c;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace.istroop == 1)
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace.istroop == 1) {
       AnonymousChatHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace);
-      if (UinTypeUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) != 1032) {
-        break label297;
-      }
-      ConfessMsgUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e);
+    } else if (AnonymousChatHelper.a().a) {
+      AnonymousChatHelper.a().a = false;
     }
-    for (;;)
+    if (UinTypeUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) == 1032) {
+      ConfessMsgUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e);
+    } else if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.j) {
+      ConfessMsgUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+    } else if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.k) {
+      ConfessMsgUtil.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+    }
+    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace, null);
+    Object localObject1 = (IEmoticonManagerService)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IEmoticonManagerService.class);
+    if (localObject1 != null)
     {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace, null);
-      EmoticonManager localEmoticonManager = (EmoticonManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.EMOTICON_MANAGER);
-      if (localEmoticonManager == null) {
-        break label377;
-      }
-      Object localObject = localEmoticonManager.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-      if ((localObject == null) || (((List)localObject).size() <= 0)) {
-        break label377;
-      }
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      Object localObject2 = ((IEmoticonManagerService)localObject1).getKeywordsByEmoticon(this.this$0.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
+      if ((localObject2 != null) && (((List)localObject2).size() > 0))
       {
-        String str = (String)((Iterator)localObject).next();
-        if (!TextUtils.isEmpty(str))
+        localObject2 = ((List)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext())
         {
-          RecentEmotion localRecentEmotion = new RecentEmotion();
-          localRecentEmotion.epId = this.this$0.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId;
-          localRecentEmotion.eId = this.this$0.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId;
-          localRecentEmotion.keyword = str.toLowerCase();
-          localRecentEmotion.exposeNum = 0;
-          localEmoticonManager.a(localRecentEmotion);
+          String str = (String)((Iterator)localObject2).next();
+          if (!TextUtils.isEmpty(str))
+          {
+            RecentEmotion localRecentEmotion = new RecentEmotion();
+            localRecentEmotion.epId = this.this$0.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId;
+            localRecentEmotion.eId = this.this$0.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId;
+            localRecentEmotion.keyword = str.toLowerCase();
+            localRecentEmotion.exposeNum = 0;
+            ((IEmoticonManagerService)localObject1).addRecentEmotionToCache(localRecentEmotion);
+          }
         }
       }
-      if (!AnonymousChatHelper.a().a) {
-        break;
-      }
-      AnonymousChatHelper.a().a = false;
-      break;
-      label297:
-      if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.j) {
-        ConfessMsgUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      } else if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.k) {
-        ConfessMsgUtil.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      }
     }
-    label377:
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatActivityFacade", 2, "mainRunnable, epId = " + this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId + " ePackage.copywritingType = " + this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.copywritingType + " currentTime = " + System.currentTimeMillis());
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("mainRunnable, epId = ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId);
+      ((StringBuilder)localObject1).append(" ePackage.copywritingType = ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.copywritingType);
+      ((StringBuilder)localObject1).append(" currentTime = ");
+      ((StringBuilder)localObject1).append(System.currentTimeMillis());
+      QLog.d("ChatActivityFacade", 2, ((StringBuilder)localObject1).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.21.1
  * JD-Core Version:    0.7.0.1
  */

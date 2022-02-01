@@ -3,8 +3,8 @@ package com.tencent.mtt.hippy.uimanager;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.Resources.NotFoundException;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +46,7 @@ public class ControllerManager
     this.c = new c();
     this.a.addInstanceLifecycleEventListener(this);
     a(paramList);
+    this.c.a(this.b.b("CustomProps"));
   }
   
   private void a(List<HippyAPIProvider> paramList)
@@ -53,27 +54,38 @@ public class ControllerManager
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      Object localObject = ((HippyAPIProvider)paramList.next()).getControllers();
-      if (localObject != null)
+      Object localObject1 = ((HippyAPIProvider)paramList.next()).getControllers();
+      if (localObject1 != null)
       {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-          Class localClass = (Class)((Iterator)localObject).next();
-          HippyController localHippyController = (HippyController)localClass.getAnnotation(HippyController.class);
+          Object localObject2 = (Class)((Iterator)localObject1).next();
+          HippyController localHippyController = (HippyController)((Class)localObject2).getAnnotation(HippyController.class);
           String str = localHippyController.name();
+          String[] arrayOfString = localHippyController.names();
           boolean bool = localHippyController.isLazyLoad();
           try
           {
-            this.b.a(str, new a((HippyViewController)localClass.newInstance(), bool));
-          }
-          catch (InstantiationException localInstantiationException)
-          {
-            localInstantiationException.printStackTrace();
+            localObject2 = new a((HippyViewController)((Class)localObject2).newInstance(), bool);
+            this.b.a(str, (a)localObject2);
+            if ((arrayOfString != null) && (arrayOfString.length > 0))
+            {
+              int i = 0;
+              while (i < arrayOfString.length)
+              {
+                this.b.a(arrayOfString[i], (a)localObject2);
+                i += 1;
+              }
+            }
           }
           catch (IllegalAccessException localIllegalAccessException)
           {
             localIllegalAccessException.printStackTrace();
+          }
+          catch (InstantiationException localInstantiationException)
+          {
+            localInstantiationException.printStackTrace();
           }
         }
       }
@@ -83,34 +95,46 @@ public class ControllerManager
   
   public static int b()
   {
-    if (e > 0) {
-      return e;
+    int i = e;
+    if (i > 0) {
+      return i;
     }
+    Object localObject;
     try
     {
       Class localClass = Class.forName("com.android.internal.R$dimen");
-      Object localObject = localClass.newInstance();
-      int i = Integer.parseInt(localClass.getField("status_bar_height").get(localObject).toString());
+      localObject = localClass.newInstance();
+      i = Integer.parseInt(localClass.getField("status_bar_height").get(localObject).toString());
       e = ContextHolder.getAppContext().getResources().getDimensionPixelSize(i);
-      if (e < 1)
+    }
+    catch (Exception localException)
+    {
+      e = -1;
+      localException.printStackTrace();
+    }
+    if (e < 1) {
+      try
       {
         i = ContextHolder.getAppContext().getResources().getIdentifier("statebar_height", "dimen", ContextHolder.getAppContext().getPackageName());
         e = Math.round(ContextHolder.getAppContext().getResources().getDimension(i));
       }
-      return e;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Resources.NotFoundException localNotFoundException)
       {
-        e = -1;
-        localException.printStackTrace();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getStatusBarHeightFromSystem: ");
+        ((StringBuilder)localObject).append(localNotFoundException.getMessage());
+        LogUtils.d("ControllerManager", ((StringBuilder)localObject).toString());
       }
     }
+    return e;
   }
   
-  public StyleNode a(String paramString, boolean paramBoolean)
+  public StyleNode a(String paramString, boolean paramBoolean, int paramInt)
   {
+    StyleNode localStyleNode = this.b.b(paramString).createNode(paramBoolean, paramInt);
+    if (localStyleNode != null) {
+      return localStyleNode;
+    }
     return this.b.b(paramString).createNode(paramBoolean);
   }
   
@@ -127,74 +151,85 @@ public class ControllerManager
   
   public void a(int paramInt1, int paramInt2)
   {
-    View localView = this.b.a(paramInt1);
+    Object localObject = this.b.a(paramInt1);
     this.b.d(paramInt1);
-    if (localView == null)
+    if (localObject == null)
     {
-      Log.e("HippyListView", "error replaceID null oldId " + paramInt1);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("error replaceID null oldId ");
+      ((StringBuilder)localObject).append(paramInt1);
+      LogUtils.d("HippyListView", ((StringBuilder)localObject).toString());
       return;
     }
-    if ((localView instanceof HippyRecycler)) {
-      ((HippyRecycler)localView).clear();
+    if ((localObject instanceof HippyRecycler)) {
+      ((HippyRecycler)localObject).clear();
     }
-    localView.setId(paramInt2);
-    this.b.a(localView);
+    ((View)localObject).setId(paramInt2);
+    this.b.a((View)localObject);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    View localView = this.b.a(paramInt1);
-    if (localView != null)
+    Object localObject = this.b.a(paramInt1);
+    if (localObject != null)
     {
-      if (localView.getParent() != null) {
-        ((ViewGroup)localView.getParent()).removeView(localView);
+      if (((View)localObject).getParent() != null) {
+        ((ViewGroup)((View)localObject).getParent()).removeView((View)localObject);
       }
       ViewGroup localViewGroup = (ViewGroup)this.b.a(paramInt2);
       if (localViewGroup != null)
       {
         String str = HippyTag.getClassName(localViewGroup);
-        this.b.b(str).addView(localViewGroup, localView, paramInt3);
+        this.b.b(str).addView(localViewGroup, (View)localObject, paramInt3);
       }
-      LogUtils.d("ControllerManager", "move id: " + paramInt1 + " toid: " + paramInt2);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("move id: ");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(" toid: ");
+      ((StringBuilder)localObject).append(paramInt2);
+      LogUtils.d("ControllerManager", ((StringBuilder)localObject).toString());
     }
   }
   
   @SuppressLint({"Range"})
   public void a(int paramInt, Promise paramPromise)
   {
-    Object localObject = this.b.a(paramInt);
-    if (localObject == null)
+    Object localObject1 = this.b.a(paramInt);
+    if (localObject1 == null)
     {
       paramPromise.reject("this view is null");
       return;
     }
-    int[] arrayOfInt = new int[4];
+    Object localObject2 = new int[4];
     try
     {
-      ((View)localObject).getLocationOnScreen(arrayOfInt);
+      ((View)localObject1).getLocationOnScreen((int[])localObject2);
       paramInt = b();
       if (paramInt > 0) {
-        arrayOfInt[1] -= paramInt;
+        localObject2[1] -= paramInt;
       }
-      arrayOfInt[2] = ((View)localObject).getWidth();
-      arrayOfInt[3] = ((View)localObject).getHeight();
-      float f1 = PixelUtil.px2dp(arrayOfInt[0]);
-      float f2 = PixelUtil.px2dp(arrayOfInt[1]);
-      float f3 = PixelUtil.px2dp(arrayOfInt[2]);
-      float f4 = PixelUtil.px2dp(arrayOfInt[3]);
+      localObject2[2] = ((View)localObject1).getWidth();
+      localObject2[3] = ((View)localObject1).getHeight();
+      float f1 = PixelUtil.px2dp(localObject2[0]);
+      float f2 = PixelUtil.px2dp(localObject2[1]);
+      float f3 = PixelUtil.px2dp(localObject2[2]);
+      float f4 = PixelUtil.px2dp(localObject2[3]);
       float f5 = PixelUtil.px2dp(paramInt);
-      localObject = new HippyMap();
-      ((HippyMap)localObject).pushDouble("x", f1);
-      ((HippyMap)localObject).pushDouble("y", f2);
-      ((HippyMap)localObject).pushDouble("width", f3);
-      ((HippyMap)localObject).pushDouble("height", f4);
-      ((HippyMap)localObject).pushDouble("statusBarHeight", f5);
-      paramPromise.resolve(localObject);
+      localObject1 = new HippyMap();
+      ((HippyMap)localObject1).pushDouble("x", f1);
+      ((HippyMap)localObject1).pushDouble("y", f2);
+      ((HippyMap)localObject1).pushDouble("width", f3);
+      ((HippyMap)localObject1).pushDouble("height", f4);
+      ((HippyMap)localObject1).pushDouble("statusBarHeight", f5);
+      paramPromise.resolve(localObject1);
       return;
     }
     catch (Throwable localThrowable)
     {
-      paramPromise.reject("exception" + localThrowable.getMessage());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("exception");
+      ((StringBuilder)localObject2).append(localThrowable.getMessage());
+      paramPromise.reject(((StringBuilder)localObject2).toString());
       localThrowable.printStackTrace();
     }
   }
@@ -229,58 +264,64 @@ public class ControllerManager
   
   public void a(ViewGroup paramViewGroup, View paramView, int paramInt)
   {
-    if ((paramViewGroup == null) || (paramView == null)) {}
-    do
+    if (paramViewGroup != null)
     {
-      return;
-      ViewGroup localViewGroup = null;
+      if (paramView == null) {
+        return;
+      }
+      Object localObject2 = null;
       String str = HippyTag.getClassName(paramView);
-      localObject = localViewGroup;
+      Object localObject1 = localObject2;
       if ((str instanceof String))
       {
         str = (String)str;
-        localObject = localViewGroup;
+        localObject1 = localObject2;
         if (!TextUtils.isEmpty(str))
         {
-          localObject = this.b.b(str);
-          if (localObject != null) {
-            ((HippyViewController)localObject).onViewDestroy(paramView);
+          localObject2 = this.b.b(str);
+          localObject1 = localObject2;
+          if (localObject2 != null)
+          {
+            ((HippyViewController)localObject2).onViewDestroy(paramView);
+            localObject1 = localObject2;
           }
         }
       }
       if ((paramView instanceof ViewGroup))
       {
-        localViewGroup = (ViewGroup)paramView;
-        if (localObject != null)
+        localObject2 = (ViewGroup)paramView;
+        if (localObject1 != null)
         {
-          i = ((HippyViewController)localObject).getChildCount(localViewGroup) - 1;
+          i = ((HippyViewController)localObject1).getChildCount((View)localObject2) - 1;
           while (i >= 0)
           {
-            a(localViewGroup, ((HippyViewController)localObject).getChildAt(localViewGroup, i), -1);
+            a((ViewGroup)localObject2, ((HippyViewController)localObject1).getChildAt((View)localObject2, i), -1);
             i -= 1;
           }
         }
-        int i = localViewGroup.getChildCount() - 1;
+        int i = ((ViewGroup)localObject2).getChildCount() - 1;
         while (i >= 0)
         {
-          a(localViewGroup, localViewGroup.getChildAt(i), -1);
+          a((ViewGroup)localObject2, ((ViewGroup)localObject2).getChildAt(i), -1);
           i -= 1;
         }
       }
-    } while ((this.b.a(paramView.getId()) != paramView) && (this.b.a(paramViewGroup.getId()) != paramViewGroup));
-    Object localObject = HippyTag.getClassName(paramViewGroup);
-    if ((localObject instanceof String))
-    {
-      localObject = (String)localObject;
-      if (this.b.a((String)localObject) != null) {
-        this.b.b((String)localObject).deleteChild(paramViewGroup, paramView, paramInt);
+      if ((this.b.a(paramView.getId()) != paramView) && (this.b.a(paramViewGroup.getId()) != paramViewGroup)) {
+        return;
       }
-    }
-    for (;;)
-    {
+      localObject1 = HippyTag.getClassName(paramViewGroup);
+      if ((localObject1 instanceof String))
+      {
+        localObject1 = (String)localObject1;
+        if (this.b.a((String)localObject1) != null) {
+          this.b.b((String)localObject1).deleteChild(paramViewGroup, paramView, paramInt);
+        }
+      }
+      else
+      {
+        paramViewGroup.removeView(paramView);
+      }
       this.b.d(paramView.getId());
-      return;
-      paramViewGroup.removeView(paramView);
     }
   }
   
@@ -319,25 +360,27 @@ public class ControllerManager
   
   public View b(HippyRootView paramHippyRootView, int paramInt, String paramString, HippyMap paramHippyMap)
   {
-    View localView2 = this.b.a(paramInt);
-    View localView1 = localView2;
-    if (localView2 == null)
+    Object localObject1 = this.b.a(paramInt);
+    Object localObject2 = localObject1;
+    if (localObject1 == null)
     {
-      localView2 = (View)this.d.get(paramInt);
+      localObject2 = (View)this.d.get(paramInt);
       this.d.remove(paramInt);
       HippyViewController localHippyViewController = this.b.b(paramString);
-      localView1 = localView2;
-      if (localView2 == null) {
-        localView1 = localHippyViewController.createView(paramHippyRootView, paramInt, this.a, paramString, paramHippyMap);
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = localHippyViewController.createView(paramHippyRootView, paramInt, this.a, paramString, paramHippyMap);
       }
-      if (localView1 != null)
+      localObject2 = localObject1;
+      if (localObject1 != null)
       {
-        this.b.a(localView1);
-        this.c.a(localHippyViewController, localView1, paramHippyMap);
-        localHippyViewController.onAfterUpdateProps(localView1);
+        this.b.a((View)localObject1);
+        this.c.a(localHippyViewController, localObject1, paramHippyMap);
+        localHippyViewController.onAfterUpdateProps((View)localObject1);
+        localObject2 = localObject1;
       }
     }
-    return localView1;
+    return localObject2;
   }
   
   public void b(int paramInt)
@@ -376,55 +419,82 @@ public class ControllerManager
   
   public void c(int paramInt1, int paramInt2, int paramInt3)
   {
-    String str2 = null;
-    Object localObject4 = null;
     View localView = this.b.a(paramInt2);
     Object localObject2 = this.b.a(paramInt1);
+    Object localObject1;
     if ((localView != null) && ((localObject2 instanceof ViewGroup)))
     {
       if (localView.getParent() == null)
       {
-        LogUtils.d("ControllerManager", "addChild id: " + paramInt2 + " pid: " + paramInt1);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("addChild id: ");
+        ((StringBuilder)localObject1).append(paramInt2);
+        ((StringBuilder)localObject1).append(" pid: ");
+        ((StringBuilder)localObject1).append(paramInt1);
+        LogUtils.d("ControllerManager", ((StringBuilder)localObject1).toString());
         localObject1 = HippyTag.getClassName((View)localObject2);
         this.b.b((String)localObject1).addView((ViewGroup)localObject2, localView, paramInt3);
       }
-      return;
     }
-    Object localObject1 = this.a.getRenderManager().getRenderNode(paramInt1);
-    if (localObject1 != null) {}
-    for (String str1 = ((RenderNode)localObject1).getClassName();; str1 = "null")
+    else
     {
+      localObject1 = this.a.getRenderManager().getRenderNode(paramInt1);
+      String str1;
+      if (localObject1 != null) {
+        str1 = ((RenderNode)localObject1).getClassName();
+      } else {
+        str1 = "null";
+      }
+      Object localObject4 = null;
+      String str2 = null;
+      Object localObject3;
       if (localObject2 != null)
       {
         localObject1 = HippyTag.getClassName((View)localObject2);
-        if (localObject1 != null)
-        {
+        if (localObject1 != null) {
           localObject1 = localObject1.toString();
-          localObject2 = localObject2.getClass().getName();
-        }
-      }
-      for (Object localObject3 = localObject1;; localObject3 = null)
-      {
-        if (localView != null)
-        {
-          str2 = HippyTag.getClassName(localView);
-          localObject1 = localObject4;
-          if (str2 != null) {
-            localObject1 = str2.toString();
-          }
-          str2 = localView.getClass().getName();
-        }
-        for (;;)
-        {
-          localObject1 = new RuntimeException("child null or parent not ViewGroup pid " + paramInt1 + " parentTag " + localObject3 + " parentClass " + (String)localObject2 + " renderNodeClass " + str1 + " id " + paramInt2 + " childTag " + (String)localObject1 + " childClass " + str2);
-          this.a.getGlobalConfigs().getExceptionHandler().handleNativeException((Exception)localObject1, true);
-          return;
+        } else {
           localObject1 = null;
         }
-        localObject1 = null;
-        break;
-        localObject2 = null;
+        localObject2 = localObject2.getClass().getName();
+        localObject3 = localObject1;
       }
+      else
+      {
+        localObject2 = null;
+        localObject3 = localObject2;
+      }
+      if (localView != null)
+      {
+        localObject4 = HippyTag.getClassName(localView);
+        localObject1 = str2;
+        if (localObject4 != null) {
+          localObject1 = localObject4.toString();
+        }
+        str2 = localView.getClass().getName();
+      }
+      else
+      {
+        str2 = null;
+        localObject1 = localObject4;
+      }
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("child null or parent not ViewGroup pid ");
+      ((StringBuilder)localObject4).append(paramInt1);
+      ((StringBuilder)localObject4).append(" parentTag ");
+      ((StringBuilder)localObject4).append(localObject3);
+      ((StringBuilder)localObject4).append(" parentClass ");
+      ((StringBuilder)localObject4).append((String)localObject2);
+      ((StringBuilder)localObject4).append(" renderNodeClass ");
+      ((StringBuilder)localObject4).append(str1);
+      ((StringBuilder)localObject4).append(" id ");
+      ((StringBuilder)localObject4).append(paramInt2);
+      ((StringBuilder)localObject4).append(" childTag ");
+      ((StringBuilder)localObject4).append((String)localObject1);
+      ((StringBuilder)localObject4).append(" childClass ");
+      ((StringBuilder)localObject4).append(str2);
+      localObject1 = new RuntimeException(((StringBuilder)localObject4).toString());
+      this.a.getGlobalConfigs().getExceptionHandler().handleNativeException((Exception)localObject1, true);
     }
   }
   
@@ -442,7 +512,8 @@ public class ControllerManager
   
   public void onInstanceLoad(int paramInt)
   {
-    if ((this.a != null) && (this.a.getInstance(paramInt) != null)) {
+    HippyEngineContext localHippyEngineContext = this.a;
+    if ((localHippyEngineContext != null) && (localHippyEngineContext.getInstance(paramInt) != null)) {
       this.b.a(this.a.getInstance(paramInt));
     }
   }
@@ -453,7 +524,7 @@ public class ControllerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.ControllerManager
  * JD-Core Version:    0.7.0.1
  */

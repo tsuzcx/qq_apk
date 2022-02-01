@@ -41,25 +41,27 @@ public final class FramesProcessor$mGestureListener$1
   {
     Intrinsics.checkParameterIsNotNull(???, "e1");
     Intrinsics.checkParameterIsNotNull(paramMotionEvent2, "e2");
-    do
+    synchronized (this.a)
     {
-      synchronized (this.a)
+      paramMotionEvent2 = this.a;
+      FramesProcessor.a(paramMotionEvent2, FramesProcessor.a(paramMotionEvent2) + paramFloat1);
+      paramMotionEvent2 = Unit.INSTANCE;
+      if (FramesProcessor.a(this.a) < FramesProcessor.b(this.a))
       {
-        paramMotionEvent2 = this.a;
-        FramesProcessor.a(paramMotionEvent2, FramesProcessor.a(paramMotionEvent2) + paramFloat1);
-        paramMotionEvent2 = Unit.INSTANCE;
-        if (FramesProcessor.a(this.a) < FramesProcessor.b(this.a)) {
-          FramesProcessor.a(this.a, FramesProcessor.b(this.a));
-        }
-        if (FramesProcessor.a(this.a) > FramesProcessor.c(this.a)) {
-          FramesProcessor.a(this.a, FramesProcessor.c(this.a));
-        }
-        paramFloat1 = FramesProcessor.a(this.a);
-        paramFloat2 = FramesProcessor.d(this.a);
-        FramesProcessor.b(this.a, FramesProcessor.a(this.a));
-        if (FramesProcessor.a(this.a, paramFloat1 - paramFloat2)) {
-          return true;
-        }
+        ??? = this.a;
+        FramesProcessor.a(???, FramesProcessor.b(???));
+      }
+      if (FramesProcessor.a(this.a) > FramesProcessor.c(this.a))
+      {
+        ??? = this.a;
+        FramesProcessor.a(???, FramesProcessor.c(???));
+      }
+      paramFloat1 = FramesProcessor.a(this.a);
+      paramFloat2 = FramesProcessor.d(this.a);
+      ??? = this.a;
+      FramesProcessor.b(???, FramesProcessor.a(???));
+      if (FramesProcessor.a(this.a, paramFloat1 - paramFloat2)) {
+        return true;
       }
       FramesProcessor.a(this.a);
       ??? = FramesProcessor.a(this.a);
@@ -68,9 +70,11 @@ public final class FramesProcessor$mGestureListener$1
       }
       this.a.a().invalidate();
       ??? = FramesProcessor.a(this.a);
-    } while (??? == null);
-    ???.a(FramesProcessor.a(this.a), -FramesProcessor.a(this.a), FramesProcessor.e(this.a) - FramesProcessor.a(this.a));
-    return true;
+      if (??? != null) {
+        ???.a(FramesProcessor.a(this.a), -FramesProcessor.a(this.a), FramesProcessor.e(this.a) - FramesProcessor.a(this.a));
+      }
+      return true;
+    }
   }
   
   public void onShowPress(@NotNull MotionEvent paramMotionEvent)
@@ -86,7 +90,7 @@ public final class FramesProcessor$mGestureListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocrop.FramesProcessor.mGestureListener.1
  * JD-Core Version:    0.7.0.1
  */

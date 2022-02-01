@@ -14,28 +14,28 @@ class GameRoomFragment$4
   
   public void onGlobalLayout()
   {
-    RectF localRectF = this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatView.a();
-    if (localRectF == null) {
+    RectF localRectF1 = this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatView.a();
+    if (localRectF1 == null) {
       return;
     }
     if (!this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.b)
     {
-      this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a(this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.getString(2131690425), localRectF, 146);
+      this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a(this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.getString(2131690349), localRectF1, 146);
       this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.b = true;
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_AndroidGraphicsRectF = localRectF;
-      return;
-      if ((this.jdField_a_of_type_AndroidGraphicsRectF != null) && ((this.jdField_a_of_type_AndroidGraphicsRectF.left != localRectF.left) || (this.jdField_a_of_type_AndroidGraphicsRectF.top != localRectF.top))) {
-        this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().b(this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.getString(2131690425), localRectF, 146);
+      RectF localRectF2 = this.jdField_a_of_type_AndroidGraphicsRectF;
+      if ((localRectF2 != null) && ((localRectF2.left != localRectF1.left) || (this.jdField_a_of_type_AndroidGraphicsRectF.top != localRectF1.top))) {
+        this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().b(this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.getString(2131690349), localRectF1, 146);
       }
     }
+    this.jdField_a_of_type_AndroidGraphicsRectF = localRectF1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.GameRoomFragment.4
  * JD-Core Version:    0.7.0.1
  */

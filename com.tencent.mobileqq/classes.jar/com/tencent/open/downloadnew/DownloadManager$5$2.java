@@ -11,20 +11,25 @@ class DownloadManager$5$2
   {
     int i = (int)((float)this.jdField_a_of_type_Long * 100.0F / (float)this.b);
     DownloadInfo localDownloadInfo = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager$5.a.c(this.jdField_a_of_type_JavaLangString, i);
-    if (localDownloadInfo == null) {
+    if (localDownloadInfo == null)
+    {
       LogUtility.d("DownloadManager_", "OnDownloadSDKTaskProgressChanged info == null");
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager$5.a.a(2, localDownloadInfo);
-      return;
-      LogUtility.a("DownloadManager_", "OnDownloadSDKTaskProgressChanged info state=" + localDownloadInfo.a() + " progress=" + localDownloadInfo.f);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("OnDownloadSDKTaskProgressChanged info state=");
+      localStringBuilder.append(localDownloadInfo.a());
+      localStringBuilder.append(" progress=");
+      localStringBuilder.append(localDownloadInfo.f);
+      LogUtility.a("DownloadManager_", localStringBuilder.toString());
     }
+    this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager$5.a.a(2, localDownloadInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.5.2
  * JD-Core Version:    0.7.0.1
  */

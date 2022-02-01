@@ -8,72 +8,79 @@ public final class UriCompat
   @NonNull
   public static String toSafeString(@NonNull Uri paramUri)
   {
-    String str = paramUri.getScheme();
-    Object localObject = paramUri.getSchemeSpecificPart();
-    if (str != null)
-    {
-      if ((str.equalsIgnoreCase("tel")) || (str.equalsIgnoreCase("sip")) || (str.equalsIgnoreCase("sms")) || (str.equalsIgnoreCase("smsto")) || (str.equalsIgnoreCase("mailto")) || (str.equalsIgnoreCase("nfc")))
+    String str2 = paramUri.getScheme();
+    String str1 = paramUri.getSchemeSpecificPart();
+    Object localObject = str1;
+    if (str2 != null) {
+      if ((!str2.equalsIgnoreCase("tel")) && (!str2.equalsIgnoreCase("sip")) && (!str2.equalsIgnoreCase("sms")) && (!str2.equalsIgnoreCase("smsto")) && (!str2.equalsIgnoreCase("mailto")) && (!str2.equalsIgnoreCase("nfc")))
+      {
+        if ((!str2.equalsIgnoreCase("http")) && (!str2.equalsIgnoreCase("https")) && (!str2.equalsIgnoreCase("ftp")))
+        {
+          localObject = str1;
+          if (!str2.equalsIgnoreCase("rtsp")) {}
+        }
+        else
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("//");
+          localObject = paramUri.getHost();
+          str1 = "";
+          if (localObject != null) {
+            localObject = paramUri.getHost();
+          } else {
+            localObject = "";
+          }
+          localStringBuilder.append((String)localObject);
+          localObject = str1;
+          if (paramUri.getPort() != -1)
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(":");
+            ((StringBuilder)localObject).append(paramUri.getPort());
+            localObject = ((StringBuilder)localObject).toString();
+          }
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append("/...");
+          localObject = localStringBuilder.toString();
+        }
+      }
+      else
       {
         paramUri = new StringBuilder(64);
-        paramUri.append(str);
+        paramUri.append(str2);
         paramUri.append(':');
-        if (localObject != null)
+        if (str1 != null)
         {
           int i = 0;
-          if (i < ((String)localObject).length())
+          while (i < str1.length())
           {
-            char c = ((String)localObject).charAt(i);
-            if ((c == '-') || (c == '@') || (c == '.')) {
+            char c = str1.charAt(i);
+            if ((c != '-') && (c != '@') && (c != '.')) {
+              paramUri.append('x');
+            } else {
               paramUri.append(c);
             }
-            for (;;)
-            {
-              i += 1;
-              break;
-              paramUri.append('x');
-            }
+            i += 1;
           }
         }
         return paramUri.toString();
       }
-      if ((str.equalsIgnoreCase("http")) || (str.equalsIgnoreCase("https")) || (str.equalsIgnoreCase("ftp")) || (str.equalsIgnoreCase("rtsp")))
-      {
-        StringBuilder localStringBuilder = new StringBuilder().append("//");
-        if (paramUri.getHost() != null)
-        {
-          localObject = paramUri.getHost();
-          localObject = localStringBuilder.append((String)localObject);
-          if (paramUri.getPort() == -1) {
-            break label334;
-          }
-          paramUri = ":" + paramUri.getPort();
-        }
-      }
     }
-    label270:
-    for (paramUri = paramUri + "/...";; paramUri = (Uri)localObject)
+    paramUri = new StringBuilder(64);
+    if (str2 != null)
     {
-      localObject = new StringBuilder(64);
-      if (str != null)
-      {
-        ((StringBuilder)localObject).append(str);
-        ((StringBuilder)localObject).append(':');
-      }
-      if (paramUri != null) {
-        ((StringBuilder)localObject).append(paramUri);
-      }
-      return ((StringBuilder)localObject).toString();
-      localObject = "";
-      break;
-      label334:
-      paramUri = "";
-      break label270;
+      paramUri.append(str2);
+      paramUri.append(':');
     }
+    if (localObject != null) {
+      paramUri.append((String)localObject);
+    }
+    return paramUri.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.net.UriCompat
  * JD-Core Version:    0.7.0.1
  */

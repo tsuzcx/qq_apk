@@ -12,63 +12,59 @@ public class TroopAbilityUtils
 {
   public static void a(Activity paramActivity, Intent paramIntent, boolean paramBoolean)
   {
-    Object localObject = new StringBuilder().append("onThirdAppJoinAppFinished activity is null: ");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onThirdAppJoinAppFinished activity is null: ");
     boolean bool;
-    if (paramActivity == null)
-    {
+    if (paramActivity == null) {
       bool = true;
-      QLog.i("TroopAbility.Utils", 1, bool);
-      if ((paramActivity != null) && (paramIntent != null) && (paramIntent.getExtras() != null)) {
-        break label59;
-      }
-    }
-    label186:
-    for (;;)
-    {
-      return;
+    } else {
       bool = false;
-      break;
-      label59:
+    }
+    ((StringBuilder)localObject).append(bool);
+    QLog.i("TroopAbility.Utils", 1, ((StringBuilder)localObject).toString());
+    if ((paramActivity != null) && (paramIntent != null))
+    {
+      if (paramIntent.getExtras() == null) {
+        return;
+      }
       paramIntent = paramIntent.getExtras();
-      if (paramIntent.getBoolean("fromThirdAppByOpenSDK"))
+      if (!paramIntent.getBoolean("fromThirdAppByOpenSDK")) {
+        return;
+      }
+      String str1 = paramIntent.getString("appid");
+      paramIntent.getString("app_name");
+      String str2 = paramIntent.getString("pkg_name");
+      int i = paramIntent.getInt("action");
+      localObject = "bindGroup";
+      if (i == 1) {
+        paramIntent = HardCodeUtil.a(2131714906);
+      }
+      for (;;)
       {
-        String str1 = paramIntent.getString("appid");
-        paramIntent.getString("app_name");
-        String str2 = paramIntent.getString("pkg_name");
-        int i = paramIntent.getInt("action");
-        if (i == 1)
+        break;
+        if (i == 2)
         {
-          paramIntent = "bindGroup";
-          localObject = HardCodeUtil.a(2131714983);
+          paramIntent = HardCodeUtil.a(2131714907);
         }
-        for (;;)
+        else
         {
-          if (paramActivity.isFinishing()) {
-            break label186;
+          if (i != 3) {
+            return;
           }
-          ThreadManager.getUIHandler().postDelayed(new TroopAbilityUtils.1(paramActivity, paramBoolean, str1, paramIntent, str2, (String)localObject), 300L);
-          return;
-          if (i == 2)
-          {
-            paramIntent = "bindGroup";
-            localObject = HardCodeUtil.a(2131714984);
-          }
-          else
-          {
-            if (i != 3) {
-              break;
-            }
-            paramIntent = "joinGroup";
-            localObject = HardCodeUtil.a(2131714995);
-          }
+          paramIntent = HardCodeUtil.a(2131714918);
+          localObject = "joinGroup";
         }
       }
+      if (paramActivity.isFinishing()) {
+        return;
+      }
+      ThreadManager.getUIHandler().postDelayed(new TroopAbilityUtils.1(paramActivity, paramBoolean, str1, (String)localObject, str2, paramIntent), 300L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.TroopAbilityUtils
  * JD-Core Version:    0.7.0.1
  */

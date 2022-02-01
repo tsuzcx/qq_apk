@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.takevideo.slideshow;
 
-import com.tencent.mobileqq.richmedia.mediacodec.recorder.HWEncodeListener;
+import com.tencent.mobileqq.videocodec.mediacodec.recorder.HWEncodeListener;
 import com.tencent.qphone.base.util.QLog;
 
 class Video2Video$1
@@ -13,8 +13,13 @@ class Video2Video$1
     synchronized (Video2Video.a(this.a))
     {
       Video2Video.b(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.d(Video2Video.a, 2, "onEncodeError, errorCode= " + paramInt);
+      if (QLog.isColorLevel())
+      {
+        String str = Video2Video.a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onEncodeError, errorCode= ");
+        localStringBuilder.append(paramInt);
+        QLog.d(str, 2, localStringBuilder.toString());
       }
       Video2Video.a(this.a).notifyAll();
       return;
@@ -26,8 +31,13 @@ class Video2Video$1
     synchronized (Video2Video.a(this.a))
     {
       Video2Video.a(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.d(Video2Video.a, 2, "onEncodeFinish, filePath= " + paramString);
+      if (QLog.isColorLevel())
+      {
+        String str = Video2Video.a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onEncodeFinish, filePath= ");
+        localStringBuilder.append(paramString);
+        QLog.d(str, 2, localStringBuilder.toString());
       }
       Video2Video.a(this.a).notifyAll();
       return;
@@ -40,7 +50,7 @@ class Video2Video$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.slideshow.Video2Video.1
  * JD-Core Version:    0.7.0.1
  */

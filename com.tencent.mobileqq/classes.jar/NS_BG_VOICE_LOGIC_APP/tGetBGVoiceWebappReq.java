@@ -27,14 +27,15 @@ public final class tGetBGVoiceWebappReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.lLoginUin, 0);
-    if (this.strQUA != null) {
-      paramJceOutputStream.write(this.strQUA, 1);
+    String str = this.strQUA;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_BG_VOICE_LOGIC_APP.tGetBGVoiceWebappReq
  * JD-Core Version:    0.7.0.1
  */

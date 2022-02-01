@@ -30,12 +30,28 @@ public class LiveAnchorInfo
   
   public String toString()
   {
-    return "LiveAnchorInfo is [uid= " + this.uid + ";explicitId=" + this.explicitId + ";nickName=" + this.nickName + ";headUrl=" + this.headUrl + ";businessUid=" + this.businessUid + ";initialClientType=" + this.initialClientType + ";imsdkTinyId=" + this.imsdkTinyId + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LiveAnchorInfo is [uid= ");
+    localStringBuilder.append(this.uid);
+    localStringBuilder.append(";explicitId=");
+    localStringBuilder.append(this.explicitId);
+    localStringBuilder.append(";nickName=");
+    localStringBuilder.append(this.nickName);
+    localStringBuilder.append(";headUrl=");
+    localStringBuilder.append(this.headUrl);
+    localStringBuilder.append(";businessUid=");
+    localStringBuilder.append(this.businessUid);
+    localStringBuilder.append(";initialClientType=");
+    localStringBuilder.append(this.initialClientType);
+    localStringBuilder.append(";imsdkTinyId=");
+    localStringBuilder.append(this.imsdkTinyId);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.roomservice_interface.model.LiveAnchorInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -25,76 +25,72 @@ class AccessibilityChannel$1
     localStringBuilder.append(str);
     localStringBuilder.append(" message.");
     Log.v("AccessibilityChannel", localStringBuilder.toString());
-    int i = str.hashCode();
-    if (i != -1140076541) {
-      if (i != -649620375) {
-        if (i != 114595) {
-          if (i != 114203431) {
-            i = -1;
+    int i = -1;
+    int j = str.hashCode();
+    if (j != -1140076541)
+    {
+      if (j != -649620375)
+      {
+        if (j != 114595)
+        {
+          if ((j == 114203431) && (str.equals("longPress"))) {
+            i = 2;
           }
         }
+        else if (str.equals("tap")) {
+          i = 1;
+        }
+      }
+      else if (str.equals("announce")) {
+        i = 0;
       }
     }
-    for (;;)
+    else if (str.equals("tooltip")) {
+      i = 3;
+    }
+    if (i != 0)
     {
-      switch (i)
+      if (i != 1)
       {
-      }
-      for (;;)
-      {
-        paramReply.reply(null);
-        return;
-        if (!str.equals("longPress")) {
-          break label340;
-        }
-        i = 2;
-        break;
-        if (!str.equals("tap")) {
-          break label340;
-        }
-        i = 1;
-        break;
-        if (!str.equals("announce")) {
-          break label340;
-        }
-        i = 0;
-        break;
-        if (!str.equals("tooltip")) {
-          break label340;
-        }
-        i = 3;
-        break;
-        paramObject = (String)localHashMap.get("message");
-        if (paramObject != null)
+        if (i != 2)
         {
-          AccessibilityChannel.access$000(this.this$0).onTooltip(paramObject);
-          continue;
-          paramObject = (Integer)paramObject.get("nodeId");
-          if (paramObject != null)
+          if (i == 3)
           {
-            AccessibilityChannel.access$000(this.this$0).onLongPress(paramObject.intValue());
-            continue;
-            paramObject = (Integer)paramObject.get("nodeId");
-            if (paramObject != null)
-            {
-              AccessibilityChannel.access$000(this.this$0).onTap(paramObject.intValue());
-              continue;
-              paramObject = (String)localHashMap.get("message");
-              if (paramObject != null) {
-                AccessibilityChannel.access$000(this.this$0).announce(paramObject);
-              }
+            paramObject = (String)localHashMap.get("message");
+            if (paramObject != null) {
+              AccessibilityChannel.access$000(this.this$0).onTooltip(paramObject);
             }
           }
         }
+        else
+        {
+          paramObject = (Integer)paramObject.get("nodeId");
+          if (paramObject != null) {
+            AccessibilityChannel.access$000(this.this$0).onLongPress(paramObject.intValue());
+          }
+        }
       }
-      label340:
-      i = -1;
+      else
+      {
+        paramObject = (Integer)paramObject.get("nodeId");
+        if (paramObject != null) {
+          AccessibilityChannel.access$000(this.this$0).onTap(paramObject.intValue());
+        }
+      }
     }
+    else
+    {
+      paramObject = (String)localHashMap.get("message");
+      if (paramObject != null) {
+        AccessibilityChannel.access$000(this.this$0).announce(paramObject);
+      }
+    }
+    paramReply.reply(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.AccessibilityChannel.1
  * JD-Core Version:    0.7.0.1
  */

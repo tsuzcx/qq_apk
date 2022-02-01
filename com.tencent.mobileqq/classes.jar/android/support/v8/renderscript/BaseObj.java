@@ -16,7 +16,11 @@ public class BaseObj
   
   void checkValid()
   {
-    if ((this.mID == 0) && (getNObj() == null)) {
+    if (this.mID == 0)
+    {
+      if (getNObj() != null) {
+        return;
+      }
       throw new RSIllegalArgumentException("Invalid object.");
     }
   }
@@ -25,27 +29,27 @@ public class BaseObj
   {
     try
     {
-      if (this.mDestroyed) {
-        throw new RSInvalidStateException("Object already destroyed.");
+      if (!this.mDestroyed)
+      {
+        this.mDestroyed = true;
+        this.mRS.nObjDestroy(this.mID);
+        return;
       }
+      throw new RSInvalidStateException("Object already destroyed.");
     }
     finally {}
-    this.mDestroyed = true;
-    this.mRS.nObjDestroy(this.mID);
   }
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (getClass() != paramObject.getClass()) {
-        return false;
-      }
-      paramObject = (BaseObj)paramObject;
-    } while (this.mID == paramObject.mID);
-    return false;
+    }
+    if (getClass() != paramObject.getClass()) {
+      return false;
+    }
+    paramObject = (BaseObj)paramObject;
+    return this.mID == paramObject.mID;
   }
   
   protected void finalize()
@@ -72,16 +76,18 @@ public class BaseObj
         return getNObj().hashCode();
       }
     }
-    if (this.mDestroyed) {
-      throw new RSInvalidStateException("using a destroyed object.");
-    }
-    if (this.mID == 0) {
+    if (!this.mDestroyed)
+    {
+      if (this.mID != 0)
+      {
+        if ((paramRenderScript != null) && (paramRenderScript != this.mRS)) {
+          throw new RSInvalidStateException("using object with mismatched context.");
+        }
+        return this.mID;
+      }
       throw new RSRuntimeException("Internal error: Object id 0.");
     }
-    if ((paramRenderScript != null) && (paramRenderScript != this.mRS)) {
-      throw new RSInvalidStateException("using object with mismatched context.");
-    }
-    return this.mID;
+    throw new RSInvalidStateException("using a destroyed object.");
   }
   
   android.renderscript.BaseObj getNObj()
@@ -96,15 +102,17 @@ public class BaseObj
   
   void setID(int paramInt)
   {
-    if (this.mID != 0) {
-      throw new RSRuntimeException("Internal Error, reset of object ID.");
+    if (this.mID == 0)
+    {
+      this.mID = paramInt;
+      return;
     }
-    this.mID = paramInt;
+    throw new RSRuntimeException("Internal Error, reset of object ID.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v8.renderscript.BaseObj
  * JD-Core Version:    0.7.0.1
  */

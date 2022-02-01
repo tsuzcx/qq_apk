@@ -17,30 +17,52 @@ public final class AudioRoomScheme
   
   private final String a(String paramString)
   {
-    QLog.d("AudioRoomScheme", 2, "before modify scheme: " + paramString);
-    String str = StringsKt.replace$default(paramString, "mqqapi://now/audioroom", "mqqapi://now/openroom", false, 4, null);
-    paramString = str;
-    if (!StringsKt.contains$default((CharSequence)str, (CharSequence)"src_type", false, 2, null)) {
-      paramString = str + "&src_type=app";
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("before modify scheme: ");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.d("AudioRoomScheme", 2, ((StringBuilder)localObject).toString());
+    localObject = StringsKt.replace$default(paramString, "mqqapi://now/audioroom", "mqqapi://now/openroom", false, 4, null);
+    paramString = (String)localObject;
+    if (!StringsKt.contains$default((CharSequence)localObject, (CharSequence)"src_type", false, 2, null))
+    {
+      paramString = new StringBuilder();
+      paramString.append((String)localObject);
+      paramString.append("&src_type=app");
+      paramString = paramString.toString();
     }
-    str = paramString;
-    if (!StringsKt.contains$default((CharSequence)paramString, (CharSequence)"version", false, 2, null)) {
-      str = paramString + "&version=1";
+    localObject = paramString;
+    if (!StringsKt.contains$default((CharSequence)paramString, (CharSequence)"version", false, 2, null))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("&version=1");
+      localObject = ((StringBuilder)localObject).toString();
     }
-    paramString = str;
-    if (!StringsKt.contains$default((CharSequence)str, (CharSequence)"fromid", false, 2, null)) {
-      paramString = str + "&fromid=10026";
+    paramString = (String)localObject;
+    if (!StringsKt.contains$default((CharSequence)localObject, (CharSequence)"fromid", false, 2, null))
+    {
+      paramString = new StringBuilder();
+      paramString.append((String)localObject);
+      paramString.append("&fromid=10026");
+      paramString = paramString.toString();
     }
-    str = paramString;
-    if (!StringsKt.contains$default((CharSequence)paramString, (CharSequence)"roomtype", false, 2, null)) {
-      str = paramString + "&roomtype=10001";
+    localObject = paramString;
+    if (!StringsKt.contains$default((CharSequence)paramString, (CharSequence)"roomtype", false, 2, null))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("&roomtype=10001");
+      localObject = ((StringBuilder)localObject).toString();
     }
-    QLog.d("AudioRoomScheme", 2, "after modify: " + str);
-    return str;
+    paramString = new StringBuilder();
+    paramString.append("after modify: ");
+    paramString.append((String)localObject);
+    QLog.d("AudioRoomScheme", 2, paramString.toString());
+    return localObject;
   }
   
   @NotNull
-  public PendingIntent a(@NotNull PushComponent paramPushComponent)
+  protected PendingIntent a(@NotNull PushComponent paramPushComponent)
   {
     Intrinsics.checkParameterIsNotNull(paramPushComponent, "pushComponent");
     if (StringsKt.startsWith$default(paramPushComponent.d, "mqqapi://now/audioroom", false, 2, null)) {
@@ -49,14 +71,14 @@ public final class AudioRoomScheme
     return d(paramPushComponent);
   }
   
-  public boolean a()
+  protected boolean a()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.notification.modularize.business.AudioRoomScheme
  * JD-Core Version:    0.7.0.1
  */

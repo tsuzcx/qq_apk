@@ -29,10 +29,10 @@ public class NearbyTribeAppController
   private IUniformDownloaderListener jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener = new NearbyTribeAppController.3(this);
   private String jdField_a_of_type_JavaLangString = "NearbyTribeAppController";
   private boolean jdField_a_of_type_Boolean;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = { HardCodeUtil.a(2131707400), HardCodeUtil.a(2131707399), "好看的人都在用兴趣部落APP", HardCodeUtil.a(2131707398), HardCodeUtil.a(2131707396), "看看好友在兴趣部落APP玩什么？" };
+  private String[] jdField_a_of_type_ArrayOfJavaLangString = { HardCodeUtil.a(2131707425), HardCodeUtil.a(2131707424), "好看的人都在用兴趣部落APP", HardCodeUtil.a(2131707423), HardCodeUtil.a(2131707421), "看看好友在兴趣部落APP玩什么？" };
   private String jdField_b_of_type_JavaLangString;
   private boolean jdField_b_of_type_Boolean = true;
-  private String[] jdField_b_of_type_ArrayOfJavaLangString = { HardCodeUtil.a(2131707389), HardCodeUtil.a(2131707392), "好看的人都在用兴趣部落APP", HardCodeUtil.a(2131707395), HardCodeUtil.a(2131707394) };
+  private String[] jdField_b_of_type_ArrayOfJavaLangString = { HardCodeUtil.a(2131707414), HardCodeUtil.a(2131707417), "好看的人都在用兴趣部落APP", HardCodeUtil.a(2131707420), HardCodeUtil.a(2131707419) };
   
   public NearbyTribeAppController(Context paramContext, QQAppInterface paramQQAppInterface)
   {
@@ -43,27 +43,30 @@ public class NearbyTribeAppController
   
   public void a()
   {
-    if (!NetworkUtil.g(this.jdField_a_of_type_AndroidContentContext)) {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_AndroidContentContext.getString(2131694460), 0).a();
-    }
-    do
+    Context localContext;
+    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))
     {
-      do
-      {
-        return;
-        if ("0".equals(PackageUtil.a(this.jdField_a_of_type_AndroidContentContext, "com.tencent.tribe"))) {
-          break;
-        }
-      } while (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity));
-      TroopBarPublishUtils.a((Activity)this.jdField_a_of_type_AndroidContentContext);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "user_profile", "Clk_app_call", 0, 0, String.valueOf(this.jdField_a_of_type_Int), "", "", "");
+      localContext = this.jdField_a_of_type_AndroidContentContext;
+      QQToast.a(localContext, 1, localContext.getString(2131694425), 0).a();
       return;
-      if (this.jdField_b_of_type_Boolean) {
-        break;
+    }
+    if (!"0".equals(PackageUtil.a(this.jdField_a_of_type_AndroidContentContext, "com.tencent.tribe")))
+    {
+      localContext = this.jdField_a_of_type_AndroidContentContext;
+      if ((localContext instanceof Activity))
+      {
+        TroopBarPublishUtils.a((Activity)localContext);
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "user_profile", "Clk_app_call", 0, 0, String.valueOf(this.jdField_a_of_type_Int), "", "", "");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "invokeTribeOpenOrDownload,isActivate=false");
-    return;
+      return;
+    }
+    if (!this.jdField_b_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "invokeTribeOpenOrDownload,isActivate=false");
+      }
+      return;
+    }
     ThreadManager.post(new NearbyTribeAppController.1(this), 8, null, true);
     ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "user_profile", "Clk_app_download", 0, 0, String.valueOf(this.jdField_a_of_type_Int), "", "", "");
   }
@@ -79,16 +82,17 @@ public class NearbyTribeAppController
       this.jdField_a_of_type_Int = (i + 1);
       this.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_ArrayOfJavaLangString[i];
       paramTextView.setText(this.jdField_b_of_type_JavaLangString);
+      paramTextView = "exp_app_call";
     }
-    for (paramTextView = "exp_app_call";; paramTextView = "exp_app_download")
+    else
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "user_profile", paramTextView, 0, 0, String.valueOf(this.jdField_a_of_type_Int), "", "", "");
-      return;
       i = localRandom.nextInt(this.jdField_a_of_type_ArrayOfJavaLangString.length);
       this.jdField_a_of_type_Int = (i + 1);
       this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ArrayOfJavaLangString[i];
       paramTextView.setText(this.jdField_b_of_type_JavaLangString);
+      paramTextView = "exp_app_download";
     }
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "user_profile", paramTextView, 0, 0, String.valueOf(this.jdField_a_of_type_Int), "", "", "");
   }
   
   protected void a(String paramString)
@@ -103,7 +107,7 @@ public class NearbyTribeAppController
     catch (Exception paramString)
     {
       paramString.printStackTrace();
-      QQToast.a(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131707397), 0).b(50);
+      QQToast.a(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131707422), 0).b(50);
     }
   }
   
@@ -115,7 +119,7 @@ public class NearbyTribeAppController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyTribeAppController
  * JD-Core Version:    0.7.0.1
  */

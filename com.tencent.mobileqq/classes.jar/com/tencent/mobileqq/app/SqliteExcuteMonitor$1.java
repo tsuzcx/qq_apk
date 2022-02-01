@@ -12,10 +12,11 @@ final class SqliteExcuteMonitor$1
 {
   public void afterHookedMethod(MethodHookParam paramMethodHookParam)
   {
-    boolean bool = false;
     try
     {
-      int i = ((Integer)paramMethodHookParam.args[0]).intValue();
+      localObject = paramMethodHookParam.args;
+      boolean bool = false;
+      int i = ((Integer)localObject[0]).intValue();
       if (this.jdField_a_of_type_JavaLangReflectMethod != null)
       {
         paramMethodHookParam = this.jdField_a_of_type_JavaLangReflectMethod.invoke(paramMethodHookParam.thisObject, new Object[] { Integer.valueOf(i) });
@@ -41,28 +42,36 @@ final class SqliteExcuteMonitor$1
         if (Looper.myLooper() == Looper.getMainLooper()) {
           bool = true;
         }
-        if (SqliteExcuteMonitor.a(paramMethodHookParam, l1, bool)) {
+        if (SqliteExcuteMonitor.a(paramMethodHookParam, l1, bool))
+        {
           SqliteExcuteMonitor.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramMethodHookParam, l1, bool, this.jdField_a_of_type_Int);
+          return;
         }
       }
-      return;
-    }
-    catch (Exception paramMethodHookParam)
-    {
-      do
-      {
-        SqliteExcuteMonitor.a(true);
-      } while (!QLog.isColorLevel());
-      QLog.i("SqliteExcuteMonitor", 2, "hook exception :" + paramMethodHookParam.getMessage());
-      return;
     }
     catch (Throwable paramMethodHookParam)
     {
-      do
+      SqliteExcuteMonitor.a(true);
+      if (QLog.isColorLevel())
       {
-        SqliteExcuteMonitor.a(true);
-      } while (!QLog.isColorLevel());
-      QLog.i("SqliteExcuteMonitor", 2, "hook exception :" + paramMethodHookParam.getMessage());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("hook exception :");
+        ((StringBuilder)localObject).append(paramMethodHookParam.getMessage());
+        QLog.i("SqliteExcuteMonitor", 2, ((StringBuilder)localObject).toString());
+        return;
+      }
+    }
+    catch (Exception paramMethodHookParam)
+    {
+      Object localObject;
+      SqliteExcuteMonitor.a(true);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("hook exception :");
+        ((StringBuilder)localObject).append(paramMethodHookParam.getMessage());
+        QLog.i("SqliteExcuteMonitor", 2, ((StringBuilder)localObject).toString());
+      }
     }
   }
   
@@ -70,7 +79,7 @@ final class SqliteExcuteMonitor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.SqliteExcuteMonitor.1
  * JD-Core Version:    0.7.0.1
  */

@@ -76,60 +76,66 @@ public class MmapLogWrapper
   {
     paramMappedByteBuffer.getInt();
     int i = paramMappedByteBuffer.getInt();
-    if ((i > paramMappedByteBuffer.capacity()) || (i <= 0)) {
-      return null;
+    if ((i <= paramMappedByteBuffer.capacity()) && (i > 0))
+    {
+      byte[] arrayOfByte = new byte[i];
+      paramMappedByteBuffer.get(arrayOfByte);
+      return arrayOfByte;
     }
-    byte[] arrayOfByte = new byte[i];
-    paramMappedByteBuffer.get(arrayOfByte);
-    return arrayOfByte;
+    return null;
   }
   
   private void writeLastCacheAndNewHeader()
   {
     for (;;)
     {
+      Object localObject2;
       try
       {
         if (this.isLastUnwriteMmapExist)
         {
-          localObject = getExistedMmapBytes(this.cacheFileMmapBuffer);
-          if ((localObject != null) && (localObject.length != 0))
+          byte[] arrayOfByte = getExistedMmapBytes(this.cacheFileMmapBuffer);
+          if ((arrayOfByte != null) && (arrayOfByte.length != 0))
           {
             if (!this.compress) {
-              continue;
+              break label311;
             }
             i = -21937241;
-            arrayOfByte = ByteBuffer.allocate(4).putInt(i).array();
+            localObject2 = ByteBuffer.allocate(4).putInt(i).array();
+            this.finalLogFileWriter.writeThroughByteArray((byte[])localObject2);
+            localObject2 = ByteBuffer.allocate(4).putInt(arrayOfByte.length).array();
+            this.finalLogFileWriter.writeThroughByteArray((byte[])localObject2);
             this.finalLogFileWriter.writeThroughByteArray(arrayOfByte);
-            arrayOfByte = ByteBuffer.allocate(4).putInt(localObject.length).array();
-            this.finalLogFileWriter.writeThroughByteArray(arrayOfByte);
-            this.finalLogFileWriter.writeThroughByteArray((byte[])localObject);
           }
         }
       }
       catch (Throwable localThrowable1)
       {
-        Object localObject;
-        int i;
-        byte[] arrayOfByte;
         Log.e("JavaMmapAppender", "writeLastCacheAndNewHeader failed. ", localThrowable1);
-        continue;
       }
       this.cacheFileMmapBuffer.clear();
       try
       {
-        localObject = XorKey.encryptedKey(XOREncryption.getXorKey());
-        if (!TextUtils.isEmpty((CharSequence)localObject))
+        Object localObject1 = XorKey.encryptedKey(XOREncryption.getXorKey());
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
         {
           this.cacheFileMmapBuffer.putInt(-20190711);
-          arrayOfByte = ((String)localObject).getBytes(XOREncryption.charset);
-          this.cacheFileMmapBuffer.putInt(arrayOfByte.length + 4);
+          localObject2 = ((String)localObject1).getBytes(XOREncryption.charset);
+          this.cacheFileMmapBuffer.putInt(localObject2.length + 4);
           this.cacheFileMmapBuffer.putInt(1);
-          this.cacheFileMmapBuffer.put(arrayOfByte);
+          this.cacheFileMmapBuffer.put((byte[])localObject2);
           if (QLog.isDebugVersion())
           {
-            Log.d("JavaMmapAppender", "copyCacheToLogFileAndReset:  encryptedKey: " + (String)localObject);
-            Log.d("JavaMmapAppender", "writeThroughMmapBuffer first length=" + this.cacheFileMmapBuffer.position() + " limit=" + this.cacheFileMmapBuffer.limit());
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("copyCacheToLogFileAndReset:  encryptedKey: ");
+            ((StringBuilder)localObject2).append((String)localObject1);
+            Log.d("JavaMmapAppender", ((StringBuilder)localObject2).toString());
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("writeThroughMmapBuffer first length=");
+            ((StringBuilder)localObject1).append(this.cacheFileMmapBuffer.position());
+            ((StringBuilder)localObject1).append(" limit=");
+            ((StringBuilder)localObject1).append(this.cacheFileMmapBuffer.limit());
+            Log.d("JavaMmapAppender", ((StringBuilder)localObject1).toString());
           }
           this.cacheFileMmapBuffer.flip();
           this.finalLogFileWriter.writeThroughMmapBuffer(this.cacheFileMmapBuffer);
@@ -138,12 +144,12 @@ public class MmapLogWrapper
       catch (Throwable localThrowable2)
       {
         Log.e("JavaMmapAppender", "", localThrowable2);
-        continue;
       }
       this.cacheFileMmapBuffer.clear();
       this.magicWriter.writeInitLength();
       return;
-      i = -18239;
+      label311:
+      int i = -18239;
     }
   }
   
@@ -156,15 +162,12 @@ public class MmapLogWrapper
       try
       {
         this.finalLogFileWriter.close();
-        return;
       }
       catch (IOException localIOException)
       {
-        for (;;)
-        {
-          localIOException.printStackTrace();
-        }
+        localIOException.printStackTrace();
       }
+      return;
     }
   }
   
@@ -227,7 +230,7 @@ public class MmapLogWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qphone.base.util.log.wrapper.MmapLogWrapper
  * JD-Core Version:    0.7.0.1
  */

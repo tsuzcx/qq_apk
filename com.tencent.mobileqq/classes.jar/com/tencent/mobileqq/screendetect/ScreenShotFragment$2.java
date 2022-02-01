@@ -10,7 +10,7 @@ class ScreenShotFragment$2
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    DialogUtil.a(ScreenShotFragment.a(this.a), this.a.getString(2131698910));
+    DialogUtil.a(ScreenShotFragment.a(this.a), this.a.getString(2131698989));
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
@@ -20,7 +20,7 @@ class ScreenShotFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.screendetect.ScreenShotFragment.2
  * JD-Core Version:    0.7.0.1
  */

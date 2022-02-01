@@ -1,41 +1,284 @@
 package com.tencent.mobileqq.transfile;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.text.format.Time;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.transfile.richmediavfs.RmVFSUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.jetbrains.annotations.NotNull;
 
 public class TransFileUtil
 {
+  public static final String FILE_PHOTO_DIR = "photo/";
   public static final Pattern HTTP_HOST_REGEX = Pattern.compile("https?://[^/]*/{1}");
   public static final Pattern HTTP_URL_REGEX = Pattern.compile("https?://(\\d{1,3}\\.){3}\\d{1,3}(:\\d{1,5})?[/\\?].*");
+  static final String TAG = "TransFileUtil";
   public static String versionCode = null;
+  
+  public static void addDomainToList(ArrayList<ServerAddr> paramArrayList, String paramString)
+  {
+    if ((paramArrayList != null) && (paramString != null))
+    {
+      ServerAddr localServerAddr = new ServerAddr();
+      localServerAddr.mIp = paramString;
+      localServerAddr.isDomain = true;
+      paramArrayList.add(localServerAddr);
+    }
+  }
+  
+  private static void buildAssistantFileInfo(String paramString, TransFileUtil.FileInfo paramFileInfo)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramFileInfo.fileDir);
+    localStringBuilder.append("ast/");
+    localStringBuilder.append(getPttTimeDir());
+    localStringBuilder.append("/");
+    paramFileInfo.fileDir = localStringBuilder.toString();
+    paramFileInfo.fileDir = RmVFSUtils.getVFSPath(paramFileInfo.fileDir, true);
+    paramFileInfo.suffix = ".ast";
+    if (paramString == null) {
+      paramFileInfo.name = getTransFileDateTime();
+    }
+  }
+  
+  private static void buildFileFileInfo(String paramString, byte[] paramArrayOfByte, TransFileUtil.FileInfo paramFileInfo)
+  {
+    paramFileInfo.fileDir = AppConstants.SDCARD_FILE_SAVE_PATH;
+    if (paramString == null)
+    {
+      paramFileInfo.name = getTransFileDateTime();
+      if (paramArrayOfByte != null)
+      {
+        paramString = new StringBuilder();
+        paramString.append(paramFileInfo.name);
+        paramString.append(HexUtil.bytes2HexStr(paramArrayOfByte).substring(0, 5));
+        paramFileInfo.name = paramString.toString();
+      }
+    }
+    else
+    {
+      paramFileInfo.name = paramString;
+    }
+    paramFileInfo.suffix = "";
+  }
+  
+  @NotNull
+  protected static TransFileUtil.FileInfo buildFileInfo(String paramString1, String paramString2, int paramInt, byte[] paramArrayOfByte)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_PATH);
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("/");
+    paramString1 = new TransFileUtil.FileInfo(localStringBuilder.toString(), null, "");
+    if (paramInt != 0)
+    {
+      if (paramInt != 1) {
+        if (paramInt != 2)
+        {
+          if (paramInt != 23)
+          {
+            if (paramInt != 25)
+            {
+              if (paramInt != 53)
+              {
+                if (paramInt != 65)
+                {
+                  if (paramInt != 65537)
+                  {
+                    if (paramInt != 327697) {
+                      return paramString1;
+                    }
+                    buildAssistantFileInfo(paramString2, paramString1);
+                    return paramString1;
+                  }
+                }
+                else
+                {
+                  paramArrayOfByte = new StringBuilder();
+                  paramArrayOfByte.append(paramString1.fileDir);
+                  paramArrayOfByte.append("ptt/");
+                  paramString1.fileDir = paramArrayOfByte.toString();
+                  paramString1.suffix = ".slk";
+                  if (paramString2 != null) {
+                    return paramString1;
+                  }
+                  paramString2 = new StringBuilder();
+                  paramString2.append("homework_");
+                  paramString2.append(getTransFileDateTime());
+                  paramString1.name = paramString2.toString();
+                  return paramString1;
+                }
+              }
+              else
+              {
+                paramArrayOfByte = new StringBuilder();
+                paramArrayOfByte.append(paramString1.fileDir);
+                paramArrayOfByte.append("ptt/");
+                paramString1.fileDir = paramArrayOfByte.toString();
+                paramString1.suffix = ".slk";
+                if (paramString2 != null) {
+                  return paramString1;
+                }
+                paramString2 = new StringBuilder();
+                paramString2.append("vs_");
+                paramString2.append(getTransFileDateTime());
+                paramString1.name = paramString2.toString();
+                return paramString1;
+              }
+            }
+            else
+            {
+              paramArrayOfByte = new StringBuilder();
+              paramArrayOfByte.append(paramString1.fileDir);
+              paramArrayOfByte.append("ptt/");
+              paramString1.fileDir = paramArrayOfByte.toString();
+              paramString1.suffix = ".slk";
+              if (paramString2 != null) {
+                return paramString1;
+              }
+              paramString2 = new StringBuilder();
+              paramString2.append("buluo_");
+              paramString2.append(getTransFileDateTime());
+              paramString1.name = paramString2.toString();
+              return paramString1;
+            }
+          }
+          else
+          {
+            paramArrayOfByte = new StringBuilder();
+            paramArrayOfByte.append(paramString1.fileDir);
+            paramArrayOfByte.append("ptt/");
+            paramString1.fileDir = paramArrayOfByte.toString();
+            paramString1.suffix = ".slk";
+            if (paramString2 == null)
+            {
+              paramString2 = new StringBuilder();
+              paramString2.append("ef_");
+              paramString2.append(getTransFileDateTime());
+              paramString1.name = paramString2.toString();
+              return paramString1;
+            }
+            paramArrayOfByte = new StringBuilder();
+            paramArrayOfByte.append("ef_");
+            paramArrayOfByte.append(paramString2);
+            paramString1.name = paramArrayOfByte.toString();
+            return paramString1;
+          }
+        }
+        else
+        {
+          buildPttFileInfo(paramString2, paramString1);
+          return paramString1;
+        }
+      }
+      buildPicFileInfo(paramString2, paramArrayOfByte, paramString1);
+      return paramString1;
+    }
+    else
+    {
+      buildFileFileInfo(paramString2, paramArrayOfByte, paramString1);
+    }
+    return paramString1;
+  }
+  
+  private static void buildPicFileInfo(String paramString, byte[] paramArrayOfByte, TransFileUtil.FileInfo paramFileInfo)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramFileInfo.fileDir);
+    localStringBuilder.append("photo/");
+    paramFileInfo.fileDir = localStringBuilder.toString();
+    paramFileInfo.suffix = ".jpg";
+    if (paramString == null)
+    {
+      paramFileInfo.name = getTransFileDateTime();
+      if (paramArrayOfByte != null)
+      {
+        paramString = new StringBuilder();
+        paramString.append(paramFileInfo.name);
+        paramString.append(HexUtil.bytes2HexStr(paramArrayOfByte).substring(0, 5));
+        paramFileInfo.name = paramString.toString();
+      }
+    }
+  }
+  
+  private static void buildPttFileInfo(String paramString, TransFileUtil.FileInfo paramFileInfo)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramFileInfo.fileDir);
+    localStringBuilder.append("ptt/");
+    localStringBuilder.append(getPttTimeDir());
+    localStringBuilder.append("/");
+    paramFileInfo.fileDir = localStringBuilder.toString();
+    paramFileInfo.fileDir = RmVFSUtils.getVFSPath(paramFileInfo.fileDir, true);
+    paramFileInfo.suffix = ".amr";
+    if (paramString == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("TransFileUtil", 2, "pttdown,33333");
+      }
+      paramString = new StringBuilder();
+      paramString.append("stream_");
+      paramString.append(getTransFileDateTime());
+      paramFileInfo.name = paramString.toString();
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("pttdown,name = ");
+        paramString.append(paramFileInfo.name);
+        QLog.i("TransFileUtil", 2, paramString.toString());
+      }
+    }
+  }
   
   public static String buildTag(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     StringBuilder localStringBuilder = new StringBuilder("Q.richmedia.");
-    localStringBuilder.append(paramString4).append(".");
-    localStringBuilder.append(paramString1).append(".");
-    localStringBuilder.append(paramString2).append(".");
+    localStringBuilder.append(paramString4);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(".");
     localStringBuilder.append(paramString3);
     return localStringBuilder.toString();
   }
   
   public static ServerAddr getIpAndPortFromUrl(String paramString)
   {
-    if ((HTTP_URL_REGEX == null) || (paramString == null)) {}
-    while ((!HTTP_URL_REGEX.matcher(paramString).matches()) || (paramString.split("/").length < 3)) {
-      return null;
-    }
-    ServerAddr localServerAddr = new ServerAddr();
-    paramString = paramString.split("/")[2].split(":");
-    localServerAddr.mIp = paramString[0];
-    if (paramString.length == 2)
+    Pattern localPattern = HTTP_URL_REGEX;
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (localPattern != null)
     {
-      localServerAddr.port = Integer.valueOf(paramString[1]).intValue();
-      return localServerAddr;
+      if (paramString == null) {
+        return null;
+      }
+      localObject1 = localObject2;
+      if (localPattern.matcher(paramString).matches())
+      {
+        if (paramString.split("/").length < 3) {
+          return null;
+        }
+        localObject1 = new ServerAddr();
+        paramString = paramString.split("/")[2].split(":");
+        ((ServerAddr)localObject1).mIp = paramString[0];
+        if (paramString.length == 2)
+        {
+          ((ServerAddr)localObject1).port = Integer.valueOf(paramString[1]).intValue();
+          return localObject1;
+        }
+        ((ServerAddr)localObject1).port = 80;
+      }
     }
-    localServerAddr.port = 80;
-    return localServerAddr;
+    return localObject1;
   }
   
   public static String getIpOrDomainFromURL(String paramString)
@@ -52,96 +295,191 @@ public class TransFileUtil
     return str;
   }
   
-  public static String getUinDesc(int paramInt)
+  public static String getPttTimeDir()
   {
-    String str = "" + paramInt;
-    switch (paramInt)
-    {
-    default: 
-      return str;
-    case 0: 
-      return "c2c";
-    case 1: 
-      return "grp";
-    }
-    return "dis";
+    Time localTime = new Time();
+    localTime.setToNow();
+    return getPttTimeDirByTime(localTime);
   }
   
-  public static String getUrlResoursePath(String paramString, boolean paramBoolean)
+  @NotNull
+  protected static String getPttTimeDirByTime(Time paramTime)
   {
-    if ((getIpAndPortFromUrl(paramString) == null) && (!paramBoolean)) {}
-    Matcher localMatcher;
-    do
+    if (paramTime.month + 1 > 9)
     {
-      return paramString;
-      localMatcher = HTTP_HOST_REGEX.matcher(paramString);
-    } while (!localMatcher.find());
-    return paramString.replace(localMatcher.group(), "");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("0");
+    }
+    ((StringBuilder)localObject).append(paramTime.month + 1);
+    Object localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramTime.year);
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("/");
+    localStringBuilder.append(paramTime.monthDay);
+    return localStringBuilder.toString();
   }
   
   /* Error */
-  public static String getVersionCode()
+  private static String getTransFileDateTime()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 27	com/tencent/mobileqq/transfile/TransFileUtil:versionCode	Ljava/lang/String;
-    //   6: ifnull +12 -> 18
-    //   9: getstatic 27	com/tencent/mobileqq/transfile/TransFileUtil:versionCode	Ljava/lang/String;
-    //   12: astore_0
-    //   13: ldc 2
-    //   15: monitorexit
-    //   16: aload_0
-    //   17: areturn
-    //   18: ldc 131
-    //   20: putstatic 27	com/tencent/mobileqq/transfile/TransFileUtil:versionCode	Ljava/lang/String;
-    //   23: invokestatic 137	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   26: invokevirtual 141	com/tencent/qphone/base/util/BaseApplication:getPackageManager	()Landroid/content/pm/PackageManager;
-    //   29: invokestatic 137	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   32: invokevirtual 144	com/tencent/qphone/base/util/BaseApplication:getPackageName	()Ljava/lang/String;
-    //   35: iconst_0
-    //   36: invokevirtual 150	android/content/pm/PackageManager:getPackageInfo	(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
-    //   39: astore_0
-    //   40: new 35	java/lang/StringBuilder
-    //   43: dup
-    //   44: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   47: aload_0
-    //   48: getfield 155	android/content/pm/PackageInfo:versionName	Ljava/lang/String;
-    //   51: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   54: ldc 46
-    //   56: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   59: aload_0
-    //   60: getfield 157	android/content/pm/PackageInfo:versionCode	I
-    //   63: invokevirtual 110	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   66: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   69: putstatic 27	com/tencent/mobileqq/transfile/TransFileUtil:versionCode	Ljava/lang/String;
-    //   72: getstatic 27	com/tencent/mobileqq/transfile/TransFileUtil:versionCode	Ljava/lang/String;
-    //   75: astore_0
-    //   76: goto -63 -> 13
-    //   79: astore_0
-    //   80: ldc 131
-    //   82: putstatic 27	com/tencent/mobileqq/transfile/TransFileUtil:versionCode	Ljava/lang/String;
-    //   85: aload_0
-    //   86: invokevirtual 160	java/lang/Exception:printStackTrace	()V
-    //   89: goto -17 -> 72
-    //   92: astore_0
-    //   93: ldc 2
-    //   95: monitorexit
-    //   96: aload_0
-    //   97: athrow
+    //   3: lconst_1
+    //   4: invokestatic 257	java/lang/Thread:sleep	(J)V
+    //   7: goto +12 -> 19
+    //   10: astore_2
+    //   11: goto +39 -> 50
+    //   14: astore_2
+    //   15: aload_2
+    //   16: invokevirtual 260	java/lang/InterruptedException:printStackTrace	()V
+    //   19: invokestatic 266	java/lang/System:currentTimeMillis	()J
+    //   22: lstore_0
+    //   23: new 268	java/text/SimpleDateFormat
+    //   26: dup
+    //   27: ldc_w 270
+    //   30: invokespecial 271	java/text/SimpleDateFormat:<init>	(Ljava/lang/String;)V
+    //   33: new 273	java/util/Date
+    //   36: dup
+    //   37: lload_0
+    //   38: invokespecial 275	java/util/Date:<init>	(J)V
+    //   41: invokevirtual 279	java/text/SimpleDateFormat:format	(Ljava/util/Date;)Ljava/lang/String;
+    //   44: astore_2
+    //   45: ldc 2
+    //   47: monitorexit
+    //   48: aload_2
+    //   49: areturn
+    //   50: ldc 2
+    //   52: monitorexit
+    //   53: aload_2
+    //   54: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   12	64	0	localObject1	Object
-    //   79	7	0	localException	java.lang.Exception
-    //   92	5	0	localObject2	Object
+    //   22	16	0	l	long
+    //   10	1	2	localObject	Object
+    //   14	2	2	localInterruptedException	java.lang.InterruptedException
+    //   44	10	2	str	String
     // Exception table:
     //   from	to	target	type
-    //   23	72	79	java/lang/Exception
-    //   3	13	92	finally
-    //   18	23	92	finally
-    //   23	72	92	finally
-    //   72	76	92	finally
-    //   80	89	92	finally
+    //   3	7	10	finally
+    //   15	19	10	finally
+    //   19	45	10	finally
+    //   3	7	14	java/lang/InterruptedException
+  }
+  
+  public static String getTransferFilePath(String paramString1, String paramString2, int paramInt, byte[] paramArrayOfByte)
+  {
+    return getTransferFilePath(paramString1, paramString2, paramInt, paramArrayOfByte, true);
+  }
+  
+  public static String getTransferFilePath(String paramString1, String paramString2, int paramInt, byte[] paramArrayOfByte, boolean paramBoolean)
+  {
+    paramString1 = buildFileInfo(paramString1, paramString2, paramInt, paramArrayOfByte);
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("getTransferFilePath dir: ");
+      paramString2.append(paramString1.fileDir);
+      QLog.d("TransFileUtil", 2, paramString2.toString());
+    }
+    paramString2 = new File(paramString1.fileDir);
+    if (!paramString2.exists()) {
+      paramString2.mkdirs();
+    }
+    paramString2 = new StringBuilder();
+    paramString2.append(paramString1.fileDir);
+    paramString2.append(paramString1.name);
+    paramString2.append(paramString1.suffix);
+    paramString1 = new File(paramString2.toString());
+    if ((paramInt != 0) && (paramBoolean) && (!paramString1.exists())) {}
+    try
+    {
+      paramString1.createNewFile();
+    }
+    catch (IOException paramString2)
+    {
+      label144:
+      break label144;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("getTransferFilePath : ");
+      paramString2.append(paramString1.getAbsoluteFile().toString());
+      QLog.d("TransFileUtil", 2, paramString2.toString());
+    }
+    return paramString1.getAbsoluteFile().toString();
+  }
+  
+  public static String getUinDesc(int paramInt)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(paramInt);
+    localObject = ((StringBuilder)localObject).toString();
+    if (paramInt != 0)
+    {
+      if (paramInt != 1)
+      {
+        if (paramInt != 3000) {
+          return localObject;
+        }
+        return "dis";
+      }
+      return "grp";
+    }
+    return "c2c";
+  }
+  
+  public static String getUrlResoursePath(String paramString, boolean paramBoolean)
+  {
+    if ((getIpAndPortFromUrl(paramString) == null) && (!paramBoolean)) {
+      return paramString;
+    }
+    Matcher localMatcher = HTTP_HOST_REGEX.matcher(paramString);
+    String str = paramString;
+    if (localMatcher.find()) {
+      str = paramString.replace(localMatcher.group(), "");
+    }
+    return str;
+  }
+  
+  public static String getVersionCode()
+  {
+    try
+    {
+      Object localObject1;
+      if (versionCode != null)
+      {
+        localObject1 = versionCode;
+        return localObject1;
+      }
+      versionCode = "unkownVersion";
+      try
+      {
+        localObject1 = BaseApplication.getContext().getPackageManager().getPackageInfo(BaseApplication.getContext().getPackageName(), 0);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(((PackageInfo)localObject1).versionName);
+        localStringBuilder.append(".");
+        localStringBuilder.append(((PackageInfo)localObject1).versionCode);
+        versionCode = localStringBuilder.toString();
+      }
+      catch (Exception localException)
+      {
+        versionCode = "unkownVersion";
+        localException.printStackTrace();
+      }
+      String str = versionCode;
+      return str;
+    }
+    finally {}
   }
   
   public static void log(String paramString1, String paramString2, boolean paramBoolean, String paramString3, String paramString4, String paramString5, String paramString6, Throwable paramThrowable)
@@ -149,34 +487,31 @@ public class TransFileUtil
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("id:");
     localStringBuilder.append(paramString4);
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       paramString4 = "up";
-      localStringBuilder.append(" \tstep:");
-      localStringBuilder.append(paramString5);
-      localStringBuilder.append(" \tcont:");
-      localStringBuilder.append(paramString6);
-      localStringBuilder.append(" \tver:");
-      localStringBuilder.append(getVersionCode());
-      if ("T".equals(paramString1))
-      {
-        localStringBuilder.append(" \ttid:");
-        localStringBuilder.append(Thread.currentThread().getId());
-      }
-      paramString1 = buildTag(paramString2, paramString3, paramString4, paramString1);
-      if (paramThrowable == null) {
-        break label145;
-      }
-      QLog.e(paramString1, 1, localStringBuilder.toString(), paramThrowable);
-    }
-    label145:
-    while (!QLog.isColorLevel())
-    {
-      return;
+    } else {
       paramString4 = "dw";
-      break;
     }
-    QLog.d(paramString1, 2, localStringBuilder.toString());
+    localStringBuilder.append(" \tstep:");
+    localStringBuilder.append(paramString5);
+    localStringBuilder.append(" \tcont:");
+    localStringBuilder.append(paramString6);
+    localStringBuilder.append(" \tver:");
+    localStringBuilder.append(getVersionCode());
+    if ("T".equals(paramString1))
+    {
+      localStringBuilder.append(" \ttid:");
+      localStringBuilder.append(Thread.currentThread().getId());
+    }
+    paramString1 = buildTag(paramString2, paramString3, paramString4, paramString1);
+    if (paramThrowable != null)
+    {
+      QLog.e(paramString1, 1, localStringBuilder.toString(), paramThrowable);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, localStringBuilder.toString());
+    }
   }
   
   public static void log(String paramString1, boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5)
@@ -187,17 +522,27 @@ public class TransFileUtil
   public static void printRichMediaDebug(Object paramObject, String paramString1, String paramString2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("step:").append(paramString1);
-    localStringBuilder.append("    \tcontent:").append(paramString2);
-    QLog.d("Q.richmedia.L." + paramObject, 2, localStringBuilder.toString());
+    localStringBuilder.append("step:");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("    \tcontent:");
+    localStringBuilder.append(paramString2);
+    paramString1 = new StringBuilder();
+    paramString1.append("Q.richmedia.L.");
+    paramString1.append(paramObject);
+    QLog.d(paramString1.toString(), 2, localStringBuilder.toString());
   }
   
   public static void printRichMediaError(Object paramObject, String paramString1, String paramString2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("step:").append(paramString1);
-    localStringBuilder.append("    \tcontent:").append(paramString2);
-    QLog.e("Q.richmedia.L." + paramObject, 2, localStringBuilder.toString());
+    localStringBuilder.append("step:");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("    \tcontent:");
+    localStringBuilder.append(paramString2);
+    paramString1 = new StringBuilder();
+    paramString1.append("Q.richmedia.L.");
+    paramString1.append(paramObject);
+    QLog.e(paramString1.toString(), 2, localStringBuilder.toString());
   }
   
   public static String replaceIp(String paramString1, String paramString2)
@@ -219,7 +564,7 @@ public class TransFileUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.TransFileUtil
  * JD-Core Version:    0.7.0.1
  */

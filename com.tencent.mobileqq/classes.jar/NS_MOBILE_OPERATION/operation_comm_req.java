@@ -45,17 +45,19 @@ public final class operation_comm_req
   {
     paramJceOutputStream.write(this.appid, 0);
     paramJceOutputStream.write(this.opuin, 1);
-    if (this.message != null) {
-      paramJceOutputStream.write(this.message, 2);
+    Object localObject = this.message;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 2);
     }
-    if (this.mapEx != null) {
-      paramJceOutputStream.write(this.mapEx, 3);
+    localObject = this.mapEx;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_comm_req
  * JD-Core Version:    0.7.0.1
  */

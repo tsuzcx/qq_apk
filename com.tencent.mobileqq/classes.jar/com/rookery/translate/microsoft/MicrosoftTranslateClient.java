@@ -24,12 +24,10 @@ abstract class MicrosoftTranslateClient
 {
   private static String a(List<String> paramList, String paramString)
   {
-    XmlSerializer localXmlSerializer;
-    StringWriter localStringWriter;
     try
     {
-      localXmlSerializer = Xml.newSerializer();
-      localStringWriter = new StringWriter();
+      XmlSerializer localXmlSerializer = Xml.newSerializer();
+      StringWriter localStringWriter = new StringWriter();
       localXmlSerializer.setOutput(localStringWriter);
       localXmlSerializer.startDocument("UTF-8", Boolean.valueOf(true));
       localXmlSerializer.startTag("", "TranslateArrayRequest");
@@ -45,19 +43,19 @@ abstract class MicrosoftTranslateClient
         localXmlSerializer.endTag("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "string");
       }
       localXmlSerializer.endTag("", "Texts");
+      localXmlSerializer.startTag("", "To");
+      localXmlSerializer.text(paramString);
+      localXmlSerializer.endTag("", "To");
+      localXmlSerializer.endTag("", "TranslateArrayRequest");
+      localXmlSerializer.endDocument();
+      paramList = localStringWriter.toString();
+      return paramList;
     }
     catch (Exception paramList)
     {
       paramList.printStackTrace();
-      return null;
     }
-    localXmlSerializer.startTag("", "To");
-    localXmlSerializer.text(paramString);
-    localXmlSerializer.endTag("", "To");
-    localXmlSerializer.endTag("", "TranslateArrayRequest");
-    localXmlSerializer.endDocument();
-    paramList = localStringWriter.toString();
-    return paramList;
+    return null;
   }
   
   public static void a(Context paramContext, Header[] paramArrayOfHeader, List<String> paramList, String paramString, AsyncHttpResponseHandler paramAsyncHttpResponseHandler)

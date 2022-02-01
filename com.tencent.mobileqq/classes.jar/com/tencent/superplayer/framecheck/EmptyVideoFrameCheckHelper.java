@@ -5,7 +5,7 @@ import com.tencent.superplayer.view.ISPlayerVideoView;
 public class EmptyVideoFrameCheckHelper
   implements IVideoFrameCheckHelper
 {
-  private static EmptyVideoFrameCheckHelper mInstance = null;
+  private static EmptyVideoFrameCheckHelper mInstance;
   
   public static EmptyVideoFrameCheckHelper getInstance()
   {
@@ -31,7 +31,7 @@ public class EmptyVideoFrameCheckHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.framecheck.EmptyVideoFrameCheckHelper
  * JD-Core Version:    0.7.0.1
  */

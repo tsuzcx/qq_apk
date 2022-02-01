@@ -19,12 +19,23 @@ public class SquareBannerItem
   
   public String toString()
   {
-    return "SquareBannerItem{bannerId='" + this.a + '\'' + ", imgUrl='" + this.b + '\'' + ", jumpTargetUrl='" + this.c + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SquareBannerItem{bannerId='");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", imgUrl='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", jumpTargetUrl='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.square.model.SquareBannerItem
  * JD-Core Version:    0.7.0.1
  */

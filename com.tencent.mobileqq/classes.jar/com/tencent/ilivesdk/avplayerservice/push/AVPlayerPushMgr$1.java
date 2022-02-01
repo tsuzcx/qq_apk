@@ -12,7 +12,11 @@ class AVPlayerPushMgr$1
   
   public void onRecv(int paramInt, byte[] paramArrayOfByte, MsgExtInfo paramMsgExtInfo)
   {
-    AVPlayerPushMgr.access$000(this.this$0).getLogger().i("AVPlayerPushMgr", "mPushListener0x4a,onPush,data:" + paramArrayOfByte, new Object[0]);
+    paramMsgExtInfo = AVPlayerPushMgr.access$000(this.this$0).getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mPushListener0x4a,onPush,data:");
+    localStringBuilder.append(paramArrayOfByte);
+    paramMsgExtInfo.i("AVPlayerPushMgr", localStringBuilder.toString(), new Object[0]);
     if (paramArrayOfByte != null) {
       AVPlayerPushMgr.access$100(this.this$0, paramArrayOfByte);
     }
@@ -20,7 +24,7 @@ class AVPlayerPushMgr$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avplayerservice.push.AVPlayerPushMgr.1
  * JD-Core Version:    0.7.0.1
  */

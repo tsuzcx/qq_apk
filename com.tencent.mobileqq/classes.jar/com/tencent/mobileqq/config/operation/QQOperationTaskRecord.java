@@ -17,87 +17,133 @@ public class QQOperationTaskRecord
   
   public void addUinShowCount(String paramString)
   {
-    String str1;
     if (!TextUtils.isEmpty(paramString))
     {
-      str1 = "+" + paramString + "_";
-      if ((TextUtils.isEmpty(this.showCount)) || (!this.showCount.contains(str1))) {
-        break label247;
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("+");
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append("_");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      if ((!TextUtils.isEmpty(this.showCount)) && (this.showCount.contains((CharSequence)localObject1)))
+      {
+        int i = this.showCount.indexOf((String)localObject1);
+        if (i == -1)
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("addUinShowCount  showCount = ");
+            ((StringBuilder)localObject1).append(this.showCount);
+            ((StringBuilder)localObject1).append(" uin = ");
+            ((StringBuilder)localObject1).append(paramString);
+            QLog.d("QQOperateVoIP", 2, ((StringBuilder)localObject1).toString());
+          }
+          return;
+        }
+        Object localObject2 = this.showCount.substring(i + ((String)localObject1).length());
+        i = ((String)localObject2).indexOf("|");
+        if (i == -1)
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("addUinShowCount  showCount = ");
+            ((StringBuilder)localObject1).append(this.showCount);
+            ((StringBuilder)localObject1).append(" uin = ");
+            ((StringBuilder)localObject1).append(paramString);
+            QLog.d("QQOperateVoIP", 2, ((StringBuilder)localObject1).toString());
+          }
+          return;
+        }
+        i = Integer.valueOf(((String)localObject2).substring(0, i)).intValue();
+        paramString = this.showCount;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(i);
+        localObject2 = ((StringBuilder)localObject2).toString();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append(i + 1);
+        this.showCount = paramString.replace((CharSequence)localObject2, localStringBuilder.toString());
+        return;
       }
-      i = this.showCount.indexOf(str1);
-      if (i != -1) {
-        break label111;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QQOperateVoIP", 2, "addUinShowCount  showCount = " + this.showCount + " uin = " + paramString);
-      }
+      paramString = new StringBuilder();
+      paramString.append(this.showCount);
+      paramString.append((String)localObject1);
+      paramString.append("1|");
+      this.showCount = paramString.toString();
     }
-    label111:
-    String str2;
-    do
-    {
-      return;
-      str2 = this.showCount.substring(i + str1.length());
-      i = str2.indexOf("|");
-      if (i != -1) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("QQOperateVoIP", 2, "addUinShowCount  showCount = " + this.showCount + " uin = " + paramString);
-    return;
-    int i = Integer.valueOf(str2.substring(0, i)).intValue();
-    this.showCount = this.showCount.replace(str1 + i, str1 + (i + 1));
-    return;
-    label247:
-    this.showCount = (this.showCount + str1 + "1|");
   }
   
   public int getUinTotalShowCount(String paramString)
   {
-    String str;
+    Object localObject;
     int i;
     if (!TextUtils.isEmpty(paramString))
     {
-      str = "+" + paramString + "_";
-      if ((!TextUtils.isEmpty(this.showCount)) && (this.showCount.contains(str)))
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("+");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("_");
+      localObject = ((StringBuilder)localObject).toString();
+      if ((!TextUtils.isEmpty(this.showCount)) && (this.showCount.contains((CharSequence)localObject)))
       {
-        i = this.showCount.indexOf(str);
-        if (i != -1) {
-          break label112;
+        i = this.showCount.indexOf((String)localObject);
+        if (i == -1)
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("getUinTotalShowCount  showCount = ");
+            ((StringBuilder)localObject).append(this.showCount);
+            ((StringBuilder)localObject).append(" uin = ");
+            ((StringBuilder)localObject).append(paramString);
+            QLog.d("QQOperateVoIP", 2, ((StringBuilder)localObject).toString());
+          }
+          return 0;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("QQOperateVoIP", 2, "getUinTotalShowCount  showCount = " + this.showCount + " uin = " + paramString);
+        localObject = this.showCount.substring(i + ((String)localObject).length());
+        i = ((String)localObject).indexOf("|");
+        if (i == -1)
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("getUinTotalShowCount  showCount = ");
+            ((StringBuilder)localObject).append(this.showCount);
+            ((StringBuilder)localObject).append(" uin = ");
+            ((StringBuilder)localObject).append(paramString);
+            QLog.d("QQOperateVoIP", 2, ((StringBuilder)localObject).toString());
+          }
+          return 0;
         }
       }
     }
-    label112:
-    do
+    try
     {
-      do
-      {
-        return 0;
-        str = this.showCount.substring(str.length() + i);
-        i = str.indexOf("|");
-        if (i != -1) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("QQOperateVoIP", 2, "getUinTotalShowCount  showCount = " + this.showCount + " uin = " + paramString);
-      return 0;
-      try
-      {
-        i = Integer.valueOf(str.substring(0, i)).intValue();
-        return i;
-      }
-      catch (Exception localException) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("QQOperateVoIP", 2, "getUinTotalShowCount  showCount = " + this.showCount + " uin = " + paramString);
+      i = Integer.valueOf(((String)localObject).substring(0, i)).intValue();
+      return i;
+    }
+    catch (Exception localException)
+    {
+      label226:
+      break label226;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getUinTotalShowCount  showCount = ");
+      ((StringBuilder)localObject).append(this.showCount);
+      ((StringBuilder)localObject).append(" uin = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("QQOperateVoIP", 2, ((StringBuilder)localObject).toString());
+    }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.operation.QQOperationTaskRecord
  * JD-Core Version:    0.7.0.1
  */

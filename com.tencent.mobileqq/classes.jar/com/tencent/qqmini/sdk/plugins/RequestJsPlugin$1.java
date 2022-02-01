@@ -21,23 +21,36 @@ class RequestJsPlugin$1
   
   public void onRequestFailed(int paramInt, String paramString)
   {
-    Object localObject = (RequestJsPlugin.RequestTask)RequestJsPlugin.access$000(this.this$0).remove(Integer.valueOf(this.val$request.mTaskId));
-    RequestJsPlugin.access$100(this.this$0, paramInt, (RequestJsPlugin.RequestTask)localObject, this.val$request, this.val$req, this.val$url, 0, this.val$request.mMethod);
-    QMLog.e("[mini] http.RequestJsPlugin", "--fail--- url: " + this.val$request.mUrl + " taskId=" + this.val$request.mTaskId + " resCode=" + paramInt);
-    localObject = new JSONObject();
+    Object localObject1 = (RequestJsPlugin.RequestTask)RequestJsPlugin.access$000(this.this$0).remove(Integer.valueOf(this.val$request.mTaskId));
+    Object localObject2 = this.this$0;
+    RequestJsPlugin.RequestTask localRequestTask = this.val$request;
+    RequestJsPlugin.access$100((RequestJsPlugin)localObject2, paramInt, (RequestJsPlugin.RequestTask)localObject1, localRequestTask, this.val$req, this.val$url, 0, localRequestTask.mMethod);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("--fail--- url: ");
+    ((StringBuilder)localObject1).append(this.val$request.mUrl);
+    ((StringBuilder)localObject1).append(" taskId=");
+    ((StringBuilder)localObject1).append(this.val$request.mTaskId);
+    ((StringBuilder)localObject1).append(" resCode=");
+    ((StringBuilder)localObject1).append(paramInt);
+    QMLog.e("[mini] http.RequestJsPlugin", ((StringBuilder)localObject1).toString());
+    localObject1 = new JSONObject();
     try
     {
-      ((JSONObject)localObject).put("state", "fail");
-      ((JSONObject)localObject).put("requestTaskId", this.val$request.mTaskId);
-      if (!TextUtils.isEmpty(paramString)) {
-        ((JSONObject)localObject).put("errMsg", paramString);
-      }
-      for (;;)
+      ((JSONObject)localObject1).put("state", "fail");
+      ((JSONObject)localObject1).put("requestTaskId", this.val$request.mTaskId);
+      if (!TextUtils.isEmpty(paramString))
       {
-        this.val$req.jsService.evaluateSubscribeJS("onRequestTaskStateChange", ((JSONObject)localObject).toString(), 0);
-        return;
-        MiniappHttpUtil.fillErrMsg("request", (JSONObject)localObject, paramInt);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(paramString);
+        ((StringBuilder)localObject2).append(" errCode: ");
+        ((StringBuilder)localObject2).append(paramInt);
+        ((JSONObject)localObject1).put("errMsg", ((StringBuilder)localObject2).toString());
       }
+      else
+      {
+        MiniappHttpUtil.fillErrMsg("request", (JSONObject)localObject1, paramInt);
+      }
+      this.val$req.jsService.evaluateSubscribeJS("onRequestTaskStateChange", ((JSONObject)localObject1).toString(), 0);
       return;
     }
     catch (Throwable paramString) {}
@@ -45,15 +58,15 @@ class RequestJsPlugin$1
   
   public void onRequestHeadersReceived(int paramInt, Map<String, List<String>> paramMap)
   {
-    JSONObject localJSONObject = new JSONObject();
+    Object localObject = new JSONObject();
     try
     {
-      localJSONObject.put("url", this.val$url);
-      localJSONObject.put("requestTaskId", this.val$request.mTaskId);
-      localJSONObject.put("header", JSONUtil.headerToJson(paramMap));
-      localJSONObject.put("errMsg", "ok");
-      localJSONObject.put("statusCode", paramInt);
-      localJSONObject.put("state", "headersReceived");
+      ((JSONObject)localObject).put("url", this.val$url);
+      ((JSONObject)localObject).put("requestTaskId", this.val$request.mTaskId);
+      ((JSONObject)localObject).put("header", JSONUtil.headerToJson(paramMap));
+      ((JSONObject)localObject).put("errMsg", "ok");
+      ((JSONObject)localObject).put("statusCode", paramInt);
+      ((JSONObject)localObject).put("state", "headersReceived");
       if ((paramMap != null) && (paramMap.containsKey("Content-Type")))
       {
         paramMap = (List)paramMap.get("Content-Type");
@@ -61,12 +74,15 @@ class RequestJsPlugin$1
           this.contentType = ((String)paramMap.get(0));
         }
       }
-      this.val$req.jsService.evaluateSubscribeJS("onRequestTaskStateChange", localJSONObject.toString(), 0);
+      this.val$req.jsService.evaluateSubscribeJS("onRequestTaskStateChange", ((JSONObject)localObject).toString(), 0);
       return;
     }
     catch (Exception paramMap)
     {
-      QMLog.e("[mini] http.RequestJsPlugin", "headersReceived exception, url: " + this.val$request.mUrl, paramMap);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("headersReceived exception, url: ");
+      ((StringBuilder)localObject).append(this.val$request.mUrl);
+      QMLog.e("[mini] http.RequestJsPlugin", ((StringBuilder)localObject).toString(), paramMap);
     }
   }
   
@@ -77,18 +93,19 @@ class RequestJsPlugin$1
     RequestJsPlugin.RequestTask localRequestTask2 = this.val$request;
     RequestEvent localRequestEvent = this.val$req;
     String str = this.val$url;
-    if (paramArrayOfByte != null) {}
-    for (int i = paramArrayOfByte.length;; i = 0)
-    {
-      RequestJsPlugin.access$100(localRequestJsPlugin, paramInt, localRequestTask1, localRequestTask2, localRequestEvent, str, i, this.val$request.mMethod);
-      RequestJsPlugin.access$200(this.this$0, paramInt, paramArrayOfByte, paramMap, this.val$url, this.val$request, this.val$req);
-      return;
+    int i;
+    if (paramArrayOfByte != null) {
+      i = paramArrayOfByte.length;
+    } else {
+      i = 0;
     }
+    RequestJsPlugin.access$100(localRequestJsPlugin, paramInt, localRequestTask1, localRequestTask2, localRequestEvent, str, i, this.val$request.mMethod);
+    RequestJsPlugin.access$200(this.this$0, paramInt, paramArrayOfByte, paramMap, this.val$url, this.val$request, this.val$req);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.RequestJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,13 @@ public class c
     try
     {
       localObject = ((ConnectivityManager)((Context)localObject).getSystemService("connectivity")).getActiveNetworkInfo();
-      if ((localObject == null) || (!((NetworkInfo)localObject).isConnected())) {
+      if ((localObject != null) && (((NetworkInfo)localObject).isConnected()))
+      {
+        if (((NetworkInfo)localObject).getType() == 1) {
+          return "wifi";
+        }
+      }
+      else {
         throw new RuntimeException();
       }
     }
@@ -25,15 +31,12 @@ public class c
     {
       return "undefined";
     }
-    if (localThrowable.getType() == 1) {
-      return "wifi";
-    }
     return "mobile";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.d.c
  * JD-Core Version:    0.7.0.1
  */

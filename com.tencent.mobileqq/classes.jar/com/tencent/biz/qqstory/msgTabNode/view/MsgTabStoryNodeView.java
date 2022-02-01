@@ -45,15 +45,15 @@ public class MsgTabStoryNodeView
   {
     super(paramContext);
     this.jdField_a_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    inflate(paramContext, 2131561862, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131376814));
+    inflate(paramContext, 2131561713, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131376306));
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new MsgTabStoryNodeView.HorizontalSpaceItemDecoration(paramContext));
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setItemAnimator(null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379216));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370195);
-    findViewById(2131379213).setOnClickListener(new MsgTabStoryNodeView.2(this));
-    int i = paramContext.getResources().getColor(2131167040);
-    ((ImageView)findViewById(2131368771)).getDrawable().setColorFilter(i, PorterDuff.Mode.SRC_ATOP);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378579));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369864);
+    findViewById(2131378576).setOnClickListener(new MsgTabStoryNodeView.2(this));
+    int i = paramContext.getResources().getColor(2131167063);
+    ((ImageView)findViewById(2131368501)).getDrawable().setColorFilter(i, PorterDuff.Mode.SRC_ATOP);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(new MsgTabStoryNodeView.3(this, paramContext));
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(paramContext, 0, false);
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.setAutoMeasureEnabled(true);
@@ -62,11 +62,11 @@ public class MsgTabStoryNodeView
   
   public void a()
   {
-    Drawable localDrawable = getContext().getResources().getDrawable(2130846363);
+    Drawable localDrawable = getContext().getResources().getDrawable(2130846235);
     SLog.b("Q.qqstory.msgTab.MsgTabStoryNodeView", "newDrawable %s", String.valueOf(localDrawable));
     if ((localDrawable instanceof SkinnableBitmapDrawable))
     {
-      ImageView localImageView = (ImageView)findViewById(2131368837);
+      ImageView localImageView = (ImageView)findViewById(2131368565);
       Matrix localMatrix = localImageView.getImageMatrix();
       float f = localImageView.getWidth() * 1.0F / localDrawable.getIntrinsicWidth();
       localMatrix.setScale(f, f, 0.0F, 0.0F);
@@ -74,100 +74,107 @@ public class MsgTabStoryNodeView
       localImageView.setImageDrawable(localDrawable);
       localImageView.setVisibility(0);
     }
-    for (;;)
+    else
     {
-      setBackgroundDrawable(getResources().getDrawable(2130839537));
-      return;
-      ((ImageView)findViewById(2131368837)).setVisibility(8);
+      ((ImageView)findViewById(2131368565)).setVisibility(8);
     }
+    setBackgroundDrawable(getResources().getDrawable(2130839393));
   }
   
   public void a(int paramInt)
   {
-    SLog.b("Q.qqstory.msgTab.MsgTabStoryNodeView", "updateRedPoint " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateRedPoint ");
+    localStringBuilder.append(paramInt);
+    SLog.b("Q.qqstory.msgTab.MsgTabStoryNodeView", localStringBuilder.toString());
     if (paramInt > 99) {
       this.jdField_a_of_type_AndroidWidgetTextView.setText("99+");
+    } else {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(paramInt));
     }
-    while (paramInt <= 0)
+    if (paramInt <= 0)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(paramInt));
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
   }
   
   public boolean a(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = paramMotionEvent.getAction();
+    int i = paramMotionEvent.getAction() & 0xFF;
     float f2 = paramMotionEvent.getX();
     float f1 = paramMotionEvent.getY();
-    switch (i & 0xFF)
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      if (this.c)
+      if (i == 2)
       {
-        paramMotionEvent.offsetLocation(0.0F, this.jdField_a_of_type_ArrayOfInt[1] - this.jdField_b_of_type_ArrayOfInt[1]);
-        dispatchTouchEvent(paramMotionEvent);
+        f2 = Math.abs(this.jdField_a_of_type_Float - f2);
+        f1 = Math.abs(this.jdField_b_of_type_Float - f1);
+        if ((this.jdField_b_of_type_Int == 0) && (f2 > this.jdField_a_of_type_Int)) {
+          this.jdField_b_of_type_Int = 1;
+        }
+        if ((this.jdField_b_of_type_Int == 0) && (f1 > this.jdField_a_of_type_Int)) {
+          this.jdField_b_of_type_Int = 2;
+        }
+        if ((this.jdField_b_of_type_Int == 2) && (this.c))
+        {
+          this.c = false;
+          paramMotionEvent.setAction(3);
+          dispatchTouchEvent(paramMotionEvent);
+        }
       }
-      return this.c;
+    }
+    else
+    {
       getLocationInWindow(this.jdField_b_of_type_ArrayOfInt);
       paramView.getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-      if ((f1 >= this.jdField_b_of_type_ArrayOfInt[1]) && (f1 < this.jdField_b_of_type_ArrayOfInt[1] + getHeight())) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.c = bool;
-        this.jdField_a_of_type_Float = f2;
-        this.jdField_b_of_type_Float = f1;
-        this.jdField_b_of_type_Int = 0;
-        break;
+      paramView = this.jdField_b_of_type_ArrayOfInt;
+      boolean bool;
+      if ((f1 >= paramView[1]) && (f1 < paramView[1] + getHeight())) {
+        bool = true;
+      } else {
+        bool = false;
       }
-      f2 = Math.abs(this.jdField_a_of_type_Float - f2);
-      f1 = Math.abs(this.jdField_b_of_type_Float - f1);
-      if ((this.jdField_b_of_type_Int == 0) && (f2 > this.jdField_a_of_type_Int)) {
-        this.jdField_b_of_type_Int = 1;
-      }
-      if ((this.jdField_b_of_type_Int == 0) && (f1 > this.jdField_a_of_type_Int)) {
-        this.jdField_b_of_type_Int = 2;
-      }
-      if ((this.jdField_b_of_type_Int == 2) && (this.c))
-      {
-        this.c = false;
-        paramMotionEvent.setAction(3);
-        dispatchTouchEvent(paramMotionEvent);
-      }
+      this.c = bool;
+      this.jdField_a_of_type_Float = f2;
+      this.jdField_b_of_type_Float = f1;
+      this.jdField_b_of_type_Int = 0;
     }
+    if (this.c)
+    {
+      paramMotionEvent.offsetLocation(0.0F, this.jdField_a_of_type_ArrayOfInt[1] - this.jdField_b_of_type_ArrayOfInt[1]);
+      dispatchTouchEvent(paramMotionEvent);
+    }
+    return this.c;
   }
   
   public void b()
   {
-    int i = getContext().getResources().getColor(2131167040);
-    Object localObject = (ImageView)findViewById(2131368771);
+    int i = getContext().getResources().getColor(2131167063);
+    Object localObject = (ImageView)findViewById(2131368501);
     if (localObject != null)
     {
       ((ImageView)localObject).getDrawable().setColorFilter(i, PorterDuff.Mode.SRC_ATOP);
       ((ImageView)localObject).invalidate();
     }
-    ((TextView)findViewById(2131379213)).setTextColor(i);
-    ((TextView)findViewById(2131379212)).setTextColor(i);
-    getContext().getResources().getColor(2131167093);
-    getContext().getResources().getDrawable(2130850434);
+    ((TextView)findViewById(2131378576)).setTextColor(i);
+    ((TextView)findViewById(2131378575)).setTextColor(i);
+    getContext().getResources().getColor(2131167116);
+    getContext().getResources().getDrawable(2130850361);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setBackgroundDrawable(null);
     for (localObject = this;; localObject = (View)localObject)
     {
       SLog.b("Q.qqstory.msgTab.MsgTabStoryNodeViewVASH", "Debug %s -> back: %s", String.valueOf(localObject), String.valueOf(((View)localObject).getBackground()));
       localObject = ((View)localObject).getParent();
-      if ((localObject == null) || (!(localObject instanceof View)))
-      {
-        a();
-        return;
+      if ((localObject == null) || (!(localObject instanceof View))) {
+        break;
       }
     }
+    a();
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     this.jdField_b_of_type_Boolean = false;
@@ -183,7 +190,7 @@ public class MsgTabStoryNodeView
     }
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.jdField_b_of_type_Boolean = true;
@@ -192,7 +199,7 @@ public class MsgTabStoryNodeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeView
  * JD-Core Version:    0.7.0.1
  */

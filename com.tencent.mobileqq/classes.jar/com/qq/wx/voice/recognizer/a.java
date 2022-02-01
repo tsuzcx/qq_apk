@@ -2,19 +2,23 @@ package com.qq.wx.voice.recognizer;
 
 final class a
 {
-  byte[] a = null;
-  InnerAudioState b = InnerAudioState.stop;
-  int c = 16000;
+  byte[] a;
+  InnerAudioState b;
+  int c;
   
   public a(byte[] paramArrayOfByte, InnerAudioState paramInnerAudioState)
   {
-    if (paramArrayOfByte == null) {}
-    for (paramArrayOfByte = localObject;; paramArrayOfByte = (byte[])paramArrayOfByte.clone())
-    {
-      this.a = paramArrayOfByte;
-      this.b = paramInnerAudioState;
-      return;
+    Object localObject = null;
+    this.a = null;
+    this.b = InnerAudioState.stop;
+    this.c = 16000;
+    if (paramArrayOfByte == null) {
+      paramArrayOfByte = localObject;
+    } else {
+      paramArrayOfByte = (byte[])paramArrayOfByte.clone();
     }
+    this.a = paramArrayOfByte;
+    this.b = paramInnerAudioState;
   }
 }
 

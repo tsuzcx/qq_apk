@@ -20,14 +20,15 @@ public final class qqstory_pgc$ReqReport
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42 }, new String[] { "story_id", "type", "uid", "operation", "union_id" }, new Object[] { localByteStringMicro1, Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro2 }, ReqReport.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42 }, new String[] { "story_id", "type", "uid", "operation", "union_id" }, new Object[] { localByteStringMicro1, localInteger, Long.valueOf(0L), localInteger, localByteStringMicro2 }, ReqReport.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_pgc.ReqReport
  * JD-Core Version:    0.7.0.1
  */

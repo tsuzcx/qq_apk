@@ -14,19 +14,7 @@ import android.widget.ProgressBar;
 import com.tencent.biz.pubaccount.CustomWebChromeClient;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.ui.TouchWebView;
-import com.tencent.biz.webviewplugin.OfflinePlugin;
-import com.tencent.biz.webviewplugin.WebSoPlugin;
-import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.jsp.DocxApiPlugin;
-import com.tencent.mobileqq.jsp.EventApiPlugin;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletCommonHbJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletMixJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebReport;
-import com.tencent.mobileqq.webprocess.PreloadService;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.webview.swift.CommonJsPluginFactory;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -48,6 +36,7 @@ import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 import java.io.File;
 import java.util.ArrayList;
+import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import org.json.JSONObject;
 
@@ -57,32 +46,31 @@ public abstract class AbsWebView
   public static final String WEBP_DECODER_VERSION_OF_X5 = " WebP/0.3.0";
   private CustomWebChromeClient mChromeClient;
   protected Context mContext;
-  public Activity mInActivity;
-  protected AppInterface mInterface;
-  public boolean mIsFirstOnPageStart = true;
+  protected Activity mInActivity;
+  protected AppRuntime mInterface;
+  protected boolean mIsFirstOnPageStart = true;
   protected ProgressBar mLoadProgress;
   public WebViewProgressBar mLoadingProgressBar;
-  OfflinePlugin mOfflinePlugin;
-  public boolean mPerfFirstLoadTag = true;
+  protected boolean mPerfFirstLoadTag = true;
   protected WebViewPluginEngine mPluginEngine;
   public ArrayList<WebViewPlugin> mPluginList = null;
   public WebViewProgressBarController mProgressBarController;
   public long mRedirect302Time = -1L;
   public String mRedirect302Url = "";
-  public long mStartLoadUrlMilliTimeStamp;
+  protected long mStartLoadUrlMilliTimeStamp;
   public WebStateReporter mStateReporter = new WebStateReporter();
-  public long mTimeBeforeLoadUrl = 0L;
+  protected long mTimeBeforeLoadUrl = 0L;
   public String mUrl;
   private WebViewClient mWebViewClient;
   public TouchWebView mWebview;
   public JSONObject mX5PerformanceJson = null;
   private final Object sInitEngineLock = new Object();
   
-  public AbsWebView(Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
+  public AbsWebView(Context paramContext, Activity paramActivity, AppRuntime paramAppRuntime)
   {
     this.mContext = paramContext;
     this.mInActivity = paramActivity;
-    this.mInterface = paramAppInterface;
+    this.mInterface = paramAppRuntime;
   }
   
   private void bindAllJavaScript()
@@ -91,17 +79,19 @@ public abstract class AbsWebView
       QLog.d("AbsWebView", 2, "bindAllJavaScript");
     }
     long l = System.currentTimeMillis();
-    if (this.mPluginList == null) {
+    Object localObject = this.mPluginList;
+    if (localObject == null) {
       this.mPluginList = new ArrayList();
+    } else {
+      ((ArrayList)localObject).clear();
     }
-    for (;;)
+    bindJavaScript(this.mPluginList);
+    if (QLog.isColorLevel())
     {
-      bindJavaScript(this.mPluginList);
-      if (QLog.isColorLevel()) {
-        QLog.d("AbsWebView", 2, "bindAllJavaScript time = " + (System.currentTimeMillis() - l));
-      }
-      return;
-      this.mPluginList.clear();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("bindAllJavaScript time = ");
+      ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+      QLog.d("AbsWebView", 2, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -115,174 +105,135 @@ public abstract class AbsWebView
   
   private void bindWebViewClient()
   {
-    if (Build.VERSION.SDK_INT >= 21) {
+    if (Build.VERSION.SDK_INT >= 21)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("AbsWebView", 2, "API Level >= 23");
       }
+      this.mWebViewClient = new AbsWebView.3(this);
     }
-    for (this.mWebViewClient = new AbsWebView.3(this);; this.mWebViewClient = new AbsWebView.4(this))
+    else
     {
-      this.mWebview.setWebViewClient(this.mWebViewClient);
-      return;
       if (QLog.isColorLevel()) {
         QLog.d("AbsWebView", 2, "API level < 23");
       }
+      this.mWebViewClient = new AbsWebView.4(this);
     }
+    this.mWebview.setWebViewClient(this.mWebViewClient);
   }
   
-  private void checkOfflinePlugin()
-  {
-    if (this.mOfflinePlugin == null)
-    {
-      Object localObject = this.mWebview.getPluginEngine();
-      if (localObject != null)
-      {
-        localObject = ((WebViewPluginEngine)localObject).a("offline");
-        if ((localObject != null) && ((localObject instanceof OfflinePlugin))) {
-          this.mOfflinePlugin = ((OfflinePlugin)localObject);
-        }
-      }
-    }
-  }
-  
-  private void initWebView(AppInterface paramAppInterface)
+  private void initWebView()
   {
     if (QLog.isColorLevel()) {
       QLog.d("AbsWebView", 2, "initWebView");
     }
     this.mWebview.setPluginEngine(this.mPluginEngine);
-    if (!this.mPluginEngine.a(this.mUrl, 1L, null)) {}
+    this.mPluginEngine.a(this.mUrl, 1L, null);
     WebSettings localWebSettings = this.mWebview.getSettings();
-    paramAppInterface = localWebSettings.getUserAgentString();
-    String str1 = getUAMark();
+    localObject1 = localWebSettings.getUserAgentString();
+    Object localObject2 = getUAMark();
     boolean bool;
     if (this.mWebview.getX5WebViewExtension() != null) {
       bool = true;
+    } else {
+      bool = false;
     }
-    for (;;)
+    localWebSettings.setUserAgentString(SwiftWebViewUtils.a((String)localObject1, (String)localObject2, bool));
+    localWebSettings.setSavePassword(false);
+    localWebSettings.setSaveFormData(false);
+    localWebSettings.setBuiltInZoomControls(true);
+    localWebSettings.setUseWideViewPort(true);
+    localWebSettings.setLoadWithOverviewMode(true);
+    localWebSettings.setPluginState(WebSettings.PluginState.ON);
+    localWebSettings.setMediaPlaybackRequiresUserGesture(false);
+    localObject1 = this.mContext.getPackageManager();
+    try
     {
-      localWebSettings.setUserAgentString(SwiftWebViewUtils.a(paramAppInterface, str1, bool));
-      localWebSettings.setSavePassword(false);
-      localWebSettings.setSaveFormData(false);
-      localWebSettings.setBuiltInZoomControls(true);
-      localWebSettings.setUseWideViewPort(true);
-      localWebSettings.setLoadWithOverviewMode(true);
-      localWebSettings.setPluginState(WebSettings.PluginState.ON);
-      localWebSettings.setMediaPlaybackRequiresUserGesture(false);
-      paramAppInterface = this.mContext.getPackageManager();
+      if (((PackageManager)localObject1).hasSystemFeature("android.hardware.touchscreen.multitouch")) {
+        break label170;
+      }
+      bool = ((PackageManager)localObject1).hasSystemFeature("android.hardware.faketouch.multitouch.distinct");
+      if (!bool) {}
+    }
+    catch (RuntimeException localRuntimeException)
+    {
       try
       {
-        if (!paramAppInterface.hasSystemFeature("android.hardware.touchscreen.multitouch"))
-        {
-          bool = paramAppInterface.hasSystemFeature("android.hardware.faketouch.multitouch.distinct");
-          if (!bool) {}
+        int i;
+        StringBuilder localStringBuilder;
+        this.mWebview.requestFocus();
+        this.mWebview.setFocusableInTouchMode(true);
+        this.mWebview.setDownloadListener(new AbsWebView.2(this));
+        CookieSyncManager.createInstance(this.mContext.getApplicationContext());
+        if (this.mWebview.getX5WebViewExtension() == null) {
+          break label538;
         }
-        else
-        {
-          i = 1;
-          if (i != 0) {
-            break label519;
-          }
-          bool = true;
-          localWebSettings.setDisplayZoomControls(bool);
-          localWebSettings.setPluginsEnabled(true);
-          localWebSettings.setJavaScriptEnabled(true);
-          localWebSettings.setAllowContentAccess(true);
-          localWebSettings.setDatabaseEnabled(true);
-          localWebSettings.setDomStorageEnabled(true);
-          localWebSettings.setAppCacheEnabled(true);
-          String str2 = MobileQQ.getMobileQQ().getQQProcessName();
-          str1 = "";
-          paramAppInterface = str1;
-          if (str2 != null)
-          {
-            i = str2.lastIndexOf(':');
-            paramAppInterface = str1;
-            if (i > -1) {
-              paramAppInterface = "_" + str2.substring(i + 1);
-            }
-          }
-          localWebSettings.setDatabasePath(this.mContext.getApplicationContext().getDir("database" + paramAppInterface, 0).getPath());
-          localWebSettings.setAppCachePath(this.mContext.getApplicationContext().getDir("appcache" + paramAppInterface, 0).getPath());
-          if (Build.VERSION.SDK_INT >= 11) {
-            this.mWebview.removeJavascriptInterface("searchBoxJavaBridge_");
-          }
+        this.mWebview.getX5WebViewExtension().setWebViewClientExtension(new AbsWebView.DownloadQQBrowserExtension(this, this.mWebview));
+        if (!this.mContext.getSharedPreferences("WebView_X5_Report", 4).getBoolean("enableX5Report", true)) {
+          break label538;
         }
+        localObject1 = new Bundle();
+        ((Bundle)localObject1).putBoolean("enabled", true);
+        this.mWebview.getX5WebViewExtension().invokeMiscMethod("webPerformanceRecordingEnabled", (Bundle)localObject1);
+        return;
+        localRuntimeException = localRuntimeException;
       }
-      catch (RuntimeException paramAppInterface)
+      catch (Exception localException)
       {
-        try
-        {
-          for (;;)
-          {
-            this.mWebview.requestFocus();
-            label378:
-            this.mWebview.setFocusableInTouchMode(true);
-            this.mWebview.setDownloadListener(new AbsWebView.2(this));
-            CookieSyncManager.createInstance(this.mContext.getApplicationContext());
-            if (this.mWebview.getX5WebViewExtension() != null)
-            {
-              this.mWebview.getX5WebViewExtension().setWebViewClientExtension(new AbsWebView.DownloadQQBrowserExtension(this, this.mWebview));
-              if (this.mContext.getSharedPreferences("WebView_X5_Report", 4).getBoolean("enableX5Report", true))
-              {
-                paramAppInterface = new Bundle();
-                paramAppInterface.putBoolean("enabled", true);
-                this.mWebview.getX5WebViewExtension().invokeMiscMethod("webPerformanceRecordingEnabled", paramAppInterface);
-              }
-            }
-            return;
-            bool = false;
-            break;
-            int i = 0;
-            continue;
-            paramAppInterface = paramAppInterface;
-            i = 0;
-          }
-          label519:
-          bool = false;
-        }
-        catch (Exception paramAppInterface)
-        {
-          break label378;
-        }
+        break label414;
       }
     }
-  }
-  
-  protected final void bindBaseJavaScript()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "bindBaseJavaScript");
-    }
-    if (this.mPluginList == null) {
-      this.mPluginList = new ArrayList();
-    }
-    for (;;)
+    i = 0;
+    break label172;
+    label170:
+    i = 1;
+    label172:
+    localWebSettings.setDisplayZoomControls(i ^ 0x1);
+    localWebSettings.setPluginsEnabled(true);
+    localWebSettings.setJavaScriptEnabled(true);
+    localWebSettings.setAllowContentAccess(true);
+    localWebSettings.setDatabaseEnabled(true);
+    localWebSettings.setDomStorageEnabled(true);
+    localWebSettings.setAppCacheEnabled(true);
+    localObject1 = MobileQQ.getMobileQQ().getQQProcessName();
+    if (localObject1 != null)
     {
-      this.mPluginList.add(new OfflinePlugin());
-      this.mPluginList.add(new VasWebReport());
-      this.mPluginList.add(new WebSoPlugin());
-      this.mPluginList.add(new EventApiPlugin());
-      this.mPluginList.add(new UiApiPlugin());
-      this.mPluginList.add(new DocxApiPlugin());
-      this.mPluginList.add(new QWalletPayJsPlugin());
-      this.mPluginList.add(new VasCommonJsPlugin());
-      this.mPluginList.add(new QWalletCommonHbJsPlugin());
-      this.mPluginList.add(new QWalletMixJsPlugin());
-      return;
-      this.mPluginList.clear();
+      i = ((String)localObject1).lastIndexOf(':');
+      if (i > -1)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("_");
+        ((StringBuilder)localObject2).append(((String)localObject1).substring(i + 1));
+        localObject1 = ((StringBuilder)localObject2).toString();
+        break label282;
+      }
+    }
+    localObject1 = "";
+    label282:
+    localObject2 = this.mContext.getApplicationContext();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("database");
+    localStringBuilder.append((String)localObject1);
+    localWebSettings.setDatabasePath(((Context)localObject2).getDir(localStringBuilder.toString(), 0).getPath());
+    localObject2 = this.mContext.getApplicationContext();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("appcache");
+    localStringBuilder.append((String)localObject1);
+    localWebSettings.setAppCachePath(((Context)localObject2).getDir(localStringBuilder.toString(), 0).getPath());
+    if (Build.VERSION.SDK_INT >= 11) {
+      this.mWebview.removeJavascriptInterface("searchBoxJavaBridge_");
     }
   }
   
   public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList) {}
   
-  protected final void buildBaseWebView(AppInterface paramAppInterface)
+  protected final void buildBaseWebView(AppRuntime paramAppRuntime)
   {
     if (QLog.isColorLevel()) {
       QLog.d("AbsWebView", 2, "buildBaseWebView");
     }
     initPluginEngine();
-    initWebView(paramAppInterface);
+    initWebView();
     bindWebViewClient();
     bindWebChromeClient();
   }
@@ -292,16 +243,20 @@ public abstract class AbsWebView
     return null;
   }
   
-  protected final void doOnBackPressed(AppInterface paramAppInterface)
+  protected final void doOnBackPressed(AppRuntime paramAppRuntime)
   {
     if (QLog.isColorLevel()) {
       QLog.d("AbsWebView", 2, "doOnBackPressed");
     }
     String str = this.mWebview.getUrl();
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "doOnBackPressed...url=" + str);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doOnBackPressed...url=");
+      localStringBuilder.append(str);
+      QLog.d("AbsWebView", 2, localStringBuilder.toString());
     }
-    this.mStateReporter.a(this.mContext, paramAppInterface.getLongAccountUin(), str, false);
+    this.mStateReporter.a(this.mContext, paramAppRuntime.getLongAccountUin(), str, false);
   }
   
   protected final void doOnCreate(Intent paramIntent)
@@ -327,22 +282,24 @@ public abstract class AbsWebView
     if (QLog.isColorLevel()) {
       QLog.d("AbsWebView", 2, "doOnDestroy");
     }
-    if (this.mChromeClient != null) {
-      this.mChromeClient.a();
+    Object localObject = this.mChromeClient;
+    if (localObject != null) {
+      ((CustomWebChromeClient)localObject).a();
     }
-    if (this.mWebview != null)
+    localObject = this.mWebview;
+    if (localObject != null)
     {
-      WebViewPluginEngine localWebViewPluginEngine = this.mWebview.getPluginEngine();
-      if (localWebViewPluginEngine != null)
+      localObject = ((TouchWebView)localObject).getPluginEngine();
+      if (localObject != null)
       {
-        localWebViewPluginEngine.a(this.mWebview.getUrl(), 8589934596L, null);
-        localWebViewPluginEngine.b();
+        ((WebViewPluginEngine)localObject).a(this.mWebview.getUrl(), 8589934596L, null);
+        ((WebViewPluginEngine)localObject).b();
       }
     }
     try
     {
       this.mWebview.stopLoading();
-      label75:
+      label73:
       this.mWebview.loadUrlOriginal("about:blank");
       this.mWebview.clearView();
       this.mWebview.destroy();
@@ -350,7 +307,7 @@ public abstract class AbsWebView
     }
     catch (Exception localException)
     {
-      break label75;
+      break label73;
     }
   }
   
@@ -359,12 +316,13 @@ public abstract class AbsWebView
     if (QLog.isColorLevel()) {
       QLog.d("AbsWebView", 2, "doOnPause");
     }
-    if (this.mWebview != null)
+    Object localObject = this.mWebview;
+    if (localObject != null)
     {
-      this.mWebview.onPause();
-      WebViewPluginEngine localWebViewPluginEngine = this.mWebview.getPluginEngine();
-      if (localWebViewPluginEngine != null) {
-        localWebViewPluginEngine.a(this.mWebview.getUrl(), 8589934597L, null);
+      ((TouchWebView)localObject).onPause();
+      localObject = this.mWebview.getPluginEngine();
+      if (localObject != null) {
+        ((WebViewPluginEngine)localObject).a(this.mWebview.getUrl(), 8589934597L, null);
       }
     }
   }
@@ -374,41 +332,25 @@ public abstract class AbsWebView
     if (QLog.isColorLevel()) {
       QLog.d("AbsWebView", 2, "doOnResume");
     }
-    if (this.mWebview != null)
+    Object localObject = this.mWebview;
+    if (localObject != null)
     {
-      this.mWebview.onResume();
-      WebViewPluginEngine localWebViewPluginEngine = this.mWebview.getPluginEngine();
-      if (localWebViewPluginEngine != null) {
-        localWebViewPluginEngine.a(this.mWebview.getUrl(), 2L, null);
+      ((TouchWebView)localObject).onResume();
+      localObject = this.mWebview.getPluginEngine();
+      if (localObject != null) {
+        ((WebViewPluginEngine)localObject).a(this.mWebview.getUrl(), 2L, null);
       }
     }
   }
   
-  public boolean getIsReloadUrl()
+  public long getStartLoadUrlMilliTimeStamp()
   {
-    checkOfflinePlugin();
-    if (this.mOfflinePlugin != null) {
-      return this.mOfflinePlugin.e;
-    }
-    return false;
+    return this.mStartLoadUrlMilliTimeStamp;
   }
   
-  public long getOpenUrlAfterCheckOfflineTime()
+  public long getTimeBeforeLoadUrl()
   {
-    checkOfflinePlugin();
-    if (this.mOfflinePlugin != null) {
-      return this.mOfflinePlugin.a;
-    }
-    return 0L;
-  }
-  
-  public long getReadIndexFromOfflineTime()
-  {
-    checkOfflinePlugin();
-    if (this.mOfflinePlugin != null) {
-      return this.mOfflinePlugin.b;
-    }
-    return 0L;
+    return this.mTimeBeforeLoadUrl;
   }
   
   protected String getUAMark()
@@ -426,191 +368,31 @@ public abstract class AbsWebView
     return this.mWebview;
   }
   
-  public long getmTimeBeforeLoadUrl()
-  {
-    return this.mTimeBeforeLoadUrl;
-  }
-  
-  /* Error */
   public void initPluginEngine()
   {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_2
-    //   2: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   5: ifeq +12 -> 17
-    //   8: ldc 8
-    //   10: iconst_2
-    //   11: ldc_w 553
-    //   14: invokestatic 100	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   17: aload_0
-    //   18: getfield 197	com/tencent/mobileqq/webview/AbsWebView:mPluginEngine	Lcom/tencent/mobileqq/webview/swift/WebViewPluginEngine;
-    //   21: ifnull +4 -> 25
-    //   24: return
-    //   25: aload_0
-    //   26: getfield 60	com/tencent/mobileqq/webview/AbsWebView:sInitEngineLock	Ljava/lang/Object;
-    //   29: astore 5
-    //   31: aload 5
-    //   33: monitorenter
-    //   34: aload_0
-    //   35: getfield 197	com/tencent/mobileqq/webview/AbsWebView:mPluginEngine	Lcom/tencent/mobileqq/webview/swift/WebViewPluginEngine;
-    //   38: ifnonnull +100 -> 138
-    //   41: aload_0
-    //   42: invokespecial 555	com/tencent/mobileqq/webview/AbsWebView:bindAllJavaScript	()V
-    //   45: iconst_0
-    //   46: istore_3
-    //   47: iconst_0
-    //   48: istore 4
-    //   50: iload 4
-    //   52: istore_1
-    //   53: aload_0
-    //   54: getfield 87	com/tencent/mobileqq/webview/AbsWebView:mInterface	Lcom/tencent/common/app/AppInterface;
-    //   57: invokestatic 560	com/tencent/mobileqq/webprocess/PreloadService:a	(Lmqq/app/AppRuntime;)Z
-    //   60: ifeq +55 -> 115
-    //   63: iload 4
-    //   65: istore_1
-    //   66: getstatic 562	com/tencent/mobileqq/webprocess/PreloadService:d	Z
-    //   69: ifne +46 -> 115
-    //   72: iload 4
-    //   74: istore_1
-    //   75: getstatic 564	com/tencent/mobileqq/webprocess/PreloadService:jdField_b_of_type_Boolean	Z
-    //   78: ifeq +37 -> 115
-    //   81: getstatic 566	com/tencent/mobileqq/webprocess/PreloadService:jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine	Lcom/tencent/mobileqq/webview/swift/WebViewPluginEngine;
-    //   84: astore 6
-    //   86: aload_0
-    //   87: aload 6
-    //   89: putfield 197	com/tencent/mobileqq/webview/AbsWebView:mPluginEngine	Lcom/tencent/mobileqq/webview/swift/WebViewPluginEngine;
-    //   92: aload 6
-    //   94: ifnull +56 -> 150
-    //   97: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   100: ifeq +163 -> 263
-    //   103: ldc 8
-    //   105: iconst_2
-    //   106: ldc_w 568
-    //   109: invokestatic 100	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   112: goto +151 -> 263
-    //   115: iload_1
-    //   116: ifeq +112 -> 228
-    //   119: aload_0
-    //   120: getfield 197	com/tencent/mobileqq/webview/AbsWebView:mPluginEngine	Lcom/tencent/mobileqq/webview/swift/WebViewPluginEngine;
-    //   123: aload_0
-    //   124: getfield 87	com/tencent/mobileqq/webview/AbsWebView:mInterface	Lcom/tencent/common/app/AppInterface;
-    //   127: aload_0
-    //   128: getfield 85	com/tencent/mobileqq/webview/AbsWebView:mInActivity	Landroid/app/Activity;
-    //   131: aload_0
-    //   132: getfield 58	com/tencent/mobileqq/webview/AbsWebView:mPluginList	Ljava/util/ArrayList;
-    //   135: invokevirtual 571	com/tencent/mobileqq/webview/swift/WebViewPluginEngine:a	(Lmqq/app/AppRuntime;Landroid/app/Activity;Ljava/util/List;)V
-    //   138: aload 5
-    //   140: monitorexit
-    //   141: return
-    //   142: astore 6
-    //   144: aload 5
-    //   146: monitorexit
-    //   147: aload 6
-    //   149: athrow
-    //   150: getstatic 573	com/tencent/mobileqq/webprocess/PreloadService:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   153: astore 6
-    //   155: aload 6
-    //   157: monitorenter
-    //   158: getstatic 573	com/tencent/mobileqq/webprocess/PreloadService:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   161: ldc2_w 574
-    //   164: invokevirtual 578	java/lang/Object:wait	(J)V
-    //   167: getstatic 566	com/tencent/mobileqq/webprocess/PreloadService:jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine	Lcom/tencent/mobileqq/webview/swift/WebViewPluginEngine;
-    //   170: astore 7
-    //   172: aload_0
-    //   173: aload 7
-    //   175: putfield 197	com/tencent/mobileqq/webview/AbsWebView:mPluginEngine	Lcom/tencent/mobileqq/webview/swift/WebViewPluginEngine;
-    //   178: aload 7
-    //   180: ifnull +78 -> 258
-    //   183: iload_2
-    //   184: istore_1
-    //   185: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   188: ifeq +14 -> 202
-    //   191: ldc 8
-    //   193: iconst_2
-    //   194: ldc_w 580
-    //   197: invokestatic 100	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   200: iload_2
-    //   201: istore_1
-    //   202: aload 6
-    //   204: monitorexit
-    //   205: goto -90 -> 115
-    //   208: astore 7
-    //   210: aload 6
-    //   212: monitorexit
-    //   213: aload 7
-    //   215: athrow
-    //   216: astore 7
-    //   218: aload 7
-    //   220: invokevirtual 583	java/lang/InterruptedException:printStackTrace	()V
-    //   223: iload_3
-    //   224: istore_1
-    //   225: goto -23 -> 202
-    //   228: aload_0
-    //   229: invokestatic 589	com/tencent/mobileqq/webprocess/WebAccelerateHelper:getInstance	()Lcom/tencent/mobileqq/webprocess/WebAccelerateHelper;
-    //   232: aload_0
-    //   233: getfield 87	com/tencent/mobileqq/webview/AbsWebView:mInterface	Lcom/tencent/common/app/AppInterface;
-    //   236: aload_0
-    //   237: getfield 85	com/tencent/mobileqq/webview/AbsWebView:mInActivity	Landroid/app/Activity;
-    //   240: aconst_null
-    //   241: aload_0
-    //   242: invokevirtual 593	com/tencent/mobileqq/webview/AbsWebView:myCommonJsPlugins	()Lcom/tencent/mobileqq/webview/swift/CommonJsPluginFactory;
-    //   245: aload_0
-    //   246: getfield 58	com/tencent/mobileqq/webview/AbsWebView:mPluginList	Ljava/util/ArrayList;
-    //   249: invokevirtual 597	com/tencent/mobileqq/webprocess/WebAccelerateHelper:createWebViewPluginEngine	(Lmqq/app/AppRuntime;Landroid/app/Activity;Lcom/tencent/biz/pubaccount/CustomWebView;Lcom/tencent/mobileqq/webview/swift/CommonJsPluginFactory;Ljava/util/List;)Lcom/tencent/mobileqq/webview/swift/WebViewPluginEngine;
-    //   252: putfield 197	com/tencent/mobileqq/webview/AbsWebView:mPluginEngine	Lcom/tencent/mobileqq/webview/swift/WebViewPluginEngine;
-    //   255: goto -117 -> 138
-    //   258: iconst_0
-    //   259: istore_1
-    //   260: goto -58 -> 202
-    //   263: iconst_1
-    //   264: istore_1
-    //   265: goto -150 -> 115
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	268	0	this	AbsWebView
-    //   52	213	1	i	int
-    //   1	200	2	j	int
-    //   46	178	3	k	int
-    //   48	25	4	m	int
-    //   29	116	5	localObject1	Object
-    //   84	9	6	localWebViewPluginEngine1	WebViewPluginEngine
-    //   142	6	6	localObject2	Object
-    //   170	9	7	localWebViewPluginEngine2	WebViewPluginEngine
-    //   208	6	7	localObject4	Object
-    //   216	3	7	localInterruptedException	java.lang.InterruptedException
-    // Exception table:
-    //   from	to	target	type
-    //   34	45	142	finally
-    //   53	63	142	finally
-    //   66	72	142	finally
-    //   75	92	142	finally
-    //   97	112	142	finally
-    //   119	138	142	finally
-    //   138	141	142	finally
-    //   144	147	142	finally
-    //   150	158	142	finally
-    //   213	216	142	finally
-    //   228	255	142	finally
-    //   158	178	208	finally
-    //   185	200	208	finally
-    //   202	205	208	finally
-    //   210	213	208	finally
-    //   218	223	208	finally
-    //   158	178	216	java/lang/InterruptedException
-    //   185	200	216	java/lang/InterruptedException
-  }
-  
-  public boolean isMainPageUseLocalFile()
-  {
-    checkOfflinePlugin();
-    if (this.mOfflinePlugin != null) {
-      return this.mOfflinePlugin.f;
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "initPluginEngine");
     }
-    return false;
+    if (this.mPluginEngine != null) {
+      return;
+    }
+    synchronized (this.sInitEngineLock)
+    {
+      if (this.mPluginEngine == null)
+      {
+        bindAllJavaScript();
+        this.mPluginEngine = WebAccelerateHelper.getInstance().createWebViewPluginEngine(this.mInterface, this.mInActivity, null, myCommonJsPlugins(), this.mPluginList);
+      }
+      return;
+    }
   }
   
-  public boolean ismPerfFirstLoadTag()
+  public boolean isIsFirstOnPageStart()
+  {
+    return this.mIsFirstOnPageStart;
+  }
+  
+  public boolean isPerfFirstLoadTag()
   {
     return this.mPerfFirstLoadTag;
   }
@@ -653,48 +435,25 @@ public abstract class AbsWebView
     if (QLog.isColorLevel()) {
       QLog.d("AbsWebView", 2, "preInitPluginEngine");
     }
-    WebViewPluginEngine localWebViewPluginEngine;
-    if ((PreloadService.a(this.mInterface)) && (!PreloadService.d))
-    {
-      localWebViewPluginEngine = PreloadService.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine;
-      this.mPluginEngine = localWebViewPluginEngine;
-      if (localWebViewPluginEngine != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AbsWebView", 2, "use reader preloaded web engine!");
-        }
-        bindAllJavaScript();
-        this.mPluginEngine.a(this.mInterface, this.mInActivity, this.mPluginList);
-        return;
-      }
-    }
-    if ((PreloadService.b(this.mInterface)) && (!PreloadService.e))
-    {
-      localWebViewPluginEngine = PreloadService.jdField_b_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine;
-      this.mPluginEngine = localWebViewPluginEngine;
-      if (localWebViewPluginEngine != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AbsWebView", 2, "use comic preloaded web engine!");
-        }
-        bindAllJavaScript();
-        this.mPluginEngine.a(this.mInterface, this.mInActivity, this.mPluginList);
-        return;
-      }
-    }
-    if ((this.mPluginEngine == null) && (WebViewPluginEngine.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine != null))
+    if ((this.mPluginEngine == null) && (WebViewPluginEngine.a != null))
     {
       if (QLog.isColorLevel()) {
         QLog.d("AbsWebView", 2, "use preloaded web engine!");
       }
-      this.mPluginEngine = WebViewPluginEngine.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine;
-      WebViewPluginEngine.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine = null;
+      this.mPluginEngine = WebViewPluginEngine.a;
+      WebViewPluginEngine.a = null;
       bindAllJavaScript();
       this.mPluginEngine.a(this.mInterface, this.mInActivity, this.mPluginList);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "WebAccelerateHelper.isWebViewCache:" + WebAccelerateHelper.isWebViewCache + ",mPluginEngine=" + this.mPluginEngine);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("WebAccelerateHelper.isWebViewCache:");
+      localStringBuilder.append(WebAccelerateHelper.isWebViewCache);
+      localStringBuilder.append(",mPluginEngine=");
+      localStringBuilder.append(this.mPluginEngine);
+      QLog.d("AbsWebView", 2, localStringBuilder.toString());
     }
     ThreadManager.postImmediately(new AbsWebView.1(this), null, false);
   }
@@ -704,12 +463,22 @@ public abstract class AbsWebView
     this.mWebview.reload();
   }
   
-  public void setmPerfFirstLoadTag(boolean paramBoolean)
+  public void setIsFirstOnPageStart(boolean paramBoolean)
+  {
+    this.mIsFirstOnPageStart = paramBoolean;
+  }
+  
+  public void setPerfFirstLoadTag(boolean paramBoolean)
   {
     this.mPerfFirstLoadTag = paramBoolean;
   }
   
-  public void setmTimeBeforeLoadUrl(long paramLong)
+  public void setStartLoadUrlMilliTimeStamp(long paramLong)
+  {
+    this.mStartLoadUrlMilliTimeStamp = paramLong;
+  }
+  
+  public void setTimeBeforeLoadUrl(long paramLong)
   {
     this.mTimeBeforeLoadUrl = paramLong;
   }
@@ -723,25 +492,22 @@ public abstract class AbsWebView
   
   public void showProgressBar(boolean paramBoolean)
   {
-    ProgressBar localProgressBar;
-    if (this.mLoadProgress != null)
+    ProgressBar localProgressBar = this.mLoadProgress;
+    if (localProgressBar != null)
     {
-      localProgressBar = this.mLoadProgress;
-      if (!paramBoolean) {
-        break label24;
+      int i;
+      if (paramBoolean) {
+        i = 0;
+      } else {
+        i = 8;
       }
-    }
-    label24:
-    for (int i = 0;; i = 8)
-    {
       localProgressBar.setVisibility(i);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.AbsWebView
  * JD-Core Version:    0.7.0.1
  */

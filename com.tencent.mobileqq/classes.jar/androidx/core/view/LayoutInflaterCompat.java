@@ -16,29 +16,37 @@ public final class LayoutInflaterCompat
   
   private static void forceSetFactory2(LayoutInflater paramLayoutInflater, LayoutInflater.Factory2 paramFactory2)
   {
-    if (!sCheckedField) {}
-    try
+    if (!sCheckedField)
     {
-      sLayoutInflaterFactory2Field = LayoutInflater.class.getDeclaredField("mFactory2");
-      sLayoutInflaterFactory2Field.setAccessible(true);
-      sCheckedField = true;
-      if (sLayoutInflaterFactory2Field == null) {}
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      for (;;)
+      try
       {
-        try
-        {
-          sLayoutInflaterFactory2Field.set(paramLayoutInflater, paramFactory2);
-          return;
-        }
-        catch (IllegalAccessException paramFactory2)
-        {
-          Log.e("LayoutInflaterCompatHC", "forceSetFactory2 could not set the Factory2 on LayoutInflater " + paramLayoutInflater + "; inflation may have unexpected results.", paramFactory2);
-        }
-        localNoSuchFieldException = localNoSuchFieldException;
-        Log.e("LayoutInflaterCompatHC", "forceSetFactory2 Could not find field 'mFactory2' on class " + LayoutInflater.class.getName() + "; inflation may have unexpected results.", localNoSuchFieldException);
+        sLayoutInflaterFactory2Field = LayoutInflater.class.getDeclaredField("mFactory2");
+        sLayoutInflaterFactory2Field.setAccessible(true);
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("forceSetFactory2 Could not find field 'mFactory2' on class ");
+        localStringBuilder.append(LayoutInflater.class.getName());
+        localStringBuilder.append("; inflation may have unexpected results.");
+        Log.e("LayoutInflaterCompatHC", localStringBuilder.toString(), localNoSuchFieldException);
+      }
+      sCheckedField = true;
+    }
+    Object localObject = sLayoutInflaterFactory2Field;
+    if (localObject != null) {
+      try
+      {
+        ((Field)localObject).set(paramLayoutInflater, paramFactory2);
+        return;
+      }
+      catch (IllegalAccessException paramFactory2)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("forceSetFactory2 could not set the Factory2 on LayoutInflater ");
+        ((StringBuilder)localObject).append(paramLayoutInflater);
+        ((StringBuilder)localObject).append("; inflation may have unexpected results.");
+        Log.e("LayoutInflaterCompatHC", ((StringBuilder)localObject).toString(), paramFactory2);
       }
     }
   }
@@ -56,27 +64,29 @@ public final class LayoutInflaterCompat
   @Deprecated
   public static void setFactory(@NonNull LayoutInflater paramLayoutInflater, @NonNull LayoutInflaterFactory paramLayoutInflaterFactory)
   {
-    Object localObject = null;
-    if (Build.VERSION.SDK_INT >= 21)
+    int i = Build.VERSION.SDK_INT;
+    Object localObject2 = null;
+    Object localObject1 = null;
+    if (i >= 21)
     {
       if (paramLayoutInflaterFactory != null) {
-        localObject = new LayoutInflaterCompat.Factory2Wrapper(paramLayoutInflaterFactory);
+        localObject1 = new LayoutInflaterCompat.Factory2Wrapper(paramLayoutInflaterFactory);
       }
-      paramLayoutInflater.setFactory2((LayoutInflater.Factory2)localObject);
+      paramLayoutInflater.setFactory2((LayoutInflater.Factory2)localObject1);
       return;
     }
-    if (paramLayoutInflaterFactory != null) {}
-    for (paramLayoutInflaterFactory = new LayoutInflaterCompat.Factory2Wrapper(paramLayoutInflaterFactory);; paramLayoutInflaterFactory = null)
+    localObject1 = localObject2;
+    if (paramLayoutInflaterFactory != null) {
+      localObject1 = new LayoutInflaterCompat.Factory2Wrapper(paramLayoutInflaterFactory);
+    }
+    paramLayoutInflater.setFactory2((LayoutInflater.Factory2)localObject1);
+    paramLayoutInflaterFactory = paramLayoutInflater.getFactory();
+    if ((paramLayoutInflaterFactory instanceof LayoutInflater.Factory2))
     {
-      paramLayoutInflater.setFactory2(paramLayoutInflaterFactory);
-      localObject = paramLayoutInflater.getFactory();
-      if (!(localObject instanceof LayoutInflater.Factory2)) {
-        break;
-      }
-      forceSetFactory2(paramLayoutInflater, (LayoutInflater.Factory2)localObject);
+      forceSetFactory2(paramLayoutInflater, (LayoutInflater.Factory2)paramLayoutInflaterFactory);
       return;
     }
-    forceSetFactory2(paramLayoutInflater, paramLayoutInflaterFactory);
+    forceSetFactory2(paramLayoutInflater, (LayoutInflater.Factory2)localObject1);
   }
   
   public static void setFactory2(@NonNull LayoutInflater paramLayoutInflater, @NonNull LayoutInflater.Factory2 paramFactory2)
@@ -85,20 +95,18 @@ public final class LayoutInflaterCompat
     if (Build.VERSION.SDK_INT < 21)
     {
       LayoutInflater.Factory localFactory = paramLayoutInflater.getFactory();
-      if ((localFactory instanceof LayoutInflater.Factory2)) {
+      if ((localFactory instanceof LayoutInflater.Factory2))
+      {
         forceSetFactory2(paramLayoutInflater, (LayoutInflater.Factory2)localFactory);
+        return;
       }
+      forceSetFactory2(paramLayoutInflater, paramFactory2);
     }
-    else
-    {
-      return;
-    }
-    forceSetFactory2(paramLayoutInflater, paramFactory2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.LayoutInflaterCompat
  * JD-Core Version:    0.7.0.1
  */

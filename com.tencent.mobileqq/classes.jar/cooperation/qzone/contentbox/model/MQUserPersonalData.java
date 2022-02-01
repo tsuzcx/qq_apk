@@ -63,14 +63,14 @@ public class MQUserPersonalData
   
   private static Map<String, MQUserPersonalProfile> parseMapJson(JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {}
-    HashMap localHashMap;
-    do
-    {
+    if (paramJSONObject == null) {
       return null;
-      localHashMap = new HashMap();
-      paramJSONObject = JsonUtil.a(paramJSONObject.toString());
-    } while (paramJSONObject == null);
+    }
+    HashMap localHashMap = new HashMap();
+    paramJSONObject = JsonUtil.a(paramJSONObject.toString());
+    if (paramJSONObject == null) {
+      return null;
+    }
     paramJSONObject = paramJSONObject.entrySet().iterator();
     while (paramJSONObject.hasNext())
     {
@@ -130,7 +130,7 @@ public class MQUserPersonalData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.MQUserPersonalData
  * JD-Core Version:    0.7.0.1
  */

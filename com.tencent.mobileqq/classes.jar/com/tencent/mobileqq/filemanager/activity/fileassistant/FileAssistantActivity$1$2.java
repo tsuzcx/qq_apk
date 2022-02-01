@@ -12,15 +12,15 @@ class FileAssistantActivity$1$2
   
   public void run()
   {
-    this.a.this$0.a = ((ViewStub)this.a.this$0.findViewById(2131381789));
+    this.a.this$0.a = ((ViewStub)this.a.this$0.findViewById(2131381011));
     View localView = this.a.this$0.a.inflate();
     this.a.this$0.a.setVisibility(0);
-    ((TextView)localView.findViewById(2131380647)).setText(HardCodeUtil.a(2131704511));
+    ((TextView)localView.findViewById(2131379926)).setText(HardCodeUtil.a(2131698214));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity.1.2
  * JD-Core Version:    0.7.0.1
  */

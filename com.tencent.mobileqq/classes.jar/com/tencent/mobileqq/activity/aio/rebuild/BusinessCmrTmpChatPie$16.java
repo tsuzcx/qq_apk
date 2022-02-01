@@ -19,83 +19,74 @@ class BusinessCmrTmpChatPie$16
 {
   BusinessCmrTmpChatPie$16(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
   
-  public void a(boolean paramBoolean, QidianHandler.NavigationMenuConfig paramNavigationMenuConfig)
+  protected void a(boolean paramBoolean, QidianHandler.NavigationMenuConfig paramNavigationMenuConfig)
   {
-    boolean bool = true;
-    if ((paramBoolean) && (paramNavigationMenuConfig != null)) {
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(String.valueOf(paramNavigationMenuConfig.jdField_a_of_type_Long)))) {
-        if (paramNavigationMenuConfig.jdField_a_of_type_Int == 1)
-        {
-          localQidianPubAccountBigDataHandler = (QidianPubAccountBigDataHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QIDIAN_PA_BIG_DATA_HANDLER);
-          localPubAccountNavigationMenu = localQidianPubAccountBigDataHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-          localBusinessCmrTmpChatPie = this.a;
-          if (paramNavigationMenuConfig.jdField_b_of_type_Int == 0)
-          {
-            paramBoolean = bool;
-            BusinessCmrTmpChatPie.b(localBusinessCmrTmpChatPie, paramBoolean);
-            if ((localPubAccountNavigationMenu != null) && (paramNavigationMenuConfig.jdField_b_of_type_Int == localPubAccountNavigationMenu.version)) {
-              break label153;
-            }
-            localQidianPubAccountBigDataHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramNavigationMenuConfig.jdField_b_of_type_Long);
-          }
-        }
-      }
-    }
-    label153:
-    while (!QLog.isColorLevel())
+    if ((paramBoolean) && (paramNavigationMenuConfig != null))
     {
-      do
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(String.valueOf(paramNavigationMenuConfig.jdField_a_of_type_Long))))
       {
-        do
+        int i = paramNavigationMenuConfig.jdField_a_of_type_Int;
+        paramBoolean = true;
+        if (i == 1)
         {
-          PubAccountNavigationMenu localPubAccountNavigationMenu;
-          for (;;)
-          {
-            QidianPubAccountBigDataHandler localQidianPubAccountBigDataHandler;
-            BusinessCmrTmpChatPie localBusinessCmrTmpChatPie;
-            return;
+          QidianPubAccountBigDataHandler localQidianPubAccountBigDataHandler = (QidianPubAccountBigDataHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QIDIAN_PA_BIG_DATA_HANDLER);
+          PubAccountNavigationMenu localPubAccountNavigationMenu = localQidianPubAccountBigDataHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+          BusinessCmrTmpChatPie localBusinessCmrTmpChatPie = this.a;
+          if (paramNavigationMenuConfig.jdField_b_of_type_Int != 0) {
             paramBoolean = false;
           }
-          if (QLog.isColorLevel()) {
-            QLog.d("BusinessChatPie", 2, "onGetNatigationStatus show directly");
-          }
-          if (BusinessCmrTmpChatPie.a(this.a) == 0)
+          BusinessCmrTmpChatPie.b(localBusinessCmrTmpChatPie, paramBoolean);
+          if ((localPubAccountNavigationMenu != null) && (paramNavigationMenuConfig.jdField_b_of_type_Int == localPubAccountNavigationMenu.version))
           {
-            this.a.a(localPubAccountNavigationMenu);
+            if (QLog.isColorLevel()) {
+              QLog.d("BusinessChatPie", 2, "onGetNatigationStatus show directly");
+            }
+            if (BusinessCmrTmpChatPie.a(this.a) == 0)
+            {
+              this.a.a(localPubAccountNavigationMenu);
+              return;
+            }
+            BusinessCmrTmpChatPie.a(this.a, 0);
             return;
           }
-          BusinessCmrTmpChatPie.a(this.a, 0);
+          localQidianPubAccountBigDataHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramNavigationMenuConfig.jdField_b_of_type_Long);
           return;
-          if (paramNavigationMenuConfig.c == 1) {
-            BusinessCmrTmpChatPie.a(this.a, 1);
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("BusinessChatPie", 2, "onGetNatigationStatus response no need show");
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("BusinessChatPie", 2, "onGetNatigationStatus response not the same aio");
-      return;
-    }
-    QLog.d("BusinessChatPie", 2, "onGetNatigationStatus response error");
-  }
-  
-  public void a(boolean paramBoolean, PubAccountNavigationMenu paramPubAccountNavigationMenu)
-  {
-    if (paramBoolean) {
-      if ((!BusinessCmrTmpChatPie.b(this.a)) && (BusinessCmrTmpChatPie.a(this.a) != 0)) {
-        BusinessCmrTmpChatPie.a(this.a, 0);
+        }
+        if (paramNavigationMenuConfig.c == 1) {
+          BusinessCmrTmpChatPie.a(this.a, 1);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("BusinessChatPie", 2, "onGetNatigationStatus response no need show");
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("BusinessChatPie", 2, "onGetNatigationStatus response not the same aio");
       }
     }
-    while (!QLog.isColorLevel())
+    else if (QLog.isColorLevel()) {
+      QLog.d("BusinessChatPie", 2, "onGetNatigationStatus response error");
+    }
+  }
+  
+  protected void a(boolean paramBoolean, PubAccountNavigationMenu paramPubAccountNavigationMenu)
+  {
+    if (paramBoolean)
     {
-      return;
+      if ((!BusinessCmrTmpChatPie.b(this.a)) && (BusinessCmrTmpChatPie.a(this.a) != 0))
+      {
+        BusinessCmrTmpChatPie.a(this.a, 0);
+        return;
+      }
       this.a.a(paramPubAccountNavigationMenu);
       return;
     }
-    QLog.d("BusinessChatPie", 2, "onGetNatigation response error");
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessChatPie", 2, "onGetNatigation response error");
+    }
   }
   
-  public void b(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  protected void b(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
     if ((paramBoolean) && (paramHashMap != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
     {
@@ -107,49 +98,57 @@ class BusinessCmrTmpChatPie$16
           this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = paramHashMap.nickname;
           this.a.e.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
         }
-        this.a.v();
+        this.a.j();
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("BusinessChatPie", 2, "onGetQidianMasterInfo not current uin");
       }
     }
-    while (!QLog.isColorLevel())
+    else if (QLog.isColorLevel())
     {
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("BusinessChatPie", 2, "onGetQidianMasterInfo not current uin");
-      return;
+      QLog.d("BusinessChatPie", 2, "onGetQidianMasterInfo fail");
     }
-    QLog.d("BusinessChatPie", 2, "onGetQidianMasterInfo fail");
   }
   
-  public void e(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  protected void e(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    int i = 0;
     super.e(paramBoolean, paramHashMap);
     if ((paramBoolean) && (paramHashMap != null)) {}
-    try
+    for (;;)
     {
-      int j = Integer.parseInt(String.valueOf(paramHashMap.get("result")));
-      String.valueOf(paramHashMap.get("master_uin"));
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != null) && (j == 1))
+      try
       {
-        long l1 = Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-        paramHashMap = ((QidianPubAccountBigDataHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QIDIAN_PA_BIG_DATA_HANDLER)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-        QidianHandler localQidianHandler = (QidianHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER);
-        long l2 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin();
-        if (paramHashMap != null) {
-          i = paramHashMap.version;
+        i = Integer.parseInt(String.valueOf(paramHashMap.get("result")));
+        String.valueOf(paramHashMap.get("master_uin"));
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != null) && (i == 1))
+        {
+          long l1 = Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+          paramHashMap = ((QidianPubAccountBigDataHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QIDIAN_PA_BIG_DATA_HANDLER)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+          QidianHandler localQidianHandler = (QidianHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER);
+          long l2 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin();
+          if (paramHashMap != null)
+          {
+            i = paramHashMap.version;
+            localQidianHandler.a(l1, l2, i, BusinessCmrTmpChatPie.a(this.a), false);
+          }
         }
-        localQidianHandler.a(l1, l2, i, BusinessCmrTmpChatPie.a(this.a), false);
+        else
+        {
+          return;
+        }
       }
-      return;
+      catch (Exception paramHashMap)
+      {
+        return;
+      }
+      int i = 0;
     }
-    catch (Exception paramHashMap) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie.16
  * JD-Core Version:    0.7.0.1
  */

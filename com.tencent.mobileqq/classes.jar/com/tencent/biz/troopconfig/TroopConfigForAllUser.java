@@ -33,19 +33,19 @@ public class TroopConfigForAllUser
     {
       try
       {
-        if (new JSONObject(paramString).optInt("isShow3kTroopTips") != 1) {
-          break label56;
+        if (new JSONObject(paramString).optInt("isShow3kTroopTips") == 1)
+        {
+          this.a = bool;
+          return;
         }
-        this.a = bool;
+      }
+      catch (JSONException paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("TroopConfigForAllUser", 2, paramString.getMessage());
+        }
         return;
       }
-      catch (JSONException paramString) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("TroopConfigForAllUser", 2, paramString.getMessage());
-      return;
-      label56:
       bool = false;
     }
   }
@@ -57,7 +57,7 @@ public class TroopConfigForAllUser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troopconfig.TroopConfigForAllUser
  * JD-Core Version:    0.7.0.1
  */

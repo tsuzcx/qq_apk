@@ -15,7 +15,7 @@ public final class appoint_define$RecentFreshFeed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     appoint.define.appoint_define.RecentFreshFeed
  * JD-Core Version:    0.7.0.1
  */

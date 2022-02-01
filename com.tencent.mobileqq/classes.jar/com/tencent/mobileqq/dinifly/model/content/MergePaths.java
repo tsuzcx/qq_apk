@@ -49,12 +49,16 @@ public class MergePaths
   
   public String toString()
   {
-    return "MergePaths{mode=" + this.mode + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MergePaths{mode=");
+    localStringBuilder.append(this.mode);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.content.MergePaths
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ import kotlin.text.StringsKt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/manager/InterpolatorManager$Companion;", "", "()V", "map", "Ljava/util/HashMap;", "", "Ljava/lang/Class;", "getMap", "()Ljava/util/HashMap;", "setMap", "(Ljava/util/HashMap;)V", "getInterpolator", "Landroid/view/animation/Interpolator;", "interpolatorData", "Lcom/tencent/xaction/api/data/InterpolatorData;", "XActionEngine_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/manager/InterpolatorManager$Companion;", "", "()V", "map", "Ljava/util/HashMap;", "", "Ljava/lang/Class;", "getMap", "()Ljava/util/HashMap;", "setMap", "(Ljava/util/HashMap;)V", "getInterpolator", "Landroid/view/animation/Interpolator;", "interpolatorData", "Lcom/tencent/xaction/api/data/InterpolatorData;", "XActionCore_release"}, k=1, mv={1, 1, 16})
 public final class InterpolatorManager$Companion
 {
   @Nullable
@@ -60,18 +60,20 @@ public final class InterpolatorManager$Companion
           return (Interpolator)new PathInterpolator(localObject1[0], localObject1[1], localObject1[2], localObject1[3]);
         }
       }
+      return null;
     }
-    else
+    localObject1 = ((Class)localObject2).newInstance();
+    if (localObject1 != null)
     {
-      localObject1 = ((Class)localObject2).newInstance();
-      if (localObject1 == null) {
-        throw new TypeCastException("null cannot be cast to non-null type com.tencent.xaction.interpolator.BaseInterpolator");
-      }
       localObject1 = (BaseInterpolator)localObject1;
       ((BaseInterpolator)localObject1).a(paramInterpolatorData);
       return (Interpolator)localObject1;
     }
-    return null;
+    paramInterpolatorData = new TypeCastException("null cannot be cast to non-null type com.tencent.xaction.interpolator.BaseInterpolator");
+    for (;;)
+    {
+      throw paramInterpolatorData;
+    }
   }
   
   @NotNull
@@ -82,7 +84,7 @@ public final class InterpolatorManager$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.manager.InterpolatorManager.Companion
  * JD-Core Version:    0.7.0.1
  */

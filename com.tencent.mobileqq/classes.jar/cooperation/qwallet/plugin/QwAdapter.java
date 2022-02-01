@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
 public class QwAdapter<V>
@@ -47,11 +46,9 @@ public class QwAdapter<V>
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (paramView == null) {
-      paramView = this.layoutInflater.inflate(this.resource, paramViewGroup, false);
-    }
-    for (;;)
+    if (paramView == null)
     {
+      paramView = this.layoutInflater.inflate(this.resource, paramViewGroup, false);
       try
       {
         if (this.mCloneObj != null) {
@@ -60,23 +57,23 @@ public class QwAdapter<V>
         this.mHolder.initView(paramInt, paramView);
         paramView.setTag(this.mHolder);
       }
-      catch (CloneNotSupportedException localCloneNotSupportedException)
+      catch (CloneNotSupportedException paramViewGroup)
       {
-        Object localObject;
-        localCloneNotSupportedException.printStackTrace();
-        continue;
+        paramViewGroup.printStackTrace();
       }
-      localObject = this.list.get(paramInt);
-      this.mHolder.setItemView(paramInt, paramView, localObject);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
+    }
+    else
+    {
       this.mHolder = ((QwAdapter.IViewHolder)paramView.getTag());
     }
+    paramViewGroup = this.list.get(paramInt);
+    this.mHolder.setItemView(paramInt, paramView, paramViewGroup);
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qwallet.plugin.QwAdapter
  * JD-Core Version:    0.7.0.1
  */

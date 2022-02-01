@@ -61,12 +61,8 @@ class NativeButton$CenterImageSpan
       paramCanvas.restore();
       paramCharSequence.setBounds(0, 0, paramCharSequence.getIntrinsicWidth() + this.this$0.mCompoundDrawablePadding, getDrawableHeight());
     }
-    for (;;)
+    else
     {
-      if (LogUtils.shouldLog()) {
-        LogUtils.d("NativeButton", NativeButton.access$600(this.this$0) + " : draw:  start:" + paramInt1 + " end:" + paramInt2 + " x:" + paramFloat + " top:" + paramInt3 + " y:" + paramInt4 + " bottom:" + paramInt5 + " fm:" + paramPaint + " drawable getIntrinsicHeight :" + paramCharSequence.getIntrinsicHeight() + " mTextSize :" + NativeButton.access$700(this.this$0) + "measureHeight: " + NativeButton.access$300(this.this$0).getMeasuredHeight() + "transY: " + i);
-      }
-      return;
       j = NativeButton.access$400(this.this$0);
       i = j;
       if (NativeButton.access$300(this.this$0).getMeasuredHeight() > 0)
@@ -86,6 +82,34 @@ class NativeButton$CenterImageSpan
       paramCanvas.restore();
       paramCharSequence.setBounds(0, 0, paramCharSequence.getIntrinsicWidth() + this.this$0.mCompoundDrawablePadding, NativeButton.access$500(this.this$0));
     }
+    if (LogUtils.shouldLog())
+    {
+      paramCanvas = new StringBuilder();
+      paramCanvas.append(NativeButton.access$600(this.this$0));
+      paramCanvas.append(" : draw:  start:");
+      paramCanvas.append(paramInt1);
+      paramCanvas.append(" end:");
+      paramCanvas.append(paramInt2);
+      paramCanvas.append(" x:");
+      paramCanvas.append(paramFloat);
+      paramCanvas.append(" top:");
+      paramCanvas.append(paramInt3);
+      paramCanvas.append(" y:");
+      paramCanvas.append(paramInt4);
+      paramCanvas.append(" bottom:");
+      paramCanvas.append(paramInt5);
+      paramCanvas.append(" fm:");
+      paramCanvas.append(paramPaint);
+      paramCanvas.append(" drawable getIntrinsicHeight :");
+      paramCanvas.append(paramCharSequence.getIntrinsicHeight());
+      paramCanvas.append(" mTextSize :");
+      paramCanvas.append(NativeButton.access$700(this.this$0));
+      paramCanvas.append("measureHeight: ");
+      paramCanvas.append(NativeButton.access$300(this.this$0).getMeasuredHeight());
+      paramCanvas.append("transY: ");
+      paramCanvas.append(i);
+      LogUtils.d("NativeButton", paramCanvas.toString());
+    }
   }
   
   public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, @Nullable Paint.FontMetricsInt paramFontMetricsInt)
@@ -96,7 +120,7 @@ class NativeButton$CenterImageSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButton.CenterImageSpan
  * JD-Core Version:    0.7.0.1
  */

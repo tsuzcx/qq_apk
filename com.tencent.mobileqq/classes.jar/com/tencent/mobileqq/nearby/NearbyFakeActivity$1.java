@@ -11,23 +11,19 @@ class NearbyFakeActivity$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (paramMessage.what == 0)
     {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
       if (QLog.isColorLevel()) {
         QLog.i("NearbyFakeActivity", 2, "procPreload time out");
       }
       NearbyFakeActivity.a(this.a, 1);
     }
+    super.handleMessage(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyFakeActivity.1
  * JD-Core Version:    0.7.0.1
  */

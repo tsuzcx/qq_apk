@@ -19,12 +19,25 @@ public class MessageCache$MsgSendingInfo
   
   public String toString()
   {
-    return "MsgSendingInfo{frienduin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", istroop=" + this.jdField_a_of_type_Int + ", uniseq=" + this.jdField_a_of_type_Long + ", localSendTime=" + this.jdField_b_of_type_Long + ", delayTime=" + this.jdField_b_of_type_Int + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MsgSendingInfo{frienduin='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", istroop=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", uniseq=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", localSendTime=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", delayTime=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.MessageCache.MsgSendingInfo
  * JD-Core Version:    0.7.0.1
  */

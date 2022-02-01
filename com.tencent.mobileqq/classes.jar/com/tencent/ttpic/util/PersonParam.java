@@ -22,31 +22,22 @@ public class PersonParam
   
   public boolean isGenderMatch(int paramInt)
   {
-    boolean bool2 = false;
-    if (paramInt < 1) {}
-    do
-    {
+    boolean bool = true;
+    if (paramInt < 1) {
       return true;
-      if (this.mIsSets)
+    }
+    if (this.mIsSets)
+    {
+      if ((paramInt != GenderType.FEMALE.value) || (!this.mHasWomen))
       {
-        boolean bool1;
-        if ((paramInt != GenderType.FEMALE.value) || (!this.mHasWomen))
-        {
-          bool1 = bool2;
-          if (paramInt == GenderType.MALE.value)
-          {
-            bool1 = bool2;
-            if (!this.mHasMan) {}
-          }
+        if ((paramInt == GenderType.MALE.value) && (this.mHasMan)) {
+          return true;
         }
-        else
-        {
-          bool1 = true;
-        }
-        return bool1;
+        bool = false;
       }
-    } while (this.mGenderType == paramInt);
-    return false;
+      return bool;
+    }
+    return this.mGenderType == paramInt;
   }
   
   public void resetParam(boolean paramBoolean1, boolean paramBoolean2)
@@ -74,7 +65,7 @@ public class PersonParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.util.PersonParam
  * JD-Core Version:    0.7.0.1
  */

@@ -27,13 +27,18 @@ public class PlayerCommentEmptySegment
   
   private boolean b()
   {
-    return (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController == null) || (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a());
+    CommentFloatDialogController localCommentFloatDialogController = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController;
+    return (localCommentFloatDialogController == null) || (localCommentFloatDialogController.a());
   }
   
   public int a()
   {
-    if ((this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem == null) || (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(b()).size() == 0))) {
-      return 1;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      DetailFeedItem localDetailFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem;
+      if ((localDetailFeedItem == null) || (localDetailFeedItem.a(b()).size() == 0)) {
+        return 1;
+      }
     }
     return 0;
   }
@@ -42,20 +47,18 @@ public class PlayerCommentEmptySegment
   {
     if (this.b) {
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-    for (;;)
-    {
-      return paramBaseViewHolder.a();
+    } else {
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
+    return paramBaseViewHolder.a();
   }
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561889, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131370761);
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561739, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131370396);
     if (QQStoryContext.a()) {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166512));
+      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166526));
     }
     return new BaseViewHolder(paramViewGroup);
   }
@@ -82,7 +85,7 @@ public class PlayerCommentEmptySegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.PlayerCommentEmptySegment
  * JD-Core Version:    0.7.0.1
  */

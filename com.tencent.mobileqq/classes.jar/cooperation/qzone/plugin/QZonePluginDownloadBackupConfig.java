@@ -31,15 +31,28 @@ class QZonePluginDownloadBackupConfig
   
   private void addConfigItem(Map<String, String> paramMap, String paramString1, String paramString2)
   {
-    if ((paramMap == null) || (paramString1 == null) || (paramString2 == null)) {
-      return;
+    if ((paramMap != null) && (paramString1 != null))
+    {
+      if (paramString2 == null) {
+        return;
+      }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append("||");
+      ((StringBuilder)localObject).append(paramString2);
+      localObject = ((StringBuilder)localObject).toString();
+      paramString1 = QzoneConfig.getInstance().getConfig(paramString1, paramString2);
+      if (QLog.isColorLevel())
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("addConfigItem, newKey=");
+        paramString2.append((String)localObject);
+        paramString2.append(", content=");
+        paramString2.append(paramString1);
+        QLog.d("QZonePluginDownloadBackupConfig", 2, paramString2.toString());
+      }
+      paramMap.put(localObject, paramString1);
     }
-    String str = paramString1 + "||" + paramString2;
-    paramString1 = QzoneConfig.getInstance().getConfig(paramString1, paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginDownloadBackupConfig", 2, "addConfigItem, newKey=" + str + ", content=" + paramString1);
-    }
-    paramMap.put(str, paramString1);
   }
   
   private void initConfig()
@@ -74,7 +87,7 @@ class QZonePluginDownloadBackupConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.plugin.QZonePluginDownloadBackupConfig
  * JD-Core Version:    0.7.0.1
  */

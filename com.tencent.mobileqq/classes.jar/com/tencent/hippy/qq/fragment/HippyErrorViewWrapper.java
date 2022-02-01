@@ -9,7 +9,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.util.Utils;
 
 public class HippyErrorViewWrapper
 {
@@ -20,8 +20,9 @@ public class HippyErrorViewWrapper
   
   public void hideNetworkErrorView()
   {
-    if (this.mRootView != null) {
-      this.mRootView.setVisibility(8);
+    View localView = this.mRootView;
+    if (localView != null) {
+      localView.setVisibility(8);
     }
   }
   
@@ -29,47 +30,42 @@ public class HippyErrorViewWrapper
   {
     if (this.mRootView == null)
     {
-      this.mRootView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560315, null);
-      this.mNetworkErrorText = ((TextView)this.mRootView.findViewById(2131376550));
-      this.mNetworkErrorIcon = ((ImageView)this.mRootView.findViewById(2131376549));
-      if (this.mErrorViewColor != -1) {
-        this.mRootView.setBackgroundColor(this.mErrorViewColor);
+      this.mRootView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131563030, null);
+      this.mNetworkErrorText = ((TextView)this.mRootView.findViewById(2131371773));
+      this.mNetworkErrorIcon = ((ImageView)this.mRootView.findViewById(2131371771));
+      i = this.mErrorViewColor;
+      if (i != -1) {
+        this.mRootView.setBackgroundColor(i);
       }
     }
-    int i;
-    if (this.mErrorViewColor == -1)
-    {
-      this.mNetworkErrorIcon.setImageDrawable(paramViewGroup.getResources().getDrawable(2130839418));
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.mNetworkErrorText.getLayoutParams();
-      localLayoutParams.topMargin = AIOUtils.a(10.0F, paramViewGroup.getResources());
-      this.mNetworkErrorText.setLayoutParams(localLayoutParams);
-      this.mNetworkErrorText.setTextColor(paramViewGroup.getResources().getColor(2131166909));
-      this.mNetworkErrorText.setText(paramViewGroup.getResources().getString(2131718345));
-      this.mRootView.setOnClickListener(paramOnClickListener);
-      this.mRootView.setVisibility(0);
-      i = 0;
+    if (this.mErrorViewColor == -1) {
+      this.mNetworkErrorIcon.setImageDrawable(paramViewGroup.getResources().getDrawable(2130839274));
+    } else {
+      this.mNetworkErrorIcon.setImageDrawable(paramViewGroup.getResources().getDrawable(2130839481));
     }
-    for (;;)
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.mNetworkErrorText.getLayoutParams();
+    localLayoutParams.topMargin = Utils.a(10.0F, paramViewGroup.getResources());
+    this.mNetworkErrorText.setLayoutParams(localLayoutParams);
+    this.mNetworkErrorText.setTextColor(paramViewGroup.getResources().getColor(2131165628));
+    this.mNetworkErrorText.setText(paramViewGroup.getResources().getString(2131692074));
+    this.mRootView.setOnClickListener(paramOnClickListener);
+    paramOnClickListener = this.mRootView;
+    int i = 0;
+    paramOnClickListener.setVisibility(0);
+    while (i < paramViewGroup.getChildCount())
     {
-      if (i >= paramViewGroup.getChildCount()) {
-        break label231;
-      }
-      if (paramViewGroup.getChildAt(i) == this.mRootView)
-      {
+      if (paramViewGroup.getChildAt(i) == this.mRootView) {
         return;
-        this.mNetworkErrorIcon.setImageDrawable(paramViewGroup.getResources().getDrawable(2130839623));
-        break;
       }
       i += 1;
     }
-    label231:
     paramOnClickListener = new ViewGroup.LayoutParams(-1, -1);
     paramViewGroup.addView(this.mRootView, paramOnClickListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.fragment.HippyErrorViewWrapper
  * JD-Core Version:    0.7.0.1
  */

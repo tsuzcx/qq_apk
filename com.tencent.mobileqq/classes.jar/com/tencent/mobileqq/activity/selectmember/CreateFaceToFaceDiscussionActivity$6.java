@@ -16,44 +16,42 @@ class CreateFaceToFaceDiscussionActivity$6
   {
     if (paramMessage.what == 0)
     {
-      CreateFaceToFaceDiscussionActivity.a(this.a, 3);
-      paramMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(0);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, this.a.jdField_a_of_type_Long);
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (1 != paramMessage.what) {
-          break;
-        }
-      } while (this.a.jdField_c_of_type_Boolean);
-      this.a.jdField_a_of_type_JavaLangStringBuffer.delete(0, this.a.jdField_a_of_type_JavaLangStringBuffer.length());
-      this.a.jdField_b_of_type_AndroidWidgetTableLayout.setContentDescription(this.a.a());
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845369);
-      this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130845369);
-      this.a.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130845369);
-      this.a.d.setImageResource(2130845369);
-      this.a.e.setEnabled(true);
-      this.a.f.setEnabled(true);
-      this.a.g.setEnabled(true);
-      this.a.h.setEnabled(true);
-      this.a.i.setEnabled(true);
-      this.a.j.setEnabled(true);
-      this.a.k.setEnabled(true);
-      this.a.l.setEnabled(true);
-      this.a.m.setEnabled(true);
-      this.a.n.setEnabled(true);
-      this.a.o.setEnabled(true);
+      CreateFaceToFaceDiscussionActivity.access$000(this.a, 3);
+      paramMessage = this.a.mHandler.obtainMessage(0);
+      this.a.mHandler.sendMessageDelayed(paramMessage, this.a.mInterval);
       return;
-    } while (2 != paramMessage.what);
-    QQToast.a(BaseApplicationImpl.getContext(), paramMessage.arg1, paramMessage.arg2, 0).a();
+    }
+    if (1 == paramMessage.what)
+    {
+      if (!this.a.isEnteredHall)
+      {
+        this.a.digits.delete(0, this.a.digits.length());
+        this.a.mNumberViewLayout.setContentDescription(this.a.getDescription());
+        this.a.mDigitViewOne.setImageResource(2130845242);
+        this.a.mDigitViewTwo.setImageResource(2130845242);
+        this.a.mDigitViewThree.setImageResource(2130845242);
+        this.a.mDigitViewFour.setImageResource(2130845242);
+        this.a.mDigitOne.setEnabled(true);
+        this.a.mDigitTwo.setEnabled(true);
+        this.a.mDigitThree.setEnabled(true);
+        this.a.mDigitFour.setEnabled(true);
+        this.a.mDigitFive.setEnabled(true);
+        this.a.mDigitSix.setEnabled(true);
+        this.a.mDigitSeven.setEnabled(true);
+        this.a.mDigitEight.setEnabled(true);
+        this.a.mDigitNine.setEnabled(true);
+        this.a.mDigitZero.setEnabled(true);
+        this.a.mDelete.setEnabled(true);
+      }
+    }
+    else if (2 == paramMessage.what) {
+      QQToast.a(BaseApplicationImpl.getContext(), paramMessage.arg1, paramMessage.arg2, 0).a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity.6
  * JD-Core Version:    0.7.0.1
  */

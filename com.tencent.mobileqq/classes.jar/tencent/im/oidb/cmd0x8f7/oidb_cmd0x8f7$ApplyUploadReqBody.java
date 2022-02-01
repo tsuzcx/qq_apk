@@ -22,14 +22,15 @@ public final class oidb_cmd0x8f7$ApplyUploadReqBody
   static
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 40, 48 }, new String[] { "bytes_file_name", "uint64_file_size", "bytes_sha", "bytes_md5", "uint64_modify_time", "uint32_upload_type" }, new Object[] { localByteStringMicro1, Long.valueOf(0L), localByteStringMicro2, localByteStringMicro3, Long.valueOf(0L), Integer.valueOf(0) }, ApplyUploadReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 40, 48 }, new String[] { "bytes_file_name", "uint64_file_size", "bytes_sha", "bytes_md5", "uint64_modify_time", "uint32_upload_type" }, new Object[] { localByteStringMicro1, localLong, localByteStringMicro2, localByteStringMicro3, localLong, Integer.valueOf(0) }, ApplyUploadReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8f7.oidb_cmd0x8f7.ApplyUploadReqBody
  * JD-Core Version:    0.7.0.1
  */

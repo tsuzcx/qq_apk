@@ -9,12 +9,12 @@ class QZoneObserver$1
   
   public void run()
   {
-    this.this$0.onGetQZoneNewestFeed(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
+    this.this$0.b(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.observer.QZoneObserver.1
  * JD-Core Version:    0.7.0.1
  */

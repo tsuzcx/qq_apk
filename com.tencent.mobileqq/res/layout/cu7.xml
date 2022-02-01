@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qzone="http://schemas.android.com/apk/res-auto">
-    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/ctz" />
-    <com.qzone.feed.ui.activity.QQSchoolExtendFeedsListView android:scrollbarThumbVertical="@drawable/axv" android:scrollbarStyle="insideOverlay" android:id="@id/o2k" android:fadingEdge="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="0.0dip" android:listSelector="@color/ajr" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" qzone:ptrCoverMode="true" />
-</FrameLayout>
+<com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:id="@id/ii_" android:background="@drawable/bg_texture" android:focusable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <LinearLayout android:orientation="vertical" android:id="@id/f1b" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textColor="@color/skin_gray2" android:id="@id/jjt" android:paddingLeft="@dimen/al3" android:paddingRight="@dimen/al3" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al0" android:text="@string/wme" android:contentDescription="@string/wme" />
+        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/ne9" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al1" android:contentDescription="@string/wma" formItem:bgType="jsv" formItem:switchChecked="true" formItem:switchText="@string/wma" />
+        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/ne_" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:contentDescription="@string/wmb" formItem:bgType="jsv" formItem:switchChecked="true" formItem:switchText="@string/wmb" />
+        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/nea" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:contentDescription="@string/wmc" formItem:bgType="jsv" formItem:switchChecked="true" formItem:switchText="@string/wmc" />
+        <com.tencent.mobileqq.widget.FormMultiLineSwitchItem android:id="@id/ne7" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al1" android:contentDescription="@string/wm3" formItem:bgType="jsv" formItem:switchChecked="true" formItem:switchSubText="@string/wm4" formItem:switchText="@string/wm3" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include android:id="@id/ne8" layout="@layout/b2a" />
+        </LinearLayout>
+    </LinearLayout>
+</com.tencent.mobileqq.widget.BounceScrollView>

@@ -24,7 +24,7 @@ public class QQReminderSwitchObserver
     }
   }
   
-  public void onSetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
+  protected void onSetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
   {
     try
     {
@@ -37,13 +37,18 @@ public class QQReminderSwitchObserver
         }
         localIterator.remove();
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.biz.QQReminderSwitchObserver
  * JD-Core Version:    0.7.0.1
  */

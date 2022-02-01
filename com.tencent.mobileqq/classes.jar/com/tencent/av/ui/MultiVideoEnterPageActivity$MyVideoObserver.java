@@ -14,46 +14,53 @@ class MultiVideoEnterPageActivity$MyVideoObserver
 {
   MultiVideoEnterPageActivity$MyVideoObserver(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void a(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    if ((this.a.jdField_a_of_type_ComTencentAvVideoController == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null))
+    if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null))
     {
-      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onKickOutResult, empty");
-      return;
-    }
-    if (paramLong != this.a.jdField_a_of_type_Long)
-    {
-      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onKickOutResult, ignore");
-      return;
-    }
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getLongAccountUin(), paramLong, this.a.b);
-      this.a.b(paramInt2);
-      return;
-    }
-    if (paramInt3 == -5)
-    {
-      if (this.a.jdField_a_of_type_Boolean) {
-        if ((this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI != null) && (this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI.length > 1) && (this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI[1] != null)) {
-          this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI[1].b.setVisibility(8);
-        }
-      }
-      for (;;)
+      if (paramLong != this.a.jdField_a_of_type_Long)
       {
-        QQToast.a(this.a, 2131693144, 1).b(MultiVideoEnterPageActivity.b(this.a).getDimensionPixelSize(2131299166));
+        QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onKickOutResult, ignore");
         return;
-        this.a.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity$MainUI.b.setVisibility(8);
       }
+      if (paramBoolean)
+      {
+        this.a.jdField_a_of_type_ComTencentAvVideoController.a.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getLongAccountUin(), paramLong, this.a.b);
+        this.a.b(paramInt2);
+        return;
+      }
+      if (paramInt3 == -5)
+      {
+        if (this.a.jdField_a_of_type_Boolean)
+        {
+          if ((this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI != null) && (this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI.length > 1) && (this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI[1] != null)) {
+            this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI[1].b.setVisibility(8);
+          }
+        }
+        else {
+          this.a.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity$MainUI.b.setVisibility(8);
+        }
+        QQToast.a(this.a, 2131693104, 1).b(MultiVideoEnterPageActivity.b(this.a).getDimensionPixelSize(2131299168));
+        return;
+      }
+      QQToast.a(this.a, 2131693103, 1).b(MultiVideoEnterPageActivity.c(this.a).getDimensionPixelSize(2131299168));
+      return;
     }
-    QQToast.a(this.a, 2131693143, 1).b(MultiVideoEnterPageActivity.c(this.a).getDimensionPixelSize(2131299166));
+    QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onKickOutResult, empty");
   }
   
-  public void c(long paramLong)
+  protected void c(long paramLong)
   {
     super.c(paramLong);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "TYPE_NOTIFY_FINFISH_MULTI_VIDEO_ENTER_PAGE_ACTIVITY disscussUin:" + paramLong + ", mRelationId = " + this.a.jdField_a_of_type_Long);
+    if (QLog.isColorLevel())
+    {
+      String str = this.a.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("TYPE_NOTIFY_FINFISH_MULTI_VIDEO_ENTER_PAGE_ACTIVITY disscussUin:");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(", mRelationId = ");
+      localStringBuilder.append(this.a.jdField_a_of_type_Long);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
     if ((paramLong != 0L) && (paramLong == this.a.jdField_a_of_type_Long))
     {
@@ -66,7 +73,7 @@ class MultiVideoEnterPageActivity$MyVideoObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoEnterPageActivity.MyVideoObserver
  * JD-Core Version:    0.7.0.1
  */

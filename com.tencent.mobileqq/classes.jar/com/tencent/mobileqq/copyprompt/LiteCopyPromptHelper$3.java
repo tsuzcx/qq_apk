@@ -18,20 +18,17 @@ class LiteCopyPromptHelper$3
     LiteCopyPromptHelper.a(this.jdField_a_of_type_ComTencentMobileqqCopypromptLiteCopyPromptHelper).run();
     int i = LiteCopyPromptHelper.a(this.jdField_a_of_type_ComTencentMobileqqCopypromptLiteCopyPromptHelper).getSelectionStart();
     Editable localEditable = LiteCopyPromptHelper.a(this.jdField_a_of_type_ComTencentMobileqqCopypromptLiteCopyPromptHelper).getEditableText();
-    if ((i < 0) || (i >= localEditable.length())) {
+    if ((i >= 0) && (i < localEditable.length())) {
+      localEditable.insert(i, this.jdField_a_of_type_JavaLangString);
+    } else {
       localEditable.append(this.jdField_a_of_type_JavaLangString);
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localEditable.insert(i, this.jdField_a_of_type_JavaLangString);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.copyprompt.LiteCopyPromptHelper.3
  * JD-Core Version:    0.7.0.1
  */

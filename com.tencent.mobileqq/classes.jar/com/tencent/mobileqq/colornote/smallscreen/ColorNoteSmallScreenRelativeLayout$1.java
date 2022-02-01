@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.colornote.smallscreen;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.view.ViewPropertyAnimator;
 import android.widget.LinearLayout;
 import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 import java.util.Iterator;
 import java.util.List;
 
 class ColorNoteSmallScreenRelativeLayout$1
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   ColorNoteSmallScreenRelativeLayout$1(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, LinearLayout paramLinearLayout) {}
   
@@ -32,7 +32,7 @@ class ColorNoteSmallScreenRelativeLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout.1
  * JD-Core Version:    0.7.0.1
  */

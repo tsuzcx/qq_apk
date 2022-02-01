@@ -18,9 +18,15 @@ public class C2CShortcutBarSwitcher
   public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
     SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("sp_c2c_shortcut_bar", 4).edit();
-    String str = "switcher_in_assistant_" + paramQQAppInterface.getCurrentUin();
-    localEditor.putBoolean("has_set_switcher_in_assistant_" + paramQQAppInterface.getCurrentUin(), true);
-    localEditor.putBoolean(str, paramBoolean);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("switcher_in_assistant_");
+    ((StringBuilder)localObject).append(paramQQAppInterface.getCurrentUin());
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("has_set_switcher_in_assistant_");
+    localStringBuilder.append(paramQQAppInterface.getCurrentUin());
+    localEditor.putBoolean(localStringBuilder.toString(), true);
+    localEditor.putBoolean((String)localObject, paramBoolean);
     localEditor.commit();
     if (QLog.isColorLevel()) {
       QLog.d("C2CShortcutBarSwitcher", 2, new Object[] { "saveGlobalSwitcherStatus() isChecked = ", Boolean.valueOf(paramBoolean) });
@@ -56,37 +62,70 @@ public class C2CShortcutBarSwitcher
   public static boolean a(QQAppInterface paramQQAppInterface)
   {
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("sp_c2c_shortcut_bar", 4);
-    String str = "switcher_in_assistant_" + paramQQAppInterface.getCurrentUin();
-    if (localSharedPreferences.getBoolean("has_set_switcher_in_assistant_" + paramQQAppInterface.getCurrentUin(), false)) {}
-    for (boolean bool = localSharedPreferences.getBoolean(str, true);; bool = C2CShortcutBarConfProcessor.a().a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("C2CShortcutBarSwitcher", 2, new Object[] { "isGlobalSwitcherOpen() switcherOpen = ", Boolean.valueOf(bool) });
-      }
-      return bool;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("switcher_in_assistant_");
+    ((StringBuilder)localObject).append(paramQQAppInterface.getCurrentUin());
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("has_set_switcher_in_assistant_");
+    localStringBuilder.append(paramQQAppInterface.getCurrentUin());
+    boolean bool;
+    if (localSharedPreferences.getBoolean(localStringBuilder.toString(), false)) {
+      bool = localSharedPreferences.getBoolean((String)localObject, true);
+    } else {
+      bool = C2CShortcutBarConfProcessor.a().a();
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("C2CShortcutBarSwitcher", 2, new Object[] { "isGlobalSwitcherOpen() switcherOpen = ", Boolean.valueOf(bool) });
+    }
+    return bool;
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
   {
     paramQQAppInterface = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramString, true);
-    if (paramQQAppInterface != null) {}
-    for (boolean bool = paramQQAppInterface.isAioShortcutBarOpen;; bool = false)
+    boolean bool;
+    if (paramQQAppInterface != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("C2CShortcutBarSwitcher", 2, "mAppInterface, type:" + paramString + " friendUin: isC2CShortcutBarOpen:" + bool);
-      }
-      return bool;
+      bool = paramQQAppInterface.isAioShortcutBarOpen;
+    }
+    else
+    {
       if (QLog.isColorLevel()) {
         QLog.d("C2CShortcutBarSwitcher", 2, "isC2CSwitcherOpen extensionInfo is null");
       }
+      bool = false;
     }
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("mAppInterface, type:");
+      paramQQAppInterface.append(paramString);
+      paramQQAppInterface.append(" friendUin: isC2CShortcutBarOpen:");
+      paramQQAppInterface.append(bool);
+      QLog.d("C2CShortcutBarSwitcher", 2, paramQQAppInterface.toString());
+    }
+    return bool;
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    if (paramInt == 1) {
-      return (b()) && (a(paramQQAppInterface)) && (a(paramQQAppInterface, paramString));
+    boolean bool2 = false;
+    if (paramInt == 1)
+    {
+      boolean bool1 = bool2;
+      if (b())
+      {
+        bool1 = bool2;
+        if (a(paramQQAppInterface))
+        {
+          bool1 = bool2;
+          if (a(paramQQAppInterface, paramString)) {
+            bool1 = true;
+          }
+        }
+      }
+      return bool1;
     }
     if (paramInt == 2) {
       return a();
@@ -99,6 +138,7 @@ public class C2CShortcutBarSwitcher
   {
     paramPBBytesField = paramPBBytesField.get().toByteArray();
     Oidb_0xd51.AioQuickAppData localAioQuickAppData = new Oidb_0xd51.AioQuickAppData();
+    boolean bool = false;
     try
     {
       localAioQuickAppData.mergeFrom(paramPBBytesField);
@@ -106,7 +146,10 @@ public class C2CShortcutBarSwitcher
       if (QLog.isColorLevel()) {
         QLog.d("C2CShortcutBarSwitcher", 2, new Object[] { "isC2CShortcutBarOpen: invoked status =", Integer.valueOf(i) });
       }
-      return i == 1;
+      if (i == 1) {
+        bool = true;
+      }
+      return bool;
     }
     catch (Exception paramPBBytesField)
     {
@@ -131,7 +174,7 @@ public class C2CShortcutBarSwitcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.c2cshortcutbar.C2CShortcutBarSwitcher
  * JD-Core Version:    0.7.0.1
  */

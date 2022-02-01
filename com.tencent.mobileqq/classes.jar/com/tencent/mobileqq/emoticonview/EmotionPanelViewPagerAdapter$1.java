@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.AIODepend.IPanelInteractionListener;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
 import com.tencent.widget.ListView;
@@ -14,31 +13,35 @@ class EmotionPanelViewPagerAdapter$1
   
   public void run()
   {
-    if (this.val$panelType == 1)
-    {
-      if (this.this$0.isOnlySysEmotion) {}
-      for (localObject = SystemAndEmojiEmoticonInfo.getOnlySysEmoticonListFromConfig(this.this$0.app, this.val$adapter.columnNum, this.this$0.sysEmotionOrder);; localObject = SystemAndEmojiEmoticonInfo.getEmoticonListFromConfig(this.this$0.app, this.this$0.isFilterSysFaceBeyond255, this.val$adapter.columnNum, this.this$0.businessType))
-      {
-        EmotionPanelViewPagerAdapter.access$000(this.this$0, this.val$panelInfo.emotionPkg, this.val$adapter, (List)localObject);
-        this.this$0.onGetPanelDataResult(this.val$panelType, this.val$panelInfo, this.val$adapter, this.val$listView, (List)localObject);
-        return;
+    if (this.val$panelType == 1) {
+      if (this.this$0.isOnlySysEmotion) {
+        localObject = SystemAndEmojiEmoticonInfo.getOnlySysEmoticonListFromConfig(this.this$0.app, this.val$adapter.columnNum, this.this$0.sysEmotionOrder);
       }
     }
-    Object localObject = EmotionPanelDataBuilder.getInstance();
-    QQEmoticonMainPanelApp localQQEmoticonMainPanelApp = this.this$0.app;
-    int j = this.val$panelType;
-    EmoticonPackage localEmoticonPackage = this.val$panelInfo.emotionPkg;
-    if (this.this$0.mBaseChatPie != null) {}
-    for (int i = this.this$0.mBaseChatPie.a().a;; i = -1)
+    QQEmoticonMainPanelApp localQQEmoticonMainPanelApp;
+    int j;
+    EmoticonPackage localEmoticonPackage;
+    int i;
+    for (Object localObject = SystemAndEmojiEmoticonInfo.getEmoticonListFromConfig(this.this$0.app, this.this$0.isFilterSysFaceBeyond255, this.val$adapter.columnNum, this.this$0.businessType);; localObject = ((EmotionPanelDataBuilder)localObject).syncGetEmotionPanelData(localQQEmoticonMainPanelApp, j, localEmoticonPackage, i, this.this$0.businessType, this.this$0.kanDianBiu))
     {
-      localObject = ((EmotionPanelDataBuilder)localObject).syncGetEmotionPanelData(localQQEmoticonMainPanelApp, j, localEmoticonPackage, i, this.this$0.businessType, this.this$0.kanDianBiu);
       break;
+      localObject = EmotionPanelDataBuilder.getInstance();
+      localQQEmoticonMainPanelApp = this.this$0.app;
+      j = this.val$panelType;
+      localEmoticonPackage = this.val$panelInfo.emotionPkg;
+      if (this.this$0.interactionListener != null) {
+        i = this.this$0.interactionListener.getCurType();
+      } else {
+        i = -1;
+      }
     }
+    EmotionPanelViewPagerAdapter.access$000(this.this$0, this.val$panelInfo.emotionPkg, this.val$adapter, (List)localObject);
+    this.this$0.onGetPanelDataResult(this.val$panelType, this.val$panelInfo, this.val$adapter, this.val$listView, (List)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter.1
  * JD-Core Version:    0.7.0.1
  */

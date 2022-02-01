@@ -28,31 +28,46 @@ public class ParticleObject
   
   public void a(Canvas paramCanvas, Paint paramPaint, Matrix paramMatrix)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (localObject == null) {
       return;
     }
-    int i = (int)(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.d);
+    int i = (int)(((Bitmap)localObject).getWidth() * this.d);
     int j = (int)(this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.d);
-    Matrix localMatrix = paramMatrix;
+    localObject = paramMatrix;
     if (paramMatrix == null) {
-      localMatrix = new Matrix();
+      localObject = new Matrix();
     }
     paramPaint.setAlpha(this.jdField_a_of_type_Int);
-    localMatrix.reset();
-    localMatrix.setScale(this.d, this.d);
-    localMatrix.postRotate(this.c, i / 2, j / 2);
-    localMatrix.postTranslate(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, localMatrix, paramPaint);
+    ((Matrix)localObject).reset();
+    float f = this.d;
+    ((Matrix)localObject).setScale(f, f);
+    ((Matrix)localObject).postRotate(this.c, i / 2, j / 2);
+    ((Matrix)localObject).postTranslate(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, (Matrix)localObject, paramPaint);
   }
   
   public String toString()
   {
-    return " mDx = " + this.jdField_a_of_type_Float + " mDy = " + this.jdField_b_of_type_Float + " mScale = " + this.d + " mRotation = " + this.c + " mDuration = " + this.jdField_b_of_type_Long + " mAlpha = " + this.jdField_a_of_type_Int;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" mDx = ");
+    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(" mDy = ");
+    localStringBuilder.append(this.jdField_b_of_type_Float);
+    localStringBuilder.append(" mScale = ");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(" mRotation = ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(" mDuration = ");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(" mAlpha = ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qzonevip.gift.particle.ParticleObject
  * JD-Core Version:    0.7.0.1
  */

@@ -50,7 +50,13 @@ public class Vector3
   
   public Vector3 crs(Vector3 paramVector3)
   {
-    return set(this.y * paramVector3.z - this.z * paramVector3.y, this.z * paramVector3.x - this.x * paramVector3.z, this.x * paramVector3.y - this.y * paramVector3.x);
+    float f1 = this.y;
+    float f2 = paramVector3.z;
+    float f3 = this.z;
+    float f4 = paramVector3.y;
+    float f5 = paramVector3.x;
+    float f6 = this.x;
+    return set(f1 * f2 - f3 * f4, f3 * f5 - f2 * f6, f6 * f4 - f1 * f5);
   }
   
   public Vector3 div(float paramFloat)
@@ -91,25 +97,23 @@ public class Vector3
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (paramObject == null) {
-        return false;
-      }
-      if (getClass() != paramObject.getClass()) {
-        return false;
-      }
-      paramObject = (Vector3)paramObject;
-      if (NumberUtils.a(this.x) != NumberUtils.a(paramObject.x)) {
-        return false;
-      }
-      if (NumberUtils.a(this.y) != NumberUtils.a(paramObject.y)) {
-        return false;
-      }
-    } while (NumberUtils.a(this.z) == NumberUtils.a(paramObject.z));
-    return false;
+    }
+    if (paramObject == null) {
+      return false;
+    }
+    if (getClass() != paramObject.getClass()) {
+      return false;
+    }
+    paramObject = (Vector3)paramObject;
+    if (NumberUtils.a(this.x) != NumberUtils.a(paramObject.x)) {
+      return false;
+    }
+    if (NumberUtils.a(this.y) != NumberUtils.a(paramObject.y)) {
+      return false;
+    }
+    return NumberUtils.a(this.z) == NumberUtils.a(paramObject.z);
   }
   
   public int hashCode()
@@ -129,7 +133,10 @@ public class Vector3
   
   public float len()
   {
-    return (float)Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
+    float f1 = this.x;
+    float f2 = this.y;
+    float f3 = this.z;
+    return (float)Math.sqrt(f1 * f1 + f2 * f2 + f3 * f3);
   }
   
   public Vector3 lerp(Vector3 paramVector3, float paramFloat)
@@ -157,22 +164,7 @@ public class Vector3
     float f3 = this.y;
     float f4 = paramMatrix4[4];
     float f5 = this.z;
-    float f6 = paramMatrix4[8];
-    float f7 = paramMatrix4[12];
-    float f8 = this.x;
-    float f9 = paramMatrix4[1];
-    float f10 = this.y;
-    float f11 = paramMatrix4[5];
-    float f12 = this.z;
-    float f13 = paramMatrix4[9];
-    float f14 = paramMatrix4[13];
-    float f15 = this.x;
-    float f16 = paramMatrix4[2];
-    float f17 = this.y;
-    float f18 = paramMatrix4[6];
-    float f19 = this.z;
-    float f20 = paramMatrix4[10];
-    return set(f1 * f2 + f3 * f4 + f5 * f6 + f7, f8 * f9 + f10 * f11 + f12 * f13 + f14, paramMatrix4[14] + (f15 * f16 + f17 * f18 + f19 * f20));
+    return set(f2 * f1 + f4 * f3 + paramMatrix4[8] * f5 + paramMatrix4[12], paramMatrix4[1] * f1 + paramMatrix4[5] * f3 + paramMatrix4[9] * f5 + paramMatrix4[13], f1 * paramMatrix4[2] + f3 * paramMatrix4[6] + f5 * paramMatrix4[10] + paramMatrix4[14]);
   }
   
   public Vector3 nor()
@@ -223,30 +215,27 @@ public class Vector3
   
   public Vector3 slerp(Vector3 paramVector3, float paramFloat)
   {
-    float f1 = 1.0F;
-    float f2 = -1.0F;
-    float f3 = dot(paramVector3);
-    if ((f3 > 0.99995D) || (f3 < 0.9995000000000001D))
+    float f2 = dot(paramVector3);
+    double d = f2;
+    if ((d <= 0.99995D) && (d >= 0.9995000000000001D))
     {
-      add(paramVector3.tmp().sub(this).mul(paramFloat));
-      nor();
-      return this;
-    }
-    if (f3 > 1.0F) {}
-    for (;;)
-    {
+      float f1 = f2;
+      if (f2 > 1.0F) {
+        f1 = 1.0F;
+      }
+      f2 = f1;
       if (f1 < -1.0F) {
-        f1 = f2;
+        f2 = -1.0F;
       }
-      for (;;)
-      {
-        paramFloat = (float)Math.acos(f1) * paramFloat;
-        paramVector3 = paramVector3.tmp().sub(this.x * f1, this.y * f1, f1 * this.z);
-        paramVector3.nor();
-        return mul((float)Math.cos(paramFloat)).add(paramVector3.mul((float)Math.sin(paramFloat))).nor();
-      }
-      f1 = f3;
+      f1 = (float)Math.acos(f2);
+      paramVector3 = paramVector3.tmp().sub(this.x * f2, this.y * f2, this.z * f2);
+      paramVector3.nor();
+      d = f1 * paramFloat;
+      return mul((float)Math.cos(d)).add(paramVector3.mul((float)Math.sin(d))).nor();
     }
+    add(paramVector3.tmp().sub(this).mul(paramFloat));
+    nor();
+    return this;
   }
   
   public Vector3 sub(float paramFloat)
@@ -271,12 +260,18 @@ public class Vector3
   
   public String toString()
   {
-    return this.x + "," + this.y + "," + this.z;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.x);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.y);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.z);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.sensor.rotation.Vector3
  * JD-Core Version:    0.7.0.1
  */

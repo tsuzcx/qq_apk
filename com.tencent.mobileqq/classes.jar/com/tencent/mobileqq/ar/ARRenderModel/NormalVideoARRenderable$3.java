@@ -16,36 +16,35 @@ class NormalVideoARRenderable$3
     try
     {
       NormalVideoARRenderable.a(this.this$0).updateTexImage();
-      NormalVideoARRenderable.a(this.this$0).getTransformMatrix(NormalVideoARRenderable.a(this.this$0));
-      if (ScanTorchActivity.d)
-      {
-        NormalVideoARRenderable localNormalVideoARRenderable = this.this$0;
-        localNormalVideoARRenderable.b += 1L;
-        if (this.this$0.b >= 30L)
-        {
-          this.this$0.b = 0L;
-          long l = System.currentTimeMillis();
-          float f = 30000.0F / (float)(l - this.this$0.a);
-          this.this$0.a = l;
-          QLog.d("render", 2, "video fetch=" + f);
-        }
-      }
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
+      if (QLog.isColorLevel()) {
+        localThrowable.printStackTrace();
+      }
+    }
+    NormalVideoARRenderable.a(this.this$0).getTransformMatrix(NormalVideoARRenderable.a(this.this$0));
+    if (ScanTorchActivity.b)
+    {
+      Object localObject = this.this$0;
+      ((NormalVideoARRenderable)localObject).b += 1L;
+      if (this.this$0.b >= 30L)
       {
-        if (QLog.isColorLevel()) {
-          localThrowable.printStackTrace();
-        }
+        this.this$0.b = 0L;
+        long l = System.currentTimeMillis();
+        float f = 30000.0F / (float)(l - this.this$0.a);
+        this.this$0.a = l;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("video fetch=");
+        ((StringBuilder)localObject).append(f);
+        QLog.d("render", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.NormalVideoARRenderable.3
  * JD-Core Version:    0.7.0.1
  */

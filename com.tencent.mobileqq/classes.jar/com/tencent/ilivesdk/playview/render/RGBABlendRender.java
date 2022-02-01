@@ -33,25 +33,22 @@ public class RGBABlendRender
     GLES20.glEnableVertexAttribArray(this.mPositionHandleRGBA);
     if (!paramBoolean) {
       GLES20.glVertexAttribPointer(this.mPositionHandleRGBA, 2, 5126, false, 0, this.vertexBuffer);
-    }
-    for (;;)
-    {
-      GLES20.glEnable(33984);
-      GLES20.glActiveTexture(33984);
-      GLES20.glBindTexture(3553, this.mTexturesRGBA[0]);
-      GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, ByteBuffer.wrap(paramArrayOfByte));
-      GLES20.glUniform1i(this.mTextureParamHandleRGBA, 0);
-      GLES20.glEnableVertexAttribArray(this.mTextureCoordinateHandleRGBA);
-      GLES20.glVertexAttribPointer(this.mTextureCoordinateHandleRGBA, 4, 5126, false, 0, this.textureCoordsBuffer);
-      GLES20.glUniformMatrix4fv(this.mTextureTransformHandleRGBA, 1, false, this.textureTransform, 0);
-      GLES20.glDrawElements(5, this.drawOrder.length, 5123, this.drawListBuffer);
-      GLES20.glDisableVertexAttribArray(this.mPositionHandleRGBA);
-      GLES20.glDisableVertexAttribArray(this.mTextureCoordinateHandleRGBA);
-      GLES20.glBindTexture(3553, 0);
-      GLES20.glUseProgram(0);
-      return;
+    } else {
       GLES20.glVertexAttribPointer(this.mPositionHandleRGBA, 2, 5126, false, 0, this.vertexBuffer_horizonal_reverse);
     }
+    GLES20.glEnable(33984);
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(3553, this.mTexturesRGBA[0]);
+    GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, ByteBuffer.wrap(paramArrayOfByte));
+    GLES20.glUniform1i(this.mTextureParamHandleRGBA, 0);
+    GLES20.glEnableVertexAttribArray(this.mTextureCoordinateHandleRGBA);
+    GLES20.glVertexAttribPointer(this.mTextureCoordinateHandleRGBA, 4, 5126, false, 0, this.textureCoordsBuffer);
+    GLES20.glUniformMatrix4fv(this.mTextureTransformHandleRGBA, 1, false, this.textureTransform, 0);
+    GLES20.glDrawElements(5, this.drawOrder.length, 5123, this.drawListBuffer);
+    GLES20.glDisableVertexAttribArray(this.mPositionHandleRGBA);
+    GLES20.glDisableVertexAttribArray(this.mTextureCoordinateHandleRGBA);
+    GLES20.glBindTexture(3553, 0);
+    GLES20.glUseProgram(0);
   }
   
   public void drawFBO(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
@@ -61,25 +58,22 @@ public class RGBABlendRender
     GLES20.glEnableVertexAttribArray(this.mPositionHandleRGBA);
     if (!paramBoolean) {
       GLES20.glVertexAttribPointer(this.mPositionHandleRGBA, 2, 5126, false, 0, this.vertexBuffer_vertical_reverse);
-    }
-    for (;;)
-    {
-      GLES20.glEnable(33984);
-      GLES20.glActiveTexture(33984);
-      GLES20.glBindTexture(3553, this.mTexturesRGBA[0]);
-      GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, ByteBuffer.wrap(paramArrayOfByte));
-      GLES20.glUniform1i(this.mTextureParamHandleRGBA, 0);
-      GLES20.glEnableVertexAttribArray(this.mTextureCoordinateHandleRGBA);
-      GLES20.glVertexAttribPointer(this.mTextureCoordinateHandleRGBA, 4, 5126, false, 0, this.textureCoordsBuffer);
-      GLES20.glUniformMatrix4fv(this.mTextureTransformHandleRGBA, 1, false, this.textureTransform, 0);
-      GLES20.glDrawElements(5, this.drawOrder.length, 5123, this.drawListBuffer);
-      GLES20.glDisableVertexAttribArray(this.mPositionHandleRGBA);
-      GLES20.glDisableVertexAttribArray(this.mTextureCoordinateHandleRGBA);
-      GLES20.glBindTexture(3553, 0);
-      GLES20.glUseProgram(0);
-      return;
+    } else {
       GLES20.glVertexAttribPointer(this.mPositionHandleRGBA, 2, 5126, false, 0, this.vertexBuffer_horizonal_vertical_reverse);
     }
+    GLES20.glEnable(33984);
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(3553, this.mTexturesRGBA[0]);
+    GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, ByteBuffer.wrap(paramArrayOfByte));
+    GLES20.glUniform1i(this.mTextureParamHandleRGBA, 0);
+    GLES20.glEnableVertexAttribArray(this.mTextureCoordinateHandleRGBA);
+    GLES20.glVertexAttribPointer(this.mTextureCoordinateHandleRGBA, 4, 5126, false, 0, this.textureCoordsBuffer);
+    GLES20.glUniformMatrix4fv(this.mTextureTransformHandleRGBA, 1, false, this.textureTransform, 0);
+    GLES20.glDrawElements(5, this.drawOrder.length, 5123, this.drawListBuffer);
+    GLES20.glDisableVertexAttribArray(this.mPositionHandleRGBA);
+    GLES20.glDisableVertexAttribArray(this.mTextureCoordinateHandleRGBA);
+    GLES20.glBindTexture(3553, 0);
+    GLES20.glUseProgram(0);
   }
   
   public void setup()
@@ -108,7 +102,7 @@ public class RGBABlendRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.playview.render.RGBABlendRender
  * JD-Core Version:    0.7.0.1
  */

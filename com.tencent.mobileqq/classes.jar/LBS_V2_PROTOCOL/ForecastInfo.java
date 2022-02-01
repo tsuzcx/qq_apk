@@ -43,14 +43,15 @@ public final class ForecastInfo
     paramJceOutputStream.write(this.iNightWeather, 2);
     paramJceOutputStream.write(this.iTempMax, 3);
     paramJceOutputStream.write(this.iTempMin, 4);
-    if (this.strDayWeather != null) {
-      paramJceOutputStream.write(this.strDayWeather, 5);
+    String str = this.strDayWeather;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     LBS_V2_PROTOCOL.ForecastInfo
  * JD-Core Version:    0.7.0.1
  */

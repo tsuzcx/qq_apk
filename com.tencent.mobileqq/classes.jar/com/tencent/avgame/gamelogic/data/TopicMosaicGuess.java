@@ -27,66 +27,60 @@ public class TopicMosaicGuess
     {
       if (paramGameQuestionInfo.picture.has())
       {
-        Object localObject1 = (AvGameCommon.GuessPictureQuestionInfo)paramGameQuestionInfo.picture.get();
+        AvGameCommon.GuessPictureQuestionInfo localGuessPictureQuestionInfo = (AvGameCommon.GuessPictureQuestionInfo)paramGameQuestionInfo.picture.get();
         this.jdField_b_of_type_Int = Math.max(0, paramGameQuestionInfo.index.get() - 1);
         int i;
-        Object localObject2;
-        if (paramGameQuestionInfo.id.has())
-        {
+        if (paramGameQuestionInfo.id.has()) {
           i = paramGameQuestionInfo.id.get();
-          this.jdField_a_of_type_Int = i;
-          localObject2 = this.jdField_a_of_type_ComTencentAvgameGamelogicDataAVRes;
-          if (!((AvGameCommon.GuessPictureQuestionInfo)localObject1).url.has()) {
-            break label333;
-          }
-          paramGameQuestionInfo = ((AvGameCommon.GuessPictureQuestionInfo)localObject1).url.get();
-          label96:
-          ((AVRes)localObject2).a(paramGameQuestionInfo, null, 0, "");
-          localObject2 = this.jdField_b_of_type_ComTencentAvgameGamelogicDataAVRes;
-          if (!((AvGameCommon.GuessPictureQuestionInfo)localObject1).answer.has()) {
-            break label339;
-          }
-          paramGameQuestionInfo = ((AvGameCommon.GuessPictureQuestionInfo)localObject1).answer.get();
-          label130:
-          ((AVRes)localObject2).a(paramGameQuestionInfo, null, 0, "");
-          if (!((AvGameCommon.GuessPictureQuestionInfo)localObject1).size.has()) {
-            break label345;
-          }
-          i = ((AvGameCommon.GuessPictureQuestionInfo)localObject1).size.get();
-          label158:
-          this.c = i;
-          localObject2 = this.jdField_a_of_type_ArrayOfJavaLangString;
-          if (!((AvGameCommon.GuessPictureQuestionInfo)localObject1).reward_type.has()) {
-            break label353;
-          }
-          paramGameQuestionInfo = ((AvGameCommon.GuessPictureQuestionInfo)localObject1).reward_type.get();
-          label187:
-          localObject2[0] = paramGameQuestionInfo;
-          localObject2 = this.jdField_a_of_type_ArrayOfJavaLangString;
-          if (!((AvGameCommon.GuessPictureQuestionInfo)localObject1).extra_reward.has()) {
-            break label359;
-          }
-          paramGameQuestionInfo = ((AvGameCommon.GuessPictureQuestionInfo)localObject1).extra_reward.get();
-          label216:
-          localObject2[1] = paramGameQuestionInfo;
-          localObject2 = this.jdField_a_of_type_ArrayOfJavaLangString;
-          if (!((AvGameCommon.GuessPictureQuestionInfo)localObject1).reward_stroke_color.has()) {
-            break label365;
-          }
+        } else {
+          i = this.jdField_a_of_type_Int;
         }
-        label333:
-        label339:
-        label345:
-        label353:
-        label359:
-        label365:
-        for (paramGameQuestionInfo = ((AvGameCommon.GuessPictureQuestionInfo)localObject1).reward_stroke_color.get();; paramGameQuestionInfo = "")
+        this.jdField_a_of_type_Int = i;
+        Object localObject2 = this.jdField_a_of_type_ComTencentAvgameGamelogicDataAVRes;
+        boolean bool = localGuessPictureQuestionInfo.url.has();
+        Object localObject1 = "";
+        if (bool) {
+          paramGameQuestionInfo = localGuessPictureQuestionInfo.url.get();
+        } else {
+          paramGameQuestionInfo = "";
+        }
+        ((AVRes)localObject2).a(paramGameQuestionInfo, null, 0, "");
+        localObject2 = this.jdField_b_of_type_ComTencentAvgameGamelogicDataAVRes;
+        if (localGuessPictureQuestionInfo.answer.has()) {
+          paramGameQuestionInfo = localGuessPictureQuestionInfo.answer.get();
+        } else {
+          paramGameQuestionInfo = "";
+        }
+        ((AVRes)localObject2).a(paramGameQuestionInfo, null, 0, "");
+        if (localGuessPictureQuestionInfo.size.has()) {
+          i = localGuessPictureQuestionInfo.size.get();
+        } else {
+          i = this.c;
+        }
+        this.c = i;
+        localObject2 = this.jdField_a_of_type_ArrayOfJavaLangString;
+        if (localGuessPictureQuestionInfo.reward_type.has()) {
+          paramGameQuestionInfo = localGuessPictureQuestionInfo.reward_type.get();
+        } else {
+          paramGameQuestionInfo = "";
+        }
+        localObject2[0] = paramGameQuestionInfo;
+        localObject2 = this.jdField_a_of_type_ArrayOfJavaLangString;
+        if (localGuessPictureQuestionInfo.extra_reward.has()) {
+          paramGameQuestionInfo = localGuessPictureQuestionInfo.extra_reward.get();
+        } else {
+          paramGameQuestionInfo = "";
+        }
+        localObject2[1] = paramGameQuestionInfo;
+        localObject2 = this.jdField_a_of_type_ArrayOfJavaLangString;
+        paramGameQuestionInfo = (AvGameCommon.GameQuestionInfo)localObject1;
+        if (localGuessPictureQuestionInfo.reward_stroke_color.has()) {
+          paramGameQuestionInfo = localGuessPictureQuestionInfo.reward_stroke_color.get();
+        }
+        localObject2[2] = paramGameQuestionInfo;
+        paramGameQuestionInfo = localGuessPictureQuestionInfo.tip_list.get();
+        if (paramGameQuestionInfo != null)
         {
-          localObject2[2] = paramGameQuestionInfo;
-          paramGameQuestionInfo = ((AvGameCommon.GuessPictureQuestionInfo)localObject1).tip_list.get();
-          if (paramGameQuestionInfo == null) {
-            return;
-          }
           paramGameQuestionInfo = paramGameQuestionInfo.iterator();
           while (paramGameQuestionInfo.hasNext())
           {
@@ -94,18 +88,6 @@ public class TopicMosaicGuess
             localObject1 = new Pair(Integer.valueOf(((AvGameCommon.GuessPictureTipsInfo)localObject1).show_delay_ts.get()), ((AvGameCommon.GuessPictureTipsInfo)localObject1).tips.get());
             this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
           }
-          i = this.jdField_a_of_type_Int;
-          break;
-          paramGameQuestionInfo = "";
-          break label96;
-          paramGameQuestionInfo = "";
-          break label130;
-          i = this.c;
-          break label158;
-          paramGameQuestionInfo = "";
-          break label187;
-          paramGameQuestionInfo = "";
-          break label216;
         }
       }
     }
@@ -129,7 +111,7 @@ public class TopicMosaicGuess
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.data.TopicMosaicGuess
  * JD-Core Version:    0.7.0.1
  */

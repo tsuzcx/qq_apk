@@ -20,17 +20,33 @@ class MainPageFragment$2
   
   public boolean onLongClick(View paramView)
   {
-    String str = AppLoaderFactory.g().getContext().getFilesDir().getPath() + "/mini/" + MainPageFragment.access$000(this.this$0).appId + "_debug";
-    if (new File(str).exists()) {
-      FileUtils.delete(str, false);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(AppLoaderFactory.g().getContext().getFilesDir().getPath());
+    ((StringBuilder)localObject).append("/mini/");
+    ((StringBuilder)localObject).append(MainPageFragment.access$000(this.this$0).appId);
+    ((StringBuilder)localObject).append("_debug");
+    localObject = ((StringBuilder)localObject).toString();
+    if (new File((String)localObject).exists()) {
+      FileUtils.delete((String)localObject, false);
     }
-    str = MainPageFragment.access$100() + MD5Utils.toMD5(MainPageFragment.access$000(this.this$0).appId);
-    if (new File(str).exists()) {
-      FileUtils.delete(str, false);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(MainPageFragment.access$100());
+    ((StringBuilder)localObject).append(MD5Utils.toMD5(MainPageFragment.access$000(this.this$0).appId));
+    localObject = ((StringBuilder)localObject).toString();
+    if (new File((String)localObject).exists()) {
+      FileUtils.delete((String)localObject, false);
     }
-    str = paramView.getContext().getCacheDir() + File.separator + "mini" + File.separator + this.this$0.getUin() + File.separator + MainPageFragment.access$000(this.this$0).appId;
-    if (new File(str).exists()) {
-      FileUtils.delete(str, false);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramView.getContext().getCacheDir());
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append("mini");
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(this.this$0.getUin());
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(MainPageFragment.access$000(this.this$0).appId);
+    localObject = ((StringBuilder)localObject).toString();
+    if (new File((String)localObject).exists()) {
+      FileUtils.delete((String)localObject, false);
     }
     this.this$0.getActivity().finish();
     Process.killProcess(Process.myPid());
@@ -41,7 +57,7 @@ class MainPageFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.MainPageFragment.2
  * JD-Core Version:    0.7.0.1
  */

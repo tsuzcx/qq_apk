@@ -31,38 +31,41 @@ public class i
   
   public static Object a(Object paramObject, String paramString, Class<?>[] paramArrayOfClass, Object... paramVarArgs)
   {
-    if (paramObject == null) {}
-    do
-    {
+    if (paramObject == null) {
       return null;
-      try
-      {
-        Object localObject = paramObject.getClass();
-        if (Build.VERSION.SDK_INT > 10) {}
-        for (paramArrayOfClass = ((Class)localObject).getMethod(paramString, paramArrayOfClass);; paramArrayOfClass = ((Class)localObject).getDeclaredMethod(paramString, paramArrayOfClass))
-        {
-          paramArrayOfClass.setAccessible(true);
-          localObject = paramVarArgs;
-          if (paramVarArgs.length == 0) {
-            localObject = null;
-          }
-          return paramArrayOfClass.invoke(paramObject, (Object[])localObject);
-        }
-        if (paramString == null) {
-          break;
-        }
+    }
+    try
+    {
+      Object localObject = paramObject.getClass();
+      if (Build.VERSION.SDK_INT > 10) {
+        paramArrayOfClass = ((Class)localObject).getMethod(paramString, paramArrayOfClass);
+      } else {
+        paramArrayOfClass = ((Class)localObject).getDeclaredMethod(paramString, paramArrayOfClass);
       }
-      catch (Throwable paramObject)
-      {
-        TbsLog.addLog(997, String.valueOf(paramObject), new Object[0]);
-        if ((paramObject.getCause() != null) && (paramObject.getCause().toString().contains("AuthenticationFail"))) {
-          return new String("AuthenticationFail");
-        }
+      paramArrayOfClass.setAccessible(true);
+      localObject = paramVarArgs;
+      if (paramVarArgs.length == 0) {
+        localObject = null;
       }
-    } while ((paramString.equalsIgnoreCase("canLoadX5Core")) || (paramString.equalsIgnoreCase("initTesRuntimeEnvironment")));
-    paramString = new StringWriter();
-    paramObject.printStackTrace(new PrintWriter(paramString));
-    TbsLog.i("ReflectionUtils", "invokeInstance -- exceptions:" + paramString.toString());
+      paramObject = paramArrayOfClass.invoke(paramObject, (Object[])localObject);
+      return paramObject;
+    }
+    catch (Throwable paramObject)
+    {
+      TbsLog.addLog(997, String.valueOf(paramObject), new Object[0]);
+      if ((paramObject.getCause() != null) && (paramObject.getCause().toString().contains("AuthenticationFail"))) {
+        return new String("AuthenticationFail");
+      }
+      if ((paramString != null) && ((paramString.equalsIgnoreCase("canLoadX5Core")) || (paramString.equalsIgnoreCase("initTesRuntimeEnvironment")))) {
+        return null;
+      }
+      paramString = new StringWriter();
+      paramObject.printStackTrace(new PrintWriter(paramString));
+      paramObject = new StringBuilder();
+      paramObject.append("invokeInstance -- exceptions:");
+      paramObject.append(paramString.toString());
+      TbsLog.i("ReflectionUtils", paramObject.toString());
+    }
     return null;
   }
   
@@ -82,8 +85,7 @@ public class i
   
   public static Method a(Object paramObject, String paramString, Class<?>... paramVarArgs)
   {
-    paramObject = paramObject.getClass();
-    while (paramObject != Object.class)
+    for (paramObject = paramObject.getClass(); paramObject != Object.class; paramObject = paramObject.getSuperclass())
     {
       if (paramObject == null) {
         return null;
@@ -95,7 +97,8 @@ public class i
       }
       catch (Exception localException)
       {
-        paramObject = paramObject.getSuperclass();
+        label26:
+        break label26;
       }
     }
     return null;
@@ -103,7 +106,7 @@ public class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.utils.i
  * JD-Core Version:    0.7.0.1
  */

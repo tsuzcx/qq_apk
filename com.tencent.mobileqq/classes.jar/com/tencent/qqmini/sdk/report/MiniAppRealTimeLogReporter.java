@@ -21,10 +21,10 @@ public class MiniAppRealTimeLogReporter
   
   private MiniAppRealTimeLogReporter.RealTimeLog findLogByPage(int paramInt)
   {
-    Object localObject;
-    if (this.allLogs != null)
+    Object localObject = this.allLogs;
+    if (localObject != null)
     {
-      localObject = this.allLogs.iterator();
+      localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
         MiniAppRealTimeLogReporter.RealTimeLog localRealTimeLog = (MiniAppRealTimeLogReporter.RealTimeLog)((Iterator)localObject).next();
@@ -115,23 +115,29 @@ public class MiniAppRealTimeLogReporter
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      int i = localJSONObject.getInt("page");
-      JSONArray localJSONArray = localJSONObject.getJSONArray("filterMsg");
-      String str = localJSONObject.getString("content");
-      boolean bool = report(i, localJSONArray, localJSONObject.getInt("level"), localJSONObject.getLong("time"), str);
+      localObject = new JSONObject(paramString);
+      int i = ((JSONObject)localObject).getInt("page");
+      JSONArray localJSONArray = ((JSONObject)localObject).getJSONArray("filterMsg");
+      String str = ((JSONObject)localObject).getString("content");
+      boolean bool = report(i, localJSONArray, ((JSONObject)localObject).getInt("level"), ((JSONObject)localObject).getLong("time"), str);
       return bool;
     }
     catch (Exception localException)
     {
-      QMLog.e("MiniAppRealTimeLogReporter", "MiniAppRealTimeLogReporter.report failed:" + paramString);
+      Object localObject;
+      label62:
+      break label62;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("MiniAppRealTimeLogReporter.report failed:");
+    ((StringBuilder)localObject).append(paramString);
+    QMLog.e("MiniAppRealTimeLogReporter", ((StringBuilder)localObject).toString());
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniAppRealTimeLogReporter
  * JD-Core Version:    0.7.0.1
  */

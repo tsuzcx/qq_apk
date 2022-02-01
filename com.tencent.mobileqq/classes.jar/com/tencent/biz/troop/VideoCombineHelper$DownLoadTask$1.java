@@ -32,29 +32,33 @@ class VideoCombineHelper$DownLoadTask$1
           return;
         }
       }
+    }
+    for (;;)
+    {
+      int i;
       try
       {
         paramDownloadTask = this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.b.iterator();
-        int i = 1;
-        while (paramDownloadTask.hasNext())
+        i = 1;
+        if (paramDownloadTask.hasNext())
         {
-          String str = (String)paramDownloadTask.next();
-          File localFile = new File(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.a() + File.separator + "v_" + i + ".mp4");
-          this.jdField_a_of_type_JavaUtilArrayList.add(localFile.getAbsolutePath());
-          if (localFile.exists())
-          {
-            i += 1;
+          localObject1 = (String)paramDownloadTask.next();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.a());
+          ((StringBuilder)localObject2).append(File.separator);
+          ((StringBuilder)localObject2).append("v_");
+          ((StringBuilder)localObject2).append(i);
+          ((StringBuilder)localObject2).append(".mp4");
+          localObject2 = new File(((StringBuilder)localObject2).toString());
+          this.jdField_a_of_type_JavaUtilArrayList.add(((File)localObject2).getAbsolutePath());
+          if (((File)localObject2).exists()) {
+            break label514;
           }
-          else
-          {
-            if (!localFile.exists()) {
-              localFile.createNewFile();
-            }
-            FileUtils.a(new File(str), localFile);
-            i += 1;
+          if (!((File)localObject2).exists()) {
+            ((File)localObject2).createNewFile();
           }
+          FileUtils.a(new File((String)localObject1), (File)localObject2);
         }
-        this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.b();
       }
       catch (IOException paramDownloadTask)
       {
@@ -62,28 +66,39 @@ class VideoCombineHelper$DownLoadTask$1
         this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask);
         this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.b = this.jdField_a_of_type_JavaUtilArrayList;
         this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.b(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask);
-        this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task = new VideoCombineHelper.CombineTask(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.c, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.b, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.d, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.c);
+        paramDownloadTask = this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask;
+        paramDownloadTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task = new VideoCombineHelper.CombineTask(paramDownloadTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.c, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.b, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.d, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.c);
         paramDownloadTask = (AppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("modular_web");
-        if (!VideoEnvironment.checkAndLoadAVCodec()) {}
-      }
-      for (;;)
-      {
-        QLog.d(".troop.trace_video_combine", 2, "downLoadTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-        return;
-        if (this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.a) {
+        if (VideoEnvironment.checkAndLoadAVCodec()) {
+          this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.b();
+        } else if (this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.a) {
           this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.b(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task);
         } else {
           this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task);
         }
+        paramDownloadTask = new StringBuilder();
+        paramDownloadTask.append("downLoadTime = ");
+        paramDownloadTask.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+        QLog.d(".troop.trace_video_combine", 2, paramDownloadTask.toString());
+        return;
       }
+      Object localObject1 = this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("donwload failed!code = ");
+      ((StringBuilder)localObject2).append(paramDownloadTask.a);
+      ((StringBuilder)localObject2).append("errmsg = ");
+      ((StringBuilder)localObject2).append(paramDownloadTask.b);
+      ((VideoCombineHelper.DownLoadTask)localObject1).d = ((StringBuilder)localObject2).toString();
+      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask);
+      return;
+      label514:
+      i += 1;
     }
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.d = ("donwload failed!code = " + paramDownloadTask.a + "errmsg = " + paramDownloadTask.b);
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$DownLoadTask);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.VideoCombineHelper.DownLoadTask.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,30 +20,38 @@ public class DarkModeConfigProcessor
     }
     b = true;
     a = b();
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean isSwitchOpened = " + a);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("DarkModeConfigBean isSwitchOpened = ");
+      localStringBuilder.append(a);
+      QLog.d("DarkModeConfigProcessor", 2, localStringBuilder.toString());
     }
     return a;
   }
   
   private static boolean b()
   {
-    DarkModeConfigProcessor.DarkModeConfigBean localDarkModeConfigBean2 = (DarkModeConfigProcessor.DarkModeConfigBean)QConfigManager.a().a(531);
-    DarkModeConfigProcessor.DarkModeConfigBean localDarkModeConfigBean1 = localDarkModeConfigBean2;
-    if (localDarkModeConfigBean2 == null)
+    Object localObject2 = (DarkModeConfigProcessor.DarkModeConfigBean)QConfigManager.a().a(531);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      localDarkModeConfigBean2 = new DarkModeConfigProcessor.DarkModeConfigBean();
-      localDarkModeConfigBean1 = localDarkModeConfigBean2;
+      localObject2 = new DarkModeConfigProcessor.DarkModeConfigBean();
+      localObject1 = localObject2;
       if (QLog.isColorLevel())
       {
         QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean = null, general new bean, so switch default");
-        localDarkModeConfigBean1 = localDarkModeConfigBean2;
+        localObject1 = localObject2;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean switch isOpened = " + localDarkModeConfigBean1);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("DarkModeConfigBean switch isOpened = ");
+      ((StringBuilder)localObject2).append(localObject1);
+      QLog.d("DarkModeConfigProcessor", 2, ((StringBuilder)localObject2).toString());
     }
-    return localDarkModeConfigBean1.a();
+    return localObject1.a();
   }
   
   @NonNull
@@ -57,8 +65,12 @@ public class DarkModeConfigProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DarkModeConfigProcessor", 2, "onParsed : " + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed : ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("DarkModeConfigProcessor", 2, localStringBuilder.toString());
       }
       return DarkModeConfigProcessor.DarkModeConfigBean.a(paramArrayOfQConfItem[0].a);
     }
@@ -67,8 +79,12 @@ public class DarkModeConfigProcessor
   
   public void a(DarkModeConfigProcessor.DarkModeConfigBean paramDarkModeConfigBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeConfigProcessor", 2, "onUpdate : " + paramDarkModeConfigBean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate : ");
+      localStringBuilder.append(paramDarkModeConfigBean);
+      QLog.d("DarkModeConfigProcessor", 2, localStringBuilder.toString());
     }
     if (paramDarkModeConfigBean != null) {
       a = paramDarkModeConfigBean.a();
@@ -109,7 +125,7 @@ public class DarkModeConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.DarkModeConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

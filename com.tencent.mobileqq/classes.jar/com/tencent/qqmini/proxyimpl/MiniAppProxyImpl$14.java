@@ -15,49 +15,63 @@ class MiniAppProxyImpl$14
   
   public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    QLog.d("MiniAppProxyImpl", 2, "doOnActivityResult requestCode=" + paramInt1 + ",resultCode=" + paramInt2 + ",data=" + paramIntent);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("doOnActivityResult requestCode=");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(",resultCode=");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append(",data=");
+    ((StringBuilder)localObject).append(paramIntent);
+    QLog.d("MiniAppProxyImpl", 2, ((StringBuilder)localObject).toString());
     if (paramInt1 == 3)
     {
-      String str1;
-      String str2;
-      double d1;
-      double d2;
       if ((paramInt2 == -1) && (paramIntent != null))
       {
-        str1 = paramIntent.getStringExtra("name");
-        str2 = paramIntent.getStringExtra("address");
-        d1 = paramIntent.getIntExtra("latitude", 0) / 1000000.0D;
-        d2 = paramIntent.getIntExtra("longitude", 0) / 1000000.0D;
-        if (QLog.isColorLevel()) {
-          QLog.d("MiniAppProxyImpl", 2, "doOnActivityResult name=" + str1 + ",address=" + str2 + ",latitude=" + d1 + ",longitude=" + d2);
+        localObject = paramIntent.getStringExtra("name");
+        String str = paramIntent.getStringExtra("address");
+        double d1 = paramIntent.getIntExtra("latitude", 0);
+        Double.isNaN(d1);
+        d1 /= 1000000.0D;
+        double d2 = paramIntent.getIntExtra("longitude", 0);
+        Double.isNaN(d2);
+        d2 /= 1000000.0D;
+        if (QLog.isColorLevel())
+        {
+          paramIntent = new StringBuilder();
+          paramIntent.append("doOnActivityResult name=");
+          paramIntent.append((String)localObject);
+          paramIntent.append(",address=");
+          paramIntent.append(str);
+          paramIntent.append(",latitude=");
+          paramIntent.append(d1);
+          paramIntent.append(",longitude=");
+          paramIntent.append(d2);
+          QLog.d("MiniAppProxyImpl", 2, paramIntent.toString());
         }
         paramIntent = new JSONObject();
-      }
-      try
-      {
-        paramIntent.put("name", str1);
-        paramIntent.put("address", str2);
-        paramIntent.put("latitude", d1);
-        paramIntent.put("longitude", d2);
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, paramIntent);
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
-        return true;
-      }
-      catch (JSONException paramIntent)
-      {
-        for (;;)
+        try
+        {
+          paramIntent.put("name", localObject);
+          paramIntent.put("address", str);
+          paramIntent.put("latitude", d1);
+          paramIntent.put("longitude", d2);
+          this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, paramIntent);
+        }
+        catch (JSONException paramIntent)
         {
           QLog.e("MiniAppProxyImpl", 1, " error, ", paramIntent);
           this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, new JSONObject());
         }
       }
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
+      return true;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.14
  * JD-Core Version:    0.7.0.1
  */

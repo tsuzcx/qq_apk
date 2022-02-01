@@ -12,22 +12,24 @@ class CountdownTextView$1
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback.a();
+    CountdownTextView.TimerCallback localTimerCallback = this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback;
+    if (localTimerCallback != null) {
+      localTimerCallback.a();
     }
     this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.a();
   }
   
   public void b(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback.a(paramLong);
+    CountdownTextView.TimerCallback localTimerCallback = this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback;
+    if (localTimerCallback != null) {
+      localTimerCallback.a(paramLong);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.widget.CountdownTextView.1
  * JD-Core Version:    0.7.0.1
  */

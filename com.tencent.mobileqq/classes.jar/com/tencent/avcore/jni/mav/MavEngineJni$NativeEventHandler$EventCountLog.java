@@ -11,30 +11,40 @@ class MavEngineJni$NativeEventHandler$EventCountLog
   
   MavEngineJni$NativeEventHandler$EventCountLog(String paramString, long paramLong)
   {
-    this.tag = ("EventCountLog_" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EventCountLog_");
+    localStringBuilder.append(paramString);
+    this.tag = localStringBuilder.toString();
     this.intervalMS = paramLong;
   }
   
   void log()
   {
-    if (!AVCoreLog.isColorLevel()) {}
-    long l1;
-    do
-    {
+    if (!AVCoreLog.isColorLevel()) {
       return;
-      l1 = System.currentTimeMillis();
-      this.eventCount += 1;
-    } while (this.logTime >= l1);
-    long l2 = this.intervalMS;
-    long l3 = this.logTime;
-    this.logTime = (l1 + this.intervalMS);
-    AVCoreLog.i(this.tag, "EventCountLog, eventCount[" + this.eventCount + "], intervalMS[" + (l2 + l1 - l3) + "]");
-    this.eventCount = 0;
+    }
+    long l1 = System.currentTimeMillis();
+    this.eventCount += 1;
+    long l2 = this.logTime;
+    if (l2 < l1)
+    {
+      long l3 = this.intervalMS;
+      this.logTime = (l1 + l3);
+      String str = this.tag;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("EventCountLog, eventCount[");
+      localStringBuilder.append(this.eventCount);
+      localStringBuilder.append("], intervalMS[");
+      localStringBuilder.append(l1 + l3 - l2);
+      localStringBuilder.append("]");
+      AVCoreLog.i(str, localStringBuilder.toString());
+      this.eventCount = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avcore.jni.mav.MavEngineJni.NativeEventHandler.EventCountLog
  * JD-Core Version:    0.7.0.1
  */

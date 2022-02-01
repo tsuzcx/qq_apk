@@ -64,8 +64,9 @@ public class DomObjectCell
     if (this.mComponentAppearEvent == null) {
       this.mComponentAppearEvent = new ComponentAppearEvent(paramString1, paramString2);
     }
-    this.mComponentAppearEvent.event = paramString1;
-    this.mComponentAppearEvent.ref = paramString2;
+    ComponentAppearEvent localComponentAppearEvent = this.mComponentAppearEvent;
+    localComponentAppearEvent.event = paramString1;
+    localComponentAppearEvent.ref = paramString2;
     ViolaDispatchManager.getInstance().dispatchEvent("EVENT_NAME_COMPONENT_APPEAR", this.mComponentAppearEvent);
   }
   
@@ -227,37 +228,34 @@ public class DomObjectCell
   
   public boolean isLazy()
   {
-    int i;
     if (!this.hasInitLazy)
     {
       this.hasInitLazy = true;
       Object localObject = getDomParent();
-      if ((localObject != null) && ("list".equals(((DomObject)localObject).getType())) && (localObject != null) && (((DomObject)localObject).getAttributes() != null))
+      if ((localObject != null) && ("list".equals(((DomObject)localObject).getType())))
       {
-        localObject = ((DomObject)localObject).getAttributes().entrySet().iterator();
-        i = 0;
-        if (((Iterator)localObject).hasNext())
+        int i = 0;
+        if ((localObject != null) && (((DomObject)localObject).getAttributes() != null))
         {
-          Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-          if (!"direction".equals((String)localEntry.getKey())) {
-            break label139;
+          localObject = ((DomObject)localObject).getAttributes().entrySet().iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+            if ("direction".equals((String)localEntry.getKey()))
+            {
+              if ("vertical".equals(ViolaUtils.getString(localEntry.getValue(), null))) {
+                lazy(true);
+              }
+              i = 1;
+            }
           }
-          if ("vertical".equals(ViolaUtils.getString(localEntry.getValue(), null))) {
+          if (i == 0) {
             lazy(true);
           }
-          i = 1;
         }
       }
     }
-    label139:
-    for (;;)
-    {
-      break;
-      if (i == 0) {
-        lazy(true);
-      }
-      return super.isLazy();
-    }
+    return super.isLazy();
   }
   
   public boolean isRegisterDidAppear()
@@ -280,31 +278,11 @@ public class DomObjectCell
     if (this.mRegisterDidAppearComponentStateMap.size() >= 0)
     {
       Iterator localIterator = this.mRegisterDidAppearComponentStateMap.keySet().iterator();
-      if (localIterator.hasNext())
+      while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        if ((getComponentState(str).equals(DomObjectCell.ComponentState.DIDAPPEAR)) || (getComponentState(str).equals(DomObjectCell.ComponentState.WILLAPPEAR))) {
-          if (getComponentState(str).equals(DomObjectCell.ComponentState.WILLAPPEAR))
-          {
-            if ((needFireNextStateWhenWillAppear(str, Boolean.valueOf(paramBoolean))) && (isComponentRegisterEvent("didAppear", str))) {
-              fireEvent(paramString, "didAppear", str);
-            }
-            if (isComponentRegisterEvent("didDisappear", str)) {
-              fireEvent(paramString, "didDisappear", str);
-            }
-            label141:
-            dispatchAppearEvent("didDisappear", str);
-          }
-        }
-        for (;;)
+        if ((!getComponentState(str).equals(DomObjectCell.ComponentState.DIDAPPEAR)) && (!getComponentState(str).equals(DomObjectCell.ComponentState.WILLAPPEAR)))
         {
-          this.mRegisterDidAppearComponentStateMap.put(str, DomObjectCell.ComponentState.DIDDISAPPEAR);
-          break;
-          if ((!getComponentState(str).equals(DomObjectCell.ComponentState.DIDAPPEAR)) || (!isComponentRegisterEvent("didDisappear", str))) {
-            break label141;
-          }
-          fireEvent(paramString, "didDisappear", str);
-          break label141;
           if (needFireNextStateWhenWillAppear(str, Boolean.valueOf(paramBoolean)))
           {
             if (isComponentRegisterEvent("willAppear", str)) {
@@ -318,6 +296,24 @@ public class DomObjectCell
             }
           }
         }
+        else
+        {
+          if (getComponentState(str).equals(DomObjectCell.ComponentState.WILLAPPEAR))
+          {
+            if ((needFireNextStateWhenWillAppear(str, Boolean.valueOf(paramBoolean))) && (isComponentRegisterEvent("didAppear", str))) {
+              fireEvent(paramString, "didAppear", str);
+            }
+            if (isComponentRegisterEvent("didDisappear", str)) {
+              fireEvent(paramString, "didDisappear", str);
+            }
+          }
+          else if ((getComponentState(str).equals(DomObjectCell.ComponentState.DIDAPPEAR)) && (isComponentRegisterEvent("didDisappear", str)))
+          {
+            fireEvent(paramString, "didDisappear", str);
+          }
+          dispatchAppearEvent("didDisappear", str);
+        }
+        this.mRegisterDidAppearComponentStateMap.put(str, DomObjectCell.ComponentState.DIDDISAPPEAR);
       }
     }
   }
@@ -339,7 +335,7 @@ public class DomObjectCell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.dom.DomObjectCell
  * JD-Core Version:    0.7.0.1
  */

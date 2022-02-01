@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -68,34 +69,41 @@ public final class cell_summary
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.summary != null) {
-      paramJceOutputStream.write(this.summary, 0);
+    Object localObject = this.summary;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.hasmore, 1);
     paramJceOutputStream.write(this.actiontype, 2);
-    if (this.summarypic != null) {
-      paramJceOutputStream.write(this.summarypic, 3);
+    localObject = this.summarypic;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
-    if (this.more_info != null) {
-      paramJceOutputStream.write(this.more_info, 4);
+    localObject = this.more_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.sparkleword != null) {
-      paramJceOutputStream.write(this.sparkleword, 5);
+    localObject = this.sparkleword;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.mapExt != null) {
-      paramJceOutputStream.write(this.mapExt, 6);
+    localObject = this.mapExt;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 6);
     }
-    if (this.mapProtoExt != null) {
-      paramJceOutputStream.write(this.mapProtoExt, 7);
+    localObject = this.mapProtoExt;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 7);
     }
-    if (this.actionurl != null) {
-      paramJceOutputStream.write(this.actionurl, 8);
+    localObject = this.actionurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_summary
  * JD-Core Version:    0.7.0.1
  */

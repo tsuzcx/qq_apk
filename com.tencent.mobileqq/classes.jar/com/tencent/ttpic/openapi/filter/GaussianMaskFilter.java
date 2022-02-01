@@ -28,16 +28,13 @@ public class GaussianMaskFilter
   public GaussianMaskFilter(float paramFloat, boolean paramBoolean)
   {
     super(getGaussianFragment(paramFloat, true, paramBoolean));
-    if (paramFloat > 1.0F) {}
-    for (;;)
-    {
-      this.mNeedBlur = bool;
-      this.mRadiusInPixels = paramFloat;
-      if (this.mNeedBlur) {
-        this.gaussianMaskFilterVertic = new GaussianMaskFilter(getGaussianFragment(paramFloat, false, paramBoolean));
-      }
-      return;
+    if (paramFloat <= 1.0F) {
       bool = false;
+    }
+    this.mNeedBlur = bool;
+    this.mRadiusInPixels = paramFloat;
+    if (this.mNeedBlur) {
+      this.gaussianMaskFilterVertic = new GaussianMaskFilter(getGaussianFragment(paramFloat, false, paramBoolean));
     }
   }
   
@@ -48,38 +45,49 @@ public class GaussianMaskFilter
   
   public static void clearGaussianFilterWithRadius(float paramFloat)
   {
-    if (sFilterCount != null) {}
-    for (Object localObject = (Integer)sFilterCount.get(Float.valueOf(paramFloat)); localObject == null; localObject = null)
+    Object localObject = sFilterCount;
+    if (localObject != null) {
+      localObject = (Integer)((HashMap)localObject).get(Float.valueOf(paramFloat));
+    } else {
+      localObject = null;
+    }
+    int i = 0;
+    if (localObject == null)
     {
       localObject = Integer.valueOf(0);
-      if ((((Integer)localObject).intValue() == 0) && (sRadiusFilter != null))
+    }
+    else
+    {
+      localObject = Integer.valueOf(((Integer)localObject).intValue() - 1);
+      if (((Integer)localObject).intValue() > 0) {
+        i = ((Integer)localObject).intValue();
+      }
+      localObject = Integer.valueOf(i);
+      sFilterCount.put(Float.valueOf(paramFloat), localObject);
+    }
+    if (((Integer)localObject).intValue() == 0)
+    {
+      localObject = sRadiusFilter;
+      if (localObject != null)
       {
-        localObject = (GaussianMaskFilter)sRadiusFilter.remove(Float.valueOf(paramFloat));
+        localObject = (GaussianMaskFilter)((HashMap)localObject).remove(Float.valueOf(paramFloat));
         if (localObject != null) {
           ((GaussianMaskFilter)localObject).clearGLSL();
         }
       }
-      return;
-    }
-    localObject = Integer.valueOf(((Integer)localObject).intValue() - 1);
-    if (((Integer)localObject).intValue() <= 0) {}
-    for (int i = 0;; i = ((Integer)localObject).intValue())
-    {
-      localObject = Integer.valueOf(i);
-      sFilterCount.put(Float.valueOf(paramFloat), localObject);
-      break;
     }
   }
   
   public static void clearGaussianFilters()
   {
-    if (sRadiusFilter == null) {
+    Object localObject = sRadiusFilter;
+    if (localObject == null) {
       return;
     }
-    Iterator localIterator = sRadiusFilter.values().iterator();
-    while (localIterator.hasNext())
+    localObject = ((HashMap)localObject).values().iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      GaussianMaskFilter localGaussianMaskFilter = (GaussianMaskFilter)localIterator.next();
+      GaussianMaskFilter localGaussianMaskFilter = (GaussianMaskFilter)((Iterator)localObject).next();
       if (localGaussianMaskFilter != null) {
         localGaussianMaskFilter.clearGLSL();
       }
@@ -95,87 +103,161 @@ public class GaussianMaskFilter
     if (paramInt < 1) {
       return kGPUImagePassthroughFragmentShaderString;
     }
-    float[] arrayOfFloat = new float[paramInt + 1];
-    float f1 = 0.0F;
+    int j = paramInt + 1;
+    float[] arrayOfFloat = new float[j];
     int i = 0;
-    if (i < paramInt + 1)
+    float f1 = 0.0F;
+    while (i < j)
     {
-      arrayOfFloat[i] = ((float)(1.0D / Math.sqrt(6.283185307179586D * Math.pow(paramFloat1, 2.0D)) * Math.exp(-Math.pow(i, 2.0D) / (2.0D * Math.pow(paramFloat1, 2.0D)))));
-      if (i == 0) {}
-      for (f1 = arrayOfFloat[i] + f1;; f1 = (float)(f1 + 2.0D * arrayOfFloat[i]))
+      double d1 = paramFloat1;
+      arrayOfFloat[i] = ((float)(1.0D / Math.sqrt(Math.pow(d1, 2.0D) * 6.283185307179586D) * Math.exp(-Math.pow(i, 2.0D) / (Math.pow(d1, 2.0D) * 2.0D))));
+      if (i == 0)
       {
-        i += 1;
-        break;
+        f1 += arrayOfFloat[i];
       }
+      else
+      {
+        d1 = f1;
+        double d2 = arrayOfFloat[i];
+        Double.isNaN(d2);
+        Double.isNaN(d1);
+        f1 = (float)(d1 + d2 * 2.0D);
+      }
+      i += 1;
     }
     i = 0;
-    while (i < paramInt + 1)
+    while (i < j)
     {
       arrayOfFloat[i] /= f1;
       i += 1;
     }
-    int j = Math.min(paramInt / 2 + paramInt % 2, 7);
-    Object localObject = new float[j];
-    i = 0;
-    while (i < j)
+    j = paramInt / 2 + paramInt % 2;
+    i = Math.min(j, 7);
+    Object localObject2 = new float[i];
+    paramInt = 0;
+    int k;
+    while (paramInt < i)
     {
-      paramFloat1 = arrayOfFloat[(i * 2 + 1)];
-      f1 = arrayOfFloat[(i * 2 + 2)];
-      localObject[i] = ((paramFloat1 * (i * 2 + 1) + f1 * (i * 2 + 2)) / (paramFloat1 + f1));
-      i += 1;
+      int m = paramInt * 2;
+      k = m + 1;
+      paramFloat1 = arrayOfFloat[k];
+      m += 2;
+      f1 = arrayOfFloat[m];
+      localObject2[paramInt] = ((paramFloat1 * k + f1 * m) / (paramFloat1 + f1));
+      paramInt += 1;
     }
-    i = paramInt / 2 + paramInt % 2;
-    String str = String.format(Locale.ENGLISH, "precision highp float;\nuniform sampler2D inputImageTexture;\nuniform sampler2D inputImageTexture2;\nuniform float horStep;\nuniform float verStep;\nvarying vec2 textureCoordinate;\nvoid main(void)\n{\nlowp vec4 sum = vec4(0.0);\n", new Object[] { Integer.valueOf(j * 2 + 1) });
+    Object localObject1 = String.format(Locale.ENGLISH, "precision highp float;\nuniform sampler2D inputImageTexture;\nuniform sampler2D inputImageTexture2;\nuniform float horStep;\nuniform float verStep;\nvarying vec2 textureCoordinate;\nvoid main(void)\n{\nlowp vec4 sum = vec4(0.0);\n", new Object[] { Integer.valueOf(i * 2 + 1) });
     if (paramBoolean2)
     {
-      str = str + String.format(Locale.ENGLISH, "if(texture2D(inputImageTexture2,textureCoordinate).r>0.019){\n", new Object[0]);
-      str = str + String.format(Locale.ENGLISH, "sum += texture2D(inputImageTexture, textureCoordinate.xy) * %f;\n", new Object[] { Float.valueOf(arrayOfFloat[0]) });
-      if (!paramBoolean1) {
-        break label558;
-      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append(String.format(Locale.ENGLISH, "if(texture2D(inputImageTexture2,textureCoordinate).r>0.019){\n", new Object[0]));
+      localObject1 = localStringBuilder.toString();
     }
-    label558:
-    for (str = str + "highp vec2 singleStepOffset = vec2(horStep, 0.0);\n";; str = str + "highp vec2 singleStepOffset = vec2(0.0, verStep);\n")
+    else
     {
-      paramInt = 0;
-      while (paramInt < j)
-      {
-        paramFloat1 = arrayOfFloat[(paramInt * 2 + 1)] + arrayOfFloat[(paramInt * 2 + 2)];
-        str = str + String.format(Locale.ENGLISH, "sum += texture2D(inputImageTexture, textureCoordinate.xy + singleStepOffset * %f) * %f;\n", new Object[] { Float.valueOf(localObject[paramInt] * paramFloat2), Float.valueOf(paramFloat1) });
-        str = str + String.format(Locale.ENGLISH, "sum += texture2D(inputImageTexture, textureCoordinate.xy - singleStepOffset * %f) * %f;\n", new Object[] { Float.valueOf(localObject[paramInt] * paramFloat2), Float.valueOf(paramFloat1) });
-        paramInt += 1;
-      }
-      str = str + String.format(Locale.ENGLISH, "if(texture2D(inputImageTexture2,textureCoordinate).r<0.981){\n", new Object[0]);
-      break;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append(String.format(Locale.ENGLISH, "if(texture2D(inputImageTexture2,textureCoordinate).r<0.981){\n", new Object[0]));
+      localObject1 = localStringBuilder.toString();
     }
-    localObject = str;
-    if (i > j)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(String.format(Locale.ENGLISH, "sum += texture2D(inputImageTexture, textureCoordinate.xy) * %f;\n", new Object[] { Float.valueOf(arrayOfFloat[0]) }));
+    localObject1 = localStringBuilder.toString();
+    if (paramBoolean1)
     {
-      paramInt = j;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append("highp vec2 singleStepOffset = vec2(horStep, 0.0);\n");
+      localObject1 = localStringBuilder.toString();
+    }
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append("highp vec2 singleStepOffset = vec2(0.0, verStep);\n");
+      localObject1 = localStringBuilder.toString();
+    }
+    paramInt = 0;
+    while (paramInt < i)
+    {
+      k = paramInt * 2;
+      paramFloat1 = arrayOfFloat[(k + 1)] + arrayOfFloat[(k + 2)];
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append(String.format(Locale.ENGLISH, "sum += texture2D(inputImageTexture, textureCoordinate.xy + singleStepOffset * %f) * %f;\n", new Object[] { Float.valueOf(localObject2[paramInt] * paramFloat2), Float.valueOf(paramFloat1) }));
+      localObject1 = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append(String.format(Locale.ENGLISH, "sum += texture2D(inputImageTexture, textureCoordinate.xy - singleStepOffset * %f) * %f;\n", new Object[] { Float.valueOf(localObject2[paramInt] * paramFloat2), Float.valueOf(paramFloat1) }));
+      localObject1 = localStringBuilder.toString();
+      paramInt += 1;
+    }
+    localObject2 = localObject1;
+    if (j > i)
+    {
+      paramInt = i;
       for (;;)
       {
-        localObject = str;
-        if (paramInt >= i) {
+        localObject2 = localObject1;
+        if (paramInt >= j) {
           break;
         }
-        f1 = arrayOfFloat[(paramInt * 2 + 1)];
-        float f2 = arrayOfFloat[(paramInt * 2 + 2)];
+        k = paramInt * 2;
+        i = k + 1;
+        f1 = arrayOfFloat[i];
+        k += 2;
+        float f2 = arrayOfFloat[k];
         paramFloat1 = f1 + f2;
-        f1 = (f1 * (paramInt * 2 + 1) + f2 * (paramInt * 2 + 2)) / paramFloat1;
-        str = str + String.format(Locale.ENGLISH, "sum += texture2D(inputImageTexture, textureCoordinate.xy + singleStepOffset * %f) * %f;\n", new Object[] { Float.valueOf(f1 * paramFloat2), Float.valueOf(paramFloat1) });
-        str = str + String.format(Locale.ENGLISH, "sum += texture2D(inputImageTexture, textureCoordinate.xy - singleStepOffset * %f) * %f;\n", new Object[] { Float.valueOf(f1 * paramFloat2), Float.valueOf(paramFloat1) });
+        f1 = (f1 * i + f2 * k) / paramFloat1;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        localObject1 = Locale.ENGLISH;
+        f1 *= paramFloat2;
+        ((StringBuilder)localObject2).append(String.format((Locale)localObject1, "sum += texture2D(inputImageTexture, textureCoordinate.xy + singleStepOffset * %f) * %f;\n", new Object[] { Float.valueOf(f1), Float.valueOf(paramFloat1) }));
+        localObject1 = ((StringBuilder)localObject2).toString();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(String.format(Locale.ENGLISH, "sum += texture2D(inputImageTexture, textureCoordinate.xy - singleStepOffset * %f) * %f;\n", new Object[] { Float.valueOf(f1), Float.valueOf(paramFloat1) }));
+        localObject1 = ((StringBuilder)localObject2).toString();
         paramInt += 1;
       }
     }
-    if (paramBoolean2) {}
-    for (str = (String)localObject + "gl_FragColor = gl_FragColor =mix(texture2D(inputImageTexture, textureCoordinate),sum,texture2D(inputImageTexture2,textureCoordinate).r);\n";; str = (String)localObject + "gl_FragColor = mix(sum,texture2D(inputImageTexture, textureCoordinate),texture2D(inputImageTexture2,textureCoordinate).r);\n")
+    if (paramBoolean2)
     {
-      str = str + String.format(Locale.ENGLISH, "}\n", new Object[0]);
-      str = str + String.format(Locale.ENGLISH, "else{\n", new Object[0]);
-      str = str + String.format(Locale.ENGLISH, "gl_FragColor =texture2D(inputImageTexture, textureCoordinate.xy);\n", new Object[0]);
-      str = str + String.format(Locale.ENGLISH, "}\n", new Object[0]);
-      return str + "}\n";
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append((String)localObject2);
+      localObject2 = "gl_FragColor = gl_FragColor =mix(texture2D(inputImageTexture, textureCoordinate),sum,texture2D(inputImageTexture2,textureCoordinate).r);\n";
     }
+    else
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append((String)localObject2);
+      localObject2 = "gl_FragColor = mix(sum,texture2D(inputImageTexture, textureCoordinate),texture2D(inputImageTexture2,textureCoordinate).r);\n";
+    }
+    ((StringBuilder)localObject1).append((String)localObject2);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(String.format(Locale.ENGLISH, "}\n", new Object[0]));
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(String.format(Locale.ENGLISH, "else{\n", new Object[0]));
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(String.format(Locale.ENGLISH, "gl_FragColor =texture2D(inputImageTexture, textureCoordinate.xy);\n", new Object[0]));
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(String.format(Locale.ENGLISH, "}\n", new Object[0]));
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("}\n");
+    return ((StringBuilder)localObject2).toString();
   }
   
   public static GaussianMaskFilter getGaussianFilter(float paramFloat, boolean paramBoolean)
@@ -188,40 +270,55 @@ public class GaussianMaskFilter
       sRadiusFilter = new HashMap();
       sFilterCount = new HashMap();
     }
-    GaussianMaskFilter localGaussianMaskFilter = (GaussianMaskFilter)sRadiusFilter.get(Float.valueOf(paramFloat));
-    if (localGaussianMaskFilter == null)
+    GaussianMaskFilter localGaussianMaskFilter2 = (GaussianMaskFilter)sRadiusFilter.get(Float.valueOf(paramFloat));
+    GaussianMaskFilter localGaussianMaskFilter1 = localGaussianMaskFilter2;
+    if (localGaussianMaskFilter2 == null)
     {
-      localGaussianMaskFilter = new GaussianMaskFilter(paramFloat, paramBoolean);
-      sRadiusFilter.put(Float.valueOf(paramFloat), localGaussianMaskFilter);
+      localGaussianMaskFilter1 = new GaussianMaskFilter(paramFloat, paramBoolean);
+      sRadiusFilter.put(Float.valueOf(paramFloat), localGaussianMaskFilter1);
     }
-    for (;;)
-    {
-      if (sFilterCount.get(Float.valueOf(paramFloat)) == null) {}
-      for (int i = 0;; i = ((Integer)sFilterCount.get(Float.valueOf(paramFloat))).intValue())
-      {
-        sFilterCount.put(Float.valueOf(paramFloat), Integer.valueOf(i + 1));
-        return localGaussianMaskFilter;
-      }
+    int i;
+    if (sFilterCount.get(Float.valueOf(paramFloat)) == null) {
+      i = 0;
+    } else {
+      i = ((Integer)sFilterCount.get(Float.valueOf(paramFloat))).intValue();
     }
+    sFilterCount.put(Float.valueOf(paramFloat), Integer.valueOf(i + 1));
+    return localGaussianMaskFilter1;
   }
   
   public static String getGaussianFragment(float paramFloat, boolean paramBoolean1, boolean paramBoolean2)
   {
-    float f = 2.0F;
-    int i = 0;
-    if (paramFloat > 24.0F) {
-      paramFloat /= 2.0F;
-    }
-    for (;;)
+    float f1 = 2.0F;
+    float f2;
+    if (paramFloat > 24.0F)
     {
-      if (paramFloat >= 1.0F)
-      {
-        i = (int)Math.floor(Math.sqrt(-2.0D * Math.pow(paramFloat, 2.0D) * Math.log(0.0039063F * Math.sqrt(6.283185307179586D * Math.pow(paramFloat, 2.0D)))));
-        i += i % 2;
-      }
-      return gaussianFragmentShaderForOptimizedBlurOfRadiusGap(i, paramFloat, paramBoolean1, paramBoolean2, f);
-      f = 1.0F;
+      f2 = paramFloat / 2.0F;
+      paramFloat = f1;
+      f1 = f2;
     }
+    else
+    {
+      f2 = 1.0F;
+      f1 = paramFloat;
+      paramFloat = f2;
+    }
+    int i;
+    if (f1 >= 1.0F)
+    {
+      double d3 = f1;
+      double d1 = Math.pow(d3, 2.0D);
+      double d2 = 0.0039063F;
+      d3 = Math.sqrt(Math.pow(d3, 2.0D) * 6.283185307179586D);
+      Double.isNaN(d2);
+      i = (int)Math.floor(Math.sqrt(d1 * -2.0D * Math.log(d2 * d3)));
+      i += i % 2;
+    }
+    else
+    {
+      i = 0;
+    }
+    return gaussianFragmentShaderForOptimizedBlurOfRadiusGap(i, f1, paramBoolean1, paramBoolean2, paramFloat);
   }
   
   public Frame RenderProcess(Frame paramFrame1, Frame paramFrame2)
@@ -230,9 +327,10 @@ public class GaussianMaskFilter
       return paramFrame1;
     }
     super.RenderProcess(paramFrame1.getTextureId(), paramFrame1.width, paramFrame1.height, this.previewWidth, this.previewHeight, -1, 0.0D, paramFrame2);
-    if (this.gaussianMaskFilterVertic != null)
+    GaussianMaskFilter localGaussianMaskFilter = this.gaussianMaskFilterVertic;
+    if (localGaussianMaskFilter != null)
     {
-      this.gaussianMaskFilterVertic.RenderProcess(paramFrame2.getTextureId(), this.previewWidth, this.previewHeight, -1, 0.0D, paramFrame1);
+      localGaussianMaskFilter.RenderProcess(paramFrame2.getTextureId(), this.previewWidth, this.previewHeight, -1, 0.0D, paramFrame1);
       return paramFrame1;
     }
     return paramFrame2;
@@ -245,22 +343,27 @@ public class GaussianMaskFilter
   
   public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
-    if ((this.mIsInited) || (!this.mNeedBlur)) {
-      return;
+    if (!this.mIsInited)
+    {
+      if (!this.mNeedBlur) {
+        return;
+      }
+      addParam(new UniformParam.TextureParam("inputImageTexture2", 0, 33986));
+      this.mIsInited = true;
+      GaussianMaskFilter localGaussianMaskFilter = this.gaussianMaskFilterVertic;
+      if (localGaussianMaskFilter != null) {
+        localGaussianMaskFilter.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
+      }
+      this.previewWidth = ((int)paramFloat1);
+      this.previewHeight = ((int)paramFloat2);
+      super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
     }
-    addParam(new UniformParam.TextureParam("inputImageTexture2", 0, 33986));
-    this.mIsInited = true;
-    if (this.gaussianMaskFilterVertic != null) {
-      this.gaussianMaskFilterVertic.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
-    }
-    this.previewWidth = ((int)paramFloat1);
-    this.previewHeight = ((int)paramFloat2);
-    super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
   }
   
   public void clear()
   {
-    if ((sRadiusFilter != null) && (sRadiusFilter.values() != null) && (sRadiusFilter.values().contains(this)))
+    HashMap localHashMap = sRadiusFilter;
+    if ((localHashMap != null) && (localHashMap.values() != null) && (sRadiusFilter.values().contains(this)))
     {
       clearGaussianFilterWithRadius(this.mRadiusInPixels);
       return;
@@ -271,8 +374,9 @@ public class GaussianMaskFilter
   public void clearGLSL()
   {
     this.mIsInited = false;
-    if (this.gaussianMaskFilterVertic != null) {
-      this.gaussianMaskFilterVertic.clearGLSL();
+    GaussianMaskFilter localGaussianMaskFilter = this.gaussianMaskFilterVertic;
+    if (localGaussianMaskFilter != null) {
+      localGaussianMaskFilter.clearGLSL();
     }
     super.clearGLSL();
   }
@@ -280,8 +384,9 @@ public class GaussianMaskFilter
   public void setMaskTextureId(int paramInt)
   {
     addParam(new UniformParam.TextureParam("inputImageTexture2", paramInt, 33986));
-    if (this.gaussianMaskFilterVertic != null) {
-      this.gaussianMaskFilterVertic.setMaskTextureId(paramInt);
+    GaussianMaskFilter localGaussianMaskFilter = this.gaussianMaskFilterVertic;
+    if (localGaussianMaskFilter != null) {
+      localGaussianMaskFilter.setMaskTextureId(paramInt);
     }
   }
   
@@ -293,7 +398,7 @@ public class GaussianMaskFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.GaussianMaskFilter
  * JD-Core Version:    0.7.0.1
  */

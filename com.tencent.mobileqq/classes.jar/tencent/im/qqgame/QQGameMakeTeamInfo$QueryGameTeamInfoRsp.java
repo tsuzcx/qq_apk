@@ -14,7 +14,7 @@ public final class QQGameMakeTeamInfo$QueryGameTeamInfoRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.qqgame.QQGameMakeTeamInfo.QueryGameTeamInfoRsp
  * JD-Core Version:    0.7.0.1
  */

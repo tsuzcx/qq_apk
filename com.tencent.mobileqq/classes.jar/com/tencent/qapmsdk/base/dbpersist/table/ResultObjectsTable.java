@@ -69,14 +69,16 @@ public final class ResultObjectsTable
   
   private final ResultObject cursorToResultObject(Cursor paramCursor)
   {
-    boolean bool = false;
     if (paramCursor != null)
     {
       ResultObject localResultObject = new ResultObject(0, null, false, 0L, 0L, null, false, false, null, 511, null);
       localResultObject.setDbId(paramCursor.getInt(paramCursor.getColumnIndex("_id")));
       localResultObject.setParams(new JSONObject(paramCursor.getString(paramCursor.getColumnIndex("params"))));
+      boolean bool;
       if (paramCursor.getInt(paramCursor.getColumnIndex("is_real_time")) > 0) {
         bool = true;
+      } else {
+        bool = false;
       }
       localResultObject.setRealTime(bool);
       paramCursor = paramCursor.getString(paramCursor.getColumnIndex("uin"));
@@ -126,190 +128,192 @@ public final class ResultObjectsTable
     //   27: iconst_1
     //   28: invokestatic 185	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   31: invokestatic 240	kotlin/jvm/internal/Intrinsics:areEqual	(Ljava/lang/Object;Ljava/lang/Object;)Z
-    //   34: ifeq +200 -> 234
+    //   34: ifeq +253 -> 287
     //   37: ldc 242
     //   39: astore_3
-    //   40: aload_2
-    //   41: invokeinterface 236 1 0
-    //   46: iconst_1
-    //   47: invokestatic 185	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   50: invokestatic 240	kotlin/jvm/internal/Intrinsics:areEqual	(Ljava/lang/Object;Ljava/lang/Object;)Z
-    //   53: ifeq +188 -> 241
-    //   56: iconst_5
-    //   57: anewarray 244	java/lang/String
-    //   60: astore_2
-    //   61: aload_2
-    //   62: iconst_0
-    //   63: aload_0
-    //   64: getfield 96	com/tencent/qapmsdk/base/dbpersist/table/ResultObjectsTable:processName	Ljava/lang/String;
-    //   67: aastore
-    //   68: aload_2
-    //   69: iconst_1
-    //   70: aload_0
-    //   71: getfield 112	com/tencent/qapmsdk/base/dbpersist/table/ResultObjectsTable:pId	I
-    //   74: invokestatic 246	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   77: aastore
-    //   78: aload_2
-    //   79: iconst_2
-    //   80: aload_0
-    //   81: getfield 98	com/tencent/qapmsdk/base/dbpersist/table/ResultObjectsTable:version	Ljava/lang/String;
-    //   84: aastore
-    //   85: aload_2
-    //   86: iconst_3
-    //   87: getstatic 194	com/tencent/qapmsdk/base/dbpersist/DBDataStatus:TO_SEND	Lcom/tencent/qapmsdk/base/dbpersist/DBDataStatus;
-    //   90: invokevirtual 198	com/tencent/qapmsdk/base/dbpersist/DBDataStatus:getValue	()I
-    //   93: invokestatic 246	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   96: aastore
-    //   97: aload_2
-    //   98: iconst_4
-    //   99: invokestatic 204	java/lang/System:currentTimeMillis	()J
-    //   102: ldc 247
-    //   104: i2l
-    //   105: lsub
-    //   106: invokestatic 250	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   109: aastore
-    //   110: aload_1
-    //   111: ldc 72
-    //   113: aconst_null
-    //   114: aload_3
-    //   115: aload_2
-    //   116: aconst_null
-    //   117: aconst_null
-    //   118: aconst_null
-    //   119: invokevirtual 254	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   122: astore_1
-    //   123: aload_1
-    //   124: ifnull +107 -> 231
-    //   127: aload_1
-    //   128: checkcast 256	java/io/Closeable
-    //   131: astore_3
-    //   132: aconst_null
-    //   133: checkcast 227	java/lang/Throwable
-    //   136: astore_2
-    //   137: aload_2
-    //   138: astore_1
-    //   139: aload_3
-    //   140: checkcast 125	android/database/Cursor
-    //   143: astore 5
-    //   145: aload_2
-    //   146: astore_1
-    //   147: aload 5
-    //   149: invokeinterface 260 1 0
-    //   154: pop
-    //   155: aload_2
-    //   156: astore_1
-    //   157: aload 5
-    //   159: invokeinterface 263 1 0
-    //   164: ifne +109 -> 273
-    //   167: aload_2
-    //   168: astore_1
-    //   169: aload_0
-    //   170: aload 5
-    //   172: invokespecial 265	com/tencent/qapmsdk/base/dbpersist/table/ResultObjectsTable:cursorToResultObject	(Landroid/database/Cursor;)Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
-    //   175: astore 6
-    //   177: aload 6
-    //   179: ifnull +13 -> 192
-    //   182: aload_2
-    //   183: astore_1
-    //   184: aload 4
-    //   186: aload 6
-    //   188: invokevirtual 269	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   191: pop
-    //   192: aload_2
-    //   193: astore_1
-    //   194: aload 5
-    //   196: invokeinterface 272 1 0
-    //   201: pop
-    //   202: goto -47 -> 155
-    //   205: astore_2
-    //   206: aload_2
-    //   207: astore_1
-    //   208: aload_2
-    //   209: athrow
-    //   210: astore_2
-    //   211: aload_3
-    //   212: aload_1
-    //   213: invokestatic 278	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   216: aload_2
-    //   217: athrow
+    //   40: goto +3 -> 43
+    //   43: aload_2
+    //   44: invokeinterface 236 1 0
+    //   49: iconst_1
+    //   50: invokestatic 185	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   53: invokestatic 240	kotlin/jvm/internal/Intrinsics:areEqual	(Ljava/lang/Object;Ljava/lang/Object;)Z
+    //   56: ifeq +60 -> 116
+    //   59: iconst_5
+    //   60: anewarray 244	java/lang/String
+    //   63: astore_2
+    //   64: aload_2
+    //   65: iconst_0
+    //   66: aload_0
+    //   67: getfield 96	com/tencent/qapmsdk/base/dbpersist/table/ResultObjectsTable:processName	Ljava/lang/String;
+    //   70: aastore
+    //   71: aload_2
+    //   72: iconst_1
+    //   73: aload_0
+    //   74: getfield 112	com/tencent/qapmsdk/base/dbpersist/table/ResultObjectsTable:pId	I
+    //   77: invokestatic 246	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   80: aastore
+    //   81: aload_2
+    //   82: iconst_2
+    //   83: aload_0
+    //   84: getfield 98	com/tencent/qapmsdk/base/dbpersist/table/ResultObjectsTable:version	Ljava/lang/String;
+    //   87: aastore
+    //   88: aload_2
+    //   89: iconst_3
+    //   90: getstatic 194	com/tencent/qapmsdk/base/dbpersist/DBDataStatus:TO_SEND	Lcom/tencent/qapmsdk/base/dbpersist/DBDataStatus;
+    //   93: invokevirtual 198	com/tencent/qapmsdk/base/dbpersist/DBDataStatus:getValue	()I
+    //   96: invokestatic 246	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   99: aastore
+    //   100: aload_2
+    //   101: iconst_4
+    //   102: invokestatic 204	java/lang/System:currentTimeMillis	()J
+    //   105: ldc 247
+    //   107: i2l
+    //   108: lsub
+    //   109: invokestatic 250	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   112: aastore
+    //   113: goto +32 -> 145
+    //   116: iconst_3
+    //   117: anewarray 244	java/lang/String
+    //   120: astore_2
+    //   121: aload_2
+    //   122: iconst_0
+    //   123: aload_0
+    //   124: getfield 96	com/tencent/qapmsdk/base/dbpersist/table/ResultObjectsTable:processName	Ljava/lang/String;
+    //   127: aastore
+    //   128: aload_2
+    //   129: iconst_1
+    //   130: aload_0
+    //   131: getfield 112	com/tencent/qapmsdk/base/dbpersist/table/ResultObjectsTable:pId	I
+    //   134: invokestatic 246	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   137: aastore
+    //   138: aload_2
+    //   139: iconst_2
+    //   140: aload_0
+    //   141: getfield 98	com/tencent/qapmsdk/base/dbpersist/table/ResultObjectsTable:version	Ljava/lang/String;
+    //   144: aastore
+    //   145: aload_1
+    //   146: ldc 72
+    //   148: aconst_null
+    //   149: aload_3
+    //   150: aload_2
+    //   151: aconst_null
+    //   152: aconst_null
+    //   153: aconst_null
+    //   154: invokevirtual 254	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   157: astore_1
+    //   158: aload_1
+    //   159: ifnull +125 -> 284
+    //   162: aload_1
+    //   163: checkcast 256	java/io/Closeable
+    //   166: astore_3
+    //   167: aconst_null
+    //   168: checkcast 227	java/lang/Throwable
+    //   171: astore_2
+    //   172: aload_2
+    //   173: astore_1
+    //   174: aload_3
+    //   175: checkcast 125	android/database/Cursor
+    //   178: astore 5
+    //   180: aload_2
+    //   181: astore_1
+    //   182: aload 5
+    //   184: invokeinterface 260 1 0
+    //   189: pop
+    //   190: aload_2
+    //   191: astore_1
+    //   192: aload 5
+    //   194: invokeinterface 263 1 0
+    //   199: ifne +41 -> 240
+    //   202: aload_2
+    //   203: astore_1
+    //   204: aload_0
+    //   205: aload 5
+    //   207: invokespecial 265	com/tencent/qapmsdk/base/dbpersist/table/ResultObjectsTable:cursorToResultObject	(Landroid/database/Cursor;)Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
+    //   210: astore 6
+    //   212: aload 6
+    //   214: ifnull +13 -> 227
+    //   217: aload_2
     //   218: astore_1
-    //   219: getstatic 284	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   222: ldc 75
-    //   224: aload_1
-    //   225: checkcast 227	java/lang/Throwable
-    //   228: invokevirtual 288	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   231: aload 4
-    //   233: areturn
-    //   234: ldc_w 290
-    //   237: astore_3
-    //   238: goto -198 -> 40
-    //   241: iconst_3
-    //   242: anewarray 244	java/lang/String
-    //   245: astore_2
-    //   246: aload_2
-    //   247: iconst_0
-    //   248: aload_0
-    //   249: getfield 96	com/tencent/qapmsdk/base/dbpersist/table/ResultObjectsTable:processName	Ljava/lang/String;
-    //   252: aastore
-    //   253: aload_2
-    //   254: iconst_1
-    //   255: aload_0
-    //   256: getfield 112	com/tencent/qapmsdk/base/dbpersist/table/ResultObjectsTable:pId	I
-    //   259: invokestatic 246	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   262: aastore
-    //   263: aload_2
-    //   264: iconst_2
-    //   265: aload_0
-    //   266: getfield 98	com/tencent/qapmsdk/base/dbpersist/table/ResultObjectsTable:version	Ljava/lang/String;
-    //   269: aastore
-    //   270: goto -160 -> 110
-    //   273: aload_2
-    //   274: astore_1
-    //   275: getstatic 295	kotlin/Unit:INSTANCE	Lkotlin/Unit;
-    //   278: astore 5
-    //   280: aload_3
-    //   281: aload_2
-    //   282: invokestatic 278	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   285: aload 4
-    //   287: areturn
+    //   219: aload 4
+    //   221: aload 6
+    //   223: invokevirtual 269	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   226: pop
+    //   227: aload_2
+    //   228: astore_1
+    //   229: aload 5
+    //   231: invokeinterface 272 1 0
+    //   236: pop
+    //   237: goto -47 -> 190
+    //   240: aload_2
+    //   241: astore_1
+    //   242: getstatic 278	kotlin/Unit:INSTANCE	Lkotlin/Unit;
+    //   245: astore 5
+    //   247: aload_3
+    //   248: aload_2
+    //   249: invokestatic 284	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   252: aload 4
+    //   254: areturn
+    //   255: astore_2
+    //   256: goto +8 -> 264
+    //   259: astore_2
+    //   260: aload_2
+    //   261: astore_1
+    //   262: aload_2
+    //   263: athrow
+    //   264: aload_3
+    //   265: aload_1
+    //   266: invokestatic 284	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   269: aload_2
+    //   270: athrow
+    //   271: astore_1
+    //   272: getstatic 289	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
+    //   275: ldc 75
+    //   277: aload_1
+    //   278: checkcast 227	java/lang/Throwable
+    //   281: invokevirtual 293	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   284: aload 4
+    //   286: areturn
+    //   287: ldc_w 295
+    //   290: astore_3
+    //   291: goto -248 -> 43
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	288	0	this	ResultObjectsTable
-    //   0	288	1	paramSQLiteDatabase	SQLiteDatabase
-    //   0	288	2	paramFunction0	Function0<? extends java.lang.Object>
-    //   39	242	3	localObject1	java.lang.Object
-    //   19	267	4	localArrayList	java.util.ArrayList
-    //   143	136	5	localObject2	java.lang.Object
-    //   175	12	6	localResultObject	ResultObject
+    //   0	294	0	this	ResultObjectsTable
+    //   0	294	1	paramSQLiteDatabase	SQLiteDatabase
+    //   0	294	2	paramFunction0	Function0<? extends java.lang.Object>
+    //   39	252	3	localObject1	java.lang.Object
+    //   19	266	4	localArrayList	java.util.ArrayList
+    //   178	68	5	localObject2	java.lang.Object
+    //   210	12	6	localResultObject	ResultObject
     // Exception table:
     //   from	to	target	type
-    //   139	145	205	java/lang/Throwable
-    //   147	155	205	java/lang/Throwable
-    //   157	167	205	java/lang/Throwable
-    //   169	177	205	java/lang/Throwable
-    //   184	192	205	java/lang/Throwable
-    //   194	202	205	java/lang/Throwable
-    //   275	280	205	java/lang/Throwable
-    //   139	145	210	finally
-    //   147	155	210	finally
-    //   157	167	210	finally
-    //   169	177	210	finally
-    //   184	192	210	finally
-    //   194	202	210	finally
-    //   208	210	210	finally
-    //   275	280	210	finally
-    //   21	37	218	java/lang/Exception
-    //   40	110	218	java/lang/Exception
-    //   110	123	218	java/lang/Exception
-    //   127	137	218	java/lang/Exception
-    //   211	218	218	java/lang/Exception
-    //   241	270	218	java/lang/Exception
-    //   280	285	218	java/lang/Exception
+    //   174	180	255	finally
+    //   182	190	255	finally
+    //   192	202	255	finally
+    //   204	212	255	finally
+    //   219	227	255	finally
+    //   229	237	255	finally
+    //   242	247	255	finally
+    //   262	264	255	finally
+    //   174	180	259	java/lang/Throwable
+    //   182	190	259	java/lang/Throwable
+    //   192	202	259	java/lang/Throwable
+    //   204	212	259	java/lang/Throwable
+    //   219	227	259	java/lang/Throwable
+    //   229	237	259	java/lang/Throwable
+    //   242	247	259	java/lang/Throwable
+    //   21	37	271	java/lang/Exception
+    //   43	113	271	java/lang/Exception
+    //   116	145	271	java/lang/Exception
+    //   145	158	271	java/lang/Exception
+    //   162	172	271	java/lang/Exception
+    //   247	252	271	java/lang/Exception
+    //   264	271	271	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.base.dbpersist.table.ResultObjectsTable
  * JD-Core Version:    0.7.0.1
  */

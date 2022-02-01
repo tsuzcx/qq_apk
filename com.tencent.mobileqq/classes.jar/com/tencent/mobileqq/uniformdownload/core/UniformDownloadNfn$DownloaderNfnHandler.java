@@ -6,10 +6,11 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
+import com.tencent.mobileqq.filebrowser.IFileBrowserService;
+import com.tencent.mobileqq.filemanager.api.IQQFileTempUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.uniformdownload.data.DownloadingRbResmeInfoMgr;
 import com.tencent.mobileqq.uniformdownload.data.SucDownloadInfoMgr;
-import com.tencent.mobileqq.uniformdownload.filemanager.LocalTbsViewManager;
-import com.tencent.mobileqq.uniformdownload.filemanager.QFileAppStorePromoteManager;
 import com.tencent.mobileqq.uniformdownload.util.IUniformDownloaderListener;
 import com.tencent.mobileqq.uniformdownload.util.SucDownloadInfo;
 import com.tencent.mobileqq.uniformdownload.util.UniformDownloadUtil;
@@ -38,41 +39,69 @@ class UniformDownloadNfn$DownloaderNfnHandler
       this.jdField_a_of_type_AndroidAppNotification = paramUniformDownloadNfn.a(paramBundle);
       return;
     }
-    QLog.e(UniformDownloadNfn.a, 1, "[UniformDL][" + paramLong + "]. notify runable, param is null");
+    paramUniformDownloadNfn = UniformDownloadNfn.a;
+    paramLooper = new StringBuilder();
+    paramLooper.append("[UniformDL][");
+    paramLooper.append(paramLong);
+    paramLooper.append("]. notify runable, param is null");
+    QLog.e(paramUniformDownloadNfn, 1, paramLooper.toString());
   }
   
   public void a(int paramInt, Bundle paramBundle)
   {
-    QLog.i(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadStart, NF");
+    paramBundle = UniformDownloadNfn.a;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[UniformDL][");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append("]. onDownloadStart, NF");
+    QLog.i(paramBundle, 1, ((StringBuilder)localObject).toString());
     paramBundle = Message.obtain();
     paramBundle.what = 1;
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("_FILE_PROGRESS_", paramInt);
-    localBundle.putInt("_START_WAITING_", 0);
-    paramBundle.setData(localBundle);
-    if (!sendMessage(paramBundle)) {
-      QLog.e(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadStart, sendMessage failed, NF");
+    localObject = new Bundle();
+    ((Bundle)localObject).putInt("_FILE_PROGRESS_", paramInt);
+    ((Bundle)localObject).putInt("_START_WAITING_", 0);
+    paramBundle.setData((Bundle)localObject);
+    if (!sendMessage(paramBundle))
+    {
+      paramBundle = UniformDownloadNfn.a;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[UniformDL][");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append("]. onDownloadStart, sendMessage failed, NF");
+      QLog.e(paramBundle, 1, ((StringBuilder)localObject).toString());
     }
   }
   
   public void a(int paramInt, String paramString, Bundle paramBundle)
   {
-    QLog.i(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadFailed, NF --> " + paramString);
+    Object localObject = UniformDownloadNfn.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[UniformDL][");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("]. onDownloadFailed, NF --> ");
+    localStringBuilder.append(paramString);
+    QLog.i((String)localObject, 1, localStringBuilder.toString());
     if (paramBundle != null)
     {
       paramBundle = paramBundle.getBundle("_CB_USERDATA");
       if ((paramBundle != null) && (paramBundle.getBoolean("tbs_new_report", false))) {
-        LocalTbsViewManager.a().a("stat_download_failed");
+        ((IFileBrowserService)QRoute.api(IFileBrowserService.class)).reportQQBrowserDownloadEvent("stat_download_failed");
       }
     }
     paramBundle = Message.obtain();
     paramBundle.what = 5;
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("_FILE_ERR_CODE_", paramInt);
-    localBundle.putString("_FILE_ERR_STRING_", paramString);
-    paramBundle.setData(localBundle);
-    if (!sendMessage(paramBundle)) {
-      QLog.e(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadFailed, sendMessage failed, NF");
+    localObject = new Bundle();
+    ((Bundle)localObject).putInt("_FILE_ERR_CODE_", paramInt);
+    ((Bundle)localObject).putString("_FILE_ERR_STRING_", paramString);
+    paramBundle.setData((Bundle)localObject);
+    if (!sendMessage(paramBundle))
+    {
+      paramString = UniformDownloadNfn.a;
+      paramBundle = new StringBuilder();
+      paramBundle.append("[UniformDL][");
+      paramBundle.append(this.jdField_a_of_type_Long);
+      paramBundle.append("]. onDownloadFailed, sendMessage failed, NF");
+      QLog.e(paramString, 1, paramBundle.toString());
     }
   }
   
@@ -93,22 +122,27 @@ class UniformDownloadNfn$DownloaderNfnHandler
           if (!TextUtils.isEmpty(str2))
           {
             ((SucDownloadInfo)localObject).jdField_a_of_type_AndroidOsBundle.putString("params_open_with_yyb", str2);
-            QFileAppStorePromoteManager.a();
+            ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).reportAppStoreDownloadSuc();
           }
           boolean bool = paramBundle.getBoolean("tbs_new_report", false);
           ((SucDownloadInfo)localObject).jdField_a_of_type_AndroidOsBundle.putBoolean("tbs_new_report", bool);
           if (bool) {
-            LocalTbsViewManager.a().a("stat_download_success");
+            ((IFileBrowserService)QRoute.api(IFileBrowserService.class)).reportQQBrowserDownloadEvent("stat_download_success");
           }
           UniformDownloadNfn.a(this.jdField_a_of_type_ComTencentMobileqqUniformdownloadCoreUniformDownloadNfn, paramBundle);
         }
       }
       UniformDownloadMgr.a().a().a((SucDownloadInfo)localObject);
     }
-    QLog.i(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadSucess, NF");
+    paramBundle = UniformDownloadNfn.a;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[UniformDL][");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append("]. onDownloadSucess, NF");
+    QLog.i(paramBundle, 1, ((StringBuilder)localObject).toString());
     paramBundle = Message.obtain();
     paramBundle.what = 4;
-    Object localObject = new Bundle();
+    localObject = new Bundle();
     ((Bundle)localObject).putString("_FILE_PATH_", paramString);
     ((Bundle)localObject).putLong("_FILE_SIZE_", paramLong);
     ((Bundle)localObject).putInt("_NEW_N_ID_", i);
@@ -116,8 +150,14 @@ class UniformDownloadNfn$DownloaderNfnHandler
       ((Bundle)localObject).putString("_PKG_NAME_", str1);
     }
     paramBundle.setData((Bundle)localObject);
-    if (!sendMessage(paramBundle)) {
-      QLog.e(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadSucess, sendMessage failed, NF");
+    if (!sendMessage(paramBundle))
+    {
+      paramString = UniformDownloadNfn.a;
+      paramBundle = new StringBuilder();
+      paramBundle.append("[UniformDL][");
+      paramBundle.append(this.jdField_a_of_type_Long);
+      paramBundle.append("]. onDownloadSucess, sendMessage failed, NF");
+      QLog.e(paramString, 1, paramBundle.toString());
     }
   }
   
@@ -125,102 +165,179 @@ class UniformDownloadNfn$DownloaderNfnHandler
   {
     paramBundle = Message.obtain();
     paramBundle.what = 2;
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("_FILE_PROGRESS_", paramInt);
-    paramBundle.setData(localBundle);
-    if (!sendMessage(paramBundle)) {
-      QLog.e(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadProgress, sendMessage failed, NF");
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putInt("_FILE_PROGRESS_", paramInt);
+    paramBundle.setData((Bundle)localObject);
+    if (!sendMessage(paramBundle))
+    {
+      paramBundle = UniformDownloadNfn.a;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[UniformDL][");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append("]. onDownloadProgress, sendMessage failed, NF");
+      QLog.e(paramBundle, 1, ((StringBuilder)localObject).toString());
     }
   }
   
   public void c(int paramInt, Bundle paramBundle)
   {
-    QLog.i(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadPause, NF");
+    paramBundle = UniformDownloadNfn.a;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[UniformDL][");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append("]. onDownloadPause, NF");
+    QLog.i(paramBundle, 1, ((StringBuilder)localObject).toString());
     paramBundle = Message.obtain();
     paramBundle.what = 3;
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("_FILE_PROGRESS_", paramInt);
-    paramBundle.setData(localBundle);
-    if (!sendMessage(paramBundle)) {
-      QLog.e(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadPause, sendMessage failed, NF");
+    localObject = new Bundle();
+    ((Bundle)localObject).putInt("_FILE_PROGRESS_", paramInt);
+    paramBundle.setData((Bundle)localObject);
+    if (!sendMessage(paramBundle))
+    {
+      paramBundle = UniformDownloadNfn.a;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[UniformDL][");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append("]. onDownloadPause, sendMessage failed, NF");
+      QLog.e(paramBundle, 1, ((StringBuilder)localObject).toString());
     }
   }
   
   public void d(int paramInt, Bundle paramBundle)
   {
-    QLog.i(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadResume progress=" + paramInt + ", NF ");
+    paramBundle = UniformDownloadNfn.a;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[UniformDL][");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append("]. onDownloadResume progress=");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(", NF ");
+    QLog.i(paramBundle, 1, ((StringBuilder)localObject).toString());
     paramBundle = Message.obtain();
     paramBundle.what = 7;
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("_FILE_PROGRESS_", paramInt);
-    paramBundle.setData(localBundle);
-    if (!sendMessage(paramBundle)) {
-      QLog.e(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. onDownloadResume, sendMessage failed, NF");
+    localObject = new Bundle();
+    ((Bundle)localObject).putInt("_FILE_PROGRESS_", paramInt);
+    paramBundle.setData((Bundle)localObject);
+    if (!sendMessage(paramBundle))
+    {
+      paramBundle = UniformDownloadNfn.a;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[UniformDL][");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append("]. onDownloadResume, sendMessage failed, NF");
+      QLog.e(paramBundle, 1, ((StringBuilder)localObject).toString());
     }
   }
   
   public void handleMessage(Message paramMessage)
   {
-    boolean bool = false;
     super.handleMessage(paramMessage);
-    Object localObject = paramMessage.getData();
+    Object localObject1 = paramMessage.getData();
+    Object localObject2;
+    Object localObject3;
     switch (paramMessage.what)
     {
-    }
-    for (;;)
-    {
-      this.b = paramMessage.what;
-      return;
-      QLog.i(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. NF_START, NF. NId = " + this.jdField_a_of_type_Int + " url:" + this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
-      this.jdField_a_of_type_ComTencentMobileqqUniformdownloadCoreUniformDownloadNfn.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
-      int i = ((Bundle)localObject).getInt("_START_WAITING_");
-      localObject = UniformDownloadMgr.a().a();
-      String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url");
-      String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Filename");
-      String str3 = this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_ContentTitle", "");
-      long l = this.jdField_a_of_type_AndroidOsBundle.getLong("_notify_param_Filesize");
-      Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle.getBundle("_notify_param_userdata");
-      int j = this.jdField_a_of_type_Int;
-      if (i == 1) {
-        bool = true;
-      }
-      ((DownloadingRbResmeInfoMgr)localObject).a(str1, str2, str3, l, localBundle, j, bool);
-      this.c = 1;
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqUniformdownloadCoreUniformDownloadNfn.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
+    default: 
+      break;
+    case 7: 
+      localObject2 = UniformDownloadNfn.a;
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("[UniformDL][");
+      ((StringBuilder)localObject3).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject3).append("]. NF_RESUME, NF. NId = ");
+      ((StringBuilder)localObject3).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject3).append(" url:");
+      ((StringBuilder)localObject3).append(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
+      QLog.i((String)localObject2, 1, ((StringBuilder)localObject3).toString());
+      this.jdField_a_of_type_ComTencentMobileqqUniformdownloadCoreUniformDownloadNfn.e(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject1);
+      UniformDownloadMgr.a().a().a(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"), this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Filename"), this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_ContentTitle", ""), this.jdField_a_of_type_AndroidOsBundle.getLong("_notify_param_Filesize"), this.jdField_a_of_type_AndroidOsBundle.getBundle("_notify_param_userdata"), this.jdField_a_of_type_Int, true);
+      this.c = 7;
+      break;
+    case 6: 
+      localObject1 = UniformDownloadNfn.a;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[UniformDL][");
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject2).append("]. NF_CLR, NF. NId = ");
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+      QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
+      this.jdField_a_of_type_ComTencentMobileqqUniformdownloadCoreUniformDownloadNfn.a(this.jdField_a_of_type_Int);
+      UniformDownloadMgr.a().a().a(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
+      break;
+    case 5: 
+      this.jdField_a_of_type_ComTencentMobileqqUniformdownloadCoreUniformDownloadNfn.d(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject1);
+      UniformDownloadMgr.a().a().a(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
+      this.c = 5;
+      break;
+    case 4: 
+      localObject2 = UniformDownloadNfn.a;
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("[UniformDL][");
+      ((StringBuilder)localObject3).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject3).append("]. NF_SUC, NF. NId = ");
+      ((StringBuilder)localObject3).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject3).append(" url:");
+      ((StringBuilder)localObject3).append(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
+      QLog.i((String)localObject2, 1, ((StringBuilder)localObject3).toString());
+      this.jdField_a_of_type_ComTencentMobileqqUniformdownloadCoreUniformDownloadNfn.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject1);
+      UniformDownloadMgr.a().a().a(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
+      this.c = 4;
+      break;
+    case 3: 
+      localObject2 = UniformDownloadNfn.a;
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("[UniformDL][");
+      ((StringBuilder)localObject3).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject3).append("]. NF_PAUSE, NF. NId = ");
+      ((StringBuilder)localObject3).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject3).append(" url:");
+      ((StringBuilder)localObject3).append(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
+      QLog.i((String)localObject2, 1, ((StringBuilder)localObject3).toString());
+      this.jdField_a_of_type_ComTencentMobileqqUniformdownloadCoreUniformDownloadNfn.c(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject1);
+      UniformDownloadMgr.a().a().a(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
+      this.c = 3;
+      break;
+    case 2: 
+      this.jdField_a_of_type_ComTencentMobileqqUniformdownloadCoreUniformDownloadNfn.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject1);
       if (2 != this.c) {
         UniformDownloadMgr.a().a().a(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"), this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Filename"), this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_ContentTitle", ""), this.jdField_a_of_type_AndroidOsBundle.getLong("_notify_param_Filesize"), this.jdField_a_of_type_AndroidOsBundle.getBundle("_notify_param_userdata"), this.jdField_a_of_type_Int, false);
       }
       this.c = 2;
-      continue;
-      QLog.i(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. NF_PAUSE, NF. NId = " + this.jdField_a_of_type_Int + " url:" + this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
-      this.jdField_a_of_type_ComTencentMobileqqUniformdownloadCoreUniformDownloadNfn.c(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
-      UniformDownloadMgr.a().a().a(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
-      this.c = 3;
-      continue;
-      QLog.i(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. NF_SUC, NF. NId = " + this.jdField_a_of_type_Int + " url:" + this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
-      this.jdField_a_of_type_ComTencentMobileqqUniformdownloadCoreUniformDownloadNfn.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
-      UniformDownloadMgr.a().a().a(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
-      this.c = 4;
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqUniformdownloadCoreUniformDownloadNfn.d(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
-      UniformDownloadMgr.a().a().a(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
-      this.c = 5;
-      continue;
-      QLog.i(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. NF_RESUME, NF. NId = " + this.jdField_a_of_type_Int + " url:" + this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
-      this.jdField_a_of_type_ComTencentMobileqqUniformdownloadCoreUniformDownloadNfn.e(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject);
-      UniformDownloadMgr.a().a().a(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"), this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Filename"), this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_ContentTitle", ""), this.jdField_a_of_type_AndroidOsBundle.getLong("_notify_param_Filesize"), this.jdField_a_of_type_AndroidOsBundle.getBundle("_notify_param_userdata"), this.jdField_a_of_type_Int, true);
-      this.c = 7;
-      continue;
-      QLog.i(UniformDownloadNfn.a, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. NF_CLR, NF. NId = " + this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqUniformdownloadCoreUniformDownloadNfn.a(this.jdField_a_of_type_Int);
-      UniformDownloadMgr.a().a().a(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
+      break;
+    case 1: 
+      localObject2 = UniformDownloadNfn.a;
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("[UniformDL][");
+      ((StringBuilder)localObject3).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject3).append("]. NF_START, NF. NId = ");
+      ((StringBuilder)localObject3).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject3).append(" url:");
+      ((StringBuilder)localObject3).append(this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url"));
+      QLog.i((String)localObject2, 1, ((StringBuilder)localObject3).toString());
+      this.jdField_a_of_type_ComTencentMobileqqUniformdownloadCoreUniformDownloadNfn.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppNotification, this.jdField_a_of_type_AndroidOsBundle, (Bundle)localObject1);
+      int i = ((Bundle)localObject1).getInt("_START_WAITING_");
+      localObject1 = UniformDownloadMgr.a().a();
+      localObject2 = this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Url");
+      localObject3 = this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_Filename");
+      String str = this.jdField_a_of_type_AndroidOsBundle.getString("_notify_param_ContentTitle", "");
+      long l = this.jdField_a_of_type_AndroidOsBundle.getLong("_notify_param_Filesize");
+      Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle.getBundle("_notify_param_userdata");
+      int j = this.jdField_a_of_type_Int;
+      boolean bool;
+      if (i == 1) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      ((DownloadingRbResmeInfoMgr)localObject1).a((String)localObject2, (String)localObject3, str, l, localBundle, j, bool);
+      this.c = 1;
     }
+    this.b = paramMessage.what;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.core.UniformDownloadNfn.DownloaderNfnHandler
  * JD-Core Version:    0.7.0.1
  */

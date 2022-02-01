@@ -32,15 +32,18 @@ public class OperatorOnBackpressureBuffer<T>
   
   public OperatorOnBackpressureBuffer(long paramLong, Action0 paramAction0, BackpressureOverflow.Strategy paramStrategy)
   {
-    if (paramLong <= 0L) {
-      throw new IllegalArgumentException("Buffer capacity must be > 0");
-    }
-    if (paramStrategy == null) {
+    if (paramLong > 0L)
+    {
+      if (paramStrategy != null)
+      {
+        this.capacity = Long.valueOf(paramLong);
+        this.onOverflow = paramAction0;
+        this.overflowStrategy = paramStrategy;
+        return;
+      }
       throw new NullPointerException("The BackpressureOverflow strategy must not be null");
     }
-    this.capacity = Long.valueOf(paramLong);
-    this.onOverflow = paramAction0;
-    this.overflowStrategy = paramStrategy;
+    throw new IllegalArgumentException("Buffer capacity must be > 0");
   }
   
   public static <T> OperatorOnBackpressureBuffer<T> instance()
@@ -58,7 +61,7 @@ public class OperatorOnBackpressureBuffer<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorOnBackpressureBuffer
  * JD-Core Version:    0.7.0.1
  */

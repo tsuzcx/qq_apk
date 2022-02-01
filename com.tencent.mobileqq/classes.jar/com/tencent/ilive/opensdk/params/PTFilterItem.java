@@ -59,12 +59,24 @@ public class PTFilterItem
   
   public String toString()
   {
-    return "PTFilterItemInfo{name='" + this.name + '\'' + ", filterEnumIndex=" + this.filterEnumIndex + ", id:" + this.resId + ",path:" + this.filterPath + ",selected:" + this.isSelected + '}';
+    StringBuilder localStringBuilder = new StringBuilder("PTFilterItemInfo{name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", filterEnumIndex=");
+    localStringBuilder.append(this.filterEnumIndex);
+    localStringBuilder.append(", id:");
+    localStringBuilder.append(this.resId);
+    localStringBuilder.append(",path:");
+    localStringBuilder.append(this.filterPath);
+    localStringBuilder.append(",selected:");
+    localStringBuilder.append(this.isSelected);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.opensdk.params.PTFilterItem
  * JD-Core Version:    0.7.0.1
  */

@@ -43,12 +43,12 @@ public class ScrollableViewObserver
   
   private boolean isIdle()
   {
-    return !this.mScrollableHelper.isScrolling();
+    return this.mScrollableHelper.isScrolling() ^ true;
   }
   
   private void remindRecyclerViewVersionOld(View paramView)
   {
-    paramView = paramView.getContext().getString(2131718503);
+    paramView = paramView.getContext().getString(2131718168);
     if (!this.mRecyclerViewTipsToasted)
     {
       this.mRecyclerViewTipsToasted = true;
@@ -59,8 +59,14 @@ public class ScrollableViewObserver
   
   public void onViewReused(ViewGroup paramViewGroup, View paramView, long paramLong)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("ScrollableViewObserver", "onViewReused: parent=" + paramViewGroup + ", view=" + paramView);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onViewReused: parent=");
+      localStringBuilder.append(paramViewGroup);
+      localStringBuilder.append(", view=");
+      localStringBuilder.append(paramView);
+      Log.i("ScrollableViewObserver", localStringBuilder.toString());
     }
     if (paramViewGroup == null)
     {
@@ -74,7 +80,7 @@ public class ScrollableViewObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.scroll.ScrollableViewObserver
  * JD-Core Version:    0.7.0.1
  */

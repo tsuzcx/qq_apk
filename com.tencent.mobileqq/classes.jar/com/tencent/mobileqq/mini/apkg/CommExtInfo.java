@@ -20,7 +20,13 @@ public class CommExtInfo
   
   public String toString()
   {
-    return "CommExtInfo{mapInfo='" + this.mapInfo + ", attachInfo='" + this.attachInfo + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CommExtInfo{mapInfo='");
+    localStringBuilder.append(this.mapInfo);
+    localStringBuilder.append(", attachInfo='");
+    localStringBuilder.append(this.attachInfo);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -31,7 +37,7 @@ public class CommExtInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.CommExtInfo
  * JD-Core Version:    0.7.0.1
  */

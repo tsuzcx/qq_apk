@@ -25,15 +25,16 @@ class BaseGuessTextStageView$4
           this.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
           this.this$0.b.setVisibility(0);
         }
-        this.this$0.a((String)((Pair)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(this.this$0.jdField_a_of_type_Int)).second);
+        Object localObject = this.this$0;
+        ((BaseGuessTextStageView)localObject).a((String)((Pair)((BaseGuessTextStageView)localObject).jdField_a_of_type_JavaUtilArrayList.get(this.this$0.jdField_a_of_type_Int)).second);
         if (this.this$0.jdField_a_of_type_Int < this.this$0.jdField_a_of_type_JavaUtilArrayList.size() - 1)
         {
-          Handler localHandler = ThreadManager.getUIHandlerV2();
+          localObject = ThreadManager.getUIHandlerV2();
           ArrayList localArrayList = this.this$0.jdField_a_of_type_JavaUtilArrayList;
           BaseGuessTextStageView localBaseGuessTextStageView = this.this$0;
           int i = localBaseGuessTextStageView.jdField_a_of_type_Int + 1;
           localBaseGuessTextStageView.jdField_a_of_type_Int = i;
-          localHandler.postDelayed(this, (((Integer)((Pair)localArrayList.get(i)).first).intValue() - ((Integer)((Pair)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(this.this$0.jdField_a_of_type_Int - 1)).first).intValue()) * 1000);
+          ((Handler)localObject).postDelayed(this, (((Integer)((Pair)localArrayList.get(i)).first).intValue() - ((Integer)((Pair)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(this.this$0.jdField_a_of_type_Int - 1)).first).intValue()) * 1000);
         }
       }
     }
@@ -41,7 +42,7 @@ class BaseGuessTextStageView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.stage.guesstext.BaseGuessTextStageView.4
  * JD-Core Version:    0.7.0.1
  */

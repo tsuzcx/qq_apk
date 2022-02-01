@@ -39,36 +39,34 @@ public final class NotificationCompat$CarExtender
   
   public NotificationCompat$CarExtender(Notification paramNotification)
   {
-    if (Build.VERSION.SDK_INT < 21) {}
-    for (;;)
-    {
+    if (Build.VERSION.SDK_INT < 21) {
       return;
-      if (NotificationCompat.getExtras(paramNotification) == null) {}
-      for (paramNotification = null; paramNotification != null; paramNotification = NotificationCompat.getExtras(paramNotification).getBundle("android.car.EXTENSIONS"))
-      {
-        this.mLargeIcon = ((Bitmap)paramNotification.getParcelable("large_icon"));
-        this.mColor = paramNotification.getInt("app_color", 0);
-        this.mUnreadConversation = getUnreadConversationFromBundle(paramNotification.getBundle("car_conversation"));
-        return;
-      }
+    }
+    if (NotificationCompat.getExtras(paramNotification) == null) {
+      paramNotification = null;
+    } else {
+      paramNotification = NotificationCompat.getExtras(paramNotification).getBundle("android.car.EXTENSIONS");
+    }
+    if (paramNotification != null)
+    {
+      this.mLargeIcon = ((Bitmap)paramNotification.getParcelable("large_icon"));
+      this.mColor = paramNotification.getInt("app_color", 0);
+      this.mUnreadConversation = getUnreadConversationFromBundle(paramNotification.getBundle("car_conversation"));
     }
   }
   
   @RequiresApi(21)
   private static Bundle getBundleForUnreadConversation(@NonNull NotificationCompat.CarExtender.UnreadConversation paramUnreadConversation)
   {
-    int i = 0;
     Bundle localBundle1 = new Bundle();
-    Parcelable[] arrayOfParcelable = null;
-    Object localObject = arrayOfParcelable;
-    if (paramUnreadConversation.getParticipants() != null)
-    {
-      localObject = arrayOfParcelable;
-      if (paramUnreadConversation.getParticipants().length > 1) {
-        localObject = paramUnreadConversation.getParticipants()[0];
-      }
+    Object localObject = paramUnreadConversation.getParticipants();
+    int i = 0;
+    if ((localObject != null) && (paramUnreadConversation.getParticipants().length > 1)) {
+      localObject = paramUnreadConversation.getParticipants()[0];
+    } else {
+      localObject = null;
     }
-    arrayOfParcelable = new Parcelable[paramUnreadConversation.getMessages().length];
+    Parcelable[] arrayOfParcelable = new Parcelable[paramUnreadConversation.getMessages().length];
     while (i < arrayOfParcelable.length)
     {
       Bundle localBundle2 = new Bundle();
@@ -92,70 +90,64 @@ public final class NotificationCompat$CarExtender
   @RequiresApi(21)
   private static NotificationCompat.CarExtender.UnreadConversation getUnreadConversationFromBundle(@Nullable Bundle paramBundle)
   {
-    int j = 0;
+    Object localObject1 = null;
+    CharSequence localCharSequence = null;
     if (paramBundle == null) {
       return null;
     }
-    Object localObject = paramBundle.getParcelableArray("messages");
+    Object localObject2 = paramBundle.getParcelableArray("messages");
     String[] arrayOfString1;
     int i;
-    if (localObject != null)
+    if (localObject2 != null)
     {
-      arrayOfString1 = new String[localObject.length];
+      arrayOfString1 = new String[localObject2.length];
       i = 0;
-      if (i < arrayOfString1.length) {
-        if (!(localObject[i] instanceof Bundle))
+      while (i < arrayOfString1.length)
+      {
+        if (!(localObject2[i] instanceof Bundle)) {}
+        do
         {
           i = 0;
-          label50:
-          if (i == 0) {
-            break label246;
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      PendingIntent localPendingIntent1 = (PendingIntent)paramBundle.getParcelable("on_read");
-      PendingIntent localPendingIntent2 = (PendingIntent)paramBundle.getParcelable("on_reply");
-      localObject = (android.app.RemoteInput)paramBundle.getParcelable("remote_input");
-      String[] arrayOfString2 = paramBundle.getStringArray("participants");
-      if ((arrayOfString2 == null) || (arrayOfString2.length != 1)) {
-        break;
-      }
-      String str;
-      CharSequence localCharSequence;
-      CharSequence[] arrayOfCharSequence;
-      boolean bool;
-      if (localObject != null)
-      {
-        str = ((android.app.RemoteInput)localObject).getResultKey();
-        localCharSequence = ((android.app.RemoteInput)localObject).getLabel();
-        arrayOfCharSequence = ((android.app.RemoteInput)localObject).getChoices();
-        bool = ((android.app.RemoteInput)localObject).getAllowFreeFormInput();
-        i = j;
-        if (Build.VERSION.SDK_INT >= 29) {
-          i = ((android.app.RemoteInput)localObject).getEditChoicesBeforeSending();
-        }
-      }
-      for (localObject = new RemoteInput(str, localCharSequence, arrayOfCharSequence, bool, i, ((android.app.RemoteInput)localObject).getExtras(), null);; localObject = null)
-      {
-        return new NotificationCompat.CarExtender.UnreadConversation(arrayOfString1, (RemoteInput)localObject, localPendingIntent2, localPendingIntent1, arrayOfString2, paramBundle.getLong("timestamp"));
-        arrayOfString1[i] = ((Bundle)localObject[i]).getString("text");
-        if (arrayOfString1[i] == null)
-        {
-          i = 0;
-          break label50;
-        }
+          break;
+          arrayOfString1[i] = ((Bundle)localObject2[i]).getString("text");
+        } while (arrayOfString1[i] == null);
         i += 1;
-        break;
       }
       i = 1;
-      break label50;
-      label246:
-      break;
+      if (i == 0) {
+        return null;
+      }
+    }
+    else
+    {
       arrayOfString1 = null;
     }
+    localObject2 = (PendingIntent)paramBundle.getParcelable("on_read");
+    PendingIntent localPendingIntent = (PendingIntent)paramBundle.getParcelable("on_reply");
+    android.app.RemoteInput localRemoteInput = (android.app.RemoteInput)paramBundle.getParcelable("remote_input");
+    String[] arrayOfString2 = paramBundle.getStringArray("participants");
+    if (arrayOfString2 != null)
+    {
+      if (arrayOfString2.length != 1) {
+        return null;
+      }
+      localObject1 = localCharSequence;
+      if (localRemoteInput != null)
+      {
+        localObject1 = localRemoteInput.getResultKey();
+        localCharSequence = localRemoteInput.getLabel();
+        CharSequence[] arrayOfCharSequence = localRemoteInput.getChoices();
+        boolean bool = localRemoteInput.getAllowFreeFormInput();
+        if (Build.VERSION.SDK_INT >= 29) {
+          i = localRemoteInput.getEditChoicesBeforeSending();
+        } else {
+          i = 0;
+        }
+        localObject1 = new RemoteInput((String)localObject1, localCharSequence, arrayOfCharSequence, bool, i, localRemoteInput.getExtras(), null);
+      }
+      localObject1 = new NotificationCompat.CarExtender.UnreadConversation(arrayOfString1, (RemoteInput)localObject1, localPendingIntent, (PendingIntent)localObject2, arrayOfString2, paramBundle.getLong("timestamp"));
+    }
+    return localObject1;
   }
   
   public NotificationCompat.Builder extend(NotificationCompat.Builder paramBuilder)
@@ -164,14 +156,17 @@ public final class NotificationCompat$CarExtender
       return paramBuilder;
     }
     Bundle localBundle = new Bundle();
-    if (this.mLargeIcon != null) {
-      localBundle.putParcelable("large_icon", this.mLargeIcon);
+    Object localObject = this.mLargeIcon;
+    if (localObject != null) {
+      localBundle.putParcelable("large_icon", (Parcelable)localObject);
     }
-    if (this.mColor != 0) {
-      localBundle.putInt("app_color", this.mColor);
+    int i = this.mColor;
+    if (i != 0) {
+      localBundle.putInt("app_color", i);
     }
-    if (this.mUnreadConversation != null) {
-      localBundle.putBundle("car_conversation", getBundleForUnreadConversation(this.mUnreadConversation));
+    localObject = this.mUnreadConversation;
+    if (localObject != null) {
+      localBundle.putBundle("car_conversation", getBundleForUnreadConversation((NotificationCompat.CarExtender.UnreadConversation)localObject));
     }
     paramBuilder.getExtras().putBundle("android.car.EXTENSIONS", localBundle);
     return paramBuilder;
@@ -188,6 +183,7 @@ public final class NotificationCompat$CarExtender
     return this.mLargeIcon;
   }
   
+  @Deprecated
   public NotificationCompat.CarExtender.UnreadConversation getUnreadConversation()
   {
     return this.mUnreadConversation;
@@ -205,6 +201,7 @@ public final class NotificationCompat$CarExtender
     return this;
   }
   
+  @Deprecated
   public CarExtender setUnreadConversation(NotificationCompat.CarExtender.UnreadConversation paramUnreadConversation)
   {
     this.mUnreadConversation = paramUnreadConversation;
@@ -213,7 +210,7 @@ public final class NotificationCompat$CarExtender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.NotificationCompat.CarExtender
  * JD-Core Version:    0.7.0.1
  */

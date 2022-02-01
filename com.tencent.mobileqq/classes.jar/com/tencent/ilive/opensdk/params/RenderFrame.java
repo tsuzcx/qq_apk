@@ -19,12 +19,21 @@ public class RenderFrame
   
   public String toString()
   {
-    return "RenderFrame{, width=" + this.width + ", height=" + this.height + ", rotate=" + this.rotate + ", flip=" + this.flip + '}';
+    StringBuilder localStringBuilder = new StringBuilder("RenderFrame{, width=");
+    localStringBuilder.append(this.width);
+    localStringBuilder.append(", height=");
+    localStringBuilder.append(this.height);
+    localStringBuilder.append(", rotate=");
+    localStringBuilder.append(this.rotate);
+    localStringBuilder.append(", flip=");
+    localStringBuilder.append(this.flip);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.opensdk.params.RenderFrame
  * JD-Core Version:    0.7.0.1
  */

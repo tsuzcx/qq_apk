@@ -17,21 +17,22 @@ class BaseListenTogetherPanel$7
   {
     try
     {
-      View localView = ((LayoutInflater)this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSystemService("layout_inflater")).inflate(2131561071, this.this$0.jdField_a_of_type_AndroidViewViewGroup, false);
+      View localView = ((LayoutInflater)this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSystemService("layout_inflater")).inflate(2131560935, this.this$0.jdField_a_of_type_AndroidViewViewGroup, false);
       localView.measure(0, 0);
       this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(localView);
       this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(-2);
       this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(-2);
       this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
       localView.setOnClickListener(new BaseListenTogetherPanel.7.1(this));
-      if (this.this$0.jdField_a_of_type_AndroidViewViewGroup != null) {}
-      for (int i = this.this$0.jdField_a_of_type_AndroidViewViewGroup.getWidth();; i = ViewUtils.a())
-      {
-        int j = localView.getMeasuredWidth();
-        int k = ViewUtils.a(52.0F);
-        this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.showAsDropDown(this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout, i - j - k, 0);
-        return;
+      int i;
+      if (this.this$0.jdField_a_of_type_AndroidViewViewGroup != null) {
+        i = this.this$0.jdField_a_of_type_AndroidViewViewGroup.getWidth();
+      } else {
+        i = ViewUtils.a();
       }
+      int j = localView.getMeasuredWidth();
+      int k = ViewUtils.a(52.0F);
+      this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.showAsDropDown(this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout, i - j - k, 0);
       return;
     }
     catch (Exception localException)
@@ -42,7 +43,7 @@ class BaseListenTogetherPanel$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ui.BaseListenTogetherPanel.7
  * JD-Core Version:    0.7.0.1
  */

@@ -22,17 +22,17 @@ public class RecommendBannerItemDecoration
       return;
     }
     paramRecyclerView = paramRecyclerView.getAdapter();
-    if ((paramRecyclerView != null) && (i == paramRecyclerView.getItemCount() - 1)) {}
-    for (paramRect.right = DisplayUtil.a(paramView.getContext(), 3.0F);; paramRect.right = 0)
-    {
-      paramRect.left = (-DisplayUtil.a(paramView.getContext(), 6.0F));
-      return;
+    if ((paramRecyclerView != null) && (i == paramRecyclerView.getItemCount() - 1)) {
+      paramRect.right = DisplayUtil.a(paramView.getContext(), 3.0F);
+    } else {
+      paramRect.right = 0;
     }
+    paramRect.left = (-DisplayUtil.a(paramView.getContext(), 6.0F));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemDecoration
  * JD-Core Version:    0.7.0.1
  */

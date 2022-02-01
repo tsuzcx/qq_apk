@@ -13,25 +13,49 @@ public class StatisticTroopAssist
   
   public static int a(Context paramContext, String paramString1, String paramString2)
   {
-    paramString1 = paramString1 + paramString2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(paramString2);
+    paramString1 = localStringBuilder.toString();
     return paramContext.getSharedPreferences("mobileQQ", 0).getInt(paramString1, 0);
   }
   
   public static void a(Context paramContext, String paramString)
   {
     paramContext = paramContext.getSharedPreferences("mobileQQ", 0).edit();
-    paramContext.putInt(paramString + "Click_grp_asst", 0);
-    paramContext.putInt(paramString + "grp_setting_asst", 0);
-    paramContext.putInt(paramString + "grp_setting_msg", 0);
-    paramContext.putInt(paramString + "grp_msg_equ", 0);
-    paramContext.putInt(paramString + "grp_msg_dec", 0);
-    paramContext.putInt(paramString + "grp_msg_inc", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("Click_grp_asst");
+    paramContext.putInt(localStringBuilder.toString(), 0);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("grp_setting_asst");
+    paramContext.putInt(localStringBuilder.toString(), 0);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("grp_setting_msg");
+    paramContext.putInt(localStringBuilder.toString(), 0);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("grp_msg_equ");
+    paramContext.putInt(localStringBuilder.toString(), 0);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("grp_msg_dec");
+    paramContext.putInt(localStringBuilder.toString(), 0);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("grp_msg_inc");
+    paramContext.putInt(localStringBuilder.toString(), 0);
     paramContext.commit();
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2)
   {
-    paramString1 = paramString1 + paramString2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(paramString2);
+    paramString1 = localStringBuilder.toString();
     paramContext = paramContext.getSharedPreferences("mobileQQ", 0);
     int i = paramContext.getInt(paramString1, 0);
     paramContext.edit().putInt(paramString1, i + 1).commit();
@@ -84,7 +108,7 @@ public class StatisticTroopAssist
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.StatisticTroopAssist
  * JD-Core Version:    0.7.0.1
  */

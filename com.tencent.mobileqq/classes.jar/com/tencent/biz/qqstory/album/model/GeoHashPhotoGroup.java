@@ -19,33 +19,38 @@ public class GeoHashPhotoGroup
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    if (paramObject == null) {
       return false;
-      if (this == paramObject) {
-        return true;
-      }
-    } while (!(paramObject instanceof GeoHashPhotoGroup));
-    return TextUtils.equals(this.jdField_a_of_type_JavaLangString, ((GeoHashPhotoGroup)paramObject).jdField_a_of_type_JavaLangString);
+    }
+    if (this == paramObject) {
+      return true;
+    }
+    if ((paramObject instanceof GeoHashPhotoGroup)) {
+      return TextUtils.equals(this.jdField_a_of_type_JavaLangString, ((GeoHashPhotoGroup)paramObject).jdField_a_of_type_JavaLangString);
+    }
+    return false;
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder1 = new StringBuilder("GeoHashPhotoGroup=[");
-    localStringBuilder1.append("geohashString:").append(this.jdField_a_of_type_JavaLangString);
-    StringBuilder localStringBuilder2 = localStringBuilder1.append("picList size:");
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilList.size())
-    {
-      localStringBuilder2.append(i);
-      return localStringBuilder1.toString();
+    StringBuilder localStringBuilder = new StringBuilder("GeoHashPhotoGroup=[");
+    localStringBuilder.append("geohashString:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("picList size:");
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    int i;
+    if (localList == null) {
+      i = 0;
+    } else {
+      i = localList.size();
     }
+    localStringBuilder.append(i);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.model.GeoHashPhotoGroup
  * JD-Core Version:    0.7.0.1
  */

@@ -21,7 +21,7 @@ public class WTDialogModel
   
   private void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_MqqAppBaseActivity, 230).setTitle(null).setMessage(this.jdField_a_of_type_JavaLangString).setNegativeButton(2131695980, new WTDialogModel.1(this));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_MqqAppBaseActivity, 230).setTitle(null).setMessage(this.jdField_a_of_type_JavaLangString).setNegativeButton(2131695995, new WTDialogModel.1(this));
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
   }
   
@@ -30,12 +30,15 @@ public class WTDialogModel
     if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null))
     {
       e();
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
-        a("WTDialogModel.onResume", this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog);
+      QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+      if (localQQCustomDialog != null) {
+        a("WTDialogModel.onResume", localQQCustomDialog);
       }
-      return;
     }
-    this.jdField_a_of_type_MqqAppBaseActivity.finish();
+    else
+    {
+      this.jdField_a_of_type_MqqAppBaseActivity.finish();
+    }
   }
   
   protected void a(Bundle paramBundle)
@@ -54,14 +57,15 @@ public class WTDialogModel
   
   protected void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    if (localQQCustomDialog != null) {
+      localQQCustomDialog.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.smallscreen.WTDialogModel
  * JD-Core Version:    0.7.0.1
  */

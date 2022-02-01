@@ -13,25 +13,39 @@ import java.lang.reflect.Method;
 
 public class NativeGifFactory
 {
-  static final String TAG = NativeGifFactory.class.getSimpleName();
+  static final String TAG = "NativeGifFactory";
   static boolean isX86 = false;
   static boolean isYunOS = false;
   
   static
   {
-    String str = getKernelVersion();
-    if ((TextUtils.isEmpty(str)) || (str.contains("x86")) || (str.contains("X86"))) {
+    Object localObject = getKernelVersion();
+    if ((TextUtils.isEmpty((CharSequence)localObject)) || (((String)localObject).contains("x86")) || (((String)localObject).contains("X86"))) {
       isX86 = true;
     }
-    if (URLDrawable.depImp.mLog.isColorLevel()) {
-      URLDrawable.depImp.mLog.d(TAG, 2, "isX86:" + isX86);
+    String str;
+    StringBuilder localStringBuilder;
+    if (URLDrawable.depImp.mLog.isColorLevel())
+    {
+      localObject = URLDrawable.depImp.mLog;
+      str = TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isX86:");
+      localStringBuilder.append(isX86);
+      ((ILog)localObject).d(str, 2, localStringBuilder.toString());
     }
-    str = getSystemProperties(URLDrawable.mApplicationContext, "ro.yunos.version");
-    if ((!TextUtils.isEmpty(str)) && (str.length() > 1)) {
+    localObject = getSystemProperties(URLDrawable.mApplicationContext, "ro.yunos.version");
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).length() > 1)) {
       isYunOS = true;
     }
-    if (URLDrawable.depImp.mLog.isColorLevel()) {
-      URLDrawable.depImp.mLog.d(TAG, 2, "isYunOS:" + isYunOS);
+    if (URLDrawable.depImp.mLog.isColorLevel())
+    {
+      localObject = URLDrawable.depImp.mLog;
+      str = TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isYunOS:");
+      localStringBuilder.append(isYunOS);
+      ((ILog)localObject).d(str, 2, localStringBuilder.toString());
     }
   }
   
@@ -39,271 +53,274 @@ public class NativeGifFactory
   public static String getKernelVersion()
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aconst_null
-    //   4: astore_2
-    //   5: aconst_null
-    //   6: astore 5
-    //   8: ldc 104
-    //   10: astore 6
-    //   12: new 106	java/io/ByteArrayOutputStream
-    //   15: dup
-    //   16: invokespecial 107	java/io/ByteArrayOutputStream:<init>	()V
-    //   19: astore_1
-    //   20: aload_1
-    //   21: astore_3
-    //   22: aload_2
-    //   23: astore 4
-    //   25: new 109	java/io/FileInputStream
-    //   28: dup
-    //   29: ldc 111
-    //   31: invokespecial 114	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   34: astore_2
-    //   35: sipush 4096
-    //   38: newarray byte
-    //   40: astore_3
+    //   0: ldc 102
+    //   2: astore 7
+    //   4: aconst_null
+    //   5: astore_3
+    //   6: new 104	java/io/ByteArrayOutputStream
+    //   9: dup
+    //   10: invokespecial 105	java/io/ByteArrayOutputStream:<init>	()V
+    //   13: astore_1
+    //   14: new 107	java/io/FileInputStream
+    //   17: dup
+    //   18: ldc 109
+    //   20: invokespecial 112	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   23: astore_2
+    //   24: aload_1
+    //   25: astore_3
+    //   26: aload_2
+    //   27: astore 4
+    //   29: sipush 4096
+    //   32: newarray byte
+    //   34: astore 5
+    //   36: aload_1
+    //   37: astore_3
+    //   38: aload_2
+    //   39: astore 4
     //   41: aload_2
-    //   42: aload_3
-    //   43: iconst_0
-    //   44: sipush 4096
-    //   47: invokevirtual 118	java/io/FileInputStream:read	([BII)I
-    //   50: istore_0
-    //   51: iload_0
-    //   52: ifle +89 -> 141
-    //   55: aload_1
-    //   56: aload_3
-    //   57: iconst_0
-    //   58: iload_0
-    //   59: invokevirtual 122	java/io/ByteArrayOutputStream:write	([BII)V
-    //   62: goto -21 -> 41
-    //   65: astore_3
-    //   66: aload_2
-    //   67: astore 5
-    //   69: aload_3
-    //   70: astore_2
-    //   71: aload_1
-    //   72: astore_3
-    //   73: aload 5
+    //   42: aload 5
+    //   44: iconst_0
+    //   45: sipush 4096
+    //   48: invokevirtual 116	java/io/FileInputStream:read	([BII)I
+    //   51: istore_0
+    //   52: iload_0
+    //   53: ifle +19 -> 72
+    //   56: aload_1
+    //   57: astore_3
+    //   58: aload_2
+    //   59: astore 4
+    //   61: aload_1
+    //   62: aload 5
+    //   64: iconst_0
+    //   65: iload_0
+    //   66: invokevirtual 120	java/io/ByteArrayOutputStream:write	([BII)V
+    //   69: goto -33 -> 36
+    //   72: aload_1
+    //   73: astore_3
+    //   74: aload_2
     //   75: astore 4
-    //   77: getstatic 47	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
-    //   80: getfield 53	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
-    //   83: invokeinterface 59 1 0
-    //   88: ifeq +27 -> 115
-    //   91: aload_1
-    //   92: astore_3
+    //   77: aload_1
+    //   78: ldc 122
+    //   80: invokevirtual 125	java/io/ByteArrayOutputStream:toString	(Ljava/lang/String;)Ljava/lang/String;
+    //   83: astore 5
+    //   85: aload_1
+    //   86: invokevirtual 128	java/io/ByteArrayOutputStream:close	()V
+    //   89: aload_2
+    //   90: invokevirtual 129	java/io/FileInputStream:close	()V
     //   93: aload 5
-    //   95: astore 4
-    //   97: getstatic 47	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
-    //   100: getfield 53	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
-    //   103: getstatic 19	com/tencent/image/NativeGifFactory:TAG	Ljava/lang/String;
-    //   106: iconst_2
-    //   107: ldc 124
-    //   109: aload_2
-    //   110: invokeinterface 128 5 0
-    //   115: aload_1
-    //   116: ifnull +7 -> 123
-    //   119: aload_1
-    //   120: invokevirtual 131	java/io/ByteArrayOutputStream:close	()V
-    //   123: aload 6
-    //   125: astore_1
-    //   126: aload 5
-    //   128: ifnull +11 -> 139
-    //   131: aload 5
-    //   133: invokevirtual 132	java/io/FileInputStream:close	()V
-    //   136: aload 6
-    //   138: astore_1
-    //   139: aload_1
-    //   140: areturn
-    //   141: aload_1
-    //   142: ldc 134
-    //   144: invokevirtual 137	java/io/ByteArrayOutputStream:toString	(Ljava/lang/String;)Ljava/lang/String;
-    //   147: astore_3
-    //   148: aload_1
-    //   149: ifnull +7 -> 156
-    //   152: aload_1
-    //   153: invokevirtual 131	java/io/ByteArrayOutputStream:close	()V
-    //   156: aload_3
-    //   157: astore_1
-    //   158: aload_2
-    //   159: ifnull -20 -> 139
-    //   162: aload_2
-    //   163: invokevirtual 132	java/io/FileInputStream:close	()V
-    //   166: aload_3
-    //   167: areturn
-    //   168: astore_2
-    //   169: aload_3
-    //   170: astore_1
-    //   171: getstatic 47	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
-    //   174: getfield 53	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
-    //   177: invokeinterface 59 1 0
-    //   182: ifeq -43 -> 139
-    //   185: getstatic 47	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
-    //   188: getfield 53	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
-    //   191: getstatic 19	com/tencent/image/NativeGifFactory:TAG	Ljava/lang/String;
-    //   194: iconst_2
-    //   195: ldc 124
-    //   197: aload_2
-    //   198: invokeinterface 128 5 0
-    //   203: aload_3
+    //   95: areturn
+    //   96: astore_1
+    //   97: aload 5
+    //   99: astore_2
+    //   100: getstatic 41	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   103: getfield 47	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   106: invokeinterface 53 1 0
+    //   111: ifeq +221 -> 332
+    //   114: getstatic 41	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   117: getfield 47	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   120: getstatic 55	com/tencent/image/NativeGifFactory:TAG	Ljava/lang/String;
+    //   123: iconst_2
+    //   124: ldc 131
+    //   126: aload_1
+    //   127: invokeinterface 135 5 0
+    //   132: aload 5
+    //   134: areturn
+    //   135: aload_2
+    //   136: astore_3
+    //   137: goto +43 -> 180
+    //   140: astore 5
+    //   142: aload_1
+    //   143: astore 6
+    //   145: aload_2
+    //   146: astore_1
+    //   147: goto +89 -> 236
+    //   150: astore_2
+    //   151: aconst_null
+    //   152: astore 4
+    //   154: goto +183 -> 337
+    //   157: astore 5
+    //   159: aconst_null
+    //   160: astore_2
+    //   161: aload_1
+    //   162: astore 6
+    //   164: aload_2
+    //   165: astore_1
+    //   166: goto +70 -> 236
+    //   169: astore_2
+    //   170: aconst_null
+    //   171: astore_1
+    //   172: aload_1
+    //   173: astore 4
+    //   175: goto +162 -> 337
+    //   178: aconst_null
+    //   179: astore_1
+    //   180: aload_1
+    //   181: ifnull +10 -> 191
+    //   184: aload_1
+    //   185: invokevirtual 128	java/io/ByteArrayOutputStream:close	()V
+    //   188: goto +3 -> 191
+    //   191: aload 7
+    //   193: astore_2
+    //   194: aload_3
+    //   195: ifnull +137 -> 332
+    //   198: aload_3
+    //   199: invokevirtual 129	java/io/FileInputStream:close	()V
+    //   202: ldc 102
     //   204: areturn
-    //   205: astore_2
-    //   206: aload 6
-    //   208: astore_1
-    //   209: getstatic 47	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
-    //   212: getfield 53	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
-    //   215: invokeinterface 59 1 0
-    //   220: ifeq -81 -> 139
-    //   223: getstatic 47	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
-    //   226: getfield 53	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
-    //   229: getstatic 19	com/tencent/image/NativeGifFactory:TAG	Ljava/lang/String;
-    //   232: iconst_2
-    //   233: ldc 124
-    //   235: aload_2
-    //   236: invokeinterface 128 5 0
-    //   241: ldc 104
-    //   243: areturn
-    //   244: astore_1
-    //   245: aconst_null
-    //   246: astore_1
-    //   247: aconst_null
-    //   248: astore_2
-    //   249: ldc 104
-    //   251: astore_3
-    //   252: aload_1
-    //   253: ifnull +7 -> 260
-    //   256: aload_1
-    //   257: invokevirtual 131	java/io/ByteArrayOutputStream:close	()V
-    //   260: aload_3
-    //   261: astore_1
-    //   262: aload_2
-    //   263: ifnull -124 -> 139
-    //   266: aload_2
-    //   267: invokevirtual 132	java/io/FileInputStream:close	()V
-    //   270: ldc 104
-    //   272: areturn
-    //   273: astore_2
-    //   274: aload_3
-    //   275: astore_1
-    //   276: getstatic 47	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
-    //   279: getfield 53	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
-    //   282: invokeinterface 59 1 0
-    //   287: ifeq -148 -> 139
-    //   290: getstatic 47	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
-    //   293: getfield 53	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
-    //   296: getstatic 19	com/tencent/image/NativeGifFactory:TAG	Ljava/lang/String;
-    //   299: iconst_2
-    //   300: ldc 124
-    //   302: aload_2
-    //   303: invokeinterface 128 5 0
-    //   308: ldc 104
-    //   310: areturn
-    //   311: astore_2
-    //   312: aconst_null
-    //   313: astore_1
-    //   314: aload_1
-    //   315: ifnull +7 -> 322
-    //   318: aload_1
-    //   319: invokevirtual 131	java/io/ByteArrayOutputStream:close	()V
-    //   322: aload 4
-    //   324: ifnull +8 -> 332
-    //   327: aload 4
-    //   329: invokevirtual 132	java/io/FileInputStream:close	()V
+    //   205: aload 7
+    //   207: astore_2
+    //   208: getstatic 41	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   211: getfield 47	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   214: invokeinterface 53 1 0
+    //   219: ifeq +113 -> 332
+    //   222: aload 7
+    //   224: astore 5
+    //   226: goto -112 -> 114
+    //   229: astore 5
+    //   231: aconst_null
+    //   232: astore_1
+    //   233: aload_1
+    //   234: astore 6
+    //   236: aload 6
+    //   238: astore_3
+    //   239: aload_1
+    //   240: astore 4
+    //   242: getstatic 41	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   245: getfield 47	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   248: invokeinterface 53 1 0
+    //   253: ifeq +28 -> 281
+    //   256: aload 6
+    //   258: astore_3
+    //   259: aload_1
+    //   260: astore 4
+    //   262: getstatic 41	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   265: getfield 47	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   268: getstatic 55	com/tencent/image/NativeGifFactory:TAG	Ljava/lang/String;
+    //   271: iconst_2
+    //   272: ldc 131
+    //   274: aload 5
+    //   276: invokeinterface 135 5 0
+    //   281: aload 6
+    //   283: ifnull +11 -> 294
+    //   286: aload 6
+    //   288: invokevirtual 128	java/io/ByteArrayOutputStream:close	()V
+    //   291: goto +3 -> 294
+    //   294: aload 7
+    //   296: astore_2
+    //   297: aload_1
+    //   298: ifnull +34 -> 332
+    //   301: aload_1
+    //   302: invokevirtual 129	java/io/FileInputStream:close	()V
+    //   305: ldc 102
+    //   307: areturn
+    //   308: aload 7
+    //   310: astore_2
+    //   311: getstatic 41	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   314: getfield 47	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   317: invokeinterface 53 1 0
+    //   322: ifeq +10 -> 332
+    //   325: aload 7
+    //   327: astore 5
+    //   329: goto -215 -> 114
     //   332: aload_2
-    //   333: athrow
-    //   334: astore_1
-    //   335: getstatic 47	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
-    //   338: getfield 53	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
-    //   341: invokeinterface 59 1 0
-    //   346: ifeq -14 -> 332
-    //   349: getstatic 47	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
-    //   352: getfield 53	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
-    //   355: getstatic 19	com/tencent/image/NativeGifFactory:TAG	Ljava/lang/String;
-    //   358: iconst_2
-    //   359: ldc 124
-    //   361: aload_1
-    //   362: invokeinterface 128 5 0
-    //   367: goto -35 -> 332
-    //   370: astore_2
-    //   371: aload_3
-    //   372: astore_1
-    //   373: goto -59 -> 314
-    //   376: astore_3
-    //   377: aload_2
-    //   378: astore 4
-    //   380: aload_3
-    //   381: astore_2
-    //   382: goto -68 -> 314
-    //   385: astore_2
-    //   386: aconst_null
-    //   387: astore_2
-    //   388: goto -139 -> 249
-    //   391: astore_3
-    //   392: goto -143 -> 249
-    //   395: astore_2
-    //   396: aconst_null
-    //   397: astore_1
-    //   398: goto -327 -> 71
-    //   401: astore_2
-    //   402: goto -331 -> 71
+    //   333: areturn
+    //   334: astore_2
+    //   335: aload_3
+    //   336: astore_1
+    //   337: aload_1
+    //   338: ifnull +10 -> 348
+    //   341: aload_1
+    //   342: invokevirtual 128	java/io/ByteArrayOutputStream:close	()V
+    //   345: goto +3 -> 348
+    //   348: aload 4
+    //   350: ifnull +43 -> 393
+    //   353: aload 4
+    //   355: invokevirtual 129	java/io/FileInputStream:close	()V
+    //   358: goto +35 -> 393
+    //   361: getstatic 41	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   364: getfield 47	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   367: invokeinterface 53 1 0
+    //   372: ifeq +21 -> 393
+    //   375: getstatic 41	com/tencent/image/URLDrawable:depImp	Lcom/tencent/image/api/URLDrawableDepWrap;
+    //   378: getfield 47	com/tencent/image/api/URLDrawableDepWrap:mLog	Lcom/tencent/image/api/ILog;
+    //   381: getstatic 55	com/tencent/image/NativeGifFactory:TAG	Ljava/lang/String;
+    //   384: iconst_2
+    //   385: ldc 131
+    //   387: aload_1
+    //   388: invokeinterface 135 5 0
+    //   393: goto +5 -> 398
+    //   396: aload_2
+    //   397: athrow
+    //   398: goto -2 -> 396
+    //   401: astore_1
+    //   402: goto -224 -> 178
+    //   405: astore_2
+    //   406: goto -226 -> 180
+    //   409: astore_3
+    //   410: goto -275 -> 135
+    //   413: astore_1
+    //   414: goto -209 -> 205
+    //   417: astore_1
+    //   418: goto -110 -> 308
+    //   421: astore_1
+    //   422: goto -61 -> 361
     // Local variable table:
     //   start	length	slot	name	signature
-    //   50	9	0	i	int
-    //   19	190	1	localObject1	Object
-    //   244	1	1	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   246	73	1	localObject2	Object
-    //   334	28	1	localIOException1	IOException
-    //   372	26	1	localObject3	Object
-    //   4	159	2	localObject4	Object
-    //   168	30	2	localIOException2	IOException
-    //   205	31	2	localIOException3	IOException
-    //   248	19	2	localObject5	Object
-    //   273	30	2	localIOException4	IOException
-    //   311	22	2	localObject6	Object
-    //   370	8	2	localObject7	Object
-    //   381	1	2	localObject8	Object
-    //   385	1	2	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   387	1	2	localObject9	Object
-    //   395	1	2	localIOException5	IOException
-    //   401	1	2	localIOException6	IOException
-    //   21	36	3	localObject10	Object
-    //   65	5	3	localIOException7	IOException
-    //   72	300	3	localObject11	Object
-    //   376	5	3	localObject12	Object
-    //   391	1	3	localOutOfMemoryError3	java.lang.OutOfMemoryError
-    //   1	378	4	localObject13	Object
-    //   6	126	5	localObject14	Object
-    //   10	197	6	str	String
+    //   51	15	0	i	int
+    //   13	73	1	localByteArrayOutputStream	java.io.ByteArrayOutputStream
+    //   96	47	1	localIOException1	IOException
+    //   146	242	1	localObject1	Object
+    //   401	1	1	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   413	1	1	localIOException2	IOException
+    //   417	1	1	localIOException3	IOException
+    //   421	1	1	localIOException4	IOException
+    //   23	123	2	localObject2	Object
+    //   150	1	2	localObject3	Object
+    //   160	5	2	localObject4	Object
+    //   169	1	2	localObject5	Object
+    //   193	140	2	str1	String
+    //   334	63	2	localObject6	Object
+    //   405	1	2	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   5	331	3	localObject7	Object
+    //   409	1	3	localOutOfMemoryError3	java.lang.OutOfMemoryError
+    //   27	327	4	localObject8	Object
+    //   34	99	5	localObject9	Object
+    //   140	1	5	localIOException5	IOException
+    //   157	1	5	localIOException6	IOException
+    //   224	1	5	str2	String
+    //   229	46	5	localIOException7	IOException
+    //   327	1	5	str3	String
+    //   143	144	6	localObject10	Object
+    //   2	324	7	str4	String
     // Exception table:
     //   from	to	target	type
-    //   35	41	65	java/io/IOException
-    //   41	51	65	java/io/IOException
-    //   55	62	65	java/io/IOException
-    //   141	148	65	java/io/IOException
-    //   152	156	168	java/io/IOException
-    //   162	166	168	java/io/IOException
-    //   119	123	205	java/io/IOException
-    //   131	136	205	java/io/IOException
-    //   12	20	244	java/lang/OutOfMemoryError
-    //   256	260	273	java/io/IOException
-    //   266	270	273	java/io/IOException
-    //   12	20	311	finally
-    //   318	322	334	java/io/IOException
-    //   327	332	334	java/io/IOException
-    //   25	35	370	finally
-    //   77	91	370	finally
-    //   97	115	370	finally
-    //   35	41	376	finally
-    //   41	51	376	finally
-    //   55	62	376	finally
-    //   141	148	376	finally
-    //   25	35	385	java/lang/OutOfMemoryError
-    //   35	41	391	java/lang/OutOfMemoryError
-    //   41	51	391	java/lang/OutOfMemoryError
-    //   55	62	391	java/lang/OutOfMemoryError
-    //   141	148	391	java/lang/OutOfMemoryError
-    //   12	20	395	java/io/IOException
-    //   25	35	401	java/io/IOException
+    //   85	93	96	java/io/IOException
+    //   29	36	140	java/io/IOException
+    //   41	52	140	java/io/IOException
+    //   61	69	140	java/io/IOException
+    //   77	85	140	java/io/IOException
+    //   14	24	150	finally
+    //   14	24	157	java/io/IOException
+    //   6	14	169	finally
+    //   6	14	229	java/io/IOException
+    //   29	36	334	finally
+    //   41	52	334	finally
+    //   61	69	334	finally
+    //   77	85	334	finally
+    //   242	256	334	finally
+    //   262	281	334	finally
+    //   6	14	401	java/lang/OutOfMemoryError
+    //   14	24	405	java/lang/OutOfMemoryError
+    //   29	36	409	java/lang/OutOfMemoryError
+    //   41	52	409	java/lang/OutOfMemoryError
+    //   61	69	409	java/lang/OutOfMemoryError
+    //   77	85	409	java/lang/OutOfMemoryError
+    //   184	188	413	java/io/IOException
+    //   198	202	413	java/io/IOException
+    //   286	291	417	java/io/IOException
+    //   301	305	417	java/io/IOException
+    //   341	345	421	java/io/IOException
+    //   353	358	421	java/io/IOException
   }
   
   public static AbstractGifImage getNativeGifObject(File paramFile, boolean paramBoolean)
@@ -311,40 +328,48 @@ public class NativeGifFactory
     if (URLDrawable.depImp.mLog.isColorLevel()) {
       URLDrawable.depImp.mLog.d(TAG, 2, "getNativeGifObject(File file, boolean cacheFirstFrame)");
     }
-    do
+    try
     {
-      try
+      if (isUseNewGif())
       {
-        if (isUseNewGif())
+        Object localObject1 = new NativeGifIndex8(paramFile, paramBoolean);
+        Object localObject2 = localObject1;
+        try
         {
-          localNativeGifIndex8 = new NativeGifIndex8(paramFile, paramBoolean);
-          localObject = localNativeGifIndex8;
+          if (((NativeGifIndex8)localObject1).mFrameNumber != -1001) {
+            return ???;
+          }
+          paramFile = new NativeGifImage(paramFile, paramBoolean);
+          return paramFile;
         }
-      }
-      catch (IOException localIOException1)
-      {
-        paramFile = null;
-      }
-      try
-      {
-        if (((NativeGifIndex8)localNativeGifIndex8).mFrameNumber == -1001) {
-          localObject = new NativeGifImage(paramFile, paramBoolean);
-        }
-        return localObject;
-      }
-      catch (IOException localIOException2)
-      {
-        for (;;)
+        catch (IOException localIOException2)
         {
-          paramFile = localNativeGifIndex8;
+          paramFile = (File)localObject1;
+          localObject1 = localIOException2;
         }
       }
-      paramFile = new NativeGifImage(paramFile, paramBoolean);
-      return paramFile;
-      Object localObject = paramFile;
-    } while (!URLDrawable.depImp.mLog.isColorLevel());
-    URLDrawable.depImp.mLog.e(TAG, 2, "getNativeGifObject exception. msg:" + localIOException1.getMessage());
-    return paramFile;
+      else
+      {
+        paramFile = new NativeGifImage(paramFile, paramBoolean);
+        return paramFile;
+      }
+    }
+    catch (IOException localIOException1)
+    {
+      paramFile = null;
+      Object localObject3 = paramFile;
+      if (URLDrawable.depImp.mLog.isColorLevel())
+      {
+        localObject3 = URLDrawable.depImp.mLog;
+        String str = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getNativeGifObject exception. msg:");
+        localStringBuilder.append(localIOException1.getMessage());
+        ((ILog)localObject3).e(str, 2, localStringBuilder.toString());
+        localObject3 = paramFile;
+      }
+      return localObject3;
+    }
   }
   
   public static AbstractGifImage getNativeGifObject(File paramFile, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, float paramFloat)
@@ -352,43 +377,47 @@ public class NativeGifFactory
     if (URLDrawable.depImp.mLog.isColorLevel()) {
       URLDrawable.depImp.mLog.d(TAG, 2, "getNativeGifObject(File file, boolean cacheFirstFrame, boolean isEmosmFile, int maxWidth, int maxHeight, float roundCorner)");
     }
+    Object localObject1 = null;
     if (paramFloat == 0.0F) {}
-    do
+    try
     {
-      try
+      if (isUseNewGif())
       {
-        if (isUseNewGif())
+        localObject2 = new NativeGifIndex8(paramFile, paramBoolean1, paramBoolean2, paramInt1, paramInt2, paramFloat);
+        try
         {
-          localNativeGifIndex8 = new NativeGifIndex8(paramFile, paramBoolean1, paramBoolean2, paramInt1, paramInt2, paramFloat);
-          localObject1 = localNativeGifIndex8;
+          if (((NativeGifIndex8)localObject2).mFrameNumber == -1001)
+          {
+            paramFile = new NativeGifImage(paramFile, paramBoolean1, paramBoolean2, paramInt1, paramInt2, paramFloat);
+            return paramFile;
+          }
+          return localObject2;
         }
-      }
-      catch (IOException localIOException2)
-      {
-        NativeGifIndex8 localNativeGifIndex8;
-        paramFile = null;
-      }
-      try
-      {
-        if (((NativeGifIndex8)localNativeGifIndex8).mFrameNumber == -1001) {
-          localObject1 = new NativeGifImage(paramFile, paramBoolean1, paramBoolean2, paramInt1, paramInt2, paramFloat);
-        }
-        return localObject1;
-      }
-      catch (IOException localIOException1)
-      {
-        for (;;)
+        catch (IOException paramFile)
         {
-          paramFile = localIOException2;
-          Object localObject2 = localIOException1;
+          localObject1 = localObject2;
         }
       }
-      paramFile = new NativeGifImage(paramFile, paramBoolean1, paramBoolean2, paramInt1, paramInt2, paramFloat);
-      return paramFile;
-      Object localObject1 = paramFile;
-    } while (!URLDrawable.depImp.mLog.isColorLevel());
-    URLDrawable.depImp.mLog.e(TAG, 2, "getNativeGifObject exception. msg:" + localIOException2.getMessage());
-    return paramFile;
+      else
+      {
+        paramFile = new NativeGifImage(paramFile, paramBoolean1, paramBoolean2, paramInt1, paramInt2, paramFloat);
+        return paramFile;
+      }
+    }
+    catch (IOException paramFile)
+    {
+      Object localObject2;
+      if (URLDrawable.depImp.mLog.isColorLevel())
+      {
+        localObject2 = URLDrawable.depImp.mLog;
+        String str = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getNativeGifObject exception. msg:");
+        localStringBuilder.append(paramFile.getMessage());
+        ((ILog)localObject2).e(str, 2, localStringBuilder.toString());
+      }
+    }
+    return localObject1;
   }
   
   public static String getSystemProperties(Context paramContext, String paramString)
@@ -399,87 +428,85 @@ public class NativeGifFactory
       paramContext = (String)paramContext.getMethod("get", new Class[] { String.class }).invoke(paramContext, new Object[] { new String(paramString) });
       return paramContext;
     }
-    catch (IllegalArgumentException paramContext)
-    {
-      return "";
-    }
-    catch (Exception paramContext) {}
+    catch (IllegalArgumentException|Exception paramContext) {}
     return "";
   }
   
   public static boolean isUseNewGif()
   {
-    boolean bool3 = false;
-    boolean bool1 = false;
     Object localObject = Build.MANUFACTURER;
     String str = Build.MODEL;
+    int i = Build.VERSION.SDK_INT;
+    boolean bool3 = false;
+    boolean bool1 = false;
     boolean bool2;
-    if ((Build.VERSION.SDK_INT == 10) && (!TextUtils.isEmpty((CharSequence)localObject)))
+    if ((i == 10) && (!TextUtils.isEmpty((CharSequence)localObject)))
     {
-      bool2 = bool1;
+      bool2 = bool3;
       if (((String)localObject).contains("samsung")) {}
     }
     else if (!TextUtils.isEmpty(str))
     {
-      bool2 = bool1;
+      bool2 = bool3;
       if (!str.contains("m1"))
       {
-        bool2 = bool1;
+        bool2 = bool3;
         if (!str.contains("meizu_m1"))
         {
-          bool2 = bool1;
+          bool2 = bool3;
           if (str.contains("N1")) {}
         }
       }
     }
     else
     {
-      bool2 = bool1;
+      bool2 = bool3;
       if (!str.contains("HYF9300"))
       {
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break label140;
-        }
-        bool2 = bool1;
-        if (!((String)localObject).contains("alps"))
+        if (!TextUtils.isEmpty((CharSequence)localObject))
         {
+          bool2 = bool3;
+          if (((String)localObject).contains("alps")) {
+            return bool2;
+          }
+          bool2 = bool3;
+          if (((String)localObject).contains("Nokia")) {
+            return bool2;
+          }
+          if (((String)localObject).toLowerCase().contains("asus")) {
+            return false;
+          }
+        }
+        bool2 = bool3;
+        if (!isX86)
+        {
+          if (isYunOS) {
+            return false;
+          }
+          localObject = URLDrawable.mApplicationContext.getSharedPreferences("early_qq.android.native.gif", 4);
+          if (localObject != null) {
+            bool1 = ((SharedPreferences)localObject).getBoolean("use_new_gif_so", false);
+          }
           bool2 = bool1;
-          if (!((String)localObject).contains("Nokia"))
+          if (URLDrawable.depImp.mLog.isColorLevel())
           {
-            if (!((String)localObject).toLowerCase().contains("asus")) {
-              break label140;
-            }
+            localObject = URLDrawable.depImp.mLog;
+            str = TAG;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("use_new_gif_so:");
+            localStringBuilder.append(bool1);
+            ((ILog)localObject).d(str, 2, localStringBuilder.toString());
             bool2 = bool1;
           }
         }
       }
     }
-    label140:
-    do
-    {
-      do
-      {
-        do
-        {
-          return bool2;
-          bool2 = bool1;
-        } while (isX86);
-        bool2 = bool1;
-      } while (isYunOS);
-      localObject = URLDrawable.mApplicationContext.getSharedPreferences("early_qq.android.native.gif", 4);
-      bool1 = bool3;
-      if (localObject != null) {
-        bool1 = ((SharedPreferences)localObject).getBoolean("use_new_gif_so", false);
-      }
-      bool2 = bool1;
-    } while (!URLDrawable.depImp.mLog.isColorLevel());
-    URLDrawable.depImp.mLog.d(TAG, 2, "use_new_gif_so:" + bool1);
-    return bool1;
+    return bool2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.image.NativeGifFactory
  * JD-Core Version:    0.7.0.1
  */

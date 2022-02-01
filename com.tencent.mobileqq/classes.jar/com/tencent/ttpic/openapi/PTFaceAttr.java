@@ -121,40 +121,52 @@ public class PTFaceAttr
   
   private static boolean checkFaceFeatureOutScreen(List<PointF> paramList, int paramInt1, int paramInt2, double paramDouble)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return false;
+    if (paramList != null)
+    {
+      if (paramList.isEmpty()) {
+        return false;
+      }
+      double d = paramInt1;
+      Double.isNaN(d);
+      float f = (float)(d * paramDouble);
+      d = paramInt2;
+      Double.isNaN(d);
+      RectF localRectF = new RectF(0.0F, 0.0F, f, (float)(d * paramDouble));
+      if (!localRectF.contains(((PointF)paramList.get(65)).x, ((PointF)paramList.get(65)).y)) {
+        return false;
+      }
+      if (!localRectF.contains(((PointF)paramList.get(66)).x, ((PointF)paramList.get(66)).y)) {
+        return false;
+      }
+      paramList = new PointF((((PointF)paramList.get(69)).x + ((PointF)paramList.get(9)).x) / 2.0F, (((PointF)paramList.get(69)).y + ((PointF)paramList.get(9)).y) / 2.0F);
+      return localRectF.contains(paramList.x, paramList.y);
     }
-    RectF localRectF = new RectF(0.0F, 0.0F, (float)(paramInt1 * paramDouble), (float)(paramInt2 * paramDouble));
-    if (!localRectF.contains(((PointF)paramList.get(65)).x, ((PointF)paramList.get(65)).y)) {
-      return false;
-    }
-    if (!localRectF.contains(((PointF)paramList.get(66)).x, ((PointF)paramList.get(66)).y)) {
-      return false;
-    }
-    float f1 = ((PointF)paramList.get(69)).x;
-    f1 = (((PointF)paramList.get(9)).x + f1) / 2.0F;
-    float f2 = ((PointF)paramList.get(69)).y;
-    paramList = new PointF(f1, (((PointF)paramList.get(9)).y + f2) / 2.0F);
-    return localRectF.contains(paramList.x, paramList.y);
+    return false;
   }
   
   public static boolean checkFaceFeatureOutScreenUKYO(List<PointF> paramList, int paramInt1, int paramInt2, double paramDouble)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return false;
+    if (paramList != null)
+    {
+      if (paramList.isEmpty()) {
+        return false;
+      }
+      double d = paramInt1;
+      Double.isNaN(d);
+      float f = (float)(d * paramDouble);
+      d = paramInt2;
+      Double.isNaN(d);
+      RectF localRectF = new RectF(0.0F, 0.0F, f, (float)(d * paramDouble));
+      if (!localRectF.contains(((PointF)paramList.get(61)).x, ((PointF)paramList.get(61)).y)) {
+        return false;
+      }
+      if (!localRectF.contains(((PointF)paramList.get(57)).x, ((PointF)paramList.get(57)).y)) {
+        return false;
+      }
+      paramList = new PointF((((PointF)paramList.get(69)).x + ((PointF)paramList.get(9)).x) / 2.0F, (((PointF)paramList.get(69)).y + ((PointF)paramList.get(9)).y) / 2.0F);
+      return localRectF.contains(paramList.x, paramList.y);
     }
-    RectF localRectF = new RectF(0.0F, 0.0F, (float)(paramInt1 * paramDouble), (float)(paramInt2 * paramDouble));
-    if (!localRectF.contains(((PointF)paramList.get(61)).x, ((PointF)paramList.get(61)).y)) {
-      return false;
-    }
-    if (!localRectF.contains(((PointF)paramList.get(57)).x, ((PointF)paramList.get(57)).y)) {
-      return false;
-    }
-    float f1 = ((PointF)paramList.get(69)).x;
-    f1 = (((PointF)paramList.get(9)).x + f1) / 2.0F;
-    float f2 = ((PointF)paramList.get(69)).y;
-    paramList = new PointF(f1, (((PointF)paramList.get(9)).y + f2) / 2.0F);
-    return localRectF.contains(paramList.x, paramList.y);
+    return false;
   }
   
   public static PTFaceAttr genFaceAttr(byte[] paramArrayOfByte, VideoPreviewFaceOutlineDetector paramVideoPreviewFaceOutlineDetector)
@@ -175,35 +187,47 @@ public class PTFaceAttr
     PTFaceAttr.PTExpression[] arrayOfPTExpression = PTFaceAttr.PTExpression.values();
     int j = arrayOfPTExpression.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       PTFaceAttr.PTExpression localPTExpression = arrayOfPTExpression[i];
       if (PTFaceAttr.Builder.access$1400(paramBuilder).contains(Integer.valueOf(localPTExpression.value))) {
         PTFaceAttr.Builder.access$700(paramBuilder).put(localPTExpression, Boolean.valueOf(true));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         PTFaceAttr.Builder.access$700(paramBuilder).put(localPTExpression, Boolean.valueOf(false));
       }
+      i += 1;
     }
     PTFaceAttr.Builder.access$1802(paramBuilder, new ArrayList());
   }
   
   public static boolean isPositiveFace(float[] paramArrayOfFloat, List<PointF> paramList, int paramInt1, int paramInt2, double paramDouble)
   {
+    boolean bool2 = false;
     double d = Math.min(Math.abs(Math.cos(paramArrayOfFloat[0])), Math.abs(Math.cos(paramArrayOfFloat[1])));
-    return (checkFaceFeatureOutScreen(paramList, paramInt1, paramInt2, paramDouble)) && (d >= 0.94D);
+    boolean bool1 = bool2;
+    if (checkFaceFeatureOutScreen(paramList, paramInt1, paramInt2, paramDouble))
+    {
+      bool1 = bool2;
+      if (d >= 0.94D) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public String genOrigFaceData()
   {
-    if (this.mFaceInfoList != null) {}
-    for (int i = this.mFaceInfoList.size(); i <= 0; i = 0) {
+    Object localObject = this.mFaceInfoList;
+    int i;
+    if (localObject != null) {
+      i = ((List)localObject).size();
+    } else {
+      i = 0;
+    }
+    if (i <= 0) {
       return null;
     }
-    ArrayList localArrayList = new ArrayList();
+    localObject = new ArrayList();
     int j = 0;
     while (j < i)
     {
@@ -218,10 +242,10 @@ public class PTFaceAttr
         k += 1;
       }
       System.arraycopy(((FaceInfo)this.mFaceInfoList.get(j)).origPointsVis, 0, localTTFaceOriginDataModel.facePointVisible, 0, ((FaceInfo)this.mFaceInfoList.get(j)).origPointsVis.length);
-      localArrayList.add(localTTFaceOriginDataModel);
+      ((List)localObject).add(localTTFaceOriginDataModel);
       j += 1;
     }
-    return GsonUtils.objList2Json(localArrayList);
+    return GsonUtils.objList2Json((List)localObject);
   }
   
   public List<float[]> getAllFaceAngles()
@@ -321,7 +345,8 @@ public class PTFaceAttr
   
   public long getFaceDetectTime()
   {
-    if ((this.detectTimes != null) && (this.detectTimes.get("sdk_face_detect_time") != null)) {
+    Map localMap = this.detectTimes;
+    if ((localMap != null) && (localMap.get("sdk_face_detect_time") != null)) {
       return ((Long)this.detectTimes.get("sdk_face_detect_time")).longValue();
     }
     return 0L;
@@ -355,8 +380,8 @@ public class PTFaceAttr
   public List<Rect> getFaceRectList()
   {
     ArrayList localArrayList = new ArrayList();
-    double d = getFaceDetectScale();
-    if (d != 0.0D)
+    double d1 = getFaceDetectScale();
+    if (d1 != 0.0D)
     {
       Object localObject = getFaceInfoList();
       if (!CollectionUtils.isEmpty((Collection)localObject))
@@ -366,10 +391,18 @@ public class PTFaceAttr
         {
           FaceInfo localFaceInfo = (FaceInfo)((Iterator)localObject).next();
           Rect localRect = new Rect();
-          localRect.left = ((int)(localFaceInfo.rect[0] / d));
-          localRect.top = ((int)(localFaceInfo.rect[1] / d));
-          localRect.right = ((int)(localFaceInfo.rect[2] / d) + localRect.left);
-          localRect.bottom = ((int)(localFaceInfo.rect[3] / d) + localRect.top);
+          double d2 = localFaceInfo.rect[0];
+          Double.isNaN(d2);
+          localRect.left = ((int)(d2 / d1));
+          d2 = localFaceInfo.rect[1];
+          Double.isNaN(d2);
+          localRect.top = ((int)(d2 / d1));
+          d2 = localFaceInfo.rect[2];
+          Double.isNaN(d2);
+          localRect.right = ((int)(d2 / d1) + localRect.left);
+          d2 = localFaceInfo.rect[3];
+          Double.isNaN(d2);
+          localRect.bottom = ((int)(d2 / d1) + localRect.top);
           localArrayList.add(localRect);
         }
       }
@@ -414,9 +447,12 @@ public class PTFaceAttr
   
   public int getRealPhoneRotation()
   {
-    double d = 0.0D;
-    if (this.faceDetector != null) {
-      d = this.faceDetector.getPhotoAngle();
+    VideoPreviewFaceOutlineDetector localVideoPreviewFaceOutlineDetector = this.faceDetector;
+    double d;
+    if (localVideoPreviewFaceOutlineDetector != null) {
+      d = localVideoPreviewFaceOutlineDetector.getPhotoAngle();
+    } else {
+      d = 0.0D;
     }
     return VideoFilterUtil.get4DirectionAngle(d);
   }
@@ -482,12 +518,13 @@ public class PTFaceAttr
       this.mTransformFacePoints = new ArrayList();
     }
     this.mTransformFacePoints.clear();
-    if (this.mFacePoints != null)
+    Object localObject = this.mFacePoints;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mFacePoints.iterator();
-      while (localIterator.hasNext())
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        List localList = (List)localIterator.next();
+        List localList = (List)((Iterator)localObject).next();
         this.mTransformFacePoints.add(VideoMaterial.copyList(localList));
       }
     }
@@ -495,7 +532,8 @@ public class PTFaceAttr
   
   public boolean isLandscape()
   {
-    return (this.mRotation == 90) || (this.mRotation == 270);
+    int i = this.mRotation;
+    return (i == 90) || (i == 270);
   }
   
   public boolean isPhoneFlatHorizontal()
@@ -510,8 +548,14 @@ public class PTFaceAttr
     }
     ArrayList localArrayList = new ArrayList();
     paramList = paramList.iterator();
-    while (paramList.hasNext())
+    int k;
+    for (;;)
     {
+      boolean bool = paramList.hasNext();
+      k = 0;
+      if (!bool) {
+        break;
+      }
       localObject1 = (TTFaceOriginDataModel)paramList.next();
       localObject2 = new FaceInfo();
       localObject3 = new float['¼'];
@@ -520,9 +564,18 @@ public class PTFaceAttr
       ((FaceInfo)localObject2).irisPoints = YoutuPointsUtil.getIrisPoints((float[])localObject3);
       ((FaceInfo)localObject2).pointsVis = YoutuPointsUtil.transformYTPointsVisToPtuPoints(((TTFaceOriginDataModel)localObject1).facePointVisible);
       ((FaceInfo)localObject2).pointsVis = YoutuPointsUtil.smoothYTPointsVisPoints(((FaceInfo)localObject2).pointsVis);
-      ((FaceInfo)localObject2).angles[0] = ((float)(((TTFaceOriginDataModel)localObject1).pitch * 3.141592653589793D / 180.0D) * -1.0F);
-      ((FaceInfo)localObject2).angles[1] = ((float)(((TTFaceOriginDataModel)localObject1).yaw * 3.141592653589793D / 180.0D) * -1.0F);
-      ((FaceInfo)localObject2).angles[2] = ((float)(((TTFaceOriginDataModel)localObject1).roll * 3.141592653589793D / 180.0D) * -1.0F);
+      localObject3 = ((FaceInfo)localObject2).angles;
+      double d = ((TTFaceOriginDataModel)localObject1).pitch;
+      Double.isNaN(d);
+      localObject3[0] = ((float)(d * 3.141592653589793D / 180.0D) * -1.0F);
+      localObject3 = ((FaceInfo)localObject2).angles;
+      d = ((TTFaceOriginDataModel)localObject1).yaw;
+      Double.isNaN(d);
+      localObject3[1] = ((float)(d * 3.141592653589793D / 180.0D) * -1.0F);
+      localObject3 = ((FaceInfo)localObject2).angles;
+      d = ((TTFaceOriginDataModel)localObject1).roll;
+      Double.isNaN(d);
+      localObject3[2] = ((float)(d * 3.141592653589793D / 180.0D) * -1.0F);
       ((FaceInfo)localObject2).pitch = ((TTFaceOriginDataModel)localObject1).pitch;
       ((FaceInfo)localObject2).yaw = ((TTFaceOriginDataModel)localObject1).yaw;
       ((FaceInfo)localObject2).roll = ((TTFaceOriginDataModel)localObject1).roll;
@@ -553,16 +606,20 @@ public class PTFaceAttr
       i += 1;
     }
     i = 0;
-    while (i < localArrayList.size())
+    int j;
+    for (;;)
     {
+      j = k;
+      if (i >= localArrayList.size()) {
+        break;
+      }
       paramList.add(((FaceInfo)localArrayList.get(i)).pointsVis);
       i += 1;
     }
-    i = 0;
-    while (i < localArrayList.size())
+    while (j < localArrayList.size())
     {
-      ((List)localObject1).add(((FaceInfo)localArrayList.get(i)).angles);
-      i += 1;
+      ((List)localObject1).add(((FaceInfo)localArrayList.get(j)).angles);
+      j += 1;
     }
     localObject2 = AlgoUtils.rotatePointsForList((List)localObject2, this.faceDetWidth, this.faceDetHeight, this.faceDetRotation);
     localObject3 = AlgoUtils.rotatePointsForList((List)localObject3, this.faceDetWidth, this.faceDetHeight, this.faceDetRotation);
@@ -721,7 +778,7 @@ public class PTFaceAttr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.PTFaceAttr
  * JD-Core Version:    0.7.0.1
  */

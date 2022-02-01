@@ -6,7 +6,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
-import com.tencent.ttpic.baseutils.log.LogUtils;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 public class ActionSheetHelper
@@ -25,42 +25,37 @@ public class ActionSheetHelper
   
   public static ActionSheet a(Context paramContext, ActionSheet paramActionSheet, List<ActionMenuItem> paramList, ActionSheet.OnButtonClickListener paramOnButtonClickListener)
   {
-    if ((paramContext == null) || (paramList == null) || (paramList.size() <= 0)) {
-      return null;
-    }
-    int i;
-    if (paramActionSheet == null)
+    if ((paramContext != null) && (paramList != null))
     {
-      paramActionSheet = (ActionSheet)a(paramContext, null);
-      i = 0;
-      label35:
-      if (i >= paramList.size()) {
-        break label116;
+      if (paramList.size() <= 0) {
+        return null;
       }
-      paramContext = (ActionMenuItem)paramList.get(i);
-      if (paramContext.visibility == 0)
+      if (paramActionSheet == null)
       {
-        if (paramContext.type != 1) {
-          break label99;
+        paramActionSheet = (ActionSheet)a(paramContext, null);
+      }
+      else
+      {
+        paramActionSheet.clear();
+        paramActionSheet.updateUI();
+      }
+      int i = 0;
+      while (i < paramList.size())
+      {
+        paramContext = (ActionMenuItem)paramList.get(i);
+        if (paramContext.visibility == 0) {
+          if (paramContext.type == 1) {
+            paramActionSheet.addButton(paramContext, 1);
+          } else if (paramContext.type == 2) {
+            paramActionSheet.addButton(paramContext, 3);
+          }
         }
-        paramActionSheet.addButton(paramContext, 1);
+        i += 1;
       }
+      paramActionSheet.setOnButtonClickListener(paramOnButtonClickListener);
+      return paramActionSheet;
     }
-    for (;;)
-    {
-      i += 1;
-      break label35;
-      paramActionSheet.clear();
-      paramActionSheet.updateUI();
-      break;
-      label99:
-      if (paramContext.type == 2) {
-        paramActionSheet.addButton(paramContext, 3);
-      }
-    }
-    label116:
-    paramActionSheet.setOnButtonClickListener(paramOnButtonClickListener);
-    return paramActionSheet;
+    return null;
   }
   
   public static ActionSheet a(Context paramContext, List<ActionMenuItem> paramList, ActionSheet.OnButtonClickListener paramOnButtonClickListener)
@@ -78,23 +73,30 @@ public class ActionSheetHelper
   
   public static void a(Activity paramActivity, ActionSheet paramActionSheet)
   {
-    if ((paramActivity == null) || (paramActionSheet == null)) {
-      return;
-    }
-    try
+    if (paramActivity != null)
     {
-      if (!paramActivity.isFinishing())
-      {
-        paramActionSheet.show();
+      if (paramActionSheet == null) {
         return;
       }
+      try
+      {
+        if (!paramActivity.isFinishing())
+        {
+          paramActionSheet.show();
+          return;
+        }
+        paramActionSheet = new StringBuilder();
+        paramActionSheet.append("showActionSheet when activity(");
+        paramActionSheet.append(paramActivity);
+        paramActionSheet.append(") is finish!");
+        QLog.e("ActionSheetHelper", 1, paramActionSheet.toString());
+        return;
+      }
+      catch (Exception paramActivity)
+      {
+        paramActivity.printStackTrace();
+      }
     }
-    catch (Exception paramActivity)
-    {
-      paramActivity.printStackTrace();
-      return;
-    }
-    LogUtils.e("ActionSheetHelper", "showActionSheet when activity(" + paramActivity + ") is finish!");
   }
   
   public static Dialog b(Context paramContext, View paramView)
@@ -106,28 +108,35 @@ public class ActionSheetHelper
   
   public static void b(Activity paramActivity, ActionSheet paramActionSheet)
   {
-    if ((paramActivity == null) || (paramActionSheet == null)) {
-      return;
-    }
-    try
+    if (paramActivity != null)
     {
-      if (!paramActivity.isFinishing())
-      {
-        paramActionSheet.dismiss();
+      if (paramActionSheet == null) {
         return;
       }
+      try
+      {
+        if (!paramActivity.isFinishing())
+        {
+          paramActionSheet.dismiss();
+          return;
+        }
+        paramActionSheet = new StringBuilder();
+        paramActionSheet.append("dismissActionSheet when activity(");
+        paramActionSheet.append(paramActivity);
+        paramActionSheet.append(") is finish!");
+        QLog.e("ActionSheetHelper", 1, paramActionSheet.toString());
+        return;
+      }
+      catch (Exception paramActivity)
+      {
+        paramActivity.printStackTrace();
+      }
     }
-    catch (Exception paramActivity)
-    {
-      paramActivity.printStackTrace();
-      return;
-    }
-    LogUtils.e("ActionSheetHelper", "dismissActionSheet when activity(" + paramActivity + ") is finish!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ActionSheetHelper
  * JD-Core Version:    0.7.0.1
  */

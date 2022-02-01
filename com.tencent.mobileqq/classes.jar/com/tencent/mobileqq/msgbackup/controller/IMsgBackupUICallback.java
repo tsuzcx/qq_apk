@@ -10,13 +10,13 @@ public abstract interface IMsgBackupUICallback
   
   public abstract void b(int paramInt1, int paramInt2);
   
-  public abstract void b(boolean paramBoolean);
-  
   public abstract void c(boolean paramBoolean);
+  
+  public abstract void h_(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.controller.IMsgBackupUICallback
  * JD-Core Version:    0.7.0.1
  */

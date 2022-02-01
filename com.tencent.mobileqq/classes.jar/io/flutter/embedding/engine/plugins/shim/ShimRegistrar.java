@@ -84,8 +84,9 @@ class ShimRegistrar
   
   public Activity activity()
   {
-    if (this.activityPluginBinding != null) {
-      return this.activityPluginBinding.getActivity();
+    ActivityPluginBinding localActivityPluginBinding = this.activityPluginBinding;
+    if (localActivityPluginBinding != null) {
+      return localActivityPluginBinding.getActivity();
     }
     return null;
   }
@@ -93,8 +94,9 @@ class ShimRegistrar
   public PluginRegistry.Registrar addActivityResultListener(PluginRegistry.ActivityResultListener paramActivityResultListener)
   {
     this.activityResultListeners.add(paramActivityResultListener);
-    if (this.activityPluginBinding != null) {
-      this.activityPluginBinding.addActivityResultListener(paramActivityResultListener);
+    ActivityPluginBinding localActivityPluginBinding = this.activityPluginBinding;
+    if (localActivityPluginBinding != null) {
+      localActivityPluginBinding.addActivityResultListener(paramActivityResultListener);
     }
     return this;
   }
@@ -102,8 +104,9 @@ class ShimRegistrar
   public PluginRegistry.Registrar addNewIntentListener(PluginRegistry.NewIntentListener paramNewIntentListener)
   {
     this.newIntentListeners.add(paramNewIntentListener);
-    if (this.activityPluginBinding != null) {
-      this.activityPluginBinding.addOnNewIntentListener(paramNewIntentListener);
+    ActivityPluginBinding localActivityPluginBinding = this.activityPluginBinding;
+    if (localActivityPluginBinding != null) {
+      localActivityPluginBinding.addOnNewIntentListener(paramNewIntentListener);
     }
     return this;
   }
@@ -111,8 +114,9 @@ class ShimRegistrar
   public PluginRegistry.Registrar addRequestPermissionsResultListener(PluginRegistry.RequestPermissionsResultListener paramRequestPermissionsResultListener)
   {
     this.requestPermissionsResultListeners.add(paramRequestPermissionsResultListener);
-    if (this.activityPluginBinding != null) {
-      this.activityPluginBinding.addRequestPermissionsResultListener(paramRequestPermissionsResultListener);
+    ActivityPluginBinding localActivityPluginBinding = this.activityPluginBinding;
+    if (localActivityPluginBinding != null) {
+      localActivityPluginBinding.addRequestPermissionsResultListener(paramRequestPermissionsResultListener);
     }
     return this;
   }
@@ -120,8 +124,9 @@ class ShimRegistrar
   public PluginRegistry.Registrar addUserLeaveHintListener(PluginRegistry.UserLeaveHintListener paramUserLeaveHintListener)
   {
     this.userLeaveHintListeners.add(paramUserLeaveHintListener);
-    if (this.activityPluginBinding != null) {
-      this.activityPluginBinding.addOnUserLeaveHintListener(paramUserLeaveHintListener);
+    ActivityPluginBinding localActivityPluginBinding = this.activityPluginBinding;
+    if (localActivityPluginBinding != null) {
+      localActivityPluginBinding.addOnUserLeaveHintListener(paramUserLeaveHintListener);
     }
     return this;
   }
@@ -135,8 +140,9 @@ class ShimRegistrar
   
   public Context context()
   {
-    if (this.pluginBinding != null) {
-      return this.pluginBinding.getApplicationContext();
+    FlutterPlugin.FlutterPluginBinding localFlutterPluginBinding = this.pluginBinding;
+    if (localFlutterPluginBinding != null) {
+      return localFlutterPluginBinding.getApplicationContext();
     }
     return null;
   }
@@ -153,8 +159,9 @@ class ShimRegistrar
   
   public BinaryMessenger messenger()
   {
-    if (this.pluginBinding != null) {
-      return this.pluginBinding.getBinaryMessenger();
+    FlutterPlugin.FlutterPluginBinding localFlutterPluginBinding = this.pluginBinding;
+    if (localFlutterPluginBinding != null) {
+      return localFlutterPluginBinding.getBinaryMessenger();
     }
     return null;
   }
@@ -204,8 +211,9 @@ class ShimRegistrar
   
   public PlatformViewRegistry platformViewRegistry()
   {
-    if (this.pluginBinding != null) {
-      return this.pluginBinding.getPlatformViewRegistry();
+    FlutterPlugin.FlutterPluginBinding localFlutterPluginBinding = this.pluginBinding;
+    if (localFlutterPluginBinding != null) {
+      return localFlutterPluginBinding.getPlatformViewRegistry();
     }
     return null;
   }
@@ -218,8 +226,9 @@ class ShimRegistrar
   
   public TextureRegistry textures()
   {
-    if (this.pluginBinding != null) {
-      return this.pluginBinding.getTextureRegistry();
+    FlutterPlugin.FlutterPluginBinding localFlutterPluginBinding = this.pluginBinding;
+    if (localFlutterPluginBinding != null) {
+      return localFlutterPluginBinding.getTextureRegistry();
     }
     return null;
   }
@@ -231,7 +240,7 @@ class ShimRegistrar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.plugins.shim.ShimRegistrar
  * JD-Core Version:    0.7.0.1
  */

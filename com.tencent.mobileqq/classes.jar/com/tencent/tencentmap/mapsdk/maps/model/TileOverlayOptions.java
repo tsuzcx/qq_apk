@@ -30,10 +30,12 @@ public final class TileOverlayOptions
   
   public final int getMaxMemoryCacheSize()
   {
-    if (this.f == 0) {
-      return fz.t * 4;
+    int j = this.f;
+    int i = j;
+    if (j == 0) {
+      i = fz.t * 4;
     }
-    return this.f;
+    return i;
   }
   
   public final TileProvider getTileProvider()
@@ -82,7 +84,7 @@ public final class TileOverlayOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.TileOverlayOptions
  * JD-Core Version:    0.7.0.1
  */

@@ -19,10 +19,11 @@ public final class dy
   
   public static SharedPreferences a(String paramString)
   {
-    String str = dp.a().getPackageName();
-    int i = 0;
-    if ("com.tencent.mobileqq".equals(str)) {
+    int i;
+    if ("com.tencent.mobileqq".equals(dp.a().getPackageName())) {
       i = 4;
+    } else {
+      i = 0;
     }
     return dp.a().getSharedPreferences(paramString, i);
   }
@@ -32,22 +33,21 @@ public final class dy
     paramSharedPreferences = paramSharedPreferences.edit();
     if ((paramObject instanceof String)) {
       paramSharedPreferences.putString(paramString, (String)paramObject);
+    } else if ((paramObject instanceof Integer)) {
+      paramSharedPreferences.putInt(paramString, ((Integer)paramObject).intValue());
+    } else if ((paramObject instanceof Boolean)) {
+      paramSharedPreferences.putBoolean(paramString, ((Boolean)paramObject).booleanValue());
+    } else if ((paramObject instanceof Float)) {
+      paramSharedPreferences.putFloat(paramString, ((Float)paramObject).floatValue());
+    } else if ((paramObject instanceof Long)) {
+      paramSharedPreferences.putLong(paramString, ((Long)paramObject).longValue());
+    } else {
+      paramSharedPreferences.putString(paramString, paramObject.toString());
     }
-    while (Build.VERSION.SDK_INT >= 9)
+    if (Build.VERSION.SDK_INT >= 9)
     {
       paramSharedPreferences.apply();
       return;
-      if ((paramObject instanceof Integer)) {
-        paramSharedPreferences.putInt(paramString, ((Integer)paramObject).intValue());
-      } else if ((paramObject instanceof Boolean)) {
-        paramSharedPreferences.putBoolean(paramString, ((Boolean)paramObject).booleanValue());
-      } else if ((paramObject instanceof Float)) {
-        paramSharedPreferences.putFloat(paramString, ((Float)paramObject).floatValue());
-      } else if ((paramObject instanceof Long)) {
-        paramSharedPreferences.putLong(paramString, ((Long)paramObject).longValue());
-      } else {
-        paramSharedPreferences.putString(paramString, paramObject.toString());
-      }
     }
     paramSharedPreferences.commit();
   }
@@ -99,79 +99,62 @@ public final class dy
   
   private static String b(String paramString)
   {
-    String str2 = "GBK";
-    String str1 = str2;
-    int j;
-    int i;
     if (paramString != null)
     {
       paramString = paramString.split(";");
-      j = paramString.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      str1 = str2;
-      if (i < j)
+      int j = paramString.length;
+      int i = 0;
+      while (i < j)
       {
-        str1 = paramString[i].trim();
-        int k = str1.indexOf("charset=");
+        String str = paramString[i].trim();
+        int k = str.indexOf("charset=");
         if (-1 != k) {
-          str1 = str1.substring(k + 8, str1.length());
+          return str.substring(k + 8, str.length());
         }
+        i += 1;
       }
-      else
-      {
-        return str1;
-      }
-      i += 1;
     }
+    return "GBK";
   }
   
   public final Pair<byte[], String> a(String paramString, byte[] paramArrayOfByte)
   {
     paramString = (HttpURLConnection)new URL(paramString).openConnection();
-    for (;;)
+    try
     {
-      try
+      paramString.setRequestProperty("User-Agent", "Dalvik/1.6.0 (Linux; U; Android 4.4; Nexus 5 Build/KRT16M)");
+      paramString.setRequestMethod("POST");
+      paramString.setConnectTimeout(10000);
+      paramString.setDoOutput(true);
+      paramString.setFixedLengthStreamingMode(paramArrayOfByte.length);
+      Object localObject = paramString.getOutputStream();
+      ((OutputStream)localObject).write(paramArrayOfByte);
+      ((OutputStream)localObject).flush();
+      ((OutputStream)localObject).close();
+      int i = paramString.getResponseCode();
+      if (i == 200)
       {
-        paramString.setRequestProperty("User-Agent", "Dalvik/1.6.0 (Linux; U; Android 4.4; Nexus 5 Build/KRT16M)");
-        paramString.setRequestMethod("POST");
-        paramString.setConnectTimeout(10000);
-        paramString.setDoOutput(true);
-        paramString.setFixedLengthStreamingMode(paramArrayOfByte.length);
-        localObject = paramString.getOutputStream();
-        ((OutputStream)localObject).write(paramArrayOfByte);
-        ((OutputStream)localObject).flush();
-        ((OutputStream)localObject).close();
-        int i = paramString.getResponseCode();
-        switch (i)
+        paramArrayOfByte = b(paramString.getHeaderField("content-type"));
+        localObject = a(paramString.getInputStream());
+        if ((localObject != null) && (localObject.length != 0))
         {
-        case 200: 
-          throw new IOException("net sdk error: ".concat(String.valueOf(i)));
+          paramArrayOfByte = Pair.create(localObject, paramArrayOfByte);
+          return paramArrayOfByte;
         }
-      }
-      finally
-      {
-        paramString.disconnect();
-      }
-      paramArrayOfByte = b(paramString.getHeaderField("content-type"));
-      Object localObject = a(paramString.getInputStream());
-      if ((localObject == null) || (localObject.length == 0))
-      {
         paramArrayOfByte = Pair.create("{}".getBytes(), "utf-8");
-        paramString.disconnect();
         return paramArrayOfByte;
       }
-      paramArrayOfByte = Pair.create(localObject, paramArrayOfByte);
+      throw new IOException("net sdk error: ".concat(String.valueOf(i)));
+    }
+    finally
+    {
       paramString.disconnect();
-      return paramArrayOfByte;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.dy
  * JD-Core Version:    0.7.0.1
  */

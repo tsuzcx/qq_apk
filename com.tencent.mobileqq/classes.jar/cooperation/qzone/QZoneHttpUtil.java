@@ -49,7 +49,7 @@ public class QZoneHttpUtil
   public static final char PROTOCOL_HOST_SPLITTER = '/';
   public static final char PROTOCOL_PORT_SPLITTER = ':';
   public static final String PROTOCOL_PREFIX = "https://";
-  public static final int PROTOCOL_PREFIX_LENGTH = "https://".length();
+  public static final int PROTOCOL_PREFIX_LENGTH = 8;
   private static final int SO_TIMEOUT = 45000;
   
   public static HttpClient createHttpClient(boolean paramBoolean)
@@ -68,13 +68,14 @@ public class QZoneHttpUtil
     {
       ((SchemeRegistry)localObject1).register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
       label98:
-      if (paramBoolean) {}
-      for (localObject1 = new ThreadSafeClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1);; localObject1 = new SingleClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1))
-      {
-        localObject2 = new DefaultHttpClient((ClientConnectionManager)localObject1, (HttpParams)localObject2);
-        ((DefaultHttpClient)localObject2).setRoutePlanner(new DefaultHttpRoutePlanner(((ClientConnectionManager)localObject1).getSchemeRegistry()));
-        return localObject2;
+      if (paramBoolean) {
+        localObject1 = new ThreadSafeClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1);
+      } else {
+        localObject1 = new SingleClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1);
       }
+      localObject2 = new DefaultHttpClient((ClientConnectionManager)localObject1, (HttpParams)localObject2);
+      ((DefaultHttpClient)localObject2).setRoutePlanner(new DefaultHttpRoutePlanner(((ClientConnectionManager)localObject1).getSchemeRegistry()));
+      return localObject2;
     }
     catch (Exception localException)
     {
@@ -101,308 +102,357 @@ public class QZoneHttpUtil
   public static int download(String paramString, java.io.File paramFile)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 9
-    //   3: aconst_null
-    //   4: astore 6
-    //   6: aconst_null
-    //   7: astore 7
-    //   9: aconst_null
-    //   10: astore 8
-    //   12: invokestatic 209	cooperation/qzone/util/NetworkState:isWap	()Z
-    //   15: ifeq +242 -> 257
-    //   18: getstatic 215	cooperation/qzone/QZoneHttpUtil$HttpProxy:Default	Lcooperation/qzone/QZoneHttpUtil$HttpProxy;
-    //   21: astore 4
-    //   23: aload 4
-    //   25: ifnull +447 -> 472
-    //   28: aload_0
-    //   29: invokestatic 219	cooperation/qzone/QZoneHttpUtil:splitUrl	(Ljava/lang/String;)[Ljava/lang/String;
-    //   32: astore 5
-    //   34: new 221	java/lang/StringBuilder
-    //   37: dup
-    //   38: invokespecial 222	java/lang/StringBuilder:<init>	()V
-    //   41: aload 4
-    //   43: invokevirtual 226	cooperation/qzone/QZoneHttpUtil$HttpProxy:toString	()Ljava/lang/String;
-    //   46: invokevirtual 230	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   49: aload 5
-    //   51: iconst_1
-    //   52: aaload
-    //   53: invokevirtual 230	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   56: invokevirtual 231	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   59: astore_0
-    //   60: aload_0
-    //   61: invokevirtual 234	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   64: ldc 49
-    //   66: invokevirtual 238	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   69: ifeq +194 -> 263
-    //   72: new 240	java/net/URL
-    //   75: dup
-    //   76: aload_0
-    //   77: invokespecial 241	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   80: invokevirtual 245	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   83: checkcast 247	java/net/HttpURLConnection
-    //   86: astore_0
-    //   87: aload_0
-    //   88: sipush 30000
-    //   91: invokevirtual 251	java/net/HttpURLConnection:setReadTimeout	(I)V
-    //   94: aload_0
-    //   95: sipush 15000
-    //   98: invokevirtual 254	java/net/HttpURLConnection:setConnectTimeout	(I)V
-    //   101: aload_0
-    //   102: ldc 13
-    //   104: invokevirtual 257	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
-    //   107: aload_0
-    //   108: iconst_1
-    //   109: invokevirtual 261	java/net/HttpURLConnection:setDoInput	(Z)V
-    //   112: aload 4
-    //   114: ifnull +13 -> 127
-    //   117: aload_0
-    //   118: ldc 25
-    //   120: aload 5
-    //   122: iconst_0
-    //   123: aaload
-    //   124: invokevirtual 264	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   127: aload_0
-    //   128: invokevirtual 267	java/net/HttpURLConnection:getResponseCode	()I
-    //   131: istore_2
-    //   132: aload 9
-    //   134: astore 4
-    //   136: iload_2
-    //   137: invokestatic 271	cooperation/qzone/QZoneHttpUtil:isSuccess	(I)Z
-    //   140: ifeq +144 -> 284
-    //   143: new 273	java/io/BufferedOutputStream
-    //   146: dup
-    //   147: new 275	java/io/FileOutputStream
-    //   150: dup
-    //   151: aload_1
-    //   152: iconst_1
-    //   153: invokespecial 278	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   156: invokespecial 281	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   159: astore_1
-    //   160: aload_0
-    //   161: invokevirtual 285	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   164: astore 4
-    //   166: sipush 8192
-    //   169: newarray byte
-    //   171: astore 5
-    //   173: aload 4
-    //   175: aload 5
-    //   177: iconst_0
-    //   178: aload 5
-    //   180: arraylength
-    //   181: invokevirtual 291	java/io/InputStream:read	([BII)I
-    //   184: istore_3
-    //   185: iconst_m1
-    //   186: iload_3
-    //   187: if_icmpeq +86 -> 273
-    //   190: aload_1
-    //   191: aload 5
-    //   193: iconst_0
-    //   194: iload_3
-    //   195: invokevirtual 295	java/io/BufferedOutputStream:write	([BII)V
-    //   198: goto -25 -> 173
-    //   201: astore 5
-    //   203: aload_1
-    //   204: astore 6
-    //   206: aload 6
-    //   208: astore 4
-    //   210: aload_0
-    //   211: astore_1
-    //   212: ldc_w 297
-    //   215: iconst_1
-    //   216: ldc_w 299
-    //   219: aload 5
-    //   221: invokestatic 305	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   224: sipush 1024
-    //   227: istore_2
-    //   228: ldc_w 307
-    //   231: invokestatic 313	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   234: checkcast 307	com/tencent/qzonehub/api/IDataUtils
-    //   237: aload 6
-    //   239: invokeinterface 317 2 0
-    //   244: pop
-    //   245: aload_0
-    //   246: ifnull +222 -> 468
-    //   249: aload_0
-    //   250: invokevirtual 320	java/net/HttpURLConnection:disconnect	()V
-    //   253: sipush 1024
-    //   256: ireturn
-    //   257: aconst_null
-    //   258: astore 4
-    //   260: goto -237 -> 23
-    //   263: ldc 49
-    //   265: aload_0
-    //   266: invokevirtual 323	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   269: astore_0
-    //   270: goto -198 -> 72
-    //   273: aload_1
-    //   274: invokevirtual 326	java/io/BufferedOutputStream:flush	()V
-    //   277: aload_1
-    //   278: invokevirtual 329	java/io/BufferedOutputStream:close	()V
-    //   281: aload_1
-    //   282: astore 4
-    //   284: ldc_w 307
-    //   287: invokestatic 313	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   290: checkcast 307	com/tencent/qzonehub/api/IDataUtils
-    //   293: aload 4
-    //   295: invokeinterface 317 2 0
-    //   300: pop
-    //   301: aload_0
-    //   302: ifnull +168 -> 470
-    //   305: aload_0
-    //   306: invokevirtual 320	java/net/HttpURLConnection:disconnect	()V
-    //   309: iload_2
-    //   310: ireturn
-    //   311: astore 5
-    //   313: aconst_null
-    //   314: astore_0
-    //   315: aload 6
-    //   317: astore 4
-    //   319: aload_0
-    //   320: astore_1
-    //   321: ldc_w 297
-    //   324: iconst_1
-    //   325: ldc_w 331
-    //   328: aload 5
-    //   330: invokestatic 305	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   333: sipush 4096
-    //   336: istore_2
-    //   337: ldc_w 307
-    //   340: invokestatic 313	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   343: checkcast 307	com/tencent/qzonehub/api/IDataUtils
-    //   346: aload 6
-    //   348: invokeinterface 317 2 0
-    //   353: pop
-    //   354: aload_0
-    //   355: ifnull +113 -> 468
-    //   358: aload_0
-    //   359: invokevirtual 320	java/net/HttpURLConnection:disconnect	()V
-    //   362: sipush 4096
-    //   365: ireturn
-    //   366: astore_0
-    //   367: aconst_null
-    //   368: astore_1
-    //   369: aload 7
-    //   371: astore 4
-    //   373: ldc_w 307
-    //   376: invokestatic 313	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   379: checkcast 307	com/tencent/qzonehub/api/IDataUtils
-    //   382: aload 4
-    //   384: invokeinterface 317 2 0
-    //   389: pop
-    //   390: aload_1
-    //   391: ifnull +7 -> 398
-    //   394: aload_1
-    //   395: invokevirtual 320	java/net/HttpURLConnection:disconnect	()V
-    //   398: aload_0
-    //   399: athrow
-    //   400: astore 4
-    //   402: aload_0
-    //   403: astore_1
-    //   404: aload 4
-    //   406: astore_0
-    //   407: aload 7
-    //   409: astore 4
-    //   411: goto -38 -> 373
-    //   414: astore 4
-    //   416: aload_0
-    //   417: astore 5
-    //   419: aload 4
-    //   421: astore_0
-    //   422: aload_1
-    //   423: astore 4
-    //   425: aload 5
-    //   427: astore_1
-    //   428: goto -55 -> 373
-    //   431: astore_0
-    //   432: goto -59 -> 373
-    //   435: astore 5
-    //   437: goto -122 -> 315
-    //   440: astore 5
-    //   442: aload_1
-    //   443: astore 6
-    //   445: goto -130 -> 315
-    //   448: astore 5
-    //   450: aconst_null
-    //   451: astore_0
-    //   452: aload 8
-    //   454: astore 6
-    //   456: goto -250 -> 206
-    //   459: astore 5
-    //   461: aload 8
-    //   463: astore 6
-    //   465: goto -259 -> 206
-    //   468: iload_2
-    //   469: ireturn
-    //   470: iload_2
-    //   471: ireturn
-    //   472: aconst_null
-    //   473: astore 5
-    //   475: goto -415 -> 60
+    //   0: invokestatic 202	cooperation/qzone/util/NetworkState:isWap	()Z
+    //   3: istore 4
+    //   5: aconst_null
+    //   6: astore 9
+    //   8: aconst_null
+    //   9: astore 10
+    //   11: aconst_null
+    //   12: astore 11
+    //   14: aconst_null
+    //   15: astore 5
+    //   17: aconst_null
+    //   18: astore 12
+    //   20: iload 4
+    //   22: ifeq +11 -> 33
+    //   25: getstatic 208	cooperation/qzone/QZoneHttpUtil$HttpProxy:Default	Lcooperation/qzone/QZoneHttpUtil$HttpProxy;
+    //   28: astore 7
+    //   30: goto +6 -> 36
+    //   33: aconst_null
+    //   34: astore 7
+    //   36: aload 7
+    //   38: ifnull +490 -> 528
+    //   41: aload_0
+    //   42: invokestatic 212	cooperation/qzone/QZoneHttpUtil:splitUrl	(Ljava/lang/String;)[Ljava/lang/String;
+    //   45: astore 8
+    //   47: new 214	java/lang/StringBuilder
+    //   50: dup
+    //   51: invokespecial 215	java/lang/StringBuilder:<init>	()V
+    //   54: astore_0
+    //   55: aload_0
+    //   56: aload 7
+    //   58: invokevirtual 219	cooperation/qzone/QZoneHttpUtil$HttpProxy:toString	()Ljava/lang/String;
+    //   61: invokevirtual 223	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   64: pop
+    //   65: aload_0
+    //   66: aload 8
+    //   68: iconst_1
+    //   69: aaload
+    //   70: invokevirtual 223	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   73: pop
+    //   74: aload_0
+    //   75: invokevirtual 224	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   78: astore_0
+    //   79: goto +3 -> 82
+    //   82: aload_0
+    //   83: invokevirtual 229	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   86: ldc 49
+    //   88: invokevirtual 233	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   91: ifeq +6 -> 97
+    //   94: goto +10 -> 104
+    //   97: ldc 49
+    //   99: aload_0
+    //   100: invokevirtual 236	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   103: astore_0
+    //   104: new 238	java/net/URL
+    //   107: dup
+    //   108: aload_0
+    //   109: invokespecial 239	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   112: invokevirtual 243	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   115: checkcast 245	java/net/HttpURLConnection
+    //   118: astore_0
+    //   119: aload 11
+    //   121: astore 5
+    //   123: aload_0
+    //   124: astore 6
+    //   126: aload_0
+    //   127: sipush 30000
+    //   130: invokevirtual 249	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   133: aload 11
+    //   135: astore 5
+    //   137: aload_0
+    //   138: astore 6
+    //   140: aload_0
+    //   141: sipush 15000
+    //   144: invokevirtual 252	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   147: aload 11
+    //   149: astore 5
+    //   151: aload_0
+    //   152: astore 6
+    //   154: aload_0
+    //   155: ldc 13
+    //   157: invokevirtual 255	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   160: aload 11
+    //   162: astore 5
+    //   164: aload_0
+    //   165: astore 6
+    //   167: aload_0
+    //   168: iconst_1
+    //   169: invokevirtual 259	java/net/HttpURLConnection:setDoInput	(Z)V
+    //   172: aload 7
+    //   174: ifnull +20 -> 194
+    //   177: aload 11
+    //   179: astore 5
+    //   181: aload_0
+    //   182: astore 6
+    //   184: aload_0
+    //   185: ldc 25
+    //   187: aload 8
+    //   189: iconst_0
+    //   190: aaload
+    //   191: invokevirtual 262	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   194: aload 11
+    //   196: astore 5
+    //   198: aload_0
+    //   199: astore 6
+    //   201: aload_0
+    //   202: invokevirtual 266	java/net/HttpURLConnection:getResponseCode	()I
+    //   205: istore_3
+    //   206: aload 12
+    //   208: astore 7
+    //   210: aload 11
+    //   212: astore 5
+    //   214: aload_0
+    //   215: astore 6
+    //   217: iload_3
+    //   218: invokestatic 270	cooperation/qzone/QZoneHttpUtil:isSuccess	(I)Z
+    //   221: ifeq +103 -> 324
+    //   224: aload 11
+    //   226: astore 5
+    //   228: aload_0
+    //   229: astore 6
+    //   231: new 272	java/io/BufferedOutputStream
+    //   234: dup
+    //   235: new 274	java/io/FileOutputStream
+    //   238: dup
+    //   239: aload_1
+    //   240: iconst_1
+    //   241: invokespecial 277	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   244: invokespecial 280	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   247: astore_1
+    //   248: aload_0
+    //   249: invokevirtual 284	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   252: astore 5
+    //   254: sipush 8192
+    //   257: newarray byte
+    //   259: astore 6
+    //   261: aload 5
+    //   263: aload 6
+    //   265: iconst_0
+    //   266: aload 6
+    //   268: arraylength
+    //   269: invokevirtual 290	java/io/InputStream:read	([BII)I
+    //   272: istore_2
+    //   273: iconst_m1
+    //   274: iload_2
+    //   275: if_icmpeq +14 -> 289
+    //   278: aload_1
+    //   279: aload 6
+    //   281: iconst_0
+    //   282: iload_2
+    //   283: invokevirtual 294	java/io/BufferedOutputStream:write	([BII)V
+    //   286: goto -25 -> 261
+    //   289: aload_1
+    //   290: invokevirtual 297	java/io/BufferedOutputStream:flush	()V
+    //   293: aload_1
+    //   294: invokevirtual 300	java/io/BufferedOutputStream:close	()V
+    //   297: aload_1
+    //   298: astore 7
+    //   300: goto +24 -> 324
+    //   303: astore 6
+    //   305: aload_1
+    //   306: astore 5
+    //   308: aload 6
+    //   310: astore_1
+    //   311: goto +184 -> 495
+    //   314: astore 7
+    //   316: goto +68 -> 384
+    //   319: astore 7
+    //   321: goto +119 -> 440
+    //   324: ldc_w 302
+    //   327: invokestatic 308	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   330: checkcast 302	com/tencent/qzonehub/api/IDataUtils
+    //   333: aload 7
+    //   335: invokeinterface 312 2 0
+    //   340: pop
+    //   341: iload_3
+    //   342: istore_2
+    //   343: aload_0
+    //   344: ifnull +145 -> 489
+    //   347: iload_3
+    //   348: istore_2
+    //   349: aload_0
+    //   350: invokevirtual 315	java/net/HttpURLConnection:disconnect	()V
+    //   353: iload_2
+    //   354: ireturn
+    //   355: astore 7
+    //   357: aload 9
+    //   359: astore_1
+    //   360: goto +24 -> 384
+    //   363: astore 7
+    //   365: aload 10
+    //   367: astore_1
+    //   368: goto +72 -> 440
+    //   371: astore_1
+    //   372: aconst_null
+    //   373: astore_0
+    //   374: goto +121 -> 495
+    //   377: astore 7
+    //   379: aconst_null
+    //   380: astore_0
+    //   381: aload 9
+    //   383: astore_1
+    //   384: aload_1
+    //   385: astore 5
+    //   387: aload_0
+    //   388: astore 6
+    //   390: ldc_w 317
+    //   393: iconst_1
+    //   394: ldc_w 319
+    //   397: aload 7
+    //   399: invokestatic 325	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   402: sipush 4096
+    //   405: istore_3
+    //   406: ldc_w 302
+    //   409: invokestatic 308	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   412: checkcast 302	com/tencent/qzonehub/api/IDataUtils
+    //   415: aload_1
+    //   416: invokeinterface 312 2 0
+    //   421: pop
+    //   422: iload_3
+    //   423: istore_2
+    //   424: aload_0
+    //   425: ifnull +64 -> 489
+    //   428: iload_3
+    //   429: istore_2
+    //   430: goto -81 -> 349
+    //   433: astore 7
+    //   435: aconst_null
+    //   436: astore_0
+    //   437: aload 10
+    //   439: astore_1
+    //   440: aload_1
+    //   441: astore 5
+    //   443: aload_0
+    //   444: astore 6
+    //   446: ldc_w 317
+    //   449: iconst_1
+    //   450: ldc_w 327
+    //   453: aload 7
+    //   455: invokestatic 325	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   458: sipush 1024
+    //   461: istore_3
+    //   462: ldc_w 302
+    //   465: invokestatic 308	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   468: checkcast 302	com/tencent/qzonehub/api/IDataUtils
+    //   471: aload_1
+    //   472: invokeinterface 312 2 0
+    //   477: pop
+    //   478: iload_3
+    //   479: istore_2
+    //   480: aload_0
+    //   481: ifnull +8 -> 489
+    //   484: iload_3
+    //   485: istore_2
+    //   486: goto -137 -> 349
+    //   489: iload_2
+    //   490: ireturn
+    //   491: astore_1
+    //   492: aload 6
+    //   494: astore_0
+    //   495: ldc_w 302
+    //   498: invokestatic 308	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   501: checkcast 302	com/tencent/qzonehub/api/IDataUtils
+    //   504: aload 5
+    //   506: invokeinterface 312 2 0
+    //   511: pop
+    //   512: aload_0
+    //   513: ifnull +7 -> 520
+    //   516: aload_0
+    //   517: invokevirtual 315	java/net/HttpURLConnection:disconnect	()V
+    //   520: goto +5 -> 525
+    //   523: aload_1
+    //   524: athrow
+    //   525: goto -2 -> 523
+    //   528: aconst_null
+    //   529: astore 8
+    //   531: goto -449 -> 82
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	478	0	paramString	String
-    //   0	478	1	paramFile	java.io.File
-    //   131	340	2	i	int
-    //   184	11	3	j	int
-    //   21	362	4	localObject1	Object
-    //   400	5	4	localObject2	Object
-    //   409	1	4	localObject3	Object
-    //   414	6	4	localObject4	Object
-    //   423	1	4	localFile	java.io.File
-    //   32	160	5	localObject5	Object
-    //   201	19	5	localIOException1	java.io.IOException
-    //   311	18	5	localException1	Exception
-    //   417	9	5	str	String
-    //   435	1	5	localException2	Exception
-    //   440	1	5	localException3	Exception
-    //   448	1	5	localIOException2	java.io.IOException
-    //   459	1	5	localIOException3	java.io.IOException
-    //   473	1	5	localObject6	Object
-    //   4	460	6	localObject7	Object
-    //   7	401	7	localObject8	Object
-    //   10	452	8	localObject9	Object
-    //   1	132	9	localObject10	Object
+    //   0	534	0	paramString	String
+    //   0	534	1	paramFile	java.io.File
+    //   272	218	2	i	int
+    //   205	280	3	j	int
+    //   3	18	4	bool	boolean
+    //   15	490	5	localObject1	Object
+    //   124	156	6	localObject2	Object
+    //   303	6	6	localObject3	Object
+    //   388	105	6	str	String
+    //   28	271	7	localObject4	Object
+    //   314	1	7	localException1	Exception
+    //   319	15	7	localIOException1	java.io.IOException
+    //   355	1	7	localException2	Exception
+    //   363	1	7	localIOException2	java.io.IOException
+    //   377	21	7	localException3	Exception
+    //   433	21	7	localIOException3	java.io.IOException
+    //   45	485	8	arrayOfString	String[]
+    //   6	376	9	localObject5	Object
+    //   9	429	10	localObject6	Object
+    //   12	213	11	localObject7	Object
+    //   18	189	12	localObject8	Object
     // Exception table:
     //   from	to	target	type
-    //   160	173	201	java/io/IOException
-    //   173	185	201	java/io/IOException
-    //   190	198	201	java/io/IOException
-    //   273	281	201	java/io/IOException
-    //   28	60	311	java/lang/Exception
-    //   60	72	311	java/lang/Exception
-    //   72	87	311	java/lang/Exception
-    //   263	270	311	java/lang/Exception
-    //   28	60	366	finally
-    //   60	72	366	finally
-    //   72	87	366	finally
-    //   263	270	366	finally
-    //   87	112	400	finally
-    //   117	127	400	finally
-    //   127	132	400	finally
-    //   136	160	400	finally
-    //   160	173	414	finally
-    //   173	185	414	finally
-    //   190	198	414	finally
-    //   273	281	414	finally
-    //   212	224	431	finally
-    //   321	333	431	finally
-    //   87	112	435	java/lang/Exception
-    //   117	127	435	java/lang/Exception
-    //   127	132	435	java/lang/Exception
-    //   136	160	435	java/lang/Exception
-    //   160	173	440	java/lang/Exception
-    //   173	185	440	java/lang/Exception
-    //   190	198	440	java/lang/Exception
-    //   273	281	440	java/lang/Exception
-    //   28	60	448	java/io/IOException
-    //   60	72	448	java/io/IOException
-    //   72	87	448	java/io/IOException
-    //   263	270	448	java/io/IOException
-    //   87	112	459	java/io/IOException
-    //   117	127	459	java/io/IOException
-    //   127	132	459	java/io/IOException
-    //   136	160	459	java/io/IOException
+    //   248	261	303	finally
+    //   261	273	303	finally
+    //   278	286	303	finally
+    //   289	297	303	finally
+    //   248	261	314	java/lang/Exception
+    //   261	273	314	java/lang/Exception
+    //   278	286	314	java/lang/Exception
+    //   289	297	314	java/lang/Exception
+    //   248	261	319	java/io/IOException
+    //   261	273	319	java/io/IOException
+    //   278	286	319	java/io/IOException
+    //   289	297	319	java/io/IOException
+    //   126	133	355	java/lang/Exception
+    //   140	147	355	java/lang/Exception
+    //   154	160	355	java/lang/Exception
+    //   167	172	355	java/lang/Exception
+    //   184	194	355	java/lang/Exception
+    //   201	206	355	java/lang/Exception
+    //   217	224	355	java/lang/Exception
+    //   231	248	355	java/lang/Exception
+    //   126	133	363	java/io/IOException
+    //   140	147	363	java/io/IOException
+    //   154	160	363	java/io/IOException
+    //   167	172	363	java/io/IOException
+    //   184	194	363	java/io/IOException
+    //   201	206	363	java/io/IOException
+    //   217	224	363	java/io/IOException
+    //   231	248	363	java/io/IOException
+    //   41	79	371	finally
+    //   82	94	371	finally
+    //   97	104	371	finally
+    //   104	119	371	finally
+    //   41	79	377	java/lang/Exception
+    //   82	94	377	java/lang/Exception
+    //   97	104	377	java/lang/Exception
+    //   104	119	377	java/lang/Exception
+    //   41	79	433	java/io/IOException
+    //   82	94	433	java/io/IOException
+    //   97	104	433	java/io/IOException
+    //   104	119	433	java/io/IOException
+    //   126	133	491	finally
+    //   140	147	491	finally
+    //   154	160	491	finally
+    //   167	172	491	finally
+    //   184	194	491	finally
+    //   201	206	491	finally
+    //   217	224	491	finally
+    //   231	248	491	finally
+    //   390	402	491	finally
+    //   446	458	491	finally
   }
   
   public static HttpResponse executeHttpPost(Context paramContext, String paramString, HttpEntity paramHttpEntity)
@@ -428,32 +478,29 @@ public class QZoneHttpUtil
   private static void prepareRequest(Context paramContext, HttpRequest paramHttpRequest, QZoneHttpUtil.RequestOptions paramRequestOptions)
   {
     boolean bool1;
-    if (paramRequestOptions != null)
-    {
+    if (paramRequestOptions != null) {
       bool1 = paramRequestOptions.allowProxy;
-      if (paramRequestOptions == null) {
-        break label90;
-      }
+    } else {
+      bool1 = true;
     }
-    label90:
-    for (boolean bool2 = paramRequestOptions.apnProxy;; bool2 = false)
+    boolean bool2;
+    if (paramRequestOptions != null) {
+      bool2 = paramRequestOptions.apnProxy;
+    } else {
+      bool2 = false;
+    }
+    if ((bool1) && (NetworkState.isMobile()))
     {
-      if ((bool1) && (NetworkState.isMobile()))
+      paramContext = NetworkUtils.getProxy(paramContext, bool2);
+      if (paramContext != null)
       {
-        paramContext = NetworkUtils.getProxy(paramContext, bool2);
+        paramContext = (InetSocketAddress)paramContext.address();
         if (paramContext != null)
         {
-          paramContext = (InetSocketAddress)paramContext.address();
-          if (paramContext != null)
-          {
-            paramContext = new HttpHost(paramContext.getHostName(), paramContext.getPort());
-            paramHttpRequest.getParams().setParameter("http.route.default-proxy", paramContext);
-          }
+          paramContext = new HttpHost(paramContext.getHostName(), paramContext.getPort());
+          paramHttpRequest.getParams().setParameter("http.route.default-proxy", paramContext);
         }
       }
-      return;
-      bool1 = true;
-      break;
     }
   }
   
@@ -471,35 +518,33 @@ public class QZoneHttpUtil
   public static String[] splitUrl(String paramString)
   {
     String[] arrayOfString = new String[2];
-    if ((paramString == null) || (paramString.length() < PROTOCOL_PREFIX_LENGTH)) {
-      return arrayOfString;
-    }
-    if (paramString.toLowerCase().startsWith("https://"))
+    if (paramString != null)
     {
+      if (paramString.length() < PROTOCOL_PREFIX_LENGTH) {
+        return arrayOfString;
+      }
+      if (!paramString.toLowerCase().startsWith("https://")) {
+        paramString = "https://".concat(paramString);
+      }
       int j = paramString.indexOf('/', PROTOCOL_PREFIX_LENGTH);
       int i = j;
       if (j <= PROTOCOL_PREFIX_LENGTH) {
         i = paramString.length();
       }
       arrayOfString[0] = paramString.substring(PROTOCOL_PREFIX_LENGTH, i);
-      if (i >= paramString.length()) {
-        break label100;
+      if (i < paramString.length())
+      {
+        arrayOfString[1] = paramString.substring(i, paramString.length());
+        return arrayOfString;
       }
-      arrayOfString[1] = paramString.substring(i, paramString.length());
-    }
-    for (;;)
-    {
-      return arrayOfString;
-      paramString = "https://".concat(paramString);
-      break;
-      label100:
       arrayOfString[1] = "";
     }
+    return arrayOfString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QZoneHttpUtil
  * JD-Core Version:    0.7.0.1
  */

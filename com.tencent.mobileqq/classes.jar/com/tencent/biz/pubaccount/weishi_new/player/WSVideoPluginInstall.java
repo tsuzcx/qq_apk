@@ -38,7 +38,14 @@ public class WSVideoPluginInstall
   
   public void a()
   {
-    if ((!a()) && (!this.jdField_a_of_type_Boolean)) {
+    boolean bool = a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSVideoPluginInstall.java][installPlugin] isPluginInstalled:");
+    localStringBuilder.append(bool);
+    localStringBuilder.append(", mIsInstalling:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    WSLog.e("WS_VIDEO_WSVideoPluginInstall", localStringBuilder.toString());
+    if ((!bool) && (!this.jdField_a_of_type_Boolean)) {
       ThreadManager.post(new WSVideoPluginInstall.2(this), 8, null, true);
     }
   }
@@ -61,7 +68,7 @@ public class WSVideoPluginInstall
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSVideoPluginInstall
  * JD-Core Version:    0.7.0.1
  */

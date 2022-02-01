@@ -10,24 +10,22 @@ public class TencentDocSelectAddDocsBean
   
   public static TencentDocSelectAddDocsBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    boolean bool = true;
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length <= 0))
-    {
-      paramArrayOfQConfItem = null;
-      return paramArrayOfQConfItem;
+    TencentDocSelectAddDocsBean localTencentDocSelectAddDocsBean;
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
+      localTencentDocSelectAddDocsBean = new TencentDocSelectAddDocsBean();
     }
-    TencentDocSelectAddDocsBean localTencentDocSelectAddDocsBean = new TencentDocSelectAddDocsBean();
     for (;;)
     {
       try
       {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfQConfItem[0].a);
-        paramArrayOfQConfItem = localTencentDocSelectAddDocsBean;
-        if (!localJSONObject.has("SendAsTxDoc")) {
-          break;
-        }
-        if (localJSONObject.getJSONObject("SendAsTxDoc").getInt("enableSendAsTxDoc") == 1)
+        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].a);
+        if (paramArrayOfQConfItem.has("SendAsTxDoc"))
         {
+          int i = paramArrayOfQConfItem.getJSONObject("SendAsTxDoc").getInt("enableSendAsTxDoc");
+          bool = true;
+          if (i != 1) {
+            break label81;
+          }
           localTencentDocSelectAddDocsBean.a = bool;
           return localTencentDocSelectAddDocsBean;
         }
@@ -35,9 +33,11 @@ public class TencentDocSelectAddDocsBean
       catch (JSONException paramArrayOfQConfItem)
       {
         paramArrayOfQConfItem.printStackTrace();
-        return localTencentDocSelectAddDocsBean;
       }
-      bool = false;
+      return localTencentDocSelectAddDocsBean;
+      return null;
+      label81:
+      boolean bool = false;
     }
   }
   
@@ -48,7 +48,7 @@ public class TencentDocSelectAddDocsBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocSelectAddDocsBean
  * JD-Core Version:    0.7.0.1
  */

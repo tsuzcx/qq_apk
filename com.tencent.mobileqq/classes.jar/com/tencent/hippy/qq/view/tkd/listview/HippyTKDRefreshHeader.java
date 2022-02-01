@@ -22,7 +22,7 @@ import androidx.annotation.NonNull;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mtt.hippy.modules.Promise;
 import com.tencent.mtt.hippy.utils.LogUtils;
 import com.tencent.mtt.hippy.utils.PixelUtil;
@@ -59,34 +59,34 @@ public class HippyTKDRefreshHeader
   public static final int TEXT_MARGING_WITH_BALL;
   UIGdiMeasure gm;
   ObjectAnimator hideAnimator;
-  boolean isSuccess = false;
+  boolean isSuccess;
   LinearGradient mBackGradient;
   AnimatingBall[] mBalls;
   public HippyTKDRefreshHeader.RefreshableCallback mCb;
   int mColor;
   int mColorType;
-  public int mContentheight = CONTENT_HEIGHT + REFRESH_HEADER_TOP_PADDING;
-  HippyTKDRefreshAnimation mCustomAnimation = null;
+  public int mContentheight;
+  HippyTKDRefreshAnimation mCustomAnimation;
   String mCustomCompleteText;
   private View mCustomHippyRefreshView;
-  private HippyTKDCustomRefreshHeader mCustomRefreshHeaderView = null;
+  private HippyTKDCustomRefreshHeader mCustomRefreshHeaderView;
   private View.OnLayoutChangeListener mCustomRefreshViewLayoutChangeListener;
-  int mCustomTipBackgroundColorID = 0;
-  int mCustomTipBgBeginColor = 0;
-  int mCustomTipBgEndColor = 0;
+  int mCustomTipBackgroundColorID;
+  int mCustomTipBgBeginColor;
+  int mCustomTipBgEndColor;
   int mCustomTipTextColor;
-  int mCustomTipTextSize = 0;
+  int mCustomTipTextSize;
   String mDescriptionText;
   int mDescriptionTextColor;
-  int mDescriptionTextFontSize = ImmersiveUtils.dpToPx(12.0F);
-  private boolean mEnableCustomRefreshHeaderView = false;
+  int mDescriptionTextFontSize;
+  private boolean mEnableCustomRefreshHeaderView;
   private IHippyTKDRefreshHeaderEventExtension[] mEventExtensions;
-  private int mHideIndex = 0;
+  private int mHideIndex;
   private View mHostView = null;
   private String mIconUrl = null;
   private int mInitLayerType = 0;
-  HippyTKDRefreshHeader.InternalStageCallback mInternalStageCallback = null;
-  Paint mPaint = new Paint();
+  HippyTKDRefreshHeader.InternalStageCallback mInternalStageCallback;
+  Paint mPaint;
   private HippyTKDRefreshHeader.PendingComplete mPendingCompleteObject = null;
   Promise mPromise;
   public BitmapDrawable mPullDownToRefreshDesIcon;
@@ -95,27 +95,27 @@ public class HippyTKDRefreshHeader
   public int mPullDownToRefreshDistanceBetweenIconText = ImmersiveUtils.dpToPx(8.0F);
   public Drawable mPullDownToRefreshFailIcon;
   public Drawable mPullDownToRefreshSucIcon;
-  public String mPullDownToRefreshTextFail = ResourceUtil.getString(2131718501);
+  public String mPullDownToRefreshTextFail = ResourceUtil.getString(2131718166);
   public HippyTKDUISize mPullDownToRefreshTextFailTextSize = new HippyTKDUISize();
-  public String mPullDownToRefreshTextSuc = ResourceUtil.getString(2131718502);
+  public String mPullDownToRefreshTextSuc = ResourceUtil.getString(2131718167);
   public HippyTKDUISize mPullDownToRefreshTextSucTextSize = new HippyTKDUISize();
   public Drawable mRefreshDrawable;
-  public int mRefreshOffset = CONTENT_HEIGHT + REFRESH_HEADER_TOP_PADDING;
+  public int mRefreshOffset;
   public int mRefreshState = 0;
   float mRefreshToastAlpha;
   float mRefreshToastOffsetY;
   float mRefreshToastSize;
   private boolean mShowRefreshBall = true;
-  boolean mShowRefreshIcon = true;
-  boolean mStatShow5p = false;
-  boolean mStatShow80p = false;
-  Runnable mStayRunnable = new HippyTKDRefreshHeader.1(this);
-  private int mTargetRefreshType = -1;
+  boolean mShowRefreshIcon;
+  boolean mStatShow5p;
+  boolean mStatShow80p;
+  Runnable mStayRunnable;
+  private int mTargetRefreshType;
   int mTipsBgColor;
   private Paint mToastBgPaint = new Paint();
   private RectF mToastBgRect = new RectF();
   PropertyValuesHolder offsetHolderShow;
-  public int refreshBgColor = 0;
+  public int refreshBgColor;
   ObjectAnimator showAnimator;
   
   static
@@ -134,13 +134,35 @@ public class HippyTKDRefreshHeader
   
   public HippyTKDRefreshHeader(HippyTKDRefreshHeader.RefreshableCallback paramRefreshableCallback, boolean paramBoolean)
   {
+    int i = CONTENT_HEIGHT;
+    int j = REFRESH_HEADER_TOP_PADDING;
+    this.mRefreshOffset = (i + j);
+    this.mContentheight = (i + j);
+    this.mPaint = new Paint();
+    this.mShowRefreshIcon = true;
+    this.mCustomAnimation = null;
+    this.refreshBgColor = 0;
+    this.mDescriptionTextFontSize = ImmersiveUtils.dpToPx(12.0F);
+    this.mCustomTipTextSize = 0;
+    this.mCustomTipBackgroundColorID = 0;
+    this.mCustomTipBgBeginColor = 0;
+    this.mCustomTipBgEndColor = 0;
+    this.isSuccess = false;
+    this.mInternalStageCallback = null;
+    this.mStayRunnable = new HippyTKDRefreshHeader.1(this);
+    this.mCustomRefreshHeaderView = null;
+    this.mEnableCustomRefreshHeaderView = false;
+    this.mTargetRefreshType = -1;
+    this.mHideIndex = 0;
+    this.mStatShow5p = false;
+    this.mStatShow80p = false;
     this.mCb = paramRefreshableCallback;
     this.gm = new UIGdiMeasure();
     this.gm.setFontSize(ImmersiveUtils.dpToPx(12.0F));
     this.gm.getStringWidthHeight(this.mPullDownToRefreshTextSuc, this.mPullDownToRefreshTextSucTextSize);
     this.gm.getStringWidthHeight(this.mPullDownToRefreshTextFail, this.mPullDownToRefreshTextFailTextSize);
     this.mBalls = new AnimatingBall[3];
-    int i = 0;
+    i = 0;
     while (i < 3)
     {
       this.mBalls[i] = new AnimatingBall(this, i);
@@ -161,7 +183,7 @@ public class HippyTKDRefreshHeader
     this.hideAnimator.setEvaluator(new FloatEvaluator());
     this.hideAnimator.setInterpolator(new CurvedInterpolator(3));
     this.mCustomRefreshViewLayoutChangeListener = new HippyTKDRefreshHeader.2(this);
-    this.mDescriptionTextColor = ResourceUtil.getColor(2131167273);
+    this.mDescriptionTextColor = ResourceUtil.getColor(2131167299);
   }
   
   private String getStateStr(int paramInt)
@@ -170,20 +192,20 @@ public class HippyTKDRefreshHeader
     {
     default: 
       return "";
-    case 0: 
-      return "WAIT";
-    case 1: 
-      return "ING";
-    case 2: 
-      return "SUCCESSS";
     case 6: 
       return "NOTCARE";
-    case 3: 
-      return "FAILED";
+    case 5: 
+      return "SETTLING";
     case 4: 
       return "PULLING";
+    case 3: 
+      return "FAILED";
+    case 2: 
+      return "SUCCESSS";
+    case 1: 
+      return "ING";
     }
-    return "SETTLING";
+    return "WAIT";
   }
   
   private boolean isCustomRefreshMode()
@@ -196,20 +218,25 @@ public class HippyTKDRefreshHeader
     if (paramInt == this.mRefreshState) {
       return;
     }
-    Log.e("QBRefreshHeader", "setRefreshState:old=" + stateToString(this.mRefreshState) + ",new=" + stateToString(paramInt));
-    switch (this.mRefreshState)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setRefreshState:old=");
+    ((StringBuilder)localObject).append(stateToString(this.mRefreshState));
+    ((StringBuilder)localObject).append(",new=");
+    ((StringBuilder)localObject).append(stateToString(paramInt));
+    Log.e("QBRefreshHeader", ((StringBuilder)localObject).toString());
+    int i = this.mRefreshState;
+    if ((i == 0) || (i == 5))
     {
-    }
-    for (;;)
-    {
-      this.mRefreshState = paramInt;
-      return;
       if (paramInt == 1)
       {
-        int i = 0;
-        while (i < this.mBalls.length)
+        i = 0;
+        for (;;)
         {
-          this.mBalls[i].animateRefresh();
+          localObject = this.mBalls;
+          if (i >= localObject.length) {
+            break;
+          }
+          localObject[i].animateRefresh();
           i += 1;
         }
         this.mRefreshState = paramInt;
@@ -217,13 +244,15 @@ public class HippyTKDRefreshHeader
       }
       Log.d("QBRefreshHeader", "refresh notify");
     }
+    this.mRefreshState = paramInt;
   }
   
   public void addExternalStageInfo(HippyTKDRefreshHeader.ExternalStageInfo paramExternalStageInfo) {}
   
   public void advancedStopRefresh()
   {
-    if ((this.mRefreshState == 2) || (this.mRefreshState == 3))
+    int i = this.mRefreshState;
+    if ((i == 2) || (i == 3))
     {
       stopRefresh();
       hideToast(null, false);
@@ -249,7 +278,10 @@ public class HippyTKDRefreshHeader
   
   public void completeRefresh(int paramInt1, String paramString1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString2, boolean paramBoolean, long paramLong, Promise paramPromise, int paramInt6)
   {
-    Log.d("HippyQBRefreshHeader", "completeRefresh state " + stateToString(this.mRefreshState));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("completeRefresh state ");
+    localStringBuilder.append(stateToString(this.mRefreshState));
+    Log.d("HippyQBRefreshHeader", localStringBuilder.toString());
     this.mCustomTipBgBeginColor = paramInt2;
     this.mCustomTipBgEndColor = paramInt3;
     this.mCustomTipTextColor = paramInt4;
@@ -257,214 +289,179 @@ public class HippyTKDRefreshHeader
     this.mPromise = paramPromise;
     this.mBackGradient = null;
     this.mHideIndex = paramInt6;
-    if ((this.mCustomTipBgBeginColor != 0) && (this.mCustomTipBgEndColor != 0))
-    {
+    if ((this.mCustomTipBgBeginColor != 0) && (this.mCustomTipBgEndColor != 0)) {
       this.offsetHolderShow.setFloatValues(new float[] { 0.0F, 0.0F });
-      if ((!TextUtils.isEmpty(paramString2)) && (this.mHostView != null) && (!TextUtils.equals(this.mIconUrl, paramString2)))
+    } else {
+      this.offsetHolderShow.setFloatValues(new float[] { -this.mContentheight, 0.0F });
+    }
+    if ((!TextUtils.isEmpty(paramString2)) && (this.mHostView != null) && (!TextUtils.equals(this.mIconUrl, paramString2)))
+    {
+      this.mIconUrl = paramString2;
+      fetchImage(paramString2, new HippyTKDRefreshHeader.13(this, paramInt1));
+    }
+    if (TextUtils.isEmpty(paramString2))
+    {
+      this.mIconUrl = null;
+      this.mPullDownToRefreshSucIcon = null;
+      this.mPullDownToRefreshFailIcon = null;
+    }
+    paramInt2 = this.mRefreshState;
+    if (paramInt2 != 1)
+    {
+      if (((paramInt2 != 2) && (paramInt2 != 3)) || ((paramInt1 != 2) && (paramInt1 != 3)))
       {
-        this.mIconUrl = paramString2;
-        fetchImage(paramString2, new HippyTKDRefreshHeader.13(this, paramInt1));
+        if (paramInt1 != 1)
+        {
+          if (this.mPendingCompleteObject == null) {
+            this.mPendingCompleteObject = new HippyTKDRefreshHeader.PendingComplete();
+          }
+          this.mPendingCompleteObject.setPendingCompleteInfo(paramString1, paramBoolean, paramLong);
+        }
+        return;
       }
-      if (TextUtils.isEmpty(paramString2))
-      {
-        this.mIconUrl = null;
-        this.mPullDownToRefreshSucIcon = null;
-        this.mPullDownToRefreshFailIcon = null;
-      }
-      if (this.mRefreshState == 1) {
-        break label397;
-      }
-      if (((this.mRefreshState != 2) && (this.mRefreshState != 3)) || ((paramInt1 != 2) && (paramInt1 != 3))) {
-        break label361;
-      }
-      Log.d("QBRefreshHeader", "completeRefresh:already in success or fail, update toast info, mRefreshState=" + this.mRefreshState);
+      paramString2 = new StringBuilder();
+      paramString2.append("completeRefresh:already in success or fail, update toast info, mRefreshState=");
+      paramString2.append(this.mRefreshState);
+      Log.d("QBRefreshHeader", paramString2.toString());
       if ((!TextUtils.isEmpty(paramString1)) && (!paramString1.equals(this.mCustomCompleteText)))
       {
         this.mCustomCompleteText = paramString1;
         this.mShowRefreshIcon = paramBoolean;
         paramString1 = this.gm;
-        if (this.mCustomTipTextSize == 0) {
-          break label352;
-        }
         paramInt1 = this.mCustomTipTextSize;
+        if (paramInt1 == 0) {
+          paramInt1 = ImmersiveUtils.dpToPx(12.0F);
+        }
         paramString1.setFontSize(paramInt1);
         this.gm.getStringWidthHeight(this.mCustomCompleteText, this.mPullDownToRefreshTextSucTextSize);
         this.gm.getStringWidthHeight(this.mCustomCompleteText, this.mPullDownToRefreshTextFailTextSize);
         postInvalidate();
       }
+      return;
     }
-    label352:
-    label361:
-    while (paramInt1 == 1) {
-      for (;;)
-      {
-        return;
-        this.offsetHolderShow.setFloatValues(new float[] { -this.mContentheight, 0.0F });
-        break;
-        paramInt1 = ImmersiveUtils.dpToPx(12.0F);
-      }
-    }
-    if (this.mPendingCompleteObject == null) {
-      this.mPendingCompleteObject = new HippyTKDRefreshHeader.PendingComplete();
-    }
-    this.mPendingCompleteObject.setPendingCompleteInfo(paramString1, paramBoolean, paramLong);
-    return;
-    label397:
     if (!TextUtils.isEmpty(paramString1))
     {
       this.mCustomCompleteText = paramString1;
       this.mShowRefreshIcon = paramBoolean;
       paramString1 = this.gm;
-      if (this.mCustomTipTextSize != 0)
-      {
-        paramInt2 = this.mCustomTipTextSize;
-        paramString1.setFontSize(paramInt2);
-        this.gm.getStringWidthHeight(this.mCustomCompleteText, this.mPullDownToRefreshTextSucTextSize);
-        this.gm.getStringWidthHeight(this.mCustomCompleteText, this.mPullDownToRefreshTextFailTextSize);
+      paramInt2 = this.mCustomTipTextSize;
+      if (paramInt2 == 0) {
+        paramInt2 = ImmersiveUtils.dpToPx(12.0F);
       }
+      paramString1.setFontSize(paramInt2);
+      this.gm.getStringWidthHeight(this.mCustomCompleteText, this.mPullDownToRefreshTextSucTextSize);
+      this.gm.getStringWidthHeight(this.mCustomCompleteText, this.mPullDownToRefreshTextFailTextSize);
     }
-    else
+    if (this.mCb.getOffsetY() < 0)
     {
-      if (this.mCb.getOffsetY() >= 0) {
-        break label612;
-      }
       Log.d("QBRefreshHeader", "completeRefresh offset<=0");
-      if (paramInt1 != 2) {
-        break label574;
+      if (paramInt1 == 2)
+      {
+        setRefreshState(2);
+        this.isSuccess = true;
       }
-      setRefreshState(2);
-      this.isSuccess = true;
-      label503:
+      else if (paramInt1 == 3)
+      {
+        setRefreshState(3);
+        this.isSuccess = false;
+      }
+      else if (paramInt1 == 1)
+      {
+        setRefreshState(6);
+      }
       this.mCb.removeCallbacksDelegate(this.mStayRunnable);
       this.mCb.removeOnScrollFinishListener();
       paramString1 = this.mCb;
       paramString2 = this.mStayRunnable;
       if (paramInt1 == 1) {
-        break label606;
+        paramLong = 0L;
       }
-    }
-    for (;;)
-    {
       paramString1.postDelayedDelegate(paramString2, paramLong);
       this.mCb.scrollToShowHeaderSmooth(this.mContentheight);
       return;
-      paramInt2 = ImmersiveUtils.dpToPx(12.0F);
-      break;
-      label574:
-      if (paramInt1 == 3)
-      {
-        setRefreshState(3);
-        this.isSuccess = false;
-        break label503;
-      }
-      if (paramInt1 != 1) {
-        break label503;
-      }
-      setRefreshState(6);
-      break label503;
-      label606:
-      paramLong = 0L;
     }
-    label612:
     this.mCb.scrollToTopAtOnce();
     setRefreshState(0);
   }
   
   public void completeRefresh(int paramInt, String paramString, boolean paramBoolean1, long paramLong, boolean paramBoolean2)
   {
-    if (this.mRefreshState != 1)
+    int i = this.mRefreshState;
+    if (i != 1)
     {
-      if (((this.mRefreshState == 2) || (this.mRefreshState == 3)) && ((paramInt == 2) || (paramInt == 3)))
+      if (((i != 2) && (i != 3)) || ((paramInt != 2) && (paramInt != 3)))
       {
-        Log.d("QBRefreshHeader", "completeRefresh:already in success or fail, update toast info, mRefreshState=" + this.mRefreshState);
-        if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals(this.mCustomCompleteText)))
+        if (paramInt != 1)
         {
-          this.mCustomCompleteText = paramString;
-          this.mShowRefreshIcon = paramBoolean1;
-          paramString = this.gm;
-          if (this.mCustomTipTextSize == 0) {
-            break label148;
+          if (this.mPendingCompleteObject == null) {
+            this.mPendingCompleteObject = new HippyTKDRefreshHeader.PendingComplete();
           }
-          paramInt = this.mCustomTipTextSize;
-          paramString.setFontSize(paramInt);
-          this.gm.getStringWidthHeight(this.mCustomCompleteText, this.mPullDownToRefreshTextSucTextSize);
-          this.gm.getStringWidthHeight(this.mCustomCompleteText, this.mPullDownToRefreshTextFailTextSize);
-          postInvalidate();
+          this.mPendingCompleteObject.setPendingCompleteInfo(paramString, paramBoolean1, paramLong);
         }
+        return;
       }
-      label148:
-      while (paramInt == 1) {
-        for (;;)
-        {
-          return;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("completeRefresh:already in success or fail, update toast info, mRefreshState=");
+      ((StringBuilder)localObject).append(this.mRefreshState);
+      Log.d("QBRefreshHeader", ((StringBuilder)localObject).toString());
+      if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals(this.mCustomCompleteText)))
+      {
+        this.mCustomCompleteText = paramString;
+        this.mShowRefreshIcon = paramBoolean1;
+        paramString = this.gm;
+        paramInt = this.mCustomTipTextSize;
+        if (paramInt == 0) {
           paramInt = ImmersiveUtils.dpToPx(12.0F);
         }
+        paramString.setFontSize(paramInt);
+        this.gm.getStringWidthHeight(this.mCustomCompleteText, this.mPullDownToRefreshTextSucTextSize);
+        this.gm.getStringWidthHeight(this.mCustomCompleteText, this.mPullDownToRefreshTextFailTextSize);
+        postInvalidate();
       }
-      if (this.mPendingCompleteObject == null) {
-        this.mPendingCompleteObject = new HippyTKDRefreshHeader.PendingComplete();
-      }
-      this.mPendingCompleteObject.setPendingCompleteInfo(paramString, paramBoolean1, paramLong);
       return;
     }
-    int i;
-    label304:
-    Runnable localRunnable;
     if (!TextUtils.isEmpty(paramString))
     {
       this.mCustomCompleteText = paramString;
       this.mShowRefreshIcon = paramBoolean1;
       paramString = this.gm;
-      if (this.mCustomTipTextSize != 0)
-      {
-        i = this.mCustomTipTextSize;
-        paramString.setFontSize(i);
-        this.gm.getStringWidthHeight(this.mCustomCompleteText, this.mPullDownToRefreshTextSucTextSize);
-        this.gm.getStringWidthHeight(this.mCustomCompleteText, this.mPullDownToRefreshTextFailTextSize);
+      i = this.mCustomTipTextSize;
+      if (i == 0) {
+        i = ImmersiveUtils.dpToPx(12.0F);
       }
+      paramString.setFontSize(i);
+      this.gm.getStringWidthHeight(this.mCustomCompleteText, this.mPullDownToRefreshTextSucTextSize);
+      this.gm.getStringWidthHeight(this.mCustomCompleteText, this.mPullDownToRefreshTextFailTextSize);
     }
-    else
+    if ((this.mCb.getOffsetY() >= 0) && (!paramBoolean2))
     {
-      if ((this.mCb.getOffsetY() >= 0) && (!paramBoolean2)) {
-        break label401;
-      }
-      Log.d("QBRefreshHeader", "completeRefresh offset<=0");
-      if (paramInt != 2) {
-        break label363;
-      }
+      this.mCb.scrollToTopAtOnce();
+      setRefreshState(0);
+      return;
+    }
+    Log.d("QBRefreshHeader", "completeRefresh offset<=0");
+    if (paramInt == 2)
+    {
       setRefreshState(2);
       this.isSuccess = true;
-      this.mCb.removeCallbacksDelegate(this.mStayRunnable);
-      this.mCb.removeOnScrollFinishListener();
-      paramString = this.mCb;
-      localRunnable = this.mStayRunnable;
-      if (paramInt == 1) {
-        break label395;
-      }
     }
-    for (;;)
+    else if (paramInt == 3)
     {
-      paramString.postDelayedDelegate(localRunnable, paramLong);
-      return;
-      i = ImmersiveUtils.dpToPx(12.0F);
-      break;
-      label363:
-      if (paramInt == 3)
-      {
-        setRefreshState(3);
-        this.isSuccess = false;
-        break label304;
-      }
-      if (paramInt != 1) {
-        break label304;
-      }
+      setRefreshState(3);
+      this.isSuccess = false;
+    }
+    else if (paramInt == 1)
+    {
       setRefreshState(6);
-      break label304;
-      label395:
+    }
+    this.mCb.removeCallbacksDelegate(this.mStayRunnable);
+    this.mCb.removeOnScrollFinishListener();
+    paramString = this.mCb;
+    Object localObject = this.mStayRunnable;
+    if (paramInt == 1) {
       paramLong = 0L;
     }
-    label401:
-    this.mCb.scrollToTopAtOnce();
-    setRefreshState(0);
+    paramString.postDelayedDelegate((Runnable)localObject, paramLong);
   }
   
   public void fetchImage(String paramString, @NonNull HippyTKDRefreshHeader.ImageRequestListener paramImageRequestListener)
@@ -479,12 +476,12 @@ public class HippyTKDRefreshHeader
     ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = new ColorDrawable(0);
     localObject = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
     ((URLDrawable)localObject).setURLDrawableListener(new HippyTKDRefreshHeader.14(this, paramImageRequestListener, paramString));
-    if ((((URLDrawable)localObject).getStatus() == 2) || (((URLDrawable)localObject).getStatus() == 3))
+    if ((((URLDrawable)localObject).getStatus() != 2) && (((URLDrawable)localObject).getStatus() != 3))
     {
-      ((URLDrawable)localObject).restartDownload();
+      ((URLDrawable)localObject).startDownload();
       return;
     }
-    ((URLDrawable)localObject).startDownload();
+    ((URLDrawable)localObject).restartDownload();
   }
   
   public int getRefreshState()
@@ -515,11 +512,11 @@ public class HippyTKDRefreshHeader
     {
       this.hideAnimator.addListener(new HippyTKDRefreshHeader.6(this, paramRunnable));
       this.hideAnimator.start();
-    }
-    while (paramRunnable == null) {
       return;
     }
-    paramRunnable.run();
+    if (paramRunnable != null) {
+      paramRunnable.run();
+    }
   }
   
   public boolean isInRefreshArea()
@@ -535,7 +532,25 @@ public class HippyTKDRefreshHeader
   
   public boolean isRefreshing()
   {
-    return (this.mRefreshState == 1) || (this.mRefreshState == 3) || (this.mRefreshState == 2) || (this.mRefreshState == 6);
+    int i = this.mRefreshState;
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (i != 1)
+    {
+      bool1 = bool2;
+      if (i != 3)
+      {
+        bool1 = bool2;
+        if (i != 2)
+        {
+          if (i == 6) {
+            return true;
+          }
+          bool1 = false;
+        }
+      }
+    }
+    return bool1;
   }
   
   public void onCancelTouch()
@@ -548,39 +563,49 @@ public class HippyTKDRefreshHeader
   public void onDraw(Canvas paramCanvas)
   {
     boolean bool = isCustomRefreshMode();
-    int i = 1;
-    int j = 1;
     int k = 255;
+    int n = 0;
+    Object localObject1;
+    int i;
+    int j;
+    int m;
     if (bool)
     {
-      if ((this.mCustomRefreshHeaderView == null) || (!this.mCustomRefreshHeaderView.isShowMasterRefreshText())) {
-        break label213;
+      localObject1 = this.mCustomRefreshHeaderView;
+      if ((localObject1 != null) && (((HippyTKDCustomRefreshHeader)localObject1).isShowMasterRefreshText())) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      i = 1;
-      if ((this.mCustomRefreshHeaderView == null) || (!this.mCustomRefreshHeaderView.isShowMasterRefreshToastBg())) {
-        break label219;
+      localObject1 = this.mCustomRefreshHeaderView;
+      if ((localObject1 != null) && (((HippyTKDCustomRefreshHeader)localObject1).isShowMasterRefreshToastBg())) {
+        j = 1;
+      } else {
+        j = 0;
       }
-      j = 1;
-      label62:
-      if (this.mCustomRefreshHeaderView == null) {
-        break label225;
+      localObject1 = this.mCustomRefreshHeaderView;
+      if (localObject1 != null) {
+        k = ((HippyTKDCustomRefreshHeader)localObject1).getMasterRefreshTextAlpha();
       }
-    }
-    int i1;
-    label213:
-    label219:
-    label225:
-    for (k = this.mCustomRefreshHeaderView.getMasterRefreshTextAlpha();; k = 255)
-    {
       this.mCustomRefreshHeaderView.onTranslating(-this.mCb.getOffsetY());
       paramCanvas.save();
       paramCanvas.translate(0.0F, -this.mCb.getOffsetY() - this.mCustomRefreshHeaderView.getRefreshViewHeight());
       this.mCustomRefreshHeaderView.draw(paramCanvas);
       paramCanvas.restore();
-      i1 = paramCanvas.save();
-      if ((this.mCustomHippyRefreshView == null) || (this.mRefreshState == 0)) {
-        break label233;
-      }
+      m = j;
+      j = i;
+      i = k;
+      k = m;
+    }
+    else
+    {
+      j = 1;
+      i = 255;
+      k = 1;
+    }
+    int i1 = paramCanvas.save();
+    if ((this.mCustomHippyRefreshView != null) && (this.mRefreshState != 0))
+    {
       paramCanvas.save();
       paramCanvas.translate(0.0F, -this.mCb.getOffsetY() - this.mCustomHippyRefreshView.getHeight());
       this.mCustomHippyRefreshView.draw(paramCanvas);
@@ -588,284 +613,252 @@ public class HippyTKDRefreshHeader
       paramCanvas.restore();
       paramCanvas.restoreToCount(i1);
       return;
-      i = 0;
-      break;
-      j = 0;
-      break label62;
     }
-    label233:
     if (!bool)
     {
       this.mPaint.setColor(this.refreshBgColor);
       paramCanvas.drawRect(0.0F, 0.0F, this.mCb.getWidth(), -this.mCb.getOffsetY(), this.mPaint);
     }
-    int n = (this.mCb.getWidth() - (AnimatingBall.BALL_SIZE * 2 + BALL_MARGIN_H * 2)) / 2;
-    if ((this.mShowRefreshBall) && (this.mRefreshState != 3) && (this.mRefreshState != 2))
+    int i2 = (this.mCb.getWidth() - (AnimatingBall.BALL_SIZE * 2 + BALL_MARGIN_H * 2)) / 2;
+    if (this.mShowRefreshBall)
     {
-      if (this.mCustomAnimation != null) {
-        this.mCustomAnimation.draw(paramCanvas, this.mCb.getOffsetY(), 2147483647, n);
-      }
-      for (;;)
+      m = this.mRefreshState;
+      if ((m != 3) && (m != 2))
       {
-        if ((this.mPullDownToRefreshDesIcon == null) || (this.mPullDownToRefreshDesIcon.getBitmap() == null) || (this.mPullDownToRefreshDesIcon.getBitmap().isRecycled())) {
-          break label1533;
-        }
-        try
+        localObject1 = this.mCustomAnimation;
+        if (localObject1 != null)
         {
-          m = (this.mCb.getWidth() - this.mPullDownToRefreshDesIconWidth) / 2;
-          n = -this.mCb.getOffsetY() - this.mContentheight - this.mPullDownToRefreshDesIconHeigth - ImmersiveUtils.dpToPx(0.0F);
-          if (ThemeUtil.isNowThemeIsNight(null, false, null)) {
-            this.mPullDownToRefreshDesIcon.setColorFilter(-2147483648, PorterDuff.Mode.SRC_ATOP);
-          }
+          ((HippyTKDRefreshAnimation)localObject1).draw(paramCanvas, this.mCb.getOffsetY(), 2147483647, i2);
+        }
+        else if (!bool)
+        {
+          m = 0;
           for (;;)
           {
-            this.mPullDownToRefreshDesIcon.setBounds(m, n, this.mPullDownToRefreshDesIconWidth + m, this.mPullDownToRefreshDesIconHeigth + n);
-            this.mPullDownToRefreshDesIcon.draw(paramCanvas);
-            if ((this.mStatShow80p) || (-(this.mCb.getOffsetY() + this.mContentheight) / this.mPullDownToRefreshDesIconHeigth <= 0.8D)) {
-              break label1444;
-            }
-            this.mStatShow80p = true;
-            if (this.mEventExtensions == null) {
-              break label1444;
-            }
-            IHippyTKDRefreshHeaderEventExtension[] arrayOfIHippyTKDRefreshHeaderEventExtension = this.mEventExtensions;
-            n = arrayOfIHippyTKDRefreshHeaderEventExtension.length;
-            m = 0;
-            while (m < n)
-            {
-              arrayOfIHippyTKDRefreshHeaderEventExtension[m].onRefreshHeaderShow80P();
-              m += 1;
-            }
-            if (bool) {
+            localObject1 = this.mBalls;
+            if (m >= localObject1.length) {
               break;
             }
-            m = 0;
-            while (m < this.mBalls.length)
-            {
-              this.mBalls[m].draw(paramCanvas, this.mCb.getOffsetY(), 2147483647, n);
-              m += 1;
-            }
-            this.mPullDownToRefreshDesIcon.clearColorFilter();
-          }
-          if (this.mRefreshToastOffsetY <= -this.mContentheight) {
-            break label1437;
+            localObject1[m].draw(paramCanvas, this.mCb.getOffsetY(), 2147483647, i2);
+            m += 1;
           }
         }
-        catch (Exception localException) {}
+        localObject1 = this.mPullDownToRefreshDesIcon;
+        if ((localObject1 == null) || (((BitmapDrawable)localObject1).getBitmap() == null) || (this.mPullDownToRefreshDesIcon.getBitmap().isRecycled())) {}
       }
     }
-    int i2 = paramCanvas.saveLayerAlpha(0.0F, this.mRefreshToastOffsetY, this.mCb.getWidth(), this.mContentheight, (int)(255.0F * this.mRefreshToastAlpha), 31);
-    int m = this.mPaint.getAlpha();
-    label752:
-    float f1;
-    Object localObject1;
-    float f2;
-    label970:
-    label986:
-    label1002:
-    Object localObject2;
-    label1021:
-    Drawable localDrawable;
-    if (j != 0)
+    try
     {
-      paramCanvas.translate(0.0F, this.mRefreshToastOffsetY);
-      paramCanvas.clipRect(0, 0, this.mCb.getWidth(), this.mContentheight);
-      if (this.mCustomTipBackgroundColorID != 0)
+      m = (this.mCb.getWidth() - this.mPullDownToRefreshDesIconWidth) / 2;
+      i2 = -this.mCb.getOffsetY() - this.mContentheight - this.mPullDownToRefreshDesIconHeigth - ImmersiveUtils.dpToPx(0.0F);
+      if (ThemeUtil.isNowThemeIsNight(null, false, null)) {
+        this.mPullDownToRefreshDesIcon.setColorFilter(-2147483648, PorterDuff.Mode.SRC_ATOP);
+      } else {
+        this.mPullDownToRefreshDesIcon.clearColorFilter();
+      }
+      this.mPullDownToRefreshDesIcon.setBounds(m, i2, this.mPullDownToRefreshDesIconWidth + m, this.mPullDownToRefreshDesIconHeigth + i2);
+      this.mPullDownToRefreshDesIcon.draw(paramCanvas);
+      if ((!this.mStatShow80p) && (-(this.mCb.getOffsetY() + this.mContentheight) / this.mPullDownToRefreshDesIconHeigth > 0.8D))
       {
-        j = ResourceUtil.getColor(this.mCustomTipBackgroundColorID);
-        paramCanvas.drawColor(j);
-        this.mPaint.setAlpha(Color.alpha(this.mCustomTipBgBeginColor));
-        if (this.mBackGradient == null)
+        this.mStatShow80p = true;
+        if (this.mEventExtensions != null)
         {
-          f1 = this.mCb.getWidth();
-          j = this.mCustomTipBgBeginColor;
-          n = this.mCustomTipBgEndColor;
-          localObject1 = Shader.TileMode.CLAMP;
-          this.mBackGradient = new LinearGradient(0.0F, 0.0F, f1, 0.0F, new int[] { j, n }, null, (Shader.TileMode)localObject1);
-        }
-        this.mPaint.setShader(this.mBackGradient);
-        f1 = this.mCb.getWidth() / 2;
-        f2 = this.mCb.getWidth() / 2;
-        float f3 = this.mRefreshToastSize;
-        float f4 = this.mCb.getWidth() / 2;
-        paramCanvas.drawRect(f1 - f2 * f3, 0.0F, this.mCb.getWidth() / 2 * this.mRefreshToastSize + f4, this.mContentheight, this.mPaint);
-      }
-    }
-    else
-    {
-      this.mPaint.setShader(null);
-      this.mPaint.setAlpha(m);
-      if (TextUtils.isEmpty(this.mCustomCompleteText)) {
-        break label1677;
-      }
-      localObject1 = this.mCustomCompleteText;
-      if (this.isSuccess) {
-        break label1702;
-      }
-      j = this.mPullDownToRefreshTextFailTextSize.mWidth;
-      if (this.isSuccess) {
-        break label1714;
-      }
-      m = this.mPullDownToRefreshTextFailTextSize.mHeight;
-      localObject2 = this.mPaint;
-      if (this.mCustomTipTextSize == 0) {
-        break label1726;
-      }
-      f1 = this.mCustomTipTextSize;
-      ((Paint)localObject2).setTextSize(f1);
-      localObject2 = this.mPaint;
-      if (this.mCustomTipTextColor == 0) {
-        break label1736;
-      }
-      n = this.mCustomTipTextColor;
-      label1046:
-      ((Paint)localObject2).setColor(n);
-      f1 = (this.mContentheight - REFRESH_HEADER_TOP_PADDING - m) / 2 + REFRESH_HEADER_TOP_PADDING;
-      if (!this.mShowRefreshIcon) {
-        break label1827;
-      }
-      if (i != 0)
-      {
-        m = paramCanvas.save();
-        if (!this.isSuccess) {
-          break label1754;
-        }
-        if (this.mPullDownToRefreshSucIcon == null)
-        {
-          localObject2 = ResourceUtil.getBitmap(2130851103);
-          if (this.mCustomTipTextColor == 0) {
-            break label1745;
+          localObject1 = this.mEventExtensions;
+          i2 = localObject1.length;
+          m = 0;
+          while (m < i2)
+          {
+            localObject1[m].onRefreshHeaderShow80P();
+            m += 1;
           }
-          i = this.mCustomTipTextColor;
-          label1125:
-          this.mPullDownToRefreshSucIcon = UIBitmapUtils.getColorImage((Bitmap)localObject2, i);
-        }
-        localObject2 = this.mPullDownToRefreshSucIcon;
-        localDrawable = null;
-        if (this.mTargetRefreshType == 3)
-        {
-          if (!ThemeUtil.isNowThemeIsNight(null, false, "")) {
-            break label1811;
-          }
-          i = -2147483648;
-          label1169:
-          localDrawable = UIBitmapUtils.getColorImage(ResourceUtil.getBitmap(2130851101), i);
-        }
-        n = this.mCb.getWidth();
-        int i3 = ((Drawable)localObject2).getIntrinsicWidth();
-        int i4 = this.mPullDownToRefreshDistanceBetweenIconText;
-        if (localDrawable != null) {
-          break label1817;
-        }
-        i = 0;
-        label1214:
-        i = (n - i3 - i4 - j - i) / 2;
-        n = (this.mContentheight - REFRESH_HEADER_TOP_PADDING - ((Drawable)localObject2).getIntrinsicHeight()) / 2 + REFRESH_HEADER_TOP_PADDING;
-        ((Drawable)localObject2).setBounds(i, n, ((Drawable)localObject2).getIntrinsicWidth() + i, ((Drawable)localObject2).getIntrinsicHeight() + n);
-        ((Drawable)localObject2).setAlpha(k);
-        ((Drawable)localObject2).draw(paramCanvas);
-        paramCanvas.restoreToCount(m);
-        this.mPaint.setAlpha(k);
-        UIStringUtils.drawText(paramCanvas, this.mPaint, ((Drawable)localObject2).getIntrinsicWidth() + i + this.mPullDownToRefreshDistanceBetweenIconText, f1, (String)localObject1);
-        if ((this.mTargetRefreshType == 3) && (localDrawable != null))
-        {
-          i = (int)(((Drawable)localObject2).getIntrinsicWidth() + i + this.mPullDownToRefreshDistanceBetweenIconText + j + PixelUtil.dp2px(8.0F));
-          j = (this.mContentheight - REFRESH_HEADER_TOP_PADDING - localDrawable.getIntrinsicHeight()) / 2 + REFRESH_HEADER_TOP_PADDING;
-          localDrawable.setBounds(i, j, localDrawable.getIntrinsicWidth() + i, localDrawable.getIntrinsicHeight() + j);
-          localDrawable.setAlpha(k);
-          localDrawable.draw(paramCanvas);
         }
       }
-    }
-    for (;;)
-    {
-      paramCanvas.restoreToCount(i2);
-      label1437:
-      paramCanvas.restoreToCount(i1);
-      return;
-      label1444:
       if ((this.mStatShow5p) || (-(this.mCb.getOffsetY() + this.mContentheight) / this.mPullDownToRefreshDesIconHeigth <= 0.05D)) {
-        break;
+        break label900;
       }
       this.mStatShow5p = true;
       if (this.mEventExtensions == null) {
-        break;
+        break label900;
       }
       localObject1 = this.mEventExtensions;
-      n = localObject1.length;
+      i2 = localObject1.length;
       m = 0;
-      while (m < n)
+      while (m < i2)
       {
         localObject1[m].onRefreshHeaderShow5P();
         m += 1;
       }
-      break;
-      label1533:
-      if ((TextUtils.isEmpty(this.mDescriptionText)) || (i == 0)) {
-        break;
-      }
+    }
+    catch (Exception localException)
+    {
+      label765:
+      float f1;
+      int i3;
+      float f2;
+      float f3;
+      float f4;
+      Drawable localDrawable;
+      Object localObject2;
+      int i4;
+      int i5;
+      break label765;
+    }
+    if ((!TextUtils.isEmpty(this.mDescriptionText)) && (j != 0))
+    {
       this.mPaint.setTextSize(this.mDescriptionTextFontSize);
       this.mPaint.setColor(this.mDescriptionTextColor);
-      n = UIUtilBase.getTextWidth(this.mDescriptionText, this.mPaint, this.mDescriptionTextFontSize);
+      i2 = UIUtilBase.getTextWidth(this.mDescriptionText, this.mPaint, this.mDescriptionTextFontSize);
       m = UIUtilBase.getTextHeight(this.mPaint, this.mDescriptionTextFontSize);
-      n = (this.mCb.getWidth() - n) / 2;
-      this.mPaint.setAlpha(k);
-      UIStringUtils.drawText(paramCanvas, this.mPaint, n, -this.mCb.getOffsetY() - this.mContentheight - m - ImmersiveUtils.dpToPx(0.0F), this.mDescriptionText);
-      break;
-      j = this.mTipsBgColor;
-      break label752;
-      label1677:
-      if (this.isSuccess)
+      i2 = (this.mCb.getWidth() - i2) / 2;
+      this.mPaint.setAlpha(i);
+      UIStringUtils.drawText(paramCanvas, this.mPaint, i2, -this.mCb.getOffsetY() - this.mContentheight - m - ImmersiveUtils.dpToPx(0.0F), this.mDescriptionText);
+    }
+    label900:
+    f1 = this.mRefreshToastOffsetY;
+    if (f1 > -this.mContentheight)
+    {
+      m = paramCanvas.saveLayerAlpha(0.0F, f1, this.mCb.getWidth(), this.mContentheight, (int)(this.mRefreshToastAlpha * 255.0F), 31);
+      i2 = this.mPaint.getAlpha();
+      if (k != 0)
       {
-        localObject1 = this.mPullDownToRefreshTextSuc;
-        break label970;
+        paramCanvas.translate(0.0F, this.mRefreshToastOffsetY);
+        paramCanvas.clipRect(0, 0, this.mCb.getWidth(), this.mContentheight);
+        k = this.mCustomTipBackgroundColorID;
+        if (k != 0) {
+          k = ResourceUtil.getColor(k);
+        } else {
+          k = this.mTipsBgColor;
+        }
+        paramCanvas.drawColor(k);
+        this.mPaint.setAlpha(Color.alpha(this.mCustomTipBgBeginColor));
+        if (this.mBackGradient == null)
+        {
+          f1 = this.mCb.getWidth();
+          k = this.mCustomTipBgBeginColor;
+          i3 = this.mCustomTipBgEndColor;
+          localObject1 = Shader.TileMode.CLAMP;
+          this.mBackGradient = new LinearGradient(0.0F, 0.0F, f1, 0.0F, new int[] { k, i3 }, null, (Shader.TileMode)localObject1);
+        }
+        this.mPaint.setShader(this.mBackGradient);
+        f1 = this.mCb.getWidth() / 2;
+        f2 = this.mCb.getWidth() / 2;
+        f3 = this.mRefreshToastSize;
+        f4 = this.mCb.getWidth() / 2;
+        paramCanvas.drawRect(f1 - f2 * f3, 0.0F, this.mCb.getWidth() / 2 * this.mRefreshToastSize + f4, this.mContentheight, this.mPaint);
       }
-      localObject1 = this.mPullDownToRefreshTextFail;
-      break label970;
-      label1702:
-      j = this.mPullDownToRefreshTextSucTextSize.mWidth;
-      break label986;
-      label1714:
-      m = this.mPullDownToRefreshTextSucTextSize.mHeight;
-      break label1002;
-      label1726:
-      f1 = ImmersiveUtils.dpToPx(12.0F);
-      break label1021;
-      label1736:
-      n = this.mColor;
-      break label1046;
-      label1745:
-      i = this.mColor;
-      break label1125;
-      label1754:
-      if (this.mPullDownToRefreshFailIcon == null)
+      localObject1 = this.mPaint;
+      localDrawable = null;
+      ((Paint)localObject1).setShader(null);
+      this.mPaint.setAlpha(i2);
+      if (!TextUtils.isEmpty(this.mCustomCompleteText)) {
+        localObject1 = this.mCustomCompleteText;
+      } else if (this.isSuccess) {
+        localObject1 = this.mPullDownToRefreshTextSuc;
+      } else {
+        localObject1 = this.mPullDownToRefreshTextFail;
+      }
+      if (!this.isSuccess) {
+        localObject2 = this.mPullDownToRefreshTextFailTextSize;
+      } else {
+        localObject2 = this.mPullDownToRefreshTextSucTextSize;
+      }
+      i2 = ((HippyTKDUISize)localObject2).mWidth;
+      if (!this.isSuccess) {
+        localObject2 = this.mPullDownToRefreshTextFailTextSize;
+      } else {
+        localObject2 = this.mPullDownToRefreshTextSucTextSize;
+      }
+      i3 = ((HippyTKDUISize)localObject2).mHeight;
+      localObject2 = this.mPaint;
+      k = this.mCustomTipTextSize;
+      if (k == 0) {
+        k = ImmersiveUtils.dpToPx(12.0F);
+      }
+      ((Paint)localObject2).setTextSize(k);
+      localObject2 = this.mPaint;
+      k = this.mCustomTipTextColor;
+      if (k == 0) {
+        k = this.mColor;
+      }
+      ((Paint)localObject2).setColor(k);
+      k = this.mContentheight;
+      i4 = REFRESH_HEADER_TOP_PADDING;
+      f1 = (k - i4 - i3) / 2 + i4;
+      if (this.mShowRefreshIcon)
       {
-        localObject2 = ResourceUtil.getBitmap(2130851102);
-        if (this.mCustomTipTextColor == 0) {
-          break label1802;
+        if (j != 0)
+        {
+          k = paramCanvas.save();
+          if (this.isSuccess)
+          {
+            if (this.mPullDownToRefreshSucIcon == null)
+            {
+              localObject2 = ResourceUtil.getBitmap(2130851017);
+              j = this.mCustomTipTextColor;
+              if (j == 0) {
+                j = this.mColor;
+              }
+              this.mPullDownToRefreshSucIcon = UIBitmapUtils.getColorImage((Bitmap)localObject2, j);
+            }
+            localObject2 = this.mPullDownToRefreshSucIcon;
+          }
+          else
+          {
+            if (this.mPullDownToRefreshFailIcon == null)
+            {
+              localObject2 = ResourceUtil.getBitmap(2130851016);
+              j = this.mCustomTipTextColor;
+              if (j == 0) {
+                j = this.mColor;
+              }
+              this.mPullDownToRefreshFailIcon = UIBitmapUtils.getColorImage((Bitmap)localObject2, j);
+            }
+            localObject2 = this.mPullDownToRefreshFailIcon;
+          }
+          if (this.mTargetRefreshType == 3)
+          {
+            if (ThemeUtil.isNowThemeIsNight(null, false, "")) {
+              j = -2147483648;
+            } else {
+              j = 0;
+            }
+            localDrawable = UIBitmapUtils.getColorImage(ResourceUtil.getBitmap(2130851015), j);
+          }
+          i3 = this.mCb.getWidth();
+          i4 = ((Drawable)localObject2).getIntrinsicWidth();
+          i5 = this.mPullDownToRefreshDistanceBetweenIconText;
+          if (localDrawable == null) {
+            j = n;
+          } else {
+            j = localDrawable.getIntrinsicWidth();
+          }
+          j = (i3 - i4 - i5 - i2 - j) / 2;
+          n = (this.mContentheight - REFRESH_HEADER_TOP_PADDING - ((Drawable)localObject2).getIntrinsicHeight()) / 2 + REFRESH_HEADER_TOP_PADDING;
+          ((Drawable)localObject2).setBounds(j, n, ((Drawable)localObject2).getIntrinsicWidth() + j, n + ((Drawable)localObject2).getIntrinsicHeight());
+          ((Drawable)localObject2).setAlpha(i);
+          ((Drawable)localObject2).draw(paramCanvas);
+          paramCanvas.restoreToCount(k);
+          this.mPaint.setAlpha(i);
+          UIStringUtils.drawText(paramCanvas, this.mPaint, ((Drawable)localObject2).getIntrinsicWidth() + j + this.mPullDownToRefreshDistanceBetweenIconText, f1, (String)localObject1);
+          if ((this.mTargetRefreshType == 3) && (localDrawable != null))
+          {
+            j = (int)(j + ((Drawable)localObject2).getIntrinsicWidth() + this.mPullDownToRefreshDistanceBetweenIconText + i2 + PixelUtil.dp2px(8.0F));
+            k = (this.mContentheight - REFRESH_HEADER_TOP_PADDING - localDrawable.getIntrinsicHeight()) / 2 + REFRESH_HEADER_TOP_PADDING;
+            localDrawable.setBounds(j, k, localDrawable.getIntrinsicWidth() + j, localDrawable.getIntrinsicHeight() + k);
+            localDrawable.setAlpha(i);
+            localDrawable.draw(paramCanvas);
+          }
         }
       }
-      label1802:
-      for (i = this.mCustomTipTextColor;; i = this.mColor)
+      else if (j != 0)
       {
-        this.mPullDownToRefreshFailIcon = UIBitmapUtils.getColorImage((Bitmap)localObject2, i);
-        localObject2 = this.mPullDownToRefreshFailIcon;
-        break;
-      }
-      label1811:
-      i = 0;
-      break label1169;
-      label1817:
-      i = localDrawable.getIntrinsicWidth();
-      break label1214;
-      label1827:
-      if (i != 0)
-      {
-        f2 = (this.mCb.getWidth() - j) / 2.0F;
-        this.mPaint.setAlpha(k);
+        f2 = (this.mCb.getWidth() - i2) / 2.0F;
+        this.mPaint.setAlpha(i);
         UIStringUtils.drawText(paramCanvas, this.mPaint, f2, f1, (String)localObject1);
       }
+      paramCanvas.restoreToCount(m);
     }
+    paramCanvas.restoreToCount(i1);
   }
   
   public boolean onScrolled()
@@ -878,22 +871,23 @@ public class HippyTKDRefreshHeader
       Log.d("QBRefreshHeader", "setRefreshState ee");
       setRefreshState(4);
     }
-    for (;;)
+    else
     {
-      if (this.mCb.getOffsetY() >= 0)
-      {
-        this.mStatShow80p = false;
-        this.mStatShow5p = false;
-      }
-      return true;
       setRefreshState(0);
     }
+    if (this.mCb.getOffsetY() >= 0)
+    {
+      this.mStatShow80p = false;
+      this.mStatShow5p = false;
+    }
+    return true;
   }
   
   public void onSwitchSkin()
   {
-    if (this.mColorType != 3) {
-      setRefreshBallColor(this.mColorType);
+    int i = this.mColorType;
+    if (i != 3) {
+      setRefreshBallColor(i);
     }
   }
   
@@ -907,8 +901,10 @@ public class HippyTKDRefreshHeader
     }
     if (isInRefreshArea())
     {
-      if (this.mRefreshState == 4)
+      int i = this.mRefreshState;
+      if (i == 4)
       {
+        HippyTKDRefreshHeader.InternalStageCallback localInternalStageCallback;
         if (this.mCb.getOffsetY() < -this.mRefreshOffset)
         {
           Log.d("QBRefreshHeader", "onUpAction,scroll to show header");
@@ -916,29 +912,33 @@ public class HippyTKDRefreshHeader
           this.mCb.scrollToShowHeader(this.mRefreshOffset, new HippyTKDRefreshHeader.8(this));
           Log.d("QBRefreshHeader", "setRefreshState cc");
           setRefreshState(5);
-          if (this.mInternalStageCallback != null) {
-            this.mInternalStageCallback.onUpAction(1);
+          localInternalStageCallback = this.mInternalStageCallback;
+          if (localInternalStageCallback != null)
+          {
+            localInternalStageCallback.onUpAction(1);
+            return true;
           }
         }
-        for (;;)
+        else
         {
-          return true;
           Log.d("QBRefreshHeader", "onUpAction,scrollToTop");
           this.mCb.scrollToTop(new HippyTKDRefreshHeader.9(this), 0);
           Log.d("QBRefreshHeader", "setRefreshState dd");
           setRefreshState(5);
-          if (this.mInternalStageCallback != null) {
-            this.mInternalStageCallback.onUpAction(0);
+          localInternalStageCallback = this.mInternalStageCallback;
+          if (localInternalStageCallback != null) {
+            localInternalStageCallback.onUpAction(0);
           }
         }
-      }
-      if ((this.mRefreshState == 1) || (this.mRefreshState == 2) || (this.mRefreshState == 3))
-      {
-        Log.d("QBRefreshHeader", "onUpAction,pulling");
         return true;
       }
-      Log.d("QBRefreshHeader", "onUpAction,not pulling or settling");
-      return false;
+      if ((i != 1) && (i != 2) && (i != 3))
+      {
+        Log.d("QBRefreshHeader", "onUpAction,not pulling or settling");
+        return false;
+      }
+      Log.d("QBRefreshHeader", "onUpAction,pulling");
+      return true;
     }
     Log.d("QBRefreshHeader", "onUpAction,not in overscroll area");
     return false;
@@ -958,19 +958,20 @@ public class HippyTKDRefreshHeader
   {
     if (this.mRefreshState == 1)
     {
-      if (this.mCustomAnimation == null) {
-        break label25;
-      }
-      this.mCustomAnimation.animateRefresh();
-    }
-    for (;;)
-    {
-      return;
-      label25:
-      int i = 0;
-      while (i < this.mBalls.length)
+      Object localObject = this.mCustomAnimation;
+      if (localObject != null)
       {
-        this.mBalls[i].animateRefresh();
+        ((HippyTKDRefreshAnimation)localObject).animateRefresh();
+        return;
+      }
+      int i = 0;
+      for (;;)
+      {
+        localObject = this.mBalls;
+        if (i >= localObject.length) {
+          break;
+        }
+        localObject[i].animateRefresh();
         i += 1;
       }
     }
@@ -984,8 +985,9 @@ public class HippyTKDRefreshHeader
   
   public void setCustomHippyRefreshView(View paramView)
   {
-    if (this.mCustomHippyRefreshView != null) {
-      this.mCustomHippyRefreshView.removeOnLayoutChangeListener(this.mCustomRefreshViewLayoutChangeListener);
+    View localView = this.mCustomHippyRefreshView;
+    if (localView != null) {
+      localView.removeOnLayoutChangeListener(this.mCustomRefreshViewLayoutChangeListener);
     }
     this.mCustomHippyRefreshView = paramView;
     this.mCustomHippyRefreshView.addOnLayoutChangeListener(this.mCustomRefreshViewLayoutChangeListener);
@@ -999,25 +1001,22 @@ public class HippyTKDRefreshHeader
   public void setCustomRefreshBallColor(int paramInt1, int paramInt2, int paramInt3)
   {
     this.mColorType = 3;
-    if (paramInt2 == 0)
-    {
-      this.refreshBgColor = ResourceUtil.getColor(2131167280);
-      if (paramInt3 != 0) {
-        break label73;
-      }
-    }
-    label73:
-    for (this.mTipsBgColor = ResourceUtil.getColor(2131167274);; this.mTipsBgColor = paramInt3)
-    {
-      this.mColor = paramInt1;
-      paramInt1 = 0;
-      while (paramInt1 < 3)
-      {
-        this.mBalls[paramInt1].setInitialColor(this.mColor);
-        paramInt1 += 1;
-      }
+    if (paramInt2 == 0) {
+      this.refreshBgColor = ResourceUtil.getColor(2131167306);
+    } else {
       this.refreshBgColor = paramInt2;
-      break;
+    }
+    if (paramInt3 == 0) {
+      this.mTipsBgColor = ResourceUtil.getColor(2131167300);
+    } else {
+      this.mTipsBgColor = paramInt3;
+    }
+    this.mColor = paramInt1;
+    paramInt1 = 0;
+    while (paramInt1 < 3)
+    {
+      this.mBalls[paramInt1].setInitialColor(this.mColor);
+      paramInt1 += 1;
     }
     this.mPullDownToRefreshSucIcon = null;
     this.mPullDownToRefreshFailIcon = null;
@@ -1036,28 +1035,38 @@ public class HippyTKDRefreshHeader
   public void setRefreshBallColor(int paramInt)
   {
     this.mColorType = paramInt;
-    this.refreshBgColor = ResourceUtil.getColor(2131167280);
-    this.mTipsBgColor = ResourceUtil.getColor(2131167274);
-    switch (this.mColorType)
+    this.refreshBgColor = ResourceUtil.getColor(2131167306);
+    this.mTipsBgColor = ResourceUtil.getColor(2131167300);
+    paramInt = this.mColorType;
+    if (paramInt != -1)
     {
-    }
-    for (;;)
-    {
-      paramInt = 0;
-      while (paramInt < 3)
+      if (paramInt != 0)
       {
-        this.mBalls[paramInt].setInitialColor(this.mColor);
-        paramInt += 1;
+        if (paramInt != 1)
+        {
+          if (paramInt == 2) {
+            this.mColor = ResourceUtil.getColor(2131167305);
+          }
+        }
+        else {
+          this.mColor = ResourceUtil.getColor(2131167301);
+        }
       }
-      this.mColor = ResourceUtil.getColor(2131167277);
-      this.refreshBgColor = ResourceUtil.getColor(2131167281);
-      this.mTipsBgColor = ResourceUtil.getColor(2131167274);
-      continue;
-      this.mColor = ResourceUtil.getColor(2131167278);
-      continue;
-      this.mColor = ResourceUtil.getColor(2131167275);
-      continue;
-      this.mColor = ResourceUtil.getColor(2131167279);
+      else {
+        this.mColor = ResourceUtil.getColor(2131167304);
+      }
+    }
+    else
+    {
+      this.mColor = ResourceUtil.getColor(2131167303);
+      this.refreshBgColor = ResourceUtil.getColor(2131167307);
+      this.mTipsBgColor = ResourceUtil.getColor(2131167300);
+    }
+    paramInt = 0;
+    while (paramInt < 3)
+    {
+      this.mBalls[paramInt].setInitialColor(this.mColor);
+      paramInt += 1;
     }
     this.mPullDownToRefreshSucIcon = null;
     this.mPullDownToRefreshFailIcon = null;
@@ -1072,112 +1081,142 @@ public class HippyTKDRefreshHeader
     this.mPullDownToRefreshDesIconHeigth = paramInt4;
     if (!TextUtils.isEmpty(paramString2)) {
       fetchImage(paramString2, new HippyTKDRefreshHeader.7(this, paramInt5));
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(this.mDescriptionText)) {
-        this.mRefreshOffset = (this.mContentheight + paramInt5);
-      }
-      if ((TextUtils.isEmpty(paramString2)) && (TextUtils.isEmpty(this.mDescriptionText))) {
-        this.mRefreshOffset = this.mContentheight;
-      }
-      return;
+    } else {
       this.mPullDownToRefreshDesIcon = null;
+    }
+    if (!TextUtils.isEmpty(this.mDescriptionText)) {
+      this.mRefreshOffset = (this.mContentheight + paramInt5);
+    }
+    if ((TextUtils.isEmpty(paramString2)) && (TextUtils.isEmpty(this.mDescriptionText))) {
+      this.mRefreshOffset = this.mContentheight;
     }
   }
   
   void setRefreshState(int paramInt)
   {
-    int j = 0;
     if (paramInt == this.mRefreshState) {
       return;
     }
-    LogUtils.d("QBRefreshHeader", "harryguo mRefreshState=" + getStateStr(this.mRefreshState) + ", newState=" + getStateStr(paramInt) + ",this:" + this);
-    int i;
-    if ((paramInt == 0) && (this.mEventExtensions != null))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("harryguo mRefreshState=");
+    ((StringBuilder)localObject).append(getStateStr(this.mRefreshState));
+    ((StringBuilder)localObject).append(", newState=");
+    ((StringBuilder)localObject).append(getStateStr(paramInt));
+    ((StringBuilder)localObject).append(",this:");
+    ((StringBuilder)localObject).append(this);
+    LogUtils.d("QBRefreshHeader", ((StringBuilder)localObject).toString());
+    int j = 0;
+    if (paramInt == 0)
     {
-      IHippyTKDRefreshHeaderEventExtension[] arrayOfIHippyTKDRefreshHeaderEventExtension = this.mEventExtensions;
-      int k = arrayOfIHippyTKDRefreshHeaderEventExtension.length;
-      i = 0;
-      while (i < k)
+      localObject = this.mEventExtensions;
+      if (localObject != null)
       {
-        arrayOfIHippyTKDRefreshHeaderEventExtension[i].onRefreshWait();
-        i += 1;
+        int k = localObject.length;
+        i = 0;
+        while (i < k)
+        {
+          localObject[i].onRefreshWait();
+          i += 1;
+        }
       }
     }
-    if (isCustomRefreshMode()) {}
-    switch (paramInt)
-    {
-    default: 
-      label164:
-      if ((this.mPromise != null) && (paramInt == 0)) {
-        this.mPromise.resolve(Boolean.valueOf(true));
-      }
-      switch (this.mRefreshState)
+    if (isCustomRefreshMode()) {
+      switch (paramInt)
       {
+      default: 
+        break;
+      case 5: 
+        this.mCustomRefreshHeaderView.startSettling();
+        break;
+      case 4: 
+        this.mCustomRefreshHeaderView.startPulling();
+        break;
+      case 2: 
+      case 3: 
+      case 6: 
+        this.mCustomRefreshHeaderView.endLoadingAnimation(this.mCustomCompleteText);
+        break;
+      case 1: 
+        this.mCustomRefreshHeaderView.startLoadingAnimation();
+        break;
+      case 0: 
+        this.mCustomRefreshHeaderView.onFinishing();
+        this.mEnableCustomRefreshHeaderView = false;
       }
-      break;
     }
-    for (;;)
-    {
-      this.mRefreshState = paramInt;
-      return;
-      this.mCustomRefreshHeaderView.endLoadingAnimation(this.mCustomCompleteText);
-      break label164;
-      this.mCustomRefreshHeaderView.startLoadingAnimation();
-      break label164;
-      this.mCustomRefreshHeaderView.startSettling();
-      break label164;
-      this.mCustomRefreshHeaderView.startPulling();
-      break label164;
-      this.mCustomRefreshHeaderView.onFinishing();
-      this.mEnableCustomRefreshHeaderView = false;
-      break label164;
-      if (paramInt == 4)
+    localObject = this.mPromise;
+    if ((localObject != null) && (paramInt == 0)) {
+      ((Promise)localObject).resolve(Boolean.valueOf(true));
+    }
+    int i = this.mRefreshState;
+    if (i != 0) {
+      if (i != 1)
       {
-        stopRefresh();
-        hideToast(null, false);
-        this.mCb.removeCallbacksDelegate(this.mStayRunnable);
+        if ((i != 2) && (i != 3))
+        {
+          if (i != 5) {
+            if (i != 6) {
+              break label530;
+            }
+          }
+        }
+        else
+        {
+          if (paramInt == 4)
+          {
+            stopRefresh();
+            hideToast(null, false);
+            this.mCb.removeCallbacksDelegate(this.mStayRunnable);
+            break label530;
+          }
+          if (paramInt != 5) {
+            break label530;
+          }
+          stopRefresh();
+          this.mShowRefreshBall = false;
+          this.mCb.scrollToTop(new HippyTKDRefreshHeader.3(this), this.mHideIndex);
+          ThreadManager.getUIHandler().postDelayed(new HippyTKDRefreshHeader.4(this), 1000L);
+          break label530;
+        }
       }
-      else if (paramInt == 5)
+      else
       {
-        stopRefresh();
-        this.mShowRefreshBall = false;
-        this.mCb.scrollToTop(new HippyTKDRefreshHeader.3(this), this.mHideIndex);
-        ThreadManager.getUIHandler().postDelayed(new HippyTKDRefreshHeader.4(this), 1000L);
-        continue;
         if ((paramInt == 2) || (paramInt == 3))
         {
           showToast();
           this.mCb.onShowToast();
         }
         stopRefresh();
-        continue;
-        if (paramInt == 1)
-        {
-          i = j;
-          if (this.mCustomAnimation != null) {
-            this.mCustomAnimation.animateRefresh();
-          }
-          for (;;)
-          {
-            this.mRefreshState = paramInt;
-            this.mCb.onRefresh();
-            if (this.mPendingCompleteObject == null) {
-              break;
-            }
-            this.mCb.postDelayedDelegate(new HippyTKDRefreshHeader.5(this), 50L);
-            return;
-            while (i < this.mBalls.length)
-            {
-              this.mBalls[i].animateRefresh();
-              i += 1;
-            }
-          }
-        }
-        Log.d("QBRefreshHeader", "refresh notify");
+        break label530;
       }
     }
+    if (paramInt == 1)
+    {
+      localObject = this.mCustomAnimation;
+      i = j;
+      if (localObject != null) {
+        ((HippyTKDRefreshAnimation)localObject).animateRefresh();
+      } else {
+        for (;;)
+        {
+          localObject = this.mBalls;
+          if (i >= localObject.length) {
+            break;
+          }
+          localObject[i].animateRefresh();
+          i += 1;
+        }
+      }
+      this.mRefreshState = paramInt;
+      this.mCb.onRefresh();
+      if (this.mPendingCompleteObject != null) {
+        this.mCb.postDelayedDelegate(new HippyTKDRefreshHeader.5(this), 50L);
+      }
+      return;
+    }
+    Log.d("QBRefreshHeader", "refresh notify");
+    label530:
+    this.mRefreshState = paramInt;
   }
   
   public void setRefreshToastAlpha(float paramFloat)
@@ -1221,7 +1260,10 @@ public class HippyTKDRefreshHeader
   
   public void startRefresh(boolean paramBoolean)
   {
-    Log.d("QBRefreshHeader", "startRefresh:init=" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("startRefresh:init=");
+    localStringBuilder.append(paramBoolean);
+    Log.d("QBRefreshHeader", localStringBuilder.toString());
     if (this.mRefreshState == 0)
     {
       Log.d("QBRefreshHeader", "startRefresh:1");
@@ -1229,20 +1271,20 @@ public class HippyTKDRefreshHeader
       {
         this.mCb.scrollToShowHeaderAtOnce(this.mRefreshOffset);
         setRefreshState(1);
+        return;
       }
+      this.mCb.scrollToShowHeader(this.mRefreshOffset, new HippyTKDRefreshHeader.11(this));
+      Log.d("QBRefreshHeader", "setRefreshState bb");
+      setRefreshState(5);
     }
-    else
-    {
-      return;
-    }
-    this.mCb.scrollToShowHeader(this.mRefreshOffset, new HippyTKDRefreshHeader.11(this));
-    Log.d("QBRefreshHeader", "setRefreshState bb");
-    setRefreshState(5);
   }
   
   public void startRefreshOnlyWithAimation(boolean paramBoolean)
   {
-    Log.d("QBRefreshHeader", "startRefreshOnlyWithAimation:init=" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("startRefreshOnlyWithAimation:init=");
+    localStringBuilder.append(paramBoolean);
+    Log.d("QBRefreshHeader", localStringBuilder.toString());
     if (this.mRefreshState == 0)
     {
       Log.d("QBRefreshHeader", "startRefresh:1");
@@ -1250,34 +1292,29 @@ public class HippyTKDRefreshHeader
       {
         this.mCb.scrollToShowHeaderAtOnce(this.mRefreshOffset);
         setFakeRefreshState(1);
+        return;
       }
+      this.mCb.scrollToShowHeader(this.mRefreshOffset, new HippyTKDRefreshHeader.12(this));
+      Log.d("QBRefreshHeader", "setRefreshState bb");
+      setFakeRefreshState(5);
     }
-    else
-    {
-      return;
-    }
-    this.mCb.scrollToShowHeader(this.mRefreshOffset, new HippyTKDRefreshHeader.12(this));
-    Log.d("QBRefreshHeader", "setRefreshState bb");
-    setFakeRefreshState(5);
   }
   
   public void startRefreshWithType(boolean paramBoolean)
   {
-    if ((this.mCustomRefreshHeaderView != null) && (this.mRefreshState == 0))
+    HippyTKDCustomRefreshHeader localHippyTKDCustomRefreshHeader = this.mCustomRefreshHeaderView;
+    if ((localHippyTKDCustomRefreshHeader != null) && (this.mRefreshState == 0))
     {
       this.mEnableCustomRefreshHeaderView = true;
       if (paramBoolean)
       {
-        this.mCb.scrollToShowHeaderAtOnce(this.mCustomRefreshHeaderView.getRefreshViewHeight());
+        this.mCb.scrollToShowHeaderAtOnce(localHippyTKDCustomRefreshHeader.getRefreshViewHeight());
         setRefreshState(1);
+        return;
       }
+      this.mCb.scrollToShowHeader(localHippyTKDCustomRefreshHeader.getRefreshViewHeight(), new HippyTKDRefreshHeader.10(this));
+      setRefreshState(5);
     }
-    else
-    {
-      return;
-    }
-    this.mCb.scrollToShowHeader(this.mCustomRefreshHeaderView.getRefreshViewHeight(), new HippyTKDRefreshHeader.10(this));
-    setRefreshState(5);
   }
   
   String stateToString(int paramInt)
@@ -1308,26 +1345,25 @@ public class HippyTKDRefreshHeader
   
   public void stopRefresh()
   {
-    if (this.mCustomAnimation != null) {
-      this.mCustomAnimation.stopAllAnimators();
-    }
-    for (;;)
+    Object localObject = this.mCustomAnimation;
+    if (localObject != null)
     {
+      ((HippyTKDRefreshAnimation)localObject).stopAllAnimators();
       return;
-      AnimatingBall[] arrayOfAnimatingBall = this.mBalls;
-      int j = arrayOfAnimatingBall.length;
-      int i = 0;
-      while (i < j)
-      {
-        arrayOfAnimatingBall[i].stopAllAnimators();
-        i += 1;
-      }
+    }
+    localObject = this.mBalls;
+    int j = localObject.length;
+    int i = 0;
+    while (i < j)
+    {
+      localObject[i].stopAllAnimators();
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.listview.HippyTKDRefreshHeader
  * JD-Core Version:    0.7.0.1
  */

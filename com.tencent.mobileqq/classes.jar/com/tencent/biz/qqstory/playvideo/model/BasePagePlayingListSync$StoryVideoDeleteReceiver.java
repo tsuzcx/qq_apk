@@ -15,19 +15,13 @@ class BasePagePlayingListSync$StoryVideoDeleteReceiver
   {
     Iterator localIterator = paramBasePagePlayingListSync.a.iterator();
     int i = 0;
-    for (;;)
+    while (localIterator.hasNext())
     {
-      if (localIterator.hasNext())
+      StoryVideoItem localStoryVideoItem = (StoryVideoItem)localIterator.next();
+      if (paramDeleteStoryVideoEvent.a.equals(localStoryVideoItem.mVid))
       {
-        StoryVideoItem localStoryVideoItem = (StoryVideoItem)localIterator.next();
-        if (paramDeleteStoryVideoEvent.a.equals(localStoryVideoItem.mVid))
-        {
-          paramBasePagePlayingListSync.a.remove(i);
-          SLog.a("Q.qqstory.player.DefaultPlayerVideoListSynchronizer", "remove vid:%s", localStoryVideoItem.mVid);
-        }
-      }
-      else
-      {
+        paramBasePagePlayingListSync.a.remove(i);
+        SLog.a("Q.qqstory.player.DefaultPlayerVideoListSynchronizer", "remove vid:%s", localStoryVideoItem.mVid);
         return;
       }
       i += 1;
@@ -41,7 +35,7 @@ class BasePagePlayingListSync$StoryVideoDeleteReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.model.BasePagePlayingListSync.StoryVideoDeleteReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -15,21 +15,17 @@ public class CustomEmotionData
   
   public boolean checkMarketFace(String paramString)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    if (this.isMarkFace) {
-      if (!TextUtils.isEmpty(this.eId))
-      {
-        bool1 = bool2;
-        if (!TextUtils.isEmpty(this.emoPath)) {}
-      }
-      else
-      {
-        QLog.e("CustomEmotionData", 1, "error MarketFace from " + paramString + ", " + toString());
-        bool1 = false;
-      }
+    if ((this.isMarkFace) && ((TextUtils.isEmpty(this.eId)) || (TextUtils.isEmpty(this.emoPath))))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("error MarketFace from ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(toString());
+      QLog.e("CustomEmotionData", 1, localStringBuilder.toString());
+      return false;
     }
-    return bool1;
+    return true;
   }
   
   public CustomEmotionData cloneEmotionData(CustomEmotionData paramCustomEmotionData)
@@ -56,18 +52,20 @@ public class CustomEmotionData
   
   public void increaseClickNum()
   {
-    if (this.clickNum == 2147483647) {
+    int i = this.clickNum;
+    if (i == 2147483647) {
       return;
     }
-    this.clickNum += 1;
+    this.clickNum = (i + 1);
   }
   
   public void increaseExposeNum()
   {
-    if (this.exposeNum == 2147483647) {
+    int i = this.exposeNum;
+    if (i == 2147483647) {
       return;
     }
-    this.exposeNum += 1;
+    this.exposeNum = (i + 1);
   }
   
   public void replace(CustomEmotionData paramCustomEmotionData)
@@ -87,12 +85,32 @@ public class CustomEmotionData
   
   public String toString()
   {
-    return "CustomEmotionData [uin=" + this.uin + ", emoId=" + this.emoId + ", emoPath=" + this.emoPath + ", isMarkFace=" + this.isMarkFace + ", RomaingType=" + this.RomaingType + ", eId=" + this.eId + ", resid=" + this.resid + ", url=" + this.url + ", md5=" + this.md5 + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CustomEmotionData [uin=");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append(", emoId=");
+    localStringBuilder.append(this.emoId);
+    localStringBuilder.append(", emoPath=");
+    localStringBuilder.append(this.emoPath);
+    localStringBuilder.append(", isMarkFace=");
+    localStringBuilder.append(this.isMarkFace);
+    localStringBuilder.append(", RomaingType=");
+    localStringBuilder.append(this.RomaingType);
+    localStringBuilder.append(", eId=");
+    localStringBuilder.append(this.eId);
+    localStringBuilder.append(", resid=");
+    localStringBuilder.append(this.resid);
+    localStringBuilder.append(", url=");
+    localStringBuilder.append(this.url);
+    localStringBuilder.append(", md5=");
+    localStringBuilder.append(this.md5);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.CustomEmotionData
  * JD-Core Version:    0.7.0.1
  */

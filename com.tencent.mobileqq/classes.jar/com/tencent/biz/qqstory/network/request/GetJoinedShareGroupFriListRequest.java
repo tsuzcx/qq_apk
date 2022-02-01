@@ -37,7 +37,7 @@ public class GetJoinedShareGroupFriListRequest
     return a;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqGetJoinedShareGroupFriList localReqGetJoinedShareGroupFriList = new qqstory_service.ReqGetJoinedShareGroupFriList();
     localReqGetJoinedShareGroupFriList.share_group_unionid.set(ByteStringMicro.copyFromUtf8(this.b));
@@ -46,7 +46,7 @@ public class GetJoinedShareGroupFriListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetJoinedShareGroupFriListRequest
  * JD-Core Version:    0.7.0.1
  */

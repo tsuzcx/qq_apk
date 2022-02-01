@@ -6,24 +6,19 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
 
 public class AudioPlayerHelper
 {
-  public static int a;
-  private static String jdField_a_of_type_JavaLangString = null;
+  public static int a = 1000;
+  private static String jdField_a_of_type_JavaLangString;
   private static AudioPlayerHelper.AudioPlayerParameter[] jdField_a_of_type_ArrayOfComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter;
-  
-  static
-  {
-    jdField_a_of_type_Int = 1000;
-    jdField_a_of_type_ArrayOfComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter = null;
-  }
   
   public static AudioPlayerHelper.AudioPlayerParameter a()
   {
-    if (b()) {
+    if (c()) {
       return new AudioPlayerHelper.AudioPlayerParameter(0, 0, true);
     }
     return new AudioPlayerHelper.AudioPlayerParameter(3, 0, true);
@@ -32,45 +27,60 @@ public class AudioPlayerHelper
   private static AudioPlayerHelper.AudioPlayerParameter a(int paramInt)
   {
     AudioPlayerHelper.AudioPlayerParameter localAudioPlayerParameter;
-    if (paramInt == 0) {
+    if (paramInt == 0)
+    {
       localAudioPlayerParameter = a();
     }
-    for (;;)
+    else if (paramInt == 1)
     {
-      String str = "!@$#_" + paramInt + "_";
-      SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(MobileQQ.getContext());
-      localAudioPlayerParameter.jdField_a_of_type_Int = localSharedPreferences.getInt(str + "m", localAudioPlayerParameter.jdField_a_of_type_Int);
-      localAudioPlayerParameter.b = localSharedPreferences.getInt(str + "s", localAudioPlayerParameter.b);
-      localAudioPlayerParameter.jdField_a_of_type_Boolean = localSharedPreferences.getBoolean(str + "so", localAudioPlayerParameter.jdField_a_of_type_Boolean);
-      return a(paramInt, localAudioPlayerParameter);
-      if (paramInt == 1)
-      {
-        localAudioPlayerParameter = b();
-      }
-      else if (paramInt == 2)
-      {
-        localAudioPlayerParameter = a();
-        localAudioPlayerParameter.jdField_a_of_type_Boolean = false;
-      }
-      else if (paramInt == 3)
-      {
-        localAudioPlayerParameter = a();
-        localAudioPlayerParameter.jdField_a_of_type_Boolean = false;
-      }
-      else
-      {
-        localAudioPlayerParameter = c();
-        localAudioPlayerParameter.jdField_a_of_type_Boolean = false;
-      }
+      localAudioPlayerParameter = b();
     }
+    else if (paramInt == 2)
+    {
+      localAudioPlayerParameter = a();
+      localAudioPlayerParameter.jdField_a_of_type_Boolean = false;
+    }
+    else if (paramInt == 3)
+    {
+      localAudioPlayerParameter = a();
+      localAudioPlayerParameter.jdField_a_of_type_Boolean = false;
+    }
+    else
+    {
+      localAudioPlayerParameter = c();
+      localAudioPlayerParameter.jdField_a_of_type_Boolean = false;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("!@$#_");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("_");
+    localObject = ((StringBuilder)localObject).toString();
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(MobileQQ.getContext());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("m");
+    localAudioPlayerParameter.jdField_a_of_type_Int = localSharedPreferences.getInt(localStringBuilder.toString(), localAudioPlayerParameter.jdField_a_of_type_Int);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("s");
+    localAudioPlayerParameter.b = localSharedPreferences.getInt(localStringBuilder.toString(), localAudioPlayerParameter.b);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("so");
+    localAudioPlayerParameter.jdField_a_of_type_Boolean = localSharedPreferences.getBoolean(localStringBuilder.toString(), localAudioPlayerParameter.jdField_a_of_type_Boolean);
+    return a(paramInt, localAudioPlayerParameter);
   }
   
   private static AudioPlayerHelper.AudioPlayerParameter a(int paramInt, AudioPlayerHelper.AudioPlayerParameter paramAudioPlayerParameter)
   {
     paramAudioPlayerParameter = new AudioPlayerHelper.AudioPlayerParameter(paramAudioPlayerParameter.b, paramAudioPlayerParameter.jdField_a_of_type_Int, paramAudioPlayerParameter.jdField_a_of_type_Boolean);
     Object localObject = jdField_a_of_type_JavaLangString;
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioPlayerHelper", 2, "getDPCFixConfig | dpcConfig = " + (String)localObject);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDPCFixConfig | dpcConfig = ");
+      localStringBuilder.append((String)localObject);
+      QLog.d("AudioPlayerHelper", 2, localStringBuilder.toString());
     }
     if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).length() > 1)) {
       try
@@ -141,10 +151,7 @@ public class AudioPlayerHelper
   @TargetApi(11)
   public static AudioPlayerHelper.AudioPlayerParameter b()
   {
-    if (l()) {
-      return new AudioPlayerHelper.AudioPlayerParameter(0, 0, false);
-    }
-    if (c()) {
+    if (m()) {
       return new AudioPlayerHelper.AudioPlayerParameter(0, 0, false);
     }
     if (d()) {
@@ -156,49 +163,37 @@ public class AudioPlayerHelper
     if (f()) {
       return new AudioPlayerHelper.AudioPlayerParameter(0, 0, false);
     }
-    if (h()) {
-      return new AudioPlayerHelper.AudioPlayerParameter(0, 0, false);
-    }
-    if ((a()) || (g())) {
+    if (g()) {
       return new AudioPlayerHelper.AudioPlayerParameter(0, 0, false);
     }
     if (i()) {
-      return new AudioPlayerHelper.AudioPlayerParameter(0, 2, false);
-    }
-    if (j()) {
-      return new AudioPlayerHelper.AudioPlayerParameter(0, 2, false);
-    }
-    if (k()) {
-      return new AudioPlayerHelper.AudioPlayerParameter(3, 3, false);
-    }
-    if (m()) {
       return new AudioPlayerHelper.AudioPlayerParameter(0, 0, false);
     }
-    if (Build.VERSION.SDK_INT >= 11) {
-      return new AudioPlayerHelper.AudioPlayerParameter(0, 3, false);
+    if ((!a()) && (!h()))
+    {
+      if (j()) {
+        return new AudioPlayerHelper.AudioPlayerParameter(0, 2, false);
+      }
+      if (k()) {
+        return new AudioPlayerHelper.AudioPlayerParameter(0, 2, false);
+      }
+      if (l()) {
+        return new AudioPlayerHelper.AudioPlayerParameter(3, 3, false);
+      }
+      if (n()) {
+        return new AudioPlayerHelper.AudioPlayerParameter(0, 0, false);
+      }
+      if (Build.VERSION.SDK_INT >= 11) {
+        return new AudioPlayerHelper.AudioPlayerParameter(0, 3, false);
+      }
+      return new AudioPlayerHelper.AudioPlayerParameter(0, 2, false);
     }
-    return new AudioPlayerHelper.AudioPlayerParameter(0, 2, false);
+    return new AudioPlayerHelper.AudioPlayerParameter(0, 0, false);
   }
   
-  private static boolean b()
+  public static boolean b()
   {
-    String str = Build.MODEL;
-    int i;
-    if (((Build.MANUFACTURER.equalsIgnoreCase("Samsung")) || (str.contains("MI 2")) || (str.contains("Nexus 4"))) && (Build.VERSION.SDK_INT >= 11))
-    {
-      i = 1;
-      if (i == 0) {
-        break label54;
-      }
-    }
-    label54:
-    while ((str.contains("SCH-I699")) && (Build.VERSION.SDK_INT == 10))
-    {
-      return true;
-      i = 0;
-      break;
-    }
-    return false;
+    return (DeviceInfoUtil.g()) || (DeviceInfoUtil.f());
   }
   
   public static AudioPlayerHelper.AudioPlayerParameter c()
@@ -208,62 +203,77 @@ public class AudioPlayerHelper
   
   private static boolean c()
   {
-    return (Build.MODEL.contains("HUAWEI Y 200T")) && (Build.VERSION.SDK_INT <= 10);
+    String str = Build.MODEL;
+    int i;
+    if (((Build.MANUFACTURER.equalsIgnoreCase("Samsung")) || (str.contains("MI 2")) || (str.contains("Nexus 4"))) && (Build.VERSION.SDK_INT >= 11)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      return true;
+    }
+    return (str.contains("SCH-I699")) && (Build.VERSION.SDK_INT == 10);
   }
   
   private static boolean d()
   {
-    return (Build.MODEL.contains("Lenovo A278t")) && (Build.VERSION.SDK_INT <= 10);
+    return (Build.MODEL.contains("HUAWEI Y 200T")) && (Build.VERSION.SDK_INT <= 10);
   }
   
   private static boolean e()
   {
-    return (Build.MODEL.contains("ZTE-T U960s")) && (Build.VERSION.SDK_INT <= 10);
+    return (Build.MODEL.contains("Lenovo A278t")) && (Build.VERSION.SDK_INT <= 10);
   }
   
   private static boolean f()
   {
-    return Build.MODEL.contains("5910");
+    return (Build.MODEL.contains("ZTE-T U960s")) && (Build.VERSION.SDK_INT <= 10);
   }
   
   private static boolean g()
   {
-    return Build.MODEL.contains("vivo X9");
+    return Build.MODEL.contains("5910");
   }
   
   private static boolean h()
   {
-    return Build.MODEL.contains("V926");
+    return Build.MODEL.contains("vivo X9");
   }
   
   private static boolean i()
   {
-    return Build.MODEL.contains("ZTE N881E");
+    return Build.MODEL.contains("V926");
   }
   
   private static boolean j()
   {
-    return Build.MODEL.contains("LNV-Lenovo S870e");
+    return Build.MODEL.contains("ZTE N881E");
   }
   
   private static boolean k()
   {
-    return Build.MODEL.contains("Coolpad 5891Q");
+    return Build.MODEL.contains("LNV-Lenovo S870e");
   }
   
   private static boolean l()
   {
-    return (Build.MODEL.contains("ME860")) && (Build.VERSION.SDK_INT <= 10);
+    return Build.MODEL.contains("Coolpad 5891Q");
   }
   
   private static boolean m()
+  {
+    return (Build.MODEL.contains("ME860")) && (Build.VERSION.SDK_INT <= 10);
+  }
+  
+  private static boolean n()
   {
     return Build.MODEL.contains("GT-S7500");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.audioplayer.AudioPlayerHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,8 @@ package com.huawei.hms.framework.network.grs.local.model;
 
 import android.content.Context;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
+import com.huawei.hms.framework.common.EmuiUtil;
 import com.huawei.hms.framework.common.Logger;
 import com.huawei.hms.framework.common.SystemPropUtils;
 import java.util.Locale;
@@ -10,11 +12,14 @@ public class CountryCodeBean
 {
   private static final String ANDRIOD_SYSTEMPROP = "android.os.SystemProperties";
   private static final int COUNTRYCODE_SIZE = 2;
-  private static final String LOCALE_COUNTRYSYSTEMPROP = "ro.product.locale.region";
+  private static final String LOCALE_COUNTRYSYSTEMPROP = "ro.product.locale";
+  private static final String LOCALE_REGION_COUNTRYSYSTEMPROP = "ro.product.locale.region";
   private static final String SPECIAL_COUNTRYCODE_CN = "cn";
   private static final String SPECIAL_COUNTRYCODE_EU = "eu";
+  private static final String SPECIAL_COUNTRYCODE_GB = "gb";
   private static final String SPECIAL_COUNTRYCODE_LA = "la";
-  private static final String TAG = CountryCodeBean.class.getSimpleName();
+  private static final String SPECIAL_COUNTRYCODE_UK = "uk";
+  private static final String TAG = "CountryCodeBean";
   private static final String VENDORCOUNTRY_SYSTEMPROP = "ro.hw.country";
   private String countryCode = "UNKNOWN";
   private String countrySource = "UNKNOWN";
@@ -27,7 +32,8 @@ public class CountryCodeBean
   
   private void checkCodeLenth()
   {
-    if ((this.countryCode == null) || (this.countryCode.length() != 2))
+    String str = this.countryCode;
+    if ((str == null) || (str.length() != 2))
     {
       this.countryCode = "UNKNOWN";
       this.countrySource = "UNKNOWN";
@@ -36,14 +42,60 @@ public class CountryCodeBean
   
   private void getLocaleCountryCode()
   {
-    this.countryCode = SystemPropUtils.getProperty("get", "ro.product.locale.region", "android.os.SystemProperties", "UNKNOWN");
-    this.countrySource = "LOCALE_INFO";
-    if (!"cn".equalsIgnoreCase(this.countryCode))
-    {
-      Logger.w(TAG, "countryCode from system language is not reliable.");
-      this.countryCode = "UNKNOWN";
-      this.countrySource = "UNKNOWN";
+    if (EmuiUtil.isUpPVersion()) {
+      getRegionSettingCountryCode();
+    } else {
+      getProductCountryCode();
     }
+    this.countrySource = "LOCALE_INFO";
+  }
+  
+  private void getProductCountryCode()
+  {
+    this.countryCode = SystemPropUtils.getProperty("get", "ro.product.locale.region", "android.os.SystemProperties", "UNKNOWN");
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("countryCode by ro.product.locale.region is:");
+    localStringBuilder.append(this.countryCode);
+    Logger.i(str, localStringBuilder.toString());
+    if ((TextUtils.isEmpty(this.countryCode)) || ("UNKNOWN".equals(this.countryCode)))
+    {
+      str = SystemPropUtils.getProperty("get", "ro.product.locale", "android.os.SystemProperties", "UNKNOWN");
+      if (!TextUtils.isEmpty(str))
+      {
+        int i = str.lastIndexOf("-");
+        if (i != -1)
+        {
+          this.countryCode = str.substring(i + 1);
+          str = TAG;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("countryCode by ro.product.locale is:");
+          localStringBuilder.append(this.countryCode);
+          Logger.i(str, localStringBuilder.toString());
+        }
+      }
+    }
+    if (!"cn".equalsIgnoreCase(this.countryCode)) {
+      this.countryCode = "UNKNOWN";
+    }
+  }
+  
+  private void getRegionSettingCountryCode()
+  {
+    this.countryCode = Locale.getDefault().getCountry();
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("countryCode by system's region setting is: ");
+    localStringBuilder.append(this.countryCode);
+    Logger.i(str, localStringBuilder.toString());
+    if (TextUtils.isEmpty(this.countryCode)) {
+      this.countryCode = "UNKNOWN";
+    }
+  }
+  
+  private void getSimCountryCode(Context paramContext)
+  {
+    getSimCountryCode(paramContext, false);
   }
   
   private void getSimCountryCode(Context paramContext, boolean paramBoolean)
@@ -51,69 +103,97 @@ public class CountryCodeBean
     paramContext = (TelephonyManager)paramContext.getApplicationContext().getSystemService("phone");
     if (paramContext != null)
     {
-      if ((!paramBoolean) || (paramContext.getPhoneType() == 2)) {
-        break label65;
+      String str;
+      StringBuilder localStringBuilder;
+      if ((paramBoolean) && (paramContext.getPhoneType() != 2))
+      {
+        this.countryCode = paramContext.getNetworkCountryIso();
+        this.countrySource = "NETWORK_COUNTRY";
+        str = TAG;
+        localStringBuilder = new StringBuilder();
+        paramContext = "countryCode by NetworkCountryIso is: ";
       }
-      Logger.v(TAG, "getCountryCode get country code from {%s}", new Object[] { "NETWORK_COUNTRY" });
-      this.countryCode = paramContext.getNetworkCountryIso();
+      else
+      {
+        this.countryCode = paramContext.getSimCountryIso();
+        this.countrySource = "SIM_COUNTRY";
+        str = TAG;
+        localStringBuilder = new StringBuilder();
+        paramContext = "countryCode by SimCountryIso is: ";
+      }
+      localStringBuilder.append(paramContext);
+      localStringBuilder.append(this.countryCode);
+      Logger.i(str, localStringBuilder.toString());
     }
-    for (this.countrySource = "NETWORK_COUNTRY";; this.countrySource = "SIM_COUNTRY")
-    {
-      checkCodeLenth();
-      return;
-      label65:
-      Logger.v(TAG, "getCountryCode get country code from {%s}", new Object[] { "SIM_COUNTRY" });
-      this.countryCode = paramContext.getSimCountryIso();
-    }
+    checkCodeLenth();
   }
   
   private void getVendorCountryCode()
   {
     this.countrySource = "VENDOR_COUNTRY";
     this.countryCode = SystemPropUtils.getProperty("get", "ro.hw.country", "android.os.SystemProperties", "UNKNOWN");
-    if (("eu".equalsIgnoreCase(this.countryCode)) || ("la".equalsIgnoreCase(this.countryCode)))
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("countryCode by ro.hw.country is: ");
+    localStringBuilder.append(this.countryCode);
+    Logger.i(str, localStringBuilder.toString());
+    if ((!"eu".equalsIgnoreCase(this.countryCode)) && (!"la".equalsIgnoreCase(this.countryCode)))
     {
-      this.countryCode = "UNKNOWN";
-      this.countrySource = "UNKNOWN";
+      if ("uk".equalsIgnoreCase(this.countryCode))
+      {
+        Logger.i(TAG, "special country of UK to map GB.");
+        this.countryCode = "gb";
+        this.countrySource = "VENDOR_COUNTRY";
+        return;
+      }
+      checkCodeLenth();
       return;
     }
-    checkCodeLenth();
+    this.countryCode = "UNKNOWN";
+    this.countrySource = "UNKNOWN";
   }
   
   private void init(Context paramContext, boolean paramBoolean)
   {
-    if (paramContext == null) {
-      throw new NullPointerException("context must be not null.Please provide app's Context");
-    }
+    if (paramContext != null) {}
     try
     {
       getVendorCountryCode();
       if (isCodeValidate())
       {
-        Logger.v(TAG, "getCountryCode get country code from {%s}", new Object[] { "VENDOR_COUNTRY" });
+        paramContext = TAG;
+        Logger.i(paramContext, "get issue_country code from VENDOR_COUNTRY");
         return;
       }
-      getSimCountryCode(paramContext, paramBoolean);
+      getSimCountryCode(paramContext);
       if (isCodeValidate())
       {
-        Logger.v(TAG, "getCountryCode get country code from {%s}", new Object[] { "SIM_COUNTRY" });
+        paramContext = TAG;
+        Logger.i(paramContext, "get issue_country code from SIM_COUNTRY");
         return;
       }
+      getLocaleCountryCode();
+      if (!isCodeValidate()) {
+        break label79;
+      }
+      paramContext = TAG;
+      Logger.i(paramContext, "get issue_country code from LOCALE_INFO");
+      return;
     }
     catch (Exception paramContext)
     {
-      Logger.w(TAG, "get CountryCode error");
-      return;
+      label71:
+      break label71;
     }
-    getLocaleCountryCode();
-    if (isCodeValidate()) {
-      Logger.v(TAG, "getCountryCode get country code from {%s}", new Object[] { "LOCALE_INFO" });
-    }
+    Logger.w(TAG, "get CountryCode error");
+    label79:
+    return;
+    throw new NullPointerException("context must be not null.Please provide app's Context");
   }
   
   private boolean isCodeValidate()
   {
-    return !"UNKNOWN".equals(this.countryCode);
+    return "UNKNOWN".equals(this.countryCode) ^ true;
   }
   
   public String getCountryCode()
@@ -128,7 +208,7 @@ public class CountryCodeBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.framework.network.grs.local.model.CountryCodeBean
  * JD-Core Version:    0.7.0.1
  */

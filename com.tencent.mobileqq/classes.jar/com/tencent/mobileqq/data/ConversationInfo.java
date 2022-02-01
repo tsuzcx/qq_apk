@@ -70,7 +70,7 @@ public class ConversationInfo
     return getConversationInfoTableName();
   }
   
-  public void postRead()
+  protected void postRead()
   {
     super.postRead();
     if (!TextUtils.isEmpty(this.extString)) {
@@ -78,11 +78,12 @@ public class ConversationInfo
     }
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     super.prewrite();
-    if (this.tinyInfo != null) {
-      this.extString = this.tinyInfo.toJsonStr();
+    TinyInfo localTinyInfo = this.tinyInfo;
+    if (localTinyInfo != null) {
+      this.extString = localTinyInfo.toJsonStr();
     }
   }
   
@@ -124,26 +125,50 @@ public class ConversationInfo
   
   public String toString()
   {
-    String str;
-    if (QLog.isColorLevel()) {
-      str = this.uin;
-    }
-    for (;;)
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder("--ConversationInfo--");
-      localStringBuilder.append(",shortUin:").append(str).append(",type:").append(this.type).append(",lastread:").append(this.lastread).append(",unreadCount:").append(this.unreadCount).append(",unreadGiftCount:").append(this.unreadGiftCount).append(",unreadRedPacketCount:").append(this.extInt1).append(",subAccountTroopunReadMsg:").append(this.extInt2).append(",PublicAccountConversationRedMask:").append(this.extInt3).append(",unreadMark:").append(this.unreadMark).append(", extStr:").append(this.extString);
-      return localStringBuilder.toString();
-      if ((TextUtils.isEmpty(this.uin)) || (this.uin.length() < 4)) {
-        str = this.uin;
-      } else {
-        str = "*" + this.uin.substring(this.uin.length() - 4, this.uin.length());
-      }
+      localObject1 = this.uin;
     }
+    else if ((!TextUtils.isEmpty(this.uin)) && (this.uin.length() >= 4))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("*");
+      localObject2 = this.uin;
+      ((StringBuilder)localObject1).append(((String)localObject2).substring(((String)localObject2).length() - 4, this.uin.length()));
+      localObject1 = ((StringBuilder)localObject1).toString();
+    }
+    else
+    {
+      localObject1 = this.uin;
+    }
+    Object localObject2 = new StringBuilder("--ConversationInfo--");
+    ((StringBuilder)localObject2).append(",shortUin:");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(",type:");
+    ((StringBuilder)localObject2).append(this.type);
+    ((StringBuilder)localObject2).append(",lastread:");
+    ((StringBuilder)localObject2).append(this.lastread);
+    ((StringBuilder)localObject2).append(",unreadCount:");
+    ((StringBuilder)localObject2).append(this.unreadCount);
+    ((StringBuilder)localObject2).append(",unreadGiftCount:");
+    ((StringBuilder)localObject2).append(this.unreadGiftCount);
+    ((StringBuilder)localObject2).append(",unreadRedPacketCount:");
+    ((StringBuilder)localObject2).append(this.extInt1);
+    ((StringBuilder)localObject2).append(",subAccountTroopunReadMsg:");
+    ((StringBuilder)localObject2).append(this.extInt2);
+    ((StringBuilder)localObject2).append(",PublicAccountConversationRedMask:");
+    ((StringBuilder)localObject2).append(this.extInt3);
+    ((StringBuilder)localObject2).append(",unreadMark:");
+    ((StringBuilder)localObject2).append(this.unreadMark);
+    ((StringBuilder)localObject2).append(", extStr:");
+    ((StringBuilder)localObject2).append(this.extString);
+    return ((StringBuilder)localObject2).toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.ConversationInfo
  * JD-Core Version:    0.7.0.1
  */

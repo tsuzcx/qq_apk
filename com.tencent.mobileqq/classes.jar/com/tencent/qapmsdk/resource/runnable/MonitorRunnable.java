@@ -15,30 +15,30 @@ public class MonitorRunnable
   private static final long SPAN_DEBUG = 1000L;
   private static final long SPAN_PUBLIC = 5000L;
   @Nullable
-  private static volatile MonitorRunnable instance = null;
+  private static volatile MonitorRunnable instance;
   private Handler handler = new Handler(ThreadManager.getMonitorThreadLooper());
   private boolean isRunning = false;
   
   private long getDelayTime()
   {
-    long l = 1000L;
     if (RunTimeEnv.isPublishMode()) {
-      l = 5000L;
+      return 5000L;
     }
-    return l;
+    return 1000L;
   }
   
   public static MonitorRunnable getInstance()
   {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new MonitorRunnable();
+    if (instance == null) {
+      try
+      {
+        if (instance == null) {
+          instance = new MonitorRunnable();
+        }
       }
-      return instance;
+      finally {}
     }
-    finally {}
+    return instance;
   }
   
   public void collectPerfItemRightNow()
@@ -80,7 +80,7 @@ public class MonitorRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.resource.runnable.MonitorRunnable
  * JD-Core Version:    0.7.0.1
  */

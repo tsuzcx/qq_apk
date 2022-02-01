@@ -25,14 +25,15 @@ public final class oidb_0x7df$FriendScore
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42 }, new String[] { "uint64_friend_uin", "uint32_friend_score", "bytes_relation_name", "uint32_rank", "bytes_nick" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2 }, FriendScore.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42 }, new String[] { "uint64_friend_uin", "uint32_friend_score", "bytes_relation_name", "uint32_rank", "bytes_nick" }, new Object[] { Long.valueOf(0L), localInteger, localByteStringMicro1, localInteger, localByteStringMicro2 }, FriendScore.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x7df.oidb_0x7df.FriendScore
  * JD-Core Version:    0.7.0.1
  */

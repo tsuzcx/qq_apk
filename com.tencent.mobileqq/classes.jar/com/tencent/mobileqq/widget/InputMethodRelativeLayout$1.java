@@ -10,33 +10,27 @@ class InputMethodRelativeLayout$1
   
   public void onGlobalLayout()
   {
-    int i;
     if (this.a.a != null)
     {
-      i = InputMethodRelativeLayout.a(this.a);
+      int i = InputMethodRelativeLayout.a(this.a);
       if (i != InputMethodRelativeLayout.b(this.a))
       {
         int j = this.a.getRootView().getHeight();
-        if (j - i <= j / 4) {
-          break label102;
+        if (j - i > j / 4) {
+          InputMethodRelativeLayout.a(this.a, true);
+        } else {
+          InputMethodRelativeLayout.a(this.a, false);
         }
-        InputMethodRelativeLayout.a(this.a, true);
+        this.a.a.a(InputMethodRelativeLayout.a(this.a), InputMethodRelativeLayout.b(this.a), i);
+        this.a.requestLayout();
+        InputMethodRelativeLayout.a(this.a, i);
       }
-    }
-    for (;;)
-    {
-      this.a.a.a(InputMethodRelativeLayout.a(this.a), InputMethodRelativeLayout.b(this.a), i);
-      this.a.requestLayout();
-      InputMethodRelativeLayout.a(this.a, i);
-      return;
-      label102:
-      InputMethodRelativeLayout.a(this.a, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.InputMethodRelativeLayout.1
  * JD-Core Version:    0.7.0.1
  */

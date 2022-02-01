@@ -57,31 +57,34 @@ public class i
   public void a(ToServiceMsg paramToServiceMsg)
   {
     Object localObject = paramToServiceMsg.getAttributes().get("manager_config");
-    if ((localObject instanceof String)) {}
-    try
-    {
-      paramToServiceMsg = (String)localObject;
-      QLog.d("MSFConfigManager", 1, "updateManagerConfig, common config = " + paramToServiceMsg);
-      localObject = new JSONObject((String)localObject);
-      a(paramToServiceMsg, (JSONObject)localObject, this.k, "isIPCDivideToTransportEnable");
-      a(paramToServiceMsg, (JSONObject)localObject, this.l, "isSleepThreadWhenIPCBlockEnable");
-      a(paramToServiceMsg, (JSONObject)localObject, this.m, "isSendQuickHBByDeepSleepEnable");
-      a(paramToServiceMsg, (JSONObject)localObject, this.n, "isSendQuickHBByScreenOnEnable");
-      a(paramToServiceMsg, (JSONObject)localObject, this.o, "isMultiChannelReportEnable");
-      a(paramToServiceMsg, (JSONObject)localObject, this.p, "isBinderConnectOptEnable");
-      a(paramToServiceMsg, (JSONObject)localObject, this.q, "isChangeHuaweiDSCheck");
-      QLog.d("MSFConfigManager", 1, "after updateManagerConfig, res =" + toString());
-      return;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      for (;;)
+    if ((localObject instanceof String)) {
+      try
+      {
+        paramToServiceMsg = (String)localObject;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("updateManagerConfig, common config = ");
+        localStringBuilder.append(paramToServiceMsg);
+        QLog.d("MSFConfigManager", 1, localStringBuilder.toString());
+        localObject = new JSONObject((String)localObject);
+        a(paramToServiceMsg, (JSONObject)localObject, this.k, "isIPCDivideToTransportEnable");
+        a(paramToServiceMsg, (JSONObject)localObject, this.l, "isSleepThreadWhenIPCBlockEnable");
+        a(paramToServiceMsg, (JSONObject)localObject, this.m, "isSendQuickHBByDeepSleepEnable");
+        a(paramToServiceMsg, (JSONObject)localObject, this.n, "isSendQuickHBByScreenOnEnable");
+        a(paramToServiceMsg, (JSONObject)localObject, this.o, "isMultiChannelReportEnable");
+        a(paramToServiceMsg, (JSONObject)localObject, this.p, "isBinderConnectOptEnable");
+        a(paramToServiceMsg, (JSONObject)localObject, this.q, "isChangeHuaweiDSCheck");
+      }
+      catch (Exception paramToServiceMsg)
       {
         if (QLog.isColorLevel()) {
           QLog.d("MSFConfigManager", 2, "updateManagerConfig throw e", paramToServiceMsg);
         }
       }
     }
+    paramToServiceMsg = new StringBuilder();
+    paramToServiceMsg.append("after updateManagerConfig, res =");
+    paramToServiceMsg.append(toString());
+    QLog.d("MSFConfigManager", 1, paramToServiceMsg.toString());
   }
   
   public boolean b()
@@ -121,12 +124,28 @@ public class i
   
   public String toString()
   {
-    return "MSFConfigManager{isIPCDivideToTransportEnable=" + this.k + ", isSleepThreadWhenIPCBlockEnable=" + this.l + ", isSendQuickHBByDeepSleepEnable=" + this.m + ", isSendQuickHBByScreenOnEnable=" + this.n + ", isMultiChannelReportEnable=" + this.o + ", isBinderConnectOptEnable=" + this.p + ", isChangeHuaweiDSCheck=" + this.q + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MSFConfigManager{isIPCDivideToTransportEnable=");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append(", isSleepThreadWhenIPCBlockEnable=");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append(", isSendQuickHBByDeepSleepEnable=");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append(", isSendQuickHBByScreenOnEnable=");
+    localStringBuilder.append(this.n);
+    localStringBuilder.append(", isMultiChannelReportEnable=");
+    localStringBuilder.append(this.o);
+    localStringBuilder.append(", isBinderConnectOptEnable=");
+    localStringBuilder.append(this.p);
+    localStringBuilder.append(", isChangeHuaweiDSCheck=");
+    localStringBuilder.append(this.q);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.i
  * JD-Core Version:    0.7.0.1
  */

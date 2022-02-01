@@ -2,7 +2,6 @@ package com.tencent.mobileqq.Doraemon.impl.webview;
 
 import android.util.LruCache;
 import com.tencent.biz.ProtoUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
 import com.tencent.mobileqq.miniapp.MiniAppInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -12,6 +11,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.async.JobContext;
 import com.tribe.async.async.JobSegment;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import tencent.im.oidb.oidb_0xb60.CheckUrlReq;
 import tencent.im.oidb.oidb_0xb60.ReqBody;
 
@@ -28,7 +28,11 @@ public class VerifyUrlJobSegment
   
   protected void a(JobContext paramJobContext, MiniAppInfo paramMiniAppInfo)
   {
-    paramJobContext = paramMiniAppInfo.h + '_' + this.jdField_a_of_type_JavaLangString;
+    paramJobContext = new StringBuilder();
+    paramJobContext.append(paramMiniAppInfo.h);
+    paramJobContext.append('_');
+    paramJobContext.append(this.jdField_a_of_type_JavaLangString);
+    paramJobContext = paramJobContext.toString();
     Object localObject = (Long)jdField_a_of_type_AndroidUtilLruCache.get(paramJobContext);
     if ((localObject != null) && (((Long)localObject).longValue() > NetConnInfoCenter.getServerTimeMillis()))
     {
@@ -36,45 +40,53 @@ public class VerifyUrlJobSegment
         QLog.i("DoraemonOpenAPI.jobVerifyUrl", 2, "cache hit");
       }
       notifyResult(paramMiniAppInfo);
-    }
-    do
-    {
-      do
-      {
-        return;
-        localObject = BaseApplicationImpl.getApplication().getRuntime();
-        if (localObject != null) {
-          break;
-        }
-        notifyError(new AppInfoError(7, "jobVerifyUrl app is null"));
-      } while (!QLog.isColorLevel());
-      QLog.i("DoraemonOpenAPI.jobVerifyUrl", 2, "app is null");
       return;
-      try
-      {
-        int i = Integer.parseInt(paramMiniAppInfo.jdField_a_of_type_JavaLangString);
-        oidb_0xb60.ReqBody localReqBody = new oidb_0xb60.ReqBody();
-        localReqBody.check_url_req.setHasFlag(true);
-        localReqBody.check_url_req.url.set(this.jdField_a_of_type_JavaLangString);
-        localReqBody.check_url_req.appid.set(i);
-        localReqBody.check_url_req.app_type.set(paramMiniAppInfo.jdField_a_of_type_Int);
-        if (QLog.isColorLevel()) {
-          QLog.i("DoraemonOpenAPI.jobVerifyUrl", 2, "send type=" + paramMiniAppInfo.jdField_a_of_type_Int + ", appid=" + paramMiniAppInfo.jdField_a_of_type_JavaLangString + ", url=" + this.jdField_a_of_type_JavaLangString);
-        }
-        ProtoUtils.a((AppRuntime)localObject, new VerifyUrlJobSegment.1(this, paramMiniAppInfo, paramJobContext), localReqBody.toByteArray(), "OidbSvc.0xb60_2", 2912, 2, null, 0L);
-        return;
+    }
+    localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if (localObject == null)
+    {
+      notifyError(new AppInfoError(7, "jobVerifyUrl app is null"));
+      if (QLog.isColorLevel()) {
+        QLog.i("DoraemonOpenAPI.jobVerifyUrl", 2, "app is null");
       }
-      catch (NumberFormatException paramJobContext)
+      return;
+    }
+    try
+    {
+      int i = Integer.parseInt(paramMiniAppInfo.jdField_a_of_type_JavaLangString);
+      oidb_0xb60.ReqBody localReqBody = new oidb_0xb60.ReqBody();
+      localReqBody.check_url_req.setHasFlag(true);
+      localReqBody.check_url_req.url.set(this.jdField_a_of_type_JavaLangString);
+      localReqBody.check_url_req.appid.set(i);
+      localReqBody.check_url_req.app_type.set(paramMiniAppInfo.jdField_a_of_type_Int);
+      if (QLog.isColorLevel())
       {
-        notifyError(new AppInfoError(7, "jobVerifyUrl parse appid error"));
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("send type=");
+        localStringBuilder.append(paramMiniAppInfo.jdField_a_of_type_Int);
+        localStringBuilder.append(", appid=");
+        localStringBuilder.append(paramMiniAppInfo.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(", url=");
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        QLog.i("DoraemonOpenAPI.jobVerifyUrl", 2, localStringBuilder.toString());
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("DoraemonOpenAPI.jobVerifyUrl", 2, "parse appid error");
+      ProtoUtils.a((AppRuntime)localObject, new VerifyUrlJobSegment.1(this, paramMiniAppInfo, paramJobContext), localReqBody.toByteArray(), "OidbSvc.0xb60_2", 2912, 2, null, 0L);
+      return;
+    }
+    catch (NumberFormatException paramJobContext)
+    {
+      label308:
+      break label308;
+    }
+    notifyError(new AppInfoError(7, "jobVerifyUrl parse appid error"));
+    if (QLog.isColorLevel()) {
+      QLog.i("DoraemonOpenAPI.jobVerifyUrl", 2, "parse appid error");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.webview.VerifyUrlJobSegment
  * JD-Core Version:    0.7.0.1
  */

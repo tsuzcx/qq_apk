@@ -10,8 +10,9 @@ class gc$3
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, JceStruct paramJceStruct)
   {
-    if (this.rW != null) {
-      this.rW.a(paramInt1, paramInt2, paramInt3, paramInt4, paramJceStruct);
+    dq localdq = this.rW;
+    if (localdq != null) {
+      localdq.a(paramInt1, paramInt2, paramInt3, paramInt4, paramJceStruct);
     }
     if ((paramInt2 != 13651) && (paramInt3 == 0) && (gc.a(this.rU) != null)) {
       gc.a(this.rU).eR();
@@ -20,7 +21,7 @@ class gc$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.gc.3
  * JD-Core Version:    0.7.0.1
  */

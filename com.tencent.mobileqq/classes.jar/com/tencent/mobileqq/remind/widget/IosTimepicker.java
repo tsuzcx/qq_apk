@@ -75,8 +75,9 @@ public class IosTimepicker
       }
       this.jdField_b_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker$FormatDataListener.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView, this.jdField_a_of_type_ArrayOfInt);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker$OnTimePickerSelectListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker$OnTimePickerSelectListener.a(this.jdField_b_of_type_Long);
+    IosTimepicker.OnTimePickerSelectListener localOnTimePickerSelectListener = this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker$OnTimePickerSelectListener;
+    if (localOnTimePickerSelectListener != null) {
+      localOnTimePickerSelectListener.a(this.jdField_b_of_type_Long);
     }
   }
   
@@ -86,15 +87,15 @@ public class IosTimepicker
     {
       if (paramInt == 0)
       {
-        ((WheelTextView)paramView).setTextSize(20.0F);
-        ((WheelTextView)paramView).setTextColor(this.jdField_a_of_type_Int);
+        paramView = (WheelTextView)paramView;
+        paramView.setTextSize(20.0F);
+        paramView.setTextColor(this.jdField_a_of_type_Int);
+        return;
       }
+      paramView = (WheelTextView)paramView;
+      paramView.setTextSize(20.0F);
+      paramView.setTextColor(this.jdField_b_of_type_Int);
     }
-    else {
-      return;
-    }
-    ((WheelTextView)paramView).setTextSize(20.0F);
-    ((WheelTextView)paramView).setTextColor(this.jdField_b_of_type_Int);
   }
   
   public long a()
@@ -104,101 +105,121 @@ public class IosTimepicker
   
   public void a(Context paramContext, ActionSheet paramActionSheet, IosTimepicker.OnTimePickerSelectListener paramOnTimePickerSelectListener, View.OnClickListener paramOnClickListener, BaseAdapter[] paramArrayOfBaseAdapter, int[] paramArrayOfInt, IosTimepicker.FormatDataListener paramFormatDataListener)
   {
-    if ((paramArrayOfBaseAdapter == null) || (paramArrayOfBaseAdapter.length == 0) || (paramArrayOfBaseAdapter.length > 3)) {
-      throw new IllegalArgumentException("adapters is null or empty, or its length is larger than 3");
-    }
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
+    if ((paramArrayOfBaseAdapter != null) && (paramArrayOfBaseAdapter.length != 0) && (paramArrayOfBaseAdapter.length <= 3))
+    {
+      if ((paramArrayOfInt != null) && (paramArrayOfInt.length != 0))
+      {
+        if (paramArrayOfInt.length == paramArrayOfBaseAdapter.length)
+        {
+          this.jdField_a_of_type_AndroidContentContext = paramContext;
+          this.jdField_a_of_type_ComTencentWidgetActionSheet = paramActionSheet;
+          this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker$OnTimePickerSelectListener = paramOnTimePickerSelectListener;
+          this.jdField_a_of_type_ArrayOfAndroidWidgetBaseAdapter = paramArrayOfBaseAdapter;
+          this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
+          int m = paramArrayOfBaseAdapter.length;
+          int k = paramArrayOfInt.length;
+          this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView = new WheelView[m];
+          this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker$FormatDataListener = paramFormatDataListener;
+          int j = 0;
+          int i = 0;
+          while (i < m)
+          {
+            this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView[i] = new WheelView(this.jdField_a_of_type_AndroidContentContext);
+            i += 1;
+          }
+          paramActionSheet = this.jdField_a_of_type_AndroidContentContext.getResources();
+          this.jdField_a_of_type_Int = paramActionSheet.getColor(2131167148);
+          this.jdField_b_of_type_Int = paramActionSheet.getColor(2131167102);
+          this.jdField_a_of_type_ArrayOfJavaLangString = TimeHelper.jdField_a_of_type_ArrayOfJavaLangString;
+          this.jdField_b_of_type_ArrayOfJavaLangString = TimeHelper.jdField_b_of_type_ArrayOfJavaLangString;
+          this.jdField_a_of_type_AndroidViewView = findViewById(2131368955);
+          this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368954));
+          this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377162));
+          this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131378714));
+          i = paramActionSheet.getColor(2131167161);
+          findViewById(2131368953).setBackgroundColor(i);
+          findViewById(2131368952).setBackgroundColor(i);
+          this.jdField_a_of_type_AndroidViewView.setBackgroundColor(paramActionSheet.getColor(2131167107));
+          i = paramActionSheet.getColor(2131167160);
+          findViewById(2131370070).setBackgroundColor(i);
+          findViewById(2131370053).setBackgroundColor(i);
+          if (paramOnClickListener != null) {
+            this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramOnClickListener);
+          } else {
+            this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new IosTimepicker.1(this));
+          }
+          if (m == 1)
+          {
+            paramContext = new LinearLayout.LayoutParams(-1, -1);
+            this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView[0].setLayoutParams(paramContext);
+            this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView[0].setAdapter(this.jdField_a_of_type_ArrayOfAndroidWidgetBaseAdapter[0]);
+            i = j;
+            if (QLog.isColorLevel())
+            {
+              paramContext = jdField_a_of_type_JavaLangString;
+              paramActionSheet = new StringBuilder();
+              paramActionSheet.append("createTimePicker Time :");
+              paramActionSheet.append(TimeHelper.a(this.jdField_a_of_type_Long));
+              QLog.d(paramContext, 2, paramActionSheet.toString());
+              i = j;
+            }
+          }
+          else
+          {
+            i = 0;
+            while (i < m)
+            {
+              paramOnTimePickerSelectListener = this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView[i];
+              if (i == 0) {
+                paramContext = new LinearLayout.LayoutParams(paramActionSheet.getDimensionPixelSize(2131299159), -1);
+              } else {
+                paramContext = new LinearLayout.LayoutParams(paramActionSheet.getDimensionPixelSize(2131299161), -1);
+              }
+              paramContext.setMargins(0, paramActionSheet.getDimensionPixelSize(2131299164), 0, paramActionSheet.getDimensionPixelSize(2131299162));
+              paramOnTimePickerSelectListener.setLayoutParams(paramContext);
+              if (i != 0)
+              {
+                paramOnTimePickerSelectListener.setScrollCycle(true);
+                paramOnTimePickerSelectListener.setmMaxRotationAngle(80);
+                paramOnTimePickerSelectListener.setmMaxSkew(0.1F);
+                paramOnTimePickerSelectListener.setNeedTranslate(true);
+              }
+              i += 1;
+            }
+            i = j;
+            if (QLog.isColorLevel())
+            {
+              paramContext = jdField_a_of_type_JavaLangString;
+              paramActionSheet = new StringBuilder();
+              paramActionSheet.append("createTimePicker Time :");
+              paramActionSheet.append(TimeHelper.a(this.jdField_a_of_type_Long));
+              QLog.d(paramContext, 2, paramActionSheet.toString());
+              i = j;
+            }
+          }
+          while (i < k)
+          {
+            paramContext = this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView[i];
+            this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramContext);
+            paramContext.setAdapter(this.jdField_a_of_type_ArrayOfAndroidWidgetBaseAdapter[i]);
+            paramContext.setSelection(this.jdField_a_of_type_ArrayOfInt[i], true);
+            paramContext.setOnItemSelectedListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener);
+            paramContext.setOnSelectViewDataUpdateListener(this.jdField_a_of_type_ComTencentWidgetVerticalGallery$OnSelectViewDataUpdateListener);
+            paramContext.setOnEndFlingListener(this.jdField_a_of_type_ComTencentWidgetVerticalGallery$OnEndFlingListener);
+            i += 1;
+          }
+          a();
+          return;
+        }
+        throw new IllegalArgumentException("selectionPos.length is not equal to adapters.length");
+      }
       throw new IllegalArgumentException("selectionPos is null or empty, or its length is larger than 3");
     }
-    if (paramArrayOfInt.length != paramArrayOfBaseAdapter.length) {
-      throw new IllegalArgumentException("selectionPos.length is not equal to adapters.length");
-    }
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentWidgetActionSheet = paramActionSheet;
-    this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker$OnTimePickerSelectListener = paramOnTimePickerSelectListener;
-    this.jdField_a_of_type_ArrayOfAndroidWidgetBaseAdapter = paramArrayOfBaseAdapter;
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-    int k = paramArrayOfBaseAdapter.length;
-    int j = paramArrayOfInt.length;
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView = new WheelView[k];
-    this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker$FormatDataListener = paramFormatDataListener;
-    int i = 0;
-    while (i < k)
-    {
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView[i] = new WheelView(this.jdField_a_of_type_AndroidContentContext);
-      i += 1;
-    }
-    paramActionSheet = this.jdField_a_of_type_AndroidContentContext.getResources();
-    this.jdField_a_of_type_Int = paramActionSheet.getColor(2131167123);
-    this.jdField_b_of_type_Int = paramActionSheet.getColor(2131167079);
-    this.jdField_a_of_type_ArrayOfJavaLangString = TimeHelper.jdField_a_of_type_ArrayOfJavaLangString;
-    this.jdField_b_of_type_ArrayOfJavaLangString = TimeHelper.jdField_b_of_type_ArrayOfJavaLangString;
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369226);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369225));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377734));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131379364));
-    i = paramActionSheet.getColor(2131167136);
-    findViewById(2131369224).setBackgroundColor(i);
-    findViewById(2131369223).setBackgroundColor(i);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(paramActionSheet.getColor(2131167084));
-    i = paramActionSheet.getColor(2131167135);
-    findViewById(2131370411).setBackgroundColor(i);
-    findViewById(2131370391).setBackgroundColor(i);
-    if (paramOnClickListener != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramOnClickListener);
-      if (k != 1) {
-        break label514;
-      }
-      paramContext = new LinearLayout.LayoutParams(-1, -1);
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView[0].setLayoutParams(paramContext);
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView[0].setAdapter(this.jdField_a_of_type_ArrayOfAndroidWidgetBaseAdapter[0]);
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "createTimePicker Time :" + TimeHelper.a(this.jdField_a_of_type_Long));
-      }
-    }
+    paramContext = new IllegalArgumentException("adapters is null or empty, or its length is larger than 3");
     for (;;)
     {
-      i = 0;
-      while (i < j)
-      {
-        paramContext = this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView[i];
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramContext);
-        paramContext.setAdapter(this.jdField_a_of_type_ArrayOfAndroidWidgetBaseAdapter[i]);
-        paramContext.setSelection(this.jdField_a_of_type_ArrayOfInt[i], true);
-        paramContext.setOnItemSelectedListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener);
-        paramContext.setOnSelectViewDataUpdateListener(this.jdField_a_of_type_ComTencentWidgetVerticalGallery$OnSelectViewDataUpdateListener);
-        paramContext.setOnEndFlingListener(this.jdField_a_of_type_ComTencentWidgetVerticalGallery$OnEndFlingListener);
-        i += 1;
-      }
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new IosTimepicker.1(this));
-      break;
-      label514:
-      i = 0;
-      if (i < k)
-      {
-        paramOnTimePickerSelectListener = this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView[i];
-        if (i == 0) {}
-        for (paramContext = new LinearLayout.LayoutParams(paramActionSheet.getDimensionPixelSize(2131299157), -1);; paramContext = new LinearLayout.LayoutParams(paramActionSheet.getDimensionPixelSize(2131299159), -1))
-        {
-          paramContext.setMargins(0, paramActionSheet.getDimensionPixelSize(2131299162), 0, paramActionSheet.getDimensionPixelSize(2131299160));
-          paramOnTimePickerSelectListener.setLayoutParams(paramContext);
-          if (i != 0)
-          {
-            paramOnTimePickerSelectListener.setScrollCycle(true);
-            paramOnTimePickerSelectListener.setmMaxRotationAngle(80);
-            paramOnTimePickerSelectListener.setmMaxSkew(0.1F);
-            paramOnTimePickerSelectListener.setNeedTranslate(true);
-          }
-          i += 1;
-          break;
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "createTimePicker Time :" + TimeHelper.a(this.jdField_a_of_type_Long));
-      }
+      throw paramContext;
     }
-    a();
   }
   
   public void setFormatDataListener(IosTimepicker.FormatDataListener paramFormatDataListener)
@@ -209,8 +230,13 @@ public class IosTimepicker
   public void setMaxDays(int paramInt)
   {
     TimeHelper.jdField_a_of_type_Int = paramInt;
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "setMaxDays days = " + TimeHelper.jdField_a_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      String str = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setMaxDays days = ");
+      localStringBuilder.append(TimeHelper.jdField_a_of_type_Int);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
   }
   
@@ -221,14 +247,15 @@ public class IosTimepicker
   
   public void setTips(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localTextView != null) {
+      localTextView.setText(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.remind.widget.IosTimepicker
  * JD-Core Version:    0.7.0.1
  */

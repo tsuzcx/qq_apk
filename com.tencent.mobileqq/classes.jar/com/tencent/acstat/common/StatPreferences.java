@@ -12,8 +12,8 @@ import java.util.Set;
 
 public class StatPreferences
 {
-  private static SharedPreferences a = null;
-  private static StatLogger b = StatCommonHelper.getLogger();
+  private static SharedPreferences a;
+  private static StatLogger b = ;
   
   public static boolean contains(Context paramContext, String paramString)
   {
@@ -40,29 +40,31 @@ public class StatPreferences
   
   public static SharedPreferences getInstance(Context paramContext)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        SharedPreferences localSharedPreferences = a;
-        if (localSharedPreferences == null) {}
+      SharedPreferences localSharedPreferences = a;
+      if (localSharedPreferences == null) {
         try
         {
-          if ((StatConfig.getMTAPreferencesFileName() != null) && (StatConfig.getMTAPreferencesFileName().trim().length() != 0)) {
-            continue;
+          if ((StatConfig.getMTAPreferencesFileName() != null) && (StatConfig.getMTAPreferencesFileName().trim().length() != 0)) {}
+          for (paramContext = paramContext.getSharedPreferences(StatConfig.getMTAPreferencesFileName(), 0);; paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext))
+          {
+            a = paramContext;
+            break;
           }
-          a = PreferenceManager.getDefaultSharedPreferences(paramContext);
+          paramContext = a;
         }
         catch (Exception paramContext)
         {
           paramContext.printStackTrace();
-          continue;
         }
-        paramContext = a;
-        return paramContext;
       }
-      finally {}
-      a = paramContext.getSharedPreferences(StatConfig.getMTAPreferencesFileName(), 0);
+      return paramContext;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramContext;
     }
   }
   
@@ -80,7 +82,9 @@ public class StatPreferences
   
   public static String getStorageKey(Context paramContext, String paramString)
   {
-    return StatCommonHelper.getTagForConcurrentProcess(paramContext, paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    return StatCommonHelper.getTagForConcurrentProcess(paramContext, localStringBuilder.toString());
   }
   
   public static String getString(Context paramContext, String paramString1, String paramString2)
@@ -129,60 +133,94 @@ public class StatPreferences
   
   public static void putObjectList(Context paramContext, Map<String, Object> paramMap)
   {
-    if ((paramContext == null) || (paramMap == null) || (paramMap.size() == 0)) {
-      return;
-    }
-    b.i("putObjectList size:" + paramMap.size());
-    SharedPreferences.Editor localEditor = getInstance(paramContext).edit();
-    paramMap = paramMap.entrySet().iterator();
-    while (paramMap.hasNext())
+    if ((paramContext != null) && (paramMap != null))
     {
-      Object localObject = (Map.Entry)paramMap.next();
-      String str = getStorageKey(paramContext, (String)((Map.Entry)localObject).getKey());
-      localObject = ((Map.Entry)localObject).getValue();
-      try
+      if (paramMap.size() == 0) {
+        return;
+      }
+      Object localObject1 = b;
+      Object localObject2 = new StringBuilder("putObjectList size:");
+      ((StringBuilder)localObject2).append(paramMap.size());
+      ((StatLogger)localObject1).i(((StringBuilder)localObject2).toString());
+      localObject1 = getInstance(paramContext).edit();
+      paramMap = paramMap.entrySet().iterator();
+      while (paramMap.hasNext())
       {
-        if (!(localObject instanceof String)) {
-          break label175;
+        Object localObject3 = (Map.Entry)paramMap.next();
+        localObject2 = getStorageKey(paramContext, (String)((Map.Entry)localObject3).getKey());
+        localObject3 = ((Map.Entry)localObject3).getValue();
+        try
+        {
+          boolean bool = localObject3 instanceof String;
+          StatLogger localStatLogger;
+          StringBuilder localStringBuilder;
+          if (bool)
+          {
+            localStatLogger = b;
+            localStringBuilder = new StringBuilder("putObjectList putString:");
+            localStringBuilder.append((String)localObject2);
+            localStringBuilder.append(",");
+            localStringBuilder.append(localObject3);
+            localStatLogger.i(localStringBuilder.toString());
+            ((SharedPreferences.Editor)localObject1).putString((String)localObject2, (String)localObject3);
+          }
+          else if ((localObject3 instanceof Long))
+          {
+            localStatLogger = b;
+            localStringBuilder = new StringBuilder("putObjectList putLong:");
+            localStringBuilder.append((String)localObject2);
+            localStringBuilder.append(",");
+            localStringBuilder.append(localObject3);
+            localStatLogger.i(localStringBuilder.toString());
+            ((SharedPreferences.Editor)localObject1).putLong((String)localObject2, ((Long)localObject3).longValue());
+          }
+          else if ((localObject3 instanceof Boolean))
+          {
+            localStatLogger = b;
+            localStringBuilder = new StringBuilder("putObjectList putBoolean:");
+            localStringBuilder.append((String)localObject2);
+            localStringBuilder.append(",");
+            localStringBuilder.append(localObject3);
+            localStatLogger.i(localStringBuilder.toString());
+            ((SharedPreferences.Editor)localObject1).putBoolean((String)localObject2, ((Boolean)localObject3).booleanValue());
+          }
+          else if ((localObject3 instanceof Integer))
+          {
+            localStatLogger = b;
+            localStringBuilder = new StringBuilder("putObjectList putInt:");
+            localStringBuilder.append((String)localObject2);
+            localStringBuilder.append(",");
+            localStringBuilder.append(localObject3);
+            localStatLogger.i(localStringBuilder.toString());
+            ((SharedPreferences.Editor)localObject1).putInt((String)localObject2, ((Integer)localObject3).intValue());
+          }
+          else if ((localObject3 instanceof Float))
+          {
+            localStatLogger = b;
+            localStringBuilder = new StringBuilder("putObjectList putFloat:");
+            localStringBuilder.append((String)localObject2);
+            localStringBuilder.append(",");
+            localStringBuilder.append(localObject3);
+            localStatLogger.i(localStringBuilder.toString());
+            ((SharedPreferences.Editor)localObject1).putFloat((String)localObject2, ((Float)localObject3).floatValue());
+          }
         }
-        b.i("putObjectList putString:" + str + "," + localObject);
-        localEditor.putString(str, (String)localObject);
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+        }
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      continue;
-      label175:
-      if ((localObject instanceof Long))
-      {
-        b.i("putObjectList putLong:" + localException + "," + localObject);
-        localEditor.putLong(localException, ((Long)localObject).longValue());
-      }
-      else if ((localObject instanceof Boolean))
-      {
-        b.i("putObjectList putBoolean:" + localException + "," + localObject);
-        localEditor.putBoolean(localException, ((Boolean)localObject).booleanValue());
-      }
-      else if ((localObject instanceof Integer))
-      {
-        b.i("putObjectList putInt:" + localException + "," + localObject);
-        localEditor.putInt(localException, ((Integer)localObject).intValue());
-      }
-      else if ((localObject instanceof Float))
-      {
-        b.i("putObjectList putFloat:" + localException + "," + localObject);
-        localEditor.putFloat(localException, ((Float)localObject).floatValue());
-      }
+      ((SharedPreferences.Editor)localObject1).commit();
     }
-    localEditor.commit();
   }
   
   public static void putString(Context paramContext, String paramString1, String paramString2)
   {
     String str = getString(paramContext, paramString1, null);
-    if ((paramString2 == null) && (str == null)) {}
-    while ((paramString2 != null) && (str != null) && (paramString2.equals(str))) {
+    if ((paramString2 == null) && (str == null)) {
+      return;
+    }
+    if ((paramString2 != null) && (str != null) && (paramString2.equals(str))) {
       return;
     }
     paramString1 = getStorageKey(paramContext, paramString1);

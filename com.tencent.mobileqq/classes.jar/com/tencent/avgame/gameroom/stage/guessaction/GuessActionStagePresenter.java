@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.avgame.gamelogic.GameEngine;
+import com.tencent.avgame.gamelogic.IGameEngine;
 import com.tencent.avgame.gamelogic.ITopic;
 import com.tencent.avgame.gamelogic.data.EngineData;
 import com.tencent.avgame.gamelogic.data.Game;
@@ -14,7 +15,7 @@ import com.tencent.avgame.gameroom.IGameRoomPresenter;
 import com.tencent.avgame.gameroom.stage.IGameStagePresenter;
 import com.tencent.avgame.gameroom.stage.IGameStageView;
 import com.tencent.avgame.gameroom.stage.IStagePresenter;
-import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.avgame.util.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class GuessActionStagePresenter
@@ -43,12 +44,12 @@ public class GuessActionStagePresenter
       }
       return "";
     }
-    boolean bool = GameEngine.a(paramEngineData);
+    boolean bool = IGameEngine.a(paramEngineData);
     paramEngineData = paramEngineData.a().jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.nick;
     if (bool) {
-      return paramContext.getResources().getString(2131690342);
+      return paramContext.getResources().getString(2131690265);
     }
-    return String.format(paramContext.getResources().getString(2131690343), new Object[] { ContactUtils.a(paramEngineData, 8.0F) });
+    return String.format(paramContext.getResources().getString(2131690266), new Object[] { ContactUtils.a(paramEngineData, 8.0F) });
   }
   
   public String a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
@@ -63,11 +64,11 @@ public class GuessActionStagePresenter
     if (paramBoolean1)
     {
       if (paramBoolean2) {
-        return paramContext.getResources().getString(2131690341);
+        return paramContext.getResources().getString(2131690264);
       }
-      return paramContext.getResources().getString(2131690346);
+      return paramContext.getResources().getString(2131690269);
     }
-    return paramContext.getResources().getString(2131690340);
+    return paramContext.getResources().getString(2131690263);
   }
   
   public void a(ITopic paramITopic)
@@ -79,7 +80,7 @@ public class GuessActionStagePresenter
   {
     if ((!this.jdField_a_of_type_Boolean) && (GameEngine.a().a().a().opened_match))
     {
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter.a().a(this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter.a().a().getString(2131690353));
+      this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter.a().a(this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter.a().a().getString(2131690276));
       this.jdField_a_of_type_Boolean = true;
     }
     a(GameEngine.a(paramEngineData), false);
@@ -139,7 +140,7 @@ public class GuessActionStagePresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.stage.guessaction.GuessActionStagePresenter
  * JD-Core Version:    0.7.0.1
  */

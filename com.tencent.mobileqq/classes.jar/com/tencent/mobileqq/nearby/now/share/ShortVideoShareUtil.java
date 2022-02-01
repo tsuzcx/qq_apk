@@ -4,6 +4,7 @@ import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory.Options;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -14,12 +15,12 @@ import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.activity.ForwardRecentTranslucentActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
+import com.tencent.mobileqq.nearby.now.utils.INowVideoReporter;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.mobileqq.structmsg.AbsShareMsg.Builder;
 import com.tencent.mobileqq.structmsg.AbsStructMsgItem;
@@ -31,7 +32,9 @@ import com.tencent.mobileqq.widget.share.ShareActionSheet;
 import com.tencent.mobileqq.widget.share.ShareActionSheetFactory;
 import com.tencent.mobileqq.widget.share.ShareActionSheetV2.Param;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneShareManager;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,15 +54,55 @@ public class ShortVideoShareUtil
     return localBitmap;
   }
   
-  static void a(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, ShortVideoShareUtil.OnShareCallBack paramOnShareCallBack)
+  public static Bitmap a(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    try
+    {
+      paramString = new File(paramString);
+      if (!paramString.exists()) {
+        return null;
+      }
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      localOptions.inJustDecodeBounds = true;
+      BitmapManager.a(paramString.getAbsolutePath(), localOptions);
+      int i = localOptions.outWidth;
+      if (i > 150) {
+        localOptions.inSampleSize = (i / 150);
+      }
+      localOptions.inJustDecodeBounds = false;
+      paramString = BitmapManager.a(paramString.getAbsolutePath(), localOptions);
+      return paramString;
+    }
+    catch (Throwable paramString)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("HotChatHelper", 2, "makeShareBitmap", paramString);
+        return null;
+      }
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("HotChatHelper", 2, "makeShareBitmap", paramString);
+      }
+    }
+    return null;
+  }
+  
+  static void a(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, IShortVideoShareUtil.OnShareCallBack paramOnShareCallBack)
   {
     paramBaseActivity = (QQAppInterface)paramBaseActivity.getAppRuntime();
     if (!TextUtils.isEmpty(paramString5))
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mUseAutoScaleParams = false;
-      if (a != null) {
-        a.cancelDownload();
+      URLDrawable localURLDrawable = a;
+      if (localURLDrawable != null) {
+        localURLDrawable.cancelDownload();
       }
       a = URLDrawable.getDrawable(paramString5, localURLDrawableOptions);
       if (a.getStatus() == 1)
@@ -103,7 +146,7 @@ public class ShortVideoShareUtil
     paramString4.addItem(localAbsStructMsgItem);
     paramString1.putExtra("forward_type", -3);
     paramString1.putExtra("stuctmsg_bytes", paramString4.getBytes());
-    paramString1.putExtra("key_req", ForwardRecentActivity.f);
+    paramString1.putExtra("key_req", 1);
     paramString1.putExtra("key_direct_show_uin_type", paramInt);
     paramString1.putExtra("key_direct_show_uin", paramString6);
     ForwardBaseOption.a(paramBaseActivity, paramString1, ForwardRecentTranslucentActivity.class, 123, 100500, "biz_src_hdsp_nearby");
@@ -149,18 +192,19 @@ public class ShortVideoShareUtil
     paramString5.putString("targetUrl", paramString4);
     paramString5.putInt("cflag", 1);
     QZoneShareManager.jumpToQzoneShare(paramString1, paramBaseActivity, paramString5, null, 124);
-    new NowVideoReporter().h("video").i("playpage_fw_suc").a().a(paramString1);
+    ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).opType("video").opName("playpage_fw_suc").LvInd1().reportByVideo(paramString1);
   }
   
-  static void b(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, ShortVideoShareUtil.OnShareCallBack paramOnShareCallBack)
+  static void b(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, IShortVideoShareUtil.OnShareCallBack paramOnShareCallBack)
   {
     String str = String.valueOf(System.currentTimeMillis());
     if (!TextUtils.isEmpty(paramString5))
     {
       paramString1 = URLDrawable.URLDrawableOptions.obtain();
       paramString1.mUseAutoScaleParams = false;
-      if (a != null) {
-        a.cancelDownload();
+      URLDrawable localURLDrawable = a;
+      if (localURLDrawable != null) {
+        localURLDrawable.cancelDownload();
       }
       a = URLDrawable.getDrawable(paramString5, paramString1);
       paramString5 = (QQAppInterface)paramBaseActivity.getAppRuntime();
@@ -170,51 +214,47 @@ public class ShortVideoShareUtil
         paramString1 = a(a);
         paramBaseActivity = paramString1;
         if (paramString1 == null) {
-          paramBaseActivity = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130845594);
+          paramBaseActivity = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130845467);
         }
         WXShareHelper.a().a(new ShortVideoShareUtil.5(str, paramOnShareCallBack));
         WXShareHelper.a().a(str, paramString2, paramBaseActivity, paramString3, paramString4);
-        new NowVideoReporter().h("video").i("playpage_fw_suc").a().a(paramString5);
+        ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).opType("video").opName("playpage_fw_suc").LvInd1().reportByVideo(paramString5);
+        return;
       }
-    }
-    else
-    {
-      return;
-    }
-    if (a.getStatus() == 2)
-    {
-      paramString1 = a(a);
-      paramBaseActivity = paramString1;
-      if (paramString1 == null) {
-        paramBaseActivity = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130845594);
+      if (a.getStatus() == 2)
+      {
+        paramString1 = a(a);
+        paramBaseActivity = paramString1;
+        if (paramString1 == null) {
+          paramBaseActivity = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130845467);
+        }
+        WXShareHelper.a().a(new ShortVideoShareUtil.6(str, paramOnShareCallBack));
+        WXShareHelper.a().a(str, paramString2, paramBaseActivity, paramString3, paramString4);
+        a.downloadImediatly();
+        ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).opType("video").opName("playpage_fw_suc").LvInd1().reportByVideo(paramString5);
+        return;
       }
-      WXShareHelper.a().a(new ShortVideoShareUtil.6(str, paramOnShareCallBack));
-      WXShareHelper.a().a(str, paramString2, paramBaseActivity, paramString3, paramString4);
-      a.downloadImediatly();
-      new NowVideoReporter().h("video").i("playpage_fw_suc").a().a(paramString5);
-      return;
+      SLog.c("ShortVideoShareUtil", "start load URLDrawable.");
+      a.setURLDrawableListener(new ShortVideoShareUtil.7(str, paramOnShareCallBack, paramString2, paramString3, paramString4, paramString5));
+      a.startDownload();
     }
-    SLog.c("ShortVideoShareUtil", "start load URLDrawable.");
-    a.setURLDrawableListener(new ShortVideoShareUtil.7(str, paramOnShareCallBack, paramString2, paramString3, paramString4, paramString5));
-    a.startDownload();
   }
   
-  private static void b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, Bitmap paramBitmap, ShortVideoShareUtil.OnShareCallBack paramOnShareCallBack)
+  private static void b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, Bitmap paramBitmap, IShortVideoShareUtil.OnShareCallBack paramOnShareCallBack)
   {
     String str = String.valueOf(System.currentTimeMillis());
-    if (paramBitmap == null) {}
-    for (paramString1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130845594);; paramString1 = paramBitmap)
-    {
-      WXShareHelper.a().a(new ShortVideoShareUtil.4(str, paramOnShareCallBack));
-      WXShareHelper.a().b(str, paramString2, paramString1, paramString3, paramString4);
-      new NowVideoReporter().h("video").i("playpage_fw_suc").a().a(paramQQAppInterface);
-      return;
+    paramString1 = paramBitmap;
+    if (paramBitmap == null) {
+      paramString1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130845467);
     }
+    WXShareHelper.a().a(new ShortVideoShareUtil.4(str, paramOnShareCallBack));
+    WXShareHelper.a().b(str, paramString2, paramString1, paramString3, paramString4);
+    ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).opType("video").opName("playpage_fw_suc").LvInd1().reportByVideo(paramQQAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil
  * JD-Core Version:    0.7.0.1
  */

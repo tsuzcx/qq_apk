@@ -2,7 +2,7 @@ package com.tencent.mobileqq.kandian.biz.publisher.impls;
 
 import android.content.Context;
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJJumpUtils;
+import com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils;
 import com.tencent.tkd.topicsdk.interfaces.IWebViewOpener;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
@@ -21,7 +21,7 @@ public final class WebViewOpenerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.WebViewOpenerImpl
  * JD-Core Version:    0.7.0.1
  */

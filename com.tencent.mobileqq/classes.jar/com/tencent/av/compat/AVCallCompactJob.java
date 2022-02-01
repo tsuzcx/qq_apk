@@ -10,30 +10,38 @@ public class AVCallCompactJob
   
   public void a(VideoAppInterface paramVideoAppInterface, VideoController paramVideoController)
   {
-    if ((paramVideoAppInterface == null) || (paramVideoController == null)) {}
-    do
+    if (paramVideoAppInterface != null)
     {
-      return;
+      if (paramVideoController == null) {
+        return;
+      }
       paramVideoController = paramVideoController.a();
-    } while ((this.a == null) || (paramVideoController == null));
-    paramVideoController.a(this.a, paramVideoAppInterface);
-    this.a = null;
+      Runnable localRunnable = this.a;
+      if ((localRunnable != null) && (paramVideoController != null))
+      {
+        paramVideoController.a(localRunnable, paramVideoAppInterface);
+        this.a = null;
+      }
+    }
   }
   
   public void a(BaseActivity paramBaseActivity, VideoAppInterface paramVideoAppInterface, VideoController paramVideoController)
   {
-    if ((paramBaseActivity == null) || (paramVideoAppInterface == null) || (paramVideoController == null)) {}
-    do
+    if ((paramBaseActivity != null) && (paramVideoAppInterface != null))
     {
-      return;
+      if (paramVideoController == null) {
+        return;
+      }
       paramVideoController = paramVideoController.a();
-    } while (paramVideoController == null);
-    this.a = paramVideoController.a(paramBaseActivity, paramVideoAppInterface);
+      if (paramVideoController != null) {
+        this.a = paramVideoController.a(paramBaseActivity, paramVideoAppInterface);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.compat.AVCallCompactJob
  * JD-Core Version:    0.7.0.1
  */

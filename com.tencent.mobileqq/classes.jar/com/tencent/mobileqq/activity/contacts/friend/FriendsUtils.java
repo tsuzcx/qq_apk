@@ -1,59 +1,88 @@
 package com.tencent.mobileqq.activity.contacts.friend;
 
+import com.tencent.mobileqq.friend.status.OnlineStatusIconHelper;
+
 public class FriendsUtils
 {
   public static int a(int paramInt1, int paramInt2, int paramInt3)
   {
     OnlineStatusIconHelper localOnlineStatusIconHelper = OnlineStatusIconHelper.a();
     if (paramInt1 == 0) {
-      if ((paramInt2 == 69378) || (paramInt2 == 73474) || (paramInt2 == 73730)) {
-        paramInt2 = 0;
+      if ((paramInt2 != 69378) && (paramInt2 != 73474) && (paramInt2 != 73730))
+      {
+        if (1 != localOnlineStatusIconHelper.a(paramInt2, 1)) {
+          return 2;
+        }
+      }
+      else {
+        return 0;
       }
     }
-    do
-    {
-      return paramInt2;
-      if (1 != localOnlineStatusIconHelper.a(paramInt2, 1)) {
-        return 2;
-      }
-      if (1 != localOnlineStatusIconHelper.a(paramInt2, 1)) {}
-      switch (paramInt3)
+    if (1 != localOnlineStatusIconHelper.a(paramInt2, 1)) {
+      if (paramInt3 != 1)
       {
-      case 5: 
-      case 6: 
-      case 10: 
-      case 11: 
-      default: 
-        if ((paramInt3 == 7) || (paramInt3 == 8)) {
-          break label136;
+        if (paramInt3 != 2)
+        {
+          paramInt2 = 3;
+          if (paramInt3 != 3)
+          {
+            paramInt2 = 4;
+            if (paramInt3 != 4)
+            {
+              if (paramInt3 != 7)
+              {
+                if (paramInt3 != 8)
+                {
+                  if (paramInt3 != 9)
+                  {
+                    if (paramInt3 != 12) {
+                      break label121;
+                    }
+                    return 5;
+                  }
+                  return 9;
+                }
+                return 8;
+              }
+              return 7;
+            }
+          }
+          return paramInt2;
         }
-        paramInt2 = paramInt1;
+        else
+        {
+          return 2;
+        }
       }
-    } while (paramInt3 != 9);
-    switch (paramInt3)
+      else {
+        return 1;
+      }
+    }
+    label121:
+    if ((paramInt3 == 7) || (paramInt3 == 8) || (paramInt3 == 9))
     {
-    default: 
+      if (paramInt3 == 7) {
+        break label165;
+      }
+      if (paramInt3 == 8) {
+        break label162;
+      }
+      if (paramInt3 == 9) {}
+    }
+    else
+    {
       return paramInt1;
-    case 7: 
-      return 7;
-      return 1;
-      return 2;
-      return 3;
-      return 4;
-      return 5;
-      return 7;
-      return 8;
-      return 9;
-    case 8: 
-      label136:
-      return 8;
     }
     return 9;
+    label162:
+    return 8;
+    label165:
+    return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.friend.FriendsUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -14,17 +14,23 @@ public class DittoStringValue
   
   public void setValue(Object paramObject, String paramString)
   {
-    DittoLog.e("DITTO_UI", "cannot set a value of string constant:" + this.mString, new RuntimeException());
+    paramObject = new StringBuilder();
+    paramObject.append("cannot set a value of string constant:");
+    paramObject.append(this.mString);
+    DittoLog.e("DITTO_UI", paramObject.toString(), new RuntimeException());
   }
   
   public void setValue(Object paramObject, boolean paramBoolean)
   {
-    DittoLog.e("DITTO_UI", "cannot set a value of string constant:" + this.mString, new RuntimeException());
+    paramObject = new StringBuilder();
+    paramObject.append("cannot set a value of string constant:");
+    paramObject.append(this.mString);
+    DittoLog.e("DITTO_UI", paramObject.toString(), new RuntimeException());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ditto.reflect.DittoStringValue
  * JD-Core Version:    0.7.0.1
  */

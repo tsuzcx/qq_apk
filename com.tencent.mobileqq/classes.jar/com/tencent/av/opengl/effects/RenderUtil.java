@@ -13,32 +13,39 @@ import com.tencent.view.RendererUtils;
 public class RenderUtil
 {
   static int jdField_a_of_type_Int = -1;
-  private static Boolean jdField_a_of_type_JavaLangBoolean = null;
+  private static Boolean jdField_a_of_type_JavaLangBoolean;
   
   public static int a(boolean paramBoolean)
   {
+    int i = jdField_a_of_type_Int;
     int j = 1;
-    if (jdField_a_of_type_Int == -1)
+    if (i == -1)
     {
-      EffectFaceDeviceConfig localEffectFaceDeviceConfig = EffectFaceDeviceConfig.a();
-      if (((localEffectFaceDeviceConfig == null) || (!localEffectFaceDeviceConfig.h())) && (!a())) {
-        break label107;
+      Object localObject = EffectFaceDeviceConfig.a();
+      if (((localObject != null) && (((EffectFaceDeviceConfig)localObject).f())) || (a())) {
+        jdField_a_of_type_Int = 1;
+      } else {
+        jdField_a_of_type_Int = 0;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getFrameAngle, mInversion[");
+      ((StringBuilder)localObject).append(jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append("], manufacture[");
+      ((StringBuilder)localObject).append(Build.MANUFACTURER);
+      ((StringBuilder)localObject).append("], model[");
+      ((StringBuilder)localObject).append(Build.MODEL);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("Render", 1, ((StringBuilder)localObject).toString());
+    }
+    i = j;
+    if (paramBoolean)
+    {
+      i = j;
+      if (jdField_a_of_type_Int != 1) {
+        i = 3;
       }
     }
-    label107:
-    for (jdField_a_of_type_Int = 1;; jdField_a_of_type_Int = 0)
-    {
-      QLog.i("Render", 1, "getFrameAngle, mInversion[" + jdField_a_of_type_Int + "], manufacture[" + Build.MANUFACTURER + "], model[" + Build.MODEL + "]");
-      int i = j;
-      if (paramBoolean)
-      {
-        i = j;
-        if (jdField_a_of_type_Int != 1) {
-          i = 3;
-        }
-      }
-      return i;
-    }
+    return i;
   }
   
   public static void a()
@@ -64,42 +71,66 @@ public class RenderUtil
   
   private static boolean a()
   {
-    if (jdField_a_of_type_JavaLangBoolean == null) {}
-    for (;;)
+    if (jdField_a_of_type_JavaLangBoolean == null)
     {
+      Object localObject = null;
       try
       {
-        str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.isInversionWhenFaceDetect.name(), "0");
-        try
+        String str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.isInversionWhenFaceDetect.name(), "0");
+        localObject = str;
+        if ("1".equals(str))
         {
-          if ("1".equals(str))
-          {
-            jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
-            QLog.i("Render", 1, "isSpecialDevices, [" + jdField_a_of_type_JavaLangBoolean + "], manufacture[" + Build.MANUFACTURER + "], model[" + Build.MODEL + "], dpcValue[" + str + "]");
-            return jdField_a_of_type_JavaLangBoolean.booleanValue();
-          }
-          if ((!"HUAWEI".equalsIgnoreCase(Build.MANUFACTURER)) || ((!"TAH-AN00".equalsIgnoreCase(Build.MODEL)) && (!"TAH-AN00m".equalsIgnoreCase(Build.MODEL)))) {
-            continue;
-          }
+          localObject = str;
           jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
-          continue;
-          QLog.i("Render", 1, "isSpecialDevices", localThrowable1);
+          localObject = str;
         }
-        catch (Throwable localThrowable1) {}
+        else
+        {
+          localObject = str;
+          if ("HUAWEI".equalsIgnoreCase(Build.MANUFACTURER))
+          {
+            localObject = str;
+            if (!"TAH-AN00".equalsIgnoreCase(Build.MODEL))
+            {
+              localObject = str;
+              if (!"TAH-AN00m".equalsIgnoreCase(Build.MODEL)) {}
+            }
+            else
+            {
+              localObject = str;
+              jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
+              localObject = str;
+              break label132;
+            }
+          }
+          localObject = str;
+          jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
+          localObject = str;
+        }
       }
-      catch (Throwable localThrowable2)
+      catch (Throwable localThrowable)
       {
-        String str = null;
-        continue;
+        QLog.i("Render", 1, "isSpecialDevices", localThrowable);
       }
-      continue;
-      jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
+      label132:
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isSpecialDevices, [");
+      localStringBuilder.append(jdField_a_of_type_JavaLangBoolean);
+      localStringBuilder.append("], manufacture[");
+      localStringBuilder.append(Build.MANUFACTURER);
+      localStringBuilder.append("], model[");
+      localStringBuilder.append(Build.MODEL);
+      localStringBuilder.append("], dpcValue[");
+      localStringBuilder.append(localObject);
+      localStringBuilder.append("]");
+      QLog.i("Render", 1, localStringBuilder.toString());
     }
+    return jdField_a_of_type_JavaLangBoolean.booleanValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.effects.RenderUtil
  * JD-Core Version:    0.7.0.1
  */

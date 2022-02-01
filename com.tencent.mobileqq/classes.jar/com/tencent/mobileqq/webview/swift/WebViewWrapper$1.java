@@ -5,11 +5,9 @@ import android.net.Uri;
 import android.view.View;
 import com.tencent.biz.pubaccount.CustomWebChromeClient;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
 import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
 import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
-import com.tencent.smtt.export.external.interfaces.JsPromptResult;
 import com.tencent.smtt.export.external.interfaces.JsResult;
 import com.tencent.smtt.sdk.ValueCallback;
 import com.tencent.smtt.sdk.WebChromeClient.FileChooserParams;
@@ -52,20 +50,15 @@ class WebViewWrapper$1
     return super.onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
   }
   
-  @Override
-  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
-  {
-    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {
-      return true;
-    }
-    return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
-  }
-  
   public void onProgressChanged(WebView paramWebView, int paramInt)
   {
     JsInjector.getInstance().onProgressChanged(paramWebView, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewWrapper", 2, "onProgressChanged:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onProgressChanged:");
+      localStringBuilder.append(paramInt);
+      QLog.d("WebLog_WebViewWrapper", 2, localStringBuilder.toString());
     }
     if (this.a.a != null) {
       this.a.a.onProgressChanged(paramWebView, paramInt);
@@ -113,7 +106,7 @@ class WebViewWrapper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewWrapper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
 import com.tencent.trackrecordlib.c.c.a;
+import com.tencent.trackrecordlib.core.c;
 import com.tencent.trackrecordlib.g.h;
 import java.util.List;
 
@@ -18,23 +19,32 @@ public class a
   private static final String a = "LifecycleCollector";
   private static final String b = "#";
   private static final String c = "_background_";
-  private static int d;
-  private static int e;
-  private static int f;
-  private static int g;
-  private static int h;
+  private static int d = 0;
+  private static int e = 0;
+  private static int f = 0;
+  private static int g = 0;
+  private static int h = 0;
   private static String i;
   private static String j = "";
   private static String k = "";
   private static boolean l = false;
   private static String m = "_background_";
   private static String n = "_background_";
-  private static String o = h.a();
-  private static String p = o;
-  private static String q = o;
-  private static String r = o;
-  private static String s = o;
+  private static String o = ;
+  private static String p;
+  private static String q;
+  private static String r;
+  private static String s;
   private static com.tencent.trackrecordlib.core.a.a t;
+  
+  static
+  {
+    String str = o;
+    p = str;
+    q = str;
+    r = str;
+    s = str;
+  }
   
   private String a(Context paramContext)
   {
@@ -52,6 +62,7 @@ public class a
   
   private boolean b(Context paramContext)
   {
+    boolean bool = false;
     if (paramContext == null) {
       return false;
     }
@@ -61,10 +72,10 @@ public class a
       Log.e("LifecycleCollector", "get ActivityManager failed");
       return false;
     }
-    if (((ActivityManager.RunningTaskInfo)paramContext.getRunningTasks(1).get(0)).numActivities > 1) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    if (((ActivityManager.RunningTaskInfo)paramContext.getRunningTasks(1).get(0)).numActivities > 1) {
+      bool = true;
     }
+    return bool;
   }
   
   public static a f()
@@ -96,14 +107,29 @@ public class a
   
   private void j()
   {
-    Log.d("LifecycleCollector", "isApplicationVisible: " + h() + ", isApplicationInForeground: " + i());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isApplicationVisible: ");
+    localStringBuilder.append(h());
+    localStringBuilder.append(", isApplicationInForeground: ");
+    localStringBuilder.append(i());
+    Log.d("LifecycleCollector", localStringBuilder.toString());
     Log.d("LifecycleCollector", String.format("[start, stop]: [%d, %d], [resumed, paused]: [%d, %d]", new Object[] { Integer.valueOf(f), Integer.valueOf(g), Integer.valueOf(d), Integer.valueOf(e) }));
   }
   
   private void k()
   {
-    com.tencent.trackrecordlib.c.c localc = new c.a().a(m).b(m + "#" + j).c(n).d(n + "#" + k).e(p).f(q).g(r).a();
-    com.tencent.trackrecordlib.core.c.a().a(localc);
+    Object localObject = new c.a().a(m);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(m);
+    localStringBuilder.append("#");
+    localStringBuilder.append(j);
+    localObject = ((c.a)localObject).b(localStringBuilder.toString()).c(n);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(n);
+    localStringBuilder.append("#");
+    localStringBuilder.append(k);
+    localObject = ((c.a)localObject).d(localStringBuilder.toString()).e(p).f(q).g(r).a();
+    c.a().a((com.tencent.trackrecordlib.c.b)localObject);
   }
   
   public String a()
@@ -116,38 +142,35 @@ public class a
     if ((paramActivity != null) && (i != paramActivity.getClass().getName()))
     {
       f += 1;
-      Log.d("LifecycleCollector", "fake activitycreated:" + paramActivity.getClass().getName());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("fake activitycreated:");
+      localStringBuilder.append(paramActivity.getClass().getName());
+      Log.d("LifecycleCollector", localStringBuilder.toString());
       Log.d("LifecycleCollector", String.format("Now start:[%d]", new Object[] { Integer.valueOf(f) }));
       paramActivity = paramActivity.getClass().getName();
       if (paramActivity == null) {
-        break label97;
+        paramActivity = "";
       }
-    }
-    for (;;)
-    {
       i = paramActivity;
-      return;
-      label97:
-      paramActivity = "";
     }
   }
   
   public void a(Activity paramActivity, Bundle paramBundle)
   {
     h += 1;
-    Log.d("LifecycleCollector", "activity created: " + paramActivity.getClass().getName());
+    paramBundle = new StringBuilder();
+    paramBundle.append("activity created: ");
+    paramBundle.append(paramActivity.getClass().getName());
+    Log.d("LifecycleCollector", paramBundle.toString());
     i = paramActivity.getClass().getName();
   }
   
   public void a(String paramString)
   {
-    if (paramString != null) {}
-    for (;;)
-    {
-      k = paramString;
-      return;
+    if (paramString == null) {
       paramString = "";
     }
+    k = paramString;
   }
   
   public String b()
@@ -170,41 +193,65 @@ public class a
   
   public void b(Activity paramActivity, Bundle paramBundle)
   {
-    Log.d("LifecycleCollector", "activity save instance state: " + paramActivity.getClass().getName());
+    paramBundle = new StringBuilder();
+    paramBundle.append("activity save instance state: ");
+    paramBundle.append(paramActivity.getClass().getName());
+    Log.d("LifecycleCollector", paramBundle.toString());
   }
   
   public String c()
   {
-    return n + "#" + k;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(n);
+    localStringBuilder.append("#");
+    localStringBuilder.append(k);
+    return localStringBuilder.toString();
   }
   
   public void c(Activity paramActivity)
   {
-    Log.d("LifecycleCollector", "activity destroyed: " + paramActivity.getClass().getName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("activity destroyed: ");
+    localStringBuilder.append(paramActivity.getClass().getName());
+    Log.d("LifecycleCollector", localStringBuilder.toString());
     com.tencent.trackrecordlib.d.a.b().a();
   }
   
   public String d()
   {
-    return i + "#" + j;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(i);
+    localStringBuilder.append("#");
+    localStringBuilder.append(j);
+    return localStringBuilder.toString();
   }
   
   public void d(Activity paramActivity)
   {
     d += 1;
-    Log.d("LifecycleCollector", "activity resumed: " + paramActivity.getClass().getName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("activity resumed: ");
+    localStringBuilder.append(paramActivity.getClass().getName());
+    Log.d("LifecycleCollector", localStringBuilder.toString());
     j = k;
     k = "";
     m = n;
     p = r;
     n = paramActivity.getClass().getName();
     r = h.a();
-    if ((g()) && (h < 2))
+    if (g())
     {
-      h += 1;
-      Log.d("LifecycleCollector", "activitychanged but not created,need add" + paramActivity.getClass().getName());
-      Log.d("LifecycleCollector", String.format("LAKE [start, stop]: [%d, %d], [resumed, paused]: [%d, %d]", new Object[] { Integer.valueOf(f), Integer.valueOf(g), Integer.valueOf(d), Integer.valueOf(e) }));
-      h(paramActivity);
+      int i1 = h;
+      if (i1 < 2)
+      {
+        h = i1 + 1;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("activitychanged but not created,need add");
+        localStringBuilder.append(paramActivity.getClass().getName());
+        Log.d("LifecycleCollector", localStringBuilder.toString());
+        Log.d("LifecycleCollector", String.format("LAKE [start, stop]: [%d, %d], [resumed, paused]: [%d, %d]", new Object[] { Integer.valueOf(f), Integer.valueOf(g), Integer.valueOf(d), Integer.valueOf(e) }));
+        h(paramActivity);
+      }
     }
   }
   
@@ -216,7 +263,10 @@ public class a
   public void e(Activity paramActivity)
   {
     e += 1;
-    Log.d("LifecycleCollector", "activity paused: " + paramActivity.getClass().getName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("activity paused: ");
+    localStringBuilder.append(paramActivity.getClass().getName());
+    Log.d("LifecycleCollector", localStringBuilder.toString());
     q = s;
     s = h.a();
     k();
@@ -225,13 +275,19 @@ public class a
   public void f(Activity paramActivity)
   {
     f += 1;
-    Log.d("LifecycleCollector", "activity start: " + paramActivity.getClass().getName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("activity start: ");
+    localStringBuilder.append(paramActivity.getClass().getName());
+    Log.d("LifecycleCollector", localStringBuilder.toString());
   }
   
   public void g(Activity paramActivity)
   {
     g += 1;
-    Log.d("LifecycleCollector", "activity stop: " + paramActivity.getClass().getName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("activity stop: ");
+    localStringBuilder.append(paramActivity.getClass().getName());
+    Log.d("LifecycleCollector", localStringBuilder.toString());
     j();
     if (!h())
     {
@@ -251,7 +307,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trackrecordlib.a.a
  * JD-Core Version:    0.7.0.1
  */

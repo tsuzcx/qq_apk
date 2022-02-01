@@ -22,21 +22,20 @@ public class ProjectionMatrixHelper
     float f;
     if (paramInt1 > paramInt2)
     {
-      f = 0.1F * (paramInt1 * 0.1F / paramInt2);
+      f = paramInt1 * 0.1F / paramInt2 * 0.1F;
       Matrix.orthoM(this.mProjectionMatrix, 0, -f, f, -1.0F, 1.0F, -1.0F, 1.0F);
     }
-    for (;;)
+    else
     {
-      GLES20.glUniformMatrix4fv(this.uMatrixLocation, 1, false, this.mProjectionMatrix, 0);
-      return;
       f = paramInt2 * 0.1F / paramInt1 * 0.1F;
       Matrix.orthoM(this.mProjectionMatrix, 0, -1.0F, 1.0F, -f, f, -1.0F, 1.0F);
     }
+    GLES20.glUniformMatrix4fv(this.uMatrixLocation, 1, false, this.mProjectionMatrix, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.peterlmeng.animate_image.bitmaptexture.ProjectionMatrixHelper
  * JD-Core Version:    0.7.0.1
  */

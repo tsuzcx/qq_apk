@@ -1,10 +1,10 @@
 package com.tencent.biz.game;
 
 import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.troop.api.ITroopMemberApiClientApi.Callback;
 
 class SensorAPIJavaScript$14
-  implements TroopMemberApiClient.Callback
+  implements ITroopMemberApiClientApi.Callback
 {
   SensorAPIJavaScript$14(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
@@ -19,7 +19,7 @@ class SensorAPIJavaScript$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.game.SensorAPIJavaScript.14
  * JD-Core Version:    0.7.0.1
  */

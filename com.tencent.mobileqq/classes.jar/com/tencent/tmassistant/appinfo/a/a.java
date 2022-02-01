@@ -34,21 +34,21 @@ public class a
     while (localIterator.hasNext())
     {
       paramList = (AppParam)localIterator.next();
-      if ((paramList == null) || (TextUtils.isEmpty(paramList.packageName)))
-      {
-        ab.e("GetAppInfoEngine_", "transFrom packageName is empty");
-      }
-      else
+      if ((paramList != null) && (!TextUtils.isEmpty(paramList.packageName)))
       {
         AppDetailSdkReqInfo localAppDetailSdkReqInfo = new AppDetailSdkReqInfo();
         localAppDetailSdkReqInfo.packageName = paramList.packageName;
-        if (paramList.channelId == null) {}
-        for (paramList = "";; paramList = paramList.channelId)
-        {
-          localAppDetailSdkReqInfo.channelId = paramList;
-          localArrayList.add(localAppDetailSdkReqInfo);
-          break;
+        if (paramList.channelId == null) {
+          paramList = "";
+        } else {
+          paramList = paramList.channelId;
         }
+        localAppDetailSdkReqInfo.channelId = paramList;
+        localArrayList.add(localAppDetailSdkReqInfo);
+      }
+      else
+      {
+        ab.e("GetAppInfoEngine_", "transFrom packageName is empty");
       }
     }
     return localArrayList;
@@ -58,13 +58,25 @@ public class a
   {
     try
     {
-      ab.c("GetAppInfoEngine_", "doNotify , reqId=" + paramInt + ", ret=" + paramGetAppDetailForSdkResponse.ret + ",size = " + paramGetAppDetailForSdkResponse.detailList);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doNotify , reqId=");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", ret=");
+      localStringBuilder.append(paramGetAppDetailForSdkResponse.ret);
+      localStringBuilder.append(",size = ");
+      localStringBuilder.append(paramGetAppDetailForSdkResponse.detailList);
+      ab.c("GetAppInfoEngine_", localStringBuilder.toString());
       paramIGetAppInfoCallback.onGetAppInfoResponse(paramInt, paramGetAppDetailForSdkResponse.ret, b(paramGetAppDetailForSdkResponse.detailList));
       return;
     }
     catch (Throwable paramIGetAppInfoCallback)
     {
-      ab.c("GetAppInfoEngine_", "doNotify failed, reqId=" + paramInt + ", ret=" + paramGetAppDetailForSdkResponse.ret, paramIGetAppInfoCallback);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doNotify failed, reqId=");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", ret=");
+      localStringBuilder.append(paramGetAppDetailForSdkResponse.ret);
+      ab.c("GetAppInfoEngine_", localStringBuilder.toString(), paramIGetAppInfoCallback);
     }
   }
   
@@ -94,59 +106,66 @@ public class a
   
   public int a(AppDetailReqParam paramAppDetailReqParam, IGetAppInfoCallback paramIGetAppInfoCallback)
   {
-    ab.c("GetAppInfoEngine_", "request reqParam=" + paramAppDetailReqParam + ", callback=" + paramIGetAppInfoCallback);
-    int i;
-    if ((paramAppDetailReqParam == null) || (paramAppDetailReqParam.apps == null) || (paramAppDetailReqParam.apps.size() == 0))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("request reqParam=");
+    ((StringBuilder)localObject).append(paramAppDetailReqParam);
+    ((StringBuilder)localObject).append(", callback=");
+    ((StringBuilder)localObject).append(paramIGetAppInfoCallback);
+    ab.c("GetAppInfoEngine_", ((StringBuilder)localObject).toString());
+    if ((paramAppDetailReqParam != null) && (paramAppDetailReqParam.apps != null) && (paramAppDetailReqParam.apps.size() != 0))
     {
-      ab.e("GetAppInfoEngine_", "bad req params");
-      i = -1;
+      GetAppDetailForSdkRequest localGetAppDetailForSdkRequest = new GetAppDetailForSdkRequest();
+      if (paramAppDetailReqParam.biz == null) {
+        localObject = "";
+      } else {
+        localObject = paramAppDetailReqParam.biz;
+      }
+      localGetAppDetailForSdkRequest.biz = ((String)localObject);
+      localGetAppDetailForSdkRequest.reqList = a(paramAppDetailReqParam.apps);
+      int i = a(localGetAppDetailForSdkRequest);
+      if ((i >= 0) && (paramIGetAppInfoCallback != null)) {
+        this.a.put(Integer.valueOf(i), paramIGetAppInfoCallback);
+      }
       return i;
     }
-    GetAppDetailForSdkRequest localGetAppDetailForSdkRequest = new GetAppDetailForSdkRequest();
-    if (paramAppDetailReqParam.biz == null) {}
-    for (String str = "";; str = paramAppDetailReqParam.biz)
-    {
-      localGetAppDetailForSdkRequest.biz = str;
-      localGetAppDetailForSdkRequest.reqList = a(paramAppDetailReqParam.apps);
-      int j = a(localGetAppDetailForSdkRequest);
-      i = j;
-      if (j < 0) {
-        break;
-      }
-      i = j;
-      if (paramIGetAppInfoCallback == null) {
-        break;
-      }
-      this.a.put(Integer.valueOf(j), paramIGetAppInfoCallback);
-      return j;
-    }
+    ab.e("GetAppInfoEngine_", "bad req params");
+    return -1;
   }
   
   public void a(int paramInt1, int paramInt2, JceStruct paramJceStruct1, JceStruct paramJceStruct2)
   {
-    ab.c("GetAppInfoEngine_", ">>onFinish reqId=" + paramInt1 + " errorCode=" + paramInt2 + " request=" + paramJceStruct1 + " response=" + paramJceStruct2);
-    IGetAppInfoCallback localIGetAppInfoCallback = (IGetAppInfoCallback)this.a.remove(Integer.valueOf(paramInt1));
-    if (localIGetAppInfoCallback == null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(">>onFinish reqId=");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(" errorCode=");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append(" request=");
+    ((StringBuilder)localObject).append(paramJceStruct1);
+    ((StringBuilder)localObject).append(" response=");
+    ((StringBuilder)localObject).append(paramJceStruct2);
+    ab.c("GetAppInfoEngine_", ((StringBuilder)localObject).toString());
+    localObject = (IGetAppInfoCallback)this.a.remove(Integer.valueOf(paramInt1));
+    if (localObject == null)
     {
       ab.e("GetAppInfoEngine_", "cb is null, need't call back anymore.");
       return;
     }
-    if ((paramInt2 == 0) && ((paramJceStruct2 instanceof GetAppDetailForSdkResponse))) {
+    if ((paramInt2 == 0) && ((paramJceStruct2 instanceof GetAppDetailForSdkResponse)))
+    {
       paramJceStruct1 = (GetAppDetailForSdkResponse)paramJceStruct2;
     }
-    for (;;)
+    else
     {
-      a(paramInt1, paramJceStruct1, localIGetAppInfoCallback);
-      return;
       paramJceStruct1 = new GetAppDetailForSdkResponse();
       paramJceStruct1.ret = -1;
       paramJceStruct1.detailList = new ArrayList();
     }
+    a(paramInt1, paramJceStruct1, (IGetAppInfoCallback)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistant.appinfo.a.a
  * JD-Core Version:    0.7.0.1
  */

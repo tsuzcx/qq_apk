@@ -35,41 +35,45 @@ public class FontFileReader
   
   public static String getFamilyName(String paramString)
   {
-    if ((paramString == null) || (paramString.length() <= 0)) {
-      return "";
-    }
-    String str1 = new File(paramString).getName().replaceAll(" ", "_");
-    try
+    String str1;
+    if ((paramString != null) && (paramString.length() > 0))
     {
-      paramString = readTTF(paramString);
-      if (paramString != null)
+      str1 = new File(paramString).getName().replaceAll(" ", "_");
+      try
       {
-        if ((paramString.getFamilyNames() != null) && (!paramString.getFamilyNames().isEmpty()))
+        paramString = readTTF(paramString);
+        if (paramString != null)
         {
-          paramString = paramString.getFamilyNames().iterator();
-          String str2;
-          do
+          if ((paramString.getFamilyNames() != null) && (!paramString.getFamilyNames().isEmpty()))
           {
-            if (!paramString.hasNext()) {
-              break;
-            }
-            str2 = (String)paramString.next();
-          } while ((str2 == null) || (str2.matches(".*[一-鿿]+.*")));
-          return str2;
-        }
-        if ((paramString.getFullName() != null) && (paramString.getFullName().length() > 0))
-        {
-          paramString = paramString.getFullName();
-          return paramString;
+            paramString = paramString.getFamilyNames().iterator();
+            String str2;
+            do
+            {
+              if (!paramString.hasNext()) {
+                break;
+              }
+              str2 = (String)paramString.next();
+            } while ((str2 == null) || (str2.matches(".*[一-鿿]+.*")));
+            return str2;
+          }
+          if ((paramString.getFullName() != null) && (paramString.getFullName().length() > 0))
+          {
+            paramString = paramString.getFullName();
+            return paramString;
+          }
         }
         return str1;
       }
-      return str1;
+      catch (IOException paramString)
+      {
+        paramString.printStackTrace();
+        return str1;
+      }
     }
-    catch (IOException paramString)
+    else
     {
-      paramString.printStackTrace();
-      return str1;
+      return "";
     }
     return str1;
   }
@@ -83,13 +87,17 @@ public class FontFileReader
   
   private byte read()
   {
-    if (this.current >= this.fsize) {
-      throw new EOFException("Reached EOF, file size=" + this.fsize);
-    }
-    byte[] arrayOfByte = this.file;
     int i = this.current;
-    this.current = (i + 1);
-    return arrayOfByte[i];
+    if (i < this.fsize)
+    {
+      localObject = this.file;
+      this.current = (i + 1);
+      return localObject[i];
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Reached EOF, file size=");
+    ((StringBuilder)localObject).append(this.fsize);
+    throw new EOFException(((StringBuilder)localObject).toString());
   }
   
   public static TTFFile readTTF(InputStream paramInputStream)
@@ -133,27 +141,39 @@ public class FontFileReader
   
   public String readTTFString(int paramInt)
   {
-    if (this.current + paramInt > this.fsize) {
-      throw new EOFException("Reached EOF, file size=" + this.fsize);
+    int i = this.current;
+    if (paramInt + i <= this.fsize)
+    {
+      byte[] arrayOfByte = new byte[paramInt];
+      System.arraycopy(this.file, i, arrayOfByte, 0, paramInt);
+      this.current += paramInt;
+      if ((arrayOfByte.length > 0) && (arrayOfByte[0] == 0)) {
+        localObject = "UTF-16BE";
+      } else {
+        localObject = "ISO-8859-1";
+      }
+      return new String(arrayOfByte, (String)localObject);
     }
-    byte[] arrayOfByte = new byte[paramInt];
-    System.arraycopy(this.file, this.current, arrayOfByte, 0, paramInt);
-    this.current += paramInt;
-    if ((arrayOfByte.length > 0) && (arrayOfByte[0] == 0)) {}
-    for (String str = "UTF-16BE";; str = "ISO-8859-1") {
-      return new String(arrayOfByte, str);
-    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Reached EOF, file size=");
+    ((StringBuilder)localObject).append(this.fsize);
+    throw new EOFException(((StringBuilder)localObject).toString());
   }
   
   public String readTTFString(int paramInt1, int paramInt2)
   {
-    if (this.current + paramInt1 > this.fsize) {
-      throw new EOFException("Reached EOF, file size=" + this.fsize);
+    paramInt2 = this.current;
+    if (paramInt1 + paramInt2 <= this.fsize)
+    {
+      localObject = new byte[paramInt1];
+      System.arraycopy(this.file, paramInt2, localObject, 0, paramInt1);
+      this.current += paramInt1;
+      return new String((byte[])localObject, "UTF-16BE");
     }
-    byte[] arrayOfByte = new byte[paramInt1];
-    System.arraycopy(this.file, this.current, arrayOfByte, 0, paramInt1);
-    this.current += paramInt1;
-    return new String(arrayOfByte, "UTF-16BE");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Reached EOF, file size=");
+    ((StringBuilder)localObject).append(this.fsize);
+    throw new EOFException(((StringBuilder)localObject).toString());
   }
   
   public int readTTFUByte()
@@ -178,10 +198,17 @@ public class FontFileReader
   
   public void seekSet(long paramLong)
   {
-    if ((paramLong > this.fsize) || (paramLong < 0L)) {
-      throw new EOFException("Reached EOF, file size=" + this.fsize + " offset=" + paramLong);
+    if ((paramLong <= this.fsize) && (paramLong >= 0L))
+    {
+      this.current = ((int)paramLong);
+      return;
     }
-    this.current = ((int)paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Reached EOF, file size=");
+    localStringBuilder.append(this.fsize);
+    localStringBuilder.append(" offset=");
+    localStringBuilder.append(paramLong);
+    throw new EOFException(localStringBuilder.toString());
   }
   
   public void skip(long paramLong)
@@ -191,7 +218,7 @@ public class FontFileReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.font.FontFileReader
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import java.util.WeakHashMap;
 
 public class AsyncTaskMonitor
 {
-  private static Map<AsyncTask, AsyncTaskMonitor.AsyncTaskMonitorResult> jdField_a_of_type_JavaUtilMap;
+  private static Map<AsyncTask, AsyncTaskMonitor.AsyncTaskMonitorResult> jdField_a_of_type_JavaUtilMap = new WeakHashMap();
   private static Set<Class> jdField_a_of_type_JavaUtilSet = new HashSet();
   private static Set<Class> b = new HashSet();
   
@@ -24,15 +24,10 @@ public class AsyncTaskMonitor
       b.add(localClass1);
       b.add(localClass2);
       b.add(localClass3);
-      jdField_a_of_type_JavaUtilMap = new WeakHashMap();
-      return;
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
-      for (;;)
-      {
-        localClassNotFoundException.printStackTrace();
-      }
+      localClassNotFoundException.printStackTrace();
     }
   }
   
@@ -42,10 +37,18 @@ public class AsyncTaskMonitor
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("AsyncTask Log : ");
-      localStringBuilder.append("class = ").append(paramAsyncTask.getClass().getName()).append(" ; ");
-      localStringBuilder.append("thread name = ").append(paramAsyncTaskMonitorResult.jdField_a_of_type_JavaLangString).append(" ; ");
-      localStringBuilder.append("wait time = ").append(paramAsyncTaskMonitorResult.b - paramAsyncTaskMonitorResult.jdField_a_of_type_Long).append(" ; ");
-      localStringBuilder.append("doInBackground cost time = ").append(paramAsyncTaskMonitorResult.c - paramAsyncTaskMonitorResult.b).append(" ; ");
+      localStringBuilder.append("class = ");
+      localStringBuilder.append(paramAsyncTask.getClass().getName());
+      localStringBuilder.append(" ; ");
+      localStringBuilder.append("thread name = ");
+      localStringBuilder.append(paramAsyncTaskMonitorResult.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(" ; ");
+      localStringBuilder.append("wait time = ");
+      localStringBuilder.append(paramAsyncTaskMonitorResult.b - paramAsyncTaskMonitorResult.jdField_a_of_type_Long);
+      localStringBuilder.append(" ; ");
+      localStringBuilder.append("doInBackground cost time = ");
+      localStringBuilder.append(paramAsyncTaskMonitorResult.c - paramAsyncTaskMonitorResult.b);
+      localStringBuilder.append(" ; ");
       QLog.d("AsyncTaskMonitor", 2, localStringBuilder.toString());
     }
   }
@@ -65,7 +68,7 @@ public class AsyncTaskMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.javahook.AsyncTaskMonitor
  * JD-Core Version:    0.7.0.1
  */

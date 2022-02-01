@@ -53,13 +53,22 @@ public class ReceiptUtil
     if (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "increaseSentNum with result:  " + Integer.toString(i));
+    paramQQAppInterface = jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("increaseSentNum with result:  ");
+    localStringBuilder.append(Integer.toString(i));
+    QLog.d(paramQQAppInterface, 2, localStringBuilder.toString());
   }
   
   private static void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "setSentNum: " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      String str = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setSentNum: ");
+      localStringBuilder.append(paramInt);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
     jdField_a_of_type_ComTencentUtilLongSparseArray.a(a(paramQQAppInterface.getCurrentAccountUin()), Integer.valueOf(paramInt));
     paramQQAppInterface.getPreferences().edit().putInt("receipt_msg_sent_num", paramInt).apply();
@@ -72,42 +81,37 @@ public class ReceiptUtil
   
   private static boolean a(long paramLong1, long paramLong2)
   {
+    Object localObject1 = Calendar.getInstance();
+    ((Calendar)localObject1).setTimeInMillis(paramLong2);
     boolean bool = false;
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(paramLong2);
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    Date localDate = localCalendar.getTime();
-    localCalendar.setTimeInMillis(paramLong1);
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    if (localDate.compareTo(localCalendar.getTime()) == 0) {
+    ((Calendar)localObject1).set(11, 0);
+    ((Calendar)localObject1).set(12, 0);
+    ((Calendar)localObject1).set(13, 0);
+    Object localObject2 = ((Calendar)localObject1).getTime();
+    ((Calendar)localObject1).setTimeInMillis(paramLong1);
+    ((Calendar)localObject1).set(11, 0);
+    ((Calendar)localObject1).set(12, 0);
+    ((Calendar)localObject1).set(13, 0);
+    if (((Date)localObject2).compareTo(((Calendar)localObject1).getTime()) == 0) {
       bool = true;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, paramLong1 + " and " + paramLong2 + "isToday? " + bool);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramLong1);
+      ((StringBuilder)localObject2).append(" and ");
+      ((StringBuilder)localObject2).append(paramLong2);
+      ((StringBuilder)localObject2).append("isToday? ");
+      ((StringBuilder)localObject2).append(bool);
+      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
     return bool;
   }
   
   public static boolean a(MessageRecord paramMessageRecord)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramMessageRecord != null)
-    {
-      bool1 = bool2;
-      if ((paramMessageRecord instanceof MessageForStructing))
-      {
-        bool1 = bool2;
-        if (((MessageForStructing)paramMessageRecord).structingMsg.mMsgServiceID == 107) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
+    return (paramMessageRecord != null) && ((paramMessageRecord instanceof MessageForStructing)) && (((MessageForStructing)paramMessageRecord).structingMsg.mMsgServiceID == 107);
   }
   
   public static int b(QQAppInterface paramQQAppInterface)
@@ -115,16 +119,21 @@ public class ReceiptUtil
     if (!jdField_a_of_type_Boolean) {
       b(paramQQAppInterface);
     }
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getPreferences();
-    long l1 = localSharedPreferences.getLong("receipt_msg_store_time", 0L);
+    Object localObject = paramQQAppInterface.getPreferences();
+    long l1 = ((SharedPreferences)localObject).getLong("receipt_msg_store_time", 0L);
     long l2 = NetConnInfoCenter.getServerTime() * 1000L;
     if (!a(l1, l2))
     {
       a(paramQQAppInterface, 0);
-      localSharedPreferences.edit().putLong("receipt_msg_store_time", l2).apply();
+      ((SharedPreferences)localObject).edit().putLong("receipt_msg_store_time", l2).apply();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "getLeftNum max is " + a(paramQQAppInterface));
+    if (QLog.isColorLevel())
+    {
+      localObject = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getLeftNum max is ");
+      localStringBuilder.append(a(paramQQAppInterface));
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
     return a(paramQQAppInterface) - c(paramQQAppInterface);
   }
@@ -141,15 +150,20 @@ public class ReceiptUtil
   private static int c(QQAppInterface paramQQAppInterface)
   {
     int i = ((Integer)jdField_a_of_type_ComTencentUtilLongSparseArray.a(a(paramQQAppInterface.getCurrentAccountUin()), Integer.valueOf(0))).intValue();
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "getSentNum is " + i);
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getSentNum is ");
+      localStringBuilder.append(i);
+      QLog.d(paramQQAppInterface, 2, localStringBuilder.toString());
     }
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptUtil
  * JD-Core Version:    0.7.0.1
  */

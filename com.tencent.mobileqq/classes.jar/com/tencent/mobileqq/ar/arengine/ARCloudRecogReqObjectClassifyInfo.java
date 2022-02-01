@@ -6,12 +6,16 @@ public class ARCloudRecogReqObjectClassifyInfo
   
   public String toString()
   {
-    return "ARCloudRecogReqObjectClassifyInfo{timeout = " + this.a + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ARCloudRecogReqObjectClassifyInfo{timeout = ");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudRecogReqObjectClassifyInfo
  * JD-Core Version:    0.7.0.1
  */

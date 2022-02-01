@@ -17,62 +17,67 @@ final class ForwardDialogMgr$1
   {
     long l = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("sdk_mult_share_source_app_id", 0L);
     int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sdk_mult_share_msg_service_id", 0);
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    }
-    do
-    {
-      do
-      {
+      if (paramInt != 1) {
         return;
-        if (QLog.isColorLevel()) {
-          QLog.i("ForwardDialogMgr", 2, "-->showMultShareDialog--back");
-        }
-        if (this.jdField_a_of_type_Int == 2) {
-          ForwardShareByServerHelper.a(this.jdField_a_of_type_AndroidAppActivity, "shareToQQ", l, 0, ForwardShareByServerHelper.a);
-        }
-        while (this.jdField_a_of_type_Int == 1)
-        {
-          ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A740", new String[0]);
-          return;
-          ForwardShareByServerHelper.a(l, i, this.jdField_a_of_type_AndroidAppActivity, null);
-        }
-        if (this.jdField_a_of_type_Int == 0)
-        {
-          ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73C", new String[0]);
-          return;
-        }
-      } while ((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 901503));
-      ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73E", new String[0]);
-      return;
+      }
       if (QLog.isColorLevel()) {
         QLog.d("ForwardDialogMgr", 2, "-->showMultShareDialog--stay");
       }
-      if (this.jdField_a_of_type_Int == 901503) {
+      paramInt = this.jdField_a_of_type_Int;
+      if (paramInt == 901503) {
         ForwardShareByServerHelper.a(this.jdField_a_of_type_AndroidAppActivity, "shareToQQ", l, 0, ForwardShareByServerHelper.a);
+      } else if (paramInt == 3) {
+        ForwardShareByServerHelper.a(l, i, this.jdField_a_of_type_AndroidAppActivity, null);
+      } else {
+        ForwardShareByServerHelper.a(l, i, this.jdField_a_of_type_AndroidAppActivity);
       }
-      while (this.jdField_a_of_type_Int == 1)
+      paramInt = this.jdField_a_of_type_Int;
+      if (paramInt == 1)
       {
         ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73F", new String[0]);
         return;
-        if (this.jdField_a_of_type_Int == 3) {
-          ForwardShareByServerHelper.a(l, i, this.jdField_a_of_type_AndroidAppActivity, null);
-        } else {
-          ForwardShareByServerHelper.a(l, i, this.jdField_a_of_type_AndroidAppActivity);
-        }
       }
-      if (this.jdField_a_of_type_Int == 0)
+      if (paramInt == 0)
       {
         ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73B", new String[0]);
         return;
       }
-    } while ((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 901503));
-    ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73D", new String[0]);
+      if ((paramInt == 2) || (paramInt == 901503)) {
+        ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73D", new String[0]);
+      }
+    }
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("ForwardDialogMgr", 2, "-->showMultShareDialog--back");
+      }
+      if (this.jdField_a_of_type_Int == 2) {
+        ForwardShareByServerHelper.a(this.jdField_a_of_type_AndroidAppActivity, "shareToQQ", l, 0, ForwardShareByServerHelper.a);
+      } else {
+        ForwardShareByServerHelper.a(l, i, this.jdField_a_of_type_AndroidAppActivity, null);
+      }
+      paramInt = this.jdField_a_of_type_Int;
+      if (paramInt == 1)
+      {
+        ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A740", new String[0]);
+        return;
+      }
+      if (paramInt == 0)
+      {
+        ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73C", new String[0]);
+        return;
+      }
+      if ((paramInt == 2) || (paramInt == 901503)) {
+        ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73E", new String[0]);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardDialogMgr.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,18 +15,15 @@ class ARReport$12
     localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
     if (this.jdField_a_of_type_Boolean) {
       localHashMap.put("result", "0");
-    }
-    for (;;)
-    {
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "ARNativeBridgeSo", true, 0L, 0L, localHashMap, "");
-      return;
+    } else {
       localHashMap.put("result", "1");
     }
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "ARNativeBridgeSo", true, 0L, 0L, localHashMap, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARReport.12
  * JD-Core Version:    0.7.0.1
  */

@@ -19,17 +19,16 @@ public final class WXLaunchMiniProgram$Req
   
   public final boolean checkArgs()
   {
-    if (d.b(this.userName))
+    if (d.b(this.userName)) {}
+    for (String str = "userName is null";; str = "miniprogram type should between MINIPTOGRAM_TYPE_RELEASE and MINIPROGRAM_TYPE_PREVIEW")
     {
-      Log.e("MicroMsg.SDK.WXLaunchMiniProgram.Req", "userName is null");
+      Log.e("MicroMsg.SDK.WXLaunchMiniProgram.Req", str);
       return false;
+      int i = this.miniprogramType;
+      if ((i >= 0) && (i <= 2)) {
+        return true;
+      }
     }
-    if ((this.miniprogramType < 0) || (this.miniprogramType > 2))
-    {
-      Log.e("MicroMsg.SDK.WXLaunchMiniProgram.Req", "miniprogram type should between MINIPTOGRAM_TYPE_RELEASE and MINIPROGRAM_TYPE_PREVIEW");
-      return false;
-    }
-    return true;
   }
   
   public final int getType()
@@ -48,7 +47,7 @@ public final class WXLaunchMiniProgram$Req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelbiz.WXLaunchMiniProgram.Req
  * JD-Core Version:    0.7.0.1
  */

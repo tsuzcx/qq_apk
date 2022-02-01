@@ -27,16 +27,18 @@ public final class n
   public void readFrom(JceInputStream paramJceInputStream)
   {
     this.a = paramJceInputStream.readString(1, true);
-    if (d == null)
+    Map localMap = d;
+    Long localLong = Long.valueOf(0L);
+    if (localMap == null)
     {
       d = new HashMap();
-      d.put("", Long.valueOf(0L));
+      d.put("", localLong);
     }
     this.b = ((Map)paramJceInputStream.read(d, 2, true));
     if (e == null)
     {
       e = new HashMap();
-      e.put("", Long.valueOf(0L));
+      e.put("", localLong);
     }
     this.c = ((Map)paramJceInputStream.read(e, 3, true));
   }
@@ -50,7 +52,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.c.n
  * JD-Core Version:    0.7.0.1
  */

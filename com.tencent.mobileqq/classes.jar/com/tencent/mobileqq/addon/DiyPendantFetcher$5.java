@@ -19,23 +19,27 @@ class DiyPendantFetcher$5
     List localList = this.a.getEntityManagerFactory().createEntityManager().query(DiyPendantEntity.class, true, null, null, null, null, null, " 20 ");
     if ((localList != null) && (localList.size() > 0))
     {
-      Iterator localIterator = localList.iterator();
-      while (localIterator.hasNext())
+      Object localObject = localList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        DiyPendantEntity localDiyPendantEntity = (DiyPendantEntity)localIterator.next();
+        DiyPendantEntity localDiyPendantEntity = (DiyPendantEntity)((Iterator)localObject).next();
         if (!TextUtils.isEmpty(localDiyPendantEntity.uinAndDiyId)) {
           this.this$0.a.put(localDiyPendantEntity.uinAndDiyId, localDiyPendantEntity);
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("DiyPendantFetcher", 2, "initCacheFromDB, size: " + localList.size());
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("initCacheFromDB, size: ");
+        ((StringBuilder)localObject).append(localList.size());
+        QLog.i("DiyPendantFetcher", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.addon.DiyPendantFetcher.5
  * JD-Core Version:    0.7.0.1
  */

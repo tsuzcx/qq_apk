@@ -23,16 +23,18 @@ class AbsSubscribeShareCardView$2$1
       if (AbsSubscribeShareCardView.b(this.a.this$0) == this.a.b.size()) {
         ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.2.1.1(this));
       }
-      return;
     }
-    ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.2.1.2(this));
+    else
+    {
+      ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.2.1.2(this));
+    }
   }
   
   public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2.1
  * JD-Core Version:    0.7.0.1
  */

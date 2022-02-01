@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.persistence;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
@@ -15,36 +16,48 @@ public abstract class Entity
   @notColumn
   int _status = 1000;
   
+  protected ContentValues createContentValues()
+  {
+    return null;
+  }
+  
   public Entity deepCopyByReflect()
   {
     try
     {
-      Entity localEntity = (Entity)getClass().newInstance();
-      if (localEntity != null)
+      localObject2 = (Entity)getClass().newInstance();
+      Object localObject1 = localObject2;
+      if (localObject2 != null)
       {
-        Field[] arrayOfField = getClass().getFields();
-        int j = arrayOfField.length;
+        localObject1 = getClass().getFields();
+        int j = localObject1.length;
         int i = 0;
         while (i < j)
         {
-          Field localField = arrayOfField[i];
-          if (!localField.isAccessible()) {
-            localField.setAccessible(true);
+          Object localObject3 = localObject1[i];
+          if (!localObject3.isAccessible()) {
+            localObject3.setAccessible(true);
           }
-          localField.set(localEntity, localField.get(this));
+          localObject3.set(localObject2, localObject3.get(this));
           i += 1;
         }
-        localEntity._status = 1000;
-        localEntity.postRead();
+        ((Entity)localObject2)._status = 1000;
+        ((Entity)localObject2).postRead();
+        return localObject2;
       }
-      return localEntity;
     }
     catch (Exception localException)
     {
-      QLog.d("Entity", 1, " deepCopyByReflect:failed" + getClass().getName() + " exception e: = " + localException.getMessage());
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(" deepCopyByReflect:failed");
+      ((StringBuilder)localObject2).append(getClass().getName());
+      ((StringBuilder)localObject2).append(" exception e: = ");
+      ((StringBuilder)localObject2).append(localException.getMessage());
+      QLog.d("Entity", 1, ((StringBuilder)localObject2).toString());
       localException.printStackTrace();
+      Entity localEntity = null;
+      return localEntity;
     }
-    return null;
   }
   
   protected boolean entityByCursor(Cursor paramCursor)
@@ -76,7 +89,7 @@ public abstract class Entity
   
   protected void postwrite() {}
   
-  public void prewrite() {}
+  protected void prewrite() {}
   
   public void setId(long paramLong)
   {
@@ -90,7 +103,7 @@ public abstract class Entity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.Entity
  * JD-Core Version:    0.7.0.1
  */

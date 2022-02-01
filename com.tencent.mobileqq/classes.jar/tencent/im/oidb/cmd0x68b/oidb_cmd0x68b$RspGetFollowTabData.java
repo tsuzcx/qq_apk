@@ -25,14 +25,15 @@ public final class oidb_cmd0x68b$RspGetFollowTabData
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 90, 98, 104, 114, 120, 128, 138, 144 }, new String[] { "uint32_is_no_more_data", "rpt_article_list", "bytes_set_top_cookie", "uint32_refresh_topic_update_info", "topic_update_info", "uint32_has_followed_topic", "uint32_topic_reddot_update_num", "bytes_refresh_cookie", "uint32_hint_index" }, new Object[] { Integer.valueOf(0), null, localByteStringMicro1, Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, Integer.valueOf(0) }, RspGetFollowTabData.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 90, 98, 104, 114, 120, 128, 138, 144 }, new String[] { "uint32_is_no_more_data", "rpt_article_list", "bytes_set_top_cookie", "uint32_refresh_topic_update_info", "topic_update_info", "uint32_has_followed_topic", "uint32_topic_reddot_update_num", "bytes_refresh_cookie", "uint32_hint_index" }, new Object[] { localInteger, null, localByteStringMicro1, localInteger, null, localInteger, localInteger, localByteStringMicro2, localInteger }, RspGetFollowTabData.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspGetFollowTabData
  * JD-Core Version:    0.7.0.1
  */

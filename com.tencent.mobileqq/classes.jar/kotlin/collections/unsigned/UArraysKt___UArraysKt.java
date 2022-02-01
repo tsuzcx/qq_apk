@@ -46,7 +46,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"indices", "Lkotlin/ranges/IntRange;", "Lkotlin/UByteArray;", "indices$annotations", "([B)V", "getIndices-GBYM_sE", "([B)Lkotlin/ranges/IntRange;", "Lkotlin/UIntArray;", "([I)V", "getIndices--ajY-9A", "([I)Lkotlin/ranges/IntRange;", "Lkotlin/ULongArray;", "([J)V", "getIndices-QwZRm1k", "([J)Lkotlin/ranges/IntRange;", "Lkotlin/UShortArray;", "([S)V", "getIndices-rL5Bavg", "([S)Lkotlin/ranges/IntRange;", "lastIndex", "", "lastIndex$annotations", "getLastIndex-GBYM_sE", "([B)I", "getLastIndex--ajY-9A", "([I)I", "getLastIndex-QwZRm1k", "([J)I", "getLastIndex-rL5Bavg", "([S)I", "all", "", "predicate", "Lkotlin/Function1;", "Lkotlin/UByte;", "all-JOV_ifY", "([BLkotlin/jvm/functions/Function1;)Z", "Lkotlin/UInt;", "all-jgv0xPQ", "([ILkotlin/jvm/functions/Function1;)Z", "Lkotlin/ULong;", "all-MShoTSo", "([JLkotlin/jvm/functions/Function1;)Z", "Lkotlin/UShort;", "all-xTcfx_M", "([SLkotlin/jvm/functions/Function1;)Z", "any", "any-GBYM_sE", "([B)Z", "any-JOV_ifY", "any--ajY-9A", "([I)Z", "any-jgv0xPQ", "any-QwZRm1k", "([J)Z", "any-MShoTSo", "any-rL5Bavg", "([S)Z", "any-xTcfx_M", "asByteArray", "", "asByteArray-GBYM_sE", "([B)[B", "asIntArray", "", "asIntArray--ajY-9A", "([I)[I", "asLongArray", "", "asLongArray-QwZRm1k", "([J)[J", "asShortArray", "", "asShortArray-rL5Bavg", "([S)[S", "asUByteArray", "asUIntArray", "asULongArray", "asUShortArray", "component1", "component1-GBYM_sE", "([B)B", "component1--ajY-9A", "component1-QwZRm1k", "([J)J", "component1-rL5Bavg", "([S)S", "component2", "component2-GBYM_sE", "component2--ajY-9A", "component2-QwZRm1k", "component2-rL5Bavg", "component3", "component3-GBYM_sE", "component3--ajY-9A", "component3-QwZRm1k", "component3-rL5Bavg", "component4", "component4-GBYM_sE", "component4--ajY-9A", "component4-QwZRm1k", "component4-rL5Bavg", "component5", "component5-GBYM_sE", "component5--ajY-9A", "component5-QwZRm1k", "component5-rL5Bavg", "contentEquals", "other", "contentEquals-kdPth3s", "([B[B)Z", "contentEquals-ctEhBpI", "([I[I)Z", "contentEquals-us8wMrg", "([J[J)Z", "contentEquals-mazbYpA", "([S[S)Z", "contentHashCode", "contentHashCode-GBYM_sE", "contentHashCode--ajY-9A", "contentHashCode-QwZRm1k", "contentHashCode-rL5Bavg", "contentToString", "", "contentToString-GBYM_sE", "([B)Ljava/lang/String;", "contentToString--ajY-9A", "([I)Ljava/lang/String;", "contentToString-QwZRm1k", "([J)Ljava/lang/String;", "contentToString-rL5Bavg", "([S)Ljava/lang/String;", "copyInto", "destination", "destinationOffset", "startIndex", "endIndex", "copyInto-FUQE5sA", "([B[BIII)[B", "copyInto-sIZ3KeM", "([I[IIII)[I", "copyInto--B0-L2c", "([J[JIII)[J", "copyInto-9-ak10g", "([S[SIII)[S", "copyOf", "copyOf-GBYM_sE", "newSize", "copyOf-PpDY95g", "([BI)[B", "copyOf--ajY-9A", "copyOf-qFRl0hI", "([II)[I", "copyOf-QwZRm1k", "copyOf-r7IrZao", "([JI)[J", "copyOf-rL5Bavg", "copyOf-nggk6HY", "([SI)[S", "copyOfRange", "fromIndex", "toIndex", "copyOfRange-4UcCI2c", "([BII)[B", "copyOfRange-oBK06Vg", "([III)[I", "copyOfRange--nroSd4", "([JII)[J", "copyOfRange-Aa5vz7o", "([SII)[S", "count", "count-JOV_ifY", "([BLkotlin/jvm/functions/Function1;)I", "count-jgv0xPQ", "([ILkotlin/jvm/functions/Function1;)I", "count-MShoTSo", "([JLkotlin/jvm/functions/Function1;)I", "count-xTcfx_M", "([SLkotlin/jvm/functions/Function1;)I", "drop", "", "n", "drop-PpDY95g", "([BI)Ljava/util/List;", "drop-qFRl0hI", "([II)Ljava/util/List;", "drop-r7IrZao", "([JI)Ljava/util/List;", "drop-nggk6HY", "([SI)Ljava/util/List;", "dropLast", "dropLast-PpDY95g", "dropLast-qFRl0hI", "dropLast-r7IrZao", "dropLast-nggk6HY", "dropLastWhile", "dropLastWhile-JOV_ifY", "([BLkotlin/jvm/functions/Function1;)Ljava/util/List;", "dropLastWhile-jgv0xPQ", "([ILkotlin/jvm/functions/Function1;)Ljava/util/List;", "dropLastWhile-MShoTSo", "([JLkotlin/jvm/functions/Function1;)Ljava/util/List;", "dropLastWhile-xTcfx_M", "([SLkotlin/jvm/functions/Function1;)Ljava/util/List;", "dropWhile", "dropWhile-JOV_ifY", "dropWhile-jgv0xPQ", "dropWhile-MShoTSo", "dropWhile-xTcfx_M", "elementAtOrElse", "index", "defaultValue", "elementAtOrElse-cO-VybQ", "([BILkotlin/jvm/functions/Function1;)B", "elementAtOrElse-QxvSvLU", "([IILkotlin/jvm/functions/Function1;)I", "elementAtOrElse-Xw8i6dc", "([JILkotlin/jvm/functions/Function1;)J", "elementAtOrElse-CVVdw08", "([SILkotlin/jvm/functions/Function1;)S", "elementAtOrNull", "elementAtOrNull-PpDY95g", "([BI)Lkotlin/UByte;", "elementAtOrNull-qFRl0hI", "([II)Lkotlin/UInt;", "elementAtOrNull-r7IrZao", "([JI)Lkotlin/ULong;", "elementAtOrNull-nggk6HY", "([SI)Lkotlin/UShort;", "fill", "", "element", "fill-WpHrYlw", "([BBII)V", "fill-2fe2U9s", "([IIII)V", "fill-K6DWlUc", "([JJII)V", "fill-EtDCXyQ", "([SSII)V", "filter", "filter-JOV_ifY", "filter-jgv0xPQ", "filter-MShoTSo", "filter-xTcfx_M", "filterIndexed", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "filterIndexed-ELGow60", "([BLkotlin/jvm/functions/Function2;)Ljava/util/List;", "filterIndexed-WyvcNBI", "([ILkotlin/jvm/functions/Function2;)Ljava/util/List;", "filterIndexed-s8dVfGU", "([JLkotlin/jvm/functions/Function2;)Ljava/util/List;", "filterIndexed-xzaTVY8", "([SLkotlin/jvm/functions/Function2;)Ljava/util/List;", "filterIndexedTo", "C", "", "filterIndexedTo-eNpIKz8", "([BLjava/util/Collection;Lkotlin/jvm/functions/Function2;)Ljava/util/Collection;", "filterIndexedTo--6EtJGI", "([ILjava/util/Collection;Lkotlin/jvm/functions/Function2;)Ljava/util/Collection;", "filterIndexedTo-pe2Q0Dw", "([JLjava/util/Collection;Lkotlin/jvm/functions/Function2;)Ljava/util/Collection;", "filterIndexedTo-QqktQ3k", "([SLjava/util/Collection;Lkotlin/jvm/functions/Function2;)Ljava/util/Collection;", "filterNot", "filterNot-JOV_ifY", "filterNot-jgv0xPQ", "filterNot-MShoTSo", "filterNot-xTcfx_M", "filterNotTo", "filterNotTo-wzUQCXU", "([BLjava/util/Collection;Lkotlin/jvm/functions/Function1;)Ljava/util/Collection;", "filterNotTo-wU5IKMo", "([ILjava/util/Collection;Lkotlin/jvm/functions/Function1;)Ljava/util/Collection;", "filterNotTo-HqK1JgA", "([JLjava/util/Collection;Lkotlin/jvm/functions/Function1;)Ljava/util/Collection;", "filterNotTo-oEOeDjA", "([SLjava/util/Collection;Lkotlin/jvm/functions/Function1;)Ljava/util/Collection;", "filterTo", "filterTo-wzUQCXU", "filterTo-wU5IKMo", "filterTo-HqK1JgA", "filterTo-oEOeDjA", "find", "find-JOV_ifY", "([BLkotlin/jvm/functions/Function1;)Lkotlin/UByte;", "find-jgv0xPQ", "([ILkotlin/jvm/functions/Function1;)Lkotlin/UInt;", "find-MShoTSo", "([JLkotlin/jvm/functions/Function1;)Lkotlin/ULong;", "find-xTcfx_M", "([SLkotlin/jvm/functions/Function1;)Lkotlin/UShort;", "findLast", "findLast-JOV_ifY", "findLast-jgv0xPQ", "findLast-MShoTSo", "findLast-xTcfx_M", "first", "first-GBYM_sE", "first-JOV_ifY", "([BLkotlin/jvm/functions/Function1;)B", "first--ajY-9A", "first-jgv0xPQ", "first-QwZRm1k", "first-MShoTSo", "([JLkotlin/jvm/functions/Function1;)J", "first-rL5Bavg", "first-xTcfx_M", "([SLkotlin/jvm/functions/Function1;)S", "firstOrNull", "firstOrNull-GBYM_sE", "([B)Lkotlin/UByte;", "firstOrNull-JOV_ifY", "firstOrNull--ajY-9A", "([I)Lkotlin/UInt;", "firstOrNull-jgv0xPQ", "firstOrNull-QwZRm1k", "([J)Lkotlin/ULong;", "firstOrNull-MShoTSo", "firstOrNull-rL5Bavg", "([S)Lkotlin/UShort;", "firstOrNull-xTcfx_M", "flatMap", "R", "transform", "", "flatMap-JOV_ifY", "flatMap-jgv0xPQ", "flatMap-MShoTSo", "flatMap-xTcfx_M", "flatMapTo", "flatMapTo-wzUQCXU", "flatMapTo-wU5IKMo", "flatMapTo-HqK1JgA", "flatMapTo-oEOeDjA", "fold", "initial", "operation", "acc", "fold-yXmHNn8", "([BLjava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "fold-zi1B2BA", "([ILjava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "fold-A8wKCXQ", "([JLjava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "fold-zww5nb8", "([SLjava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "foldIndexed", "Lkotlin/Function3;", "foldIndexed-3iWJZGE", "([BLjava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "foldIndexed-yVwIW0Q", "([ILjava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "foldIndexed-mwnnOCs", "([JLjava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "foldIndexed-bzxtMww", "([SLjava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "foldRight", "foldRight-yXmHNn8", "foldRight-zi1B2BA", "foldRight-A8wKCXQ", "foldRight-zww5nb8", "foldRightIndexed", "foldRightIndexed-3iWJZGE", "foldRightIndexed-yVwIW0Q", "foldRightIndexed-mwnnOCs", "foldRightIndexed-bzxtMww", "forEach", "action", "forEach-JOV_ifY", "([BLkotlin/jvm/functions/Function1;)V", "forEach-jgv0xPQ", "([ILkotlin/jvm/functions/Function1;)V", "forEach-MShoTSo", "([JLkotlin/jvm/functions/Function1;)V", "forEach-xTcfx_M", "([SLkotlin/jvm/functions/Function1;)V", "forEachIndexed", "forEachIndexed-ELGow60", "([BLkotlin/jvm/functions/Function2;)V", "forEachIndexed-WyvcNBI", "([ILkotlin/jvm/functions/Function2;)V", "forEachIndexed-s8dVfGU", "([JLkotlin/jvm/functions/Function2;)V", "forEachIndexed-xzaTVY8", "([SLkotlin/jvm/functions/Function2;)V", "getOrElse", "getOrElse-cO-VybQ", "getOrElse-QxvSvLU", "getOrElse-Xw8i6dc", "getOrElse-CVVdw08", "getOrNull", "getOrNull-PpDY95g", "getOrNull-qFRl0hI", "getOrNull-r7IrZao", "getOrNull-nggk6HY", "groupBy", "", "K", "keySelector", "groupBy-JOV_ifY", "([BLkotlin/jvm/functions/Function1;)Ljava/util/Map;", "V", "valueTransform", "groupBy-bBsjw1Y", "([BLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "groupBy-jgv0xPQ", "([ILkotlin/jvm/functions/Function1;)Ljava/util/Map;", "groupBy-L4rlFek", "([ILkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "groupBy-MShoTSo", "([JLkotlin/jvm/functions/Function1;)Ljava/util/Map;", "groupBy--_j2Y-Q", "([JLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "groupBy-xTcfx_M", "([SLkotlin/jvm/functions/Function1;)Ljava/util/Map;", "groupBy-3bBvP4M", "([SLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "groupByTo", "M", "", "", "groupByTo-H21X9dk", "([BLjava/util/Map;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "groupByTo-qOZmbk8", "([BLjava/util/Map;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "groupByTo-4D70W2E", "([ILjava/util/Map;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "groupByTo-JM6gNCM", "([ILjava/util/Map;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "groupByTo-X6OPwNk", "([JLjava/util/Map;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "groupByTo-QxgOkWg", "([JLjava/util/Map;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "groupByTo-ciTST-8", "([SLjava/util/Map;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "groupByTo-q8RuPII", "([SLjava/util/Map;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "indexOf", "indexOf-gMuBH34", "([BB)I", "indexOf-uWY9BYg", "([II)I", "indexOf-3uqUaXg", "([JJ)I", "indexOf-XzdR7RA", "([SS)I", "indexOfFirst", "indexOfFirst-JOV_ifY", "indexOfFirst-jgv0xPQ", "indexOfFirst-MShoTSo", "indexOfFirst-xTcfx_M", "indexOfLast", "indexOfLast-JOV_ifY", "indexOfLast-jgv0xPQ", "indexOfLast-MShoTSo", "indexOfLast-xTcfx_M", "last", "last-GBYM_sE", "last-JOV_ifY", "last--ajY-9A", "last-jgv0xPQ", "last-QwZRm1k", "last-MShoTSo", "last-rL5Bavg", "last-xTcfx_M", "lastIndexOf", "lastIndexOf-gMuBH34", "lastIndexOf-uWY9BYg", "lastIndexOf-3uqUaXg", "lastIndexOf-XzdR7RA", "lastOrNull", "lastOrNull-GBYM_sE", "lastOrNull-JOV_ifY", "lastOrNull--ajY-9A", "lastOrNull-jgv0xPQ", "lastOrNull-QwZRm1k", "lastOrNull-MShoTSo", "lastOrNull-rL5Bavg", "lastOrNull-xTcfx_M", "map", "map-JOV_ifY", "map-jgv0xPQ", "map-MShoTSo", "map-xTcfx_M", "mapIndexed", "mapIndexed-ELGow60", "mapIndexed-WyvcNBI", "mapIndexed-s8dVfGU", "mapIndexed-xzaTVY8", "mapIndexedTo", "mapIndexedTo-eNpIKz8", "mapIndexedTo--6EtJGI", "mapIndexedTo-pe2Q0Dw", "mapIndexedTo-QqktQ3k", "mapTo", "mapTo-wzUQCXU", "mapTo-wU5IKMo", "mapTo-HqK1JgA", "mapTo-oEOeDjA", "max", "max-GBYM_sE", "max--ajY-9A", "max-QwZRm1k", "max-rL5Bavg", "maxBy", "", "selector", "maxBy-JOV_ifY", "maxBy-jgv0xPQ", "maxBy-MShoTSo", "maxBy-xTcfx_M", "maxWith", "comparator", "Ljava/util/Comparator;", "Lkotlin/Comparator;", "maxWith-XMRcp5o", "([BLjava/util/Comparator;)Lkotlin/UByte;", "maxWith-YmdZ_VM", "([ILjava/util/Comparator;)Lkotlin/UInt;", "maxWith-zrEWJaI", "([JLjava/util/Comparator;)Lkotlin/ULong;", "maxWith-eOHTfZs", "([SLjava/util/Comparator;)Lkotlin/UShort;", "min", "min-GBYM_sE", "min--ajY-9A", "min-QwZRm1k", "min-rL5Bavg", "minBy", "minBy-JOV_ifY", "minBy-jgv0xPQ", "minBy-MShoTSo", "minBy-xTcfx_M", "minWith", "minWith-XMRcp5o", "minWith-YmdZ_VM", "minWith-zrEWJaI", "minWith-eOHTfZs", "none", "none-GBYM_sE", "none-JOV_ifY", "none--ajY-9A", "none-jgv0xPQ", "none-QwZRm1k", "none-MShoTSo", "none-rL5Bavg", "none-xTcfx_M", "plus", "plus-gMuBH34", "([BB)[B", "elements", "plus-kdPth3s", "([B[B)[B", "", "plus-xo_DsdI", "([BLjava/util/Collection;)[B", "plus-uWY9BYg", "plus-ctEhBpI", "([I[I)[I", "plus-CFIt9YE", "([ILjava/util/Collection;)[I", "plus-3uqUaXg", "([JJ)[J", "plus-us8wMrg", "([J[J)[J", "plus-kzHmqpY", "([JLjava/util/Collection;)[J", "plus-XzdR7RA", "([SS)[S", "plus-mazbYpA", "([S[S)[S", "plus-ojwP5H8", "([SLjava/util/Collection;)[S", "random", "random-GBYM_sE", "Lkotlin/random/Random;", "random-oSF2wD8", "([BLkotlin/random/Random;)B", "random--ajY-9A", "random-2D5oskM", "([ILkotlin/random/Random;)I", "random-QwZRm1k", "random-JzugnMA", "([JLkotlin/random/Random;)J", "random-rL5Bavg", "random-s5X_as8", "([SLkotlin/random/Random;)S", "randomOrNull", "randomOrNull-GBYM_sE", "randomOrNull-oSF2wD8", "([BLkotlin/random/Random;)Lkotlin/UByte;", "randomOrNull--ajY-9A", "randomOrNull-2D5oskM", "([ILkotlin/random/Random;)Lkotlin/UInt;", "randomOrNull-QwZRm1k", "randomOrNull-JzugnMA", "([JLkotlin/random/Random;)Lkotlin/ULong;", "randomOrNull-rL5Bavg", "randomOrNull-s5X_as8", "([SLkotlin/random/Random;)Lkotlin/UShort;", "reduce", "reduce-ELGow60", "([BLkotlin/jvm/functions/Function2;)B", "reduce-WyvcNBI", "([ILkotlin/jvm/functions/Function2;)I", "reduce-s8dVfGU", "([JLkotlin/jvm/functions/Function2;)J", "reduce-xzaTVY8", "([SLkotlin/jvm/functions/Function2;)S", "reduceIndexed", "reduceIndexed-EOyYB1Y", "([BLkotlin/jvm/functions/Function3;)B", "reduceIndexed-D40WMg8", "([ILkotlin/jvm/functions/Function3;)I", "reduceIndexed-z1zDJgo", "([JLkotlin/jvm/functions/Function3;)J", "reduceIndexed-aLgx1Fo", "([SLkotlin/jvm/functions/Function3;)S", "reduceOrNull", "reduceOrNull-ELGow60", "([BLkotlin/jvm/functions/Function2;)Lkotlin/UByte;", "reduceOrNull-WyvcNBI", "([ILkotlin/jvm/functions/Function2;)Lkotlin/UInt;", "reduceOrNull-s8dVfGU", "([JLkotlin/jvm/functions/Function2;)Lkotlin/ULong;", "reduceOrNull-xzaTVY8", "([SLkotlin/jvm/functions/Function2;)Lkotlin/UShort;", "reduceRight", "reduceRight-ELGow60", "reduceRight-WyvcNBI", "reduceRight-s8dVfGU", "reduceRight-xzaTVY8", "reduceRightIndexed", "reduceRightIndexed-EOyYB1Y", "reduceRightIndexed-D40WMg8", "reduceRightIndexed-z1zDJgo", "reduceRightIndexed-aLgx1Fo", "reduceRightOrNull", "reduceRightOrNull-ELGow60", "reduceRightOrNull-WyvcNBI", "reduceRightOrNull-s8dVfGU", "reduceRightOrNull-xzaTVY8", "reverse", "reverse-GBYM_sE", "reverse--ajY-9A", "reverse-QwZRm1k", "reverse-rL5Bavg", "reversed", "reversed-GBYM_sE", "([B)Ljava/util/List;", "reversed--ajY-9A", "([I)Ljava/util/List;", "reversed-QwZRm1k", "([J)Ljava/util/List;", "reversed-rL5Bavg", "([S)Ljava/util/List;", "reversedArray", "reversedArray-GBYM_sE", "reversedArray--ajY-9A", "reversedArray-QwZRm1k", "reversedArray-rL5Bavg", "scan", "scan-yXmHNn8", "([BLjava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "scan-zi1B2BA", "([ILjava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "scan-A8wKCXQ", "([JLjava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "scan-zww5nb8", "([SLjava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "scanIndexed", "scanIndexed-3iWJZGE", "([BLjava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/util/List;", "scanIndexed-yVwIW0Q", "([ILjava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/util/List;", "scanIndexed-mwnnOCs", "([JLjava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/util/List;", "scanIndexed-bzxtMww", "([SLjava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/util/List;", "scanReduce", "scanReduce-ELGow60", "scanReduce-WyvcNBI", "scanReduce-s8dVfGU", "scanReduce-xzaTVY8", "scanReduceIndexed", "scanReduceIndexed-EOyYB1Y", "([BLkotlin/jvm/functions/Function3;)Ljava/util/List;", "scanReduceIndexed-D40WMg8", "([ILkotlin/jvm/functions/Function3;)Ljava/util/List;", "scanReduceIndexed-z1zDJgo", "([JLkotlin/jvm/functions/Function3;)Ljava/util/List;", "scanReduceIndexed-aLgx1Fo", "([SLkotlin/jvm/functions/Function3;)Ljava/util/List;", "single", "single-GBYM_sE", "single-JOV_ifY", "single--ajY-9A", "single-jgv0xPQ", "single-QwZRm1k", "single-MShoTSo", "single-rL5Bavg", "single-xTcfx_M", "singleOrNull", "singleOrNull-GBYM_sE", "singleOrNull-JOV_ifY", "singleOrNull--ajY-9A", "singleOrNull-jgv0xPQ", "singleOrNull-QwZRm1k", "singleOrNull-MShoTSo", "singleOrNull-rL5Bavg", "singleOrNull-xTcfx_M", "slice", "slice-JQknh5Q", "([BLjava/lang/Iterable;)Ljava/util/List;", "slice-c0bezYM", "([BLkotlin/ranges/IntRange;)Ljava/util/List;", "slice-HwE9HBo", "([ILjava/lang/Iterable;)Ljava/util/List;", "slice-tAntMlw", "([ILkotlin/ranges/IntRange;)Ljava/util/List;", "slice-F7u83W8", "([JLjava/lang/Iterable;)Ljava/util/List;", "slice-ZRhS8yI", "([JLkotlin/ranges/IntRange;)Ljava/util/List;", "slice-JGPC0-M", "([SLjava/lang/Iterable;)Ljava/util/List;", "slice-Q6IL4kU", "([SLkotlin/ranges/IntRange;)Ljava/util/List;", "sliceArray", "sliceArray-xo_DsdI", "sliceArray-c0bezYM", "([BLkotlin/ranges/IntRange;)[B", "sliceArray-CFIt9YE", "sliceArray-tAntMlw", "([ILkotlin/ranges/IntRange;)[I", "sliceArray-kzHmqpY", "sliceArray-ZRhS8yI", "([JLkotlin/ranges/IntRange;)[J", "sliceArray-ojwP5H8", "sliceArray-Q6IL4kU", "([SLkotlin/ranges/IntRange;)[S", "sort", "sort-GBYM_sE", "sort--ajY-9A", "sort-QwZRm1k", "sort-rL5Bavg", "sortDescending", "sortDescending-GBYM_sE", "sortDescending--ajY-9A", "sortDescending-QwZRm1k", "sortDescending-rL5Bavg", "sorted", "sorted-GBYM_sE", "sorted--ajY-9A", "sorted-QwZRm1k", "sorted-rL5Bavg", "sortedArray", "sortedArray-GBYM_sE", "sortedArray--ajY-9A", "sortedArray-QwZRm1k", "sortedArray-rL5Bavg", "sortedArrayDescending", "sortedArrayDescending-GBYM_sE", "sortedArrayDescending--ajY-9A", "sortedArrayDescending-QwZRm1k", "sortedArrayDescending-rL5Bavg", "sortedDescending", "sortedDescending-GBYM_sE", "sortedDescending--ajY-9A", "sortedDescending-QwZRm1k", "sortedDescending-rL5Bavg", "sum", "", "sumOfUByte", "([Lkotlin/UByte;)I", "sumOfUInt", "([Lkotlin/UInt;)I", "sumOfULong", "([Lkotlin/ULong;)J", "sumOfUShort", "([Lkotlin/UShort;)I", "sum-GBYM_sE", "sum--ajY-9A", "sum-QwZRm1k", "sum-rL5Bavg", "sumBy", "sumBy-JOV_ifY", "sumBy-jgv0xPQ", "sumBy-MShoTSo", "sumBy-xTcfx_M", "sumByDouble", "", "sumByDouble-JOV_ifY", "([BLkotlin/jvm/functions/Function1;)D", "sumByDouble-jgv0xPQ", "([ILkotlin/jvm/functions/Function1;)D", "sumByDouble-MShoTSo", "([JLkotlin/jvm/functions/Function1;)D", "sumByDouble-xTcfx_M", "([SLkotlin/jvm/functions/Function1;)D", "take", "take-PpDY95g", "take-qFRl0hI", "take-r7IrZao", "take-nggk6HY", "takeLast", "takeLast-PpDY95g", "takeLast-qFRl0hI", "takeLast-r7IrZao", "takeLast-nggk6HY", "takeLastWhile", "takeLastWhile-JOV_ifY", "takeLastWhile-jgv0xPQ", "takeLastWhile-MShoTSo", "takeLastWhile-xTcfx_M", "takeWhile", "takeWhile-JOV_ifY", "takeWhile-jgv0xPQ", "takeWhile-MShoTSo", "takeWhile-xTcfx_M", "toByteArray", "toByteArray-GBYM_sE", "toIntArray", "toIntArray--ajY-9A", "toLongArray", "toLongArray-QwZRm1k", "toShortArray", "toShortArray-rL5Bavg", "toTypedArray", "toTypedArray-GBYM_sE", "([B)[Lkotlin/UByte;", "toTypedArray--ajY-9A", "([I)[Lkotlin/UInt;", "toTypedArray-QwZRm1k", "([J)[Lkotlin/ULong;", "toTypedArray-rL5Bavg", "([S)[Lkotlin/UShort;", "toUByteArray", "([Lkotlin/UByte;)[B", "toUIntArray", "([Lkotlin/UInt;)[I", "toULongArray", "([Lkotlin/ULong;)[J", "toUShortArray", "([Lkotlin/UShort;)[S", "withIndex", "Lkotlin/collections/IndexedValue;", "withIndex-GBYM_sE", "([B)Ljava/lang/Iterable;", "withIndex--ajY-9A", "([I)Ljava/lang/Iterable;", "withIndex-QwZRm1k", "([J)Ljava/lang/Iterable;", "withIndex-rL5Bavg", "([S)Ljava/lang/Iterable;", "zip", "Lkotlin/Pair;", "zip-nl983wc", "([B[Ljava/lang/Object;)Ljava/util/List;", "a", "b", "zip-LuipOMY", "([B[Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "zip-kdPth3s", "([B[B)Ljava/util/List;", "zip-JAKpvQM", "([B[BLkotlin/jvm/functions/Function2;)Ljava/util/List;", "zip-JQknh5Q", "zip-UCnP4_w", "([BLjava/lang/Iterable;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "zip-C-E_24M", "([I[Ljava/lang/Object;)Ljava/util/List;", "zip-ZjwqOic", "([I[Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "zip-ctEhBpI", "([I[I)Ljava/util/List;", "zip-L83TJbI", "([I[ILkotlin/jvm/functions/Function2;)Ljava/util/List;", "zip-HwE9HBo", "zip-7znnbtw", "([ILjava/lang/Iterable;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "zip-f7H3mmw", "([J[Ljava/lang/Object;)Ljava/util/List;", "zip-8LME4QE", "([J[Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "zip-us8wMrg", "([J[J)Ljava/util/List;", "zip-PabeH-Q", "([J[JLkotlin/jvm/functions/Function2;)Ljava/util/List;", "zip-F7u83W8", "zip-TUPTUsU", "([JLjava/lang/Iterable;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "zip-uaTIQ5s", "([S[Ljava/lang/Object;)Ljava/util/List;", "zip-ePBmRWY", "([S[Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "zip-mazbYpA", "([S[S)Ljava/util/List;", "zip-gVVukQo", "([S[SLkotlin/jvm/functions/Function2;)Ljava/util/List;", "zip-JGPC0-M", "zip-kBb4a-s", "([SLjava/lang/Iterable;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "kotlin-stdlib"}, k=5, mv={1, 1, 16}, pn="kotlin.collections", xi=1, xs="kotlin/collections/unsigned/UArraysKt")
-public class UArraysKt___UArraysKt
+class UArraysKt___UArraysKt
   extends UArraysKt___UArraysJvmKt
 {
   @ExperimentalUnsignedTypes
@@ -686,18 +686,26 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final long[] copyOfRange--nroSd4(@NotNull long[] paramArrayOfLong, int paramInt1, int paramInt2)
   {
-    if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
+    if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0))
+    {
       paramArrayOfLong = ArraysKt.copyOfRange(paramArrayOfLong, paramInt1, paramInt2);
     }
-    for (;;)
+    else
     {
-      return ULongArray.constructor-impl(paramArrayOfLong);
       if (paramInt2 > paramArrayOfLong.length) {
-        throw ((Throwable)new IndexOutOfBoundsException("toIndex: " + paramInt2 + ", size: " + paramArrayOfLong.length));
+        break label44;
       }
       paramArrayOfLong = Arrays.copyOfRange(paramArrayOfLong, paramInt1, paramInt2);
       Intrinsics.checkExpressionValueIsNotNull(paramArrayOfLong, "java.util.Arrays.copyOfR…this, fromIndex, toIndex)");
     }
+    return ULongArray.constructor-impl(paramArrayOfLong);
+    label44:
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("toIndex: ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", size: ");
+    localStringBuilder.append(paramArrayOfLong.length);
+    throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
   }
   
   @ExperimentalUnsignedTypes
@@ -705,18 +713,26 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final byte[] copyOfRange-4UcCI2c(@NotNull byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
+    if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0))
+    {
       paramArrayOfByte = ArraysKt.copyOfRange(paramArrayOfByte, paramInt1, paramInt2);
     }
-    for (;;)
+    else
     {
-      return UByteArray.constructor-impl(paramArrayOfByte);
       if (paramInt2 > paramArrayOfByte.length) {
-        throw ((Throwable)new IndexOutOfBoundsException("toIndex: " + paramInt2 + ", size: " + paramArrayOfByte.length));
+        break label44;
       }
       paramArrayOfByte = Arrays.copyOfRange(paramArrayOfByte, paramInt1, paramInt2);
       Intrinsics.checkExpressionValueIsNotNull(paramArrayOfByte, "java.util.Arrays.copyOfR…this, fromIndex, toIndex)");
     }
+    return UByteArray.constructor-impl(paramArrayOfByte);
+    label44:
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("toIndex: ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", size: ");
+    localStringBuilder.append(paramArrayOfByte.length);
+    throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
   }
   
   @ExperimentalUnsignedTypes
@@ -724,18 +740,26 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final short[] copyOfRange-Aa5vz7o(@NotNull short[] paramArrayOfShort, int paramInt1, int paramInt2)
   {
-    if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
+    if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0))
+    {
       paramArrayOfShort = ArraysKt.copyOfRange(paramArrayOfShort, paramInt1, paramInt2);
     }
-    for (;;)
+    else
     {
-      return UShortArray.constructor-impl(paramArrayOfShort);
       if (paramInt2 > paramArrayOfShort.length) {
-        throw ((Throwable)new IndexOutOfBoundsException("toIndex: " + paramInt2 + ", size: " + paramArrayOfShort.length));
+        break label44;
       }
       paramArrayOfShort = Arrays.copyOfRange(paramArrayOfShort, paramInt1, paramInt2);
       Intrinsics.checkExpressionValueIsNotNull(paramArrayOfShort, "java.util.Arrays.copyOfR…this, fromIndex, toIndex)");
     }
+    return UShortArray.constructor-impl(paramArrayOfShort);
+    label44:
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("toIndex: ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", size: ");
+    localStringBuilder.append(paramArrayOfShort.length);
+    throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
   }
   
   @ExperimentalUnsignedTypes
@@ -743,18 +767,26 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final int[] copyOfRange-oBK06Vg(@NotNull int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
-    if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
+    if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0))
+    {
       paramArrayOfInt = ArraysKt.copyOfRange(paramArrayOfInt, paramInt1, paramInt2);
     }
-    for (;;)
+    else
     {
-      return UIntArray.constructor-impl(paramArrayOfInt);
       if (paramInt2 > paramArrayOfInt.length) {
-        throw ((Throwable)new IndexOutOfBoundsException("toIndex: " + paramInt2 + ", size: " + paramArrayOfInt.length));
+        break label44;
       }
       paramArrayOfInt = Arrays.copyOfRange(paramArrayOfInt, paramInt1, paramInt2);
       Intrinsics.checkExpressionValueIsNotNull(paramArrayOfInt, "java.util.Arrays.copyOfR…this, fromIndex, toIndex)");
     }
+    return UIntArray.constructor-impl(paramArrayOfInt);
+    label44:
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("toIndex: ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", size: ");
+    localStringBuilder.append(paramArrayOfInt.length);
+    throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
   }
   
   @ExperimentalUnsignedTypes
@@ -762,23 +794,18 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final int count-JOV_ifY(@NotNull byte[] paramArrayOfByte, Function1<? super UByte, Boolean> paramFunction1)
   {
-    int k = paramArrayOfByte.length;
-    int j = 0;
+    int m = paramArrayOfByte.length;
     int i = 0;
-    if (j < k)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      if (!((Boolean)paramFunction1.invoke(UByte.box-impl(paramArrayOfByte[j]))).booleanValue()) {
-        break label48;
+      k = j;
+      if (((Boolean)paramFunction1.invoke(UByte.box-impl(paramArrayOfByte[i]))).booleanValue()) {
+        k = j + 1;
       }
       i += 1;
     }
-    label48:
-    for (;;)
-    {
-      j += 1;
-      break;
-      return i;
-    }
+    return j;
   }
   
   @ExperimentalUnsignedTypes
@@ -786,23 +813,18 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final int count-MShoTSo(@NotNull long[] paramArrayOfLong, Function1<? super ULong, Boolean> paramFunction1)
   {
-    int k = paramArrayOfLong.length;
-    int j = 0;
+    int m = paramArrayOfLong.length;
     int i = 0;
-    if (j < k)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      if (!((Boolean)paramFunction1.invoke(ULong.box-impl(paramArrayOfLong[j]))).booleanValue()) {
-        break label48;
+      k = j;
+      if (((Boolean)paramFunction1.invoke(ULong.box-impl(paramArrayOfLong[i]))).booleanValue()) {
+        k = j + 1;
       }
       i += 1;
     }
-    label48:
-    for (;;)
-    {
-      j += 1;
-      break;
-      return i;
-    }
+    return j;
   }
   
   @ExperimentalUnsignedTypes
@@ -810,23 +832,18 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final int count-jgv0xPQ(@NotNull int[] paramArrayOfInt, Function1<? super UInt, Boolean> paramFunction1)
   {
-    int k = paramArrayOfInt.length;
-    int j = 0;
+    int m = paramArrayOfInt.length;
     int i = 0;
-    if (j < k)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      if (!((Boolean)paramFunction1.invoke(UInt.box-impl(paramArrayOfInt[j]))).booleanValue()) {
-        break label48;
+      k = j;
+      if (((Boolean)paramFunction1.invoke(UInt.box-impl(paramArrayOfInt[i]))).booleanValue()) {
+        k = j + 1;
       }
       i += 1;
     }
-    label48:
-    for (;;)
-    {
-      j += 1;
-      break;
-      return i;
-    }
+    return j;
   }
   
   @ExperimentalUnsignedTypes
@@ -834,23 +851,18 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final int count-xTcfx_M(@NotNull short[] paramArrayOfShort, Function1<? super UShort, Boolean> paramFunction1)
   {
-    int k = paramArrayOfShort.length;
-    int j = 0;
+    int m = paramArrayOfShort.length;
     int i = 0;
-    if (j < k)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      if (!((Boolean)paramFunction1.invoke(UShort.box-impl(paramArrayOfShort[j]))).booleanValue()) {
-        break label48;
+      k = j;
+      if (((Boolean)paramFunction1.invoke(UShort.box-impl(paramArrayOfShort[i]))).booleanValue()) {
+        k = j + 1;
       }
       i += 1;
     }
-    label48:
-    for (;;)
-    {
-      j += 1;
-      break;
-      return i;
-    }
+    return j;
   }
   
   @ExperimentalUnsignedTypes
@@ -859,11 +871,20 @@ public class UArraysKt___UArraysKt
   public static final List<UByte> drop-PpDY95g(@NotNull byte[] paramArrayOfByte, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$drop");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return UArraysKt.takeLast-PpDY95g(paramArrayOfByte, RangesKt.coerceAtLeast(UByteArray.getSize-impl(paramArrayOfByte) - paramInt, 0));
+    if (i != 0) {
+      return UArraysKt.takeLast-PpDY95g(paramArrayOfByte, RangesKt.coerceAtLeast(UByteArray.getSize-impl(paramArrayOfByte) - paramInt, 0));
+    }
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("Requested element count ");
+    paramArrayOfByte.append(paramInt);
+    paramArrayOfByte.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfByte.toString().toString()));
   }
   
   @ExperimentalUnsignedTypes
@@ -872,11 +893,20 @@ public class UArraysKt___UArraysKt
   public static final List<UShort> drop-nggk6HY(@NotNull short[] paramArrayOfShort, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$drop");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return UArraysKt.takeLast-nggk6HY(paramArrayOfShort, RangesKt.coerceAtLeast(UShortArray.getSize-impl(paramArrayOfShort) - paramInt, 0));
+    if (i != 0) {
+      return UArraysKt.takeLast-nggk6HY(paramArrayOfShort, RangesKt.coerceAtLeast(UShortArray.getSize-impl(paramArrayOfShort) - paramInt, 0));
+    }
+    paramArrayOfShort = new StringBuilder();
+    paramArrayOfShort.append("Requested element count ");
+    paramArrayOfShort.append(paramInt);
+    paramArrayOfShort.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfShort.toString().toString()));
   }
   
   @ExperimentalUnsignedTypes
@@ -885,11 +915,20 @@ public class UArraysKt___UArraysKt
   public static final List<UInt> drop-qFRl0hI(@NotNull int[] paramArrayOfInt, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$drop");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return UArraysKt.takeLast-qFRl0hI(paramArrayOfInt, RangesKt.coerceAtLeast(UIntArray.getSize-impl(paramArrayOfInt) - paramInt, 0));
+    if (i != 0) {
+      return UArraysKt.takeLast-qFRl0hI(paramArrayOfInt, RangesKt.coerceAtLeast(UIntArray.getSize-impl(paramArrayOfInt) - paramInt, 0));
+    }
+    paramArrayOfInt = new StringBuilder();
+    paramArrayOfInt.append("Requested element count ");
+    paramArrayOfInt.append(paramInt);
+    paramArrayOfInt.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfInt.toString().toString()));
   }
   
   @ExperimentalUnsignedTypes
@@ -898,11 +937,20 @@ public class UArraysKt___UArraysKt
   public static final List<ULong> drop-r7IrZao(@NotNull long[] paramArrayOfLong, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$drop");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return UArraysKt.takeLast-r7IrZao(paramArrayOfLong, RangesKt.coerceAtLeast(ULongArray.getSize-impl(paramArrayOfLong) - paramInt, 0));
+    if (i != 0) {
+      return UArraysKt.takeLast-r7IrZao(paramArrayOfLong, RangesKt.coerceAtLeast(ULongArray.getSize-impl(paramArrayOfLong) - paramInt, 0));
+    }
+    paramArrayOfLong = new StringBuilder();
+    paramArrayOfLong.append("Requested element count ");
+    paramArrayOfLong.append(paramInt);
+    paramArrayOfLong.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfLong.toString().toString()));
   }
   
   @ExperimentalUnsignedTypes
@@ -911,11 +959,20 @@ public class UArraysKt___UArraysKt
   public static final List<UByte> dropLast-PpDY95g(@NotNull byte[] paramArrayOfByte, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$dropLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return UArraysKt.take-PpDY95g(paramArrayOfByte, RangesKt.coerceAtLeast(UByteArray.getSize-impl(paramArrayOfByte) - paramInt, 0));
+    if (i != 0) {
+      return UArraysKt.take-PpDY95g(paramArrayOfByte, RangesKt.coerceAtLeast(UByteArray.getSize-impl(paramArrayOfByte) - paramInt, 0));
+    }
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("Requested element count ");
+    paramArrayOfByte.append(paramInt);
+    paramArrayOfByte.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfByte.toString().toString()));
   }
   
   @ExperimentalUnsignedTypes
@@ -924,11 +981,20 @@ public class UArraysKt___UArraysKt
   public static final List<UShort> dropLast-nggk6HY(@NotNull short[] paramArrayOfShort, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$dropLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return UArraysKt.take-nggk6HY(paramArrayOfShort, RangesKt.coerceAtLeast(UShortArray.getSize-impl(paramArrayOfShort) - paramInt, 0));
+    if (i != 0) {
+      return UArraysKt.take-nggk6HY(paramArrayOfShort, RangesKt.coerceAtLeast(UShortArray.getSize-impl(paramArrayOfShort) - paramInt, 0));
+    }
+    paramArrayOfShort = new StringBuilder();
+    paramArrayOfShort.append("Requested element count ");
+    paramArrayOfShort.append(paramInt);
+    paramArrayOfShort.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfShort.toString().toString()));
   }
   
   @ExperimentalUnsignedTypes
@@ -937,11 +1003,20 @@ public class UArraysKt___UArraysKt
   public static final List<UInt> dropLast-qFRl0hI(@NotNull int[] paramArrayOfInt, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$dropLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return UArraysKt.take-qFRl0hI(paramArrayOfInt, RangesKt.coerceAtLeast(UIntArray.getSize-impl(paramArrayOfInt) - paramInt, 0));
+    if (i != 0) {
+      return UArraysKt.take-qFRl0hI(paramArrayOfInt, RangesKt.coerceAtLeast(UIntArray.getSize-impl(paramArrayOfInt) - paramInt, 0));
+    }
+    paramArrayOfInt = new StringBuilder();
+    paramArrayOfInt.append("Requested element count ");
+    paramArrayOfInt.append(paramInt);
+    paramArrayOfInt.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfInt.toString().toString()));
   }
   
   @ExperimentalUnsignedTypes
@@ -950,11 +1025,20 @@ public class UArraysKt___UArraysKt
   public static final List<ULong> dropLast-r7IrZao(@NotNull long[] paramArrayOfLong, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$dropLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return UArraysKt.take-r7IrZao(paramArrayOfLong, RangesKt.coerceAtLeast(ULongArray.getSize-impl(paramArrayOfLong) - paramInt, 0));
+    if (i != 0) {
+      return UArraysKt.take-r7IrZao(paramArrayOfLong, RangesKt.coerceAtLeast(ULongArray.getSize-impl(paramArrayOfLong) - paramInt, 0));
+    }
+    paramArrayOfLong = new StringBuilder();
+    paramArrayOfLong.append("Requested element count ");
+    paramArrayOfLong.append(paramInt);
+    paramArrayOfLong.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfLong.toString().toString()));
   }
   
   @ExperimentalUnsignedTypes
@@ -1028,28 +1112,23 @@ public class UArraysKt___UArraysKt
   {
     ArrayList localArrayList = new ArrayList();
     int k = paramArrayOfByte.length;
-    int j = 0;
     int i = 0;
-    byte b;
-    if (j < k)
+    int j = 0;
+    while (i < k)
     {
-      b = paramArrayOfByte[j];
-      if (i != 0) {
-        localArrayList.add(UByte.box-impl(b));
-      }
-    }
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (!((Boolean)paramFunction1.invoke(UByte.box-impl(b))).booleanValue())
+      byte b = paramArrayOfByte[i];
+      if (j != 0)
       {
         localArrayList.add(UByte.box-impl(b));
-        i = 1;
-        continue;
-        return (List)localArrayList;
       }
+      else if (!((Boolean)paramFunction1.invoke(UByte.box-impl(b))).booleanValue())
+      {
+        localArrayList.add(UByte.box-impl(b));
+        j = 1;
+      }
+      i += 1;
     }
+    return (List)localArrayList;
   }
   
   @ExperimentalUnsignedTypes
@@ -1059,28 +1138,23 @@ public class UArraysKt___UArraysKt
   {
     ArrayList localArrayList = new ArrayList();
     int k = paramArrayOfLong.length;
-    int j = 0;
     int i = 0;
-    long l;
-    if (j < k)
+    int j = 0;
+    while (i < k)
     {
-      l = paramArrayOfLong[j];
-      if (i != 0) {
-        localArrayList.add(ULong.box-impl(l));
-      }
-    }
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (!((Boolean)paramFunction1.invoke(ULong.box-impl(l))).booleanValue())
+      long l = paramArrayOfLong[i];
+      if (j != 0)
       {
         localArrayList.add(ULong.box-impl(l));
-        i = 1;
-        continue;
-        return (List)localArrayList;
       }
+      else if (!((Boolean)paramFunction1.invoke(ULong.box-impl(l))).booleanValue())
+      {
+        localArrayList.add(ULong.box-impl(l));
+        j = 1;
+      }
+      i += 1;
     }
+    return (List)localArrayList;
   }
   
   @ExperimentalUnsignedTypes
@@ -1090,28 +1164,23 @@ public class UArraysKt___UArraysKt
   {
     ArrayList localArrayList = new ArrayList();
     int k = paramArrayOfInt.length;
-    int j = 0;
     int i = 0;
-    int m;
-    if (j < k)
+    int j = 0;
+    while (i < k)
     {
-      m = paramArrayOfInt[j];
-      if (i != 0) {
-        localArrayList.add(UInt.box-impl(m));
-      }
-    }
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (!((Boolean)paramFunction1.invoke(UInt.box-impl(m))).booleanValue())
+      int m = paramArrayOfInt[i];
+      if (j != 0)
       {
         localArrayList.add(UInt.box-impl(m));
-        i = 1;
-        continue;
-        return (List)localArrayList;
       }
+      else if (!((Boolean)paramFunction1.invoke(UInt.box-impl(m))).booleanValue())
+      {
+        localArrayList.add(UInt.box-impl(m));
+        j = 1;
+      }
+      i += 1;
     }
+    return (List)localArrayList;
   }
   
   @ExperimentalUnsignedTypes
@@ -1121,28 +1190,23 @@ public class UArraysKt___UArraysKt
   {
     ArrayList localArrayList = new ArrayList();
     int k = paramArrayOfShort.length;
-    int j = 0;
     int i = 0;
-    short s;
-    if (j < k)
+    int j = 0;
+    while (i < k)
     {
-      s = paramArrayOfShort[j];
-      if (i != 0) {
-        localArrayList.add(UShort.box-impl(s));
-      }
-    }
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (!((Boolean)paramFunction1.invoke(UShort.box-impl(s))).booleanValue())
+      short s = paramArrayOfShort[i];
+      if (j != 0)
       {
         localArrayList.add(UShort.box-impl(s));
-        i = 1;
-        continue;
-        return (List)localArrayList;
       }
+      else if (!((Boolean)paramFunction1.invoke(UShort.box-impl(s))).booleanValue())
+      {
+        localArrayList.add(UShort.box-impl(s));
+        j = 1;
+      }
+      i += 1;
     }
+    return (List)localArrayList;
   }
   
   @ExperimentalUnsignedTypes
@@ -1334,10 +1398,10 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final List<UByte> filterIndexed-ELGow60(@NotNull byte[] paramArrayOfByte, Function2<? super Integer, ? super UByte, Boolean> paramFunction2)
   {
-    int i = 0;
     Collection localCollection = (Collection)new ArrayList();
     int k = paramArrayOfByte.length;
     int j = 0;
+    int i = 0;
     while (j < k)
     {
       byte b = paramArrayOfByte[j];
@@ -1355,10 +1419,10 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final List<UInt> filterIndexed-WyvcNBI(@NotNull int[] paramArrayOfInt, Function2<? super Integer, ? super UInt, Boolean> paramFunction2)
   {
-    int i = 0;
     Collection localCollection = (Collection)new ArrayList();
     int k = paramArrayOfInt.length;
     int j = 0;
+    int i = 0;
     while (j < k)
     {
       int m = paramArrayOfInt[j];
@@ -1376,10 +1440,10 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final List<ULong> filterIndexed-s8dVfGU(@NotNull long[] paramArrayOfLong, Function2<? super Integer, ? super ULong, Boolean> paramFunction2)
   {
-    int i = 0;
     Collection localCollection = (Collection)new ArrayList();
     int k = paramArrayOfLong.length;
     int j = 0;
+    int i = 0;
     while (j < k)
     {
       long l = paramArrayOfLong[j];
@@ -1397,10 +1461,10 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final List<UShort> filterIndexed-xzaTVY8(@NotNull short[] paramArrayOfShort, Function2<? super Integer, ? super UShort, Boolean> paramFunction2)
   {
-    int i = 0;
     Collection localCollection = (Collection)new ArrayList();
     int k = paramArrayOfShort.length;
     int j = 0;
+    int i = 0;
     while (j < k)
     {
       short s = paramArrayOfShort[j];
@@ -1418,9 +1482,9 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final <C extends Collection<? super UInt>> C filterIndexedTo--6EtJGI(@NotNull int[] paramArrayOfInt, C paramC, Function2<? super Integer, ? super UInt, Boolean> paramFunction2)
   {
-    int i = 0;
     int k = paramArrayOfInt.length;
     int j = 0;
+    int i = 0;
     while (j < k)
     {
       int m = paramArrayOfInt[j];
@@ -1438,9 +1502,9 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final <C extends Collection<? super UShort>> C filterIndexedTo-QqktQ3k(@NotNull short[] paramArrayOfShort, C paramC, Function2<? super Integer, ? super UShort, Boolean> paramFunction2)
   {
-    int i = 0;
     int k = paramArrayOfShort.length;
     int j = 0;
+    int i = 0;
     while (j < k)
     {
       short s = paramArrayOfShort[j];
@@ -1458,9 +1522,9 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final <C extends Collection<? super UByte>> C filterIndexedTo-eNpIKz8(@NotNull byte[] paramArrayOfByte, C paramC, Function2<? super Integer, ? super UByte, Boolean> paramFunction2)
   {
-    int i = 0;
     int k = paramArrayOfByte.length;
     int j = 0;
+    int i = 0;
     while (j < k)
     {
       byte b = paramArrayOfByte[j];
@@ -1478,9 +1542,9 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final <C extends Collection<? super ULong>> C filterIndexedTo-pe2Q0Dw(@NotNull long[] paramArrayOfLong, C paramC, Function2<? super Integer, ? super ULong, Boolean> paramFunction2)
   {
-    int i = 0;
     int k = paramArrayOfLong.length;
     int j = 0;
+    int i = 0;
     while (j < k)
     {
       long l = paramArrayOfLong[j];
@@ -1912,7 +1976,11 @@ public class UArraysKt___UArraysKt
       }
       i += 1;
     }
-    throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
+    paramArrayOfByte = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramArrayOfByte;
+    }
   }
   
   @ExperimentalUnsignedTypes
@@ -1930,7 +1998,11 @@ public class UArraysKt___UArraysKt
       }
       i += 1;
     }
-    throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
+    paramArrayOfLong = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramArrayOfLong;
+    }
   }
   
   @ExperimentalUnsignedTypes
@@ -1956,7 +2028,11 @@ public class UArraysKt___UArraysKt
       }
       i += 1;
     }
-    throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
+    paramArrayOfInt = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramArrayOfInt;
+    }
   }
   
   @ExperimentalUnsignedTypes
@@ -1982,7 +2058,11 @@ public class UArraysKt___UArraysKt
       }
       i += 1;
     }
-    throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
+    paramArrayOfShort = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramArrayOfShort;
+    }
   }
   
   @ExperimentalUnsignedTypes
@@ -2294,8 +2374,8 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final <R> R foldIndexed-3iWJZGE(@NotNull byte[] paramArrayOfByte, R paramR, Function3<? super Integer, ? super R, ? super UByte, ? extends R> paramFunction3)
   {
-    int j = 0;
     int m = paramArrayOfByte.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -2316,8 +2396,8 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final <R> R foldIndexed-bzxtMww(@NotNull short[] paramArrayOfShort, R paramR, Function3<? super Integer, ? super R, ? super UShort, ? extends R> paramFunction3)
   {
-    int j = 0;
     int m = paramArrayOfShort.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -2338,8 +2418,8 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final <R> R foldIndexed-mwnnOCs(@NotNull long[] paramArrayOfLong, R paramR, Function3<? super Integer, ? super R, ? super ULong, ? extends R> paramFunction3)
   {
-    int j = 0;
     int m = paramArrayOfLong.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -2360,8 +2440,8 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final <R> R foldIndexed-yVwIW0Q(@NotNull int[] paramArrayOfInt, R paramR, Function3<? super Integer, ? super R, ? super UInt, ? extends R> paramFunction3)
   {
-    int j = 0;
     int m = paramArrayOfInt.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -2550,8 +2630,8 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final void forEachIndexed-ELGow60(@NotNull byte[] paramArrayOfByte, Function2<? super Integer, ? super UByte, Unit> paramFunction2)
   {
-    int j = 0;
     int m = paramArrayOfByte.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -2571,8 +2651,8 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final void forEachIndexed-WyvcNBI(@NotNull int[] paramArrayOfInt, Function2<? super Integer, ? super UInt, Unit> paramFunction2)
   {
-    int j = 0;
     int m = paramArrayOfInt.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -2592,8 +2672,8 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final void forEachIndexed-s8dVfGU(@NotNull long[] paramArrayOfLong, Function2<? super Integer, ? super ULong, Unit> paramFunction2)
   {
-    int j = 0;
     int m = paramArrayOfLong.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -2613,8 +2693,8 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final void forEachIndexed-xzaTVY8(@NotNull short[] paramArrayOfShort, Function2<? super Integer, ? super UShort, Unit> paramFunction2)
   {
-    int j = 0;
     int m = paramArrayOfShort.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -2980,22 +3060,19 @@ public class UArraysKt___UArraysKt
   {
     int j = paramArrayOfInt.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       int k = paramArrayOfInt[i];
-      Object localObject2 = paramFunction1.invoke(UInt.box-impl(k));
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(UInt.box-impl(k));
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(UInt.box-impl(k));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(UInt.box-impl(k));
+      i += 1;
     }
     return paramM;
   }
@@ -3007,22 +3084,19 @@ public class UArraysKt___UArraysKt
   {
     int j = paramArrayOfByte.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       byte b = paramArrayOfByte[i];
-      Object localObject2 = paramFunction1.invoke(UByte.box-impl(b));
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(UByte.box-impl(b));
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(UByte.box-impl(b));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(UByte.box-impl(b));
+      i += 1;
     }
     return paramM;
   }
@@ -3034,22 +3108,19 @@ public class UArraysKt___UArraysKt
   {
     int j = paramArrayOfInt.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       int k = paramArrayOfInt[i];
-      Object localObject2 = paramFunction1.invoke(UInt.box-impl(k));
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(UInt.box-impl(k));
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(paramFunction11.invoke(UInt.box-impl(k)));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(paramFunction11.invoke(UInt.box-impl(k)));
+      i += 1;
     }
     return paramM;
   }
@@ -3061,22 +3132,19 @@ public class UArraysKt___UArraysKt
   {
     int j = paramArrayOfLong.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       long l = paramArrayOfLong[i];
-      Object localObject2 = paramFunction1.invoke(ULong.box-impl(l));
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(ULong.box-impl(l));
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(paramFunction11.invoke(ULong.box-impl(l)));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(paramFunction11.invoke(ULong.box-impl(l)));
+      i += 1;
     }
     return paramM;
   }
@@ -3088,22 +3156,19 @@ public class UArraysKt___UArraysKt
   {
     int j = paramArrayOfLong.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       long l = paramArrayOfLong[i];
-      Object localObject2 = paramFunction1.invoke(ULong.box-impl(l));
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(ULong.box-impl(l));
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(ULong.box-impl(l));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(ULong.box-impl(l));
+      i += 1;
     }
     return paramM;
   }
@@ -3115,22 +3180,19 @@ public class UArraysKt___UArraysKt
   {
     int j = paramArrayOfShort.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       short s = paramArrayOfShort[i];
-      Object localObject2 = paramFunction1.invoke(UShort.box-impl(s));
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(UShort.box-impl(s));
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(UShort.box-impl(s));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(UShort.box-impl(s));
+      i += 1;
     }
     return paramM;
   }
@@ -3142,22 +3204,19 @@ public class UArraysKt___UArraysKt
   {
     int j = paramArrayOfShort.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       short s = paramArrayOfShort[i];
-      Object localObject2 = paramFunction1.invoke(UShort.box-impl(s));
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(UShort.box-impl(s));
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(paramFunction11.invoke(UShort.box-impl(s)));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(paramFunction11.invoke(UShort.box-impl(s)));
+      i += 1;
     }
     return paramM;
   }
@@ -3169,22 +3228,19 @@ public class UArraysKt___UArraysKt
   {
     int j = paramArrayOfByte.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       byte b = paramArrayOfByte[i];
-      Object localObject2 = paramFunction1.invoke(UByte.box-impl(b));
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(UByte.box-impl(b));
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(paramFunction11.invoke(UByte.box-impl(b)));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(paramFunction11.invoke(UByte.box-impl(b)));
+      i += 1;
     }
     return paramM;
   }
@@ -3226,8 +3282,8 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final int indexOfFirst-JOV_ifY(@NotNull byte[] paramArrayOfByte, Function1<? super UByte, Boolean> paramFunction1)
   {
-    int i = 0;
     int j = paramArrayOfByte.length;
+    int i = 0;
     while (i < j)
     {
       if (((Boolean)paramFunction1.invoke(UByte.box-impl(UByte.constructor-impl(paramArrayOfByte[i])))).booleanValue()) {
@@ -3243,8 +3299,8 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final int indexOfFirst-MShoTSo(@NotNull long[] paramArrayOfLong, Function1<? super ULong, Boolean> paramFunction1)
   {
-    int i = 0;
     int j = paramArrayOfLong.length;
+    int i = 0;
     while (i < j)
     {
       if (((Boolean)paramFunction1.invoke(ULong.box-impl(ULong.constructor-impl(paramArrayOfLong[i])))).booleanValue()) {
@@ -3260,8 +3316,8 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final int indexOfFirst-jgv0xPQ(@NotNull int[] paramArrayOfInt, Function1<? super UInt, Boolean> paramFunction1)
   {
-    int i = 0;
     int j = paramArrayOfInt.length;
+    int i = 0;
     while (i < j)
     {
       if (((Boolean)paramFunction1.invoke(UInt.box-impl(UInt.constructor-impl(paramArrayOfInt[i])))).booleanValue()) {
@@ -3277,8 +3333,8 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final int indexOfFirst-xTcfx_M(@NotNull short[] paramArrayOfShort, Function1<? super UShort, Boolean> paramFunction1)
   {
-    int i = 0;
     int j = paramArrayOfShort.length;
+    int i = 0;
     while (i < j)
     {
       if (((Boolean)paramFunction1.invoke(UShort.box-impl(UShort.constructor-impl(paramArrayOfShort[i])))).booleanValue()) {
@@ -3390,7 +3446,11 @@ public class UArraysKt___UArraysKt
         i -= 1;
       }
     }
-    throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
+    paramArrayOfByte = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramArrayOfByte;
+    }
   }
   
   @ExperimentalUnsignedTypes
@@ -3414,7 +3474,11 @@ public class UArraysKt___UArraysKt
         i -= 1;
       }
     }
-    throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
+    paramArrayOfLong = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramArrayOfLong;
+    }
   }
   
   @ExperimentalUnsignedTypes
@@ -3446,7 +3510,11 @@ public class UArraysKt___UArraysKt
         i -= 1;
       }
     }
-    throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
+    paramArrayOfInt = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramArrayOfInt;
+    }
   }
   
   @ExperimentalUnsignedTypes
@@ -3478,7 +3546,11 @@ public class UArraysKt___UArraysKt
         i -= 1;
       }
     }
-    throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
+    paramArrayOfShort = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramArrayOfShort;
+    }
   }
   
   @ExperimentalUnsignedTypes
@@ -3726,9 +3798,9 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final <R> List<R> mapIndexed-ELGow60(@NotNull byte[] paramArrayOfByte, Function2<? super Integer, ? super UByte, ? extends R> paramFunction2)
   {
-    int j = 0;
     Collection localCollection = (Collection)new ArrayList(UByteArray.getSize-impl(paramArrayOfByte));
     int m = paramArrayOfByte.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -3749,9 +3821,9 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final <R> List<R> mapIndexed-WyvcNBI(@NotNull int[] paramArrayOfInt, Function2<? super Integer, ? super UInt, ? extends R> paramFunction2)
   {
-    int j = 0;
     Collection localCollection = (Collection)new ArrayList(UIntArray.getSize-impl(paramArrayOfInt));
     int m = paramArrayOfInt.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -3772,9 +3844,9 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final <R> List<R> mapIndexed-s8dVfGU(@NotNull long[] paramArrayOfLong, Function2<? super Integer, ? super ULong, ? extends R> paramFunction2)
   {
-    int j = 0;
     Collection localCollection = (Collection)new ArrayList(ULongArray.getSize-impl(paramArrayOfLong));
     int m = paramArrayOfLong.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -3795,9 +3867,9 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final <R> List<R> mapIndexed-xzaTVY8(@NotNull short[] paramArrayOfShort, Function2<? super Integer, ? super UShort, ? extends R> paramFunction2)
   {
-    int j = 0;
     Collection localCollection = (Collection)new ArrayList(UShortArray.getSize-impl(paramArrayOfShort));
     int m = paramArrayOfShort.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -3818,8 +3890,8 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final <R, C extends Collection<? super R>> C mapIndexedTo--6EtJGI(@NotNull int[] paramArrayOfInt, C paramC, Function2<? super Integer, ? super UInt, ? extends R> paramFunction2)
   {
-    int j = 0;
     int m = paramArrayOfInt.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -3840,8 +3912,8 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final <R, C extends Collection<? super R>> C mapIndexedTo-QqktQ3k(@NotNull short[] paramArrayOfShort, C paramC, Function2<? super Integer, ? super UShort, ? extends R> paramFunction2)
   {
-    int j = 0;
     int m = paramArrayOfShort.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -3862,8 +3934,8 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final <R, C extends Collection<? super R>> C mapIndexedTo-eNpIKz8(@NotNull byte[] paramArrayOfByte, C paramC, Function2<? super Integer, ? super UByte, ? extends R> paramFunction2)
   {
-    int j = 0;
     int m = paramArrayOfByte.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -3884,8 +3956,8 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final <R, C extends Collection<? super R>> C mapIndexedTo-pe2Q0Dw(@NotNull long[] paramArrayOfLong, C paramC, Function2<? super Integer, ? super ULong, ? extends R> paramFunction2)
   {
-    int j = 0;
     int m = paramArrayOfLong.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -3971,8 +4043,8 @@ public class UArraysKt___UArraysKt
       return null;
     }
     int i = UIntArray.get-impl(paramArrayOfInt, 0);
-    int j = 1;
     int n = ArraysKt.getLastIndex(paramArrayOfInt);
+    int j = 1;
     int k = i;
     if (1 <= n) {
       for (k = i;; k = i)
@@ -4002,8 +4074,8 @@ public class UArraysKt___UArraysKt
       return null;
     }
     int i = UByteArray.get-impl(paramArrayOfByte, 0);
-    int m = 1;
     int n = ArraysKt.getLastIndex(paramArrayOfByte);
+    int m = 1;
     int j = i;
     if (1 <= n) {
       for (j = i;; j = i)
@@ -4033,8 +4105,8 @@ public class UArraysKt___UArraysKt
       return null;
     }
     long l1 = ULongArray.get-impl(paramArrayOfLong, 0);
-    int i = 1;
     int j = ArraysKt.getLastIndex(paramArrayOfLong);
+    int i = 1;
     long l2 = l1;
     if (1 <= j) {
       for (l2 = l1;; l2 = l1)
@@ -4064,15 +4136,15 @@ public class UArraysKt___UArraysKt
       return null;
     }
     int i = UShortArray.get-impl(paramArrayOfShort, 0);
-    int m = 1;
     int n = ArraysKt.getLastIndex(paramArrayOfShort);
+    int m = 1;
     int j = i;
     if (1 <= n) {
       for (j = i;; j = i)
       {
         int k = UShortArray.get-impl(paramArrayOfShort, m);
         i = j;
-        if (Intrinsics.compare(j & 0xFFFF, k & 0xFFFF) < 0) {
+        if (Intrinsics.compare(j & 0xFFFF, 0xFFFF & k) < 0) {
           i = k;
         }
         j = i;
@@ -4100,6 +4172,7 @@ public class UArraysKt___UArraysKt
     }
     Object localObject1 = (Comparable)paramFunction1.invoke(UByte.box-impl(b1));
     int i = 1;
+    byte b2 = b1;
     if (1 <= j) {
       for (;;)
       {
@@ -4108,8 +4181,8 @@ public class UArraysKt___UArraysKt
         Object localObject2 = localObject1;
         if (((Comparable)localObject1).compareTo(localComparable) < 0)
         {
-          localObject2 = localComparable;
           b1 = b2;
+          localObject2 = localComparable;
         }
         b2 = b1;
         if (i == j) {
@@ -4119,7 +4192,6 @@ public class UArraysKt___UArraysKt
         localObject1 = localObject2;
       }
     }
-    byte b2 = b1;
     return UByte.box-impl(b2);
   }
   
@@ -4138,6 +4210,7 @@ public class UArraysKt___UArraysKt
     }
     Object localObject1 = (Comparable)paramFunction1.invoke(ULong.box-impl(l1));
     int i = 1;
+    long l2 = l1;
     if (1 <= j) {
       for (;;)
       {
@@ -4146,8 +4219,8 @@ public class UArraysKt___UArraysKt
         Object localObject2 = localObject1;
         if (((Comparable)localObject1).compareTo(localComparable) < 0)
         {
-          localObject2 = localComparable;
           l1 = l2;
+          localObject2 = localComparable;
         }
         l2 = l1;
         if (i == j) {
@@ -4157,7 +4230,6 @@ public class UArraysKt___UArraysKt
         localObject1 = localObject2;
       }
     }
-    long l2 = l1;
     return ULong.box-impl(l2);
   }
   
@@ -4176,6 +4248,7 @@ public class UArraysKt___UArraysKt
     }
     Object localObject1 = (Comparable)paramFunction1.invoke(UInt.box-impl(i));
     int j = 1;
+    int k = i;
     if (1 <= m) {
       for (;;)
       {
@@ -4184,8 +4257,8 @@ public class UArraysKt___UArraysKt
         Object localObject2 = localObject1;
         if (((Comparable)localObject1).compareTo(localComparable) < 0)
         {
-          localObject2 = localComparable;
           i = k;
+          localObject2 = localComparable;
         }
         k = i;
         if (j == m) {
@@ -4195,7 +4268,6 @@ public class UArraysKt___UArraysKt
         localObject1 = localObject2;
       }
     }
-    int k = i;
     return UInt.box-impl(k);
   }
   
@@ -4214,6 +4286,7 @@ public class UArraysKt___UArraysKt
     }
     Object localObject1 = (Comparable)paramFunction1.invoke(UShort.box-impl(s1));
     int i = 1;
+    short s2 = s1;
     if (1 <= j) {
       for (;;)
       {
@@ -4222,8 +4295,8 @@ public class UArraysKt___UArraysKt
         Object localObject2 = localObject1;
         if (((Comparable)localObject1).compareTo(localComparable) < 0)
         {
-          localObject2 = localComparable;
           s1 = s2;
+          localObject2 = localComparable;
         }
         s2 = s1;
         if (i == j) {
@@ -4233,7 +4306,6 @@ public class UArraysKt___UArraysKt
         localObject1 = localObject2;
       }
     }
-    short s2 = s1;
     return UShort.box-impl(s2);
   }
   
@@ -4248,8 +4320,8 @@ public class UArraysKt___UArraysKt
       return null;
     }
     byte b1 = UByteArray.get-impl(paramArrayOfByte, 0);
-    int i = 1;
     int j = ArraysKt.getLastIndex(paramArrayOfByte);
+    int i = 1;
     byte b2 = b1;
     if (1 <= j) {
       for (b2 = b1;; b2 = b1)
@@ -4280,8 +4352,8 @@ public class UArraysKt___UArraysKt
       return null;
     }
     int i = UIntArray.get-impl(paramArrayOfInt, 0);
-    int j = 1;
     int n = ArraysKt.getLastIndex(paramArrayOfInt);
+    int j = 1;
     int k = i;
     if (1 <= n) {
       for (k = i;; k = i)
@@ -4312,8 +4384,8 @@ public class UArraysKt___UArraysKt
       return null;
     }
     short s1 = UShortArray.get-impl(paramArrayOfShort, 0);
-    int i = 1;
     int j = ArraysKt.getLastIndex(paramArrayOfShort);
+    int i = 1;
     short s2 = s1;
     if (1 <= j) {
       for (s2 = s1;; s2 = s1)
@@ -4344,8 +4416,8 @@ public class UArraysKt___UArraysKt
       return null;
     }
     long l1 = ULongArray.get-impl(paramArrayOfLong, 0);
-    int i = 1;
     int j = ArraysKt.getLastIndex(paramArrayOfLong);
+    int i = 1;
     long l2 = l1;
     if (1 <= j) {
       for (l2 = l1;; l2 = l1)
@@ -4375,8 +4447,8 @@ public class UArraysKt___UArraysKt
       return null;
     }
     int i = UIntArray.get-impl(paramArrayOfInt, 0);
-    int j = 1;
     int n = ArraysKt.getLastIndex(paramArrayOfInt);
+    int j = 1;
     int k = i;
     if (1 <= n) {
       for (k = i;; k = i)
@@ -4406,8 +4478,8 @@ public class UArraysKt___UArraysKt
       return null;
     }
     int i = UByteArray.get-impl(paramArrayOfByte, 0);
-    int m = 1;
     int n = ArraysKt.getLastIndex(paramArrayOfByte);
+    int m = 1;
     int j = i;
     if (1 <= n) {
       for (j = i;; j = i)
@@ -4437,8 +4509,8 @@ public class UArraysKt___UArraysKt
       return null;
     }
     long l1 = ULongArray.get-impl(paramArrayOfLong, 0);
-    int i = 1;
     int j = ArraysKt.getLastIndex(paramArrayOfLong);
+    int i = 1;
     long l2 = l1;
     if (1 <= j) {
       for (l2 = l1;; l2 = l1)
@@ -4468,15 +4540,15 @@ public class UArraysKt___UArraysKt
       return null;
     }
     int i = UShortArray.get-impl(paramArrayOfShort, 0);
-    int m = 1;
     int n = ArraysKt.getLastIndex(paramArrayOfShort);
+    int m = 1;
     int j = i;
     if (1 <= n) {
       for (j = i;; j = i)
       {
         int k = UShortArray.get-impl(paramArrayOfShort, m);
         i = j;
-        if (Intrinsics.compare(j & 0xFFFF, k & 0xFFFF) > 0) {
+        if (Intrinsics.compare(j & 0xFFFF, 0xFFFF & k) > 0) {
           i = k;
         }
         j = i;
@@ -4504,6 +4576,7 @@ public class UArraysKt___UArraysKt
     }
     Object localObject1 = (Comparable)paramFunction1.invoke(UByte.box-impl(b1));
     int i = 1;
+    byte b2 = b1;
     if (1 <= j) {
       for (;;)
       {
@@ -4512,8 +4585,8 @@ public class UArraysKt___UArraysKt
         Object localObject2 = localObject1;
         if (((Comparable)localObject1).compareTo(localComparable) > 0)
         {
-          localObject2 = localComparable;
           b1 = b2;
+          localObject2 = localComparable;
         }
         b2 = b1;
         if (i == j) {
@@ -4523,7 +4596,6 @@ public class UArraysKt___UArraysKt
         localObject1 = localObject2;
       }
     }
-    byte b2 = b1;
     return UByte.box-impl(b2);
   }
   
@@ -4542,6 +4614,7 @@ public class UArraysKt___UArraysKt
     }
     Object localObject1 = (Comparable)paramFunction1.invoke(ULong.box-impl(l1));
     int i = 1;
+    long l2 = l1;
     if (1 <= j) {
       for (;;)
       {
@@ -4550,8 +4623,8 @@ public class UArraysKt___UArraysKt
         Object localObject2 = localObject1;
         if (((Comparable)localObject1).compareTo(localComparable) > 0)
         {
-          localObject2 = localComparable;
           l1 = l2;
+          localObject2 = localComparable;
         }
         l2 = l1;
         if (i == j) {
@@ -4561,7 +4634,6 @@ public class UArraysKt___UArraysKt
         localObject1 = localObject2;
       }
     }
-    long l2 = l1;
     return ULong.box-impl(l2);
   }
   
@@ -4580,6 +4652,7 @@ public class UArraysKt___UArraysKt
     }
     Object localObject1 = (Comparable)paramFunction1.invoke(UInt.box-impl(i));
     int j = 1;
+    int k = i;
     if (1 <= m) {
       for (;;)
       {
@@ -4588,8 +4661,8 @@ public class UArraysKt___UArraysKt
         Object localObject2 = localObject1;
         if (((Comparable)localObject1).compareTo(localComparable) > 0)
         {
-          localObject2 = localComparable;
           i = k;
+          localObject2 = localComparable;
         }
         k = i;
         if (j == m) {
@@ -4599,7 +4672,6 @@ public class UArraysKt___UArraysKt
         localObject1 = localObject2;
       }
     }
-    int k = i;
     return UInt.box-impl(k);
   }
   
@@ -4618,6 +4690,7 @@ public class UArraysKt___UArraysKt
     }
     Object localObject1 = (Comparable)paramFunction1.invoke(UShort.box-impl(s1));
     int i = 1;
+    short s2 = s1;
     if (1 <= j) {
       for (;;)
       {
@@ -4626,8 +4699,8 @@ public class UArraysKt___UArraysKt
         Object localObject2 = localObject1;
         if (((Comparable)localObject1).compareTo(localComparable) > 0)
         {
-          localObject2 = localComparable;
           s1 = s2;
+          localObject2 = localComparable;
         }
         s2 = s1;
         if (i == j) {
@@ -4637,7 +4710,6 @@ public class UArraysKt___UArraysKt
         localObject1 = localObject2;
       }
     }
-    short s2 = s1;
     return UShort.box-impl(s2);
   }
   
@@ -4652,8 +4724,8 @@ public class UArraysKt___UArraysKt
       return null;
     }
     byte b1 = UByteArray.get-impl(paramArrayOfByte, 0);
-    int i = 1;
     int j = ArraysKt.getLastIndex(paramArrayOfByte);
+    int i = 1;
     byte b2 = b1;
     if (1 <= j) {
       for (b2 = b1;; b2 = b1)
@@ -4684,8 +4756,8 @@ public class UArraysKt___UArraysKt
       return null;
     }
     int i = UIntArray.get-impl(paramArrayOfInt, 0);
-    int j = 1;
     int n = ArraysKt.getLastIndex(paramArrayOfInt);
+    int j = 1;
     int k = i;
     if (1 <= n) {
       for (k = i;; k = i)
@@ -4716,8 +4788,8 @@ public class UArraysKt___UArraysKt
       return null;
     }
     short s1 = UShortArray.get-impl(paramArrayOfShort, 0);
-    int i = 1;
     int j = ArraysKt.getLastIndex(paramArrayOfShort);
+    int i = 1;
     short s2 = s1;
     if (1 <= j) {
       for (s2 = s1;; s2 = s1)
@@ -4748,8 +4820,8 @@ public class UArraysKt___UArraysKt
       return null;
     }
     long l1 = ULongArray.get-impl(paramArrayOfLong, 0);
-    int i = 1;
     int j = ArraysKt.getLastIndex(paramArrayOfLong);
+    int i = 1;
     long l2 = l1;
     if (1 <= j) {
       for (l2 = l1;; l2 = l1)
@@ -5031,10 +5103,10 @@ public class UArraysKt___UArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$random");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (UIntArray.isEmpty-impl(paramArrayOfInt)) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    if (!UIntArray.isEmpty-impl(paramArrayOfInt)) {
+      return UIntArray.get-impl(paramArrayOfInt, paramRandom.nextInt(UIntArray.getSize-impl(paramArrayOfInt)));
     }
-    return UIntArray.get-impl(paramArrayOfInt, paramRandom.nextInt(UIntArray.getSize-impl(paramArrayOfInt)));
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   @ExperimentalUnsignedTypes
@@ -5051,10 +5123,10 @@ public class UArraysKt___UArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$random");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (ULongArray.isEmpty-impl(paramArrayOfLong)) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    if (!ULongArray.isEmpty-impl(paramArrayOfLong)) {
+      return ULongArray.get-impl(paramArrayOfLong, paramRandom.nextInt(ULongArray.getSize-impl(paramArrayOfLong)));
     }
-    return ULongArray.get-impl(paramArrayOfLong, paramRandom.nextInt(ULongArray.getSize-impl(paramArrayOfLong)));
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   @ExperimentalUnsignedTypes
@@ -5071,10 +5143,10 @@ public class UArraysKt___UArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$random");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (UByteArray.isEmpty-impl(paramArrayOfByte)) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    if (!UByteArray.isEmpty-impl(paramArrayOfByte)) {
+      return UByteArray.get-impl(paramArrayOfByte, paramRandom.nextInt(UByteArray.getSize-impl(paramArrayOfByte)));
     }
-    return UByteArray.get-impl(paramArrayOfByte, paramRandom.nextInt(UByteArray.getSize-impl(paramArrayOfByte)));
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   @ExperimentalUnsignedTypes
@@ -5091,10 +5163,10 @@ public class UArraysKt___UArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$random");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (UShortArray.isEmpty-impl(paramArrayOfShort)) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    if (!UShortArray.isEmpty-impl(paramArrayOfShort)) {
+      return UShortArray.get-impl(paramArrayOfShort, paramRandom.nextInt(UShortArray.getSize-impl(paramArrayOfShort)));
     }
-    return UShortArray.get-impl(paramArrayOfShort, paramRandom.nextInt(UShortArray.getSize-impl(paramArrayOfShort)));
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   @ExperimentalStdlibApi
@@ -5194,26 +5266,30 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final byte reduce-ELGow60(@NotNull byte[] paramArrayOfByte, Function2<? super UByte, ? super UByte, UByte> paramFunction2)
   {
-    if (UByteArray.isEmpty-impl(paramArrayOfByte)) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    byte b1 = UByteArray.get-impl(paramArrayOfByte, 0);
-    int j = ArraysKt.getLastIndex(paramArrayOfByte);
-    if (1 <= j)
+    if (!UByteArray.isEmpty-impl(paramArrayOfByte))
     {
+      byte b2 = UByteArray.get-impl(paramArrayOfByte, 0);
+      int j = ArraysKt.getLastIndex(paramArrayOfByte);
       int i = 1;
-      for (;;)
-      {
-        b1 = ((UByte)paramFunction2.invoke(UByte.box-impl(b1), UByte.box-impl(UByteArray.get-impl(paramArrayOfByte, i)))).unbox-impl();
-        b2 = b1;
-        if (i == j) {
-          break;
+      byte b1 = b2;
+      if (1 <= j) {
+        for (;;)
+        {
+          b2 = ((UByte)paramFunction2.invoke(UByte.box-impl(b2), UByte.box-impl(UByteArray.get-impl(paramArrayOfByte, i)))).unbox-impl();
+          b1 = b2;
+          if (i == j) {
+            break;
+          }
+          i += 1;
         }
-        i += 1;
       }
+      return b1;
     }
-    byte b2 = b1;
-    return b2;
+    paramArrayOfByte = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfByte;
+    }
   }
   
   @ExperimentalUnsignedTypes
@@ -5221,26 +5297,30 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final int reduce-WyvcNBI(@NotNull int[] paramArrayOfInt, Function2<? super UInt, ? super UInt, UInt> paramFunction2)
   {
-    if (UIntArray.isEmpty-impl(paramArrayOfInt)) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int j = UIntArray.get-impl(paramArrayOfInt, 0);
-    int m = ArraysKt.getLastIndex(paramArrayOfInt);
-    if (1 <= m)
+    if (!UIntArray.isEmpty-impl(paramArrayOfInt))
     {
+      int k = UIntArray.get-impl(paramArrayOfInt, 0);
+      int m = ArraysKt.getLastIndex(paramArrayOfInt);
       int i = 1;
-      for (;;)
-      {
-        j = ((UInt)paramFunction2.invoke(UInt.box-impl(j), UInt.box-impl(UIntArray.get-impl(paramArrayOfInt, i)))).unbox-impl();
-        k = j;
-        if (i == m) {
-          break;
+      int j = k;
+      if (1 <= m) {
+        for (;;)
+        {
+          k = ((UInt)paramFunction2.invoke(UInt.box-impl(k), UInt.box-impl(UIntArray.get-impl(paramArrayOfInt, i)))).unbox-impl();
+          j = k;
+          if (i == m) {
+            break;
+          }
+          i += 1;
         }
-        i += 1;
       }
+      return j;
     }
-    int k = j;
-    return k;
+    paramArrayOfInt = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfInt;
+    }
   }
   
   @ExperimentalUnsignedTypes
@@ -5248,26 +5328,30 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final long reduce-s8dVfGU(@NotNull long[] paramArrayOfLong, Function2<? super ULong, ? super ULong, ULong> paramFunction2)
   {
-    if (ULongArray.isEmpty-impl(paramArrayOfLong)) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    long l2 = ULongArray.get-impl(paramArrayOfLong, 0);
-    int j = ArraysKt.getLastIndex(paramArrayOfLong);
-    long l1 = l2;
-    if (1 <= j)
+    if (!ULongArray.isEmpty-impl(paramArrayOfLong))
     {
+      long l2 = ULongArray.get-impl(paramArrayOfLong, 0);
+      int j = ArraysKt.getLastIndex(paramArrayOfLong);
       int i = 1;
-      for (;;)
-      {
-        l2 = ((ULong)paramFunction2.invoke(ULong.box-impl(l2), ULong.box-impl(ULongArray.get-impl(paramArrayOfLong, i)))).unbox-impl();
-        l1 = l2;
-        if (i == j) {
-          break;
+      long l1 = l2;
+      if (1 <= j) {
+        for (;;)
+        {
+          l2 = ((ULong)paramFunction2.invoke(ULong.box-impl(l2), ULong.box-impl(ULongArray.get-impl(paramArrayOfLong, i)))).unbox-impl();
+          l1 = l2;
+          if (i == j) {
+            break;
+          }
+          i += 1;
         }
-        i += 1;
       }
+      return l1;
     }
-    return l1;
+    paramArrayOfLong = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfLong;
+    }
   }
   
   @ExperimentalUnsignedTypes
@@ -5275,26 +5359,30 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final short reduce-xzaTVY8(@NotNull short[] paramArrayOfShort, Function2<? super UShort, ? super UShort, UShort> paramFunction2)
   {
-    if (UShortArray.isEmpty-impl(paramArrayOfShort)) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    short s1 = UShortArray.get-impl(paramArrayOfShort, 0);
-    int j = ArraysKt.getLastIndex(paramArrayOfShort);
-    if (1 <= j)
+    if (!UShortArray.isEmpty-impl(paramArrayOfShort))
     {
+      short s2 = UShortArray.get-impl(paramArrayOfShort, 0);
+      int j = ArraysKt.getLastIndex(paramArrayOfShort);
       int i = 1;
-      for (;;)
-      {
-        s1 = ((UShort)paramFunction2.invoke(UShort.box-impl(s1), UShort.box-impl(UShortArray.get-impl(paramArrayOfShort, i)))).unbox-impl();
-        s2 = s1;
-        if (i == j) {
-          break;
+      short s1 = s2;
+      if (1 <= j) {
+        for (;;)
+        {
+          s2 = ((UShort)paramFunction2.invoke(UShort.box-impl(s2), UShort.box-impl(UShortArray.get-impl(paramArrayOfShort, i)))).unbox-impl();
+          s1 = s2;
+          if (i == j) {
+            break;
+          }
+          i += 1;
         }
-        i += 1;
       }
+      return s1;
     }
-    short s2 = s1;
-    return s2;
+    paramArrayOfShort = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfShort;
+    }
   }
   
   @ExperimentalUnsignedTypes
@@ -5302,26 +5390,30 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final int reduceIndexed-D40WMg8(@NotNull int[] paramArrayOfInt, Function3<? super Integer, ? super UInt, ? super UInt, UInt> paramFunction3)
   {
-    if (UIntArray.isEmpty-impl(paramArrayOfInt)) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int j = UIntArray.get-impl(paramArrayOfInt, 0);
-    int m = ArraysKt.getLastIndex(paramArrayOfInt);
-    if (1 <= m)
+    if (!UIntArray.isEmpty-impl(paramArrayOfInt))
     {
+      int k = UIntArray.get-impl(paramArrayOfInt, 0);
+      int m = ArraysKt.getLastIndex(paramArrayOfInt);
       int i = 1;
-      for (;;)
-      {
-        j = ((UInt)paramFunction3.invoke(Integer.valueOf(i), UInt.box-impl(j), UInt.box-impl(UIntArray.get-impl(paramArrayOfInt, i)))).unbox-impl();
-        k = j;
-        if (i == m) {
-          break;
+      int j = k;
+      if (1 <= m) {
+        for (;;)
+        {
+          k = ((UInt)paramFunction3.invoke(Integer.valueOf(i), UInt.box-impl(k), UInt.box-impl(UIntArray.get-impl(paramArrayOfInt, i)))).unbox-impl();
+          j = k;
+          if (i == m) {
+            break;
+          }
+          i += 1;
         }
-        i += 1;
       }
+      return j;
     }
-    int k = j;
-    return k;
+    paramArrayOfInt = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfInt;
+    }
   }
   
   @ExperimentalUnsignedTypes
@@ -5329,26 +5421,30 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final byte reduceIndexed-EOyYB1Y(@NotNull byte[] paramArrayOfByte, Function3<? super Integer, ? super UByte, ? super UByte, UByte> paramFunction3)
   {
-    if (UByteArray.isEmpty-impl(paramArrayOfByte)) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    byte b1 = UByteArray.get-impl(paramArrayOfByte, 0);
-    int j = ArraysKt.getLastIndex(paramArrayOfByte);
-    if (1 <= j)
+    if (!UByteArray.isEmpty-impl(paramArrayOfByte))
     {
+      byte b2 = UByteArray.get-impl(paramArrayOfByte, 0);
+      int j = ArraysKt.getLastIndex(paramArrayOfByte);
       int i = 1;
-      for (;;)
-      {
-        b1 = ((UByte)paramFunction3.invoke(Integer.valueOf(i), UByte.box-impl(b1), UByte.box-impl(UByteArray.get-impl(paramArrayOfByte, i)))).unbox-impl();
-        b2 = b1;
-        if (i == j) {
-          break;
+      byte b1 = b2;
+      if (1 <= j) {
+        for (;;)
+        {
+          b2 = ((UByte)paramFunction3.invoke(Integer.valueOf(i), UByte.box-impl(b2), UByte.box-impl(UByteArray.get-impl(paramArrayOfByte, i)))).unbox-impl();
+          b1 = b2;
+          if (i == j) {
+            break;
+          }
+          i += 1;
         }
-        i += 1;
       }
+      return b1;
     }
-    byte b2 = b1;
-    return b2;
+    paramArrayOfByte = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfByte;
+    }
   }
   
   @ExperimentalUnsignedTypes
@@ -5356,26 +5452,30 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final short reduceIndexed-aLgx1Fo(@NotNull short[] paramArrayOfShort, Function3<? super Integer, ? super UShort, ? super UShort, UShort> paramFunction3)
   {
-    if (UShortArray.isEmpty-impl(paramArrayOfShort)) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    short s1 = UShortArray.get-impl(paramArrayOfShort, 0);
-    int j = ArraysKt.getLastIndex(paramArrayOfShort);
-    if (1 <= j)
+    if (!UShortArray.isEmpty-impl(paramArrayOfShort))
     {
+      short s2 = UShortArray.get-impl(paramArrayOfShort, 0);
+      int j = ArraysKt.getLastIndex(paramArrayOfShort);
       int i = 1;
-      for (;;)
-      {
-        s1 = ((UShort)paramFunction3.invoke(Integer.valueOf(i), UShort.box-impl(s1), UShort.box-impl(UShortArray.get-impl(paramArrayOfShort, i)))).unbox-impl();
-        s2 = s1;
-        if (i == j) {
-          break;
+      short s1 = s2;
+      if (1 <= j) {
+        for (;;)
+        {
+          s2 = ((UShort)paramFunction3.invoke(Integer.valueOf(i), UShort.box-impl(s2), UShort.box-impl(UShortArray.get-impl(paramArrayOfShort, i)))).unbox-impl();
+          s1 = s2;
+          if (i == j) {
+            break;
+          }
+          i += 1;
         }
-        i += 1;
       }
+      return s1;
     }
-    short s2 = s1;
-    return s2;
+    paramArrayOfShort = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfShort;
+    }
   }
   
   @ExperimentalUnsignedTypes
@@ -5383,26 +5483,30 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final long reduceIndexed-z1zDJgo(@NotNull long[] paramArrayOfLong, Function3<? super Integer, ? super ULong, ? super ULong, ULong> paramFunction3)
   {
-    if (ULongArray.isEmpty-impl(paramArrayOfLong)) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    long l2 = ULongArray.get-impl(paramArrayOfLong, 0);
-    int j = ArraysKt.getLastIndex(paramArrayOfLong);
-    long l1 = l2;
-    if (1 <= j)
+    if (!ULongArray.isEmpty-impl(paramArrayOfLong))
     {
+      long l2 = ULongArray.get-impl(paramArrayOfLong, 0);
+      int j = ArraysKt.getLastIndex(paramArrayOfLong);
       int i = 1;
-      for (;;)
-      {
-        l2 = ((ULong)paramFunction3.invoke(Integer.valueOf(i), ULong.box-impl(l2), ULong.box-impl(ULongArray.get-impl(paramArrayOfLong, i)))).unbox-impl();
-        l1 = l2;
-        if (i == j) {
-          break;
+      long l1 = l2;
+      if (1 <= j) {
+        for (;;)
+        {
+          l2 = ((ULong)paramFunction3.invoke(Integer.valueOf(i), ULong.box-impl(l2), ULong.box-impl(ULongArray.get-impl(paramArrayOfLong, i)))).unbox-impl();
+          l1 = l2;
+          if (i == j) {
+            break;
+          }
+          i += 1;
         }
-        i += 1;
       }
+      return l1;
     }
-    return l1;
+    paramArrayOfLong = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfLong;
+    }
   }
   
   @ExperimentalStdlibApi
@@ -5414,23 +5518,22 @@ public class UArraysKt___UArraysKt
     if (UByteArray.isEmpty-impl(paramArrayOfByte)) {
       return null;
     }
-    byte b1 = UByteArray.get-impl(paramArrayOfByte, 0);
+    byte b2 = UByteArray.get-impl(paramArrayOfByte, 0);
     int j = ArraysKt.getLastIndex(paramArrayOfByte);
-    if (1 <= j)
-    {
-      int i = 1;
+    int i = 1;
+    byte b1 = b2;
+    if (1 <= j) {
       for (;;)
       {
-        b1 = ((UByte)paramFunction2.invoke(UByte.box-impl(b1), UByte.box-impl(UByteArray.get-impl(paramArrayOfByte, i)))).unbox-impl();
-        b2 = b1;
+        b2 = ((UByte)paramFunction2.invoke(UByte.box-impl(b2), UByte.box-impl(UByteArray.get-impl(paramArrayOfByte, i)))).unbox-impl();
+        b1 = b2;
         if (i == j) {
           break;
         }
         i += 1;
       }
     }
-    byte b2 = b1;
-    return UByte.box-impl(b2);
+    return UByte.box-impl(b1);
   }
   
   @ExperimentalStdlibApi
@@ -5442,23 +5545,22 @@ public class UArraysKt___UArraysKt
     if (UIntArray.isEmpty-impl(paramArrayOfInt)) {
       return null;
     }
-    int j = UIntArray.get-impl(paramArrayOfInt, 0);
+    int k = UIntArray.get-impl(paramArrayOfInt, 0);
     int m = ArraysKt.getLastIndex(paramArrayOfInt);
-    if (1 <= m)
-    {
-      int i = 1;
+    int i = 1;
+    int j = k;
+    if (1 <= m) {
       for (;;)
       {
-        j = ((UInt)paramFunction2.invoke(UInt.box-impl(j), UInt.box-impl(UIntArray.get-impl(paramArrayOfInt, i)))).unbox-impl();
-        k = j;
+        k = ((UInt)paramFunction2.invoke(UInt.box-impl(k), UInt.box-impl(UIntArray.get-impl(paramArrayOfInt, i)))).unbox-impl();
+        j = k;
         if (i == m) {
           break;
         }
         i += 1;
       }
     }
-    int k = j;
-    return UInt.box-impl(k);
+    return UInt.box-impl(j);
   }
   
   @ExperimentalStdlibApi
@@ -5472,10 +5574,9 @@ public class UArraysKt___UArraysKt
     }
     long l2 = ULongArray.get-impl(paramArrayOfLong, 0);
     int j = ArraysKt.getLastIndex(paramArrayOfLong);
+    int i = 1;
     long l1 = l2;
-    if (1 <= j)
-    {
-      int i = 1;
+    if (1 <= j) {
       for (;;)
       {
         l2 = ((ULong)paramFunction2.invoke(ULong.box-impl(l2), ULong.box-impl(ULongArray.get-impl(paramArrayOfLong, i)))).unbox-impl();
@@ -5498,23 +5599,22 @@ public class UArraysKt___UArraysKt
     if (UShortArray.isEmpty-impl(paramArrayOfShort)) {
       return null;
     }
-    short s1 = UShortArray.get-impl(paramArrayOfShort, 0);
+    short s2 = UShortArray.get-impl(paramArrayOfShort, 0);
     int j = ArraysKt.getLastIndex(paramArrayOfShort);
-    if (1 <= j)
-    {
-      int i = 1;
+    int i = 1;
+    short s1 = s2;
+    if (1 <= j) {
       for (;;)
       {
-        s1 = ((UShort)paramFunction2.invoke(UShort.box-impl(s1), UShort.box-impl(UShortArray.get-impl(paramArrayOfShort, i)))).unbox-impl();
-        s2 = s1;
+        s2 = ((UShort)paramFunction2.invoke(UShort.box-impl(s2), UShort.box-impl(UShortArray.get-impl(paramArrayOfShort, i)))).unbox-impl();
+        s1 = s2;
         if (i == j) {
           break;
         }
         i += 1;
       }
     }
-    short s2 = s1;
-    return UShort.box-impl(s2);
+    return UShort.box-impl(s1);
   }
   
   @ExperimentalUnsignedTypes
@@ -5523,17 +5623,22 @@ public class UArraysKt___UArraysKt
   private static final byte reduceRight-ELGow60(@NotNull byte[] paramArrayOfByte, Function2<? super UByte, ? super UByte, UByte> paramFunction2)
   {
     int j = ArraysKt.getLastIndex(paramArrayOfByte);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int i = j - 1;
-    byte b = UByteArray.get-impl(paramArrayOfByte, j);
-    while (i >= 0)
+    if (j >= 0)
     {
-      b = ((UByte)paramFunction2.invoke(UByte.box-impl(UByteArray.get-impl(paramArrayOfByte, i)), UByte.box-impl(b))).unbox-impl();
-      i -= 1;
+      int i = j - 1;
+      byte b = UByteArray.get-impl(paramArrayOfByte, j);
+      while (i >= 0)
+      {
+        b = ((UByte)paramFunction2.invoke(UByte.box-impl(UByteArray.get-impl(paramArrayOfByte, i)), UByte.box-impl(b))).unbox-impl();
+        i -= 1;
+      }
+      return b;
     }
-    return b;
+    paramArrayOfByte = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfByte;
+    }
   }
   
   @ExperimentalUnsignedTypes
@@ -5542,17 +5647,22 @@ public class UArraysKt___UArraysKt
   private static final int reduceRight-WyvcNBI(@NotNull int[] paramArrayOfInt, Function2<? super UInt, ? super UInt, UInt> paramFunction2)
   {
     int j = ArraysKt.getLastIndex(paramArrayOfInt);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int i = j - 1;
-    j = UIntArray.get-impl(paramArrayOfInt, j);
-    while (i >= 0)
+    if (j >= 0)
     {
-      j = ((UInt)paramFunction2.invoke(UInt.box-impl(UIntArray.get-impl(paramArrayOfInt, i)), UInt.box-impl(j))).unbox-impl();
-      i -= 1;
+      int i = j - 1;
+      j = UIntArray.get-impl(paramArrayOfInt, j);
+      while (i >= 0)
+      {
+        j = ((UInt)paramFunction2.invoke(UInt.box-impl(UIntArray.get-impl(paramArrayOfInt, i)), UInt.box-impl(j))).unbox-impl();
+        i -= 1;
+      }
+      return j;
     }
-    return j;
+    paramArrayOfInt = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfInt;
+    }
   }
   
   @ExperimentalUnsignedTypes
@@ -5561,17 +5671,22 @@ public class UArraysKt___UArraysKt
   private static final long reduceRight-s8dVfGU(@NotNull long[] paramArrayOfLong, Function2<? super ULong, ? super ULong, ULong> paramFunction2)
   {
     int j = ArraysKt.getLastIndex(paramArrayOfLong);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int i = j - 1;
-    long l = ULongArray.get-impl(paramArrayOfLong, j);
-    while (i >= 0)
+    if (j >= 0)
     {
-      l = ((ULong)paramFunction2.invoke(ULong.box-impl(ULongArray.get-impl(paramArrayOfLong, i)), ULong.box-impl(l))).unbox-impl();
-      i -= 1;
+      int i = j - 1;
+      long l = ULongArray.get-impl(paramArrayOfLong, j);
+      while (i >= 0)
+      {
+        l = ((ULong)paramFunction2.invoke(ULong.box-impl(ULongArray.get-impl(paramArrayOfLong, i)), ULong.box-impl(l))).unbox-impl();
+        i -= 1;
+      }
+      return l;
     }
-    return l;
+    paramArrayOfLong = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfLong;
+    }
   }
   
   @ExperimentalUnsignedTypes
@@ -5580,17 +5695,22 @@ public class UArraysKt___UArraysKt
   private static final short reduceRight-xzaTVY8(@NotNull short[] paramArrayOfShort, Function2<? super UShort, ? super UShort, UShort> paramFunction2)
   {
     int j = ArraysKt.getLastIndex(paramArrayOfShort);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int i = j - 1;
-    short s = UShortArray.get-impl(paramArrayOfShort, j);
-    while (i >= 0)
+    if (j >= 0)
     {
-      s = ((UShort)paramFunction2.invoke(UShort.box-impl(UShortArray.get-impl(paramArrayOfShort, i)), UShort.box-impl(s))).unbox-impl();
-      i -= 1;
+      int i = j - 1;
+      short s = UShortArray.get-impl(paramArrayOfShort, j);
+      while (i >= 0)
+      {
+        s = ((UShort)paramFunction2.invoke(UShort.box-impl(UShortArray.get-impl(paramArrayOfShort, i)), UShort.box-impl(s))).unbox-impl();
+        i -= 1;
+      }
+      return s;
     }
-    return s;
+    paramArrayOfShort = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfShort;
+    }
   }
   
   @ExperimentalUnsignedTypes
@@ -5599,17 +5719,22 @@ public class UArraysKt___UArraysKt
   private static final int reduceRightIndexed-D40WMg8(@NotNull int[] paramArrayOfInt, Function3<? super Integer, ? super UInt, ? super UInt, UInt> paramFunction3)
   {
     int j = ArraysKt.getLastIndex(paramArrayOfInt);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int i = j - 1;
-    j = UIntArray.get-impl(paramArrayOfInt, j);
-    while (i >= 0)
+    if (j >= 0)
     {
-      j = ((UInt)paramFunction3.invoke(Integer.valueOf(i), UInt.box-impl(UIntArray.get-impl(paramArrayOfInt, i)), UInt.box-impl(j))).unbox-impl();
-      i -= 1;
+      int i = j - 1;
+      j = UIntArray.get-impl(paramArrayOfInt, j);
+      while (i >= 0)
+      {
+        j = ((UInt)paramFunction3.invoke(Integer.valueOf(i), UInt.box-impl(UIntArray.get-impl(paramArrayOfInt, i)), UInt.box-impl(j))).unbox-impl();
+        i -= 1;
+      }
+      return j;
     }
-    return j;
+    paramArrayOfInt = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfInt;
+    }
   }
   
   @ExperimentalUnsignedTypes
@@ -5618,17 +5743,22 @@ public class UArraysKt___UArraysKt
   private static final byte reduceRightIndexed-EOyYB1Y(@NotNull byte[] paramArrayOfByte, Function3<? super Integer, ? super UByte, ? super UByte, UByte> paramFunction3)
   {
     int j = ArraysKt.getLastIndex(paramArrayOfByte);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int i = j - 1;
-    byte b = UByteArray.get-impl(paramArrayOfByte, j);
-    while (i >= 0)
+    if (j >= 0)
     {
-      b = ((UByte)paramFunction3.invoke(Integer.valueOf(i), UByte.box-impl(UByteArray.get-impl(paramArrayOfByte, i)), UByte.box-impl(b))).unbox-impl();
-      i -= 1;
+      int i = j - 1;
+      byte b = UByteArray.get-impl(paramArrayOfByte, j);
+      while (i >= 0)
+      {
+        b = ((UByte)paramFunction3.invoke(Integer.valueOf(i), UByte.box-impl(UByteArray.get-impl(paramArrayOfByte, i)), UByte.box-impl(b))).unbox-impl();
+        i -= 1;
+      }
+      return b;
     }
-    return b;
+    paramArrayOfByte = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfByte;
+    }
   }
   
   @ExperimentalUnsignedTypes
@@ -5637,17 +5767,22 @@ public class UArraysKt___UArraysKt
   private static final short reduceRightIndexed-aLgx1Fo(@NotNull short[] paramArrayOfShort, Function3<? super Integer, ? super UShort, ? super UShort, UShort> paramFunction3)
   {
     int j = ArraysKt.getLastIndex(paramArrayOfShort);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int i = j - 1;
-    short s = UShortArray.get-impl(paramArrayOfShort, j);
-    while (i >= 0)
+    if (j >= 0)
     {
-      s = ((UShort)paramFunction3.invoke(Integer.valueOf(i), UShort.box-impl(UShortArray.get-impl(paramArrayOfShort, i)), UShort.box-impl(s))).unbox-impl();
-      i -= 1;
+      int i = j - 1;
+      short s = UShortArray.get-impl(paramArrayOfShort, j);
+      while (i >= 0)
+      {
+        s = ((UShort)paramFunction3.invoke(Integer.valueOf(i), UShort.box-impl(UShortArray.get-impl(paramArrayOfShort, i)), UShort.box-impl(s))).unbox-impl();
+        i -= 1;
+      }
+      return s;
     }
-    return s;
+    paramArrayOfShort = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfShort;
+    }
   }
   
   @ExperimentalUnsignedTypes
@@ -5656,17 +5791,22 @@ public class UArraysKt___UArraysKt
   private static final long reduceRightIndexed-z1zDJgo(@NotNull long[] paramArrayOfLong, Function3<? super Integer, ? super ULong, ? super ULong, ULong> paramFunction3)
   {
     int j = ArraysKt.getLastIndex(paramArrayOfLong);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int i = j - 1;
-    long l = ULongArray.get-impl(paramArrayOfLong, j);
-    while (i >= 0)
+    if (j >= 0)
     {
-      l = ((ULong)paramFunction3.invoke(Integer.valueOf(i), ULong.box-impl(ULongArray.get-impl(paramArrayOfLong, i)), ULong.box-impl(l))).unbox-impl();
-      i -= 1;
+      int i = j - 1;
+      long l = ULongArray.get-impl(paramArrayOfLong, j);
+      while (i >= 0)
+      {
+        l = ((ULong)paramFunction3.invoke(Integer.valueOf(i), ULong.box-impl(ULongArray.get-impl(paramArrayOfLong, i)), ULong.box-impl(l))).unbox-impl();
+        i -= 1;
+      }
+      return l;
     }
-    return l;
+    paramArrayOfLong = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfLong;
+    }
   }
   
   @ExperimentalStdlibApi
@@ -6274,34 +6414,38 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final byte single-JOV_ifY(@NotNull byte[] paramArrayOfByte, Function1<? super UByte, Boolean> paramFunction1)
   {
-    int i = 0;
     UByte localUByte = (UByte)null;
-    int k = paramArrayOfByte.length;
-    int j = 0;
-    if (j < k)
+    int m = paramArrayOfByte.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      byte b = paramArrayOfByte[j];
-      if (!((Boolean)paramFunction1.invoke(UByte.box-impl(b))).booleanValue()) {
-        break label121;
+      byte b = paramArrayOfByte[i];
+      k = j;
+      if (((Boolean)paramFunction1.invoke(UByte.box-impl(b))).booleanValue()) {
+        if (j == 0)
+        {
+          localUByte = UByte.box-impl(b);
+          k = 1;
+        }
+        else
+        {
+          throw ((Throwable)new IllegalArgumentException("Array contains more than one matching element."));
+        }
       }
-      if (i != 0) {
-        throw ((Throwable)new IllegalArgumentException("Array contains more than one matching element."));
-      }
-      localUByte = UByte.box-impl(b);
-      i = 1;
+      i += 1;
     }
-    label121:
+    if (j != 0)
+    {
+      if (localUByte != null) {
+        return localUByte.unbox-impl();
+      }
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.UByte");
+    }
+    paramArrayOfByte = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
     for (;;)
     {
-      j += 1;
-      break;
-      if (i == 0) {
-        throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
-      }
-      if (localUByte == null) {
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.UByte");
-      }
-      return localUByte.unbox-impl();
+      throw paramArrayOfByte;
     }
   }
   
@@ -6310,34 +6454,38 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final long single-MShoTSo(@NotNull long[] paramArrayOfLong, Function1<? super ULong, Boolean> paramFunction1)
   {
-    int i = 0;
     ULong localULong = (ULong)null;
-    int k = paramArrayOfLong.length;
-    int j = 0;
-    if (j < k)
+    int m = paramArrayOfLong.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      long l = paramArrayOfLong[j];
-      if (!((Boolean)paramFunction1.invoke(ULong.box-impl(l))).booleanValue()) {
-        break label119;
+      long l = paramArrayOfLong[i];
+      k = j;
+      if (((Boolean)paramFunction1.invoke(ULong.box-impl(l))).booleanValue()) {
+        if (j == 0)
+        {
+          localULong = ULong.box-impl(l);
+          k = 1;
+        }
+        else
+        {
+          throw ((Throwable)new IllegalArgumentException("Array contains more than one matching element."));
+        }
       }
-      if (i != 0) {
-        throw ((Throwable)new IllegalArgumentException("Array contains more than one matching element."));
-      }
-      localULong = ULong.box-impl(l);
-      i = 1;
+      i += 1;
     }
-    label119:
+    if (j != 0)
+    {
+      if (localULong != null) {
+        return localULong.unbox-impl();
+      }
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.ULong");
+    }
+    paramArrayOfLong = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
     for (;;)
     {
-      j += 1;
-      break;
-      if (i == 0) {
-        throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
-      }
-      if (localULong == null) {
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.ULong");
-      }
-      return localULong.unbox-impl();
+      throw paramArrayOfLong;
     }
   }
   
@@ -6354,34 +6502,38 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final int single-jgv0xPQ(@NotNull int[] paramArrayOfInt, Function1<? super UInt, Boolean> paramFunction1)
   {
-    int i = 0;
     UInt localUInt = (UInt)null;
-    int k = paramArrayOfInt.length;
-    int j = 0;
-    if (j < k)
+    int m = paramArrayOfInt.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      int m = paramArrayOfInt[j];
-      if (!((Boolean)paramFunction1.invoke(UInt.box-impl(m))).booleanValue()) {
-        break label119;
+      int n = paramArrayOfInt[i];
+      k = j;
+      if (((Boolean)paramFunction1.invoke(UInt.box-impl(n))).booleanValue()) {
+        if (j == 0)
+        {
+          localUInt = UInt.box-impl(n);
+          k = 1;
+        }
+        else
+        {
+          throw ((Throwable)new IllegalArgumentException("Array contains more than one matching element."));
+        }
       }
-      if (i != 0) {
-        throw ((Throwable)new IllegalArgumentException("Array contains more than one matching element."));
-      }
-      localUInt = UInt.box-impl(m);
-      i = 1;
+      i += 1;
     }
-    label119:
+    if (j != 0)
+    {
+      if (localUInt != null) {
+        return localUInt.unbox-impl();
+      }
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.UInt");
+    }
+    paramArrayOfInt = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
     for (;;)
     {
-      j += 1;
-      break;
-      if (i == 0) {
-        throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
-      }
-      if (localUInt == null) {
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.UInt");
-      }
-      return localUInt.unbox-impl();
+      throw paramArrayOfInt;
     }
   }
   
@@ -6398,34 +6550,38 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final short single-xTcfx_M(@NotNull short[] paramArrayOfShort, Function1<? super UShort, Boolean> paramFunction1)
   {
-    int i = 0;
     UShort localUShort = (UShort)null;
-    int k = paramArrayOfShort.length;
-    int j = 0;
-    if (j < k)
+    int m = paramArrayOfShort.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      short s = paramArrayOfShort[j];
-      if (!((Boolean)paramFunction1.invoke(UShort.box-impl(s))).booleanValue()) {
-        break label121;
+      short s = paramArrayOfShort[i];
+      k = j;
+      if (((Boolean)paramFunction1.invoke(UShort.box-impl(s))).booleanValue()) {
+        if (j == 0)
+        {
+          localUShort = UShort.box-impl(s);
+          k = 1;
+        }
+        else
+        {
+          throw ((Throwable)new IllegalArgumentException("Array contains more than one matching element."));
+        }
       }
-      if (i != 0) {
-        throw ((Throwable)new IllegalArgumentException("Array contains more than one matching element."));
-      }
-      localUShort = UShort.box-impl(s);
-      i = 1;
+      i += 1;
     }
-    label121:
+    if (j != 0)
+    {
+      if (localUShort != null) {
+        return localUShort.unbox-impl();
+      }
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.UShort");
+    }
+    paramArrayOfShort = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
     for (;;)
     {
-      j += 1;
-      break;
-      if (i == 0) {
-        throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
-      }
-      if (localUShort == null) {
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.UShort");
-      }
-      return localUShort.unbox-impl();
+      throw paramArrayOfShort;
     }
   }
   
@@ -6458,33 +6614,28 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final UByte singleOrNull-JOV_ifY(@NotNull byte[] paramArrayOfByte, Function1<? super UByte, Boolean> paramFunction1)
   {
-    int i = 0;
     UByte localUByte = (UByte)null;
-    int k = paramArrayOfByte.length;
-    int j = 0;
-    if (j < k)
+    int m = paramArrayOfByte.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      byte b = paramArrayOfByte[j];
-      if (!((Boolean)paramFunction1.invoke(UByte.box-impl(b))).booleanValue()) {
-        break label76;
+      byte b = paramArrayOfByte[i];
+      k = j;
+      if (((Boolean)paramFunction1.invoke(UByte.box-impl(b))).booleanValue())
+      {
+        if (j != 0) {
+          return null;
+        }
+        localUByte = UByte.box-impl(b);
+        k = 1;
       }
-      if (i != 0) {
-        label50:
-        return null;
-      }
-      localUByte = UByte.box-impl(b);
-      i = 1;
+      i += 1;
     }
-    label76:
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (i == 0) {
-        break label50;
-      }
-      return localUByte;
+    if (j == 0) {
+      return null;
     }
+    return localUByte;
   }
   
   @ExperimentalUnsignedTypes
@@ -6492,33 +6643,28 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final ULong singleOrNull-MShoTSo(@NotNull long[] paramArrayOfLong, Function1<? super ULong, Boolean> paramFunction1)
   {
-    int i = 0;
     ULong localULong = (ULong)null;
-    int k = paramArrayOfLong.length;
-    int j = 0;
-    if (j < k)
+    int m = paramArrayOfLong.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      long l = paramArrayOfLong[j];
-      if (!((Boolean)paramFunction1.invoke(ULong.box-impl(l))).booleanValue()) {
-        break label74;
+      long l = paramArrayOfLong[i];
+      k = j;
+      if (((Boolean)paramFunction1.invoke(ULong.box-impl(l))).booleanValue())
+      {
+        if (j != 0) {
+          return null;
+        }
+        localULong = ULong.box-impl(l);
+        k = 1;
       }
-      if (i != 0) {
-        label49:
-        return null;
-      }
-      localULong = ULong.box-impl(l);
-      i = 1;
+      i += 1;
     }
-    label74:
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (i == 0) {
-        break label49;
-      }
-      return localULong;
+    if (j == 0) {
+      return null;
     }
+    return localULong;
   }
   
   @ExperimentalUnsignedTypes
@@ -6538,33 +6684,28 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final UInt singleOrNull-jgv0xPQ(@NotNull int[] paramArrayOfInt, Function1<? super UInt, Boolean> paramFunction1)
   {
-    int i = 0;
     UInt localUInt = (UInt)null;
-    int k = paramArrayOfInt.length;
-    int j = 0;
-    if (j < k)
+    int m = paramArrayOfInt.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      int m = paramArrayOfInt[j];
-      if (!((Boolean)paramFunction1.invoke(UInt.box-impl(m))).booleanValue()) {
-        break label74;
+      int n = paramArrayOfInt[i];
+      k = j;
+      if (((Boolean)paramFunction1.invoke(UInt.box-impl(n))).booleanValue())
+      {
+        if (j != 0) {
+          return null;
+        }
+        localUInt = UInt.box-impl(n);
+        k = 1;
       }
-      if (i != 0) {
-        label49:
-        return null;
-      }
-      localUInt = UInt.box-impl(m);
-      i = 1;
+      i += 1;
     }
-    label74:
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (i == 0) {
-        break label49;
-      }
-      return localUInt;
+    if (j == 0) {
+      return null;
     }
+    return localUInt;
   }
   
   @ExperimentalUnsignedTypes
@@ -6584,33 +6725,28 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final UShort singleOrNull-xTcfx_M(@NotNull short[] paramArrayOfShort, Function1<? super UShort, Boolean> paramFunction1)
   {
-    int i = 0;
     UShort localUShort = (UShort)null;
-    int k = paramArrayOfShort.length;
-    int j = 0;
-    if (j < k)
+    int m = paramArrayOfShort.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      short s = paramArrayOfShort[j];
-      if (!((Boolean)paramFunction1.invoke(UShort.box-impl(s))).booleanValue()) {
-        break label76;
+      short s = paramArrayOfShort[i];
+      k = j;
+      if (((Boolean)paramFunction1.invoke(UShort.box-impl(s))).booleanValue())
+      {
+        if (j != 0) {
+          return null;
+        }
+        localUShort = UShort.box-impl(s);
+        k = 1;
       }
-      if (i != 0) {
-        label50:
-        return null;
-      }
-      localUShort = UShort.box-impl(s);
-      i = 1;
+      i += 1;
     }
-    label76:
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (i == 0) {
-        break label50;
-      }
-      return localUShort;
+    if (j == 0) {
+      return null;
     }
+    return localUShort;
   }
   
   @ExperimentalUnsignedTypes
@@ -7154,8 +7290,8 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final int sum-GBYM_sE(@NotNull byte[] paramArrayOfByte)
   {
-    int i = 0;
     int k = paramArrayOfByte.length;
+    int i = 0;
     int j = 0;
     while (i < k)
     {
@@ -7178,8 +7314,8 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final int sum-rL5Bavg(@NotNull short[] paramArrayOfShort)
   {
-    int i = 0;
     int k = paramArrayOfShort.length;
+    int i = 0;
     int j = 0;
     while (i < k)
     {
@@ -7199,7 +7335,7 @@ public class UArraysKt___UArraysKt
     int j = 0;
     while (i < k)
     {
-      j = UInt.constructor-impl(((UInt)paramFunction1.invoke(UByte.box-impl(paramArrayOfByte[i]))).unbox-impl() + j);
+      j = UInt.constructor-impl(j + ((UInt)paramFunction1.invoke(UByte.box-impl(paramArrayOfByte[i]))).unbox-impl());
       i += 1;
     }
     return j;
@@ -7215,7 +7351,7 @@ public class UArraysKt___UArraysKt
     int j = 0;
     while (i < k)
     {
-      j = UInt.constructor-impl(((UInt)paramFunction1.invoke(ULong.box-impl(paramArrayOfLong[i]))).unbox-impl() + j);
+      j = UInt.constructor-impl(j + ((UInt)paramFunction1.invoke(ULong.box-impl(paramArrayOfLong[i]))).unbox-impl());
       i += 1;
     }
     return j;
@@ -7231,7 +7367,7 @@ public class UArraysKt___UArraysKt
     int j = 0;
     while (i < k)
     {
-      j = UInt.constructor-impl(((UInt)paramFunction1.invoke(UInt.box-impl(paramArrayOfInt[i]))).unbox-impl() + j);
+      j = UInt.constructor-impl(j + ((UInt)paramFunction1.invoke(UInt.box-impl(paramArrayOfInt[i]))).unbox-impl());
       i += 1;
     }
     return j;
@@ -7247,7 +7383,7 @@ public class UArraysKt___UArraysKt
     int j = 0;
     while (i < k)
     {
-      j = UInt.constructor-impl(((UInt)paramFunction1.invoke(UShort.box-impl(paramArrayOfShort[i]))).unbox-impl() + j);
+      j = UInt.constructor-impl(j + ((UInt)paramFunction1.invoke(UShort.box-impl(paramArrayOfShort[i]))).unbox-impl());
       i += 1;
     }
     return j;
@@ -7258,8 +7394,8 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final double sumByDouble-JOV_ifY(@NotNull byte[] paramArrayOfByte, Function1<? super UByte, Double> paramFunction1)
   {
-    double d = 0.0D;
     int j = paramArrayOfByte.length;
+    double d = 0.0D;
     int i = 0;
     while (i < j)
     {
@@ -7274,8 +7410,8 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final double sumByDouble-MShoTSo(@NotNull long[] paramArrayOfLong, Function1<? super ULong, Double> paramFunction1)
   {
-    double d = 0.0D;
     int j = paramArrayOfLong.length;
+    double d = 0.0D;
     int i = 0;
     while (i < j)
     {
@@ -7290,8 +7426,8 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final double sumByDouble-jgv0xPQ(@NotNull int[] paramArrayOfInt, Function1<? super UInt, Double> paramFunction1)
   {
-    double d = 0.0D;
     int j = paramArrayOfInt.length;
+    double d = 0.0D;
     int i = 0;
     while (i < j)
     {
@@ -7306,8 +7442,8 @@ public class UArraysKt___UArraysKt
   @InlineOnly
   private static final double sumByDouble-xTcfx_M(@NotNull short[] paramArrayOfShort, Function1<? super UShort, Double> paramFunction1)
   {
-    double d = 0.0D;
     int j = paramArrayOfShort.length;
+    double d = 0.0D;
     int i = 0;
     while (i < j)
     {
@@ -7322,9 +7458,9 @@ public class UArraysKt___UArraysKt
   @JvmName(name="sumOfUByte")
   public static final int sumOfUByte(@NotNull UByte[] paramArrayOfUByte)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfUByte, "$this$sum");
     int k = paramArrayOfUByte.length;
+    int i = 0;
     int j = 0;
     while (i < k)
     {
@@ -7339,9 +7475,9 @@ public class UArraysKt___UArraysKt
   @JvmName(name="sumOfUInt")
   public static final int sumOfUInt(@NotNull UInt[] paramArrayOfUInt)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfUInt, "$this$sum");
     int k = paramArrayOfUInt.length;
+    int i = 0;
     int j = 0;
     while (i < k)
     {
@@ -7357,8 +7493,8 @@ public class UArraysKt___UArraysKt
   public static final long sumOfULong(@NotNull ULong[] paramArrayOfULong)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfULong, "$this$sum");
-    long l = 0L;
     int j = paramArrayOfULong.length;
+    long l = 0L;
     int i = 0;
     while (i < j)
     {
@@ -7373,9 +7509,9 @@ public class UArraysKt___UArraysKt
   @JvmName(name="sumOfUShort")
   public static final int sumOfUShort(@NotNull UShort[] paramArrayOfUShort)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfUShort, "$this$sum");
     int k = paramArrayOfUShort.length;
+    int i = 0;
     int j = 0;
     while (i < k)
     {
@@ -7390,38 +7526,48 @@ public class UArraysKt___UArraysKt
   @NotNull
   public static final List<UByte> take-PpDY95g(@NotNull byte[] paramArrayOfByte, int paramInt)
   {
-    int k = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$take");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int k = 0;
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    if (paramInt >= UByteArray.getSize-impl(paramArrayOfByte)) {
-      return CollectionsKt.toList(UByteArray.box-impl(paramArrayOfByte));
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(UByte.box-impl(UByteArray.get-impl(paramArrayOfByte, 0)));
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    int m = paramArrayOfByte.length;
-    int j = 0;
-    i = k;
-    for (;;)
+    if (i != 0)
     {
-      if (i < m)
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
+      }
+      if (paramInt >= UByteArray.getSize-impl(paramArrayOfByte)) {
+        return CollectionsKt.toList(UByteArray.box-impl(paramArrayOfByte));
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(UByte.box-impl(UByteArray.get-impl(paramArrayOfByte, 0)));
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      int m = paramArrayOfByte.length;
+      int j = 0;
+      i = k;
+      while (i < m)
       {
         localArrayList.add(UByte.box-impl(paramArrayOfByte[i]));
         j += 1;
-        if (j != paramInt) {}
+        if (j == paramInt) {
+          break;
+        }
+        i += 1;
       }
-      else
-      {
-        return (List)localArrayList;
-      }
-      i += 1;
+      return (List)localArrayList;
+    }
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("Requested element count ");
+    paramArrayOfByte.append(paramInt);
+    paramArrayOfByte.append(" is less than zero.");
+    paramArrayOfByte = (Throwable)new IllegalArgumentException(paramArrayOfByte.toString().toString());
+    for (;;)
+    {
+      throw paramArrayOfByte;
     }
   }
   
@@ -7430,38 +7576,48 @@ public class UArraysKt___UArraysKt
   @NotNull
   public static final List<UShort> take-nggk6HY(@NotNull short[] paramArrayOfShort, int paramInt)
   {
-    int k = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$take");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int k = 0;
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    if (paramInt >= UShortArray.getSize-impl(paramArrayOfShort)) {
-      return CollectionsKt.toList(UShortArray.box-impl(paramArrayOfShort));
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(UShort.box-impl(UShortArray.get-impl(paramArrayOfShort, 0)));
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    int m = paramArrayOfShort.length;
-    int j = 0;
-    i = k;
-    for (;;)
+    if (i != 0)
     {
-      if (i < m)
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
+      }
+      if (paramInt >= UShortArray.getSize-impl(paramArrayOfShort)) {
+        return CollectionsKt.toList(UShortArray.box-impl(paramArrayOfShort));
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(UShort.box-impl(UShortArray.get-impl(paramArrayOfShort, 0)));
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      int m = paramArrayOfShort.length;
+      int j = 0;
+      i = k;
+      while (i < m)
       {
         localArrayList.add(UShort.box-impl(paramArrayOfShort[i]));
         j += 1;
-        if (j != paramInt) {}
+        if (j == paramInt) {
+          break;
+        }
+        i += 1;
       }
-      else
-      {
-        return (List)localArrayList;
-      }
-      i += 1;
+      return (List)localArrayList;
+    }
+    paramArrayOfShort = new StringBuilder();
+    paramArrayOfShort.append("Requested element count ");
+    paramArrayOfShort.append(paramInt);
+    paramArrayOfShort.append(" is less than zero.");
+    paramArrayOfShort = (Throwable)new IllegalArgumentException(paramArrayOfShort.toString().toString());
+    for (;;)
+    {
+      throw paramArrayOfShort;
     }
   }
   
@@ -7470,38 +7626,48 @@ public class UArraysKt___UArraysKt
   @NotNull
   public static final List<UInt> take-qFRl0hI(@NotNull int[] paramArrayOfInt, int paramInt)
   {
-    int k = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$take");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int k = 0;
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    if (paramInt >= UIntArray.getSize-impl(paramArrayOfInt)) {
-      return CollectionsKt.toList(UIntArray.box-impl(paramArrayOfInt));
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(UInt.box-impl(UIntArray.get-impl(paramArrayOfInt, 0)));
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    int m = paramArrayOfInt.length;
-    int j = 0;
-    i = k;
-    for (;;)
+    if (i != 0)
     {
-      if (i < m)
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
+      }
+      if (paramInt >= UIntArray.getSize-impl(paramArrayOfInt)) {
+        return CollectionsKt.toList(UIntArray.box-impl(paramArrayOfInt));
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(UInt.box-impl(UIntArray.get-impl(paramArrayOfInt, 0)));
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      int m = paramArrayOfInt.length;
+      int j = 0;
+      i = k;
+      while (i < m)
       {
         localArrayList.add(UInt.box-impl(paramArrayOfInt[i]));
         j += 1;
-        if (j != paramInt) {}
+        if (j == paramInt) {
+          break;
+        }
+        i += 1;
       }
-      else
-      {
-        return (List)localArrayList;
-      }
-      i += 1;
+      return (List)localArrayList;
+    }
+    paramArrayOfInt = new StringBuilder();
+    paramArrayOfInt.append("Requested element count ");
+    paramArrayOfInt.append(paramInt);
+    paramArrayOfInt.append(" is less than zero.");
+    paramArrayOfInt = (Throwable)new IllegalArgumentException(paramArrayOfInt.toString().toString());
+    for (;;)
+    {
+      throw paramArrayOfInt;
     }
   }
   
@@ -7510,38 +7676,48 @@ public class UArraysKt___UArraysKt
   @NotNull
   public static final List<ULong> take-r7IrZao(@NotNull long[] paramArrayOfLong, int paramInt)
   {
-    int k = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$take");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int k = 0;
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    if (paramInt >= ULongArray.getSize-impl(paramArrayOfLong)) {
-      return CollectionsKt.toList(ULongArray.box-impl(paramArrayOfLong));
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(ULong.box-impl(ULongArray.get-impl(paramArrayOfLong, 0)));
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    int m = paramArrayOfLong.length;
-    int j = 0;
-    i = k;
-    for (;;)
+    if (i != 0)
     {
-      if (i < m)
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
+      }
+      if (paramInt >= ULongArray.getSize-impl(paramArrayOfLong)) {
+        return CollectionsKt.toList(ULongArray.box-impl(paramArrayOfLong));
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(ULong.box-impl(ULongArray.get-impl(paramArrayOfLong, 0)));
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      int m = paramArrayOfLong.length;
+      int j = 0;
+      i = k;
+      while (i < m)
       {
         localArrayList.add(ULong.box-impl(paramArrayOfLong[i]));
         j += 1;
-        if (j != paramInt) {}
+        if (j == paramInt) {
+          break;
+        }
+        i += 1;
       }
-      else
-      {
-        return (List)localArrayList;
-      }
-      i += 1;
+      return (List)localArrayList;
+    }
+    paramArrayOfLong = new StringBuilder();
+    paramArrayOfLong.append("Requested element count ");
+    paramArrayOfLong.append(paramInt);
+    paramArrayOfLong.append(" is less than zero.");
+    paramArrayOfLong = (Throwable)new IllegalArgumentException(paramArrayOfLong.toString().toString());
+    for (;;)
+    {
+      throw paramArrayOfLong;
     }
   }
   
@@ -7551,28 +7727,42 @@ public class UArraysKt___UArraysKt
   public static final List<UByte> takeLast-PpDY95g(@NotNull byte[] paramArrayOfByte, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$takeLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    i = UByteArray.getSize-impl(paramArrayOfByte);
-    if (paramInt >= i) {
-      return CollectionsKt.toList(UByteArray.box-impl(paramArrayOfByte));
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(UByte.box-impl(UByteArray.get-impl(paramArrayOfByte, i - 1)));
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    paramInt = i - paramInt;
-    while (paramInt < i)
+    if (i != 0)
     {
-      localArrayList.add(UByte.box-impl(UByteArray.get-impl(paramArrayOfByte, paramInt)));
-      paramInt += 1;
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
+      }
+      i = UByteArray.getSize-impl(paramArrayOfByte);
+      if (paramInt >= i) {
+        return CollectionsKt.toList(UByteArray.box-impl(paramArrayOfByte));
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(UByte.box-impl(UByteArray.get-impl(paramArrayOfByte, i - 1)));
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      paramInt = i - paramInt;
+      while (paramInt < i)
+      {
+        localArrayList.add(UByte.box-impl(UByteArray.get-impl(paramArrayOfByte, paramInt)));
+        paramInt += 1;
+      }
+      return (List)localArrayList;
     }
-    return (List)localArrayList;
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("Requested element count ");
+    paramArrayOfByte.append(paramInt);
+    paramArrayOfByte.append(" is less than zero.");
+    paramArrayOfByte = (Throwable)new IllegalArgumentException(paramArrayOfByte.toString().toString());
+    for (;;)
+    {
+      throw paramArrayOfByte;
+    }
   }
   
   @ExperimentalUnsignedTypes
@@ -7581,28 +7771,42 @@ public class UArraysKt___UArraysKt
   public static final List<UShort> takeLast-nggk6HY(@NotNull short[] paramArrayOfShort, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$takeLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    i = UShortArray.getSize-impl(paramArrayOfShort);
-    if (paramInt >= i) {
-      return CollectionsKt.toList(UShortArray.box-impl(paramArrayOfShort));
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(UShort.box-impl(UShortArray.get-impl(paramArrayOfShort, i - 1)));
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    paramInt = i - paramInt;
-    while (paramInt < i)
+    if (i != 0)
     {
-      localArrayList.add(UShort.box-impl(UShortArray.get-impl(paramArrayOfShort, paramInt)));
-      paramInt += 1;
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
+      }
+      i = UShortArray.getSize-impl(paramArrayOfShort);
+      if (paramInt >= i) {
+        return CollectionsKt.toList(UShortArray.box-impl(paramArrayOfShort));
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(UShort.box-impl(UShortArray.get-impl(paramArrayOfShort, i - 1)));
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      paramInt = i - paramInt;
+      while (paramInt < i)
+      {
+        localArrayList.add(UShort.box-impl(UShortArray.get-impl(paramArrayOfShort, paramInt)));
+        paramInt += 1;
+      }
+      return (List)localArrayList;
     }
-    return (List)localArrayList;
+    paramArrayOfShort = new StringBuilder();
+    paramArrayOfShort.append("Requested element count ");
+    paramArrayOfShort.append(paramInt);
+    paramArrayOfShort.append(" is less than zero.");
+    paramArrayOfShort = (Throwable)new IllegalArgumentException(paramArrayOfShort.toString().toString());
+    for (;;)
+    {
+      throw paramArrayOfShort;
+    }
   }
   
   @ExperimentalUnsignedTypes
@@ -7611,28 +7815,42 @@ public class UArraysKt___UArraysKt
   public static final List<UInt> takeLast-qFRl0hI(@NotNull int[] paramArrayOfInt, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$takeLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    i = UIntArray.getSize-impl(paramArrayOfInt);
-    if (paramInt >= i) {
-      return CollectionsKt.toList(UIntArray.box-impl(paramArrayOfInt));
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(UInt.box-impl(UIntArray.get-impl(paramArrayOfInt, i - 1)));
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    paramInt = i - paramInt;
-    while (paramInt < i)
+    if (i != 0)
     {
-      localArrayList.add(UInt.box-impl(UIntArray.get-impl(paramArrayOfInt, paramInt)));
-      paramInt += 1;
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
+      }
+      i = UIntArray.getSize-impl(paramArrayOfInt);
+      if (paramInt >= i) {
+        return CollectionsKt.toList(UIntArray.box-impl(paramArrayOfInt));
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(UInt.box-impl(UIntArray.get-impl(paramArrayOfInt, i - 1)));
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      paramInt = i - paramInt;
+      while (paramInt < i)
+      {
+        localArrayList.add(UInt.box-impl(UIntArray.get-impl(paramArrayOfInt, paramInt)));
+        paramInt += 1;
+      }
+      return (List)localArrayList;
     }
-    return (List)localArrayList;
+    paramArrayOfInt = new StringBuilder();
+    paramArrayOfInt.append("Requested element count ");
+    paramArrayOfInt.append(paramInt);
+    paramArrayOfInt.append(" is less than zero.");
+    paramArrayOfInt = (Throwable)new IllegalArgumentException(paramArrayOfInt.toString().toString());
+    for (;;)
+    {
+      throw paramArrayOfInt;
+    }
   }
   
   @ExperimentalUnsignedTypes
@@ -7641,28 +7859,42 @@ public class UArraysKt___UArraysKt
   public static final List<ULong> takeLast-r7IrZao(@NotNull long[] paramArrayOfLong, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$takeLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    i = ULongArray.getSize-impl(paramArrayOfLong);
-    if (paramInt >= i) {
-      return CollectionsKt.toList(ULongArray.box-impl(paramArrayOfLong));
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(ULong.box-impl(ULongArray.get-impl(paramArrayOfLong, i - 1)));
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    paramInt = i - paramInt;
-    while (paramInt < i)
+    if (i != 0)
     {
-      localArrayList.add(ULong.box-impl(ULongArray.get-impl(paramArrayOfLong, paramInt)));
-      paramInt += 1;
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
+      }
+      i = ULongArray.getSize-impl(paramArrayOfLong);
+      if (paramInt >= i) {
+        return CollectionsKt.toList(ULongArray.box-impl(paramArrayOfLong));
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(ULong.box-impl(ULongArray.get-impl(paramArrayOfLong, i - 1)));
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      paramInt = i - paramInt;
+      while (paramInt < i)
+      {
+        localArrayList.add(ULong.box-impl(ULongArray.get-impl(paramArrayOfLong, paramInt)));
+        paramInt += 1;
+      }
+      return (List)localArrayList;
     }
-    return (List)localArrayList;
+    paramArrayOfLong = new StringBuilder();
+    paramArrayOfLong.append("Requested element count ");
+    paramArrayOfLong.append(paramInt);
+    paramArrayOfLong.append(" is less than zero.");
+    paramArrayOfLong = (Throwable)new IllegalArgumentException(paramArrayOfLong.toString().toString());
+    for (;;)
+    {
+      throw paramArrayOfLong;
+    }
   }
   
   @ExperimentalUnsignedTypes
@@ -7737,21 +7969,16 @@ public class UArraysKt___UArraysKt
     ArrayList localArrayList = new ArrayList();
     int j = paramArrayOfByte.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      byte b;
-      if (i < j)
-      {
-        b = paramArrayOfByte[i];
-        if (((Boolean)paramFunction1.invoke(UByte.box-impl(b))).booleanValue()) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      byte b = paramArrayOfByte[i];
+      if (!((Boolean)paramFunction1.invoke(UByte.box-impl(b))).booleanValue()) {
+        break;
       }
       localArrayList.add(UByte.box-impl(b));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @ExperimentalUnsignedTypes
@@ -7762,21 +7989,16 @@ public class UArraysKt___UArraysKt
     ArrayList localArrayList = new ArrayList();
     int j = paramArrayOfLong.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      long l;
-      if (i < j)
-      {
-        l = paramArrayOfLong[i];
-        if (((Boolean)paramFunction1.invoke(ULong.box-impl(l))).booleanValue()) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      long l = paramArrayOfLong[i];
+      if (!((Boolean)paramFunction1.invoke(ULong.box-impl(l))).booleanValue()) {
+        break;
       }
       localArrayList.add(ULong.box-impl(l));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @ExperimentalUnsignedTypes
@@ -7787,21 +8009,16 @@ public class UArraysKt___UArraysKt
     ArrayList localArrayList = new ArrayList();
     int j = paramArrayOfInt.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      int k;
-      if (i < j)
-      {
-        k = paramArrayOfInt[i];
-        if (((Boolean)paramFunction1.invoke(UInt.box-impl(k))).booleanValue()) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      int k = paramArrayOfInt[i];
+      if (!((Boolean)paramFunction1.invoke(UInt.box-impl(k))).booleanValue()) {
+        break;
       }
       localArrayList.add(UInt.box-impl(k));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @ExperimentalUnsignedTypes
@@ -7812,21 +8029,16 @@ public class UArraysKt___UArraysKt
     ArrayList localArrayList = new ArrayList();
     int j = paramArrayOfShort.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      short s;
-      if (i < j)
-      {
-        s = paramArrayOfShort[i];
-        if (((Boolean)paramFunction1.invoke(UShort.box-impl(s))).booleanValue()) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      short s = paramArrayOfShort[i];
+      if (!((Boolean)paramFunction1.invoke(UShort.box-impl(s))).booleanValue()) {
+        break;
       }
       localArrayList.add(UShort.box-impl(s));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @ExperimentalUnsignedTypes
@@ -8088,23 +8300,18 @@ public class UArraysKt___UArraysKt
   {
     int j = UIntArray.getSize-impl(paramArrayOfInt);
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(paramFunction2.invoke(UInt.box-impl(UIntArray.get-impl(paramArrayOfInt, i)), localObject));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @ExperimentalUnsignedTypes
@@ -8152,23 +8359,18 @@ public class UArraysKt___UArraysKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "other");
     int j = ULongArray.getSize-impl(paramArrayOfLong);
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(TuplesKt.to(ULong.box-impl(ULongArray.get-impl(paramArrayOfLong, i)), localObject));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @ExperimentalUnsignedTypes
@@ -8180,23 +8382,18 @@ public class UArraysKt___UArraysKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "other");
     int j = UIntArray.getSize-impl(paramArrayOfInt);
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(TuplesKt.to(UInt.box-impl(UIntArray.get-impl(paramArrayOfInt, i)), localObject));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @ExperimentalUnsignedTypes
@@ -8224,23 +8421,18 @@ public class UArraysKt___UArraysKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "other");
     int j = UShortArray.getSize-impl(paramArrayOfShort);
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(TuplesKt.to(UShort.box-impl(UShortArray.get-impl(paramArrayOfShort, i)), localObject));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @ExperimentalUnsignedTypes
@@ -8252,23 +8444,18 @@ public class UArraysKt___UArraysKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "other");
     int j = UByteArray.getSize-impl(paramArrayOfByte);
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(TuplesKt.to(UByte.box-impl(UByteArray.get-impl(paramArrayOfByte, i)), localObject));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @ExperimentalUnsignedTypes
@@ -8326,23 +8513,18 @@ public class UArraysKt___UArraysKt
   {
     int j = ULongArray.getSize-impl(paramArrayOfLong);
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(paramFunction2.invoke(ULong.box-impl(ULongArray.get-impl(paramArrayOfLong, i)), localObject));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @ExperimentalUnsignedTypes
@@ -8352,23 +8534,18 @@ public class UArraysKt___UArraysKt
   {
     int j = UByteArray.getSize-impl(paramArrayOfByte);
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(paramFunction2.invoke(UByte.box-impl(UByteArray.get-impl(paramArrayOfByte, i)), localObject));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @ExperimentalUnsignedTypes
@@ -8466,23 +8643,18 @@ public class UArraysKt___UArraysKt
   {
     int j = UShortArray.getSize-impl(paramArrayOfShort);
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(paramFunction2.invoke(UShort.box-impl(UShortArray.get-impl(paramArrayOfShort, i)), localObject));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @ExperimentalUnsignedTypes
@@ -8587,7 +8759,7 @@ public class UArraysKt___UArraysKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.collections.unsigned.UArraysKt___UArraysKt
  * JD-Core Version:    0.7.0.1
  */

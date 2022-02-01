@@ -20,12 +20,17 @@ public class AppMainService
   {
     String str = paramIntent.getStringExtra("mini_process_name");
     paramIntent = (Messenger)paramIntent.getParcelableExtra("mini_process_messenger");
-    QMLog.i("AppMainService", "AppBrandMainService Service Binded. pName=" + str + " messenger:" + paramIntent);
-    IMiniServer localIMiniServer = AppLoaderFactory.g().getMiniServer();
-    if (localIMiniServer != null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("AppBrandMainService Service Binded. pName=");
+    ((StringBuilder)localObject).append(str);
+    ((StringBuilder)localObject).append(" messenger:");
+    ((StringBuilder)localObject).append(paramIntent);
+    QMLog.i("AppMainService", ((StringBuilder)localObject).toString());
+    localObject = AppLoaderFactory.g().getMiniServer();
+    if (localObject != null)
     {
-      localIMiniServer.registerClientMessenger(str, paramIntent);
-      return localIMiniServer.getBinder();
+      ((IMiniServer)localObject).registerClientMessenger(str, paramIntent);
+      return ((IMiniServer)localObject).getBinder();
     }
     return null;
   }
@@ -57,7 +62,7 @@ public class AppMainService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.AppMainService
  * JD-Core Version:    0.7.0.1
  */

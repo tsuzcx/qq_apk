@@ -17,15 +17,6 @@ class BaseTroopAioMsgNavigateBarDelegate$Entity
     this.jdField_b_of_type_JavaLangObject = null;
   }
   
-  public BaseTroopAioMsgNavigateBarDelegate$Entity(boolean paramBoolean, String paramString1, Object paramObject1, String paramString2, Object paramObject2)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaLangObject = paramObject1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_JavaLangObject = paramObject2;
-  }
-  
   public Object a()
   {
     return this.jdField_a_of_type_JavaLangObject;
@@ -53,12 +44,20 @@ class BaseTroopAioMsgNavigateBarDelegate$Entity
   
   public String toString()
   {
-    return "Entity{show=" + this.jdField_a_of_type_Boolean + ", wording='" + this.jdField_a_of_type_JavaLangString + ", senderUin='" + this.jdField_b_of_type_JavaLangString + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Entity{show=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", wording='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", senderUin='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.navigatebar.BaseTroopAioMsgNavigateBarDelegate.Entity
  * JD-Core Version:    0.7.0.1
  */

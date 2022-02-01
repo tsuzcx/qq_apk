@@ -16,6 +16,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.ilive.base.event.ModuleEvent;
 import com.tencent.ilive.enginemanager.BizEngineMgr;
 import com.tencent.ilive.litepages.room.webmodule.js.AppJavascriptInterface;
 import com.tencent.ilive.litepages.room.webmodule.js.MiscJavascriptInterface;
@@ -24,19 +25,23 @@ import com.tencent.ilive.litepages.room.webmodule.js.UIJavascriptInterface;
 import com.tencent.ilive.litepages.room.webmodule.jsmodule.JsBizAdapter;
 import com.tencent.livesdk.accountengine.UserEngine;
 import com.tencent.livesdk.accountengine.UserInitStateCallback;
+import com.tencent.mobileqq.litelivesdk.api.business.BusinessConfig;
 import com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.LiteLiveJsProvider;
 import com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.WebCookieManager;
 import com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.js.LiteAppJs;
 import com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.js.LiteAppJs.OnRefreshTokenListener;
 import com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.js.LiteUIJs;
+import com.tencent.mobileqq.litelivesdk.framework.businessmgr.BusinessManager;
 import com.tencent.mobileqq.litelivesdk.utils.DeviceUtils;
 import com.tencent.mobileqq.litelivesdk.utils.network.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.webview.dtwebview.DtX5WebView;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -46,6 +51,7 @@ public abstract class BaseWebDialogFragment
   protected Dialog a;
   private DialogInterface.OnDismissListener jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener;
   protected FrameLayout a;
+  protected ModuleEvent a;
   protected JsBizAdapter a;
   protected UserEngine a;
   private UserInitStateCallback jdField_a_of_type_ComTencentLivesdkAccountengineUserInitStateCallback = new BaseWebDialogFragment.2(this);
@@ -66,10 +72,11 @@ public abstract class BaseWebDialogFragment
   
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentLivesdkAccountengineUserEngine == null) {
+    UserEngine localUserEngine = this.jdField_a_of_type_ComTencentLivesdkAccountengineUserEngine;
+    if (localUserEngine == null) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentLivesdkAccountengineUserEngine.loginSuccess())
+    if (localUserEngine.loginSuccess())
     {
       QLog.i("BaseWebDialogFragment", 1, "initLogin has loginSuccess");
       b();
@@ -84,17 +91,14 @@ public abstract class BaseWebDialogFragment
     Object localObject1 = Uri.parse(paramString);
     HashMap localHashMap = new HashMap();
     Object localObject2 = ((Uri)localObject1).getQueryParameterNames().iterator();
-    if (((Iterator)localObject2).hasNext())
+    while (((Iterator)localObject2).hasNext())
     {
       String str = (String)((Iterator)localObject2).next();
       paramString = ((Uri)localObject1).getQueryParameter(str);
-      if (paramString != null) {}
-      for (;;)
-      {
-        localHashMap.put(str, paramString);
-        break;
+      if (paramString == null) {
         paramString = "";
       }
+      localHashMap.put(str, paramString);
     }
     localObject2 = ((Uri)localObject1).getAuthority();
     localObject1 = ((Uri)localObject1).getPath();
@@ -110,27 +114,44 @@ public abstract class BaseWebDialogFragment
     WebCookieManager.a().a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString);
     WebCookieManager.a().a(BaseApplicationImpl.getContext(), "https://yutang.qq.com/");
     WebCookieManager.a().a(BaseApplicationImpl.getContext(), "https://ilive.qq.com/");
-    WebCookieManager.a().a(BaseApplicationImpl.getContext(), "https://now.qq.com/");
+    if ((BusinessManager.a.a() != null) && (BusinessManager.a.a().a != null))
+    {
+      Iterator localIterator = BusinessManager.a.a().a.iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        WebCookieManager.a().a(BaseApplicationImpl.getContext(), str);
+      }
+    }
     this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter.callJsFunctionByNative("__WEBVIEW_RELOADCOOKIES", null, null);
   }
   
   private void c()
   {
     WebSettings localWebSettings = this.jdField_a_of_type_ComTencentSmttSdkWebView.getSettings();
-    if (localWebSettings == null) {}
-    String str1;
-    do
-    {
+    if (localWebSettings == null) {
       return;
-      localWebSettings.setAppCacheEnabled(false);
-      localWebSettings.setJavaScriptEnabled(true);
-      localWebSettings.setDomStorageEnabled(true);
-      str1 = localWebSettings.getUserAgentString();
-    } while (str1.contains("NowSDK/"));
-    int i = DeviceUtils.a();
-    String str2 = Build.VERSION.RELEASE;
-    int j = NetworkUtil.a(BaseApplicationImpl.getContext());
-    localWebSettings.setUserAgentString(str1 + " NowLive/" + i + "_" + str2 + " NetType/" + j + " NowSDK/18_10.20");
+    }
+    localWebSettings.setAppCacheEnabled(false);
+    localWebSettings.setJavaScriptEnabled(true);
+    localWebSettings.setDomStorageEnabled(true);
+    String str1 = localWebSettings.getUserAgentString();
+    if (!str1.contains("NowSDK/"))
+    {
+      int i = DeviceUtils.a();
+      String str2 = Build.VERSION.RELEASE;
+      int j = NetworkUtil.a(BaseApplicationImpl.getContext());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str1);
+      localStringBuilder.append(" NowLive/");
+      localStringBuilder.append(i);
+      localStringBuilder.append("_");
+      localStringBuilder.append(str2);
+      localStringBuilder.append(" NetType/");
+      localStringBuilder.append(j);
+      localStringBuilder.append(" NowSDK/18_10.20");
+      localWebSettings.setUserAgentString(localStringBuilder.toString());
+    }
   }
   
   public abstract int a();
@@ -145,6 +166,11 @@ public abstract class BaseWebDialogFragment
   }
   
   public abstract void a(View paramView);
+  
+  public void a(ModuleEvent paramModuleEvent)
+  {
+    this.jdField_a_of_type_ComTencentIliveBaseEventModuleEvent = paramModuleEvent;
+  }
   
   public abstract FrameLayout b(View paramView);
   
@@ -184,31 +210,29 @@ public abstract class BaseWebDialogFragment
       this.jdField_a_of_type_JavaLangString = paramBundle.getString("url");
       this.jdField_b_of_type_Boolean = paramBundle.getBoolean("mPreload");
     }
-    setStyle(1, 2131755690);
+    setStyle(1, 2131756037);
   }
   
   public final View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramViewGroup = null;
     Log.i("BaseWebDialogFragment", "into onCreateView");
     int i = a();
+    paramViewGroup = null;
     if (i == 0)
     {
       Log.e("BaseWebDialogFragment", "layout id is cannot 0");
       paramLayoutInflater = paramViewGroup;
     }
-    for (;;)
+    else
     {
-      AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
-      return paramLayoutInflater;
       paramLayoutInflater = paramLayoutInflater.inflate(i, null);
       this.jdField_a_of_type_AndroidWidgetFrameLayout = a(paramLayoutInflater);
       this.jdField_b_of_type_AndroidWidgetFrameLayout = b(paramLayoutInflater);
       a(paramLayoutInflater);
       if (this.jdField_a_of_type_AndroidWidgetFrameLayout == null) {
-        throw new IllegalArgumentException("web container is cannot null");
+        break label362;
       }
-      this.jdField_a_of_type_ComTencentSmttSdkWebView = new WebView(getContext());
+      this.jdField_a_of_type_ComTencentSmttSdkWebView = new DtX5WebView(getContext());
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentSmttSdkWebView, new FrameLayout.LayoutParams(-1, -1));
       c();
       this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
@@ -232,6 +256,10 @@ public abstract class BaseWebDialogFragment
       a();
       Log.i("InfoWebViewDialog", "onCreateView end");
     }
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
+    label362:
+    throw new IllegalArgumentException("web container is cannot null");
   }
   
   public void onDestroy()
@@ -249,11 +277,13 @@ public abstract class BaseWebDialogFragment
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebChromeClient(null);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.clearCache(true);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.clearHistory();
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(this.jdField_a_of_type_AndroidAppDialog);
+    Object localObject = this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener;
+    if (localObject != null) {
+      ((DialogInterface.OnDismissListener)localObject).onDismiss(this.jdField_a_of_type_AndroidAppDialog);
     }
-    if (this.jdField_a_of_type_ComTencentLivesdkAccountengineUserEngine != null) {
-      this.jdField_a_of_type_ComTencentLivesdkAccountengineUserEngine.removeUserInitCallback(this.jdField_a_of_type_ComTencentLivesdkAccountengineUserInitStateCallback);
+    localObject = this.jdField_a_of_type_ComTencentLivesdkAccountengineUserEngine;
+    if (localObject != null) {
+      ((UserEngine)localObject).removeUserInitCallback(this.jdField_a_of_type_ComTencentLivesdkAccountengineUserInitStateCallback);
     }
   }
   
@@ -314,7 +344,7 @@ public abstract class BaseWebDialogFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.dialog.BaseWebDialogFragment
  * JD-Core Version:    0.7.0.1
  */

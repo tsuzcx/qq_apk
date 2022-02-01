@@ -15,22 +15,33 @@ class TroopManager$TmiCallBackForTroopMemberNewLevel
   
   public void a(TroopMemberInfo paramTroopMemberInfo)
   {
-    if ((paramTroopMemberInfo == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.b)) || (!this.jdField_a_of_type_JavaLangString.equals(paramTroopMemberInfo.memberuin))) {
-      return;
+    if ((paramTroopMemberInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)))
+    {
+      if (!this.jdField_a_of_type_JavaLangString.equals(paramTroopMemberInfo.memberuin)) {
+        return;
+      }
+      paramTroopMemberInfo.newRealLevel = this.jdField_a_of_type_Int;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("newRealLevel:");
+        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(",troopUin : ");
+        localStringBuilder.append(this.b);
+        localStringBuilder.append(",memberUin");
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        QLog.d("Q.contacttab.", 2, localStringBuilder.toString());
+      }
+      if (paramTroopMemberInfo.getStatus() == 1000) {
+        this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.b, this.jdField_a_of_type_JavaLangString, paramTroopMemberInfo);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.b, this.jdField_a_of_type_JavaLangString, paramTroopMemberInfo);
     }
-    paramTroopMemberInfo.newRealLevel = this.jdField_a_of_type_Int;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.", 2, "newRealLevel:" + this.jdField_a_of_type_Int + ",troopUin : " + this.b + ",memberUin" + this.jdField_a_of_type_JavaLangString);
-    }
-    if (paramTroopMemberInfo.getStatus() == 1000) {
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.b, this.jdField_a_of_type_JavaLangString, paramTroopMemberInfo);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.b, this.jdField_a_of_type_JavaLangString, paramTroopMemberInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.TroopManager.TmiCallBackForTroopMemberNewLevel
  * JD-Core Version:    0.7.0.1
  */

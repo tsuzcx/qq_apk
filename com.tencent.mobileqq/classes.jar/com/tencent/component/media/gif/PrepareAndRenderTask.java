@@ -37,20 +37,21 @@ public class PrepareAndRenderTask
           ImageManagerEnv.getLogger().w("PrepareAndRenderTask", new Object[] { "unRender true,doRender" });
           return;
         }
-        long l1 = System.currentTimeMillis();
+        l1 = System.currentTimeMillis();
         this.mGifDrawable.mGifDecoder.prepareData();
         long l2 = System.currentTimeMillis();
         l1 = this.invalidationDelay - (l2 - l1);
         this.canRenderCounts.release();
         ScheduledThreadPoolExecutor localScheduledThreadPoolExecutor = this.mExecutor;
         Runnable localRunnable = this.mRenderTask;
-        if (l1 > 0L) {
+        if (l1 > 0L)
+        {
           this.mSchedule = localScheduledThreadPoolExecutor.schedule(localRunnable, l1, TimeUnit.MILLISECONDS);
-        } else {
-          l1 = 0L;
+          return;
         }
       }
       finally {}
+      long l1 = 0L;
     }
   }
   
@@ -63,26 +64,39 @@ public class PrepareAndRenderTask
   {
     try
     {
-      ImageManagerEnv.getLogger().w("PrepareAndRenderTask", new Object[] { "wait finish " + hashCode() });
-      if (this.mSchedule != null) {
+      ILog localILog = ImageManagerEnv.getLogger();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("wait finish ");
+      ((StringBuilder)localObject).append(hashCode());
+      localILog.w("PrepareAndRenderTask", new Object[] { ((StringBuilder)localObject).toString() });
+      if (this.mSchedule != null)
+      {
         this.mSchedule.get();
+        return;
       }
+    }
+    catch (ExecutionException localExecutionException)
+    {
+      localObject = ImageManagerEnv.getLogger();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("catch an exception: ");
+      localStringBuilder.append(Log.getStackTraceString(localExecutionException));
+      ((ILog)localObject).w("PrepareAndRenderTask", new Object[] { localStringBuilder.toString() });
       return;
     }
     catch (InterruptedException localInterruptedException)
     {
-      ImageManagerEnv.getLogger().w("PrepareAndRenderTask", new Object[] { "catch an exception: " + Log.getStackTraceString(localInterruptedException) });
-      return;
-    }
-    catch (ExecutionException localExecutionException)
-    {
-      ImageManagerEnv.getLogger().w("PrepareAndRenderTask", new Object[] { "catch an exception: " + Log.getStackTraceString(localExecutionException) });
+      Object localObject = ImageManagerEnv.getLogger();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("catch an exception: ");
+      localStringBuilder.append(Log.getStackTraceString(localInterruptedException));
+      ((ILog)localObject).w("PrepareAndRenderTask", new Object[] { localStringBuilder.toString() });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.gif.PrepareAndRenderTask
  * JD-Core Version:    0.7.0.1
  */

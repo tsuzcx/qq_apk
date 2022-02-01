@@ -27,42 +27,40 @@ public final class MessageForTofuAskAnonymously
   
   private final AnonymousQuestion parseJsonToAnonymousQuestion(String paramString)
   {
-    boolean bool = false;
     if (TextUtils.isEmpty((CharSequence)paramString)) {
-      paramString = null;
+      return null;
     }
-    for (;;)
+    try
     {
+      Object localObject = new JSONObject(paramString);
+      paramString = new AnonymousQuestion();
+      paramString.mId = ((JSONObject)localObject).optString("key_question_id", "");
+      paramString.mQuest = ((JSONObject)localObject).optString("key_question_str", "");
+      paramString.mQuestUin = ((JSONObject)localObject).optLong("key_question_uin", -1L);
+      paramString.mQuestTime = ((JSONObject)localObject).optLong("key_question_time", -1L);
+      paramString.mAnswer = ((JSONObject)localObject).optString("key_answer_str", "");
+      paramString.mAnswerTime = ((JSONObject)localObject).optLong("key_answer_time", -1L);
+      paramString.mPraiseKey = ((JSONObject)localObject).optString("key_praise_key", "");
+      boolean bool = false;
+      if (((JSONObject)localObject).optInt("key_been_praise", 0) == 1) {
+        bool = true;
+      }
+      paramString.mPraised = bool;
+      paramString.mTotalPraiseCount = ((JSONObject)localObject).optLong("key_praise_num", -1L);
+      paramString.mTotalCommentCount = ((JSONObject)localObject).optLong("key_comment_num", -1L);
+      paramString.mTotalViewCount = ((JSONObject)localObject).optLong("key_show_times", -1L);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("parseJsonToAnonymousQuestion result: ");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.i("MessageForTofuAskAnonymously", 2, ((StringBuilder)localObject).toString());
+      }
       return paramString;
-      try
-      {
-        paramString = new JSONObject(paramString);
-        AnonymousQuestion localAnonymousQuestion = new AnonymousQuestion();
-        localAnonymousQuestion.mId = paramString.optString("key_question_id", "");
-        localAnonymousQuestion.mQuest = paramString.optString("key_question_str", "");
-        localAnonymousQuestion.mQuestUin = paramString.optLong("key_question_uin", -1L);
-        localAnonymousQuestion.mQuestTime = paramString.optLong("key_question_time", -1L);
-        localAnonymousQuestion.mAnswer = paramString.optString("key_answer_str", "");
-        localAnonymousQuestion.mAnswerTime = paramString.optLong("key_answer_time", -1L);
-        localAnonymousQuestion.mPraiseKey = paramString.optString("key_praise_key", "");
-        if (paramString.optInt("key_been_praise", 0) == 1) {
-          bool = true;
-        }
-        localAnonymousQuestion.mPraised = bool;
-        localAnonymousQuestion.mTotalPraiseCount = paramString.optLong("key_praise_num", -1L);
-        localAnonymousQuestion.mTotalCommentCount = paramString.optLong("key_comment_num", -1L);
-        localAnonymousQuestion.mTotalViewCount = paramString.optLong("key_show_times", -1L);
-        paramString = localAnonymousQuestion;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("MessageForTofuAskAnonymously", 2, "parseJsonToAnonymousQuestion result: " + localAnonymousQuestion);
-          return localAnonymousQuestion;
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("MessageForTofuAskAnonymously", 1, "parseJsonToAnonymousQuestion exception: ", (Throwable)paramString);
-      }
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("MessageForTofuAskAnonymously", 1, "parseJsonToAnonymousQuestion exception: ", (Throwable)paramString);
     }
     return null;
   }
@@ -88,7 +86,7 @@ public final class MessageForTofuAskAnonymously
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTofuAskAnonymously
  * JD-Core Version:    0.7.0.1
  */

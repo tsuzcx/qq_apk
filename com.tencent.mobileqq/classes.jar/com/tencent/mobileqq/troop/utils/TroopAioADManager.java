@@ -53,29 +53,31 @@ public class TroopAioADManager
   
   public void a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-      paramString = (TroopAioTopADInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(TroopAioTopADInfo.class, paramString);
-    } while (paramString == null);
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(paramString);
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    paramString = (TroopAioTopADInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(TroopAioTopADInfo.class, paramString);
+    if (paramString != null) {
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(paramString);
+    }
   }
   
   public void onDestroy()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) && (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())) {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+    if ((localObject != null) && (((EntityManager)localObject).isOpen())) {
       this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    if (localObject != null) {
+      ((ConcurrentHashMap)localObject).clear();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopAioADManager
  * JD-Core Version:    0.7.0.1
  */

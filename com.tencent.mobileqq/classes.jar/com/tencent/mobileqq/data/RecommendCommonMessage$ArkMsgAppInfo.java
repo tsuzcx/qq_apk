@@ -18,17 +18,18 @@ public class RecommendCommonMessage$ArkMsgAppInfo
   
   public void doOnEvent(int paramInt)
   {
-    Iterator localIterator = this.mOpenCardAppInfoList.iterator();
-    while (localIterator.hasNext())
+    Object localObject = this.mOpenCardAppInfoList.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      ArkMsgAppInfo localArkMsgAppInfo = (ArkMsgAppInfo)localIterator.next();
+      ArkMsgAppInfo localArkMsgAppInfo = (ArkMsgAppInfo)((Iterator)localObject).next();
       if (localArkMsgAppInfo != null) {
         localArkMsgAppInfo.doOnEvent(paramInt);
       }
     }
-    if (this.mArkContainer != null)
+    localObject = this.mArkContainer;
+    if (localObject != null)
     {
-      this.mArkContainer.doOnEvent(paramInt);
+      ((ArkAioContainerWrapper)localObject).doOnEvent(paramInt);
       if (paramInt == 2) {
         this.mArkContainer = null;
       }
@@ -37,21 +38,19 @@ public class RecommendCommonMessage$ArkMsgAppInfo
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof ArkMsgAppInfo)) {
-        return false;
-      }
-      paramObject = (ArkMsgAppInfo)paramObject;
-    } while ((this.appName.equals(paramObject.appName)) && (this.appPath.equals(paramObject.appPath)) && (this.appView.equals(paramObject.appView)) && (this.keyword.equals(paramObject.keyword)) && (this.equalInputText == paramObject.equalInputText) && (this.meta.equals(paramObject.meta)));
-    return false;
+    }
+    if (!(paramObject instanceof ArkMsgAppInfo)) {
+      return false;
+    }
+    paramObject = (ArkMsgAppInfo)paramObject;
+    return (this.appName.equals(paramObject.appName)) && (this.appPath.equals(paramObject.appPath)) && (this.appView.equals(paramObject.appView)) && (this.keyword.equals(paramObject.keyword)) && (this.equalInputText == paramObject.equalInputText) && (this.meta.equals(paramObject.meta));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.RecommendCommonMessage.ArkMsgAppInfo
  * JD-Core Version:    0.7.0.1
  */

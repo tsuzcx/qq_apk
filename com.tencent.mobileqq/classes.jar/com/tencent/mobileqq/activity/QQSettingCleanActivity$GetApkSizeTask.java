@@ -31,25 +31,25 @@ class QQSettingCleanActivity$GetApkSizeTask
           {
             this.this$0.a = l;
             this.this$0.runOnUiThread(new QQSettingCleanActivity.ShowTask(this.this$0, 0));
+            return;
           }
         }
       }
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      localOutOfMemoryError.printStackTrace();
       return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      localOutOfMemoryError.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingCleanActivity.GetApkSizeTask
  * JD-Core Version:    0.7.0.1
  */

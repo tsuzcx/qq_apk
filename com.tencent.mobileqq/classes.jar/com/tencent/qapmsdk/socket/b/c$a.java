@@ -49,7 +49,9 @@ final class c$a
         paramInt += 1;
         i -= 1;
       }
-      System.arraycopy(this.a, this.b + 1, this.a, this.b + 1 + paramInt, this.c);
+      b[] arrayOfb = this.a;
+      i = this.b;
+      System.arraycopy(arrayOfb, i + 1, arrayOfb, i + 1 + paramInt, this.c);
       this.b += paramInt;
       i = paramInt;
     }
@@ -64,48 +66,59 @@ final class c$a
     if (paramInt != -1) {
       i = j - this.a[c(paramInt)].i;
     }
-    if (i > this.h)
+    j = this.h;
+    if (i > j)
     {
       e();
       return;
     }
-    j = a(this.d + i - this.h);
+    j = a(this.d + i - j);
     if (paramInt == -1)
     {
-      if (this.c + 1 > this.a.length)
+      paramInt = this.c;
+      b[] arrayOfb1 = this.a;
+      if (paramInt + 1 > arrayOfb1.length)
       {
-        b[] arrayOfb = new b[this.a.length * 2];
-        System.arraycopy(this.a, 0, arrayOfb, this.a.length, this.a.length);
+        b[] arrayOfb2 = new b[arrayOfb1.length * 2];
+        System.arraycopy(arrayOfb1, 0, arrayOfb2, arrayOfb1.length, arrayOfb1.length);
         this.b = (this.a.length - 1);
-        this.a = arrayOfb;
+        this.a = arrayOfb2;
       }
       paramInt = this.b;
       this.b = (paramInt - 1);
       this.a[paramInt] = paramb;
       this.c += 1;
     }
-    for (;;)
+    else
     {
-      this.d = (i + this.d);
-      return;
       int k = c(paramInt);
-      this.a[(j + k + paramInt)] = paramb;
+      this.a[(paramInt + (k + j))] = paramb;
     }
+    this.d += i;
   }
   
   private void b(int paramInt)
   {
     if (g(paramInt))
     {
-      b localb = c.a[paramInt];
-      this.e.add(localb);
+      localObject = c.a[paramInt];
+      this.e.add(localObject);
       return;
     }
     int i = c(paramInt - c.a.length);
-    if ((i < 0) || (i >= this.a.length)) {
-      throw new IOException("Header index too large " + (paramInt + 1));
+    if (i >= 0)
+    {
+      localObject = this.a;
+      if (i < localObject.length)
+      {
+        this.e.add(localObject[i]);
+        return;
+      }
     }
-    this.e.add(this.a[i]);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Header index too large ");
+    ((StringBuilder)localObject).append(paramInt + 1);
+    throw new IOException(((StringBuilder)localObject).toString());
   }
   
   private int c(int paramInt)
@@ -115,16 +128,17 @@ final class c$a
   
   private void d()
   {
-    if (this.h < this.d)
+    int i = this.h;
+    int j = this.d;
+    if (i < j)
     {
-      if (this.h == 0) {
+      if (i == 0)
+      {
         e();
+        return;
       }
+      a(j - i);
     }
-    else {
-      return;
-    }
-    a(this.d - this.h);
   }
   
   private void d(int paramInt)
@@ -153,10 +167,17 @@ final class c$a
       return c.a[paramInt].g;
     }
     int i = c(paramInt - c.a.length);
-    if ((i < 0) || (i >= this.a.length)) {
-      throw new IOException("Header index too large " + (paramInt + 1));
+    if (i >= 0)
+    {
+      localObject = this.a;
+      if (i < localObject.length) {
+        return localObject[i].g;
+      }
     }
-    return this.a[i].g;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Header index too large ");
+    ((StringBuilder)localObject).append(paramInt + 1);
+    throw new IOException(((StringBuilder)localObject).toString());
   }
   
   private void f()
@@ -198,7 +219,7 @@ final class c$a
       paramInt2 += ((i & 0x7F) << paramInt1);
       paramInt1 += 7;
     }
-    return (i << paramInt1) + paramInt2;
+    return paramInt2 + (i << paramInt1);
   }
   
   void a()
@@ -206,36 +227,47 @@ final class c$a
     while (!this.f.exhausted())
     {
       int i = this.f.readByte() & 0xFF;
-      if (i == 128) {
-        throw new IOException("index == 0");
-      }
-      if ((i & 0x80) == 128)
+      if (i != 128)
       {
-        b(a(i, 127) - 1);
-      }
-      else if (i == 64)
-      {
-        g();
-      }
-      else if ((i & 0x40) == 64)
-      {
-        e(a(i, 63) - 1);
-      }
-      else if ((i & 0x20) == 32)
-      {
-        this.h = a(i, 31);
-        if ((this.h < 0) || (this.h > this.g)) {
-          throw new IOException("Invalid dynamic table size update " + this.h);
+        if ((i & 0x80) == 128)
+        {
+          b(a(i, 127) - 1);
         }
-        d();
+        else if (i == 64)
+        {
+          g();
+        }
+        else if ((i & 0x40) == 64)
+        {
+          e(a(i, 63) - 1);
+        }
+        else if ((i & 0x20) == 32)
+        {
+          this.h = a(i, 31);
+          i = this.h;
+          if ((i >= 0) && (i <= this.g))
+          {
+            d();
+          }
+          else
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("Invalid dynamic table size update ");
+            localStringBuilder.append(this.h);
+            throw new IOException(localStringBuilder.toString());
+          }
+        }
+        else if ((i != 16) && (i != 0))
+        {
+          d(a(i, 15) - 1);
+        }
+        else
+        {
+          f();
+        }
       }
-      else if ((i == 16) || (i == 0))
-      {
-        f();
-      }
-      else
-      {
-        d(a(i, 15) - 1);
+      else {
+        throw new IOException("index == 0");
       }
     }
   }
@@ -250,13 +282,14 @@ final class c$a
   ByteString c()
   {
     int j = h();
-    if ((j & 0x80) == 128) {}
-    for (int i = 1;; i = 0)
-    {
-      j = a(j, 127);
-      if (i == 0) {
-        break;
-      }
+    int i;
+    if ((j & 0x80) == 128) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    j = a(j, 127);
+    if (i != 0) {
       return ByteString.of(f.a().a(this.f.readByteArray(j)));
     }
     return this.f.readByteString(j);
@@ -264,7 +297,7 @@ final class c$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.b.c.a
  * JD-Core Version:    0.7.0.1
  */

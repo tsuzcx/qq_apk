@@ -4,15 +4,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchResult;
 import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.search.business.addcontact.model.SearchResult;
 import com.tencent.mobileqq.search.util.SearchUtils;
 import java.util.List;
 
 public class GroupNetSearchModelPeople
   implements ISearchResultGroupModel
 {
-  private SearchResult jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult;
+  private SearchResult jdField_a_of_type_ComTencentMobileqqSearchBusinessAddcontactModelSearchResult;
   private String jdField_a_of_type_JavaLangString;
   private List<ISearchResultModel> jdField_a_of_type_JavaUtilList;
   
@@ -20,7 +20,7 @@ public class GroupNetSearchModelPeople
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult = paramSearchResult;
+    this.jdField_a_of_type_ComTencentMobileqqSearchBusinessAddcontactModelSearchResult = paramSearchResult;
   }
   
   public int a()
@@ -30,7 +30,7 @@ public class GroupNetSearchModelPeople
   
   public String a()
   {
-    return HardCodeUtil.a(2131705368);
+    return HardCodeUtil.a(2131705442);
   }
   
   public List<ISearchResultModel> a()
@@ -45,7 +45,7 @@ public class GroupNetSearchModelPeople
     localIntent.putExtra("last_key_words", this.jdField_a_of_type_JavaLangString);
     localIntent.putExtra("from_key", 0);
     localIntent.setClass(paramView.getContext(), ClassificationSearchActivity.class);
-    ClassificationSearchActivity.a((Activity)paramView.getContext(), localIntent, this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult);
+    ClassificationSearchActivity.a((Activity)paramView.getContext(), localIntent, this.jdField_a_of_type_ComTencentMobileqqSearchBusinessAddcontactModelSearchResult);
   }
   
   public String b()
@@ -55,7 +55,7 @@ public class GroupNetSearchModelPeople
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.GroupNetSearchModelPeople
  * JD-Core Version:    0.7.0.1
  */

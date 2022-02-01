@@ -4,8 +4,8 @@ import android.content.Context;
 
 public class c
 {
-  private static Context a = null;
-  private static volatile c b = null;
+  private static Context a;
+  private static volatile c b;
   
   private c(Context paramContext)
   {
@@ -14,15 +14,16 @@ public class c
   
   public static c a(Context paramContext)
   {
-    if (b == null) {}
-    try
-    {
-      if (b == null) {
-        b = new c(paramContext);
+    if (b == null) {
+      try
+      {
+        if (b == null) {
+          b = new c(paramContext);
+        }
       }
-      return b;
+      finally {}
     }
-    finally {}
+    return b;
   }
   
   public String a()

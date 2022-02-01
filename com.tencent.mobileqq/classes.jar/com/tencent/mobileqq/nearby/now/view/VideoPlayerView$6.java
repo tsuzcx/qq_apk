@@ -11,15 +11,15 @@ class VideoPlayerView$6
   
   public boolean a(IVideoView paramIVideoView, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.a.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a, paramInt1, paramInt2, "use sdk play error");
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.mReultListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.mReultListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a, paramInt1, paramInt2, "use sdk play error");
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.VideoPlayerView.6
  * JD-Core Version:    0.7.0.1
  */

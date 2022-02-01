@@ -21,13 +21,16 @@ public class GetGameRaffleMaterialRequest
   {
     try
     {
-      GameRaffleInfo.StGetGameRaffleMaterialRsp localStGetGameRaffleMaterialRsp = new GameRaffleInfo.StGetGameRaffleMaterialRsp();
-      localStGetGameRaffleMaterialRsp.mergeFrom(paramArrayOfByte);
-      return localStGetGameRaffleMaterialRsp;
+      localObject = new GameRaffleInfo.StGetGameRaffleMaterialRsp();
+      ((GameRaffleInfo.StGetGameRaffleMaterialRsp)localObject).mergeFrom(paramArrayOfByte);
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      QLog.d("GetGameRaffleMaterialRequest", 1, "onResponse fail." + paramArrayOfByte);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onResponse fail.");
+      ((StringBuilder)localObject).append(paramArrayOfByte);
+      QLog.d("GetGameRaffleMaterialRequest", 1, ((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -39,7 +42,7 @@ public class GetGameRaffleMaterialRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.GetGameRaffleMaterialRequest
  * JD-Core Version:    0.7.0.1
  */

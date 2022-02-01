@@ -45,15 +45,19 @@ public class LocalMediaInfo
   
   public int a(LocalMediaInfo paramLocalMediaInfo)
   {
-    if (paramLocalMediaInfo == null) {}
-    do
-    {
+    int k = -1;
+    if (paramLocalMediaInfo == null) {
       return -1;
-      if (paramLocalMediaInfo.jdField_d_of_type_Long > this.jdField_d_of_type_Long) {
-        return 1;
-      }
-    } while (paramLocalMediaInfo.jdField_d_of_type_Long != this.jdField_d_of_type_Long);
-    return 0;
+    }
+    long l1 = paramLocalMediaInfo.jdField_d_of_type_Long;
+    long l2 = this.jdField_d_of_type_Long;
+    if (l1 > l2) {
+      return 1;
+    }
+    if (l1 == l2) {
+      k = 0;
+    }
+    return k;
   }
   
   public int describeContents()
@@ -63,7 +67,43 @@ public class LocalMediaInfo
   
   public String toString()
   {
-    return "LocalMediaInfo{_id=" + this.jdField_a_of_type_Long + ", path='" + this.jdField_b_of_type_JavaLangString + '\'' + ", fileSize=" + this.jdField_b_of_type_Long + ", addedDate=" + this.jdField_c_of_type_Long + ", modifiedDate=" + this.jdField_d_of_type_Long + ", orientation=" + this.jdField_b_of_type_Int + ", mDuration=" + this.jdField_e_of_type_Long + ", selectStatus=" + this.jdField_a_of_type_Int + ", rotation=" + this.jdField_e_of_type_Int + ", thumbWidth=" + this.h + ", thumbHeight=" + this.i + ", index=" + this.j + ", position=" + this.jdField_a_of_type_JavaLangInteger + ", mMimeType='" + this.jdField_c_of_type_JavaLangString + '\'' + ", mediaWidth=" + this.jdField_c_of_type_Int + ", mediaHeight=" + this.jdField_d_of_type_Int + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LocalMediaInfo{_id=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", path='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", fileSize=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", addedDate=");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(", modifiedDate=");
+    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(", orientation=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mDuration=");
+    localStringBuilder.append(this.jdField_e_of_type_Long);
+    localStringBuilder.append(", selectStatus=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", rotation=");
+    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(", thumbWidth=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", thumbHeight=");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(", index=");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append(", position=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangInteger);
+    localStringBuilder.append(", mMimeType='");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mediaWidth=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", mediaHeight=");
+    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -91,7 +131,7 @@ public class LocalMediaInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.model.LocalMediaInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,15 @@ final class PlusPanelUtils$5
 {
   public void run()
   {
-    FileUtils.c(this.a + ".nomedia");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(".nomedia");
+    FileUtils.createFileIfNotExits(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PlusPanelUtils.5
  * JD-Core Version:    0.7.0.1
  */

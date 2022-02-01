@@ -12,17 +12,20 @@ class AudioRecordPlayer$2
   
   public void a(IOpenSdk paramIOpenSdk, Context paramContext)
   {
-    if ((paramIOpenSdk == null) || (AudioRecordPlayer.a(this.jdField_a_of_type_ComTencentIlivesdkAudiomediaservicePlayerAudioRecordPlayer) != null)) {
-      return;
+    if (paramIOpenSdk != null)
+    {
+      if (AudioRecordPlayer.a(this.jdField_a_of_type_ComTencentIlivesdkAudiomediaservicePlayerAudioRecordPlayer) != null) {
+        return;
+      }
+      AudioRecordPlayer.a(this.jdField_a_of_type_ComTencentIlivesdkAudiomediaservicePlayerAudioRecordPlayer, paramIOpenSdk);
+      paramIOpenSdk.attachContext(paramContext);
+      AudioRecordPlayer.a(this.jdField_a_of_type_ComTencentIlivesdkAudiomediaservicePlayerAudioRecordPlayer, paramIOpenSdk, this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesAudioEnterRoomParam);
     }
-    AudioRecordPlayer.a(this.jdField_a_of_type_ComTencentIlivesdkAudiomediaservicePlayerAudioRecordPlayer, paramIOpenSdk);
-    paramIOpenSdk.attachContext(paramContext);
-    AudioRecordPlayer.a(this.jdField_a_of_type_ComTencentIlivesdkAudiomediaservicePlayerAudioRecordPlayer, paramIOpenSdk, this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesAudioEnterRoomParam);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.audiomediaservice.player.AudioRecordPlayer.2
  * JD-Core Version:    0.7.0.1
  */

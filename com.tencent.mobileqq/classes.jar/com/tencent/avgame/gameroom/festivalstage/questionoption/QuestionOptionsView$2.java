@@ -7,14 +7,16 @@ class QuestionOptionsView$2
   
   public void run()
   {
-    if (QuestionOptionsView.a(this.this$0) != null) {
-      this.this$0.setConfig(QuestionOptionsView.a(this.this$0));
+    if (QuestionOptionsView.a(this.this$0) != null)
+    {
+      QuestionOptionsView localQuestionOptionsView = this.this$0;
+      localQuestionOptionsView.setConfig(QuestionOptionsView.a(localQuestionOptionsView));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.festivalstage.questionoption.QuestionOptionsView.2
  * JD-Core Version:    0.7.0.1
  */

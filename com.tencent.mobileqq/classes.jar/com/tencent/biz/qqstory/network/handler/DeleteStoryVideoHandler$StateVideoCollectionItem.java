@@ -15,16 +15,24 @@ public class DeleteStoryVideoHandler$StateVideoCollectionItem
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("StateVideoCollectionItem{itemKey=").append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem.key).append(", operation=");
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (String str = "delete";; str = "update") {
-      return str + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("StateVideoCollectionItem{itemKey=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem.key);
+    localStringBuilder.append(", operation=");
+    String str;
+    if (this.jdField_a_of_type_Int == 1) {
+      str = "delete";
+    } else {
+      str = "update";
     }
+    localStringBuilder.append(str);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.DeleteStoryVideoHandler.StateVideoCollectionItem
  * JD-Core Version:    0.7.0.1
  */

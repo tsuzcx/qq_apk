@@ -27,8 +27,9 @@ class ConfigSetting$LocalWtTicketPromise
       ThreadManager.excute(new ConfigSetting.LocalWtTicketPromise.1(this), 128, null, false);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocTipsConfigBean != null) {
-      this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocTipsConfigBean.a(false);
+    paramTicket = this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocTipsConfigBean;
+    if (paramTicket != null) {
+      paramTicket.a(false);
     }
     QLog.e("ConfigSetting", 2, "get pskey failed ticket is null");
   }
@@ -36,22 +37,24 @@ class ConfigSetting$LocalWtTicketPromise
   public void Failed(ErrMsg paramErrMsg)
   {
     QLog.e("ConfigSetting", 2, "get pskey failed ticket failed");
-    if (this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocTipsConfigBean != null) {
-      this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocTipsConfigBean.a(false);
+    paramErrMsg = this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocTipsConfigBean;
+    if (paramErrMsg != null) {
+      paramErrMsg.a(false);
     }
   }
   
   public void Timeout(ErrMsg paramErrMsg)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocTipsConfigBean != null) {
-      this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocTipsConfigBean.a(false);
+    paramErrMsg = this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocTipsConfigBean;
+    if (paramErrMsg != null) {
+      paramErrMsg.a(false);
     }
     QLog.e("ConfigSetting", 2, "get pskey failed ticket time oiut");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.ConfigSetting.LocalWtTicketPromise
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.tianshu.api;
 
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.qroute.annotation.Service;
 import com.tencent.mobileqq.tianshu.data.BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface;
 import com.tencent.mobileqq.tianshu.data.NumRedGetMsgCallback;
@@ -43,7 +44,7 @@ public abstract interface IRedTouchManager
   
   public abstract int getExtraNumRedTotalNum(int paramInt);
   
-  public abstract String getLastClickPath();
+  public abstract String getLastClickPath(AppInterface paramAppInterface);
   
   public abstract BusinessInfoCheckUpdate.TimeRspBody getLocalTimeRspBody();
   
@@ -68,6 +69,8 @@ public abstract interface IRedTouchManager
   public abstract List<BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface> getRegisterInterfaces();
   
   public abstract String getSetAppInfoReportMsg(String paramString1, String paramString2);
+  
+  public abstract boolean hasAppInfo(String paramString);
   
   public abstract boolean isNumRedTouchEnable(int paramInt);
   
@@ -107,6 +110,8 @@ public abstract interface IRedTouchManager
   
   public abstract List<BusinessInfoCheckUpdate.AppSetting> requestSettingInfoList();
   
+  public abstract void resetFlag();
+  
   public abstract void residenceReport(long paramLong);
   
   public abstract boolean saveTimeRepBody(BusinessInfoCheckUpdate.TimeRspBody paramTimeRspBody);
@@ -119,7 +124,7 @@ public abstract interface IRedTouchManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tianshu.api.IRedTouchManager
  * JD-Core Version:    0.7.0.1
  */

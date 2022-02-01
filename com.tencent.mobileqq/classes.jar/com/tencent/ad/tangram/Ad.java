@@ -35,6 +35,8 @@ public abstract interface Ad
   
   public abstract String getAppPackageUrl();
   
+  public abstract String getAppRightInfoUrl();
+  
   public abstract int getBannerInvalidClickXPercent();
   
   public abstract int getBannerInvalidClickYPercent();
@@ -108,6 +110,8 @@ public abstract interface Ad
   public abstract boolean isQQMINIProgram();
   
   public abstract boolean isValid();
+  
+  public abstract boolean isVideoOnTopDisabled();
   
   public abstract boolean isVideoSplice();
   

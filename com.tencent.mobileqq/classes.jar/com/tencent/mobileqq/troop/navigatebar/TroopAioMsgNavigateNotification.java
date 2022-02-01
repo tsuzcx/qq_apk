@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
@@ -37,16 +37,16 @@ public class TroopAioMsgNavigateNotification
   private TroopAioMsgNavigateBar jdField_a_of_type_ComTencentMobileqqTroopNavigatebarTroopAioMsgNavigateBar;
   private Object jdField_a_of_type_JavaLangObject;
   
-  TroopAioMsgNavigateNotification(QQAppInterface paramQQAppInterface, Context paramContext, TroopAioMsgNavigateBar paramTroopAioMsgNavigateBar, SessionInfo paramSessionInfo)
+  TroopAioMsgNavigateNotification(QQAppInterface paramQQAppInterface, Context paramContext, TroopAioMsgNavigateBar paramTroopAioMsgNavigateBar, BaseSessionInfo paramBaseSessionInfo)
   {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    super(paramQQAppInterface, paramContext, paramBaseSessionInfo);
     this.jdField_a_of_type_Int = 102;
     this.jdField_a_of_type_ComTencentMobileqqTroopNavigatebarTroopAioMsgNavigateBar = paramTroopAioMsgNavigateBar;
   }
   
   public int a(int paramInt)
   {
-    return 2130851228;
+    return 2130851144;
   }
   
   @Nullable
@@ -54,9 +54,9 @@ public class TroopAioMsgNavigateNotification
   {
     this.jdField_a_of_type_Long = paramLong1;
     this.jdField_a_of_type_JavaLangObject = paramObject;
-    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong1);
+    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, paramLong1);
     if ((paramList != null) && (a(paramList, paramLong2, paramLong3))) {
-      return new BaseTroopAioMsgNavigateBarDelegate.Entity(true, this.jdField_a_of_type_AndroidContentContext.getString(2131697628), TroopAioAgent.Message.a(paramInt1, paramLong1, paramInt2), paramList.senderuin);
+      return new BaseTroopAioMsgNavigateBarDelegate.Entity(true, this.jdField_a_of_type_AndroidContentContext.getString(2131697634), TroopAioAgent.Message.a(paramInt1, paramLong1, paramInt2), paramList.senderuin);
     }
     return null;
   }
@@ -65,18 +65,19 @@ public class TroopAioMsgNavigateNotification
   {
     super.a();
     this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify = null;
-    TroopInfoManager localTroopInfoManager = (TroopInfoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOPINFO_MANAGER);
-    long l = NumberUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-    if (l == -1L) {}
-    do
-    {
+    Object localObject = (TroopInfoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOPINFO_MANAGER);
+    long l = NumberUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
+    if (l == -1L) {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager = localTroopInfoManager.a(Long.valueOf(l), true);
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager.addObserver(this);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "onInit");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager = ((TroopInfoManager)localObject).a(Long.valueOf(l), true);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager;
+    if (localObject != null) {
+      ((TroopFeedsDataManager)localObject).addObserver(this);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "onInit");
+    }
   }
   
   public void a(int paramInt, TextView paramTextView1, TextView paramTextView2, ImageView paramImageView, String paramString)
@@ -89,27 +90,22 @@ public class TroopAioMsgNavigateNotification
   public void a(int paramInt, Object paramObject, String paramString)
   {
     paramObject = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    String str;
-    long l;
     if (paramObject != null)
     {
-      paramObject = paramObject.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      paramObject = paramObject.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
       if (paramObject != null)
       {
-        boolean bool = paramString.equals(this.jdField_a_of_type_AndroidContentContext.getString(2131697640));
+        boolean bool = paramString.equals(this.jdField_a_of_type_AndroidContentContext.getString(2131697646));
         paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        str = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-        l = paramObject.dwGroupClassExt;
-        if (!bool) {
-          break label105;
+        String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString;
+        long l = paramObject.dwGroupClassExt;
+        if (bool) {
+          paramObject = "2";
+        } else {
+          paramObject = "1";
         }
+        ReportController.b(paramString, "dc00898", "", "", "", "0X800AACB", 0, 1, 0, str, String.valueOf(l), paramObject, "");
       }
-    }
-    label105:
-    for (paramObject = "2";; paramObject = "1")
-    {
-      ReportController.b(paramString, "dc00898", "", "", "", "0X800AACB", 0, 1, 0, str, String.valueOf(l), paramObject, "");
-      return;
     }
   }
   
@@ -131,126 +127,112 @@ public class TroopAioMsgNavigateNotification
   public void b(int paramInt, Object paramObject, String paramString)
   {
     paramObject = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    String str;
-    long l;
     if (paramObject != null)
     {
-      paramObject = paramObject.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      paramObject = paramObject.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
       if (paramObject != null)
       {
-        boolean bool = paramString.equals(this.jdField_a_of_type_AndroidContentContext.getString(2131697640));
+        boolean bool = paramString.equals(this.jdField_a_of_type_AndroidContentContext.getString(2131697646));
         paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        str = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-        l = paramObject.dwGroupClassExt;
-        if (!bool) {
-          break label105;
+        String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString;
+        long l = paramObject.dwGroupClassExt;
+        if (bool) {
+          paramObject = "2";
+        } else {
+          paramObject = "1";
         }
+        ReportController.b(paramString, "dc00898", "", "", "", "0X800AACC", 0, 1, 0, str, String.valueOf(l), paramObject, "");
       }
-    }
-    label105:
-    for (paramObject = "2";; paramObject = "1")
-    {
-      ReportController.b(paramString, "dc00898", "", "", "", "0X800AACC", 0, 1, 0, str, String.valueOf(l), paramObject, "");
-      return;
     }
   }
   
   void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopNavigatebarTroopAioMsgNavigateBar == null) {
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqTroopNavigatebarTroopAioMsgNavigateBar;
+    if (localObject1 == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.d(this.jdField_a_of_type_JavaLangString, 2, "mTroopAioMsgNavigateBar = null");
       }
-    }
-    boolean bool3;
-    do
-    {
       return;
-      bool3 = this.jdField_a_of_type_ComTencentMobileqqTroopNavigatebarTroopAioMsgNavigateBar.d();
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "showTroopNotifyBar troopNotifyData = " + this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify + ",  mFIsShow = " + bool3);
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify == null);
+    }
+    boolean bool2 = ((TroopAioMsgNavigateBar)localObject1).d();
+    Object localObject2;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = this.jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("showTroopNotifyBar troopNotifyData = ");
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify);
+      ((StringBuilder)localObject2).append(",  mFIsShow = ");
+      ((StringBuilder)localObject2).append(bool2);
+      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify == null) {
+      return;
+    }
     if (this.jdField_a_of_type_ComTencentMobileqqTroopNavigatebarTroopAioMsgNavigateBar.a())
     {
       this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify = null;
       return;
     }
-    bool2 = false;
-    str2 = "";
-    Object localObject1 = str2;
-    bool1 = bool2;
-    Object localObject2;
-    if (bool3)
+    boolean bool1 = false;
+    if ((bool2) && (!this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify.b) && ((this.jdField_a_of_type_JavaLangObject instanceof MessageForArkApp)) && (!this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify.d))
     {
-      localObject1 = str2;
-      bool1 = bool2;
-      if (!this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify.b)
-      {
-        localObject1 = str2;
-        bool1 = bool2;
-        if ((this.jdField_a_of_type_JavaLangObject instanceof MessageForArkApp))
+      localObject1 = (MessageForArkApp)this.jdField_a_of_type_JavaLangObject;
+      if ((((MessageForArkApp)localObject1).ark_app_message != null) && ("com.tencent.mannounce".equals(((MessageForArkApp)localObject1).ark_app_message.appName))) {
+        try
         {
-          localObject1 = str2;
-          bool1 = bool2;
-          if (!this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify.d)
+          if (QLog.isColorLevel())
           {
-            localObject2 = (MessageForArkApp)this.jdField_a_of_type_JavaLangObject;
-            localObject1 = str2;
-            bool1 = bool2;
-            if (((MessageForArkApp)localObject2).ark_app_message != null)
+            localObject2 = this.jdField_a_of_type_JavaLangString;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("showTroopNotifyBar ark.ark_app_message.metaList:");
+            localStringBuilder.append(((MessageForArkApp)localObject1).ark_app_message.metaList);
+            QLog.d((String)localObject2, 2, localStringBuilder.toString());
+            localObject2 = this.jdField_a_of_type_JavaLangString;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("showTroopNotifyBar mTroopNotifyData confirmRequired:");
+            localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify.c);
+            localStringBuilder.append(" fid:");
+            localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify.jdField_a_of_type_JavaLangString);
+            localStringBuilder.append(" isShowTipWindow:");
+            localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify.b);
+            QLog.d((String)localObject2, 2, localStringBuilder.toString());
+          }
+          localObject1 = new JSONObject(((MessageForArkApp)localObject1).ark_app_message.metaList).optJSONObject("mannounce");
+          localObject2 = this.jdField_a_of_type_ComTencentMobileqqTroopNavigatebarTroopAioMsgNavigateBar.a();
+          if ((localObject1 != null) && (localObject2 != null) && (((JSONObject)localObject1).optString("fid").equals(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify.jdField_a_of_type_JavaLangString)))
+          {
+            long l = ((MessageRecord)localObject2).shmsgseq;
+            localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+            if ((localObject1 != null) && (a((MessageRecord)localObject1, l, this.jdField_a_of_type_ComTencentMobileqqTroopNavigatebarTroopAioMsgNavigateBar.a())))
             {
-              localObject1 = str2;
-              bool1 = bool2;
-              if (!"com.tencent.mannounce".equals(((MessageForArkApp)localObject2).ark_app_message.appName)) {}
+              if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify.c) {
+                localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131697646);
+              } else {
+                localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131697634);
+              }
+              bool1 = true;
             }
           }
         }
+        catch (Exception localException)
+        {
+          QLog.e(this.jdField_a_of_type_JavaLangString, 1, "[showTroopNotifyBar] ", localException);
+        }
       }
     }
-    for (;;)
+    String str = "";
+    this.jdField_a_of_type_ComTencentMobileqqTroopNavigatebarTroopAioMsgNavigateBar.a(new BaseTroopAioMsgNavigateBarDelegate.Entity(bool1, str, null, ""));
+    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify = null;
+    if (QLog.isColorLevel())
     {
-      try
-      {
-        if (QLog.isColorLevel())
-        {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "showTroopNotifyBar ark.ark_app_message.metaList:" + ((MessageForArkApp)localObject2).ark_app_message.metaList);
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "showTroopNotifyBar mTroopNotifyData confirmRequired:" + this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify.c + " fid:" + this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify.jdField_a_of_type_JavaLangString + " isShowTipWindow:" + this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify.b);
-        }
-        localObject1 = new JSONObject(((MessageForArkApp)localObject2).ark_app_message.metaList).optJSONObject("mannounce");
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqTroopNavigatebarTroopAioMsgNavigateBar.a();
-        if ((localObject1 == null) || (localObject2 == null) || (!((JSONObject)localObject1).optString("fid").equals(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify.jdField_a_of_type_JavaLangString))) {
-          continue;
-        }
-        long l = ((MessageRecord)localObject2).shmsgseq;
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-        if ((localObject1 == null) || (!a((MessageRecord)localObject1, l, this.jdField_a_of_type_ComTencentMobileqqTroopNavigatebarTroopAioMsgNavigateBar.a()))) {
-          continue;
-        }
-        if (!this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify.c) {
-          continue;
-        }
-        localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131697640);
-        bool1 = true;
-      }
-      catch (Exception localException)
-      {
-        QLog.e(this.jdField_a_of_type_JavaLangString, 1, "[showTroopNotifyBar] ", localException);
-        String str1 = str2;
-        bool1 = bool2;
-        continue;
-        str1 = "";
-        bool1 = false;
-        continue;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTroopNavigatebarTroopAioMsgNavigateBar.a(new BaseTroopAioMsgNavigateBarDelegate.Entity(bool1, (String)localObject1, null, ""));
-      this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify = null;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "showTroopNotifyBar mFIsShow:" + bool1);
-      return;
-      localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131697628);
+      str = this.jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("showTroopNotifyBar mFIsShow:");
+      ((StringBuilder)localObject2).append(bool1);
+      QLog.d(str, 2, ((StringBuilder)localObject2).toString());
     }
   }
   
@@ -259,33 +241,39 @@ public class TroopAioMsgNavigateNotification
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "troopNotify update");
     }
-    if (!(paramObject instanceof Integer)) {}
-    do
+    if (!(paramObject instanceof Integer)) {
+      return;
+    }
+    paramObservable = (Integer)paramObject;
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        return;
-        paramObservable = (Integer)paramObject;
-        if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "update. notifyType = " + paramObservable);
-        }
-      } while ((paramObservable.intValue() != 1007) && (paramObservable.intValue() != 1011));
-      if ((this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager.b != null)) {
+      paramObject = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("update. notifyType = ");
+      localStringBuilder.append(paramObservable);
+      QLog.d(paramObject, 2, localStringBuilder.toString());
+    }
+    if ((paramObservable.intValue() == 1007) || (paramObservable.intValue() == 1011))
+    {
+      paramObservable = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager;
+      if ((paramObservable != null) && (paramObservable.b != null)) {
         try
         {
-          this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify = TroopFeedsDataManager.TroopNotify.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager.b);
+          this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify = TroopFeedsDataManager.TroopNotify.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager.b);
           c();
           return;
         }
         finally {}
       }
-    } while (!QLog.isColorLevel());
-    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "update. mNewNorNotice = null!");
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "update. mNewNorNotice = null!");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.navigatebar.TroopAioMsgNavigateNotification
  * JD-Core Version:    0.7.0.1
  */

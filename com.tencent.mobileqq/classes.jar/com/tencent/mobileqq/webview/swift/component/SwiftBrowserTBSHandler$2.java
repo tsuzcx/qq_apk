@@ -12,181 +12,191 @@ class SwiftBrowserTBSHandler$2
     //   0: aload_0
     //   1: getfield 12	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler$2:this$0	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
     //   4: getfield 25	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   7: astore_1
-    //   8: aload_1
-    //   9: monitorenter
-    //   10: aload_0
-    //   11: getfield 12	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler$2:this$0	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
-    //   14: getfield 28	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaLangBoolean	Ljava/lang/Boolean;
-    //   17: invokevirtual 34	java/lang/Boolean:booleanValue	()Z
-    //   20: ifne +13 -> 33
-    //   23: aload_0
-    //   24: getfield 12	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler$2:this$0	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
-    //   27: getfield 25	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   30: invokevirtual 37	java/lang/Object:wait	()V
-    //   33: new 39	android/os/Bundle
-    //   36: dup
-    //   37: invokespecial 40	android/os/Bundle:<init>	()V
-    //   40: astore_2
-    //   41: aload_2
-    //   42: getstatic 46	com/tencent/open/downloadnew/DownloadConstants:b	Ljava/lang/String;
-    //   45: ldc 48
-    //   47: invokevirtual 52	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   50: aload_2
-    //   51: getstatic 55	com/tencent/open/downloadnew/DownloadConstants:j	Ljava/lang/String;
-    //   54: aload_0
-    //   55: getfield 12	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler$2:this$0	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
-    //   58: getfield 57	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   61: invokevirtual 52	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   64: aload_2
-    //   65: getstatic 60	com/tencent/open/downloadnew/DownloadConstants:k	Ljava/lang/String;
-    //   68: iconst_2
-    //   69: invokevirtual 64	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   72: aload_2
-    //   73: getstatic 67	com/tencent/open/downloadnew/DownloadConstants:l	Ljava/lang/String;
-    //   76: ldc 69
-    //   78: invokevirtual 52	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   81: aload_2
-    //   82: getstatic 72	com/tencent/open/downloadnew/DownloadConstants:r	Ljava/lang/String;
-    //   85: iconst_0
-    //   86: invokevirtual 76	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   89: aload_2
-    //   90: getstatic 79	com/tencent/open/downloadnew/DownloadConstants:x	Ljava/lang/String;
-    //   93: iconst_0
-    //   94: invokevirtual 76	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   97: aload_2
-    //   98: getstatic 82	com/tencent/open/downloadnew/DownloadConstants:f	Ljava/lang/String;
-    //   101: ldc 84
-    //   103: invokevirtual 52	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   106: aload_0
-    //   107: getfield 12	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler$2:this$0	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
-    //   110: getfield 87	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity	Lcom/tencent/mobileqq/activity/QQBrowserActivity;
-    //   113: aload_2
-    //   114: ldc 89
-    //   116: aconst_null
-    //   117: iconst_0
-    //   118: invokestatic 94	com/tencent/open/downloadnew/DownloadApi:a	(Landroid/app/Activity;Landroid/os/Bundle;Ljava/lang/String;Lcom/tencent/apkupdate/logic/data/ApkUpdateDetail;I)V
-    //   121: aload_1
-    //   122: monitorexit
-    //   123: return
+    //   7: astore 4
+    //   9: aload 4
+    //   11: monitorenter
+    //   12: aload_0
+    //   13: getfield 12	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler$2:this$0	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
+    //   16: getfield 28	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaLangBoolean	Ljava/lang/Boolean;
+    //   19: invokevirtual 34	java/lang/Boolean:booleanValue	()Z
+    //   22: ifne +13 -> 35
+    //   25: aload_0
+    //   26: getfield 12	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler$2:this$0	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
+    //   29: getfield 25	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   32: invokevirtual 37	java/lang/Object:wait	()V
+    //   35: new 39	android/os/Bundle
+    //   38: dup
+    //   39: invokespecial 40	android/os/Bundle:<init>	()V
+    //   42: astore_3
+    //   43: aload_3
+    //   44: getstatic 46	com/tencent/open/downloadnew/DownloadConstants:b	Ljava/lang/String;
+    //   47: ldc 48
+    //   49: invokevirtual 52	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   52: aload_3
+    //   53: getstatic 55	com/tencent/open/downloadnew/DownloadConstants:j	Ljava/lang/String;
+    //   56: aload_0
+    //   57: getfield 12	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler$2:this$0	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
+    //   60: getfield 57	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   63: invokevirtual 52	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   66: aload_3
+    //   67: getstatic 60	com/tencent/open/downloadnew/DownloadConstants:k	Ljava/lang/String;
+    //   70: iconst_2
+    //   71: invokevirtual 64	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   74: aload_3
+    //   75: getstatic 67	com/tencent/open/downloadnew/DownloadConstants:l	Ljava/lang/String;
+    //   78: ldc 69
+    //   80: invokevirtual 52	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   83: aload_3
+    //   84: getstatic 72	com/tencent/open/downloadnew/DownloadConstants:s	Ljava/lang/String;
+    //   87: iconst_0
+    //   88: invokevirtual 76	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   91: aload_3
+    //   92: getstatic 79	com/tencent/open/downloadnew/DownloadConstants:y	Ljava/lang/String;
+    //   95: iconst_0
+    //   96: invokevirtual 76	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   99: aload_3
+    //   100: getstatic 82	com/tencent/open/downloadnew/DownloadConstants:f	Ljava/lang/String;
+    //   103: ldc 84
+    //   105: invokevirtual 52	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   108: ldc 86
+    //   110: invokestatic 92	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   113: checkcast 86	com/tencent/open/temp/api/IWebViewOpenSdkApi
+    //   116: astore_1
+    //   117: aload_0
+    //   118: getfield 12	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler$2:this$0	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
+    //   121: getfield 95	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
     //   124: astore_2
-    //   125: new 39	android/os/Bundle
-    //   128: dup
-    //   129: invokespecial 40	android/os/Bundle:<init>	()V
-    //   132: astore_2
-    //   133: aload_2
-    //   134: getstatic 46	com/tencent/open/downloadnew/DownloadConstants:b	Ljava/lang/String;
-    //   137: ldc 48
-    //   139: invokevirtual 52	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   142: aload_2
-    //   143: getstatic 55	com/tencent/open/downloadnew/DownloadConstants:j	Ljava/lang/String;
-    //   146: aload_0
-    //   147: getfield 12	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler$2:this$0	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
-    //   150: getfield 57	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   153: invokevirtual 52	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   156: aload_2
-    //   157: getstatic 60	com/tencent/open/downloadnew/DownloadConstants:k	Ljava/lang/String;
-    //   160: iconst_2
-    //   161: invokevirtual 64	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   164: aload_2
-    //   165: getstatic 67	com/tencent/open/downloadnew/DownloadConstants:l	Ljava/lang/String;
-    //   168: ldc 69
-    //   170: invokevirtual 52	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   173: aload_2
-    //   174: getstatic 72	com/tencent/open/downloadnew/DownloadConstants:r	Ljava/lang/String;
-    //   177: iconst_0
-    //   178: invokevirtual 76	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   181: aload_2
-    //   182: getstatic 79	com/tencent/open/downloadnew/DownloadConstants:x	Ljava/lang/String;
-    //   185: iconst_0
-    //   186: invokevirtual 76	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   189: aload_2
-    //   190: getstatic 82	com/tencent/open/downloadnew/DownloadConstants:f	Ljava/lang/String;
-    //   193: ldc 84
-    //   195: invokevirtual 52	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   198: aload_0
-    //   199: getfield 12	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler$2:this$0	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
-    //   202: getfield 87	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity	Lcom/tencent/mobileqq/activity/QQBrowserActivity;
-    //   205: aload_2
-    //   206: ldc 89
-    //   208: aconst_null
-    //   209: iconst_0
-    //   210: invokestatic 94	com/tencent/open/downloadnew/DownloadApi:a	(Landroid/app/Activity;Landroid/os/Bundle;Ljava/lang/String;Lcom/tencent/apkupdate/logic/data/ApkUpdateDetail;I)V
-    //   213: goto -92 -> 121
-    //   216: astore_2
-    //   217: aload_1
-    //   218: monitorexit
-    //   219: aload_2
-    //   220: athrow
-    //   221: astore_2
-    //   222: new 39	android/os/Bundle
-    //   225: dup
-    //   226: invokespecial 40	android/os/Bundle:<init>	()V
-    //   229: astore_3
-    //   230: aload_3
-    //   231: getstatic 46	com/tencent/open/downloadnew/DownloadConstants:b	Ljava/lang/String;
-    //   234: ldc 48
-    //   236: invokevirtual 52	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   239: aload_3
-    //   240: getstatic 55	com/tencent/open/downloadnew/DownloadConstants:j	Ljava/lang/String;
-    //   243: aload_0
-    //   244: getfield 12	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler$2:this$0	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
-    //   247: getfield 57	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   250: invokevirtual 52	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   253: aload_3
-    //   254: getstatic 60	com/tencent/open/downloadnew/DownloadConstants:k	Ljava/lang/String;
-    //   257: iconst_2
-    //   258: invokevirtual 64	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   261: aload_3
-    //   262: getstatic 67	com/tencent/open/downloadnew/DownloadConstants:l	Ljava/lang/String;
-    //   265: ldc 69
-    //   267: invokevirtual 52	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   270: aload_3
-    //   271: getstatic 72	com/tencent/open/downloadnew/DownloadConstants:r	Ljava/lang/String;
-    //   274: iconst_0
-    //   275: invokevirtual 76	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   278: aload_3
-    //   279: getstatic 79	com/tencent/open/downloadnew/DownloadConstants:x	Ljava/lang/String;
-    //   282: iconst_0
-    //   283: invokevirtual 76	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   286: aload_3
-    //   287: getstatic 82	com/tencent/open/downloadnew/DownloadConstants:f	Ljava/lang/String;
-    //   290: ldc 84
-    //   292: invokevirtual 52	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   295: aload_0
-    //   296: getfield 12	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler$2:this$0	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
-    //   299: getfield 87	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity	Lcom/tencent/mobileqq/activity/QQBrowserActivity;
-    //   302: aload_3
-    //   303: ldc 89
-    //   305: aconst_null
-    //   306: iconst_0
-    //   307: invokestatic 94	com/tencent/open/downloadnew/DownloadApi:a	(Landroid/app/Activity;Landroid/os/Bundle;Ljava/lang/String;Lcom/tencent/apkupdate/logic/data/ApkUpdateDetail;I)V
-    //   310: aload_2
-    //   311: athrow
+    //   125: aload_1
+    //   126: aload_2
+    //   127: aload_3
+    //   128: invokeinterface 99 3 0
+    //   133: goto +193 -> 326
+    //   136: astore_1
+    //   137: new 39	android/os/Bundle
+    //   140: dup
+    //   141: invokespecial 40	android/os/Bundle:<init>	()V
+    //   144: astore_2
+    //   145: aload_2
+    //   146: getstatic 46	com/tencent/open/downloadnew/DownloadConstants:b	Ljava/lang/String;
+    //   149: ldc 48
+    //   151: invokevirtual 52	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   154: aload_2
+    //   155: getstatic 55	com/tencent/open/downloadnew/DownloadConstants:j	Ljava/lang/String;
+    //   158: aload_0
+    //   159: getfield 12	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler$2:this$0	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
+    //   162: getfield 57	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   165: invokevirtual 52	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   168: aload_2
+    //   169: getstatic 60	com/tencent/open/downloadnew/DownloadConstants:k	Ljava/lang/String;
+    //   172: iconst_2
+    //   173: invokevirtual 64	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   176: aload_2
+    //   177: getstatic 67	com/tencent/open/downloadnew/DownloadConstants:l	Ljava/lang/String;
+    //   180: ldc 69
+    //   182: invokevirtual 52	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   185: aload_2
+    //   186: getstatic 72	com/tencent/open/downloadnew/DownloadConstants:s	Ljava/lang/String;
+    //   189: iconst_0
+    //   190: invokevirtual 76	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   193: aload_2
+    //   194: getstatic 79	com/tencent/open/downloadnew/DownloadConstants:y	Ljava/lang/String;
+    //   197: iconst_0
+    //   198: invokevirtual 76	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   201: aload_2
+    //   202: getstatic 82	com/tencent/open/downloadnew/DownloadConstants:f	Ljava/lang/String;
+    //   205: ldc 84
+    //   207: invokevirtual 52	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   210: ldc 86
+    //   212: invokestatic 92	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   215: checkcast 86	com/tencent/open/temp/api/IWebViewOpenSdkApi
+    //   218: aload_0
+    //   219: getfield 12	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler$2:this$0	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
+    //   222: getfield 95	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
+    //   225: aload_2
+    //   226: invokeinterface 99 3 0
+    //   231: aload_1
+    //   232: athrow
+    //   233: new 39	android/os/Bundle
+    //   236: dup
+    //   237: invokespecial 40	android/os/Bundle:<init>	()V
+    //   240: astore_3
+    //   241: aload_3
+    //   242: getstatic 46	com/tencent/open/downloadnew/DownloadConstants:b	Ljava/lang/String;
+    //   245: ldc 48
+    //   247: invokevirtual 52	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   250: aload_3
+    //   251: getstatic 55	com/tencent/open/downloadnew/DownloadConstants:j	Ljava/lang/String;
+    //   254: aload_0
+    //   255: getfield 12	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler$2:this$0	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
+    //   258: getfield 57	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   261: invokevirtual 52	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   264: aload_3
+    //   265: getstatic 60	com/tencent/open/downloadnew/DownloadConstants:k	Ljava/lang/String;
+    //   268: iconst_2
+    //   269: invokevirtual 64	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   272: aload_3
+    //   273: getstatic 67	com/tencent/open/downloadnew/DownloadConstants:l	Ljava/lang/String;
+    //   276: ldc 69
+    //   278: invokevirtual 52	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   281: aload_3
+    //   282: getstatic 72	com/tencent/open/downloadnew/DownloadConstants:s	Ljava/lang/String;
+    //   285: iconst_0
+    //   286: invokevirtual 76	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   289: aload_3
+    //   290: getstatic 79	com/tencent/open/downloadnew/DownloadConstants:y	Ljava/lang/String;
+    //   293: iconst_0
+    //   294: invokevirtual 76	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   297: aload_3
+    //   298: getstatic 82	com/tencent/open/downloadnew/DownloadConstants:f	Ljava/lang/String;
+    //   301: ldc 84
+    //   303: invokevirtual 52	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   306: ldc 86
+    //   308: invokestatic 92	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   311: checkcast 86	com/tencent/open/temp/api/IWebViewOpenSdkApi
+    //   314: astore_1
+    //   315: aload_0
+    //   316: getfield 12	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler$2:this$0	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
+    //   319: getfield 95	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
+    //   322: astore_2
+    //   323: goto -198 -> 125
+    //   326: aload 4
+    //   328: monitorexit
+    //   329: return
+    //   330: astore_1
+    //   331: aload 4
+    //   333: monitorexit
+    //   334: goto +5 -> 339
+    //   337: aload_1
+    //   338: athrow
+    //   339: goto -2 -> 337
+    //   342: astore_1
+    //   343: goto -110 -> 233
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	312	0	this	2
-    //   7	211	1	localObject1	Object
-    //   40	74	2	localBundle1	android.os.Bundle
-    //   124	1	2	localInterruptedException	java.lang.InterruptedException
-    //   132	74	2	localBundle2	android.os.Bundle
-    //   216	4	2	localObject2	Object
-    //   221	90	2	localObject3	Object
-    //   229	74	3	localBundle3	android.os.Bundle
+    //   0	346	0	this	2
+    //   116	10	1	localIWebViewOpenSdkApi1	com.tencent.open.temp.api.IWebViewOpenSdkApi
+    //   136	96	1	localObject1	Object
+    //   314	1	1	localIWebViewOpenSdkApi2	com.tencent.open.temp.api.IWebViewOpenSdkApi
+    //   330	8	1	localObject2	Object
+    //   342	1	1	localInterruptedException	java.lang.InterruptedException
+    //   124	199	2	localObject3	Object
+    //   42	256	3	localBundle	android.os.Bundle
+    //   7	325	4	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   10	33	124	java/lang/InterruptedException
-    //   33	121	216	finally
-    //   121	123	216	finally
-    //   125	213	216	finally
-    //   217	219	216	finally
-    //   222	312	216	finally
-    //   10	33	221	finally
+    //   12	35	136	finally
+    //   35	125	330	finally
+    //   125	133	330	finally
+    //   137	233	330	finally
+    //   233	323	330	finally
+    //   326	329	330	finally
+    //   331	334	330	finally
+    //   12	35	342	java/lang/InterruptedException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler.2
  * JD-Core Version:    0.7.0.1
  */

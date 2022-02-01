@@ -38,35 +38,39 @@ public final class TMediaCodec$HookCallback
   
   public void onError(@NonNull MediaCodec paramMediaCodec, @NonNull MediaCodec.CodecException paramCodecException)
   {
-    if (this.callback != null) {
-      this.callback.onError(this.tMediaCodec, paramCodecException);
+    paramMediaCodec = this.callback;
+    if (paramMediaCodec != null) {
+      paramMediaCodec.onError(this.tMediaCodec, paramCodecException);
     }
   }
   
   public void onInputBufferAvailable(@NonNull MediaCodec paramMediaCodec, int paramInt)
   {
-    if (this.callback != null) {
-      this.callback.onInputBufferAvailable(this.tMediaCodec, paramInt);
+    paramMediaCodec = this.callback;
+    if (paramMediaCodec != null) {
+      paramMediaCodec.onInputBufferAvailable(this.tMediaCodec, paramInt);
     }
   }
   
   public void onOutputBufferAvailable(@NonNull MediaCodec paramMediaCodec, int paramInt, @NonNull MediaCodec.BufferInfo paramBufferInfo)
   {
-    if (this.callback != null) {
-      this.callback.onOutputBufferAvailable(this.tMediaCodec, paramInt, paramBufferInfo);
+    paramMediaCodec = this.callback;
+    if (paramMediaCodec != null) {
+      paramMediaCodec.onOutputBufferAvailable(this.tMediaCodec, paramInt, paramBufferInfo);
     }
   }
   
   public void onOutputFormatChanged(@NonNull MediaCodec paramMediaCodec, @NonNull MediaFormat paramMediaFormat)
   {
-    if (this.callback != null) {
-      this.callback.onOutputFormatChanged(this.tMediaCodec, paramMediaFormat);
+    paramMediaCodec = this.callback;
+    if (paramMediaCodec != null) {
+      paramMediaCodec.onOutputFormatChanged(this.tMediaCodec, paramMediaFormat);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmediacodec.TMediaCodec.HookCallback
  * JD-Core Version:    0.7.0.1
  */

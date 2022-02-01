@@ -26,106 +26,137 @@ public class ProxyServiceEngine
     //   10: checkcast 50	java/lang/Class
     //   13: astore_3
     //   14: aload_3
-    //   15: ifnonnull +29 -> 44
-    //   18: ldc 8
-    //   20: new 52	java/lang/StringBuilder
-    //   23: dup
-    //   24: invokespecial 53	java/lang/StringBuilder:<init>	()V
+    //   15: ifnonnull +35 -> 50
+    //   18: new 52	java/lang/StringBuilder
+    //   21: dup
+    //   22: invokespecial 53	java/lang/StringBuilder:<init>	()V
+    //   25: astore_2
+    //   26: aload_2
     //   27: ldc 55
     //   29: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   32: aload_1
-    //   33: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   36: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   39: invokestatic 72	com/tencent/qqmini/sdk/launcher/log/QMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   42: aconst_null
-    //   43: areturn
-    //   44: aload_0
-    //   45: getfield 37	com/tencent/qqmini/sdk/core/proxy/engine/ProxyServiceEngine:mActivatedServices	Ljava/util/Map;
-    //   48: aload_3
-    //   49: invokeinterface 48 2 0
-    //   54: astore_2
-    //   55: aload_2
-    //   56: ifnull +5 -> 61
-    //   59: aload_2
-    //   60: areturn
-    //   61: aload_0
-    //   62: monitorenter
-    //   63: aload_2
-    //   64: astore_1
+    //   32: pop
+    //   33: aload_2
+    //   34: aload_1
+    //   35: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   38: pop
+    //   39: ldc 8
+    //   41: aload_2
+    //   42: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   45: invokestatic 72	com/tencent/qqmini/sdk/launcher/log/QMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   48: aconst_null
+    //   49: areturn
+    //   50: aload_0
+    //   51: getfield 37	com/tencent/qqmini/sdk/core/proxy/engine/ProxyServiceEngine:mActivatedServices	Ljava/util/Map;
+    //   54: aload_3
+    //   55: invokeinterface 48 2 0
+    //   60: astore_2
+    //   61: aload_2
+    //   62: ifnull +5 -> 67
     //   65: aload_2
-    //   66: ifnonnull +84 -> 150
+    //   66: areturn
+    //   67: aload_0
+    //   68: monitorenter
     //   69: aload_2
     //   70: astore_1
-    //   71: aload_3
-    //   72: invokevirtual 76	java/lang/Class:newInstance	()Ljava/lang/Object;
-    //   75: astore_2
-    //   76: aload_2
-    //   77: astore_1
-    //   78: ldc 8
-    //   80: new 52	java/lang/StringBuilder
-    //   83: dup
-    //   84: invokespecial 53	java/lang/StringBuilder:<init>	()V
-    //   87: ldc 78
-    //   89: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   92: aload_3
-    //   93: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   96: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   99: invokestatic 81	com/tencent/qqmini/sdk/launcher/log/QMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   102: aload_2
-    //   103: astore_1
-    //   104: aload_0
-    //   105: getfield 37	com/tencent/qqmini/sdk/core/proxy/engine/ProxyServiceEngine:mActivatedServices	Ljava/util/Map;
-    //   108: aload_3
-    //   109: aload_2
-    //   110: invokeinterface 85 3 0
-    //   115: pop
-    //   116: aload_0
-    //   117: monitorexit
-    //   118: aload_2
-    //   119: areturn
-    //   120: astore_1
-    //   121: aload_0
-    //   122: monitorexit
-    //   123: aload_1
-    //   124: athrow
-    //   125: astore_2
-    //   126: ldc 8
-    //   128: new 52	java/lang/StringBuilder
-    //   131: dup
-    //   132: invokespecial 53	java/lang/StringBuilder:<init>	()V
-    //   135: ldc 87
-    //   137: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   140: aload_3
-    //   141: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   144: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   147: invokestatic 90	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   150: aload_1
-    //   151: astore_2
-    //   152: goto -36 -> 116
+    //   71: aload_2
+    //   72: ifnonnull +101 -> 173
+    //   75: aload_2
+    //   76: astore_1
+    //   77: aload_3
+    //   78: invokevirtual 76	java/lang/Class:newInstance	()Ljava/lang/Object;
+    //   81: astore_2
+    //   82: aload_2
+    //   83: astore_1
+    //   84: new 52	java/lang/StringBuilder
+    //   87: dup
+    //   88: invokespecial 53	java/lang/StringBuilder:<init>	()V
+    //   91: astore 4
+    //   93: aload_2
+    //   94: astore_1
+    //   95: aload 4
+    //   97: ldc 78
+    //   99: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   102: pop
+    //   103: aload_2
+    //   104: astore_1
+    //   105: aload 4
+    //   107: aload_3
+    //   108: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   111: pop
+    //   112: aload_2
+    //   113: astore_1
+    //   114: ldc 8
+    //   116: aload 4
+    //   118: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   121: invokestatic 81	com/tencent/qqmini/sdk/launcher/log/QMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   124: aload_2
+    //   125: astore_1
+    //   126: aload_0
+    //   127: getfield 37	com/tencent/qqmini/sdk/core/proxy/engine/ProxyServiceEngine:mActivatedServices	Ljava/util/Map;
+    //   130: aload_3
+    //   131: aload_2
+    //   132: invokeinterface 85 3 0
+    //   137: pop
+    //   138: aload_2
+    //   139: astore_1
+    //   140: goto +33 -> 173
+    //   143: new 52	java/lang/StringBuilder
+    //   146: dup
+    //   147: invokespecial 53	java/lang/StringBuilder:<init>	()V
+    //   150: astore_2
+    //   151: aload_2
+    //   152: ldc 87
+    //   154: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   157: pop
+    //   158: aload_2
+    //   159: aload_3
+    //   160: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   163: pop
+    //   164: ldc 8
+    //   166: aload_2
+    //   167: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   170: invokestatic 90	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   173: aload_0
+    //   174: monitorexit
+    //   175: aload_1
+    //   176: areturn
+    //   177: astore_1
+    //   178: aload_0
+    //   179: monitorexit
+    //   180: aload_1
+    //   181: athrow
+    //   182: astore_2
+    //   183: goto -40 -> 143
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	155	0	this	ProxyServiceEngine
-    //   0	155	1	paramClass	Class
-    //   54	65	2	localObject	Object
-    //   125	1	2	localException	java.lang.Exception
-    //   151	1	2	localClass1	Class
-    //   13	128	3	localClass2	Class
+    //   0	186	0	this	ProxyServiceEngine
+    //   0	186	1	paramClass	Class
+    //   25	142	2	localObject	Object
+    //   182	1	2	localException	java.lang.Exception
+    //   13	147	3	localClass	Class
+    //   91	26	4	localStringBuilder	java.lang.StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   71	76	120	finally
-    //   78	102	120	finally
-    //   104	116	120	finally
-    //   116	118	120	finally
-    //   121	123	120	finally
-    //   126	150	120	finally
-    //   71	76	125	java/lang/Exception
-    //   78	102	125	java/lang/Exception
-    //   104	116	125	java/lang/Exception
+    //   77	82	177	finally
+    //   84	93	177	finally
+    //   95	103	177	finally
+    //   105	112	177	finally
+    //   114	124	177	finally
+    //   126	138	177	finally
+    //   143	173	177	finally
+    //   173	175	177	finally
+    //   178	180	177	finally
+    //   77	82	182	java/lang/Exception
+    //   84	93	182	java/lang/Exception
+    //   95	103	182	java/lang/Exception
+    //   105	112	182	java/lang/Exception
+    //   114	124	182	java/lang/Exception
+    //   126	138	182	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.engine.ProxyServiceEngine
  * JD-Core Version:    0.7.0.1
  */

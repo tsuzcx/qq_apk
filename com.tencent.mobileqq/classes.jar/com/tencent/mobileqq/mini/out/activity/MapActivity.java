@@ -93,40 +93,59 @@ public class MapActivity
     catch (Throwable localThrowable)
     {
       localThrowable.printStackTrace();
-      QLog.e("txmapengine", 2, "load txmapengine.so error!" + localThrowable.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("load txmapengine.so error!");
+      localStringBuilder.append(localThrowable.toString());
+      QLog.e("txmapengine", 2, localStringBuilder.toString());
     }
   }
   
   private void getPoiList(int paramInt1, int paramInt2)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("MapActivity", 4, "getPoiList lat=" + paramInt1 + ",lon=" + paramInt2 + ",page=" + this.poiAdapter.nextBegin + ",isSearching=" + this.isSearching + ",hasMore=" + this.poiAdapter.hasMore);
+    Object localObject;
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getPoiList lat=");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(",lon=");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append(",page=");
+      ((StringBuilder)localObject).append(this.poiAdapter.nextBegin);
+      ((StringBuilder)localObject).append(",isSearching=");
+      ((StringBuilder)localObject).append(this.isSearching);
+      ((StringBuilder)localObject).append(",hasMore=");
+      ((StringBuilder)localObject).append(this.poiAdapter.hasMore);
+      QLog.i("MapActivity", 4, ((StringBuilder)localObject).toString());
     }
-    if ((this.isSearching) || (!this.poiAdapter.hasMore)) {
-      return;
+    if (!this.isSearching)
+    {
+      if (!this.poiAdapter.hasMore) {
+        return;
+      }
+      this.isSearching = true;
+      ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", getCurrentAccountUin(), "LbsShareSvr.location");
+      LBSShare.LocationReq localLocationReq = new LBSShare.LocationReq();
+      localLocationReq.lat.set(paramInt1);
+      localLocationReq.lng.set(paramInt2);
+      localLocationReq.coordinate.set(0);
+      localLocationReq.keyword.set("");
+      localLocationReq.page.set(this.poiAdapter.nextBegin);
+      localLocationReq.count.set(10);
+      localLocationReq.requireMyLbs.set(0);
+      String str = DeviceInfoUtil.a();
+      localObject = str;
+      if (str == null) {
+        localObject = "";
+      }
+      localLocationReq.imei.set((String)localObject);
+      localToServiceMsg.putWupBuffer(localLocationReq.toByteArray());
+      localToServiceMsg.addAttribute("is_pb_packet", Boolean.valueOf(true));
+      localObject = new NewIntent(this.app.getApplication(), CommonServlet.class);
+      ((NewIntent)localObject).putExtra(ToServiceMsg.class.getSimpleName(), localToServiceMsg);
+      ((NewIntent)localObject).setObserver(this.commonObserver);
+      this.app.startServlet((NewIntent)localObject);
     }
-    this.isSearching = true;
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", getCurrentAccountUin(), "LbsShareSvr.location");
-    LBSShare.LocationReq localLocationReq = new LBSShare.LocationReq();
-    localLocationReq.lat.set(paramInt1);
-    localLocationReq.lng.set(paramInt2);
-    localLocationReq.coordinate.set(0);
-    localLocationReq.keyword.set("");
-    localLocationReq.page.set(this.poiAdapter.nextBegin);
-    localLocationReq.count.set(10);
-    localLocationReq.requireMyLbs.set(0);
-    String str = DeviceInfoUtil.a();
-    Object localObject = str;
-    if (str == null) {
-      localObject = "";
-    }
-    localLocationReq.imei.set((String)localObject);
-    localToServiceMsg.putWupBuffer(localLocationReq.toByteArray());
-    localToServiceMsg.addAttribute("is_pb_packet", Boolean.valueOf(true));
-    localObject = new NewIntent(this.app.getApplication(), CommonServlet.class);
-    ((NewIntent)localObject).putExtra(ToServiceMsg.class.getSimpleName(), localToServiceMsg);
-    ((NewIntent)localObject).setObserver(this.commonObserver);
-    this.app.startServlet((NewIntent)localObject);
   }
   
   private void location(boolean paramBoolean)
@@ -136,21 +155,22 @@ public class MapActivity
   
   private void refreshPoiList(List<LBSShare.POI> paramList, int paramInt)
   {
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("refreshPoiList poiList size=");
-      if (paramList == null) {
-        break label72;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("refreshPoiList poiList size=");
+      int i;
+      if (paramList != null) {
+        i = paramList.size();
+      } else {
+        i = 0;
       }
+      localStringBuilder.append(i);
+      localStringBuilder.append(",next=");
+      localStringBuilder.append(paramInt);
+      QLog.d("MapActivity", 2, localStringBuilder.toString());
     }
-    label72:
-    for (int i = paramList.size();; i = 0)
-    {
-      QLog.d("MapActivity", 2, i + ",next=" + paramInt);
-      runOnUiThread(new MapActivity.4(this, paramList, paramInt));
-      return;
-    }
+    runOnUiThread(new MapActivity.4(this, paramList, paramInt));
   }
   
   @Override
@@ -162,11 +182,12 @@ public class MapActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
-    Object localObject1 = null;
     super.doOnCreate(paramBundle);
-    paramBundle = LayoutInflater.from(this).inflate(2131562159, null);
+    paramBundle = LayoutInflater.from(this);
+    Object localObject1 = null;
+    paramBundle = paramBundle.inflate(2131561996, null);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramBundle.setFitsSystemWindows(true);
@@ -174,26 +195,26 @@ public class MapActivity
     }
     super.setContentView(paramBundle);
     this.app = getAppInterface();
-    this.dialog = new QQCustomDialog(this, 2131755842);
-    this.dialog.setContentView(2131559084);
+    this.dialog = new QQCustomDialog(this, 2131756189);
+    this.dialog.setContentView(2131558978);
     this.dialog.setCanceledOnTouchOutside(false);
     this.mapHelper = new MapHelper(this);
     Intent localIntent = getIntent();
     this.type = localIntent.getIntExtra("key_type", 0);
-    this.titleView = ((TextView)findViewById(2131369534));
-    this.leftBtnView = ((TextView)findViewById(2131369487));
-    this.rightBtnView = ((TextView)findViewById(2131369519));
-    this.mapView = ((QQMapView)findViewById(2131371026));
-    this.mapView.setContentDescription(getString(2131694956));
+    this.titleView = ((TextView)findViewById(2131369249));
+    this.leftBtnView = ((TextView)findViewById(2131369202));
+    this.rightBtnView = ((TextView)findViewById(2131369234));
+    this.mapView = ((QQMapView)findViewById(2131370660));
+    this.mapView.setContentDescription(getString(2131694946));
     this.mapView.getMap().getUiSettings().setLogoPosition(0);
     this.mapView.getMap().getUiSettings().setScaleViewEnabled(false);
     this.mapView.setObserver(this);
     this.map = this.mapView.getMap();
-    this.poiLocationView = ((ImageView)findViewById(2131373330));
-    this.pinView = ((ImageView)findViewById(2131373220));
-    this.poiLayout = ((RelativeLayout)findViewById(2131373324));
-    this.routeLayout = findViewById(2131377402);
-    this.routeBtn = ((Button)findViewById(2131377398));
+    this.poiLocationView = ((ImageView)findViewById(2131372909));
+    this.pinView = ((ImageView)findViewById(2131372798));
+    this.poiLayout = ((RelativeLayout)findViewById(2131372904));
+    this.routeLayout = findViewById(2131376852);
+    this.routeBtn = ((Button)findViewById(2131376848));
     this.routeBtn.setOnClickListener(this);
     this.leftBtnView.setOnClickListener(this);
     this.rightBtnView.setOnClickListener(this);
@@ -201,32 +222,32 @@ public class MapActivity
     this.poiLocationView.setOnClickListener(this);
     try
     {
-      paramBundle = BitmapFactory.decodeResource(getResources(), 2130848038);
+      paramBundle = BitmapFactory.decodeResource(getResources(), 2130847909);
     }
     catch (OutOfMemoryError paramBundle)
     {
-      for (;;)
-      {
-        Object localObject2;
-        label369:
-        int i;
-        paramBundle = null;
-      }
+      Object localObject2;
+      label374:
+      int i;
+      break label374;
     }
     try
     {
-      localObject2 = BitmapFactory.decodeResource(getResources(), 2130842574);
+      localObject2 = BitmapFactory.decodeResource(getResources(), 2130842473);
       localObject1 = localObject2;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      break label369;
+      break label376;
     }
+    paramBundle = null;
+    label376:
     i = localIntent.getIntExtra("scale", 18);
     this.map.moveCamera(CameraUpdateFactory.zoomTo(i));
-    if (this.type == 1)
+    i = this.type;
+    if (i == 1)
     {
-      this.leftBtnView.setText(HardCodeUtil.a(2131706464));
+      this.leftBtnView.setText(HardCodeUtil.a(2131706511));
       this.routeLayout.setVisibility(0);
       this.targetLatLng = new LatLng(localIntent.getDoubleExtra("latitude", 0.0D), localIntent.getDoubleExtra("longitude", 0.0D));
       this.map.moveCamera(CameraUpdateFactory.newLatLng(this.targetLatLng));
@@ -236,92 +257,93 @@ public class MapActivity
       this.map.addMarker((MarkerOptions)localObject1);
       this.targetName = localIntent.getStringExtra("name");
       paramBundle = localIntent.getStringExtra("address");
-      localObject1 = (TextView)this.routeLayout.findViewById(2131362230);
-      localObject2 = (TextView)this.routeLayout.findViewById(2131365708);
+      localObject1 = (TextView)this.routeLayout.findViewById(2131362253);
+      localObject2 = (TextView)this.routeLayout.findViewById(2131365545);
       ((TextView)localObject1).setText(this.targetName);
       ((TextView)localObject2).setText(paramBundle);
       location(false);
-    }
-    while (this.type != 2) {
       return true;
     }
-    this.noResultView = ((TextView)findViewById(2131372336));
-    this.poiAdapter = new POIAdapter(this);
-    this.poiListView = ((XListView)findViewById(2131377573));
-    this.poiListView.setAdapter(this.poiAdapter);
-    this.poiListView.setOnScrollListener(this.mOnSearchScrollListener);
-    this.poiListView.setOnItemClickListener(new MapActivity.1(this));
-    this.leftBtnView.setText(HardCodeUtil.a(2131706461));
-    this.rightBtnView.setVisibility(0);
-    this.rightBtnView.setText(HardCodeUtil.a(2131706457));
-    this.poiLayout.setVisibility(0);
-    this.pinView.setVisibility(0);
-    if (localObject1 != null)
+    if (i == 2)
     {
-      this.pinView.setImageBitmap((Bitmap)localObject1);
-      this.pinView.setPadding(0, 0, 0, ((Bitmap)localObject1).getHeight());
+      this.noResultView = ((TextView)findViewById(2131371921));
+      this.poiAdapter = new POIAdapter(this);
+      this.poiListView = ((XListView)findViewById(2131377016));
+      this.poiListView.setAdapter(this.poiAdapter);
+      this.poiListView.setOnScrollListener(this.mOnSearchScrollListener);
+      this.poiListView.setOnItemClickListener(new MapActivity.1(this));
+      this.leftBtnView.setText(HardCodeUtil.a(2131706508));
+      this.rightBtnView.setVisibility(0);
+      this.rightBtnView.setText(HardCodeUtil.a(2131706504));
+      this.poiLayout.setVisibility(0);
+      this.pinView.setVisibility(0);
+      if (localObject1 != null)
+      {
+        this.pinView.setImageBitmap((Bitmap)localObject1);
+        this.pinView.setPadding(0, 0, 0, ((Bitmap)localObject1).getHeight());
+      }
+      location(true);
     }
-    location(true);
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
     this.commonObserver = null;
-    if (this.dialog != null)
+    QQCustomDialog localQQCustomDialog = this.dialog;
+    if (localQQCustomDialog != null)
     {
-      this.dialog.setOnDismissListener(null);
+      localQQCustomDialog.setOnDismissListener(null);
       if (this.dialog.isShowing()) {
         this.dialog.dismiss();
       }
     }
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
-    if (this.mapView != null) {
-      this.mapView.onResume();
+    QQMapView localQQMapView = this.mapView;
+    if (localQQMapView != null) {
+      localQQMapView.onResume();
     }
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131369487) {
+    if (paramView.getId() == 2131369202)
+    {
       finish();
     }
-    for (;;)
+    else if (paramView.getId() == 2131372909)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (paramView.getId() == 2131373330)
+      location(true);
+    }
+    else if (paramView.getId() == 2131376848)
+    {
+      this.mapHelper.showActionSheet(this.fromLatLng, this.targetLatLng, null, this.targetName);
+    }
+    else if (paramView.getId() == 2131369234)
+    {
+      Object localObject = this.poiAdapter;
+      localObject = ((POIAdapter)localObject).getItem(((POIAdapter)localObject).selectPos);
+      if (localObject == null)
       {
-        location(true);
+        QQToast.a(this, 0, HardCodeUtil.a(2131706510), 1).b(getResources().getDimensionPixelSize(2131299168));
       }
-      else if (paramView.getId() == 2131377398)
+      else
       {
-        this.mapHelper.showActionSheet(this.fromLatLng, this.targetLatLng, null, this.targetName);
-      }
-      else if (paramView.getId() == 2131369519)
-      {
-        LBSShare.POI localPOI = this.poiAdapter.getItem(this.poiAdapter.selectPos);
-        if (localPOI == null)
-        {
-          QQToast.a(this, 0, HardCodeUtil.a(2131706463), 1).b(getResources().getDimensionPixelSize(2131299166));
-        }
-        else
-        {
-          Intent localIntent = new Intent();
-          localIntent.putExtra("name", localPOI.name.get());
-          localIntent.putExtra("address", localPOI.addr.get());
-          localIntent.putExtra("latitude", localPOI.lat.get());
-          localIntent.putExtra("longitude", localPOI.lng.get());
-          setResult(-1, localIntent);
-          finish();
-        }
+        Intent localIntent = new Intent();
+        localIntent.putExtra("name", ((LBSShare.POI)localObject).name.get());
+        localIntent.putExtra("address", ((LBSShare.POI)localObject).addr.get());
+        localIntent.putExtra("latitude", ((LBSShare.POI)localObject).lat.get());
+        localIntent.putExtra("longitude", ((LBSShare.POI)localObject).lng.get());
+        setResult(-1, localIntent);
+        finish();
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   @Override
@@ -346,7 +368,7 @@ public class MapActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.MapActivity
  * JD-Core Version:    0.7.0.1
  */

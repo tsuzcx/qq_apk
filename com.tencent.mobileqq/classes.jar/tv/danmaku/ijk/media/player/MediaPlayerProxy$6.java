@@ -12,7 +12,7 @@ class MediaPlayerProxy$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tv.danmaku.ijk.media.player.MediaPlayerProxy.6
  * JD-Core Version:    0.7.0.1
  */

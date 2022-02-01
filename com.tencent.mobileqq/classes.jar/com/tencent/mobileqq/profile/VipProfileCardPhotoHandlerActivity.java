@@ -7,10 +7,10 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.profilecard.base.utils.ProfileCardUtils;
 import com.tencent.mobileqq.util.ProfileCardUtil;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -18,15 +18,10 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class VipProfileCardPhotoHandlerActivity
   extends BaseActivity
 {
-  public static boolean a;
+  public static boolean a = false;
   private Uri a;
   private boolean b = false;
   private boolean c = false;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = false;
-  }
   
   private void a()
   {
@@ -46,10 +41,10 @@ public class VipProfileCardPhotoHandlerActivity
         requestPermissions(new VipProfileCardPhotoHandlerActivity.1(this), 1, new String[] { "android.permission.CAMERA" });
         return;
       }
-      this.jdField_a_of_type_AndroidNetUri = ProfileActivity.a(this, 5);
+      this.jdField_a_of_type_AndroidNetUri = ProfileCardUtils.enterSnapshot(this, 5);
       return;
     }
-    this.jdField_a_of_type_AndroidNetUri = ProfileActivity.a(this, 5);
+    this.jdField_a_of_type_AndroidNetUri = ProfileCardUtils.enterSnapshot(this, 5);
   }
   
   protected void a(Uri paramUri)
@@ -72,14 +67,12 @@ public class VipProfileCardPhotoHandlerActivity
         localIntent.putExtra("extra_card_id", 0L);
         localIntent.putExtra("extra_card_path", paramString);
         startActivity(localIntent);
+        return;
       }
+      Intent localIntent = new Intent(this, VipProfileCardPreviewActivity.class);
+      localIntent.putExtra("custom_card_background", paramString);
+      startActivity(localIntent);
     }
-    else {
-      return;
-    }
-    Intent localIntent = new Intent(this, VipProfileCardPreviewActivity.class);
-    localIntent.putExtra("custom_card_background", paramString);
-    startActivity(localIntent);
   }
   
   @Override
@@ -105,21 +98,14 @@ public class VipProfileCardPhotoHandlerActivity
   {
     super.doOnCreate(paramBundle);
     paramBundle = getIntent();
-    if ((paramBundle != null) && (!TextUtils.isEmpty(paramBundle.getStringExtra("action"))))
-    {
-      if (!paramBundle.getStringExtra("action").equals("select_photo")) {
-        break label47;
-      }
-      a();
-    }
-    for (;;)
-    {
-      return true;
-      label47:
-      if (paramBundle.getStringExtra("action").equals("take_photo")) {
+    if ((paramBundle != null) && (!TextUtils.isEmpty(paramBundle.getStringExtra("action")))) {
+      if (paramBundle.getStringExtra("action").equals("select_photo")) {
+        a();
+      } else if (paramBundle.getStringExtra("action").equals("take_photo")) {
         b();
       }
     }
+    return true;
   }
   
   public void doOnNewIntent(Intent paramIntent)
@@ -140,14 +126,13 @@ public class VipProfileCardPhotoHandlerActivity
     super.doOnResume();
     if (this.b)
     {
-      if (!this.c) {
+      if (!this.c)
+      {
         finish();
+        return;
       }
+      this.c = false;
     }
-    else {
-      return;
-    }
-    this.c = false;
   }
   
   public void doOnStop()
@@ -165,7 +150,7 @@ public class VipProfileCardPhotoHandlerActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.VipProfileCardPhotoHandlerActivity
  * JD-Core Version:    0.7.0.1
  */

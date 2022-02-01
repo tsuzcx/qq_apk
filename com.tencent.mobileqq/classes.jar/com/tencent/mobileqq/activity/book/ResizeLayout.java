@@ -26,19 +26,19 @@ public class ResizeLayout
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (isInEditMode()) {}
-    for (;;)
-    {
+    if (isInEditMode()) {
       return;
-      super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-      if (paramInt2 > paramInt4) {}
-      for (this.jdField_a_of_type_Boolean = false; this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout$OnResizeListener != null; this.jdField_a_of_type_Boolean = true)
-      {
-        new Handler(Looper.getMainLooper()).postDelayed(new ResizeLayout.1(this, paramInt1, paramInt2, paramInt3, paramInt4), 50L);
-        return;
-      }
+    }
+    super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
+    if (paramInt2 > paramInt4) {
+      this.jdField_a_of_type_Boolean = false;
+    } else {
+      this.jdField_a_of_type_Boolean = true;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout$OnResizeListener != null) {
+      new Handler(Looper.getMainLooper()).postDelayed(new ResizeLayout.1(this, paramInt1, paramInt2, paramInt3, paramInt4), 50L);
     }
   }
   
@@ -57,7 +57,7 @@ public class ResizeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.book.ResizeLayout
  * JD-Core Version:    0.7.0.1
  */

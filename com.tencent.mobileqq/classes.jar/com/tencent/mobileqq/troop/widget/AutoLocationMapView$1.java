@@ -24,10 +24,23 @@ class AutoLocationMapView$1
     this.a.getMap().clear();
     if (paramMessage.arg1 == 0)
     {
-      this.a.getMap().moveCamera(CameraUpdateFactory.newLatLng(new LatLng(localGeoPoint.getLatitudeE6() / 1000000.0D, localGeoPoint.getLongitudeE6() / 1000000.0D)));
+      TencentMap localTencentMap = this.a.getMap();
+      double d1 = localGeoPoint.getLatitudeE6();
+      Double.isNaN(d1);
+      d1 /= 1000000.0D;
+      double d2 = localGeoPoint.getLongitudeE6();
+      Double.isNaN(d2);
+      localTencentMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(d1, d2 / 1000000.0D)));
       this.a.getMap().moveCamera(CameraUpdateFactory.zoomTo(this.a.getMap().getMaxZoomLevel()));
-      Bitmap localBitmap = BitmapManager.a(this.a.getContext().getResources(), 2130842683);
-      QQMapActivity.a(this.a.getMap().addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap(localBitmap)).snippet("").position(new LatLng(localGeoPoint.getLatitudeE6() / 1000000.0D, localGeoPoint.getLongitudeE6() / 1000000.0D))));
+      Object localObject = BitmapManager.a(this.a.getContext().getResources(), 2130842582);
+      localTencentMap = this.a.getMap();
+      localObject = new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap((Bitmap)localObject)).snippet("");
+      d1 = localGeoPoint.getLatitudeE6();
+      Double.isNaN(d1);
+      d1 /= 1000000.0D;
+      d2 = localGeoPoint.getLongitudeE6();
+      Double.isNaN(d2);
+      QQMapActivity.showInfoWindow(localTencentMap.addMarker(((MarkerOptions)localObject).position(new LatLng(d1, d2 / 1000000.0D))));
     }
     if (this.a.a != null) {
       this.a.a.a(paramMessage.arg1, localGeoPoint);
@@ -36,7 +49,7 @@ class AutoLocationMapView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AutoLocationMapView.1
  * JD-Core Version:    0.7.0.1
  */

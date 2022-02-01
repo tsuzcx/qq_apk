@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.profilecard.base.component;
 
+import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,41 +13,47 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.VisitorsActivity;
 import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.CardHandler;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.SVIPObserver;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.app.face.DynamicFaceDrawable;
 import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
-import com.tencent.mobileqq.config.business.qvip.QVipProfileFootPrintConfig;
-import com.tencent.mobileqq.config.business.qvip.QVipProfileFootPrintProcessor;
+import com.tencent.mobileqq.avatar.observer.AvatarObserver;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.nearby.NearbyProxy;
+import com.tencent.mobileqq.nearby.NearbyProxyUtils;
 import com.tencent.mobileqq.profile.DataTag;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
 import com.tencent.mobileqq.profile.vote.VoteHelper;
+import com.tencent.mobileqq.profilecard.base.container.IProfileHeaderContainer;
 import com.tencent.mobileqq.profilecard.base.framework.IComponentCenter;
 import com.tencent.mobileqq.profilecard.base.utils.ProfileSignatureUtils;
 import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
+import com.tencent.mobileqq.profilecard.utils.ProfileEntryUtils;
+import com.tencent.mobileqq.profilecard.utils.ProfilePAUtils;
+import com.tencent.mobileqq.profilecard.utils.ProfileUtils;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.util.ProfileCardUtil;
 import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.mobileqq.vas.ZanDoubleDialog;
+import com.tencent.mobileqq.vas.api.IVasSingedApi;
 import com.tencent.mobileqq.vas.avatar.AvatarLayout;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipProfileFootPrintConfig;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipProfileFootPrintProcessor;
+import com.tencent.mobileqq.vas.util.VasUtil;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
+import com.tencent.mobileqq.vip.IVipStatusManager;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.widget.VoteView;
 import com.tencent.mobileqq.widget.VoteViewV2;
@@ -63,89 +70,96 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class AbsProfileHeaderComponent
-  extends AbsProfileComponent<FrameLayout>
-  implements View.OnClickListener
+  extends AbsQQProfileComponent<FrameLayout>
+  implements View.OnClickListener, IProfileHeaderContainer
 {
   private static final int SUB_THREAD_MSG_REQ_FAVORITE = 10;
   private static final Object S_CACHE_VOTE_LOCK = new Object();
   private static final String TAG = "AbsProfileHeaderComponent";
+  private static final int UI_THREAD_MSG_SHOW_VOTE_RED_DOT = 1;
   private static final long VOTE_FAIL_TOAST_INTERVAL = 2000L;
-  private AtomicInteger mCacheVoteNum = new AtomicInteger(0);
-  protected IProfileActivityDelegate mDelegate;
+  private final AvatarObserver mAvatarObserver = new AbsProfileHeaderComponent.4(this);
+  private final AtomicInteger mCacheVoteNum = new AtomicInteger(0);
   protected AbsProfileHeaderView mHeaderView;
   private long mLastToastVoteFailTime;
   private AtomicBoolean mNeedSVipDialog = new AtomicBoolean(true);
   private AtomicBoolean mOpenSVipPay = new AtomicBoolean(false);
   protected ViewGroup mRootView;
   private SVIPObserver mSVipObserver = new AbsProfileHeaderComponent.3(this);
-  private Handler.Callback mSubCallback = new AbsProfileHeaderComponent.2(this);
+  private final Handler.Callback mSubCallback = new AbsProfileHeaderComponent.2(this);
   protected WeakReferenceHandler mSubHandler;
-  private Handler.Callback mUICallback = new AbsProfileHeaderComponent.1(this);
-  public WeakReferenceHandler mUIHandler;
+  private final Handler.Callback mUICallback = new AbsProfileHeaderComponent.1(this);
+  protected WeakReferenceHandler mUIHandler;
   
   public AbsProfileHeaderComponent(IComponentCenter paramIComponentCenter, ProfileCardInfo paramProfileCardInfo)
   {
     super(paramIComponentCenter, paramProfileCardInfo);
   }
   
+  private void checkVoteRedTouch()
+  {
+    ThreadManager.post(new AbsProfileHeaderComponent.7(this), 5, null, false);
+  }
+  
   private String getGenderString(ProfileCardInfo paramProfileCardInfo)
   {
-    if ((paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null) && (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.shGender == 1)) {
-      return HardCodeUtil.a(2131693332);
+    if ((paramProfileCardInfo.card != null) && (paramProfileCardInfo.card.shGender == 1)) {
+      return HardCodeUtil.a(2131693287);
     }
-    return HardCodeUtil.a(2131693337);
+    return HardCodeUtil.a(2131693292);
   }
   
   private int guestAvatarClickReport()
   {
+    int j = ((ProfileCardInfo)this.mData).allInOne.pa;
     int i = 1;
-    if (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 1) {}
-    for (;;)
-    {
-      ReportController.b(this.mApp, "CliOper", "", "", "AvatarClick", "KerenInfoHeadClick", i, 0, "", "", "", "");
-      return i;
-      if (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 20) {
+    if (j != 1) {
+      if (((ProfileCardInfo)this.mData).allInOne.pa == 20) {
         i = 2;
-      } else if (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 21) {
+      } else if (((ProfileCardInfo)this.mData).allInOne.pa == 21) {
         i = 3;
-      } else if (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 45) {
+      } else if (((ProfileCardInfo)this.mData).allInOne.pa == 45) {
         i = 4;
-      } else if (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 46) {
+      } else if (((ProfileCardInfo)this.mData).allInOne.pa == 46) {
         i = 5;
-      } else if (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 41) {
+      } else if (((ProfileCardInfo)this.mData).allInOne.pa == 41) {
         i = 6;
-      } else if (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 42) {
+      } else if (((ProfileCardInfo)this.mData).allInOne.pa == 42) {
         i = 7;
       } else {
         i = 0;
       }
     }
+    ReportController.b(this.mApp, "CliOper", "", "", "AvatarClick", "KerenInfoHeadClick", i, 0, "", "", "", "");
+    return i;
   }
   
   private void handleAvatarClick()
   {
-    Object localObject;
-    if (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
+    Object localObject1;
+    if (((ProfileCardInfo)this.mData).allInOne.pa == 0)
     {
-      localObject = new Intent(this.mActivity, AvatarPendantActivity.class);
-      ((Intent)localObject).putExtra("AllInOne", ((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
-      this.mActivity.startActivity((Intent)localObject);
+      localObject1 = new Intent(this.mActivity, AvatarPendantActivity.class);
+      ((Intent)localObject1).putExtra("AllInOne", ((ProfileCardInfo)this.mData).allInOne);
+      this.mActivity.startActivity((Intent)localObject1);
     }
-    while (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
+    else
     {
-      ReportController.b(this.mApp, "CliOper", "", "", "0X8006A77", "0X8006A77", 0, 0, "", "", "", "");
-      do
-      {
+      if (((ProfileCardInfo)this.mData).allInOne.pa == 33) {
         return;
-      } while (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 33);
-      if (!ProfileActivity.AllInOne.g(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne))
+      }
+      if (!ProfilePAUtils.isPaTypeHasUin(((ProfileCardInfo)this.mData).allInOne))
       {
-        localObject = FriendProfileCardActivity.a(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
-        if (((((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 53) || (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.b)) && (localObject != null) && (this.mHeaderView != null))
+        localObject1 = ProfileUtils.getMobileNumberWithNationCode(((ProfileCardInfo)this.mData).allInOne);
+        if (((((ProfileCardInfo)this.mData).allInOne.pa != 53) || (((ProfileCardInfo)this.mData).allInOne.bindQQ)) && (localObject1 != null))
         {
-          View localView = this.mHeaderView.getChildView("map_key_face");
-          if (localView != null) {
-            ProfileCardUtil.a(this.mActivity, localView, (String)localObject);
+          Object localObject2 = this.mHeaderView;
+          if (localObject2 != null)
+          {
+            localObject2 = ((AbsProfileHeaderView)localObject2).getChildView("map_key_face");
+            if (localObject2 != null) {
+              ProfileCardUtil.a(this.mActivity, (View)localObject2, (String)localObject1);
+            }
           }
         }
       }
@@ -154,101 +168,97 @@ public abstract class AbsProfileHeaderComponent
         handleAvatarClickInner();
       }
     }
+    if (((ProfileCardInfo)this.mData).allInOne.pa == 0)
+    {
+      ReportController.b(this.mApp, "CliOper", "", "", "0X8006A77", "0X8006A77", 0, 0, "", "", "", "");
+      return;
+    }
     ReportController.b(this.mApp, "CliOper", "", "", "0X8006A8B", "0X8006A8B", 0, 0, "", "", "", "");
   }
   
   private void handleAvatarClickInner()
   {
-    View localView;
-    long l;
-    int i;
-    if (this.mHeaderView != null)
+    Object localObject1 = this.mHeaderView;
+    if (localObject1 != null)
     {
-      localView = this.mHeaderView.getChildView("map_key_face");
-      if (localView != null) {
-        break label178;
+      localObject1 = ((AbsProfileHeaderView)localObject1).getChildView("map_key_face");
+      if (localObject1 == null) {
+        localObject1 = null;
+      } else {
+        localObject1 = ((AvatarLayout)localObject1).a(0);
       }
-      localView = null;
-      localObject = this.mHeaderView.getChildView("map_key_avatar_pendant");
-      l = this.mHeaderView.getPendantId();
-      if ((((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) || (!ProfileActivity.AllInOne.g(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)) || (localView == null) || (localObject == null) || (((View)localObject).getVisibility() != 0) || (l == 0L)) {
-        break label236;
-      }
-      i = guestAvatarClickReport();
-      if ((localView instanceof DynamicAvatarView))
+      Object localObject2 = this.mHeaderView.getChildView("map_key_avatar_pendant");
+      long l = this.mHeaderView.getPendantId();
+      if ((((ProfileCardInfo)this.mData).allInOne.pa != 0) && (ProfilePAUtils.isPaTypeHasUin(((ProfileCardInfo)this.mData).allInOne)) && (localObject1 != null) && (localObject2 != null) && (((View)localObject2).getVisibility() == 0) && (l != 0L))
       {
-        localObject = (DynamicAvatarView)localView;
-        if (((DynamicAvatarView)localObject).a != null)
+        int i = guestAvatarClickReport();
+        if ((localObject1 instanceof DynamicAvatarView))
         {
-          localObject = ((DynamicAvatarView)localObject).a;
-          if ((!((DynamicFaceDrawable)localObject).jdField_a_of_type_Boolean) || (((DynamicFaceDrawable)localObject).jdField_a_of_type_ComTencentImageURLDrawable == null) || (TextUtils.isEmpty(((DynamicFaceDrawable)localObject).c))) {
-            break label192;
+          localObject2 = (DynamicAvatarView)localObject1;
+          if (((DynamicAvatarView)localObject2).a != null)
+          {
+            localObject2 = ((DynamicAvatarView)localObject2).a;
+            if ((((DynamicFaceDrawable)localObject2).jdField_a_of_type_Boolean) && (((DynamicFaceDrawable)localObject2).jdField_a_of_type_ComTencentImageURLDrawable != null) && (!TextUtils.isEmpty(((DynamicFaceDrawable)localObject2).c)))
+            {
+              ProfileCardUtil.b(this.mActivity, (View)localObject1, ((DynamicFaceDrawable)localObject2).c);
+              return;
+            }
+            localObject2 = new AllInOne(this.mApp.getAccount(), 1);
+            ProfileCardUtil.a(this.mActivity, (View)localObject1, ((ProfileCardInfo)this.mData).allInOne.uin, l, i, (AllInOne)localObject2);
           }
-          ProfileCardUtil.b(this.mActivity, localView, ((DynamicFaceDrawable)localObject).c);
+        }
+      }
+      else if ((localObject1 instanceof DynamicAvatarView))
+      {
+        localObject2 = (DynamicAvatarView)localObject1;
+        if (((DynamicAvatarView)localObject2).a != null)
+        {
+          localObject2 = ((DynamicAvatarView)localObject2).a;
+          if ((((DynamicFaceDrawable)localObject2).jdField_a_of_type_Boolean) && (((DynamicFaceDrawable)localObject2).jdField_a_of_type_ComTencentImageURLDrawable != null) && (!TextUtils.isEmpty(((DynamicFaceDrawable)localObject2).c)))
+          {
+            ProfileCardUtil.b(this.mActivity, (View)localObject1, ((DynamicFaceDrawable)localObject2).c);
+            return;
+          }
+          if ((((ProfileCardInfo)this.mData).allInOne.pa == 41) && (!TextUtils.isEmpty(((ProfileCardInfo)this.mData).allInOne.uin)) && (((ProfileCardInfo)this.mData).allInOne.uin.equals("0")))
+          {
+            ProfileCardUtil.a(this.mActivity, (View)localObject1, ((ProfileCardInfo)this.mData).allInOne.uid, false, false, null);
+            return;
+          }
+          localObject2 = new AllInOne(this.mApp.getAccount(), 1);
+          ProfileCardUtil.a(this.mActivity, (View)localObject1, ((ProfileCardInfo)this.mData).allInOne.uin, false, false, (AllInOne)localObject2);
         }
       }
     }
-    label178:
-    label192:
-    label236:
-    do
-    {
-      do
-      {
-        return;
-        localView = ((AvatarLayout)localView).a(0);
-        break;
-        localObject = new ProfileActivity.AllInOne(this.mApp.getAccount(), 1);
-        ProfileCardUtil.a(this.mActivity, localView, ((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, l, i, (ProfileActivity.AllInOne)localObject);
-        return;
-      } while (!(localView instanceof DynamicAvatarView));
-      localObject = (DynamicAvatarView)localView;
-    } while (((DynamicAvatarView)localObject).a == null);
-    Object localObject = ((DynamicAvatarView)localObject).a;
-    if ((((DynamicFaceDrawable)localObject).jdField_a_of_type_Boolean) && (((DynamicFaceDrawable)localObject).jdField_a_of_type_ComTencentImageURLDrawable != null) && (!TextUtils.isEmpty(((DynamicFaceDrawable)localObject).c)))
-    {
-      ProfileCardUtil.b(this.mActivity, localView, ((DynamicFaceDrawable)localObject).c);
-      return;
-    }
-    if ((((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 41) && (!TextUtils.isEmpty(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)) && (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString.equals("0")))
-    {
-      ProfileCardUtil.a(this.mActivity, localView, ((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.p, false, false, null);
-      return;
-    }
-    localObject = new ProfileActivity.AllInOne(this.mApp.getAccount(), 1);
-    ProfileCardUtil.a(this.mActivity, localView, ((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, false, false, (ProfileActivity.AllInOne)localObject);
   }
   
   private void handleEditNickActivityResult(int paramInt, Intent paramIntent)
   {
     if (paramInt == -1)
     {
-      paramInt = paramIntent.getIntExtra("edit_action", 0);
-      paramIntent = paramIntent.getStringExtra("nick");
-      if ((paramInt != 3) && (paramInt != 4)) {
-        break label46;
-      }
-      ((ProfileCardInfo)this.mData).jdField_a_of_type_ArrayOfJavaLangString[1] = paramIntent;
-    }
-    label46:
-    do
-    {
-      return;
-      if (paramInt == 1)
+      paramInt = paramIntent.getIntExtra("edit_type", 0);
+      paramIntent = paramIntent.getStringExtra("result");
+      if (paramInt == 5)
       {
-        ((ProfileCardInfo)this.mData).jdField_a_of_type_ArrayOfJavaLangString[0] = paramIntent;
+        ((ProfileCardInfo)this.mData).nameArray[1] = paramIntent;
         return;
       }
-    } while (paramInt != 2);
-    ((ProfileCardInfo)this.mData).jdField_a_of_type_ArrayOfJavaLangString[4] = paramIntent;
+      if (paramInt == 3)
+      {
+        ((ProfileCardInfo)this.mData).nameArray[0] = paramIntent;
+        return;
+      }
+      if (paramInt == 4) {
+        ((ProfileCardInfo)this.mData).nameArray[4] = paramIntent;
+      }
+    }
   }
   
   private void handleEditNickClick()
   {
-    if (Utils.b(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)) {
+    if (Utils.b(((ProfileCardInfo)this.mData).allInOne.uin)) {
       return;
     }
-    if (((ProfileCardInfo)this.mData).b)
+    if (((ProfileCardInfo)this.mData).isTroopMemberCard)
     {
       showEditNickActionSheetForTroop();
       return;
@@ -258,73 +268,65 @@ public abstract class AbsProfileHeaderComponent
   
   private void handleTemplateOutOfDateClick(int paramInt)
   {
-    int i;
     if ((paramInt == 101107) || (paramInt == 101108))
     {
-      if (paramInt != 101108) {
-        break label155;
+      int i;
+      if (paramInt == 101108) {
+        i = 5;
+      } else {
+        i = 2;
       }
-      i = 5;
-      if (paramInt != 101108) {
-        break label160;
+      if (paramInt == 101108) {
+        VipUtils.b(this.mActivity, 3, ProfileCardUtil.a(i));
+      } else {
+        VipUtils.a(this.mActivity, 3, ProfileCardUtil.a(i));
       }
-      VipUtils.b(this.mActivity, 3, ProfileCardUtil.a(i));
     }
-    for (;;)
-    {
-      if (((ProfileCardInfo)this.mData).b) {
-        VasWebviewUtil.reportCommercialDrainage(this.mApp.getCurrentAccountUin(), "group_card", "guide_click", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
-      }
-      ReportController.b(this.mApp, "P_CliOper", "Vip_SummaryCard", "", "SummaryCard", "CLICK_TOPBARVIPINVALID", ProfileActivity.a(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h), 0, Integer.toString(ProfileActivity.a(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
-      return;
-      label155:
-      i = 2;
-      break;
-      label160:
-      VipUtils.a(this.mActivity, 3, ProfileCardUtil.a(i));
+    if (((ProfileCardInfo)this.mData).isTroopMemberCard) {
+      VasWebviewUtil.a(this.mApp.getCurrentAccountUin(), "group_card", "guide_click", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
     }
+    ReportController.b(this.mApp, "P_CliOper", "Vip_SummaryCard", "", "SummaryCard", "CLICK_TOPBARVIPINVALID", ProfileEntryUtils.getProfileEntryType(((ProfileCardInfo)this.mData).allInOne.profileEntryType), 0, Integer.toString(ProfileEntryUtils.getIdentityFlag(((ProfileCardInfo)this.mData).allInOne)), "", "", "");
   }
   
   private void handleVoteBtnClick(Card paramCard)
   {
-    if ((((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) || (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString.equals(this.mApp.getCurrentAccountUin()))) {
+    if ((((ProfileCardInfo)this.mData).allInOne.pa != 0) && (!((ProfileCardInfo)this.mData).allInOne.uin.equals(this.mApp.getCurrentAccountUin())))
+    {
+      handleVoteBtnClickForGuestProfile(paramCard);
+      if (QSecFramework.a().a(1001).booleanValue()) {
+        QSecFramework.a().a(5, 0, 2, new Object[] { Integer.valueOf(24), Integer.valueOf(1), Integer.valueOf(6), "vote", null }, null);
+      }
+    }
+    else
+    {
       handleVoteBtnClickForMyProfile(paramCard);
     }
-    do
-    {
-      return;
-      handleVoteBtnClickForGuestProfile(paramCard);
-    } while (!QSecFramework.a().a(1001).booleanValue());
-    QSecFramework.a().a(5, 0, 2, new Object[] { Integer.valueOf(24), Integer.valueOf(1), Integer.valueOf(6), "vote", null }, null);
   }
   
   private void handleVoteBtnClickForGuestProfile(Card paramCard)
   {
-    if (paramCard == null) {
-      notifyUser(this.mActivity.getString(2131693416), 1);
+    int j = 1;
+    if (paramCard == null)
+    {
+      notifyUser(this.mActivity.getString(2131693371), 1);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsProfileHeaderComponent", 2, String.format("handleVoteBtnClickForGuestProfile availVoteCnt=%s haveVotedCnt=%s voteLimitedNotice=%s", new Object[] { Short.valueOf(paramCard.bAvailVoteCnt), Short.valueOf(paramCard.bHaveVotedCnt), paramCard.strVoteLimitedNotice }));
     }
     int i;
-    for (;;)
+    if (paramCard.bAvailVoteCnt <= 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("AbsProfileHeaderComponent", 2, String.format("handleVoteBtnClickForGuestProfile availVoteCnt=%s haveVotedCnt=%s voteLimitedNotice=%s", new Object[] { Short.valueOf(paramCard.bAvailVoteCnt), Short.valueOf(paramCard.bHaveVotedCnt), paramCard.strVoteLimitedNotice }));
-      }
-      if (paramCard.bAvailVoteCnt <= 0)
+      if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
       {
-        i = 1;
-        if (i != 0) {
-          break label275;
-        }
-        if (NetworkUtil.d(BaseApplication.getContext()))
-        {
-          paramCard.lVoteCount += 1L;
-          paramCard.bVoted = 1;
-          paramCard.bAvailVoteCnt = ((short)(paramCard.bAvailVoteCnt - 1));
-        }
-      }
-      else
-      {
+        paramCard.lVoteCount += 1L;
+        paramCard.bVoted = 1;
+        paramCard.bAvailVoteCnt = ((short)(paramCard.bAvailVoteCnt - 1));
         synchronized (S_CACHE_VOTE_LOCK)
         {
           this.mCacheVoteNum.incrementAndGet();
@@ -337,20 +339,18 @@ public abstract class AbsProfileHeaderComponent
             ((Message)???).what = 10;
             this.mSubHandler.sendMessageDelayed((Message)???, 2000L);
           }
-          if (this.mHeaderView != null)
-          {
-            long l = paramCard.lVoteCount;
-            this.mHeaderView.updateLiked((ProfileCardInfo)this.mData, l, true);
+          if (this.mHeaderView == null) {
             return;
-            i = 0;
           }
+          long l = paramCard.lVoteCount;
+          this.mHeaderView.updateLiked((ProfileCardInfo)this.mData, l, true);
+          return;
         }
       }
+      notifyUser(this.mActivity.getString(2131720493), 1);
+      return;
     }
-    notifyUser(this.mActivity.getString(2131720768), 1);
-    return;
-    label275:
-    if (!VipUtils.b(this.mApp))
+    if (!VasUtil.a(this.mQQAppInterface).getVipStatus().isSVip())
     {
       showSVipVotePrivilegeTips();
       return;
@@ -361,124 +361,116 @@ public abstract class AbsProfileHeaderComponent
       {
         paramCard = paramCard.strVoteLimitedNotice;
         i = 0;
-        notifyUser(paramCard, i);
-        this.mLastToastVoteFailTime = SystemClock.uptimeMillis();
       }
-    }
-    else {
-      if (!this.mActivity.getIntent().hasExtra("troopUin")) {
-        break label395;
+      else
+      {
+        paramCard = this.mActivity.getString(2131693371);
+        i = j;
       }
+      notifyUser(paramCard, i);
+      this.mLastToastVoteFailTime = SystemClock.uptimeMillis();
     }
-    label395:
-    for (paramCard = "1";; paramCard = "0")
-    {
-      VasWebviewUtil.reportCommercialDrainage(this.mApp.getCurrentAccountUin(), "thumbup", "limit_20", "", 1, 0, 0, "", paramCard, "");
-      return;
-      paramCard = this.mActivity.getString(2131693416);
-      i = 1;
-      break;
+    if (this.mActivity.getIntent().hasExtra("troopUin")) {
+      paramCard = "1";
+    } else {
+      paramCard = "0";
     }
+    VasWebviewUtil.a(this.mApp.getCurrentAccountUin(), "thumbup", "limit_20", "", 1, 0, 0, "", paramCard, "");
   }
   
   private void handleVoteBtnClickForMyProfile(Card paramCard)
   {
     int i;
-    int j;
-    label48:
-    Object localObject1;
-    if (paramCard == null)
-    {
+    if (paramCard == null) {
       i = 0;
-      Object localObject2 = QVipProfileFootPrintProcessor.a();
-      if ((localObject2 == null) || (!((QVipProfileFootPrintConfig)localObject2).a()) || (TextUtils.isEmpty(((QVipProfileFootPrintConfig)localObject2).a())) || (!URLUtil.a(((QVipProfileFootPrintConfig)localObject2).a()))) {
-        break label187;
-      }
+    } else {
+      i = (int)paramCard.lVoteCount;
+    }
+    Object localObject2 = QVipProfileFootPrintProcessor.a();
+    int j;
+    if ((localObject2 != null) && (((QVipProfileFootPrintConfig)localObject2).a()) && (!TextUtils.isEmpty(((QVipProfileFootPrintConfig)localObject2).a())) && (URLUtil.a(((QVipProfileFootPrintConfig)localObject2).a()))) {
       j = 1;
-      if (j == 0) {
-        break label198;
-      }
+    } else {
+      j = 0;
+    }
+    Object localObject1;
+    if (j != 0)
+    {
       localObject1 = this.mActivity;
       localObject2 = ((QVipProfileFootPrintConfig)localObject2).a();
-      if (paramCard == null) {
-        break label192;
+      if (paramCard != null) {
+        paramCard = paramCard.uin;
+      } else {
+        paramCard = "";
       }
-      paramCard = paramCard.uin;
-      label74:
       ProfileCardUtil.a((Context)localObject1, (String)localObject2, paramCard);
-      NearbyProxy.a(this.mApp);
-      if (this.mHeaderView != null)
+    }
+    else
+    {
+      paramCard = new Intent(this.mActivity, VisitorsActivity.class);
+      localObject1 = new Bundle();
+      ((Bundle)localObject1).putLong("toUin", Long.valueOf(((ProfileCardInfo)this.mData).allInOne.uin).longValue());
+      ((Bundle)localObject1).putLong("totalVoters", i);
+      ((Bundle)localObject1).putBoolean("isStartedByProfileCard", true);
+      ((Bundle)localObject1).putBoolean("votersOnly", true);
+      boolean bool;
+      if (i > 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      ((Bundle)localObject1).putBoolean("hasVoters", bool);
+      ((Bundle)localObject1).putBoolean("extra_show_rank", true);
+      ((Bundle)localObject1).putInt("extra_from", 1);
+      ((Bundle)localObject1).putInt("frome_where", 5);
+      paramCard.putExtras((Bundle)localObject1);
+      this.mActivity.startActivity(paramCard);
+    }
+    NearbyProxyUtils.a(this.mQQAppInterface);
+    paramCard = this.mHeaderView;
+    if (paramCard != null)
+    {
+      paramCard = paramCard.getChildView("map_key_like");
+      if ((paramCard instanceof VoteView))
       {
-        paramCard = this.mHeaderView.getChildView("map_key_like");
-        if (!(paramCard instanceof VoteView)) {
-          break label345;
-        }
         paramCard = (VoteView)paramCard;
         paramCard.a(true, false, i, 0, null, false);
         paramCard.a(false);
       }
-    }
-    for (;;)
-    {
-      ReportController.b(this.mApp, "CliOper", "", "", "0X800657A", "0X800657A", 1, 0, Integer.toString(ProfileActivity.a(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
-      return;
-      i = (int)paramCard.lVoteCount;
-      break;
-      label187:
-      j = 0;
-      break label48;
-      label192:
-      paramCard = "";
-      break label74;
-      label198:
-      paramCard = new Intent(this.mActivity, VisitorsActivity.class);
-      localObject1 = new Bundle();
-      ((Bundle)localObject1).putLong("toUin", Long.valueOf(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString).longValue());
-      ((Bundle)localObject1).putLong("totalVoters", i);
-      ((Bundle)localObject1).putBoolean("isStartedByProfileCard", true);
-      ((Bundle)localObject1).putBoolean("votersOnly", true);
-      if (i > 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        ((Bundle)localObject1).putBoolean("hasVoters", bool);
-        ((Bundle)localObject1).putBoolean("extra_show_rank", true);
-        ((Bundle)localObject1).putInt("extra_from", 1);
-        ((Bundle)localObject1).putInt("frome_where", 5);
-        paramCard.putExtras((Bundle)localObject1);
-        this.mActivity.startActivity(paramCard);
-        break;
-      }
-      label345:
-      if ((paramCard instanceof VoteViewV2))
+      else if ((paramCard instanceof VoteViewV2))
       {
         paramCard = (VoteViewV2)paramCard;
         paramCard.a(true, false, i, 0, null, false);
         paramCard.a(false);
       }
     }
+    ReportController.b(this.mApp, "CliOper", "", "", "0X800657A", "0X800657A", 1, 0, Integer.toString(ProfileEntryUtils.getIdentityFlag(((ProfileCardInfo)this.mData).allInOne)), "", "", "");
   }
   
   private void reqFavorite()
   {
     CardHandler localCardHandler = (CardHandler)this.mApp.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
-    if ((localCardHandler != null) && (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqDataCard != null)) {}
-    synchronized (S_CACHE_VOTE_LOCK)
-    {
-      int i = this.mCacheVoteNum.get();
-      this.mCacheVoteNum.set(0);
-      if (QLog.isColorLevel()) {
-        QLog.d("AbsProfileHeaderComponent", 2, String.format("reqFavorite cacheVoteNum=%s", new Object[] { Integer.valueOf(i) }));
+    if ((localCardHandler != null) && (((ProfileCardInfo)this.mData).card != null)) {
+      synchronized (S_CACHE_VOTE_LOCK)
+      {
+        int i = this.mCacheVoteNum.get();
+        this.mCacheVoteNum.set(0);
+        if (QLog.isColorLevel()) {
+          QLog.d("AbsProfileHeaderComponent", 2, String.format("reqFavorite cacheVoteNum=%s", new Object[] { Integer.valueOf(i) }));
+        }
+        if (i > 0)
+        {
+          localCardHandler.a(this.mApp.getLongAccountUin(), Long.parseLong(((ProfileCardInfo)this.mData).allInOne.uin), ((ProfileCardInfo)this.mData).card.vCookies, ((ProfileCardInfo)this.mData).card.favoriteSource, i, 0);
+          return;
+        }
       }
-      if (i > 0) {
-        localCardHandler.a(this.mApp.getLongAccountUin(), Long.parseLong(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString), ((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqDataCard.vCookies, ((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqDataCard.favoriteSource, i, 0);
-      }
-      return;
     }
   }
   
   private void reqFavoriteImmediately()
   {
-    if ((this.mSubHandler != null) && (this.mSubHandler.hasMessages(10)))
+    WeakReferenceHandler localWeakReferenceHandler = this.mSubHandler;
+    if ((localWeakReferenceHandler != null) && (localWeakReferenceHandler.hasMessages(10)))
     {
       this.mSubHandler.removeMessages(10);
       reqFavorite();
@@ -487,173 +479,184 @@ public abstract class AbsProfileHeaderComponent
   
   private void showEditNickActionSheet()
   {
-    String str3 = ((ProfileCardInfo)this.mData).jdField_a_of_type_ArrayOfJavaLangString[0];
-    String str1 = ((ProfileCardInfo)this.mData).jdField_a_of_type_ArrayOfJavaLangString[4];
+    Object localObject1 = ((ProfileCardInfo)this.mData).nameArray[0];
+    Object localObject2 = ((ProfileCardInfo)this.mData).nameArray;
+    int i = 4;
+    localObject2 = localObject2[4];
     if (QLog.isColorLevel()) {
-      QLog.d("AbsProfileHeaderComponent", 2, String.format("showEditNickActionSheet nickName=%s, remark=%s", new Object[] { str3, str1 }));
+      QLog.d("AbsProfileHeaderComponent", 2, String.format("showEditNickActionSheet nickName=%s, remark=%s", new Object[] { localObject1, localObject2 }));
     }
-    String str2 = "";
-    int i;
-    if (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
+    if (((ProfileCardInfo)this.mData).allInOne.pa == 0)
     {
-      str2 = this.mActivity.getString(2131693338);
+      i = 3;
+      String str = this.mActivity.getString(2131693293);
       ReportController.b(this.mApp, "dc00898", "", "", "0X800999A", "0X800999A", 1, 0, "", "", "", "");
-      str1 = str3;
-      i = 1;
+      localObject2 = localObject1;
+      localObject1 = str;
     }
-    for (;;)
+    else
     {
-      showEditNickActionSheetInner(false, i, str1, str2);
-      return;
-      if (ProfileActivity.AllInOne.b(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne))
-      {
-        if (!TextUtils.isEmpty(str1)) {}
-        for (str2 = this.mActivity.getString(2131693333);; str2 = this.mActivity.getString(2131693405))
-        {
-          ReportController.b(this.mApp, "dc00898", "", "", "0X800999A", "0X800999A", 2, 0, "", "", "", "");
-          i = 2;
-          break;
-        }
+      if (!ProfilePAUtils.isPaTypeFriend(((ProfileCardInfo)this.mData).allInOne)) {
+        break label215;
       }
-      str1 = getGenderString((ProfileCardInfo)this.mData);
-      notifyUser(this.mActivity.getString(2131693334, new Object[] { str1, str1 }), 1);
-      str1 = "";
-      i = 0;
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        localObject1 = this.mActivity.getString(2131693288);
+      } else {
+        localObject1 = this.mActivity.getString(2131693360);
+      }
+      ReportController.b(this.mApp, "dc00898", "", "", "0X800999A", "0X800999A", 2, 0, "", "", "", "");
     }
+    showEditNickActionSheetInner(false, i, (String)localObject2, (String)localObject1);
+    return;
+    label215:
+    localObject1 = getGenderString((ProfileCardInfo)this.mData);
+    notifyUser(this.mActivity.getString(2131693289, new Object[] { localObject1, localObject1 }), 1);
   }
   
   private void showEditNickActionSheetForTroop()
   {
-    String str1 = ((ProfileCardInfo)this.mData).jdField_a_of_type_ArrayOfJavaLangString[1];
+    String str2 = ((ProfileCardInfo)this.mData).nameArray[1];
     if (QLog.isColorLevel()) {
-      QLog.d("AbsProfileHeaderComponent", 2, String.format("showEditNickActionSheetForTroop troopNick=%s", new Object[] { str1 }));
+      QLog.d("AbsProfileHeaderComponent", 2, String.format("showEditNickActionSheetForTroop troopNick=%s", new Object[] { str2 }));
     }
-    String str2 = "";
-    int i;
-    boolean bool;
-    if (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
+    if (((ProfileCardInfo)this.mData).allInOne.pa == 0)
     {
-      str2 = this.mActivity.getString(2131693339);
+      str1 = this.mActivity.getString(2131693294);
       ReportController.b(this.mApp, "dc00898", "", "", "0X800999A", "0X800999A", 3, 0, "", "", "", "");
-      i = 3;
-      bool = true;
     }
-    for (;;)
+    else
     {
-      showEditNickActionSheetInner(bool, i, str1, str2);
-      return;
-      String str3 = this.mApp.getCurrentUin();
-      TroopInfo localTroopInfo = ((TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER)).c(((ProfileCardInfo)this.mData).jdField_a_of_type_JavaLangString);
-      if ((localTroopInfo != null) && ((localTroopInfo.isTroopAdmin(str3)) || (localTroopInfo.isTroopOwner(str3))))
-      {
+      str1 = this.mApp.getCurrentUin();
+      TroopInfo localTroopInfo = ((TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER)).c(((ProfileCardInfo)this.mData).troopUin);
+      int i;
+      if ((localTroopInfo != null) && ((localTroopInfo.isTroopAdmin(str1)) || (localTroopInfo.isTroopOwner(str1)))) {
         i = 1;
-        label179:
-        if (i == 0) {
-          break label303;
-        }
-        if (TextUtils.isEmpty(str1)) {
-          break label266;
-        }
-        str2 = getGenderString((ProfileCardInfo)this.mData);
-      }
-      for (str2 = this.mActivity.getString(2131693342, new Object[] { str2 });; str2 = this.mActivity.getString(2131693406, new Object[] { str2 }))
-      {
-        ReportController.b(this.mApp, "dc00898", "", "", "0X800999A", "0X800999A", 3, 0, "", "", "", "");
-        i = 4;
-        bool = true;
-        break;
+      } else {
         i = 0;
-        break label179;
-        label266:
-        str2 = getGenderString((ProfileCardInfo)this.mData);
       }
-      label303:
-      str1 = getGenderString((ProfileCardInfo)this.mData);
-      notifyUser(this.mActivity.getString(2131693344, new Object[] { str1 }), 1);
-      str1 = "";
-      i = 0;
-      bool = false;
+      if (i == 0) {
+        break label280;
+      }
+      if (!TextUtils.isEmpty(str2))
+      {
+        str1 = getGenderString((ProfileCardInfo)this.mData);
+        str1 = this.mActivity.getString(2131693297, new Object[] { str1 });
+      }
+      else
+      {
+        str1 = getGenderString((ProfileCardInfo)this.mData);
+        str1 = this.mActivity.getString(2131693361, new Object[] { str1 });
+      }
+      ReportController.b(this.mApp, "dc00898", "", "", "0X800999A", "0X800999A", 3, 0, "", "", "", "");
     }
+    showEditNickActionSheetInner(true, 5, str2, str1);
+    return;
+    label280:
+    String str1 = getGenderString((ProfileCardInfo)this.mData);
+    notifyUser(this.mActivity.getString(2131693299, new Object[] { str1 }), 1);
   }
   
   private void showEditNickActionSheetInner(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
   {
-    ActionSheet localActionSheet;
     if (!TextUtils.isEmpty(paramString2))
     {
-      localActionSheet = (ActionSheet)ActionSheetHelper.a(this.mActivity, null);
+      ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.mActivity, null);
       localActionSheet.addButton(paramString2, 1);
-      localActionSheet.addCancelButton(2131690800);
-      localActionSheet.setOnButtonClickListener(new AbsProfileHeaderComponent.4(this, paramString2, paramString1, paramInt, paramBoolean, localActionSheet));
-    }
-    try
-    {
-      localActionSheet.show();
-      return;
-    }
-    catch (Throwable paramString1)
-    {
-      QLog.d("AbsProfileHeaderComponent", 1, "showEditNickActionSheet fail.", paramString1);
+      localActionSheet.addCancelButton(2131690728);
+      localActionSheet.setOnButtonClickListener(new AbsProfileHeaderComponent.5(this, paramString2, paramString1, paramInt, paramBoolean, localActionSheet));
+      try
+      {
+        localActionSheet.show();
+        return;
+      }
+      catch (Throwable paramString1)
+      {
+        QLog.d("AbsProfileHeaderComponent", 1, "showEditNickActionSheet fail.", paramString1);
+      }
     }
   }
   
   private void showSVipVotePrivilegeTips()
   {
-    if (VoteHelper.a(this.mApp))
+    Object localObject;
+    if (VoteHelper.a(this.mQQAppInterface))
     {
       localObject = new ZanDoubleDialog(this.mActivity);
-      ((ZanDoubleDialog)localObject).a(new AbsProfileHeaderComponent.5(this));
+      ((ZanDoubleDialog)localObject).a(new AbsProfileHeaderComponent.6(this));
       ((ZanDoubleDialog)localObject).show();
-      if (this.mActivity.getIntent().hasExtra("troopUin")) {}
-      for (localObject = "1";; localObject = "0")
+      if (this.mActivity.getIntent().hasExtra("troopUin")) {
+        localObject = "1";
+      } else {
+        localObject = "0";
+      }
+      VasWebviewUtil.a(this.mApp.getCurrentAccountUin(), "thumbup", "dbzan_pageview", "", 1, 0, 0, "", (String)localObject, "");
+      return;
+    }
+    if (this.mActivity.getIntent().hasExtra("troopUin")) {
+      localObject = "1";
+    } else {
+      localObject = "0";
+    }
+    VasWebviewUtil.a(this.mApp.getCurrentAccountUin(), "thumbup", "limit_10", "", 1, 0, 0, "", (String)localObject, "");
+    notifyUser("非SVIP用户每天只能点10个赞哦～", 0);
+  }
+  
+  private void showVoteRedDot(Message paramMessage)
+  {
+    Object localObject = this.mHeaderView;
+    if (localObject != null)
+    {
+      paramMessage = ((AbsProfileHeaderView)localObject).getChildView("map_key_like");
+      if ((paramMessage instanceof VoteView))
       {
-        VasWebviewUtil.reportCommercialDrainage(this.mApp.getCurrentAccountUin(), "thumbup", "dbzan_pageview", "", 1, 0, 0, "", (String)localObject, "");
+        ((VoteView)paramMessage).a(true);
         return;
       }
+      if ((paramMessage instanceof VoteViewV2)) {
+        ((VoteViewV2)paramMessage).a(true);
+      }
     }
-    if (this.mActivity.getIntent().hasExtra("troopUin")) {}
-    for (Object localObject = "1";; localObject = "0")
+    else if (paramMessage.arg1 > 0)
     {
-      VasWebviewUtil.reportCommercialDrainage(this.mApp.getCurrentAccountUin(), "thumbup", "limit_10", "", 1, 0, 0, "", (String)localObject, "");
-      notifyUser("非SVIP用户每天只能点10个赞哦～", 0);
-      return;
+      localObject = this.mUIHandler.obtainMessage();
+      ((Message)localObject).what = paramMessage.what;
+      ((Message)localObject).arg1 = (paramMessage.arg1 - 1);
+      this.mUIHandler.sendMessageDelayed((Message)localObject, 1000L);
     }
   }
   
   private void startVoteAnimation()
   {
-    View localView;
-    if (this.mHeaderView != null)
+    Object localObject = this.mHeaderView;
+    if (localObject != null)
     {
-      localView = this.mHeaderView.getChildView("map_key_like");
-      if (!(localView instanceof VoteView)) {
-        break label34;
+      localObject = ((AbsProfileHeaderView)localObject).getChildView("map_key_like");
+      if ((localObject instanceof VoteView))
+      {
+        ((VoteView)localObject).b(true);
+        return;
       }
-      ((VoteView)localView).b(true);
+      if ((localObject instanceof VoteViewV2)) {
+        ((VoteViewV2)localObject).b(true);
+      }
     }
-    label34:
-    while (!(localView instanceof VoteViewV2)) {
-      return;
-    }
-    ((VoteViewV2)localView).b(true);
   }
   
   private void stopVoteAnimation()
   {
-    View localView;
-    if (this.mHeaderView != null)
+    Object localObject = this.mHeaderView;
+    if (localObject != null)
     {
-      localView = this.mHeaderView.getChildView("map_key_like");
-      if (!(localView instanceof VoteView)) {
-        break label34;
+      localObject = ((AbsProfileHeaderView)localObject).getChildView("map_key_like");
+      if ((localObject instanceof VoteView))
+      {
+        ((VoteView)localObject).b(false);
+        return;
       }
-      ((VoteView)localView).b(false);
+      if ((localObject instanceof VoteViewV2)) {
+        ((VoteViewV2)localObject).b(false);
+      }
     }
-    label34:
-    while (!(localView instanceof VoteViewV2)) {
-      return;
-    }
-    ((VoteViewV2)localView).b(false);
   }
   
   public AbsProfileHeaderView getHeaderView()
@@ -668,7 +671,17 @@ public abstract class AbsProfileHeaderComponent
     }
   }
   
-  protected void handleUIMessage(Message paramMessage) {}
+  protected void handleUIMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1) {
+      showVoteRedDot(paramMessage);
+    }
+  }
+  
+  public boolean hasPhotoWall()
+  {
+    return false;
+  }
   
   protected abstract void initHeaderView();
   
@@ -687,53 +700,68 @@ public abstract class AbsProfileHeaderComponent
   
   public void onClick(View paramView)
   {
-    if ((paramView.getTag() instanceof DataTag)) {
-      localObject = (DataTag)paramView.getTag();
-    }
-    switch (((DataTag)localObject).jdField_a_of_type_Int)
+    if ((paramView.getTag() instanceof DataTag))
     {
-    default: 
-    case 88: 
-    case 3: 
-    case 97: 
-      for (;;)
+      DataTag localDataTag = (DataTag)paramView.getTag();
+      int i = localDataTag.jdField_a_of_type_Int;
+      if (i != 1)
       {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        handleEditNickClick();
-        continue;
-        ProfileSignatureUtils.handleSignatureClick((ProfileCardInfo)this.mData, this.mActivity, this.mApp);
-        continue;
-        localObject = (Pair)((DataTag)localObject).jdField_a_of_type_JavaLangObject;
-        ProfileSignatureUtils.handleSignatureCommonClick(paramView, ((Integer)((Pair)localObject).first).intValue(), (String)((Pair)localObject).second, this.mActivity, this.mApp);
+        if (i != 3)
+        {
+          Object localObject;
+          if (i != 10)
+          {
+            if (i != 24)
+            {
+              if (i != 88)
+              {
+                if (i == 97)
+                {
+                  localObject = (Pair)localDataTag.jdField_a_of_type_JavaLangObject;
+                  ProfileSignatureUtils.handleSignatureCommonClick(paramView, ((Integer)((Pair)localObject).first).intValue(), (String)((Pair)localObject).second, this.mActivity, this.mQQAppInterface);
+                }
+              }
+              else {
+                handleEditNickClick();
+              }
+            }
+            else {
+              handleTemplateOutOfDateClick(((Integer)localDataTag.jdField_a_of_type_JavaLangObject).intValue());
+            }
+          }
+          else
+          {
+            localObject = null;
+            if ((localDataTag.jdField_a_of_type_JavaLangObject instanceof Card)) {
+              localObject = (Card)localDataTag.jdField_a_of_type_JavaLangObject;
+            }
+            handleVoteBtnClick((Card)localObject);
+          }
+        }
+        else
+        {
+          ProfileSignatureUtils.handleSignatureClick((ProfileCardInfo)this.mData, this.mActivity, this.mQQAppInterface);
+        }
       }
-    case 10: 
-      if (!(((DataTag)localObject).jdField_a_of_type_JavaLangObject instanceof Card)) {
-        break;
+      else {
+        handleAvatarClick();
       }
     }
-    for (Object localObject = (Card)((DataTag)localObject).jdField_a_of_type_JavaLangObject;; localObject = null)
-    {
-      handleVoteBtnClick((Card)localObject);
-      break;
-      handleTemplateOutOfDateClick(((Integer)((DataTag)localObject).jdField_a_of_type_JavaLangObject).intValue());
-      break;
-      handleAvatarClick();
-      break;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void onCreate(BaseActivity paramBaseActivity, Bundle paramBundle)
+  public void onCreate(QBaseActivity paramQBaseActivity, Bundle paramBundle)
   {
-    super.onCreate(paramBaseActivity, paramBundle);
+    super.onCreate(paramQBaseActivity, paramBundle);
     this.mUIHandler = new WeakReferenceHandler(Looper.getMainLooper(), this.mUICallback);
     this.mSubHandler = new WeakReferenceHandler(ThreadManager.getSubThreadLooper(), this.mSubCallback);
     this.mApp.addObserver(this.mSVipObserver);
+    this.mApp.addObserver(this.mAvatarObserver);
     initHeaderView();
     if (this.mHeaderView != null)
     {
-      paramBaseActivity = this.mRootView.findViewById(2131369900);
-      this.mHeaderView.addChildView("map_key_tag_jueban", paramBaseActivity);
+      paramQBaseActivity = this.mRootView.findViewById(2131369585);
+      this.mHeaderView.addChildView("map_key_tag_jueban", paramQBaseActivity);
       this.mHeaderView.updateJueban((ProfileCardInfo)this.mData);
     }
   }
@@ -741,44 +769,60 @@ public abstract class AbsProfileHeaderComponent
   public boolean onDataUpdate(ProfileCardInfo paramProfileCardInfo)
   {
     boolean bool = super.onDataUpdate(paramProfileCardInfo);
-    if (this.mHeaderView != null) {
-      this.mHeaderView.onUpdate((ProfileCardInfo)this.mData, ((ProfileCardInfo)this.mData).d);
+    paramProfileCardInfo = this.mHeaderView;
+    if (paramProfileCardInfo != null) {
+      paramProfileCardInfo.onUpdate((ProfileCardInfo)this.mData, ((ProfileCardInfo)this.mData).isNetRet);
     }
     return bool;
   }
   
   public void onDestroy()
   {
-    if (this.mUIHandler != null)
+    Object localObject = this.mUIHandler;
+    if (localObject != null)
     {
-      this.mUIHandler.removeCallbacksAndMessages(null);
+      ((WeakReferenceHandler)localObject).removeCallbacksAndMessages(null);
       this.mUIHandler = null;
     }
-    if (this.mSubHandler != null)
+    localObject = this.mSubHandler;
+    if (localObject != null)
     {
-      this.mSubHandler.removeCallbacksAndMessages(null);
+      ((WeakReferenceHandler)localObject).removeCallbacksAndMessages(null);
       this.mSubHandler = null;
     }
-    if (this.mHeaderView != null) {
-      this.mHeaderView.onDestroy();
+    localObject = this.mHeaderView;
+    if (localObject != null) {
+      ((AbsProfileHeaderView)localObject).onDestroy();
     }
     this.mApp.removeObserver(this.mSVipObserver);
+    this.mApp.removeObserver(this.mAvatarObserver);
     super.onDestroy();
+  }
+  
+  public void onGetQZoneCover(boolean paramBoolean, String paramString, mobile_sub_get_photo_wall_rsp parammobile_sub_get_photo_wall_rsp)
+  {
+    AbsProfileHeaderView localAbsProfileHeaderView = getHeaderView();
+    if (localAbsProfileHeaderView != null) {
+      localAbsProfileHeaderView.onGetQZoneCover(paramBoolean, paramString, parammobile_sub_get_photo_wall_rsp);
+    }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.mHeaderView != null) {
-      this.mHeaderView.onPause();
+    AbsProfileHeaderView localAbsProfileHeaderView = this.mHeaderView;
+    if (localAbsProfileHeaderView != null) {
+      localAbsProfileHeaderView.onPause();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.mHeaderView != null) {
-      this.mHeaderView.onResume();
+    checkVoteRedTouch();
+    AbsProfileHeaderView localAbsProfileHeaderView = this.mHeaderView;
+    if (localAbsProfileHeaderView != null) {
+      localAbsProfileHeaderView.onResume();
     }
   }
   
@@ -797,17 +841,15 @@ public abstract class AbsProfileHeaderComponent
   
   public void setProfileActivityDelegate(IProfileActivityDelegate paramIProfileActivityDelegate)
   {
-    this.mDelegate = paramIProfileActivityDelegate;
-  }
-  
-  public void setProfileRootView(ViewGroup paramViewGroup)
-  {
-    this.mRootView = paramViewGroup;
+    super.setProfileActivityDelegate(paramIProfileActivityDelegate);
+    if (this.mDelegate != null) {
+      this.mRootView = this.mDelegate.getRootView();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.component.AbsProfileHeaderComponent
  * JD-Core Version:    0.7.0.1
  */

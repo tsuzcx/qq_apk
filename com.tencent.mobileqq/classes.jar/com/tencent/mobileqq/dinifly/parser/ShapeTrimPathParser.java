@@ -10,76 +10,103 @@ class ShapeTrimPathParser
 {
   static ShapeTrimPath parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
-    AnimatableFloatValue localAnimatableFloatValue1 = null;
-    boolean bool = false;
-    AnimatableFloatValue localAnimatableFloatValue2 = null;
-    AnimatableFloatValue localAnimatableFloatValue3 = null;
-    ShapeTrimPath.Type localType = null;
     String str1 = null;
-    label17:
+    Object localObject1 = str1;
+    Object localObject2 = localObject1;
+    Object localObject3 = localObject2;
+    Object localObject4 = localObject3;
+    boolean bool = false;
     while (paramJsonReader.hasNext())
     {
       String str2 = paramJsonReader.nextName();
-      int i = -1;
-      switch (str2.hashCode())
+      int i = str2.hashCode();
+      if (i != 101)
       {
-      }
-      for (;;)
-      {
-        switch (i)
+        if (i != 109)
         {
-        default: 
-          paramJsonReader.skipValue();
-          break label17;
-          if (str2.equals("s"))
+          if (i != 111)
           {
-            i = 0;
-            continue;
-            if (str2.equals("e"))
+            if (i != 115)
             {
-              i = 1;
-              continue;
-              if (str2.equals("o"))
+              if (i != 3324)
               {
-                i = 2;
-                continue;
-                if (str2.equals("nm"))
+                if ((i == 3519) && (str2.equals("nm")))
                 {
                   i = 3;
-                  continue;
-                  if (str2.equals("m"))
-                  {
-                    i = 4;
-                    continue;
-                    if (str2.equals("hd")) {
-                      i = 5;
-                    }
-                  }
+                  break label173;
+                }
+              }
+              else if (str2.equals("hd"))
+              {
+                i = 5;
+                break label173;
+              }
+            }
+            else if (str2.equals("s"))
+            {
+              i = 0;
+              break label173;
+            }
+          }
+          else if (str2.equals("o"))
+          {
+            i = 2;
+            break label173;
+          }
+        }
+        else if (str2.equals("m"))
+        {
+          i = 4;
+          break label173;
+        }
+      }
+      else if (str2.equals("e"))
+      {
+        i = 1;
+        break label173;
+      }
+      i = -1;
+      label173:
+      if (i != 0)
+      {
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i != 3) {
+              if (i != 4) {
+                if (i != 5) {
+                  paramJsonReader.skipValue();
                 }
               }
             }
+            for (;;)
+            {
+              break;
+              bool = paramJsonReader.nextBoolean();
+              continue;
+              localObject1 = ShapeTrimPath.Type.forId(paramJsonReader.nextInt());
+              continue;
+              str1 = paramJsonReader.nextString();
+            }
           }
-          break;
+          localObject4 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
+        }
+        else
+        {
+          localObject3 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
         }
       }
-      localAnimatableFloatValue3 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
-      continue;
-      localAnimatableFloatValue2 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
-      continue;
-      localAnimatableFloatValue1 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
-      continue;
-      str1 = paramJsonReader.nextString();
-      continue;
-      localType = ShapeTrimPath.Type.forId(paramJsonReader.nextInt());
-      continue;
-      bool = paramJsonReader.nextBoolean();
+      else {
+        localObject2 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
+      }
     }
-    return new ShapeTrimPath(str1, localType, localAnimatableFloatValue3, localAnimatableFloatValue2, localAnimatableFloatValue1, bool);
+    return new ShapeTrimPath(str1, (ShapeTrimPath.Type)localObject1, (AnimatableFloatValue)localObject2, (AnimatableFloatValue)localObject3, (AnimatableFloatValue)localObject4, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.ShapeTrimPathParser
  * JD-Core Version:    0.7.0.1
  */

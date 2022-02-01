@@ -35,46 +35,49 @@ public final class VideoFrameReleaseTimeHelper
   
   public VideoFrameReleaseTimeHelper(@Nullable Context paramContext)
   {
+    Object localObject2 = null;
     Object localObject1;
-    if (paramContext == null)
-    {
+    if (paramContext == null) {
       localObject1 = null;
-      this.windowManager = ((WindowManager)localObject1);
-      if (this.windowManager == null) {
-        break label80;
-      }
+    } else {
+      localObject1 = (WindowManager)paramContext.getSystemService("window");
+    }
+    this.windowManager = ((WindowManager)localObject1);
+    if (this.windowManager != null)
+    {
       localObject1 = localObject2;
       if (Util.SDK_INT >= 17) {
         localObject1 = maybeBuildDefaultDisplayListenerV17(paramContext);
       }
       this.displayListener = ((VideoFrameReleaseTimeHelper.DefaultDisplayListener)localObject1);
+      this.vsyncSampler = VideoFrameReleaseTimeHelper.VSyncSampler.getInstance();
     }
-    for (this.vsyncSampler = VideoFrameReleaseTimeHelper.VSyncSampler.getInstance();; this.vsyncSampler = null)
+    else
     {
-      this.vsyncDurationNs = -9223372036854775807L;
-      this.vsyncOffsetNs = -9223372036854775807L;
-      return;
-      localObject1 = (WindowManager)paramContext.getSystemService("window");
-      break;
-      label80:
       this.displayListener = null;
+      this.vsyncSampler = null;
     }
+    this.vsyncDurationNs = -9223372036854775807L;
+    this.vsyncOffsetNs = -9223372036854775807L;
   }
   
   private static long closestVsync(long paramLong1, long paramLong2, long paramLong3)
   {
-    paramLong2 = (paramLong1 - paramLong2) / paramLong3 * paramLong3 + paramLong2;
-    long l;
-    if (paramLong1 <= paramLong2) {
-      l = paramLong2 - paramLong3;
-    }
-    while (paramLong2 - paramLong1 < paramLong1 - l)
+    paramLong2 += (paramLong1 - paramLong2) / paramLong3 * paramLong3;
+    if (paramLong1 <= paramLong2)
     {
-      return paramLong2;
-      l = paramLong2;
-      paramLong2 += paramLong3;
+      paramLong3 = paramLong2 - paramLong3;
     }
-    return l;
+    else
+    {
+      long l = paramLong3 + paramLong2;
+      paramLong3 = paramLong2;
+      paramLong2 = l;
+    }
+    if (paramLong2 - paramLong1 < paramLong1 - paramLong3) {
+      return paramLong2;
+    }
+    return paramLong3;
   }
   
   private boolean isDriftTooLarge(long paramLong1, long paramLong2)
@@ -98,16 +101,16 @@ public final class VideoFrameReleaseTimeHelper
     Display localDisplay = this.windowManager.getDefaultDisplay();
     if (localDisplay != null)
     {
-      this.vsyncDurationNs = ((1000000000.0D / localDisplay.getRefreshRate()));
+      double d = localDisplay.getRefreshRate();
+      Double.isNaN(d);
+      this.vsyncDurationNs = ((1000000000.0D / d));
       this.vsyncOffsetNs = (this.vsyncDurationNs * 80L / 100L);
     }
   }
   
   public long adjustReleaseTime(long paramLong1, long paramLong2)
   {
-    long l3 = paramLong1 * 1000L;
-    long l1;
-    long l2;
+    long l3 = 1000L * paramLong1;
     if (this.haveSync)
     {
       if (paramLong1 != this.lastFramePresentationTimeUs)
@@ -115,53 +118,60 @@ public final class VideoFrameReleaseTimeHelper
         this.frameCount += 1L;
         this.adjustedLastFrameTimeNs = this.pendingAdjustedFrameTimeNs;
       }
-      if (this.frameCount >= 6L)
+      l1 = this.frameCount;
+      if (l1 >= 6L)
       {
-        l1 = (l3 - this.syncFramePresentationTimeNs) / this.frameCount;
+        l1 = (l3 - this.syncFramePresentationTimeNs) / l1;
         l2 = this.adjustedLastFrameTimeNs + l1;
         if (isDriftTooLarge(l2, paramLong2))
         {
           this.haveSync = false;
-          l1 = paramLong2;
-          l2 = l3;
-          if (!this.haveSync)
-          {
-            this.syncFramePresentationTimeNs = l3;
-            this.syncUnadjustedReleaseTimeNs = paramLong2;
-            this.frameCount = 0L;
-            this.haveSync = true;
-          }
-          this.lastFramePresentationTimeUs = paramLong1;
-          this.pendingAdjustedFrameTimeNs = l2;
-          if ((this.vsyncSampler != null) && (this.vsyncDurationNs != -9223372036854775807L)) {
-            break label199;
-          }
+        }
+        else
+        {
+          l1 = this.syncUnadjustedReleaseTimeNs + l2 - this.syncFramePresentationTimeNs;
+          break label134;
         }
       }
-    }
-    label199:
-    do
-    {
-      return l1;
-      l1 = this.syncUnadjustedReleaseTimeNs + l2 - this.syncFramePresentationTimeNs;
-      break;
-      if (isDriftTooLarge(l3, paramLong2)) {
+      else if (isDriftTooLarge(l3, paramLong2))
+      {
         this.haveSync = false;
       }
-      l1 = paramLong2;
-      l2 = l3;
-      break;
-      paramLong1 = this.vsyncSampler.sampledVsyncTimeNs;
-    } while (paramLong1 == -9223372036854775807L);
-    return closestVsync(l1, paramLong1, this.vsyncDurationNs) - this.vsyncOffsetNs;
+    }
+    long l1 = paramLong2;
+    long l2 = l3;
+    label134:
+    if (!this.haveSync)
+    {
+      this.syncFramePresentationTimeNs = l3;
+      this.syncUnadjustedReleaseTimeNs = paramLong2;
+      this.frameCount = 0L;
+      this.haveSync = true;
+    }
+    this.lastFramePresentationTimeUs = paramLong1;
+    this.pendingAdjustedFrameTimeNs = l2;
+    VideoFrameReleaseTimeHelper.VSyncSampler localVSyncSampler = this.vsyncSampler;
+    if (localVSyncSampler != null)
+    {
+      if (this.vsyncDurationNs == -9223372036854775807L) {
+        return l1;
+      }
+      paramLong1 = localVSyncSampler.sampledVsyncTimeNs;
+      if (paramLong1 == -9223372036854775807L) {
+        return l1;
+      }
+      return closestVsync(l1, paramLong1, this.vsyncDurationNs) - this.vsyncOffsetNs;
+    }
+    return l1;
   }
   
   public void disable()
   {
     if (this.windowManager != null)
     {
-      if (this.displayListener != null) {
-        this.displayListener.unregister();
+      VideoFrameReleaseTimeHelper.DefaultDisplayListener localDefaultDisplayListener = this.displayListener;
+      if (localDefaultDisplayListener != null) {
+        localDefaultDisplayListener.unregister();
       }
       this.vsyncSampler.removeObserver();
     }
@@ -173,8 +183,9 @@ public final class VideoFrameReleaseTimeHelper
     if (this.windowManager != null)
     {
       this.vsyncSampler.addObserver();
-      if (this.displayListener != null) {
-        this.displayListener.register();
+      VideoFrameReleaseTimeHelper.DefaultDisplayListener localDefaultDisplayListener = this.displayListener;
+      if (localDefaultDisplayListener != null) {
+        localDefaultDisplayListener.register();
       }
       updateDefaultDisplayRefreshRateParams();
     }
@@ -182,7 +193,7 @@ public final class VideoFrameReleaseTimeHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.video.VideoFrameReleaseTimeHelper
  * JD-Core Version:    0.7.0.1
  */

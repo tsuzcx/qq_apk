@@ -3,10 +3,10 @@ package com.huawei.hms.common.internal.safeparcel;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcel;
+import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.huawei.hms.common.internal.Preconditions;
-import com.huawei.hms.common.util.a;
-import java.io.Serializable;
+import com.huawei.hms.common.util.Base64Utils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -35,11 +35,14 @@ public final class SafeParcelableSerializer
   
   public static <S extends SafeParcelable> S deserializeFromString(String paramString, Parcelable.Creator<S> paramCreator)
   {
-    return deserializeFromBytes(a.a(paramString), paramCreator);
+    return deserializeFromBytes(Base64Utils.decodeUrlSafe(paramString), paramCreator);
   }
   
   public static <S extends SafeParcelable> ArrayList<S> deserializeIterableFromBundle(Bundle paramBundle, String paramString, Parcelable.Creator<S> paramCreator)
   {
+    if (paramBundle == null) {
+      return null;
+    }
     paramString = (ArrayList)paramBundle.getSerializable(paramString);
     if (paramString == null) {
       return null;
@@ -73,7 +76,7 @@ public final class SafeParcelableSerializer
     while (paramIterable.hasNext()) {
       localArrayList.add(serializeToBytes((SafeParcelable)paramIterable.next()));
     }
-    paramBundle.putSerializable(paramString, (Serializable)localArrayList);
+    paramBundle.putSerializable(paramString, localArrayList);
   }
   
   public static <S extends SafeParcelable> void serializeIterableToIntentExtra(Iterable<S> paramIterable, Intent paramIntent, String paramString)
@@ -83,7 +86,7 @@ public final class SafeParcelableSerializer
     while (paramIterable.hasNext()) {
       localArrayList.add(serializeToBytes((SafeParcelable)paramIterable.next()));
     }
-    paramIntent.putExtra(paramString, (Serializable)localArrayList);
+    paramIntent.putExtra(paramString, localArrayList);
   }
   
   public static <S extends SafeParcelable> byte[] serializeToBytes(S paramS)
@@ -102,12 +105,12 @@ public final class SafeParcelableSerializer
   
   public static <S extends SafeParcelable> String serializeToString(S paramS)
   {
-    return a.a(serializeToBytes(paramS));
+    return Base64Utils.encodeUrlSafe(serializeToBytes(paramS));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.internal.safeparcel.SafeParcelableSerializer
  * JD-Core Version:    0.7.0.1
  */

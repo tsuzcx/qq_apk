@@ -17,16 +17,10 @@ public class h
   
   public void a(boolean paramBoolean, String paramString1, int paramInt1, int paramInt2, String paramString2, long paramLong)
   {
-    if (MsfService.getCore().getStatReporter() != null) {
-      if (!paramBoolean) {
-        break label140;
-      }
-    }
-    label140:
-    for (int i = 0;; i = 1)
+    if (MsfService.getCore().getStatReporter() != null)
     {
       HashMap localHashMap = new HashMap();
-      localHashMap.put("resultCode", String.valueOf(i));
+      localHashMap.put("resultCode", String.valueOf(paramBoolean ^ true));
       localHashMap.put("failReason", paramString1);
       localHashMap.put("fromMsgLen", String.valueOf(paramInt2 / 1024));
       localHashMap.put("totalLen", String.valueOf((paramInt1 + paramInt2) / 1024));
@@ -49,7 +43,7 @@ public class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.service.h
  * JD-Core Version:    0.7.0.1
  */

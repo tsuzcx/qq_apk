@@ -28,21 +28,25 @@ public class CrmIvrText
     paramView.post(new CrmIvrText.1(paramQQAppInterface, paramView, paramString1));
   }
   
-  public void parseLinkSpan()
+  protected void parseLinkSpan()
   {
     super.parseLinkSpan();
-    Matcher localMatcher = Pattern.compile(QQTextParseLinkUtil.b + "|" + "QQ语音").matcher(this.mText);
-    while (localMatcher.find())
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(QQTextParseLinkUtil.b);
+    ((StringBuilder)localObject).append("|");
+    ((StringBuilder)localObject).append("QQ语音");
+    localObject = Pattern.compile(((StringBuilder)localObject).toString()).matcher(this.mText);
+    while (((Matcher)localObject).find())
     {
-      int i = localMatcher.start();
-      int j = localMatcher.end();
+      int i = ((Matcher)localObject).start();
+      int j = ((Matcher)localObject).end();
       addSpan(new CrmIvrText.CrmIvrLinkSpan(this, this.mText.substring(i, j)), i, j, 33);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.eqq.CrmIvrText
  * JD-Core Version:    0.7.0.1
  */

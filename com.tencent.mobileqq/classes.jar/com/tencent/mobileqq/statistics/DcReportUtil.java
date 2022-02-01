@@ -14,63 +14,81 @@ public class DcReportUtil
   
   public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DcReportUtil", 2, "reportDCEvent tag or detail is null: " + paramString1 + ", " + paramString2);
+      if (paramAppRuntime == null)
+      {
+        ThreadManager.post(new DcReportUtil.2(paramString1, paramString2), 5, null, true);
+        return;
       }
+      a(paramAppRuntime, paramString1, paramString2, 1);
       return;
     }
-    if (paramAppRuntime == null)
+    if (QLog.isColorLevel())
     {
-      ThreadManager.post(new DcReportUtil.2(paramString1, paramString2), 5, null, true);
-      return;
+      paramAppRuntime = new StringBuilder();
+      paramAppRuntime.append("reportDCEvent tag or detail is null: ");
+      paramAppRuntime.append(paramString1);
+      paramAppRuntime.append(", ");
+      paramAppRuntime.append(paramString2);
+      QLog.d("DcReportUtil", 2, paramAppRuntime.toString());
     }
-    a(paramAppRuntime, paramString1, paramString2, 1);
   }
   
   private static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, int paramInt)
   {
-    if (paramString2 != null)
-    {
-      paramString1 = ReportControllerServiceHolder.a();
-      if (paramString1 != null) {
-        paramString1.a(paramAppRuntime);
-      }
-      if (0 != 0)
-      {
-        paramString1 = paramString2;
-        if (paramString2.contains("${uin_unknown}")) {
-          paramString1 = paramString2.replace("${uin_unknown}", paramAppRuntime.getAccount());
-        }
-        throw new NullPointerException();
-      }
+    if (paramString2 == null) {
+      return;
     }
+    Object localObject = ReportControllerServiceHolder.a();
+    if (localObject == null) {
+      return;
+    }
+    ReportController localReportController = (ReportController)((IReportDataProviderService)localObject).a(paramAppRuntime);
+    if (localReportController == null) {
+      return;
+    }
+    localObject = paramString2;
+    if (paramString2.contains("${uin_unknown}")) {
+      localObject = paramString2.replace("${uin_unknown}", paramAppRuntime.getAccount());
+    }
+    localReportController.a(paramString1, (String)localObject, paramInt);
   }
   
   public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, boolean paramBoolean)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return;
-    }
-    String str = "${count_unknown}|" + paramString2;
-    paramString2 = str;
-    if (!paramBoolean)
+    if (!TextUtils.isEmpty(paramString1))
     {
-      long l = a.incrementAndGet();
-      paramString2 = "${report_seq_prefix}" + l + "|" + str;
+      if (TextUtils.isEmpty(paramString2)) {
+        return;
+      }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("${count_unknown}|");
+      ((StringBuilder)localObject).append(paramString2);
+      localObject = ((StringBuilder)localObject).toString();
+      paramString2 = (String)localObject;
+      if (!paramBoolean)
+      {
+        long l = a.incrementAndGet();
+        paramString2 = new StringBuilder();
+        paramString2.append("${report_seq_prefix}");
+        paramString2.append(l);
+        paramString2.append("|");
+        paramString2.append((String)localObject);
+        paramString2 = paramString2.toString();
+      }
+      if (paramAppRuntime == null)
+      {
+        ThreadManager.post(new DcReportUtil.1(paramString1, paramString2), 5, null, true);
+        return;
+      }
+      a(paramAppRuntime, paramString1, paramString2, 1);
     }
-    if (paramAppRuntime == null)
-    {
-      ThreadManager.post(new DcReportUtil.1(paramString1, paramString2), 5, null, true);
-      return;
-    }
-    a(paramAppRuntime, paramString1, paramString2, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.DcReportUtil
  * JD-Core Version:    0.7.0.1
  */

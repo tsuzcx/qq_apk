@@ -13,43 +13,40 @@ public final class Util
   
   public static void maybeTerminateInputStream(HttpURLConnection paramHttpURLConnection, long paramLong)
   {
-    if ((SDK_INT != 19) && (SDK_INT != 20)) {}
+    int i = SDK_INT;
+    if ((i != 19) && (i != 20)) {
+      return;
+    }
     do
     {
-      for (;;)
+      try
       {
-        return;
-        try
+        paramHttpURLConnection = paramHttpURLConnection.getInputStream();
+        if (paramLong == -1L)
         {
-          paramHttpURLConnection = paramHttpURLConnection.getInputStream();
-          if (paramLong != -1L) {
-            break label99;
-          }
-          if (paramHttpURLConnection.read() == -1) {}
-        }
-        catch (IOException paramHttpURLConnection)
-        {
-          do
-          {
-            Object localObject;
+          if (paramHttpURLConnection.read() == -1) {
             return;
-          } while (paramLong > 2048L);
+          }
+          Object localObject = paramHttpURLConnection.getClass().getName();
+          if ((((String)localObject).equals("com.android.okhttp.internal.http.HttpTransport$ChunkedInputStream")) || (((String)localObject).equals("com.android.okhttp.internal.http.HttpTransport$FixedLengthInputStream")))
+          {
+            localObject = paramHttpURLConnection.getClass().getSuperclass().getDeclaredMethod("unexpectedEndOfInput", new Class[0]);
+            ((Method)localObject).setAccessible(true);
+            ((Method)localObject).invoke(paramHttpURLConnection, new Object[0]);
+          }
           return;
         }
-        catch (Exception paramHttpURLConnection) {}
       }
-      localObject = paramHttpURLConnection.getClass().getName();
-    } while ((!((String)localObject).equals("com.android.okhttp.internal.http.HttpTransport$ChunkedInputStream")) && (!((String)localObject).equals("com.android.okhttp.internal.http.HttpTransport$FixedLengthInputStream")));
-    localObject = paramHttpURLConnection.getClass().getSuperclass().getDeclaredMethod("unexpectedEndOfInput", new Class[0]);
-    ((Method)localObject).setAccessible(true);
-    ((Method)localObject).invoke(paramHttpURLConnection, new Object[0]);
-    return;
-    label99:
+      catch (IOException|Exception paramHttpURLConnection)
+      {
+        return;
+      }
+    } while (paramLong > 2048L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.util.Util
  * JD-Core Version:    0.7.0.1
  */

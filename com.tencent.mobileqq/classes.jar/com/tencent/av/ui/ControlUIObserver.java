@@ -3,7 +3,6 @@ package com.tencent.av.ui;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.av.AVFunChat.AVFunChatMessage;
-import com.tencent.av.business.manager.zimu.ARZimuTask;
 import com.tencent.av.gaudio.VideoViewInfo;
 import com.tencent.av.utils.SeqUtil;
 import com.tencent.mobileqq.utils.QAVGroupConfig.GroupInviteFlag;
@@ -87,188 +86,267 @@ public class ControlUIObserver
   void b(Object paramObject)
   {
     paramObject = (Object[])paramObject;
-    int i = ((Integer)paramObject[0]).intValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("qav.ControlUIObserver", 2, "OnUpdate，msgType = " + i);
-    }
+    int i = 0;
+    int j = ((Integer)paramObject[0]).intValue();
     Object localObject;
-    switch (i)
+    if (QLog.isColorLevel())
     {
-    default: 
-      return;
-    case 101: 
-      a(SeqUtil.a(paramObject, 1));
-      return;
-    case 174: 
-      b(SeqUtil.a(paramObject, 1));
-      return;
-    case 102: 
-      a();
-      return;
-    case 103: 
-      localObject = (ArrayList)paramObject[1];
-      a(SeqUtil.a(paramObject, 2), (ArrayList)localObject);
-      return;
-    case 104: 
-      a((ArrayList)paramObject[1]);
-      return;
-    case 105: 
-      a(((Boolean)paramObject[1]).booleanValue(), SeqUtil.a(paramObject, 2));
-      return;
-    case 106: 
-      c(SeqUtil.a(paramObject, 1));
-      return;
-    case 107: 
-      d(SeqUtil.a(paramObject, 1));
-      return;
-    case 108: 
-      f();
-      return;
-    case 109: 
-      g();
-      return;
-    case 110: 
-      f(SeqUtil.a(paramObject, 1));
-      return;
-    case 8001: 
-      b((String)paramObject[1]);
-      return;
-    case 119: 
-      c(((Integer)paramObject[1]).intValue());
-      return;
-    case 111: 
-      a(((Boolean)paramObject[1]).booleanValue());
-      return;
-    case 113: 
-      b();
-      return;
-    case 114: 
-      e();
-      return;
-    case 115: 
-      a((String)paramObject[1], ((Integer)paramObject[2]).intValue(), (String)paramObject[3], ((Integer)paramObject[4]).intValue());
-      return;
-    case 172: 
-      a(((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), (String)paramObject[3]);
-      return;
-    case 117: 
-      i = -1;
-      if (paramObject.length > 1) {
-        i = ((Integer)paramObject[1]).intValue();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("OnUpdate，msgType = ");
+      ((StringBuilder)localObject).append(j);
+      QLog.d("qav.ControlUIObserver", 2, ((StringBuilder)localObject).toString());
+    }
+    if (j != 158)
+    {
+      if (j != 159)
+      {
+        if (j != 6104)
+        {
+          if (j != 6105) {}
+          switch (j)
+          {
+          default: 
+            switch (j)
+            {
+            default: 
+              boolean bool1;
+              switch (j)
+              {
+              default: 
+                switch (j)
+                {
+                default: 
+                  switch (j)
+                  {
+                  default: 
+                    switch (j)
+                    {
+                    default: 
+                      switch (j)
+                      {
+                      default: 
+                        switch (j)
+                        {
+                        default: 
+                          return;
+                        case 7004: 
+                          a((String)paramObject[1], (Boolean)paramObject[2]);
+                          return;
+                        case 7003: 
+                          d((String)paramObject[1]);
+                          return;
+                        case 7002: 
+                          b((ControlUIObserver.CPreEventInfo)paramObject[1]);
+                          return;
+                        case 7001: 
+                          b((String)paramObject[1], (Boolean)paramObject[2]);
+                          return;
+                        }
+                        e((String)paramObject[1]);
+                        return;
+                      case 174: 
+                        b(SeqUtil.a(paramObject, 1));
+                        return;
+                      case 173: 
+                        a((String)paramObject[1], (AVFunChat.AVFunChatMessage)paramObject[2]);
+                        return;
+                      }
+                      a(((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), (String)paramObject[3]);
+                      return;
+                    case 165: 
+                      e(((Integer)paramObject[1]).intValue());
+                      return;
+                    case 164: 
+                      d(((Integer)paramObject[1]).intValue());
+                      return;
+                    case 163: 
+                      d();
+                      return;
+                    case 162: 
+                      a((String)paramObject[1], (String)paramObject[2]);
+                      return;
+                    }
+                    c();
+                    return;
+                  case 137: 
+                    o();
+                    return;
+                  case 136: 
+                    n();
+                    return;
+                  case 135: 
+                    m();
+                    return;
+                  }
+                  j();
+                  return;
+                case 127: 
+                  l();
+                  return;
+                case 126: 
+                  bool1 = ((Boolean)paramObject[1]).booleanValue();
+                  i = ((Integer)paramObject[2]).intValue();
+                  a(SeqUtil.a(paramObject, 3), bool1, i);
+                  return;
+                case 125: 
+                  e(SeqUtil.a(paramObject, 1));
+                  return;
+                case 124: 
+                  g(SeqUtil.a(paramObject, 1));
+                  return;
+                case 123: 
+                  if (paramObject.length > 1) {
+                    i = ((Integer)paramObject[1]).intValue();
+                  }
+                  a(SeqUtil.a(paramObject, 2), i);
+                  return;
+                case 122: 
+                  a(paramObject[1]);
+                  return;
+                }
+                i();
+                return;
+              case 119: 
+                c(((Integer)paramObject[1]).intValue());
+                return;
+              case 118: 
+                if (paramObject.length < 4) {
+                  break;
+                }
+                bool1 = ((Boolean)paramObject[1]).booleanValue();
+                boolean bool2 = ((Boolean)paramObject[2]).booleanValue();
+                long l = ((Long)paramObject[3]).longValue();
+                a(SeqUtil.a(paramObject, 4), bool1, bool2, l);
+                return;
+              case 117: 
+                i = -1;
+                if (paramObject.length > 1) {
+                  i = ((Integer)paramObject[1]).intValue();
+                }
+                a(i);
+                return;
+              }
+              break;
+            case 115: 
+              a((String)paramObject[1], ((Integer)paramObject[2]).intValue(), (String)paramObject[3], ((Integer)paramObject[4]).intValue());
+              return;
+            case 114: 
+              e();
+              return;
+            case 113: 
+              b();
+              return;
+            }
+            break;
+          case 20001: 
+            a(SeqUtil.a(paramObject, 1), ((Boolean)paramObject[2]).booleanValue(), (String)paramObject[3]);
+            return;
+          case 15001: 
+            a(SeqUtil.a(paramObject, 1), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue());
+            return;
+          case 9008: 
+            a(((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue());
+            return;
+          case 9007: 
+            a(((Integer)paramObject[1]).intValue(), ((Boolean)paramObject[2]).booleanValue());
+            return;
+          case 9006: 
+            b(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue());
+            return;
+          case 9005: 
+            d((ControlUIObserver.CPreEventInfo)paramObject[1]);
+            return;
+          case 9004: 
+            a((ControlUIObserver.CPreChangButtonStyleInfo)paramObject[1]);
+            return;
+          case 9003: 
+            a((ControlUIObserver.CEffectEntrancePreClickInfo)paramObject[1]);
+            return;
+          case 9002: 
+            f((ControlUIObserver.CPreEventInfo)paramObject[1]);
+            return;
+          case 9001: 
+            e((ControlUIObserver.CPreEventInfo)paramObject[1]);
+            return;
+          case 9000: 
+            c((ControlUIObserver.CPreEventInfo)paramObject[1]);
+            return;
+          case 8005: 
+            b((String)paramObject[1], (String)paramObject[2]);
+            return;
+          case 8004: 
+            a((ControlUIObserver.CPreEventInfo)paramObject[1]);
+            return;
+          case 8003: 
+            b(((Integer)paramObject[1]).intValue());
+            return;
+          case 8002: 
+            h();
+            return;
+          case 8001: 
+            b((String)paramObject[1]);
+            return;
+          case 6012: 
+            k();
+            return;
+          case 6009: 
+            c((String)paramObject[2]);
+            return;
+          case 169: 
+            a((QAVGroupConfig.GroupInviteFlag)paramObject[1]);
+            return;
+          case 167: 
+            b(((Boolean)paramObject[1]).booleanValue());
+            return;
+          case 111: 
+            a(((Boolean)paramObject[1]).booleanValue());
+            return;
+          case 110: 
+            f(SeqUtil.a(paramObject, 1));
+            return;
+          case 109: 
+            g();
+            return;
+          case 108: 
+            f();
+            return;
+          case 107: 
+            d(SeqUtil.a(paramObject, 1));
+            return;
+          case 106: 
+            c(SeqUtil.a(paramObject, 1));
+            return;
+          case 105: 
+            a(((Boolean)paramObject[1]).booleanValue(), SeqUtil.a(paramObject, 2));
+            return;
+          case 104: 
+            a((ArrayList)paramObject[1]);
+            return;
+          case 103: 
+            localObject = (ArrayList)paramObject[1];
+            a(SeqUtil.a(paramObject, 2), (ArrayList)localObject);
+            return;
+          case 102: 
+            a();
+            return;
+          case 101: 
+            a(SeqUtil.a(paramObject, 1));
+            return;
+            a(((Integer)paramObject[1]).intValue(), SeqUtil.a(paramObject, 2));
+            return;
+          }
+        }
+        else
+        {
+          a((String)paramObject[1]);
+        }
       }
-      a(i);
-      return;
-    case 8002: 
-      h();
-      return;
-    case 123: 
-      if (paramObject.length <= 1) {
-        break;
+      else {
+        f(((Integer)paramObject[1]).intValue());
       }
     }
-    for (i = ((Integer)paramObject[1]).intValue();; i = 0)
-    {
-      a(SeqUtil.a(paramObject, 2), i);
-      return;
-      b(((Integer)paramObject[1]).intValue());
-      return;
-      a((ControlUIObserver.CPreEventInfo)paramObject[1]);
-      return;
-      localObject = (String)paramObject[1];
-      paramObject = (String)paramObject[2];
-      ARZimuTask.a((String)localObject, paramObject);
-      b((String)localObject, paramObject);
-      return;
-      if (paramObject.length < 4) {
-        break;
-      }
-      boolean bool1 = ((Boolean)paramObject[1]).booleanValue();
-      boolean bool2 = ((Boolean)paramObject[2]).booleanValue();
-      long l = ((Long)paramObject[3]).longValue();
-      a(SeqUtil.a(paramObject, 4), bool1, bool2, l);
-      return;
-      i();
-      return;
-      a(paramObject[1]);
-      return;
-      e(SeqUtil.a(paramObject, 1));
-      return;
-      bool1 = ((Boolean)paramObject[1]).booleanValue();
-      i = ((Integer)paramObject[2]).intValue();
-      a(SeqUtil.a(paramObject, 3), bool1, i);
-      return;
-      g(SeqUtil.a(paramObject, 1));
-      return;
-      a((String)paramObject[1]);
-      return;
-      l();
-      return;
-      j();
-      return;
-      m();
-      return;
-      n();
-      return;
-      o();
-      return;
+    else {
       p();
-      return;
-      f(((Integer)paramObject[1]).intValue());
-      return;
-      c();
-      return;
-      a(((Integer)paramObject[1]).intValue(), SeqUtil.a(paramObject, 2));
-      return;
-      k();
-      return;
-      d((String)paramObject[1]);
-      return;
-      a((String)paramObject[1], (Boolean)paramObject[2]);
-      return;
-      e((String)paramObject[1]);
-      return;
-      b((String)paramObject[1], (Boolean)paramObject[2]);
-      return;
-      b((ControlUIObserver.CPreEventInfo)paramObject[1]);
-      return;
-      a((ControlUIObserver.CEffectEntrancePreClickInfo)paramObject[1]);
-      return;
-      a((ControlUIObserver.CPreChangButtonStyleInfo)paramObject[1]);
-      return;
-      c((ControlUIObserver.CPreEventInfo)paramObject[1]);
-      return;
-      d((ControlUIObserver.CPreEventInfo)paramObject[1]);
-      return;
-      e((ControlUIObserver.CPreEventInfo)paramObject[1]);
-      return;
-      f((ControlUIObserver.CPreEventInfo)paramObject[1]);
-      return;
-      a((QAVGroupConfig.GroupInviteFlag)paramObject[1]);
-      return;
-      a((String)paramObject[1], (String)paramObject[2]);
-      return;
-      d();
-      return;
-      d(((Integer)paramObject[1]).intValue());
-      return;
-      c((String)paramObject[2]);
-      return;
-      e(((Integer)paramObject[1]).intValue());
-      return;
-      b(((Boolean)paramObject[1]).booleanValue());
-      return;
-      a(SeqUtil.a(paramObject, 1), ((Boolean)paramObject[2]).booleanValue(), (String)paramObject[3]);
-      return;
-      a(SeqUtil.a(paramObject, 1), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue());
-      return;
-      a((String)paramObject[1], (AVFunChat.AVFunChatMessage)paramObject[2]);
-      return;
-      b(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue());
-      return;
-      a(((Integer)paramObject[1]).intValue(), ((Boolean)paramObject[2]).booleanValue());
-      return;
-      a(((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue());
-      return;
     }
   }
   
@@ -356,7 +434,7 @@ public class ControlUIObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.ControlUIObserver
  * JD-Core Version:    0.7.0.1
  */

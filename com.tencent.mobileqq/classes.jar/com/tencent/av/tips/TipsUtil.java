@@ -11,14 +11,18 @@ public abstract class TipsUtil
 {
   public static void a(long paramLong, VideoAppInterface paramVideoAppInterface)
   {
-    if (paramVideoAppInterface == null) {}
-    do
-    {
+    if (paramVideoAppInterface == null) {
       return;
-      QLog.w("NewTipsManager", 1, "hideAllTips, seq[" + paramLong + "]");
-      paramVideoAppInterface = (TipsManager)paramVideoAppInterface.a(11);
-    } while (paramVideoAppInterface == null);
-    paramVideoAppInterface.b();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("hideAllTips, seq[");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("]");
+    QLog.w("NewTipsManager", 1, localStringBuilder.toString());
+    paramVideoAppInterface = (TipsManager)paramVideoAppInterface.a(11);
+    if (paramVideoAppInterface != null) {
+      paramVideoAppInterface.b();
+    }
   }
   
   public static void a(VideoAppInterface paramVideoAppInterface)
@@ -121,7 +125,7 @@ public abstract class TipsUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.tips.TipsUtil
  * JD-Core Version:    0.7.0.1
  */

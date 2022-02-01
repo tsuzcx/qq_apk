@@ -26,7 +26,15 @@ public class Dog
   
   public String toString()
   {
-    return "Dog{id=" + this.id + ", recognizeScene=" + this.fC + ", dogFoods=" + this.fD + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Dog{id=");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append(", recognizeScene=");
+    localStringBuilder.append(this.fC);
+    localStringBuilder.append(", dogFoods=");
+    localStringBuilder.append(this.fD);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -37,7 +45,7 @@ public class Dog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqpimsecure.wificore.api.recognize.monitor.Dog
  * JD-Core Version:    0.7.0.1
  */

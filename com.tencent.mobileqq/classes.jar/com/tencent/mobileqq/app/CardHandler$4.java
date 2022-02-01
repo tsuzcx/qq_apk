@@ -12,10 +12,16 @@ class CardHandler$4
   
   public void onUploadError(AbstractUploadTask paramAbstractUploadTask, int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qzonephotowall", 2, "onUploadError " + paramString + " path:" + paramAbstractUploadTask.uploadFilePath);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUploadError ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" path:");
+      localStringBuilder.append(paramAbstractUploadTask.uploadFilePath);
+      QLog.e("Q.qzonephotowall", 2, localStringBuilder.toString());
     }
-    this.a.notifyUI(71, false, new Object[] { paramAbstractUploadTask.uploadFilePath });
+    this.a.notifyUI(69, false, new Object[] { paramAbstractUploadTask.uploadFilePath });
   }
   
   public void onUploadProgress(AbstractUploadTask paramAbstractUploadTask, long paramLong1, long paramLong2)
@@ -38,18 +44,18 @@ class CardHandler$4
     }
     synchronized (CardHandler.a(this.a))
     {
-      if (CardHandler.a(this.a).size() != 0)
-      {
+      if (CardHandler.a(this.a).size() != 0) {
         CardHandler.a(this.a);
-        return;
+      } else {
+        this.a.notifyUI(69, true, new Object[0]);
       }
-      this.a.notifyUI(71, true, new Object[0]);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.CardHandler.4
  * JD-Core Version:    0.7.0.1
  */

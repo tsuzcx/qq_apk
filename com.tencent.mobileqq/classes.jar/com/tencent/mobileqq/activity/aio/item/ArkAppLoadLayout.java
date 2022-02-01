@@ -13,9 +13,9 @@ import com.tencent.ark.ArkViewImplement;
 public class ArkAppLoadLayout
   extends RelativeLayout
 {
-  public static int a;
+  public static int a = -2565408;
   public static Paint a;
-  public static int b;
+  public static int b = -2565408;
   private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private ArkViewImplement jdField_a_of_type_ComTencentArkArkViewImplement;
@@ -24,8 +24,6 @@ public class ArkAppLoadLayout
   
   static
   {
-    jdField_a_of_type_Int = -2565408;
-    b = -2565408;
     jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
   }
   
@@ -49,22 +47,19 @@ public class ArkAppLoadLayout
   
   public void draw(Canvas paramCanvas)
   {
-    Paint localPaint;
     if (!this.jdField_a_of_type_Boolean)
     {
-      localPaint = jdField_a_of_type_AndroidGraphicsPaint;
-      if (!isPressed()) {
-        break label44;
+      Paint localPaint = jdField_a_of_type_AndroidGraphicsPaint;
+      int i;
+      if (isPressed()) {
+        i = jdField_a_of_type_Int;
+      } else {
+        i = this.c;
       }
-    }
-    label44:
-    for (int i = jdField_a_of_type_Int;; i = this.c)
-    {
       localPaint.setColor(i);
       paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, jdField_a_of_type_AndroidGraphicsPaint);
-      super.draw(paramCanvas);
-      return;
     }
+    super.draw(paramCanvas);
   }
   
   public void onMeasure(int paramInt1, int paramInt2)
@@ -91,7 +86,7 @@ public class ArkAppLoadLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout
  * JD-Core Version:    0.7.0.1
  */

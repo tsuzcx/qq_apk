@@ -73,8 +73,9 @@ public class RecvMsg
     }
     catch (RuntimeException paramParcel)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "readFromParcel RuntimeException", paramParcel);
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "readFromParcel RuntimeException", paramParcel);
+      }
     }
   }
   
@@ -100,7 +101,23 @@ public class RecvMsg
   
   public String toString()
   {
-    return jdField_a_of_type_JavaLangString + ", mVipBubbleId:" + this.jdField_a_of_type_Int + ", mAccountUin:" + this.jdField_c_of_type_JavaLangString + ", mFriendUin:" + this.jdField_d_of_type_JavaLangString + ", mSenderUin:" + this.jdField_e_of_type_JavaLangString + ", mSenderName:" + this.jdField_f_of_type_JavaLangString + ", mMsg:" + this.jdField_b_of_type_JavaLangString + ", msgType:" + this.jdField_e_of_type_Int;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", mVipBubbleId:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", mAccountUin:");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(", mFriendUin:");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(", mSenderUin:");
+    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(", mSenderName:");
+    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append(", mMsg:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", msgType:");
+    localStringBuilder.append(this.jdField_e_of_type_Int);
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -124,14 +141,15 @@ public class RecvMsg
     }
     catch (RuntimeException paramParcel)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "writeToParcel RuntimeException", paramParcel);
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "writeToParcel RuntimeException", paramParcel);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.service.RecvMsg
  * JD-Core Version:    0.7.0.1
  */

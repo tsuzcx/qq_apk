@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -72,20 +73,21 @@ public final class mobile_feeds_rsp
     cache_uin_info = new interest_list();
     cache_loginuin_info = new login_uin_info();
     cache_extendinfo = new HashMap();
-    cache_extendinfo.put(Integer.valueOf(0), "");
+    localObject = Integer.valueOf(0);
+    cache_extendinfo.put(localObject, "");
     cache_stMapExtendinfo = new HashMap();
     cache_stMapExtendinfo.put("", "");
     cache_stProfileTimeLine = new s_profile_timeline();
     cache_stJoinList = new s_join_list();
     cache_mapRecomUnifyList = new HashMap();
-    localObject = new UnifyRecomStruct();
-    cache_mapRecomUnifyList.put(Integer.valueOf(0), localObject);
+    UnifyRecomStruct localUnifyRecomStruct = new UnifyRecomStruct();
+    cache_mapRecomUnifyList.put(localObject, localUnifyRecomStruct);
     cache_stMemoryInfo = new s_memory_seal_off();
     cache_kitfileData = new HashMap();
     cache_kitfileData.put("", "");
     cache_stLifeMemntInfo = new s_life_moment();
     cache_rank_param = new HashMap();
-    cache_rank_param.put(Integer.valueOf(0), "");
+    cache_rank_param.put(localObject, "");
     cache_stFunnySpace = new FunnySpace();
     cache_stShangchengInfo = (byte[])new byte[1];
     ((byte[])cache_stShangchengInfo)[0] = 0;
@@ -174,11 +176,13 @@ public final class mobile_feeds_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.hasmore, 0);
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 1);
+    Object localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.all_feeds_data != null) {
-      paramJceOutputStream.write(this.all_feeds_data, 2);
+    localObject = this.all_feeds_data;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
     paramJceOutputStream.write(this.newcount, 3);
     paramJceOutputStream.write(this.auto_load, 4);
@@ -186,73 +190,91 @@ public final class mobile_feeds_rsp
     paramJceOutputStream.write(this.req_count, 6);
     paramJceOutputStream.write(this.iFollowNum, 7);
     paramJceOutputStream.write(this.host_imbitmap, 8);
-    if (this.user_sid != null) {
-      paramJceOutputStream.write(this.user_sid, 9);
+    localObject = this.user_sid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.prefetch_rsp != null) {
-      paramJceOutputStream.write(this.prefetch_rsp, 10);
+    localObject = this.prefetch_rsp;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 10);
     }
     paramJceOutputStream.write(this.is_realname_succ, 11);
-    if (this.host_cover != null) {
-      paramJceOutputStream.write(this.host_cover, 12);
+    localObject = this.host_cover;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 12);
     }
-    if (this.uin_info != null) {
-      paramJceOutputStream.write(this.uin_info, 13);
+    localObject = this.uin_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 13);
     }
     paramJceOutputStream.write(this.gamebar_video_checking_num, 14);
-    if (this.loginuin_info != null) {
-      paramJceOutputStream.write(this.loginuin_info, 15);
+    localObject = this.loginuin_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 15);
     }
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 16);
+    localObject = this.extendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 16);
     }
     paramJceOutputStream.write(this.is_detail_report, 17);
     paramJceOutputStream.write(this.network_report, 18);
-    if (this.undealFeedTime != null) {
-      paramJceOutputStream.write(this.undealFeedTime, 19);
+    localObject = this.undealFeedTime;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 19);
     }
-    if (this.stMapExtendinfo != null) {
-      paramJceOutputStream.write(this.stMapExtendinfo, 20);
+    localObject = this.stMapExtendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 20);
     }
     paramJceOutputStream.write(this.undealFeedCount, 21);
-    if (this.stProfileTimeLine != null) {
-      paramJceOutputStream.write(this.stProfileTimeLine, 22);
+    localObject = this.stProfileTimeLine;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 22);
     }
     paramJceOutputStream.write(this.next_keep_alive_time, 23);
-    if (this.stJoinList != null) {
-      paramJceOutputStream.write(this.stJoinList, 24);
+    localObject = this.stJoinList;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 24);
     }
-    if (this.mapRecomUnifyList != null) {
-      paramJceOutputStream.write(this.mapRecomUnifyList, 25);
+    localObject = this.mapRecomUnifyList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 25);
     }
-    if (this.stMemoryInfo != null) {
-      paramJceOutputStream.write(this.stMemoryInfo, 26);
+    localObject = this.stMemoryInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 26);
     }
-    if (this.kitfileData != null) {
-      paramJceOutputStream.write(this.kitfileData, 27);
+    localObject = this.kitfileData;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 27);
     }
-    if (this.stLifeMemntInfo != null) {
-      paramJceOutputStream.write(this.stLifeMemntInfo, 28);
+    localObject = this.stLifeMemntInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 28);
     }
-    if (this.rank_param != null) {
-      paramJceOutputStream.write(this.rank_param, 29);
+    localObject = this.rank_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 29);
     }
-    if (this.stFunnySpace != null) {
-      paramJceOutputStream.write(this.stFunnySpace, 30);
+    localObject = this.stFunnySpace;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 30);
     }
-    if (this.stShangchengInfo != null) {
-      paramJceOutputStream.write(this.stShangchengInfo, 31);
+    localObject = this.stShangchengInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 31);
     }
     paramJceOutputStream.write(this.dailyShuoShuoCount, 32);
     paramJceOutputStream.write(this.bPsvOpenKapu, 33);
-    if (this.stCampusInfo != null) {
-      paramJceOutputStream.write(this.stCampusInfo, 34);
+    localObject = this.stCampusInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 34);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_feeds_rsp
  * JD-Core Version:    0.7.0.1
  */

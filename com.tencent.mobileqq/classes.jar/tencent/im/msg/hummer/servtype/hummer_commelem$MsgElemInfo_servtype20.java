@@ -20,7 +20,7 @@ public final class hummer_commelem$MsgElemInfo_servtype20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype20
  * JD-Core Version:    0.7.0.1
  */

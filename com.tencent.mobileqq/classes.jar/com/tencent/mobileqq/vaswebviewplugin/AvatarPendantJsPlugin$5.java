@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
@@ -24,30 +25,10 @@ class AvatarPendantJsPlugin$5
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    }
-    for (;;)
-    {
-      try
+      if (paramInt == 1)
       {
-        this.val$sheet.dismiss();
-        return;
-      }
-      catch (Exception paramView) {}
-      if (!QavCameraUsage.b(BaseApplicationImpl.getContext()))
-      {
-        paramView = new File(AppConstants.SDCARD_PATH + "photo/");
-        if (!paramView.exists()) {
-          paramView.mkdirs();
-        }
-        paramView = new Intent();
-        Uri localUri = FileProvider7Helper.setSystemCapture(this.this$0.mRuntime.a(), new File(AppConstants.SDCARD_PATH + "photo/" + System.currentTimeMillis() + ".jpg"), paramView);
-        this.this$0.mRuntime.a().startActivityForResult(paramView, 1);
-        AvatarPendantUiPlugin.sJsHandler = this.this$0;
-        AvatarPendantUiPlugin.sCallbackId = this.val$callbackId;
-        AvatarPendantUiPlugin.sUploadPhotoUri = localUri;
-        continue;
         paramView = new Intent();
         paramView.putExtra("keyFromPendantPhoto", true);
         paramView.putExtra("Business_Origin", 100);
@@ -57,11 +38,42 @@ class AvatarPendantJsPlugin$5
         AvatarPendantUiPlugin.sCallbackId = this.val$callbackId;
       }
     }
+    else
+    {
+      if (QavCameraUsage.b(BaseApplicationImpl.getContext())) {
+        return;
+      }
+      paramView = new StringBuilder();
+      paramView.append(AppConstants.SDCARD_PATH);
+      paramView.append("photo/");
+      paramView = new File(paramView.toString());
+      if (!paramView.exists()) {
+        paramView.mkdirs();
+      }
+      paramView = new Intent();
+      Object localObject = this.this$0.mRuntime.a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(AppConstants.SDCARD_PATH);
+      localStringBuilder.append("photo/");
+      localStringBuilder.append(System.currentTimeMillis());
+      localStringBuilder.append(".jpg");
+      localObject = FileProvider7Helper.setSystemCapture((Context)localObject, new File(localStringBuilder.toString()), paramView);
+      this.this$0.mRuntime.a().startActivityForResult(paramView, 1);
+      AvatarPendantUiPlugin.sJsHandler = this.this$0;
+      AvatarPendantUiPlugin.sCallbackId = this.val$callbackId;
+      AvatarPendantUiPlugin.sUploadPhotoUri = (Uri)localObject;
+    }
+    try
+    {
+      this.val$sheet.dismiss();
+      return;
+    }
+    catch (Exception paramView) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.AvatarPendantJsPlugin.5
  * JD-Core Version:    0.7.0.1
  */

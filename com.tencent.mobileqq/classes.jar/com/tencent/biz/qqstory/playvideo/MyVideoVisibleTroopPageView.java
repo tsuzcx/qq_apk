@@ -28,11 +28,11 @@ public class MyVideoVisibleTroopPageView
     super(paramContext);
     this.jdField_a_of_type_AndroidAppDialog = paramDialog;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    LayoutInflater.from(paramContext).inflate(2131561998, this, true);
+    LayoutInflater.from(paramContext).inflate(2131561832, this, true);
     paramDialog = new MyVideoVisibleTroopPageView.1(this);
     if ((paramList != null) && (!paramList.isEmpty()))
     {
-      XListView localXListView = (XListView)findViewById(2131370452);
+      XListView localXListView = (XListView)findViewById(2131370110);
       paramContext = new MyVideoVisibleTroopPageView.TroopListAdapter(this, paramContext);
       this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = paramTroopManager;
       paramContext.a(paramList);
@@ -42,22 +42,22 @@ public class MyVideoVisibleTroopPageView
       localXListView.setOnTouchListener(paramDialog);
       return;
     }
-    paramContext = (TextView)findViewById(2131381976);
-    paramList = findViewById(2131377325);
-    paramContext.setText(HardCodeUtil.a(2131707071));
-    paramContext.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(2130846764), null, null);
+    paramContext = (TextView)findViewById(2131381180);
+    paramList = findViewById(2131376778);
+    paramContext.setText(HardCodeUtil.a(2131707093));
+    paramContext.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(2130846644), null, null);
     paramList.setVisibility(0);
     paramList.setOnTouchListener(paramDialog);
   }
   
   public String a()
   {
-    return HardCodeUtil.a(2131707070);
+    return HardCodeUtil.a(2131707092);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView
  * JD-Core Version:    0.7.0.1
  */

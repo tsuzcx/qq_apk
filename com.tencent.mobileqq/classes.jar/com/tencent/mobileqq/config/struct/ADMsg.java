@@ -28,41 +28,61 @@ public class ADMsg
   
   public void a()
   {
-    if (this.e.equals("LOCAL")) {
-      if (!this.f.equals("1")) {}
-    }
-    label24:
-    do
+    if (this.e.equals("LOCAL"))
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              break label24;
-              break label24;
-              break label24;
-              do
-              {
-                return;
-              } while ((this.f.equals("2")) || (this.f.equals("4")) || (this.f.equals("5")) || (this.f.equals("6")) || (!this.f.equals("7")));
-              return;
-            } while ((this.e.equals("WAP")) || (this.e.equals("TMTWAP")) || (this.e.equals("WAPI")) || (this.e.equals("TMTWAPI")) || (this.e.equals("VOICECALL")));
-            if (!this.e.equals("QQMSG")) {
-              break;
-            }
-          } while (!this.jdField_c_of_type_JavaLangString.equals("AUTO"));
-          return;
-        } while ((this.e.equals("AUTOQQMSG")) || (this.e.equals("HTTP")) || (this.e.equals("AUTOSMS")));
-        if (!this.e.equals("USERSMS")) {
-          break;
-        }
-      } while (!this.jdField_c_of_type_JavaLangString.equals("AUTO"));
+      if (this.f.equals("1")) {
+        return;
+      }
+      if (this.f.equals("2")) {
+        return;
+      }
+      if (this.f.equals("4")) {
+        return;
+      }
+      if (this.f.equals("5")) {
+        return;
+      }
+      if (this.f.equals("6")) {
+        return;
+      }
+      this.f.equals("7");
       return;
-    } while (!this.e.equals("RESET"));
+    }
+    if (this.e.equals("WAP")) {
+      return;
+    }
+    if (this.e.equals("TMTWAP")) {
+      return;
+    }
+    if (this.e.equals("WAPI")) {
+      return;
+    }
+    if (this.e.equals("TMTWAPI")) {
+      return;
+    }
+    if (this.e.equals("VOICECALL")) {
+      return;
+    }
+    if (this.e.equals("QQMSG"))
+    {
+      this.jdField_c_of_type_JavaLangString.equals("AUTO");
+      return;
+    }
+    if (this.e.equals("AUTOQQMSG")) {
+      return;
+    }
+    if (this.e.equals("HTTP")) {
+      return;
+    }
+    if (this.e.equals("AUTOSMS")) {
+      return;
+    }
+    if (this.e.equals("USERSMS"))
+    {
+      this.jdField_c_of_type_JavaLangString.equals("AUTO");
+      return;
+    }
+    this.e.equals("RESET");
   }
   
   public void a(boolean paramBoolean)
@@ -85,7 +105,7 @@ public class ADMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.struct.ADMsg
  * JD-Core Version:    0.7.0.1
  */

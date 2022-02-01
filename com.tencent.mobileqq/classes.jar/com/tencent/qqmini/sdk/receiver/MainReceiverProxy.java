@@ -23,12 +23,13 @@ public class MainReceiverProxy
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     String str = paramIntent.getAction();
+    Object localObject;
     if ("mini_preload_app".equals(str))
     {
       QMLog.i("minisdk-start", "预加载小程序");
-      Bundle localBundle = paramIntent.getExtras();
-      paramContext = localBundle;
-      if (localBundle == null) {
+      localObject = paramIntent.getExtras();
+      paramContext = (Context)localObject;
+      if (localObject == null) {
         paramContext = new Bundle();
       }
       paramContext.putString("mini_key_preload_type", "preload_app");
@@ -40,26 +41,26 @@ public class MainReceiverProxy
     }
     if ("mini_prelaunch_app".equals(str))
     {
-      paramContext = paramIntent.getExtras();
-      if (paramContext != null) {
-        break label315;
+      paramIntent = paramIntent.getExtras();
+      paramContext = paramIntent;
+      if (paramIntent == null) {
+        paramContext = new Bundle();
       }
-      paramContext = new Bundle();
-    }
-    label315:
-    for (;;)
-    {
       paramIntent = (MiniAppInfo)paramContext.getParcelable("mini_appinfo");
-      if (paramIntent == null) {}
-      do
-      {
+      if (paramIntent == null) {
         return;
-        QMLog.i("minisdk-start", "预加载小程序 miniAppInfo:" + paramIntent);
-        paramContext.putString("mini_key_preload_type", "preload_app");
-        AppRuntimeLoaderManager.g().preLaunchRuntimeLoader(paramIntent, new MainReceiverProxy.1(this, paramIntent), paramContext);
-        ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).preConnectDownloadHost();
-        return;
-      } while (!"mini_preload_game".equals(str));
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("预加载小程序 miniAppInfo:");
+      ((StringBuilder)localObject).append(paramIntent);
+      QMLog.i("minisdk-start", ((StringBuilder)localObject).toString());
+      paramContext.putString("mini_key_preload_type", "preload_app");
+      AppRuntimeLoaderManager.g().preLaunchRuntimeLoader(paramIntent, new MainReceiverProxy.1(this, paramIntent), paramContext);
+      ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).preConnectDownloadHost();
+      return;
+    }
+    if ("mini_preload_game".equals(str))
+    {
       QMLog.i("minisdk-start", "预加载小游戏");
       MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 605, "1");
       if ((GameWnsUtils.gameEnable()) && (GameWnsUtils.enablePreloadGameBaseLib()))
@@ -76,13 +77,12 @@ public class MainReceiverProxy
         AppLoaderFactory.g().getAppBrandProxy().onAppStart(null, paramContext);
       }
       ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).preConnectDownloadHost();
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.receiver.MainReceiverProxy
  * JD-Core Version:    0.7.0.1
  */

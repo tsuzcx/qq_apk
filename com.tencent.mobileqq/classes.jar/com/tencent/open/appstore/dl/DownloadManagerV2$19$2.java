@@ -22,7 +22,7 @@ class DownloadManagerV2$19$2
       String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.f);
       String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.i);
       String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.l);
-      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(DownloadConstants.y, true);
+      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(DownloadConstants.z, true);
       paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_JavaLangString, bool);
       this.a.this$0.a(10, paramDialogInterface);
       return;
@@ -35,7 +35,7 @@ class DownloadManagerV2$19$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.19.2
  * JD-Core Version:    0.7.0.1
  */

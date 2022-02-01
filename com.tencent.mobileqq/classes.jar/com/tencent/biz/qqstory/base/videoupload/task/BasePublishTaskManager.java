@@ -36,8 +36,13 @@ public abstract class BasePublishTaskManager<T extends BaseTaskInfo>
         a(localBaseTaskInfo);
       }
       this.jdField_a_of_type_JavaUtilArrayList.clear();
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw paramErrorMessage;
+    }
   }
   
   protected abstract BasePublishTask a(T paramT);
@@ -71,25 +76,30 @@ public abstract class BasePublishTaskManager<T extends BaseTaskInfo>
     paramBasePublishTask.a().jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
     if ((localBaseTaskInfo.jdField_a_of_type_Int == 6) || (localBaseTaskInfo.jdField_a_of_type_Int == 5) || (localBaseTaskInfo.jdField_a_of_type_Int == 3) || (localBaseTaskInfo.jdField_a_of_type_Int == 7))
     {
-      SLog.c("Q.qqstory.publish.upload:BasePublishTaskManager", "finish task:" + paramBasePublishTask);
-      if (localBaseTaskInfo.jdField_a_of_type_Int != 5) {
-        SLog.d("Q.qqstory.publish.upload:BasePublishTaskManager", "task fail:" + paramBasePublishTask);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("finish task:");
+      localStringBuilder.append(paramBasePublishTask);
+      SLog.c("Q.qqstory.publish.upload:BasePublishTaskManager", localStringBuilder.toString());
+      if (localBaseTaskInfo.jdField_a_of_type_Int != 5)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("task fail:");
+        localStringBuilder.append(paramBasePublishTask);
+        SLog.d("Q.qqstory.publish.upload:BasePublishTaskManager", localStringBuilder.toString());
       }
-      if (paramErrorMessage.errorCode != 10406) {
-        break label147;
+      if (paramErrorMessage.errorCode == 10406)
+      {
+        a(paramBasePublishTask);
+        a(paramErrorMessage);
       }
-      a(paramBasePublishTask);
-      a(paramErrorMessage);
-    }
-    for (;;)
-    {
+      else
+      {
+        a(paramBasePublishTask);
+        d();
+      }
       b(localBaseTaskInfo, paramErrorMessage);
-      a(localBaseTaskInfo);
-      return;
-      label147:
-      a(paramBasePublishTask);
-      d();
     }
+    a(localBaseTaskInfo);
   }
   
   protected abstract void a(T paramT);
@@ -116,47 +126,20 @@ public abstract class BasePublishTaskManager<T extends BaseTaskInfo>
     c();
   }
   
-  /* Error */
   protected void b(T paramT)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 24	com/tencent/biz/qqstory/base/videoupload/task/BasePublishTaskManager:b	Ljava/util/ArrayList;
-    //   6: aload_1
-    //   7: invokevirtual 131	java/util/ArrayList:remove	(Ljava/lang/Object;)Z
-    //   10: pop
-    //   11: aload_0
-    //   12: getfield 22	com/tencent/biz/qqstory/base/videoupload/task/BasePublishTaskManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   15: aload_1
-    //   16: invokevirtual 134	java/util/ArrayList:contains	(Ljava/lang/Object;)Z
-    //   19: ifeq +13 -> 32
-    //   22: ldc 67
-    //   24: ldc 136
-    //   26: invokestatic 104	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   29: aload_0
-    //   30: monitorexit
-    //   31: return
-    //   32: aload_0
-    //   33: getfield 22	com/tencent/biz/qqstory/base/videoupload/task/BasePublishTaskManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   36: aload_1
-    //   37: invokevirtual 52	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   40: pop
-    //   41: goto -12 -> 29
-    //   44: astore_1
-    //   45: aload_0
-    //   46: monitorexit
-    //   47: aload_1
-    //   48: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	49	0	this	BasePublishTaskManager
-    //   0	49	1	paramT	T
-    // Exception table:
-    //   from	to	target	type
-    //   2	29	44	finally
-    //   32	41	44	finally
+    try
+    {
+      this.b.remove(paramT);
+      if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramT))
+      {
+        SLog.d("Q.qqstory.publish.upload:BasePublishTaskManager", "the task is already exist ");
+        return;
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramT);
+      return;
+    }
+    finally {}
   }
   
   protected void b(T paramT, ErrorMessage paramErrorMessage)
@@ -209,46 +192,52 @@ public abstract class BasePublishTaskManager<T extends BaseTaskInfo>
     }
   }
   
-  public void d()
+  protected void d()
   {
     Bosses.get().postLightWeightJob(new BasePublishTaskManager.1(this), 10);
   }
   
   protected void e()
   {
-    for (;;)
+    try
     {
-      try
+      Object localObject1;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask != null)
       {
-        if (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask != null)
-        {
-          SLog.c("Q.qqstory.publish.upload:BasePublishTaskManager", "task waiting list size:" + this.jdField_a_of_type_JavaUtilArrayList.size());
-          return;
-        }
-        if (b())
-        {
-          SLog.c("Q.qqstory.publish.upload:BasePublishTaskManager", "manager had stopped");
-          continue;
-        }
-        if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
-          break label137;
-        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("task waiting list size:");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilArrayList.size());
+        SLog.c("Q.qqstory.publish.upload:BasePublishTaskManager", ((StringBuilder)localObject1).toString());
+        return;
       }
-      finally {}
-      BaseTaskInfo localBaseTaskInfo = (BaseTaskInfo)this.jdField_a_of_type_JavaUtilArrayList.remove(0);
-      this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask = a(localBaseTaskInfo);
-      this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask.a(this);
-      SLog.c("Q.qqstory.publish.upload:BasePublishTaskManager", "start publish task:" + localBaseTaskInfo);
-      this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask.run();
-      continue;
-      label137:
-      SLog.c("Q.qqstory.publish.upload:BasePublishTaskManager", "--- no feeds need to post");
+      if (b())
+      {
+        SLog.c("Q.qqstory.publish.upload:BasePublishTaskManager", "manager had stopped");
+        return;
+      }
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      {
+        localObject1 = (BaseTaskInfo)this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask = a((BaseTaskInfo)localObject1);
+        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask.a(this);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("start publish task:");
+        localStringBuilder.append(localObject1);
+        SLog.c("Q.qqstory.publish.upload:BasePublishTaskManager", localStringBuilder.toString());
+        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask.run();
+      }
+      else
+      {
+        SLog.c("Q.qqstory.publish.upload:BasePublishTaskManager", "--- no feeds need to post");
+      }
+      return;
     }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.task.BasePublishTaskManager
  * JD-Core Version:    0.7.0.1
  */

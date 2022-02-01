@@ -22,10 +22,10 @@ class GKillProcessMonitor$ExitBroadcastReceiver
       if ((GKillProcessMonitor.a(this.a, paramIntent, paramContext)) && (GKillProcessMonitor.a(this.a, paramContext)))
       {
         paramContext = GKillProcessMonitor.a(this.a).a();
-        if ((paramContext == null) || (paramContext.a().f()))
+        if ((paramContext == null) || (paramContext.a().e()))
         {
           if (paramContext != null) {
-            paramContext.z();
+            paramContext.A();
           }
           QLog.d("GKillProcessMonitor", 1, "qqExitBroadcastReceiver");
           Process.killProcess(Process.myPid());
@@ -36,7 +36,7 @@ class GKillProcessMonitor$ExitBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.GKillProcessMonitor.ExitBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,11 @@ package com.tencent.mobileqq.activity.recent.data;
 
 import android.content.Context;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendManager;
-import com.tencent.mobileqq.activity.contact.newfriend.msg.NewFriendMessage;
 import com.tencent.mobileqq.activity.recent.TimeManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.newfriend.api.INewFriendService;
+import com.tencent.mobileqq.newfriend.msg.NewFriendMessage;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecentItemNewFriendMsgData
@@ -28,62 +27,77 @@ public class RecentItemNewFriendMsgData
       QLog.d("RecentItemNewFriendMsgData", 2, "RecentItemNewFriendMsgData update");
     }
     super.a(paramQQAppInterface, paramContext);
-    NewFriendManager localNewFriendManager = (NewFriendManager)paramQQAppInterface.getManager(QQManagerFactory.NEW_FRIEND_MANAGER);
-    NewFriendMessage localNewFriendMessage = localNewFriendManager.a();
+    INewFriendService localINewFriendService = (INewFriendService)paramQQAppInterface.getRuntimeService(INewFriendService.class);
+    NewFriendMessage localNewFriendMessage = localINewFriendService.getLastUnreadNewFriendMessage();
     this.mTitleName = paramContext.getString(this.mTilteId);
     if (localNewFriendMessage == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("RecentItemNewFriendMsgData", 2, "isFirstShow = " + this.isFirstShow);
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("isFirstShow = ");
+        paramQQAppInterface.append(this.isFirstShow);
+        QLog.d("RecentItemNewFriendMsgData", 2, paramQQAppInterface.toString());
       }
       this.mLastMsg = "";
       this.mUnreadNum = 0;
       this.mMsgExtroInfo = "";
       this.mDisplayTime = 0L;
       this.mShowTime = "";
-      if (AppSetting.d)
-      {
-        paramQQAppInterface = new StringBuilder();
-        paramQQAppInterface.append(this.mTitleName).append(",");
-        if (this.mUnreadNum != 0) {
-          break label301;
-        }
-      }
     }
-    for (;;)
+    else
     {
-      if (this.mMsgExtroInfo != null) {
-        paramQQAppInterface.append(this.mMsgExtroInfo + ",");
-      }
-      paramQQAppInterface.append(this.mLastMsg).append(",").append(this.mShowTime);
-      this.mContentDesc = paramQQAppInterface.toString();
-      return;
       this.mMsgExtroInfo = "";
-      if (localNewFriendMessage.a(paramQQAppInterface) != null) {}
-      for (paramQQAppInterface = localNewFriendMessage.a(paramQQAppInterface);; paramQQAppInterface = this.mLastMsg)
-      {
-        this.mLastMsg = paramQQAppInterface;
-        this.mUnreadNum = localNewFriendManager.d();
-        if (this.mDisplayTime < localNewFriendMessage.a) {
-          this.mDisplayTime = localNewFriendMessage.a;
+      if (localNewFriendMessage.a(paramQQAppInterface) != null) {
+        paramQQAppInterface = localNewFriendMessage.a(paramQQAppInterface);
+      } else {
+        paramQQAppInterface = this.mLastMsg;
+      }
+      this.mLastMsg = paramQQAppInterface;
+      this.mUnreadNum = localINewFriendService.getAllUnreadMessageCount();
+      if (this.mDisplayTime < localNewFriendMessage.a) {
+        this.mDisplayTime = localNewFriendMessage.a;
+      }
+      this.mShowTime = TimeManager.a().a(getRecentUserUin(), this.mDisplayTime);
+    }
+    if (AppSetting.d)
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append(this.mTitleName);
+      paramQQAppInterface.append(",");
+      if (this.mUnreadNum != 0) {
+        if (this.mUnreadNum == 1)
+        {
+          paramQQAppInterface.append("有一条未读");
         }
-        this.mShowTime = TimeManager.a().a(getRecentUserUin(), this.mDisplayTime);
-        break;
+        else if (this.mUnreadNum == 2)
+        {
+          paramQQAppInterface.append("有两条未读");
+        }
+        else if (this.mUnreadNum > 0)
+        {
+          paramQQAppInterface.append("有");
+          paramQQAppInterface.append(this.mUnreadNum);
+          paramQQAppInterface.append("条未读,");
+        }
       }
-      label301:
-      if (this.mUnreadNum == 1) {
-        paramQQAppInterface.append("有一条未读");
-      } else if (this.mUnreadNum == 2) {
-        paramQQAppInterface.append("有两条未读");
-      } else if (this.mUnreadNum > 0) {
-        paramQQAppInterface.append("有").append(this.mUnreadNum).append("条未读,");
+      if (this.mMsgExtroInfo != null)
+      {
+        paramContext = new StringBuilder();
+        paramContext.append(this.mMsgExtroInfo);
+        paramContext.append(",");
+        paramQQAppInterface.append(paramContext.toString());
       }
+      paramQQAppInterface.append(this.mLastMsg);
+      paramQQAppInterface.append(",");
+      paramQQAppInterface.append(this.mShowTime);
+      this.mContentDesc = paramQQAppInterface.toString();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemNewFriendMsgData
  * JD-Core Version:    0.7.0.1
  */

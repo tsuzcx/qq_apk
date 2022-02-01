@@ -46,63 +46,59 @@ public abstract class QIMTailItemBubbleBuilder
       paramView.setEllipsize(TextUtils.TruncateAt.END);
       paramView.setTextColor(-1);
       paramView.setTextSize(2, 12.0F);
-      paramView.setBackgroundResource(2130842803);
+      paramView.setBackgroundResource(2130842703);
+    }
+    TextView localTextView = (TextView)paramView;
+    localTextView.setEnabled(paramBoolean);
+    localTextView.setText(paramString1);
+    localTextView.setId(2131364549);
+    Drawable localDrawable;
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      localDrawable = localResources.getDrawable(2130850833);
+      localDrawable.setBounds(0, 0, AIOUtils.b(12.0F, localResources), AIOUtils.b(12.0F, localResources));
+      paramString1 = localResources.getDrawable(2130850834);
+      paramString1.setBounds(0, 0, AIOUtils.b(12.0F, localResources), AIOUtils.b(12.0F, localResources));
     }
     for (;;)
     {
-      TextView localTextView = (TextView)paramView;
-      localTextView.setEnabled(paramBoolean);
-      localTextView.setText(paramString1);
-      localTextView.setId(2131364662);
-      if (!TextUtils.isEmpty(paramString2))
+      try
       {
-        Drawable localDrawable = localResources.getDrawable(2130850896);
-        localDrawable.setBounds(0, 0, AIOUtils.a(12.0F, localResources), AIOUtils.a(12.0F, localResources));
-        paramString1 = localResources.getDrawable(2130850897);
-        paramString1.setBounds(0, 0, AIOUtils.a(12.0F, localResources), AIOUtils.a(12.0F, localResources));
-        try
-        {
-          paramString2 = URLDrawable.getDrawable(paramString2, localDrawable, paramString1);
-          if (URLDrawableHelper.isMobileNetAndAutodownDisabled(paramContext)) {
-            break label259;
-          }
-          paramBoolean = true;
-          ((URLDrawable)paramString2).setAutoDownload(paramBoolean);
-          paramContext = paramString2;
+        paramString2 = URLDrawable.getDrawable(paramString2, localDrawable, paramString1);
+        if (URLDrawableHelper.isMobileNetAndAutodownDisabled(paramContext)) {
+          break label353;
         }
-        catch (Exception paramContext)
-        {
-          for (;;)
-          {
-            QLog.e("ChatItemBuilder", 1, paramContext.getMessage(), paramContext);
-            paramContext = paramString1;
-          }
-        }
-        localTextView.setCompoundDrawablePadding(AIOUtils.a(3.0F, localResources));
-        paramContext.setBounds(0, 0, AIOUtils.a(12.0F, localResources), AIOUtils.a(12.0F, localResources));
+        paramBoolean = true;
+        ((URLDrawable)paramString2).setAutoDownload(paramBoolean);
+        paramContext = paramString2;
+      }
+      catch (Exception paramContext)
+      {
+        QLog.e("ChatItemBuilder", 1, paramContext.getMessage(), paramContext);
+        paramContext = paramString1;
+      }
+      localTextView.setCompoundDrawablePadding(AIOUtils.b(3.0F, localResources));
+      paramContext.setBounds(0, 0, AIOUtils.b(12.0F, localResources), AIOUtils.b(12.0F, localResources));
+      localTextView.setCompoundDrawables(paramContext, null, null, null);
+      break label319;
+      if (paramInt != -1)
+      {
+        localTextView.setCompoundDrawablePadding(AIOUtils.b(3.0F, localResources));
+        paramContext = localResources.getDrawable(paramInt);
+        paramContext.setBounds(0, 0, AIOUtils.b(12.0F, localResources), AIOUtils.b(12.0F, localResources));
         localTextView.setCompoundDrawables(paramContext, null, null, null);
       }
-      for (;;)
+      else
       {
-        localTextView.setPadding(AIOUtils.a(5.0F, localResources), 0, AIOUtils.a(5.0F, localResources), 0);
-        paramView.setTag(paramMessageRecord);
-        paramView.setOnClickListener(paramOnClickListener);
-        return paramView;
-        label259:
-        paramBoolean = false;
-        break;
-        if (paramInt != -1)
-        {
-          localTextView.setCompoundDrawablePadding(AIOUtils.a(3.0F, localResources));
-          paramContext = localResources.getDrawable(paramInt);
-          paramContext.setBounds(0, 0, AIOUtils.a(12.0F, localResources), AIOUtils.a(12.0F, localResources));
-          localTextView.setCompoundDrawables(paramContext, null, null, null);
-        }
-        else
-        {
-          localTextView.setCompoundDrawables(null, null, null, null);
-        }
+        localTextView.setCompoundDrawables(null, null, null, null);
       }
+      label319:
+      localTextView.setPadding(AIOUtils.b(5.0F, localResources), 0, AIOUtils.b(5.0F, localResources), 0);
+      paramView.setTag(paramMessageRecord);
+      paramView.setOnClickListener(paramOnClickListener);
+      return paramView;
+      label353:
+      paramBoolean = false;
     }
   }
   
@@ -110,77 +106,74 @@ public abstract class QIMTailItemBubbleBuilder
   {
     paramSessionInfo = paramBaseChatItemLayout.getContext();
     boolean bool = "2".equals(paramMessageRecord.getExtInfoFromExtStr("app_tail_id"));
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramBaseChatItemLayout.findViewById(2131378558);
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramBaseChatItemLayout.findViewById(2131377969);
     FlashChatManager.GlobalConfig localGlobalConfig = ((FlashChatManager)paramQQAppInterface.getManager(QQManagerFactory.FLASH_CHAT_MANAGER)).a;
     int i = FlashChatManager.a(paramMessageRecord);
-    if (i == -1) {}
-    do
-    {
+    if (i == -1) {
       return paramBaseChatItemLayout;
-      String str = paramMessageRecord.getExtInfoFromExtStr("qim_source");
-      if ((!TextUtils.isEmpty(localGlobalConfig.b)) && (bool) && ("1".equals(str))) {
-        break;
-      }
-    } while (localRelativeLayout == null);
-    paramBaseChatItemLayout.removeView(localRelativeLayout);
-    return paramBaseChatItemLayout;
-    ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X8008279", "0X8008279", i, 0, "", "", "", "");
-    a(paramBaseChatItemLayout, paramMessageRecord, paramOnClickListener, paramSessionInfo, localRelativeLayout, localGlobalConfig.b, localGlobalConfig.d, -1, true);
+    }
+    String str = paramMessageRecord.getExtInfoFromExtStr("qim_source");
+    if ((!TextUtils.isEmpty(localGlobalConfig.b)) && (bool) && ("1".equals(str)))
+    {
+      ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X8008279", "0X8008279", i, 0, "", "", "", "");
+      a(paramBaseChatItemLayout, paramMessageRecord, paramOnClickListener, paramSessionInfo, localRelativeLayout, localGlobalConfig.b, localGlobalConfig.d, -1, true);
+      return paramBaseChatItemLayout;
+    }
+    if (localRelativeLayout != null) {
+      paramBaseChatItemLayout.removeView(localRelativeLayout);
+    }
     return paramBaseChatItemLayout;
   }
   
   protected void a(BaseChatItemLayout paramBaseChatItemLayout, MessageRecord paramMessageRecord, View.OnClickListener paramOnClickListener, Context paramContext, RelativeLayout paramRelativeLayout, String paramString1, String paramString2, int paramInt, boolean paramBoolean)
   {
+    int i;
     if (paramRelativeLayout == null)
     {
       paramRelativeLayout = new RelativeLayout(paramBaseChatItemLayout.getContext());
-      paramRelativeLayout.setId(2131378558);
+      paramRelativeLayout.setId(2131377969);
+      i = 1;
     }
-    for (int i = 1;; i = 0)
+    else
     {
-      Object localObject2 = (RelativeLayout.LayoutParams)paramRelativeLayout.getLayoutParams();
-      Object localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = new RelativeLayout.LayoutParams(-2, -2);
-      }
-      localObject2 = paramBaseChatItemLayout.getResources();
-      boolean bool = paramMessageRecord.isSend();
-      ((RelativeLayout.LayoutParams)localObject1).topMargin = AIOUtils.a(-2.0F, (Resources)localObject2);
-      ((RelativeLayout.LayoutParams)localObject1).leftMargin = AIOUtils.a(0.0F, (Resources)localObject2);
-      ((RelativeLayout.LayoutParams)localObject1).addRule(5, 2131364634);
-      ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131364634);
-      int j;
-      if (bool)
-      {
-        j = ((RelativeLayout.LayoutParams)localObject1).leftMargin;
-        ((RelativeLayout.LayoutParams)localObject1).leftMargin = (AIOUtils.a(18.0F, (Resources)localObject2) + j);
-        ((RelativeLayout.LayoutParams)localObject1).addRule(1, 0);
-        paramRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        localObject1 = paramRelativeLayout.getChildAt(0);
-        if (localObject1 != null) {
-          break label230;
-        }
-        paramRelativeLayout.addView(a(paramContext, (View)localObject1, paramMessageRecord, paramString1, paramString2, paramInt, paramBoolean, paramOnClickListener));
-      }
-      for (;;)
-      {
-        if (i != 0) {
-          paramBaseChatItemLayout.addView(paramRelativeLayout);
-        }
-        paramBaseChatItemLayout.requestLayout();
-        return;
-        j = ((RelativeLayout.LayoutParams)localObject1).leftMargin;
-        ((RelativeLayout.LayoutParams)localObject1).leftMargin = (AIOUtils.a(9.0F, (Resources)localObject2) + j);
-        break;
-        label230:
-        a(paramContext, (View)localObject1, paramMessageRecord, paramString1, paramString2, paramInt, paramBoolean, paramOnClickListener);
-      }
+      i = 0;
     }
+    Object localObject2 = (RelativeLayout.LayoutParams)paramRelativeLayout.getLayoutParams();
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new RelativeLayout.LayoutParams(-2, -2);
+    }
+    localObject2 = paramBaseChatItemLayout.getResources();
+    boolean bool = paramMessageRecord.isSend();
+    ((RelativeLayout.LayoutParams)localObject1).topMargin = AIOUtils.b(-2.0F, (Resources)localObject2);
+    ((RelativeLayout.LayoutParams)localObject1).leftMargin = AIOUtils.b(0.0F, (Resources)localObject2);
+    ((RelativeLayout.LayoutParams)localObject1).addRule(5, 2131364521);
+    ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131364521);
+    if (bool)
+    {
+      ((RelativeLayout.LayoutParams)localObject1).leftMargin += AIOUtils.b(18.0F, (Resources)localObject2);
+      ((RelativeLayout.LayoutParams)localObject1).addRule(1, 0);
+    }
+    else
+    {
+      ((RelativeLayout.LayoutParams)localObject1).leftMargin += AIOUtils.b(9.0F, (Resources)localObject2);
+    }
+    paramRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+    localObject1 = paramRelativeLayout.getChildAt(0);
+    if (localObject1 == null) {
+      paramRelativeLayout.addView(a(paramContext, (View)localObject1, paramMessageRecord, paramString1, paramString2, paramInt, paramBoolean, paramOnClickListener));
+    } else {
+      a(paramContext, (View)localObject1, paramMessageRecord, paramString1, paramString2, paramInt, paramBoolean, paramOnClickListener);
+    }
+    if (i != 0) {
+      paramBaseChatItemLayout.addView(paramRelativeLayout);
+    }
+    paramBaseChatItemLayout.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QIMTailItemBubbleBuilder
  * JD-Core Version:    0.7.0.1
  */

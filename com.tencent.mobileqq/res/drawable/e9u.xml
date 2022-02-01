@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#00000000" />
-    <size android:height="12.0dip" android:width="12.0dip" />
-</shape>
+    <item android:state_selected="true" android:drawable="@drawable/ea9" />
+    <item android:state_selected="false" android:drawable="@drawable/eb1" />
+</selector>

@@ -1,11 +1,13 @@
 package com.tencent.tkd.topicsdk.publisharticle;
 
 import com.tencent.tkd.topicsdk.common.MD5;
+import com.tencent.tkd.topicsdk.common.SHA1Util;
 import com.tencent.tkd.topicsdk.framework.ThreadManagerKt;
 import java.io.File;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
+import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Lambda;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 16})
@@ -20,19 +22,22 @@ final class PublishManager$compressVideo$1$1$onCompressFinished$1
   
   public final void invoke()
   {
-    String str = MD5.a(new File(this.$outPath));
-    if (str != null) {}
-    for (;;)
-    {
-      ThreadManagerKt.a((Function0)new PublishManager.compressVideo.1.1.onCompressFinished.1.1(this, str));
-      return;
-      str = "";
+    String str1 = MD5.a(new File(this.$outPath));
+    Object localObject = "";
+    if (str1 == null) {
+      str1 = "";
     }
+    String str2 = SHA1Util.a(this.$outPath);
+    if (str2 != null) {
+      localObject = str2;
+    }
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "SHA1Util.getSHA1(outPath) ?: \"\"");
+    ThreadManagerKt.a((Function0)new PublishManager.compressVideo.1.1.onCompressFinished.1.1(this, str1, (String)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.publisharticle.PublishManager.compressVideo.1.1.onCompressFinished.1
  * JD-Core Version:    0.7.0.1
  */

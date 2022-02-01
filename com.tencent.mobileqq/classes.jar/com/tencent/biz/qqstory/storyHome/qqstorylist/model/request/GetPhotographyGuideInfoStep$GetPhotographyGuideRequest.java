@@ -15,15 +15,18 @@ public class GetPhotographyGuideInfoStep$GetPhotographyGuideRequest
   
   public BaseResponse a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspGetPhotographyGuide localRspGetPhotographyGuide = new qqstory_service.RspGetPhotographyGuide();
+    Object localObject = new qqstory_service.RspGetPhotographyGuide();
     try
     {
-      localRspGetPhotographyGuide.mergeFrom(paramArrayOfByte);
-      return new GetPhotographyGuideInfoStep.GetPhotographyGuideResponse(localRspGetPhotographyGuide);
+      ((qqstory_service.RspGetPhotographyGuide)localObject).mergeFrom(paramArrayOfByte);
+      return new GetPhotographyGuideInfoStep.GetPhotographyGuideResponse((qqstory_service.RspGetPhotographyGuide)localObject);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      SLog.d("Q.qqstory:GetPhotographyGuideRequest", "" + paramArrayOfByte);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(paramArrayOfByte);
+      SLog.d("Q.qqstory:GetPhotographyGuideRequest", ((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -33,7 +36,7 @@ public class GetPhotographyGuideInfoStep$GetPhotographyGuideRequest
     return a;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     return new qqstory_service.ReqGetPhotographyGuide().toByteArray();
   }
@@ -45,7 +48,7 @@ public class GetPhotographyGuideInfoStep$GetPhotographyGuideRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetPhotographyGuideInfoStep.GetPhotographyGuideRequest
  * JD-Core Version:    0.7.0.1
  */

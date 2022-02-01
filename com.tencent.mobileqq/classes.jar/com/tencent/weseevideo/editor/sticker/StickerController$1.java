@@ -19,18 +19,16 @@ class StickerController$1
     localWsStickerEditView.setDrawMovieLimitRect(false);
     if ("sticker_lyric".equals(paramTAVSticker)) {
       localWsStickerEditView.setDrawingOperationMask(21);
-    }
-    for (;;)
-    {
-      localWsStickerEditView.setOnStickerEditButtonClickListener(new StickerController.1.1(this, paramTAVStickerContext, paramTAVSticker));
-      return localWsStickerEditView;
+    } else {
       localWsStickerEditView.setDrawingOperationMask(63);
     }
+    localWsStickerEditView.setOnStickerEditButtonClickListener(new StickerController.1.1(this, paramTAVStickerContext, paramTAVSticker));
+    return localWsStickerEditView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.StickerController.1
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,18 @@ public class OneWayFriendResult
   
   public String toString()
   {
-    return "OneWayFriendResult{friendUin=" + this.jdField_a_of_type_Long + ", oneWayFriend=" + this.jdField_a_of_type_Boolean + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OneWayFriendResult{friendUin=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", oneWayFriend=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.onewayfriend.OneWayFriendResult
  * JD-Core Version:    0.7.0.1
  */

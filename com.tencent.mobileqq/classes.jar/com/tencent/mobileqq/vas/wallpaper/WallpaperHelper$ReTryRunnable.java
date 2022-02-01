@@ -21,14 +21,18 @@ class WallpaperHelper$ReTryRunnable
   public void run()
   {
     WallpaperHelper localWallpaperHelper = (WallpaperHelper)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localWallpaperHelper != null) && (this.jdField_a_of_type_ComTencentMobileqqVasWallpaperVipWallpaperService$WallpaperConfig != null)) {
-      WallpaperHelper.a(localWallpaperHelper, this.jdField_a_of_type_ComTencentMobileqqVasWallpaperVipWallpaperService$WallpaperConfig, false);
+    if (localWallpaperHelper != null)
+    {
+      VipWallpaperService.WallpaperConfig localWallpaperConfig = this.jdField_a_of_type_ComTencentMobileqqVasWallpaperVipWallpaperService$WallpaperConfig;
+      if (localWallpaperConfig != null) {
+        WallpaperHelper.a(localWallpaperHelper, localWallpaperConfig, false);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.wallpaper.WallpaperHelper.ReTryRunnable
  * JD-Core Version:    0.7.0.1
  */

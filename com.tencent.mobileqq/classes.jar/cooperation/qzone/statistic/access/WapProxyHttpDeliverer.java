@@ -10,7 +10,7 @@ public class WapProxyHttpDeliverer
   public static final int PROXY_IS_NEED = 1;
   public static final int PROXY_NEVER_TRY = -1;
   public static final int PROXY_USELESS = 0;
-  public static final String TAG = WapProxyHttpDeliverer.class.getName();
+  public static final String TAG = "cooperation.qzone.statistic.access.WapProxyHttpDeliverer";
   public int needProxy = -1;
   
   public WapProxyHttpDeliverer(String paramString)
@@ -30,21 +30,17 @@ public class WapProxyHttpDeliverer
   {
     if (this.needProxy == -1)
     {
-      int j = super.deliver(paramString, paramInt);
-      int i = j;
+      int i = super.deliver(paramString, paramInt);
       if (isNetworkViaWAP())
       {
-        if (j != 0)
+        if (i != 0)
         {
           this.needProxy = 1;
-          i = super.deliver(paramString, paramInt);
+          return super.deliver(paramString, paramInt);
         }
+        this.needProxy = 0;
       }
-      else {
-        return i;
-      }
-      this.needProxy = 0;
-      return j;
+      return i;
     }
     return super.deliver(paramString, paramInt);
   }
@@ -59,7 +55,7 @@ public class WapProxyHttpDeliverer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.statistic.access.WapProxyHttpDeliverer
  * JD-Core Version:    0.7.0.1
  */

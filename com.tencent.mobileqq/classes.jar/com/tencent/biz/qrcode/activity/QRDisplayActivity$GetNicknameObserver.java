@@ -13,9 +13,7 @@ public class QRDisplayActivity$GetNicknameObserver
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 0) {
       return;
     }
     if (paramBoolean)
@@ -28,7 +26,7 @@ public class QRDisplayActivity$GetNicknameObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.GetNicknameObserver
  * JD-Core Version:    0.7.0.1
  */

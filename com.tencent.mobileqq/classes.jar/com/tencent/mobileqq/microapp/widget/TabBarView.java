@@ -122,15 +122,16 @@ public class TabBarView
   
   public View a(k.a parama, int paramInt)
   {
-    if ((parama == null) || (TextUtils.isEmpty(parama.b))) {
-      return null;
+    if ((parama != null) && (!TextUtils.isEmpty(parama.b)))
+    {
+      View localView = a();
+      TabBarView.a locala = TabBarView.a.a(localView, parama, this.b);
+      locala.a();
+      this.a.add(locala);
+      localView.setOnClickListener(new f(this, paramInt, parama));
+      return localView;
     }
-    View localView = a();
-    TabBarView.a locala = TabBarView.a.a(localView, parama, this.b);
-    locala.a();
-    this.a.add(locala);
-    localView.setOnClickListener(new f(this, paramInt, parama));
-    return localView;
+    return null;
   }
   
   public void a(k paramk)
@@ -169,24 +170,22 @@ public class TabBarView
   
   public void a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
-      {
-        TabBarView.a locala = (TabBarView.a)localIterator.next();
-        if (locala.i.a.equals(paramString)) {
-          a(locala);
-        }
+    }
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      TabBarView.a locala = (TabBarView.a)localIterator.next();
+      if (locala.i.a.equals(paramString)) {
+        a(locala);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.TabBarView
  * JD-Core Version:    0.7.0.1
  */

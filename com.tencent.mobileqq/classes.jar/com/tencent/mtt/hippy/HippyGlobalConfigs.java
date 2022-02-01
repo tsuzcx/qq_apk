@@ -12,6 +12,7 @@ import com.tencent.mtt.hippy.adapter.monitor.HippyEngineMonitorAdapter;
 import com.tencent.mtt.hippy.adapter.sharedpreferences.HippySharedPreferencesAdapter;
 import com.tencent.mtt.hippy.adapter.soloader.HippySoLoaderAdapter;
 import com.tencent.mtt.hippy.adapter.storage.HippyStorageAdapter;
+import com.tencent.mtt.hippy.utils.LogUtils;
 
 public class HippyGlobalConfigs
 {
@@ -73,12 +74,19 @@ public class HippyGlobalConfigs
       if (this.mExecutorSupplierAdapter != null) {
         this.mExecutorSupplierAdapter.destroyIfNeed();
       }
-      if (this.mImageLoaderAdapter != null) {
+      if (this.mImageLoaderAdapter != null)
+      {
         this.mImageLoaderAdapter.destroyIfNeed();
+        return;
       }
-      return;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("destroyIfNeed: ");
+      localStringBuilder.append(localThrowable.getMessage());
+      LogUtils.d("HippyGlobalConfigs", localStringBuilder.toString());
+    }
   }
   
   public Context getContext()
@@ -160,7 +168,7 @@ public class HippyGlobalConfigs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippyGlobalConfigs
  * JD-Core Version:    0.7.0.1
  */

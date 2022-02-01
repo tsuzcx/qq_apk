@@ -29,18 +29,20 @@ public final class mobile_feeds_tab_info
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strTabName != null) {
-      paramJceOutputStream.write(this.strTabName, 0);
+    String str = this.strTabName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.strTabActionUrl != null) {
-      paramJceOutputStream.write(this.strTabActionUrl, 1);
+    str = this.strTabActionUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.iTabSwitch, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_UNDEAL_COUNT.mobile_feeds_tab_info
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,9 @@ package com.tencent.mobileqq.qwallet.preload.impl;
 
 import android.net.Uri;
 import android.text.TextUtils;
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.qwallet.temp.IQWalletTemp;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qwallet.impl.QWalletTools;
 import com.tencent.mobileqq.qwallet.preload.IPreloadModule;
 import com.tencent.mobileqq.qwallet.preload.IPreloadResource;
 import com.tencent.mobileqq.vip.DownloadListener;
@@ -55,28 +56,24 @@ public class PreloadModuleImpl
   
   private void a(String paramString, AppRuntime paramAppRuntime)
   {
-    Object localObject = null;
     try
     {
-      Uri localUri = Uri.parse(paramString);
-      paramString = localObject;
-      if (localUri != null)
-      {
-        paramString = localObject;
-        if (localUri.isHierarchical()) {
-          paramString = localUri.getQueryParameter("_bid");
-        }
+      paramString = Uri.parse(paramString);
+      if ((paramString != null) && (paramString.isHierarchical())) {
+        paramString = paramString.getQueryParameter("_bid");
+      } else {
+        paramString = null;
       }
       if (!a(paramString)) {
         return;
       }
+      ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).HtmlOffline$checkUpByBusinessId(paramString, paramAppRuntime, true, new PreloadModuleImpl.1(this));
+      return;
     }
     catch (Exception paramString)
     {
       paramString.printStackTrace();
-      return;
     }
-    HtmlOffline.b(paramString, paramAppRuntime, true, new PreloadModuleImpl.1(this));
   }
   
   private boolean a(String paramString)
@@ -86,33 +83,37 @@ public class PreloadModuleImpl
   
   public static PreloadModuleImpl parsePreloadModule(JSONObject paramJSONObject, boolean paramBoolean, int paramInt)
   {
-    boolean bool2 = true;
-    int i = 0;
     PreloadModuleImpl localPreloadModuleImpl = new PreloadModuleImpl();
     for (;;)
     {
-      Object localObject;
       try
       {
-        if (paramJSONObject.optInt("back_control") != 1) {
-          break label264;
-        }
-        bool1 = true;
-        localPreloadModuleImpl.mBackControl = bool1;
-        if (paramBoolean) {
-          localPreloadModuleImpl.mBackControl = false;
-        }
-        if (paramInt == 2)
+        int j = paramJSONObject.optInt("back_control");
+        int i = 0;
+        boolean bool2 = true;
+        if (j == 1)
         {
-          localPreloadModuleImpl.name = "2021_shuayishua";
-          localObject = paramJSONObject.optString("module_id");
-          if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            break label248;
+          bool1 = true;
+          localPreloadModuleImpl.mBackControl = bool1;
+          if (paramBoolean) {
+            localPreloadModuleImpl.mBackControl = false;
           }
-          localPreloadModuleImpl.mid = localPreloadModuleImpl.name;
+          if (paramInt == 2) {
+            localPreloadModuleImpl.name = ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).Const$REDPACKET_2021_PRELOAD_MODULE_NAME();
+          } else if (paramInt == 3) {
+            localPreloadModuleImpl.name = ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).Const$CJ_2021_AVGAME_PRELOAD_MODULE_NAME();
+          } else {
+            localPreloadModuleImpl.name = paramJSONObject.optString("module_name");
+          }
+          Object localObject = paramJSONObject.optString("module_id");
+          if (TextUtils.isEmpty((CharSequence)localObject)) {
+            localPreloadModuleImpl.mid = localPreloadModuleImpl.name;
+          } else {
+            localPreloadModuleImpl.mid = ((String)localObject);
+          }
           localPreloadModuleImpl.option = paramJSONObject.optInt("option");
           if (paramJSONObject.optInt("forbid_download") != 1) {
-            break label258;
+            break label296;
           }
           bool1 = bool2;
           localPreloadModuleImpl.isForbidAutoDownload = bool1;
@@ -128,31 +129,16 @@ public class PreloadModuleImpl
             i += 1;
             continue;
           }
+          return localPreloadModuleImpl;
         }
-        else
-        {
-          if (paramInt != 3) {
-            break label234;
-          }
-          localPreloadModuleImpl.name = "2021_cjavgame";
-          continue;
-        }
-        return localPreloadModuleImpl;
       }
       catch (Exception paramJSONObject)
       {
         paramJSONObject.printStackTrace();
       }
-      label234:
-      localPreloadModuleImpl.name = paramJSONObject.optString("module_name");
-      continue;
-      label248:
-      localPreloadModuleImpl.mid = ((String)localObject);
-      continue;
-      label258:
       boolean bool1 = false;
       continue;
-      label264:
+      label296:
       bool1 = false;
     }
   }
@@ -162,22 +148,18 @@ public class PreloadModuleImpl
     if (TextUtils.isEmpty(this.mid)) {
       this.mid = this.name;
     }
-    if (this.mRetryTimeInterval <= 0)
-    {
+    int j = this.mRetryTimeInterval;
+    int i = j;
+    if (j <= 0) {
       i = 24;
-      this.mRetryTimeInterval = i;
-      if (this.mRetryCount > 0) {
-        break label56;
-      }
     }
-    label56:
-    for (int i = 5;; i = this.mRetryCount)
-    {
-      this.mRetryCount = i;
-      return;
-      i = this.mRetryTimeInterval;
-      break;
+    this.mRetryTimeInterval = i;
+    j = this.mRetryCount;
+    i = j;
+    if (j <= 0) {
+      i = 5;
     }
+    this.mRetryCount = i;
   }
   
   public void deleteResFromServer(PreloadServiceImpl paramPreloadServiceImpl, int paramInt)
@@ -194,28 +176,26 @@ public class PreloadModuleImpl
   
   public void downloadModule(boolean paramBoolean1, DownloadListener paramDownloadListener, PreloadServiceImpl paramPreloadServiceImpl, boolean paramBoolean2)
   {
-    if (this.name.equals("wallet_offline")) {
-      handleHtmlOffline(paramPreloadServiceImpl.mApp);
-    }
-    for (;;)
+    if (this.name.equals("wallet_offline"))
     {
+      handleHtmlOffline(paramPreloadServiceImpl.mApp);
       return;
-      if ((paramBoolean1) || (!this.isForbidAutoDownload))
+    }
+    if ((!paramBoolean1) && (this.isForbidAutoDownload)) {
+      return;
+    }
+    Iterator localIterator = this.mPreloadResourceImpls.iterator();
+    while (localIterator.hasNext())
+    {
+      PreloadResourceImpl localPreloadResourceImpl = (PreloadResourceImpl)localIterator.next();
+      if (!localPreloadResourceImpl.isInValidTime())
       {
-        Iterator localIterator = this.mPreloadResourceImpls.iterator();
-        while (localIterator.hasNext())
-        {
-          PreloadResourceImpl localPreloadResourceImpl = (PreloadResourceImpl)localIterator.next();
-          if (!localPreloadResourceImpl.isInValidTime())
-          {
-            localPreloadResourceImpl.deleteResFile(this, paramPreloadServiceImpl, 6);
-            this.mPreloadResourceImpls.remove(localPreloadResourceImpl);
-          }
-          else if ((localPreloadResourceImpl.isAbiMatch()) && (localPreloadResourceImpl.isTimeToDownload(paramPreloadServiceImpl)))
-          {
-            localPreloadResourceImpl.startDownload(paramPreloadServiceImpl, this, paramDownloadListener, paramBoolean2);
-          }
-        }
+        localPreloadResourceImpl.deleteResFile(this, paramPreloadServiceImpl, 6);
+        this.mPreloadResourceImpls.remove(localPreloadResourceImpl);
+      }
+      else if ((localPreloadResourceImpl.isAbiMatch()) && (localPreloadResourceImpl.isTimeToDownload(paramPreloadServiceImpl)))
+      {
+        localPreloadResourceImpl.startDownload(paramPreloadServiceImpl, this, paramDownloadListener, paramBoolean2);
       }
     }
   }
@@ -225,7 +205,8 @@ public class PreloadModuleImpl
     if ((paramObject != null) && ((paramObject instanceof PreloadModuleImpl)))
     {
       paramObject = (PreloadModuleImpl)paramObject;
-      if ((this.mid != null) && (this.mid.equals(paramObject.mid))) {
+      String str = this.mid;
+      if ((str != null) && (str.equals(paramObject.mid))) {
         return true;
       }
     }
@@ -259,7 +240,10 @@ public class PreloadModuleImpl
   public int getModuleResSize()
   {
     Iterator localIterator = this.mPreloadResourceImpls.iterator();
-    for (int i = 0; localIterator.hasNext(); i = ((PreloadResourceImpl)localIterator.next()).size + i) {}
+    int i = 0;
+    while (localIterator.hasNext()) {
+      i += ((PreloadResourceImpl)localIterator.next()).size;
+    }
     return i;
   }
   
@@ -329,12 +313,8 @@ public class PreloadModuleImpl
   
   public boolean isModuleChange(PreloadModuleImpl paramPreloadModuleImpl)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (!QWalletTools.c(this.mid, paramPreloadModuleImpl.mid))
-    {
-      bool1 = true;
-      return bool1;
+    if (!QWalletTools.c(this.mid, paramPreloadModuleImpl.mid)) {
+      return true;
     }
     if (this.mBackControl != paramPreloadModuleImpl.mBackControl) {
       return true;
@@ -362,17 +342,14 @@ public class PreloadModuleImpl
       return true;
     }
     int i = 0;
-    for (;;)
+    while (i < localList.size())
     {
-      bool1 = bool2;
-      if (i >= localList.size()) {
-        break;
-      }
       if (((PreloadResourceImpl)localList.get(i)).isResChange((PreloadResourceImpl)paramPreloadModuleImpl.mPreloadResourceImpls.get(i))) {
         return true;
       }
       i += 1;
     }
+    return false;
   }
   
   public boolean isModuleFinish(PreloadServiceImpl paramPreloadServiceImpl)
@@ -396,7 +373,15 @@ public class PreloadModuleImpl
   
   public String toString()
   {
-    return "Module [mid=" + this.mid + ", mBC=" + this.mBackControl + ", mRes=" + this.mPreloadResourceImpls + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Module [mid=");
+    localStringBuilder.append(this.mid);
+    localStringBuilder.append(", mBC=");
+    localStringBuilder.append(this.mBackControl);
+    localStringBuilder.append(", mRes=");
+    localStringBuilder.append(this.mPreloadResourceImpls);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void updateNewModuleWhenReplace(PreloadModuleImpl paramPreloadModuleImpl, PreloadServiceImpl paramPreloadServiceImpl, int paramInt)
@@ -467,7 +452,7 @@ public class PreloadModuleImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadModuleImpl
  * JD-Core Version:    0.7.0.1
  */

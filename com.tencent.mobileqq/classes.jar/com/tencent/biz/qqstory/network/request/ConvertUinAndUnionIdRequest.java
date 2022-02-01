@@ -3,15 +3,11 @@ package com.tencent.biz.qqstory.network.request;
 import com.tencent.biz.qqstory.boundaries.StoryApi;
 import com.tencent.biz.qqstory.channel.NetworkRequest;
 import com.tencent.biz.qqstory.model.item.QQUserUIItem.UserID;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqConvertUinAndUnionId;
 import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertUinAndUnionId;
 import com.tencent.biz.qqstory.network.response.ConvertUinAndUnionIdResponse;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class ConvertUinAndUnionIdRequest
@@ -22,26 +18,28 @@ public class ConvertUinAndUnionIdRequest
   public boolean a;
   public boolean b;
   public int c;
-  public boolean c;
+  public boolean c = false;
   
   public ConvertUinAndUnionIdRequest()
   {
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_c_of_type_Boolean = false;
     this.jdField_a_of_type_JavaLangString = "";
   }
   
   public ConvertUinAndUnionIdResponse a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspConvertUinAndUnionId localRspConvertUinAndUnionId = new qqstory_service.RspConvertUinAndUnionId();
+    Object localObject = new qqstory_service.RspConvertUinAndUnionId();
     try
     {
-      localRspConvertUinAndUnionId.mergeFrom(paramArrayOfByte);
-      return new ConvertUinAndUnionIdResponse(localRspConvertUinAndUnionId);
+      ((qqstory_service.RspConvertUinAndUnionId)localObject).mergeFrom(paramArrayOfByte);
+      return new ConvertUinAndUnionIdResponse((qqstory_service.RspConvertUinAndUnionId)localObject);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      SLog.d("Q.qqstory.user:ConvertUinAndUnionIdRequest", "" + paramArrayOfByte);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(paramArrayOfByte);
+      SLog.d("Q.qqstory.user:ConvertUinAndUnionIdRequest", ((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -51,40 +49,14 @@ public class ConvertUinAndUnionIdRequest
     return StoryApi.a("StorySvc.convert_uid_and_union_id");
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
-    int j = 1;
-    qqstory_service.ReqConvertUinAndUnionId localReqConvertUinAndUnionId = new qqstory_service.ReqConvertUinAndUnionId();
-    localReqConvertUinAndUnionId.convert_from.set(this.jdField_c_of_type_Int);
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      QQUserUIItem.UserID localUserID = (QQUserUIItem.UserID)((Iterator)localObject).next();
-      localReqConvertUinAndUnionId.user_id_list.add(localUserID.a());
-    }
-    localObject = localReqConvertUinAndUnionId.need_medal;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      i = 1;
-      ((PBUInt32Field)localObject).set(i);
-      localObject = localReqConvertUinAndUnionId.need_grade_speed;
-      if (!this.b) {
-        break label121;
-      }
-    }
-    label121:
-    for (int i = j;; i = 0)
-    {
-      ((PBUInt32Field)localObject).set(i);
-      return localReqConvertUinAndUnionId.toByteArray();
-      i = 0;
-      break;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.ConvertUinAndUnionIdRequest
  * JD-Core Version:    0.7.0.1
  */

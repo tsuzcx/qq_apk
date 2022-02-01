@@ -12,7 +12,7 @@ public abstract interface ScreenShotUtil$ScreenLongShotCallback<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.ScreenShotUtil.ScreenLongShotCallback
  * JD-Core Version:    0.7.0.1
  */

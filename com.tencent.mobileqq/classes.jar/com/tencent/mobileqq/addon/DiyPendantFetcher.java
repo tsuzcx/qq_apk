@@ -54,11 +54,6 @@ public class DiyPendantFetcher
   public final CopyOnWriteArraySet<String> b;
   public final LRULinkedHashMap<String, Bitmap> c = new LRULinkedHashMap(10);
   
-  static
-  {
-    jdField_a_of_type_Long = 0L;
-  }
-  
   private DiyPendantFetcher()
   {
     this.jdField_a_of_type_Int = 64;
@@ -72,15 +67,16 @@ public class DiyPendantFetcher
   
   public static DiyPendantFetcher a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher == null) {
-        jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher = new DiyPendantFetcher();
+    if (jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher == null) {
+          jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher = new DiyPendantFetcher();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher;
   }
   
   private void c(String paramString)
@@ -95,8 +91,12 @@ public class DiyPendantFetcher
         localObject1 = new File(AvatarPendantUtil.c((String)localObject1));
         if (((File)localObject1).exists())
         {
-          if (QLog.isColorLevel()) {
-            QLog.i("DiyPendantFetcher", 2, "decode and put scale bitmap into BaseApplicationImpl.sImageCache, " + ((File)localObject1).getAbsolutePath());
+          if (QLog.isColorLevel())
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("decode and put scale bitmap into BaseApplicationImpl.sImageCache, ");
+            ((StringBuilder)localObject2).append(((File)localObject1).getAbsolutePath());
+            QLog.i("DiyPendantFetcher", 2, ((StringBuilder)localObject2).toString());
           }
           localObject1 = BitmapManager.a(((File)localObject1).getAbsolutePath());
           if (localObject1 != null)
@@ -111,29 +111,45 @@ public class DiyPendantFetcher
   
   public Bitmap a(DiyPendantDrawable paramDiyPendantDrawable, int paramInt)
   {
-    if ((paramDiyPendantDrawable == null) || (TextUtils.isEmpty(paramDiyPendantDrawable.jdField_a_of_type_JavaLangString))) {
-      return null;
-    }
-    if (this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.containsKey(paramDiyPendantDrawable.jdField_a_of_type_JavaLangString))
+    if (paramDiyPendantDrawable != null)
     {
-      Object localObject = (DiyPendantEntity)this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(paramDiyPendantDrawable.jdField_a_of_type_JavaLangString);
-      if (((DiyPendantEntity)localObject).getStickerInfoList().size() > paramInt)
-      {
-        localObject = a((DiyPendantSticker)((DiyPendantEntity)localObject).getStickerInfoList().get(paramInt));
-        Bitmap localBitmap = (Bitmap)GlobalImageCache.a.get(localObject);
-        if (localBitmap != null)
-        {
-          this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(localObject);
-          return localBitmap;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("DiyPendantFetcher", 2, "can not found bitmap cache in BaseApplicationImpl.sImageCache! " + (String)localObject);
-        }
-        this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(localObject);
+      if (TextUtils.isEmpty(paramDiyPendantDrawable.jdField_a_of_type_JavaLangString)) {
+        return null;
       }
-    }
-    for (;;)
-    {
+      Object localObject1;
+      if (this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.containsKey(paramDiyPendantDrawable.jdField_a_of_type_JavaLangString))
+      {
+        localObject1 = (DiyPendantEntity)this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(paramDiyPendantDrawable.jdField_a_of_type_JavaLangString);
+        if (((DiyPendantEntity)localObject1).getStickerInfoList().size() > paramInt)
+        {
+          localObject1 = a((DiyPendantSticker)((DiyPendantEntity)localObject1).getStickerInfoList().get(paramInt));
+          Object localObject2 = (Bitmap)GlobalImageCache.a.get(localObject1);
+          if (localObject2 != null)
+          {
+            this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(localObject1);
+            return localObject2;
+          }
+          if (QLog.isColorLevel())
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("can not found bitmap cache in BaseApplicationImpl.sImageCache! ");
+            ((StringBuilder)localObject2).append((String)localObject1);
+            QLog.i("DiyPendantFetcher", 2, ((StringBuilder)localObject2).toString());
+          }
+          this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(localObject1);
+        }
+      }
+      else
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("can not found cache in DiyPendantCache! ");
+          ((StringBuilder)localObject1).append(paramDiyPendantDrawable.jdField_a_of_type_JavaLangString);
+          QLog.i("DiyPendantFetcher", 2, ((StringBuilder)localObject1).toString());
+        }
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramDiyPendantDrawable.jdField_a_of_type_JavaLangString);
+      }
       if (QLog.isColorLevel()) {
         QLog.i("DiyPendantFetcher", 2, "fetchDiyPaster: put DiyPendantDrawable into mNotRefreshAIODrawables and post delay 0.5s to load bubble diy!");
       }
@@ -142,118 +158,165 @@ public class DiyPendantFetcher
       if ((paramDiyPendantDrawable instanceof QQAppInterface)) {
         a((QQAppInterface)paramDiyPendantDrawable, 500);
       }
-      return null;
-      if (QLog.isColorLevel()) {
-        QLog.i("DiyPendantFetcher", 2, "can not found cache in DiyPendantCache! " + paramDiyPendantDrawable.jdField_a_of_type_JavaLangString);
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramDiyPendantDrawable.jdField_a_of_type_JavaLangString);
     }
+    return null;
   }
   
   public Bitmap a(DiyPendantFetcher.Invalidatable paramInvalidatable, String paramString, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramInt1 <= 0)) {
-      return null;
-    }
-    String str = paramString + "_" + paramInt1 + "_" + paramInt2 + "_" + paramFloat + "_" + paramInt3 + "_" + paramInt4 + "_" + paramInt5;
-    if (this.c.containsKey(str)) {
-      return (Bitmap)this.c.get(str);
-    }
-    synchronized (this.jdField_a_of_type_ComEtrumpMixlayoutETEngine)
+    String str;
+    if ((!TextUtils.isEmpty(paramString)) && (paramInt1 > 0))
     {
-      if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        a();
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append(paramString);
+      ((StringBuilder)???).append("_");
+      ((StringBuilder)???).append(paramInt1);
+      ((StringBuilder)???).append("_");
+      ((StringBuilder)???).append(paramInt2);
+      ((StringBuilder)???).append("_");
+      ((StringBuilder)???).append(paramFloat);
+      ((StringBuilder)???).append("_");
+      ((StringBuilder)???).append(paramInt3);
+      ((StringBuilder)???).append("_");
+      ((StringBuilder)???).append(paramInt4);
+      ((StringBuilder)???).append("_");
+      ((StringBuilder)???).append(paramInt5);
+      str = ((StringBuilder)???).toString();
+      if (this.c.containsKey(str)) {
+        return (Bitmap)this.c.get(str);
       }
-      if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) || (TextUtils.isEmpty(paramString)))
+    }
+    label703:
+    label708:
+    label711:
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_ComEtrumpMixlayoutETEngine)
       {
-        QLog.d("DiyPendantFetcher", 1, "fetchTextWithFont fail EnigeReady = " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + " text = " + paramString);
+        if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+          a();
+        }
+        if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (!TextUtils.isEmpty(paramString)))
+        {
+          Object localObject2 = AvatarPendantUtil.a(String.valueOf(paramInt1));
+          if (!this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_isFontLoaded(paramInt1))
+          {
+            this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramInvalidatable);
+            if (AvatarPendantUtil.a(String.valueOf(paramInt1)))
+            {
+              if (QLog.isColorLevel())
+              {
+                paramInvalidatable = new StringBuilder();
+                paramInvalidatable.append("found font res but can not load the font, font id = ");
+                paramInvalidatable.append(paramInt1);
+                QLog.i("DiyPendantFetcher", 2, paramInvalidatable.toString());
+              }
+              ThreadManager.executeOnFileThread(new DiyPendantFetcher.3(this, (String)localObject2, paramInt1));
+            }
+            else
+            {
+              if (QLog.isColorLevel())
+              {
+                paramInvalidatable = new StringBuilder();
+                paramInvalidatable.append("can not found font res! font id = ");
+                paramInvalidatable.append(paramInt1);
+                QLog.i("DiyPendantFetcher", 2, paramInvalidatable.toString());
+              }
+              a(paramInt1, paramInt2);
+            }
+            QLog.d("DiyPendantFetcher", 1, "fetchTextWithFont fail font not exist!");
+            return null;
+          }
+          localObject2 = new ETFont(paramInt1, (String)localObject2, paramFloat);
+          ((ETFont)localObject2).setColor(paramInt3);
+          try
+          {
+            paramInvalidatable = Bitmap.createBitmap(paramInt4, paramInt5, Bitmap.Config.ARGB_8888);
+            if (!this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_isPaintableChar(paramString.charAt(0), (ETFont)localObject2)) {
+              break label711;
+            }
+            paramInt1 = this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_spaceMeasureText(paramString, 0, paramString.length(), (ETFont)localObject2, paramPaint);
+            if (paramInt1 > paramInt4)
+            {
+              ((ETFont)localObject2).mFontSize -= 1;
+              paramInt1 = this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_spaceMeasureText(paramString, 0, paramString.length(), (ETFont)localObject2, paramPaint);
+              continue;
+            }
+            paramInt2 = (paramInt4 - paramInt1) / 2;
+            paramPaint = new Paint.FontMetrics();
+            if (!this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_getFontMetrics(paramPaint, (ETFont)localObject2)) {
+              break label703;
+            }
+            paramFloat = paramPaint.bottom;
+            float f = paramPaint.top;
+            paramInt1 = (int)((paramInt5 - (paramFloat - f)) / 2.0F);
+            if (this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_drawText(paramString, paramInvalidatable, paramInt2, paramInt1, (ETFont)localObject2)) {
+              break label708;
+            }
+            paramInvalidatable = new StringBuilder();
+            paramInvalidatable.append("fetchTextWithFont fail font not support: ");
+            paramInvalidatable.append(paramString.charAt(0));
+            QLog.d("DiyPendantFetcher", 1, paramInvalidatable.toString());
+            return null;
+          }
+          catch (OutOfMemoryError paramInvalidatable)
+          {
+            paramString = new StringBuilder();
+            paramString.append("fetchTextWithFont Bitmap.createBitmap OutOfMemoryError: ");
+            paramString.append(paramInvalidatable.getMessage());
+            QLog.d("DiyPendantFetcher", 1, paramString.toString());
+            return null;
+          }
+          if (paramInvalidatable != null) {
+            this.c.put(str, paramInvalidatable);
+          }
+          return paramInvalidatable;
+        }
+        paramInvalidatable = new StringBuilder();
+        paramInvalidatable.append("fetchTextWithFont fail EnigeReady = ");
+        paramInvalidatable.append(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+        paramInvalidatable.append(" text = ");
+        paramInvalidatable.append(paramString);
+        QLog.d("DiyPendantFetcher", 1, paramInvalidatable.toString());
         return null;
       }
-    }
-    Object localObject = AvatarPendantUtil.a(String.valueOf(paramInt1));
-    if (!this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_isFontLoaded(paramInt1))
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramInvalidatable);
-      if (AvatarPendantUtil.a(String.valueOf(paramInt1)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("DiyPendantFetcher", 2, "found font res but can not load the font, font id = " + paramInt1);
-        }
-        ThreadManager.executeOnFileThread(new DiyPendantFetcher.3(this, (String)localObject, paramInt1));
-      }
-      for (;;)
-      {
-        QLog.d("DiyPendantFetcher", 1, "fetchTextWithFont fail font not exist!");
-        return null;
-        if (QLog.isColorLevel()) {
-          QLog.i("DiyPendantFetcher", 2, "can not found font res! font id = " + paramInt1);
-        }
-        a(paramInt1, paramInt2);
-      }
-    }
-    paramInvalidatable = new ETFont(paramInt1, (String)localObject, paramFloat);
-    paramInvalidatable.setColor(paramInt3);
-    try
-    {
-      localObject = Bitmap.createBitmap(paramInt4, paramInt5, Bitmap.Config.ARGB_8888);
-      if (!this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_isPaintableChar(paramString.charAt(0), paramInvalidatable)) {
-        break label590;
-      }
-      for (paramInt1 = this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_spaceMeasureText(paramString, 0, paramString.length(), paramInvalidatable, paramPaint); paramInt1 > paramInt4; paramInt1 = this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_spaceMeasureText(paramString, 0, paramString.length(), paramInvalidatable, paramPaint)) {
-        paramInvalidatable.mFontSize -= 1;
-      }
-      paramInt2 = (paramInt4 - paramInt1) / 2;
-    }
-    catch (OutOfMemoryError paramInvalidatable)
-    {
-      QLog.d("DiyPendantFetcher", 1, "fetchTextWithFont Bitmap.createBitmap OutOfMemoryError: " + paramInvalidatable.getMessage());
       return null;
+      paramInt1 = 0;
+      continue;
     }
-    paramInt1 = 0;
-    paramPaint = new Paint.FontMetrics();
-    if (this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_getFontMetrics(paramPaint, paramInvalidatable))
-    {
-      paramFloat = paramPaint.bottom;
-      float f = paramPaint.top;
-      paramInt1 = (int)((paramInt5 - (paramFloat - f)) / 2.0F);
-    }
-    if (!this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_drawText(paramString, (Bitmap)localObject, paramInt2, paramInt1, paramInvalidatable))
-    {
-      QLog.d("DiyPendantFetcher", 1, "fetchTextWithFont fail font not support: " + paramString.charAt(0));
-      return null;
-    }
-    label590:
-    if (localObject != null) {
-      this.c.put(str, localObject);
-    }
-    return localObject;
   }
   
   public Typeface a(DiyPendantFetcher.Invalidatable paramInvalidatable, int paramInt1, int paramInt2)
   {
-    if ((paramInvalidatable == null) || (paramInt1 <= 0)) {
-      return null;
+    if (paramInvalidatable != null)
+    {
+      if (paramInt1 <= 0) {
+        return null;
+      }
+      Object localObject = (FontInfo)this.jdField_b_of_type_ComTencentUtilLRULinkedHashMap.get(Integer.valueOf(paramInt1));
+      if ((localObject != null) && (((FontInfo)localObject).jdField_a_of_type_AndroidGraphicsTypeface != null)) {
+        return ((FontInfo)localObject).jdField_a_of_type_AndroidGraphicsTypeface;
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("can not found typeface in the cache! font id = ");
+        ((StringBuilder)localObject).append(paramInt1);
+        QLog.i("DiyPendantFetcher", 2, ((StringBuilder)localObject).toString());
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramInvalidatable);
+      a(paramInt1, paramInt2);
     }
-    FontInfo localFontInfo = (FontInfo)this.jdField_b_of_type_ComTencentUtilLRULinkedHashMap.get(Integer.valueOf(paramInt1));
-    if ((localFontInfo != null) && (localFontInfo.jdField_a_of_type_AndroidGraphicsTypeface != null)) {
-      return localFontInfo.jdField_a_of_type_AndroidGraphicsTypeface;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("DiyPendantFetcher", 2, "can not found typeface in the cache! font id = " + paramInt1);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramInvalidatable);
-    a(paramInt1, paramInt2);
     return null;
   }
   
   public DiyPendantEntity a(QQAppInterface paramQQAppInterface, String paramString, BusinessObserver paramBusinessObserver)
   {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
-      paramQQAppInterface = null;
-    }
-    do
+    if (paramQQAppInterface != null)
     {
-      return paramQQAppInterface;
+      if (TextUtils.isEmpty(paramString)) {
+        return null;
+      }
       if (this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.containsKey(paramString))
       {
         paramQQAppInterface = new ArrayList();
@@ -263,54 +326,75 @@ public class DiyPendantFetcher
         }
         return (DiyPendantEntity)this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(paramString);
       }
-      localObject = (DiyPendantEntity)paramQQAppInterface.getEntityManagerFactory().createEntityManager().find(DiyPendantEntity.class, " uinAndDiyId=? ", new String[] { paramString });
-      if (localObject == null) {
-        break;
+      Object localObject = (DiyPendantEntity)paramQQAppInterface.getEntityManagerFactory().createEntityManager().find(DiyPendantEntity.class, " uinAndDiyId=? ", new String[] { paramString });
+      if (localObject != null)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramQQAppInterface = new StringBuilder();
+          paramQQAppInterface.append("query diy pendant from database, uinAndDiyId: ");
+          paramQQAppInterface.append(paramString);
+          QLog.i("DiyPendantFetcher", 2, paramQQAppInterface.toString());
+        }
+        this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(paramString, localObject);
+        paramQQAppInterface = new ArrayList();
+        paramQQAppInterface.add(localObject);
+        if (paramBusinessObserver != null) {
+          paramBusinessObserver.onUpdate(1, true, paramQQAppInterface);
+        }
+        return localObject;
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("DiyPendantFetcher", 2, "query diy pendant from database, uinAndDiyId: " + paramString);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("start request diy id ");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.i("DiyPendantFetcher", 2, ((StringBuilder)localObject).toString());
       }
-      this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(paramString, localObject);
-      paramString = new ArrayList();
-      paramString.add(localObject);
-      paramQQAppInterface = (QQAppInterface)localObject;
-    } while (paramBusinessObserver == null);
-    paramBusinessObserver.onUpdate(1, true, paramString);
-    return localObject;
-    if (QLog.isColorLevel()) {
-      QLog.i("DiyPendantFetcher", 2, "start request diy id " + paramString);
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramString);
+      localObject = new ArrayList();
+      ((List)localObject).add(Long.valueOf(Long.parseLong(paramString.split("_")[0])));
+      ((DiyPendantHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DIY_PENDANT_HANDLER)).a((List)localObject, paramBusinessObserver);
     }
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramString);
-    Object localObject = new ArrayList();
-    ((List)localObject).add(Long.valueOf(Long.parseLong(paramString.split("_")[0])));
-    ((DiyPendantHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DIY_PENDANT_HANDLER)).a((List)localObject, paramBusinessObserver);
     return null;
   }
   
   public String a(DiyPendantSticker paramDiyPendantSticker)
   {
-    return "DiyPendantFetcher_" + paramDiyPendantSticker.type + "_" + paramDiyPendantSticker.stickerId;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DiyPendantFetcher_");
+    localStringBuilder.append(paramDiyPendantSticker.type);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramDiyPendantSticker.stickerId);
+    return localStringBuilder.toString();
   }
   
   public List<DiyPendantSticker> a(DiyPendantDrawable paramDiyPendantDrawable)
   {
-    if ((paramDiyPendantDrawable == null) || (TextUtils.isEmpty(paramDiyPendantDrawable.jdField_a_of_type_JavaLangString))) {
-      return null;
-    }
-    if (this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.containsKey(paramDiyPendantDrawable.jdField_a_of_type_JavaLangString)) {
-      return ((DiyPendantEntity)this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(paramDiyPendantDrawable.jdField_a_of_type_JavaLangString)).getStickerInfoList();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("DiyPendantFetcher", 2, "can not found cache in DiyPendantCache! " + paramDiyPendantDrawable.jdField_a_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramDiyPendantDrawable.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.i("DiyPendantFetcher", 2, "fetchDiyBaseInfo: put DiyPendantDrawable into mNotRefreshAIODrawables and post delay 0.5s to load bubble diy!");
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramDiyPendantDrawable);
-    paramDiyPendantDrawable = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramDiyPendantDrawable instanceof QQAppInterface)) {
-      a((QQAppInterface)paramDiyPendantDrawable, 500);
+    if (paramDiyPendantDrawable != null)
+    {
+      if (TextUtils.isEmpty(paramDiyPendantDrawable.jdField_a_of_type_JavaLangString)) {
+        return null;
+      }
+      if (this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.containsKey(paramDiyPendantDrawable.jdField_a_of_type_JavaLangString)) {
+        return ((DiyPendantEntity)this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(paramDiyPendantDrawable.jdField_a_of_type_JavaLangString)).getStickerInfoList();
+      }
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("can not found cache in DiyPendantCache! ");
+        localStringBuilder.append(paramDiyPendantDrawable.jdField_a_of_type_JavaLangString);
+        QLog.i("DiyPendantFetcher", 2, localStringBuilder.toString());
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramDiyPendantDrawable.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.i("DiyPendantFetcher", 2, "fetchDiyBaseInfo: put DiyPendantDrawable into mNotRefreshAIODrawables and post delay 0.5s to load bubble diy!");
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramDiyPendantDrawable);
+      paramDiyPendantDrawable = BaseApplicationImpl.getApplication().getRuntime();
+      if ((paramDiyPendantDrawable instanceof QQAppInterface)) {
+        a((QQAppInterface)paramDiyPendantDrawable, 500);
+      }
     }
     return null;
   }
@@ -324,8 +408,13 @@ public class DiyPendantFetcher
       {
         this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
         long l2 = System.currentTimeMillis();
-        if (QLog.isColorLevel()) {
-          QLog.d("DiyPendantFetcher", 2, "DIY Pendant init Font Engine time = " + (l2 - l1) + "ms");
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("DIY Pendant init Font Engine time = ");
+          localStringBuilder1.append(l2 - l1);
+          localStringBuilder1.append("ms");
+          QLog.d("DiyPendantFetcher", 2, localStringBuilder1.toString());
         }
       }
       else
@@ -341,7 +430,10 @@ public class DiyPendantFetcher
     catch (Throwable localThrowable)
     {
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      QLog.e("DiyPendantFetcher", 1, "initETEngine Exception:" + localThrowable.getMessage());
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("initETEngine Exception:");
+      localStringBuilder2.append(localThrowable.getMessage());
+      QLog.e("DiyPendantFetcher", 1, localStringBuilder2.toString());
     }
   }
   
@@ -371,71 +463,86 @@ public class DiyPendantFetcher
   
   public void a(QQAppInterface paramQQAppInterface)
   {
-    if (paramQQAppInterface == null) {}
-    do
-    {
+    if (paramQQAppInterface == null) {
       return;
-      b(paramQQAppInterface);
-    } while ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()) && (this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()) && (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.isEmpty()));
-    ThreadManager.post(new DiyPendantFetcher.2(this, paramQQAppInterface), 5, null, false);
+    }
+    b(paramQQAppInterface);
+    if ((!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()) || (!this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()) || (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.isEmpty())) {
+      ThreadManager.post(new DiyPendantFetcher.2(this, paramQQAppInterface), 5, null, false);
+    }
   }
   
   public void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    if (paramQQAppInterface == null) {}
-    do
+    if (paramQQAppInterface == null) {
+      return;
+    }
+    if ((!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()) || (!this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()))
     {
-      do
-      {
-        return;
-      } while ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()) && (this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()));
       if (paramInt <= 0)
       {
         ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
         a(paramQQAppInterface);
         return;
       }
-    } while (System.currentTimeMillis() <= jdField_a_of_type_Long);
-    if (QLog.isColorLevel()) {
-      QLog.i("DiyPendantFetcher", 2, "postLoadPendantDiy delay:  " + paramInt);
+      if (System.currentTimeMillis() > jdField_a_of_type_Long)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramQQAppInterface = new StringBuilder();
+          paramQQAppInterface.append("postLoadPendantDiy delay:  ");
+          paramQQAppInterface.append(paramInt);
+          QLog.i("DiyPendantFetcher", 2, paramQQAppInterface.toString());
+        }
+        paramQQAppInterface = ThreadManager.getUIHandler();
+        Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
+        long l = paramInt;
+        paramQQAppInterface.postDelayed(localRunnable, l);
+        jdField_a_of_type_Long = System.currentTimeMillis() + l;
+      }
     }
-    ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, paramInt);
-    jdField_a_of_type_Long = System.currentTimeMillis() + paramInt;
   }
   
   public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean, List<DiyPendantEntity> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return;
-    }
-    FriendsManager localFriendsManager = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if (paramList != null)
     {
-      DiyPendantEntity localDiyPendantEntity = (DiyPendantEntity)paramList.next();
-      if (paramBoolean)
-      {
-        paramQQAppInterface.getEntityManagerFactory().createEntityManager().persistOrReplace(localDiyPendantEntity);
-        ExtensionInfo localExtensionInfo = localFriendsManager.a(localDiyPendantEntity.uinAndDiyId.split("_")[0]);
-        if ((localExtensionInfo != null) && (localExtensionInfo.pendantDiyId != localDiyPendantEntity.diyId))
-        {
-          localExtensionInfo.pendantDiyId = localDiyPendantEntity.diyId;
-          localArrayList.add(localExtensionInfo);
-        }
+      if (paramList.isEmpty()) {
+        return;
       }
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(localDiyPendantEntity.uinAndDiyId);
-      this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(localDiyPendantEntity.uinAndDiyId, localDiyPendantEntity);
-      a(localDiyPendantEntity);
+      FriendsManager localFriendsManager = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        DiyPendantEntity localDiyPendantEntity = (DiyPendantEntity)paramList.next();
+        if (paramBoolean)
+        {
+          paramQQAppInterface.getEntityManagerFactory().createEntityManager().persistOrReplace(localDiyPendantEntity);
+          ExtensionInfo localExtensionInfo = localFriendsManager.a(localDiyPendantEntity.uinAndDiyId.split("_")[0]);
+          if ((localExtensionInfo != null) && (localExtensionInfo.pendantDiyId != localDiyPendantEntity.diyId))
+          {
+            localExtensionInfo.pendantDiyId = localDiyPendantEntity.diyId;
+            localArrayList.add(localExtensionInfo);
+          }
+        }
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(localDiyPendantEntity.uinAndDiyId);
+        this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(localDiyPendantEntity.uinAndDiyId, localDiyPendantEntity);
+        a(localDiyPendantEntity);
+      }
+      localFriendsManager.b(localArrayList);
+      d();
     }
-    localFriendsManager.b(localArrayList);
-    d();
   }
   
   public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("DiyPendantFetcher", 2, "notifyPasterDownloadComplete " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("notifyPasterDownloadComplete ");
+      localStringBuilder.append(paramString);
+      QLog.i("DiyPendantFetcher", 2, localStringBuilder.toString());
     }
     if (!TextUtils.isEmpty(paramString))
     {
@@ -449,54 +556,50 @@ public class DiyPendantFetcher
   public void b()
   {
     Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-    IVasQuickUpdateService localIVasQuickUpdateService;
-    Object localObject2;
     if ((localObject1 instanceof QQAppInterface))
     {
       c();
-      if (this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()) {
-        break label227;
-      }
-      localIVasQuickUpdateService = (IVasQuickUpdateService)((AppRuntime)localObject1).getRuntimeService(IVasQuickUpdateService.class, "");
-      localObject2 = null;
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
-      int i = 0;
-      if (localIterator.hasNext())
+      if (!this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
       {
-        String[] arrayOfString = ((String)localIterator.next()).split("_");
-        if (arrayOfString.length != 3) {
-          break label243;
+        IVasQuickUpdateService localIVasQuickUpdateService = (IVasQuickUpdateService)((AppRuntime)localObject1).getRuntimeService(IVasQuickUpdateService.class, "");
+        Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
+        Object localObject2 = null;
+        int i = 0;
+        while (localIterator.hasNext())
+        {
+          Object localObject3 = ((String)localIterator.next()).split("_");
+          if (localObject3.length == 3)
+          {
+            localObject1 = localObject2;
+            if (localObject2 == null) {
+              localObject1 = new String[this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size()];
+            }
+            localObject2 = localObject3[2];
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("faceAddon.sticker.");
+            ((StringBuilder)localObject3).append((String)localObject2);
+            ((StringBuilder)localObject3).append(".png");
+            localObject1[i] = ((StringBuilder)localObject3).toString();
+            i += 1;
+            localObject2 = localObject1;
+          }
         }
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = new String[this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size()];
+        if ((localObject2 != null) && (localObject2.length > 0))
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("now download from VasUpdateConstants list: ");
+            ((StringBuilder)localObject1).append(TextUtils.join(",", (Object[])localObject2));
+            QLog.i("DiyPendantFetcher", 2, ((StringBuilder)localObject1).toString());
+          }
+          localIVasQuickUpdateService.downloadGatherItem(4L, localObject2[0], (String[])localObject2, "DiyPendantFetcher");
         }
-        localObject2 = arrayOfString[2];
-        int j = i + 1;
-        localObject1[i] = ("faceAddon.sticker." + (String)localObject2 + ".png");
-        i = j;
       }
-    }
-    for (;;)
-    {
-      localObject2 = localObject1;
-      break;
-      if ((localObject2 != null) && (localObject2.length > 0))
+      else if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("DiyPendantFetcher", 2, "now download from VasUpdateConstants list: " + TextUtils.join(",", (Object[])localObject2));
-        }
-        localIVasQuickUpdateService.downloadGatherItem(4L, localObject2[0], (String[])localObject2, "DiyPendantFetcher");
+        QLog.i("DiyPendantFetcher", 2, "all paster has decode!");
       }
-      label227:
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.i("DiyPendantFetcher", 2, "all paster has decode!");
-      return;
-      label243:
-      localObject1 = localObject2;
     }
   }
   
@@ -511,32 +614,34 @@ public class DiyPendantFetcher
   
   public void b(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("DiyPendantFetcher", 2, "notifyFontDownloadComplete, scid =" + paramString);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("notifyFontDownloadComplete, scid =");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("DiyPendantFetcher", 2, ((StringBuilder)localObject).toString());
     }
-    FontInfo localFontInfo;
     if (!TextUtils.isEmpty(paramString))
     {
       paramString = paramString.replace("faceAddon.stickerFont.android.", "");
-      localFontInfo = (FontInfo)this.jdField_b_of_type_ComTencentUtilLRULinkedHashMap.get(Integer.valueOf(Integer.parseInt(paramString)));
-      if (localFontInfo != null)
-      {
-        if (localFontInfo.b != 1) {
-          break label128;
+      localObject = (FontInfo)this.jdField_b_of_type_ComTencentUtilLRULinkedHashMap.get(Integer.valueOf(Integer.parseInt(paramString)));
+      if (localObject != null) {
+        if (((FontInfo)localObject).b == 1)
+        {
+          if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+            a();
+          }
+          if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_loadFont(((FontInfo)localObject).jdField_a_of_type_JavaLangString, Integer.parseInt(paramString), true))) {
+            d();
+          }
         }
-        if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-          a();
-        }
-        if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_loadFont(localFontInfo.jdField_a_of_type_JavaLangString, Integer.parseInt(paramString), true))) {
-          d();
+        else if (new File(((FontInfo)localObject).jdField_a_of_type_JavaLangString).exists())
+        {
+          ((FontInfo)localObject).jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromFile(((FontInfo)localObject).jdField_a_of_type_JavaLangString);
         }
       }
     }
-    label128:
-    while (!new File(localFontInfo.jdField_a_of_type_JavaLangString).exists()) {
-      return;
-    }
-    localFontInfo.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromFile(localFontInfo.jdField_a_of_type_JavaLangString);
   }
   
   public void c()
@@ -553,36 +658,35 @@ public class DiyPendantFetcher
   
   public void c(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size() == 0) {
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size() == 0)
+    {
       if (QLog.isColorLevel()) {
         QLog.i("DiyPendantFetcher", 2, "mUnCacheDiyId size is 0!");
       }
-    }
-    ArrayList localArrayList;
-    do
-    {
       return;
-      localArrayList = new ArrayList();
-      Object localObject1 = new ArrayList(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet);
-      int j = ((ArrayList)localObject1).size();
-      Object localObject2 = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-      int i = 0;
-      while (i < j)
-      {
-        DiyPendantEntity localDiyPendantEntity = (DiyPendantEntity)((EntityManager)localObject2).find(DiyPendantEntity.class, (String)((ArrayList)localObject1).get(i));
-        if (localDiyPendantEntity != null) {
-          localArrayList.add(localDiyPendantEntity);
-        }
-        i += 1;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = new ArrayList(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet);
+    int j = ((ArrayList)localObject1).size();
+    Object localObject2 = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    int i = 0;
+    while (i < j)
+    {
+      DiyPendantEntity localDiyPendantEntity = (DiyPendantEntity)((EntityManager)localObject2).find(DiyPendantEntity.class, (String)((ArrayList)localObject1).get(i));
+      if (localDiyPendantEntity != null) {
+        localArrayList.add(localDiyPendantEntity);
       }
-      localObject1 = localArrayList.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (DiyPendantEntity)((Iterator)localObject1).next();
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(((DiyPendantEntity)localObject2).uinAndDiyId);
-      }
-    } while (localArrayList.isEmpty());
-    a(paramQQAppInterface, false, localArrayList);
+      i += 1;
+    }
+    localObject1 = localArrayList.iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (DiyPendantEntity)((Iterator)localObject1).next();
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(((DiyPendantEntity)localObject2).uinAndDiyId);
+    }
+    if (!localArrayList.isEmpty()) {
+      a(paramQQAppInterface, false, localArrayList);
+    }
   }
   
   @TargetApi(11)
@@ -598,7 +702,7 @@ public class DiyPendantFetcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.addon.DiyPendantFetcher
  * JD-Core Version:    0.7.0.1
  */

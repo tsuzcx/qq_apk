@@ -21,15 +21,16 @@ public class GMESDKIPC
   
   public static GMESDKIPC a()
   {
-    if (jdField_a_of_type_CooperationGmesdkGMESDKIPC == null) {}
-    try
-    {
-      if (jdField_a_of_type_CooperationGmesdkGMESDKIPC == null) {
-        jdField_a_of_type_CooperationGmesdkGMESDKIPC = new GMESDKIPC();
+    if (jdField_a_of_type_CooperationGmesdkGMESDKIPC == null) {
+      try
+      {
+        if (jdField_a_of_type_CooperationGmesdkGMESDKIPC == null) {
+          jdField_a_of_type_CooperationGmesdkGMESDKIPC = new GMESDKIPC();
+        }
       }
-      return jdField_a_of_type_CooperationGmesdkGMESDKIPC;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_CooperationGmesdkGMESDKIPC;
   }
   
   public void a()
@@ -77,7 +78,7 @@ public class GMESDKIPC
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.gmesdk.GMESDKIPC
  * JD-Core Version:    0.7.0.1
  */

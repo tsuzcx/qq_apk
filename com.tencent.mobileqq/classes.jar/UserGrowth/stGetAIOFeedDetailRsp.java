@@ -28,14 +28,15 @@ public final class stGetAIOFeedDetailRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.enable, 0);
-    if (this.feed != null) {
-      paramJceOutputStream.write(this.feed, 1);
+    stSimpleMetaFeed localstSimpleMetaFeed = this.feed;
+    if (localstSimpleMetaFeed != null) {
+      paramJceOutputStream.write(localstSimpleMetaFeed, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stGetAIOFeedDetailRsp
  * JD-Core Version:    0.7.0.1
  */

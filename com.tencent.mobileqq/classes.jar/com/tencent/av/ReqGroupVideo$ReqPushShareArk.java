@@ -24,14 +24,16 @@ public final class ReqGroupVideo$ReqPushShareArk
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50, 58, 64, 72 }, new String[] { "uin", "room_id", "room_create_time", "send_type", "recv_uin", "group_name", "share_name", "role", "group_code" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Long.valueOf(0L) }, ReqPushShareArk.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50, 58, 64, 72 }, new String[] { "uin", "room_id", "room_create_time", "send_type", "recv_uin", "group_name", "share_name", "role", "group_code" }, new Object[] { localLong, localLong, localInteger, localLong, localLong, localByteStringMicro1, localByteStringMicro2, localInteger, localLong }, ReqPushShareArk.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ReqGroupVideo.ReqPushShareArk
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.util.ArrayMap;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -25,6 +24,7 @@ import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.history.helper.ChatHistoryItemSelectHelper;
 import com.tencent.mobileqq.activity.history.helper.ContentHelper;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
@@ -82,98 +82,79 @@ public class ChatHistoryC2CLinkAdapter
     this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment = paramChatHistoryC2CLinkFragment;
     this.jdField_a_of_type_ComTencentMobileqqActivityHistoryHelperChatHistoryItemSelectHelper = paramChatHistoryItemSelectHelper;
     this.jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("M月d日");
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment.getActivity().app.getManager(QQManagerFactory.FRIENDS_MANAGER));
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment.getBaseActivity().app.getManager(QQManagerFactory.FRIENDS_MANAGER));
   }
   
   public static String a(AbsShareMsg paramAbsShareMsg, String paramString)
   {
     Object localObject1;
-    Object localObject2;
-    if (paramString.equals("cover"))
-    {
+    if (paramString.equals("cover")) {
       localObject1 = paramAbsShareMsg.mContentCover;
+    } else {
+      localObject1 = paramAbsShareMsg.mContentTitle;
+    }
+    Object localObject2 = localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1))
+    {
       localObject2 = localObject1;
-      if (TextUtils.isEmpty((CharSequence)localObject1))
+      if ((paramAbsShareMsg instanceof StructMsgForGeneralShare))
       {
+        paramAbsShareMsg = (StructMsgForGeneralShare)paramAbsShareMsg;
         localObject2 = localObject1;
-        if ((paramAbsShareMsg instanceof StructMsgForGeneralShare))
+        if (paramAbsShareMsg.mStructMsgItemLists != null)
         {
-          paramAbsShareMsg = (StructMsgForGeneralShare)paramAbsShareMsg;
           localObject2 = localObject1;
-          if (paramAbsShareMsg.mStructMsgItemLists != null)
+          if (!paramAbsShareMsg.mStructMsgItemLists.isEmpty())
           {
-            localObject2 = localObject1;
-            if (!paramAbsShareMsg.mStructMsgItemLists.isEmpty())
+            Iterator localIterator = paramAbsShareMsg.mStructMsgItemLists.iterator();
+            paramAbsShareMsg = (AbsShareMsg)localObject1;
+            do
             {
-              Iterator localIterator = paramAbsShareMsg.mStructMsgItemLists.iterator();
-              paramAbsShareMsg = (AbsShareMsg)localObject1;
-              if (!localIterator.hasNext()) {
-                return paramAbsShareMsg;
-              }
-              localObject2 = (AbsStructMsgElement)localIterator.next();
-              if (!(localObject2 instanceof AbsStructMsgItem)) {
-                break label214;
-              }
-              localObject1 = paramAbsShareMsg;
-              if (((AbsStructMsgItem)localObject2).jdField_a_of_type_JavaUtilArrayList == null) {
-                break label248;
-              }
-              localObject1 = paramAbsShareMsg;
-              if (((AbsStructMsgItem)localObject2).jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-                break label248;
-              }
-              localObject2 = ((AbsStructMsgItem)localObject2).jdField_a_of_type_JavaUtilArrayList.iterator();
-              localObject1 = paramAbsShareMsg;
-              label176:
               do
               {
-                paramAbsShareMsg = (AbsShareMsg)localObject1;
-                if (!((Iterator)localObject2).hasNext()) {
-                  break;
-                }
-                paramAbsShareMsg = (AbsStructMsgElement)((Iterator)localObject2).next();
-                if (!paramString.equals("cover")) {
-                  break label206;
-                }
-                paramAbsShareMsg = StructMsgForGeneralShare.getCoverForChatHistory(paramAbsShareMsg);
+                do
+                {
+                  localObject2 = paramAbsShareMsg;
+                  if (!localIterator.hasNext()) {
+                    return localObject2;
+                  }
+                  localObject1 = (AbsStructMsgElement)localIterator.next();
+                  if (!(localObject1 instanceof AbsStructMsgItem)) {
+                    break;
+                  }
+                  localObject1 = (AbsStructMsgItem)localObject1;
+                } while ((((AbsStructMsgItem)localObject1).jdField_a_of_type_JavaUtilArrayList == null) || (((AbsStructMsgItem)localObject1).jdField_a_of_type_JavaUtilArrayList.isEmpty()));
+                localObject2 = ((AbsStructMsgItem)localObject1).jdField_a_of_type_JavaUtilArrayList.iterator();
                 localObject1 = paramAbsShareMsg;
-              } while (TextUtils.isEmpty(paramAbsShareMsg));
-              localObject1 = paramAbsShareMsg;
-              if (TextUtils.isEmpty(paramAbsShareMsg)) {
-                break label248;
+                while (((Iterator)localObject2).hasNext())
+                {
+                  paramAbsShareMsg = (AbsStructMsgElement)((Iterator)localObject2).next();
+                  if (paramString.equals("cover")) {
+                    paramAbsShareMsg = StructMsgForGeneralShare.getCoverForChatHistory(paramAbsShareMsg);
+                  } else {
+                    paramAbsShareMsg = StructMsgForGeneralShare.getTitleForChatHistory(paramAbsShareMsg);
+                  }
+                  localObject1 = paramAbsShareMsg;
+                  if (!TextUtils.isEmpty(paramAbsShareMsg)) {
+                    localObject1 = paramAbsShareMsg;
+                  }
+                }
+                paramAbsShareMsg = (AbsShareMsg)localObject1;
+              } while (TextUtils.isEmpty((CharSequence)localObject1));
+              return localObject1;
+              if (paramString.equals("cover")) {
+                localObject1 = StructMsgForGeneralShare.getCoverForChatHistory((AbsStructMsgElement)localObject1);
+              } else {
+                localObject1 = StructMsgForGeneralShare.getTitleForChatHistory((AbsStructMsgElement)localObject1);
               }
-              localObject2 = paramAbsShareMsg;
-            }
+              paramAbsShareMsg = (AbsShareMsg)localObject1;
+            } while (TextUtils.isEmpty((CharSequence)localObject1));
+            localObject2 = localObject1;
           }
         }
       }
     }
-    label206:
-    label214:
-    label228:
-    do
-    {
-      return localObject2;
-      localObject1 = paramAbsShareMsg.mContentTitle;
-      break;
-      paramAbsShareMsg = StructMsgForGeneralShare.getTitleForChatHistory(paramAbsShareMsg);
-      break label176;
-      if (!paramString.equals("cover")) {
-        break label240;
-      }
-      paramAbsShareMsg = StructMsgForGeneralShare.getCoverForChatHistory((AbsStructMsgElement)localObject2);
-      localObject2 = paramAbsShareMsg;
-    } while (!TextUtils.isEmpty(paramAbsShareMsg));
-    for (;;)
-    {
-      break;
-      label240:
-      paramAbsShareMsg = StructMsgForGeneralShare.getTitleForChatHistory((AbsStructMsgElement)localObject2);
-      break label228;
-      label248:
-      paramAbsShareMsg = (AbsShareMsg)localObject1;
-    }
-    return paramAbsShareMsg;
+    return localObject2;
   }
   
   private String a(String paramString)
@@ -191,7 +172,7 @@ public class ChatHistoryC2CLinkAdapter
   public static void a(ImageView paramImageView, String paramString)
   {
     BaseApplication localBaseApplication = BaseApplicationImpl.context;
-    Drawable localDrawable = localBaseApplication.getResources().getDrawable(2130850895);
+    Drawable localDrawable = localBaseApplication.getResources().getDrawable(2130850832);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mFailedDrawable = localDrawable;
     localURLDrawableOptions.mLoadingDrawable = localDrawable;
@@ -202,119 +183,111 @@ public class ChatHistoryC2CLinkAdapter
     {
       paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
       paramString.setTag(URLDrawableDecodeHandler.b(localLayoutParams.width, localLayoutParams.height, UIUtils.a(localBaseApplication, 6.0F)));
-      paramString.setDecodeHandler(URLDrawableDecodeHandler.j);
+      paramString.setDecodeHandler(URLDrawableDecodeHandler.i);
       paramImageView.setImageDrawable(paramString);
       return;
     }
     catch (Throwable paramString)
     {
-      paramImageView.setImageDrawable(localDrawable);
+      label100:
+      break label100;
     }
+    paramImageView.setImageDrawable(localDrawable);
   }
   
   private void a(ChatHistoryC2CLinkAdapter.URLItemHolder paramURLItemHolder, MessageRecord paramMessageRecord)
   {
-    if ((paramMessageRecord instanceof MessageForArkApp)) {}
-    for (;;)
+    boolean bool1 = paramMessageRecord instanceof MessageForArkApp;
+    if (bool1)
     {
+      i = 1;
       try
       {
-        Object localObject = ((MessageForArkApp)paramMessageRecord).getPreview();
-        boolean bool = TextUtils.isEmpty((CharSequence)localObject);
-        if (bool) {
-          break label374;
+        String str1 = ((MessageForArkApp)paramMessageRecord).getPreview();
+        boolean bool2 = TextUtils.isEmpty(str1);
+        if (bool2) {
+          break label73;
         }
-        String str2;
-        TextView localTextView;
-        QLog.e("Q.history.C2CLinkAdapter", 1, localException1, new Object[0]);
-      }
-      catch (Exception localException1)
-      {
         try
         {
-          a(ChatHistoryC2CLinkAdapter.URLItemHolder.a(paramURLItemHolder), (String)localObject);
-          i = 1;
-          if (i == 0) {
-            ChatHistoryC2CLinkAdapter.URLItemHolder.a(paramURLItemHolder).setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130850895));
-          }
-          str1 = a(ContentHelper.a(paramMessageRecord));
-          if (!(paramMessageRecord instanceof MessageForArkApp)) {
-            break label300;
-          }
-          str2 = ((MessageForArkApp)paramMessageRecord).getTitle();
-          localTextView = ChatHistoryC2CLinkAdapter.URLItemHolder.a(paramURLItemHolder);
-          localObject = str2;
-          if (TextUtils.isEmpty(str2)) {
-            localObject = str1;
-          }
-          localTextView.setText((CharSequence)localObject);
-          localObject = new Date(paramMessageRecord.time * 1000L);
-          localObject = this.jdField_a_of_type_JavaTextSimpleDateFormat.format((Date)localObject);
-          ChatHistoryC2CLinkAdapter.URLItemHolder.b(paramURLItemHolder).setText((CharSequence)localObject);
-          ChatHistoryC2CLinkAdapter.URLItemHolder.c(paramURLItemHolder).setText(ContactUtils.m(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment.getActivity().app, paramMessageRecord.senderuin));
-          ChatHistoryC2CLinkAdapter.URLItemHolder.a(paramURLItemHolder).setOnClickListener(new ChatHistoryC2CLinkAdapter.2(this, str1, paramURLItemHolder, paramMessageRecord));
-          if (!this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment.c) {
-            break label312;
-          }
-          ChatHistoryC2CLinkAdapter.URLItemHolder.a(paramURLItemHolder).setVisibility(0);
-          bool = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryHelperChatHistoryItemSelectHelper.a(paramMessageRecord);
-          ChatHistoryC2CLinkAdapter.URLItemHolder.a(paramURLItemHolder).setChecked(bool);
-          paramMessageRecord = (LinearLayout.LayoutParams)ChatHistoryC2CLinkAdapter.URLItemHolder.a(paramURLItemHolder).getLayoutParams();
-          paramMessageRecord.setMargins(paramMessageRecord.leftMargin, paramMessageRecord.topMargin, UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 8.0F), paramMessageRecord.bottomMargin);
-          ChatHistoryC2CLinkAdapter.URLItemHolder.a(paramURLItemHolder).setLayoutParams(paramMessageRecord);
-          return;
+          a(ChatHistoryC2CLinkAdapter.URLItemHolder.a(paramURLItemHolder), str1);
         }
-        catch (Exception localException2)
+        catch (Exception localException1)
         {
-          for (;;)
-          {
-            String str1;
-            i = 1;
-          }
+          i = 1;
         }
-        localException1 = localException1;
+        QLog.e("Q.history.C2CLinkAdapter", 1, localException2, new Object[0]);
+      }
+      catch (Exception localException2)
+      {
         i = 0;
       }
-      continue;
-      label300:
-      ChatHistoryC2CLinkAdapter.URLItemHolder.a(paramURLItemHolder).setText(str1);
-      continue;
-      label312:
-      ChatHistoryC2CLinkAdapter.URLItemHolder.a(paramURLItemHolder).setVisibility(8);
+      break label75;
+    }
+    label73:
+    int i = 0;
+    label75:
+    if (i == 0) {
+      ChatHistoryC2CLinkAdapter.URLItemHolder.a(paramURLItemHolder).setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130850832));
+    }
+    String str2 = a(ContentHelper.a(paramMessageRecord));
+    if (bool1)
+    {
+      String str3 = ((MessageForArkApp)paramMessageRecord).getTitle();
+      TextView localTextView = ChatHistoryC2CLinkAdapter.URLItemHolder.a(paramURLItemHolder);
+      localObject = str3;
+      if (TextUtils.isEmpty(str3)) {
+        localObject = str2;
+      }
+      localTextView.setText((CharSequence)localObject);
+    }
+    else
+    {
+      ChatHistoryC2CLinkAdapter.URLItemHolder.a(paramURLItemHolder).setText(str2);
+    }
+    Object localObject = new Date(paramMessageRecord.time * 1000L);
+    localObject = this.jdField_a_of_type_JavaTextSimpleDateFormat.format((Date)localObject);
+    ChatHistoryC2CLinkAdapter.URLItemHolder.b(paramURLItemHolder).setText((CharSequence)localObject);
+    ChatHistoryC2CLinkAdapter.URLItemHolder.c(paramURLItemHolder).setText(ContactUtils.f(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment.getBaseActivity().app, paramMessageRecord.senderuin));
+    ChatHistoryC2CLinkAdapter.URLItemHolder.a(paramURLItemHolder).setOnClickListener(new ChatHistoryC2CLinkAdapter.2(this, str2, paramURLItemHolder, paramMessageRecord));
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment.c)
+    {
+      ChatHistoryC2CLinkAdapter.URLItemHolder.a(paramURLItemHolder).setVisibility(0);
+      bool1 = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryHelperChatHistoryItemSelectHelper.a(paramMessageRecord);
+      ChatHistoryC2CLinkAdapter.URLItemHolder.a(paramURLItemHolder).setChecked(bool1);
       paramMessageRecord = (LinearLayout.LayoutParams)ChatHistoryC2CLinkAdapter.URLItemHolder.a(paramURLItemHolder).getLayoutParams();
-      paramMessageRecord.setMargins(paramMessageRecord.leftMargin, paramMessageRecord.topMargin, UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 50.0F), paramMessageRecord.bottomMargin);
+      paramMessageRecord.setMargins(paramMessageRecord.leftMargin, paramMessageRecord.topMargin, UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 8.0F), paramMessageRecord.bottomMargin);
       ChatHistoryC2CLinkAdapter.URLItemHolder.a(paramURLItemHolder).setLayoutParams(paramMessageRecord);
       return;
-      label374:
-      int i = 0;
     }
+    ChatHistoryC2CLinkAdapter.URLItemHolder.a(paramURLItemHolder).setVisibility(8);
+    paramMessageRecord = (LinearLayout.LayoutParams)ChatHistoryC2CLinkAdapter.URLItemHolder.a(paramURLItemHolder).getLayoutParams();
+    paramMessageRecord.setMargins(paramMessageRecord.leftMargin, paramMessageRecord.topMargin, UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 50.0F), paramMessageRecord.bottomMargin);
+    ChatHistoryC2CLinkAdapter.URLItemHolder.a(paramURLItemHolder).setLayoutParams(paramMessageRecord);
   }
   
   private void a(String paramString)
   {
-    boolean bool1 = false;
-    if ((!this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.containsKey(paramString)) || (!this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(paramString))) {
-      return;
-    }
-    boolean bool2 = ((Boolean)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString)).booleanValue();
-    Object localObject = (List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString);
-    if (bool2)
+    if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.containsKey(paramString))
     {
-      int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramString);
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(i + 1, (Collection)localObject);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AC87", "0X800AC87", 5, 0, "1", "2", "", "");
-    }
-    for (;;)
-    {
-      localObject = this.jdField_a_of_type_AndroidSupportV4UtilArrayMap;
-      if (!bool2) {
-        bool1 = true;
+      if (!this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(paramString)) {
+        return;
       }
-      ((ArrayMap)localObject).put(paramString, Boolean.valueOf(bool1));
+      boolean bool = ((Boolean)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString)).booleanValue();
+      List localList = (List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString);
+      if (bool)
+      {
+        int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramString);
+        this.jdField_a_of_type_JavaUtilArrayList.addAll(i + 1, localList);
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AC87", "0X800AC87", 5, 0, "1", "2", "", "");
+      }
+      else
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.removeAll(localList);
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AC87", "0X800AC87", 5, 0, "1", "1", "", "");
+      }
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(paramString, Boolean.valueOf(bool ^ true));
       notifyDataSetChanged();
-      return;
-      this.jdField_a_of_type_JavaUtilArrayList.removeAll((Collection)localObject);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AC87", "0X800AC87", 5, 0, "1", "1", "", "");
     }
   }
   
@@ -322,9 +295,11 @@ public class ChatHistoryC2CLinkAdapter
   {
     Object localObject2 = this.jdField_a_of_type_AndroidContentContext.getResources();
     Object localObject1 = a(paramAbsShareMsg, "cover");
-    int i = 2130850895;
+    int i;
     if ((paramAbsShareMsg instanceof StructMsgForAudioShare)) {
-      i = 2130850904;
+      i = 2130850841;
+    } else {
+      i = 2130850832;
     }
     localObject2 = ((Resources)localObject2).getDrawable(i);
     if (TextUtils.isEmpty((CharSequence)localObject1))
@@ -332,46 +307,68 @@ public class ChatHistoryC2CLinkAdapter
       paramURLImageView.setImageDrawable((Drawable)localObject2);
       return;
     }
-    if ((!((String)localObject1).startsWith("http://")) && (!((String)localObject1).startsWith("https://"))) {}
-    for (paramAbsShareMsg = Uri.fromFile(new File((String)localObject1)).toString();; paramAbsShareMsg = (AbsShareMsg)localObject1)
+    paramAbsShareMsg = (AbsShareMsg)localObject1;
+    if (!((String)localObject1).startsWith("http://"))
     {
-      paramAbsShareMsg = URLDrawable.getDrawable(paramAbsShareMsg, (Drawable)localObject2, (Drawable)localObject2);
-      localObject1 = paramURLImageView.getLayoutParams();
-      paramAbsShareMsg.setTag(URLDrawableDecodeHandler.b(((ViewGroup.LayoutParams)localObject1).width, ((ViewGroup.LayoutParams)localObject1).height, UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 6.0F)));
-      paramAbsShareMsg.setDecodeHandler(URLDrawableDecodeHandler.j);
-      paramURLImageView.setImageDrawable(paramAbsShareMsg);
-      return;
+      paramAbsShareMsg = (AbsShareMsg)localObject1;
+      if (!((String)localObject1).startsWith("https://")) {
+        paramAbsShareMsg = Uri.fromFile(new File((String)localObject1)).toString();
+      }
     }
+    paramAbsShareMsg = URLDrawable.getDrawable(paramAbsShareMsg, (Drawable)localObject2, (Drawable)localObject2);
+    localObject1 = paramURLImageView.getLayoutParams();
+    paramAbsShareMsg.setTag(URLDrawableDecodeHandler.b(((ViewGroup.LayoutParams)localObject1).width, ((ViewGroup.LayoutParams)localObject1).height, UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 6.0F)));
+    paramAbsShareMsg.setDecodeHandler(URLDrawableDecodeHandler.i);
+    paramURLImageView.setImageDrawable(paramAbsShareMsg);
   }
   
   public void a(LinkedHashMap<String, List<MessageRecord>> paramLinkedHashMap)
   {
-    if ((paramLinkedHashMap == null) || (paramLinkedHashMap.isEmpty())) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = paramLinkedHashMap;
-    this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    paramLinkedHashMap = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-    while (paramLinkedHashMap.hasNext())
+    if (paramLinkedHashMap != null)
     {
-      Object localObject = (Map.Entry)paramLinkedHashMap.next();
-      String str = (String)((Map.Entry)localObject).getKey();
-      localObject = (List)((Map.Entry)localObject).getValue();
-      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(str, Boolean.valueOf(false));
-      this.jdField_a_of_type_JavaUtilArrayList.add(str);
-      this.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)localObject);
+      if (paramLinkedHashMap.isEmpty()) {
+        return;
+      }
+      this.jdField_a_of_type_JavaUtilLinkedHashMap = paramLinkedHashMap;
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.clear();
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      paramLinkedHashMap = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+      while (paramLinkedHashMap.hasNext())
+      {
+        Object localObject = (Map.Entry)paramLinkedHashMap.next();
+        String str = (String)((Map.Entry)localObject).getKey();
+        localObject = (List)((Map.Entry)localObject).getValue();
+        this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(str, Boolean.valueOf(false));
+        this.jdField_a_of_type_JavaUtilArrayList.add(str);
+        this.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)localObject);
+      }
+      if (QLog.isColorLevel())
+      {
+        paramLinkedHashMap = new StringBuilder();
+        paramLinkedHashMap.append("[setData]data size: ");
+        paramLinkedHashMap.append(this.jdField_a_of_type_JavaUtilLinkedHashMap.size());
+        paramLinkedHashMap.append(" header size: ");
+        paramLinkedHashMap.append(this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.size());
+        paramLinkedHashMap.append(" elements size: ");
+        paramLinkedHashMap.append(this.jdField_a_of_type_JavaUtilArrayList.size());
+        QLog.d("Q.history.C2CLinkAdapter", 2, paramLinkedHashMap.toString());
+      }
+      notifyDataSetChanged();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.history.C2CLinkAdapter", 2, "[setData]data size: " + this.jdField_a_of_type_JavaUtilLinkedHashMap.size() + " header size: " + this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.size() + " elements size: " + this.jdField_a_of_type_JavaUtilArrayList.size());
-    }
-    notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.history.C2CLinkAdapter", 2, "[getCount]data size: " + this.jdField_a_of_type_JavaUtilLinkedHashMap.size() + " header size: " + this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.size() + " elements size: " + this.jdField_a_of_type_JavaUtilArrayList.size());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[getCount]data size: ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaUtilLinkedHashMap.size());
+      localStringBuilder.append(" header size: ");
+      localStringBuilder.append(this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.size());
+      localStringBuilder.append(" elements size: ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList.size());
+      QLog.d("Q.history.C2CLinkAdapter", 2, localStringBuilder.toString());
     }
     return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
@@ -389,112 +386,109 @@ public class ChatHistoryC2CLinkAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     Object localObject2 = getItem(paramInt);
-    Object localObject3;
+    Object localObject1;
     if ((localObject2 instanceof MessageForStructing))
     {
       localObject2 = (MessageForStructing)localObject2;
       if ((paramView != null) && ((paramView.getTag() instanceof ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)))
       {
         localObject1 = (ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)paramView.getTag();
-        ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).jdField_a_of_type_JavaLangObject = localObject2;
-        ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment.d;
-        if (!(localObject2 instanceof MessageForStructing)) {
-          break label402;
-        }
+      }
+      else
+      {
+        localObject1 = new ChatHistoryC2CLinkAdapter.HistoryStructItemHolder(this);
+        paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131558856, null);
+        ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376168));
+        ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131377954));
+        ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131377952));
+        ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363798));
+        ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).b = ((TextView)paramView.findViewById(2131371578));
+        ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).c = ((TextView)paramView.findViewById(2131365418));
+        paramView.setTag(localObject1);
+        ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localObject1);
+        ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      }
+      ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).jdField_a_of_type_JavaLangObject = localObject2;
+      ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment.d;
+      if ((localObject2 instanceof MessageForStructing))
+      {
         if (localObject2 == null) {
           ((MessageForStructing)localObject2).parse();
         }
         if ((((MessageForStructing)localObject2).structingMsg != null) && ((((MessageForStructing)localObject2).structingMsg instanceof AbsShareMsg)))
         {
-          localObject3 = (AbsShareMsg)((MessageForStructing)localObject2).structingMsg;
+          Object localObject3 = (AbsShareMsg)((MessageForStructing)localObject2).structingMsg;
           a(((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).jdField_a_of_type_ComTencentImageURLImageView, (AbsShareMsg)localObject3);
           ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(a((AbsShareMsg)localObject3, "title"));
-          localObject3 = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment.getActivity().app, ((MessageForStructing)localObject2).senderuin);
+          localObject3 = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment.getBaseActivity().app, ((MessageForStructing)localObject2).senderuin);
           ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).b.setText((CharSequence)localObject3);
           localObject3 = new Date(((MessageForStructing)localObject2).time * 1000L);
           localObject3 = this.jdField_a_of_type_JavaTextSimpleDateFormat.format((Date)localObject3);
           ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).c.setText((CharSequence)localObject3);
         }
-        label207:
-        if (!this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment.c) {
-          break label425;
-        }
-        ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-        ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryHelperChatHistoryItemSelectHelper.a(localObject2));
       }
-      for (;;)
+      else
       {
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        localObject1 = new ChatHistoryC2CLinkAdapter.HistoryStructItemHolder(this);
-        paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131558958, null);
-        ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376664));
-        ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131378543));
-        ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131378541));
-        ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363870));
-        ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).b = ((TextView)paramView.findViewById(2131371971));
-        ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).c = ((TextView)paramView.findViewById(2131365575));
-        paramView.setTag(localObject1);
-        ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localObject1);
-        ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        break;
-        label402:
         ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText("");
         ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).b.setText("");
-        break label207;
-        label425:
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment.c)
+      {
+        ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
+        ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryHelperChatHistoryItemSelectHelper.a(localObject2));
+        localObject1 = paramView;
+      }
+      else
+      {
         ((ChatHistoryC2CLinkAdapter.HistoryStructItemHolder)localObject1).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
+        localObject1 = paramView;
       }
     }
-    if (((localObject2 instanceof MessageForText)) || ((localObject2 instanceof MessageForReplyText)) || ((localObject2 instanceof MessageForMixedMsg)) || ((localObject2 instanceof MessageForArkApp)))
+    else if ((!(localObject2 instanceof MessageForText)) && (!(localObject2 instanceof MessageForReplyText)) && (!(localObject2 instanceof MessageForMixedMsg)) && (!(localObject2 instanceof MessageForArkApp)))
     {
-      if ((paramView != null) && ((paramView.getTag() instanceof ChatHistoryC2CLinkAdapter.URLItemHolder))) {
+      localObject1 = paramView;
+      if ((localObject2 instanceof String))
+      {
+        if ((paramView != null) && ((paramView.getTag() instanceof ChatHistoryC2CLinkAdapter.DividerViewHolder)))
+        {
+          localObject1 = (ChatHistoryC2CLinkAdapter.DividerViewHolder)paramView.getTag();
+        }
+        else
+        {
+          paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558793, null);
+          localObject1 = new ChatHistoryC2CLinkAdapter.DividerViewHolder();
+          ((ChatHistoryC2CLinkAdapter.DividerViewHolder)localObject1).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131369353));
+          ((ChatHistoryC2CLinkAdapter.DividerViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378615));
+          paramView.setTag(localObject1);
+          paramView.setOnClickListener(new ChatHistoryC2CLinkAdapter.1(this, (ChatHistoryC2CLinkAdapter.DividerViewHolder)localObject1));
+        }
+        ((ChatHistoryC2CLinkAdapter.DividerViewHolder)localObject1).jdField_a_of_type_AndroidWidgetCheckBox.setChecked(((Boolean)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localObject2)).booleanValue() ^ true);
+        ((ChatHistoryC2CLinkAdapter.DividerViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText((String)localObject2);
+        localObject1 = paramView;
+      }
+    }
+    else
+    {
+      if ((paramView != null) && ((paramView.getTag() instanceof ChatHistoryC2CLinkAdapter.URLItemHolder)))
+      {
         localObject1 = (ChatHistoryC2CLinkAdapter.URLItemHolder)paramView.getTag();
       }
-      for (;;)
+      else
       {
-        a((ChatHistoryC2CLinkAdapter.URLItemHolder)localObject1, (MessageRecord)localObject2);
-        break;
-        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558896, null);
+        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558794, null);
         localObject1 = new ChatHistoryC2CLinkAdapter.URLItemHolder(this, paramView);
         paramView.setTag(localObject1);
       }
-    }
-    Object localObject1 = paramView;
-    if ((localObject2 instanceof String))
-    {
-      if ((paramView == null) || (!(paramView.getTag() instanceof ChatHistoryC2CLinkAdapter.DividerViewHolder))) {
-        break label633;
-      }
-      localObject1 = (ChatHistoryC2CLinkAdapter.DividerViewHolder)paramView.getTag();
-      label576:
-      localObject3 = ((ChatHistoryC2CLinkAdapter.DividerViewHolder)localObject1).jdField_a_of_type_AndroidWidgetCheckBox;
-      if (((Boolean)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localObject2)).booleanValue()) {
-        break label710;
-      }
-    }
-    label710:
-    for (boolean bool = true;; bool = false)
-    {
-      ((CheckBox)localObject3).setChecked(bool);
-      ((ChatHistoryC2CLinkAdapter.DividerViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText((String)localObject2);
+      a((ChatHistoryC2CLinkAdapter.URLItemHolder)localObject1, (MessageRecord)localObject2);
       localObject1 = paramView;
-      paramView = (View)localObject1;
-      break;
-      label633:
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558895, null);
-      localObject1 = new ChatHistoryC2CLinkAdapter.DividerViewHolder();
-      ((ChatHistoryC2CLinkAdapter.DividerViewHolder)localObject1).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131369653));
-      ((ChatHistoryC2CLinkAdapter.DividerViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379254));
-      paramView.setTag(localObject1);
-      paramView.setOnClickListener(new ChatHistoryC2CLinkAdapter.1(this, (ChatHistoryC2CLinkAdapter.DividerViewHolder)localObject1));
-      break label576;
     }
+    EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CLinkAdapter
  * JD-Core Version:    0.7.0.1
  */

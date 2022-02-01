@@ -16,58 +16,60 @@ class CTEntryMng$3
   public void run()
   {
     ArrayList localArrayList = new ArrayList(CTEntryMng.a(this.this$0));
+    String str2 = "";
+    Object localObject1 = str2;
     for (;;)
     {
-      JSONArray localJSONArray;
       int i;
-      String str;
+      String str1;
       try
       {
         if (localArrayList.size() > 0)
         {
-          localJSONArray = new JSONArray();
+          localObject1 = new JSONArray();
           i = 0;
-          if (i >= localArrayList.size()) {
-            break label211;
-          }
-          Object localObject = (CTEntryMng.EntryUserSetting)localArrayList.get(i);
-          if ((((CTEntryMng.EntryUserSetting)localObject).a > 4) && (!CTEntryMng.b(this.this$0).contains(Integer.valueOf(((CTEntryMng.EntryUserSetting)localObject).a))))
+          if (i < localArrayList.size())
           {
-            if (QLog.isColorLevel()) {
-              QLog.i("CTEntryMng", 2, "saveUserSetting not save id: " + ((CTEntryMng.EntryUserSetting)localObject).a);
+            Object localObject2 = (CTEntryMng.EntryUserSetting)localArrayList.get(i);
+            if ((((CTEntryMng.EntryUserSetting)localObject2).a > 4) && (!CTEntryMng.b(this.this$0).contains(Integer.valueOf(((CTEntryMng.EntryUserSetting)localObject2).a))))
+            {
+              if (!QLog.isColorLevel()) {
+                break label237;
+              }
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("saveUserSetting not save id: ");
+              localStringBuilder.append(((CTEntryMng.EntryUserSetting)localObject2).a);
+              QLog.i("CTEntryMng", 2, localStringBuilder.toString());
+              break label237;
             }
-          }
-          else
-          {
-            localObject = ((CTEntryMng.EntryUserSetting)localObject).a();
-            if (localObject != null) {
-              localJSONArray.put(localObject);
+            localObject2 = ((CTEntryMng.EntryUserSetting)localObject2).a();
+            if (localObject2 == null) {
+              break label237;
             }
+            ((JSONArray)localObject1).put(localObject2);
+            break label237;
           }
+          localObject1 = ((JSONArray)localObject1).toString();
         }
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
-        str = "";
+        str1 = str2;
       }
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "saveUserSetting value: %s", new Object[] { str }));
-        }
-        ConfigUtil.a(CTEntryMng.a(this.this$0).getApp(), CTEntryMng.a(this.this$0).getCurrentUin(), "ct_entry_user_setting", str);
-        return;
-        label211:
-        str = localJSONArray.toString();
+      if (QLog.isColorLevel()) {
+        QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "saveUserSetting value: %s", new Object[] { str1 }));
       }
+      ConfigUtil.a(CTEntryMng.a(this.this$0).getApp(), CTEntryMng.a(this.this$0).getCurrentUin(), "ct_entry_user_setting", str1);
+      return;
+      label237:
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.CTEntryMng.3
  * JD-Core Version:    0.7.0.1
  */

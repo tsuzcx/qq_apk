@@ -1,126 +1,123 @@
 package com.tencent.mobileqq.app;
 
+import android.text.TextUtils;
 import com.tencent.avgame.util.AVGameCmdUtil;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
 import com.tencent.biz.qqstory.base.QQStoryHandler;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.armap.ArMapConstant;
+import com.tencent.mobileqq.kandian.glue.businesshandler.api.IRIJHandlerNameApi;
 import com.tencent.mobileqq.nearby.NearbyConstants;
 import com.tencent.mobileqq.pushdialog.SafeBlowHandler;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.MessageConstants;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkHandler;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Cmd2HandlerMap
 {
   private static Object jdField_a_of_type_JavaLangObject = new Object();
-  public static final String a;
+  public static final String a = "com.tencent.mobileqq.app.Cmd2HandlerMap";
   private static Map<String, String[]> jdField_a_of_type_JavaUtilMap;
   private static Map<String, String[]> b;
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = Cmd2HandlerMap.class.getName();
-  }
-  
   public static Map<String, String[]> a()
   {
-    if (jdField_a_of_type_JavaUtilMap == null) {}
-    for (;;)
-    {
+    if (jdField_a_of_type_JavaUtilMap == null) {
       synchronized (jdField_a_of_type_JavaLangObject)
       {
         if (jdField_a_of_type_JavaUtilMap == null)
         {
           jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-          if ((BaseApplicationImpl.sProcessId == 5) || (BaseApplicationImpl.sProcessId == 7))
+          if ((BaseApplicationImpl.sProcessId != 5) && (BaseApplicationImpl.sProcessId != 7))
+          {
+            if (BaseApplicationImpl.sProcessId == 12) {
+              AVGameCmdUtil.a(jdField_a_of_type_JavaUtilMap);
+            } else {
+              e();
+            }
+          }
+          else
           {
             c();
             a();
             b();
           }
         }
-        else
-        {
-          return jdField_a_of_type_JavaUtilMap;
-        }
-        if (BaseApplicationImpl.sProcessId == 12) {
-          AVGameCmdUtil.a(jdField_a_of_type_JavaUtilMap);
-        }
       }
-      e();
     }
+    return jdField_a_of_type_JavaUtilMap;
   }
   
   private static void a()
   {
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x95a", new String[] { ArMapConstant.jdField_a_of_type_JavaLangString });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x95a", new String[] { ArMapConstant.a });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb49", new String[] { ArMapConstant.b });
   }
   
   public static Map<String, String[]> b()
   {
-    if (b == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (b == null)
+    if (b == null) {
+      synchronized (jdField_a_of_type_JavaLangObject)
       {
-        b = new ConcurrentHashMap();
-        d();
+        if (b == null)
+        {
+          b = new ConcurrentHashMap();
+          d();
+        }
       }
-      return b;
     }
+    return b;
   }
   
   private static void b()
   {
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6cf", new String[] { VideoFeedsAppInterface.b });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6a6", new String[] { VideoFeedsAppInterface.c });
-    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.CheckArticleLike", new String[] { VideoFeedsAppInterface.d });
-    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.GetArticleLikeCount", new String[] { VideoFeedsAppInterface.d });
+    jdField_a_of_type_JavaUtilMap.put(((IRIJHandlerNameApi)QRoute.api(IRIJHandlerNameApi.class)).getVideoPlayRecommendHandlerCmd(), new String[] { "VideoPlayRecommendHandler" });
+    jdField_a_of_type_JavaUtilMap.put(((IRIJHandlerNameApi)QRoute.api(IRIJHandlerNameApi.class)).getVideoPlayCountHandlerCmd(), new String[] { "VideoPlayCountHandler." });
+    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.CheckArticleLike", new String[] { "PublicAccountArticleHandler" });
+    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.GetArticleLikeCount", new String[] { "PublicAccountArticleHandler" });
   }
   
   private static void c()
   {
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8dd", new String[] { NearbyConstants.jdField_a_of_type_JavaLangString });
-    jdField_a_of_type_JavaUtilMap.put("EncounterSvc.ReqGetEncounter", new String[] { NearbyConstants.jdField_a_of_type_JavaLangString });
-    jdField_a_of_type_JavaUtilMap.put("RoamClientSvr.GetQualify", new String[] { NearbyConstants.jdField_a_of_type_JavaLangString });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x66b", new String[] { NearbyConstants.jdField_a_of_type_JavaLangString });
-    jdField_a_of_type_JavaUtilMap.put("NeighborSvc.ReqGetPoint", new String[] { NearbyConstants.jdField_a_of_type_JavaLangString });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x686", new String[] { NearbyConstants.jdField_a_of_type_JavaLangString });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c7_0", new String[] { NearbyConstants.jdField_a_of_type_JavaLangString });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4f0_0", new String[] { NearbyConstants.jdField_a_of_type_JavaLangString });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6be", new String[] { NearbyConstants.jdField_a_of_type_JavaLangString });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xafc_1", new String[] { NearbyConstants.jdField_a_of_type_JavaLangString });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xafc_2", new String[] { NearbyConstants.jdField_a_of_type_JavaLangString });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xafc_3", new String[] { NearbyConstants.jdField_a_of_type_JavaLangString });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xada_0", new String[] { NearbyConstants.jdField_a_of_type_JavaLangString });
-    jdField_a_of_type_JavaUtilMap.put("MQ_nearby_sso_proxy.0x667_1", new String[] { NearbyConstants.jdField_a_of_type_JavaLangString });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8dd", new String[] { NearbyConstants.a });
+    jdField_a_of_type_JavaUtilMap.put("EncounterSvc.ReqGetEncounter", new String[] { NearbyConstants.a });
+    jdField_a_of_type_JavaUtilMap.put("RoamClientSvr.GetQualify", new String[] { NearbyConstants.a });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x66b", new String[] { NearbyConstants.a });
+    jdField_a_of_type_JavaUtilMap.put("NeighborSvc.ReqGetPoint", new String[] { NearbyConstants.a });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x686", new String[] { NearbyConstants.a });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c7_0", new String[] { NearbyConstants.a });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4f0_0", new String[] { NearbyConstants.a });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6be", new String[] { NearbyConstants.a });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xafc_1", new String[] { NearbyConstants.a });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xafc_2", new String[] { NearbyConstants.a });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xafc_3", new String[] { NearbyConstants.a });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xada_0", new String[] { NearbyConstants.a });
+    jdField_a_of_type_JavaUtilMap.put("MQ_nearby_sso_proxy.0x667_1", new String[] { NearbyConstants.a });
+    jdField_a_of_type_JavaUtilMap.put("MQ_nearby_sso_proxy.0x3e8_1", new String[] { NearbyConstants.a });
     jdField_a_of_type_JavaUtilMap.put("MultibusidURLSvr.HeadUrlReq", new String[] { NearbyConstants.b });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x74b", new String[] { BusinessHandlerFactory.DYNAMIC_AVATAR_HANDLER });
   }
   
   private static void d()
   {
-    b.put("CameraModuleSvc.GetRecommandTextByEmotion", new String[] { PeakAppInterface.d });
-    b.put("CameraModuleSvc.GetTextValidStatus", new String[] { PeakAppInterface.d });
-    b.put("CameraModuleSvc.GetCompressedCategoryMaterialV2", new String[] { PeakAppInterface.d });
-    b.put("CameraModuleSvc.GetPlayShowCatMatTree", new String[] { PeakAppInterface.d });
-    b.put("CameraModuleSvc.GetCameraConfig", new String[] { PeakAppInterface.d });
-    b.put("CameraModuleSvc.GetOnlineUserNum", new String[] { PeakAppInterface.d });
-    b.put("CameraModuleSvc.GetFontData", new String[] { PeakAppInterface.d });
-    b.put("CameraModuleSvc.GetImgValidStatus", new String[] { PeakAppInterface.d });
-    b.put("CameraModuleSvc.GetBulkImageClassify", new String[] { PeakAppInterface.d });
+    b.put("ShadowBackendSvc.GetRecommandTextByEmotion", new String[] { PeakAppInterface.d });
+    b.put("ShadowBackendSvc.GetTextValidStatus", new String[] { PeakAppInterface.d });
+    b.put("ShadowBackendSvc.GetCategoryMaterial", new String[] { PeakAppInterface.d });
+    b.put("ShadowBackendSvc.GetPlayShowCatMatTree", new String[] { PeakAppInterface.d });
+    b.put("ShadowBackendSvc.GetCameraConfig", new String[] { PeakAppInterface.d });
+    b.put("ShadowBackendSvc.GetOnlineUserNum", new String[] { PeakAppInterface.d });
+    b.put("ShadowBackendSvc.GetFontData", new String[] { PeakAppInterface.d });
+    b.put("ShadowBackendSvc.GetImgValidStatus", new String[] { PeakAppInterface.d });
+    b.put("ShadowBackendSvc.GetBulkImageClassify", new String[] { PeakAppInterface.d });
     b.put("ShadowBackendSvc.GetCircleCatMatTree", new String[] { PeakAppInterface.e });
     b.put("ShadowBackendSvc.GetBigShowRecommend", new String[] { PeakAppInterface.e });
   }
   
   private static void e()
   {
-    jdField_a_of_type_JavaUtilMap.put("CameraModuleSvc.GetCompressedCategoryMaterialV2", new String[] { BusinessHandlerFactory.CAMERA_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("CameraModuleSvc.GetPlayShowCatMatTree", new String[] { BusinessHandlerFactory.CAMERA_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("CameraModuleSvc.GetCameraConfig", new String[] { BusinessHandlerFactory.CAMERA_HANDLER });
+    jdField_a_of_type_JavaUtilMap.put("ShadowBackendSvc.GetCategoryMaterial", new String[] { "com.tencent.aelight.camera.ae.config.CameraDataServiceHandler" });
+    jdField_a_of_type_JavaUtilMap.put("ShadowBackendSvc.GetPlayShowCatMatTree", new String[] { "com.tencent.aelight.camera.ae.config.CameraDataServiceHandler" });
+    jdField_a_of_type_JavaUtilMap.put("ShadowBackendSvc.GetCameraConfig", new String[] { "com.tencent.aelight.camera.ae.config.CameraDataServiceHandler" });
     jdField_a_of_type_JavaUtilMap.put("AccostSvc.SvrMsg", new String[] { BusinessHandlerFactory.MESSAGE_HANDLER, BusinessHandlerFactory.CARD_HANLDER });
     jdField_a_of_type_JavaUtilMap.put("AccostSvc.ClientMsg", new String[] { BusinessHandlerFactory.MESSAGE_HANDLER, BusinessHandlerFactory.CARD_HANLDER });
     jdField_a_of_type_JavaUtilMap.put("AccostSvc.ReqDeleteBlackList", new String[] { BusinessHandlerFactory.MESSAGE_HANDLER });
@@ -200,9 +197,7 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("QQRTCSvc.share_backflow_check_group_can_join", new String[] { BusinessHandlerFactory.QAV_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("QQRTCSvc.group_video_share_backflow_verify", new String[] { BusinessHandlerFactory.QAV_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("QQRTCSvc.group_video_terminate_msg", new String[] { BusinessHandlerFactory.QAV_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5e1_8", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("friendlist.delFriend", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.GetAutoInfoReq", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("friendlist.SetGroupReq", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("friendlist.GetLastLoginInfoReq", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("friendlist.getFriendGroupList", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
@@ -210,14 +205,12 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("friendlist.MovGroupMemReq", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("friendlist.GetSimpleOnlineFriendInfoReq", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("BumpSvc.ReqComfirmContactFriend", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.addFriend", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x777", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc34_0", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc34_1", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc83", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc85", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("ProfileService.GetSimpleInfo", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER, BusinessHandlerFactory.WEREWOLVES_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.getUserAddFriendSetting", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d1_0", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4fc_30", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("DevLockAuthSvc.RecommendAuth", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
@@ -227,12 +220,10 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("SummaryCard.ReqCondSearch", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x972_5", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("AvatarInfoSvr.QQHeadUrlReq", new String[] { "com.tencent.mobileqq.avatar.handler.AvatarHandler" });
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.ReqGetSettings", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("StatSvc.register", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("ProfileService.GetRichSig", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("StatSvc.DelDevLoginInfo", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("StatSvc.BindUin", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.ReqSetSettings", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("StatSvc.SvcReqKikOut", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("ProfileService.CheckUpdateReq", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("ProfileService.ChangeFriendName", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
@@ -245,7 +236,6 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("friendlist.GetOnlineInfoReq", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x49d_107", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x476_146", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x476_147", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x491_107", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x490_107", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7c4_0", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
@@ -261,103 +251,12 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_19", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x77c", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_21", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x829_1", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc26_0", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc36_0", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc35_0", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_21", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc26_1", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.ReqBatchProcess", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8c9_2", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x935_9", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x935_10", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x935_20", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x935_23", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xded_1", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x88d_0", new String[] { BusinessHandlerFactory.TROOP_HANDLER, BusinessHandlerFactory.TROOP_INFO_HANDLER, BusinessHandlerFactory.HOT_CHAT_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x88d_7", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x88d_75", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8b8_1", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x88d_10", new String[] { BusinessHandlerFactory.TROOP_INFO_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.GroupMngReq", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.GetMultiTroopInfoReq", new String[] { BusinessHandlerFactory.TROOP_LIST_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.GetTroopListReqV2", new String[] { BusinessHandlerFactory.TROOP_LIST_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.GetTroopAppointRemarkReq", new String[] { BusinessHandlerFactory.TROOP_MEMBER_INFO_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x899_0", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x899_9", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.ModifyGroupInfoReq", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.getTroopMemberList", new String[] { BusinessHandlerFactory.TROOP_MEMBER_INFO_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x42d_4", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x903_2", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x91a_1", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x91c_1", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x91b_1", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("group_member_card.get_group_member_card_info", new String[] { BusinessHandlerFactory.TROOP_MEMBER_INFO_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x406_3", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x89e_0", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.getTroopRemark", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x88d_1", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER, BusinessHandlerFactory.TROOP_HANDLER, BusinessHandlerFactory.HOT_CHAT_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8a0_0", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.ModifyGroupCardReq", new String[] { BusinessHandlerFactory.TROOP_MEMBER_INFO_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8bb_2", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("group_anonymous_generate_nick.group", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("qunVideoOnlineLevel.0x3fe_0", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8bb_9", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8bb_7", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8b4", new String[] { BusinessHandlerFactory.TROOP_HANDLER, BusinessHandlerFactory.BIZ_TROOP_HANDLER, BusinessHandlerFactory.NEARBY_CARD_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_3", new String[] { BusinessHandlerFactory.TROOP_HANDLER, BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x787_0", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x787_1", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8a7_0", new String[] { BusinessHandlerFactory.TROOP_HANDLER, BusinessHandlerFactory.HOT_CHAT_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8ca_2", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x787_11", new String[] { BusinessHandlerFactory.TROOP_MEMBER_INFO_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x711_127", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9fa", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa80_0", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6b6", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6b5", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6c2", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6c3", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa8d", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ba_4", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ba_7", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6d1_3", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_86", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_94", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("SHomeworkSvc.querycard", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("SHomeworkSvc.modifycard", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("NearbyExt.query_user_follow_status", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put(TroopHandler.Oidb0xb36.jdField_a_of_type_JavaLangString, new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("HwSvc.send_msg", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x928", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("qunVideoGray.0x3fb_0", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa2a_0", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa2a_1", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa2a_2", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa2a_6", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("oidbSvc.0x783_15", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd71", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xaf6_0", new String[] { BusinessHandlerFactory.TROOP_MEMBER_INFO_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8f9_14", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd40_0", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xce5_3", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xce5_0", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xce5_1", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xce5_6", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd22_1", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd22_2", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd23_2", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("oidbSvc.0xe3a", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("oidbSvc.0xe3b", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("oidbSvc.0xe72", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xebc", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xede_1", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xef0_1", new String[] { BusinessHandlerFactory.TROOP_INFO_EXT_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xef1_2", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xeb7", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe2e_1", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe83", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvcTcp.0xece_1", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8b4", new String[] { BusinessHandlerFactory.NEARBY_CARD_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("VisitorSvc.ReqFavorite", new String[] { BusinessHandlerFactory.CARD_HANLDER, BusinessHandlerFactory.NEARBY_CARD_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8e6_1", new String[] { BusinessHandlerFactory.NEARBY_CARD_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8e7_1", new String[] { BusinessHandlerFactory.NEARBY_CARD_HANDLER });
@@ -374,8 +273,6 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("SummaryCard.SetLabel", new String[] { BusinessHandlerFactory.CARD_HANLDER });
     jdField_a_of_type_JavaUtilMap.put("SummaryCard.LikeIt", new String[] { BusinessHandlerFactory.CARD_HANLDER });
     jdField_a_of_type_JavaUtilMap.put("SQQzoneSvc.getCover", new String[] { BusinessHandlerFactory.CARD_HANLDER, BusinessHandlerFactory.NEARBY_CARD_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("SQQzoneSvc.getPhotoWall", new String[] { BusinessHandlerFactory.CARD_HANLDER });
-    jdField_a_of_type_JavaUtilMap.put("SQQzoneSvc.delPhotoWall", new String[] { BusinessHandlerFactory.CARD_HANLDER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x480_9", new String[] { BusinessHandlerFactory.QQSTORY_HANDLER, BusinessHandlerFactory.NEARBY_RELEVANT_HANDLER, BusinessHandlerFactory.GET_ROAMMESSAGE_HANDLER, BusinessHandlerFactory.REDTOUCH_HANDLER, BusinessHandlerFactory.FLASH_CHAT_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_9", new String[] { BusinessHandlerFactory.QQSTORY_HANDLER, BusinessHandlerFactory.CARD_HANLDER, BusinessHandlerFactory.NEARBY_RELEVANT_HANDLER, BusinessHandlerFactory.GET_ROAMMESSAGE_HANDLER, BusinessHandlerFactory.FLASH_CHAT_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ea_2", new String[] { BusinessHandlerFactory.CARD_HANLDER });
@@ -514,58 +411,18 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("SpecialRemind.Service", new String[] { BusinessHandlerFactory.SPECIAL_CARE_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("ClubContentUpdate.Req", new String[] { BusinessHandlerFactory.CLUBCONTENTUPDATE_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("apollo_content_update.Req", new String[] { BusinessHandlerFactory.APOLLO_CONTENT_UPDATE_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7a1_0", new String[] { BusinessHandlerFactory.SUBACCOUNT_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7a0_0", new String[] { BusinessHandlerFactory.SUBACCOUNT_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7a2_0", new String[] { BusinessHandlerFactory.SUBACCOUNT_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("SsoSnsSession.Cmd0x3_SubCmd0x3_FuncDelBlockList", new String[] { BusinessHandlerFactory.SHIELD_LIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("SsoSnsSession.Cmd0x3_SubCmd0x1_FuncGetBlockList", new String[] { BusinessHandlerFactory.SHIELD_LIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("SsoSnsSession.Cmd0x3_SubCmd0x2_FuncAddBlockList", new String[] { BusinessHandlerFactory.SHIELD_LIST_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("HwSvc.assign_homework", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("HwSvc.submit_homework", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("HwSvc.get_homework_info", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("GroupSvc.JoinGroupLink", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("GroupOpen.CheckJsApiToken", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x53c_2", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("mq_crm.get_menu", new String[] { BusinessHandlerFactory.ENTERPRISEQQ_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("mq_crm.send_key", new String[] { BusinessHandlerFactory.ENTERPRISEQQ_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("EqqAccountSvc.get_eqq_list", new String[] { BusinessHandlerFactory.ENTERPRISEQQ_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("CrmSvcEx.ReportLbs", new String[] { BusinessHandlerFactory.ENTERPRISEQQ_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x89b_1", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8a1_0", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OpenGroupSvc.GroupActivityInfo", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("GroupFileAppSvr.DelFile", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("GroupFileAppSvr.GetFileInfo", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("GroupFileAppSvr.GetFileSearch", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER, BusinessHandlerFactory.QAV_WT_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("CommunityForum.GetLatestPost", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8cf_6", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8d3_1", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("GroupActivity.GetList", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x78f_1", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("GroupFileAppSvr.GetFileList", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_1", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x88c_1", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("GroupFileAppSvr.GetFileListV2", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x852_35", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x580_1", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x852_48", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x89a_0", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER, BusinessHandlerFactory.HOT_CHAT_HANDLER, BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x89a_8", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x570_8", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8fc_20", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xf16_1", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("VideoShareSrv.get_video_src", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x568_21", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x568_22", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_3", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER, BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("GrpMemberLBS.ReportLBS", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8b4", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER, BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("ModifyExamine.GetModifyTimes", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x874_1", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x904_1", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xef6_1", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xef7_1", new String[] { BusinessHandlerFactory.BIZ_TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d4_0", new String[] { BusinessHandlerFactory.STRANGER_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d2_0", new String[] { BusinessHandlerFactory.STRANGER_HANDLER });
+    jdField_a_of_type_JavaUtilMap.put("GroupFileAppSvr.DelFile", new String[] { BusinessHandlerFactory.TROOP_FILE_HANDLER });
+    jdField_a_of_type_JavaUtilMap.put("GroupFileAppSvr.GetFileInfo", new String[] { BusinessHandlerFactory.TROOP_FILE_HANDLER });
+    jdField_a_of_type_JavaUtilMap.put("GroupFileAppSvr.GetFileSearch", new String[] { BusinessHandlerFactory.TROOP_FILE_HANDLER, BusinessHandlerFactory.QAV_WT_HANDLER });
+    jdField_a_of_type_JavaUtilMap.put("GroupFileAppSvr.GetFileList", new String[] { BusinessHandlerFactory.TROOP_FILE_HANDLER });
+    jdField_a_of_type_JavaUtilMap.put("GroupFileAppSvr.GetFileListV2", new String[] { BusinessHandlerFactory.TROOP_FILE_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("ClubInfoSvc.queryPrivExt", new String[] { BusinessHandlerFactory.VIPINFO_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("ClubInfoSvc.guanjiaReport", new String[] { BusinessHandlerFactory.VIPINFO_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("VipCustom.GetCustomOnlineStatus", new String[] { BusinessHandlerFactory.VIPINFO_HANDLER });
@@ -593,19 +450,6 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("NearFieldDiscussSvr.ReqGetList", new String[] { BusinessHandlerFactory.NEARFIELD_DISCUSS_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("NearFieldDiscussSvr.ReqExit", new String[] { BusinessHandlerFactory.NEARFIELD_DISCUSS_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("NearFieldDiscussSvr.NotifyList", new String[] { BusinessHandlerFactory.NEARFIELD_DISCUSS_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8a4", new String[] { BusinessHandlerFactory.HOT_CHAT_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8a2", new String[] { BusinessHandlerFactory.HOT_CHAT_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x89b_3", new String[] { BusinessHandlerFactory.HOT_CHAT_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x823_0", new String[] { BusinessHandlerFactory.HOT_CHAT_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8ab", new String[] { BusinessHandlerFactory.HOT_CHAT_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8b3", new String[] { BusinessHandlerFactory.HOT_CHAT_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8b2", new String[] { BusinessHandlerFactory.HOT_CHAT_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x81f", new String[] { BusinessHandlerFactory.HOT_CHAT_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa81", new String[] { BusinessHandlerFactory.HOT_CHAT_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x435", new String[] { BusinessHandlerFactory.HOT_CHAT_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa8b", new String[] { BusinessHandlerFactory.HOT_CHAT_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8a3_7", new String[] { BusinessHandlerFactory.HOT_CHAT_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x897_0", new String[] { BusinessHandlerFactory.HOT_CHAT_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("hrtxformqq.getUsrSimpleInfo", new String[] { BusinessHandlerFactory.BMQQ_BUSINESS_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("QQWalletPayAuthServer.checkChangePwdAuth", new String[] { BusinessHandlerFactory.QWALLET_AUTH_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("WalletGestureSvc.GetPassword", new String[] { BusinessHandlerFactory.QWALLET_AUTH_HANDLER });
@@ -626,11 +470,6 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x42e_3", new String[] { BusinessHandlerFactory.GET_ROAMMESSAGE_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5cf_0", new String[] { BusinessHandlerFactory.MESSAGE_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5cf_1", new String[] { BusinessHandlerFactory.MESSAGE_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9ab_1", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("GroupOpen.ReadAppList", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("GroupOpen.SortAppList", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("GroupOpen.ClearRedPoint", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_96", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c9_0", new String[] { BusinessHandlerFactory.NEARBY_CARD_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c9_1", new String[] { BusinessHandlerFactory.NEARBY_CARD_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb5b", new String[] { BusinessHandlerFactory.NEARBY_CARD_HANDLER });
@@ -658,7 +497,7 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ea_6", new String[] { BusinessHandlerFactory.NEARBY_CARD_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ea_7", new String[] { BusinessHandlerFactory.NEARBY_CARD_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("MQKanDianSvc.0x001", new String[] { BusinessHandlerFactory.GLOBAL_SEARCH_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put(VIPAioSendHandler.jdField_a_of_type_JavaLangString, new String[] { BusinessHandlerFactory.VIP_AIO_SEND_HANDLER });
+    jdField_a_of_type_JavaUtilMap.put(VIPAioSendHandler.a, new String[] { BusinessHandlerFactory.VIP_AIO_SEND_HANDLER });
     jdField_a_of_type_JavaUtilMap.put(VIPAioSendHandler.b, new String[] { BusinessHandlerFactory.VIP_AIO_SEND_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x59f", new String[] { BusinessHandlerFactory.LOGIN_WELCOME_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.WpaAssignKfext", new String[] { BusinessHandlerFactory.QIDIAN_HANDLER });
@@ -703,12 +542,6 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0x6f5", new String[] { BusinessHandlerFactory.REDTOUCH_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x77d_0", new String[] { BusinessHandlerFactory.BABY_Q_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8db_0", new String[] { BusinessHandlerFactory.BABY_Q_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OlympicTorchSvc.ReqGetTorchAward", new String[] { BusinessHandlerFactory.OLYMPIC_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6f0", new String[] { BusinessHandlerFactory.OLYMPIC_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OlympicTorchSvc.ReqDeliverTorch", new String[] { BusinessHandlerFactory.OLYMPIC_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OlympicTorchSvc.ReqExitDeliverTorch", new String[] { BusinessHandlerFactory.OLYMPIC_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OlympicTorchSvc.ReqClearTorchFlag", new String[] { BusinessHandlerFactory.OLYMPIC_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_40525", new String[] { BusinessHandlerFactory.OLYMPIC_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x74b", new String[] { BusinessHandlerFactory.DYNAMIC_AVATAR_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8f0", new String[] { BusinessHandlerFactory.PROFILE_PERSONALITY_LABEL });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x91d", new String[] { BusinessHandlerFactory.PROFILE_PERSONALITY_LABEL });
@@ -716,7 +549,7 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x90c", new String[] { BusinessHandlerFactory.PROFILE_PERSONALITY_LABEL });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8f3", new String[] { BusinessHandlerFactory.PROFILE_PERSONALITY_LABEL });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8f1", new String[] { BusinessHandlerFactory.PROFILE_PERSONALITY_LABEL });
-    jdField_a_of_type_JavaUtilMap.put(QQStoryHandler.jdField_a_of_type_JavaLangString, new String[] { BusinessHandlerFactory.QQSTORY_HANDLER });
+    jdField_a_of_type_JavaUtilMap.put(QQStoryHandler.a, new String[] { BusinessHandlerFactory.QQSTORY_HANDLER });
     jdField_a_of_type_JavaUtilMap.put(QQStoryHandler.c, new String[] { BusinessHandlerFactory.QQSTORY_HANDLER });
     jdField_a_of_type_JavaUtilMap.put(QQStoryHandler.e, new String[] { BusinessHandlerFactory.QQSTORY_HANDLER });
     jdField_a_of_type_JavaUtilMap.put(QQStoryHandler.b, new String[] { BusinessHandlerFactory.QQSTORY_HANDLER });
@@ -753,15 +586,8 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("DynamicScDiscovery.1", new String[] { BusinessHandlerFactory.UNITE_SEARCH_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("qb_discovery.1", new String[] { BusinessHandlerFactory.UNITE_SEARCH_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd78_0", new String[] { BusinessHandlerFactory.UNITE_SEARCH_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x990", new String[] { BusinessHandlerFactory.OCR_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x987_0", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("ReadDiyAddonInfo.1", new String[] { BusinessHandlerFactory.DIY_PENDANT_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("videohub_group_notify_read.cmd0x2323", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x62c_4", new String[] { BusinessHandlerFactory.HOT_CHAT_HANDLER });
     jdField_a_of_type_JavaUtilMap.put(QQStoryHandler.n, new String[] { BusinessHandlerFactory.QQSTORY_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb01", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xaf4_1", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb70_1", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("TimDocSvc.GetPadRightInfo", new String[] { BusinessHandlerFactory.TEAM_WORK_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("TimDocSvc.SetPadRightInfo", new String[] { BusinessHandlerFactory.TEAM_WORK_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("TimDocSvc.GetSharedPadList", new String[] { BusinessHandlerFactory.TEAM_WORK_HANDLER });
@@ -769,7 +595,6 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbab_2", new String[] { BusinessHandlerFactory.TEAM_WORK_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbab_3", new String[] { BusinessHandlerFactory.TEAM_WORK_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbab_4", new String[] { BusinessHandlerFactory.TEAM_WORK_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb14", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0xb67", new String[] { BusinessHandlerFactory.CONFESS_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("NowGetRecordInfoSvr.get_record_info", new String[] { BusinessHandlerFactory.NOW_PROXY_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0xbc3", new String[] { BusinessHandlerFactory.CONFESS_HANDLER });
@@ -779,15 +604,13 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc33_42220", new String[] { BusinessHandlerFactory.CARD_HANLDER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_22", new String[] { BusinessHandlerFactory.CARD_HANLDER, BusinessHandlerFactory.CARD_SETTING_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_15", new String[] { BusinessHandlerFactory.CARD_HANLDER });
-    jdField_a_of_type_JavaUtilMap.put(GroupTeamWorkHandler.b, new String[] { BusinessHandlerFactory.GROUP_TEAM_WORK_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put(GroupTeamWorkHandler.d, new String[] { BusinessHandlerFactory.GROUP_TEAM_WORK_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put(GroupTeamWorkHandler.f, new String[] { BusinessHandlerFactory.GROUP_TEAM_WORK_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put(GroupTeamWorkHandler.e, new String[] { BusinessHandlerFactory.GROUP_TEAM_WORK_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put(GroupTeamWorkHandler.g, new String[] { BusinessHandlerFactory.GROUP_TEAM_WORK_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put(GroupTeamWorkHandler.h, new String[] { BusinessHandlerFactory.GROUP_TEAM_WORK_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put(GroupTeamWorkHandler.c, new String[] { BusinessHandlerFactory.GROUP_TEAM_WORK_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0xc6c", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0xcca", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xae9_1", new String[] { BusinessHandlerFactory.GROUP_TEAM_WORK_HANDLER });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xaef_1", new String[] { BusinessHandlerFactory.GROUP_TEAM_WORK_HANDLER });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xaee", new String[] { BusinessHandlerFactory.GROUP_TEAM_WORK_HANDLER });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xaea_1", new String[] { BusinessHandlerFactory.GROUP_TEAM_WORK_HANDLER });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xaf3_1", new String[] { BusinessHandlerFactory.GROUP_TEAM_WORK_HANDLER });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xaf3_2", new String[] { BusinessHandlerFactory.GROUP_TEAM_WORK_HANDLER });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xae9_2", new String[] { BusinessHandlerFactory.GROUP_TEAM_WORK_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc7a", new String[] { BusinessHandlerFactory.APPLET_PUSH_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc76", new String[] { BusinessHandlerFactory.APPLET_PUSH_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc96", new String[] { BusinessHandlerFactory.APPLET_PUSH_HANDLER });
@@ -804,13 +627,15 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("PluginConfig.dynamic_plugin", new String[] { BusinessHandlerFactory.COMMPLGUGIN_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd8a", new String[] { BusinessHandlerFactory.CARD_HANLDER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_42315", new String[] { BusinessHandlerFactory.CARD_HANLDER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0x758", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_SimpleUI", new String[] { BusinessHandlerFactory.SIMPLE_UI_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xed1_SimpleUI", new String[] { BusinessHandlerFactory.SIMPLE_UI_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd45", new String[] { BusinessHandlerFactory.INTIMATE_INFO_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcf4_1", new String[] { BusinessHandlerFactory.INTIMATE_INFO_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd4a", new String[] { BusinessHandlerFactory.INTIMATE_INFO_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd4b", new String[] { BusinessHandlerFactory.COLUMN_SUBSCRIBE_HANDLER });
+    String str = ((IRIJHandlerNameApi)QRoute.api(IRIJHandlerNameApi.class)).getVideoColumnSubscribeHandlerCmd();
+    if (!TextUtils.isEmpty(str)) {
+      jdField_a_of_type_JavaUtilMap.put(str, new String[] { BusinessHandlerFactory.COLUMN_SUBSCRIBE_HANDLER });
+    }
     jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.get_latest_playing_state", new String[] { BusinessHandlerFactory.LISTEN_TOGETHER_HANDLER, BusinessHandlerFactory.TOGETHER_OPERATOR_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.create_room", new String[] { BusinessHandlerFactory.LISTEN_TOGETHER_HANDLER, BusinessHandlerFactory.TOGETHER_OPERATOR_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.heartbeat", new String[] { BusinessHandlerFactory.LISTEN_TOGETHER_HANDLER, BusinessHandlerFactory.TOGETHER_OPERATOR_HANDLER });
@@ -826,10 +651,6 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("QQLBSShareSvc.assembly_point_operation", new String[] { BusinessHandlerFactory.LOCATION_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("QQLBSShareSvc.room_query", new String[] { BusinessHandlerFactory.LOCATION_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd79", new String[] { BusinessHandlerFactory.PARTICIPLE_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0xd86", new String[] { BusinessHandlerFactory.NEW_FRIEND_VERIFICATION_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0xd83", new String[] { BusinessHandlerFactory.NEW_FRIEND_VERIFICATION_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0xd82", new String[] { BusinessHandlerFactory.NEW_FRIEND_VERIFICATION_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0xd7e", new String[] { BusinessHandlerFactory.NEW_FRIEND_VERIFICATION_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd69", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd72", new String[] { BusinessHandlerFactory.FRIENDLIST_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcdd", new String[] { BusinessHandlerFactory.MSG_BACK_UP_HANDLER });
@@ -844,36 +665,13 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("NearFieldFriendSvr.ReqEnter", new String[] { BusinessHandlerFactory.FACE2FACE_ADD_FRIEND_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("NearFieldFriendSvr.ReqExit", new String[] { BusinessHandlerFactory.FACE2FACE_ADD_FRIEND_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("NearFieldFriendSvr.ReqHeartBeat", new String[] { BusinessHandlerFactory.FACE2FACE_ADD_FRIEND_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe07_0", new String[] { BusinessHandlerFactory.PIC_NEW_OCR_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe82", new String[] { BusinessHandlerFactory.TROOP_SHORTCUTBAR_HANDLE });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe0e", new String[] { BusinessHandlerFactory.TROOP_SHORTCUTBAR_HANDLE });
-    jdField_a_of_type_JavaUtilMap.put("PushService.SetToken", new String[] { BusinessHandlerFactory.ONLINE_STATUS_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("StatSvc.SetStatusFromClient", new String[] { BusinessHandlerFactory.ONLINE_STATUS_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("StatSvc.SetBusinessInfo", new String[] { BusinessHandlerFactory.ONLINE_STATUS_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("StatSvc.SyncBusinessInfo", new String[] { BusinessHandlerFactory.ONLINE_STATUS_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("StatSvc.SetSong", new String[] { BusinessHandlerFactory.ONLINE_STATUS_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("ImStatus.ReqPushStatus", new String[] { BusinessHandlerFactory.ONLINE_STATUS_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe59", new String[] { BusinessHandlerFactory.ONLINE_STATUS_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe27", new String[] { BusinessHandlerFactory.QQ_DAILY_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd68", new String[] { BusinessHandlerFactory.FAV_ONLINE_FILE_FORWARD_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("DynamicPluginSvc.GetList", new String[] { BusinessHandlerFactory.COMMPLGUGIN_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("DynamicPluginSvc.SetList", new String[] { BusinessHandlerFactory.COMMPLGUGIN_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe5f_2", new String[] { BusinessHandlerFactory.CARD_HANLDER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6e1_1", new String[] { BusinessHandlerFactory.TOFUMSG_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("qqvgame.RoomManager-RoomCreate", new String[] { BusinessHandlerFactory.AV_GAME_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("qqvgame.RoomManager-RoomEnter", new String[] { BusinessHandlerFactory.AV_GAME_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("qqvgame.RoomManager-RoomLeave", new String[] { BusinessHandlerFactory.AV_GAME_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("qqvgame.RoomManager-RoomBatchForGroup", new String[] { BusinessHandlerFactory.AV_GAME_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("qqvgame.ResultShare-FileUpload", new String[] { BusinessHandlerFactory.AV_GAME_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("qqvgame.Share-GetShareLink", new String[] { BusinessHandlerFactory.AV_GAME_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("qqvgame.Share-InviteBackflowCheck", new String[] { BusinessHandlerFactory.AV_GAME_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("qqvgame.RoomManager-RoomDestroy", new String[] { BusinessHandlerFactory.AV_GAME_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("qqvgame.Operation-GetGameLobbyInfo", new String[] { BusinessHandlerFactory.AV_GAME_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("qqvgame.StrangerMatch-AddMatchUser", new String[] { BusinessHandlerFactory.AV_GAME_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("qqvgame.StrangerMatch-DelMatchUser", new String[] { BusinessHandlerFactory.AV_GAME_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("qqvgame.PKReserve-Reserve", new String[] { BusinessHandlerFactory.AV_GAME_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("qqvgame.StrangerMatchV2-AddMatchUser", new String[] { BusinessHandlerFactory.AV_GAME_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("qqvgame.StrangerMatchV2-DelMatchUser", new String[] { BusinessHandlerFactory.AV_GAME_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x587_74", new String[] { BusinessHandlerFactory.CARD_SETTING_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe8c", new String[] { BusinessHandlerFactory.ONE_WAY_FRIEND_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe9c_1", new String[] { BusinessHandlerFactory.RELATED_EMOTION_HANDLER });
@@ -887,7 +685,6 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_42482", new String[] { BusinessHandlerFactory.COMMPLGUGIN_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_42482", new String[] { BusinessHandlerFactory.COMMPLGUGIN_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("RedTouchSvc.BatchSetSetting", new String[] { BusinessHandlerFactory.COMMPLGUGIN_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("SelfStudyRoomForQQ.17101", new String[] { BusinessHandlerFactory.STUDY_ROOM_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_troopnotifycation", new String[] { BusinessHandlerFactory.TROOP_NOTIFICATION_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x668", new String[] { BusinessHandlerFactory.TROOP_NOTIFICATION_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvcTcp.0xe89_0", new String[] { BusinessHandlerFactory.WRITE_TOGETHER_HANDLER });
@@ -896,30 +693,20 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe95", new String[] { BusinessHandlerFactory.WRITE_TOGETHER_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe94", new String[] { BusinessHandlerFactory.WRITE_TOGETHER_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xed3", new String[] { BusinessHandlerFactory.PAI_YI_PAI_HANDLER });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xf51", new String[] { BusinessHandlerFactory.PAI_YI_PAI_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_fst", new String[] { BusinessHandlerFactory.FILE_ASSIST_TOP });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0x587_fst", new String[] { BusinessHandlerFactory.FILE_ASSIST_TOP });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xecc_0", new String[] { BusinessHandlerFactory.SECURITY_TOP_BAR });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x59f_newer_guide_banner", new String[] { BusinessHandlerFactory.NEWER_GUIDE_BANNER_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_common", new String[] { BusinessHandlerFactory.PROFILE_COMMON_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x587_common", new String[] { BusinessHandlerFactory.PROFILE_COMMON_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xf12", new String[] { BusinessHandlerFactory.PROFILE_GUIDE_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xf13", new String[] { BusinessHandlerFactory.PROFILE_GUIDE_HANDLER });
     jdField_a_of_type_JavaUtilMap.put("QQLive.GetLiveGroupTips", new String[] { BusinessHandlerFactory.ILIVE_COMMON_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xefe", new String[] { BusinessHandlerFactory.FILTER_MSG_BOX_HANDLER, SafeBlowHandler.jdField_a_of_type_JavaLangString });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0xd51", new String[] { BusinessHandlerFactory.NEW_FRIEND_NOTIFY_POKE_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x88d_1_2", new String[] { BusinessHandlerFactory.TROOP_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xf00_3", new String[] { BusinessHandlerFactory.TROOP_ESSENCE_MSG_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xeac_1", new String[] { BusinessHandlerFactory.TROOP_ESSENCE_MSG_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xeac_2", new String[] { BusinessHandlerFactory.TROOP_ESSENCE_MSG_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xeac_4", new String[] { BusinessHandlerFactory.TROOP_ESSENCE_MSG_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xf10", new String[] { BusinessHandlerFactory.TROOP_ESSENCE_MSG_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x480_9_IMCore", new String[] { BusinessHandlerFactory.PROFILE_CARD_HANDLER });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_9_IMCore", new String[] { BusinessHandlerFactory.PROFILE_CARD_HANDLER });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xefe", new String[] { BusinessHandlerFactory.FILTER_MSG_BOX_HANDLER, SafeBlowHandler.a });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.ReqGetSettings", new String[] { BusinessHandlerFactory.TROOP_ROAMSETTING_HANDLER });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.ReqSetSettings", new String[] { BusinessHandlerFactory.TROOP_ROAMSETTING_HANDLER });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.Cmd2HandlerMap
  * JD-Core Version:    0.7.0.1
  */

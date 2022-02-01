@@ -31,7 +31,19 @@ public final class UIntRange
   
   public boolean equals(@Nullable Object paramObject)
   {
-    return ((paramObject instanceof UIntRange)) && (((isEmpty()) && (((UIntRange)paramObject).isEmpty())) || ((getFirst() == ((UIntRange)paramObject).getFirst()) && (getLast() == ((UIntRange)paramObject).getLast())));
+    if ((paramObject instanceof UIntRange)) {
+      if ((!isEmpty()) || (!((UIntRange)paramObject).isEmpty()))
+      {
+        int i = getFirst();
+        paramObject = (UIntRange)paramObject;
+        if ((i != paramObject.getFirst()) || (getLast() != paramObject.getLast())) {}
+      }
+      else
+      {
+        return true;
+      }
+    }
+    return false;
   }
   
   @NotNull
@@ -51,7 +63,7 @@ public final class UIntRange
     if (isEmpty()) {
       return -1;
     }
-    return 31 * getFirst() + getLast();
+    return getFirst() * 31 + getLast();
   }
   
   public boolean isEmpty()
@@ -62,12 +74,16 @@ public final class UIntRange
   @NotNull
   public String toString()
   {
-    return UInt.toString-impl(getFirst()) + ".." + UInt.toString-impl(getLast());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(UInt.toString-impl(getFirst()));
+    localStringBuilder.append("..");
+    localStringBuilder.append(UInt.toString-impl(getLast()));
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.ranges.UIntRange
  * JD-Core Version:    0.7.0.1
  */

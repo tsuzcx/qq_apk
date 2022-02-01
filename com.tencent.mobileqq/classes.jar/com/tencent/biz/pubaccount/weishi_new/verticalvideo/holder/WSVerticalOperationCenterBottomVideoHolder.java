@@ -27,7 +27,7 @@ public class WSVerticalOperationCenterBottomVideoHolder
   
   public AbsWSVideoItemView a(int paramInt)
   {
-    return new WSVerticalVideoOperationCenterBottomItemView(a(), this);
+    return new WSVerticalVideoOperationCenterBottomItemView(getContext(), this);
   }
   
   public void a(int paramInt)
@@ -55,7 +55,7 @@ public class WSVerticalOperationCenterBottomVideoHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalOperationCenterBottomVideoHolder
  * JD-Core Version:    0.7.0.1
  */

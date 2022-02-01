@@ -41,20 +41,23 @@ public final class sweet_style_info_item
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.level, 0);
-    if (this.pic_url != null) {
-      paramJceOutputStream.write(this.pic_url, 1);
+    Object localObject = this.pic_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.jump_url != null) {
-      paramJceOutputStream.write(this.jump_url, 2);
+    localObject = this.jump_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.map_ext != null) {
-      paramJceOutputStream.write(this.map_ext, 3);
+    localObject = this.map_ext;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SWEET_NEW_PRIVILEGE.sweet_style_info_item
  * JD-Core Version:    0.7.0.1
  */

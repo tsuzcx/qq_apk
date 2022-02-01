@@ -42,8 +42,12 @@ public class PtuOfflineParser
   
   public AIBeautyParamsJsonBean parseAIBeautyParam(String paramString, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (paramString = FileOfflineUtil.readStringFromAssets(paramString); paramString == null; paramString = FileOfflineUtil.readJsonStringFromFile(paramString)) {
+    if (paramBoolean) {
+      paramString = FileOfflineUtil.readStringFromAssets(paramString);
+    } else {
+      paramString = FileOfflineUtil.readJsonStringFromFile(paramString);
+    }
+    if (paramString == null) {
       return null;
     }
     return (AIBeautyParamsJsonBean)GsonUtils.json2Obj(paramString, new PtuOfflineParser.1(this).getType());
@@ -67,7 +71,7 @@ public class PtuOfflineParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.offlineset.utils.PtuOfflineParser
  * JD-Core Version:    0.7.0.1
  */

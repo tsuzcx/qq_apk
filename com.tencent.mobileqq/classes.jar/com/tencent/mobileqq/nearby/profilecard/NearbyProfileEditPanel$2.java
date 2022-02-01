@@ -9,12 +9,13 @@ class NearbyProfileEditPanel$2
   
   public void onDismiss()
   {
-    NearbyProfileEditPanel.a(this.a, this.a.b, false);
+    NearbyProfileEditPanel localNearbyProfileEditPanel = this.a;
+    NearbyProfileEditPanel.a(localNearbyProfileEditPanel, localNearbyProfileEditPanel.b, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.2
  * JD-Core Version:    0.7.0.1
  */

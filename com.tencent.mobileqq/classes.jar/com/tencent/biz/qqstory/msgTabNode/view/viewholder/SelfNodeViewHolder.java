@@ -23,59 +23,60 @@ public class SelfNodeViewHolder
   
   public SelfNodeViewHolder(ViewGroup paramViewGroup)
   {
-    super(paramViewGroup, 2131561863);
+    super(paramViewGroup, 2131561714);
   }
   
   private void a(MsgTabNodeInfo paramMsgTabNodeInfo, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
+      if (paramInt != 1)
+      {
+        if (paramInt == 2)
+        {
+          super.b(paramMsgTabNodeInfo);
+          this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.b();
+        }
+      }
+      else
+      {
+        super.b(paramMsgTabNodeInfo);
+        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a();
+      }
     }
-    for (;;)
+    else
     {
-      c(paramMsgTabNodeInfo);
-      return;
       super.b(paramMsgTabNodeInfo);
       this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.b();
-      continue;
-      super.b(paramMsgTabNodeInfo);
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a();
-      continue;
-      super.b(paramMsgTabNodeInfo);
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.b();
     }
+    c(paramMsgTabNodeInfo);
   }
   
   private void c(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
-    if ((paramMsgTabNodeInfo.jdField_b_of_type_Boolean) || (paramMsgTabNodeInfo.d > 0))
+    if ((!paramMsgTabNodeInfo.jdField_b_of_type_Boolean) && (paramMsgTabNodeInfo.d <= 0))
     {
-      b(paramMsgTabNodeInfo.h);
-      if ((!paramMsgTabNodeInfo.jdField_b_of_type_Boolean) && (paramMsgTabNodeInfo.d > 0)) {
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setDisplayState(1);
-      }
-      for (;;)
-      {
-        SLog.b("VASH", "bindCoverImage: %s", paramMsgTabNodeInfo.h);
-        return;
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setDisplayState(0);
-      }
+      b(ThumbnailUrlHelper.b(paramMsgTabNodeInfo.g));
+      SLog.b("VASH", "bindCoverImage: %s", paramMsgTabNodeInfo.g);
+      return;
     }
-    b(ThumbnailUrlHelper.b(paramMsgTabNodeInfo.g));
-    SLog.b("VASH", "bindCoverImage: %s", paramMsgTabNodeInfo.g);
+    b(paramMsgTabNodeInfo.h);
+    if ((!paramMsgTabNodeInfo.jdField_b_of_type_Boolean) && (paramMsgTabNodeInfo.d > 0)) {
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setDisplayState(1);
+    } else {
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setDisplayState(0);
+    }
+    SLog.b("VASH", "bindCoverImage: %s", paramMsgTabNodeInfo.h);
   }
   
   public void a(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
     super.a(paramMsgTabNodeInfo);
     Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-    Object localObject3;
-    Object localObject2;
-    boolean bool;
     if ((localObject1 instanceof QQAppInterface))
     {
-      localObject3 = (QQAppInterface)localObject1;
-      localObject2 = String.valueOf(paramMsgTabNodeInfo.jdField_b_of_type_Long);
+      Object localObject3 = (QQAppInterface)localObject1;
+      Object localObject2 = String.valueOf(paramMsgTabNodeInfo.jdField_b_of_type_Long);
       localObject1 = localObject2;
       if ("0".equals(localObject2)) {
         localObject1 = ((QQAppInterface)localObject3).getCurrentAccountUin();
@@ -83,40 +84,35 @@ public class SelfNodeViewHolder
       localObject3 = (UserManager)SuperManager.a(2);
       localObject2 = QQStoryContext.a().b();
       localObject3 = ((UserManager)localObject3).b((String)localObject2);
-      if (localObject3 == null)
-      {
-        if (!"0_1000".equals(localObject2)) {
-          break label223;
+      if (localObject3 == null) {
+        if ("0_1000".equals(localObject2))
+        {
+          localObject2 = new QQUserUIItem.UserID(String.valueOf(localObject1), "");
+          new GetUserInfoHandler().a(0, (QQUserUIItem.UserID)localObject2, String.valueOf(localObject1));
         }
-        localObject2 = new QQUserUIItem.UserID(String.valueOf(localObject1), "");
-        new GetUserInfoHandler().a(0, (QQUserUIItem.UserID)localObject2, String.valueOf(localObject1));
+        else
+        {
+          localObject1 = new QQUserUIItem.UserID("", (String)localObject2);
+          new GetUserInfoHandler().a(1, (QQUserUIItem.UserID)localObject1, (String)localObject2);
+        }
       }
-      if ((localObject3 == null) || (!((QQUserUIItem)localObject3).isVip())) {
-        break label252;
+      boolean bool;
+      if ((localObject3 != null) && (((QQUserUIItem)localObject3).isVip())) {
+        bool = true;
+      } else {
+        bool = false;
       }
-      bool = true;
-      label141:
       this.jdField_a_of_type_Boolean = bool;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label257;
+      if (this.jdField_a_of_type_Boolean) {
+        localObject1 = ((QQUserUIItem)localObject3).nickName;
+      } else {
+        localObject1 = HardCodeUtil.a(2131713687);
       }
-    }
-    label257:
-    for (localObject1 = ((QQUserUIItem)localObject3).nickName;; localObject1 = HardCodeUtil.a(2131713729))
-    {
       this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setNodeName((String)localObject1, this.jdField_a_of_type_Boolean);
       c(paramMsgTabNodeInfo);
       if (QLog.isDevelopLevel()) {
         QLog.d("SelfNodeViewHolder", 2, new Object[] { "update self view, isUploading:", Boolean.valueOf(paramMsgTabNodeInfo.jdField_b_of_type_Boolean), ", unUploadVideoCount: ", Integer.valueOf(paramMsgTabNodeInfo.d) });
       }
-      return;
-      label223:
-      localObject1 = new QQUserUIItem.UserID("", (String)localObject2);
-      new GetUserInfoHandler().a(1, (QQUserUIItem.UserID)localObject1, (String)localObject2);
-      break;
-      label252:
-      bool = false;
-      break label141;
     }
   }
   
@@ -125,22 +121,17 @@ public class SelfNodeViewHolder
     SLog.b("VASH", "My bindImage of data: %s", String.valueOf(paramMsgTabNodeInfo));
     if (paramMsgTabNodeInfo.jdField_b_of_type_Boolean) {
       a(paramMsgTabNodeInfo, 1);
+    } else if (paramMsgTabNodeInfo.d > 0) {
+      a(paramMsgTabNodeInfo, 2);
+    } else {
+      a(paramMsgTabNodeInfo, 0);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a(paramMsgTabNodeInfo);
-      return;
-      if (paramMsgTabNodeInfo.d > 0) {
-        a(paramMsgTabNodeInfo, 2);
-      } else {
-        a(paramMsgTabNodeInfo, 0);
-      }
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a(paramMsgTabNodeInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.viewholder.SelfNodeViewHolder
  * JD-Core Version:    0.7.0.1
  */

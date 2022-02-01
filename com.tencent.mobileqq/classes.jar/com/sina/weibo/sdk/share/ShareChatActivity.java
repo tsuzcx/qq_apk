@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ProgressBar;
@@ -38,8 +39,9 @@ public class ShareChatActivity
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (this.y != null) {
-      this.y.sendEmptyMessageDelayed(0, 100L);
+    paramIntent = this.y;
+    if (paramIntent != null) {
+      paramIntent.sendEmptyMessageDelayed(0, 100L);
     }
   }
   
@@ -54,38 +56,41 @@ public class ShareChatActivity
   {
     super.onCreate(paramBundle);
     this.v = getIntent();
-    if (this.v == null)
+    paramBundle = this.v;
+    if (paramBundle == null)
     {
       finish();
       return;
     }
-    if (this.v.getIntExtra("start_flag", -1) != 0)
+    if (paramBundle.getIntExtra("start_flag", -1) != 0)
     {
       finish();
       return;
     }
     this.w = new FrameLayout(this);
     int i = getIntent().getIntExtra("progress_id", -1);
-    if (i != -1) {}
-    for (paramBundle = ((LayoutInflater)getSystemService("layout_inflater")).inflate(i, null);; paramBundle = new ProgressBar(this))
+    if (i != -1) {
+      paramBundle = ((LayoutInflater)getSystemService("layout_inflater")).inflate(i, null);
+    } else {
+      paramBundle = new ProgressBar(this);
+    }
+    Object localObject = new FrameLayout.LayoutParams(-2, -2);
+    ((FrameLayout.LayoutParams)localObject).gravity = 17;
+    this.w.addView(paramBundle, (ViewGroup.LayoutParams)localObject);
+    this.w.setBackgroundColor(855638016);
+    setContentView(this.w);
+    paramBundle = this.v.getExtras();
+    if (paramBundle == null)
     {
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
-      localLayoutParams.gravity = 17;
-      this.w.addView(paramBundle, localLayoutParams);
-      this.w.setBackgroundColor(855638016);
-      setContentView(this.w);
-      paramBundle = this.v.getExtras();
-      if (paramBundle != null) {
-        break;
-      }
       finish();
       return;
     }
     paramBundle = (ChatObject)paramBundle.getParcelable("chat_object");
     if (paramBundle != null)
     {
-      if (this.x != null) {
-        this.x.T.cancel(true);
+      localObject = this.x;
+      if (localObject != null) {
+        ((c)localObject).T.cancel(true);
       }
       this.x = new d(this, paramBundle, new ShareChatActivity.2(this, paramBundle));
       b.a.n().a(this.x);
@@ -97,9 +102,10 @@ public class ShareChatActivity
   protected void onNewIntent(Intent paramIntent)
   {
     super.onNewIntent(paramIntent);
-    if (this.y != null)
+    Handler localHandler = this.y;
+    if (localHandler != null)
     {
-      this.y.removeMessages(0);
+      localHandler.removeMessages(0);
       this.y = null;
     }
     setResult(-1, paramIntent);

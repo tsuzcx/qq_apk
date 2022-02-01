@@ -32,20 +32,14 @@ public class VHeaderView
     return paramContext;
   }
   
-  public boolean resetAttr(String paramString)
+  protected boolean resetAttr(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!super.resetAttr(paramString))
+    if ((!super.resetAttr(paramString)) && (paramString.equals("show")))
     {
-      bool1 = bool2;
-      if (paramString.equals("show"))
-      {
-        setShow(0);
-        bool1 = true;
-      }
+      setShow(0);
+      return true;
     }
-    return bool1;
+    return false;
   }
   
   @VComponentProp(name="show")
@@ -56,7 +50,7 @@ public class VHeaderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.component.VHeaderView
  * JD-Core Version:    0.7.0.1
  */

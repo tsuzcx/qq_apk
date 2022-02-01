@@ -33,8 +33,12 @@ public class FriendIntimateRelationshipConfProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       FriendIntimateRelationshipBean localFriendIntimateRelationshipBean = FriendIntimateRelationshipBean.a(paramArrayOfQConfItem[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendIntimateRelationshipConfProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("FriendIntimateRelationshipConfProcessor", 2, localStringBuilder.toString());
       }
       return localFriendIntimateRelationshipBean;
     }
@@ -43,8 +47,12 @@ public class FriendIntimateRelationshipConfProcessor
   
   public void a(FriendIntimateRelationshipBean paramFriendIntimateRelationshipBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendIntimateRelationshipConfProcessor", 2, "onUpdate newConf:" + paramFriendIntimateRelationshipBean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate newConf:");
+      localStringBuilder.append(paramFriendIntimateRelationshipBean);
+      QLog.d("FriendIntimateRelationshipConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -70,8 +78,12 @@ public class FriendIntimateRelationshipConfProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendIntimateRelationshipConfProcessor", 2, "onReqFailed failCode:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqFailed failCode:");
+      localStringBuilder.append(paramInt);
+      QLog.d("FriendIntimateRelationshipConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -82,7 +94,7 @@ public class FriendIntimateRelationshipConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.FriendIntimateRelationshipConfProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -54,14 +54,15 @@ public final class GetLastPicRsp
     paramJceOutputStream.write(this.is_new, 1);
     paramJceOutputStream.write(this.cnt, 2);
     paramJceOutputStream.write(this.nexttime, 3);
-    if (this.exend != null) {
-      paramJceOutputStream.write(this.exend, 4);
+    Map localMap = this.exend;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qz_groupphoto.GetLastPicRsp
  * JD-Core Version:    0.7.0.1
  */

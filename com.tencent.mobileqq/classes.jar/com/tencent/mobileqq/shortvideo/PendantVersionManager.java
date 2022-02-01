@@ -10,189 +10,199 @@ public class PendantVersionManager
   private static ArrayList<String> a(File paramFile)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: aconst_null
-    //   3: astore_1
-    //   4: new 17	java/util/ArrayList
-    //   7: dup
-    //   8: iconst_1
-    //   9: invokespecial 20	java/util/ArrayList:<init>	(I)V
-    //   12: astore 4
-    //   14: new 22	java/io/FileReader
-    //   17: dup
-    //   18: aload_0
-    //   19: invokespecial 25	java/io/FileReader:<init>	(Ljava/io/File;)V
-    //   22: astore_0
-    //   23: new 27	java/io/BufferedReader
-    //   26: dup
-    //   27: aload_0
-    //   28: invokespecial 30	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   31: astore_2
-    //   32: aload_2
-    //   33: invokevirtual 34	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   36: astore_1
-    //   37: aload_1
-    //   38: ifnull +18 -> 56
-    //   41: aload 4
-    //   43: aload_1
-    //   44: invokevirtual 38	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   47: pop
-    //   48: aload_2
-    //   49: invokevirtual 34	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   52: astore_1
-    //   53: goto -16 -> 37
-    //   56: aload_2
-    //   57: ifnull +7 -> 64
-    //   60: aload_2
-    //   61: invokevirtual 41	java/io/BufferedReader:close	()V
-    //   64: aload_0
-    //   65: ifnull +7 -> 72
-    //   68: aload_0
-    //   69: invokevirtual 42	java/io/FileReader:close	()V
-    //   72: aload 4
-    //   74: areturn
-    //   75: astore_1
-    //   76: aload_1
-    //   77: invokevirtual 45	java/io/IOException:printStackTrace	()V
-    //   80: goto -16 -> 64
-    //   83: astore_0
-    //   84: aload_0
-    //   85: invokevirtual 45	java/io/IOException:printStackTrace	()V
-    //   88: aload 4
-    //   90: areturn
-    //   91: astore_0
-    //   92: aconst_null
-    //   93: astore_2
-    //   94: aload_0
-    //   95: invokevirtual 46	java/lang/Exception:printStackTrace	()V
-    //   98: ldc 48
-    //   100: ldc 50
-    //   102: aload_0
-    //   103: invokestatic 56	com/tencent/mobileqq/shortvideo/VideoEnvironment:LogDownLoad	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   106: aload_2
-    //   107: ifnull +7 -> 114
-    //   110: aload_2
-    //   111: invokevirtual 41	java/io/BufferedReader:close	()V
-    //   114: aload_1
-    //   115: ifnull -43 -> 72
-    //   118: aload_1
-    //   119: invokevirtual 42	java/io/FileReader:close	()V
-    //   122: aload 4
-    //   124: areturn
-    //   125: astore_0
-    //   126: aload_0
-    //   127: invokevirtual 45	java/io/IOException:printStackTrace	()V
-    //   130: aload 4
-    //   132: areturn
-    //   133: astore_0
-    //   134: aload_0
-    //   135: invokevirtual 45	java/io/IOException:printStackTrace	()V
-    //   138: goto -24 -> 114
-    //   141: astore_0
-    //   142: aconst_null
-    //   143: astore_3
-    //   144: aload_2
+    //   0: new 17	java/util/ArrayList
+    //   3: dup
+    //   4: iconst_1
+    //   5: invokespecial 20	java/util/ArrayList:<init>	(I)V
+    //   8: astore 6
+    //   10: aconst_null
+    //   11: astore_1
+    //   12: aconst_null
+    //   13: astore_2
+    //   14: aconst_null
+    //   15: astore 5
+    //   17: new 22	java/io/FileReader
+    //   20: dup
+    //   21: aload_0
+    //   22: invokespecial 25	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   25: astore_0
+    //   26: aload_0
+    //   27: astore_2
+    //   28: new 27	java/io/BufferedReader
+    //   31: dup
+    //   32: aload_0
+    //   33: invokespecial 30	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   36: astore_3
+    //   37: aload_3
+    //   38: invokevirtual 34	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   41: astore_1
+    //   42: aload_1
+    //   43: ifnull +18 -> 61
+    //   46: aload 6
+    //   48: aload_1
+    //   49: invokevirtual 38	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   52: pop
+    //   53: aload_3
+    //   54: invokevirtual 34	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   57: astore_1
+    //   58: goto -16 -> 42
+    //   61: aload_3
+    //   62: invokevirtual 41	java/io/BufferedReader:close	()V
+    //   65: goto +8 -> 73
+    //   68: astore_1
+    //   69: aload_1
+    //   70: invokevirtual 44	java/io/IOException:printStackTrace	()V
+    //   73: aload_0
+    //   74: invokevirtual 45	java/io/FileReader:close	()V
+    //   77: aload 6
+    //   79: areturn
+    //   80: astore_1
+    //   81: aload_3
+    //   82: astore_2
+    //   83: goto +93 -> 176
+    //   86: astore 4
+    //   88: goto +24 -> 112
+    //   91: astore 4
+    //   93: aload 5
+    //   95: astore_3
+    //   96: goto +16 -> 112
+    //   99: astore_1
+    //   100: aconst_null
+    //   101: astore_0
+    //   102: goto +74 -> 176
+    //   105: astore 4
+    //   107: aconst_null
+    //   108: astore_0
+    //   109: aload 5
+    //   111: astore_3
+    //   112: aload_3
+    //   113: astore_1
+    //   114: aload_0
+    //   115: astore_2
+    //   116: aload 4
+    //   118: invokevirtual 46	java/lang/Exception:printStackTrace	()V
+    //   121: aload_3
+    //   122: astore_1
+    //   123: aload_0
+    //   124: astore_2
+    //   125: ldc 48
+    //   127: ldc 50
+    //   129: aload 4
+    //   131: invokestatic 56	com/tencent/mobileqq/shortvideo/VideoEnvironment:LogDownLoad	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   134: aload_3
+    //   135: ifnull +15 -> 150
+    //   138: aload_3
+    //   139: invokevirtual 41	java/io/BufferedReader:close	()V
+    //   142: goto +8 -> 150
     //   145: astore_1
-    //   146: aload_3
-    //   147: astore_2
-    //   148: aload_2
-    //   149: ifnull +7 -> 156
-    //   152: aload_2
-    //   153: invokevirtual 41	java/io/BufferedReader:close	()V
-    //   156: aload_1
-    //   157: ifnull +7 -> 164
-    //   160: aload_1
-    //   161: invokevirtual 42	java/io/FileReader:close	()V
-    //   164: aload_0
-    //   165: athrow
-    //   166: astore_2
-    //   167: aload_2
-    //   168: invokevirtual 45	java/io/IOException:printStackTrace	()V
-    //   171: goto -15 -> 156
-    //   174: astore_1
-    //   175: aload_1
-    //   176: invokevirtual 45	java/io/IOException:printStackTrace	()V
-    //   179: goto -15 -> 164
-    //   182: astore_3
-    //   183: aconst_null
-    //   184: astore_2
-    //   185: aload_0
-    //   186: astore_1
-    //   187: aload_3
-    //   188: astore_0
-    //   189: goto -41 -> 148
-    //   192: astore_3
-    //   193: aload_0
-    //   194: astore_1
-    //   195: aload_3
-    //   196: astore_0
-    //   197: goto -49 -> 148
-    //   200: astore_0
-    //   201: goto -53 -> 148
-    //   204: astore_3
-    //   205: aconst_null
-    //   206: astore_2
-    //   207: aload_0
-    //   208: astore_1
-    //   209: aload_3
-    //   210: astore_0
-    //   211: goto -117 -> 94
-    //   214: astore_3
-    //   215: aload_0
-    //   216: astore_1
-    //   217: aload_3
-    //   218: astore_0
-    //   219: goto -125 -> 94
+    //   146: aload_1
+    //   147: invokevirtual 44	java/io/IOException:printStackTrace	()V
+    //   150: aload_0
+    //   151: ifnull +15 -> 166
+    //   154: aload_0
+    //   155: invokevirtual 45	java/io/FileReader:close	()V
+    //   158: aload 6
+    //   160: areturn
+    //   161: astore_0
+    //   162: aload_0
+    //   163: invokevirtual 44	java/io/IOException:printStackTrace	()V
+    //   166: aload 6
+    //   168: areturn
+    //   169: astore_3
+    //   170: aload_2
+    //   171: astore_0
+    //   172: aload_1
+    //   173: astore_2
+    //   174: aload_3
+    //   175: astore_1
+    //   176: aload_2
+    //   177: ifnull +15 -> 192
+    //   180: aload_2
+    //   181: invokevirtual 41	java/io/BufferedReader:close	()V
+    //   184: goto +8 -> 192
+    //   187: astore_2
+    //   188: aload_2
+    //   189: invokevirtual 44	java/io/IOException:printStackTrace	()V
+    //   192: aload_0
+    //   193: ifnull +15 -> 208
+    //   196: aload_0
+    //   197: invokevirtual 45	java/io/FileReader:close	()V
+    //   200: goto +8 -> 208
+    //   203: astore_0
+    //   204: aload_0
+    //   205: invokevirtual 44	java/io/IOException:printStackTrace	()V
+    //   208: goto +5 -> 213
+    //   211: aload_1
+    //   212: athrow
+    //   213: goto -2 -> 211
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	222	0	paramFile	File
-    //   3	50	1	str	String
-    //   75	44	1	localIOException1	java.io.IOException
-    //   145	16	1	localObject1	Object
-    //   174	2	1	localIOException2	java.io.IOException
-    //   186	31	1	localFile	File
-    //   1	152	2	localObject2	Object
-    //   166	2	2	localIOException3	java.io.IOException
-    //   184	23	2	localObject3	Object
-    //   143	4	3	localObject4	Object
-    //   182	6	3	localObject5	Object
-    //   192	4	3	localObject6	Object
-    //   204	6	3	localException1	java.lang.Exception
-    //   214	4	3	localException2	java.lang.Exception
-    //   12	119	4	localArrayList	ArrayList
+    //   0	216	0	paramFile	File
+    //   11	47	1	str	String
+    //   68	2	1	localIOException1	java.io.IOException
+    //   80	1	1	localObject1	Object
+    //   99	1	1	localObject2	Object
+    //   113	10	1	localObject3	Object
+    //   145	28	1	localIOException2	java.io.IOException
+    //   175	37	1	localObject4	Object
+    //   13	168	2	localObject5	Object
+    //   187	2	2	localIOException3	java.io.IOException
+    //   36	103	3	localObject6	Object
+    //   169	6	3	localObject7	Object
+    //   86	1	4	localException1	java.lang.Exception
+    //   91	1	4	localException2	java.lang.Exception
+    //   105	25	4	localException3	java.lang.Exception
+    //   15	95	5	localObject8	Object
+    //   8	159	6	localArrayList	ArrayList
     // Exception table:
     //   from	to	target	type
-    //   60	64	75	java/io/IOException
-    //   68	72	83	java/io/IOException
-    //   14	23	91	java/lang/Exception
-    //   118	122	125	java/io/IOException
-    //   110	114	133	java/io/IOException
-    //   14	23	141	finally
-    //   152	156	166	java/io/IOException
-    //   160	164	174	java/io/IOException
-    //   23	32	182	finally
-    //   32	37	192	finally
-    //   41	53	192	finally
-    //   94	106	200	finally
-    //   23	32	204	java/lang/Exception
-    //   32	37	214	java/lang/Exception
-    //   41	53	214	java/lang/Exception
+    //   61	65	68	java/io/IOException
+    //   37	42	80	finally
+    //   46	58	80	finally
+    //   37	42	86	java/lang/Exception
+    //   46	58	86	java/lang/Exception
+    //   28	37	91	java/lang/Exception
+    //   17	26	99	finally
+    //   17	26	105	java/lang/Exception
+    //   138	142	145	java/io/IOException
+    //   73	77	161	java/io/IOException
+    //   154	158	161	java/io/IOException
+    //   28	37	169	finally
+    //   116	121	169	finally
+    //   125	134	169	finally
+    //   180	184	187	java/io/IOException
+    //   196	200	203	java/io/IOException
   }
   
   public static boolean a(String paramString, int paramInt)
   {
-    String str = paramString.trim();
-    VideoEnvironment.LogDownLoad("PendantVersionManager", "checkSignatureVersionIsOK signature=" + paramString, null);
-    paramString = ShortVideoSoManager.a(str);
+    Object localObject = paramString.trim();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("checkSignatureVersionIsOK signature=");
+    localStringBuilder.append(paramString);
+    VideoEnvironment.LogDownLoad("PendantVersionManager", localStringBuilder.toString(), null);
+    paramString = ShortVideoSoManager.a((String)localObject);
     int i = paramString.a();
-    VideoEnvironment.LogDownLoad("PendantVersionManager", "checkSignatureVersionIsOK errCode=" + i + ",trimSignature=" + str, null);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("checkSignatureVersionIsOK errCode=");
+    localStringBuilder.append(i);
+    localStringBuilder.append(",trimSignature=");
+    localStringBuilder.append((String)localObject);
+    VideoEnvironment.LogDownLoad("PendantVersionManager", localStringBuilder.toString(), null);
     if (i == 0)
     {
       paramString = paramString.b().trim();
-      VideoEnvironment.LogDownLoad("PendantVersionManager", "checkSignatureVersionIsOK versionValid=" + paramString, null);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("checkSignatureVersionIsOK versionValid=");
+      ((StringBuilder)localObject).append(paramString);
+      VideoEnvironment.LogDownLoad("PendantVersionManager", ((StringBuilder)localObject).toString(), null);
       i = Integer.parseInt(paramString);
-      VideoEnvironment.LogDownLoad("PendantVersionManager", "checkSignatureVersionIsOK version=" + i + ",limitVersion=" + paramInt, null);
+      paramString = new StringBuilder();
+      paramString.append("checkSignatureVersionIsOK version=");
+      paramString.append(i);
+      paramString.append(",limitVersion=");
+      paramString.append(paramInt);
+      VideoEnvironment.LogDownLoad("PendantVersionManager", paramString.toString(), null);
       if (i >= paramInt) {
         return true;
       }
@@ -202,56 +212,92 @@ public class PendantVersionManager
   
   public static boolean a(String paramString1, String paramString2)
   {
-    paramString2 = paramString1 + paramString2;
-    VideoEnvironment.LogDownLoad("PendantVersionManager", "checkUnzipFileListSizeIsOK configPath=" + paramString2, null);
-    Object localObject = new File(paramString2);
-    if (!((File)localObject).exists())
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramString1);
+    ((StringBuilder)localObject1).append(paramString2);
+    paramString2 = ((StringBuilder)localObject1).toString();
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("checkUnzipFileListSizeIsOK configPath=");
+    ((StringBuilder)localObject1).append(paramString2);
+    VideoEnvironment.LogDownLoad("PendantVersionManager", ((StringBuilder)localObject1).toString(), null);
+    localObject1 = new File(paramString2);
+    if (!((File)localObject1).exists())
     {
-      VideoEnvironment.LogDownLoad("PendantVersionManager", "checkUnzipFileListSizeIsOK configPath=" + paramString2 + ",exists=false", null);
+      paramString1 = new StringBuilder();
+      paramString1.append("checkUnzipFileListSizeIsOK configPath=");
+      paramString1.append(paramString2);
+      paramString1.append(",exists=false");
+      VideoEnvironment.LogDownLoad("PendantVersionManager", paramString1.toString(), null);
       return false;
     }
-    paramString2 = a((File)localObject);
+    paramString2 = a((File)localObject1);
     if (paramString2.size() <= 0)
     {
-      VideoEnvironment.LogDownLoad("PendantVersionManager", "checkUnzipFileListSizeIsOK configData.size()=" + paramString2.size(), null);
+      paramString1 = new StringBuilder();
+      paramString1.append("checkUnzipFileListSizeIsOK configData.size()=");
+      paramString1.append(paramString2.size());
+      VideoEnvironment.LogDownLoad("PendantVersionManager", paramString1.toString(), null);
       return false;
     }
     int i = 0;
-    if (i < paramString2.size())
+    while (i < paramString2.size())
     {
-      VideoEnvironment.LogDownLoad("PendantVersionManager", "checkUnzipFileListSizeIsOK itemLineValue=" + (String)paramString2.get(i), null);
-      if (TextUtils.isEmpty((CharSequence)paramString2.get(i))) {}
-      String str;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("checkUnzipFileListSizeIsOK itemLineValue=");
+      ((StringBuilder)localObject1).append((String)paramString2.get(i));
+      VideoEnvironment.LogDownLoad("PendantVersionManager", ((StringBuilder)localObject1).toString(), null);
+      Object localObject2;
       int j;
-      long l;
-      do
+      if (!TextUtils.isEmpty((CharSequence)paramString2.get(i)))
       {
-        do
+        localObject2 = ((String)paramString2.get(i)).trim();
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
-          i += 1;
-          break;
-          str = ((String)paramString2.get(i)).trim();
-        } while (TextUtils.isEmpty(str));
-        VideoEnvironment.LogDownLoad("PendantVersionManager", "checkUnzipFileListSizeIsOK trimValue=" + str, null);
-        localObject = ShortVideoSoManager.a(str);
-        j = ((ShortVideoSoManager.CfgParser)localObject).a('|');
-        if (j != 0) {
-          break label398;
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("checkUnzipFileListSizeIsOK trimValue=");
+          ((StringBuilder)localObject1).append((String)localObject2);
+          VideoEnvironment.LogDownLoad("PendantVersionManager", ((StringBuilder)localObject1).toString(), null);
+          localObject1 = ShortVideoSoManager.a((String)localObject2);
+          j = ((ShortVideoSoManager.CfgParser)localObject1).a('|');
+          if (j != 0) {
+            break label484;
+          }
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(paramString1);
+          ((StringBuilder)localObject2).append(((ShortVideoSoManager.CfgParser)localObject1).c());
+          localObject2 = ((StringBuilder)localObject2).toString();
+          File localFile = new File((String)localObject2);
+          if (!localFile.exists())
+          {
+            paramString1 = new StringBuilder();
+            paramString1.append("checkUnzipFileListSizeIsOK[exists=false] fileName=");
+            paramString1.append((String)localObject2);
+            VideoEnvironment.LogDownLoad("PendantVersionManager", paramString1.toString(), null);
+            return false;
+          }
+          j = Integer.parseInt(((ShortVideoSoManager.CfgParser)localObject1).d());
+          long l = localFile.length();
+          if (j != l)
+          {
+            paramString1 = new StringBuilder();
+            paramString1.append("checkUnzipFileListSizeIsOK sizeConfig=");
+            paramString1.append(j);
+            paramString1.append(",fileSize=");
+            paramString1.append(l);
+            VideoEnvironment.LogDownLoad("PendantVersionManager", paramString1.toString(), null);
+            return false;
+          }
         }
-        str = paramString1 + ((ShortVideoSoManager.CfgParser)localObject).c();
-        File localFile = new File(str);
-        if (!localFile.exists())
-        {
-          VideoEnvironment.LogDownLoad("PendantVersionManager", "checkUnzipFileListSizeIsOK[exists=false] fileName=" + str, null);
-          return false;
-        }
-        j = Integer.parseInt(((ShortVideoSoManager.CfgParser)localObject).d());
-        l = localFile.length();
-      } while (j == l);
-      VideoEnvironment.LogDownLoad("PendantVersionManager", "checkUnzipFileListSizeIsOK sizeConfig=" + j + ",fileSize=" + l, null);
-      return false;
-      label398:
-      VideoEnvironment.LogDownLoad("PendantVersionManager", "checkUnzipFileListSizeIsOK[CfgParser] errCode=" + j + ",trimValue=" + str, null);
+      }
+      i += 1;
+      continue;
+      label484:
+      paramString1 = new StringBuilder();
+      paramString1.append("checkUnzipFileListSizeIsOK[CfgParser] errCode=");
+      paramString1.append(j);
+      paramString1.append(",trimValue=");
+      paramString1.append((String)localObject2);
+      VideoEnvironment.LogDownLoad("PendantVersionManager", paramString1.toString(), null);
       return false;
     }
     VideoEnvironment.LogDownLoad("PendantVersionManager", "checkUnzipFileListSizeIsOK[OK]", null);
@@ -260,7 +306,7 @@ public class PendantVersionManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PendantVersionManager
  * JD-Core Version:    0.7.0.1
  */

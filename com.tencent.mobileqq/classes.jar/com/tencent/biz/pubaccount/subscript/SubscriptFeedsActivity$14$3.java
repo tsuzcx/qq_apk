@@ -10,28 +10,24 @@ class SubscriptFeedsActivity$14$3
   
   public void run()
   {
-    SubscriptFeedsActivity localSubscriptFeedsActivity;
     if ((this.jdField_a_of_type_JavaIoSerializable != null) && (SubscriptFeedsActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$14.a) != null))
     {
       SubscriptFeedsActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$14.a, (ArrayList)this.jdField_a_of_type_JavaIoSerializable);
       SubscriptFeedsActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$14.a).b(SubscriptFeedsActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$14.a));
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$14.a).a = true;
-      localSubscriptFeedsActivity = this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$14.a;
+      Object localObject = SubscriptFeedsActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$14.a);
+      boolean bool = true;
+      ((SubscriptFeedsAdapter)localObject).a = true;
+      localObject = this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$14.a;
       if (SubscriptFeedsActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$14.a).f != 1) {
-        break label110;
+        bool = false;
       }
-    }
-    label110:
-    for (boolean bool = true;; bool = false)
-    {
-      SubscriptFeedsActivity.a(localSubscriptFeedsActivity, false, false, bool);
-      return;
+      SubscriptFeedsActivity.a((SubscriptFeedsActivity)localObject, false, false, bool);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.3
  * JD-Core Version:    0.7.0.1
  */

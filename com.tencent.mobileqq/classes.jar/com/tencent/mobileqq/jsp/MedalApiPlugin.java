@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.campuscircle.CampusCircleIpcClient;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
 import com.tencent.mobileqq.settings.util.PrivacySettingUtil;
@@ -39,19 +38,25 @@ public class MedalApiPlugin
   
   private void a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      try
+    }
+    try
+    {
+      this.jdField_a_of_type_JavaLangString = new JSONObject(paramString).optString("callback");
+      c(this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      if (QLog.isColorLevel())
       {
-        this.jdField_a_of_type_JavaLangString = new JSONObject(paramString).optString("callback");
-        c(this.jdField_a_of_type_JavaLangString);
-        return;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("shareMsg error: ");
+        localStringBuilder.append(paramString.toString());
+        QLog.d("MedalApi", 2, localStringBuilder.toString());
       }
-      catch (JSONException paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("MedalApi", 2, "shareMsg error: " + paramString.toString());
+    }
   }
   
   private Context b()
@@ -62,36 +67,44 @@ public class MedalApiPlugin
   
   private void b(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      try
+    }
+    try
+    {
+      this.jdField_a_of_type_JavaLangString = new JSONObject(paramString).optString("callback");
+      paramString = PrivacySettingUtil.a();
+      PrivacySettingUtil.a((AppInterface)this.mRuntime.a(), this, paramString, (byte)100);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      if (QLog.isColorLevel())
       {
-        this.jdField_a_of_type_JavaLangString = new JSONObject(paramString).optString("callback");
-        paramString = PrivacySettingUtil.a();
-        PrivacySettingUtil.a(BaseActivity.sTopActivity.app, this, paramString, (byte)100);
-        return;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("shareMsg error: ");
+        localStringBuilder.append(paramString.toString());
+        QLog.d("MedalApi", 2, localStringBuilder.toString());
       }
-      catch (JSONException paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("MedalApi", 2, "shareMsg error: " + paramString.toString());
+    }
   }
   
   private void c(String paramString)
   {
     String str = this.mRuntime.a().getCurrentAccountUin();
-    boolean bool = BaseApplicationImpl.getApplication().getSharedPreferences("medal_wall_" + str, 4).getBoolean("medal_switch_disable", false);
-    if (!TextUtils.isEmpty(paramString)) {
-      if (!bool) {
-        break label74;
-      }
-    }
-    label74:
-    for (str = "{\"isOn\":0}";; str = "{\"isOn\":1}")
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("medal_wall_");
+    localStringBuilder.append(str);
+    boolean bool = localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 4).getBoolean("medal_switch_disable", false);
+    if (!TextUtils.isEmpty(paramString))
     {
+      if (bool) {
+        str = "{\"isOn\":0}";
+      } else {
+        str = "{\"isOn\":1}";
+      }
       callJs(paramString, new String[] { str });
-      return;
     }
   }
   
@@ -100,29 +113,24 @@ public class MedalApiPlugin
     return this.jdField_a_of_type_AndroidContentContext;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    boolean bool = false;
     if ("medalwall".equals(paramString2))
     {
-      if ((paramJsBridgeListener != null) && (paramJsBridgeListener.a)) {}
-      addOpenApiListenerIfNeeded(paramString3, paramJsBridgeListener);
-      if (!"getMedalSwitch".equals(paramString3)) {
-        break label54;
+      if (paramJsBridgeListener != null) {
+        boolean bool = paramJsBridgeListener.a;
       }
-      a(paramVarArgs[0]);
-    }
-    for (;;)
-    {
-      bool = true;
-      return bool;
-      label54:
-      if ("jumpToMedalSettings".equals(paramString3)) {
+      addOpenApiListenerIfNeeded(paramString3, paramJsBridgeListener);
+      if ("getMedalSwitch".equals(paramString3)) {
+        a(paramVarArgs[0]);
+      } else if ("jumpToMedalSettings".equals(paramString3)) {
         b(paramVarArgs[0]);
       } else if ("clearRedPoint".equals(paramString3)) {
         a();
       }
+      return true;
     }
+    return false;
   }
   
   public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
@@ -133,7 +141,7 @@ public class MedalApiPlugin
     }
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
     this.jdField_a_of_type_AndroidContentContext = b();
@@ -141,7 +149,7 @@ public class MedalApiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.MedalApiPlugin
  * JD-Core Version:    0.7.0.1
  */

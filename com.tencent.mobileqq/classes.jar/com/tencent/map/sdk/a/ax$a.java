@@ -36,20 +36,32 @@ final class ax$a
   
   private boolean a(int paramInt, String paramString)
   {
-    if (this.h.length >= paramInt + 1)
+    String[] arrayOfString = this.h;
+    boolean bool1;
+    if (arrayOfString.length >= paramInt + 1)
     {
-      boolean bool = this.h[paramInt].equals(paramString);
-      if ((!bool) && (!this.h[paramInt].equals("all"))) {
-        this.b = false;
+      boolean bool2 = arrayOfString[paramInt].equals(paramString);
+      bool1 = bool2;
+      if (!bool2)
+      {
+        bool1 = bool2;
+        if (!this.h[paramInt].equals("all"))
+        {
+          this.b = false;
+          return bool2;
+        }
       }
-      return bool;
     }
-    return false;
+    else
+    {
+      bool1 = false;
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.ax.a
  * JD-Core Version:    0.7.0.1
  */

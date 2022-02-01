@@ -11,8 +11,9 @@ class MsfChannelService$1
   
   public void onError(boolean paramBoolean, int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentFalcoBaseLibapiChannelChannelCallback != null) {
-      this.jdField_a_of_type_ComTencentFalcoBaseLibapiChannelChannelCallback.onError(paramBoolean, paramInt, paramString);
+    ChannelCallback localChannelCallback = this.jdField_a_of_type_ComTencentFalcoBaseLibapiChannelChannelCallback;
+    if (localChannelCallback != null) {
+      localChannelCallback.onError(paramBoolean, paramInt, paramString);
     }
   }
   
@@ -20,22 +21,25 @@ class MsfChannelService$1
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentFalcoBaseLibapiChannelChannelCallback != null)
-      {
-        paramArrayOfByte = ForwardRsp.a(paramArrayOfByte);
-        ThreadCenter.postUITask(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesChannelMsfChannelService, new MsfChannelService.1.1(this, paramArrayOfByte));
+      if (this.jdField_a_of_type_ComTencentFalcoBaseLibapiChannelChannelCallback == null) {
+        break label44;
       }
+      paramArrayOfByte = ForwardRsp.a(paramArrayOfByte);
+      ThreadCenter.postUITask(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesChannelMsfChannelService, new MsfChannelService.1.1(this, paramArrayOfByte));
       return;
     }
     catch (Exception paramArrayOfByte)
     {
-      this.jdField_a_of_type_ComTencentFalcoBaseLibapiChannelChannelCallback.onError(false, -10000, "请求命令字异常");
+      label29:
+      label44:
+      break label29;
     }
+    this.jdField_a_of_type_ComTencentFalcoBaseLibapiChannelChannelCallback.onError(false, -10000, "请求命令字异常");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.channel.MsfChannelService.1
  * JD-Core Version:    0.7.0.1
  */

@@ -8,6 +8,7 @@ import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.banner.Banner;
 import com.tencent.mobileqq.banner.BannerManager;
+import com.tencent.mobileqq.banner.BannerTypeCollections;
 import com.tencent.mobileqq.banner.processor.BaseBannerProcessor;
 import com.tencent.mobileqq.banner.processor.IBannerLifecycle;
 import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
@@ -21,6 +22,13 @@ public class QLinkTransingBannerProcessor
   extends BaseBannerProcessor
   implements IBannerLifecycle
 {
+  public static final int a;
+  
+  static
+  {
+    jdField_a_of_type_Int = BannerTypeCollections.O;
+  }
+  
   public QLinkTransingBannerProcessor(QBaseActivity paramQBaseActivity)
   {
     super(paramQBaseActivity);
@@ -28,63 +36,71 @@ public class QLinkTransingBannerProcessor
   
   public View a(Banner paramBanner)
   {
-    paramBanner = View.inflate(this.a, 2131561022, null);
+    paramBanner = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 2131560886, null);
     paramBanner.setOnClickListener(new QLinkTransingBannerProcessor.1(this));
-    paramBanner.findViewById(2131374481).setVisibility(8);
+    paramBanner.findViewById(2131374019).setVisibility(8);
     return paramBanner;
   }
   
   public void a(Banner paramBanner, Message paramMessage)
   {
-    View localView = paramBanner.a.findViewById(2131374481);
-    paramMessage = (TextView)paramBanner.a.findViewById(2131374482);
-    if ((this.a != null) && (this.a.getAppRuntime() != null))
+    Object localObject = paramBanner.a.findViewById(2131374019);
+    paramMessage = (TextView)paramBanner.a.findViewById(2131374020);
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime() != null))
     {
-      int i = ((QQAppInterface)this.a.getAppRuntime()).getQQProxyForQlink().a();
+      int i = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime()).getQQProxyForQlink().a();
       if (i != 0)
       {
-        localView.setVisibility(0);
-        int j = ((QQAppInterface)this.a.getAppRuntime()).getQQProxyForQlink().a().mMode;
-        paramBanner = HardCodeUtil.a(2131700997);
+        ((View)localObject).setVisibility(0);
+        int j = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime()).getQQProxyForQlink().a().mMode;
+        paramBanner = HardCodeUtil.a(2131701140);
         if (1 == j) {
-          paramBanner = HardCodeUtil.a(2131701007);
+          paramBanner = HardCodeUtil.a(2131701150);
+        } else if (2 == j) {
+          paramBanner = HardCodeUtil.a(2131701139);
         }
-        for (;;)
-        {
-          paramMessage.setText(this.a.getString(2131698384) + paramBanner + i + this.a.getString(2131698385));
-          ReportController.a(this.a.getAppRuntime(), "dc00898", "", "", "0X8009EE1", "0X8009EE1", 3, 0, "", "", "", "");
-          return;
-          if (2 == j) {
-            paramBanner = HardCodeUtil.a(2131700996);
-          }
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131698449));
+        ((StringBuilder)localObject).append(paramBanner);
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131698450));
+        paramMessage.setText(((StringBuilder)localObject).toString());
+        ReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X8009EE1", "0X8009EE1", 3, 0, "", "", "", "");
+        return;
       }
-      localView.setVisibility(8);
+      ((View)localObject).setVisibility(8);
       return;
     }
-    localView.setVisibility(8);
+    ((View)localObject).setVisibility(8);
+  }
+  
+  public void a(AppRuntime paramAppRuntime) {}
+  
+  public int b()
+  {
+    return jdField_a_of_type_Int;
   }
   
   public void b()
   {
+    int i = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime()).getQQProxyForQlink().a();
     int j = 0;
-    if (((QQAppInterface)this.a.getAppRuntime()).getQQProxyForQlink().a() != 0) {}
-    for (int i = 1;; i = 0)
-    {
-      BannerManager localBannerManager = BannerManager.a();
-      if (i != 0) {
-        j = 2;
-      }
-      localBannerManager.a(43, j);
-      return;
+    if (i != 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    BannerManager localBannerManager = BannerManager.a();
+    int k = jdField_a_of_type_Int;
+    if (i != 0) {
+      j = 2;
+    }
+    localBannerManager.a(k, j);
   }
-  
-  public void b(AppRuntime paramAppRuntime) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.QLinkTransingBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

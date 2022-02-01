@@ -59,42 +59,51 @@ public final class NotificationCompat$MessagingStyle$Message
   @Nullable
   static Message getMessageFromBundle(Bundle paramBundle)
   {
-    Object localObject;
     for (;;)
     {
       try
       {
-        if ((!paramBundle.containsKey("text")) || (!paramBundle.containsKey("time"))) {
-          break;
-        }
-        if (paramBundle.containsKey("person"))
+        if (paramBundle.containsKey("text"))
         {
-          localObject = Person.fromBundle(paramBundle.getBundle("person"));
+          if (!paramBundle.containsKey("time")) {
+            return null;
+          }
+          if (paramBundle.containsKey("person"))
+          {
+            localObject = Person.fromBundle(paramBundle.getBundle("person"));
+          }
+          else if ((paramBundle.containsKey("sender_person")) && (Build.VERSION.SDK_INT >= 28))
+          {
+            localObject = Person.fromAndroidPerson((android.app.Person)paramBundle.getParcelable("sender_person"));
+          }
+          else
+          {
+            if (!paramBundle.containsKey("sender")) {
+              break label195;
+            }
+            localObject = new Person.Builder().setName(paramBundle.getCharSequence("sender")).build();
+          }
           localObject = new Message(paramBundle.getCharSequence("text"), paramBundle.getLong("time"), (Person)localObject);
           if ((paramBundle.containsKey("type")) && (paramBundle.containsKey("uri"))) {
             ((Message)localObject).setData(paramBundle.getString("type"), (Uri)paramBundle.getParcelable("uri"));
           }
-          if (!paramBundle.containsKey("extras")) {
-            return localObject;
+          if (paramBundle.containsKey("extras")) {
+            ((Message)localObject).getExtras().putAll(paramBundle.getBundle("extras"));
           }
-          ((Message)localObject).getExtras().putAll(paramBundle.getBundle("extras"));
           return localObject;
         }
-        if ((paramBundle.containsKey("sender_person")) && (Build.VERSION.SDK_INT >= 28)) {
-          localObject = Person.fromAndroidPerson((android.app.Person)paramBundle.getParcelable("sender_person"));
-        } else if (paramBundle.containsKey("sender")) {
-          localObject = new Person.Builder().setName(paramBundle.getCharSequence("sender")).build();
-        } else {
-          localObject = null;
+        else
+        {
+          return null;
         }
       }
       catch (ClassCastException paramBundle)
       {
         return null;
       }
+      label195:
+      Object localObject = null;
     }
-    return null;
-    return localObject;
   }
   
   @NonNull
@@ -119,33 +128,34 @@ public final class NotificationCompat$MessagingStyle$Message
   private Bundle toBundle()
   {
     Bundle localBundle = new Bundle();
-    if (this.mText != null) {
-      localBundle.putCharSequence("text", this.mText);
+    Object localObject = this.mText;
+    if (localObject != null) {
+      localBundle.putCharSequence("text", (CharSequence)localObject);
     }
     localBundle.putLong("time", this.mTimestamp);
-    if (this.mPerson != null)
+    localObject = this.mPerson;
+    if (localObject != null)
     {
-      localBundle.putCharSequence("sender", this.mPerson.getName());
-      if (Build.VERSION.SDK_INT < 28) {
-        break label129;
+      localBundle.putCharSequence("sender", ((Person)localObject).getName());
+      if (Build.VERSION.SDK_INT >= 28) {
+        localBundle.putParcelable("sender_person", this.mPerson.toAndroidPerson());
+      } else {
+        localBundle.putBundle("person", this.mPerson.toBundle());
       }
-      localBundle.putParcelable("sender_person", this.mPerson.toAndroidPerson());
     }
-    for (;;)
-    {
-      if (this.mDataMimeType != null) {
-        localBundle.putString("type", this.mDataMimeType);
-      }
-      if (this.mDataUri != null) {
-        localBundle.putParcelable("uri", this.mDataUri);
-      }
-      if (this.mExtras != null) {
-        localBundle.putBundle("extras", this.mExtras);
-      }
-      return localBundle;
-      label129:
-      localBundle.putBundle("person", this.mPerson.toBundle());
+    localObject = this.mDataMimeType;
+    if (localObject != null) {
+      localBundle.putString("type", (String)localObject);
     }
+    localObject = this.mDataUri;
+    if (localObject != null) {
+      localBundle.putParcelable("uri", (Parcelable)localObject);
+    }
+    localObject = this.mExtras;
+    if (localObject != null) {
+      localBundle.putBundle("extras", (Bundle)localObject);
+    }
+    return localBundle;
   }
   
   @Nullable
@@ -176,10 +186,11 @@ public final class NotificationCompat$MessagingStyle$Message
   @Nullable
   public CharSequence getSender()
   {
-    if (this.mPerson == null) {
+    Person localPerson = this.mPerson;
+    if (localPerson == null) {
       return null;
     }
-    return this.mPerson.getName();
+    return localPerson.getName();
   }
   
   @NonNull
@@ -202,7 +213,7 @@ public final class NotificationCompat$MessagingStyle$Message
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.NotificationCompat.MessagingStyle.Message
  * JD-Core Version:    0.7.0.1
  */

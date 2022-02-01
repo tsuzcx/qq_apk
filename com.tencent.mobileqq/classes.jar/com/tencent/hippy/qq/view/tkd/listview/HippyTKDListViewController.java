@@ -18,12 +18,12 @@ public class HippyTKDListViewController
 {
   private static final String TAG = "HippyQBListViewController";
   
-  public View createViewImpl(Context paramContext)
+  protected View createViewImpl(Context paramContext)
   {
     return new HippyTKDListView(paramContext);
   }
   
-  public View createViewImpl(Context paramContext, HippyMap paramHippyMap)
+  protected View createViewImpl(Context paramContext, HippyMap paramHippyMap)
   {
     return new HippyTKDListView(paramContext);
   }
@@ -34,35 +34,48 @@ public class HippyTKDListViewController
     if ((paramHippyListView instanceof HippyTKDListView))
     {
       paramHippyListView = (HippyTKDListView)paramHippyListView;
-      if (!"endReachedCompleted".equals(paramString)) {
-        break label120;
-      }
-      j = paramHippyArray.getInt(0);
-      paramString = paramHippyArray.getString(1);
-      i = 1;
-      switch (j)
+      boolean bool = "endReachedCompleted".equals(paramString);
+      int i = 6;
+      int j;
+      if (bool)
       {
-      default: 
+        j = paramHippyArray.getInt(0);
+        paramString = paramHippyArray.getString(1);
+        if (j != 0)
+        {
+          if (j != 1)
+          {
+            if (j != 2) {
+              if (j != 3)
+              {
+                if (j != 4) {
+                  i = 1;
+                } else {
+                  i = 0;
+                }
+              }
+              else {
+                i = 100;
+              }
+            }
+          }
+          else {
+            i = 4;
+          }
+        }
+        else {
+          i = 2;
+        }
         paramHippyListView.setLoadingStatus(i, paramString);
+        return;
       }
-    }
-    label120:
-    do
-    {
-      return;
-      i = 2;
-      break;
-      i = 4;
-      break;
-      i = 6;
-      break;
-      i = 100;
-      break;
-      i = 0;
-      break;
+      int k;
+      String str;
+      int m;
+      int n;
       if ("refreshCompleted".equals(paramString))
       {
-        int i4 = paramHippyArray.getInt(0);
+        i = paramHippyArray.getInt(0);
         paramString = paramHippyArray.getString(1);
         j = paramHippyArray.getInt(2);
         k = paramHippyArray.getInt(3);
@@ -72,18 +85,19 @@ public class HippyTKDListViewController
         int i1 = ImmersiveUtils.dpToPx(paramHippyArray.getInt(7));
         int i2 = paramHippyArray.getInt(8);
         int i3 = paramHippyArray.getInt(9);
-        i = 1;
-        switch (i4)
+        if (i != 0)
         {
+          if (i != 1) {
+            i = 1;
+          } else {
+            i = 3;
+          }
         }
-        for (;;)
-        {
-          paramHippyListView.completeRefresh(i, paramString, m, n, k, i1, str, true, j, i2, null, i3);
-          return;
+        else {
           i = 2;
-          continue;
-          i = 3;
         }
+        paramHippyListView.completeRefresh(i, paramString, m, n, k, i1, str, true, j, i2, null, i3);
+        return;
       }
       if ("startRefresh".equals(paramString))
       {
@@ -110,18 +124,22 @@ public class HippyTKDListViewController
         ((HippyTKDListViewAdapter)paramHippyListView.getAdapter()).checkOnScrollEvent();
         return;
       }
-    } while (!"setRefreshPromptInfo".equals(paramString));
-    paramString = paramHippyArray.getString(0);
-    int j = paramHippyArray.getInt(1);
-    int k = ImmersiveUtils.dpToPx(paramHippyArray.getInt(2));
-    String str = paramHippyArray.getString(3);
-    int m = ImmersiveUtils.dpToPx(paramHippyArray.getInt(4));
-    int n = ImmersiveUtils.dpToPx(paramHippyArray.getInt(5));
-    int i = 0;
-    if (paramHippyArray.size() >= 7) {
-      i = ImmersiveUtils.dpToPx(paramHippyArray.getInt(6));
+      if ("setRefreshPromptInfo".equals(paramString))
+      {
+        paramString = paramHippyArray.getString(0);
+        j = paramHippyArray.getInt(1);
+        k = ImmersiveUtils.dpToPx(paramHippyArray.getInt(2));
+        str = paramHippyArray.getString(3);
+        m = ImmersiveUtils.dpToPx(paramHippyArray.getInt(4));
+        n = ImmersiveUtils.dpToPx(paramHippyArray.getInt(5));
+        if (paramHippyArray.size() >= 7) {
+          i = ImmersiveUtils.dpToPx(paramHippyArray.getInt(6));
+        } else {
+          i = 0;
+        }
+        paramHippyListView.setRefreshPromptInfo(paramString, j, k, str, m, n, i);
+      }
     }
-    paramHippyListView.setRefreshPromptInfo(paramString, j, k, str, m, n, i);
   }
   
   public void dispatchFunction(HippyListView paramHippyListView, String paramString, HippyArray paramHippyArray, Promise paramPromise)
@@ -130,36 +148,33 @@ public class HippyTKDListViewController
     if ((paramHippyListView instanceof HippyTKDListView))
     {
       paramHippyListView = (HippyTKDListView)paramHippyListView;
-      if (!"getVisibleItems".equals(paramString)) {
-        break label42;
+      if ("getVisibleItems".equals(paramString))
+      {
+        paramPromise.resolve(paramHippyListView.getVisibleItems());
+        return;
       }
-      paramPromise.resolve(paramHippyListView.getVisibleItems());
-    }
-    label42:
-    while (!"refreshCompleted".equals(paramString)) {
-      return;
-    }
-    int i4 = paramHippyArray.getInt(0);
-    paramString = paramHippyArray.getString(1);
-    int j = paramHippyArray.getInt(2);
-    int k = paramHippyArray.getInt(3);
-    String str = paramHippyArray.getString(4);
-    int m = paramHippyArray.getInt(5);
-    int n = paramHippyArray.getInt(6);
-    int i1 = ImmersiveUtils.dpToPx(paramHippyArray.getInt(7));
-    int i2 = paramHippyArray.getInt(8);
-    int i3 = paramHippyArray.getInt(9);
-    int i = 1;
-    switch (i4)
-    {
-    }
-    for (;;)
-    {
-      paramHippyListView.completeRefresh(i, paramString, m, n, k, i1, str, true, j, i2, paramPromise, i3);
-      return;
-      i = 2;
-      continue;
-      i = 3;
+      if ("refreshCompleted".equals(paramString))
+      {
+        int i4 = paramHippyArray.getInt(0);
+        paramString = paramHippyArray.getString(1);
+        int i = 2;
+        int j = paramHippyArray.getInt(2);
+        int k = paramHippyArray.getInt(3);
+        String str = paramHippyArray.getString(4);
+        int m = paramHippyArray.getInt(5);
+        int n = paramHippyArray.getInt(6);
+        int i1 = ImmersiveUtils.dpToPx(paramHippyArray.getInt(7));
+        int i2 = paramHippyArray.getInt(8);
+        int i3 = paramHippyArray.getInt(9);
+        if (i4 != 0) {
+          if (i4 != 1) {
+            i = 1;
+          } else {
+            i = 3;
+          }
+        }
+        paramHippyListView.completeRefresh(i, paramString, m, n, k, i1, str, true, j, i2, paramPromise, i3);
+      }
     }
   }
   
@@ -173,14 +188,11 @@ public class HippyTKDListViewController
       {
         paramHippyListView.mEnableFooter = true;
         paramHippyListView.setLoadingStatus(2, "");
+        return;
       }
+      paramHippyListView.setLoadingStatus(0, "");
+      paramHippyListView.mEnableFooter = false;
     }
-    else
-    {
-      return;
-    }
-    paramHippyListView.setLoadingStatus(0, "");
-    paramHippyListView.mEnableFooter = false;
   }
   
   @HippyControllerProps(name="enableOnScrollForReport")
@@ -197,17 +209,14 @@ public class HippyTKDListViewController
     if ((paramHippyListView instanceof HippyTKDListView))
     {
       paramHippyListView = (HippyTKDListView)paramHippyListView;
-      if ((!paramBoolean) || (!paramHippyListView.mEnableRefresh)) {
-        break label24;
+      if ((paramBoolean) && (paramHippyListView.mEnableRefresh)) {
+        return;
+      }
+      paramHippyListView.setRefreshEnabled(paramBoolean);
+      if ((paramHippyListView.mRefreshColors != null) && (paramBoolean)) {
+        paramHippyListView.setCustomRefreshColor(HippyTKDSkinHandler.getColor(paramHippyListView.mRefreshColors), 0, 0);
       }
     }
-    label24:
-    do
-    {
-      return;
-      paramHippyListView.setRefreshEnabled(paramBoolean);
-    } while ((paramHippyListView.mRefreshColors == null) || (!paramBoolean));
-    paramHippyListView.setCustomRefreshColor(HippyTKDSkinHandler.getColor(paramHippyListView.mRefreshColors), 0, 0);
   }
   
   @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="enableScrollToContentOffset")
@@ -290,7 +299,7 @@ public class HippyTKDListViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.listview.HippyTKDListViewController
  * JD-Core Version:    0.7.0.1
  */

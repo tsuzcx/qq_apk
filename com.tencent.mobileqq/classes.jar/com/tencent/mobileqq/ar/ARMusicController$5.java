@@ -13,8 +13,12 @@ class ARMusicController$5
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMusicController", 2, "load bg music success. : " + ARMusicController.b(this.a));
+      if (QLog.isColorLevel())
+      {
+        paramMediaPlayer = new StringBuilder();
+        paramMediaPlayer.append("load bg music success. : ");
+        paramMediaPlayer.append(ARMusicController.b(this.a));
+        QLog.d("ARMusicController", 2, paramMediaPlayer.toString());
       }
       this.a.a.seekTo(0);
       ARMusicController.b(this.a, true);
@@ -22,8 +26,8 @@ class ARMusicController$5
       {
         this.a.a.start();
         ARMusicController.c(this.a, false);
+        return;
       }
-      return;
     }
     catch (Exception paramMediaPlayer)
     {
@@ -33,7 +37,7 @@ class ARMusicController$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARMusicController.5
  * JD-Core Version:    0.7.0.1
  */

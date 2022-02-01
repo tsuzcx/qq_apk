@@ -33,12 +33,24 @@ public class LoginRequest
   
   public String toString()
   {
-    return "LoginRequest{, loginType=" + this.loginType + ", appid='" + this.appid + '\'' + ", initOpenSDK=" + this.initOpenSDK + ", customExtData='" + this.customExtData + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LoginRequest{, loginType=");
+    localStringBuilder.append(this.loginType);
+    localStringBuilder.append(", appid='");
+    localStringBuilder.append(this.appid);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", initOpenSDK=");
+    localStringBuilder.append(this.initOpenSDK);
+    localStringBuilder.append(", customExtData='");
+    localStringBuilder.append(this.customExtData);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.libapi.login.LoginRequest
  * JD-Core Version:    0.7.0.1
  */

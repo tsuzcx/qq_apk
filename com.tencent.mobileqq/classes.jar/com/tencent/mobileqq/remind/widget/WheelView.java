@@ -25,16 +25,16 @@ public class WheelView
   private float jdField_a_of_type_Float = -0.1F;
   private int jdField_a_of_type_Int = 0;
   private Camera jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private GradientDrawable jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = null;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float = 0.8F;
-  private Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
+  private int jdField_b_of_type_Int = 80;
   private GradientDrawable jdField_b_of_type_AndroidGraphicsDrawableGradientDrawable = null;
   private boolean jdField_b_of_type_Boolean;
-  private float c = -25.0F;
-  private boolean d;
-  private int h = 80;
-  private int i = -80;
+  private float jdField_c_of_type_Float = -25.0F;
+  private int jdField_c_of_type_Int = -80;
+  private boolean jdField_c_of_type_Boolean;
   
   public WheelView(Context paramContext)
   {
@@ -56,31 +56,43 @@ public class WheelView
   
   private float a(View paramView)
   {
-    int j = c(paramView);
-    float f1;
-    float f2;
+    int i = a(paramView);
+    int j;
     if (this.jdField_b_of_type_Boolean)
     {
-      f1 = (this.jdField_a_of_type_Int - j) / (float)(2.2D * this.jdField_a_of_type_Int) * this.h;
-      if (f1 <= this.h) {
-        break label82;
-      }
-      f2 = this.h;
+      j = this.jdField_a_of_type_Int;
+      f1 = j - i;
+      double d = j;
+      Double.isNaN(d);
+      f1 /= (float)(d * 2.2D);
+      i = this.jdField_b_of_type_Int;
     }
-    label82:
-    do
+    else
     {
-      return f2;
-      f1 = (this.jdField_a_of_type_Int - j) / this.jdField_a_of_type_Int * this.h;
-      break;
-      f2 = f1;
-    } while (f1 >= -this.h);
-    return -this.h;
+      j = this.jdField_a_of_type_Int;
+      f1 = (j - i) / j;
+      i = this.jdField_b_of_type_Int;
+    }
+    float f2 = f1 * i;
+    i = this.jdField_b_of_type_Int;
+    if (f2 > i) {
+      return i;
+    }
+    float f1 = f2;
+    if (f2 < -i) {
+      f1 = -i;
+    }
+    return f1;
   }
   
   private int a()
   {
     return (getHeight() - getPaddingTop() - getPaddingBottom()) / 2 + getPaddingTop();
+  }
+  
+  private int a(View paramView)
+  {
+    return paramView.getTop() + paramView.getHeight() / 2;
   }
   
   private void a(Context paramContext)
@@ -97,7 +109,7 @@ public class WheelView
     setStaticTransformationsEnabled(true);
     setChildrenDrawingOrderEnabled(true);
     if (getResources().getDisplayMetrics().densityDpi <= 160) {
-      this.i = -40;
+      this.jdField_c_of_type_Int = -40;
     }
     ViewCompat.setImportantForAccessibility(this, 2);
   }
@@ -110,7 +122,7 @@ public class WheelView
       paramMatrix.postTranslate(paramInt1 / 2, paramInt2 / 2);
       return;
     }
-    if (this.d)
+    if (this.jdField_c_of_type_Boolean)
     {
       paramMatrix.preTranslate(-paramInt1 * 5.0F / 6.0F, -paramInt2 / 2);
       paramMatrix.postTranslate(paramInt1 * 5.0F / 6.0F, paramInt2 / 2);
@@ -125,8 +137,8 @@ public class WheelView
     paramTransformation.clear();
     paramTransformation.setTransformationType(3);
     Matrix localMatrix = paramTransformation.getMatrix();
-    int j = paramView.getWidth();
-    int k = paramView.getHeight();
+    int i = paramView.getWidth();
+    int j = paramView.getHeight();
     this.jdField_a_of_type_AndroidGraphicsCamera.save();
     this.jdField_a_of_type_AndroidGraphicsCamera.translate(0.0F, 0.0F, 100.0F);
     paramTransformation.setAlpha(paramFloat4);
@@ -141,62 +153,66 @@ public class WheelView
       localMatrix.preSkew(paramFloat3, 0.0F);
     }
     localMatrix.preTranslate(paramFloat5, 0.0F);
-    a(localMatrix, j, k);
+    a(localMatrix, i, j);
     this.jdField_a_of_type_AndroidGraphicsCamera.restore();
   }
   
   public static boolean a()
   {
-    if ((Build.MODEL.equals("VKY-AL00")) && (Build.VERSION.SDK_INT == 24)) {}
-    while ((Build.MODEL.equals("NXT-AL10")) && (Build.VERSION.SDK_INT == 24)) {
+    if ((Build.MODEL.equals("VKY-AL00")) && (Build.VERSION.SDK_INT == 24)) {
       return true;
     }
-    return false;
+    return (Build.MODEL.equals("NXT-AL10")) && (Build.VERSION.SDK_INT == 24);
   }
   
   private float b(View paramView)
   {
-    int j = c(paramView);
-    if (j < this.jdField_a_of_type_Int) {
-      return j / this.jdField_a_of_type_Int * this.i;
+    int i = a(paramView);
+    int j = this.jdField_a_of_type_Int;
+    float f;
+    if (i < j) {
+      f = i / j;
     }
-    if (j > this.jdField_a_of_type_Int) {
-      return (this.jdField_a_of_type_Int * 2 - j) / this.jdField_a_of_type_Int * this.i;
+    for (i = this.jdField_c_of_type_Int;; i = this.jdField_c_of_type_Int)
+    {
+      return f * i;
+      if (i <= j) {
+        break;
+      }
+      f = (j * 2 - i) / j;
     }
-    return this.i;
+    return this.jdField_c_of_type_Int;
   }
   
   private float c(View paramView)
   {
     float f = this.jdField_b_of_type_Float;
-    return (1.0F - Math.abs(c(paramView) - this.jdField_a_of_type_Int) / this.jdField_a_of_type_Int) * this.jdField_b_of_type_Float;
-  }
-  
-  private int c(View paramView)
-  {
-    return paramView.getTop() + paramView.getHeight() / 2;
+    return (1.0F - Math.abs(a(paramView) - this.jdField_a_of_type_Int) / this.jdField_a_of_type_Int) * this.jdField_b_of_type_Float;
   }
   
   private float d(View paramView)
   {
-    int j = c(paramView);
-    if (this.jdField_a_of_type_Float == -0.1F) {
-      return (this.jdField_a_of_type_Int - j) / this.jdField_a_of_type_Int * this.jdField_a_of_type_Float;
+    int j = a(paramView);
+    float f = this.jdField_a_of_type_Float;
+    int i;
+    if (f == -0.1F) {
+      i = this.jdField_a_of_type_Int;
+    } else {
+      i = this.jdField_a_of_type_Int;
     }
-    return (this.jdField_a_of_type_Int - j) / this.jdField_a_of_type_Int * this.jdField_a_of_type_Float;
+    return (i - j) / i * f;
   }
   
   private float e(View paramView)
   {
-    float f = 0.0F;
-    int j = c(paramView);
+    int i = a(paramView);
     if (this.jdField_a_of_type_Boolean) {
-      f = Math.abs(this.jdField_a_of_type_Int - j) / this.jdField_a_of_type_Int * this.c;
+      return Math.abs(this.jdField_a_of_type_Int - i) / this.jdField_a_of_type_Int * this.jdField_c_of_type_Float;
     }
-    return f;
+    return 0.0F;
   }
   
-  public boolean getChildStaticTransformation(View paramView, Transformation paramTransformation)
+  protected boolean getChildStaticTransformation(View paramView, Transformation paramTransformation)
   {
     float f1 = a(paramView);
     float f2 = b(paramView);
@@ -206,28 +222,28 @@ public class WheelView
     return true;
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_a_of_type_Int = a();
-    paramInt2 = b();
+    paramInt2 = getCenterOfGallery();
     View localView = getChildAt(0);
-    if (localView != null) {}
-    for (paramInt1 = localView.getMeasuredHeight();; paramInt1 = 50)
-    {
-      paramInt2 -= paramInt1 / 2;
-      this.jdField_b_of_type_AndroidGraphicsRect.set(getPaddingLeft(), paramInt2, getWidth() - getPaddingRight(), paramInt1 + paramInt2);
-      return;
+    if (localView != null) {
+      paramInt1 = localView.getMeasuredHeight();
+    } else {
+      paramInt1 = 50;
     }
+    paramInt2 -= paramInt1 / 2;
+    this.jdField_a_of_type_AndroidGraphicsRect.set(getPaddingLeft(), paramInt2, getWidth() - getPaddingRight(), paramInt1 + paramInt2);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.jdField_a_of_type_Int = a();
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     this.jdField_a_of_type_Int = a();
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
@@ -235,19 +251,26 @@ public class WheelView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    int i = paramMotionEvent.getAction();
+    if (i != 1) {
+      if (i != 2)
+      {
+        if (i != 3) {
+          break label46;
+        }
+      }
+      else
+      {
+        getParent().requestDisallowInterceptTouchEvent(true);
+        break label46;
+      }
     }
-    for (;;)
-    {
-      return super.onTouchEvent(paramMotionEvent);
-      getParent().requestDisallowInterceptTouchEvent(true);
-      continue;
-      getParent().requestDisallowInterceptTouchEvent(false);
-    }
+    getParent().requestDisallowInterceptTouchEvent(false);
+    label46:
+    return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void selectionChanged()
+  protected void selectionChanged()
   {
     super.selectionChanged();
     playSoundEffect(0);
@@ -265,12 +288,12 @@ public class WheelView
   
   public void setNeedTranslateCenterToRight(boolean paramBoolean)
   {
-    this.d = paramBoolean;
+    this.jdField_c_of_type_Boolean = paramBoolean;
   }
   
   public void setmMaxRotationAngle(int paramInt)
   {
-    this.h = paramInt;
+    this.jdField_b_of_type_Int = paramInt;
   }
   
   public void setmMaxSkew(float paramFloat)
@@ -280,7 +303,7 @@ public class WheelView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.remind.widget.WheelView
  * JD-Core Version:    0.7.0.1
  */

@@ -28,34 +28,33 @@ class SimpleFileViewer$GestureRelativeLayout$InnerGestureListener
     if (Math.abs(paramFloat2) > Math.abs(paramFloat1))
     {
       paramMotionEvent1 = this.a.a.b();
-      if (paramFloat2 <= 0.0F) {
-        break label97;
+      if (paramFloat2 > 0.0F)
+      {
+        if (paramMotionEvent1 != null) {
+          paramMotionEvent1.setVisibility(8);
+        }
+        if (this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocCooperationBanner != null) {
+          this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocCooperationBanner.b(true);
+        }
+        if (this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocCollectFormBanner != null)
+        {
+          this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocCollectFormBanner.b(true);
+          return false;
+        }
       }
-      if (paramMotionEvent1 != null) {
-        paramMotionEvent1.setVisibility(8);
-      }
-      if (this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocCooperationBanner != null) {
-        this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocCooperationBanner.b(true);
-      }
-      if (this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocCollectFormBanner != null) {
-        this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocCollectFormBanner.b(true);
+      else if (paramFloat2 < 0.0F)
+      {
+        if (paramMotionEvent1 != null) {
+          paramMotionEvent1.setVisibility(0);
+        }
+        if (this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocCooperationBanner != null) {
+          this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocCooperationBanner.a(true);
+        }
+        if (this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocCollectFormBanner != null) {
+          this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocCollectFormBanner.a(true);
+        }
       }
     }
-    label97:
-    do
-    {
-      do
-      {
-        return false;
-      } while (paramFloat2 >= 0.0F);
-      if (paramMotionEvent1 != null) {
-        paramMotionEvent1.setVisibility(0);
-      }
-      if (this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocCooperationBanner != null) {
-        this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocCooperationBanner.a(true);
-      }
-    } while (this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocCollectFormBanner == null);
-    this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocCollectFormBanner.a(true);
     return false;
   }
   
@@ -68,7 +67,7 @@ class SimpleFileViewer$GestureRelativeLayout$InnerGestureListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.GestureRelativeLayout.InnerGestureListener
  * JD-Core Version:    0.7.0.1
  */

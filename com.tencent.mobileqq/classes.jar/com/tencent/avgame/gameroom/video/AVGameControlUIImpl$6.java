@@ -9,16 +9,17 @@ class AVGameControlUIImpl$6
   
   public void run()
   {
-    if (this.this$0.a()) {}
-    while (AVGameBusinessCtrl.b().a() != 1) {
+    if (this.this$0.a()) {
       return;
     }
-    AVGameControlUIImpl.b(this.this$0, 7);
+    if (AVGameBusinessCtrl.b().a() == 1) {
+      AVGameControlUIImpl.b(this.this$0, 7);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.AVGameControlUIImpl.6
  * JD-Core Version:    0.7.0.1
  */

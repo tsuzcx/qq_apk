@@ -28,16 +28,17 @@ final class ReplaySubject$NodeList<T>
   
   public T removeFirst()
   {
-    if (this.head.next == null) {
-      throw new IllegalStateException("Empty!");
+    if (this.head.next != null)
+    {
+      ReplaySubject.NodeList.Node localNode = this.head.next;
+      this.head.next = localNode.next;
+      if (this.head.next == null) {
+        this.tail = this.head;
+      }
+      this.size -= 1;
+      return localNode.value;
     }
-    ReplaySubject.NodeList.Node localNode = this.head.next;
-    this.head.next = localNode.next;
-    if (this.head.next == null) {
-      this.tail = this.head;
-    }
-    this.size -= 1;
-    return localNode.value;
+    throw new IllegalStateException("Empty!");
   }
   
   public int size()
@@ -47,7 +48,7 @@ final class ReplaySubject$NodeList<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.subjects.ReplaySubject.NodeList
  * JD-Core Version:    0.7.0.1
  */

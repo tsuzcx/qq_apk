@@ -21,8 +21,16 @@ class TroopInteractGiftAnimationController$2
   
   public void a(int paramInt, oidb_0x962.RspBody paramRspBody)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopInteractGiftAnimationController", 2, "reportInteract: errorCode = " + paramInt + ", times = " + this.jdField_a_of_type_Int + ", giftID = " + this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportInteract: errorCode = ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", times = ");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(", giftID = ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      QLog.d("TroopInteractGiftAnimationController", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState = paramRspBody.uint32_play_state.get();
     this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.alreadyPlayMicroseconds = paramRspBody.uint64_already_pay_microseconds.get();
@@ -43,7 +51,7 @@ class TroopInteractGiftAnimationController$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,6 @@
 package com.tencent.biz.qqstory.view.widget;
 
 import android.content.Context;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -11,6 +8,9 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import java.util.ArrayList;
 
@@ -20,11 +20,11 @@ public class SlideTabViewPager
 {
   private int jdField_a_of_type_Int = -8421505;
   private Context jdField_a_of_type_AndroidContentContext;
-  protected ViewPager.OnPageChangeListener a;
-  private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
   protected View.OnClickListener a;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
+  protected ViewPager.OnPageChangeListener a;
+  private ViewPager jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
   private SlideTabViewPager.OnPageChangeListener jdField_a_of_type_ComTencentBizQqstoryViewWidgetSlideTabViewPager$OnPageChangeListener;
   private ViewPagerTapBlockView jdField_a_of_type_ComTencentBizQqstoryViewWidgetViewPagerTapBlockView;
   private ArrayList<TextView> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -47,23 +47,23 @@ public class SlideTabViewPager
   public SlideTabViewPager(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new SlideTabViewPager.1(this);
+    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager$OnPageChangeListener = new SlideTabViewPager.1(this);
     this.jdField_a_of_type_AndroidViewView$OnClickListener = new SlideTabViewPager.2(this);
     a(paramContext);
   }
   
   private int a(float paramFloat)
   {
-    return AIOUtils.a(paramFloat, this.jdField_a_of_type_AndroidContentContext.getResources());
+    return AIOUtils.b(paramFloat, this.jdField_a_of_type_AndroidContentContext.getResources());
   }
   
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    inflate(paramContext, 2131562008, this);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetViewPagerTapBlockView = ((ViewPagerTapBlockView)findViewById(2131378936));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131378937));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131365522));
+    inflate(paramContext, 2131561841, this);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetViewPagerTapBlockView = ((ViewPagerTapBlockView)findViewById(2131378323));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131378324));
+    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager = ((ViewPager)findViewById(2131365368));
   }
   
   public int a()
@@ -95,20 +95,23 @@ public class SlideTabViewPager
   
   public void a(int paramInt)
   {
-    if ((this.jdField_b_of_type_JavaUtilArrayList.size() == 0) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
-      return;
-    }
-    Object localObject = new SlideTabViewPager.TabViewAdapter(this, this.jdField_b_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter((PagerAdapter)localObject);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_JavaUtilArrayList.get(0));
-    if (this.jdField_b_of_type_JavaUtilArrayList.size() > 1)
+    if (this.jdField_b_of_type_JavaUtilArrayList.size() != 0)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_JavaUtilArrayList.get(1));
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener);
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
+        return;
+      }
+      Object localObject = new SlideTabViewPager.TabViewAdapter(this, this.jdField_b_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.setAdapter((PagerAdapter)localObject);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_JavaUtilArrayList.get(0));
+      if (this.jdField_b_of_type_JavaUtilArrayList.size() > 1)
+      {
+        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_JavaUtilArrayList.get(1));
+        this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.setOnPageChangeListener(this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager$OnPageChangeListener);
+      }
+      localObject = (TextView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      b(paramInt);
+      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetViewPagerTapBlockView.setBlockWidth(((TextView)localObject).getWidth());
     }
-    localObject = (TextView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    b(paramInt);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetViewPagerTapBlockView.setBlockWidth(((TextView)localObject).getWidth());
   }
   
   public void a(int paramInt, String paramString, View paramView)
@@ -118,25 +121,22 @@ public class SlideTabViewPager
       ((TextView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).setText(paramString);
       this.jdField_b_of_type_JavaUtilArrayList.add(paramInt, paramView);
       paramString = new SlideTabViewPager.TabViewAdapter(this, this.jdField_b_of_type_JavaUtilArrayList);
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(paramString);
+      this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.setAdapter(paramString);
     }
   }
   
   public void b(int paramInt)
   {
     int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
       TextView localTextView = (TextView)this.jdField_a_of_type_JavaUtilArrayList.get(i);
       if (i == paramInt) {
         localTextView.setTextColor(this.jdField_b_of_type_Int);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         localTextView.setTextColor(this.jdField_a_of_type_Int);
       }
+      i += 1;
     }
   }
   
@@ -154,8 +154,9 @@ public class SlideTabViewPager
   
   public void setTab(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager != null) {
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(paramInt);
+    ViewPager localViewPager = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
+    if (localViewPager != null) {
+      localViewPager.setCurrentItem(paramInt);
     }
   }
   
@@ -168,7 +169,7 @@ public class SlideTabViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.SlideTabViewPager
  * JD-Core Version:    0.7.0.1
  */

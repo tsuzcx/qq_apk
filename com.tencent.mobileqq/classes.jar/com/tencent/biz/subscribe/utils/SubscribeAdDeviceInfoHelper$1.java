@@ -17,17 +17,17 @@ class SubscribeAdDeviceInfoHelper$1
     ((GdtDeviceInfoHelper.Params)localObject).a = "1b0ad2";
     localObject = GdtDeviceInfoHelper.a(BaseApplication.getContext(), (GdtDeviceInfoHelper.Params)localObject);
     SubscribeAdDeviceInfoHelper localSubscribeAdDeviceInfoHelper = this.this$0;
-    if (localObject != null) {}
-    for (localObject = ((GdtDeviceInfoHelper.Result)localObject).a;; localObject = null)
-    {
-      SubscribeAdDeviceInfoHelper.a(localSubscribeAdDeviceInfoHelper, (qq_ad_get.QQAdGet.DeviceInfo)localObject);
-      return;
+    if (localObject != null) {
+      localObject = ((GdtDeviceInfoHelper.Result)localObject).a;
+    } else {
+      localObject = null;
     }
+    SubscribeAdDeviceInfoHelper.a(localSubscribeAdDeviceInfoHelper, (qq_ad_get.QQAdGet.DeviceInfo)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.utils.SubscribeAdDeviceInfoHelper.1
  * JD-Core Version:    0.7.0.1
  */

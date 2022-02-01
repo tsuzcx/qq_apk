@@ -12,12 +12,12 @@ public abstract class AnimationEngine
   public AnimationEngine(View paramView)
   {
     this.jdField_a_of_type_AndroidViewView = paramView;
-    if (GestureFps.a()) {}
-    for (paramView = new GestureFps();; paramView = null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationGestureFps = paramView;
-      return;
+    if (GestureFps.a()) {
+      paramView = new GestureFps();
+    } else {
+      paramView = null;
     }
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationGestureFps = paramView;
   }
   
   private void a()
@@ -33,8 +33,9 @@ public abstract class AnimationEngine
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationGestureFps != null) {
-      this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationGestureFps.a(paramInt);
+    GestureFps localGestureFps = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationGestureFps;
+    if (localGestureFps != null) {
+      localGestureFps.a(paramInt);
     }
     a();
   }
@@ -44,9 +45,10 @@ public abstract class AnimationEngine
   public final void run()
   {
     boolean bool = a();
-    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationGestureFps != null)
+    GestureFps localGestureFps = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationGestureFps;
+    if (localGestureFps != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationGestureFps.b();
+      localGestureFps.b();
       if (!bool) {
         this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationGestureFps.a();
       }
@@ -58,7 +60,7 @@ public abstract class AnimationEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.gesture.animation.AnimationEngine
  * JD-Core Version:    0.7.0.1
  */

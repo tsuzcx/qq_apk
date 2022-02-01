@@ -23,19 +23,18 @@ public final class FixedTrackSelection$Factory
   
   public FixedTrackSelection createTrackSelection(TrackGroup paramTrackGroup, int... paramVarArgs)
   {
+    int i = paramVarArgs.length;
     boolean bool = true;
-    if (paramVarArgs.length == 1) {}
-    for (;;)
-    {
-      Assertions.checkArgument(bool);
-      return new FixedTrackSelection(paramTrackGroup, paramVarArgs[0], this.reason, this.data);
+    if (i != 1) {
       bool = false;
     }
+    Assertions.checkArgument(bool);
+    return new FixedTrackSelection(paramTrackGroup, paramVarArgs[0], this.reason, this.data);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.trackselection.FixedTrackSelection.Factory
  * JD-Core Version:    0.7.0.1
  */

@@ -22,40 +22,65 @@ public class AVGameProtocolCoder
   public Object decode(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     String str = paramFromServiceMsg.getServiceCmd();
-    if (!TextUtils.isEmpty(str)) {}
-    for (ProtocolCoder localProtocolCoder = (ProtocolCoder)this.jdField_a_of_type_JavaUtilHashMap.get(str);; localProtocolCoder = null)
-    {
-      if (localProtocolCoder != null) {}
-      for (paramToServiceMsg = localProtocolCoder.a(paramToServiceMsg, paramFromServiceMsg);; paramToServiceMsg = null)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("AVGameProtocolCoder", 4, "decode, cmd[" + str + "], coder[" + localProtocolCoder + "], result[" + paramToServiceMsg + "]");
-        }
-        return paramToServiceMsg;
-      }
+    boolean bool = TextUtils.isEmpty(str);
+    Object localObject = null;
+    ProtocolCoder localProtocolCoder;
+    if (!bool) {
+      localProtocolCoder = (ProtocolCoder)this.jdField_a_of_type_JavaUtilHashMap.get(str);
+    } else {
+      localProtocolCoder = null;
     }
+    if (localProtocolCoder != null) {
+      localObject = localProtocolCoder.a(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if (QLog.isDevelopLevel())
+    {
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("decode, cmd[");
+      paramToServiceMsg.append(str);
+      paramToServiceMsg.append("], coder[");
+      paramToServiceMsg.append(localProtocolCoder);
+      paramToServiceMsg.append("], result[");
+      paramToServiceMsg.append(localObject);
+      paramToServiceMsg.append("]");
+      QLog.i("AVGameProtocolCoder", 4, paramToServiceMsg.toString());
+    }
+    return localObject;
   }
   
   public boolean encodeReqMsg(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
     String str = paramToServiceMsg.getServiceCmd();
-    if (!TextUtils.isEmpty(str)) {}
-    for (ProtocolCoder localProtocolCoder = (ProtocolCoder)this.jdField_a_of_type_JavaUtilHashMap.get(str);; localProtocolCoder = null)
-    {
-      if (localProtocolCoder != null) {}
-      for (boolean bool = localProtocolCoder.a(paramToServiceMsg, paramUniPacket);; bool = false)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("AVGameProtocolCoder", 4, "encodeReqMsg, cmd[" + str + "], coder[" + localProtocolCoder + "], ret[" + bool + "]");
-        }
-        return bool;
-      }
+    ProtocolCoder localProtocolCoder;
+    if (!TextUtils.isEmpty(str)) {
+      localProtocolCoder = (ProtocolCoder)this.jdField_a_of_type_JavaUtilHashMap.get(str);
+    } else {
+      localProtocolCoder = null;
     }
+    boolean bool;
+    if (localProtocolCoder != null) {
+      bool = localProtocolCoder.a(paramToServiceMsg, paramUniPacket);
+    } else {
+      bool = false;
+    }
+    if (QLog.isDevelopLevel())
+    {
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("encodeReqMsg, cmd[");
+      paramToServiceMsg.append(str);
+      paramToServiceMsg.append("], coder[");
+      paramToServiceMsg.append(localProtocolCoder);
+      paramToServiceMsg.append("], ret[");
+      paramToServiceMsg.append(bool);
+      paramToServiceMsg.append("]");
+      QLog.i("AVGameProtocolCoder", 4, paramToServiceMsg.toString());
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.protocol.AVGameProtocolCoder
  * JD-Core Version:    0.7.0.1
  */

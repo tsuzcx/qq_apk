@@ -9,18 +9,19 @@ class PreloadServiceImpl$5
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject != null)
     {
-      PreloadServiceImpl localPreloadServiceImpl = (PreloadServiceImpl)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localPreloadServiceImpl != null) && (!localPreloadServiceImpl.mIsOnDestroy)) {
-        PreloadServiceImpl.access$300(localPreloadServiceImpl, this.jdField_a_of_type_Boolean);
+      localObject = (PreloadServiceImpl)((WeakReference)localObject).get();
+      if ((localObject != null) && (!((PreloadServiceImpl)localObject).mIsOnDestroy)) {
+        PreloadServiceImpl.access$300((PreloadServiceImpl)localObject, this.jdField_a_of_type_Boolean);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadServiceImpl.5
  * JD-Core Version:    0.7.0.1
  */

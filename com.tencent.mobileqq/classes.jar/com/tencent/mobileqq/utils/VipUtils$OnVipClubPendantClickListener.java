@@ -10,7 +10,7 @@ public class VipUtils$OnVipClubPendantClickListener
 {
   public void onClick(View paramView)
   {
-    Object localObject = paramView.getTag(2131381699);
+    Object localObject = paramView.getTag(2131380933);
     if (((localObject instanceof Integer)) && ((paramView.getContext() instanceof Activity))) {
       VipUtils.a(paramView.getContext(), ((Integer)localObject).intValue());
     }
@@ -19,7 +19,7 @@ public class VipUtils$OnVipClubPendantClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.VipUtils.OnVipClubPendantClickListener
  * JD-Core Version:    0.7.0.1
  */

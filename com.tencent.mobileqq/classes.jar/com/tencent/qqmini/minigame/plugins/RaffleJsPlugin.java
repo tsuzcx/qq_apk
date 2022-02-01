@@ -94,46 +94,70 @@ public class RaffleJsPlugin
   private static final String REPORT_EVENT_NAME_RAFFLE_ERROR = "xiaoyouxi_raffle_error";
   private static final String REPORT_EVENT_NAME_RAFFLE_OPEN = "xiaoyouxi_choujiang_open";
   private static final long SHOW_LOADING_DELAY = 500L;
-  private static final String TAG = RaffleJsPlugin.class.getSimpleName();
+  private static final String TAG = "RaffleJsPlugin";
   private static final String WEB_VIEW_PARAM = "&_wwv=13";
-  private Integer activeId = Integer.valueOf(0);
+  private Integer activeId;
   private String appid;
   private String failUrl;
   private String goBackMainButtonUrl;
-  private boolean hasGetMaterial = false;
-  Runnable hideLoadingRunnable = new RaffleJsPlugin.15(this);
+  private boolean hasGetMaterial;
+  Runnable hideLoadingRunnable;
   private boolean isHorizontal;
   private String jumpUrl;
   private Dialog loadingDialog;
   private String logoUrl;
-  private boolean mGetRewarded = false;
-  private boolean mIsAlreadyFail = false;
-  private volatile boolean mIsPreloadAd = true;
-  private volatile boolean mIsRequestingAd = false;
+  private boolean mGetRewarded;
+  private boolean mIsAlreadyFail;
+  private volatile boolean mIsPreloadAd;
+  private volatile boolean mIsRequestingAd;
   private AdProxy.AbsRewardVideoAdView mRewardedVideoAd;
-  private RaffleJsPlugin.OnRaffleFailListener onRaffleFailListener = new RaffleJsPlugin.17(this);
-  private RaffleJsPlugin.OnRaffleSuccessListener onRaffleSuccessListener = new RaffleJsPlugin.16(this);
+  private RaffleJsPlugin.OnRaffleFailListener onRaffleFailListener;
+  private RaffleJsPlugin.OnRaffleSuccessListener onRaffleSuccessListener;
   private String posId;
   private String prizeUrl;
-  private Integer promotionId = Integer.valueOf(0);
+  private Integer promotionId;
   private RaffleFailDialog raffleFailDialog;
   private RaffleSuccessDialog raffleSuccessDialog;
   private String receiveUrl;
   private String shareButtonUrl;
-  Runnable showLoadingRunnable = new RaffleJsPlugin.14(this);
+  Runnable showLoadingRunnable;
   private String uin;
   private String watchAdButtonUrl;
   private String wishingImgUrl;
   
+  public RaffleJsPlugin()
+  {
+    Integer localInteger = Integer.valueOf(0);
+    this.promotionId = localInteger;
+    this.activeId = localInteger;
+    this.hasGetMaterial = false;
+    this.mIsPreloadAd = true;
+    this.mIsRequestingAd = false;
+    this.mIsAlreadyFail = false;
+    this.mGetRewarded = false;
+    this.showLoadingRunnable = new RaffleJsPlugin.14(this);
+    this.hideLoadingRunnable = new RaffleJsPlugin.15(this);
+    this.onRaffleSuccessListener = new RaffleJsPlugin.16(this);
+    this.onRaffleFailListener = new RaffleJsPlugin.17(this);
+  }
+  
   private void clickRewardedAd(Context paramContext)
   {
-    if ((!this.mIsRequestingAd) && (this.mRewardedVideoAd != null)) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if ((!this.mIsRequestingAd) && (this.mRewardedVideoAd != null)) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("clickRewardedAd isValid:");
+    localStringBuilder.append(bool);
+    localStringBuilder.append(";mIsPreloadAd:");
+    localStringBuilder.append(this.mIsPreloadAd);
+    QMLog.d(str, localStringBuilder.toString());
+    if (bool)
     {
-      QMLog.d(TAG, "clickRewardedAd isValid:" + bool + ";mIsPreloadAd:" + this.mIsPreloadAd);
-      if (!bool) {
-        break;
-      }
       showRewardedAd(paramContext);
       return;
     }
@@ -149,23 +173,29 @@ public class RaffleJsPlugin
   
   private void createRewardVideoAdView(Context paramContext, Bundle paramBundle)
   {
-    QMLog.d(TAG, "createRewardVideoAdView ext:" + paramBundle.toString());
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("createRewardVideoAdView ext:");
+    localStringBuilder.append(paramBundle.toString());
+    QMLog.d(str, localStringBuilder.toString());
     AppBrandTask.runTaskOnUiThread(new RaffleJsPlugin.10(this, paramContext, paramBundle));
   }
   
   private void dismissDialog(Dialog paramDialog)
   {
-    if (paramDialog != null) {}
-    try
-    {
-      if (paramDialog.isShowing()) {
-        paramDialog.dismiss();
+    if (paramDialog != null) {
+      try
+      {
+        if (paramDialog.isShowing())
+        {
+          paramDialog.dismiss();
+          return;
+        }
       }
-      return;
-    }
-    catch (Exception paramDialog)
-    {
-      QMLog.e(TAG, "dismissDialog exception", paramDialog);
+      catch (Exception paramDialog)
+      {
+        QMLog.e(TAG, "dismissDialog exception", paramDialog);
+      }
     }
   }
   
@@ -192,39 +222,34 @@ public class RaffleJsPlugin
   
   private void gameRaffleSuccess(Context paramContext, JSONObject paramJSONObject)
   {
-    int j = 1;
     QMLog.d(TAG, "gameRaffleSuccess");
-    int i = 0;
-    for (;;)
+    int i;
+    try
     {
-      try
-      {
-        paramJSONObject = paramJSONObject.getJSONObject("pack");
-        this.logoUrl = paramJSONObject.optString("business_name_pic");
-        this.jumpUrl = paramJSONObject.getString("url");
-        if (TextUtils.isEmpty(this.jumpUrl))
-        {
-          QMLog.e(TAG, "gameRaffleSuccess jumpUrl is null");
-          i = j;
-          if (i != 0)
-          {
-            hideLoading();
-            showErrorToast(paramContext, paramContext.getResources().getString(R.string.mini_sdk_game_raffle_fail));
-            onRaffleError("raffle fail");
-            springHbReportError(2);
-            return;
-          }
-        }
-      }
-      catch (JSONException paramJSONObject)
-      {
-        QMLog.e(TAG, "gameRaffleSuccess JSONException", paramJSONObject);
-        i = 1;
-        continue;
-        getGameRaffleMaterial(paramContext, new RaffleJsPlugin.3(this, paramContext));
-        return;
-      }
+      paramJSONObject = paramJSONObject.getJSONObject("pack");
+      this.logoUrl = paramJSONObject.optString("business_name_pic");
+      this.jumpUrl = paramJSONObject.getString("url");
+      i = 0;
     }
+    catch (JSONException paramJSONObject)
+    {
+      QMLog.e(TAG, "gameRaffleSuccess JSONException", paramJSONObject);
+      i = 1;
+    }
+    if (TextUtils.isEmpty(this.jumpUrl))
+    {
+      QMLog.e(TAG, "gameRaffleSuccess jumpUrl is null");
+      i = 1;
+    }
+    if (i != 0)
+    {
+      hideLoading();
+      showErrorToast(paramContext, paramContext.getResources().getString(R.string.mini_sdk_game_raffle_fail));
+      onRaffleError("raffle fail");
+      springHbReportError(2);
+      return;
+    }
+    getGameRaffleMaterial(paramContext, new RaffleJsPlugin.3(this, paramContext));
   }
   
   private AsyncResult getDoGameRaffleCallback(Context paramContext)
@@ -292,7 +317,6 @@ public class RaffleJsPlugin
   
   private Drawable getWebImage(Context paramContext, String paramString, int paramInt)
   {
-    int i = 0;
     Drawable localDrawable = paramContext.getResources().getDrawable(R.color.transparent);
     if (TextUtils.isEmpty(paramString))
     {
@@ -304,23 +328,34 @@ public class RaffleJsPlugin
       QMLog.d(TAG, "getWebImage other url is null");
       return localDrawable;
     }
-    switch (paramInt)
+    int i;
+    if (paramInt != 1)
     {
-    default: 
-      paramInt = 0;
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          i = 0;
+          paramInt = 0;
+        }
+        else
+        {
+          i = getPxFromDimen(paramContext, R.dimen.mini_sdk_raffle_common_button_width, R.dimen.mini_sdk_raffle_landscape_common_button_width);
+          paramInt = getPxFromDimen(paramContext, R.dimen.mini_sdk_raffle_common_button_height, R.dimen.mini_sdk_raffle_landscape_common_button_height);
+        }
+      }
+      else
+      {
+        i = getPxFromDimen(paramContext, R.dimen.mini_sdk_raffle_main_image_width, R.dimen.mini_sdk_raffle_landscape_main_image_width);
+        paramInt = getPxFromDimen(paramContext, R.dimen.mini_sdk_raffle_main_image_height, R.dimen.mini_sdk_raffle_landscape_main_image_height);
+      }
     }
-    for (;;)
+    else
     {
-      return ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getDrawable(paramContext, paramString, paramInt, i, localDrawable);
-      paramInt = getPxFromDimen(paramContext, R.dimen.mini_sdk_raffle_logo_image_width, R.dimen.mini_sdk_raffle_landscape_logo_image_width);
-      i = getPxFromDimen(paramContext, R.dimen.mini_sdk_raffle_logo_image_height, R.dimen.mini_sdk_raffle_landscape_logo_image_height);
-      continue;
-      paramInt = getPxFromDimen(paramContext, R.dimen.mini_sdk_raffle_main_image_width, R.dimen.mini_sdk_raffle_landscape_main_image_width);
-      i = getPxFromDimen(paramContext, R.dimen.mini_sdk_raffle_main_image_height, R.dimen.mini_sdk_raffle_landscape_main_image_height);
-      continue;
-      paramInt = getPxFromDimen(paramContext, R.dimen.mini_sdk_raffle_common_button_width, R.dimen.mini_sdk_raffle_landscape_common_button_width);
-      i = getPxFromDimen(paramContext, R.dimen.mini_sdk_raffle_common_button_height, R.dimen.mini_sdk_raffle_landscape_common_button_height);
+      i = getPxFromDimen(paramContext, R.dimen.mini_sdk_raffle_logo_image_width, R.dimen.mini_sdk_raffle_landscape_logo_image_width);
+      paramInt = getPxFromDimen(paramContext, R.dimen.mini_sdk_raffle_logo_image_height, R.dimen.mini_sdk_raffle_landscape_logo_image_height);
     }
+    return ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getDrawable(paramContext, paramString, i, paramInt, localDrawable);
   }
   
   private static void handlePreload(Context paramContext, JSONObject paramJSONObject)
@@ -377,12 +412,16 @@ public class RaffleJsPlugin
   
   private static boolean isAlreadyPreload(Context paramContext)
   {
-    boolean bool = false;
     long l = getUpdateTime(paramContext);
+    boolean bool = false;
     if (l != 0L)
     {
       l = (System.currentTimeMillis() - l) / 1000L;
-      QMLog.d(TAG, "isAlreadyPreload deltaSecond = " + l);
+      paramContext = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isAlreadyPreload deltaSecond = ");
+      localStringBuilder.append(l);
+      QMLog.d(paramContext, localStringBuilder.toString());
       if (l <= 3600L) {
         bool = true;
       }
@@ -399,7 +438,11 @@ public class RaffleJsPlugin
   
   private void loadAdError(Context paramContext)
   {
-    QMLog.e(TAG, "loadAdError mIsAlreadyFail = " + this.mIsAlreadyFail);
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("loadAdError mIsAlreadyFail = ");
+    localStringBuilder.append(this.mIsAlreadyFail);
+    QMLog.e(str, localStringBuilder.toString());
     if (this.mIsAlreadyFail)
     {
       onRaffleStateChange("watchAd");
@@ -412,7 +455,6 @@ public class RaffleJsPlugin
   
   private void loadRewardedAd(Context paramContext)
   {
-    int i = 0;
     QMLog.d(TAG, "loadRewardedAd");
     if (this.mIsRequestingAd)
     {
@@ -421,51 +463,62 @@ public class RaffleJsPlugin
     }
     this.mRewardedVideoAd = null;
     this.mIsRequestingAd = true;
+    int i = 0;
     this.mGetRewarded = false;
     if (this.isHorizontal) {
       i = 90;
     }
-    String str3 = AdUtil.getSpAdGdtCookie(1);
-    Object localObject3 = this.mMiniAppInfo;
-    String str1;
-    String str2;
+    String str = AdUtil.getSpAdGdtCookie(1);
+    MiniAppInfo localMiniAppInfo = this.mMiniAppInfo;
+    Object localObject5 = "";
+    Object localObject1;
     Object localObject2;
-    if (localObject3 != null) {
-      if (((MiniAppInfo)localObject3).launchParam.entryPath != null)
-      {
-        localObject1 = ((MiniAppInfo)localObject3).launchParam.entryPath;
-        str1 = ((MiniAppInfo)localObject3).launchParam.reportData;
-        str2 = String.valueOf(((MiniAppInfo)localObject3).launchParam.scene);
-        localObject2 = localObject1;
-      }
-    }
-    for (Object localObject1 = str2;; localObject1 = "")
+    Object localObject3;
+    if (localMiniAppInfo != null)
     {
-      if ((localObject3 != null) && (((MiniAppInfo)localObject3).via != null)) {}
-      for (str2 = ((MiniAppInfo)localObject3).via;; str2 = "")
-      {
-        localObject3 = new Bundle();
-        ((Bundle)localObject3).putString(AdProxy.KEY_ACCOUNT, this.uin);
-        ((Bundle)localObject3).putInt(AdProxy.KEY_AD_TYPE, 1);
-        ((Bundle)localObject3).putInt(AdProxy.KEY_ORIENTATION, i);
-        ((Bundle)localObject3).putString(AdProxy.KEY_GDT_COOKIE, str3);
-        ((Bundle)localObject3).putString(AdProxy.KEY_ENTRY_PATH, (String)localObject2);
-        ((Bundle)localObject3).putString(AdProxy.KEY_REPORT_DATA, str1);
-        ((Bundle)localObject3).putString(AdProxy.KEY_REFER, (String)localObject1);
-        ((Bundle)localObject3).putString(AdProxy.KEY_VIA, str2);
-        createRewardVideoAdView(paramContext, (Bundle)localObject3);
-        return;
+      if (localMiniAppInfo.launchParam.entryPath != null) {
+        localObject1 = localMiniAppInfo.launchParam.entryPath;
+      } else {
         localObject1 = "";
-        break;
       }
-      localObject2 = "";
-      str1 = "";
+      localObject2 = localMiniAppInfo.launchParam.reportData;
+      localObject3 = String.valueOf(localMiniAppInfo.launchParam.scene);
     }
+    else
+    {
+      localObject4 = "";
+      localObject1 = localObject4;
+      localObject3 = localObject1;
+      localObject2 = localObject1;
+      localObject1 = localObject4;
+    }
+    Object localObject4 = localObject5;
+    if (localMiniAppInfo != null)
+    {
+      localObject4 = localObject5;
+      if (localMiniAppInfo.via != null) {
+        localObject4 = localMiniAppInfo.via;
+      }
+    }
+    localObject5 = new Bundle();
+    ((Bundle)localObject5).putString(AdProxy.KEY_ACCOUNT, this.uin);
+    ((Bundle)localObject5).putInt(AdProxy.KEY_AD_TYPE, 1);
+    ((Bundle)localObject5).putInt(AdProxy.KEY_ORIENTATION, i);
+    ((Bundle)localObject5).putString(AdProxy.KEY_GDT_COOKIE, str);
+    ((Bundle)localObject5).putString(AdProxy.KEY_ENTRY_PATH, (String)localObject1);
+    ((Bundle)localObject5).putString(AdProxy.KEY_REPORT_DATA, (String)localObject2);
+    ((Bundle)localObject5).putString(AdProxy.KEY_REFER, (String)localObject3);
+    ((Bundle)localObject5).putString(AdProxy.KEY_VIA, (String)localObject4);
+    createRewardVideoAdView(paramContext, (Bundle)localObject5);
   }
   
   private void onCloseAd(Context paramContext)
   {
-    QMLog.d(TAG, "onCloseAd mGetRewarded = " + this.mGetRewarded);
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onCloseAd mGetRewarded = ");
+    localStringBuilder.append(this.mGetRewarded);
+    QMLog.d(str, localStringBuilder.toString());
     if (this.mGetRewarded)
     {
       onRaffleStateChange("watchAd");
@@ -481,7 +534,11 @@ public class RaffleJsPlugin
     {
       localJSONObject.put("state", "error");
       localJSONObject.put("errorMsg", paramString);
-      QMLog.d(TAG, "onRaffleError errorMsg: " + paramString);
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onRaffleError errorMsg: ");
+      localStringBuilder.append(paramString);
+      QMLog.d(str, localStringBuilder.toString());
       sendSubscribeEvent("onMinigameRaffleStateChange", localJSONObject.toString());
       return;
     }
@@ -497,7 +554,11 @@ public class RaffleJsPlugin
     try
     {
       localJSONObject.put("state", paramString);
-      QMLog.d(TAG, "onRaffleStateChange state: " + paramString);
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onRaffleStateChange state: ");
+      localStringBuilder.append(paramString);
+      QMLog.d(str, localStringBuilder.toString());
       sendSubscribeEvent("onMinigameRaffleStateChange", localJSONObject.toString());
       return;
     }
@@ -509,7 +570,11 @@ public class RaffleJsPlugin
   
   private boolean parseMaterialUrl(JSONObject paramJSONObject)
   {
-    QMLog.d(TAG, "getMaterialUrl jsonObject: " + paramJSONObject.toString());
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getMaterialUrl jsonObject: ");
+    localStringBuilder.append(paramJSONObject.toString());
+    QMLog.d(str, localStringBuilder.toString());
     try
     {
       paramJSONObject = new JSONObject(paramJSONObject.getString("key_result_data"));
@@ -523,27 +588,31 @@ public class RaffleJsPlugin
       this.promotionId = Integer.valueOf(paramJSONObject.optInt("promotion_id"));
       this.activeId = Integer.valueOf(paramJSONObject.optInt("active_id"));
       this.hasGetMaterial = true;
-      return this.hasGetMaterial;
     }
     catch (JSONException paramJSONObject)
     {
-      for (;;)
-      {
-        QMLog.e(TAG, "getMaterialUrl JSONException", paramJSONObject);
-        this.hasGetMaterial = false;
-      }
+      QMLog.e(TAG, "getMaterialUrl JSONException", paramJSONObject);
+      this.hasGetMaterial = false;
     }
+    return this.hasGetMaterial;
   }
   
   public static void preloadGameRaffleMaterial(Context paramContext, String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      QMLog.e(TAG, "preloadGameRaffleMaterial appid=" + paramString1 + ";uin=" + paramString2);
-    }
-    while (isAlreadyPreload(paramContext)) {
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    {
+      if (!isAlreadyPreload(paramContext)) {
+        getGameRaffleMaterialStatic(paramContext, paramString1, paramString2);
+      }
       return;
     }
-    getGameRaffleMaterialStatic(paramContext, paramString1, paramString2);
+    paramContext = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("preloadGameRaffleMaterial appid=");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(";uin=");
+    localStringBuilder.append(paramString2);
+    QMLog.e(paramContext, localStringBuilder.toString());
   }
   
   private void raffleFailImageLoadError(Context paramContext)
@@ -588,19 +657,22 @@ public class RaffleJsPlugin
   
   private void showGameFailDialog(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
   {
-    Drawable localDrawable2 = null;
     QMLog.d(TAG, "showGameFailDialog");
     Drawable localDrawable3 = getWebImage(paramContext, this.failUrl, 2);
-    if (paramBoolean1) {}
-    for (Drawable localDrawable1 = getWebImage(paramContext, this.shareButtonUrl, 3);; localDrawable1 = null)
-    {
-      if (paramBoolean2) {
-        localDrawable2 = getWebImage(paramContext, this.watchAdButtonUrl, 3);
-      }
-      hideLoading();
-      ThreadManager.getUIHandler().post(new RaffleJsPlugin.6(this, paramContext, localDrawable3, localDrawable1, localDrawable2, paramBoolean1, paramBoolean2));
-      return;
+    Drawable localDrawable1;
+    if (paramBoolean1) {
+      localDrawable1 = getWebImage(paramContext, this.shareButtonUrl, 3);
+    } else {
+      localDrawable1 = null;
     }
+    Drawable localDrawable2;
+    if (paramBoolean2) {
+      localDrawable2 = getWebImage(paramContext, this.watchAdButtonUrl, 3);
+    } else {
+      localDrawable2 = null;
+    }
+    hideLoading();
+    ThreadManager.getUIHandler().post(new RaffleJsPlugin.6(this, paramContext, localDrawable3, localDrawable1, localDrawable2, paramBoolean1, paramBoolean2));
   }
   
   private void showGameSuccessDialog(Context paramContext)
@@ -617,13 +689,19 @@ public class RaffleJsPlugin
   
   private void showRewardedAd(Context paramContext)
   {
-    if ((!this.mIsRequestingAd) && (this.mRewardedVideoAd != null)) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if ((!this.mIsRequestingAd) && (this.mRewardedVideoAd != null)) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("showRewardedAd isValid:");
+    localStringBuilder.append(bool);
+    QMLog.d(str, localStringBuilder.toString());
+    if (bool)
     {
-      QMLog.d(TAG, "showRewardedAd isValid:" + bool);
-      if (!bool) {
-        break;
-      }
       this.mRewardedVideoAd.showAD(paramContext, "");
       this.mRewardedVideoAd = null;
       AdFrequencyLimit.setRewardVideoAdShowing(true);
@@ -634,107 +712,91 @@ public class RaffleJsPlugin
   
   private void springHbGameFailReport(boolean paramBoolean1, boolean paramBoolean2)
   {
-    String str1;
-    String str2;
-    label29:
-    String str3;
-    label45:
-    HashMap localHashMap;
-    int i;
-    if (this.appid != null)
-    {
-      str1 = this.appid;
-      if (this.activeId == null) {
-        break label199;
-      }
-      str2 = this.activeId.toString();
-      if (this.promotionId == null) {
-        break label207;
-      }
-      str3 = this.promotionId.toString();
-      localHashMap = new HashMap();
-      localHashMap.put("app_id", str1);
-      localHashMap.put("active_id", str2);
-      localHashMap.put("jackpot_id", str3);
-      localHashMap.put("ext1", "1");
-      if (!paramBoolean1) {
-        break label215;
-      }
-      i = 1;
-      label113:
-      if (!paramBoolean2) {
-        break label220;
-      }
-    }
-    label199:
-    label207:
-    label215:
-    label220:
-    for (int j = 2;; j = 0)
-    {
-      localHashMap.put("ext2", String.valueOf(j | i));
-      QMLog.d(TAG, "springHbGameFailReport \neventName:xiaoyouxi_fail \nactionType: exp \nparams: " + localHashMap.toString());
-      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).springHbReport("xiaoyouxi_fail", 0, 0, localHashMap, "exp");
-      return;
+    String str1 = this.appid;
+    String str2 = "";
+    if (str1 == null) {
       str1 = "";
-      break;
-      str2 = "";
-      break label29;
-      str3 = "";
-      break label45;
-      i = 0;
-      break label113;
     }
+    Object localObject1 = this.activeId;
+    if (localObject1 != null) {
+      localObject1 = ((Integer)localObject1).toString();
+    } else {
+      localObject1 = "";
+    }
+    Object localObject2 = this.promotionId;
+    if (localObject2 != null) {
+      str2 = ((Integer)localObject2).toString();
+    }
+    localObject2 = new HashMap();
+    ((Map)localObject2).put("app_id", str1);
+    ((Map)localObject2).put("active_id", localObject1);
+    ((Map)localObject2).put("jackpot_id", str2);
+    ((Map)localObject2).put("ext1", "1");
+    boolean bool;
+    if (paramBoolean2) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ((Map)localObject2).put("ext2", String.valueOf(paramBoolean1 | bool));
+    str1 = TAG;
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("springHbGameFailReport \neventName:xiaoyouxi_fail \nactionType: exp \nparams: ");
+    ((StringBuilder)localObject1).append(localObject2.toString());
+    QMLog.d(str1, ((StringBuilder)localObject1).toString());
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).springHbReport("xiaoyouxi_fail", 0, 0, (Map)localObject2, "exp");
   }
   
   private void springHbReport(String paramString1, String paramString2)
   {
-    String str1;
-    String str2;
-    if (this.appid != null)
-    {
-      str1 = this.appid;
-      if (this.activeId == null) {
-        break label183;
-      }
-      str2 = this.activeId.toString();
-      label28:
-      if (this.promotionId == null) {
-        break label191;
-      }
-    }
-    label183:
-    label191:
-    for (String str3 = this.promotionId.toString();; str3 = "")
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("app_id", str1);
-      localHashMap.put("active_id", str2);
-      localHashMap.put("jackpot_id", str3);
-      localHashMap.put("ext1", "1");
-      QMLog.d(TAG, "springHbReport \neventName:" + paramString1 + " \nactionType: " + paramString2 + " \nparams: " + localHashMap.toString());
-      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).springHbReport(paramString1, 0, 0, localHashMap, paramString2);
-      return;
+    String str1 = this.appid;
+    String str2 = "";
+    if (str1 == null) {
       str1 = "";
-      break;
-      str2 = "";
-      break label28;
     }
+    Object localObject1 = this.activeId;
+    if (localObject1 != null) {
+      localObject1 = ((Integer)localObject1).toString();
+    } else {
+      localObject1 = "";
+    }
+    Object localObject2 = this.promotionId;
+    if (localObject2 != null) {
+      str2 = ((Integer)localObject2).toString();
+    }
+    localObject2 = new HashMap();
+    ((Map)localObject2).put("app_id", str1);
+    ((Map)localObject2).put("active_id", localObject1);
+    ((Map)localObject2).put("jackpot_id", str2);
+    ((Map)localObject2).put("ext1", "1");
+    str1 = TAG;
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("springHbReport \neventName:");
+    ((StringBuilder)localObject1).append(paramString1);
+    ((StringBuilder)localObject1).append(" \nactionType: ");
+    ((StringBuilder)localObject1).append(paramString2);
+    ((StringBuilder)localObject1).append(" \nparams: ");
+    ((StringBuilder)localObject1).append(localObject2.toString());
+    QMLog.d(str1, ((StringBuilder)localObject1).toString());
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).springHbReport(paramString1, 0, 0, (Map)localObject2, paramString2);
   }
   
   private void springHbReportError(int paramInt)
   {
-    if (this.appid != null) {}
-    for (String str = this.appid;; str = "")
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("app_id", str);
-      localHashMap.put("ext1", "1");
-      localHashMap.put("ext2", String.valueOf(paramInt));
-      QMLog.d(TAG, "springHbReport \neventName:xiaoyouxi_raffle_error \nactionType: exp \nparams: " + localHashMap.toString());
-      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).springHbReport("xiaoyouxi_raffle_error", 0, 0, localHashMap, "exp");
-      return;
+    String str = this.appid;
+    if (str == null) {
+      str = "";
     }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("app_id", str);
+    localHashMap.put("ext1", "1");
+    localHashMap.put("ext2", String.valueOf(paramInt));
+    str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("springHbReport \neventName:xiaoyouxi_raffle_error \nactionType: exp \nparams: ");
+    localStringBuilder.append(localHashMap.toString());
+    QMLog.d(str, localStringBuilder.toString());
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).springHbReport("xiaoyouxi_raffle_error", 0, 0, localHashMap, "exp");
   }
   
   private void writeToSp(Context paramContext)
@@ -788,34 +850,25 @@ public class RaffleJsPlugin
   @JsEvent({"minigameRaffle"})
   public void startRaffle(RequestEvent paramRequestEvent)
   {
-    QMLog.d(TAG, "startRaffle params: " + paramRequestEvent.jsonParams);
-    Object localObject;
-    if (this.mApkgInfo != null)
-    {
+    Object localObject = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("startRaffle params: ");
+    localStringBuilder.append(paramRequestEvent.jsonParams);
+    QMLog.d((String)localObject, localStringBuilder.toString());
+    if (this.mApkgInfo != null) {
       localObject = this.mApkgInfo.appId;
-      this.appid = ((String)localObject);
-      this.uin = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAccount();
-      if ((!TextUtils.isEmpty(this.appid)) && (!TextUtils.isEmpty(this.uin))) {
-        break label141;
-      }
-      QMLog.e(TAG, "startRaffle appid=" + this.appid + ";uin=" + this.uin);
-      paramRequestEvent.fail();
-    }
-    label141:
-    boolean bool3;
-    do
-    {
-      return;
+    } else {
       localObject = null;
-      break;
-      boolean bool1;
-      boolean bool2;
+    }
+    this.appid = ((String)localObject);
+    this.uin = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAccount();
+    if ((!TextUtils.isEmpty(this.appid)) && (!TextUtils.isEmpty(this.uin))) {
       try
       {
         localObject = new JSONObject(paramRequestEvent.jsonParams);
-        bool1 = ((JSONObject)localObject).getBoolean("isSuccess");
-        bool2 = ((JSONObject)localObject).optBoolean("canShare", false);
-        bool3 = ((JSONObject)localObject).optBoolean("canWatchAd", false);
+        boolean bool1 = ((JSONObject)localObject).getBoolean("isSuccess");
+        boolean bool2 = ((JSONObject)localObject).optBoolean("canShare", false);
+        boolean bool3 = ((JSONObject)localObject).optBoolean("canWatchAd", false);
         this.posId = ((JSONObject)localObject).optString("adUnitId");
         if (isAdInvalid(bool1, bool3, this.posId))
         {
@@ -823,6 +876,28 @@ public class RaffleJsPlugin
           paramRequestEvent.fail();
           return;
         }
+        paramRequestEvent.ok();
+        paramRequestEvent = this.mMiniAppContext.getAttachedActivity();
+        this.isHorizontal = this.mMiniAppContext.isOrientationLandscape();
+        if (isNoNetwork(paramRequestEvent))
+        {
+          showErrorToast(paramRequestEvent, paramRequestEvent.getResources().getString(R.string.mini_sdk_game_raffle_no_network));
+          onRaffleError("no network");
+          return;
+        }
+        if (bool1)
+        {
+          doGameRaffle(paramRequestEvent);
+          return;
+        }
+        gameRaffleFail(paramRequestEvent, bool2, bool3);
+        if (bool3)
+        {
+          this.mIsAlreadyFail = false;
+          this.mIsPreloadAd = true;
+          loadRewardedAd(paramRequestEvent);
+        }
+        return;
       }
       catch (JSONException localJSONException)
       {
@@ -830,30 +905,20 @@ public class RaffleJsPlugin
         paramRequestEvent.fail();
         return;
       }
-      paramRequestEvent.ok();
-      paramRequestEvent = this.mMiniAppContext.getAttachedActivity();
-      this.isHorizontal = this.mMiniAppContext.isOrientationLandscape();
-      if (isNoNetwork(paramRequestEvent))
-      {
-        showErrorToast(paramRequestEvent, paramRequestEvent.getResources().getString(R.string.mini_sdk_game_raffle_no_network));
-        onRaffleError("no network");
-        return;
-      }
-      if (bool1)
-      {
-        doGameRaffle(paramRequestEvent);
-        return;
-      }
-      gameRaffleFail(paramRequestEvent, bool2, bool3);
-    } while (!bool3);
-    this.mIsAlreadyFail = false;
-    this.mIsPreloadAd = true;
-    loadRewardedAd(paramRequestEvent);
+    }
+    String str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("startRaffle appid=");
+    localStringBuilder.append(this.appid);
+    localStringBuilder.append(";uin=");
+    localStringBuilder.append(this.uin);
+    QMLog.e(str, localStringBuilder.toString());
+    paramRequestEvent.fail();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.RaffleJsPlugin
  * JD-Core Version:    0.7.0.1
  */

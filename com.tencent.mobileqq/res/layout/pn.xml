@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:layout_gravity="center|left|top" android:layout_width="wrap_content" android:layout_height="wrap_content">
         <ImageView android:layout_gravity="center|left|top" android:id="@id/c0o" android:layout_width="40.0dip" android:layout_height="40.0dip" />
-        <com.tencent.widget.ThemeURLImageView android:gravity="center" android:id="@id/n_s" android:visibility="gone" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginTop="-7.0dip" android:layout_below="@id/c0o" android:layout_centerHorizontal="true" />
+        <com.tencent.widget.ThemeURLImageView android:gravity="center" android:id="@id/nc_" android:visibility="gone" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginTop="-7.0dip" android:layout_below="@id/c0o" android:layout_centerHorizontal="true" />
     </RelativeLayout>
     <TextView android:textSize="18.0sp" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center|left|top" android:id="@id/k8l" android:visibility="gone" android:layout_width="40.0dip" android:layout_height="40.0dip" />
     <com.tencent.widget.ThemeImageView android:layout_gravity="center|left|top" android:id="@id/c24" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/abe" />

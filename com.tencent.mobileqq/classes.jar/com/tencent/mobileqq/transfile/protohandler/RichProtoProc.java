@@ -69,25 +69,23 @@ public class RichProtoProc
     {
       paramRichProtoReq = paramRichProtoReq.protoKey;
       paramRichProtoReq = (Class)handlerMaps.get(paramRichProtoReq);
-      if (paramRichProtoReq == null) {}
-    }
-    try
-    {
-      paramRichProtoReq = (RichProtoProc.RichProtoHandler)paramRichProtoReq.newInstance();
-      return paramRichProtoReq;
-    }
-    catch (IllegalAccessException paramRichProtoReq)
-    {
-      paramRichProtoReq.printStackTrace();
-      return null;
-    }
-    catch (InstantiationException paramRichProtoReq)
-    {
-      for (;;)
-      {
-        paramRichProtoReq.printStackTrace();
+      if (paramRichProtoReq != null) {
+        try
+        {
+          paramRichProtoReq = (RichProtoProc.RichProtoHandler)paramRichProtoReq.newInstance();
+          return paramRichProtoReq;
+        }
+        catch (InstantiationException paramRichProtoReq)
+        {
+          paramRichProtoReq.printStackTrace();
+        }
+        catch (IllegalAccessException paramRichProtoReq)
+        {
+          paramRichProtoReq.printStackTrace();
+        }
       }
     }
+    return null;
   }
   
   public static void onBusiProtoResp(RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp)
@@ -111,7 +109,7 @@ public class RichProtoProc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.protohandler.RichProtoProc
  * JD-Core Version:    0.7.0.1
  */

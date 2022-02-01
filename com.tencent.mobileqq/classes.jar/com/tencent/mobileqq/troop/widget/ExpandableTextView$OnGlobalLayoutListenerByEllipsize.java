@@ -22,35 +22,32 @@ public class ExpandableTextView$OnGlobalLayoutListenerByEllipsize
   public void onGlobalLayout()
   {
     int i;
-    String str;
-    CharSequence localCharSequence1;
     if (this.jdField_a_of_type_AndroidWidgetTextView.getLineCount() > this.jdField_a_of_type_Int)
     {
       i = this.jdField_a_of_type_AndroidWidgetTextView.getLayout().getLineEnd(this.jdField_a_of_type_Int - 1);
-      str = "...";
-      localCharSequence1 = this.jdField_a_of_type_AndroidWidgetTextView.getText();
+      localCharSequence = this.jdField_a_of_type_AndroidWidgetTextView.getText();
     }
     try
     {
-      localCharSequence1 = localCharSequence1.subSequence(0, i - 3);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(localCharSequence1);
-      this.jdField_a_of_type_AndroidWidgetTextView.append(str);
-      this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-      return;
+      localCharSequence = localCharSequence.subSequence(0, i - 3);
+      str = "...";
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        str = "";
-        CharSequence localCharSequence2 = this.jdField_a_of_type_AndroidWidgetTextView.getText();
-      }
+      String str;
+      label56:
+      break label56;
     }
+    CharSequence localCharSequence = this.jdField_a_of_type_AndroidWidgetTextView.getText();
+    str = "";
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(localCharSequence);
+    this.jdField_a_of_type_AndroidWidgetTextView.append(str);
+    this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.ExpandableTextView.OnGlobalLayoutListenerByEllipsize
  * JD-Core Version:    0.7.0.1
  */

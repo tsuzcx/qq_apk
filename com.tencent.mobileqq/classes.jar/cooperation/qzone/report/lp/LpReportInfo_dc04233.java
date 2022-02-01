@@ -42,39 +42,53 @@ public class LpReportInfo_dc04233
     try
     {
       localObject = localSimpleDateFormat.parse((String)localObject);
-      double d = (localDate.getTime() - ((Date)localObject).getTime()) * 1.0D / 3600000.0D;
-      if (QLog.isColorLevel()) {
-        QLog.i("LpReportInfo_dc04233", 2, "dc04233 offest time = " + d);
+      long l1 = localDate.getTime();
+      long l2 = ((Date)localObject).getTime();
+      double d = l1 - l2;
+      Double.isNaN(d);
+      d = d * 1.0D / 3600000.0D;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("dc04233 offest time = ");
+        ((StringBuilder)localObject).append(d);
+        QLog.i("LpReportInfo_dc04233", 2, ((StringBuilder)localObject).toString());
       }
       if (d >= 24.0D)
       {
         localSharedPreferences.edit().putString("lastReportTime", localSimpleDateFormat.format(localDate)).apply();
         return true;
       }
+      return false;
     }
     catch (ParseException localParseException)
     {
       localParseException.printStackTrace();
       localSharedPreferences.edit().putString("lastReportTime", localSimpleDateFormat.format(localDate)).apply();
-      return true;
     }
-    return false;
+    return true;
   }
   
   public String getSimpleInfo()
   {
-    return "dc04233 uin: " + this.uin + " isKingCard: " + this.isKingCard;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("dc04233 uin: ");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append(" isKingCard: ");
+    localStringBuilder.append(this.isKingCard);
+    return localStringBuilder.toString();
   }
   
   public void report()
   {
-    if (isNeedReport()) {
+    if (isNeedReport())
+    {
       LpReportManager.getInstance().reportToDC04233(this, false, false);
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.i("LpReportInfo_dc04233", 2, "dc04233 has report");
+    if (QLog.isColorLevel()) {
+      QLog.i("LpReportInfo_dc04233", 2, "dc04233 has report");
+    }
   }
   
   public Map<String, String> toMap()
@@ -88,7 +102,7 @@ public class LpReportInfo_dc04233
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc04233
  * JD-Core Version:    0.7.0.1
  */

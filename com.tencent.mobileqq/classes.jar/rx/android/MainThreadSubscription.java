@@ -14,9 +14,12 @@ public abstract class MainThreadSubscription
   
   public static void verifyMainThread()
   {
-    if (Looper.myLooper() != Looper.getMainLooper()) {
-      throw new IllegalStateException("Expected to be called on the main thread but was " + Thread.currentThread().getName());
+    if (Looper.myLooper() == Looper.getMainLooper()) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder("Expected to be called on the main thread but was ");
+    localStringBuilder.append(Thread.currentThread().getName());
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   public final boolean isUnsubscribed()
@@ -30,19 +33,18 @@ public abstract class MainThreadSubscription
   {
     if (this.unsubscribed.compareAndSet(false, true))
     {
-      if (Looper.myLooper() == Looper.getMainLooper()) {
+      if (Looper.myLooper() == Looper.getMainLooper())
+      {
         onUnsubscribe();
+        return;
       }
+      AndroidSchedulers.mainThread().createWorker().schedule(new MainThreadSubscription.1(this));
     }
-    else {
-      return;
-    }
-    AndroidSchedulers.mainThread().createWorker().schedule(new MainThreadSubscription.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.android.MainThreadSubscription
  * JD-Core Version:    0.7.0.1
  */

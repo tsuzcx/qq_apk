@@ -10,12 +10,12 @@ class TroopMemberListActivity$35
   public void run()
   {
     List localList = this.jdField_a_of_type_JavaUtilList.subList(this.jdField_a_of_type_Int, this.b);
-    TroopMemberListActivity.a(this.this$0, localList, this.b);
+    TroopMemberListActivity.access$2400(this.this$0, localList, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.35
  * JD-Core Version:    0.7.0.1
  */

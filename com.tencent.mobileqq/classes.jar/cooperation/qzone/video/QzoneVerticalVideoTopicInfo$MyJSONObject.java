@@ -12,24 +12,27 @@ class QzoneVerticalVideoTopicInfo$MyJSONObject
   
   public MyJSONObject putData(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return this;
-    }
-    try
+    if (!TextUtils.isEmpty(paramString1))
     {
-      put(paramString1, paramString2);
-      return this;
-    }
-    catch (JSONException paramString1)
-    {
-      QZLog.d(QzoneVerticalVideoTopicInfo.access$800(this.this$0), 2, "put JSON error", paramString1);
+      if (TextUtils.isEmpty(paramString2)) {
+        return this;
+      }
+      try
+      {
+        put(paramString1, paramString2);
+        return this;
+      }
+      catch (JSONException paramString1)
+      {
+        QZLog.d(QzoneVerticalVideoTopicInfo.access$800(this.this$0), 2, "put JSON error", paramString1);
+      }
     }
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.video.QzoneVerticalVideoTopicInfo.MyJSONObject
  * JD-Core Version:    0.7.0.1
  */

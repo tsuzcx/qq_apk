@@ -12,9 +12,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.config.QConfigManager;
 import com.tencent.mobileqq.config.business.OnlineStatusBean;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
@@ -28,11 +26,14 @@ import com.tencent.mobileqq.onlinestatus.OnlineStatusPanel.OnlineStatusPanelList
 import com.tencent.mobileqq.onlinestatus.OnlineStatusPanelParams;
 import com.tencent.mobileqq.onlinestatus.OnlineStatusViewCtrl;
 import com.tencent.mobileqq.onlinestatus.ReportHelperKt;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.onlinestatus.api.IOnlineStatusService;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
+import mqq.app.AppRuntime;
 import mqq.app.AppRuntime.Status;
 import mqq.app.MobileQQ;
 
@@ -43,7 +44,7 @@ public class MyMoodView
   private long jdField_a_of_type_Long;
   protected ViewGroup a;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected BaseActivity a;
+  protected QBaseActivity a;
   private OnLineStatusBlurBg jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg;
   protected OnlineStatusViewCtrl a;
   private AppRuntime.Status jdField_a_of_type_MqqAppAppRuntime$Status;
@@ -51,10 +52,10 @@ public class MyMoodView
   private View c;
   private View d;
   
-  public MyMoodView(@NonNull BaseActivity paramBaseActivity, OnLineStatusBlurBg paramOnLineStatusBlurBg, BaseStatusCardView.OnDismissCallback paramOnDismissCallback)
+  public MyMoodView(@NonNull QBaseActivity paramQBaseActivity, OnLineStatusBlurBg paramOnLineStatusBlurBg, BaseStatusCardView.OnDismissCallback paramOnDismissCallback)
   {
-    super(paramBaseActivity, paramOnDismissCallback);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    super(paramQBaseActivity, paramOnDismissCallback);
+    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = paramQBaseActivity;
     this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg = paramOnLineStatusBlurBg;
     if (paramOnLineStatusBlurBg == null) {
       this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg = new OnLineStatusBlurBg();
@@ -64,38 +65,39 @@ public class MyMoodView
   
   private void a()
   {
-    this.c = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2131559257, null);
+    this.c = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity).inflate(2131559133, null);
     this.c.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.c.findViewById(2131380651));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.c.findViewById(2131379930));
     this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(Typeface.defaultFromStyle(1));
-    this.d = this.c.findViewById(2131365320);
+    this.d = this.c.findViewById(2131365195);
     this.d.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.c.findViewById(2131372525));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.c.findViewById(2131372110));
     this.b = this.d;
-    this.jdField_a_of_type_AndroidViewView = this.c;
-    setContentView(this.c);
+    View localView = this.c;
+    this.jdField_a_of_type_AndroidViewView = localView;
+    setContentView(localView);
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusViewCtrl == null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusViewCtrl;
+    if (localObject == null)
     {
-      OnlineStatusPanelParams localOnlineStatusPanelParams = new OnlineStatusPanelParams();
-      localOnlineStatusPanelParams.jdField_a_of_type_Int = 4;
-      localOnlineStatusPanelParams.c = true;
-      localOnlineStatusPanelParams.b = false;
-      localOnlineStatusPanelParams.jdField_a_of_type_Boolean = false;
-      localOnlineStatusPanelParams.f = 5;
-      localOnlineStatusPanelParams.h = (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDisplayMetrics().widthPixels - AIOUtils.a(26.0F, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources()));
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusViewCtrl = new OnlineStatusViewCtrl(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidViewViewGroup, this, localOnlineStatusPanelParams, this);
+      localObject = new OnlineStatusPanelParams();
+      ((OnlineStatusPanelParams)localObject).jdField_a_of_type_Int = 4;
+      ((OnlineStatusPanelParams)localObject).c = true;
+      ((OnlineStatusPanelParams)localObject).b = false;
+      ((OnlineStatusPanelParams)localObject).jdField_a_of_type_Boolean = false;
+      ((OnlineStatusPanelParams)localObject).f = 5;
+      ((OnlineStatusPanelParams)localObject).h = (this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDisplayMetrics().widthPixels - Utils.a(26.0F, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources()));
+      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusViewCtrl = new OnlineStatusViewCtrl(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.jdField_a_of_type_AndroidViewViewGroup, this, (OnlineStatusPanelParams)localObject, this);
       this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusViewCtrl.a();
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusViewCtrl.a(this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusViewCtrl.b();
+      ((OnlineStatusViewCtrl)localObject).b();
     }
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusViewCtrl.a(this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long);
   }
   
   private void c()
@@ -103,42 +105,53 @@ public class MyMoodView
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    QQAppInterface localQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-    this.jdField_a_of_type_MqqAppAppRuntime$Status = localQQAppInterface.getOnlineStatus();
-    this.jdField_a_of_type_Long = OnLineStatusHelper.a().a(localQQAppInterface);
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.peekAppRuntime();
+    this.jdField_a_of_type_MqqAppAppRuntime$Status = ((IOnlineStatusService)localAppRuntime.getRuntimeService(IOnlineStatusService.class, "")).getOnlineStatus();
+    this.jdField_a_of_type_Long = OnLineStatusHelper.a().a(localAppRuntime);
   }
   
-  public void a(View paramView) {}
+  public ArrayList<OnlineStatusItem> a()
+  {
+    Object localObject = (OnlineStatusBean)QConfigManager.a().a(578);
+    if (localObject == null) {
+      return new ArrayList();
+    }
+    ArrayList localArrayList = ((OnlineStatusBean)localObject).c();
+    localObject = localArrayList;
+    if (localArrayList == null) {
+      localObject = new ArrayList();
+    }
+    return localObject;
+  }
   
   public void a(OnlineStatusItem paramOnlineStatusItem1, OnlineStatusItem paramOnlineStatusItem2, View paramView)
   {
     if (QLog.isColorLevel()) {
       QLog.d("MyMoodView", 2, new Object[] { "oldItem =", paramOnlineStatusItem1, " curItem=", paramOnlineStatusItem2 });
     }
-    if ((paramOnlineStatusItem1 == paramOnlineStatusItem2) || (!isShowing())) {
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean)
+    if (paramOnlineStatusItem1 != paramOnlineStatusItem2)
     {
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewBaseStatusCardView$OnDismissCallback.a(paramOnlineStatusItem2.jdField_a_of_type_Long);
-      dismiss();
-      return;
-    }
-    if (!AppNetConnInfo.isNetSupport())
-    {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, 2131719505, 0).a();
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewBaseStatusCardView$OnDismissCallback.a(1055);
-    }
-    for (;;)
-    {
-      m();
-      return;
-      if (paramOnlineStatusItem2 != null)
+      if (!isShowing()) {
+        return;
+      }
+      if (this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.updateOnlineStatus(paramOnlineStatusItem2.jdField_a_of_type_MqqAppAppRuntime$Status, paramOnlineStatusItem2.jdField_a_of_type_Long);
+        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewBaseStatusCardView$OnDismissCallback.a(paramOnlineStatusItem2.jdField_a_of_type_Long);
+        dismiss();
+        return;
+      }
+      if (!AppNetConnInfo.isNetSupport())
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 1, 2131719223, 0).a();
+        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewBaseStatusCardView$OnDismissCallback.a(1055);
+      }
+      else if (paramOnlineStatusItem2 != null)
+      {
+        ((IOnlineStatusService)MobileQQ.sMobileQQ.peekAppRuntime().getRuntimeService(IOnlineStatusService.class, "")).updateOnlineStatus(paramOnlineStatusItem2.jdField_a_of_type_MqqAppAppRuntime$Status, paramOnlineStatusItem2.jdField_a_of_type_Long);
         this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewBaseStatusCardView$OnDismissCallback.a(paramOnlineStatusItem2.jdField_a_of_type_Long);
         ReportHelperKt.a("0X8009DE0", (int)paramOnlineStatusItem2.jdField_a_of_type_Long);
       }
+      k();
     }
   }
   
@@ -151,13 +164,19 @@ public class MyMoodView
   
   public void a(boolean paramBoolean, Bitmap paramBitmap, int paramInt)
   {
-    if ((paramBoolean) && (paramBitmap != null) && (this.c != null)) {
-      this.c.setBackgroundDrawable(new BitmapDrawable(paramBitmap));
+    if ((paramBoolean) && (paramBitmap != null))
+    {
+      View localView = this.c;
+      if (localView != null)
+      {
+        localView.setBackgroundDrawable(new BitmapDrawable(paramBitmap));
+        return;
+      }
     }
-    while (this.c == null) {
-      return;
+    paramBitmap = this.c;
+    if (paramBitmap != null) {
+      paramBitmap.setBackgroundColor(paramInt);
     }
-    this.c.setBackgroundColor(paramInt);
   }
   
   protected void a(int[] paramArrayOfInt)
@@ -168,27 +187,11 @@ public class MyMoodView
       paramArrayOfInt[1] = this.b.getHeight();
       return;
     }
-    paramArrayOfInt[0] = (this.b.getResources().getDisplayMetrics().widthPixels - AIOUtils.a(78.0F, this.b.getResources()));
-    paramArrayOfInt[1] = AIOUtils.a(300.0F, this.b.getResources());
+    paramArrayOfInt[0] = (this.b.getResources().getDisplayMetrics().widthPixels - Utils.a(78.0F, this.b.getResources()));
+    paramArrayOfInt[1] = Utils.a(300.0F, this.b.getResources());
   }
   
   public ArrayList<OnlineStatusItem> b()
-  {
-    Object localObject = (OnlineStatusBean)QConfigManager.a().a(578);
-    if (localObject == null) {
-      localObject = new ArrayList();
-    }
-    ArrayList localArrayList;
-    do
-    {
-      return localObject;
-      localArrayList = ((OnlineStatusBean)localObject).c();
-      localObject = localArrayList;
-    } while (localArrayList != null);
-    return new ArrayList();
-  }
-  
-  public ArrayList<OnlineStatusItem> c()
   {
     Object localObject = (OnlineStatusBean)QConfigManager.a().a(578);
     OnlineStatusItem localOnlineStatusItem = ((OnlineStatusBean)localObject).a(this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long);
@@ -200,6 +203,8 @@ public class MyMoodView
     return localObject;
   }
   
+  public void c(View paramView) {}
+  
   public void onBackPressed()
   {
     super.onBackPressed();
@@ -208,7 +213,7 @@ public class MyMoodView
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131377364)
+    if (paramView.getId() == 2131376816)
     {
       dismiss();
       this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewBaseStatusCardView$OnDismissCallback.a(1055);
@@ -219,37 +224,38 @@ public class MyMoodView
   
   public void show()
   {
-    if (ThemeUtil.isNowThemeIsNight(null, false, ""))
+    if (QQTheme.a())
     {
-      this.d.setBackgroundResource(2130846455);
+      this.d.setBackgroundResource(2130846335);
       a(false, null, Color.parseColor("#FF010101"));
-      if (!this.jdField_a_of_type_Boolean) {
-        if (!OnLineStatusHelper.a(this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long)) {
-          break label135;
-        }
-      }
     }
-    label135:
-    for (int i = 2;; i = 1)
+    else
     {
-      ReportHelperKt.a("0X800B7AE", i);
-      c();
-      b();
-      a(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
-      super.show();
-      b(true);
-      return;
-      this.d.setBackgroundResource(2130846454);
+      this.d.setBackgroundResource(2130846334);
       OnLineStatusBlurBg.BlurBgItem localBlurBgItem = new OnLineStatusBlurBg.BlurBgItem();
-      localBlurBgItem.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+      localBlurBgItem.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
       this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg.a(localBlurBgItem, this);
-      break;
     }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      int i;
+      if (OnLineStatusHelper.a(this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long)) {
+        i = 2;
+      } else {
+        i = 1;
+      }
+      ReportHelperKt.a("0X800B7AE", i);
+    }
+    c();
+    b();
+    a(this.jdField_a_of_type_AndroidWidgetTextView);
+    super.show();
+    b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.MyMoodView
  * JD-Core Version:    0.7.0.1
  */

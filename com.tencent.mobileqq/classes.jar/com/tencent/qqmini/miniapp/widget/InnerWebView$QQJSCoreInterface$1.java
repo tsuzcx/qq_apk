@@ -17,7 +17,10 @@ class InnerWebView$QQJSCoreInterface$1
     if ((paramBaseRuntime instanceof JsPluginEngine))
     {
       paramBaseRuntime = (JsPluginEngine)paramBaseRuntime;
-      QMLog.d("Action", "Dispatch repeat RequestEvent=" + this.val$event);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Dispatch repeat RequestEvent=");
+      localStringBuilder.append(this.val$event);
+      QMLog.d("Action", localStringBuilder.toString());
       return paramBaseRuntime.handleNativeRequest(this.val$event, this.val$jsonParams, (IJsService)InnerWebView.access$100(this.this$1.this$0), this.val$callbackId);
     }
     return null;
@@ -25,7 +28,7 @@ class InnerWebView$QQJSCoreInterface$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.InnerWebView.QQJSCoreInterface.1
  * JD-Core Version:    0.7.0.1
  */

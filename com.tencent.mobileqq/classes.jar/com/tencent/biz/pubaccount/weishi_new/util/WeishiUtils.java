@@ -6,55 +6,39 @@ import UserGrowth.stSimpleMetaFeed;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build.VERSION;
-import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.engine.WeishiManager;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.BitmapCache;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageManager;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageRequest;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import com.tencent.biz.pubaccount.weishi_new.aiolist.WSAioListHelper;
 import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager;
-import com.tencent.biz.pubaccount.weishi_new.config.WSConfigManager;
 import com.tencent.biz.pubaccount.weishi_new.config.WSGlobalConfig;
-import com.tencent.biz.pubaccount.weishi_new.config.WeSeeBeaconReportConfigInfo;
-import com.tencent.biz.pubaccount.weishi_new.config.WeSeeConfigBean;
-import com.tencent.biz.pubaccount.weishi_new.download.wsapp.WSFallKeyPicMonitor;
 import com.tencent.biz.pubaccount.weishi_new.push.WSPushPreloadModel;
 import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
 import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
 import com.tencent.biz.pubaccount.weishi_new.report.WSReportEventConstants;
 import com.tencent.biz.pubaccount.weishi_new.report.WSReportUtils;
-import com.tencent.biz.pubaccount.weishi_new.report.WsBeaconReportPresenter;
 import com.tencent.biz.qqstory.utils.WeishiGuideUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.component.utils.preference.PreferenceManager;
 import com.tencent.imcore.message.ConversationFacade;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.WeishiManager;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
 import cooperation.qzone.LocalMultiProcConfig;
-import java.lang.ref.WeakReference;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
@@ -62,19 +46,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
 
 public class WeishiUtils
 {
-  private static long a;
-  public static String a;
-  public static boolean a;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_JavaLangString = "";
-  }
+  private static long a = 0L;
+  public static String a = "";
+  public static boolean a = false;
   
   public static int a()
   {
@@ -82,12 +59,32 @@ public class WeishiUtils
     if ((localObject instanceof QQAppInterface))
     {
       localObject = (QQAppInterface)localObject;
-      if ((((QQAppInterface)localObject).getMessageFacade() == null) || (((QQAppInterface)localObject).getMessageFacade().a() == null)) {
-        return 0;
+      if (((QQAppInterface)localObject).getMessageFacade() != null)
+      {
+        if (((QQAppInterface)localObject).getMessageFacade().a() == null) {
+          return 0;
+        }
+        return ((QQAppInterface)localObject).getMessageFacade().a().a(AppConstants.WEISHI_UIN, 1008);
       }
-      return ((QQAppInterface)localObject).getMessageFacade().a().a(AppConstants.WEISHI_UIN, 1008);
     }
     return 0;
+  }
+  
+  public static int a(String paramString, int paramInt)
+  {
+    try
+    {
+      if (!TextUtils.isEmpty(paramString))
+      {
+        int i = Integer.parseInt(paramString);
+        return i;
+      }
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return paramInt;
   }
   
   public static long a()
@@ -99,18 +96,77 @@ public class WeishiUtils
     return 0L;
   }
   
-  private static Bitmap a(URL paramURL, ImageView paramImageView)
+  public static long a(String paramString, long paramLong)
   {
-    if ((paramURL != null) && (paramImageView.getWidth() > 0))
+    try
     {
-      ImageRequest localImageRequest = new ImageRequest();
-      localImageRequest.jdField_a_of_type_JavaNetURL = paramURL;
-      localImageRequest.jdField_a_of_type_Int = paramImageView.getWidth();
-      localImageRequest.jdField_b_of_type_Int = paramImageView.getHeight();
-      paramURL = BitmapCache.a(localImageRequest.a());
-      if (paramURL != null) {
-        return paramURL.a();
+      if (!TextUtils.isEmpty(paramString))
+      {
+        long l = Long.parseLong(paramString);
+        return l;
       }
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return paramLong;
+  }
+  
+  private static stMetaUgcImage a(stSimpleMetaFeed paramstSimpleMetaFeed, boolean paramBoolean)
+  {
+    if ((paramstSimpleMetaFeed.images != null) && (paramstSimpleMetaFeed.images.size() > 0))
+    {
+      if ((!paramBoolean) && (paramstSimpleMetaFeed.images.size() > 1)) {
+        return (stMetaUgcImage)paramstSimpleMetaFeed.images.get(1);
+      }
+      return (stMetaUgcImage)paramstSimpleMetaFeed.images.get(0);
+    }
+    return null;
+  }
+  
+  private static stImgReplacement a(stSimpleMetaFeed paramstSimpleMetaFeed, boolean paramBoolean)
+  {
+    if ((paramstSimpleMetaFeed.imgReplacements != null) && (paramstSimpleMetaFeed.imgReplacements.size() > 0) && (Build.VERSION.SDK_INT > 17))
+    {
+      if ((!paramBoolean) && (paramstSimpleMetaFeed.imgReplacements.size() > 1)) {
+        return (stImgReplacement)paramstSimpleMetaFeed.imgReplacements.get(1);
+      }
+      return (stImgReplacement)paramstSimpleMetaFeed.imgReplacements.get(0);
+    }
+    return null;
+  }
+  
+  public static Uri a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      return Uri.parse(paramString);
+    }
+    return null;
+  }
+  
+  public static WSRedDotPushMsg a()
+  {
+    Object localObject = a();
+    if (a((WeishiManager)localObject))
+    {
+      localObject = ((WeishiManager)localObject).a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("WSRedDotPushMsg = ");
+      localStringBuilder.append((String)localObject);
+      WSLog.d("WSPushLog", localStringBuilder.toString());
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        return WSRedDotPushMsg.getInstance((String)localObject);
+      }
+    }
+    return null;
+  }
+  
+  public static QQAppInterface a()
+  {
+    AppRuntime localAppRuntime = a();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return (QQAppInterface)localAppRuntime;
     }
     return null;
   }
@@ -124,29 +180,6 @@ public class WeishiUtils
       if ((((QQAppInterface)localObject).getManager(QQManagerFactory.WEISHI_MANAGER) instanceof WeishiManager)) {
         return (WeishiManager)((QQAppInterface)localObject).getManager(QQManagerFactory.WEISHI_MANAGER);
       }
-    }
-    return null;
-  }
-  
-  public static WSRedDotPushMsg a()
-  {
-    Object localObject = a();
-    if (a((WeishiManager)localObject))
-    {
-      localObject = ((WeishiManager)localObject).a();
-      WSLog.d("WSPushLog", "WSRedDotPushMsg = " + (String)localObject);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        return WSRedDotPushMsg.getInstance((String)localObject);
-      }
-    }
-    return null;
-  }
-  
-  public static QQAppInterface a()
-  {
-    AppRuntime localAppRuntime = a();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (QQAppInterface)localAppRuntime;
     }
     return null;
   }
@@ -173,117 +206,97 @@ public class WeishiUtils
   
   public static String a(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    return b(paramstSimpleMetaFeed, false);
+    return c(paramstSimpleMetaFeed, false);
   }
   
   public static String a(stSimpleMetaFeed paramstSimpleMetaFeed, boolean paramBoolean)
   {
-    Object localObject2;
     if (paramstSimpleMetaFeed == null) {
-      localObject2 = "";
+      return "";
     }
     Object localObject1;
-    label73:
-    do
+    Object localObject2;
+    if ((paramstSimpleMetaFeed.imgReplacements != null) && (paramstSimpleMetaFeed.imgReplacements.size() > 0) && (Build.VERSION.SDK_INT > 17))
     {
-      return localObject2;
-      localObject2 = "";
-      localObject1 = localObject2;
-      if (paramstSimpleMetaFeed.imgReplacements == null) {
-        break;
+      if ((!paramBoolean) && (paramstSimpleMetaFeed.imgReplacements.size() > 1)) {
+        localObject1 = ((stImgReplacement)paramstSimpleMetaFeed.imgReplacements.get(1)).img;
+      } else {
+        localObject1 = ((stImgReplacement)paramstSimpleMetaFeed.imgReplacements.get(0)).img;
       }
-      localObject1 = localObject2;
-      if (paramstSimpleMetaFeed.imgReplacements.size() <= 0) {
-        break;
-      }
-      localObject1 = localObject2;
-      if (Build.VERSION.SDK_INT <= 17) {
-        break;
-      }
-      if ((paramBoolean) || (paramstSimpleMetaFeed.imgReplacements.size() <= 1)) {
-        break label199;
-      }
-      localObject1 = ((stImgReplacement)paramstSimpleMetaFeed.imgReplacements.get(1)).img;
-      WSLog.b("WeishiUtils", "使用webp图片资源：" + (String)localObject1);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("使用webp图片资源：");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      WSLog.b("WeishiUtils", ((StringBuilder)localObject2).toString());
       localObject2 = localObject1;
-    } while (!TextUtils.isEmpty((CharSequence)localObject1));
-    Object localObject3 = localObject1;
-    if (paramstSimpleMetaFeed.images != null)
-    {
-      localObject3 = localObject1;
-      if (paramstSimpleMetaFeed.images.size() > 0) {
-        if ((paramBoolean) || (paramstSimpleMetaFeed.images.size() <= 1)) {
-          break label217;
-        }
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        return localObject1;
       }
     }
-    label199:
-    label217:
-    for (localObject3 = ((stMetaUgcImage)paramstSimpleMetaFeed.images.get(1)).url;; localObject3 = ((stMetaUgcImage)paramstSimpleMetaFeed.images.get(0)).url)
+    else
     {
-      WSLog.b("WeishiUtils", "使用服务器默认的图片格式资源：" + (String)localObject3);
-      localObject2 = localObject3;
-      if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-        break;
-      }
-      return "";
-      localObject1 = ((stImgReplacement)paramstSimpleMetaFeed.imgReplacements.get(0)).img;
-      break label73;
+      localObject2 = "";
     }
+    if ((paramstSimpleMetaFeed.images != null) && (paramstSimpleMetaFeed.images.size() > 0))
+    {
+      if ((!paramBoolean) && (paramstSimpleMetaFeed.images.size() > 1)) {
+        paramstSimpleMetaFeed = ((stMetaUgcImage)paramstSimpleMetaFeed.images.get(1)).url;
+      } else {
+        paramstSimpleMetaFeed = ((stMetaUgcImage)paramstSimpleMetaFeed.images.get(0)).url;
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("使用服务器默认的图片格式资源：");
+      ((StringBuilder)localObject1).append(paramstSimpleMetaFeed);
+      WSLog.b("WeishiUtils", ((StringBuilder)localObject1).toString());
+    }
+    else
+    {
+      paramstSimpleMetaFeed = (stSimpleMetaFeed)localObject2;
+    }
+    if (!TextUtils.isEmpty(paramstSimpleMetaFeed)) {
+      return paramstSimpleMetaFeed;
+    }
+    return "";
   }
   
   public static String a(String paramString)
   {
-    String str1 = paramString;
+    String str = paramString;
     try
     {
       if (!TextUtils.isEmpty(paramString))
       {
-        str1 = paramString;
+        str = paramString;
         if (paramString.contains("@{uid:"))
         {
-          str1 = paramString;
+          str = paramString;
           if (paramString.contains(",nick:"))
           {
-            str1 = paramString;
+            str = paramString;
             if (paramString.contains("}"))
             {
               int i = paramString.indexOf("@{uid:");
               int j = paramString.indexOf(",nick:");
               int k = paramString.indexOf("}");
-              str1 = paramString.substring(i, k + 1);
-              String str2 = paramString.substring(j + 6, k) + " ";
-              str1 = a(paramString.replace(str1, "@" + URLDecoder.decode(str2)));
+              str = paramString.substring(i, k + 1);
+              Object localObject = new StringBuilder();
+              ((StringBuilder)localObject).append(paramString.substring(j + 6, k));
+              ((StringBuilder)localObject).append(" ");
+              localObject = ((StringBuilder)localObject).toString();
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("@");
+              localStringBuilder.append(URLDecoder.decode((String)localObject));
+              str = a(paramString.replace(str, localStringBuilder.toString()));
             }
           }
         }
       }
-      return str1;
+      return str;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
     }
     return paramString;
-  }
-  
-  public static String a(byte[] paramArrayOfByte)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("");
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      return null;
-    }
-    int i = 0;
-    while (i < paramArrayOfByte.length)
-    {
-      String str = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
-      if (str.length() < 2) {
-        localStringBuilder.append(0);
-      }
-      localStringBuilder.append(str);
-      i += 1;
-    }
-    return localStringBuilder.toString();
   }
   
   public static URL a(String paramString)
@@ -303,14 +316,22 @@ public class WeishiUtils
     return null;
   }
   
+  @NonNull
+  public static <T> List<T> a(@Nullable List<T> paramList, int paramInt1, int paramInt2)
+  {
+    if ((paramList != null) && (paramInt1 >= 0) && (paramInt2 <= paramList.size()) && (paramInt1 <= paramInt2)) {
+      return paramList.subList(paramInt1, paramInt2);
+    }
+    return new ArrayList();
+  }
+  
   public static AppRuntime a()
   {
-    AppRuntime localAppRuntime = null;
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
     if (localBaseApplicationImpl != null) {
-      localAppRuntime = localBaseApplicationImpl.getRuntime();
+      return localBaseApplicationImpl.getRuntime();
     }
-    return localAppRuntime;
+    return null;
   }
   
   public static void a()
@@ -321,211 +342,129 @@ public class WeishiUtils
     }
   }
   
-  private static void a(Context paramContext)
-  {
-    if (paramContext != null) {}
-  }
-  
-  public static void a(Context paramContext, ImageView paramImageView, String paramString)
-  {
-    WSLog.b("AvatarImageLog", "WeishiUtils loadAvatarImage url:" + paramString + ", imageView:" + paramImageView);
-    if ((paramContext == null) || (paramImageView == null)) {
-      return;
-    }
-    paramImageView = new WeakReference(paramImageView);
-    ThreadManager.getSubThreadHandler().post(new WeishiUtils.4(paramImageView, paramContext, paramString));
-  }
-  
-  public static void a(Context paramContext, KandianUrlImageView paramKandianUrlImageView, URL paramURL, Drawable paramDrawable, String paramString, int paramInt)
-  {
-    if ((paramContext != null) && (paramKandianUrlImageView != null))
-    {
-      localObject = a(paramURL, paramKandianUrlImageView);
-      if (localObject != null)
-      {
-        paramKandianUrlImageView.setImageBitmap((Bitmap)localObject);
-        paramContext = "";
-        if (paramURL != null) {
-          paramContext = paramURL.toString();
-        }
-        WSFallKeyPicMonitor.b(1, paramContext);
-      }
-    }
-    else
-    {
-      return;
-    }
-    Object localObject = paramDrawable;
-    if (paramDrawable == null) {
-      localObject = paramContext.getResources().getDrawable(2130841881);
-    }
-    if (paramURL == null)
-    {
-      paramKandianUrlImageView.setImageDrawable((Drawable)localObject);
-      return;
-    }
-    paramKandianUrlImageView.setIsRecyclerView(true);
-    paramKandianUrlImageView.setImagePlaceHolder((Drawable)localObject).setImage(paramURL);
-    paramKandianUrlImageView.setPublicAccountImageDownListener(new WeishiUtils.1(paramString, paramKandianUrlImageView, paramInt));
-  }
+  private static void a(Context paramContext) {}
   
   public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, WeishiUtils.OnDownloadOpenWeishiGoH5Listener paramOnDownloadOpenWeishiGoH5Listener)
   {
-    if (paramOnDownloadOpenWeishiGoH5Listener == null) {
-      throw new RuntimeException("downloadOpenWeishiGoH5 must not be null!");
-    }
-    if (WeishiGuideUtils.a(paramContext))
+    if (paramOnDownloadOpenWeishiGoH5Listener != null)
     {
-      if (!TextUtils.isEmpty(paramString1))
+      if (WeishiGuideUtils.a(paramContext))
       {
-        WSLog.c("815", "走打开shemeUrl:" + paramString1);
-        paramOnDownloadOpenWeishiGoH5Listener.a(paramString1, paramInt);
+        if (!TextUtils.isEmpty(paramString1))
+        {
+          paramContext = new StringBuilder();
+          paramContext.append("走打开shemeUrl:");
+          paramContext.append(paramString1);
+          WSLog.c("815", paramContext.toString());
+          paramOnDownloadOpenWeishiGoH5Listener.a(paramString1, paramInt);
+          return;
+        }
+        if (!TextUtils.isEmpty(paramString3))
+        {
+          paramContext = new StringBuilder();
+          paramContext.append("走打开小程序:");
+          paramContext.append(paramString3);
+          WSLog.c("833", paramContext.toString());
+          paramOnDownloadOpenWeishiGoH5Listener.d(paramString3, paramInt);
+          return;
+        }
+        if (!TextUtils.isEmpty(paramString2))
+        {
+          paramContext = new StringBuilder();
+          paramContext.append("走打开h5Url:");
+          paramContext.append(paramString2);
+          WSLog.c("815", paramContext.toString());
+          paramOnDownloadOpenWeishiGoH5Listener.b(paramString2, paramInt);
+          return;
+        }
+        paramContext = new StringBuilder();
+        paramContext.append("走打开兜底:");
+        paramContext.append(paramString1);
+        WSLog.c("815", paramContext.toString());
+        paramOnDownloadOpenWeishiGoH5Listener.a("weishi://main", paramInt);
         return;
       }
       if (!TextUtils.isEmpty(paramString3))
       {
-        WSLog.c("833", "走打开小程序:" + paramString3);
+        paramContext = new StringBuilder();
+        paramContext.append("走打开小程序:");
+        paramContext.append(paramString3);
+        WSLog.c("833", paramContext.toString());
         paramOnDownloadOpenWeishiGoH5Listener.d(paramString3, paramInt);
         return;
       }
       if (!TextUtils.isEmpty(paramString2))
       {
-        WSLog.c("815", "走打开h5Url:" + paramString2);
+        paramContext = new StringBuilder();
+        paramContext.append("走跳转h5Url:");
+        paramContext.append(paramString2);
+        WSLog.c("815", paramContext.toString());
         paramOnDownloadOpenWeishiGoH5Listener.b(paramString2, paramInt);
         return;
       }
-      WSLog.c("815", "走打开兜底:" + paramString1);
-      paramOnDownloadOpenWeishiGoH5Listener.a("weishi://main", paramInt);
+      paramContext = new StringBuilder();
+      paramContext.append("走下载，shemeUrl:");
+      paramContext.append(paramString1);
+      WSLog.c("815", paramContext.toString());
+      paramOnDownloadOpenWeishiGoH5Listener.c(paramString1, paramInt);
       return;
     }
-    if (!TextUtils.isEmpty(paramString3))
-    {
-      WSLog.c("833", "走打开小程序:" + paramString3);
-      paramOnDownloadOpenWeishiGoH5Listener.d(paramString3, paramInt);
-      return;
-    }
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      WSLog.c("815", "走跳转h5Url:" + paramString2);
-      paramOnDownloadOpenWeishiGoH5Listener.b(paramString2, paramInt);
-      return;
-    }
-    WSLog.c("815", "走下载，shemeUrl:" + paramString1);
-    paramOnDownloadOpenWeishiGoH5Listener.c(paramString1, paramInt);
+    throw new RuntimeException("downloadOpenWeishiGoH5 must not be null!");
   }
   
   public static void a(View paramView, int paramInt1, int paramInt2)
   {
-    if (paramView == null) {}
-    do
+    if (paramView == null) {
+      return;
+    }
+    int j = paramView.getVisibility();
+    int i = j;
+    if (paramView.getTag(-1) != null)
     {
-      int i;
-      do
-      {
-        return;
-        int j = paramView.getVisibility();
-        i = j;
-        if (paramView.getTag(-1) != null)
-        {
-          i = j;
-          if (paramView.getAnimation() != null) {
-            i = ((Integer)paramView.getTag(-1)).intValue();
-          }
-        }
-        paramView.setTag(-1, Integer.valueOf(paramInt1));
-      } while (i == paramInt1);
-      if (paramInt1 == 0)
-      {
-        paramView.setVisibility(0);
-        localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-        localAlphaAnimation.setDuration(paramInt2);
-        localAlphaAnimation.setFillAfter(true);
-        localAlphaAnimation.setAnimationListener(new WeishiUtils.9(paramView));
-        paramView.clearAnimation();
-        paramView.startAnimation(localAlphaAnimation);
-        return;
+      i = j;
+      if (paramView.getAnimation() != null) {
+        i = ((Integer)paramView.getTag(-1)).intValue();
       }
-    } while ((paramInt1 != 8) && (paramInt1 != 4));
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setDuration(paramInt2);
-    localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setAnimationListener(new WeishiUtils.10(paramView));
-    paramView.clearAnimation();
-    paramView.startAnimation(localAlphaAnimation);
-  }
-  
-  public static void a(ImageView paramImageView, String paramString1, Drawable paramDrawable1, Drawable paramDrawable2, String paramString2)
-  {
-    if (paramImageView == null) {
+    }
+    paramView.setTag(-1, Integer.valueOf(paramInt1));
+    if (i == paramInt1) {
       return;
     }
-    if (TextUtils.isEmpty(paramString1))
+    AlphaAnimation localAlphaAnimation;
+    if (paramInt1 == 0)
     {
-      paramImageView.setImageDrawable(paramDrawable1);
+      paramView.setVisibility(0);
+      localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
+      localAlphaAnimation.setDuration(paramInt2);
+      localAlphaAnimation.setFillAfter(true);
+      localAlphaAnimation.setAnimationListener(new WeishiUtils.1(paramView));
+      paramView.clearAnimation();
+      paramView.startAnimation(localAlphaAnimation);
       return;
     }
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mFailedDrawable = paramDrawable1;
-    localURLDrawableOptions.mLoadingDrawable = paramDrawable2;
-    paramDrawable1 = URLDrawable.getDrawable(paramString1, localURLDrawableOptions);
-    paramImageView.setImageDrawable(paramDrawable1);
-    paramDrawable1.setURLDrawableListener(new WeishiUtils.6(paramString2, paramImageView, paramString1));
-    paramDrawable1.startDownload();
-    if (1 != paramDrawable1.getStatus())
+    if ((paramInt1 == 8) || (paramInt1 == 4))
     {
-      paramDrawable1.restartDownload();
-      return;
+      localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
+      localAlphaAnimation.setDuration(paramInt2);
+      localAlphaAnimation.setFillAfter(true);
+      localAlphaAnimation.setAnimationListener(new WeishiUtils.2(paramView));
+      paramView.clearAnimation();
+      paramView.startAnimation(localAlphaAnimation);
     }
-    WSLog.a("815", "onLoad ~~~~~~" + paramString2);
-  }
-  
-  public static void a(KandianUrlImageView paramKandianUrlImageView, stSimpleMetaFeed paramstSimpleMetaFeed, Drawable paramDrawable, String paramString, boolean paramBoolean, int paramInt)
-  {
-    paramstSimpleMetaFeed = a(a(paramstSimpleMetaFeed, paramBoolean));
-    a(BaseApplicationImpl.getApplication(), paramKandianUrlImageView, paramstSimpleMetaFeed, paramDrawable, paramString, paramInt);
-  }
-  
-  public static void a(KandianUrlImageView paramKandianUrlImageView, stSimpleMetaFeed paramstSimpleMetaFeed, boolean paramBoolean, String paramString, int paramInt)
-  {
-    paramstSimpleMetaFeed = a(a(paramstSimpleMetaFeed, paramBoolean));
-    a(BaseApplicationImpl.getApplication(), paramKandianUrlImageView, paramstSimpleMetaFeed, null, paramString, paramInt);
-  }
-  
-  public static void a(KandianUrlImageView paramKandianUrlImageView, String paramString)
-  {
-    if ((paramKandianUrlImageView != null) && (!TextUtils.isEmpty(paramString)))
-    {
-      paramString = a(paramString);
-      paramKandianUrlImageView.setImagePlaceHolder(BaseApplicationImpl.getApplication().getApplicationContext().getResources().getDrawable(2130841984)).setImage(paramString);
-    }
-  }
-  
-  public static void a(KandianUrlImageView paramKandianUrlImageView, String paramString, Drawable paramDrawable)
-  {
-    if (paramKandianUrlImageView == null) {
-      return;
-    }
-    if (TextUtils.isEmpty(paramString))
-    {
-      paramKandianUrlImageView.setImageDrawable(paramDrawable);
-      return;
-    }
-    paramString = a(paramString);
-    Bitmap localBitmap = a(paramString, paramKandianUrlImageView);
-    if (localBitmap != null)
-    {
-      paramKandianUrlImageView.setImageBitmap(localBitmap);
-      return;
-    }
-    paramKandianUrlImageView.setImagePlaceHolder(paramDrawable).setImage(paramString);
   }
   
   public static void a(BusinessInfoCheckUpdate.AppInfo paramAppInfo, boolean paramBoolean)
   {
     if (paramAppInfo != null)
     {
-      WSLog.b("WSRedDotLog", "saveRedDotAppInfo appInfo = " + paramAppInfo.iNewFlag.get());
-      WSLog.b("WSRedDotLog", "saveRedDotAppInfo hasWsRedDot = " + paramBoolean);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("saveRedDotAppInfo appInfo = ");
+      localStringBuilder.append(paramAppInfo.iNewFlag.get());
+      WSLog.b("WSRedDotLog", localStringBuilder.toString());
+      paramAppInfo = new StringBuilder();
+      paramAppInfo.append("saveRedDotAppInfo hasWsRedDot = ");
+      paramAppInfo.append(paramBoolean);
+      WSLog.b("WSRedDotLog", paramAppInfo.toString());
       LocalMultiProcConfig.putBooleanAsync("wsRedDot", paramBoolean);
     }
   }
@@ -539,24 +478,19 @@ public class WeishiUtils
     ClipboardManager localClipboardManager = (ClipboardManager)localContext.getSystemService("clipboard");
     if ((localClipboardManager != null) && (!TextUtils.isEmpty(paramString)))
     {
-      paramString = b(paramString);
+      paramString = c(paramString);
       ClipData localClipData = ClipData.newPlainText("", paramString);
-      WSLog.d("WeishiUtils", "Clipboard copyScheme: " + paramString + ", clip: " + localClipData);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Clipboard copyScheme: ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", clip: ");
+      localStringBuilder.append(localClipData);
+      WSLog.d("WeishiUtils", localStringBuilder.toString());
       if (localClipData != null) {
         localClipboardManager.setPrimaryClip(localClipData);
       }
     }
     a(localContext);
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    URL localURL = a(paramString1);
-    ImageRequest localImageRequest = new ImageRequest();
-    localImageRequest.jdField_a_of_type_JavaNetURL = localURL;
-    localImageRequest.jdField_b_of_type_Boolean = true;
-    long l = SystemClock.uptimeMillis();
-    ImageManager.a().a(localImageRequest, new WeishiUtils.8(l, paramString1, paramString2));
   }
   
   public static void a(List<stSimpleMetaFeed> paramList)
@@ -570,21 +504,6 @@ public class WeishiUtils
         localstSimpleMetaFeed.feed_desc = a(localstSimpleMetaFeed.feed_desc);
       }
     }
-  }
-  
-  public static void a(List<stSimpleMetaFeed> paramList, boolean paramBoolean)
-  {
-    a(paramList, paramBoolean, "");
-  }
-  
-  public static void a(List<stSimpleMetaFeed> paramList, boolean paramBoolean, String paramString)
-  {
-    if (!NetworkUtil.h(BaseApplication.getContext())) {}
-    while ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    WSLog.b("PreloadCoverImgLog", "preloadImg size = " + paramList.size());
-    ThreadManager.post(new WeishiUtils.7(new ArrayList(paramList), paramBoolean, paramString), 5, null, true);
   }
   
   public static boolean a()
@@ -604,6 +523,18 @@ public class WeishiUtils
     return (WeiShiCacheManager.a().a(paramInt)) && ((TextUtils.isEmpty(str1)) || (TextUtils.equals(str1, str2)));
   }
   
+  public static boolean a(WSRedDotPushMsg paramWSRedDotPushMsg)
+  {
+    if ((paramWSRedDotPushMsg.mStrategyInfo instanceof WSPushStrategyInfo))
+    {
+      paramWSRedDotPushMsg = (WSPushStrategyInfo)paramWSRedDotPushMsg.mStrategyInfo;
+      if (paramWSRedDotPushMsg.mWSPushPreloadModel != null) {
+        return paramWSRedDotPushMsg.mWSPushPreloadModel.a;
+      }
+    }
+    return false;
+  }
+  
   public static boolean a(WeishiManager paramWeishiManager)
   {
     if (paramWeishiManager == null) {
@@ -612,36 +543,38 @@ public class WeishiUtils
     return a(paramWeishiManager.a());
   }
   
-  public static boolean a(WSRedDotPushMsg paramWSRedDotPushMsg)
-  {
-    if ((paramWSRedDotPushMsg.mStrategyInfo instanceof WSPushStrategyInfo))
-    {
-      paramWSRedDotPushMsg = (WSPushStrategyInfo)paramWSRedDotPushMsg.mStrategyInfo;
-      if (paramWSRedDotPushMsg.mWSPushPreloadModel != null) {
-        return paramWSRedDotPushMsg.mWSPushPreloadModel.jdField_a_of_type_Boolean;
-      }
-    }
-    return false;
-  }
-  
   private static boolean a(MessageForStructing paramMessageForStructing)
   {
-    if (paramMessageForStructing == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramMessageForStructing == null) {
       return false;
-      WSLog.d("WSPushLog", "isMsgFromWeishiPush structMsg.frienduin: " + paramMessageForStructing.frienduin);
-    } while ((!TextUtils.equals(AppConstants.WEISHI_UIN, paramMessageForStructing.frienduin)) || (paramMessageForStructing.issend != 0));
-    return true;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isMsgFromWeishiPush structMsg.frienduin: ");
+    localStringBuilder.append(paramMessageForStructing.frienduin);
+    WSLog.d("WSPushLog", localStringBuilder.toString());
+    boolean bool1 = bool2;
+    if (TextUtils.equals(AppConstants.WEISHI_UIN, paramMessageForStructing.frienduin))
+    {
+      bool1 = bool2;
+      if (paramMessageForStructing.issend == 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public static boolean a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((!paramString.endsWith("jpg")) && (!paramString.endsWith("jpeg")) && (!paramString.endsWith("JPG")) && (!paramString.endsWith("JPEG"))) {
+    boolean bool2 = TextUtils.isEmpty(paramString);
+    boolean bool1 = false;
+    if (bool2) {
       return false;
     }
-    return true;
+    if ((paramString.endsWith("jpg")) || (paramString.endsWith("jpeg")) || (paramString.endsWith("JPG")) || (paramString.endsWith("JPEG"))) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public static String b()
@@ -663,12 +596,30 @@ public class WeishiUtils
   
   public static String b(stSimpleMetaFeed paramstSimpleMetaFeed, boolean paramBoolean)
   {
-    return c(a(paramstSimpleMetaFeed, paramBoolean));
+    if (paramstSimpleMetaFeed == null) {
+      return "";
+    }
+    String str = e(paramstSimpleMetaFeed, paramBoolean);
+    if (!TextUtils.isEmpty(str)) {
+      return str;
+    }
+    return d(paramstSimpleMetaFeed, paramBoolean);
   }
   
   public static String b(String paramString)
   {
-    return paramString + "&idx=" + WSGlobalConfig.a().e();
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("0x")))
+    {
+      paramString = paramString.substring(2);
+      if (!TextUtils.isEmpty(paramString))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("#");
+        localStringBuilder.append(paramString);
+        return localStringBuilder.toString();
+      }
+    }
+    return "";
   }
   
   public static void b()
@@ -679,40 +630,7 @@ public class WeishiUtils
       stSimpleMetaFeed localstSimpleMetaFeed = new stSimpleMetaFeed();
       localstSimpleMetaFeed.id = localWeishiManager.c();
       localstSimpleMetaFeed.feed_desc = localWeishiManager.d();
-      localWeishiManager.a(localstSimpleMetaFeed);
-    }
-  }
-  
-  private static void b(ImageRequest paramImageRequest, long paramLong, String paramString1, String paramString2)
-  {
-    WSLog.b("PreloadCoverImgLog", "onSuccess request = " + paramImageRequest);
-    long l3 = SystemClock.uptimeMillis();
-    long l1;
-    int i;
-    label51:
-    boolean bool;
-    if (paramImageRequest != null)
-    {
-      l1 = paramImageRequest.f;
-      if (paramImageRequest == null) {
-        break label97;
-      }
-      i = paramImageRequest.d;
-      bool = c(i);
-      if (paramImageRequest == null) {
-        break label103;
-      }
-    }
-    label97:
-    label103:
-    for (long l2 = paramImageRequest.i;; l2 = 0L)
-    {
-      WsBeaconReportPresenter.a().a(true, true, bool, l3 - paramLong, l1, l2, paramString1, paramString2, -1);
-      return;
-      l1 = 0L;
-      break;
-      i = 0;
-      break label51;
+      WSAioListHelper.a(localstSimpleMetaFeed, "H5Biz");
     }
   }
   
@@ -721,35 +639,26 @@ public class WeishiUtils
     LocalMultiProcConfig.putString4Uin("key_qq_connect_person_id", paramString, a());
   }
   
-  private static void b(WeakReference<ImageView> paramWeakReference, Drawable paramDrawable, String paramString)
-  {
-    ThreadManager.getUIHandler().post(new WeishiUtils.5(paramWeakReference, paramDrawable, paramString));
-  }
-  
-  private static void b(URL paramURL, long paramLong, String paramString, KandianUrlImageView paramKandianUrlImageView, int paramInt)
-  {
-    String str = paramURL.toString();
-    WSFallKeyPicMonitor.b(1, str);
-    ThreadManager.executeOnSubThread(new WeishiUtils.2(paramURL, paramLong, paramKandianUrlImageView, str, paramString, paramInt));
-  }
-  
   public static boolean b()
   {
-    boolean bool = true;
     QQAppInterface localQQAppInterface = a();
     if (localQQAppInterface != null) {
-      bool = localQQAppInterface.mAutomator.b();
+      return localQQAppInterface.mAutomator.b();
     }
-    return bool;
+    return true;
   }
   
   public static boolean b(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((!paramString.endsWith("png")) && (!paramString.endsWith("PNG"))) {
+    boolean bool2 = TextUtils.isEmpty(paramString);
+    boolean bool1 = false;
+    if (bool2) {
       return false;
     }
-    return true;
+    if ((paramString.endsWith("png")) || (paramString.endsWith("PNG"))) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public static String c()
@@ -760,11 +669,88 @@ public class WeishiUtils
       localObject = ((Context)localObject).getPackageManager().getPackageInfo(((Context)localObject).getPackageName(), 0).versionName;
       return localObject;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label22:
+      break label22;
+    }
     return "";
   }
   
+  public static String c(stSimpleMetaFeed paramstSimpleMetaFeed, boolean paramBoolean)
+  {
+    return d(a(paramstSimpleMetaFeed, paramBoolean));
+  }
+  
   public static String c(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("&idx=");
+    localStringBuilder.append(WSGlobalConfig.a().e());
+    return localStringBuilder.toString();
+  }
+  
+  public static void c(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      WSReportEventConstants.b = "";
+      WSReportEventConstants.a = "";
+      WSSharePreferencesUtil.a("key_ref_page_id", "");
+      return;
+    }
+    WSReportEventConstants.b = WSReportEventConstants.a;
+    WSSharePreferencesUtil.a("key_ref_page_id", WSReportEventConstants.b);
+    WSReportEventConstants.a = paramString;
+  }
+  
+  public static boolean c()
+  {
+    long l = System.currentTimeMillis();
+    if (l - a <= 500L)
+    {
+      WSLog.f("WeishiUtils", "click too fast");
+      a = l;
+      return true;
+    }
+    a = l;
+    return false;
+  }
+  
+  public static boolean c(String paramString)
+  {
+    boolean bool2 = TextUtils.isEmpty(paramString);
+    boolean bool1 = false;
+    if (bool2) {
+      return false;
+    }
+    if ((paramString.endsWith("webp")) || (paramString.endsWith("WEBP"))) {
+      bool1 = true;
+    }
+    return bool1;
+  }
+  
+  public static String d()
+  {
+    String str = LocalMultiProcConfig.getString4Uin("key_qq_connect_person_id", "", a());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[qq_connect_person_id]");
+    localStringBuilder.append(str);
+    WSLog.f("WeishiUtils", localStringBuilder.toString());
+    return str;
+  }
+  
+  private static String d(stSimpleMetaFeed paramstSimpleMetaFeed, boolean paramBoolean)
+  {
+    paramstSimpleMetaFeed = a(paramstSimpleMetaFeed, paramBoolean);
+    if (paramstSimpleMetaFeed != null) {
+      return b(paramstSimpleMetaFeed.photo_rgb);
+    }
+    return "";
+  }
+  
+  public static String d(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return "";
@@ -781,63 +767,6 @@ public class WeishiUtils
     return "";
   }
   
-  public static void c(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      WSReportEventConstants.b = "";
-      WSReportEventConstants.jdField_a_of_type_JavaLangString = "";
-      WSSharePreferencesUtil.a("key_ref_page_id", "");
-      return;
-    }
-    WSReportEventConstants.b = WSReportEventConstants.jdField_a_of_type_JavaLangString;
-    WSSharePreferencesUtil.a("key_ref_page_id", WSReportEventConstants.b);
-    WSReportEventConstants.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public static boolean c()
-  {
-    long l = System.currentTimeMillis();
-    if (l - jdField_a_of_type_Long <= 500L)
-    {
-      WSLog.f("WeishiUtils", "click too fast");
-      jdField_a_of_type_Long = l;
-      return true;
-    }
-    jdField_a_of_type_Long = l;
-    return false;
-  }
-  
-  private static boolean c(int paramInt)
-  {
-    return (paramInt == 1) || (paramInt == 2);
-  }
-  
-  public static boolean c(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((!paramString.endsWith("webp")) && (!paramString.endsWith("WEBP"))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static String d()
-  {
-    String str = LocalMultiProcConfig.getString4Uin("key_qq_connect_person_id", "", a());
-    WSLog.f("WeishiUtils", "[qq_connect_person_id]" + str);
-    return str;
-  }
-  
-  public static boolean d()
-  {
-    WeSeeConfigBean localWeSeeConfigBean = WSConfigManager.a().a();
-    if ((localWeSeeConfigBean == null) || (localWeSeeConfigBean.a == null)) {
-      return false;
-    }
-    return localWeSeeConfigBean.a.jdField_a_of_type_Boolean;
-  }
-  
   public static String e()
   {
     Object localObject = a();
@@ -850,10 +779,29 @@ public class WeishiUtils
     }
     return "";
   }
+  
+  private static String e(stSimpleMetaFeed paramstSimpleMetaFeed, boolean paramBoolean)
+  {
+    paramstSimpleMetaFeed = a(paramstSimpleMetaFeed, paramBoolean);
+    if (paramstSimpleMetaFeed != null) {
+      return b(paramstSimpleMetaFeed.photo_rgb);
+    }
+    return "";
+  }
+  
+  public static String f()
+  {
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface == null) {
+      return "0";
+    }
+    long l = Long.parseLong(localQQAppInterface.getCurrentAccountUin());
+    return PreferenceManager.getDefaultPreference(localQQAppInterface.getApplication(), l).getString("key_weishi_newest_feed_from", "0");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils
  * JD-Core Version:    0.7.0.1
  */

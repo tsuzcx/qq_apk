@@ -37,13 +37,11 @@ public class RedPointUtils
     SLog.a("Q.qqstory.tag.RedPointUtils", "getStoryRedPointByAppId(%d) info is %s", Integer.valueOf(paramInt), PBUtils.a((MessageMicro)localObject));
     paramInt = ((oidb_0x791.RedDotInfo)localObject).uint32_number.get();
     boolean bool = ((oidb_0x791.RedDotInfo)localObject).bool_display_reddot.get();
-    long l = ((oidb_0x791.RedDotInfo)localObject).uint32_last_time.get();
-    if ((paramInt > 0) && (bool)) {}
-    for (;;)
-    {
+    ((oidb_0x791.RedDotInfo)localObject).uint32_last_time.get();
+    if ((paramInt > 0) && (bool)) {
       return paramInt;
-      paramInt = 0;
     }
+    return 0;
   }
   
   public static int a(QQAppInterface paramQQAppInterface)
@@ -82,7 +80,7 @@ public class RedPointUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.RedPointUtils
  * JD-Core Version:    0.7.0.1
  */

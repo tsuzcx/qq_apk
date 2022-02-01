@@ -1,7 +1,6 @@
 package com.tencent.av.ui.viewcontroller;
 
 import android.content.res.Resources;
-import com.tencent.av.QavABTestUtils;
 
 public final class OperationMenuViewFactory
 {
@@ -10,54 +9,70 @@ public final class OperationMenuViewFactory
     Object localObject1 = (int[][])null;
     switch (paramInt)
     {
-    case 2131559864: 
-    case 2131559865: 
-    case 2131559867: 
+    case 2131559740: 
+    case 2131559741: 
+    case 2131559743: 
     default: 
       return null;
-    case 2131559863: 
-      if (!QavABTestUtils.c())
-      {
-        localObject1 = new int[] { 2131695331, 2130842193 };
-        localObject2 = new int[] { 2131695328, 2130842373 };
-        localObject1 = new int[][] { { 2131695323, 2130842369 }, { 2131695336, 2130842384 }, { 2131695326, 2130842371 }, { 2131695335, 2130842383 }, localObject1, { 2131695337, 2130842197 }, { 2131695329, 2130842191 }, localObject2, { 2131695324, 2130842455 }, { 2131695327, 2130842372 }, { 2131695333, 2130842380 } };
-      }
+    case 2131559745: 
+      localObject1 = new int[7][];
+      localObject1[0] = { 2131695344, 2130842280 };
+      localObject1[1] = { 2131695333, 2130842267 };
+      localObject1[2] = { 2131695346, 2130842282 };
+      localObject1[3] = { 2131695336, 2130842269 };
+      localObject1[4] = { 2131695341, 2130842091 };
+      localObject1[5] = { 2131695337, 2130842270 };
+      localObject1[6] = { 2131695335, 2130842268 };
       break;
+    case 2131559744: 
+      localObject1 = new int[10][];
+      localObject1[0] = { 2131695344, 2130842280 };
+      localObject1[1] = { 2131695333, 2130842267 };
+      localObject1[2] = { 2131695346, 2130842282 };
+      localObject1[3] = { 2131695336, 2130842269 };
+      localObject1[4] = { 2131695345, 2130842281 };
+      localObject1[5] = { 2131695341, 2130842091 };
+      localObject1[6] = { 2131695339, 2130842089 };
+      localObject1[7] = { 2131695334, 2130842354 };
+      localObject1[8] = { 2131695337, 2130842270 };
+      localObject1[9] = { 2131695335, 2130842268 };
+      break;
+    case 2131559742: 
+      localObject1 = new int[3][];
+      localObject1[0] = { 2131695333, 2130842267 };
+      localObject1[1] = { 2131695341, 2130842091 };
+      localObject1[2] = { 2131695339, 2130842089 };
+      break;
+    case 2131559739: 
+      localObject1 = new int[11][];
+      localObject1[0] = { 2131695333, 2130842267 };
+      localObject1[1] = { 2131695346, 2130842282 };
+      localObject1[2] = { 2131695336, 2130842269 };
+      localObject1[3] = { 2131695345, 2130842281 };
+      localObject1[4] = { 2131695341, 2130842091 };
+      localObject1[5] = { 2131695347, 2130842095 };
+      localObject1[6] = { 2131695339, 2130842089 };
+      localObject1[7] = { 2131695338, 2130842271 };
+      localObject1[8] = { 2131695334, 2130842354 };
+      localObject1[9] = { 2131695337, 2130842270 };
+      localObject1[10] = { 2131695343, 2130842278 };
     }
-    int[] arrayOfInt1;
-    while (localObject1 == null)
-    {
-      return null;
-      localObject1 = new int[][] { { 2131695323, 2130842369 }, { 2131695336, 2130842384 }, { 2131695326, 2130842371 }, { 2131695335, 2130842383 }, { 2131695331, 2130842193 }, { 2131695337, 2130842197 }, { 2131695329, 2130842191 }, { 2131695324, 2130842455 }, { 2131695327, 2130842372 }, { 2131695333, 2130842380 } };
-      continue;
-      localObject1 = new int[] { 2131695334, 2130842382 };
-      localObject2 = new int[] { 2131695323, 2130842369 };
-      arrayOfInt1 = new int[] { 2131695326, 2130842371 };
-      int[] arrayOfInt2 = { 2131695331, 2130842193 };
-      int[] arrayOfInt3 = { 2131695327, 2130842372 };
-      localObject1 = new int[][] { localObject1, localObject2, { 2131695336, 2130842384 }, arrayOfInt1, arrayOfInt2, arrayOfInt3, { 2131695325, 2130842370 } };
-      continue;
-      localObject1 = new int[] { 2131695324, 2130842455 };
-      localObject1 = new int[][] { { 2131695334, 2130842382 }, { 2131695323, 2130842369 }, { 2131695336, 2130842384 }, { 2131695326, 2130842371 }, { 2131695335, 2130842383 }, { 2131695331, 2130842193 }, { 2131695329, 2130842191 }, localObject1, { 2131695327, 2130842372 }, { 2131695325, 2130842370 } };
-      continue;
-      localObject1 = new int[][] { { 2131695323, 2130842369 }, { 2131695331, 2130842193 }, { 2131695329, 2130842191 } };
-    }
-    Object localObject2 = new QavOperationMenuViewController();
+    QavOperationMenuViewController localQavOperationMenuViewController = new QavOperationMenuViewController();
     int j = localObject1.length;
     int i = 0;
     while (i < j)
     {
-      arrayOfInt1 = localObject1[i];
-      ((QavOperationMenuViewController)localObject2).a(new OperationBtnItem(arrayOfInt1[0], paramResources.getString(arrayOfInt1[0]), arrayOfInt1[1]));
+      Object localObject2 = localObject1[i];
+      localQavOperationMenuViewController.a(new OperationBtnItem(localObject2[0], paramResources.getString(localObject2[0]), localObject2[1]));
       i += 1;
     }
-    ((QavOperationMenuViewController)localObject2).a = paramInt;
-    return localObject2;
+    localQavOperationMenuViewController.a = paramInt;
+    return localQavOperationMenuViewController;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.viewcontroller.OperationMenuViewFactory
  * JD-Core Version:    0.7.0.1
  */

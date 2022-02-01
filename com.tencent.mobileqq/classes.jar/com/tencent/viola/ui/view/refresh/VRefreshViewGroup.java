@@ -56,6 +56,7 @@ public class VRefreshViewGroup
   private int mHeaderViewHeight;
   private VRefreshViewGroup.RefreshAndFooterHolder mHolder;
   private int mInitialMotionY;
+  private boolean mIsCompatibleLeftPan = false;
   private boolean mIsHeaderVisiableInScreen = false;
   private MotionEvent mLastMoveEvent;
   private int mLastX = -1;
@@ -65,6 +66,8 @@ public class VRefreshViewGroup
   private ArrayList<RefreshMoveOberver> mRefreshMoveObervers = new ArrayList();
   private Runnable mRunnable = new VRefreshViewGroup.1(this);
   private Scroller mScroller;
+  private float mStartRawX = -1.0F;
+  private float mStartRawY = -1.0F;
   private int mStartX = -1;
   private int mStartY = -1;
   private VRefreshViewGroup.RefreshAndFooterViewState mState = null;
@@ -93,19 +96,21 @@ public class VRefreshViewGroup
   
   private void checkPullLoadEnable()
   {
-    if (this.mFooterCallBack == null) {
+    IFooterCallBack localIFooterCallBack = this.mFooterCallBack;
+    if (localIFooterCallBack == null) {
       return;
     }
     this.mPullLoading = false;
-    this.mFooterCallBack.show(true);
+    localIFooterCallBack.show(true);
   }
   
   private void checkPullRefreshEnable()
   {
-    if (this.mHeaderCallBack == null) {
+    IHeaderCallBack localIHeaderCallBack = this.mHeaderCallBack;
+    if (localIHeaderCallBack == null) {
       return;
     }
-    this.mHeaderCallBack.show();
+    localIHeaderCallBack.show();
   }
   
   private void dealAddFooterView()
@@ -122,8 +127,9 @@ public class VRefreshViewGroup
   
   private void getFooterHeight()
   {
-    if (this.mFooterCallBack != null) {
-      this.mFootViewHeight = this.mFooterCallBack.getFooterHeight();
+    IFooterCallBack localIFooterCallBack = this.mFooterCallBack;
+    if (localIFooterCallBack != null) {
+      this.mFootViewHeight = localIFooterCallBack.getFooterHeight();
     }
   }
   
@@ -150,12 +156,14 @@ public class VRefreshViewGroup
   
   private boolean isHeaderComponentHeaderView()
   {
-    return (this.mHeaderCallBack != null) && (this.mHeaderCallBack.getComponentType() == 2);
+    IHeaderCallBack localIHeaderCallBack = this.mHeaderCallBack;
+    return (localIHeaderCallBack != null) && (localIHeaderCallBack.getComponentType() == 2);
   }
   
   private void resetFooterHeight()
   {
-    if ((this.mFooterCallBack != null) && (this.mFooterCallBack.getRefreshStick())) {
+    IFooterCallBack localIFooterCallBack = this.mFooterCallBack;
+    if ((localIFooterCallBack != null) && (localIFooterCallBack.getRefreshStick())) {
       return;
     }
     int i = 0 - this.mHolder.mOffsetY;
@@ -164,13 +172,14 @@ public class VRefreshViewGroup
   
   private void resetHeaderHeight()
   {
-    if ((this.mHeaderCallBack != null) && ((this.mHeaderCallBack.getRefreshStick()) || (this.mHeaderCallBack.getComponentType() == 2))) {}
-    float f;
-    do
-    {
+    IHeaderCallBack localIHeaderCallBack = this.mHeaderCallBack;
+    if ((localIHeaderCallBack != null) && ((localIHeaderCallBack.getRefreshStick()) || (this.mHeaderCallBack.getComponentType() == 2))) {
       return;
-      f = this.mHolder.mOffsetY;
-    } while ((this.mPullRefreshing) && ((f <= this.mHeaderViewHeight) || (f == 0.0F)));
+    }
+    float f = this.mHolder.mOffsetY;
+    if ((this.mPullRefreshing) && ((f <= this.mHeaderViewHeight) || (f == 0.0F))) {
+      return;
+    }
     if (this.mPullRefreshing)
     {
       i = this.mHeaderViewHeight - this.mHolder.mOffsetY;
@@ -194,88 +203,82 @@ public class VRefreshViewGroup
   
   private void sendDownEvent()
   {
-    MotionEvent localMotionEvent;
     if (!this.mHasSendDownEvent)
     {
       this.mHasSendCancelEvent = false;
       this.mHasSendDownEvent = true;
       this.isIntercepted = false;
-      localMotionEvent = this.mLastMoveEvent;
-      if (localMotionEvent != null) {
-        break label32;
+      MotionEvent localMotionEvent = this.mLastMoveEvent;
+      if (localMotionEvent == null) {
+        return;
+      }
+      if ((this.mHeaderView != null) || (this.mFooterView != null)) {
+        dispatchTouchEventSupper(MotionEvent.obtain(localMotionEvent.getDownTime(), localMotionEvent.getEventTime(), 0, localMotionEvent.getX(), localMotionEvent.getY(), localMotionEvent.getMetaState()));
       }
     }
-    label32:
-    while ((this.mHeaderView == null) && (this.mFooterView == null)) {
-      return;
-    }
-    dispatchTouchEventSupper(MotionEvent.obtain(localMotionEvent.getDownTime(), localMotionEvent.getEventTime(), 0, localMotionEvent.getX(), localMotionEvent.getY(), localMotionEvent.getMetaState()));
   }
   
   private void updateFooterHeight(int paramInt)
   {
-    if ((this.mHolder.mOffsetY < 0) && (this.mFooterView != null))
-    {
-      if (-this.mHolder.mOffsetY <= this.mFooterView.getHeight()) {
-        break label67;
-      }
-      if (this.mState != VRefreshViewGroup.RefreshAndFooterViewState.STATE_RELEASE_TO_LOADMORE)
+    if ((this.mHolder.mOffsetY < 0) && (this.mFooterView != null)) {
+      if (-this.mHolder.mOffsetY > this.mFooterView.getHeight())
       {
-        this.mFooterCallBack.onReleaseToLoadMore();
-        this.mState = VRefreshViewGroup.RefreshAndFooterViewState.STATE_RELEASE_TO_LOADMORE;
+        if (this.mState != VRefreshViewGroup.RefreshAndFooterViewState.STATE_RELEASE_TO_LOADMORE)
+        {
+          this.mFooterCallBack.onReleaseToLoadMore();
+          this.mState = VRefreshViewGroup.RefreshAndFooterViewState.STATE_RELEASE_TO_LOADMORE;
+        }
       }
-    }
-    for (;;)
-    {
-      moveView(paramInt);
-      return;
-      label67:
-      if (this.mState != VRefreshViewGroup.RefreshAndFooterViewState.STATE_NORMAL)
+      else if (this.mState != VRefreshViewGroup.RefreshAndFooterViewState.STATE_NORMAL)
       {
         this.mFooterCallBack.onStateReady();
         this.mState = VRefreshViewGroup.RefreshAndFooterViewState.STATE_NORMAL;
       }
     }
+    moveView(paramInt);
   }
   
   private void updateHeaderHeight(int paramInt1, int paramInt2, int... paramVarArgs)
   {
-    if ((paramVarArgs != null) && (paramVarArgs.length > 0))
-    {
+    if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
       paramInt1 = 1;
-      if (paramInt1 == 0) {
-        break label38;
-      }
+    } else {
+      paramInt1 = 0;
+    }
+    if (paramInt1 != 0)
+    {
       this.mHeaderCallBack.onStateRefreshing();
       startScroll(paramInt2, paramVarArgs[0]);
-    }
-    label38:
-    label120:
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          paramInt1 = 0;
-          break;
-          paramInt1 = paramInt2;
-          if (this.mHolder.isOverHeader(paramInt2)) {
-            paramInt1 = -this.mHolder.mOffsetY;
-          }
-          moveView(paramInt1);
-        } while (this.mPullRefreshing);
-        if (this.mHolder.mOffsetY <= this.mHeaderViewHeight) {
-          break label120;
-        }
-      } while ((this.mState == VRefreshViewGroup.RefreshAndFooterViewState.STATE_READY) || (this.mHeaderCallBack == null));
-      this.mHeaderCallBack.onStateReady();
-      this.mState = VRefreshViewGroup.RefreshAndFooterViewState.STATE_READY;
       return;
-    } while ((this.mState == VRefreshViewGroup.RefreshAndFooterViewState.STATE_NORMAL) || (this.mHeaderCallBack == null));
-    this.mHeaderCallBack.onStateNormal();
-    this.mState = VRefreshViewGroup.RefreshAndFooterViewState.STATE_NORMAL;
+    }
+    paramInt1 = paramInt2;
+    if (this.mHolder.isOverHeader(paramInt2)) {
+      paramInt1 = -this.mHolder.mOffsetY;
+    }
+    moveView(paramInt1);
+    if (!this.mPullRefreshing) {
+      if (this.mHolder.mOffsetY > this.mHeaderViewHeight)
+      {
+        if (this.mState != VRefreshViewGroup.RefreshAndFooterViewState.STATE_READY)
+        {
+          paramVarArgs = this.mHeaderCallBack;
+          if (paramVarArgs != null)
+          {
+            paramVarArgs.onStateReady();
+            this.mState = VRefreshViewGroup.RefreshAndFooterViewState.STATE_READY;
+          }
+        }
+      }
+      else if (this.mState != VRefreshViewGroup.RefreshAndFooterViewState.STATE_NORMAL)
+      {
+        paramVarArgs = this.mHeaderCallBack;
+        if (paramVarArgs != null)
+        {
+          paramVarArgs.onStateNormal();
+          this.mState = VRefreshViewGroup.RefreshAndFooterViewState.STATE_NORMAL;
+        }
+      }
+    }
   }
   
   private void updateTouchAction(MotionEvent paramMotionEvent)
@@ -323,26 +326,18 @@ public class VRefreshViewGroup
   {
     int i = paramMotionEvent.getAction();
     updateTouchAction(paramMotionEvent);
-    switch (i)
+    if (i != 0)
     {
-    default: 
-    case 0: 
-    case 2: 
-      label214:
-      label493:
-      do
-      {
-        for (;;)
+      Object localObject;
+      if (i != 1) {
+        if (i != 2)
         {
-          return super.dispatchTouchEvent(paramMotionEvent);
-          this.mHasSendCancelEvent = false;
-          this.mHasSendDownEvent = false;
-          this.mLastY = ((int)paramMotionEvent.getRawY());
-          this.mLastX = ((int)paramMotionEvent.getRawX());
-          this.mStartY = ((int)paramMotionEvent.getRawY());
-          this.mStartX = ((int)paramMotionEvent.getRawX());
-          this.mInitialMotionY = this.mLastY;
-          continue;
+          if (i != 3) {
+            break label901;
+          }
+        }
+        else
+        {
           this.mLastMoveEvent = paramMotionEvent;
           i = (int)paramMotionEvent.getRawY();
           int j = (int)paramMotionEvent.getRawX();
@@ -351,119 +346,126 @@ public class VRefreshViewGroup
           int n = this.mStartY;
           this.mLastY = i;
           this.mLastX = j;
-          if (isHeaderComponentHeaderView())
-          {
-            if ((this.mHolder.mOffsetY <= 0) || (this.mIsHeaderVisiableInScreen)) {
-              break label214;
+          if (isHeaderComponentHeaderView()) {
+            if ((this.mHolder.mOffsetY > 0) && (!this.mIsHeaderVisiableInScreen))
+            {
+              this.mIsHeaderVisiableInScreen = true;
+              this.mHeaderCallBack.notifyVisiableChangeOnScreen(this.mIsHeaderVisiableInScreen);
             }
-            this.mIsHeaderVisiableInScreen = true;
-            this.mHeaderCallBack.notifyVisiableChangeOnScreen(this.mIsHeaderVisiableInScreen);
-          }
-          while ((this.mStopingRefresh) || (!isEnabled()))
-          {
-            return super.dispatchTouchEvent(paramMotionEvent);
-            if ((this.mIsHeaderVisiableInScreen) && (this.mHolder.mOffsetY <= 0))
+            else if ((this.mIsHeaderVisiableInScreen) && (this.mHolder.mOffsetY <= 0))
             {
               this.mIsHeaderVisiableInScreen = false;
               this.mHeaderCallBack.notifyVisiableChangeOnScreen(this.mIsHeaderVisiableInScreen);
             }
           }
-          if ((Math.abs(m) > this.mTouchSlop) && (Math.abs(i - n) / Math.abs(m) < 1.3F)) {
-            return super.dispatchTouchEvent(paramMotionEvent);
-          }
-          if (!this.isIntercepted)
+          if ((!this.mStopingRefresh) && (isEnabled()))
           {
-            if ((Math.abs(i - this.mInitialMotionY) >= this.mTouchSlop) && (!this.isGrandFatherVerticalPageSlider)) {
-              this.isIntercepted = true;
+            if ((Math.abs(m) > this.mTouchSlop) && (Math.abs(i - n) / Math.abs(m) < 1.3F)) {
+              return super.dispatchTouchEvent(paramMotionEvent);
             }
-          }
-          else
-          {
-            if (((k <= 0) || (this.mHolder.mOffsetY > this.mHeadMoveDistence)) && (k >= 0)) {
-              break label465;
+            if (!this.isIntercepted) {
+              if ((Math.abs(i - this.mInitialMotionY) >= this.mTouchSlop) && (!this.isGrandFatherVerticalPageSlider)) {
+                this.isIntercepted = true;
+              } else {
+                return super.dispatchTouchEvent(paramMotionEvent);
+              }
             }
-            j = (int)(k / this.OFFSET_RADIO);
-            if ((this.mPullLoading) || (!this.mContentView.isTop()) || (((j <= 0) || (this.mHolder.hasFooterPullUp())) && ((j >= 0) || (!this.mHolder.hasHeaderPullDown()) || (!this.mAllowHeaderSliding)))) {
-              break label493;
-            }
-            sendCancelEvent();
-            localIterator = this.mRefreshMoveObervers.iterator();
-          }
-          while (localIterator.hasNext())
-          {
-            ((RefreshMoveOberver)localIterator.next()).onRefreshMove(this.mHolder.mOffsetY);
-            continue;
-            return super.dispatchTouchEvent(paramMotionEvent);
-            return super.dispatchTouchEvent(paramMotionEvent);
-          }
-          if (this.mAllowHeaderSliding)
-          {
-            updateHeaderHeight(i, j, new int[0]);
-            return super.dispatchTouchEvent(paramMotionEvent);
-            if ((!this.mPullRefreshing) && (this.mContentView.isBottom()) && ((j < 0) || ((j > 0) && (this.mHolder.hasFooterPullUp()))))
+            if (((k > 0) && (this.mHolder.mOffsetY <= this.mHeadMoveDistence)) || (k < 0))
             {
-              sendCancelEvent();
-              if (this.mAllowFooterSliding)
+              j = (int)(k / this.OFFSET_RADIO);
+              if ((!this.mPullLoading) && (this.mContentView.isTop()) && (((j > 0) && (!this.mHolder.hasFooterPullUp())) || ((j < 0) && (this.mHolder.hasHeaderPullDown()) && (this.mAllowHeaderSliding))))
               {
-                if (this.mFooterCallBack != null) {
-                  this.mFooterCallBack.onMove(this.mHolder.mOffsetY);
+                sendCancelEvent();
+                localObject = this.mRefreshMoveObervers.iterator();
+                while (((Iterator)localObject).hasNext()) {
+                  ((RefreshMoveOberver)((Iterator)localObject).next()).onRefreshMove(this.mHolder.mOffsetY);
                 }
-                localIterator = this.mRefreshMoveObervers.iterator();
-                while (localIterator.hasNext()) {
-                  ((RefreshMoveOberver)localIterator.next()).onRefreshMove(this.mHolder.mOffsetY);
+                if (!this.mAllowHeaderSliding) {
+                  break label901;
+                }
+                updateHeaderHeight(i, j, new int[0]);
+                return super.dispatchTouchEvent(paramMotionEvent);
+              }
+              if ((!this.mPullRefreshing) && (this.mContentView.isBottom()) && ((j < 0) || ((j > 0) && (this.mHolder.hasFooterPullUp()))))
+              {
+                sendCancelEvent();
+                if (!this.mAllowFooterSliding) {
+                  break label901;
+                }
+                localObject = this.mFooterCallBack;
+                if (localObject != null) {
+                  ((IFooterCallBack)localObject).onMove(this.mHolder.mOffsetY);
+                }
+                localObject = this.mRefreshMoveObervers.iterator();
+                while (((Iterator)localObject).hasNext()) {
+                  ((RefreshMoveOberver)((Iterator)localObject).next()).onRefreshMove(this.mHolder.mOffsetY);
                 }
                 updateFooterHeight(j);
+                break label901;
               }
-            }
-            else
-            {
-              if ((j == 0) || (((!this.mContentView.isTop()) || (this.mHolder.hasHeaderPullDown())) && ((!this.mContentView.isBottom()) || (this.mHolder.hasFooterPullUp())))) {
-                break;
-              }
-              if (Math.abs(j) > 0) {
+              if ((j != 0) && (((this.mContentView.isTop()) && (!this.mHolder.hasHeaderPullDown())) || ((this.mContentView.isBottom()) && (!this.mHolder.hasFooterPullUp()))))
+              {
+                if (Math.abs(j) <= 0) {
+                  break label901;
+                }
                 sendDownEvent();
+                break label901;
+              }
+              if (!this.mAllowHeaderSliding) {
+                break label901;
+              }
+              localObject = this.mRefreshMoveObervers.iterator();
+              while (((Iterator)localObject).hasNext()) {
+                ((RefreshMoveOberver)((Iterator)localObject).next()).onRefreshMove(this.mHolder.mOffsetY);
               }
             }
+            return super.dispatchTouchEvent(paramMotionEvent);
           }
+          return super.dispatchTouchEvent(paramMotionEvent);
         }
-      } while (!this.mAllowHeaderSliding);
-      label465:
-      Iterator localIterator = this.mRefreshMoveObervers.iterator();
-      while (localIterator.hasNext()) {
-        ((RefreshMoveOberver)localIterator.next()).onRefreshMove(this.mHolder.mOffsetY);
       }
-    }
-    if ((this.mHolder.hasHeaderPullDown()) && (this.mContentView.isTop()))
-    {
-      if ((!this.mStopingRefresh) && (!this.mPullRefreshing) && (this.mHolder.mOffsetY > this.mHeaderViewHeight))
+      if ((this.mHolder.hasHeaderPullDown()) && (this.mContentView.isTop()))
       {
-        this.mPullRefreshing = true;
-        if (this.mHeaderCallBack != null) {
-          this.mHeaderCallBack.onStateRefreshing();
+        if ((!this.mStopingRefresh) && (!this.mPullRefreshing) && (this.mHolder.mOffsetY > this.mHeaderViewHeight))
+        {
+          this.mPullRefreshing = true;
+          localObject = this.mHeaderCallBack;
+          if (localObject != null) {
+            ((IHeaderCallBack)localObject).onStateRefreshing();
+          }
+          this.mState = VRefreshViewGroup.RefreshAndFooterViewState.STATE_REFRESHING;
         }
-        this.mState = VRefreshViewGroup.RefreshAndFooterViewState.STATE_REFRESHING;
+        resetHeaderHeight();
       }
-      resetHeaderHeight();
-    }
-    for (;;)
-    {
-      this.mLastY = -1;
-      this.mLastX = -1;
-      this.mInitialMotionY = 0;
-      this.isIntercepted = false;
-      break;
-      if ((this.mHolder.hasFooterPullUp()) && (this.mContentView.isBottom()) && (!this.mStopingRefresh))
+      else if ((this.mHolder.hasFooterPullUp()) && (this.mContentView.isBottom()) && (!this.mStopingRefresh))
       {
         resetFooterHeight();
         if ((this.mHolder.mOffsetY < 0) && (Math.abs(this.mHolder.mOffsetY) > this.mFootViewHeight))
         {
-          if (this.mFooterCallBack != null) {
-            this.mFooterCallBack.onStateRefreshing();
+          localObject = this.mFooterCallBack;
+          if (localObject != null) {
+            ((IFooterCallBack)localObject).onStateRefreshing();
           }
           this.mState = VRefreshViewGroup.RefreshAndFooterViewState.STATE_LOADING;
         }
       }
+      this.mLastY = -1;
+      this.mLastX = -1;
+      this.mInitialMotionY = 0;
+      this.isIntercepted = false;
     }
+    else
+    {
+      this.mHasSendCancelEvent = false;
+      this.mHasSendDownEvent = false;
+      this.mLastY = ((int)paramMotionEvent.getRawY());
+      this.mLastX = ((int)paramMotionEvent.getRawX());
+      this.mStartY = ((int)paramMotionEvent.getRawY());
+      this.mStartX = ((int)paramMotionEvent.getRawX());
+      this.mInitialMotionY = this.mLastY;
+    }
+    label901:
+    return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public boolean dispatchTouchEventSupper(MotionEvent paramMotionEvent)
@@ -473,23 +475,29 @@ public class VRefreshViewGroup
   
   public void getHeaderHeight()
   {
-    if (this.mHeaderCallBack != null) {
-      this.mHeaderViewHeight = this.mHeaderCallBack.getHeaderHeight();
+    IHeaderCallBack localIHeaderCallBack = this.mHeaderCallBack;
+    if (localIHeaderCallBack != null) {
+      this.mHeaderViewHeight = localIHeaderCallBack.getHeaderHeight();
     }
   }
   
   public int getHeaderViewHeight()
   {
-    if ((this.mHeaderViewHeight == 0) && (this.mHeaderCallBack != null)) {
-      this.mHeaderViewHeight = this.mHeaderCallBack.getHeaderHeight();
+    if (this.mHeaderViewHeight == 0)
+    {
+      IHeaderCallBack localIHeaderCallBack = this.mHeaderCallBack;
+      if (localIHeaderCallBack != null) {
+        this.mHeaderViewHeight = localIHeaderCallBack.getHeaderHeight();
+      }
     }
     return this.mHeaderViewHeight;
   }
   
   public int getHeaderViewWidth()
   {
-    if (this.mHeaderCallBack != null) {
-      return this.mHeaderCallBack.getHeaderWidth();
+    IHeaderCallBack localIHeaderCallBack = this.mHeaderCallBack;
+    if (localIHeaderCallBack != null) {
+      return localIHeaderCallBack.getHeaderWidth();
     }
     return 0;
   }
@@ -497,12 +505,14 @@ public class VRefreshViewGroup
   public void moveView(int paramInt)
   {
     this.mHolder.move(paramInt);
-    if (this.mHeaderView != null) {
-      this.mHeaderView.offsetTopAndBottom(paramInt);
+    View localView = this.mHeaderView;
+    if (localView != null) {
+      localView.offsetTopAndBottom(paramInt);
     }
     this.mContentView.offsetTopAndBottom(paramInt);
-    if (this.mFooterView != null) {
-      this.mFooterView.offsetTopAndBottom(paramInt);
+    localView = this.mFooterView;
+    if (localView != null) {
+      localView.offsetTopAndBottom(paramInt);
     }
     ViewCompat.postInvalidateOnAnimation(this);
   }
@@ -515,130 +525,197 @@ public class VRefreshViewGroup
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
+    Object localObject;
     if ((!this.isJudge) && (this.mContentView.getContentViewProvider().getContentView() != null) && ((this.mContentView.getContentViewProvider().getContentView().getParent().getParent() instanceof VFrameLayout)))
     {
-      VFrameLayout localVFrameLayout = (VFrameLayout)this.mContentView.getContentViewProvider().getContentView().getParent().getParent();
-      if ((localVFrameLayout.getComponent() != null) && ((localVFrameLayout.getComponent().getParent() instanceof VPageSlider)) && (!((VPageSlider)localVFrameLayout.getComponent().getParent()).isPageSliderHorizontal())) {
+      localObject = (VFrameLayout)this.mContentView.getContentViewProvider().getContentView().getParent().getParent();
+      if ((((VFrameLayout)localObject).getComponent() != null) && ((((VFrameLayout)localObject).getComponent().getParent() instanceof VPageSlider)) && (!((VPageSlider)((VFrameLayout)localObject).getComponent().getParent()).isPageSliderHorizontal())) {
         this.isGrandFatherVerticalPageSlider = true;
       }
     }
     this.isJudge = true;
+    float f1;
+    float f2;
     if (this.isGrandFatherVerticalPageSlider)
     {
-      if (paramMotionEvent.getAction() != 0) {
-        break label195;
-      }
-      this.downX = paramMotionEvent.getRawX();
-      this.downY = paramMotionEvent.getRawY();
-      this.isAtTop = this.mContentView.isTop();
-      this.isAtBottom = this.mContentView.isBottom();
-      this.scrollMode = 0;
-      getParent().requestDisallowInterceptTouchEvent(true);
-    }
-    label195:
-    do
-    {
-      float f1;
-      float f2;
-      do
+      if (paramMotionEvent.getAction() == 0)
       {
-        for (;;)
+        this.downX = paramMotionEvent.getRawX();
+        this.downY = paramMotionEvent.getRawY();
+        this.isAtTop = this.mContentView.isTop();
+        this.isAtBottom = this.mContentView.isBottom();
+        this.scrollMode = 0;
+        getParent().requestDisallowInterceptTouchEvent(true);
+      }
+      else if ((paramMotionEvent.getAction() == 2) && (this.scrollMode == 0))
+      {
+        f1 = Math.abs(this.downX - paramMotionEvent.getRawX());
+        f2 = Math.abs(this.downY - paramMotionEvent.getRawY());
+        if ((f1 > f2) && (f1 > this.mTouchSlop1))
         {
-          return super.onInterceptTouchEvent(paramMotionEvent);
-          if ((paramMotionEvent.getAction() == 2) && (this.scrollMode == 0))
+          this.scrollMode = 1;
+        }
+        else if ((f2 > f1) && (f2 > this.mTouchSlop1))
+        {
+          this.scrollMode = 2;
+          if ((this.downY < paramMotionEvent.getRawY()) && (this.isAtTop))
           {
-            f1 = Math.abs(this.downX - paramMotionEvent.getRawX());
-            f2 = Math.abs(this.downY - paramMotionEvent.getRawY());
-            if ((f1 <= f2) || (f1 <= this.mTouchSlop1)) {
-              break;
-            }
-            this.scrollMode = 1;
+            getParent().requestDisallowInterceptTouchEvent(false);
+            return true;
+          }
+          if ((this.isAtBottom) && (this.downY > paramMotionEvent.getRawY()))
+          {
+            getParent().requestDisallowInterceptTouchEvent(false);
+            return true;
           }
         }
-      } while ((f2 <= f1) || (f2 <= this.mTouchSlop1));
-      this.scrollMode = 2;
-      if ((this.downY < paramMotionEvent.getRawY()) && (this.isAtTop))
-      {
-        getParent().requestDisallowInterceptTouchEvent(false);
-        return true;
       }
-    } while ((!this.isAtBottom) || (this.downY <= paramMotionEvent.getRawY()));
-    getParent().requestDisallowInterceptTouchEvent(false);
-    return true;
-  }
-  
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    for (;;)
+    }
+    else if (this.mIsCompatibleLeftPan)
     {
-      try
+      int i = paramMotionEvent.getAction();
+      localObject = getParent();
+      if (i != 0)
       {
-        paramInt4 = getChildCount();
-        paramInt2 = getPaddingTop() + this.mHolder.mOffsetY;
-        paramInt1 = 0;
-        paramInt3 = 0;
-        if (paramInt3 < paramInt4)
-        {
-          View localView = getChildAt(paramInt3);
-          FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)localView.getLayoutParams();
-          int k = localLayoutParams.topMargin;
-          int i = localLayoutParams.bottomMargin;
-          int j = localLayoutParams.leftMargin;
-          j = getPaddingLeft() + j;
-          paramInt2 += k;
-          k = localView.getMeasuredWidth();
-          if (localView.getVisibility() == 8) {
-            break label338;
-          }
-          int m;
-          if (paramInt3 == 0)
+        if (i != 1) {
+          if (i != 2)
           {
-            if (isAddContentAndFooterView())
-            {
-              m = localView.getMeasuredHeight() - paramInt1;
-              localView.layout(j, paramInt2, k + j, m + paramInt2);
-              paramInt2 = m + i + paramInt2;
-            }
-            else
-            {
-              paramInt1 = localView.getMeasuredHeight() - this.mHeaderViewHeight;
-              localView.layout(j, paramInt2 - this.mHeaderViewHeight, k + j, paramInt2 + paramInt1);
-              paramInt2 += paramInt1;
-            }
-          }
-          else if (paramInt3 == 1)
-          {
-            if (isAddContentAndFooterView())
-            {
-              localView.layout(j, paramInt2, k + j, localView.getMeasuredHeight() + paramInt2);
-              paramInt2 = localView.getMeasuredHeight() + paramInt2;
-            }
-            else
-            {
-              m = localView.getMeasuredHeight() - paramInt1;
-              localView.layout(j, paramInt2, k + j, m + paramInt2);
-              paramInt2 = m + i + paramInt2;
+            if (i != 3) {
+              break label553;
             }
           }
           else
           {
-            localView.layout(j, paramInt2, k + j, localView.getMeasuredHeight() + paramInt2);
-            i = localView.getMeasuredHeight();
-            paramInt2 = i + paramInt2;
+            f2 = paramMotionEvent.getRawY();
+            f1 = paramMotionEvent.getRawX() - this.mStartRawX;
+            f2 -= this.mStartRawY;
+            if ((Math.abs(f2) > this.mTouchSlop) && (f1 < 0.0F))
+            {
+              if ((Math.abs(f1) / Math.abs(f2) < 0.5F) && (localObject != null))
+              {
+                ((ViewParent)localObject).requestDisallowInterceptTouchEvent(false);
+                break label553;
+              }
+              if (Math.abs(f1) / Math.abs(f2) > 0.75F) {
+                return true;
+              }
+              if (localObject != null)
+              {
+                ((ViewParent)localObject).requestDisallowInterceptTouchEvent(false);
+                break label553;
+              }
+            }
+            if (localObject == null) {
+              break label553;
+            }
+            ((ViewParent)localObject).requestDisallowInterceptTouchEvent(false);
+            break label553;
           }
+        }
+        if (localObject != null) {
+          ((ViewParent)localObject).requestDisallowInterceptTouchEvent(false);
+        }
+      }
+      else
+      {
+        if (localObject != null) {
+          ((ViewParent)localObject).requestDisallowInterceptTouchEvent(true);
+        }
+        this.mStartRawY = paramMotionEvent.getRawY();
+        this.mStartRawX = paramMotionEvent.getRawX();
+      }
+    }
+    label553:
+    return super.onInterceptTouchEvent(paramMotionEvent);
+  }
+  
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    for (;;)
+    {
+      int m;
+      int i;
+      try
+      {
+        int j = getChildCount();
+        paramInt1 = getPaddingTop() + this.mHolder.mOffsetY;
+        paramInt2 = 0;
+        paramInt3 = 0;
+        Object localObject;
+        if (paramInt2 < j)
+        {
+          View localView = getChildAt(paramInt2);
+          localObject = (FrameLayout.LayoutParams)localView.getLayoutParams();
+          paramInt4 = ((FrameLayout.LayoutParams)localObject).topMargin;
+          m = ((FrameLayout.LayoutParams)localObject).bottomMargin;
+          int k = ((FrameLayout.LayoutParams)localObject).leftMargin + getPaddingLeft();
+          i = paramInt1 + paramInt4;
+          int n = localView.getMeasuredWidth();
+          paramInt1 = i;
+          paramInt4 = paramInt3;
+          if (localView.getVisibility() != 8) {
+            if (paramInt2 == 0)
+            {
+              if (isAddContentAndFooterView())
+              {
+                paramInt1 = localView.getMeasuredHeight() - paramInt3;
+                localView.layout(k, i, n + k, paramInt1 + i);
+                break label357;
+              }
+              paramInt4 = localView.getMeasuredHeight() - this.mHeaderViewHeight;
+              paramInt3 = this.mHeaderViewHeight;
+              paramInt1 = i + paramInt4;
+              localView.layout(k, i - paramInt3, n + k, paramInt1);
+            }
+            else
+            {
+              if (paramInt2 == 1)
+              {
+                if (isAddContentAndFooterView())
+                {
+                  localView.layout(k, i, n + k, localView.getMeasuredHeight() + i);
+                  paramInt1 = localView.getMeasuredHeight();
+                }
+                else
+                {
+                  paramInt1 = localView.getMeasuredHeight() - paramInt3;
+                  localView.layout(k, i, n + k, paramInt1 + i);
+                  break label357;
+                }
+              }
+              else
+              {
+                localView.layout(k, i, n + k, localView.getMeasuredHeight() + i);
+                paramInt1 = localView.getMeasuredHeight();
+              }
+              paramInt1 = i + paramInt1;
+              paramInt4 = paramInt3;
+            }
+          }
+          paramInt2 += 1;
+          paramInt3 = paramInt4;
+        }
+        else
+        {
+          StringBuilder localStringBuilder;
+          return;
         }
       }
       catch (Exception localException)
       {
-        ViolaLogUtils.e(TAG, "onLayout error:" + localException.getMessage());
+        localObject = TAG;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onLayout error:");
+        localStringBuilder.append(localException.getMessage());
+        ViolaLogUtils.e((String)localObject, localStringBuilder.toString());
       }
-      return;
-      label338:
-      paramInt3 += 1;
+      label357:
+      paramInt1 = i + (paramInt1 + m);
+      paramInt4 = paramInt3;
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     int i = View.MeasureSpec.getSize(paramInt1);
     int j = View.MeasureSpec.getSize(paramInt2);
@@ -670,28 +747,30 @@ public class VRefreshViewGroup
   public void scrollerToTop(boolean paramBoolean1, boolean paramBoolean2)
   {
     this.mContentView.scrollToTop(paramBoolean2);
-    if (paramBoolean1) {
+    IHeaderCallBack localIHeaderCallBack;
+    if (paramBoolean1)
+    {
       if ((!this.mPullRefreshing) && (this.mHolder.mOffsetY == 0))
       {
         this.mIsHeaderVisiableInScreen = true;
         getHeaderHeight();
         updateHeaderHeight(0, this.mHeaderViewHeight, new int[] { 0 });
-        if (this.mHeaderCallBack != null) {
-          this.mHeaderCallBack.notifyVisiableChangeOnScreen(this.mIsHeaderVisiableInScreen);
+        localIHeaderCallBack = this.mHeaderCallBack;
+        if (localIHeaderCallBack != null) {
+          localIHeaderCallBack.notifyVisiableChangeOnScreen(this.mIsHeaderVisiableInScreen);
         }
         this.mPullRefreshing = true;
       }
     }
-    do
+    else if ((this.mIsHeaderVisiableInScreen) && (this.mHolder.mOffsetY > 0))
     {
-      do
-      {
-        return;
-      } while ((!this.mIsHeaderVisiableInScreen) || (this.mHolder.mOffsetY <= 0));
       this.mIsHeaderVisiableInScreen = false;
       updateHeaderHeight(0, -this.mHolder.mOffsetY, new int[] { 0 });
-    } while (this.mHeaderCallBack == null);
-    this.mHeaderCallBack.notifyVisiableChangeOnScreen(this.mIsHeaderVisiableInScreen);
+      localIHeaderCallBack = this.mHeaderCallBack;
+      if (localIHeaderCallBack != null) {
+        localIHeaderCallBack.notifyVisiableChangeOnScreen(this.mIsHeaderVisiableInScreen);
+      }
+    }
   }
   
   public void setAllowFooterSliding(boolean paramBoolean)
@@ -706,12 +785,14 @@ public class VRefreshViewGroup
   
   public void setContentViewProvider(VRefreshContentView.ContentViewProvider paramContentViewProvider)
   {
-    if (paramContentViewProvider == null) {}
-    while (indexOfChild(paramContentViewProvider.getContentView()) != -1) {
+    if (paramContentViewProvider == null) {
       return;
     }
-    addView(paramContentViewProvider.getContentView());
-    this.mContentView.setContentViewProvider(paramContentViewProvider);
+    if (indexOfChild(paramContentViewProvider.getContentView()) == -1)
+    {
+      addView(paramContentViewProvider.getContentView());
+      this.mContentView.setContentViewProvider(paramContentViewProvider);
+    }
   }
   
   public void setFooterView(View paramView)
@@ -724,21 +805,18 @@ public class VRefreshViewGroup
   
   public void setHeadMoveLargestDistence(int paramInt)
   {
-    if (paramInt <= 0)
-    {
+    if (paramInt <= 0) {
       this.mHeadMoveDistence = (FlexConvertUtils.getScreenHeight() / 3);
-      if (this.mHeadMoveDistence > this.mHeaderViewHeight) {
-        break label45;
-      }
-    }
-    label45:
-    for (paramInt = this.mHeaderViewHeight + 1;; paramInt = this.mHeadMoveDistence)
-    {
+    } else {
       this.mHeadMoveDistence = paramInt;
-      return;
-      this.mHeadMoveDistence = paramInt;
-      break;
     }
+    int i = this.mHeadMoveDistence;
+    int j = this.mHeaderViewHeight;
+    paramInt = i;
+    if (i <= j) {
+      paramInt = j + 1;
+    }
+    this.mHeadMoveDistence = paramInt;
   }
   
   public void setHeaderView(View paramView)
@@ -754,6 +832,11 @@ public class VRefreshViewGroup
     }
   }
   
+  public void setIsCompatibleLeftPan(boolean paramBoolean)
+  {
+    this.mIsCompatibleLeftPan = paramBoolean;
+  }
+  
   public void setViewGroupLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     if (!this.mHasAddLayoutParams)
@@ -766,26 +849,30 @@ public class VRefreshViewGroup
   public void startScroll(int paramInt1, int paramInt2)
   {
     this.mScroller.startScroll(0, this.mHolder.mOffsetY, 0, paramInt1, paramInt2);
-    if (this.mHolder.mOffsetY >= 0) {
-      if (this.mHeaderCallBack != null) {
-        this.mHeaderCallBack.onFingerRelease();
-      }
-    }
-    for (;;)
+    Object localObject;
+    if (this.mHolder.mOffsetY >= 0)
     {
-      this.mHandler.post(this.mRunnable);
-      return;
-      if (this.mFooterCallBack != null) {
-        this.mFooterCallBack.onFingerRelease();
+      localObject = this.mHeaderCallBack;
+      if (localObject != null) {
+        ((IHeaderCallBack)localObject).onFingerRelease();
       }
     }
+    else
+    {
+      localObject = this.mFooterCallBack;
+      if (localObject != null) {
+        ((IFooterCallBack)localObject).onFingerRelease();
+      }
+    }
+    this.mHandler.post(this.mRunnable);
   }
   
   public void stopLoadMore()
   {
     this.mState = VRefreshViewGroup.RefreshAndFooterViewState.STATE_FINISHED;
-    if (this.mFooterCallBack != null) {
-      this.mFooterCallBack.onStateFinish(false);
+    IFooterCallBack localIFooterCallBack = this.mFooterCallBack;
+    if (localIFooterCallBack != null) {
+      localIFooterCallBack.onStateFinish(false);
     }
   }
   
@@ -810,31 +897,32 @@ public class VRefreshViewGroup
   
   public void updateRefreshShow(boolean paramBoolean)
   {
+    IHeaderCallBack localIHeaderCallBack;
     if ((paramBoolean) && (!this.mIsHeaderVisiableInScreen))
     {
       this.mIsHeaderVisiableInScreen = paramBoolean;
       getHeaderHeight();
       updateHeaderHeight(0, this.mHeaderViewHeight, new int[] { 0 });
       this.mContentView.scrollToTop(false);
-      if (this.mHeaderCallBack != null) {
-        this.mHeaderCallBack.notifyVisiableChangeOnScreen(this.mIsHeaderVisiableInScreen);
+      localIHeaderCallBack = this.mHeaderCallBack;
+      if (localIHeaderCallBack != null) {
+        localIHeaderCallBack.notifyVisiableChangeOnScreen(this.mIsHeaderVisiableInScreen);
       }
     }
-    do
+    else if ((!paramBoolean) && (this.mIsHeaderVisiableInScreen))
     {
-      do
-      {
-        return;
-      } while ((paramBoolean) || (!this.mIsHeaderVisiableInScreen));
       this.mIsHeaderVisiableInScreen = paramBoolean;
       updateHeaderHeight(0, -this.mHeaderViewHeight, new int[] { 0 });
-    } while (this.mHeaderCallBack == null);
-    this.mHeaderCallBack.notifyVisiableChangeOnScreen(this.mIsHeaderVisiableInScreen);
+      localIHeaderCallBack = this.mHeaderCallBack;
+      if (localIHeaderCallBack != null) {
+        localIHeaderCallBack.notifyVisiableChangeOnScreen(this.mIsHeaderVisiableInScreen);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.view.refresh.VRefreshViewGroup
  * JD-Core Version:    0.7.0.1
  */

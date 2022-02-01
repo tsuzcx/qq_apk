@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.apollo.statistics.trace.sdk.component;
 
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.api.statistics.trace.data.TraceData;
+import com.tencent.mobileqq.apollo.statistics.trace.data.TraceData;
+import com.tencent.mobileqq.apollo.utils.ProcessUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityTransaction;
@@ -16,7 +17,7 @@ public class DefaultTraceStorage
 {
   public QQAppInterface a()
   {
-    if (BaseApplicationImpl.sProcessId == 1)
+    if (ProcessUtil.a())
     {
       AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
       if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
@@ -37,89 +38,81 @@ public class DefaultTraceStorage
   
   public boolean a(List<TraceData> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return false;
-    }
-    Object localObject;
-    EntityTransaction localEntityTransaction;
-    TraceData localTraceData;
-    try
+    if (paramList != null)
     {
-      localObject = a();
-      if (localObject == null) {
+      if (paramList.size() == 0) {
         return false;
       }
-      localObject = ((QQAppInterface)localObject).getEntityManagerFactory().createEntityManager();
-      localEntityTransaction = ((EntityManager)localObject).getTransaction();
-      localEntityTransaction.begin();
-      paramList = paramList.iterator();
-      for (;;)
+      try
       {
-        if (paramList.hasNext())
+        Object localObject = a();
+        if (localObject == null) {
+          return false;
+        }
+        localObject = ((QQAppInterface)localObject).getEntityManagerFactory().createEntityManager();
+        EntityTransaction localEntityTransaction = ((EntityManager)localObject).getTransaction();
+        localEntityTransaction.begin();
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
         {
-          localTraceData = (TraceData)paramList.next();
-          if (localTraceData.getStatus() == 1000)
-          {
+          TraceData localTraceData = (TraceData)paramList.next();
+          if (localTraceData.getStatus() == 1000) {
             ((EntityManager)localObject).persistOrReplace(localTraceData);
-            continue;
-            return true;
+          } else {
+            ((EntityManager)localObject).update(localTraceData);
           }
         }
+        localEntityTransaction.commit();
+        localEntityTransaction.end();
+        ((EntityManager)localObject).close();
+        return true;
+      }
+      catch (Throwable paramList)
+      {
+        QLog.e("[cmshow][TraceReport]", 1, paramList, new Object[0]);
+        return true;
       }
     }
-    catch (Throwable paramList)
-    {
-      QLog.e("TraceReport", 1, paramList, new Object[0]);
-    }
-    for (;;)
-    {
-      ((EntityManager)localObject).update(localTraceData);
-      break;
-      localEntityTransaction.commit();
-      localEntityTransaction.end();
-      ((EntityManager)localObject).close();
-    }
+    return false;
   }
   
   public boolean b(List<TraceData> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return false;
-    }
-    Object localObject;
-    EntityTransaction localEntityTransaction;
-    try
+    if (paramList != null)
     {
-      localObject = a();
-      if (localObject == null) {
+      if (paramList.size() == 0) {
         return false;
       }
-      localObject = ((QQAppInterface)localObject).getEntityManagerFactory().createEntityManager();
-      localEntityTransaction = ((EntityManager)localObject).getTransaction();
-      localEntityTransaction.begin();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      try
       {
-        ((EntityManager)localObject).remove((TraceData)paramList.next());
-        continue;
+        Object localObject = a();
+        if (localObject == null) {
+          return false;
+        }
+        localObject = ((QQAppInterface)localObject).getEntityManagerFactory().createEntityManager();
+        EntityTransaction localEntityTransaction = ((EntityManager)localObject).getTransaction();
+        localEntityTransaction.begin();
+        paramList = paramList.iterator();
+        while (paramList.hasNext()) {
+          ((EntityManager)localObject).remove((TraceData)paramList.next());
+        }
+        localEntityTransaction.commit();
+        localEntityTransaction.end();
+        ((EntityManager)localObject).close();
+        return true;
+      }
+      catch (Throwable paramList)
+      {
+        QLog.e("[cmshow][TraceReport]", 1, paramList, new Object[0]);
         return true;
       }
     }
-    catch (Throwable paramList)
-    {
-      QLog.e("TraceReport", 1, paramList, new Object[0]);
-    }
-    for (;;)
-    {
-      localEntityTransaction.commit();
-      localEntityTransaction.end();
-      ((EntityManager)localObject).close();
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.trace.sdk.component.DefaultTraceStorage
  * JD-Core Version:    0.7.0.1
  */

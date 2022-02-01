@@ -40,7 +40,7 @@ public class ImmersionHandler
     ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ImmersionHandler.ImmersionObserver(false, this.jdField_a_of_type_ComImmersionStickersampleappImmerIConnectionProxy), paramString.toByteArray(), "OidbSvc.0xa4d", 2637, 1, null);
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return null;
   }
@@ -55,7 +55,7 @@ public class ImmersionHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.immersion.stickersampleapp.ImmersionHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ class JsInjector$Instance
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector.Instance
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class oidb_cmd0xb77$ReqBody
   extends MessageMicro<ReqBody>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 58, 80, 88, 98, 106, 114, 122, 130, 138, 146 }, new String[] { "appid", "app_type", "msg_style", "sender_uin", "client_info", "text_msg", "ext_info", "send_type", "recv_uin", "rich_msg_body", "ark_msg_body", "recv_openid", "arkv1_msg_body", "ark_json_body", "xml_msg_body", "mini_app_msg_body" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), null, "", null, Integer.valueOf(0), Long.valueOf(0L), null, null, "", null, null, null, null }, ReqBody.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field app_type = PBField.initUInt32(0);
   public final PBUInt64Field appid = PBField.initUInt64(0L);
   public oidb_cmd0xb77.ArkJsonBody ark_json_body = new oidb_cmd0xb77.ArkJsonBody();
@@ -27,10 +27,17 @@ public final class oidb_cmd0xb77$ReqBody
   public final PBUInt64Field sender_uin = PBField.initUInt64(0L);
   public final PBStringField text_msg = PBField.initString("");
   public oidb_cmd0xb77.XmlMsgBody xml_msg_body = new oidb_cmd0xb77.XmlMsgBody();
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 58, 80, 88, 98, 106, 114, 122, 130, 138, 146 }, new String[] { "appid", "app_type", "msg_style", "sender_uin", "client_info", "text_msg", "ext_info", "send_type", "recv_uin", "rich_msg_body", "ark_msg_body", "recv_openid", "arkv1_msg_body", "ark_json_body", "xml_msg_body", "mini_app_msg_body" }, new Object[] { localLong, localInteger, localInteger, localLong, null, "", null, localInteger, localLong, null, null, "", null, null, null, null }, ReqBody.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb77.oidb_cmd0xb77.ReqBody
  * JD-Core Version:    0.7.0.1
  */

@@ -11,20 +11,21 @@ class AEOldQuicResDownload$MyRunnable
   
   public void run()
   {
-    if (this.a != null)
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-      if (localQQAppInterface != null)
+      localObject = (QQAppInterface)((WeakReference)localObject).get();
+      if (localObject != null)
       {
         VideoEnvironment.LogDownLoad("AEOldQuicResDownload", "start download quic res", null);
-        AEOldQuicResDownload.a(new AEOldQuicResDownload(localQQAppInterface));
+        AEOldQuicResDownload.a(new AEOldQuicResDownload((QQAppInterface)localObject));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.download.old.AEOldQuicResDownload.MyRunnable
  * JD-Core Version:    0.7.0.1
  */

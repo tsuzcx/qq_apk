@@ -26,32 +26,34 @@ public class ArgumentUtils
   
   public static HippyArray fromArray(Object paramObject)
   {
+    Object localObject1 = new HippyArray();
+    boolean bool = paramObject instanceof String[];
     int j = 0;
     int k = 0;
     int m = 0;
     int n = 0;
+    int i1 = 0;
     int i = 0;
-    HippyArray localHippyArray = new HippyArray();
-    if ((paramObject instanceof String[]))
+    if (bool)
     {
       paramObject = (String[])(String[])paramObject;
       j = paramObject.length;
       while (i < j)
       {
-        localHippyArray.pushString(paramObject[i]);
+        ((HippyArray)localObject1).pushString(paramObject[i]);
         i += 1;
       }
     }
     if ((paramObject instanceof Parcelable[]))
     {
       paramObject = (Parcelable[])(Parcelable[])paramObject;
-      j = paramObject.length;
-      i = 0;
-      while (i < j)
+      k = paramObject.length;
+      i = j;
+      while (i < k)
       {
-        Object localObject = paramObject[i];
-        if ((localObject instanceof Bundle)) {
-          localHippyArray.pushMap(fromBundle((Bundle)localObject));
+        Object localObject2 = paramObject[i];
+        if ((localObject2 instanceof Bundle)) {
+          ((HippyArray)localObject1).pushMap(fromBundle((Bundle)localObject2));
         }
         i += 1;
       }
@@ -59,11 +61,11 @@ public class ArgumentUtils
     if ((paramObject instanceof int[]))
     {
       paramObject = (int[])(int[])paramObject;
-      k = paramObject.length;
-      i = j;
-      while (i < k)
+      j = paramObject.length;
+      i = k;
+      while (i < j)
       {
-        localHippyArray.pushInt(paramObject[i]);
+        ((HippyArray)localObject1).pushInt(paramObject[i]);
         i += 1;
       }
     }
@@ -71,10 +73,10 @@ public class ArgumentUtils
     {
       paramObject = (float[])(float[])paramObject;
       j = paramObject.length;
-      i = k;
+      i = m;
       while (i < j)
       {
-        localHippyArray.pushDouble(paramObject[i]);
+        ((HippyArray)localObject1).pushDouble(paramObject[i]);
         i += 1;
       }
     }
@@ -82,25 +84,33 @@ public class ArgumentUtils
     {
       paramObject = (double[])(double[])paramObject;
       j = paramObject.length;
-      i = m;
+      i = n;
       while (i < j)
       {
-        localHippyArray.pushDouble(paramObject[i]);
+        ((HippyArray)localObject1).pushDouble(paramObject[i]);
         i += 1;
       }
     }
-    if (!(paramObject instanceof boolean[])) {
-      throw new IllegalArgumentException("Unknown array type " + paramObject.getClass());
-    }
-    paramObject = (boolean[])(boolean[])paramObject;
-    j = paramObject.length;
-    i = n;
-    while (i < j)
+    if ((paramObject instanceof boolean[]))
     {
-      localHippyArray.pushBoolean(paramObject[i]);
-      i += 1;
+      paramObject = (boolean[])(boolean[])paramObject;
+      j = paramObject.length;
+      i = i1;
+      while (i < j)
+      {
+        ((HippyArray)localObject1).pushBoolean(paramObject[i]);
+        i += 1;
+      }
+      return localObject1;
     }
-    return localHippyArray;
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("Unknown array type ");
+    ((StringBuilder)localObject1).append(paramObject.getClass());
+    paramObject = new IllegalArgumentException(((StringBuilder)localObject1).toString());
+    for (;;)
+    {
+      throw paramObject;
+    }
   }
   
   public static HippyMap fromBundle(Bundle paramBundle)
@@ -135,12 +145,16 @@ public class ArgumentUtils
       {
         localHippyMap.pushBoolean(str, ((Boolean)localObject).booleanValue());
       }
+      else if ((localObject instanceof Bundle))
+      {
+        localHippyMap.pushMap(str, fromBundle((Bundle)localObject));
+      }
       else
       {
-        if (!(localObject instanceof Bundle)) {
-          throw new IllegalArgumentException("Could not convert " + localObject.getClass());
-        }
-        localHippyMap.pushMap(str, fromBundle((Bundle)localObject));
+        paramBundle = new StringBuilder();
+        paramBundle.append("Could not convert ");
+        paramBundle.append(localObject.getClass());
+        throw new IllegalArgumentException(paramBundle.toString());
       }
     }
     return localHippyMap;
@@ -148,32 +162,36 @@ public class ArgumentUtils
   
   public static HippyArray fromJavaArgs(Object[] paramArrayOfObject)
   {
-    HippyArray localHippyArray = new HippyArray();
-    if ((paramArrayOfObject == null) || (paramArrayOfObject.length <= 0)) {
-      return localHippyArray;
-    }
-    for (;;)
+    localHippyArray = new HippyArray();
+    if (paramArrayOfObject != null)
     {
-      int i;
+      if (paramArrayOfObject.length <= 0) {
+        return localHippyArray;
+      }
       try
       {
         int j = paramArrayOfObject.length;
-        i = 0;
-        if (i >= j) {
-          break;
+        int i = 0;
+        Object localObject;
+        while (i < j)
+        {
+          localObject = paramArrayOfObject[i];
+          if (localObject == null) {
+            localHippyArray.pushNull();
+          } else {
+            parseObjectGotoArray(localHippyArray, localObject);
+          }
+          i += 1;
         }
-        Object localObject = paramArrayOfObject[i];
-        if (localObject == null) {
-          localHippyArray.pushNull();
-        } else {
-          parseObjectGotoArray(localHippyArray, localObject);
-        }
+        return localHippyArray;
       }
       catch (Throwable paramArrayOfObject)
       {
-        return localHippyArray;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("fromJavaArgs: ");
+        ((StringBuilder)localObject).append(paramArrayOfObject.getMessage());
+        LogUtils.d("ArgumentUtils", ((StringBuilder)localObject).toString());
       }
-      i += 1;
     }
   }
   
@@ -189,200 +207,219 @@ public class ArgumentUtils
   
   private static void objectToJson(GrowByteBuffer paramGrowByteBuffer, Object paramObject)
   {
-    int j = 0;
-    int i = 0;
-    if (paramObject == null) {
+    if (paramObject == null)
+    {
       paramGrowByteBuffer.putByteArray(EMPTY_OBJ_BYTES);
-    }
-    do
-    {
       return;
-      if ((paramObject instanceof String))
-      {
-        paramObject = (String)paramObject;
-        if (TextUtils.isEmpty(paramObject))
-        {
-          paramGrowByteBuffer.putByteArray(EMPTY_OBJ_BYTES);
-          return;
-        }
-        stringFormat(paramObject, paramGrowByteBuffer);
-        return;
-      }
-      if ((paramObject.getClass().isAssignableFrom(Integer.TYPE)) || ((paramObject instanceof Integer)))
-      {
-        paramGrowByteBuffer.putInt(((Integer)paramObject).intValue());
-        return;
-      }
-      if ((paramObject.getClass().isAssignableFrom(Long.TYPE)) || ((paramObject instanceof Long)))
-      {
-        paramGrowByteBuffer.putLong(((Long)paramObject).longValue());
-        return;
-      }
-      if ((paramObject.getClass().isAssignableFrom(Double.TYPE)) || ((paramObject instanceof Double)))
-      {
-        if (Double.isNaN(((Double)paramObject).doubleValue())) {
-          paramObject = Integer.valueOf(0);
-        }
-        for (;;)
-        {
-          paramGrowByteBuffer.putDouble(((Double)paramObject).doubleValue());
-          return;
-        }
-      }
-      if ((paramObject.getClass().isAssignableFrom(Boolean.TYPE)) || ((paramObject instanceof Boolean)))
-      {
-        paramGrowByteBuffer.putBoolean(((Boolean)paramObject).booleanValue());
-        return;
-      }
-      if ((paramObject.getClass().isAssignableFrom(Float.TYPE)) || ((paramObject instanceof Float)))
-      {
-        if (Float.isNaN(((Float)paramObject).floatValue())) {
-          paramObject = Integer.valueOf(0);
-        }
-        for (;;)
-        {
-          paramGrowByteBuffer.putFloat(((Float)paramObject).floatValue());
-          return;
-        }
-      }
-      if ((paramObject.getClass().isAssignableFrom([B.class)) || ((paramObject instanceof byte[])))
-      {
-        paramGrowByteBuffer.putByteArray((byte[])paramObject);
-        return;
-      }
-      if ((paramObject instanceof HippyArray))
-      {
-        paramGrowByteBuffer.putByte((byte)91);
-        paramObject = (HippyArray)paramObject;
-        j = paramObject.size();
-        while (i < j)
-        {
-          objectToJson(paramGrowByteBuffer, paramObject.getObject(i));
-          if (i != j - 1) {
-            paramGrowByteBuffer.putByte((byte)44);
-          }
-          i += 1;
-        }
-        paramGrowByteBuffer.putByte((byte)93);
-        return;
-      }
-    } while (!(paramObject instanceof HippyMap));
-    paramGrowByteBuffer.putByte((byte)123);
-    paramObject = (HippyMap)paramObject;
-    Object localObject = paramObject.keySet();
-    int k = ((Set)localObject).size();
-    localObject = ((Set)localObject).iterator();
-    i = j;
-    if (((Iterator)localObject).hasNext())
-    {
-      String str = (String)((Iterator)localObject).next();
-      paramGrowByteBuffer.putByte((byte)34);
-      if (TextUtils.isEmpty(str)) {
-        paramGrowByteBuffer.putByteArray(EMPTY_STRING_BYTES);
-      }
-      for (;;)
-      {
-        paramGrowByteBuffer.putByte((byte)34);
-        paramGrowByteBuffer.putByte((byte)58);
-        objectToJson(paramGrowByteBuffer, paramObject.get(str));
-        i += 1;
-        if (i != k) {
-          paramGrowByteBuffer.putByte((byte)44);
-        }
-        break;
-        paramGrowByteBuffer.putByteArray(str.getBytes());
-      }
     }
-    paramGrowByteBuffer.putByte((byte)125);
+    if ((paramObject instanceof String))
+    {
+      paramObject = (String)paramObject;
+      if (TextUtils.isEmpty(paramObject))
+      {
+        paramGrowByteBuffer.putByteArray(EMPTY_OBJ_BYTES);
+        return;
+      }
+      stringFormat(paramObject, paramGrowByteBuffer);
+      return;
+    }
+    if ((!paramObject.getClass().isAssignableFrom(Integer.TYPE)) && (!(paramObject instanceof Integer)))
+    {
+      if ((!paramObject.getClass().isAssignableFrom(Long.TYPE)) && (!(paramObject instanceof Long)))
+      {
+        boolean bool = paramObject.getClass().isAssignableFrom(Double.TYPE);
+        int j = 0;
+        int i = 0;
+        if ((!bool) && (!(paramObject instanceof Double)))
+        {
+          if ((!paramObject.getClass().isAssignableFrom(Boolean.TYPE)) && (!(paramObject instanceof Boolean)))
+          {
+            if ((!paramObject.getClass().isAssignableFrom(Float.TYPE)) && (!(paramObject instanceof Float)))
+            {
+              if ((!paramObject.getClass().isAssignableFrom([B.class)) && (!(paramObject instanceof byte[])))
+              {
+                if ((paramObject instanceof HippyArray))
+                {
+                  paramGrowByteBuffer.putByte((byte)91);
+                  paramObject = (HippyArray)paramObject;
+                  j = paramObject.size();
+                  while (i < j)
+                  {
+                    objectToJson(paramGrowByteBuffer, paramObject.getObject(i));
+                    if (i != j - 1) {
+                      paramGrowByteBuffer.putByte((byte)44);
+                    }
+                    i += 1;
+                  }
+                }
+                for (byte b = 93;; b = 125)
+                {
+                  paramGrowByteBuffer.putByte(b);
+                  return;
+                  if (!(paramObject instanceof HippyMap)) {
+                    break;
+                  }
+                  paramGrowByteBuffer.putByte((byte)123);
+                  paramObject = (HippyMap)paramObject;
+                  localObject = paramObject.keySet();
+                  int k = ((Set)localObject).size();
+                  localObject = ((Set)localObject).iterator();
+                  i = j;
+                  while (((Iterator)localObject).hasNext())
+                  {
+                    String str = (String)((Iterator)localObject).next();
+                    paramGrowByteBuffer.putByte((byte)34);
+                    if (TextUtils.isEmpty(str)) {
+                      paramGrowByteBuffer.putByteArray(EMPTY_STRING_BYTES);
+                    } else {
+                      paramGrowByteBuffer.putByteArray(str.getBytes());
+                    }
+                    paramGrowByteBuffer.putByte((byte)34);
+                    paramGrowByteBuffer.putByte((byte)58);
+                    objectToJson(paramGrowByteBuffer, paramObject.get(str));
+                    j = i + 1;
+                    i = j;
+                    if (j != k)
+                    {
+                      paramGrowByteBuffer.putByte((byte)44);
+                      i = j;
+                    }
+                  }
+                }
+              }
+              paramGrowByteBuffer.putByteArray((byte[])paramObject);
+              return;
+            }
+            localObject = paramObject;
+            if (Float.isNaN(((Float)paramObject).floatValue())) {
+              localObject = Integer.valueOf(0);
+            }
+            paramGrowByteBuffer.putFloat(((Float)localObject).floatValue());
+            return;
+          }
+          paramGrowByteBuffer.putBoolean(((Boolean)paramObject).booleanValue());
+          return;
+        }
+        Object localObject = paramObject;
+        if (Double.isNaN(((Double)paramObject).doubleValue())) {
+          localObject = Integer.valueOf(0);
+        }
+        paramGrowByteBuffer.putDouble(((Double)localObject).doubleValue());
+        return;
+      }
+      paramGrowByteBuffer.putLong(((Long)paramObject).longValue());
+      return;
+    }
+    paramGrowByteBuffer.putInt(((Integer)paramObject).intValue());
   }
   
   private static void objectToJson(StringBuilder paramStringBuilder, Object paramObject)
   {
-    int i = 0;
-    if (paramObject == null) {
+    if (paramObject == null)
+    {
       paramStringBuilder.append("\"\"");
-    }
-    do
-    {
       return;
-      if ((paramObject instanceof String))
-      {
-        paramObject = (String)paramObject;
-        if (TextUtils.isEmpty(paramObject))
-        {
-          paramStringBuilder.append("\"\"");
-          return;
-        }
-        stringFormat(paramObject, paramStringBuilder);
-        return;
-      }
-      if ((paramObject.getClass().isAssignableFrom(Integer.TYPE)) || ((paramObject instanceof Integer)))
-      {
-        paramStringBuilder.append(paramObject);
-        return;
-      }
-      if ((paramObject.getClass().isAssignableFrom(Long.TYPE)) || ((paramObject instanceof Long)))
-      {
-        paramStringBuilder.append(paramObject);
-        return;
-      }
-      if ((paramObject.getClass().isAssignableFrom(Double.TYPE)) || ((paramObject instanceof Double)))
-      {
-        localObject = paramObject;
-        if (Double.isNaN(((Double)paramObject).doubleValue())) {
-          localObject = Integer.valueOf(0);
-        }
-        paramStringBuilder.append(localObject);
-        return;
-      }
-      if ((paramObject.getClass().isAssignableFrom(Boolean.TYPE)) || ((paramObject instanceof Boolean)))
-      {
-        paramStringBuilder.append(paramObject);
-        return;
-      }
-      if ((paramObject.getClass().isAssignableFrom(Float.TYPE)) || ((paramObject instanceof Float)))
-      {
-        localObject = paramObject;
-        if (Float.isNaN(((Float)paramObject).floatValue())) {
-          localObject = Integer.valueOf(0);
-        }
-        paramStringBuilder.append(localObject);
-        return;
-      }
-      if ((paramObject instanceof HippyArray))
-      {
-        paramStringBuilder.append("[");
-        paramObject = (HippyArray)paramObject;
-        int j = paramObject.size();
-        while (i < j)
-        {
-          objectToJson(paramStringBuilder, paramObject.getObject(i));
-          if (i != j - 1) {
-            paramStringBuilder.append(",");
-          }
-          i += 1;
-        }
-        paramStringBuilder.append("]");
-        return;
-      }
-    } while (!(paramObject instanceof HippyMap));
-    paramStringBuilder.append("{");
-    paramObject = (HippyMap)paramObject;
-    Object localObject = paramObject.keySet().iterator();
-    for (i = 0; ((Iterator)localObject).hasNext(); i = 1)
+    }
+    if ((paramObject instanceof String))
     {
-      String str = (String)((Iterator)localObject).next();
-      paramStringBuilder.append("\"");
-      paramStringBuilder.append(str);
-      paramStringBuilder.append("\"");
-      paramStringBuilder.append(":");
-      objectToJson(paramStringBuilder, paramObject.get(str));
-      paramStringBuilder.append(",");
+      paramObject = (String)paramObject;
+      if (TextUtils.isEmpty(paramObject))
+      {
+        paramStringBuilder.append("\"\"");
+        return;
+      }
+      stringFormat(paramObject, paramStringBuilder);
+      return;
     }
-    if (i != 0) {
-      paramStringBuilder.deleteCharAt(paramStringBuilder.length() - 1);
+    Object localObject = paramObject;
+    if (!paramObject.getClass().isAssignableFrom(Integer.TYPE)) {
+      if ((paramObject instanceof Integer))
+      {
+        localObject = paramObject;
+      }
+      else
+      {
+        localObject = paramObject;
+        if (!paramObject.getClass().isAssignableFrom(Long.TYPE)) {
+          if ((paramObject instanceof Long))
+          {
+            localObject = paramObject;
+          }
+          else
+          {
+            boolean bool = paramObject.getClass().isAssignableFrom(Double.TYPE);
+            int j = 0;
+            int i = 0;
+            if ((!bool) && (!(paramObject instanceof Double)))
+            {
+              localObject = paramObject;
+              if (!paramObject.getClass().isAssignableFrom(Boolean.TYPE)) {
+                if ((paramObject instanceof Boolean))
+                {
+                  localObject = paramObject;
+                }
+                else
+                {
+                  if ((!paramObject.getClass().isAssignableFrom(Float.TYPE)) && (!(paramObject instanceof Float)))
+                  {
+                    if ((paramObject instanceof HippyArray))
+                    {
+                      paramStringBuilder.append("[");
+                      paramObject = (HippyArray)paramObject;
+                      j = paramObject.size();
+                      while (i < j)
+                      {
+                        objectToJson(paramStringBuilder, paramObject.getObject(i));
+                        if (i != j - 1) {
+                          paramStringBuilder.append(",");
+                        }
+                        i += 1;
+                      }
+                    }
+                    for (paramObject = "]";; paramObject = "}")
+                    {
+                      paramStringBuilder.append(paramObject);
+                      return;
+                      if (!(paramObject instanceof HippyMap)) {
+                        break;
+                      }
+                      paramStringBuilder.append("{");
+                      paramObject = (HippyMap)paramObject;
+                      localObject = paramObject.keySet().iterator();
+                      for (i = j; ((Iterator)localObject).hasNext(); i = 1)
+                      {
+                        String str = (String)((Iterator)localObject).next();
+                        paramStringBuilder.append("\"");
+                        paramStringBuilder.append(str);
+                        paramStringBuilder.append("\"");
+                        paramStringBuilder.append(":");
+                        objectToJson(paramStringBuilder, paramObject.get(str));
+                        paramStringBuilder.append(",");
+                      }
+                      if (i != 0) {
+                        paramStringBuilder.deleteCharAt(paramStringBuilder.length() - 1);
+                      }
+                    }
+                  }
+                  localObject = paramObject;
+                  if (!Float.isNaN(((Float)paramObject).floatValue())) {}
+                }
+              }
+            }
+            else
+            {
+              do
+              {
+                localObject = Integer.valueOf(0);
+                break;
+                localObject = paramObject;
+              } while (Double.isNaN(((Double)paramObject).doubleValue()));
+            }
+          }
+        }
+      }
     }
-    paramStringBuilder.append("}");
+    paramStringBuilder.append(localObject);
   }
   
   public static String objectToJsonOpt(Object paramObject, StringBuilder paramStringBuilder)
@@ -399,28 +436,33 @@ public class ArgumentUtils
     if (paramType == String.class) {
       return paramHippyArray.getString(paramInt);
     }
-    if ((paramType == Integer.TYPE) || (paramType == Integer.class)) {
-      return Integer.valueOf(paramHippyArray.getInt(paramInt));
-    }
-    if ((paramType == Long.TYPE) || (paramType == Long.class)) {
+    if ((paramType != Integer.TYPE) && (paramType != Integer.class))
+    {
+      if ((paramType != Long.TYPE) && (paramType != Long.class))
+      {
+        if ((paramType != Double.TYPE) && (paramType != Double.class))
+        {
+          if ((paramType != Boolean.TYPE) && (paramType != Boolean.class))
+          {
+            if ((paramType != Float.TYPE) && (paramType != Float.class))
+            {
+              if (paramType == HippyArray.class) {
+                return paramHippyArray.getArray(paramInt);
+              }
+              if (paramType == HippyMap.class) {
+                return paramHippyArray.getMap(paramInt);
+              }
+              throw new RuntimeException("parseArgument exception");
+            }
+            return Float.valueOf((float)paramHippyArray.getDouble(paramInt));
+          }
+          return Boolean.valueOf(paramHippyArray.getBoolean(paramInt));
+        }
+        return Double.valueOf(paramHippyArray.getDouble(paramInt));
+      }
       return Long.valueOf(paramHippyArray.getLong(paramInt));
     }
-    if ((paramType == Double.TYPE) || (paramType == Double.class)) {
-      return Double.valueOf(paramHippyArray.getDouble(paramInt));
-    }
-    if ((paramType == Boolean.TYPE) || (paramType == Boolean.class)) {
-      return Boolean.valueOf(paramHippyArray.getBoolean(paramInt));
-    }
-    if ((paramType == Float.TYPE) || (paramType == Float.class)) {
-      return Float.valueOf((float)paramHippyArray.getDouble(paramInt));
-    }
-    if (paramType == HippyArray.class) {
-      return paramHippyArray.getArray(paramInt);
-    }
-    if (paramType == HippyMap.class) {
-      return paramHippyArray.getMap(paramInt);
-    }
-    throw new RuntimeException("parseArgument exception");
+    return Integer.valueOf(paramHippyArray.getInt(paramInt));
   }
   
   public static Object parseArgument(Type paramType, HippyMap paramHippyMap, String paramString)
@@ -428,226 +470,231 @@ public class ArgumentUtils
     if (paramType == String.class) {
       return paramHippyMap.getString(paramString);
     }
-    if ((paramType == Integer.TYPE) || (paramType == Integer.class)) {
-      return Integer.valueOf(paramHippyMap.getInt(paramString));
-    }
-    if ((paramType == Long.TYPE) || (paramType == Long.class)) {
+    if ((paramType != Integer.TYPE) && (paramType != Integer.class))
+    {
+      if ((paramType != Long.TYPE) && (paramType != Long.class))
+      {
+        if ((paramType != Double.TYPE) && (paramType != Double.class))
+        {
+          if ((paramType != Float.TYPE) && (paramType != Float.class))
+          {
+            if ((paramType != Boolean.TYPE) && (paramType != Boolean.class))
+            {
+              if (paramType == HippyArray.class) {
+                return paramHippyMap.getArray(paramString);
+              }
+              if (paramType == HippyMap.class) {
+                return paramHippyMap.getMap(paramString);
+              }
+              throw new RuntimeException("parseArgument exception");
+            }
+            return Boolean.valueOf(paramHippyMap.getBoolean(paramString));
+          }
+          return Float.valueOf((float)paramHippyMap.getDouble(paramString));
+        }
+        return Double.valueOf(paramHippyMap.getDouble(paramString));
+      }
       return Long.valueOf(paramHippyMap.getLong(paramString));
     }
-    if ((paramType == Double.TYPE) || (paramType == Double.class)) {
-      return Double.valueOf(paramHippyMap.getDouble(paramString));
-    }
-    if ((paramType == Float.TYPE) || (paramType == Float.class)) {
-      return Float.valueOf((float)paramHippyMap.getDouble(paramString));
-    }
-    if ((paramType == Boolean.TYPE) || (paramType == Boolean.class)) {
-      return Boolean.valueOf(paramHippyMap.getBoolean(paramString));
-    }
-    if (paramType == HippyArray.class) {
-      return paramHippyMap.getArray(paramString);
-    }
-    if (paramType == HippyMap.class) {
-      return paramHippyMap.getMap(paramString);
-    }
-    throw new RuntimeException("parseArgument exception");
+    return Integer.valueOf(paramHippyMap.getInt(paramString));
   }
   
   public static Object parseArgument(Type paramType, Object paramObject)
   {
-    Object localObject;
     if (paramType == String.class) {
-      localObject = String.valueOf(paramObject);
+      return String.valueOf(paramObject);
     }
-    do
+    if ((paramType != Integer.TYPE) && (paramType != Integer.class))
     {
-      do
+      if ((paramType != Long.TYPE) && (paramType != Long.class))
       {
-        do
+        if ((paramType != Double.TYPE) && (paramType != Double.class))
         {
-          do
+          if ((paramType != Float.TYPE) && (paramType != Float.class))
           {
-            return localObject;
-            if ((paramType == Integer.TYPE) || (paramType == Integer.class)) {
-              return Integer.valueOf(((Number)paramObject).intValue());
+            if (paramType != Boolean.TYPE)
+            {
+              if (paramType == Boolean.class) {
+                return paramObject;
+              }
+              if (paramType == HippyArray.class) {
+                return paramObject;
+              }
+              if (paramType == HippyMap.class) {
+                return paramObject;
+              }
+              throw new RuntimeException("parseArgument exception");
             }
-            if ((paramType == Long.TYPE) || (paramType == Long.class)) {
-              return Long.valueOf(((Number)paramObject).longValue());
-            }
-            if ((paramType == Double.TYPE) || (paramType == Double.class)) {
-              return Double.valueOf(((Number)paramObject).doubleValue());
-            }
-            if ((paramType == Float.TYPE) || (paramType == Float.class)) {
-              return Float.valueOf(((Number)paramObject).floatValue());
-            }
-            localObject = paramObject;
-          } while (paramType == Boolean.TYPE);
-          localObject = paramObject;
-        } while (paramType == Boolean.class);
-        localObject = paramObject;
-      } while (paramType == HippyArray.class);
-      localObject = paramObject;
-    } while (paramType == HippyMap.class);
-    throw new RuntimeException("parseArgument exception");
+            return paramObject;
+          }
+          return Float.valueOf(((Number)paramObject).floatValue());
+        }
+        return Double.valueOf(((Number)paramObject).doubleValue());
+      }
+      return Long.valueOf(((Number)paramObject).longValue());
+    }
+    return Integer.valueOf(((Number)paramObject).intValue());
   }
   
   private static void parseObjectGotoArray(HippyArray paramHippyArray, Object paramObject)
   {
-    if ((paramObject == null) || (paramObject == JSONObject.NULL)) {
-      paramHippyArray.pushNull();
-    }
-    do
+    if ((paramObject != null) && (paramObject != JSONObject.NULL))
     {
-      return;
-      localObject = paramObject.getClass();
+      Object localObject = paramObject.getClass();
       if ((paramObject instanceof String))
       {
         paramHippyArray.pushString((String)paramObject);
         return;
       }
-      if ((localObject == Integer.TYPE) || (localObject == Integer.class))
+      if ((localObject != Integer.TYPE) && (localObject != Integer.class))
       {
-        paramHippyArray.pushInt(((Integer)paramObject).intValue());
-        return;
-      }
-      if ((localObject == Double.TYPE) || (localObject == Double.class))
-      {
-        paramHippyArray.pushDouble(((Double)paramObject).doubleValue());
-        return;
-      }
-      if ((localObject == Long.TYPE) || (localObject == Long.class))
-      {
-        paramHippyArray.pushLong(((Long)paramObject).longValue());
-        return;
-      }
-      if ((localObject == Boolean.TYPE) || (localObject == Boolean.class))
-      {
-        paramHippyArray.pushBoolean(((Boolean)paramObject).booleanValue());
-        return;
-      }
-      if (localObject == HippyArray.class)
-      {
-        paramHippyArray.pushArray((HippyArray)paramObject);
-        return;
-      }
-      if (localObject == HippyMap.class)
-      {
-        paramHippyArray.pushMap((HippyMap)paramObject);
-        return;
-      }
-      if (localObject == JSONArray.class)
-      {
-        localObject = new HippyArray();
-        paramObject = (JSONArray)paramObject;
-        int j = paramObject.length();
-        int i = 0;
-        while (i < j)
+        if ((localObject != Double.TYPE) && (localObject != Double.class))
         {
-          parseObjectGotoArray((HippyArray)localObject, paramObject.get(i));
-          i += 1;
+          if ((localObject != Long.TYPE) && (localObject != Long.class))
+          {
+            if ((localObject != Boolean.TYPE) && (localObject != Boolean.class))
+            {
+              if (localObject == HippyArray.class)
+              {
+                paramHippyArray.pushArray((HippyArray)paramObject);
+                return;
+              }
+              if (localObject == HippyMap.class)
+              {
+                paramHippyArray.pushMap((HippyMap)paramObject);
+                return;
+              }
+              if (localObject == JSONArray.class)
+              {
+                localObject = new HippyArray();
+                paramObject = (JSONArray)paramObject;
+                int j = paramObject.length();
+                int i = 0;
+                while (i < j)
+                {
+                  parseObjectGotoArray((HippyArray)localObject, paramObject.get(i));
+                  i += 1;
+                }
+                paramHippyArray.pushArray((HippyArray)localObject);
+                return;
+              }
+              if (localObject == JSONObject.class)
+              {
+                localObject = new HippyMap();
+                paramObject = (JSONObject)paramObject;
+                Iterator localIterator = paramObject.keys();
+                while (localIterator.hasNext())
+                {
+                  String str = (String)localIterator.next();
+                  parseObjectGotoMap((HippyMap)localObject, str, paramObject.get(str));
+                }
+                paramHippyArray.pushMap((HippyMap)localObject);
+              }
+            }
+            else
+            {
+              paramHippyArray.pushBoolean(((Boolean)paramObject).booleanValue());
+            }
+          }
+          else {
+            paramHippyArray.pushLong(((Long)paramObject).longValue());
+          }
         }
-        paramHippyArray.pushArray((HippyArray)localObject);
-        return;
+        else {
+          paramHippyArray.pushDouble(((Double)paramObject).doubleValue());
+        }
       }
-    } while (localObject != JSONObject.class);
-    Object localObject = new HippyMap();
-    paramObject = (JSONObject)paramObject;
-    Iterator localIterator = paramObject.keys();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      parseObjectGotoMap((HippyMap)localObject, str, paramObject.get(str));
+      else {
+        paramHippyArray.pushInt(((Integer)paramObject).intValue());
+      }
+      return;
     }
-    paramHippyArray.pushMap((HippyMap)localObject);
+    paramHippyArray.pushNull();
   }
   
   private static void parseObjectGotoMap(HippyMap paramHippyMap, String paramString, Object paramObject)
   {
-    if ((paramObject == null) || (paramObject == JSONObject.NULL)) {
-      paramHippyMap.pushNull(paramString);
-    }
-    for (;;)
+    if ((paramObject != null) && (paramObject != JSONObject.NULL))
     {
-      return;
       Object localObject = paramObject.getClass();
       if ((paramObject instanceof String))
       {
         paramHippyMap.pushString(paramString, (String)paramObject);
         return;
       }
-      if ((localObject == Integer.TYPE) || (localObject == Integer.class))
-      {
-        paramHippyMap.pushInt(paramString, ((Integer)paramObject).intValue());
-        return;
+      if ((localObject != Integer.TYPE) && (localObject != Integer.class)) {
+        if ((localObject != Double.TYPE) && (localObject != Double.class)) {
+          if ((localObject != Long.TYPE) && (localObject != Long.class)) {
+            if ((localObject != Boolean.TYPE) && (localObject != Boolean.class))
+            {
+              if (localObject == JSONArray.class)
+              {
+                localObject = new HippyArray();
+                paramHippyMap.pushArray(paramString, (HippyArray)localObject);
+                paramHippyMap = (JSONArray)paramObject;
+                int j = paramHippyMap.length();
+                int i = 0;
+                while (i < j)
+                {
+                  parseObjectGotoArray((HippyArray)localObject, paramHippyMap.get(i));
+                  i += 1;
+                }
+              }
+              if (localObject != JSONObject.class) {
+                break label287;
+              }
+              localObject = new HippyMap();
+              paramHippyMap.pushMap(paramString, (HippyMap)localObject);
+              paramHippyMap = (JSONObject)paramObject;
+              paramString = paramHippyMap.keys();
+            }
+          }
+        }
       }
-      if ((localObject == Double.TYPE) || (localObject == Double.class))
+      while (paramString.hasNext())
       {
-        paramHippyMap.pushDouble(paramString, ((Double)paramObject).doubleValue());
-        return;
-      }
-      if ((localObject == Long.TYPE) || (localObject == Long.class))
-      {
-        paramHippyMap.pushLong(paramString, ((Long)paramObject).longValue());
-        return;
-      }
-      if ((localObject == Boolean.TYPE) || (localObject == Boolean.class))
-      {
+        paramObject = (String)paramString.next();
+        parseObjectGotoMap((HippyMap)localObject, paramObject, paramHippyMap.get(paramObject));
+        continue;
         paramHippyMap.pushBoolean(paramString, ((Boolean)paramObject).booleanValue());
         return;
+        paramHippyMap.pushLong(paramString, ((Long)paramObject).longValue());
+        return;
+        paramHippyMap.pushDouble(paramString, ((Double)paramObject).doubleValue());
+        return;
+        paramHippyMap.pushInt(paramString, ((Integer)paramObject).intValue());
       }
-      if (localObject == JSONArray.class)
-      {
-        localObject = new HippyArray();
-        paramHippyMap.pushArray(paramString, (HippyArray)localObject);
-        paramHippyMap = (JSONArray)paramObject;
-        int j = paramHippyMap.length();
-        int i = 0;
-        while (i < j)
-        {
-          parseObjectGotoArray((HippyArray)localObject, paramHippyMap.get(i));
-          i += 1;
-        }
-      }
-      else if (localObject == JSONObject.class)
-      {
-        localObject = new HippyMap();
-        paramHippyMap.pushMap(paramString, (HippyMap)localObject);
-        paramHippyMap = (JSONObject)paramObject;
-        paramString = paramHippyMap.keys();
-        while (paramString.hasNext())
-        {
-          paramObject = (String)paramString.next();
-          parseObjectGotoMap((HippyMap)localObject, paramObject, paramHippyMap.get(paramObject));
-        }
-      }
+      label287:
+      return;
     }
+    paramHippyMap.pushNull(paramString);
   }
   
   public static HippyArray parseToArray(String paramString)
   {
-    localHippyArray = new HippyArray();
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    HippyArray localHippyArray = new HippyArray();
+    if (TextUtils.isEmpty(paramString)) {
       return localHippyArray;
-      try
-      {
-        paramString = new JSONArray(paramString);
-        int j = paramString.length();
-        int i = 0;
-        while (i < j)
-        {
-          parseObjectGotoArray(localHippyArray, paramString.get(i));
-          i += 1;
-        }
-        return localHippyArray;
-      }
-      catch (Throwable paramString) {}
     }
+    try
+    {
+      paramString = new JSONArray(paramString);
+      int j = paramString.length();
+      int i = 0;
+      while (i < j)
+      {
+        parseObjectGotoArray(localHippyArray, paramString.get(i));
+        i += 1;
+      }
+      return localHippyArray;
+    }
+    catch (Throwable paramString) {}
+    return localHippyArray;
   }
   
   public static HippyMap parseToMap(String paramString)
   {
-    localHippyMap = new HippyMap();
+    HippyMap localHippyMap = new HippyMap();
     if (TextUtils.isEmpty(paramString)) {
       return localHippyMap;
     }
@@ -662,10 +709,8 @@ public class ArgumentUtils
       }
       return localHippyMap;
     }
-    catch (Throwable paramString)
-    {
-      return localHippyMap;
-    }
+    catch (Throwable paramString) {}
+    return localHippyMap;
   }
   
   private static void stringFormat(String paramString, GrowByteBuffer paramGrowByteBuffer)
@@ -680,35 +725,44 @@ public class ArgumentUtils
     paramStringBuilder.append("\"");
     int j = paramString.length();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       char c = paramString.charAt(i);
-      switch (c)
-      {
-      default: 
-        if (c <= '\037') {
-          paramStringBuilder.append(String.format("\\u%04x", new Object[] { Integer.valueOf(c) }));
+      String str;
+      if (c != '\f') {
+        if (c != '\r') {
+          if ((c != '"') && (c != '/') && (c != '\\')) {
+            switch (c)
+            {
+            default: 
+              if (c <= '\037') {
+                str = String.format("\\u%04x", new Object[] { Integer.valueOf(c) });
+              }
+              break;
+            case '\n': 
+              str = "\\n";
+              break;
+            case '\t': 
+              str = "\\t";
+              break;
+            case '\b': 
+              str = "\\b";
+            }
+          }
         }
-        break;
       }
       for (;;)
       {
-        i += 1;
+        paramStringBuilder.append(str);
         break;
-        paramStringBuilder.append('\\').append(c);
-        continue;
-        paramStringBuilder.append("\\t");
-        continue;
-        paramStringBuilder.append("\\b");
-        continue;
-        paramStringBuilder.append("\\n");
-        continue;
-        paramStringBuilder.append("\\r");
-        continue;
-        paramStringBuilder.append("\\f");
-        continue;
+        paramStringBuilder.append('\\');
         paramStringBuilder.append(c);
+        break;
+        str = "\\r";
+        continue;
+        str = "\\f";
       }
+      i += 1;
     }
     paramStringBuilder.append("\"");
   }
@@ -723,40 +777,54 @@ public class ArgumentUtils
       {
         String str = (String)localIterator.next();
         Object localObject = paramHippyMap.get(str);
-        if (localObject == null)
-        {
-          localBundle.putString(str, null);
-        }
-        else if ((localObject instanceof String))
+        if (localObject == null) {}
+        for (localObject = null;; localObject = (String)localObject)
         {
           localBundle.putString(str, (String)localObject);
-        }
-        else if ((localObject.getClass().isAssignableFrom(Integer.TYPE)) || ((localObject instanceof Integer)))
-        {
-          localBundle.putInt(str, ((Integer)localObject).intValue());
-        }
-        else if ((localObject.getClass().isAssignableFrom(Long.TYPE)) || ((localObject instanceof Long)))
-        {
-          localBundle.putLong(str, ((Long)localObject).longValue());
-        }
-        else if ((localObject.getClass().isAssignableFrom(Double.TYPE)) || ((localObject instanceof Double)))
-        {
-          localBundle.putDouble(str, ((Double)localObject).doubleValue());
-        }
-        else if ((localObject.getClass().isAssignableFrom(Boolean.TYPE)) || ((localObject instanceof Boolean)))
-        {
-          localBundle.putBoolean(str, ((Boolean)localObject).booleanValue());
-        }
-        else if ((localObject instanceof HippyMap))
-        {
-          localBundle.putBundle(str, toBundle((HippyMap)localObject));
-        }
-        else
-        {
-          if ((localObject instanceof HippyArray)) {
-            throw new UnsupportedOperationException("Arrays aren't supported yet.");
+          break;
+          if (!(localObject instanceof String)) {
+            break label82;
           }
-          throw new IllegalArgumentException("Could not convert object with key: " + str + ".");
+        }
+        label82:
+        if ((!localObject.getClass().isAssignableFrom(Integer.TYPE)) && (!(localObject instanceof Integer)))
+        {
+          if ((!localObject.getClass().isAssignableFrom(Long.TYPE)) && (!(localObject instanceof Long)))
+          {
+            if ((!localObject.getClass().isAssignableFrom(Double.TYPE)) && (!(localObject instanceof Double)))
+            {
+              if ((!localObject.getClass().isAssignableFrom(Boolean.TYPE)) && (!(localObject instanceof Boolean)))
+              {
+                if ((localObject instanceof HippyMap))
+                {
+                  localBundle.putBundle(str, toBundle((HippyMap)localObject));
+                }
+                else
+                {
+                  if ((localObject instanceof HippyArray)) {
+                    throw new UnsupportedOperationException("Arrays aren't supported yet.");
+                  }
+                  paramHippyMap = new StringBuilder();
+                  paramHippyMap.append("Could not convert object with key: ");
+                  paramHippyMap.append(str);
+                  paramHippyMap.append(".");
+                  throw new IllegalArgumentException(paramHippyMap.toString());
+                }
+              }
+              else {
+                localBundle.putBoolean(str, ((Boolean)localObject).booleanValue());
+              }
+            }
+            else {
+              localBundle.putDouble(str, ((Double)localObject).doubleValue());
+            }
+          }
+          else {
+            localBundle.putLong(str, ((Long)localObject).longValue());
+          }
+        }
+        else {
+          localBundle.putInt(str, ((Integer)localObject).intValue());
         }
       }
     }
@@ -765,7 +833,7 @@ public class ArgumentUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.utils.ArgumentUtils
  * JD-Core Version:    0.7.0.1
  */

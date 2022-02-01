@@ -10,13 +10,13 @@ class LSRecordPanel$11
   public void run()
   {
     LSRecordPanel.b(this.this$0, false);
-    LSRecordPanel.a(this.this$0, HardCodeUtil.a(2131706414));
+    LSRecordPanel.a(this.this$0, HardCodeUtil.a(2131706465));
     LSRecordPanel.b(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.LSRecordPanel.11
  * JD-Core Version:    0.7.0.1
  */

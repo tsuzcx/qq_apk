@@ -35,14 +35,14 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.face.FaceDrawable;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.music.QQPlayerCallback;
 import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
 import com.tencent.mobileqq.music.SongInfo;
 import com.tencent.mobileqq.simpleui.SimpleUIUtil;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.transfile.NearbyImgDownloader;
 import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import java.lang.ref.WeakReference;
 import java.net.MalformedURLException;
 import org.json.JSONException;
@@ -50,7 +50,7 @@ import org.json.JSONObject;
 
 public class CommonHobbyForAIOShowItemBuilder
   extends AbstractChatItemBuilder
-  implements QQPlayerService.QQPlayerCallback
+  implements QQPlayerCallback
 {
   private float jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
   private long jdField_a_of_type_Long;
@@ -67,11 +67,11 @@ public class CommonHobbyForAIOShowItemBuilder
   private Drawable a(String paramString)
   {
     GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165883));
-    float f = 8.0F * this.jdField_a_of_type_Float;
+    localGradientDrawable.setColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165886));
+    float f = this.jdField_a_of_type_Float * 8.0F;
     localGradientDrawable.setCornerRadius(f);
     localGradientDrawable.setShape(0);
-    int i = AIOUtils.a(35.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int i = AIOUtils.b(35.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     localGradientDrawable.setSize(i, i);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mRequestWidth = i;
@@ -87,13 +87,12 @@ public class CommonHobbyForAIOShowItemBuilder
       str = paramString;
       paramString.setDecodeHandler(URLDrawableDecodeHandler.c);
     }
-    catch (MalformedURLException paramString)
+    catch (MalformedURLException localMalformedURLException)
     {
-      for (;;)
+      paramString = str;
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("CommonHobbyForAIOShowItemBuilder", 0, Log.getStackTraceString(paramString));
-        }
+        QLog.i("CommonHobbyForAIOShowItemBuilder", 0, Log.getStackTraceString(localMalformedURLException));
         paramString = str;
       }
     }
@@ -106,7 +105,6 @@ public class CommonHobbyForAIOShowItemBuilder
   private void a(long paramLong, int paramInt, ImageView paramImageView1, ImageView paramImageView2, boolean paramBoolean)
   {
     Object localObject;
-    boolean bool;
     if (paramInt != 1)
     {
       paramImageView1.setVisibility(8);
@@ -115,34 +113,33 @@ public class CommonHobbyForAIOShowItemBuilder
       ((RelativeLayout.LayoutParams)localObject).addRule(14);
       paramImageView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
       paramImageView2.setImageDrawable(FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, String.valueOf(paramLong)));
-      bool = SimpleUIUtil.a();
-      if (!paramBoolean) {
-        break label144;
-      }
-      if (!bool) {
-        break label138;
-      }
     }
-    label138:
-    for (paramInt = 2130845085;; paramInt = 2130845084)
+    else
     {
-      paramImageView1.setBackgroundResource(paramInt);
-      paramImageView2.setBackgroundResource(paramInt);
-      return;
       localObject = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
       FaceDrawable localFaceDrawable = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, String.valueOf(paramLong));
       paramImageView1.setImageDrawable((Drawable)localObject);
       paramImageView2.setImageDrawable(localFaceDrawable);
-      break;
     }
-    label144:
-    if (bool) {}
-    for (paramInt = 2130845083;; paramInt = 2130845082)
+    boolean bool = SimpleUIUtil.a();
+    if (paramBoolean)
     {
+      if (bool) {
+        paramInt = 2130844962;
+      } else {
+        paramInt = 2130844961;
+      }
       paramImageView1.setBackgroundResource(paramInt);
       paramImageView2.setBackgroundResource(paramInt);
       return;
     }
+    if (bool) {
+      paramInt = 2130844960;
+    } else {
+      paramInt = 2130844959;
+    }
+    paramImageView1.setBackgroundResource(paramInt);
+    paramImageView2.setBackgroundResource(paramInt);
   }
   
   private void a(View paramView, String paramString)
@@ -157,38 +154,34 @@ public class CommonHobbyForAIOShowItemBuilder
     ((JSONObject)localObject2).optString("url");
     long l = ((JSONObject)localObject2).optLong("friend_uin");
     int j = ((JSONObject)localObject2).optInt("show_both_head");
-    Object localObject4 = paramView.findViewById(2131370129);
+    Object localObject4 = paramView.findViewById(2131369800);
     ((View)localObject4).getLayoutParams().width = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
-    Object localObject5 = (ImageView)((View)localObject4).findViewById(2131369009);
-    ImageView localImageView = (ImageView)((View)localObject4).findViewById(2131369010);
-    ((TextView)((View)localObject4).findViewById(2131380804)).setText((CharSequence)localObject3);
+    Object localObject5 = (ImageView)((View)localObject4).findViewById(2131368731);
+    ImageView localImageView = (ImageView)((View)localObject4).findViewById(2131368732);
+    ((TextView)((View)localObject4).findViewById(2131380067)).setText((CharSequence)localObject3);
     boolean bool = ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
     a(l, j, (ImageView)localObject5, localImageView, bool);
-    if ((i == 1) || (i == 500) || (i == 400) || (i == 401) || (i == 404) || (i == 402) || (i == 403))
+    if ((i != 1) && (i != 500) && (i != 400) && (i != 401) && (i != 404) && (i != 402) && (i != 403))
     {
-      paramView = ((ViewStub)paramView.findViewById(2131381680)).inflate();
-      localObject2 = (TextView)paramView.findViewById(2131380801);
-      ((TextView)localObject2).setText((CharSequence)localObject1);
-      paramView.setTag(paramString);
-      paramView.setOnClickListener(this.b);
-      a(bool, (TextView)localObject2);
-      return;
-    }
-    if ((i == 100) || (i == 200) || (i == 300) || (i == 201))
-    {
-      paramView = ((ViewStub)paramView.findViewById(2131381678)).inflate();
-      localObject3 = (URLImageView)paramView.findViewById(2131369011);
-      localObject4 = (TextView)paramView.findViewById(2131380803);
-      localObject5 = (TextView)paramView.findViewById(2131380802);
-      ((TextView)localObject4).setText((CharSequence)localObject1);
-      if (TextUtils.isEmpty(str2))
+      if ((i != 100) && (i != 200) && (i != 300) && (i != 201))
       {
+        ((TextView)((ViewStub)paramView.findViewById(2131380914)).inflate().findViewById(2131380064)).setText(HardCodeUtil.a(2131702407));
+        return;
+      }
+      paramView = ((ViewStub)paramView.findViewById(2131380913)).inflate();
+      localObject3 = (URLImageView)paramView.findViewById(2131368733);
+      localObject4 = (TextView)paramView.findViewById(2131380066);
+      localObject5 = (TextView)paramView.findViewById(2131380065);
+      ((TextView)localObject4).setText((CharSequence)localObject1);
+      if (TextUtils.isEmpty(str2)) {
         ((TextView)localObject5).setVisibility(8);
-        ((URLImageView)localObject3).setImageDrawable(a(str1));
-        if (i != 100) {
-          break label489;
-        }
-        localObject1 = (ImageView)paramView.findViewById(2131369014);
+      } else {
+        ((TextView)localObject5).setText(str2);
+      }
+      ((URLImageView)localObject3).setImageDrawable(a(str1));
+      if (i == 100)
+      {
+        localObject1 = (ImageView)paramView.findViewById(2131368736);
         ((ImageView)localObject1).setVisibility(0);
         this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localObject1);
         ((URLImageView)localObject3).setTag(localObject2);
@@ -196,20 +189,20 @@ public class CommonHobbyForAIOShowItemBuilder
         ((URLImageView)localObject3).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
         ((ImageView)localObject1).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       }
-      for (;;)
+      else if ((i == 201) || (i == 200))
       {
-        paramView.setTag(paramString);
-        a(bool, (TextView)localObject4);
-        return;
-        ((TextView)localObject5).setText(str2);
-        break;
-        label489:
-        if ((i == 201) || (i == 200)) {
-          paramView.setOnClickListener(this.b);
-        }
+        paramView.setOnClickListener(this.b);
       }
+      paramView.setTag(paramString);
+      a(bool, (TextView)localObject4);
+      return;
     }
-    ((TextView)((ViewStub)paramView.findViewById(2131381680)).inflate().findViewById(2131380801)).setText(HardCodeUtil.a(2131702275));
+    paramView = ((ViewStub)paramView.findViewById(2131380914)).inflate();
+    localObject2 = (TextView)paramView.findViewById(2131380064);
+    ((TextView)localObject2).setText((CharSequence)localObject1);
+    paramView.setTag(paramString);
+    paramView.setOnClickListener(this.b);
+    a(bool, (TextView)localObject2);
   }
   
   private void a(String paramString)
@@ -226,42 +219,36 @@ public class CommonHobbyForAIOShowItemBuilder
       paramTextView.setTextColor(-14277082);
       return;
     }
-    paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167040));
+    paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167063));
   }
   
-  public View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
+  protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     paramViewHolder = paramView;
     if (paramView == null)
     {
-      paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561148, null);
+      paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561011, null);
       if (QLog.isColorLevel()) {
         QLog.i("CommonHobbyForAIOShowItemBuilder", 0, String.format("bindData2View msg is: %s", new Object[] { paramMessageRecord.msg }));
       }
-    }
-    try
-    {
-      a(paramViewHolder, paramMessageRecord.msg);
-      this.jdField_a_of_type_Long = paramMessageRecord.uniseq;
-      return paramViewHolder;
-    }
-    catch (JSONException paramView)
-    {
-      for (;;)
+      try
+      {
+        a(paramViewHolder, paramMessageRecord.msg);
+      }
+      catch (Exception paramView)
+      {
+        QLog.e("CommonHobbyForAIOShowItemBuilder", 1, "getItemView Exception", paramView);
+      }
+      catch (JSONException paramView)
       {
         QLog.e("CommonHobbyForAIOShowItemBuilder", 1, "getItemView JSONException", paramView);
       }
     }
-    catch (Exception paramView)
-    {
-      for (;;)
-      {
-        QLog.e("CommonHobbyForAIOShowItemBuilder", 1, "getItemView Exception", paramView);
-      }
-    }
+    this.jdField_a_of_type_Long = paramMessageRecord.uniseq;
+    return paramViewHolder;
   }
   
-  public AbstractChatItemBuilder.ViewHolder a()
+  protected AbstractChatItemBuilder.ViewHolder a()
   {
     return new CommonHobbyForAIOShowItemBuilder.CommonHobbyForAIOShowViewHolder();
   }
@@ -282,27 +269,31 @@ public class CommonHobbyForAIOShowItemBuilder
   
   public void onPlayStateChanged(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {}
-    ImageView localImageView;
-    do
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject != null)
     {
-      return;
-      localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localImageView == null);
-    Resources localResources = localImageView.getContext().getResources();
-    if ((paramInt == 2) || (paramInt == 1))
-    {
-      localImageView.post(new CommonHobbyForAIOShowItemBuilder.3(this, localImageView));
-      localImageView.setContentDescription(localResources.getString(2131690295));
-      return;
+      if (((WeakReference)localObject).get() == null) {
+        return;
+      }
+      localObject = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localObject == null) {
+        return;
+      }
+      Resources localResources = ((ImageView)localObject).getContext().getResources();
+      if ((paramInt != 2) && (paramInt != 1))
+      {
+        ((ImageView)localObject).post(new CommonHobbyForAIOShowItemBuilder.4(this, (ImageView)localObject));
+        ((ImageView)localObject).setContentDescription(localResources.getString(2131690211));
+        return;
+      }
+      ((ImageView)localObject).post(new CommonHobbyForAIOShowItemBuilder.3(this, (ImageView)localObject));
+      ((ImageView)localObject).setContentDescription(localResources.getString(2131690213));
     }
-    localImageView.post(new CommonHobbyForAIOShowItemBuilder.4(this, localImageView));
-    localImageView.setContentDescription(localResources.getString(2131690293));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.CommonHobbyForAIOShowItemBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,8 @@ package com.tencent.mobileqq.studyroom.pluginimpl;
 import android.os.Bundle;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.intervideo.LoginKeyHelper;
+import com.tencent.mobileqq.intervideo.ILoginKeyHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 
@@ -23,16 +24,16 @@ final class QQBaseAbilityInterfaceImpl$GetAccessTokenBundle
   {
     Bundle[] arrayOfBundle = new Bundle[1];
     AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    LoginKeyHelper localLoginKeyHelper = new LoginKeyHelper();
+    ILoginKeyHelper localILoginKeyHelper = (ILoginKeyHelper)QRoute.api(ILoginKeyHelper.class);
     CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    localLoginKeyHelper.a(localAppInterface, this.pluginAppID, BaseApplicationImpl.getContext(), this.appId, new QQBaseAbilityInterfaceImpl.GetAccessTokenBundle.1(this, localLoginKeyHelper, arrayOfBundle, localCountDownLatch));
+    localILoginKeyHelper.getAccessToken(localAppInterface, this.pluginAppID, BaseApplicationImpl.getContext(), this.appId, new QQBaseAbilityInterfaceImpl.GetAccessTokenBundle.1(this, localILoginKeyHelper, arrayOfBundle, localCountDownLatch));
     localCountDownLatch.await();
     return arrayOfBundle[0];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.pluginimpl.QQBaseAbilityInterfaceImpl.GetAccessTokenBundle
  * JD-Core Version:    0.7.0.1
  */

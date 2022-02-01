@@ -18,17 +18,17 @@ public class AppletsMsgListRefresher
   public void a()
   {
     super.a();
-    if (this.a.a().a().i() < 1)
+    if (this.a.a().a().n() < 1)
     {
-      ((AppletsContext)this.a).d();
+      ((AppletsContext)this.a).h();
       return;
     }
-    ((AppletsContext)this.a).c();
+    ((AppletsContext)this.a).g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.AppletsMsgListRefresher
  * JD-Core Version:    0.7.0.1
  */

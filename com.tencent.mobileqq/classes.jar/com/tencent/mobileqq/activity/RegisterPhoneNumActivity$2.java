@@ -17,39 +17,43 @@ class RegisterPhoneNumActivity$2
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 103)
     {
-    default: 
-    case 103: 
-    case 104: 
-      do
+      if (i != 104)
       {
-        return;
-        this.a.finish();
-        return;
-        paramMessage = (String)paramMessage.obj;
-        if (!TextUtils.isEmpty(paramMessage))
-        {
-          RegisterPhoneNumActivity.access$000(this.a).a(paramMessage);
+        if (i != 111) {
           return;
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("RegisterPhoneNumActivity", 2, "captcha sig is empty");
-      return;
+        QLog.d("RegisterPhoneNumActivity", 1, "ACT_OVERSEA_CAPTCHA handleMessage");
+        paramMessage = (Bundle)paramMessage.obj;
+        paramMessage = RegisterOverseaHelper.a().a(paramMessage);
+        if ((paramMessage != null) && (!TextUtils.isEmpty(this.a.mCountryEnglishName))) {
+          paramMessage.put("country_english_name", this.a.mCountryEnglishName.getBytes());
+        }
+        ReportController.a(null, "dc00898", "", "", "0X800B8B2", "0X800B8B2", 0, 0, "", "", "", "");
+        RegisterPhoneNumActivity.access$000(this.a).a(null, paramMessage);
+        return;
+      }
+      paramMessage = (String)paramMessage.obj;
+      if (!TextUtils.isEmpty(paramMessage))
+      {
+        RegisterPhoneNumActivity.access$000(this.a).a(paramMessage);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("RegisterPhoneNumActivity", 2, "captcha sig is empty");
+      }
     }
-    QLog.d("RegisterPhoneNumActivity", 1, "ACT_OVERSEA_CAPTCHA handleMessage");
-    paramMessage = (Bundle)paramMessage.obj;
-    paramMessage = RegisterOverseaHelper.a().a(paramMessage);
-    if ((paramMessage != null) && (!TextUtils.isEmpty(this.a.mCountryEnglishName))) {
-      paramMessage.put("country_english_name", this.a.mCountryEnglishName.getBytes());
+    else
+    {
+      this.a.finish();
     }
-    ReportController.a(null, "dc00898", "", "", "0X800B8B2", "0X800B8B2", 0, 0, "", "", "", "");
-    RegisterPhoneNumActivity.access$000(this.a).a(null, paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterPhoneNumActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ public class MsgDeserializeListProvider
   public MsgDeserializeListProvider()
   {
     StringMsgDeserialize localStringMsgDeserialize = new StringMsgDeserialize();
-    this.a.put(26, localStringMsgDeserialize);
+    this.a.put(25, localStringMsgDeserialize);
     this.a.put(1, localStringMsgDeserialize);
   }
   
@@ -24,7 +24,7 @@ public class MsgDeserializeListProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msg.littleear.MsgDeserializeListProvider
  * JD-Core Version:    0.7.0.1
  */

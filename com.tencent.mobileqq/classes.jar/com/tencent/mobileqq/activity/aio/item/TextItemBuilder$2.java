@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatActivityFacade;
@@ -10,6 +9,7 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.helper.QWalletAIOLifeCycleHelper;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
@@ -28,26 +28,24 @@ class TextItemBuilder$2
   public void onClick(View paramView)
   {
     Object localObject1 = AIOUtils.a(paramView);
-    if (!(localObject1 instanceof MessageForText)) {
+    if (!(localObject1 instanceof MessageForText))
+    {
       if (QLog.isColorLevel()) {
         QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForText");
       }
     }
-    MessageForText localMessageForText;
-    label56:
-    do
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localMessageForText = (MessageForText)localObject1;
-      if (localMessageForText.sb == null) {
-        break;
+      MessageForText localMessageForText = (MessageForText)localObject1;
+      if (localMessageForText.sb != null) {
+        localObject1 = localMessageForText.sb.toString();
+      } else {
+        localObject1 = localMessageForText.msg;
       }
-      localObject1 = localMessageForText.sb.toString();
       ChatActivityFacade.SendMsgParams localSendMsgParams = new ChatActivityFacade.SendMsgParams();
-      if ((this.a.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity))
+      if ((this.a.jdField_a_of_type_AndroidContentContext instanceof BaseActivity))
       {
-        localObject2 = ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a();
+        localObject2 = ((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a();
         if (localObject2 != null)
         {
           localObject2 = (QWalletAIOLifeCycleHelper)((BaseChatPie)localObject2).a(27);
@@ -58,21 +56,23 @@ class TextItemBuilder$2
       }
       Object localObject2 = MessageForText.getTroopMemberInfoFromExtrJson(localMessageForText.getExtInfoFromExtStr(MessageConstants.i));
       ChatActivityFacade.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (String)localObject1, (ArrayList)localObject2, localSendMsgParams);
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1);
-    localObject1 = (HotChatManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
-    if ((localObject1 != null) && (((HotChatManager)localObject1).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {}
-    for (localObject1 = "2";; localObject1 = "1")
-    {
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_msg", "", "grp_msg", "clk_like", 0, 0, localMessageForText.frienduin, "", (String)localObject1, "");
-      break;
-      localObject1 = localMessageForText.msg;
-      break label56;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
+      {
+        localObject1 = (HotChatManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
+        if ((localObject1 != null) && (((HotChatManager)localObject1).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
+          localObject1 = "2";
+        } else {
+          localObject1 = "1";
+        }
+        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_msg", "", "grp_msg", "clk_like", 0, 0, localMessageForText.frienduin, "", (String)localObject1, "");
+      }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TextItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

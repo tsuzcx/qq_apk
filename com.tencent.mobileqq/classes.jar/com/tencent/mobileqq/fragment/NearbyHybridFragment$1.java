@@ -11,20 +11,20 @@ class NearbyHybridFragment$1
   
   public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    if (paramInt4 > paramInt2) {
+    if (paramInt4 > paramInt2)
+    {
       if (paramInt2 == 0) {
         this.a.a.b();
       }
     }
-    while ((paramInt4 >= paramInt2) || (paramInt2 < this.a.c.getHeight())) {
-      return;
+    else if ((paramInt4 < paramInt2) && (paramInt2 >= this.a.b.getHeight())) {
+      this.a.a.a();
     }
-    this.a.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyHybridFragment.1
  * JD-Core Version:    0.7.0.1
  */

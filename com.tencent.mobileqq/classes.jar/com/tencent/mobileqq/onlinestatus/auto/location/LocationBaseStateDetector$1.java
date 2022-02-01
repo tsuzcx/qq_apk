@@ -12,18 +12,15 @@ class LocationBaseStateDetector$1
   {
     if (Constant.b) {
       LocationBaseStateDetector.a(this.this$0).a(LocationBaseStateDetector.a(this.this$0).a(), LocationBaseStateDetector.a(this.this$0).a());
-    }
-    for (;;)
-    {
-      LocationBaseStateDetector.a(this.this$0).postDelayed(this, Constant.h);
-      return;
+    } else {
       LocationBaseStateDetector.a(this.this$0).a(LocationBaseStateDetector.a(this.this$0).a(), LocationBaseStateDetector.a(this.this$0).a());
     }
+    LocationBaseStateDetector.a(this.this$0).postDelayed(this, Constant.h);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.location.LocationBaseStateDetector.1
  * JD-Core Version:    0.7.0.1
  */

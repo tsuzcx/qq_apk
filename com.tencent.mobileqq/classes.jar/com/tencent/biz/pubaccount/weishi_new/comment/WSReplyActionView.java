@@ -34,21 +34,21 @@ public class WSReplyActionView
   
   private void a()
   {
-    Object localObject = LayoutInflater.from(getContext()).inflate(2131560119, this, true);
-    this.a = ((TextView)((View)localObject).findViewById(2131371889));
-    this.b = ((TextView)((View)localObject).findViewById(2131370321));
-    int i = AIOUtils.a(12.0F, getContext().getResources());
-    localObject = getResources().getDrawable(2130851382);
+    Object localObject = LayoutInflater.from(getContext()).inflate(2131559991, this, true);
+    this.a = ((TextView)((View)localObject).findViewById(2131371510));
+    this.b = ((TextView)((View)localObject).findViewById(2131369989));
+    int i = AIOUtils.b(12.0F, getContext().getResources());
+    localObject = getResources().getDrawable(2130851303);
     ((Drawable)localObject).setBounds(0, 0, i, i);
     this.a.setCompoundDrawables(null, null, (Drawable)localObject, null);
-    localObject = getResources().getDrawable(2130851383);
+    localObject = getResources().getDrawable(2130851304);
     ((Drawable)localObject).setBounds(0, 0, i, i);
     this.b.setCompoundDrawables(null, null, (Drawable)localObject, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WSReplyActionView
  * JD-Core Version:    0.7.0.1
  */

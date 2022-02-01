@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.widget.EditText;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.phonecontact.observer.ContactBindObserver;
 import com.tencent.qphone.base.util.QLog;
 
 class BindVerifyActivity$2
@@ -12,49 +12,57 @@ class BindVerifyActivity$2
 {
   BindVerifyActivity$2(BindVerifyActivity paramBindVerifyActivity) {}
   
-  public void onVerifyBindSms(boolean paramBoolean, int paramInt)
+  protected void onVerifyBindSms(boolean paramBoolean, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("BindVerifyActivity", 2, "onVerifyBindSms [" + paramBoolean + ", " + paramInt + "]");
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onVerifyBindSms [");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(", ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("BindVerifyActivity", 2, ((StringBuilder)localObject).toString());
     }
     BindVerifyActivity.a(this.a, false);
     BindVerifyActivity.a(this.a).removeMessages(4);
-    this.a.b();
+    this.a.dismissProgressDialog();
     if (!paramBoolean)
     {
       this.a.a("dc00898", "0X8009F19", 0);
-      this.a.a(1, this.a.getString(2131718550));
+      localObject = this.a;
+      ((BindVerifyActivity)localObject).showToast(1, ((BindVerifyActivity)localObject).getString(2131718218));
     }
-    for (;;)
+    else if ((paramInt != 0) && (paramInt != 106))
     {
-      this.a.app.unRegistObserver(BindVerifyActivity.b(this.a));
-      BindVerifyActivity.b(this.a, null);
-      return;
-      if ((paramInt == 0) || (paramInt == 106))
-      {
-        this.a.a();
-      }
-      else if (paramInt == 213)
+      if (paramInt == 213)
       {
         this.a.a("dc00898", "0X8009F19", 0);
-        this.a.a(1, HardCodeUtil.a(2131701223));
+        this.a.showToast(1, HardCodeUtil.a(2131701364));
         BindVerifyActivity.a(this.a).setEnabled(true);
       }
       else
       {
         this.a.a("dc00898", "0X8009F19", 0);
-        String str = HardCodeUtil.a(2131701218);
+        localObject = HardCodeUtil.a(2131701359);
         if (paramInt == 107) {
-          str = HardCodeUtil.a(2131701220);
+          localObject = HardCodeUtil.a(2131701361);
         }
-        this.a.a(HardCodeUtil.a(2131701224), str);
+        this.a.showConfirmFinish(HardCodeUtil.a(2131701365), (String)localObject);
       }
     }
+    else
+    {
+      this.a.a();
+    }
+    this.a.app.unRegistObserver(BindVerifyActivity.b(this.a));
+    BindVerifyActivity.b(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.BindVerifyActivity.2
  * JD-Core Version:    0.7.0.1
  */

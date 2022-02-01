@@ -11,14 +11,18 @@ class TroopInteractGiftAnimationController$1$1$7
   
   public void a(int paramInt, oidb_0x962.RspBody paramRspBody)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopInteractGiftAnimationController", 2, "startInteract: errorCode = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramRspBody = new StringBuilder();
+      paramRspBody.append("startInteract: errorCode = ");
+      paramRspBody.append(paramInt);
+      QLog.d("TroopInteractGiftAnimationController", 2, paramRspBody.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1.7
  * JD-Core Version:    0.7.0.1
  */

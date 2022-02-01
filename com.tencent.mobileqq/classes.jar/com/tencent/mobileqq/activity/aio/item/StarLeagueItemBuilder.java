@@ -18,8 +18,8 @@ import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.NickNameExtenderViewBasicAbility;
-import com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.NickNameLayoutProcessor;
+import com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.BaseChatItemLayoutViewBasicAbility;
+import com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.NickNameChatItemLayoutProcessor;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForStarLeague;
@@ -44,111 +44,105 @@ public class StarLeagueItemBuilder
     return 0;
   }
   
-  public View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
+  protected View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     Context localContext = paramBaseChatItemLayout.getContext();
     if ((paramViewHolder instanceof StarLeagueItemBuilder.Holder))
     {
-      paramOnLongClickAndTouchListener = (StarLeagueItemBuilder.Holder)paramViewHolder;
-      paramViewHolder = paramView;
-      paramView = paramOnLongClickAndTouchListener;
-      if (paramViewHolder != null) {
-        break label560;
-      }
-      paramViewHolder = LayoutInflater.from(localContext).inflate(2131560832, null);
-      paramView.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)paramViewHolder.findViewById(2131378403));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewHolder.findViewById(2131378408));
-      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131378409));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131378410));
-      paramView.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramViewHolder.findViewById(2131380948));
-      paramView.jdField_c_of_type_AndroidViewView = paramViewHolder.findViewById(2131365991);
-      paramView.d = paramViewHolder.findViewById(2131365304);
-      paramView.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramViewHolder.findViewById(2131365962));
-      paramView.d.getLayoutParams().width = BaseChatItemLayout.e;
+      paramViewHolder = (StarLeagueItemBuilder.Holder)paramViewHolder;
     }
-    label560:
-    for (;;)
+    else
     {
-      for (;;)
+      paramViewHolder = (StarLeagueItemBuilder.Holder)a();
+      paramViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout = paramBaseChatItemLayout;
+      paramBaseChatItemLayout.setTag(paramViewHolder);
+      paramView = null;
+    }
+    paramOnLongClickAndTouchListener = paramView;
+    if (paramView == null)
+    {
+      paramOnLongClickAndTouchListener = LayoutInflater.from(localContext).inflate(2131560705, null);
+      paramViewHolder.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)paramOnLongClickAndTouchListener.findViewById(2131377817));
+      paramViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramOnLongClickAndTouchListener.findViewById(2131377822));
+      paramViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramOnLongClickAndTouchListener.findViewById(2131377823));
+      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramOnLongClickAndTouchListener.findViewById(2131377824));
+      paramViewHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramOnLongClickAndTouchListener.findViewById(2131380214));
+      paramViewHolder.jdField_c_of_type_AndroidViewView = paramOnLongClickAndTouchListener.findViewById(2131365827);
+      paramViewHolder.d = paramOnLongClickAndTouchListener.findViewById(2131365179);
+      paramViewHolder.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramOnLongClickAndTouchListener.findViewById(2131365799));
+      paramViewHolder.d.getLayoutParams().width = BaseChatItemLayout.e;
+    }
+    paramBaseChatItemLayout.setHeadIconVisible(false);
+    paramView = paramBaseChatItemLayout.a(NickNameChatItemLayoutProcessor.j);
+    if ((paramView != null) && (paramView.checkViewNonNull())) {
+      paramView.setViewVisibility(8);
+    }
+    paramView = paramBaseChatItemLayout.a(NickNameChatItemLayoutProcessor.i);
+    if ((paramView != null) && (paramView.checkViewNonNull())) {
+      paramView.setViewVisibility(8);
+    }
+    paramView = paramBaseChatItemLayout.a(NickNameChatItemLayoutProcessor.h);
+    if ((paramView != null) && (paramView.checkViewNonNull())) {
+      paramView.setViewVisibility(4);
+    }
+    if ((paramChatMessage instanceof MessageForStarLeague))
+    {
+      paramView = (MessageForStarLeague)paramChatMessage;
+      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramView.starName);
+      paramViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(paramView.subTitle);
+      if (paramView.levelStatus == 1)
       {
-        paramBaseChatItemLayout.setHeadIconVisible(false);
-        paramOnLongClickAndTouchListener = paramBaseChatItemLayout.a(NickNameLayoutProcessor.j);
-        if ((paramOnLongClickAndTouchListener != null) && (paramOnLongClickAndTouchListener.checkViewNonNull())) {
-          paramOnLongClickAndTouchListener.setViewVisibility(8);
-        }
-        paramOnLongClickAndTouchListener = paramBaseChatItemLayout.a(NickNameLayoutProcessor.i);
-        if ((paramOnLongClickAndTouchListener != null) && (paramOnLongClickAndTouchListener.checkViewNonNull())) {
-          paramOnLongClickAndTouchListener.setViewVisibility(8);
-        }
-        paramBaseChatItemLayout = paramBaseChatItemLayout.a(NickNameLayoutProcessor.h);
-        if ((paramBaseChatItemLayout != null) && (paramBaseChatItemLayout.checkViewNonNull())) {
-          paramBaseChatItemLayout.setViewVisibility(4);
-        }
-        if ((paramChatMessage instanceof MessageForStarLeague))
-        {
-          paramBaseChatItemLayout = (MessageForStarLeague)paramChatMessage;
-          paramView.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseChatItemLayout.starName);
-          paramView.jdField_b_of_type_AndroidWidgetTextView.setText(paramBaseChatItemLayout.subTitle);
-          if (paramBaseChatItemLayout.levelStatus != 1) {
-            break label486;
-          }
-          paramView.d.setBackgroundResource(2130844144);
-          paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844140);
-          paramView.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-          paramView.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-          paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-          paramView.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
-          if (paramBaseChatItemLayout.starAvatar.isEmpty()) {}
-        }
+        paramViewHolder.d.setBackgroundResource(2130844047);
+        paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844043);
+        paramViewHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+        paramViewHolder.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+        paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
+        paramViewHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
+      }
+      else
+      {
+        paramViewHolder.d.setBackgroundResource(2130844044);
+        paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844042);
+        paramViewHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+        paramViewHolder.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+        paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+        paramViewHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#777777"));
+      }
+      if (!paramView.starAvatar.isEmpty()) {
         try
         {
-          paramOnLongClickAndTouchListener = URLDrawable.URLDrawableOptions.obtain();
-          paramOnLongClickAndTouchListener.mRequestWidth = DisplayUtil.a(localContext, 64.0F);
-          paramOnLongClickAndTouchListener.mRequestHeight = DisplayUtil.a(localContext, 64.0F);
-          paramOnLongClickAndTouchListener.mFailedDrawable = null;
-          paramOnLongClickAndTouchListener.mLoadingDrawable = null;
-          paramOnLongClickAndTouchListener = URLDrawable.getDrawable(paramBaseChatItemLayout.starAvatar, paramOnLongClickAndTouchListener);
-          paramView.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setImageDrawable(paramOnLongClickAndTouchListener);
-          paramView.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(DisplayUtil.a(localContext, 32.0F));
-          paramView.d.setContentDescription(paramBaseChatItemLayout.brief);
-          paramView.d.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-          paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-          return paramViewHolder;
-          paramView = (StarLeagueItemBuilder.Holder)a();
-          paramView.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout = paramBaseChatItemLayout;
-          paramBaseChatItemLayout.setTag(paramView);
-          paramViewHolder = null;
-          break;
-          label486:
-          paramView.d.setBackgroundResource(2130844141);
-          paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844139);
-          paramView.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-          paramView.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-          paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-          paramView.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#777777"));
+          paramBaseChatItemLayout = URLDrawable.URLDrawableOptions.obtain();
+          paramBaseChatItemLayout.mRequestWidth = DisplayUtil.a(localContext, 64.0F);
+          paramBaseChatItemLayout.mRequestHeight = DisplayUtil.a(localContext, 64.0F);
+          paramBaseChatItemLayout.mFailedDrawable = null;
+          paramBaseChatItemLayout.mLoadingDrawable = null;
+          paramBaseChatItemLayout = URLDrawable.getDrawable(paramView.starAvatar, paramBaseChatItemLayout);
+          paramViewHolder.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setImageDrawable(paramBaseChatItemLayout);
+          paramViewHolder.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(DisplayUtil.a(localContext, 32.0F));
         }
-        catch (Throwable paramOnLongClickAndTouchListener)
+        catch (Throwable paramBaseChatItemLayout)
         {
-          for (;;)
-          {
-            QLog.e("ChatItemBuilder", 1, "levelStatus parse failed!", paramOnLongClickAndTouchListener);
-          }
+          QLog.e("ChatItemBuilder", 1, "levelStatus parse failed!", paramBaseChatItemLayout);
         }
       }
+      paramViewHolder.d.setContentDescription(paramView.brief);
     }
+    paramViewHolder.d.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    paramViewHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
+    return paramOnLongClickAndTouchListener;
   }
   
-  public BaseBubbleBuilder.ViewHolder a()
+  protected BaseBubbleBuilder.ViewHolder a()
   {
     return new StarLeagueItemBuilder.Holder(this);
   }
   
-  public String a(ChatMessage paramChatMessage)
+  protected String a(ChatMessage paramChatMessage)
   {
     return null;
   }
   
-  public void a(ChatMessage paramChatMessage, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, BaseBubbleBuilder.ViewHolder paramViewHolder, int paramInt1, int paramInt2)
+  protected void a(ChatMessage paramChatMessage, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, BaseBubbleBuilder.ViewHolder paramViewHolder, int paramInt1, int paramInt2)
   {
     super.a(paramChatMessage, paramContext, paramBaseChatItemLayout, paramViewHolder, paramInt1, paramInt2);
     paramChatMessage = (StarLeagueItemBuilder.Holder)paramViewHolder;
@@ -165,13 +159,13 @@ public class StarLeagueItemBuilder
   {
     paramView = new QQCustomMenu();
     ChatActivityFacade.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    super.a(paramView, this.jdField_a_of_type_AndroidContentContext, 2131362524, null, null);
+    super.a(paramView, this.jdField_a_of_type_AndroidContentContext, 2131362480, null, null);
     return paramView.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StarLeagueItemBuilder
  * JD-Core Version:    0.7.0.1
  */

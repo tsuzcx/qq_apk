@@ -16,7 +16,7 @@ public class HippyTKDListViewWrapperController
   int mCustomHippyRefreshViewHeight;
   View.OnLayoutChangeListener mLayoutChangeListener;
   
-  public void addView(ViewGroup paramViewGroup, View paramView, int paramInt)
+  protected void addView(ViewGroup paramViewGroup, View paramView, int paramInt)
   {
     super.addView(paramViewGroup, paramView, paramInt);
     if (paramInt == 0)
@@ -27,15 +27,15 @@ public class HippyTKDListViewWrapperController
         ((HippyTKDListView)paramViewGroup.getChildAt(1)).setCustomHippyRefreshView(this.mCustomHippyRefreshView);
       }
     }
-    while (!(paramView instanceof HippyTKDListView)) {
-      return;
+    else if ((paramView instanceof HippyTKDListView))
+    {
+      ((HippyTKDListView)paramView).setCustomHippyRefreshView(this.mCustomHippyRefreshView);
     }
-    ((HippyTKDListView)paramView).setCustomHippyRefreshView(this.mCustomHippyRefreshView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.listview.HippyTKDListViewWrapperController
  * JD-Core Version:    0.7.0.1
  */

@@ -31,13 +31,18 @@ public class TroopMemberLevelEffectView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if ((this.jdField_a_of_type_ComTencentImageURLDrawable != null) && (this.jdField_a_of_type_AndroidGraphicsRect != null))
+    URLDrawable localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    if (localURLDrawable != null)
     {
-      this.jdField_a_of_type_ComTencentImageURLDrawable.setBounds(this.jdField_a_of_type_AndroidGraphicsRect);
-      this.jdField_a_of_type_ComTencentImageURLDrawable.draw(paramCanvas);
+      Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+      if (localRect != null)
+      {
+        localURLDrawable.setBounds(localRect);
+        this.jdField_a_of_type_ComTencentImageURLDrawable.draw(paramCanvas);
+      }
     }
   }
   
@@ -52,14 +57,14 @@ public class TroopMemberLevelEffectView
     this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
   }
   
-  public boolean verifyDrawable(@NonNull Drawable paramDrawable)
+  protected boolean verifyDrawable(@NonNull Drawable paramDrawable)
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopMemberLevel.TroopMemberLevelEffectView
  * JD-Core Version:    0.7.0.1
  */

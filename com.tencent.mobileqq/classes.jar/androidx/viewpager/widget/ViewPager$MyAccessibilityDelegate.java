@@ -47,21 +47,23 @@ class ViewPager$MyAccessibilityDelegate
     if (super.performAccessibilityAction(paramView, paramInt, paramBundle)) {
       return true;
     }
-    switch (paramInt)
+    if (paramInt != 4096)
     {
-    default: 
-      return false;
-    case 4096: 
-      if (this.this$0.canScrollHorizontally(1))
+      if (paramInt != 8192) {
+        return false;
+      }
+      if (this.this$0.canScrollHorizontally(-1))
       {
-        this.this$0.setCurrentItem(this.this$0.mCurItem + 1);
+        paramView = this.this$0;
+        paramView.setCurrentItem(paramView.mCurItem - 1);
         return true;
       }
       return false;
     }
-    if (this.this$0.canScrollHorizontally(-1))
+    if (this.this$0.canScrollHorizontally(1))
     {
-      this.this$0.setCurrentItem(this.this$0.mCurItem - 1);
+      paramView = this.this$0;
+      paramView.setCurrentItem(paramView.mCurItem + 1);
       return true;
     }
     return false;
@@ -69,7 +71,7 @@ class ViewPager$MyAccessibilityDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.viewpager.widget.ViewPager.MyAccessibilityDelegate
  * JD-Core Version:    0.7.0.1
  */

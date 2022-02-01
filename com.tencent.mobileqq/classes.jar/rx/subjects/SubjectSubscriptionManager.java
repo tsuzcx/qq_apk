@@ -78,13 +78,11 @@ final class SubjectSubscriptionManager<T>
     do
     {
       localState1 = (SubjectSubscriptionManager.State)get();
-      if (localState1.terminated) {}
-      do
-      {
+      if (localState1.terminated) {
         return;
-        localState2 = localState1.remove(paramSubjectObserver);
-      } while (localState2 == localState1);
-    } while (!compareAndSet(localState1, localState2));
+      }
+      localState2 = localState1.remove(paramSubjectObserver);
+    } while ((localState2 != localState1) && (!compareAndSet(localState1, localState2)));
   }
   
   void setLatest(Object paramObject)
@@ -104,7 +102,7 @@ final class SubjectSubscriptionManager<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.subjects.SubjectSubscriptionManager
  * JD-Core Version:    0.7.0.1
  */

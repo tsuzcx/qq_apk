@@ -33,31 +33,38 @@ public class QQPimGetTipsInfoIPC
   
   public static QQPimGetTipsInfoIPC a()
   {
-    if (jdField_a_of_type_CooperationQqpimQQPimGetTipsInfoIPC == null) {}
-    try
-    {
-      if (jdField_a_of_type_CooperationQqpimQQPimGetTipsInfoIPC == null) {
-        jdField_a_of_type_CooperationQqpimQQPimGetTipsInfoIPC = new QQPimGetTipsInfoIPC();
+    if (jdField_a_of_type_CooperationQqpimQQPimGetTipsInfoIPC == null) {
+      try
+      {
+        if (jdField_a_of_type_CooperationQqpimQQPimGetTipsInfoIPC == null) {
+          jdField_a_of_type_CooperationQqpimQQPimGetTipsInfoIPC = new QQPimGetTipsInfoIPC();
+        }
       }
-      return jdField_a_of_type_CooperationQqpimQQPimGetTipsInfoIPC;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_CooperationQqpimQQPimGetTipsInfoIPC;
   }
   
   public void a()
   {
     this.jdField_a_of_type_CooperationQqpimQQPimGetTipsInfoIPC$IGetQQPimTipsCallBack = null;
-    if (this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable != null)
+    QQPimPluginLoadRunnable localQQPimPluginLoadRunnable = this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable;
+    if (localQQPimPluginLoadRunnable != null)
     {
-      this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable.a();
+      localQQPimPluginLoadRunnable.a();
       this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable = null;
     }
   }
   
   public void a(QQAppInterface paramQQAppInterface, QQPimGetTipsInfoIPC.IGetQQPimTipsCallBack paramIGetQQPimTipsCallBack, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(QQPimDefineList.jdField_a_of_type_JavaLangString, 2, "QQPimGetTipsInfoIPC.getContactTipsIpc()" + paramIGetQQPimTipsCallBack.hashCode());
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = QQPimDefineList.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QQPimGetTipsInfoIPC.getContactTipsIpc()");
+      localStringBuilder.append(paramIGetQQPimTipsCallBack.hashCode());
+      QLog.i(paramQQAppInterface, 2, localStringBuilder.toString());
     }
     jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_CooperationQqpimQQPimGetTipsInfoIPC$IGetQQPimTipsCallBack = paramIGetQQPimTipsCallBack;
@@ -70,22 +77,19 @@ public class QQPimGetTipsInfoIPC
         QIPCServerHelper.getInstance().register(this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule);
         this.jdField_a_of_type_Boolean = true;
       }
-      b();
-      return;
     }
     catch (Throwable paramQQAppInterface)
     {
-      for (;;)
-      {
-        paramQQAppInterface.printStackTrace();
-      }
+      paramQQAppInterface.printStackTrace();
     }
+    b();
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable != null) {
-      this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable.a();
+    QQPimPluginLoadRunnable localQQPimPluginLoadRunnable = this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable;
+    if (localQQPimPluginLoadRunnable != null) {
+      localQQPimPluginLoadRunnable.a();
     }
     this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable = new QQPimPluginLoadRunnable(this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable$IPluginLoadListener);
     ThreadManager.postImmediately(this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable, null, true);
@@ -102,7 +106,7 @@ public class QQPimGetTipsInfoIPC
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqpim.QQPimGetTipsInfoIPC
  * JD-Core Version:    0.7.0.1
  */

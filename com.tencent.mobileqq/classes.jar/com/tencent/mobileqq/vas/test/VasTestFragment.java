@@ -3,14 +3,14 @@ package com.tencent.mobileqq.vas.test;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import dalvik.system.PathClassLoader;
 import java.util.HashMap;
 import kotlin.Metadata;
@@ -36,8 +36,9 @@ public final class VasTestFragment
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
+    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    if (localHashMap != null) {
+      localHashMap.clear();
     }
   }
   
@@ -46,40 +47,36 @@ public final class VasTestFragment
     super.onCreate(paramBundle);
     try
     {
-      paramBundle = getActivity();
-      Intrinsics.checkExpressionValueIsNotNull(paramBundle, "activity");
+      paramBundle = getBaseActivity();
+      Intrinsics.checkExpressionValueIsNotNull(paramBundle, "baseActivity");
       paramBundle = paramBundle.getIntent();
       String str = paramBundle.getStringExtra("apk_path");
       paramBundle = Class.forName(paramBundle.getStringExtra("class_path"), true, (ClassLoader)new PathClassLoader(str, getClass().getClassLoader())).newInstance();
-      if (paramBundle == null) {
+      if (paramBundle != null) {
+        this.jdField_a_of_type_ComTencentMobileqqVasTestVasTestFragment$IVasTestFragment = ((VasTestFragment.IVasTestFragment)paramBundle);
+      } else {
         throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.vas.test.VasTestFragment.IVasTestFragment");
       }
     }
     catch (Exception paramBundle)
     {
       QLog.e("VasTestFragment", 1, (Throwable)paramBundle, new Object[0]);
-    }
-    for (;;)
-    {
       paramBundle = this.jdField_a_of_type_ComTencentMobileqqVasTestVasTestFragment$IVasTestFragment;
       if (paramBundle != null) {
         paramBundle.a(this);
       }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqVasTestVasTestFragment$IVasTestFragment = ((VasTestFragment.IVasTestFragment)paramBundle);
     }
   }
   
   @NotNull
-  public View onCreateView(@NotNull LayoutInflater paramLayoutInflater, @NotNull ViewGroup paramViewGroup, @Nullable Bundle paramBundle)
+  public View onCreateView(@NotNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle)
   {
     Intrinsics.checkParameterIsNotNull(paramLayoutInflater, "inflater");
-    Intrinsics.checkParameterIsNotNull(paramViewGroup, "container");
-    paramLayoutInflater = new FrameLayout((Context)getActivity());
+    paramLayoutInflater = new RelativeLayout((Context)getActivity());
+    paramLayoutInflater.setGravity(17);
     this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramLayoutInflater);
-    paramLayoutInflater.setBackgroundColor(-1);
     paramLayoutInflater = (View)paramLayoutInflater;
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
@@ -94,7 +91,7 @@ public final class VasTestFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.test.VasTestFragment
  * JD-Core Version:    0.7.0.1
  */

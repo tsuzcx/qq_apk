@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ocr;
 
 import android.os.Message;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.gallery.picocr.PicOcrObserver;
 import com.tencent.mobileqq.gallery.picocr.PicOcrRspResult;
 import com.tencent.qphone.base.util.QLog;
@@ -22,23 +22,23 @@ class OCRPerformFragment$6
     OCRPerformFragment.a(this.a).obtainMessage(102, paramPicOcrRspResult).sendToTarget();
   }
   
-  public void a(boolean paramBoolean, PicOcrRspResult paramPicOcrRspResult)
+  protected void a(boolean paramBoolean, PicOcrRspResult paramPicOcrRspResult)
   {
-    if ((!OCRPerformFragment.a(this.a)) || (OCRPerformFragment.a(this.a) == null))
+    if ((OCRPerformFragment.a(this.a)) && (OCRPerformFragment.a(this.a) != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("OCRPerformFragment", 2, "onPicOcrResult other! or mActivity null");
-      }
+      OCRPerformFragment.a(this.a).removeMessages(101);
+      OCRPerformFragment.a(this.a, false);
+      OCRPerformFragment.a(this.a).runOnUiThread(new OCRPerformFragment.6.1(this, paramBoolean, paramPicOcrRspResult));
       return;
     }
-    OCRPerformFragment.a(this.a).removeMessages(101);
-    OCRPerformFragment.a(this.a, false);
-    OCRPerformFragment.a(this.a).runOnUiThread(new OCRPerformFragment.6.1(this, paramBoolean, paramPicOcrRspResult));
+    if (QLog.isColorLevel()) {
+      QLog.d("OCRPerformFragment", 2, "onPicOcrResult other! or mActivity null");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRPerformFragment.6
  * JD-Core Version:    0.7.0.1
  */

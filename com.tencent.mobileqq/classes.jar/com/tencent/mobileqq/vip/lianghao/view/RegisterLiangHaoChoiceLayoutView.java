@@ -45,27 +45,33 @@ public class RegisterLiangHaoChoiceLayoutView
   private void a(int paramInt)
   {
     LiangHaoView localLiangHaoView = this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[paramInt];
-    if ((localLiangHaoView != null) && (localLiangHaoView.a != null) && (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLiangHaoHelper != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLiangHaoHelper.a(localLiangHaoView.a);
+    if ((localLiangHaoView != null) && (localLiangHaoView.a != null))
+    {
+      RegisterLiangHaoHelper localRegisterLiangHaoHelper = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLiangHaoHelper;
+      if (localRegisterLiangHaoHelper != null) {
+        localRegisterLiangHaoHelper.a(localLiangHaoView.a);
+      }
     }
   }
   
   public void a()
   {
-    int i = 0;
     setOrientation(1);
-    LayoutInflater.from(getContext()).inflate(2131562090, this, true);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370331);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370330));
-    this.b = findViewById(2131370329);
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[0] = ((LiangHaoView)findViewById(2131370334));
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[1] = ((LiangHaoView)findViewById(2131370335));
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[2] = ((LiangHaoView)findViewById(2131370336));
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[3] = ((LiangHaoView)findViewById(2131370337));
+    LayoutInflater.from(getContext()).inflate(2131561926, this, true);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369998);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369997));
+    this.b = findViewById(2131369996);
+    LiangHaoView[] arrayOfLiangHaoView = this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView;
+    LiangHaoView localLiangHaoView = (LiangHaoView)findViewById(2131370001);
+    int i = 0;
+    arrayOfLiangHaoView[0] = localLiangHaoView;
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[1] = ((LiangHaoView)findViewById(2131370002));
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[2] = ((LiangHaoView)findViewById(2131370003));
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[3] = ((LiangHaoView)findViewById(2131370004));
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.b.setOnClickListener(this);
-    LiangHaoView[] arrayOfLiangHaoView = this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView;
+    arrayOfLiangHaoView = this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView;
     int j = arrayOfLiangHaoView.length;
     while (i < j)
     {
@@ -76,25 +82,28 @@ public class RegisterLiangHaoChoiceLayoutView
   
   public void a(LiangHaoRsp paramLiangHaoRsp)
   {
-    if ((paramLiangHaoRsp == null) || (paramLiangHaoRsp.a == null) || (paramLiangHaoRsp.a.size() == 0)) {
-      return;
-    }
-    int i = 0;
-    if (i < this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView.length)
+    if ((paramLiangHaoRsp != null) && (paramLiangHaoRsp.a != null))
     {
-      if (paramLiangHaoRsp.a.size() <= i) {
-        ((ViewGroup)this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[i].getParent()).setVisibility(8);
+      if (paramLiangHaoRsp.a.size() == 0) {
+        return;
       }
-      for (;;)
+      int i = 0;
+      while (i < this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView.length)
       {
+        if (paramLiangHaoRsp.a.size() <= i)
+        {
+          ((ViewGroup)this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[i].getParent()).setVisibility(8);
+        }
+        else
+        {
+          LiangHaoUinData localLiangHaoUinData = (LiangHaoUinData)paramLiangHaoRsp.a.get(i);
+          this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[i].setUin(localLiangHaoUinData);
+          ((ViewGroup)this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[i].getParent()).setVisibility(0);
+        }
         i += 1;
-        break;
-        LiangHaoUinData localLiangHaoUinData = (LiangHaoUinData)paramLiangHaoRsp.a.get(i);
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[i].setUin(localLiangHaoUinData);
-        ((ViewGroup)this.jdField_a_of_type_ArrayOfComTencentMobileqqVipLianghaoViewLiangHaoView[i].getParent()).setVisibility(0);
       }
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramLiangHaoRsp.c);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramLiangHaoRsp.c);
   }
   
   public void a(boolean paramBoolean)
@@ -112,37 +121,36 @@ public class RegisterLiangHaoChoiceLayoutView
     this.jdField_a_of_type_AndroidViewView.setEnabled(paramBoolean);
     this.b.setEnabled(paramBoolean);
     localObject1 = this.b;
-    if (paramBoolean) {}
-    for (float f = 1.0F;; f = 0.5F)
-    {
-      ((View)localObject1).setAlpha(f);
-      return;
+    float f;
+    if (paramBoolean) {
+      f = 1.0F;
+    } else {
+      f = 0.5F;
     }
+    ((View)localObject1).setAlpha(f);
   }
   
   public void onClick(View paramView)
   {
     RegisterLiangHaoHelper localRegisterLiangHaoHelper = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLiangHaoHelper;
-    if (localRegisterLiangHaoHelper == null) {}
-    for (;;)
+    if (localRegisterLiangHaoHelper != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       int i = paramView.getId();
-      if (i == 2131370331) {
+      if (i == 2131369998) {
         localRegisterLiangHaoHelper.a();
-      } else if (i == 2131370338) {
+      } else if (i == 2131370005) {
         a(0);
-      } else if (i == 2131370339) {
+      } else if (i == 2131370006) {
         a(1);
-      } else if (i == 2131370340) {
+      } else if (i == 2131370007) {
         a(2);
-      } else if (i == 2131370341) {
+      } else if (i == 2131370008) {
         a(3);
-      } else if (i == 2131370329) {
+      } else if (i == 2131369996) {
         localRegisterLiangHaoHelper.b();
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void setLiangHaoHelper(RegisterLiangHaoHelper paramRegisterLiangHaoHelper)
@@ -152,7 +160,7 @@ public class RegisterLiangHaoChoiceLayoutView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.view.RegisterLiangHaoChoiceLayoutView
  * JD-Core Version:    0.7.0.1
  */

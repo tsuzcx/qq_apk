@@ -30,15 +30,16 @@ public final class oidb_cmd0xb86$UserInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 48, 56, 66, 72, 96, 106, 122, 128, 136, 1624 }, new String[] { "bytes_nick", "msg_head", "bytes_desc", "uint64_bind_uin", "uint32_user_type", "uint32_mp_auth", "uint64_id_create_time", "bytes_3t_bid", "uint32_home_page_type", "uint32_cc_account_level", "msg_examine_userinfo", "info_detail", "uint32_unowned_user", "uint32_disable_comment_recommed", "uint32_upgc_flag" }, new Object[] { localByteStringMicro1, null, localByteStringMicro2, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), null, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, UserInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 48, 56, 66, 72, 96, 106, 122, 128, 136, 1624 }, new String[] { "bytes_nick", "msg_head", "bytes_desc", "uint64_bind_uin", "uint32_user_type", "uint32_mp_auth", "uint64_id_create_time", "bytes_3t_bid", "uint32_home_page_type", "uint32_cc_account_level", "msg_examine_userinfo", "info_detail", "uint32_unowned_user", "uint32_disable_comment_recommed", "uint32_upgc_flag" }, new Object[] { localByteStringMicro1, null, localByteStringMicro2, Long.valueOf(0L), localInteger, localInteger, Long.valueOf(0L), localByteStringMicro3, localInteger, localInteger, null, null, localInteger, localInteger, localInteger }, UserInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb86.oidb_cmd0xb86.UserInfo
  * JD-Core Version:    0.7.0.1
  */

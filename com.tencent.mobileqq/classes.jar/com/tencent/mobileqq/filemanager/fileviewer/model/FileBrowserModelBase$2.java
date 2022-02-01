@@ -15,8 +15,9 @@ class FileBrowserModelBase$2
     if ((paramList != null) && (!paramList.isEmpty()))
     {
       this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-      this.a.f = paramString;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser != null) {
+      paramList = this.a;
+      paramList.f = paramString;
+      if (paramList.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser != null) {
         this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.c();
       }
     }
@@ -24,7 +25,7 @@ class FileBrowserModelBase$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.2
  * JD-Core Version:    0.7.0.1
  */

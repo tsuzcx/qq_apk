@@ -9,8 +9,8 @@ class AVReportCenter$1
   
   public void run()
   {
-    int j = 0;
     File[] arrayOfFile = new File(AVReportCenter.access$000(this.this$0)).listFiles();
+    int j = 0;
     int k;
     int i;
     if (arrayOfFile != null)
@@ -38,7 +38,7 @@ class AVReportCenter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.camerasdk.avreporter.AVReportCenter.1
  * JD-Core Version:    0.7.0.1
  */

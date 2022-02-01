@@ -30,44 +30,36 @@ public class CustomDrawable1
   
   private Rect a(int paramInt1, int paramInt2)
   {
-    int k = 0;
     int i;
-    int j;
-    label24:
-    label49:
-    Rect localRect;
-    if (paramInt1 == paramInt2)
-    {
+    if (paramInt1 == paramInt2) {
       i = this.jdField_a_of_type_Int;
-      if (paramInt1 != paramInt2) {
-        break label115;
-      }
-      j = this.b;
-      if (paramInt1 <= 1) {
-        break label124;
-      }
-      this.jdField_a_of_type_AndroidGraphicsRect.left = (a(paramInt1 - 1, paramInt2).right + 5);
-      localRect = this.jdField_a_of_type_AndroidGraphicsRect;
-      if (paramInt1 != paramInt2) {
-        break label135;
-      }
-    }
-    label135:
-    for (paramInt1 = k;; paramInt1 = (this.b - this.d) / 2)
-    {
-      localRect.top = paramInt1;
-      this.jdField_a_of_type_AndroidGraphicsRect.right = (i + this.jdField_a_of_type_AndroidGraphicsRect.left);
-      this.jdField_a_of_type_AndroidGraphicsRect.bottom = (j + this.jdField_a_of_type_AndroidGraphicsRect.top);
-      return this.jdField_a_of_type_AndroidGraphicsRect;
+    } else {
       i = this.c;
-      break;
-      label115:
-      j = this.d;
-      break label24;
-      label124:
-      this.jdField_a_of_type_AndroidGraphicsRect.left = 0;
-      break label49;
     }
+    int j;
+    if (paramInt1 == paramInt2) {
+      j = this.b;
+    } else {
+      j = this.d;
+    }
+    int k = 0;
+    if (paramInt1 > 1) {
+      this.jdField_a_of_type_AndroidGraphicsRect.left = (a(paramInt1 - 1, paramInt2).right + 5);
+    } else {
+      this.jdField_a_of_type_AndroidGraphicsRect.left = 0;
+    }
+    Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+    if (paramInt1 == paramInt2) {
+      paramInt1 = k;
+    } else {
+      paramInt1 = (this.b - this.d) / 2;
+    }
+    localRect.top = paramInt1;
+    localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+    localRect.right = (localRect.left + i);
+    localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+    localRect.bottom = (localRect.top + j);
+    return this.jdField_a_of_type_AndroidGraphicsRect;
   }
   
   private void a(int paramInt, Canvas paramCanvas, Paint paramPaint)
@@ -114,7 +106,7 @@ public class CustomDrawable1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CustomDrawable1
  * JD-Core Version:    0.7.0.1
  */

@@ -34,64 +34,64 @@ public class DividerItemDecoration
   
   private void drawHorizontal(Canvas paramCanvas, RecyclerView paramRecyclerView)
   {
-    int k = 0;
     paramCanvas.save();
-    int j;
+    boolean bool = paramRecyclerView.getClipToPadding();
+    int k = 0;
     int i;
-    if (paramRecyclerView.getClipToPadding())
+    int j;
+    if (bool)
     {
-      j = paramRecyclerView.getPaddingTop();
-      i = paramRecyclerView.getHeight() - paramRecyclerView.getPaddingBottom();
-      paramCanvas.clipRect(paramRecyclerView.getPaddingLeft(), j, paramRecyclerView.getWidth() - paramRecyclerView.getPaddingRight(), i);
+      i = paramRecyclerView.getPaddingTop();
+      j = paramRecyclerView.getHeight() - paramRecyclerView.getPaddingBottom();
+      paramCanvas.clipRect(paramRecyclerView.getPaddingLeft(), i, paramRecyclerView.getWidth() - paramRecyclerView.getPaddingRight(), j);
     }
-    for (;;)
+    else
     {
-      int m = paramRecyclerView.getChildCount();
-      while (k < m)
-      {
-        View localView = paramRecyclerView.getChildAt(k);
-        paramRecyclerView.getLayoutManager().getDecoratedBoundsWithMargins(localView, this.mBounds);
-        int n = this.mBounds.right;
-        n = Math.round(localView.getTranslationX()) + n;
-        int i1 = this.mDivider.getIntrinsicWidth();
-        this.mDivider.setBounds(n - i1, j, n, i);
-        this.mDivider.draw(paramCanvas);
-        k += 1;
-      }
-      i = paramRecyclerView.getHeight();
-      j = 0;
+      j = paramRecyclerView.getHeight();
+      i = 0;
+    }
+    int m = paramRecyclerView.getChildCount();
+    while (k < m)
+    {
+      View localView = paramRecyclerView.getChildAt(k);
+      paramRecyclerView.getLayoutManager().getDecoratedBoundsWithMargins(localView, this.mBounds);
+      int n = this.mBounds.right + Math.round(localView.getTranslationX());
+      int i1 = this.mDivider.getIntrinsicWidth();
+      this.mDivider.setBounds(n - i1, i, n, j);
+      this.mDivider.draw(paramCanvas);
+      k += 1;
     }
     paramCanvas.restore();
   }
   
   private void drawVertical(Canvas paramCanvas, RecyclerView paramRecyclerView)
   {
-    int k = 0;
     paramCanvas.save();
-    int j;
+    boolean bool = paramRecyclerView.getClipToPadding();
+    int k = 0;
     int i;
-    if (paramRecyclerView.getClipToPadding())
+    int j;
+    if (bool)
     {
-      j = paramRecyclerView.getPaddingLeft();
-      i = paramRecyclerView.getWidth() - paramRecyclerView.getPaddingRight();
-      paramCanvas.clipRect(j, paramRecyclerView.getPaddingTop(), i, paramRecyclerView.getHeight() - paramRecyclerView.getPaddingBottom());
+      i = paramRecyclerView.getPaddingLeft();
+      j = paramRecyclerView.getWidth() - paramRecyclerView.getPaddingRight();
+      paramCanvas.clipRect(i, paramRecyclerView.getPaddingTop(), j, paramRecyclerView.getHeight() - paramRecyclerView.getPaddingBottom());
     }
-    for (;;)
+    else
     {
-      int m = paramRecyclerView.getChildCount();
-      while (k < m)
-      {
-        View localView = paramRecyclerView.getChildAt(k);
-        paramRecyclerView.getDecoratedBoundsWithMargins(localView, this.mBounds);
-        int n = this.mBounds.bottom;
-        n = Math.round(localView.getTranslationY()) + n;
-        int i1 = this.mDivider.getIntrinsicHeight();
-        this.mDivider.setBounds(j, n - i1, i, n);
-        this.mDivider.draw(paramCanvas);
-        k += 1;
-      }
-      i = paramRecyclerView.getWidth();
-      j = 0;
+      j = paramRecyclerView.getWidth();
+      i = 0;
+    }
+    int m = paramRecyclerView.getChildCount();
+    while (k < m)
+    {
+      View localView = paramRecyclerView.getChildAt(k);
+      paramRecyclerView.getDecoratedBoundsWithMargins(localView, this.mBounds);
+      int n = this.mBounds.bottom + Math.round(localView.getTranslationY());
+      int i1 = this.mDivider.getIntrinsicHeight();
+      this.mDivider.setBounds(i, n - i1, j, n);
+      this.mDivider.draw(paramCanvas);
+      k += 1;
     }
     paramCanvas.restore();
   }
@@ -104,38 +104,44 @@ public class DividerItemDecoration
   
   public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    if (this.mDivider == null)
+    paramView = this.mDivider;
+    if (paramView == null)
     {
       paramRect.set(0, 0, 0, 0);
       return;
     }
     if (this.mOrientation == 1)
     {
-      paramRect.set(0, 0, 0, this.mDivider.getIntrinsicHeight());
+      paramRect.set(0, 0, 0, paramView.getIntrinsicHeight());
       return;
     }
-    paramRect.set(0, 0, this.mDivider.getIntrinsicWidth(), 0);
+    paramRect.set(0, 0, paramView.getIntrinsicWidth(), 0);
   }
   
   public void onDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    if ((paramRecyclerView.getLayoutManager() == null) || (this.mDivider == null)) {
-      return;
-    }
-    if (this.mOrientation == 1)
+    if (paramRecyclerView.getLayoutManager() != null)
     {
-      drawVertical(paramCanvas, paramRecyclerView);
-      return;
+      if (this.mDivider == null) {
+        return;
+      }
+      if (this.mOrientation == 1)
+      {
+        drawVertical(paramCanvas, paramRecyclerView);
+        return;
+      }
+      drawHorizontal(paramCanvas, paramRecyclerView);
     }
-    drawHorizontal(paramCanvas, paramRecyclerView);
   }
   
   public void setDrawable(@NonNull Drawable paramDrawable)
   {
-    if (paramDrawable == null) {
-      throw new IllegalArgumentException("Drawable cannot be null.");
+    if (paramDrawable != null)
+    {
+      this.mDivider = paramDrawable;
+      return;
     }
-    this.mDivider = paramDrawable;
+    throw new IllegalArgumentException("Drawable cannot be null.");
   }
   
   public void setOrientation(int paramInt)
@@ -148,7 +154,7 @@ public class DividerItemDecoration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.DividerItemDecoration
  * JD-Core Version:    0.7.0.1
  */

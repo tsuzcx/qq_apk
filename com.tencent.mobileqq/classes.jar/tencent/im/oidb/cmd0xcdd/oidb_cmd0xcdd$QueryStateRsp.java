@@ -19,14 +19,15 @@ public final class oidb_cmd0xcdd$QueryStateRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(1);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40 }, new String[] { "state", "token", "encrypt_key", "user_data", "biz_type" }, new Object[] { Integer.valueOf(1), localByteStringMicro1, localByteStringMicro2, null, Integer.valueOf(1) }, QueryStateRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40 }, new String[] { "state", "token", "encrypt_key", "user_data", "biz_type" }, new Object[] { localInteger, localByteStringMicro1, localByteStringMicro2, null, localInteger }, QueryStateRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xcdd.oidb_cmd0xcdd.QueryStateRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.friend.api.IFriendDataService;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class OnlineStatusPermissionChecker$OnlineStatusPermissionItem
   implements Serializable
@@ -37,14 +36,15 @@ public class OnlineStatusPermissionChecker$OnlineStatusPermissionItem
   public List<Long> filterNotFriend()
   {
     ArrayList localArrayList = new ArrayList();
-    FriendsManager localFriendsManager = (FriendsManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if (this.permissionUins != null)
+    IFriendDataService localIFriendDataService = (IFriendDataService)MobileQQ.sMobileQQ.peekAppRuntime().getRuntimeService(IFriendDataService.class, "");
+    Object localObject = this.permissionUins;
+    if (localObject != null)
     {
-      Iterator localIterator = this.permissionUins.iterator();
-      while (localIterator.hasNext())
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        Long localLong = (Long)localIterator.next();
-        if (localFriendsManager.b(localLong.toString())) {
+        Long localLong = (Long)((Iterator)localObject).next();
+        if (localIFriendDataService.isFriend(localLong.toString())) {
           localArrayList.add(localLong);
         } else if (QLog.isColorLevel()) {
           QLog.d("OnlineStatusPermissionChecker", 2, new Object[] { "filterNotFriend: invoked. ", " uin: ", localLong });
@@ -72,7 +72,7 @@ public class OnlineStatusPermissionChecker$OnlineStatusPermissionItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnlineStatusPermissionChecker.OnlineStatusPermissionItem
  * JD-Core Version:    0.7.0.1
  */

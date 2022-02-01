@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk;
 
-import android.support.annotation.NonNull;
 import java.util.HashMap;
 
 public class ExcitingTransferDownloadCompletedInfo
@@ -34,24 +33,53 @@ public class ExcitingTransferDownloadCompletedInfo
     localHashMap.put("param_RetryTimes", String.valueOf(this.muRetryTimes));
     localHashMap.put("param_ProxyType", String.valueOf(this.muProxyType));
     localHashMap.put("param_LastServerHost", String.valueOf(this.mstrLastServerHost));
-    String str = "0";
-    if (this.muTotalTimes != 0L) {
-      str = String.valueOf((float)this.muDownloadedSize / (float)this.muTotalTimes);
+    long l = this.muTotalTimes;
+    String str;
+    if (l != 0L) {
+      str = String.valueOf((float)this.muDownloadedSize / (float)l);
+    } else {
+      str = "0";
     }
     localHashMap.put("param_speed", str);
     localHashMap.put("param_SrvRetCode", String.valueOf(this.mnSrvReturnCode));
     return localHashMap;
   }
   
-  @NonNull
   public String toString()
   {
-    return "m_strFileSavePath:" + this.mstrFileSavePath + " m_uStartSize:" + this.muStartSize + " m_uTotalTimes:" + this.muTotalTimes + " m_uDownloadedSize:" + this.muDownloadedSize + " m_uReAllocatedNum:" + this.muReAllocatedNum + " m_uStartTime:" + this.muStartTime + " m_uFirstRecvDataTime:" + this.muFirstRecvDataTime + " m_uFirstRecvDataSize:" + this.muFirstRecvDataSize + " m_uFullWatingNum:" + this.muFullWatingNum + " m_uRetryTimes:" + this.muRetryTimes + " m_uProxyType:" + this.muProxyType + " m_strLastServerHost:" + this.mstrLastServerHost + " m_nSrvReturnCode:" + this.mnSrvReturnCode;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("m_strFileSavePath:");
+    localStringBuilder.append(this.mstrFileSavePath);
+    localStringBuilder.append(" m_uStartSize:");
+    localStringBuilder.append(this.muStartSize);
+    localStringBuilder.append(" m_uTotalTimes:");
+    localStringBuilder.append(this.muTotalTimes);
+    localStringBuilder.append(" m_uDownloadedSize:");
+    localStringBuilder.append(this.muDownloadedSize);
+    localStringBuilder.append(" m_uReAllocatedNum:");
+    localStringBuilder.append(this.muReAllocatedNum);
+    localStringBuilder.append(" m_uStartTime:");
+    localStringBuilder.append(this.muStartTime);
+    localStringBuilder.append(" m_uFirstRecvDataTime:");
+    localStringBuilder.append(this.muFirstRecvDataTime);
+    localStringBuilder.append(" m_uFirstRecvDataSize:");
+    localStringBuilder.append(this.muFirstRecvDataSize);
+    localStringBuilder.append(" m_uFullWatingNum:");
+    localStringBuilder.append(this.muFullWatingNum);
+    localStringBuilder.append(" m_uRetryTimes:");
+    localStringBuilder.append(this.muRetryTimes);
+    localStringBuilder.append(" m_uProxyType:");
+    localStringBuilder.append(this.muProxyType);
+    localStringBuilder.append(" m_strLastServerHost:");
+    localStringBuilder.append(this.mstrLastServerHost);
+    localStringBuilder.append(" m_nSrvReturnCode:");
+    localStringBuilder.append(this.mnSrvReturnCode);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo
  * JD-Core Version:    0.7.0.1
  */

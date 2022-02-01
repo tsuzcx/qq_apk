@@ -28,7 +28,10 @@ public class EncryptUtilsForQQ
     int i = 0;
     while (i < paramInt - j % paramInt)
     {
-      paramString = paramString + " ";
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" ");
+      paramString = localStringBuilder.toString();
       i += 1;
     }
     return paramString;
@@ -45,7 +48,7 @@ public class EncryptUtilsForQQ
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.kingkong.EncryptUtilsForQQ
  * JD-Core Version:    0.7.0.1
  */

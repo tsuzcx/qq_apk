@@ -28,23 +28,33 @@ final class VasProfileSimpleBackgroundComponent$updateDiyText$$inlined$apply$lam
     if (QLog.isColorLevel())
     {
       localObject = this.this$0.getTAG();
-      StringBuilder localStringBuilder = new StringBuilder().append("updateDiyText: x=");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateDiyText: x=");
       SingleTouchLayout localSingleTouchLayout = VasProfileSimpleBackgroundComponent.access$getMDiyTextLayout$p(this.this$0);
       if (localSingleTouchLayout == null) {
         Intrinsics.throwNpe();
       }
-      localStringBuilder = localStringBuilder.append(localSingleTouchLayout.a().x).append(',').append("y=");
+      localStringBuilder.append(localSingleTouchLayout.a().x);
+      localStringBuilder.append(',');
+      localStringBuilder.append("y=");
       localSingleTouchLayout = VasProfileSimpleBackgroundComponent.access$getMDiyTextLayout$p(this.this$0);
       if (localSingleTouchLayout == null) {
         Intrinsics.throwNpe();
       }
-      QLog.d((String)localObject, 2, localSingleTouchLayout.a().y + ',' + "width=" + paramInt1 + ',' + "height=" + paramInt2);
+      localStringBuilder.append(localSingleTouchLayout.a().y);
+      localStringBuilder.append(',');
+      localStringBuilder.append("width=");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(',');
+      localStringBuilder.append("height=");
+      localStringBuilder.append(paramInt2);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.component.background.VasProfileSimpleBackgroundComponent.updateDiyText..inlined.apply.lambda.1
  * JD-Core Version:    0.7.0.1
  */

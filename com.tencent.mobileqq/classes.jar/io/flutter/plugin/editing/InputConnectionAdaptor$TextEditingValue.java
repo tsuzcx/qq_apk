@@ -23,16 +23,14 @@ class InputConnectionAdaptor$TextEditingValue
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == this) {}
-    do
-    {
+    if (paramObject == this) {
       return true;
-      if (!(paramObject instanceof TextEditingValue)) {
-        return false;
-      }
-      paramObject = (TextEditingValue)paramObject;
-    } while ((this.selectionStart == paramObject.selectionStart) && (this.selectionEnd == paramObject.selectionEnd) && (this.composingStart == paramObject.composingStart) && (this.composingEnd == paramObject.composingEnd) && (this.text.equals(paramObject.text)));
-    return false;
+    }
+    if (!(paramObject instanceof TextEditingValue)) {
+      return false;
+    }
+    paramObject = (TextEditingValue)paramObject;
+    return (this.selectionStart == paramObject.selectionStart) && (this.selectionEnd == paramObject.selectionEnd) && (this.composingStart == paramObject.composingStart) && (this.composingEnd == paramObject.composingEnd) && (this.text.equals(paramObject.text));
   }
   
   public int hashCode()
@@ -42,7 +40,7 @@ class InputConnectionAdaptor$TextEditingValue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.editing.InputConnectionAdaptor.TextEditingValue
  * JD-Core Version:    0.7.0.1
  */

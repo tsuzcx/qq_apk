@@ -8,23 +8,21 @@ class ContainerHelpers
   
   static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
+    paramInt1 -= 1;
     int i = 0;
-    int j = paramInt1 - 1;
-    paramInt1 = i;
-    i = j;
-    while (paramInt1 <= i)
+    while (i <= paramInt1)
     {
-      j = paramInt1 + i >>> 1;
+      int j = i + paramInt1 >>> 1;
       int k = paramArrayOfInt[j];
       if (k < paramInt2) {
-        paramInt1 = j + 1;
+        i = j + 1;
       } else if (k > paramInt2) {
-        i = j - 1;
+        paramInt1 = j - 1;
       } else {
         return j;
       }
     }
-    return paramInt1 ^ 0xFFFFFFFF;
+    return i ^ 0xFFFFFFFF;
   }
   
   public static boolean equal(Object paramObject1, Object paramObject2)
@@ -35,20 +33,15 @@ class ContainerHelpers
   public static int idealByteArraySize(int paramInt)
   {
     int i = 4;
-    for (;;)
+    while (i < 32)
     {
-      int j = paramInt;
-      if (i < 32)
-      {
-        if (paramInt <= (1 << i) - 12) {
-          j = (1 << i) - 12;
-        }
-      }
-      else {
+      int j = (1 << i) - 12;
+      if (paramInt <= j) {
         return j;
       }
       i += 1;
     }
+    return paramInt;
   }
   
   public static int idealIntArraySize(int paramInt)
@@ -63,7 +56,7 @@ class ContainerHelpers
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.utils.struct.ContainerHelpers
  * JD-Core Version:    0.7.0.1
  */

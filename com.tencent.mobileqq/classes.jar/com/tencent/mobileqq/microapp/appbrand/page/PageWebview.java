@@ -17,7 +17,7 @@ public class PageWebview
   extends BaseAppBrandWebview
 {
   private static final String PREF_HTML_URL = "https://servicewechat.com/";
-  private static final String TAG = PageWebview.class.getSimpleName() + "111";
+  private static final String TAG;
   a appBrandRuntime;
   private byte[] contentBytes;
   WebViewEventListener eventListener;
@@ -36,6 +36,14 @@ public class PageWebview
   public int scrollY;
   public SwipeRefreshLayout swipeRefreshLayout;
   private String wxssJsStr;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(PageWebview.class.getSimpleName());
+    localStringBuilder.append("111");
+    TAG = localStringBuilder.toString();
+  }
   
   public PageWebview(Context paramContext)
   {
@@ -79,8 +87,9 @@ public class PageWebview
     if (!TextUtils.isEmpty(paramc)) {
       evaluteJs(paramc);
     }
-    if (this.listener != null) {
-      this.listener.onWebViewReady(this.openType, this.mRouteUrl);
+    paramc = this.listener;
+    if (paramc != null) {
+      paramc.onWebViewReady(this.openType, this.mRouteUrl);
     }
   }
   
@@ -91,48 +100,55 @@ public class PageWebview
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    for (;;)
+    try
     {
-      try
+      if (this.apkgInfo$5475ea27.b.b(this.mRouteUrl).a.b)
       {
-        if (this.apkgInfo$5475ea27.b.b(this.mRouteUrl).a.b)
+        int i = (int)paramMotionEvent.getX();
+        int j = (int)paramMotionEvent.getY();
+        int k = paramMotionEvent.getAction();
+        if (k != 0)
         {
-          i = (int)paramMotionEvent.getX();
-          j = (int)paramMotionEvent.getY();
-          switch (paramMotionEvent.getAction())
-          {
-          case 0: 
-            this.mLastX = i;
-            this.mLastY = j;
+          if (k != 1) {
+            if (k != 2)
+            {
+              if (k != 3) {
+                break label153;
+              }
+            }
+            else
+            {
+              k = i - this.mLastX;
+              int m = j - this.mLastY;
+              if ((Math.abs(m) <= 0) || (Math.abs(k) <= 0)) {
+                break label153;
+              }
+              if (Math.abs(m) > Math.abs(k))
+              {
+                this.swipeRefreshLayout.setEnabled(true);
+                break label153;
+              }
+              this.swipeRefreshLayout.setEnabled(false);
+              break label153;
+            }
           }
-        }
-      }
-      catch (Exception localException)
-      {
-        int i;
-        int j;
-        int k;
-        int m;
-        continue;
-      }
-      return super.dispatchTouchEvent(paramMotionEvent);
-      this.swipeRefreshLayout.setEnabled(true);
-      continue;
-      k = i - this.mLastX;
-      m = j - this.mLastY;
-      if ((Math.abs(m) > 0) && (Math.abs(k) > 0)) {
-        if (Math.abs(m) > Math.abs(k))
-        {
           this.swipeRefreshLayout.setEnabled(true);
         }
         else
         {
-          this.swipeRefreshLayout.setEnabled(false);
-          continue;
           this.swipeRefreshLayout.setEnabled(true);
         }
+        label153:
+        this.mLastX = i;
+        this.mLastY = j;
       }
     }
+    catch (Exception localException)
+    {
+      label163:
+      break label163;
+    }
+    return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public void init()
@@ -145,8 +161,9 @@ public class PageWebview
   @JavascriptInterface
   public String invokeHandler(String paramString1, String paramString2, int paramInt)
   {
-    if (this.eventListener != null) {
-      return this.eventListener.onWebViewNativeRequest(paramString1, paramString2, this, paramInt);
+    WebViewEventListener localWebViewEventListener = this.eventListener;
+    if (localWebViewEventListener != null) {
+      return localWebViewEventListener.onWebViewNativeRequest(paramString1, paramString2, this, paramInt);
     }
     return "";
   }
@@ -161,22 +178,28 @@ public class PageWebview
   
   public void loadPageWebviewJs$164d4c8c(com.tencent.mobileqq.microapp.a.c paramc)
   {
-    if (StringUtil.a(this.mRouteUrl)) {}
-    while ((this.hasFLoad) || (!this.hasLoadHtmlFinish)) {
+    if (StringUtil.a(this.mRouteUrl)) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i(TAG, 2, "----loadPageWebviewJs----");
+    if (!this.hasFLoad)
+    {
+      if (!this.hasLoadHtmlFinish) {
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i(TAG, 2, "----loadPageWebviewJs----");
+      }
+      onWebViewReady$164d4c8c(paramc);
+      this.hasFLoad = true;
     }
-    onWebViewReady$164d4c8c(paramc);
-    this.hasFLoad = true;
   }
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.onWebviewScrollListener != null) {
-      this.onWebviewScrollListener.onVerticalScroll(paramInt2);
+    PageWebview.OnWebviewScrollListener localOnWebviewScrollListener = this.onWebviewScrollListener;
+    if (localOnWebviewScrollListener != null) {
+      localOnWebviewScrollListener.onVerticalScroll(paramInt2);
     }
     this.scrollY = paramInt2;
   }
@@ -184,8 +207,9 @@ public class PageWebview
   @JavascriptInterface
   public void publishHandler(String paramString1, String paramString2, String paramString3)
   {
-    if (this.eventListener != null) {
-      this.eventListener.onWebViewEvent(paramString1, paramString2, paramString3, this.apkgInfo$5475ea27.d, this.pageWebviewId);
+    WebViewEventListener localWebViewEventListener = this.eventListener;
+    if (localWebViewEventListener != null) {
+      localWebViewEventListener.onWebViewEvent(paramString1, paramString2, paramString3, this.apkgInfo$5475ea27.d, this.pageWebviewId);
     }
   }
   
@@ -196,7 +220,7 @@ public class PageWebview
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.page.PageWebview
  * JD-Core Version:    0.7.0.1
  */

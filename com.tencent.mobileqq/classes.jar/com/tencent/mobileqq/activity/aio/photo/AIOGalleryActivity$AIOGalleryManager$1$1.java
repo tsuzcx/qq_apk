@@ -11,8 +11,12 @@ class AIOGalleryActivity$AIOGalleryManager$1$1
   {
     if (AIOGalleryActivity.AIOGalleryManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity$AIOGalleryManager$1.a) != null)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("peak_pgjpeg", 4, "IAIOImageProviderCallBack.notifyImageResult():isPart " + this.jdField_a_of_type_Boolean);
+      if (QLog.isDevelopLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("IAIOImageProviderCallBack.notifyImageResult():isPart ");
+        localStringBuilder.append(this.jdField_a_of_type_Boolean);
+        QLog.d("peak_pgjpeg", 4, localStringBuilder.toString());
       }
       ((AIOGalleryScene)AIOGalleryActivity.AIOGalleryManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity$AIOGalleryManager$1.a)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
     }
@@ -23,7 +27,7 @@ class AIOGalleryActivity$AIOGalleryManager$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.1
  * JD-Core Version:    0.7.0.1
  */

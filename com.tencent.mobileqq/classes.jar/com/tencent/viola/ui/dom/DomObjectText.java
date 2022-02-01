@@ -3,6 +3,7 @@ package com.tencent.viola.ui.dom;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint.Align;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -97,52 +98,54 @@ public class DomObjectText
   
   private void applyFontStyle(int paramInt1, int paramInt2, String paramString)
   {
-    int k = 0;
     Typeface localTypeface = this.mTextPaint.getTypeface();
-    if (localTypeface == null) {}
-    for (int j = 0;; j = localTypeface.getStyle())
+    int k = 0;
+    int j;
+    if (localTypeface == null) {
+      j = 0;
+    } else {
+      j = localTypeface.getStyle();
+    }
+    int i;
+    if (paramInt2 != 1)
     {
-      int i;
-      if (paramInt2 != 1)
+      i = k;
+      if ((j & 0x1) != 0)
       {
         i = k;
-        if ((j & 0x1) != 0)
-        {
-          i = k;
-          if (paramInt2 != -1) {}
-        }
+        if (paramInt2 != -1) {}
       }
-      else
-      {
-        i = 1;
-      }
-      if (paramInt1 != 2)
+    }
+    else
+    {
+      i = 1;
+    }
+    if (paramInt1 != 2)
+    {
+      paramInt2 = i;
+      if ((0x2 & j) != 0)
       {
         paramInt2 = i;
-        if ((j & 0x2) != 0)
-        {
-          paramInt2 = i;
-          if (paramInt1 != -1) {}
-        }
+        if (paramInt1 != -1) {}
       }
-      else
-      {
-        paramInt2 = i | 0x2;
-      }
-      VComponentAdapter localVComponentAdapter = ViolaSDKManager.getInstance().getComponentAdapter();
-      if ((localVComponentAdapter == null) || (!localVComponentAdapter.useCustomFont(this.mTextPaint, paramString, paramInt2)))
-      {
-        if (paramString != null) {
-          localTypeface = getOrCreateTypeface(paramString, paramInt2);
-        }
-        if (localTypeface == null) {
-          break;
-        }
-        this.mTextPaint.setTypeface(Typeface.create(localTypeface, paramInt2));
-      }
-      return;
     }
-    this.mTextPaint.setTypeface(Typeface.defaultFromStyle(paramInt2));
+    else
+    {
+      paramInt2 = i | 0x2;
+    }
+    VComponentAdapter localVComponentAdapter = ViolaSDKManager.getInstance().getComponentAdapter();
+    if ((localVComponentAdapter == null) || (!localVComponentAdapter.useCustomFont(this.mTextPaint, paramString, paramInt2)))
+    {
+      if (paramString != null) {
+        localTypeface = getOrCreateTypeface(paramString, paramInt2);
+      }
+      if (localTypeface != null)
+      {
+        this.mTextPaint.setTypeface(Typeface.create(localTypeface, paramInt2));
+        return;
+      }
+      this.mTextPaint.setTypeface(Typeface.defaultFromStyle(paramInt2));
+    }
   }
   
   private SpannableString applySpanTextStyle(SpanText paramSpanText)
@@ -160,79 +163,87 @@ public class DomObjectText
       if ((localObject1 != null) && (((Style)localObject1).containsKey("fontSize")))
       {
         localSpannableString.setSpan(new AbsoluteSizeSpan(((Style)localObject1).getFontSize(getViewPortWidth())), 0, localSpannableString.length(), 33);
-        int j = this.mColor;
-        int i = j;
-        if (localObject1 != null)
-        {
-          i = j;
-          if (((Style)localObject1).containsKey("color")) {
-            i = ColorParseUtils.parseColor(((Style)localObject1).getTextColor());
-          }
+      }
+      else
+      {
+        i = this.mFontSize;
+        if (i != -1) {
+          localSpannableString.setSpan(new AbsoluteSizeSpan(i), 0, localSpannableString.length(), 33);
         }
-        localSpannableString.setSpan(new ForegroundColorSpan(i), 0, localSpannableString.length(), 33);
-        if ((localObject1 == null) || (!((Style)localObject1).containsKey("lineHeight"))) {
-          break label324;
+      }
+      int j = this.mColor;
+      int i = j;
+      if (localObject1 != null)
+      {
+        i = j;
+        if (((Style)localObject1).containsKey("color")) {
+          i = ColorParseUtils.parseColor(((Style)localObject1).getTextColor());
         }
+      }
+      localSpannableString.setSpan(new ForegroundColorSpan(i), 0, localSpannableString.length(), 33);
+      if ((localObject1 != null) && (((Style)localObject1).containsKey("lineHeight")))
+      {
         localSpannableString.setSpan(new VLineHeightSpan(((Style)localObject1).getLineHeight(getViewPortWidth())), 0, localSpannableString.length(), 33);
       }
-      for (;;)
+      else
       {
-        if ((localObject1 != null) && (((Style)localObject1).containsKey("fontWeight"))) {
-          localSpannableString.setSpan(new StyleSpan(((Style)localObject1).getFontWeight()), 0, localSpannableString.length(), 33);
-        }
-        ((Style)localObject1).getTextAlignment();
-        ((Style)localObject1).getTextOverflow();
-        ((Style)localObject1).getTextPaintAlign();
-        return localSpannableString;
-        if (this.mFontSize == -1) {
-          break;
-        }
-        localSpannableString.setSpan(new AbsoluteSizeSpan(this.mFontSize), 0, localSpannableString.length(), 33);
-        break;
-        label324:
-        if (this.mLineHeight != -1) {
-          localSpannableString.setSpan(new VLineHeightSpan(this.mLineHeight), 0, localSpannableString.length(), 33);
+        i = this.mLineHeight;
+        if (i != -1) {
+          localSpannableString.setSpan(new VLineHeightSpan(i), 0, localSpannableString.length(), 33);
         } else if ((localObject1 != null) && (((Style)localObject1).getFontSize(getViewPortWidth()) > 0)) {
           localSpannableString.setSpan(new VLineHeightSpan(((Style)localObject1).getFontSize(getViewPortWidth())), 0, localSpannableString.length(), 33);
         }
       }
+      if ((localObject1 != null) && (((Style)localObject1).containsKey("fontWeight"))) {
+        localSpannableString.setSpan(new StyleSpan(((Style)localObject1).getFontWeight()), 0, localSpannableString.length(), 33);
+      }
+      ((Style)localObject1).getTextAlignment();
+      ((Style)localObject1).getTextOverflow();
+      ((Style)localObject1).getTextPaintAlign();
+      return localSpannableString;
     }
     Object localObject1 = Uri.parse(paramSpanText.src);
-    Style localStyle = paramSpanText.style;
+    Object localObject2 = paramSpanText.style;
     try
     {
-      Object localObject2 = new ColorDrawable(Color.parseColor("#00000000"));
-      ((Drawable)localObject2).setBounds(0, 0, (int)localStyle.getWidth(getViewPortWidth()), (int)localStyle.getHeight(getViewPortWidth()));
-      localObject2 = new VImgSpan(this, (Drawable)localObject2, paramSpanText.src, 1);
-      this.mVImgSpanArr.add(localObject2);
-      localSpannableString.setSpan(localObject2, 0, 1, 33);
-      ((VImgSpan)localObject2).loadUrl(paramSpanText.src, (int)localStyle.getWidth(getViewPortWidth()), (int)localStyle.getHeight(getViewPortWidth()));
+      Object localObject3 = new ColorDrawable(Color.parseColor("#00000000"));
+      ((Drawable)localObject3).setBounds(0, 0, (int)((Style)localObject2).getWidth(getViewPortWidth()), (int)((Style)localObject2).getHeight(getViewPortWidth()));
+      localObject3 = new VImgSpan(this, (Drawable)localObject3, paramSpanText.src, 1);
+      this.mVImgSpanArr.add(localObject3);
+      localSpannableString.setSpan(localObject3, 0, 1, 33);
+      ((VImgSpan)localObject3).loadUrl(paramSpanText.src, (int)((Style)localObject2).getWidth(getViewPortWidth()), (int)((Style)localObject2).getHeight(getViewPortWidth()));
       return localSpannableString;
     }
     catch (Exception paramSpanText)
     {
-      Log.e("DomObjectText", "Failed to loaded content " + localObject1, paramSpanText);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("Failed to loaded content ");
+      ((StringBuilder)localObject2).append(localObject1);
+      Log.e("DomObjectText", ((StringBuilder)localObject2).toString(), paramSpanText);
     }
     return localSpannableString;
   }
   
   private void applyTextDecoration()
   {
-    switch (DomObjectText.3.$SwitchMap$com$tencent$viola$ui$dom$style$font$TextDecoration[this.mTextDecoration.ordinal()])
+    int i = DomObjectText.3.$SwitchMap$com$tencent$viola$ui$dom$style$font$TextDecoration[this.mTextDecoration.ordinal()];
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      this.mTextPaint.setUnderlineText(false);
-      this.mTextPaint.setStrikeThruText(true);
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3) {
+          return;
+        }
+        this.mTextPaint.setUnderlineText(false);
+        this.mTextPaint.setStrikeThruText(false);
+        return;
+      }
       this.mTextPaint.setUnderlineText(true);
       this.mTextPaint.setStrikeThruText(false);
       return;
     }
     this.mTextPaint.setUnderlineText(false);
-    this.mTextPaint.setStrikeThruText(false);
+    this.mTextPaint.setStrikeThruText(true);
   }
   
   private void applyTextPaint()
@@ -253,75 +264,78 @@ public class DomObjectText
   private Layout createLayout(float paramFloat, boolean paramBoolean, @Nullable Layout paramLayout)
   {
     paramFloat = getTextWidth(this.mTextPaint, paramFloat, paramBoolean);
-    Object localObject;
-    if (FloatUtils.floatsEqual(this.previousWidth, paramFloat))
+    if ((FloatUtils.floatsEqual(this.previousWidth, paramFloat)) && (paramLayout != null)) {
+      break label105;
+    }
+    paramLayout = getStyle().get("direction");
+    if (paramLayout != null) {
+      paramLayout.equals("rtl");
+    }
+    if (this.isRichText) {
+      paramLayout = this.mSpanned;
+    } else {
+      paramLayout = this.mTextSpan;
+    }
+    paramLayout = new StaticLayout(paramLayout, this.mTextPaint, (int)Math.ceil(paramFloat), this.mAlignment, 1.0F, this.mLineSpacing, false);
+    label105:
+    int i = this.mNumberOfLines;
+    if ((i != -1) && (i > 0) && (i < paramLayout.getLineCount()))
     {
-      localObject = paramLayout;
-      if (paramLayout != null) {}
+      i = paramLayout.getLineStart(this.mNumberOfLines - 1);
+      int j = paramLayout.getLineEnd(this.mNumberOfLines - 1);
+      if (i < j)
+      {
+        if (getStyle().containsKey("lineBreakMargin"))
+        {
+          paramLayout = ellipsizeWithMargin(paramFloat);
+          tryFireLineBreakChange(true);
+        }
+        else
+        {
+          paramLayout = innerCreateStaticLayout(i, j, paramFloat);
+        }
+        return paramLayout;
+      }
     }
     else
     {
-      paramLayout = getStyle().get("direction");
-      if (paramLayout != null) {
-        paramLayout.equals("rtl");
-      }
-      if (!this.isRichText) {
-        break label282;
-      }
-      paramLayout = this.mSpanned;
-      localObject = new StaticLayout(paramLayout, this.mTextPaint, (int)Math.ceil(paramFloat), this.mAlignment, 1.0F, this.mLineSpacing, false);
+      tryFireLineBreakChange(false);
     }
-    if ((this.mNumberOfLines != -1) && (this.mNumberOfLines > 0) && (this.mNumberOfLines < ((Layout)localObject).getLineCount()))
+    return paramLayout;
+  }
+  
+  private StaticLayout ellipsizeWithMargin(float paramFloat)
+  {
+    Spanned localSpanned;
+    if (this.isRichText) {
+      localSpanned = this.mSpanned;
+    } else {
+      localSpanned = this.mTextSpan;
+    }
+    float f1 = 0.0F;
+    if (!this.isRichText)
     {
-      int i = ((Layout)localObject).getLineStart(this.mNumberOfLines - 1);
-      int j = ((Layout)localObject).getLineEnd(this.mNumberOfLines - 1);
-      if (i < j)
-      {
-        if (i > 0) {
-          if (this.isRichText)
-          {
-            paramLayout = new SpannableStringBuilder(this.mSpanned.subSequence(0, j));
-            label187:
-            if (!this.isRichText) {
-              break label324;
-            }
-            if ((this.mSpanned.length() <= j) || (this.mTextOverflow == null)) {
-              break label367;
-            }
-            paramLayout = new SpannableStringBuilder(this.mSpanned.subSequence(0, j - 1));
-            paramLayout.append(richEllipsis("…", this.mEllipsisColor));
-          }
-        }
-        label282:
-        label324:
-        label367:
-        for (;;)
-        {
-          return new StaticLayout(paramLayout, this.mTextPaint, (int)Math.ceil(paramFloat), this.mAlignment, 1.0F, this.mLineSpacing, false);
-          paramLayout = this.mTextSpan;
-          break;
-          paramLayout = new SpannableStringBuilder(this.mTextSpan.subSequence(0, i));
-          break label187;
-          paramLayout = new SpannableStringBuilder();
-          break label187;
-          paramLayout.append(truncate(new SpannableStringBuilder(this.mTextSpan.subSequence(i, j)), this.mTextPaint, (int)Math.ceil(paramFloat), this.mTextOverflow));
-        }
-      }
+      Rect localRect = new Rect();
+      this.mTextPaint.getTextBounds("…", 0, 1, localRect);
+      f1 = localRect.width();
     }
-    return localObject;
+    float f2 = ViolaUtils.getFloat(getStyle().get("lineBreakMargin"));
+    return new StaticLayout(new SpannableStringBuilder(TextUtils.ellipsize(localSpanned, this.mTextPaint, this.mNumberOfLines * paramFloat - f1 - f2, TextUtils.TruncateAt.END)), this.mTextPaint, (int)Math.ceil(paramFloat), this.mAlignment, 1.0F, this.mLineSpacing, false);
   }
   
   private SpanText genSpanText(JSONObject paramJSONObject, int paramInt)
   {
-    int i = 0;
     SpanText localSpanText = new SpanText(this.mRef, paramInt);
     try
     {
       if (paramJSONObject.has("type"))
       {
         localSpanText.spanType = paramJSONObject.getString("type");
+        boolean bool = "text".equals(localSpanText.spanType);
+        paramInt = 0;
         Object localObject1;
-        if ("text".equals(localSpanText.spanType))
+        int i;
+        if (bool)
         {
           Object localObject2 = paramJSONObject.getString("value");
           localObject1 = localObject2;
@@ -335,35 +349,34 @@ public class DomObjectText
           localObject2 = ViolaSDKManager.getInstance().getComponentAdapter();
           if (localObject2 != null)
           {
-            paramInt = (int)ViolaUtils.getFaceSize(getStyle().get("emojiSize"), -1.0F);
-            localSpanText.text = ((VComponentAdapter)localObject2).setEmoticonText((CharSequence)localObject1, this.mFontSize, paramInt);
+            i = (int)ViolaUtils.getFaceSize(getStyle().get("emojiSize"), -1.0F);
+            localSpanText.text = ((VComponentAdapter)localObject2).setEmoticonText((CharSequence)localObject1, this.mFontSize, i);
+          }
+          else
+          {
+            localSpanText.text = ((CharSequence)localObject1);
           }
         }
-        for (;;)
+        else if ("image".equals(localSpanText.spanType))
         {
-          if (paramJSONObject.has("style")) {
-            localSpanText.style = new Style(paramJSONObject.getJSONObject("style"));
-          }
-          if (!paramJSONObject.has("events")) {
-            break;
-          }
+          localSpanText.src = paramJSONObject.getString("src");
+        }
+        if (paramJSONObject.has("style")) {
+          localSpanText.style = new Style(paramJSONObject.getJSONObject("style"));
+        }
+        if (paramJSONObject.has("events"))
+        {
           paramJSONObject = paramJSONObject.get("events");
-          if ((paramJSONObject == null) || (!(paramJSONObject instanceof JSONArray))) {
-            break;
-          }
-          paramJSONObject = (JSONArray)paramJSONObject;
-          int j = paramJSONObject.length();
-          paramInt = i;
-          while (paramInt < j)
+          if ((paramJSONObject != null) && ((paramJSONObject instanceof JSONArray)))
           {
-            localObject1 = paramJSONObject.get(paramInt);
-            localSpanText.events.add(localObject1.toString());
-            paramInt += 1;
-          }
-          localSpanText.text = ((CharSequence)localObject1);
-          continue;
-          if ("image".equals(localSpanText.spanType)) {
-            localSpanText.src = paramJSONObject.getString("src");
+            paramJSONObject = (JSONArray)paramJSONObject;
+            i = paramJSONObject.length();
+            while (paramInt < i)
+            {
+              localObject1 = paramJSONObject.get(paramInt);
+              localSpanText.events.add(localObject1.toString());
+              paramInt += 1;
+            }
           }
         }
         return localSpanText;
@@ -377,6 +390,42 @@ public class DomObjectText
   public static Typeface getOrCreateTypeface(String paramString, int paramInt)
   {
     return Typeface.create(paramString, paramInt);
+  }
+  
+  private StaticLayout innerCreateStaticLayout(int paramInt1, int paramInt2, float paramFloat)
+  {
+    SpannableStringBuilder localSpannableStringBuilder1;
+    if (paramInt1 > 0)
+    {
+      if (this.isRichText) {
+        localSpannableStringBuilder1 = new SpannableStringBuilder(this.mSpanned.subSequence(0, paramInt2));
+      } else {
+        localSpannableStringBuilder1 = new SpannableStringBuilder(this.mTextSpan.subSequence(0, paramInt1));
+      }
+    }
+    else {
+      localSpannableStringBuilder1 = new SpannableStringBuilder();
+    }
+    SpannableStringBuilder localSpannableStringBuilder2;
+    if (this.isRichText)
+    {
+      localSpannableStringBuilder2 = localSpannableStringBuilder1;
+      if (this.mSpanned.length() > paramInt2)
+      {
+        localSpannableStringBuilder2 = localSpannableStringBuilder1;
+        if (this.mTextOverflow != null)
+        {
+          localSpannableStringBuilder2 = new SpannableStringBuilder(this.mSpanned.subSequence(0, paramInt2 - 1));
+          localSpannableStringBuilder2.append(richEllipsis("…", this.mEllipsisColor));
+        }
+      }
+    }
+    else
+    {
+      localSpannableStringBuilder1.append(truncate(new SpannableStringBuilder(this.mTextSpan.subSequence(paramInt1, paramInt2)), this.mTextPaint, (int)Math.ceil(paramFloat), TextUtils.TruncateAt.END));
+      localSpannableStringBuilder2 = localSpannableStringBuilder1;
+    }
+    return new StaticLayout(localSpannableStringBuilder2, this.mTextPaint, (int)Math.ceil(paramFloat), this.mAlignment, 1.0F, this.mLineSpacing, false);
   }
   
   private SpannableString richEllipsis(String paramString, int paramInt)
@@ -433,105 +482,129 @@ public class DomObjectText
     return localSpannedString;
   }
   
+  private void tryFireLineBreakChange(boolean paramBoolean)
+  {
+    if (!getEvents().contains("lineBreakChange")) {
+      return;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    int i;
+    if (paramBoolean) {
+      i = 1;
+    }
+    for (;;)
+    {
+      try
+      {
+        localJSONObject.put("isLineBreak", i);
+        fireEvent("lineBreakChange", localJSONObject);
+        return;
+      }
+      catch (JSONException localJSONException)
+      {
+        ViolaLogUtils.e("DomObjectText", localJSONException.getMessage());
+        return;
+      }
+      i = 0;
+    }
+  }
+  
   private void updateSpanOrText()
   {
+    boolean bool = this.mAttributes.containsKey("value");
     int j = 0;
     Object localObject2;
-    if (this.mAttributes.containsKey("value"))
+    if (bool)
     {
       localObject2 = this.mAttributes.get("value");
-      if (localObject2 == null) {
-        break label321;
+      if (localObject2 != null) {
+        if ((localObject2 instanceof JSONArray)) {
+          this.isRichText = true;
+        }
       }
-      if (!(localObject2 instanceof JSONArray)) {
-        break label247;
-      }
-      this.isRichText = true;
     }
+    int i;
     try
     {
       localObject1 = (JSONArray)localObject2;
       localObject2 = new SpannableStringBuilder();
       i = 0;
-    }
-    catch (JSONException localJSONException2)
-    {
-      for (;;)
+      if (i < ((JSONArray)localObject1).length())
       {
-        Object localObject1;
-        int i;
-        SpanText localSpanText;
-        label247:
-        continue;
-        label321:
-        i += 1;
-      }
-    }
-    if (i < ((JSONArray)localObject1).length())
-    {
-      localSpanText = genSpanText(((JSONArray)localObject1).getJSONObject(i), i);
-      if (localSpanText != null)
-      {
+        localSpanText = genSpanText(((JSONArray)localObject1).getJSONObject(i), i);
+        if (localSpanText == null) {
+          break label408;
+        }
         this.mSpanArr.add(localSpanText);
         ((SpannableStringBuilder)localObject2).append(applySpanTextStyle(localSpanText));
+        break label408;
       }
-    }
-    else
-    {
       ((SpannableStringBuilder)localObject2).append(new SpannableString(" "));
       this.mSpanned = ((Spanned)localObject2);
+    }
+    catch (JSONException localJSONException1)
+    {
       for (;;)
       {
-        if (this.mAttributes.containsKey("values"))
-        {
-          localObject1 = this.mAttributes.get("values");
-          if ((localObject1 != null) && ((localObject1 instanceof JSONArray))) {
-            this.isRichText = true;
-          }
-        }
         try
         {
-          localObject1 = (JSONArray)localObject1;
+          SpanText localSpanText;
+          Object localObject1 = (JSONArray)localObject1;
           localObject2 = new SpannableStringBuilder();
           i = j;
-          for (;;)
+          if (i < ((JSONArray)localObject1).length())
           {
-            if (i < ((JSONArray)localObject1).length())
-            {
-              localSpanText = genSpanText(((JSONArray)localObject1).getJSONObject(i), i);
-              if (localSpanText != null)
-              {
-                this.mSpanArr.add(localSpanText);
-                ((SpannableStringBuilder)localObject2).append(applySpanTextStyle(localSpanText));
-              }
-              i += 1;
-              continue;
-              localObject1 = localObject2;
-              if (Build.VERSION.SDK_INT > 18)
-              {
-                localObject1 = localObject2;
-                if (TextDirectionHeuristics.FIRSTSTRONG_RTL.isRtl(localObject2.toString(), 0, localObject2.toString().length())) {
-                  localObject1 = BidiFormatter.getInstance().unicodeWrap(localObject2.toString());
-                }
-              }
-              this.mText = localObject1.toString();
-              this.mTextSpan = createSpanned(localObject1.toString());
-              break;
-              localObject1 = this.mAttributes.get("content");
-              if (localObject1 == null) {
-                break;
-              }
-              this.mText = localObject1.toString();
-              this.mTextSpan = createSpanned(this.mText);
+            localSpanText = genSpanText(((JSONArray)localObject1).getJSONObject(i), i);
+            if (localSpanText == null) {
               break;
             }
+            this.mSpanArr.add(localSpanText);
+            ((SpannableStringBuilder)localObject2).append(applySpanTextStyle(localSpanText));
+            break;
           }
           ((SpannableStringBuilder)localObject2).append(new SpannableString(" "));
           this.mSpanned = ((Spanned)localObject2);
           return;
         }
-        catch (JSONException localJSONException1) {}
+        catch (JSONException localJSONException2)
+        {
+          return;
+        }
+        localJSONException1 = localJSONException1;
       }
+    }
+    break label263;
+    localObject1 = localObject2;
+    if (Build.VERSION.SDK_INT > 18)
+    {
+      localObject1 = localObject2;
+      if (TextDirectionHeuristics.FIRSTSTRONG_RTL.isRtl(localObject2.toString(), 0, localObject2.toString().length())) {
+        localObject1 = BidiFormatter.getInstance().unicodeWrap(localObject2.toString());
+      }
+    }
+    this.mText = localObject1.toString();
+    this.mTextSpan = createSpanned(localObject1.toString());
+    break label263;
+    localObject1 = this.mAttributes.get("content");
+    if (localObject1 != null)
+    {
+      this.mText = localObject1.toString();
+      this.mTextSpan = createSpanned(this.mText);
+    }
+    label263:
+    if (this.mAttributes.containsKey("values"))
+    {
+      localObject1 = this.mAttributes.get("values");
+      if ((localObject1 != null) && ((localObject1 instanceof JSONArray))) {
+        this.isRichText = true;
+      }
+    }
+    for (;;)
+    {
+      label408:
+      i += 1;
+      break;
+      i += 1;
     }
   }
   
@@ -575,8 +648,12 @@ public class DomObjectText
   
   public Object getExtra()
   {
-    if (this.atomicReference.get() == null) {
-      ViolaLogUtils.d("DomObjectText", "getExtra is null and ref:" + getRef());
+    if (this.atomicReference.get() == null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getExtra is null and ref:");
+      localStringBuilder.append(getRef());
+      ViolaLogUtils.d("DomObjectText", localStringBuilder.toString());
     }
     return this.atomicReference.get();
   }
@@ -588,20 +665,27 @@ public class DomObjectText
   
   float getSpanTextWitdh(TextPaint paramTextPaint, float paramFloat, boolean paramBoolean)
   {
-    if (this.mSpanned == null) {
-      if (!paramBoolean) {}
-    }
-    float f;
-    do
+    if (this.mSpanned == null)
     {
-      do
-      {
+      if (paramBoolean) {
         return paramFloat;
-        return 0.0F;
-      } while ((paramBoolean) && (getParent().getAlignItems() != FlexAlign.CENTER));
-      f = Layout.getDesiredWidth(this.mSpanned, paramTextPaint);
-    } while ((!FlexConstants.isUndefined(paramFloat)) && (f >= paramFloat));
-    return f;
+      }
+      return 0.0F;
+    }
+    if ((!paramBoolean) || (getParent().getAlignItems() == FlexAlign.CENTER))
+    {
+      float f2 = Layout.getDesiredWidth(this.mSpanned, paramTextPaint);
+      f1 = f2;
+      if (FlexConstants.isUndefined(paramFloat)) {
+        break label69;
+      }
+      if (f2 < paramFloat) {
+        return f2;
+      }
+    }
+    float f1 = paramFloat;
+    label69:
+    return f1;
   }
   
   public Layout getTextLayout()
@@ -616,38 +700,37 @@ public class DomObjectText
   
   float getTextWidth(TextPaint paramTextPaint, float paramFloat, boolean paramBoolean)
   {
-    float f1;
     if (this.isRichText) {
-      f1 = getSpanTextWitdh(paramTextPaint, paramFloat, paramBoolean);
+      return getSpanTextWitdh(paramTextPaint, paramFloat, paramBoolean);
     }
-    float f2;
-    do
+    CharSequence localCharSequence = this.mText;
+    if (localCharSequence == null)
     {
-      do
-      {
-        do
-        {
-          return f1;
-          if (this.mText != null) {
-            break;
-          }
-          f1 = paramFloat;
-        } while (paramBoolean);
-        return 0.0F;
-        f1 = paramFloat;
-      } while (paramBoolean);
-      f2 = Layout.getDesiredWidth(this.mText, paramTextPaint);
-      if (FlexConstants.isUndefined(paramFloat)) {
-        break;
+      if (paramBoolean) {
+        return paramFloat;
       }
-      f1 = paramFloat;
-    } while (f2 >= paramFloat);
-    return f2;
+      return 0.0F;
+    }
+    if (!paramBoolean)
+    {
+      float f2 = Layout.getDesiredWidth(localCharSequence, paramTextPaint);
+      f1 = f2;
+      if (FlexConstants.isUndefined(paramFloat)) {
+        break label73;
+      }
+      if (f2 < paramFloat) {
+        return f2;
+      }
+    }
+    float f1 = paramFloat;
+    label73:
+    return f1;
   }
   
   public void imgSpanSetTv(VTextView paramVTextView)
   {
-    if ((this.mVImgSpanArr != null) && (this.mVImgSpanArr.size() > 0))
+    List localList = this.mVImgSpanArr;
+    if ((localList != null) && (localList.size() > 0))
     {
       int i = 0;
       while (i < this.mVImgSpanArr.size())
@@ -665,23 +748,24 @@ public class DomObjectText
   
   public void layoutAfter()
   {
-    if (this.hasBeenMeasured) {
+    if (this.hasBeenMeasured)
+    {
       if ((this.layout != null) && (!FloatUtils.floatsEqual(DomUtils.getContentWidth(this), this.previousWidth))) {
         recalculateLayout();
       }
     }
-    for (;;)
+    else
     {
-      this.hasBeenMeasured = false;
-      if ((this.layout != null) && (!this.layout.equals(this.atomicReference.get())) && (Build.VERSION.SDK_INT >= 19) && (Thread.currentThread() != Looper.getMainLooper().getThread())) {
-        warmUpTextLayoutCache(this.layout);
-      }
-      swap();
-      super.layoutAfter();
-      return;
       updateStyleAndText();
       recalculateLayout();
     }
+    this.hasBeenMeasured = false;
+    Layout localLayout = this.layout;
+    if ((localLayout != null) && (!localLayout.equals(this.atomicReference.get())) && (Build.VERSION.SDK_INT >= 19) && (Thread.currentThread() != Looper.getMainLooper().getThread())) {
+      warmUpTextLayoutCache(this.layout);
+    }
+    swap();
+    super.layoutAfter();
   }
   
   public void layoutBefore()
@@ -703,23 +787,22 @@ public class DomObjectText
     float f = DomUtils.getContentWidth(this);
     if (f > 0.0F)
     {
-      if ((this.mText != null) || (this.mSpanned != null))
+      if ((this.mText == null) && (this.mSpanned == null))
       {
-        this.layout = createLayout(f, true, this.layout);
-        this.previousWidth = this.layout.getWidth();
+        this.previousWidth = 0.0F;
+        return;
       }
+      this.layout = createLayout(f, true, this.layout);
+      this.previousWidth = this.layout.getWidth();
     }
-    else {
-      return;
-    }
-    this.previousWidth = 0.0F;
   }
   
   public void swap()
   {
-    if (this.layout != null)
+    Layout localLayout = this.layout;
+    if (localLayout != null)
     {
-      this.atomicReference.set(this.layout);
+      this.atomicReference.set(localLayout);
       this.layout = null;
       this.mTextPaint = new TextPaint(this.mTextPaint);
     }
@@ -728,21 +811,54 @@ public class DomObjectText
   
   public String toString()
   {
-    String str = "ref:" + getRef() + " ; ";
-    if (!TextUtils.isEmpty(this.mText)) {
-      str = str + "mText:" + this.mText + " ; ";
-    }
-    for (;;)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ref:");
+    ((StringBuilder)localObject).append(getRef());
+    ((StringBuilder)localObject).append(" ; ");
+    localObject = ((StringBuilder)localObject).toString();
+    if (!TextUtils.isEmpty(this.mText))
     {
-      str = str + "mSpanned :" + this.mSpanned + "; ";
-      str = str + "isRichText :" + this.isRichText + "; ";
-      return str + "mTextPaint :" + this.mTextPaint + "; ";
-      if (!TextUtils.isEmpty(this.mSpanned)) {
-        str = str + "mSpanned:" + this.mSpanned + "; ";
-      } else {
-        str = str + "mSpanned == null  && mText = null ; ";
-      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("mText:");
+      localStringBuilder.append(this.mText);
+      localStringBuilder.append(" ; ");
+      localObject = localStringBuilder.toString();
     }
+    else if (!TextUtils.isEmpty(this.mSpanned))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("mSpanned:");
+      localStringBuilder.append(this.mSpanned);
+      localStringBuilder.append("; ");
+      localObject = localStringBuilder.toString();
+    }
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("mSpanned == null  && mText = null ; ");
+      localObject = localStringBuilder.toString();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("mSpanned :");
+    localStringBuilder.append(this.mSpanned);
+    localStringBuilder.append("; ");
+    localObject = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("isRichText :");
+    localStringBuilder.append(this.isRichText);
+    localStringBuilder.append("; ");
+    localObject = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("mTextPaint :");
+    localStringBuilder.append(this.mTextPaint);
+    localStringBuilder.append("; ");
+    return localStringBuilder.toString();
   }
   
   public void updateAttr(Map<String, Object> paramMap)
@@ -758,8 +874,9 @@ public class DomObjectText
   
   protected void updateSpannable(Spannable paramSpannable, int paramInt)
   {
-    if (this.mLineHeight != -1) {
-      paramSpannable.setSpan(new VLineHeightSpan(this.mLineHeight), 0, paramSpannable.length(), paramInt);
+    int i = this.mLineHeight;
+    if (i != -1) {
+      paramSpannable.setSpan(new VLineHeightSpan(i), 0, paramSpannable.length(), paramInt);
     }
   }
   
@@ -785,75 +902,64 @@ public class DomObjectText
     }
     paramMap = getStyle();
     int j = getViewPortWidth();
-    int i;
-    boolean bool;
     if (paramMap.containsKey("lines"))
     {
       i = paramMap.getLines();
-      if (i > 0) {
-        this.mNumberOfLines = i;
+      if (i <= 0) {
+        i = -1;
       }
+      this.mNumberOfLines = i;
     }
-    else
+    this.mFontSize = paramMap.getFontSize(getViewPortWidth());
+    if ((paramMap.containsKey("ellipsisColor")) && (!TextUtils.isEmpty(paramMap.getEllipsisColor()))) {
+      this.mEllipsisColor = ColorParseUtils.parseColor(paramMap.getEllipsisColor());
+    }
+    if (paramMap.containsKey("fontWeight")) {
+      this.mFontWeight = paramMap.getFontWeight();
+    }
+    if (paramMap.containsKey("fontStyle")) {
+      this.mFontStyle = paramMap.getFontStyle();
+    }
+    if ((paramMap.containsKey("color")) && (!TextUtils.isEmpty(paramMap.getTextColor())))
     {
-      this.mFontSize = paramMap.getFontSize(getViewPortWidth());
-      if ((paramMap.containsKey("ellipsisColor")) && (!TextUtils.isEmpty(paramMap.getEllipsisColor()))) {
-        this.mEllipsisColor = ColorParseUtils.parseColor(paramMap.getEllipsisColor());
-      }
-      if (paramMap.containsKey("fontWeight")) {
-        this.mFontWeight = paramMap.getFontWeight();
-      }
-      if (paramMap.containsKey("fontStyle")) {
-        this.mFontStyle = paramMap.getFontStyle();
-      }
-      if ((paramMap.containsKey("color")) && (!TextUtils.isEmpty(paramMap.getTextColor())))
-      {
-        this.mColor = ColorParseUtils.parseColor(paramMap.getTextColor());
-        if (this.mColor == -2147483648) {
-          break label326;
-        }
+      this.mColor = ColorParseUtils.parseColor(paramMap.getTextColor());
+      boolean bool;
+      if (this.mColor != -2147483648) {
         bool = true;
-        label176:
-        this.mIsColorSet = bool;
+      } else {
+        bool = false;
       }
-      if (paramMap.containsKey("textDecoration")) {
-        this.mTextDecoration = paramMap.getTextDecoration();
-      }
-      if (paramMap.containsKey("fontFamily")) {
-        this.mFontFamily = paramMap.getFontFamily();
-      }
-      this.mAlignment = paramMap.getTextAlignment();
-      this.mTextOverflow = paramMap.getTextOverflow();
-      this.mTextPaintAlign = paramMap.getTextPaintAlign();
-      i = paramMap.getLineHeight(j);
-      if (i == -1) {
-        break label332;
-      }
+      this.mIsColorSet = bool;
     }
-    label326:
-    label332:
-    for (this.mLineHeight = (i + (int)this.flexStyle.border.get(1) + (int)this.flexStyle.border.get(3));; this.mLineHeight = this.mFontSize)
-    {
-      i = paramMap.getLineSpacing(j);
-      if (i != -1) {
-        this.mLineSpacing = i;
-      }
-      i = paramMap.getLetterSpacing(j);
-      if (i != -1) {
-        this.mLetterSpacing = i;
-      }
-      applyTextPaint();
-      return;
-      i = -1;
-      break;
-      bool = false;
-      break label176;
+    if (paramMap.containsKey("textDecoration")) {
+      this.mTextDecoration = paramMap.getTextDecoration();
     }
+    if (paramMap.containsKey("fontFamily")) {
+      this.mFontFamily = paramMap.getFontFamily();
+    }
+    this.mAlignment = paramMap.getTextAlignment();
+    this.mTextOverflow = paramMap.getTextOverflow();
+    this.mTextPaintAlign = paramMap.getTextPaintAlign();
+    int i = paramMap.getLineHeight(j);
+    if (i != -1) {
+      this.mLineHeight = (i + (int)this.flexStyle.border.get(1) + (int)this.flexStyle.border.get(3));
+    } else {
+      this.mLineHeight = this.mFontSize;
+    }
+    i = paramMap.getLineSpacing(j);
+    if (i != -1) {
+      this.mLineSpacing = i;
+    }
+    i = paramMap.getLetterSpacing(j);
+    if (i != -1) {
+      this.mLetterSpacing = i;
+    }
+    applyTextPaint();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.dom.DomObjectText
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyLikeLimitManager.LikeResultItem;
+import com.tencent.mobileqq.nearby.INearbyLikeLimitManager.LikeResultItem;
 import com.tencent.mobileqq.nearby.business.NearbyCardObserver;
 import com.tencent.mobileqq.profile.vote.VoteHelper;
 import java.util.ArrayList;
@@ -28,49 +28,49 @@ class VisitorsActivity$14
   
   public void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    if (!paramString1.equals(this.a.app.getCurrentAccountUin())) {}
-    do
-    {
+    if (!paramString1.equals(this.a.app.getCurrentAccountUin())) {
       return;
-      if (paramInt2 == 1)
+    }
+    if (paramInt2 == 1)
+    {
+      if (!paramBoolean)
       {
-        if (!paramBoolean)
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.b(paramString2, paramInt1, false);
-          return;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a(paramString2, paramInt1, false);
+        this.a.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.b(paramString2, paramInt1, false);
         return;
       }
-    } while (paramInt2 != 0);
-    this.a.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a(Long.parseLong(paramString2));
+      this.a.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a(paramString2, paramInt1, false);
+      return;
+    }
+    if (paramInt2 == 0) {
+      this.a.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a(Long.parseLong(paramString2));
+    }
   }
   
-  public void a(boolean paramBoolean, ArrayList<NearbyLikeLimitManager.LikeResultItem> paramArrayList, int paramInt)
+  public void a(boolean paramBoolean, ArrayList<Object> paramArrayList, int paramInt)
   {
-    if ((paramBoolean) && (paramArrayList != null)) {}
-    for (;;)
-    {
-      NearbyLikeLimitManager.LikeResultItem localLikeResultItem;
+    if ((paramBoolean) && (paramArrayList != null)) {
       try
       {
         if (paramArrayList.size() > 0)
         {
           paramArrayList = paramArrayList.iterator();
-          if (paramArrayList.hasNext())
+          while (paramArrayList.hasNext())
           {
-            localLikeResultItem = (NearbyLikeLimitManager.LikeResultItem)paramArrayList.next();
-            if (paramInt != 511) {
-              break label121;
+            INearbyLikeLimitManager.LikeResultItem localLikeResultItem = (INearbyLikeLimitManager.LikeResultItem)paramArrayList.next();
+            if (paramInt == 511)
+            {
+              if (localLikeResultItem.jdField_a_of_type_Int == 0)
+              {
+                VoteHelper localVoteHelper = this.a.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper;
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append(localLikeResultItem.jdField_a_of_type_Long);
+                localStringBuilder.append("");
+                localVoteHelper.a(localStringBuilder.toString(), localLikeResultItem.b + localLikeResultItem.c, false);
+              }
             }
-            if (localLikeResultItem.jdField_a_of_type_Int != 0) {
-              continue;
+            else if (localLikeResultItem.jdField_a_of_type_Int == 0) {
+              this.a.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a(localLikeResultItem.jdField_a_of_type_Long);
             }
-            VoteHelper localVoteHelper = this.a.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper;
-            String str = localLikeResultItem.jdField_a_of_type_Long + "";
-            int i = localLikeResultItem.b;
-            localVoteHelper.a(str, localLikeResultItem.c + i, false);
-            continue;
           }
         }
         return;
@@ -79,16 +79,12 @@ class VisitorsActivity$14
       {
         paramArrayList.printStackTrace();
       }
-      label121:
-      if (localLikeResultItem.jdField_a_of_type_Int == 0) {
-        this.a.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a(localLikeResultItem.jdField_a_of_type_Long);
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VisitorsActivity.14
  * JD-Core Version:    0.7.0.1
  */

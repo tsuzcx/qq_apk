@@ -12,18 +12,30 @@ class QCircleReportHelper$1
   
   public void onReceive(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetSessionInfoRsp paramStGetSessionInfoRsp)
   {
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStGetSessionInfoRsp == null))
+    if ((paramBoolean) && (paramLong == 0L) && (paramStGetSessionInfoRsp != null))
     {
-      RFLog.e("QCircleReportHelper", RFLog.USR, "requestReportSession scene:" + this.val$scene + ",retCode:" + paramLong + ",error:" + paramString);
+      QCircleReportHelper.access$000(this.this$0, paramStGetSessionInfoRsp, this.val$scene);
+      i = RFLog.USR;
+      paramBaseRequest = new StringBuilder();
+      paramBaseRequest.append("requestReportSession success!scene:");
+      paramBaseRequest.append(this.val$scene);
+      RFLog.d("QCircleReportHelper", i, paramBaseRequest.toString());
       return;
     }
-    QCircleReportHelper.access$000(this.this$0, paramStGetSessionInfoRsp, this.val$scene);
-    RFLog.d("QCircleReportHelper", RFLog.USR, "requestReportSession success!scene:" + this.val$scene);
+    int i = RFLog.USR;
+    paramBaseRequest = new StringBuilder();
+    paramBaseRequest.append("requestReportSession scene:");
+    paramBaseRequest.append(this.val$scene);
+    paramBaseRequest.append(",retCode:");
+    paramBaseRequest.append(paramLong);
+    paramBaseRequest.append(",error:");
+    paramBaseRequest.append(paramString);
+    RFLog.e("QCircleReportHelper", i, paramBaseRequest.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleReportHelper.1
  * JD-Core Version:    0.7.0.1
  */

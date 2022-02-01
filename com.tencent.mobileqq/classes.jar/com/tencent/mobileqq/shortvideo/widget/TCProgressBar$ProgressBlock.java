@@ -32,49 +32,56 @@ class TCProgressBar$ProgressBlock
       this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a.setColor(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_g_of_type_Int);
       paramCanvas.drawRect(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a);
       this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a.setColor(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.h);
-      super.a(paramCanvas);
-      return;
     }
-    int i;
-    if (this.jdField_f_of_type_Boolean) {
-      i = this.jdField_g_of_type_Int;
-    }
-    for (;;)
+    else
     {
+      int i;
+      if (this.jdField_f_of_type_Boolean)
+      {
+        i = this.jdField_g_of_type_Int;
+      }
+      else
+      {
+        i = this.jdField_g_of_type_Int - this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.l;
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b.left = (this.jdField_f_of_type_Int + i);
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b.right = (this.jdField_f_of_type_Int + this.jdField_g_of_type_Int);
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a.setColor(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.k);
+        paramCanvas.drawRect(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a);
+      }
       boolean bool = a(this.jdField_a_of_type_Int - 5);
-      if (QLog.isColorLevel()) {
-        QLog.d("TCProgressBar", 2, "ProgressBlock:hasMorePart=" + this.jdField_a_of_type_Boolean + " bounds=" + bool);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("ProgressBlock:hasMorePart=");
+        localStringBuilder.append(this.jdField_a_of_type_Boolean);
+        localStringBuilder.append(" bounds=");
+        localStringBuilder.append(bool);
+        QLog.d("TCProgressBar", 2, localStringBuilder.toString());
       }
-      if ((!this.jdField_a_of_type_Boolean) || (!bool)) {
-        break label392;
+      if ((this.jdField_a_of_type_Boolean) && (bool))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b.left = this.jdField_f_of_type_Int;
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b.right = this.jdField_a_of_type_Int;
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a.setColor(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.i);
+        paramCanvas.drawRect(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a);
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b.left = this.jdField_a_of_type_Int;
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b.right = (this.jdField_f_of_type_Int + i);
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a.setColor(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.j);
+        paramCanvas.drawRect(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a);
       }
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b.left = this.jdField_f_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b.right = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a.setColor(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.i);
-      paramCanvas.drawRect(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b.left = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b.right = (i + this.jdField_f_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a.setColor(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.j);
-      paramCanvas.drawRect(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a);
-      break;
-      i = this.jdField_g_of_type_Int - this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.l;
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b.left = (this.jdField_f_of_type_Int + i);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b.right = (this.jdField_f_of_type_Int + this.jdField_g_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a.setColor(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.k);
-      paramCanvas.drawRect(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a);
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b.left = this.jdField_f_of_type_Int;
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b.right = (this.jdField_f_of_type_Int + i);
+        if (this.b) {
+          this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a.setColor(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.j);
+        } else {
+          this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a.setColor(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.i);
+        }
+        paramCanvas.drawRect(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a);
+      }
     }
-    label392:
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b.left = this.jdField_f_of_type_Int;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b.right = (i + this.jdField_f_of_type_Int);
-    if (this.b) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a.setColor(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.j);
-    }
-    for (;;)
-    {
-      paramCanvas.drawRect(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a);
-      break;
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.a.setColor(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.i);
-    }
+    super.a(paramCanvas);
   }
   
   boolean a(int paramInt)
@@ -94,7 +101,7 @@ class TCProgressBar$ProgressBlock
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.widget.TCProgressBar.ProgressBlock
  * JD-Core Version:    0.7.0.1
  */

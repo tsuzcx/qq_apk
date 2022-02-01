@@ -45,97 +45,85 @@ public class ARTransferDoorConfigInfo
       if (paramJSONObject.has("Video360Repeat"))
       {
         localARTransferDoorConfigInfo.jdField_c_of_type_Int = paramJSONObject.optInt("Video360Repeat");
-        if (localARTransferDoorConfigInfo.jdField_c_of_type_Int > 0) {
-          break label440;
+        if (localARTransferDoorConfigInfo.jdField_c_of_type_Int <= 0) {
+          i = 2147483647;
+        } else {
+          i = localARTransferDoorConfigInfo.jdField_c_of_type_Int;
         }
-        i = 2147483647;
-      }
-      for (;;)
-      {
         localARTransferDoorConfigInfo.jdField_c_of_type_Int = i;
-        if (paramJSONObject.has("Video360ConnectType")) {
-          localARTransferDoorConfigInfo.jdField_d_of_type_Int = paramJSONObject.optInt("Video360ConnectType");
+      }
+      if (paramJSONObject.has("Video360ConnectType")) {
+        localARTransferDoorConfigInfo.jdField_d_of_type_Int = paramJSONObject.optInt("Video360ConnectType");
+      }
+      Object localObject1;
+      if (paramJSONObject.has("TraversingResource"))
+      {
+        localObject1 = paramJSONObject.optJSONObject("TraversingResource");
+        if (((JSONObject)localObject1).has("TraversingResourceSize")) {
+          localARTransferDoorConfigInfo.jdField_a_of_type_Long = ((JSONObject)localObject1).optLong("TraversingResourceSize");
         }
-        Object localObject1;
-        if (paramJSONObject.has("TraversingResource"))
-        {
-          localObject1 = paramJSONObject.optJSONObject("TraversingResource");
-          if (((JSONObject)localObject1).has("TraversingResourceSize")) {
-            localARTransferDoorConfigInfo.jdField_a_of_type_Long = ((JSONObject)localObject1).optLong("TraversingResourceSize");
-          }
-          if (((JSONObject)localObject1).has("TraversingResourceUrl")) {
-            localARTransferDoorConfigInfo.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("TraversingResourceUrl");
-          }
-          if (((JSONObject)localObject1).has("TraversingResourceMD5")) {
-            localARTransferDoorConfigInfo.jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).optString("TraversingResourceMD5");
-          }
+        if (((JSONObject)localObject1).has("TraversingResourceUrl")) {
+          localARTransferDoorConfigInfo.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("TraversingResourceUrl");
         }
-        label440:
-        if (paramJSONObject.has("FragmentInfos"))
+        if (((JSONObject)localObject1).has("TraversingResourceMD5")) {
+          localARTransferDoorConfigInfo.jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).optString("TraversingResourceMD5");
+        }
+      }
+      if (paramJSONObject.has("FragmentInfos"))
+      {
+        paramJSONObject = paramJSONObject.optJSONArray("FragmentInfos");
+        int k = paramJSONObject.length();
+        i = 0;
+        while (i < k)
         {
-          paramJSONObject = paramJSONObject.optJSONArray("FragmentInfos");
-          int k = paramJSONObject.length();
-          i = 0;
-          label212:
-          if (i < k)
+          Object localObject2 = paramJSONObject.getJSONObject(i);
+          localObject1 = new ARTransferDoorConfigInfo.FragmentInfo();
+          if (((JSONObject)localObject2).has("name")) {
+            ((ARTransferDoorConfigInfo.FragmentInfo)localObject1).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).getString("name");
+          }
+          if (((JSONObject)localObject2).has("md5")) {
+            ((ARTransferDoorConfigInfo.FragmentInfo)localObject1).jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).getString("md5");
+          }
+          if (((JSONObject)localObject2).has("url")) {
+            ((ARTransferDoorConfigInfo.FragmentInfo)localObject1).jdField_c_of_type_JavaLangString = ((JSONObject)localObject2).getString("url");
+          }
+          int j;
+          if (((JSONObject)localObject2).has("repeat"))
           {
-            Object localObject2 = paramJSONObject.getJSONObject(i);
-            localObject1 = new ARTransferDoorConfigInfo.FragmentInfo();
-            if (((JSONObject)localObject2).has("name")) {
-              ((ARTransferDoorConfigInfo.FragmentInfo)localObject1).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).getString("name");
+            ((ARTransferDoorConfigInfo.FragmentInfo)localObject1).jdField_a_of_type_Int = ((JSONObject)localObject2).optInt("repeat");
+            if (((ARTransferDoorConfigInfo.FragmentInfo)localObject1).jdField_a_of_type_Int <= 0) {
+              j = 2147483647;
+            } else {
+              j = ((ARTransferDoorConfigInfo.FragmentInfo)localObject1).jdField_a_of_type_Int;
             }
-            if (((JSONObject)localObject2).has("md5")) {
-              ((ARTransferDoorConfigInfo.FragmentInfo)localObject1).jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).getString("md5");
-            }
-            if (((JSONObject)localObject2).has("url")) {
-              ((ARTransferDoorConfigInfo.FragmentInfo)localObject1).jdField_c_of_type_JavaLangString = ((JSONObject)localObject2).getString("url");
-            }
-            int j;
-            if (((JSONObject)localObject2).has("repeat"))
+            ((ARTransferDoorConfigInfo.FragmentInfo)localObject1).jdField_a_of_type_Int = j;
+          }
+          if (((JSONObject)localObject2).has("triggerType")) {
+            ((ARTransferDoorConfigInfo.FragmentInfo)localObject1).jdField_b_of_type_Int = ((JSONObject)localObject2).optInt("triggerType");
+          }
+          if (((JSONObject)localObject2).has("trigger"))
+          {
+            localObject2 = ((JSONObject)localObject2).getString("trigger").split("\\|");
+            if (localObject2 != null)
             {
-              ((ARTransferDoorConfigInfo.FragmentInfo)localObject1).jdField_a_of_type_Int = ((JSONObject)localObject2).optInt("repeat");
-              if (((ARTransferDoorConfigInfo.FragmentInfo)localObject1).jdField_a_of_type_Int <= 0)
-              {
-                j = 2147483647;
-                ((ARTransferDoorConfigInfo.FragmentInfo)localObject1).jdField_a_of_type_Int = j;
-              }
-            }
-            else
-            {
-              if (((JSONObject)localObject2).has("triggerType")) {
-                ((ARTransferDoorConfigInfo.FragmentInfo)localObject1).jdField_b_of_type_Int = ((JSONObject)localObject2).optInt("triggerType");
-              }
-              if (((JSONObject)localObject2).has("trigger"))
-              {
-                localObject2 = ((JSONObject)localObject2).getString("trigger").split("\\|");
-                if (localObject2 != null)
+              j = localObject2.length;
+              if (j == 2) {
+                try
                 {
-                  j = localObject2.length;
-                  if (j != 2) {}
+                  ((ARTransferDoorConfigInfo.FragmentInfo)localObject1).jdField_c_of_type_Int = Integer.parseInt(localObject2[0]);
+                  ((ARTransferDoorConfigInfo.FragmentInfo)localObject1).jdField_d_of_type_Int = Integer.parseInt(localObject2[1]);
+                }
+                catch (NumberFormatException localNumberFormatException)
+                {
+                  ((ARTransferDoorConfigInfo.FragmentInfo)localObject1).jdField_c_of_type_Int = 0;
+                  ((ARTransferDoorConfigInfo.FragmentInfo)localObject1).jdField_d_of_type_Int = 0;
+                  QLog.d("ARTransferDoorConfigInfo", 1, String.format("ARTransferDoorConfigInfo parseJson, numberException\n%s", new Object[] { localNumberFormatException }));
                 }
               }
             }
-            try
-            {
-              ((ARTransferDoorConfigInfo.FragmentInfo)localObject1).jdField_c_of_type_Int = Integer.parseInt(localObject2[0]);
-              ((ARTransferDoorConfigInfo.FragmentInfo)localObject1).jdField_d_of_type_Int = Integer.parseInt(localObject2[1]);
-              localARTransferDoorConfigInfo.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
-              i += 1;
-              break label212;
-              i = localARTransferDoorConfigInfo.jdField_c_of_type_Int;
-              continue;
-              j = ((ARTransferDoorConfigInfo.FragmentInfo)localObject1).jdField_a_of_type_Int;
-            }
-            catch (NumberFormatException localNumberFormatException)
-            {
-              for (;;)
-              {
-                ((ARTransferDoorConfigInfo.FragmentInfo)localObject1).jdField_c_of_type_Int = 0;
-                ((ARTransferDoorConfigInfo.FragmentInfo)localObject1).jdField_d_of_type_Int = 0;
-                QLog.d("ARTransferDoorConfigInfo", 1, String.format("ARTransferDoorConfigInfo parseJson, numberException\n%s", new Object[] { localNumberFormatException }));
-              }
-            }
           }
+          localARTransferDoorConfigInfo.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+          i += 1;
         }
       }
       return localARTransferDoorConfigInfo;
@@ -148,7 +136,7 @@ public class ARTransferDoorConfigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorConfigInfo
  * JD-Core Version:    0.7.0.1
  */

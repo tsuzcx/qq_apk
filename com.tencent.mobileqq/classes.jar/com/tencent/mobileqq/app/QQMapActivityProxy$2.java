@@ -13,19 +13,25 @@ class QQMapActivityProxy$2
   
   protected void a(boolean paramBoolean, byte[] paramArrayOfByte)
   {
-    String str2 = "";
-    String str1 = str2;
-    if (paramBoolean)
+    if ((paramBoolean) && (paramArrayOfByte != null))
     {
-      str1 = str2;
-      if (paramArrayOfByte != null)
-      {
-        str1 = new String(paramArrayOfByte);
-        QQMapActivityProxy.a(this.a).sendBroadcast(new Intent().setAction("com.tencent.mobileqq.onGetStreetViewUrl").putExtra("streetViewUrl", str1));
-      }
+      paramArrayOfByte = new String(paramArrayOfByte);
+      QQMapActivityProxy.a(this.a).sendBroadcast(new Intent().setAction("com.tencent.mobileqq.onGetStreetViewUrl").putExtra("streetViewUrl", paramArrayOfByte));
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQMapActivityProxy", 2, "mLbsObserver, onGetStreetViewUrl: isSuccess=" + paramBoolean + ", hashCode=" + hashCode() + ",url=" + str1);
+    else
+    {
+      paramArrayOfByte = "";
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mLbsObserver, onGetStreetViewUrl: isSuccess=");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(", hashCode=");
+      localStringBuilder.append(hashCode());
+      localStringBuilder.append(",url=");
+      localStringBuilder.append(paramArrayOfByte);
+      QLog.d("QQMapActivityProxy", 2, localStringBuilder.toString());
     }
   }
   
@@ -33,18 +39,21 @@ class QQMapActivityProxy$2
   {
     if (QLog.isColorLevel())
     {
-      localObject = new StringBuilder().append("mLbsObserver, onGetLbsShareSearch: isSuccess=").append(paramBoolean).append(", isDataNull=");
-      if (paramArrayOfObject != null) {
-        break label65;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("mLbsObserver, onGetLbsShareSearch: isSuccess=");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(", isDataNull=");
+      if (paramArrayOfObject == null) {
+        paramBoolean = true;
+      } else {
+        paramBoolean = false;
       }
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(", hashCode=");
+      ((StringBuilder)localObject).append(hashCode());
+      QLog.d("QQMapActivityProxy", 2, ((StringBuilder)localObject).toString());
     }
-    label65:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      QLog.d("QQMapActivityProxy", 2, paramBoolean + ", hashCode=" + hashCode());
-      if (paramArrayOfObject != null) {
-        break;
-      }
+    if (paramArrayOfObject == null) {
       return;
     }
     Object localObject = (ToServiceMsg)paramArrayOfObject[0];
@@ -60,18 +69,21 @@ class QQMapActivityProxy$2
   {
     if (QLog.isColorLevel())
     {
-      localObject = new StringBuilder().append("mLbsObserver, onGetLbsShareShop: isSuccess=").append(paramBoolean).append(", isDataNull=");
-      if (paramArrayOfObject != null) {
-        break label65;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("mLbsObserver, onGetLbsShareShop: isSuccess=");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(", isDataNull=");
+      if (paramArrayOfObject == null) {
+        paramBoolean = true;
+      } else {
+        paramBoolean = false;
       }
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(", hashCode=");
+      ((StringBuilder)localObject).append(hashCode());
+      QLog.d("QQMapActivityProxy", 2, ((StringBuilder)localObject).toString());
     }
-    label65:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      QLog.d("QQMapActivityProxy", 2, paramBoolean + ", hashCode=" + hashCode());
-      if (paramArrayOfObject != null) {
-        break;
-      }
+    if (paramArrayOfObject == null) {
       return;
     }
     Object localObject = new Intent();
@@ -85,18 +97,21 @@ class QQMapActivityProxy$2
   {
     if (QLog.isColorLevel())
     {
-      localObject = new StringBuilder().append("mLbsObserver, onGetShareShopDetail: isSuccess=").append(paramBoolean).append(", isDataNull=");
-      if (paramArrayOfObject != null) {
-        break label65;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("mLbsObserver, onGetShareShopDetail: isSuccess=");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(", isDataNull=");
+      if (paramArrayOfObject == null) {
+        paramBoolean = true;
+      } else {
+        paramBoolean = false;
       }
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(", hashCode=");
+      ((StringBuilder)localObject).append(hashCode());
+      QLog.d("QQMapActivityProxy", 2, ((StringBuilder)localObject).toString());
     }
-    label65:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      QLog.d("QQMapActivityProxy", 2, paramBoolean + ", hashCode=" + hashCode());
-      if (paramArrayOfObject != null) {
-        break;
-      }
+    if (paramArrayOfObject == null) {
       return;
     }
     Object localObject = new Intent();
@@ -108,7 +123,7 @@ class QQMapActivityProxy$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQMapActivityProxy.2
  * JD-Core Version:    0.7.0.1
  */

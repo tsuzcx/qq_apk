@@ -17,12 +17,15 @@ public class DingdongSoundUtil
       }
       return "";
     }
-    return localFile.getParent() + "/dingdong/sound_early/";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localFile.getParent());
+    localStringBuilder.append("/dingdong/sound_early/");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.DingdongSoundUtil
  * JD-Core Version:    0.7.0.1
  */

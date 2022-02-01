@@ -63,7 +63,18 @@ public final class CacheSpan
   
   public static File getCacheFileName(File paramFile, String paramString, long paramLong1, long paramLong2, FileType paramFileType, long paramLong3)
   {
-    return new File(paramFile, paramString + "." + paramLong1 + "." + paramLong2 + "." + paramFileType.encode() + "." + paramLong3 + ".v6.dat");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramLong2);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramFileType.encode());
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramLong3);
+    localStringBuilder.append(".v6.dat");
+    return new File(paramFile, localStringBuilder.toString());
   }
   
   public int compareTo(CacheSpan paramCacheSpan)
@@ -96,7 +107,7 @@ public final class CacheSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.cache.CacheSpan
  * JD-Core Version:    0.7.0.1
  */

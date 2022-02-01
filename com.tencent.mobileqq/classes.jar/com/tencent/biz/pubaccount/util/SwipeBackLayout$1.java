@@ -12,29 +12,29 @@ class SwipeBackLayout$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (paramMessage.what != 1)
     {
-    default: 
       super.handleMessage(paramMessage);
+      return;
     }
-    do
+    if (!SwipeBackLayout.a(this.a))
     {
-      do
-      {
-        return;
-      } while (SwipeBackLayout.a(this.a));
       SwipeBackLayout.a(this.a, true);
-    } while (!(this.a.a instanceof Activity));
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_SwipeBackLayout", 2, "SwipeBackLayout finish()");
+      if ((this.a.a instanceof Activity))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("WebLog_SwipeBackLayout", 2, "SwipeBackLayout finish()");
+        }
+        paramMessage = this.a;
+        paramMessage.c = true;
+        ((Activity)paramMessage.a).finish();
+      }
     }
-    this.a.c = true;
-    ((Activity)this.a.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.SwipeBackLayout.1
  * JD-Core Version:    0.7.0.1
  */

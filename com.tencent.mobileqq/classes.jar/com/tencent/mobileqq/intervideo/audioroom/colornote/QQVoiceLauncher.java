@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.intervideo.audioroom.colornote;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Base64;
 import com.tencent.TMG.utils.QLog;
@@ -14,6 +15,11 @@ import com.tencent.mobileqq.utils.JumpParser;
 public class QQVoiceLauncher
   implements ILauncher
 {
+  public int getType()
+  {
+    return 17301504;
+  }
+  
   public void launch(Context paramContext, ColorNote paramColorNote)
   {
     String str = paramColorNote.getSubType();
@@ -37,10 +43,12 @@ public class QQVoiceLauncher
     }
     QLog.e("QQVoiceLauncher", 1, "QQAppInterface is null!");
   }
+  
+  public void onCreate(Context paramContext, ColorNote paramColorNote, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.audioroom.colornote.QQVoiceLauncher
  * JD-Core Version:    0.7.0.1
  */

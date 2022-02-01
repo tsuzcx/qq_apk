@@ -15,22 +15,26 @@ public class RecentTabHaloPresenter$HaloResponseReceiver
   
   public void a(@NonNull RecentTabHaloPresenter paramRecentTabHaloPresenter, @NonNull RecentTabHaloBatchLoader.RecentTabHaloEvent paramRecentTabHaloEvent)
   {
-    if (paramRecentTabHaloPresenter.a()) {}
-    do
-    {
+    if (paramRecentTabHaloPresenter.a()) {
       return;
-      if (paramRecentTabHaloEvent.jdField_a_of_type_Boolean)
-      {
-        RecentTabHaloPresenter.a(paramRecentTabHaloPresenter);
-        return;
-      }
-      if ((paramRecentTabHaloEvent.a() != null) && (!paramRecentTabHaloEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("HaloResponseReceiver", 2, "onEvent: failed. Message: exception: " + paramRecentTabHaloEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
-    return;
-    RecentTabHaloPresenter.a(paramRecentTabHaloPresenter);
+    }
+    if (paramRecentTabHaloEvent.jdField_a_of_type_Boolean)
+    {
+      RecentTabHaloPresenter.a(paramRecentTabHaloPresenter);
+      return;
+    }
+    if ((paramRecentTabHaloEvent.a() != null) && (!paramRecentTabHaloEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()))
+    {
+      RecentTabHaloPresenter.a(paramRecentTabHaloPresenter);
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramRecentTabHaloPresenter = new StringBuilder();
+      paramRecentTabHaloPresenter.append("onEvent: failed. Message: exception: ");
+      paramRecentTabHaloPresenter.append(paramRecentTabHaloEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+      QLog.e("HaloResponseReceiver", 2, paramRecentTabHaloPresenter.toString());
+    }
   }
   
   public Class acceptEventClass()
@@ -40,7 +44,7 @@ public class RecentTabHaloPresenter$HaloResponseReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter.HaloResponseReceiver
  * JD-Core Version:    0.7.0.1
  */

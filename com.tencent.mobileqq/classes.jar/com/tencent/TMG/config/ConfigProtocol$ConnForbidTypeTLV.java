@@ -17,11 +17,12 @@ public class ConfigProtocol$ConnForbidTypeTLV
   
   public boolean Unpack(ByteBuffer paramByteBuffer)
   {
-    if ((paramByteBuffer == null) || (paramByteBuffer.length() < 2)) {
-      return false;
+    if ((paramByteBuffer != null) && (paramByteBuffer.length() >= 2))
+    {
+      this.m_ConnType = paramByteBuffer.ReadUInt16();
+      return true;
     }
-    this.m_ConnType = paramByteBuffer.ReadUInt16();
-    return true;
+    return false;
   }
   
   public short getConnForbidType()

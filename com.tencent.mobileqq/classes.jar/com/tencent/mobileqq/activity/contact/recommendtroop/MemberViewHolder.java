@@ -2,7 +2,8 @@ package com.tencent.mobileqq.activity.contact.recommendtroop;
 
 import android.content.Context;
 import android.view.View;
-import com.tencent.mobileqq.activity.contact.recommendtroop.base.ViewHolder;
+import com.tencent.mobileqq.troop.adapter.base.ViewHolder;
+import com.tencent.mobileqq.troop.recommend.data.RecommendMember;
 
 public class MemberViewHolder
   extends ViewHolder
@@ -16,7 +17,7 @@ public class MemberViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.recommendtroop.MemberViewHolder
  * JD-Core Version:    0.7.0.1
  */

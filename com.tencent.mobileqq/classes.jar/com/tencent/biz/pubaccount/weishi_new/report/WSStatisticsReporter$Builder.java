@@ -10,7 +10,6 @@ public class WSStatisticsReporter$Builder
   private String eventName = "";
   private Map<String, String> extParams = new HashMap();
   private boolean flush;
-  private boolean isImmediatelyUpload;
   private boolean isSendServer = true;
   private Map<String, String> params = new HashMap();
   
@@ -60,8 +59,9 @@ public class WSStatisticsReporter$Builder
   
   public String getSopName()
   {
-    if (this.baseCollector != null) {
-      return this.baseCollector.getSopName();
+    WSStatisticsBaseCollector localWSStatisticsBaseCollector = this.baseCollector;
+    if (localWSStatisticsBaseCollector != null) {
+      return localWSStatisticsBaseCollector.getSopName();
     }
     return "";
   }
@@ -72,24 +72,20 @@ public class WSStatisticsReporter$Builder
     return this;
   }
   
-  public Builder setImmediatelyUpload(boolean paramBoolean)
-  {
-    this.isImmediatelyUpload = paramBoolean;
-    return this;
-  }
-  
   public Builder setOperationId(String paramString)
   {
-    if (this.baseCollector != null) {
-      this.baseCollector.setOperationId(paramString);
+    WSStatisticsBaseCollector localWSStatisticsBaseCollector = this.baseCollector;
+    if (localWSStatisticsBaseCollector != null) {
+      localWSStatisticsBaseCollector.setOperationId(paramString);
     }
     return this;
   }
   
   public Builder setPushId(String paramString)
   {
-    if (this.baseCollector != null) {
-      this.baseCollector.setPushId(paramString);
+    WSStatisticsBaseCollector localWSStatisticsBaseCollector = this.baseCollector;
+    if (localWSStatisticsBaseCollector != null) {
+      localWSStatisticsBaseCollector.setPushId(paramString);
     }
     return this;
   }
@@ -102,8 +98,9 @@ public class WSStatisticsReporter$Builder
   
   public Builder setSopName(String paramString)
   {
-    if (this.baseCollector != null) {
-      this.baseCollector.setSopName(paramString);
+    WSStatisticsBaseCollector localWSStatisticsBaseCollector = this.baseCollector;
+    if (localWSStatisticsBaseCollector != null) {
+      localWSStatisticsBaseCollector.setSopName(paramString);
     }
     return this;
   }
@@ -118,15 +115,16 @@ public class WSStatisticsReporter$Builder
   
   public Builder setTestId(String paramString)
   {
-    if (this.baseCollector != null) {
-      this.baseCollector.setTestId(paramString);
+    WSStatisticsBaseCollector localWSStatisticsBaseCollector = this.baseCollector;
+    if (localWSStatisticsBaseCollector != null) {
+      localWSStatisticsBaseCollector.setTestId(paramString);
     }
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter.Builder
  * JD-Core Version:    0.7.0.1
  */

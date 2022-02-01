@@ -20,20 +20,25 @@ public class ImageOffsetGuideFilter
   
   private void updatePosition()
   {
-    float f1 = this.xOffset - 0.16F;
-    float f2 = this.xOffset + 0.16F;
+    float f2 = this.xOffset;
+    float f1 = f2 - 0.16F;
+    f2 += 0.16F;
     setPositions(new float[] { f1, -1.0F, f1, 1.0F, f2, 1.0F, f2, -1.0F });
   }
   
   public void RenderProcess(int paramInt1, int paramInt2, int paramInt3, int paramInt4, double paramDouble, Frame paramFrame)
   {
-    if ((this.xOffset >= 0.0F) || (this.xOffset <= -1.0F)) {
-      return;
+    float f = this.xOffset;
+    if (f < 0.0F)
+    {
+      if (f <= -1.0F) {
+        return;
+      }
+      updatePosition();
+      GlUtil.setBlendMode(true);
+      super.RenderProcess(paramInt1, paramInt2, paramInt3, paramInt4, paramDouble, paramFrame);
+      GlUtil.setBlendMode(false);
     }
-    updatePosition();
-    GlUtil.setBlendMode(true);
-    super.RenderProcess(paramInt1, paramInt2, paramInt3, paramInt4, paramDouble, paramFrame);
-    GlUtil.setBlendMode(false);
   }
   
   public void initFrame(Frame paramFrame)
@@ -51,7 +56,7 @@ public class ImageOffsetGuideFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.ImageOffsetGuideFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -20,10 +20,16 @@ public abstract class AbType
   public boolean canReportWith(int paramInt)
   {
     Long localLong = (Long)this.timeOutMap.get(Integer.valueOf(paramInt));
-    if (localLong != null) {
-      return System.currentTimeMillis() - this.createTime < localLong.longValue();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localLong != null)
+    {
+      bool1 = bool2;
+      if (System.currentTimeMillis() - this.createTime < localLong.longValue()) {
+        bool1 = true;
+      }
     }
-    return false;
+    return bool1;
   }
   
   @Nullable
@@ -61,7 +67,7 @@ public abstract class AbType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.base.reporter.ab.AbType
  * JD-Core Version:    0.7.0.1
  */

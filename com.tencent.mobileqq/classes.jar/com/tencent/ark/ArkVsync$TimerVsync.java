@@ -11,8 +11,9 @@ final class ArkVsync$TimerVsync
   
   public void run()
   {
-    if (this.mVsync != null) {
-      this.mVsync.frameCallback();
+    ArkVsync localArkVsync = this.mVsync;
+    if (localArkVsync != null) {
+      localArkVsync.frameCallback();
     }
   }
   
@@ -28,9 +29,10 @@ final class ArkVsync$TimerVsync
   
   public void stop()
   {
-    if (this.mTimer != null)
+    Timer localTimer = this.mTimer;
+    if (localTimer != null)
     {
-      this.mTimer.cancel();
+      localTimer.cancel();
       this.mTimer.purge();
       this.mTimer = null;
     }

@@ -16,8 +16,12 @@ class ExploreByTouchHelper$MyNodeProvider
   
   public AccessibilityNodeInfoCompat findFocus(int paramInt)
   {
-    if (paramInt == 2) {}
-    for (paramInt = this.this$0.mAccessibilityFocusedVirtualViewId; paramInt == -2147483648; paramInt = this.this$0.mKeyboardFocusedVirtualViewId) {
+    if (paramInt == 2) {
+      paramInt = this.this$0.mAccessibilityFocusedVirtualViewId;
+    } else {
+      paramInt = this.this$0.mKeyboardFocusedVirtualViewId;
+    }
+    if (paramInt == -2147483648) {
       return null;
     }
     return createAccessibilityNodeInfo(paramInt);
@@ -30,7 +34,7 @@ class ExploreByTouchHelper$MyNodeProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.customview.widget.ExploreByTouchHelper.MyNodeProvider
  * JD-Core Version:    0.7.0.1
  */

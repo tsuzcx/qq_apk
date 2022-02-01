@@ -31,39 +31,41 @@ public class DelayNotifyRunnable
   
   public void a(Object paramObject)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
-    {
+    if (this.jdField_a_of_type_Boolean) {
       return;
-      this.jdField_a_of_type_Boolean = true;
-    } while (this.jdField_a_of_type_Int != 0);
-    Object localObject = (Object[])this.jdField_a_of_type_JavaLangObject;
-    String str = (String)localObject[0];
-    int i = ((Integer)localObject[1]).intValue();
-    localObject = (String)localObject[2];
-    paramObject = (String)paramObject;
-    this.jdField_a_of_type_ComTencentAvgameGamelogicDelayNotifyRunnable$IOnDelayNotifyDoneListener.a(this.jdField_a_of_type_Int, new Object[] { paramObject, Integer.valueOf(i), localObject });
+    }
+    this.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      Object localObject = (Object[])this.jdField_a_of_type_JavaLangObject;
+      String str = (String)localObject[0];
+      int i = ((Integer)localObject[1]).intValue();
+      localObject = (String)localObject[2];
+      paramObject = (String)paramObject;
+      this.jdField_a_of_type_ComTencentAvgameGamelogicDelayNotifyRunnable$IOnDelayNotifyDoneListener.a(this.jdField_a_of_type_Int, new Object[] { paramObject, Integer.valueOf(i), localObject });
+    }
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
-    {
+    if (this.jdField_a_of_type_Boolean) {
       return;
-      this.jdField_a_of_type_Boolean = true;
-    } while (this.jdField_a_of_type_Int != 0);
-    Object localObject = (Object[])this.jdField_a_of_type_JavaLangObject;
-    String str = (String)localObject[0];
-    int i = ((Integer)localObject[1]).intValue();
-    localObject = (String)localObject[2];
-    str = GameEngine.a().a().a().getNick(str);
-    this.jdField_a_of_type_ComTencentAvgameGamelogicDelayNotifyRunnable$IOnDelayNotifyDoneListener.a(this.jdField_a_of_type_Int, new Object[] { str, Integer.valueOf(i), localObject });
+    }
+    this.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      Object localObject = (Object[])this.jdField_a_of_type_JavaLangObject;
+      String str = (String)localObject[0];
+      int i = ((Integer)localObject[1]).intValue();
+      localObject = (String)localObject[2];
+      str = IGameEngine.a().a().a().getNick(str);
+      this.jdField_a_of_type_ComTencentAvgameGamelogicDelayNotifyRunnable$IOnDelayNotifyDoneListener.a(this.jdField_a_of_type_Int, new Object[] { str, Integer.valueOf(i), localObject });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.DelayNotifyRunnable
  * JD-Core Version:    0.7.0.1
  */

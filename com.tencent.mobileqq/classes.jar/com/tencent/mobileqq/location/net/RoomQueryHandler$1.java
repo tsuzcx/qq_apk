@@ -17,12 +17,12 @@ class RoomQueryHandler$1
       return;
     }
     RoomQueryHandler.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-    RoomQueryHandler.a(this.this$0).postDelayed(this, RoomQueryHandler.a());
+    RoomQueryHandler.a(this.this$0).postDelayed(this, 5000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.net.RoomQueryHandler.1
  * JD-Core Version:    0.7.0.1
  */

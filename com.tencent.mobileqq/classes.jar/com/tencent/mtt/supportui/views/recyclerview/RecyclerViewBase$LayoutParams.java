@@ -40,39 +40,43 @@ public class RecyclerViewBase$LayoutParams
   
   public int getViewPosition()
   {
-    if (this.mViewHolder == null) {
+    RecyclerViewBase.ViewHolder localViewHolder = this.mViewHolder;
+    if (localViewHolder == null) {
       return 0;
     }
-    return this.mViewHolder.mPosition;
+    return localViewHolder.mPosition;
   }
   
   public boolean isItemRemoved()
   {
-    if (this.mViewHolder == null) {
+    RecyclerViewBase.ViewHolder localViewHolder = this.mViewHolder;
+    if (localViewHolder == null) {
       return true;
     }
-    return this.mViewHolder.isRemoved();
+    return localViewHolder.isRemoved();
   }
   
   public boolean isViewInvalid()
   {
-    if (this.mViewHolder == null) {
+    RecyclerViewBase.ViewHolder localViewHolder = this.mViewHolder;
+    if (localViewHolder == null) {
       return false;
     }
-    return this.mViewHolder.isInvalid();
+    return localViewHolder.isInvalid();
   }
   
   public boolean viewNeedsUpdate()
   {
-    if (this.mViewHolder == null) {
+    RecyclerViewBase.ViewHolder localViewHolder = this.mViewHolder;
+    if (localViewHolder == null) {
       return false;
     }
-    return this.mViewHolder.needsUpdate();
+    return localViewHolder.needsUpdate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.views.recyclerview.RecyclerViewBase.LayoutParams
  * JD-Core Version:    0.7.0.1
  */

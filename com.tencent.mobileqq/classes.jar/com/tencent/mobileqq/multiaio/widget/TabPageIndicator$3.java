@@ -11,8 +11,13 @@ class TabPageIndicator$3
   
   public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TabPageIndicator", 2, "onSingleTapConfirmed() called with: e = [" + paramMotionEvent + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSingleTapConfirmed() called with: e = [");
+      localStringBuilder.append(paramMotionEvent);
+      localStringBuilder.append("]");
+      QLog.d("TabPageIndicator", 2, localStringBuilder.toString());
     }
     if (TabPageIndicator.a(this.a) != null) {
       this.a.performClick();
@@ -22,7 +27,7 @@ class TabPageIndicator$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.widget.TabPageIndicator.3
  * JD-Core Version:    0.7.0.1
  */

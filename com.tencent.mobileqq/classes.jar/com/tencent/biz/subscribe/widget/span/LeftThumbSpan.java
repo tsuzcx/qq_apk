@@ -33,21 +33,24 @@ public class LeftThumbSpan
   
   public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
+    float f1 = paramFloat;
     paramCanvas.save();
     paramCanvas.translate(this.d, 0.0F);
     paramPaint.setAntiAlias(true);
-    paramInt5 = (int)(paramInt4 + paramPaint.ascent());
-    int k = (int)(paramInt4 + paramPaint.descent());
-    Object localObject;
+    float f2 = paramInt4;
+    paramInt4 = (int)(paramPaint.ascent() + f2);
+    paramInt5 = (int)(paramPaint.descent() + f2);
+    int k;
     if (this.jdField_a_of_type_AndroidGraphicsShader != null)
     {
-      localObject = new RectF((int)paramFloat + 1, paramInt5, (int)paramFloat + this.jdField_a_of_type_Int - this.e, k);
+      k = (int)f1;
+      localObject = new RectF(k + 1, paramInt4, k + this.jdField_a_of_type_Int - this.e, paramInt5);
       Paint.Style localStyle = paramPaint.getStyle();
       Shader localShader = paramPaint.getShader();
-      int m = paramPaint.getColor();
+      k = paramPaint.getColor();
       paramPaint.setColor(Color.parseColor("#7f000000"));
       paramCanvas.drawRoundRect((RectF)localObject, 6.0F, 6.0F, paramPaint);
-      paramPaint.setColor(m);
+      paramPaint.setColor(k);
       paramPaint.setStyle(Paint.Style.STROKE);
       paramPaint.setStrokeWidth(2.0F);
       paramPaint.setShader(this.jdField_a_of_type_AndroidGraphicsShader);
@@ -56,68 +59,74 @@ public class LeftThumbSpan
       paramPaint.setStyle(localStyle);
     }
     paramCanvas.save();
-    paramCanvas.translate(this.f, this.g + paramInt5 - paramInt3);
-    float f1 = paramInt4;
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    paramCanvas.translate(this.f, this.g + paramInt4 - paramInt3);
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    paramFloat = f1;
+    if (localObject != null)
     {
-      localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getBounds();
+      localObject = ((Drawable)localObject).getBounds();
       paramInt3 = ((Rect)localObject).width();
-      paramInt4 = ((Rect)localObject).height();
-      ((Rect)localObject).left = ((int)paramFloat);
+      k = ((Rect)localObject).height();
+      ((Rect)localObject).left = ((int)f1);
       ((Rect)localObject).right = (((Rect)localObject).left + paramInt3);
-      ((Rect)localObject).top = ((k - paramInt5 - this.g - this.i) / 2 - paramInt4 / 2);
-      ((Rect)localObject).bottom = (paramInt4 + ((Rect)localObject).top);
+      ((Rect)localObject).top = ((paramInt5 - paramInt4 - this.g - this.i) / 2 - k / 2);
+      ((Rect)localObject).bottom = (((Rect)localObject).top + k);
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      paramFloat += this.j + paramInt3;
+      paramFloat = f1 + (this.j + paramInt3);
     }
-    for (;;)
+    float f3 = paramPaint.getTextSize();
+    paramInt3 = this.c;
+    if (paramInt3 != -1)
     {
-      float f2 = paramPaint.getTextSize();
-      if (this.c != -1)
-      {
-        paramPaint.setTextSize(this.c);
-        f1 = (k - paramInt5 - this.g - this.i) / 2 + this.c / 2 - this.c * 11 / 100;
-      }
-      paramInt3 = paramPaint.getColor();
-      if (this.b != 2147483647) {
-        paramPaint.setColor(this.b);
-      }
-      boolean bool = paramPaint.isFakeBoldText();
-      paramPaint.setFakeBoldText(this.jdField_a_of_type_Boolean);
-      paramCanvas.drawText(paramCharSequence, paramInt1, paramInt2, paramFloat, f1, paramPaint);
-      paramCanvas.restore();
-      paramPaint.setColor(paramInt3);
-      paramPaint.setTextSize(f2);
-      paramPaint.setFakeBoldText(bool);
-      paramCanvas.restore();
-      return;
+      paramPaint.setTextSize(paramInt3);
+      paramInt3 = (paramInt5 - paramInt4 - this.g - this.i) / 2;
+      paramInt4 = this.c;
+      f1 = paramInt3 + paramInt4 / 2 - paramInt4 * 11 / 100;
     }
+    else
+    {
+      f1 = f2;
+    }
+    paramInt3 = paramPaint.getColor();
+    paramInt4 = this.b;
+    if (paramInt4 != 2147483647) {
+      paramPaint.setColor(paramInt4);
+    }
+    boolean bool = paramPaint.isFakeBoldText();
+    paramPaint.setFakeBoldText(this.jdField_a_of_type_Boolean);
+    paramCanvas.drawText(paramCharSequence, paramInt1, paramInt2, paramFloat, f1, paramPaint);
+    paramCanvas.restore();
+    paramPaint.setColor(paramInt3);
+    paramPaint.setTextSize(f3);
+    paramPaint.setFakeBoldText(bool);
+    paramCanvas.restore();
   }
   
   public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
   {
     float f1 = paramPaint.getTextSize();
-    if (this.c != -1) {
-      paramPaint.setTextSize(this.c);
+    int k = this.c;
+    if (k != -1) {
+      paramPaint.setTextSize(k);
     }
-    paramInt1 = (int)paramPaint.measureText(paramCharSequence, paramInt1, paramInt2) + this.d + this.f + this.h + this.e;
+    paramInt2 = (int)paramPaint.measureText(paramCharSequence, paramInt1, paramInt2) + this.d + this.f + this.h + this.e;
     paramPaint.setTextSize(f1);
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      paramInt1 += this.j + this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getBounds().width();
+    paramPaint = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    paramInt1 = paramInt2;
+    if (paramPaint != null) {
+      paramInt1 = paramInt2 + (this.j + paramPaint.getBounds().width());
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = paramInt1;
-      if (this.jdField_a_of_type_ArrayOfInt != null) {
-        this.jdField_a_of_type_AndroidGraphicsShader = new LinearGradient(0.0F, 0.0F, this.jdField_a_of_type_Int, 0.0F, this.jdField_a_of_type_ArrayOfInt, null, Shader.TileMode.CLAMP);
-      }
-      return paramInt1;
+    this.jdField_a_of_type_Int = paramInt1;
+    paramPaint = this.jdField_a_of_type_ArrayOfInt;
+    if (paramPaint != null) {
+      this.jdField_a_of_type_AndroidGraphicsShader = new LinearGradient(0.0F, 0.0F, this.jdField_a_of_type_Int, 0.0F, paramPaint, null, Shader.TileMode.CLAMP);
     }
+    return paramInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.span.LeftThumbSpan
  * JD-Core Version:    0.7.0.1
  */

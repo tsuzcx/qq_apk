@@ -9,16 +9,16 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.mobileqq.util.DisplayUtil;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.widget.QFormSimpleItem;
 
 public class HistoryFormItem
-  extends FormSimpleItem
+  extends QFormSimpleItem
 {
-  private int jdField_a_of_type_Int = 0;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private HistoryFormItem.OnIconClickListener jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem$OnIconClickListener;
   private boolean d = false;
   private boolean e = true;
+  private int k = 0;
   
   public HistoryFormItem(Context paramContext)
   {
@@ -36,7 +36,7 @@ public class HistoryFormItem
   {
     if (paramBoolean)
     {
-      setBackgroundResource(2130850774);
+      setBackgroundResource(2130850700);
       return;
     }
     setBgType(2);
@@ -46,10 +46,10 @@ public class HistoryFormItem
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839391);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839248);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839390);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839247);
   }
   
   private void d()
@@ -61,9 +61,9 @@ public class HistoryFormItem
   {
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getResources().getString(2131690996));
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getResources().getString(2131690916));
     c(this.d);
-    int i = getResources().getDimensionPixelSize(2131298955);
+    int i = getResources().getDimensionPixelSize(2131298960);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(i, i);
     localLayoutParams.addRule(11, 1);
     localLayoutParams.addRule(15, 1);
@@ -73,13 +73,13 @@ public class HistoryFormItem
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.k;
   }
   
-  public void a()
+  protected void a()
   {
     super.a();
-    this.o = DisplayUtil.a(getContext(), 290.0F);
+    this.j = DisplayUtil.a(getContext(), 290.0F);
   }
   
   public void a(View paramView, boolean paramBoolean)
@@ -93,12 +93,6 @@ public class HistoryFormItem
     return this.e;
   }
   
-  public void setChecked(boolean paramBoolean)
-  {
-    this.d = paramBoolean;
-    a(this.jdField_a_of_type_AndroidWidgetImageView, paramBoolean);
-  }
-  
   public void setEnable(boolean paramBoolean)
   {
     this.e = paramBoolean;
@@ -106,12 +100,7 @@ public class HistoryFormItem
   
   public void setIndex(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void setItemLeftText(CharSequence paramCharSequence)
-  {
-    setLeftText(paramCharSequence);
+    this.k = paramInt;
   }
   
   public void setItemOnClickListener(View.OnClickListener paramOnClickListener)
@@ -119,28 +108,14 @@ public class HistoryFormItem
     setOnClickListener(paramOnClickListener);
   }
   
-  public void setLeftIconResource(int paramInt)
-  {
-    if (paramInt != 0) {
-      setLeftIcon(getResources().getDrawable(paramInt));
-    }
-  }
-  
   public void setOnIconClickListener(HistoryFormItem.OnIconClickListener paramOnIconClickListener)
   {
     this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem$OnIconClickListener = paramOnIconClickListener;
   }
-  
-  public void setRightIconResource(int paramInt)
-  {
-    if (paramInt != 0) {
-      setRightIcon(getResources().getDrawable(paramInt));
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.settings.HistoryFormItem
  * JD-Core Version:    0.7.0.1
  */

@@ -15,22 +15,23 @@ class b$1$1
   public void Call(long paramLong, Message paramMessage, String paramString)
   {
     paramMessage = this.a.b;
-    if (paramLong == 1L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramMessage.d = bool;
-      paramMessage = null;
-      if (!this.a.b.d) {
-        paramMessage = new RuntimeException("load coreJsBundle failed,check your core jsBundle");
-      }
-      this.a.a.callback(Boolean.valueOf(this.a.b.d), paramMessage);
-      return;
+    boolean bool;
+    if (paramLong == 1L) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    paramMessage.d = bool;
+    paramMessage = null;
+    if (!this.a.b.d) {
+      paramMessage = new RuntimeException("load coreJsBundle failed,check your core jsBundle");
+    }
+    this.a.a.callback(Boolean.valueOf(this.a.b.d), paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.bridge.b.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -27,15 +27,18 @@ public class GetLabelListRequest
   
   public BaseResponse a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspGetLabelList localRspGetLabelList = new qqstory_service.RspGetLabelList();
+    Object localObject = new qqstory_service.RspGetLabelList();
     try
     {
-      localRspGetLabelList.mergeFrom(paramArrayOfByte);
-      return new GetLabelListResponse(localRspGetLabelList);
+      ((qqstory_service.RspGetLabelList)localObject).mergeFrom(paramArrayOfByte);
+      return new GetLabelListResponse((qqstory_service.RspGetLabelList)localObject);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      SLog.d("Q.qqstory:GetLabelListRequest", "" + paramArrayOfByte);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(paramArrayOfByte);
+      SLog.d("Q.qqstory:GetLabelListRequest", ((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -45,7 +48,7 @@ public class GetLabelListRequest
     return a;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqGetLabelList localReqGetLabelList = new qqstory_service.ReqGetLabelList();
     localReqGetLabelList.keyword.set(ByteStringMicro.copyFromUtf8(this.b));
@@ -56,12 +59,22 @@ public class GetLabelListRequest
   
   public String toString()
   {
-    return "GetLabelListRequest{count=" + this.jdField_c_of_type_Int + ", keyword='" + this.b + '\'' + ", startCookie='" + this.jdField_c_of_type_JavaLangString + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetLabelListRequest{count=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", keyword='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", startCookie='");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetLabelListRequest
  * JD-Core Version:    0.7.0.1
  */

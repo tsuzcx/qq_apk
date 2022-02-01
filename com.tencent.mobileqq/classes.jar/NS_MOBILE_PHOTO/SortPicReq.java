@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class SortPicReq
   extends JceStruct
 {
-  static int cache_sort_type = 0;
+  static int cache_sort_type;
   public String albumid = "";
   public int sort_type = 0;
   public long uin = 0L;
@@ -31,15 +31,16 @@ public final class SortPicReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.albumid != null) {
-      paramJceOutputStream.write(this.albumid, 1);
+    String str = this.albumid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.sort_type, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.SortPicReq
  * JD-Core Version:    0.7.0.1
  */

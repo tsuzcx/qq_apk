@@ -10,7 +10,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -55,41 +55,36 @@ public class CasualTips
   
   private void d()
   {
-    Object localObject1;
     if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
       removeAllViews();
       this.jdField_a_of_type_Int += 1;
       this.jdField_a_of_type_Int %= this.jdField_a_of_type_JavaUtilArrayList.size();
-      localObject1 = (String)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label90;
-      }
-      QLog.e("CasualTips", 2, "setNextTip empty" + this.jdField_a_of_type_Int);
-    }
-    for (;;)
-    {
-      return;
-      label90:
-      localObject1 = ((String)localObject1).split("\\n");
-      if (localObject1.length <= 0) {
-        break;
-      }
-      if (this.jdField_a_of_type_AndroidContentContext == null)
+      Object localObject1 = (String)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
+      if (TextUtils.isEmpty((CharSequence)localObject1))
       {
-        QLog.e("CasualTips", 2, "setNextTip mContext is null");
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("setNextTip empty");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+        QLog.e("CasualTips", 2, ((StringBuilder)localObject1).toString());
         return;
       }
-      int k = AIOUtils.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      int m = localObject1.length;
-      int i = 0;
-      int j = 0;
-      while (i < m)
+      localObject1 = ((String)localObject1).split("\\n");
+      if (localObject1.length > 0)
       {
-        Object localObject2 = localObject1[i];
-        TextView localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-        if (localTextView != null)
+        if (this.jdField_a_of_type_AndroidContentContext == null)
         {
+          QLog.e("CasualTips", 2, "setNextTip mContext is null");
+          return;
+        }
+        int k = ViewUtils.a(20.0F);
+        int m = localObject1.length;
+        int i = 0;
+        int j = 0;
+        while (i < m)
+        {
+          Object localObject2 = localObject1[i];
+          TextView localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
           localTextView.setText((CharSequence)localObject2);
           localTextView.setTextSize(14.0F);
           localTextView.setSingleLine(true);
@@ -100,12 +95,12 @@ public class CasualTips
           ((RelativeLayout.LayoutParams)localObject2).addRule(14);
           localTextView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
           addView(localTextView);
+          j += 1;
+          i += 1;
         }
-        j += 1;
-        i += 1;
       }
+      QLog.e("CasualTips", 2, "setNextTip lines empty");
     }
-    QLog.e("CasualTips", 2, "setNextTip lines empty");
   }
   
   public void a()
@@ -126,12 +121,12 @@ public class CasualTips
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 2000L);
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
@@ -155,7 +150,7 @@ public class CasualTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.ui.CasualTips
  * JD-Core Version:    0.7.0.1
  */

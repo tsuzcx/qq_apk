@@ -14,18 +14,25 @@ class ChannelProxyImpl$5
   public void onFailedResponse(String paramString1, int paramInt, String paramString2)
   {
     super.onFailedResponse(paramString1, paramInt, paramString2);
-    QLog.e("ChannelProxyImpl", 1, "verify onFailedResponse cmd : " + paramString1 + ", code : " + paramInt + "; message : " + paramString2);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("verify onFailedResponse cmd : ");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(", code : ");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("; message : ");
+    ((StringBuilder)localObject).append(paramString2);
+    QLog.e("ChannelProxyImpl", 1, ((StringBuilder)localObject).toString());
     try
     {
       if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult != null)
       {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("message", paramString2);
-        localJSONObject.put("code", paramInt);
-        localJSONObject.put("cmd", paramString1);
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, localJSONObject);
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("message", paramString2);
+        ((JSONObject)localObject).put("code", paramInt);
+        ((JSONObject)localObject).put("cmd", paramString1);
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, (JSONObject)localObject);
+        return;
       }
-      return;
     }
     catch (Throwable paramString1)
     {
@@ -43,8 +50,8 @@ class ChannelProxyImpl$5
       {
         paramRspBody = new JSONObject();
         this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, paramRspBody);
+        return;
       }
-      return;
     }
     catch (Throwable paramRspBody)
     {
@@ -54,7 +61,7 @@ class ChannelProxyImpl$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ChannelProxyImpl.5
  * JD-Core Version:    0.7.0.1
  */

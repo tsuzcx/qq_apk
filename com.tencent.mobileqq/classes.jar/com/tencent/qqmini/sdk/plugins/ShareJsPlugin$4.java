@@ -15,39 +15,41 @@ class ShareJsPlugin$4
   
   public void run()
   {
-    for (;;)
+    try
     {
-      try
+      Object localObject1 = ActionSheet.create(ShareJsPlugin.access$600(this.this$0).getAttachedActivity());
+      localObject2 = new JSONObject(this.val$req.jsonParams);
+      JSONArray localJSONArray = ((JSONObject)localObject2).optJSONArray("itemList");
+      int i = ((JSONObject)localObject2).optInt("actionSheetType", 0);
+      if (i != 0)
       {
-        localActionSheet = ActionSheet.create(ShareJsPlugin.access$600(this.this$0).getAttachedActivity());
-        localJSONObject = new JSONObject(this.val$req.jsonParams);
-        localJSONArray = localJSONObject.optJSONArray("itemList");
-        int i = localJSONObject.optInt("actionSheetType", 0);
-        switch (i)
+        if (i != 1)
         {
-        case 0: 
-          QMLog.e("ShareJsPlugin", this.val$req.event + " actionSheetType undefined: " + i);
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(this.val$req.event);
+          ((StringBuilder)localObject1).append(" actionSheetType undefined: ");
+          ((StringBuilder)localObject1).append(i);
+          QMLog.e("ShareJsPlugin", ((StringBuilder)localObject1).toString());
           return;
         }
-      }
-      catch (JSONException localJSONException)
-      {
-        ActionSheet localActionSheet;
-        JSONObject localJSONObject;
-        JSONArray localJSONArray;
-        QMLog.e("ShareJsPlugin", this.val$req.event + " error.", localJSONException);
+        ShareJsPlugin.access$800(this.this$0, this.val$req);
         return;
       }
-      ShareJsPlugin.access$700(this.this$0, localActionSheet, localJSONObject, localJSONArray, this.val$req);
+      ShareJsPlugin.access$700(this.this$0, (ActionSheet)localObject1, (JSONObject)localObject2, localJSONArray, this.val$req);
       return;
-      ShareJsPlugin.access$800(this.this$0, this.val$req);
-      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.val$req.event);
+      ((StringBuilder)localObject2).append(" error.");
+      QMLog.e("ShareJsPlugin", ((StringBuilder)localObject2).toString(), localJSONException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.ShareJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

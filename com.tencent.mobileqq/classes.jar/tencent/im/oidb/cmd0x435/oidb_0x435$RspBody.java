@@ -25,14 +25,15 @@ public final class oidb_0x435$RspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40, 90, 98, 106, 114, 122 }, new String[] { "int32_ret_code", "bytes_error_msg", "uint32_subcmd", "bytes_topic_id", "uint32_interval_time", "msg_add_rsp_body", "msg_vote_rsp_body", "msg_del_rsp_body", "msg_get_rsp_body", "msg_get_all_pk_items_rsp_body" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, Integer.valueOf(0), null, null, null, null, null }, RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40, 90, 98, 106, 114, 122 }, new String[] { "int32_ret_code", "bytes_error_msg", "uint32_subcmd", "bytes_topic_id", "uint32_interval_time", "msg_add_rsp_body", "msg_vote_rsp_body", "msg_del_rsp_body", "msg_get_rsp_body", "msg_get_all_pk_items_rsp_body" }, new Object[] { localInteger, localByteStringMicro1, localInteger, localByteStringMicro2, localInteger, null, null, null, null, null }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x435.oidb_0x435.RspBody
  * JD-Core Version:    0.7.0.1
  */

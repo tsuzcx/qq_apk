@@ -36,176 +36,236 @@ public class FriendRecommendReceiver
     super(paramQQAppInterface, paramFriendListHandler);
   }
   
-  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private void a(List<oidb_0x7df.FriendScore> paramList)
   {
-    boolean bool;
-    oidb_0xc26.RspBody localRspBody;
-    int i;
-    Object localObject1;
-    int j;
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
+    if (QLog.isColorLevel())
     {
-      bool = true;
-      localRspBody = new oidb_0xc26.RspBody();
-      i = -1;
-      if (!bool) {
-        break label408;
-      }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
-      j = FriendListHandler.parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
-      i = j;
-      if (j == 0) {
-        break label408;
-      }
-      i = j;
-      bool = false;
-    }
-    label258:
-    label390:
-    label402:
-    label408:
-    for (;;)
-    {
-      localObject1 = (MayknowRecommendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER);
-      label98:
-      List localList;
-      if ((paramToServiceMsg != null) && (paramToServiceMsg.extraData != null))
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
       {
-        paramToServiceMsg = paramToServiceMsg.extraData.getBundle("EXTRA:OidbSvc.0xc26_0");
-        if (!bool) {
-          break label402;
+        oidb_0x7df.FriendScore localFriendScore = (oidb_0x7df.FriendScore)localIterator.next();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("FriendListHandler.handleSpecialCareRecommend uin: ");
+        boolean bool = localFriendScore.uint64_friend_uin.has();
+        String str = "";
+        if (bool) {
+          paramList = String.valueOf(localFriendScore.uint64_friend_uin.get());
+        } else {
+          paramList = "";
         }
-        Object localObject2 = localRspBody.rpt_msg_persons.get();
-        localRspBody.rpt_entry_close.get();
-        paramFromServiceMsg = localRspBody.rpt_entry_inuse.get();
-        paramObject = localRspBody.rpt_entry_delays.get();
-        j = localRspBody.uint32_timestamp.get();
-        localRspBody.uint32_next_gap.get();
-        int k = localRspBody.uint32_msg_up.get();
-        int m = localRspBody.uint32_list_switch.get();
-        int n = localRspBody.uint32_add_page_list_switch.get();
-        int i1 = localRspBody.em_rsp_data_type.get();
-        localList = localRspBody.rpt_msg_rgroup_items.get();
-        localObject2 = MayKnowRecommend.covServerDataToLocal((List)localObject2, j, 23);
-        ((MayknowRecommendManager)localObject1).a(paramFromServiceMsg);
-        ((MayknowRecommendManager)localObject1).b(paramObject);
-        if (i1 != 1) {
-          break label390;
+        localStringBuilder.append(paramList);
+        localStringBuilder.append(", score: ");
+        bool = localFriendScore.uint32_friend_score.has();
+        int j = -1;
+        if (bool) {
+          i = localFriendScore.uint32_friend_score.get();
+        } else {
+          i = -1;
         }
-        if (!localRspBody.rpt_msg_tables.has()) {
-          break label380;
+        localStringBuilder.append(i);
+        localStringBuilder.append(", relation: ");
+        if (localFriendScore.bytes_relation_name.has()) {
+          paramList = localFriendScore.bytes_relation_name.get().toStringUtf8();
+        } else {
+          paramList = "";
         }
-        paramFromServiceMsg = localRspBody.rpt_msg_tables.get();
-        if (!localRspBody.bytes_cookies.has()) {
-          break label385;
+        localStringBuilder.append(paramList);
+        localStringBuilder.append(", rank: ");
+        int i = j;
+        if (localFriendScore.uint32_rank.has()) {
+          i = localFriendScore.uint32_rank.get();
         }
-        paramObject = localRspBody.bytes_cookies.get().toByteArray();
-        label281:
-        ((MayknowRecommendManager)localObject1).a(bool, (ArrayList)localObject2, j, k, m, n, paramToServiceMsg, paramFromServiceMsg, paramObject);
-        label301:
-        ((MayknowRecommendManager)localObject1).d(i1);
+        localStringBuilder.append(i);
+        localStringBuilder.append(", nick: ");
+        paramList = str;
+        if (localFriendScore.bytes_nick.has()) {
+          paramList = localFriendScore.bytes_nick.get().toStringUtf8();
+        }
+        localStringBuilder.append(paramList);
+        QLog.d("FriendListHandler.BaseHandlerReceiver", 2, localStringBuilder.toString());
       }
-      for (;;)
+    }
+  }
+  
+  private boolean a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject, boolean paramBoolean, oidb_0x7df.RspBody paramRspBody)
+  {
+    FriendListHandler localFriendListHandler = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
+    paramToServiceMsg = FriendListHandler.parseSSOPkg(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    if (paramToServiceMsg != null) {
+      try
+      {
+        paramRspBody.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
+        return paramBoolean;
+      }
+      catch (Exception paramToServiceMsg)
       {
         if (QLog.isColorLevel()) {
-          QLog.i("FriendListHandler.BaseHandlerReceiver", 1, "handleGetMayKnowRecommend, isSuc=" + bool + ",oidbesult=" + i);
+          QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "FriendListHandler.handleSpecialCareRecommend RspBody mergeFrom failed.");
         }
-        a(92, bool, paramToServiceMsg);
-        a(112, bool, paramToServiceMsg);
-        return;
-        bool = false;
-        break;
-        paramToServiceMsg = null;
-        break label98;
-        label380:
-        paramFromServiceMsg = null;
-        break label258;
-        paramObject = null;
-        break label281;
-        ((MayknowRecommendManager)localObject1).a(bool, localList);
-        break label301;
-        bool = false;
+        paramToServiceMsg.printStackTrace();
       }
     }
+    return false;
   }
   
   private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    boolean bool1;
-    int i;
-    boolean bool2;
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
-    {
-      bool1 = true;
-      i = -1;
-      bool2 = bool1;
-      if (bool1)
-      {
-        oidb_0xc36.RspBody localRspBody = new oidb_0xc36.RspBody();
-        FriendListHandler localFriendListHandler = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
-        int j = FriendListHandler.parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
-        i = j;
-        bool2 = bool1;
-        if (j != 0)
-        {
-          bool2 = false;
-          i = j;
-        }
-      }
-      paramToServiceMsg = paramToServiceMsg.extraData.getString("uin");
-      if (!bool2) {
-        break label143;
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendListHandler.BaseHandlerReceiver", 1, "handleCancelMayKnowRecommend, isSuc=" + bool2 + ",oidbesult=" + i + ", uin=" + paramToServiceMsg);
-      }
-      return;
-      bool1 = false;
-      break;
-      label143:
+    boolean bool3 = false;
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess())) {
+      bool2 = true;
+    } else {
       bool2 = false;
     }
+    oidb_0xc26.RspBody localRspBody = new oidb_0xc26.RspBody();
+    int i = -1;
+    boolean bool1 = bool2;
+    int j;
+    if (bool2)
+    {
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
+      j = FriendListHandler.parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
+      bool1 = bool2;
+      i = j;
+      if (j != 0)
+      {
+        bool1 = false;
+        i = j;
+      }
+    }
+    Object localObject1 = (MayknowRecommendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER);
+    if ((paramToServiceMsg != null) && (paramToServiceMsg.extraData != null)) {
+      paramToServiceMsg = paramToServiceMsg.extraData.getBundle("EXTRA:OidbSvc.0xc26_0");
+    } else {
+      paramToServiceMsg = null;
+    }
+    boolean bool2 = bool3;
+    if (bool1)
+    {
+      Object localObject2 = localRspBody.rpt_msg_persons.get();
+      localRspBody.rpt_entry_close.get();
+      paramFromServiceMsg = localRspBody.rpt_entry_inuse.get();
+      paramObject = localRspBody.rpt_entry_delays.get();
+      j = localRspBody.uint32_timestamp.get();
+      localRspBody.uint32_next_gap.get();
+      int k = localRspBody.uint32_msg_up.get();
+      int m = localRspBody.uint32_list_switch.get();
+      int n = localRspBody.uint32_add_page_list_switch.get();
+      int i1 = localRspBody.em_rsp_data_type.get();
+      List localList = localRspBody.rpt_msg_rgroup_items.get();
+      localObject2 = MayKnowRecommend.covServerDataToLocal((List)localObject2, j, 23);
+      ((MayknowRecommendManager)localObject1).a(paramFromServiceMsg);
+      ((MayknowRecommendManager)localObject1).b(paramObject);
+      if (i1 == 1)
+      {
+        if (localRspBody.rpt_msg_tables.has()) {
+          paramFromServiceMsg = localRspBody.rpt_msg_tables.get();
+        } else {
+          paramFromServiceMsg = null;
+        }
+        if (localRspBody.bytes_cookies.has()) {
+          paramObject = localRspBody.bytes_cookies.get().toByteArray();
+        } else {
+          paramObject = null;
+        }
+        ((MayknowRecommendManager)localObject1).a(bool1, (ArrayList)localObject2, j, k, m, n, paramToServiceMsg, paramFromServiceMsg, paramObject);
+      }
+      else
+      {
+        ((MayknowRecommendManager)localObject1).a(bool1, localList);
+      }
+      ((MayknowRecommendManager)localObject1).d(i1);
+      bool2 = bool1;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramFromServiceMsg = new StringBuilder();
+      paramFromServiceMsg.append("handleGetMayKnowRecommend, isSuc=");
+      paramFromServiceMsg.append(bool2);
+      paramFromServiceMsg.append(",oidbesult=");
+      paramFromServiceMsg.append(i);
+      QLog.i("FriendListHandler.BaseHandlerReceiver", 1, paramFromServiceMsg.toString());
+    }
+    a(90, bool2, paramToServiceMsg);
+    a(110, bool2, paramToServiceMsg);
   }
   
   private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    int i;
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
+    boolean bool3 = false;
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess())) {
+      bool2 = true;
+    } else {
+      bool2 = false;
+    }
+    int i = -1;
+    boolean bool1 = bool2;
+    if (bool2)
     {
-      bool1 = true;
-      i = -1;
-      if (!bool1) {
-        break label131;
-      }
-      paramToServiceMsg = new oidb_0xc35.RspBody();
+      oidb_0xc36.RspBody localRspBody = new oidb_0xc36.RspBody();
       FriendListHandler localFriendListHandler = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
-      int j = FriendListHandler.parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
-      i = j;
-      if (j == 0) {
-        break label131;
-      }
+      int j = FriendListHandler.parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
       bool1 = bool2;
       i = j;
-    }
-    label131:
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendListHandler.BaseHandlerReceiver", 1, "handleReportMayknowExplosure, isSuc=" + bool1 + ",oidbesult=" + i);
+      if (j != 0)
+      {
+        bool1 = false;
+        i = j;
       }
-      ((MayknowRecommendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER)).a(bool1);
-      return;
-      bool1 = false;
-      break;
+    }
+    paramToServiceMsg = paramToServiceMsg.extraData.getString("uin");
+    boolean bool2 = bool3;
+    if (bool1) {
+      bool2 = bool1;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramFromServiceMsg = new StringBuilder();
+      paramFromServiceMsg.append("handleCancelMayKnowRecommend, isSuc=");
+      paramFromServiceMsg.append(bool2);
+      paramFromServiceMsg.append(",oidbesult=");
+      paramFromServiceMsg.append(i);
+      paramFromServiceMsg.append(", uin=");
+      paramFromServiceMsg.append(paramToServiceMsg);
+      QLog.i("FriendListHandler.BaseHandlerReceiver", 1, paramFromServiceMsg.toString());
     }
   }
   
   private void f(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    boolean bool1;
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess())) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    int i = -1;
+    boolean bool2 = bool1;
+    if (bool1)
+    {
+      paramToServiceMsg = new oidb_0xc35.RspBody();
+      FriendListHandler localFriendListHandler = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
+      int j = FriendListHandler.parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
+      bool2 = bool1;
+      i = j;
+      if (j != 0)
+      {
+        bool2 = false;
+        i = j;
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("handleReportMayknowExplosure, isSuc=");
+      paramToServiceMsg.append(bool2);
+      paramToServiceMsg.append(",oidbesult=");
+      paramToServiceMsg.append(i);
+      QLog.i("FriendListHandler.BaseHandlerReceiver", 1, paramToServiceMsg.toString());
+    }
+    ((MayknowRecommendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER)).a(bool2);
+  }
+  
+  private void g(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     boolean bool = paramFromServiceMsg.isSuccess();
     paramToServiceMsg = new oidb_0xc34.RspBody();
@@ -214,81 +274,19 @@ public class FriendRecommendReceiver
     if (i != 0) {
       bool = false;
     }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendListHandler.BaseHandlerReceiver", 1, "handleReqHideConversationMayknowRecommend, isSuc=" + bool + ",oidbesult=" + i);
-      }
-      if (bool) {
-        ((MayknowRecommendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER)).g();
-      }
-      a(115, bool, null);
-      return;
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("handleReqHideConversationMayknowRecommend, isSuc=");
+      paramToServiceMsg.append(bool);
+      paramToServiceMsg.append(",oidbesult=");
+      paramToServiceMsg.append(i);
+      QLog.i("FriendListHandler.BaseHandlerReceiver", 1, paramToServiceMsg.toString());
     }
-  }
-  
-  private void g(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
-    int j;
-    boolean bool;
-    Bundle localBundle;
-    int k;
-    Object localObject;
-    int m;
-    do
-    {
-      return;
-      j = ((Integer)paramToServiceMsg.getAttribute("tabID", Integer.valueOf(0))).intValue();
-      bool = ((Boolean)paramToServiceMsg.getAttribute("isFirstPage", Boolean.valueOf(true))).booleanValue();
-      localBundle = (Bundle)paramToServiceMsg.getAttribute("extra_bd", new Bundle());
-      k = localBundle.getInt("load_biz_type", 0);
-      localObject = new oidb_0xc26.RspBody();
-      paramToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
-      m = FriendListHandler.parseOIDBPkg(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
-      if (m != 0) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendListHandler.BaseHandlerReceiver", 2, "handleGetConnectionsPerson sus " + j + " " + bool);
-      }
-    } while (((oidb_0xc26.RspBody)localObject).em_rsp_data_type.get() != 1);
-    paramObject = ((oidb_0xc26.RspBody)localObject).rpt_msg_persons.get();
-    if (((oidb_0xc26.RspBody)localObject).rpt_msg_tables.has())
-    {
-      paramToServiceMsg = ((oidb_0xc26.RspBody)localObject).rpt_msg_tables.get();
-      if (!((oidb_0xc26.RspBody)localObject).bytes_cookies.has()) {
-        break label326;
-      }
+    if (bool) {
+      ((MayknowRecommendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER)).g();
     }
-    label326:
-    for (paramFromServiceMsg = ((oidb_0xc26.RspBody)localObject).bytes_cookies.get().toByteArray();; paramFromServiceMsg = null)
-    {
-      int i = ((oidb_0xc26.RspBody)localObject).uint32_timestamp.get();
-      localObject = (MayknowRecommendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER);
-      if (!bool) {
-        i = ((MayknowRecommendManager)localObject).a(j) - 1;
-      }
-      ((MayknowRecommendManager)localObject).a(j, MayKnowRecommend.covServerDataToLocal(paramObject, i, j), paramToServiceMsg, paramFromServiceMsg, bool, localBundle);
-      if (!bool) {
-        ((MayknowRecommendManager)localObject).a(j);
-      }
-      a(131, true, new Object[] { Integer.valueOf(m), Integer.valueOf(j), Integer.valueOf(k) });
-      return;
-      paramToServiceMsg = null;
-      break;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("FriendListHandler.BaseHandlerReceiver", 2, "handleGetConnectionsPerson failed result:" + m + " " + j + ", bizType=" + k);
-    }
-    paramToServiceMsg = (MayknowRecommendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER);
-    if (m == 1205) {
-      paramToServiceMsg.b(j);
-    }
-    if (!bool) {
-      paramToServiceMsg.a(j);
-    }
-    a(131, false, new Object[] { Integer.valueOf(m), Integer.valueOf(j), Integer.valueOf(k) });
+    a(113, bool, null);
   }
   
   private void h(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -300,174 +298,108 @@ public class FriendRecommendReceiver
     if (i != 0) {
       bool = false;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("FriendListHandler.BaseHandlerReceiver", 1, "handleReqHideConversationTroopRecommend, isSuc=" + bool + ",oidbesult=" + i);
+    if (QLog.isColorLevel())
+    {
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("handleReqHideConversationTroopRecommend, isSuc=");
+      paramToServiceMsg.append(bool);
+      paramToServiceMsg.append(",oidbesult=");
+      paramToServiceMsg.append(i);
+      QLog.i("FriendListHandler.BaseHandlerReceiver", 1, paramToServiceMsg.toString());
     }
   }
   
   private void i(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "FriendListHandler.handleSpecialCareRecommend resp: " + paramFromServiceMsg + ", data: " + paramObject);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("FriendListHandler.handleSpecialCareRecommend resp: ");
+      ((StringBuilder)localObject).append(paramFromServiceMsg);
+      ((StringBuilder)localObject).append(", data: ");
+      ((StringBuilder)localObject).append(paramObject);
+      QLog.d("FriendListHandler.BaseHandlerReceiver", 2, ((StringBuilder)localObject).toString());
     }
     boolean bool;
-    Object localObject1;
-    Object localObject2;
-    if ((paramToServiceMsg != null) && (paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()) && (paramObject != null))
-    {
+    if ((paramToServiceMsg != null) && (paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()) && (paramObject != null)) {
       bool = true;
-      if (!bool) {
-        break label726;
-      }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
-      FriendListHandler.getSpecialRecommendStat = 0;
-      localObject1 = new oidb_0x7df.RspBody();
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
-      paramToServiceMsg = FriendListHandler.parseSSOPkg(paramToServiceMsg, paramFromServiceMsg, paramObject);
-      if (paramToServiceMsg == null) {
-        break label385;
-      }
+    } else {
+      bool = false;
     }
-    int i;
-    label385:
-    label391:
-    label397:
-    label403:
-    label409:
-    label415:
-    do
+    if (bool)
     {
-      for (;;)
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
+      FriendListHandler.getSpecialRecommendStat = 0;
+      localObject = new oidb_0x7df.RspBody();
+      bool = a(paramToServiceMsg, paramFromServiceMsg, paramObject, bool, (oidb_0x7df.RspBody)localObject);
+      if (QLog.isColorLevel())
       {
-        try
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("FriendListHandler.handleSpecialCareRecommend isSuccess: ");
+        paramToServiceMsg.append(bool);
+        QLog.d("FriendListHandler.BaseHandlerReceiver", 2, paramToServiceMsg.toString());
+      }
+      if (bool)
+      {
+        a(93, true, localObject);
+        if (QLog.isColorLevel())
         {
-          ((oidb_0x7df.RspBody)localObject1).mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-          if (QLog.isColorLevel()) {
-            QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "FriendListHandler.handleSpecialCareRecommend isSuccess: " + bool);
+          paramToServiceMsg = new StringBuilder();
+          paramToServiceMsg.append("FriendListHandler.handleSpecialCareRecommend isOver: ");
+          bool = ((oidb_0x7df.RspBody)localObject).uint32_over.has();
+          int j = -1;
+          if (bool) {
+            i = ((oidb_0x7df.RspBody)localObject).uint32_over.get();
+          } else {
+            i = -1;
           }
-          if (!bool) {
-            break label726;
+          paramToServiceMsg.append(i);
+          paramToServiceMsg.append(", next: ");
+          if (((oidb_0x7df.RspBody)localObject).uint32_next_start.has()) {
+            i = ((oidb_0x7df.RspBody)localObject).uint32_next_start.get();
+          } else {
+            i = -1;
           }
-          a(95, true, localObject1);
-          if (QLog.isColorLevel())
-          {
-            paramToServiceMsg = new StringBuilder().append("FriendListHandler.handleSpecialCareRecommend isOver: ");
-            if (!((oidb_0x7df.RspBody)localObject1).uint32_over.has()) {
-              break label391;
-            }
-            i = ((oidb_0x7df.RspBody)localObject1).uint32_over.get();
-            paramToServiceMsg = paramToServiceMsg.append(i).append(", next: ");
-            if (!((oidb_0x7df.RspBody)localObject1).uint32_next_start.has()) {
-              break label397;
-            }
-            i = ((oidb_0x7df.RspBody)localObject1).uint32_next_start.get();
-            paramToServiceMsg = paramToServiceMsg.append(i).append(", total: ");
-            if (!((oidb_0x7df.RspBody)localObject1).uint32_total.has()) {
-              break label403;
-            }
-            i = ((oidb_0x7df.RspBody)localObject1).uint32_total.get();
-            paramToServiceMsg = paramToServiceMsg.append(i).append(", lowest: ");
-            if (!((oidb_0x7df.RspBody)localObject1).uint32_low_score.has()) {
-              break label409;
-            }
-            i = ((oidb_0x7df.RspBody)localObject1).uint32_low_score.get();
-            QLog.d("FriendListHandler.BaseHandlerReceiver", 2, i);
+          paramToServiceMsg.append(i);
+          paramToServiceMsg.append(", total: ");
+          if (((oidb_0x7df.RspBody)localObject).uint32_total.has()) {
+            i = ((oidb_0x7df.RspBody)localObject).uint32_total.get();
+          } else {
+            i = -1;
           }
-          if (((oidb_0x7df.RspBody)localObject1).rpt_msg_friend_score.has()) {
-            break label415;
+          paramToServiceMsg.append(i);
+          paramToServiceMsg.append(", lowest: ");
+          int i = j;
+          if (((oidb_0x7df.RspBody)localObject).uint32_low_score.has()) {
+            i = ((oidb_0x7df.RspBody)localObject).uint32_low_score.get();
           }
+          paramToServiceMsg.append(i);
+          QLog.d("FriendListHandler.BaseHandlerReceiver", 2, paramToServiceMsg.toString());
+        }
+        if (!((oidb_0x7df.RspBody)localObject).rpt_msg_friend_score.has())
+        {
           if (QLog.isColorLevel()) {
             QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "FriendListHandler.handleSpecialCareRecommend rpt_msg_friend_score has no data.");
           }
           return;
-          bool = false;
         }
-        catch (Exception paramToServiceMsg)
+        paramToServiceMsg = ((oidb_0x7df.RspBody)localObject).rpt_msg_friend_score.get();
+        if ((paramToServiceMsg != null) && (paramToServiceMsg.size() > 0))
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "FriendListHandler.handleSpecialCareRecommend RspBody mergeFrom failed.");
-          }
-          paramToServiceMsg.printStackTrace();
-          bool = false;
-          continue;
+          a(paramToServiceMsg);
+          this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.onGetSpecialCareRecommend(paramToServiceMsg);
+          return;
         }
-        bool = false;
-        continue;
-        i = -1;
-        continue;
-        i = -1;
-        continue;
-        i = -1;
-        continue;
-        i = -1;
-      }
-      paramFromServiceMsg = ((oidb_0x7df.RspBody)localObject1).rpt_msg_friend_score.get();
-      if ((paramFromServiceMsg != null) && (paramFromServiceMsg.size() > 0)) {
-        break label453;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "FriendListHandler.handleSpecialCareRecommend friendList is null or has no data.");
-    return;
-    label453:
-    paramObject = paramFromServiceMsg.iterator();
-    while (paramObject.hasNext())
-    {
-      localObject1 = (oidb_0x7df.FriendScore)paramObject.next();
-      if (QLog.isColorLevel())
-      {
-        localObject2 = new StringBuilder().append("FriendListHandler.handleSpecialCareRecommend uin: ");
-        if (((oidb_0x7df.FriendScore)localObject1).uint64_friend_uin.has())
-        {
-          paramToServiceMsg = String.valueOf(((oidb_0x7df.FriendScore)localObject1).uint64_friend_uin.get());
-          label524:
-          paramToServiceMsg = ((StringBuilder)localObject2).append(paramToServiceMsg).append(", score: ");
-          if (!((oidb_0x7df.FriendScore)localObject1).uint32_friend_score.has()) {
-            break label691;
-          }
-          i = ((oidb_0x7df.FriendScore)localObject1).uint32_friend_score.get();
-          label558:
-          localObject2 = paramToServiceMsg.append(i).append(", relation: ");
-          if (!((oidb_0x7df.FriendScore)localObject1).bytes_relation_name.has()) {
-            break label697;
-          }
-          paramToServiceMsg = ((oidb_0x7df.FriendScore)localObject1).bytes_relation_name.get().toStringUtf8();
-          label595:
-          paramToServiceMsg = ((StringBuilder)localObject2).append(paramToServiceMsg).append(", rank: ");
-          if (!((oidb_0x7df.FriendScore)localObject1).uint32_rank.has()) {
-            break label704;
-          }
-          i = ((oidb_0x7df.FriendScore)localObject1).uint32_rank.get();
-          label629:
-          localObject2 = paramToServiceMsg.append(i).append(", nick: ");
-          if (!((oidb_0x7df.FriendScore)localObject1).bytes_nick.has()) {
-            break label710;
-          }
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "FriendListHandler.handleSpecialCareRecommend friendList is null or has no data.");
         }
-        label691:
-        label697:
-        label704:
-        label710:
-        for (paramToServiceMsg = ((oidb_0x7df.FriendScore)localObject1).bytes_nick.get().toStringUtf8();; paramToServiceMsg = "")
-        {
-          QLog.d("FriendListHandler.BaseHandlerReceiver", 2, paramToServiceMsg);
-          break;
-          paramToServiceMsg = "";
-          break label524;
-          i = -1;
-          break label558;
-          paramToServiceMsg = "";
-          break label595;
-          i = -1;
-          break label629;
-        }
+        return;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.onGetSpecialCareRecommend(paramFromServiceMsg);
-    return;
-    label726:
     paramToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
     FriendListHandler.getSpecialRecommendStat = 1;
-    a(95, false, null);
+    a(93, false, null);
   }
   
   public boolean a(String paramString)
@@ -478,44 +410,119 @@ public class FriendRecommendReceiver
   public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     String str = paramFromServiceMsg.getServiceCmd();
-    if ("OidbSvc.0xc26_0".equals(str)) {
-      c(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
-    do
+    if ("OidbSvc.0xc26_0".equals(str))
     {
+      d(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
-      if ("OidbSvc.0xc36_0".equals(str))
-      {
-        d(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+    if ("OidbSvc.0xc36_0".equals(str))
+    {
+      e(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if ("OidbSvc.0xc35_0".equals(str))
+    {
+      f(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if ("OidbSvc.0xc34_0".equals(str))
+    {
+      g(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if ("OidbSvc.0xc26_1".equals(str))
+    {
+      c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if ("OidbSvc.0xc34_1".equals(str))
+    {
+      h(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if ("OidbSvc.0x7df_3".equals(str)) {
+      i(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+  }
+  
+  protected void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (paramToServiceMsg != null)
+    {
+      if (paramFromServiceMsg == null) {
         return;
       }
-      if ("OidbSvc.0xc35_0".equals(str))
+      int j = ((Integer)paramToServiceMsg.getAttribute("tabID", Integer.valueOf(0))).intValue();
+      boolean bool = ((Boolean)paramToServiceMsg.getAttribute("isFirstPage", Boolean.valueOf(true))).booleanValue();
+      Bundle localBundle = (Bundle)paramToServiceMsg.getAttribute("extra_bd", new Bundle());
+      int k = localBundle.getInt("load_biz_type", 0);
+      Object localObject = new oidb_0xc26.RspBody();
+      paramToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
+      int m = FriendListHandler.parseOIDBPkg(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
+      if (m == 0)
       {
-        e(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
+        if (QLog.isColorLevel())
+        {
+          paramToServiceMsg = new StringBuilder();
+          paramToServiceMsg.append("handleGetConnectionsPerson sus ");
+          paramToServiceMsg.append(j);
+          paramToServiceMsg.append(" ");
+          paramToServiceMsg.append(bool);
+          QLog.i("FriendListHandler.BaseHandlerReceiver", 2, paramToServiceMsg.toString());
+        }
+        if (((oidb_0xc26.RspBody)localObject).em_rsp_data_type.get() == 1)
+        {
+          paramObject = ((oidb_0xc26.RspBody)localObject).rpt_msg_persons.get();
+          if (((oidb_0xc26.RspBody)localObject).rpt_msg_tables.has()) {
+            paramToServiceMsg = ((oidb_0xc26.RspBody)localObject).rpt_msg_tables.get();
+          } else {
+            paramToServiceMsg = null;
+          }
+          if (((oidb_0xc26.RspBody)localObject).bytes_cookies.has()) {
+            paramFromServiceMsg = ((oidb_0xc26.RspBody)localObject).bytes_cookies.get().toByteArray();
+          } else {
+            paramFromServiceMsg = null;
+          }
+          int i = ((oidb_0xc26.RspBody)localObject).uint32_timestamp.get();
+          localObject = (MayknowRecommendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER);
+          if (!bool) {
+            i = ((MayknowRecommendManager)localObject).a(j) - 1;
+          }
+          ((MayknowRecommendManager)localObject).a(j, MayKnowRecommend.covServerDataToLocal(paramObject, i, j), paramToServiceMsg, paramFromServiceMsg, bool, localBundle);
+          if (!bool) {
+            ((MayknowRecommendManager)localObject).a(j);
+          }
+          a(129, true, new Object[] { Integer.valueOf(m), Integer.valueOf(j), Integer.valueOf(k) });
+        }
       }
-      if ("OidbSvc.0xc34_0".equals(str))
+      else
       {
-        f(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
+        if (QLog.isColorLevel())
+        {
+          paramToServiceMsg = new StringBuilder();
+          paramToServiceMsg.append("handleGetConnectionsPerson failed result:");
+          paramToServiceMsg.append(m);
+          paramToServiceMsg.append(" ");
+          paramToServiceMsg.append(j);
+          paramToServiceMsg.append(", bizType=");
+          paramToServiceMsg.append(k);
+          QLog.i("FriendListHandler.BaseHandlerReceiver", 2, paramToServiceMsg.toString());
+        }
+        paramToServiceMsg = (MayknowRecommendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER);
+        if (m == 1205) {
+          paramToServiceMsg.b(j);
+        }
+        if (!bool) {
+          paramToServiceMsg.a(j);
+        }
+        a(129, false, new Object[] { Integer.valueOf(m), Integer.valueOf(j), Integer.valueOf(k) });
       }
-      if ("OidbSvc.0xc26_1".equals(str))
-      {
-        g(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-      if ("OidbSvc.0xc34_1".equals(str))
-      {
-        h(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-    } while (!"OidbSvc.0x7df_3".equals(str));
-    i(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.friendlist.receiver.FriendRecommendReceiver
  * JD-Core Version:    0.7.0.1
  */

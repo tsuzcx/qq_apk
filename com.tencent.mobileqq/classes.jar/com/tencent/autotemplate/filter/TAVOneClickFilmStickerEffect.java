@@ -25,9 +25,10 @@ public class TAVOneClickFilmStickerEffect
   
   public TAVVideoMixEffect.Filter createFilter()
   {
-    if (this.count == 0)
+    int i = this.count;
+    if (i == 0)
     {
-      this.count += 1;
+      this.count = (i + 1);
       return new TAVOneClickFilmStickerEffect.StickerVideoCompositionMixerEffect(this, this.stickerContext, null);
     }
     return new TAVOneClickFilmStickerEffect.StickerVideoCompositionMixerEffect(this, this.stickerContext.copyRenderContext(), null);

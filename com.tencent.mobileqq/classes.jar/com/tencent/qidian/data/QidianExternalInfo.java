@@ -24,6 +24,7 @@ public class QidianExternalInfo
   public long city;
   public long country;
   public long district;
+  public long externalOidbflag;
   public int gender;
   public String icon = "";
   public byte[] infoByte;
@@ -49,14 +50,15 @@ public class QidianExternalInfo
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    if (paramObject == null) {
       return false;
-      if (paramObject == this) {
-        return true;
-      }
-    } while (paramObject.getClass() != getClass());
+    }
+    if (paramObject == this) {
+      return true;
+    }
+    if (paramObject.getClass() != getClass()) {
+      return false;
+    }
     paramObject = (QidianExternalInfo)paramObject;
     return Arrays.equals(this.infoByte, paramObject.infoByte);
   }
@@ -100,6 +102,9 @@ public class QidianExternalInfo
     if (paramExternalInfo.str_external_mobile.has()) {
       this.mobile = paramExternalInfo.str_external_mobile.get();
     }
+    if (paramExternalInfo.uint64_external_oidbflag.has()) {
+      this.externalOidbflag = paramExternalInfo.uint64_external_oidbflag.get();
+    }
     if (paramExternalInfo.str_external_mail.has()) {
       this.mail = paramExternalInfo.str_external_mail.get();
     }
@@ -119,8 +124,12 @@ public class QidianExternalInfo
       this.verify_url = paramExternalInfo.str_thirdpart_verity_icon.get();
     }
     initList();
-    if (QLog.isColorLevel()) {
-      QLog.d("QidianExternalInfo", 2, "Load from server: " + toString());
+    if (QLog.isColorLevel())
+    {
+      paramExternalInfo = new StringBuilder();
+      paramExternalInfo.append("Load from server: ");
+      paramExternalInfo.append(toString());
+      QLog.d("QidianExternalInfo", 2, paramExternalInfo.toString());
     }
   }
   
@@ -156,77 +165,86 @@ public class QidianExternalInfo
   
   public void initList()
   {
-    Object localObject1;
-    Object localObject2;
     try
     {
       if (this.infoByte != null)
       {
-        mobileqq_qidian.ExternalInfo localExternalInfo = new mobileqq_qidian.ExternalInfo();
-        localExternalInfo.mergeFrom(this.infoByte);
-        if (localExternalInfo.rpt_msg_pubacc_item.has())
+        Object localObject1 = new mobileqq_qidian.ExternalInfo();
+        ((mobileqq_qidian.ExternalInfo)localObject1).mergeFrom(this.infoByte);
+        Object localObject2;
+        Object localObject3;
+        if (((mobileqq_qidian.ExternalInfo)localObject1).rpt_msg_pubacc_item.has())
         {
           this.mPubAccItems = new ArrayList();
-          localObject1 = localExternalInfo.rpt_msg_pubacc_item.get().iterator();
+          localObject2 = ((mobileqq_qidian.ExternalInfo)localObject1).rpt_msg_pubacc_item.get().iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            localObject3 = (mobileqq_qidian.PubAccItem)((Iterator)localObject2).next();
+            this.mPubAccItems.add(new PublicAccountItem((mobileqq_qidian.PubAccItem)localObject3));
+          }
+        }
+        if (((mobileqq_qidian.ExternalInfo)localObject1).rpt_msg_pubacc_item_corp.has())
+        {
+          this.mPubAccItemsCorp = new ArrayList();
+          localObject2 = ((mobileqq_qidian.ExternalInfo)localObject1).rpt_msg_pubacc_item_corp.get().iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            localObject3 = (mobileqq_qidian.PubAccItem)((Iterator)localObject2).next();
+            this.mPubAccItemsCorp.add(new PublicAccountItem((mobileqq_qidian.PubAccItem)localObject3));
+          }
+        }
+        if (((mobileqq_qidian.ExternalInfo)localObject1).rpt_msg_group_item.has())
+        {
+          this.mGroupItems = new ArrayList();
+          localObject2 = ((mobileqq_qidian.ExternalInfo)localObject1).rpt_msg_group_item.get().iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            localObject3 = (mobileqq_qidian.GroupItem)((Iterator)localObject2).next();
+            this.mGroupItems.add(new GroupItem((mobileqq_qidian.GroupItem)localObject3));
+          }
+        }
+        if (((mobileqq_qidian.ExternalInfo)localObject1).rpt_msg_group_item_corp.has())
+        {
+          this.mGroupItemsCorp = new ArrayList();
+          localObject2 = ((mobileqq_qidian.ExternalInfo)localObject1).rpt_msg_group_item_corp.get().iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            localObject3 = (mobileqq_qidian.GroupItem)((Iterator)localObject2).next();
+            this.mGroupItemsCorp.add(new GroupItem((mobileqq_qidian.GroupItem)localObject3));
+          }
+        }
+        if (((mobileqq_qidian.ExternalInfo)localObject1).rpt_msg_company_show_case_info.has())
+        {
+          this.mCompanyShowCaseInfos = new ArrayList();
+          localObject1 = ((mobileqq_qidian.ExternalInfo)localObject1).rpt_msg_company_show_case_info.get().iterator();
           while (((Iterator)localObject1).hasNext())
           {
-            localObject2 = (mobileqq_qidian.PubAccItem)((Iterator)localObject1).next();
-            this.mPubAccItems.add(new PublicAccountItem((mobileqq_qidian.PubAccItem)localObject2));
+            localObject2 = (mobileqq_qidian.CompanyShowCaseInfo)((Iterator)localObject1).next();
+            this.mCompanyShowCaseInfos.add(new CompanyShowCaseInfo((mobileqq_qidian.CompanyShowCaseInfo)localObject2));
           }
         }
       }
-      else
-      {
-        return;
-      }
+      return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
     }
-    for (;;)
+  }
+  
+  public boolean isExternalMobileVerified()
+  {
+    return (this.externalOidbflag & 0x8) == 8L;
+  }
+  
+  public void setExternalMobileVerified(boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-      if (localException.rpt_msg_pubacc_item_corp.has())
-      {
-        this.mPubAccItemsCorp = new ArrayList();
-        localObject1 = localException.rpt_msg_pubacc_item_corp.get().iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (mobileqq_qidian.PubAccItem)((Iterator)localObject1).next();
-          this.mPubAccItemsCorp.add(new PublicAccountItem((mobileqq_qidian.PubAccItem)localObject2));
-        }
-      }
-      if (localException.rpt_msg_group_item.has())
-      {
-        this.mGroupItems = new ArrayList();
-        localObject1 = localException.rpt_msg_group_item.get().iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (mobileqq_qidian.GroupItem)((Iterator)localObject1).next();
-          this.mGroupItems.add(new GroupItem((mobileqq_qidian.GroupItem)localObject2));
-        }
-      }
-      if (localException.rpt_msg_group_item_corp.has())
-      {
-        this.mGroupItemsCorp = new ArrayList();
-        localObject1 = localException.rpt_msg_group_item_corp.get().iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (mobileqq_qidian.GroupItem)((Iterator)localObject1).next();
-          this.mGroupItemsCorp.add(new GroupItem((mobileqq_qidian.GroupItem)localObject2));
-        }
-      }
-      if (localException.rpt_msg_company_show_case_info.has())
-      {
-        this.mCompanyShowCaseInfos = new ArrayList();
-        Iterator localIterator = localException.rpt_msg_company_show_case_info.get().iterator();
-        while (localIterator.hasNext())
-        {
-          localObject1 = (mobileqq_qidian.CompanyShowCaseInfo)localIterator.next();
-          this.mCompanyShowCaseInfos.add(new CompanyShowCaseInfo((mobileqq_qidian.CompanyShowCaseInfo)localObject1));
-        }
-      }
+      this.externalOidbflag |= 0x8;
+      return;
     }
+    this.externalOidbflag &= 0xFFFFFFF7;
   }
   
   public mobileqq_qidian.ExternalInfo to()
@@ -244,56 +262,61 @@ public class QidianExternalInfo
     localExternalInfo.str_external_job.set(this.job);
     localExternalInfo.str_external_tel.set(this.tel);
     localExternalInfo.str_external_mobile.set(this.mobile);
+    localExternalInfo.uint64_external_oidbflag.set(this.externalOidbflag);
     localExternalInfo.str_external_mail.set(this.mail);
-    Iterator localIterator;
-    Object localObject;
-    if (this.mPubAccItems != null)
+    Object localObject1 = this.mPubAccItems;
+    Object localObject2;
+    if (localObject1 != null)
     {
-      localIterator = this.mPubAccItems.iterator();
-      while (localIterator.hasNext())
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject = (PublicAccountItem)localIterator.next();
-        localExternalInfo.rpt_msg_pubacc_item.add(((PublicAccountItem)localObject).a());
+        localObject2 = (PublicAccountItem)((Iterator)localObject1).next();
+        localExternalInfo.rpt_msg_pubacc_item.add(((PublicAccountItem)localObject2).a());
       }
     }
-    if (this.mPubAccItemsCorp != null)
+    localObject1 = this.mPubAccItemsCorp;
+    if (localObject1 != null)
     {
-      localIterator = this.mPubAccItemsCorp.iterator();
-      while (localIterator.hasNext())
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject = (PublicAccountItem)localIterator.next();
-        if (localObject != null) {
-          localExternalInfo.rpt_msg_pubacc_item_corp.add(((PublicAccountItem)localObject).a());
+        localObject2 = (PublicAccountItem)((Iterator)localObject1).next();
+        if (localObject2 != null) {
+          localExternalInfo.rpt_msg_pubacc_item_corp.add(((PublicAccountItem)localObject2).a());
         }
       }
     }
-    if (this.mGroupItems != null)
+    localObject1 = this.mGroupItems;
+    if (localObject1 != null)
     {
-      localIterator = this.mGroupItems.iterator();
-      while (localIterator.hasNext())
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject = (GroupItem)localIterator.next();
-        localExternalInfo.rpt_msg_group_item.add(((GroupItem)localObject).a());
+        localObject2 = (GroupItem)((Iterator)localObject1).next();
+        localExternalInfo.rpt_msg_group_item.add(((GroupItem)localObject2).a());
       }
     }
-    if (this.mGroupItemsCorp != null)
+    localObject1 = this.mGroupItemsCorp;
+    if (localObject1 != null)
     {
-      localIterator = this.mGroupItemsCorp.iterator();
-      while (localIterator.hasNext())
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject = (GroupItem)localIterator.next();
-        if (localObject != null) {
-          localExternalInfo.rpt_msg_group_item_corp.add(((GroupItem)localObject).a());
+        localObject2 = (GroupItem)((Iterator)localObject1).next();
+        if (localObject2 != null) {
+          localExternalInfo.rpt_msg_group_item_corp.add(((GroupItem)localObject2).a());
         }
       }
     }
-    if (this.mCompanyShowCaseInfos != null)
+    localObject1 = this.mCompanyShowCaseInfos;
+    if (localObject1 != null)
     {
-      localIterator = this.mCompanyShowCaseInfos.iterator();
-      while (localIterator.hasNext())
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject = (CompanyShowCaseInfo)localIterator.next();
-        localExternalInfo.rpt_msg_company_show_case_info.add(((CompanyShowCaseInfo)localObject).a());
+        localObject2 = (CompanyShowCaseInfo)((Iterator)localObject1).next();
+        localExternalInfo.rpt_msg_company_show_case_info.add(((CompanyShowCaseInfo)localObject2).a());
       }
     }
     localExternalInfo.uint64_master_uin.set(Long.parseLong(this.masterUin));
@@ -326,34 +349,43 @@ public class QidianExternalInfo
       if (!TextUtils.isEmpty(paramQidianExternalInfo.mobile)) {
         this.mobile = paramQidianExternalInfo.mobile;
       }
+      this.externalOidbflag = paramQidianExternalInfo.externalOidbflag;
       if (!TextUtils.isEmpty(paramQidianExternalInfo.mail)) {
         this.mail = paramQidianExternalInfo.mail;
       }
-      if (paramQidianExternalInfo.country > 0L) {
-        this.country = paramQidianExternalInfo.country;
+      long l = paramQidianExternalInfo.country;
+      if (l > 0L) {
+        this.country = l;
       }
-      if (paramQidianExternalInfo.province > 0L) {
-        this.province = paramQidianExternalInfo.province;
+      l = paramQidianExternalInfo.province;
+      if (l > 0L) {
+        this.province = l;
       }
-      if (paramQidianExternalInfo.city > 0L) {
-        this.city = paramQidianExternalInfo.city;
+      l = paramQidianExternalInfo.city;
+      if (l > 0L) {
+        this.city = l;
       }
-      if (paramQidianExternalInfo.district > 0L) {
-        this.district = paramQidianExternalInfo.district;
+      l = paramQidianExternalInfo.district;
+      if (l > 0L) {
+        this.district = l;
       }
       this.isShowCall = paramQidianExternalInfo.isShowCall;
       this.isShowVideoCall = paramQidianExternalInfo.isShowVideoCall;
-      if (paramQidianExternalInfo.mPubAccItems != null) {
-        this.mPubAccItems = paramQidianExternalInfo.mPubAccItems;
+      List localList = paramQidianExternalInfo.mPubAccItems;
+      if (localList != null) {
+        this.mPubAccItems = localList;
       }
-      if (paramQidianExternalInfo.mPubAccItemsCorp != null) {
-        this.mPubAccItemsCorp = paramQidianExternalInfo.mPubAccItemsCorp;
+      localList = paramQidianExternalInfo.mPubAccItemsCorp;
+      if (localList != null) {
+        this.mPubAccItemsCorp = localList;
       }
-      if (paramQidianExternalInfo.mGroupItems != null) {
-        this.mGroupItems = paramQidianExternalInfo.mGroupItems;
+      localList = paramQidianExternalInfo.mGroupItems;
+      if (localList != null) {
+        this.mGroupItems = localList;
       }
-      if (paramQidianExternalInfo.mGroupItemsCorp != null) {
-        this.mGroupItemsCorp = paramQidianExternalInfo.mGroupItemsCorp;
+      localList = paramQidianExternalInfo.mGroupItemsCorp;
+      if (localList != null) {
+        this.mGroupItemsCorp = localList;
       }
       this.mCompanyShowCaseInfos = paramQidianExternalInfo.mCompanyShowCaseInfos;
       this.verity = paramQidianExternalInfo.verity;
@@ -366,7 +398,7 @@ public class QidianExternalInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.data.QidianExternalInfo
  * JD-Core Version:    0.7.0.1
  */

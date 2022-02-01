@@ -1,9 +1,8 @@
 package com.tencent.biz.qcircleshadow.lib.variation;
 
 import com.tencent.mobileqq.config.api.IAppSettingApi;
-import com.tencent.mobileqq.qcircle.api.impl.QCircleServiceImpl;
-import com.tencent.mobileqq.qcircle.tempapi.api.IQZoneService;
 import com.tencent.mobileqq.qroute.QRoute;
+import cooperation.qzone.QUA;
 
 public class HostAppSettingUtil
 {
@@ -34,7 +33,7 @@ public class HostAppSettingUtil
   
   public static String getVersionForPic()
   {
-    return QCircleServiceImpl.getQZoneService().getVersionForPic();
+    return QUA.getVersionForPic();
   }
   
   public static boolean isDebugVersion()
@@ -59,7 +58,7 @@ public class HostAppSettingUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.variation.HostAppSettingUtil
  * JD-Core Version:    0.7.0.1
  */

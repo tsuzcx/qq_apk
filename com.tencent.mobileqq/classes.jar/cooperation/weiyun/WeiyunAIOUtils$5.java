@@ -3,10 +3,10 @@ package cooperation.weiyun;
 import android.app.Activity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.wifi.FreeWifiDialogListener;
+import com.tencent.mobileqq.wifi.FreeWifiHelper.FreeWifiDialogListener;
 
 final class WeiyunAIOUtils$5
-  implements FreeWifiDialogListener
+  implements FreeWifiHelper.FreeWifiDialogListener
 {
   WeiyunAIOUtils$5(QQAppInterface paramQQAppInterface, Activity paramActivity, DataLineMsgRecord paramDataLineMsgRecord) {}
   
@@ -17,7 +17,7 @@ final class WeiyunAIOUtils$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.weiyun.WeiyunAIOUtils.5
  * JD-Core Version:    0.7.0.1
  */

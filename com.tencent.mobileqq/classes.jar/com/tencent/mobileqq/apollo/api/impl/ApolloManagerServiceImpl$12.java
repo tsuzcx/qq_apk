@@ -1,59 +1,58 @@
 package com.tencent.mobileqq.apollo.api.impl;
 
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.api.aio.CmShowAioMatcher;
-import com.tencent.mobileqq.apollo.handler.ApolloGetBattleGameListVasHandler;
-import com.tencent.mobileqq.apollo.task.ApolloMsgPlayController;
-import com.tencent.mobileqq.apollo.utils.CmShowWnsUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.studymode.StudyModeManager;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.model.ApolloActionData;
+import com.tencent.mobileqq.apollo.player.CMSPlayer;
+import com.tencent.mobileqq.apollo.player.GetFrameCallback;
+import com.tencent.mobileqq.apollo.player.action.CMSAction;
+import com.tencent.mobileqq.apollo.player.action.CMSPanelAction;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.HashSet;
 
 class ApolloManagerServiceImpl$12
   implements Runnable
 {
-  ApolloManagerServiceImpl$12(ApolloManagerServiceImpl paramApolloManagerServiceImpl, SessionInfo paramSessionInfo) {}
+  ApolloManagerServiceImpl$12(ApolloManagerServiceImpl paramApolloManagerServiceImpl, ApolloActionData paramApolloActionData, GetFrameCallback paramGetFrameCallback) {}
   
   public void run()
   {
-    try
+    Object localObject;
+    if (ApolloManagerServiceImpl.access$1100().contains(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloModelApolloActionData.actionId)))
     {
-      localQQAppInterface = ApolloManagerServiceImpl.access$300(this.this$0);
-      if (localQQAppInterface == null) {
-        return;
-      }
-      if (!CmShowAioMatcher.a(this.a.jdField_a_of_type_Int, 1)) {
-        break label92;
-      }
-      this.this$0.checkUserDress(localQQAppInterface, this.a.jdField_a_of_type_JavaLangString, "C2CAIO");
-      if ((CmShowWnsUtils.h()) && (!StudyModeManager.a())) {
-        ApolloGetBattleGameListVasHandler.a(localQQAppInterface, 4021);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleCMSPlayerGetFrame has get, return,");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqApolloModelApolloActionData.actionId);
+      QLog.d("[cmshow]ApolloManager", 1, ((StringBuilder)localObject).toString());
+      return;
+    }
+    ApolloManagerServiceImpl.access$1100().add(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloModelApolloActionData.actionId));
+    if (this.this$0.isCMSPanelPicExists(this.jdField_a_of_type_ComTencentMobileqqApolloModelApolloActionData))
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqApolloPlayerGetFrameCallback;
+      if (localObject != null) {
+        ((GetFrameCallback)localObject).a(true, null, null);
       }
     }
-    catch (Exception localException)
+    else
     {
-      QQAppInterface localQQAppInterface;
-      while (QLog.isColorLevel())
+      localObject = ApolloManagerServiceImpl.access$200(this.this$0);
+      if (localObject == null)
       {
-        QLog.e("ApolloManager", 2, "doAfterOpenAIO error", localException);
+        QLog.e("[cmshow]ApolloManager", 1, "handleCMSPlayerGetFrame getFrameImage error, appInterface is null!");
         return;
-        label92:
-        if (CmShowAioMatcher.a(this.a.jdField_a_of_type_Int, 2))
-        {
-          this.this$0.bulkUpdateUserDress();
-          if ((CmShowWnsUtils.i()) && (!StudyModeManager.a())) {
-            ApolloGetBattleGameListVasHandler.a(localException, 4022);
-          }
-        }
       }
+      localObject = ((AppInterface)localObject).getAccount();
+      localObject = new CMSPanelAction(this.jdField_a_of_type_ComTencentMobileqqApolloModelApolloActionData, (String)localObject);
+      ApolloManagerServiceImpl.FrameCallback localFrameCallback = new ApolloManagerServiceImpl.FrameCallback(this.jdField_a_of_type_ComTencentMobileqqApolloModelApolloActionData, this.jdField_a_of_type_ComTencentMobileqqApolloPlayerGetFrameCallback);
+      ApolloManagerServiceImpl.access$1200().put(localObject, localFrameCallback);
+      ApolloManagerServiceImpl.access$1400(this.this$0).a((CMSAction)localObject, ApolloManagerServiceImpl.access$1300(this.this$0), localFrameCallback);
     }
-    ApolloMsgPlayController.a().a(localQQAppInterface, this.a);
-    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.api.impl.ApolloManagerServiceImpl.12
  * JD-Core Version:    0.7.0.1
  */

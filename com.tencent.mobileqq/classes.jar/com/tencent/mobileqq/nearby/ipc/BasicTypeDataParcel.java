@@ -38,9 +38,13 @@ public class BasicTypeDataParcel
     if (this.jdField_a_of_type_ArrayOfJavaLangObject != null)
     {
       int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfJavaLangObject.length)
+      for (;;)
       {
-        localStringBuilder.append(this.jdField_a_of_type_ArrayOfJavaLangObject[i]);
+        Object[] arrayOfObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
+        if (i >= arrayOfObject.length) {
+          break;
+        }
+        localStringBuilder.append(arrayOfObject[i]);
         localStringBuilder.append("\n");
         i += 1;
       }
@@ -57,7 +61,7 @@ public class BasicTypeDataParcel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel
  * JD-Core Version:    0.7.0.1
  */

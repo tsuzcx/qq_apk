@@ -35,16 +35,21 @@ class u
   private void b(Bundle paramBundle, Object paramObject)
   {
     a();
-    boolean bool = false;
+    boolean bool;
     if (b())
     {
       paramBundle.putInt("callMode", paramBundle.getInt("callMode"));
       bool = this.b.a(this.a, paramBundle, this, paramObject);
     }
+    else
+    {
+      bool = false;
+    }
     if (!bool)
     {
-      if (this.c != null) {
-        this.c.stopPlayback();
+      paramObject = this.c;
+      if (paramObject != null) {
+        paramObject.stopPlayback();
       }
       if (this.c == null) {
         this.c = new VideoView(getContext());
@@ -62,63 +67,76 @@ class u
   
   void a()
   {
-    DexLoader localDexLoader = null;
     setBackgroundColor(-16777216);
     if (this.b == null)
     {
-      f.a(true).a(getContext().getApplicationContext(), false, false, null);
-      v localv = f.a(true).a();
-      if (localv != null) {
-        localDexLoader = localv.b();
+      Object localObject2 = f.a(true);
+      Context localContext = getContext().getApplicationContext();
+      localObject1 = null;
+      ((f)localObject2).a(localContext, false, false, null);
+      localObject2 = f.a(true).a();
+      if (localObject2 != null) {
+        localObject1 = ((v)localObject2).b();
       }
-      if ((localDexLoader != null) && (QbSdk.canLoadVideo(getContext()))) {
-        this.b = new w(localDexLoader);
+      if ((localObject1 != null) && (QbSdk.canLoadVideo(getContext()))) {
+        this.b = new w((DexLoader)localObject1);
       }
     }
-    if ((this.b != null) && (this.a == null)) {
-      this.a = this.b.a(getContext().getApplicationContext());
+    Object localObject1 = this.b;
+    if ((localObject1 != null) && (this.a == null)) {
+      this.a = ((w)localObject1).a(getContext().getApplicationContext());
     }
   }
   
   public void a(Activity paramActivity)
   {
-    if (b()) {}
-    do
+    if (b()) {
+      return;
+    }
+    Object localObject = this.c;
+    if (localObject != null)
     {
-      do
-      {
-        return;
-      } while (this.c == null);
-      if (this.c.getParent() == null)
+      if (((VideoView)localObject).getParent() == null)
       {
         Window localWindow = paramActivity.getWindow();
-        FrameLayout localFrameLayout = (FrameLayout)localWindow.getDecorView();
+        localObject = (FrameLayout)localWindow.getDecorView();
         localWindow.addFlags(1024);
         localWindow.addFlags(128);
-        localFrameLayout.setBackgroundColor(-16777216);
+        ((FrameLayout)localObject).setBackgroundColor(-16777216);
         paramActivity = new MediaController(paramActivity);
         paramActivity.setMediaPlayer(this.c);
         this.c.setMediaController(paramActivity);
         paramActivity = new FrameLayout.LayoutParams(-1, -1);
         paramActivity.gravity = 17;
-        localFrameLayout.addView(this.c, paramActivity);
+        ((FrameLayout)localObject).addView(this.c, paramActivity);
       }
-    } while (Build.VERSION.SDK_INT < 8);
-    this.c.start();
+      if (Build.VERSION.SDK_INT >= 8) {
+        this.c.start();
+      }
+    }
   }
   
   void a(Activity paramActivity, int paramInt)
   {
-    if ((paramInt == 3) && (!b()) && (this.c != null)) {
-      this.c.pause();
+    VideoView localVideoView;
+    if ((paramInt == 3) && (!b()))
+    {
+      localVideoView = this.c;
+      if (localVideoView != null) {
+        localVideoView.pause();
+      }
     }
     if (paramInt == 4)
     {
       this.d = null;
-      if ((!b()) && (this.c != null))
+      if (!b())
       {
-        this.c.stopPlayback();
-        this.c = null;
+        localVideoView = this.c;
+        if (localVideoView != null)
+        {
+          localVideoView.stopPlayback();
+          this.c = null;
+        }
       }
     }
     if ((paramInt == 2) && (!b()))
@@ -171,13 +189,17 @@ class u
       }
       return true;
     }
-    catch (Throwable paramMediaPlayer) {}
+    catch (Throwable paramMediaPlayer)
+    {
+      label95:
+      break label95;
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.u
  * JD-Core Version:    0.7.0.1
  */

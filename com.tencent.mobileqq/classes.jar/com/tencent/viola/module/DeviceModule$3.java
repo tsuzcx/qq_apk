@@ -24,24 +24,23 @@ class DeviceModule$3
     try
     {
       paramUri.put("volume", DeviceModule.access$300(this.this$0).getStreamVolume(3) / DeviceModule.access$400(this.this$0));
-      if (this.this$0.getViolaInstance() != null) {
-        ViolaBridgeManager.getInstance().callbackJavascript(this.this$0.getViolaInstance().getInstanceId(), "device", "callback", this.val$callback, paramUri, true);
-      }
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        ViolaLogUtils.e("brightnessChange", "volumeChange error:" + localException.getMessage());
-        localException.printStackTrace();
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("volumeChange error:");
+      localStringBuilder.append(localException.getMessage());
+      ViolaLogUtils.e("brightnessChange", localStringBuilder.toString());
+      localException.printStackTrace();
+    }
+    if (this.this$0.getViolaInstance() != null) {
+      ViolaBridgeManager.getInstance().callbackJavascript(this.this$0.getViolaInstance().getInstanceId(), "device", "callback", this.val$callback, paramUri, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.module.DeviceModule.3
  * JD-Core Version:    0.7.0.1
  */

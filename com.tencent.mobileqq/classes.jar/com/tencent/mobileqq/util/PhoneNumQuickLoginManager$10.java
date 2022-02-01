@@ -28,7 +28,7 @@ final class PhoneNumQuickLoginManager$10
     }
     paramMap = (byte[])paramMap.get("login_tvl_value");
     localObject2 = LoginAccountFragment.a(1, this.a);
-    PhoneNumQuickLoginManager.a((Activity)localObject1, HardCodeUtil.a(2131699077), HardCodeUtil.a(2131706373), paramAccountInfo, (Bundle)localObject2, paramMap, 2020);
+    PhoneNumQuickLoginManager.a((Activity)localObject1, HardCodeUtil.a(2131699184), HardCodeUtil.a(2131706424), paramAccountInfo, (Bundle)localObject2, paramMap, 2020);
     PhoneNumQuickLoginManager.b("0X800B8D3");
     paramDialog.setOnDismissListener(null);
     paramDialog.dismiss();
@@ -36,7 +36,7 @@ final class PhoneNumQuickLoginManager$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.PhoneNumQuickLoginManager.10
  * JD-Core Version:    0.7.0.1
  */

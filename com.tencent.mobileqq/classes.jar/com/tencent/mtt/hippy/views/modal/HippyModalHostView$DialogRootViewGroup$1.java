@@ -10,14 +10,15 @@ class HippyModalHostView$DialogRootViewGroup$1
   
   public void run()
   {
-    if ((this.val$engineContext != null) && (this.val$engineContext.getDomManager() != null)) {
+    HippyEngineContext localHippyEngineContext = this.val$engineContext;
+    if ((localHippyEngineContext != null) && (localHippyEngineContext.getDomManager() != null)) {
       this.val$engineContext.getDomManager().updateNodeSize(this.val$id, this.val$width, this.val$height);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.modal.HippyModalHostView.DialogRootViewGroup.1
  * JD-Core Version:    0.7.0.1
  */

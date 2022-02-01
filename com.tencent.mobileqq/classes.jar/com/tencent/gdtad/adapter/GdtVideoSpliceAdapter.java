@@ -12,19 +12,19 @@ public class GdtVideoSpliceAdapter
 {
   public AdError show(AdVideoSpliceAdapter.Params paramParams)
   {
-    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
+    if ((paramParams != null) && (paramParams.isValid()) && ((paramParams.ad instanceof GdtAd)))
     {
-      GdtLog.d("GdtVideoSpliceAdapter", "show error");
-      return new AdError(4);
+      GdtLog.b("GdtVideoSpliceAdapter", "show");
+      new TransitionContext(paramParams).b();
+      return new AdError(0);
     }
-    GdtLog.b("GdtVideoSpliceAdapter", "show");
-    new TransitionContext(paramParams).b();
-    return new AdError(0);
+    GdtLog.d("GdtVideoSpliceAdapter", "show error");
+    return new AdError(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtVideoSpliceAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -42,13 +42,10 @@ public class TroopRecommendReport
     StringBuilder localStringBuilder4 = new StringBuilder();
     JSONObject localJSONObject = new JSONObject();
     int i = 0;
-    if (i < paramList.size())
+    while (i < paramList.size())
     {
-      if (paramList.get(i) == null) {}
-      for (;;)
+      if (paramList.get(i) != null)
       {
-        i += 1;
-        break;
         if (i > 0)
         {
           localStringBuilder1.append(",");
@@ -61,6 +58,7 @@ public class TroopRecommendReport
         localStringBuilder3.append(((RecommendPerson)paramList.get(i)).recommendALghrithm);
         localStringBuilder4.append(((RecommendPerson)paramList.get(i)).recommendRecall);
       }
+      i += 1;
     }
     try
     {
@@ -73,11 +71,12 @@ public class TroopRecommendReport
     }
     catch (JSONException paramList)
     {
-      for (;;)
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopMemberRecommend.Report", 2, "reportRecommend error: " + paramList.getMessage());
-        }
+        localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("reportRecommend error: ");
+        localStringBuilder1.append(paramList.getMessage());
+        QLog.i("TroopMemberRecommend.Report", 2, localStringBuilder1.toString());
       }
     }
     ReportController.b(paramQQAppInterface, "dc00898", "", paramString2, "frd_recom", paramString1, paramInt2, paramInt1, String.valueOf(paramInt3), "", localJSONObject.toString(), "");
@@ -85,7 +84,7 @@ public class TroopRecommendReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.TroopRecommendReport
  * JD-Core Version:    0.7.0.1
  */

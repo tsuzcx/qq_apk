@@ -1,12 +1,14 @@
 package com.tencent.mobileqq.transfile;
 
+import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.GifDrawable;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.transfile.bitmapcreator.ExifBitmapCreator;
+import com.tencent.mobileqq.transfile.report.ProcessorReport;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
@@ -18,9 +20,9 @@ public class AIOPhotoImageDownloader
 {
   private static final String TAG = "AIOPhotoImageDownloader";
   
-  public AIOPhotoImageDownloader(BaseApplicationImpl paramBaseApplicationImpl)
+  public AIOPhotoImageDownloader(BaseApplication paramBaseApplication)
   {
-    super("AIOPhotoImageDownloader", paramBaseApplicationImpl);
+    super(paramBaseApplication);
   }
   
   public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
@@ -29,46 +31,68 @@ public class AIOPhotoImageDownloader
     {
       paramURLDrawableHandler.publishProgress(9900);
       paramURLDrawableHandler = paramDownloadParams.urlStr;
-      boolean bool = "aiothumb".equals(paramDownloadParams.url.getProtocol());
-      if (QLog.isColorLevel()) {
-        log("AIOPhotoImageDownloader", "DecodeFile", "DecodeFile START,cacheFile=" + paramFile.getAbsolutePath() + ",url=" + paramURLDrawableHandler);
-      }
-      if ((GifDrawable.isGifFile(paramFile)) && (!bool))
+      boolean bool1 = "aiothumb".equals(paramDownloadParams.url.getProtocol());
+      boolean bool2 = QLog.isColorLevel();
+      if (bool2)
       {
-        if (!QLog.isColorLevel()) {
-          break label332;
-        }
-        log("AIOPhotoImageDownloader", "DecodeFile", "DecodeFile END,GIF image,cacheFile=" + paramFile.getAbsolutePath() + ",url=" + paramURLDrawableHandler);
-        return null;
+        paramDownloadParams = new StringBuilder();
+        paramDownloadParams.append("DecodeFile START,cacheFile=");
+        paramDownloadParams.append(paramFile.getAbsolutePath());
+        paramDownloadParams.append(",url=");
+        paramDownloadParams.append(paramURLDrawableHandler);
+        log("AIOPhotoImageDownloader", "DecodeFile", paramDownloadParams.toString());
       }
-      paramDownloadParams = new BitmapFactory.Options();
-      paramDownloadParams.inPreferredConfig = URLDrawableHelper.mConfig;
-      paramDownloadParams.inDensity = 160;
-      paramDownloadParams.inTargetDensity = 160;
-      paramDownloadParams.inScreenDensity = 160;
-      if (bool) {
-        try
+      if ((GifDrawable.isGifFile(paramFile)) && (!bool1))
+      {
+        if (QLog.isColorLevel())
         {
-          paramDownloadParams.inJustDecodeBounds = false;
-          paramDownloadParams = BitmapFactory.decodeFile(paramFile.getAbsolutePath(), paramDownloadParams);
-          if (paramDownloadParams != null) {
-            return new ExifBitmapCreator(paramFile.getAbsolutePath()).creatBitmap(paramDownloadParams);
+          paramDownloadParams = new StringBuilder();
+          paramDownloadParams.append("DecodeFile END,GIF image,cacheFile=");
+          paramDownloadParams.append(paramFile.getAbsolutePath());
+          paramDownloadParams.append(",url=");
+          paramDownloadParams.append(paramURLDrawableHandler);
+          log("AIOPhotoImageDownloader", "DecodeFile", paramDownloadParams.toString());
+          return null;
+        }
+      }
+      else
+      {
+        paramDownloadParams = new BitmapFactory.Options();
+        paramDownloadParams.inPreferredConfig = Bitmap.Config.ARGB_8888;
+        paramDownloadParams.inDensity = 160;
+        paramDownloadParams.inTargetDensity = 160;
+        paramDownloadParams.inScreenDensity = 160;
+        if (bool1) {
+          try
+          {
+            paramDownloadParams.inJustDecodeBounds = false;
+            paramDownloadParams = BitmapFactory.decodeFile(paramFile.getAbsolutePath(), paramDownloadParams);
+            if (paramDownloadParams != null) {
+              return new ExifBitmapCreator(paramFile.getAbsolutePath()).creatBitmap(paramDownloadParams);
+            }
+            paramFile.delete();
+            throw new IOException("step:decode error, not valid pic");
           }
-          paramFile.delete();
-          throw new IOException("step:decode error, not valid pic");
+          catch (OutOfMemoryError paramFile)
+          {
+            throw paramFile;
+          }
         }
-        catch (OutOfMemoryError paramFile)
+        if (QLog.isColorLevel())
         {
-          throw paramFile;
+          paramDownloadParams = new StringBuilder();
+          paramDownloadParams.append("DecodeFile END,is not Thumb,cacheFile=");
+          paramDownloadParams.append(paramFile.getAbsolutePath());
+          paramDownloadParams.append(",url=");
+          paramDownloadParams.append(paramURLDrawableHandler);
+          log("AIOPhotoImageDownloader", "DecodeFile", paramDownloadParams.toString());
         }
-      }
-      if (!QLog.isColorLevel()) {
-        break label332;
+        return null;
       }
     }
     catch (Exception paramURLDrawableHandler)
     {
-      paramDownloadParams = BaseTransProcessor.getExceptionMessage(paramURLDrawableHandler);
+      paramDownloadParams = ProcessorReport.getExceptionMessage(paramURLDrawableHandler);
       if (paramDownloadParams != null)
       {
         paramFile = paramDownloadParams;
@@ -81,12 +105,13 @@ public class AIOPhotoImageDownloader
       if (QLog.isColorLevel())
       {
         QLog.e("AIOPhotoImageDownloader", 2, paramFile);
-        log("AIOPhotoImageDownloader", "DecodeFile", "DecodeFile FAIL,exceptionmsg:" + paramFile);
+        paramDownloadParams = new StringBuilder();
+        paramDownloadParams.append("DecodeFile FAIL,exceptionmsg:");
+        paramDownloadParams.append(paramFile);
+        log("AIOPhotoImageDownloader", "DecodeFile", paramDownloadParams.toString());
       }
       throw paramURLDrawableHandler;
     }
-    log("AIOPhotoImageDownloader", "DecodeFile", "DecodeFile END,is not Thumb,cacheFile=" + paramFile.getAbsolutePath() + ",url=" + paramURLDrawableHandler);
-    label332:
     return null;
   }
   
@@ -97,7 +122,7 @@ public class AIOPhotoImageDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.AIOPhotoImageDownloader
  * JD-Core Version:    0.7.0.1
  */

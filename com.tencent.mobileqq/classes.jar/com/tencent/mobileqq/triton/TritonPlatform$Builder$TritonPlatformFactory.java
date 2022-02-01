@@ -18,7 +18,7 @@ public abstract interface TritonPlatform$Builder$TritonPlatformFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.TritonPlatform.Builder.TritonPlatformFactory
  * JD-Core Version:    0.7.0.1
  */

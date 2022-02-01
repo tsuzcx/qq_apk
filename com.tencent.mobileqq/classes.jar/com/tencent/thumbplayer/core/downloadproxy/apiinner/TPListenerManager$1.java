@@ -16,32 +16,43 @@ class TPListenerManager$1
   
   public void run()
   {
-    Object localObject1 = TPListenerManager.access$200(this.this$0);
-    try
+    synchronized ()
     {
-      localObject1 = ((Map)localObject1).entrySet().iterator();
-      while (((Iterator)localObject1).hasNext())
+      Object localObject2 = TPListenerManager.access$300(this.this$0);
+      try
       {
-        Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
-        int i = ((Integer)((Map.Entry)localObject2).getKey()).intValue();
-        localObject2 = (ITPPlayListener)((Map.Entry)localObject2).getValue();
-        int j = (int)(((ITPPlayListener)localObject2).getCurrentPosition() / 1000L);
-        int k = (int)(((ITPPlayListener)localObject2).getPlayerBufferLength() / 1000L);
-        int m = (int)(((ITPPlayListener)localObject2).getAdvRemainTime() / 1000L);
-        TPDownloadProxyNative.getInstance().updatePlayerPlayMsg(i, j, k, m);
+        ??? = ((Map)localObject2).entrySet().iterator();
+        while (((Iterator)???).hasNext())
+        {
+          localObject2 = (Map.Entry)((Iterator)???).next();
+          int i = ((Integer)((Map.Entry)localObject2).getKey()).intValue();
+          localObject2 = (ITPPlayListener)((Map.Entry)localObject2).getValue();
+          int j = (int)(((ITPPlayListener)localObject2).getCurrentPosition() / 1000L);
+          int k = (int)(((ITPPlayListener)localObject2).getPlayerBufferLength() / 1000L);
+          int m = (int)(((ITPPlayListener)localObject2).getAdvRemainTime() / 1000L);
+          TPDownloadProxyNative.getInstance().updatePlayerPlayMsg(i, j, k, m);
+        }
+        TPListenerManager.access$600(this.this$0).postDelayed(TPListenerManager.access$400(this.this$0), TPListenerManager.access$500(this.this$0));
+        return;
       }
-      TPListenerManager.access$400(this.this$0).postDelayed(TPListenerManager.access$300(this.this$0), 1000L);
+      catch (Throwable localThrowable)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("updatePlayerInfo failed, error:");
+        ((StringBuilder)localObject2).append(localThrowable.toString());
+        TPDLProxyLog.e("TPListenerManager", 0, "tpdlnative", ((StringBuilder)localObject2).toString());
+        return;
+      }
     }
-    catch (Throwable localThrowable)
+    for (;;)
     {
-      TPDLProxyLog.e("TPListenerManager", 0, "tpdlnative", "updatePlayerInfo failed, error:" + localThrowable.toString());
-      return;
+      throw localObject3;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.apiinner.TPListenerManager.1
  * JD-Core Version:    0.7.0.1
  */

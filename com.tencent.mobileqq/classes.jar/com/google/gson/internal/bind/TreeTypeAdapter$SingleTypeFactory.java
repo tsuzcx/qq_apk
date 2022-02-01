@@ -19,58 +19,54 @@ final class TreeTypeAdapter$SingleTypeFactory
   
   TreeTypeAdapter$SingleTypeFactory(Object paramObject, TypeToken<?> paramTypeToken, boolean paramBoolean, Class<?> paramClass)
   {
-    JsonSerializer localJsonSerializer;
-    if ((paramObject instanceof JsonSerializer))
-    {
-      localJsonSerializer = (JsonSerializer)paramObject;
-      this.serializer = localJsonSerializer;
-      if (!(paramObject instanceof JsonDeserializer)) {
-        break label85;
-      }
-      paramObject = (JsonDeserializer)paramObject;
-      label35:
-      this.deserializer = paramObject;
-      if ((this.serializer == null) && (this.deserializer == null)) {
-        break label90;
-      }
+    boolean bool = paramObject instanceof JsonSerializer;
+    Object localObject2 = null;
+    if (bool) {
+      localObject1 = (JsonSerializer)paramObject;
+    } else {
+      localObject1 = null;
     }
-    label85:
-    label90:
-    for (boolean bool = true;; bool = false)
-    {
-      .Gson.Preconditions.checkArgument(bool);
-      this.exactType = paramTypeToken;
-      this.matchRawType = paramBoolean;
-      this.hierarchyType = paramClass;
-      return;
-      localJsonSerializer = null;
-      break;
-      paramObject = null;
-      break label35;
+    this.serializer = ((JsonSerializer)localObject1);
+    Object localObject1 = localObject2;
+    if ((paramObject instanceof JsonDeserializer)) {
+      localObject1 = (JsonDeserializer)paramObject;
     }
+    this.deserializer = ((JsonDeserializer)localObject1);
+    if ((this.serializer == null) && (this.deserializer == null)) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    .Gson.Preconditions.checkArgument(bool);
+    this.exactType = paramTypeToken;
+    this.matchRawType = paramBoolean;
+    this.hierarchyType = paramClass;
   }
   
   public <T> TypeAdapter<T> create(Gson paramGson, TypeToken<T> paramTypeToken)
   {
+    TypeToken localTypeToken = this.exactType;
     boolean bool;
-    if (this.exactType != null) {
-      if ((this.exactType.equals(paramTypeToken)) || ((this.matchRawType) && (this.exactType.getType() == paramTypeToken.getRawType()))) {
+    if (localTypeToken != null)
+    {
+      if ((!localTypeToken.equals(paramTypeToken)) && ((!this.matchRawType) || (this.exactType.getType() != paramTypeToken.getRawType()))) {
+        bool = false;
+      } else {
         bool = true;
       }
     }
-    while (bool)
-    {
-      return new TreeTypeAdapter(this.serializer, this.deserializer, paramGson, paramTypeToken, this);
-      bool = false;
-      continue;
+    else {
       bool = this.hierarchyType.isAssignableFrom(paramTypeToken.getRawType());
+    }
+    if (bool) {
+      return new TreeTypeAdapter(this.serializer, this.deserializer, paramGson, paramTypeToken, this);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal.bind.TreeTypeAdapter.SingleTypeFactory
  * JD-Core Version:    0.7.0.1
  */

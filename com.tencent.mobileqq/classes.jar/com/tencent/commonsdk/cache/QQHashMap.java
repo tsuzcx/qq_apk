@@ -33,8 +33,9 @@ public class QQHashMap<K, V>
     this.mHashMapInfo = new HashMapInfo(paramInt1, paramInt2, paramInt3);
     this.getInfos = new HashSet();
     this.creatTime = System.currentTimeMillis();
-    if (sManager != null) {
-      sManager.addHashMap(this);
+    IMemoryManager localIMemoryManager = sManager;
+    if (localIMemoryManager != null) {
+      localIMemoryManager.addHashMap(this);
     }
   }
   
@@ -61,15 +62,15 @@ public class QQHashMap<K, V>
       paramObject = this.mHashMapInfo;
       paramObject.missCount += 1;
     }
-    for (;;)
+    else
     {
-      if (this.firstUseTime == 0L) {
-        this.firstUseTime = System.currentTimeMillis();
-      }
-      return bool;
       paramObject = this.mHashMapInfo;
       paramObject.hitCount += 1;
     }
+    if (this.firstUseTime == 0L) {
+      this.firstUseTime = System.currentTimeMillis();
+    }
+    return bool;
   }
   
   public Set<Map.Entry<K, V>> entrySet()
@@ -90,24 +91,28 @@ public class QQHashMap<K, V>
       paramObject = this.mHashMapInfo;
       paramObject.hitCount += 1;
     }
-    for (;;)
+    else
     {
-      if (this.firstUseTime == 0L) {
-        this.firstUseTime = System.currentTimeMillis();
-      }
-      return localObject;
       paramObject = this.mHashMapInfo;
       paramObject.missCount += 1;
     }
+    if (this.firstUseTime == 0L) {
+      this.firstUseTime = System.currentTimeMillis();
+    }
+    return localObject;
   }
   
   public CacheInfo getReportCacheInfo()
   {
     this.mHashMapInfo.size = super.size();
     this.mHashMapInfo.getCount = this.getInfos.size();
-    this.mHashMapInfo.lifeTime = (System.currentTimeMillis() - this.creatTime);
-    if (this.firstUseTime != 0L) {
-      this.mHashMapInfo.gapTime = (this.firstUseTime - this.creatTime);
+    HashMapInfo localHashMapInfo = this.mHashMapInfo;
+    long l2 = System.currentTimeMillis();
+    long l1 = this.creatTime;
+    localHashMapInfo.lifeTime = (l2 - l1);
+    l2 = this.firstUseTime;
+    if (l2 != 0L) {
+      this.mHashMapInfo.gapTime = (l2 - l1);
     }
     return this.mHashMapInfo;
   }
@@ -142,15 +147,15 @@ public class QQHashMap<K, V>
       paramV = this.mHashMapInfo;
       paramV.mMemorySize -= sizeOf(paramK, localObject);
     }
-    for (;;)
+    else
     {
-      if (this.firstUseTime == 0L) {
-        this.firstUseTime = System.currentTimeMillis();
-      }
-      return localObject;
       paramK = this.mHashMapInfo;
       paramK.putCount += 1;
     }
+    if (this.firstUseTime == 0L) {
+      this.firstUseTime = System.currentTimeMillis();
+    }
+    return localObject;
   }
   
   public V remove(Object paramObject)
@@ -180,7 +185,7 @@ public class QQHashMap<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.commonsdk.cache.QQHashMap
  * JD-Core Version:    0.7.0.1
  */

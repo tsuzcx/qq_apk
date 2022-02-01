@@ -17,47 +17,43 @@ class MiniMultiForwardFragment$1
   
   public void run()
   {
-    ArrayList localArrayList = new ArrayList();
+    Object localObject = new ArrayList();
     if (MiniMultiForwardFragment.a(this.this$0) == 3)
     {
       ChatMessage localChatMessage = ((ForwardMsgManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FORWARD_MSG_MANAGER)).a(MiniMultiForwardFragment.a(this.this$0));
-      if (localChatMessage == null) {
-        break label190;
+      if (localChatMessage != null)
+      {
+        localObject = new ArrayList(1);
+        ((ArrayList)localObject).add(localChatMessage);
+        localObject = MiniMultiForwardFragment.a(this.this$0, (ArrayList)localObject);
       }
-      localArrayList = new ArrayList(1);
-      localArrayList.add(localChatMessage);
-      localArrayList = MiniMultiForwardFragment.a(this.this$0, localArrayList);
     }
-    label190:
-    for (;;)
+    else if (MiniMultiForwardFragment.a(this.this$0) == 2)
     {
-      if (localArrayList != null) {
-        ThreadManager.getUIHandler().post(new MiniMultiForwardFragment.1.1(this, localArrayList));
-      }
-      return;
-      if (MiniMultiForwardFragment.a(this.this$0) == 2)
-      {
-        localArrayList = MiniMultiForwardFragment.a(this.this$0);
-        MiniMultiForwardFragment.a(this.this$0, localArrayList);
-      }
-      else if (MiniMultiForwardFragment.a(this.this$0) == 1)
-      {
-        localArrayList = MiniMultiForwardFragment.a(this.this$0, MultiMsgManager.a().a);
-      }
-      else if (MiniMultiForwardFragment.a(this.this$0) == 4)
-      {
-        localArrayList = MiniMultiForwardFragment.a(this.this$0, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniChatAdapter);
-      }
-      else
-      {
-        QLog.e("MiniMultiForwardPreviewFragment", 2, "Forward type unknown");
-      }
+      localObject = MiniMultiForwardFragment.a(this.this$0);
+      MiniMultiForwardFragment.a(this.this$0, (ArrayList)localObject);
+    }
+    else if (MiniMultiForwardFragment.a(this.this$0) == 1)
+    {
+      localObject = MiniMultiForwardFragment.a(this.this$0, MultiMsgManager.a().a);
+    }
+    else if (MiniMultiForwardFragment.a(this.this$0) == 4)
+    {
+      localObject = this.this$0;
+      localObject = MiniMultiForwardFragment.a((MiniMultiForwardFragment)localObject, ((MiniMultiForwardFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniChatAdapter);
+    }
+    else
+    {
+      QLog.e("MiniMultiForwardPreviewFragment", 2, "Forward type unknown");
+    }
+    if (localObject != null) {
+      ThreadManager.getUIHandler().post(new MiniMultiForwardFragment.1.1(this, (ArrayList)localObject));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMultiForwardFragment.1
  * JD-Core Version:    0.7.0.1
  */

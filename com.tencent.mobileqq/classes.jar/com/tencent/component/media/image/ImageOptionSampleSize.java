@@ -14,9 +14,9 @@ public class ImageOptionSampleSize
   private static final float PREFER_QUALITY_LOWER_SCALE_RATIO = 1.2F;
   private static final float PREFER_QUALITY_UPPER_SIZE_FACTOR = 0.0625F;
   private static final int PREFER_QUALITY_UPPER_SIZE_MIN = 2097152;
-  private static int mImageUpperSize = 0;
-  private static int mMemcachesize = 0;
-  private static int mPreferQualityUpperSize = 0;
+  private static int mImageUpperSize;
+  private static int mMemcachesize;
+  private static int mPreferQualityUpperSize;
   
   private static boolean checkImageSize(int paramInt1, int paramInt2, float paramFloat, int paramInt3)
   {
@@ -28,216 +28,226 @@ public class ImageOptionSampleSize
       f = 1.0F;
     }
     paramInt3 = Math.min(mMemcachesize, paramInt3);
-    if ((int)(paramInt1 * paramInt2 / f) * 4 <= paramInt3) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    return (int)(paramInt1 * paramInt2 / f) * 4 <= paramInt3;
   }
   
   public static int computeSampleSize(ImageLoader.Options paramOptions, int paramInt1, int paramInt2)
   {
-    float f3 = 1.0F;
-    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
-      return 1;
-    }
-    int i;
-    if ((paramOptions != null) && ((paramOptions.mImageType == 3) || (paramOptions.mImageType == 4)))
+    if (paramInt1 > 0)
     {
-      i = ImageManagerEnv.g().panoramaComputeSampleSize(paramOptions, paramInt1, paramInt2);
-      if (i != -1) {
-        return i;
+      if (paramInt2 <= 0) {
+        return 1;
       }
-    }
-    if ((paramOptions != null) && (paramOptions.isNeedPieceLoad) && (RegionImageUtil.isNeedPieceLoad(paramInt1, paramInt2)))
-    {
-      ImageManagerLog.i("zehong", " computeSampleSize:  outWidth = " + paramInt1 + " outHeight = " + paramInt2);
-      i = regionDecodeComputeSampleSize(paramInt1, paramInt2);
-      if (i != -1) {
-        return i;
+      int j = -1;
+      int i;
+      if ((paramOptions != null) && ((paramOptions.mImageType == 3) || (paramOptions.mImageType == 4)))
+      {
+        i = ImageManagerEnv.g().panoramaComputeSampleSize(paramOptions, paramInt1, paramInt2);
+        if (i != -1) {
+          return i;
+        }
       }
-    }
-    int j;
-    label135:
-    boolean bool;
-    if (paramOptions == null)
-    {
-      j = -1;
+      if ((paramOptions != null) && (paramOptions.isNeedPieceLoad) && (RegionImageUtil.isNeedPieceLoad(paramInt1, paramInt2)))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" computeSampleSize:  outWidth = ");
+        localStringBuilder.append(paramInt1);
+        localStringBuilder.append(" outHeight = ");
+        localStringBuilder.append(paramInt2);
+        ImageManagerLog.i("zehong", localStringBuilder.toString());
+        i = regionDecodeComputeSampleSize(paramInt1, paramInt2);
+        if (i != -1) {
+          return i;
+        }
+      }
+      if (paramOptions == null) {
+        i = -1;
+      } else {
+        i = paramOptions.clipWidth;
+      }
       if (paramOptions != null) {
-        break label258;
+        j = paramOptions.clipHeight;
       }
-      i = -1;
-      if (paramOptions != null) {
-        break label267;
+      int n = 0;
+      boolean bool;
+      if (paramOptions == null) {
+        bool = false;
+      } else {
+        bool = paramOptions.preferQuality;
       }
-      bool = false;
-      label142:
-      if (j > 0) {
-        break label384;
-      }
-      j = ImageManagerEnv.g().getScreenWidth();
-    }
-    label384:
-    for (;;)
-    {
       int k = i;
       if (i <= 0) {
-        k = ImageManagerEnv.g().getScreenHeight();
+        k = ImageManagerEnv.g().getScreenWidth();
       }
+      int m = j;
+      if (j <= 0) {
+        m = ImageManagerEnv.g().getScreenHeight();
+      }
+      float f3 = 1.0F;
       float f1;
       float f2;
-      if (j >= paramInt1)
+      if (k >= paramInt1)
       {
+        i = n;
         f1 = f3;
-        if (k >= paramInt2) {}
+        if (m >= paramInt2) {}
       }
       else
       {
-        if (j * paramInt2 <= k * paramInt1) {
-          break label276;
+        if (k * paramInt2 > m * paramInt1)
+        {
+          f1 = paramInt1 / k;
+          f2 = paramInt2 / m;
         }
-        f1 = paramInt1 / j;
-        f2 = paramInt2 / k;
-        label213:
+        else
+        {
+          f1 = paramInt2 / m;
+          f2 = paramInt1 / k;
+        }
         if (!bool) {
-          break label294;
+          f1 = (float)Math.sqrt(f1 * f2);
         }
-        label218:
-        if (f1 >= 1.0F) {
-          break label381;
+        if (f1 < 1.0F)
+        {
+          i = n;
+          f1 = f3;
         }
-        f1 = f3;
+        else
+        {
+          i = n;
+        }
       }
-      label258:
-      label267:
-      label276:
-      label294:
-      label381:
       for (;;)
       {
-        i = 0;
-        for (;;)
-        {
-          if (f1 > 1 << i)
-          {
-            i += 1;
-            continue;
-            j = paramOptions.clipWidth;
-            break;
-            i = paramOptions.clipHeight;
-            break label135;
-            bool = paramOptions.preferQuality;
-            break label142;
-            f1 = paramInt2 / k;
-            f2 = paramInt1 / j;
-            break label213;
-            f1 = (float)Math.sqrt(f1 * f2);
-            break label218;
-          }
+        f2 = 1 << i;
+        if (f1 <= f2) {
+          break;
         }
-        if (i > 0)
+        i += 1;
+      }
+      j = i;
+      if (i > 0)
+      {
+        j = i;
+        if (f2 / f1 > 1.2F)
         {
-          f2 = 1 << i;
-          if ((f2 / f1 > 1.2F) && (checkImageSize(paramInt1, paramInt2, f2, mPreferQualityUpperSize))) {
-            i -= 1;
-          }
-        }
-        for (;;)
-        {
-          if (!checkImageSize(paramInt1, paramInt2, 1 << i, mImageUpperSize)) {
-            i += 1;
-          } else {
-            return 1 << i;
+          j = i;
+          if (checkImageSize(paramInt1, paramInt2, f2, mPreferQualityUpperSize)) {
+            j = i - 1;
           }
         }
       }
+      for (;;)
+      {
+        i = 1 << j;
+        if (checkImageSize(paramInt1, paramInt2, i, mImageUpperSize)) {
+          break;
+        }
+        j += 1;
+      }
+      return i;
     }
+    return 1;
   }
   
   private static int regionDecodeComputeSampleSize(int paramInt1, int paramInt2)
   {
-    int k = 64;
     int i = ImageManagerEnv.g().getScreenWidth();
     int j = ImageManagerEnv.g().getScreenHeight();
-    int m;
-    float f;
-    if ((paramInt1 > i) || (paramInt2 > j))
+    if ((paramInt1 <= i) && (paramInt2 <= j)) {
+      return -1;
+    }
+    int k = paramInt2 * i / paramInt1;
+    float f2;
+    if (paramInt1 >= i)
     {
-      m = paramInt2 * i / paramInt1;
-      if (paramInt1 >= i) {
-        if (paramInt2 >= m) {
-          f = i / paramInt1;
+      if (paramInt2 >= k) {}
+      do
+      {
+        f1 = i;
+        f2 = paramInt1;
+        f1 /= f2;
+        break;
+        f1 = j;
+      } while (1.5F * f1 < k);
+      f2 = paramInt2;
+    }
+    do
+    {
+      f1 /= f2;
+      break label169;
+      if (paramInt2 < j)
+      {
+        if (paramInt2 >= k)
+        {
+          f2 = paramInt1;
+          f1 = i;
+          if (1.5F * f2 < f1) {
+            break label167;
+          }
+          break;
         }
+        f2 = paramInt2;
+        f1 = j;
+        if (1.5F * f2 < f1) {
+          break label167;
+        }
+        break label164;
       }
+      if (paramInt2 <= j) {
+        break label167;
+      }
+      f2 = paramInt2;
+      f1 = j;
+    } while (f2 < 1.5F * f1);
+    label164:
+    label167:
+    float f1 = 1.0F;
+    label169:
+    int m = (int)Math.ceil(1.0F / f1);
+    i = 1;
+    if (m <= 1) {
+      return 1;
+    }
+    j = 64;
+    k = j;
+    if (m > 64)
+    {
+      i = 64;
+      k = j;
     }
     for (;;)
     {
-      m = (int)Math.ceil(1.0F / f);
-      if (m <= 1)
-      {
-        return 1;
-        if (j * 1.5F >= m)
-        {
-          f = j / paramInt2;
-          continue;
-        }
-        f = i / paramInt1;
-        continue;
-        if (paramInt2 < j)
-        {
-          if (paramInt2 >= m)
-          {
-            if (paramInt1 * 1.5F >= i) {
-              f = i / paramInt1;
-            }
-          }
-          else if (paramInt2 * 1.5F >= j) {
-            f = j / paramInt2;
-          }
-        }
-        else if ((paramInt2 > j) && (paramInt2 < j * 1.5F)) {
-          f = j / paramInt2;
-        }
+      j = i;
+      if (k == 0) {
+        break;
       }
-      else
-      {
-        if (m > 64) {
-          i = 64;
-        }
-        for (;;)
-        {
-          j = i;
-          if (k != 0)
-          {
-            j = m & k;
-            if (j == 0) {}
-          }
-          else
-          {
-            while ((paramInt2 / j > 2048) || (paramInt1 / j > 2048)) {
-              j <<= 1;
-            }
-          }
-          k >>= 1;
-          continue;
-          return j;
-          return -1;
-          i = 1;
-        }
+      j = m & k;
+      if (j != 0) {
+        break;
       }
-      f = 1.0F;
+      k >>= 1;
+    }
+    for (;;)
+    {
+      if ((paramInt2 / j <= 2048) && (paramInt1 / j <= 2048)) {
+        return j;
+      }
+      j <<= 1;
     }
   }
   
   public static void setSize(int paramInt1, int paramInt2)
   {
     mMemcachesize = paramInt2;
-    mImageUpperSize = (int)Math.max(paramInt1 * 1048576 * 0.2F, 10485760.0F);
-    mPreferQualityUpperSize = (int)Math.max(paramInt1 * 1048576 * 0.0625F, 2097152.0F);
+    float f = paramInt1 * 1048576;
+    mImageUpperSize = (int)Math.max(0.2F * f, 10485760.0F);
+    mPreferQualityUpperSize = (int)Math.max(f * 0.0625F, 2097152.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.ImageOptionSampleSize
  * JD-Core Version:    0.7.0.1
  */

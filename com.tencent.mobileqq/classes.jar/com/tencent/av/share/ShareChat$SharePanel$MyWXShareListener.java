@@ -31,43 +31,49 @@ class ShareChat$SharePanel$MyWXShareListener
   
   public void onWXShareResp(BaseResp paramBaseResp)
   {
-    QLog.w("ShareChat", 1, "onWXShareResp, mWXTransaction[" + this.jdField_a_of_type_JavaLangString + "], transaction[" + paramBaseResp.transaction + "], errCode[" + paramBaseResp.errCode + "], seq[" + this.jdField_a_of_type_Long + "]");
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)) {}
-    ShareChat.SharePanel localSharePanel;
-    Context localContext;
-    do
-    {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onWXShareResp, mWXTransaction[");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append("], transaction[");
+    ((StringBuilder)localObject).append(paramBaseResp.transaction);
+    ((StringBuilder)localObject).append("], errCode[");
+    ((StringBuilder)localObject).append(paramBaseResp.errCode);
+    ((StringBuilder)localObject).append("], seq[");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append("]");
+    QLog.w("ShareChat", 1, ((StringBuilder)localObject).toString());
+    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)) {
       return;
-      localSharePanel = (ShareChat.SharePanel)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      localContext = (Context)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-    } while ((localSharePanel == null) || (localContext == null));
-    int j;
-    int k;
-    switch (paramBaseResp.errCode)
+    }
+    localObject = (ShareChat.SharePanel)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Context localContext = (Context)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    if (localObject != null)
     {
-    case -1: 
-    default: 
-      QQToast.a(localContext, 1, localContext.getString(2131719291), 0).a();
-    case -2: 
+      if (localContext == null) {
+        return;
+      }
+      int j = paramBaseResp.errCode;
+      int i = 2;
+      if (j != -2) {
+        if (j != 0) {
+          QQToast.a(localContext, 1, localContext.getString(2131719009), 0).a();
+        } else {
+          QQToast.a(localContext, 2, localContext.getString(2131719027), 0).a();
+        }
+      }
       WXShareHelper.a().b(this);
       j = this.jdField_a_of_type_Int;
-      k = this.jdField_b_of_type_Int;
+      int k = this.jdField_b_of_type_Int;
       if (paramBaseResp.errCode != 0) {
-        break;
+        i = 3;
       }
-    }
-    for (int i = 2;; i = 3)
-    {
-      localSharePanel.a(j, k, i);
-      return;
-      QQToast.a(localContext, 2, localContext.getString(2131719309), 0).a();
-      break;
+      ((ShareChat.SharePanel)localObject).a(j, k, i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.share.ShareChat.SharePanel.MyWXShareListener
  * JD-Core Version:    0.7.0.1
  */

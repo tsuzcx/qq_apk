@@ -11,31 +11,44 @@ public class ConfigUtil
   {
     try
     {
-      String str = Build.MODEL;
-      if ((str == null) || (str.length() == 0))
+      localObject = Build.MODEL;
+      if ((localObject != null) && (((String)localObject).length() != 0))
       {
-        QLog.i("ConfigUtil", 1, "buildModel is empty,not show float items.命中禁止策略");
-        return true;
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("buildModel is '");
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append("'");
+          QLog.d("ConfigUtil", 2, localStringBuilder.toString());
+        }
+        if (paramArrayList != null)
+        {
+          if (paramArrayList.size() == 0) {
+            return false;
+          }
+          paramArrayList = paramArrayList.iterator();
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ConfigUtil", 2, "buildModel is '" + str + "'");
-      }
-      if ((paramArrayList != null) && (paramArrayList.size() != 0))
+      else
       {
-        paramArrayList = paramArrayList.iterator();
         while (paramArrayList.hasNext()) {
-          if (((String)paramArrayList.next()).equals(str))
+          if (((String)paramArrayList.next()).equals(localObject))
           {
             QLog.d("ConfigUtil", 1, "命中禁止黑名单策略");
             return true;
+            QLog.i("ConfigUtil", 1, "buildModel is empty,not show float items.命中禁止策略");
+            return true;
           }
         }
-        return false;
       }
     }
     catch (Throwable paramArrayList)
     {
-      QLog.e("ConfigUtil", 1, "黑名单检查异常 " + paramArrayList);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("黑名单检查异常 ");
+      ((StringBuilder)localObject).append(paramArrayList);
+      QLog.e("ConfigUtil", 1, ((StringBuilder)localObject).toString());
       return false;
     }
     return false;
@@ -43,7 +56,7 @@ public class ConfigUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.utils.ConfigUtil
  * JD-Core Version:    0.7.0.1
  */

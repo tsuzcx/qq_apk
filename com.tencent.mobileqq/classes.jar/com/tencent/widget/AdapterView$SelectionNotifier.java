@@ -12,14 +12,15 @@ class AdapterView$SelectionNotifier
       if (this.this$0.getAdapter() != null) {
         this.this$0.post(this);
       }
-      return;
     }
-    AdapterView.access$200(this.this$0);
+    else {
+      AdapterView.access$200(this.this$0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.AdapterView.SelectionNotifier
  * JD-Core Version:    0.7.0.1
  */

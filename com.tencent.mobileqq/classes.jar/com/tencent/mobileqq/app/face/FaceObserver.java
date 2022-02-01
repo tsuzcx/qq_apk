@@ -11,32 +11,32 @@ public class FaceObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    Object localObject = null;
-    if (paramInt == 0) {
-      if (paramObject == null)
-      {
-        paramObject = null;
-        a(paramBoolean, paramObject);
-      }
-    }
-    while (paramInt != 1) {
-      for (;;)
-      {
-        return;
+    Object localObject2 = null;
+    Object localObject1 = null;
+    if (paramInt == 0)
+    {
+      if (paramObject == null) {
+        paramObject = localObject1;
+      } else {
         paramObject = (FaceInfo)paramObject;
       }
-    }
-    if (paramObject == null) {}
-    for (paramObject = localObject;; paramObject = (FaceInfo)paramObject)
-    {
-      b(paramBoolean, paramObject);
+      a(paramBoolean, paramObject);
       return;
+    }
+    if (paramInt == 1)
+    {
+      if (paramObject == null) {
+        paramObject = localObject2;
+      } else {
+        paramObject = (FaceInfo)paramObject;
+      }
+      b(paramBoolean, paramObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceObserver
  * JD-Core Version:    0.7.0.1
  */

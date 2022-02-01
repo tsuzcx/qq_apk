@@ -19,20 +19,25 @@ class SubscriptFeedsActivity$6
       int i = this.a;
       int j = arrayOfInt[0];
       int k = this.b;
-      int m = AIOUtils.a(2.0F, this.this$0.getResources());
-      SubscriptFeedsActivity.a(this.this$0).showAsDropDown(this.this$0.rightViewText, i - j - k - m, -AIOUtils.a(5.0F, this.this$0.getResources()));
+      int m = AIOUtils.b(2.0F, this.this$0.getResources());
+      SubscriptFeedsActivity.a(this.this$0).showAsDropDown(this.this$0.rightViewText, i - j - k - m, -AIOUtils.b(5.0F, this.this$0.getResources()));
       return;
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("SubscriptFeedsActivity", 2, "showSubscriptCenterGuideWindow, " + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("showSubscriptCenterGuideWindow, ");
+        localStringBuilder.append(localException);
+        QLog.e("SubscriptFeedsActivity", 2, localStringBuilder.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.6
  * JD-Core Version:    0.7.0.1
  */

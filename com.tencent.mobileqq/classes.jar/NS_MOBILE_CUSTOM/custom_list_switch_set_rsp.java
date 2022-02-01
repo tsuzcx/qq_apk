@@ -35,14 +35,15 @@ public final class custom_list_switch_set_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iCode, 0);
-    if (this.mapExtInfo != null) {
-      paramJceOutputStream.write(this.mapExtInfo, 1);
+    Map localMap = this.mapExtInfo;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_CUSTOM.custom_list_switch_set_rsp
  * JD-Core Version:    0.7.0.1
  */

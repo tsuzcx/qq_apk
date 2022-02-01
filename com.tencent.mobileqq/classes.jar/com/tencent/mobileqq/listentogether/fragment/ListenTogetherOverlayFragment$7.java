@@ -2,7 +2,7 @@ package com.tencent.mobileqq.listentogether.fragment;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class ListenTogetherOverlayFragment$7
   implements DialogInterface.OnDismissListener
@@ -19,7 +19,7 @@ class ListenTogetherOverlayFragment$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment.7
  * JD-Core Version:    0.7.0.1
  */

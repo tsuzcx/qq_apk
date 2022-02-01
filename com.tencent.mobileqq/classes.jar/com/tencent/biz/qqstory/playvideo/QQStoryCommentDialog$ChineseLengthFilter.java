@@ -25,28 +25,27 @@ class QQStoryCommentDialog$ChineseLengthFilter
     i = paramCharSequence.length();
     paramInt1 = 0;
     paramInt2 = 0;
-    if (paramInt1 < i)
+    while (paramInt1 < i)
     {
       char c = paramCharSequence.charAt(paramInt1);
-      if (StringUtil.c(c)) {}
-      for (paramInt3 = 3;; paramInt3 = 1)
-      {
-        paramInt2 += paramInt3;
-        if (paramInt2 > paramInt4) {
-          break label154;
-        }
-        paramSpanned.append(c);
-        paramInt1 += 1;
+      if (StringUtil.c(c)) {
+        paramInt3 = 3;
+      } else {
+        paramInt3 = 1;
+      }
+      paramInt2 += paramInt3;
+      if (paramInt2 > paramInt4) {
         break;
       }
+      paramSpanned.append(c);
+      paramInt1 += 1;
     }
-    label154:
     return paramSpanned.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.QQStoryCommentDialog.ChineseLengthFilter
  * JD-Core Version:    0.7.0.1
  */

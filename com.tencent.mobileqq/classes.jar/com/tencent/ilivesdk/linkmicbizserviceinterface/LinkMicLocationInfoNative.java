@@ -16,12 +16,20 @@ public class LinkMicLocationInfoNative
   
   public String toString()
   {
-    return "LinkMicLocationInfoNative{borderWidth=" + this.jdField_a_of_type_Double + ", borderHeight=" + this.b + ", userLocations=" + this.jdField_a_of_type_JavaUtilMap + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LinkMicLocationInfoNative{borderWidth=");
+    localStringBuilder.append(this.jdField_a_of_type_Double);
+    localStringBuilder.append(", borderHeight=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", userLocations=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilMap);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.linkmicbizserviceinterface.LinkMicLocationInfoNative
  * JD-Core Version:    0.7.0.1
  */

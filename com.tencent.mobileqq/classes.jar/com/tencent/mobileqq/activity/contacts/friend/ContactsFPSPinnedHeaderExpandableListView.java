@@ -26,7 +26,7 @@ public class ContactsFPSPinnedHeaderExpandableListView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void scrollItemView(int paramInt1, int paramInt2, View paramView, int paramInt3)
+  protected void scrollItemView(int paramInt1, int paramInt2, View paramView, int paramInt3)
   {
     if (this.a) {
       super.scrollItemView(paramInt1, paramInt2, paramView, paramInt3);
@@ -44,7 +44,7 @@ public class ContactsFPSPinnedHeaderExpandableListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.friend.ContactsFPSPinnedHeaderExpandableListView
  * JD-Core Version:    0.7.0.1
  */

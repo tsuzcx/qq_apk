@@ -5,8 +5,6 @@ import com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsReaderGlobal;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 final class TdsReaderGrayConfigBean
 {
@@ -15,80 +13,33 @@ final class TdsReaderGrayConfigBean
   
   public static TdsReaderGrayConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length <= 0))
-    {
-      QLog.e("TdsReaderView_TdsReaderGrayConfigBean", 1, "parse error, confFiles is no-valid.");
-      return null;
-    }
-    TdsReaderGrayConfigBean localTdsReaderGrayConfigBean = new TdsReaderGrayConfigBean();
-    int k = paramArrayOfQConfItem.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i < k)
-      {
-        Object localObject1 = paramArrayOfQConfItem[i];
-        try
-        {
-          localObject1 = new JSONObject(((QConfItem)localObject1).a);
-          if (localObject1 != null)
-          {
-            if (((JSONObject)localObject1).has("is_enable"))
-            {
-              if (((JSONObject)localObject1).optBoolean("is_enable"))
-              {
-                j = 1;
-                localTdsReaderGrayConfigBean.jdField_a_of_type_Int = j;
-              }
-            }
-            else {
-              TdsReaderConfigBean.a((JSONObject)localObject1, localTdsReaderGrayConfigBean.jdField_a_of_type_JavaUtilMap);
-            }
-          }
-          else {
-            i += 1;
-          }
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            QLog.e("TdsReaderView_TdsReaderGrayConfigBean", 1, "parse error", localJSONException);
-            Object localObject2 = null;
-            continue;
-            int j = 0;
-          }
-        }
-      }
-    }
-    return localTdsReaderGrayConfigBean;
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public static void a(boolean paramBoolean, TdsReaderGrayConfigBean paramTdsReaderGrayConfigBean)
   {
     paramBoolean = true;
-    if (paramTdsReaderGrayConfigBean == null) {
+    if (paramTdsReaderGrayConfigBean == null)
+    {
       QLog.w("TdsReaderView_TdsReaderGrayConfigBean", 1, "source error, configBean is null.");
+      return;
     }
-    do
+    if (!paramTdsReaderGrayConfigBean.jdField_a_of_type_JavaUtilMap.isEmpty()) {
+      TdsReaderGlobal.a(true, paramTdsReaderGrayConfigBean.jdField_a_of_type_JavaUtilMap);
+    }
+    int i = paramTdsReaderGrayConfigBean.jdField_a_of_type_Int;
+    if (i != -1)
     {
-      return;
-      if (!paramTdsReaderGrayConfigBean.jdField_a_of_type_JavaUtilMap.isEmpty()) {
-        TdsReaderGlobal.a(true, paramTdsReaderGrayConfigBean.jdField_a_of_type_JavaUtilMap);
+      if (i != 1) {
+        paramBoolean = false;
       }
-    } while (paramTdsReaderGrayConfigBean.jdField_a_of_type_Int == -1);
-    if (paramTdsReaderGrayConfigBean.jdField_a_of_type_Int == 1) {}
-    for (;;)
-    {
       TdsReaderGlobal.a(paramBoolean);
-      return;
-      paramBoolean = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.tds.TdsReaderGrayConfigBean
  * JD-Core Version:    0.7.0.1
  */

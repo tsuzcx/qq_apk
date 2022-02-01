@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.player;
 
-import com.tencent.mobileqq.apollo.api.player.action.CMSAction;
+import com.tencent.mobileqq.apollo.player.action.CMSAction;
 import kotlin.Metadata;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/player/ICMSPlayerListener;", "", "onActionStatusChange", "", "action", "Lcom/tencent/mobileqq/apollo/api/player/action/CMSAction;", "status", "Lcom/tencent/mobileqq/apollo/player/CMSActionStatus;", "onFirstFrame", "onRecordDone", "success", "", "recordKey", "", "recordPath", "onRecordFrame", "index", "", "pixels", "", "width", "height", "frameTime", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/player/ICMSPlayerListener;", "", "onActionStatusChange", "", "action", "Lcom/tencent/mobileqq/apollo/player/action/CMSAction;", "status", "Lcom/tencent/mobileqq/apollo/player/CMSActionStatus;", "onFirstFrame", "onRecordDone", "success", "", "recordKey", "", "recordPath", "onRecordFrame", "index", "", "pixels", "", "width", "height", "frameTime", "cmshow_api_release"}, k=1, mv={1, 1, 16})
 public abstract interface ICMSPlayerListener
 {
   public abstract void a(@NotNull CMSAction paramCMSAction);
@@ -18,7 +18,7 @@ public abstract interface ICMSPlayerListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.player.ICMSPlayerListener
  * JD-Core Version:    0.7.0.1
  */

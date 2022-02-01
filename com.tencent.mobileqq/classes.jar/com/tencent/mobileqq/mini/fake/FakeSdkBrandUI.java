@@ -14,10 +14,13 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import android.widget.Toast;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.appbrand.ui.AppBrandUI3;
+import com.tencent.mobileqq.mini.launch.MiniSdkLauncher;
 import com.tencent.mobileqq.mini.network.http.MiniOkHttpClientFactory;
 import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.appstore.cookie.CookieManagerImpl;
@@ -32,10 +35,12 @@ import com.tencent.qqmini.sdk.launcher.core.proxy.PageGestureProxy;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
 import com.tencent.widget.immersive.ImmersiveUtils;
+import common.config.service.QzoneConfig;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
+import mqq.os.MqqHandler;
 
 public class FakeSdkBrandUI
   implements IFakeBrandUI
@@ -61,50 +66,63 @@ public class FakeSdkBrandUI
           ((StringBuilder)localObject).append("0");
           i += 1;
         }
-        localObject = paramString;
+        ((StringBuilder)localObject).append(paramString);
+        return ((StringBuilder)localObject).toString();
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("o");
+      ((StringBuilder)localObject).append(paramString);
+      localObject = ((StringBuilder)localObject).toString();
     }
-    else {
-      return localObject;
-    }
-    return "o" + paramString;
+    return localObject;
   }
   
   private boolean finishAndRemoveTask(Activity paramActivity)
   {
-    if ((paramActivity == null) || (Build.VERSION.SDK_INT < 21)) {
-      return false;
-    }
-    try
+    if (paramActivity != null)
     {
-      Object localObject = (ActivityManager)paramActivity.getSystemService("activity");
-      if (localObject == null) {
+      if (Build.VERSION.SDK_INT < 21) {
         return false;
       }
-      localObject = ((ActivityManager)localObject).getAppTasks();
-      if (localObject == null) {
-        return false;
-      }
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      try
       {
-        ActivityManager.AppTask localAppTask = (ActivityManager.AppTask)((Iterator)localObject).next();
-        if ((localAppTask != null) && (localAppTask.getTaskInfo() != null) && (localAppTask.getTaskInfo().baseIntent != null) && (localAppTask.getTaskInfo().baseIntent.getComponent() != null))
+        Object localObject = (ActivityManager)paramActivity.getSystemService("activity");
+        if (localObject == null) {
+          return false;
+        }
+        localObject = ((ActivityManager)localObject).getAppTasks();
+        if (localObject == null) {
+          return false;
+        }
+        Iterator localIterator = ((List)localObject).iterator();
+        while (localIterator.hasNext())
         {
-          String str = localAppTask.getTaskInfo().baseIntent.getComponent().getClassName();
-          QLog.i("minisdk-start_FakeSdkBrandUI", 1, "finishAndRemoveTask try finish and remove task: id=" + localAppTask.getTaskInfo().id + ", componentName:" + str);
-          if ((!TextUtils.isEmpty(str)) && (str.equals(paramActivity.getClass().getName())))
+          localObject = (ActivityManager.AppTask)localIterator.next();
+          if ((localObject != null) && (((ActivityManager.AppTask)localObject).getTaskInfo() != null) && (((ActivityManager.AppTask)localObject).getTaskInfo().baseIntent != null) && (((ActivityManager.AppTask)localObject).getTaskInfo().baseIntent.getComponent() != null))
           {
-            QLog.i("minisdk-start_FakeSdkBrandUI", 1, "finishAndRemoveTask finish and remove task: id=" + localAppTask.getTaskInfo().id);
-            localAppTask.finishAndRemoveTask();
+            String str = ((ActivityManager.AppTask)localObject).getTaskInfo().baseIntent.getComponent().getClassName();
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("finishAndRemoveTask try finish and remove task: id=");
+            localStringBuilder.append(((ActivityManager.AppTask)localObject).getTaskInfo().id);
+            localStringBuilder.append(", componentName:");
+            localStringBuilder.append(str);
+            QLog.i("minisdk-start_FakeSdkBrandUI", 1, localStringBuilder.toString());
+            if ((!TextUtils.isEmpty(str)) && (str.equals(paramActivity.getClass().getName())))
+            {
+              paramActivity = new StringBuilder();
+              paramActivity.append("finishAndRemoveTask finish and remove task: id=");
+              paramActivity.append(((ActivityManager.AppTask)localObject).getTaskInfo().id);
+              QLog.i("minisdk-start_FakeSdkBrandUI", 1, paramActivity.toString());
+              ((ActivityManager.AppTask)localObject).finishAndRemoveTask();
+            }
           }
         }
+        return true;
       }
-      return true;
-    }
-    catch (Throwable paramActivity)
-    {
-      QLog.e("minisdk-start_FakeSdkBrandUI", 1, "finishAndRemoveTask exception.", paramActivity);
+      catch (Throwable paramActivity)
+      {
+        QLog.e("minisdk-start_FakeSdkBrandUI", 1, "finishAndRemoveTask exception.", paramActivity);
+      }
     }
     return false;
   }
@@ -118,115 +136,56 @@ public class FakeSdkBrandUI
     }
   }
   
-  /* Error */
   private void recoveryIntent(BaseActivity paramBaseActivity, Intent paramIntent)
   {
-    // Byte code:
-    //   0: aload_2
-    //   1: ifnonnull +4 -> 5
-    //   4: return
-    //   5: aload_2
-    //   6: ldc 180
-    //   8: invokevirtual 184	android/content/Intent:getParcelableExtra	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   11: checkcast 186	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo
-    //   14: astore 5
-    //   16: aload 5
-    //   18: ifnonnull -14 -> 4
-    //   21: aload 5
-    //   23: astore 4
-    //   25: aload_2
-    //   26: ldc 188
-    //   28: invokevirtual 184	android/content/Intent:getParcelableExtra	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   31: checkcast 190	com/tencent/mobileqq/mini/apkg/MiniAppConfig
-    //   34: astore 6
-    //   36: aload 5
-    //   38: astore 4
-    //   40: aload 6
-    //   42: ifnull +43 -> 85
-    //   45: aload 5
-    //   47: astore 4
-    //   49: aload 6
-    //   51: invokestatic 196	com/tencent/mobileqq/mini/launch/MiniSdkLauncher:convert	(Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;)Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;
-    //   54: astore 5
-    //   56: aload 5
-    //   58: astore 4
-    //   60: aload_2
-    //   61: ldc 180
-    //   63: aload 5
-    //   65: invokevirtual 200	android/content/Intent:putExtra	(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
-    //   68: pop
-    //   69: aload 5
-    //   71: astore 4
-    //   73: ldc 13
-    //   75: iconst_1
-    //   76: ldc 202
-    //   78: invokestatic 204	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   81: aload 5
-    //   83: astore 4
-    //   85: invokestatic 210	common/config/service/QzoneConfig:getInstance	()Lcommon/config/service/QzoneConfig;
-    //   88: ldc 212
-    //   90: ldc 214
-    //   92: iconst_1
-    //   93: invokevirtual 218	common/config/service/QzoneConfig:getConfig	(Ljava/lang/String;Ljava/lang/String;I)I
-    //   96: ifle +76 -> 172
-    //   99: iconst_1
-    //   100: istore_3
-    //   101: aload 4
-    //   103: ifnonnull -99 -> 4
-    //   106: iload_3
-    //   107: ifeq -103 -> 4
-    //   110: ldc 13
-    //   112: iconst_1
-    //   113: ldc 220
-    //   115: invokestatic 204	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   118: aload_1
-    //   119: ifnull +16 -> 135
-    //   122: aload_1
-    //   123: invokevirtual 226	com/tencent/mobileqq/app/BaseActivity:getApplicationContext	()Landroid/content/Context;
-    //   126: ldc 228
-    //   128: iconst_1
-    //   129: invokestatic 234	android/widget/Toast:makeText	(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
-    //   132: invokevirtual 237	android/widget/Toast:show	()V
-    //   135: invokestatic 243	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
-    //   138: new 245	com/tencent/mobileqq/mini/fake/FakeSdkBrandUI$2
-    //   141: dup
-    //   142: aload_0
-    //   143: aload_1
-    //   144: invokespecial 248	com/tencent/mobileqq/mini/fake/FakeSdkBrandUI$2:<init>	(Lcom/tencent/mobileqq/mini/fake/FakeSdkBrandUI;Lcom/tencent/mobileqq/app/BaseActivity;)V
-    //   147: ldc2_w 249
-    //   150: invokevirtual 256	mqq/os/MqqHandler:postDelayed	(Ljava/lang/Runnable;J)Z
-    //   153: pop
-    //   154: return
-    //   155: astore_2
-    //   156: aconst_null
-    //   157: astore 4
-    //   159: ldc 13
-    //   161: iconst_1
-    //   162: ldc_w 258
-    //   165: aload_2
-    //   166: invokestatic 167	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   169: goto -84 -> 85
-    //   172: iconst_0
-    //   173: istore_3
-    //   174: goto -73 -> 101
-    //   177: astore_2
-    //   178: goto -19 -> 159
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	181	0	this	FakeSdkBrandUI
-    //   0	181	1	paramBaseActivity	BaseActivity
-    //   0	181	2	paramIntent	Intent
-    //   100	74	3	i	int
-    //   23	135	4	localMiniAppInfo1	MiniAppInfo
-    //   14	68	5	localMiniAppInfo2	MiniAppInfo
-    //   34	16	6	localMiniAppConfig	com.tencent.mobileqq.mini.apkg.MiniAppConfig
-    // Exception table:
-    //   from	to	target	type
-    //   5	16	155	java/lang/Throwable
-    //   25	36	177	java/lang/Throwable
-    //   49	56	177	java/lang/Throwable
-    //   60	69	177	java/lang/Throwable
-    //   73	81	177	java/lang/Throwable
+    if (paramIntent == null) {
+      return;
+    }
+    Object localObject = null;
+    try
+    {
+      MiniAppInfo localMiniAppInfo1 = (MiniAppInfo)paramIntent.getParcelableExtra("KEY_APPINFO");
+      if (localMiniAppInfo1 != null) {
+        return;
+      }
+      try
+      {
+        localObject = (MiniAppConfig)paramIntent.getParcelableExtra("CONFIG");
+        if (localObject != null)
+        {
+          MiniAppInfo localMiniAppInfo2 = MiniSdkLauncher.convert((MiniAppConfig)localObject);
+          localObject = localMiniAppInfo2;
+          paramIntent.putExtra("KEY_APPINFO", localMiniAppInfo2);
+          localObject = localMiniAppInfo2;
+          QLog.e("minisdk-start_FakeSdkBrandUI", 1, "recoveryIntent from MiniAppConfig succeed!");
+          localObject = localMiniAppInfo2;
+        }
+        else
+        {
+          localObject = localMiniAppInfo1;
+        }
+      }
+      catch (Throwable paramIntent)
+      {
+        localObject = localMiniAppInfo1;
+      }
+      QLog.e("minisdk-start_FakeSdkBrandUI", 1, "recoveryIntent exception!", paramIntent);
+    }
+    catch (Throwable paramIntent) {}
+    int i;
+    if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_intent_valid_restart", 1) > 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((localObject == null) && (i != 0))
+    {
+      QLog.e("minisdk-start_FakeSdkBrandUI", 1, "Intent Data is invalid! KillProcess now!");
+      if (paramBaseActivity != null) {
+        Toast.makeText(paramBaseActivity.getApplicationContext(), "请重新打开小程序", 1).show();
+      }
+      ThreadManager.getUIHandler().postDelayed(new FakeSdkBrandUI.2(this, paramBaseActivity), 2000L);
+    }
   }
   
   public static void setCookie()
@@ -235,28 +194,52 @@ public class FakeSdkBrandUI
     try
     {
       CookieSyncManagerImpl localCookieSyncManagerImpl = new CookieSyncManagerImpl(CommonDataAdapter.a().a());
-      CookieManagerImpl localCookieManagerImpl = new CookieManagerImpl();
-      localCookieManagerImpl.a(true);
-      long l2 = CommonDataAdapter.a().a();
-      Object localObject = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
-      String str = ((TicketManager)localObject).getSkey(String.valueOf(l2));
-      localObject = ((TicketManager)localObject).getPskey(String.valueOf(l2), "qzone.qq.com");
-      localCookieManagerImpl.a("qzone.qq.com/", "uin=" + changeUin(String.valueOf(l2)) + "; path=/; domain=." + "qzone.qq.com" + ";");
-      localCookieManagerImpl.a("qzone.qq.com/", "p_uin=" + changeUin(String.valueOf(l2)) + "; path=/; domain=." + "qzone.qq.com" + ";");
-      localCookieManagerImpl.a("qzone.qq.com/", "skey=" + str + "; path=/; domain=." + "qzone.qq.com" + ";");
-      localCookieManagerImpl.a("qzone.qq.com/", "p_skey=" + (String)localObject + "; path=/; domain=." + "qzone.qq.com" + ";");
+      localObject1 = new CookieManagerImpl();
+      ((CookieManagerImpl)localObject1).a(true);
+      l2 = CommonDataAdapter.a().a();
+      Object localObject3 = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
+      Object localObject2 = ((TicketManager)localObject3).getSkey(String.valueOf(l2));
+      localObject3 = ((TicketManager)localObject3).getPskey(String.valueOf(l2), "qzone.qq.com");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("uin=");
+      localStringBuilder.append(changeUin(String.valueOf(l2)));
+      localStringBuilder.append("; path=/; domain=.");
+      localStringBuilder.append("qzone.qq.com");
+      localStringBuilder.append(";");
+      ((CookieManagerImpl)localObject1).a("qzone.qq.com/", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("p_uin=");
+      localStringBuilder.append(changeUin(String.valueOf(l2)));
+      localStringBuilder.append("; path=/; domain=.");
+      localStringBuilder.append("qzone.qq.com");
+      localStringBuilder.append(";");
+      ((CookieManagerImpl)localObject1).a("qzone.qq.com/", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("skey=");
+      localStringBuilder.append((String)localObject2);
+      localStringBuilder.append("; path=/; domain=.");
+      localStringBuilder.append("qzone.qq.com");
+      localStringBuilder.append(";");
+      ((CookieManagerImpl)localObject1).a("qzone.qq.com/", localStringBuilder.toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("p_skey=");
+      ((StringBuilder)localObject2).append((String)localObject3);
+      ((StringBuilder)localObject2).append("; path=/; domain=.");
+      ((StringBuilder)localObject2).append("qzone.qq.com");
+      ((StringBuilder)localObject2).append(";");
+      ((CookieManagerImpl)localObject1).a("qzone.qq.com/", ((StringBuilder)localObject2).toString());
       localCookieSyncManagerImpl.a();
-      l2 = System.currentTimeMillis();
-      QLog.e(AppBrandUI3.class.getSimpleName(), 1, "setCookie cost:" + (l2 - l1));
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
+    long l2 = System.currentTimeMillis();
+    String str = AppBrandUI3.class.getSimpleName();
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("setCookie cost:");
+    ((StringBuilder)localObject1).append(l2 - l1);
+    QLog.e(str, 1, ((StringBuilder)localObject1).toString());
   }
   
   public boolean doBeforeOnCreate(BaseActivity paramBaseActivity, Bundle paramBundle)
@@ -265,33 +248,31 @@ public class FakeSdkBrandUI
     mHasOnCreate = true;
     MiniSDK.init(paramBaseActivity.getApplicationContext());
     ThreadManager.executeOnSubThread(new FakeSdkBrandUI.1(this));
-    Object localObject1 = new RelativeLayout(paramBaseActivity);
-    paramBaseActivity.setContentView((View)localObject1);
+    Object localObject = new RelativeLayout(paramBaseActivity);
+    paramBaseActivity.setContentView((View)localObject);
     FrameLayout localFrameLayout = new FrameLayout(paramBaseActivity);
-    ((RelativeLayout)localObject1).addView(localFrameLayout, new RelativeLayout.LayoutParams(-1, -1));
+    ((RelativeLayout)localObject).addView(localFrameLayout, new RelativeLayout.LayoutParams(-1, -1));
     Intent localIntent = paramBaseActivity.getIntent();
+    MiniAppInfo localMiniAppInfo;
     try
     {
       recoveryIntent(paramBaseActivity, localIntent);
-      localObject1 = (MiniAppInfo)paramBaseActivity.getIntent().getParcelableExtra("KEY_APPINFO");
-      this.mIntent = localIntent;
-      this.mUIProxy = AppLoaderFactory.g().getMiniAppEnv().getUIProxy((MiniAppInfo)localObject1);
-      if (this.mUIProxy != null)
-      {
-        QLog.i("minisdk-start_FakeSdkBrandUI", 1, "UIProxy completed");
-        this.mUIProxy.onAttachActivity(paramBaseActivity, paramBundle, localFrameLayout);
-      }
-      MiniSDKClientQIPCModule.a();
-      return true;
+      localObject = (MiniAppInfo)paramBaseActivity.getIntent().getParcelableExtra("KEY_APPINFO");
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        QLog.e("minisdk-start_FakeSdkBrandUI", 1, "", localThrowable);
-        Object localObject2 = null;
-      }
+      QLog.e("minisdk-start_FakeSdkBrandUI", 1, "", localThrowable);
+      localMiniAppInfo = null;
     }
+    this.mIntent = localIntent;
+    this.mUIProxy = AppLoaderFactory.g().getMiniAppEnv().getUIProxy(localMiniAppInfo);
+    if (this.mUIProxy != null)
+    {
+      QLog.i("minisdk-start_FakeSdkBrandUI", 1, "UIProxy completed");
+      this.mUIProxy.onAttachActivity(paramBaseActivity, paramBundle, localFrameLayout);
+    }
+    MiniSDKClientQIPCModule.a();
+    return true;
   }
   
   public boolean doDispatchKeyEvent(KeyEvent paramKeyEvent)
@@ -301,28 +282,26 @@ public class FakeSdkBrandUI
   
   public void doOnActivityResult(BaseActivity paramBaseActivity, int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.mUIProxy != null) {
-      this.mUIProxy.onActivityResult(paramBaseActivity, paramInt1, paramInt2, paramIntent);
+    IUIProxy localIUIProxy = this.mUIProxy;
+    if (localIUIProxy != null) {
+      localIUIProxy.onActivityResult(paramBaseActivity, paramInt1, paramInt2, paramIntent);
     }
   }
   
   public void doOnBackPressed(BaseActivity paramBaseActivity, boolean paramBoolean)
   {
-    if (this.mUIProxy != null)
-    {
-      paramBoolean = this.mUIProxy.onBackPressed(paramBaseActivity);
-      if (!paramBoolean) {
-        break label28;
-      }
-    }
-    label28:
-    while (paramBaseActivity.moveTaskToBack(false))
-    {
-      return;
+    IUIProxy localIUIProxy = this.mUIProxy;
+    if (localIUIProxy != null) {
+      paramBoolean = localIUIProxy.onBackPressed(paramBaseActivity);
+    } else {
       paramBoolean = false;
-      break;
     }
-    paramBaseActivity.finish();
+    if (paramBoolean) {
+      return;
+    }
+    if (!paramBaseActivity.moveTaskToBack(false)) {
+      paramBaseActivity.finish();
+    }
   }
   
   public boolean doOnCreate(BaseActivity paramBaseActivity, Bundle paramBundle)
@@ -333,8 +312,9 @@ public class FakeSdkBrandUI
   public void doOnDestroy(BaseActivity paramBaseActivity)
   {
     QLog.i("minisdk-start_FakeSdkBrandUI", 1, "doOnDestroy");
-    if (this.mUIProxy != null) {
-      this.mUIProxy.onDetachActivity(paramBaseActivity);
+    IUIProxy localIUIProxy = this.mUIProxy;
+    if (localIUIProxy != null) {
+      localIUIProxy.onDetachActivity(paramBaseActivity);
     }
     MiniSDKClientQIPCModule.b();
   }
@@ -359,19 +339,22 @@ public class FakeSdkBrandUI
   public void doOnPause(BaseActivity paramBaseActivity)
   {
     QLog.i("minisdk-start_FakeSdkBrandUI", 1, "doOnPause");
-    if (this.mUIProxy != null) {
-      this.mUIProxy.onMiniPause();
+    paramBaseActivity = this.mUIProxy;
+    if (paramBaseActivity != null) {
+      paramBaseActivity.onMiniPause();
     }
   }
   
   public void doOnResume(BaseActivity paramBaseActivity)
   {
     QLog.i("minisdk-start_FakeSdkBrandUI", 1, "doOnResume");
-    if (this.mUIProxy != null)
+    IUIProxy localIUIProxy = this.mUIProxy;
+    if (localIUIProxy != null)
     {
-      if (this.mIntent != null)
+      Intent localIntent = this.mIntent;
+      if (localIntent != null)
       {
-        this.mUIProxy.onIntentUpdate(this.mIntent);
+        localIUIProxy.onIntentUpdate(localIntent);
         this.mIntent = null;
       }
       this.mUIProxy.onMiniResume();
@@ -382,16 +365,18 @@ public class FakeSdkBrandUI
   public void doOnStart(BaseActivity paramBaseActivity)
   {
     QLog.i("minisdk-start_FakeSdkBrandUI", 1, "doOnStart");
-    if (this.mUIProxy != null) {
-      this.mUIProxy.onMiniStart();
+    paramBaseActivity = this.mUIProxy;
+    if (paramBaseActivity != null) {
+      paramBaseActivity.onMiniStart();
     }
   }
   
   public void doOnStop(BaseActivity paramBaseActivity)
   {
     QLog.i("minisdk-start_FakeSdkBrandUI", 1, "doOnStop");
-    if (this.mUIProxy != null) {
-      this.mUIProxy.onMiniStop();
+    paramBaseActivity = this.mUIProxy;
+    if (paramBaseActivity != null) {
+      paramBaseActivity.onMiniStop();
     }
   }
   
@@ -432,7 +417,7 @@ public class FakeSdkBrandUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.fake.FakeSdkBrandUI
  * JD-Core Version:    0.7.0.1
  */

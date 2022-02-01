@@ -3,7 +3,6 @@ package com.tencent.mobileqq.apollo.config;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.api.model.ApolloGrayConfBean;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.mobileqq.config.QConfigManager;
@@ -15,7 +14,7 @@ public class ApolloGrayConfProcessor
   public static void a()
   {
     ApolloGrayConfBean localApolloGrayConfBean = (ApolloGrayConfBean)QConfigManager.a().a(430);
-    ApolloGrayConfBean.parseApolloGrayConfBean(BaseApplicationImpl.getApplication().getRuntime(), false, localApolloGrayConfBean);
+    ApolloGrayConfBean.a(BaseApplicationImpl.getApplication().getRuntime(), false, localApolloGrayConfBean);
   }
   
   @NonNull
@@ -27,13 +26,13 @@ public class ApolloGrayConfProcessor
   @Nullable
   public ApolloGrayConfBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    return ApolloGrayConfBean.parse(paramArrayOfQConfItem);
+    return ApolloGrayConfBean.a(paramArrayOfQConfItem);
   }
   
   public void a(ApolloGrayConfBean paramApolloGrayConfBean)
   {
-    QLog.w("ApolloConfig_GrayProcessor", 1, "onUpdate");
-    ApolloGrayConfBean.parseApolloGrayConfBean(BaseApplicationImpl.getApplication().getRuntime(), true, paramApolloGrayConfBean);
+    QLog.w("[cmshow]ApolloConfig_GrayProcessor", 1, "onUpdate");
+    ApolloGrayConfBean.a(BaseApplicationImpl.getApplication().getRuntime(), true, paramApolloGrayConfBean);
   }
   
   public Class<ApolloGrayConfBean> clazz()
@@ -63,7 +62,10 @@ public class ApolloGrayConfProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.e("ApolloConfig_GrayProcessor", 1, "onReqFailed: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReqFailed: ");
+    localStringBuilder.append(paramInt);
+    QLog.e("[cmshow]ApolloConfig_GrayProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -73,7 +75,7 @@ public class ApolloGrayConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.config.ApolloGrayConfProcessor
  * JD-Core Version:    0.7.0.1
  */

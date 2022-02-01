@@ -23,7 +23,7 @@ final class RelationVipHelper$1
   {
     if (paramURLDrawable != null)
     {
-      int i = AIOUtils.a(21.0F, this.jdField_a_of_type_AndroidContentResResources);
+      int i = AIOUtils.b(21.0F, this.jdField_a_of_type_AndroidContentResResources);
       int j = paramURLDrawable.getIntrinsicWidth() * i / paramURLDrawable.getIntrinsicHeight();
       ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
       localLayoutParams.height = i;
@@ -37,7 +37,7 @@ final class RelationVipHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.alienation.RelationVipHelper.1
  * JD-Core Version:    0.7.0.1
  */

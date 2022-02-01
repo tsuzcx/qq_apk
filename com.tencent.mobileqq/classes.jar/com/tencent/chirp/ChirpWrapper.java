@@ -1,10 +1,12 @@
 package com.tencent.chirp;
 
 import android.util.Pair;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.io.IOException;
+import mqq.app.MobileQQ;
 
 public class ChirpWrapper
 {
@@ -21,125 +23,80 @@ public class ChirpWrapper
       if (jdField_a_of_type_Boolean) {
         return true;
       }
-    }
-    finally {}
-    try
-    {
-      String str = BaseApplicationImpl.getContext().getFilesDir().getParent() + "/chirp/" + "libQChirp.so";
-      if (new File(str).exists())
+      try
       {
-        System.load(str);
-        jdField_a_of_type_Boolean = true;
-      }
-      for (;;)
-      {
-        boolean bool = jdField_a_of_type_Boolean;
-        return bool;
-        if (QLog.isColorLevel()) {
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(MobileQQ.getContext().getFilesDir().getParent());
+        ((StringBuilder)localObject1).append("/chirp/");
+        ((StringBuilder)localObject1).append("libQChirp.so");
+        localObject1 = ((StringBuilder)localObject1).toString();
+        if (new File((String)localObject1).exists())
+        {
+          System.load((String)localObject1);
+          jdField_a_of_type_Boolean = true;
+        }
+        else if (QLog.isColorLevel())
+        {
           QLog.d("ChirpWrapper", 2, "so not exist");
         }
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
         if (QLog.isColorLevel()) {
           QLog.d("ChirpWrapper", 2, "loadLibrary error", localException);
         }
         jdField_a_of_type_Boolean = false;
       }
+      boolean bool = jdField_a_of_type_Boolean;
+      return bool;
     }
+    finally {}
   }
   
-  /* Error */
   public static boolean a(String paramString)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: aconst_null
-    //   4: astore_1
-    //   5: new 20	java/lang/StringBuilder
-    //   8: dup
-    //   9: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   12: invokestatic 27	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   15: invokevirtual 33	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
-    //   18: invokevirtual 39	java/io/File:getParent	()Ljava/lang/String;
-    //   21: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: ldc 84
-    //   26: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   32: astore_2
-    //   33: aload_2
-    //   34: astore_1
-    //   35: aload_0
-    //   36: aload_2
-    //   37: iconst_0
-    //   38: invokestatic 89	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;Ljava/lang/String;Z)V
-    //   41: ldc 2
-    //   43: monitorexit
-    //   44: iconst_1
-    //   45: ireturn
-    //   46: astore_0
-    //   47: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   50: ifeq +12 -> 62
-    //   53: ldc 68
-    //   55: iconst_2
-    //   56: ldc 91
-    //   58: aload_0
-    //   59: invokestatic 79	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   62: new 35	java/io/File
-    //   65: dup
-    //   66: new 20	java/lang/StringBuilder
-    //   69: dup
-    //   70: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   73: aload_1
-    //   74: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   77: ldc 93
-    //   79: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   82: ldc 47
-    //   84: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   87: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   90: invokespecial 53	java/io/File:<init>	(Ljava/lang/String;)V
-    //   93: invokevirtual 96	java/io/File:delete	()Z
-    //   96: pop
-    //   97: ldc 2
-    //   99: monitorexit
-    //   100: iconst_0
-    //   101: ireturn
-    //   102: astore_0
-    //   103: ldc 2
-    //   105: monitorexit
-    //   106: aload_0
-    //   107: athrow
-    //   108: astore_0
-    //   109: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   112: ifeq -15 -> 97
-    //   115: ldc 68
-    //   117: iconst_2
-    //   118: ldc 98
-    //   120: aload_0
-    //   121: invokestatic 79	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   124: goto -27 -> 97
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	127	0	paramString	String
-    //   4	70	1	localObject	Object
-    //   32	5	2	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   5	33	46	java/io/IOException
-    //   35	41	46	java/io/IOException
-    //   5	33	102	finally
-    //   35	41	102	finally
-    //   41	44	102	finally
-    //   47	62	102	finally
-    //   62	97	102	finally
-    //   97	100	102	finally
-    //   103	106	102	finally
-    //   109	124	102	finally
-    //   62	97	108	java/lang/Exception
+    String str2 = null;
+    String str1 = str2;
+    try
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      str1 = str2;
+      localStringBuilder.append(MobileQQ.getContext().getFilesDir().getParent());
+      str1 = str2;
+      localStringBuilder.append("/chirp");
+      str1 = str2;
+      str2 = localStringBuilder.toString();
+      str1 = str2;
+      FileUtils.uncompressZip(paramString, str2, false);
+      return true;
+    }
+    catch (IOException paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ChirpWrapper", 2, "unzipSo error", paramString);
+      }
+      try
+      {
+        paramString = new StringBuilder();
+        paramString.append(str1);
+        paramString.append("/");
+        paramString.append("libQChirp.so");
+        new File(paramString.toString()).delete();
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ChirpWrapper", 2, "delete error", paramString);
+        }
+      }
+      return false;
+      label143:
+      throw paramString;
+    }
+    finally
+    {
+      break label143;
+    }
   }
   
   private static native int createChirp();
@@ -193,11 +150,13 @@ public class ChirpWrapper
   
   public String a(short[] paramArrayOfShort, int paramInt)
   {
-    if (!jdField_a_of_type_Boolean) {}
-    while ((decodeChirp(this.jdField_a_of_type_Int, paramArrayOfShort, paramArrayOfShort.length) != 0) || (getDecodeStringLen(this.jdField_a_of_type_Int) != paramInt)) {
+    if (!jdField_a_of_type_Boolean) {
       return null;
     }
-    return getDecodeString(this.jdField_a_of_type_Int);
+    if ((decodeChirp(this.jdField_a_of_type_Int, paramArrayOfShort, paramArrayOfShort.length) == 0) && (getDecodeStringLen(this.jdField_a_of_type_Int) == paramInt)) {
+      return getDecodeString(this.jdField_a_of_type_Int);
+    }
+    return null;
   }
   
   public void a()
@@ -212,7 +171,7 @@ public class ChirpWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.chirp.ChirpWrapper
  * JD-Core Version:    0.7.0.1
  */

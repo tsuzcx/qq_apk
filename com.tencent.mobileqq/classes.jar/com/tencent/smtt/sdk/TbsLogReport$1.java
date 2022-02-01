@@ -14,10 +14,11 @@ class TbsLogReport$1
   
   public void handleMessage(Message paramMessage)
   {
-    if (paramMessage.what == 600) {
-      if (!(paramMessage.obj instanceof TbsLogReport.TbsLogInfo)) {}
-    }
-    while (paramMessage.what != 601) {
+    if (paramMessage.what == 600)
+    {
+      if (!(paramMessage.obj instanceof TbsLogReport.TbsLogInfo)) {
+        return;
+      }
       try
       {
         TbsLogReport.TbsLogInfo localTbsLogInfo = (TbsLogReport.TbsLogInfo)paramMessage.obj;
@@ -31,12 +32,14 @@ class TbsLogReport$1
         return;
       }
     }
-    TbsLogReport.a(this.a);
+    if (paramMessage.what == 601) {
+      TbsLogReport.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsLogReport.1
  * JD-Core Version:    0.7.0.1
  */

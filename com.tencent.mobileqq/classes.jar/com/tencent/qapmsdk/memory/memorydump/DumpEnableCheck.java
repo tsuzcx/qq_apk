@@ -26,13 +26,17 @@ public class DumpEnableCheck
       l = localStatFs.getAvailableBlocks() * l / 1024L;
       return l;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label34:
+      break label34;
+    }
     return 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.memory.memorydump.DumpEnableCheck
  * JD-Core Version:    0.7.0.1
  */

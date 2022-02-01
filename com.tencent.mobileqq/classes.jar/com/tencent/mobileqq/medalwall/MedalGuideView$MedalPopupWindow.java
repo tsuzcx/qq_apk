@@ -26,9 +26,10 @@ public class MedalGuideView$MedalPopupWindow
   
   public void dismiss()
   {
-    if (this.a != null)
+    PopupWindow.OnDismissListener localOnDismissListener = this.a;
+    if (localOnDismissListener != null)
     {
-      this.a.onDismiss();
+      localOnDismissListener.onDismiss();
       return;
     }
     super.dismiss();
@@ -36,7 +37,7 @@ public class MedalGuideView$MedalPopupWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.medalwall.MedalGuideView.MedalPopupWindow
  * JD-Core Version:    0.7.0.1
  */

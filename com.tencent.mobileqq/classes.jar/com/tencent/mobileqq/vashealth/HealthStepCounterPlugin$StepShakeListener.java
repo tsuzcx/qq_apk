@@ -41,58 +41,56 @@ class HealthStepCounterPlugin$StepShakeListener
   
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    float f1 = 0.0F;
-    float f2;
-    float f3;
-    float f4;
-    long l1;
-    long l2;
     if (paramSensorEvent.sensor.getType() == 1)
     {
-      f2 = paramSensorEvent.values[0];
-      f3 = paramSensorEvent.values[1];
-      f4 = paramSensorEvent.values[2];
-      l1 = System.currentTimeMillis();
-      l2 = l1 - this.jdField_a_of_type_Long;
-      if (l2 <= 5000L) {
-        break label66;
-      }
-      a(l1);
-    }
-    label66:
-    do
-    {
-      do
+      float f2 = paramSensorEvent.values[0];
+      float f3 = paramSensorEvent.values[1];
+      float f4 = paramSensorEvent.values[2];
+      long l1 = System.currentTimeMillis();
+      long l2 = l1 - this.jdField_a_of_type_Long;
+      if (l2 > 5000L)
       {
-        return;
-      } while (l2 <= 80L);
-      if ((this.jdField_a_of_type_Float != 0.0F) || (this.b != 0.0F) || (this.c != 0.0F)) {
-        f1 = Math.abs(f2 - this.jdField_a_of_type_Float) + Math.abs(f3 - this.b) + Math.abs(f4 - this.c);
-      }
-      this.d = (f1 + this.d);
-      if ((this.d > 180.0F) && (this.jdField_a_of_type_Int >= 3))
-      {
-        a();
         a(l1);
         return;
       }
-      if (this.jdField_a_of_type_Int < 10)
+      if (l2 > 80L)
       {
-        this.jdField_a_of_type_Int += 1;
-        this.jdField_a_of_type_Float = f2;
-        this.b = f3;
-        this.c = f4;
-        this.jdField_a_of_type_Long = l1;
-        return;
+        float f5 = this.jdField_a_of_type_Float;
+        float f1 = 0.0F;
+        if ((f5 != 0.0F) || (this.b != 0.0F) || (this.c != 0.0F))
+        {
+          f1 = Math.abs(f2 - this.jdField_a_of_type_Float);
+          f5 = Math.abs(f3 - this.b);
+          f1 = Math.abs(f4 - this.c) + (f1 + f5);
+        }
+        this.d += f1;
+        if ((this.d > 180.0F) && (this.jdField_a_of_type_Int >= 3))
+        {
+          a();
+          a(l1);
+          return;
+        }
+        int i = this.jdField_a_of_type_Int;
+        if (i < 10)
+        {
+          this.jdField_a_of_type_Int = (i + 1);
+          this.jdField_a_of_type_Float = f2;
+          this.b = f3;
+          this.c = f4;
+          this.jdField_a_of_type_Long = l1;
+          return;
+        }
+        a(l1);
+        if (HealthStepCounterPlugin.b < 3) {
+          b();
+        }
       }
-      a(l1);
-    } while (HealthStepCounterPlugin.b >= 3);
-    b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.HealthStepCounterPlugin.StepShakeListener
  * JD-Core Version:    0.7.0.1
  */

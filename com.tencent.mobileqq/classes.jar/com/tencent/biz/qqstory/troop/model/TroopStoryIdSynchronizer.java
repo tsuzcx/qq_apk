@@ -32,148 +32,127 @@ public class TroopStoryIdSynchronizer
   public int d;
   public boolean d;
   
-  static
-  {
-    if (!TroopStoryIdSynchronizer.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      e = bool;
-      return;
-    }
-  }
-  
   public TroopStoryIdSynchronizer.DayItem a(int paramInt)
   {
-    int j = 0;
-    int i = paramInt;
-    paramInt = j;
-    if (i > 0)
+    int j;
+    for (int i = 0; paramInt > 0; i = j)
     {
-      TroopStoryItemInfo localTroopStoryItemInfo = (TroopStoryItemInfo)this.jdField_a_of_type_JavaUtilList.get(i);
+      TroopStoryItemInfo localTroopStoryItemInfo = (TroopStoryItemInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
       if (localTroopStoryItemInfo.itemType == 1)
       {
         TroopStoryIdSynchronizer.DayItem localDayItem = new TroopStoryIdSynchronizer.DayItem();
         localDayItem.jdField_a_of_type_Int = localTroopStoryItemInfo.publishCount;
         localDayItem.jdField_a_of_type_JavaLangString = localTroopStoryItemInfo.feedId;
-        localDayItem.jdField_b_of_type_Int = (localDayItem.jdField_a_of_type_Int - paramInt);
+        localDayItem.jdField_b_of_type_Int = (localDayItem.jdField_a_of_type_Int - i);
         return localDayItem;
       }
-      if (localTroopStoryItemInfo.itemType != 2) {
-        break label100;
+      j = i;
+      if (localTroopStoryItemInfo.itemType == 2) {
+        j = i + 1;
       }
-      paramInt += 1;
+      paramInt -= 1;
     }
-    label100:
-    for (;;)
-    {
-      i -= 1;
-      break;
-      return null;
-    }
+    return null;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
-    {
+    if (this.jdField_a_of_type_Boolean) {
       return;
-      this.jdField_a_of_type_Int = 1;
-      if (this.jdField_b_of_type_Int != this.jdField_a_of_type_JavaUtilList.size() - 2) {
-        break;
-      }
-    } while (this.jdField_c_of_type_Boolean);
-    this.jdField_c_of_type_Boolean = true;
-    if (this.jdField_d_of_type_Int == -2147483648) {
-      this.jdField_d_of_type_Int = ((Integer)((StoryConfigManager)SuperManager.a(10)).b("TROOP_STORY_COOKIE" + String.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(0))).intValue();
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetTroopStoryListHandler.a(this.jdField_a_of_type_Long, this.jdField_d_of_type_Int);
-    return;
-    int j = this.jdField_b_of_type_Int + 1;
-    if (j + 10 < this.jdField_a_of_type_JavaUtilList.size() - 1) {}
-    ArrayList localArrayList;
+    this.jdField_a_of_type_Int = 1;
+    Object localObject1;
     Object localObject2;
-    TroopStoryItemInfo localTroopStoryItemInfo;
-    for (int i = j + 10;; i = this.jdField_a_of_type_JavaUtilList.size() - 2)
+    if (this.jdField_b_of_type_Int == this.jdField_a_of_type_JavaUtilList.size() - 2)
     {
-      a(i, j);
-      localArrayList = new ArrayList();
-      localObject2 = null;
-      if (j > i) {
-        break label367;
-      }
-      localTroopStoryItemInfo = (TroopStoryItemInfo)this.jdField_a_of_type_JavaUtilList.get(j);
-      localObject1 = localObject2;
-      if (localObject2 != null) {
-        break;
-      }
-      localObject2 = a(j);
-      localObject1 = localObject2;
-      if (e) {
-        break;
-      }
-      localObject1 = localObject2;
-      if (localObject2 != null) {
-        break;
-      }
-      throw new AssertionError();
-    }
-    if (localTroopStoryItemInfo.itemType == 2)
-    {
-      localTroopStoryItemInfo.dayVideoCount = ((TroopStoryIdSynchronizer.DayItem)localObject1).jdField_a_of_type_Int;
-      localTroopStoryItemInfo.feedId = ((TroopStoryIdSynchronizer.DayItem)localObject1).jdField_a_of_type_JavaLangString;
-      int k = ((TroopStoryIdSynchronizer.DayItem)localObject1).jdField_b_of_type_Int;
-      ((TroopStoryIdSynchronizer.DayItem)localObject1).jdField_b_of_type_Int = (k - 1);
-      localTroopStoryItemInfo.dayVideoIndex = k;
-      localArrayList.add(0, localTroopStoryItemInfo);
-    }
-    for (;;)
-    {
-      j += 1;
-      localObject2 = localObject1;
-      break;
-      if (localTroopStoryItemInfo.itemType == 1)
+      if (!this.jdField_c_of_type_Boolean)
       {
-        localObject1 = new TroopStoryIdSynchronizer.DayItem();
-        ((TroopStoryIdSynchronizer.DayItem)localObject1).jdField_a_of_type_Int = localTroopStoryItemInfo.publishCount;
-        ((TroopStoryIdSynchronizer.DayItem)localObject1).jdField_a_of_type_JavaLangString = localTroopStoryItemInfo.feedId;
-        ((TroopStoryIdSynchronizer.DayItem)localObject1).jdField_b_of_type_Int = (((TroopStoryIdSynchronizer.DayItem)localObject1).jdField_a_of_type_Int - 1);
+        this.jdField_c_of_type_Boolean = true;
+        if (this.jdField_d_of_type_Int == -2147483648)
+        {
+          localObject1 = (StoryConfigManager)SuperManager.a(10);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("TROOP_STORY_COOKIE");
+          ((StringBuilder)localObject2).append(String.valueOf(this.jdField_a_of_type_Long));
+          this.jdField_d_of_type_Int = ((Integer)((StoryConfigManager)localObject1).b(((StringBuilder)localObject2).toString(), Integer.valueOf(0))).intValue();
+        }
+        this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetTroopStoryListHandler.a(this.jdField_a_of_type_Long, this.jdField_d_of_type_Int);
       }
     }
-    label367:
-    Object localObject1 = new GetTroopStoryListHandler.GetTroopStoryListEvent(this.jdField_a_of_type_JavaLangString, new ErrorMessage());
-    ((GetTroopStoryListHandler.GetTroopStoryListEvent)localObject1).jdField_a_of_type_JavaUtilList = localArrayList;
-    ((GetTroopStoryListHandler.GetTroopStoryListEvent)localObject1).jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-    ((GetTroopStoryListHandler.GetTroopStoryListEvent)localObject1).f = this.jdField_a_of_type_Boolean;
-    ((GetTroopStoryListHandler.GetTroopStoryListEvent)localObject1).g = this.jdField_b_of_type_Boolean;
-    StoryDispatcher.a().dispatch((Dispatcher.Dispatchable)localObject1);
+    else
+    {
+      int j = this.jdField_b_of_type_Int + 1;
+      int i = j + 10;
+      if (i >= this.jdField_a_of_type_JavaUtilList.size() - 1) {
+        i = this.jdField_a_of_type_JavaUtilList.size() - 2;
+      }
+      a(i, j);
+      ArrayList localArrayList = new ArrayList();
+      for (localObject2 = null; j <= i; localObject2 = localObject1)
+      {
+        TroopStoryItemInfo localTroopStoryItemInfo = (TroopStoryItemInfo)this.jdField_a_of_type_JavaUtilList.get(j);
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          localObject2 = a(j);
+          localObject1 = localObject2;
+          if (!e) {
+            if (localObject2 != null) {
+              localObject1 = localObject2;
+            } else {
+              throw new AssertionError();
+            }
+          }
+        }
+        if (localTroopStoryItemInfo.itemType == 2)
+        {
+          localTroopStoryItemInfo.dayVideoCount = ((TroopStoryIdSynchronizer.DayItem)localObject1).jdField_a_of_type_Int;
+          localTroopStoryItemInfo.feedId = ((TroopStoryIdSynchronizer.DayItem)localObject1).jdField_a_of_type_JavaLangString;
+          int k = ((TroopStoryIdSynchronizer.DayItem)localObject1).jdField_b_of_type_Int;
+          ((TroopStoryIdSynchronizer.DayItem)localObject1).jdField_b_of_type_Int = (k - 1);
+          localTroopStoryItemInfo.dayVideoIndex = k;
+          localArrayList.add(0, localTroopStoryItemInfo);
+        }
+        else if (localTroopStoryItemInfo.itemType == 1)
+        {
+          localObject1 = new TroopStoryIdSynchronizer.DayItem();
+          ((TroopStoryIdSynchronizer.DayItem)localObject1).jdField_a_of_type_Int = localTroopStoryItemInfo.publishCount;
+          ((TroopStoryIdSynchronizer.DayItem)localObject1).jdField_a_of_type_JavaLangString = localTroopStoryItemInfo.feedId;
+          ((TroopStoryIdSynchronizer.DayItem)localObject1).jdField_b_of_type_Int = (((TroopStoryIdSynchronizer.DayItem)localObject1).jdField_a_of_type_Int - 1);
+        }
+        j += 1;
+      }
+      localObject1 = new GetTroopStoryListHandler.GetTroopStoryListEvent(this.jdField_a_of_type_JavaLangString, new ErrorMessage());
+      ((GetTroopStoryListHandler.GetTroopStoryListEvent)localObject1).jdField_a_of_type_JavaUtilList = localArrayList;
+      ((GetTroopStoryListHandler.GetTroopStoryListEvent)localObject1).jdField_b_of_type_Int = this.jdField_a_of_type_Int;
+      ((GetTroopStoryListHandler.GetTroopStoryListEvent)localObject1).f = this.jdField_a_of_type_Boolean;
+      ((GetTroopStoryListHandler.GetTroopStoryListEvent)localObject1).g = this.jdField_b_of_type_Boolean;
+      StoryDispatcher.a().dispatch((Dispatcher.Dispatchable)localObject1);
+    }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_d_of_type_Boolean) && (paramInt1 == this.jdField_a_of_type_JavaUtilList.size() - 2)) {
+    boolean bool2 = this.jdField_a_of_type_Boolean;
+    boolean bool1 = true;
+    if ((!bool2) && (this.jdField_d_of_type_Boolean) && (paramInt1 == this.jdField_a_of_type_JavaUtilList.size() - 2)) {
       this.jdField_a_of_type_Boolean = true;
     }
-    if (!this.jdField_b_of_type_Boolean)
-    {
-      if (paramInt2 > 3) {
-        break label62;
+    if (!this.jdField_b_of_type_Boolean) {
+      if (paramInt2 <= 3)
+      {
+        this.jdField_b_of_type_Boolean = true;
       }
-      this.jdField_b_of_type_Boolean = true;
+      else if (paramInt2 == 4)
+      {
+        if (((TroopStoryItemInfo)this.jdField_a_of_type_JavaUtilList.get(3)).itemType == 2) {
+          bool1 = false;
+        }
+        this.jdField_b_of_type_Boolean = bool1;
+      }
     }
-    label62:
-    while (paramInt2 != 4)
-    {
-      this.jdField_c_of_type_Int = paramInt2;
-      this.jdField_b_of_type_Int = paramInt1;
-      return;
-    }
-    if (((TroopStoryItemInfo)this.jdField_a_of_type_JavaUtilList.get(3)).itemType != 2) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_b_of_type_Boolean = bool;
-      break;
-    }
+    this.jdField_c_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Int = paramInt1;
   }
   
   public void a(List<TroopStoryItemInfo> paramList)
@@ -199,7 +178,7 @@ public class TroopStoryIdSynchronizer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.troop.model.TroopStoryIdSynchronizer
  * JD-Core Version:    0.7.0.1
  */

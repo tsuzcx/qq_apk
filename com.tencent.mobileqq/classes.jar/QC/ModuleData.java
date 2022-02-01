@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,20 +43,23 @@ public final class ModuleData
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.cname != null) {
-      paramJceOutputStream.write(this.cname, 0);
+    Object localObject = this.cname;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.vitem != null) {
-      paramJceOutputStream.write(this.vitem, 1);
+    localObject = this.vitem;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.extModParams != null) {
-      paramJceOutputStream.write(this.extModParams, 2);
+    localObject = this.extModParams;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.ModuleData
  * JD-Core Version:    0.7.0.1
  */

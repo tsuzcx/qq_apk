@@ -48,62 +48,33 @@ class RetryHandler
   
   public boolean retryRequest(IOException paramIOException, int paramInt, HttpContext paramHttpContext)
   {
-    boolean bool2 = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("Translator", 2, "[retryRequest] exception:" + paramIOException + "executionCount:" + paramInt);
-    }
-    Boolean localBoolean = (Boolean)paramHttpContext.getAttribute("http.request_sent");
-    int i;
-    boolean bool1;
-    if ((localBoolean != null) && (localBoolean.booleanValue()))
+    if (QLog.isColorLevel())
     {
-      i = 1;
-      if (paramInt <= this.jdField_a_of_type_Int) {
-        break label136;
-      }
-      bool1 = false;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[retryRequest] exception:");
+      ((StringBuilder)localObject).append(paramIOException);
+      ((StringBuilder)localObject).append("executionCount:");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("Translator", 2, ((StringBuilder)localObject).toString());
     }
-    for (;;)
+    Object localObject = (Boolean)paramHttpContext.getAttribute("http.request_sent");
+    boolean bool1 = false;
+    if (((localObject == null) || (((Boolean)localObject).booleanValue())) || ((paramInt <= this.jdField_a_of_type_Int) && (!a(b, paramIOException))))
     {
-      label83:
-      if (bool1) {
-        if (!((HttpUriRequest)paramHttpContext.getAttribute("http.request")).getMethod().equals("POST")) {
-          bool1 = bool2;
-        }
-      }
-      for (;;)
-      {
-        if (bool1)
-        {
-          SystemClock.sleep(1500L);
-          return bool1;
-          i = 0;
-          break;
-          label136:
-          if (a(b, paramIOException))
-          {
-            bool1 = false;
-            break label83;
-          }
-          if (a(jdField_a_of_type_JavaUtilHashSet, paramIOException))
-          {
-            bool1 = true;
-            break label83;
-          }
-          if (i != 0) {
-            break label197;
-          }
-          bool1 = true;
-          break label83;
-          bool1 = false;
-          continue;
-        }
-        paramIOException.printStackTrace();
-        return bool1;
-      }
-      label197:
+      a(jdField_a_of_type_JavaUtilHashSet, paramIOException);
       bool1 = true;
     }
+    boolean bool2 = bool1;
+    if (bool1) {
+      bool2 = ((HttpUriRequest)paramHttpContext.getAttribute("http.request")).getMethod().equals("POST") ^ true;
+    }
+    if (bool2)
+    {
+      SystemClock.sleep(1500L);
+      return bool2;
+    }
+    paramIOException.printStackTrace();
+    return bool2;
   }
 }
 

@@ -101,8 +101,9 @@ public class MiniProgressDialog
   public void onBackPressed()
   {
     super.onBackPressed();
-    if (this.mCallback != null) {
-      this.mCallback.onBackPressed();
+    MiniProgressDialog.Callback localCallback = this.mCallback;
+    if (localCallback != null) {
+      localCallback.onBackPressed();
     }
   }
   
@@ -126,7 +127,7 @@ public class MiniProgressDialog
     super.onStart();
   }
   
-  public void onStop()
+  protected void onStop()
   {
     if (this.frameAnimation.isRunning()) {
       this.frameAnimation.stop();
@@ -186,19 +187,21 @@ public class MiniProgressDialog
   
   public void setTipImageView(int paramInt)
   {
-    if (this.mImageShow == null) {
+    ImageView localImageView = this.mImageShow;
+    if (localImageView == null) {
       return;
     }
-    this.mImageShow.setVisibility(0);
+    localImageView.setVisibility(0);
     this.mImageShow.setImageResource(paramInt);
   }
   
   public void setTipImageView(Bitmap paramBitmap)
   {
-    if (this.mImageShow == null) {
+    ImageView localImageView = this.mImageShow;
+    if (localImageView == null) {
       return;
     }
-    this.mImageShow.setVisibility(0);
+    localImageView.setVisibility(0);
     this.mImageShow.setImageBitmap(paramBitmap);
   }
   
@@ -223,34 +226,35 @@ public class MiniProgressDialog
   
   public void showTip(boolean paramBoolean)
   {
-    if (this.mRootView != null)
+    View localView = this.mRootView;
+    if (localView != null)
     {
-      if (paramBoolean) {
-        this.mRootView.setVisibility(0);
+      if (paramBoolean)
+      {
+        localView.setVisibility(0);
+        return;
       }
+      localView.setVisibility(8);
     }
-    else {
-      return;
-    }
-    this.mRootView.setVisibility(8);
   }
   
   public void showTipImageView(boolean paramBoolean)
   {
-    if (this.mImageShow == null) {
+    ImageView localImageView = this.mImageShow;
+    if (localImageView == null) {
       return;
     }
     if (paramBoolean)
     {
-      this.mImageShow.setVisibility(0);
+      localImageView.setVisibility(0);
       return;
     }
-    this.mImageShow.setVisibility(8);
+    localImageView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.MiniProgressDialog
  * JD-Core Version:    0.7.0.1
  */

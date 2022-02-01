@@ -16,53 +16,53 @@ class QQLSSensor$1
   
   public void onSensorChanged(SensorEvent arg1)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QQLSSensor", 4, "QQLSSensor onSensorChanged" + ???.values[0]);
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QQLSSensor onSensorChanged");
+      localStringBuilder.append(???.values[0]);
+      QLog.d("QQLSSensor", 4, localStringBuilder.toString());
     }
     if (QQLSSensor.a(this.a) == null) {
       return;
     }
-    if (DeviceInfoUtil.h())
+    if (DeviceInfoUtil.j())
     {
       this.a.a = false;
       return;
     }
     if (???.values[0] < QQLSSensor.a(this.a)) {
       QQLSSensor.a(this.a, true);
+    } else {
+      QQLSSensor.a(this.a, false);
     }
-    for (;;)
+    ??? = Build.MODEL;
+    if (DeviceInfoUtil.i())
     {
-      ??? = Build.MODEL;
-      if (!DeviceInfoUtil.g()) {
-        break;
-      }
       if (QQLSSensor.a(this.a).hasMessages(1)) {
         QQLSSensor.a(this.a).removeMessages(1);
       }
       QQLSSensor.a(this.a).sendMessageDelayed(QQLSSensor.a(this.a).obtainMessage(1), 150L);
       return;
-      QQLSSensor.a(this.a, false);
     }
-    if ((???.equalsIgnoreCase("mi 3c")) || (???.equalsIgnoreCase("K-Touch W619")) || (???.equalsIgnoreCase("mi 3w")))
-    {
-      if (QQLSSensor.a(this.a).hasMessages(1)) {
-        QQLSSensor.a(this.a).removeMessages(1);
+    if ((!???.equalsIgnoreCase("mi 3c")) && (!???.equalsIgnoreCase("K-Touch W619")) && (!???.equalsIgnoreCase("mi 3w"))) {
+      synchronized (this.a)
+      {
+        if (QQLSSensor.a(this.a) != null) {
+          QQLSSensor.a(this.a).a(QQLSSensor.a(this.a));
+        }
+        return;
       }
-      QQLSSensor.a(this.a).sendMessageDelayed(QQLSSensor.a(this.a).obtainMessage(1), 250L);
-      return;
     }
-    synchronized (this.a)
-    {
-      if (QQLSSensor.a(this.a) != null) {
-        QQLSSensor.a(this.a).a(QQLSSensor.a(this.a));
-      }
-      return;
+    if (QQLSSensor.a(this.a).hasMessages(1)) {
+      QQLSSensor.a(this.a).removeMessages(1);
     }
+    QQLSSensor.a(this.a).sendMessageDelayed(QQLSSensor.a(this.a).obtainMessage(1), 250L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQLSSensor.1
  * JD-Core Version:    0.7.0.1
  */

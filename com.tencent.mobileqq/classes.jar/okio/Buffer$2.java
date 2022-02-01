@@ -29,12 +29,15 @@ class Buffer$2
   
   public String toString()
   {
-    return this.this$0 + ".inputStream()";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.this$0);
+    localStringBuilder.append(".inputStream()");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okio.Buffer.2
  * JD-Core Version:    0.7.0.1
  */

@@ -31,17 +31,19 @@ public final class AcsSubNoticeRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret_code, 0);
-    if (this.err_str != null) {
-      paramJceOutputStream.write(this.err_str, 1);
+    Object localObject = this.err_str;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 2);
+    localObject = this.msg;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.AcsSubNoticeRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -18,19 +18,27 @@ class QSecLibMgr$SFUVisitor
   
   public void a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (TextUtils.isEmpty(paramString2)) {}
-    QSecDatabaseMgr.LibEntry localLibEntry2;
-    do
-    {
+    if (TextUtils.isEmpty(paramString2)) {
       return;
-      localLibEntry2 = QSecLibMgr.a(this.b).a(paramInt1);
-    } while ((localLibEntry2 != null) && (paramString1.equals(localLibEntry2.jdField_b_of_type_JavaLangString)) && (paramString2.equals(localLibEntry2.jdField_a_of_type_JavaLangString)) && (paramInt2 == localLibEntry2.jdField_b_of_type_Int) && (paramInt3 == localLibEntry2.c));
-    QSecDatabaseMgr.LibEntry localLibEntry1;
-    if (localLibEntry2 == null) {
-      localLibEntry1 = new QSecDatabaseMgr.LibEntry();
     }
-    for (;;)
+    QSecDatabaseMgr.LibEntry localLibEntry2 = QSecLibMgr.a(this.b).a(paramInt1);
+    if ((localLibEntry2 == null) || (!paramString1.equals(localLibEntry2.jdField_b_of_type_JavaLangString)) || (!paramString2.equals(localLibEntry2.jdField_a_of_type_JavaLangString)) || (paramInt2 != localLibEntry2.jdField_b_of_type_Int) || (paramInt3 != localLibEntry2.c))
     {
+      QSecDatabaseMgr.LibEntry localLibEntry1;
+      if (localLibEntry2 == null)
+      {
+        localLibEntry1 = new QSecDatabaseMgr.LibEntry();
+      }
+      else
+      {
+        QSecLibMgr.a(this.b).a(paramInt1, false);
+        localLibEntry1 = localLibEntry2;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("QQProtect.QSec", 2, String.format("Database info mismatch for lib: %d", new Object[] { Integer.valueOf(paramInt1) }));
+          localLibEntry1 = localLibEntry2;
+        }
+      }
       localLibEntry1.jdField_a_of_type_Int = paramInt1;
       localLibEntry1.jdField_b_of_type_Int = paramInt2;
       localLibEntry1.c = paramInt3;
@@ -41,20 +49,12 @@ class QSecLibMgr$SFUVisitor
       }
       QSecLibMgr.a(this.b).a(localLibEntry1, false);
       this.a = true;
-      return;
-      QSecLibMgr.a(this.b).a(paramInt1, false);
-      localLibEntry1 = localLibEntry2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("QQProtect.QSec", 2, String.format("Database info mismatch for lib: %d", new Object[] { Integer.valueOf(paramInt1) }));
-        localLibEntry1 = localLibEntry2;
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.QSecLibMgr.SFUVisitor
  * JD-Core Version:    0.7.0.1
  */

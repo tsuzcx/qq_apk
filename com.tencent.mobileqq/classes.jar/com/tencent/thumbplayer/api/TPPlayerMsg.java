@@ -69,6 +69,8 @@ public class TPPlayerMsg
   public static final int TP_PLAYER_INFO_OBJECT_DOWNLOAD_PROGRESS_UPDATE = 1006;
   @TPNativeKeyMap.MapMsgInfo(504)
   public static final int TP_PLAYER_INFO_OBJECT_MEDIA_CODEC_INFO = 502;
+  @TPNativeKeyMap.MapMsgInfo(505)
+  public static final int TP_PLAYER_INFO_OBJECT_MEDIA_DRM_INFO = 505;
   public static final int TP_PLAYER_INFO_OBJECT_NO_MORE_DATA = 1008;
   public static final int TP_PLAYER_INFO_OBJECT_PLAY_CDN_INFO_UPDATE = 1003;
   public static final int TP_PLAYER_INFO_OBJECT_PLAY_CDN_URL_UPDATE = 1002;
@@ -78,6 +80,8 @@ public class TPPlayerMsg
   public static final int TP_PLAYER_INFO_OBJECT_URL_EXPIRED = 1007;
   @TPNativeKeyMap.MapMsgInfo(500)
   public static final int TP_PLAYER_INFO_OBJECT_VIDEO_CROP = 500;
+  @TPNativeKeyMap.MapMsgInfo(503)
+  public static final int TP_PLAYER_INFO_OBJECT_VIDEO_SEI = 503;
   public static final int TP_PLAYER_INFO_RETRY_PLAYER_START = 1013;
   public static final int TP_PLAYER_INFO_RETRY_PLAYER_STOP = 1014;
   public static final int TP_PLAYER_INFO_SELECT_AUDIO_TRACK = 1011;
@@ -85,7 +89,7 @@ public class TPPlayerMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPPlayerMsg
  * JD-Core Version:    0.7.0.1
  */

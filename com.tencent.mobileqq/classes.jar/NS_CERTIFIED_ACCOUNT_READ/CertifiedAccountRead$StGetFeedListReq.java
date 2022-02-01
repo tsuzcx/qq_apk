@@ -26,13 +26,14 @@ public final class CertifiedAccountRead$StGetFeedListReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50, 80, 90 }, new String[] { "extInfo", "listNum", "from", "feed", "adres", "adAttchInfo", "source", "livePageInfo" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro, "", Integer.valueOf(0), "" }, StGetFeedListReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50, 80, 90 }, new String[] { "extInfo", "listNum", "from", "feed", "adres", "adAttchInfo", "source", "livePageInfo" }, new Object[] { null, localInteger, localInteger, null, localByteStringMicro, "", localInteger, "" }, StGetFeedListReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedListReq
  * JD-Core Version:    0.7.0.1
  */

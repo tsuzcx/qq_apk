@@ -16,7 +16,7 @@ class GroupTeamWorkListActivity$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity.11
  * JD-Core Version:    0.7.0.1
  */

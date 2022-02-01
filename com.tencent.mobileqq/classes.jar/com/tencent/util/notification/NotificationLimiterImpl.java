@@ -25,37 +25,40 @@ public class NotificationLimiterImpl
   
   public boolean shouldNotify(int paramInt)
   {
-    if (a(paramInt)) {}
-    while ((b(paramInt)) || (c(paramInt))) {
+    if (a(paramInt)) {
       return true;
     }
-    if (MiniChatActivity.a()) {
+    if (b(paramInt)) {
+      return true;
+    }
+    if (c(paramInt)) {
+      return true;
+    }
+    boolean bool1;
+    if (MiniChatActivity.a())
+    {
       if (QLog.isColorLevel()) {
         QLog.i("NotificationLimiterImpl", 2, "MiniMsgActForeGround");
       }
+      bool1 = false;
     }
-    for (boolean bool1 = false;; bool1 = true)
+    else
     {
-      boolean bool2 = bool1;
-      if (bool1) {
-        if (StudyModeManager.a(paramInt)) {
-          break label93;
-        }
-      }
-      label93:
-      for (bool2 = true;; bool2 = false)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("NotificationLimiterImpl", 2, String.format("studymode_fightNotificationLimiterImpl ,shouldNotify1 = %b,", new Object[] { Boolean.valueOf(bool2) }));
-        }
-        return bool2;
-      }
+      bool1 = true;
     }
+    boolean bool2 = bool1;
+    if (bool1) {
+      bool2 = StudyModeManager.a(paramInt) ^ true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("NotificationLimiterImpl", 2, String.format("studymode_fightNotificationLimiterImpl ,shouldNotify1 = %b,", new Object[] { Boolean.valueOf(bool2) }));
+    }
+    return bool2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.notification.NotificationLimiterImpl
  * JD-Core Version:    0.7.0.1
  */

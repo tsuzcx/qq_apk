@@ -10,7 +10,7 @@ public class NativeMemoryInspector
 {
   private Handler jdField_a_of_type_AndroidOsHandler;
   HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("natmem_inspector");
-  private boolean jdField_a_of_type_Boolean = true;
+  private boolean jdField_a_of_type_Boolean = false;
   
   public NativeMemoryInspector()
   {
@@ -33,35 +33,47 @@ public class NativeMemoryInspector
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i == 4)
+          {
+            NatMemMonitor.a().a();
+            a();
+          }
+        }
+        else
+        {
+          NatMemMonitor.a().nativePrintUsage();
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 10000L);
+        }
+      }
+      else
+      {
+        NatMemMonitor.a().d();
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 10000L);
+      }
     }
-    for (;;)
+    else
     {
-      return false;
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
       NatMemMonitor.a().b();
       NatMemMonitor.a().a();
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 3600000L);
-      if (this.jdField_a_of_type_Boolean)
-      {
+      if (this.jdField_a_of_type_Boolean) {
         b();
-        continue;
-        NatMemMonitor.a().d();
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 10000L);
-        continue;
-        NatMemMonitor.a().nativePrintUsage();
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 10000L);
-        continue;
-        NatMemMonitor.a().a();
-        a();
       }
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.natmem.NativeMemoryInspector
  * JD-Core Version:    0.7.0.1
  */

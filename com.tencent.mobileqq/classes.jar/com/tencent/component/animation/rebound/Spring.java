@@ -25,15 +25,18 @@ public class Spring
   
   Spring(BaseSpringSystem paramBaseSpringSystem)
   {
-    if (paramBaseSpringSystem == null) {
-      throw new IllegalArgumentException("Spring cannot be created outside of a BaseSpringSystem");
+    if (paramBaseSpringSystem != null)
+    {
+      this.mSpringSystem = paramBaseSpringSystem;
+      paramBaseSpringSystem = new StringBuilder("spring:");
+      int i = ID;
+      ID = i + 1;
+      paramBaseSpringSystem.append(i);
+      this.mId = paramBaseSpringSystem.toString();
+      setSpringConfig(SpringConfig.defaultConfig);
+      return;
     }
-    this.mSpringSystem = paramBaseSpringSystem;
-    paramBaseSpringSystem = new StringBuilder("spring:");
-    int i = ID;
-    ID = i + 1;
-    this.mId = i;
-    setSpringConfig(SpringConfig.defaultConfig);
+    throw new IllegalArgumentException("Spring cannot be created outside of a BaseSpringSystem");
   }
   
   private double getDisplacementDistanceForState(Spring.PhysicsState paramPhysicsState)
@@ -43,77 +46,110 @@ public class Spring
   
   private void interpolate(double paramDouble)
   {
-    this.mCurrentState.position = (this.mCurrentState.position * paramDouble + this.mPreviousState.position * (1.0D - paramDouble));
-    this.mCurrentState.velocity = (this.mCurrentState.velocity * paramDouble + this.mPreviousState.velocity * (1.0D - paramDouble));
+    Spring.PhysicsState localPhysicsState = this.mCurrentState;
+    double d1 = localPhysicsState.position;
+    double d2 = this.mPreviousState.position;
+    double d3 = 1.0D - paramDouble;
+    localPhysicsState.position = (d1 * paramDouble + d2 * d3);
+    localPhysicsState = this.mCurrentState;
+    localPhysicsState.velocity = (localPhysicsState.velocity * paramDouble + this.mPreviousState.velocity * d3);
   }
   
   public Spring addListener(SpringListener paramSpringListener)
   {
-    if (paramSpringListener == null) {
-      throw new IllegalArgumentException("newListener is required");
+    if (paramSpringListener != null)
+    {
+      this.mListeners.add(paramSpringListener);
+      return this;
     }
-    this.mListeners.add(paramSpringListener);
-    return this;
+    throw new IllegalArgumentException("newListener is required");
   }
   
   void advance(double paramDouble)
   {
-    boolean bool = isAtRest();
-    if ((bool) && (this.mWasAtRest)) {
+    boolean bool2 = isAtRest();
+    if ((bool2) && (this.mWasAtRest)) {
       return;
     }
-    double d1 = paramDouble;
+    double d1 = 0.064D;
     if (paramDouble > 0.064D) {
-      d1 = 0.064D;
+      paramDouble = d1;
     }
-    this.mTimeAccumulator += d1;
+    this.mTimeAccumulator += paramDouble;
     double d4 = this.mSpringConfig.tension;
     double d5 = this.mSpringConfig.friction;
     d1 = this.mCurrentState.position;
     paramDouble = this.mCurrentState.velocity;
-    double d3 = this.mTempState.position;
-    double d2 = this.mTempState.velocity;
-    label95:
-    if (this.mTimeAccumulator < 0.001D)
-    {
-      this.mTempState.position = d3;
-      this.mTempState.velocity = d2;
-      this.mCurrentState.position = d1;
-      this.mCurrentState.velocity = paramDouble;
-      if (this.mTimeAccumulator > 0.0D) {
-        interpolate(this.mTimeAccumulator / 0.001D);
-      }
-      if ((!isAtRest()) && ((!this.mOvershootClampingEnabled) || (!isOvershooting()))) {
-        break label575;
-      }
-      if (d4 <= 0.0D) {
-        break label547;
-      }
-      this.mStartValue = this.mEndValue;
-      this.mCurrentState.position = this.mEndValue;
-      setVelocity(0.0D);
-      bool = true;
-    }
-    label547:
-    label575:
+    double d2 = this.mTempState.position;
+    double d3 = this.mTempState.velocity;
     for (;;)
     {
-      label208:
-      if (this.mWasAtRest) {
-        this.mWasAtRest = false;
-      }
-      for (int i = 1;; i = 0)
+      double d6 = this.mTimeAccumulator;
+      Object localObject;
+      if (d6 < 0.001D)
       {
-        int j = 0;
-        if (bool)
+        localObject = this.mTempState;
+        ((Spring.PhysicsState)localObject).position = d2;
+        ((Spring.PhysicsState)localObject).velocity = d3;
+        localObject = this.mCurrentState;
+        ((Spring.PhysicsState)localObject).position = d1;
+        ((Spring.PhysicsState)localObject).velocity = paramDouble;
+        if (d6 > 0.0D) {
+          interpolate(d6 / 0.001D);
+        }
+        boolean bool1;
+        if (!isAtRest())
+        {
+          bool1 = bool2;
+          if (this.mOvershootClampingEnabled)
+          {
+            bool1 = bool2;
+            if (!isOvershooting()) {}
+          }
+        }
+        else
+        {
+          if (d4 > 0.0D)
+          {
+            paramDouble = this.mEndValue;
+            this.mStartValue = paramDouble;
+            this.mCurrentState.position = paramDouble;
+          }
+          else
+          {
+            this.mEndValue = this.mCurrentState.position;
+            this.mStartValue = this.mEndValue;
+          }
+          setVelocity(0.0D);
+          bool1 = true;
+        }
+        int i;
+        if (this.mWasAtRest)
+        {
+          this.mWasAtRest = false;
+          i = 1;
+        }
+        else
+        {
+          i = 0;
+        }
+        int j;
+        if (bool1)
         {
           this.mWasAtRest = true;
           j = 1;
         }
-        Iterator localIterator = this.mListeners.iterator();
-        while (localIterator.hasNext())
+        else
         {
-          SpringListener localSpringListener = (SpringListener)localIterator.next();
+          j = 0;
+        }
+        localObject = this.mListeners.iterator();
+        for (;;)
+        {
+          if (!((Iterator)localObject).hasNext()) {
+            return;
+          }
+          SpringListener localSpringListener = (SpringListener)((Iterator)localObject).next();
           if (i != 0) {
             localSpringListener.onSpringActivate(this);
           }
@@ -122,28 +158,24 @@ public class Spring
             localSpringListener.onSpringAtRest(this);
           }
         }
-        break;
-        this.mTimeAccumulator -= 0.001D;
-        if (this.mTimeAccumulator < 0.001D)
-        {
-          this.mPreviousState.position = d1;
-          this.mPreviousState.velocity = paramDouble;
-        }
-        double d6 = (this.mEndValue - d3) * d4 - d5 * paramDouble;
-        double d10 = paramDouble + 0.001D * d6 * 0.5D;
-        double d7 = (this.mEndValue - (0.001D * paramDouble * 0.5D + d1)) * d4 - d5 * d10;
-        double d11 = paramDouble + 0.001D * d7 * 0.5D;
-        double d8 = (this.mEndValue - (0.001D * d10 * 0.5D + d1)) * d4 - d5 * d11;
-        d3 = d1 + 0.001D * d11;
-        d2 = 0.001D * d8 + paramDouble;
-        double d9 = this.mEndValue;
-        d1 += ((d10 + d11) * 2.0D + paramDouble + d2) * 0.1666666666666667D * 0.001D;
-        paramDouble += (d6 + (d7 + d8) * 2.0D + ((d9 - d3) * d4 - d5 * d2)) * 0.1666666666666667D * 0.001D;
-        break label95;
-        this.mEndValue = this.mCurrentState.position;
-        this.mStartValue = this.mEndValue;
-        break label208;
       }
+      this.mTimeAccumulator = (d6 - 0.001D);
+      if (this.mTimeAccumulator < 0.001D)
+      {
+        localObject = this.mPreviousState;
+        ((Spring.PhysicsState)localObject).position = d1;
+        ((Spring.PhysicsState)localObject).velocity = paramDouble;
+      }
+      d6 = this.mEndValue;
+      double d7 = (d6 - d2) * d4 - d5 * paramDouble;
+      double d10 = paramDouble + d7 * 0.001D * 0.5D;
+      double d8 = (d6 - (paramDouble * 0.001D * 0.5D + d1)) * d4 - d5 * d10;
+      double d11 = paramDouble + d8 * 0.001D * 0.5D;
+      double d9 = (d6 - (d1 + d10 * 0.001D * 0.5D)) * d4 - d5 * d11;
+      d2 = d1 + d11 * 0.001D;
+      d3 = paramDouble + d9 * 0.001D;
+      d1 += (paramDouble + (d10 + d11) * 2.0D + d3) * 0.1666666666666667D * 0.001D;
+      paramDouble += (d7 + (d8 + d9) * 2.0D + ((d6 - d2) * d4 - d5 * d3)) * 0.1666666666666667D * 0.001D;
     }
   }
   
@@ -226,11 +258,12 @@ public class Spring
   
   public Spring removeListener(SpringListener paramSpringListener)
   {
-    if (paramSpringListener == null) {
-      throw new IllegalArgumentException("listenerToRemove is required");
+    if (paramSpringListener != null)
+    {
+      this.mListeners.remove(paramSpringListener);
+      return this;
     }
-    this.mListeners.remove(paramSpringListener);
-    return this;
+    throw new IllegalArgumentException("listenerToRemove is required");
   }
   
   public Spring setAtRest()
@@ -267,17 +300,19 @@ public class Spring
   
   public Spring setEndValue(double paramDouble)
   {
-    if ((this.mEndValue == paramDouble) && (isAtRest())) {}
+    if ((this.mEndValue == paramDouble) && (isAtRest())) {
+      return this;
+    }
+    this.mStartValue = getCurrentValue();
+    this.mEndValue = paramDouble;
+    this.mSpringSystem.activateSpring(getId());
+    Iterator localIterator = this.mListeners.iterator();
     for (;;)
     {
-      return this;
-      this.mStartValue = getCurrentValue();
-      this.mEndValue = paramDouble;
-      this.mSpringSystem.activateSpring(getId());
-      Iterator localIterator = this.mListeners.iterator();
-      while (localIterator.hasNext()) {
-        ((SpringListener)localIterator.next()).onSpringEndStateChange(this);
+      if (!localIterator.hasNext()) {
+        return this;
       }
+      ((SpringListener)localIterator.next()).onSpringEndStateChange(this);
     }
   }
   
@@ -301,11 +336,12 @@ public class Spring
   
   public Spring setSpringConfig(SpringConfig paramSpringConfig)
   {
-    if (paramSpringConfig == null) {
-      throw new IllegalArgumentException("springConfig is required");
+    if (paramSpringConfig != null)
+    {
+      this.mSpringConfig = paramSpringConfig;
+      return this;
     }
-    this.mSpringConfig = paramSpringConfig;
-    return this;
+    throw new IllegalArgumentException("springConfig is required");
   }
   
   public Spring setVelocity(double paramDouble)
@@ -330,7 +366,7 @@ public class Spring
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.animation.rebound.Spring
  * JD-Core Version:    0.7.0.1
  */

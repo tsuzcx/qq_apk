@@ -22,11 +22,11 @@ public class QQStoryShareGroupProfileActivity$ReportVideoReceiver
   {
     if (paramReportEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      QQToast.a(PlayModeUtils.a(), 2, HardCodeUtil.a(2131711007), 0).a();
+      QQToast.a(PlayModeUtils.a(), 2, HardCodeUtil.a(2131710983), 0).a();
       StoryReportor.a("play_video", "report_suc", 0, 0, new String[] { String.valueOf(paramReportEvent.jdField_a_of_type_Int), "5" });
       return;
     }
-    QQToast.a(PlayModeUtils.a(), 1, HardCodeUtil.a(2131711002), 0).a();
+    QQToast.a(PlayModeUtils.a(), 1, HardCodeUtil.a(2131710978), 0).a();
     StoryReportor.a("play_video", "report_fail", 0, 0, new String[] { "", "5" });
   }
   
@@ -37,7 +37,7 @@ public class QQStoryShareGroupProfileActivity$ReportVideoReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity.ReportVideoReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -15,11 +15,17 @@ class LaunchManagerClient$8
   {
     if (this.this$0.getService() == null)
     {
-      QMLog.e("minisdk-start_AppBrandProxy", "sendCmd IAppBrandService Connection is Null 1. cmd=" + this.val$cmd);
-      if (this.val$callback != null) {}
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sendCmd IAppBrandService Connection is Null 1. cmd=");
+      ((StringBuilder)localObject).append(this.val$cmd);
+      QMLog.e("minisdk-start_AppBrandProxy", ((StringBuilder)localObject).toString());
+      localObject = this.val$callback;
+      if (localObject == null) {
+        return;
+      }
       try
       {
-        this.val$callback.onCmdResult(false, new Bundle());
+        ((MiniCmdCallback)localObject).onCmdResult(false, new Bundle());
         return;
       }
       catch (Throwable localThrowable1)
@@ -41,7 +47,7 @@ class LaunchManagerClient$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ipc.LaunchManagerClient.8
  * JD-Core Version:    0.7.0.1
  */

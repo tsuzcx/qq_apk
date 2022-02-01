@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/j_o" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:layout_gravity="bottom" android:id="@id/oam" android:background="@drawable/f3a" android:visibility="invisible" android:layout_width="24.0dip" android:layout_height="2.0dip" android:layout_marginTop="2.0dip" android:layout_marginBottom="2.0dip" />
+</merge>

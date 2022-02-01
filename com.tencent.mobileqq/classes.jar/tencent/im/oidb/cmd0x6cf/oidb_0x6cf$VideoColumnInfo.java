@@ -30,17 +30,18 @@ public final class oidb_0x6cf$VideoColumnInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 48, 56, 90, 98, 106, 122, 130, 136, 146, 160 }, new String[] { "uint32_column_id", "bytes_column_name", "bytes_column_icon_url", "uint64_last_update_time", "uint32_video_count", "uint32_subscribe_count", "uint32_is_subscribed", "bytes_app_name", "bytes_app_icon_url", "default_jump_info", "subscribe_jump_info", "app_jump_info", "uint32_style", "bytes_from_txt", "uint32_update_count" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3, localByteStringMicro4, null, null, null, Integer.valueOf(0), localByteStringMicro5, Integer.valueOf(0) }, VideoColumnInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 48, 56, 90, 98, 106, 122, 130, 136, 146, 160 }, new String[] { "uint32_column_id", "bytes_column_name", "bytes_column_icon_url", "uint64_last_update_time", "uint32_video_count", "uint32_subscribe_count", "uint32_is_subscribed", "bytes_app_name", "bytes_app_icon_url", "default_jump_info", "subscribe_jump_info", "app_jump_info", "uint32_style", "bytes_from_txt", "uint32_update_count" }, new Object[] { localInteger, localByteStringMicro1, localByteStringMicro2, Long.valueOf(0L), localInteger, localInteger, localInteger, localByteStringMicro3, localByteStringMicro4, null, null, null, localInteger, localByteStringMicro5, localInteger }, VideoColumnInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6cf.oidb_0x6cf.VideoColumnInfo
  * JD-Core Version:    0.7.0.1
  */

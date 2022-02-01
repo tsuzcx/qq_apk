@@ -11,35 +11,45 @@ import org.json.JSONObject;
 public class YtSDKKitConfigHelper
 {
   private static final HashMap<YtSDKKitFramework.YtSDKKitFrameworkWorkMode, String> SDK_SETTINGS = new YtSDKKitConfigHelper.1();
-  private static final String TAG = YtSDKKitConfigHelper.class.getSimpleName();
+  private static final String TAG = "YtSDKKitConfigHelper";
   private static final HashMap<YtSDKKitFramework.YtSDKKitFrameworkWorkMode, String> UI_SETTINGS = new YtSDKKitConfigHelper.2();
   
   public static String getConfigStringBy(JSONObject paramJSONObject, String paramString, boolean paramBoolean)
   {
-    HashMap localHashMap = null;
+    Object localObject;
+    StringBuilder localStringBuilder;
     try
     {
       paramJSONObject = paramJSONObject.getString(paramString);
-      if ((paramBoolean) && ((paramJSONObject == null) || (paramJSONObject.equals(""))))
-      {
-        YtLogger.e(TAG, "Parse json object failed " + paramString + "参数解析失败, 不存在或者不能为空");
-        YtSDKStats.getInstance().reportError(3145729, "msg_param_error");
-        localHashMap = new HashMap();
-        localHashMap.put("process_action", "failed");
-        localHashMap.put("error_code", Integer.valueOf(3145729));
-        localHashMap.put("message", CommonUtils.makeMessageJson(3145729, "msg_param_error", paramString + "参数解析失败, 不存在或者不能为空"));
-        YtFSM.getInstance().sendFSMEvent(localHashMap);
-      }
-      return paramJSONObject;
     }
     catch (JSONException paramJSONObject)
     {
-      for (;;)
-      {
-        YtLogger.e(TAG, "Parse json object failed " + paramJSONObject.getLocalizedMessage());
-        paramJSONObject = localHashMap;
-      }
+      localObject = TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Parse json object failed ");
+      localStringBuilder.append(paramJSONObject.getLocalizedMessage());
+      YtLogger.e((String)localObject, localStringBuilder.toString());
+      paramJSONObject = null;
     }
+    if ((paramBoolean) && ((paramJSONObject == null) || (paramJSONObject.equals(""))))
+    {
+      localObject = TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Parse json object failed ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("参数解析失败, 不存在或者不能为空");
+      YtLogger.e((String)localObject, localStringBuilder.toString());
+      YtSDKStats.getInstance().reportError(3145729, "msg_param_error");
+      localObject = new HashMap();
+      ((HashMap)localObject).put("process_action", "failed");
+      ((HashMap)localObject).put("error_code", Integer.valueOf(3145729));
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("参数解析失败, 不存在或者不能为空");
+      ((HashMap)localObject).put("message", CommonUtils.makeMessageJson(3145729, "msg_param_error", localStringBuilder.toString()));
+      YtFSM.getInstance().sendFSMEvent((HashMap)localObject);
+    }
+    return paramJSONObject;
   }
   
   public static ArrayList<String> getPipleStateNames(YtSDKKitFramework.YtSDKKitFrameworkWorkMode paramYtSDKKitFrameworkWorkMode)
@@ -48,21 +58,21 @@ public class YtSDKKitConfigHelper
     {
     default: 
       return null;
-    case 1: 
-      return new YtSDKKitConfigHelper.3();
+    case 8: 
+      return new YtSDKKitConfigHelper.9();
+    case 7: 
+      return new YtSDKKitConfigHelper.8();
+    case 6: 
+      return new YtSDKKitConfigHelper.7();
+    case 5: 
+      return new YtSDKKitConfigHelper.6();
+    case 4: 
+      return new YtSDKKitConfigHelper.5();
     case 2: 
     case 3: 
       return new YtSDKKitConfigHelper.4();
-    case 4: 
-      return new YtSDKKitConfigHelper.5();
-    case 5: 
-      return new YtSDKKitConfigHelper.6();
-    case 6: 
-      return new YtSDKKitConfigHelper.7();
-    case 7: 
-      return new YtSDKKitConfigHelper.8();
     }
-    return new YtSDKKitConfigHelper.9();
+    return new YtSDKKitConfigHelper.3();
   }
   
   public static JSONObject getSDKConfig(YtSDKKitFramework.YtSDKKitFrameworkWorkMode paramYtSDKKitFrameworkWorkMode, JSONObject paramJSONObject)
@@ -121,7 +131,7 @@ public class YtSDKKitConfigHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.framework.YtSDKKitConfigHelper
  * JD-Core Version:    0.7.0.1
  */

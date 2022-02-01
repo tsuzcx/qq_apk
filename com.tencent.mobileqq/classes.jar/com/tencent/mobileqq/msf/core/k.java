@@ -9,11 +9,11 @@ import java.util.Iterator;
 
 public class k
 {
-  private static k.b a = null;
-  private static k.c b = null;
+  private static k.b a;
+  private static k.c b;
   private static boolean c = true;
   private static boolean d = true;
-  private static k.d e = null;
+  private static k.d e;
   
   public static void a() {}
   
@@ -32,45 +32,40 @@ public class k
   
   private static void b(StringBuilder paramStringBuilder, Collection paramCollection, int paramInt)
   {
-    String str;
-    if ((paramCollection != null) && (paramCollection.size() > 0) && (paramStringBuilder != null)) {
+    if ((paramCollection != null) && (paramCollection.size() > 0) && (paramStringBuilder != null))
+    {
+      String str;
       if (paramInt == 1) {
         str = "  ";
+      } else if (paramInt == 2) {
+        str = "    ";
+      } else if (paramInt == 3) {
+        str = "      ";
+      } else {
+        str = "";
       }
-    }
-    for (;;)
-    {
       paramCollection = paramCollection.iterator();
-      for (;;)
+      while (paramCollection.hasNext())
       {
-        if (!paramCollection.hasNext()) {
-          break label238;
-        }
         Object localObject = paramCollection.next();
         if ((localObject instanceof ToServiceMsg))
         {
           localObject = (ToServiceMsg)localObject;
-          if (localObject == null) {
-            continue;
-          }
-          paramStringBuilder.append(str).append(((ToServiceMsg)localObject).getShortStringForLog()).append("\n");
-          continue;
-          if (paramInt == 2)
+          if (localObject != null)
           {
-            str = "    ";
-            break;
+            paramStringBuilder.append(str);
+            paramStringBuilder.append(((ToServiceMsg)localObject).getShortStringForLog());
+            paramStringBuilder.append("\n");
           }
-          if (paramInt != 3) {
-            break label239;
-          }
-          str = "      ";
-          break;
         }
-        if ((localObject instanceof FromServiceMsg))
+        else if ((localObject instanceof FromServiceMsg))
         {
           localObject = (FromServiceMsg)localObject;
-          if (localObject != null) {
-            paramStringBuilder.append(str).append(((FromServiceMsg)localObject).getShortStringForLog()).append("\n");
+          if (localObject != null)
+          {
+            paramStringBuilder.append(str);
+            paramStringBuilder.append(((FromServiceMsg)localObject).getShortStringForLog());
+            paramStringBuilder.append("\n");
           }
         }
         else if ((localObject instanceof MsfMessagePair))
@@ -78,19 +73,21 @@ public class k
           localObject = (MsfMessagePair)localObject;
           if (localObject != null)
           {
-            if (((MsfMessagePair)localObject).toServiceMsg != null) {
-              paramStringBuilder.append(str).append(((MsfMessagePair)localObject).toServiceMsg.getShortStringForLog()).append("\n");
+            if (((MsfMessagePair)localObject).toServiceMsg != null)
+            {
+              paramStringBuilder.append(str);
+              paramStringBuilder.append(((MsfMessagePair)localObject).toServiceMsg.getShortStringForLog());
+              paramStringBuilder.append("\n");
             }
-            if (((MsfMessagePair)localObject).fromServiceMsg != null) {
-              paramStringBuilder.append(str).append(((MsfMessagePair)localObject).fromServiceMsg.getShortStringForLog()).append("\n");
+            if (((MsfMessagePair)localObject).fromServiceMsg != null)
+            {
+              paramStringBuilder.append(str);
+              paramStringBuilder.append(((MsfMessagePair)localObject).fromServiceMsg.getShortStringForLog());
+              paramStringBuilder.append("\n");
             }
           }
         }
       }
-      label238:
-      return;
-      label239:
-      str = "";
     }
   }
   
@@ -105,7 +102,7 @@ public class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.k
  * JD-Core Version:    0.7.0.1
  */

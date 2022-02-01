@@ -21,18 +21,24 @@ class DefaultProfileBusinessProcessor$ProfileLocationCodes
     if (this.gotLocation)
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.locCountryCode).append("-");
-      localStringBuilder.append(this.locProvinceCode).append("-");
-      localStringBuilder.append(this.locCityCode).append("-");
+      localStringBuilder.append(this.locCountryCode);
+      localStringBuilder.append("-");
+      localStringBuilder.append(this.locProvinceCode);
+      localStringBuilder.append("-");
+      localStringBuilder.append(this.locCityCode);
+      localStringBuilder.append("-");
       localStringBuilder.append(this.locDistrictCode);
       paramCard.strLocationCodes = localStringBuilder.toString();
     }
     if (this.gotHometown)
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.homeCountryCode).append("-");
-      localStringBuilder.append(this.homeProvinceCode).append("-");
-      localStringBuilder.append(this.homeCityCode).append("-");
+      localStringBuilder.append(this.homeCountryCode);
+      localStringBuilder.append("-");
+      localStringBuilder.append(this.homeProvinceCode);
+      localStringBuilder.append("-");
+      localStringBuilder.append(this.homeCityCode);
+      localStringBuilder.append("-");
       localStringBuilder.append(this.homeDistrictCode);
       paramCard.strHometownCodes = localStringBuilder.toString();
     }
@@ -40,7 +46,7 @@ class DefaultProfileBusinessProcessor$ProfileLocationCodes
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.processor.DefaultProfileBusinessProcessor.ProfileLocationCodes
  * JD-Core Version:    0.7.0.1
  */

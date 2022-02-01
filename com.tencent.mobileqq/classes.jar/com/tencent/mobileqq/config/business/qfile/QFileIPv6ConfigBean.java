@@ -34,80 +34,72 @@ public class QFileIPv6ConfigBean
   
   public void a(String paramString)
   {
-    QLog.i("QFileIPv6ConfigBean", 1, "configID:449 onParse FileIPv6Config:" + paramString);
-    String str = "";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("configID:449 onParse FileIPv6Config:");
+    localStringBuilder.append(paramString);
+    QLog.i("QFileIPv6ConfigBean", 1, localStringBuilder.toString());
     if (!TextUtils.isEmpty(paramString)) {
-      str = paramString.toLowerCase();
+      paramString = paramString.toLowerCase();
+    } else {
+      paramString = "";
     }
-    if (TextUtils.isEmpty(str))
+    if (TextUtils.isEmpty(paramString))
     {
       QLog.w("QFileIPv6ConfigBean", 1, "FileIPv6ConfigContent is empty, configID:449 use default value");
       a();
       return;
     }
-    for (;;)
+    try
     {
-      try
+      paramString = new JSONObject(paramString).getJSONObject("ipv6config");
+      if (paramString != null)
       {
-        paramString = new JSONObject(str).getJSONObject("ipv6config");
-        if (paramString == null) {
-          break label252;
-        }
-        if (paramString.has("allswitch"))
-        {
+        if (paramString.has("allswitch")) {
           this.jdField_a_of_type_Boolean = paramString.getBoolean("allswitch");
-          if (!paramString.has("c2cenable")) {
-            break label214;
-          }
+        } else {
+          this.jdField_a_of_type_Boolean = false;
+        }
+        if (paramString.has("c2cenable")) {
           this.b = paramString.getBoolean("c2cenable");
-          if (!paramString.has("groupenable")) {
-            break label222;
-          }
+        } else {
+          this.b = false;
+        }
+        if (paramString.has("groupenable")) {
           this.c = paramString.getBoolean("groupenable");
-          if (!paramString.has("discenable")) {
-            break label230;
-          }
+        } else {
+          this.c = false;
+        }
+        if (paramString.has("discenable")) {
           this.d = paramString.getBoolean("discenable");
-          if (!paramString.has("datalineenable")) {
-            break label238;
-          }
+        } else {
+          this.d = false;
+        }
+        if (paramString.has("datalineenable")) {
           this.e = paramString.getBoolean("datalineenable");
-          if (!paramString.has("strategy")) {
-            break;
-          }
+        } else {
+          this.e = false;
+        }
+        if (paramString.has("strategy"))
+        {
           this.jdField_a_of_type_Int = paramString.getInt("strategy");
           return;
         }
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("QFileIPv6ConfigBean", 1, paramString, new Object[0]);
+        this.jdField_a_of_type_Int = 0;
         return;
       }
-      this.jdField_a_of_type_Boolean = false;
-      continue;
-      label214:
-      this.b = false;
-      continue;
-      label222:
-      this.c = false;
-      continue;
-      label230:
-      this.d = false;
-      continue;
-      label238:
-      this.e = false;
+      QLog.w("QFileIPv6ConfigBean", 1, "FileIPv6ConfigContent is no ipv6config. use default value");
+      a();
+      return;
     }
-    this.jdField_a_of_type_Int = 0;
-    return;
-    label252:
-    QLog.w("QFileIPv6ConfigBean", 1, "FileIPv6ConfigContent is no ipv6config. use default value");
-    a();
+    catch (JSONException paramString)
+    {
+      QLog.e("QFileIPv6ConfigBean", 1, paramString, new Object[0]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileIPv6ConfigBean
  * JD-Core Version:    0.7.0.1
  */

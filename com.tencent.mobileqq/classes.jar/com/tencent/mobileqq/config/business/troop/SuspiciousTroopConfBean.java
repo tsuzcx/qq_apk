@@ -16,39 +16,46 @@ public class SuspiciousTroopConfBean
   
   public static SuspiciousTroopConfBean a(QConfItem paramQConfItem)
   {
-    localSuspiciousTroopConfBean = new SuspiciousTroopConfBean();
+    SuspiciousTroopConfBean localSuspiciousTroopConfBean = new SuspiciousTroopConfBean();
     if (paramQConfItem != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SuspiciousTroopConfBean", 2, "parse taskid->" + paramQConfItem.jdField_a_of_type_Int + " content->" + paramQConfItem.jdField_a_of_type_JavaLangString);
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("parse taskid->");
+        localStringBuilder.append(paramQConfItem.jdField_a_of_type_Int);
+        localStringBuilder.append(" content->");
+        localStringBuilder.append(paramQConfItem.jdField_a_of_type_JavaLangString);
+        QLog.d("SuspiciousTroopConfBean", 2, localStringBuilder.toString());
       }
       try
       {
-        if (paramQConfItem.jdField_a_of_type_JavaLangString == null) {}
-        for (paramQConfItem = "";; paramQConfItem = paramQConfItem.jdField_a_of_type_JavaLangString)
-        {
-          localSuspiciousTroopConfBean.jdField_a_of_type_Int = new JSONObject(paramQConfItem).optInt("suspiciousSwitch", 0);
-          return localSuspiciousTroopConfBean;
+        if (paramQConfItem.jdField_a_of_type_JavaLangString == null) {
+          paramQConfItem = "";
+        } else {
+          paramQConfItem = paramQConfItem.jdField_a_of_type_JavaLangString;
         }
+        localSuspiciousTroopConfBean.jdField_a_of_type_Int = new JSONObject(paramQConfItem).optInt("suspiciousSwitch", 0);
         return localSuspiciousTroopConfBean;
       }
       catch (JSONException paramQConfItem)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("SuspiciousTroopConfBean", 2, "parse error->" + paramQConfItem.toString());
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("parse error->");
+          localStringBuilder.append(paramQConfItem.toString());
+          QLog.d("SuspiciousTroopConfBean", 2, localStringBuilder.toString());
         }
       }
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == 1;
+    return localSuspiciousTroopConfBean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.troop.SuspiciousTroopConfBean
  * JD-Core Version:    0.7.0.1
  */

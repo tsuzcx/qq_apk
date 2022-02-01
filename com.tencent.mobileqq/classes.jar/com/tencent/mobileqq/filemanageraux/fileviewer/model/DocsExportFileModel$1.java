@@ -51,8 +51,16 @@ class DocsExportFileModel$1
         DocsExportFileModel.a(this.a).fileSize = FileManagerUtil.a(paramString1);
         paramString1 = TeamWorkExportUtil.a(DocsExportFileModel.a(this.a).nFileType);
         QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-        if ((localQQAppInterface != null) && (paramString2 != null)) {
-          ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8009956", "0X8009956", 0, 1, l3 - l4 + "", l1 - l2 + "", paramString1, paramString2);
+        if ((localQQAppInterface != null) && (paramString2 != null))
+        {
+          Object localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(l3 - l4);
+          ((StringBuilder)localObject).append("");
+          localObject = ((StringBuilder)localObject).toString();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(l1 - l2);
+          localStringBuilder.append("");
+          ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8009956", "0X8009956", 0, 1, (String)localObject, localStringBuilder.toString(), paramString1, paramString2);
         }
       }
       if (DocsExportFileModel.a(this.a) != null)
@@ -61,15 +69,17 @@ class DocsExportFileModel$1
         DocsExportFileModel.a(this.a).removeMessages(8002);
         DocsExportFileModel.a(this.a).post(new DocsExportFileModel.1.1(this));
       }
-      return;
     }
-    paramString1 = HardCodeUtil.a(2131703428);
-    DocsExportFileModel.a(this.a, paramString1, paramString2);
+    else
+    {
+      paramString1 = HardCodeUtil.a(2131703560);
+      DocsExportFileModel.a(this.a, paramString1, paramString2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.fileviewer.model.DocsExportFileModel.1
  * JD-Core Version:    0.7.0.1
  */

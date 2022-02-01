@@ -12,7 +12,7 @@ class ArkViewModelBase$5
     if ((this.val$rect != null) && (this.this$0.mContainer != null) && (!this.val$rect.equals(this.this$0.mRectContainer)))
     {
       ArkViewModelBase.Size localSize = this.this$0.limitToSizeRange(this.val$rect.width(), this.val$rect.height());
-      ArkViewModelBase.ENV.logI("ArkApp.ArkViewModelBase", String.format("onConfigurationChanged.setViewRect.2.rect: %s, limit size(%d,%d) this.%h", new Object[] { this.val$rect.toString(), Integer.valueOf(localSize.width), Integer.valueOf(localSize.height), this.this$0 }));
+      Logger.logI("ArkApp.ViewModel", String.format("onConfigurationChanged.setViewRect.2.rect: %s, limit size(%d,%d) this.%h", new Object[] { this.val$rect.toString(), Integer.valueOf(localSize.width), Integer.valueOf(localSize.height), this.this$0 }));
       this.this$0.mContainer.SetSize(localSize.width, localSize.height);
     }
   }

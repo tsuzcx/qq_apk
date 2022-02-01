@@ -14,28 +14,37 @@ public class QzoneReactMessageDeliverPlugin
   
   private void deliverMsg(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
   {
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0) || (paramPluginRuntime == null)) {
-      return;
+    if ((paramArrayOfString != null) && (paramArrayOfString.length != 0))
+    {
+      if (paramPluginRuntime == null) {
+        return;
+      }
+      QLog.i("QzoneReactMessageDeliverPlugin", 1, paramArrayOfString[0]);
+      paramWebViewPlugin = new Intent("ReactNativeMsgDeliver");
+      paramWebViewPlugin.putExtra("args", paramArrayOfString[0]);
+      BaseApplication.getContext().sendBroadcast(paramWebViewPlugin);
     }
-    QLog.i("QzoneReactMessageDeliverPlugin", 1, paramArrayOfString[0]);
-    paramWebViewPlugin = new Intent("ReactNativeMsgDeliver");
-    paramWebViewPlugin.putExtra("args", paramArrayOfString[0]);
-    BaseApplication.getContext().sendBroadcast(paramWebViewPlugin);
   }
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((!"Qzone".equals(paramString2)) || (this.parentPlugin == null) || (this.parentPlugin.mRuntime == null)) {}
-    while (!"deliverMsg".equalsIgnoreCase(paramString3)) {
-      return false;
+    if (("Qzone".equals(paramString2)) && (this.parentPlugin != null))
+    {
+      if (this.parentPlugin.mRuntime == null) {
+        return false;
+      }
+      if ("deliverMsg".equalsIgnoreCase(paramString3))
+      {
+        deliverMsg(this.parentPlugin, this.parentPlugin.mRuntime, paramVarArgs);
+        return true;
+      }
     }
-    deliverMsg(this.parentPlugin, this.parentPlugin.mRuntime, paramVarArgs);
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneReactMessageDeliverPlugin
  * JD-Core Version:    0.7.0.1
  */

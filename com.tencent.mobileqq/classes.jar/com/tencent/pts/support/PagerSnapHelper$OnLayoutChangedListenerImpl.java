@@ -16,7 +16,8 @@ class PagerSnapHelper$OnLayoutChangedListenerImpl
     PagerSnapHelper.access$100(this.this$0).removeOnLayoutChangeListener(this);
     if (PagerSnapHelper.access$000(this.this$0).getItemCount() > PagerSnapHelper.access$1700(this.this$0) + PagerSnapHelper.access$1800(this.this$0))
     {
-      paramView = this.this$0.findCenterView(PagerSnapHelper.access$000(this.this$0));
+      paramView = this.this$0;
+      paramView = paramView.findCenterView(PagerSnapHelper.access$000(paramView));
       if ((!this.this$0.snapToTargetView(paramView)) || (this.reset)) {
         PagerSnapHelper.access$900(this.this$0, paramView, this.reset);
       }
@@ -26,7 +27,7 @@ class PagerSnapHelper$OnLayoutChangedListenerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.support.PagerSnapHelper.OnLayoutChangedListenerImpl
  * JD-Core Version:    0.7.0.1
  */

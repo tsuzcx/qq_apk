@@ -22,25 +22,27 @@ public class LyricParseHelper
     {
       paramClass = LyricParserManager.getInstance().getProvider(paramClass);
       if (paramBoolean) {}
-      for (;;)
+      try
       {
-        try
-        {
-          paramClass = paramClass.createQrcParser();
-          paramClass.init(paramString);
-          paramClass = paramClass.parse();
-          if ((paramClass == null) || (paramClass.mSentences.size() <= 0)) {
-            break;
-          }
-          return paramClass;
-        }
-        catch (Exception paramClass)
-        {
-          Log.e("LyricParseHelper", "parse exception:", paramClass);
-        }
+        paramClass = paramClass.createQrcParser();
+        paramClass.init(paramString);
+        paramClass = paramClass.parse();
+        break label68;
         paramClass = paramClass.createLrcParser();
         paramClass.init(paramString);
         paramClass = paramClass.parse();
+        label68:
+        if (paramClass != null)
+        {
+          int i = paramClass.mSentences.size();
+          if (i > 0) {
+            return paramClass;
+          }
+        }
+      }
+      catch (Exception paramClass)
+      {
+        Log.e("LyricParseHelper", "parse exception:", paramClass);
       }
     }
     return null;
@@ -59,7 +61,7 @@ public class LyricParseHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.music.LyricParseHelper
  * JD-Core Version:    0.7.0.1
  */

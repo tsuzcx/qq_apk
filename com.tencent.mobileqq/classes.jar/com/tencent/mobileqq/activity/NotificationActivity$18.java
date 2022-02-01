@@ -14,21 +14,17 @@ class NotificationActivity$18
     try
     {
       ReportController.b(null, "P_CliOper", "Safe_StartAppCheck", "", "DIALOG_PACKAGE_INVALID", "LeftButton", 0, 0, "", "", "", "");
-      this.a.finish();
-      return;
     }
     catch (Exception paramDialogInterface)
     {
-      for (;;)
-      {
-        paramDialogInterface.printStackTrace();
-      }
+      paramDialogInterface.printStackTrace();
     }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotificationActivity.18
  * JD-Core Version:    0.7.0.1
  */

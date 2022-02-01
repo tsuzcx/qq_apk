@@ -15,7 +15,7 @@ import wf7.hv;
 public class WifiSDKSecurityFragImpl
   extends BaseFragmentImpl
 {
-  private static final String TAG = WifiSDKSecurityFragImpl.class.getSimpleName();
+  private static final String TAG = "WifiSDKSecurityFragImpl";
   private View tp;
   private hs tw;
   private c tx;
@@ -44,7 +44,7 @@ public class WifiSDKSecurityFragImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.wifisdk.ui.fragments.WifiSDKSecurityFragImpl
  * JD-Core Version:    0.7.0.1
  */

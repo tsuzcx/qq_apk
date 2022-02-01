@@ -19,19 +19,22 @@ class TroopFileModel$14
       TroopFileProtocol.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.TroopUin, localFileManagerEntity.zipFilePath, localFileManagerEntity.busId, TroopFileModel.a(this.this$0));
       return;
     }
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(localFileManagerEntity.TroopUin);
-    if (localTroopFileTransferManager == null)
+    Object localObject = TroopFileTransferManager.a(localFileManagerEntity.TroopUin);
+    if (localObject == null)
     {
-      QLog.e("TroopFileModel<FileAssistant>", 1, "requestOnlinePreviewDownloadUrl error: " + localFileManagerEntity.TroopUin);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("requestOnlinePreviewDownloadUrl error: ");
+      ((StringBuilder)localObject).append(localFileManagerEntity.TroopUin);
+      QLog.e("TroopFileModel<FileAssistant>", 1, ((StringBuilder)localObject).toString());
       this.a.c();
       return;
     }
-    localTroopFileTransferManager.a(localFileManagerEntity.strTroopFilePath, localFileManagerEntity.fileName, localFileManagerEntity.fileSize, localFileManagerEntity.busId, TroopFileModel.a(this.this$0));
+    ((TroopFileTransferManager)localObject).a(localFileManagerEntity.strTroopFilePath, localFileManagerEntity.fileName, localFileManagerEntity.fileSize, localFileManagerEntity.busId, TroopFileModel.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel.14
  * JD-Core Version:    0.7.0.1
  */

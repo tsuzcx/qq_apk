@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class GetConciseThemeRsp
   extends JceStruct
@@ -35,17 +36,19 @@ public final class GetConciseThemeRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stRet != null) {
-      paramJceOutputStream.write(this.stRet, 0);
+    Object localObject = this.stRet;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.vItems != null) {
-      paramJceOutputStream.write(this.vItems, 1);
+    localObject = this.vItems;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.GetConciseThemeRsp
  * JD-Core Version:    0.7.0.1
  */

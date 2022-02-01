@@ -39,12 +39,13 @@ public abstract class AlphabetFriendPreloadAdapter
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
-    if (this.jdField_a_of_type_ComTencentWidgetXListView != null) {
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this);
+    paramContext = this.jdField_a_of_type_ComTencentWidgetXListView;
+    if (paramContext != null) {
+      paramContext.setOnScrollListener(this);
     }
     this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.setDecodeTaskCompletionListener(this);
-    ImageUtil.c();
+    ImageUtil.f();
   }
   
   protected void a(BuddyListFriends.BuddyChildTag paramBuddyChildTag, Bitmap paramBitmap)
@@ -59,25 +60,25 @@ public abstract class AlphabetFriendPreloadAdapter
     }
     if (AppConstants.DATALINE_PC_UIN.equals(paramBuddyChildTag.jdField_a_of_type_JavaLangString))
     {
-      paramBuddyChildTag.d.setBackgroundResource(2130844376);
+      paramBuddyChildTag.d.setBackgroundResource(2130844282);
       return;
     }
     if (AppConstants.DATALINE_IPAD_UIN.equals(paramBuddyChildTag.jdField_a_of_type_JavaLangString))
     {
-      paramBuddyChildTag.d.setBackgroundResource(2130844371);
+      paramBuddyChildTag.d.setBackgroundResource(2130844277);
       return;
     }
     if (AppConstants.DATALINE_PRINTER_UIN.equals(paramBuddyChildTag.jdField_a_of_type_JavaLangString))
     {
-      paramBuddyChildTag.d.setBackgroundResource(2130844379);
+      paramBuddyChildTag.d.setBackgroundResource(2130844285);
       return;
     }
     if (AppConstants.SMARTDEVICE_SEARCH_UIN.equals(paramBuddyChildTag.jdField_a_of_type_JavaLangString))
     {
-      paramBuddyChildTag.d.setBackgroundResource(2130839708);
+      paramBuddyChildTag.d.setBackgroundResource(2130839566);
       return;
     }
-    Bitmap localBitmap;
+    Bitmap localBitmap = paramBitmap;
     if (paramBitmap == null) {
       if (AppConstants.SMARTDEVICE_UIN.equals(paramBuddyChildTag.jdField_a_of_type_JavaLangString))
       {
@@ -97,97 +98,89 @@ public abstract class AlphabetFriendPreloadAdapter
             localBitmap = DeviceHeadMgr.getInstance().getDeviceHeadByDin(((Friends)localObject).name);
           }
         }
+      }
+      else
+      {
+        localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(paramBuddyChildTag.jdField_b_of_type_Int, paramBuddyChildTag.jdField_a_of_type_JavaLangString);
+      }
+    }
+    paramBitmap = localBitmap;
+    if (localBitmap == null)
+    {
+      if (paramBoolean) {
+        localBitmap = ImageUtil.f();
+      }
+      paramBitmap = localBitmap;
+      if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing())
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(paramBuddyChildTag.jdField_a_of_type_JavaLangString, paramBuddyChildTag.jdField_b_of_type_Int, false);
         paramBitmap = localBitmap;
       }
     }
-    for (;;)
+    if (paramBitmap != null)
     {
-      localBitmap = paramBitmap;
-      if (paramBitmap == null)
-      {
-        if (paramBoolean) {
-          paramBitmap = ImageUtil.c();
-        }
-        localBitmap = paramBitmap;
-        if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing())
-        {
-          this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(paramBuddyChildTag.jdField_a_of_type_JavaLangString, paramBuddyChildTag.jdField_b_of_type_Int, false);
-          localBitmap = paramBitmap;
-        }
-      }
-      if (localBitmap == null) {
-        break;
-      }
       paramBuddyChildTag.d.setImageDrawable(null);
       if ((paramBuddyChildTag.jdField_b_of_type_Int == 1) && ((paramBuddyChildTag.d instanceof DynamicAvatarView)) && ((paramBuddyChildTag instanceof BuddyListFriends.BuddyChildTag)))
       {
         if (!paramBuddyChildTag.jdField_b_of_type_Boolean)
         {
           paramBuddyChildTag.d.setBackgroundDrawable(null);
-          ((DynamicAvatarView)paramBuddyChildTag.d).setFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap), 1, paramBuddyChildTag.jdField_a_of_type_JavaLangString, 100, false, true, 1);
+          ((DynamicAvatarView)paramBuddyChildTag.d).setFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap), 1, paramBuddyChildTag.jdField_a_of_type_JavaLangString, 100, false, true, 1);
           return;
-          paramBitmap = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(paramBuddyChildTag.jdField_b_of_type_Int, paramBuddyChildTag.jdField_a_of_type_JavaLangString);
         }
-        else
-        {
-          paramBuddyChildTag.d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
-        }
-      }
-      else
-      {
-        paramBuddyChildTag.d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
+        paramBuddyChildTag.d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
         return;
       }
+      paramBuddyChildTag.d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
     }
   }
   
   protected void a(String paramString, Bitmap paramBitmap)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetXListView == null) {}
-    label19:
-    Object localObject;
-    label77:
-    do
-    {
-      return;
-      int j = this.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
-      int i = 0;
-      if (i < j)
-      {
-        localObject = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(i).getTag();
-        if ((localObject != null) && ((localObject instanceof BuddyListFriends.BuddyChildTag)))
-        {
-          localObject = (BuddyListFriends.BuddyChildTag)localObject;
-          if (paramString != null) {
-            break label77;
-          }
-          a((BuddyListFriends.BuddyChildTag)localObject, null, false);
-        }
-      }
-      while (!paramString.equals(((BuddyListFriends.BuddyChildTag)localObject).jdField_a_of_type_JavaLangString))
-      {
-        i += 1;
-        break label19;
-        break;
-      }
-    } while (paramBitmap == null);
-    if ((((BuddyListFriends.BuddyChildTag)localObject).jdField_b_of_type_Int == 1) && ((((BuddyListFriends.BuddyChildTag)localObject).d instanceof DynamicAvatarView)))
-    {
-      if (!((BuddyListFriends.BuddyChildTag)localObject).jdField_b_of_type_Boolean)
-      {
-        ((DynamicAvatarView)((BuddyListFriends.BuddyChildTag)localObject).d).a(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
-        return;
-      }
-      ((BuddyListFriends.BuddyChildTag)localObject).d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+    Object localObject = this.jdField_a_of_type_ComTencentWidgetXListView;
+    if (localObject == null) {
       return;
     }
-    ((BuddyListFriends.BuddyChildTag)localObject).d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+    int j = ((XListView)localObject).getChildCount();
+    int i = 0;
+    while (i < j)
+    {
+      localObject = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(i).getTag();
+      if ((localObject != null) && ((localObject instanceof BuddyListFriends.BuddyChildTag)))
+      {
+        localObject = (BuddyListFriends.BuddyChildTag)localObject;
+        if (paramString == null)
+        {
+          a((BuddyListFriends.BuddyChildTag)localObject, null, false);
+        }
+        else if (paramString.equals(((BuddyListFriends.BuddyChildTag)localObject).jdField_a_of_type_JavaLangString))
+        {
+          if (paramBitmap == null) {
+            break;
+          }
+          if ((((BuddyListFriends.BuddyChildTag)localObject).jdField_b_of_type_Int == 1) && ((((BuddyListFriends.BuddyChildTag)localObject).d instanceof DynamicAvatarView)))
+          {
+            if (!((BuddyListFriends.BuddyChildTag)localObject).jdField_b_of_type_Boolean)
+            {
+              ((DynamicAvatarView)((BuddyListFriends.BuddyChildTag)localObject).d).a(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+              return;
+            }
+            ((BuddyListFriends.BuddyChildTag)localObject).d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+            return;
+          }
+          ((BuddyListFriends.BuddyChildTag)localObject).d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+          return;
+        }
+      }
+      i += 1;
+    }
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.destory();
+    IFaceDecoder localIFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    if (localIFaceDecoder != null) {
+      localIFaceDecoder.destory();
     }
   }
   
@@ -242,7 +235,7 @@ public abstract class AlphabetFriendPreloadAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.alphabet.AlphabetFriendPreloadAdapter
  * JD-Core Version:    0.7.0.1
  */

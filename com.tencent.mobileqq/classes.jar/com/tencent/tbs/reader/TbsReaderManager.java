@@ -13,13 +13,18 @@ public class TbsReaderManager
   
   private boolean isDebugFile(Bundle paramBundle)
   {
-    if (paramBundle == null) {}
-    do
-    {
+    boolean bool = false;
+    if (paramBundle == null) {
       return false;
-      paramBundle = paramBundle.getString("filePath");
-    } while ((TextUtils.isEmpty(paramBundle)) || (paramBundle.lastIndexOf("65b46dc5-21ad-4098-bf53-9b2fc9edf259.xlsx") <= 0));
-    return true;
+    }
+    paramBundle = paramBundle.getString("filePath");
+    if (TextUtils.isEmpty(paramBundle)) {
+      return false;
+    }
+    if (paramBundle.lastIndexOf("65b46dc5-21ad-4098-bf53-9b2fc9edf259.xlsx") > 0) {
+      bool = true;
+    }
+    return bool;
   }
   
   protected TbsReaderCore createReaderCore(Context paramContext, ITbsReaderCallback paramITbsReaderCallback, int paramInt)
@@ -30,20 +35,23 @@ public class TbsReaderManager
   
   public void destroy()
   {
-    if (this.mReaderCore != null) {
-      this.mReaderCore.destroy();
+    Object localObject = this.mReaderCore;
+    if (localObject != null) {
+      ((TbsReaderCore)localObject).destroy();
     }
     this.mReaderCore = null;
-    if (this.mReader != null) {
-      this.mReader.destroy();
+    localObject = this.mReader;
+    if (localObject != null) {
+      ((ITbsReader)localObject).destroy();
     }
     this.mReader = null;
   }
   
   public void doAction(Integer paramInteger, Object paramObject1, Object paramObject2)
   {
-    if (this.mReader != null) {
-      this.mReader.doCommand(paramInteger, paramObject1, paramObject2);
+    ITbsReader localITbsReader = this.mReader;
+    if (localITbsReader != null) {
+      localITbsReader.doCommand(paramInteger, paramObject1, paramObject2);
     }
   }
   
@@ -60,31 +68,34 @@ public class TbsReaderManager
   public boolean initReader(Context paramContext, ITbsReaderCallback paramITbsReaderCallback)
   {
     this.mReaderCore = createReaderCore(paramContext, paramITbsReaderCallback, 3);
-    if (this.mReaderCore != null) {
-      return this.mReaderCore.init(paramContext);
+    paramITbsReaderCallback = this.mReaderCore;
+    if (paramITbsReaderCallback != null) {
+      return paramITbsReaderCallback.init(paramContext);
     }
     return false;
   }
   
   public void onSizeChanged(Integer paramInteger1, Integer paramInteger2)
   {
-    if (this.mReaderCore != null) {
-      this.mReaderCore.onSizeChanged(paramInteger1, paramInteger2);
+    TbsReaderCore localTbsReaderCore = this.mReaderCore;
+    if (localTbsReaderCore != null) {
+      localTbsReaderCore.onSizeChanged(paramInteger1, paramInteger2);
     }
   }
   
   public int openFileReader(Context paramContext, Bundle paramBundle, ITbsReaderCallback paramITbsReaderCallback, FrameLayout paramFrameLayout)
   {
-    paramITbsReaderCallback = null;
     if (isDebugFile(paramBundle)) {
       paramITbsReaderCallback = ReaderEngine.getInstance().createDebugView(paramContext);
+    } else {
+      paramITbsReaderCallback = null;
     }
     return this.mReaderCore.openFile(paramContext, paramBundle, paramFrameLayout, paramITbsReaderCallback);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.reader.TbsReaderManager
  * JD-Core Version:    0.7.0.1
  */

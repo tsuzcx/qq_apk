@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.microapp;
 
 import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -39,7 +40,10 @@ public class MiniAppInterface
   {
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("mqq.intent.action.ACCOUNT_KICKED");
-    localIntentFilter.addAction("mqq.intent.action.EXIT_" + this.app.getPackageName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mqq.intent.action.EXIT_");
+    localStringBuilder.append(this.app.getPackageName());
+    localIntentFilter.addAction(localStringBuilder.toString());
     localIntentFilter.addAction("mqq.intent.action.ACCOUNT_CHANGED");
     localIntentFilter.addAction("mqq.intent.action.ACCOUNT_EXPIRED");
     localIntentFilter.addAction("mqq.intent.action.LOGOUT");
@@ -52,16 +56,12 @@ public class MiniAppInterface
     try
     {
       this.app.unregisterReceiver(this.accountReceiver);
-      ThreadManagerV2.excute(new a(this), 16, null, true);
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
+    ThreadManagerV2.excute(new a(this), 16, null, true);
   }
   
   public BaseApplication getApp()
@@ -79,16 +79,22 @@ public class MiniAppInterface
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    if (!this.authorizeMap.containsKey(paramString)) {}
-    synchronized (this.authorizeMap)
-    {
-      if (!this.authorizeMap.containsKey(paramString))
+    if (!this.authorizeMap.containsKey(paramString)) {
+      synchronized (this.authorizeMap)
       {
-        com.tencent.mobileqq.microapp.app.a locala = new com.tencent.mobileqq.microapp.app.a(this.app, paramString + "_" + getCurrentAccountUin());
-        this.authorizeMap.put(paramString, locala);
+        if (!this.authorizeMap.containsKey(paramString))
+        {
+          Object localObject = this.app;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString);
+          localStringBuilder.append("_");
+          localStringBuilder.append(getCurrentAccountUin());
+          localObject = new com.tencent.mobileqq.microapp.app.a((Context)localObject, localStringBuilder.toString());
+          this.authorizeMap.put(paramString, localObject);
+        }
       }
-      return (com.tencent.mobileqq.microapp.app.a)this.authorizeMap.get(paramString);
     }
+    return (com.tencent.mobileqq.microapp.app.a)this.authorizeMap.get(paramString);
   }
   
   public String getCurrentAccountUin()
@@ -109,7 +115,7 @@ public class MiniAppInterface
     return "miniapp";
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     new InitMemoryCache().step();
@@ -123,7 +129,7 @@ public class MiniAppInterface
     }
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
     MiniAppController.getInstance().onDestory();
@@ -140,7 +146,7 @@ public class MiniAppInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.MiniAppInterface
  * JD-Core Version:    0.7.0.1
  */

@@ -29,10 +29,11 @@ public class AIOUnreadQIPCClient
     try
     {
       QIPCClientHelper.getInstance().register(a());
-      if (QLog.isColorLevel()) {
+      if (QLog.isColorLevel())
+      {
         QLog.d("AIOUnreadQIPCClient", 2, "register AIOUnreadQIPCClient");
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -50,8 +51,12 @@ public class AIOUnreadQIPCClient
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOUnreadQIPCClient", 2, "onCall main server action=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCall main server action=");
+      localStringBuilder.append(paramString);
+      QLog.d("AIOUnreadQIPCClient", 2, localStringBuilder.toString());
     }
     if (("action_sync_single_con_unread_count".equals(paramString)) && (paramBundle != null))
     {
@@ -59,8 +64,16 @@ public class AIOUnreadQIPCClient
       paramInt = paramBundle.getInt("param_proc_uin_type");
       int i = paramBundle.getInt("param_proc_single_con_badge_count");
       a(paramInt, paramString, i);
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOUnreadQIPCClient", 2, "AIOUnreadQIPCClient, uin = " + paramString + "; type= " + paramInt + "; num= " + i);
+      if (QLog.isColorLevel())
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append("AIOUnreadQIPCClient, uin = ");
+        paramBundle.append(paramString);
+        paramBundle.append("; type= ");
+        paramBundle.append(paramInt);
+        paramBundle.append("; num= ");
+        paramBundle.append(i);
+        QLog.d("AIOUnreadQIPCClient", 2, paramBundle.toString());
       }
     }
     return null;
@@ -68,7 +81,7 @@ public class AIOUnreadQIPCClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOUnreadQIPCClient
  * JD-Core Version:    0.7.0.1
  */

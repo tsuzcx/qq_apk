@@ -74,16 +74,15 @@ public class GiftQueue
     if (paramLuxuryGiftData.consumerUin == this.mLuxuryGiftAdapter.getAccountUin()) {
       return controlOffer(this.mSelfGiftQuene, paramLuxuryGiftData);
     }
-    switch (paramLuxuryGiftData.giftType)
+    int i = paramLuxuryGiftData.giftType;
+    if (i != 101)
     {
-    case 102: 
-    case 103: 
-    default: 
-      return false;
-    case 101: 
-      return controlOffer(this.mComboGiftQuene, paramLuxuryGiftData);
+      if (i != 104) {
+        return false;
+      }
+      return controlOffer(this.mRichGiftQuene, paramLuxuryGiftData);
     }
-    return controlOffer(this.mRichGiftQuene, paramLuxuryGiftData);
+    return controlOffer(this.mComboGiftQuene, paramLuxuryGiftData);
   }
   
   public LuxuryGiftData peek()
@@ -102,28 +101,23 @@ public class GiftQueue
   
   public LuxuryGiftData poll()
   {
-    LuxuryGiftData localLuxuryGiftData1 = controlPoll(this.mSelfGiftQuene);
+    Object localObject2 = controlPoll(this.mSelfGiftQuene);
     boolean bool;
-    if (localLuxuryGiftData1 != null)
-    {
+    if (localObject2 != null) {
       bool = true;
-      this.isPrevEventSelfEvent = bool;
-      if (localLuxuryGiftData1 != null) {
-        break label55;
-      }
-      localLuxuryGiftData1 = controlPoll(this.mRichGiftQuene);
-    }
-    label55:
-    for (;;)
-    {
-      LuxuryGiftData localLuxuryGiftData2 = localLuxuryGiftData1;
-      if (localLuxuryGiftData1 == null) {
-        localLuxuryGiftData2 = controlPoll(this.mComboGiftQuene);
-      }
-      return localLuxuryGiftData2;
+    } else {
       bool = false;
-      break;
     }
+    this.isPrevEventSelfEvent = bool;
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = controlPoll(this.mRichGiftQuene);
+    }
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = controlPoll(this.mComboGiftQuene);
+    }
+    return localObject2;
   }
   
   public int selfSize()
@@ -133,13 +127,21 @@ public class GiftQueue
   
   public int size()
   {
-    this.mLuxuryGiftAdapter.getLogger().e("GiftQueue|GiftAnimation", " SQ=" + this.mSelfGiftQuene.size() + " rq=" + this.mRichGiftQuene.size() + " mcq=" + this.mComboGiftQuene.size(), new Object[0]);
+    LogInterface localLogInterface = this.mLuxuryGiftAdapter.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" SQ=");
+    localStringBuilder.append(this.mSelfGiftQuene.size());
+    localStringBuilder.append(" rq=");
+    localStringBuilder.append(this.mRichGiftQuene.size());
+    localStringBuilder.append(" mcq=");
+    localStringBuilder.append(this.mComboGiftQuene.size());
+    localLogInterface.e("GiftQueue|GiftAnimation", localStringBuilder.toString(), new Object[0]);
     return this.mSelfGiftQuene.size() + this.mRichGiftQuene.size() + this.mComboGiftQuene.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.uicomponent.luxurygiftcomponent.datastruct.GiftQueue
  * JD-Core Version:    0.7.0.1
  */

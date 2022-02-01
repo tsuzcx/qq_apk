@@ -24,12 +24,12 @@ class FlutterEnginePluginRegistry$FlutterEngineServicePluginBinding
   FlutterEnginePluginRegistry$FlutterEngineServicePluginBinding(@NonNull Service paramService, @Nullable Lifecycle paramLifecycle)
   {
     this.service = paramService;
-    if (paramLifecycle != null) {}
-    for (paramService = new HiddenLifecycleReference(paramLifecycle);; paramService = null)
-    {
-      this.hiddenLifecycleReference = paramService;
-      return;
+    if (paramLifecycle != null) {
+      paramService = new HiddenLifecycleReference(paramLifecycle);
+    } else {
+      paramService = null;
     }
+    this.hiddenLifecycleReference = paramService;
   }
   
   public void addOnModeChangeListener(@NonNull ServiceAware.OnModeChangeListener paramOnModeChangeListener)
@@ -72,7 +72,7 @@ class FlutterEnginePluginRegistry$FlutterEngineServicePluginBinding
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.FlutterEnginePluginRegistry.FlutterEngineServicePluginBinding
  * JD-Core Version:    0.7.0.1
  */

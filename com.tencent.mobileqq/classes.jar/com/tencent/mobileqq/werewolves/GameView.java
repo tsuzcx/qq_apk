@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.aio.helper.GiftPanelHelper;
 import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
 
 public class GameView
@@ -29,13 +30,13 @@ public class GameView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    this.a.aM();
+    ((GiftPanelHelper)this.a.a(136)).b();
     return super.dispatchTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.GameView
  * JD-Core Version:    0.7.0.1
  */

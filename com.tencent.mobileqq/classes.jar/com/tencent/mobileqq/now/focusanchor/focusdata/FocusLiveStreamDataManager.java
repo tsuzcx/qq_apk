@@ -13,15 +13,16 @@ public class FocusLiveStreamDataManager
   
   public static FocusLiveStreamDataManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataManager == null) {
-        jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataManager = new FocusLiveStreamDataManager();
+    if (jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataManager == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataManager == null) {
+          jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataManager = new FocusLiveStreamDataManager();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataManager;
   }
   
   public List<NowQQLiveAnchorInfo> a()
@@ -44,8 +45,9 @@ public class FocusLiveStreamDataManager
   public void a(List<NowQQLiveAnchorInfo> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
-    if (this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocousinterfaceFocusLiveStreamListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocousinterfaceFocusLiveStreamListener.a(paramList);
+    FocusLiveStreamListener localFocusLiveStreamListener = this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocousinterfaceFocusLiveStreamListener;
+    if (localFocusLiveStreamListener != null) {
+      localFocusLiveStreamListener.a(paramList);
     }
   }
   
@@ -58,7 +60,7 @@ public class FocusLiveStreamDataManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.focusanchor.focusdata.FocusLiveStreamDataManager
  * JD-Core Version:    0.7.0.1
  */

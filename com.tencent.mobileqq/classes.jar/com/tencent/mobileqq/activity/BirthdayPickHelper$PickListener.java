@@ -17,34 +17,40 @@ class BirthdayPickHelper$PickListener
   
   public void onItemSelected(int paramInt1, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 0)
     {
-    }
-    for (;;)
-    {
-      BirthdayPickHelper.a(this.a);
-      if ((BirthdayPickHelper.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
-        BirthdayPickHelper.a(this.a).a(2);
-      }
-      if (this.a.a != null)
+      if (paramInt1 != 1)
       {
-        paramInt1 = BirthdayPickHelper.d(this.a, BirthdayPickHelper.a(this.a));
-        paramInt2 = BirthdayPickHelper.e(this.a, BirthdayPickHelper.b(this.a));
-        int i = BirthdayPickHelper.f(this.a, BirthdayPickHelper.c(this.a));
-        this.a.a.a(paramInt1, paramInt2, i);
+        if (paramInt1 == 2) {
+          BirthdayPickHelper.c(this.a, paramInt2);
+        }
       }
-      return;
+      else {
+        BirthdayPickHelper.b(this.a, paramInt2);
+      }
+    }
+    else {
       BirthdayPickHelper.a(this.a, paramInt2);
-      continue;
-      BirthdayPickHelper.b(this.a, paramInt2);
-      continue;
-      BirthdayPickHelper.c(this.a, paramInt2);
+    }
+    BirthdayPickHelper.a(this.a);
+    if ((BirthdayPickHelper.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
+      BirthdayPickHelper.a(this.a).a(2);
+    }
+    if (this.a.a != null)
+    {
+      BirthdayPickHelper localBirthdayPickHelper = this.a;
+      paramInt1 = BirthdayPickHelper.d(localBirthdayPickHelper, BirthdayPickHelper.a(localBirthdayPickHelper));
+      localBirthdayPickHelper = this.a;
+      paramInt2 = BirthdayPickHelper.e(localBirthdayPickHelper, BirthdayPickHelper.b(localBirthdayPickHelper));
+      localBirthdayPickHelper = this.a;
+      int i = BirthdayPickHelper.f(localBirthdayPickHelper, BirthdayPickHelper.c(localBirthdayPickHelper));
+      this.a.a.a(paramInt1, paramInt2, i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BirthdayPickHelper.PickListener
  * JD-Core Version:    0.7.0.1
  */

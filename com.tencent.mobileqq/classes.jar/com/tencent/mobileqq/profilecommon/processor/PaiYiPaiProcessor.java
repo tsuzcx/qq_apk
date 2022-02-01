@@ -21,8 +21,13 @@ public class PaiYiPaiProcessor
   
   private void a(ByteStringMicro paramByteStringMicro, QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PaiYiPaiProcessor", 2, "handlePaiYiPaiEffect() called with: bytesValue = [" + paramByteStringMicro + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handlePaiYiPaiEffect() called with: bytesValue = [");
+      localStringBuilder.append(paramByteStringMicro);
+      localStringBuilder.append("]");
+      QLog.d("PaiYiPaiProcessor", 2, localStringBuilder.toString());
     }
     short s = ByteBuffer.wrap(paramByteStringMicro.toByteArray()).asShortBuffer().get();
     ((PaiYiPaiManager)paramQQAppInterface.getManager(QQManagerFactory.PAI_YI_PAI_MANAGER)).c(s);
@@ -30,8 +35,13 @@ public class PaiYiPaiProcessor
   
   private void b(ByteStringMicro paramByteStringMicro, QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PaiYiPaiProcessor", 2, "handlePaiYiPaiAction() called with: bytesValue = [" + paramByteStringMicro + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handlePaiYiPaiAction() called with: bytesValue = [");
+      localStringBuilder.append(paramByteStringMicro);
+      localStringBuilder.append("]");
+      QLog.d("PaiYiPaiProcessor", 2, localStringBuilder.toString());
     }
     short s = ByteBuffer.wrap(paramByteStringMicro.toByteArray()).asShortBuffer().get();
     ((PaiYiPaiManager)paramQQAppInterface.getManager(QQManagerFactory.PAI_YI_PAI_MANAGER)).b(s);
@@ -39,8 +49,13 @@ public class PaiYiPaiProcessor
   
   private void c(ByteStringMicro paramByteStringMicro, QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PaiYiPaiProcessor", 2, "handlePaiYiPaiSwitch() called with: bytesValue = [" + paramByteStringMicro + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handlePaiYiPaiSwitch() called with: bytesValue = [");
+      localStringBuilder.append(paramByteStringMicro);
+      localStringBuilder.append("]");
+      QLog.d("PaiYiPaiProcessor", 2, localStringBuilder.toString());
     }
     short s = ByteBuffer.wrap(paramByteStringMicro.toByteArray()).asShortBuffer().get();
     ((PaiYiPaiManager)paramQQAppInterface.getManager(QQManagerFactory.PAI_YI_PAI_MANAGER)).a(s);
@@ -58,29 +73,32 @@ public class PaiYiPaiProcessor
   
   public void onProcessProfileModifyPush(int paramInt, ByteStringMicro paramByteStringMicro)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
+    if (paramInt != 27390) {
+      switch (paramInt)
       {
-        do
-        {
-          return;
-        } while (!(this.appRuntime instanceof QQAppInterface));
+      default: 
+        return;
+      case 42434: 
+        if (!(this.appRuntime instanceof QQAppInterface)) {
+          break;
+        }
+        b(paramByteStringMicro, (QQAppInterface)this.appRuntime);
+        return;
+      case 42433: 
+        if (!(this.appRuntime instanceof QQAppInterface)) {
+          break;
+        }
         c(paramByteStringMicro, (QQAppInterface)this.appRuntime);
         return;
-      } while (!(this.appRuntime instanceof QQAppInterface));
-      b(paramByteStringMicro, (QQAppInterface)this.appRuntime);
-      return;
-    } while (!(this.appRuntime instanceof QQAppInterface));
-    a(paramByteStringMicro, (QQAppInterface)this.appRuntime);
+      }
+    } else if ((this.appRuntime instanceof QQAppInterface)) {
+      a(paramByteStringMicro, (QQAppInterface)this.appRuntime);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecommon.processor.PaiYiPaiProcessor
  * JD-Core Version:    0.7.0.1
  */

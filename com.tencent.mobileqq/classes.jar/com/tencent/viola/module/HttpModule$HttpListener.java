@@ -36,12 +36,12 @@ class HttpModule$HttpListener
         Map.Entry localEntry = (Map.Entry)localIterator.next();
         if (((List)localEntry.getValue()).size() > 0)
         {
-          if (localEntry.getKey() == null) {}
-          for (paramMap = "_";; paramMap = (String)localEntry.getKey())
-          {
-            localHashMap.put(paramMap, ((List)localEntry.getValue()).get(0));
-            break;
+          if (localEntry.getKey() == null) {
+            paramMap = "_";
+          } else {
+            paramMap = (String)localEntry.getKey();
           }
+          localHashMap.put(paramMap, ((List)localEntry.getValue()).get(0));
         }
       }
     }
@@ -51,27 +51,23 @@ class HttpModule$HttpListener
   
   public void onHttpFinish(HttpResponse paramHttpResponse)
   {
-    if (this.mResponseCallback != null) {
-      this.mResponseCallback.onResponse(paramHttpResponse, this.mRespHeaders);
+    Object localObject = this.mResponseCallback;
+    if (localObject != null) {
+      ((HttpModule.ResponseCallback)localObject).onResponse(paramHttpResponse, this.mRespHeaders);
     }
-    ViolaInstance localViolaInstance;
-    long l1;
-    long l2;
     if ((this.this$0.getViolaInstance() != null) && (this.mHttpStartTime != 0L))
     {
-      localViolaInstance = this.this$0.getViolaInstance();
-      l1 = System.currentTimeMillis();
-      l2 = this.mHttpStartTime;
-      if (paramHttpResponse.originalData == null) {
-        break label88;
+      localObject = this.this$0.getViolaInstance();
+      long l1 = System.currentTimeMillis();
+      long l2 = this.mHttpStartTime;
+      int i;
+      if (paramHttpResponse.originalData != null) {
+        i = paramHttpResponse.originalData.length;
+      } else {
+        i = 0;
       }
-    }
-    label88:
-    for (int i = paramHttpResponse.originalData.length;; i = 0)
-    {
-      localViolaInstance.setHttpReportData(l1 - l2, i);
+      ((ViolaInstance)localObject).setHttpReportData(l1 - l2, i);
       this.mHttpStartTime = 0L;
-      return;
     }
   }
   
@@ -82,7 +78,7 @@ class HttpModule$HttpListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.module.HttpModule.HttpListener
  * JD-Core Version:    0.7.0.1
  */

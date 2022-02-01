@@ -5,11 +5,11 @@ import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.friends.intimate.IntimateInfoHandler;
+import com.tencent.mobileqq.troop.api.handler.ITroopMngHandler;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,36 +24,41 @@ public class TroopWithCommonFriendsHelper
   
   public static byte a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
-      return 0;
-    }
-    paramQQAppInterface = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    byte b2 = 0;
+    byte b1 = b2;
     if (paramQQAppInterface != null)
     {
-      paramQQAppInterface = paramQQAppInterface.e(paramString);
-      if (paramQQAppInterface != null) {
-        return paramQQAppInterface.gender;
+      if (TextUtils.isEmpty(paramString)) {
+        return 0;
+      }
+      paramQQAppInterface = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      b1 = b2;
+      if (paramQQAppInterface != null)
+      {
+        paramQQAppInterface = paramQQAppInterface.e(paramString);
+        b1 = b2;
+        if (paramQQAppInterface != null) {
+          b1 = paramQQAppInterface.gender;
+        }
       }
     }
-    return 0;
+    return b1;
   }
   
   public static int a(String paramString)
   {
-    int i = 0;
     if (a.containsKey(paramString)) {
-      i = ((Integer)a.get(paramString)).intValue();
+      return ((Integer)a.get(paramString)).intValue();
     }
-    return i;
+    return 0;
   }
   
   public static long a(String paramString)
   {
-    long l = 0L;
     if (b.containsKey(paramString)) {
-      l = ((Long)b.get(paramString)).longValue();
+      return ((Long)b.get(paramString)).longValue();
     }
-    return l;
+    return 0L;
   }
   
   public static List<TroopList> a(String paramString)
@@ -68,24 +73,27 @@ public class TroopWithCommonFriendsHelper
   public static List<CommonTroopData> a(ArrayList<TroopList> paramArrayList, QQAppInterface paramQQAppInterface)
   {
     ArrayList localArrayList = new ArrayList();
-    if ((paramArrayList.isEmpty()) || (paramQQAppInterface == null)) {
-      return localArrayList;
-    }
-    paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    int i = 0;
-    while (i < paramArrayList.size())
+    if (!paramArrayList.isEmpty())
     {
-      String str = String.valueOf(((TroopList)paramArrayList.get(i)).jdField_a_of_type_Long);
-      TroopInfo localTroopInfo = paramQQAppInterface.c(str);
-      if ((localTroopInfo != null) && (localTroopInfo.troopname != null) && (!localTroopInfo.troopname.isEmpty()))
-      {
-        CommonTroopData localCommonTroopData = new CommonTroopData();
-        localCommonTroopData.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo = localTroopInfo;
-        localCommonTroopData.jdField_a_of_type_JavaLangString = str;
-        localCommonTroopData.jdField_a_of_type_Int = ((TroopList)paramArrayList.get(i)).jdField_a_of_type_Int;
-        localArrayList.add(localCommonTroopData);
+      if (paramQQAppInterface == null) {
+        return localArrayList;
       }
-      i += 1;
+      paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+      int i = 0;
+      while (i < paramArrayList.size())
+      {
+        String str = String.valueOf(((TroopList)paramArrayList.get(i)).jdField_a_of_type_Long);
+        TroopInfo localTroopInfo = paramQQAppInterface.c(str);
+        if ((localTroopInfo != null) && (localTroopInfo.troopname != null) && (!localTroopInfo.troopname.isEmpty()))
+        {
+          CommonTroopData localCommonTroopData = new CommonTroopData();
+          localCommonTroopData.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo = localTroopInfo;
+          localCommonTroopData.jdField_a_of_type_JavaLangString = str;
+          localCommonTroopData.jdField_a_of_type_Int = ((TroopList)paramArrayList.get(i)).jdField_a_of_type_Int;
+          localArrayList.add(localCommonTroopData);
+        }
+        i += 1;
+      }
     }
     return localArrayList;
   }
@@ -113,26 +121,31 @@ public class TroopWithCommonFriendsHelper
   
   public static void a(String paramString1, String paramString2, String paramString3, QQAppInterface paramQQAppInterface)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    ArrayList localArrayList;
-    do
+    if (!TextUtils.isEmpty(paramString1))
     {
-      return;
-      localArrayList = new ArrayList();
+      if (TextUtils.isEmpty(paramString2)) {
+        return;
+      }
+      ArrayList localArrayList = new ArrayList();
       localArrayList.add(paramString2);
-      paramString2 = (TroopHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
-    } while (paramString2 == null);
-    paramString2.a(paramString1, localArrayList, paramString3);
+      paramString2 = (ITroopMngHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MNG_HANDLER);
+      if (paramString2 != null) {
+        paramString2.a(paramString1, localArrayList, paramString3);
+      }
+    }
   }
   
   public static void a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return;
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      if (TextUtils.isEmpty(paramString2)) {
+        return;
+      }
+      HashMap localHashMap = new HashMap();
+      localHashMap.put(paramString2, Boolean.valueOf(paramBoolean));
+      d.put(paramString1, localHashMap);
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(paramString2, Boolean.valueOf(paramBoolean));
-    d.put(paramString1, localHashMap);
   }
   
   public static void a(String paramString, List<TroopList> paramList)
@@ -144,14 +157,18 @@ public class TroopWithCommonFriendsHelper
   
   public static boolean a(long paramLong, int paramInt, QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopWithCommonFriendsHelper", 2, "getTroopWithCommonFriendsList,frienduin:" + paramLong);
-    }
-    String str = String.valueOf(paramLong);
-    paramQQAppInterface = (IntimateInfoHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.INTIMATE_INFO_HANDLER);
-    if (!a(str))
+    if (QLog.isColorLevel())
     {
-      paramQQAppInterface.a(a(str), a(str));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getTroopWithCommonFriendsList,frienduin:");
+      ((StringBuilder)localObject).append(paramLong);
+      QLog.d("TroopWithCommonFriendsHelper", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = String.valueOf(paramLong);
+    paramQQAppInterface = (IntimateInfoHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.INTIMATE_INFO_HANDLER);
+    if (!a((String)localObject))
+    {
+      paramQQAppInterface.a(a((String)localObject), a((String)localObject));
       if (QLog.isColorLevel()) {
         QLog.d("TroopWithCommonFriendsHelper", 2, "getTroopWithCommonFriendsList:EnableGetTroopList,false");
       }
@@ -206,7 +223,7 @@ public class TroopWithCommonFriendsHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsHelper
  * JD-Core Version:    0.7.0.1
  */

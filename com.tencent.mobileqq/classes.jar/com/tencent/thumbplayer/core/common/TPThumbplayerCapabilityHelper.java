@@ -6,6 +6,21 @@ import java.util.HashMap;
 
 public class TPThumbplayerCapabilityHelper
 {
+  public static boolean addDRMLevel1Blacklist(int paramInt)
+  {
+    return TPPlayerDecoderCapability.addDRMLevel1Blacklist(paramInt);
+  }
+  
+  public static boolean addHDRBlackList(int paramInt, TPCodecCapability.TPHdrSupportVersionRange paramTPHdrSupportVersionRange)
+  {
+    return TPPlayerDecoderCapability.addHDRBlackList(paramInt, paramTPHdrSupportVersionRange);
+  }
+  
+  public static boolean addHDRWhiteList(int paramInt, TPCodecCapability.TPHdrSupportVersionRange paramTPHdrSupportVersionRange)
+  {
+    return TPPlayerDecoderCapability.addHDRWhiteList(paramInt, paramTPHdrSupportVersionRange);
+  }
+  
   public static boolean addVCodecBlacklist(int paramInt1, int paramInt2, TPCodecCapability.TPVCodecPropertyRange paramTPVCodecPropertyRange)
   {
     return TPPlayerDecoderCapability.addVCodecBlacklist(paramInt1, paramInt2, paramTPVCodecPropertyRange);
@@ -40,33 +55,32 @@ public class TPThumbplayerCapabilityHelper
         localTPVCodecMaxCapability1 = localTPVCodecMaxCapability2;
         if (localHashMap2.containsKey(Integer.valueOf(paramInt)))
         {
-          if (((TPCodecCapability.TPVCodecMaxCapability)localHashMap1.get(Integer.valueOf(paramInt))).maxLumaSamples < ((TPCodecCapability.TPVCodecMaxCapability)localHashMap2.get(Integer.valueOf(paramInt))).maxLumaSamples) {
-            break label108;
+          if (((TPCodecCapability.TPVCodecMaxCapability)localHashMap1.get(Integer.valueOf(paramInt))).maxLumaSamples >= ((TPCodecCapability.TPVCodecMaxCapability)localHashMap2.get(Integer.valueOf(paramInt))).maxLumaSamples) {
+            return (TPCodecCapability.TPVCodecMaxCapability)localHashMap1.get(Integer.valueOf(paramInt));
           }
-          localTPVCodecMaxCapability1 = (TPCodecCapability.TPVCodecMaxCapability)localHashMap1.get(Integer.valueOf(paramInt));
+          return (TPCodecCapability.TPVCodecMaxCapability)localHashMap2.get(Integer.valueOf(paramInt));
         }
       }
     }
-    label108:
-    do
+    else if (localHashMap1 != null)
     {
-      do
-      {
-        do
-        {
-          return localTPVCodecMaxCapability1;
-          return (TPCodecCapability.TPVCodecMaxCapability)localHashMap2.get(Integer.valueOf(paramInt));
-          if (localHashMap1 == null) {
-            break;
-          }
-          localTPVCodecMaxCapability1 = localTPVCodecMaxCapability2;
-        } while (!localHashMap1.containsKey(Integer.valueOf(paramInt)));
-        return (TPCodecCapability.TPVCodecMaxCapability)localHashMap1.get(Integer.valueOf(paramInt));
-        localTPVCodecMaxCapability1 = localTPVCodecMaxCapability2;
-      } while (localHashMap2 == null);
       localTPVCodecMaxCapability1 = localTPVCodecMaxCapability2;
-    } while (!localHashMap2.containsKey(Integer.valueOf(paramInt)));
-    return (TPCodecCapability.TPVCodecMaxCapability)localHashMap2.get(Integer.valueOf(paramInt));
+      if (localHashMap1.containsKey(Integer.valueOf(paramInt))) {
+        return (TPCodecCapability.TPVCodecMaxCapability)localHashMap1.get(Integer.valueOf(paramInt));
+      }
+    }
+    else
+    {
+      localTPVCodecMaxCapability1 = localTPVCodecMaxCapability2;
+      if (localHashMap2 != null)
+      {
+        localTPVCodecMaxCapability1 = localTPVCodecMaxCapability2;
+        if (localHashMap2.containsKey(Integer.valueOf(paramInt))) {
+          localTPVCodecMaxCapability1 = (TPCodecCapability.TPVCodecMaxCapability)localHashMap2.get(Integer.valueOf(paramInt));
+        }
+      }
+    }
+    return localTPVCodecMaxCapability1;
   }
   
   public static void init(Context paramContext, boolean paramBoolean)
@@ -96,19 +110,19 @@ public class TPThumbplayerCapabilityHelper
   public static boolean isDRMsupport(int paramInt)
   {
     int[] arrayOfInt = getDRMCapabilities();
-    if (arrayOfInt.length == 0) {}
-    for (;;)
-    {
+    if (arrayOfInt.length == 0) {
       return false;
-      int i = 0;
-      while (i < arrayOfInt.length)
-      {
-        if (paramInt == arrayOfInt[i]) {
-          return true;
-        }
-        i += 1;
-      }
     }
+    int j = arrayOfInt.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (paramInt == arrayOfInt[i]) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
   }
   
   public static boolean isDolbyDSSupported()
@@ -163,7 +177,7 @@ public class TPThumbplayerCapabilityHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPThumbplayerCapabilityHelper
  * JD-Core Version:    0.7.0.1
  */

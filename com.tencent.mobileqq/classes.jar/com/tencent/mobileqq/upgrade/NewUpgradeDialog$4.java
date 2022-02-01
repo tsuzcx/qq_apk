@@ -12,34 +12,54 @@ class NewUpgradeDialog$4
   
   public void onClick(View paramView)
   {
-    switch (NewUpgradeDialog.a(this.a))
+    int i = NewUpgradeDialog.a(this.a);
+    if (i != 1)
     {
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4)
+          {
+            if (i != 10)
+            {
+              if (i == 20) {
+                LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_WAIT");
+              }
+            }
+            else {
+              LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_CANCEL");
+            }
+          }
+          else
+          {
+            NewUpgradeDialog.b(this.a);
+            LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_COMPLETE");
+          }
+        }
+        else
+        {
+          NewUpgradeDialog.c(this.a);
+          LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_PAUSE");
+        }
+      }
+      else
+      {
+        this.a.c();
+        LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_DOWNLOADING");
+      }
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_INIT");
       NewUpgradeDialog.a(this.a);
-      continue;
-      NewUpgradeDialog.b(this.a);
-      LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_COMPLETE");
-      continue;
-      LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_CANCEL");
-      continue;
-      NewUpgradeDialog.c(this.a);
-      LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_PAUSE");
-      continue;
-      this.a.c();
-      LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_DOWNLOADING");
-      continue;
-      LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_WAIT");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.NewUpgradeDialog.4
  * JD-Core Version:    0.7.0.1
  */

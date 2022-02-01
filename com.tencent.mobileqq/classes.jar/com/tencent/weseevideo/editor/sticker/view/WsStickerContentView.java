@@ -11,10 +11,12 @@ import android.os.Build.VERSION;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 import com.tencent.tavcut.util.Util;
 import com.tencent.tavsticker.TAVStickerHelper;
 import com.tencent.tavsticker.core.TAVStickerContentView;
+import com.tencent.tavsticker.core.TAVStickerContentView.DispatchTouchEventListener;
 import com.tencent.tavsticker.log.TLog;
 import com.tencent.tavsticker.model.TAVSticker;
 import com.tencent.tavsticker.model.TAVStickerOperationMode;
@@ -27,20 +29,23 @@ public class WsStickerContentView
   extends TAVStickerContentView
   implements IStickerEventListener
 {
-  public static final float DRAG_ADSORPTION_THRESHOLD = 4.0F * ViewUtils.dip2px(2.0F);
+  public static final float DRAG_ADSORPTION_THRESHOLD = ViewUtils.dip2px(2.0F) * 4.0F;
   public static final float ROTATE_ADSORPTION_THRESHOLD = 2.0F;
   public static final float VIBRATE_TIME_INTERVAL = 250.0F;
-  private static final long VIBRATOR_DURATION = 50L;
+  private static final long VIBRATOR_DURATION = 30L;
   private final String TAG = WsStickerContentView.class.getSimpleName();
   private float centerX = 0.0F;
   private float centerY = 0.0F;
-  private WsStickerEditView curStickerEditView = null;
+  protected WsStickerEditView curStickerEditView = null;
   private Paint dashLinePaint = new Paint();
   private Path dashPath = new Path();
   private boolean isStickerTouching = false;
   private long lastVibrateTime = 0L;
+  private boolean needOperate = true;
   private boolean needVibrate = false;
   private TAVStickerOperationMode operationMode = TAVStickerOperationMode.OP_NONE;
+  public int parentLeft = 0;
+  public int parentTop = 0;
   private ArrayList<PointF> points;
   private float rotate = 0.0F;
   private Paint solidLinePaint = new Paint();
@@ -69,7 +74,16 @@ public class WsStickerContentView
   {
     long l = System.currentTimeMillis();
     float f = (float)Math.abs(l - this.lastVibrateTime);
-    TLog.d(this.TAG + "1", "time: " + l + "lastTime: " + this.lastVibrateTime);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.TAG);
+    ((StringBuilder)localObject).append("1");
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("time: ");
+    localStringBuilder.append(l);
+    localStringBuilder.append("lastTime: ");
+    localStringBuilder.append(this.lastVibrateTime);
+    TLog.d((String)localObject, localStringBuilder.toString());
     this.lastVibrateTime = l;
     return f > 250.0F;
   }
@@ -92,13 +106,11 @@ public class WsStickerContentView
     }
     if (isDrawNortheast2SouthwestLine())
     {
-      this.needVibrate = true;
       this.dashPath.moveTo(((PointF)localArrayList.get(1)).x, ((PointF)localArrayList.get(1)).y);
       this.dashPath.lineTo(((PointF)localArrayList.get(3)).x, ((PointF)localArrayList.get(3)).y);
     }
     if (isDrawNorthwest2SoutheastLine())
     {
-      this.needVibrate = true;
       this.dashPath.moveTo(((PointF)localArrayList.get(0)).x, ((PointF)localArrayList.get(0)).y);
       this.dashPath.lineTo(((PointF)localArrayList.get(2)).x, ((PointF)localArrayList.get(2)).y);
     }
@@ -134,14 +146,13 @@ public class WsStickerContentView
     if ((getWidth() > 0) && (getHeight() > 0))
     {
       int i = Math.min(getWidth(), getHeight());
-      ((PointF)this.points.get(0)).set(this.centerX - i, this.centerY - i);
-      ((PointF)this.points.get(1)).set(this.centerX + i, this.centerY - i);
-      ((PointF)this.points.get(2)).set(this.centerX + i, this.centerY + i);
-      PointF localPointF = (PointF)this.points.get(3);
+      PointF localPointF = (PointF)this.points.get(0);
       float f1 = this.centerX;
       float f2 = i;
-      float f3 = this.centerY;
-      localPointF.set(f1 - f2, i + f3);
+      localPointF.set(f1 - f2, this.centerY - f2);
+      ((PointF)this.points.get(1)).set(this.centerX + f2, this.centerY - f2);
+      ((PointF)this.points.get(2)).set(this.centerX + f2, this.centerY + f2);
+      ((PointF)this.points.get(3)).set(this.centerX - f2, this.centerY + f2);
     }
     return this.points;
   }
@@ -205,11 +216,11 @@ public class WsStickerContentView
     {
       if (Build.VERSION.SDK_INT >= 26)
       {
-        VibrationEffect localVibrationEffect = VibrationEffect.createOneShot(50L, -1);
+        VibrationEffect localVibrationEffect = VibrationEffect.createOneShot(30L, -1);
         this.vibrator.vibrate(localVibrationEffect);
         return;
       }
-      this.vibrator.vibrate(50L);
+      this.vibrator.vibrate(30L);
       return;
     }
     catch (Exception localException)
@@ -220,13 +231,20 @@ public class WsStickerContentView
   
   public void addView(View paramView)
   {
-    super.addView(paramView);
-    if ((paramView instanceof WsStickerEditView)) {}
-    for (paramView = (WsStickerEditView)paramView;; paramView = null)
+    try
     {
-      this.curStickerEditView = paramView;
-      return;
+      super.addView(paramView);
     }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    if ((paramView instanceof WsStickerEditView)) {
+      paramView = (WsStickerEditView)paramView;
+    } else {
+      paramView = null;
+    }
+    this.curStickerEditView = paramView;
   }
   
   public WsStickerEditView getStickerEditView()
@@ -234,43 +252,36 @@ public class WsStickerContentView
     return this.curStickerEditView;
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     StickerEventDispatcher.getInstance().addStickerEventListener(this);
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     StickerEventDispatcher.getInstance().removeStickerEventListener(this);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if ((this.isStickerTouching) && (paramCanvas != null))
     {
       this.needVibrate = false;
-      if ((this.curStickerEditView != null) && (this.curStickerEditView.isDrawGuideLine()))
-      {
-        if (TAVStickerOperationMode.OP_DRAG != this.operationMode) {
-          break label82;
+      WsStickerEditView localWsStickerEditView = this.curStickerEditView;
+      if ((localWsStickerEditView != null) && (localWsStickerEditView.isDrawGuideLine())) {
+        if (TAVStickerOperationMode.OP_DRAG == this.operationMode) {
+          drawSolidLine(paramCanvas);
+        } else if (TAVStickerOperationMode.OP_NONE != this.operationMode) {
+          drawDashLine(paramCanvas);
         }
-        drawSolidLine(paramCanvas);
       }
-    }
-    for (;;)
-    {
       if ((this.needVibrate) && (checkVibrateInterval()))
       {
         TLog.d(this.TAG, "startVibrator");
         startVibrator();
-      }
-      return;
-      label82:
-      if (TAVStickerOperationMode.OP_NONE != this.operationMode) {
-        drawDashLine(paramCanvas);
       }
     }
   }
@@ -281,7 +292,11 @@ public class WsStickerContentView
     this.centerX = paramFloat1;
     this.centerY = paramFloat2;
     this.rotate = paramFloat4;
-    TLog.d(this.TAG, "onStickerDataChanged -> sticker : $sticker, centerX : $centerX, centerY : $centerY, scale : $scale, rotate : $rotate , operationMode" + paramTAVStickerOperationMode.name());
+    paramTAVSticker = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onStickerDataChanged -> sticker : $sticker, centerX : $centerX, centerY : $centerY, scale : $scale, rotate : $rotate , operationMode");
+    localStringBuilder.append(paramTAVStickerOperationMode.name());
+    TLog.d(paramTAVSticker, localStringBuilder.toString());
   }
   
   public void onStickerStatusChanged(TAVSticker paramTAVSticker, boolean paramBoolean1, boolean paramBoolean2)
@@ -290,12 +305,30 @@ public class WsStickerContentView
     if (!this.isStickerTouching) {
       this.operationMode = TAVStickerOperationMode.OP_NONE;
     }
-    TLog.d(this.TAG, "onStickerStatusChanged -> sticker : $sticker, isTouching :" + paramBoolean1);
+    paramTAVSticker = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onStickerStatusChanged -> sticker : $sticker, isTouching :");
+    localStringBuilder.append(paramBoolean1);
+    TLog.d(paramTAVSticker, localStringBuilder.toString());
+  }
+  
+  public void setNeedOperate(boolean paramBoolean, MotionEvent paramMotionEvent)
+  {
+    this.needOperate = paramBoolean;
+    if (this.dispatchTouchEventListener != null)
+    {
+      this.dispatchTouchEventListener.setInterceptEvent(Boolean.valueOf(paramBoolean ^ true));
+      if ((paramMotionEvent != null) && (paramBoolean))
+      {
+        paramMotionEvent.offsetLocation(-this.parentLeft, -this.parentTop);
+        this.dispatchTouchEventListener.onHackedTouchEvent(paramMotionEvent);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.view.WsStickerContentView
  * JD-Core Version:    0.7.0.1
  */

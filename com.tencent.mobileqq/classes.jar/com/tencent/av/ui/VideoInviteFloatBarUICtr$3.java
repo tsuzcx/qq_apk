@@ -16,39 +16,51 @@ class VideoInviteFloatBarUICtr$3
 {
   VideoInviteFloatBarUICtr$3(VideoInviteFloatBarUICtr paramVideoInviteFloatBarUICtr) {}
   
-  public void a(long paramLong, int paramInt)
+  protected void a(long paramLong, int paramInt)
   {
     super.a(paramLong);
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoInviteFloatBarUICtr", 2, "onDestroyInviteUI-->reason=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDestroyInviteUI-->reason=");
+      localStringBuilder.append(paramInt);
+      QLog.d("VideoInviteFloatBarUICtr", 2, localStringBuilder.toString());
     }
     if ((this.a.jdField_a_of_type_Long == paramLong) || (0L == paramLong)) {
       this.a.a();
     }
   }
   
-  public void a(long paramLong1, long paramLong2)
+  protected void a(long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoInviteFloatBarUICtr", 2, "onCreateRoomSuc-->GroupID=" + paramLong2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCreateRoomSuc-->GroupID=");
+      localStringBuilder.append(paramLong2);
+      QLog.d("VideoInviteFloatBarUICtr", 2, localStringBuilder.toString());
     }
-    this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.an = true;
+    this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.ab = true;
     if (this.a.jdField_b_of_type_Int == 1) {
       this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(paramLong2);
     }
   }
   
-  public void a(long paramLong, String paramString)
+  protected void a(long paramLong, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoInviteFloatBarUICtr", 2, "notifyCloseGroupVideoInviteMsgBoxByInviteId-->groupId=" + paramLong);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("notifyCloseGroupVideoInviteMsgBoxByInviteId-->groupId=");
+      localStringBuilder.append(paramLong);
+      QLog.d("VideoInviteFloatBarUICtr", 2, localStringBuilder.toString());
     }
     if ((this.a.jdField_a_of_type_Long == paramLong) && (this.a.e.equals(paramString))) {
       this.a.a();
     }
   }
   
-  public void a(long paramLong, ArrayList<VideoController.GAudioFriends> paramArrayList, int paramInt1, int paramInt2)
+  protected void a(long paramLong, ArrayList<VideoController.GAudioFriends> paramArrayList, int paramInt1, int paramInt2)
   {
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext()) {
@@ -58,19 +70,26 @@ class VideoInviteFloatBarUICtr$3
     }
   }
   
-  public void b()
+  protected void b()
   {
     super.b();
     this.a.a(false);
   }
   
-  public void b(long paramLong1, long paramLong2)
+  protected void b(long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("VideoInviteFloatBarUICtr", 1, "onEnterRoomSuc, groupId[" + paramLong2 + "], seq[" + paramLong1 + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onEnterRoomSuc, groupId[");
+      localStringBuilder.append(paramLong2);
+      localStringBuilder.append("], seq[");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append("]");
+      QLog.w("VideoInviteFloatBarUICtr", 1, localStringBuilder.toString());
     }
     this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(new VideoInviteFloatBarUICtr.3.1(this, paramLong2), 500L);
-    this.a.jdField_a_of_type_ComTencentAvVideoController.b();
+    this.a.jdField_a_of_type_ComTencentAvVideoController.d();
     SmallScreenActivityPlugin.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(paramLong1, false);
     if (this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar != null) {
       this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.c();
@@ -79,29 +98,49 @@ class VideoInviteFloatBarUICtr$3
     this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_b_of_type_JavaLangRunnable, 1000L);
   }
   
-  public void b(long paramLong1, long paramLong2, String paramString)
+  protected void b(long paramLong1, long paramLong2, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoInviteFloatBarUICtr.troopgroup_vedio.invite", 2, "groupId:" + paramLong1 + ", memUin:" + paramLong2 + ",invitedId:" + paramString + ", mInviterUin:" + this.a.jdField_b_of_type_Long + ", mGroupId:" + this.a.jdField_a_of_type_Long);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("groupId:");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append(", memUin:");
+      localStringBuilder.append(paramLong2);
+      localStringBuilder.append(",invitedId:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", mInviterUin:");
+      localStringBuilder.append(this.a.jdField_b_of_type_Long);
+      localStringBuilder.append(", mGroupId:");
+      localStringBuilder.append(this.a.jdField_a_of_type_Long);
+      QLog.d("VideoInviteFloatBarUICtr.troopgroup_vedio.invite", 2, localStringBuilder.toString());
     }
     if ((paramLong2 == this.a.jdField_b_of_type_Long) && (paramLong1 == this.a.jdField_a_of_type_Long)) {
       this.a.a();
     }
   }
   
-  public void d(long paramLong)
+  protected void d(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoInviteFloatBarUICtr", 2, "notifyCloseAllGroupVideoInviteMsgBox-->notifyByGroupId=" + paramLong);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("notifyCloseAllGroupVideoInviteMsgBox-->notifyByGroupId=");
+      localStringBuilder.append(paramLong);
+      QLog.d("VideoInviteFloatBarUICtr", 2, localStringBuilder.toString());
     }
-    if (this.a.jdField_a_of_type_Long != paramLong) {}
+    paramLong = this.a.jdField_a_of_type_Long;
     this.a.a();
   }
   
-  public void e(long paramLong)
+  protected void e(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoInviteFloatBarUICtr", 2, "notifyCloseGroupVideoInviteMsgBox-->groupId=" + paramLong);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("notifyCloseGroupVideoInviteMsgBox-->groupId=");
+      localStringBuilder.append(paramLong);
+      QLog.d("VideoInviteFloatBarUICtr", 2, localStringBuilder.toString());
     }
     if (this.a.jdField_a_of_type_Long == paramLong) {
       this.a.a();
@@ -110,7 +149,7 @@ class VideoInviteFloatBarUICtr$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoInviteFloatBarUICtr.3
  * JD-Core Version:    0.7.0.1
  */

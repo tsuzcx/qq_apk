@@ -16,24 +16,31 @@ class AppBrandLaunchManager$StartMiniAppReceiver$1
   
   public void run()
   {
-    String str = AppLoaderFactory.PATH_WXAPKG_ROOT + this.val$appid + "_debug";
-    if (new File(str).exists()) {
-      FileUtils.a(str, false);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(AppLoaderFactory.PATH_WXAPKG_ROOT);
+    ((StringBuilder)localObject).append(this.val$appid);
+    ((StringBuilder)localObject).append("_debug");
+    localObject = ((StringBuilder)localObject).toString();
+    if (new File((String)localObject).exists()) {
+      FileUtils.delete((String)localObject, false);
     }
-    str = MiniAppGlobal.getMiniCacheFilePath() + MD5.toMD5(this.val$appid);
-    if (new File(str).exists()) {
-      FileUtils.a(str, false);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(MiniAppGlobal.getMiniCacheFilePath());
+    ((StringBuilder)localObject).append(MD5.toMD5(this.val$appid));
+    localObject = ((StringBuilder)localObject).toString();
+    if (new File((String)localObject).exists()) {
+      FileUtils.delete((String)localObject, false);
     }
-    str = Storage.getCacheDir(this.val$context.getCacheDir().getAbsolutePath(), this.val$uin, this.val$appid);
-    if ((str != null) && (new File(str).exists())) {
-      FileUtils.a(str, false);
+    localObject = Storage.getCacheDir(this.val$context.getCacheDir().getAbsolutePath(), this.val$uin, this.val$appid);
+    if ((localObject != null) && (new File((String)localObject).exists())) {
+      FileUtils.delete((String)localObject, false);
     }
     QLog.e("debug", 1, "clear miniapp");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.StartMiniAppReceiver.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,14 +13,14 @@ class QCircleAssetPluginParse$1
   {
     try
     {
-      String str2 = paramString1.substring(this.jdField_a_of_type_JavaLangString.length(), paramString1.indexOf(".jpg"));
-      String str1 = paramString2.substring(this.jdField_a_of_type_JavaLangString.length(), paramString2.indexOf(".jpg"));
-      paramString1 = str2;
-      if (TextUtils.isEmpty(str2)) {
+      paramString1 = paramString1.substring(this.jdField_a_of_type_JavaLangString.length(), paramString1.indexOf(".jpg"));
+      String str = paramString2.substring(this.jdField_a_of_type_JavaLangString.length(), paramString2.indexOf(".jpg"));
+      boolean bool = TextUtils.isEmpty(paramString1);
+      if (bool) {
         paramString1 = "0";
       }
-      paramString2 = str1;
-      if (TextUtils.isEmpty(str1)) {
+      paramString2 = str;
+      if (TextUtils.isEmpty(str)) {
         paramString2 = "0";
       }
       long l1 = Long.parseLong(paramString1);
@@ -32,14 +32,17 @@ class QCircleAssetPluginParse$1
     }
     catch (Exception paramString1)
     {
-      QLog.i("QCIRCLE_PLUGIN", 1, "parseAsset#sort exception:" + paramString1.toString());
+      paramString2 = new StringBuilder();
+      paramString2.append("parseAsset#sort exception:");
+      paramString2.append(paramString1.toString());
+      QLog.i("QCIRCLE_PLUGIN", 1, paramString2.toString());
     }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.pluginparse.QCircleAssetPluginParse.1
  * JD-Core Version:    0.7.0.1
  */

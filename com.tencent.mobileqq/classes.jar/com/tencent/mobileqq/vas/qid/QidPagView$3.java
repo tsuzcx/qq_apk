@@ -14,13 +14,18 @@ class QidPagView$3
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if ((TextUtils.equals(this.jdField_a_of_type_JavaLangString, "https://cmshowar-1251316161.cos.ap-guangzhou.myqcloud.com//qqshow/0/2d/body/100.png")) || (TextUtils.equals(this.jdField_a_of_type_JavaLangString, "https://cmshowar-1251316161.cos.ap-guangzhou.myqcloud.com//qqshow/1/2d/body/100.png"))) {}
-    do
+    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, "https://cmshowar-1251316161.cos.ap-guangzhou.myqcloud.com//qqshow/0/2d/body/100.png"))
     {
-      return;
+      if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, "https://cmshowar-1251316161.cos.ap-guangzhou.myqcloud.com//qqshow/1/2d/body/100.png")) {
+        return;
+      }
       QidPagView.a(this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView).d = QidCardManager.a();
-    } while (TextUtils.isEmpty(QidPagView.a(this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView).d));
-    QidPagView.a(this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView, this.jdField_a_of_type_OrgLibpagPAGView, this.jdField_a_of_type_Int, QidPagView.a(this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView).d);
+      if (!TextUtils.isEmpty(QidPagView.a(this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView).d))
+      {
+        paramURLDrawable = this.jdField_a_of_type_ComTencentMobileqqVasQidQidPagView;
+        QidPagView.a(paramURLDrawable, this.jdField_a_of_type_OrgLibpagPAGView, this.jdField_a_of_type_Int, QidPagView.a(paramURLDrawable).d);
+      }
+    }
   }
   
   public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
@@ -32,7 +37,7 @@ class QidPagView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qid.QidPagView.3
  * JD-Core Version:    0.7.0.1
  */

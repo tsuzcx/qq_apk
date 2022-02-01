@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.profilecard.bussiness.troop;
 
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
+import com.tencent.mobileqq.troop.plugin.TroopPluginCallback;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.troop.TroopPluginManager.TroopPluginCallback;
 import java.lang.ref.WeakReference;
 
 class ProfileTroopMemInfoComponent$TroopProfilePluginCallback
-  implements TroopPluginManager.TroopPluginCallback
+  implements TroopPluginCallback
 {
   ProfileCardInfo cardInfo;
   WeakReference<ProfileTroopMemInfoComponent> memInfoComp;
@@ -19,21 +19,30 @@ class ProfileTroopMemInfoComponent$TroopProfilePluginCallback
   
   public void onInstallFinish(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileTroopMemInfoComponent", 2, "TroopProfilePluginCallback, onInstallFinish. code = " + paramInt);
-    }
-    if ((paramInt == 0) && (this.memInfoComp != null))
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      ProfileTroopMemInfoComponent localProfileTroopMemInfoComponent = (ProfileTroopMemInfoComponent)this.memInfoComp.get();
-      if (localProfileTroopMemInfoComponent != null) {
-        ProfileTroopMemInfoComponent.access$5000(localProfileTroopMemInfoComponent, this.cardInfo);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("TroopProfilePluginCallback, onInstallFinish. code = ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("ProfileTroopMemInfoComponent", 2, ((StringBuilder)localObject).toString());
+    }
+    if (paramInt == 0)
+    {
+      localObject = this.memInfoComp;
+      if (localObject != null)
+      {
+        localObject = (ProfileTroopMemInfoComponent)((WeakReference)localObject).get();
+        if (localObject != null) {
+          ProfileTroopMemInfoComponent.access$5000((ProfileTroopMemInfoComponent)localObject, this.cardInfo);
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.troop.ProfileTroopMemInfoComponent.TroopProfilePluginCallback
  * JD-Core Version:    0.7.0.1
  */

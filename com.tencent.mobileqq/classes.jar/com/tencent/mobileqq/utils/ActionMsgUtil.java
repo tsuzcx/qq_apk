@@ -21,7 +21,10 @@ public class ActionMsgUtil
     }
     catch (Exception localException)
     {
-      QLog.w("ActionMsgUtil", 2, "decode error msg = " + paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("decode error msg = ");
+      localStringBuilder.append(paramString);
+      QLog.w("ActionMsgUtil", 2, localStringBuilder.toString());
       QLog.w("ActionMsgUtil", 2, localException.toString());
       localMsgBody.msg = "";
       localMsgBody.action = "";
@@ -42,7 +45,7 @@ public class ActionMsgUtil
         paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
         localAppShareCookie.jdField_a_of_type_Int = paramArrayOfByte.get();
         if (paramArrayOfByte.get() != 0) {
-          continue;
+          break label203;
         }
         i = -3004;
         localAppShareCookie.b = i;
@@ -53,24 +56,33 @@ public class ActionMsgUtil
           paramArrayOfByte.get(arrayOfByte);
           localAppShareCookie.c = i;
           localAppShareCookie.jdField_a_of_type_JavaLangString = new String(arrayOfByte);
-          if (QLog.isColorLevel()) {
-            QLog.d("ActionMsgUtil", 2, "decodeAppShareCookie succes appShareCookie.buissnessType =" + localAppShareCookie.jdField_a_of_type_Int + "appShareCookie.action" + localAppShareCookie.b + "appShareCookie.actionType" + localAppShareCookie.c + "appShareCookie.actionValue" + localAppShareCookie.jdField_a_of_type_JavaLangString);
+          if (QLog.isColorLevel())
+          {
+            paramArrayOfByte = new StringBuilder();
+            paramArrayOfByte.append("decodeAppShareCookie succes appShareCookie.buissnessType =");
+            paramArrayOfByte.append(localAppShareCookie.jdField_a_of_type_Int);
+            paramArrayOfByte.append("appShareCookie.action");
+            paramArrayOfByte.append(localAppShareCookie.b);
+            paramArrayOfByte.append("appShareCookie.actionType");
+            paramArrayOfByte.append(localAppShareCookie.c);
+            paramArrayOfByte.append("appShareCookie.actionValue");
+            paramArrayOfByte.append(localAppShareCookie.jdField_a_of_type_JavaLangString);
+            QLog.d("ActionMsgUtil", 2, paramArrayOfByte.toString());
+            return localAppShareCookie;
           }
         }
       }
       catch (Exception paramArrayOfByte)
       {
-        int i;
         paramArrayOfByte.printStackTrace();
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.e("ActionMsgUtil", 2, "decodeAppShareCookie", paramArrayOfByte);
         }
-        QLog.e("ActionMsgUtil", 2, "decodeAppShareCookie", paramArrayOfByte);
       }
       return localAppShareCookie;
-      i = -3005;
+      label203:
+      int i = -3005;
     }
-    return localAppShareCookie;
   }
   
   public static String a(String paramString1, String paramString2)
@@ -83,14 +95,14 @@ public class ActionMsgUtil
     String str = paramString1;
     if (paramString1 == null)
     {
-      str = "";
       QLog.w("ActionMsgUtil", 2, "encode msg is null");
+      str = "";
     }
     paramString1 = paramString2;
     if (paramString2 == null)
     {
-      paramString1 = "";
       QLog.w("ActionMsgUtil", 2, "encode action is null");
+      paramString1 = "";
     }
     paramString2 = new MsgBody();
     paramString2.msg = str;
@@ -130,7 +142,7 @@ public class ActionMsgUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ActionMsgUtil
  * JD-Core Version:    0.7.0.1
  */

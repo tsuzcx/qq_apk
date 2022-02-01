@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/i_v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.5dip" android:layout_marginBottom="14.5dip">
-        <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/dnd" android:paddingLeft="5.0dip" android:paddingTop="5.0dip" android:paddingBottom="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toLeftOf="@id/z2" android:layout_centerVertical="true" />
-        <com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView android:id="@id/z2" android:padding="5.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/fcx" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-</merge>

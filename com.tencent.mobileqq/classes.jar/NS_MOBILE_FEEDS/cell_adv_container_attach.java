@@ -39,25 +39,29 @@ public final class cell_adv_container_attach
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.picinfo != null) {
-      paramJceOutputStream.write(this.picinfo, 0);
+    Object localObject = this.picinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.remark != null) {
-      paramJceOutputStream.write(this.remark, 1);
+    localObject = this.remark;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.actiontype, 2);
-    if (this.actionurl != null) {
-      paramJceOutputStream.write(this.actionurl, 3);
+    localObject = this.actionurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.is_report, 4);
-    if (this.report_url != null) {
-      paramJceOutputStream.write(this.report_url, 5);
+    localObject = this.report_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_adv_container_attach
  * JD-Core Version:    0.7.0.1
  */

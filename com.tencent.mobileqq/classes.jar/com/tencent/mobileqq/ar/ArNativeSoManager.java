@@ -32,47 +32,53 @@ public class ArNativeSoManager
   
   private ARPreSoResourceDownload.ARResourceDownloadCallback a(String paramString)
   {
+    boolean bool = paramString.equalsIgnoreCase("arsdk2");
+    IArCoreNativeSoLoader localIArCoreNativeSoLoader = null;
     Object localObject2 = null;
-    Object localObject1;
-    if (paramString.equalsIgnoreCase("arsdk2"))
+    WeakReference localWeakReference = null;
+    Object localObject1 = null;
+    if (bool)
     {
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-        localObject1 = (ARPreSoResourceDownload.ARResourceDownloadCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+      paramString = (String)localObject1;
+      if (localWeakReference != null) {
+        paramString = (ARPreSoResourceDownload.ARResourceDownloadCallback)localWeakReference.get();
+      }
+      return paramString;
+    }
+    if (paramString.equalsIgnoreCase("arcloud"))
+    {
+      localObject1 = this.b;
+      paramString = localIArCoreNativeSoLoader;
+      if (localObject1 != null) {
+        paramString = (ARPreSoResourceDownload.ARResourceDownloadCallback)((WeakReference)localObject1).get();
+      }
+      return paramString;
+    }
+    if (paramString.equalsIgnoreCase("arfeature"))
+    {
+      localObject1 = this.d;
+      paramString = localObject2;
+      if (localObject1 != null) {
+        paramString = (ARPreSoResourceDownload.ARResourceDownloadCallback)((WeakReference)localObject1).get();
+      }
+      return paramString;
+    }
+    localIArCoreNativeSoLoader = ArCoreNativeSoManager.a();
+    localObject1 = localWeakReference;
+    if (localIArCoreNativeSoLoader != null)
+    {
+      localObject1 = localWeakReference;
+      if (paramString.equalsIgnoreCase(localIArCoreNativeSoLoader.a()))
+      {
+        paramString = this.c;
+        localObject1 = localWeakReference;
+        if (paramString != null) {
+          localObject1 = (ARPreSoResourceDownload.ARResourceDownloadCallback)paramString.get();
+        }
       }
     }
-    do
-    {
-      IArCoreNativeSoLoader localIArCoreNativeSoLoader;
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return localObject1;
-              if (!paramString.equalsIgnoreCase("arcloud")) {
-                break;
-              }
-              localObject1 = localObject2;
-            } while (this.b == null);
-            return (ARPreSoResourceDownload.ARResourceDownloadCallback)this.b.get();
-            if (!paramString.equalsIgnoreCase("arfeature")) {
-              break;
-            }
-            localObject1 = localObject2;
-          } while (this.d == null);
-          return (ARPreSoResourceDownload.ARResourceDownloadCallback)this.d.get();
-          localIArCoreNativeSoLoader = ArCoreNativeSoManager.a();
-          localObject1 = localObject2;
-        } while (localIArCoreNativeSoLoader == null);
-        localObject1 = localObject2;
-      } while (!paramString.equalsIgnoreCase(localIArCoreNativeSoLoader.a()));
-      localObject1 = localObject2;
-    } while (this.c == null);
-    return (ARPreSoResourceDownload.ARResourceDownloadCallback)this.c.get();
+    return localObject1;
   }
   
   private String a(String paramString)
@@ -95,11 +101,17 @@ public class ArNativeSoManager
   
   private void a(ARCommonConfigInfo.NativeSoRes paramNativeSoRes, ARPreSoResourceDownload.DownloadInfo paramDownloadInfo)
   {
-    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes. fileName = " + paramDownloadInfo.c + ", url = " + paramDownloadInfo.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload == null) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("downloadSoRes. fileName = ");
+    ((StringBuilder)localObject).append(paramDownloadInfo.c);
+    ((StringBuilder)localObject).append(", url = ");
+    ((StringBuilder)localObject).append(paramDownloadInfo.jdField_a_of_type_JavaLangString);
+    QLog.i("AREngine_ArNativeSoManager", 1, ((StringBuilder)localObject).toString());
+    localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload;
+    if (localObject == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload.a(paramDownloadInfo, new ArNativeSoManager.4(this, paramNativeSoRes));
+    ((ARPreSoResourceDownload)localObject).a(paramDownloadInfo, new ArNativeSoManager.4(this, paramNativeSoRes));
   }
   
   private void a(String paramString)
@@ -112,26 +124,25 @@ public class ArNativeSoManager
   
   private void a(String paramString, ARPreSoResourceDownload.ARResourceDownloadCallback paramARResourceDownloadCallback)
   {
-    if (paramString.equalsIgnoreCase("arsdk2")) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramARResourceDownloadCallback);
-    }
-    IArCoreNativeSoLoader localIArCoreNativeSoLoader;
-    do
+    if (paramString.equalsIgnoreCase("arsdk2"))
     {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramARResourceDownloadCallback);
       return;
-      if (paramString.equalsIgnoreCase("arcloud"))
-      {
-        this.b = new WeakReference(paramARResourceDownloadCallback);
-        return;
-      }
-      if (paramString.equalsIgnoreCase("arfeature"))
-      {
-        this.d = new WeakReference(paramARResourceDownloadCallback);
-        return;
-      }
-      localIArCoreNativeSoLoader = ArCoreNativeSoManager.a();
-    } while ((localIArCoreNativeSoLoader == null) || (!paramString.equalsIgnoreCase(localIArCoreNativeSoLoader.a())));
-    this.c = new WeakReference(paramARResourceDownloadCallback);
+    }
+    if (paramString.equalsIgnoreCase("arcloud"))
+    {
+      this.b = new WeakReference(paramARResourceDownloadCallback);
+      return;
+    }
+    if (paramString.equalsIgnoreCase("arfeature"))
+    {
+      this.d = new WeakReference(paramARResourceDownloadCallback);
+      return;
+    }
+    IArCoreNativeSoLoader localIArCoreNativeSoLoader = ArCoreNativeSoManager.a();
+    if ((localIArCoreNativeSoLoader != null) && (paramString.equalsIgnoreCase(localIArCoreNativeSoLoader.a()))) {
+      this.c = new WeakReference(paramARResourceDownloadCallback);
+    }
   }
   
   private boolean a(String paramString)
@@ -154,174 +165,231 @@ public class ArNativeSoManager
   
   private boolean a(String paramString1, String paramString2)
   {
-    int i = 0;
-    QLog.i("AREngine_ArNativeSoManager", 1, "deleteDir. dir = " + paramString1 + ", excludeSubDirOrFile = " + paramString2);
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("deleteDir. dir = ");
+    localStringBuilder1.append(paramString1);
+    localStringBuilder1.append(", excludeSubDirOrFile = ");
+    localStringBuilder1.append(paramString2);
+    QLog.i("AREngine_ArNativeSoManager", 1, localStringBuilder1.toString());
     paramString1 = new File(paramString1).listFiles();
+    int i = 0;
     if (paramString1 == null) {
       return false;
     }
     boolean bool = false;
-    if (i < paramString1.length)
+    while (i < paramString1.length)
     {
-      Object localObject = paramString1[i];
-      if (!localObject.getAbsolutePath().equalsIgnoreCase(paramString2)) {
-        if (localObject.isDirectory())
+      localStringBuilder1 = paramString1[i];
+      StringBuilder localStringBuilder2;
+      if (!localStringBuilder1.getAbsolutePath().equalsIgnoreCase(paramString2))
+      {
+        if (localStringBuilder1.isDirectory())
         {
-          bool = a(localObject.getAbsolutePath(), paramString2);
+          bool = a(localStringBuilder1.getAbsolutePath(), paramString2);
           if (bool)
           {
-            QLog.i("AREngine_ArNativeSoManager", 1, "deleteDir. do not delete excludeSubDirOrFile. curSubDirOrFile  = " + localObject.getAbsolutePath());
-            bool = true;
+            localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append("deleteDir. do not delete excludeSubDirOrFile. curSubDirOrFile  = ");
+            localStringBuilder2.append(localStringBuilder1.getAbsolutePath());
+            QLog.i("AREngine_ArNativeSoManager", 1, localStringBuilder2.toString());
+          }
+          else
+          {
+            localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append("deleteDir. delete dir or file = ");
+            localStringBuilder2.append(localStringBuilder1.getAbsolutePath());
+            QLog.i("AREngine_ArNativeSoManager", 1, localStringBuilder2.toString());
+            localStringBuilder1.delete();
+            break label301;
           }
         }
+        else
+        {
+          localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("deleteDir. delete dir or file = ");
+          localStringBuilder2.append(localStringBuilder1.getAbsolutePath());
+          QLog.i("AREngine_ArNativeSoManager", 1, localStringBuilder2.toString());
+          localStringBuilder1.delete();
+          break label301;
+        }
       }
-      for (;;)
+      else
       {
-        i += 1;
-        break;
-        QLog.i("AREngine_ArNativeSoManager", 1, "deleteDir. delete dir or file = " + localObject.getAbsolutePath());
-        localObject.delete();
-        continue;
-        QLog.i("AREngine_ArNativeSoManager", 1, "deleteDir. delete dir or file = " + localObject.getAbsolutePath());
-        localObject.delete();
-        continue;
-        QLog.i("AREngine_ArNativeSoManager", 1, "deleteDir. do not delete excludeSubDirOrFile. curSubDirOrFile  = " + localObject.getAbsolutePath());
-        bool = true;
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("deleteDir. do not delete excludeSubDirOrFile. curSubDirOrFile  = ");
+        localStringBuilder2.append(localStringBuilder1.getAbsolutePath());
+        QLog.i("AREngine_ArNativeSoManager", 1, localStringBuilder2.toString());
       }
+      bool = true;
+      label301:
+      i += 1;
     }
     return bool;
   }
   
   private void b(ArrayList<ARCommonConfigInfo.NativeSoRes> paramArrayList, String paramString, ARPreSoResourceDownload.ARResourceDownloadCallback paramARResourceDownloadCallback)
   {
-    boolean bool = false;
-    QLog.i("AREngine_ArNativeSoManager", 1, "downloadArNativeSo. resName = " + paramString);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("downloadArNativeSo. resName = ");
+    ((StringBuilder)localObject1).append(paramString);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    boolean bool = true;
+    QLog.i("AREngine_ArNativeSoManager", 1, (String)localObject1);
     String str = a(paramString);
     a(paramString, paramARResourceDownloadCallback);
-    Object localObject1 = new ARCommonConfigInfo.NativeSoRes();
+    localObject1 = new ARCommonConfigInfo.NativeSoRes();
     int i = 0;
     Object localObject2;
-    if (i < paramArrayList.size())
+    while (i < paramArrayList.size())
     {
       localObject2 = (ARCommonConfigInfo.NativeSoRes)paramArrayList.get(i);
       if ((((ARCommonConfigInfo.NativeSoRes)localObject2).jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)) && (((ARCommonConfigInfo.NativeSoRes)localObject2).b.equalsIgnoreCase(str)))
       {
         paramArrayList = (ArrayList<ARCommonConfigInfo.NativeSoRes>)localObject2;
         i = 1;
+        break label136;
       }
+      i += 1;
     }
-    for (;;)
+    i = 0;
+    paramArrayList = (ArrayList<ARCommonConfigInfo.NativeSoRes>)localObject1;
+    label136:
+    if ((i != 0) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload != null))
     {
-      if ((i != 0) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload != null))
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(ArNativeSoLoaderBase.a(paramArrayList.jdField_a_of_type_JavaLangString, paramArrayList.b, paramArrayList.d));
+      ((StringBuilder)localObject1).append(File.separator);
+      ((StringBuilder)localObject1).append(paramArrayList.d);
+      ((StringBuilder)localObject1).append(".zip");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      if (!b((String)localObject1, paramArrayList.d))
       {
-        localObject1 = ArNativeSoLoaderBase.a(paramArrayList.jdField_a_of_type_JavaLangString, paramArrayList.b, paramArrayList.d) + File.separator + paramArrayList.d + ".zip";
-        if (!b((String)localObject1, paramArrayList.d))
+        a((String)localObject1);
+        if ((!TextUtils.isEmpty(paramArrayList.c)) && (!TextUtils.isEmpty(paramArrayList.d)))
         {
-          a((String)localObject1);
-          if ((!TextUtils.isEmpty(paramArrayList.c)) && (!TextUtils.isEmpty(paramArrayList.d)))
-          {
-            localObject2 = new ARPreSoResourceDownload.DownloadInfo();
-            ((ARPreSoResourceDownload.DownloadInfo)localObject2).jdField_a_of_type_Int = 5;
-            ((ARPreSoResourceDownload.DownloadInfo)localObject2).jdField_a_of_type_JavaLangString = paramArrayList.c;
-            ((ARPreSoResourceDownload.DownloadInfo)localObject2).b = paramArrayList.d;
-            ((ARPreSoResourceDownload.DownloadInfo)localObject2).d = paramArrayList.jdField_a_of_type_JavaLangString;
-            ((ARPreSoResourceDownload.DownloadInfo)localObject2).c = ((String)localObject1);
-            ((ARPreSoResourceDownload.DownloadInfo)localObject2).jdField_a_of_type_Boolean = true;
-            this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload.a((ARPreSoResourceDownload.DownloadInfo)localObject2, new ArNativeSoManager.2(this, paramString, paramARResourceDownloadCallback));
-          }
+          localObject2 = new ARPreSoResourceDownload.DownloadInfo();
+          ((ARPreSoResourceDownload.DownloadInfo)localObject2).jdField_a_of_type_Int = 5;
+          ((ARPreSoResourceDownload.DownloadInfo)localObject2).jdField_a_of_type_JavaLangString = paramArrayList.c;
+          ((ARPreSoResourceDownload.DownloadInfo)localObject2).b = paramArrayList.d;
+          ((ARPreSoResourceDownload.DownloadInfo)localObject2).d = paramArrayList.jdField_a_of_type_JavaLangString;
+          ((ARPreSoResourceDownload.DownloadInfo)localObject2).c = ((String)localObject1);
+          ((ARPreSoResourceDownload.DownloadInfo)localObject2).jdField_a_of_type_Boolean = true;
+          this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload.a((ARPreSoResourceDownload.DownloadInfo)localObject2, new ArNativeSoManager.2(this, paramString, paramARResourceDownloadCallback));
+          return;
+        }
+        paramArrayList = new StringBuilder();
+        paramArrayList.append("downloadSoResIfNeed. TextUtils.isEmpty(nativeSoRes.url) || TextUtils.isEmpty(nativeSoRes.md5), not need to download. soZipFilename = ");
+        paramArrayList.append((String)localObject1);
+        QLog.i("AREngine_ArNativeSoManager", 1, paramArrayList.toString());
+        if (paramARResourceDownloadCallback != null) {
+          paramARResourceDownloadCallback.a(false, null);
         }
       }
-      label370:
-      while (paramARResourceDownloadCallback == null)
+      else if (!a(paramString))
       {
-        do
+        i = a(paramString, (String)localObject1, paramArrayList.d);
+        if (paramARResourceDownloadCallback != null)
         {
-          do
-          {
-            do
-            {
-              return;
-              i += 1;
-              break;
-              QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoResIfNeed. TextUtils.isEmpty(nativeSoRes.url) || TextUtils.isEmpty(nativeSoRes.md5), not need to download. soZipFilename = " + (String)localObject1);
-            } while (paramARResourceDownloadCallback == null);
-            paramARResourceDownloadCallback.a(false, null);
-            return;
-            if (a(paramString)) {
-              break label370;
-            }
-            i = a(paramString, (String)localObject1, paramArrayList.d);
-          } while (paramARResourceDownloadCallback == null);
-          if (i == 0) {
-            bool = true;
+          if (i != 0) {
+            bool = false;
           }
           paramARResourceDownloadCallback.a(bool, null);
-          return;
-        } while (paramARResourceDownloadCallback == null);
-        paramARResourceDownloadCallback.a(true, null);
-        return;
+        }
       }
+      else if (paramARResourceDownloadCallback != null)
+      {
+        paramARResourceDownloadCallback.a(true, null);
+      }
+    }
+    else if (paramARResourceDownloadCallback != null)
+    {
       paramARResourceDownloadCallback.a(false, null);
-      return;
-      i = 0;
-      paramArrayList = (ArrayList<ARCommonConfigInfo.NativeSoRes>)localObject1;
     }
   }
   
   private void b(ArrayList<ARCommonConfigInfo.NativeSoRes> paramArrayList1, ArrayList<ARCommonConfigInfo.NativeSoRes> paramArrayList2, String paramString)
   {
-    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoResIfNeed. resName = " + paramString);
-    String str1 = a(paramString);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("downloadSoResIfNeed. resName = ");
+    ((StringBuilder)localObject1).append(paramString);
+    QLog.i("AREngine_ArNativeSoManager", 1, ((StringBuilder)localObject1).toString());
+    localObject1 = a(paramString);
     int i = 0;
-    if (i < paramArrayList2.size())
+    while (i < paramArrayList2.size())
     {
-      ARCommonConfigInfo.NativeSoRes localNativeSoRes = (ARCommonConfigInfo.NativeSoRes)paramArrayList2.get(i);
-      String str2;
-      if (localNativeSoRes.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)) {
-        if (localNativeSoRes.b.equalsIgnoreCase(str1))
+      Object localObject2 = (ARCommonConfigInfo.NativeSoRes)paramArrayList2.get(i);
+      Object localObject3;
+      if (((ARCommonConfigInfo.NativeSoRes)localObject2).jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString))
+      {
+        if (((ARCommonConfigInfo.NativeSoRes)localObject2).b.equalsIgnoreCase((String)localObject1))
         {
-          str2 = ArNativeSoLoaderBase.a(localNativeSoRes.jdField_a_of_type_JavaLangString, localNativeSoRes.b, localNativeSoRes.d) + File.separator + localNativeSoRes.d + ".zip";
-          if (!b(str2, localNativeSoRes.d))
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append(ArNativeSoLoaderBase.a(((ARCommonConfigInfo.NativeSoRes)localObject2).jdField_a_of_type_JavaLangString, ((ARCommonConfigInfo.NativeSoRes)localObject2).b, ((ARCommonConfigInfo.NativeSoRes)localObject2).d));
+          ((StringBuilder)localObject3).append(File.separator);
+          ((StringBuilder)localObject3).append(((ARCommonConfigInfo.NativeSoRes)localObject2).d);
+          ((StringBuilder)localObject3).append(".zip");
+          localObject3 = ((StringBuilder)localObject3).toString();
+          Object localObject4;
+          if (!b((String)localObject3, ((ARCommonConfigInfo.NativeSoRes)localObject2).d))
           {
-            a(str2);
-            if ((!TextUtils.isEmpty(localNativeSoRes.c)) && (!TextUtils.isEmpty(localNativeSoRes.d)))
+            a((String)localObject3);
+            if ((!TextUtils.isEmpty(((ARCommonConfigInfo.NativeSoRes)localObject2).c)) && (!TextUtils.isEmpty(((ARCommonConfigInfo.NativeSoRes)localObject2).d)))
             {
               int j = 0;
               while (j < paramArrayList1.size())
               {
-                localObject = (ARCommonConfigInfo.NativeSoRes)paramArrayList1.get(j);
-                if ((((ARCommonConfigInfo.NativeSoRes)localObject).jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)) && (((ARCommonConfigInfo.NativeSoRes)localObject).b.equalsIgnoreCase(str1))) {
-                  a(ArNativeSoLoaderBase.a(((ARCommonConfigInfo.NativeSoRes)localObject).jdField_a_of_type_JavaLangString), ArNativeSoLoaderBase.a(((ARCommonConfigInfo.NativeSoRes)localObject).jdField_a_of_type_JavaLangString, ((ARCommonConfigInfo.NativeSoRes)localObject).b, ((ARCommonConfigInfo.NativeSoRes)localObject).d));
+                localObject4 = (ARCommonConfigInfo.NativeSoRes)paramArrayList1.get(j);
+                if ((((ARCommonConfigInfo.NativeSoRes)localObject4).jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)) && (((ARCommonConfigInfo.NativeSoRes)localObject4).b.equalsIgnoreCase((String)localObject1))) {
+                  a(ArNativeSoLoaderBase.a(((ARCommonConfigInfo.NativeSoRes)localObject4).jdField_a_of_type_JavaLangString), ArNativeSoLoaderBase.a(((ARCommonConfigInfo.NativeSoRes)localObject4).jdField_a_of_type_JavaLangString, ((ARCommonConfigInfo.NativeSoRes)localObject4).b, ((ARCommonConfigInfo.NativeSoRes)localObject4).d));
                 }
                 j += 1;
               }
-              Object localObject = new ARPreSoResourceDownload.DownloadInfo();
-              ((ARPreSoResourceDownload.DownloadInfo)localObject).jdField_a_of_type_Int = 5;
-              ((ARPreSoResourceDownload.DownloadInfo)localObject).jdField_a_of_type_JavaLangString = localNativeSoRes.c;
-              ((ARPreSoResourceDownload.DownloadInfo)localObject).b = localNativeSoRes.d;
-              ((ARPreSoResourceDownload.DownloadInfo)localObject).d = localNativeSoRes.jdField_a_of_type_JavaLangString;
-              ((ARPreSoResourceDownload.DownloadInfo)localObject).c = str2;
-              ((ARPreSoResourceDownload.DownloadInfo)localObject).jdField_a_of_type_Boolean = true;
-              a(localNativeSoRes, (ARPreSoResourceDownload.DownloadInfo)localObject);
+              localObject4 = new ARPreSoResourceDownload.DownloadInfo();
+              ((ARPreSoResourceDownload.DownloadInfo)localObject4).jdField_a_of_type_Int = 5;
+              ((ARPreSoResourceDownload.DownloadInfo)localObject4).jdField_a_of_type_JavaLangString = ((ARCommonConfigInfo.NativeSoRes)localObject2).c;
+              ((ARPreSoResourceDownload.DownloadInfo)localObject4).b = ((ARCommonConfigInfo.NativeSoRes)localObject2).d;
+              ((ARPreSoResourceDownload.DownloadInfo)localObject4).d = ((ARCommonConfigInfo.NativeSoRes)localObject2).jdField_a_of_type_JavaLangString;
+              ((ARPreSoResourceDownload.DownloadInfo)localObject4).c = ((String)localObject3);
+              ((ARPreSoResourceDownload.DownloadInfo)localObject4).jdField_a_of_type_Boolean = true;
+              a((ARCommonConfigInfo.NativeSoRes)localObject2, (ARPreSoResourceDownload.DownloadInfo)localObject4);
+            }
+            else
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("downloadSoResIfNeed. TextUtils.isEmpty(nativeSoRes.url) || TextUtils.isEmpty(nativeSoRes.md5), not need to download. soZipFilename = ");
+              ((StringBuilder)localObject2).append((String)localObject3);
+              QLog.i("AREngine_ArNativeSoManager", 1, ((StringBuilder)localObject2).toString());
             }
           }
+          else
+          {
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append("downloadSoResIfNeed. soRes exists, not need to download. soZipFilename = ");
+            ((StringBuilder)localObject4).append((String)localObject3);
+            QLog.i("AREngine_ArNativeSoManager", 1, ((StringBuilder)localObject4).toString());
+            a(paramString, (String)localObject3, ((ARCommonConfigInfo.NativeSoRes)localObject2).d);
+          }
         }
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoResIfNeed. TextUtils.isEmpty(nativeSoRes.url) || TextUtils.isEmpty(nativeSoRes.md5), not need to download. soZipFilename = " + str2);
-        continue;
-        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoResIfNeed. soRes exists, not need to download. soZipFilename = " + str2);
-        if (a(paramString, str2, localNativeSoRes.d) == 0)
+        else
         {
-          continue;
-          QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoResIfNeed. soResVersion is not need to download. soResName = " + localNativeSoRes.jdField_a_of_type_JavaLangString + ", soResVersionFromConfig = " + localNativeSoRes.b + ", soResVersionFromLocal = " + str1);
-          continue;
-          QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoResIfNeed. soResName is not need to download. soResName = " + localNativeSoRes.jdField_a_of_type_JavaLangString);
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("downloadSoResIfNeed. soResVersion is not need to download. soResName = ");
+          ((StringBuilder)localObject3).append(((ARCommonConfigInfo.NativeSoRes)localObject2).jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject3).append(", soResVersionFromConfig = ");
+          ((StringBuilder)localObject3).append(((ARCommonConfigInfo.NativeSoRes)localObject2).b);
+          ((StringBuilder)localObject3).append(", soResVersionFromLocal = ");
+          ((StringBuilder)localObject3).append((String)localObject1);
+          QLog.i("AREngine_ArNativeSoManager", 1, ((StringBuilder)localObject3).toString());
         }
       }
+      else
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("downloadSoResIfNeed. soResName is not need to download. soResName = ");
+        ((StringBuilder)localObject3).append(((ARCommonConfigInfo.NativeSoRes)localObject2).jdField_a_of_type_JavaLangString);
+        QLog.i("AREngine_ArNativeSoManager", 1, ((StringBuilder)localObject3).toString());
+      }
+      i += 1;
     }
   }
   
@@ -331,89 +399,54 @@ public class ArNativeSoManager
     {
       if (!paramString2.equalsIgnoreCase(PortalUtils.a(paramString1)))
       {
-        QLog.i("AREngine_ArNativeSoManager", 1, "checkFileValid failed. check md5 failed. filename = " + paramString1 + ", md5FromConfig = " + paramString2);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("checkFileValid failed. check md5 failed. filename = ");
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append(", md5FromConfig = ");
+        localStringBuilder.append(paramString2);
+        QLog.i("AREngine_ArNativeSoManager", 1, localStringBuilder.toString());
         return false;
       }
       return true;
     }
-    QLog.i("AREngine_ArNativeSoManager", 1, "checkFileValid failed. file is not exist. filename = " + paramString1 + ", md5FromConfig = " + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("checkFileValid failed. file is not exist. filename = ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(", md5FromConfig = ");
+    localStringBuilder.append(paramString2);
+    QLog.i("AREngine_ArNativeSoManager", 1, localStringBuilder.toString());
     return false;
   }
   
-  /* Error */
   public int a(String paramString1, String paramString2, String paramString3)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ldc 29
-    //   5: invokevirtual 35	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   8: ifeq +15 -> 23
-    //   11: aload_2
-    //   12: aload_3
-    //   13: invokestatic 271	com/tencent/mobileqq/ar/ArSDK2NativeSoLoader:a	(Ljava/lang/String;Ljava/lang/String;)I
-    //   16: istore 4
-    //   18: aload_0
-    //   19: monitorexit
-    //   20: iload 4
-    //   22: ireturn
-    //   23: aload_1
-    //   24: ldc 47
-    //   26: invokevirtual 35	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   29: ifeq +13 -> 42
-    //   32: aload_2
-    //   33: aload_3
-    //   34: invokestatic 272	com/tencent/mobileqq/ar/ArCloudNativeSoLoader:a	(Ljava/lang/String;Ljava/lang/String;)I
-    //   37: istore 4
-    //   39: goto -21 -> 18
-    //   42: aload_1
-    //   43: ldc 51
-    //   45: invokevirtual 35	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   48: ifeq +13 -> 61
-    //   51: aload_2
-    //   52: aload_3
-    //   53: invokestatic 273	com/tencent/mobileqq/ar/ArFeatureSwepNativeSoLoader:a	(Ljava/lang/String;Ljava/lang/String;)I
-    //   56: istore 4
-    //   58: goto -40 -> 18
-    //   61: invokestatic 58	com/tencent/mobileqq/ar/arcore/ArCoreNativeSoManager:a	()Lcom/tencent/mobileqq/ar/arcore/IArCoreNativeSoLoader;
-    //   64: astore 5
-    //   66: aload 5
-    //   68: ifnull +29 -> 97
-    //   71: aload_1
-    //   72: aload 5
-    //   74: invokeinterface 63 1 0
-    //   79: invokevirtual 35	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   82: ifeq +15 -> 97
-    //   85: aload 5
-    //   87: aload_2
-    //   88: aload_3
-    //   89: invokestatic 276	com/tencent/mobileqq/ar/arcore/ArCoreNativeSoManager:a	(Lcom/tencent/mobileqq/ar/arcore/IArCoreNativeSoLoader;Ljava/lang/String;Ljava/lang/String;)I
-    //   92: istore 4
-    //   94: goto -76 -> 18
-    //   97: iconst_m1
-    //   98: istore 4
-    //   100: goto -82 -> 18
-    //   103: astore_1
-    //   104: aload_0
-    //   105: monitorexit
-    //   106: aload_1
-    //   107: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	108	0	this	ArNativeSoManager
-    //   0	108	1	paramString1	String
-    //   0	108	2	paramString2	String
-    //   0	108	3	paramString3	String
-    //   16	83	4	i	int
-    //   64	22	5	localIArCoreNativeSoLoader	IArCoreNativeSoLoader
-    // Exception table:
-    //   from	to	target	type
-    //   2	18	103	finally
-    //   23	39	103	finally
-    //   42	58	103	finally
-    //   61	66	103	finally
-    //   71	94	103	finally
+    try
+    {
+      int i;
+      if (paramString1.equalsIgnoreCase("arsdk2"))
+      {
+        i = ArSDK2NativeSoLoader.a(paramString2, paramString3);
+        return i;
+      }
+      if (paramString1.equalsIgnoreCase("arcloud"))
+      {
+        i = ArCloudNativeSoLoader.a(paramString2, paramString3);
+        return i;
+      }
+      if (paramString1.equalsIgnoreCase("arfeature"))
+      {
+        i = ArFeatureSwepNativeSoLoader.a(paramString2, paramString3);
+        return i;
+      }
+      IArCoreNativeSoLoader localIArCoreNativeSoLoader = ArCoreNativeSoManager.a();
+      if ((localIArCoreNativeSoLoader != null) && (paramString1.equalsIgnoreCase(localIArCoreNativeSoLoader.a())))
+      {
+        i = ArCoreNativeSoManager.a(localIArCoreNativeSoLoader, paramString2, paramString3);
+        return i;
+      }
+      return -1;
+    }
+    finally {}
   }
   
   public void a(ArrayList<ARCommonConfigInfo.NativeSoRes> paramArrayList, String paramString, ARPreSoResourceDownload.ARResourceDownloadCallback paramARResourceDownloadCallback)
@@ -428,35 +461,38 @@ public class ArNativeSoManager
   
   public boolean a(ArrayList<ARCommonConfigInfo.NativeSoRes> paramArrayList, String paramString)
   {
-    QLog.i("AREngine_ArNativeSoManager", 1, "isArNativeSoDownload. resName = " + paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("isArNativeSoDownload. resName = ");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.i("AREngine_ArNativeSoManager", 1, ((StringBuilder)localObject).toString());
     String str = a(paramString);
     int i = 0;
-    for (;;)
+    while (i < paramArrayList.size())
     {
-      if (i < paramArrayList.size())
+      localObject = (ARCommonConfigInfo.NativeSoRes)paramArrayList.get(i);
+      if ((((ARCommonConfigInfo.NativeSoRes)localObject).jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)) && (((ARCommonConfigInfo.NativeSoRes)localObject).b.equalsIgnoreCase(str)))
       {
-        ARCommonConfigInfo.NativeSoRes localNativeSoRes = (ARCommonConfigInfo.NativeSoRes)paramArrayList.get(i);
-        if ((!localNativeSoRes.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)) || (!localNativeSoRes.b.equalsIgnoreCase(str))) {
-          break label155;
-        }
-        paramArrayList = ArNativeSoLoaderBase.a(localNativeSoRes.jdField_a_of_type_JavaLangString, localNativeSoRes.b, localNativeSoRes.d) + File.separator + localNativeSoRes.d + ".zip";
-        if (!b(paramArrayList, localNativeSoRes.d)) {
+        paramArrayList = new StringBuilder();
+        paramArrayList.append(ArNativeSoLoaderBase.a(((ARCommonConfigInfo.NativeSoRes)localObject).jdField_a_of_type_JavaLangString, ((ARCommonConfigInfo.NativeSoRes)localObject).b, ((ARCommonConfigInfo.NativeSoRes)localObject).d));
+        paramArrayList.append(File.separator);
+        paramArrayList.append(((ARCommonConfigInfo.NativeSoRes)localObject).d);
+        paramArrayList.append(".zip");
+        paramArrayList = paramArrayList.toString();
+        if (!b(paramArrayList, ((ARCommonConfigInfo.NativeSoRes)localObject).d))
+        {
           a(paramArrayList);
+          return false;
         }
+        return a(paramString);
       }
-      else
-      {
-        return false;
-      }
-      return a(paramString);
-      label155:
       i += 1;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArNativeSoManager
  * JD-Core Version:    0.7.0.1
  */

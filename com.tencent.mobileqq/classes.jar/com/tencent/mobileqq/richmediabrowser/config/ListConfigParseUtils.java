@@ -16,24 +16,26 @@ public class ListConfigParseUtils
       try
       {
         paramString = new JSONObject(paramString);
+        Object localObject;
         if (paramString.has("LiuHaiArray"))
         {
           paramString = paramString.getJSONArray("LiuHaiArray");
           int i = 0;
           while (i < paramString.length())
           {
-            MachineInfo localMachineInfo = new MachineInfo();
+            localObject = new MachineInfo();
             JSONObject localJSONObject = paramString.getJSONObject(i);
-            if (localJSONObject.has("manufacturer")) {
-              localMachineInfo.a = localJSONObject.optString("manufacturer", "");
+            boolean bool = localJSONObject.has("manufacturer");
+            if (bool) {
+              ((MachineInfo)localObject).a = localJSONObject.optString("manufacturer", "");
             }
             if (localJSONObject.has("brand")) {
-              localMachineInfo.b = localJSONObject.optString("brand", "");
+              ((MachineInfo)localObject).b = localJSONObject.optString("brand", "");
             }
             if (localJSONObject.has("model")) {
-              localMachineInfo.c = localJSONObject.optString("model", "");
+              ((MachineInfo)localObject).c = localJSONObject.optString("model", "");
             }
-            localArrayList.add(localMachineInfo);
+            localArrayList.add(localObject);
             i += 1;
           }
         }
@@ -42,8 +44,12 @@ public class ListConfigParseUtils
       catch (Exception paramString)
       {
         paramString.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.d("ListConfigParseUtils", 2, "parseWhiteListConfig exception = " + paramString.getMessage());
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("parseWhiteListConfig exception = ");
+          ((StringBuilder)localObject).append(paramString.getMessage());
+          QLog.d("ListConfigParseUtils", 2, ((StringBuilder)localObject).toString());
         }
       }
     }
@@ -51,7 +57,7 @@ public class ListConfigParseUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.config.ListConfigParseUtils
  * JD-Core Version:    0.7.0.1
  */

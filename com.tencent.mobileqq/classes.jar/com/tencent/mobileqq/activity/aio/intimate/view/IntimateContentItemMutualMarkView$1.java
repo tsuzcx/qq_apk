@@ -13,9 +13,11 @@ class IntimateContentItemMutualMarkView$1
   
   public void run()
   {
-    Object localObject3 = IntimateContentItemMutualMarkView.a(this.this$0, this.a, false) + this.a.iconStaticUrl;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(IntimateContentItemMutualMarkView.a(this.this$0, this.a, false));
+    ((StringBuilder)localObject1).append(this.a.iconStaticUrl);
+    Object localObject3 = ((StringBuilder)localObject1).toString();
     Object localObject2 = CommonImageCacheHelper.a((String)localObject3);
-    Object localObject1;
     if (localObject2 != null)
     {
       localObject1 = localObject2;
@@ -43,7 +45,7 @@ class IntimateContentItemMutualMarkView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemMutualMarkView.1
  * JD-Core Version:    0.7.0.1
  */

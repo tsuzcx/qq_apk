@@ -14,26 +14,25 @@ class VerifyCodeActivity$3
   
   public void onClick(View paramView)
   {
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
-    if ((str == null) || (str.length() == 0)) {
-      Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131692039), 0).show();
-    }
-    for (;;)
+    String str = this.a.ed.getText().toString();
+    if ((str != null) && (str.length() != 0))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       if (str != null)
       {
-        this.a.a(str);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-        VerifyCodeActivity.b(this.a, false);
+        this.a.sendVerifyCode(str);
+        this.a.tvRefresh.setEnabled(false);
+        VerifyCodeActivity.access$100(this.a, false);
       }
     }
+    else {
+      Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131691958), 0).show();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VerifyCodeActivity.3
  * JD-Core Version:    0.7.0.1
  */

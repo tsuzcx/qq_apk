@@ -1,10 +1,10 @@
 package com.tencent.avgame.gameroom.seat;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class PkMemberItemView$1
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   PkMemberItemView$1(PkMemberItemView paramPkMemberItemView) {}
   
@@ -24,7 +24,7 @@ class PkMemberItemView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.seat.PkMemberItemView.1
  * JD-Core Version:    0.7.0.1
  */

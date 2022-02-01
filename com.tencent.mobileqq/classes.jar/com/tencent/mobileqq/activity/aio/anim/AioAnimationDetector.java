@@ -5,17 +5,19 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.UinTypeUtil;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.config.TroopDragonKingAnimEntryConfig;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.anim.businesseggs.BusinessEggsPlayer;
+import com.tencent.mobileqq.activity.aio.anim.businesseggs.DragonKingEggsPlayer;
+import com.tencent.mobileqq.activity.aio.anim.businesseggs.LevelEggsPlayer;
+import com.tencent.mobileqq.activity.aio.anim.egg.EggKeyword;
+import com.tencent.mobileqq.activity.aio.anim.egg.IEggBizPlayer;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.config.QConfigManager;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForArkFlashChat;
 import com.tencent.mobileqq.data.MessageForLongMsg;
@@ -28,7 +30,6 @@ import com.tencent.mobileqq.structmsg.AbsStructMsgElement;
 import com.tencent.mobileqq.structmsg.AbsStructMsgItem;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemSummary;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
-import com.tencent.mobileqq.troop.honor.api.ITroopHonorService;
 import com.tencent.mobileqq.utils.ListUtils;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -43,7 +44,8 @@ public class AioAnimationDetector
 {
   private static volatile AioAnimationDetector jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationDetector;
   public volatile long a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private List<IEggBizPlayer> jdField_a_of_type_JavaUtilList;
   private ConcurrentHashMap<Integer, CopyOnWriteArraySet<Long>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   public volatile boolean a;
@@ -54,43 +56,28 @@ public class AioAnimationDetector
   {
     this.jdField_a_of_type_Long = -1L;
     this.jdField_a_of_type_Boolean = false;
+    b();
   }
   
   public static AioAnimationDetector a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationDetector == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationDetector == null) {
-        jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationDetector = new AioAnimationDetector();
+    if (jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationDetector == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationDetector == null) {
+          jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationDetector = new AioAnimationDetector();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationDetector;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationDetector;
   }
   
   private void a(long paramLong, ChatMessage paramChatMessage)
   {
-    if (paramChatMessage.time > paramLong) {
+    if ((paramChatMessage.time > paramLong) && (!paramChatMessage.isSend())) {
       paramChatMessage.mNewAnimFlag = true;
     }
-  }
-  
-  private void a(QQAppInterface paramQQAppInterface, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, int paramInt, AioAnimationRule paramAioAnimationRule, ChatMessage paramChatMessage)
-  {
-    if (paramAioAnimationRule.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$BussinessData == null) {}
-    for (int i = -1;; i = paramAioAnimationRule.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$BussinessData.jdField_a_of_type_Int)
-    {
-      boolean bool = paramAIOAnimationConatiner.a(2, 300, new Object[] { paramDrawable, Integer.valueOf(paramInt), Integer.valueOf(i), paramAioAnimationRule, paramChatMessage });
-      a(paramQQAppInterface, paramAioAnimationRule);
-      a(paramQQAppInterface, paramAioAnimationRule, bool, paramChatMessage);
-      return;
-    }
-  }
-  
-  private void a(QQAppInterface paramQQAppInterface, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, AioAnimationRule paramAioAnimationRule, ChatMessage paramChatMessage)
-  {
-    a(paramQQAppInterface, paramAioAnimationRule, paramAIOAnimationConatiner.b(8, 300, new Object[] { paramDrawable, paramAioAnimationRule, paramChatMessage }), paramChatMessage);
   }
   
   private void a(QQAppInterface paramQQAppInterface, AioAnimationRule paramAioAnimationRule)
@@ -107,125 +94,148 @@ public class AioAnimationDetector
   private void a(QQAppInterface paramQQAppInterface, AioAnimationRule paramAioAnimationRule, boolean paramBoolean, ChatMessage paramChatMessage)
   {
     CopyOnWriteArraySet localCopyOnWriteArraySet = (CopyOnWriteArraySet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramAioAnimationRule.jdField_b_of_type_Int));
-    if (localCopyOnWriteArraySet == null) {}
-    do
-    {
+    if (localCopyOnWriteArraySet == null) {
       return;
-      if (localCopyOnWriteArraySet.contains(Long.valueOf(paramChatMessage.shmsgseq)))
-      {
-        if (paramBoolean) {
-          EggsUtil.a(paramQQAppInterface, "0X800B071", paramChatMessage.frienduin, paramAioAnimationRule);
-        }
-        localCopyOnWriteArraySet.remove(Long.valueOf(paramChatMessage.shmsgseq));
+    }
+    if (localCopyOnWriteArraySet.contains(Long.valueOf(paramChatMessage.shmsgseq)))
+    {
+      if (paramBoolean) {
+        EggsUtil.a(paramQQAppInterface, "0X800B071", paramChatMessage.frienduin, paramAioAnimationRule);
       }
-    } while (!ListUtils.a(localCopyOnWriteArraySet));
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramAioAnimationRule.jdField_b_of_type_Int));
+      localCopyOnWriteArraySet.remove(Long.valueOf(paramChatMessage.shmsgseq));
+    }
+    if (ListUtils.a(localCopyOnWriteArraySet)) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramAioAnimationRule.jdField_b_of_type_Int));
+    }
   }
   
   private void a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, int paramInt)
   {
-    String str2 = "";
-    String str1;
-    if (paramInt == 0) {
-      str1 = "0X8004A27";
-    }
-    for (;;)
+    if (paramInt == 0)
     {
-      if (!TextUtils.isEmpty(str1)) {
-        VipUtils.a(paramQQAppInterface, "Vip_StructuredEgg", str1, str1, 0, 0, new String[0]);
-      }
-      return;
-      str1 = str2;
-      if (paramInt == 1) {
+      paramChatMessage = "0X8004A27";
+    }
+    else
+    {
+      if (paramInt == 1)
+      {
         if (paramChatMessage.istroop == 1)
         {
-          str1 = "0X8004A28";
+          paramChatMessage = "0X8004A28";
+          break label48;
         }
-        else
+        if (paramChatMessage.istroop == 3000)
         {
-          str1 = str2;
-          if (paramChatMessage.istroop == 3000) {
-            str1 = "0X8004A29";
-          }
+          paramChatMessage = "0X8004A29";
+          break label48;
         }
       }
+      paramChatMessage = "";
+    }
+    label48:
+    if (!TextUtils.isEmpty(paramChatMessage)) {
+      VipUtils.a(paramQQAppInterface, "Vip_StructuredEgg", paramChatMessage, paramChatMessage, 0, 0, new String[0]);
     }
   }
   
   private void a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, int paramInt1, int paramInt2, AioAnimationRule paramAioAnimationRule)
   {
-    int j = -1;
-    int i;
     if (paramInt1 == 0)
     {
-      i = 0;
-      if (paramInt2 != 2) {
-        break label134;
-      }
-      if (paramChatMessage.isSendFromLocal()) {
-        break label100;
-      }
-      ReportController.b(paramQQAppInterface, "CliOper", "", "", "Supr-Eggs", "Egg_stack_rec", 0, 0, String.valueOf(i), String.valueOf(paramAioAnimationRule.jdField_b_of_type_Int), "", "");
+      paramInt1 = 0;
     }
-    label100:
-    while (paramInt2 != 3)
+    else
     {
-      return;
-      i = j;
-      if (paramInt1 != 1) {
-        break;
-      }
-      if (paramChatMessage.istroop == 1)
+      if (paramInt1 == 1)
       {
-        i = 1;
-        break;
+        if (paramChatMessage.istroop == 1)
+        {
+          paramInt1 = 1;
+          break label44;
+        }
+        if (paramChatMessage.istroop == 3000)
+        {
+          paramInt1 = 2;
+          break label44;
+        }
       }
-      i = j;
-      if (paramChatMessage.istroop != 3000) {
-        break;
-      }
-      i = 2;
-      break;
-      ReportController.b(paramQQAppInterface, "CliOper", "", "", "Supr-Eggs", "Egg_stack_launch", 0, 0, String.valueOf(i), String.valueOf(paramAioAnimationRule.jdField_b_of_type_Int), "", "");
-      return;
+      paramInt1 = -1;
     }
-    label134:
-    if (!paramChatMessage.isSendFromLocal())
+    label44:
+    if (paramInt2 == 2)
     {
-      ReportController.b(paramQQAppInterface, "CliOper", "", "", "Supr-Eggs", "Egg_jump_rec", 0, 0, String.valueOf(i), String.valueOf(paramAioAnimationRule.jdField_b_of_type_Int), "", "");
+      if (!paramChatMessage.isSendFromLocal())
+      {
+        ReportController.b(paramQQAppInterface, "CliOper", "", "", "Supr-Eggs", "Egg_stack_rec", 0, 0, String.valueOf(paramInt1), String.valueOf(paramAioAnimationRule.jdField_b_of_type_Int), "", "");
+        return;
+      }
+      ReportController.b(paramQQAppInterface, "CliOper", "", "", "Supr-Eggs", "Egg_stack_launch", 0, 0, String.valueOf(paramInt1), String.valueOf(paramAioAnimationRule.jdField_b_of_type_Int), "", "");
       return;
     }
-    ReportController.b(paramQQAppInterface, "CliOper", "", "", "Supr-Eggs", "Egg_jump_launch", 0, 0, String.valueOf(i), String.valueOf(paramAioAnimationRule.jdField_b_of_type_Int), "", "");
+    if (paramInt2 == 3)
+    {
+      if (!paramChatMessage.isSendFromLocal())
+      {
+        ReportController.b(paramQQAppInterface, "CliOper", "", "", "Supr-Eggs", "Egg_jump_rec", 0, 0, String.valueOf(paramInt1), String.valueOf(paramAioAnimationRule.jdField_b_of_type_Int), "", "");
+        return;
+      }
+      ReportController.b(paramQQAppInterface, "CliOper", "", "", "Supr-Eggs", "Egg_jump_launch", 0, 0, String.valueOf(paramInt1), String.valueOf(paramAioAnimationRule.jdField_b_of_type_Int), "", "");
+    }
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt, AioAnimationRule paramAioAnimationRule)
+  {
+    if (a(paramQQAppInterface, paramChatMessage, 2, paramAIOAnimationConatiner, paramInt, paramAioAnimationRule)) {
+      return;
+    }
+    if (paramAioAnimationRule.jdField_a_of_type_Boolean)
+    {
+      int j = paramAioAnimationRule.jdField_b_of_type_JavaUtilArrayList.size();
+      int i = 0;
+      while (i < j)
+      {
+        localObject = (AioAnimationRule.JumpImage)paramAioAnimationRule.jdField_b_of_type_JavaUtilArrayList.get(i);
+        localObject = AioAnimationRule.JumpImage.a(paramQQAppInterface.getApplication(), (AioAnimationRule.JumpImage)localObject);
+        int k = i * 800;
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new AioAnimationDetector.11(this, paramQQAppInterface, paramAIOAnimationConatiner, (Drawable)localObject, k, paramAioAnimationRule, paramChatMessage), paramInt + k);
+        i += 1;
+      }
+    }
+    Object localObject = (AioAnimationRule.JumpImage)paramAioAnimationRule.jdField_b_of_type_JavaUtilArrayList.get(0);
+    localObject = AioAnimationRule.JumpImage.a(paramQQAppInterface.getApplication(), (AioAnimationRule.JumpImage)localObject);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new AioAnimationDetector.12(this, paramQQAppInterface, paramAIOAnimationConatiner, (Drawable)localObject, paramAioAnimationRule, paramChatMessage), paramInt);
   }
   
   private void a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, AioAnimationRule paramAioAnimationRule)
   {
-    boolean bool = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("AioAnimationDetector", 2, "detect combo =======> isLastStackMessageFromOthers ? " + this.jdField_b_of_type_Boolean + "  lastStackMessageSeq=" + this.jdField_b_of_type_Long + "thisMessageSeq=" + paramChatMessage.shmsgseq);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("detect combo =======> isLastStackMessageFromOthers ? ");
+      localStringBuilder.append(this.jdField_b_of_type_Boolean);
+      localStringBuilder.append("  lastStackMessageSeq=");
+      localStringBuilder.append(this.jdField_b_of_type_Long);
+      localStringBuilder.append("thisMessageSeq=");
+      localStringBuilder.append(paramChatMessage.shmsgseq);
+      QLog.d("AioAnimationDetector", 2, localStringBuilder.toString());
     }
     if ((paramChatMessage.isSendFromLocal()) && (this.jdField_b_of_type_Boolean) && (paramChatMessage.shmsgseq == this.jdField_b_of_type_Long + 1L)) {
       ReportController.b(paramQQAppInterface, "CliOper", "", "", "Supr-Eggs", "Eggs_stack_new", 0, 0, String.valueOf(0), String.valueOf(paramAioAnimationRule.jdField_b_of_type_Int), "", "");
     }
-    if (!paramChatMessage.isSendFromLocal()) {
-      bool = true;
-    }
-    this.jdField_b_of_type_Boolean = bool;
+    this.jdField_b_of_type_Boolean = (paramChatMessage.isSendFromLocal() ^ true);
     this.jdField_b_of_type_Long = paramChatMessage.shmsgseq;
   }
   
   private void a(QQAppInterface paramQQAppInterface, @NonNull ArrayList<AioAnimationRule> paramArrayList, ChatMessage paramChatMessage)
   {
-    if (!paramChatMessage.isSend()) {}
-    for (;;)
-    {
+    if (!paramChatMessage.isSend()) {
       return;
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        AioAnimationRule localAioAnimationRule = (AioAnimationRule)paramArrayList.next();
-        EggsUtil.a(paramQQAppInterface, "0X800B070", paramChatMessage.frienduin, localAioAnimationRule);
-      }
+    }
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      AioAnimationRule localAioAnimationRule = (AioAnimationRule)paramArrayList.next();
+      EggsUtil.a(paramQQAppInterface, "0X800B070", paramChatMessage.frienduin, localAioAnimationRule);
     }
   }
   
@@ -244,6 +254,104 @@ public class AioAnimationDetector
       return;
     }
     finally {}
+  }
+  
+  private void a(ChatMessage paramChatMessage, QQAppInterface paramQQAppInterface, BaseSessionInfo paramBaseSessionInfo)
+  {
+    b();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((IEggBizPlayer)localIterator.next()).a(paramChatMessage, paramQQAppInterface, paramBaseSessionInfo);
+    }
+  }
+  
+  private void a(List<ChatMessage> paramList)
+  {
+    b();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((IEggBizPlayer)localIterator.next()).a(paramList);
+    }
+  }
+  
+  private boolean a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, int paramInt1, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt2, AioAnimationRule paramAioAnimationRule)
+  {
+    b();
+    int i = paramAioAnimationRule.jdField_a_of_type_Int;
+    if (i != -1)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        localIEggBizPlayer = (IEggBizPlayer)localIterator.next();
+        if (localIEggBizPlayer.a() == i) {
+          break label68;
+        }
+      }
+      IEggBizPlayer localIEggBizPlayer = null;
+      label68:
+      if ((localIEggBizPlayer != null) && ((localIEggBizPlayer.b() & paramInt1) != 0))
+      {
+        localIEggBizPlayer.a(paramQQAppInterface, this.jdField_a_of_type_AndroidOsHandler, paramChatMessage, paramAIOAnimationConatiner, paramInt2, paramAioAnimationRule);
+        QLog.d("AioAnimationDetector", 1, new Object[] { "[onGroupAnimationTriggered] play dispatch to ", Integer.valueOf(localIEggBizPlayer.a()), ", id: ", Integer.valueOf(paramAioAnimationRule.jdField_b_of_type_Int), ", session: ", Integer.valueOf(paramInt1) });
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null)
+    {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      this.jdField_a_of_type_JavaUtilList.add(new DragonKingEggsPlayer());
+      this.jdField_a_of_type_JavaUtilList.add(new BusinessEggsPlayer());
+      this.jdField_a_of_type_JavaUtilList.add(new LevelEggsPlayer());
+    }
+  }
+  
+  private void b(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt, AioAnimationRule paramAioAnimationRule)
+  {
+    int j = paramAioAnimationRule.jdField_b_of_type_JavaUtilArrayList.size();
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject = (AioAnimationRule.JumpImage)paramAioAnimationRule.jdField_b_of_type_JavaUtilArrayList.get(i);
+      localObject = AioAnimationRule.JumpImage.a(paramQQAppInterface.getApplication(), (AioAnimationRule.JumpImage)localObject);
+      int k = i * 800;
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new AioAnimationDetector.13(this, paramQQAppInterface, paramAIOAnimationConatiner, (Drawable)localObject, k, paramAioAnimationRule, paramChatMessage), paramInt + k);
+      i += 1;
+    }
+  }
+  
+  private void c()
+  {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList != null)
+    {
+      localList.clear();
+      this.jdField_a_of_type_JavaUtilList = null;
+    }
+  }
+  
+  private void c(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt, AioAnimationRule paramAioAnimationRule)
+  {
+    Object localObject = (AioAnimationRule.JumpImage)paramAioAnimationRule.jdField_b_of_type_JavaUtilArrayList.get(0);
+    localObject = AioAnimationRule.JumpImage.a(paramQQAppInterface.getApplication(), (AioAnimationRule.JumpImage)localObject);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new AioAnimationDetector.14(this, paramQQAppInterface, paramAIOAnimationConatiner, (Drawable)localObject, paramAioAnimationRule, paramChatMessage), paramInt);
+  }
+  
+  private void d()
+  {
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((IEggBizPlayer)((Iterator)localObject).next()).a();
+      }
+    }
   }
   
   public String a(AbsShareMsg paramAbsShareMsg)
@@ -277,600 +385,675 @@ public class AioAnimationDetector
   
   public ArrayList<AioAnimationRule> a(ChatMessage paramChatMessage)
   {
-    Object localObject3 = null;
-    Object localObject1 = null;
     Iterator localIterator = null;
-    Object localObject2 = localIterator;
+    Object localObject = null;
+    AioAnimationRule localAioAnimationRule = null;
     if (paramChatMessage != null)
     {
-      if (a(paramChatMessage)) {
-        break label32;
+      if (!a(paramChatMessage)) {
+        return null;
       }
-      localObject2 = localIterator;
-    }
-    label32:
-    ArrayList localArrayList;
-    do
-    {
-      return localObject2;
-      localArrayList = AioAnimationConfigHelper.a().a();
-      if (localArrayList != null) {
-        break;
-      }
-      localObject2 = localIterator;
-    } while (!QLog.isColorLevel());
-    QLog.d("AioAnimationDetector", 2, "match : rules == null, just return;");
-    return null;
-    paramChatMessage.parse();
-    long l1 = System.currentTimeMillis();
-    if (b(paramChatMessage)) {
-      localObject2 = a((AbsShareMsg)((MessageForStructing)paramChatMessage).structingMsg);
-    }
-    label116:
-    long l2;
-    for (;;)
-    {
-      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      localObject = AioAnimationConfigHelper.a().a();
+      if (localObject == null)
       {
-        localIterator = localArrayList.iterator();
-        paramChatMessage = (ChatMessage)localObject3;
-        localObject1 = paramChatMessage;
-        if (localIterator.hasNext())
+        if (QLog.isColorLevel()) {
+          QLog.d("AioAnimationDetector", 2, "match : rules == null, just return;");
+        }
+        return null;
+      }
+      paramChatMessage.parse();
+      long l1 = System.currentTimeMillis();
+      String str;
+      if (b(paramChatMessage)) {
+        str = a((AbsShareMsg)((MessageForStructing)paramChatMessage).structingMsg);
+      } else {
+        str = paramChatMessage.msg;
+      }
+      paramChatMessage = localIterator;
+      if (!TextUtils.isEmpty(str))
+      {
+        localIterator = ((ArrayList)localObject).iterator();
+        localObject = localAioAnimationRule;
+        label378:
+        label383:
+        for (;;)
         {
-          localObject1 = (AioAnimationRule)localIterator.next();
-          if (((AioAnimationRule)localObject1).jdField_a_of_type_JavaUtilArrayList == null) {
-            break label436;
+          paramChatMessage = (ChatMessage)localObject;
+          if (!localIterator.hasNext()) {
+            break;
           }
-          int i = 0;
-          for (;;)
+          localAioAnimationRule = (AioAnimationRule)localIterator.next();
+          if (localAioAnimationRule.jdField_a_of_type_JavaUtilArrayList != null)
           {
-            if (i >= ((AioAnimationRule)localObject1).jdField_a_of_type_JavaUtilArrayList.size()) {
-              break label436;
-            }
-            localObject3 = (String)((AioAnimationRule)localObject1).jdField_a_of_type_JavaUtilArrayList.get(i);
-            if ((localObject2 != null) && (((String)localObject2).contains((CharSequence)localObject3)))
+            int i = 0;
+            for (;;)
             {
-              if (((AioAnimationRule)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$BussinessData == null) {
+              if (i >= localAioAnimationRule.jdField_a_of_type_JavaUtilArrayList.size()) {
+                break label383;
+              }
+              if (((EggKeyword)localAioAnimationRule.jdField_a_of_type_JavaUtilArrayList.get(i)).a(str))
+              {
+                if (localAioAnimationRule.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$BussinessData != null)
+                {
+                  l2 = System.currentTimeMillis() / 1000L;
+                  if ((localAioAnimationRule.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$BussinessData.jdField_a_of_type_Int == 1) && ((localAioAnimationRule.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$BussinessData.jdField_b_of_type_Int > l2) || (localAioAnimationRule.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$BussinessData.c < l2)))
+                  {
+                    if (!QLog.isColorLevel()) {
+                      break label378;
+                    }
+                    QLog.d("AioAnimationDetector", 2, "JD red pack,But not in date.");
+                    break label378;
+                  }
+                }
+                paramChatMessage = (ChatMessage)localObject;
+                if (localObject == null) {
+                  paramChatMessage = new ArrayList();
+                }
+                localAioAnimationRule = new AioAnimationRule(localAioAnimationRule);
+                localAioAnimationRule.c = i;
+                paramChatMessage.add(localAioAnimationRule);
+                localObject = paramChatMessage;
+                if (!QLog.isColorLevel()) {
+                  break;
+                }
+                localObject = new StringBuilder();
+                ((StringBuilder)localObject).append("matched ===> rule: id=");
+                ((StringBuilder)localObject).append(localAioAnimationRule.jdField_b_of_type_Int);
+                ((StringBuilder)localObject).append(", index = ");
+                ((StringBuilder)localObject).append(localAioAnimationRule.c);
+                QLog.d("AioAnimationDetector", 2, ((StringBuilder)localObject).toString());
+                localObject = paramChatMessage;
                 break;
               }
-              l2 = System.currentTimeMillis() / 1000L;
-              if ((((AioAnimationRule)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$BussinessData.jdField_a_of_type_Int != 1) || ((((AioAnimationRule)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$BussinessData.jdField_b_of_type_Int <= l2) && (((AioAnimationRule)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$BussinessData.c >= l2))) {
-                break;
-              }
-              if (QLog.isColorLevel()) {
-                QLog.d("AioAnimationDetector", 2, "JD red pack,But not in date.");
-              }
+              i += 1;
             }
-            i += 1;
-          }
-          localObject2 = paramChatMessage.msg;
-          continue;
-          if (paramChatMessage != null) {
-            break label433;
-          }
-          paramChatMessage = new ArrayList();
-          label294:
-          localObject3 = new AioAnimationRule((AioAnimationRule)localObject1);
-          ((AioAnimationRule)localObject3).c = i;
-          paramChatMessage.add(localObject3);
-          localObject1 = paramChatMessage;
-          if (QLog.isColorLevel()) {
-            QLog.d("AioAnimationDetector", 2, "matched ===> rule: id=" + ((AioAnimationRule)localObject3).jdField_b_of_type_Int + ", index = " + ((AioAnimationRule)localObject3).c);
           }
         }
       }
-    }
-    label433:
-    label436:
-    for (localObject1 = paramChatMessage;; localObject1 = paramChatMessage)
-    {
-      paramChatMessage = (ChatMessage)localObject1;
-      break label116;
-      l2 = System.currentTimeMillis();
-      localObject2 = localObject1;
-      if (!QLog.isColorLevel()) {
-        break;
+      long l2 = System.currentTimeMillis();
+      localObject = paramChatMessage;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("match duration: ");
+        ((StringBuilder)localObject).append(l2 - l1);
+        ((StringBuilder)localObject).append(" ms");
+        QLog.d("AioAnimationDetector", 2, ((StringBuilder)localObject).toString());
+        localObject = paramChatMessage;
       }
-      QLog.d("AioAnimationDetector", 2, "match duration: " + (l2 - l1) + " ms");
-      return localObject1;
-      break label294;
     }
+    return localObject;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (localHandler != null) {
+      localHandler.removeCallbacksAndMessages(null);
     }
     this.jdField_a_of_type_Long = -1L;
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    c();
+    d();
   }
   
-  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, BaseChatPie paramBaseChatPie)
+  public void a(QQAppInterface paramQQAppInterface, BaseSessionInfo paramBaseSessionInfo, MessageRecord paramMessageRecord, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    if ((paramQQAppInterface == null) || (paramSessionInfo == null) || (paramAIOAnimationConatiner == null)) {}
-    for (;;)
+    Object localObject1 = this;
+    if (paramBaseSessionInfo.jdField_a_of_type_Int != 1033)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("AioAnimationDetector", 2, "handleUnreadMsgList, hasUnRead=" + this.jdField_a_of_type_Boolean);
+      if (paramBaseSessionInfo.jdField_a_of_type_Int == 1034) {
+        return;
       }
-      if ((this.jdField_a_of_type_Boolean) && (paramSessionInfo.jdField_a_of_type_Int != 1008))
-      {
-        int j = 0;
-        int i;
-        if ((paramSessionInfo.jdField_a_of_type_Int == 1) || (paramSessionInfo.jdField_a_of_type_Int == 3000)) {
-          i = 1;
-        }
-        while ((i != 0) || (j != 0))
-        {
-          paramSessionInfo = paramQQAppInterface.getMessageFacade().a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, -1L, true);
-          long l = this.jdField_a_of_type_Long;
-          j = 0;
-          int n = paramSessionInfo.size();
-          int m = 0;
-          label139:
-          ChatMessage localChatMessage;
-          int k;
-          ArrayList localArrayList;
-          if (m < n)
-          {
-            localChatMessage = (ChatMessage)paramSessionInfo.get(m);
-            if (i != 0)
-            {
-              k = j;
-              if (localChatMessage.shmsgseq >= l)
-              {
-                k = j;
-                if (!localChatMessage.isAioAnimChecked)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("AioAnimationDetector", 2, "handleUnreadMsgList, troop&discussion message ===> (" + localChatMessage.shmsgseq + ")");
-                  }
-                  boolean bool = false;
-                  if (m == n - 1) {
-                    bool = true;
-                  }
-                  localArrayList = a(localChatMessage);
-                  this.jdField_a_of_type_Long = localChatMessage.shmsgseq;
-                  if (localArrayList == null) {
-                    break label463;
-                  }
-                  a(paramQQAppInterface, localArrayList, true, localChatMessage, bool, paramAIOAnimationConatiner, j * 800, paramBaseChatPie);
-                  j += 1;
-                }
-              }
-            }
-          }
-          label463:
-          for (;;)
-          {
-            k = j;
-            for (;;)
-            {
-              m += 1;
-              j = k;
-              break label139;
-              if (!UinTypeUtil.b(paramSessionInfo.jdField_a_of_type_Int)) {
-                break label466;
-              }
-              j = 1;
-              i = 0;
-              break;
-              k = j;
-              if (localChatMessage.time >= l)
-              {
-                k = j;
-                if (!localChatMessage.isAioAnimChecked)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("AioAnimationDetector", 2, "handleUnreadMsgList, c2c message ===> (" + localChatMessage.time + ")");
-                  }
-                  localArrayList = a(localChatMessage);
-                  this.jdField_a_of_type_Long = localChatMessage.time;
-                  k = j;
-                  if (localArrayList != null)
-                  {
-                    a(paramQQAppInterface, localArrayList, false, localChatMessage, false, paramAIOAnimationConatiner, j * 800, paramBaseChatPie);
-                    k = j + 1;
-                  }
-                }
-              }
-            }
-            this.jdField_a_of_type_Boolean = false;
-            return;
-          }
-          label466:
-          i = 0;
-        }
+      if ((paramMessageRecord instanceof MessageForArkFlashChat)) {
+        return;
       }
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord, AIOAnimationConatiner paramAIOAnimationConatiner, BaseChatPie paramBaseChatPie)
-  {
-    if ((paramSessionInfo.jdField_a_of_type_Int == 1033) || (paramSessionInfo.jdField_a_of_type_Int == 1034))
-    {
-      break label20;
-      break label20;
-      break label20;
-    }
-    label20:
-    label196:
-    label464:
-    label468:
-    for (;;)
-    {
-      return;
-      if ((!(paramMessageRecord instanceof MessageForArkFlashChat)) && (!this.jdField_a_of_type_Boolean))
+      if (((AioAnimationDetector)localObject1).jdField_a_of_type_Boolean) {
+        return;
+      }
+      long l1 = ((AioAnimationDetector)localObject1).jdField_a_of_type_Long;
+      localObject1 = "AioAnimationDetector";
+      if (l1 == -1L)
       {
-        if (this.jdField_a_of_type_Long == -1L)
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
+        if (QLog.isColorLevel()) {
           QLog.d("AioAnimationDetector", 2, "handleNewMsg, lastMsgIdOrTime == -1, just return");
-          return;
         }
-        if ((paramSessionInfo.jdField_a_of_type_Int == 1008) || (UinTypeUtil.a(paramSessionInfo.jdField_a_of_type_Int) == 1032)) {
-          break;
-        }
-        int j = 0;
-        int i;
-        if ((paramSessionInfo.jdField_a_of_type_Int == 1) || (paramSessionInfo.jdField_a_of_type_Int == 3000)) {
+        return;
+      }
+      if (paramBaseSessionInfo.jdField_a_of_type_Int == 1008) {
+        return;
+      }
+      if (UinTypeUtil.a(paramBaseSessionInfo.jdField_a_of_type_Int) == 1032) {
+        return;
+      }
+      int k = paramBaseSessionInfo.jdField_a_of_type_Int;
+      int j = 0;
+      int i = 0;
+      if ((k != 1) && (paramBaseSessionInfo.jdField_a_of_type_Int != 3000))
+      {
+        if (UinTypeUtil.b(paramBaseSessionInfo.jdField_a_of_type_Int)) {
           i = 1;
         }
+        k = 0;
+        j = i;
+        i = k;
+      }
+      else
+      {
+        i = 1;
+      }
+      if ((i == 0) && (j == 0)) {
+        return;
+      }
+      if ((paramBaseSessionInfo.jdField_a_of_type_JavaLangString.equals(paramMessageRecord.frienduin)) && ((paramBaseSessionInfo.jdField_a_of_type_Int == paramMessageRecord.istroop) || ((j != 0) && (UinTypeUtil.b(paramMessageRecord.istroop)))))
+      {
+        List localList = paramQQAppInterface.getMessageFacade().a(paramBaseSessionInfo.jdField_a_of_type_JavaLangString, paramBaseSessionInfo.jdField_a_of_type_Int, true);
+        Object localObject2 = a();
+        l1 = ((AioAnimationDetector)localObject2).jdField_a_of_type_Long;
+        j = localList.size() - 1;
+        paramMessageRecord = (MessageRecord)localObject1;
+        localObject1 = localObject2;
         for (;;)
         {
-          label109:
-          if (((i == 0) && (j == 0)) || (!paramSessionInfo.jdField_a_of_type_JavaLangString.equals(paramMessageRecord.frienduin)) || ((paramSessionInfo.jdField_a_of_type_Int != paramMessageRecord.istroop) && ((j == 0) || (!UinTypeUtil.b(paramMessageRecord.istroop))))) {
-            break label468;
+          Object localObject3 = this;
+          if (j < 0) {
+            break;
           }
-          paramSessionInfo = paramQQAppInterface.getMessageFacade().a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, true);
-          paramMessageRecord = a();
-          long l = paramMessageRecord.jdField_a_of_type_Long;
-          j = paramSessionInfo.size() - 1;
-          ChatMessage localChatMessage;
-          ArrayList localArrayList;
-          if (j >= 0)
+          ChatMessage localChatMessage = (ChatMessage)localList.get(j);
+          if (i != 0)
           {
-            localChatMessage = (ChatMessage)paramSessionInfo.get(j);
-            if (i == 0) {
-              break label354;
-            }
-            if (localChatMessage.shmsgseq <= l) {
-              break;
+            if (localChatMessage.shmsgseq <= l1) {
+              return;
             }
             if (!localChatMessage.isAioAnimChecked)
             {
-              if (QLog.isColorLevel()) {
-                QLog.d("AioAnimationDetector", 2, "handle troop&discussion new message ===> (" + localChatMessage.shmsgseq + ")");
+              if (QLog.isColorLevel())
+              {
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append("handle troop&discussion new message ===> (");
+                ((StringBuilder)localObject2).append(localChatMessage.shmsgseq);
+                ((StringBuilder)localObject2).append(")");
+                QLog.d(paramMessageRecord, 2, ((StringBuilder)localObject2).toString());
               }
-              a(l, localChatMessage);
-              localArrayList = paramMessageRecord.a(localChatMessage);
-              if (localArrayList != null) {
-                paramMessageRecord.a(paramQQAppInterface, localArrayList, true, localChatMessage, true, paramAIOAnimationConatiner, 0, paramBaseChatPie);
+              ((AioAnimationDetector)localObject3).a(l1, localChatMessage);
+              ((AioAnimationDetector)localObject3).a(localChatMessage, paramQQAppInterface, paramBaseSessionInfo);
+              localObject2 = ((AioAnimationDetector)localObject1).a(localChatMessage);
+              if (localObject2 != null) {
+                ((AioAnimationDetector)localObject1).a(paramQQAppInterface, (ArrayList)localObject2, true, localChatMessage, true, paramAIOAnimationConatiner, 0, true);
               }
-              paramMessageRecord.jdField_a_of_type_Long = localChatMessage.shmsgseq;
+              ((AioAnimationDetector)localObject1).jdField_a_of_type_Long = localChatMessage.shmsgseq;
             }
           }
-          for (;;)
+          else
           {
-            j -= 1;
-            break label196;
-            break label20;
-            if (!UinTypeUtil.b(paramSessionInfo.jdField_a_of_type_Int)) {
-              break label464;
-            }
-            j = 1;
-            i = 0;
-            break label109;
-            label354:
-            if (localChatMessage.time <= l) {
-              break;
+            MessageRecord localMessageRecord = paramMessageRecord;
+            long l2 = l1;
+            localObject2 = localObject1;
+            if (localChatMessage.time <= l2) {
+              return;
             }
             if (!localChatMessage.isAioAnimChecked)
             {
-              if (QLog.isColorLevel()) {
-                QLog.d("AioAnimationDetector", 2, "handle c2c new message ===> (" + localChatMessage.time + ")");
+              if (QLog.isColorLevel())
+              {
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append("handle c2c new message ===> (");
+                localStringBuilder.append(localChatMessage.time);
+                localStringBuilder.append(")");
+                QLog.d(localMessageRecord, 2, localStringBuilder.toString());
               }
-              a(l, localChatMessage);
-              localArrayList = paramMessageRecord.a(localChatMessage);
-              if (localArrayList != null) {
-                paramMessageRecord.a(paramQQAppInterface, localArrayList, false, localChatMessage, true, paramAIOAnimationConatiner, 0, paramBaseChatPie);
+              ((AioAnimationDetector)localObject3).a(l2, localChatMessage);
+              ((AioAnimationDetector)localObject3).a(localChatMessage, paramQQAppInterface, paramBaseSessionInfo);
+              localObject3 = ((AioAnimationDetector)localObject2).a(localChatMessage);
+              if (localObject3 != null) {
+                ((AioAnimationDetector)localObject2).a(paramQQAppInterface, (ArrayList)localObject3, false, localChatMessage, true, paramAIOAnimationConatiner, 0, true);
               }
-              paramMessageRecord.jdField_a_of_type_Long = localChatMessage.time;
+              ((AioAnimationDetector)localObject2).jdField_a_of_type_Long = localChatMessage.time;
             }
           }
-          i = 0;
+          j -= 1;
         }
       }
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface, ArrayList<AioAnimationRule> paramArrayList, boolean paramBoolean1, ChatMessage paramChatMessage, boolean paramBoolean2, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt, BaseChatPie paramBaseChatPie)
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    if ((paramQQAppInterface == null) || (paramChatMessage == null) || (paramAIOAnimationConatiner == null) || (paramArrayList == null) || (!a(paramChatMessage))) {}
-    AioAnimationRule localAioAnimationRule;
-    int i;
-    int j;
-    int m;
-    Object localObject;
-    int k;
-    label511:
-    String str;
-    label565:
-    do
+    if ((paramQQAppInterface != null) && (paramSessionInfo != null))
     {
-      do
-      {
-        do
-        {
-          return;
-          if (!paramChatMessage.isAioAnimChecked) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("AioAnimationDetector", 2, "detect : message is checked, just return;");
+      if (paramAIOAnimationConatiner == null) {
         return;
-        paramChatMessage.isAioAnimChecked = true;
-        EcShopAssistantManager localEcShopAssistantManager = (EcShopAssistantManager)paramQQAppInterface.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
-        Iterator localIterator = paramArrayList.iterator();
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break label1969;
-          }
-          localAioAnimationRule = (AioAnimationRule)localIterator.next();
-          a(paramChatMessage, localAioAnimationRule);
-          i = paramChatMessage.getRepeatCount();
-          j = localAioAnimationRule.d;
-          m = localAioAnimationRule.e;
-          if (QLog.isColorLevel()) {
-            QLog.d("AioAnimationDetector", 2, "detect : troopOrDiscussion=" + paramBoolean1 + " matched (" + paramChatMessage.uniseq + "), rule: id=" + localAioAnimationRule.jdField_b_of_type_Int + ",M=" + i + ",X=" + j + ",Y=" + m + ",crazyMode=" + localAioAnimationRule.jdField_a_of_type_Boolean);
-          }
-          if (paramBoolean1) {
-            break;
-          }
-        } while ((j != 0) || (m != 0));
-        if (QLog.isColorLevel()) {
-          QLog.d("AioAnimationDetector", 2, "detect c2c =======>  egg_jumper animation, crazyModeEnable=" + localAioAnimationRule.jdField_a_of_type_Boolean);
-        }
-        a(paramQQAppInterface, paramChatMessage, 0, 3, localAioAnimationRule);
-        if ((paramChatMessage instanceof MessageForStructing)) {
-          a(paramQQAppInterface, paramChatMessage, 0);
-        }
-        if (localAioAnimationRule.jdField_a_of_type_Boolean)
-        {
-          j = localAioAnimationRule.jdField_b_of_type_JavaUtilArrayList.size();
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("handleUnreadMsgList, hasUnRead=");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_Boolean);
+        QLog.d("AioAnimationDetector", 2, ((StringBuilder)localObject1).toString());
+      }
+      Object localObject1 = paramQQAppInterface.getMessageFacade().a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, -1L, true);
+      a((List)localObject1);
+      if (!this.jdField_a_of_type_Boolean) {
+        return;
+      }
+      if (paramSessionInfo.jdField_a_of_type_Int == 1008) {
+        return;
+      }
+      if ((paramSessionInfo.jdField_a_of_type_Int != 1) && (paramSessionInfo.jdField_a_of_type_Int != 3000))
+      {
+        if (UinTypeUtil.b(paramSessionInfo.jdField_a_of_type_Int)) {
+          i = 1;
+        } else {
           i = 0;
-          if (i < j)
+        }
+        k = 0;
+        j = i;
+        i = k;
+      }
+      else
+      {
+        j = 0;
+        i = 1;
+      }
+      if ((i == 0) && (j == 0)) {
+        return;
+      }
+      long l = this.jdField_a_of_type_Long;
+      int j = ((List)localObject1).size();
+      int n = 0;
+      int m = 0;
+      int k = i;
+      int i = n;
+      while (m < j)
+      {
+        paramSessionInfo = (ChatMessage)((List)localObject1).get(m);
+        Object localObject2;
+        if (k != 0)
+        {
+          if ((paramSessionInfo.shmsgseq >= l) && (!paramSessionInfo.isAioAnimChecked))
           {
-            localObject = (AioAnimationRule.JumpImage)localAioAnimationRule.jdField_b_of_type_JavaUtilArrayList.get(i);
-            localObject = AioAnimationRule.JumpImage.a(paramQQAppInterface.getApplication(), (AioAnimationRule.JumpImage)localObject);
-            if (localAioAnimationRule.jdField_a_of_type_Int == 1) {
-              this.jdField_a_of_type_AndroidOsHandler.post(new AioAnimationDetector.2(this, paramQQAppInterface, paramAIOAnimationConatiner, (Drawable)localObject, localAioAnimationRule, paramChatMessage));
-            }
-            for (;;)
+            if (QLog.isColorLevel())
             {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("handleUnreadMsgList, troop&discussion message ===> (");
+              ((StringBuilder)localObject2).append(paramSessionInfo.shmsgseq);
+              ((StringBuilder)localObject2).append(")");
+              QLog.d("AioAnimationDetector", 2, ((StringBuilder)localObject2).toString());
+            }
+            boolean bool;
+            if (m == j - 1) {
+              bool = true;
+            } else {
+              bool = false;
+            }
+            localObject2 = a(paramSessionInfo);
+            this.jdField_a_of_type_Long = paramSessionInfo.shmsgseq;
+            if (localObject2 != null)
+            {
+              a(paramQQAppInterface, (ArrayList)localObject2, true, paramSessionInfo, bool, paramAIOAnimationConatiner, i * 800, false);
               i += 1;
-              break;
-              k = i * 800;
-              this.jdField_a_of_type_AndroidOsHandler.postDelayed(new AioAnimationDetector.3(this, paramQQAppInterface, paramAIOAnimationConatiner, (Drawable)localObject, k, localAioAnimationRule, paramChatMessage), paramInt + k);
+            }
+            else
+            {
+              break label512;
             }
           }
         }
         else
         {
-          localObject = (AioAnimationRule.JumpImage)localAioAnimationRule.jdField_b_of_type_JavaUtilArrayList.get(0);
-          localObject = AioAnimationRule.JumpImage.a(paramQQAppInterface.getApplication(), (AioAnimationRule.JumpImage)localObject);
-          if (localAioAnimationRule.jdField_a_of_type_Int != 1) {
-            break label565;
+          n = i;
+          i = n;
+          if (paramSessionInfo.time >= l)
+          {
+            i = n;
+            if (!paramSessionInfo.isAioAnimChecked)
+            {
+              if (QLog.isColorLevel())
+              {
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append("handleUnreadMsgList, c2c message ===> (");
+                ((StringBuilder)localObject2).append(paramSessionInfo.time);
+                ((StringBuilder)localObject2).append(")");
+                QLog.d("AioAnimationDetector", 2, ((StringBuilder)localObject2).toString());
+              }
+              localObject2 = a(paramSessionInfo);
+              this.jdField_a_of_type_Long = paramSessionInfo.time;
+              i = n;
+              if (localObject2 != null)
+              {
+                a(paramQQAppInterface, (ArrayList)localObject2, false, paramSessionInfo, false, paramAIOAnimationConatiner, n * 800, false);
+                i = n + 1;
+              }
+            }
           }
-          this.jdField_a_of_type_AndroidOsHandler.post(new AioAnimationDetector.4(this, paramQQAppInterface, paramAIOAnimationConatiner, (Drawable)localObject, localAioAnimationRule, paramChatMessage));
         }
-        for (;;)
-        {
-          if ((localAioAnimationRule.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$BussinessData == null) || (localAioAnimationRule.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$BussinessData.jdField_a_of_type_Int != 1) || (localEcShopAssistantManager == null)) {
-            break label1967;
-          }
-          localEcShopAssistantManager.jdField_b_of_type_Int = localAioAnimationRule.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$BussinessData.d;
-          localEcShopAssistantManager.c = localAioAnimationRule.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$BussinessData.e;
-          break;
-          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new AioAnimationDetector.5(this, paramQQAppInterface, paramAIOAnimationConatiner, (Drawable)localObject, localAioAnimationRule, paramChatMessage), paramInt);
-        }
-        if ((j != 0) || (m != 0)) {
-          break label1109;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("AioAnimationDetector", 2, "detect =======>  egg_jumper animation ,crazyModeEnable=" + localAioAnimationRule.jdField_a_of_type_Boolean);
-        }
-        a(paramQQAppInterface, paramChatMessage, 1, 3, localAioAnimationRule);
-        if ((paramChatMessage instanceof MessageForStructing)) {
-          a(paramQQAppInterface, paramChatMessage, 1);
-        }
-        if (!localAioAnimationRule.jdField_a_of_type_Boolean) {
-          break label1016;
-        }
-        j = localAioAnimationRule.jdField_b_of_type_JavaUtilArrayList.size();
-        i = 0;
-        if (i >= j) {
-          break;
-        }
-        localObject = (AioAnimationRule.JumpImage)localAioAnimationRule.jdField_b_of_type_JavaUtilArrayList.get(i);
-        if (((AioAnimationRule.JumpImage)localObject).c != 3) {
-          break label924;
-        }
-      } while (paramBaseChatPie == null);
-      str = paramChatMessage.frienduin;
-      if (QLog.isColorLevel()) {
-        QLog.d("AioAnimationDetector", 2, "curTroopUin : " + str);
+        label512:
+        m += 1;
       }
-    } while (TextUtils.isEmpty(str));
-    label690:
-    boolean bool2 = AnonymousChatHelper.a().a(str);
-    TroopDragonKingAnimEntryConfig localTroopDragonKingAnimEntryConfig = (TroopDragonKingAnimEntryConfig)QConfigManager.a().a(609);
-    if ((localTroopDragonKingAnimEntryConfig != null) && (localTroopDragonKingAnimEntryConfig.a(str))) {}
-    for (boolean bool1 = true;; bool1 = false)
+      this.jdField_a_of_type_Boolean = false;
+    }
+  }
+  
+  void a(QQAppInterface paramQQAppInterface, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, int paramInt, AioAnimationRule paramAioAnimationRule, ChatMessage paramChatMessage)
+  {
+    int i;
+    if (paramAioAnimationRule.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$BussinessData == null) {
+      i = -1;
+    } else {
+      i = paramAioAnimationRule.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$BussinessData.jdField_a_of_type_Int;
+    }
+    boolean bool = paramAIOAnimationConatiner.a(2, 300, new Object[] { paramDrawable, Integer.valueOf(paramInt), Integer.valueOf(i), paramAioAnimationRule, paramChatMessage });
+    a(paramQQAppInterface, paramAioAnimationRule);
+    a(paramQQAppInterface, paramAioAnimationRule, bool, paramChatMessage);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, AioAnimationRule paramAioAnimationRule, ChatMessage paramChatMessage)
+  {
+    a(paramQQAppInterface, paramAioAnimationRule, paramAIOAnimationConatiner.b(8, 300, new Object[] { paramDrawable, paramAioAnimationRule, paramChatMessage }), paramChatMessage);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, ArrayList<AioAnimationRule> paramArrayList, boolean paramBoolean1, ChatMessage paramChatMessage, boolean paramBoolean2, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt, boolean paramBoolean3)
+  {
+    Object localObject6 = this;
+    Object localObject5 = paramQQAppInterface;
+    Object localObject4 = paramChatMessage;
+    Object localObject7 = paramAIOAnimationConatiner;
+    if ((localObject5 != null) && (localObject4 != null) && (localObject7 != null) && (paramArrayList != null) && (paramArrayList.size() != 0) && (((AioAnimationDetector)localObject6).a((ChatMessage)localObject4)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AioAnimationDetector", 2, "bManageOpen : " + bool1 + " curTroopUin : " + str);
+      paramBoolean3 = ((ChatMessage)localObject4).isAioAnimChecked;
+      Object localObject1 = "AioAnimationDetector";
+      if (paramBoolean3)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AioAnimationDetector", 2, "detect : message is checked, just return;");
+        }
+        return;
       }
-      if ((bool1) && (!bool2)) {
-        ((ITroopHonorService)paramQQAppInterface.getRuntimeService(ITroopHonorService.class, "")).asyncGetTroopHonorListByDirect(str, paramChatMessage.senderuin, new AioAnimationDetector.6(this, str, paramQQAppInterface, paramChatMessage, localAioAnimationRule, (AioAnimationRule.JumpImage)localObject, paramAIOAnimationConatiner, paramInt));
-      }
+      ((ChatMessage)localObject4).isAioAnimChecked = true;
+      Object localObject3 = (EcShopAssistantManager)((QQAppInterface)localObject5).getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
+      Iterator localIterator = paramArrayList.iterator();
+      label1805:
       for (;;)
       {
-        i += 1;
-        break label690;
-        break;
-        label924:
-        localObject = AioAnimationRule.JumpImage.a(paramQQAppInterface.getApplication(), (AioAnimationRule.JumpImage)localObject);
-        if (localAioAnimationRule.jdField_a_of_type_Int == 1)
+        paramBoolean3 = paramBoolean1;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        Object localObject2 = (AioAnimationRule)localIterator.next();
+        ((AioAnimationDetector)localObject6).a((ChatMessage)localObject4, (AioAnimationRule)localObject2);
+        int j = paramChatMessage.getRepeatCount();
+        int i = ((AioAnimationRule)localObject2).d;
+        int n = ((AioAnimationRule)localObject2).e;
+        if (QLog.isColorLevel())
         {
-          this.jdField_a_of_type_AndroidOsHandler.post(new AioAnimationDetector.7(this, paramQQAppInterface, paramAIOAnimationConatiner, (Drawable)localObject, localAioAnimationRule, paramChatMessage));
+          localObject8 = new StringBuilder();
+          ((StringBuilder)localObject8).append("detect : troopOrDiscussion=");
+          ((StringBuilder)localObject8).append(paramBoolean3);
+          ((StringBuilder)localObject8).append(" matched (");
+          ((StringBuilder)localObject8).append(((ChatMessage)localObject4).uniseq);
+          ((StringBuilder)localObject8).append("), rule: id=");
+          ((StringBuilder)localObject8).append(((AioAnimationRule)localObject2).jdField_b_of_type_Int);
+          ((StringBuilder)localObject8).append(",M=");
+          ((StringBuilder)localObject8).append(j);
+          ((StringBuilder)localObject8).append(",X=");
+          ((StringBuilder)localObject8).append(i);
+          ((StringBuilder)localObject8).append(",Y=");
+          ((StringBuilder)localObject8).append(n);
+          ((StringBuilder)localObject8).append(",crazyMode=");
+          ((StringBuilder)localObject8).append(((AioAnimationRule)localObject2).jdField_a_of_type_Boolean);
+          QLog.d((String)localObject1, 2, ((StringBuilder)localObject8).toString());
         }
-        else
-        {
-          k = i * 800;
-          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new AioAnimationDetector.8(this, paramQQAppInterface, paramAIOAnimationConatiner, (Drawable)localObject, k, localAioAnimationRule, paramChatMessage), paramInt + k);
-        }
-      }
-      label1016:
-      localObject = (AioAnimationRule.JumpImage)localAioAnimationRule.jdField_b_of_type_JavaUtilArrayList.get(0);
-      localObject = AioAnimationRule.JumpImage.a(paramQQAppInterface.getApplication(), (AioAnimationRule.JumpImage)localObject);
-      if (localAioAnimationRule.jdField_a_of_type_Int == 1)
-      {
-        this.jdField_a_of_type_AndroidOsHandler.post(new AioAnimationDetector.9(this, paramQQAppInterface, paramAIOAnimationConatiner, (Drawable)localObject, localAioAnimationRule, paramChatMessage));
-        break label511;
-      }
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new AioAnimationDetector.10(this, paramQQAppInterface, paramAIOAnimationConatiner, (Drawable)localObject, localAioAnimationRule, paramChatMessage), paramInt);
-      break label511;
-      label1109:
-      if (j >= m) {
-        break label511;
-      }
-      if (i < j) {
-        break;
-      }
-      if (i == m)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AioAnimationDetector", 2, "detect (M == Y) =======>  egg_combo animation, checkCombo= " + paramBoolean2);
-        }
-        if (paramBoolean2)
-        {
-          a(paramQQAppInterface, paramChatMessage, 1, 2, localAioAnimationRule);
-          a(paramQQAppInterface, paramChatMessage, localAioAnimationRule);
-          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new AioAnimationDetector.11(this, paramAIOAnimationConatiner, i, paramChatMessage), paramInt + 0);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("AioAnimationDetector", 2, "detect (M == Y) =======>  egg_jumper animation ,Y=" + m + ",crazyModeEnable=" + localAioAnimationRule.jdField_a_of_type_Boolean);
-        }
-        a(paramQQAppInterface, paramChatMessage, 1, 3, localAioAnimationRule);
-        i = 0;
-        label1276:
-        if (i < m) {
-          if (!paramBoolean2) {
-            break label1984;
-          }
-        }
-      }
-      label1967:
-      label1969:
-      label1978:
-      label1984:
-      for (j = 1000;; j = 0)
-      {
-        if (localAioAnimationRule.jdField_a_of_type_Boolean)
-        {
-          int n = localAioAnimationRule.jdField_b_of_type_JavaUtilArrayList.size();
-          k = 0;
-          while (k < n)
+        if (!paramBoolean3) {
+          if ((i == 0) && (n == 0))
           {
-            localObject = (AioAnimationRule.JumpImage)localAioAnimationRule.jdField_b_of_type_JavaUtilArrayList.get(k);
-            localObject = AioAnimationRule.JumpImage.a(paramQQAppInterface.getApplication(), (AioAnimationRule.JumpImage)localObject);
-            int i1 = (k + i) * 800;
-            this.jdField_a_of_type_AndroidOsHandler.postDelayed(new AioAnimationDetector.12(this, paramQQAppInterface, paramAIOAnimationConatiner, (Drawable)localObject, i1, localAioAnimationRule, paramChatMessage), paramInt + j + i1);
-            k += 1;
+            if (QLog.isColorLevel())
+            {
+              localObject8 = new StringBuilder();
+              ((StringBuilder)localObject8).append("detect c2c =======>  egg_jumper animation, crazyModeEnable=");
+              ((StringBuilder)localObject8).append(((AioAnimationRule)localObject2).jdField_a_of_type_Boolean);
+              QLog.d((String)localObject1, 2, ((StringBuilder)localObject8).toString());
+            }
+            a(paramQQAppInterface, paramChatMessage, 0, 3, (AioAnimationRule)localObject2);
+            if ((localObject4 instanceof MessageForStructing)) {
+              ((AioAnimationDetector)localObject6).a((QQAppInterface)localObject5, (ChatMessage)localObject4, 0);
+            }
+            if (a(paramQQAppInterface, paramChatMessage, 1, paramAIOAnimationConatiner, paramInt, (AioAnimationRule)localObject2)) {
+              return;
+            }
+            localObject8 = localObject2;
+            if (((AioAnimationRule)localObject8).jdField_a_of_type_Boolean)
+            {
+              b(paramQQAppInterface, paramChatMessage, paramAIOAnimationConatiner, paramInt, (AioAnimationRule)localObject8);
+              break label587;
+            }
+            c(paramQQAppInterface, paramChatMessage, paramAIOAnimationConatiner, paramInt, (AioAnimationRule)localObject8);
+            break label587;
           }
         }
-        localObject = (AioAnimationRule.JumpImage)localAioAnimationRule.jdField_b_of_type_JavaUtilArrayList.get(0);
-        localObject = AioAnimationRule.JumpImage.a(paramQQAppInterface.getApplication(), (AioAnimationRule.JumpImage)localObject);
-        k = i * 800;
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new AioAnimationDetector.13(this, paramQQAppInterface, paramAIOAnimationConatiner, (Drawable)localObject, k, localAioAnimationRule, paramChatMessage), j + paramInt + k);
-        i += 1;
-        break label1276;
-        break label511;
-        if (i > m)
+        label587:
+        do
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("AioAnimationDetector", 2, "detect (M > Y) =======>  egg_combo animation, checkCombo= " + paramBoolean2);
+          break;
+          localObject8 = localObject3;
+          if ((i == 0) && (n == 0))
+          {
+            if (QLog.isColorLevel())
+            {
+              localObject8 = new StringBuilder();
+              ((StringBuilder)localObject8).append("detect =======>  egg_jumper animation ,crazyModeEnable=");
+              ((StringBuilder)localObject8).append(((AioAnimationRule)localObject2).jdField_a_of_type_Boolean);
+              QLog.d((String)localObject1, 2, ((StringBuilder)localObject8).toString());
+            }
+            a(paramQQAppInterface, paramChatMessage, 1, 3, (AioAnimationRule)localObject2);
+            if ((localObject4 instanceof MessageForStructing)) {
+              ((AioAnimationDetector)localObject6).a((QQAppInterface)localObject5, (ChatMessage)localObject4, 1);
+            }
+            a(paramQQAppInterface, paramChatMessage, paramAIOAnimationConatiner, paramInt, (AioAnimationRule)localObject2);
+            break label1692;
+          }
+          if (i >= n) {
+            break label1692;
+          }
+        } while (j < i);
+        i = 1000;
+        int k;
+        int m;
+        if (j == n)
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject8 = new StringBuilder();
+            ((StringBuilder)localObject8).append("detect (M == Y) =======>  egg_combo animation, checkCombo= ");
+            ((StringBuilder)localObject8).append(paramBoolean2);
+            QLog.d((String)localObject1, 2, ((StringBuilder)localObject8).toString());
           }
           if (paramBoolean2)
           {
-            a(paramQQAppInterface, paramChatMessage, 1, 2, localAioAnimationRule);
-            a(paramQQAppInterface, paramChatMessage, localAioAnimationRule);
-            this.jdField_a_of_type_AndroidOsHandler.postDelayed(new AioAnimationDetector.14(this, paramAIOAnimationConatiner, i, paramChatMessage), paramInt + 0);
+            a(paramQQAppInterface, paramChatMessage, 1, 2, (AioAnimationRule)localObject2);
+            ((AioAnimationDetector)localObject6).a((QQAppInterface)localObject5, (ChatMessage)localObject4, (AioAnimationRule)localObject2);
+            ((AioAnimationDetector)localObject6).jdField_a_of_type_AndroidOsHandler.postDelayed(new AioAnimationDetector.2((AioAnimationDetector)localObject6, (AIOAnimationConatiner)localObject7, j, (ChatMessage)localObject4), paramInt + 0);
           }
-          if (QLog.isColorLevel()) {
-            QLog.d("AioAnimationDetector", 2, "detect (M > Y) =======>  egg_jumper animation ,Y=" + m + ",crazyModeEnable=" + localAioAnimationRule.jdField_a_of_type_Boolean);
-          }
-          a(paramQQAppInterface, paramChatMessage, 1, 3, localAioAnimationRule);
-          if (!paramBoolean2) {
-            break label1978;
-          }
-        }
-        for (i = 1000;; i = 0)
-        {
-          if (localAioAnimationRule.jdField_a_of_type_Boolean)
+          if (QLog.isColorLevel())
           {
-            k = localAioAnimationRule.jdField_b_of_type_JavaUtilArrayList.size();
-            j = 0;
-            label1662:
-            if (j < k)
+            localObject7 = new StringBuilder();
+            ((StringBuilder)localObject7).append("detect (M == Y) =======>  egg_jumper animation ,Y=");
+            ((StringBuilder)localObject7).append(n);
+            ((StringBuilder)localObject7).append(",crazyModeEnable=");
+            ((StringBuilder)localObject7).append(((AioAnimationRule)localObject2).jdField_a_of_type_Boolean);
+            QLog.d((String)localObject1, 2, ((StringBuilder)localObject7).toString());
+          }
+          localObject7 = localObject2;
+          a(paramQQAppInterface, paramChatMessage, 1, 3, (AioAnimationRule)localObject2);
+          i = 0;
+          localObject2 = localObject7;
+          while (i < n)
+          {
+            if (paramBoolean2) {
+              j = 1000;
+            } else {
+              j = 0;
+            }
+            if (((AioAnimationRule)localObject2).jdField_a_of_type_Boolean)
             {
-              localObject = (AioAnimationRule.JumpImage)localAioAnimationRule.jdField_b_of_type_JavaUtilArrayList.get(j);
-              localObject = AioAnimationRule.JumpImage.a(paramQQAppInterface.getApplication(), (AioAnimationRule.JumpImage)localObject);
-              if (localAioAnimationRule.jdField_a_of_type_Int != 1) {
-                break label1738;
+              k = ((AioAnimationRule)localObject2).jdField_b_of_type_JavaUtilArrayList.size();
+              m = 0;
+              while (m < k)
+              {
+                localObject7 = (AioAnimationRule.JumpImage)((AioAnimationRule)localObject2).jdField_b_of_type_JavaUtilArrayList.get(m);
+                localObject7 = AioAnimationRule.JumpImage.a(paramQQAppInterface.getApplication(), (AioAnimationRule.JumpImage)localObject7);
+                int i1 = (m + i) * 800;
+                ((AioAnimationDetector)localObject6).jdField_a_of_type_AndroidOsHandler.postDelayed(new AioAnimationDetector.3(this, paramQQAppInterface, paramAIOAnimationConatiner, (Drawable)localObject7, i1, (AioAnimationRule)localObject2, paramChatMessage), paramInt + j + i1);
+                m += 1;
               }
-              this.jdField_a_of_type_AndroidOsHandler.post(new AioAnimationDetector.15(this, paramQQAppInterface, paramAIOAnimationConatiner, (Drawable)localObject, localAioAnimationRule, paramChatMessage));
             }
-            for (;;)
+            else
             {
-              j += 1;
-              break label1662;
-              break;
-              label1738:
-              m = j * 800;
-              this.jdField_a_of_type_AndroidOsHandler.postDelayed(new AioAnimationDetector.16(this, paramQQAppInterface, paramAIOAnimationConatiner, (Drawable)localObject, m, localAioAnimationRule, paramChatMessage), paramInt + i + m);
+              localObject7 = localObject2;
+              localObject8 = (AioAnimationRule.JumpImage)((AioAnimationRule)localObject7).jdField_b_of_type_JavaUtilArrayList.get(0);
+              localObject8 = AioAnimationRule.JumpImage.a(paramQQAppInterface.getApplication(), (AioAnimationRule.JumpImage)localObject8);
+              k = i * 800;
+              ((AioAnimationDetector)localObject6).jdField_a_of_type_AndroidOsHandler.postDelayed(new AioAnimationDetector.4(this, paramQQAppInterface, paramAIOAnimationConatiner, (Drawable)localObject8, k, (AioAnimationRule)localObject7, paramChatMessage), paramInt + j + k);
+            }
+            i += 1;
+            localObject6 = this;
+          }
+          localObject7 = localObject2;
+          localObject6 = this;
+          localObject8 = paramAIOAnimationConatiner;
+          localObject9 = localObject1;
+          localObject1 = localObject5;
+          localObject2 = localObject4;
+          localObject4 = localObject8;
+          localObject5 = localObject9;
+        }
+        else
+        {
+          localObject7 = localObject2;
+          if (j > n)
+          {
+            if (QLog.isColorLevel())
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("detect (M > Y) =======>  egg_combo animation, checkCombo= ");
+              ((StringBuilder)localObject2).append(paramBoolean2);
+              QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+            }
+            localObject6 = localObject1;
+            if (paramBoolean2)
+            {
+              a(paramQQAppInterface, paramChatMessage, 1, 2, (AioAnimationRule)localObject7);
+              localObject1 = this;
+              ((AioAnimationDetector)localObject1).a((QQAppInterface)localObject5, (ChatMessage)localObject4, (AioAnimationRule)localObject7);
+              ((AioAnimationDetector)localObject1).jdField_a_of_type_AndroidOsHandler.postDelayed(new AioAnimationDetector.5((AioAnimationDetector)localObject1, paramAIOAnimationConatiner, j, (ChatMessage)localObject4), paramInt + 0);
+            }
+            localObject8 = this;
+            if (QLog.isColorLevel())
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("detect (M > Y) =======>  egg_jumper animation ,Y=");
+              ((StringBuilder)localObject1).append(n);
+              ((StringBuilder)localObject1).append(",crazyModeEnable=");
+              ((StringBuilder)localObject1).append(((AioAnimationRule)localObject7).jdField_a_of_type_Boolean);
+              QLog.d((String)localObject6, 2, ((StringBuilder)localObject1).toString());
+            }
+            k = 0;
+            a(paramQQAppInterface, paramChatMessage, 1, 3, (AioAnimationRule)localObject7);
+            if (!paramBoolean2) {
+              i = 0;
+            }
+            if (((AioAnimationRule)localObject7).jdField_a_of_type_Boolean)
+            {
+              j = ((AioAnimationRule)localObject7).jdField_b_of_type_JavaUtilArrayList.size();
+              while (k < j)
+              {
+                localObject1 = (AioAnimationRule.JumpImage)((AioAnimationRule)localObject7).jdField_b_of_type_JavaUtilArrayList.get(k);
+                localObject1 = AioAnimationRule.JumpImage.a(paramQQAppInterface.getApplication(), (AioAnimationRule.JumpImage)localObject1);
+                if (((AioAnimationRule)localObject7).jdField_a_of_type_Int == 8)
+                {
+                  ((AioAnimationDetector)localObject8).jdField_a_of_type_AndroidOsHandler.post(new AioAnimationDetector.6(this, paramQQAppInterface, paramAIOAnimationConatiner, (Drawable)localObject1, (AioAnimationRule)localObject7, paramChatMessage));
+                }
+                else
+                {
+                  m = k * 800;
+                  ((AioAnimationDetector)localObject8).jdField_a_of_type_AndroidOsHandler.postDelayed(new AioAnimationDetector.7(this, paramQQAppInterface, paramAIOAnimationConatiner, (Drawable)localObject1, m, (AioAnimationRule)localObject7, paramChatMessage), paramInt + i + m);
+                }
+                k += 1;
+              }
+            }
+            localObject1 = (AioAnimationRule.JumpImage)((AioAnimationRule)localObject7).jdField_b_of_type_JavaUtilArrayList.get(0);
+            localObject1 = AioAnimationRule.JumpImage.a(paramQQAppInterface.getApplication(), (AioAnimationRule.JumpImage)localObject1);
+            if (((AioAnimationRule)localObject7).jdField_a_of_type_Int == 8) {
+              ((AioAnimationDetector)localObject8).jdField_a_of_type_AndroidOsHandler.post(new AioAnimationDetector.8(this, paramQQAppInterface, paramAIOAnimationConatiner, (Drawable)localObject1, (AioAnimationRule)localObject7, paramChatMessage));
+            } else {
+              ((AioAnimationDetector)localObject8).jdField_a_of_type_AndroidOsHandler.postDelayed(new AioAnimationDetector.9(this, paramQQAppInterface, paramAIOAnimationConatiner, (Drawable)localObject1, (AioAnimationRule)localObject7, paramChatMessage), paramInt + i);
+            }
+            localObject1 = paramQQAppInterface;
+            localObject2 = paramChatMessage;
+            localObject4 = paramAIOAnimationConatiner;
+            localObject5 = localObject6;
+            localObject6 = localObject8;
+          }
+          else
+          {
+            localObject2 = this;
+            if (QLog.isColorLevel())
+            {
+              localObject4 = new StringBuilder();
+              ((StringBuilder)localObject4).append("detect (X <= M < Y) ======>  egg_combo animation, checkCombo= ");
+              ((StringBuilder)localObject4).append(paramBoolean2);
+              QLog.d((String)localObject1, 2, ((StringBuilder)localObject4).toString());
+            }
+            if (!paramBoolean2)
+            {
+              localObject5 = paramQQAppInterface;
+              localObject4 = paramChatMessage;
+              localObject7 = paramAIOAnimationConatiner;
+              localObject3 = localObject8;
+              localObject6 = localObject2;
+              break label1805;
+            }
+            a(paramQQAppInterface, paramChatMessage, 1, 2, (AioAnimationRule)localObject7);
+            localObject9 = paramQQAppInterface;
+            localObject8 = paramChatMessage;
+            ((AioAnimationDetector)localObject2).a((QQAppInterface)localObject9, (ChatMessage)localObject8, (AioAnimationRule)localObject7);
+            localObject5 = ((AioAnimationDetector)localObject2).jdField_a_of_type_AndroidOsHandler;
+            localObject4 = paramAIOAnimationConatiner;
+            ((Handler)localObject5).postDelayed(new AioAnimationDetector.10((AioAnimationDetector)localObject2, (AIOAnimationConatiner)localObject4, j, (ChatMessage)localObject8), paramInt + 0);
+            localObject5 = localObject1;
+            localObject6 = localObject2;
+            break label1728;
+            label1692:
+            localObject8 = localObject5;
+            localObject9 = localObject4;
+            localObject4 = localObject7;
+            localObject7 = localObject2;
+            localObject5 = localObject1;
+            localObject2 = localObject9;
+            localObject1 = localObject8;
+          }
+        }
+        Object localObject8 = localObject2;
+        Object localObject9 = localObject1;
+        label1728:
+        if (((AioAnimationRule)localObject7).jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$BussinessData != null) {
+          if (((AioAnimationRule)localObject7).jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$BussinessData.jdField_a_of_type_Int == 1)
+          {
+            localObject1 = localObject3;
+            if (localObject1 != null)
+            {
+              ((EcShopAssistantManager)localObject1).jdField_b_of_type_Int = ((AioAnimationRule)localObject7).jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$BussinessData.d;
+              ((EcShopAssistantManager)localObject1).c = ((AioAnimationRule)localObject7).jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$BussinessData.e;
             }
           }
-          localObject = (AioAnimationRule.JumpImage)localAioAnimationRule.jdField_b_of_type_JavaUtilArrayList.get(0);
-          localObject = AioAnimationRule.JumpImage.a(paramQQAppInterface.getApplication(), (AioAnimationRule.JumpImage)localObject);
-          if (localAioAnimationRule.jdField_a_of_type_Int == 1)
-          {
-            this.jdField_a_of_type_AndroidOsHandler.post(new AioAnimationDetector.17(this, paramQQAppInterface, paramAIOAnimationConatiner, (Drawable)localObject, localAioAnimationRule, paramChatMessage));
-            break label511;
-          }
-          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new AioAnimationDetector.18(this, paramQQAppInterface, paramAIOAnimationConatiner, (Drawable)localObject, localAioAnimationRule, paramChatMessage), paramInt + i);
-          break label511;
-          if (QLog.isColorLevel()) {
-            QLog.d("AioAnimationDetector", 2, "detect (X <= M < Y) ======>  egg_combo animation, checkCombo= " + paramBoolean2);
-          }
-          if (!paramBoolean2) {
-            break;
-          }
-          a(paramQQAppInterface, paramChatMessage, 1, 2, localAioAnimationRule);
-          a(paramQQAppInterface, paramChatMessage, localAioAnimationRule);
-          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new AioAnimationDetector.19(this, paramAIOAnimationConatiner, i, paramChatMessage), 0 + paramInt);
-          break label511;
-          break;
-          a(paramQQAppInterface, paramArrayList, paramChatMessage);
-          return;
+          else {}
         }
+        localObject1 = localObject5;
+        localObject7 = localObject4;
+        localObject4 = localObject8;
+        localObject5 = localObject9;
       }
+      ((AioAnimationDetector)localObject6).a((QQAppInterface)localObject5, paramArrayList, (ChatMessage)localObject4);
+      return;
     }
   }
   
@@ -887,31 +1070,30 @@ public class AioAnimationDetector
   
   public boolean a(ChatMessage paramChatMessage)
   {
-    if ((!(paramChatMessage instanceof MessageForText)) && (!(paramChatMessage instanceof MessageForLongMsg)) && (!(paramChatMessage instanceof MessageForStructing)))
+    boolean bool = paramChatMessage instanceof MessageForText;
+    if ((!bool) && (!(paramChatMessage instanceof MessageForLongMsg)) && (!(paramChatMessage instanceof MessageForStructing)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("AioAnimationDetector", 2, "checkMsgType : not MessageForText and MessageForLongMsg and MessageFlashChat, return false;");
       }
       return false;
     }
-    if ((paramChatMessage instanceof MessageForText)) {
+    if (bool)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("AioAnimationDetector", 2, "checkMsgType : messageForText");
       }
     }
-    for (;;)
+    else if ((paramChatMessage instanceof MessageForLongMsg))
     {
-      return true;
-      if ((paramChatMessage instanceof MessageForLongMsg))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AioAnimationDetector", 2, "checkMsgType : MessageForLongMsg");
-        }
-      }
-      else if (((paramChatMessage instanceof MessageForStructing)) && (QLog.isColorLevel())) {
-        QLog.d("AioAnimationDetector", 2, "checkMsgType : MessageForStructing");
+      if (QLog.isColorLevel()) {
+        QLog.d("AioAnimationDetector", 2, "checkMsgType : MessageForLongMsg");
       }
     }
+    else if (((paramChatMessage instanceof MessageForStructing)) && (QLog.isColorLevel())) {
+      QLog.d("AioAnimationDetector", 2, "checkMsgType : MessageForStructing");
+    }
+    return true;
   }
   
   public boolean b(ChatMessage paramChatMessage)
@@ -919,21 +1101,22 @@ public class AioAnimationDetector
     if ((paramChatMessage instanceof MessageForStructing))
     {
       paramChatMessage = ((MessageForStructing)paramChatMessage).structingMsg;
-      if (paramChatMessage != null) {
-        break label36;
+      if (paramChatMessage == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AioAnimationDetector", 2, "msg type is MessageForStructing, strctMsg is null");
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("AioAnimationDetector", 2, "msg type is MessageForStructing, strctMsg is null");
+      else {
+        return paramChatMessage instanceof AbsShareMsg;
       }
     }
     return false;
-    label36:
-    return paramChatMessage instanceof AbsShareMsg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,25 @@
 package com.tencent.mobileqq.mini.api.impl;
 
-import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import com.tencent.mobileqq.mini.sdk.MiniAppController;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.api.MiniAppLaunchListener;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 
 class MiniAppServiceImpl$7
-  implements MiniAppCmdInterface
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  MiniAppServiceImpl$7(MiniAppServiceImpl paramMiniAppServiceImpl, int paramInt) {}
+  MiniAppServiceImpl$7(MiniAppServiceImpl paramMiniAppServiceImpl, MiniAppLaunchListener paramMiniAppLaunchListener) {}
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    if ((paramBoolean) && (paramJSONObject != null))
-    {
-      paramJSONObject = (MiniAppInfo)paramJSONObject.opt("appInfo");
-      if (paramJSONObject != null)
-      {
-        MiniAppController.preloadPackage(paramJSONObject);
-        paramJSONObject = new MiniAppConfig(paramJSONObject);
-        if (paramJSONObject.launchParam != null) {
-          paramJSONObject.launchParam.scene = 2064;
-        }
-        MiniProgramLpReportDC04239.reportAsync(paramJSONObject, "page_view", "expo", null, String.valueOf(this.val$total));
-      }
+    MiniAppLaunchListener localMiniAppLaunchListener = this.val$listener;
+    if (localMiniAppLaunchListener != null) {
+      localMiniAppLaunchListener.onLaunchResult(paramBoolean, paramBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.api.impl.MiniAppServiceImpl.7
  * JD-Core Version:    0.7.0.1
  */

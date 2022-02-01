@@ -12,16 +12,16 @@ class BaseMsgBoxActivity$2$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity$2.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) && (this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity$2.a.jdField_a_of_type_JavaUtilList != null))
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity$2.a.mRecentAdapter != null) && (this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity$2.a.mRecentListData != null))
     {
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity$2.a.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity$2.a.mRecentListData.iterator();
       while (localIterator.hasNext())
       {
         RecentBaseData localRecentBaseData = (RecentBaseData)localIterator.next();
         if (localRecentBaseData.getRecentUserUin().equals(this.jdField_a_of_type_JavaLangString))
         {
           localRecentBaseData.mTitleName = this.b;
-          this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity$2.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity$2.a.jdField_a_of_type_Int);
+          this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity$2.a.mRecentAdapter.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity$2.a.mBoxMsgType);
         }
       }
     }
@@ -29,7 +29,7 @@ class BaseMsgBoxActivity$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dating.BaseMsgBoxActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

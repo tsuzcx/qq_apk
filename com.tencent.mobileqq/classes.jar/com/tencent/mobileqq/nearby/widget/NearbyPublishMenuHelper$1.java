@@ -32,21 +32,22 @@ final class NearbyPublishMenuHelper$1
     {
       NearbyPublishMenuHelper.a(this.jdField_a_of_type_AndroidContentContext).edit().putString("camera_photo_path", this.jdField_a_of_type_JavaLangString).commit();
       this.jdField_a_of_type_MqqAppAppActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 1001);
-      if (QLog.isColorLevel()) {
+      if (QLog.isColorLevel())
+      {
         QLog.d("NearbyPublishMenuHelper", 2, "takePhoto");
+        return;
       }
-      return;
     }
     catch (Exception paramArrayOfString)
     {
       QLog.e("NearbyPublishMenuHelper", 1, paramArrayOfString, new Object[0]);
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131690797, 0).a();
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131690725, 0).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.widget.NearbyPublishMenuHelper.1
  * JD-Core Version:    0.7.0.1
  */

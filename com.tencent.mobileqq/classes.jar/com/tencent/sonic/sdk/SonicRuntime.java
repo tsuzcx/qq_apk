@@ -10,6 +10,7 @@ import android.os.Looper;
 import android.text.TextUtils;
 import java.io.File;
 import java.io.InputStream;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -26,10 +27,12 @@ public abstract class SonicRuntime
   
   public SonicRuntime(Context paramContext)
   {
-    if (paramContext == null) {
-      throw new NullPointerException("SonicRuntime context con not be null!");
+    if (paramContext != null)
+    {
+      this.context = paramContext;
+      return;
     }
-    this.context = paramContext;
+    throw new NullPointerException("SonicRuntime context con not be null!");
   }
   
   public abstract Object createWebResourceResponse(String paramString1, String paramString2, InputStream paramInputStream, Map<String, String> paramMap);
@@ -63,48 +66,60 @@ public abstract class SonicRuntime
     if (paramUri == null) {
       return Collections.emptySet();
     }
-    if (paramUri.isOpaque()) {
-      throw new UnsupportedOperationException("This isn't a hierarchical URI.");
-    }
-    paramUri = paramUri.getEncodedQuery();
-    if (paramUri == null) {
-      return Collections.emptySet();
-    }
-    LinkedHashSet localLinkedHashSet = new LinkedHashSet();
-    int j = 0;
-    int i;
-    do
+    if (!paramUri.isOpaque())
     {
-      int k = paramUri.indexOf('&', j);
-      i = k;
-      if (k == -1) {
-        i = paramUri.length();
+      paramUri = paramUri.getEncodedQuery();
+      if (paramUri == null) {
+        return Collections.emptySet();
       }
-      int m = paramUri.indexOf('=', j);
-      if (m <= i)
+      LinkedHashSet localLinkedHashSet = new LinkedHashSet();
+      int j = 0;
+      int i;
+      do
       {
-        k = m;
-        if (m != -1) {}
-      }
-      else
-      {
-        k = i;
-      }
-      localLinkedHashSet.add(Uri.decode(paramUri.substring(j, k)));
-      i += 1;
-      j = i;
-    } while (i < paramUri.length());
-    return Collections.unmodifiableSet(localLinkedHashSet);
+        int k = paramUri.indexOf('&', j);
+        i = k;
+        if (k == -1) {
+          i = paramUri.length();
+        }
+        int m = paramUri.indexOf('=', j);
+        if (m <= i)
+        {
+          k = m;
+          if (m != -1) {}
+        }
+        else
+        {
+          k = i;
+        }
+        localLinkedHashSet.add(Uri.decode(paramUri.substring(j, k)));
+        i += 1;
+        j = i;
+      } while (i < paramUri.length());
+      return Collections.unmodifiableSet(localLinkedHashSet);
+    }
+    paramUri = new UnsupportedOperationException("This isn't a hierarchical URI.");
+    for (;;)
+    {
+      throw paramUri;
+    }
   }
   
   public File getSonicCacheDir()
   {
-    String str = this.context.getFilesDir() + "/Sonic/";
-    File localFile = new File(str.trim());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.context.getFilesDir());
+    ((StringBuilder)localObject).append("/Sonic/");
+    localObject = ((StringBuilder)localObject).toString();
+    File localFile = new File(((String)localObject).trim());
     if ((!localFile.exists()) && (!localFile.mkdir()))
     {
-      log("SonicSdk_SonicRuntime", 6, "getSonicCacheDir error:make dir(" + localFile.getAbsolutePath() + ") fail!");
-      notifyError(null, str, -1003);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getSonicCacheDir error:make dir(");
+      localStringBuilder.append(localFile.getAbsolutePath());
+      localStringBuilder.append(") fail!");
+      log("SonicSdk_SonicRuntime", 6, localStringBuilder.toString());
+      notifyError(null, (String)localObject, -1003);
     }
     return localFile;
   }
@@ -114,7 +129,11 @@ public abstract class SonicRuntime
     File localFile = new File(Environment.getExternalStorageDirectory(), "/SonicResource/");
     if ((!localFile.exists()) && (!localFile.mkdir()))
     {
-      log("SonicSdk_SonicRuntime", 6, "getSonicResourceCacheDir error:make dir(" + localFile.getAbsolutePath() + ") fail!");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getSonicResourceCacheDir error:make dir(");
+      localStringBuilder.append(localFile.getAbsolutePath());
+      localStringBuilder.append(") fail!");
+      log("SonicSdk_SonicRuntime", 6, localStringBuilder.toString());
       notifyError(null, localFile.getAbsolutePath(), -1003);
     }
     return localFile;
@@ -141,24 +160,28 @@ public abstract class SonicRuntime
       try
       {
         Uri localUri = Uri.parse(paramString);
-        localStringBuilder.append(localUri.getAuthority()).append(localUri.getPath());
+        localStringBuilder.append(localUri.getAuthority());
+        localStringBuilder.append(localUri.getPath());
+        Object localObject1;
         if (localUri.isHierarchical())
         {
-          Object localObject = localUri.getQueryParameter("sonic_remain_params");
-          TreeSet localTreeSet = new TreeSet();
-          if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            Collections.addAll(localTreeSet, ((String)localObject).split(";"));
+          Object localObject2 = localUri.getQueryParameter("sonic_remain_params");
+          localObject1 = new TreeSet();
+          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+            Collections.addAll((Collection)localObject1, ((String)localObject2).split(";"));
           }
-          localObject = new TreeSet(getQueryParameterNames(localUri));
-          if (!localTreeSet.isEmpty()) {
-            ((TreeSet)localObject).remove("sonic_remain_params");
+          localObject2 = new TreeSet(getQueryParameterNames(localUri));
+          if (!((TreeSet)localObject1).isEmpty()) {
+            ((TreeSet)localObject2).remove("sonic_remain_params");
           }
-          localObject = ((TreeSet)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
+          localObject2 = ((TreeSet)localObject2).iterator();
+          while (((Iterator)localObject2).hasNext())
           {
-            String str = (String)((Iterator)localObject).next();
-            if ((!TextUtils.isEmpty(str)) && ((str.startsWith("sonic_")) || (localTreeSet.contains(str)))) {
-              localStringBuilder.append(str).append(localUri.getQueryParameter(str));
+            String str = (String)((Iterator)localObject2).next();
+            if ((!TextUtils.isEmpty(str)) && ((str.startsWith("sonic_")) || (((TreeSet)localObject1).contains(str))))
+            {
+              localStringBuilder.append(str);
+              localStringBuilder.append(localUri.getQueryParameter(str));
             }
           }
         }
@@ -166,11 +189,21 @@ public abstract class SonicRuntime
       }
       catch (Throwable localThrowable)
       {
-        log("SonicSdk_SonicRuntime", 6, "makeSessionId error:" + localThrowable.getMessage() + ", url=" + paramString);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("makeSessionId error:");
+        ((StringBuilder)localObject1).append(localThrowable.getMessage());
+        ((StringBuilder)localObject1).append(", url=");
+        ((StringBuilder)localObject1).append(paramString);
+        log("SonicSdk_SonicRuntime", 6, ((StringBuilder)localObject1).toString());
         localStringBuilder.setLength(0);
         localStringBuilder.append(paramString);
-        if (paramBoolean) {
-          return getCurrentUserAccount() + "_" + SonicUtils.getMD5(localStringBuilder.toString());
+        if (paramBoolean)
+        {
+          paramString = new StringBuilder();
+          paramString.append(getCurrentUserAccount());
+          paramString.append("_");
+          paramString.append(SonicUtils.getMD5(localStringBuilder.toString()));
+          return paramString.toString();
         }
         return SonicUtils.getMD5(localStringBuilder.toString());
       }
@@ -202,7 +235,7 @@ public abstract class SonicRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicRuntime
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.biz.qcircleshadow.lib;
 
-import com.ae.light.camera.api.IAEEditorManagerForQzone;
+import com.tencent.aelight.camera.api.IAEEditorManagerForQzone;
 import com.tencent.mobileqq.chat.api.IChatActivityApi;
 import com.tencent.mobileqq.forward.api.IForwardApi;
 import com.tencent.mobileqq.jump.api.IJumpApi;
@@ -50,20 +50,10 @@ public class QCircleHostClassHelper
   {
     return QCircleServiceImpl.getQQService().getQCircleHippyFragmentClass();
   }
-  
-  public static Class getQQBrowserActivityClass()
-  {
-    return QCircleServiceImpl.getQQService().getQQBrowserActivityClass();
-  }
-  
-  public static Class getQQTranslucentBrowserActivityClass()
-  {
-    return QCircleServiceImpl.getQQService().getQQTranslucentBrowserActivityClass();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCircleHostClassHelper
  * JD-Core Version:    0.7.0.1
  */

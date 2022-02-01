@@ -44,37 +44,38 @@ public class d
   {
     Object localObject3 = a.get(paramString);
     Object localObject1 = localObject3;
-    if (localObject3 == null) {}
-    try
+    Object localObject2;
+    if (localObject3 == null)
     {
-      localObject1 = com.tencent.qapmsdk.socket.d.d.a(SocketImpl.class).a(paramString);
-      a.put(paramString, localObject1);
-      return localObject1;
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      for (;;)
+      try
+      {
+        localObject1 = com.tencent.qapmsdk.socket.d.d.a(SocketImpl.class).a(paramString);
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
       {
         Logger.INSTANCE.w(new String[] { "QAPM_Socket_TrafficSocketImpl", "get field ", paramString, " error: ", localNoSuchFieldException.toString() });
-        Object localObject2 = b;
+        localObject2 = b;
       }
+      a.put(paramString, localObject2);
     }
+    return localObject2;
   }
   
   private void a(String paramString, Object paramObject1, Object paramObject2)
   {
     Object localObject = a(paramString);
-    if ((localObject instanceof Field)) {
+    if ((localObject instanceof Field))
+    {
       localObject = (Field)localObject;
-    }
-    try
-    {
-      ((Field)localObject).set(paramObject2, ((Field)localObject).get(paramObject1));
-      return;
-    }
-    catch (IllegalAccessException paramObject1)
-    {
-      Logger.INSTANCE.w(new String[] { "QAPM_Socket_TrafficSocketImpl", "set field ", paramString, "error: ", paramObject1.toString() });
+      try
+      {
+        ((Field)localObject).set(paramObject2, ((Field)localObject).get(paramObject1));
+        return;
+      }
+      catch (IllegalAccessException paramObject1)
+      {
+        Logger.INSTANCE.w(new String[] { "QAPM_Socket_TrafficSocketImpl", "set field ", paramString, "error: ", paramObject1.toString() });
+      }
     }
   }
   
@@ -90,24 +91,25 @@ public class d
   
   private String c()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = com.tencent.qapmsdk.socket.d.d.a(SocketImpl.class).a("fd").get(this);
-      localObject1 = localObject2;
+      localObject = com.tencent.qapmsdk.socket.d.d.a(SocketImpl.class).a("fd").get(this);
     }
     catch (Exception localException)
     {
-      label19:
-      break label19;
+      Object localObject;
+      label18:
+      break label18;
     }
-    return com.tencent.qapmsdk.socket.d.d.a(localObject1);
+    localObject = null;
+    return com.tencent.qapmsdk.socket.d.d.a(localObject);
   }
   
   private int d()
   {
-    if (this.c != null) {
-      return this.c.hashCode();
+    SocketImpl localSocketImpl = this.c;
+    if (localSocketImpl != null) {
+      return localSocketImpl.hashCode();
     }
     return 0;
   }
@@ -119,35 +121,36 @@ public class d
   
   protected void accept(SocketImpl paramSocketImpl)
   {
-    if (!TrafficMonitor.a().c()) {
-      throw new IOException("Disable network by developer!");
-    }
-    try
-    {
-      com.tencent.qapmsdk.socket.d.d.a(this.c.getClass()).a("accept", new Class[] { SocketImpl.class }).invoke(this.c, new Object[] { paramSocketImpl });
-      b();
-      return;
-    }
-    catch (Exception paramSocketImpl)
-    {
-      if (((paramSocketImpl instanceof InvocationTargetException)) && ((paramSocketImpl.getCause() instanceof IOException))) {
-        throw ((IOException)paramSocketImpl.getCause());
+    if (TrafficMonitor.a().c()) {
+      try
+      {
+        com.tencent.qapmsdk.socket.d.d.a(this.c.getClass()).a("accept", new Class[] { SocketImpl.class }).invoke(this.c, new Object[] { paramSocketImpl });
+        b();
+        return;
       }
-      com.tencent.qapmsdk.socket.d.d.a(paramSocketImpl);
-      throw new IOException(paramSocketImpl);
+      catch (Exception paramSocketImpl)
+      {
+        if (((paramSocketImpl instanceof InvocationTargetException)) && ((paramSocketImpl.getCause() instanceof IOException))) {
+          throw ((IOException)paramSocketImpl.getCause());
+        }
+        com.tencent.qapmsdk.socket.d.d.a(paramSocketImpl);
+        throw new IOException(paramSocketImpl);
+      }
     }
+    throw new IOException("Disable network by developer!");
   }
   
   protected int available()
   {
     try
     {
-      Object localObject = com.tencent.qapmsdk.socket.d.d.a(this.c.getClass()).a("available", new Class[0]).invoke(this.c, new Object[0]);
-      if (localObject != null)
-      {
-        int j = ((Integer)localObject).intValue();
-        return j;
+      Object localObject = com.tencent.qapmsdk.socket.d.d.a(this.c.getClass());
+      int j = 0;
+      localObject = ((d.a)localObject).a("available", new Class[0]).invoke(this.c, new Object[0]);
+      if (localObject != null) {
+        j = ((Integer)localObject).intValue();
       }
+      return j;
     }
     catch (Exception localException)
     {
@@ -157,28 +160,27 @@ public class d
       com.tencent.qapmsdk.socket.d.d.a(localException);
       throw new IOException(localException);
     }
-    return 0;
   }
   
   protected void bind(InetAddress paramInetAddress, int paramInt)
   {
-    if (!TrafficMonitor.a().c()) {
-      throw new IOException("Disable network by developer!");
-    }
-    try
-    {
-      com.tencent.qapmsdk.socket.d.d.a(this.c.getClass()).a("bind", new Class[] { InetAddress.class, Integer.TYPE }).invoke(this.c, new Object[] { paramInetAddress, Integer.valueOf(paramInt) });
-      b();
-      return;
-    }
-    catch (Exception paramInetAddress)
-    {
-      if (((paramInetAddress instanceof InvocationTargetException)) && ((paramInetAddress.getCause() instanceof IOException))) {
-        throw ((IOException)paramInetAddress.getCause());
+    if (TrafficMonitor.a().c()) {
+      try
+      {
+        com.tencent.qapmsdk.socket.d.d.a(this.c.getClass()).a("bind", new Class[] { InetAddress.class, Integer.TYPE }).invoke(this.c, new Object[] { paramInetAddress, Integer.valueOf(paramInt) });
+        b();
+        return;
       }
-      com.tencent.qapmsdk.socket.d.d.a(paramInetAddress);
-      throw new IOException(paramInetAddress);
+      catch (Exception paramInetAddress)
+      {
+        if (((paramInetAddress instanceof InvocationTargetException)) && ((paramInetAddress.getCause() instanceof IOException))) {
+          throw ((IOException)paramInetAddress.getCause());
+        }
+        com.tencent.qapmsdk.socket.d.d.a(paramInetAddress);
+        throw new IOException(paramInetAddress);
+      }
     }
+    throw new IOException("Disable network by developer!");
   }
   
   protected void close()
@@ -192,13 +194,15 @@ public class d
     }
     catch (Exception localException)
     {
-      if ((localException instanceof InvocationTargetException))
-      {
-        if ((localException.getCause() instanceof IOException)) {
-          throw ((IOException)localException.getCause());
+      if ((localException instanceof InvocationTargetException)) {
+        if (!(localException.getCause() instanceof IOException))
+        {
+          if ((localException.getCause() instanceof NullPointerException)) {
+            throw new IOException(localException);
+          }
         }
-        if ((localException.getCause() instanceof NullPointerException)) {
-          throw new IOException(localException);
+        else {
+          throw ((IOException)localException.getCause());
         }
       }
       com.tencent.qapmsdk.socket.d.d.a(localException);
@@ -208,84 +212,93 @@ public class d
   
   protected void connect(String paramString, int paramInt)
   {
-    if (!TrafficMonitor.a().c()) {
-      throw new IOException("Disable network by developer!");
-    }
-    this.d = paramString;
-    this.e = "";
-    this.f = paramInt;
-    long l = SystemClock.elapsedRealtime();
-    try
+    if (TrafficMonitor.a().c())
     {
-      com.tencent.qapmsdk.socket.d.d.a(this.c.getClass()).a("connect", new Class[] { String.class, Integer.TYPE }).invoke(this.c, new Object[] { paramString, Integer.valueOf(paramInt) });
-      a.a(true, this.d, this.f, SystemClock.elapsedRealtime() - l, this.g);
-      b();
-      return;
-    }
-    catch (Exception paramString)
-    {
-      this.g.E = paramString;
-      a.a(false, this.d, this.f, SystemClock.elapsedRealtime() - l, this.g);
-      if (((paramString instanceof InvocationTargetException)) && ((paramString.getCause() instanceof IOException))) {
-        throw ((IOException)paramString.getCause());
+      this.d = paramString;
+      this.e = "";
+      this.f = paramInt;
+      long l = SystemClock.elapsedRealtime();
+      try
+      {
+        com.tencent.qapmsdk.socket.d.d.a(this.c.getClass()).a("connect", new Class[] { String.class, Integer.TYPE }).invoke(this.c, new Object[] { paramString, Integer.valueOf(paramInt) });
+        a.a(true, this.d, this.f, SystemClock.elapsedRealtime() - l, this.g);
+        b();
+        return;
       }
-      com.tencent.qapmsdk.socket.d.d.a(paramString);
-      throw new IOException(paramString);
+      catch (Exception paramString)
+      {
+        this.g.E = paramString;
+        a.a(false, this.d, this.f, SystemClock.elapsedRealtime() - l, this.g);
+        if (((paramString instanceof InvocationTargetException)) && ((paramString.getCause() instanceof IOException))) {
+          throw ((IOException)paramString.getCause());
+        }
+        com.tencent.qapmsdk.socket.d.d.a(paramString);
+        throw new IOException(paramString);
+      }
     }
+    throw new IOException("Disable network by developer!");
   }
   
   protected void connect(InetAddress paramInetAddress, int paramInt)
   {
-    if (!TrafficMonitor.a().c()) {
-      throw new IOException("Disable network by developer!");
-    }
-    this.d = paramInetAddress.getHostName();
-    this.e = paramInetAddress.getHostAddress();
-    this.f = paramInt;
-    long l = SystemClock.elapsedRealtime();
-    try
+    if (TrafficMonitor.a().c())
     {
-      com.tencent.qapmsdk.socket.d.d.a(this.c.getClass()).a("connect", new Class[] { InetAddress.class, Integer.TYPE }).invoke(this.c, new Object[] { paramInetAddress, Integer.valueOf(paramInt) });
-      a.a(true, this.d, this.f, SystemClock.elapsedRealtime() - l, this.g);
-      b();
-      return;
-    }
-    catch (Exception paramInetAddress)
-    {
-      this.g.E = paramInetAddress;
-      a.a(false, this.d, this.f, SystemClock.elapsedRealtime() - l, this.g);
-      if (((paramInetAddress instanceof InvocationTargetException)) && ((paramInetAddress.getCause() instanceof IOException))) {
-        throw ((IOException)paramInetAddress.getCause());
+      this.d = paramInetAddress.getHostName();
+      this.e = paramInetAddress.getHostAddress();
+      this.f = paramInt;
+      long l = SystemClock.elapsedRealtime();
+      try
+      {
+        com.tencent.qapmsdk.socket.d.d.a(this.c.getClass()).a("connect", new Class[] { InetAddress.class, Integer.TYPE }).invoke(this.c, new Object[] { paramInetAddress, Integer.valueOf(paramInt) });
+        a.a(true, this.d, this.f, SystemClock.elapsedRealtime() - l, this.g);
+        b();
+        return;
       }
-      com.tencent.qapmsdk.socket.d.d.a(paramInetAddress);
-      throw new IOException(paramInetAddress);
+      catch (Exception paramInetAddress)
+      {
+        this.g.E = paramInetAddress;
+        a.a(false, this.d, this.f, SystemClock.elapsedRealtime() - l, this.g);
+        if (((paramInetAddress instanceof InvocationTargetException)) && ((paramInetAddress.getCause() instanceof IOException))) {
+          throw ((IOException)paramInetAddress.getCause());
+        }
+        com.tencent.qapmsdk.socket.d.d.a(paramInetAddress);
+        throw new IOException(paramInetAddress);
+      }
     }
+    throw new IOException("Disable network by developer!");
   }
   
   protected void connect(SocketAddress paramSocketAddress, int paramInt)
   {
-    if (!TrafficMonitor.a().c()) {
-      throw new IOException("Disable network by developer!");
-    }
-    InetSocketAddress localInetSocketAddress;
-    if ((paramSocketAddress instanceof InetSocketAddress))
+    if (TrafficMonitor.a().c())
     {
-      localInetSocketAddress = (InetSocketAddress)paramSocketAddress;
-      if (AndroidVersion.isKitKat()) {}
-      for (this.d = localInetSocketAddress.getHostString(); this.d == null; this.d = localInetSocketAddress.getHostName()) {
-        throw new IOException("Can't find host");
+      Object localObject;
+      if ((paramSocketAddress instanceof InetSocketAddress))
+      {
+        InetSocketAddress localInetSocketAddress = (InetSocketAddress)paramSocketAddress;
+        if (AndroidVersion.isKitKat()) {
+          this.d = localInetSocketAddress.getHostString();
+        } else {
+          this.d = localInetSocketAddress.getHostName();
+        }
+        if (this.d != null)
+        {
+          if (localInetSocketAddress.isUnresolved()) {
+            localObject = "";
+          } else {
+            localObject = localInetSocketAddress.getAddress().getHostAddress();
+          }
+          this.e = ((String)localObject);
+          if (this.d.equals(this.e)) {
+            this.d = com.tencent.qapmsdk.dns.b.b.c(this.e);
+          }
+          this.f = localInetSocketAddress.getPort();
+        }
+        else
+        {
+          throw new IOException("Can't find host");
+        }
       }
-      if (!localInetSocketAddress.isUnresolved()) {
-        break label213;
-      }
-    }
-    for (localObject = "";; localObject = localInetSocketAddress.getAddress().getHostAddress())
-    {
-      this.e = ((String)localObject);
-      if (this.d.equals(this.e)) {
-        this.d = com.tencent.qapmsdk.dns.b.b.c(this.e);
-      }
-      this.f = localInetSocketAddress.getPort();
       long l = SystemClock.elapsedRealtime();
       try
       {
@@ -296,42 +309,43 @@ public class d
       }
       catch (Exception paramSocketAddress)
       {
-        label213:
         this.g.E = paramSocketAddress;
         a.a(false, this.d, this.f, SystemClock.elapsedRealtime() - l, this.g);
-        if (!(paramSocketAddress instanceof InvocationTargetException)) {
-          break label449;
+        if ((paramSocketAddress instanceof InvocationTargetException))
+        {
+          boolean bool = AndroidVersion.isL();
+          localObject = paramSocketAddress.getCause();
+          if (!(localObject instanceof IOException))
+          {
+            if (!(localObject instanceof ClassCastException))
+            {
+              if ((bool) && ((localObject instanceof ErrnoException)) && (((Throwable)localObject).getMessage().contains("EBADF"))) {
+                throw new IOException(paramSocketAddress);
+              }
+              if ((bool) && ((localObject instanceof ErrnoException)) && (((Throwable)localObject).getMessage().contains("EACCES"))) {
+                throw new IOException(paramSocketAddress);
+              }
+              if ((bool) && ((localObject instanceof ErrnoException)) && (((Throwable)localObject).getMessage().contains("ENOTSOCK"))) {
+                throw new IOException(paramSocketAddress);
+              }
+              if ((bool) && ((localObject instanceof ErrnoException)) && (((Throwable)localObject).getMessage().contains("ENETUNREACH"))) {
+                throw new IOException(paramSocketAddress);
+              }
+            }
+            else
+            {
+              throw new IOException(paramSocketAddress);
+            }
+          }
+          else {
+            throw ((IOException)localObject);
+          }
         }
-        boolean bool = AndroidVersion.isL();
-        localObject = paramSocketAddress.getCause();
-        if (!(localObject instanceof IOException)) {
-          break;
-        }
-        throw ((IOException)localObject);
-        if (!(localObject instanceof ClassCastException)) {
-          break label305;
-        }
-        throw new IOException(paramSocketAddress);
-        if ((!bool) || (!(localObject instanceof ErrnoException)) || (!((Throwable)localObject).getMessage().contains("EBADF"))) {
-          break label341;
-        }
-        throw new IOException(paramSocketAddress);
-        if ((!bool) || (!(localObject instanceof ErrnoException)) || (!((Throwable)localObject).getMessage().contains("EACCES"))) {
-          break label377;
-        }
-        throw new IOException(paramSocketAddress);
-        if ((!bool) || (!(localObject instanceof ErrnoException)) || (!((Throwable)localObject).getMessage().contains("ENOTSOCK"))) {
-          break label413;
-        }
-        throw new IOException(paramSocketAddress);
-        if ((!bool) || (!(localObject instanceof ErrnoException)) || (!((Throwable)localObject).getMessage().contains("ENETUNREACH"))) {
-          break label449;
-        }
-        throw new IOException(paramSocketAddress);
         com.tencent.qapmsdk.socket.d.d.a(paramSocketAddress);
         throw new IOException(paramSocketAddress);
       }
     }
+    throw new IOException("Disable network by developer!");
   }
   
   protected void create(boolean paramBoolean)
@@ -390,24 +404,26 @@ public class d
   
   protected InputStream getInputStream()
   {
-    if (!TrafficMonitor.a().c()) {
-      throw new IOException("Disable network by developer!");
-    }
-    if (this.h == null) {}
-    try
+    if (TrafficMonitor.a().c())
     {
-      this.h = new b((InputStream)com.tencent.qapmsdk.socket.d.d.a(this.c.getClass()).a("getInputStream", new Class[0]).invoke(this.c, new Object[0]), this.g);
+      if (this.h == null) {
+        try
+        {
+          this.h = new b((InputStream)com.tencent.qapmsdk.socket.d.d.a(this.c.getClass()).a("getInputStream", new Class[0]).invoke(this.c, new Object[0]), this.g);
+        }
+        catch (Exception localException)
+        {
+          if (((localException instanceof InvocationTargetException)) && ((localException.getCause() instanceof IOException))) {
+            throw ((IOException)localException.getCause());
+          }
+          com.tencent.qapmsdk.socket.d.d.a(localException);
+          throw new IOException(localException);
+        }
+      }
       this.g.F = false;
       return this.h;
     }
-    catch (Exception localException)
-    {
-      if (((localException instanceof InvocationTargetException)) && ((localException.getCause() instanceof IOException))) {
-        throw ((IOException)localException.getCause());
-      }
-      com.tencent.qapmsdk.socket.d.d.a(localException);
-      throw new IOException(localException);
-    }
+    throw new IOException("Disable network by developer!");
   }
   
   protected int getLocalPort()
@@ -435,24 +451,26 @@ public class d
   
   protected OutputStream getOutputStream()
   {
-    if (!TrafficMonitor.a().c()) {
-      throw new IOException("Disable network by developer!");
-    }
-    if (this.i == null) {}
-    try
+    if (TrafficMonitor.a().c())
     {
-      this.i = new c((OutputStream)com.tencent.qapmsdk.socket.d.d.a(this.c.getClass()).a("getOutputStream", new Class[0]).invoke(this.c, new Object[0]), this.g);
-      this.i.a(false, this.d, this.e, this.f, c(), d());
+      if (this.i == null) {
+        try
+        {
+          this.i = new c((OutputStream)com.tencent.qapmsdk.socket.d.d.a(this.c.getClass()).a("getOutputStream", new Class[0]).invoke(this.c, new Object[0]), this.g);
+          this.i.a(false, this.d, this.e, this.f, c(), d());
+        }
+        catch (Exception localException)
+        {
+          if (((localException instanceof InvocationTargetException)) && ((localException.getCause() instanceof IOException))) {
+            throw ((IOException)localException.getCause());
+          }
+          com.tencent.qapmsdk.socket.d.d.a(localException);
+          throw new IOException(localException);
+        }
+      }
       return this.i;
     }
-    catch (Exception localException)
-    {
-      if (((localException instanceof InvocationTargetException)) && ((localException.getCause() instanceof IOException))) {
-        throw ((IOException)localException.getCause());
-      }
-      com.tencent.qapmsdk.socket.d.d.a(localException);
-      throw new IOException(localException);
-    }
+    throw new IOException("Disable network by developer!");
   }
   
   protected int getPort()
@@ -475,23 +493,23 @@ public class d
   
   protected void listen(int paramInt)
   {
-    if (!TrafficMonitor.a().c()) {
-      throw new IOException("Disable network by developer!");
-    }
-    try
-    {
-      com.tencent.qapmsdk.socket.d.d.a(this.c.getClass()).a("listen", new Class[] { Integer.TYPE }).invoke(this.c, new Object[] { Integer.valueOf(this.port) });
-      b();
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (((localException instanceof InvocationTargetException)) && ((localException.getCause() instanceof IOException))) {
-        throw ((IOException)localException.getCause());
+    if (TrafficMonitor.a().c()) {
+      try
+      {
+        com.tencent.qapmsdk.socket.d.d.a(this.c.getClass()).a("listen", new Class[] { Integer.TYPE }).invoke(this.c, new Object[] { Integer.valueOf(this.port) });
+        b();
+        return;
       }
-      com.tencent.qapmsdk.socket.d.d.a(localException);
-      throw new IOException(localException);
+      catch (Exception localException)
+      {
+        if (((localException instanceof InvocationTargetException)) && ((localException.getCause() instanceof IOException))) {
+          throw ((IOException)localException.getCause());
+        }
+        com.tencent.qapmsdk.socket.d.d.a(localException);
+        throw new IOException(localException);
+      }
     }
+    throw new IOException("Disable network by developer!");
   }
   
   protected void sendUrgentData(int paramInt)
@@ -521,16 +539,12 @@ public class d
     try
     {
       com.tencent.qapmsdk.socket.d.d.a(this.c.getClass()).a("setPerformancePreferences", new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE }).invoke(this.c, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-      super.setPerformancePreferences(paramInt1, paramInt2, paramInt3);
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        com.tencent.qapmsdk.socket.d.d.a(localException);
-      }
+      com.tencent.qapmsdk.socket.d.d.a(localException);
     }
+    super.setPerformancePreferences(paramInt1, paramInt2, paramInt3);
   }
   
   protected void shutdownInput()
@@ -591,20 +605,20 @@ public class d
     try
     {
       localStringBuilder.append(com.tencent.qapmsdk.socket.d.d.a(this.c.getClass()).a("toString", new Class[0]).invoke(this.c, new Object[0]));
-      return "]";
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localStringBuilder.append(super.toString());
-      }
+      label50:
+      break label50;
     }
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.d
  * JD-Core Version:    0.7.0.1
  */

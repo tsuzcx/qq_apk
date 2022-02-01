@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 
 public class AudioTransitionAnimUtils
 {
@@ -21,52 +21,45 @@ public class AudioTransitionAnimUtils
   
   public static int a(int paramInt1, int paramInt2)
   {
-    int j = 1;
-    int i;
-    if ((paramInt1 == 0) && (paramInt2 == 1)) {
-      i = j;
-    }
-    for (;;)
+    int i = 2;
+    if ((paramInt1 == 0) && (paramInt2 == 1)) {}
+    do
     {
-      try
-      {
-        boolean bool = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
-        paramInt1 = i;
-        if (bool) {
-          paramInt1 = i + 100;
-        }
-        return paramInt1;
-      }
-      catch (Exception localException) {}
+      paramInt1 = 1;
+      break;
       if ((paramInt1 == 1) && (paramInt2 == 0))
       {
-        i = 2;
+        paramInt1 = i;
+        break;
       }
-      else if ((paramInt1 == 1) && (paramInt2 == 2))
+      if ((paramInt1 == 1) && (paramInt2 == 2))
       {
-        i = 3;
+        paramInt1 = 3;
+        break;
       }
-      else if ((paramInt1 == 2) && (paramInt2 == 1))
+      if ((paramInt1 == 2) && (paramInt2 == 1))
       {
-        i = 4;
+        paramInt1 = 4;
+        break;
       }
-      else if ((paramInt1 == 0) && (paramInt2 == 2))
+      if ((paramInt1 == 0) && (paramInt2 == 2))
       {
-        i = 7;
+        paramInt1 = 7;
+        break;
       }
-      else
-      {
-        i = j;
-        if (paramInt1 == 2)
-        {
-          i = j;
-          if (paramInt2 == 0) {
-            i = 6;
-          }
-        }
+    } while ((paramInt1 != 2) || (paramInt2 != 0));
+    paramInt1 = 6;
+    try
+    {
+      boolean bool = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
+      paramInt2 = paramInt1;
+      if (bool) {
+        paramInt2 = paramInt1 + 100;
       }
+      return paramInt2;
     }
-    return i;
+    catch (Exception localException) {}
+    return paramInt1;
   }
   
   public static boolean a(int paramInt)
@@ -81,7 +74,7 @@ public class AudioTransitionAnimUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.AudioTransitionAnimUtils
  * JD-Core Version:    0.7.0.1
  */

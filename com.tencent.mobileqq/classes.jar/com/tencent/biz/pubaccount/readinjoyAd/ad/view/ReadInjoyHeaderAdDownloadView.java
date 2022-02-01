@@ -3,6 +3,7 @@ package com.tencent.biz.pubaccount.readinjoyAd.ad.view;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
@@ -42,23 +43,24 @@ public class ReadInjoyHeaderAdDownloadView
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress = new ReadInjoyHeaderAdDownloadView.SimpleRoundProgress(paramContext);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.jdField_a_of_type_Int = Color.parseColor("#99FFFFFF");
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.jdField_b_of_type_Int = Color.parseColor("#FFFFFFFF");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.jdField_a_of_type_Float = AIOUtils.a(2.0F, paramContext.getResources());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.jdField_b_of_type_Float = AIOUtils.a(2.0F, paramContext.getResources());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.jdField_c_of_type_Float = AIOUtils.a(9.0F, paramContext.getResources());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.jdField_c_of_type_Int = 100;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.e = 270;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.d = 0;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.f = 65;
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
-    addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress, localLayoutParams);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.jdField_a_of_type_Float = AIOUtils.b(2.0F, paramContext.getResources());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.jdField_b_of_type_Float = AIOUtils.b(2.0F, paramContext.getResources());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.jdField_c_of_type_Float = AIOUtils.b(9.0F, paramContext.getResources());
+    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress;
+    ((ReadInjoyHeaderAdDownloadView.SimpleRoundProgress)localObject).jdField_c_of_type_Int = 100;
+    ((ReadInjoyHeaderAdDownloadView.SimpleRoundProgress)localObject).e = 270;
+    ((ReadInjoyHeaderAdDownloadView.SimpleRoundProgress)localObject).d = 0;
+    ((ReadInjoyHeaderAdDownloadView.SimpleRoundProgress)localObject).f = 65;
+    localObject = new FrameLayout.LayoutParams(-1, -1);
+    addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress, (ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_c_of_type_Int = 2130841967;
+    this.jdField_c_of_type_Int = 2130841858;
     this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.jdField_c_of_type_Int);
-    localLayoutParams = new FrameLayout.LayoutParams(AIOUtils.a(13.0F, getResources()), AIOUtils.a(16.0F, getResources()));
-    localLayoutParams.gravity = 17;
-    addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
+    localObject = new FrameLayout.LayoutParams(AIOUtils.b(13.0F, getResources()), AIOUtils.b(16.0F, getResources()));
+    ((FrameLayout.LayoutParams)localObject).gravity = 17;
+    addView(this.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_b_of_type_Int = 2130841969;
+    this.jdField_b_of_type_Int = 2130841860;
     this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(this.jdField_b_of_type_Int);
     paramContext = new FrameLayout.LayoutParams(-1, -1);
     addView(this.jdField_b_of_type_AndroidWidgetImageView, paramContext);
@@ -72,28 +74,34 @@ public class ReadInjoyHeaderAdDownloadView
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.setVisibility(8);
-    switch (this.jdField_a_of_type_Int)
+    paramInt1 = this.jdField_a_of_type_Int;
+    if (paramInt1 != 0)
     {
-    case 3: 
-    default: 
-      return;
-    case 0: 
-      if (getPaddingTop() != this.d) {
-        setPadding(this.d, this.d, this.d, this.d);
+      if (paramInt1 != 1)
+      {
+        if (paramInt1 != 2)
+        {
+          if (paramInt1 != 4) {
+            return;
+          }
+          if (getPaddingTop() != 0) {
+            setPadding(0, 0, 0, 0);
+          }
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.setVisibility(0);
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.setPaused(true);
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.setProgress(paramInt2);
+          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          return;
+        }
+        paramInt1 = getPaddingTop();
+        paramInt2 = this.d;
+        if (paramInt1 != paramInt2) {
+          setPadding(paramInt2, paramInt2, paramInt2, paramInt2);
+        }
+        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        return;
       }
-      setPadding(0, 0, 0, 0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      return;
-    case 4: 
-      if (getPaddingTop() != 0) {
-        setPadding(0, 0, 0, 0);
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.setVisibility(0);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.setPaused(true);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.setProgress(paramInt2);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      return;
-    case 1: 
       if (getPaddingTop() != 0) {
         setPadding(0, 0, 0, 0);
       }
@@ -104,16 +112,18 @@ public class ReadInjoyHeaderAdDownloadView
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       return;
     }
-    if (getPaddingTop() != this.d) {
-      setPadding(this.d, this.d, this.d, this.d);
+    paramInt1 = getPaddingTop();
+    paramInt2 = this.d;
+    if (paramInt1 != paramInt2) {
+      setPadding(paramInt2, paramInt2, paramInt2, paramInt2);
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    setPadding(0, 0, 0, 0);
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInjoyHeaderAdDownloadView
  * JD-Core Version:    0.7.0.1
  */

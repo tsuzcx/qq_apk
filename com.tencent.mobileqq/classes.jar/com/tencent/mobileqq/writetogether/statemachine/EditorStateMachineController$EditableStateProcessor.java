@@ -15,15 +15,21 @@ class EditorStateMachineController$EditableStateProcessor
   
   public void a(EditorState paramEditorState)
   {
-    EditorStateMachineController.a(this.b).i_(true);
-    if (QLog.isColorLevel()) {
-      QLog.d("EditorStateMachineContr", 2, "[onEnter] enter: " + this.a + ", lastState: " + paramEditorState);
+    EditorStateMachineController.a(this.b).k_(true);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[onEnter] enter: ");
+      localStringBuilder.append(this.a);
+      localStringBuilder.append(", lastState: ");
+      localStringBuilder.append(paramEditorState);
+      QLog.d("EditorStateMachineContr", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.statemachine.EditorStateMachineController.EditableStateProcessor
  * JD-Core Version:    0.7.0.1
  */

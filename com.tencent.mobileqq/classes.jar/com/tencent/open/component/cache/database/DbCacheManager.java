@@ -53,39 +53,32 @@ public class DbCacheManager
   
   protected List<DbCacheManager.OnChangeListener> a()
   {
-    ArrayList localArrayList1;
-    Object localObject2;
-    for (;;)
+    Object localObject3;
+    synchronized (this.jdField_b_of_type_JavaUtilArrayList)
     {
-      synchronized (this.jdField_b_of_type_JavaUtilArrayList)
+      if (this.jdField_b_of_type_JavaUtilArrayList.size() > 0)
       {
-        if (this.jdField_b_of_type_JavaUtilArrayList.size() <= 0) {
-          break;
-        }
-        localArrayList1 = new ArrayList();
+        ArrayList localArrayList1 = new ArrayList();
         Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-        if (!localIterator.hasNext()) {
-          break label99;
-        }
-        WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if (localWeakReference == null)
+        Object localObject1;
+        for (;;)
         {
-          localWeakReference = null;
-          if (localWeakReference == null) {
-            continue;
+          localObject1 = localArrayList1;
+          if (!localIterator.hasNext()) {
+            break;
           }
-          localArrayList1.add(localWeakReference);
+          localObject1 = (WeakReference)localIterator.next();
+          if (localObject1 == null) {
+            localObject1 = null;
+          } else {
+            localObject1 = (DbCacheManager.OnChangeListener)((WeakReference)localObject1).get();
+          }
+          if (localObject1 != null) {
+            localArrayList1.add(localObject1);
+          }
         }
+        return localObject1;
       }
-      localObject2 = (DbCacheManager.OnChangeListener)localObject1.get();
-    }
-    for (;;)
-    {
-      return localObject2;
-      localObject2 = null;
-      continue;
-      label99:
-      localObject2 = localArrayList1;
     }
   }
   
@@ -105,9 +98,8 @@ public class DbCacheManager
   
   protected void a(SQLiteDatabase paramSQLiteDatabase, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 2)
     {
-    default: 
       super.a(paramSQLiteDatabase, paramInt);
       return;
     }
@@ -187,7 +179,7 @@ public class DbCacheManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.component.cache.database.DbCacheManager
  * JD-Core Version:    0.7.0.1
  */

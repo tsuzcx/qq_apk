@@ -22,13 +22,15 @@ public final class ReqGroupVideo$RspShareBackflowVerify
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 50 }, new String[] { "result", "uint64_group_code", "uint64_room_id", "uint32_room_create_time", "enum_verify_status", "bytes_wording" }, new Object[] { null, Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, RspShareBackflowVerify.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 50 }, new String[] { "result", "uint64_group_code", "uint64_room_id", "uint32_room_create_time", "enum_verify_status", "bytes_wording" }, new Object[] { null, localLong, localLong, localInteger, localInteger, localByteStringMicro }, RspShareBackflowVerify.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ReqGroupVideo.RspShareBackflowVerify
  * JD-Core Version:    0.7.0.1
  */

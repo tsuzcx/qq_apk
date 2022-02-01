@@ -14,21 +14,21 @@ class DoubleVideoCtrlUI$21
   
   public void a(boolean paramBoolean)
   {
-    if (paramBoolean) {
+    if (paramBoolean)
+    {
       DoubleVideoCtrlUI.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentAvAppSessionInfo);
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentAvWtogetherWTogetherRealNameVideoProcessHelper.a(null);
-      return;
-      int i = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a.getDimensionPixelSize(2131299166);
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a(2131695996, 0, i);
+      int i = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a.getDimensionPixelSize(2131299168);
+      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a(2131696011, 0, i);
     }
+    this.jdField_a_of_type_ComTencentAvWtogetherWTogetherRealNameVideoProcessHelper.a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoCtrlUI.21
  * JD-Core Version:    0.7.0.1
  */

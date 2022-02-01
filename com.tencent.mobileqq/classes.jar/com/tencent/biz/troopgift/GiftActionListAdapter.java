@@ -12,10 +12,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.RoundRelativeLayout;
 import java.util.ArrayList;
 
 public class GiftActionListAdapter
@@ -32,8 +32,13 @@ public class GiftActionListAdapter
     if (this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable == null) {
       this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(Color.parseColor("#f4f4f4"));
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("GiftActionListAdapter", 2, "loadImage, url=" + paramString);
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("loadImage, url=");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.d("GiftActionListAdapter", 2, ((StringBuilder)localObject1).toString());
     }
     Object localObject2 = null;
     try
@@ -47,14 +52,8 @@ public class GiftActionListAdapter
         ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
         localObject1 = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject1);
       }
-      for (;;)
+      else
       {
-        paramString = (String)localObject1;
-        if (localObject1 == null) {
-          paramString = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-        }
-        paramImageView.setBackgroundDrawable(paramString);
-        return;
         localObject1 = localObject2;
         if (QLog.isColorLevel())
         {
@@ -65,16 +64,21 @@ public class GiftActionListAdapter
     }
     catch (Exception localException)
     {
-      for (;;)
+      localObject1 = localObject2;
+      if (QLog.isColorLevel())
       {
-        Object localObject1 = localObject2;
-        if (QLog.isColorLevel())
-        {
-          QLog.w("GiftActionListAdapter", 2, "loadImage exp: url=" + paramString, localException);
-          localObject1 = localObject2;
-        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("loadImage exp: url=");
+        ((StringBuilder)localObject1).append(paramString);
+        QLog.w("GiftActionListAdapter", 2, ((StringBuilder)localObject1).toString(), localException);
+        localObject1 = localObject2;
       }
     }
+    paramString = (String)localObject1;
+    if (localObject1 == null) {
+      paramString = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+    }
+    paramImageView.setBackgroundDrawable(paramString);
   }
   
   public int getCount()
@@ -95,29 +99,28 @@ public class GiftActionListAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     View localView;
-    Object localObject;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560766, paramViewGroup, false);
-      ((RoundRelativeLayout)localView.findViewById(2131377393)).setRoundLayoutRadius(ScreenUtil.dip2px(3.0F));
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560654, paramViewGroup, false);
+      ((RoundRelativeLayout)localView.findViewById(2131376843)).setRoundLayoutRadius(ScreenUtil.dip2px(3.0F));
       localObject = localView.getLayoutParams();
       ((ViewGroup.LayoutParams)localObject).width = this.jdField_a_of_type_Int;
       ((ViewGroup.LayoutParams)localObject).height = this.b;
       localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    for (;;)
+    else
     {
-      localObject = (GiftConfigManager.ImgEntryItem)getItem(paramInt);
-      a((ImageView)localView.findViewById(2131368865), ((GiftConfigManager.ImgEntryItem)localObject).a);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localView;
       localView = paramView;
     }
+    Object localObject = (GiftConfigManager.ImgEntryItem)getItem(paramInt);
+    a((ImageView)localView.findViewById(2131368591), ((GiftConfigManager.ImgEntryItem)localObject).a);
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troopgift.GiftActionListAdapter
  * JD-Core Version:    0.7.0.1
  */

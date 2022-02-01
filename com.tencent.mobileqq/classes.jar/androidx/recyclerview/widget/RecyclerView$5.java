@@ -19,8 +19,13 @@ class RecyclerView$5
     RecyclerView.ViewHolder localViewHolder = RecyclerView.getChildViewHolderInt(paramView);
     if (localViewHolder != null)
     {
-      if ((!localViewHolder.isTmpDetached()) && (!localViewHolder.shouldIgnore())) {
-        throw new IllegalArgumentException("Called attach on a child which is not detached: " + localViewHolder + this.this$0.exceptionLabel());
+      if ((!localViewHolder.isTmpDetached()) && (!localViewHolder.shouldIgnore()))
+      {
+        paramView = new StringBuilder();
+        paramView.append("Called attach on a child which is not detached: ");
+        paramView.append(localViewHolder);
+        paramView.append(this.this$0.exceptionLabel());
+        throw new IllegalArgumentException(paramView.toString());
       }
       localViewHolder.clearTmpDetachFlag();
     }
@@ -35,8 +40,13 @@ class RecyclerView$5
       localObject = RecyclerView.getChildViewHolderInt((View)localObject);
       if (localObject != null)
       {
-        if ((((RecyclerView.ViewHolder)localObject).isTmpDetached()) && (!((RecyclerView.ViewHolder)localObject).shouldIgnore())) {
-          throw new IllegalArgumentException("called detach on an already detached child " + localObject + this.this$0.exceptionLabel());
+        if ((((RecyclerView.ViewHolder)localObject).isTmpDetached()) && (!((RecyclerView.ViewHolder)localObject).shouldIgnore()))
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("called detach on an already detached child ");
+          localStringBuilder.append(localObject);
+          localStringBuilder.append(this.this$0.exceptionLabel());
+          throw new IllegalArgumentException(localStringBuilder.toString());
         }
         ((RecyclerView.ViewHolder)localObject).addFlags(256);
       }
@@ -107,7 +117,7 @@ class RecyclerView$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.RecyclerView.5
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ import mqq.app.MobileQQ;
 public class CommonDataAdapter
 {
   protected static CommonDataAdapter a;
-  protected static String a;
+  protected static String a = "androidqq";
   protected int a;
   protected long a;
   protected Context a;
@@ -25,11 +25,6 @@ public class CommonDataAdapter
   protected String f = "";
   protected String g = "";
   protected String h = "";
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "androidqq";
-  }
   
   protected CommonDataAdapter()
   {
@@ -55,8 +50,9 @@ public class CommonDataAdapter
   
   public int a()
   {
-    if (this.jdField_a_of_type_Int != -1) {
-      return this.jdField_a_of_type_Int;
+    int i = this.jdField_a_of_type_Int;
+    if (i != -1) {
+      return i;
     }
     a();
     return this.jdField_a_of_type_Int;
@@ -67,22 +63,27 @@ public class CommonDataAdapter
     try
     {
       this.jdField_a_of_type_Long = Long.valueOf(MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount()).longValue();
-      LogUtility.b("CommonDataAdapter", "get uin from app runtim succ:" + this.jdField_a_of_type_Long);
-      label47:
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("get uin from app runtim succ:");
+      localStringBuilder.append(this.jdField_a_of_type_Long);
+      LogUtility.b("CommonDataAdapter", localStringBuilder.toString());
+      label53:
       return this.jdField_a_of_type_Long;
     }
     catch (Throwable localThrowable)
     {
-      break label47;
+      break label53;
     }
   }
   
   public Context a()
   {
-    if (this.jdField_a_of_type_AndroidContentContext == null) {
-      return BaseApplication.getContext();
+    Context localContext = this.jdField_a_of_type_AndroidContentContext;
+    Object localObject = localContext;
+    if (localContext == null) {
+      localObject = BaseApplication.getContext();
     }
-    return this.jdField_a_of_type_AndroidContentContext;
+    return localObject;
   }
   
   public String a()
@@ -97,19 +98,29 @@ public class CommonDataAdapter
     {
       localObject = ((Context)localObject).getPackageManager().getPackageInfo(((Context)localObject).getPackageName(), 0);
       this.d = ((PackageInfo)localObject).versionName;
-      this.e = (this.d + "." + ((PackageInfo)localObject).versionCode);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.d);
+      localStringBuilder.append(".");
+      localStringBuilder.append(((PackageInfo)localObject).versionCode);
+      this.e = localStringBuilder.toString();
       this.f = this.d.substring(this.d.lastIndexOf('.') + 1, this.d.length());
       this.jdField_a_of_type_Int = ((PackageInfo)localObject).versionCode;
       return;
     }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException)
-    {
-      LogUtility.e("AppUpdate", "getPackageInfo NameNotFoundException : " + localNameNotFoundException.toString());
-      return;
-    }
     catch (Exception localException)
     {
-      LogUtility.e("AppUpdate", "getPackageInfo exception : " + localException.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getPackageInfo exception : ");
+      localStringBuilder.append(localException.toString());
+      LogUtility.e("AppUpdate", localStringBuilder.toString());
+      return;
+    }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getPackageInfo NameNotFoundException : ");
+      localStringBuilder.append(localNameNotFoundException.toString());
+      LogUtility.e("AppUpdate", localStringBuilder.toString());
     }
   }
   
@@ -184,7 +195,10 @@ public class CommonDataAdapter
     if (!TextUtils.isEmpty(this.g)) {
       return this.g;
     }
-    this.g = ("V1_AND_SQ_" + c());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("V1_AND_SQ_");
+    localStringBuilder.append(c());
+    this.g = localStringBuilder.toString();
     return this.g;
   }
   
@@ -200,7 +214,7 @@ public class CommonDataAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.adapter.CommonDataAdapter
  * JD-Core Version:    0.7.0.1
  */

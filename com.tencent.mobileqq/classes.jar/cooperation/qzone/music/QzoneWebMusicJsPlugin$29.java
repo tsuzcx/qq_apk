@@ -12,8 +12,9 @@ class QzoneWebMusicJsPlugin$29
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     LocalMultiProcConfig.putBool("qzbg_music_mobinet_tips", true);
-    if (this.val$listener != null) {
-      this.val$listener.onConfirm();
+    QzoneWebMusicJsPlugin.onUserConfirmListener localonUserConfirmListener = this.val$listener;
+    if (localonUserConfirmListener != null) {
+      localonUserConfirmListener.onConfirm();
     }
     paramDialogInterface.dismiss();
     this.this$0.isFlowWarningVisible = false;
@@ -21,7 +22,7 @@ class QzoneWebMusicJsPlugin$29
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.music.QzoneWebMusicJsPlugin.29
  * JD-Core Version:    0.7.0.1
  */

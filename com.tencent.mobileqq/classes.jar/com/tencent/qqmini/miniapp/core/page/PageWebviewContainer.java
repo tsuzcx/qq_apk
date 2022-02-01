@@ -3,6 +3,7 @@ package com.tencent.qqmini.miniapp.core.page;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.provider.Settings.System;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
@@ -89,7 +90,10 @@ public class PageWebviewContainer
     }
     catch (Exception localException)
     {
-      QMLog.e("PageWebviewContainer", "EVENT_DISABLE_SROLL_BOUNCE error," + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("EVENT_DISABLE_SROLL_BOUNCE error,");
+      localStringBuilder.append(localException);
+      QMLog.e("PageWebviewContainer", localStringBuilder.toString());
       paramNativeViewRequestEvent.fail("params error");
     }
   }
@@ -113,8 +117,7 @@ public class PageWebviewContainer
     {
       Object localObject = new JSONObject(paramNativeViewRequestEvent.jsonParams);
       long l = ((JSONObject)localObject).optLong("duration", 300L);
-      float f = DisplayUtil.getDensity(this.mMiniAppContext.getContext());
-      int i = (int)(((JSONObject)localObject).optInt("scrollTop") * f + 0.5F);
+      int i = (int)(DisplayUtil.getDensity(this.mMiniAppContext.getContext()) * ((JSONObject)localObject).optInt("scrollTop") + 0.5F);
       localObject = getCurrentPageWebview();
       if (localObject != null)
       {
@@ -122,8 +125,8 @@ public class PageWebviewContainer
         ((ValueAnimator)localValueAnimator).addUpdateListener(new PageWebviewContainer.3(this, (PageWebview)localObject));
         localValueAnimator.addListener(new PageWebviewContainer.4(this, paramNativeViewRequestEvent));
         localValueAnimator.start();
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -145,72 +148,64 @@ public class PageWebviewContainer
   private void parsePageConfigByUrl(String paramString)
   {
     Boolean localBoolean = getApkgInfo().getAppConfigInfo().globalPageInfo.windowInfo.enablePullDownRefresh;
-    if (localBoolean == null)
-    {
+    boolean bool;
+    if (localBoolean == null) {
       bool = false;
-      this.enableRefresh = bool;
-      this.pageOrientation = getApkgInfo().getAppConfigInfo().globalPageInfo.windowInfo.pageOrientation;
-      paramString = getApkgInfo().getAppConfigInfo().getPageInfo(paramString);
-      if (paramString != null)
-      {
-        localBoolean = paramString.windowInfo.enablePullDownRefresh;
-        if (localBoolean != null) {
-          break label137;
-        }
-        bool = this.enableRefresh;
-        label81:
-        this.enableRefresh = bool;
-        localBoolean = paramString.windowInfo.disableScroll;
-        if (localBoolean != null) {
-          break label145;
-        }
-      }
+    } else {
+      bool = localBoolean.booleanValue();
     }
-    label137:
-    label145:
-    for (boolean bool = this.disableScroll;; bool = localBoolean.booleanValue())
+    this.enableRefresh = bool;
+    this.pageOrientation = getApkgInfo().getAppConfigInfo().globalPageInfo.windowInfo.pageOrientation;
+    paramString = getApkgInfo().getAppConfigInfo().getPageInfo(paramString);
+    if (paramString != null)
     {
+      localBoolean = paramString.windowInfo.enablePullDownRefresh;
+      if (localBoolean == null) {
+        bool = this.enableRefresh;
+      } else {
+        bool = localBoolean.booleanValue();
+      }
+      this.enableRefresh = bool;
+      localBoolean = paramString.windowInfo.disableScroll;
+      if (localBoolean == null) {
+        bool = this.disableScroll;
+      } else {
+        bool = localBoolean.booleanValue();
+      }
       this.disableScroll = bool;
       paramString = paramString.windowInfo.pageOrientation;
       if (!TextUtils.isEmpty(paramString)) {
         this.pageOrientation = paramString;
       }
-      return;
-      bool = localBoolean.booleanValue();
-      break;
-      bool = localBoolean.booleanValue();
-      break label81;
     }
   }
   
   private void updateOrientation()
   {
+    ContentResolver localContentResolver = this.mMiniAppContext.getAttachedActivity().getContentResolver();
     int i = 0;
-    int j = Settings.System.getInt(this.mMiniAppContext.getAttachedActivity().getContentResolver(), "accelerometer_rotation", 0);
+    int j = Settings.System.getInt(localContentResolver, "accelerometer_rotation", 0);
     if ((WindowInfo.ORIENTATION_AUTO.equals(this.pageOrientation)) && (j == 1)) {
       i = 4;
+    } else if (!WindowInfo.ORIENTATION_LANDSCAPE.equals(this.pageOrientation)) {
+      i = 1;
     }
-    for (;;)
-    {
-      this.mMiniAppContext.getAttachedActivity().setRequestedOrientation(i);
-      return;
-      if (!WindowInfo.ORIENTATION_LANDSCAPE.equals(this.pageOrientation)) {
-        i = 1;
-      }
-    }
+    this.mMiniAppContext.getAttachedActivity().setRequestedOrientation(i);
   }
   
   public void addViewOnPage(View paramView)
   {
-    if (this.mBrandPage != null) {
-      this.mBrandPage.addView(paramView);
+    AbsAppBrandPage localAbsAppBrandPage = this.mBrandPage;
+    if (localAbsAppBrandPage != null) {
+      localAbsAppBrandPage.addView(paramView);
     }
   }
   
   public void addViewOnPage(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    if (this.mBrandPage != null) {
-      this.mBrandPage.addView(paramView, paramLayoutParams);
+    AbsAppBrandPage localAbsAppBrandPage = this.mBrandPage;
+    if (localAbsAppBrandPage != null) {
+      localAbsAppBrandPage.addView(paramView, paramLayoutParams);
     }
   }
   
@@ -219,15 +214,12 @@ public class PageWebviewContainer
     if (this.mBrandPageWebview != null)
     {
       paramString = ApiUtil.wrapCallbackFail(paramString, paramJSONObject);
-      if (paramString == null) {
-        break label32;
+      if (paramString != null) {
+        paramString = paramString.toString();
+      } else {
+        paramString = "";
       }
-    }
-    label32:
-    for (paramString = paramString.toString();; paramString = "")
-    {
       this.mBrandPageWebview.evaluateCallbackJs(paramInt, paramString);
-      return;
     }
   }
   
@@ -236,51 +228,54 @@ public class PageWebviewContainer
     if (this.mBrandPageWebview != null)
     {
       paramString = ApiUtil.wrapCallbackOk(paramString, paramJSONObject);
-      if (paramString == null) {
-        break label32;
+      if (paramString != null) {
+        paramString = paramString.toString();
+      } else {
+        paramString = "";
       }
-    }
-    label32:
-    for (paramString = paramString.toString();; paramString = "")
-    {
       this.mBrandPageWebview.evaluateCallbackJs(paramInt, paramString);
-      return;
     }
   }
   
   public void cleanUp()
   {
-    if (this.mBrandPageWebview != null) {
-      this.mBrandPageWebview.cleanUp();
+    Object localObject = this.mBrandPageWebview;
+    if (localObject != null) {
+      ((BrandPageWebview)localObject).cleanUp();
     }
-    if (this.mNaitveViewLayout != null)
+    localObject = this.mNaitveViewLayout;
+    if (localObject != null)
     {
-      this.mNaitveViewLayout.destroy();
+      ((NativeViewContainer)localObject).destroy();
       this.mNaitveViewLayout.removeAllViews();
       this.mNaitveViewLayout = null;
     }
-    if (this.mRotationObserver != null) {
-      this.mRotationObserver.unregisterObserver();
+    localObject = this.mRotationObserver;
+    if (localObject != null) {
+      ((PageWebviewContainer.RotationObserver)localObject).unregisterObserver();
     }
   }
   
   public void evaluateCallbackJs(int paramInt, String paramString)
   {
-    if (this.mBrandPageWebview != null) {
-      this.mBrandPageWebview.evaluateCallbackJs(paramInt, paramString);
+    BrandPageWebview localBrandPageWebview = this.mBrandPageWebview;
+    if (localBrandPageWebview != null) {
+      localBrandPageWebview.evaluateCallbackJs(paramInt, paramString);
     }
   }
   
   public void evaluateSubscribeJS(String paramString1, String paramString2)
   {
-    if (this.mBrandPageWebview != null) {
-      this.mBrandPageWebview.evaluateSubscribeJS(paramString1, paramString2, getWebViewId());
+    BrandPageWebview localBrandPageWebview = this.mBrandPageWebview;
+    if (localBrandPageWebview != null) {
+      localBrandPageWebview.evaluateSubscribeJS(paramString1, paramString2, getWebViewId());
     }
   }
   
   public ApkgInfo getApkgInfo()
   {
-    if ((this.mMiniAppContext != null) && (this.mMiniAppContext.getMiniAppInfo() != null)) {
+    IMiniAppContext localIMiniAppContext = this.mMiniAppContext;
+    if ((localIMiniAppContext != null) && (localIMiniAppContext.getMiniAppInfo() != null)) {
       return (ApkgInfo)this.mMiniAppContext.getMiniAppInfo().apkgInfo;
     }
     return null;
@@ -288,8 +283,9 @@ public class PageWebviewContainer
   
   public Activity getAttachActivity()
   {
-    if (this.mMiniAppContext != null) {
-      return this.mMiniAppContext.getAttachedActivity();
+    IMiniAppContext localIMiniAppContext = this.mMiniAppContext;
+    if (localIMiniAppContext != null) {
+      return localIMiniAppContext.getAttachedActivity();
     }
     return null;
   }
@@ -306,8 +302,9 @@ public class PageWebviewContainer
   
   public PageWebview getCurrentPageWebview()
   {
-    if (this.mBrandPage != null) {
-      return this.mBrandPage.getCurrentPageWebview();
+    AbsAppBrandPage localAbsAppBrandPage = this.mBrandPage;
+    if (localAbsAppBrandPage != null) {
+      return localAbsAppBrandPage.getCurrentPageWebview();
     }
     return null;
   }
@@ -329,8 +326,9 @@ public class PageWebviewContainer
   
   public NavigationBar getNaviBar()
   {
-    if (this.mBrandPage != null) {
-      return this.mBrandPage.getNaviBar();
+    AbsAppBrandPage localAbsAppBrandPage = this.mBrandPage;
+    if (localAbsAppBrandPage != null) {
+      return localAbsAppBrandPage.getNaviBar();
     }
     return null;
   }
@@ -350,42 +348,46 @@ public class PageWebviewContainer
   
   public int getWebViewId()
   {
-    if ((this.mBrandPageWebview == null) || (this.mBrandPageWebview.getRealView() == null)) {
-      return -1;
+    BrandPageWebview localBrandPageWebview = this.mBrandPageWebview;
+    if ((localBrandPageWebview != null) && (localBrandPageWebview.getRealView() != null)) {
+      return this.mBrandPageWebview.getRealView().getPageWebViewId();
     }
-    return this.mBrandPageWebview.getRealView().getPageWebViewId();
+    return -1;
   }
   
   public boolean handleBackPressed()
   {
-    return (this.mNaitveViewLayout != null) && (this.mNaitveViewLayout.handleBackPressed());
+    NativeViewContainer localNativeViewContainer = this.mNaitveViewLayout;
+    return (localNativeViewContainer != null) && (localNativeViewContainer.handleBackPressed());
   }
   
   public String handleNativeUIEvent(NativeViewRequestEvent paramNativeViewRequestEvent)
   {
-    QMLog.d("PageWebviewContainer", "event = " + paramNativeViewRequestEvent.event + ", params = " + paramNativeViewRequestEvent.jsonParams);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("event = ");
+    localStringBuilder.append(paramNativeViewRequestEvent.event);
+    localStringBuilder.append(", params = ");
+    localStringBuilder.append(paramNativeViewRequestEvent.jsonParams);
+    QMLog.d("PageWebviewContainer", localStringBuilder.toString());
     if ("startPullDownRefresh".equals(paramNativeViewRequestEvent.event)) {
       handleStartPullDownRefresh(paramNativeViewRequestEvent);
+    } else if ("stopPullDownRefresh".equals(paramNativeViewRequestEvent.event)) {
+      handleStopPullDownRefresh(paramNativeViewRequestEvent);
+    } else if ("disableScrollBounce".equals(paramNativeViewRequestEvent.event)) {
+      handleDisableScrollBounce(paramNativeViewRequestEvent);
+    } else if ("openDocument".equals(paramNativeViewRequestEvent.event)) {
+      handleOpenDocument(paramNativeViewRequestEvent);
+    } else if ("scrollWebviewTo".equals(paramNativeViewRequestEvent.event)) {
+      handlePageScrollTo(paramNativeViewRequestEvent);
     }
-    for (;;)
-    {
-      return null;
-      if ("stopPullDownRefresh".equals(paramNativeViewRequestEvent.event)) {
-        handleStopPullDownRefresh(paramNativeViewRequestEvent);
-      } else if ("disableScrollBounce".equals(paramNativeViewRequestEvent.event)) {
-        handleDisableScrollBounce(paramNativeViewRequestEvent);
-      } else if ("openDocument".equals(paramNativeViewRequestEvent.event)) {
-        handleOpenDocument(paramNativeViewRequestEvent);
-      } else if ("scrollWebviewTo".equals(paramNativeViewRequestEvent.event)) {
-        handlePageScrollTo(paramNativeViewRequestEvent);
-      }
-    }
+    return null;
   }
   
   public boolean isCustomNavibar()
   {
-    if (this.mBrandPage != null) {
-      return this.mBrandPage.isCustomNavibar();
+    AbsAppBrandPage localAbsAppBrandPage = this.mBrandPage;
+    if (localAbsAppBrandPage != null) {
+      return localAbsAppBrandPage.isCustomNavibar();
     }
     return false;
   }
@@ -419,21 +421,32 @@ public class PageWebviewContainer
   
   public void onRefresh()
   {
-    if (this.mMiniAppContext != null) {
-      this.mMiniAppContext.performAction(ServiceSubscribeEvent.obtain("onPullDownRefresh", new JSONObject().toString(), getWebViewId()));
+    IMiniAppContext localIMiniAppContext = this.mMiniAppContext;
+    if (localIMiniAppContext != null) {
+      localIMiniAppContext.performAction(ServiceSubscribeEvent.obtain("onPullDownRefresh", new JSONObject().toString(), getWebViewId()));
+    }
+  }
+  
+  public void refreshOrientation()
+  {
+    IMiniAppContext localIMiniAppContext = this.mMiniAppContext;
+    if ((localIMiniAppContext != null) && (localIMiniAppContext.getAttachedActivity() != null) && (!this.mMiniAppContext.getAttachedActivity().isFinishing())) {
+      updateOrientation();
     }
   }
   
   public void removeBrandPageWebview()
   {
-    if (this.mSwipeRefreshLayout != null) {
-      this.mSwipeRefreshLayout.removeAllViews();
+    MiniSwipeRefreshLayout localMiniSwipeRefreshLayout = this.mSwipeRefreshLayout;
+    if (localMiniSwipeRefreshLayout != null) {
+      localMiniSwipeRefreshLayout.removeAllViews();
     }
   }
   
   public void removeSoftKeyboardStateListener(SoftKeyboardStateHelper.SoftKeyboardStateListener paramSoftKeyboardStateListener)
   {
-    if ((this.mBrandPage != null) && (this.mBrandPage.getRootContainer() != null)) {
+    AbsAppBrandPage localAbsAppBrandPage = this.mBrandPage;
+    if ((localAbsAppBrandPage != null) && (localAbsAppBrandPage.getRootContainer() != null)) {
       this.mBrandPage.getRootContainer().removeSoftKeyboardStateListener(paramSoftKeyboardStateListener);
     }
   }
@@ -454,14 +467,16 @@ public class PageWebviewContainer
   
   public void setCurInputId(int paramInt)
   {
-    if ((this.mBrandPage != null) && (this.mBrandPage.getRootContainer() != null)) {
+    AbsAppBrandPage localAbsAppBrandPage = this.mBrandPage;
+    if ((localAbsAppBrandPage != null) && (localAbsAppBrandPage.getRootContainer() != null)) {
       this.mBrandPage.getRootContainer().setCurShowingInputId(paramInt);
     }
   }
   
   public void setSoftKeyboardStateListener(SoftKeyboardStateHelper.SoftKeyboardStateListener paramSoftKeyboardStateListener)
   {
-    if ((this.mBrandPage != null) && (this.mBrandPage.getRootContainer() != null)) {
+    AbsAppBrandPage localAbsAppBrandPage = this.mBrandPage;
+    if ((localAbsAppBrandPage != null) && (localAbsAppBrandPage.getRootContainer() != null)) {
       this.mBrandPage.getRootContainer().setSoftKeyboardStateListener(paramSoftKeyboardStateListener);
     }
   }
@@ -471,8 +486,9 @@ public class PageWebviewContainer
     if (getApkgInfo() != null)
     {
       parsePageConfigByUrl(paramString);
-      if (this.mSwipeRefreshLayout != null) {
-        this.mSwipeRefreshLayout.setEnabled(this.enableRefresh);
+      paramString = this.mSwipeRefreshLayout;
+      if (paramString != null) {
+        paramString.setEnabled(this.enableRefresh);
       }
       if (this.disableScroll)
       {
@@ -482,15 +498,13 @@ public class PageWebviewContainer
           this.mBrandPageWebview.getRealView().getView().getViewTreeObserver().addOnScrollChangedListener(new PageWebviewContainer.1(this));
         }
       }
-      if ((this.mMiniAppContext != null) && (this.mMiniAppContext.getAttachedActivity() != null) && (!this.mMiniAppContext.getAttachedActivity().isFinishing())) {
-        updateOrientation();
-      }
+      refreshOrientation();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.PageWebviewContainer
  * JD-Core Version:    0.7.0.1
  */

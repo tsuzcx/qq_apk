@@ -41,20 +41,22 @@ public class ResultReceiver
   
   public void send(int paramInt, Bundle paramBundle)
   {
-    if (this.mLocal) {
-      if (this.mHandler != null) {
-        this.mHandler.post(new ResultReceiver.MyRunnable(this, paramInt, paramBundle));
-      }
-    }
-    while (this.mReceiver == null)
+    if (this.mLocal)
     {
-      return;
+      localObject = this.mHandler;
+      if (localObject != null)
+      {
+        ((Handler)localObject).post(new ResultReceiver.MyRunnable(this, paramInt, paramBundle));
+        return;
+      }
       onReceiveResult(paramInt, paramBundle);
       return;
     }
+    Object localObject = this.mReceiver;
+    if (localObject != null) {}
     try
     {
-      this.mReceiver.send(paramInt, paramBundle);
+      ((IResultReceiver)localObject).send(paramInt, paramBundle);
       return;
     }
     catch (RemoteException paramBundle) {}
@@ -75,7 +77,7 @@ public class ResultReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v4.os.ResultReceiver
  * JD-Core Version:    0.7.0.1
  */

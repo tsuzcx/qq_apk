@@ -6,7 +6,7 @@ import com.tencent.mobileqq.activity.aio.helper.ILifeCycleHelper;
 
 public class MiniChatProvider
 {
-  private SparseArrayCompat<SparseArrayCompat<ILifeCycleHelper>> a = new SparseArrayCompat(18);
+  private SparseArrayCompat<SparseArrayCompat<ILifeCycleHelper>> a = new SparseArrayCompat(23);
   private SparseArrayCompat<IHelper> b = new SparseArrayCompat();
   
   public MiniChatProvider(MiniPie paramMiniPie)
@@ -46,23 +46,21 @@ public class MiniChatProvider
   public void a(int paramInt)
   {
     SparseArrayCompat localSparseArrayCompat = (SparseArrayCompat)this.a.get(paramInt);
-    if (localSparseArrayCompat == null) {}
-    for (;;)
-    {
+    if (localSparseArrayCompat == null) {
       return;
-      int j = localSparseArrayCompat.size();
-      int i = 0;
-      while (i < j)
-      {
-        ((ILifeCycleHelper)localSparseArrayCompat.valueAt(i)).onMoveToState(paramInt);
-        i += 1;
-      }
+    }
+    int j = localSparseArrayCompat.size();
+    int i = 0;
+    while (i < j)
+    {
+      ((ILifeCycleHelper)localSparseArrayCompat.valueAt(i)).onMoveToState(paramInt);
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniChatProvider
  * JD-Core Version:    0.7.0.1
  */

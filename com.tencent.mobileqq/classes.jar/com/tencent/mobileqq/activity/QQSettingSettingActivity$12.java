@@ -9,16 +9,21 @@ class QQSettingSettingActivity$12
 {
   QQSettingSettingActivity$12(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void onGetProfileCard(boolean paramBoolean, Object paramObject)
+  protected void onGetProfileCard(boolean paramBoolean, Object paramObject)
   {
-    if ((paramBoolean) && ((paramObject instanceof Card)) && (this.a.app.getCurrentAccountUin().equals(((Card)paramObject).uin))) {
-      QQSettingSettingActivity.a(this.a, (Card)paramObject);
+    if ((paramBoolean) && ((paramObject instanceof Card)))
+    {
+      String str = this.a.app.getCurrentAccountUin();
+      paramObject = (Card)paramObject;
+      if (str.equals(paramObject.uin)) {
+        QQSettingSettingActivity.a(this.a, paramObject);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingSettingActivity.12
  * JD-Core Version:    0.7.0.1
  */

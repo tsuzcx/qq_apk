@@ -12,7 +12,6 @@ class HippyEngineManager$Builder
   private boolean mBridgeHippyBuffer = false;
   private HippyBundleLoader mCoreBundleLoader;
   private String mDebugJs;
-  private HippyEngine.EngineMode mEngineMode;
   private HippyGlobalConfigs mGlobalConfigs;
   private int mGroupId = -1;
   private List<HippyAPIProvider> mPackages;
@@ -33,36 +32,30 @@ class HippyEngineManager$Builder
     HippyEngine.EngineInitParams localEngineInitParams = new HippyEngine.EngineInitParams();
     this.mGlobalConfigs.to(localEngineInitParams);
     localEngineInitParams.debugMode = this.mSupportDev;
-    localEngineInitParams.engineMode = this.mEngineMode;
-    if ((this.mCoreBundleLoader instanceof HippyAssetBundleLoader)) {
-      localEngineInitParams.coreJSAssetsPath = this.mCoreBundleLoader.getRawPath();
-    }
-    label232:
-    do
-    {
-      for (;;)
-      {
-        localEngineInitParams.providers = this.mPackages;
-        localEngineInitParams.enableBuffer = this.mBridgeHippyBuffer;
-        if (this.mCoreBundleLoader != null) {
-          localEngineInitParams.codeCacheTag = this.mCoreBundleLoader.getCodeCacheTag();
-        }
-        localEngineInitParams.groupId = this.mGroupId;
-        localEngineInitParams.check();
-        switch (HippyEngineManager.1.$SwitchMap$com$tencent$mtt$hippy$HippyEngine$EngineMode[this.mEngineMode.ordinal()])
-        {
-        default: 
-          return null;
-          if (!(this.mCoreBundleLoader instanceof HippyFileBundleLoader)) {
-            break label232;
-          }
-          localEngineInitParams.coreJSFilePath = this.mCoreBundleLoader.getRawPath();
-        }
+    HippyBundleLoader localHippyBundleLoader = this.mCoreBundleLoader;
+    if ((localHippyBundleLoader instanceof HippyAssetBundleLoader)) {
+      localEngineInitParams.coreJSAssetsPath = localHippyBundleLoader.getRawPath();
+    } else if ((localHippyBundleLoader instanceof HippyFileBundleLoader)) {
+      localEngineInitParams.coreJSFilePath = localHippyBundleLoader.getRawPath();
+    } else {
+      if (localHippyBundleLoader != null) {
+        break label229;
       }
-    } while (this.mCoreBundleLoader == null);
-    throw new RuntimeException("Hippy: CoreBundleLoader is neither a HippyAssetBundleLoader nor a HippyFileBundleLoader!");
-    return new HippyNormalEngineManager(localEngineInitParams, this.mPreloadBundleLoader);
+    }
+    localEngineInitParams.providers = this.mPackages;
+    localEngineInitParams.enableBuffer = this.mBridgeHippyBuffer;
+    localHippyBundleLoader = this.mCoreBundleLoader;
+    if (localHippyBundleLoader != null) {
+      localEngineInitParams.codeCacheTag = localHippyBundleLoader.getCodeCacheTag();
+    }
+    localEngineInitParams.groupId = this.mGroupId;
+    localEngineInitParams.check();
+    if (this.mGroupId == -1) {
+      return new HippyNormalEngineManager(localEngineInitParams, this.mPreloadBundleLoader);
+    }
     return new HippySingleThreadEngineManager(localEngineInitParams, this.mPreloadBundleLoader);
+    label229:
+    throw new RuntimeException("Hippy: CoreBundleLoader is neither a HippyAssetBundleLoader nor a HippyFileBundleLoader!");
   }
   
   Builder setCoreBundleLoader(HippyBundleLoader paramHippyBundleLoader)
@@ -80,12 +73,6 @@ class HippyEngineManager$Builder
   Builder setEnableHippyBuffer(boolean paramBoolean)
   {
     this.mBridgeHippyBuffer = paramBoolean;
-    return this;
-  }
-  
-  Builder setEngineMode(HippyEngine.EngineMode paramEngineMode)
-  {
-    this.mEngineMode = paramEngineMode;
     return this;
   }
   
@@ -120,7 +107,7 @@ class HippyEngineManager$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippyEngineManager.Builder
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,8 @@ import android.content.res.Resources;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
@@ -15,10 +15,10 @@ import java.lang.ref.WeakReference;
 class ClosePCVerifyImpl$ClosePCVerifyClickableSpan
   extends ClickableSpan
 {
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<BaseActivity> b;
+  private WeakReference<BaseQQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<QBaseActivity> b;
   
-  public ClosePCVerifyImpl$ClosePCVerifyClickableSpan(WeakReference<QQAppInterface> paramWeakReference, WeakReference<BaseActivity> paramWeakReference1)
+  public ClosePCVerifyImpl$ClosePCVerifyClickableSpan(WeakReference<BaseQQAppInterface> paramWeakReference, WeakReference<QBaseActivity> paramWeakReference1)
   {
     WeakReference localWeakReference;
     if (a(paramWeakReference1, localWeakReference))
@@ -32,10 +32,11 @@ class ClosePCVerifyImpl$ClosePCVerifyClickableSpan
   
   private boolean a()
   {
-    return (this.b == null) || (this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.b.get() == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null);
+    WeakReference localWeakReference = this.b;
+    return (localWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference == null) || (localWeakReference.get() == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null);
   }
   
-  private boolean a(WeakReference<QQAppInterface> paramWeakReference, WeakReference<BaseActivity> paramWeakReference1)
+  private boolean a(WeakReference<BaseQQAppInterface> paramWeakReference, WeakReference<QBaseActivity> paramWeakReference1)
   {
     return (paramWeakReference == null) || (paramWeakReference1 == null);
   }
@@ -49,15 +50,15 @@ class ClosePCVerifyImpl$ClosePCVerifyClickableSpan
       QLog.e("ClosePCVerifyImpl", 1, "onClick error: params wrong");
       return;
     }
-    paramView = (BaseActivity)this.b.get();
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (!NetworkUtil.d(paramView))
+    paramView = (QBaseActivity)this.b.get();
+    BaseQQAppInterface localBaseQQAppInterface = (BaseQQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (!NetworkUtil.isNetSupport(paramView))
     {
-      QQToast.a(paramView, 1, 2131699303, 1).a();
+      QQToast.a(paramView, 1, 2131699408, 1).a();
       QLog.e("ClosePCVerifyImpl", 1, "NetworkError");
       return;
     }
-    ClosePCVerifyImpl.a(this.jdField_a_of_type_ComTencentMobileqqQuickloginClosePCVerifyImpl, localQQAppInterface, paramView);
+    ClosePCVerifyImpl.a(this.jdField_a_of_type_ComTencentMobileqqQuickloginClosePCVerifyImpl, localBaseQQAppInterface, paramView);
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
@@ -68,13 +69,13 @@ class ClosePCVerifyImpl$ClosePCVerifyClickableSpan
       QLog.e("ClosePCVerifyImpl", 1, "updateDrawState error: param wrong");
       return;
     }
-    paramTextPaint.setColor(((BaseActivity)this.b.get()).getResources().getColor(2131165750));
+    paramTextPaint.setColor(((QBaseActivity)this.b.get()).getResources().getColor(2131165741));
     paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.quicklogin.ClosePCVerifyImpl.ClosePCVerifyClickableSpan
  * JD-Core Version:    0.7.0.1
  */

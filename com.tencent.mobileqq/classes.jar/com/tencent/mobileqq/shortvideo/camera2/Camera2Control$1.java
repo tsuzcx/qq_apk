@@ -25,7 +25,10 @@ class Camera2Control$1
   
   public void onError(@NonNull CameraDevice paramCameraDevice, int paramInt)
   {
-    Camera2Utils.a(2, "[Camera2]openCamera2 onError, error:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[Camera2]openCamera2 onError, error:");
+    localStringBuilder.append(paramInt);
+    Camera2Utils.a(2, localStringBuilder.toString());
     Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
     Camera2Control.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
     paramCameraDevice.close();
@@ -38,7 +41,10 @@ class Camera2Control$1
   
   public void onOpened(@NonNull CameraDevice paramCameraDevice)
   {
-    Camera2Utils.a(1, "[Camera2]openCamera2 onOpen, cost:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[Camera2]openCamera2 onOpen, cost:");
+    localStringBuilder.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    Camera2Utils.a(1, localStringBuilder.toString());
     Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, paramCameraDevice);
     Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, true);
     Camera2Control.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
@@ -47,7 +53,7 @@ class Camera2Control$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.camera2.Camera2Control.1
  * JD-Core Version:    0.7.0.1
  */

@@ -37,12 +37,18 @@ public class ImageCollection
   
   public String toString()
   {
-    return "ImageCollection{videoChannelImages=" + this.videoChannelImages + ", overlayImages=" + this.overlayImages + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ImageCollection{videoChannelImages=");
+    localStringBuilder.append(this.videoChannelImages);
+    localStringBuilder.append(", overlayImages=");
+    localStringBuilder.append(this.overlayImages);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavkit.composition.video.ImageCollection
  * JD-Core Version:    0.7.0.1
  */

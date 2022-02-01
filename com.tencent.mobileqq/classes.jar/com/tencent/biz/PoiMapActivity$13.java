@@ -14,28 +14,41 @@ class PoiMapActivity$13
   {
     if ((paramView instanceof PoiMapActivity.TabView))
     {
-      this.a.a(((PoiMapActivity.TabView)paramView).a);
-      this.a.i();
-      if (QLog.isDevelopLevel()) {
-        QLog.i("PoiMapActivity", 4, "mTabClickListener" + ((PoiMapActivity.TabView)paramView).a);
+      Object localObject = this.a;
+      PoiMapActivity.TabView localTabView = (PoiMapActivity.TabView)paramView;
+      ((PoiMapActivity)localObject).a(localTabView.a);
+      this.a.e();
+      if (QLog.isDevelopLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("mTabClickListener");
+        ((StringBuilder)localObject).append(localTabView.a);
+        QLog.i("PoiMapActivity", 4, ((StringBuilder)localObject).toString());
       }
-      if (!PoiMapActivity.a(this.a)) {
-        break label127;
+      StringBuilder localStringBuilder;
+      if (PoiMapActivity.a(this.a))
+      {
+        localObject = this.a;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("click_tab");
+        localStringBuilder.append(localTabView.a + 1);
+        ((PoiMapActivity)localObject).a("share_locate", localStringBuilder.toString(), "", "", "", "");
       }
-      this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), "", "", "", "");
+      else
+      {
+        localObject = this.a;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("click_tab");
+        localStringBuilder.append(localTabView.a + 1);
+        ((PoiMapActivity)localObject).a("share_locate", localStringBuilder.toString(), this.a.f, this.a.e, "", "");
+      }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label127:
-      this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), this.a.f, this.a.e, "", "");
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.PoiMapActivity.13
  * JD-Core Version:    0.7.0.1
  */

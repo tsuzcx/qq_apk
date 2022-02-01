@@ -6,8 +6,8 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.shortvideo.ptvfilter.gesture.GestureRecognitionUtils;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.utils.BusinessCommonConfig;
+import com.tencent.mobileqq.utils.QQAudioHelper;
 import com.tencent.mobileqq.utils.SyncLoadTask;
 import com.tencent.mobileqq.utils.confighandler.DefaultConfigInfo;
 import com.tencent.mobileqq.utils.configsp.ARPromotionConfigSP;
@@ -28,16 +28,24 @@ public class PromotionMgr
   
   public PromotionMgr(AppInterface paramAppInterface)
   {
-    long l = AudioHelper.b();
-    this.jdField_a_of_type_JavaLangString = ("ARPromotion_" + l);
+    long l = QQAudioHelper.b();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ARPromotion_");
+    localStringBuilder.append(l);
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
     this.b = paramAppInterface.getAccount();
-    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "PromotionMgr, mUin[" + this.b + "]");
+    paramAppInterface = this.jdField_a_of_type_JavaLangString;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PromotionMgr, mUin[");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("]");
+    QLog.w(paramAppInterface, 1, localStringBuilder.toString());
     this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload = new PromotionResDownload(l);
   }
   
   public PromotionConfigInfo a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo == null) && (AudioHelper.d())) {
+    if ((this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo == null) && (QQAudioHelper.b())) {
       QLog.w(PromotionUtil.jdField_a_of_type_JavaLangString, 1, "getConfigInfo, AR配置还未初始化", new Throwable("打印调用栈"));
     }
     return this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo;
@@ -53,44 +61,50 @@ public class PromotionMgr
   
   public void a(AppInterface paramAppInterface, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload != null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload != null)
+    {
       if (a())
       {
         PromotionConfigInfo localPromotionConfigInfo = a();
         this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload.a(localPromotionConfigInfo);
         this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload.a(paramAppInterface, false, paramString, 0);
+        return;
       }
-    }
-    do
-    {
-      return;
       QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestDownload, 配置还未初始化");
       return;
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestDownload, 下载器为空");
-    } while (!AudioHelper.d());
-    throw new IllegalArgumentException(HardCodeUtil.a(2131708499));
+    }
+    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestDownload, 下载器为空");
+    if (!QQAudioHelper.b()) {
+      return;
+    }
+    throw new IllegalArgumentException(HardCodeUtil.a(2131708505));
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString, PromotionConfigInfo paramPromotionConfigInfo)
   {
     String str = this.jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder().append("onGetEntryConfig, from server, configInfo[");
-    if (paramPromotionConfigInfo != null) {}
-    for (boolean bool = true;; bool = false)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onGetEntryConfig, from server, configInfo[");
+    boolean bool;
+    if (paramPromotionConfigInfo != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localStringBuilder.append(bool);
+    localStringBuilder.append("]");
+    QLog.w(str, 1, localStringBuilder.toString());
+    if (paramPromotionConfigInfo != null)
     {
-      QLog.w(str, 1, bool + "]");
+      a(paramPromotionConfigInfo);
+      paramPromotionConfigInfo = this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrReadConfigTask;
       if (paramPromotionConfigInfo != null)
       {
-        a(paramPromotionConfigInfo);
-        if (this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrReadConfigTask != null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrReadConfigTask.clean();
-          this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrReadConfigTask = null;
-        }
+        paramPromotionConfigInfo.clean();
+        this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrReadConfigTask = null;
       }
-      if (!a("onGetConfig", paramQQAppInterface, null)) {
-        break;
-      }
+    }
+    if (a("onGetConfig", paramQQAppInterface, null)) {
       return;
     }
     a(paramString);
@@ -99,25 +113,32 @@ public class PromotionMgr
   
   public void a(QQAppInterface paramQQAppInterface, String paramString, DefaultConfigInfo paramDefaultConfigInfo)
   {
-    if (!a()) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onGetResConfig, 365还没加载");
-    }
-    int i;
-    do
+    if (!a())
     {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onGetResConfig, 365还没加载");
       return;
-      paramDefaultConfigInfo = a();
-      if (paramDefaultConfigInfo == null)
-      {
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onGetResConfig, 365为null");
-        return;
-      }
-      i = ARPromotionConfigSP.a(this.b);
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onGetResConfig, 365已经加载了, [" + paramDefaultConfigInfo.config364Version + "], ver[" + i + "]");
-      if (TextUtils.equals(paramString, "test")) {
-        i = -1;
-      }
-    } while (i == paramDefaultConfigInfo.config364Version);
+    }
+    paramDefaultConfigInfo = a();
+    if (paramDefaultConfigInfo == null)
+    {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onGetResConfig, 365为null");
+      return;
+    }
+    int i = ARPromotionConfigSP.a(this.b);
+    String str = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onGetResConfig, 365已经加载了, [");
+    localStringBuilder.append(paramDefaultConfigInfo.config364Version);
+    localStringBuilder.append("], ver[");
+    localStringBuilder.append(i);
+    localStringBuilder.append("]");
+    QLog.w(str, 1, localStringBuilder.toString());
+    if (TextUtils.equals(paramString, "test")) {
+      i = -1;
+    }
+    if (i == paramDefaultConfigInfo.config364Version) {
+      return;
+    }
     a(null);
     a(paramQQAppInterface, null, null);
   }
@@ -129,10 +150,17 @@ public class PromotionMgr
     {
       try
       {
-        if (AudioHelper.d())
+        if (QQAudioHelper.b())
         {
           localThrowable = new Throwable("打印调用栈");
-          QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setConfigInfo, old[" + this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo + "], new[" + paramPromotionConfigInfo + "]", localThrowable);
+          String str = this.jdField_a_of_type_JavaLangString;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("setConfigInfo, old[");
+          localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo);
+          localStringBuilder.append("], new[");
+          localStringBuilder.append(paramPromotionConfigInfo);
+          localStringBuilder.append("]");
+          QLog.w(str, 1, localStringBuilder.toString(), localThrowable);
           this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = paramPromotionConfigInfo;
           this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrReadConfigTask = null;
           return;
@@ -145,15 +173,17 @@ public class PromotionMgr
   
   public void a(PromotionResDownload.DownloadListener paramDownloadListener)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload.a(paramDownloadListener);
+    PromotionResDownload localPromotionResDownload = this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload;
+    if (localPromotionResDownload != null) {
+      localPromotionResDownload.a(paramDownloadListener);
     }
   }
   
   void a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload.b();
+    PromotionResDownload localPromotionResDownload = this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload;
+    if (localPromotionResDownload != null) {
+      localPromotionResDownload.b();
     }
     BusinessCommonConfig.sendConfigUpdateNotify(2, paramString);
   }
@@ -192,49 +222,77 @@ public class PromotionMgr
     }
     if (((ReadConfigTask)localObject1).isNeedRunTask())
     {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "异步加载config[" + paramString + "]");
+      localObject2 = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("异步加载config[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("]");
+      QLog.w((String)localObject2, 1, localStringBuilder.toString());
       localObject2 = new ArrayList();
       ((ArrayList)localObject2).add(localObject1);
       SyncLoadTask.requestSyncTask(null, (ArrayList)localObject2, new PromotionMgr.1(this, paramAppInterface, paramString, paramGetConfigListen));
-    }
-    for (;;)
-    {
       return true;
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "异步加载config[" + paramString + "], 已经在加载中");
     }
+    paramAppInterface = this.jdField_a_of_type_JavaLangString;
+    paramGetConfigListen = new StringBuilder();
+    paramGetConfigListen.append("异步加载config[");
+    paramGetConfigListen.append(paramString);
+    paramGetConfigListen.append("], 已经在加载中");
+    QLog.w(paramAppInterface, 1, paramGetConfigListen.toString());
+    return true;
   }
   
   void b(AppInterface paramAppInterface)
   {
-    PromotionConfigInfo localPromotionConfigInfo1 = a();
-    if (AudioHelper.e()) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestPreDownload, PromotionConfigInfo[" + localPromotionConfigInfo1 + "], isDevicesSupport[" + PromotionDevice.a() + "]");
-    }
-    if (!PromotionDevice.a()) {}
-    PromotionConfigInfo localPromotionConfigInfo2;
-    do
+    PromotionConfigInfo localPromotionConfigInfo = a();
+    Object localObject2;
+    if (QQAudioHelper.c())
     {
-      do
-      {
+      localObject1 = this.jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("requestPreDownload, PromotionConfigInfo[");
+      ((StringBuilder)localObject2).append(localPromotionConfigInfo);
+      ((StringBuilder)localObject2).append("], isDevicesSupport[");
+      ((StringBuilder)localObject2).append(PromotionDevice.a());
+      ((StringBuilder)localObject2).append("]");
+      QLog.w((String)localObject1, 1, ((StringBuilder)localObject2).toString());
+    }
+    if (!PromotionDevice.a()) {
+      return;
+    }
+    if (localPromotionConfigInfo == null) {
+      return;
+    }
+    if (!localPromotionConfigInfo.mainswitch) {
+      return;
+    }
+    if (localPromotionConfigInfo.operationInfos.size() == 0) {
+      return;
+    }
+    c(paramAppInterface);
+    Object localObject1 = a();
+    if (localObject1 != null)
+    {
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload;
+      if (localObject2 == null) {
         return;
-      } while ((localPromotionConfigInfo1 == null) || (!localPromotionConfigInfo1.mainswitch) || (localPromotionConfigInfo1.operationInfos.size() == 0));
-      c(paramAppInterface);
-      localPromotionConfigInfo2 = a();
-    } while ((localPromotionConfigInfo2 == null) || (this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload == null));
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload.a(localPromotionConfigInfo2);
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload.a(paramAppInterface, true, localPromotionConfigInfo1.activityid, 0);
+      }
+      ((PromotionResDownload)localObject2).a((PromotionConfigInfo)localObject1);
+      this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload.a(paramAppInterface, true, localPromotionConfigInfo.activityid, 0);
+    }
   }
   
   public void b(PromotionResDownload.DownloadListener paramDownloadListener)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload.b(paramDownloadListener);
+    PromotionResDownload localPromotionResDownload = this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload;
+    if (localPromotionResDownload != null) {
+      localPromotionResDownload.b(paramDownloadListener);
     }
   }
   
   void c(AppInterface paramAppInterface)
   {
-    GestureRecognitionUtils.b();
+    GestureRecognitionUtils.a();
     if (this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrDownloadDependRes == null) {
       this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrDownloadDependRes = new DownloadDependRes();
     }
@@ -243,20 +301,30 @@ public class PromotionMgr
   
   public void onDestroy()
   {
-    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onDestroy, ThreadID[" + Thread.currentThread().getId() + "], Tid[" + Process.myTid() + "]");
-    if (this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrReadConfigTask != null)
+    Object localObject = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDestroy, ThreadID[");
+    localStringBuilder.append(Thread.currentThread().getId());
+    localStringBuilder.append("], Tid[");
+    localStringBuilder.append(Process.myTid());
+    localStringBuilder.append("]");
+    QLog.w((String)localObject, 1, localStringBuilder.toString());
+    localObject = this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrReadConfigTask;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrReadConfigTask.clean();
+      ((ReadConfigTask)localObject).clean();
       this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrReadConfigTask = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload != null)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload.a();
+      ((PromotionResDownload)localObject).a();
       this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionResDownload = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrDownloadDependRes != null)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrDownloadDependRes;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrDownloadDependRes.a();
+      ((DownloadDependRes)localObject).a();
       this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrDownloadDependRes = null;
     }
     a(null);
@@ -264,7 +332,7 @@ public class PromotionMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotionMgr.PromotionMgr
  * JD-Core Version:    0.7.0.1
  */

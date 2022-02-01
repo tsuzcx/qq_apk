@@ -9,14 +9,14 @@ class FloatWindowModule$12
   
   public void run()
   {
-    if (FloatWindowModule.access$2900(this.this$0) != null) {
-      FloatWindowModule.access$2900(this.this$0).setVisibility(8);
+    if (FloatWindowModule.access$3500(this.this$0) != null) {
+      FloatWindowModule.access$3500(this.this$0).setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.bizmodule.FloatWindowModule.12
  * JD-Core Version:    0.7.0.1
  */

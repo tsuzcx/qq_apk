@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -21,7 +21,11 @@ public abstract class QavListItemBase
   {
     super(paramContext);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = (getClass().getSimpleName() + "_" + AudioHelper.b());
+    paramContext = new StringBuilder();
+    paramContext.append(getClass().getSimpleName());
+    paramContext.append("_");
+    paramContext.append(AudioHelper.b());
+    this.jdField_a_of_type_JavaLangString = paramContext.toString();
   }
   
   public int a()
@@ -50,7 +54,14 @@ public abstract class QavListItemBase
     if (this.jdField_a_of_type_ComTencentAvUiQavListItemBase$IClickCallback != null)
     {
       long l = AudioHelper.b();
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onClick, seq[" + l + "], mPosition[" + this.jdField_a_of_type_Int + "]");
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onClick, seq[");
+      localStringBuilder.append(l);
+      localStringBuilder.append("], mPosition[");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append("]");
+      QLog.w(str, 1, localStringBuilder.toString());
       this.jdField_a_of_type_ComTencentAvUiQavListItemBase$IClickCallback.a(l, this.jdField_a_of_type_Int, this);
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -60,7 +71,7 @@ public abstract class QavListItemBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.QavListItemBase
  * JD-Core Version:    0.7.0.1
  */

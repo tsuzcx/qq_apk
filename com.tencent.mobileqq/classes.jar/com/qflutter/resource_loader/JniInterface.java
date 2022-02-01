@@ -11,20 +11,23 @@ public class JniInterface
   
   public static long getBitmapPixelDataMemoryPtr(Bitmap paramBitmap)
   {
-    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
-      return 0L;
-    }
-    try
+    if (paramBitmap != null)
     {
-      long l = NativeBitmap.nativeGetBitmapPixelDataMemoryPtr(paramBitmap);
-      return l;
-    }
-    catch (Throwable paramBitmap)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getBitmapPixelDataMemoryPtr error:");
-      localStringBuilder.append(paramBitmap.getMessage());
-      Log.e("JniInterface", localStringBuilder.toString());
+      if (paramBitmap.isRecycled()) {
+        return 0L;
+      }
+      try
+      {
+        long l = NativeBitmap.nativeGetBitmapPixelDataMemoryPtr(paramBitmap);
+        return l;
+      }
+      catch (Throwable paramBitmap)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getBitmapPixelDataMemoryPtr error:");
+        localStringBuilder.append(paramBitmap.getMessage());
+        Log.e("JniInterface", localStringBuilder.toString());
+      }
     }
     return 0L;
   }
@@ -51,7 +54,7 @@ public class JniInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.qflutter.resource_loader.JniInterface
  * JD-Core Version:    0.7.0.1
  */

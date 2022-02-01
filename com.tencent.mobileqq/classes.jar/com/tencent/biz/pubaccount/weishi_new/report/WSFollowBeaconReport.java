@@ -41,44 +41,38 @@ public class WSFollowBeaconReport
     HashMap localHashMap = new HashMap();
     if ((paramstSimpleMetaFeed != null) && (paramstSimpleMetaFeed.poster != null))
     {
-      if (!WSFeedUtils.a(paramstSimpleMetaFeed.poster.followStatus)) {
-        break label159;
+      boolean bool = WSFeedUtils.a(paramstSimpleMetaFeed.poster.followStatus);
+      String str = "1";
+      if (bool) {
+        localObject = "1";
+      } else {
+        localObject = "0";
       }
-      str = "1";
-      localHashMap.put("is_focus", str);
-      if (paramInt3 <= 1) {
-        break label166;
+      localHashMap.put("is_focus", localObject);
+      if (paramInt3 > 1) {
+        localObject = "1";
+      } else {
+        localObject = "0";
       }
-      str = "1";
-      label59:
-      localHashMap.put("is_fold", str);
+      localHashMap.put("is_fold", localObject);
       localHashMap.put("fold_num", String.valueOf(paramInt3));
-      if (!paramBoolean) {
-        break label173;
+      if (paramBoolean) {
+        localObject = "1";
+      } else {
+        localObject = "0";
       }
-      str = "1";
-      label94:
-      localHashMap.put("is_unread", str);
-      if (!WSFeedUtils.a(paramstSimpleMetaFeed.poster)) {
-        break label180;
+      localHashMap.put("is_unread", localObject);
+      if (WSFeedUtils.a(paramstSimpleMetaFeed.poster)) {
+        localObject = str;
+      } else {
+        localObject = "0";
       }
+      localHashMap.put("is_livenow", localObject);
     }
-    label159:
-    label166:
-    label173:
-    label180:
-    for (String str = "1";; str = "0")
-    {
-      localHashMap.put("is_livenow", str);
-      a("friend_video" + paramInt1, paramInt2, localHashMap, paramstSimpleMetaFeed);
-      return;
-      str = "0";
-      break;
-      str = "0";
-      break label59;
-      str = "0";
-      break label94;
-    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("friend_video");
+    ((StringBuilder)localObject).append(paramInt1);
+    a(((StringBuilder)localObject).toString(), paramInt2, localHashMap, paramstSimpleMetaFeed);
   }
   
   public static void a(int paramInt1, stSimpleMetaFeed paramstSimpleMetaFeed, boolean paramBoolean, int paramInt2)
@@ -86,44 +80,38 @@ public class WSFollowBeaconReport
     HashMap localHashMap = new HashMap();
     if ((paramstSimpleMetaFeed != null) && (paramstSimpleMetaFeed.poster != null))
     {
-      if (!WSFeedUtils.a(paramstSimpleMetaFeed.poster.followStatus)) {
-        break label156;
+      boolean bool = WSFeedUtils.a(paramstSimpleMetaFeed.poster.followStatus);
+      String str = "1";
+      if (bool) {
+        localObject = "1";
+      } else {
+        localObject = "0";
       }
-      str = "1";
-      localHashMap.put("is_focus", str);
-      if (paramInt2 <= 1) {
-        break label163;
+      localHashMap.put("is_focus", localObject);
+      if (paramInt2 > 1) {
+        localObject = "1";
+      } else {
+        localObject = "0";
       }
-      str = "1";
-      label58:
-      localHashMap.put("is_fold", str);
+      localHashMap.put("is_fold", localObject);
       localHashMap.put("fold_num", String.valueOf(paramInt2));
-      if (!paramBoolean) {
-        break label170;
+      if (paramBoolean) {
+        localObject = "1";
+      } else {
+        localObject = "0";
       }
-      str = "1";
-      label92:
-      localHashMap.put("is_unread", str);
-      if (!WSFeedUtils.a(paramstSimpleMetaFeed.poster)) {
-        break label177;
+      localHashMap.put("is_unread", localObject);
+      if (WSFeedUtils.a(paramstSimpleMetaFeed.poster)) {
+        localObject = str;
+      } else {
+        localObject = "0";
       }
+      localHashMap.put("is_livenow", localObject);
     }
-    label156:
-    label163:
-    label170:
-    label177:
-    for (String str = "1";; str = "0")
-    {
-      localHashMap.put("is_livenow", str);
-      a("friend_video" + paramInt1, localHashMap, paramstSimpleMetaFeed);
-      return;
-      str = "0";
-      break;
-      str = "0";
-      break label58;
-      str = "0";
-      break label92;
-    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("friend_video");
+    ((StringBuilder)localObject).append(paramInt1);
+    a(((StringBuilder)localObject).toString(), localHashMap, paramstSimpleMetaFeed);
   }
   
   public static void a(int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, ArrayList<FeedTextParser.WSUser> paramArrayList, ArrayList<FeedTextParser.WSTopic> paramArrayList1)
@@ -135,63 +123,80 @@ public class WSFollowBeaconReport
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("index", String.valueOf(paramInt));
-    localHashMap.put("position_profile", "recommend_profile" + paramInt);
-    localHashMap.put("position_nickname", "recommend_nickname" + paramInt);
-    localHashMap.put("position_close", "recommend_close" + paramInt);
-    if ((paramstSimpleMetaPerson != null) && (!WSFeedUtils.a(paramstSimpleMetaPerson.followStatus))) {
-      localHashMap.put("position_follow", "recommend_follow" + paramInt);
-    }
-    WSStatisticsReporter.Builder localBuilder = b("focus").addParams("position", "recommend_profile_card");
-    if (paramstSimpleMetaPerson != null) {}
-    for (paramstSimpleMetaPerson = paramstSimpleMetaPerson.id;; paramstSimpleMetaPerson = "")
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("recommend_profile");
+    ((StringBuilder)localObject).append(paramInt);
+    localHashMap.put("position_profile", ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("recommend_nickname");
+    ((StringBuilder)localObject).append(paramInt);
+    localHashMap.put("position_nickname", ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("recommend_close");
+    ((StringBuilder)localObject).append(paramInt);
+    localHashMap.put("position_close", ((StringBuilder)localObject).toString());
+    if ((paramstSimpleMetaPerson != null) && (!WSFeedUtils.a(paramstSimpleMetaPerson.followStatus)))
     {
-      b(localBuilder.addParams("owner_id", paramstSimpleMetaPerson).addExtParams(localHashMap), "gzh_exposure");
-      return;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("recommend_follow");
+      ((StringBuilder)localObject).append(paramInt);
+      localHashMap.put("position_follow", ((StringBuilder)localObject).toString());
     }
+    localObject = b("focus").addParams("position", "recommend_profile_card");
+    if (paramstSimpleMetaPerson != null) {
+      paramstSimpleMetaPerson = paramstSimpleMetaPerson.id;
+    } else {
+      paramstSimpleMetaPerson = "";
+    }
+    b(((WSStatisticsReporter.Builder)localObject).addParams("owner_id", paramstSimpleMetaPerson).addExtParams(localHashMap), "gzh_exposure");
   }
   
   private static void a(int paramInt, WSPlayerParam paramWSPlayerParam, boolean paramBoolean)
   {
-    long l2 = 0L;
-    if ((paramWSPlayerParam == null) || (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo == null)) {}
-    WSVideoInfo localWSVideoInfo;
-    do
-    {
-      return;
-      localWSVideoInfo = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo;
-    } while (WSVerticalUtils.a(a, paramInt, localWSVideoInfo));
-    paramWSPlayerParam = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper;
-    long l1;
-    HashMap localHashMap;
     if (paramWSPlayerParam != null)
     {
-      l1 = paramWSPlayerParam.a();
-      localHashMap = new HashMap();
-      localHashMap.put("event_type", paramInt + "");
-      localHashMap.put("feed_id", localWSVideoInfo.a);
-      localHashMap.put("owner_id", localWSVideoInfo.e);
-      localHashMap.put("global_key", WSRecommendReportManager.a().a(localWSVideoInfo.f));
-      localHashMap.put("feed_pass_key", localWSVideoInfo.g);
-      if (paramInt == 2) {
-        if (paramWSPlayerParam != null) {
-          break label300;
-        }
+      if (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo == null) {
+        return;
       }
-    }
-    for (;;)
-    {
-      localHashMap.put("duration", String.valueOf(l2));
-      localHashMap.put("last_location", String.valueOf(l1));
-      localHashMap.put("video_length", String.valueOf(localWSVideoInfo.c));
-      localHashMap.put("recommend_id", "");
-      localHashMap.put("poolType", String.valueOf(localWSVideoInfo.jdField_d_of_type_Int));
-      WSLog.e("WS_VIDEO_PLAY_TIME", "[WSFollowBeaconReport.java][reportVerticalVideoPlay] title:" + localWSVideoInfo.jdField_d_of_type_JavaLangString + ", map:" + localHashMap.toString());
-      b(b("focus").addParams(localHashMap), "gzh_video_play");
-      return;
-      l1 = 0L;
-      break;
-      label300:
-      l2 = paramWSPlayerParam.a(paramBoolean);
+      WSVideoInfo localWSVideoInfo = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo;
+      if (WSVerticalUtils.a(a, paramInt, localWSVideoInfo)) {
+        return;
+      }
+      Object localObject = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper;
+      long l2 = 0L;
+      long l1;
+      if (localObject != null) {
+        l1 = ((WSPlayerWrapper)localObject).a();
+      } else {
+        l1 = 0L;
+      }
+      paramWSPlayerParam = new HashMap();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("");
+      paramWSPlayerParam.put("event_type", localStringBuilder.toString());
+      paramWSPlayerParam.put("feed_id", localWSVideoInfo.a);
+      paramWSPlayerParam.put("owner_id", localWSVideoInfo.e);
+      paramWSPlayerParam.put("global_key", WSRecommendReportManager.a().a(localWSVideoInfo.f));
+      paramWSPlayerParam.put("feed_pass_key", localWSVideoInfo.g);
+      if (paramInt == 2)
+      {
+        if (localObject != null) {
+          l2 = ((WSPlayerWrapper)localObject).a(paramBoolean);
+        }
+        paramWSPlayerParam.put("duration", String.valueOf(l2));
+        paramWSPlayerParam.put("last_location", String.valueOf(l1));
+      }
+      paramWSPlayerParam.put("video_length", String.valueOf(localWSVideoInfo.c));
+      paramWSPlayerParam.put("recommend_id", "");
+      paramWSPlayerParam.put("poolType", String.valueOf(localWSVideoInfo.jdField_d_of_type_Int));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[WSFollowBeaconReport.java][reportVerticalVideoPlay] title:");
+      ((StringBuilder)localObject).append(localWSVideoInfo.jdField_d_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(", map:");
+      ((StringBuilder)localObject).append(paramWSPlayerParam.toString());
+      WSLog.e("WS_VIDEO_PLAY_TIME", ((StringBuilder)localObject).toString());
+      b(b("focus").addParams(paramWSPlayerParam), "gzh_video_play");
     }
   }
   
@@ -224,12 +229,21 @@ public class WSFollowBeaconReport
   
   public static void a(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    b(b("focus").addParams("position", "recommend_" + paramString1 + paramInt).addParams("owner_id", paramString2).addParams("action_id", paramString3), "gzh_click");
+    WSStatisticsReporter.Builder localBuilder = b("focus");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("recommend_");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(paramInt);
+    b(localBuilder.addParams("position", localStringBuilder.toString()).addParams("owner_id", paramString2).addParams("action_id", paramString3), "gzh_click");
   }
   
   public static void a(String paramString1, int paramInt, String paramString2, Map<String, String> paramMap, stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    a("dynamics_" + paramString1 + paramInt, Integer.valueOf(paramString2).intValue(), paramMap, paramstSimpleMetaFeed);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("dynamics_");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(paramInt);
+    a(localStringBuilder.toString(), Integer.valueOf(paramString2).intValue(), paramMap, paramstSimpleMetaFeed);
   }
   
   public static void a(String paramString, int paramInt, Map<String, String> paramMap, stSimpleMetaFeed paramstSimpleMetaFeed)
@@ -252,7 +266,7 @@ public class WSFollowBeaconReport
   
   private static WSStatisticsReporter.Builder b(String paramString)
   {
-    return new WSStatisticsReporter.Builder().setSopName(paramString).setTestId(WeishiUtils.a(9)).setPushId(WSInitializeHelper.a().a()).setFlush(true).setImmediatelyUpload(WeishiUtils.d());
+    return new WSStatisticsReporter.Builder().setSopName(paramString).setTestId(WeishiUtils.a(9)).setPushId(WSInitializeHelper.a().a()).setFlush(true);
   }
   
   public static void b()
@@ -265,35 +279,32 @@ public class WSFollowBeaconReport
     HashMap localHashMap = new HashMap();
     if ((paramstSimpleMetaFeed != null) && (paramstSimpleMetaFeed.poster != null))
     {
-      if (!WSFeedUtils.a(paramstSimpleMetaFeed.poster.followStatus)) {
-        break label134;
+      boolean bool = WSFeedUtils.a(paramstSimpleMetaFeed.poster.followStatus);
+      String str = "1";
+      if (bool) {
+        localObject = "1";
+      } else {
+        localObject = "0";
       }
-      str = "1";
-      localHashMap.put("is_focus", str);
-      if (paramInt3 <= 1) {
-        break label141;
+      localHashMap.put("is_focus", localObject);
+      if (paramInt3 > 1) {
+        localObject = "1";
+      } else {
+        localObject = "0";
       }
-      str = "1";
-      label59:
-      localHashMap.put("is_fold", str);
+      localHashMap.put("is_fold", localObject);
       localHashMap.put("fold_num", String.valueOf(paramInt3));
-      if (!paramBoolean) {
-        break label148;
+      if (paramBoolean) {
+        localObject = str;
+      } else {
+        localObject = "0";
       }
+      localHashMap.put("is_unread", localObject);
     }
-    label134:
-    label141:
-    label148:
-    for (String str = "1";; str = "0")
-    {
-      localHashMap.put("is_unread", str);
-      a("friend_focus" + paramInt1, paramInt2, localHashMap, paramstSimpleMetaFeed);
-      return;
-      str = "0";
-      break;
-      str = "0";
-      break label59;
-    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("friend_focus");
+    ((StringBuilder)localObject).append(paramInt1);
+    a(((StringBuilder)localObject).toString(), paramInt2, localHashMap, paramstSimpleMetaFeed);
   }
   
   public static void b(int paramInt1, stSimpleMetaFeed paramstSimpleMetaFeed, boolean paramBoolean, int paramInt2)
@@ -301,47 +312,53 @@ public class WSFollowBeaconReport
     HashMap localHashMap = new HashMap();
     if ((paramstSimpleMetaFeed != null) && (paramstSimpleMetaFeed.poster != null))
     {
-      if (!WSFeedUtils.a(paramstSimpleMetaFeed.poster.followStatus)) {
-        break label145;
+      boolean bool = WSFeedUtils.a(paramstSimpleMetaFeed.poster.followStatus);
+      String str = "0";
+      if (bool) {
+        localObject = "1";
+      } else {
+        localObject = "0";
       }
-      str = "1";
-      localHashMap.put("is_focus", str);
-      if (paramInt2 <= 1) {
-        break label152;
+      localHashMap.put("is_focus", localObject);
+      if (paramInt2 > 1) {
+        localObject = "1";
+      } else {
+        localObject = "0";
       }
-      str = "1";
-      label58:
-      localHashMap.put("is_fold", str);
+      localHashMap.put("is_fold", localObject);
       localHashMap.put("fold_num", String.valueOf(paramInt2));
-      if (!paramBoolean) {
-        break label159;
+      localObject = str;
+      if (paramBoolean) {
+        localObject = "1";
       }
-    }
-    label145:
-    label152:
-    label159:
-    for (String str = "1";; str = "0")
-    {
-      localHashMap.put("is_unread", str);
+      localHashMap.put("is_unread", localObject);
       localHashMap.put("is_livenow", "1");
-      a("friend_live_headpic" + paramInt1, 1000001, localHashMap, paramstSimpleMetaFeed);
-      return;
-      str = "0";
-      break;
-      str = "0";
-      break label58;
     }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("friend_live_headpic");
+    ((StringBuilder)localObject).append(paramInt1);
+    a(((StringBuilder)localObject).toString(), 1000001, localHashMap, paramstSimpleMetaFeed);
   }
   
   private static void b(WSStatisticsReporter.Builder paramBuilder, String paramString)
   {
-    WSLog.b("WSFollowBeaconReport", paramString + ", " + paramBuilder.getSopName() + ": " + paramBuilder.getParams().toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(paramBuilder.getSopName());
+    localStringBuilder.append(": ");
+    localStringBuilder.append(paramBuilder.getParams().toString());
+    WSLog.b("WSFollowBeaconReport", localStringBuilder.toString());
     paramBuilder.build(paramString).report();
   }
   
   public static void b(String paramString, int paramInt, Map<String, String> paramMap, stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    a("dynamics_" + paramString + paramInt, paramMap, paramstSimpleMetaFeed);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("dynamics_");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(paramInt);
+    a(localStringBuilder.toString(), paramMap, paramstSimpleMetaFeed);
   }
   
   public static void c()
@@ -357,7 +374,10 @@ public class WSFollowBeaconReport
       int i = 0;
       while (i < paramArrayList.size())
       {
-        localStringBuilder.append("dynamics_topic").append(paramInt).append(":").append(((FeedTextParser.WSTopic)paramArrayList.get(i)).a);
+        localStringBuilder.append("dynamics_topic");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(":");
+        localStringBuilder.append(((FeedTextParser.WSTopic)paramArrayList.get(i)).a);
         if (i != paramArrayList.size() - 1) {
           localStringBuilder.append("#");
         }
@@ -380,7 +400,10 @@ public class WSFollowBeaconReport
       int i = 0;
       while (i < paramArrayList.size())
       {
-        localStringBuilder.append("dynamics_user_at").append(paramInt).append(":").append(((FeedTextParser.WSUser)paramArrayList.get(i)).a);
+        localStringBuilder.append("dynamics_user_at");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(":");
+        localStringBuilder.append(((FeedTextParser.WSUser)paramArrayList.get(i)).a);
         if (i != paramArrayList.size() - 1) {
           localStringBuilder.append("#");
         }
@@ -392,7 +415,7 @@ public class WSFollowBeaconReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSFollowBeaconReport
  * JD-Core Version:    0.7.0.1
  */

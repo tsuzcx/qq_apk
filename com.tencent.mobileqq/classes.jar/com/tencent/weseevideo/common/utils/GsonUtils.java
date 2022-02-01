@@ -52,7 +52,7 @@ public class GsonUtils
     //   33: astore 4
     //   35: iload_2
     //   36: iload_3
-    //   37: if_icmpge +40 -> 77
+    //   37: if_icmpge +44 -> 81
     //   40: aload_0
     //   41: getstatic 26	com/tencent/weseevideo/common/utils/GsonUtils:gson	Lcom/google/gson/Gson;
     //   44: aload 5
@@ -68,29 +68,29 @@ public class GsonUtils
     //   63: istore_2
     //   64: goto -32 -> 32
     //   67: astore_1
-    //   68: aconst_null
-    //   69: astore_0
-    //   70: aload_1
-    //   71: invokestatic 60	com/tencent/tavcut/util/Logger:e	(Ljava/lang/Throwable;)V
-    //   74: aload_0
-    //   75: astore 4
-    //   77: aload 4
-    //   79: areturn
-    //   80: astore_1
-    //   81: goto -11 -> 70
+    //   68: goto +6 -> 74
+    //   71: astore_1
+    //   72: aconst_null
+    //   73: astore_0
+    //   74: aload_1
+    //   75: invokestatic 60	com/tencent/tavcut/util/Logger:e	(Ljava/lang/Throwable;)V
+    //   78: aload_0
+    //   79: astore 4
+    //   81: aload 4
+    //   83: areturn
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	84	0	paramString	String
     //   0	84	1	paramType	Type
     //   25	39	2	i	int
     //   31	7	3	j	int
-    //   33	45	4	str	String
+    //   33	49	4	str	String
     //   14	31	5	localJsonArray	com.google.gson.JsonArray
     // Exception table:
     //   from	to	target	type
-    //   0	24	67	java/lang/Exception
-    //   26	32	80	java/lang/Exception
-    //   40	60	80	java/lang/Exception
+    //   26	32	67	java/lang/Exception
+    //   40	60	67	java/lang/Exception
+    //   0	24	71	java/lang/Exception
   }
   
   public static <T> String obj2Json(T paramT)
@@ -123,7 +123,7 @@ public class GsonUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.common.utils.GsonUtils
  * JD-Core Version:    0.7.0.1
  */

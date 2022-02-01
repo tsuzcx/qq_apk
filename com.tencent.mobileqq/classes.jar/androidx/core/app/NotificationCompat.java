@@ -87,6 +87,7 @@ public class NotificationCompat
   public static final int GROUP_ALERT_ALL = 0;
   public static final int GROUP_ALERT_CHILDREN = 2;
   public static final int GROUP_ALERT_SUMMARY = 1;
+  public static final String GROUP_KEY_SILENT = "silent";
   public static final int PRIORITY_DEFAULT = 0;
   public static final int PRIORITY_HIGH = 1;
   public static final int PRIORITY_LOW = -1;
@@ -99,110 +100,111 @@ public class NotificationCompat
   
   public static NotificationCompat.Action getAction(Notification paramNotification, int paramInt)
   {
-    Object localObject = null;
-    Notification.Action localAction = null;
     if (Build.VERSION.SDK_INT >= 20) {
-      localObject = getActionCompatFromAction(paramNotification.actions[paramInt]);
+      return getActionCompatFromAction(paramNotification.actions[paramInt]);
     }
-    do
+    int i = Build.VERSION.SDK_INT;
+    Object localObject = null;
+    if (i >= 19)
     {
-      return localObject;
-      if (Build.VERSION.SDK_INT >= 19)
-      {
-        localAction = paramNotification.actions[paramInt];
-        SparseArray localSparseArray = paramNotification.extras.getSparseParcelableArray("android.support.actionExtras");
-        paramNotification = (Notification)localObject;
-        if (localSparseArray != null) {
-          paramNotification = (Bundle)localSparseArray.get(paramInt);
-        }
-        return NotificationCompatJellybean.readAction(localAction.icon, localAction.title, localAction.actionIntent, paramNotification);
+      Notification.Action localAction = paramNotification.actions[paramInt];
+      SparseArray localSparseArray = paramNotification.extras.getSparseParcelableArray("android.support.actionExtras");
+      paramNotification = localObject;
+      if (localSparseArray != null) {
+        paramNotification = (Bundle)localSparseArray.get(paramInt);
       }
-      localObject = localAction;
-    } while (Build.VERSION.SDK_INT < 16);
-    return NotificationCompatJellybean.getAction(paramNotification, paramInt);
+      return NotificationCompatJellybean.readAction(localAction.icon, localAction.title, localAction.actionIntent, paramNotification);
+    }
+    if (Build.VERSION.SDK_INT >= 16) {
+      return NotificationCompatJellybean.getAction(paramNotification, paramInt);
+    }
+    return null;
   }
   
   @RequiresApi(20)
   static NotificationCompat.Action getActionCompatFromAction(Notification.Action paramAction)
   {
-    boolean bool2 = false;
-    Object localObject1 = paramAction.getRemoteInputs();
+    android.app.RemoteInput[] arrayOfRemoteInput1 = paramAction.getRemoteInputs();
+    IconCompat localIconCompat = null;
     RemoteInput[] arrayOfRemoteInput;
-    if (localObject1 == null) {
+    int i;
+    boolean bool1;
+    if (arrayOfRemoteInput1 == null)
+    {
       arrayOfRemoteInput = null;
     }
-    label262:
-    label277:
-    label330:
-    label363:
-    for (;;)
+    else
     {
-      boolean bool1;
-      boolean bool3;
-      if (Build.VERSION.SDK_INT >= 24) {
-        if ((paramAction.getExtras().getBoolean("android.support.allowGeneratedReplies")) || (paramAction.getAllowGeneratedReplies()))
-        {
-          bool1 = true;
-          bool3 = paramAction.getExtras().getBoolean("android.support.action.showsUserInterface", true);
-          if (Build.VERSION.SDK_INT < 28) {
-            break label262;
-          }
-        }
-      }
-      for (int i = paramAction.getSemanticAction();; i = paramAction.getExtras().getInt("android.support.action.semanticAction", 0))
+      arrayOfRemoteInput = new RemoteInput[arrayOfRemoteInput1.length];
+      i = 0;
+      while (i < arrayOfRemoteInput1.length)
       {
+        android.app.RemoteInput localRemoteInput = arrayOfRemoteInput1[i];
+        String str = localRemoteInput.getResultKey();
+        CharSequence localCharSequence = localRemoteInput.getLabel();
+        CharSequence[] arrayOfCharSequence = localRemoteInput.getChoices();
+        bool1 = localRemoteInput.getAllowFreeFormInput();
+        int j;
         if (Build.VERSION.SDK_INT >= 29) {
-          bool2 = paramAction.isContextual();
+          j = localRemoteInput.getEditChoicesBeforeSending();
+        } else {
+          j = 0;
         }
-        if (Build.VERSION.SDK_INT < 23) {
-          break label330;
-        }
-        if ((paramAction.getIcon() != null) || (paramAction.icon == 0)) {
-          break label277;
-        }
-        return new NotificationCompat.Action(paramAction.icon, paramAction.title, paramAction.actionIntent, paramAction.getExtras(), arrayOfRemoteInput, null, bool1, i, bool3, bool2);
-        arrayOfRemoteInput = new RemoteInput[localObject1.length];
-        i = 0;
-        if (i >= localObject1.length) {
-          break label363;
-        }
-        Object localObject2 = localObject1[i];
-        String str = localObject2.getResultKey();
-        CharSequence localCharSequence = localObject2.getLabel();
-        CharSequence[] arrayOfCharSequence = localObject2.getChoices();
-        bool1 = localObject2.getAllowFreeFormInput();
-        if (Build.VERSION.SDK_INT >= 29) {}
-        for (int j = localObject2.getEditChoicesBeforeSending();; j = 0)
-        {
-          arrayOfRemoteInput[i] = new RemoteInput(str, localCharSequence, arrayOfCharSequence, bool1, j, localObject2.getExtras(), null);
-          i += 1;
-          break;
-        }
-        bool1 = false;
-        break;
-        bool1 = paramAction.getExtras().getBoolean("android.support.allowGeneratedReplies");
-        break;
+        arrayOfRemoteInput[i] = new RemoteInput(str, localCharSequence, arrayOfCharSequence, bool1, j, localRemoteInput.getExtras(), null);
+        i += 1;
       }
-      if (paramAction.getIcon() == null) {}
-      for (localObject1 = null;; localObject1 = IconCompat.createFromIconOrNullIfZeroResId(paramAction.getIcon())) {
-        return new NotificationCompat.Action((IconCompat)localObject1, paramAction.title, paramAction.actionIntent, paramAction.getExtras(), arrayOfRemoteInput, null, bool1, i, bool3, bool2);
-      }
-      return new NotificationCompat.Action(paramAction.icon, paramAction.title, paramAction.actionIntent, paramAction.getExtras(), arrayOfRemoteInput, null, bool1, i, bool3, bool2);
     }
+    if (Build.VERSION.SDK_INT >= 24)
+    {
+      if ((!paramAction.getExtras().getBoolean("android.support.allowGeneratedReplies")) && (!paramAction.getAllowGeneratedReplies())) {
+        bool1 = false;
+      } else {
+        bool1 = true;
+      }
+    }
+    else {
+      bool1 = paramAction.getExtras().getBoolean("android.support.allowGeneratedReplies");
+    }
+    boolean bool3 = paramAction.getExtras().getBoolean("android.support.action.showsUserInterface", true);
+    if (Build.VERSION.SDK_INT >= 28) {
+      i = paramAction.getSemanticAction();
+    } else {
+      i = paramAction.getExtras().getInt("android.support.action.semanticAction", 0);
+    }
+    boolean bool2;
+    if (Build.VERSION.SDK_INT >= 29) {
+      bool2 = paramAction.isContextual();
+    } else {
+      bool2 = false;
+    }
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      if ((paramAction.getIcon() == null) && (paramAction.icon != 0)) {
+        return new NotificationCompat.Action(paramAction.icon, paramAction.title, paramAction.actionIntent, paramAction.getExtras(), arrayOfRemoteInput, null, bool1, i, bool3, bool2);
+      }
+      if (paramAction.getIcon() != null) {
+        localIconCompat = IconCompat.createFromIconOrNullIfZeroResId(paramAction.getIcon());
+      }
+      return new NotificationCompat.Action(localIconCompat, paramAction.title, paramAction.actionIntent, paramAction.getExtras(), arrayOfRemoteInput, null, bool1, i, bool3, bool2);
+    }
+    return new NotificationCompat.Action(paramAction.icon, paramAction.title, paramAction.actionIntent, paramAction.getExtras(), arrayOfRemoteInput, null, bool1, i, bool3, bool2);
   }
   
   public static int getActionCount(Notification paramNotification)
   {
+    int j = Build.VERSION.SDK_INT;
     int i = 0;
-    if (Build.VERSION.SDK_INT >= 19) {
+    if (j >= 19)
+    {
       if (paramNotification.actions != null) {
         i = paramNotification.actions.length;
       }
-    }
-    while (Build.VERSION.SDK_INT < 16) {
       return i;
     }
-    return NotificationCompatJellybean.getActionCount(paramNotification);
+    if (Build.VERSION.SDK_INT >= 16) {
+      return NotificationCompatJellybean.getActionCount(paramNotification);
+    }
+    return 0;
   }
   
   public static boolean getAllowSystemGeneratedContextualActions(Notification paramNotification)
@@ -309,37 +311,40 @@ public class NotificationCompat
   
   public static boolean getLocalOnly(Notification paramNotification)
   {
+    int i = Build.VERSION.SDK_INT;
     boolean bool = false;
-    if (Build.VERSION.SDK_INT >= 20) {
+    if (i >= 20)
+    {
       if ((paramNotification.flags & 0x100) != 0) {
         bool = true;
       }
-    }
-    do
-    {
       return bool;
-      if (Build.VERSION.SDK_INT >= 19) {
-        return paramNotification.extras.getBoolean("android.support.localOnly");
-      }
-    } while (Build.VERSION.SDK_INT < 16);
-    return NotificationCompatJellybean.getExtras(paramNotification).getBoolean("android.support.localOnly");
+    }
+    if (Build.VERSION.SDK_INT >= 19) {
+      return paramNotification.extras.getBoolean("android.support.localOnly");
+    }
+    if (Build.VERSION.SDK_INT >= 16) {
+      return NotificationCompatJellybean.getExtras(paramNotification).getBoolean("android.support.localOnly");
+    }
+    return false;
   }
   
   static Notification[] getNotificationArrayFromBundle(Bundle paramBundle, String paramString)
   {
     Parcelable[] arrayOfParcelable = paramBundle.getParcelableArray(paramString);
-    if (((arrayOfParcelable instanceof Notification[])) || (arrayOfParcelable == null)) {
-      return (Notification[])arrayOfParcelable;
-    }
-    Notification[] arrayOfNotification = new Notification[arrayOfParcelable.length];
-    int i = 0;
-    while (i < arrayOfParcelable.length)
+    if ((!(arrayOfParcelable instanceof Notification[])) && (arrayOfParcelable != null))
     {
-      arrayOfNotification[i] = ((Notification)arrayOfParcelable[i]);
-      i += 1;
+      Notification[] arrayOfNotification = new Notification[arrayOfParcelable.length];
+      int i = 0;
+      while (i < arrayOfParcelable.length)
+      {
+        arrayOfNotification[i] = ((Notification)arrayOfParcelable[i]);
+        i += 1;
+      }
+      paramBundle.putParcelableArray(paramString, arrayOfNotification);
+      return arrayOfNotification;
     }
-    paramBundle.putParcelableArray(paramString, arrayOfNotification);
-    return arrayOfNotification;
+    return (Notification[])arrayOfParcelable;
   }
   
   public static String getShortcutId(Notification paramNotification)
@@ -374,25 +379,27 @@ public class NotificationCompat
   
   public static boolean isGroupSummary(Notification paramNotification)
   {
+    int i = Build.VERSION.SDK_INT;
     boolean bool = false;
-    if (Build.VERSION.SDK_INT >= 20) {
+    if (i >= 20)
+    {
       if ((paramNotification.flags & 0x200) != 0) {
         bool = true;
       }
-    }
-    do
-    {
       return bool;
-      if (Build.VERSION.SDK_INT >= 19) {
-        return paramNotification.extras.getBoolean("android.support.isGroupSummary");
-      }
-    } while (Build.VERSION.SDK_INT < 16);
-    return NotificationCompatJellybean.getExtras(paramNotification).getBoolean("android.support.isGroupSummary");
+    }
+    if (Build.VERSION.SDK_INT >= 19) {
+      return paramNotification.extras.getBoolean("android.support.isGroupSummary");
+    }
+    if (Build.VERSION.SDK_INT >= 16) {
+      return NotificationCompatJellybean.getExtras(paramNotification).getBoolean("android.support.isGroupSummary");
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.NotificationCompat
  * JD-Core Version:    0.7.0.1
  */

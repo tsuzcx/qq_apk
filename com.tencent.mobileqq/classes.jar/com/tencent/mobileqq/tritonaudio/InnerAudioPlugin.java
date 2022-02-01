@@ -136,18 +136,23 @@ public final class InnerAudioPlugin
   private final void execAudioFocus(boolean paramBoolean)
   {
     Object localObject = this.logger;
-    if (localObject != null) {
-      LogDelegate.DefaultImpls.printLog$default((LogDelegate)localObject, LogDelegate.Level.INFO, "[audio]InnerAudioPlugin", "execAudioFocus focus=" + paramBoolean, null, 8, null);
+    if (localObject != null)
+    {
+      LogDelegate.Level localLevel = LogDelegate.Level.INFO;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("execAudioFocus focus=");
+      localStringBuilder.append(paramBoolean);
+      LogDelegate.DefaultImpls.printLog$default((LogDelegate)localObject, localLevel, "[audio]InnerAudioPlugin", localStringBuilder.toString(), null, 8, null);
     }
     localObject = this.context;
-    if (localObject != null) {}
-    for (localObject = ((Context)localObject).getSystemService("audio");; localObject = null)
-    {
-      if ((localObject instanceof AudioManager))
+    if (localObject != null) {
+      localObject = ((Context)localObject).getSystemService("audio");
+    } else {
+      localObject = null;
+    }
+    if ((localObject instanceof AudioManager)) {
+      if (paramBoolean)
       {
-        if (!paramBoolean) {
-          break;
-        }
         if (((AudioManager)localObject).requestAudioFocus(this.onAudioFocusChangeListener, 3, 1) == 1)
         {
           localObject = this.audioPlayerManager;
@@ -160,15 +165,16 @@ public final class InnerAudioPlugin
           }
         }
       }
-      return;
+      else {
+        ((AudioManager)localObject).abandonAudioFocus(this.onAudioFocusChangeListener);
+      }
     }
-    ((AudioManager)localObject).abandonAudioFocus(this.onAudioFocusChangeListener);
   }
   
   private final String getAudioState(Argument paramArgument)
   {
-    Object localObject = null;
     int i = paramArgument.getParams().optInt("audioId", -1);
+    Object localObject = null;
     if (i == -1)
     {
       paramArgument = ApiUtil.wrapCallbackFail("getAudioState", null, "param error").toString();
@@ -177,71 +183,56 @@ public final class InnerAudioPlugin
     }
     JSONObject localJSONObject = new JSONObject();
     paramArgument = this.audioPlayerManager;
-    if (paramArgument != null)
-    {
+    if (paramArgument != null) {
       paramArgument = Double.valueOf(paramArgument.getDuration(i));
-      localJSONObject.put("duration", paramArgument);
-      paramArgument = this.audioPlayerManager;
-      if (paramArgument == null) {
-        break label271;
-      }
+    } else {
+      paramArgument = null;
+    }
+    localJSONObject.put("duration", paramArgument);
+    paramArgument = this.audioPlayerManager;
+    if (paramArgument != null) {
       paramArgument = Double.valueOf(paramArgument.getCurPosition(i));
-      label97:
-      localJSONObject.put("currentTime", paramArgument);
-      paramArgument = this.audioPlayerManager;
-      if (paramArgument == null) {
-        break label276;
-      }
+    } else {
+      paramArgument = null;
+    }
+    localJSONObject.put("currentTime", paramArgument);
+    paramArgument = this.audioPlayerManager;
+    if (paramArgument != null) {
       paramArgument = Double.valueOf(paramArgument.getBuffered(i));
-      label124:
-      localJSONObject.put("buffered", paramArgument);
-      paramArgument = this.audioPlayerManager;
-      if (paramArgument == null) {
-        break label281;
-      }
+    } else {
+      paramArgument = null;
+    }
+    localJSONObject.put("buffered", paramArgument);
+    paramArgument = this.audioPlayerManager;
+    if (paramArgument != null) {
       paramArgument = Boolean.valueOf(paramArgument.getPaused(i));
-      label151:
-      localJSONObject.put("paused", paramArgument);
-      paramArgument = this.audioPlayerManager;
-      if (paramArgument == null) {
-        break label286;
-      }
+    } else {
+      paramArgument = null;
+    }
+    localJSONObject.put("paused", paramArgument);
+    paramArgument = this.audioPlayerManager;
+    if (paramArgument != null) {
       paramArgument = Float.valueOf(paramArgument.getStartTime(i));
-      label178:
-      localJSONObject.put("startTime", paramArgument);
-      paramArgument = this.audioPlayerManager;
-      if (paramArgument == null) {
-        break label291;
-      }
+    } else {
+      paramArgument = null;
     }
-    label271:
-    label276:
-    label281:
-    label286:
-    label291:
-    for (paramArgument = Boolean.valueOf(paramArgument.getAutoplay(i));; paramArgument = null)
-    {
-      localJSONObject.put("autoplay", paramArgument);
-      AudioPlayerManager localAudioPlayerManager = this.audioPlayerManager;
-      paramArgument = localObject;
-      if (localAudioPlayerManager != null) {
-        paramArgument = Boolean.valueOf(localAudioPlayerManager.getLoop(i));
-      }
-      localJSONObject.put("loop", paramArgument);
-      paramArgument = ApiUtil.wrapCallbackOk("getAudioState", localJSONObject).toString();
-      Intrinsics.checkExpressionValueIsNotNull(paramArgument, "ApiUtil.wrapCallbackOk(A…E, audioState).toString()");
-      return paramArgument;
+    localJSONObject.put("startTime", paramArgument);
+    paramArgument = this.audioPlayerManager;
+    if (paramArgument != null) {
+      paramArgument = Boolean.valueOf(paramArgument.getAutoplay(i));
+    } else {
       paramArgument = null;
-      break;
-      paramArgument = null;
-      break label97;
-      paramArgument = null;
-      break label124;
-      paramArgument = null;
-      break label151;
-      paramArgument = null;
-      break label178;
     }
+    localJSONObject.put("autoplay", paramArgument);
+    AudioPlayerManager localAudioPlayerManager = this.audioPlayerManager;
+    paramArgument = localObject;
+    if (localAudioPlayerManager != null) {
+      paramArgument = Boolean.valueOf(localAudioPlayerManager.getLoop(i));
+    }
+    localJSONObject.put("loop", paramArgument);
+    paramArgument = ApiUtil.wrapCallbackOk("getAudioState", localJSONObject).toString();
+    Intrinsics.checkExpressionValueIsNotNull(paramArgument, "ApiUtil.wrapCallbackOk(A…E, audioState).toString()");
+    return paramArgument;
   }
   
   private final String getAvailableAudioSources(Argument paramArgument)
@@ -259,13 +250,13 @@ public final class InnerAudioPlugin
   private final void handleAbandonFocus()
   {
     Object localObject = this.context;
-    if (localObject != null) {}
-    for (localObject = ((Context)localObject).getSystemService("audio");; localObject = null)
-    {
-      if ((localObject instanceof AudioManager)) {
-        ((AudioManager)localObject).abandonAudioFocus(this.onAudioFocusChangeListener);
-      }
-      return;
+    if (localObject != null) {
+      localObject = ((Context)localObject).getSystemService("audio");
+    } else {
+      localObject = null;
+    }
+    if ((localObject instanceof AudioManager)) {
+      ((AudioManager)localObject).abandonAudioFocus(this.onAudioFocusChangeListener);
     }
   }
   
@@ -313,12 +304,7 @@ public final class InnerAudioPlugin
   private final void setMixWithOther(boolean paramBoolean)
   {
     this.mixWithOther = paramBoolean;
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      execAudioFocus(paramBoolean);
-      return;
-    }
+    execAudioFocus(paramBoolean ^ true);
   }
   
   @NotNull
@@ -359,51 +345,50 @@ public final class InnerAudioPlugin
     switch (paramString.hashCode())
     {
     default: 
-    case 1240524369: 
-    case -430902094: 
-    case -2107296591: 
+      break;
+    case 2014655581: 
+      if (paramString.equals("setAudioState")) {
+        return setAudioState(paramArgument);
+      }
+      break;
     case 1868086796: 
-    case 17532319: 
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return null;
-              } while (!paramString.equals("getAudioState"));
-              return getAudioState(paramArgument);
-            } while (!paramString.equals("operateAudio"));
-            return operateAudio(paramArgument);
-          } while (!paramString.equals("destroyAudioInstance"));
-          return destroyAudioInstance(paramArgument);
-        } while (!paramString.equals("setInnerAudioOptionQGame"));
+      if (paramString.equals("setInnerAudioOptionQGame")) {
         return setInnerAudioOption(paramArgument);
-      } while (!paramString.equals("onAudioInterruptionEnd"));
+      }
+      break;
+    case 1240524369: 
+      if (paramString.equals("getAudioState")) {
+        return getAudioState(paramArgument);
+      }
+      break;
+    case 244868847: 
+      if (paramString.equals("createAudioInstance")) {
+        return createAudioInstance(paramArgument);
+      }
+      break;
+    case 17532319: 
+    case -334343059: 
+      if ((paramString.equals("onAudioInterruptionEnd")) && ((goto 184) || (paramString.equals("onAudioInterruptionBegin")))) {
+        return saveAudioInterruptionCaller(paramString, paramArgument);
+      }
+      break;
+    case -430902094: 
+      if (paramString.equals("operateAudio")) {
+        return operateAudio(paramArgument);
+      }
+      break;
+    case -1618442571: 
+      if (paramString.equals("getAvailableAudioSources")) {
+        return getAvailableAudioSources(paramArgument);
+      }
+      break;
+    case -2107296591: 
+      if (paramString.equals("destroyAudioInstance")) {
+        return destroyAudioInstance(paramArgument);
+      }
+      break;
     }
-    for (;;)
-    {
-      return saveAudioInterruptionCaller(paramString, paramArgument);
-      if (!paramString.equals("createAudioInstance")) {
-        break;
-      }
-      return createAudioInstance(paramArgument);
-      if (!paramString.equals("setAudioState")) {
-        break;
-      }
-      return setAudioState(paramArgument);
-      if (!paramString.equals("getAvailableAudioSources")) {
-        break;
-      }
-      return getAvailableAudioSources(paramArgument);
-      if (!paramString.equals("onAudioInterruptionBegin")) {
-        break;
-      }
-    }
+    return null;
   }
   
   public void onCreate(@NotNull TritonEngine paramTritonEngine)
@@ -455,7 +440,7 @@ public final class InnerAudioPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tritonaudio.InnerAudioPlugin
  * JD-Core Version:    0.7.0.1
  */

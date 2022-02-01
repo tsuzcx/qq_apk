@@ -15,11 +15,8 @@ class MultiMembersVideoUI$1
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.a.jdField_a_of_type_ComTencentAvUtilsMultiVideoMembersClickListener == null) {}
-    for (;;)
+    if (this.a.jdField_a_of_type_ComTencentAvUtilsMultiVideoMembersClickListener != null)
     {
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-      return;
       MultiMembersUI.Holder localHolder = (MultiMembersUI.Holder)paramView.getTag();
       if (localHolder == null)
       {
@@ -33,11 +30,12 @@ class MultiMembersVideoUI$1
         this.a.jdField_a_of_type_ComTencentAvUtilsMultiVideoMembersClickListener.a(localHolder.jdField_a_of_type_Long, localHolder.jdField_a_of_type_Int, paramInt, false);
       }
     }
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiMembersVideoUI.1
  * JD-Core Version:    0.7.0.1
  */

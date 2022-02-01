@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.qcircle.api.helper;
 
-import android.util.Pair;
 import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -28,7 +27,7 @@ public class QCircleRedDotDataHelper
   
   public static int getAllRedNum(QQCircleCounter.RedPointInfo paramRedPointInfo)
   {
-    int k = ((Integer)QCircleChatBoxHelper.getInstance().getUnReadInfo().first).intValue();
+    int k = QCircleChatBoxHelper.getInstance().getUnReadChatNum();
     int j = Math.max(k, 0);
     int m = paramRedPointInfo.redTotalNum.get();
     int i = j;
@@ -68,18 +67,15 @@ public class QCircleRedDotDataHelper
   
   public static byte[] getTransInfo(QQCircleCounter.RedPointInfo paramRedPointInfo)
   {
-    int i = 0;
     paramRedPointInfo = paramRedPointInfo.transInfo.get();
     int j = RFLog.CLR;
-    if (paramRedPointInfo == null) {}
-    for (;;)
-    {
-      RFLog.d("QCircleRedDotDataHelper", j, String.format("%s : getTransInfo = %d", new Object[] { "QCircleEeveeRedPoint_", Integer.valueOf(i) }));
-      if ((paramRedPointInfo == null) || (paramRedPointInfo.size() <= 0)) {
-        break;
-      }
-      return paramRedPointInfo.toByteArray();
+    int i = 0;
+    if (paramRedPointInfo != null) {
       i = paramRedPointInfo.size();
+    }
+    RFLog.d("QCircleRedDotDataHelper", j, String.format("%s : getTransInfo = %d", new Object[] { "QCircleEeveeRedPoint_", Integer.valueOf(i) }));
+    if ((paramRedPointInfo != null) && (paramRedPointInfo.size() > 0)) {
+      return paramRedPointInfo.toByteArray();
     }
     return null;
   }
@@ -100,14 +96,14 @@ public class QCircleRedDotDataHelper
   
   private static boolean isInvalidRecommendRedDot(QQCircleCounter.RedPointInfo paramRedPointInfo, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
+    boolean bool = false;
+    if (paramInt != 1) {
       return false;
-    } while (paramRedPointInfo.allPushInfo.msgType.get() != 4);
-    return true;
+    }
+    if (paramRedPointInfo.allPushInfo.msgType.get() == 4) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean isShowActiveRedDot(QQCircleCounter.RedPointInfo paramRedPointInfo)
@@ -126,13 +122,15 @@ public class QCircleRedDotDataHelper
   
   public static boolean isShowRecommendRedDot(QQCircleCounter.RedPointInfo paramRedPointInfo, int paramInt)
   {
-    if ((((Integer)QCircleChatBoxHelper.getInstance().getUnReadInfo().first).intValue() <= 0) && (QCircleHostUtil.checkOperateMaskEnabled(paramRedPointInfo.outLayerInfo.combineRedTypes.get(), 3))) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if ((QCircleChatBoxHelper.getInstance().getUnReadChatNum() <= 0) && (QCircleHostUtil.checkOperateMaskEnabled(paramRedPointInfo.outLayerInfo.combineRedTypes.get(), 3))) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    RFLog.d("QCircleRedDotDataHelper", RFLog.CLR, String.format("%s : showRecommendRedDot = %b, RedEntranceType:%d", new Object[] { "QCircleEeveeRedPoint_", Boolean.valueOf(bool), Integer.valueOf(paramInt) }));
+    if (isInvalidRecommendRedDot(paramRedPointInfo, paramInt))
     {
-      RFLog.d("QCircleRedDotDataHelper", RFLog.CLR, String.format("%s : showRecommendRedDot = %b, RedEntranceType:%d", new Object[] { "QCircleEeveeRedPoint_", Boolean.valueOf(bool), Integer.valueOf(paramInt) }));
-      if (!isInvalidRecommendRedDot(paramRedPointInfo, paramInt)) {
-        break;
-      }
       RFLog.d("QCircleRedDotDataHelper", RFLog.CLR, String.format("%s : showRecommendRedDot = %b, RedEntranceType:%d, isInvalidRecommendRedDot", new Object[] { "QCircleEeveeRedPoint_", Boolean.valueOf(bool), Integer.valueOf(paramInt) }));
       return false;
     }
@@ -141,7 +139,7 @@ public class QCircleRedDotDataHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.helper.QCircleRedDotDataHelper
  * JD-Core Version:    0.7.0.1
  */

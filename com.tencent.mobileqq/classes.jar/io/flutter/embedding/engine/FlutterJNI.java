@@ -58,9 +58,10 @@ public class FlutterJNI
   
   private static void asyncWaitForVsync(long paramLong)
   {
-    if (asyncWaitForVsyncDelegate != null)
+    FlutterJNI.AsyncWaitForVsyncDelegate localAsyncWaitForVsyncDelegate = asyncWaitForVsyncDelegate;
+    if (localAsyncWaitForVsyncDelegate != null)
     {
-      asyncWaitForVsyncDelegate.asyncWaitForVsync(paramLong);
+      localAsyncWaitForVsyncDelegate.asyncWaitForVsync(paramLong);
       return;
     }
     throw new IllegalStateException("An AsyncWaitForVsyncDelegate must be registered with FlutterJNI before asyncWaitForVsync() is invoked.");
@@ -101,8 +102,9 @@ public class FlutterJNI
   
   private void handlePlatformMessageResponse(int paramInt, byte[] paramArrayOfByte)
   {
-    if (this.platformMessageHandler != null) {
-      this.platformMessageHandler.handlePlatformMessageResponse(paramInt, paramArrayOfByte);
+    PlatformMessageHandler localPlatformMessageHandler = this.platformMessageHandler;
+    if (localPlatformMessageHandler != null) {
+      localPlatformMessageHandler.handlePlatformMessageResponse(paramInt, paramArrayOfByte);
     }
   }
   
@@ -181,8 +183,9 @@ public class FlutterJNI
   private void updateCustomAccessibilityActions(@NonNull ByteBuffer paramByteBuffer, @NonNull String[] paramArrayOfString)
   {
     ensureRunningOnMainThread();
-    if (this.accessibilityDelegate != null) {
-      this.accessibilityDelegate.updateCustomAccessibilityActions(paramByteBuffer, paramArrayOfString);
+    FlutterJNI.AccessibilityDelegate localAccessibilityDelegate = this.accessibilityDelegate;
+    if (localAccessibilityDelegate != null) {
+      localAccessibilityDelegate.updateCustomAccessibilityActions(paramByteBuffer, paramArrayOfString);
     }
   }
   
@@ -190,8 +193,9 @@ public class FlutterJNI
   private void updateSemantics(@NonNull ByteBuffer paramByteBuffer, @NonNull String[] paramArrayOfString)
   {
     ensureRunningOnMainThread();
-    if (this.accessibilityDelegate != null) {
-      this.accessibilityDelegate.updateSemantics(paramByteBuffer, paramArrayOfString);
+    FlutterJNI.AccessibilityDelegate localAccessibilityDelegate = this.accessibilityDelegate;
+    if (localAccessibilityDelegate != null) {
+      localAccessibilityDelegate.updateSemantics(paramByteBuffer, paramArrayOfString);
     }
   }
   
@@ -231,7 +235,7 @@ public class FlutterJNI
     }
     Object localObject = new ArrayList();
     int i = 0;
-    if (i < paramArrayOfString.length)
+    while (i < paramArrayOfString.length)
     {
       String str1 = paramArrayOfString[(i + 0)];
       String str2 = paramArrayOfString[(i + 1)];
@@ -250,12 +254,11 @@ public class FlutterJNI
         }
         ((List)localObject).add(localBuilder.build());
       }
-      for (;;)
+      else
       {
-        i += 3;
-        break;
         ((List)localObject).add(new Locale(str1, str2));
       }
+      i += 3;
     }
     paramArrayOfString = this.localizationPlugin.resolveNativeLocale((List)localObject);
     if (paramArrayOfString == null) {
@@ -277,8 +280,9 @@ public class FlutterJNI
   public FlutterOverlaySurface createOverlaySurface()
   {
     ensureRunningOnMainThread();
-    if (this.platformViewsController != null) {
-      return this.platformViewsController.createOverlaySurface();
+    PlatformViewsController localPlatformViewsController = this.platformViewsController;
+    if (localPlatformViewsController != null) {
+      return localPlatformViewsController.createOverlaySurface();
     }
     throw new RuntimeException("platformViewsController must be set before attempting to position an overlay surface");
   }
@@ -287,9 +291,10 @@ public class FlutterJNI
   public void destroyOverlaySurfaces()
   {
     ensureRunningOnMainThread();
-    if (this.platformViewsController != null)
+    PlatformViewsController localPlatformViewsController = this.platformViewsController;
+    if (localPlatformViewsController != null)
     {
-      this.platformViewsController.destroyOverlaySurfaces();
+      localPlatformViewsController.destroyOverlaySurfaces();
       return;
     }
     throw new RuntimeException("platformViewsController must be set before attempting to destroy an overlay surface");
@@ -362,15 +367,18 @@ public class FlutterJNI
   public void dispatchSemanticsAction(int paramInt, @NonNull AccessibilityBridge.Action paramAction, @Nullable Object paramObject)
   {
     ensureAttachedToNative();
-    if (paramObject != null) {
-      paramObject = StandardMessageCodec.INSTANCE.encodeMessage(paramObject);
-    }
-    for (int i = paramObject.position();; i = 0)
+    int i;
+    if (paramObject != null)
     {
-      dispatchSemanticsAction(paramInt, paramAction.value, paramObject, i);
-      return;
-      paramObject = null;
+      paramObject = StandardMessageCodec.INSTANCE.encodeMessage(paramObject);
+      i = paramObject.position();
     }
+    else
+    {
+      paramObject = null;
+      i = 0;
+    }
+    dispatchSemanticsAction(paramInt, paramAction.value, paramObject, i);
   }
   
   @UiThread
@@ -390,8 +398,9 @@ public class FlutterJNI
   @VisibleForTesting
   public void handlePlatformMessage(@NonNull String paramString, byte[] paramArrayOfByte, int paramInt)
   {
-    if (this.platformMessageHandler != null) {
-      this.platformMessageHandler.handleMessageFromDart(paramString, paramArrayOfByte, paramInt);
+    PlatformMessageHandler localPlatformMessageHandler = this.platformMessageHandler;
+    if (localPlatformMessageHandler != null) {
+      localPlatformMessageHandler.handleMessageFromDart(paramString, paramArrayOfByte, paramInt);
     }
   }
   
@@ -460,9 +469,10 @@ public class FlutterJNI
   public void onBeginFrame()
   {
     ensureRunningOnMainThread();
-    if (this.platformViewsController != null)
+    PlatformViewsController localPlatformViewsController = this.platformViewsController;
+    if (localPlatformViewsController != null)
     {
-      this.platformViewsController.onBeginFrame();
+      localPlatformViewsController.onBeginFrame();
       return;
     }
     throw new RuntimeException("platformViewsController must be set before attempting to begin the frame");
@@ -472,9 +482,10 @@ public class FlutterJNI
   public void onDisplayOverlaySurface(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     ensureRunningOnMainThread();
-    if (this.platformViewsController != null)
+    PlatformViewsController localPlatformViewsController = this.platformViewsController;
+    if (localPlatformViewsController != null)
     {
-      this.platformViewsController.onDisplayOverlaySurface(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
+      localPlatformViewsController.onDisplayOverlaySurface(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
       return;
     }
     throw new RuntimeException("platformViewsController must be set before attempting to position an overlay surface");
@@ -484,9 +495,10 @@ public class FlutterJNI
   public void onDisplayPlatformView(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, FlutterMutatorsStack paramFlutterMutatorsStack)
   {
     ensureRunningOnMainThread();
-    if (this.platformViewsController != null)
+    PlatformViewsController localPlatformViewsController = this.platformViewsController;
+    if (localPlatformViewsController != null)
     {
-      this.platformViewsController.onDisplayPlatformView(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramFlutterMutatorsStack);
+      localPlatformViewsController.onDisplayPlatformView(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramFlutterMutatorsStack);
       return;
     }
     throw new RuntimeException("platformViewsController must be set before attempting to position a platform view");
@@ -496,9 +508,10 @@ public class FlutterJNI
   public void onEndFrame()
   {
     ensureRunningOnMainThread();
-    if (this.platformViewsController != null)
+    PlatformViewsController localPlatformViewsController = this.platformViewsController;
+    if (localPlatformViewsController != null)
     {
-      this.platformViewsController.onEndFrame();
+      localPlatformViewsController.onEndFrame();
       return;
     }
     throw new RuntimeException("platformViewsController must be set before attempting to end the frame");
@@ -663,7 +676,7 @@ public class FlutterJNI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.FlutterJNI
  * JD-Core Version:    0.7.0.1
  */

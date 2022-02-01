@@ -19,25 +19,41 @@ public class InstallStateReceiver
   
   private void a(String paramString, int paramInt)
   {
-    List localList = DownloadManagerV2.a().b(paramString, 4);
-    Object localObject = localList;
-    if (localList.size() == 0) {
-      localObject = DownloadManagerV2.a().a(paramString, 4);
+    Object localObject2 = DownloadManagerV2.a().b(paramString, 4);
+    Object localObject1 = localObject2;
+    if (((List)localObject2).size() == 0) {
+      localObject1 = DownloadManagerV2.a().a(paramString, 4);
     }
-    LogUtility.c("InstallStateReceiver", ">notifyInstalled " + paramString + ", info:" + localObject);
-    paramString = ((List)localObject).iterator();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(">notifyInstalled ");
+    ((StringBuilder)localObject2).append(paramString);
+    ((StringBuilder)localObject2).append(", info:");
+    ((StringBuilder)localObject2).append(localObject1);
+    LogUtility.c("InstallStateReceiver", ((StringBuilder)localObject2).toString());
+    paramString = ((List)localObject1).iterator();
     while (paramString.hasNext())
     {
-      localObject = (DownloadInfo)paramString.next();
-      if ((localObject != null) && (((DownloadInfo)localObject).a() == 4))
+      localObject1 = (DownloadInfo)paramString.next();
+      if ((localObject1 != null) && (((DownloadInfo)localObject1).a() == 4))
       {
-        LogUtility.c("InstallStateReceiver", ">notifyInstalled " + localObject);
-        if (1 == paramInt) {
-          DownloadManagerV2.a().f((DownloadInfo)localObject);
-        } else if (2 == paramInt) {
-          DownloadManagerV2.a().e((DownloadInfo)localObject);
-        } else {
-          LogUtility.e("InstallStateReceiver", ">notifyInstalled bad notifyType:" + paramInt);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(">notifyInstalled ");
+        ((StringBuilder)localObject2).append(localObject1);
+        LogUtility.c("InstallStateReceiver", ((StringBuilder)localObject2).toString());
+        if (1 == paramInt)
+        {
+          DownloadManagerV2.a().f((DownloadInfo)localObject1);
+        }
+        else if (2 == paramInt)
+        {
+          DownloadManagerV2.a().e((DownloadInfo)localObject1);
+        }
+        else
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(">notifyInstalled bad notifyType:");
+          ((StringBuilder)localObject1).append(paramInt);
+          LogUtility.e("InstallStateReceiver", ((StringBuilder)localObject1).toString());
         }
       }
     }
@@ -45,28 +61,24 @@ public class InstallStateReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    LogUtility.c("InstallStateReceiver", "[onReceive] action=" + paramIntent.getAction());
+    paramContext = new StringBuilder();
+    paramContext.append("[onReceive] action=");
+    paramContext.append(paramIntent.getAction());
+    LogUtility.c("InstallStateReceiver", paramContext.toString());
     paramContext = paramIntent.getDataString();
-    if (TextUtils.isEmpty(paramContext)) {
-      LogUtility.e("InstallStateReceiver", "[onReceive] intentPkgNameString == null ");
-    }
-    Object localObject;
-    String str;
-    do
+    if (TextUtils.isEmpty(paramContext))
     {
+      LogUtility.e("InstallStateReceiver", "[onReceive] intentPkgNameString == null ");
       return;
-      localObject = paramContext.split(":");
-      if (localObject.length == 2)
+    }
+    Object localObject = paramContext.split(":");
+    if (localObject.length == 2)
+    {
+      localObject = localObject[1];
+      String str = paramIntent.getAction();
+      if (TextUtils.equals(str, "android.intent.action.PACKAGE_REMOVED"))
       {
-        localObject = localObject[1];
-        str = paramIntent.getAction();
-        if (TextUtils.equals(str, "android.intent.action.PACKAGE_REMOVED")) {
-          ThreadManager.excute(new InstallStateReceiver.1(this, paramContext, (String)localObject), 16, null, true);
-        }
-      }
-      else
-      {
-        LogUtility.e("InstallStateReceiver", "[onReceive] packageName == null " + paramIntent.getDataString());
+        ThreadManager.excute(new InstallStateReceiver.1(this, paramContext, (String)localObject), 16, null, true);
         return;
       }
       if (TextUtils.equals(str, "android.intent.action.PACKAGE_REPLACED"))
@@ -75,13 +87,20 @@ public class InstallStateReceiver
         ThreadManager.excute(new InstallStateReceiver.2(this, paramContext, (String)localObject), 16, null, true);
         return;
       }
-    } while (!TextUtils.equals(str, "android.intent.action.PACKAGE_ADDED"));
-    ThreadManager.excute(new InstallStateReceiver.3(this, paramIntent, paramContext, (String)localObject), 16, null, true);
+      if (TextUtils.equals(str, "android.intent.action.PACKAGE_ADDED")) {
+        ThreadManager.excute(new InstallStateReceiver.3(this, paramIntent, paramContext, (String)localObject), 16, null, true);
+      }
+      return;
+    }
+    paramContext = new StringBuilder();
+    paramContext.append("[onReceive] packageName == null ");
+    paramContext.append(paramIntent.getDataString());
+    LogUtility.e("InstallStateReceiver", paramContext.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appstore.receiver.InstallStateReceiver
  * JD-Core Version:    0.7.0.1
  */

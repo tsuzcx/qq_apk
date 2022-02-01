@@ -12,45 +12,49 @@ final class mx$1
   
   public final void run()
   {
-    if ((this.a.d == null) || (this.a.b == null) || (this.a.b.az == null) || (this.a.b.az.b.h == null) || (this.a.a == null) || (this.a.a.c == null)) {}
-    BaseMapView localBaseMapView;
-    Object localObject;
-    do
+    if ((this.a.d != null) && (this.a.b != null) && (this.a.b.az != null) && (this.a.b.az.b.h != null) && (this.a.a != null))
     {
-      return;
+      if (this.a.a.c == null) {
+        return;
+      }
       if (!this.a.g)
       {
         this.a.d.setVisibility(8);
         return;
       }
       this.a.d.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
-      this.a.e = this.a.d.getMeasuredWidth();
-      this.a.f = this.a.d.getMeasuredHeight();
+      Object localObject1 = this.a;
+      ((mx)localObject1).e = ((mx)localObject1).d.getMeasuredWidth();
+      localObject1 = this.a;
+      ((mx)localObject1).f = ((mx)localObject1).d.getMeasuredHeight();
       this.a.d.layout(0, 0, this.a.d.getMeasuredWidth(), this.a.d.getMeasuredHeight());
-      localBaseMapView = this.a.a.c;
-      localObject = this.a.b.az.b.h;
-      localObject = this.a.a((fu)localObject);
-    } while (localObject == null);
-    if (this.a.d.getParent() == null) {
-      localBaseMapView.addView(this.a.d);
+      localObject1 = this.a.a.c;
+      Object localObject2 = this.a.b.az.b.h;
+      localObject2 = this.a.a((fu)localObject2);
+      if (localObject2 == null) {
+        return;
+      }
+      if (this.a.d.getParent() == null) {
+        ((BaseMapView)localObject1).addView(this.a.d);
+      }
+      Rect localRect = new Rect();
+      ((BaseMapView)localObject1).getLocalVisibleRect(localRect);
+      if (localRect.isEmpty())
+      {
+        this.a.d.setVisibility(8);
+        return;
+      }
+      if (localRect.intersect((Rect)localObject2)) {
+        this.a.d.setVisibility(0);
+      }
+      this.a.d.setX(((Rect)localObject2).left);
+      this.a.d.setY(((Rect)localObject2).top);
     }
-    Rect localRect = new Rect();
-    localBaseMapView.getLocalVisibleRect(localRect);
-    if (localRect.isEmpty())
-    {
-      this.a.d.setVisibility(8);
-      return;
-    }
-    if (localRect.intersect((Rect)localObject)) {
-      this.a.d.setVisibility(0);
-    }
-    this.a.d.setX(((Rect)localObject).left);
-    this.a.d.setY(((Rect)localObject).top);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.mx.1
  * JD-Core Version:    0.7.0.1
  */

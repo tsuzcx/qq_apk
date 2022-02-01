@@ -15,20 +15,22 @@ public class OCRObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      paramObject = (Object[])paramObject;
-      if ((paramObject != null) && (paramObject.length == 2))
+      if (paramInt != 2)
       {
-        a(paramBoolean, (String)paramObject[0], (List)paramObject[1]);
+        if (paramInt != 3) {
+          return;
+        }
+        paramObject = (Object[])paramObject;
+        if ((paramObject != null) && (paramObject.length == 3))
+        {
+          a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], (OCRTextSearchInfo.SearchResult)paramObject[2]);
+          return;
+        }
+        a(-1, "", null);
         return;
       }
-      a(false, "", null);
-      return;
-    case 2: 
       Object localObject = (Object[])paramObject;
       if ((paramObject != null) && (localObject.length == 2))
       {
@@ -46,17 +48,17 @@ public class OCRObserver
       return;
     }
     paramObject = (Object[])paramObject;
-    if ((paramObject != null) && (paramObject.length == 3))
+    if ((paramObject != null) && (paramObject.length == 2))
     {
-      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], (OCRTextSearchInfo.SearchResult)paramObject[2]);
+      a(paramBoolean, (String)paramObject[0], (List)paramObject[1]);
       return;
     }
-    a(-1, "", null);
+    a(false, "", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRObserver
  * JD-Core Version:    0.7.0.1
  */

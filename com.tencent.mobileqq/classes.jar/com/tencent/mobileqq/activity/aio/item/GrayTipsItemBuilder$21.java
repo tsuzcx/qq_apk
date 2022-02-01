@@ -17,8 +17,8 @@ class GrayTipsItemBuilder$21
     if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
     {
       paramView = ActionSheet.create(this.a.jdField_a_of_type_AndroidContentContext);
-      paramView.addButton(2131720010);
-      paramView.addCancelButton(2131690800);
+      paramView.addButton(2131719742);
+      paramView.addCancelButton(2131690728);
       paramView.setOnDismissListener(new GrayTipsItemBuilder.21.1(this));
       paramView.setOnButtonClickListener(new GrayTipsItemBuilder.21.2(this, paramView));
       paramView.show();
@@ -33,7 +33,7 @@ class GrayTipsItemBuilder$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.21
  * JD-Core Version:    0.7.0.1
  */

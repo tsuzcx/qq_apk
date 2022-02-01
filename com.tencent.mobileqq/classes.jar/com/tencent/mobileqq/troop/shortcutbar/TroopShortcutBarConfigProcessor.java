@@ -12,7 +12,10 @@ public class TroopShortcutBarConfigProcessor
   @NonNull
   public TroopShortcutBarConfig a(int paramInt)
   {
-    QLog.d("TroopShortcutBarConfig.config", 2, "migrateOldOrDefaultContent, type: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("migrateOldOrDefaultContent, type: ");
+    localStringBuilder.append(paramInt);
+    QLog.d("TroopShortcutBarConfig.config", 2, localStringBuilder.toString());
     return new TroopShortcutBarConfig();
   }
   
@@ -54,7 +57,10 @@ public class TroopShortcutBarConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.d("TroopShortcutBarConfig.config", 1, "onReqFailed, failCode = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReqFailed, failCode = ");
+    localStringBuilder.append(paramInt);
+    QLog.d("TroopShortcutBarConfig.config", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -64,7 +70,7 @@ public class TroopShortcutBarConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.TroopShortcutBarConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

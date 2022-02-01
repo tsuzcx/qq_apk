@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.aio.rebuild;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class DatalineChatPie$4
   implements Runnable
@@ -11,27 +11,26 @@ class DatalineChatPie$4
   
   public void run()
   {
-    if ((this.this$0.a == null) || (this.this$0.a.isFinishing())) {
-      return;
-    }
-    try
+    if (this.this$0.a != null)
     {
-      DatalineChatPie.b(this.this$0);
-      this.a.edit().putBoolean("dataline_guide_check_show", true).apply();
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      if (this.this$0.a.isFinishing()) {
+        return;
+      }
+      try
+      {
+        DatalineChatPie.b(this.this$0);
+      }
+      catch (Exception localException)
       {
         localException.printStackTrace();
       }
+      this.a.edit().putBoolean("dataline_guide_check_show", true).apply();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.DatalineChatPie.4
  * JD-Core Version:    0.7.0.1
  */

@@ -16,18 +16,28 @@ final class MiniAdAntiSpamReportUtil$1
     try
     {
       String str = HttpUtil.openUrl(BaseApplicationImpl.getContext(), "https://rpt.gdt.qq.com/mqq_log", "POST", this.a, null);
-      QLog.i("MiniAdAntiSpamReportUtil", 1, "report reportParams=" + this.a.toString() + " result=" + str);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("report reportParams=");
+      localStringBuilder.append(this.a.toString());
+      localStringBuilder.append(" result=");
+      localStringBuilder.append(str);
+      QLog.i("MiniAdAntiSpamReportUtil", 1, localStringBuilder.toString());
       return;
     }
     catch (Exception localException)
     {
-      QLog.e("MiniAdAntiSpamReportUtil", 1, "report error. url=" + "https://rpt.gdt.qq.com/mqq_log" + " reportParams=" + this.a.toString(), localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("report error. url=");
+      localStringBuilder.append("https://rpt.gdt.qq.com/mqq_log");
+      localStringBuilder.append(" reportParams=");
+      localStringBuilder.append(this.a.toString());
+      QLog.e("MiniAdAntiSpamReportUtil", 1, localStringBuilder.toString(), localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAdAntiSpamReportUtil.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
-import com.tencent.av.utils.UITools;
+import com.tencent.av.utils.api.IUIToolsApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.widget.HorizontalListView;
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class TopicLabelListView
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView = new HorizontalListView(paramContext);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth((int)UITools.a(paramContext, 5.0F));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth((int)((IUIToolsApi)QRoute.api(IUIToolsApi.class)).dp2px(paramContext, 5.0F));
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_AndroidWidgetBaseAdapter);
     addView(this.jdField_a_of_type_ComTencentWidgetHorizontalListView, -1, -1);
   }
@@ -52,7 +53,7 @@ public class TopicLabelListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.widget.TopicLabelListView
  * JD-Core Version:    0.7.0.1
  */

@@ -10,9 +10,7 @@ class Conversation$32
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 1) {
       return;
     }
     this.a.a(0L);
@@ -20,7 +18,7 @@ class Conversation$32
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.32
  * JD-Core Version:    0.7.0.1
  */

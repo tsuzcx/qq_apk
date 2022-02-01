@@ -17,13 +17,18 @@ import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoFram
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoProcessOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoSizeChangedListener;
 import com.tencent.thumbplayer.api.TPAudioFrameBuffer;
+import com.tencent.thumbplayer.api.TPPlayerMsg.TPCDNURLInfo;
+import com.tencent.thumbplayer.api.TPPlayerMsg.TPDownLoadProgressInfo;
+import com.tencent.thumbplayer.api.TPPlayerMsg.TPProtocolInfo;
 import com.tencent.thumbplayer.api.TPPostProcessFrameBuffer;
 import com.tencent.thumbplayer.api.TPSubtitleData;
 import com.tencent.thumbplayer.api.TPSubtitleFrameBuffer;
 import com.tencent.thumbplayer.api.TPTrackInfo;
 import com.tencent.thumbplayer.api.TPVideoFrameBuffer;
+import com.tencent.thumbplayer.api.proxy.ITPPlayerProxyListener;
 import com.tencent.thumbplayer.core.downloadproxy.api.ITPPlayListener;
 import com.tencent.thumbplayer.datatransport.ITPPlayManager;
+import com.tencent.thumbplayer.datatransport.resourceloader.ITPAssetResourceLoader;
 import com.tencent.thumbplayer.log.TPBaseLogger;
 import com.tencent.thumbplayer.utils.TPHashMapBuilder;
 import com.tencent.thumbplayer.utils.TPLogUtil;
@@ -36,32 +41,55 @@ class TPPlayer$InnerPlayerListener
   
   public long getAdvRemainTime()
   {
-    return TPPlayer.access$1100(this.this$0).getAdvRemainTime();
+    ITPPlayerProxyListener localITPPlayerProxyListener = TPPlayer.access$000(this.this$0).getTPPlayerProxyListener();
+    if (localITPPlayerProxyListener != null) {
+      return localITPPlayerProxyListener.getAdvRemainTimeMs();
+    }
+    return -1L;
   }
   
   public String getContentType(int paramInt, String paramString)
   {
-    return TPPlayer.access$1100(this.this$0).getContentType(paramInt, paramString);
+    if (TPPlayer.access$1600(this.this$0) == null)
+    {
+      TPPlayer.access$700(this.this$0).error("mAssetResourceLoader not set");
+      return "";
+    }
+    return TPPlayer.access$1600(this.this$0).getContentType(paramInt, paramString);
   }
   
   public int getCurrentPlayClipNo()
   {
-    return TPPlayer.access$1100(this.this$0).getCurrentPlayClipNo();
+    ITPPlayerAdapter localITPPlayerAdapter = TPPlayer.access$100(this.this$0);
+    if (localITPPlayerAdapter != null) {
+      return localITPPlayerAdapter.getCurrentPlayClipNo();
+    }
+    return 0;
   }
   
   public long getCurrentPosition()
   {
-    return TPPlayer.access$1100(this.this$0).getCurrentPosition();
+    return this.this$0.getCurrentPositionMs();
   }
   
   public String getDataFilePath(int paramInt, String paramString)
   {
-    return TPPlayer.access$1100(this.this$0).getDataFilePath(paramInt, paramString);
+    if (TPPlayer.access$1600(this.this$0) == null)
+    {
+      TPPlayer.access$700(this.this$0).error("mAssetResourceLoader not set");
+      return "";
+    }
+    return TPPlayer.access$1600(this.this$0).getDataFilePath(paramInt, paramString);
   }
   
   public long getDataTotalSize(int paramInt, String paramString)
   {
-    return TPPlayer.access$1100(this.this$0).getDataTotalSize(paramInt, paramString);
+    if (TPPlayer.access$1600(this.this$0) == null)
+    {
+      TPPlayer.access$700(this.this$0).error("mAssetResourceLoader not set");
+      return -1L;
+    }
+    return TPPlayer.access$1600(this.this$0).getDataTotalSize(paramInt, paramString);
   }
   
   public Object getPlayInfo(long paramLong)
@@ -76,7 +104,11 @@ class TPPlayer$InnerPlayerListener
   
   public long getPlayerBufferLength()
   {
-    return TPPlayer.access$1100(this.this$0).getPlayerBufferLength();
+    ITPPlayerAdapter localITPPlayerAdapter = TPPlayer.access$100(this.this$0);
+    if (localITPPlayerAdapter != null) {
+      return localITPPlayerAdapter.getPlayableDurationMs() - TPPlayer.access$100(this.this$0).getCurrentPositionMs();
+    }
+    return 0L;
   }
   
   public void onAudioPcmOut(TPAudioFrameBuffer paramTPAudioFrameBuffer)
@@ -105,81 +137,144 @@ class TPPlayer$InnerPlayerListener
   public void onDownloadCdnUrlExpired(Map<String, String> paramMap)
   {
     TPPlayer.access$700(this.this$0).info("onDownloadCdnUrlExpired");
-    TPPlayer.access$1100(this.this$0).onDownloadCdnUrlExpired(paramMap);
+    TPPlayer.access$300(this.this$0, 275, 0, 0, paramMap);
   }
   
   public void onDownloadCdnUrlInfoUpdate(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    TPPlayer.access$700(this.this$0).info("onDownloadCdnUrlInfoUpdate, url:" + paramString1 + ", cdnIp:" + paramString2 + ", uip:" + paramString3 + ", errorCodeStr:" + paramString4);
-    TPPlayer.access$1100(this.this$0).onDownloadCdnUrlInfoUpdate(paramString1, paramString2, paramString3, paramString4);
+    TPBaseLogger localTPBaseLogger = TPPlayer.access$700(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDownloadCdnUrlInfoUpdate, url:");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(", cdnIp:");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(", uip:");
+    localStringBuilder.append(paramString3);
+    localStringBuilder.append(", errorCodeStr:");
+    localStringBuilder.append(paramString4);
+    localTPBaseLogger.info(localStringBuilder.toString());
+    paramString4 = new TPPlayerMsg.TPCDNURLInfo();
+    paramString4.url = paramString1;
+    paramString4.cdnIp = paramString2;
+    paramString4.uIp = paramString3;
+    TPPlayer.access$200(this.this$0, 201, 0, 0, null, new TPHashMapBuilder().put("url", paramString1).put("cdnip", paramString2).put("cdnuip", paramString3).build());
+    TPPlayer.access$300(this.this$0, 270, 0, 0, paramString4);
   }
   
   public void onDownloadCdnUrlUpdate(String paramString)
   {
-    TPPlayer.access$700(this.this$0).info("onDownloadCdnUrlUpdate, url:" + paramString);
-    TPPlayer.access$1100(this.this$0).onDownloadCdnUrlUpdate(paramString);
+    TPBaseLogger localTPBaseLogger = TPPlayer.access$700(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDownloadCdnUrlUpdate, url:");
+    localStringBuilder.append(paramString);
+    localTPBaseLogger.info(localStringBuilder.toString());
+    TPPlayer.access$300(this.this$0, 269, 0, 0, paramString);
   }
   
   public void onDownloadError(int paramInt1, int paramInt2, String paramString)
   {
-    TPPlayer.access$700(this.this$0).info("onDownloadError, moduleID:" + paramInt1 + ", errorCode:" + paramInt2 + ", extInfo:" + paramString);
-    TPPlayer.access$1100(this.this$0).onDownloadError(4000, paramInt2, paramString);
+    TPBaseLogger localTPBaseLogger = TPPlayer.access$700(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDownloadError, moduleID:");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", errorCode:");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", extInfo:");
+    localStringBuilder.append(paramString);
+    localTPBaseLogger.info(localStringBuilder.toString());
+    TPPlayer.access$800(this.this$0, paramInt1, paramInt2);
+    TPPlayer.access$300(this.this$0, 268, paramInt1, paramInt2, paramString);
   }
   
   public void onDownloadFinish()
   {
     TPPlayer.access$700(this.this$0).info("onDownloadFinish");
-    TPPlayer.access$1100(this.this$0).onDownloadFinish();
+    TPPlayer.access$300(this.this$0, 271, 0, 0, Integer.valueOf(0));
   }
   
   public void onDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString)
   {
-    TPPlayer.access$1100(this.this$0).onDownloadProgressUpdate(paramInt1, paramInt2, paramLong1, paramLong2, paramString);
+    TPPlayer.access$700(this.this$0).info("onDownloadProgressUpdate");
+    Object localObject = this.this$0;
+    long l = paramInt1;
+    TPPlayer.access$1102((TPPlayer)localObject, l);
+    TPPlayer.access$1202(this.this$0, paramLong1);
+    TPPlayer.access$1302(this.this$0, paramLong2);
+    localObject = new TPPlayerMsg.TPDownLoadProgressInfo();
+    ((TPPlayerMsg.TPDownLoadProgressInfo)localObject).playableDurationMS = l;
+    ((TPPlayerMsg.TPDownLoadProgressInfo)localObject).downloadSpeedKBps = paramInt2;
+    ((TPPlayerMsg.TPDownLoadProgressInfo)localObject).currentDownloadSize = paramLong1;
+    ((TPPlayerMsg.TPDownLoadProgressInfo)localObject).totalFileSize = paramLong2;
+    ((TPPlayerMsg.TPDownLoadProgressInfo)localObject).extraInfo = paramString;
+    TPPlayer.access$200(this.this$0, 200, 0, 0, null, new TPHashMapBuilder().put("speed", Integer.valueOf(paramInt2)).put("spanId", paramString).build());
+    TPPlayer.access$300(this.this$0, 274, 0, 0, localObject);
   }
   
   public void onDownloadProtocolUpdate(String paramString1, String paramString2)
   {
-    TPPlayer.access$700(this.this$0).info("onDownloadProtocolUpdate, protocol:" + paramString1 + ", protocolVer:" + paramString2);
-    TPPlayer.access$1100(this.this$0).onDownloadProtocolUpdate(paramString1, paramString2);
+    Object localObject = TPPlayer.access$700(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDownloadProtocolUpdate, protocol:");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(", protocolVer:");
+    localStringBuilder.append(paramString2);
+    ((TPBaseLogger)localObject).info(localStringBuilder.toString());
+    localObject = new TPPlayerMsg.TPProtocolInfo();
+    ((TPPlayerMsg.TPProtocolInfo)localObject).protocolVersion = paramString2;
+    ((TPPlayerMsg.TPProtocolInfo)localObject).protocolName = paramString1;
+    TPPlayer.access$200(this.this$0, 202, 0, 0, null, new TPHashMapBuilder().put("proto", paramString1).put("protover", paramString2).build());
+    TPPlayer.access$300(this.this$0, 273, 0, 0, localObject);
   }
   
   public void onDownloadStatusUpdate(int paramInt)
   {
-    if (paramInt != TPPlayer.access$1200(this.this$0))
+    if (paramInt != TPPlayer.access$1400(this.this$0))
     {
-      TPPlayer.access$700(this.this$0).info("onDownloadStatusUpdate, status:" + paramInt);
-      TPPlayer.access$1202(this.this$0, paramInt);
+      TPBaseLogger localTPBaseLogger = TPPlayer.access$700(this.this$0);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDownloadStatusUpdate, status:");
+      localStringBuilder.append(paramInt);
+      localTPBaseLogger.info(localStringBuilder.toString());
+      TPPlayer.access$1402(this.this$0, paramInt);
     }
-    TPPlayer.access$1100(this.this$0).onDownloadStatusUpdate(paramInt);
+    TPPlayer.access$300(this.this$0, 272, paramInt, 0, null);
   }
   
   public void onError(int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
-    Object localObject = TPPlayer.access$000(this.this$0).getPlayErrorCodeStr();
-    TPPlayer.access$700(this.this$0).info("onError playerErrorCodeStr=" + (String)localObject);
-    j = paramInt1;
-    i = paramInt2;
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {}
-    try
-    {
-      i = Integer.parseInt((String)localObject);
-      j = 4000;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+    String str = TPPlayer.access$000(this.this$0).getPlayErrorCodeStr();
+    Object localObject2 = TPPlayer.access$700(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onError playerErrorCodeStr=");
+    localStringBuilder.append(str);
+    ((TPBaseLogger)localObject2).info(localStringBuilder.toString());
+    int i = paramInt1;
+    int j = paramInt2;
+    if (!TextUtils.isEmpty(str)) {
+      try
+      {
+        j = Integer.parseInt(str);
+        i = 4000;
+      }
+      catch (Exception localException)
       {
         TPPlayer.access$700(this.this$0).printException(localException);
-        j = paramInt1;
-        i = paramInt2;
+        j = paramInt2;
+        i = paramInt1;
       }
     }
-    TPPlayer.access$800(this.this$0, j, i);
-    TPPlayer.access$700(this.this$0).info("onError errorTypeReal=" + j + ", errorCodeReal=" + i);
-    localObject = new TPThreadSwitchCommons.TPSwitchCommonParams();
-    ((TPThreadSwitchCommons.TPSwitchCommonParams)localObject).arg1 = paramLong1;
-    ((TPThreadSwitchCommons.TPSwitchCommonParams)localObject).arg2 = paramLong2;
-    TPPlayer.access$300(this.this$0, 262, j, i, localObject);
+    TPPlayer.access$800(this.this$0, i, j);
+    Object localObject1 = TPPlayer.access$700(this.this$0);
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("onError errorTypeReal=");
+    ((StringBuilder)localObject2).append(i);
+    ((StringBuilder)localObject2).append(", errorCodeReal=");
+    ((StringBuilder)localObject2).append(j);
+    ((TPBaseLogger)localObject1).info(((StringBuilder)localObject2).toString());
+    localObject1 = new TPThreadSwitchCommons.TPSwitchCommonParams();
+    ((TPThreadSwitchCommons.TPSwitchCommonParams)localObject1).arg1 = paramLong1;
+    ((TPThreadSwitchCommons.TPSwitchCommonParams)localObject1).arg2 = paramLong2;
+    TPPlayer.access$300(this.this$0, 262, i, j, localObject1);
   }
   
   public void onInfo(int paramInt, long paramLong1, long paramLong2, Object paramObject)
@@ -204,66 +299,98 @@ class TPPlayer$InnerPlayerListener
   
   public Object onPlayCallback(int paramInt, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
   {
-    return TPPlayer.access$1100(this.this$0).onPlayCallback(paramInt, paramObject1, paramObject2, paramObject3, paramObject4);
+    if (paramInt != 1)
+    {
+      if (paramInt != 2) {
+        return null;
+      }
+      if (!(paramObject3 instanceof Integer))
+      {
+        TPPlayer.access$700(this.this$0).info("MESSAGE_NOTIFY_PLAYER_SWITCH_DEFINITION, err ext3.");
+        return null;
+      }
+      paramObject1 = (Integer)paramObject3;
+      TPPlayer.access$300(this.this$0, 278, paramObject1.intValue(), 0, null);
+      return null;
+    }
+    TPPlayer.access$700(this.this$0).info("onDownloadNoMoreData");
+    TPPlayer.access$300(this.this$0, 276, 0, 0, paramObject1);
+    return null;
   }
   
   public void onPrepared()
   {
     TPPlayer.access$000(this.this$0).setProxyPlayState(0);
     Object localObject1 = TPPlayer.access$100(this.this$0).getPlaybackInfo();
-    String str = ((TPPlaybackInfo)localObject1).getWidth() + "*" + ((TPPlaybackInfo)localObject1).getHeight();
-    Object localObject2 = TPPlayer.access$100(this.this$0).getTrackInfo();
-    int i;
-    if (localObject2 != null)
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(((TPPlaybackInfo)localObject1).getWidth());
+    ((StringBuilder)localObject2).append("*");
+    ((StringBuilder)localObject2).append(((TPPlaybackInfo)localObject1).getHeight());
+    localObject2 = ((StringBuilder)localObject2).toString();
+    Object localObject3 = TPPlayer.access$100(this.this$0).getTrackInfo();
+    if (localObject3 != null)
     {
-      int m = localObject2.length;
+      int m = localObject3.length;
       int j = 0;
-      int k;
-      for (i = 0; j < m; i = k)
+      for (int i = 0;; i = k)
       {
         k = i;
-        if (localObject2[j].trackType == 2) {
+        if (j >= m) {
+          break;
+        }
+        k = i;
+        if (localObject3[j].trackType == 2) {
           k = i + 1;
         }
         j += 1;
       }
     }
-    for (;;)
-    {
-      localObject2 = this.this$0;
-      localObject1 = new TPHashMapBuilder().put("playertype", Integer.valueOf(TPPlayer.access$100(this.this$0).getPlayerType())).put("definition", str).put("rate", Long.valueOf(((TPPlaybackInfo)localObject1).getVideoBitRate())).put("duration", Long.valueOf(((TPPlaybackInfo)localObject1).getDurationMs())).put("fmt", ((TPPlaybackInfo)localObject1).getContainerFormat()).put("etime", Long.valueOf(System.currentTimeMillis()));
-      if (i > 1) {}
-      for (boolean bool = true;; bool = false)
-      {
-        TPPlayer.access$200((TPPlayer)localObject2, 103, 0, 0, null, ((TPHashMapBuilder)localObject1).put("multitrack", Boolean.valueOf(bool)).build());
-        TPPlayer.access$300(this.this$0, 257, 0, 0, null);
-        return;
-      }
-      i = 0;
+    int k = 0;
+    localObject3 = this.this$0;
+    localObject1 = new TPHashMapBuilder().put("playertype", Integer.valueOf(TPPlayer.access$100(this.this$0).getPlayerType())).put("definition", localObject2).put("rate", Long.valueOf(((TPPlaybackInfo)localObject1).getVideoBitRate())).put("duration", Long.valueOf(((TPPlaybackInfo)localObject1).getDurationMs())).put("fmt", ((TPPlaybackInfo)localObject1).getContainerFormat()).put("etime", Long.valueOf(System.currentTimeMillis()));
+    boolean bool = true;
+    if (k <= 1) {
+      bool = false;
     }
+    TPPlayer.access$200((TPPlayer)localObject3, 103, 0, 0, null, ((TPHashMapBuilder)localObject1).put("multitrack", Boolean.valueOf(bool)).build());
+    TPPlayer.access$300(this.this$0, 257, 0, 0, null);
   }
   
   public void onQuicDownloadStatusUpdate(String paramString)
   {
-    TPLogUtil.i(TPPlayer.access$1300(this.this$0), "onQuicDownloadStatusUpdate, info:" + paramString);
-    TPPlayer.access$1100(this.this$0).onQuicDownloadStatusUpdate(paramString);
+    String str = TPPlayer.access$1500(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onQuicDownloadStatusUpdate, info:");
+    localStringBuilder.append(paramString);
+    TPLogUtil.i(str, localStringBuilder.toString());
+    TPPlayer.access$300(this.this$0, 281, 0, 0, paramString);
   }
   
   public int onReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
   {
-    return TPPlayer.access$1100(this.this$0).onReadData(paramInt, paramString, paramLong1, paramLong2);
+    if (TPPlayer.access$1600(this.this$0) == null)
+    {
+      TPPlayer.access$700(this.this$0).error("mAssetResourceLoader not set");
+      return -1;
+    }
+    return TPPlayer.access$1600(this.this$0).onReadData(paramInt, paramString, paramLong1, paramLong2);
   }
   
   public void onSeekComplete()
   {
     TPPlayer.access$900(this.this$0);
-    TPPlayer.access$200(this.this$0, 110, 0, 0, null, new TPHashMapBuilder().put("etime", Long.valueOf(System.currentTimeMillis())).put("petime", Long.valueOf(this.this$0.handleGetCurrentPositionMs())).build());
+    TPPlayer.access$200(this.this$0, 110, 0, 0, null, new TPHashMapBuilder().put("etime", Long.valueOf(System.currentTimeMillis())).put("petime", Long.valueOf(this.this$0.getCurrentPositionMs())).build());
     TPPlayer.access$300(this.this$0, 263, 0, 0, null);
   }
   
   public int onStartReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
   {
-    return TPPlayer.access$1100(this.this$0).onStartReadData(paramInt, paramString, paramLong1, paramLong2);
+    if (TPPlayer.access$1600(this.this$0) == null)
+    {
+      TPPlayer.access$700(this.this$0).error("mAssetResourceLoader not set");
+      return -1;
+    }
+    return TPPlayer.access$1600(this.this$0).onStartReadData(paramInt, paramString, paramLong1, paramLong2);
   }
   
   public void onStateChange(int paramInt1, int paramInt2)
@@ -273,7 +400,12 @@ class TPPlayer$InnerPlayerListener
   
   public int onStopReadData(int paramInt1, String paramString, int paramInt2)
   {
-    return TPPlayer.access$1100(this.this$0).onStopReadData(paramInt1, paramString, paramInt2);
+    if (TPPlayer.access$1600(this.this$0) == null)
+    {
+      TPPlayer.access$700(this.this$0).error("mAssetResourceLoader not set");
+      return -1;
+    }
+    return TPPlayer.access$1600(this.this$0).onStopReadData(paramInt1, paramString, paramInt2);
   }
   
   public void onSubtitleData(TPSubtitleData paramTPSubtitleData)
@@ -313,7 +445,7 @@ class TPPlayer$InnerPlayerListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.TPPlayer.InnerPlayerListener
  * JD-Core Version:    0.7.0.1
  */

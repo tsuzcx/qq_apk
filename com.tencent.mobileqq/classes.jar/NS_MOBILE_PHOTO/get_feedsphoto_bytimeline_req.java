@@ -39,14 +39,15 @@ public final class get_feedsphoto_bytimeline_req
     paramJceOutputStream.write(this.begin_time, 1);
     paramJceOutputStream.write(this.end_time, 2);
     paramJceOutputStream.write(this.type, 3);
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 4);
+    String str = this.attach_info;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.get_feedsphoto_bytimeline_req
  * JD-Core Version:    0.7.0.1
  */

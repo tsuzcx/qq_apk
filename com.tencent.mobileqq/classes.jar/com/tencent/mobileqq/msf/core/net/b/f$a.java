@@ -12,56 +12,60 @@ class f$a
   
   public void run()
   {
-    for (;;)
+    try
     {
-      int j;
-      try
-      {
-        DataInputStream localDataInputStream = new DataInputStream(f.e(this.a));
-        i = 0;
-        if ((f.c(this.a).get()) || (!f.a(this.a).get()))
+      DataInputStream localDataInputStream = new DataInputStream(f.e(this.a));
+      int i = 0;
+      while ((f.c(this.a).get()) || (!f.a(this.a).get())) {
+        if (i <= 0)
         {
-          if (i > 0) {
-            break label215;
-          }
-          j = localDataInputStream.readInt() - 4;
+          i = localDataInputStream.readInt();
+          int j = i - 4;
+          StringBuilder localStringBuilder;
           if (j <= 33)
           {
             this.a.a = true;
             this.a.d = (SystemClock.elapsedRealtime() - f.f(this.a));
-            QLog.d("ReqAllFailSocket", 1, f.g(this.a) + " recv sso ping");
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(f.g(this.a));
+            localStringBuilder.append(" recv sso ping");
+            QLog.d("ReqAllFailSocket", 1, localStringBuilder.toString());
             i = j;
+          }
+          else
+          {
+            i = j;
+            if (j == 62)
+            {
+              this.a.b = true;
+              this.a.e = (SystemClock.elapsedRealtime() - f.f(this.a));
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append(f.g(this.a));
+              localStringBuilder.append(" recv heartbeat ping");
+              QLog.d("ReqAllFailSocket", 1, localStringBuilder.toString());
+              i = j;
+            }
           }
         }
         else
         {
-          return;
+          localDataInputStream.readByte();
+          i -= 1;
         }
       }
-      catch (Throwable localThrowable)
-      {
-        localThrowable.printStackTrace();
-        f.a(this.a, "readError");
-        f.d(this.a);
-      }
-      int i = j;
-      if (j == 62)
-      {
-        this.a.b = true;
-        this.a.e = (SystemClock.elapsedRealtime() - f.f(this.a));
-        QLog.d("ReqAllFailSocket", 1, f.g(this.a) + " recv heartbeat ping");
-        i = j;
-        continue;
-        label215:
-        localThrowable.readByte();
-        i -= 1;
-      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+      f.a(this.a, "readError");
+      f.d(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.b.f.a
  * JD-Core Version:    0.7.0.1
  */

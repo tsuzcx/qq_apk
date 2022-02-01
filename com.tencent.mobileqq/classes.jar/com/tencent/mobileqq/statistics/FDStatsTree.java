@@ -18,7 +18,7 @@ public class FDStatsTree
   {
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqStatisticsFDStatsTree$TreeNode;
     int i = 0;
-    if (i < paramString.length())
+    while (i < paramString.length())
     {
       char c = paramString.charAt(i);
       FDStatsTree.TreeNode localTreeNode = ((FDStatsTree.TreeNode)localObject).a(c);
@@ -27,19 +27,20 @@ public class FDStatsTree
         localTreeNode = new FDStatsTree.TreeNode(this.jdField_a_of_type_Int, c);
         this.jdField_a_of_type_Int += 1;
         ((FDStatsTree.TreeNode)localObject).a(localTreeNode);
+        localObject = localTreeNode;
       }
-      for (localObject = localTreeNode;; localObject = localTreeNode)
+      else
       {
-        i += 1;
-        break;
         localTreeNode.a();
+        localObject = localTreeNode;
       }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.FDStatsTree
  * JD-Core Version:    0.7.0.1
  */

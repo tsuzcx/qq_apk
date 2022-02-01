@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class ExtraAppInfo
   extends JceStruct
@@ -57,25 +58,29 @@ public final class ExtraAppInfo
   {
     paramJceOutputStream.write(this.fontType, 0);
     paramJceOutputStream.write(this.specialType, 1);
-    if (this.desc != null) {
-      paramJceOutputStream.write(this.desc, 2);
+    Object localObject = this.desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.usableScene != null) {
-      paramJceOutputStream.write(this.usableScene, 3);
+    localObject = this.usableScene;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
-    if (this.hideWordName != null) {
-      paramJceOutputStream.write(this.hideWordName, 4);
+    localObject = this.hideWordName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.styleid, 5);
     paramJceOutputStream.write(this.ringid, 6);
-    if (this.funcallOplist != null) {
-      paramJceOutputStream.write(this.funcallOplist, 7);
+    localObject = this.funcallOplist;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.ExtraAppInfo
  * JD-Core Version:    0.7.0.1
  */

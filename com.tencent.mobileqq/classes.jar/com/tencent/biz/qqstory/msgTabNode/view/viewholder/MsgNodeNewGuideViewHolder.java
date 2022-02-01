@@ -15,7 +15,7 @@ public class MsgNodeNewGuideViewHolder
 {
   public MsgNodeNewGuideViewHolder(ViewGroup paramViewGroup)
   {
-    super(paramViewGroup, 2131561863);
+    super(paramViewGroup, 2131561714);
   }
   
   private void c(MsgTabNodeInfo paramMsgTabNodeInfo)
@@ -36,25 +36,30 @@ public class MsgNodeNewGuideViewHolder
     if (!TextUtils.isEmpty(paramMsgTabNodeInfo.g)) {
       c(paramMsgTabNodeInfo.g);
     }
+    StoryMsgNodeFrameLayout localStoryMsgNodeFrameLayout;
+    String str;
     if (!TextUtils.isEmpty(paramMsgTabNodeInfo.j))
     {
       localStoryMsgNodeFrameLayout = this.a;
-      if (TextUtils.isEmpty(paramMsgTabNodeInfo.c)) {}
-      for (str = HardCodeUtil.a(2131706959);; str = paramMsgTabNodeInfo.c)
-      {
-        localStoryMsgNodeFrameLayout.setNodeName(str, paramMsgTabNodeInfo.j);
-        if (paramMsgTabNodeInfo.d) {
-          c(paramMsgTabNodeInfo);
-        }
-        return;
+      if (TextUtils.isEmpty(paramMsgTabNodeInfo.c)) {
+        str = HardCodeUtil.a(2131706981);
+      } else {
+        str = paramMsgTabNodeInfo.c;
       }
+      localStoryMsgNodeFrameLayout.setNodeName(str, paramMsgTabNodeInfo.j);
     }
-    StoryMsgNodeFrameLayout localStoryMsgNodeFrameLayout = this.a;
-    if (TextUtils.isEmpty(paramMsgTabNodeInfo.c)) {}
-    for (String str = HardCodeUtil.a(2131706958);; str = paramMsgTabNodeInfo.c)
+    else
     {
+      localStoryMsgNodeFrameLayout = this.a;
+      if (TextUtils.isEmpty(paramMsgTabNodeInfo.c)) {
+        str = HardCodeUtil.a(2131706980);
+      } else {
+        str = paramMsgTabNodeInfo.c;
+      }
       localStoryMsgNodeFrameLayout.setNodeName(str, 0);
-      break;
+    }
+    if (paramMsgTabNodeInfo.d) {
+      c(paramMsgTabNodeInfo);
     }
   }
   
@@ -66,7 +71,7 @@ public class MsgNodeNewGuideViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.viewholder.MsgNodeNewGuideViewHolder
  * JD-Core Version:    0.7.0.1
  */

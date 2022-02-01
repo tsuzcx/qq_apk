@@ -6,12 +6,12 @@ import com.huawei.hms.utils.ResourceLoaderUtil;
 public abstract class AbstractPromptDialog
   extends AbstractDialog
 {
-  protected String onGetNegativeButtonString(Context paramContext)
+  public String onGetNegativeButtonString(Context paramContext)
   {
     return null;
   }
   
-  protected String onGetTitleString(Context paramContext)
+  public String onGetTitleString(Context paramContext)
   {
     if (ResourceLoaderUtil.getmContext() == null) {
       ResourceLoaderUtil.setmContext(paramContext);
@@ -21,7 +21,7 @@ public abstract class AbstractPromptDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.ui.AbstractPromptDialog
  * JD-Core Version:    0.7.0.1
  */

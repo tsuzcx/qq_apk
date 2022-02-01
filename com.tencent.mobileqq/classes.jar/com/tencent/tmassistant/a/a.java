@@ -38,61 +38,74 @@ public class a
   
   private static long a(File paramFile, long paramLong)
   {
-    if (paramFile == null) {}
-    String str;
-    long l1;
-    do
-    {
+    if (paramFile == null) {
       return paramLong;
-      str = GlobalUtil.getCurrentDay();
-      if (TextUtils.equals(GlobalUtil.getDay(paramLong), str))
-      {
-        ab.c("AnalysisUtil_", "[findLastModifyTimeInternal] currentLastModifyTime is today:" + str);
+    }
+    String str = GlobalUtil.getCurrentDay();
+    if (TextUtils.equals(GlobalUtil.getDay(paramLong), str))
+    {
+      paramFile = new StringBuilder();
+      paramFile.append("[findLastModifyTimeInternal] currentLastModifyTime is today:");
+      paramFile.append(str);
+      ab.c("AnalysisUtil_", paramFile.toString());
+      return paramLong;
+    }
+    long l1 = paramFile.lastModified();
+    long l2 = l1;
+    if (paramFile.isDirectory())
+    {
+      paramFile = paramFile.listFiles();
+      if (paramFile == null) {
         return paramLong;
       }
-      l1 = paramFile.lastModified();
-      l2 = l1;
-      if (!paramFile.isDirectory()) {
-        break;
-      }
-      paramFile = paramFile.listFiles();
-    } while (paramFile == null);
-    int j = paramFile.length;
-    int i = 0;
-    long l2 = l1;
-    if (i < j)
-    {
-      l2 = a(paramFile[i], paramLong);
-      if (l2 <= l1) {
-        break label164;
-      }
-      l1 = l2;
-    }
-    label164:
-    for (;;)
-    {
-      if (TextUtils.equals(GlobalUtil.getDay(l1), str))
+      int j = paramFile.length;
+      int i = 0;
+      for (;;)
       {
-        ab.c("AnalysisUtil_", "[findLastModifyTimeInternal] found today file:" + str);
-        return l1;
+        l2 = l1;
+        if (i >= j) {
+          break;
+        }
+        long l3 = a(paramFile[i], paramLong);
+        l2 = l1;
+        if (l3 > l1) {
+          l2 = l3;
+        }
+        if (TextUtils.equals(GlobalUtil.getDay(l2), str))
+        {
+          paramFile = new StringBuilder();
+          paramFile.append("[findLastModifyTimeInternal] found today file:");
+          paramFile.append(str);
+          ab.c("AnalysisUtil_", paramFile.toString());
+          return l2;
+        }
+        i += 1;
+        l1 = l2;
       }
-      i += 1;
-      break;
-      return l2;
     }
+    return l2;
   }
   
   static String a(String paramString, List<String> paramList)
   {
-    Object localObject = GlobalUtil.getInstance().getContext();
-    if ((localObject == null) || (paramList == null) || (paramList.size() == 0)) {
-      return "";
+    Context localContext = GlobalUtil.getInstance().getContext();
+    String str = "";
+    Object localObject = str;
+    if (localContext != null)
+    {
+      localObject = str;
+      if (paramList != null)
+      {
+        if (paramList.size() == 0) {
+          return "";
+        }
+        localObject = localContext.getPackageManager();
+      }
     }
-    localObject = ((Context)localObject).getPackageManager();
     try
     {
-      paramString = b(((PackageManager)localObject).getPackageInfo(paramString, 1).applicationInfo.sourceDir, paramList);
-      return paramString;
+      localObject = b(((PackageManager)localObject).getPackageInfo(paramString, 1).applicationInfo.sourceDir, paramList);
+      return localObject;
     }
     catch (PackageManager.NameNotFoundException paramString) {}
     return "";
@@ -103,119 +116,126 @@ public class a
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokeinterface 106 1 0
-    //   6: istore_3
-    //   7: iload_3
-    //   8: newarray int
-    //   10: astore 5
-    //   12: aconst_null
-    //   13: astore 4
-    //   15: new 141	java/util/zip/ZipFile
-    //   18: dup
-    //   19: aload_0
-    //   20: invokespecial 144	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
-    //   23: astore_0
-    //   24: iconst_0
-    //   25: istore_2
-    //   26: iload_2
-    //   27: iload_3
-    //   28: if_icmpge +32 -> 60
-    //   31: aload_0
-    //   32: aload_1
-    //   33: iload_2
-    //   34: invokeinterface 148 2 0
-    //   39: checkcast 44	java/lang/String
-    //   42: invokevirtual 152	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
-    //   45: ifnull +8 -> 53
-    //   48: aload 5
-    //   50: iload_2
-    //   51: iconst_1
-    //   52: iastore
-    //   53: iload_2
-    //   54: iconst_1
-    //   55: iadd
-    //   56: istore_2
-    //   57: goto -31 -> 26
-    //   60: aload_0
-    //   61: ifnull +7 -> 68
-    //   64: aload_0
-    //   65: invokevirtual 155	java/util/zip/ZipFile:close	()V
-    //   68: new 66	java/lang/StringBuilder
-    //   71: dup
-    //   72: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   75: astore_0
-    //   76: iconst_0
-    //   77: istore_2
-    //   78: iload_2
-    //   79: iload_3
-    //   80: if_icmpge +58 -> 138
-    //   83: aload_0
-    //   84: aload 5
-    //   86: iload_2
-    //   87: iaload
-    //   88: invokevirtual 158	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   91: pop
-    //   92: aload_0
-    //   93: ldc 160
-    //   95: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   98: pop
-    //   99: iload_2
-    //   100: iconst_1
-    //   101: iadd
-    //   102: istore_2
-    //   103: goto -25 -> 78
-    //   106: astore_0
-    //   107: aload 4
-    //   109: astore_0
-    //   110: aload_0
-    //   111: ifnull -43 -> 68
-    //   114: aload_0
-    //   115: invokevirtual 155	java/util/zip/ZipFile:close	()V
-    //   118: goto -50 -> 68
-    //   121: astore_0
-    //   122: goto -54 -> 68
-    //   125: astore_1
-    //   126: aconst_null
-    //   127: astore_0
-    //   128: aload_0
-    //   129: ifnull +7 -> 136
-    //   132: aload_0
-    //   133: invokevirtual 155	java/util/zip/ZipFile:close	()V
-    //   136: aload_1
-    //   137: athrow
-    //   138: aload_0
-    //   139: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   142: areturn
-    //   143: astore_0
-    //   144: goto -76 -> 68
-    //   147: astore_0
-    //   148: goto -12 -> 136
-    //   151: astore_1
-    //   152: goto -24 -> 128
-    //   155: astore_1
-    //   156: goto -46 -> 110
+    //   1: invokeinterface 108 1 0
+    //   6: istore 4
+    //   8: iload 4
+    //   10: newarray int
+    //   12: astore 6
+    //   14: iconst_0
+    //   15: istore_3
+    //   16: new 141	java/util/zip/ZipFile
+    //   19: dup
+    //   20: aload_0
+    //   21: invokespecial 144	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
+    //   24: astore_0
+    //   25: iconst_0
+    //   26: istore_2
+    //   27: aload_0
+    //   28: astore 5
+    //   30: iload_2
+    //   31: iload 4
+    //   33: if_icmpge +45 -> 78
+    //   36: aload_0
+    //   37: aload_1
+    //   38: iload_2
+    //   39: invokeinterface 148 2 0
+    //   44: checkcast 44	java/lang/String
+    //   47: invokevirtual 152	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+    //   50: ifnull +8 -> 58
+    //   53: aload 6
+    //   55: iload_2
+    //   56: iconst_1
+    //   57: iastore
+    //   58: iload_2
+    //   59: iconst_1
+    //   60: iadd
+    //   61: istore_2
+    //   62: goto -35 -> 27
+    //   65: astore 5
+    //   67: aload_0
+    //   68: astore_1
+    //   69: aload 5
+    //   71: astore_0
+    //   72: goto +17 -> 89
+    //   75: goto +26 -> 101
+    //   78: aload 5
+    //   80: invokevirtual 155	java/util/zip/ZipFile:close	()V
+    //   83: goto +28 -> 111
+    //   86: astore_0
+    //   87: aconst_null
+    //   88: astore_1
+    //   89: aload_1
+    //   90: ifnull +7 -> 97
+    //   93: aload_1
+    //   94: invokevirtual 155	java/util/zip/ZipFile:close	()V
+    //   97: aload_0
+    //   98: athrow
+    //   99: aconst_null
+    //   100: astore_0
+    //   101: aload_0
+    //   102: ifnull +9 -> 111
+    //   105: aload_0
+    //   106: astore 5
+    //   108: goto -30 -> 78
+    //   111: new 66	java/lang/StringBuilder
+    //   114: dup
+    //   115: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   118: astore_0
+    //   119: iload_3
+    //   120: istore_2
+    //   121: iload_2
+    //   122: iload 4
+    //   124: if_icmpge +26 -> 150
+    //   127: aload_0
+    //   128: aload 6
+    //   130: iload_2
+    //   131: iaload
+    //   132: invokevirtual 158	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   135: pop
+    //   136: aload_0
+    //   137: ldc 160
+    //   139: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   142: pop
+    //   143: iload_2
+    //   144: iconst_1
+    //   145: iadd
+    //   146: istore_2
+    //   147: goto -26 -> 121
+    //   150: aload_0
+    //   151: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   154: areturn
+    //   155: astore_0
+    //   156: goto -57 -> 99
+    //   159: astore_1
+    //   160: goto -85 -> 75
+    //   163: astore_0
+    //   164: goto -53 -> 111
+    //   167: astore_1
+    //   168: goto -71 -> 97
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	159	0	paramString	String
-    //   0	159	1	paramList	List<String>
-    //   25	78	2	i	int
-    //   6	75	3	j	int
-    //   13	95	4	localObject	Object
-    //   10	75	5	arrayOfInt	int[]
+    //   0	171	0	paramString	String
+    //   0	171	1	paramList	List<String>
+    //   26	121	2	i	int
+    //   15	105	3	j	int
+    //   6	119	4	k	int
+    //   28	1	5	str1	String
+    //   65	14	5	localObject	Object
+    //   106	1	5	str2	String
+    //   12	117	6	arrayOfInt	int[]
     // Exception table:
     //   from	to	target	type
-    //   15	24	106	java/io/IOException
-    //   114	118	121	java/io/IOException
-    //   15	24	125	finally
-    //   64	68	143	java/io/IOException
-    //   132	136	147	java/io/IOException
-    //   31	48	151	finally
-    //   31	48	155	java/io/IOException
+    //   36	53	65	finally
+    //   16	25	86	finally
+    //   16	25	155	java/io/IOException
+    //   36	53	159	java/io/IOException
+    //   78	83	163	java/io/IOException
+    //   93	97	167	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistant.a.a
  * JD-Core Version:    0.7.0.1
  */

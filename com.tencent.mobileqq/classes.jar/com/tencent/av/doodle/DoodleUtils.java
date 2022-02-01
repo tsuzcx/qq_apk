@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.av.AVLog;
 import com.tencent.av.core.VcSystemInfo;
+import com.tencent.av.doodle.api.IDoodleApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
@@ -15,7 +17,7 @@ public class DoodleUtils
   
   public static int a(int paramInt1, int paramInt2, float paramFloat)
   {
-    return Math.round((paramInt2 - paramInt1) * paramFloat) + paramInt1;
+    return paramInt1 + Math.round(paramFloat * (paramInt2 - paramInt1));
   }
   
   public static int a(int[] paramArrayOfInt, float paramFloat)
@@ -26,7 +28,7 @@ public class DoodleUtils
     if (paramFloat >= 1.0F) {
       return paramArrayOfInt[(paramArrayOfInt.length - 1)];
     }
-    paramFloat = (paramArrayOfInt.length - 1) * paramFloat;
+    paramFloat *= (paramArrayOfInt.length - 1);
     int j = (int)paramFloat;
     paramFloat -= j;
     int i = paramArrayOfInt[j];
@@ -34,50 +36,45 @@ public class DoodleUtils
     return Color.argb(a(Color.alpha(i), Color.alpha(j), paramFloat), a(Color.red(i), Color.red(j), paramFloat), a(Color.green(i), Color.green(j), paramFloat), a(Color.blue(i), Color.blue(j), paramFloat));
   }
   
+  public static View a(ViewGroup paramViewGroup)
+  {
+    Object localObject2 = paramViewGroup.findViewById(2131373377);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      localObject1 = ((IDoodleApi)QRoute.api(IDoodleApi.class)).createDoodleSurfaceView(paramViewGroup.getContext());
+      int i = -1;
+      localObject2 = new ViewGroup.LayoutParams(-1, -1);
+      View localView = paramViewGroup.findViewById(2131373660);
+      if (localView != null) {
+        i = paramViewGroup.indexOfChild(localView);
+      }
+      paramViewGroup.addView((View)localObject1, i, (ViewGroup.LayoutParams)localObject2);
+    }
+    return localObject1;
+  }
+  
   public static DoodleItem a(int paramInt)
   {
     Object localObject;
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    case 2: 
-    default: 
-      localObject = new LineDoodleItem();
-    }
-    for (;;)
-    {
-      ((DoodleItem)localObject).a = paramInt;
-      return localObject;
-      localObject = new LineDoodleItem();
-      continue;
-      localObject = new PathParticleDoodleItem(2130968656);
-    }
-  }
-  
-  public static DoodleSurfaceView a(ViewGroup paramViewGroup)
-  {
-    Object localObject2 = (DoodleSurfaceView)paramViewGroup.findViewById(2131373805);
-    Object localObject1 = localObject2;
-    View localView;
-    if (localObject2 == null)
-    {
-      localObject1 = new DoodleSurfaceView(paramViewGroup.getContext());
-      localObject2 = new ViewGroup.LayoutParams(-1, -1);
-      localView = paramViewGroup.findViewById(2131374105);
-      if (localView == null) {
-        break label67;
+      if (paramInt != 3) {
+        localObject = new LineDoodleItem();
+      } else {
+        localObject = new PathParticleDoodleItem(2130968656);
       }
     }
-    label67:
-    for (int i = paramViewGroup.indexOfChild(localView);; i = -1)
-    {
-      paramViewGroup.addView((View)localObject1, i, (ViewGroup.LayoutParams)localObject2);
-      return localObject1;
+    else {
+      localObject = new LineDoodleItem();
     }
+    ((DoodleItem)localObject).a = paramInt;
+    return localObject;
   }
   
   public static void a(ViewGroup paramViewGroup)
   {
-    View localView = paramViewGroup.findViewById(2131373805);
+    View localView = paramViewGroup.findViewById(2131373377);
     if (localView != null) {
       paramViewGroup.removeView(localView);
     }
@@ -103,21 +100,31 @@ public class DoodleUtils
   public static boolean b()
   {
     int i = VcSystemInfo.getNumCores();
+    StringBuilder localStringBuilder;
     if (i < 4)
     {
-      AVLog.printColorLog("DoodleUtils", "isSupportOfDevice error cpucount = " + i);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isSupportOfDevice error cpucount = ");
+      localStringBuilder.append(i);
+      AVLog.printColorLog("DoodleUtils", localStringBuilder.toString());
       return false;
     }
     long l = VcSystemInfo.getMaxCpuFreq();
     if (l < 1400000L)
     {
-      AVLog.printColorLog("DoodleUtils", "isSupportOfDevice error cpuFrequency = " + l);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isSupportOfDevice error cpuFrequency = ");
+      localStringBuilder.append(l);
+      AVLog.printColorLog("DoodleUtils", localStringBuilder.toString());
       return false;
     }
     l = DeviceInfoUtil.a();
     if (l < 1073741824L)
     {
-      AVLog.printColorLog("DoodleUtils", "isSupportOfDevice error memory = " + l);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isSupportOfDevice error memory = ");
+      localStringBuilder.append(l);
+      AVLog.printColorLog("DoodleUtils", localStringBuilder.toString());
       return false;
     }
     return true;
@@ -125,7 +132,7 @@ public class DoodleUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.doodle.DoodleUtils
  * JD-Core Version:    0.7.0.1
  */

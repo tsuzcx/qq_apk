@@ -63,38 +63,68 @@ public final class ReqWalletConfig
   
   public String toString()
   {
-    return "ReqWalletConfig{reqType=" + this.reqType + ", uin=" + this.uin + ", platform='" + this.platform + '\'' + ", version='" + this.version + '\'' + ", iNetType=" + this.iNetType + ", seriesNo=" + this.seriesNo + ", commonMsg='" + this.commonMsg + '\'' + ", mParameter=" + this.mParameter + ", adcode='" + this.adcode + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ReqWalletConfig{reqType=");
+    localStringBuilder.append(this.reqType);
+    localStringBuilder.append(", uin=");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append(", platform='");
+    localStringBuilder.append(this.platform);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", version='");
+    localStringBuilder.append(this.version);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", iNetType=");
+    localStringBuilder.append(this.iNetType);
+    localStringBuilder.append(", seriesNo=");
+    localStringBuilder.append(this.seriesNo);
+    localStringBuilder.append(", commonMsg='");
+    localStringBuilder.append(this.commonMsg);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mParameter=");
+    localStringBuilder.append(this.mParameter);
+    localStringBuilder.append(", adcode='");
+    localStringBuilder.append(this.adcode);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.reqType, 0);
     paramJceOutputStream.write(this.uin, 1);
-    if (this.platform != null) {
-      paramJceOutputStream.write(this.platform, 2);
+    Object localObject = this.platform;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.version != null) {
-      paramJceOutputStream.write(this.version, 3);
+    localObject = this.version;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.iNetType, 4);
-    if (this.lbsInfo != null) {
-      paramJceOutputStream.write(this.lbsInfo, 5);
+    localObject = this.lbsInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
     paramJceOutputStream.write(this.seriesNo, 6);
-    if (this.commonMsg != null) {
-      paramJceOutputStream.write(this.commonMsg, 7);
+    localObject = this.commonMsg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.mParameter != null) {
-      paramJceOutputStream.write(this.mParameter, 8);
+    localObject = this.mParameter;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 8);
     }
-    if (this.adcode != null) {
-      paramJceOutputStream.write(this.adcode, 9);
+    localObject = this.adcode;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.ReqWalletConfig
  * JD-Core Version:    0.7.0.1
  */

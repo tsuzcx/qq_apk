@@ -83,22 +83,19 @@ public class AudioUtils
   public static ArrayList<TAVClip> getBGMAudioClips(long paramLong, @Nullable MusicMaterialMetaDataBean paramMusicMaterialMetaDataBean, float paramFloat)
   {
     ArrayList localArrayList = new ArrayList();
-    long l2;
-    long l1;
     if ((paramMusicMaterialMetaDataBean != null) && (!TextUtils.isEmpty(paramMusicMaterialMetaDataBean.path)))
     {
-      l2 = paramMusicMaterialMetaDataBean.startTime;
+      long l2 = paramMusicMaterialMetaDataBean.startTime;
       long l3 = paramMusicMaterialMetaDataBean.mTotalTimeMs;
-      l1 = paramMusicMaterialMetaDataBean.segDuration;
-      if ((l1 == 0L) || (!paramMusicMaterialMetaDataBean.isEdit)) {
-        l1 = l3 - l2;
+      long l1 = paramMusicMaterialMetaDataBean.segDuration;
+      if ((l1 != 0L) && (paramMusicMaterialMetaDataBean.isEdit)) {
+        break label70;
       }
+      l1 = l3 - l2;
+      label70:
       if (l1 <= paramLong) {
-        break label172;
+        paramLong = l1;
       }
-    }
-    for (;;)
-    {
       Object localObject = VideoUtils.createAsset(paramMusicMaterialMetaDataBean.path);
       if (localObject == null) {
         return null;
@@ -109,29 +106,27 @@ public class AudioUtils
       ((TAVClip)localObject).setStartTime(CMTime.fromMs(paramMusicMaterialMetaDataBean.startPlayOffset));
       ((TAVClip)localObject).setDuration(CMTime.fromMs(paramLong));
       localArrayList.add(localObject);
-      markAudioSymbol(AudioUtils.AudioSymbol.BGM, localArrayList);
-      return localArrayList;
-      label172:
-      paramLong = l1;
     }
+    markAudioSymbol(AudioUtils.AudioSymbol.BGM, localArrayList);
+    return localArrayList;
   }
   
   public static int getDuration(String paramString)
   {
-    int i = 0;
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-      localMediaMetadataRetriever.setDataSource(paramString);
-      paramString = localMediaMetadataRetriever.extractMetadata(9);
-      localMediaMetadataRetriever.release();
-      i = Integer.valueOf(paramString).intValue();
-      return i;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
+        localMediaMetadataRetriever.setDataSource(paramString);
+        paramString = localMediaMetadataRetriever.extractMetadata(9);
+        localMediaMetadataRetriever.release();
+        int i = Integer.valueOf(paramString).intValue();
+        return i;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
     return 0;
   }
@@ -193,41 +188,30 @@ public class AudioUtils
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    Object localObject = paramTAVComposition.getAudios();
-    Iterator localIterator;
-    if (localObject != null) {
-      localIterator = ((List)localObject).iterator();
-    }
-    label124:
-    label127:
-    for (;;)
+    Object localObject1 = paramTAVComposition.getAudios();
+    if (localObject1 != null)
     {
-      TAVClip localTAVClip;
-      if (localIterator.hasNext())
+      Iterator localIterator = ((List)localObject1).iterator();
+      while (localIterator.hasNext())
       {
-        localTAVClip = (TAVClip)localIterator.next();
-        localObject = localTAVClip.getExtraTrackInfo("audio_type_key");
-        if (!(localObject instanceof AudioUtils.AudioSymbol)) {
-          break label124;
+        TAVClip localTAVClip = (TAVClip)localIterator.next();
+        localObject1 = null;
+        Object localObject2 = localTAVClip.getExtraTrackInfo("audio_type_key");
+        if ((localObject2 instanceof AudioUtils.AudioSymbol)) {
+          localObject1 = (AudioUtils.AudioSymbol)localObject2;
         }
-      }
-      for (localObject = (AudioUtils.AudioSymbol)localObject;; localObject = null)
-      {
-        if ((localObject != null) && (((AudioUtils.AudioSymbol)localObject).ordinal() == paramAudioSymbol.ordinal())) {
-          break label127;
+        if ((localObject1 == null) || (((AudioUtils.AudioSymbol)localObject1).ordinal() != paramAudioSymbol.ordinal())) {
+          localArrayList.add(localTAVClip);
         }
-        localArrayList.add(localTAVClip);
-        break;
-        localArrayList.addAll(paramList);
-        paramTAVComposition.setAudios(localArrayList);
-        return;
       }
     }
+    localArrayList.addAll(paramList);
+    paramTAVComposition.setAudios(localArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.utils.AudioUtils
  * JD-Core Version:    0.7.0.1
  */

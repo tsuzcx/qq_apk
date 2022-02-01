@@ -27,8 +27,9 @@ public class DispatchTouchEventFrameLayout
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.a != null) {
-      this.a.a(paramMotionEvent);
+    DispatchTouchEventFrameLayout.OnDispatchListener localOnDispatchListener = this.a;
+    if (localOnDispatchListener != null) {
+      localOnDispatchListener.a(paramMotionEvent);
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
@@ -40,7 +41,7 @@ public class DispatchTouchEventFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.widget.DispatchTouchEventFrameLayout
  * JD-Core Version:    0.7.0.1
  */

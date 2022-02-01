@@ -14,19 +14,16 @@ class TroopGiftPanel$4
   {
     if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData$WebPanelItemInfo.jdField_a_of_type_Int == 1) {
       this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData$WebPanelItemInfo.c);
-    }
-    for (;;)
-    {
-      ReportController.b(null, "dc00899", "grp_lbs", "", "qq_gift", "aio_top_click", 0, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", "", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData$WebPanelItemInfo.jdField_a_of_type_JavaLangString);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    } else {
       TroopGiftPanel.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData$WebPanelItemInfo.c);
     }
+    ReportController.b(null, "dc00899", "grp_lbs", "", "qq_gift", "aio_top_click", 0, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", "", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData$WebPanelItemInfo.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troopgift.TroopGiftPanel.4
  * JD-Core Version:    0.7.0.1
  */

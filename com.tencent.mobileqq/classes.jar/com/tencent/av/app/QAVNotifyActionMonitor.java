@@ -25,6 +25,7 @@ public class QAVNotifyActionMonitor
     localIntentFilter.addAction("com.tencent.qav.notify.refuse");
     localIntentFilter.addAction("tencent.video.q2v.ptusoDownloadRet");
     localIntentFilter.addAction("tencent.video.q2v.avReceivePushMsg");
+    localIntentFilter.addAction("com.tencent.qqhead.getheadresp2");
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
     this.jdField_a_of_type_Boolean = true;
     if (QLog.isColorLevel()) {
@@ -46,7 +47,7 @@ public class QAVNotifyActionMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.QAVNotifyActionMonitor
  * JD-Core Version:    0.7.0.1
  */

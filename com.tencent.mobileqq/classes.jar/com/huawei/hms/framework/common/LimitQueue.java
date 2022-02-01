@@ -1,11 +1,14 @@
 package com.huawei.hms.framework.common;
 
 import java.util.Collection;
-import java.util.LinkedList;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class LimitQueue<E>
-  extends LinkedList<E>
+  extends ConcurrentLinkedQueue<E>
 {
+  private static final String TAG = "LimitQueue";
   private static final long serialVersionUID = -4636313759149307798L;
   private boolean deduplication = false;
   private int limit;
@@ -55,6 +58,24 @@ public class LimitQueue<E>
     return super.addAll(paramCollection);
   }
   
+  public void clear()
+  {
+    super.clear();
+  }
+  
+  public E get(int paramInt)
+  {
+    Iterator localIterator = iterator();
+    Object localObject = null;
+    int i = 0;
+    while ((i <= paramInt) && (localIterator.hasNext()))
+    {
+      localObject = localIterator.next();
+      i += 1;
+    }
+    return localObject;
+  }
+  
   public int getLimit()
   {
     return this.limit;
@@ -71,14 +92,37 @@ public class LimitQueue<E>
     return super.offer(paramE);
   }
   
+  public E peekLast()
+  {
+    Iterator localIterator = iterator();
+    for (Object localObject = null; localIterator.hasNext(); localObject = localIterator.next()) {}
+    return localObject;
+  }
+  
   public E poll()
   {
     return super.poll();
   }
+  
+  public E remove()
+  {
+    try
+    {
+      Object localObject = super.remove();
+      return localObject;
+    }
+    catch (NoSuchElementException localNoSuchElementException)
+    {
+      label7:
+      break label7;
+    }
+    Logger.w("LimitQueue", "remove failed, limitQueue is empty");
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.framework.common.LimitQueue
  * JD-Core Version:    0.7.0.1
  */

@@ -16,17 +16,20 @@ public class VideoCoverListGroupHolder$GetVideoBasicListReceiver
   
   public void a(@NonNull VideoCoverListGroupHolder paramVideoCoverListGroupHolder, @NonNull VidToBasicInfoHandler.GetVideoBasicInfoListEvent paramGetVideoBasicInfoListEvent)
   {
-    if ((paramGetVideoBasicInfoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramGetVideoBasicInfoListEvent.jdField_a_of_type_JavaUtilList == null)) {
-      return;
-    }
-    if (VideoCoverListGroupHolder.b(paramVideoCoverListGroupHolder))
+    if (!paramGetVideoBasicInfoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
     {
-      VideoCoverListGroupHolder.b(paramVideoCoverListGroupHolder, true);
-      SLog.b("VideoCoverListGroupHolder", "base info return , notify list while idle");
-      return;
+      if (paramGetVideoBasicInfoListEvent.jdField_a_of_type_JavaUtilList == null) {
+        return;
+      }
+      if (VideoCoverListGroupHolder.b(paramVideoCoverListGroupHolder))
+      {
+        VideoCoverListGroupHolder.b(paramVideoCoverListGroupHolder, true);
+        SLog.b("VideoCoverListGroupHolder", "base info return , notify list while idle");
+        return;
+      }
+      paramVideoCoverListGroupHolder.d();
+      SLog.b("VideoCoverListGroupHolder", "base info return , notify list now");
     }
-    paramVideoCoverListGroupHolder.d();
-    SLog.b("VideoCoverListGroupHolder", "base info return , notify list now");
   }
   
   public Class acceptEventClass()
@@ -36,7 +39,7 @@ public class VideoCoverListGroupHolder$GetVideoBasicListReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoCoverListGroupHolder.GetVideoBasicListReceiver
  * JD-Core Version:    0.7.0.1
  */

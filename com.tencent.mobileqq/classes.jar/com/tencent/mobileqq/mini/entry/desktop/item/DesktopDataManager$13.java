@@ -15,31 +15,45 @@ class DesktopDataManager$13
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    long l = 0L;
     DesktopDataManager.access$2102(this.this$0, false);
+    long l = 0L;
     if ((paramBoolean) && (paramJSONObject != null))
     {
       l = paramJSONObject.optLong("retCode");
-      String str = paramJSONObject.optString("errMsg");
+      localObject = paramJSONObject.optString("errMsg");
       if (l != 0L)
       {
-        QLog.e("DesktopDataManager", 1, "loadMoreRencentApp, retCode = " + l + ", errMsg = " + str);
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("loadMoreRencentApp, retCode = ");
+        paramJSONObject.append(l);
+        paramJSONObject.append(", errMsg = ");
+        paramJSONObject.append((String)localObject);
+        QLog.e("DesktopDataManager", 1, paramJSONObject.toString());
         return;
       }
       paramJSONObject = (INTERFACE.StGetDropdownAppListRsp)paramJSONObject.opt("response");
       if (paramJSONObject != null)
       {
-        if (paramJSONObject.modules.get() != null) {}
-        for (int i = paramJSONObject.modules.get().size();; i = 0)
-        {
-          if (i <= 0) {
-            DesktopDataManager.access$2202(this.this$0, false);
-          }
-          DesktopDataManager.access$2300(this.this$0, paramJSONObject.modules.get());
-          DesktopDataManager.access$2402(this.this$0, (COMM.StCommonExt)paramJSONObject.extInfo.get());
-          QLog.d("DesktopDataManager", 1, "loadMoreRencentApp, retCode = " + l + ", errMsg = " + str + " count = " + i);
-          return;
+        int i;
+        if (paramJSONObject.modules.get() != null) {
+          i = paramJSONObject.modules.get().size();
+        } else {
+          i = 0;
         }
+        if (i <= 0) {
+          DesktopDataManager.access$2202(this.this$0, false);
+        }
+        DesktopDataManager.access$2300(this.this$0, paramJSONObject.modules.get());
+        DesktopDataManager.access$2402(this.this$0, (COMM.StCommonExt)paramJSONObject.extInfo.get());
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("loadMoreRencentApp, retCode = ");
+        paramJSONObject.append(l);
+        paramJSONObject.append(", errMsg = ");
+        paramJSONObject.append((String)localObject);
+        paramJSONObject.append(" count = ");
+        paramJSONObject.append(i);
+        QLog.d("DesktopDataManager", 1, paramJSONObject.toString());
+        return;
       }
       QLog.e("DesktopDataManager", 1, "loadMoreRencentApp failed, response is null.");
       return;
@@ -47,12 +61,19 @@ class DesktopDataManager$13
     if (paramJSONObject != null) {
       l = paramJSONObject.optLong("retCode");
     }
-    QLog.e("DesktopDataManager", 1, "loadMoreRencentApp, isSuccess = " + paramBoolean + ", ret = " + paramJSONObject + ", retCode = " + l);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("loadMoreRencentApp, isSuccess = ");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append(", ret = ");
+    ((StringBuilder)localObject).append(paramJSONObject);
+    ((StringBuilder)localObject).append(", retCode = ");
+    ((StringBuilder)localObject).append(l);
+    QLog.e("DesktopDataManager", 1, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.13
  * JD-Core Version:    0.7.0.1
  */

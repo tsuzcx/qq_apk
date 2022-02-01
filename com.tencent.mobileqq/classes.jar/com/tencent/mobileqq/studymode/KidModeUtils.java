@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.studymode;
 
 import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -14,16 +13,19 @@ import com.tencent.qphone.base.util.QLog;
 
 public class KidModeUtils
 {
-  public static void a(FragmentActivity paramFragmentActivity, String paramString, int paramInt)
+  public static void a(BaseActivity paramBaseActivity, String paramString, int paramInt)
   {
-    if ((paramString == null) || (paramString.length() == 0) || (paramFragmentActivity == null)) {
-      return;
+    if ((paramString != null) && (paramString.length() != 0))
+    {
+      if (paramBaseActivity == null) {
+        return;
+      }
+      String str = paramString;
+      if (paramString.endsWith("\n")) {
+        str = paramString.substring(0, paramString.length() - 1);
+      }
+      new QQToastNotifier(paramBaseActivity).a(str, paramBaseActivity.getTitleBarHeight(), 0, paramInt);
     }
-    String str = paramString;
-    if (paramString.endsWith("\n")) {
-      str = paramString.substring(0, paramString.length() - 1);
-    }
-    new QQToastNotifier(paramFragmentActivity).a(str, paramFragmentActivity.getTitleBarHeight(), 0, paramInt);
   }
   
   public static void a(String paramString, QQAppInterface paramQQAppInterface)
@@ -60,7 +62,7 @@ public class KidModeUtils
       QLog.d("KidModeUtils", 2, "showKidModeUpgradeDialog sTopActivity is null");
       return;
     }
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(BaseActivity.sTopActivity, 230, 2131559084, null, BaseApplicationImpl.sApplication.getString(2131719554), BaseApplicationImpl.sApplication.getString(2131719553), null, null, new KidModeUtils.2());
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(BaseActivity.sTopActivity, 230, 2131558978, null, BaseApplicationImpl.sApplication.getString(2131719273), BaseApplicationImpl.sApplication.getString(2131719272), null, null, new KidModeUtils.2());
     if (!localQQCustomDialog.isShowing()) {
       localQQCustomDialog.show();
     }
@@ -95,7 +97,7 @@ public class KidModeUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.KidModeUtils
  * JD-Core Version:    0.7.0.1
  */

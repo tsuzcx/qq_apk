@@ -28,75 +28,72 @@ class FeedSegment$13
   public void OnClick(View paramView, int paramInt)
   {
     this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
-    switch (paramInt)
+    Object localObject;
+    if (paramInt != 0)
     {
-    default: 
-      StoryReportor.a("home_page", "multi_press_clk", 0, 5, new String[0]);
-    case 0: 
-    case 1: 
-      Object localObject;
-      do
+      int i = 2;
+      if (paramInt != 1)
       {
+        if (paramInt != 2)
+        {
+          StoryReportor.a("home_page", "multi_press_clk", 0, 5, new String[0]);
+          return;
+        }
+        if (!NetworkUtil.isNetworkAvailable(FeedSegment.g(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment)))
+        {
+          QQToast.a(FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment), 1, HardCodeUtil.a(2131704570), 0).a();
+          return;
+        }
+        paramView = new qqstory_service.ReqMultiRcmdDisLike();
+        paramView.vid.set(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+        ProtoUtils.a(PlayModeUtils.a(), new FeedSegment.13.1(this), paramView.toByteArray(), StoryApi.a("StorySvc.multi_rcmd_dis_like"));
+        StoryReportor.a("home_page", "multi_press_clk", 0, 4, new String[0]);
         return;
-        localObject = FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment);
-        if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) {}
-        for (paramView = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid;; paramView = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid)
-        {
-          StoryApi.a((Context)localObject, 4, paramView);
-          StoryReportor.a("home_page", "multi_press_clk", 0, 1, new String[0]);
-          return;
-        }
-        if (!NetworkUtil.g(FeedSegment.f(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment)))
-        {
-          QQToast.a(FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment), 1, HardCodeUtil.a(2131704477), 0).a();
-          return;
-        }
-      } while (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem == null);
-      int i = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isSubscribe;
-      paramView = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isSubscribe())
+      }
+      if (!NetworkUtil.isNetworkAvailable(FeedSegment.f(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment)))
       {
-        paramInt = 0;
-        paramView.isSubscribe = paramInt;
+        QQToast.a(FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment), 1, HardCodeUtil.a(2131704567), 0).a();
+        return;
+      }
+      paramView = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
+      if (paramView != null)
+      {
+        int j = paramView.isSubscribe;
+        paramView = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
+        paramView.isSubscribe = (paramView.isSubscribe() ^ true);
         FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHotRecommendFeedItem.feedId);
         paramView = (QQStoryHandler)PlayModeUtils.a().getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER);
         localObject = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid;
-        if (i != 1) {
-          break label256;
+        if (j == 1) {
+          paramInt = 1;
+        } else {
+          paramInt = 0;
         }
-        paramInt = 1;
-        label221:
         paramView.a(1, (String)localObject, paramInt, 1);
-        if (i != 1) {
-          break label261;
+        paramInt = i;
+        if (j == 1) {
+          paramInt = 3;
         }
-      }
-      label256:
-      label261:
-      for (paramInt = 3;; paramInt = 2)
-      {
         StoryReportor.a("home_page", "multi_press_clk", 0, paramInt, new String[0]);
-        return;
-        paramInt = 1;
-        break;
-        paramInt = 0;
-        break label221;
       }
     }
-    if (!NetworkUtil.g(FeedSegment.g(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment)))
+    else
     {
-      QQToast.a(FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment), 1, HardCodeUtil.a(2131704480), 0).a();
-      return;
+      localObject = FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment);
+      paramView = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
+      if (paramView != null) {
+        paramView = paramView.uid;
+      } else {
+        paramView = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
+      }
+      StoryApi.a((Context)localObject, 4, paramView);
+      StoryReportor.a("home_page", "multi_press_clk", 0, 1, new String[0]);
     }
-    paramView = new qqstory_service.ReqMultiRcmdDisLike();
-    paramView.vid.set(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
-    ProtoUtils.a(PlayModeUtils.a(), new FeedSegment.13.1(this), paramView.toByteArray(), StoryApi.a("StorySvc.multi_rcmd_dis_like"));
-    StoryReportor.a("home_page", "multi_press_clk", 0, 4, new String[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment.13
  * JD-Core Version:    0.7.0.1
  */

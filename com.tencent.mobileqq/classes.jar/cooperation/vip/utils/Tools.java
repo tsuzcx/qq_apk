@@ -28,55 +28,48 @@ import mqq.app.AppRuntime;
 
 public class Tools
 {
-  private static String a;
-  private static String b;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "";
-    jdField_b_of_type_JavaLangString = "";
-  }
+  private static String a = "";
+  private static String b = "";
   
   public static Bundle a(String paramString)
   {
-    int i = 0;
     Bundle localBundle = new Bundle();
     if (paramString == null) {
       return localBundle;
     }
-    int j = paramString.indexOf('?');
-    if ((j < 0) || (j + 1 >= paramString.length())) {
-      return localBundle;
-    }
-    paramString = paramString.substring(j + 1);
-    if (TextUtils.isEmpty(paramString)) {
-      return localBundle;
-    }
-    paramString = paramString.split("&");
-    for (;;)
+    int i = paramString.indexOf('?');
+    if (i >= 0)
     {
-      if ((paramString != null) && (i < paramString.length))
+      i += 1;
+      if (i >= paramString.length()) {
+        return localBundle;
+      }
+      paramString = paramString.substring(i);
+      if (TextUtils.isEmpty(paramString)) {
+        return localBundle;
+      }
+      paramString = paramString.split("&");
+      if (paramString != null)
       {
-        String[] arrayOfString = paramString[i].split("=");
-        if ((arrayOfString != null) && (arrayOfString.length == 2)) {}
-        try
+        i = 0;
+        while (i < paramString.length)
         {
-          localBundle.putString(arrayOfString[0], URLDecoder.decode(arrayOfString[1], "UTF-8"));
+          String[] arrayOfString = paramString[i].split("=");
+          if ((arrayOfString != null) && (arrayOfString.length == 2)) {
+            try
+            {
+              localBundle.putString(arrayOfString[0], URLDecoder.decode(arrayOfString[1], "UTF-8"));
+            }
+            catch (IllegalArgumentException localIllegalArgumentException)
+            {
+              QLog.e("tools", 1, "parseUrlParams", localIllegalArgumentException);
+            }
+            catch (UnsupportedEncodingException localUnsupportedEncodingException)
+            {
+              localUnsupportedEncodingException.printStackTrace();
+            }
+          }
           i += 1;
-        }
-        catch (UnsupportedEncodingException localUnsupportedEncodingException)
-        {
-          for (;;)
-          {
-            localUnsupportedEncodingException.printStackTrace();
-          }
-        }
-        catch (IllegalArgumentException localIllegalArgumentException)
-        {
-          for (;;)
-          {
-            QLog.e("tools", 1, "parseUrlParams", localIllegalArgumentException);
-          }
         }
       }
     }
@@ -129,7 +122,8 @@ public class Tools
   
   public static String a()
   {
-    if ((jdField_b_of_type_JavaLangString != null) && (jdField_b_of_type_JavaLangString.length() > 0)) {
+    String str = jdField_b_of_type_JavaLangString;
+    if ((str != null) && (str.length() > 0)) {
       return jdField_b_of_type_JavaLangString;
     }
     try
@@ -146,47 +140,53 @@ public class Tools
   
   private static void a(TianShuReport.UserActionReport paramUserActionReport, TianShuReportData paramTianShuReportData)
   {
-    String str = paramTianShuReportData.jdField_b_of_type_JavaLangString;
-    if (TextUtils.isEmpty(str))
+    Object localObject = paramTianShuReportData.jdField_b_of_type_JavaLangString;
+    if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      str = "";
-      if (localAppRuntime != null) {
-        str = localAppRuntime.getAccount();
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if (localObject != null) {
+        localObject = ((AppRuntime)localObject).getAccount();
+      } else {
+        localObject = "";
       }
-      if (!TextUtils.isEmpty(str))
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        str = str + "_" + NetConnInfoCenter.getServerTime();
-        paramUserActionReport.trace_id.set(str);
-      }
-      str = String.valueOf(paramTianShuReportData.l);
-      if (!TextUtils.isEmpty(str)) {
-        break label171;
-      }
-      str = TianShuManager.getInstance().getTraceInfoFromCache(String.valueOf(paramTianShuReportData.g));
-      if (!TextUtils.isEmpty(str)) {
-        paramUserActionReport.trigger_info.set(str);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("_");
+        localStringBuilder.append(NetConnInfoCenter.getServerTime());
+        localObject = localStringBuilder.toString();
+        paramUserActionReport.trace_id.set((String)localObject);
       }
     }
-    for (;;)
+    else
     {
-      int j = paramTianShuReportData.jdField_a_of_type_Int;
-      int i = j;
-      if (j == -1) {
-        i = 1;
-      }
-      paramUserActionReport.trace_num.set(i);
-      return;
-      paramUserActionReport.trace_id.set(String.valueOf(str));
-      break;
-      label171:
-      paramUserActionReport.trigger_info.set(str);
+      paramUserActionReport.trace_id.set(String.valueOf(localObject));
     }
+    localObject = String.valueOf(paramTianShuReportData.l);
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localObject = TianShuManager.getInstance().getTraceInfoFromCache(String.valueOf(paramTianShuReportData.g));
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        paramUserActionReport.trigger_info.set((String)localObject);
+      }
+    }
+    else
+    {
+      paramUserActionReport.trigger_info.set((String)localObject);
+    }
+    int j = paramTianShuReportData.jdField_a_of_type_Int;
+    int i = j;
+    if (j == -1) {
+      i = 1;
+    }
+    paramUserActionReport.trace_num.set(i);
   }
   
   public static String b()
   {
-    if ((jdField_a_of_type_JavaLangString != null) && (jdField_a_of_type_JavaLangString.length() > 0)) {
+    String str = jdField_a_of_type_JavaLangString;
+    if ((str != null) && (str.length() > 0)) {
       return jdField_a_of_type_JavaLangString;
     }
     try
@@ -203,23 +203,28 @@ public class Tools
   
   public static String c()
   {
-    switch (NetworkUtil.b(BaseApplicationImpl.getContext()))
+    int i = NetworkUtil.getNetworkType(BaseApplicationImpl.getContext());
+    if (i != 1)
     {
-    default: 
-      return "UNKNOW";
-    case 1: 
-      return "WIFI";
-    case 4: 
-      return "4G";
-    case 3: 
-      return "3G";
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4) {
+            return "UNKNOW";
+          }
+          return "4G";
+        }
+        return "3G";
+      }
+      return "2G";
     }
-    return "2G";
+    return "WIFI";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.utils.Tools
  * JD-Core Version:    0.7.0.1
  */

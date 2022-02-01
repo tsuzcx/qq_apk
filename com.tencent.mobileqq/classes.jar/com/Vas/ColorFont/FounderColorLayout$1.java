@@ -3,8 +3,7 @@ package com.Vas.ColorFont;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import com.etrump.mixlayout.ETFont;
-import com.etrump.mixlayout.ETTextView;
-import com.etrump.mixlayout.ETTextView.TextAnimationListener;
+import com.tencent.mobileqq.vas.font.api.IETextView;
 
 class FounderColorLayout$1
   implements ValueAnimator.AnimatorUpdateListener
@@ -17,24 +16,25 @@ class FounderColorLayout$1
     if (i >= this.a.i[0])
     {
       this.a.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-      this.a.e = 0;
-      this.a.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation = false;
-      this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.isFounderAnimating = false;
-      this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.invalidate();
-      if (this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.mAnimationListener != null) {
-        this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.mAnimationListener.a(this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.mMessage, this.a.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId);
-      }
-    }
-    while (i <= this.a.e) {
+      paramValueAnimator = this.a;
+      paramValueAnimator.e = 0;
+      paramValueAnimator.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation = false;
+      this.a.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.setIsFounderAnimating(false);
+      this.a.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.invalidate();
+      this.a.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.onAnimationEnd(this.a.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId);
       return;
     }
-    this.a.e = i;
-    this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.invalidate();
+    if (i > this.a.e)
+    {
+      paramValueAnimator = this.a;
+      paramValueAnimator.e = i;
+      paramValueAnimator.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.invalidate();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.Vas.ColorFont.FounderColorLayout.1
  * JD-Core Version:    0.7.0.1
  */

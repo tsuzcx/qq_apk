@@ -16,17 +16,23 @@ public final class oidb_0x7df$ReqBody
   public static final int UINT32_SEQ_FIELD_NUMBER = 1;
   public static final int UINT32_SORT_FIELD_NUMBER = 5;
   public static final int UINT32_START_INDEX_FIELD_NUMBER = 2;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48 }, new String[] { "uint32_seq", "uint32_start_index", "uint32_req_num", "rpt_uint64_uinlist", "uint32_sort", "uint32_nick" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0) }, ReqBody.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBRepeatField<Long> rpt_uint64_uinlist = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBUInt32Field uint32_nick = PBField.initUInt32(0);
   public final PBUInt32Field uint32_req_num = PBField.initUInt32(0);
   public final PBUInt32Field uint32_seq = PBField.initUInt32(0);
   public final PBUInt32Field uint32_sort = PBField.initUInt32(0);
   public final PBUInt32Field uint32_start_index = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48 }, new String[] { "uint32_seq", "uint32_start_index", "uint32_req_num", "rpt_uint64_uinlist", "uint32_sort", "uint32_nick" }, new Object[] { localInteger, localInteger, localInteger, Long.valueOf(0L), localInteger, localInteger }, ReqBody.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x7df.oidb_0x7df.ReqBody
  * JD-Core Version:    0.7.0.1
  */

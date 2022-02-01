@@ -12,20 +12,20 @@ public final class DefaultJumpScheme
   extends BaseJumpScheme
 {
   @NotNull
-  public PendingIntent a(@NotNull PushComponent paramPushComponent)
+  protected PendingIntent a(@NotNull PushComponent paramPushComponent)
   {
     Intrinsics.checkParameterIsNotNull(paramPushComponent, "pushComponent");
     return d(paramPushComponent);
   }
   
-  public boolean a()
+  protected boolean a()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.notification.modularize.business.DefaultJumpScheme
  * JD-Core Version:    0.7.0.1
  */

@@ -26,17 +26,19 @@ public final class stWaterTemplate
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.sWaterTemplateID != null) {
-      paramJceOutputStream.write(this.sWaterTemplateID, 0);
+    String str = this.sWaterTemplateID;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.sWaterContent != null) {
-      paramJceOutputStream.write(this.sWaterContent, 1);
+    str = this.sWaterContent;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     FileUpload.stWaterTemplate
  * JD-Core Version:    0.7.0.1
  */

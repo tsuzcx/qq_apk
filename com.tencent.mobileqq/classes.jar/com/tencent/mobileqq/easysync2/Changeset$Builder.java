@@ -17,10 +17,11 @@ public class Changeset$Builder
   
   public Builder a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEasysync2Operation.jdField_a_of_type_Char = '=';
-    this.jdField_a_of_type_ComTencentMobileqqEasysync2Operation.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqEasysync2Operation.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ComTencentMobileqqEasysync2Operation.b = Math.max(paramInt2, 0);
+    Operation localOperation = this.jdField_a_of_type_ComTencentMobileqqEasysync2Operation;
+    localOperation.jdField_a_of_type_Char = '=';
+    localOperation.jdField_a_of_type_JavaLangString = "";
+    localOperation.jdField_a_of_type_Int = paramInt1;
+    localOperation.b = Math.max(paramInt2, 0);
     this.jdField_a_of_type_ComTencentMobileqqEasysync2SmartOpAssembler.a(this.jdField_a_of_type_ComTencentMobileqqEasysync2Operation);
     return this;
   }
@@ -34,11 +35,12 @@ public class Changeset$Builder
   
   public Builder b(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEasysync2Operation.jdField_a_of_type_Char = '-';
-    this.jdField_a_of_type_ComTencentMobileqqEasysync2Operation.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqEasysync2Operation.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ComTencentMobileqqEasysync2Operation.b = paramInt2;
-    this.jdField_a_of_type_ComTencentMobileqqEasysync2SmartOpAssembler.a(this.jdField_a_of_type_ComTencentMobileqqEasysync2Operation);
+    Operation localOperation = this.jdField_a_of_type_ComTencentMobileqqEasysync2Operation;
+    localOperation.jdField_a_of_type_Char = '-';
+    localOperation.jdField_a_of_type_JavaLangString = "";
+    localOperation.jdField_a_of_type_Int = paramInt1;
+    localOperation.b = paramInt2;
+    this.jdField_a_of_type_ComTencentMobileqqEasysync2SmartOpAssembler.a(localOperation);
     return this;
   }
   
@@ -52,7 +54,7 @@ public class Changeset$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.Changeset.Builder
  * JD-Core Version:    0.7.0.1
  */

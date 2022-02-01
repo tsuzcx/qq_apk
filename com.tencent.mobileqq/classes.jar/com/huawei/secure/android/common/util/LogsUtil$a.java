@@ -20,10 +20,12 @@ class LogsUtil$a
   
   public Throwable getCause()
   {
-    if (this.o == this) {
-      return null;
+    Throwable localThrowable2 = this.o;
+    Throwable localThrowable1 = localThrowable2;
+    if (localThrowable2 == this) {
+      localThrowable1 = null;
     }
-    return this.o;
+    return localThrowable1;
   }
   
   public String getMessage()
@@ -38,26 +40,32 @@ class LogsUtil$a
   
   public String toString()
   {
-    if (this.p == null) {
-      localObject = "";
+    Object localObject1 = this.p;
+    if (localObject1 == null) {
+      return "";
     }
-    String str;
-    do
+    Object localObject2 = localObject1.getClass().getName();
+    localObject1 = localObject2;
+    if (this.n != null)
     {
-      return localObject;
-      str = this.p.getClass().getName();
-      localObject = str;
-    } while (this.n == null);
-    Object localObject = str + ": ";
-    if (this.n.startsWith((String)localObject)) {
-      return this.n;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append(": ");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      if (this.n.startsWith((String)localObject1)) {
+        return this.n;
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(this.n);
+      localObject1 = ((StringBuilder)localObject2).toString();
     }
-    return (String)localObject + this.n;
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.secure.android.common.util.LogsUtil.a
  * JD-Core Version:    0.7.0.1
  */

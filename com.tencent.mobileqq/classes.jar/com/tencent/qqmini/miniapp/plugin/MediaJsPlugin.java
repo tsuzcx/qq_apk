@@ -41,54 +41,66 @@ public class MediaJsPlugin
   
   private boolean handleSeek(CoverVideoView paramCoverVideoView, String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
     try
     {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        JSONArray localJSONArray = new JSONArray(paramString);
-        bool1 = bool2;
-        if (localJSONArray.length() == 1) {
-          bool1 = paramCoverVideoView.seekTo((int)(localJSONArray.getDouble(0) * 1000.0D));
-        }
+      if (TextUtils.isEmpty(paramString)) {
+        break label74;
       }
-      return bool1;
+      JSONArray localJSONArray = new JSONArray(paramString);
+      if (localJSONArray.length() != 1) {
+        break label74;
+      }
+      boolean bool = paramCoverVideoView.seekTo((int)(localJSONArray.getDouble(0) * 1000.0D));
+      return bool;
     }
     catch (Exception paramCoverVideoView)
     {
-      QMLog.e("MediaJsPlugin", "wrong seek pram. " + paramString);
+      label44:
+      label74:
+      break label44;
     }
+    paramCoverVideoView = new StringBuilder();
+    paramCoverVideoView.append("wrong seek pram. ");
+    paramCoverVideoView.append(paramString);
+    QMLog.e("MediaJsPlugin", paramCoverVideoView.toString());
     return false;
   }
   
   private void handleSendDanmu(CoverVideoView paramCoverVideoView, String paramString1, RequestEvent paramRequestEvent, String paramString2, int paramInt)
   {
-    int i = 0;
     for (;;)
     {
       try
       {
         JSONArray localJSONArray = new JSONArray(paramString1);
-        if (localJSONArray.length() == 2)
+        int j = localJSONArray.length();
+        int i = 0;
+        if (j == 2)
         {
           paramString1 = localJSONArray.getString(0);
           i = ColorUtils.parseColor(localJSONArray.getString(1));
-          paramCoverVideoView.playDanmu(paramString1, i);
-          return;
         }
-        if (localJSONArray.length() == 1) {
+        else
+        {
+          if (localJSONArray.length() != 1) {
+            break label116;
+          }
           paramString1 = localJSONArray.getString(0);
-        } else {
-          paramString1 = null;
         }
+        paramCoverVideoView.playDanmu(paramString1, i);
+        return;
       }
       catch (Exception paramCoverVideoView)
       {
-        QMLog.e("MediaJsPlugin", "sendDanmu error." + paramCoverVideoView);
+        paramString1 = new StringBuilder();
+        paramString1.append("sendDanmu error.");
+        paramString1.append(paramCoverVideoView);
+        QMLog.e("MediaJsPlugin", paramString1.toString());
         callbackJsEventFail(paramRequestEvent, paramString2, null, paramInt);
         return;
       }
+      label116:
+      paramString1 = null;
     }
   }
   
@@ -107,36 +119,39 @@ public class MediaJsPlugin
   @JsEvent({"insertCamera"})
   public void insertCamera(RequestEvent paramRequestEvent)
   {
-    try
-    {
-      Object localObject = new JSONObject(paramRequestEvent.jsonParams);
-      int i = ((JSONObject)localObject).optInt("cameraId");
-      int j = ((JSONObject)localObject).optInt("parentId");
-      JSONObject localJSONObject1 = ((JSONObject)localObject).optJSONObject("position");
-      String str1 = ((JSONObject)localObject).optString("flash");
-      String str2 = ((JSONObject)localObject).optString("devicePosition");
-      if (str1.equals("on")) {
-        str1 = "on";
-      }
-      for (;;)
+    String str2;
+    for (String str1 = "on";; str2 = "off") {
+      try
       {
-        boolean bool = ((JSONObject)localObject).optBoolean("fixed", false);
-        localObject = ((JSONObject)localObject).optString("mode");
-        JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("containerId", i);
-        AppBrandTask.runTaskOnUiThread(new MediaJsPlugin.5(this, paramRequestEvent, i, j, str2, localJSONObject1, localJSONObject2, str1, bool, (String)localObject));
-        return;
-        if (str1.equals("auto")) {
+        Object localObject2 = new JSONObject(paramRequestEvent.jsonParams);
+        int i = ((JSONObject)localObject2).optInt("cameraId");
+        int j = ((JSONObject)localObject2).optInt("parentId");
+        localObject1 = ((JSONObject)localObject2).optJSONObject("position");
+        Object localObject3 = ((JSONObject)localObject2).optString("flash");
+        String str3 = ((JSONObject)localObject2).optString("devicePosition");
+        boolean bool = ((String)localObject3).equals("on");
+        if (!bool)
+        {
+          if (!((String)localObject3).equals("auto")) {
+            continue;
+          }
           str1 = "auto";
-        } else {
-          str1 = "off";
         }
+        bool = ((JSONObject)localObject2).optBoolean("fixed", false);
+        localObject2 = ((JSONObject)localObject2).optString("mode");
+        localObject3 = new JSONObject();
+        ((JSONObject)localObject3).put("containerId", i);
+        AppBrandTask.runTaskOnUiThread(new MediaJsPlugin.5(this, paramRequestEvent, i, j, str3, (JSONObject)localObject1, (JSONObject)localObject3, str1, bool, (String)localObject2));
+        return;
       }
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      QMLog.e("MediaJsPlugin", paramRequestEvent.event + " error.", localJSONException);
+      catch (JSONException localJSONException)
+      {
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramRequestEvent.event);
+        ((StringBuilder)localObject1).append(" error.");
+        QMLog.e("MediaJsPlugin", ((StringBuilder)localObject1).toString(), localJSONException);
+        return;
+      }
     }
   }
   
@@ -147,29 +162,31 @@ public class MediaJsPlugin
     if (localCoverView == null)
     {
       localObject = new CoverCameraView(this.mMiniAppContext, paramRequestEvent.jsService);
-      ((CoverCameraView)localObject).setParentId(paramInt2);
-      ((CoverCameraView)localObject).setFixed(paramBoolean);
-      ((CoverCameraView)localObject).setCameraId(paramInt1);
-      ((CoverCameraView)localObject).setWebviewId(PageAction.obtain(this.mMiniAppContext).getPageId());
+      paramRequestEvent = (CoverCameraView)localObject;
+      paramRequestEvent.setParentId(paramInt2);
+      paramRequestEvent.setFixed(paramBoolean);
+      paramRequestEvent.setCameraId(paramInt1);
+      paramRequestEvent.setWebviewId(PageAction.obtain(this.mMiniAppContext).getPageId());
       CoverViewAction.obtain(this.mMiniAppContext).add(paramInt2, paramInt1, (CoverView)localObject, paramBoolean);
     }
     float f = DisplayUtil.getDensity(this.mMiniAppContext.getAttachedActivity());
     if ((localObject instanceof CoverCameraView))
     {
-      ((CoverCameraView)localObject).setMode(paramString3);
-      ((CoverCameraView)localObject).setFlashMode(paramString2);
-      ((CoverCameraView)localObject).setCameraSurfaceCallBack(paramCameraCallBack);
-      ((CoverCameraView)localObject).openCamera(paramString1);
+      paramRequestEvent = (CoverCameraView)localObject;
+      paramRequestEvent.setMode(paramString3);
+      paramRequestEvent.setFlashMode(paramString2);
+      paramRequestEvent.setCameraSurfaceCallBack(paramCameraCallBack);
+      paramRequestEvent.openCamera(paramString1);
       paramInt1 = (int)(paramInt5 * f + 0.5F);
       paramInt2 = (int)(paramInt6 * f + 0.5F);
       paramInt3 = (int)(paramInt3 * f + 0.5F);
-      paramInt4 = (int)(paramInt4 * f + 0.5F);
-      ((CoverCameraView)localObject).setCameraWidth(paramInt1);
-      ((CoverCameraView)localObject).setCameraHeight(paramInt2);
-      paramRequestEvent = new FrameLayout.LayoutParams(paramInt1, paramInt2);
-      paramRequestEvent.leftMargin = paramInt3;
-      paramRequestEvent.topMargin = paramInt4;
-      ((CoverCameraView)localObject).setLayoutParams(paramRequestEvent);
+      paramInt4 = (int)(f * paramInt4 + 0.5F);
+      paramRequestEvent.setCameraWidth(paramInt1);
+      paramRequestEvent.setCameraHeight(paramInt2);
+      paramString1 = new FrameLayout.LayoutParams(paramInt1, paramInt2);
+      paramString1.leftMargin = paramInt3;
+      paramString1.topMargin = paramInt4;
+      paramRequestEvent.setLayoutParams(paramString1);
     }
   }
   
@@ -178,16 +195,19 @@ public class MediaJsPlugin
   {
     try
     {
-      JSONObject localJSONObject1 = new JSONObject(paramRequestEvent.jsonParams);
-      int i = localJSONObject1.optInt("videoPlayerId");
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("containerId", i);
-      AppBrandTask.runTaskOnUiThread(new MediaJsPlugin.2(this, i, paramRequestEvent, localJSONObject1, localJSONObject2));
+      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
+      int i = localJSONObject.optInt("videoPlayerId");
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("containerId", i);
+      AppBrandTask.runTaskOnUiThread(new MediaJsPlugin.2(this, i, paramRequestEvent, localJSONObject, (JSONObject)localObject));
       return;
     }
     catch (Exception localException)
     {
-      QMLog.e("MediaJsPlugin", paramRequestEvent.event + " error.", localException);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramRequestEvent.event);
+      ((StringBuilder)localObject).append(" error.");
+      QMLog.e("MediaJsPlugin", ((StringBuilder)localObject).toString(), localException);
     }
   }
   
@@ -203,37 +223,36 @@ public class MediaJsPlugin
   public void operateCamera(RequestEvent paramRequestEvent)
   {
     QMLog.d("MediaJsPlugin", paramRequestEvent.jsonParams);
-    CoverView localCoverView;
-    String str;
     try
     {
       JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
       int i = localJSONObject.optInt("cameraId");
-      localCoverView = CoverViewAction.obtain(this.mMiniAppContext).get(i);
+      CoverView localCoverView = CoverViewAction.obtain(this.mMiniAppContext).get(i);
       if (!(localCoverView instanceof CoverCameraView))
       {
         paramRequestEvent.fail();
         return;
       }
-      str = localJSONObject.optString("type");
+      String str = localJSONObject.optString("type");
       if ("takePhoto".equals(str))
       {
         ((CoverCameraView)localCoverView).takePhoto(paramRequestEvent, localJSONObject.optString("quality"));
+        return;
+      }
+      if ("startRecord".equals(str))
+      {
+        ((CoverCameraView)localCoverView).startRecord(paramRequestEvent);
+        return;
+      }
+      if ("stopRecord".equals(str))
+      {
+        ((CoverCameraView)localCoverView).stopRecord(paramRequestEvent);
         return;
       }
     }
     catch (JSONException paramRequestEvent)
     {
       paramRequestEvent.printStackTrace();
-      return;
-    }
-    if ("startRecord".equals(str))
-    {
-      ((CoverCameraView)localCoverView).startRecord(paramRequestEvent);
-      return;
-    }
-    if ("stopRecord".equals(str)) {
-      ((CoverCameraView)localCoverView).stopRecord(paramRequestEvent);
     }
   }
   
@@ -286,57 +305,61 @@ public class MediaJsPlugin
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("MediaJsPlugin", paramRequestEvent.event + " error.", localJSONException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramRequestEvent.event);
+      localStringBuilder.append(" error.");
+      QMLog.e("MediaJsPlugin", localStringBuilder.toString(), localJSONException);
     }
   }
   
   @JsEvent({"updateCamera"})
   public void updateCamera(RequestEvent paramRequestEvent)
   {
+    String str1 = "on";
     for (;;)
     {
-      CoverView localCoverView;
-      String str;
       try
       {
         JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
         int i = localJSONObject.optInt("cameraId");
-        localCoverView = CoverViewAction.obtain(this.mMiniAppContext).get(i);
+        CoverView localCoverView = CoverViewAction.obtain(this.mMiniAppContext).get(i);
         if (!(localCoverView instanceof CoverCameraView))
         {
           paramRequestEvent.fail();
           return;
         }
-        str = localJSONObject.optString("devicePosition");
+        String str2 = localJSONObject.optString("devicePosition");
         paramRequestEvent = localJSONObject.optString("flash");
-        if (paramRequestEvent.equals("on"))
+        boolean bool = paramRequestEvent.equals("on");
+        if (bool)
         {
-          paramRequestEvent = "on";
-          if (!"front".equalsIgnoreCase(str)) {
-            break label117;
+          paramRequestEvent = str1;
+        }
+        else
+        {
+          if (!paramRequestEvent.equals("auto")) {
+            break label151;
           }
+          paramRequestEvent = "auto";
+        }
+        if ("front".equalsIgnoreCase(str2))
+        {
           ((CoverCameraView)localCoverView).switchCamera(false, paramRequestEvent);
+          return;
+        }
+        if ("back".equalsIgnoreCase(str2))
+        {
+          ((CoverCameraView)localCoverView).switchCamera(true, paramRequestEvent);
           return;
         }
       }
       catch (JSONException paramRequestEvent)
       {
         paramRequestEvent.printStackTrace();
-        return;
       }
-      if (paramRequestEvent.equals("auto"))
-      {
-        paramRequestEvent = "auto";
-        continue;
-        label117:
-        if ("back".equalsIgnoreCase(str)) {
-          ((CoverCameraView)localCoverView).switchCamera(true, paramRequestEvent);
-        }
-      }
-      else
-      {
-        paramRequestEvent = "off";
-      }
+      return;
+      label151:
+      paramRequestEvent = "off";
     }
   }
   
@@ -351,13 +374,16 @@ public class MediaJsPlugin
     }
     catch (Throwable localThrowable)
     {
-      QMLog.e("MediaJsPlugin", paramRequestEvent.event + " error.", localThrowable);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramRequestEvent.event);
+      localStringBuilder.append(" error.");
+      QMLog.e("MediaJsPlugin", localStringBuilder.toString(), localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.MediaJsPlugin
  * JD-Core Version:    0.7.0.1
  */

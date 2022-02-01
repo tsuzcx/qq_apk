@@ -51,7 +51,17 @@ public class AVGameStep
   
   public String toString()
   {
-    return "AVGameStep{" + this.jdField_a_of_type_JavaLangString + "," + this.jdField_a_of_type_Long + "," + this.b + "," + this.jdField_a_of_type_Int + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AVGameStep{");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -64,7 +74,7 @@ public class AVGameStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.util.AVGameStep
  * JD-Core Version:    0.7.0.1
  */

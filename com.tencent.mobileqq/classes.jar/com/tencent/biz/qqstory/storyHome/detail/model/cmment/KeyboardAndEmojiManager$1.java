@@ -20,26 +20,22 @@ class KeyboardAndEmojiManager$1
     if (i != this.jdField_a_of_type_Int)
     {
       int j = KeyboardAndEmojiManager.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager).getRootView().getHeight();
-      if (j - i <= j / 4) {
-        break label79;
+      if (j - i > j / 4)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        KeyboardAndEmojiManager.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager);
       }
-      this.jdField_a_of_type_Boolean = true;
-      KeyboardAndEmojiManager.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = i;
-      return;
-      label79:
-      if (this.jdField_a_of_type_Boolean) {
+      else if (this.jdField_a_of_type_Boolean)
+      {
         KeyboardAndEmojiManager.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager);
       }
+      this.jdField_a_of_type_Int = i;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.cmment.KeyboardAndEmojiManager.1
  * JD-Core Version:    0.7.0.1
  */

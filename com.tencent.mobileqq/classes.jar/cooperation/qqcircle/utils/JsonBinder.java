@@ -11,7 +11,7 @@ import java.util.List;
 
 public class JsonBinder
 {
-  private static final String TAG = JsonBinder.class.getName();
+  private static final String TAG = "cooperation.qqcircle.utils.JsonBinder";
   private static JsonBinder jsonBinder;
   private Gson gson = new GsonBuilder().serializeSpecialFloatingPointValues().setLongSerializationPolicy(LongSerializationPolicy.STRING).create();
   
@@ -32,32 +32,48 @@ public class JsonBinder
     }
     catch (JsonSyntaxException paramString)
     {
-      Log.e(TAG, "form json error.");
-      return null;
+      StringBuilder localStringBuilder;
+      break label141;
     }
     catch (InstantiationException paramString)
     {
-      for (;;)
-      {
-        Log.e(TAG, paramClass.getName() + "clazz new instance instantiation error.");
-      }
+      break label101;
     }
     catch (IllegalAccessException paramString)
     {
-      for (;;)
-      {
-        Log.e(TAG, paramClass.getName() + "clazz IllegalAccessException error.");
-      }
+      break label61;
     }
     catch (NumberFormatException paramString)
     {
-      for (;;)
-      {
-        Log.e(TAG, paramClass.getName() + "clazz NumberFormatException error.");
-      }
+      break label21;
     }
     paramString = this.gson.fromJson(paramString, paramClass);
     return paramString;
+    label21:
+    paramString = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramClass.getName());
+    localStringBuilder.append("clazz NumberFormatException error.");
+    Log.e(paramString, localStringBuilder.toString());
+    break label150;
+    label61:
+    paramString = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramClass.getName());
+    localStringBuilder.append("clazz IllegalAccessException error.");
+    Log.e(paramString, localStringBuilder.toString());
+    break label150;
+    label101:
+    paramString = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramClass.getName());
+    localStringBuilder.append("clazz new instance instantiation error.");
+    Log.e(paramString, localStringBuilder.toString());
+    break label150;
+    label141:
+    Log.e(TAG, "form json error.");
+    label150:
+    return null;
   }
   
   public <T> List<T> fromJson(String paramString, Type paramType)
@@ -72,8 +88,10 @@ public class JsonBinder
     }
     catch (JsonSyntaxException paramString)
     {
-      Log.e(TAG, "form json error.");
+      label27:
+      break label27;
     }
+    Log.e(TAG, "form json error.");
     return new ArrayList();
   }
   
@@ -86,8 +104,10 @@ public class JsonBinder
     }
     catch (JsonSyntaxException paramString)
     {
-      Log.e(TAG, "form json error.");
+      label12:
+      break label12;
     }
+    Log.e(TAG, "form json error.");
     return null;
   }
   
@@ -103,7 +123,7 @@ public class JsonBinder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.utils.JsonBinder
  * JD-Core Version:    0.7.0.1
  */

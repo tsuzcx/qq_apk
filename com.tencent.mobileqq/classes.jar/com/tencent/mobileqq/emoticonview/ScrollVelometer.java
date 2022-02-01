@@ -20,25 +20,27 @@ public class ScrollVelometer
   
   public void onMove(int paramInt)
   {
-    if (!this.mWorking) {}
-    do
-    {
+    if (!this.mWorking) {
       return;
-      this.mDistance += paramInt;
-      if (this.mStartTime == 0L)
-      {
-        this.mStartTime = SystemClock.uptimeMillis();
-        return;
-      }
-    } while (SystemClock.uptimeMillis() - this.mStartTime <= this.mCheckTime);
-    ScrollVelometer.SpeedListener localSpeedListener = this.mListener;
-    if (this.mDistance > this.mThreshold) {}
-    for (boolean bool = true;; bool = false)
+    }
+    this.mDistance += paramInt;
+    if (this.mStartTime == 0L)
     {
+      this.mStartTime = SystemClock.uptimeMillis();
+      return;
+    }
+    if (SystemClock.uptimeMillis() - this.mStartTime > this.mCheckTime)
+    {
+      ScrollVelometer.SpeedListener localSpeedListener = this.mListener;
+      boolean bool;
+      if (this.mDistance > this.mThreshold) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       localSpeedListener.onCheckSpeed(bool);
       this.mStartTime = 0L;
       this.mDistance = 0;
-      return;
     }
   }
   
@@ -54,7 +56,7 @@ public class ScrollVelometer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.ScrollVelometer
  * JD-Core Version:    0.7.0.1
  */

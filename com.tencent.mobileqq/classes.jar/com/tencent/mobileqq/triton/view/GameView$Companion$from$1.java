@@ -54,12 +54,12 @@ public final class GameView$Companion$from$1
   public void setGameOnTouchListener(@Nullable Function1<? super MotionEvent, Boolean> paramFunction1)
   {
     SurfaceView localSurfaceView = this.$surfaceView;
-    if (paramFunction1 != null) {}
-    for (paramFunction1 = (View.OnTouchListener)new GameView.Companion.from.1.setGameOnTouchListener.1.1(paramFunction1);; paramFunction1 = null)
-    {
-      localSurfaceView.setOnTouchListener(paramFunction1);
-      return;
+    if (paramFunction1 != null) {
+      paramFunction1 = (View.OnTouchListener)new GameView.Companion.from.1.setGameOnTouchListener.1.1(paramFunction1);
+    } else {
+      paramFunction1 = null;
     }
+    localSurfaceView.setOnTouchListener(paramFunction1);
   }
   
   public void setSurfaceCallback(@Nullable GameView.SurfaceCallback paramSurfaceCallback)
@@ -95,7 +95,7 @@ public final class GameView$Companion$from$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.view.GameView.Companion.from.1
  * JD-Core Version:    0.7.0.1
  */

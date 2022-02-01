@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.qqocr.impl.R.styleable;
 
 public class OCRBottomTabView
   extends LinearLayout
@@ -32,12 +32,12 @@ public class OCRBottomTabView
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    LayoutInflater.from(paramContext).inflate(2131561416, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380140));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369454));
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.OCRBottomTabView);
-    paramAttributeSet = paramContext.getString(1);
-    Drawable localDrawable = paramContext.getDrawable(0);
+    LayoutInflater.from(paramContext).inflate(2131561255, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379469));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369181));
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.aH);
+    paramAttributeSet = paramContext.getString(R.styleable.x);
+    Drawable localDrawable = paramContext.getDrawable(R.styleable.w);
     paramContext.recycle();
     if (!TextUtils.isEmpty(paramAttributeSet)) {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramAttributeSet);
@@ -81,7 +81,7 @@ public class OCRBottomTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.OCRBottomTabView
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ public abstract class HippyEngineHost
   public HippyEngineManager createDebugHippyEngineManager(String paramString)
   {
     HippyEngineManager.Builder localBuilder = new HippyEngineManager.Builder();
-    localBuilder.setHippyGlobalConfigs(getHippyGlobalConfigs()).setCoreBundleLoader(null).setPackages(getPackages()).setSupportDev(true).setDebugJs(paramString).setEngineMode(getEngineMode()).setGroupId(getGroupId());
+    localBuilder.setHippyGlobalConfigs(getHippyGlobalConfigs()).setCoreBundleLoader(null).setPackages(getPackages()).setSupportDev(true).setDebugJs(paramString).setGroupId(getGroupId());
     return localBuilder.build();
   }
   
@@ -31,7 +31,7 @@ public abstract class HippyEngineHost
   public HippyEngineManager createHippyEngineManager(HippyBundleLoader paramHippyBundleLoader)
   {
     HippyEngineManager.Builder localBuilder = new HippyEngineManager.Builder();
-    localBuilder.setHippyGlobalConfigs(getHippyGlobalConfigs()).setCoreBundleLoader(getCoreBundleLoader()).setPreloadBundleLoader(paramHippyBundleLoader).setPackages(getPackages()).setSupportDev(false).setDebugJs("").setEngineMode(getEngineMode()).setEnableHippyBuffer(enableHippyBufferBridge()).setGroupId(getGroupId());
+    localBuilder.setHippyGlobalConfigs(getHippyGlobalConfigs()).setCoreBundleLoader(getCoreBundleLoader()).setPreloadBundleLoader(paramHippyBundleLoader).setPackages(getPackages()).setSupportDev(false).setDebugJs("").setEnableHippyBuffer(enableHippyBufferBridge()).setGroupId(getGroupId());
     return localBuilder.build();
   }
   
@@ -43,11 +43,6 @@ public abstract class HippyEngineHost
   protected HippyBundleLoader getCoreBundleLoader()
   {
     return null;
-  }
-  
-  protected HippyEngine.EngineMode getEngineMode()
-  {
-    return HippyEngine.EngineMode.NORMAL;
   }
   
   protected int getGroupId()
@@ -64,7 +59,7 @@ public abstract class HippyEngineHost
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippyEngineHost
  * JD-Core Version:    0.7.0.1
  */

@@ -21,10 +21,10 @@ public class MiniAppMonitorInfoView
 {
   public static final String ACTION_SHOW_MONITOR_VIEW = "action.qq.miniapp.show.monitorview";
   private static final int REFRESH_MONITOR_DURATION = 1000;
-  public static long sDownloadDuration = 0L;
+  public static long sDownloadDuration;
   private static final Action<Long> sGetDrawCallCountAction = new MiniAppMonitorInfoView.2();
   public static long sStartDuration;
-  public static long sStartTime = 0L;
+  public static long sStartTime;
   private TextView mCpuRate;
   private TextView mCpuUsage;
   private TextView mDbCacheTv;
@@ -42,11 +42,6 @@ public class MiniAppMonitorInfoView
   private TextView mRenderAgainTv;
   private TextView mRenderFirstTv;
   private TextView mStartDurationTv;
-  
-  static
-  {
-    sStartDuration = 0L;
-  }
   
   public MiniAppMonitorInfoView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -73,27 +68,39 @@ public class MiniAppMonitorInfoView
   
   private long getDrawCallCount()
   {
-    if (this.mMiniAppContext != null) {
-      return ((Long)this.mMiniAppContext.performAction(sGetDrawCallCountAction)).longValue();
+    IMiniAppContext localIMiniAppContext = this.mMiniAppContext;
+    if (localIMiniAppContext != null) {
+      return ((Long)localIMiniAppContext.performAction(sGetDrawCallCountAction)).longValue();
     }
     return 0L;
   }
   
   protected void initData()
   {
-    if (this.mStartDurationTv != null)
+    TextView localTextView = this.mStartDurationTv;
+    StringBuilder localStringBuilder;
+    if (localTextView != null)
     {
-      this.mStartDurationTv.setText("启动耗时：" + sStartDuration + "ms");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("启动耗时：");
+      localStringBuilder.append(sStartDuration);
+      localStringBuilder.append("ms");
+      localTextView.setText(localStringBuilder.toString());
       this.mStartDurationTv.setVisibility(0);
     }
-    if (this.mDownloadInfoTv != null)
+    localTextView = this.mDownloadInfoTv;
+    if (localTextView != null)
     {
-      this.mDownloadInfoTv.setText("包下载耗时：" + sDownloadDuration + "ms");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("包下载耗时：");
+      localStringBuilder.append(sDownloadDuration);
+      localStringBuilder.append("ms");
+      localTextView.setText(localStringBuilder.toString());
       this.mDownloadInfoTv.setVisibility(0);
     }
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     bringToFront();
@@ -106,24 +113,23 @@ public class MiniAppMonitorInfoView
   
   public void startRefreshMonitorUi()
   {
-    if (this.mHasStartMonitor) {
-      if (this.mMainHandler != null) {
-        this.mMainHandler.removeCallbacks(this.mRefreshRunnable);
+    if (this.mHasStartMonitor)
+    {
+      localHandler = this.mMainHandler;
+      if (localHandler != null) {
+        localHandler.removeCallbacks(this.mRefreshRunnable);
       }
     }
-    for (;;)
+    else if (this.mMiniAppType == 0)
     {
-      if (this.mMainHandler != null) {
-        this.mMainHandler.postDelayed(this.mRefreshRunnable, 1000L);
+      if (this.mFpsListener == null) {
+        this.mFpsListener = new MiniAppMonitorInfoView.FpsListener(this, null);
       }
-      return;
-      if (this.mMiniAppType == 0)
-      {
-        if (this.mFpsListener == null) {
-          this.mFpsListener = new MiniAppMonitorInfoView.FpsListener(this, null);
-        }
-        FPSCalculator.getInstance().addListener(this.mFpsListener);
-      }
+      FPSCalculator.getInstance().addListener(this.mFpsListener);
+    }
+    Handler localHandler = this.mMainHandler;
+    if (localHandler != null) {
+      localHandler.postDelayed(this.mRefreshRunnable, 1000L);
     }
   }
   
@@ -146,54 +152,71 @@ public class MiniAppMonitorInfoView
   
   protected void updateData()
   {
-    String str = "";
-    ThreadMsgInfo localThreadMsgInfo = TaskMonitorManager.g().getTaskPerfmSwitchPageInfo();
-    if (localThreadMsgInfo != null) {
-      str = "" + "切换页面耗时: " + localThreadMsgInfo.realTimeCost + "ms";
-    }
-    if (this.mPageSwitchTv != null)
+    Object localObject2 = TaskMonitorManager.g().getTaskPerfmSwitchPageInfo();
+    Object localObject1 = "";
+    if (localObject2 != null)
     {
-      if (localThreadMsgInfo != null)
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("");
+      ((StringBuilder)localObject1).append("切换页面耗时: ");
+      ((StringBuilder)localObject1).append(((ThreadMsgInfo)localObject2).realTimeCost);
+      ((StringBuilder)localObject1).append("ms");
+      localObject1 = ((StringBuilder)localObject1).toString();
+    }
+    TextView localTextView = this.mPageSwitchTv;
+    if (localTextView != null) {
+      if (localObject2 != null)
       {
+        localTextView.setVisibility(0);
+        this.mPageSwitchTv.setText((CharSequence)localObject1);
+      }
+      else
+      {
+        localTextView.setText("切换页面耗时: 无页面切换");
         this.mPageSwitchTv.setVisibility(0);
-        this.mPageSwitchTv.setText(str);
       }
     }
-    else if (this.mDrawCallTv != null)
-    {
-      if (this.mMiniAppType != 1) {
-        break label273;
+    localObject1 = this.mDrawCallTv;
+    if (localObject1 != null) {
+      if (this.mMiniAppType == 1)
+      {
+        long l = getDrawCallCount();
+        localObject1 = this.mDrawCallTv;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("drawCall: ");
+        ((StringBuilder)localObject2).append(l);
+        ((TextView)localObject1).setText(((StringBuilder)localObject2).toString());
+        this.mDrawCallTv.setVisibility(0);
       }
-      long l = getDrawCallCount();
-      this.mDrawCallTv.setText("drawCall: " + l);
-      this.mDrawCallTv.setVisibility(0);
+      else
+      {
+        ((TextView)localObject1).setVisibility(8);
+      }
     }
-    for (;;)
+    localObject1 = TaskMonitorManager.g().getCpuUsageRate();
+    localObject2 = this.mCpuRate;
+    if (localObject2 != null)
     {
-      str = TaskMonitorManager.g().getCpuUsageRate();
-      if (this.mCpuRate != null)
-      {
-        this.mCpuRate.setText(str);
-        this.mCpuRate.setVisibility(0);
-      }
-      str = TaskMonitorManager.g().getCpuUsageInfo();
-      if (this.mCpuUsage != null)
-      {
-        this.mCpuUsage.setText(str);
-        this.mCpuUsage.setVisibility(0);
-      }
-      str = "内存 使用率: " + TaskMonitorManager.g().getMemeryUsage() + "%";
-      if (this.mDbCacheTv != null)
-      {
-        this.mDbCacheTv.setText(str);
-        this.mDbCacheTv.setVisibility(0);
-      }
-      return;
-      this.mPageSwitchTv.setText("切换页面耗时: 无页面切换");
-      this.mPageSwitchTv.setVisibility(0);
-      break;
-      label273:
-      this.mDrawCallTv.setVisibility(8);
+      ((TextView)localObject2).setText((CharSequence)localObject1);
+      this.mCpuRate.setVisibility(0);
+    }
+    localObject1 = TaskMonitorManager.g().getCpuUsageInfo();
+    localObject2 = this.mCpuUsage;
+    if (localObject2 != null)
+    {
+      ((TextView)localObject2).setText((CharSequence)localObject1);
+      this.mCpuUsage.setVisibility(0);
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("内存 使用率: ");
+    ((StringBuilder)localObject1).append(TaskMonitorManager.g().getMemeryUsage());
+    ((StringBuilder)localObject1).append("%");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    localObject2 = this.mDbCacheTv;
+    if (localObject2 != null)
+    {
+      ((TextView)localObject2).setText((CharSequence)localObject1);
+      this.mDbCacheTv.setVisibility(0);
     }
   }
   
@@ -202,7 +225,11 @@ public class MiniAppMonitorInfoView
     this.mMiniAppContext = paramIMiniAppContext;
     if (this.mFpsTv != null)
     {
-      paramIMiniAppContext = "帧率: " + String.format("%.0f", new Object[] { Double.valueOf(paramDouble) }) + "fps";
+      paramIMiniAppContext = new StringBuilder();
+      paramIMiniAppContext.append("帧率: ");
+      paramIMiniAppContext.append(String.format("%.0f", new Object[] { Double.valueOf(paramDouble) }));
+      paramIMiniAppContext.append("fps");
+      paramIMiniAppContext = paramIMiniAppContext.toString();
       this.mFpsTv.setText(paramIMiniAppContext);
       TaskMonitorManager.g().setCurrentFps(paramDouble);
     }
@@ -210,7 +237,7 @@ public class MiniAppMonitorInfoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.monitor.ui.MiniAppMonitorInfoView
  * JD-Core Version:    0.7.0.1
  */

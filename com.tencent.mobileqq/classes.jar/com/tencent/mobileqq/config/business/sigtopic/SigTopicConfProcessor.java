@@ -31,37 +31,34 @@ public class SigTopicConfProcessor
   @Nullable
   public SigTopicConfBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    String str;
-    if (paramArrayOfQConfItem != null)
+    Object localObject = null;
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      localObject1 = localObject2;
-      if (paramArrayOfQConfItem.length > 0)
+      String str = paramArrayOfQConfItem[0].a;
+      if (!TextUtils.isEmpty(str))
       {
-        str = paramArrayOfQConfItem[0].a;
-        localObject1 = localObject2;
-        if (!TextUtils.isEmpty(str)) {
-          if (QLog.isColorLevel()) {
-            QLog.e("SigTopicConfProcessor", 1, "SigTopic.[onParsed] type=" + type() + ", content = " + str);
-          }
+        if (QLog.isColorLevel())
+        {
+          paramArrayOfQConfItem = new StringBuilder();
+          paramArrayOfQConfItem.append("SigTopic.[onParsed] type=");
+          paramArrayOfQConfItem.append(type());
+          paramArrayOfQConfItem.append(", content = ");
+          paramArrayOfQConfItem.append(str);
+          QLog.e("SigTopicConfProcessor", 1, paramArrayOfQConfItem.toString());
         }
+        try
+        {
+          paramArrayOfQConfItem = (SigTopicConfBean.SigTopicConfig)QStorage.a(str, SigTopicConfBean.SigTopicConfig.class);
+        }
+        catch (QStorageInstantiateException paramArrayOfQConfItem)
+        {
+          QLog.e("SigTopicConfProcessor", 1, "readJsonOrXml failed", paramArrayOfQConfItem);
+          paramArrayOfQConfItem = localObject;
+        }
+        return new SigTopicConfBean(str, paramArrayOfQConfItem);
       }
     }
-    try
-    {
-      paramArrayOfQConfItem = (SigTopicConfBean.SigTopicConfig)QStorage.a(str, SigTopicConfBean.SigTopicConfig.class);
-      localObject1 = new SigTopicConfBean(str, paramArrayOfQConfItem);
-      return localObject1;
-    }
-    catch (QStorageInstantiateException paramArrayOfQConfItem)
-    {
-      for (;;)
-      {
-        QLog.e("SigTopicConfProcessor", 1, "readJsonOrXml failed", paramArrayOfQConfItem);
-        paramArrayOfQConfItem = null;
-      }
-    }
+    return null;
   }
   
   public void a(SigTopicConfBean paramSigTopicConfBean) {}
@@ -95,7 +92,7 @@ public class SigTopicConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.sigtopic.SigTopicConfProcessor
  * JD-Core Version:    0.7.0.1
  */

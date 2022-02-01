@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vastrash;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
 import com.tencent.mobileqq.emosm.DataFactory;
+import com.tencent.mobileqq.emosm.OnRemoteRespObserver;
 
 class ColorRingPlayer$8
   implements Runnable
@@ -22,7 +22,7 @@ class ColorRingPlayer$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vastrash.ColorRingPlayer.8
  * JD-Core Version:    0.7.0.1
  */

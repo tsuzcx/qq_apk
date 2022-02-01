@@ -36,7 +36,26 @@ public class TranslateResult$Record
   
   public String toString()
   {
-    return "Record{srcText='" + this.jdField_a_of_type_JavaLangString + '\'' + ", dstText='" + this.jdField_b_of_type_JavaLangString + '\'' + ", x=" + this.jdField_a_of_type_Int + ", y=" + this.jdField_b_of_type_Int + ", width=" + this.jdField_c_of_type_Int + ", height=" + this.d + ", angle='" + this.jdField_c_of_type_JavaLangString + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Record{srcText='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", dstText='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", x=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", y=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", width=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", height=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", angle='");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -52,7 +71,7 @@ public class TranslateResult$Record
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.data.TranslateResult.Record
  * JD-Core Version:    0.7.0.1
  */

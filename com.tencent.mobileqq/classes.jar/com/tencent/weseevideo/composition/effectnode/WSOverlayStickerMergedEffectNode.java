@@ -25,12 +25,19 @@ public class WSOverlayStickerMergedEffectNode
   private VideoRenderChainManager.IStickerContextInterface mContextCreator;
   private List<StickerModel> mStickerModels;
   private SubtitleModel mSubtitleModel;
-  private final String sEffectId = "WSOverlayStickerMergedEffectNode" + Integer.toHexString(hashCode());
+  boolean needRender;
+  private final String sEffectId;
   
-  public WSOverlayStickerMergedEffectNode(TAVStickerRenderContext paramTAVStickerRenderContext, VideoRenderChainManager.IStickerContextInterface paramIStickerContextInterface)
+  public WSOverlayStickerMergedEffectNode(TAVStickerRenderContext paramTAVStickerRenderContext, VideoRenderChainManager.IStickerContextInterface paramIStickerContextInterface, boolean paramBoolean)
   {
     super(paramTAVStickerRenderContext);
+    paramTAVStickerRenderContext = new StringBuilder();
+    paramTAVStickerRenderContext.append("WSOverlayStickerMergedEffectNode");
+    paramTAVStickerRenderContext.append(Integer.toHexString(hashCode()));
+    this.sEffectId = paramTAVStickerRenderContext.toString();
+    this.needRender = true;
     this.mContextCreator = paramIStickerContextInterface;
+    this.needRender = paramBoolean;
     this.reportKey = "WSOverlayStickerMergedEffectNode";
   }
   
@@ -48,6 +55,7 @@ public class WSOverlayStickerMergedEffectNode
             localArrayList.add(localTAVSticker);
           }
         }
+        return localArrayList;
       }
     }
     return localList1;
@@ -97,8 +105,9 @@ public class WSOverlayStickerMergedEffectNode
     if (isAvailable())
     {
       removeStickers(findStickerByType(VideoEffectType.TYPE_SUBTITLE.value));
-      if (this.mSubtitleModel != null) {
-        VideoEffectNodeFactory.addPagOverlayEffectNode(this.mSubtitleModel, paramCGSize, getStickerContext(), this.mContextCreator);
+      SubtitleModel localSubtitleModel = this.mSubtitleModel;
+      if (localSubtitleModel != null) {
+        VideoEffectNodeFactory.addPagOverlayEffectNode(localSubtitleModel, paramCGSize, getStickerContext(), this.mContextCreator);
       }
     }
   }
@@ -116,14 +125,18 @@ public class WSOverlayStickerMergedEffectNode
   @NonNull
   public String effectId()
   {
-    if (isEmpty()) {
+    boolean bool = isEmpty();
+    String str = "";
+    if (bool) {
       return "";
     }
-    StringBuilder localStringBuilder = new StringBuilder().append(this.sEffectId);
-    if (this.stickerContext != null) {}
-    for (String str = this.stickerContext.getClass().getSimpleName();; str = "") {
-      return str;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.sEffectId);
+    if (this.stickerContext != null) {
+      str = this.stickerContext.getClass().getSimpleName();
     }
+    localStringBuilder.append(str);
+    return localStringBuilder.toString();
   }
   
   public List<StickerModel> getStickerModels()
@@ -134,6 +147,11 @@ public class WSOverlayStickerMergedEffectNode
   public SubtitleModel getSubtitleModel()
   {
     return this.mSubtitleModel;
+  }
+  
+  public void setNeedRender(boolean paramBoolean)
+  {
+    this.needRender = paramBoolean;
   }
   
   public void setStickerModels(List<StickerModel> paramList, CGSize paramCGSize)
@@ -150,7 +168,7 @@ public class WSOverlayStickerMergedEffectNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.composition.effectnode.WSOverlayStickerMergedEffectNode
  * JD-Core Version:    0.7.0.1
  */

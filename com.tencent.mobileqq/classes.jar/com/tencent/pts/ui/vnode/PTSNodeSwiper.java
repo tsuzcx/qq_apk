@@ -39,7 +39,7 @@ public class PTSNodeSwiper
     super(paramPTSAppInstance);
   }
   
-  protected void onParseValueFinished()
+  public void onParseValueFinished()
   {
     super.onParseValueFinished();
     PTSSwiperView localPTSSwiperView = (PTSSwiperView)getView();
@@ -127,7 +127,7 @@ public class PTSNodeSwiper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.ui.vnode.PTSNodeSwiper
  * JD-Core Version:    0.7.0.1
  */

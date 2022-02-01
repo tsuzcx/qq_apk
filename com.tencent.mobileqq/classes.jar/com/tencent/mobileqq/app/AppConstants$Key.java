@@ -66,6 +66,7 @@ public abstract interface AppConstants$Key
   public static final String FORWARD_ARK_APP_META = "forward_ark_app_meta";
   public static final String FORWARD_ARK_APP_NAME = "forward_ark_app_name";
   public static final String FORWARD_ARK_APP_PROMPT = "forward_ark_app_prompt";
+  public static final String FORWARD_ARK_APP_REPORT_RESULT = "forward_ark_app_result";
   public static final String FORWARD_ARK_APP_REPORT_TITLE = "forward_ark_app_title";
   public static final String FORWARD_ARK_APP_REPORT_TYPE = "forward_ark_app_type";
   public static final String FORWARD_ARK_APP_TEXT = "forward_ark_app_text";
@@ -347,6 +348,8 @@ public abstract interface AppConstants$Key
   public static final String SHARE_REQ_EXT_INT = "cflag";
   public static final String SHARE_REQ_EXT_STR = "share_qq_ext_str";
   public static final String SHARE_REQ_FROM = "from";
+  public static final String SHARE_REQ_GAME_MESSAGE_EXT = "game_message_ext";
+  public static final String SHARE_REQ_GAME_TAG_NAME = "game_tag_name";
   public static final String SHARE_REQ_ID = "req_share_id";
   public static final String SHARE_REQ_IMAGE_REMOTE_URL = "image_url_remote";
   public static final String SHARE_REQ_IMAGE_URI = "image_uri";
@@ -481,7 +484,7 @@ public abstract interface AppConstants$Key
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.AppConstants.Key
  * JD-Core Version:    0.7.0.1
  */

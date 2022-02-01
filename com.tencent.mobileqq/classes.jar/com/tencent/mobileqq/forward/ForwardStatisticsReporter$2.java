@@ -19,7 +19,6 @@ final class ForwardStatisticsReporter$2
     add("KEY_AUTHORIZE_REQUEST");
     add("KEY_GET_APP_INFO_REQUEST");
     add("KEY_GET_APP_ICON");
-    add("KEY_GET_APP_ADS_PIC");
     add("KEY_GET_VIRTUAL_LIST_D24");
     add("KEY_DELETE_VIRTUAL_D18");
     add("KEY_CREATE_VIRTUAL_D17");
@@ -30,7 +29,7 @@ final class ForwardStatisticsReporter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardStatisticsReporter.2
  * JD-Core Version:    0.7.0.1
  */

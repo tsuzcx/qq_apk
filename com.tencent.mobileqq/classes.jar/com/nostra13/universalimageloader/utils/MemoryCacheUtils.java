@@ -49,7 +49,12 @@ public final class MemoryCacheUtils
   
   public static String generateKey(String paramString, ImageSize paramImageSize)
   {
-    return paramString + "_" + paramImageSize.getWidth() + "x" + paramImageSize.getHeight();
+    paramString = new StringBuilder(paramString);
+    paramString.append("_");
+    paramString.append(paramImageSize.getWidth());
+    paramString.append("x");
+    paramString.append(paramImageSize.getHeight());
+    return paramString.toString();
   }
   
   public static void removeFromCache(String paramString, MemoryCache paramMemoryCache)
@@ -71,7 +76,7 @@ public final class MemoryCacheUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.utils.MemoryCacheUtils
  * JD-Core Version:    0.7.0.1
  */

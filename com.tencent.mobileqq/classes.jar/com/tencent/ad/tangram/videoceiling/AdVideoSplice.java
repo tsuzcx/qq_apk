@@ -21,8 +21,9 @@ public enum AdVideoSplice
   
   public static AdVideoSpliceAdapter getAdapter()
   {
-    if (INSTANCE.mAdapter != null) {
-      return (AdVideoSpliceAdapter)INSTANCE.mAdapter.get();
+    WeakReference localWeakReference = INSTANCE.mAdapter;
+    if (localWeakReference != null) {
+      return (AdVideoSpliceAdapter)localWeakReference.get();
     }
     return null;
   }

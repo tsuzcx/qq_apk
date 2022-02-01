@@ -20,29 +20,26 @@ public class VIPAioSendService
   
   public Object decode(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    if ((VIPAioSendHandler.a.equals(paramToServiceMsg.getServiceCmd())) || (VIPAioSendHandler.b.equals(paramToServiceMsg.getServiceCmd())))
-    {
-      if (paramFromServiceMsg == null) {
-        return null;
-      }
-      paramToServiceMsg = new UniPacket(true);
-      try
-      {
-        paramToServiceMsg.setEncodeName("utf-8");
-        paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
-        paramToServiceMsg = (AIOSendRes)paramToServiceMsg.getByClass("response", new AIOSendRes());
-        return paramToServiceMsg;
-      }
-      catch (RuntimeException paramToServiceMsg)
-      {
-        paramToServiceMsg.printStackTrace();
-        return null;
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        return null;
-      }
+    if ((!VIPAioSendHandler.a.equals(paramToServiceMsg.getServiceCmd())) && (!VIPAioSendHandler.b.equals(paramToServiceMsg.getServiceCmd()))) {
+      return null;
     }
+    if (paramFromServiceMsg == null) {
+      return null;
+    }
+    paramToServiceMsg = new UniPacket(true);
+    try
+    {
+      paramToServiceMsg.setEncodeName("utf-8");
+      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
+      paramToServiceMsg = (AIOSendRes)paramToServiceMsg.getByClass("response", new AIOSendRes());
+      return paramToServiceMsg;
+    }
+    catch (RuntimeException paramToServiceMsg)
+    {
+      paramToServiceMsg.printStackTrace();
+      return null;
+    }
+    catch (Exception paramToServiceMsg) {}
     return null;
   }
   
@@ -54,20 +51,17 @@ public class VIPAioSendService
       paramUniPacket.setFuncName("CheckPopGrayStips");
       paramUniPacket.put("request", (AIOSendReq)paramToServiceMsg.extraData.getSerializable("VIPAioSendRequest"));
     }
-    for (;;)
+    else if (VIPAioSendHandler.b.equals(paramToServiceMsg.getServiceCmd()))
     {
-      return true;
-      if (VIPAioSendHandler.b.equals(paramToServiceMsg.getServiceCmd()))
-      {
-        paramUniPacket.setFuncName("getUserKeyWordStips");
-        paramUniPacket.put("request", (AIOKeyWordReq)paramToServiceMsg.extraData.getSerializable("VIPAioSendRequest"));
-      }
+      paramUniPacket.setFuncName("getUserKeyWordStips");
+      paramUniPacket.put("request", (AIOKeyWordReq)paramToServiceMsg.extraData.getSerializable("VIPAioSendRequest"));
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.VIPAioSendService
  * JD-Core Version:    0.7.0.1
  */

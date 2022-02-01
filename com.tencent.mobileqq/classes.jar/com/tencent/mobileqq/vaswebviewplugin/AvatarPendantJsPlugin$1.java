@@ -20,7 +20,6 @@ class AvatarPendantJsPlugin$1
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      Object localObject;
       if (this.this$0.browserApp != null)
       {
         localObject = this.this$0.browserApp.getEntityManagerFactory(null).createEntityManager();
@@ -29,27 +28,31 @@ class AvatarPendantJsPlugin$1
         localJSONObject.put("result", 0);
         if (localExtensionInfo == null) {
           localJSONObject.put("id", 0L);
-        }
-        while (this.this$0.mRuntime != null)
-        {
-          localObject = this.this$0.mRuntime.a();
-          if (localObject == null) {
-            break;
-          }
-          ((Activity)localObject).runOnUiThread(new AvatarPendantJsPlugin.1.1(this, localJSONObject));
-          return;
+        } else {
           localJSONObject.put("id", localExtensionInfo.pendantId);
         }
+        if (this.this$0.mRuntime != null)
+        {
+          localObject = this.this$0.mRuntime.a();
+          if (localObject != null)
+          {
+            ((Activity)localObject).runOnUiThread(new AvatarPendantJsPlugin.1.1(this, localJSONObject));
+            return;
+          }
+        }
       }
-      String str;
-      return;
     }
     catch (JSONException localJSONException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("AvatarPendantJsPlugin", 2, "getFaceAddon failed: " + localJSONException.getMessage());
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getFaceAddon failed: ");
+        ((StringBuilder)localObject).append(localJSONException.getMessage());
+        QLog.e("AvatarPendantJsPlugin", 2, ((StringBuilder)localObject).toString());
       }
-      str = localJSONException.getMessage();
+      String str = localJSONException.getMessage();
       if (this.this$0.mRuntime != null)
       {
         localObject = this.this$0.mRuntime.a();
@@ -62,7 +65,7 @@ class AvatarPendantJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.AvatarPendantJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

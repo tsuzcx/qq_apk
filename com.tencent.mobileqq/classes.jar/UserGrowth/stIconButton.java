@@ -32,23 +32,27 @@ public final class stIconButton
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.buttonText != null) {
-      paramJceOutputStream.write(this.buttonText, 0);
+    String str = this.buttonText;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.buttonIcon != null) {
-      paramJceOutputStream.write(this.buttonIcon, 1);
+    str = this.buttonIcon;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.buttonBgColor != null) {
-      paramJceOutputStream.write(this.buttonBgColor, 2);
+    str = this.buttonBgColor;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.buttonTextColor != null) {
-      paramJceOutputStream.write(this.buttonTextColor, 3);
+    str = this.buttonTextColor;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stIconButton
  * JD-Core Version:    0.7.0.1
  */

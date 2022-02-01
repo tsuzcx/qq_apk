@@ -42,71 +42,65 @@ public class WSVerticalPageCommonTopAreaController
     }
   }
   
-  public void a() {}
+  protected void a() {}
   
   public void a(boolean paramBoolean)
   {
-    View localView;
-    if (this.c != null)
+    View localView = this.c;
+    if (localView != null)
     {
-      localView = this.c;
-      if (!paramBoolean) {
-        break label24;
+      int i;
+      if (paramBoolean) {
+        i = 0;
+      } else {
+        i = 8;
       }
-    }
-    label24:
-    for (int i = 0;; i = 8)
-    {
       localView.setVisibility(i);
-      return;
     }
   }
   
   public void a(boolean paramBoolean, MiniAIOPresenter paramMiniAIOPresenter)
   {
-    View localView;
     if ((this.b != null) && (paramMiniAIOPresenter != null))
     {
       paramMiniAIOPresenter.a(paramBoolean);
-      localView = this.b;
-      if ((paramMiniAIOPresenter.a() <= 0) || (!paramBoolean)) {
-        break label42;
+      View localView = this.b;
+      int i;
+      if ((paramMiniAIOPresenter.a() > 0) && (paramBoolean)) {
+        i = 0;
+      } else {
+        i = 4;
       }
-    }
-    label42:
-    for (int i = 0;; i = 4)
-    {
       localView.setVisibility(i);
-      return;
     }
   }
   
-  public int b()
+  protected int b()
   {
-    return 2131560129;
+    return 2131560010;
   }
   
-  public void b() {}
+  protected void b() {}
   
-  public void c() {}
+  protected void c() {}
   
-  public void e()
+  protected void e()
   {
     if (this.a == null) {
       return;
     }
-    RelativeLayout localRelativeLayout = (RelativeLayout)a(2131381213);
-    WSVerticalUtils.a(this.a.getActivity(), localRelativeLayout);
-    a(2131381214).setOnClickListener(new WSVerticalPageCommonTopAreaController.1(this));
-    this.c = a(2131381216);
+    RelativeLayout localRelativeLayout = (RelativeLayout)a(2131380469);
+    WSVerticalUtils.a(this.a.getBaseActivity(), localRelativeLayout);
+    a(2131380470).setOnClickListener(new WSVerticalPageCommonTopAreaController.1(this));
+    this.c = a(2131380472);
     this.c.setOnClickListener(new WSVerticalPageCommonTopAreaController.2(this));
-    this.b = a(2131369561);
+    this.b = a(2131369274);
     this.a.a(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.toparea.WSVerticalPageCommonTopAreaController
  * JD-Core Version:    0.7.0.1
  */

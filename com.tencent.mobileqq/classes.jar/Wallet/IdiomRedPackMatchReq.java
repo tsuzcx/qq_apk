@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class IdiomRedPackMatchReq
   extends JceStruct
 {
-  static int cache_subchannel = 0;
+  static int cache_subchannel;
   public long appid = 0L;
   public String billno = "";
   public int fromType = 0;
@@ -58,34 +58,40 @@ public final class IdiomRedPackMatchReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.grabUin, 0);
-    if (this.billno != null) {
-      paramJceOutputStream.write(this.billno, 1);
+    String str = this.billno;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.inputIdiom != null) {
-      paramJceOutputStream.write(this.inputIdiom, 2);
+    str = this.inputIdiom;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.hbIdiom != null) {
-      paramJceOutputStream.write(this.hbIdiom, 3);
+    str = this.hbIdiom;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.makeUin, 4);
-    if (this.sKey != null) {
-      paramJceOutputStream.write(this.sKey, 5);
+    str = this.sKey;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.appid, 6);
     paramJceOutputStream.write(this.fromType, 7);
     paramJceOutputStream.write(this.platform, 8);
-    if (this.qqVersion != null) {
-      paramJceOutputStream.write(this.qqVersion, 9);
+    str = this.qqVersion;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
-    if (this.groupid != null) {
-      paramJceOutputStream.write(this.groupid, 10);
+    str = this.groupid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
     paramJceOutputStream.write(this.subchannel, 11);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.IdiomRedPackMatchReq
  * JD-Core Version:    0.7.0.1
  */

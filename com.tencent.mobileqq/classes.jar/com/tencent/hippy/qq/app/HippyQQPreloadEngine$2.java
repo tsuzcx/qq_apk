@@ -12,12 +12,13 @@ class HippyQQPreloadEngine$2
     if (QLog.isColorLevel()) {
       QLog.i("HippyQQPreloadEngine", 2, "onJsBundleUpdateComplte run");
     }
-    HippyQQPreloadEngine.access$300(this.this$0);
+    HippyQQPreloadEngine.access$302(this.this$0, true);
+    HippyQQPreloadEngine.access$400(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.app.HippyQQPreloadEngine.2
  * JD-Core Version:    0.7.0.1
  */

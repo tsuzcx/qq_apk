@@ -18,19 +18,20 @@ final class g$3
   public final void a(int paramInt, String paramString, Throwable paramThrowable)
   {
     d locald = this.b.l;
-    if (locald != null) {}
-    for (int i = locald.a;; i = -1)
-    {
-      com.tencent.tbs.one.impl.common.h.a(i, "", -1, paramInt, paramString, paramThrowable);
-      g.a(this.d, this.c);
-      this.a.onError(paramInt, paramString);
-      return;
+    int i;
+    if (locald != null) {
+      i = locald.a;
+    } else {
+      i = -1;
     }
+    com.tencent.tbs.one.impl.common.h.a(i, "", -1, paramInt, paramString, paramThrowable);
+    g.a(this.d, this.c);
+    this.a.onError(paramInt, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.e.g.3
  * JD-Core Version:    0.7.0.1
  */

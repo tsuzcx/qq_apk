@@ -23,19 +23,39 @@ public class NetworkLoader$ResponseHandler
   
   public void a(int paramInt, BaseObject paramBaseObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(Loader.a, 2, "[status][poiLoader][" + this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCacheNetworkLoader.b + "] netGet onSuccess. resultCode : " + paramInt + " result : " + paramBaseObject);
+    Object localObject;
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localObject = Loader.a;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[status][poiLoader][");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCacheNetworkLoader.b);
+      localStringBuilder.append("] netGet onSuccess. resultCode : ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" result : ");
+      localStringBuilder.append(paramBaseObject);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
     if ((paramBaseObject instanceof Geo2AddressResultObject))
     {
       paramBaseObject = (Geo2AddressResultObject)paramBaseObject;
       if ((paramBaseObject.result != null) && (paramBaseObject.result.pois != null) && (paramBaseObject.result.pois.size() > 0))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d(Loader.a, 2, "[status][poiLoader][" + this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCacheNetworkLoader.b + "]  netGet invoked success. latLng : " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " poi_size : " + paramBaseObject.result.pois.size());
+        if (QLog.isColorLevel())
+        {
+          localObject = Loader.a;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[status][poiLoader][");
+          localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCacheNetworkLoader.b);
+          localStringBuilder.append("]  netGet invoked success. latLng : ");
+          localStringBuilder.append(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
+          localStringBuilder.append(" poi_size : ");
+          localStringBuilder.append(paramBaseObject.result.pois.size());
+          QLog.d((String)localObject, 2, localStringBuilder.toString());
         }
-        Poi[] arrayOfPoi = new Poi[paramBaseObject.result.pois.size()];
-        paramBaseObject = new PoiBean(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, paramBaseObject.result.ad_info, (Poi[])paramBaseObject.result.pois.toArray(arrayOfPoi));
+        localObject = new Poi[paramBaseObject.result.pois.size()];
+        paramBaseObject = new PoiBean(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, paramBaseObject.result.ad_info, (Poi[])paramBaseObject.result.pois.toArray((Object[])localObject));
         this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCacheNetworkLoader.a("netGet", paramBaseObject);
         this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiLoader$OnPoiLoadListener.a(paramBaseObject);
       }
@@ -44,13 +64,23 @@ public class NetworkLoader$ResponseHandler
   
   public void onFailure(int paramInt, String paramString, Throwable paramThrowable)
   {
-    QLog.e(Loader.a, 1, paramThrowable, new Object[] { "[status][poiLoader][" + this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCacheNetworkLoader.b + "] netGet invoked fail. latLng : " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " errorCode : " + paramInt + " errorMsg : " + paramString });
+    String str = Loader.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[status][poiLoader][");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCacheNetworkLoader.b);
+    localStringBuilder.append("] netGet invoked fail. latLng : ");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
+    localStringBuilder.append(" errorCode : ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" errorMsg : ");
+    localStringBuilder.append(paramString);
+    QLog.e(str, 1, paramThrowable, new Object[] { localStringBuilder.toString() });
     this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiLoader$OnPoiLoadListener.a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.location.cache.NetworkLoader.ResponseHandler
  * JD-Core Version:    0.7.0.1
  */

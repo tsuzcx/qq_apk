@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class QQCircleBase$StPublishButtonAnimationInfo
   extends MessageMicro<StPublishButtonAnimationInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 64, 72, 82, 90 }, new String[] { "isShowAnimation", "hashIcon", "hashTag", "words", "backImg", "operatorIcon", "jumpUrl", "animationStartupTime", "animationShowTime", "reportExt", "taskId" }, new Object[] { Integer.valueOf(0), "", "", "", "", "", "", Long.valueOf(0L), Long.valueOf(0L), "", "" }, StPublishButtonAnimationInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt64Field animationShowTime = PBField.initInt64(0L);
   public final PBInt64Field animationStartupTime = PBField.initInt64(0L);
   public final PBStringField backImg = PBField.initString("");
@@ -22,10 +22,16 @@ public final class QQCircleBase$StPublishButtonAnimationInfo
   public final PBStringField reportExt = PBField.initString("");
   public final PBStringField taskId = PBField.initString("");
   public final PBStringField words = PBField.initString("");
+  
+  static
+  {
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 64, 72, 82, 90 }, new String[] { "isShowAnimation", "hashIcon", "hashTag", "words", "backImg", "operatorIcon", "jumpUrl", "animationStartupTime", "animationShowTime", "reportExt", "taskId" }, new Object[] { Integer.valueOf(0), "", "", "", "", "", "", localLong, localLong, "", "" }, StPublishButtonAnimationInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qqcircle.QQCircleBase.StPublishButtonAnimationInfo
  * JD-Core Version:    0.7.0.1
  */

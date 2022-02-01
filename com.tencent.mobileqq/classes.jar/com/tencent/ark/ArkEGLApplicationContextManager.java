@@ -10,7 +10,7 @@ final class ArkEGLApplicationContextManager
   
   public EGLContextHolder createContext(String paramString)
   {
-    ENV.logI("ArkApp.ContextManager", String.format("ArkEGLApplicationContextManager.createContext.%s", new Object[] { paramString }));
+    Logger.logI("ArkApp.ContextManager", String.format("ArkEGLApplicationContextManager.createContext.%s", new Object[] { paramString }));
     synchronized (this._appContextMap)
     {
       ArkEGLApplicationContextManager.AppEGLContext localAppEGLContext = (ArkEGLApplicationContextManager.AppEGLContext)this._appContextMap.get(paramString);
@@ -18,14 +18,17 @@ final class ArkEGLApplicationContextManager
       {
         localAppEGLContext.refCount += 1;
         paramString = localAppEGLContext;
-        paramString = paramString.context;
-        return paramString;
       }
-      localAppEGLContext = new ArkEGLApplicationContextManager.AppEGLContext(null);
-      localAppEGLContext.refCount = 1;
-      localAppEGLContext.context = createOffscreenContext();
-      this._appContextMap.put(paramString, localAppEGLContext);
-      paramString = localAppEGLContext;
+      else
+      {
+        localAppEGLContext = new ArkEGLApplicationContextManager.AppEGLContext(null);
+        localAppEGLContext.refCount = 1;
+        localAppEGLContext.context = createOffscreenContext();
+        this._appContextMap.put(paramString, localAppEGLContext);
+        paramString = localAppEGLContext;
+      }
+      paramString = paramString.context;
+      return paramString;
     }
   }
   
@@ -50,13 +53,13 @@ final class ArkEGLApplicationContextManager
       ArkEGLApplicationContextManager.AppEGLContext localAppEGLContext = (ArkEGLApplicationContextManager.AppEGLContext)this._appContextMap.get(paramString);
       if (localAppEGLContext == null)
       {
-        ENV.logE("ArkApp.ContextManager", String.format("release context unexpectedly, appid is %s", new Object[] { paramString }));
+        Logger.logE("ArkApp.ContextManager", String.format("release context unexpectedly, appid is %s", new Object[] { paramString }));
         return false;
       }
       localAppEGLContext.refCount -= 1;
       if (localAppEGLContext.refCount == 0)
       {
-        ENV.logI("ArkApp.ContextManager", String.format("release context, appid is %s", new Object[] { paramString }));
+        Logger.logI("ArkApp.ContextManager", String.format("release context, appid is %s", new Object[] { paramString }));
         this._appContextMap.remove(paramString);
         localAppEGLContext.context.release();
         localAppEGLContext.context = null;

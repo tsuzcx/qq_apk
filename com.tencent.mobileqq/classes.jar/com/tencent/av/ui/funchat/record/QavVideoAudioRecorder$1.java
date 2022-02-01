@@ -2,7 +2,7 @@ package com.tencent.av.ui.funchat.record;
 
 import android.os.HandlerThread;
 import android.os.Looper;
-import com.tencent.mobileqq.richmedia.mediacodec.encoder.EncodeInputSurface;
+import com.tencent.mobileqq.videocodec.mediacodec.encoder.EncodeInputSurface;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
 
@@ -13,8 +13,9 @@ class QavVideoAudioRecorder$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeInputSurface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeInputSurface.a();
+    EncodeInputSurface localEncodeInputSurface = this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeInputSurface;
+    if (localEncodeInputSurface != null) {
+      localEncodeInputSurface.a();
     }
     try
     {
@@ -36,7 +37,7 @@ class QavVideoAudioRecorder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.funchat.record.QavVideoAudioRecorder.1
  * JD-Core Version:    0.7.0.1
  */

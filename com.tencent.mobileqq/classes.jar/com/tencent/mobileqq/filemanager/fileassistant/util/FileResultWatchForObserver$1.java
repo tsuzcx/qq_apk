@@ -3,7 +3,7 @@ package com.tencent.mobileqq.filemanager.fileassistant.util;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.MessageHandler.MsgSendCostParams;
+import com.tencent.mobileqq.app.MessageHandlerConstants.MsgSendCostParams;
 import com.tencent.mobileqq.app.MessageObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForLongTextMsg;
@@ -17,13 +17,22 @@ class FileResultWatchForObserver$1
 {
   FileResultWatchForObserver$1(FileResultWatchForObserver paramFileResultWatchForObserver, QQAppInterface paramQQAppInterface) {}
   
-  public void onSendResult(boolean paramBoolean, String paramString, long paramLong, MessageHandler.MsgSendCostParams paramMsgSendCostParams)
+  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong, MessageHandlerConstants.MsgSendCostParams paramMsgSendCostParams)
   {
-    if ((!paramBoolean) || (!QFileAssistantUtils.a(paramString))) {}
-    do
+    if (paramBoolean)
     {
-      return;
-      QLog.i("FileResultWatchForObserver<FileAssistant>NDL", 1, "onSendResult isSuccess[" + paramBoolean + "], uin[" + paramString + "], uniseq[" + paramLong + "]");
+      if (!QFileAssistantUtils.a(paramString)) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSendResult isSuccess[");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("], uin[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("], uniseq[");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append("]");
+      QLog.i("FileResultWatchForObserver<FileAssistant>NDL", 1, localStringBuilder.toString());
       paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramString, paramMsgSendCostParams.a, paramLong);
       if (paramString == null)
       {
@@ -36,14 +45,17 @@ class FileResultWatchForObserver$1
         QLog.i("FileResultWatchForObserver<FileAssistant>NDL", 1, "onSendResult success longTextMsg");
         return;
       }
-    } while (!(paramString instanceof MessageForText));
-    ((DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(new QQText(paramString.msg, 13, 32, 0).toPlainText(true), 0);
-    QLog.i("FileResultWatchForObserver<FileAssistant>NDL", 1, "onSendResult success TextMsg");
+      if ((paramString instanceof MessageForText))
+      {
+        ((DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(new QQText(paramString.msg, 13, 32, 0).toPlainText(true), 0);
+        QLog.i("FileResultWatchForObserver<FileAssistant>NDL", 1, "onSendResult success TextMsg");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.util.FileResultWatchForObserver.1
  * JD-Core Version:    0.7.0.1
  */

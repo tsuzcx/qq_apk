@@ -32,7 +32,7 @@ public class OverScrollCallbackHorizontalListView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_Int = AIOUtils.a(50.0F, getResources());
+    this.jdField_a_of_type_Int = AIOUtils.b(50.0F, getResources());
     setOverScrollMode(0);
   }
   
@@ -56,26 +56,25 @@ public class OverScrollCallbackHorizontalListView
       f3 -= this.jdField_b_of_type_Float;
       if ((this.jdField_a_of_type_Boolean) && (Math.abs(f3) * 5.0F > Math.abs(f1 - f2) * 4.0F) && (Math.abs(f3) > DisplayUtil.a(getContext(), 5.0F))) {
         getParent().requestDisallowInterceptTouchEvent(false);
+      } else {
+        getParent().requestDisallowInterceptTouchEvent(true);
       }
     }
-    for (;;)
+    else if ((i == 3) || (i == 1))
     {
-      return super.dispatchTouchEvent(paramMotionEvent);
-      getParent().requestDisallowInterceptTouchEvent(true);
-      continue;
-      if ((i == 3) || (i == 1)) {
-        this.jdField_a_of_type_Boolean = false;
-      }
+      this.jdField_a_of_type_Boolean = false;
     }
+    return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
+  protected boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
   {
     if ((this.jdField_b_of_type_Boolean) && (paramInt3 > this.jdField_a_of_type_Int))
     {
       this.jdField_b_of_type_Boolean = false;
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView$Listener != null) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView$Listener.a(this);
+      OverScrollCallbackHorizontalListView.Listener localListener = this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView$Listener;
+      if ((localListener != null) && (this.jdField_a_of_type_Boolean)) {
+        localListener.a(this);
       }
     }
     return super.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean);
@@ -88,7 +87,7 @@ public class OverScrollCallbackHorizontalListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.OverScrollCallbackHorizontalListView
  * JD-Core Version:    0.7.0.1
  */

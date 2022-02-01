@@ -76,12 +76,13 @@ public class MutualMarkIconsView
     setVisibility(8);
     this.e = 0;
     this.jdField_a_of_type_AndroidWidgetTextView = null;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        MutualMarkIconItemView localMutualMarkIconItemView = (MutualMarkIconItemView)localIterator.next();
+        MutualMarkIconItemView localMutualMarkIconItemView = (MutualMarkIconItemView)((Iterator)localObject).next();
         if (localMutualMarkIconItemView != null) {
           localMutualMarkIconItemView.a();
         }
@@ -92,98 +93,98 @@ public class MutualMarkIconsView
   
   private void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
   {
-    int k = 0;
-    int j = k;
-    if (paramLong > 0L) {
-      if ((this.jdField_a_of_type_Int != 3) && (this.jdField_a_of_type_Int != 4))
+    int j = 1;
+    if (paramLong > 0L)
+    {
+      i = this.jdField_a_of_type_Int;
+      if ((i == 3) || (i == 4) || (i == 2))
       {
-        j = k;
-        if (this.jdField_a_of_type_Int != 2) {}
-      }
-      else
-      {
-        if ((this.jdField_a_of_type_Int != 3) && (this.jdField_a_of_type_Int != 4)) {
-          break label489;
+        i = this.jdField_a_of_type_Int;
+        if ((i != 3) && (i != 4)) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        paramQQAppInterface = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        if ((paramQQAppInterface != null) && (paramQQAppInterface.a(i)))
+        {
+          if (this.jdField_a_of_type_AndroidWidgetTextView == null)
+          {
+            i = this.jdField_a_of_type_Int;
+            if ((i != 3) && (i != 4))
+            {
+              this.jdField_a_of_type_AndroidWidgetTextView = new BaselineTextView(getContext(), null);
+              this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131167056));
+              this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine();
+              this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 14.0F);
+              this.jdField_a_of_type_AndroidWidgetTextView.setPadding(0, 0, 0, AIOUtils.b(2.0F, getResources()));
+              paramQQAppInterface = new LinearLayout.LayoutParams(-2, -2);
+              paramQQAppInterface.gravity = 80;
+              addView(this.jdField_a_of_type_AndroidWidgetTextView, paramQQAppInterface);
+            }
+            else
+            {
+              this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
+              this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 12.0F);
+              if (this.jdField_a_of_type_Int == 4) {
+                this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131167056));
+              } else {
+                this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131167142));
+              }
+              this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine();
+              this.jdField_a_of_type_AndroidWidgetTextView.setGravity(16);
+              paramQQAppInterface = new LinearLayout.LayoutParams(-2, this.b);
+              addView(this.jdField_a_of_type_AndroidWidgetTextView, paramQQAppInterface);
+            }
+          }
+          long l = paramLong;
+          if (paramLong > 9999L) {
+            l = 9999L;
+          }
+          paramQQAppInterface = this.jdField_a_of_type_AndroidWidgetTextView;
+          paramString = new StringBuilder();
+          paramString.append(l);
+          paramString.append(HardCodeUtil.a(2131707079));
+          paramQQAppInterface.setText(paramString.toString());
+          if (AppSetting.d)
+          {
+            paramQQAppInterface = String.format(HotReactiveHelper.a(getContext(), 19), new Object[] { Long.valueOf(l) });
+            this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramQQAppInterface);
+            paramString = this.jdField_a_of_type_JavaLangStringBuilder;
+            if (paramString != null) {
+              paramString.append(paramQQAppInterface);
+            }
+          }
+          int k = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth();
+          i = k;
+          if (k <= 0) {
+            i = AIOUtils.b(32.0F, getResources());
+          }
+          this.e += i;
+          i = j;
+          break label477;
         }
       }
     }
-    label392:
-    label489:
-    for (int i = 0;; i = 1)
+    int i = 0;
+    label477:
+    if (i == 0)
     {
-      paramQQAppInterface = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      j = k;
+      paramQQAppInterface = this.jdField_a_of_type_AndroidWidgetTextView;
       if (paramQQAppInterface != null)
       {
-        j = k;
-        if (paramQQAppInterface.a(i)) {
-          if (this.jdField_a_of_type_AndroidWidgetTextView == null)
-          {
-            if ((this.jdField_a_of_type_Int != 3) && (this.jdField_a_of_type_Int != 4)) {
-              break label392;
-            }
-            this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-            this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 12.0F);
-            if (this.jdField_a_of_type_Int != 4) {
-              break label373;
-            }
-            this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131167033));
-            this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine();
-            this.jdField_a_of_type_AndroidWidgetTextView.setGravity(16);
-            paramQQAppInterface = new LinearLayout.LayoutParams(-2, this.b);
-            addView(this.jdField_a_of_type_AndroidWidgetTextView, paramQQAppInterface);
-          }
-        }
-      }
-      for (;;)
-      {
-        long l = paramLong;
-        if (paramLong > 9999L) {
-          l = 9999L;
-        }
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(l + HardCodeUtil.a(2131707057));
-        if (AppSetting.d)
-        {
-          paramQQAppInterface = String.format(HotReactiveHelper.a(getContext(), 19), new Object[] { Long.valueOf(l) });
-          this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramQQAppInterface);
-          if (this.jdField_a_of_type_JavaLangStringBuilder != null) {
-            this.jdField_a_of_type_JavaLangStringBuilder.append(paramQQAppInterface);
-          }
-        }
-        j = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth();
-        i = j;
-        if (j <= 0) {
-          i = AIOUtils.a(32.0F, getResources());
-        }
-        this.e = (i + this.e);
-        j = 1;
-        if ((j == 0) && (this.jdField_a_of_type_AndroidWidgetTextView != null))
-        {
-          removeView(this.jdField_a_of_type_AndroidWidgetTextView);
-          this.jdField_a_of_type_AndroidWidgetTextView = null;
-        }
-        return;
-        label373:
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131167117));
-        break;
-        this.jdField_a_of_type_AndroidWidgetTextView = new BaselineTextView(getContext(), null);
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131167033));
-        this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine();
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 14.0F);
-        this.jdField_a_of_type_AndroidWidgetTextView.setPadding(0, 0, 0, AIOUtils.a(2.0F, getResources()));
-        paramQQAppInterface = new LinearLayout.LayoutParams(-2, -2);
-        paramQQAppInterface.gravity = 80;
-        addView(this.jdField_a_of_type_AndroidWidgetTextView, paramQQAppInterface);
+        removeView(paramQQAppInterface);
+        this.jdField_a_of_type_AndroidWidgetTextView = null;
       }
     }
   }
   
   private void a(QQAppInterface paramQQAppInterface, String paramString, MutualMarkForDisplayInfo paramMutualMarkForDisplayInfo, ExtensionInfo paramExtensionInfo, MutualMarkIconItemView paramMutualMarkIconItemView)
   {
-    int i;
     if (paramMutualMarkForDisplayInfo.c())
     {
       paramMutualMarkIconItemView.setIconResource(paramMutualMarkForDisplayInfo);
+      int j = 0;
       paramMutualMarkIconItemView.setVisibility(0);
       if (AppSetting.d)
       {
@@ -192,202 +193,256 @@ public class MutualMarkIconsView
           paramQQAppInterface = paramMutualMarkForDisplayInfo.d;
         }
         paramMutualMarkIconItemView.setContentDescription(paramQQAppInterface);
-        if (this.jdField_a_of_type_JavaLangStringBuilder != null) {
-          this.jdField_a_of_type_JavaLangStringBuilder.append(paramQQAppInterface);
+        StringBuilder localStringBuilder = this.jdField_a_of_type_JavaLangStringBuilder;
+        if (localStringBuilder != null) {
+          localStringBuilder.append(paramQQAppInterface);
         }
       }
-      if ((!paramMutualMarkForDisplayInfo.a()) || (this.jdField_a_of_type_Int != 3) || (paramMutualMarkForDisplayInfo.jdField_a_of_type_Boolean)) {
-        break label199;
-      }
-      if ((paramMutualMarkForDisplayInfo.i != 0L) && (System.currentTimeMillis() - paramMutualMarkForDisplayInfo.i > 3500L))
+      int i = j;
+      if (paramMutualMarkForDisplayInfo.a())
       {
-        paramMutualMarkForDisplayInfo.jdField_a_of_type_Boolean = true;
-        MutualMarkDataCenter.a(paramMutualMarkForDisplayInfo, paramExtensionInfo);
-        if (paramExtensionInfo == null) {
-          break label199;
+        i = j;
+        if (this.jdField_a_of_type_Int == 3)
+        {
+          i = j;
+          if (!paramMutualMarkForDisplayInfo.jdField_a_of_type_Boolean) {
+            if ((paramMutualMarkForDisplayInfo.i != 0L) && (System.currentTimeMillis() - paramMutualMarkForDisplayInfo.i > 3500L))
+            {
+              paramMutualMarkForDisplayInfo.jdField_a_of_type_Boolean = true;
+              MutualMarkDataCenter.a(paramMutualMarkForDisplayInfo, paramExtensionInfo);
+              i = j;
+              if (paramExtensionInfo != null)
+              {
+                HotReactiveHelper.a(paramExtensionInfo);
+                i = j;
+              }
+            }
+            else
+            {
+              paramMutualMarkForDisplayInfo.i = System.currentTimeMillis();
+              MutualMarkDataCenter.a(paramMutualMarkForDisplayInfo, paramExtensionInfo);
+              paramMutualMarkIconItemView.a(paramString);
+              i = 1;
+            }
+          }
         }
-        HotReactiveHelper.a(paramExtensionInfo);
-        i = 0;
       }
-    }
-    for (;;)
-    {
       if (i == 0) {
         paramMutualMarkIconItemView.setIconAlpha(paramMutualMarkForDisplayInfo.a());
       }
       this.e += paramMutualMarkIconItemView.a();
       return;
-      paramMutualMarkForDisplayInfo.i = System.currentTimeMillis();
-      MutualMarkDataCenter.a(paramMutualMarkForDisplayInfo, paramExtensionInfo);
-      paramMutualMarkIconItemView.a(paramString);
-      i = 1;
-      continue;
-      paramMutualMarkIconItemView.setVisibility(8);
-      return;
-      label199:
-      i = 0;
     }
+    paramMutualMarkIconItemView.setVisibility(8);
   }
   
   private void b()
   {
-    int j;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    int j = 0;
+    int i = 0;
+    if (localObject != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      int i = 0;
-      j = i;
-      if (!localIterator.hasNext()) {
-        break label65;
+      localObject = ((ArrayList)localObject).iterator();
+      for (;;)
+      {
+        j = i;
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+        MutualMarkIconItemView localMutualMarkIconItemView = (MutualMarkIconItemView)((Iterator)localObject).next();
+        if ((localMutualMarkIconItemView != null) && (localMutualMarkIconItemView.getVisibility() == 0)) {
+          i += localMutualMarkIconItemView.a();
+        }
       }
-      MutualMarkIconItemView localMutualMarkIconItemView = (MutualMarkIconItemView)localIterator.next();
-      if ((localMutualMarkIconItemView == null) || (localMutualMarkIconItemView.getVisibility() != 0)) {
-        break label71;
-      }
-      i += localMutualMarkIconItemView.a();
     }
-    label65:
-    label71:
-    for (;;)
-    {
-      break;
-      j = 0;
-      this.e = j;
-      return;
-    }
+    this.e = j;
   }
   
   public int a(View paramView, SpecailCareListActivity.ViewHolder paramViewHolder, int paramInt1, int paramInt2)
   {
-    int j = 0;
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramViewHolder.jdField_a_of_type_ComTencentMobileqqMutualmarkViewMutualMarkIconsView.getLayoutParams();
-    if (localLayoutParams != null) {}
-    for (int i = localLayoutParams.rightMargin;; i = 0)
+    int j = 0;
+    int i;
+    if (localLayoutParams != null) {
+      i = localLayoutParams.rightMargin;
+    } else {
+      i = 0;
+    }
+    b();
+    int k = this.e;
+    if (k <= this.d) {
+      return k + paramInt1 + i;
+    }
+    k = paramView.getMeasuredWidth();
+    if (k > 0) {
+      paramInt2 = k;
+    }
+    if (paramInt2 <= this.d) {}
+    for (paramInt1 = this.e + paramInt1;; paramInt1 = this.e)
     {
-      b();
-      if (this.e <= this.d) {
-        return this.e + paramInt1 + i;
-      }
-      int k = paramView.getMeasuredWidth();
-      if (k <= 0) {}
-      for (;;)
+      return paramInt1 + i;
+      paramInt1 = paramView.getPaddingLeft();
+      k = paramView.getPaddingRight();
+      int m = a(paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.getText(), paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.getTextSize());
+      m = Math.min(getResources().getDimensionPixelSize(2131296810), m);
+      int i1 = paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.getCompoundPaddingLeft();
+      int i2 = paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.getCompoundPaddingRight();
+      int i3 = paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.getPaddingRight();
+      int i4 = paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.getPaddingLeft();
+      int n = AIOUtils.b(72.0F, getResources());
+      paramInt2 = paramInt2 - (paramInt1 + k) - n - i - m - (i1 + i2 + i3 + i4);
+      if (QLog.isColorLevel())
       {
-        if (paramInt2 <= this.d) {
-          return this.e + paramInt1 + i;
-        }
-        paramInt1 = paramView.getPaddingLeft();
-        k = paramView.getPaddingRight();
-        int m = a(paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.getText(), paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.getTextSize());
-        m = Math.min(getResources().getDimensionPixelSize(2131296830), m);
-        int i1 = paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.getCompoundPaddingLeft();
-        int i2 = paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.getCompoundPaddingRight();
-        int i3 = paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.getPaddingRight();
-        int i4 = paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.getPaddingLeft();
-        int n = AIOUtils.a(72.0F, getResources());
-        paramInt2 = paramInt2 - (paramInt1 + k) - n - i - m - (i1 + i2 + i3 + i4);
-        if (QLog.isColorLevel()) {
-          QLog.i("MutualMarkIconsView", 2, "getMaybeWidthInSpecialCareList maxMutualMarkWidth:" + paramInt2 + " maybeWidth:" + this.e + " nickMinWidth:" + m + " nickRootLeft:" + n + " mutualMarkMarginRight:" + i);
-        }
-        if (this.e > paramInt2) {
-          if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-            paramInt1 = j;
-          }
-        }
-        for (;;)
+        paramView = new StringBuilder();
+        paramView.append("getMaybeWidthInSpecialCareList maxMutualMarkWidth:");
+        paramView.append(paramInt2);
+        paramView.append(" maybeWidth:");
+        paramView.append(this.e);
+        paramView.append(" nickMinWidth:");
+        paramView.append(m);
+        paramView.append(" nickRootLeft:");
+        paramView.append(n);
+        paramView.append(" mutualMarkMarginRight:");
+        paramView.append(i);
+        QLog.i("MutualMarkIconsView", 2, paramView.toString());
+      }
+      if (this.e > paramInt2)
+      {
+        if (this.jdField_a_of_type_JavaUtilArrayList != null)
         {
-          if (paramInt1 < this.jdField_a_of_type_JavaUtilArrayList.size())
+          paramInt1 = j;
+          while (paramInt1 < this.jdField_a_of_type_JavaUtilArrayList.size())
           {
             paramView = (MutualMarkIconItemView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1);
             if ((paramView != null) && (paramView.getVisibility() == 0))
             {
               this.e -= paramView.a();
               paramView.setVisibility(8);
-              if (QLog.isColorLevel()) {
-                QLog.i("MutualMarkIconsView", 2, "getMaybeWidthInSpecialCareList hide Type:" + paramView.a() + " width:" + paramView.a());
+              if (QLog.isColorLevel())
+              {
+                paramViewHolder = new StringBuilder();
+                paramViewHolder.append("getMaybeWidthInSpecialCareList hide Type:");
+                paramViewHolder.append(paramView.a());
+                paramViewHolder.append(" width:");
+                paramViewHolder.append(paramView.a());
+                QLog.i("MutualMarkIconsView", 2, paramViewHolder.toString());
               }
-              if (this.e > paramInt2) {}
+              if (this.e <= paramInt2) {
+                break;
+              }
             }
+            paramInt1 += 1;
           }
-          else
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("MutualMarkIconsView", 2, "getMaybeWidthInSpecialCareList after maybeWidth:" + this.e);
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("MutualMarkIconsView", 2, "getMaybeWidthInSpecialCareList return:" + this.e);
-            }
-            return this.e + i;
-          }
-          paramInt1 += 1;
         }
-        paramInt2 = k;
+        if (QLog.isColorLevel())
+        {
+          paramView = new StringBuilder();
+          paramView.append("getMaybeWidthInSpecialCareList after maybeWidth:");
+          paramView.append(this.e);
+          QLog.i("MutualMarkIconsView", 2, paramView.toString());
+        }
+      }
+      if (QLog.isColorLevel())
+      {
+        paramView = new StringBuilder();
+        paramView.append("getMaybeWidthInSpecialCareList return:");
+        paramView.append(this.e);
+        QLog.i("MutualMarkIconsView", 2, paramView.toString());
       }
     }
   }
   
   public int a(FriendItemLayout paramFriendItemLayout, BuddyListFriends.BuddyChildTag paramBuddyChildTag, int paramInt)
   {
-    int j = 0;
     FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)paramBuddyChildTag.jdField_a_of_type_ComTencentMobileqqMutualmarkViewMutualMarkIconsView.getLayoutParams();
-    if (localLayoutParams != null) {}
-    for (int i = localLayoutParams.rightMargin;; i = 0)
+    int j = 0;
+    int i;
+    if (localLayoutParams != null) {
+      i = localLayoutParams.rightMargin;
+    } else {
+      i = 0;
+    }
+    b();
+    int k = this.e;
+    if (k <= this.c) {
+      return k + paramInt + i;
+    }
+    k = paramFriendItemLayout.getMeasuredWidth();
+    if (k <= this.c) {}
+    for (paramInt = this.e + paramInt;; paramInt = this.e)
     {
-      b();
-      if (this.e <= this.c) {
-        return this.e + paramInt + i;
-      }
-      int k = paramFriendItemLayout.getMeasuredWidth();
-      if (k <= this.c) {
-        return this.e + paramInt + i;
-      }
+      return paramInt + i;
       int m = paramFriendItemLayout.getPaddingLeft();
       int n = paramFriendItemLayout.getPaddingRight();
       paramInt = a(paramBuddyChildTag.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getText(), paramBuddyChildTag.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getTextSize());
-      int i1 = Math.min(getResources().getDimensionPixelSize(2131296830), paramInt);
+      int i1 = Math.min(getResources().getDimensionPixelSize(2131296810), paramInt);
       int i2 = paramBuddyChildTag.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getCompoundPaddingLeft();
       int i3 = paramBuddyChildTag.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getCompoundPaddingRight();
       int i4 = paramBuddyChildTag.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getPaddingRight();
       int i5 = paramBuddyChildTag.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getPaddingLeft();
       paramFriendItemLayout = (FrameLayout.LayoutParams)paramBuddyChildTag.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-      if (paramFriendItemLayout != null) {}
-      for (paramInt = paramFriendItemLayout.leftMargin;; paramInt = 0)
+      if (paramFriendItemLayout != null) {
+        paramInt = paramFriendItemLayout.leftMargin;
+      } else {
+        paramInt = 0;
+      }
+      k = k - (m + n) - paramInt - i1 - (i2 + i3 + i4 + i5) - paramBuddyChildTag.b.getMeasuredWidth() - i;
+      if (QLog.isColorLevel())
       {
-        k = k - (m + n) - paramInt - i1 - (i5 + (i2 + i3 + i4)) - paramBuddyChildTag.b.getMeasuredWidth() - i;
-        if (QLog.isColorLevel()) {
-          QLog.i("MutualMarkIconsView", 2, "getMaybeWidthInFriendItemLayout maxMutualMarkWidth:" + k + " maybeWidth:" + this.e + " nickMinWidth:" + i1 + " mutualMarkMarginRight:" + i);
-        }
-        if (this.e > k) {
-          if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-            paramInt = j;
-          }
-        }
-        for (;;)
+        paramFriendItemLayout = new StringBuilder();
+        paramFriendItemLayout.append("getMaybeWidthInFriendItemLayout maxMutualMarkWidth:");
+        paramFriendItemLayout.append(k);
+        paramFriendItemLayout.append(" maybeWidth:");
+        paramFriendItemLayout.append(this.e);
+        paramFriendItemLayout.append(" nickMinWidth:");
+        paramFriendItemLayout.append(i1);
+        paramFriendItemLayout.append(" mutualMarkMarginRight:");
+        paramFriendItemLayout.append(i);
+        QLog.i("MutualMarkIconsView", 2, paramFriendItemLayout.toString());
+      }
+      if (this.e > k)
+      {
+        if (this.jdField_a_of_type_JavaUtilArrayList != null)
         {
-          if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
+          paramInt = j;
+          while (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
           {
             paramFriendItemLayout = (MutualMarkIconItemView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
             if ((paramFriendItemLayout != null) && (paramFriendItemLayout.getVisibility() == 0))
             {
               this.e -= paramFriendItemLayout.a();
               paramFriendItemLayout.setVisibility(8);
-              if (QLog.isColorLevel()) {
-                QLog.i("MutualMarkIconsView", 2, "getMaybeWidthInFriendItemLayout hide Type:" + paramFriendItemLayout.a() + " width:" + paramFriendItemLayout.a());
+              if (QLog.isColorLevel())
+              {
+                paramBuddyChildTag = new StringBuilder();
+                paramBuddyChildTag.append("getMaybeWidthInFriendItemLayout hide Type:");
+                paramBuddyChildTag.append(paramFriendItemLayout.a());
+                paramBuddyChildTag.append(" width:");
+                paramBuddyChildTag.append(paramFriendItemLayout.a());
+                QLog.i("MutualMarkIconsView", 2, paramBuddyChildTag.toString());
               }
-              if (this.e > k) {}
+              if (this.e <= k) {
+                break;
+              }
             }
+            paramInt += 1;
           }
-          else
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("MutualMarkIconsView", 2, "getMaybeWidthInFriendItemLayout after maybeWidth:" + this.e);
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("MutualMarkIconsView", 2, "getMaybeWidthInFriendItemLayout return:" + this.e);
-            }
-            return this.e + i;
-          }
-          paramInt += 1;
         }
+        if (QLog.isColorLevel())
+        {
+          paramFriendItemLayout = new StringBuilder();
+          paramFriendItemLayout.append("getMaybeWidthInFriendItemLayout after maybeWidth:");
+          paramFriendItemLayout.append(this.e);
+          QLog.i("MutualMarkIconsView", 2, paramFriendItemLayout.toString());
+        }
+      }
+      if (QLog.isColorLevel())
+      {
+        paramFriendItemLayout = new StringBuilder();
+        paramFriendItemLayout.append("getMaybeWidthInFriendItemLayout return:");
+        paramFriendItemLayout.append(this.e);
+        QLog.i("MutualMarkIconsView", 2, paramFriendItemLayout.toString());
       }
     }
   }
@@ -398,66 +453,64 @@ public class MutualMarkIconsView
       this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
     }
     this.jdField_a_of_type_Int = paramInt;
+    int i = 0;
     ArrayList localArrayList = MutualMarkDataCenter.a(paramQQAppInterface, paramString, false, paramInt);
-    if ((localArrayList == null) || (localArrayList.isEmpty()))
+    if ((localArrayList != null) && (!localArrayList.isEmpty()))
     {
-      a();
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    }
-    paramInt = this.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = localArrayList.size();
-    if (paramInt < i) {
-      while (paramInt < i)
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      paramInt = this.jdField_a_of_type_JavaUtilArrayList.size();
+      int j = localArrayList.size();
+      if (paramInt < j) {
+        while (paramInt < j)
+        {
+          localObject1 = new MutualMarkIconItemView(getContext());
+          addView((View)localObject1, paramInt, new LinearLayout.LayoutParams(-2, this.b));
+          this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+          paramInt += 1;
+        }
+      }
+      if (paramInt > j)
       {
-        localObject1 = new MutualMarkIconItemView(getContext());
-        addView((View)localObject1, paramInt, new LinearLayout.LayoutParams(-2, this.b));
-        this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+        paramInt -= 1;
+        while (paramInt >= j)
+        {
+          removeView((MutualMarkIconItemView)this.jdField_a_of_type_JavaUtilArrayList.remove(paramInt));
+          paramInt -= 1;
+        }
+      }
+      setVisibility(0);
+      this.e = 0;
+      long l2 = 0L;
+      Object localObject2 = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      Object localObject1 = null;
+      paramInt = i;
+      long l1 = l2;
+      if (localObject2 != null)
+      {
+        localObject1 = ((FriendsManager)localObject2).a(paramString, false);
+        l1 = l2;
+        paramInt = i;
+      }
+      while (paramInt < localArrayList.size())
+      {
+        localObject2 = (MutualMarkForDisplayInfo)localArrayList.get(paramInt);
+        a(paramQQAppInterface, paramString, (MutualMarkForDisplayInfo)localObject2, (ExtensionInfo)localObject1, (MutualMarkIconItemView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+        if (((MutualMarkForDisplayInfo)localObject2).jdField_a_of_type_Long == 5L) {
+          l1 = ((MutualMarkForDisplayInfo)localObject2).c;
+        }
         paramInt += 1;
       }
-    }
-    if (paramInt > i)
-    {
-      paramInt -= 1;
-      while (paramInt >= i)
-      {
-        removeView((MutualMarkIconItemView)this.jdField_a_of_type_JavaUtilArrayList.remove(paramInt));
-        paramInt -= 1;
-      }
-    }
-    setVisibility(0);
-    this.e = 0;
-    Object localObject2 = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    Object localObject1 = null;
-    if (localObject2 != null) {
-      localObject1 = ((FriendsManager)localObject2).a(paramString, false);
-    }
-    paramInt = 0;
-    long l = 0L;
-    if (paramInt < localArrayList.size())
-    {
-      localObject2 = (MutualMarkForDisplayInfo)localArrayList.get(paramInt);
-      a(paramQQAppInterface, paramString, (MutualMarkForDisplayInfo)localObject2, (ExtensionInfo)localObject1, (MutualMarkIconItemView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
-      if (((MutualMarkForDisplayInfo)localObject2).jdField_a_of_type_Long != 5L) {
-        break label302;
-      }
-      l = ((MutualMarkForDisplayInfo)localObject2).c;
-    }
-    label302:
-    for (;;)
-    {
-      paramInt += 1;
-      break;
-      a(paramQQAppInterface, paramString, l);
+      a(paramQQAppInterface, paramString, l1);
       return;
     }
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.view.MutualMarkIconsView
  * JD-Core Version:    0.7.0.1
  */

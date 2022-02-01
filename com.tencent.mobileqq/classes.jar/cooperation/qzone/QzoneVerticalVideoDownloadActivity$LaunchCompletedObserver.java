@@ -21,8 +21,14 @@ public class QzoneVerticalVideoDownloadActivity$LaunchCompletedObserver
   {
     paramContext = paramIntent.getStringExtra("plugin_apk");
     paramIntent = paramIntent.getStringExtra("plugin_name");
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneVerticalVideoDownloadActivity", 1, "LaunchCompletedObserver.onReceive: " + paramContext + ", " + paramIntent);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("LaunchCompletedObserver.onReceive: ");
+      localStringBuilder.append(paramContext);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(paramIntent);
+      QLog.d("QzoneVerticalVideoDownloadActivity", 1, localStringBuilder.toString());
     }
     if ((this.mPluginID.equalsIgnoreCase(paramContext)) && (paramIntent != null)) {
       this.this$0.finish();
@@ -31,7 +37,7 @@ public class QzoneVerticalVideoDownloadActivity$LaunchCompletedObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.QzoneVerticalVideoDownloadActivity.LaunchCompletedObserver
  * JD-Core Version:    0.7.0.1
  */

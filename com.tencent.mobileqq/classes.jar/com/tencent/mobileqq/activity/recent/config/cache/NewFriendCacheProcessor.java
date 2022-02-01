@@ -21,49 +21,48 @@ public class NewFriendCacheProcessor
 {
   private void a(QQAppInterface paramQQAppInterface, List<RecentUser> paramList)
   {
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("new_friend_upgrade_pref" + paramQQAppInterface.getAccount(), 0);
-    if (a(paramQQAppInterface, paramList, localSharedPreferences)) {
+    Object localObject = paramQQAppInterface.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("new_friend_upgrade_pref");
+    localStringBuilder.append(paramQQAppInterface.getAccount());
+    localObject = ((MobileQQ)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
+    if (a(paramQQAppInterface, paramList, (SharedPreferences)localObject)) {
       return;
     }
-    a(paramQQAppInterface, paramList, localSharedPreferences);
+    a(paramQQAppInterface, paramList, (SharedPreferences)localObject);
   }
   
   private void a(QQAppInterface paramQQAppInterface, List<RecentUser> paramList, SharedPreferences paramSharedPreferences)
   {
     if (paramSharedPreferences.getBoolean("check_newfriend_when_upgrade_V2", true))
     {
-      if (paramList != null) {
-        break label33;
+      if (paramList == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a, 2, "checkNewFriendUpgradeV2 | descRecentList == null");
+        }
+        return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a, 2, "checkNewFriendUpgradeV2 | descRecentList == null");
-      }
-    }
-    return;
-    label33:
-    Iterator localIterator = paramList.iterator();
-    RecentUser localRecentUser;
-    do
-    {
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      localRecentUser = (RecentUser)localIterator.next();
-    } while ((localRecentUser == null) || (!AppConstants.RECOMMEND_CONTACT_UIN.equals(localRecentUser.uin)) || (4000 != localRecentUser.type));
-    for (;;)
-    {
-      if (localRecentUser != null) {
-        paramList.remove(localRecentUser);
+      Object localObject2 = null;
+      Iterator localIterator = paramList.iterator();
+      Object localObject1;
+      do
+      {
+        localObject1 = localObject2;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject1 = (RecentUser)localIterator.next();
+      } while ((localObject1 == null) || (!AppConstants.RECOMMEND_CONTACT_UIN.equals(((RecentUser)localObject1).uin)) || (4000 != ((RecentUser)localObject1).type));
+      if (localObject1 != null) {
+        paramList.remove(localObject1);
       }
       ThreadManager.getSubThreadHandler().post(new NewFriendCacheProcessor.1(this, paramQQAppInterface, paramSharedPreferences));
-      return;
-      localRecentUser = null;
     }
   }
   
   private boolean a(QQAppInterface paramQQAppInterface, List<RecentUser> paramList, SharedPreferences paramSharedPreferences)
   {
-    RecentUser localRecentUser;
     if (paramSharedPreferences.getBoolean("check_newfriend_when_upgrade", true))
     {
       if (paramList == null)
@@ -73,24 +72,23 @@ public class NewFriendCacheProcessor
         }
         return true;
       }
+      Object localObject2 = null;
       Iterator localIterator = paramList.iterator();
+      Object localObject1;
       do
       {
+        localObject1 = localObject2;
         if (!localIterator.hasNext()) {
           break;
         }
-        localRecentUser = (RecentUser)localIterator.next();
-      } while ((localRecentUser == null) || (!AppConstants.RECOMMEND_CONTACT_UIN.equals(localRecentUser.uin)));
-    }
-    for (;;)
-    {
-      if (localRecentUser != null) {
-        paramList.remove(localRecentUser);
+        localObject1 = (RecentUser)localIterator.next();
+      } while ((localObject1 == null) || (!AppConstants.RECOMMEND_CONTACT_UIN.equals(((RecentUser)localObject1).uin)));
+      if (localObject1 != null) {
+        paramList.remove(localObject1);
       }
       ThreadManager.getSubThreadHandler().post(new NewFriendCacheProcessor.2(this, paramQQAppInterface, paramSharedPreferences));
-      return false;
-      localRecentUser = null;
     }
+    return false;
   }
   
   @NotNull
@@ -113,7 +111,7 @@ public class NewFriendCacheProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.cache.NewFriendCacheProcessor
  * JD-Core Version:    0.7.0.1
  */

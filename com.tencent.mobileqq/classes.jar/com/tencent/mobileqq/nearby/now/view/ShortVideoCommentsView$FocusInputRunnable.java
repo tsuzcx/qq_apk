@@ -19,15 +19,15 @@ class ShortVideoCommentsView$FocusInputRunnable
     if (System.currentTimeMillis() - this.a > 1000L) {
       return;
     }
-    ShortVideoCommentsView.a(this.this$0).setFocusable(true);
-    ShortVideoCommentsView.a(this.this$0).setFocusableInTouchMode(true);
-    ShortVideoCommentsView.a(this.this$0).requestFocus();
+    ShortVideoCommentsView.access$400(this.this$0).setFocusable(true);
+    ShortVideoCommentsView.access$400(this.this$0).setFocusableInTouchMode(true);
+    ShortVideoCommentsView.access$400(this.this$0).requestFocus();
     ThreadManager.getUIHandler().postDelayed(this, 100L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView.FocusInputRunnable
  * JD-Core Version:    0.7.0.1
  */

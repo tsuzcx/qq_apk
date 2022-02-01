@@ -21,19 +21,27 @@ public class NativePatch$FingerprintDef
     }
     catch (Exception paramJSONObject)
     {
-      Common.Log.a("KingKongNativePatch", "Parse fingerprint error!");
+      label41:
+      break label41;
     }
+    Common.Log.a("KingKongNativePatch", "Parse fingerprint error!");
     return false;
   }
   
   public String toString()
   {
-    return this.jdField_a_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.kingkong.NativePatch.FingerprintDef
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.activity.home;
 
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.mobileqq.fpsreport.FPSSwipListView;
+import com.tencent.mobileqq.statistics.QZoneReport;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 class Conversation$24
   implements Runnable
@@ -10,12 +11,27 @@ class Conversation$24
   
   public void run()
   {
-    ReadInJoyUtils.a(Conversation.a(this.this$0).getMeasuredHeight(), Conversation.a(this.this$0).getResources());
+    int i = QZoneReport.a();
+    Object localObject;
+    try
+    {
+      MqqHandler localMqqHandler = this.this$0.a;
+    }
+    catch (NullPointerException localNullPointerException)
+    {
+      QLog.e("Q.recent", 1, localNullPointerException, new Object[0]);
+      localObject = null;
+    }
+    if ((i >= 0) && (localObject != null))
+    {
+      localObject.removeMessages(1134061);
+      localObject.sendEmptyMessageDelayed(1134061, i * 1000L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.24
  * JD-Core Version:    0.7.0.1
  */

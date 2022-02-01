@@ -48,14 +48,15 @@ class RenderScriptThunker
   
   void validate()
   {
-    if (this.mN == null) {
-      throw new RSInvalidStateException("Calling RS with no Context active.");
+    if (this.mN != null) {
+      return;
     }
+    throw new RSInvalidStateException("Calling RS with no Context active.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v8.renderscript.RenderScriptThunker
  * JD-Core Version:    0.7.0.1
  */

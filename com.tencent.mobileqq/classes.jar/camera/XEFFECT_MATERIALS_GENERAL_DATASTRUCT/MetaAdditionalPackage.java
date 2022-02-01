@@ -44,35 +44,43 @@ public final class MetaAdditionalPackage
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.lowPackageUrl != null) {
-      paramJceOutputStream.write(this.lowPackageUrl, 0);
+    String str = this.lowPackageUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.lowPackageMd5 != null) {
-      paramJceOutputStream.write(this.lowPackageMd5, 1);
+    str = this.lowPackageMd5;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.superLowPackageUrl != null) {
-      paramJceOutputStream.write(this.superLowPackageUrl, 2);
+    str = this.superLowPackageUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.superLowPackageMd5 != null) {
-      paramJceOutputStream.write(this.superLowPackageMd5, 3);
+    str = this.superLowPackageMd5;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.midPackageUrl != null) {
-      paramJceOutputStream.write(this.midPackageUrl, 4);
+    str = this.midPackageUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.midPackageMd5 != null) {
-      paramJceOutputStream.write(this.midPackageMd5, 5);
+    str = this.midPackageMd5;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.highPackageUrl != null) {
-      paramJceOutputStream.write(this.highPackageUrl, 6);
+    str = this.highPackageUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.highPackageMd5 != null) {
-      paramJceOutputStream.write(this.highPackageMd5, 7);
+    str = this.highPackageMd5;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaAdditionalPackage
  * JD-Core Version:    0.7.0.1
  */

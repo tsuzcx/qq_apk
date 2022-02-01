@@ -18,34 +18,35 @@ class TroopStoryAIOVideoListSynchronizer$2
 {
   public void a(GetVideoFullInfoListRequest paramGetVideoFullInfoListRequest, GetVideoFullInfoListResponse paramGetVideoFullInfoListResponse, ErrorMessage paramErrorMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.troopstory.aioSynchronizer", 2, "on retry resp code=" + paramErrorMessage.errorCode);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("on retry resp code=");
+      ((StringBuilder)localObject).append(paramErrorMessage.errorCode);
+      QLog.d("Q.qqstory.troopstory.aioSynchronizer", 2, ((StringBuilder)localObject).toString());
     }
-    ArrayList localArrayList = new ArrayList();
-    boolean bool;
+    Object localObject = new ArrayList();
+    boolean bool = true;
     if ((paramGetVideoFullInfoListResponse != null) && (paramErrorMessage.isSuccess()))
     {
       paramGetVideoFullInfoListRequest = paramGetVideoFullInfoListResponse.a.iterator();
-      bool = true;
-      if (paramGetVideoFullInfoListRequest.hasNext())
+      while (paramGetVideoFullInfoListRequest.hasNext())
       {
         paramErrorMessage = (StoryVideoItem)paramGetVideoFullInfoListRequest.next();
-        if (paramErrorMessage.mErrorCode == 0) {
-          localArrayList.add(paramErrorMessage);
-        }
-        for (;;)
+        if (paramErrorMessage.mErrorCode == 0)
         {
-          break;
+          ((ArrayList)localObject).add(paramErrorMessage);
+        }
+        else
+        {
           this.a.a.add(paramErrorMessage.mVid);
           bool = false;
         }
       }
       ((DownloadUrlManager)SuperManager.a(28)).a(paramGetVideoFullInfoListResponse.b);
     }
-    for (;;)
+    else
     {
-      this.a.a(localArrayList, bool);
-      return;
       paramGetVideoFullInfoListRequest = paramGetVideoFullInfoListRequest.a.iterator();
       while (paramGetVideoFullInfoListRequest.hasNext())
       {
@@ -54,11 +55,12 @@ class TroopStoryAIOVideoListSynchronizer$2
       }
       bool = false;
     }
+    this.a.a((List)localObject, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.troop.model.TroopStoryAIOVideoListSynchronizer.2
  * JD-Core Version:    0.7.0.1
  */

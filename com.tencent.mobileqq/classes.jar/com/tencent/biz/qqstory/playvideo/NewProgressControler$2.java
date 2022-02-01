@@ -11,28 +11,28 @@ class NewProgressControler$2
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Boolean) {}
-    IVideoView localIVideoView;
-    do
-    {
-      do
-      {
-        return;
-      } while (this.this$0.jdField_a_of_type_JavaLangRefWeakReference == null);
-      localIVideoView = (IVideoView)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localIVideoView == null);
-    if (localIVideoView.b() > 0L)
-    {
-      NewProgressControler.a(this.this$0, localIVideoView.a(), localIVideoView.b());
-      NewProgressControler.a(this.this$0);
+    if (this.this$0.jdField_a_of_type_Boolean) {
       return;
     }
-    this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 50L);
+    if (this.this$0.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      IVideoView localIVideoView = (IVideoView)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localIVideoView == null) {
+        return;
+      }
+      if (localIVideoView.b() > 0L)
+      {
+        NewProgressControler.a(this.this$0, localIVideoView.a(), localIVideoView.b());
+        NewProgressControler.a(this.this$0);
+        return;
+      }
+      this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 50L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.NewProgressControler.2
  * JD-Core Version:    0.7.0.1
  */

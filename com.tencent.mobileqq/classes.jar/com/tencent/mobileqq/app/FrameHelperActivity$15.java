@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
+import com.tencent.mobileqq.onlinestatus.IOnLineStatusPresenter;
 import com.tencent.mobileqq.onlinestatus.OnBatteryChangeObserver;
-import com.tencent.mobileqq.onlinestatus.OnLineStatusPresenter;
 import com.tencent.qphone.base.util.QLog;
 
 class FrameHelperActivity$15
@@ -22,7 +22,7 @@ class FrameHelperActivity$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.FrameHelperActivity.15
  * JD-Core Version:    0.7.0.1
  */

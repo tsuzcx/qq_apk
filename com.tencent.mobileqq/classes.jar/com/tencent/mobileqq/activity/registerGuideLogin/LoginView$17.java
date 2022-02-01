@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.registerGuideLogin;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class LoginView$17
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   LoginView$17(LoginView paramLoginView) {}
   
@@ -15,7 +15,8 @@ class LoginView$17
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    LoginView.a(this.a, LoginView.b(this.a), LoginView.d(this.a), LoginView.f(this.a), LoginView.h(this.a), 1.0F);
+    paramAnimator = this.a;
+    LoginView.a(paramAnimator, LoginView.b(paramAnimator), LoginView.d(this.a), LoginView.f(this.a), LoginView.h(this.a), 1.0F);
     if (this.a.a != null) {
       this.a.a.e();
     }
@@ -28,7 +29,7 @@ class LoginView$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.17
  * JD-Core Version:    0.7.0.1
  */

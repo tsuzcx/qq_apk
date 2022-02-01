@@ -55,12 +55,17 @@ final class OnSubscribeGroupJoin$ResultManager
       this.leftMap.clear();
       this.rightMap.clear();
       ??? = localArrayList.iterator();
-      if (((Iterator)???).hasNext()) {
+      while (((Iterator)???).hasNext()) {
         ((Observer)((Iterator)???).next()).onError(paramThrowable);
       }
+      this.subscriber.onError(paramThrowable);
+      this.cancel.unsubscribe();
+      return;
     }
-    this.subscriber.onError(paramThrowable);
-    this.cancel.unsubscribe();
+    for (;;)
+    {
+      throw paramThrowable;
+    }
   }
   
   void errorMain(Throwable paramThrowable)
@@ -97,7 +102,7 @@ final class OnSubscribeGroupJoin$ResultManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OnSubscribeGroupJoin.ResultManager
  * JD-Core Version:    0.7.0.1
  */

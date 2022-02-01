@@ -15,12 +15,18 @@ class TeleScreenApiPlugin$1
       TeleScreenApiPlugin.a(this.jdField_a_of_type_ComTencentMobileqqJspTeleScreenApiPlugin).remove(Integer.valueOf(paramInt1));
     }
     TeleScreen.a().a(paramInt1);
-    this.jdField_a_of_type_ComTencentMobileqqJspTeleScreenApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"openresult\":" + paramInt2 + "}" });
+    TeleScreenApiPlugin localTeleScreenApiPlugin = this.jdField_a_of_type_ComTencentMobileqqJspTeleScreenApiPlugin;
+    String str = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{\"openresult\":");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("}");
+    localTeleScreenApiPlugin.callJs(str, new String[] { localStringBuilder.toString() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.TeleScreenApiPlugin.1
  * JD-Core Version:    0.7.0.1
  */

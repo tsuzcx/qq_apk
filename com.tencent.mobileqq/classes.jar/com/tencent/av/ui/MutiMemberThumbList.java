@@ -27,7 +27,7 @@ public class MutiMemberThumbList
   private String jdField_a_of_type_JavaLangString = "";
   private final ArrayList<VideoController.GAudioFriends> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private volatile boolean jdField_a_of_type_Boolean = false;
-  private final int[] jdField_a_of_type_ArrayOfInt = { 2131373943, 2131373944, 2131373945, 2131373946, 2131373947, 2131373948, 2131373949 };
+  private final int[] jdField_a_of_type_ArrayOfInt = { 2131373515, 2131373516, 2131373517, 2131373518, 2131373519, 2131373520, 2131373521 };
   private int jdField_b_of_type_Int = -1;
   private long jdField_b_of_type_Long = -1L;
   private final String jdField_b_of_type_JavaLangString = "%d+";
@@ -47,18 +47,21 @@ public class MutiMemberThumbList
   {
     super(paramContext, paramAttributeSet, paramInt);
     b();
-    this.jdField_a_of_type_JavaLangString = getContext().getString(2131695611);
+    this.jdField_a_of_type_JavaLangString = getContext().getString(2131695622);
   }
   
   private void a(int paramInt, ArrayList<VideoController.GAudioFriends> paramArrayList)
   {
-    QLog.d("MutiMemberThumbList", 1, "doDisplay " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doDisplay ");
+    localStringBuilder.append(paramInt);
+    QLog.d("MutiMemberThumbList", 1, localStringBuilder.toString());
     ThreadManager.getSubThreadHandler().post(new MutiMemberThumbList.1(this, paramInt, paramArrayList));
   }
   
   private void b()
   {
-    addView(LayoutInflater.from(getContext()).inflate(2131559852, null));
+    addView(LayoutInflater.from(getContext()).inflate(2131559728, null));
     this.jdField_a_of_type_Boolean = false;
   }
   
@@ -81,22 +84,28 @@ public class MutiMemberThumbList
   
   public void setDisPlayList(ArrayList<VideoController.GAudioFriends> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0))
+    if ((paramArrayList != null) && (paramArrayList.size() != 0))
     {
-      setVisibility(4);
-      this.jdField_b_of_type_Long = System.currentTimeMillis();
-      QLog.d("MutiMemberThumbList", 1, "setDisPlayList " + this.jdField_b_of_type_Long);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setDisPlayList cost");
+      ((StringBuilder)localObject).append(System.currentTimeMillis() - this.jdField_b_of_type_Long);
+      QLog.d("MutiMemberThumbList", 1, ((StringBuilder)localObject).toString());
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        localObject = (VideoController.GAudioFriends)paramArrayList.next();
+        this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+      }
+      a(this.jdField_a_of_type_JavaUtilArrayList.size(), (ArrayList)this.jdField_a_of_type_JavaUtilArrayList.clone());
       return;
     }
-    QLog.d("MutiMemberThumbList", 1, "setDisPlayList cost" + (System.currentTimeMillis() - this.jdField_b_of_type_Long));
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      VideoController.GAudioFriends localGAudioFriends = (VideoController.GAudioFriends)paramArrayList.next();
-      this.jdField_a_of_type_JavaUtilArrayList.add(localGAudioFriends);
-    }
-    a(this.jdField_a_of_type_JavaUtilArrayList.size(), (ArrayList)this.jdField_a_of_type_JavaUtilArrayList.clone());
+    setVisibility(4);
+    this.jdField_b_of_type_Long = System.currentTimeMillis();
+    paramArrayList = new StringBuilder();
+    paramArrayList.append("setDisPlayList ");
+    paramArrayList.append(this.jdField_b_of_type_Long);
+    QLog.d("MutiMemberThumbList", 1, paramArrayList.toString());
   }
   
   public void setHeadImgMask(boolean paramBoolean)
@@ -106,7 +115,7 @@ public class MutiMemberThumbList
   
   public void setMoreInfoDrawableColor(String paramString)
   {
-    int i = AIOUtils.a(32.0F, getResources());
+    int i = AIOUtils.b(32.0F, getResources());
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = new GradientDrawable();
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setShape(1);
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(Color.parseColor(paramString));
@@ -132,7 +141,7 @@ public class MutiMemberThumbList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MutiMemberThumbList
  * JD-Core Version:    0.7.0.1
  */

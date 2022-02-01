@@ -21,7 +21,7 @@ public final class UiUtils$Companion
     paramContext.setPadding(i, 0, i, 0);
     paramContext.setTextColor(-1);
     paramContext.setGravity(17);
-    paramContext.setText(2131708470);
+    paramContext.setText(2131708476);
     return paramContext;
   }
   
@@ -32,17 +32,17 @@ public final class UiUtils$Companion
     Companion localCompanion = (Companion)this;
     Context localContext = paramView.getContext();
     Intrinsics.checkExpressionValueIsNotNull(localContext, "view.context");
-    localBubblePopupWindow.a((View)localCompanion.createContent(localContext));
-    localBubblePopupWindow.a(null);
-    localBubblePopupWindow.a((Drawable)new ColorDrawable(0));
-    localBubblePopupWindow.c(true);
-    localBubblePopupWindow.a(false);
-    localBubblePopupWindow.a(paramView, paramInt1, paramInt2);
+    localBubblePopupWindow.setContentView((View)localCompanion.createContent(localContext));
+    localBubblePopupWindow.setOnDismissListener(null);
+    localBubblePopupWindow.setBackgroundDrawable((Drawable)new ColorDrawable(0));
+    localBubblePopupWindow.setOutsideTouchable(true);
+    localBubblePopupWindow.setFocusable(false);
+    localBubblePopupWindow.showAsDropDown(paramView, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.personalitysign.utils.UiUtils.Companion
  * JD-Core Version:    0.7.0.1
  */

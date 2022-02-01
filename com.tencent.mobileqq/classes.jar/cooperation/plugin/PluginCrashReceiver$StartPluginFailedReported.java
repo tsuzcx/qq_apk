@@ -35,43 +35,56 @@ class PluginCrashReceiver$StartPluginFailedReported
     }
     catch (Exception paramIntent)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader = null;
+      label90:
+      break label90;
     }
+    this.jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader = null;
   }
   
   protected String a(String... paramVarArgs)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader == null) || (this.f == null)) {
-      return "";
-    }
-    for (;;)
+    if (this.jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader != null)
     {
-      try
-      {
-        if ((this.f.contains("Resources$NotFoundException")) || (this.f.contains("ResourcesNotFoundException")) || (this.f.contains("ClassNotFoundException")) || (this.f.contains("GetPackageInfoFailException")))
-        {
-          paramVarArgs = PluginStatic.encodeFile(this.d);
-          if (this.d == null) {
-            continue;
-          }
-          l = new File(this.d).length();
-          this.f = ("ApkMd5:" + paramVarArgs + "__FileSize:" + l + "__" + this.f);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader.uploadStartupFailure(MobileQQ.getContext(), this.jdField_a_of_type_JavaLangString, this.b, this.c, this.e, this.f);
-      }
-      catch (Throwable paramVarArgs)
-      {
-        long l;
-        continue;
-      }
-      return null;
-      l = 0L;
+      paramVarArgs = this.f;
+      if (paramVarArgs == null) {}
     }
+    try
+    {
+      if ((!paramVarArgs.contains("Resources$NotFoundException")) && (!this.f.contains("ResourcesNotFoundException")) && (!this.f.contains("ClassNotFoundException")) && (!this.f.contains("GetPackageInfoFailException"))) {
+        break label163;
+      }
+      paramVarArgs = PluginStatic.encodeFile(this.d);
+      if (this.d == null) {
+        break label204;
+      }
+      l = new File(this.d).length();
+    }
+    catch (Throwable paramVarArgs)
+    {
+      for (;;)
+      {
+        StringBuilder localStringBuilder;
+        continue;
+        long l = 0L;
+      }
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ApkMd5:");
+    localStringBuilder.append(paramVarArgs);
+    localStringBuilder.append("__FileSize:");
+    localStringBuilder.append(l);
+    localStringBuilder.append("__");
+    localStringBuilder.append(this.f);
+    this.f = localStringBuilder.toString();
+    label163:
+    this.jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader.uploadStartupFailure(MobileQQ.getContext(), this.jdField_a_of_type_JavaLangString, this.b, this.c, this.e, this.f);
+    return null;
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.plugin.PluginCrashReceiver.StartPluginFailedReported
  * JD-Core Version:    0.7.0.1
  */

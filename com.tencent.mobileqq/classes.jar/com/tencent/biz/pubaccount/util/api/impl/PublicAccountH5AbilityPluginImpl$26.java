@@ -21,66 +21,52 @@ class PublicAccountH5AbilityPluginImpl$26
   
   public void run()
   {
-    Object localObject = ImageUtil.a(this.this$0.mRuntime.a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    Object localObject1 = ImageUtil.a(this.this$0.mRuntime.a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
     int i;
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()))
-    {
+    if ((localObject2 != null) && (((QQProgressDialog)localObject2).isShowing())) {
       i = 1;
-      if (i != 0)
-      {
-        PublicAccountH5AbilityPluginImpl.access$100(this.this$0).post(new PublicAccountH5AbilityPluginImpl.26.1(this));
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break label179;
-        }
-      }
-    }
-    for (;;)
-    {
-      Bitmap localBitmap;
-      try
-      {
-        localBitmap = BitmapFactory.decodeFile((String)localObject);
-        if (WXShareHelper.a().a()) {
-          break label153;
-        }
-        i = 2131720753;
-        if (i == -1) {
-          break label168;
-        }
-        QRUtils.a(0, i);
-        localObject = new Intent(this.this$0.mRuntime.a(), PublicAccountBrowserImpl.class);
-        ((Intent)localObject).putExtra("url", "https://weixin.qq.com/download");
-        this.this$0.mRuntime.a().startActivity((Intent)localObject);
-        return;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        localOutOfMemoryError.printStackTrace();
-        return;
-      }
+    } else {
       i = 0;
-      break;
-      label153:
-      if (!WXShareHelper.a().b())
-      {
-        i = 2131720754;
-        continue;
-        label168:
-        WXShareHelper.a().a(localOutOfMemoryError, localBitmap, 1, true);
-        return;
-        label179:
-        QRUtils.a(1, 2131695244);
+    }
+    if (i != 0)
+    {
+      PublicAccountH5AbilityPluginImpl.access$100(this.this$0).post(new PublicAccountH5AbilityPluginImpl.26.1(this));
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        try
+        {
+          localObject2 = BitmapFactory.decodeFile((String)localObject1);
+          if (!WXShareHelper.a().a()) {
+            i = 2131720478;
+          } else if (!WXShareHelper.a().b()) {
+            i = 2131720479;
+          } else {
+            i = -1;
+          }
+          if (i != -1)
+          {
+            QRUtils.a(0, i);
+            localObject1 = new Intent(this.this$0.mRuntime.a(), PublicAccountBrowserImpl.class);
+            ((Intent)localObject1).putExtra("url", "https://weixin.qq.com/download");
+            this.this$0.mRuntime.a().startActivity((Intent)localObject1);
+            return;
+          }
+          WXShareHelper.a().a((String)localObject1, (Bitmap)localObject2, 1, true);
+          return;
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          localOutOfMemoryError.printStackTrace();
+          return;
+        }
       }
-      else
-      {
-        i = -1;
-      }
+      QRUtils.a(1, 2131695240);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.26
  * JD-Core Version:    0.7.0.1
  */

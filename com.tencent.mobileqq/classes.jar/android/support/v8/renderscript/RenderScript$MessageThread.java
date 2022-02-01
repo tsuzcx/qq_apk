@@ -24,67 +24,83 @@ class RenderScript$MessageThread
   public void run()
   {
     Object localObject1 = new int[16];
-    this.mRS.nContextInitToClient(this.mRS.mContext);
+    Object localObject2 = this.mRS;
+    ((RenderScript)localObject2).nContextInitToClient(((RenderScript)localObject2).mContext);
     while (this.mRun)
     {
       localObject1[0] = 0;
-      int i = this.mRS.nContextPeekMessage(this.mRS.mContext, this.mAuxData);
-      int j = this.mAuxData[1];
-      int k = this.mAuxData[0];
-      Object localObject2;
+      localObject2 = this.mRS;
+      int i = ((RenderScript)localObject2).nContextPeekMessage(((RenderScript)localObject2).mContext, this.mAuxData);
+      localObject2 = this.mAuxData;
+      int j = localObject2[1];
+      int k = localObject2[0];
       if (i == 4)
       {
         localObject2 = localObject1;
         if (j >> 2 >= localObject1.length) {
           localObject2 = new int[j + 3 >> 2];
         }
-        if (this.mRS.nContextGetUserMessage(this.mRS.mContext, (int[])localObject2) != 4) {
+        localObject1 = this.mRS;
+        if (((RenderScript)localObject1).nContextGetUserMessage(((RenderScript)localObject1).mContext, (int[])localObject2) == 4)
+        {
+          if (this.mRS.mMessageCallback != null)
+          {
+            this.mRS.mMessageCallback.mData = ((int[])localObject2);
+            this.mRS.mMessageCallback.mID = k;
+            this.mRS.mMessageCallback.mLength = j;
+            this.mRS.mMessageCallback.run();
+            localObject1 = localObject2;
+          }
+          else
+          {
+            throw new RSInvalidStateException("Received a message from the script with no message handler installed.");
+          }
+        }
+        else {
           throw new RSDriverException("Error processing message from RenderScript.");
-        }
-        if (this.mRS.mMessageCallback != null)
-        {
-          this.mRS.mMessageCallback.mData = ((int[])localObject2);
-          this.mRS.mMessageCallback.mID = k;
-          this.mRS.mMessageCallback.mLength = j;
-          this.mRS.mMessageCallback.run();
-          localObject1 = localObject2;
-        }
-        else
-        {
-          throw new RSInvalidStateException("Received a message from the script with no message handler installed.");
         }
       }
       else if (i == 3)
       {
-        localObject2 = this.mRS.nContextGetErrorMessage(this.mRS.mContext);
-        if (k >= 4096) {
-          throw new RSRuntimeException("Fatal error " + k + ", details: " + (String)localObject2);
-        }
-        if (this.mRS.mErrorCallback != null)
+        localObject2 = this.mRS;
+        localObject2 = ((RenderScript)localObject2).nContextGetErrorMessage(((RenderScript)localObject2).mContext);
+        if (k < 4096)
         {
-          this.mRS.mErrorCallback.mErrorMessage = ((String)localObject2);
-          this.mRS.mErrorCallback.mErrorNum = k;
-          this.mRS.mErrorCallback.run();
+          if (this.mRS.mErrorCallback != null)
+          {
+            this.mRS.mErrorCallback.mErrorMessage = ((String)localObject2);
+            this.mRS.mErrorCallback.mErrorNum = k;
+            this.mRS.mErrorCallback.run();
+            continue;
+          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("non fatal RS error, ");
+          localStringBuilder.append((String)localObject2);
+          Log.e("RenderScript_jni", localStringBuilder.toString());
+          continue;
         }
-        else
-        {
-          Log.e("RenderScript_jni", "non fatal RS error, " + (String)localObject2);
-        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("Fatal error ");
+        ((StringBuilder)localObject1).append(k);
+        ((StringBuilder)localObject1).append(", details: ");
+        ((StringBuilder)localObject1).append((String)localObject2);
+        throw new RSRuntimeException(((StringBuilder)localObject1).toString());
       }
-      else
+      try
       {
-        try
-        {
-          sleep(1L, 0);
-        }
-        catch (InterruptedException localInterruptedException) {}
+        sleep(1L, 0);
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        label377:
+        break label377;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v8.renderscript.RenderScript.MessageThread
  * JD-Core Version:    0.7.0.1
  */

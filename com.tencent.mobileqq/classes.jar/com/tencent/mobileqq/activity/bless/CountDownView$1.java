@@ -13,19 +13,21 @@ class CountDownView$1
       if (CountDownView.a(this.this$0) != null) {
         CountDownView.a(this.this$0).a();
       }
+      return;
     }
-    while (CountDownView.a(this.this$0) >= CountDownView.a().length) {
+    if (CountDownView.a(this.this$0) >= CountDownView.a().length) {
       return;
     }
     CountDownView.a(this.this$0);
     this.this$0.setImageResource(CountDownView.a()[CountDownView.a(this.this$0)]);
-    this.this$0.postDelayed(CountDownView.a(this.this$0), 1000L);
+    CountDownView localCountDownView = this.this$0;
+    localCountDownView.postDelayed(CountDownView.a(localCountDownView), 1000L);
     CountDownView.b(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.CountDownView.1
  * JD-Core Version:    0.7.0.1
  */

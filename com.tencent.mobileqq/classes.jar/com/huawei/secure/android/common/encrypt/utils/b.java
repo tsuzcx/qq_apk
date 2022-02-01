@@ -4,7 +4,7 @@ import android.util.Log;
 
 public class b
 {
-  private static final String TAG = "SecurityComp115301: ";
+  private static final String TAG = "SecurityComp10105302: ";
   
   public static void a(String paramString1, String paramString2, Throwable paramThrowable)
   {
@@ -35,12 +35,15 @@ public class b
   
   private static String i(String paramString)
   {
-    return "SecurityComp115301: " + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SecurityComp10105302: ");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.secure.android.common.encrypt.utils.b
  * JD-Core Version:    0.7.0.1
  */

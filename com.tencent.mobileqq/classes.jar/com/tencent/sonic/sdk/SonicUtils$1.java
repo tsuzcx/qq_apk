@@ -7,13 +7,16 @@ final class SonicUtils$1
   
   public void run()
   {
-    String str = SonicFileUtils.getSonicHtmlPath(this.val$sessionId) + ".tmp";
-    SonicFileUtils.writeFile(this.val$htmlString, str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(SonicFileUtils.getSonicHtmlPath(this.val$sessionId));
+    ((StringBuilder)localObject).append(".tmp");
+    localObject = ((StringBuilder)localObject).toString();
+    SonicFileUtils.writeFile(this.val$htmlString, (String)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicUtils.1
  * JD-Core Version:    0.7.0.1
  */

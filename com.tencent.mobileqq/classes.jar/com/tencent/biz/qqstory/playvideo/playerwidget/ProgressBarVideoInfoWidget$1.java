@@ -20,7 +20,7 @@ class ProgressBarVideoInfoWidget$1
     super.d();
     if (LiuHaiUtils.c(this.a.b()))
     {
-      LinearLayout localLinearLayout = (LinearLayout)this.a.a().a.findViewById(2131363822);
+      LinearLayout localLinearLayout = (LinearLayout)this.a.a().a.findViewById(2131363750);
       LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localLinearLayout.getLayoutParams();
       localLayoutParams.height = ProgressBarVideoInfoWidget.a(this.a);
       if (!ScreenUtil.checkDeviceHasNavigationBar(this.a.a.getContext())) {
@@ -38,7 +38,7 @@ class ProgressBarVideoInfoWidget$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.ProgressBarVideoInfoWidget.1
  * JD-Core Version:    0.7.0.1
  */

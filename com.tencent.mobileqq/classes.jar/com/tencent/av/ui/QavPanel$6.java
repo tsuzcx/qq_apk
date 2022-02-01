@@ -12,33 +12,40 @@ class QavPanel$6
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if ((i >= 0) && (i <= this.jdField_a_of_type_ArrayOfInt[0]))
+    int j;
+    if (i >= 0)
     {
-      j = this.jdField_a_of_type_ArrayOfInt[0];
-      i = (int)(i * 255 * 1.0F / j);
+      paramValueAnimator = this.jdField_a_of_type_ArrayOfInt;
+      if (i <= paramValueAnimator[0])
+      {
+        j = paramValueAnimator[0];
+        i = (int)(i * 255 * 1.0F / j);
+        QavPanel.a(this.jdField_a_of_type_ComTencentAvUiQavPanel).setAlpha(i);
+        QavPanel.a(this.jdField_a_of_type_ComTencentAvUiQavPanel).a(true);
+        return;
+      }
+    }
+    paramValueAnimator = this.jdField_a_of_type_ArrayOfInt;
+    if ((i > paramValueAnimator[0]) && (i <= paramValueAnimator[1]))
+    {
+      QavPanel.a(this.jdField_a_of_type_ComTencentAvUiQavPanel).a(true);
+      QavPanel.a(this.jdField_a_of_type_ComTencentAvUiQavPanel).setAlpha(255);
+      return;
+    }
+    paramValueAnimator = this.jdField_a_of_type_ArrayOfInt;
+    if ((i > paramValueAnimator[1]) && (i <= paramValueAnimator[2]))
+    {
+      j = paramValueAnimator[2];
+      int k = paramValueAnimator[1];
+      i = (int)((paramValueAnimator[2] - i) * 255 * 1.0F / (j - k));
       QavPanel.a(this.jdField_a_of_type_ComTencentAvUiQavPanel).setAlpha(i);
       QavPanel.a(this.jdField_a_of_type_ComTencentAvUiQavPanel).a(true);
     }
-    do
-    {
-      return;
-      if ((i > this.jdField_a_of_type_ArrayOfInt[0]) && (i <= this.jdField_a_of_type_ArrayOfInt[1]))
-      {
-        QavPanel.a(this.jdField_a_of_type_ComTencentAvUiQavPanel).a(true);
-        QavPanel.a(this.jdField_a_of_type_ComTencentAvUiQavPanel).setAlpha(255);
-        return;
-      }
-    } while ((i <= this.jdField_a_of_type_ArrayOfInt[1]) || (i > this.jdField_a_of_type_ArrayOfInt[2]));
-    int j = this.jdField_a_of_type_ArrayOfInt[2];
-    int k = this.jdField_a_of_type_ArrayOfInt[1];
-    i = (int)((this.jdField_a_of_type_ArrayOfInt[2] - i) * 255 * 1.0F / (j - k));
-    QavPanel.a(this.jdField_a_of_type_ComTencentAvUiQavPanel).setAlpha(i);
-    QavPanel.a(this.jdField_a_of_type_ComTencentAvUiQavPanel).a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.QavPanel.6
  * JD-Core Version:    0.7.0.1
  */

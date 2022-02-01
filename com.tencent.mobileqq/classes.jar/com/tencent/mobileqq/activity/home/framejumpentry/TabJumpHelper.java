@@ -8,10 +8,11 @@ import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
 import com.tencent.mobileqq.app.FrameFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyHelper;
 import com.tencent.mobileqq.managers.PushNoticeManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.QQTabHost;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
 import mqq.app.AppRuntime;
 
 public class TabJumpHelper
@@ -20,15 +21,16 @@ public class TabJumpHelper
   
   public static TabJumpHelper a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new TabJumpHelper();
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new TabJumpHelper();
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   private void a(FrameFragment paramFrameFragment, Intent paramIntent)
@@ -39,7 +41,7 @@ public class TabJumpHelper
       int j = paramIntent.getIntExtra("uintype", -1);
       if ((i > 0) && ((j == 1035) || (j == 1041) || (j == 1042)) && (((QQAppInterface)paramFrameFragment.jdField_a_of_type_MqqAppAppRuntime).isCreateManager(QQManagerFactory.PUSH_NOTICE_MANAGER)))
       {
-        ((PushNoticeManager)paramFrameFragment.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.PUSH_NOTICE_MANAGER)).a(paramFrameFragment.getActivity(), paramIntent);
+        ((PushNoticeManager)paramFrameFragment.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.PUSH_NOTICE_MANAGER)).a(paramFrameFragment.a(), paramIntent);
         return;
       }
       TabJumpHelper.BaseJumpActivityPlugin localBaseJumpActivityPlugin = a(i);
@@ -59,7 +61,7 @@ public class TabJumpHelper
   
   private void a(FrameFragment paramFrameFragment, Intent paramIntent, int paramInt)
   {
-    if ((paramInt == FrameControllerUtil.h) && (ReadInJoyHelper.o()))
+    if ((paramInt == FrameControllerUtil.h) && (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isShowMainRecommendTab()))
     {
       paramFrameFragment.jdField_a_of_type_AndroidContentIntent = paramIntent;
       QLog.d("TabJumpHelper", 1, "MainActivity:onNewIntent mTabHost, jump kandian tab fail, set pengingIntent");
@@ -123,37 +125,43 @@ public class TabJumpHelper
   
   private boolean a(FrameFragment paramFrameFragment, Bundle paramBundle, int paramInt)
   {
-    if (paramInt != FrameControllerUtil.a) {}
-    do
-    {
+    if (paramInt != FrameControllerUtil.a) {
       return false;
-      if ((1 == paramBundle.getInt("conversation_index", -1)) && (!((QQAppInterface)paramFrameFragment.jdField_a_of_type_MqqAppAppRuntime).isCallTabShow))
-      {
-        paramBundle = (Conversation)paramFrameFragment.a(Conversation.class);
-        if (paramBundle != null) {
-          paramBundle.a = true;
-        }
-        paramFrameFragment.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setCurrentTab(paramInt);
-        return true;
-      }
-    } while (paramInt != paramFrameFragment.a());
-    paramFrameFragment = (Conversation)paramFrameFragment.a(Conversation.class);
-    String str = paramBundle.getString("from");
-    if (QLog.isColorLevel()) {
-      QLog.d("TabJumpHelper", 2, "doOnNewIntent, same tab,from=" + str);
     }
-    if (paramFrameFragment != null) {
-      if ((!"10003".equals(str)) && (!"10004".equals(str))) {
-        break label166;
-      }
-    }
-    label166:
-    for (boolean bool = true;; bool = false)
+    if ((1 == paramBundle.getInt("conversation_index", -1)) && (!((QQAppInterface)paramFrameFragment.jdField_a_of_type_MqqAppAppRuntime).isCallTabShow))
     {
-      paramFrameFragment.b = bool;
-      paramFrameFragment.c = paramBundle.getBoolean("theme_back_to_conversation", false);
+      paramBundle = (Conversation)paramFrameFragment.a(Conversation.class);
+      if (paramBundle != null) {
+        paramBundle.a = true;
+      }
+      paramFrameFragment.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setCurrentTab(paramInt);
       return true;
     }
+    if (paramInt == paramFrameFragment.a())
+    {
+      paramFrameFragment = (Conversation)paramFrameFragment.a(Conversation.class);
+      String str = paramBundle.getString("from");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("doOnNewIntent, same tab,from=");
+        localStringBuilder.append(str);
+        QLog.d("TabJumpHelper", 2, localStringBuilder.toString());
+      }
+      if (paramFrameFragment != null)
+      {
+        boolean bool;
+        if ((!"10003".equals(str)) && (!"10004".equals(str))) {
+          bool = false;
+        } else {
+          bool = true;
+        }
+        paramFrameFragment.b = bool;
+        paramFrameFragment.c = paramBundle.getBoolean("theme_back_to_conversation", false);
+      }
+      return true;
+    }
+    return false;
   }
   
   private boolean a(QQTabHost paramQQTabHost, int paramInt)
@@ -168,38 +176,51 @@ public class TabJumpHelper
   
   public TabJumpHelper.BaseJumpActivityPlugin a(int paramInt)
   {
-    QLog.d("TabJumpHelper", 1, "createPlugin pluginKey: " + paramInt);
-    switch (paramInt)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("createPlugin pluginKey: ");
+    localStringBuilder.append(paramInt);
+    QLog.d("TabJumpHelper", 1, localStringBuilder.toString());
+    if (paramInt != 2)
     {
-    default: 
-      return null;
-    case 2: 
-      return new TabJumpHelper.ProfileActivityPlugin(this);
+      if (paramInt != 3) {
+        return null;
+      }
+      return new TabJumpHelper.WebActivityPlugin(this);
     }
-    return new TabJumpHelper.WebActivityPlugin(this);
+    return new TabJumpHelper.ProfileActivityPlugin(this);
   }
   
   public TabJumpHelper.BaseJumpFramePlugin a(int paramInt)
   {
-    QLog.d("TabJumpHelper", 1, "createPlugin pluginKey: " + paramInt);
-    switch (paramInt)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("createPlugin pluginKey: ");
+    localStringBuilder.append(paramInt);
+    QLog.d("TabJumpHelper", 1, localStringBuilder.toString());
+    if (paramInt != 0)
     {
-    default: 
-      return null;
-    case 0: 
-      return new TabJumpHelper.ContactFramePlugin(this);
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          return null;
+        }
+        return new TabJumpHelper.LebaFramePlugin(this);
+      }
       return new TabJumpHelper.NowFramePlugin(this);
     }
-    return new TabJumpHelper.LebaFramePlugin(this);
+    return new TabJumpHelper.ContactFramePlugin(this);
   }
   
   public void a(FrameFragment paramFrameFragment, Intent paramIntent, Bundle paramBundle, int paramInt)
   {
     if ((paramFrameFragment.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost != null) && (paramInt >= 0))
     {
-      if (a(paramFrameFragment, paramBundle, paramInt)) {}
-      while ((a(paramFrameFragment, paramInt)) || (a(paramFrameFragment.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost, paramInt))) {
+      if (a(paramFrameFragment, paramBundle, paramInt)) {
+        return;
+      }
+      if (a(paramFrameFragment, paramInt)) {
+        return;
+      }
+      if (a(paramFrameFragment.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost, paramInt)) {
         return;
       }
       if (paramInt < paramFrameFragment.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.getTabWidget().getChildCount())
@@ -207,23 +228,21 @@ public class TabJumpHelper
         a(paramFrameFragment, paramBundle, paramInt);
         paramFrameFragment.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setCurrentTab(paramInt);
       }
-    }
-    for (;;)
-    {
-      a(paramFrameFragment, paramIntent);
-      return;
-      if (paramInt == FrameControllerUtil.i)
+      else if (paramInt == FrameControllerUtil.i)
       {
         paramFrameFragment.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setCurrentTab(FrameControllerUtil.d);
-        continue;
-        a(paramFrameFragment, paramIntent, paramInt);
       }
     }
+    else
+    {
+      a(paramFrameFragment, paramIntent, paramInt);
+    }
+    a(paramFrameFragment, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.framejumpentry.TabJumpHelper
  * JD-Core Version:    0.7.0.1
  */

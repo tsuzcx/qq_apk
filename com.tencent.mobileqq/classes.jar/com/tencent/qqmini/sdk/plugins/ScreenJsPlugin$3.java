@@ -16,13 +16,10 @@ class ScreenJsPlugin$3
     {
       if (new JSONObject(this.val$req.jsonParams).optBoolean("keepScreenOn")) {
         ScreenJsPlugin.keepScreenOn(ScreenJsPlugin.access$300(this.this$0).getAttachedActivity(), true);
-      }
-      for (;;)
-      {
-        this.val$req.ok();
-        return;
+      } else {
         ScreenJsPlugin.keepScreenOn(ScreenJsPlugin.access$400(this.this$0).getAttachedActivity(), false);
       }
+      this.val$req.ok();
       return;
     }
     catch (Throwable localThrowable)
@@ -33,7 +30,7 @@ class ScreenJsPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.ScreenJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

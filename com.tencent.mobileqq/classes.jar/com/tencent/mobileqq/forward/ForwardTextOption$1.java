@@ -13,22 +13,20 @@ class ForwardTextOption$1
   
   public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {}
-    for (;;)
+    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.hideSoftInputFromWindow();
       ForwardPreviewTextController localForwardPreviewTextController = new ForwardPreviewTextController(this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog);
-      localForwardPreviewTextController.a(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131692691), this.a.jdField_a_of_type_JavaLangString);
+      localForwardPreviewTextController.a(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131692648), this.a.jdField_a_of_type_JavaLangString);
       this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.addPreviewView(localForwardPreviewTextController.b());
-      this.a.F();
+      this.a.G();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardTextOption.1
  * JD-Core Version:    0.7.0.1
  */

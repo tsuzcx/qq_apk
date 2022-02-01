@@ -40,171 +40,167 @@ class KeyframeParser
   
   private static <T> Keyframe<T> parseKeyframe(LottieComposition paramLottieComposition, JsonReader paramJsonReader, float paramFloat, ValueParser<T> paramValueParser)
   {
-    Object localObject4 = null;
-    Object localObject3 = null;
-    float f = 0.0F;
-    Object localObject1 = null;
-    Object localObject5 = null;
-    int i = 0;
-    PointF localPointF = null;
-    Object localObject2 = null;
     paramJsonReader.beginObject();
-    if (paramJsonReader.hasNext())
+    int j = 0;
+    PointF localPointF4 = null;
+    PointF localPointF3 = null;
+    Object localObject1 = null;
+    Object localObject2 = null;
+    float f1 = 0.0F;
+    PointF localPointF2 = null;
+    PointF localPointF1 = null;
+    int i;
+    while (paramJsonReader.hasNext())
     {
-      Object localObject6 = paramJsonReader.nextName();
-      int j = -1;
-      switch (((String)localObject6).hashCode())
+      String str = paramJsonReader.nextName();
+      i = str.hashCode();
+      int k = 1;
+      if (i != 101)
+      {
+        if (i != 111)
+        {
+          if (i != 3701)
+          {
+            if (i != 3707)
+            {
+              if (i != 104)
+              {
+                if (i != 105)
+                {
+                  if (i != 115)
+                  {
+                    if ((i == 116) && (str.equals("t")))
+                    {
+                      i = 0;
+                      break label245;
+                    }
+                  }
+                  else if (str.equals("s"))
+                  {
+                    i = 1;
+                    break label245;
+                  }
+                }
+                else if (str.equals("i"))
+                {
+                  i = 4;
+                  break label245;
+                }
+              }
+              else if (str.equals("h"))
+              {
+                i = 5;
+                break label245;
+              }
+            }
+            else if (str.equals("to"))
+            {
+              i = 6;
+              break label245;
+            }
+          }
+          else if (str.equals("ti"))
+          {
+            i = 7;
+            break label245;
+          }
+        }
+        else if (str.equals("o"))
+        {
+          i = 3;
+          break label245;
+        }
+      }
+      else if (str.equals("e"))
+      {
+        i = 2;
+        break label245;
+      }
+      i = -1;
+      switch (i)
       {
       default: 
-        switch (j)
-        {
-        default: 
-          label124:
-          paramJsonReader.skipValue();
-          localObject6 = localObject2;
-          localObject2 = localObject1;
-          localObject1 = localObject6;
-        }
+        paramJsonReader.skipValue();
         break;
-      }
-      for (;;)
-      {
-        localObject6 = localObject2;
-        localObject2 = localObject1;
-        localObject1 = localObject6;
+      case 7: 
+        localPointF1 = JsonUtils.jsonToPoint(paramJsonReader, paramFloat);
         break;
-        if (!((String)localObject6).equals("t")) {
-          break label124;
+      case 6: 
+        localPointF2 = JsonUtils.jsonToPoint(paramJsonReader, paramFloat);
+        break;
+      case 5: 
+        if (paramJsonReader.nextInt() == 1) {
+          i = k;
+        } else {
+          i = 0;
         }
-        j = 0;
-        break label124;
-        if (!((String)localObject6).equals("s")) {
-          break label124;
-        }
-        j = 1;
-        break label124;
-        if (!((String)localObject6).equals("e")) {
-          break label124;
-        }
-        j = 2;
-        break label124;
-        if (!((String)localObject6).equals("o")) {
-          break label124;
-        }
-        j = 3;
-        break label124;
-        if (!((String)localObject6).equals("i")) {
-          break label124;
-        }
-        j = 4;
-        break label124;
-        if (!((String)localObject6).equals("h")) {
-          break label124;
-        }
-        j = 5;
-        break label124;
-        if (!((String)localObject6).equals("to")) {
-          break label124;
-        }
-        j = 6;
-        break label124;
-        if (!((String)localObject6).equals("ti")) {
-          break label124;
-        }
-        j = 7;
-        break label124;
-        f = (float)paramJsonReader.nextDouble();
-        localObject6 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject6;
-        continue;
-        localObject6 = paramValueParser.parse(paramJsonReader, paramFloat);
-        localObject1 = localObject2;
-        localObject2 = localObject6;
-        continue;
-        localObject5 = paramValueParser.parse(paramJsonReader, paramFloat);
-        localObject6 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject6;
-        continue;
-        localObject6 = JsonUtils.jsonToPoint(paramJsonReader, paramFloat);
-        localObject4 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject4;
-        localObject4 = localObject6;
-        continue;
-        localObject6 = JsonUtils.jsonToPoint(paramJsonReader, paramFloat);
-        localObject3 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject3;
-        localObject3 = localObject6;
-        continue;
-        if (paramJsonReader.nextInt() == 1) {}
-        for (i = 1;; i = 0)
-        {
-          localObject6 = localObject1;
-          localObject1 = localObject2;
-          localObject2 = localObject6;
-          break;
-        }
-        localPointF = JsonUtils.jsonToPoint(paramJsonReader, paramFloat);
-        localObject6 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject6;
-        continue;
-        localObject6 = JsonUtils.jsonToPoint(paramJsonReader, paramFloat);
-        localObject2 = localObject1;
-        localObject1 = localObject6;
+        j = i;
+        break;
+      case 4: 
+        localPointF3 = JsonUtils.jsonToPoint(paramJsonReader, paramFloat);
+        break;
+      case 3: 
+        localPointF4 = JsonUtils.jsonToPoint(paramJsonReader, paramFloat);
+        break;
+      case 2: 
+        localObject1 = paramValueParser.parse(paramJsonReader, paramFloat);
+        break;
+      case 1: 
+        localObject2 = paramValueParser.parse(paramJsonReader, paramFloat);
+        break;
+      case 0: 
+        label245:
+        f1 = (float)paramJsonReader.nextDouble();
       }
     }
     paramJsonReader.endObject();
-    if (i != 0)
+    if (j != 0)
     {
-      paramJsonReader = LINEAR_INTERPOLATOR;
-      localObject5 = localObject1;
-      paramLottieComposition = new Keyframe(paramLottieComposition, localObject1, localObject5, paramJsonReader, f, null);
-      paramLottieComposition.pathCp1 = localPointF;
-      paramLottieComposition.pathCp2 = localObject2;
+      paramValueParser = LINEAR_INTERPOLATOR;
+      paramJsonReader = localObject2;
+    }
+    else if ((localPointF4 != null) && (localPointF3 != null))
+    {
+      float f2 = localPointF4.x;
+      float f3 = -paramFloat;
+      localPointF4.x = MiscUtils.clamp(f2, f3, paramFloat);
+      localPointF4.y = MiscUtils.clamp(localPointF4.y, -100.0F, 100.0F);
+      localPointF3.x = MiscUtils.clamp(localPointF3.x, f3, paramFloat);
+      localPointF3.y = MiscUtils.clamp(localPointF3.y, -100.0F, 100.0F);
+      i = Utils.hashFor(localPointF4.x, localPointF4.y, localPointF3.x, localPointF3.y);
+      paramValueParser = getInterpolator(i);
+      if (paramValueParser != null) {
+        paramJsonReader = (Interpolator)paramValueParser.get();
+      } else {
+        paramJsonReader = null;
+      }
+      if (paramValueParser != null)
+      {
+        paramValueParser = paramJsonReader;
+        if (paramJsonReader != null) {}
+      }
+      else
+      {
+        paramValueParser = PathInterpolatorCompat.create(localPointF4.x / paramFloat, localPointF4.y / paramFloat, localPointF3.x / paramFloat, localPointF3.y / paramFloat);
+      }
+    }
+    try
+    {
+      putInterpolator(i, new WeakReference(paramValueParser));
+      label606:
+      paramJsonReader = localObject1;
+      break label619;
+      paramValueParser = LINEAR_INTERPOLATOR;
+      paramJsonReader = localObject1;
+      label619:
+      paramLottieComposition = new Keyframe(paramLottieComposition, localObject2, paramJsonReader, paramValueParser, f1, null);
+      paramLottieComposition.pathCp1 = localPointF2;
+      paramLottieComposition.pathCp2 = localPointF1;
       return paramLottieComposition;
     }
-    if ((localObject4 != null) && (localObject3 != null))
+    catch (ArrayIndexOutOfBoundsException paramJsonReader)
     {
-      localObject4.x = MiscUtils.clamp(localObject4.x, -paramFloat, paramFloat);
-      localObject4.y = MiscUtils.clamp(localObject4.y, -100.0F, 100.0F);
-      localObject3.x = MiscUtils.clamp(localObject3.x, -paramFloat, paramFloat);
-      localObject3.y = MiscUtils.clamp(localObject3.y, -100.0F, 100.0F);
-      i = Utils.hashFor(localObject4.x, localObject4.y, localObject3.x, localObject3.y);
-      paramValueParser = getInterpolator(i);
-      if (paramValueParser == null) {
-        break label763;
-      }
-    }
-    label747:
-    label763:
-    for (paramJsonReader = (Interpolator)paramValueParser.get();; paramJsonReader = null) {
-      for (;;)
-      {
-        if (paramValueParser != null)
-        {
-          paramValueParser = paramJsonReader;
-          if (paramJsonReader != null) {}
-        }
-        else
-        {
-          paramValueParser = PathInterpolatorCompat.create(localObject4.x / paramFloat, localObject4.y / paramFloat, localObject3.x / paramFloat, localObject3.y / paramFloat);
-        }
-        try
-        {
-          putInterpolator(i, new WeakReference(paramValueParser));
-          paramJsonReader = paramValueParser;
-          break;
-          paramJsonReader = LINEAR_INTERPOLATOR;
-        }
-        catch (ArrayIndexOutOfBoundsException paramJsonReader)
-        {
-          break label747;
-        }
-      }
+      break label606;
     }
   }
   
@@ -233,7 +229,7 @@ class KeyframeParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.KeyframeParser
  * JD-Core Version:    0.7.0.1
  */

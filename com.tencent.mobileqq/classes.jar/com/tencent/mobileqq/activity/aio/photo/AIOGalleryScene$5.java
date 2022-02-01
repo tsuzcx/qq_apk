@@ -10,8 +10,8 @@ class AIOGalleryScene$5
   
   public void run()
   {
+    this.this$0.d(false);
     this.this$0.c(false);
-    this.this$0.a(false);
     if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a() != null) && ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a().a instanceof AIOShortVideoData))) {
       AIOGalleryScene.a(this.this$0, true);
     }
@@ -26,7 +26,7 @@ class AIOGalleryScene$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.5
  * JD-Core Version:    0.7.0.1
  */

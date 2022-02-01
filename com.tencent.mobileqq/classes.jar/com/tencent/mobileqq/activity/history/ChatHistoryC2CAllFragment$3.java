@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.history;
 
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class ChatHistoryC2CAllFragment$3
@@ -17,16 +17,17 @@ class ChatHistoryC2CAllFragment$3
       if ((this.a.a != null) && (this.a.a.isShowing())) {
         this.a.a.dismiss();
       }
-      this.a.a = new QQProgressDialog(this.a.getActivity(), this.a.getActivity().getTitleBarHeight());
+      paramMessage = this.a;
+      paramMessage.a = new QQProgressDialog(paramMessage.getBaseActivity(), this.a.getBaseActivity().getTitleBarHeight());
       this.a.a.setCancelable(false);
-      this.a.a.c(2131691577);
+      this.a.a.c(2131691498);
       this.a.a.show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment.3
  * JD-Core Version:    0.7.0.1
  */

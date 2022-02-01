@@ -15,17 +15,24 @@ class QRDisplayActivity$19
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     QRDisplayActivity.a(this.a).dismiss();
-    if (QLog.isColorLevel()) {
-      QLog.i("QRDisplayActivity", 2, "onItemClick.chooseChannel: " + paramInt + "," + paramLong);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onItemClick.chooseChannel: ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(paramLong);
+      QLog.i("QRDisplayActivity", 2, ((StringBuilder)localObject).toString());
     }
-    this.a.i = ((int)paramLong);
-    QRDisplayActivity.a(this.a);
+    Object localObject = this.a;
+    ((QRDisplayActivity)localObject).i = ((int)paramLong);
+    QRDisplayActivity.a((QRDisplayActivity)localObject);
     EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.19
  * JD-Core Version:    0.7.0.1
  */

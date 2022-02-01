@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.ordersend;
 
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class OrderMediaMsgReporter
@@ -26,13 +26,7 @@ public class OrderMediaMsgReporter
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("msgType", String.valueOf(paramInt));
-    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(BaseApplication.getContext());
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      localStatisticCollector.collectPerformance(null, "OrderMediaMsgSendTimeout", paramBoolean, 0L, 0L, localHashMap, "");
-      return;
-    }
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "OrderMediaMsgSendTimeout", paramBoolean ^ true, 0L, 0L, localHashMap, "");
   }
   
   public static void b(int paramInt1, int paramInt2)
@@ -41,17 +35,18 @@ public class OrderMediaMsgReporter
     localHashMap.put("totalSize", String.valueOf(paramInt1));
     localHashMap.put("mediaSize", String.valueOf(paramInt2));
     StatisticCollector localStatisticCollector = StatisticCollector.getInstance(BaseApplication.getContext());
-    if (paramInt2 > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localStatisticCollector.collectPerformance(null, "OrderMediaMsgMultiSeperate", bool, 0L, paramInt1, localHashMap, "");
-      return;
+    boolean bool;
+    if (paramInt2 > 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    localStatisticCollector.collectPerformance(null, "OrderMediaMsgMultiSeperate", bool, 0L, paramInt1, localHashMap, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.ordersend.OrderMediaMsgReporter
  * JD-Core Version:    0.7.0.1
  */

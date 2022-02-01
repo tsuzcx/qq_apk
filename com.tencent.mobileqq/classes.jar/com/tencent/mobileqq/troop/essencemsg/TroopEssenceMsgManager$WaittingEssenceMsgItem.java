@@ -17,35 +17,56 @@ public class TroopEssenceMsgManager$WaittingEssenceMsgItem
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (paramObject == null) {}
-    do
+    boolean bool2 = false;
+    if (paramObject == null) {
+      return false;
+    }
+    boolean bool1 = bool2;
+    if ((paramObject instanceof WaittingEssenceMsgItem))
     {
-      do
-      {
-        return false;
-      } while (!(paramObject instanceof WaittingEssenceMsgItem));
       paramObject = (WaittingEssenceMsgItem)paramObject;
-    } while ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long));
-    return true;
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      {
+        bool1 = bool2;
+        if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString))
+        {
+          bool1 = bool2;
+          if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public int hashCode()
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_JavaLangString.hashCode()) {
-      return i + (int)this.jdField_a_of_type_Long;
+    String str = this.jdField_a_of_type_JavaLangString;
+    int i;
+    if (str == null) {
+      i = 0;
+    } else {
+      i = str.hashCode();
     }
+    return i + (int)this.jdField_a_of_type_Long;
   }
   
   @NonNull
   public String toString()
   {
-    return "troopUin = " + this.jdField_a_of_type_JavaLangString + ", uniSeq = " + this.jdField_a_of_type_Long;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("troopUin = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", uniSeq = ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgManager.WaittingEssenceMsgItem
  * JD-Core Version:    0.7.0.1
  */

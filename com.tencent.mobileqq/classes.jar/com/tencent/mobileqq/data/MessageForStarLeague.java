@@ -27,14 +27,8 @@ public class MessageForStarLeague
   
   public static MessageForStarLeague decodeMsgFromXmlBuff(QQAppInterface paramQQAppInterface, int paramInt1, long paramLong, byte[] paramArrayOfByte, int paramInt2)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 2)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("StructMsg", 2, "decode MessageForTroopFee for xml buff by stream failed. xmlbuff is null or lenght<2");
-      }
-    }
-    for (;;)
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length >= 2))
     {
-      return null;
       paramQQAppInterface = StructMsgUtils.a(paramArrayOfByte, paramInt2);
       try
       {
@@ -42,10 +36,6 @@ public class MessageForStarLeague
         paramQQAppInterface = new ByteArrayInputStream(paramQQAppInterface.getBytes());
         paramArrayOfByte = new MessageForStarLeague.TroopStarLeagueHandler();
         SAXParserFactory localSAXParserFactory = SAXParserFactory.newInstance();
-        if (!QLog.isColorLevel()) {}
-      }
-      catch (UnsupportedEncodingException paramQQAppInterface)
-      {
         try
         {
           localSAXParserFactory.newSAXParser().parse(paramQQAppInterface, paramArrayOfByte);
@@ -53,13 +43,28 @@ public class MessageForStarLeague
           paramQQAppInterface = paramArrayOfByte.a();
           return paramQQAppInterface;
         }
-        catch (Exception paramQQAppInterface) {}
-        paramQQAppInterface = paramQQAppInterface;
+        catch (Exception paramQQAppInterface)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e(".troop.troop_fee", 2, "decode MessageForTroopFee for xml buff by stream", paramQQAppInterface);
+          }
+          return null;
+        }
+        if (!QLog.isColorLevel()) {
+          break label125;
+        }
+      }
+      catch (UnsupportedEncodingException paramQQAppInterface)
+      {
         paramQQAppInterface.printStackTrace();
         return null;
       }
     }
-    QLog.e(".troop.troop_fee", 2, "decode MessageForTroopFee for xml buff by stream", paramQQAppInterface);
+    else
+    {
+      QLog.d("StructMsg", 2, "decode MessageForTroopFee for xml buff by stream failed. xmlbuff is null or lenght<2");
+    }
+    label125:
     return null;
   }
   
@@ -101,102 +106,99 @@ public class MessageForStarLeague
   protected void doParse()
   {
     // Byte code:
-    //   0: new 157	java/io/ObjectInputStream
-    //   3: dup
-    //   4: new 61	java/io/ByteArrayInputStream
-    //   7: dup
-    //   8: aload_0
-    //   9: getfield 161	com/tencent/mobileqq/data/MessageForStarLeague:msgData	[B
-    //   12: invokespecial 68	java/io/ByteArrayInputStream:<init>	([B)V
-    //   15: invokespecial 164	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
-    //   18: astore_2
-    //   19: aload_2
-    //   20: astore_1
-    //   21: aload_0
-    //   22: aload_2
-    //   23: invokespecial 166	com/tencent/mobileqq/data/MessageForStarLeague:readExternal	(Ljava/io/ObjectInput;)V
-    //   26: aload_2
-    //   27: astore_1
-    //   28: aload_0
+    //   0: aconst_null
+    //   1: astore 4
+    //   3: aconst_null
+    //   4: astore_1
+    //   5: new 157	java/io/ObjectInputStream
+    //   8: dup
+    //   9: new 47	java/io/ByteArrayInputStream
+    //   12: dup
+    //   13: aload_0
+    //   14: getfield 161	com/tencent/mobileqq/data/MessageForStarLeague:msgData	[B
+    //   17: invokespecial 54	java/io/ByteArrayInputStream:<init>	([B)V
+    //   20: invokespecial 164	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   23: astore_2
+    //   24: aload_0
+    //   25: aload_2
+    //   26: invokespecial 166	com/tencent/mobileqq/data/MessageForStarLeague:readExternal	(Ljava/io/ObjectInput;)V
     //   29: aload_0
-    //   30: invokevirtual 169	com/tencent/mobileqq/data/MessageForStarLeague:getSummaryMsg	()Ljava/lang/String;
-    //   33: putfield 172	com/tencent/mobileqq/data/MessageForStarLeague:msg	Ljava/lang/String;
-    //   36: aload_2
-    //   37: ifnull +7 -> 44
-    //   40: aload_2
-    //   41: invokevirtual 173	java/io/ObjectInputStream:close	()V
-    //   44: return
-    //   45: astore_1
-    //   46: aload_1
-    //   47: invokevirtual 174	java/lang/Exception:printStackTrace	()V
-    //   50: return
-    //   51: astore_3
-    //   52: aconst_null
-    //   53: astore_2
-    //   54: aload_2
-    //   55: astore_1
-    //   56: invokestatic 33	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   59: ifeq +14 -> 73
-    //   62: aload_2
-    //   63: astore_1
-    //   64: ldc 176
-    //   66: iconst_2
-    //   67: ldc 178
-    //   69: aload_3
-    //   70: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   73: aload_2
-    //   74: ifnull -30 -> 44
-    //   77: aload_2
-    //   78: invokevirtual 173	java/io/ObjectInputStream:close	()V
-    //   81: return
-    //   82: astore_1
-    //   83: aload_1
-    //   84: invokevirtual 174	java/lang/Exception:printStackTrace	()V
-    //   87: return
-    //   88: astore_2
-    //   89: aconst_null
-    //   90: astore_1
-    //   91: aload_1
-    //   92: ifnull +7 -> 99
-    //   95: aload_1
-    //   96: invokevirtual 173	java/io/ObjectInputStream:close	()V
-    //   99: aload_2
-    //   100: athrow
-    //   101: astore_1
-    //   102: aload_1
-    //   103: invokevirtual 174	java/lang/Exception:printStackTrace	()V
-    //   106: goto -7 -> 99
+    //   30: aload_0
+    //   31: invokevirtual 169	com/tencent/mobileqq/data/MessageForStarLeague:getSummaryMsg	()Ljava/lang/String;
+    //   34: putfield 172	com/tencent/mobileqq/data/MessageForStarLeague:msg	Ljava/lang/String;
+    //   37: aload_2
+    //   38: invokevirtual 173	java/io/ObjectInputStream:close	()V
+    //   41: return
+    //   42: astore_1
+    //   43: goto +55 -> 98
+    //   46: astore_1
+    //   47: aload_1
+    //   48: astore_3
+    //   49: goto +15 -> 64
+    //   52: astore_3
+    //   53: aload_1
+    //   54: astore_2
+    //   55: aload_3
+    //   56: astore_1
+    //   57: goto +41 -> 98
+    //   60: astore_3
+    //   61: aload 4
+    //   63: astore_2
+    //   64: aload_2
+    //   65: astore_1
+    //   66: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   69: ifeq +14 -> 83
+    //   72: aload_2
+    //   73: astore_1
+    //   74: ldc 175
+    //   76: iconst_2
+    //   77: ldc 177
+    //   79: aload_3
+    //   80: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   83: aload_2
+    //   84: ifnull +13 -> 97
+    //   87: aload_2
+    //   88: invokevirtual 173	java/io/ObjectInputStream:close	()V
+    //   91: return
+    //   92: astore_1
+    //   93: aload_1
+    //   94: invokevirtual 180	java/lang/Exception:printStackTrace	()V
+    //   97: return
+    //   98: aload_2
+    //   99: ifnull +15 -> 114
+    //   102: aload_2
+    //   103: invokevirtual 173	java/io/ObjectInputStream:close	()V
+    //   106: goto +8 -> 114
     //   109: astore_2
-    //   110: goto -19 -> 91
-    //   113: astore_3
-    //   114: goto -60 -> 54
+    //   110: aload_2
+    //   111: invokevirtual 180	java/lang/Exception:printStackTrace	()V
+    //   114: aload_1
+    //   115: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	117	0	this	MessageForStarLeague
-    //   20	8	1	localObjectInputStream1	java.io.ObjectInputStream
-    //   45	2	1	localException1	Exception
-    //   55	9	1	localObjectInputStream2	java.io.ObjectInputStream
-    //   82	2	1	localException2	Exception
-    //   90	6	1	localObject1	java.lang.Object
-    //   101	2	1	localException3	Exception
-    //   18	60	2	localObjectInputStream3	java.io.ObjectInputStream
-    //   88	12	2	localObject2	java.lang.Object
-    //   109	1	2	localObject3	java.lang.Object
-    //   51	19	3	localIOException1	java.io.IOException
-    //   113	1	3	localIOException2	java.io.IOException
+    //   0	116	0	this	MessageForStarLeague
+    //   4	1	1	localObject1	java.lang.Object
+    //   42	1	1	localObject2	java.lang.Object
+    //   46	8	1	localIOException1	java.io.IOException
+    //   56	18	1	localObject3	java.lang.Object
+    //   92	23	1	localException1	Exception
+    //   23	80	2	localObject4	java.lang.Object
+    //   109	2	2	localException2	Exception
+    //   48	1	3	localIOException2	java.io.IOException
+    //   52	4	3	localObject5	java.lang.Object
+    //   60	20	3	localIOException3	java.io.IOException
+    //   1	61	4	localObject6	java.lang.Object
     // Exception table:
     //   from	to	target	type
-    //   40	44	45	java/lang/Exception
-    //   0	19	51	java/io/IOException
-    //   77	81	82	java/lang/Exception
-    //   0	19	88	finally
-    //   95	99	101	java/lang/Exception
-    //   21	26	109	finally
-    //   28	36	109	finally
-    //   56	62	109	finally
-    //   64	73	109	finally
-    //   21	26	113	java/io/IOException
-    //   28	36	113	java/io/IOException
+    //   24	37	42	finally
+    //   24	37	46	java/io/IOException
+    //   5	24	52	finally
+    //   66	72	52	finally
+    //   74	83	52	finally
+    //   5	24	60	java/io/IOException
+    //   37	41	92	java/lang/Exception
+    //   87	91	92	java/lang/Exception
+    //   102	106	109	java/lang/Exception
   }
   
   public byte[] getBytes()
@@ -213,13 +215,13 @@ public class MessageForStarLeague
     return this.subTitle;
   }
   
-  public void postRead()
+  protected void postRead()
   {
     super.parse();
   }
   
   /* Error */
-  public void prewrite()
+  protected void prewrite()
   {
     // Byte code:
     //   0: new 194	java/io/ByteArrayOutputStream
@@ -247,149 +249,143 @@ public class MessageForStarLeague
     //   37: invokevirtual 206	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   40: putfield 161	com/tencent/mobileqq/data/MessageForStarLeague:msgData	[B
     //   43: aload_2
-    //   44: ifnull +7 -> 51
-    //   47: aload_2
-    //   48: invokevirtual 203	java/io/ObjectOutputStream:close	()V
-    //   51: aload 4
-    //   53: ifnull +8 -> 61
-    //   56: aload 4
-    //   58: invokevirtual 207	java/io/ByteArrayOutputStream:close	()V
-    //   61: return
-    //   62: astore_1
-    //   63: invokestatic 33	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   66: ifeq -15 -> 51
-    //   69: ldc 176
-    //   71: iconst_2
-    //   72: ldc 209
-    //   74: aload_1
-    //   75: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   78: goto -27 -> 51
-    //   81: astore_1
-    //   82: invokestatic 33	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   85: ifeq -24 -> 61
-    //   88: ldc 176
-    //   90: iconst_2
-    //   91: ldc 209
-    //   93: aload_1
-    //   94: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   97: return
-    //   98: astore_3
-    //   99: aconst_null
-    //   100: astore_2
-    //   101: aload_2
-    //   102: astore_1
-    //   103: invokestatic 33	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   106: ifeq +14 -> 120
-    //   109: aload_2
-    //   110: astore_1
-    //   111: ldc 176
-    //   113: iconst_2
-    //   114: ldc 209
-    //   116: aload_3
-    //   117: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   120: aload_2
-    //   121: ifnull +7 -> 128
-    //   124: aload_2
-    //   125: invokevirtual 203	java/io/ObjectOutputStream:close	()V
-    //   128: aload 4
-    //   130: ifnull -69 -> 61
-    //   133: aload 4
-    //   135: invokevirtual 207	java/io/ByteArrayOutputStream:close	()V
-    //   138: return
-    //   139: astore_1
-    //   140: invokestatic 33	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   143: ifeq -82 -> 61
-    //   146: ldc 176
-    //   148: iconst_2
-    //   149: ldc 209
-    //   151: aload_1
-    //   152: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   155: return
-    //   156: astore_1
-    //   157: invokestatic 33	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   160: ifeq -32 -> 128
-    //   163: ldc 176
-    //   165: iconst_2
-    //   166: ldc 209
-    //   168: aload_1
-    //   169: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   172: goto -44 -> 128
-    //   175: astore_2
-    //   176: aconst_null
-    //   177: astore_1
-    //   178: aload_1
-    //   179: ifnull +7 -> 186
-    //   182: aload_1
-    //   183: invokevirtual 203	java/io/ObjectOutputStream:close	()V
-    //   186: aload 4
-    //   188: ifnull +8 -> 196
-    //   191: aload 4
-    //   193: invokevirtual 207	java/io/ByteArrayOutputStream:close	()V
-    //   196: aload_2
-    //   197: athrow
-    //   198: astore_1
-    //   199: invokestatic 33	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   202: ifeq -16 -> 186
-    //   205: ldc 176
-    //   207: iconst_2
-    //   208: ldc 209
-    //   210: aload_1
-    //   211: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   214: goto -28 -> 186
-    //   217: astore_1
-    //   218: invokestatic 33	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   221: ifeq -25 -> 196
-    //   224: ldc 176
-    //   226: iconst_2
-    //   227: ldc 209
-    //   229: aload_1
-    //   230: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   233: goto -37 -> 196
-    //   236: astore_2
-    //   237: goto -59 -> 178
-    //   240: astore_3
-    //   241: goto -140 -> 101
+    //   44: invokevirtual 203	java/io/ObjectOutputStream:close	()V
+    //   47: goto +19 -> 66
+    //   50: astore_1
+    //   51: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   54: ifeq +12 -> 66
+    //   57: ldc 175
+    //   59: iconst_2
+    //   60: ldc 208
+    //   62: aload_1
+    //   63: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   66: aload 4
+    //   68: invokevirtual 209	java/io/ByteArrayOutputStream:close	()V
+    //   71: return
+    //   72: astore_1
+    //   73: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   76: ifeq +88 -> 164
+    //   79: ldc 175
+    //   81: iconst_2
+    //   82: ldc 208
+    //   84: aload_1
+    //   85: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   88: return
+    //   89: astore_3
+    //   90: goto +12 -> 102
+    //   93: astore_1
+    //   94: aconst_null
+    //   95: astore_2
+    //   96: goto +74 -> 170
+    //   99: astore_3
+    //   100: aconst_null
+    //   101: astore_2
+    //   102: aload_2
+    //   103: astore_1
+    //   104: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   107: ifeq +14 -> 121
+    //   110: aload_2
+    //   111: astore_1
+    //   112: ldc 175
+    //   114: iconst_2
+    //   115: ldc 208
+    //   117: aload_3
+    //   118: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   121: aload_2
+    //   122: ifnull +26 -> 148
+    //   125: aload_2
+    //   126: invokevirtual 203	java/io/ObjectOutputStream:close	()V
+    //   129: goto +19 -> 148
+    //   132: astore_1
+    //   133: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   136: ifeq +12 -> 148
+    //   139: ldc 175
+    //   141: iconst_2
+    //   142: ldc 208
+    //   144: aload_1
+    //   145: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   148: aload 4
+    //   150: invokevirtual 209	java/io/ByteArrayOutputStream:close	()V
+    //   153: return
+    //   154: astore_1
+    //   155: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   158: ifeq +6 -> 164
+    //   161: goto -82 -> 79
+    //   164: return
+    //   165: astore_3
+    //   166: aload_1
+    //   167: astore_2
+    //   168: aload_3
+    //   169: astore_1
+    //   170: aload_2
+    //   171: ifnull +26 -> 197
+    //   174: aload_2
+    //   175: invokevirtual 203	java/io/ObjectOutputStream:close	()V
+    //   178: goto +19 -> 197
+    //   181: astore_2
+    //   182: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   185: ifeq +12 -> 197
+    //   188: ldc 175
+    //   190: iconst_2
+    //   191: ldc 208
+    //   193: aload_2
+    //   194: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   197: aload 4
+    //   199: invokevirtual 209	java/io/ByteArrayOutputStream:close	()V
+    //   202: goto +19 -> 221
+    //   205: astore_2
+    //   206: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   209: ifeq +12 -> 221
+    //   212: ldc 175
+    //   214: iconst_2
+    //   215: ldc 208
+    //   217: aload_2
+    //   218: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   221: goto +5 -> 226
+    //   224: aload_1
+    //   225: athrow
+    //   226: goto -2 -> 224
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	244	0	this	MessageForStarLeague
-    //   20	14	1	localObjectOutputStream1	java.io.ObjectOutputStream
-    //   62	13	1	localException1	Exception
-    //   81	13	1	localException2	Exception
-    //   102	9	1	localObjectOutputStream2	java.io.ObjectOutputStream
-    //   139	13	1	localException3	Exception
-    //   156	13	1	localException4	Exception
-    //   177	6	1	localObject1	java.lang.Object
-    //   198	13	1	localException5	Exception
-    //   217	13	1	localException6	Exception
-    //   18	107	2	localObjectOutputStream3	java.io.ObjectOutputStream
-    //   175	22	2	localObject2	java.lang.Object
-    //   236	1	2	localObject3	java.lang.Object
-    //   98	19	3	localIOException1	java.io.IOException
-    //   240	1	3	localIOException2	java.io.IOException
-    //   7	185	4	localByteArrayOutputStream	java.io.ByteArrayOutputStream
+    //   0	229	0	this	MessageForStarLeague
+    //   20	14	1	localObject1	java.lang.Object
+    //   50	13	1	localException1	Exception
+    //   72	13	1	localException2	Exception
+    //   93	1	1	localObject2	java.lang.Object
+    //   103	9	1	localObject3	java.lang.Object
+    //   132	13	1	localException3	Exception
+    //   154	13	1	localException4	Exception
+    //   169	56	1	localObject4	java.lang.Object
+    //   18	157	2	localObject5	java.lang.Object
+    //   181	13	2	localException5	Exception
+    //   205	13	2	localException6	Exception
+    //   89	1	3	localIOException1	java.io.IOException
+    //   99	19	3	localIOException2	java.io.IOException
+    //   165	4	3	localObject6	java.lang.Object
+    //   7	191	4	localByteArrayOutputStream	java.io.ByteArrayOutputStream
     // Exception table:
     //   from	to	target	type
-    //   47	51	62	java/lang/Exception
-    //   56	61	81	java/lang/Exception
-    //   9	19	98	java/io/IOException
-    //   133	138	139	java/lang/Exception
-    //   124	128	156	java/lang/Exception
-    //   9	19	175	finally
-    //   182	186	198	java/lang/Exception
-    //   191	196	217	java/lang/Exception
-    //   21	26	236	finally
-    //   28	32	236	finally
-    //   34	43	236	finally
-    //   103	109	236	finally
-    //   111	120	236	finally
-    //   21	26	240	java/io/IOException
-    //   28	32	240	java/io/IOException
-    //   34	43	240	java/io/IOException
+    //   43	47	50	java/lang/Exception
+    //   66	71	72	java/lang/Exception
+    //   21	26	89	java/io/IOException
+    //   28	32	89	java/io/IOException
+    //   34	43	89	java/io/IOException
+    //   9	19	93	finally
+    //   9	19	99	java/io/IOException
+    //   125	129	132	java/lang/Exception
+    //   148	153	154	java/lang/Exception
+    //   21	26	165	finally
+    //   28	32	165	finally
+    //   34	43	165	finally
+    //   104	110	165	finally
+    //   112	121	165	finally
+    //   174	178	181	java/lang/Exception
+    //   197	202	205	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForStarLeague
  * JD-Core Version:    0.7.0.1
  */

@@ -15,27 +15,33 @@ final class InnerAudioPlugin$onAudioFocusChangeListener$1
   public final void onAudioFocusChange(int paramInt)
   {
     LogDelegate localLogDelegate = InnerAudioPlugin.access$getLogger$p(this.this$0);
-    if (localLogDelegate != null) {
-      LogDelegate.DefaultImpls.printLog$default(localLogDelegate, LogDelegate.Level.INFO, "[audio]InnerAudioPlugin", "onAudioFocusChange focusChange=" + paramInt, null, 8, null);
-    }
-    switch (paramInt)
+    if (localLogDelegate != null)
     {
-    case 0: 
-    default: 
-      return;
-    case -2: 
-      this.this$0.handleFocusLoss();
-      return;
-    case 1: 
-      this.this$0.handleFocusGain();
+      LogDelegate.Level localLevel = LogDelegate.Level.INFO;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onAudioFocusChange focusChange=");
+      localStringBuilder.append(paramInt);
+      LogDelegate.DefaultImpls.printLog$default(localLogDelegate, localLevel, "[audio]InnerAudioPlugin", localStringBuilder.toString(), null, 8, null);
+    }
+    if (paramInt != -2)
+    {
+      if (paramInt != -1)
+      {
+        if (paramInt != 1) {
+          return;
+        }
+        this.this$0.handleFocusGain();
+        return;
+      }
+      InnerAudioPlugin.access$handleAbandonFocus(this.this$0);
       return;
     }
-    InnerAudioPlugin.access$handleAbandonFocus(this.this$0);
+    this.this$0.handleFocusLoss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tritonaudio.InnerAudioPlugin.onAudioFocusChangeListener.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,153 +12,118 @@ import java.util.List;
 
 public class Constant
 {
-  public static int A;
-  public static int B;
-  public static int C;
-  public static int D;
-  public static int E;
-  public static int F;
-  public static int G;
-  public static int H;
-  public static int I;
-  public static int J;
-  public static int K;
-  public static int L;
-  public static int M;
-  public static int N;
-  public static int O;
-  public static double a;
-  public static int a;
-  static SparseArray<AutoStatusItem> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  static List<Integer> jdField_a_of_type_JavaUtilList;
-  public static boolean a;
-  public static int b;
+  public static int A = 400;
+  public static int B = 20;
+  public static int C = 3;
+  public static int D = 0;
+  public static int E = 5;
+  public static int F = 40;
+  public static int G = 200;
+  public static int H = 120000;
+  public static int I = 60000;
+  public static int J = 100;
+  public static int K = 120000;
+  public static int L = 120000;
+  public static int M = 50;
+  public static int N = 300000;
+  public static int O = 600000;
+  public static double a = 1.0D;
+  public static int a = 1;
+  public static SparseArray<AutoStatusItem> a;
+  public static List<Integer> a;
+  public static boolean a = true;
+  public static int b = 3;
   public static List<LocationCategoryDetector.Category> b;
-  public static boolean b;
-  public static int c;
-  public static int d;
-  public static int e;
-  public static int f;
-  public static int g;
-  public static int h;
-  public static int i;
-  public static int j;
-  public static int k;
-  public static int l;
-  public static int m;
-  public static int n;
-  public static int o;
-  public static int p;
-  public static int q;
-  public static int r;
-  public static int s;
-  public static int t;
-  public static int u;
-  public static int v;
-  public static int w;
-  public static int x;
-  public static int y;
-  public static int z;
+  public static boolean b = true;
+  public static int c = 300000;
+  public static int d = 2;
+  public static int e = 50;
+  public static int f = 50;
+  public static int g = 50;
+  public static int h = 120000;
+  public static int i = 10000;
+  public static int j = 10;
+  public static int k = 20;
+  public static int l = 100;
+  public static int m = 60000;
+  public static int n = 30000;
+  public static int o = 3;
+  public static int p = 5;
+  public static int q = 30000;
+  public static int r = 600000;
+  public static int s = 50;
+  public static int t = 10;
+  public static int u = 20;
+  public static int v = 30;
+  public static int w = 120;
+  public static int x = 500;
+  public static int y = 1500;
+  public static int z = 100;
   
   static
   {
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 3;
-    c = 300000;
-    d = 2;
-    e = 50;
-    f = 50;
-    g = 50;
-    jdField_a_of_type_Double = 1.0D;
-    h = 120000;
-    i = 10000;
-    j = 10;
-    k = 20;
-    l = 100;
-    m = 60000;
-    n = 30000;
-    o = 3;
-    p = 5;
-    q = 30000;
-    r = 600000;
-    s = 50;
-    t = 10;
-    u = 20;
-    v = 30;
-    w = 120;
-    x = 500;
-    y = 1500;
-    z = 100;
-    A = 400;
-    B = 20;
-    C = 3;
-    D = 0;
-    E = 5;
-    F = 40;
-    G = 200;
-    H = 120000;
-    I = 60000;
-    J = 100;
-    K = 120000;
-    L = 120000;
-    M = 50;
-    jdField_a_of_type_Boolean = true;
-    jdField_b_of_type_Boolean = true;
-    N = 300000;
-    O = 600000;
     jdField_a_of_type_JavaUtilList = new ArrayList();
     jdField_b_of_type_JavaUtilList = new ArrayList();
+    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
   
-  static int a(int paramInt)
+  public static int a(int paramInt)
   {
     return paramInt * 1000;
   }
   
-  static AutoStatusItem a(int paramInt)
+  public static AutoStatusItem a(int paramInt)
   {
     return (AutoStatusItem)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
   }
   
   public static String a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 40001)
     {
-    default: 
-      return String.valueOf(paramInt);
-    case 40001: 
-      return "在地球";
-    case 41012: 
+      switch (paramInt)
+      {
+      default: 
+        switch (paramInt)
+        {
+        default: 
+          switch (paramInt)
+          {
+          default: 
+            return String.valueOf(paramInt);
+          case 41042: 
+            return "移动中";
+          }
+          return "在餐厅";
+        case 41039: 
+          return "在咖啡厅";
+        case 41038: 
+          return "在商场";
+        case 41037: 
+          return "在机场";
+        case 41036: 
+          return "在海边";
+        case 41035: 
+          return "在公园";
+        case 41034: 
+          return "在学校";
+        case 41033: 
+          return "在小区";
+        case 41032: 
+          return "熬夜中";
+        }
+        return "骑行中";
+      case 41014: 
+        return "开车中";
+      case 41013: 
+        return "跑步中";
+      }
       return "行走中";
-    case 41013: 
-      return "跑步中";
-    case 41031: 
-      return "骑行中";
-    case 41014: 
-      return "开车中";
-    case 41032: 
-      return "熬夜中";
-    case 41042: 
-      return "移动中";
-    case 41033: 
-      return "在小区";
-    case 41034: 
-      return "在学校";
-    case 41035: 
-      return "在公园";
-    case 41036: 
-      return "在海边";
-    case 41037: 
-      return "在机场";
-    case 41038: 
-      return "在商场";
-    case 41039: 
-      return "在咖啡厅";
     }
-    return "在餐厅";
+    return "在地球";
   }
   
-  static void a(List<AutoStatusItem> paramList)
+  public static void a(List<AutoStatusItem> paramList)
   {
     jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
     jdField_b_of_type_JavaUtilList = new ArrayList();
@@ -166,12 +131,17 @@ public class Constant
     while (paramList.hasNext())
     {
       AutoStatusItem localAutoStatusItem = (AutoStatusItem)paramList.next();
-      if (QLog.isColorLevel()) {
-        QLog.d("Constant", 2, "[status][autoMgr] initWithConfig. status : " + localAutoStatusItem);
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[status][autoMgr] initWithConfig. status : ");
+        ((StringBuilder)localObject).append(localAutoStatusItem);
+        QLog.d("Constant", 2, ((StringBuilder)localObject).toString());
       }
       jdField_a_of_type_AndroidUtilSparseArray.put((int)localAutoStatusItem.jdField_a_of_type_Long, localAutoStatusItem);
-      Object localObject;
-      if (("category".equalsIgnoreCase(localAutoStatusItem.g)) && (localAutoStatusItem.jdField_a_of_type_ComTencentMobileqqOnlinestatusConfigCategory != null))
+      StringBuilder localStringBuilder;
+      if (("category".equalsIgnoreCase(localAutoStatusItem.h)) && (localAutoStatusItem.jdField_a_of_type_ComTencentMobileqqOnlinestatusConfigCategory != null))
       {
         localObject = new LocationCategoryDetector.Category((int)localAutoStatusItem.jdField_a_of_type_Long, localAutoStatusItem.b, localAutoStatusItem.jdField_a_of_type_ComTencentMobileqqOnlinestatusConfigCategory.jdField_a_of_type_JavaLangString, localAutoStatusItem.jdField_a_of_type_ComTencentMobileqqOnlinestatusConfigCategory.jdField_a_of_type_Int);
         d = localAutoStatusItem.jdField_a_of_type_ComTencentMobileqqOnlinestatusConfigCategory.jdField_b_of_type_Int;
@@ -182,8 +152,14 @@ public class Constant
         h = a(localAutoStatusItem.jdField_a_of_type_ComTencentMobileqqOnlinestatusConfigCategory.f);
         j = localAutoStatusItem.jdField_a_of_type_ComTencentMobileqqOnlinestatusConfigCategory.g;
         l = localAutoStatusItem.jdField_a_of_type_ComTencentMobileqqOnlinestatusConfigCategory.h;
-        if (QLog.isColorLevel()) {
-          QLog.d("Constant", 2, "[status][autoMgr] initWithConfig. status: " + localAutoStatusItem.jdField_a_of_type_Long + " category : " + localObject);
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[status][autoMgr] initWithConfig. status: ");
+          localStringBuilder.append(localAutoStatusItem.jdField_a_of_type_Long);
+          localStringBuilder.append(" category : ");
+          localStringBuilder.append(localObject);
+          QLog.d("Constant", 2, localStringBuilder.toString());
         }
         jdField_b_of_type_JavaUtilList.add(localObject);
       }
@@ -192,32 +168,68 @@ public class Constant
         localObject = localAutoStatusItem.jdField_a_of_type_ComTencentMobileqqOnlinestatusConfigSensor;
         if (localObject == null)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("Constant", 2, "[status][autoMgr] initWithConfig. status: " + localAutoStatusItem.jdField_a_of_type_Long + " sensor null");
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("[status][autoMgr] initWithConfig. status: ");
+            ((StringBuilder)localObject).append(localAutoStatusItem.jdField_a_of_type_Long);
+            ((StringBuilder)localObject).append(" sensor null");
+            QLog.d("Constant", 2, ((StringBuilder)localObject).toString());
           }
         }
         else
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("Constant", 2, "[status][autoMgr] initWithConfig. status: " + localAutoStatusItem.jdField_a_of_type_Long + " sensor: " + localObject);
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("[status][autoMgr] initWithConfig. status: ");
+            localStringBuilder.append(localAutoStatusItem.jdField_a_of_type_Long);
+            localStringBuilder.append(" sensor: ");
+            localStringBuilder.append(localObject);
+            QLog.d("Constant", 2, localStringBuilder.toString());
           }
           switch ((int)localAutoStatusItem.jdField_a_of_type_Long)
           {
           default: 
-            if (QLog.isColorLevel()) {
-              QLog.d("Constant", 2, "[status][autoMgr] initWithConfig. dropped status: " + localAutoStatusItem.jdField_a_of_type_Long + " sensor: " + localObject);
+            if (QLog.isColorLevel())
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("[status][autoMgr] initWithConfig. dropped status: ");
+              localStringBuilder.append(localAutoStatusItem.jdField_a_of_type_Long);
+              localStringBuilder.append(" sensor: ");
+              localStringBuilder.append(localObject);
+              QLog.d("Constant", 2, localStringBuilder.toString());
             }
             break;
-          case 41012: 
-            x = ((Sensor)localObject).jdField_b_of_type_Int;
-            y = ((Sensor)localObject).c;
-            B = ((Sensor)localObject).d;
-            jdField_a_of_type_Int = ((Sensor)localObject).e;
-            jdField_b_of_type_Int = ((Sensor)localObject).f;
+          case 41042: 
+            F = ((Sensor)localObject).o;
+            G = ((Sensor)localObject).p;
+            M = ((Sensor)localObject).q;
+            int i1 = ((Sensor)localObject).t;
+            boolean bool2 = false;
+            if (i1 == 1) {
+              bool1 = true;
+            } else {
+              bool1 = false;
+            }
+            jdField_a_of_type_Boolean = bool1;
+            boolean bool1 = bool2;
+            if (((Sensor)localObject).r == 1) {
+              bool1 = true;
+            }
+            jdField_b_of_type_Boolean = bool1;
+            H = ((Sensor)localObject).s;
+            J = ((Sensor)localObject).u;
+            I = ((Sensor)localObject).v;
+            K = ((Sensor)localObject).w;
+            L = ((Sensor)localObject).x;
             break;
-          case 41013: 
-            z = ((Sensor)localObject).jdField_b_of_type_Int;
-            A = ((Sensor)localObject).c;
+          case 41032: 
+            if ((((Sensor)localObject).jdField_b_of_type_Int >= 0) && (((Sensor)localObject).jdField_b_of_type_Int < 23) && (((Sensor)localObject).c >= 0) && (((Sensor)localObject).c < 23))
+            {
+              D = ((Sensor)localObject).jdField_b_of_type_Int;
+              E = ((Sensor)localObject).c;
+            }
             break;
           case 41031: 
             t = ((Sensor)localObject).jdField_b_of_type_Int;
@@ -237,46 +249,23 @@ public class Constant
             C = ((Sensor)localObject).d;
             N = m * 2;
             break;
-          case 41032: 
-            if ((((Sensor)localObject).jdField_b_of_type_Int >= 0) && (((Sensor)localObject).jdField_b_of_type_Int < 23) && (((Sensor)localObject).c >= 0) && (((Sensor)localObject).c < 23))
-            {
-              D = ((Sensor)localObject).jdField_b_of_type_Int;
-              E = ((Sensor)localObject).c;
-            }
+          case 41013: 
+            z = ((Sensor)localObject).jdField_b_of_type_Int;
+            A = ((Sensor)localObject).c;
             break;
-          case 41042: 
-            F = ((Sensor)localObject).o;
-            G = ((Sensor)localObject).p;
-            M = ((Sensor)localObject).q;
-            if (((Sensor)localObject).t == 1)
-            {
-              bool = true;
-              label747:
-              jdField_a_of_type_Boolean = bool;
-              if (((Sensor)localObject).r != 1) {
-                break label808;
-              }
-            }
-            label808:
-            for (boolean bool = true;; bool = false)
-            {
-              jdField_b_of_type_Boolean = bool;
-              H = ((Sensor)localObject).s;
-              J = ((Sensor)localObject).u;
-              I = ((Sensor)localObject).v;
-              K = ((Sensor)localObject).w;
-              L = ((Sensor)localObject).x;
-              break;
-              bool = false;
-              break label747;
-            }
+          case 41012: 
+            x = ((Sensor)localObject).jdField_b_of_type_Int;
+            y = ((Sensor)localObject).c;
+            B = ((Sensor)localObject).d;
+            jdField_a_of_type_Int = ((Sensor)localObject).e;
+            jdField_b_of_type_Int = ((Sensor)localObject).f;
           }
         }
       }
     }
   }
   
-  static boolean a(long paramLong)
+  public static boolean a(long paramLong)
   {
     Iterator localIterator = jdField_b_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
@@ -289,7 +278,7 @@ public class Constant
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.Constant
  * JD-Core Version:    0.7.0.1
  */

@@ -12,10 +12,12 @@ public class FrameworkMethod
   
   public FrameworkMethod(Method paramMethod)
   {
-    if (paramMethod == null) {
-      throw new NullPointerException("FrameworkMethod cannot be created without an underlying method.");
+    if (paramMethod != null)
+    {
+      this.method = paramMethod;
+      return;
     }
-    this.method = paramMethod;
+    throw new NullPointerException("FrameworkMethod cannot be created without an underlying method.");
   }
   
   private Class<?>[] getParameterTypes()
@@ -83,22 +85,20 @@ public class FrameworkMethod
   
   public boolean isShadowedBy(FrameworkMethod paramFrameworkMethod)
   {
-    if (!paramFrameworkMethod.getName().equals(getName())) {}
-    while (paramFrameworkMethod.getParameterTypes().length != getParameterTypes().length) {
+    if (!paramFrameworkMethod.getName().equals(getName())) {
+      return false;
+    }
+    if (paramFrameworkMethod.getParameterTypes().length != getParameterTypes().length) {
       return false;
     }
     int i = 0;
-    for (;;)
+    while (i < paramFrameworkMethod.getParameterTypes().length)
     {
-      if (i >= paramFrameworkMethod.getParameterTypes().length) {
-        break label65;
-      }
       if (!paramFrameworkMethod.getParameterTypes()[i].equals(getParameterTypes()[i])) {
-        break;
+        return false;
       }
       i += 1;
     }
-    label65:
     return true;
   }
   
@@ -120,36 +120,56 @@ public class FrameworkMethod
   
   public void validatePublicVoid(boolean paramBoolean, List<Throwable> paramList)
   {
-    if (isStatic() != paramBoolean) {
-      if (!paramBoolean) {
-        break label177;
-      }
-    }
-    label177:
-    for (String str = "should";; str = "should not")
+    Object localObject;
+    if (isStatic() != paramBoolean)
     {
-      paramList.add(new Exception("Method " + this.method.getName() + "() " + str + " be static"));
-      if (!isPublic()) {
-        paramList.add(new Exception("Method " + this.method.getName() + "() should be public"));
+      if (paramBoolean) {
+        localObject = "should";
+      } else {
+        localObject = "should not";
       }
-      if (this.method.getReturnType() != Void.TYPE) {
-        paramList.add(new Exception("Method " + this.method.getName() + "() should be void"));
-      }
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Method ");
+      localStringBuilder.append(this.method.getName());
+      localStringBuilder.append("() ");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(" be static");
+      paramList.add(new Exception(localStringBuilder.toString()));
+    }
+    if (!isPublic())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Method ");
+      ((StringBuilder)localObject).append(this.method.getName());
+      ((StringBuilder)localObject).append("() should be public");
+      paramList.add(new Exception(((StringBuilder)localObject).toString()));
+    }
+    if (this.method.getReturnType() != Void.TYPE)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Method ");
+      ((StringBuilder)localObject).append(this.method.getName());
+      ((StringBuilder)localObject).append("() should be void");
+      paramList.add(new Exception(((StringBuilder)localObject).toString()));
     }
   }
   
   public void validatePublicVoidNoArg(boolean paramBoolean, List<Throwable> paramList)
   {
     validatePublicVoid(paramBoolean, paramList);
-    if (this.method.getParameterTypes().length != 0) {
-      paramList.add(new Exception("Method " + this.method.getName() + " should have no parameters"));
+    if (this.method.getParameterTypes().length != 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Method ");
+      localStringBuilder.append(this.method.getName());
+      localStringBuilder.append(" should have no parameters");
+      paramList.add(new Exception(localStringBuilder.toString()));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.runners.model.FrameworkMethod
  * JD-Core Version:    0.7.0.1
  */

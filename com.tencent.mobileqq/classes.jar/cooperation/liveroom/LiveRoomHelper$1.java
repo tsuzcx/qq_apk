@@ -14,8 +14,15 @@ final class LiveRoomHelper$1
   {
     try
     {
-      String str = "https://lme.gamefeeds.qq.com/LmeProxyCgi?data=" + URLEncoder.encode(new StringBuilder().append("{\"module\":\"LME.ReportChannelSvr.ReportChannelObj\",\"method\":\"SdkPluginReport\",\"param\":{\"req\":{\"report\":").append(this.val$reportStr).append("}}}").toString());
-      HttpUtil.openUrl(BaseApplicationImpl.getApplication(), str, "GET", null, null);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("https://lme.gamefeeds.qq.com/LmeProxyCgi?data=");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("{\"module\":\"LME.ReportChannelSvr.ReportChannelObj\",\"method\":\"SdkPluginReport\",\"param\":{\"req\":{\"report\":");
+      localStringBuilder.append(this.val$reportStr);
+      localStringBuilder.append("}}}");
+      ((StringBuilder)localObject).append(URLEncoder.encode(localStringBuilder.toString()));
+      localObject = ((StringBuilder)localObject).toString();
+      HttpUtil.openUrl(BaseApplicationImpl.getApplication(), (String)localObject, "GET", null, null);
       return;
     }
     catch (Exception localException)
@@ -27,7 +34,7 @@ final class LiveRoomHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomHelper.1
  * JD-Core Version:    0.7.0.1
  */

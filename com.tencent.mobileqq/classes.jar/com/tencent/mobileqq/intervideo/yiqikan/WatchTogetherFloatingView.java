@@ -33,37 +33,39 @@ public class WatchTogetherFloatingView
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(getContext()).inflate(2131561086, this, true));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377215));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380449));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370618));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369791));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(getContext()).inflate(2131560950, this, true));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131376676));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379761));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370271));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369481));
   }
   
   private void c()
   {
-    View localView;
-    String str;
     if ((getParent() instanceof FrameLayout))
     {
-      localView = ((FrameLayout)getParent().getParent()).findViewById(2131374874);
+      View localView = ((FrameLayout)getParent().getParent()).findViewById(2131374409);
       if (localView != null)
       {
-        str = getContext().getString(2131699335);
-        switch (this.jdField_a_of_type_Int)
+        String str = getContext().getString(2131699440);
+        int i = this.jdField_a_of_type_Int;
+        if (i != 0)
         {
+          if (i != 1)
+          {
+            if (i == 2) {
+              str = getContext().getString(2131699437);
+            }
+          }
+          else {
+            str = getContext().getString(2131699440);
+          }
         }
+        else {
+          str = getContext().getString(2131699438);
+        }
+        localView.setContentDescription(str);
       }
-    }
-    for (;;)
-    {
-      localView.setContentDescription(str);
-      return;
-      str = getContext().getString(2131699333);
-      continue;
-      str = getContext().getString(2131699335);
-      continue;
-      str = getContext().getString(2131699332);
     }
   }
   
@@ -80,30 +82,41 @@ public class WatchTogetherFloatingView
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
     this.jdField_a_of_type_Int = 2;
     c();
-    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null) {
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl("about:blank");
+    TouchWebView localTouchWebView = this.jdField_a_of_type_ComTencentBizUiTouchWebView;
+    if (localTouchWebView != null) {
+      localTouchWebView.loadUrl("about:blank");
     }
   }
   
   public void a(TouchWebView paramTouchWebView)
   {
-    if ((this.jdField_a_of_type_AndroidViewViewGroup == null) || (paramTouchWebView == null)) {
-      return;
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+    {
+      if (paramTouchWebView == null) {
+        return;
+      }
+      Object localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView;
+      if (localObject != null)
+      {
+        localObject = ((TouchWebView)localObject).getParent();
+        ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+        if (localObject == localViewGroup) {
+          localViewGroup.removeView(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
+        }
+      }
+      paramTouchWebView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(paramTouchWebView, 0);
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView = paramTouchWebView;
     }
-    if ((this.jdField_a_of_type_ComTencentBizUiTouchWebView != null) && (this.jdField_a_of_type_ComTencentBizUiTouchWebView.getParent() == this.jdField_a_of_type_AndroidViewViewGroup)) {
-      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-    }
-    paramTouchWebView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.jdField_a_of_type_AndroidViewViewGroup.addView(paramTouchWebView, 0);
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView = paramTouchWebView;
   }
   
   public void a(String paramString)
   {
     a(true);
-    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null)
+    TouchWebView localTouchWebView = this.jdField_a_of_type_ComTencentBizUiTouchWebView;
+    if (localTouchWebView != null)
     {
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl("about:blank");
+      localTouchWebView.loadUrl("about:blank");
       this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl(paramString);
     }
   }
@@ -116,21 +129,22 @@ public class WatchTogetherFloatingView
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.jdField_a_of_type_Int = 0;
     }
-    for (this.jdField_a_of_type_Int = 0;; this.jdField_a_of_type_Int = 1)
+    else
     {
-      c();
-      return;
       this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingView$UIHandle.sendEmptyMessage(3);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.jdField_a_of_type_Int = 1;
     }
+    c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingView
  * JD-Core Version:    0.7.0.1
  */

@@ -38,34 +38,37 @@ public class MicroPhoneClipImageView
   
   private int a(int paramInt)
   {
-    int j = jdField_a_of_type_ArrayOfInt.length - 2;
+    int[] arrayOfInt = jdField_a_of_type_ArrayOfInt;
+    int k = arrayOfInt.length - 2;
     if (this.b == null)
     {
-      this.b = new int[jdField_a_of_type_ArrayOfInt.length];
-      i = 0;
-      while (i < j)
+      this.b = new int[arrayOfInt.length];
+      int j;
+      for (i = 0; i < k; i = j)
       {
-        this.b[(i + 1)] = (8000 - (j - i) * 7900 / j);
-        i += 1;
+        arrayOfInt = this.b;
+        j = i + 1;
+        arrayOfInt[j] = (8000 - 7900 * (k - i) / k);
       }
-      this.b[0] = 0;
-      this.b[(this.b.length - 1)] = 8000;
+      arrayOfInt = this.b;
+      arrayOfInt[0] = 0;
+      arrayOfInt[(arrayOfInt.length - 1)] = 8000;
     }
     int i = this.b.length - 1;
-    if (i >= 0) {
-      if (paramInt < this.b[i]) {}
-    }
-    for (;;)
+    while (i >= 0)
     {
-      if (i == -1)
-      {
-        return 0;
-        i -= 1;
-        break;
+      if (paramInt >= this.b[i]) {
+        break label126;
       }
-      return i;
-      i = -1;
+      i -= 1;
     }
+    i = -1;
+    label126:
+    paramInt = i;
+    if (i == -1) {
+      paramInt = 0;
+    }
+    return paramInt;
   }
   
   private void a()
@@ -91,7 +94,7 @@ public class MicroPhoneClipImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MicroPhoneClipImageView
  * JD-Core Version:    0.7.0.1
  */

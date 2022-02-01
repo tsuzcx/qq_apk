@@ -4,7 +4,7 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/RoundProgressStyle$DefaultRoundStyle;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/RoundProgressStyle;", "btnTextColor", "", "getBtnTextColor", "()Ljava/lang/String;", "setBtnTextColor", "(Ljava/lang/String;)V", "btnTextSize", "", "getBtnTextSize", "()F", "setBtnTextSize", "(F)V", "pauseRectColor", "getPauseRectColor", "setPauseRectColor", "pauseRectWidth", "getPauseRectWidth", "setPauseRectWidth", "progressColorHighLight", "getProgressColorHighLight", "setProgressColorHighLight", "progressColorNormal", "getProgressColorNormal", "setProgressColorNormal", "progressHighLightWidth", "getProgressHighLightWidth", "setProgressHighLightWidth", "progressWidthNormal", "getProgressWidthNormal", "setProgressWidthNormal", "roundSize", "getRoundSize", "setRoundSize", "startAngle", "", "getStartAngle", "()I", "setStartAngle", "(I)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/RoundProgressStyle$DefaultRoundStyle;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/RoundProgressStyle;", "btnTextColor", "", "getBtnTextColor", "()Ljava/lang/String;", "setBtnTextColor", "(Ljava/lang/String;)V", "btnTextSize", "", "getBtnTextSize", "()F", "setBtnTextSize", "(F)V", "pauseRectColor", "getPauseRectColor", "setPauseRectColor", "pauseRectWidth", "getPauseRectWidth", "setPauseRectWidth", "progressColorHighLight", "getProgressColorHighLight", "setProgressColorHighLight", "progressColorNormal", "getProgressColorNormal", "setProgressColorNormal", "progressHighLightWidth", "getProgressHighLightWidth", "setProgressHighLightWidth", "progressWidthNormal", "getProgressWidthNormal", "setProgressWidthNormal", "roundSize", "getRoundSize", "setRoundSize", "startAngle", "", "getStartAngle", "()I", "setStartAngle", "(I)V", "kandian-ad-api_release"}, k=1, mv={1, 1, 16})
 final class RoundProgressStyle$DefaultRoundStyle
   extends RoundProgressStyle
 {
@@ -138,7 +138,7 @@ final class RoundProgressStyle$DefaultRoundStyle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.RoundProgressStyle.DefaultRoundStyle
  * JD-Core Version:    0.7.0.1
  */

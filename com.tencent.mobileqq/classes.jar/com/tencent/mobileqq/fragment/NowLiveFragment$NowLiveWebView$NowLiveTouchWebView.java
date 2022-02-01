@@ -19,50 +19,49 @@ public class NowLiveFragment$NowLiveWebView$NowLiveTouchWebView
     float f = paramMotionEvent.getY();
     f = this.a.jdField_a_of_type_Int + f;
     paramMotionEvent = this.a.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.a.iterator();
-    do
+    while (paramMotionEvent.hasNext())
     {
-      if (!paramMotionEvent.hasNext()) {
-        break;
-      }
       paramView = (Rect)paramMotionEvent.next();
-    } while ((f <= paramView.top) || (f >= paramView.bottom));
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
+      if ((f > paramView.top) && (f < paramView.bottom))
       {
-        if (j != 0) {
-          break label130;
-        }
+        i = 1;
+        break label92;
+      }
+    }
+    int i = 0;
+    label92:
+    if (i != 0) {
+      if (j == 0)
+      {
         paramMotionEvent = (ViewGroup)getParent();
         if (paramMotionEvent != null)
         {
           paramMotionEvent.requestDisallowInterceptTouchEvent(true);
-          if (QLog.isDevelopLevel()) {
+          if (QLog.isDevelopLevel())
+          {
             QLog.e("CustomWebView", 4, "NowLiveFrgmentWebView onTouchEvent action down requestDisallowInterceptTouchEvent true");
+            return bool;
           }
         }
       }
-      label130:
-      do
+      else if ((j == 3) || (j == 1))
       {
-        do
+        paramMotionEvent = (ViewGroup)getParent();
+        if (paramMotionEvent != null)
         {
-          do
-          {
-            return bool;
-          } while ((j != 3) && (j != 1));
-          paramMotionEvent = (ViewGroup)getParent();
-        } while (paramMotionEvent == null);
-        paramMotionEvent.requestDisallowInterceptTouchEvent(false);
-      } while (!QLog.isDevelopLevel());
-      QLog.e("CustomWebView", 4, "NowLiveFrgmentWebView onTouchEvent action cancel or up requestDisallowInterceptTouchEvent false");
-      return bool;
+          paramMotionEvent.requestDisallowInterceptTouchEvent(false);
+          if (QLog.isDevelopLevel()) {
+            QLog.e("CustomWebView", 4, "NowLiveFrgmentWebView onTouchEvent action cancel or up requestDisallowInterceptTouchEvent false");
+          }
+        }
+      }
     }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NowLiveFragment.NowLiveWebView.NowLiveTouchWebView
  * JD-Core Version:    0.7.0.1
  */

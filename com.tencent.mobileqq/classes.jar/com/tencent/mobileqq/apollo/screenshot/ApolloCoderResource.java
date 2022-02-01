@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.apollo.screenshot;
 
-import com.tencent.mobileqq.apollo.api.player.model.BusinessConfig;
+import com.tencent.mobileqq.apollo.player.model.BusinessConfig;
+import com.tencent.mobileqq.cmshow.engine.script.IScriptService;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -9,18 +10,19 @@ import kotlin.NoWhenBranchMatchedException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/screenshot/ApolloCoderResource;", "", "taskId", "", "uniKey", "", "frameTime", "type", "Lcom/tencent/mobileqq/apollo/screenshot/EncodeType;", "config", "Lcom/tencent/mobileqq/apollo/api/player/model/BusinessConfig;", "recordFrameCount", "(ILjava/lang/String;ILcom/tencent/mobileqq/apollo/screenshot/EncodeType;Lcom/tencent/mobileqq/apollo/api/player/model/BusinessConfig;I)V", "getConfig", "()Lcom/tencent/mobileqq/apollo/api/player/model/BusinessConfig;", "encoder", "Lcom/tencent/mobileqq/apollo/screenshot/IApolloScreenshotEncoder;", "getEncoder", "()Lcom/tencent/mobileqq/apollo/screenshot/IApolloScreenshotEncoder;", "errorCode", "getErrorCode", "()I", "setErrorCode", "(I)V", "getFrameTime", "gifFilePath", "getGifFilePath", "()Ljava/lang/String;", "outputFilePath", "getOutputFilePath", "getTaskId", "tempFilePath", "getTempFilePath", "getType", "()Lcom/tencent/mobileqq/apollo/screenshot/EncodeType;", "getUniKey", "addFrame", "", "forceStopRecord", "", "getRecordFrameCount", "initTempFilePath", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/screenshot/ApolloCoderResource;", "", "taskId", "", "uniKey", "", "frameTime", "type", "Lcom/tencent/mobileqq/apollo/screenshot/EncodeType;", "config", "Lcom/tencent/mobileqq/apollo/player/model/BusinessConfig;", "scriptService", "Lcom/tencent/mobileqq/cmshow/engine/script/IScriptService;", "recordFrameCount", "(ILjava/lang/String;ILcom/tencent/mobileqq/apollo/screenshot/EncodeType;Lcom/tencent/mobileqq/apollo/player/model/BusinessConfig;Lcom/tencent/mobileqq/cmshow/engine/script/IScriptService;I)V", "getConfig", "()Lcom/tencent/mobileqq/apollo/player/model/BusinessConfig;", "encoder", "Lcom/tencent/mobileqq/apollo/screenshot/IApolloScreenshotEncoder;", "getEncoder", "()Lcom/tencent/mobileqq/apollo/screenshot/IApolloScreenshotEncoder;", "errorCode", "getErrorCode", "()I", "setErrorCode", "(I)V", "getFrameTime", "gifFilePath", "getGifFilePath", "()Ljava/lang/String;", "outputFilePath", "getOutputFilePath", "getTaskId", "tempFilePath", "getTempFilePath", "getType", "()Lcom/tencent/mobileqq/apollo/screenshot/EncodeType;", "getUniKey", "addFrame", "", "forceStopRecord", "", "getRecordFrameCount", "initTempFilePath", "Companion", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public final class ApolloCoderResource
 {
   public static final ApolloCoderResource.Companion a;
   private static String e;
   private int jdField_a_of_type_Int;
   @NotNull
-  private final BusinessConfig jdField_a_of_type_ComTencentMobileqqApolloApiPlayerModelBusinessConfig;
+  private final BusinessConfig jdField_a_of_type_ComTencentMobileqqApolloPlayerModelBusinessConfig;
   @NotNull
   private final EncodeType jdField_a_of_type_ComTencentMobileqqApolloScreenshotEncodeType;
   @NotNull
   private final IApolloScreenshotEncoder jdField_a_of_type_ComTencentMobileqqApolloScreenshotIApolloScreenshotEncoder;
+  private final IScriptService jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptIScriptService;
   @NotNull
   private final String jdField_a_of_type_JavaLangString;
   private final int jdField_b_of_type_Int;
@@ -39,35 +41,52 @@ public final class ApolloCoderResource
     ApolloCoderResource.Companion.a(jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloCoderResource$Companion);
   }
   
-  public ApolloCoderResource(int paramInt1, @NotNull String paramString, int paramInt2, @NotNull EncodeType paramEncodeType, @NotNull BusinessConfig paramBusinessConfig, int paramInt3)
+  public ApolloCoderResource(int paramInt1, @NotNull String paramString, int paramInt2, @NotNull EncodeType paramEncodeType, @NotNull BusinessConfig paramBusinessConfig, @NotNull IScriptService paramIScriptService, int paramInt3)
   {
     this.jdField_b_of_type_Int = paramInt1;
     this.jdField_d_of_type_JavaLangString = paramString;
     this.jdField_c_of_type_Int = paramInt2;
     this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotEncodeType = paramEncodeType;
-    this.jdField_a_of_type_ComTencentMobileqqApolloApiPlayerModelBusinessConfig = paramBusinessConfig;
+    this.jdField_a_of_type_ComTencentMobileqqApolloPlayerModelBusinessConfig = paramBusinessConfig;
+    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptIScriptService = paramIScriptService;
     this.jdField_d_of_type_Int = paramInt3;
-    this.jdField_a_of_type_JavaLangString = (e + File.separator + "cmshowTempPics" + File.separator + this.jdField_d_of_type_JavaLangString);
+    paramString = new StringBuilder();
+    paramString.append(e);
+    paramString.append(File.separator);
+    paramString.append("cmshowTempPics");
+    paramString.append(File.separator);
+    paramString.append(this.jdField_d_of_type_JavaLangString);
+    this.jdField_a_of_type_JavaLangString = paramString.toString();
     this.jdField_b_of_type_JavaLangString = jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloCoderResource$Companion.a(this.jdField_d_of_type_JavaLangString);
-    this.jdField_c_of_type_JavaLangString = (e + File.separator + "cmshowGifDatas" + File.separator + this.jdField_d_of_type_JavaLangString);
+    paramString = new StringBuilder();
+    paramString.append(e);
+    paramString.append(File.separator);
+    paramString.append("cmshowGifDatas");
+    paramString.append(File.separator);
+    paramString.append(this.jdField_d_of_type_JavaLangString);
+    this.jdField_c_of_type_JavaLangString = paramString.toString();
     paramString = this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotEncodeType;
-    switch (ApolloCoderResource.WhenMappings.a[paramString.ordinal()])
+    paramInt1 = ApolloCoderResource.WhenMappings.a[paramString.ordinal()];
+    if (paramInt1 != 1)
     {
-    default: 
-      throw new NoWhenBranchMatchedException();
-    case 1: 
+      if (paramInt1 != 2)
+      {
+        if (paramInt1 == 3) {
+          paramString = (IApolloScreenshotEncoder)new ApolloFrameEncoder(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptIScriptService, this.jdField_a_of_type_ComTencentMobileqqApolloPlayerModelBusinessConfig, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int);
+        } else {
+          throw new NoWhenBranchMatchedException();
+        }
+      }
+      else {
+        paramString = (IApolloScreenshotEncoder)new ApolloGifEncoder(this.jdField_a_of_type_ComTencentMobileqqApolloPlayerModelBusinessConfig, this.jdField_c_of_type_JavaLangString);
+      }
+    }
+    else {
       paramString = (IApolloScreenshotEncoder)new ApolloApngEncoder();
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotIApolloScreenshotEncoder = paramString;
-      b();
-      this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotIApolloScreenshotEncoder.a();
-      return;
-      paramString = (IApolloScreenshotEncoder)new ApolloGifEncoder(this.jdField_a_of_type_ComTencentMobileqqApolloApiPlayerModelBusinessConfig, this.jdField_c_of_type_JavaLangString);
-      continue;
-      paramString = (IApolloScreenshotEncoder)new ApolloFrameEncoder(this.jdField_a_of_type_ComTencentMobileqqApolloApiPlayerModelBusinessConfig, this.jdField_a_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotIApolloScreenshotEncoder = paramString;
+    b();
+    this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotIApolloScreenshotEncoder.a();
   }
   
   private final void b()
@@ -79,23 +98,15 @@ public final class ApolloCoderResource
         str = this.jdField_c_of_type_JavaLangString;
       }
       File localFile = new File(str);
-      if (localFile.exists())
-      {
-        if (!localFile.isDirectory()) {
-          break label60;
-        }
-        FileUtils.a(str);
-      }
-      for (;;)
-      {
-        localFile.mkdir();
-        FileUtils.c(this.jdField_b_of_type_JavaLangString);
-        return;
-        label60:
-        if (localFile.isFile()) {
+      if (localFile.exists()) {
+        if (localFile.isDirectory()) {
+          FileUtils.deleteDirectory(str);
+        } else if (localFile.isFile()) {
           localFile.delete();
         }
       }
+      localFile.mkdir();
+      FileUtils.createFileIfNotExits(this.jdField_b_of_type_JavaLangString);
       return;
     }
     catch (Throwable localThrowable)
@@ -107,12 +118,6 @@ public final class ApolloCoderResource
   public final int a()
   {
     return this.jdField_a_of_type_Int;
-  }
-  
-  @NotNull
-  public final EncodeType a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotEncodeType;
   }
   
   @NotNull
@@ -171,7 +176,7 @@ public final class ApolloCoderResource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.screenshot.ApolloCoderResource
  * JD-Core Version:    0.7.0.1
  */

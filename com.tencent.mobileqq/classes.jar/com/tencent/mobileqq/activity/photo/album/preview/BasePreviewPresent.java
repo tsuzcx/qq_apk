@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.richmediabrowser.presenter.BrowserBasePresenter;
 import com.tencent.widget.AdapterView;
 import java.io.File;
 import java.net.MalformedURLException;
@@ -12,20 +13,14 @@ import java.net.URI;
 import java.net.URL;
 
 public class BasePreviewPresent
+  extends BrowserBasePresenter
 {
-  PreviewBean mBean;
-  
-  public BasePreviewPresent(PreviewBean paramPreviewBean)
-  {
-    this.mBean = paramPreviewBean;
-  }
-  
   Context getContext()
   {
     return BaseApplication.getContext();
   }
   
-  protected URL getFileUrl(File paramFile)
+  public URL getFileUrl(File paramFile)
   {
     if (paramFile == null) {
       return null;
@@ -71,7 +66,7 @@ public class BasePreviewPresent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.preview.BasePreviewPresent
  * JD-Core Version:    0.7.0.1
  */

@@ -53,18 +53,18 @@ public final class AudioConfigurationModel
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof AudioConfigurationModel))
       {
         paramObject = (AudioConfigurationModel)paramObject;
-        if ((Float.compare(this.volume, paramObject.volume) != 0) || (!Intrinsics.areEqual(this.startVolumeEdgeModel, paramObject.startVolumeEdgeModel)) || (!Intrinsics.areEqual(this.endVolumeEdgeModel, paramObject.endVolumeEdgeModel))) {}
+        if ((Float.compare(this.volume, paramObject.volume) == 0) && (Intrinsics.areEqual(this.startVolumeEdgeModel, paramObject.startVolumeEdgeModel)) && (Intrinsics.areEqual(this.endVolumeEdgeModel, paramObject.endVolumeEdgeModel))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @Nullable
@@ -86,29 +86,39 @@ public final class AudioConfigurationModel
   
   public int hashCode()
   {
-    int j = 0;
     int k = Float.floatToIntBits(this.volume);
     VolumeEdgeModel localVolumeEdgeModel = this.startVolumeEdgeModel;
-    if (localVolumeEdgeModel != null) {}
-    for (int i = localVolumeEdgeModel.hashCode();; i = 0)
-    {
-      localVolumeEdgeModel = this.endVolumeEdgeModel;
-      if (localVolumeEdgeModel != null) {
-        j = localVolumeEdgeModel.hashCode();
-      }
-      return (i + k * 31) * 31 + j;
+    int j = 0;
+    int i;
+    if (localVolumeEdgeModel != null) {
+      i = localVolumeEdgeModel.hashCode();
+    } else {
+      i = 0;
     }
+    localVolumeEdgeModel = this.endVolumeEdgeModel;
+    if (localVolumeEdgeModel != null) {
+      j = localVolumeEdgeModel.hashCode();
+    }
+    return (k * 31 + i) * 31 + j;
   }
   
   @NotNull
   public String toString()
   {
-    return "AudioConfigurationModel(volume=" + this.volume + ", startVolumeEdgeModel=" + this.startVolumeEdgeModel + ", endVolumeEdgeModel=" + this.endVolumeEdgeModel + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AudioConfigurationModel(volume=");
+    localStringBuilder.append(this.volume);
+    localStringBuilder.append(", startVolumeEdgeModel=");
+    localStringBuilder.append(this.startVolumeEdgeModel);
+    localStringBuilder.append(", endVolumeEdgeModel=");
+    localStringBuilder.append(this.endVolumeEdgeModel);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.resource.AudioConfigurationModel
  * JD-Core Version:    0.7.0.1
  */

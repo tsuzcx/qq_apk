@@ -41,8 +41,18 @@ public class b
   
   public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SNISocketFactory", 2, "createSocket " + paramSocket.toString() + " host:" + paramString + " port:" + paramInt + " autoClose:" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("createSocket ");
+      ((StringBuilder)localObject).append(paramSocket.toString());
+      ((StringBuilder)localObject).append(" host:");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" port:");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" autoClose:");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.i("SNISocketFactory", 2, ((StringBuilder)localObject).toString());
     }
     paramSocket = (SSLSocket)this.b.createSocket(paramSocket, paramString, paramInt, paramBoolean);
     paramSocket.setEnabledProtocols(paramSocket.getSupportedProtocols());
@@ -53,29 +63,42 @@ public class b
       }
       this.b.setHostname(paramSocket, paramString);
     }
-    for (;;)
+    else if (QLog.isColorLevel())
     {
-      SSLSession localSSLSession = paramSocket.getSession();
-      if (a.verify(paramString, localSSLSession)) {
-        break;
-      }
-      throw new SSLPeerUnverifiedException("Cannot verify hostname: " + paramString);
-      if (QLog.isColorLevel()) {
-        QLog.i("SNISocketFactory", 2, "No documented SNI support on Android <4.2, trying with reflection");
-      }
-      try
-      {
-        paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { paramString });
-      }
-      catch (Exception localException) {}
-      if (QLog.isColorLevel()) {
-        QLog.i("SNISocketFactory", 2, "SNI not useable");
-      }
+      QLog.i("SNISocketFactory", 2, "No documented SNI support on Android <4.2, trying with reflection");
+    }
+    try
+    {
+      paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { paramString });
+    }
+    catch (Exception localException)
+    {
+      label196:
+      break label196;
     }
     if (QLog.isColorLevel()) {
-      QLog.i("SNISocketFactory", 2, "Established " + localException.getProtocol() + " connection with " + localException.getPeerHost() + " using " + localException.getCipherSuite());
+      QLog.i("SNISocketFactory", 2, "SNI not useable");
     }
-    return paramSocket;
+    Object localObject = paramSocket.getSession();
+    if (a.verify(paramString, (SSLSession)localObject))
+    {
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("Established ");
+        paramString.append(((SSLSession)localObject).getProtocol());
+        paramString.append(" connection with ");
+        paramString.append(((SSLSession)localObject).getPeerHost());
+        paramString.append(" using ");
+        paramString.append(((SSLSession)localObject).getCipherSuite());
+        QLog.i("SNISocketFactory", 2, paramString.toString());
+      }
+      return paramSocket;
+    }
+    paramSocket = new StringBuilder();
+    paramSocket.append("Cannot verify hostname: ");
+    paramSocket.append(paramString);
+    throw new SSLPeerUnverifiedException(paramSocket.toString());
   }
   
   public boolean isSecure(Socket paramSocket)
@@ -88,7 +111,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.patch.b
  * JD-Core Version:    0.7.0.1
  */

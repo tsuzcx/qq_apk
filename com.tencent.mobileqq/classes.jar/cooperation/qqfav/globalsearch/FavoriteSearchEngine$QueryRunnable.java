@@ -20,37 +20,50 @@ class FavoriteSearchEngine$QueryRunnable
   public void run()
   {
     Object localObject1 = FavoriteSearchEngine.a(this.this$0).getApplication().getContentResolver();
-    ??? = Uri.parse("content://qq.favorites/global_search/" + FavoriteSearchEngine.a(this.this$0).getAccount());
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("content://qq.favorites/global_search/");
+    ((StringBuilder)???).append(FavoriteSearchEngine.a(this.this$0).getAccount());
+    ??? = Uri.parse(((StringBuilder)???).toString());
+    Object localObject2;
     try
     {
-      localObject1 = ((ContentResolver)localObject1).query((Uri)???, null, null, new String[] { this.jdField_a_of_type_JavaLangString, "" + this.jdField_a_of_type_Int, "" + this.jdField_a_of_type_Long, "" + this.jdField_a_of_type_Boolean }, null);
+      String str = this.jdField_a_of_type_JavaLangString;
+      Object localObject5 = new StringBuilder();
+      ((StringBuilder)localObject5).append("");
+      ((StringBuilder)localObject5).append(this.jdField_a_of_type_Int);
+      localObject5 = ((StringBuilder)localObject5).toString();
+      Object localObject6 = new StringBuilder();
+      ((StringBuilder)localObject6).append("");
+      ((StringBuilder)localObject6).append(this.jdField_a_of_type_Long);
+      localObject6 = ((StringBuilder)localObject6).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localObject1 = ((ContentResolver)localObject1).query((Uri)???, null, null, new String[] { str, localObject5, localObject6, localStringBuilder.toString() }, null);
     }
     catch (Exception localException)
     {
-      synchronized (FavoriteSearchEngine.a(this.this$0))
+      localException.printStackTrace();
+      localObject2 = null;
+    }
+    synchronized (FavoriteSearchEngine.a(this.this$0))
+    {
+      if (FavoriteSearchEngine.a(this.this$0) == Thread.currentThread())
       {
-        if (FavoriteSearchEngine.a(this.this$0) == Thread.currentThread())
-        {
-          this.jdField_a_of_type_AndroidDatabaseCursor = ((Cursor)localObject1);
-          FavoriteSearchEngine.a(this.this$0).notify();
-        }
-        Object localObject2;
-        while (localObject2 == null)
-        {
-          return;
-          localException = localException;
-          localException.printStackTrace();
-          localObject2 = null;
-          break;
-        }
+        this.jdField_a_of_type_AndroidDatabaseCursor = localObject2;
+        FavoriteSearchEngine.a(this.this$0).notify();
+      }
+      else if (localObject2 != null)
+      {
         localObject2.close();
       }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqfav.globalsearch.FavoriteSearchEngine.QueryRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.tencent.avgame.adapter.GamePKResultRankAdapter;
 import com.tencent.avgame.business.handler.UserInfoHandler;
 import com.tencent.avgame.gamelogic.data.SurvivalPkResultInfo.Pair;
-import com.tencent.avgame.util.AVGameUtils;
+import com.tencent.avgame.util.AVGameUtil;
 import com.tencent.avgame.util.QrCodeUtil;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.util.UiThreadUtil;
@@ -79,89 +79,110 @@ public class AVGamePKPosterView
   
   private void b(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentAvgameUiAVGameSplitNumberView != null) && (this.jdField_a_of_type_ComTencentAvgameUiAVGameSplitNumberView.getVisibility() == 0)) {
+    AVGameSplitNumberView localAVGameSplitNumberView = this.jdField_a_of_type_ComTencentAvgameUiAVGameSplitNumberView;
+    if ((localAVGameSplitNumberView != null) && (localAVGameSplitNumberView.getVisibility() == 0)) {
       this.jdField_a_of_type_ComTencentAvgameUiAVGameSplitNumberView.a(paramInt);
     }
   }
   
   private boolean b(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      paramString = QrCodeUtil.a(paramString, 98, -16777216, 0, Bitmap.Config.ARGB_8888);
-    } while ((paramString == null) || (paramString.isRecycled()));
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramString);
-    return true;
+    }
+    paramString = QrCodeUtil.a(paramString, 98, -16777216, 0, Bitmap.Config.ARGB_8888);
+    if (paramString != null)
+    {
+      if (paramString.isRecycled()) {
+        return false;
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramString);
+      return true;
+    }
+    return false;
   }
   
   public String a()
   {
-    String str = UUID.randomUUID().toString() + ".png";
-    return AppConstants.SDCARD_FILE_SAVE_TMP_PATH + File.separator + str;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(UUID.randomUUID().toString());
+    ((StringBuilder)localObject).append(".png");
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_FILE_SAVE_TMP_PATH);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append((String)localObject);
+    return localStringBuilder.toString();
   }
   
   protected void a()
   {
-    LayoutInflater.from(getContext()).inflate(2131558761, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373405));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131373421));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373417));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373414));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373415));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131373413));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373412));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373399));
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373401));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373410));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131373411));
-    this.jdField_a_of_type_ComTencentAvgameUiAVGameSplitNumberView = ((AVGameSplitNumberView)findViewById(2131373420));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373419));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373400));
-    this.f = ((ImageView)findViewById(2131373408));
-    this.g = ((ImageView)findViewById(2131373423));
+    LayoutInflater.from(getContext()).inflate(2131558660, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372985));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131373001));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372997));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372994));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372995));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131372993));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372992));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372979));
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372981));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372990));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131372991));
+    this.jdField_a_of_type_ComTencentAvgameUiAVGameSplitNumberView = ((AVGameSplitNumberView)findViewById(2131373000));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372999));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372980));
+    this.f = ((ImageView)findViewById(2131372988));
+    this.g = ((ImageView)findViewById(2131373003));
   }
   
   public void a(int paramInt)
   {
-    Bitmap localBitmap = AVGameUtils.a("avgame_pk_result_win2@2x.png");
-    if (localBitmap != null) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(localBitmap));
+    Object localObject = AVGameUtil.a("avgame_pk_result_win2@2x.png");
+    if (localObject != null) {
+      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject));
     }
-    localBitmap = AVGameUtils.a("avgame_pk_result_win1@2x.png");
-    if (localBitmap != null) {
-      this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(localBitmap));
+    localObject = AVGameUtil.a("avgame_pk_result_win1@2x.png");
+    if (localObject != null) {
+      this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject));
     }
-    localBitmap = AVGameUtils.a("avgame_pk_result_footing@2x.png");
-    if (localBitmap != null) {
-      this.jdField_d_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(localBitmap));
+    localObject = AVGameUtil.a("avgame_pk_result_footing@2x.png");
+    if (localObject != null) {
+      this.jdField_d_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject));
     }
     b(1);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText("/" + paramInt);
+    localObject = this.jdField_c_of_type_AndroidWidgetTextView;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("/");
+    localStringBuilder.append(paramInt);
+    ((TextView)localObject).setText(localStringBuilder.toString());
   }
   
   public void a(int paramInt1, int paramInt2)
   {
     this.g.setVisibility(0);
-    Bitmap localBitmap = AVGameUtils.a("avgame_pk_result_fail_spider@2x.png");
-    if (localBitmap != null) {
-      this.g.setBackgroundDrawable(new BitmapDrawable(localBitmap));
+    Object localObject = AVGameUtil.a("avgame_pk_result_fail_spider@2x.png");
+    if (localObject != null) {
+      this.g.setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject));
     }
-    localBitmap = AVGameUtils.a("avgame_pk_result_fail2@2x.png");
-    if (localBitmap != null) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(localBitmap));
+    localObject = AVGameUtil.a("avgame_pk_result_fail2@2x.png");
+    if (localObject != null) {
+      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject));
     }
-    localBitmap = AVGameUtils.a("avgame_pk_result_fail1@2x.png");
-    if (localBitmap != null) {
-      this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(localBitmap));
+    localObject = AVGameUtil.a("avgame_pk_result_fail1@2x.png");
+    if (localObject != null) {
+      this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject));
     }
-    localBitmap = AVGameUtils.a("avgame_pk_result_footing2@2x.png");
-    if (localBitmap != null) {
-      this.jdField_d_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(localBitmap));
+    localObject = AVGameUtil.a("avgame_pk_result_footing2@2x.png");
+    if (localObject != null) {
+      this.jdField_d_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject));
     }
     b(paramInt1);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText("/" + paramInt2);
+    localObject = this.jdField_c_of_type_AndroidWidgetTextView;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("/");
+    localStringBuilder.append(paramInt2);
+    ((TextView)localObject).setText(localStringBuilder.toString());
   }
   
   public void a(UserInfoHandler paramUserInfoHandler, String paramString, Bitmap paramBitmap)
@@ -176,17 +197,18 @@ public class AVGamePKPosterView
     if (paramString != null) {
       this.jdField_e_of_type_AndroidWidgetTextView.setText(paramString);
     }
-    paramString = AVGameUtils.a("avgame_room_bg@2x.png");
+    paramString = AVGameUtil.a("avgame_room_bg@2x.png");
     if (paramString != null) {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(new BitmapDrawable(paramString));
     }
-    paramString = AVGameUtils.a("avgame_pk_poster_logo@2x.png");
+    paramString = AVGameUtil.a("avgame_pk_poster_logo@2x.png");
     if (paramString != null) {
       this.f.setBackgroundDrawable(new BitmapDrawable(paramString));
     }
     this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler = paramUserInfoHandler;
     this.jdField_a_of_type_ComTencentAvgameUiAVGameSplitNumberView.setDimension(98, 134);
-    this.jdField_a_of_type_ComTencentAvgameUiAVGameSplitNumberView.setNumDrawable(this.jdField_a_of_type_ComTencentAvgameUiAVGameSplitNumberView.a("avgame_pk_result_num%d@2x.png"));
+    paramUserInfoHandler = this.jdField_a_of_type_ComTencentAvgameUiAVGameSplitNumberView;
+    paramUserInfoHandler.setNumDrawable(paramUserInfoHandler.a("avgame_pk_result_num%d@2x.png"));
   }
   
   public void a(String paramString)
@@ -201,8 +223,9 @@ public class AVGamePKPosterView
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentAvgameAdapterGamePKResultRankAdapter != null) {
-      this.jdField_a_of_type_ComTencentAvgameAdapterGamePKResultRankAdapter.a(a(this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler, this.jdField_a_of_type_ComTencentAvgameAdapterGamePKResultRankAdapter.a()));
+    GamePKResultRankAdapter localGamePKResultRankAdapter = this.jdField_a_of_type_ComTencentAvgameAdapterGamePKResultRankAdapter;
+    if (localGamePKResultRankAdapter != null) {
+      localGamePKResultRankAdapter.a(a(this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler, localGamePKResultRankAdapter.a()));
     }
   }
   
@@ -213,7 +236,7 @@ public class AVGamePKPosterView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.ui.AVGamePKPosterView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,53 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 class PublicAccountChatPie$19
-  implements View.OnClickListener
+  implements Runnable
 {
-  PublicAccountChatPie$19(PublicAccountChatPie paramPublicAccountChatPie) {}
+  PublicAccountChatPie$19(PublicAccountChatPie paramPublicAccountChatPie, List paramList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg != null) {
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8004EFC", "0X8004EFC", 0, 0, "", "", "" + this.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.msgId, "");
+    try
+    {
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext())
+      {
+        ChatMessage localChatMessage = (ChatMessage)localIterator.next();
+        this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localChatMessage.uniseq, "extStr", localChatMessage.extStr);
+        if (QLog.isColorLevel())
+        {
+          String str = this.this$0.b;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("saveReadedToDB uin=");
+          localStringBuilder.append(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(" uniseq=");
+          localStringBuilder.append(localChatMessage.uniseq);
+          localStringBuilder.append(" extstr=");
+          localStringBuilder.append(localChatMessage.extStr);
+          QLog.d(str, 2, localStringBuilder.toString());
+        }
+      }
+      return;
     }
-    this.a.z();
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (Exception localException)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d(this.this$0.b, 4, localException.getMessage());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.19
  * JD-Core Version:    0.7.0.1
  */

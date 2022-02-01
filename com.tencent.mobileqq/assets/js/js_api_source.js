@@ -50,6 +50,7 @@
       var typeArray = [];
       var method = paramsArray.shift();
       var n = paramsArray.length;
+      var callbackFunc;
       for (var i = 0; i < n; i++) {
          var params = paramsArray[i];
          var type = typeof params;
@@ -58,17 +59,15 @@
          } else {
             typeArray[typeArray.length] = type;
          }
-         if (type == "function") {
-            var d = T.callBackQueue.length;
-            T.callBackQueue[d] = params;
-            paramsArray[i] = d;
-         }
-            if(type == 'object'){
-                if(params.onCallback){
-                    T.callBackQueue[method] = params.onCallback;
-                }
-                paramsArray[i] = JSON.stringify(params);
+         if(type == 'object'){
+            if(params.onCallback){
+//                T.callBackQueue[method] = params.onCallback;
+                callbackFunc = gFuncCallbackId().toString(); //使用自增id 解决多次调用回调callback 为最后一个的问题
+                T.callBackQueue[callbackFunc] = params.onCallback;
+                params.callbackId = callbackFunc;
             }
+            paramsArray[i] = JSON.stringify(params);
+         }
       }
       return JSON.stringify({
          method: method,
@@ -77,6 +76,43 @@
          instanceName: publicName
       })
    }
+
+    /**
+    * 全局自增id
+    **/
+   function funcCallbackId(){
+       var currentId = 0;
+       return function (){
+           return ++currentId;
+       }
+   }
+
+   var gFuncCallbackId = funcCallbackId();
+
+    /**
+    * 判断是否支持大同上报
+    **/
+    T["isSupport"] = function() {
+       return window.DTJsBridgeInterface && window.DTJsBridgeInterface.bridgeCall;
+    }
+
+    /**
+     * android >4.2使用addJavascriptInterface方式通信
+     */
+    function bridgeCall() {
+      var paramsArray = S.call(arguments, 0);
+      var jsonStr = 'DtJsBridge://' + arrayToJsonString(paramsArray);
+      if(window.DTJsBridgeInterface && window.DTJsBridgeInterface.bridgeCall) {
+          var jsonResult = window.DTJsBridgeInterface.bridgeCall(jsonStr);
+          var re = JSON.parse(jsonResult);
+          if (re.code != 200) {
+              throw "call error, code:" + re.code + ", message:" + re.result;
+          }
+          return re.result;
+      } else {
+          throw "resource not ready, use method after isSupport() return true"
+      }
+    }
 
    /**
     * 通过prompt调用Java对象方法
@@ -107,7 +143,7 @@
    if (isAndroid() && typeof context[publicName] == "undefined" && !context[publicName]) {
       declaredPublicMethods.forEach(function(d) {
          T[d] = function() {
-                return promptCall.apply(T, [d].concat(S.call(arguments, 0)));
+                return bridgeCall.apply(T, [d].concat(S.call(arguments, 0)));
          }
       });
 

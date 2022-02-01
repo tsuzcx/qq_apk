@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troop.homework.config;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.qphone.base.util.QLog;
-import javax.annotation.Nullable;
 
 public class PublishHwkThirdPartyEntryConfigProcessor
   extends IQConfigProcessor<PublishHwkThirdPartyEntryConfig>
@@ -12,7 +12,10 @@ public class PublishHwkThirdPartyEntryConfigProcessor
   @NonNull
   public PublishHwkThirdPartyEntryConfig a(int paramInt)
   {
-    QLog.d("PublishHwkThirdPartyEntryConfig.config", 2, "migrateOldOrDefaultContent, type: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("migrateOldOrDefaultContent, type: ");
+    localStringBuilder.append(paramInt);
+    QLog.d("PublishHwkThirdPartyEntryConfig.config", 2, localStringBuilder.toString());
     return new PublishHwkThirdPartyEntryConfig();
   }
   
@@ -49,7 +52,10 @@ public class PublishHwkThirdPartyEntryConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.d("PublishHwkThirdPartyEntryConfig.config", 1, "onReqFailed, failCode = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReqFailed, failCode = ");
+    localStringBuilder.append(paramInt);
+    QLog.d("PublishHwkThirdPartyEntryConfig.config", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -59,7 +65,7 @@ public class PublishHwkThirdPartyEntryConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.config.PublishHwkThirdPartyEntryConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

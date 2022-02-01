@@ -50,8 +50,8 @@ public class NumberRollFilter
   
   private static int createProgram(String paramString1, String paramString2)
   {
-    int i = 0;
     int k = loadShader(35633, paramString1);
+    int i = 0;
     if (k == 0) {
       return 0;
     }
@@ -79,13 +79,13 @@ public class NumberRollFilter
       Log.e("createProgram", GLES20.glGetProgramInfoLog(j));
       GLES20.glDeleteProgram(j);
     }
-    for (;;)
+    else
     {
-      GLES20.glDeleteShader(k);
-      GLES20.glDeleteShader(m);
-      return i;
       i = j;
     }
+    GLES20.glDeleteShader(k);
+    GLES20.glDeleteShader(m);
+    return i;
   }
   
   private static int createTextures(int paramInt1, int paramInt2, int paramInt3)
@@ -117,13 +117,12 @@ public class NumberRollFilter
       GLES20.glPixelStorei(3317, 1);
       GLUtils.texImage2D(3553, 0, paramInt, paramBitmap, 5121, 0);
       GLES20.glPixelStorei(3317, 4);
+      return i;
     }
-    catch (Exception paramBitmap)
-    {
-      return 0;
-    }
+    catch (Exception paramBitmap) {}
     GLUtils.texImage2D(3553, 0, paramInt, paramBitmap, 5121, 0);
     return i;
+    return 0;
   }
   
   private static FloatBuffer floatArrayToFloatBuffer(float[] paramArrayOfFloat)
@@ -151,39 +150,35 @@ public class NumberRollFilter
       return (int)((paramFloat - 1.0F) * 200.0F) + 500;
     }
     if (paramFloat >= 0.0F) {
-      return (int)(100.0F * paramFloat) + 400;
+      return (int)(paramFloat * 100.0F) + 400;
     }
     return 1;
   }
   
   private static float getFirstNumberStopTime(NumberRollEffectParams paramNumberRollEffectParams)
   {
-    float f2 = 3.4028235E+38F;
-    float f1 = f2;
+    float f1 = 3.4028235E+38F;
+    float f2 = f1;
     if (paramNumberRollEffectParams != null)
     {
-      f1 = f2;
+      f2 = f1;
       if (paramNumberRollEffectParams.numberRollItems != null)
       {
         paramNumberRollEffectParams = paramNumberRollEffectParams.numberRollItems.iterator();
-        f1 = 3.4028235E+38F;
-        if (paramNumberRollEffectParams.hasNext())
+        for (;;)
         {
-          NumberRollItem localNumberRollItem = (NumberRollItem)paramNumberRollEffectParams.next();
-          if (localNumberRollItem.speedUpTime + localNumberRollItem.continueTime >= f1) {
-            break label79;
+          f2 = f1;
+          if (!paramNumberRollEffectParams.hasNext()) {
+            break;
           }
-          f1 = localNumberRollItem.speedUpTime;
-          f1 = localNumberRollItem.continueTime + f1;
+          NumberRollItem localNumberRollItem = (NumberRollItem)paramNumberRollEffectParams.next();
+          if (localNumberRollItem.speedUpTime + localNumberRollItem.continueTime < f1) {
+            f1 = localNumberRollItem.speedUpTime + localNumberRollItem.continueTime;
+          }
         }
       }
     }
-    label79:
-    for (;;)
-    {
-      break;
-      return f1;
-    }
+    return f2;
   }
   
   private float getNarrowX(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -197,15 +192,16 @@ public class NumberRollFilter
   
   private static int loadShader(int paramInt, String paramString)
   {
-    paramInt = GLES20.glCreateShader(paramInt);
-    GLES20.glShaderSource(paramInt, paramString);
-    GLES20.glCompileShader(paramInt);
+    int i = GLES20.glCreateShader(paramInt);
+    GLES20.glShaderSource(i, paramString);
+    GLES20.glCompileShader(i);
     paramString = new int[1];
-    GLES20.glGetShaderiv(paramInt, 35713, paramString, 0);
+    GLES20.glGetShaderiv(i, 35713, paramString, 0);
+    paramInt = i;
     if (paramString[0] == 0)
     {
-      GLES20.glDeleteShader(paramInt);
-      return 0;
+      GLES20.glDeleteShader(i);
+      paramInt = 0;
     }
     return paramInt;
   }
@@ -214,16 +210,17 @@ public class NumberRollFilter
   {
     super.ApplyGLSLFilter();
     this.copyFilter.apply();
-    if (this.numberRollEffectParams != null)
+    Object localObject = this.numberRollEffectParams;
+    if (localObject != null)
     {
-      this.materialImageWidthHeightRatio = (this.numberRollEffectParams.materialImageWidth / this.numberRollEffectParams.materialImageHeight);
+      this.materialImageWidthHeightRatio = (((NumberRollEffectParams)localObject).materialImageWidth / this.numberRollEffectParams.materialImageHeight);
       if ((this.numberRollEffectParams.numberImageFile != null) && (!this.numberRollEffectParams.numberImageFile.isEmpty()))
       {
-        Bitmap localBitmap = BitmapFactory.decodeFile(this.numberRollEffectParams.numberImageFile);
-        if (localBitmap != null)
+        localObject = BitmapFactory.decodeFile(this.numberRollEffectParams.numberImageFile);
+        if (localObject != null)
         {
-          this.numberImageTextureID = createTextures2DWithBitmap(localBitmap, 6408);
-          localBitmap.recycle();
+          this.numberImageTextureID = createTextures2DWithBitmap((Bitmap)localObject, 6408);
+          ((Bitmap)localObject).recycle();
         }
       }
     }
@@ -238,8 +235,9 @@ public class NumberRollFilter
   {
     super.clearGLSLSelf();
     this.copyFilter.clearGLSLSelf();
-    if (this.numberImageTextureID != 0) {
-      GLES20.glDeleteTextures(1, new int[] { this.numberImageTextureID }, 0);
+    int i = this.numberImageTextureID;
+    if (i != 0) {
+      GLES20.glDeleteTextures(1, new int[] { i }, 0);
     }
   }
   
@@ -258,68 +256,67 @@ public class NumberRollFilter
   
   public Frame render(Frame paramFrame)
   {
-    Object localObject;
-    if (this.faceAttr != null)
-    {
+    Object localObject = this.faceAttr;
+    if (localObject != null) {
       if (this.isNeedReset)
       {
-        this.startTime = this.faceAttr.getTimeStamp();
+        this.startTime = ((PTFaceAttr)localObject).getTimeStamp();
         this.isNeedReset = false;
       }
-    }
-    else if (this.aiAttr != null)
-    {
-      if ((float)this.currentTime >= this.firstNumberStopTime * 1000.0F) {
-        break label781;
-      }
-      localObject = this.aiAttr.getAvailableData("FaceMarkingDetector");
-      if ((localObject instanceof Float))
+      else
       {
-        this.scoreSum = (((Float)localObject).floatValue() + this.scoreSum);
-        this.scoreCount += 1;
+        this.currentTime = (((PTFaceAttr)localObject).getTimeStamp() - this.startTime);
       }
     }
-    for (;;)
-    {
-      float f = paramFrame.width / paramFrame.height;
-      localObject = this.copyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
-      ((Frame)localObject).bindFrame(-1, ((Frame)localObject).width, ((Frame)localObject).height, 0.0D);
-      addParam(new UniformParam.TextureParam("inputImageTexture", paramFrame.getTextureId(), 33984));
-      addParam(new UniformParam.TextureParam("numberTexture", this.numberImageTextureID, 33985));
-      if ((this.numberRollEffectParams != null) && (this.numberRollEffectParams.numberRollItems != null))
+    localObject = this.aiAttr;
+    if (localObject != null) {
+      if ((float)this.currentTime < this.firstNumberStopTime * 1000.0F)
       {
-        addParam(new UniformParam.IntParam("boxCount", this.numberRollEffectParams.numberRollItems.size()));
-        if (this.numberRollEffectParams.numberRollItems.size() > 0)
+        localObject = ((AIAttr)localObject).getAvailableData("FaceMarkingDetector");
+        if ((localObject instanceof Float))
         {
-          addParam(new UniformParam.Float4fParam("box1", getNarrowX(((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(0)).left, this.materialImageWidthHeightRatio, f), ((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(0)).top, getNarrowX(((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(0)).right, this.materialImageWidthHeightRatio, f), ((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(0)).bottom));
-          ((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(0)).calculateCurrentPosition((float)this.currentTime / 1000.0F);
-          addParam(new UniformParam.FloatParam("currentY1", ((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(0)).currentPosition));
-          if (this.numberRollEffectParams.numberRollItems.size() > 1)
-          {
-            addParam(new UniformParam.Float4fParam("box2", getNarrowX(((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(1)).left, this.materialImageWidthHeightRatio, f), ((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(1)).top, getNarrowX(((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(1)).right, this.materialImageWidthHeightRatio, f), ((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(1)).bottom));
-            ((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(1)).calculateCurrentPosition((float)this.currentTime / 1000.0F);
-            addParam(new UniformParam.FloatParam("currentY2", ((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(1)).currentPosition));
-            if (this.numberRollEffectParams.numberRollItems.size() > 2)
-            {
-              addParam(new UniformParam.Float4fParam("box3", getNarrowX(((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(2)).left, this.materialImageWidthHeightRatio, f), ((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(2)).top, getNarrowX(((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(2)).right, this.materialImageWidthHeightRatio, f), ((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(2)).bottom));
-              ((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(2)).calculateCurrentPosition((float)this.currentTime / 1000.0F);
-              addParam(new UniformParam.FloatParam("currentY3", ((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(2)).currentPosition));
-            }
-          }
+          f = ((Float)localObject).floatValue();
+          this.scoreSum += f;
+          this.scoreCount += 1;
         }
       }
-      OnDrawFrameGLSL();
-      renderTexture(paramFrame.getTextureId(), this.width, this.height);
-      return localObject;
-      this.currentTime = (this.faceAttr.getTimeStamp() - this.startTime);
-      break;
-      label781:
-      if (!this.hasSetNumber)
+      else if (!this.hasSetNumber)
       {
         setTargetNumber(getFinalNumber(this.scoreSum / this.scoreCount));
         this.hasSetNumber = true;
       }
     }
+    float f = paramFrame.width / paramFrame.height;
+    localObject = this.copyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
+    ((Frame)localObject).bindFrame(-1, ((Frame)localObject).width, ((Frame)localObject).height, 0.0D);
+    addParam(new UniformParam.TextureParam("inputImageTexture", paramFrame.getTextureId(), 33984));
+    addParam(new UniformParam.TextureParam("numberTexture", this.numberImageTextureID, 33985));
+    NumberRollEffectParams localNumberRollEffectParams = this.numberRollEffectParams;
+    if ((localNumberRollEffectParams != null) && (localNumberRollEffectParams.numberRollItems != null))
+    {
+      addParam(new UniformParam.IntParam("boxCount", this.numberRollEffectParams.numberRollItems.size()));
+      if (this.numberRollEffectParams.numberRollItems.size() > 0)
+      {
+        addParam(new UniformParam.Float4fParam("box1", getNarrowX(((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(0)).left, this.materialImageWidthHeightRatio, f), ((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(0)).top, getNarrowX(((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(0)).right, this.materialImageWidthHeightRatio, f), ((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(0)).bottom));
+        ((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(0)).calculateCurrentPosition((float)this.currentTime / 1000.0F);
+        addParam(new UniformParam.FloatParam("currentY1", ((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(0)).currentPosition));
+        if (this.numberRollEffectParams.numberRollItems.size() > 1)
+        {
+          addParam(new UniformParam.Float4fParam("box2", getNarrowX(((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(1)).left, this.materialImageWidthHeightRatio, f), ((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(1)).top, getNarrowX(((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(1)).right, this.materialImageWidthHeightRatio, f), ((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(1)).bottom));
+          ((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(1)).calculateCurrentPosition((float)this.currentTime / 1000.0F);
+          addParam(new UniformParam.FloatParam("currentY2", ((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(1)).currentPosition));
+          if (this.numberRollEffectParams.numberRollItems.size() > 2)
+          {
+            addParam(new UniformParam.Float4fParam("box3", getNarrowX(((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(2)).left, this.materialImageWidthHeightRatio, f), ((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(2)).top, getNarrowX(((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(2)).right, this.materialImageWidthHeightRatio, f), ((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(2)).bottom));
+            ((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(2)).calculateCurrentPosition((float)this.currentTime / 1000.0F);
+            addParam(new UniformParam.FloatParam("currentY3", ((NumberRollItem)this.numberRollEffectParams.numberRollItems.get(2)).currentPosition));
+          }
+        }
+      }
+    }
+    OnDrawFrameGLSL();
+    renderTexture(paramFrame.getTextureId(), this.width, this.height);
+    return localObject;
   }
   
   public void reset()
@@ -333,7 +330,8 @@ public class NumberRollFilter
   
   public void setTargetNumber(int paramInt)
   {
-    if ((this.numberRollEffectParams != null) && (this.numberRollEffectParams.numberRollItems != null))
+    NumberRollEffectParams localNumberRollEffectParams = this.numberRollEffectParams;
+    if ((localNumberRollEffectParams != null) && (localNumberRollEffectParams.numberRollItems != null))
     {
       int j = this.numberRollEffectParams.numberRollItems.size() - 1;
       int i = paramInt;
@@ -357,7 +355,7 @@ public class NumberRollFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.NumberRollFilter
  * JD-Core Version:    0.7.0.1
  */

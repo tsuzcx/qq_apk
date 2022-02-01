@@ -36,27 +36,22 @@ public class MessageSearchResultDetailModel
     this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
   }
   
+  public int a()
+  {
+    return 1;
+  }
+  
   public CharSequence a()
   {
-    if (this.b == null) {
-      if (!AnonymousChatHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord)) {
-        break label60;
-      }
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
+      this.jdField_a_of_type_JavaLangCharSequence = TimeFormatterUtils.a(BaseApplicationImpl.sApplication, 3, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time * 1000L);
     }
-    label60:
-    SessionInfo localSessionInfo;
-    for (this.b = (BaseApplicationImpl.sApplication.getString(2131697219) + AnonymousChatHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).b);; this.b = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin))
-    {
-      return this.b;
-      localSessionInfo = new SessionInfo();
-      localSessionInfo.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType();
-      localSessionInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin;
-    }
+    return this.jdField_a_of_type_JavaLangCharSequence;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin;
   }
   
   public void a(View paramView)
@@ -75,28 +70,38 @@ public class MessageSearchResultDetailModel
   
   public CharSequence b()
   {
-    if (this.c == null) {
-      this.c = SearchUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msg, this.jdField_a_of_type_JavaLangString);
+    if (this.b == null)
+    {
+      Object localObject;
+      if (AnonymousChatHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(BaseApplicationImpl.sApplication.getString(2131697238));
+        ((StringBuilder)localObject).append(AnonymousChatHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).b);
+        this.b = ((StringBuilder)localObject).toString();
+      }
+      else
+      {
+        localObject = new SessionInfo();
+        ((SessionInfo)localObject).jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType();
+        ((SessionInfo)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin;
+        this.b = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (SessionInfo)localObject, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin);
+      }
     }
-    return this.c;
+    return this.b;
   }
   
   public String b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin;
-  }
-  
-  public int c()
-  {
-    return 1;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   public CharSequence c()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
-      this.jdField_a_of_type_JavaLangCharSequence = TimeFormatterUtils.a(BaseApplicationImpl.sApplication, 3, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time * 1000L);
+    if (this.c == null) {
+      this.c = SearchUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msg, this.jdField_a_of_type_JavaLangString);
     }
-    return this.jdField_a_of_type_JavaLangCharSequence;
+    return this.c;
   }
   
   public CharSequence d()
@@ -106,7 +111,7 @@ public class MessageSearchResultDetailModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.MessageSearchResultDetailModel
  * JD-Core Version:    0.7.0.1
  */

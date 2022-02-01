@@ -11,7 +11,7 @@ import mqq.app.MobileQQ;
 public class StatisticHitRateCollector
 {
   public static StatisticHitRateCollector a;
-  private String a;
+  private final String a;
   public Map<String, Boolean> a;
   public Map<String, Boolean> b = new ConcurrentHashMap();
   
@@ -23,7 +23,10 @@ public class StatisticHitRateCollector
   public StatisticHitRateCollector(String paramString)
   {
     this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_JavaLangString = ("StatisticHitRateCollector_" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("StatisticHitRateCollector_");
+    localStringBuilder.append(paramString);
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
   }
   
   public static StatisticHitRateCollector a()
@@ -33,18 +36,19 @@ public class StatisticHitRateCollector
   
   public static String a()
   {
-    AppRuntime localAppRuntime = null;
-    MobileQQ localMobileQQ = MobileQQ.getMobileQQ();
-    if (localMobileQQ != null) {
-      localAppRuntime = localMobileQQ.peekAppRuntime();
+    Object localObject = MobileQQ.getMobileQQ();
+    if (localObject != null) {
+      localObject = ((MobileQQ)localObject).peekAppRuntime();
+    } else {
+      localObject = null;
     }
-    if (localAppRuntime == null) {
+    if (localObject == null) {
       return "0";
     }
-    if (localAppRuntime.getAccount() == null) {
+    if (((AppRuntime)localObject).getAccount() == null) {
       return "0";
     }
-    return localAppRuntime.getAccount();
+    return ((AppRuntime)localObject).getAccount();
   }
   
   public void a(String paramString)
@@ -54,15 +58,22 @@ public class StatisticHitRateCollector
   
   public void a(String paramString1, String paramString2)
   {
-    Boolean localBoolean = (Boolean)this.jdField_a_of_type_JavaUtilMap.get(paramString2);
-    if ((localBoolean == null) || (!localBoolean.booleanValue()))
+    Object localObject = (Boolean)this.jdField_a_of_type_JavaUtilMap.get(paramString2);
+    if ((localObject == null) || (!((Boolean)localObject).booleanValue()))
     {
-      localBoolean = (Boolean)this.b.get(paramString2);
-      if ((localBoolean != null) && (localBoolean.booleanValue()))
+      localObject = (Boolean)this.b.get(paramString2);
+      if ((localObject != null) && (((Boolean)localObject).booleanValue()))
       {
         this.jdField_a_of_type_JavaUtilMap.put(paramString2, Boolean.valueOf(true));
-        if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "hitEnd sucess action = " + paramString2 + " , hit = true, uin = " + paramString1);
+        if (QLog.isColorLevel())
+        {
+          localObject = this.jdField_a_of_type_JavaLangString;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("hitEnd sucess action = ");
+          localStringBuilder.append(paramString2);
+          localStringBuilder.append(" , hit = true, uin = ");
+          localStringBuilder.append(paramString1);
+          QLog.d((String)localObject, 2, localStringBuilder.toString());
         }
         StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(paramString1, paramString2, true, 0L, 0L, null, null);
         this.jdField_a_of_type_JavaUtilMap.remove(paramString2);
@@ -73,8 +84,15 @@ public class StatisticHitRateCollector
   
   public void a(String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "preloadMark preloadAction = " + paramString + " , flag = " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("preloadMark preloadAction = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" , flag = ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
     if (paramBoolean) {
       b(a(), paramString);
@@ -92,15 +110,22 @@ public class StatisticHitRateCollector
   {
     if (paramString2 != null)
     {
-      Boolean localBoolean = (Boolean)this.jdField_a_of_type_JavaUtilMap.get(paramString2);
-      if ((localBoolean == null) || (!localBoolean.booleanValue()))
+      Object localObject = (Boolean)this.jdField_a_of_type_JavaUtilMap.get(paramString2);
+      if ((localObject == null) || (!((Boolean)localObject).booleanValue()))
       {
-        localBoolean = (Boolean)this.b.get(paramString2);
-        if ((localBoolean != null) && (localBoolean.booleanValue()))
+        localObject = (Boolean)this.b.get(paramString2);
+        if ((localObject != null) && (((Boolean)localObject).booleanValue()))
         {
           this.jdField_a_of_type_JavaUtilMap.put(paramString2, Boolean.valueOf(true));
-          if (QLog.isColorLevel()) {
-            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "hitEnd action = " + paramString2 + " , hit = false, uin = " + paramString1);
+          if (QLog.isColorLevel())
+          {
+            localObject = this.jdField_a_of_type_JavaLangString;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("hitEnd action = ");
+            localStringBuilder.append(paramString2);
+            localStringBuilder.append(" , hit = false, uin = ");
+            localStringBuilder.append(paramString1);
+            QLog.d((String)localObject, 2, localStringBuilder.toString());
           }
           StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(paramString1, paramString2, false, 0L, 0L, null, null);
           this.jdField_a_of_type_JavaUtilMap.remove(paramString2);
@@ -125,7 +150,7 @@ public class StatisticHitRateCollector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.StatisticHitRateCollector
  * JD-Core Version:    0.7.0.1
  */

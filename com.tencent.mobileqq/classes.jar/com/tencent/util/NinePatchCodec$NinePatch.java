@@ -19,7 +19,6 @@ public class NinePatchCodec$NinePatch
   
   public void decode(DataInput paramDataInput)
   {
-    int j = 0;
     this.wasDeserialized = paramDataInput.readByte();
     this.numXDivs = paramDataInput.readByte();
     this.numYDivs = paramDataInput.readByte();
@@ -31,6 +30,7 @@ public class NinePatchCodec$NinePatch
     this.padBottom = paramDataInput.readInt();
     paramDataInput.skipBytes(4);
     this.xDivs = new int[this.numXDivs];
+    int j = 0;
     int i = 0;
     while (i < this.numXDivs)
     {
@@ -55,11 +55,11 @@ public class NinePatchCodec$NinePatch
   
   public void encode(DataOutput paramDataOutput)
   {
-    int k = 0;
     paramDataOutput.writeByte(this.wasDeserialized);
     paramDataOutput.writeByte(this.numXDivs);
     paramDataOutput.writeByte(this.numYDivs);
     paramDataOutput.writeByte(this.numColors);
+    int k = 0;
     paramDataOutput.writeInt(0);
     paramDataOutput.writeInt(0);
     paramDataOutput.writeInt(this.padLeft);
@@ -93,7 +93,7 @@ public class NinePatchCodec$NinePatch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.NinePatchCodec.NinePatch
  * JD-Core Version:    0.7.0.1
  */

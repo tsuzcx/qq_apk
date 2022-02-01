@@ -4,7 +4,7 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.activity.aio.core.AIOContext;
 import com.tencent.mobileqq.activity.aio.core.msglist.IHeadMsgRefresher;
 import com.tencent.mobileqq.activity.aio.core.msglist.MsgList;
@@ -30,16 +30,21 @@ public class AttentionHeadMsgRefresher
   
   public void a(AIOContext paramAIOContext)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageManager$UserActionStateInParallelPullPeriod != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageManager$UserActionStateInParallelPullPeriod;
+    if (localObject != null)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageManager$UserActionStateInParallelPullPeriod.d == TroopMessageManager.UserActionStateInParallelPullPeriod.c) && (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageManager$UserActionStateInParallelPullPeriod.a != null)) {
-        paramAIOContext.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageManager$UserActionStateInParallelPullPeriod.a.c, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageManager$UserActionStateInParallelPullPeriod.a.a(), this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageManager$UserActionStateInParallelPullPeriod.a.d, null);
+      if ((((TroopMessageManager.UserActionStateInParallelPullPeriod)localObject).d == TroopMessageManager.UserActionStateInParallelPullPeriod.c) && (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageManager$UserActionStateInParallelPullPeriod.a != null)) {
+        paramAIOContext.a().a().a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageManager$UserActionStateInParallelPullPeriod.a.c, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageManager$UserActionStateInParallelPullPeriod.a.a(), this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageManager$UserActionStateInParallelPullPeriod.a.d);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("AttentionHeadMsgRefresh.trooptroop_pull_msg", 2, "update,mUserActionState.actionType" + this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageManager$UserActionStateInParallelPullPeriod.d);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("update,mUserActionState.actionType");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageManager$UserActionStateInParallelPullPeriod.d);
+        QLog.d("AttentionHeadMsgRefresh.trooptroop_pull_msg", 2, ((StringBuilder)localObject).toString());
       }
       this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageManager$UserActionStateInParallelPullPeriod = null;
-      paramAIOContext.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a().deleteObservers();
+      paramAIOContext.a().getMessageFacade().a().deleteObservers();
     }
   }
   
@@ -47,48 +52,64 @@ public class AttentionHeadMsgRefresher
   {
     Scroller localScroller = paramAIOContext.a().a();
     this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistScroller = localScroller;
-    MessageRecord localMessageRecord = paramAIOContext.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().d(paramAIOContext.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramAIOContext.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong1);
-    if ((localMessageRecord != null) && (paramInt2 <= 200))
+    Object localObject = paramAIOContext.a().getMessageFacade().d(paramAIOContext.a().jdField_a_of_type_JavaLangString, paramAIOContext.a().jdField_a_of_type_Int, paramLong1);
+    if ((localObject != null) && (paramInt2 <= 200))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AttentionHeadMsgRefresh.troop.special_msg", 2, "refreshHeadMessage==>unreadMsgCount:" + paramInt2 + ", fistseq:" + paramLong2 + ", mr.shmsgseq:" + localMessageRecord.shmsgseq);
-      }
-      if ((int)paramLong2 >= localMessageRecord.shmsgseq + 1L)
+      if (QLog.isColorLevel())
       {
-        localScroller.a(paramLong2, localMessageRecord.shmsgseq, false);
-        localScroller.a(paramInt1, 0, -1, paramRunnable, this.jdField_a_of_type_MqqOsMqqHandler, 6);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("refreshHeadMessage==>unreadMsgCount:");
+        localStringBuilder.append(paramInt2);
+        localStringBuilder.append(", fistseq:");
+        localStringBuilder.append(paramLong2);
+        localStringBuilder.append(", mr.shmsgseq:");
+        localStringBuilder.append(((MessageRecord)localObject).shmsgseq);
+        QLog.d("AttentionHeadMsgRefresh.troop.special_msg", 2, localStringBuilder.toString());
       }
-    }
-    do
-    {
-      do
+      if ((int)paramLong2 >= ((MessageRecord)localObject).shmsgseq + 1L)
       {
-        return;
-        paramInt2 = paramAIOContext.a().a().c(paramLong1);
-      } while (paramInt2 == -1);
-      localScroller.a(paramInt1, paramInt2, paramInt2, null, this.jdField_a_of_type_MqqOsMqqHandler, 6);
-      return;
-      boolean bool = paramAIOContext.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a().c(paramAIOContext.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      if (QLog.isColorLevel()) {
-        QLog.d("AttentionHeadMsgRefresh.trooptroop_pull_msg", 2, "所要定位的消息还没拉回来本地，并发拉取中...mUserActionState create, natvigateSeq:" + paramLong1 + ",isAioParallelPullMsgDone:" + bool);
-      }
-      if (!bool) {
-        break;
-      }
-      if ((int)paramLong2 >= 1L + paramLong1)
-      {
-        localScroller.a(paramLong2, paramLong1, false);
+        localScroller.a(paramLong2, ((MessageRecord)localObject).shmsgseq, false);
         localScroller.a(paramInt1, 0, -1, paramRunnable, this.jdField_a_of_type_MqqOsMqqHandler, 6);
         return;
       }
       paramInt2 = paramAIOContext.a().a().c(paramLong1);
-    } while (paramInt2 == -1);
-    localScroller.a(paramInt1, paramInt2, paramInt2, null, this.jdField_a_of_type_MqqOsMqqHandler, 6);
-    return;
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageManager$UserActionStateInParallelPullPeriod = new TroopMessageManager.UserActionStateInParallelPullPeriod();
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageManager$UserActionStateInParallelPullPeriod.d = TroopMessageManager.UserActionStateInParallelPullPeriod.c;
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageManager$UserActionStateInParallelPullPeriod.a = TroopAioAgent.Message.a(paramInt1, paramLong1, paramInt2);
-    paramAIOContext.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a().addObserver(paramAIOContext.a());
+      if (paramInt2 != -1) {
+        localScroller.a(paramInt1, paramInt2, paramInt2, null, this.jdField_a_of_type_MqqOsMqqHandler, 6);
+      }
+    }
+    else
+    {
+      boolean bool = paramAIOContext.a().getMessageFacade().a().c(paramAIOContext.a().jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("所要定位的消息还没拉回来本地，并发拉取中...mUserActionState create, natvigateSeq:");
+        ((StringBuilder)localObject).append(paramLong1);
+        ((StringBuilder)localObject).append(",isAioParallelPullMsgDone:");
+        ((StringBuilder)localObject).append(bool);
+        QLog.d("AttentionHeadMsgRefresh.trooptroop_pull_msg", 2, ((StringBuilder)localObject).toString());
+      }
+      if (bool)
+      {
+        if ((int)paramLong2 >= 1L + paramLong1)
+        {
+          localScroller.a(paramLong2, paramLong1, false);
+          localScroller.a(paramInt1, 0, -1, paramRunnable, this.jdField_a_of_type_MqqOsMqqHandler, 6);
+          return;
+        }
+        paramInt2 = paramAIOContext.a().a().c(paramLong1);
+        if (paramInt2 != -1) {
+          localScroller.a(paramInt1, paramInt2, paramInt2, null, this.jdField_a_of_type_MqqOsMqqHandler, 6);
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageManager$UserActionStateInParallelPullPeriod = new TroopMessageManager.UserActionStateInParallelPullPeriod();
+        this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageManager$UserActionStateInParallelPullPeriod.d = TroopMessageManager.UserActionStateInParallelPullPeriod.c;
+        this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopMessageManager$UserActionStateInParallelPullPeriod.a = TroopAioAgent.Message.a(paramInt1, paramLong1, paramInt2);
+        paramAIOContext.a().getMessageFacade().a().addObserver(paramAIOContext.a());
+      }
+    }
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -105,7 +126,7 @@ public class AttentionHeadMsgRefresher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.AttentionHeadMsgRefresher
  * JD-Core Version:    0.7.0.1
  */

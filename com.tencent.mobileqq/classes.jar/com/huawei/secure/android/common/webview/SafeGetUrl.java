@@ -8,60 +8,60 @@ import java.util.concurrent.CountDownLatch;
 
 public class SafeGetUrl
 {
-  private static final long B = 200L;
+  private static final long D = 200L;
   private static final String TAG = "SafeGetUrl";
-  private String C;
-  private WebView D;
+  private String E;
+  private WebView F;
   
   public SafeGetUrl() {}
   
   public SafeGetUrl(WebView paramWebView)
   {
-    this.D = paramWebView;
+    this.F = paramWebView;
   }
   
   public String getUrlMethod()
   {
-    if (this.D == null) {
+    if (this.F == null) {
       return "";
     }
-    if (b.h()) {
-      return this.D.getUrl();
+    if (b.isMainThread()) {
+      return this.F.getUrl();
     }
     CountDownLatch localCountDownLatch = new CountDownLatch(1);
     c.a(new SafeGetUrl.1(this, localCountDownLatch));
     try
     {
       localCountDownLatch.await();
-      return this.C;
     }
     catch (InterruptedException localInterruptedException)
     {
-      for (;;)
-      {
-        Log.e("SafeGetUrl", "getUrlMethod: InterruptedException " + localInterruptedException.getMessage(), localInterruptedException);
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getUrlMethod: InterruptedException ");
+      localStringBuilder.append(localInterruptedException.getMessage());
+      Log.e("SafeGetUrl", localStringBuilder.toString(), localInterruptedException);
     }
+    return this.E;
   }
   
   public WebView getWebView()
   {
-    return this.D;
+    return this.F;
   }
   
   public void setUrl(String paramString)
   {
-    this.C = paramString;
+    this.E = paramString;
   }
   
   public void setWebView(WebView paramWebView)
   {
-    this.D = paramWebView;
+    this.F = paramWebView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.secure.android.common.webview.SafeGetUrl
  * JD-Core Version:    0.7.0.1
  */

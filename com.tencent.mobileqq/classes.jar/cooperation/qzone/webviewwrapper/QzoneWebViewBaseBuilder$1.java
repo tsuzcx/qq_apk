@@ -3,7 +3,6 @@ package cooperation.qzone.webviewwrapper;
 import com.tencent.biz.webviewplugin.OfflinePlugin;
 import com.tencent.biz.webviewplugin.OpenCenterPlugin;
 import com.tencent.biz.webviewplugin.PtloginPlugin;
-import com.tencent.biz.webviewplugin.QzoneWebViewOfflinePlugin;
 import com.tencent.biz.webviewplugin.ReportPlugin;
 import com.tencent.biz.webviewplugin.WebSoPlugin;
 import com.tencent.mobileqq.antiphing.AntiphingHandler;
@@ -14,6 +13,7 @@ import com.tencent.mobileqq.vaswebviewplugin.VasWebReport;
 import com.tencent.mobileqq.webview.swift.CommonJsPluginFactory;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webviewplugin.WebViewJumpPlugin;
+import com.tencent.qzonehub.api.webview.IQzoneWebViewPluginHelper;
 import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ final class QzoneWebViewBaseBuilder$1
     localArrayList.add(new EventApiPlugin());
     localArrayList.add(new OpenCenterPlugin());
     localArrayList.add((WebViewPlugin)((IMiniAppService)QRoute.api(IMiniAppService.class)).createMiniAppWebViewPlugin());
-    localArrayList.add(new QzoneWebViewOfflinePlugin());
+    localArrayList.add((WebViewPlugin)((IQzoneWebViewPluginHelper)QRoute.api(IQzoneWebViewPluginHelper.class)).getQzoneWebViewOfflinePlugin());
     localArrayList.add(new QzoneWebMusicJsPlugin());
     localArrayList.add(new WebSoPlugin());
     return localArrayList;
@@ -41,7 +41,7 @@ final class QzoneWebViewBaseBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewwrapper.QzoneWebViewBaseBuilder.1
  * JD-Core Version:    0.7.0.1
  */

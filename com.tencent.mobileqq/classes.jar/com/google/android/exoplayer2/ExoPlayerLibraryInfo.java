@@ -17,8 +17,13 @@ public final class ExoPlayerLibraryInfo
   {
     try
     {
-      if (registeredModules.add(paramString)) {
-        registeredModulesString = registeredModulesString + ", " + paramString;
+      if (registeredModules.add(paramString))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(registeredModulesString);
+        localStringBuilder.append(", ");
+        localStringBuilder.append(paramString);
+        registeredModulesString = localStringBuilder.toString();
       }
       return;
     }
@@ -45,7 +50,7 @@ public final class ExoPlayerLibraryInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.ExoPlayerLibraryInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ class PermisionPrivacyActivity$8
 {
   PermisionPrivacyActivity$8(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  protected void a(boolean paramBoolean, String paramString)
   {
     super.a(paramBoolean, paramString);
     if (QLog.isColorLevel()) {
@@ -17,7 +17,7 @@ class PermisionPrivacyActivity$8
     PermisionPrivacyActivity.a(this.a);
   }
   
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
     super.a(paramBoolean1, paramString, paramBoolean2);
     if (QLog.isColorLevel()) {
@@ -28,7 +28,7 @@ class PermisionPrivacyActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PermisionPrivacyActivity.8
  * JD-Core Version:    0.7.0.1
  */

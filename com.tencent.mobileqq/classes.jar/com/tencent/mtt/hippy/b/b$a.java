@@ -14,31 +14,29 @@ public class b$a
   
   public byte[] a(int paramInt)
   {
-    byte[] arrayOfByte = new byte[paramInt];
+    Object localObject = new byte[paramInt];
     int i = 0;
-    for (;;)
+    while (i < paramInt)
     {
-      int j;
-      if (i < paramInt)
-      {
-        j = read(arrayOfByte, i, paramInt - i);
-        if (j != -1) {}
-      }
-      else
-      {
-        if (i == paramInt) {
-          break;
-        }
-        throw new IOException(String.format("Read wrong number of bytes. Got: %s, Expected: %s.", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) }));
+      int j = read((byte[])localObject, i, paramInt - i);
+      if (j == -1) {
+        break;
       }
       i += j;
     }
-    return arrayOfByte;
+    if (i == paramInt) {
+      return localObject;
+    }
+    localObject = new IOException(String.format("Read wrong number of bytes. Got: %s, Expected: %s.", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) }));
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.b.b.a
  * JD-Core Version:    0.7.0.1
  */

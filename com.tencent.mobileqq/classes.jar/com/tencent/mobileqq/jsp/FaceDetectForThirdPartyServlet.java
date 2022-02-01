@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Base64;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.identification.FaceContext;
+import com.tencent.mobileqq.identification.AppConf;
+import com.tencent.mobileqq.identification.AppConf.AppWordings;
+import com.tencent.mobileqq.identification.AppConf.ServiceProtocolSerializable;
+import com.tencent.mobileqq.identification.IdentificationConstant;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -28,6 +30,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.AppRuntime;
 import mqq.app.MSFServlet;
 import mqq.app.NewIntent;
 import mqq.app.Packet;
@@ -43,7 +46,7 @@ public class FaceDetectForThirdPartyServlet
     {
       try
       {
-        localObject = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+        Object localObject = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
         paramFromServiceMsg = new byte[((ByteBuffer)localObject).getInt() - 4];
         ((ByteBuffer)localObject).get(paramFromServiceMsg);
         localObject = new oidb_sso.OIDBSSOPkg();
@@ -52,15 +55,29 @@ public class FaceDetectForThirdPartyServlet
         if (i == 15)
         {
           paramFromServiceMsg = ((oidb_sso.OIDBSSOPkg)localObject).str_error_msg.get();
-          QLog.e("FaceDetectForThirdPartyServlet", 1, "sso result error, ret : " + i + "  error : " + paramFromServiceMsg);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("sso result error, ret : ");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append("  error : ");
+          ((StringBuilder)localObject).append(paramFromServiceMsg);
+          QLog.e("FaceDetectForThirdPartyServlet", 1, ((StringBuilder)localObject).toString());
           notifyObserver(paramIntent, 15, false, null, null);
           return;
         }
         paramFromServiceMsg = b(paramFromServiceMsg);
-        if (paramFromServiceMsg != null) {
-          break label166;
+        if (paramFromServiceMsg == null)
+        {
+          QLog.e("FaceDetectForThirdPartyServlet", 1, "handleFaceDetectResponse, appconf is null");
+          return;
         }
-        QLog.e("FaceDetectForThirdPartyServlet", 1, "handleFaceDetectResponse, appconf is null");
+        localObject = new Bundle();
+        ((Bundle)localObject).putInt("app_id", paramIntent.getIntExtra("app_id", 0));
+        ((Bundle)localObject).putSerializable("FaceRecognition.AppConf", paramFromServiceMsg);
+        notifyObserver(paramIntent, 17, true, (Bundle)localObject, null);
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.d("FaceDetectForThirdPartyServlet", 2, new Object[] { "handleFaceDetectResponse succsss=", paramFromServiceMsg });
         return;
       }
       catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
@@ -71,15 +88,6 @@ public class FaceDetectForThirdPartyServlet
         }
       }
       QLog.d("FaceDetectForThirdPartyServlet", 2, "handleFaceDetectResponse error=", paramFromServiceMsg);
-      return;
-      label166:
-      Object localObject = new Bundle();
-      ((Bundle)localObject).putInt("app_id", paramIntent.getIntExtra("app_id", 0));
-      ((Bundle)localObject).putSerializable("FaceRecognition.AppConf", paramFromServiceMsg);
-      notifyObserver(paramIntent, 17, true, (Bundle)localObject, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("FaceDetectForThirdPartyServlet", 2, new Object[] { "handleFaceDetectResponse succsss=", paramFromServiceMsg });
-      }
     }
     else
     {
@@ -110,29 +118,6 @@ public class FaceDetectForThirdPartyServlet
     paramPacket.putSendData(((ByteBuffer)localObject).array());
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, String paramString5, long paramLong, BusinessObserver paramBusinessObserver)
-  {
-    if (FaceContext.c.contains(paramString1)) {
-      a(paramString2, paramInt, paramString3, paramString4, paramString5, paramLong, paramBusinessObserver);
-    }
-    do
-    {
-      return;
-      NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApplication(), FaceDetectForThirdPartyServlet.class);
-      localNewIntent.putExtra("qq_version", paramString3);
-      localNewIntent.putExtra("app_id", paramInt);
-      localNewIntent.putExtra("cmd_param", "FaceRecognition.AppConf");
-      localNewIntent.putExtra("light_info", paramString4);
-      localNewIntent.putExtra("tmp_key", paramString5);
-      localNewIntent.putExtra("method", paramString1);
-      localNewIntent.putExtra("nonce", paramLong);
-      localNewIntent.putExtra("uin", paramString2);
-      localNewIntent.setObserver(paramBusinessObserver);
-      paramQQAppInterface.startServlet(localNewIntent);
-    } while (!QLog.isColorLevel());
-    QLog.d("FaceDetectForThirdPartyServlet", 2, "requestThirdPartyInfo appId=" + paramInt + " qqVersion=" + paramString3 + " lightInfo=" + paramString4);
-  }
-  
   private static void a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, long paramLong, BusinessObserver paramBusinessObserver)
   {
     Appconf.AppConfRequest localAppConfRequest = new Appconf.AppConfRequest();
@@ -145,82 +130,141 @@ public class FaceDetectForThirdPartyServlet
     LoginVerifyServlet.a(paramString1, paramLong, Base64.encodeToString(localAppConfRequest.toByteArray(), 11), new FaceDetectForThirdPartyServlet.1(paramBusinessObserver, paramInt));
   }
   
-  private static int[] a(String paramString)
+  public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, String paramString5, long paramLong, BusinessObserver paramBusinessObserver)
   {
-    int i = 0;
-    try
+    if (IdentificationConstant.d.contains(paramString1))
     {
-      if (TextUtils.isEmpty(paramString)) {
-        return new int[0];
-      }
-      String[] arrayOfString = paramString.split(" ");
-      int[] arrayOfInt = new int[arrayOfString.length];
-      for (;;)
-      {
-        paramString = arrayOfInt;
-        if (i >= arrayOfString.length) {
-          break;
-        }
-        arrayOfInt[i] = Integer.parseInt(arrayOfString[i]);
-        i += 1;
-      }
-      return paramString;
+      a(paramString2, paramInt, paramString3, paramString4, paramString5, paramLong, paramBusinessObserver);
+      return;
     }
-    catch (Exception paramString)
+    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), FaceDetectForThirdPartyServlet.class);
+    localNewIntent.putExtra("qq_version", paramString3);
+    localNewIntent.putExtra("app_id", paramInt);
+    localNewIntent.putExtra("cmd_param", "FaceRecognition.AppConf");
+    localNewIntent.putExtra("light_info", paramString4);
+    localNewIntent.putExtra("tmp_key", paramString5);
+    localNewIntent.putExtra("method", paramString1);
+    localNewIntent.putExtra("nonce", paramLong);
+    localNewIntent.putExtra("uin", paramString2);
+    localNewIntent.setObserver(paramBusinessObserver);
+    paramAppRuntime.startServlet(localNewIntent);
+    if (QLog.isColorLevel())
     {
-      QLog.e("FaceDetectForThirdPartyServlet", 1, "parseAction error : " + paramString.getMessage());
-      paramString = null;
+      paramAppRuntime = new StringBuilder("requestThirdPartyInfo appId=");
+      paramAppRuntime.append(paramInt);
+      paramAppRuntime.append(" qqVersion=");
+      paramAppRuntime.append(paramString3);
+      paramAppRuntime.append(" lightInfo=");
+      paramAppRuntime.append(paramString4);
+      QLog.d("FaceDetectForThirdPartyServlet", 2, paramAppRuntime.toString());
     }
   }
   
-  private static FaceDetectForThirdPartyManager.AppConf b(byte[] paramArrayOfByte)
+  private static int[] a(String paramString)
+  {
+    try
+    {
+      boolean bool = TextUtils.isEmpty(paramString);
+      int i = 0;
+      if (bool) {
+        return new int[0];
+      }
+      paramString = paramString.split(" ");
+      localObject = new int[paramString.length];
+      while (i < paramString.length)
+      {
+        localObject[i] = Integer.parseInt(paramString[i]);
+        i += 1;
+      }
+      return localObject;
+    }
+    catch (Exception paramString)
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("parseAction error : ");
+      ((StringBuilder)localObject).append(paramString.getMessage());
+      QLog.e("FaceDetectForThirdPartyServlet", 1, ((StringBuilder)localObject).toString());
+    }
+    return null;
+  }
+  
+  private static AppConf b(byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte == null)
     {
       QLog.e("FaceDetectForThirdPartyServlet", 1, "getAppConfFromBytes, but data is null");
       return null;
     }
+    label522:
     for (;;)
     {
-      int i;
-      String str1;
-      String str2;
-      int j;
-      String str3;
-      String str4;
-      String str5;
-      ArrayList localArrayList;
-      Object localObject4;
       try
       {
-        localObject2 = new Appconf.AppConfResponse();
-        ((Appconf.AppConfResponse)localObject2).mergeFrom(paramArrayOfByte);
-        localObject1 = ((Appconf.AppConfResponse)localObject2).AppName.get();
-        i = ((Appconf.AppConfResponse)localObject2).Mode.get();
-        str1 = ((Appconf.AppConfResponse)localObject2).ColorSeq.get().toStringUtf8();
-        str2 = ((Appconf.AppConfResponse)localObject2).Session.get();
-        j = ((Appconf.AppConfResponse)localObject2).Ret.get();
-        str3 = ((Appconf.AppConfResponse)localObject2).select_data.get();
-        str4 = ((Appconf.AppConfResponse)localObject2).ErrMsg.get();
-        str5 = ((Appconf.AppConfResponse)localObject2).ActionSeq.get().toStringUtf8();
-        if (!QLog.isDevelopLevel()) {
-          break label532;
-        }
-        paramArrayOfByte = ((Appconf.AppConfResponse)localObject2).Debug.get();
-        localObject3 = ((Appconf.AppConfResponse)localObject2).Wordings.get();
-        localArrayList = new ArrayList(3);
-        if ((localObject3 != null) && (!((List)localObject3).isEmpty()))
+        Object localObject1 = new Appconf.AppConfResponse();
+        ((Appconf.AppConfResponse)localObject1).mergeFrom(paramArrayOfByte);
+        String str6 = ((Appconf.AppConfResponse)localObject1).AppName.get();
+        int i = ((Appconf.AppConfResponse)localObject1).Mode.get();
+        String str1 = ((Appconf.AppConfResponse)localObject1).ColorSeq.get().toStringUtf8();
+        String str2 = ((Appconf.AppConfResponse)localObject1).Session.get();
+        int j = ((Appconf.AppConfResponse)localObject1).Ret.get();
+        String str3 = ((Appconf.AppConfResponse)localObject1).select_data.get();
+        String str4 = ((Appconf.AppConfResponse)localObject1).ErrMsg.get();
+        String str5 = ((Appconf.AppConfResponse)localObject1).ActionSeq.get().toStringUtf8();
+        if (QLog.isDevelopLevel())
         {
-          localObject3 = ((List)localObject3).iterator();
-          if (!((Iterator)localObject3).hasNext()) {
-            break label288;
+          paramArrayOfByte = ((Appconf.AppConfResponse)localObject1).Debug.get();
+          Object localObject2 = ((Appconf.AppConfResponse)localObject1).Wordings.get();
+          ArrayList localArrayList = new ArrayList(3);
+          Object localObject3;
+          if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
+          {
+            localObject2 = ((List)localObject2).iterator();
+            if (((Iterator)localObject2).hasNext())
+            {
+              localObject3 = (Appconf.Wording)((Iterator)localObject2).next();
+              localArrayList.add(new AppConf.AppWordings(((Appconf.Wording)localObject3).serviceType.get(), ((Appconf.Wording)localObject3).Text.get()));
+              continue;
+            }
           }
-          localObject4 = (Appconf.Wording)((Iterator)localObject3).next();
-          localArrayList.add(new FaceDetectForThirdPartyManager.AppWordings(((Appconf.Wording)localObject4).serviceType.get(), ((Appconf.Wording)localObject4).Text.get()));
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          break label288;
+          else if (QLog.isColorLevel())
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("handleFaceDetectResponse list is null appName =");
+            ((StringBuilder)localObject2).append(str6);
+            QLog.d("FaceDetectForThirdPartyServlet", 2, ((StringBuilder)localObject2).toString());
+          }
+          localObject2 = new ArrayList(3);
+          localObject1 = ((Appconf.AppConfResponse)localObject1).protocols.get();
+          if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
+          {
+            localObject1 = ((List)localObject1).iterator();
+            if (((Iterator)localObject1).hasNext())
+            {
+              Object localObject4 = (Appconf.ServiceProtocol)((Iterator)localObject1).next();
+              localObject3 = ((Appconf.ServiceProtocol)localObject4).name.get();
+              localObject4 = ((Appconf.ServiceProtocol)localObject4).url.get();
+              QLog.d("FaceDetectForThirdPartyServlet", 1, new Object[] { "handleFaceDetectResponse ServiceProtocol name=", localObject3, ", url=", localObject4 });
+              if ((TextUtils.isEmpty((CharSequence)localObject3)) || (TextUtils.isEmpty((CharSequence)localObject4))) {
+                break label522;
+              }
+              ((List)localObject2).add(new AppConf.ServiceProtocolSerializable((String)localObject3, (String)localObject4));
+              break label522;
+            }
+          }
+          else
+          {
+            QLog.d("FaceDetectForThirdPartyServlet", 1, "handleFaceDetectResponse rspBody.protocols isEmpty");
+          }
+          localObject1 = new AppConf(str6, localArrayList, i);
+          ((AppConf)localObject1).colorSequence = str1;
+          ((AppConf)localObject1).session = str2;
+          ((AppConf)localObject1).ret = j;
+          ((AppConf)localObject1).errMsg = str4;
+          ((AppConf)localObject1).actionReq = a(str5);
+          ((AppConf)localObject1).debug = paramArrayOfByte;
+          ((AppConf)localObject1).serviceProtocols.addAll((Collection)localObject2);
+          ((AppConf)localObject1).selectData = str3;
+          return localObject1;
         }
       }
       catch (InvalidProtocolBufferMicroException paramArrayOfByte)
@@ -228,37 +272,6 @@ public class FaceDetectForThirdPartyServlet
         QLog.e("FaceDetectForThirdPartyServlet", 1, new Object[] { "appConf merge from data error : ", paramArrayOfByte.getMessage() });
         return null;
       }
-      QLog.d("FaceDetectForThirdPartyServlet", 2, "handleFaceDetectResponse list is null appName =" + (String)localObject1);
-      label288:
-      Object localObject3 = new ArrayList(3);
-      Object localObject2 = ((Appconf.AppConfResponse)localObject2).protocols.get();
-      if ((localObject2 != null) && (!((List)localObject2).isEmpty())) {
-        localObject2 = ((List)localObject2).iterator();
-      }
-      while (((Iterator)localObject2).hasNext())
-      {
-        Object localObject5 = (Appconf.ServiceProtocol)((Iterator)localObject2).next();
-        localObject4 = ((Appconf.ServiceProtocol)localObject5).name.get();
-        localObject5 = ((Appconf.ServiceProtocol)localObject5).url.get();
-        QLog.d("FaceDetectForThirdPartyServlet", 1, new Object[] { "handleFaceDetectResponse ServiceProtocol name=", localObject4, ", url=", localObject5 });
-        if ((!TextUtils.isEmpty((CharSequence)localObject4)) && (!TextUtils.isEmpty((CharSequence)localObject5)))
-        {
-          ((List)localObject3).add(new FaceDetectForThirdPartyManager.ServiceProtocolSerializable((String)localObject4, (String)localObject5));
-          continue;
-          QLog.d("FaceDetectForThirdPartyServlet", 1, "handleFaceDetectResponse rspBody.protocols isEmpty");
-        }
-      }
-      Object localObject1 = new FaceDetectForThirdPartyManager.AppConf((String)localObject1, localArrayList, i);
-      ((FaceDetectForThirdPartyManager.AppConf)localObject1).colorSequence = str1;
-      ((FaceDetectForThirdPartyManager.AppConf)localObject1).session = str2;
-      ((FaceDetectForThirdPartyManager.AppConf)localObject1).ret = j;
-      ((FaceDetectForThirdPartyManager.AppConf)localObject1).errMsg = str4;
-      ((FaceDetectForThirdPartyManager.AppConf)localObject1).actionReq = a(str5);
-      ((FaceDetectForThirdPartyManager.AppConf)localObject1).debug = paramArrayOfByte;
-      ((FaceDetectForThirdPartyManager.AppConf)localObject1).serviceProtocols.addAll((Collection)localObject3);
-      ((FaceDetectForThirdPartyManager.AppConf)localObject1).selectData = str3;
-      return localObject1;
-      label532:
       paramArrayOfByte = null;
     }
   }
@@ -269,32 +282,37 @@ public class FaceDetectForThirdPartyServlet
     if (str2 == null) {
       return;
     }
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
       boolean bool = paramFromServiceMsg.isSuccess();
-      localStringBuilder = new StringBuilder().append("resp:").append(str2).append(" is ");
-      if (!bool) {
-        break label97;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("resp:");
+      localStringBuilder.append(str2);
+      localStringBuilder.append(" is ");
+      String str1;
+      if (bool) {
+        str1 = "";
+      } else {
+        str1 = "not";
       }
+      localStringBuilder.append(str1);
+      localStringBuilder.append(" success");
+      QLog.d("FaceDetectForThirdPartyServlet", 2, localStringBuilder.toString());
     }
-    label97:
-    for (String str1 = "";; str1 = "not")
-    {
-      QLog.d("FaceDetectForThirdPartyServlet", 2, str1 + " success");
-      if (!"FaceRecognition.AppConf".equals(str2)) {
-        break;
-      }
+    if ("FaceRecognition.AppConf".equals(str2)) {
       a(paramIntent, paramFromServiceMsg);
-      return;
     }
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
     String str = paramIntent.getStringExtra("cmd_param");
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceDetectForThirdPartyServlet", 2, "resp:" + str);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("resp:");
+      localStringBuilder.append(str);
+      QLog.d("FaceDetectForThirdPartyServlet", 2, localStringBuilder.toString());
     }
     if ("FaceRecognition.AppConf".equals(str)) {
       a(paramIntent, paramPacket);
@@ -303,7 +321,7 @@ public class FaceDetectForThirdPartyServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.FaceDetectForThirdPartyServlet
  * JD-Core Version:    0.7.0.1
  */

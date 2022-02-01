@@ -40,8 +40,9 @@ public class WrappedArkView
     if (QLog.isColorLevel()) {
       QLog.d("WrappedArkView", 0, "onLoadFailed");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQqdailyWrappedArkView$OnArkViewLoadListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQqdailyWrappedArkView$OnArkViewLoadListener.a(paramString, paramInt, paramBoolean, this.mViewImpl.getViewModel());
+    WrappedArkView.OnArkViewLoadListener localOnArkViewLoadListener = this.jdField_a_of_type_ComTencentMobileqqAppQqdailyWrappedArkView$OnArkViewLoadListener;
+    if (localOnArkViewLoadListener != null) {
+      localOnArkViewLoadListener.a(paramString, paramInt, paramBoolean, this.mViewImpl.getViewModel());
     }
   }
   
@@ -51,8 +52,9 @@ public class WrappedArkView
     if (QLog.isColorLevel()) {
       QLog.d("WrappedArkView", 0, "onLoadSuccess");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQqdailyWrappedArkView$OnArkViewLoadListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQqdailyWrappedArkView$OnArkViewLoadListener.b();
+    WrappedArkView.OnArkViewLoadListener localOnArkViewLoadListener = this.jdField_a_of_type_ComTencentMobileqqAppQqdailyWrappedArkView$OnArkViewLoadListener;
+    if (localOnArkViewLoadListener != null) {
+      localOnArkViewLoadListener.b();
     }
   }
   
@@ -62,8 +64,9 @@ public class WrappedArkView
     if (QLog.isColorLevel()) {
       QLog.d("WrappedArkView", 0, "onLoading");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQqdailyWrappedArkView$OnArkViewLoadListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQqdailyWrappedArkView$OnArkViewLoadListener.a();
+    WrappedArkView.OnArkViewLoadListener localOnArkViewLoadListener = this.jdField_a_of_type_ComTencentMobileqqAppQqdailyWrappedArkView$OnArkViewLoadListener;
+    if (localOnArkViewLoadListener != null) {
+      localOnArkViewLoadListener.a();
     }
   }
   
@@ -74,7 +77,7 @@ public class WrappedArkView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.qqdaily.WrappedArkView
  * JD-Core Version:    0.7.0.1
  */

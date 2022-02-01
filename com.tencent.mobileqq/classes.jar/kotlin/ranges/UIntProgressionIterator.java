@@ -22,30 +22,16 @@ final class UIntProgressionIterator
   private UIntProgressionIterator(int paramInt1, int paramInt2, int paramInt3)
   {
     this.finalElement = paramInt2;
-    if (paramInt3 > 0) {
-      if (UnsignedKt.uintCompare(paramInt1, paramInt2) <= 0)
-      {
-        this.hasNext = bool;
-        this.step = UInt.constructor-impl(paramInt3);
-        if (!this.hasNext) {
-          break label74;
-        }
-      }
+    boolean bool = true;
+    if (paramInt3 > 0 ? UnsignedKt.uintCompare(paramInt1, paramInt2) > 0 : UnsignedKt.uintCompare(paramInt1, paramInt2) < 0) {
+      bool = false;
     }
-    for (;;)
-    {
-      this.next = paramInt1;
-      return;
-      bool = false;
-      break;
-      if (UnsignedKt.uintCompare(paramInt1, paramInt2) >= 0) {
-        break;
-      }
-      bool = false;
-      break;
-      label74:
+    this.hasNext = bool;
+    this.step = UInt.constructor-impl(paramInt3);
+    if (!this.hasNext) {
       paramInt1 = this.finalElement;
     }
+    this.next = paramInt1;
   }
   
   public boolean hasNext()
@@ -58,19 +44,20 @@ final class UIntProgressionIterator
     int i = this.next;
     if (i == this.finalElement)
     {
-      if (!this.hasNext) {
-        throw ((Throwable)new NoSuchElementException());
+      if (this.hasNext)
+      {
+        this.hasNext = false;
+        return i;
       }
-      this.hasNext = false;
-      return i;
+      throw ((Throwable)new NoSuchElementException());
     }
-    this.next = UInt.constructor-impl(this.next + this.step);
+    this.next = UInt.constructor-impl(this.step + i);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.ranges.UIntProgressionIterator
  * JD-Core Version:    0.7.0.1
  */

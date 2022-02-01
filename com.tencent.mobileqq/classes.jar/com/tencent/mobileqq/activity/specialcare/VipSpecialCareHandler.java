@@ -35,19 +35,23 @@ public class VipSpecialCareHandler
   {
     int i = this.jdField_a_of_type_Int - 1;
     this.jdField_a_of_type_Int = i;
+    Object localObject;
     if (i != 0)
     {
-      a("-->warning:special care set,uncorrect state,seq=" + this.jdField_a_of_type_Int);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("-->warning:special care set,uncorrect state,seq=");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      a(((StringBuilder)localObject).toString());
       this.jdField_a_of_type_Int = 0;
     }
     try
     {
-      Bundle localBundle = this.jdField_b_of_type_AndroidOsBundle;
+      localObject = this.jdField_b_of_type_AndroidOsBundle;
       i = paramInt;
       if (paramInt == 0) {
         i = 0;
       }
-      localBundle.putInt("error", i);
+      ((Bundle)localObject).putInt("error", i);
       this.jdField_a_of_type_AndroidOsBundle.putBundle("response", this.jdField_b_of_type_AndroidOsBundle);
       a(this.jdField_a_of_type_AndroidOsBundle);
       return;
@@ -67,11 +71,13 @@ public class VipSpecialCareHandler
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    Object localObject = this.jdField_a_of_type_AndroidOsHandler;
+    if (localObject != null) {
+      ((Handler)localObject).removeMessages(1);
     }
-    if (this.jdField_a_of_type_AndroidOsHandlerThread != null) {
-      this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+    localObject = this.jdField_a_of_type_AndroidOsHandlerThread;
+    if (localObject != null) {
+      ((HandlerThread)localObject).quit();
     }
   }
   
@@ -94,16 +100,16 @@ public class VipSpecialCareHandler
       return;
     }
     this.jdField_a_of_type_Int += 1;
-    a("-->do request,seq=" + this.jdField_a_of_type_Int);
-    ArrayList localArrayList;
-    for (;;)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("-->do request,seq=");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    a(((StringBuilder)localObject).toString());
+    try
     {
-      try
+      a(paramBundle1, paramBundle2);
+      boolean bool = "sepcial_care_delete_ring".equals(paramString);
+      if ((bool) || ("special_care_set_ring".equals(paramString)))
       {
-        a(paramBundle1, paramBundle2);
-        if ((!"sepcial_care_delete_ring".equals(paramString)) && (!"special_care_set_ring".equals(paramString))) {
-          break;
-        }
         paramBundle1 = paramBundle1.getBundle("request");
         int i = paramBundle1.getInt("id", 1);
         paramBundle2 = paramBundle1.getString("uin");
@@ -113,83 +119,97 @@ public class VipSpecialCareHandler
         }
         paramBundle2 = new ArrayList();
         paramBundle2.add(paramBundle1);
-        localArrayList = new ArrayList();
-        localArrayList.add(String.valueOf(i));
+        localObject = new ArrayList();
+        ((List)localObject).add(String.valueOf(i));
         if (this.jdField_a_of_type_AndroidOsHandler != null) {
           this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 90000L);
         }
-        if (!"special_care_set_ring".equals(paramString)) {
-          break label288;
-        }
-        if (i == 1)
+        if ("special_care_set_ring".equals(paramString))
         {
-          QvipSpecialCareManager.a(paramBundle2, 2, localArrayList, paramQQAppInterface);
+          if (i == 1) {
+            QvipSpecialCareUtil.a(paramBundle2, 2, (List)localObject, paramQQAppInterface);
+          } else {
+            QvipSpecialCareUtil.a(paramBundle2, 3, (List)localObject, paramQQAppInterface);
+          }
           paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
-          paramString = "specialcare_already_set" + paramBundle1;
+          paramString = new StringBuilder();
+          paramString.append("specialcare_already_set");
+          paramString.append(paramBundle1);
+          paramString = paramString.toString();
           paramQQAppInterface.edit().putBoolean(paramString, true).commit();
           return;
         }
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        paramQQAppInterface.printStackTrace();
-        this.jdField_a_of_type_Int = 0;
+        QvipSpecialCareUtil.a(paramBundle2, 4, (List)localObject, paramQQAppInterface);
         return;
       }
-      QvipSpecialCareManager.a(paramBundle2, 3, localArrayList, paramQQAppInterface);
     }
-    label288:
-    QvipSpecialCareManager.a(paramBundle2, 4, localArrayList, paramQQAppInterface);
+    catch (Exception paramQQAppInterface)
+    {
+      paramQQAppInterface.printStackTrace();
+      this.jdField_a_of_type_Int = 0;
+    }
   }
   
   public void a(Object paramObject)
   {
-    if (paramObject != null) {
-      switch (((Integer)paramObject).intValue())
-      {
-      }
-    }
-    for (;;)
+    if (paramObject != null)
     {
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      int i = ((Integer)paramObject).intValue();
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i == 4) {
+            a("-->method_type_delete_sound");
+          }
+        }
+        else {
+          a("-->method_type_set_sound");
+        }
       }
-      a(0);
-      return;
-      a("-->method_type_open_switch");
-      continue;
-      a("-->method_type_set_sound");
-      continue;
-      a("-->method_type_delete_sound");
+      else {
+        a("-->method_type_open_switch");
+      }
     }
+    paramObject = this.jdField_a_of_type_AndroidOsHandler;
+    if (paramObject != null) {
+      paramObject.removeMessages(1);
+    }
+    a(0);
   }
   
   public void b(Object paramObject)
   {
-    int i = -1;
+    int i;
     if (paramObject != null)
     {
       i = ((Integer)paramObject).intValue();
-      if (i != 10010) {
-        break label48;
+      if (i == 10010)
+      {
+        a("-->error:set quota limit");
       }
-      a("-->error:set quota limit");
+      else
+      {
+        paramObject = new StringBuilder();
+        paramObject.append("-->error:");
+        paramObject.append(i);
+        a(paramObject.toString());
+      }
     }
-    for (;;)
+    else
     {
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      }
-      a(i);
-      return;
-      label48:
-      a("-->error:" + i);
+      i = -1;
     }
+    paramObject = this.jdField_a_of_type_AndroidOsHandler;
+    if (paramObject != null) {
+      paramObject.removeMessages(1);
+    }
+    a(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.VipSpecialCareHandler
  * JD-Core Version:    0.7.0.1
  */

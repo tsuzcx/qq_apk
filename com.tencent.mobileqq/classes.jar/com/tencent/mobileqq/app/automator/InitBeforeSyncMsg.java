@@ -3,6 +3,7 @@ package com.tencent.mobileqq.app.automator;
 import android.util.Log;
 import com.tencent.biz.pubaccount.ecshopassit.EcshopReportHandler;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
@@ -12,46 +13,46 @@ import com.tencent.mobileqq.app.proxy.ProxyManager;
 public class InitBeforeSyncMsg
   extends AsyncStep
 {
-  protected int a()
+  protected int doStep()
   {
     long l1 = System.currentTimeMillis();
-    Object localObject;
-    if (this.b == 14)
+    if (this.mStepId == 14)
     {
-      this.a.a.initConfig(this.a.a.getCurrentAccountUin());
-      this.a.a.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
-      this.a.a.getProxyManager().start();
-      this.a.a.getCacheManager().init();
-      localObject = (EcshopReportHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.EC_SHOP_REPORT_HANDLER);
-      this.a.a.addObserver(((EcshopReportHandler)localObject).a, true);
-      localObject = this.a.a.getMsgHandler();
-      if (this.b != 15) {
-        break label234;
-      }
+      this.mAutomator.a.initConfig(this.mAutomator.a.getCurrentAccountUin());
+      this.mAutomator.a.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
+      this.mAutomator.a.getProxyManager().start();
+      this.mAutomator.a.getCacheManager().init();
     }
-    label234:
-    for (int i = 2;; i = 1)
+    else if (this.mStepId == 15)
     {
-      ((MessageHandler)localObject).a(i);
-      if (this.b != 15)
-      {
-        this.a.a.getMsgHandler().a();
-        this.a.a.getMsgHandler().c = false;
-      }
-      long l2 = System.currentTimeMillis();
-      Log.i("AutoMonitor", "STEP_DOSOMETHING, cost=" + (l2 - l1));
-      return 7;
-      if (this.b != 15) {
-        break;
-      }
-      this.a.a.getMsgHandler().e();
-      break;
+      this.mAutomator.a.getMsgHandler().m();
     }
+    Object localObject2 = (EcshopReportHandler)this.mAutomator.a.getBusinessHandler(BusinessHandlerFactory.EC_SHOP_REPORT_HANDLER);
+    Object localObject1 = this.mAutomator.a;
+    localObject2 = ((EcshopReportHandler)localObject2).a;
+    int i = 1;
+    ((QQAppInterface)localObject1).addObserver((BusinessObserver)localObject2, true);
+    localObject1 = this.mAutomator.a.getMsgHandler();
+    if (this.mStepId == 15) {
+      i = 2;
+    }
+    ((MessageHandler)localObject1).c(i);
+    if (this.mStepId != 15)
+    {
+      this.mAutomator.a.getMsgHandler().h();
+      this.mAutomator.a.getMsgHandler().a.d = false;
+    }
+    long l2 = System.currentTimeMillis();
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("STEP_DOSOMETHING, cost=");
+    ((StringBuilder)localObject1).append(l2 - l1);
+    Log.i("AutoMonitor", ((StringBuilder)localObject1).toString());
+    return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.InitBeforeSyncMsg
  * JD-Core Version:    0.7.0.1
  */

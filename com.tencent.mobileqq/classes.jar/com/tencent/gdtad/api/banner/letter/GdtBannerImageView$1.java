@@ -12,27 +12,27 @@ class GdtBannerImageView$1
   
   public void a(URLDrawable paramURLDrawable)
   {
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
-    for (paramURLDrawable = paramURLDrawable.getURL().toString();; paramURLDrawable = null)
-    {
-      GdtLog.b("GdtBannerImageView", String.format("onLoadSuccessful %s", new Object[] { paramURLDrawable }));
-      return;
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {
+      paramURLDrawable = paramURLDrawable.getURL().toString();
+    } else {
+      paramURLDrawable = null;
     }
+    GdtLog.b("GdtBannerImageView", String.format("onLoadSuccessful %s", new Object[] { paramURLDrawable }));
   }
   
   public void b(URLDrawable paramURLDrawable)
   {
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
-    for (paramURLDrawable = paramURLDrawable.getURL().toString();; paramURLDrawable = null)
-    {
-      GdtLog.b("GdtBannerImageView", String.format("onLoadFailed %s", new Object[] { paramURLDrawable }));
-      return;
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {
+      paramURLDrawable = paramURLDrawable.getURL().toString();
+    } else {
+      paramURLDrawable = null;
     }
+    GdtLog.b("GdtBannerImageView", String.format("onLoadFailed %s", new Object[] { paramURLDrawable }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.api.banner.letter.GdtBannerImageView.1
  * JD-Core Version:    0.7.0.1
  */

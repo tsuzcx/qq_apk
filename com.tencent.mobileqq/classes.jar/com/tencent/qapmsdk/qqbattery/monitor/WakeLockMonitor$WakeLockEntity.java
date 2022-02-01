@@ -64,11 +64,15 @@ class WakeLockMonitor$WakeLockEntity
   
   public Pair<Boolean, List<HighFrequencyDetector.Action>> onAcquire(PowerManager.WakeLock paramWakeLock, String paramString, long paramLong)
   {
-    boolean bool = false;
+    boolean bool;
     if (!paramWakeLock.isHeld())
     {
       bool = true;
       this.firstAcquireTimeStamp = SystemClock.uptimeMillis();
+    }
+    else
+    {
+      bool = false;
     }
     this.detector1.onAction(paramString);
     return new Pair(Boolean.valueOf(bool), this.detector2.onAction(paramString));
@@ -76,26 +80,25 @@ class WakeLockMonitor$WakeLockEntity
   
   public Pair<Boolean, Long> onRelease(PowerManager.WakeLock paramWakeLock, int paramInt)
   {
-    long l;
-    boolean bool;
-    if ((!paramWakeLock.isHeld()) && (this.firstAcquireTimeStamp != 0L))
+    boolean bool = paramWakeLock.isHeld();
+    long l = 0L;
+    if ((!bool) && (this.firstAcquireTimeStamp != 0L))
     {
+      bool = true;
       l = SystemClock.uptimeMillis() - this.firstAcquireTimeStamp;
       this.firstAcquireTimeStamp = 0L;
       this.holdTime = l;
-      bool = true;
     }
-    for (;;)
+    else
     {
-      return new Pair(Boolean.valueOf(bool), Long.valueOf(l));
       bool = false;
-      l = 0L;
     }
+    return new Pair(Boolean.valueOf(bool), Long.valueOf(l));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.qqbattery.monitor.WakeLockMonitor.WakeLockEntity
  * JD-Core Version:    0.7.0.1
  */

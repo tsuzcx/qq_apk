@@ -14,9 +14,7 @@ final class d
   
   public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    switch (paramInt)
-    {
-    default: 
+    if ((paramInt != 2) && (paramInt != 3) && (paramInt != 4) && (paramInt != 5) && (paramInt != 6)) {
       return false;
     }
     try
@@ -25,21 +23,18 @@ final class d
       paramTextView.put("inputId", a.a(this.c));
       paramTextView.put("value", this.a.getText().toString());
       this.b.evaluateSubcribeJS("onKeyboardConfirm", paramTextView.toString(), this.b.pageWebviewId);
-      this.c.a(true);
-      return true;
     }
     catch (JSONException paramTextView)
     {
-      for (;;)
-      {
-        paramTextView.printStackTrace();
-      }
+      paramTextView.printStackTrace();
     }
+    this.c.a(true);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.input.d
  * JD-Core Version:    0.7.0.1
  */

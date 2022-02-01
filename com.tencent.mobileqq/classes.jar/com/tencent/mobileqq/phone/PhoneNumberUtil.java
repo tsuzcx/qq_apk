@@ -12,15 +12,19 @@ public class PhoneNumberUtil
   
   public static PhoneNumberInfo a(String paramString)
   {
-    String str1 = "";
-    String str2 = "";
+    Object localObject;
     if (!TextUtils.isEmpty(paramString))
     {
-      paramString = a(paramString);
-      str1 = (String)paramString.get(0);
-      str2 = (String)paramString.get(1);
+      localObject = a(paramString);
+      paramString = (String)((ArrayList)localObject).get(0);
+      localObject = (String)((ArrayList)localObject).get(1);
     }
-    return new PhoneNumberInfo(str1, "", str2);
+    else
+    {
+      localObject = "";
+      paramString = (String)localObject;
+    }
+    return new PhoneNumberInfo(paramString, "", (String)localObject);
   }
   
   public static ArrayList<String> a(String paramString)
@@ -29,45 +33,49 @@ public class PhoneNumberUtil
     if (!TextUtils.isEmpty(paramString))
     {
       paramString = paramString.replace(" ", "");
-      Iterator localIterator;
+      Object localObject;
       int i;
+      StringBuilder localStringBuilder;
       if (paramString.startsWith("+"))
       {
-        localIterator = a.iterator();
-        while (localIterator.hasNext())
+        localObject = a.iterator();
+        do
         {
-          i = ((Integer)localIterator.next()).intValue();
-          if (paramString.startsWith("+" + i))
-          {
-            localArrayList.add(String.valueOf(i));
-            localArrayList.add(paramString.replace("+" + i, ""));
-            break label170;
-          }
-        }
-      }
-      for (;;)
-      {
-        if (localArrayList.size() < 2)
-        {
-          localArrayList.add("");
-          localArrayList.add(paramString);
-        }
-        return localArrayList;
-        if (paramString.startsWith("00"))
-        {
-          localIterator = a.iterator();
-          label170:
-          if (!localIterator.hasNext()) {
-            continue;
-          }
-          i = ((Integer)localIterator.next()).intValue();
-          if (!paramString.startsWith("00" + i)) {
+          if (!((Iterator)localObject).hasNext()) {
             break;
           }
-          localArrayList.add(String.valueOf(i));
-          localArrayList.add(paramString.replace("00" + i, ""));
-          continue;
-        }
+          i = ((Integer)((Iterator)localObject).next()).intValue();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("+");
+          localStringBuilder.append(i);
+        } while (!paramString.startsWith(localStringBuilder.toString()));
+        localArrayList.add(String.valueOf(i));
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("+");
+        ((StringBuilder)localObject).append(i);
+        localArrayList.add(paramString.replace(((StringBuilder)localObject).toString(), ""));
+      }
+      else if (paramString.startsWith("00"))
+      {
+        localObject = a.iterator();
+        do
+        {
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+          i = ((Integer)((Iterator)localObject).next()).intValue();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("00");
+          localStringBuilder.append(i);
+        } while (!paramString.startsWith(localStringBuilder.toString()));
+        localArrayList.add(String.valueOf(i));
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("00");
+        ((StringBuilder)localObject).append(i);
+        localArrayList.add(paramString.replace(((StringBuilder)localObject).toString(), ""));
+      }
+      else
+      {
         i = paramString.indexOf("-");
         if (i > 0)
         {
@@ -80,15 +88,24 @@ public class PhoneNumberUtil
           localArrayList.add(paramString);
         }
       }
+      if (localArrayList.size() < 2)
+      {
+        localArrayList.add("");
+        localArrayList.add(paramString);
+        return localArrayList;
+      }
     }
-    localArrayList.add("");
-    localArrayList.add("");
+    else
+    {
+      localArrayList.add("");
+      localArrayList.add("");
+    }
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.phone.PhoneNumberUtil
  * JD-Core Version:    0.7.0.1
  */

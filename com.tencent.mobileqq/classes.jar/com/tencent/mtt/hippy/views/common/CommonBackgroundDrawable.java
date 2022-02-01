@@ -20,10 +20,31 @@ public class CommonBackgroundDrawable
       super.setBorderWidth(PixelUtil.dp2px(paramFloat), paramInt);
     }
   }
+  
+  public void setShadowOffsetX(float paramFloat)
+  {
+    if (!c.a(paramFloat)) {
+      super.setShadowOffsetX(PixelUtil.dp2px(paramFloat));
+    }
+  }
+  
+  public void setShadowOffsetY(float paramFloat)
+  {
+    if (!c.a(paramFloat)) {
+      super.setShadowOffsetY(PixelUtil.dp2px(paramFloat));
+    }
+  }
+  
+  public void setShadowRadius(float paramFloat)
+  {
+    if (!c.a(paramFloat)) {
+      super.setShadowRadius(PixelUtil.dp2px(paramFloat));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.common.CommonBackgroundDrawable
  * JD-Core Version:    0.7.0.1
  */

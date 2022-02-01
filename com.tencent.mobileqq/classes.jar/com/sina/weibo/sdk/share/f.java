@@ -23,7 +23,9 @@ public final class f
     }
     Bundle localBundle = new Bundle();
     localBundle.putInt("_weibo_command_type", 1);
-    localBundle.putString("_weibo_transaction", System.currentTimeMillis());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(System.currentTimeMillis());
+    localBundle.putString("_weibo_transaction", localStringBuilder.toString());
     localBundle.putAll(paramWeiboMultiMessage.writeToBundle(localBundle));
     paramWeiboMultiMessage = new Intent(localActivity, ShareTransActivity.class);
     paramWeiboMultiMessage.putExtra("start_flag", 0);

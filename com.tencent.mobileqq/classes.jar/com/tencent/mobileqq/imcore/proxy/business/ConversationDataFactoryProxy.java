@@ -8,10 +8,11 @@ public class ConversationDataFactoryProxy
   
   public static int a(BaseQQAppInterface paramBaseQQAppInterface, int paramInt)
   {
-    if (a == null) {
+    ConversationDataFactoryProxy.Proxy localProxy = a;
+    if (localProxy == null) {
       return paramInt;
     }
-    return a.a(paramBaseQQAppInterface, paramInt);
+    return localProxy.a(paramBaseQQAppInterface, paramInt);
   }
   
   public static void a(ConversationDataFactoryProxy.Proxy paramProxy)
@@ -21,7 +22,7 @@ public class ConversationDataFactoryProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.proxy.business.ConversationDataFactoryProxy
  * JD-Core Version:    0.7.0.1
  */

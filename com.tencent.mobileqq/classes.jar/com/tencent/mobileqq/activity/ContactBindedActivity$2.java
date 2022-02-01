@@ -17,12 +17,12 @@ class ContactBindedActivity$2
       return;
     }
     super.applyTransformation(paramFloat, paramTransformation);
-    paramTransformation.setAlpha(0.0F + 1.0F * paramFloat);
+    paramTransformation.setAlpha(paramFloat * 1.0F + 0.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ContactBindedActivity.2
  * JD-Core Version:    0.7.0.1
  */

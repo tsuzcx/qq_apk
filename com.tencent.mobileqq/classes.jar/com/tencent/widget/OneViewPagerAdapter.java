@@ -1,65 +1,49 @@
 package com.tencent.widget;
 
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 
 public abstract class OneViewPagerAdapter
   extends PagerAdapter
   implements ViewPager.OnPageChangeListener
 {
-  private int jdField_a_of_type_Int = 0;
-  ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
-  SparseArray<View> b = new SparseArray();
+  private int mPageScrollState = 0;
+  ViewPager mViewPager;
+  SparseArray<View> mViews = new SparseArray();
   
   public OneViewPagerAdapter(ViewPager paramViewPager)
   {
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = paramViewPager;
-  }
-  
-  public abstract View a(int paramInt);
-  
-  public abstract void a(Object paramObject, int paramInt);
-  
-  public abstract void b(Object paramObject, int paramInt);
-  
-  public void c(int paramInt)
-  {
-    if (paramInt >= getCount()) {}
-    View localView;
-    do
-    {
-      return;
-      localView = (View)this.b.get(paramInt);
-    } while (localView == null);
-    a(localView, paramInt);
+    this.mViewPager = paramViewPager;
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
     paramViewGroup.removeView((View)paramObject);
-    this.b.remove(paramInt);
+    this.mViews.remove(paramInt);
   }
+  
+  public abstract View getView(int paramInt);
+  
+  public abstract void initView(Object paramObject, int paramInt);
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    Object localObject = a(paramInt);
-    if (localObject == null) {
+    View localView = getView(paramInt);
+    Object localObject = localView;
+    if (localView == null) {
       localObject = new FrameLayout(paramViewGroup.getContext());
     }
-    for (;;)
-    {
-      if (((ViewPager)paramViewGroup).getCurrentItem() == paramInt) {
-        a(localObject, paramInt);
-      }
-      paramViewGroup.addView((View)localObject);
-      this.b.put(paramInt, localObject);
-      return localObject;
+    if (((ViewPager)paramViewGroup).getCurrentItem() == paramInt) {
+      initView(localObject, paramInt);
     }
+    paramViewGroup.addView((View)localObject);
+    this.mViews.put(paramInt, localObject);
+    return localObject;
   }
   
   public boolean isViewFromObject(View paramView, Object paramObject)
@@ -67,21 +51,32 @@ public abstract class OneViewPagerAdapter
     return paramView == paramObject;
   }
   
+  public void loadView(int paramInt)
+  {
+    if (paramInt >= getCount()) {
+      return;
+    }
+    View localView = (View)this.mViews.get(paramInt);
+    if (localView != null) {
+      initView(localView, paramInt);
+    }
+  }
+  
   public void onPageScrollStateChanged(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Int == 0)
+    this.mPageScrollState = paramInt;
+    if (this.mPageScrollState == 0)
     {
-      int i = this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem();
+      int i = this.mViewPager.getCurrentItem();
       paramInt = 0;
-      while (paramInt < this.b.size())
+      while (paramInt < this.mViews.size())
       {
-        int j = this.b.keyAt(paramInt);
+        int j = this.mViews.keyAt(paramInt);
         if (j != i)
         {
-          View localView = (View)this.b.valueAt(paramInt);
+          View localView = (View)this.mViews.valueAt(paramInt);
           if (localView != null) {
-            b(localView, j);
+            unInitView(localView, j);
           }
         }
         paramInt += 1;
@@ -91,41 +86,42 @@ public abstract class OneViewPagerAdapter
   
   public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    if (this.jdField_a_of_type_Int == 1)
+    if (this.mPageScrollState == 1)
     {
-      if (paramInt1 >= this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem()) {
-        break label25;
+      if (paramInt1 < this.mViewPager.getCurrentItem())
+      {
+        loadView(paramInt1);
+        return;
       }
-      c(paramInt1);
+      if (paramInt1 == this.mViewPager.getCurrentItem()) {
+        loadView(paramInt1 + 1);
+      }
     }
-    label25:
-    while (paramInt1 != this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem()) {
-      return;
-    }
-    c(paramInt1 + 1);
   }
   
   public void onPageSelected(int paramInt)
   {
-    c(paramInt);
+    loadView(paramInt);
     int i = 0;
-    while (i < this.b.size())
+    while (i < this.mViews.size())
     {
-      int j = this.b.keyAt(i);
+      int j = this.mViews.keyAt(i);
       if (j != paramInt)
       {
-        View localView = (View)this.b.valueAt(i);
+        View localView = (View)this.mViews.valueAt(i);
         if (localView != null) {
-          b(localView, j);
+          unInitView(localView, j);
         }
       }
       i += 1;
     }
   }
+  
+  public abstract void unInitView(Object paramObject, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.OneViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

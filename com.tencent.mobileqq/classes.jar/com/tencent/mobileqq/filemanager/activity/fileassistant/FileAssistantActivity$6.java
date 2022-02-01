@@ -1,25 +1,28 @@
 package com.tencent.mobileqq.filemanager.activity.fileassistant;
 
-import com.tencent.mobileqq.startup.step.CheckPermission.SDCardPermissionCallback;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 class FileAssistantActivity$6
-  implements CheckPermission.SDCardPermissionCallback
+  extends Handler
 {
-  FileAssistantActivity$6(FileAssistantActivity paramFileAssistantActivity) {}
-  
-  public void a()
+  FileAssistantActivity$6(FileAssistantActivity paramFileAssistantActivity, Looper paramLooper)
   {
-    FileAssistantActivity.c(this.a);
+    super(paramLooper);
   }
   
-  public void b()
+  public void handleMessage(Message paramMessage)
   {
-    FileAssistantActivity.c(this.a);
+    if (paramMessage.what != 1) {
+      return;
+    }
+    FileAssistantActivity.e(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity.6
  * JD-Core Version:    0.7.0.1
  */

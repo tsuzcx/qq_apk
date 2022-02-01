@@ -47,33 +47,33 @@ public class LoadingMoreWidget$ScrollListener
   public void b(int paramInt)
   {
     SLog.a("Q.qqstory.playernew.LoadingMoreWidget", "onPageScrollStateChanged newState=%d visible=%d", Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetLoadingMoreWidget.a()));
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetLoadingMoreWidget.a() != 0) {}
-    do
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetLoadingMoreWidget.a() != 0) {
+      return;
+    }
+    if (paramInt == 1)
     {
-      do
-      {
-        return;
-        if (paramInt == 1)
-        {
-          this.jdField_a_of_type_Float = -1.0F;
-          this.b = -1;
-          this.c = -1;
-          this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetLoadingMoreWidget.a.clearAnimation();
-          return;
-        }
-      } while (paramInt != 0);
+      this.jdField_a_of_type_Float = -1.0F;
+      this.b = -1;
+      this.c = -1;
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetLoadingMoreWidget.a.clearAnimation();
+      return;
+    }
+    if (paramInt == 0)
+    {
       if (this.jdField_a_of_type_Float < 0.5D)
       {
         this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetLoadingMoreWidget.a.setTranslationY(0.0F);
         return;
       }
-    } while (this.c == -1);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetLoadingMoreWidget.a.setTranslationY(this.jdField_a_of_type_Int);
+      if (this.c != -1) {
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetLoadingMoreWidget.a.setTranslationY(this.jdField_a_of_type_Int);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.LoadingMoreWidget.ScrollListener
  * JD-Core Version:    0.7.0.1
  */

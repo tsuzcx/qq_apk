@@ -9,15 +9,24 @@ final class Const$1
 {
   public int a(ITime paramITime1, ITime paramITime2)
   {
-    if (paramITime1.getConfigTime().begin == paramITime2.getConfigTime().begin) {
-      return Const.a(paramITime1.getConfigTime().end, paramITime2.getConfigTime().end);
+    long l1;
+    long l2;
+    if (paramITime1.getConfigTime().begin == paramITime2.getConfigTime().begin)
+    {
+      l1 = paramITime1.getConfigTime().end;
+      l2 = paramITime2.getConfigTime().end;
     }
-    return Const.a(paramITime1.getConfigTime().begin, paramITime2.getConfigTime().begin);
+    else
+    {
+      l1 = paramITime1.getConfigTime().begin;
+      l2 = paramITime2.getConfigTime().begin;
+    }
+    return Const.a(l1, l2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.Const.1
  * JD-Core Version:    0.7.0.1
  */

@@ -25,15 +25,18 @@ public class GetShareGroupListRequest
   
   public BaseResponse a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspShareVideoCollectionList localRspShareVideoCollectionList = new qqstory_service.RspShareVideoCollectionList();
+    Object localObject = new qqstory_service.RspShareVideoCollectionList();
     try
     {
-      localRspShareVideoCollectionList.mergeFrom(paramArrayOfByte);
-      return new GetShareGroupListResponse(this.jdField_b_of_type_JavaLangString, localRspShareVideoCollectionList);
+      ((qqstory_service.RspShareVideoCollectionList)localObject).mergeFrom(paramArrayOfByte);
+      return new GetShareGroupListResponse(this.jdField_b_of_type_JavaLangString, (qqstory_service.RspShareVideoCollectionList)localObject);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      SLog.d("Q.qqstory:GetShareGroupListRequest", "" + paramArrayOfByte);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(paramArrayOfByte);
+      SLog.d("Q.qqstory:GetShareGroupListRequest", ((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -43,7 +46,7 @@ public class GetShareGroupListRequest
     return StoryApi.a("StorySvc.get_share_group_collection_list");
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqShareVideoCollectionList localReqShareVideoCollectionList = new qqstory_service.ReqShareVideoCollectionList();
     if (!TextUtils.isEmpty(this.a)) {
@@ -60,12 +63,26 @@ public class GetShareGroupListRequest
   
   public String toString()
   {
-    return "GetShareGroupListRequest{startCookie='" + this.a + '\'' + ", collectionCount=" + this.c + ", collectionVideoCount=" + this.d + ", seqno=" + this.jdField_b_of_type_Long + ", unionId='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetShareGroupListRequest{startCookie='");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", collectionCount=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", collectionVideoCount=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", seqno=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", unionId='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetShareGroupListRequest
  * JD-Core Version:    0.7.0.1
  */

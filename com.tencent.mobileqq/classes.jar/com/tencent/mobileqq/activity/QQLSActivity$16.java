@@ -16,29 +16,39 @@ class QQLSActivity$16
       if (QQLSActivity.a(this.this$0) == 1)
       {
         BaseApplicationImpl.getContext().unregisterReceiver(this.this$0.a);
-        if (QLog.isColorLevel()) {
-          QLog.d("QQLSActivity", 2, "unRegisterScreenListener real mScreenReceiver:" + this.this$0.a.hashCode() + "context :" + BaseApplicationImpl.getContext().hashCode());
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("unRegisterScreenListener real mScreenReceiver:");
+          localStringBuilder1.append(this.this$0.a.hashCode());
+          localStringBuilder1.append("context :");
+          localStringBuilder1.append(BaseApplicationImpl.getContext().hashCode());
+          QLog.d("QQLSActivity", 2, localStringBuilder1.toString());
         }
         QQLSActivity.a(this.this$0, 0);
       }
-      if (QLog.isColorLevel()) {
+      if (QLog.isColorLevel())
+      {
         QLog.d("QQLSActivity", 2, "unRegisterScreenListener");
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      do
+      localException.printStackTrace();
+      if (QLog.isColorLevel())
       {
-        localException.printStackTrace();
-      } while (!QLog.isColorLevel());
-      QLog.e("QQLSActivity", 2, "unRegisterScreenListener:" + localException.toString());
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("unRegisterScreenListener:");
+        localStringBuilder2.append(localException.toString());
+        QLog.e("QQLSActivity", 2, localStringBuilder2.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.16
  * JD-Core Version:    0.7.0.1
  */

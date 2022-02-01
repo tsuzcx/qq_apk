@@ -16,14 +16,14 @@ class MarketFaceItemBuilder$8$1
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$8.this$0.a.remove(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$8.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq));
       MarketFaceItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$8.this$0, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$8.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$8.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
       if (!this.jdField_a_of_type_Boolean) {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$8.this$0.b, 1, 2131689949, 0).a();
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$8.this$0.b, 1, 2131689864, 0).a();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.8.1
  * JD-Core Version:    0.7.0.1
  */

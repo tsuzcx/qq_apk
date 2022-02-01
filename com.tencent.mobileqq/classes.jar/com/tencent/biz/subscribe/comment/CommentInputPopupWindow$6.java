@@ -1,5 +1,6 @@
 package com.tencent.biz.subscribe.comment;
 
+import android.content.Context;
 import android.text.Editable;
 import android.text.SpannableStringBuilder;
 import android.text.TextWatcher;
@@ -18,45 +19,55 @@ class CommentInputPopupWindow$6
       return;
     }
     CommentInputPopupWindow.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentInputPopupWindow).removeTextChangedListener(this);
+    Object localObject;
+    StringBuilder localStringBuilder;
     if (paramEditable.length() > CommentInputPopupWindow.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentInputPopupWindow))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentInputPopupWindow.getContext(), HardCodeUtil.a(2131702235) + CommentInputPopupWindow.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentInputPopupWindow) + HardCodeUtil.a(2131702236), 0).a();
-      paramEditable.delete(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.b);
-      CommentInputPopupWindow.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentInputPopupWindow).addTextChangedListener(this);
-      return;
+      localObject = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentInputPopupWindow.getContext();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(HardCodeUtil.a(2131702369));
+      localStringBuilder.append(CommentInputPopupWindow.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentInputPopupWindow));
+      localStringBuilder.append(HardCodeUtil.a(2131702370));
+      QQToast.a((Context)localObject, localStringBuilder.toString(), 0).a();
+      i = this.jdField_a_of_type_Int;
+      paramEditable.delete(i, this.b + i);
     }
-    Object localObject1 = paramEditable.toString().substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.b);
-    int i = ((String)localObject1).indexOf('/');
-    if ((i >= 0) && (i < ((String)localObject1).length() - 1))
+    else
     {
-      localObject1 = new SpannableStringBuilder(paramEditable.toString());
-      EmoWindow.a(CommentInputPopupWindow.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentInputPopupWindow).getContext(), (SpannableStringBuilder)localObject1);
-    }
-    for (;;)
-    {
-      for (;;)
+      localStringBuilder = null;
+      localObject = paramEditable.toString();
+      i = this.jdField_a_of_type_Int;
+      String str = ((String)localObject).substring(i, this.b + i);
+      i = str.indexOf('/');
+      localObject = localStringBuilder;
+      if (i >= 0)
       {
-        if (localObject1 != null) {
-          i = CommentInputPopupWindow.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentInputPopupWindow).getSelectionEnd();
-        }
-        try
+        localObject = localStringBuilder;
+        if (i < str.length() - 1)
         {
-          CommentInputPopupWindow.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentInputPopupWindow).setText((CharSequence)localObject1);
-          CommentInputPopupWindow.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentInputPopupWindow).setSelection(i);
-          this.b = 0;
-          this.jdField_a_of_type_Int = 0;
-        }
-        catch (ArrayIndexOutOfBoundsException localArrayIndexOutOfBoundsException)
-        {
-          for (;;)
-          {
-            CommentInputPopupWindow.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentInputPopupWindow).setText(paramEditable.toString());
-            i = paramEditable.toString().length();
-          }
+          localObject = new SpannableStringBuilder(paramEditable.toString());
+          EmoWindow.a(CommentInputPopupWindow.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentInputPopupWindow).getContext(), (SpannableStringBuilder)localObject);
         }
       }
-      Object localObject2 = null;
+      if (localObject != null) {
+        i = CommentInputPopupWindow.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentInputPopupWindow).getSelectionEnd();
+      }
     }
+    try
+    {
+      CommentInputPopupWindow.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentInputPopupWindow).setText((CharSequence)localObject);
+    }
+    catch (ArrayIndexOutOfBoundsException localArrayIndexOutOfBoundsException)
+    {
+      label230:
+      break label230;
+    }
+    CommentInputPopupWindow.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentInputPopupWindow).setText(paramEditable.toString());
+    int i = paramEditable.toString().length();
+    CommentInputPopupWindow.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentInputPopupWindow).setSelection(i);
+    this.b = 0;
+    this.jdField_a_of_type_Int = 0;
+    CommentInputPopupWindow.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentInputPopupWindow).addTextChangedListener(this);
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -72,7 +83,7 @@ class CommentInputPopupWindow$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.CommentInputPopupWindow.6
  * JD-Core Version:    0.7.0.1
  */

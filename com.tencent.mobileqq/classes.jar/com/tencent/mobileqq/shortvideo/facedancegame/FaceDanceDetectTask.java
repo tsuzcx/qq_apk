@@ -56,76 +56,147 @@ public class FaceDanceDetectTask
   
   public static void logBoyWithMessage(GLLittleBoy paramGLLittleBoy, String paramString)
   {
-    String str = "" + paramString + " ";
-    paramString = str;
-    if (paramGLLittleBoy != null) {
-      paramString = str + "boyinfo id=" + paramGLLittleBoy.getDanceData().id + " needMatched=" + paramGLLittleBoy.needDoMatch() + " isMatched=" + paramGLLittleBoy.isMatched() + " appearTime=" + paramGLLittleBoy.getDanceData().appearTime;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(" ");
+    localObject = ((StringBuilder)localObject).toString();
+    paramString = (String)localObject;
+    if (paramGLLittleBoy != null)
+    {
+      paramString = new StringBuilder();
+      paramString.append((String)localObject);
+      paramString.append("boyinfo id=");
+      paramString.append(paramGLLittleBoy.getDanceData().id);
+      paramString.append(" needMatched=");
+      paramString.append(paramGLLittleBoy.needDoMatch());
+      paramString.append(" isMatched=");
+      paramString.append(paramGLLittleBoy.isMatched());
+      paramString.append(" appearTime=");
+      paramString.append(paramGLLittleBoy.getDanceData().appearTime);
+      paramString = paramString.toString();
     }
     loginfo(paramString);
   }
   
   public static void logFaceInfo(List<PointF> paramList, float[] paramArrayOfFloat, String paramString)
   {
-    paramString = "" + paramString + " ";
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(" ");
+    paramString = ((StringBuilder)localObject).toString();
     if ((paramList != null) && (paramList.size() > 0))
     {
-      paramString = paramString + "expressionFeat [";
-      Iterator localIterator = paramList.iterator();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("expressionFeat [");
+      paramString = ((StringBuilder)localObject).toString();
+      localObject = paramList.iterator();
       paramList = paramString;
-      if (localIterator.hasNext())
+      while (((Iterator)localObject).hasNext())
       {
-        paramString = (PointF)localIterator.next();
-        if (paramString == null) {
-          break label448;
+        paramString = (PointF)((Iterator)localObject).next();
+        if (paramString != null)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramList);
+          localStringBuilder.append("\n");
+          paramList = localStringBuilder.toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramList);
+          localStringBuilder.append(paramString.x);
+          paramList = localStringBuilder.toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramList);
+          localStringBuilder.append(",");
+          paramList = localStringBuilder.toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramList);
+          localStringBuilder.append("\n");
+          paramList = localStringBuilder.toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramList);
+          localStringBuilder.append(paramString.y);
+          paramList = localStringBuilder.toString();
+          paramString = new StringBuilder();
+          paramString.append(paramList);
+          paramString.append(",");
+          paramList = paramString.toString();
         }
-        paramList = paramList + "\n";
-        paramList = paramList + paramString.x;
-        paramList = paramList + ",";
-        paramList = paramList + "\n";
-        paramList = paramList + paramString.y;
-        paramList = paramList + ",";
       }
+      paramString = new StringBuilder();
+      paramString.append(paramList);
+      paramString.append("\n");
+      paramList = paramString.toString();
+      paramString = new StringBuilder();
+      paramString.append(paramList);
+      paramString.append("]\n");
+      paramList = paramString.toString();
     }
-    label443:
-    label448:
-    for (;;)
+    else
     {
-      break;
-      paramList = paramList + "\n";
-      for (paramList = paramList + "]\n";; paramList = paramString + "expressionFeat is null")
+      paramList = new StringBuilder();
+      paramList.append(paramString);
+      paramList.append("expressionFeat is null");
+      paramList = paramList.toString();
+    }
+    paramString = paramList;
+    if (paramArrayOfFloat != null)
+    {
+      paramString = paramList;
+      if (paramArrayOfFloat.length > 0)
       {
-        paramString = paramList;
-        if (paramArrayOfFloat == null) {
-          break label443;
-        }
-        paramString = paramList;
-        if (paramArrayOfFloat.length <= 0) {
-          break label443;
-        }
-        paramList = paramList + "expressionAngle [";
+        paramString = new StringBuilder();
+        paramString.append(paramList);
+        paramString.append("expressionAngle [");
+        paramList = paramString.toString();
         int j = paramArrayOfFloat.length;
         int i = 0;
         while (i < j)
         {
           float f = paramArrayOfFloat[i];
-          paramList = paramList + "\n";
-          paramList = paramList + f;
-          paramList = paramList + ",";
+          paramString = new StringBuilder();
+          paramString.append(paramList);
+          paramString.append("\n");
+          paramList = paramString.toString();
+          paramString = new StringBuilder();
+          paramString.append(paramList);
+          paramString.append(f);
+          paramList = paramString.toString();
+          paramString = new StringBuilder();
+          paramString.append(paramList);
+          paramString.append(",");
+          paramList = paramString.toString();
           i += 1;
         }
+        paramArrayOfFloat = new StringBuilder();
+        paramArrayOfFloat.append(paramList);
+        paramArrayOfFloat.append("\n");
+        paramList = paramArrayOfFloat.toString();
+        paramArrayOfFloat = new StringBuilder();
+        paramArrayOfFloat.append(paramList);
+        paramArrayOfFloat.append("]\n");
+        paramString = paramArrayOfFloat.toString();
       }
-      paramList = paramList + "\n";
-      paramString = paramList + "]\n";
-      loginfo(paramString);
-      return;
     }
+    loginfo(paramString);
   }
   
   public static void logTimeInfo(String paramString, long paramLong1, long paramLong2)
   {
-    paramString = "" + paramString;
-    double d = (paramLong2 - paramLong1) / 1000000.0D;
-    paramString = paramString + " Time cost:" + d;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramString);
+    paramString = localStringBuilder.toString();
+    double d = paramLong2 - paramLong1;
+    Double.isNaN(d);
+    d /= 1000000.0D;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" Time cost:");
+    localStringBuilder.append(d);
+    paramString = localStringBuilder.toString();
     if (SLog.isEnable()) {
       SLog.d("FaceDanceDetectTaskTime", paramString);
     }
@@ -147,175 +218,282 @@ public class FaceDanceDetectTask
     localHashMap.put("score", String.valueOf(paramFloat));
     if ((paramList != null) && (paramList.size() > 0))
     {
-      paramString = "" + "expressionFeat [";
+      paramString = new StringBuilder();
+      paramString.append("");
+      paramString.append("expressionFeat [");
+      paramString = paramString.toString();
       paramList = paramList.iterator();
-      if (paramList.hasNext())
+      while (paramList.hasNext())
       {
-        PointF localPointF = (PointF)paramList.next();
-        if (localPointF == null) {
-          break label707;
+        Object localObject = (PointF)paramList.next();
+        if (localObject != null)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString);
+          localStringBuilder.append("\n");
+          paramString = localStringBuilder.toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(((PointF)localObject).x);
+          paramString = localStringBuilder.toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(",");
+          paramString = localStringBuilder.toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString);
+          localStringBuilder.append("\n");
+          paramString = localStringBuilder.toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(((PointF)localObject).y);
+          paramString = localStringBuilder.toString();
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append(",");
+          paramString = ((StringBuilder)localObject).toString();
         }
-        paramString = paramString + "\n";
-        paramString = paramString + localPointF.x;
-        paramString = paramString + ",";
-        paramString = paramString + "\n";
-        paramString = paramString + localPointF.y;
-        paramString = paramString + ",";
       }
+      paramList = new StringBuilder();
+      paramList.append(paramString);
+      paramList.append("\n");
+      paramString = paramList.toString();
+      paramList = new StringBuilder();
+      paramList.append(paramString);
+      paramList.append("]\n");
+      paramString = paramList.toString();
     }
-    label683:
-    label707:
-    for (;;)
+    else
     {
-      break;
-      paramString = paramString + "\n";
-      int j;
-      int i;
-      for (paramString = paramString + "]\n";; paramString = "" + "expressionFeat is null")
-      {
-        localHashMap.put("expressionFeat", paramString);
-        if ((paramArrayOfDouble == null) || (paramArrayOfDouble.length <= 0)) {
-          break label591;
-        }
-        paramString = "" + "expressionAngle [";
-        j = paramArrayOfDouble.length;
-        i = 0;
-        while (i < j)
-        {
-          double d = paramArrayOfDouble[i];
-          paramString = paramString + "\n";
-          paramString = paramString + d;
-          paramString = paramString + ",";
-          i += 1;
-        }
-      }
-      paramString = paramString + "\n";
-      label591:
-      for (paramString = paramString + "]\n";; paramString = "" + "expressionWeight is null")
-      {
-        localHashMap.put("expressionWeight", paramString);
-        if ((paramArrayOfFloat == null) || (paramArrayOfFloat.length <= 0)) {
-          break label683;
-        }
-        paramString = "" + "expressionAngle [";
-        j = paramArrayOfFloat.length;
-        i = 0;
-        while (i < j)
-        {
-          paramFloat = paramArrayOfFloat[i];
-          paramString = paramString + "\n";
-          paramString = paramString + paramFloat;
-          paramString = paramString + ",";
-          i += 1;
-        }
-      }
-      paramString = paramString + "\n";
-      for (paramString = paramString + "]\n";; paramString = "" + "expressionAngle is null")
-      {
-        localHashMap.put("expressionAngle", paramString);
-        SdkContext.getInstance().getReporter().reportToBeacon("FaceDanceExpressionInfo", true, 0L, 0L, localHashMap);
-        return;
-      }
+      paramString = new StringBuilder();
+      paramString.append("");
+      paramString.append("expressionFeat is null");
+      paramString = paramString.toString();
     }
+    localHashMap.put("expressionFeat", paramString);
+    int j = 0;
+    int k;
+    int i;
+    if ((paramArrayOfDouble != null) && (paramArrayOfDouble.length > 0))
+    {
+      paramString = new StringBuilder();
+      paramString.append("");
+      paramString.append("expressionAngle [");
+      paramString = paramString.toString();
+      k = paramArrayOfDouble.length;
+      i = 0;
+      while (i < k)
+      {
+        double d = paramArrayOfDouble[i];
+        paramList = new StringBuilder();
+        paramList.append(paramString);
+        paramList.append("\n");
+        paramString = paramList.toString();
+        paramList = new StringBuilder();
+        paramList.append(paramString);
+        paramList.append(d);
+        paramString = paramList.toString();
+        paramList = new StringBuilder();
+        paramList.append(paramString);
+        paramList.append(",");
+        paramString = paramList.toString();
+        i += 1;
+      }
+      paramList = new StringBuilder();
+      paramList.append(paramString);
+      paramList.append("\n");
+      paramString = paramList.toString();
+      paramList = new StringBuilder();
+      paramList.append(paramString);
+      paramList.append("]\n");
+      paramString = paramList.toString();
+    }
+    else
+    {
+      paramString = new StringBuilder();
+      paramString.append("");
+      paramString.append("expressionWeight is null");
+      paramString = paramString.toString();
+    }
+    localHashMap.put("expressionWeight", paramString);
+    if ((paramArrayOfFloat != null) && (paramArrayOfFloat.length > 0))
+    {
+      paramString = new StringBuilder();
+      paramString.append("");
+      paramString.append("expressionAngle [");
+      paramString = paramString.toString();
+      k = paramArrayOfFloat.length;
+      i = j;
+      while (i < k)
+      {
+        paramFloat = paramArrayOfFloat[i];
+        paramList = new StringBuilder();
+        paramList.append(paramString);
+        paramList.append("\n");
+        paramString = paramList.toString();
+        paramList = new StringBuilder();
+        paramList.append(paramString);
+        paramList.append(paramFloat);
+        paramString = paramList.toString();
+        paramList = new StringBuilder();
+        paramList.append(paramString);
+        paramList.append(",");
+        paramString = paramList.toString();
+        i += 1;
+      }
+      paramList = new StringBuilder();
+      paramList.append(paramString);
+      paramList.append("\n");
+      paramString = paramList.toString();
+      paramList = new StringBuilder();
+      paramList.append(paramString);
+      paramList.append("]\n");
+      paramString = paramList.toString();
+    }
+    else
+    {
+      paramString = new StringBuilder();
+      paramString.append("");
+      paramString.append("expressionAngle is null");
+      paramString = paramString.toString();
+    }
+    localHashMap.put("expressionAngle", paramString);
+    SdkContext.getInstance().getReporter().reportToBeacon("FaceDanceExpressionInfo", true, 0L, 0L, localHashMap);
   }
   
   private void startExpressionDetect()
   {
-    if (this.mTaskStatus != 2) {}
-    FaceDanceDetectTask.FaceDetectTaskResult localFaceDetectTaskResult;
-    do
-    {
+    if (this.mTaskStatus != 2) {
       return;
-      localFaceDetectTaskResult = this.mFaceDetectResult;
-      localObject1 = this.mGestureDetectResult;
-    } while ((localFaceDetectTaskResult == null) || (localObject1 == null));
-    this.mTaskStatus = 3;
-    if (this.littleBoyReferenceList.size() == 1)
+    }
+    FaceDanceDetectTask.FaceDetectTaskResult localFaceDetectTaskResult = this.mFaceDetectResult;
+    Object localObject1 = this.mGestureDetectResult;
+    if ((localFaceDetectTaskResult != null) && (localObject1 != null))
     {
-      localObject2 = (GLLittleBoy)((WeakReference)this.littleBoyReferenceList.get(0)).get();
-      if ((localObject2 != null) && (((GLLittleBoy)localObject2).isReadyMatch) && (!((GLLittleBoy)localObject2).isMatched()))
+      this.mTaskStatus = 3;
+      int j = this.littleBoyReferenceList.size();
+      int i = 0;
+      if (j == 1)
       {
-        if (localFaceDetectTaskResult.vaild) {
-          this.matchedlittleBoyReference = new WeakReference(localObject2);
+        localObject2 = (GLLittleBoy)((WeakReference)this.littleBoyReferenceList.get(0)).get();
+        if ((localObject2 != null) && (((GLLittleBoy)localObject2).isReadyMatch) && (!((GLLittleBoy)localObject2).isMatched()))
+        {
+          if (localFaceDetectTaskResult.vaild) {
+            this.matchedlittleBoyReference = new WeakReference(localObject2);
+          }
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("mFaceDetectResult.vaild =");
+          ((StringBuilder)localObject1).append(localFaceDetectTaskResult.vaild);
+          ((StringBuilder)localObject1).append(" and tempboy.isReadyMatch=");
+          ((StringBuilder)localObject1).append(((GLLittleBoy)localObject2).isReadyMatch);
+          loginfo(((StringBuilder)localObject1).toString());
+          notifyTaskEnd();
+          return;
         }
-        loginfo("mFaceDetectResult.vaild =" + localFaceDetectTaskResult.vaild + " and tempboy.isReadyMatch=" + ((GLLittleBoy)localObject2).isReadyMatch);
+      }
+      if ((localFaceDetectTaskResult.vaild) && (((FaceDanceDetectTask.GestureDetectTaskResult)localObject1).vaild))
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("mFaceDetectResult.vaild and mGestureDetectResult.vaild mGestureDetectResult.type=");
+        ((StringBuilder)localObject2).append(((FaceDanceDetectTask.GestureDetectTaskResult)localObject1).type);
+        loginfo(((StringBuilder)localObject2).toString());
+        ArrayList localArrayList = new ArrayList();
+        localObject2 = this.littleBoyReferenceList.iterator();
+        GLLittleBoy localGLLittleBoy;
+        Object localObject3;
+        while (((Iterator)localObject2).hasNext())
+        {
+          localGLLittleBoy = (GLLittleBoy)((WeakReference)((Iterator)localObject2).next()).get();
+          if ((localGLLittleBoy != null) && (localGLLittleBoy.needDoMatch()))
+          {
+            localObject3 = localGLLittleBoy.getDanceData();
+            localObject3 = ResourceManager.getInstance().getPostureById(((ResourceManager.DancePosture)localObject3).id);
+            if ((localObject3 != null) && (((ResourceManager.Posture)localObject3).faceDanceConfig.mGestureType.equals(((FaceDanceDetectTask.GestureDetectTaskResult)localObject1).type)))
+            {
+              logBoyWithMessage(localGLLittleBoy, "startExpressionDetect has boy equals");
+              localArrayList.add(localGLLittleBoy);
+            }
+          }
+        }
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("tempBoyList.size() ==");
+        ((StringBuilder)localObject2).append(localArrayList.size());
+        ((StringBuilder)localObject2).append(" mGestureDetectResult.type=");
+        ((StringBuilder)localObject2).append(((FaceDanceDetectTask.GestureDetectTaskResult)localObject1).type);
+        loginfo(((StringBuilder)localObject2).toString());
+        if (localArrayList.size() == 0)
+        {
+          notifyTaskEnd();
+        }
+        else
+        {
+          float f2 = 0.0F;
+          for (localObject1 = null; i < localArrayList.size(); localObject1 = localObject2)
+          {
+            long l1 = SystemClock.elapsedRealtimeNanos();
+            localGLLittleBoy = (GLLittleBoy)localArrayList.get(i);
+            localObject2 = localGLLittleBoy.getDanceData();
+            localObject2 = ResourceManager.getInstance().getPostureById(((ResourceManager.DancePosture)localObject2).id);
+            float f3;
+            if (localObject2 == null)
+            {
+              f3 = f2;
+              localObject2 = localObject1;
+            }
+            else
+            {
+              localObject3 = ((ResourceManager.Posture)localObject2).faceDanceConfig;
+              float f1 = ActUtil.getExpressionSimilarity(((FaceDanceTemplateConfig)localObject3).mExpressionConfig.expressionFeat, localFaceDetectTaskResult.pointFs, ((FaceDanceTemplateConfig)localObject3).mExpressionConfig.expressionAngle, localFaceDetectTaskResult.angles, ((FaceDanceTemplateConfig)localObject3).mExpressionConfig.expressionWeight);
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("match expression score=");
+              ((StringBuilder)localObject2).append(f1);
+              logBoyWithMessage(localGLLittleBoy, ((StringBuilder)localObject2).toString());
+              long l2 = SystemClock.elapsedRealtimeNanos();
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("ActUtil.getExpressionSimilarity No:");
+              ((StringBuilder)localObject2).append(i);
+              ((StringBuilder)localObject2).append(" boy");
+              logTimeInfo(((StringBuilder)localObject2).toString(), l1, l2);
+              if (f1 > 95.0F) {
+                reportHighScoreLittelBoy(((FaceDanceTemplateConfig)localObject3).mExpressionConfig.expressionID, f1, localFaceDetectTaskResult.pointFs, localFaceDetectTaskResult.angles, ((FaceDanceTemplateConfig)localObject3).mExpressionConfig.expressionWeight);
+              }
+              if (!checkIsNeedMatchExpression(((FaceDanceTemplateConfig)localObject3).mExpressionConfig.expressionWeight))
+              {
+                logBoyWithMessage(localGLLittleBoy, " not NeedMatchExpression");
+                f1 = 100.0F;
+              }
+              f3 = f2;
+              localObject2 = localObject1;
+              if (f1 >= ((FaceDanceTemplateConfig)localObject3).threshold)
+              {
+                f3 = f2;
+                localObject2 = localObject1;
+                if (f1 > f2)
+                {
+                  localObject2 = localGLLittleBoy;
+                  f3 = f1;
+                }
+              }
+            }
+            i += 1;
+            f2 = f3;
+          }
+          if (localObject1 != null)
+          {
+            this.matchedlittleBoyReference = new WeakReference(localObject1);
+            logBoyWithMessage((GLLittleBoy)localObject1, "set matchedlittleBoyReference");
+          }
+        }
         notifyTaskEnd();
         return;
       }
-    }
-    if ((!localFaceDetectTaskResult.vaild) || (!((FaceDanceDetectTask.GestureDetectTaskResult)localObject1).vaild))
-    {
-      loginfo("mFaceDetectResult.vaild =" + localFaceDetectTaskResult.vaild + " and mGestureDetectResult.vaild=" + ((FaceDanceDetectTask.GestureDetectTaskResult)localObject1).vaild);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("mFaceDetectResult.vaild =");
+      ((StringBuilder)localObject2).append(localFaceDetectTaskResult.vaild);
+      ((StringBuilder)localObject2).append(" and mGestureDetectResult.vaild=");
+      ((StringBuilder)localObject2).append(((FaceDanceDetectTask.GestureDetectTaskResult)localObject1).vaild);
+      loginfo(((StringBuilder)localObject2).toString());
       notifyTaskEnd();
-      return;
-    }
-    loginfo("mFaceDetectResult.vaild and mGestureDetectResult.vaild mGestureDetectResult.type=" + ((FaceDanceDetectTask.GestureDetectTaskResult)localObject1).type);
-    ArrayList localArrayList = new ArrayList();
-    Object localObject2 = this.littleBoyReferenceList.iterator();
-    Object localObject3;
-    while (((Iterator)localObject2).hasNext())
-    {
-      localObject3 = (GLLittleBoy)((WeakReference)((Iterator)localObject2).next()).get();
-      if ((localObject3 != null) && (((GLLittleBoy)localObject3).needDoMatch()))
-      {
-        Object localObject4 = ((GLLittleBoy)localObject3).getDanceData();
-        localObject4 = ResourceManager.getInstance().getPostureById(((ResourceManager.DancePosture)localObject4).id);
-        if ((localObject4 != null) && (((ResourceManager.Posture)localObject4).faceDanceConfig.mGestureType.equals(((FaceDanceDetectTask.GestureDetectTaskResult)localObject1).type)))
-        {
-          logBoyWithMessage((GLLittleBoy)localObject3, "startExpressionDetect has boy equals");
-          localArrayList.add(localObject3);
-        }
-      }
-    }
-    loginfo("tempBoyList.size() ==" + localArrayList.size() + " mGestureDetectResult.type=" + ((FaceDanceDetectTask.GestureDetectTaskResult)localObject1).type);
-    if (localArrayList.size() == 0)
-    {
-      notifyTaskEnd();
-      notifyTaskEnd();
-      return;
-    }
-    float f1 = 0.0F;
-    int i = 0;
-    Object localObject1 = null;
-    label442:
-    long l1;
-    if (i < localArrayList.size())
-    {
-      l1 = SystemClock.elapsedRealtimeNanos();
-      localObject2 = (GLLittleBoy)localArrayList.get(i);
-      localObject3 = ((GLLittleBoy)localObject2).getDanceData();
-      localObject3 = ResourceManager.getInstance().getPostureById(((ResourceManager.DancePosture)localObject3).id);
-      if (localObject3 != null) {}
-    }
-    for (;;)
-    {
-      i += 1;
-      break label442;
-      localObject3 = ((ResourceManager.Posture)localObject3).faceDanceConfig;
-      float f2 = ActUtil.getExpressionSimilarity(((FaceDanceTemplateConfig)localObject3).mExpressionConfig.expressionFeat, localFaceDetectTaskResult.pointFs, ((FaceDanceTemplateConfig)localObject3).mExpressionConfig.expressionAngle, localFaceDetectTaskResult.angles, ((FaceDanceTemplateConfig)localObject3).mExpressionConfig.expressionWeight);
-      logBoyWithMessage((GLLittleBoy)localObject2, "match expression score=" + f2);
-      long l2 = SystemClock.elapsedRealtimeNanos();
-      logTimeInfo("ActUtil.getExpressionSimilarity No:" + i + " boy", l1, l2);
-      if (f2 > 95.0F) {
-        reportHighScoreLittelBoy(((FaceDanceTemplateConfig)localObject3).mExpressionConfig.expressionID, f2, localFaceDetectTaskResult.pointFs, localFaceDetectTaskResult.angles, ((FaceDanceTemplateConfig)localObject3).mExpressionConfig.expressionWeight);
-      }
-      if (!checkIsNeedMatchExpression(((FaceDanceTemplateConfig)localObject3).mExpressionConfig.expressionWeight))
-      {
-        logBoyWithMessage((GLLittleBoy)localObject2, " not NeedMatchExpression");
-        f2 = 100.0F;
-      }
-      if ((f2 >= ((FaceDanceTemplateConfig)localObject3).threshold) && (f2 > f1))
-      {
-        f1 = f2;
-        localObject1 = localObject2;
-        continue;
-        if (localObject1 == null) {
-          break;
-        }
-        this.matchedlittleBoyReference = new WeakReference(localObject1);
-        logBoyWithMessage((GLLittleBoy)localObject1, "set matchedlittleBoyReference");
-        break;
-      }
     }
   }
   
@@ -323,10 +501,11 @@ public class FaceDanceDetectTask
   
   boolean checkIsNeedMatchExpression(double[] paramArrayOfDouble)
   {
-    if ((paramArrayOfDouble == null) || (paramArrayOfDouble.length != 7)) {}
-    for (;;)
+    if (paramArrayOfDouble != null)
     {
-      return false;
+      if (paramArrayOfDouble.length != 7) {
+        return false;
+      }
       int j = paramArrayOfDouble.length;
       int i = 0;
       while (i < j)
@@ -337,6 +516,7 @@ public class FaceDanceDetectTask
         i += 1;
       }
     }
+    return false;
   }
   
   public boolean checkIsRunning()
@@ -400,7 +580,7 @@ public class FaceDanceDetectTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.facedancegame.FaceDanceDetectTask
  * JD-Core Version:    0.7.0.1
  */

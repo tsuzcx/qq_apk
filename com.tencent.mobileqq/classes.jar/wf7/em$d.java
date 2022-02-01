@@ -38,15 +38,25 @@ public class em$d
   
   public boolean cW()
   {
-    if (Math.abs(System.currentTimeMillis() - this.nG) >= 180000L) {}
-    for (boolean bool = true; (bool) && (this.nE != null); bool = false)
+    long l = Math.abs(System.currentTimeMillis() - this.nG);
+    int i = 0;
+    boolean bool;
+    if (l >= 180000L) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if (bool)
     {
-      int j = this.nE.size();
-      int i = 0;
-      while (i < j)
+      Object localObject = this.nE;
+      if (localObject != null)
       {
-        if ((x)this.nE.get(i) == null) {}
-        i += 1;
+        int j = ((ArrayList)localObject).size();
+        while (i < j)
+        {
+          localObject = (x)this.nE.get(i);
+          i += 1;
+        }
       }
     }
     return bool;
@@ -59,7 +69,7 @@ public class em$d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.em.d
  * JD-Core Version:    0.7.0.1
  */

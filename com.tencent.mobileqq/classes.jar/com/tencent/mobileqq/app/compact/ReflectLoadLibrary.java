@@ -14,54 +14,59 @@ public class ReflectLoadLibrary
   
   public static void a(ClassLoader paramClassLoader, File paramFile)
   {
-    if (paramFile != null) {}
-    for (;;)
+    if (paramFile != null)
     {
       int i;
+      label50:
+      label58:
+      label76:
+      label97:
       try
       {
-        boolean bool = paramFile.exists();
-        if (!bool) {
-          return;
-        }
-        if ((Build.VERSION.SDK_INT != 25) || (a() == 0))
-        {
-          i = Build.VERSION.SDK_INT;
-          if (i <= 25) {}
-        }
-        else
-        {
-          try
+        if (paramFile.exists()) {
+          if ((Build.VERSION.SDK_INT != 25) || (a() == 0))
           {
-            ReflectLoadLibrary.V25.a(paramClassLoader, paramFile);
+            i = Build.VERSION.SDK_INT;
+            if (i <= 25) {
+              break label58;
+            }
           }
-          catch (Throwable localThrowable1)
-          {
-            ReflectLoadLibrary.V23.a(paramClassLoader, paramFile);
-          }
-          continue;
         }
-        i = Build.VERSION.SDK_INT;
       }
       finally {}
-      if (i >= 23) {
-        try
-        {
-          ReflectLoadLibrary.V23.a(paramClassLoader, paramFile);
-        }
-        catch (Throwable localThrowable2)
-        {
-          ReflectLoadLibrary.V14.a(paramClassLoader, paramFile);
-        }
-      } else if (Build.VERSION.SDK_INT >= 14) {
-        ReflectLoadLibrary.V14.a(paramClassLoader, paramFile);
-      }
     }
+    try
+    {
+      ReflectLoadLibrary.V25.a(paramClassLoader, paramFile);
+      return;
+    }
+    catch (Throwable localThrowable1)
+    {
+      break label50;
+    }
+    ReflectLoadLibrary.V23.a(paramClassLoader, paramFile);
+    break label97;
+    i = Build.VERSION.SDK_INT;
+    if (i >= 23) {}
+    try
+    {
+      ReflectLoadLibrary.V23.a(paramClassLoader, paramFile);
+    }
+    catch (Throwable localThrowable2)
+    {
+      break label76;
+    }
+    ReflectLoadLibrary.V14.a(paramClassLoader, paramFile);
+    break label97;
+    if (Build.VERSION.SDK_INT >= 14) {
+      ReflectLoadLibrary.V14.a(paramClassLoader, paramFile);
+    }
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.compact.ReflectLoadLibrary
  * JD-Core Version:    0.7.0.1
  */

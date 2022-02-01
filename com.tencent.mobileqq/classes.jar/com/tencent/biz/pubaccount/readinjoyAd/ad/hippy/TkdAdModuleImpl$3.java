@@ -17,21 +17,26 @@ class TkdAdModuleImpl$3
   {
     try
     {
-      String str = this.jdField_a_of_type_ComTencentMttHippyCommonHippyMap.getString("title");
-      if (!TextUtils.isEmpty(str)) {
-        ((TextView)((Activity)this.jdField_a_of_type_ComTencentMttHippyHippyEngineContext.getGlobalConfigs().getContext()).findViewById(2131369534)).setText(str);
+      String str1 = this.jdField_a_of_type_ComTencentMttHippyCommonHippyMap.getString("title");
+      if (!TextUtils.isEmpty(str1))
+      {
+        ((TextView)((Activity)this.jdField_a_of_type_ComTencentMttHippyHippyEngineContext.getGlobalConfigs().getContext()).findViewById(2131369249)).setText(str1);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      QLog.d(TkdAdModuleImpl.a, 2, "setTitle error:" + localException.getMessage());
+      String str2 = TkdAdModuleImpl.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setTitle error:");
+      localStringBuilder.append(localException.getMessage());
+      QLog.d(str2, 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.hippy.TkdAdModuleImpl.3
  * JD-Core Version:    0.7.0.1
  */

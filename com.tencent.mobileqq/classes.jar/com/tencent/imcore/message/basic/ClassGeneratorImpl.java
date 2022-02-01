@@ -40,33 +40,35 @@ public class ClassGeneratorImpl<T>
   
   public List<T> a()
   {
+    try
+    {
+      ArrayList localArrayList = new ArrayList();
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject2 = (Class)localIterator.next();
+        Object localObject3 = a((Class)localObject2);
+        if (localObject3 != null)
+        {
+          localArrayList.add(localObject3);
+        }
+        else
+        {
+          localObject2 = b((Class)localObject2);
+          if (localObject2 != null)
+          {
+            this.b.add(localObject2);
+            localArrayList.add(localObject2);
+          }
+        }
+      }
+      return localArrayList;
+    }
+    finally {}
     for (;;)
     {
-      Object localObject1;
-      try
-      {
-        ArrayList localArrayList = new ArrayList();
-        Iterator localIterator = this.a.iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject1 = (Class)localIterator.next();
-        Object localObject2 = a((Class)localObject1);
-        if (localObject2 != null)
-        {
-          localArrayList.add(localObject2);
-          continue;
-        }
-        localObject1 = b((Class)localObject1);
-      }
-      finally {}
-      if (localObject1 != null)
-      {
-        this.b.add(localObject1);
-        localList.add(localObject1);
-      }
+      throw localObject1;
     }
-    return localList;
   }
   
   public void a(Class<? extends T> paramClass)
@@ -77,18 +79,13 @@ public class ClassGeneratorImpl<T>
       if (!this.a.contains(paramClass)) {
         this.a.add(paramClass);
       }
-      return;
     }
-    finally
-    {
-      paramClass = finally;
-      throw paramClass;
-    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.basic.ClassGeneratorImpl
  * JD-Core Version:    0.7.0.1
  */

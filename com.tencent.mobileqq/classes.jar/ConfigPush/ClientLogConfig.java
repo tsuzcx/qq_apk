@@ -47,11 +47,13 @@ public final class ClientLogConfig
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.type, 1);
-    if (this.time_start != null) {
-      paramJceOutputStream.write(this.time_start, 2);
+    TimeStamp localTimeStamp = this.time_start;
+    if (localTimeStamp != null) {
+      paramJceOutputStream.write(localTimeStamp, 2);
     }
-    if (this.time_finish != null) {
-      paramJceOutputStream.write(this.time_finish, 3);
+    localTimeStamp = this.time_finish;
+    if (localTimeStamp != null) {
+      paramJceOutputStream.write(localTimeStamp, 3);
     }
     paramJceOutputStream.write(this.loglevel, 4);
     paramJceOutputStream.write(this.cookie, 5);
@@ -60,7 +62,7 @@ public final class ClientLogConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ConfigPush.ClientLogConfig
  * JD-Core Version:    0.7.0.1
  */

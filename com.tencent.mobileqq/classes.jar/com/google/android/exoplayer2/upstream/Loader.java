@@ -41,18 +41,21 @@ public final class Loader
   
   public void maybeThrowError(int paramInt)
   {
-    if (this.fatalError != null) {
-      throw this.fatalError;
-    }
-    if (this.currentTask != null)
+    Object localObject = this.fatalError;
+    if (localObject == null)
     {
-      Loader.LoadTask localLoadTask = this.currentTask;
-      int i = paramInt;
-      if (paramInt == -2147483648) {
-        i = this.currentTask.defaultMinRetryCount;
+      localObject = this.currentTask;
+      if (localObject != null)
+      {
+        int i = paramInt;
+        if (paramInt == -2147483648) {
+          i = ((Loader.LoadTask)localObject).defaultMinRetryCount;
+        }
+        ((Loader.LoadTask)localObject).maybeThrowError(i);
       }
-      localLoadTask.maybeThrowError(i);
+      return;
     }
+    throw ((Throwable)localObject);
   }
   
   public void release()
@@ -62,8 +65,9 @@ public final class Loader
   
   public void release(@Nullable Loader.ReleaseCallback paramReleaseCallback)
   {
-    if (this.currentTask != null) {
-      this.currentTask.cancel(true);
+    Loader.LoadTask localLoadTask = this.currentTask;
+    if (localLoadTask != null) {
+      localLoadTask.cancel(true);
     }
     if (paramReleaseCallback != null) {
       this.downloadExecutorService.execute(new Loader.ReleaseTask(paramReleaseCallback));
@@ -74,19 +78,21 @@ public final class Loader
   public <T extends Loader.Loadable> long startLoading(T paramT, Loader.Callback<T> paramCallback, int paramInt)
   {
     Looper localLooper = Looper.myLooper();
-    if (localLooper != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      long l = SystemClock.elapsedRealtime();
-      new Loader.LoadTask(this, localLooper, paramT, paramCallback, paramInt, l).start(0L);
-      return l;
+    boolean bool;
+    if (localLooper != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assertions.checkState(bool);
+    long l = SystemClock.elapsedRealtime();
+    new Loader.LoadTask(this, localLooper, paramT, paramCallback, paramInt, l).start(0L);
+    return l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.upstream.Loader
  * JD-Core Version:    0.7.0.1
  */

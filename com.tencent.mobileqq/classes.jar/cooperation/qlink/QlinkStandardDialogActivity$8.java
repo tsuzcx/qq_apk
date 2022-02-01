@@ -3,9 +3,10 @@ package cooperation.qlink;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.addfriend.api.IAddFriendApi;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.BaseApplication;
 
 class QlinkStandardDialogActivity$8
@@ -15,16 +16,17 @@ class QlinkStandardDialogActivity$8
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Intent localIntent = AddFriendLogicActivity.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.app.getApp().getApplicationContext(), 1, this.jdField_a_of_type_JavaLangString, null, 3002, 14, this.b, null, null, HardCodeUtil.a(2131709998), null);
+    Intent localIntent = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).startAddFriend(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.app.getApp().getApplicationContext(), 1, this.jdField_a_of_type_JavaLangString, null, 3002, 14, this.b, null, null, HardCodeUtil.a(2131709985), null);
     localIntent.putExtra("_FROM_QLINK_", true);
     this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.startActivity(localIntent);
+    ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).launchAddFriend(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, localIntent);
     paramDialogInterface.dismiss();
     this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qlink.QlinkStandardDialogActivity.8
  * JD-Core Version:    0.7.0.1
  */

@@ -20,31 +20,41 @@ public abstract class Animator
   
   public Animator clone()
   {
-    int j;
-    int i;
-    do
+    try
     {
-      try
-      {
-        localAnimator = (Animator)super.clone();
-        if (this.mListeners == null) {
-          break;
-        }
-        localArrayList = this.mListeners;
-        localAnimator.mListeners = new ArrayList();
-        j = localArrayList.size();
-        i = 0;
+      localObject = (Animator)super.clone();
+      if (this.mListeners == null) {
+        break label67;
       }
-      catch (CloneNotSupportedException localCloneNotSupportedException)
+      localArrayList = this.mListeners;
+      ((Animator)localObject).mListeners = new ArrayList();
+      j = localArrayList.size();
+      i = 0;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      int j;
+      int i;
+      label67:
+      label69:
+      label89:
+      do
       {
-        Animator localAnimator;
+        Object localObject;
         ArrayList localArrayList;
-        throw new AssertionError();
-      }
-      localAnimator.mListeners.add((Animator.AnimatorListener)localArrayList.get(i));
-      i += 1;
-    } while (i < j);
-    return localCloneNotSupportedException;
+        break label69;
+      } while (i < j);
+      return localCloneNotSupportedException;
+    }
+    ((Animator)localObject).mListeners.add((Animator.AnimatorListener)localArrayList.get(i));
+    i += 1;
+    break label89;
+    return localObject;
+    localObject = new AssertionError();
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
   
   public void end() {}
@@ -67,22 +77,24 @@ public abstract class Animator
   
   public void removeAllListeners()
   {
-    if (this.mListeners != null)
+    ArrayList localArrayList = this.mListeners;
+    if (localArrayList != null)
     {
-      this.mListeners.clear();
+      localArrayList.clear();
       this.mListeners = null;
     }
   }
   
   public void removeListener(Animator.AnimatorListener paramAnimatorListener)
   {
-    if (this.mListeners == null) {}
-    do
-    {
+    ArrayList localArrayList = this.mListeners;
+    if (localArrayList == null) {
       return;
-      this.mListeners.remove(paramAnimatorListener);
-    } while (this.mListeners.size() != 0);
-    this.mListeners = null;
+    }
+    localArrayList.remove(paramAnimatorListener);
+    if (this.mListeners.size() == 0) {
+      this.mListeners = null;
+    }
   }
   
   public abstract Animator setDuration(long paramLong);
@@ -101,7 +113,7 @@ public abstract class Animator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nineoldandroids.animation.Animator
  * JD-Core Version:    0.7.0.1
  */

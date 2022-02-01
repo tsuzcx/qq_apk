@@ -100,18 +100,18 @@ public final class ScriptLoadStatistic
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof ScriptLoadStatistic))
       {
         paramObject = (ScriptLoadStatistic)paramObject;
-        if ((!Intrinsics.areEqual(this.loadResult, paramObject.loadResult)) || (!Intrinsics.areEqual(this.scriptContextType, paramObject.scriptContextType)) || (!Intrinsics.areEqual(this.scriptName, paramObject.scriptName)) || (!Intrinsics.areEqual(this.scriptPath, paramObject.scriptPath)) || (this.readTimeMs != paramObject.readTimeMs) || (this.readCodeCacheTimeMs != paramObject.readCodeCacheTimeMs) || (this.compileTimeMs != paramObject.compileTimeMs) || (this.executeTimeMs != paramObject.executeTimeMs) || (!Intrinsics.areEqual(this.exception, paramObject.exception))) {}
+        if ((Intrinsics.areEqual(this.loadResult, paramObject.loadResult)) && (Intrinsics.areEqual(this.scriptContextType, paramObject.scriptContextType)) && (Intrinsics.areEqual(this.scriptName, paramObject.scriptName)) && (Intrinsics.areEqual(this.scriptPath, paramObject.scriptPath)) && (this.readTimeMs == paramObject.readTimeMs) && (this.readCodeCacheTimeMs == paramObject.readCodeCacheTimeMs) && (this.compileTimeMs == paramObject.compileTimeMs) && (this.executeTimeMs == paramObject.executeTimeMs) && (Intrinsics.areEqual(this.exception, paramObject.exception))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public final long getCompileTimeMs()
@@ -166,67 +166,79 @@ public final class ScriptLoadStatistic
   
   public int hashCode()
   {
-    int n = 0;
     Object localObject = this.loadResult;
+    int n = 0;
     int i;
-    int j;
-    label37:
-    int k;
-    if (localObject != null)
-    {
+    if (localObject != null) {
       i = localObject.hashCode();
-      localObject = this.scriptContextType;
-      if (localObject == null) {
-        break label211;
-      }
-      j = localObject.hashCode();
-      localObject = this.scriptName;
-      if (localObject == null) {
-        break label216;
-      }
-      k = localObject.hashCode();
-      label54:
-      localObject = this.scriptPath;
-      if (localObject == null) {
-        break label221;
-      }
-    }
-    label211:
-    label216:
-    label221:
-    for (int m = localObject.hashCode();; m = 0)
-    {
-      long l = this.readTimeMs;
-      int i1 = (int)(l ^ l >>> 32);
-      l = this.readCodeCacheTimeMs;
-      int i2 = (int)(l ^ l >>> 32);
-      l = this.compileTimeMs;
-      int i3 = (int)(l ^ l >>> 32);
-      l = this.executeTimeMs;
-      int i4 = (int)(l ^ l >>> 32);
-      localObject = this.exception;
-      if (localObject != null) {
-        n = localObject.hashCode();
-      }
-      return (((((m + (k + (j + i * 31) * 31) * 31) * 31 + i1) * 31 + i2) * 31 + i3) * 31 + i4) * 31 + n;
+    } else {
       i = 0;
-      break;
-      j = 0;
-      break label37;
-      k = 0;
-      break label54;
     }
+    localObject = this.scriptContextType;
+    int j;
+    if (localObject != null) {
+      j = localObject.hashCode();
+    } else {
+      j = 0;
+    }
+    localObject = this.scriptName;
+    int k;
+    if (localObject != null) {
+      k = localObject.hashCode();
+    } else {
+      k = 0;
+    }
+    localObject = this.scriptPath;
+    int m;
+    if (localObject != null) {
+      m = localObject.hashCode();
+    } else {
+      m = 0;
+    }
+    long l = this.readTimeMs;
+    int i1 = (int)(l ^ l >>> 32);
+    l = this.readCodeCacheTimeMs;
+    int i2 = (int)(l ^ l >>> 32);
+    l = this.compileTimeMs;
+    int i3 = (int)(l ^ l >>> 32);
+    l = this.executeTimeMs;
+    int i4 = (int)(l ^ l >>> 32);
+    localObject = this.exception;
+    if (localObject != null) {
+      n = localObject.hashCode();
+    }
+    return (((((((i * 31 + j) * 31 + k) * 31 + m) * 31 + i1) * 31 + i2) * 31 + i3) * 31 + i4) * 31 + n;
   }
   
   @NotNull
   public String toString()
   {
-    return "ScriptLoadStatistic(loadResult=" + this.loadResult + ", scriptContextType=" + this.scriptContextType + ", scriptName=" + this.scriptName + ", scriptPath=" + this.scriptPath + ", readTimeMs=" + this.readTimeMs + ", readCodeCacheTimeMs=" + this.readCodeCacheTimeMs + ", compileTimeMs=" + this.compileTimeMs + ", executeTimeMs=" + this.executeTimeMs + ", exception=" + this.exception + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ScriptLoadStatistic(loadResult=");
+    localStringBuilder.append(this.loadResult);
+    localStringBuilder.append(", scriptContextType=");
+    localStringBuilder.append(this.scriptContextType);
+    localStringBuilder.append(", scriptName=");
+    localStringBuilder.append(this.scriptName);
+    localStringBuilder.append(", scriptPath=");
+    localStringBuilder.append(this.scriptPath);
+    localStringBuilder.append(", readTimeMs=");
+    localStringBuilder.append(this.readTimeMs);
+    localStringBuilder.append(", readCodeCacheTimeMs=");
+    localStringBuilder.append(this.readCodeCacheTimeMs);
+    localStringBuilder.append(", compileTimeMs=");
+    localStringBuilder.append(this.compileTimeMs);
+    localStringBuilder.append(", executeTimeMs=");
+    localStringBuilder.append(this.executeTimeMs);
+    localStringBuilder.append(", exception=");
+    localStringBuilder.append(this.exception);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.statistic.ScriptLoadStatistic
  * JD-Core Version:    0.7.0.1
  */

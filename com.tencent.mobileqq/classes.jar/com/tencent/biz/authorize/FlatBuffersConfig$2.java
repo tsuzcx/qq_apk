@@ -13,14 +13,18 @@ class FlatBuffersConfig$2
     int i = 0;
     for (;;)
     {
-      if ((i >= 3) || (this.this$0.a(this.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_Boolean))) {
-        return;
+      if (i < 3) {
+        if (this.this$0.a(this.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_Boolean)) {
+          return;
+        }
       }
       try
       {
         Thread.sleep(100L);
         label36:
         i += 1;
+        continue;
+        return;
       }
       catch (InterruptedException localInterruptedException)
       {
@@ -31,7 +35,7 @@ class FlatBuffersConfig$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.authorize.FlatBuffersConfig.2
  * JD-Core Version:    0.7.0.1
  */

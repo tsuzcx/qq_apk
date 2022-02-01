@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class cmd0x346$RspBody
   extends MessageMicro<RspBody>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 50, 58, 66, 74, 82, 90, 98, 106, 114, 122, 130, 138, 146, 154, 162, 170, 400, 720002, 720010, 720018, 799994 }, new String[] { "uint32_cmd", "uint32_seq", "msg_recv_list_query_rsp", "msg_send_list_query_rsp", "msg_renew_file_rsp", "msg_recall_file_rsp", "msg_apply_upload_rsp", "msg_apply_upload_hit_rsp", "msg_apply_forward_file_rsp", "msg_upload_succ_rsp", "msg_delete_file_rsp", "msg_download_succ_rsp", "msg_apply_download_abs_rsp", "msg_apply_download_rsp", "msg_apply_list_download_rsp", "msg_file_query_rsp", "msg_apply_copy_from_rsp", "msg_apply_upload_rsp_v2", "msg_apply_upload_rsp_v3", "msg_apply_upload_hit_rsp_v2", "msg_apply_upload_hit_rsp_v3", "uint32_flag_use_media_platform", "msg_apply_copy_to_rsp", "msg_apply_clean_traffic_rsp", "msg_apply_get_traffic_rsp", "msg_extension_rsp" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Integer.valueOf(0), null, null, null, null }, RspBody.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public cmd0x346.ApplyCleanTrafficRsp msg_apply_clean_traffic_rsp = new cmd0x346.ApplyCleanTrafficRsp();
   public cmd0x346.ApplyCopyFromRsp msg_apply_copy_from_rsp = new cmd0x346.ApplyCopyFromRsp();
   public cmd0x346.ApplyCopyToRsp msg_apply_copy_to_rsp = new cmd0x346.ApplyCopyToRsp();
@@ -35,10 +35,16 @@ public final class cmd0x346$RspBody
   public final PBUInt32Field uint32_cmd = PBField.initUInt32(0);
   public final PBUInt32Field uint32_flag_use_media_platform = PBField.initUInt32(0);
   public final PBUInt32Field uint32_seq = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 50, 58, 66, 74, 82, 90, 98, 106, 114, 122, 130, 138, 146, 154, 162, 170, 400, 720002, 720010, 720018, 799994 }, new String[] { "uint32_cmd", "uint32_seq", "msg_recv_list_query_rsp", "msg_send_list_query_rsp", "msg_renew_file_rsp", "msg_recall_file_rsp", "msg_apply_upload_rsp", "msg_apply_upload_hit_rsp", "msg_apply_forward_file_rsp", "msg_upload_succ_rsp", "msg_delete_file_rsp", "msg_download_succ_rsp", "msg_apply_download_abs_rsp", "msg_apply_download_rsp", "msg_apply_list_download_rsp", "msg_file_query_rsp", "msg_apply_copy_from_rsp", "msg_apply_upload_rsp_v2", "msg_apply_upload_rsp_v3", "msg_apply_upload_hit_rsp_v2", "msg_apply_upload_hit_rsp_v3", "uint32_flag_use_media_platform", "msg_apply_copy_to_rsp", "msg_apply_clean_traffic_rsp", "msg_apply_get_traffic_rsp", "msg_extension_rsp" }, new Object[] { localInteger, localInteger, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, localInteger, null, null, null, null }, RspBody.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x346.cmd0x346.RspBody
  * JD-Core Version:    0.7.0.1
  */

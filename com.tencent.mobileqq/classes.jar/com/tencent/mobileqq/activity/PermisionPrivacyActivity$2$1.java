@@ -10,19 +10,13 @@ class PermisionPrivacyActivity$2$1
   public void run()
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity$2.this$0.i.setOnCheckedChangeListener(null);
-    FormSwitchItem localFormSwitchItem = this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity$2.this$0.i;
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localFormSwitchItem.setChecked(bool);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity$2.this$0.i.setOnCheckedChangeListener(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity$2.this$0.a);
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity$2.this$0.i.setChecked(this.jdField_a_of_type_Boolean ^ true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity$2.this$0.i.setOnCheckedChangeListener(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity$2.this$0.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PermisionPrivacyActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

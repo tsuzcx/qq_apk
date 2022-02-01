@@ -79,8 +79,12 @@ public class WriteTogetherWebSocketSender
   
   public void a(BaseToWriteTogetherMsg paramBaseToWriteTogetherMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WriteTogether.WriteTogetherWebSocketSender", 2, "sendData, " + paramBaseToWriteTogetherMsg.toShortStr());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sendData, ");
+      localStringBuilder.append(paramBaseToWriteTogetherMsg.toShortStr());
+      QLog.d("WriteTogether.WriteTogetherWebSocketSender", 2, localStringBuilder.toString());
     }
     if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)) {
       e();
@@ -89,21 +93,18 @@ public class WriteTogetherWebSocketSender
     {
       paramBaseToWriteTogetherMsg.header.groupCode = Integer.parseInt(this.jdField_b_of_type_JavaLangString);
       paramBaseToWriteTogetherMsg.header.sig = this.jdField_a_of_type_JavaLangString;
-      if (this.jdField_a_of_type_JavaUtilConcurrentLinkedBlockingDeque.offer(paramBaseToWriteTogetherMsg))
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramBaseToWriteTogetherMsg.getSeq()), paramBaseToWriteTogetherMsg);
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketWriteTogetherWebSocketAlarm.a(paramBaseToWriteTogetherMsg, paramBaseToWriteTogetherMsg.getTimeout());
-        return;
-      }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.e("WriteTogether.WriteTogetherWebSocketSender", 1, localException, new Object[0]);
-      }
-      QLog.d("WriteTogether.WriteTogetherWebSocketSender", 1, "sendData, but mWaitSendQueue is full");
+      QLog.e("WriteTogether.WriteTogetherWebSocketSender", 1, localException, new Object[0]);
     }
+    if (this.jdField_a_of_type_JavaUtilConcurrentLinkedBlockingDeque.offer(paramBaseToWriteTogetherMsg))
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramBaseToWriteTogetherMsg.getSeq()), paramBaseToWriteTogetherMsg);
+      this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketWriteTogetherWebSocketAlarm.a(paramBaseToWriteTogetherMsg, paramBaseToWriteTogetherMsg.getTimeout());
+      return;
+    }
+    QLog.d("WriteTogether.WriteTogetherWebSocketSender", 1, "sendData, but mWaitSendQueue is full");
   }
   
   public void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, int paramInt)
@@ -131,29 +132,30 @@ public class WriteTogetherWebSocketSender
     if (paramInt == 60010) {
       return;
     }
-    if ((!paramBoolean) || (paramInt != 0))
-    {
-      this.jdField_a_of_type_Boolean = false;
+    if ((paramBoolean) && (paramInt == 0)) {
       synchronized (this.jdField_a_of_type_JavaLangObject)
       {
         this.jdField_a_of_type_JavaLangObject.notify();
-        return;
-      }
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaLangObject.notify();
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketHeartBeat.a(false);
-      if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketHeartBeat.a() == null) {
+        this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketHeartBeat.a(false);
+        if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketHeartBeat.a() != null)
+        {
+          ThreadManager.getSubThreadHandler().postDelayed(this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketHeartBeat, 30000L);
+          return;
+        }
         throw new IllegalStateException("heart beat not initialize");
       }
     }
-    ThreadManager.getSubThreadHandler().postDelayed(this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketHeartBeat, 30000L);
+    this.jdField_a_of_type_Boolean = false;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaLangObject.notify();
+      return;
+    }
   }
   
   boolean a()
   {
-    return NetworkUtil.a();
+    return NetworkUtil.isNetworkAvailable();
   }
   
   void b()
@@ -169,17 +171,19 @@ public class WriteTogetherWebSocketSender
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketWriteTogetherWebSocketEngine.b();
-    if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientRoomController != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientRoomController.b();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientRoomController;
+    if (localObject != null) {
+      ((RoomController)localObject).b();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler != null) {
-      AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler;
+    if (localObject != null) {
+      AppNetConnInfo.unregisterNetInfoHandler((INetInfoHandler)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.websocket.WriteTogetherWebSocketSender
  * JD-Core Version:    0.7.0.1
  */

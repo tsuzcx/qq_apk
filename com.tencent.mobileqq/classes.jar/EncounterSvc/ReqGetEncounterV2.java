@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class ReqGetEncounterV2
   extends JceStruct
@@ -160,21 +161,25 @@ public final class ReqGetEncounterV2
     paramJceOutputStream.write(this.stUserData, 1);
     paramJceOutputStream.write(this.eNewListType, 2);
     paramJceOutputStream.write(this.iListSize, 3);
-    if (this.vTagsID != null) {
-      paramJceOutputStream.write(this.vTagsID, 4);
+    Object localObject = this.vTagsID;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
-    if (this.strA2 != null) {
-      paramJceOutputStream.write(this.strA2, 5);
+    localObject = this.strA2;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 5);
     }
     paramJceOutputStream.write(this.bTraversing, 6);
     paramJceOutputStream.write(this.iRadius, 7);
     paramJceOutputStream.write(this.iMaxSearchNum, 8);
     paramJceOutputStream.write(this.iSimpleSort, 9);
-    if (this.nearbyGroupReq != null) {
-      paramJceOutputStream.write(this.nearbyGroupReq, 10);
+    localObject = this.nearbyGroupReq;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 10);
     }
-    if (this.nearbyPublicAcctReq != null) {
-      paramJceOutputStream.write(this.nearbyPublicAcctReq, 11);
+    localObject = this.nearbyPublicAcctReq;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 11);
     }
     paramJceOutputStream.write(this.random_trav_dis_level, 12);
     paramJceOutputStream.write(this.encrypt_proto, 13);
@@ -187,18 +192,21 @@ public final class ReqGetEncounterV2
     paramJceOutputStream.write(this.home_city, 20);
     paramJceOutputStream.write(this.use_tinyid, 21);
     paramJceOutputStream.write(this.home_country, 22);
-    if (this.stLocalUserInfo != null) {
-      paramJceOutputStream.write(this.stLocalUserInfo, 23);
+    localObject = this.stLocalUserInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 23);
     }
     paramJceOutputStream.write(this.support_entrace_type, 24);
-    if (this.appoint_params != null) {
-      paramJceOutputStream.write(this.appoint_params, 25);
+    localObject = this.appoint_params;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 25);
     }
     paramJceOutputStream.write(this.use_watch, 26);
     paramJceOutputStream.write(this.watch_color, 27);
     paramJceOutputStream.write(this.interest_id, 28);
-    if (this.ad_extra != null) {
-      paramJceOutputStream.write(this.ad_extra, 29);
+    localObject = this.ad_extra;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 29);
     }
     paramJceOutputStream.write(this.ad_ctrl, 30);
     paramJceOutputStream.write(this.last_color_time, 31);
@@ -210,7 +218,7 @@ public final class ReqGetEncounterV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     EncounterSvc.ReqGetEncounterV2
  * JD-Core Version:    0.7.0.1
  */

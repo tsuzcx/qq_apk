@@ -17,29 +17,22 @@ final class StatisticReport$2
   
   public final void a(int paramInt, Map<String, List<String>> paramMap, InputStream paramInputStream)
   {
-    if (paramInputStream == null) {}
-    do
-    {
+    if (paramInputStream == null) {
       return;
-      try
+    }
+    try
+    {
+      paramMap = new ByteArrayOutputStream();
+      byte[] arrayOfByte = new byte[1024];
+      for (;;)
       {
-        paramMap = new ByteArrayOutputStream();
-        byte[] arrayOfByte = new byte[1024];
-        for (;;)
-        {
-          paramInt = paramInputStream.read(arrayOfByte);
-          if (paramInt == -1) {
-            break;
-          }
-          paramMap.write(arrayOfByte, 0, paramInt);
+        paramInt = paramInputStream.read(arrayOfByte);
+        if (paramInt == -1) {
+          break;
         }
-        paramMap.close();
+        paramMap.write(arrayOfByte, 0, paramInt);
       }
-      catch (IOException paramMap)
-      {
-        paramMap.printStackTrace();
-        return;
-      }
+      paramMap.close();
       paramInputStream.close();
       paramMap = new String(paramMap.toByteArray());
       f.c(paramMap, new Object[0]);
@@ -51,49 +44,57 @@ final class StatisticReport$2
           f.a("Statistic report successfully!", new Object[0]);
           return;
         }
+        if (paramInt == -1001)
+        {
+          f.c("Statistic report error! Not post method!", new Object[0]);
+          return;
+        }
+        if (paramInt == -1002)
+        {
+          f.c("Statistic report error! Params not valid!", new Object[0]);
+          return;
+        }
+        if (paramInt == -1003)
+        {
+          f.c("Statistic report error! Server exception!", new Object[0]);
+          return;
+        }
+        if (paramInt == -1004)
+        {
+          f.c("Statistic report error! Server over charge!", new Object[0]);
+          return;
+        }
+        if (paramInt == -1005)
+        {
+          f.c("Statistic report error! DB exception!", new Object[0]);
+          return;
+        }
+        if (paramInt == -1006)
+        {
+          f.c("Statistic report error! DB exception!", new Object[0]);
+          return;
+        }
+        if (paramInt == -1007) {
+          f.c("Statistic report error! Config not hit!", new Object[0]);
+        }
+        return;
       }
       catch (JSONException paramMap)
       {
         paramMap.printStackTrace();
         return;
       }
-      if (paramInt == -1001)
-      {
-        f.c("Statistic report error! Not post method!", new Object[0]);
-        return;
-      }
-      if (paramInt == -1002)
-      {
-        f.c("Statistic report error! Params not valid!", new Object[0]);
-        return;
-      }
-      if (paramInt == -1003)
-      {
-        f.c("Statistic report error! Server exception!", new Object[0]);
-        return;
-      }
-      if (paramInt == -1004)
-      {
-        f.c("Statistic report error! Server over charge!", new Object[0]);
-        return;
-      }
-      if (paramInt == -1005)
-      {
-        f.c("Statistic report error! DB exception!", new Object[0]);
-        return;
-      }
-      if (paramInt == -1006)
-      {
-        f.c("Statistic report error! DB exception!", new Object[0]);
-        return;
-      }
-    } while (paramInt != -1007);
-    f.c("Statistic report error! Config not hit!", new Object[0]);
+      return;
+    }
+    catch (IOException paramMap)
+    {
+      paramMap.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.common.statistic.StatisticReport.2
  * JD-Core Version:    0.7.0.1
  */

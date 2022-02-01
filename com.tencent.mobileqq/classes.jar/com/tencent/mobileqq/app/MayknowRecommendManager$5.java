@@ -1,24 +1,20 @@
 package com.tencent.mobileqq.app;
 
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.studymode.StudyModeChangeListener;
 
 class MayknowRecommendManager$5
-  implements BusinessObserver
+  implements StudyModeChangeListener
 {
-  MayknowRecommendManager$5(MayknowRecommendManager paramMayknowRecommendManager, String paramString) {}
+  MayknowRecommendManager$5(MayknowRecommendManager paramMayknowRecommendManager) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onChange(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MayknowRecommendManager", 2, "setRecommendTroopDeleted uin: " + this.jdField_a_of_type_JavaLangString + " isSuccess: " + paramBoolean);
-    }
+    ((FriendListHandler)MayknowRecommendManager.a(this.a).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(105, true, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.MayknowRecommendManager.5
  * JD-Core Version:    0.7.0.1
  */

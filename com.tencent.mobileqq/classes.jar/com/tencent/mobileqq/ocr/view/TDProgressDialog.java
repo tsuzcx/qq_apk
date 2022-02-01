@@ -26,7 +26,7 @@ public class TDProgressDialog
   
   public TDProgressDialog(Context paramContext)
   {
-    super(paramContext, 2131755842);
+    super(paramContext, 2131756189);
     a(paramContext);
   }
   
@@ -34,13 +34,13 @@ public class TDProgressDialog
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559650, null);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559528, null);
     setCancelable(false);
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewTDCircleProgressView = ((TDCircleProgressView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364756));
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewTDCircleProgressView = ((TDCircleProgressView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364643));
     this.jdField_a_of_type_ComTencentMobileqqOcrViewTDCircleProgressView.setCurrent(0);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380283));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131381105);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380241));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379595));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131380360);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379557));
   }
   
   public void a(int paramInt)
@@ -62,13 +62,14 @@ public class TDProgressDialog
   
   public void a(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(i);
-      this.jdField_b_of_type_AndroidViewView.setVisibility(i);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 8;
     }
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(i);
+    this.jdField_b_of_type_AndroidViewView.setVisibility(i);
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -77,32 +78,26 @@ public class TDProgressDialog
     paramBundle = getWindow();
     paramBundle.setContentView(this.jdField_a_of_type_AndroidViewView);
     int i;
-    WindowManager.LayoutParams localLayoutParams;
-    float f;
-    if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0)
-    {
+    if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0) {
       i = 1;
-      localLayoutParams = paramBundle.getAttributes();
-      f = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
-      localLayoutParams.width = ((int)(320.0F * f + 0.5F));
-      if (i != 0) {
-        break label97;
-      }
-    }
-    label97:
-    for (localLayoutParams.height = ((int)(145.0F * f + 0.5F));; localLayoutParams.height = ((int)(200.0F * f + 0.5F)))
-    {
-      paramBundle.setAttributes(localLayoutParams);
-      setCanceledOnTouchOutside(false);
-      return;
+    } else {
       i = 0;
-      break;
     }
+    WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
+    float f = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
+    localLayoutParams.width = ((int)(320.0F * f + 0.5F));
+    if (i == 0) {
+      localLayoutParams.height = ((int)(f * 145.0F + 0.5F));
+    } else {
+      localLayoutParams.height = ((int)(f * 200.0F + 0.5F));
+    }
+    paramBundle.setAttributes(localLayoutParams);
+    setCanceledOnTouchOutside(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.TDProgressDialog
  * JD-Core Version:    0.7.0.1
  */

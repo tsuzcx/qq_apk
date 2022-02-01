@@ -1,4 +1,4 @@
-package com.tencent.mobileqq.troop.enterEffect;
+package com.tencent.mobileqq.troop.entereffect;
 
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -49,9 +49,9 @@ public class TroopEnterEffectConfig$EffectInfo
   {
     this.jdField_a_of_type_Int = paramTGetMyEffectRsp0x2.query_interval.get();
     this.b = paramTGetMyEffectRsp0x2.global_effect_id.get();
-    Object localObject = (group_effect.EffectInfo)paramTGetMyEffectRsp0x2.st_global_effectinfo.get();
-    if (localObject != null) {
-      this.jdField_a_of_type_JavaLangString = ((group_effect.EffectInfo)localObject).name.get();
+    Object localObject1 = (group_effect.EffectInfo)paramTGetMyEffectRsp0x2.st_global_effectinfo.get();
+    if (localObject1 != null) {
+      this.jdField_a_of_type_JavaLangString = ((group_effect.EffectInfo)localObject1).name.get();
     }
     if ((paramTGetMyEffectRsp0x2.rpt_userconfig.has()) && (paramTGetMyEffectRsp0x2.rpt_userconfig.size() > 0))
     {
@@ -59,24 +59,44 @@ public class TroopEnterEffectConfig$EffectInfo
       int i = 0;
       while (i < paramTGetMyEffectRsp0x2.size())
       {
-        localObject = (group_effect_commu.TEffectDetail)paramTGetMyEffectRsp0x2.get(i);
-        TroopEnterEffectConfig.EffectInfoData localEffectInfoData = new TroopEnterEffectConfig.EffectInfoData();
-        localEffectInfoData.a((group_effect_commu.TEffectDetail)localObject);
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopEnterEffect.EffectInfo", 2, "mergeFromPB rpt_userconfig index = " + i + " detail = " + localEffectInfoData.toString());
+        Object localObject2 = (group_effect_commu.TEffectDetail)paramTGetMyEffectRsp0x2.get(i);
+        localObject1 = new TroopEnterEffectConfig.EffectInfoData();
+        ((TroopEnterEffectConfig.EffectInfoData)localObject1).a((group_effect_commu.TEffectDetail)localObject2);
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("mergeFromPB rpt_userconfig index = ");
+          ((StringBuilder)localObject2).append(i);
+          ((StringBuilder)localObject2).append(" detail = ");
+          ((StringBuilder)localObject2).append(((TroopEnterEffectConfig.EffectInfoData)localObject1).toString());
+          QLog.d("EffectInfo.TAG", 2, ((StringBuilder)localObject2).toString());
         }
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localEffectInfoData.a + "", localEffectInfoData);
+        localObject2 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(((TroopEnterEffectConfig.EffectInfoData)localObject1).a);
+        localStringBuilder.append("");
+        ((ConcurrentHashMap)localObject2).put(localStringBuilder.toString(), localObject1);
         i += 1;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopEnterEffect.EffectInfo", 2, "mergeFromPB nextReqTime = " + this.jdField_a_of_type_Int + " global_effectId = " + this.b + " global_effectName = " + this.jdField_a_of_type_JavaLangString + " individual effect size = " + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+    if (QLog.isColorLevel())
+    {
+      paramTGetMyEffectRsp0x2 = new StringBuilder();
+      paramTGetMyEffectRsp0x2.append("mergeFromPB nextReqTime = ");
+      paramTGetMyEffectRsp0x2.append(this.jdField_a_of_type_Int);
+      paramTGetMyEffectRsp0x2.append(" global_effectId = ");
+      paramTGetMyEffectRsp0x2.append(this.b);
+      paramTGetMyEffectRsp0x2.append(" global_effectName = ");
+      paramTGetMyEffectRsp0x2.append(this.jdField_a_of_type_JavaLangString);
+      paramTGetMyEffectRsp0x2.append(" individual effect size = ");
+      paramTGetMyEffectRsp0x2.append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+      QLog.d("EffectInfo.TAG", 2, paramTGetMyEffectRsp0x2.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectConfig.EffectInfo
  * JD-Core Version:    0.7.0.1
  */

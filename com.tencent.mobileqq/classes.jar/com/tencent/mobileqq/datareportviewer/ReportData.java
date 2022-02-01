@@ -48,20 +48,17 @@ public class ReportData
       localJSONObject.put("r3", this.r3);
       localJSONObject.put("r4", this.r4);
       localJSONObject.put("r5", this.r5);
-      return localJSONObject.toString();
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    return localJSONObject.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.ReportData
  * JD-Core Version:    0.7.0.1
  */

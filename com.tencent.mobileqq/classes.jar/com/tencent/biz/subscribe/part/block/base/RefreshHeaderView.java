@@ -32,14 +32,14 @@ public class RefreshHeaderView
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private RefreshHeaderView.OnRefreshListener jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView$OnRefreshListener;
-  private final String jdField_a_of_type_JavaLangString = getResources().getString(2131719535);
+  private final String jdField_a_of_type_JavaLangString = getResources().getString(2131719253);
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private RotateAnimation jdField_b_of_type_AndroidViewAnimationRotateAnimation;
-  private final String jdField_b_of_type_JavaLangString = getResources().getString(2131719531);
-  private final String c = getResources().getString(2131719534);
-  private final String d = getResources().getString(2131719532);
+  private final String jdField_b_of_type_JavaLangString = getResources().getString(2131719249);
+  private final String c = getResources().getString(2131719252);
+  private final String d = getResources().getString(2131719250);
   
   public RefreshHeaderView(Context paramContext)
   {
@@ -69,12 +69,13 @@ public class RefreshHeaderView
   {
     this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminate(paramBoolean);
     ProgressBar localProgressBar = this.jdField_a_of_type_AndroidWidgetProgressBar;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localProgressBar.setVisibility(i);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 8;
     }
+    localProgressBar.setVisibility(i);
   }
   
   private boolean a(float paramFloat, boolean paramBoolean)
@@ -93,11 +94,11 @@ public class RefreshHeaderView
     localLayoutParams.setMargins(0, 0, 0, 0);
     setLayoutParams(localLayoutParams);
     setPadding(0, 0, 0, 0);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(getContext()).inflate(2131560850, null));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(getContext()).inflate(2131560725, null));
     addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, new LinearLayout.LayoutParams(-1, 0));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369677));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380559));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131372820));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369374));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379844));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131372398));
     this.jdField_a_of_type_AndroidViewAnimationRotateAnimation = new RotateAnimation(0.0F, 180.0F, 1, 0.5F, 1, 0.5F);
     this.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setDuration(100L);
     this.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setFillAfter(true);
@@ -106,7 +107,7 @@ public class RefreshHeaderView
     this.jdField_b_of_type_AndroidViewAnimationRotateAnimation.setFillAfter(true);
     measure(-2, -2);
     this.jdField_a_of_type_Int = getMeasuredHeight();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839549);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839406);
   }
   
   public int a()
@@ -134,36 +135,43 @@ public class RefreshHeaderView
       setVisibleHeight((int)paramFloat1 + a());
       if (this.jdField_b_of_type_Int <= 1)
       {
-        if (a() <= this.jdField_a_of_type_Int) {
-          break label48;
+        if (a() > this.jdField_a_of_type_Int)
+        {
+          b();
+          return;
         }
-        b();
+        a();
       }
     }
-    return;
-    label48:
-    a();
   }
   
   public boolean a()
   {
     int i = a();
-    if ((i != 0) || ((a() > this.jdField_a_of_type_Int) && (this.jdField_b_of_type_Int < 2))) {
-      setState(2);
-    }
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if ((a() > this.jdField_a_of_type_Int) && (this.jdField_b_of_type_Int < 2))
     {
-      if ((this.jdField_b_of_type_Int == 2) && (i > this.jdField_a_of_type_Int)) {
-        a(this.jdField_a_of_type_Int);
-      }
-      if (this.jdField_b_of_type_Int != 2) {
-        a(0);
-      }
-      if (this.jdField_b_of_type_Int == 2) {
-        a(this.jdField_a_of_type_Int);
-      }
-      return bool;
+      setState(2);
+      bool = true;
     }
+    else
+    {
+      bool = false;
+    }
+    if (this.jdField_b_of_type_Int == 2)
+    {
+      int j = this.jdField_a_of_type_Int;
+      if (i > j) {
+        a(j);
+      }
+    }
+    if (this.jdField_b_of_type_Int != 2) {
+      a(0);
+    }
+    if (this.jdField_b_of_type_Int == 2) {
+      a(this.jdField_a_of_type_Int);
+    }
+    return bool;
   }
   
   public boolean a(MotionEvent paramMotionEvent)
@@ -171,37 +179,44 @@ public class RefreshHeaderView
     if (this.jdField_a_of_type_Float == -1.0F) {
       this.jdField_a_of_type_Float = paramMotionEvent.getRawY();
     }
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    case 1: 
-    default: 
-      this.jdField_a_of_type_Float = -1.0F;
-      if ((c()) && (!this.jdField_a_of_type_Boolean)) {
-        a();
-      }
-    case 0: 
-      for (;;)
+      if (i != 2)
       {
-        return super.onTouchEvent(paramMotionEvent);
+        this.jdField_a_of_type_Float = -1.0F;
+        if ((c()) && (!this.jdField_a_of_type_Boolean)) {
+          a();
+        }
+      }
+      else
+      {
+        float f2 = paramMotionEvent.getRawY();
+        float f1 = this.jdField_a_of_type_Float;
+        f2 = (f2 - f1) / 2.0F;
+        boolean bool;
+        if (f1 == 0.0F) {
+          bool = true;
+        } else {
+          bool = false;
+        }
         this.jdField_a_of_type_Float = paramMotionEvent.getRawY();
-        this.jdField_b_of_type_Float = 0.0F;
+        this.jdField_b_of_type_Float += f2;
+        if ((c()) && (!this.jdField_a_of_type_Boolean) && (a(f2, bool)))
+        {
+          a(f2, this.jdField_b_of_type_Float);
+          if (a() > 0) {
+            return false;
+          }
+        }
       }
     }
-    float f = (paramMotionEvent.getRawY() - this.jdField_a_of_type_Float) / 2.0F;
-    if (this.jdField_a_of_type_Float == 0.0F) {}
-    for (boolean bool = true;; bool = false)
+    else
     {
       this.jdField_a_of_type_Float = paramMotionEvent.getRawY();
-      this.jdField_b_of_type_Float += f;
-      if ((!c()) || (this.jdField_a_of_type_Boolean) || (!a(f, bool))) {
-        break;
-      }
-      a(f, this.jdField_b_of_type_Float);
-      if (a() <= 0) {
-        break;
-      }
-      return false;
+      this.jdField_b_of_type_Float = 0.0F;
     }
+    return super.onTouchEvent(paramMotionEvent);
   }
   
   public void b()
@@ -233,7 +248,7 @@ public class RefreshHeaderView
     }
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if (this.jdField_b_of_type_Int == 1) {
@@ -256,59 +271,79 @@ public class RefreshHeaderView
   
   public void setState(int paramInt)
   {
-    if (paramInt == this.jdField_b_of_type_Int) {
+    int i = this.jdField_b_of_type_Int;
+    if (paramInt == i) {
       return;
     }
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    }
-    for (;;)
-    {
-      QLog.d("RefreshHeaderView", 1, "state:" + paramInt);
-      this.jdField_b_of_type_Int = paramInt;
-      return;
-      if (this.jdField_b_of_type_Int == 1) {
-        this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_b_of_type_AndroidViewAnimationRotateAnimation);
-      }
-      if (this.jdField_b_of_type_Int == 2) {
-        this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.d);
-      continue;
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      a(false);
-      if (this.jdField_b_of_type_Int != 1)
+      if (paramInt != 1)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-        this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationRotateAnimation);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.c);
-        continue;
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        a(true);
-        a(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-        if (this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView$OnRefreshListener != null)
+        if (paramInt != 2)
         {
-          this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView$OnRefreshListener.b();
-          continue;
-          QLog.d("RefreshHeaderView", 4, "STATE_JUST_SHOW_REFRESH_ANIMATION");
+          if (paramInt != 3)
+          {
+            if (paramInt == 4)
+            {
+              QLog.d("RefreshHeaderView", 4, "STATE_JUST_SHOW_REFRESH_ANIMATION");
+              this.jdField_a_of_type_Long = System.currentTimeMillis();
+              this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+              this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+              a(true);
+              a(this.jdField_a_of_type_Int);
+              this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
+              setRefreshing(true);
+            }
+          }
+          else
+          {
+            this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+            a(false);
+            this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+            a(0);
+          }
+        }
+        else
+        {
           this.jdField_a_of_type_Long = System.currentTimeMillis();
           this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
           this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
           a(true);
           a(this.jdField_a_of_type_Int);
           this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-          setRefreshing(true);
-          continue;
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          a(false);
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-          a(0);
+          localObject = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView$OnRefreshListener;
+          if (localObject != null) {
+            ((RefreshHeaderView.OnRefreshListener)localObject).b();
+          }
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        a(false);
+        if (this.jdField_b_of_type_Int != 1)
+        {
+          this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+          this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationRotateAnimation);
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(this.c);
         }
       }
     }
+    else
+    {
+      if (i == 1) {
+        this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_b_of_type_AndroidViewAnimationRotateAnimation);
+      }
+      if (this.jdField_b_of_type_Int == 2) {
+        this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.d);
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("state:");
+    ((StringBuilder)localObject).append(paramInt);
+    QLog.d("RefreshHeaderView", 1, ((StringBuilder)localObject).toString());
+    this.jdField_b_of_type_Int = paramInt;
   }
   
   public void setVisibleHeight(int paramInt)
@@ -324,7 +359,7 @@ public class RefreshHeaderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.part.block.base.RefreshHeaderView
  * JD-Core Version:    0.7.0.1
  */

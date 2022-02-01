@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class FudaiActiveReport$ActiveReportReq
   extends MessageMicro<ActiveReportReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 58, 66, 74, 82, 90, 96, 104, 112, 120, 128, 136, 144 }, new String[] { "act_id", "optime", "touin", "group_uin", "banner_id", "pendant_id", "vid", "game_id", "brand_id", "card_id", "fudai_id", "award_type", "cash_value", "entrance_remind", "fd_status_type", "share_source", "share_type", "follow_brand" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), "", "", "", "", "", "", "", Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(1), Boolean.valueOf(false) }, ActiveReportReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field act_id = PBField.initUInt32(0);
   public final PBEnumField award_type = PBField.initEnum(0);
   public final PBStringField banner_id = PBField.initString("");
@@ -31,10 +31,19 @@ public final class FudaiActiveReport$ActiveReportReq
   public final PBEnumField share_type = PBField.initEnum(1);
   public final PBUInt64Field touin = PBField.initUInt64(0L);
   public final PBStringField vid = PBField.initString("");
+  
+  static
+  {
+    Boolean localBoolean = Boolean.valueOf(false);
+    Integer localInteger1 = Integer.valueOf(0);
+    Integer localInteger2 = Integer.valueOf(1);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 58, 66, 74, 82, 90, 96, 104, 112, 120, 128, 136, 144 }, new String[] { "act_id", "optime", "touin", "group_uin", "banner_id", "pendant_id", "vid", "game_id", "brand_id", "card_id", "fudai_id", "award_type", "cash_value", "entrance_remind", "fd_status_type", "share_source", "share_type", "follow_brand" }, new Object[] { localInteger1, localLong, localLong, localLong, "", "", "", "", "", "", "", localInteger1, localInteger1, localBoolean, localInteger1, localInteger2, localInteger2, localBoolean }, ActiveReportReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     fudai.FudaiActiveReport.ActiveReportReq
  * JD-Core Version:    0.7.0.1
  */

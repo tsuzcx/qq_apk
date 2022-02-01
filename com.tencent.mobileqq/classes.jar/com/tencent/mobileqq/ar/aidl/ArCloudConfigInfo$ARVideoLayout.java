@@ -21,13 +21,27 @@ public class ArCloudConfigInfo$ARVideoLayout
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ARVideoLayout {width: ").append(this.jdField_a_of_type_Int).append(", height: ").append(this.jdField_b_of_type_Int).append(", scaleX: ").append(this.jdField_a_of_type_Float).append(", scaleY: ").append(this.jdField_b_of_type_Float).append(", transX: ").append(this.c).append(", transY: ").append(this.d).append(", transZ: ").append(this.e).append("}");
+    localStringBuilder.append("ARVideoLayout {width: ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", height: ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", scaleX: ");
+    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(", scaleY: ");
+    localStringBuilder.append(this.jdField_b_of_type_Float);
+    localStringBuilder.append(", transX: ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", transY: ");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", transZ: ");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo.ARVideoLayout
  * JD-Core Version:    0.7.0.1
  */

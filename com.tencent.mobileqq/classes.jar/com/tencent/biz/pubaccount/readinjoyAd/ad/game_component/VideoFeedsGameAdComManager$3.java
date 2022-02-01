@@ -3,12 +3,14 @@ package com.tencent.biz.pubaccount.readinjoyAd.ad.game_component;
 import android.app.Activity;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.NativeAd.report.constant.ReportAction;
-import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
-import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.playfeeds.GameAdComData;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdReportData;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.manager.GiftPackageManager;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdService;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
 import java.util.HashMap;
@@ -27,7 +29,8 @@ class VideoFeedsGameAdComManager$3
       {
         Object localObject = new HashMap();
         ((HashMap)localObject).put("vid", VideoFeedsGameAdComManager.a(this.this$0));
-        NativeAdUtils.a(new AdReportData().a(VideoFeedsGameAdComManager.a(this.this$0)).a(24).b(26).d(1).a(VideoFeedsGameAdComManager.a(this.this$0)).a(ReportAction.CLICK).d(NativeAdUtils.a(null, VideoFeedsGameAdComManager.a(this.this$0).mRowKey, VideoFeedsGameAdComManager.b(this.this$0), VideoFeedsGameAdComManager.a(this.this$0).s, VideoFeedsGameAdComManager.a(this.this$0).d, (HashMap)localObject)).e(GiftPackageManager.a(VideoFeedsGameAdComManager.a(this.this$0).a, 1)));
+        VideoFeedsGameAdComManager.a(this.this$0, (HashMap)localObject);
+        ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(VideoFeedsGameAdComManager.a(this.this$0)).a(24).b(26).d(1).a(VideoFeedsGameAdComManager.a(this.this$0)).a(ReportAction.CLICK).d(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getBusiJson(null, VideoFeedsGameAdComManager.a(this.this$0).mRowKey, VideoFeedsGameAdComManager.b(this.this$0), VideoFeedsGameAdComManager.a(this.this$0).s, VideoFeedsGameAdComManager.a(this.this$0).d, (HashMap)localObject)).e(GiftPackageManager.a(VideoFeedsGameAdComManager.a(this.this$0), VideoFeedsGameAdComManager.a(this.this$0).a, 1)));
         localObject = GiftPackageManager.a(VideoFeedsGameAdComManager.a(this.this$0).d);
         if (((VideoFeedsGameAdComManager.a(this.this$0) instanceof Activity)) && (((Pair)localObject).first != null) && (((List)((Pair)localObject).first).size() > 0))
         {
@@ -47,7 +50,7 @@ class VideoFeedsGameAdComManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.game_component.VideoFeedsGameAdComManager.3
  * JD-Core Version:    0.7.0.1
  */

@@ -28,14 +28,20 @@ class GdtVideoImaxFragment$6
   public void onPageFinished(WebView paramWebView, String paramString)
   {
     super.onPageFinished(paramWebView, paramString);
-    GdtLog.b("AbsWebView", "onPageFinished:" + paramString);
+    paramWebView = new StringBuilder();
+    paramWebView.append("onPageFinished:");
+    paramWebView.append(paramString);
+    GdtLog.b("AbsWebView", paramWebView.toString());
     GdtVideoImaxFragment.b(this.a, true);
   }
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
     super.onPageStarted(paramWebView, paramString, paramBitmap);
-    GdtLog.b("AbsWebView", "onPageStarted:" + paramString);
+    paramWebView = new StringBuilder();
+    paramWebView.append("onPageStarted:");
+    paramWebView.append(paramString);
+    GdtLog.b("AbsWebView", paramWebView.toString());
   }
   
   public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
@@ -47,28 +53,33 @@ class GdtVideoImaxFragment$6
   public void onReceivedTitle(WebView paramWebView, String paramString)
   {
     super.onReceivedTitle(paramWebView, paramString);
-    GdtLog.b("AbsWebView", "onReceivedTitle: " + paramString);
+    paramWebView = new StringBuilder();
+    paramWebView.append("onReceivedTitle: ");
+    paramWebView.append(paramString);
+    GdtLog.b("AbsWebView", paramWebView.toString());
     GdtVideoImaxFragment.a(this.a).setWebBarTitle(paramString);
   }
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    GdtLog.b("AbsWebView", "shouldOverrideUrlLoading:" + paramString);
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
-    for (;;)
-    {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("shouldOverrideUrlLoading:");
+    localStringBuilder.append(paramString);
+    GdtLog.b("AbsWebView", localStringBuilder.toString());
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {
       return true;
-      Object localObject = ((CustomWebView)paramWebView).getPluginEngine();
-      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
-      {
-        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
-        for (boolean bool = true;; bool = false) {
-          return bool;
-        }
-      }
+    }
+    Object localObject = ((CustomWebView)paramWebView).getPluginEngine();
+    boolean bool = paramString.startsWith("file://");
+    localStringBuilder = null;
+    if ((!bool) && (!paramString.startsWith("data:")) && (!paramString.startsWith("http://")) && (!paramString.startsWith("https://")))
+    {
       localObject = AdUriUtil.parse(paramString);
-      if (localObject != null) {}
-      for (paramString = ((Uri)localObject).getScheme(); AuthorizeConfig.a().a(paramWebView.getUrl(), paramString).booleanValue(); paramString = null)
+      paramString = localStringBuilder;
+      if (localObject != null) {
+        paramString = ((Uri)localObject).getScheme();
+      }
+      if (AuthorizeConfig.a().a(paramWebView.getUrl(), paramString).booleanValue())
       {
         paramWebView = new Intent("android.intent.action.VIEW", (Uri)localObject);
         paramWebView.addFlags(268435456);
@@ -80,15 +91,16 @@ class GdtVideoImaxFragment$6
         catch (ActivityNotFoundException paramWebView)
         {
           GdtLog.d("AbsWebView", paramWebView.toString());
-          return true;
         }
       }
+      return true;
     }
+    return (localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment.6
  * JD-Core Version:    0.7.0.1
  */

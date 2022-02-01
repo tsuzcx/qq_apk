@@ -43,14 +43,15 @@ public abstract class AbsUIGroup<T>
     if (paramViewStub == null) {
       return;
     }
-    if (this.c != -1)
+    int i = this.c;
+    if (i != -1)
     {
-      a(paramViewStub, this.c);
+      a(paramViewStub, i);
       return;
     }
     paramViewStub.setLayoutResource(b());
     this.a = paramViewStub.inflate();
-    if (b() == 2131562642) {
+    if (b() == 2131562454) {
       a(a());
     }
     g();
@@ -77,7 +78,7 @@ public abstract class AbsUIGroup<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.baseUI.AbsUIGroup
  * JD-Core Version:    0.7.0.1
  */

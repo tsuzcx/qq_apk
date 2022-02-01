@@ -17,7 +17,7 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
 import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager.ContactsGuideRecenUserObj;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.widget.ThemeImageView;
 import com.tencent.widget.ThemeImageWrapper;
 
@@ -37,60 +37,57 @@ public class RecentContactsGuideItemBuilder
   
   public View a(int paramInt, Object paramObject, RecentFaceDecoder paramRecentFaceDecoder, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, DragFrameLayout.OnDragModeChangedListener paramOnDragModeChangedListener)
   {
-    paramViewGroup = null;
-    paramRecentFaceDecoder = paramViewGroup;
-    if (paramView != null)
-    {
-      paramRecentFaceDecoder = paramViewGroup;
-      if ((paramView.getTag() instanceof RecentContactsGuideItemBuilder.RecentContactsGuideItemHolder)) {
-        paramRecentFaceDecoder = (RecentContactsGuideItemBuilder.RecentContactsGuideItemHolder)paramView.getTag();
-      }
+    if ((paramView != null) && ((paramView.getTag() instanceof RecentContactsGuideItemBuilder.RecentContactsGuideItemHolder))) {
+      paramRecentFaceDecoder = (RecentContactsGuideItemBuilder.RecentContactsGuideItemHolder)paramView.getTag();
+    } else {
+      paramRecentFaceDecoder = null;
     }
+    paramViewGroup = paramView;
+    paramView = paramRecentFaceDecoder;
     if (paramRecentFaceDecoder == null)
     {
-      paramRecentFaceDecoder = new RecentContactsGuideItemBuilder.RecentContactsGuideItemHolder();
-      paramView = a(paramContext, 2131559045, paramRecentFaceDecoder);
-      paramRecentFaceDecoder.a = ((ThemeImageView)paramView.findViewById(2131365299));
-      paramView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      paramViewGroup = paramRecentFaceDecoder.a.getLayoutParams();
+      paramView = new RecentContactsGuideItemBuilder.RecentContactsGuideItemHolder();
+      paramViewGroup = a(paramContext, 2131558939, paramView);
+      paramView.a = ((ThemeImageView)paramViewGroup.findViewById(2131365174));
+      paramViewGroup.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
+      paramRecentFaceDecoder = paramView.a.getLayoutParams();
       int i = TakeVideoUtils.a(BaseApplicationImpl.getApplication().getResources());
-      int j = (int)(i * 0.5D + 0.5D);
-      paramViewGroup.width = i;
-      paramViewGroup.height = j;
-      paramRecentFaceDecoder.a.setLayoutParams(paramViewGroup);
-      paramRecentFaceDecoder.a.setMaskShape(ThemeImageWrapper.MODE_SQURE);
-      paramView.setTag(paramRecentFaceDecoder);
+      double d = i;
+      Double.isNaN(d);
+      int j = (int)(d * 0.5D + 0.5D);
+      paramRecentFaceDecoder.width = i;
+      paramRecentFaceDecoder.height = j;
+      paramView.a.setLayoutParams(paramRecentFaceDecoder);
+      paramView.a.setMaskShape(ThemeImageWrapper.MODE_SQURE);
+      paramViewGroup.setTag(paramView);
     }
-    for (;;)
+    if ((paramObject instanceof RecentItemContactsGuideData))
     {
-      if ((paramObject instanceof RecentItemContactsGuideData))
+      paramObject = (RecentItemContactsGuideData)paramObject;
+      if ((paramObject.mUser != null) && ((paramObject.mUser.extraInfo instanceof LoginWelcomeManager.ContactsGuideRecenUserObj)))
       {
-        paramObject = (RecentItemContactsGuideData)paramObject;
-        if ((paramObject.mUser != null) && ((paramObject.mUser.extraInfo instanceof LoginWelcomeManager.ContactsGuideRecenUserObj)))
+        paramObject = (LoginWelcomeManager.ContactsGuideRecenUserObj)paramObject.mUser.extraInfo;
+        if (paramObject.a != null)
         {
-          paramObject = (LoginWelcomeManager.ContactsGuideRecenUserObj)paramObject.mUser.extraInfo;
-          if (paramObject.a != null)
-          {
-            paramRecentFaceDecoder.a.setImageDrawable(paramObject.a);
-            paramObject.a.setURLDrawableListener(null);
-          }
-          LoginWelcomeManager.a += 1;
+          paramView.a.setImageDrawable(paramObject.a);
+          paramObject.a.setURLDrawableListener(null);
         }
+        LoginWelcomeManager.a += 1;
       }
-      this.jdField_a_of_type_JavaLangString = ThemeUtil.curThemeId;
-      if (AppSetting.d) {
-        paramView.setContentDescription(HardCodeUtil.a(2131713107));
-      }
-      paramView.setOnClickListener(paramOnClickListener);
-      paramView.setOnLongClickListener(paramOnLongClickListener);
-      paramView.setTag(-1, Integer.valueOf(paramInt));
-      return paramView;
     }
+    this.jdField_a_of_type_JavaLangString = ThemeUtil.curThemeId;
+    if (AppSetting.d) {
+      paramViewGroup.setContentDescription(HardCodeUtil.a(2131713082));
+    }
+    paramViewGroup.setOnClickListener(paramOnClickListener);
+    paramViewGroup.setOnLongClickListener(paramOnLongClickListener);
+    paramViewGroup.setTag(-1, Integer.valueOf(paramInt));
+    return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentContactsGuideItemBuilder
  * JD-Core Version:    0.7.0.1
  */

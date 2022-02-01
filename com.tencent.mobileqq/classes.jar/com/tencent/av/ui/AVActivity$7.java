@@ -23,7 +23,11 @@ class AVActivity$7
   
   public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
   {
-    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadProgressed(). i = " + paramInt);
+    paramURLDrawable = this.a.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MoreBtnTips. onLoadProgressed(). i = ");
+    localStringBuilder.append(paramInt);
+    QLog.i(paramURLDrawable, 1, localStringBuilder.toString());
   }
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
@@ -34,7 +38,7 @@ class AVActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.AVActivity.7
  * JD-Core Version:    0.7.0.1
  */

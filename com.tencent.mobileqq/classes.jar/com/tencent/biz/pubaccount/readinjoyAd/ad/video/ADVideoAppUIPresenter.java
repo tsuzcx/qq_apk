@@ -12,10 +12,10 @@ public class ADVideoAppUIPresenter
   
   private boolean a(DownloadInfo paramDownloadInfo, ADVideoAppDownloadData paramADVideoAppDownloadData)
   {
-    if ((paramDownloadInfo == null) || (paramADVideoAppDownloadData == null) || (TextUtils.isEmpty(paramDownloadInfo.e)) || (TextUtils.isEmpty(paramDownloadInfo.c)) || (TextUtils.isEmpty(paramADVideoAppDownloadData.d)) || (TextUtils.isEmpty(paramADVideoAppDownloadData.d))) {
-      return false;
+    if ((paramDownloadInfo != null) && (paramADVideoAppDownloadData != null) && (!TextUtils.isEmpty(paramDownloadInfo.e)) && (!TextUtils.isEmpty(paramDownloadInfo.c)) && (!TextUtils.isEmpty(paramADVideoAppDownloadData.d)) && (!TextUtils.isEmpty(paramADVideoAppDownloadData.d))) {
+      return paramDownloadInfo.e.equals(paramADVideoAppDownloadData.d);
     }
-    return paramDownloadInfo.e.equals(paramADVideoAppDownloadData.d);
+    return false;
   }
   
   private void d(ADVideoAppDownloadData paramADVideoAppDownloadData)
@@ -103,7 +103,7 @@ public class ADVideoAppUIPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.video.ADVideoAppUIPresenter
  * JD-Core Version:    0.7.0.1
  */

@@ -13,35 +13,32 @@ class HostCacheManager$HostEntity
   
   public boolean isValid()
   {
-    boolean bool;
-    if (System.currentTimeMillis() < this.expireTime)
-    {
-      bool = true;
-      if (!bool) {
-        return bool;
-      }
-      if (!NetworkManager.isMobile()) {
-        break label38;
-      }
+    boolean bool1;
+    if (System.currentTimeMillis() < this.expireTime) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
-    label38:
-    for (String str = NetworkManager.getApnValue();; str = NetworkManager.getBSSID())
+    boolean bool2 = bool1;
+    if (bool1)
     {
-      if (str != null) {
-        break label45;
+      String str;
+      if (NetworkManager.isMobile()) {
+        str = NetworkManager.getApnValue();
+      } else {
+        str = NetworkManager.getBSSID();
       }
-      return false;
-      bool = false;
-      break;
+      if (str == null) {
+        return false;
+      }
+      bool2 = str.equalsIgnoreCase(this.networkType);
     }
-    label45:
-    return str.equalsIgnoreCase(this.networkType);
-    return bool;
+    return bool2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.module.common.dns.HostCacheManager.HostEntity
  * JD-Core Version:    0.7.0.1
  */

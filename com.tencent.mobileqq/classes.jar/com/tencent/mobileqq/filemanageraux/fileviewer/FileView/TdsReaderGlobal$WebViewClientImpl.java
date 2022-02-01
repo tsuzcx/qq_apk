@@ -24,7 +24,8 @@ final class TdsReaderGlobal$WebViewClientImpl
   
   public void onPageFinished(WebView paramWebView, String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient == null) || (!this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient.onPageFinished(paramWebView, paramString))) {
+    IHostInterface.IWebClient localIWebClient = this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient;
+    if ((localIWebClient == null) || (!localIWebClient.onPageFinished(paramWebView, paramString))) {
       super.onPageFinished(paramWebView, paramString);
     }
   }
@@ -38,19 +39,20 @@ final class TdsReaderGlobal$WebViewClientImpl
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient == null) || (!this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient.shouldOverrideUrlLoading(paramWebView, paramString)))
-    {
-      paramWebView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserDelegationActivity.class);
-      paramWebView.putExtra("param_force_internal_browser", true);
-      paramWebView.putExtra("url", paramString);
-      WebAccelerator.a(this.jdField_a_of_type_AndroidContentContext, paramWebView, paramString);
+    IHostInterface.IWebClient localIWebClient = this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient;
+    if ((localIWebClient != null) && (localIWebClient.shouldOverrideUrlLoading(paramWebView, paramString))) {
+      return true;
     }
+    paramWebView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserDelegationActivity.class);
+    paramWebView.putExtra("param_force_internal_browser", true);
+    paramWebView.putExtra("url", paramString);
+    WebAccelerator.a(this.jdField_a_of_type_AndroidContentContext, paramWebView, paramString);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsReaderGlobal.WebViewClientImpl
  * JD-Core Version:    0.7.0.1
  */

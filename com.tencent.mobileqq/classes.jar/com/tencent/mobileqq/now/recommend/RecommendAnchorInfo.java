@@ -51,31 +51,30 @@ public class RecommendAnchorInfo
   
   public String a()
   {
-    if (this.p == null) {
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() != 0)) {
-        break label37;
-      }
-    }
-    label37:
-    String str;
-    for (this.p = "";; this.p = str)
+    if (this.p == null)
     {
-      return this.p;
-      str = "";
-      int i2 = this.jdField_a_of_type_JavaUtilList.size();
-      int i1 = 0;
-      if (i1 < i2)
+      Object localObject = this.jdField_a_of_type_JavaUtilList;
+      String str = "";
+      if ((localObject != null) && (((List)localObject).size() != 0))
       {
-        NowQQLiveHomepageProto.RichTitleElement localRichTitleElement = (NowQQLiveHomepageProto.RichTitleElement)this.jdField_a_of_type_JavaUtilList.get(i1);
-        if (localRichTitleElement.uint32_type.get() == 2) {}
-        for (;;)
+        int i1 = 0;
+        int i2 = this.jdField_a_of_type_JavaUtilList.size();
+        while (i1 < i2)
         {
+          localObject = (NowQQLiveHomepageProto.RichTitleElement)this.jdField_a_of_type_JavaUtilList.get(i1);
+          if (((NowQQLiveHomepageProto.RichTitleElement)localObject).uint32_type.get() != 2) {
+            str = ((NowQQLiveHomepageProto.RichTitleElement)localObject).string_text.get();
+          }
           i1 += 1;
-          break;
-          str = localRichTitleElement.string_text.get();
         }
+        this.p = str;
+      }
+      else
+      {
+        this.p = "";
       }
     }
+    return this.p;
   }
   
   public void a(List<NowQQLiveHomepageProto.MedalInfo> paramList)
@@ -114,7 +113,7 @@ public class RecommendAnchorInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.recommend.RecommendAnchorInfo
  * JD-Core Version:    0.7.0.1
  */

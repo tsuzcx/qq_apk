@@ -15,15 +15,20 @@ public class MeasureCacheable$CanvasMeasureCacheKey
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof CanvasMeasureCacheKey)) {
-        return false;
+    }
+    if (!(paramObject instanceof CanvasMeasureCacheKey)) {
+      return false;
+    }
+    paramObject = (CanvasMeasureCacheKey)paramObject;
+    if ((this.keyWidthMeasureSpec == paramObject.keyWidthMeasureSpec) && (this.keyHeightMeasureSpec == paramObject.keyHeightMeasureSpec))
+    {
+      Integer localInteger = this.cacheKey;
+      if ((localInteger != null) && (localInteger.equals(paramObject.cacheKey))) {
+        return true;
       }
-      paramObject = (CanvasMeasureCacheKey)paramObject;
-    } while ((this.keyWidthMeasureSpec == paramObject.keyWidthMeasureSpec) && (this.keyHeightMeasureSpec == paramObject.keyHeightMeasureSpec) && (this.cacheKey != null) && (this.cacheKey.equals(paramObject.cacheKey)));
+    }
     return false;
   }
   
@@ -36,7 +41,7 @@ public class MeasureCacheable$CanvasMeasureCacheKey
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ditto.area.MeasureCacheable.CanvasMeasureCacheKey
  * JD-Core Version:    0.7.0.1
  */

@@ -10,21 +10,22 @@ class QZoneShareActivity$21
   
   public void run()
   {
-    if ((QZoneShareActivity.access$1800(this.this$0) != null) && (QZoneShareActivity.access$1800(this.this$0).isShowing())) {}
-    try
-    {
-      QZoneShareActivity.access$1800(this.this$0).dismiss();
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("QZoneShare", 1, localException.getMessage());
+    if ((QZoneShareActivity.access$1800(this.this$0) != null) && (QZoneShareActivity.access$1800(this.this$0).isShowing())) {
+      try
+      {
+        QZoneShareActivity.access$1800(this.this$0).dismiss();
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("QZoneShare", 1, localException.getMessage());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.21
  * JD-Core Version:    0.7.0.1
  */

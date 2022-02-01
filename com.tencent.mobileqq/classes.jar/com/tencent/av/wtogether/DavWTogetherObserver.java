@@ -28,12 +28,19 @@ public class DavWTogetherObserver
   
   protected void a(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WTogether.ObserverImpl", 2, "onShowTips, isDialog[" + paramBoolean + "], tip[" + paramString + "]");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onShowTips, isDialog[");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append("], tip[");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("WTogether.ObserverImpl", 2, ((StringBuilder)localObject).toString());
     }
-    AVActivity localAVActivity = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a();
-    if ((localAVActivity != null) && (!localAVActivity.isFinishing())) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new DavWTogetherObserver.3(this, paramBoolean, localAVActivity, paramString));
+    Object localObject = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a();
+    if ((localObject != null) && (!((Activity)localObject).isFinishing())) {
+      this.jdField_a_of_type_AndroidOsHandler.post(new DavWTogetherObserver.3(this, paramBoolean, (Activity)localObject, paramString));
     }
   }
   
@@ -41,31 +48,41 @@ public class DavWTogetherObserver
   {
     int j = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.b();
     int i;
-    if (AVUtil.c(j)) {
+    if (AVUtil.c(j))
+    {
       if (paramBoolean1) {
         i = 4;
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("WTogether.ObserverImpl", 4, "changeUIMode, start[" + paramBoolean1 + "], isAdmin[" + paramBoolean2 + "], from[" + paramString + "], uiMode[" + j + "-->" + i + "]");
-      }
-      this.jdField_a_of_type_AndroidOsHandler.post(new DavWTogetherObserver.1(this, i, paramBoolean2, paramBoolean1));
-      return;
-      i = 2;
-      continue;
-      if (paramBoolean1) {
-        i = 3;
       } else {
-        i = 1;
+        i = 2;
       }
     }
+    else if (paramBoolean1) {
+      i = 3;
+    } else {
+      i = 1;
+    }
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("changeUIMode, start[");
+      localStringBuilder.append(paramBoolean1);
+      localStringBuilder.append("], isAdmin[");
+      localStringBuilder.append(paramBoolean2);
+      localStringBuilder.append("], from[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("], uiMode[");
+      localStringBuilder.append(j);
+      localStringBuilder.append("-->");
+      localStringBuilder.append(i);
+      localStringBuilder.append("]");
+      QLog.i("WTogether.ObserverImpl", 4, localStringBuilder.toString());
+    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new DavWTogetherObserver.1(this, i, paramBoolean2, paramBoolean1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.DavWTogetherObserver
  * JD-Core Version:    0.7.0.1
  */

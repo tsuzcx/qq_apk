@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.search.ftsentity;
 
 import com.tencent.mobileqq.app.face.IFaceDecoder;
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import com.tencent.mobileqq.search.adapter.BaseMvpFaceAdapter;
+import com.tencent.mobileqq.fts.v1.FTSEntity;
+import com.tencent.mobileqq.search.base.adapter.BaseMvpFaceAdapter;
+import com.tencent.mobileqq.search.base.view.IFaceView;
 import com.tencent.mobileqq.search.model.IFaceModel;
-import com.tencent.mobileqq.search.view.IFaceView;
 import com.tencent.mobileqq.utils.fts.SQLiteFTSUtils;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.ListView;
@@ -42,9 +42,9 @@ public abstract class BaseMvpFTSEntityAdapter<M extends IFaceModel, V extends IF
   {
     ArrayList localArrayList = SQLiteFTSUtils.a(this.jdField_a_of_type_JavaLangString);
     int j = this.jdField_a_of_type_JavaUtilList.size();
-    int i;
-    if (j + 50 < this.jdField_b_of_type_JavaUtilList.size()) {
-      i = j + 50;
+    int i = j + 50;
+    if (i >= this.jdField_b_of_type_JavaUtilList.size()) {
+      i = this.jdField_b_of_type_JavaUtilList.size();
     }
     while (j < i)
     {
@@ -53,8 +53,6 @@ public abstract class BaseMvpFTSEntityAdapter<M extends IFaceModel, V extends IF
         this.jdField_a_of_type_JavaUtilList.add(localFTSEntitySearchResultDetailModel);
       }
       j += 1;
-      continue;
-      i = this.jdField_b_of_type_JavaUtilList.size();
     }
     a(this.jdField_a_of_type_JavaUtilList);
   }
@@ -74,7 +72,7 @@ public abstract class BaseMvpFTSEntityAdapter<M extends IFaceModel, V extends IF
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsentity.BaseMvpFTSEntityAdapter
  * JD-Core Version:    0.7.0.1
  */

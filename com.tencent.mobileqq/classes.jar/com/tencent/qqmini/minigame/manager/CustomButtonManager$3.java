@@ -22,52 +22,54 @@ class CustomButtonManager$3
   public void run()
   {
     CustomButton localCustomButton = (CustomButton)CustomButtonManager.access$000(this.this$0).get(Long.valueOf(this.val$param.componentId));
-    if ((this.val$isUpdate) && (localCustomButton == null)) {}
-    Object localObject;
-    for (;;)
-    {
+    if ((this.val$isUpdate) && (localCustomButton == null)) {
       return;
-      if (localCustomButton == null)
+    }
+    Object localObject;
+    if (localCustomButton == null)
+    {
+      localCustomButton = new CustomButton(CustomButtonManager.access$200(this.this$0));
+      localCustomButton.setParam(this.val$param, this.val$clickListener);
+      localObject = new FrameLayout.LayoutParams(-2, -2);
+      ((FrameLayout.LayoutParams)localObject).height = this.val$param.style.height;
+      ((FrameLayout.LayoutParams)localObject).width = this.val$param.style.width;
+      ((FrameLayout.LayoutParams)localObject).leftMargin = this.val$param.style.left;
+      ((FrameLayout.LayoutParams)localObject).topMargin = this.val$param.style.top;
+      if (localCustomButton.getButton() != null)
       {
-        localCustomButton = new CustomButton(CustomButtonManager.access$200(this.this$0));
-        localCustomButton.setParam(this.val$param, this.val$clickListener);
-        localObject = new FrameLayout.LayoutParams(-2, -2);
-        ((FrameLayout.LayoutParams)localObject).height = this.val$param.style.height;
-        ((FrameLayout.LayoutParams)localObject).width = this.val$param.style.width;
-        ((FrameLayout.LayoutParams)localObject).leftMargin = this.val$param.style.left;
-        ((FrameLayout.LayoutParams)localObject).topMargin = this.val$param.style.top;
-        if (localCustomButton.getButton() != null)
-        {
-          CustomButtonManager.access$100(this.this$0).addView(localCustomButton.getButton(), (ViewGroup.LayoutParams)localObject);
-          CustomButtonManager.access$000(this.this$0).put(Long.valueOf(this.val$param.componentId), localCustomButton);
-        }
+        CustomButtonManager.access$100(this.this$0).addView(localCustomButton.getButton(), (ViewGroup.LayoutParams)localObject);
+        CustomButtonManager.access$000(this.this$0).put(Long.valueOf(this.val$param.componentId), localCustomButton);
       }
-      while (("image".equals(this.val$param.type)) && (!TextUtils.isEmpty(this.val$param.image)))
+      else
       {
-        localObject = ImageUtil.getDrawable(CustomButtonManager.access$200(this.this$0), CustomButtonManager.access$300(this.this$0), this.val$param.image);
-        if (localObject != null) {
-          break label346;
-        }
-        QMLog.e("CustomButtonManager", "imageDrawable == null");
-        return;
         QMLog.e("CustomButtonManager", "createCustomButton getButton() == null");
-        return;
-        localCustomButton.setParam(this.val$param, this.val$clickListener);
-        localObject = (FrameLayout.LayoutParams)localCustomButton.getButton().getLayoutParams();
-        ((FrameLayout.LayoutParams)localObject).height = this.val$param.style.height;
-        ((FrameLayout.LayoutParams)localObject).width = this.val$param.style.width;
-        ((FrameLayout.LayoutParams)localObject).leftMargin = this.val$param.style.left;
-        ((FrameLayout.LayoutParams)localObject).topMargin = this.val$param.style.top;
-        localCustomButton.getButton().setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
     }
-    label346:
-    localCustomButton.setImageDrawable((Drawable)localObject);
+    else
+    {
+      localCustomButton.setParam(this.val$param, this.val$clickListener);
+      localObject = (FrameLayout.LayoutParams)localCustomButton.getButton().getLayoutParams();
+      ((FrameLayout.LayoutParams)localObject).height = this.val$param.style.height;
+      ((FrameLayout.LayoutParams)localObject).width = this.val$param.style.width;
+      ((FrameLayout.LayoutParams)localObject).leftMargin = this.val$param.style.left;
+      ((FrameLayout.LayoutParams)localObject).topMargin = this.val$param.style.top;
+      localCustomButton.getButton().setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+    if (("image".equals(this.val$param.type)) && (!TextUtils.isEmpty(this.val$param.image)))
+    {
+      localObject = ImageUtil.getDrawable(CustomButtonManager.access$200(this.this$0), CustomButtonManager.access$300(this.this$0), this.val$param.image);
+      if (localObject == null)
+      {
+        QMLog.e("CustomButtonManager", "imageDrawable == null");
+        return;
+      }
+      localCustomButton.setImageDrawable((Drawable)localObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.manager.CustomButtonManager.3
  * JD-Core Version:    0.7.0.1
  */

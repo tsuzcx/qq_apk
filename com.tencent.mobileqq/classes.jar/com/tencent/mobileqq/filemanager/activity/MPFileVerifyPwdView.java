@@ -49,16 +49,17 @@ public class MPFileVerifyPwdView
   public View a(ViewGroup paramViewGroup, MPFileVerifyPwdView.MPFileVerifyPswEvent paramMPFileVerifyPswEvent)
   {
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityMPFileVerifyPwdView$MPFileVerifyPswEvent = paramMPFileVerifyPswEvent;
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2131560972, null).findViewById(2131381160);
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2131560847, null).findViewById(2131380417);
     return this.jdField_a_of_type_AndroidViewView;
   }
   
   public void a()
   {
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityMPFileVerifyPwdView$MPFileVerifyPswEvent = null;
-    if (this.jdField_a_of_type_JavaUtilTimer != null)
+    Timer localTimer = this.jdField_a_of_type_JavaUtilTimer;
+    if (localTimer != null)
     {
-      this.jdField_a_of_type_JavaUtilTimer.cancel();
+      localTimer.cancel();
       this.jdField_a_of_type_JavaUtilTimer = null;
     }
   }
@@ -66,8 +67,8 @@ public class MPFileVerifyPwdView
   @TargetApi(11)
   public void b()
   {
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131381163);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373728));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131380420);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373300));
     this.jdField_a_of_type_AndroidWidgetTextView.setLongClickable(false);
     this.jdField_a_of_type_AndroidWidgetTextView.addTextChangedListener(new MPFileVerifyPwdView.1(this));
     if (Build.VERSION.SDK_INT >= 11)
@@ -75,14 +76,14 @@ public class MPFileVerifyPwdView
       this.jdField_a_of_type_AndroidWidgetTextView.setTextIsSelectable(false);
       this.jdField_a_of_type_AndroidWidgetTextView.setCustomSelectionActionModeCallback(new MPFileVerifyPwdView.2(this));
     }
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131381161));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131380418));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371790));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131694298);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371416));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131694263);
     this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#00a5e0"));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new MPFileVerifyPwdView.3(this));
-    if (!NetworkUtil.d(BaseApplicationImpl.getContext())) {
-      FMToastUtil.a(BaseApplicationImpl.getContext().getString(2131694457));
+    if (!NetworkUtil.isNetSupport(BaseApplicationImpl.getContext())) {
+      FMToastUtil.a(BaseApplicationImpl.getContext().getString(2131694422));
     }
   }
   
@@ -101,39 +102,40 @@ public class MPFileVerifyPwdView
   
   public void onClick(View paramView)
   {
-    String str = this.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
-    if ((str == null) || (str.equals(""))) {
-      FMToastUtil.a(BaseApplicationImpl.getContext().getString(2131694317));
-    }
-    for (;;)
+    Object localObject = this.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
+    if ((localObject != null) && (!((String)localObject).equals("")))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       this.jdField_b_of_type_AndroidWidgetTextView.setEnabled(true);
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#00a5e0"));
-      if (str.length() < 6)
+      if (((String)localObject).length() < 6)
       {
-        FMToastUtil.a(BaseApplicationImpl.getContext().getString(2131694318));
+        FMToastUtil.a(BaseApplicationImpl.getContext().getString(2131694283));
       }
-      else if (!NetworkUtil.d(BaseApplicationImpl.getContext()))
+      else if (!NetworkUtil.isNetSupport(BaseApplicationImpl.getContext()))
       {
-        FMToastUtil.a(BaseApplicationImpl.getContext().getString(2131694457));
+        FMToastUtil.a(BaseApplicationImpl.getContext().getString(2131694422));
       }
       else
       {
         DataLineHandler localDataLineHandler = (DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-        localDataLineHandler.a().a(str);
+        localDataLineHandler.a().a((String)localObject);
         this.jdField_a_of_type_Long = localDataLineHandler.a().a(2);
-        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityMPFileVerifyPwdView$MPFileVerifyPswEvent != null) {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityMPFileVerifyPwdView$MPFileVerifyPswEvent.a(this.jdField_a_of_type_Long);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityMPFileVerifyPwdView$MPFileVerifyPswEvent;
+        if (localObject != null) {
+          ((MPFileVerifyPwdView.MPFileVerifyPswEvent)localObject).a(this.jdField_a_of_type_Long);
         }
       }
     }
+    else
+    {
+      FMToastUtil.a(BaseApplicationImpl.getContext().getString(2131694282));
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView
  * JD-Core Version:    0.7.0.1
  */

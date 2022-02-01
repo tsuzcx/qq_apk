@@ -22,7 +22,11 @@ class GiftEffectResourceController$4
   
   public void onFail(int paramInt, String paramString1, String paramString2)
   {
-    GiftEffectResourceController.access$000(this.this$0).getServiceAdapter().getLogger().e("GiftEffectResourceController", "download failed errorcode:" + paramInt, new Object[0]);
+    paramString1 = GiftEffectResourceController.access$000(this.this$0).getServiceAdapter().getLogger();
+    paramString2 = new StringBuilder();
+    paramString2.append("download failed errorcode:");
+    paramString2.append(paramInt);
+    paramString1.e("GiftEffectResourceController", paramString2.toString(), new Object[0]);
     paramString1 = new GiftEffectResourceInfo();
     ThreadCenter.postDelayedUITask(this.this$0, new GiftEffectResourceController.4.3(this, paramString1), 0L);
   }
@@ -33,31 +37,28 @@ class GiftEffectResourceController$4
   {
     GiftEffectResourceInfo localGiftEffectResourceInfo = new GiftEffectResourceInfo();
     Iterator localIterator = GiftEffectResourceController.access$600(this.this$0).entrySet().iterator();
-    Map.Entry localEntry;
     do
     {
+      localObject = localGiftEffectResourceInfo;
       if (!localIterator.hasNext()) {
         break;
       }
-      localEntry = (Map.Entry)localIterator.next();
-    } while ((localEntry == null) || (localEntry.getValue() == null) || (!paramString1.equals(((GiftEffectResourceInfo)localEntry.getValue()).mResourceUrl)));
-    for (paramString1 = (GiftEffectResourceInfo)localEntry.getValue();; paramString1 = localGiftEffectResourceInfo)
+      localObject = (Map.Entry)localIterator.next();
+    } while ((localObject == null) || (((Map.Entry)localObject).getValue() == null) || (!paramString1.equals(((GiftEffectResourceInfo)((Map.Entry)localObject).getValue()).mResourceUrl)));
+    Object localObject = (GiftEffectResourceInfo)((Map.Entry)localObject).getValue();
+    if (!new File(paramString2).exists())
     {
-      if (!new File(paramString2).exists())
-      {
-        GiftEffectResourceController.access$000(this.this$0).getServiceAdapter().getLogger().e("GiftEffectResourceController", "file is null", new Object[0]);
-        ThreadCenter.postDelayedUITask(this.this$0, new GiftEffectResourceController.4.1(this, paramString1), 0L);
-        return;
-      }
-      GiftEffectResourceController.access$802(this.this$0, new GiftEffectResourceController.4.2(this, paramString1));
-      ThreadCenter.postLogicTask(GiftEffectResourceController.access$800(this.this$0));
+      GiftEffectResourceController.access$000(this.this$0).getServiceAdapter().getLogger().e("GiftEffectResourceController", "file is null", new Object[0]);
+      ThreadCenter.postDelayedUITask(this.this$0, new GiftEffectResourceController.4.1(this, (GiftEffectResourceInfo)localObject), 0L);
       return;
     }
+    GiftEffectResourceController.access$802(this.this$0, new GiftEffectResourceController.4.2(this, (GiftEffectResourceInfo)localObject));
+    ThreadCenter.postLogicTask(GiftEffectResourceController.access$800(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.giftservice.controller.GiftEffectResourceController.4
  * JD-Core Version:    0.7.0.1
  */

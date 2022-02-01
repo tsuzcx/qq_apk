@@ -89,11 +89,13 @@ public class CoverSelectView
   public void bindPlayer(MoviePlayer paramMoviePlayer)
   {
     this.player = paramMoviePlayer;
-    if (this.timelineView != null) {
-      this.timelineView.bindPlayer(paramMoviePlayer);
+    Object localObject = this.timelineView;
+    if (localObject != null) {
+      ((TimelineView)localObject).bindPlayer(paramMoviePlayer);
     }
-    if (this.coverPreviewBar != null) {
-      this.coverPreviewBar.bindPlayer(paramMoviePlayer);
+    localObject = this.coverPreviewBar;
+    if (localObject != null) {
+      ((CoverPreviewBar)localObject).bindPlayer(paramMoviePlayer);
     }
   }
   
@@ -111,16 +113,18 @@ public class CoverSelectView
   
   public void release()
   {
-    if (this.timelineView != null) {
-      this.timelineView.release();
+    TimelineView localTimelineView = this.timelineView;
+    if (localTimelineView != null) {
+      localTimelineView.release();
     }
   }
   
   public void setClipAndSpeed(float paramFloat, long paramLong1, long paramLong2, long paramLong3)
   {
-    if (this.timelineView != null)
+    TimelineView localTimelineView = this.timelineView;
+    if (localTimelineView != null)
     {
-      this.timelineView.setSpeed(paramFloat);
+      localTimelineView.setSpeed(paramFloat);
       this.timelineView.setClipData(this.tavCutVideoSession.getTAVSource(), paramLong1, ((float)paramLong2 / paramFloat), ((float)paramLong3 / paramFloat));
     }
   }
@@ -137,30 +141,37 @@ public class CoverSelectView
   
   public void setPreviewBar(ImageView paramImageView)
   {
-    if (this.coverPreviewBar != null) {
-      this.coverPreviewBar.setPreviewBarView(paramImageView);
+    CoverPreviewBar localCoverPreviewBar = this.coverPreviewBar;
+    if (localCoverPreviewBar != null) {
+      localCoverPreviewBar.setPreviewBarView(paramImageView);
     }
   }
   
   public void setPreviewBarElevation(float paramFloat)
   {
-    if ((Build.VERSION.SDK_INT >= 21) && (this.coverPreviewBar != null)) {
-      this.coverPreviewBar.setElevation(paramFloat);
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      CoverPreviewBar localCoverPreviewBar = this.coverPreviewBar;
+      if (localCoverPreviewBar != null) {
+        localCoverPreviewBar.setElevation(paramFloat);
+      }
     }
   }
   
   public void setTimelineBuilder(TimelineBuilder paramTimelineBuilder)
   {
-    if (this.timelineView != null) {
-      this.timelineView.setTimelineBuilder(paramTimelineBuilder);
+    TimelineView localTimelineView = this.timelineView;
+    if (localTimelineView != null) {
+      localTimelineView.setTimelineBuilder(paramTimelineBuilder);
     }
   }
   
   public void setTimelineViewPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.timelineView != null)
+    TimelineView localTimelineView = this.timelineView;
+    if (localTimelineView != null)
     {
-      this.timelineView.setRecyclerViewPadding(paramInt1, paramInt2, paramInt3, paramInt4);
+      localTimelineView.setRecyclerViewPadding(paramInt1, paramInt2, paramInt3, paramInt4);
       this.timelineView.showAllMask(Color.parseColor("#99ffffff"));
       this.coverPreviewBar.initCoverSlider(paramInt1, paramInt3, this.timelineView.getWidth() - paramInt1 - paramInt3, this.currCoverProgress);
     }
@@ -175,14 +186,15 @@ public class CoverSelectView
   
   public void updateTimeRange(long paramLong1, long paramLong2)
   {
-    if (this.timelineView != null) {
-      this.timelineView.updateTimeRange(paramLong1, paramLong2);
+    TimelineView localTimelineView = this.timelineView;
+    if (localTimelineView != null) {
+      localTimelineView.updateTimeRange(paramLong1, paramLong2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.timeline.CoverSelectView
  * JD-Core Version:    0.7.0.1
  */

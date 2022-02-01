@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
+import com.tencent.mobileqq.filebrowser.FileViewMusicService;
 import com.tencent.mobileqq.filemanager.fileviewer.viewer.MusicFileViewer;
 
 class MusicFilePresenter$5$1
@@ -10,9 +10,9 @@ class MusicFilePresenter$5$1
   
   public void run()
   {
-    if ((this.a.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService != null) && (this.a.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService.b(MusicFilePresenter.a(this.a.this$0))))
+    if ((this.a.this$0.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService != null) && (this.a.this$0.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService.b(MusicFilePresenter.a(this.a.this$0))))
     {
-      int i = this.a.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService.a();
+      int i = this.a.this$0.jdField_a_of_type_ComTencentMobileqqFilebrowserFileViewMusicService.a();
       this.a.this$0.b(i);
       this.a.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.c(i);
     }
@@ -20,7 +20,7 @@ class MusicFilePresenter$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter.5.1
  * JD-Core Version:    0.7.0.1
  */

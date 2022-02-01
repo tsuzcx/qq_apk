@@ -11,7 +11,7 @@ import kotlin.jvm.internal.Intrinsics;
 import kotlin.text.StringsKt;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/gldrawable/Utils;", "", "()V", "getHardwareDecodec", "Ljava/util/ArrayList;", "Landroid/media/MediaCodecInfo;", "Lkotlin/collections/ArrayList;", "mime", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/gldrawable/Utils;", "", "()V", "getHardwareDecodec", "Ljava/util/ArrayList;", "Landroid/media/MediaCodecInfo;", "Lkotlin/collections/ArrayList;", "mime", "", "vas-temp-api_release"}, k=1, mv={1, 1, 16})
 public final class Utils
 {
   public static final Utils a = new Utils();
@@ -25,84 +25,82 @@ public final class Utils
     if (Build.VERSION.SDK_INT < 16) {
       return localArrayList;
     }
-    label303:
     for (;;)
     {
-      int i;
+      int j;
       try
       {
         StringBuilder localStringBuilder = new StringBuilder();
-        Object localObject1 = localStringBuilder.append("MediaCodec support list:");
-        Intrinsics.checkExpressionValueIsNotNull(localObject1, "append(value)");
-        StringsKt.appendln((StringBuilder)localObject1);
+        localStringBuilder.append("MediaCodec support list:");
+        Intrinsics.checkExpressionValueIsNotNull(localStringBuilder, "append(value)");
+        StringsKt.appendln(localStringBuilder);
         int k = MediaCodecList.getCodecCount();
-        i = 0;
+        int i = 0;
         if (i < k)
         {
-          localObject1 = MediaCodecList.getCodecInfoAt(i);
-          Intrinsics.checkExpressionValueIsNotNull(localObject1, "it");
-          if (!((MediaCodecInfo)localObject1).isEncoder()) {
-            break label303;
+          MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
+          Intrinsics.checkExpressionValueIsNotNull(localMediaCodecInfo, "it");
+          boolean bool = localMediaCodecInfo.isEncoder();
+          Object localObject2 = null;
+          if (bool) {
+            localMediaCodecInfo = null;
           }
-          localObject1 = null;
-          if (localObject1 != null)
+          if (localMediaCodecInfo != null)
           {
-            Object localObject2 = localStringBuilder.append(((MediaCodecInfo)localObject1).getName());
-            Intrinsics.checkExpressionValueIsNotNull(localObject2, "append(value)");
-            StringsKt.appendln((StringBuilder)localObject2);
-            localObject2 = localStringBuilder.append(Arrays.toString(((MediaCodecInfo)localObject1).getSupportedTypes()));
-            Intrinsics.checkExpressionValueIsNotNull(localObject2, "append(value)");
-            StringsKt.appendln((StringBuilder)localObject2);
-            if (localObject1 != null)
+            localStringBuilder.append(localMediaCodecInfo.getName());
+            Intrinsics.checkExpressionValueIsNotNull(localStringBuilder, "append(value)");
+            StringsKt.appendln(localStringBuilder);
+            localStringBuilder.append(Arrays.toString(localMediaCodecInfo.getSupportedTypes()));
+            Intrinsics.checkExpressionValueIsNotNull(localStringBuilder, "append(value)");
+            StringsKt.appendln(localStringBuilder);
+            if (localMediaCodecInfo != null)
             {
-              localObject2 = ((MediaCodecInfo)localObject1).getName();
-              Intrinsics.checkExpressionValueIsNotNull(localObject2, "info.name");
-              if (!StringsKt.contains((CharSequence)localObject2, (CharSequence)".sw.", true))
+              Object localObject1 = localMediaCodecInfo.getName();
+              Intrinsics.checkExpressionValueIsNotNull(localObject1, "info.name");
+              if (!StringsKt.contains((CharSequence)localObject1, (CharSequence)".sw.", true))
               {
-                localObject2 = ((MediaCodecInfo)localObject1).getName();
-                Intrinsics.checkExpressionValueIsNotNull(localObject2, "info.name");
-                if (!StringsKt.contains((CharSequence)localObject2, (CharSequence)".google.", true))
+                localObject1 = localMediaCodecInfo.getName();
+                Intrinsics.checkExpressionValueIsNotNull(localObject1, "info.name");
+                if (!StringsKt.contains((CharSequence)localObject1, (CharSequence)".google.", true))
                 {
-                  String[] arrayOfString = ((MediaCodecInfo)localObject1).getSupportedTypes();
+                  String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
                   Intrinsics.checkExpressionValueIsNotNull(arrayOfString, "info.supportedTypes");
                   int m = arrayOfString.length;
-                  int j = 0;
+                  j = 0;
+                  localObject1 = localObject2;
                   if (j < m)
                   {
-                    localObject2 = arrayOfString[j];
-                    if (StringsKt.equals((String)localObject2, paramString, true))
-                    {
-                      if (localObject2 != null) {
-                        localArrayList.add(localObject1);
-                      }
-                    }
-                    else {
-                      j += 1;
+                    localObject1 = arrayOfString[j];
+                    if (!StringsKt.equals((String)localObject1, paramString, true)) {
+                      break label301;
                     }
                   }
-                  else
-                  {
-                    localObject2 = null;
-                    continue;
+                  if (localObject1 != null) {
+                    localArrayList.add(localMediaCodecInfo);
                   }
                 }
               }
             }
           }
+          i += 1;
         }
         else
         {
           return localArrayList;
         }
       }
-      catch (Throwable paramString) {}
-      i += 1;
+      catch (Throwable paramString)
+      {
+        return localArrayList;
+      }
+      label301:
+      j += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.gldrawable.Utils
  * JD-Core Version:    0.7.0.1
  */

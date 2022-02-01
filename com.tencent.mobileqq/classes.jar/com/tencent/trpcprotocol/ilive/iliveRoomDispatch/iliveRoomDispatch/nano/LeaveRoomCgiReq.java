@@ -31,35 +31,46 @@ public final class LeaveRoomCgiReq
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.jdField_a_of_type_Long = paramCodedInputByteBufferNano.readUInt64();
-        break;
-      case 16: 
-        this.b = paramCodedInputByteBufferNano.readUInt64();
+      if (i == 0) {
         break;
       }
-      this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+      if (i != 8)
+      {
+        if (i != 16)
+        {
+          if (i != 26)
+          {
+            if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+              return this;
+            }
+          }
+          else {
+            this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+          }
+        }
+        else {
+          this.b = paramCodedInputByteBufferNano.readUInt64();
+        }
+      }
+      else {
+        this.jdField_a_of_type_Long = paramCodedInputByteBufferNano.readUInt64();
+      }
     }
+    return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    long l = this.jdField_a_of_type_Long;
     int i = j;
-    if (this.jdField_a_of_type_Long != 0L) {
-      i = j + CodedOutputByteBufferNano.computeUInt64Size(1, this.jdField_a_of_type_Long);
+    if (l != 0L) {
+      i = j + CodedOutputByteBufferNano.computeUInt64Size(1, l);
     }
+    l = this.b;
     j = i;
-    if (this.b != 0L) {
-      j = i + CodedOutputByteBufferNano.computeUInt64Size(2, this.b);
+    if (l != 0L) {
+      j = i + CodedOutputByteBufferNano.computeUInt64Size(2, l);
     }
     i = j;
     if (!this.jdField_a_of_type_JavaLangString.equals("")) {
@@ -70,11 +81,13 @@ public final class LeaveRoomCgiReq
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.jdField_a_of_type_Long != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(1, this.jdField_a_of_type_Long);
+    long l = this.jdField_a_of_type_Long;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(1, l);
     }
-    if (this.b != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(2, this.b);
+    l = this.b;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(2, l);
     }
     if (!this.jdField_a_of_type_JavaLangString.equals("")) {
       paramCodedOutputByteBufferNano.writeString(3, this.jdField_a_of_type_JavaLangString);
@@ -84,7 +97,7 @@ public final class LeaveRoomCgiReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano.LeaveRoomCgiReq
  * JD-Core Version:    0.7.0.1
  */

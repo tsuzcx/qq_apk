@@ -27,38 +27,45 @@ class DragFrameLayout$AllBornRunner
   
   public Bitmap a()
   {
-    Bitmap localBitmap = null;
+    int i = this.jdField_a_of_type_Int;
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Int >= 0)
+    if (i >= 0)
     {
       localObject1 = localObject2;
-      if (this.jdField_a_of_type_Int < DragFrameLayout.a().length) {
-        localObject2 = localBitmap;
-      }
-    }
-    try
-    {
-      localBitmap = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[this.jdField_a_of_type_Int];
-      localObject1 = localBitmap;
-      if (localBitmap == null)
+      if (i < DragFrameLayout.a().length)
       {
-        localObject2 = localBitmap;
-        localObject1 = BitmapFactory.decodeResource(this.this$0.getResources(), DragFrameLayout.a()[this.jdField_a_of_type_Int]);
-        localObject2 = localObject1;
-        this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[this.jdField_a_of_type_Int] = localObject1;
+        try
+        {
+          localObject2 = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[this.jdField_a_of_type_Int];
+          localObject1 = localObject2;
+          if (localObject2 != null) {
+            return localObject1;
+          }
+          try
+          {
+            localObject1 = BitmapFactory.decodeResource(this.this$0.getResources(), DragFrameLayout.a()[this.jdField_a_of_type_Int]);
+            localObject2 = localObject1;
+            this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[this.jdField_a_of_type_Int] = localObject1;
+          }
+          catch (OutOfMemoryError localOutOfMemoryError1) {}
+          localObject1 = localObject2;
+        }
+        catch (OutOfMemoryError localOutOfMemoryError2)
+        {
+          localObject2 = null;
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("decodeBitmap failed");
+          ((StringBuilder)localObject1).append(localOutOfMemoryError2);
+          QLog.e("DragRelativeLayout", 2, ((StringBuilder)localObject1).toString(), localOutOfMemoryError2);
+          localObject1 = localObject2;
+        }
       }
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      do
-      {
-        localObject1 = localObject2;
-      } while (!QLog.isColorLevel());
-      QLog.e("DragRelativeLayout", 2, "decodeBitmap failed" + localOutOfMemoryError, localOutOfMemoryError);
     }
     return localObject1;
-    return localObject2;
   }
   
   public PointF a()
@@ -94,10 +101,8 @@ class DragFrameLayout$AllBornRunner
       }
       DragFrameLayout.a(this.this$0, true);
     }
-    for (;;)
+    else
     {
-      this.this$0.invalidate();
-      return;
       View localView = (View)this.jdField_a_of_type_JavaUtilList.get(0);
       if (this.jdField_a_of_type_Int == DragFrameLayout.a().length)
       {
@@ -110,11 +115,12 @@ class DragFrameLayout$AllBornRunner
         this.jdField_a_of_type_Int += 1;
       }
     }
+    this.this$0.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.cur.DragFrameLayout.AllBornRunner
  * JD-Core Version:    0.7.0.1
  */

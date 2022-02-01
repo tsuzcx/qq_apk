@@ -50,17 +50,27 @@ public final class GameJsPluginEngine$cacheCommonJsService$jsService$1
   public final void onInvokeForbiddenMethod(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "method");
-    MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-    Intrinsics.checkExpressionValueIsNotNull(localMiniAppProxy, "proxy");
-    if (localMiniAppProxy.isDebugVersion()) {
-      throw ((Throwable)new RuntimeException("can not invoke " + paramString + " on minigame common JsService"));
+    Object localObject = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "proxy");
+    if (!((MiniAppProxy)localObject).isDebugVersion())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("can not invoke ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" on minigame common JsService");
+      QMLog.e("GameJsPluginEngine", ((StringBuilder)localObject).toString());
+      return;
     }
-    QMLog.e("GameJsPluginEngine", "can not invoke " + paramString + " on minigame common JsService");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("can not invoke ");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(" on minigame common JsService");
+    throw ((Throwable)new RuntimeException(((StringBuilder)localObject).toString()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.GameJsPluginEngine.cacheCommonJsService.jsService.1
  * JD-Core Version:    0.7.0.1
  */

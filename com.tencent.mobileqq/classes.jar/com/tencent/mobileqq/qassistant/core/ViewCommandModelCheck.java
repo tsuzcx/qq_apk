@@ -2,8 +2,8 @@ package com.tencent.mobileqq.qassistant.core;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
 import mqq.os.MqqHandler;
 
 public class ViewCommandModelCheck
@@ -28,7 +28,7 @@ public class ViewCommandModelCheck
   
   private int b()
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("view_command_count_file", 0).getInt("view_command_count", 0);
+    return AssistantUtils.a().getSharedPreferences("view_command_count_file", 0).getInt("view_command_count", 0);
   }
   
   private void b()
@@ -38,12 +38,12 @@ public class ViewCommandModelCheck
   
   private static void b(int paramInt)
   {
-    BaseApplicationImpl.getApplication().getSharedPreferences("view_command_count_file", 0).edit().putInt("view_command_count", paramInt).apply();
+    AssistantUtils.a().getSharedPreferences("view_command_count_file", 0).edit().putInt("view_command_count", paramInt).apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.core.ViewCommandModelCheck
  * JD-Core Version:    0.7.0.1
  */

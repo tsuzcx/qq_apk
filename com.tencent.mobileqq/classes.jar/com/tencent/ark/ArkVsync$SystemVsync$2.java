@@ -12,8 +12,9 @@ class ArkVsync$SystemVsync$2
     if (this.this$0.mChoreographer != null)
     {
       this.this$0.mChoreographer.removeFrameCallback(this.this$0);
-      this.this$0.mChoreographer = null;
-      this.this$0.mVsync = null;
+      ArkVsync.SystemVsync localSystemVsync = this.this$0;
+      localSystemVsync.mChoreographer = null;
+      localSystemVsync.mVsync = null;
     }
   }
 }

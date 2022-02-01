@@ -30,12 +30,12 @@ public class VasProfileWZRYView$VerticalCenterTextSpan
     paramCharSequence = paramCharSequence.subSequence(paramInt1, paramInt2);
     paramPaint = getCustomTextPaint(paramPaint);
     Paint.FontMetricsInt localFontMetricsInt = paramPaint.getFontMetricsInt();
-    paramInt1 = localFontMetricsInt.top;
-    float f = (localFontMetricsInt.bottom + (paramInt1 + paramInt4 + paramInt4)) / 2 - (paramInt5 + paramInt3) / 2;
-    if (this.offset != 0.0F) {
-      f = this.offset;
+    float f1 = (localFontMetricsInt.top + paramInt4 + paramInt4 + localFontMetricsInt.bottom) / 2 - (paramInt5 + paramInt3) / 2;
+    float f2 = this.offset;
+    if (f2 != 0.0F) {
+      f1 = f2;
     }
-    paramCanvas.drawText(paramCharSequence.toString(), paramFloat, paramInt4 - f, paramPaint);
+    paramCanvas.drawText(paramCharSequence.toString(), paramFloat, paramInt4 - f1, paramPaint);
   }
   
   public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
@@ -46,7 +46,7 @@ public class VasProfileWZRYView$VerticalCenterTextSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.view.VasProfileWZRYView.VerticalCenterTextSpan
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class DBFixConfigActivity$7$1
   
   public void run()
   {
-    QQToast.a(this.a.this$0.getApplicationContext(), HardCodeUtil.a(2131702901), 1).a();
+    QQToast.a(this.a.this$0.getApplicationContext(), HardCodeUtil.a(2131703031), 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixConfigActivity.7.1
  * JD-Core Version:    0.7.0.1
  */

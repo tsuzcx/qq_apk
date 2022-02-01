@@ -41,99 +41,116 @@ public final class OnDragTouchListener
   public final int a(@NotNull Resources paramResources, float paramFloat)
   {
     Intrinsics.checkParameterIsNotNull(paramResources, "resources");
-    return (int)(paramResources.getDisplayMetrics().density * paramFloat + 0.5F);
+    return (int)(paramFloat * paramResources.getDisplayMetrics().density + 0.5F);
   }
   
   public boolean onTouch(@NotNull View paramView, @NotNull MotionEvent paramMotionEvent)
   {
     Intrinsics.checkParameterIsNotNull(paramView, "v");
     Intrinsics.checkParameterIsNotNull(paramMotionEvent, "event");
-    Object localObject;
-    switch (paramMotionEvent.getAction())
+    int k = paramMotionEvent.getAction();
+    if (k != 0)
     {
-    default: 
-      return true;
-    case 0: 
-      localObject = paramView.getParent();
-      if (localObject == null) {
-        throw new TypeCastException("null cannot be cast to non-null type android.view.View");
-      }
-      this.jdField_b_of_type_Int = ((View)localObject).getWidth();
-      localObject = paramView.getParent();
-      if (localObject == null) {
-        throw new TypeCastException("null cannot be cast to non-null type android.view.View");
-      }
-      this.jdField_c_of_type_Int = ((View)localObject).getHeight();
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.jdField_b_of_type_Float = paramMotionEvent.getRawY();
-      this.jdField_c_of_type_Float = (paramMotionEvent.getRawX() - paramView.getLeft());
-      this.jdField_d_of_type_Float = (paramMotionEvent.getRawY() - paramView.getTop());
-      paramView.getParent().requestDisallowInterceptTouchEvent(true);
-      return true;
-    case 2: 
-      if (this.h == 0) {
-        this.h = paramView.getWidth();
-      }
-      if (this.i == 0) {
-        this.i = paramView.getHeight();
-      }
-      this.jdField_d_of_type_Int = ((int)(paramMotionEvent.getRawX() - this.jdField_c_of_type_Float));
-      this.e = ((int)(paramMotionEvent.getRawY() - this.jdField_d_of_type_Float));
-      this.f = (this.jdField_d_of_type_Int + this.h);
-      this.g = (this.e + this.i);
-      if (this.jdField_d_of_type_Int < 0)
+      if (k != 1)
       {
-        this.jdField_d_of_type_Int = 0;
-        this.f = (this.jdField_d_of_type_Int + this.h);
-      }
-      if (this.e < this.j)
-      {
-        this.e = this.j;
+        if (k != 2)
+        {
+          if (k != 3) {
+            return true;
+          }
+          paramView.getParent().requestDisallowInterceptTouchEvent(false);
+          return true;
+        }
+        if (this.h == 0) {
+          this.h = paramView.getWidth();
+        }
+        if (this.i == 0) {
+          this.i = paramView.getHeight();
+        }
+        this.jdField_d_of_type_Int = ((int)(paramMotionEvent.getRawX() - this.jdField_c_of_type_Float));
+        this.e = ((int)(paramMotionEvent.getRawY() - this.jdField_d_of_type_Float));
+        k = this.jdField_d_of_type_Int;
+        int m = this.h;
+        this.f = (k + m);
         this.g = (this.e + this.i);
-      }
-      if (this.f > this.jdField_b_of_type_Int)
-      {
-        this.f = this.jdField_b_of_type_Int;
-        this.jdField_d_of_type_Int = (this.f - this.h);
-      }
-      if (this.g > this.jdField_c_of_type_Int)
-      {
-        this.g = this.jdField_c_of_type_Int;
-        this.e = (this.g - this.i);
-      }
-      paramMotionEvent = paramView.getLayoutParams();
-      if (paramMotionEvent == null) {
+        if (k < 0)
+        {
+          this.jdField_d_of_type_Int = 0;
+          this.f = (this.jdField_d_of_type_Int + m);
+        }
+        k = this.e;
+        m = this.j;
+        if (k < m)
+        {
+          this.e = m;
+          this.g = (this.e + this.i);
+        }
+        k = this.f;
+        m = this.jdField_b_of_type_Int;
+        if (k > m)
+        {
+          this.f = m;
+          this.jdField_d_of_type_Int = (this.f - this.h);
+        }
+        k = this.g;
+        m = this.jdField_c_of_type_Int;
+        if (k > m)
+        {
+          this.g = m;
+          this.e = (this.g - this.i);
+        }
+        paramMotionEvent = paramView.getLayoutParams();
+        if (paramMotionEvent != null)
+        {
+          paramMotionEvent = (RelativeLayout.LayoutParams)paramMotionEvent;
+          paramMotionEvent.addRule(12, 0);
+          paramMotionEvent.addRule(11, 0);
+          paramMotionEvent.addRule(10);
+          paramMotionEvent.addRule(9);
+          localObject = (OnDragTouchListener)this;
+          paramMotionEvent.bottomMargin = 0;
+          paramMotionEvent.rightMargin = paramMotionEvent.bottomMargin;
+          paramMotionEvent.topMargin = this.e;
+          paramMotionEvent.leftMargin = this.jdField_d_of_type_Int;
+          paramView.setLayoutParams((ViewGroup.LayoutParams)paramMotionEvent);
+          return true;
+        }
         throw new TypeCastException("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
       }
-      paramMotionEvent = (RelativeLayout.LayoutParams)paramMotionEvent;
-      paramMotionEvent.addRule(12, 0);
-      paramMotionEvent.addRule(11, 0);
-      paramMotionEvent.addRule(10);
-      paramMotionEvent.addRule(9);
-      localObject = (OnDragTouchListener)this;
-      paramMotionEvent.bottomMargin = 0;
-      paramMotionEvent.rightMargin = paramMotionEvent.bottomMargin;
-      paramMotionEvent.topMargin = this.e;
-      paramMotionEvent.leftMargin = this.jdField_d_of_type_Int;
-      paramView.setLayoutParams((ViewGroup.LayoutParams)paramMotionEvent);
-      return true;
-    case 1: 
       localObject = paramView.getResources();
       Intrinsics.checkExpressionValueIsNotNull(localObject, "v.resources");
-      int k = a((Resources)localObject, this.jdField_a_of_type_Int);
-      if ((Math.abs(paramMotionEvent.getRawX() - this.jdField_a_of_type_Float) < k) && (Math.abs(paramMotionEvent.getRawY() - this.jdField_b_of_type_Float) < k)) {
+      k = a((Resources)localObject, this.jdField_a_of_type_Int);
+      float f1 = Math.abs(paramMotionEvent.getRawX() - this.jdField_a_of_type_Float);
+      float f2 = k;
+      if ((f1 < f2) && (Math.abs(paramMotionEvent.getRawY() - this.jdField_b_of_type_Float) < f2)) {
         paramView.performClick();
       }
       paramView.getParent().requestDisallowInterceptTouchEvent(false);
       return true;
     }
-    paramView.getParent().requestDisallowInterceptTouchEvent(false);
-    return true;
+    Object localObject = paramView.getParent();
+    if (localObject != null)
+    {
+      this.jdField_b_of_type_Int = ((View)localObject).getWidth();
+      localObject = paramView.getParent();
+      if (localObject != null)
+      {
+        this.jdField_c_of_type_Int = ((View)localObject).getHeight();
+        this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+        this.jdField_b_of_type_Float = paramMotionEvent.getRawY();
+        this.jdField_c_of_type_Float = (paramMotionEvent.getRawX() - paramView.getLeft());
+        this.jdField_d_of_type_Float = (paramMotionEvent.getRawY() - paramView.getTop());
+        paramView.getParent().requestDisallowInterceptTouchEvent(true);
+        return true;
+      }
+      throw new TypeCastException("null cannot be cast to non-null type android.view.View");
+    }
+    throw new TypeCastException("null cannot be cast to non-null type android.view.View");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.OnDragTouchListener
  * JD-Core Version:    0.7.0.1
  */

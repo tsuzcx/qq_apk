@@ -47,18 +47,17 @@ public class MethodRemoveElement
   
   public void executeDom(DOMActionContext paramDOMActionContext)
   {
-    if (paramDOMActionContext.isDestory()) {}
-    DomObject localDomObject1;
-    DomObject localDomObject2;
-    do
-    {
-      do
-      {
-        return;
-        localDomObject1 = paramDOMActionContext.getDomByRef(this.mRef);
-      } while (localDomObject1 == null);
-      localDomObject2 = localDomObject1.getDomParent();
-    } while (localDomObject2 == null);
+    if (paramDOMActionContext.isDestory()) {
+      return;
+    }
+    DomObject localDomObject1 = paramDOMActionContext.getDomByRef(this.mRef);
+    if (localDomObject1 == null) {
+      return;
+    }
+    DomObject localDomObject2 = localDomObject1.getDomParent();
+    if (localDomObject2 == null) {
+      return;
+    }
     this.mParentRef = localDomObject2.getRef();
     localDomObject1.traverseTree(new DomObject.Consumer[] { paramDOMActionContext.getRemoveElementConsumer() });
     this.mIndex = localDomObject2.remove(localDomObject1);
@@ -72,54 +71,57 @@ public class MethodRemoveElement
   {
     VComponent localVComponent = paramRenderActionContext.getComponent(this.mRef);
     VComponentContainer localVComponentContainer = (VComponentContainer)paramRenderActionContext.getComponent(this.mParentRef);
-    if (TextUtils.isEmpty(this.mRootRef)) {
-      ViolaLogUtils.d("MethodRemoveElement", "mRootRef is null");
-    }
-    do
+    if (TextUtils.isEmpty(this.mRootRef))
     {
+      ViolaLogUtils.d("MethodRemoveElement", "mRootRef is null");
       return;
-      if (localVComponentContainer == null)
-      {
-        ViolaLogUtils.d("MethodRemoveElement", "parent is null ");
-        return;
-      }
-      if (localVComponentContainer.isDestroyed())
-      {
-        ViolaLogUtils.d("MethodRemoveElement", "parent is destroy ");
-        return;
-      }
-      localVComponentContainer.notifyChange();
-      if (((localVComponentContainer instanceof VRecyclerList)) && (this.mDomObject != null))
-      {
-        ViolaLogUtils.d("VRecyclerViewAdapter", "remove executeRender index :" + this.mIndex);
-        ((VRecyclerList)localVComponentContainer).notifyItemRemove(this.mDomObject);
-        return;
-      }
-      if (((localVComponent instanceof VRecyclerList)) && (localVComponentContainer.mChildren != null) && (localVComponentContainer.getRealView() != null) && (localVComponent.getRealView() != null))
-      {
-        localVComponentContainer.mChildren.remove(localVComponent);
-        localVComponentContainer.getRealView().removeView(((VRecyclerList)localVComponent).getRealParentView());
-        localVComponentContainer.getRealView().removeView(localVComponent.getRealView());
-        return;
-      }
-      if (localVComponent == null)
-      {
-        ViolaLogUtils.d("MethodRemoveElement", "component is null");
-        return;
-      }
-      clearRegistryForComponent(paramRenderActionContext, localVComponent);
-      localVComponent.removedByJs();
-      localVComponentContainer.remove(localVComponent, true);
-      localVComponent.notifyChange();
-      localVComponent.notifyWhenChange("remove", this.mDomObject);
-      paramRenderActionContext = (VComponentContainer)paramRenderActionContext.getComponent(this.mRootRef);
-    } while ((paramRenderActionContext == null) || (paramRenderActionContext.isDestroyed()));
-    paramRenderActionContext.applyLayout();
+    }
+    if (localVComponentContainer == null)
+    {
+      ViolaLogUtils.d("MethodRemoveElement", "parent is null ");
+      return;
+    }
+    if (localVComponentContainer.isDestroyed())
+    {
+      ViolaLogUtils.d("MethodRemoveElement", "parent is destroy ");
+      return;
+    }
+    localVComponentContainer.notifyChange();
+    if (((localVComponentContainer instanceof VRecyclerList)) && (this.mDomObject != null))
+    {
+      paramRenderActionContext = new StringBuilder();
+      paramRenderActionContext.append("remove executeRender index :");
+      paramRenderActionContext.append(this.mIndex);
+      ViolaLogUtils.d("VRecyclerViewAdapter", paramRenderActionContext.toString());
+      ((VRecyclerList)localVComponentContainer).notifyItemRemove(this.mDomObject);
+      return;
+    }
+    if (((localVComponent instanceof VRecyclerList)) && (localVComponentContainer.mChildren != null) && (localVComponentContainer.getRealView() != null) && (localVComponent.getRealView() != null))
+    {
+      localVComponentContainer.mChildren.remove(localVComponent);
+      localVComponentContainer.getRealView().removeView(((VRecyclerList)localVComponent).getRealParentView());
+      localVComponentContainer.getRealView().removeView(localVComponent.getRealView());
+      return;
+    }
+    if (localVComponent == null)
+    {
+      ViolaLogUtils.d("MethodRemoveElement", "component is null");
+      return;
+    }
+    clearRegistryForComponent(paramRenderActionContext, localVComponent);
+    localVComponent.removedByJs();
+    localVComponentContainer.remove(localVComponent, true);
+    localVComponent.notifyChange();
+    localVComponent.notifyWhenChange("remove", this.mDomObject);
+    paramRenderActionContext = (VComponentContainer)paramRenderActionContext.getComponent(this.mRootRef);
+    if ((paramRenderActionContext != null) && (!paramRenderActionContext.isDestroyed())) {
+      paramRenderActionContext.applyLayout();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.action.MethodRemoveElement
  * JD-Core Version:    0.7.0.1
  */

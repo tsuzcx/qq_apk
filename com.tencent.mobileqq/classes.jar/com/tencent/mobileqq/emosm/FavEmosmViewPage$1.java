@@ -10,18 +10,18 @@ class FavEmosmViewPage$1
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    DialogUtil.a(this.a.a);
+    DialogUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQIphoneTitleBarActivity);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.c();
-    FavEmosmViewPage.a(this.a).f();
+    this.a.h();
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmBaseEmosmStrategy.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.FavEmosmViewPage.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,10 @@ final class PtvTemplateManager$1
   
   public void run()
   {
-    FileUtils.a(PtvTemplateManager.a.getPath() + File.separator, this.a, this.b);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(PtvTemplateManager.a.getPath());
+    localStringBuilder.append(File.separator);
+    FileUtils.writeFile(localStringBuilder.toString(), this.a, this.b);
     if (QLog.isColorLevel()) {
       QLog.i("PtvTemplateManager", 2, "save Config to file finish.");
     }
@@ -19,7 +22,7 @@ final class PtvTemplateManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.1
  * JD-Core Version:    0.7.0.1
  */

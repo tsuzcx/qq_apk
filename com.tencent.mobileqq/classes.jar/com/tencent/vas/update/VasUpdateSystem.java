@@ -54,47 +54,76 @@ public class VasUpdateSystem
   
   private void addItemVersionForStartRun(@NonNull ItemUpdateVerPtr paramItemUpdateVerPtr, @NonNull BusinessUpdateParams paramBusinessUpdateParams, int paramInt)
   {
-    if (this.mIsTaskWait.get()) {
-      VasUpdateWrapper.getLog().e("VasUpdate_System", "addItemVersionForStartRun currentItem thread is lock , itemId = " + paramBusinessUpdateParams.mItemId);
+    Object localObject2;
+    if (this.mIsTaskWait.get())
+    {
+      ??? = VasUpdateWrapper.getLog();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("addItemVersionForStartRun currentItem thread is lock , itemId = ");
+      ((StringBuilder)localObject2).append(paramBusinessUpdateParams.mItemId);
+      ((IVasLog)???).e("VasUpdate_System", ((StringBuilder)localObject2).toString());
     }
-    String str;
     synchronized (this.mTempTaskMaps)
     {
-      VasUpdateWrapper.getLog().e("VasUpdate_System", "start addItemVersionForStartRun itemId = " + paramBusinessUpdateParams.mItemId + " mGetUrlTimerFinish = " + this.mGetUrlTimerFinish);
+      localObject2 = VasUpdateWrapper.getLog();
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("start addItemVersionForStartRun itemId = ");
+      ((StringBuilder)localObject3).append(paramBusinessUpdateParams.mItemId);
+      ((StringBuilder)localObject3).append(" mGetUrlTimerFinish = ");
+      ((StringBuilder)localObject3).append(this.mGetUrlTimerFinish);
+      ((IVasLog)localObject2).e("VasUpdate_System", ((StringBuilder)localObject3).toString());
       if (this.mTempTaskMaps.containsKey(paramItemUpdateVerPtr.mItemId))
       {
-        VasUpdateWrapper.getLog().e("VasUpdate_System", "addItemVersionForStartRun mTempTaskMaps hasContain itemid = " + paramItemUpdateVerPtr.mItemId);
+        paramBusinessUpdateParams = VasUpdateWrapper.getLog();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("addItemVersionForStartRun mTempTaskMaps hasContain itemid = ");
+        ((StringBuilder)localObject2).append(paramItemUpdateVerPtr.mItemId);
+        paramBusinessUpdateParams.e("VasUpdate_System", ((StringBuilder)localObject2).toString());
         return;
       }
-      str = paramItemUpdateVerPtr.mItemId;
-      localObject = getObserver(CommonUtil.sParseBidId(str));
-      if (localObject == null)
+      localObject2 = paramItemUpdateVerPtr.mItemId;
+      localObject3 = getObserver(CommonUtil.sParseBidId((String)localObject2));
+      if (localObject3 == null)
       {
-        VasUpdateWrapper.getLog().e("VasUpdate_System", "addItemVersionForStartRun currentItem not register , itemId = " + str);
-        VasUpdateWrapper.getDbManager().deleteItem(1, str);
+        paramItemUpdateVerPtr = VasUpdateWrapper.getLog();
+        paramBusinessUpdateParams = new StringBuilder();
+        paramBusinessUpdateParams.append("addItemVersionForStartRun currentItem not register , itemId = ");
+        paramBusinessUpdateParams.append((String)localObject2);
+        paramItemUpdateVerPtr.e("VasUpdate_System", paramBusinessUpdateParams.toString());
+        VasUpdateWrapper.getDbManager().deleteItem(1, (String)localObject2);
         return;
       }
-    }
-    Object localObject = ((IBusinessCallback)localObject).getBusinessItemInfo(CommonUtil.sParseBidId(str), CommonUtil.sParseScid(str));
-    if (localObject == null)
-    {
-      VasUpdateWrapper.getLog().e("VasUpdate_System", "addItemVersionForStartRun getItemInfo fail, itemId = " + str);
-      VasUpdateWrapper.getDbManager().deleteItem(1, str);
+      localObject3 = ((IBusinessCallback)localObject3).getBusinessItemInfo(CommonUtil.sParseBidId((String)localObject2), CommonUtil.sParseScid((String)localObject2));
+      if (localObject3 == null)
+      {
+        paramItemUpdateVerPtr = VasUpdateWrapper.getLog();
+        paramBusinessUpdateParams = new StringBuilder();
+        paramBusinessUpdateParams.append("addItemVersionForStartRun getItemInfo fail, itemId = ");
+        paramBusinessUpdateParams.append((String)localObject2);
+        paramItemUpdateVerPtr.e("VasUpdate_System", paramBusinessUpdateParams.toString());
+        VasUpdateWrapper.getDbManager().deleteItem(1, (String)localObject2);
+        return;
+      }
+      paramItemUpdateVerPtr = new BaseItemTask(paramBusinessUpdateParams, paramItemUpdateVerPtr, (BusinessItemInfo)localObject3);
+      paramItemUpdateVerPtr.setDLFrom(paramInt);
+      this.mTempTaskMaps.put(localObject2, paramItemUpdateVerPtr);
+      if (this.mGetUrlTimerFinish)
+      {
+        long l;
+        if (paramInt == 3) {
+          l = 0L;
+        } else {
+          l = VasUpdateWrapper.getCommonManager().getTimerDelay();
+        }
+        if (l == 0L)
+        {
+          onTime(1);
+          return;
+        }
+        this.mTimerModule.setTimer(1, l, false);
+        this.mGetUrlTimerFinish = false;
+      }
       return;
-    }
-    paramItemUpdateVerPtr = new BaseItemTask(paramBusinessUpdateParams, paramItemUpdateVerPtr, (BusinessItemInfo)localObject);
-    paramItemUpdateVerPtr.setDLFrom(paramInt);
-    this.mTempTaskMaps.put(str, paramItemUpdateVerPtr);
-    if (this.mGetUrlTimerFinish)
-    {
-      if (paramInt == 3) {}
-      for (long l = 0L; l == 0L; l = VasUpdateWrapper.getCommonManager().getTimerDelay())
-      {
-        onTime(1);
-        return;
-      }
-      this.mTimerModule.setTimer(1, l, false);
-      this.mGetUrlTimerFinish = false;
     }
   }
   
@@ -103,7 +132,13 @@ public class VasUpdateSystem
     long l = System.currentTimeMillis() / 1000L - paramItemUpdateVerPtr.mLastRunTime;
     if ((paramItemUpdateVerPtr.mRunCount >= 3) && (l < 21600L))
     {
-      VasUpdateWrapper.getLog().e("VasUpdate_System", "onTaskSyncTableComplete checkLastTime , itemId = " + paramItemUpdateVerPtr.mItemId + " time = " + l);
+      IVasLog localIVasLog = VasUpdateWrapper.getLog();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onTaskSyncTableComplete checkLastTime , itemId = ");
+      localStringBuilder.append(paramItemUpdateVerPtr.mItemId);
+      localStringBuilder.append(" time = ");
+      localStringBuilder.append(l);
+      localIVasLog.e("VasUpdate_System", localStringBuilder.toString());
       return true;
     }
     return false;
@@ -111,48 +146,56 @@ public class VasUpdateSystem
   
   public static VasUpdateSystem getInstance()
   {
-    if (mInstance == null) {}
-    try
-    {
-      if (mInstance == null) {
-        mInstance = new VasUpdateSystem();
+    if (mInstance == null) {
+      try
+      {
+        if (mInstance == null) {
+          mInstance = new VasUpdateSystem();
+        }
       }
-      return mInstance;
+      finally {}
     }
-    finally {}
+    return mInstance;
   }
   
   private void onTimeGetUrl()
   {
     TaskBatchUrlReq localTaskBatchUrlReq = new TaskBatchUrlReq();
-    Object localObject4;
     synchronized (this.mTempTaskMaps)
     {
       this.mIsTaskWait.compareAndSet(false, true);
-      localObject4 = this.mTempTaskMaps.entrySet().iterator();
-      if (((Iterator)localObject4).hasNext())
+      Object localObject4 = this.mTempTaskMaps.entrySet().iterator();
+      while (((Iterator)localObject4).hasNext())
       {
         Map.Entry localEntry = (Map.Entry)((Iterator)localObject4).next();
         localTaskBatchUrlReq.addTask((String)localEntry.getKey(), (BaseItemTask)localEntry.getValue());
       }
-    }
-    this.mTempTaskMaps.clear();
-    this.mIsTaskWait.set(false);
-    this.mGetUrlTimerFinish = true;
-    VasUpdateWrapper.getLog().i("VasUpdate_System", "onTimeGetUrl ， mGetUrlTimerFinish = " + this.mGetUrlTimerFinish);
-    synchronized (this.mRequestUrlList)
-    {
-      if (localObject1.getTaskCount() > 0)
+      this.mTempTaskMaps.clear();
+      this.mIsTaskWait.set(false);
+      this.mGetUrlTimerFinish = true;
+      ??? = VasUpdateWrapper.getLog();
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("onTimeGetUrl ， mGetUrlTimerFinish = ");
+      ((StringBuilder)localObject4).append(this.mGetUrlTimerFinish);
+      ((IVasLog)???).i("VasUpdate_System", ((StringBuilder)localObject4).toString());
+      synchronized (this.mRequestUrlList)
       {
-        this.mRequestUrlList.add(localObject1);
-        localObject4 = localObject1.getRequest();
-        if (!VasUpdateWrapper.getCmdManager().sendPbRequest("GetUrlReq", (String)localObject4, this))
+        if (localTaskBatchUrlReq.getTaskCount() > 0)
         {
-          localObject1.onSendPbMsgError();
-          this.mRequestUrlList.remove(localObject1);
+          this.mRequestUrlList.add(localTaskBatchUrlReq);
+          localObject4 = localTaskBatchUrlReq.getRequest();
+          if (!VasUpdateWrapper.getCmdManager().sendPbRequest("GetUrlReq", (String)localObject4, this))
+          {
+            localTaskBatchUrlReq.onSendPbMsgError();
+            this.mRequestUrlList.remove(localTaskBatchUrlReq);
+          }
         }
+        return;
       }
-      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
@@ -163,78 +206,98 @@ public class VasUpdateSystem
   
   private void selfDownloadItem(@NonNull BusinessUpdateParams paramBusinessUpdateParams)
   {
-    String str2 = paramBusinessUpdateParams.mFrom;
-    String str1 = paramBusinessUpdateParams.mItemId;
-    VasUpdateWrapper.getLog().i("VasUpdate_System", "selfDownloadItem params = \n" + paramBusinessUpdateParams.toString());
-    if (TextUtils.isEmpty(str2))
+    Object localObject1 = paramBusinessUpdateParams.mFrom;
+    String str = paramBusinessUpdateParams.mItemId;
+    Object localObject2 = VasUpdateWrapper.getLog();
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("selfDownloadItem params = \n");
+    ((StringBuilder)localObject3).append(paramBusinessUpdateParams.toString());
+    ((IVasLog)localObject2).i("VasUpdate_System", ((StringBuilder)localObject3).toString());
+    if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      onTaskItemComplete(paramBusinessUpdateParams, 3, 11, 0, "current from = null , itemId " + str1, null);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("current from = null , itemId ");
+      ((StringBuilder)localObject1).append(str);
+      onTaskItemComplete(paramBusinessUpdateParams, 3, 11, 0, ((StringBuilder)localObject1).toString(), null);
       return;
     }
-    Object localObject1 = VasUpdateWrapper.getDbManager().selectItem(1, str1);
-    VasUpdateWrapper.getLog().i("VasUpdate_System", "selfDownloadItem select should_update , ItemId = " + str1 + " , content = " + (String)localObject1);
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    localObject2 = VasUpdateWrapper.getDbManager().selectItem(1, str);
+    localObject3 = VasUpdateWrapper.getLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("selfDownloadItem select should_update , ItemId = ");
+    localStringBuilder.append(str);
+    localStringBuilder.append(" , content = ");
+    localStringBuilder.append((String)localObject2);
+    ((IVasLog)localObject3).i("VasUpdate_System", localStringBuilder.toString());
+    if (!TextUtils.isEmpty((CharSequence)localObject2))
     {
-      localObject1 = ItemUpdateVerPtr.parseJsonToItemUpdateVerPrt((String)localObject1);
-      if (localObject1 != null)
+      localObject2 = ItemUpdateVerPtr.parseJsonToItemUpdateVerPrt((String)localObject2);
+      if (localObject2 != null)
       {
-        long l = System.currentTimeMillis() / 1000L - ((ItemUpdateVerPtr)localObject1).mLastRunTime;
-        if ((((ItemUpdateVerPtr)localObject1).mRunCount >= 3) && (l >= 0L) && (l < 8L))
+        long l = System.currentTimeMillis() / 1000L - ((ItemUpdateVerPtr)localObject2).mLastRunTime;
+        if ((((ItemUpdateVerPtr)localObject2).mRunCount >= 3) && (l >= 0L) && (l < 8L))
         {
           onTaskItemComplete(paramBusinessUpdateParams, 3, 20, 0, " update delay retry ", null);
           return;
         }
-        addItemVersionForStartRun((ItemUpdateVerPtr)localObject1, paramBusinessUpdateParams, 3);
+        addItemVersionForStartRun((ItemUpdateVerPtr)localObject2, paramBusinessUpdateParams, 3);
         return;
       }
     }
-    Object localObject2 = VasUpdateWrapper.getDbManager().selectItem(0, str1);
-    VasUpdateWrapper.getLog().i("VasUpdate_System", "selfDownloadItem select local , ItemId = " + str1 + " , content = " + (String)localObject2);
-    localObject1 = new ItemUpdateVerPtr();
-    if (TextUtils.isEmpty((CharSequence)localObject2))
+    localObject3 = VasUpdateWrapper.getDbManager().selectItem(0, str);
+    localObject2 = VasUpdateWrapper.getLog();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("selfDownloadItem select local , ItemId = ");
+    localStringBuilder.append(str);
+    localStringBuilder.append(" , content = ");
+    localStringBuilder.append((String)localObject3);
+    ((IVasLog)localObject2).i("VasUpdate_System", localStringBuilder.toString());
+    localObject2 = new ItemUpdateVerPtr();
+    if (TextUtils.isEmpty((CharSequence)localObject3))
     {
-      ((ItemUpdateVerPtr)localObject1).mItemId = str1;
-      ((ItemUpdateVerPtr)localObject1).mSrcMd5 = "";
-      ((ItemUpdateVerPtr)localObject1).mDstMd5 = "";
-      ((ItemUpdateVerPtr)localObject1).mFrom = str2;
-      ((ItemUpdateVerPtr)localObject1).mLastRunTime = 0L;
-      ((ItemUpdateVerPtr)localObject1).mRunCount = 0;
-      addItemVersionForStartRun((ItemUpdateVerPtr)localObject1, paramBusinessUpdateParams, 3);
-      return;
+      ((ItemUpdateVerPtr)localObject2).mItemId = str;
+      ((ItemUpdateVerPtr)localObject2).mSrcMd5 = "";
+      ((ItemUpdateVerPtr)localObject2).mDstMd5 = "";
+      ((ItemUpdateVerPtr)localObject2).mFrom = ((String)localObject1);
+      ((ItemUpdateVerPtr)localObject2).mLastRunTime = 0L;
+      ((ItemUpdateVerPtr)localObject2).mRunCount = 0;
     }
-    localObject2 = ItemLocalVerPrt.parseJsonToItemLocalVerPrt((String)localObject2);
-    ((ItemUpdateVerPtr)localObject1).mItemId = str1;
-    if (localObject2 != null) {}
-    for (str1 = ((ItemLocalVerPrt)localObject2).mMd5;; str1 = "")
+    else
     {
-      ((ItemUpdateVerPtr)localObject1).mSrcMd5 = str1;
-      ((ItemUpdateVerPtr)localObject1).mDstMd5 = "";
-      ((ItemUpdateVerPtr)localObject1).mFrom = str2;
-      ((ItemUpdateVerPtr)localObject1).mLastRunTime = 0L;
-      ((ItemUpdateVerPtr)localObject1).mRunCount = 0;
-      break;
+      localObject3 = ItemLocalVerPrt.parseJsonToItemLocalVerPrt((String)localObject3);
+      ((ItemUpdateVerPtr)localObject2).mItemId = str;
+      if (localObject3 != null) {
+        str = ((ItemLocalVerPrt)localObject3).mMd5;
+      } else {
+        str = "";
+      }
+      ((ItemUpdateVerPtr)localObject2).mSrcMd5 = str;
+      ((ItemUpdateVerPtr)localObject2).mDstMd5 = "";
+      ((ItemUpdateVerPtr)localObject2).mFrom = ((String)localObject1);
+      ((ItemUpdateVerPtr)localObject2).mLastRunTime = 0L;
+      ((ItemUpdateVerPtr)localObject2).mRunCount = 0;
     }
+    addItemVersionForStartRun((ItemUpdateVerPtr)localObject2, paramBusinessUpdateParams, 3);
   }
   
   private void sendSyncRequest()
   {
-    if (this.mTaskSyncReq != null) {
-      this.mTaskSyncReq.run();
-    }
-    try
+    TaskSyncReq localTaskSyncReq = this.mTaskSyncReq;
+    if (localTaskSyncReq != null)
     {
-      bool = VasUpdateWrapper.getCmdManager().sendPbRequest("SyncVCRReq", this.mTaskSyncReq.getRequest(), this);
-      if (!bool) {
-        this.mTaskSyncReq.onSendPbMsgError();
+      localTaskSyncReq.run();
+      int i = 0;
+      try
+      {
+        boolean bool = VasUpdateWrapper.getCmdManager().sendPbRequest("SyncVCRReq", this.mTaskSyncReq.getRequest(), this);
+        i = bool;
       }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      catch (Throwable localThrowable)
       {
         localThrowable.printStackTrace();
-        boolean bool = false;
+      }
+      if (i == 0) {
+        this.mTaskSyncReq.onSendPbMsgError();
       }
     }
   }
@@ -246,8 +309,15 @@ public class VasUpdateSystem
       long l1 = Long.parseLong(VasUpdateWrapper.getDbManager().selectItem(3, "time_value"));
       long l2 = Long.parseLong(VasUpdateWrapper.getDbManager().selectItem(3, "time_success"));
       long l3 = VasUpdateWrapper.getCommonManager().getServiceTime();
-      VasUpdateWrapper.getLog().i("VasUpdate_System", "syncEnable timeValue = " + l1 + " offest = " + (l3 - l2));
-      return l3 - l2 > l1;
+      IVasLog localIVasLog = VasUpdateWrapper.getLog();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("syncEnable timeValue = ");
+      localStringBuilder.append(l1);
+      localStringBuilder.append(" offest = ");
+      l2 = l3 - l2;
+      localStringBuilder.append(l2);
+      localIVasLog.i("VasUpdate_System", localStringBuilder.toString());
+      return l2 > l1;
     }
     catch (Throwable localThrowable)
     {
@@ -264,7 +334,13 @@ public class VasUpdateSystem
   
   public void cancelDownload(long paramLong, String paramString)
   {
-    VasUpdateWrapper.getLog().i("VasUpdate_System", "cancelDownload bid = " + paramLong + " scid = " + paramString);
+    IVasLog localIVasLog = VasUpdateWrapper.getLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("cancelDownload bid = ");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(" scid = ");
+    localStringBuilder.append(paramString);
+    localIVasLog.i("VasUpdate_System", localStringBuilder.toString());
     VasUpdateWrapper.getHttpDownloader().cancelDownload(CommonUtil.sComposeItemId(paramLong, paramString));
   }
   
@@ -280,7 +356,11 @@ public class VasUpdateSystem
       VasUpdateWrapper.getLog().d("VasUpdate_System", "doSyncTable request != null");
       return;
     }
-    VasUpdateWrapper.getLog().d("VasUpdate_System", "start doSyncTable dlFrom = " + paramInt);
+    IVasLog localIVasLog = VasUpdateWrapper.getLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("start doSyncTable dlFrom = ");
+    localStringBuilder.append(paramInt);
+    localIVasLog.d("VasUpdate_System", localStringBuilder.toString());
     this.mTimerModule.stopTimer(2);
     this.mTaskSyncReq = new TaskSyncReq(paramInt);
     if (Looper.getMainLooper().getThread() == Thread.currentThread())
@@ -293,18 +373,25 @@ public class VasUpdateSystem
   
   public void downloadItem(BusinessUpdateParams paramBusinessUpdateParams)
   {
-    if ((paramBusinessUpdateParams == null) || (paramBusinessUpdateParams.mBid <= 0L)) {
-      throw new RuntimeException("system request download business or params = null or bid <= 0");
-    }
-    IVasLog localIVasLog = VasUpdateWrapper.getLog();
-    StringBuilder localStringBuilder = new StringBuilder().append("downloadItem bid = ").append(paramBusinessUpdateParams.mBid).append(" mainThread = ");
-    if (Looper.getMainLooper() == Looper.myLooper()) {}
-    for (boolean bool = true;; bool = false)
+    if ((paramBusinessUpdateParams != null) && (paramBusinessUpdateParams.mBid > 0L))
     {
-      localIVasLog.i("VasUpdate_System", bool);
+      IVasLog localIVasLog = VasUpdateWrapper.getLog();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("downloadItem bid = ");
+      localStringBuilder.append(paramBusinessUpdateParams.mBid);
+      localStringBuilder.append(" mainThread = ");
+      boolean bool;
+      if (Looper.getMainLooper() == Looper.myLooper()) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      localStringBuilder.append(bool);
+      localIVasLog.i("VasUpdate_System", localStringBuilder.toString());
       ThreadManager.getInstance().post(new VasUpdateSystem.1(this, paramBusinessUpdateParams));
       return;
     }
+    throw new RuntimeException("system request download business or params = null or bid <= 0");
   }
   
   public DownloadModule getDownloadModule()
@@ -314,157 +401,208 @@ public class VasUpdateSystem
   
   public IBusinessCallback getObserver(long paramLong)
   {
-    if (this.mNotificationModule == null)
+    NotificationModule localNotificationModule = this.mNotificationModule;
+    if (localNotificationModule == null)
     {
       VasUpdateWrapper.getLog().e("VasUpdate_System", "getObserver , notification = null");
       return null;
     }
-    return this.mNotificationModule.getObserver(Long.valueOf(paramLong));
+    return localNotificationModule.getObserver(Long.valueOf(paramLong));
   }
   
-  public void onPbResponse(int paramInt, String paramString1, String arg3)
+  public void onPbResponse(int paramInt, String paramString1, String paramString2)
   {
-    if (VasUpdateWrapper.getLog().isColorLevel()) {
-      VasUpdateWrapper.getLog().i("VasUpdate_System", "onPbResponse cmd = " + paramString1 + " result = " + paramInt + " response = " + ???);
+    Object localObject1;
+    if (VasUpdateWrapper.getLog().isColorLevel())
+    {
+      localObject1 = VasUpdateWrapper.getLog();
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("onPbResponse cmd = ");
+      ((StringBuilder)???).append(paramString1);
+      ((StringBuilder)???).append(" result = ");
+      ((StringBuilder)???).append(paramInt);
+      ((StringBuilder)???).append(" response = ");
+      ((StringBuilder)???).append(paramString2);
+      ((IVasLog)localObject1).i("VasUpdate_System", ((StringBuilder)???).toString());
     }
-    TaskBatchUrlRsp localTaskBatchUrlRsp;
     if ("GetUrlRsp".equalsIgnoreCase(paramString1))
     {
-      localTaskBatchUrlRsp = TaskBatchUrlRsp.parseResponse(???);
-      if (localTaskBatchUrlRsp == null) {
+      localObject1 = TaskBatchUrlRsp.parseResponse(paramString2);
+      if (localObject1 == null) {
         return;
       }
-      VasUpdateWrapper.getLog().i("VasUpdate_System", "onPbResponse response cookie = " + localTaskBatchUrlRsp.mCookie);
-    }
-    for (;;)
-    {
+      paramString1 = VasUpdateWrapper.getLog();
+      paramString2 = new StringBuilder();
+      paramString2.append("onPbResponse response cookie = ");
+      paramString2.append(((TaskBatchUrlRsp)localObject1).mCookie);
+      paramString1.i("VasUpdate_System", paramString2.toString());
+      paramString2 = null;
       synchronized (this.mRequestUrlList)
       {
         Iterator localIterator = this.mRequestUrlList.iterator();
-        if (!localIterator.hasNext()) {
-          break label230;
-        }
-        paramString1 = (TaskBatchUrlReq)localIterator.next();
-        if ((paramString1 == null) || (paramString1.getCookieId() != localTaskBatchUrlRsp.mCookie)) {
-          continue;
-        }
+        do
+        {
+          paramString1 = paramString2;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          paramString1 = (TaskBatchUrlReq)localIterator.next();
+        } while ((paramString1 == null) || (paramString1.getCookieId() != ((TaskBatchUrlRsp)localObject1).mCookie));
         localIterator.remove();
         if (paramString1 == null) {
-          break;
+          return;
         }
-        paramString1.handlePbResponse(paramInt, localTaskBatchUrlRsp);
+        paramString1.handlePbResponse(paramInt, (TaskBatchUrlRsp)localObject1);
         return;
       }
-      if ((!"SyncVCRRsp".equalsIgnoreCase(paramString1)) || (this.mTaskSyncReq == null)) {
-        break;
-      }
-      paramString1 = TaskSyncRsp.parseResponseJson(???);
+    }
+    if (("SyncVCRRsp".equalsIgnoreCase(paramString1)) && (this.mTaskSyncReq != null))
+    {
+      paramString1 = TaskSyncRsp.parseResponseJson(paramString2);
       this.mTaskSyncReq.handlePbResponse(paramInt, paramString1);
-      return;
-      label230:
-      paramString1 = null;
     }
   }
   
   public void onTaskItemComplete(@NonNull BusinessUpdateParams paramBusinessUpdateParams, int paramInt1, int paramInt2, int paramInt3, String paramString, DLReportInfo paramDLReportInfo)
   {
-    VasUpdateWrapper.getLog().i("VasUpdate_System", "onTaskItemComplete itemId = " + paramBusinessUpdateParams.mItemId + ", errorCode = " + paramInt2 + " , httpCode = " + paramInt3);
-    if (this.mNotificationModule == null)
+    Object localObject = VasUpdateWrapper.getLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onTaskItemComplete itemId = ");
+    localStringBuilder.append(paramBusinessUpdateParams.mItemId);
+    localStringBuilder.append(", errorCode = ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(" , httpCode = ");
+    localStringBuilder.append(paramInt3);
+    ((IVasLog)localObject).i("VasUpdate_System", localStringBuilder.toString());
+    localObject = this.mNotificationModule;
+    if (localObject == null)
     {
       VasUpdateWrapper.getLog().e("VasUpdate_System", "onTaskItemComplete , notify = null");
       return;
     }
     if (paramInt2 != 0) {
-      this.mNotificationModule.notifyFailure(paramBusinessUpdateParams, paramInt2, paramInt3, paramString);
+      ((NotificationModule)localObject).notifyFailure(paramBusinessUpdateParams, paramInt2, paramInt3, paramString);
+    } else {
+      ((NotificationModule)localObject).notifySuccess(paramBusinessUpdateParams);
     }
-    long l;
-    for (;;)
+    long l = CommonUtil.sParseBidId(paramBusinessUpdateParams.mItemId);
+    paramBusinessUpdateParams = CommonUtil.sParseScid(paramBusinessUpdateParams.mItemId);
+    if (paramDLReportInfo != null)
     {
-      l = CommonUtil.sParseBidId(paramBusinessUpdateParams.mItemId);
-      paramBusinessUpdateParams = CommonUtil.sParseScid(paramBusinessUpdateParams.mItemId);
-      if (paramDLReportInfo == null) {
-        break;
-      }
-      VasUpdateWrapper.getReportManager().reportDLEvent(paramInt1, l, paramBusinessUpdateParams, paramDLReportInfo.mDstMd5, paramDLReportInfo.mIsIncrement, paramInt2, paramInt3, paramDLReportInfo.mRetryCount, "2", VasUpdateWrapper.getCommonManager().getReportVersion(), VasUpdateWrapper.getCommonManager().getNetType() + "");
+      paramString = VasUpdateWrapper.getReportManager();
+      localObject = paramDLReportInfo.mDstMd5;
+      boolean bool = paramDLReportInfo.mIsIncrement;
+      int i = paramDLReportInfo.mRetryCount;
+      paramDLReportInfo = VasUpdateWrapper.getCommonManager().getReportVersion();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(VasUpdateWrapper.getCommonManager().getNetType());
+      localStringBuilder.append("");
+      paramString.reportDLEvent(paramInt1, l, paramBusinessUpdateParams, (String)localObject, bool, paramInt2, paramInt3, i, "2", paramDLReportInfo, localStringBuilder.toString());
       return;
-      this.mNotificationModule.notifySuccess(paramBusinessUpdateParams);
     }
-    VasUpdateWrapper.getReportManager().reportDLEvent(paramInt1, l, paramBusinessUpdateParams, "", false, paramInt2, paramInt3, 0, "2", VasUpdateWrapper.getCommonManager().getReportVersion(), VasUpdateWrapper.getCommonManager().getNetType() + "");
+    paramString = VasUpdateWrapper.getReportManager();
+    paramDLReportInfo = VasUpdateWrapper.getCommonManager().getReportVersion();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(VasUpdateWrapper.getCommonManager().getNetType());
+    ((StringBuilder)localObject).append("");
+    paramString.reportDLEvent(paramInt1, l, paramBusinessUpdateParams, "", false, paramInt2, paramInt3, 0, "2", paramDLReportInfo, ((StringBuilder)localObject).toString());
   }
   
   public void onTaskItemProgress(BusinessUpdateParams paramBusinessUpdateParams, long paramLong1, long paramLong2, int paramInt)
   {
-    if (this.mNotificationModule == null)
+    NotificationModule localNotificationModule = this.mNotificationModule;
+    if (localNotificationModule == null)
     {
       VasUpdateWrapper.getLog().e("VasUpdate_System", "onTaskItemProgress , notify = null");
       return;
     }
-    this.mNotificationModule.notifyProgress(paramBusinessUpdateParams, paramLong1, paramLong2, paramInt);
+    localNotificationModule.notifyProgress(paramBusinessUpdateParams, paramLong1, paramLong2, paramInt);
   }
   
   public void onTaskSyncTableComplete(int paramInt1, int paramInt2, HashMap<String, ItemUpdateVerPtr> paramHashMap)
   {
     this.mTaskSyncReq = null;
     Object localObject1 = new ArrayList();
+    Object localObject2;
     if (paramHashMap != null)
     {
       paramHashMap = paramHashMap.entrySet().iterator();
       while (paramHashMap.hasNext())
       {
-        Object localObject2 = (Map.Entry)paramHashMap.next();
+        localObject2 = (Map.Entry)paramHashMap.next();
         if ((localObject2 != null) && (((Map.Entry)localObject2).getValue() != null))
         {
           localObject2 = (ItemUpdateVerPtr)((Map.Entry)localObject2).getValue();
-          if ((localObject2 == null) || (TextUtils.isEmpty(((ItemUpdateVerPtr)localObject2).mItemId)))
+          Object localObject4;
+          if ((localObject2 != null) && (!TextUtils.isEmpty(((ItemUpdateVerPtr)localObject2).mItemId)))
           {
-            VasUpdateWrapper.getLog().e("VasUpdate_System", "onTaskSyncTableComplete node doesn't have updateItem , continue , itemId = " + ((ItemUpdateVerPtr)localObject2).mItemId);
-          }
-          else if (((ItemUpdateVerPtr)localObject2).checkItemIsCurrentVersion())
-          {
-            ((ItemUpdateVerPtr)localObject2).mFrom = "silent_update";
-            long l = CommonUtil.sParseBidId(((ItemUpdateVerPtr)localObject2).mItemId);
-            ??? = CommonUtil.sParseScid(((ItemUpdateVerPtr)localObject2).mItemId);
-            Object localObject4 = getObserver(l);
-            if (localObject4 == null)
+            if (((ItemUpdateVerPtr)localObject2).checkItemIsCurrentVersion())
             {
-              VasUpdateWrapper.getLog().e("VasUpdate_System", "onTaskSyncTableComplete currentItem not register , itemId = " + ((ItemUpdateVerPtr)localObject2).mItemId);
-              VasUpdateWrapper.getDbManager().deleteItem(1, ((ItemUpdateVerPtr)localObject2).mItemId);
-            }
-            else
-            {
-              localObject4 = ((IBusinessCallback)localObject4).getBusinessItemInfo(l, (String)???);
+              ((ItemUpdateVerPtr)localObject2).mFrom = "silent_update";
+              long l = CommonUtil.sParseBidId(((ItemUpdateVerPtr)localObject2).mItemId);
+              ??? = CommonUtil.sParseScid(((ItemUpdateVerPtr)localObject2).mItemId);
+              localObject4 = getObserver(l);
               if (localObject4 == null)
               {
-                VasUpdateWrapper.getLog().e("VasUpdate_System", "onTaskSyncTableComplete getItemInfo fail , itemId = " + ((ItemUpdateVerPtr)localObject2).mItemId);
+                ??? = VasUpdateWrapper.getLog();
+                localObject4 = new StringBuilder();
+                ((StringBuilder)localObject4).append("onTaskSyncTableComplete currentItem not register , itemId = ");
+                ((StringBuilder)localObject4).append(((ItemUpdateVerPtr)localObject2).mItemId);
+                ((IVasLog)???).e("VasUpdate_System", ((StringBuilder)localObject4).toString());
                 VasUpdateWrapper.getDbManager().deleteItem(1, ((ItemUpdateVerPtr)localObject2).mItemId);
               }
               else
               {
-                ??? = new BusinessUpdateParams(l, (String)???, ((ItemUpdateVerPtr)localObject2).mFrom);
-                if (!((BusinessItemInfo)localObject4).mIsCanUpdate)
+                localObject4 = ((IBusinessCallback)localObject4).getBusinessItemInfo(l, (String)???);
+                if (localObject4 == null)
                 {
-                  onTaskItemComplete((BusinessUpdateParams)???, paramInt2, 1, 0, "can update = false", null);
+                  ??? = VasUpdateWrapper.getLog();
+                  localObject4 = new StringBuilder();
+                  ((StringBuilder)localObject4).append("onTaskSyncTableComplete getItemInfo fail , itemId = ");
+                  ((StringBuilder)localObject4).append(((ItemUpdateVerPtr)localObject2).mItemId);
+                  ((IVasLog)???).e("VasUpdate_System", ((StringBuilder)localObject4).toString());
+                  VasUpdateWrapper.getDbManager().deleteItem(1, ((ItemUpdateVerPtr)localObject2).mItemId);
                 }
                 else
                 {
-                  synchronized (this.mTempTaskMaps)
-                  {
-                    if ((this.mTempTaskMaps.containsKey(((ItemUpdateVerPtr)localObject2).mItemId)) && (this.mTempTaskMaps.get(((ItemUpdateVerPtr)localObject2).mItemId) != null)) {
-                      ((BaseItemTask)this.mTempTaskMaps.get(((ItemUpdateVerPtr)localObject2).mItemId)).setDLFrom(paramInt2);
+                  ??? = new BusinessUpdateParams(l, (String)???, ((ItemUpdateVerPtr)localObject2).mFrom);
+                  if (!((BusinessItemInfo)localObject4).mIsCanUpdate) {
+                    onTaskItemComplete((BusinessUpdateParams)???, paramInt2, 1, 0, "can update = false", null);
+                  } else {
+                    synchronized (this.mTempTaskMaps)
+                    {
+                      if ((this.mTempTaskMaps.containsKey(((ItemUpdateVerPtr)localObject2).mItemId)) && (this.mTempTaskMaps.get(((ItemUpdateVerPtr)localObject2).mItemId) != null))
+                      {
+                        ((BaseItemTask)this.mTempTaskMaps.get(((ItemUpdateVerPtr)localObject2).mItemId)).setDLFrom(paramInt2);
+                        continue;
+                      }
+                      if (((ItemUpdateVerPtr)localObject2).mRunCount >= 10)
+                      {
+                        ??? = VasUpdateWrapper.getLog();
+                        localObject4 = new StringBuilder();
+                        ((StringBuilder)localObject4).append("onTaskSyncTableComplete item runcount >= 10 , delete, itemId = ");
+                        ((StringBuilder)localObject4).append(((ItemUpdateVerPtr)localObject2).mItemId);
+                        ((IVasLog)???).e("VasUpdate_System", ((StringBuilder)localObject4).toString());
+                        VasUpdateWrapper.getDbManager().deleteItem(1, ((ItemUpdateVerPtr)localObject2).mItemId);
+                        continue;
+                      }
+                      if (checkLastTime((ItemUpdateVerPtr)localObject2)) {
+                        continue;
+                      }
+                      ((ArrayList)localObject1).add(localObject2);
                     }
-                  }
-                  if (((ItemUpdateVerPtr)localObject2).mRunCount >= 10)
-                  {
-                    VasUpdateWrapper.getLog().e("VasUpdate_System", "onTaskSyncTableComplete item runcount >= 10 , delete, itemId = " + ((ItemUpdateVerPtr)localObject2).mItemId);
-                    VasUpdateWrapper.getDbManager().deleteItem(1, ((ItemUpdateVerPtr)localObject2).mItemId);
-                  }
-                  else if (!checkLastTime((ItemUpdateVerPtr)localObject2))
-                  {
-                    ((ArrayList)localObject1).add(localObject2);
                   }
                 }
               }
             }
+          }
+          else
+          {
+            ??? = VasUpdateWrapper.getLog();
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append("onTaskSyncTableComplete node doesn't have updateItem , continue , itemId = ");
+            ((StringBuilder)localObject4).append(((ItemUpdateVerPtr)localObject2).mItemId);
+            ((IVasLog)???).e("VasUpdate_System", ((StringBuilder)localObject4).toString());
           }
         }
       }
@@ -476,7 +614,11 @@ public class VasUpdateSystem
       if ((localObject1 != null) && (!TextUtils.isEmpty(((ItemUpdateVerPtr)localObject1).mItemId))) {
         if (getObserver(CommonUtil.sParseBidId(((ItemUpdateVerPtr)localObject1).mItemId)) == null)
         {
-          VasUpdateWrapper.getLog().e("VasUpdate_System", "onTaskSyncTableComplete requestList currentItem not register , itemId = " + ((ItemUpdateVerPtr)localObject1).mItemId);
+          localObject2 = VasUpdateWrapper.getLog();
+          ??? = new StringBuilder();
+          ((StringBuilder)???).append("onTaskSyncTableComplete requestList currentItem not register , itemId = ");
+          ((StringBuilder)???).append(((ItemUpdateVerPtr)localObject1).mItemId);
+          ((IVasLog)localObject2).e("VasUpdate_System", ((StringBuilder)???).toString());
           VasUpdateWrapper.getDbManager().deleteItem(1, ((ItemUpdateVerPtr)localObject1).mItemId);
         }
         else
@@ -485,7 +627,11 @@ public class VasUpdateSystem
         }
       }
     }
-    VasUpdateWrapper.getLog().d("VasUpdate_System", "onTaskSyncTableComplete start update request , size = " + this.mTempTaskMaps.size());
+    paramHashMap = VasUpdateWrapper.getLog();
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("onTaskSyncTableComplete start update request , size = ");
+    ((StringBuilder)localObject1).append(this.mTempTaskMaps.size());
+    paramHashMap.d("VasUpdate_System", ((StringBuilder)localObject1).toString());
     if (paramInt1 > 0)
     {
       updatePollTime(paramInt1);
@@ -495,16 +641,20 @@ public class VasUpdateSystem
   
   public void onTime(int paramInt)
   {
-    VasUpdateWrapper.getLog().i("VasUpdate_System", "onTime type = " + paramInt);
-    switch (paramInt)
+    IVasLog localIVasLog = VasUpdateWrapper.getLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onTime type = ");
+    localStringBuilder.append(paramInt);
+    localIVasLog.i("VasUpdate_System", localStringBuilder.toString());
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      onTimeGetUrl();
+      if (paramInt != 2) {
+        return;
+      }
+      onTimeUpdateItem();
       return;
     }
-    onTimeUpdateItem();
+    onTimeGetUrl();
   }
   
   public void setNotification(NotificationModule paramNotificationModule)
@@ -519,7 +669,7 @@ public class VasUpdateSystem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.vas.update.VasUpdateSystem
  * JD-Core Version:    0.7.0.1
  */

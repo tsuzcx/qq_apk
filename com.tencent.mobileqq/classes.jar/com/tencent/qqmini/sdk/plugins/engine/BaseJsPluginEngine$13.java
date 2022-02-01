@@ -16,48 +16,48 @@ class BaseJsPluginEngine$13
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    Object localObject3 = null;
-    if (paramBoolean) {}
-    for (;;)
+    Object localObject2 = null;
+    Object localObject1;
+    if (paramBoolean)
     {
       try
       {
-        Object localObject1 = paramJSONObject.getJSONObject("userInfo");
-        paramJSONObject = ((JSONObject)localObject1).getString("nickName");
-        int i;
-        int j;
-        QMLog.e("JsPluginEngine[AuthGuard]", "call getUserInfo failed. " + Log.getStackTraceString(localThrowable1));
-      }
-      catch (Throwable localThrowable1)
-      {
+        paramJSONObject = paramJSONObject.getJSONObject("userInfo");
+        localObject1 = paramJSONObject.getString("nickName");
         try
         {
-          localObject1 = ((JSONObject)localObject1).getString("avatarUrl");
-          i = ViewUtils.dpToPx(26.0F);
-          j = ViewUtils.dpToPx(40.0F);
-          BaseJsPluginEngine.access$300(this.jdField_a_of_type_ComTencentQqminiSdkPluginsEngineBaseJsPluginEngine).post(new BaseJsPluginEngine.13.1(this, i, (String)localObject1, j, paramJSONObject));
-          return;
+          paramJSONObject = paramJSONObject.getString("avatarUrl");
         }
-        catch (Throwable localThrowable2)
+        catch (Throwable localThrowable1)
         {
-          Object localObject2;
-          break label75;
+          paramJSONObject = (JSONObject)localObject1;
         }
-        localThrowable1 = localThrowable1;
+        localObject1 = new StringBuilder();
+      }
+      catch (Throwable localThrowable2)
+      {
         paramJSONObject = null;
       }
-      label75:
-      localObject2 = localObject3;
-      continue;
+      ((StringBuilder)localObject1).append("call getUserInfo failed. ");
+      ((StringBuilder)localObject1).append(Log.getStackTraceString(localThrowable2));
+      QMLog.e("JsPluginEngine[AuthGuard]", ((StringBuilder)localObject1).toString());
+      localObject1 = paramJSONObject;
+      paramJSONObject = localObject2;
+    }
+    else
+    {
       QMLog.d("JsPluginEngine[AuthGuard]", "call getUserInfo failed. ");
       paramJSONObject = null;
-      localObject2 = localObject3;
+      localObject1 = paramJSONObject;
     }
+    int i = ViewUtils.dpToPx(26.0F);
+    int j = ViewUtils.dpToPx(40.0F);
+    BaseJsPluginEngine.access$300(this.jdField_a_of_type_ComTencentQqminiSdkPluginsEngineBaseJsPluginEngine).post(new BaseJsPluginEngine.13.1(this, i, paramJSONObject, j, (String)localObject1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.engine.BaseJsPluginEngine.13
  * JD-Core Version:    0.7.0.1
  */

@@ -23,15 +23,16 @@ public class SimpleFileViewer$GestureRelativeLayout
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewGestureDetector != null) {
-      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    GestureDetector localGestureDetector = this.jdField_a_of_type_AndroidViewGestureDetector;
+    if (localGestureDetector != null) {
+      localGestureDetector.onTouchEvent(paramMotionEvent);
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.GestureRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

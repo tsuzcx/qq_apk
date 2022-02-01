@@ -80,17 +80,19 @@ public final class SsoServerList
     paramJceOutputStream.write(this.bTestSpeed, 5);
     paramJceOutputStream.write(this.bUseNewList, 6);
     paramJceOutputStream.write(this.iMultiConn, 7);
-    if (this.vHttp_2G3GList != null) {
-      paramJceOutputStream.write(this.vHttp_2G3GList, 8);
+    ArrayList localArrayList = this.vHttp_2G3GList;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 8);
     }
-    if (this.vHttp_WifiList != null) {
-      paramJceOutputStream.write(this.vHttp_WifiList, 9);
+    localArrayList = this.vHttp_WifiList;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ConfigPush.SsoServerList
  * JD-Core Version:    0.7.0.1
  */

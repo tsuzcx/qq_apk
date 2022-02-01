@@ -17,7 +17,8 @@ public final class GameView$Companion$from$2$setSurfaceCallback$surfaceTextureLi
   {
     Intrinsics.checkParameterIsNotNull(paramSurfaceTexture, "surface");
     GameView.Companion.from.2.access$set_surfaceTexture$p(this.this$0, paramSurfaceTexture);
-    GameView.Companion.from.2.access$set_surface$p(this.this$0, new Surface(GameView.Companion.from.2.access$get_surfaceTexture$p(this.this$0)));
+    paramSurfaceTexture = this.this$0;
+    GameView.Companion.from.2.access$set_surface$p(paramSurfaceTexture, new Surface(GameView.Companion.from.2.access$get_surfaceTexture$p(paramSurfaceTexture)));
     paramSurfaceTexture = this.$surfaceCallback;
     Surface localSurface = GameView.Companion.from.2.access$get_surface$p(this.this$0);
     if (localSurface == null) {
@@ -53,7 +54,7 @@ public final class GameView$Companion$from$2$setSurfaceCallback$surfaceTextureLi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.view.GameView.Companion.from.2.setSurfaceCallback.surfaceTextureListener.1
  * JD-Core Version:    0.7.0.1
  */

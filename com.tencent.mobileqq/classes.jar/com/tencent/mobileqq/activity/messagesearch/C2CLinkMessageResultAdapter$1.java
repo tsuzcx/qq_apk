@@ -16,22 +16,37 @@ class C2CLinkMessageResultAdapter$1
   
   public void run()
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.i("C2CLinkMessageResultAdapter", 2, "loadMessageResult, run(), keyword = " + this.jdField_a_of_type_JavaLangString + ", loadType = " + this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("loadMessageResult, run(), keyword = ");
+      ((StringBuilder)???).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)???).append(", loadType = ");
+      ((StringBuilder)???).append(this.jdField_a_of_type_Int);
+      QLog.i("C2CLinkMessageResultAdapter", 2, ((StringBuilder)???).toString());
     }
     ??? = null;
-    Object localObject2;
-    Object localObject4;
-    if (this.jdField_a_of_type_Int == 1)
+    int i = this.jdField_a_of_type_Int;
+    boolean bool1 = true;
+    if (i == 1)
     {
-      ??? = this.this$0.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
+      ??? = this.this$0;
+      ??? = ((C2CLinkMessageResultAdapter)???).a(((C2CLinkMessageResultAdapter)???).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
       HistoryChatMsgSearchKeyUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
-      localObject2 = new ArrayList();
-      localObject4 = this.this$0.b((ChatHistorySearchData)???, (ArrayList)localObject2);
-      if (QLog.isColorLevel()) {
-        QLog.i("C2CLinkMessageResultAdapter", 2, "loadMessageResult, get: messageItems[] = " + localObject2);
-      }
+    }
+    else if (i == 2)
+    {
+      ??? = this.this$0;
+      ??? = ((C2CLinkMessageResultAdapter)???).a(((C2CLinkMessageResultAdapter)???).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "");
+    }
+    Object localObject2 = new ArrayList();
+    Object localObject4 = this.this$0.b((ChatHistorySearchData)???, (ArrayList)localObject2);
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("loadMessageResult, get: messageItems[] = ");
+      ((StringBuilder)???).append(localObject2);
+      QLog.i("C2CLinkMessageResultAdapter", 2, ((StringBuilder)???).toString());
     }
     for (;;)
     {
@@ -39,13 +54,17 @@ class C2CLinkMessageResultAdapter$1
       {
         if (this.this$0.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))
         {
-          if (this.jdField_a_of_type_Int != 1) {
-            continue;
-          }
-          localC2CLinkMessageResultAdapter = this.this$0;
-          if (((ArrayList)localObject2).size() < 20)
+          i = this.jdField_a_of_type_Int;
+          boolean bool2 = false;
+          C2CLinkMessageResultAdapter localC2CLinkMessageResultAdapter;
+          if (i == 1)
           {
-            localC2CLinkMessageResultAdapter.jdField_a_of_type_Boolean = bool;
+            localC2CLinkMessageResultAdapter = this.this$0;
+            bool1 = bool2;
+            if (((ArrayList)localObject2).size() < 20) {
+              bool1 = true;
+            }
+            localC2CLinkMessageResultAdapter.jdField_a_of_type_Boolean = bool1;
             this.this$0.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData = ((ChatHistorySearchData)localObject4);
             localObject2 = this.this$0.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(2, localObject2);
             ((Message)localObject2).arg1 = 1;
@@ -55,43 +74,33 @@ class C2CLinkMessageResultAdapter$1
             ((Message)localObject2).setData((Bundle)localObject4);
             ((Message)localObject2).sendToTarget();
           }
-        }
-        else
-        {
-          return;
-          if (this.jdField_a_of_type_Int != 2) {
-            break;
+          else if (this.jdField_a_of_type_Int == 2)
+          {
+            localC2CLinkMessageResultAdapter = this.this$0;
+            if (((ArrayList)localObject2).size() >= 20) {
+              break label469;
+            }
+            localC2CLinkMessageResultAdapter.jdField_a_of_type_Boolean = bool1;
+            this.this$0.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData = ((ChatHistorySearchData)localObject4);
+            localObject2 = this.this$0.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(2, localObject2);
+            ((Message)localObject2).arg1 = 2;
+            localObject4 = new Bundle();
+            ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
+            ((Bundle)localObject4).putString("searchKeyword", this.jdField_a_of_type_JavaLangString);
+            ((Message)localObject2).setData((Bundle)localObject4);
+            ((Message)localObject2).sendToTarget();
           }
-          ??? = this.this$0.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "");
-          break;
         }
-        bool = false;
-        continue;
-        if (this.jdField_a_of_type_Int != 2) {
-          continue;
-        }
-        C2CLinkMessageResultAdapter localC2CLinkMessageResultAdapter = this.this$0;
-        if (((ArrayList)localObject2).size() < 20)
-        {
-          bool = true;
-          localC2CLinkMessageResultAdapter.jdField_a_of_type_Boolean = bool;
-          this.this$0.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData = ((ChatHistorySearchData)localObject4);
-          localObject2 = this.this$0.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(2, localObject2);
-          ((Message)localObject2).arg1 = 2;
-          localObject4 = new Bundle();
-          ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
-          ((Bundle)localObject4).putString("searchKeyword", this.jdField_a_of_type_JavaLangString);
-          ((Message)localObject2).setData((Bundle)localObject4);
-          ((Message)localObject2).sendToTarget();
-        }
+        return;
       }
-      bool = false;
+      label469:
+      bool1 = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.C2CLinkMessageResultAdapter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -59,7 +59,11 @@ public class VScrollView
   
   private void onScrollEnd()
   {
-    this.mScrollViewListeners.onScrollEnd(this, this.mLastX, this.mLastY, this.mLastX, this.mLastY);
+    VScrollView.VScrollViewListener localVScrollViewListener = this.mScrollViewListeners;
+    int i = this.mLastX;
+    float f = i;
+    int j = this.mLastY;
+    localVScrollViewListener.onScrollEnd(this, f, j, i, j);
   }
   
   public void addParentTouchLifeCycle(VRefreshViewGroup paramVRefreshViewGroup)
@@ -106,8 +110,9 @@ public class VScrollView
   
   public VScroller getComponent()
   {
-    if (this.mWeakReference != null) {
-      return (VScroller)this.mWeakReference.get();
+    WeakReference localWeakReference = this.mWeakReference;
+    if (localWeakReference != null) {
+      return (VScroller)localWeakReference.get();
     }
     return null;
   }
@@ -124,47 +129,48 @@ public class VScrollView
   
   public void onHeaderRebounded() {}
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     onScroll(getScrollX(), getScrollY());
-    View localView = getChildAt(getChildCount() - 1);
-    if (localView == null) {}
-    do
-    {
+    Object localObject = getChildAt(getChildCount() - 1);
+    if (localObject == null) {
       return;
-      if ((localView.getBottom() - (getHeight() + getScrollY()) <= this.mPreloadDistance) && (!this.mIsLoadMoring)) {
-        onLoadMore(paramInt1, paramInt2);
-      }
-    } while (this.onScrollListener == null);
-    if (this.inTouch) {
+    }
+    if ((((View)localObject).getBottom() - (getHeight() + getScrollY()) <= this.mPreloadDistance) && (!this.mIsLoadMoring)) {
+      onLoadMore(paramInt1, paramInt2);
+    }
+    localObject = this.onScrollListener;
+    if (localObject == null) {
+      return;
+    }
+    if (this.inTouch)
+    {
       if (paramInt2 != paramInt4)
       {
-        this.onScrollListener.onScrollStateChanged(this, 1, isBottom());
-        if (this.mScrollListener != null) {
-          this.mScrollListener.onScrollStateChanged(this, 1, isBottom());
+        ((VScrollView.OnScrollListener)localObject).onScrollStateChanged(this, 1, isBottom());
+        localObject = this.mScrollListener;
+        if (localObject != null) {
+          ((VScrollView.OnScrollListener)localObject).onScrollStateChanged(this, 1, isBottom());
         }
       }
     }
-    for (;;)
+    else if (paramInt2 != paramInt4)
     {
-      this.onScrollListener.onScroll(getScrollX(), getScrollY());
-      if (this.mScrollListener == null) {
-        break;
+      ((VScrollView.OnScrollListener)localObject).onScrollStateChanged(this, 2, isBottom());
+      localObject = this.mScrollListener;
+      if (localObject != null) {
+        ((VScrollView.OnScrollListener)localObject).onScrollStateChanged(this, 2, isBottom());
       }
-      this.mScrollListener.onScroll(getScrollX(), getScrollY());
-      return;
-      if (paramInt2 != paramInt4)
-      {
-        this.onScrollListener.onScrollStateChanged(this, 2, isBottom());
-        if (this.mScrollListener != null) {
-          this.mScrollListener.onScrollStateChanged(this, 2, isBottom());
-        }
-        this.mLastY = paramInt2;
-        this.mLastX = paramInt1;
-        removeCallbacks(this.mRunnable);
-        postDelayed(this.mRunnable, 20L);
-      }
+      this.mLastY = paramInt2;
+      this.mLastX = paramInt1;
+      removeCallbacks(this.mRunnable);
+      postDelayed(this.mRunnable, 20L);
+    }
+    this.onScrollListener.onScroll(getScrollX(), getScrollY());
+    localObject = this.mScrollListener;
+    if (localObject != null) {
+      ((VScrollView.OnScrollListener)localObject).onScroll(getScrollX(), getScrollY());
     }
   }
   
@@ -195,7 +201,7 @@ public class VScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.view.VScrollView
  * JD-Core Version:    0.7.0.1
  */

@@ -15,15 +15,16 @@ public class LoginManager
   
   public static LoginManager getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new LoginManager();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new LoginManager();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public String getAccount()
@@ -100,7 +101,7 @@ public class LoginManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.LoginManager
  * JD-Core Version:    0.7.0.1
  */

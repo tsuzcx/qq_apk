@@ -49,21 +49,23 @@ public class SensorUtil2
   
   public void start()
   {
-    if (this.mSensorManager != null) {
-      this.mSensorManager.registerListener(this, this.mRotationSensor, 1);
+    SensorManager localSensorManager = this.mSensorManager;
+    if (localSensorManager != null) {
+      localSensorManager.registerListener(this, this.mRotationSensor, 1);
     }
   }
   
   public void stop()
   {
-    if (this.mSensorManager != null) {
-      this.mSensorManager.unregisterListener(this);
+    SensorManager localSensorManager = this.mSensorManager;
+    if (localSensorManager != null) {
+      localSensorManager.unregisterListener(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.util.SensorUtil2
  * JD-Core Version:    0.7.0.1
  */

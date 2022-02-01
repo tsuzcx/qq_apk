@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class QzmallCustomVip
   extends JceStruct
 {
-  static int cache_eCustomVipType = 0;
+  static int cache_eCustomVipType;
   public int eCustomVipType = 0;
   public int iItemId = -1;
   public String strGuestJumpUrl = "";
@@ -37,21 +37,24 @@ public final class QzmallCustomVip
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iItemId, 0);
-    if (this.strSrcUrl != null) {
-      paramJceOutputStream.write(this.strSrcUrl, 1);
+    String str = this.strSrcUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strMasterJumpUrl != null) {
-      paramJceOutputStream.write(this.strMasterJumpUrl, 2);
+    str = this.strMasterJumpUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strGuestJumpUrl != null) {
-      paramJceOutputStream.write(this.strGuestJumpUrl, 3);
+    str = this.strGuestJumpUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.eCustomVipType, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.QzmallCustomVip
  * JD-Core Version:    0.7.0.1
  */

@@ -20,34 +20,34 @@ public class DetailFeedAllInfoPullSegment
   {
     this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = ParallelStream.of(new DetailFeedAllInfoPullSegment.RequestViewCountSegment(this), paramString);
     FeedCommentSync localFeedCommentSync1;
-    FeedCommentSync localFeedCommentSync2;
     if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a())
     {
       localFeedCommentSync1 = new FeedCommentSync(paramString, 2, "", 0);
-      localFeedCommentSync2 = new FeedCommentSync(paramString, 2, "", 1);
+      FeedCommentSync localFeedCommentSync2 = new FeedCommentSync(paramString, 2, "", 1);
+      this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.map(new DetailFeedAllInfoPullSegment.RequestLikeListSegment(this, 0), paramString).map(new DetailFeedAllInfoPullSegment.RequestLikeListSegment(this, 1), paramString).map(new DetailFeedAllInfoPullSegment.RequestCommentListSegment(this), localFeedCommentSync1).map(new DetailFeedAllInfoPullSegment.RequestCommentListSegment(this), localFeedCommentSync2);
     }
-    for (this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.map(new DetailFeedAllInfoPullSegment.RequestLikeListSegment(this, 0), paramString).map(new DetailFeedAllInfoPullSegment.RequestLikeListSegment(this, 1), paramString).map(new DetailFeedAllInfoPullSegment.RequestCommentListSegment(this), localFeedCommentSync1).map(new DetailFeedAllInfoPullSegment.RequestCommentListSegment(this), localFeedCommentSync2);; this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.map(new DetailFeedAllInfoPullSegment.RequestLikeListSegment(this, -1), paramString).map(new DetailFeedAllInfoPullSegment.RequestCommentListSegment(this), localFeedCommentSync1))
+    else
     {
-      this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.subscribe(new DetailFeedAllInfoPullSegment.Observer(this));
-      return;
       localFeedCommentSync1 = new FeedCommentSync(paramString, 2, "");
+      this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.map(new DetailFeedAllInfoPullSegment.RequestLikeListSegment(this, -1), paramString).map(new DetailFeedAllInfoPullSegment.RequestCommentListSegment(this), localFeedCommentSync1);
     }
+    this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.subscribe(new DetailFeedAllInfoPullSegment.Observer(this));
   }
   
   protected void a(JobContext paramJobContext, DetailFeedItem paramDetailFeedItem)
   {
-    if ((paramDetailFeedItem == null) || (paramDetailFeedItem.a == null) || (TextUtils.isEmpty(paramDetailFeedItem.a.feedId)))
+    if ((paramDetailFeedItem != null) && (paramDetailFeedItem.a != null) && (!TextUtils.isEmpty(paramDetailFeedItem.a.feedId)))
     {
-      SLog.b("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed id is while request feed all info.");
-      notifyError(new ErrorMessage(940001, "feed id is while request feed all info."));
+      this.jdField_a_of_type_ComTribeAsyncAsyncJobContext = paramJobContext;
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem = paramDetailFeedItem;
+      a(paramDetailFeedItem.a.feedId);
       return;
     }
-    this.jdField_a_of_type_ComTribeAsyncAsyncJobContext = paramJobContext;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem = paramDetailFeedItem;
-    a(paramDetailFeedItem.a.feedId);
+    SLog.b("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed id is while request feed all info.");
+    notifyError(new ErrorMessage(940001, "feed id is while request feed all info."));
   }
   
-  public void onCancel()
+  protected void onCancel()
   {
     super.onCancel();
     this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.cancel();
@@ -55,7 +55,7 @@ public class DetailFeedAllInfoPullSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment
  * JD-Core Version:    0.7.0.1
  */

@@ -11,28 +11,40 @@ class GivingHeartItemBuilder$10$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GivingHeart", 2, "onAnimationEnd " + paramAnimation);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onAnimationEnd ");
+      localStringBuilder.append(paramAnimation);
+      QLog.d("GivingHeart", 2, localStringBuilder.toString());
     }
   }
   
   public void onAnimationRepeat(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GivingHeart", 2, "onAnimationRepeat " + paramAnimation);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onAnimationRepeat ");
+      localStringBuilder.append(paramAnimation);
+      QLog.d("GivingHeart", 2, localStringBuilder.toString());
     }
   }
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GivingHeart", 2, "onAnimationStart " + paramAnimation);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onAnimationStart ");
+      localStringBuilder.append(paramAnimation);
+      QLog.d("GivingHeart", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.10.1
  * JD-Core Version:    0.7.0.1
  */

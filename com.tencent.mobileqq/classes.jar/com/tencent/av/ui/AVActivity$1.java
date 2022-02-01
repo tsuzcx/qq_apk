@@ -12,8 +12,13 @@ class AVActivity$1
   
   public boolean queueIdle()
   {
-    if (QLog.isColorLevel()) {
-      QLog.w(this.a.b, 1, "call IdleHandler mPeerUin:=" + this.a.c);
+    if (QLog.isColorLevel())
+    {
+      String str = this.a.b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("call IdleHandler mPeerUin:=");
+      localStringBuilder.append(this.a.c);
+      QLog.w(str, 1, localStringBuilder.toString());
     }
     ThreadManager.getSubThreadHandler().postDelayed(new AVActivity.1.1(this), 2000L);
     return false;
@@ -21,7 +26,7 @@ class AVActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.AVActivity.1
  * JD-Core Version:    0.7.0.1
  */

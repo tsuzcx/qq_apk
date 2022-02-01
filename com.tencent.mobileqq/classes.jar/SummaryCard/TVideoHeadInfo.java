@@ -37,8 +37,9 @@ public final class TVideoHeadInfo
   {
     paramJceOutputStream.write(this.iNearbyFlag, 0);
     paramJceOutputStream.write(this.iBasicFlag, 1);
-    if (this.vMsg != null) {
-      paramJceOutputStream.write(this.vMsg, 2);
+    byte[] arrayOfByte = this.vMsg;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 2);
     }
   }
 }

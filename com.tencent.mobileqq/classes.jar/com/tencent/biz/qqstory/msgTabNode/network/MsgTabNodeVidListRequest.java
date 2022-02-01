@@ -34,17 +34,21 @@ public class MsgTabNodeVidListRequest
   public static MsgTabNodeVidListRequest.MsgTabNodeVidListResponse a(MsgTabNodeInfo paramMsgTabNodeInfo, byte[] paramArrayOfByte)
   {
     qqstory_service.RspMsgTabNodeVideoList localRspMsgTabNodeVideoList = new qqstory_service.RspMsgTabNodeVideoList();
-    if (paramArrayOfByte != null) {}
-    try
-    {
-      localRspMsgTabNodeVideoList.mergeFrom(paramArrayOfByte);
-      return new MsgTabNodeVidListRequest.MsgTabNodeVidListResponse(paramMsgTabNodeInfo, localRspMsgTabNodeVideoList, paramArrayOfByte);
+    if (paramArrayOfByte != null) {
+      try
+      {
+        localRspMsgTabNodeVideoList.mergeFrom(paramArrayOfByte);
+      }
+      catch (InvalidProtocolBufferMicroException paramMsgTabNodeInfo)
+      {
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("");
+        paramArrayOfByte.append(paramMsgTabNodeInfo);
+        SLog.d("Q.qqstory:ReqMsgTabNodeVideoList", paramArrayOfByte.toString());
+        return null;
+      }
     }
-    catch (InvalidProtocolBufferMicroException paramMsgTabNodeInfo)
-    {
-      SLog.d("Q.qqstory:ReqMsgTabNodeVideoList", "" + paramMsgTabNodeInfo);
-    }
-    return null;
+    return new MsgTabNodeVidListRequest.MsgTabNodeVidListResponse(paramMsgTabNodeInfo, localRspMsgTabNodeVideoList, paramArrayOfByte);
   }
   
   public MsgTabNodeVidListRequest.MsgTabNodeVidListResponse a(byte[] paramArrayOfByte)
@@ -57,7 +61,7 @@ public class MsgTabNodeVidListRequest
     return jdField_a_of_type_JavaLangString;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqMsgTabNodeVideoList localReqMsgTabNodeVideoList = new qqstory_service.ReqMsgTabNodeVideoList();
     localReqMsgTabNodeVideoList.unionID.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_JavaLangString));
@@ -88,12 +92,23 @@ public class MsgTabNodeVidListRequest
   
   public String toString()
   {
-    return "MsgTabNodeVidListRequest{nodeInfo.unionId=" + this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_JavaLangString + ", mCookie='" + this.b + '\'' + ", mStartVid='" + this.c + '\'' + "} " + super.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MsgTabNodeVidListRequest{nodeInfo.unionId=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", mCookie='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mStartVid='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append("} ");
+    localStringBuilder.append(super.toString());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.network.MsgTabNodeVidListRequest
  * JD-Core Version:    0.7.0.1
  */

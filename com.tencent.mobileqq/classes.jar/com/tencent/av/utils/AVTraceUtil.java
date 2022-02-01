@@ -12,36 +12,31 @@ public class AVTraceUtil
   
   public static void a(String paramString1, String paramString2, int paramInt, Object... paramVarArgs)
   {
-    int j = 0;
     if (QLog.isColorLevel())
     {
       long l2 = SystemClock.elapsedRealtime();
+      long l1 = 0L;
       Object localObject1 = (Long)b.get(paramString1);
-      long l1;
-      if ((paramInt == 1) || (localObject1 == null))
+      if ((paramInt != 1) && (localObject1 != null))
+      {
+        l1 = l2 - ((Long)localObject1).longValue();
+        b.put(paramString1, Long.valueOf(l2));
+      }
+      else
       {
         a.put(paramString1, Long.valueOf(l2));
         b.put(paramString1, Long.valueOf(l2));
-        l1 = 0L;
       }
-      for (;;)
+      if ((paramVarArgs != null) && (paramVarArgs.length > 0))
       {
-        Object localObject2 = "[]";
-        localObject1 = localObject2;
-        if (paramVarArgs == null) {
-          break label210;
-        }
-        localObject1 = localObject2;
-        if (paramVarArgs.length <= 0) {
-          break label210;
-        }
         localObject1 = new StringBuilder(100);
         ((StringBuilder)localObject1).append("[");
         int k = paramVarArgs.length;
         int i = 0;
+        int j = 0;
         while (i < k)
         {
-          localObject2 = paramVarArgs[i];
+          Object localObject2 = paramVarArgs[i];
           if (j > 0) {
             ((StringBuilder)localObject1).append(",");
           }
@@ -49,13 +44,22 @@ public class AVTraceUtil
           j += 1;
           i += 1;
         }
-        l1 = l2 - ((Long)localObject1).longValue();
-        b.put(paramString1, Long.valueOf(l2));
+        ((StringBuilder)localObject1).append("]");
+        paramVarArgs = ((StringBuilder)localObject1).toString();
       }
-      ((StringBuilder)localObject1).append("]");
-      localObject1 = ((StringBuilder)localObject1).toString();
-      label210:
-      QLog.i("AVTraceUtil", 2, paramString1 + "--" + paramString2 + "--" + (String)localObject1 + "--" + l1);
+      else
+      {
+        paramVarArgs = "[]";
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append("--");
+      ((StringBuilder)localObject1).append(paramString2);
+      ((StringBuilder)localObject1).append("--");
+      ((StringBuilder)localObject1).append(paramVarArgs);
+      ((StringBuilder)localObject1).append("--");
+      ((StringBuilder)localObject1).append(l1);
+      QLog.i("AVTraceUtil", 2, ((StringBuilder)localObject1).toString());
       if (paramInt == 2)
       {
         paramVarArgs = (Long)a.get(paramString1);
@@ -64,14 +68,18 @@ public class AVTraceUtil
           paramString2 = Long.valueOf(l2);
         }
         l1 = paramString2.longValue();
-        QLog.i("AVTraceUtil", 2, paramString1 + ": " + (l2 - l1));
+        paramString2 = new StringBuilder();
+        paramString2.append(paramString1);
+        paramString2.append(": ");
+        paramString2.append(l2 - l1);
+        QLog.i("AVTraceUtil", 2, paramString2.toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.AVTraceUtil
  * JD-Core Version:    0.7.0.1
  */

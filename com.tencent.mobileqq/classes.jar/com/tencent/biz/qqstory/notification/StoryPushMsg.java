@@ -69,7 +69,40 @@ public class StoryPushMsg
   
   public String toString()
   {
-    return "StoryPushMsg{mCommentId=" + this.jdField_c_of_type_Int + ", type=" + this.jdField_a_of_type_Int + ", subType='" + this.jdField_a_of_type_JavaLangString + '\'' + ", msgInfo='" + this.jdField_b_of_type_JavaLangString + '\'' + ", uin=" + this.jdField_a_of_type_Long + ", unionId='" + this.jdField_c_of_type_JavaLangString + '\'' + ", feedId='" + this.d + '\'' + ", mUnreadNum=" + this.jdField_b_of_type_Int + ", mVid='" + this.e + '\'' + ", mThumbUrl='" + this.g + '\'' + ", mFeedLikeUserUnionId='" + this.f + '\'' + ", reserveBundle=" + this.jdField_a_of_type_AndroidOsBundle + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("StoryPushMsg{mCommentId=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", subType='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", msgInfo='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", uin=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", unionId='");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", feedId='");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mUnreadNum=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mVid='");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mThumbUrl='");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mFeedLikeUserUnionId='");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", reserveBundle=");
+    localStringBuilder.append(this.jdField_a_of_type_AndroidOsBundle);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -89,7 +122,7 @@ public class StoryPushMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.notification.StoryPushMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -46,61 +46,55 @@ public class CommentFloatDialogController
   
   private void a(DetailFeedItem paramDetailFeedItem)
   {
-    if (paramDetailFeedItem == null) {}
-    label39:
-    do
+    if (paramDetailFeedItem == null) {
+      return;
+    }
+    if (paramDetailFeedItem.a())
     {
-      do
+      if (paramDetailFeedItem.b())
       {
-        return;
-        if (!paramDetailFeedItem.a()) {
-          break label39;
+        if (this.jdField_a_of_type_Int == -1) {
+          this.jdField_a_of_type_Int = 1;
         }
-        if (!paramDetailFeedItem.b()) {
-          break;
-        }
-      } while (this.jdField_a_of_type_Int != -1);
-      this.jdField_a_of_type_Int = 1;
-      return;
-      this.jdField_a_of_type_Int = 1;
-      return;
-    } while (this.jdField_a_of_type_Int == -1);
-    this.jdField_a_of_type_Int = -1;
+      }
+      else {
+        this.jdField_a_of_type_Int = 1;
+      }
+    }
+    else if (this.jdField_a_of_type_Int != -1) {
+      this.jdField_a_of_type_Int = -1;
+    }
   }
   
   private void a(@NonNull DetailFeedItem paramDetailFeedItem, ErrorMessage paramErrorMessage, boolean paramBoolean)
   {
-    Object localObject;
+    if (paramErrorMessage.isSuccess()) {
+      localObject = "suc";
+    } else {
+      localObject = "fail";
+    }
+    String str;
+    if (paramBoolean) {
+      str = "updated";
+    } else {
+      str = "not updated";
+    }
+    SLog.d("Q.qqstory.player.CommentFloatDialogController", "onFeedItemBack: %s , %s , %s", new Object[] { localObject, str, paramDetailFeedItem });
     if (paramErrorMessage.isSuccess())
     {
-      localObject = "suc";
-      if (!paramBoolean) {
-        break label120;
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem = paramDetailFeedItem;
+      a(paramDetailFeedItem);
+      c();
+      e();
+      if (paramBoolean)
+      {
+        this.b.a(null, 0);
+        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader.a(null, 0);
       }
     }
-    label120:
-    for (String str = "updated";; str = "not updated")
-    {
-      SLog.d("Q.qqstory.player.CommentFloatDialogController", "onFeedItemBack: %s , %s , %s", new Object[] { localObject, str, paramDetailFeedItem });
-      if (paramErrorMessage.isSuccess())
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem = paramDetailFeedItem;
-        a(paramDetailFeedItem);
-        c();
-        e();
-        if (paramBoolean)
-        {
-          this.b.a(null, 0);
-          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader.a(null, 0);
-        }
-      }
-      localObject = a();
-      if (localObject != null) {
-        ((CommentFloatDialogController.OnDataChangeListener)localObject).a(paramDetailFeedItem, paramErrorMessage, paramBoolean);
-      }
-      return;
-      localObject = "fail";
-      break;
+    Object localObject = a();
+    if (localObject != null) {
+      ((CommentFloatDialogController.OnDataChangeListener)localObject).a(paramDetailFeedItem, paramErrorMessage, paramBoolean);
     }
   }
   
@@ -120,14 +114,15 @@ public class CommentFloatDialogController
   
   private void e()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailPresenter$DetailFeedPushObserver == null)
+    StoryDetailPresenter.DetailFeedPushObserver localDetailFeedPushObserver = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailPresenter$DetailFeedPushObserver;
+    if (localDetailFeedPushObserver == null)
     {
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailPresenter$DetailFeedPushObserver = new StoryDetailPresenter.DetailFeedPushObserver(this.jdField_a_of_type_JavaLangString, new CommentFloatDialogController.1(this));
       QQStoryContext.a();
       QQStoryContext.a().addObserver(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailPresenter$DetailFeedPushObserver);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailPresenter$DetailFeedPushObserver.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localDetailFeedPushObserver.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
   }
   
   public int a()
@@ -138,8 +133,9 @@ public class CommentFloatDialogController
   @Nullable
   public CommentFloatDialogController.OnDataChangeListener a()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      return (CommentFloatDialogController.OnDataChangeListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localWeakReference != null) {
+      return (CommentFloatDialogController.OnDataChangeListener)localWeakReference.get();
     }
     return null;
   }
@@ -183,7 +179,8 @@ public class CommentFloatDialogController
   public void a(CommentEntry paramCommentEntry, boolean paramBoolean)
   {
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.b(paramCommentEntry, paramBoolean);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a = ((CommentLikeFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a));
+    DetailFeedItem localDetailFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem;
+    localDetailFeedItem.a = ((CommentLikeFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager.a(localDetailFeedItem.a));
     this.jdField_a_of_type_ComTencentBizQqstoryModelCommentManager.d(paramCommentEntry);
     a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem);
   }
@@ -201,8 +198,9 @@ public class CommentFloatDialogController
     if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString))
     {
       this.jdField_a_of_type_JavaLangCharSequence = null;
-      if (this.jdField_a_of_type_ComTribeAsyncReactiveStream != null) {
-        this.jdField_a_of_type_ComTribeAsyncReactiveStream.cancel();
+      Stream localStream = this.jdField_a_of_type_ComTribeAsyncReactiveStream;
+      if (localStream != null) {
+        localStream.cancel();
       }
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem = new DetailFeedItem();
       c();
@@ -214,24 +212,23 @@ public class CommentFloatDialogController
   {
     if (paramBoolean) {
       this.b.c();
-    }
-    for (;;)
-    {
-      StoryReportor.a("home_page", "load_detail", 0, 0, new String[] { "", StoryReportor.a(4444), "", this.jdField_a_of_type_JavaLangString });
-      return;
+    } else {
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader.c();
     }
+    StoryReportor.a("home_page", "load_detail", 0, 0, new String[] { "", StoryReportor.a(4444), "", this.jdField_a_of_type_JavaLangString });
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Int == -1) || (this.jdField_a_of_type_Int == 2);
+    int i = this.jdField_a_of_type_Int;
+    return (i == -1) || (i == 2);
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTribeAsyncReactiveStream != null) {
-      this.jdField_a_of_type_ComTribeAsyncReactiveStream.cancel();
+    Stream localStream = this.jdField_a_of_type_ComTribeAsyncReactiveStream;
+    if (localStream != null) {
+      localStream.cancel();
     }
     this.jdField_a_of_type_ComTribeAsyncReactiveStream = Stream.of(this.jdField_a_of_type_JavaLangString).map(new ThreadOffFunction("Q.qqstory.player.CommentFloatDialogController", 2)).map(new CommentFloatDialogController.GetFeedItemSegment(this)).map(new CommentFloatDialogController.GetCachedCommentListSegment(this)).map(new UIThreadOffFunction(null));
     this.jdField_a_of_type_ComTribeAsyncReactiveStream.subscribe(new CommentFloatDialogController.GetDetailFeedItemObserver(this));
@@ -258,7 +255,7 @@ public class CommentFloatDialogController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialogController
  * JD-Core Version:    0.7.0.1
  */

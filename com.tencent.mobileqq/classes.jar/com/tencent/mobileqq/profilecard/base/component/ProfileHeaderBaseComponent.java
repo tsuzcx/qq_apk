@@ -6,26 +6,26 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.FrameLayout;
 import com.tencent.mobileqq.activity.FriendProfilePhotoHelper;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.profile.DataTag;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profilecard.base.factory.ProfileComponentFactory;
 import com.tencent.mobileqq.profilecard.base.framework.IComponentCenter;
 import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
 import com.tencent.mobileqq.profilecard.base.view.ProfileBaseView;
-import com.tencent.mobileqq.profilecard.bussiness.accountinfo.ProfileAccountInfoHeaderComponent;
+import com.tencent.mobileqq.profilecard.base.view.PullToZoomHeaderListView;
 import com.tencent.mobileqq.profilecard.bussiness.accountlevel.ProfileAccountLevelHeaderComponent;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
+import com.tencent.mobileqq.profilecard.template.ProfileTemplateApi;
+import com.tencent.mobileqq.profilecard.utils.ProfilePAUtils;
+import com.tencent.mobileqq.profilecard.utils.ProfileUtils;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.vas.qid.VipQidHelper;
-import com.tencent.mobileqq.widget.ProfileConfigHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
-import com.tencent.widget.PullToZoomHeaderListView;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -33,9 +33,8 @@ public class ProfileHeaderBaseComponent
   extends AbsProfileHeaderComponent
 {
   private static final String TAG = "ProfileHeaderBaseComponent";
-  private ProfileAccountInfoHeaderComponent mAccountInfoComponent;
+  private AbsProfileComponent mAccountInfoComponent;
   private ProfileAccountLevelHeaderComponent mAccountLevelComponent;
-  private ProfileConfigHelper mConfigHelper;
   private boolean mIsFromArkBabyQ;
   private PullToZoomHeaderListView mListView;
   private FriendProfilePhotoHelper mPhotoHelper;
@@ -47,9 +46,10 @@ public class ProfileHeaderBaseComponent
   
   private void destroyProfileAccountInfoComponent()
   {
-    if (this.mAccountInfoComponent != null)
+    AbsProfileComponent localAbsProfileComponent = this.mAccountInfoComponent;
+    if (localAbsProfileComponent != null)
     {
-      removeComponent(this.mAccountInfoComponent);
+      removeComponent(localAbsProfileComponent);
       this.mAccountInfoComponent.detachFromComponentCenter();
       this.mAccountInfoComponent = null;
     }
@@ -57,9 +57,10 @@ public class ProfileHeaderBaseComponent
   
   private void destroyProfileAccountLevelComponent()
   {
-    if (this.mAccountLevelComponent != null)
+    ProfileAccountLevelHeaderComponent localProfileAccountLevelHeaderComponent = this.mAccountLevelComponent;
+    if (localProfileAccountLevelHeaderComponent != null)
     {
-      removeComponent(this.mAccountLevelComponent);
+      removeComponent(localProfileAccountLevelHeaderComponent);
       this.mAccountLevelComponent.detachFromComponentCenter();
       this.mAccountLevelComponent = null;
     }
@@ -67,32 +68,33 @@ public class ProfileHeaderBaseComponent
   
   private void destroyProfilePhotoHelper()
   {
-    if (this.mPhotoHelper != null)
+    FriendProfilePhotoHelper localFriendProfilePhotoHelper = this.mPhotoHelper;
+    if (localFriendProfilePhotoHelper != null)
     {
-      this.mPhotoHelper.a();
+      localFriendProfilePhotoHelper.a();
       this.mPhotoHelper = null;
     }
   }
   
   private void handleProfileCoverClick()
   {
-    if ((!ProfileActivity.AllInOne.g(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)) || (this.mApp == null)) {
-      return;
-    }
-    if (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0)
+    if (ProfilePAUtils.isPaTypeHasUin(((ProfileCardInfo)this.mData).allInOne))
     {
-      showProfileCoverActionSheet();
-      if (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a != 0) {
-        break label98;
+      if (this.mApp == null) {
+        return;
       }
-    }
-    label98:
-    for (int i = 1;; i = 2)
-    {
+      if (((ProfileCardInfo)this.mData).allInOne.pa == 0) {
+        showProfileCoverActionSheet();
+      } else {
+        previewProfileCover(false);
+      }
+      int i;
+      if (((ProfileCardInfo)this.mData).allInOne.pa == 0) {
+        i = 1;
+      } else {
+        i = 2;
+      }
       ReportController.b(this.mApp, "dc00898", "", "", "0X800A889", "0X800A889", i, 0, "", "", "", "");
-      return;
-      previewProfileCover(false);
-      break;
     }
   }
   
@@ -100,9 +102,8 @@ public class ProfileHeaderBaseComponent
   {
     if (this.mAccountInfoComponent == null)
     {
-      View localView = this.mHeaderView.findViewById(2131374497);
-      this.mAccountInfoComponent = ((ProfileAccountInfoHeaderComponent)ProfileComponentFactory.create(1024, this.mComponentCenter, (ProfileCardInfo)this.mData));
-      this.mAccountInfoComponent.setCommonDependence(this.mDelegate, this.mConfigHelper, null);
+      View localView = this.mHeaderView.findViewById(2131374035);
+      this.mAccountInfoComponent = ProfileUtils.create(1024, this.mComponentCenter, (ProfileCardInfo)this.mData, this.mDelegate);
       this.mAccountInfoComponent.setContainerView(localView);
       this.mAccountInfoComponent.attachToComponentCenter();
       addComponent(this.mAccountInfoComponent);
@@ -113,9 +114,8 @@ public class ProfileHeaderBaseComponent
   {
     if (this.mAccountLevelComponent == null)
     {
-      View localView = this.mHeaderView.findViewById(2131374499);
-      this.mAccountLevelComponent = ((ProfileAccountLevelHeaderComponent)ProfileComponentFactory.create(1022, this.mComponentCenter, (ProfileCardInfo)this.mData));
-      this.mAccountLevelComponent.setCommonDependence(this.mDelegate, this.mConfigHelper, null);
+      View localView = this.mHeaderView.findViewById(2131374037);
+      this.mAccountLevelComponent = ((ProfileAccountLevelHeaderComponent)ProfileUtils.create(1022, this.mComponentCenter, (ProfileCardInfo)this.mData, this.mDelegate));
       this.mAccountLevelComponent.setContainerView(localView);
       this.mAccountLevelComponent.attachToComponentCenter();
       addComponent(this.mAccountLevelComponent);
@@ -133,21 +133,22 @@ public class ProfileHeaderBaseComponent
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(this.mHeaderView.mCoverUrl);
-    if (this.mHeaderView.mCoverTimeStamp == 0) {}
-    for (int i = ((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqDataCard.defaultCardId;; i = 0)
-    {
-      Intent localIntent = new Intent(this.mActivity, CardPicGalleryActivity.class);
-      localIntent.putExtra("extra_mode", 2);
-      localIntent.putExtra("is_from_mine_profile", paramBoolean);
-      localIntent.putStringArrayListExtra("business_card_pics", localArrayList);
-      localIntent.putExtra("default_card_id", i);
-      if (TextUtils.isEmpty(this.mHeaderView.mCoverUrl)) {
-        localIntent.putExtra("extra_default", 2130846048);
-      }
-      this.mActivity.startActivity(localIntent);
-      this.mActivity.overridePendingTransition(2130772323, 0);
-      return;
+    int i;
+    if (this.mHeaderView.mCoverTimeStamp == 0) {
+      i = ((ProfileCardInfo)this.mData).card.defaultCardId;
+    } else {
+      i = 0;
     }
+    Intent localIntent = new Intent(this.mActivity, CardPicGalleryActivity.class);
+    localIntent.putExtra("extra_mode", 2);
+    localIntent.putExtra("is_from_mine_profile", paramBoolean);
+    localIntent.putStringArrayListExtra("business_card_pics", localArrayList);
+    localIntent.putExtra("default_card_id", i);
+    if (TextUtils.isEmpty(this.mHeaderView.mCoverUrl)) {
+      localIntent.putExtra("extra_default", 2130845923);
+    }
+    this.mActivity.startActivity(localIntent);
+    this.mActivity.overridePendingTransition(2130772351, 0);
   }
   
   private void reportProfileCoverActionSheetItemClick(int paramInt)
@@ -160,15 +161,15 @@ public class ProfileHeaderBaseComponent
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.mActivity, null);
     ArrayList localArrayList = new ArrayList();
     if (!TextUtils.isEmpty(this.mHeaderView.mCoverUrl)) {
-      localArrayList.add(new ProfileHeaderBaseComponent.2(this, 2131693330));
+      localArrayList.add(new ProfileHeaderBaseComponent.2(this, 2131693285));
     }
-    localArrayList.add(new ProfileHeaderBaseComponent.3(this, 2131693328));
-    localArrayList.add(new ProfileHeaderBaseComponent.4(this, 2131693326));
+    localArrayList.add(new ProfileHeaderBaseComponent.3(this, 2131693283));
+    localArrayList.add(new ProfileHeaderBaseComponent.4(this, 2131693281));
     Iterator localIterator = localArrayList.iterator();
     while (localIterator.hasNext()) {
       localActionSheet.addButton(((ProfileHeaderBaseComponent.ActionSheetItem)localIterator.next()).buttonStrId);
     }
-    localActionSheet.addCancelButton(2131690800);
+    localActionSheet.addCancelButton(2131690728);
     localActionSheet.setOnButtonClickListener(new ProfileHeaderBaseComponent.5(this, localArrayList, localActionSheet));
     try
     {
@@ -183,13 +184,15 @@ public class ProfileHeaderBaseComponent
   
   public void enterCustomCover()
   {
-    if (this.mHeaderView.mCoverTimeStamp == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (this.mPhotoHelper != null) {
-        this.mPhotoHelper.a(bool);
-      }
-      return;
+    boolean bool;
+    if (this.mHeaderView.mCoverTimeStamp == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    FriendProfilePhotoHelper localFriendProfilePhotoHelper = this.mPhotoHelper;
+    if (localFriendProfilePhotoHelper != null) {
+      localFriendProfilePhotoHelper.a(bool);
     }
   }
   
@@ -210,7 +213,7 @@ public class ProfileHeaderBaseComponent
       ProfileBaseView localProfileBaseView = new ProfileBaseView(this.mActivity, (ProfileCardInfo)this.mData);
       localProfileBaseView.setProfileArgs(this.mListView, this.mIsFromArkBabyQ);
       localProfileBaseView.setClickListener(this);
-      localProfileBaseView.onInit();
+      localProfileBaseView.onInit(ProfileTemplateApi.getTemplateUtils(this.mComponentCenter));
       this.mHeaderView = localProfileBaseView;
       ((FrameLayout)this.mViewContainer).removeAllViews();
       ((FrameLayout)this.mViewContainer).addView(this.mHeaderView);
@@ -220,46 +223,37 @@ public class ProfileHeaderBaseComponent
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    switch (paramInt1)
-    {
-    }
-    do
-    {
+    if (paramInt1 != 1024) {
       return;
-    } while (this.mPhotoHelper == null);
-    this.mPhotoHelper.a(paramInt2, paramIntent);
+    }
+    FriendProfilePhotoHelper localFriendProfilePhotoHelper = this.mPhotoHelper;
+    if (localFriendProfilePhotoHelper != null) {
+      localFriendProfilePhotoHelper.a(paramInt2, paramIntent);
+    }
   }
   
   public void onClick(View paramView)
   {
     super.onClick(paramView);
-    DataTag localDataTag;
     if ((paramView.getTag() instanceof DataTag))
     {
-      localDataTag = (DataTag)paramView.getTag();
-      if (localDataTag.a != 17) {
-        break label44;
-      }
-      handleProfileCoverClick();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label44:
-      if (localDataTag.a == 105) {
+      DataTag localDataTag = (DataTag)paramView.getTag();
+      if (localDataTag.a == 17) {
+        handleProfileCoverClick();
+      } else if (localDataTag.a == 105) {
         VipQidHelper.a(this.mActivity, (ProfileCardInfo)this.mData);
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void onCreate(BaseActivity paramBaseActivity, Bundle paramBundle)
+  public void onCreate(QBaseActivity paramQBaseActivity, Bundle paramBundle)
   {
-    Intent localIntent = paramBaseActivity.getIntent();
+    Intent localIntent = paramQBaseActivity.getIntent();
     if (localIntent != null) {
       this.mIsFromArkBabyQ = localIntent.getBooleanExtra("key_from_ark_babyq", false);
     }
-    super.onCreate(paramBaseActivity, paramBundle);
+    super.onCreate(paramQBaseActivity, paramBundle);
     initProfilePhotoHelper();
     initProfileAccountInfoComponent();
     initProfileAccountLevelComponent();
@@ -277,20 +271,26 @@ public class ProfileHeaderBaseComponent
   {
     super.onNewIntent(paramIntent);
     ArrayList localArrayList = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
-    if ((localArrayList != null) && (localArrayList.size() > 0) && (this.mPhotoHelper != null)) {
-      this.mPhotoHelper.a(paramIntent, localArrayList);
+    if ((localArrayList != null) && (localArrayList.size() > 0))
+    {
+      FriendProfilePhotoHelper localFriendProfilePhotoHelper = this.mPhotoHelper;
+      if (localFriendProfilePhotoHelper != null) {
+        localFriendProfilePhotoHelper.a(paramIntent, localArrayList);
+      }
     }
   }
   
-  public void setProfileArgs(ProfileConfigHelper paramProfileConfigHelper, PullToZoomHeaderListView paramPullToZoomHeaderListView)
+  public void setProfileActivityDelegate(IProfileActivityDelegate paramIProfileActivityDelegate)
   {
-    this.mConfigHelper = paramProfileConfigHelper;
-    this.mListView = paramPullToZoomHeaderListView;
+    super.setProfileActivityDelegate(paramIProfileActivityDelegate);
+    if (this.mDelegate != null) {
+      this.mListView = this.mDelegate.getListView();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.component.ProfileHeaderBaseComponent
  * JD-Core Version:    0.7.0.1
  */

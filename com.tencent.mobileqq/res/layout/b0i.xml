@@ -2,7 +2,7 @@
 <FrameLayout android:background="@android:color/transparent" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:orientation="vertical" android:id="@id/fqj" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mobileqq.widget.ProfileCardNewPhotoWallView android:orientation="vertical" android:id="@id/fqs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" />
+        <com.tencent.mobileqq.profilecard.bussiness.photowall.view.ProfileCardNewPhotoWallView android:orientation="vertical" android:id="@id/fqs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" />
         <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/fqv" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="44.0dip">
             <ProgressBar android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="4.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/o7" android:indeterminateBehavior="repeat" />
             <TextView android:textSize="14.0dip" android:textColor="@color/kv" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d1y" />

@@ -24,35 +24,33 @@ public class ClickLinkMovementMethod
   
   public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
-    if (paramMotionEvent.getActionMasked() == 1) {}
-    try
-    {
-      if (jdField_a_of_type_JavaLangReflectField == null) {
-        jdField_a_of_type_JavaLangReflectField = View.class.getDeclaredField("mHasPerformedLongPress");
+    if (paramMotionEvent.getActionMasked() == 1) {
+      try
+      {
+        if (jdField_a_of_type_JavaLangReflectField == null) {
+          jdField_a_of_type_JavaLangReflectField = View.class.getDeclaredField("mHasPerformedLongPress");
+        }
+        jdField_a_of_type_JavaLangReflectField.setAccessible(true);
+        boolean bool = jdField_a_of_type_JavaLangReflectField.getBoolean(paramTextView);
+        if (bool) {
+          return true;
+        }
       }
-      jdField_a_of_type_JavaLangReflectField.setAccessible(true);
-      boolean bool = jdField_a_of_type_JavaLangReflectField.getBoolean(paramTextView);
-      if (bool) {
-        return true;
-      }
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      localNoSuchFieldException.printStackTrace();
-      return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
+      catch (IllegalAccessException localIllegalAccessException)
       {
         localIllegalAccessException.printStackTrace();
       }
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        localNoSuchFieldException.printStackTrace();
+      }
     }
+    return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ClickLinkMovementMethod
  * JD-Core Version:    0.7.0.1
  */

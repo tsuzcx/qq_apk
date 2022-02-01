@@ -42,78 +42,78 @@ public abstract class IMsfServiceCallbacker$Stub
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    FromServiceMsg localFromServiceMsg = null;
-    Object localObject;
-    switch (paramInt1)
+    if (paramInt1 != 1598968902)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.qphone.base.remote.IMsfServiceCallbacker");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IMsfServiceCallbacker");
-      if (paramParcel1.readInt() != 0)
+      Object localObject4 = null;
+      Object localObject2 = null;
+      Object localObject3 = null;
+      Object localObject1 = null;
+      switch (paramInt1)
       {
-        localObject = (ToServiceMsg)ToServiceMsg.CREATOR.createFromParcel(paramParcel1);
-        if (paramParcel1.readInt() == 0) {
-          break label156;
-        }
-      }
-      for (paramParcel1 = (FromServiceMsg)FromServiceMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        onResponse((ToServiceMsg)localObject, paramParcel1);
+      default: 
+        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+      case 6: 
+        paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IMsfServiceCallbacker");
+        onReceiveNextPkgPushResp(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.createByteArray());
         paramParcel2.writeNoException();
         return true;
-        localObject = null;
-        break;
-      }
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IMsfServiceCallbacker");
-      if (paramParcel1.readInt() != 0) {}
-      for (localObject = (ToServiceMsg)ToServiceMsg.CREATOR.createFromParcel(paramParcel1);; localObject = null)
-      {
+      case 5: 
+        paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IMsfServiceCallbacker");
         if (paramParcel1.readInt() != 0) {
-          localFromServiceMsg = (FromServiceMsg)FromServiceMsg.CREATOR.createFromParcel(paramParcel1);
+          localObject1 = (FromServiceMsg)FromServiceMsg.CREATOR.createFromParcel(paramParcel1);
         }
-        onFirstPkgResp((ToServiceMsg)localObject, localFromServiceMsg, paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt());
+        onReceiveFirstPkgPushResp((FromServiceMsg)localObject1, paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt());
+        paramParcel2.writeNoException();
+        return true;
+      case 4: 
+        paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IMsfServiceCallbacker");
+        localObject1 = localObject4;
+        if (paramParcel1.readInt() != 0) {
+          localObject1 = (FromServiceMsg)FromServiceMsg.CREATOR.createFromParcel(paramParcel1);
+        }
+        onReceivePushResp((FromServiceMsg)localObject1);
+        paramParcel2.writeNoException();
+        return true;
+      case 3: 
+        paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IMsfServiceCallbacker");
+        onNextPkgResp(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.createByteArray());
+        paramParcel2.writeNoException();
+        return true;
+      case 2: 
+        paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IMsfServiceCallbacker");
+        if (paramParcel1.readInt() != 0) {
+          localObject1 = (ToServiceMsg)ToServiceMsg.CREATOR.createFromParcel(paramParcel1);
+        } else {
+          localObject1 = null;
+        }
+        if (paramParcel1.readInt() != 0) {
+          localObject2 = (FromServiceMsg)FromServiceMsg.CREATOR.createFromParcel(paramParcel1);
+        }
+        onFirstPkgResp((ToServiceMsg)localObject1, (FromServiceMsg)localObject2, paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt());
         paramParcel2.writeNoException();
         return true;
       }
-    case 3: 
       paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IMsfServiceCallbacker");
-      onNextPkgResp(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.createByteArray());
+      if (paramParcel1.readInt() != 0) {
+        localObject1 = (ToServiceMsg)ToServiceMsg.CREATOR.createFromParcel(paramParcel1);
+      } else {
+        localObject1 = null;
+      }
+      localObject2 = localObject3;
+      if (paramParcel1.readInt() != 0) {
+        localObject2 = (FromServiceMsg)FromServiceMsg.CREATOR.createFromParcel(paramParcel1);
+      }
+      onResponse((ToServiceMsg)localObject1, (FromServiceMsg)localObject2);
       paramParcel2.writeNoException();
       return true;
-    case 4: 
-      paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IMsfServiceCallbacker");
-      if (paramParcel1.readInt() != 0) {}
-      for (paramParcel1 = (FromServiceMsg)FromServiceMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        onReceivePushResp(paramParcel1);
-        paramParcel2.writeNoException();
-        return true;
-      }
-    case 5: 
-      label156:
-      paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IMsfServiceCallbacker");
-      if (paramParcel1.readInt() != 0) {}
-      for (localObject = (FromServiceMsg)FromServiceMsg.CREATOR.createFromParcel(paramParcel1);; localObject = null)
-      {
-        onReceiveFirstPkgPushResp((FromServiceMsg)localObject, paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt());
-        paramParcel2.writeNoException();
-        return true;
-      }
     }
-    paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IMsfServiceCallbacker");
-    onReceiveNextPkgPushResp(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.createByteArray());
-    paramParcel2.writeNoException();
+    paramParcel2.writeString("com.tencent.qphone.base.remote.IMsfServiceCallbacker");
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qphone.base.remote.IMsfServiceCallbacker.Stub
  * JD-Core Version:    0.7.0.1
  */

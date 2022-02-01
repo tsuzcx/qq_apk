@@ -37,15 +37,16 @@ class WrappedDrawableApi21
   
   private void findAndCacheIsProjectedDrawableMethod()
   {
-    if (sIsProjectedDrawableMethod == null) {}
-    try
-    {
-      sIsProjectedDrawableMethod = Drawable.class.getDeclaredMethod("isProjected", new Class[0]);
-      return;
-    }
-    catch (Exception localException)
-    {
-      Log.w("WrappedDrawableApi21", "Failed to retrieve Drawable#isProjected() method", localException);
+    if (sIsProjectedDrawableMethod == null) {
+      try
+      {
+        sIsProjectedDrawableMethod = Drawable.class.getDeclaredMethod("isProjected", new Class[0]);
+        return;
+      }
+      catch (Exception localException)
+      {
+        Log.w("WrappedDrawableApi21", "Failed to retrieve Drawable#isProjected() method", localException);
+      }
     }
   }
   
@@ -62,9 +63,10 @@ class WrappedDrawableApi21
   
   protected boolean isCompatTintEnabled()
   {
+    int i = Build.VERSION.SDK_INT;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (Build.VERSION.SDK_INT == 21)
+    if (i == 21)
     {
       Drawable localDrawable = this.mDrawable;
       if ((!(localDrawable instanceof GradientDrawable)) && (!(localDrawable instanceof DrawableContainer)) && (!(localDrawable instanceof InsetDrawable)))
@@ -82,15 +84,19 @@ class WrappedDrawableApi21
   
   public boolean isProjected()
   {
-    if ((this.mDrawable != null) && (sIsProjectedDrawableMethod != null)) {
-      try
-      {
-        boolean bool = ((Boolean)sIsProjectedDrawableMethod.invoke(this.mDrawable, new Object[0])).booleanValue();
-        return bool;
-      }
-      catch (Exception localException)
-      {
-        Log.w("WrappedDrawableApi21", "Error calling Drawable#isProjected() method", localException);
+    if (this.mDrawable != null)
+    {
+      Method localMethod = sIsProjectedDrawableMethod;
+      if (localMethod != null) {
+        try
+        {
+          boolean bool = ((Boolean)localMethod.invoke(this.mDrawable, new Object[0])).booleanValue();
+          return bool;
+        }
+        catch (Exception localException)
+        {
+          Log.w("WrappedDrawableApi21", "Error calling Drawable#isProjected() method", localException);
+        }
       }
     }
     return false;
@@ -148,7 +154,7 @@ class WrappedDrawableApi21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.graphics.drawable.WrappedDrawableApi21
  * JD-Core Version:    0.7.0.1
  */

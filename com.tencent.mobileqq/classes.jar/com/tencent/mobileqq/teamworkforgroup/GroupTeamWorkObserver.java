@@ -21,62 +21,71 @@ public class GroupTeamWorkObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(a, 2, "GroupTeamWorkObserver type=" + paramInt + ", isSuccess=" + paramBoolean);
-    }
-    switch (paramInt)
+    if (QLog.isColorLevel())
     {
+      String str = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("GroupTeamWorkObserver type=");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", isSuccess=");
+      localStringBuilder.append(paramBoolean);
+      QLog.i(str, 2, localStringBuilder.toString());
     }
-    do
+    if (paramInt != 1)
     {
-      do
+      if (paramInt != 2)
       {
-        do
+        if (paramInt != 3)
         {
-          do
+          if (paramInt != 4)
           {
-            do
+            if (paramInt != 7) {
+              return;
+            }
+            if (paramObject != null)
             {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        return;
-                      } while (paramObject == null);
-                      paramObject = (Object[])paramObject;
-                    } while (paramObject.length != 5);
-                    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (List)paramObject[2], ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue());
-                    return;
-                  } while (paramObject == null);
-                  paramObject = (Object[])paramObject;
-                } while (paramObject.length != 3);
-                a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (List)paramObject[2]);
-                return;
-              } while (paramObject == null);
               paramObject = (Object[])paramObject;
-            } while (paramObject.length != 5);
-            a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (List)paramObject[2], ((Integer)paramObject[3]).intValue(), ((Boolean)paramObject[4]).booleanValue());
-            return;
-          } while (paramObject == null);
+              if (paramObject.length == 3) {
+                b(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+              }
+            }
+          }
+          else if (paramObject != null)
+          {
+            paramObject = (Object[])paramObject;
+            if (paramObject.length == 2) {
+              a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+            }
+          }
+        }
+        else if (paramObject != null)
+        {
           paramObject = (Object[])paramObject;
-        } while (paramObject.length != 2);
-        a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-        return;
-      } while (paramObject == null);
+          if (paramObject.length == 3) {
+            a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (List)paramObject[2]);
+          }
+        }
+      }
+      else if (paramObject != null)
+      {
+        paramObject = (Object[])paramObject;
+        if (paramObject.length == 5) {
+          a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (List)paramObject[2], ((Integer)paramObject[3]).intValue(), ((Boolean)paramObject[4]).booleanValue());
+        }
+      }
+    }
+    else if (paramObject != null)
+    {
       paramObject = (Object[])paramObject;
-    } while (paramObject.length != 3);
-    b(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      if (paramObject.length == 5) {
+        a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (List)paramObject[2], ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.nearby.guide;
 
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.ReportController;
 
 class NearbyGuideActivity$11
@@ -9,12 +10,14 @@ class NearbyGuideActivity$11
   
   public void run()
   {
-    ReportController.b(this.this$0.app, "CliOper", "", "", this.a, this.a, 0, 0, "", "", "", "");
+    QQAppInterface localQQAppInterface = this.this$0.app;
+    String str = this.a;
+    ReportController.b(localQQAppInterface, "CliOper", "", "", str, str, 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.guide.NearbyGuideActivity.11
  * JD-Core Version:    0.7.0.1
  */

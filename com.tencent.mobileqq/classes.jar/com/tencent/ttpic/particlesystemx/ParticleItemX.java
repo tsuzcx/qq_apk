@@ -4,7 +4,7 @@ import com.tencent.ttpic.particlesystem2d.Particle;
 
 public class ParticleItemX
 {
-  private static final String TAG = ParticleItemX.class.getSimpleName();
+  private static final String TAG = "ParticleItemX";
   public float emitterX;
   public float emitterY;
   public Particle[] particles;
@@ -12,7 +12,7 @@ public class ParticleItemX
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.particlesystemx.ParticleItemX
  * JD-Core Version:    0.7.0.1
  */

@@ -17,45 +17,53 @@ final class RecentUtil$6
   
   public void run()
   {
-    Message localMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, 1008);
-    String str1 = "0";
+    Message localMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getLastMessage(this.jdField_a_of_type_JavaLangString, 1008);
+    String str2 = "0";
     if (localMessage != null)
     {
-      localObject = localMessage.getExtInfoFromExtStr("gdt_msgClick");
-      if (TextUtils.isEmpty((CharSequence)localObject)) {}
+      str1 = localMessage.getExtInfoFromExtStr("gdt_msgClick");
+      if (TextUtils.isEmpty(str1)) {}
     }
     try
     {
-      localObject = new JSONObject((String)localObject);
-      if (((JSONObject)localObject).has("ad_id")) {
-        str1 = ((JSONObject)localObject).getString("ad_id");
+      localObject = new JSONObject(str1);
+      str1 = str2;
+      if (!((JSONObject)localObject).has("ad_id")) {
+        break label90;
       }
+      str1 = ((JSONObject)localObject).getString("ad_id");
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        String str3;
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.recent", 2, "from_enterchat");
-        }
-        String str2 = "0";
-        continue;
-        localObject = "0X8005C39";
-      }
+      Object localObject;
+      label72:
+      QQAppInterface localQQAppInterface;
+      StringBuilder localStringBuilder;
+      break label72;
     }
-    str3 = localMessage.getExtInfoFromExtStr("pa_msgId");
-    if (this.jdField_a_of_type_Int == 1)
+    String str1 = str2;
+    if (QLog.isColorLevel())
     {
-      localObject = "0X8005C36";
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "" + localMessage.frienduin, (String)localObject, (String)localObject, 0, 1, 0, str3, String.valueOf(NetConnInfoCenter.getServerTime() * 1000L), "", str1);
-      return;
+      QLog.i("Q.recent", 2, "from_enterchat");
+      str1 = str2;
     }
+    label90:
+    localObject = localMessage.getExtInfoFromExtStr("pa_msgId");
+    if (this.jdField_a_of_type_Int == 1) {
+      str2 = "0X8005C36";
+    } else {
+      str2 = "0X8005C39";
+    }
+    localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(localMessage.frienduin);
+    ReportController.b(localQQAppInterface, "P_CliOper", "Pb_account_lifeservice", localStringBuilder.toString(), str2, str2, 0, 1, 0, (String)localObject, String.valueOf(NetConnInfoCenter.getServerTime() * 1000L), "", str1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentUtil.6
  * JD-Core Version:    0.7.0.1
  */

@@ -2,13 +2,12 @@ package com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodu
 
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.litelivesdk.api.business.BusinessConfig;
 import com.tencent.mobileqq.litelivesdk.framework.businessmgr.BusinessManager;
 import com.tencent.mobileqq.litelivesdk.utils.log.LogFactory;
 import com.tencent.mobileqq.litelivesdk.utils.log.LogInterface;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.smtt.sdk.QbSdk;
-import com.tencent.smtt.sdk.WebSettings;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -34,13 +33,18 @@ public class WebViewPool
     LogFactory.a().c("WebViewPool", "-------createNewWebview------");
     WebViewPool.WebviewModel localWebviewModel = new WebViewPool.WebviewModel(this);
     localWebviewModel.jdField_a_of_type_ComTencentBizUiTouchWebView = new TouchWebView(BaseApplicationImpl.getContext());
-    LogFactory.a().c("WebViewPool", "-------createNewWebview------totalStamp = " + (System.currentTimeMillis() - l));
-    if (paramBoolean) {}
-    for (localWebviewModel.jdField_a_of_type_Boolean = false;; localWebviewModel.jdField_a_of_type_Boolean = true)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(localWebviewModel);
-      return localWebviewModel.jdField_a_of_type_ComTencentBizUiTouchWebView;
+    LogInterface localLogInterface = LogFactory.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("-------createNewWebview------totalStamp = ");
+    localStringBuilder.append(System.currentTimeMillis() - l);
+    localLogInterface.c("WebViewPool", localStringBuilder.toString());
+    if (paramBoolean) {
+      localWebviewModel.jdField_a_of_type_Boolean = false;
+    } else {
+      localWebviewModel.jdField_a_of_type_Boolean = true;
     }
+    this.jdField_a_of_type_JavaUtilList.add(localWebviewModel);
+    return localWebviewModel.jdField_a_of_type_ComTencentBizUiTouchWebView;
   }
   
   public TouchWebView a()
@@ -62,7 +66,9 @@ public class WebViewPool
         }
         return a(false);
       }
-      a(((WebViewPool.WebviewModel)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_ComTencentBizUiTouchWebView);
+      if (BusinessManager.a.a().b) {
+        a(((WebViewPool.WebviewModel)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_ComTencentBizUiTouchWebView);
+      }
       return ((WebViewPool.WebviewModel)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_ComTencentBizUiTouchWebView;
     }
     return a(false);
@@ -71,7 +77,7 @@ public class WebViewPool
   public void a()
   {
     LogFactory.a().c("WebViewPool", "-------preload------");
-    QbSdk.preInit(BaseApplicationImpl.getContext(), new WebViewPool.1(this));
+    ThreadManager.executeOnFileThread(new WebViewPool.1(this));
   }
   
   public void a(TouchWebView paramTouchWebView)
@@ -91,7 +97,6 @@ public class WebViewPool
         }
         localWebviewModel.jdField_a_of_type_ComTencentBizUiTouchWebView.stopLoading();
         localWebviewModel.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrlOriginal("about:blank");
-        paramTouchWebView.getSettings().setUserAgentString("");
         paramTouchWebView.resetForReuse();
         paramTouchWebView.onPause();
         localWebviewModel.jdField_a_of_type_Boolean = false;
@@ -123,7 +128,7 @@ public class WebViewPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.webview.WebViewPool
  * JD-Core Version:    0.7.0.1
  */

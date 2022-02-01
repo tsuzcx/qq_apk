@@ -49,7 +49,8 @@ public final class ed<T>
   
   public final void a(fg paramfg, T paramT)
   {
-    if (this.a == null)
+    ea localea = this.a;
+    if (localea == null)
     {
       a().a(paramfg, paramT);
       return;
@@ -59,12 +60,12 @@ public final class ed<T>
       paramfg.e();
       return;
     }
-    ep.a(this.a.a(paramT), paramfg);
+    ep.a(localea.a(paramT), paramfg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.ed
  * JD-Core Version:    0.7.0.1
  */

@@ -18,13 +18,18 @@ class DownloaderProxy$1
     synchronized (DownloaderProxy.access$100(this.this$0))
     {
       paramIBinder = DownloaderProxy.access$100(this.this$0).iterator();
-      if (paramIBinder.hasNext())
+      while (paramIBinder.hasNext())
       {
         Const.SimpleRequest localSimpleRequest = (Const.SimpleRequest)paramIBinder.next();
         this.this$0.download(localSimpleRequest.url, localSimpleRequest.getPaths(), true, localSimpleRequest.listener, localSimpleRequest.mode);
       }
+      DownloaderProxy.access$100(this.this$0).clear();
+      return;
     }
-    DownloaderProxy.access$100(this.this$0).clear();
+    for (;;)
+    {
+      throw paramIBinder;
+    }
   }
   
   public void onServiceDisconnected(ComponentName paramComponentName)
@@ -34,7 +39,7 @@ class DownloaderProxy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.downloader.impl.ipc.DownloaderProxy.1
  * JD-Core Version:    0.7.0.1
  */

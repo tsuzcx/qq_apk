@@ -12,12 +12,18 @@ class AppletsFolderManager$1
 {
   AppletsFolderManager$1(AppletsFolderManager paramAppletsFolderManager) {}
   
-  public void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList)
+  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList)
   {
     if ((paramBoolean) && (paramList != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("AppletsObserver", 2, "onGetAppletsDetail:  isSuccess: " + paramBoolean + ", data.size = " + paramList.size());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onGetAppletsDetail:  isSuccess: ");
+        localStringBuilder.append(paramBoolean);
+        localStringBuilder.append(", data.size = ");
+        localStringBuilder.append(paramList.size());
+        QLog.i("AppletsObserver", 2, localStringBuilder.toString());
       }
       AppletsFolderManager.a(this.a).obtainMessage(2, 0, 0, paramList).sendToTarget();
     }
@@ -25,7 +31,7 @@ class AppletsFolderManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.AppletsFolderManager.1
  * JD-Core Version:    0.7.0.1
  */

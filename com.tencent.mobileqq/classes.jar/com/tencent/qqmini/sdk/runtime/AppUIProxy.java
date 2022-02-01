@@ -22,6 +22,7 @@ import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.core.utils.AppBrandTask;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.model.AppMode;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.manager.MiniLoadManager;
@@ -58,18 +59,20 @@ public class AppUIProxy
   
   public boolean doDispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    if (this.mCurrRuntimeLoader != null) {}
-    for (Object localObject = this.mCurrRuntimeLoader.getRuntime();; localObject = null)
-    {
-      if (localObject != null)
-      {
-        localObject = ((BaseRuntime)localObject).getPage();
-        if (localObject != null) {
-          ((IPage)localObject).doDispatchKeyEvent(paramKeyEvent);
-        }
-      }
-      return false;
+    Object localObject;
+    if (this.mCurrRuntimeLoader != null) {
+      localObject = this.mCurrRuntimeLoader.getRuntime();
+    } else {
+      localObject = null;
     }
+    if (localObject != null)
+    {
+      localObject = ((BaseRuntime)localObject).getPage();
+      if (localObject != null) {
+        ((IPage)localObject).doDispatchKeyEvent(paramKeyEvent);
+      }
+    }
+    return false;
   }
   
   public void enableBreak()
@@ -86,10 +89,11 @@ public class AppUIProxy
   {
     this.hasCompletedLoading = true;
     this.loadCompleteTimeForLoadingAdReport = System.currentTimeMillis();
-    if (this.mLoadingUI == null) {
+    AppUIProxy.LoadingUI localLoadingUI = this.mLoadingUI;
+    if (localLoadingUI == null) {
       return;
     }
-    this.mLoadingUI.setCustomClickListener(null);
+    localLoadingUI.setCustomClickListener(null);
     this.mMainHandler.post(new AppUIProxy.3(this));
     AdFrequencyLimit.setOnStartTime(System.currentTimeMillis());
     MiniLoadingAdManager.getInstance().preloadLoadingAd(this.mActivity, getMiniAppInfo());
@@ -103,74 +107,87 @@ public class AppUIProxy
   
   public void onIntentUpdate(Intent paramIntent)
   {
-    EngineChannel localEngineChannel = null;
     if (paramIntent != null) {}
-    try
+    for (;;)
     {
-      localEngineChannel = (EngineChannel)paramIntent.getParcelableExtra("engineChannel");
-      this.mEngineChannel = localEngineChannel;
-      MiniLoadManager.g().configTask(this.mActivity, null);
-      MiniLoadManager.g().setDownloadEngineChannel(this.mEngineChannel);
-      MiniLoadManager.g().startDownload(null);
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      try
       {
-        QMLog.e("minisdk-start_UIProxy", "", localThrowable);
+        localEngineChannel = (EngineChannel)paramIntent.getParcelableExtra("engineChannel");
+        this.mEngineChannel = localEngineChannel;
+        MiniLoadManager.g().configTask(this.mActivity, null);
+        MiniLoadManager.g().setDownloadEngineChannel(this.mEngineChannel);
+        MiniLoadManager.g().startDownload(null);
       }
+      catch (Throwable localThrowable)
+      {
+        EngineChannel localEngineChannel;
+        continue;
+      }
+      QMLog.e("minisdk-start_UIProxy", "", localEngineChannel);
+      super.onIntentUpdate(paramIntent);
+      return;
+      Object localObject = null;
     }
-    super.onIntentUpdate(paramIntent);
   }
   
   protected void onRuntimeFail(int paramInt, String paramString)
   {
+    Object localObject2 = "";
     if (13 == paramInt)
     {
-      paramString = "";
+      paramString = (String)localObject2;
       try
       {
-        Object localObject2 = WnsConfig.getConfig("qqminiapp", "mini_app_upgrade_url", "https://m.q.qq.com/upgrade/{appid}");
-        String str = "";
-        paramString = (String)localObject2;
-        if (getMiniAppInfo() != null)
+        Object localObject1 = WnsConfig.getConfig("qqminiapp", "mini_app_upgrade_url", "https://m.q.qq.com/upgrade/{appid}");
+        try
         {
-          paramString = (String)localObject2;
-          str = getMiniAppInfo().appId;
-        }
-        Object localObject1 = localObject2;
-        paramString = (String)localObject2;
-        if (((String)localObject2).contains("{appid}"))
-        {
-          localObject1 = localObject2;
-          paramString = (String)localObject2;
-          if (!TextUtils.isEmpty(str))
-          {
-            paramString = (String)localObject2;
-            localObject1 = ((String)localObject2).replace("{appid}", str);
+          if (getMiniAppInfo() != null) {
+            localObject2 = getMiniAppInfo().appId;
           }
+          paramString = (String)localObject1;
+          if (((String)localObject1).contains("{appid}"))
+          {
+            paramString = (String)localObject1;
+            if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+              paramString = ((String)localObject1).replace("{appid}", (CharSequence)localObject2);
+            }
+          }
+          localObject1 = paramString;
+          paramString = (String)localObject1;
+          localObject2 = new StringBuilder();
+          paramString = (String)localObject1;
+          ((StringBuilder)localObject2).append("showUpdateMobileQQDialog jump to upgrate page:");
+          paramString = (String)localObject1;
+          ((StringBuilder)localObject2).append((String)localObject1);
+          paramString = (String)localObject1;
+          QMLog.i("minisdk-start_UIProxy", ((StringBuilder)localObject2).toString());
+          paramString = (String)localObject1;
+          localObject2 = new Intent();
+          paramString = (String)localObject1;
+          ((Intent)localObject2).putExtra("hide_more_button", true);
+          paramString = (String)localObject1;
+          ((Intent)localObject2).putExtra("hide_operation_bar", true);
+          paramString = (String)localObject1;
+          ((Intent)localObject2).putExtra("url", (String)localObject1);
+          paramString = (String)localObject1;
+          ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).startBrowserActivity(this.mActivity, (Intent)localObject2);
+          paramString = (String)localObject1;
+          AppBrandTask.runTaskOnUiThreadDelay(new AppUIProxy.2(this), 1500L);
+          return;
         }
-        paramString = (String)localObject1;
-        QMLog.i("minisdk-start_UIProxy", "showUpdateMobileQQDialog jump to upgrate page:" + (String)localObject1);
-        paramString = (String)localObject1;
-        localObject2 = new Intent();
-        paramString = (String)localObject1;
-        ((Intent)localObject2).putExtra("hide_more_button", true);
-        paramString = (String)localObject1;
-        ((Intent)localObject2).putExtra("hide_operation_bar", true);
-        paramString = (String)localObject1;
-        ((Intent)localObject2).putExtra("url", (String)localObject1);
-        paramString = (String)localObject1;
-        ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).startBrowserActivity(this.mActivity, (Intent)localObject2);
-        paramString = (String)localObject1;
-        AppBrandTask.runTaskOnUiThreadDelay(new AppUIProxy.2(this), 1500L);
-        return;
+        catch (Throwable localThrowable2)
+        {
+          paramString = (String)localObject1;
+          localObject1 = localThrowable2;
+        }
+        localStringBuilder = new StringBuilder();
       }
-      catch (Throwable localThrowable)
-      {
-        QMLog.e("minisdk-start", "jump to upgrate page exception! url=" + paramString, localThrowable);
-        return;
-      }
+      catch (Throwable localThrowable1) {}
+      StringBuilder localStringBuilder;
+      localStringBuilder.append("jump to upgrate page exception! url=");
+      localStringBuilder.append(paramString);
+      QMLog.e("minisdk-start", localStringBuilder.toString(), localThrowable1);
+      return;
     }
     super.onRuntimeFail(paramInt, paramString);
   }
@@ -188,50 +205,40 @@ public class AppUIProxy
   
   protected void reloadMiniAppInfoIfNeed(BaseRuntimeLoader paramBaseRuntimeLoader, MiniAppInfo paramMiniAppInfo)
   {
-    Object localObject;
     if (paramBaseRuntimeLoader.isLoadSucceed())
     {
-      localObject = paramBaseRuntimeLoader.getMiniAppInfo();
-      if ((paramMiniAppInfo.isShortcutFakeApp()) || (paramMiniAppInfo.launchParam.fromBackToMiniApp()) || (isLaunchFromAppIdWithoutEntryPath(paramMiniAppInfo)))
+      Object localObject = paramBaseRuntimeLoader.getMiniAppInfo();
+      if ((!paramMiniAppInfo.isShortcutFakeApp()) && (!paramMiniAppInfo.launchParam.fromBackToMiniApp()) && (!isLaunchFromAppIdWithoutEntryPath(paramMiniAppInfo)))
       {
-        ((MiniAppInfo)localObject).launchParam.clone(paramMiniAppInfo.launchParam);
-        paramBaseRuntimeLoader.onAttachActivity(this.mActivity, null, this.mRootLayout);
-        hideLoading();
-      }
-    }
-    do
-    {
-      return;
-      if (paramMiniAppInfo.isFakeAppInfo())
-      {
-        paramBaseRuntimeLoader.setRuntimeLoadListener(createRuntimeLoaderListener());
-        paramBaseRuntimeLoader.updateMiniAppInfoFromReload(paramMiniAppInfo);
-        return;
-      }
-      String str2 = paramMiniAppInfo.launchParam.entryPath;
-      String str1 = ((MiniAppInfo)localObject).launchParam.entryPath;
-      localObject = str1;
-      if (paramBaseRuntimeLoader.getRuntime().getPage() != null)
-      {
+        if (paramMiniAppInfo.isFakeAppInfo())
+        {
+          paramBaseRuntimeLoader.setRuntimeLoadListener(createRuntimeLoaderListener());
+          paramBaseRuntimeLoader.updateMiniAppInfoFromReload(paramMiniAppInfo);
+          return;
+        }
+        String str2 = paramMiniAppInfo.launchParam.entryPath;
+        String str1 = ((MiniAppInfo)localObject).launchParam.entryPath;
         localObject = str1;
-        if (paramBaseRuntimeLoader.getRuntime().getPage().getPageInfo(2) != null) {
-          localObject = paramBaseRuntimeLoader.getRuntime().getPage().getPageInfo(2).pageUrl;
+        if (paramBaseRuntimeLoader.getRuntime().getPage() != null)
+        {
+          localObject = str1;
+          if (paramBaseRuntimeLoader.getRuntime().getPage().getPageInfo(2) != null) {
+            localObject = paramBaseRuntimeLoader.getRuntime().getPage().getPageInfo(2).pageUrl;
+          }
         }
-      }
-      if ((!paramMiniAppInfo.isAppStoreMiniApp()) && (!TextUtils.isEmpty(str2)))
-      {
-        QMLog.i("minisdk-start_UIProxy", "not appstore, entryPath need reload");
-        paramBaseRuntimeLoader.updateMiniAppInfoFromReload(paramMiniAppInfo);
-        if (!TextUtils.isEmpty(paramMiniAppInfo.appId)) {
-          MiniAppStartState.setSwitchPage(paramMiniAppInfo.appId, true);
+        if ((!paramMiniAppInfo.appMode.reloadWithFirstPageChange) && (!TextUtils.isEmpty(str2)))
+        {
+          QMLog.i("minisdk-start_UIProxy", "not appstore, entryPath need reload");
+          paramBaseRuntimeLoader.updateMiniAppInfoFromReload(paramMiniAppInfo);
+          if (!TextUtils.isEmpty(paramMiniAppInfo.appId)) {
+            MiniAppStartState.setSwitchPage(paramMiniAppInfo.appId, true);
+          }
         }
-      }
-      for (;;)
-      {
-        paramBaseRuntimeLoader.onAttachActivity(this.mActivity, null, this.mRootLayout);
-        hideLoading();
-        return;
-        if ((TextUtils.isEmpty((CharSequence)localObject)) || ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty((CharSequence)localObject)) && (!str2.equals(localObject))))
+        else if ((!TextUtils.isEmpty((CharSequence)localObject)) && ((TextUtils.isEmpty(str2)) || (TextUtils.isEmpty((CharSequence)localObject)) || (str2.equals(localObject))))
+        {
+          paramBaseRuntimeLoader.updateMiniAppInfo(paramMiniAppInfo);
+        }
+        else
         {
           QMLog.i("minisdk-start_UIProxy", "entryPath need reload");
           paramBaseRuntimeLoader.updateMiniAppInfoFromReload(paramMiniAppInfo);
@@ -239,24 +246,31 @@ public class AppUIProxy
             MiniAppStartState.setSwitchPage(paramMiniAppInfo.appId, true);
           }
         }
-        else
-        {
-          paramBaseRuntimeLoader.updateMiniAppInfo(paramMiniAppInfo);
-        }
+        paramBaseRuntimeLoader.onAttachActivity(this.mActivity, null, this.mRootLayout);
+        hideLoading();
+        return;
       }
-      showLoading(paramMiniAppInfo);
-      paramBaseRuntimeLoader.setRuntimeLoadListener(createRuntimeLoaderListener());
-    } while (paramBaseRuntimeLoader.isRunning());
-    paramBaseRuntimeLoader.setMiniAppInfo(paramMiniAppInfo);
-    paramBaseRuntimeLoader.start();
+      ((MiniAppInfo)localObject).launchParam.clone(paramMiniAppInfo.launchParam);
+      paramBaseRuntimeLoader.onAttachActivity(this.mActivity, null, this.mRootLayout);
+      hideLoading();
+      return;
+    }
+    showLoading(paramMiniAppInfo);
+    paramBaseRuntimeLoader.setRuntimeLoadListener(createRuntimeLoaderListener());
+    if (!paramBaseRuntimeLoader.isRunning())
+    {
+      paramBaseRuntimeLoader.setMiniAppInfo(paramMiniAppInfo);
+      paramBaseRuntimeLoader.start();
+    }
   }
   
   protected void showLoading(MiniAppInfo paramMiniAppInfo)
   {
-    if (this.mLoadingUI == null) {
+    AppUIProxy.LoadingUI localLoadingUI = this.mLoadingUI;
+    if (localLoadingUI == null) {
       return;
     }
-    this.mLoadingUI.initData(paramMiniAppInfo);
+    localLoadingUI.initData(paramMiniAppInfo);
     this.mLoadingUI.setCustomClickListener(this.mLoadingClickListener);
     if (this.mLoadingUI.getVisibility() != 0) {
       this.mLoadingUI.setVisibility(0);
@@ -283,7 +297,7 @@ public class AppUIProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.AppUIProxy
  * JD-Core Version:    0.7.0.1
  */

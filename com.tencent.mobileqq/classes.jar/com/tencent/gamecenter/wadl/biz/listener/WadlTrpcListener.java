@@ -6,13 +6,13 @@ import java.util.HashSet;
 
 public abstract interface WadlTrpcListener
 {
-  public abstract HashSet<String> a();
+  public abstract HashSet<String> getFilterCmds();
   
-  public abstract void a(Intent paramIntent, String paramString, long paramLong, TrpcProxy.TrpcInovkeRsp paramTrpcInovkeRsp);
+  public abstract void onTrpcRsp(Intent paramIntent, String paramString, long paramLong, TrpcProxy.TrpcInovkeRsp paramTrpcInovkeRsp);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.biz.listener.WadlTrpcListener
  * JD-Core Version:    0.7.0.1
  */

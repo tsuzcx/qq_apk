@@ -32,32 +32,27 @@ public class KeyboardDetectorRelativeLayout
     this.jdField_a_of_type_ComTencentOpenWidgetIKeyboardChanged = paramIKeyboardChanged;
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     int i = View.MeasureSpec.getSize(paramInt2);
-    Activity localActivity = (Activity)super.getContext();
-    localActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
+    Object localObject = (Activity)super.getContext();
+    ((Activity)localObject).getWindow().getDecorView().getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
     int j = this.jdField_a_of_type_AndroidGraphicsRect.top;
-    int k = localActivity.getWindowManager().getDefaultDisplay().getHeight();
-    if ((this.jdField_a_of_type_ComTencentOpenWidgetIKeyboardChanged != null) && (i != 0))
-    {
-      if (k - j - i <= 100) {
-        break label112;
+    int k = ((Activity)localObject).getWindowManager().getDefaultDisplay().getHeight();
+    localObject = this.jdField_a_of_type_ComTencentOpenWidgetIKeyboardChanged;
+    if ((localObject != null) && (i != 0)) {
+      if (k - j - i > 100) {
+        ((IKeyboardChanged)localObject).a(Math.abs(this.jdField_a_of_type_AndroidGraphicsRect.height()) - getPaddingBottom() - getPaddingTop());
+      } else {
+        ((IKeyboardChanged)localObject).b();
       }
-      this.jdField_a_of_type_ComTencentOpenWidgetIKeyboardChanged.a(Math.abs(this.jdField_a_of_type_AndroidGraphicsRect.height()) - getPaddingBottom() - getPaddingTop());
     }
-    for (;;)
-    {
-      super.onMeasure(paramInt1, paramInt2);
-      return;
-      label112:
-      this.jdField_a_of_type_ComTencentOpenWidgetIKeyboardChanged.b();
-    }
+    super.onMeasure(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.widget.KeyboardDetectorRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

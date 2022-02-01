@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.troop.api.ITroopHandlerNameApi;
+import com.tencent.mobileqq.troop.troopfee.api.ITroopFeeHandler;
 
 class TroopMemberListActivity$25
   implements Runnable
@@ -11,12 +12,12 @@ class TroopMemberListActivity$25
   
   public void run()
   {
-    ((TroopHandler)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a(this.this$0.b, this.this$0.i, this.this$0.e);
+    ((ITroopFeeHandler)this.this$0.app.getBusinessHandler(((ITroopHandlerNameApi)QRoute.api(ITroopHandlerNameApi.class)).getTroopFeeHandlerName())).a(this.this$0.mTroopUin, this.this$0.mTroopFeeProjectId, this.this$0.mTroopFeeEntranceType);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.25
  * JD-Core Version:    0.7.0.1
  */

@@ -19,65 +19,82 @@ public class InviteUIChecker
   
   public long a(VideoAppInterface paramVideoAppInterface, Intent paramIntent, boolean paramBoolean)
   {
-    long l1 = 0L;
-    if ((paramIntent != null) && (paramIntent.getComponent() != null)) {}
-    for (String str1 = paramIntent.getComponent().getClassName();; str1 = null)
+    String str;
+    if ((paramIntent != null) && (paramIntent.getComponent() != null)) {
+      str = paramIntent.getComponent().getClassName();
+    } else {
+      str = null;
+    }
+    Object localObject;
+    if ((paramIntent != null) && (paramVideoAppInterface != null) && (!TextUtils.isEmpty(str)))
     {
-      long l2;
-      if ((paramIntent == null) || (paramVideoAppInterface == null) || (TextUtils.isEmpty(str1)))
+      localObject = paramIntent.getStringExtra("session_id");
+      if (TextUtils.isEmpty((CharSequence)localObject))
       {
-        l2 = l1;
         if (QLog.isColorLevel())
         {
-          QLog.d("InviteUIChecker", 2, "addInviteUITimeoutChecker className[" + str1 + "], app[" + paramVideoAppInterface + "], intent[" + paramIntent + "]");
-          l2 = l1;
+          paramVideoAppInterface = new StringBuilder();
+          paramVideoAppInterface.append("addInviteUITimeoutChecker session[");
+          paramVideoAppInterface.append((String)localObject);
+          paramVideoAppInterface.append("]");
+          QLog.d("InviteUIChecker", 2, paramVideoAppInterface.toString());
         }
+        return 0L;
       }
-      String str2;
-      do
-      {
-        return l2;
-        str2 = paramIntent.getStringExtra("session_id");
-        if (!TextUtils.isEmpty(str2)) {
-          break;
-        }
-        l2 = l1;
-      } while (!QLog.isColorLevel());
-      QLog.d("InviteUIChecker", 2, "addInviteUITimeoutChecker session[" + str2 + "]");
-      return 0L;
-      a(str1);
-      b(str2);
-      l1 = 5000L;
+      a(str);
+      b((String)localObject);
+      long l = 5000L;
       if (!paramBoolean) {
-        l1 = 200L;
+        l = 200L;
+      } else if (AVUtil.b()) {
+        l = 1500L;
       }
-      for (;;)
+      paramVideoAppInterface = new InviteUIChecker.CheckTask(str, paramIntent, paramVideoAppInterface, null);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject, paramVideoAppInterface);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramVideoAppInterface, l);
+      if (QLog.isColorLevel())
       {
-        paramVideoAppInterface = new InviteUIChecker.CheckTask(str1, paramIntent, paramVideoAppInterface, null);
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str2, paramVideoAppInterface);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramVideoAppInterface, l1);
-        l2 = l1;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("InviteUIChecker", 2, "addInviteUITimeoutChecker session[" + str2 + "], task[" + paramVideoAppInterface + "], timeout[" + l1 + "]");
-        return l1;
-        if (AVUtil.b()) {
-          l1 = 1500L;
-        }
+        paramIntent = new StringBuilder();
+        paramIntent.append("addInviteUITimeoutChecker session[");
+        paramIntent.append((String)localObject);
+        paramIntent.append("], task[");
+        paramIntent.append(paramVideoAppInterface);
+        paramIntent.append("], timeout[");
+        paramIntent.append(l);
+        paramIntent.append("]");
+        QLog.i("InviteUIChecker", 2, paramIntent.toString());
       }
+      return l;
     }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("addInviteUITimeoutChecker className[");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("], app[");
+      ((StringBuilder)localObject).append(paramVideoAppInterface);
+      ((StringBuilder)localObject).append("], intent[");
+      ((StringBuilder)localObject).append(paramIntent);
+      ((StringBuilder)localObject).append("]");
+      QLog.d("InviteUIChecker", 2, ((StringBuilder)localObject).toString());
+    }
+    return 0L;
   }
   
   public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("InviteUIChecker", 2, "removeCheckTaskByClass class[" + paramString + "]");
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
-    while (localIterator.hasNext())
+    if (QLog.isColorLevel())
     {
-      String str = (String)localIterator.next();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("removeCheckTaskByClass class[");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("]");
+      QLog.d("InviteUIChecker", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      String str = (String)((Iterator)localObject).next();
       InviteUIChecker.CheckTask localCheckTask = (InviteUIChecker.CheckTask)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
       if ((localCheckTask != null) && (InviteUIChecker.CheckTask.a(localCheckTask).equals(paramString))) {
         b(str);
@@ -87,25 +104,37 @@ public class InviteUIChecker
   
   public void b(String paramString)
   {
-    Object localObject = null;
+    Object localObject2;
+    Object localObject1;
     if (!TextUtils.isEmpty(paramString))
     {
-      InviteUIChecker.CheckTask localCheckTask = (InviteUIChecker.CheckTask)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-      localObject = localCheckTask;
-      if (localCheckTask != null)
+      localObject2 = (InviteUIChecker.CheckTask)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+      localObject1 = localObject2;
+      if (localObject2 != null)
       {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(localCheckTask);
-        localObject = localCheckTask;
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks((Runnable)localObject2);
+        localObject1 = localObject2;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("InviteUIChecker", 2, "removeCheckTaskBySession session[" + paramString + "], task[" + localObject + "]");
+    else
+    {
+      localObject1 = null;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("removeCheckTaskBySession session[");
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append("], task[");
+      ((StringBuilder)localObject2).append(localObject1);
+      ((StringBuilder)localObject2).append("]");
+      QLog.d("InviteUIChecker", 2, ((StringBuilder)localObject2).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.compat.InviteUIChecker
  * JD-Core Version:    0.7.0.1
  */

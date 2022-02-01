@@ -64,35 +64,34 @@ public class SavingAnimView
   
   private void a(int paramInt)
   {
-    if (paramInt == 0) {
-      if (this.jdField_a_of_type_Int == 3) {}
-    }
-    do
+    if (paramInt == 0)
     {
-      do
-      {
-        do
-        {
-          return;
-          this.jdField_a_of_type_Int = paramInt;
-          return;
-          if (paramInt != 1) {
-            break;
-          }
-        } while (this.jdField_a_of_type_Int != 0);
-        this.jdField_a_of_type_Int = paramInt;
-        g();
+      if (this.jdField_a_of_type_Int != 3) {
         return;
-        if (paramInt != 2) {
-          break;
-        }
-      } while (this.jdField_a_of_type_Int != 1);
+      }
+      this.jdField_a_of_type_Int = paramInt;
+      return;
+    }
+    if (paramInt == 1)
+    {
+      if (this.jdField_a_of_type_Int != 0) {
+        return;
+      }
+      this.jdField_a_of_type_Int = paramInt;
+      g();
+      return;
+    }
+    if (paramInt == 2)
+    {
+      if (this.jdField_a_of_type_Int != 1) {
+        return;
+      }
       this.jdField_a_of_type_Int = paramInt;
       h();
       return;
-      if (paramInt != 3) {
-        break;
-      }
+    }
+    if (paramInt == 3)
+    {
       if (this.jdField_a_of_type_Int == 1)
       {
         this.jdField_a_of_type_AndroidAnimationValueAnimator.end();
@@ -100,10 +99,13 @@ public class SavingAnimView
         i();
         this.jdField_a_of_type_Int = paramInt;
       }
-    } while (this.jdField_a_of_type_Int != 2);
-    this.jdField_a_of_type_Int = paramInt;
-    i();
-    return;
+      if (this.jdField_a_of_type_Int != 2) {
+        return;
+      }
+      this.jdField_a_of_type_Int = paramInt;
+      i();
+      return;
+    }
     throw new IllegalStateException("[setState] unknown state");
   }
   
@@ -120,18 +122,18 @@ public class SavingAnimView
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    int m = paramContext.getResources().getColor(2131167201);
-    int k = paramContext.getResources().getDimensionPixelOffset(2131299309);
-    int j = k;
-    int i = m;
+    int m = paramContext.getResources().getColor(2131167226);
+    int k = paramContext.getResources().getDimensionPixelOffset(2131299312);
+    int j = m;
+    int i = k;
     if (paramAttributeSet != null)
     {
-      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.aA);
-      i = paramContext.getColor(R.styleable.jdField_b_of_type_Int, m);
-      j = paramContext.getDimensionPixelOffset(R.styleable.jdField_a_of_type_Int, k);
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.br);
+      j = paramContext.getColor(R.styleable.jdField_b_of_type_Int, m);
+      i = paramContext.getDimensionPixelOffset(R.styleable.jdField_a_of_type_Int, k);
       paramContext.recycle();
     }
-    a(i, j);
+    a(j, i);
     c();
     d();
     e();
@@ -143,13 +145,10 @@ public class SavingAnimView
     this.jdField_d_of_type_Int = paramInt;
     if (paramInt == 1) {
       this.jdField_d_of_type_AndroidAnimationValueAnimator.setDuration(300L);
-    }
-    for (;;)
-    {
-      this.jdField_d_of_type_AndroidAnimationValueAnimator.start();
-      return;
+    } else {
       this.jdField_d_of_type_AndroidAnimationValueAnimator.setDuration(500L);
     }
+    this.jdField_d_of_type_AndroidAnimationValueAnimator.start();
   }
   
   private void c()
@@ -217,7 +216,7 @@ public class SavingAnimView
     a(3);
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.jdField_b_of_type_AndroidAnimationValueAnimator.removeAllListeners();
@@ -230,7 +229,7 @@ public class SavingAnimView
     this.jdField_c_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     float f1 = this.jdField_a_of_type_AndroidGraphicsPathMeasure.getLength();
@@ -242,34 +241,35 @@ public class SavingAnimView
       this.jdField_a_of_type_AndroidGraphicsPathMeasure.getSegment(f2 * f1, f1, this.jdField_a_of_type_AndroidGraphicsPath, true);
       this.jdField_a_of_type_AndroidGraphicsPathMeasure.getSegment(0.0F, f3 * f1, this.jdField_a_of_type_AndroidGraphicsPath, true);
     }
-    for (;;)
+    else
     {
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_b_of_type_AndroidGraphicsPath.reset();
-      f1 = this.jdField_b_of_type_AndroidGraphicsPathMeasure.getLength();
-      f2 = this.jdField_c_of_type_Float;
-      this.jdField_b_of_type_AndroidGraphicsPathMeasure.getSegment(0.0F, f1 * f2, this.jdField_b_of_type_AndroidGraphicsPath, true);
-      paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
-      this.jdField_a_of_type_AndroidGraphicsPathMeasure.getSegment(f2 * f1, f1 * f3, this.jdField_a_of_type_AndroidGraphicsPath, true);
+      this.jdField_a_of_type_AndroidGraphicsPathMeasure.getSegment(f2 * f1, f3 * f1, this.jdField_a_of_type_AndroidGraphicsPath, true);
     }
+    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.jdField_b_of_type_AndroidGraphicsPath.reset();
+    f1 = this.jdField_b_of_type_AndroidGraphicsPathMeasure.getLength();
+    f2 = this.jdField_c_of_type_Float;
+    this.jdField_b_of_type_AndroidGraphicsPathMeasure.getSegment(0.0F, f1 * f2, this.jdField_b_of_type_AndroidGraphicsPath, true);
+    paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_b_of_type_Int = (paramInt1 / 2);
     this.jdField_c_of_type_Int = (paramInt2 / 2);
-    paramInt1 = Math.min(paramInt1, paramInt2) / 2 - this.jdField_e_of_type_Int / 2;
+    paramInt1 = Math.min(paramInt1, paramInt2) / 2;
+    paramInt2 = this.jdField_e_of_type_Int / 2;
     Path localPath = new Path();
-    localPath.moveTo(paramInt1, paramInt1);
-    localPath.addCircle(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, paramInt1, Path.Direction.CW);
+    float f = paramInt1 - paramInt2;
+    localPath.moveTo(f, f);
+    localPath.addCircle(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, f, Path.Direction.CW);
     this.jdField_a_of_type_AndroidGraphicsPathMeasure = new PathMeasure(localPath, true);
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
     localPath = new Path();
-    localPath.moveTo(this.jdField_b_of_type_Int - paramInt1 * 0.5F, this.jdField_c_of_type_Int);
-    localPath.lineTo(this.jdField_b_of_type_Int - paramInt1 * 0.1F, this.jdField_c_of_type_Int + paramInt1 * 0.4F);
-    localPath.lineTo(this.jdField_b_of_type_Int + paramInt1 * 0.6F, this.jdField_c_of_type_Int - paramInt1 * 0.3F);
+    localPath.moveTo(this.jdField_b_of_type_Int - 0.5F * f, this.jdField_c_of_type_Int);
+    localPath.lineTo(this.jdField_b_of_type_Int - 0.1F * f, this.jdField_c_of_type_Int + 0.4F * f);
+    localPath.lineTo(this.jdField_b_of_type_Int + 0.6F * f, this.jdField_c_of_type_Int - f * 0.3F);
     this.jdField_b_of_type_AndroidGraphicsPathMeasure = new PathMeasure(localPath, false);
     this.jdField_b_of_type_AndroidGraphicsPath = new Path();
   }
@@ -281,7 +281,7 @@ public class SavingAnimView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.SavingAnimView
  * JD-Core Version:    0.7.0.1
  */

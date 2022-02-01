@@ -30,14 +30,14 @@ public class BragActivity
   
   protected void a()
   {
-    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131363866));
-    this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout = ((KeyboardDetectorRelativeLayout)super.findViewById(2131377198));
+    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131363794));
+    this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout = ((KeyboardDetectorRelativeLayout)super.findViewById(2131376660));
     this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout.a(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363865));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131366435));
-    this.b = ((TextView)super.findViewById(2131365802));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365796));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131380236));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363793));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131366316));
+    this.b = ((TextView)super.findViewById(2131365639));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365633));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379553));
     this.jdField_a_of_type_ArrayOfAndroidTextInputFilter = new InputFilter[] { new LengthInputFilter(this.jdField_a_of_type_AndroidWidgetEditText, 100) };
     this.jdField_a_of_type_AndroidWidgetEditText.setFilters(this.jdField_a_of_type_ArrayOfAndroidTextInputFilter);
     this.jdField_a_of_type_AndroidWidgetEditText.setText(this.i);
@@ -52,43 +52,48 @@ public class BragActivity
         this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
         return;
       }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840321);
+      ImageLoader.a().a(this.j, new BragActivity.1(this));
+      return;
     }
     catch (Exception localException)
     {
-      LogUtility.c("BragActivity", "getNickName error. " + localException.getMessage(), localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getNickName error. ");
+      localStringBuilder.append(localException.getMessage());
+      LogUtility.c("BragActivity", localStringBuilder.toString(), localException);
       c();
-      return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840452);
-    ImageLoader.a().a(this.j, new BragActivity.1(this));
   }
   
   public void a(int paramInt)
   {
     paramInt = DisplayUtil.b(this, paramInt) - 10 - 10;
-    if ((this.jdField_a_of_type_AndroidWidgetScrollView != null) && (paramInt < 255))
+    ScrollView localScrollView = this.jdField_a_of_type_AndroidWidgetScrollView;
+    if ((localScrollView != null) && (paramInt < 255))
     {
       paramInt = paramInt - 20 - 145;
-      if ((paramInt <= 0) || (paramInt >= 90)) {
-        break label79;
+      if ((paramInt > 0) && (paramInt < 90))
+      {
+        localScrollView.setVisibility(0);
+        this.jdField_a_of_type_AndroidWidgetScrollView.getLayoutParams().height = DisplayUtil.a(this, paramInt);
+        this.jdField_a_of_type_AndroidWidgetScrollView.setVerticalFadingEdgeEnabled(true);
+        return;
       }
-      this.jdField_a_of_type_AndroidWidgetScrollView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetScrollView.getLayoutParams().height = DisplayUtil.a(this, paramInt);
-      this.jdField_a_of_type_AndroidWidgetScrollView.setVerticalFadingEdgeEnabled(true);
+      if (paramInt <= 0)
+      {
+        this.jdField_a_of_type_AndroidWidgetScrollView.getLayoutParams().height = 0;
+        this.jdField_a_of_type_AndroidWidgetScrollView.setVisibility(8);
+      }
     }
-    label79:
-    while (paramInt > 0) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetScrollView.getLayoutParams().height = 0;
-    this.jdField_a_of_type_AndroidWidgetScrollView.setVisibility(8);
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    if (localImageView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = DisplayUtil.a(this, 90.0F);
+      localImageView.getLayoutParams().height = DisplayUtil.a(this, 90.0F);
       this.jdField_a_of_type_AndroidWidgetImageView.setVerticalFadingEdgeEnabled(false);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     }
@@ -110,11 +115,11 @@ public class BragActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     super.getWindow().requestFeature(1);
     super.onCreate(paramBundle);
-    super.setContentView(2131559791);
+    super.setContentView(2131559668);
     super.a();
     a();
     StaticAnalyz.a("100", "ANDROIDQQ.BRAG.FS", this.jdField_c_of_type_JavaLangString, true);
@@ -122,7 +127,7 @@ public class BragActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.BragActivity
  * JD-Core Version:    0.7.0.1
  */

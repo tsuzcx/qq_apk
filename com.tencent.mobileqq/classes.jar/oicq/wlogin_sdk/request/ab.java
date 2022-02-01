@@ -31,181 +31,199 @@ public class ab
   {
     for (;;)
     {
-      boolean bool;
       try
       {
-        int i = t.x;
-        int k = 0;
-        int j = 0;
-        Object localObject = paramTransReqContext._body;
+        i = t.x;
+        i = 0;
+        j = 0;
+        localObject2 = paramTransReqContext._body;
         long l1 = System.currentTimeMillis() / 1000L;
         long l2 = t.af;
-        if (localObject == null)
-        {
-          localObject = new byte[0];
-          byte[] arrayOfByte = new byte[localObject.length + 4];
-          util.int64_to_buf32(arrayOfByte, 0, l2 + l1);
-          System.arraycopy(localObject, 0, arrayOfByte, 4, localObject.length);
-          localObject = arrayOfByte;
-          if (paramArrayOfByte1 != null) {
-            localObject = cryptor.encrypt(arrayOfByte, 0, arrayOfByte.length, paramArrayOfByte2);
-          }
-          i = j;
-          if (localObject != null)
-          {
-            i = j;
-            if (localObject.length > 0)
-            {
-              if ((oicq_request.EncryptionMethod.EM_ST != paramTransReqContext.requestEm) || ((paramTransReqContext.wtSessionTicketKey != null) && (paramTransReqContext.wtSessionTicketKey.length != 0) && (paramTransReqContext.wtSessionTicket != null) && (paramTransReqContext.wtSessionTicket.length != 0))) {
-                break label355;
-              }
-              paramTransReqContext.requestEm = oicq_request.EncryptionMethod.EM_ECDH;
-              t.at.attr_api(2413503);
-              util.LOGI("using wt st encrypt body but no st key", "" + paramLong1);
-              break label355;
-              a(paramLong1, a((byte[])localObject, bool, paramArrayOfByte1, paramLong2, paramLong3, paramTransReqContext), paramTransReqContext.requestEm);
-              j = a(String.valueOf(paramLong1), false, paramWUserSigInfo);
-              if (j != 0)
-              {
-                util.LOGI("request_transport rsp: ret=" + j);
-                return j;
-                bool = false;
-                continue;
-              }
-              i = a(paramTransReqContext);
-              if ((i == 0) && (paramArrayOfByte1 != null))
-              {
-                localObject = paramTransReqContext.get_body();
-                paramTransReqContext.set_body(cryptor.decrypt((byte[])localObject, 0, localObject.length, paramArrayOfByte2));
-              }
-              j = i;
-              if (i != 180) {
-                continue;
-              }
-            }
-          }
-          j = i;
-          if (k >= 1) {
-            continue;
-          }
-          k += 1;
-          j = i;
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = new byte[0];
         }
-        else
-        {
+        localObject2 = new byte[localObject1.length + 4];
+        util.int64_to_buf32((byte[])localObject2, 0, l1 + l2);
+        System.arraycopy(localObject1, 0, localObject2, 4, localObject1.length);
+        if (paramArrayOfByte1 == null) {
           continue;
         }
+        localObject1 = cryptor.encrypt((byte[])localObject2, 0, localObject2.length, paramArrayOfByte2);
       }
-      finally {}
-      label355:
-      if (paramArrayOfByte1 != null) {
-        bool = true;
+      finally
+      {
+        int j;
+        Object localObject2;
+        int k;
+        continue;
+        throw paramTransReqContext;
+        continue;
+        Object localObject1 = localObject2;
+        continue;
+        if (paramArrayOfByte1 == null) {
+          continue;
+        }
+        boolean bool = true;
+        continue;
+        bool = false;
+        continue;
+        int i = k;
+        if (k == 180) {
+          continue;
+        }
+        i = k;
+        continue;
+        if (j < 1) {
+          continue;
+        }
+        continue;
       }
+      if ((localObject1 == null) || (localObject1.length <= 0)) {
+        continue;
+      }
+      if ((oicq_request.EncryptionMethod.EM_ST != paramTransReqContext.requestEm) || ((paramTransReqContext.wtSessionTicketKey != null) && (paramTransReqContext.wtSessionTicketKey.length != 0) && (paramTransReqContext.wtSessionTicket != null) && (paramTransReqContext.wtSessionTicket.length != 0))) {
+        continue;
+      }
+      paramTransReqContext.requestEm = oicq_request.EncryptionMethod.EM_ECDH;
+      t.at.attr_api(2413503);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("");
+      ((StringBuilder)localObject2).append(paramLong1);
+      util.LOGI("using wt st encrypt body but no st key", ((StringBuilder)localObject2).toString());
+      continue;
+      a(paramLong1, a((byte[])localObject1, bool, paramArrayOfByte1, paramLong2, paramLong3, paramTransReqContext), paramTransReqContext.requestEm);
+      i = a(String.valueOf(paramLong1), false, paramWUserSigInfo);
+      if (i == 0)
+      {
+        k = a(paramTransReqContext);
+        if ((k != 0) || (paramArrayOfByte1 == null)) {
+          continue;
+        }
+        localObject1 = paramTransReqContext.get_body();
+        paramTransReqContext.set_body(cryptor.decrypt((byte[])localObject1, 0, localObject1.length, paramArrayOfByte2));
+        continue;
+      }
+      paramTransReqContext = new StringBuilder();
+      paramTransReqContext.append("request_transport rsp: ret=");
+      paramTransReqContext.append(i);
+      util.LOGI(paramTransReqContext.toString());
+      return i;
+      j += 1;
     }
   }
   
   public int a(long paramLong1, TransReqContext paramTransReqContext, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, long paramLong2, long paramLong3, WUserSigInfo paramWUserSigInfo)
   {
+    label408:
     for (;;)
     {
-      long l;
-      byte[] arrayOfByte1;
-      byte[] arrayOfByte2;
       try
       {
-        i = t.x;
-        l = paramTransReqContext._body.length;
-        j = this.G;
+        int i = t.x;
+        long l1 = paramTransReqContext._body.length;
+        int j = this.G;
         this.G = (j + 1);
-        arrayOfByte1 = a(l, j, String.valueOf(paramLong1).getBytes(), paramLong2, paramLong2, paramArrayOfByte3, new String("wtlogin_conn_trans").getBytes(), new byte[8], 0, 0L, t.B);
-        arrayOfByte2 = paramTransReqContext._body;
-        l = System.currentTimeMillis() / 1000L;
-        l = t.af + l;
-        if (arrayOfByte2 == null)
+        long l2 = j;
+        byte[] arrayOfByte1 = String.valueOf(paramLong1).getBytes();
+        byte[] arrayOfByte2 = new String("wtlogin_conn_trans").getBytes();
+        byte[] arrayOfByte3 = new byte[8];
+        byte[] arrayOfByte4 = t.B;
+        try
         {
-          paramArrayOfByte3 = new byte[0];
-          if ((paramArrayOfByte3 == null) || (paramArrayOfByte3.length <= 0)) {
-            break label369;
+          arrayOfByte1 = a(l1, l2, arrayOfByte1, paramLong2, paramLong2, paramArrayOfByte3, arrayOfByte2, arrayOfByte3, 0, 0L, arrayOfByte4);
+          arrayOfByte2 = paramTransReqContext._body;
+          l1 = System.currentTimeMillis() / 1000L + t.af;
+          if (arrayOfByte2 == null)
+          {
+            paramArrayOfByte3 = new byte[0];
+            break label408;
           }
-          paramArrayOfByte3 = a(paramArrayOfByte3, paramArrayOfByte1, paramLong2, paramLong3, 1);
-          a(this.i, this.t, this.j, paramLong1, this.m, this.n, i, this.p, paramArrayOfByte3);
-          i = a(String.valueOf(paramLong1), true, paramWUserSigInfo);
-          if (i == 0) {
-            break label316;
+          if (paramArrayOfByte1 == null)
+          {
+            paramArrayOfByte3 = new byte[arrayOfByte1.length + 4 + arrayOfByte2.length];
+            util.int64_to_buf32(paramArrayOfByte3, 0, l1);
+            System.arraycopy(arrayOfByte1, 0, paramArrayOfByte3, 4, arrayOfByte1.length);
+            System.arraycopy(arrayOfByte2, 0, paramArrayOfByte3, arrayOfByte1.length + 4, arrayOfByte2.length);
+          }
+          else
+          {
+            paramArrayOfByte3 = new byte[arrayOfByte1.length + 4 + arrayOfByte2.length];
+            util.int64_to_buf32(paramArrayOfByte3, 0, l1);
+            System.arraycopy(arrayOfByte1, 0, paramArrayOfByte3, 4, arrayOfByte1.length);
+            System.arraycopy(arrayOfByte2, 0, paramArrayOfByte3, arrayOfByte1.length + 4, arrayOfByte2.length);
+            paramArrayOfByte3 = cryptor.encrypt(paramArrayOfByte3, 0, paramArrayOfByte3.length, paramArrayOfByte2);
+            break label408;
+          }
+          if ((paramArrayOfByte3 != null) && (paramArrayOfByte3.length > 0))
+          {
+            paramArrayOfByte3 = a(paramArrayOfByte3, paramArrayOfByte1, paramLong2, paramLong3, 1);
+            try
+            {
+              a(this.i, this.t, this.j, paramLong1, this.m, this.n, i, this.p, paramArrayOfByte3);
+              i = a(String.valueOf(paramLong1), true, paramWUserSigInfo);
+              if (i != 0) {
+                continue;
+              }
+              j = a(paramTransReqContext);
+              i = j;
+              if (j != 0) {
+                continue;
+              }
+              i = j;
+              if (paramArrayOfByte1 == null) {
+                continue;
+              }
+              paramArrayOfByte1 = paramTransReqContext.get_body();
+              paramTransReqContext.set_body(cryptor.decrypt(paramArrayOfByte1, 0, paramArrayOfByte1.length, paramArrayOfByte2));
+              i = j;
+            }
+            finally {}
+          }
+          else
+          {
+            i = 0;
           }
           return i;
         }
-        if (paramArrayOfByte1 == null)
-        {
-          paramArrayOfByte3 = new byte[arrayOfByte1.length + 4 + arrayOfByte2.length];
-          util.int64_to_buf32(paramArrayOfByte3, 0, l);
-          System.arraycopy(arrayOfByte1, 0, paramArrayOfByte3, 4, arrayOfByte1.length);
-          System.arraycopy(arrayOfByte2, 0, paramArrayOfByte3, arrayOfByte1.length + 4, arrayOfByte2.length);
-          continue;
-        }
-        paramArrayOfByte3 = new byte[arrayOfByte1.length + 4 + arrayOfByte2.length];
+        finally {}
       }
       finally {}
-      util.int64_to_buf32(paramArrayOfByte3, 0, l);
-      System.arraycopy(arrayOfByte1, 0, paramArrayOfByte3, 4, arrayOfByte1.length);
-      System.arraycopy(arrayOfByte2, 0, paramArrayOfByte3, arrayOfByte1.length + 4, arrayOfByte2.length);
-      paramArrayOfByte3 = cryptor.encrypt(paramArrayOfByte3, 0, paramArrayOfByte3.length, paramArrayOfByte2);
-      continue;
-      label316:
-      int j = a(paramTransReqContext);
-      int i = j;
-      if (j == 0)
+      for (;;)
       {
-        i = j;
-        if (paramArrayOfByte1 != null)
-        {
-          paramArrayOfByte1 = paramTransReqContext.get_body();
-          paramTransReqContext.set_body(cryptor.decrypt(paramArrayOfByte1, 0, paramArrayOfByte1.length, paramArrayOfByte2));
-          i = j;
-          continue;
-          label369:
-          i = 0;
-        }
+        throw paramTransReqContext;
       }
     }
   }
   
   public int a(long paramLong1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, long paramLong2, WUserSigInfo paramWUserSigInfo)
   {
-    for (;;)
+    int i;
+    long l1;
+    long l2;
+    label112:
+    try
     {
-      try
+      i = t.x;
+      l1 = System.currentTimeMillis() / 1000L;
+      l2 = t.af;
+      t.at.commit(Build.VERSION.RELEASE, new String(t.H), "", util.buf_to_string(util.get_ksid(t.u)), new String(t.F), new String(t.R), new String(t.J), new String(t.I), util.get_release_time(), "6.0.0.2473");
+    }
+    finally {}
+    try
+    {
+      paramArrayOfByte1 = t.at.toJasonObj().toString().getBytes();
+    }
+    catch (Throwable paramArrayOfByte1)
+    {
+      break label112;
+    }
+    paramArrayOfByte1 = new byte[0];
+    if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.length != 0))
+    {
+      paramArrayOfByte1 = util.compress(paramArrayOfByte1);
+      if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.length != 0))
       {
-        i = t.x;
-        long l1 = System.currentTimeMillis() / 1000L;
-        long l2 = t.af;
-        t.at.commit(Build.VERSION.RELEASE, new String(t.H), "", util.buf_to_string(util.get_ksid(t.u)), new String(t.F), new String(t.R), new String(t.J), new String(t.I), util.get_release_time(), "6.0.0.2463");
-        try
-        {
-          paramArrayOfByte1 = t.at.toJasonObj().toString().getBytes();
-          if (paramArrayOfByte1 != null)
-          {
-            int j = paramArrayOfByte1.length;
-            if (j != 0) {}
-          }
-          else
-          {
-            i = 0;
-            return i;
-          }
-        }
-        catch (Throwable paramArrayOfByte1)
-        {
-          paramArrayOfByte1 = new byte[0];
-          continue;
-          paramArrayOfByte1 = util.compress(paramArrayOfByte1);
-          if (paramArrayOfByte1 == null) {
-            break label344;
-          }
-        }
-        if (paramArrayOfByte1.length == 0) {
-          break label344;
-        }
         byte[] arrayOfByte = new byte[paramArrayOfByte1.length + 8];
         util.int64_to_buf32(arrayOfByte, 0, l1 + l2);
         util.int8_to_buf(arrayOfByte, 4, 0);
@@ -213,47 +231,39 @@ public class ab
         util.int16_to_buf(arrayOfByte, 6, paramArrayOfByte1.length);
         System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 8, paramArrayOfByte1.length);
         paramArrayOfByte1 = cryptor.encrypt(arrayOfByte, 0, arrayOfByte.length, paramArrayOfByte3);
-        if ((paramArrayOfByte1 == null) || (paramArrayOfByte1.length == 0)) {
-          break label350;
-        }
-        report_t.delete_file(t.u);
-        paramArrayOfByte1 = a(paramArrayOfByte1, paramArrayOfByte2, paramLong2, 85L, 0);
-        a(this.i, this.t, this.j, paramLong1, this.m, this.n, i, this.p, paramArrayOfByte1);
-        i = a(String.valueOf(paramLong1), true, paramWUserSigInfo);
-        if (i != 0)
+        if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.length != 0))
         {
+          report_t.delete_file(t.u);
+          paramArrayOfByte1 = a(paramArrayOfByte1, paramArrayOfByte2, paramLong2, 85L, 0);
+          a(this.i, this.t, this.j, paramLong1, this.m, this.n, i, this.p, paramArrayOfByte1);
+          i = a(String.valueOf(paramLong1), true, paramWUserSigInfo);
           if (i == 0) {
-            break label335;
+            i = b();
           }
-          report_t.write_tofile(t.at, t.u);
-          continue;
+          if (i != 0) {
+            report_t.write_tofile(t.at, t.u);
+          } else {
+            t.at.clear_t2();
+          }
+          return i;
         }
-        i = b();
+        return 0;
       }
-      finally {}
-      continue;
-      label335:
-      t.at.clear_t2();
-      continue;
-      label344:
-      int i = 0;
-      continue;
-      label350:
-      i = 0;
+      return 0;
     }
+    return 0;
   }
   
   public int a(TransReqContext paramTransReqContext)
   {
     int i = this.c;
-    int j;
-    if (i <= this.f + 2)
-    {
-      j = -1009;
-      return j;
+    if (i <= this.f + 2) {
+      return -1009;
     }
     this.g = (i - this.f - 2);
-    if (paramTransReqContext.requestEm == oicq_request.EncryptionMethod.EM_ECDH) {
+    int j;
+    if (paramTransReqContext.requestEm == oicq_request.EncryptionMethod.EM_ECDH)
+    {
       if (this.x.m == 0)
       {
         j = a(this.h, this.f + 1, this.g, this.x.p);
@@ -270,39 +280,40 @@ public class ab
           }
         }
       }
-    }
-    for (;;)
-    {
-      j = i;
-      if (i < 0) {
-        break;
+      else
+      {
+        j = a(this.h, this.f + 1, this.g, this.x.c);
+        i = j;
+        if (j < 0)
+        {
+          util.LOGI("use kc decrypt_body failed");
+          i = j;
+        }
       }
-      return a(this.h, this.f + 1, this.g, paramTransReqContext);
-      j = a(this.h, this.f + 1, this.g, this.x.c);
+    }
+    else if (paramTransReqContext.requestEm == oicq_request.EncryptionMethod.EM_ST)
+    {
+      j = a(this.h, this.f + 1, this.g, paramTransReqContext.wtSessionTicketKey);
       i = j;
       if (j < 0)
       {
-        util.LOGI("use kc decrypt_body failed");
-        i = j;
-        continue;
-        if (paramTransReqContext.requestEm == oicq_request.EncryptionMethod.EM_ST)
-        {
-          j = a(this.h, this.f + 1, this.g, paramTransReqContext.wtSessionTicketKey);
-          i = j;
-          if (j < 0)
-          {
-            t.at.attr_api(2494911);
-            util.LOGI("use session key decrypt_body failed", "");
-            i = -1025;
-          }
-        }
-        else
-        {
-          util.LOGI("unknown encryption method " + paramTransReqContext.requestEm, "");
-          i = -1024;
-        }
+        t.at.attr_api(2494911);
+        util.LOGI("use session key decrypt_body failed", "");
+        i = -1025;
       }
     }
+    else
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("unknown encryption method ");
+      localStringBuilder.append(paramTransReqContext.requestEm);
+      util.LOGI(localStringBuilder.toString(), "");
+      i = -1024;
+    }
+    if (i < 0) {
+      return i;
+    }
+    return a(this.h, this.f + 1, this.g, paramTransReqContext);
   }
   
   public int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, TransReqContext paramTransReqContext)
@@ -312,30 +323,33 @@ public class ab
     }
     int i = c(paramArrayOfByte, paramInt1);
     a((ErrMsg)null);
-    util.LOGD(getClass().getName(), "type=" + i);
-    switch (i)
+    Object localObject = getClass().getName();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("type=");
+    localStringBuilder.append(i);
+    util.LOGD((String)localObject, localStringBuilder.toString());
+    if (i != 0)
     {
-    default: 
-      return i;
-    case 0: 
-      int j = this.L;
-      byte[] arrayOfByte = new byte[paramInt2 - this.L];
-      System.arraycopy(paramArrayOfByte, j + paramInt1, arrayOfByte, 0, arrayOfByte.length);
-      paramTransReqContext.set_body(arrayOfByte);
-      return i;
+      if (i != 180) {
+        return i;
+      }
+      paramInt1 += this.L + 2;
+      paramTransReqContext = new tlv_t172();
+      paramInt1 = paramTransReqContext.get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
+      if (paramInt1 > 0)
+      {
+        this.x.m = 2;
+        this.x.s = paramTransReqContext.get_data();
+        util.LOGI("request_transport get rollback sig");
+        return i;
+      }
+      return paramInt1;
     }
-    paramInt1 = this.L + 2 + paramInt1;
-    paramTransReqContext = new tlv_t172();
-    paramInt2 = paramTransReqContext.get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
-    paramInt1 = paramInt2;
-    if (paramInt2 > 0)
-    {
-      this.x.m = 2;
-      this.x.s = paramTransReqContext.get_data();
-      util.LOGI("request_transport get rollback sig");
-      paramInt1 = i;
-    }
-    return paramInt1;
+    int j = this.L;
+    localObject = new byte[paramInt2 - j];
+    System.arraycopy(paramArrayOfByte, paramInt1 + j, localObject, 0, localObject.length);
+    paramTransReqContext.set_body((byte[])localObject);
+    return i;
   }
   
   public void a(Socket paramSocket)
@@ -345,43 +359,41 @@ public class ab
   
   byte[] a(long paramLong1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, int paramInt, long paramLong5, byte[] paramArrayOfByte5)
   {
-    byte[] arrayOfByte = paramArrayOfByte2;
     if (paramArrayOfByte2 == null) {
-      arrayOfByte = new byte[0];
+      paramArrayOfByte2 = new byte[0];
     }
-    paramArrayOfByte2 = new byte[paramArrayOfByte1.length + 16 + 4 + 16 + 4 + arrayOfByte.length + 4 + paramArrayOfByte3.length + 4 + paramArrayOfByte4.length + 1 + 4 + 4 + paramArrayOfByte5.length + 4];
-    util.int64_to_buf32(paramArrayOfByte2, 0, paramArrayOfByte2.length + paramLong1);
-    util.int64_to_buf32(paramArrayOfByte2, 4, paramArrayOfByte2.length - 4 - 4);
-    util.int64_to_buf32(paramArrayOfByte2, 8, paramLong2);
-    util.int32_to_buf(paramArrayOfByte2, 12, paramArrayOfByte1.length + 4);
-    System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, 16, paramArrayOfByte1.length);
+    byte[] arrayOfByte = new byte[paramArrayOfByte1.length + 16 + 4 + 16 + 4 + paramArrayOfByte2.length + 4 + paramArrayOfByte3.length + 4 + paramArrayOfByte4.length + 1 + 4 + 4 + paramArrayOfByte5.length + 4];
+    util.int64_to_buf32(arrayOfByte, 0, arrayOfByte.length + paramLong1);
+    util.int64_to_buf32(arrayOfByte, 4, arrayOfByte.length - 4 - 4);
+    util.int64_to_buf32(arrayOfByte, 8, paramLong2);
+    util.int32_to_buf(arrayOfByte, 12, paramArrayOfByte1.length + 4);
+    System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 16, paramArrayOfByte1.length);
     int i = paramArrayOfByte1.length + 16;
-    util.int64_to_buf32(paramArrayOfByte2, i, paramLong3);
+    util.int64_to_buf32(arrayOfByte, i, paramLong3);
     i += 4;
-    util.int64_to_buf32(paramArrayOfByte2, i, paramLong4);
+    util.int64_to_buf32(arrayOfByte, i, paramLong4);
     i += 16;
-    util.int32_to_buf(paramArrayOfByte2, i, arrayOfByte.length + 4);
+    util.int32_to_buf(arrayOfByte, i, paramArrayOfByte2.length + 4);
     i += 4;
-    System.arraycopy(arrayOfByte, 0, paramArrayOfByte2, i, arrayOfByte.length);
-    i += arrayOfByte.length;
-    util.int32_to_buf(paramArrayOfByte2, i, paramArrayOfByte3.length + 4);
+    System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, i, paramArrayOfByte2.length);
+    i += paramArrayOfByte2.length;
+    util.int32_to_buf(arrayOfByte, i, paramArrayOfByte3.length + 4);
     i += 4;
-    System.arraycopy(paramArrayOfByte3, 0, paramArrayOfByte2, i, paramArrayOfByte3.length);
+    System.arraycopy(paramArrayOfByte3, 0, arrayOfByte, i, paramArrayOfByte3.length);
     i += paramArrayOfByte3.length;
-    util.int32_to_buf(paramArrayOfByte2, i, paramArrayOfByte4.length + 4);
+    util.int32_to_buf(arrayOfByte, i, paramArrayOfByte4.length + 4);
     i += 4;
-    System.arraycopy(paramArrayOfByte4, 0, paramArrayOfByte2, i, paramArrayOfByte4.length);
+    System.arraycopy(paramArrayOfByte4, 0, arrayOfByte, i, paramArrayOfByte4.length);
     i += paramArrayOfByte4.length;
-    util.int8_to_buf(paramArrayOfByte2, i, paramInt);
+    util.int8_to_buf(arrayOfByte, i, paramInt);
     paramInt = i + 1;
-    util.int64_to_buf32(paramArrayOfByte2, paramInt, paramLong5);
+    util.int64_to_buf32(arrayOfByte, paramInt, paramLong5);
     paramInt += 4;
-    util.int32_to_buf(paramArrayOfByte2, paramInt, paramArrayOfByte5.length + 4);
+    util.int32_to_buf(arrayOfByte, paramInt, paramArrayOfByte5.length + 4);
     paramInt += 4;
-    System.arraycopy(paramArrayOfByte5, 0, paramArrayOfByte2, paramInt, paramArrayOfByte5.length);
-    paramInt += paramArrayOfByte5.length;
-    util.int64_to_buf32(paramArrayOfByte2, paramInt, 4L + paramLong1);
-    return paramArrayOfByte2;
+    System.arraycopy(paramArrayOfByte5, 0, arrayOfByte, paramInt, paramArrayOfByte5.length);
+    util.int64_to_buf32(arrayOfByte, paramInt + paramArrayOfByte5.length, 4L + paramLong1);
+    return arrayOfByte;
   }
   
   public byte[] a(byte[] paramArrayOfByte1, boolean paramBoolean, byte[] paramArrayOfByte2, long paramLong1, long paramLong2, TransReqContext paramTransReqContext)
@@ -390,39 +402,39 @@ public class ab
     if (paramArrayOfByte2 == null) {
       arrayOfByte1 = new byte[0];
     }
-    if (true == paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      byte[] arrayOfByte2 = new byte[0];
-      paramArrayOfByte2 = arrayOfByte2;
-      if (this.x.s != null)
-      {
-        paramArrayOfByte2 = arrayOfByte2;
-        if (this.x.s.length > 0)
-        {
-          arrayOfByte2 = new tlv_t172().get_tlv_172(this.x.s);
-          paramArrayOfByte2 = new byte[arrayOfByte2.length + 2];
-          util.int16_to_buf(paramArrayOfByte2, 0, 1);
-          System.arraycopy(arrayOfByte2, 0, paramArrayOfByte2, 2, arrayOfByte2.length);
-        }
-      }
-      this.K = (arrayOfByte1.length + 13 + 1 + paramArrayOfByte2.length);
-      arrayOfByte2 = new byte[paramArrayOfByte1.length + this.K];
-      util.int8_to_buf(arrayOfByte2, 0, i);
-      util.int16_to_buf(arrayOfByte2, 1, paramArrayOfByte1.length);
-      util.int64_to_buf32(arrayOfByte2, 3, paramLong1);
-      util.int64_to_buf32(arrayOfByte2, 7, paramLong2);
-      util.int16_to_buf(arrayOfByte2, 11, arrayOfByte1.length);
-      System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 13, arrayOfByte1.length);
-      i = arrayOfByte1.length + 13;
-      util.int8_to_buf(arrayOfByte2, i, paramArrayOfByte2.length);
-      i += 1;
-      System.arraycopy(paramArrayOfByte2, 0, arrayOfByte2, i, paramArrayOfByte2.length);
-      i += paramArrayOfByte2.length;
-      System.arraycopy(paramArrayOfByte1, 0, arrayOfByte2, i, paramArrayOfByte1.length);
-      i = paramArrayOfByte1.length;
-      return a(arrayOfByte2, paramTransReqContext.requestEm, paramTransReqContext.wtSessionTicket, paramTransReqContext.wtSessionTicketKey);
+    if (true == paramBoolean) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    byte[] arrayOfByte2 = new byte[0];
+    paramArrayOfByte2 = arrayOfByte2;
+    if (this.x.s != null)
+    {
+      paramArrayOfByte2 = arrayOfByte2;
+      if (this.x.s.length > 0)
+      {
+        arrayOfByte2 = new tlv_t172().get_tlv_172(this.x.s);
+        paramArrayOfByte2 = new byte[arrayOfByte2.length + 2];
+        util.int16_to_buf(paramArrayOfByte2, 0, 1);
+        System.arraycopy(arrayOfByte2, 0, paramArrayOfByte2, 2, arrayOfByte2.length);
+      }
+    }
+    this.K = (arrayOfByte1.length + 13 + 1 + paramArrayOfByte2.length);
+    arrayOfByte2 = new byte[paramArrayOfByte1.length + this.K];
+    util.int8_to_buf(arrayOfByte2, 0, i);
+    util.int16_to_buf(arrayOfByte2, 1, paramArrayOfByte1.length);
+    util.int64_to_buf32(arrayOfByte2, 3, paramLong1);
+    util.int64_to_buf32(arrayOfByte2, 7, paramLong2);
+    util.int16_to_buf(arrayOfByte2, 11, arrayOfByte1.length);
+    System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 13, arrayOfByte1.length);
+    int i = 13 + arrayOfByte1.length;
+    util.int8_to_buf(arrayOfByte2, i, paramArrayOfByte2.length);
+    i += 1;
+    System.arraycopy(paramArrayOfByte2, 0, arrayOfByte2, i, paramArrayOfByte2.length);
+    System.arraycopy(paramArrayOfByte1, 0, arrayOfByte2, i + paramArrayOfByte2.length, paramArrayOfByte1.length);
+    i = paramArrayOfByte1.length;
+    return a(arrayOfByte2, paramTransReqContext.requestEm, paramTransReqContext.wtSessionTicket, paramTransReqContext.wtSessionTicketKey);
   }
   
   public byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong1, long paramLong2, int paramInt)
@@ -432,47 +444,46 @@ public class ab
       paramArrayOfByte2 = new byte[0];
       if (paramInt == 0) {
         paramInt = 0;
-      }
-    }
-    for (;;)
-    {
-      byte[] arrayOfByte2 = new byte[0];
-      byte[] arrayOfByte1 = arrayOfByte2;
-      if (this.x.s != null)
-      {
-        arrayOfByte1 = arrayOfByte2;
-        if (this.x.s.length > 0)
-        {
-          arrayOfByte2 = new tlv_t172().get_tlv_172(this.x.s);
-          arrayOfByte1 = new byte[arrayOfByte2.length + 2];
-          util.int16_to_buf(arrayOfByte1, 0, 1);
-          System.arraycopy(arrayOfByte2, 0, arrayOfByte1, 2, arrayOfByte2.length);
-        }
-      }
-      this.K = (paramArrayOfByte2.length + 13 + 1 + arrayOfByte1.length);
-      arrayOfByte2 = new byte[paramArrayOfByte1.length + this.K];
-      util.int8_to_buf(arrayOfByte2, 0, paramInt);
-      util.int16_to_buf(arrayOfByte2, 1, paramArrayOfByte1.length);
-      util.int64_to_buf32(arrayOfByte2, 3, paramLong1);
-      util.int64_to_buf32(arrayOfByte2, 7, paramLong2);
-      util.int16_to_buf(arrayOfByte2, 11, paramArrayOfByte2.length);
-      System.arraycopy(paramArrayOfByte2, 0, arrayOfByte2, 13, paramArrayOfByte2.length);
-      paramInt = paramArrayOfByte2.length + 13;
-      util.int8_to_buf(arrayOfByte2, paramInt, arrayOfByte1.length);
-      paramInt += 1;
-      System.arraycopy(arrayOfByte1, 0, arrayOfByte2, paramInt, arrayOfByte1.length);
-      paramInt += arrayOfByte1.length;
-      System.arraycopy(paramArrayOfByte1, 0, arrayOfByte2, paramInt, paramArrayOfByte1.length);
-      paramInt = paramArrayOfByte1.length;
-      return a(arrayOfByte2);
-      paramInt = 3;
-      continue;
-      if (paramInt == 0) {
-        paramInt = 1;
       } else {
-        paramInt = 2;
+        paramInt = 3;
       }
     }
+    else if (paramInt == 0)
+    {
+      paramInt = 1;
+    }
+    else
+    {
+      paramInt = 2;
+    }
+    byte[] arrayOfByte2 = new byte[0];
+    byte[] arrayOfByte1 = arrayOfByte2;
+    if (this.x.s != null)
+    {
+      arrayOfByte1 = arrayOfByte2;
+      if (this.x.s.length > 0)
+      {
+        arrayOfByte2 = new tlv_t172().get_tlv_172(this.x.s);
+        arrayOfByte1 = new byte[arrayOfByte2.length + 2];
+        util.int16_to_buf(arrayOfByte1, 0, 1);
+        System.arraycopy(arrayOfByte2, 0, arrayOfByte1, 2, arrayOfByte2.length);
+      }
+    }
+    this.K = (paramArrayOfByte2.length + 13 + 1 + arrayOfByte1.length);
+    arrayOfByte2 = new byte[paramArrayOfByte1.length + this.K];
+    util.int8_to_buf(arrayOfByte2, 0, paramInt);
+    util.int16_to_buf(arrayOfByte2, 1, paramArrayOfByte1.length);
+    util.int64_to_buf32(arrayOfByte2, 3, paramLong1);
+    util.int64_to_buf32(arrayOfByte2, 7, paramLong2);
+    util.int16_to_buf(arrayOfByte2, 11, paramArrayOfByte2.length);
+    System.arraycopy(paramArrayOfByte2, 0, arrayOfByte2, 13, paramArrayOfByte2.length);
+    paramInt = 13 + paramArrayOfByte2.length;
+    util.int8_to_buf(arrayOfByte2, paramInt, arrayOfByte1.length);
+    paramInt += 1;
+    System.arraycopy(arrayOfByte1, 0, arrayOfByte2, paramInt, arrayOfByte1.length);
+    System.arraycopy(paramArrayOfByte1, 0, arrayOfByte2, paramInt + arrayOfByte1.length, paramArrayOfByte1.length);
+    paramInt = paramArrayOfByte1.length;
+    return a(arrayOfByte2);
   }
   
   public int d(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -482,20 +493,28 @@ public class ab
     }
     paramInt1 = c(paramArrayOfByte, paramInt1);
     a((ErrMsg)null);
-    util.LOGD(getClass().getName(), "type=" + paramInt1);
+    paramArrayOfByte = getClass().getName();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("type=");
+    localStringBuilder.append(paramInt1);
+    util.LOGD(paramArrayOfByte, localStringBuilder.toString());
     return paramInt1;
   }
   
   public Socket d()
   {
-    if (this.x.aq != null) {
-      util.LOGD("_transport_sk", "_transport_sk" + this.x.aq.toString());
-    }
-    for (;;)
+    if (this.x.aq != null)
     {
-      return this.x.aq;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("_transport_sk");
+      localStringBuilder.append(this.x.aq.toString());
+      util.LOGD("_transport_sk", localStringBuilder.toString());
+    }
+    else
+    {
       util.LOGD("_transport_sk", "_transport_sk null");
     }
+    return this.x.aq;
   }
   
   public int e(boolean paramBoolean)
@@ -506,7 +525,7 @@ public class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.request.ab
  * JD-Core Version:    0.7.0.1
  */

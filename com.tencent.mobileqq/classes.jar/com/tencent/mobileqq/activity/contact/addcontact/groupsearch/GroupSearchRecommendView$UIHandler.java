@@ -22,29 +22,32 @@ class GroupSearchRecommendView$UIHandler
       return;
     }
     super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      GroupSearchRecommendView.a(localGroupSearchRecommendView);
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3) {
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("GroupSearchRecommendView", 2, "fetch data failed");
+        }
+        GroupSearchRecommendView.a(localGroupSearchRecommendView, true);
+        return;
+      }
       if (QLog.isColorLevel()) {
         QLog.i("GroupSearchRecommendView", 2, "fetch data successfully");
       }
       GroupSearchRecommendView.a(localGroupSearchRecommendView, false);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("GroupSearchRecommendView", 2, "fetch data failed");
-    }
-    GroupSearchRecommendView.a(localGroupSearchRecommendView, true);
+    GroupSearchRecommendView.a(localGroupSearchRecommendView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView.UIHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -15,9 +15,9 @@ public class HippyTKDGifImageView
   implements HippyTKDSkinHandler.HippyQBCommonSkin, HippyViewBase
 {
   public static final String TAG = "HippyGifImage";
-  private HippyMap mClipInfoMap = null;
-  private boolean mEnableNoPicMode = false;
-  String mGIFUrl = null;
+  private HippyMap mClipInfoMap;
+  private boolean mEnableNoPicMode;
+  String mGIFUrl;
   private NativeGestureDispatcher mGestureDispatcher;
   protected HippyEngineContext mHippyEngineContext;
   private HippyTKDGifImageView.OnErrorEvent mOnErrorEvent;
@@ -25,12 +25,18 @@ public class HippyTKDGifImageView
   private HippyTKDGifImageView.OnLoadStartEvent mOnLoadStartEvent;
   private HippyTKDGifImageView.OnStartPlayEvent mOnStartPlayEvent;
   private HippyTKDGifImageView.OnStopPlayEvent mOnStopPlayEvent;
-  private HippyMap mReportData = null;
-  boolean mUserRequestPlay = false;
+  private HippyMap mReportData;
+  boolean mUserRequestPlay;
   
   public HippyTKDGifImageView(Context paramContext)
   {
     super(paramContext);
+    HippyEngineContext localHippyEngineContext = null;
+    this.mReportData = null;
+    this.mClipInfoMap = null;
+    this.mEnableNoPicMode = false;
+    this.mGIFUrl = null;
+    this.mUserRequestPlay = false;
     if ((paramContext instanceof HippyInstanceContext)) {
       localHippyEngineContext = ((HippyInstanceContext)paramContext).getEngineContext();
     }
@@ -96,7 +102,7 @@ public class HippyTKDGifImageView
   
   public void hippySwitchSkin() {}
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     this.mUserRequestPlay = false;
     super.onDetachedFromWindow();
@@ -105,9 +111,10 @@ public class HippyTKDGifImageView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool2 = super.onTouchEvent(paramMotionEvent);
+    NativeGestureDispatcher localNativeGestureDispatcher = this.mGestureDispatcher;
     boolean bool1 = bool2;
-    if (this.mGestureDispatcher != null) {
-      bool1 = bool2 | this.mGestureDispatcher.handleTouchEvent(paramMotionEvent);
+    if (localNativeGestureDispatcher != null) {
+      bool1 = bool2 | localNativeGestureDispatcher.handleTouchEvent(paramMotionEvent);
     }
     return bool1;
   }
@@ -137,7 +144,7 @@ public class HippyTKDGifImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.image.HippyTKDGifImageView
  * JD-Core Version:    0.7.0.1
  */

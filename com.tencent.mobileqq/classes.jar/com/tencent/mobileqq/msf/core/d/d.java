@@ -25,30 +25,35 @@ public class d
   private String a(ConcurrentHashMap paramConcurrentHashMap)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    for (;;)
+    try
     {
-      Map.Entry localEntry;
-      try
+      paramConcurrentHashMap = paramConcurrentHashMap.entrySet().iterator();
+      while (paramConcurrentHashMap.hasNext())
       {
-        paramConcurrentHashMap = paramConcurrentHashMap.entrySet().iterator();
-        if (paramConcurrentHashMap.hasNext())
+        Map.Entry localEntry = (Map.Entry)paramConcurrentHashMap.next();
+        boolean bool = paramConcurrentHashMap.hasNext();
+        if (bool)
         {
-          localEntry = (Map.Entry)paramConcurrentHashMap.next();
-          if (paramConcurrentHashMap.hasNext()) {
-            localStringBuilder.append((String)localEntry.getKey()).append(":").append(localEntry.getValue()).append("|");
-          }
+          localStringBuilder.append((String)localEntry.getKey());
+          localStringBuilder.append(":");
+          localStringBuilder.append(localEntry.getValue());
+          localStringBuilder.append("|");
         }
         else
         {
-          return localStringBuilder.toString();
+          localStringBuilder.append((String)localEntry.getKey());
+          localStringBuilder.append(":");
+          localStringBuilder.append(localEntry.getValue());
         }
       }
-      catch (Exception paramConcurrentHashMap)
-      {
-        QLog.d("StanbyModeStat", 1, "constructReport error");
-      }
-      localStringBuilder.append((String)localEntry.getKey()).append(":").append(localEntry.getValue());
     }
+    catch (Exception paramConcurrentHashMap)
+    {
+      label130:
+      break label130;
+    }
+    QLog.d("StanbyModeStat", 1, "constructReport error");
+    return localStringBuilder.toString();
   }
   
   private void b()
@@ -74,25 +79,27 @@ public class d
   
   public void a(ToServiceMsg paramToServiceMsg)
   {
+    boolean bool = this.c.containsKey(paramToServiceMsg.getServiceCmd());
     int i = 1;
-    if (this.c.containsKey(paramToServiceMsg.getServiceCmd())) {
-      i = ((Integer)this.c.get(paramToServiceMsg.getServiceCmd())).intValue() + 1;
+    if (bool) {
+      i = 1 + ((Integer)this.c.get(paramToServiceMsg.getServiceCmd())).intValue();
     }
     this.c.put(paramToServiceMsg.getServiceCmd(), Integer.valueOf(i));
   }
   
   public void b(ToServiceMsg paramToServiceMsg)
   {
+    boolean bool = this.d.containsKey(paramToServiceMsg.getServiceCmd());
     int i = 1;
-    if (this.d.containsKey(paramToServiceMsg.getServiceCmd())) {
-      i = ((Integer)this.d.get(paramToServiceMsg.getServiceCmd())).intValue() + 1;
+    if (bool) {
+      i = 1 + ((Integer)this.d.get(paramToServiceMsg.getServiceCmd())).intValue();
     }
     this.d.put(paramToServiceMsg.getServiceCmd(), Integer.valueOf(i));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.d.d
  * JD-Core Version:    0.7.0.1
  */

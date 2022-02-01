@@ -22,13 +22,14 @@ class LiteActivity$45
       if (QLog.isColorLevel()) {
         QLog.w(LiteActivity.jdField_a_of_type_JavaLangString, 2, "copy file error", paramDialogInterface);
       }
-      LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.b());
+      paramDialogInterface = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity;
+      LiteActivity.a(paramDialogInterface, paramDialogInterface.b());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.LiteActivity.45
  * JD-Core Version:    0.7.0.1
  */

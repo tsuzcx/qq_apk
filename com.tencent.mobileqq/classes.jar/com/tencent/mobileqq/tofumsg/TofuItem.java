@@ -74,34 +74,35 @@ public class TofuItem
     try
     {
       l = Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getAccount()).longValue();
-      if (l == 0L) {
-        return null;
-      }
     }
     catch (Exception localException)
     {
       long l;
-      for (;;)
-      {
-        l = 0L;
-      }
-      oidb_0xe61.BeancurdCubeInfo localBeancurdCubeInfo = new oidb_0xe61.BeancurdCubeInfo();
-      localBeancurdCubeInfo.uint64_frd_uin.set(this.frdUin);
-      localBeancurdCubeInfo.uint64_busi_id.set(TofuConst.a(this.busId));
-      localBeancurdCubeInfo.uint64_uin.set(l);
-      localBeancurdCubeInfo.uint64_last_pull_time.set(this.lastPullTsSvr);
-      return localBeancurdCubeInfo;
+      label19:
+      oidb_0xe61.BeancurdCubeInfo localBeancurdCubeInfo;
+      break label19;
     }
+    l = 0L;
+    if (l == 0L) {
+      return null;
+    }
+    localBeancurdCubeInfo = new oidb_0xe61.BeancurdCubeInfo();
+    localBeancurdCubeInfo.uint64_frd_uin.set(this.frdUin);
+    localBeancurdCubeInfo.uint64_busi_id.set(TofuConst.a(this.busId));
+    localBeancurdCubeInfo.uint64_uin.set(l);
+    localBeancurdCubeInfo.uint64_last_pull_time.set(this.lastPullTsSvr);
+    return localBeancurdCubeInfo;
   }
   
-  public void postRead()
+  protected void postRead()
   {
     try
     {
-      if (this.msgData != null) {
+      if (this.msgData != null)
+      {
         this.msg = new String(this.msgData, "UTF-8");
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -109,19 +110,19 @@ public class TofuItem
     }
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
-    if (this.msg != null) {}
-    try
-    {
-      if (this.msg != null) {
-        this.msgData = this.msg.getBytes("UTF-8");
+    String str = this.msg;
+    if ((str != null) && (str != null)) {
+      try
+      {
+        this.msgData = str.getBytes("UTF-8");
+        return;
       }
-      return;
-    }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
-    {
-      localUnsupportedEncodingException.printStackTrace();
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        localUnsupportedEncodingException.printStackTrace();
+      }
     }
   }
   
@@ -129,21 +130,47 @@ public class TofuItem
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("frdUin").append("=").append(MobileQQ.getShortUinStr(Long.toString(this.frdUin)));
-    localStringBuilder.append("|").append("busId").append("=").append(TofuConst.a(this.busId));
-    localStringBuilder.append("|").append("eventTs").append("=").append(this.eventTs);
-    localStringBuilder.append("|").append("pullInterval").append("=").append(this.pullInterval);
-    localStringBuilder.append("|").append("lastPullTsLocal").append("=").append(this.lastPullTsLocal);
-    localStringBuilder.append("|").append("lastPullTsSvr").append("=").append(this.lastPullTsSvr);
-    localStringBuilder.append("|").append("validTime").append("=").append(this.validTime);
-    localStringBuilder.append("|").append("flags").append("=").append(this.flags);
-    localStringBuilder.append("|").append("msg").append("=").append(this.msg);
+    localStringBuilder.append("frdUin");
+    localStringBuilder.append("=");
+    localStringBuilder.append(MobileQQ.getShortUinStr(Long.toString(this.frdUin)));
+    localStringBuilder.append("|");
+    localStringBuilder.append("busId");
+    localStringBuilder.append("=");
+    localStringBuilder.append(TofuConst.a(this.busId));
+    localStringBuilder.append("|");
+    localStringBuilder.append("eventTs");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.eventTs);
+    localStringBuilder.append("|");
+    localStringBuilder.append("pullInterval");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.pullInterval);
+    localStringBuilder.append("|");
+    localStringBuilder.append("lastPullTsLocal");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.lastPullTsLocal);
+    localStringBuilder.append("|");
+    localStringBuilder.append("lastPullTsSvr");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.lastPullTsSvr);
+    localStringBuilder.append("|");
+    localStringBuilder.append("validTime");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.validTime);
+    localStringBuilder.append("|");
+    localStringBuilder.append("flags");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.flags);
+    localStringBuilder.append("|");
+    localStringBuilder.append("msg");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.msg);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tofumsg.TofuItem
  * JD-Core Version:    0.7.0.1
  */

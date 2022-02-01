@@ -34,8 +34,9 @@ class PageInteractiveFlagHandler
     Set localSet = BaseUtils.newWeakHashSet();
     while ((paramView instanceof View))
     {
-      localSet.add((View)paramView);
-      paramView = ((View)paramView).getParent();
+      paramView = (View)paramView;
+      localSet.add(paramView);
+      paramView = paramView.getParent();
     }
     return localSet;
   }
@@ -70,15 +71,16 @@ class PageInteractiveFlagHandler
   
   private boolean isTouchedInCurPage(MotionEvent paramMotionEvent, View paramView1, View paramView2)
   {
-    if (!paramView2.getGlobalVisibleRect(this.mRect)) {}
-    do
-    {
-      do
-      {
-        return false;
-      } while (!this.mRect.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()));
-      paramMotionEvent = getPagePathViews(paramView2);
-    } while (paramMotionEvent.isEmpty());
+    if (!paramView2.getGlobalVisibleRect(this.mRect)) {
+      return false;
+    }
+    if (!this.mRect.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY())) {
+      return false;
+    }
+    paramMotionEvent = getPagePathViews(paramView2);
+    if (paramMotionEvent.isEmpty()) {
+      return false;
+    }
     return isTouchedInCurPage(paramView1, paramView2, paramMotionEvent);
   }
   
@@ -90,24 +92,20 @@ class PageInteractiveFlagHandler
     if (!paramSet.contains(paramView1)) {
       return false;
     }
-    paramView1 = getTouchTarget(paramView1);
-    if (paramView1 == null)
-    {
+    Object localObject = getTouchTarget(paramView1);
+    paramView1 = localObject;
+    if (localObject == null) {
       return false;
-      paramView1 = ReflectUtils.getField("next", paramView1);
     }
-    for (;;)
+    while (paramView1 != null)
     {
-      if (paramView1 != null)
-      {
-        Object localObject = ReflectUtils.getField("child", paramView1);
-        if ((!(localObject instanceof View)) || (!isTouchedInCurPage((View)localObject, paramView2, paramSet))) {
-          break;
-        }
+      localObject = ReflectUtils.getField("child", paramView1);
+      if (((localObject instanceof View)) && (isTouchedInCurPage((View)localObject, paramView2, paramSet))) {
         return true;
       }
-      return false;
+      paramView1 = ReflectUtils.getField("next", paramView1);
     }
+    return false;
   }
   
   private void markInteractiveFlagToPage(PageInfo paramPageInfo)
@@ -120,44 +118,55 @@ class PageInteractiveFlagHandler
     if (paramMotionEvent.getAction() == 0) {
       return false;
     }
-    if ((paramBoolean) || (paramPageInfo == null)) {
-      return false;
-    }
-    Object localObject = paramPageInfo.getPage();
-    paramPageInfo = paramPageInfo.getPageView();
-    if ((localObject == null) || (paramPageInfo == null)) {
-      return false;
-    }
-    localObject = DataRWProxy.getInnerParam(localObject, "page_interactive_flag");
-    if (((localObject instanceof Boolean)) && (((Boolean)localObject).booleanValue())) {
-      return false;
-    }
-    if (paramWindow == null) {}
-    for (paramWindow = null;; paramWindow = paramWindow.getDecorView())
+    if (!paramBoolean)
     {
-      localObject = paramPageInfo.getRootView();
-      if ((paramWindow != null) && (paramWindow == localObject)) {
-        break;
+      if (paramPageInfo == null) {
+        return false;
       }
-      return false;
+      Object localObject = paramPageInfo.getPage();
+      paramPageInfo = paramPageInfo.getPageView();
+      if (localObject != null)
+      {
+        if (paramPageInfo == null) {
+          return false;
+        }
+        localObject = DataRWProxy.getInnerParam(localObject, "page_interactive_flag");
+        if (((localObject instanceof Boolean)) && (((Boolean)localObject).booleanValue())) {
+          return false;
+        }
+        if (paramWindow == null) {
+          paramWindow = null;
+        } else {
+          paramWindow = paramWindow.getDecorView();
+        }
+        localObject = paramPageInfo.getRootView();
+        if (paramWindow != null)
+        {
+          if (paramWindow != localObject) {
+            return false;
+          }
+          return isTouchedInCurPage(paramMotionEvent, paramWindow, paramPageInfo);
+        }
+      }
     }
-    return isTouchedInCurPage(paramMotionEvent, paramWindow, paramPageInfo);
+    return false;
   }
   
   public void onDispatchTouchEvent(Object paramObject, Window paramWindow, MotionEvent paramMotionEvent, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramBoolean2) {
+    if (paramBoolean2)
+    {
       this.mIsBeforeNeedMark = needMarkInteractiveFlag(paramWindow, paramMotionEvent, this.mPageManager.isLastPageIsDisappear(), this.mPageManager.getCurrentPageInfo());
-    }
-    while ((!paramBoolean1) || (!this.mIsBeforeNeedMark)) {
       return;
     }
-    markInteractiveFlagToPage(this.mPageManager.getCurrentPageInfo());
+    if ((paramBoolean1) && (this.mIsBeforeNeedMark)) {
+      markInteractiveFlagToPage(this.mPageManager.getCurrentPageInfo());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.page.PageInteractiveFlagHandler
  * JD-Core Version:    0.7.0.1
  */

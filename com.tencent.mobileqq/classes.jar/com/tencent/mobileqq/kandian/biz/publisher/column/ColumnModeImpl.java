@@ -1,12 +1,10 @@
 package com.tencent.mobileqq.kandian.biz.publisher.column;
 
-import android.text.TextUtils;
 import com.tencent.biz.ProtoUtils;
 import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.report.RIJTransMergeKanDianReport.ReportR5Builder;
-import com.tencent.biz.pubaccount.readinjoy.ugc.RIJUgcUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.ReportR5Builder;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBoolField;
@@ -37,7 +35,7 @@ import tencent.im.oidb.cmd0xe33.oidb_0xe33.ReqBody;
 import tencent.im.oidb.cmd0xe33.oidb_0xe33.TopicInfoSetReq;
 import tencent.kandian.ugc.topic_info.TopicInfo;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/publisher/column/ColumnModeImpl;", "Lcom/tencent/mobileqq/kandian/biz/publisher/column/IColumnModel;", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "(Lcom/tencent/mobileqq/app/QQAppInterface;)V", "getApp", "()Lcom/tencent/mobileqq/app/QQAppInterface;", "createColumn", "", "topicInfo", "Lcom/tencent/tkd/topicsdk/bean/TopicInfo;", "callback", "Lcom/tencent/mobileqq/kandian/biz/publisher/column/IColumnModel$IColumnCallback;", "editColumn", "getColumnList", "cookie", "", "topTopicId", "", "Lcom/tencent/mobileqq/kandian/biz/publisher/column/IColumnModel$IColumnListCallback;", "getCommonReportDataBuilder", "Lcom/tencent/biz/pubaccount/readinjoy/decoupling/uilayer/framewrok/report/RIJTransMergeKanDianReport$ReportR5Builder;", "handleGetTopicListSuccessResult", "data", "sendGetColumnListRequest", "sendManageColumnRequest", "actionType", "", "parseToTopicInfo", "Ltencent/kandian/ugc/topic_info$TopicInfo;", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/publisher/column/ColumnModeImpl;", "Lcom/tencent/mobileqq/kandian/biz/publisher/column/IColumnModel;", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "(Lcom/tencent/mobileqq/app/QQAppInterface;)V", "getApp", "()Lcom/tencent/mobileqq/app/QQAppInterface;", "createColumn", "", "topicInfo", "Lcom/tencent/tkd/topicsdk/bean/TopicInfo;", "callback", "Lcom/tencent/mobileqq/kandian/biz/publisher/column/IColumnModel$IColumnCallback;", "editColumn", "getColumnList", "cookie", "", "topTopicId", "", "Lcom/tencent/mobileqq/kandian/biz/publisher/column/IColumnModel$IColumnListCallback;", "getCommonReportDataBuilder", "Lcom/tencent/mobileqq/kandian/glue/report/RIJTransMergeKanDianReport$ReportR5Builder;", "handleGetTopicListSuccessResult", "data", "sendGetColumnListRequest", "sendManageColumnRequest", "actionType", "", "parseToTopicInfo", "Ltencent/kandian/ugc/topic_info$TopicInfo;", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class ColumnModeImpl
   implements IColumnModel
 {
@@ -57,95 +55,11 @@ public final class ColumnModeImpl
   
   private final RIJTransMergeKanDianReport.ReportR5Builder a(TopicInfo paramTopicInfo)
   {
-    int n = 1;
-    RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder1 = new RIJTransMergeKanDianReport.ReportR5Builder();
-    boolean bool1 = RIJUgcUtils.p();
-    boolean bool2 = RIJUgcUtils.h();
-    int k;
-    int j;
-    label53:
-    label68:
-    int m;
-    label76:
-    RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder2;
-    if (!TextUtils.isEmpty((CharSequence)paramTopicInfo.getCoverUrl()))
-    {
-      k = 1;
-      if (TextUtils.isEmpty((CharSequence)paramTopicInfo.getTitle())) {
-        break label203;
-      }
-      j = 1;
-      if (TextUtils.isEmpty((CharSequence)paramTopicInfo.getIntro())) {
-        break label208;
-      }
-      i = 1;
-      if (!bool1) {
-        break label213;
-      }
-      m = 1;
-      localReportR5Builder2 = localReportR5Builder1.a("ugc_video_flag", Integer.valueOf(m));
-      if (!bool2) {
-        break label219;
-      }
-      m = 1;
-      label98:
-      localReportR5Builder2 = localReportR5Builder2.a("ugc_column_flag", Integer.valueOf(m));
-      if (k == 0) {
-        break label225;
-      }
-      k = 1;
-      label120:
-      localReportR5Builder2 = localReportR5Builder2.a("cover_flag", Integer.valueOf(k));
-      if (j == 0) {
-        break label231;
-      }
-      j = 1;
-      label140:
-      localReportR5Builder2 = localReportR5Builder2.a("column_name_flag", Integer.valueOf(j));
-      if (i == 0) {
-        break label236;
-      }
-      i = 1;
-      label159:
-      localReportR5Builder2 = localReportR5Builder2.a("introduction_flag", Integer.valueOf(i));
-      if (!paramTopicInfo.getAllowSubmit()) {
-        break label241;
-      }
-    }
-    label203:
-    label208:
-    label213:
-    label219:
-    label225:
-    label231:
-    label236:
-    label241:
-    for (int i = n;; i = 0)
-    {
-      localReportR5Builder2.a("collaborator_flag", Integer.valueOf(i));
-      return localReportR5Builder1;
-      k = 0;
-      break;
-      j = 0;
-      break label53;
-      i = 0;
-      break label68;
-      m = 0;
-      break label76;
-      m = 0;
-      break label98;
-      k = 0;
-      break label120;
-      j = 0;
-      break label140;
-      i = 0;
-      break label159;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private final TopicInfo a(@NotNull topic_info.TopicInfo paramTopicInfo)
   {
-    boolean bool = false;
     TopicInfo localTopicInfo = new TopicInfo(0L, null, null, null, false, 0L, 0, 127, null);
     localTopicInfo.setTopicId(paramTopicInfo.id.get());
     String str = paramTopicInfo.cover_img.get();
@@ -157,8 +71,10 @@ public final class ColumnModeImpl
     str = paramTopicInfo.intro.get();
     Intrinsics.checkExpressionValueIsNotNull(str, "intro.get()");
     localTopicInfo.setIntro(str);
-    if (paramTopicInfo.submit_permission.get() == 1) {
-      bool = true;
+    int i = paramTopicInfo.submit_permission.get();
+    boolean bool = true;
+    if (i != 1) {
+      bool = false;
     }
     localTopicInfo.setAllowSubmit(bool);
     localTopicInfo.setSource(paramTopicInfo.source.get());
@@ -168,93 +84,79 @@ public final class ColumnModeImpl
   
   private final topic_info.TopicInfo a(@NotNull TopicInfo paramTopicInfo)
   {
-    topic_info.TopicInfo localTopicInfo = new topic_info.TopicInfo();
-    localTopicInfo.id.set((int)paramTopicInfo.getTopicId());
-    localTopicInfo.cover_img.set(paramTopicInfo.getCoverUrl());
-    localTopicInfo.title.set(paramTopicInfo.getTitle());
-    localTopicInfo.intro.set(paramTopicInfo.getIntro());
-    PBUInt32Field localPBUInt32Field = localTopicInfo.submit_permission;
-    if (paramTopicInfo.getAllowSubmit()) {}
-    for (int i = 1;; i = 0)
-    {
-      localPBUInt32Field.set(i);
-      localTopicInfo.source.set(paramTopicInfo.getSource());
-      localTopicInfo.creator_uid.set(paramTopicInfo.getUid());
-      return localTopicInfo;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private final void a(TopicInfo paramTopicInfo, IColumnModel.IColumnCallback paramIColumnCallback, int paramInt)
   {
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountSimpleReportWithR5("0X800AC5B", a(paramTopicInfo).a());
+    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountSimpleReportWithR5("0X800AC5B", a(paramTopicInfo).build());
     oidb_0xe33.TopicInfoSetReq localTopicInfoSetReq = new oidb_0xe33.TopicInfoSetReq();
     if (paramInt == 1) {
       localTopicInfoSetReq.operate_type.set(1);
+    } else if (paramInt == 2) {
+      localTopicInfoSetReq.operate_type.set(2);
     }
-    for (;;)
-    {
-      localTopicInfoSetReq.info.set((MessageMicro)a(paramTopicInfo));
-      paramTopicInfo = new oidb_0xe33.ReqBody();
-      paramTopicInfo.topic_info_set_req.set((MessageMicro)localTopicInfoSetReq);
-      ProtoUtils.a((AppRuntime)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ProtoUtils.TroopProtocolObserver)new ColumnModeImpl.sendManageColumnRequest.1(paramIColumnCallback, paramInt), paramTopicInfo.toByteArray(), "OidbSvc.0xe33", 3635, 1);
-      return;
-      if (paramInt == 2) {
-        localTopicInfoSetReq.operate_type.set(2);
-      }
-    }
+    localTopicInfoSetReq.info.set((MessageMicro)a(paramTopicInfo));
+    paramTopicInfo = new oidb_0xe33.ReqBody();
+    paramTopicInfo.topic_info_set_req.set((MessageMicro)localTopicInfoSetReq);
+    ProtoUtils.a((AppRuntime)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ProtoUtils.TroopProtocolObserver)new ColumnModeImpl.sendManageColumnRequest.1(paramIColumnCallback, paramInt), paramTopicInfo.toByteArray(), "OidbSvc.0xe33", 3635, 1);
   }
   
   private final void a(byte[] paramArrayOfByte, IColumnModel.IColumnListCallback paramIColumnListCallback)
   {
-    int i = 0;
     ArrayList localArrayList = new ArrayList();
     try
     {
-      localObject1 = new oidb_0xe31.RspBody();
+      Object localObject1 = new oidb_0xe31.RspBody();
       ((oidb_0xe31.RspBody)localObject1).mergeFrom(paramArrayOfByte);
-      if ((!((oidb_0xe31.RspBody)localObject1).topic_list_req_rsp.has()) || (((oidb_0xe31.RspBody)localObject1).topic_list_req_rsp.topics.size() == 0))
+      if ((((oidb_0xe31.RspBody)localObject1).topic_list_req_rsp.has()) && (((oidb_0xe31.RspBody)localObject1).topic_list_req_rsp.topics.size() != 0))
       {
-        QLog.e("ColumnModuleImpl", 1, "handleGetTopicListSuccessResult no topicInfo data!");
-        return;
-      }
-      paramArrayOfByte = ((oidb_0xe31.RspBody)localObject1).topic_list_req_rsp;
-      localObject1 = paramArrayOfByte.topics.get();
-      Intrinsics.checkExpressionValueIsNotNull(localObject1, "topics");
-      int j = ((Collection)localObject1).size();
-      while (i < j)
-      {
-        localObject2 = ((List)localObject1).get(i);
-        Intrinsics.checkExpressionValueIsNotNull(localObject2, "topics[i]");
-        localArrayList.add(a((topic_info.TopicInfo)localObject2));
-        i += 1;
-      }
-      QLog.i("ColumnModuleImpl", 2, "loadDataFromNetwork success, topicList.num = " + localArrayList.size());
-      if (paramIColumnListCallback != null)
-      {
+        paramArrayOfByte = ((oidb_0xe31.RspBody)localObject1).topic_list_req_rsp;
+        localObject1 = paramArrayOfByte.topics.get();
+        int i = 0;
+        Intrinsics.checkExpressionValueIsNotNull(localObject1, "topics");
+        int j = ((Collection)localObject1).size();
+        while (i < j)
+        {
+          localObject2 = ((List)localObject1).get(i);
+          Intrinsics.checkExpressionValueIsNotNull(localObject2, "topics[i]");
+          localArrayList.add(a((topic_info.TopicInfo)localObject2));
+          i += 1;
+        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("loadDataFromNetwork success, topicList.num = ");
+        ((StringBuilder)localObject1).append(localArrayList.size());
+        QLog.i("ColumnModuleImpl", 2, ((StringBuilder)localObject1).toString());
+        if (paramIColumnListCallback == null) {
+          break label308;
+        }
         localObject1 = paramArrayOfByte.cookie.get().toStringUtf8();
         Intrinsics.checkExpressionValueIsNotNull(localObject1, "rsp.cookie.get().toStringUtf8()");
-        localObject2 = Charsets.UTF_8;
-        if (localObject1 == null) {
-          throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+        Object localObject2 = Charsets.UTF_8;
+        if (localObject1 != null)
+        {
+          localObject1 = ((String)localObject1).getBytes((Charset)localObject2);
+          Intrinsics.checkExpressionValueIsNotNull(localObject1, "(this as java.lang.String).getBytes(charset)");
+          paramIColumnListCallback.a(0, "", (byte[])localObject1, paramArrayOfByte.is_end.get(), (List)localArrayList);
+          return;
         }
+        throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
       }
+      QLog.e("ColumnModuleImpl", 1, "handleGetTopicListSuccessResult no topicInfo data!");
+      return;
     }
     catch (Exception paramArrayOfByte)
     {
-      Object localObject1;
-      Object localObject2;
-      if (QLog.isColorLevel()) {
-        QLog.d("ColumnModuleImpl", 2, "loadColumnListFromNetwork failed.");
-      }
-      if (paramIColumnListCallback != null)
-      {
-        paramIColumnListCallback.a(-1, "", null, true, null);
-        return;
-        localObject1 = ((String)localObject1).getBytes((Charset)localObject2);
-        Intrinsics.checkExpressionValueIsNotNull(localObject1, "(this as java.lang.String).getBytes(charset)");
-        paramIColumnListCallback.a(0, "", (byte[])localObject1, paramArrayOfByte.is_end.get(), (List)localArrayList);
-      }
+      label275:
+      break label275;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("ColumnModuleImpl", 2, "loadColumnListFromNetwork failed.");
+    }
+    if (paramIColumnListCallback != null) {
+      paramIColumnListCallback.a(-1, "", null, true, null);
+    }
+    label308:
   }
   
   private final void b(byte[] paramArrayOfByte, long paramLong, IColumnModel.IColumnListCallback paramIColumnListCallback)
@@ -279,8 +181,12 @@ public final class ColumnModeImpl
   public void a(@NotNull TopicInfo paramTopicInfo, @Nullable IColumnModel.IColumnCallback paramIColumnCallback)
   {
     Intrinsics.checkParameterIsNotNull(paramTopicInfo, "topicInfo");
-    if (QLog.isColorLevel()) {
-      QLog.e("ColumnModuleImpl", 2, "ManageColumnModel createColumn: columnInfo : " + paramTopicInfo);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ManageColumnModel createColumn: columnInfo : ");
+      localStringBuilder.append(paramTopicInfo);
+      QLog.e("ColumnModuleImpl", 2, localStringBuilder.toString());
     }
     a(paramTopicInfo, paramIColumnCallback, 1);
   }
@@ -293,15 +199,19 @@ public final class ColumnModeImpl
   public void b(@NotNull TopicInfo paramTopicInfo, @Nullable IColumnModel.IColumnCallback paramIColumnCallback)
   {
     Intrinsics.checkParameterIsNotNull(paramTopicInfo, "topicInfo");
-    if (QLog.isColorLevel()) {
-      QLog.e("ColumnModuleImpl", 2, "ManageColumnModel editColumn: columnInfo : " + paramTopicInfo);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ManageColumnModel editColumn: columnInfo : ");
+      localStringBuilder.append(paramTopicInfo);
+      QLog.e("ColumnModuleImpl", 2, localStringBuilder.toString());
     }
     a(paramTopicInfo, paramIColumnCallback, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.column.ColumnModeImpl
  * JD-Core Version:    0.7.0.1
  */

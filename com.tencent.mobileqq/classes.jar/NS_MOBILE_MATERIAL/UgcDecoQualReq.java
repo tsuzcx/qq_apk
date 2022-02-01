@@ -14,7 +14,8 @@ public final class UgcDecoQualReq
   
   static
   {
-    cache_mapItemId.put(Integer.valueOf(0), Integer.valueOf(0));
+    Integer localInteger = Integer.valueOf(0);
+    cache_mapItemId.put(localInteger, localInteger);
   }
   
   public UgcDecoQualReq() {}
@@ -31,14 +32,15 @@ public final class UgcDecoQualReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.mapItemId != null) {
-      paramJceOutputStream.write(this.mapItemId, 0);
+    Map localMap = this.mapItemId;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.UgcDecoQualReq
  * JD-Core Version:    0.7.0.1
  */

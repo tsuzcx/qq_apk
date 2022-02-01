@@ -30,14 +30,16 @@ public class RoundBGTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     if (this.jdField_a_of_type_AndroidGraphicsPaint == null) {
       this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     }
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.b);
-    paramCanvas.drawRoundRect(new RectF(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight()), this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+    RectF localRectF = new RectF(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
+    int i = this.jdField_a_of_type_Int;
+    paramCanvas.drawRoundRect(localRectF, i, i, this.jdField_a_of_type_AndroidGraphicsPaint);
     super.onDraw(paramCanvas);
   }
   
@@ -48,12 +50,12 @@ public class RoundBGTextView
   
   public void setRoundCornerSize(int paramInt)
   {
-    this.jdField_a_of_type_Int = AIOUtils.a(paramInt, getResources());
+    this.jdField_a_of_type_Int = AIOUtils.b(paramInt, getResources());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.RoundBGTextView
  * JD-Core Version:    0.7.0.1
  */

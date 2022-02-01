@@ -26,24 +26,25 @@ final class ListPresenter$refreshPage$1
     ListContract.IListView localIListView = ListPresenter.a(this.this$0);
     if (localIListView != null)
     {
-      if (!paramBoolean1) {
-        break label41;
+      if (paramBoolean1)
+      {
+        localIListView.setHeaderSuccess();
+        this.this$0.a(paramInt1, paramList);
+        return;
       }
-      localIListView.setHeaderSuccess();
-      this.this$0.a(paramInt1, paramList);
-    }
-    for (;;)
-    {
-      return;
-      label41:
-      TLog.a("ListPresenter", "refreshPage error, errorCode=" + paramInt2 + ", errorMsg= " + paramString);
+      paramList = new StringBuilder();
+      paramList.append("refreshPage error, errorCode=");
+      paramList.append(paramInt2);
+      paramList.append(", errorMsg= ");
+      paramList.append(paramString);
+      TLog.a("ListPresenter", paramList.toString());
       localIListView.setHeaderError(paramInt2, paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mvp.ListPresenter.refreshPage.1
  * JD-Core Version:    0.7.0.1
  */

@@ -22,29 +22,26 @@ class BlankRecommendFeedsAdapter$2
   public void onClick(View paramView)
   {
     StringBuilder localStringBuilder = new StringBuilder(SubscribeConstants.b(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
-    if (this.a.a() != null) {}
-    for (;;)
-    {
+    if (this.a.a() != null) {
       try
       {
         localStringBuilder.append(URLEncoder.encode(this.a.a().attachInfo.get(), "UTF-8"));
-        VSReporter.b("auth_follow", "clk_more", 0, 0, new String[0]);
-        SubscribeLaucher.a(localStringBuilder.toString());
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
         localUnsupportedEncodingException.printStackTrace();
-        continue;
       }
+    } else {
       QLog.d(BlankRecommendFeedsAdapter.a, 0, "jump more recommend H5 page with no attach info!");
     }
+    VSReporter.b("auth_follow", "clk_more", 0, 0, new String[0]);
+    SubscribeLaucher.a(localStringBuilder.toString());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.bizdapters.BlankRecommendFeedsAdapter.2
  * JD-Core Version:    0.7.0.1
  */

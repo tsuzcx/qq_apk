@@ -2,10 +2,10 @@ package com.tencent.mobileqq.troop.troopapps;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public abstract class AppsBaseBuilder
@@ -13,15 +13,15 @@ public abstract class AppsBaseBuilder
   protected int a;
   protected long a;
   protected Context a;
-  protected FragmentActivity a;
   protected SessionInfo a;
+  protected BaseActivity a;
   protected QQAppInterface a;
   protected TroopAppShortcutContainer a;
   protected boolean a;
   protected long b;
   protected boolean b;
   
-  public AppsBaseBuilder(Context paramContext, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, TroopAppShortcutContainer paramTroopAppShortcutContainer, Bundle paramBundle)
+  public AppsBaseBuilder(Context paramContext, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, TroopAppShortcutContainer paramTroopAppShortcutContainer, Bundle paramBundle)
   {
     this.jdField_a_of_type_Long = 0L;
     this.jdField_b_of_type_Long = 0L;
@@ -30,7 +30,7 @@ public abstract class AppsBaseBuilder
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramFragmentActivity;
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
     this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer = paramTroopAppShortcutContainer;
     if (paramBundle != null)
     {
@@ -53,7 +53,7 @@ public abstract class AppsBaseBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.AppsBaseBuilder
  * JD-Core Version:    0.7.0.1
  */

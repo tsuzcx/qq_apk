@@ -4,7 +4,8 @@ import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.teamwork.TeamWorkUtils;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkUtilsTemp;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,68 +18,71 @@ class TroopRedTouchHandler$2$1
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopRedTouchHandler", 2, "getRedPointInfo onReceive :" + this.jdField_a_of_type_Boolean);
-    }
-    Object localObject;
-    int j;
-    int i;
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidOsBundle != null))
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      localObject = this.jdField_a_of_type_AndroidOsBundle.getByteArray("data");
-      if ((!this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler$2.jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(46))) || (!TeamWorkUtils.a(TroopRedTouchHandler.a(this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler$2.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler)))) {
-        break label311;
-      }
-      j = 1;
-      if (j == 0) {
-        break label347;
-      }
-      oidb_0x791.RedDotInfo localRedDotInfo = ((TroopRedTouchManager)TroopRedTouchHandler.a(this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler$2.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler).getManager(QQManagerFactory.MGR_RED_TOUCH_EX)).a(46, false);
-      if ((localRedDotInfo == null) || (!localRedDotInfo.uint32_last_time.has())) {
-        break label316;
-      }
-      i = localRedDotInfo.uint32_last_time.get();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getRedPointInfo onReceive :");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Boolean);
+      QLog.d("TroopRedTouchHandler", 2, ((StringBuilder)localObject1).toString());
     }
-    for (;;)
+    if (this.jdField_a_of_type_Boolean)
     {
-      label152:
-      if ((localObject != null) && (TroopRedTouchHandler.a(TroopRedTouchHandler.a(this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler$2.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler), new ArrayList(this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler$2.jdField_a_of_type_JavaUtilList), (byte[])localObject)))
+      localObject1 = this.jdField_a_of_type_AndroidOsBundle;
+      if (localObject1 != null)
       {
-        this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler$2.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler.a = 1;
-        if (QLog.isColorLevel()) {
-          QLog.i("storyRedDotDebug", 2, "getRedPointAsync");
+        localObject1 = ((Bundle)localObject1).getByteArray("data");
+        int j;
+        if ((this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler$2.jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(46))) && (((ITeamWorkUtilsTemp)QRoute.api(ITeamWorkUtilsTemp.class)).isTencentDocsAssistantEnable(TroopRedTouchHandler.a(this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler$2.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler)))) {
+          j = 1;
+        } else {
+          j = 0;
         }
-        this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler$2.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler.notifyUI(105, true, null);
+        int i = -1;
+        Object localObject2;
         if (j != 0)
         {
-          localObject = ((TroopRedTouchManager)TroopRedTouchHandler.a(this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler$2.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler).getManager(QQManagerFactory.MGR_RED_TOUCH_EX)).a(46, false);
-          if ((localObject != null) && (QLog.isColorLevel())) {
-            QLog.d("TroopRedTouchHandlerQ.qqstory.redPoint", 2, "getRedPointInfoAsync enableTencentDocsAssistant:" + TroopRedTouchManager.a((oidb_0x791.RedDotInfo)localObject));
+          localObject2 = ((TroopRedTouchManager)TroopRedTouchHandler.a(this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler$2.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler).getManager(QQManagerFactory.MGR_RED_TOUCH_EX)).a(46, false);
+          if ((localObject2 != null) && (((oidb_0x791.RedDotInfo)localObject2).uint32_last_time.has())) {
+            i = ((oidb_0x791.RedDotInfo)localObject2).uint32_last_time.get();
+          } else {
+            i = 0;
           }
-          TroopRedTouchHandler.a(TroopRedTouchHandler.a(this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler$2.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler), (oidb_0x791.RedDotInfo)localObject, i, false);
+        }
+        if ((localObject1 != null) && (TroopRedTouchHandler.a(TroopRedTouchHandler.a(this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler$2.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler), new ArrayList(this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler$2.jdField_a_of_type_JavaUtilList), (byte[])localObject1)))
+        {
+          this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler$2.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler.a = 1;
+          if (QLog.isColorLevel()) {
+            QLog.i("storyRedDotDebug", 2, "getRedPointAsync");
+          }
+          this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler$2.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler.notifyUI(105, true, null);
+          if (j != 0)
+          {
+            localObject1 = ((TroopRedTouchManager)TroopRedTouchHandler.a(this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler$2.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler).getManager(QQManagerFactory.MGR_RED_TOUCH_EX)).a(46, false);
+            if ((localObject1 != null) && (QLog.isColorLevel()))
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("getRedPointInfoAsync enableTencentDocsAssistant:");
+              ((StringBuilder)localObject2).append(TroopRedTouchManager.a((oidb_0x791.RedDotInfo)localObject1));
+              QLog.d("TroopRedTouchHandlerQ.qqstory.redPoint", 2, ((StringBuilder)localObject2).toString());
+            }
+            TroopRedTouchHandler.a(TroopRedTouchHandler.a(this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler$2.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler), (oidb_0x791.RedDotInfo)localObject1, i, false);
+          }
+        }
+        else
+        {
+          this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler$2.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler.a = 2;
+          if (QLog.isColorLevel()) {
+            QLog.e("TroopRedTouchHandler", 2, "getRedPointInfo success data is null");
+          }
         }
       }
-      label311:
-      label316:
-      do
-      {
-        return;
-        j = 0;
-        break;
-        i = 0;
-        break label152;
-        this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler$2.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler.a = 2;
-      } while (!QLog.isColorLevel());
-      QLog.e("TroopRedTouchHandler", 2, "getRedPointInfo success data is null");
-      return;
-      label347:
-      i = -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.TroopRedpoint.TroopRedTouchHandler.2.1
  * JD-Core Version:    0.7.0.1
  */

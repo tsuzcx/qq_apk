@@ -9,10 +9,9 @@ import androidx.annotation.Nullable;
 import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
-import com.tencent.mobileqq.filemanager.api.IQQFileTempUtils;
 import com.tencent.mobileqq.filemanager.api.util.QStorage;
 import com.tencent.mobileqq.filemanager.app.QFileConfigManager;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtilImpl;
 import com.tencent.qphone.base.util.QLog;
 
 public class QFileCommonConfigProcessor
@@ -21,7 +20,11 @@ public class QFileCommonConfigProcessor
   @NonNull
   public QFileCommonConfigBean a(int paramInt)
   {
-    QLog.i("QFileCommonConfigProcessor", 1, "migrateOldOrDefaultContent: type[" + paramInt + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("migrateOldOrDefaultContent: type[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    QLog.i("QFileCommonConfigProcessor", 1, localStringBuilder.toString());
     return new QFileCommonConfigBean();
   }
   
@@ -38,10 +41,14 @@ public class QFileCommonConfigProcessor
   public void a(QFileCommonConfigBean paramQFileCommonConfigBean)
   {
     QLog.i("QFileCommonConfigProcessor", 1, "onUpdate");
-    Object localObject = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getApp();
-    if (localObject != null)
+    BaseQQAppInterface localBaseQQAppInterface = QQFileManagerUtilImpl.a();
+    if (localBaseQQAppInterface != null)
     {
-      localObject = ((BaseQQAppInterface)localObject).getApplicationContext().getSharedPreferences("file_config_" + ((BaseQQAppInterface)localObject).getCurrentUin(), 0).edit();
+      Object localObject = localBaseQQAppInterface.getApplicationContext();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("file_config_");
+      localStringBuilder.append(localBaseQQAppInterface.getCurrentUin());
+      localObject = ((Context)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
       ((SharedPreferences.Editor)localObject).putBoolean("https_c2c_up", paramQFileCommonConfigBean.jdField_a_of_type_Boolean);
       ((SharedPreferences.Editor)localObject).putBoolean("https_c2c_down", paramQFileCommonConfigBean.b);
       ((SharedPreferences.Editor)localObject).putBoolean("https_c2czip_down", paramQFileCommonConfigBean.c);
@@ -59,13 +66,16 @@ public class QFileCommonConfigProcessor
       ((SharedPreferences.Editor)localObject).putBoolean("troop_video_preivew_for_yearsvip", paramQFileCommonConfigBean.o);
       ((SharedPreferences.Editor)localObject).putBoolean("enable_file_media_platform", paramQFileCommonConfigBean.p);
       ((SharedPreferences.Editor)localObject).apply();
-      QLog.i("QFileCommonConfigProcessor", 1, "save download config." + paramQFileCommonConfigBean.jdField_a_of_type_JavaLangString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("save download config.");
+      ((StringBuilder)localObject).append(paramQFileCommonConfigBean.jdField_a_of_type_JavaLangString);
+      QLog.i("QFileCommonConfigProcessor", 1, ((StringBuilder)localObject).toString());
       localObject = new Bundle();
       ((Bundle)localObject).putBoolean("troop_video_preivew", paramQFileCommonConfigBean.m);
       ((Bundle)localObject).putBoolean("troop_video_preivew_for_svip", paramQFileCommonConfigBean.n);
       ((Bundle)localObject).putBoolean("troop_video_preivew_for_yearsvip", paramQFileCommonConfigBean.o);
       ((Bundle)localObject).putBoolean("enable_file_media_platform", paramQFileCommonConfigBean.p);
-      QFileConfigManager.a().a((Bundle)localObject);
+      QFileConfigManager.a(localBaseQQAppInterface).a((Bundle)localObject);
     }
   }
   
@@ -91,7 +101,11 @@ public class QFileCommonConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.i("QFileCommonConfigProcessor", 1, "onReqFailed: failCode[" + paramInt + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReqFailed: failCode[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    QLog.i("QFileCommonConfigProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -101,7 +115,7 @@ public class QFileCommonConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileCommonConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

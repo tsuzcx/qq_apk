@@ -13,12 +13,19 @@ public class LiangHaoUinData
   
   public String toString()
   {
-    return "LiangHaoUinData{" + "hide" + ", light='" + this.b + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LiangHaoUinData{");
+    localStringBuilder.append("hide");
+    localStringBuilder.append(", light='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.data.LiangHaoUinData
  * JD-Core Version:    0.7.0.1
  */

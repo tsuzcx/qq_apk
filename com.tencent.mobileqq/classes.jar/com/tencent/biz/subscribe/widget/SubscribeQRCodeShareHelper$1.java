@@ -9,13 +9,16 @@ class SubscribeQRCodeShareHelper$1
   
   public void run()
   {
-    FileUtils.a(SubscribeQRCodeShareHelper.a(this.this$0), true);
-    FileUtils.c(SubscribeQRCodeShareHelper.a(this.this$0) + ".nomedia");
+    FileUtils.delete(SubscribeQRCodeShareHelper.a(this.this$0), true);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(SubscribeQRCodeShareHelper.a(this.this$0));
+    localStringBuilder.append(".nomedia");
+    FileUtils.createFileIfNotExits(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.1
  * JD-Core Version:    0.7.0.1
  */

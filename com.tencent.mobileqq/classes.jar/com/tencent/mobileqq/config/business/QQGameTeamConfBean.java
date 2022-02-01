@@ -18,9 +18,10 @@ public class QQGameTeamConfBean
     {
       int k = paramArrayOfQConfItem.length;
       int i = 0;
+      Object localObject;
       while (i < k)
       {
-        Object localObject = new JSONObject(paramArrayOfQConfItem[i].a);
+        localObject = new JSONObject(paramArrayOfQConfItem[i].a);
         if (((JSONObject)localObject).has("teamAppKeys"))
         {
           localQQGameTeamConfBean.a.clear();
@@ -34,8 +35,12 @@ public class QQGameTeamConfBean
               j += 1;
             }
           }
-          if (QLog.isColorLevel()) {
-            QLog.d("QQGameTeamConfBean", 2, "onParsed teamKeys=" + localObject);
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("onParsed teamKeys=");
+            localStringBuilder.append(localObject);
+            QLog.d("QQGameTeamConfBean", 2, localStringBuilder.toString());
           }
         }
         i += 1;
@@ -44,13 +49,16 @@ public class QQGameTeamConfBean
     }
     catch (Throwable paramArrayOfQConfItem)
     {
-      QLog.e("QQGameTeamConfBean", 1, "parse error e=" + paramArrayOfQConfItem);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("parse error e=");
+      ((StringBuilder)localObject).append(paramArrayOfQConfItem);
+      QLog.e("QQGameTeamConfBean", 1, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QQGameTeamConfBean
  * JD-Core Version:    0.7.0.1
  */

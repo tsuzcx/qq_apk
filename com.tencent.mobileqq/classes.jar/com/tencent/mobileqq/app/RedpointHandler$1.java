@@ -14,13 +14,19 @@ class RedpointHandler$1
   
   public void onLocationFinish(int paramInt, SosoLbsInfo paramSosoLbsInfo)
   {
-    QLog.d("RedPointLog.RedpointHandler", 1, "onLocationFinish errCode:" + paramInt + ",info:" + paramSosoLbsInfo);
-    RedpointHandler.a(this.a, paramInt, paramSosoLbsInfo, RedpointHandler.a(this.a));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onLocationFinish errCode:");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(",info:");
+    ((StringBuilder)localObject).append(paramSosoLbsInfo);
+    QLog.d("RedPointLog.RedpointHandler", 1, ((StringBuilder)localObject).toString());
+    localObject = this.a;
+    RedpointHandler.a((RedpointHandler)localObject, paramInt, paramSosoLbsInfo, RedpointHandler.a((RedpointHandler)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.RedpointHandler.1
  * JD-Core Version:    0.7.0.1
  */

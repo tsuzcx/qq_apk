@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import com.tencent.mobileqq.activity.contacts.friend.OnlineStatusIconHelper;
+import com.tencent.mobileqq.friend.status.OnlineStatusIconHelper;
 
 class FriendListHandler$1
   implements Runnable
@@ -15,7 +15,7 @@ class FriendListHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.FriendListHandler.1
  * JD-Core Version:    0.7.0.1
  */

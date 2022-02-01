@@ -28,32 +28,46 @@ public class LocalGameEngine
   
   public static LocalGameEngine g()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new LocalGameEngine();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new LocalGameEngine();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   private void initLocalBaseLibInfo()
   {
     this.mLocalBaseLibInfo = new BaseLibInfo();
-    this.mLocalBaseLibInfo.baseLibUrl = "assets://mini";
-    this.mLocalBaseLibInfo.baseLibVersion = WnsUtil.getGameEngineVersion("1.22.0.00008");
+    Object localObject = this.mLocalBaseLibInfo;
+    ((BaseLibInfo)localObject).baseLibUrl = "assets://mini";
+    ((BaseLibInfo)localObject).baseLibVersion = WnsUtil.getGameEngineVersion("1.22.0.00008");
     QMLog.i("LocalGameEngine", "[MiniEng]initLocalBaseLibInfo start");
     long l = System.currentTimeMillis();
-    QMLog.i("LocalGameEngine", "[MiniEng]initLocalBaseLibInfo cost=" + (System.currentTimeMillis() - l));
-    if (new boolean[] { false }[0] != 0) {}
-    for (this.mLocalBaseLibInfo.baseLibDesc = ("{'file_length':" + new long[] { 0L }[0] + "}");; this.mLocalBaseLibInfo.baseLibDesc = "{'file_length':-1}")
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[MiniEng]initLocalBaseLibInfo cost=");
+    ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+    QMLog.i("LocalGameEngine", ((StringBuilder)localObject).toString());
+    if (new boolean[] { false }[0] != 0)
     {
-      this.mLocalBaseLibInfo.baseLibKey = null;
-      this.mLocalBaseLibInfo.baseLibType = 2;
-      return;
+      localObject = this.mLocalBaseLibInfo;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("{'file_length':");
+      localStringBuilder.append(new long[] { 0L }[0]);
+      localStringBuilder.append("}");
+      ((BaseLibInfo)localObject).baseLibDesc = localStringBuilder.toString();
     }
+    else
+    {
+      this.mLocalBaseLibInfo.baseLibDesc = "{'file_length':-1}";
+    }
+    localObject = this.mLocalBaseLibInfo;
+    ((BaseLibInfo)localObject).baseLibKey = null;
+    ((BaseLibInfo)localObject).baseLibType = 2;
   }
   
   private void initLocalEngineVersion()
@@ -64,7 +78,10 @@ public class LocalGameEngine
   private boolean isQQSpeedPackage()
   {
     String str = AppLoaderFactory.g().getContext().getPackageName();
-    QMLog.i("LocalGameEngine", "[MiniEng]isQQSpeedPackage " + str);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[MiniEng]isQQSpeedPackage ");
+    localStringBuilder.append(str);
+    QMLog.i("LocalGameEngine", localStringBuilder.toString());
     return (!TextUtils.isEmpty(str)) && (str.toLowerCase().startsWith("com.tencent.qqlite"));
   }
   
@@ -80,7 +97,7 @@ public class LocalGameEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.LocalGameEngine
  * JD-Core Version:    0.7.0.1
  */

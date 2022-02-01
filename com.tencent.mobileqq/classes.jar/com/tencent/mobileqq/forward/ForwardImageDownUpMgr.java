@@ -18,18 +18,15 @@ public class ForwardImageDownUpMgr
   
   public static String a(String paramString)
   {
-    if (jdField_a_of_type_ComTencentMobileqqForwardForwardImageDownUpMgr == null) {
-      paramString = null;
+    ForwardImageDownUpMgr localForwardImageDownUpMgr = jdField_a_of_type_ComTencentMobileqqForwardForwardImageDownUpMgr;
+    if (localForwardImageDownUpMgr == null) {
+      return null;
     }
-    String str;
-    do
-    {
-      return paramString;
-      str = (String)jdField_a_of_type_ComTencentMobileqqForwardForwardImageDownUpMgr.jdField_a_of_type_JavaUtilMap.remove(paramString);
-      paramString = str;
-    } while (!jdField_a_of_type_ComTencentMobileqqForwardForwardImageDownUpMgr.jdField_a_of_type_JavaUtilMap.isEmpty());
-    jdField_a_of_type_ComTencentMobileqqForwardForwardImageDownUpMgr = null;
-    return str;
+    paramString = (String)localForwardImageDownUpMgr.jdField_a_of_type_JavaUtilMap.remove(paramString);
+    if (jdField_a_of_type_ComTencentMobileqqForwardForwardImageDownUpMgr.jdField_a_of_type_JavaUtilMap.isEmpty()) {
+      jdField_a_of_type_ComTencentMobileqqForwardForwardImageDownUpMgr = null;
+    }
+    return paramString;
   }
   
   public void a(String paramString1, String paramString2)
@@ -39,7 +36,7 @@ public class ForwardImageDownUpMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardImageDownUpMgr
  * JD-Core Version:    0.7.0.1
  */

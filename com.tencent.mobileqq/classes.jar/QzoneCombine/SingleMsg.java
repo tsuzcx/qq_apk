@@ -44,18 +44,20 @@ public final class SingleMsg
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.addTime, 0);
-    if (this.data != null) {
-      paramJceOutputStream.write(this.data, 1);
+    Object localObject = this.data;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 1);
     }
     paramJceOutputStream.write(this.opUin, 2);
-    if (this.extBuffer != null) {
-      paramJceOutputStream.write(this.extBuffer, 3);
+    localObject = this.extBuffer;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QzoneCombine.SingleMsg
  * JD-Core Version:    0.7.0.1
  */

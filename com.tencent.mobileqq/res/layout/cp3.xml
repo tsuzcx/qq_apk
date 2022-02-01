@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/nqc" android:paddingTop="13.5dip" android:paddingBottom="13.5dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:layout_width="fill_parent" android:layout_height="60.0dip" />
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.widget.pull2refresh.XRecyclerView android:orientation="vertical" android:id="@id/ooh" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <include android:id="@id/n4j" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/acb" />
-        <include android:id="@id/eep" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/acc" />
-        <FrameLayout android:id="@id/n7k" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </FrameLayout>
-</LinearLayout>
+    <TextView android:textSize="14.0sp" android:textColor="#7fffffff" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/ofr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:lines="1" android:drawableLeft="@drawable/e7u" android:drawablePadding="2.0dip" android:layout_toLeftOf="@id/nby" android:layout_alignParentLeft="true" />
+    <ImageView android:id="@id/nby" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginRight="14.0dip" android:src="@drawable/ij3" android:scaleType="centerInside" android:layout_alignParentRight="true" />
+</RelativeLayout>

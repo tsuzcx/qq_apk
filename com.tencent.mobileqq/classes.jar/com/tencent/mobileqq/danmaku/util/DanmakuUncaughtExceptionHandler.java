@@ -5,12 +5,15 @@ public class DanmakuUncaughtExceptionHandler
 {
   public void uncaughtException(Thread paramThread, Throwable paramThrowable)
   {
-    Logger.a("DanmakuManager", "danmaku crash thread:" + paramThread.getName(), paramThrowable);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("danmaku crash thread:");
+    localStringBuilder.append(paramThread.getName());
+    Logger.a("DanmakuManager", localStringBuilder.toString(), paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.util.DanmakuUncaughtExceptionHandler
  * JD-Core Version:    0.7.0.1
  */

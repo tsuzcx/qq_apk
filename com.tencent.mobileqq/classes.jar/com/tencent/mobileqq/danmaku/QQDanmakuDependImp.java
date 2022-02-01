@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.danmaku;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Looper;
-import com.tencent.common.app.BaseApplicationImpl;
 import java.lang.reflect.Field;
+import mqq.app.MobileQQ;
 
 public class QQDanmakuDependImp
   implements IDanmakuDepend
@@ -14,7 +15,7 @@ public class QQDanmakuDependImp
   
   public Resources a()
   {
-    return BaseApplicationImpl.getApplication().getResources();
+    return MobileQQ.sMobileQQ.getApplicationContext().getResources();
   }
   
   public Handler a()
@@ -58,7 +59,7 @@ public class QQDanmakuDependImp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.QQDanmakuDependImp
  * JD-Core Version:    0.7.0.1
  */

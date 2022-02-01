@@ -10,11 +10,16 @@ class MultiDynamicContainer$ContainerClassLoader
   private String apkFilePath;
   private String containerKey;
   
-  public MultiDynamicContainer$ContainerClassLoader(String paramString, InstalledApk paramInstalledApk, ClassLoader paramClassLoader) {}
+  public MultiDynamicContainer$ContainerClassLoader(String paramString, InstalledApk paramInstalledApk, ClassLoader paramClassLoader)
+  {
+    super(str, localFile, paramInstalledApk.libraryPath, paramClassLoader);
+    this.containerKey = paramString;
+    this.apkFilePath = paramInstalledApk.apkFilePath;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.shadow.dynamic.host.MultiDynamicContainer.ContainerClassLoader
  * JD-Core Version:    0.7.0.1
  */

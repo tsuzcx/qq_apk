@@ -15,8 +15,12 @@ class UpgradeDetailActivity$TroopSeedWebViewClient
   
   public void onPageFinished(WebView paramWebView, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "onPageFinished: " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPageFinished: ");
+      localStringBuilder.append(paramString);
+      QLog.d("UpgradeDetailActivity", 2, localStringBuilder.toString());
     }
     this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
     super.onPageFinished(paramWebView, paramString);
@@ -25,8 +29,12 @@ class UpgradeDetailActivity$TroopSeedWebViewClient
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
     JsInjector.getInstance().onPageStarted(paramWebView);
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "onPageStarted: " + paramString);
+    if (QLog.isColorLevel())
+    {
+      paramWebView = new StringBuilder();
+      paramWebView.append("onPageStarted: ");
+      paramWebView.append(paramString);
+      QLog.d("UpgradeDetailActivity", 2, paramWebView.toString());
     }
     if (this.a.a(paramString)) {
       this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
@@ -48,22 +56,22 @@ class UpgradeDetailActivity$TroopSeedWebViewClient
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "shouldOverrideUrlLoading: " + paramString);
-    }
-    if ((paramString == null) || ("".equals(paramString)) || ("about:blank;".equals(paramString)) || ("about:blank".equals(paramString))) {}
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      return true;
-      if ((!UpgradeDetailActivity.a(this.a).a(paramWebView, paramString)) && (!this.a.a(paramString))) {
-        this.a.a(paramString);
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("shouldOverrideUrlLoading: ");
+      localStringBuilder.append(paramString);
+      QLog.d("UpgradeDetailActivity", 2, localStringBuilder.toString());
     }
+    if ((paramString != null) && (!"".equals(paramString)) && (!"about:blank;".equals(paramString)) && (!"about:blank".equals(paramString)) && (!UpgradeDetailActivity.a(this.a).a(paramWebView, paramString)) && (!this.a.a(paramString))) {
+      this.a.a(paramString);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity.TroopSeedWebViewClient
  * JD-Core Version:    0.7.0.1
  */

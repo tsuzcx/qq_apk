@@ -76,9 +76,9 @@ public class ShopFolderAdapter
     this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptPicManager = new SubscriptPicManager();
     this.jdField_a_of_type_ComTencentWidgetSwipListView = paramSwipListView;
     this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool = paramEcshopCacheTool;
-    paramContext = View.inflate(paramContext, 2131562052, null);
-    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131366344);
-    paramContext.findViewById(2131363998).setOnClickListener(new ShopFolderAdapter.1(this, paramString));
+    paramContext = View.inflate(paramContext, 2131561885, null);
+    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131366232);
+    paramContext.findViewById(2131363925).setOnClickListener(new ShopFolderAdapter.1(this, paramString));
     this.jdField_a_of_type_ComTencentWidgetSwipListView.addFooterView(paramContext);
   }
   
@@ -86,9 +86,10 @@ public class ShopFolderAdapter
   {
     this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptPicManager.a();
     this.jdField_a_of_type_ComTencentWidgetSwipListView = null;
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList != null)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
+      localList.clear();
       this.jdField_a_of_type_JavaUtilList = null;
     }
     this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool = null;
@@ -96,70 +97,76 @@ public class ShopFolderAdapter
   
   public void a(RecentShopParcel paramRecentShopParcel)
   {
-    if ((paramRecentShopParcel == null) || (TextUtils.isEmpty(paramRecentShopParcel.jdField_a_of_type_JavaLangString))) {}
-    do
+    Object localObject;
+    if (paramRecentShopParcel != null)
     {
-      return;
-      if (paramRecentShopParcel.jdField_c_of_type_Int != 1) {
-        break;
+      if (TextUtils.isEmpty(paramRecentShopParcel.jdField_a_of_type_JavaLangString)) {
+        return;
       }
-      paramRecentShopParcel = ((EcshopWebActivity)this.jdField_a_of_type_AndroidContentContext).jdField_b_of_type_JavaLangString;
-    } while (TextUtils.isEmpty(paramRecentShopParcel));
-    Object localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", paramRecentShopParcel);
-    ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
-    this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+      if (paramRecentShopParcel.jdField_c_of_type_Int == 1)
+      {
+        paramRecentShopParcel = ((EcshopWebActivity)this.jdField_a_of_type_AndroidContentContext).jdField_b_of_type_JavaLangString;
+        if (TextUtils.isEmpty(paramRecentShopParcel)) {
+          return;
+        }
+        localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        ((Intent)localObject).putExtra("url", paramRecentShopParcel);
+        ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
+        this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+      }
+    }
     try
     {
       this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopReportHandler.a(134246437, null, null, null, null, ((EcshopWebActivity)this.jdField_a_of_type_AndroidContentContext).jdField_a_of_type_Long, false);
       return;
     }
-    catch (Exception paramRecentShopParcel)
-    {
-      return;
-    }
-    int i = paramRecentShopParcel.jdField_b_of_type_Int;
+    catch (Exception paramRecentShopParcel) {}
+    int j = paramRecentShopParcel.jdField_b_of_type_Int;
     String str = paramRecentShopParcel.jdField_a_of_type_JavaLangString;
     Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, ChatActivity.class);
     localIntent.putExtra("uintype", 1008);
     localIntent.putExtra("uin", str);
     localIntent.putExtra("uinname", paramRecentShopParcel.jdField_b_of_type_JavaLangString);
     localIntent.putExtra("start_time", System.currentTimeMillis());
-    localIntent.putExtra("red_hot_count", i);
+    localIntent.putExtra("red_hot_count", j);
     localIntent.putExtra("jump_from", 1);
+    int i = 0;
     boolean bool;
+    if (j > 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localIntent.putExtra("has_unread_msg", bool);
+    paramRecentShopParcel.jdField_b_of_type_Int = 0;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.c.get(str) != null) {
+      i = ((Integer)this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.c.get(str)).intValue();
+    }
     if (i > 0)
     {
-      bool = true;
-      localIntent.putExtra("has_unread_msg", bool);
-      paramRecentShopParcel.jdField_b_of_type_Int = 0;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.c.get(str) != null) {
-        break label375;
-      }
-      i = 0;
-      label242:
-      if (i > 0)
+      if (i / 1000 > 0)
       {
-        if (i / 1000 <= 0) {
-          break label399;
-        }
         localObject = new BigDecimal(i / 1000.0F);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131694387));
+        localStringBuilder.append(((BigDecimal)localObject).setScale(1, 4).floatValue());
+        localStringBuilder.append("km");
+        localObject = localStringBuilder.toString();
       }
-    }
-    label399:
-    for (localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131694422) + ((BigDecimal)localObject).setScale(1, 4).floatValue() + "km";; localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131694422) + i + "m")
-    {
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidContentContext.getString(2131694387));
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append("m");
+        localObject = ((StringBuilder)localObject).toString();
+      }
       localIntent.putExtra("pub_account_type", "type_ecshop_account");
       localIntent.putExtra("ecshop_distance_tip", (String)localObject);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      ReportController.b(null, "P_CliOper", "Shop_lifeservice", "", "Shop_helper", "Clk_shopItem", 0, 0, str, "", paramRecentShopParcel.jdField_b_of_type_JavaLangString, "");
-      return;
-      bool = false;
-      break;
-      label375:
-      i = ((Integer)this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.c.get(str)).intValue();
-      break label242;
     }
+    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    ReportController.b(null, "P_CliOper", "Shop_lifeservice", "", "Shop_helper", "Clk_shopItem", 0, 0, str, "", paramRecentShopParcel.jdField_b_of_type_JavaLangString, "");
+    return;
   }
   
   public void a(DragFrameLayout paramDragFrameLayout)
@@ -169,33 +176,28 @@ public class ShopFolderAdapter
   
   public void a(String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetSwipListView == null) || (TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool == null)) {
-      return;
-    }
-    int i = this.jdField_a_of_type_ComTencentWidgetSwipListView.getFirstVisiblePosition();
-    int j = this.jdField_a_of_type_ComTencentWidgetSwipListView.getLastVisiblePosition();
-    label38:
-    Object localObject;
-    if (i <= j)
+    if ((this.jdField_a_of_type_ComTencentWidgetSwipListView != null) && (!TextUtils.isEmpty(paramString)))
     {
-      localObject = this.jdField_a_of_type_ComTencentWidgetSwipListView.getChildAt(i);
-      if (localObject != null) {
-        break label65;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool == null) {
+        return;
       }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label38;
-      break;
-      label65:
-      localObject = (ShopFolderAdapter.EcshopHolder)((View)localObject).getTag();
-      if ((localObject != null) && (paramString.equals(((ShopFolderAdapter.EcshopHolder)localObject).jdField_a_of_type_JavaLangString)))
+      int i = this.jdField_a_of_type_ComTencentWidgetSwipListView.getFirstVisiblePosition();
+      int j = this.jdField_a_of_type_ComTencentWidgetSwipListView.getLastVisiblePosition();
+      while (i <= j)
       {
-        Bitmap localBitmap = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.a(paramString);
-        if (localBitmap != null) {
-          ((ShopFolderAdapter.EcshopHolder)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+        Object localObject = this.jdField_a_of_type_ComTencentWidgetSwipListView.getChildAt(i);
+        if (localObject != null)
+        {
+          localObject = (ShopFolderAdapter.EcshopHolder)((View)localObject).getTag();
+          if ((localObject != null) && (paramString.equals(((ShopFolderAdapter.EcshopHolder)localObject).jdField_a_of_type_JavaLangString)))
+          {
+            Bitmap localBitmap = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.a(paramString);
+            if (localBitmap != null) {
+              ((ShopFolderAdapter.EcshopHolder)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+            }
+          }
         }
+        i += 1;
       }
     }
   }
@@ -204,41 +206,54 @@ public class ShopFolderAdapter
   {
     if ((paramList != null) && (!paramList.isEmpty())) {
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaUtilList = paramList;
-      notifyDataSetChanged();
-      return;
+    } else {
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    notifyDataSetChanged();
   }
   
   public boolean a(ImageView paramImageView)
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetSwipListView == null) || (paramImageView == null)) {
-      return false;
+    SwipListView localSwipListView = this.jdField_a_of_type_ComTencentWidgetSwipListView;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localSwipListView != null)
+    {
+      if (paramImageView == null) {
+        return false;
+      }
+      int i = ((Integer)paramImageView.getTag(2131374763)).intValue();
+      int j = this.jdField_a_of_type_ComTencentWidgetSwipListView.getFirstVisiblePosition();
+      int k = this.jdField_a_of_type_ComTencentWidgetSwipListView.getLastVisiblePosition();
+      bool1 = bool2;
+      if (i >= j)
+      {
+        bool1 = bool2;
+        if (i <= k) {
+          bool1 = true;
+        }
+      }
     }
-    int i = ((Integer)paramImageView.getTag(2131375249)).intValue();
-    int j = this.jdField_a_of_type_ComTencentWidgetSwipListView.getFirstVisiblePosition();
-    int k = this.jdField_a_of_type_ComTencentWidgetSwipListView.getLastVisiblePosition();
-    return (i >= j) && (i <= k);
+    return bool1;
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList == null) {
       return 0;
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return localList.size();
   }
   
   public Object getItem(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList == null) {
       return null;
     }
-    return (RecentShopParcel)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return localList.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -248,114 +263,136 @@ public class ShopFolderAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    Object localObject1 = null;
     ShopFolderAdapter.EcshopHolder localEcshopHolder;
-    Object localObject1;
     float f;
     if (paramView == null)
     {
       localEcshopHolder = new ShopFolderAdapter.EcshopHolder(this);
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562054, null);
-      localEcshopHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368603));
-      localEcshopHolder.jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[] { (ImageView)paramView.findViewById(2131368866), (ImageView)paramView.findViewById(2131368867), (ImageView)paramView.findViewById(2131368868) };
-      localEcshopHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131372115));
-      localEcshopHolder.b = ((SingleLineTextView)paramView.findViewById(2131371908));
-      localEcshopHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131380941));
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561887, null);
+      localEcshopHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368343));
+      localEcshopHolder.jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[] { (ImageView)paramView.findViewById(2131368592), (ImageView)paramView.findViewById(2131368593), (ImageView)paramView.findViewById(2131368594) };
+      localEcshopHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131371697));
+      localEcshopHolder.b = ((SingleLineTextView)paramView.findViewById(2131371529));
+      localEcshopHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131380207));
       localEcshopHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0, paramView);
       localEcshopHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
-      localEcshopHolder.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131371178));
-      localEcshopHolder.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366104);
-      localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131167127);
-      localEcshopHolder.b.setExtendTextColor((ColorStateList)localObject1, 0);
+      localEcshopHolder.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131370802));
+      localEcshopHolder.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366021);
+      localObject2 = this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131167152);
+      localEcshopHolder.b.setExtendTextColor((ColorStateList)localObject2, 0);
       localEcshopHolder.b.setExtendTextSize(12.0F, 0);
       f = DeviceInfoUtil.a();
       localEcshopHolder.b.setExtendTextPadding((int)(f * 5.0F), 2);
       paramView.setTag(localEcshopHolder);
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool != null) && (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.jdField_a_of_type_Boolean))
+      localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool;
+      if ((localObject2 != null) && (((EcshopCacheTool)localObject2).jdField_a_of_type_Boolean))
       {
-        paramView.findViewById(2131365922).setVisibility(0);
-        localObject1 = new ColorStateList(new int[][] { new int[0] }, new int[] { -8947849 });
-        paramView.findViewById(2131366104).setBackgroundResource(2130847465);
-        localEcshopHolder.b.setExtendTextColor((ColorStateList)localObject1, 0);
+        paramView.findViewById(2131365759).setVisibility(0);
+        localObject2 = new ColorStateList(new int[][] { new int[0] }, new int[] { -8947849 });
+        paramView.findViewById(2131366021).setBackgroundResource(2130847334);
+        localEcshopHolder.b.setExtendTextColor((ColorStateList)localObject2, 0);
         localEcshopHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(Color.parseColor("#FF777777"));
         localEcshopHolder.b.setTextColor(Color.parseColor("#FF000000"));
       }
     }
-    Object localObject2;
-    for (;;)
+    else
     {
-      localObject2 = (RecentShopParcel)getItem(paramInt);
-      if (localObject2 != null) {
-        break;
-      }
-      localObject1 = null;
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject1;
       localEcshopHolder = (ShopFolderAdapter.EcshopHolder)paramView.getTag();
     }
-    int i;
-    label420:
-    label606:
-    int j;
-    if (((RecentShopParcel)localObject2).jdField_b_of_type_Long > ((RecentShopParcel)localObject2).jdField_a_of_type_Long)
+    Object localObject2 = (RecentShopParcel)getItem(paramInt);
+    Object localObject3;
+    Object localObject4;
+    if (localObject2 != null)
     {
-      i = 1;
+      int i;
+      if (((RecentShopParcel)localObject2).jdField_b_of_type_Long > ((RecentShopParcel)localObject2).jdField_a_of_type_Long) {
+        i = 1;
+      } else {
+        i = 0;
+      }
       localEcshopHolder.jdField_a_of_type_JavaLangString = ((RecentShopParcel)localObject2).jdField_a_of_type_JavaLangString;
-      if (((RecentShopParcel)localObject2).jdField_a_of_type_Int == 0) {
-        break label1372;
+      if (((RecentShopParcel)localObject2).jdField_a_of_type_Int != 0)
+      {
+        localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(((RecentShopParcel)localObject2).jdField_a_of_type_Int);
+        localEcshopHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding(AIOUtils.b(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+        ((Drawable)localObject1).setBounds(0, 0, AIOUtils.b(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+        localEcshopHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, (Drawable)localObject1);
       }
-      localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(((RecentShopParcel)localObject2).jdField_a_of_type_Int);
-      localEcshopHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding(AIOUtils.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      ((Drawable)localObject1).setBounds(0, 0, AIOUtils.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      localEcshopHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, (Drawable)localObject1);
-      label520:
+      else
+      {
+        localEcshopHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, null);
+      }
       localObject1 = (String)this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.d.get(((RecentShopParcel)localObject2).jdField_a_of_type_JavaLangString);
-      if ((TextUtils.isEmpty((CharSequence)localObject1)) || (!this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.a((String)localObject1))) {
-        break label1385;
+      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.a((String)localObject1)))
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(((RecentShopParcel)localObject2).jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject3).append("(");
+        ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.a((String)localObject1));
+        ((StringBuilder)localObject3).append(")");
+        localObject1 = ((StringBuilder)localObject3).toString();
       }
-      localObject1 = ((RecentShopParcel)localObject2).jdField_b_of_type_JavaLangString + "(" + this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.a((String)localObject1) + ")";
+      else
+      {
+        localObject1 = ((RecentShopParcel)localObject2).jdField_b_of_type_JavaLangString;
+      }
       localEcshopHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText((CharSequence)localObject1);
       localEcshopHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendText("", 1);
-      if (TextUtils.isEmpty(((RecentShopParcel)localObject2).jdField_c_of_type_JavaLangString)) {
-        break label1395;
+      if (!TextUtils.isEmpty(((RecentShopParcel)localObject2).jdField_c_of_type_JavaLangString)) {
+        localEcshopHolder.b.setExtendText(((RecentShopParcel)localObject2).jdField_c_of_type_JavaLangString, 0);
+      } else {
+        localEcshopHolder.b.setExtendText("", 0);
       }
-      localEcshopHolder.b.setExtendText(((RecentShopParcel)localObject2).jdField_c_of_type_JavaLangString, 0);
-      label652:
       localEcshopHolder.b.setExtendText(" ", 2);
-      if (((RecentShopParcel)localObject2).jdField_b_of_type_Int <= 0) {
-        break label1409;
+      int j;
+      if (((RecentShopParcel)localObject2).jdField_b_of_type_Int > 0) {
+        j = 3;
+      } else {
+        j = 0;
       }
-      j = 3;
-      label675:
-      CustomWidgetUtil.a(localEcshopHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, j, ((RecentShopParcel)localObject2).jdField_b_of_type_Int, 2130850834, 99, null);
-      localEcshopHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(2131375248, localObject2);
+      CustomWidgetUtil.a(localEcshopHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, j, ((RecentShopParcel)localObject2).jdField_b_of_type_Int, 2130850770, 99, null);
+      localEcshopHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(2131374762, localObject2);
       localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.a(((RecentShopParcel)localObject2).jdField_a_of_type_JavaLangString);
-      if (localObject1 == null) {
-        break label1415;
+      if (localObject1 != null) {
+        localEcshopHolder.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject1);
+      } else {
+        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.a(this.jdField_a_of_type_AndroidContentContext, ((RecentShopParcel)localObject2).jdField_a_of_type_JavaLangString);
       }
-      localEcshopHolder.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject1);
-      label738:
       localEcshopHolder.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
       localEcshopHolder.jdField_a_of_type_AndroidWidgetImageView.setTag(-1, Integer.valueOf(paramInt));
-      localEcshopHolder.jdField_a_of_type_AndroidWidgetImageView.setTag(2131375248, localObject2);
+      localEcshopHolder.jdField_a_of_type_AndroidWidgetImageView.setTag(2131374762, localObject2);
       if ((this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.c != null) && (!this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.c.isEmpty()) && (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.c.get(((RecentShopParcel)localObject2).jdField_a_of_type_JavaLangString) != null)) {
-        break label1434;
+        j = ((Integer)this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.c.get(((RecentShopParcel)localObject2).jdField_a_of_type_JavaLangString)).intValue();
+      } else {
+        j = 0;
       }
-      j = 0;
-      label821:
-      if (j <= 0) {
-        break label1778;
+      if (j > 0)
+      {
+        if (j / 1000 > 0)
+        {
+          localObject1 = new BigDecimal(j / 1000.0F);
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("[");
+          ((StringBuilder)localObject3).append(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131694387));
+          ((StringBuilder)localObject3).append(((BigDecimal)localObject1).setScale(1, 4).floatValue());
+          ((StringBuilder)localObject3).append("km]");
+          localObject1 = ((StringBuilder)localObject3).toString();
+        }
+        else
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("[");
+          ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131694387));
+          ((StringBuilder)localObject1).append(j);
+          ((StringBuilder)localObject1).append("m]");
+          localObject1 = ((StringBuilder)localObject1).toString();
+        }
       }
-      if (j / 1000 <= 0) {
-        break label1462;
+      else {
+        localObject1 = "";
       }
-      localObject1 = new BigDecimal(j / 1000.0F);
-      localObject1 = "[" + this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131694422) + ((BigDecimal)localObject1).setScale(1, 4).floatValue() + "km]";
-    }
-    for (;;)
-    {
-      label903:
-      Object localObject3 = new QQText(String.valueOf(((RecentShopParcel)localObject2).d).replaceFirst("^\\s+", ""), 3, 20);
-      Object localObject4;
+      localObject3 = new QQText(String.valueOf(((RecentShopParcel)localObject2).d).replaceFirst("^\\s+", ""), 3, 20);
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
         localObject4 = new SpannableString((CharSequence)localObject1);
@@ -364,101 +401,26 @@ public class ShopFolderAdapter
         ((SpannableStringBuilder)localObject1).append((CharSequence)localObject4);
         ((SpannableStringBuilder)localObject1).append((CharSequence)localObject3);
         localEcshopHolder.b.setText((CharSequence)localObject1);
-        label1018:
-        if (i == 0) {
-          break label1522;
-        }
-        localEcshopHolder.b.setCompoundDrawablesWithIntrinsicBounds(2130839676, 0);
-        label1035:
-        localEcshopHolder.jdField_a_of_type_AndroidWidgetButton.setTag(2131375248, localObject2);
-        localEcshopHolder.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-        f = AIOUtils.a(65.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        if ((!TextUtils.isEmpty(((RecentShopParcel)localObject2).e)) && (i == 0)) {
-          break label1535;
-        }
-        paramView.findViewById(2131368991).setVisibility(8);
-        label1101:
-        localEcshopHolder.jdField_a_of_type_AndroidViewView.setTag(2131375248, localObject2);
-        localEcshopHolder.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-        paramView.setTag(-3, Integer.valueOf((int)f));
-        localObject1 = (LinearLayout.LayoutParams)localEcshopHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getLayoutParams();
-        if (((RecentShopParcel)localObject2).jdField_c_of_type_Int != 1) {
-          break label1728;
-        }
-        localEcshopHolder.b.setExtendText("", 0);
-        localEcshopHolder.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-        localObject3 = (ImageButton)paramView.findViewById(2131363964);
-        ((ImageButton)localObject3).setVisibility(0);
-        ((ImageButton)localObject3).setTag(2131375248, localObject2);
-        ((ImageButton)localObject3).setOnClickListener(this);
-        localObject3 = ((EcshopWebActivity)this.jdField_a_of_type_AndroidContentContext).jdField_a_of_type_JavaLangString;
-        if (!TextUtils.isEmpty((CharSequence)localObject3))
-        {
-          localObject2 = (URLImageView)paramView.findViewById(2131362119);
-          localObject4 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839647);
-        }
       }
-      label1318:
-      label1372:
-      label1385:
-      label1522:
-      try
+      else
       {
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject4);
-        localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject4);
-        localObject3 = URLDrawable.getDrawable((String)localObject3, localURLDrawableOptions);
-        if (localObject3 != null)
-        {
-          if (((URLDrawable)localObject3).getStatus() == 2) {
-            ((URLDrawable)localObject3).restartDownload();
-          }
-          ((URLImageView)localObject2).setImageDrawable((Drawable)localObject3);
-          ((URLImageView)localObject2).setVisibility(0);
-        }
-      }
-      catch (Exception localException)
-      {
-        label1395:
-        label1535:
-        break label1318;
-      }
-      for (((LinearLayout.LayoutParams)localObject1).rightMargin = AIOUtils.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources());; ((LinearLayout.LayoutParams)localObject1).rightMargin = AIOUtils.a(45.0F, this.jdField_a_of_type_AndroidContentContext.getResources()))
-      {
-        localEcshopHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        paramView.setOnClickListener(this);
-        paramView.setTag(-1, Integer.valueOf(paramInt));
-        localObject1 = paramView;
-        break;
-        i = 0;
-        break label420;
-        localEcshopHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, null);
-        break label520;
-        localObject1 = ((RecentShopParcel)localObject2).jdField_b_of_type_JavaLangString;
-        break label606;
-        localEcshopHolder.b.setExtendText("", 0);
-        break label652;
-        label1409:
-        j = 0;
-        break label675;
-        label1415:
-        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.a(this.jdField_a_of_type_AndroidContentContext, ((RecentShopParcel)localObject2).jdField_a_of_type_JavaLangString);
-        break label738;
-        label1434:
-        j = ((Integer)this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.c.get(((RecentShopParcel)localObject2).jdField_a_of_type_JavaLangString)).intValue();
-        break label821;
-        label1462:
-        localObject1 = "[" + this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131694422) + j + "m]";
-        break label903;
         localEcshopHolder.b.setText((CharSequence)localObject3);
-        break label1018;
+      }
+      if (i != 0) {
+        localEcshopHolder.b.setCompoundDrawablesWithIntrinsicBounds(2130839534, 0);
+      } else {
         localEcshopHolder.b.setCompoundDrawablesWithIntrinsicBounds(0, 0);
-        break label1035;
+      }
+      localEcshopHolder.jdField_a_of_type_AndroidWidgetButton.setTag(2131374762, localObject2);
+      localEcshopHolder.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+      f = AIOUtils.b(65.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      if ((!TextUtils.isEmpty(((RecentShopParcel)localObject2).e)) && (i == 0))
+      {
         localObject1 = new ArrayList(Arrays.asList(((RecentShopParcel)localObject2).e.split(",")));
         i = 0;
         while (i < 3)
         {
-          localEcshopHolder.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setTag(2131375249, Integer.valueOf(paramInt));
+          localEcshopHolder.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setTag(2131374763, Integer.valueOf(paramInt));
           localObject3 = localEcshopHolder.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].getLayoutParams();
           j = this.jdField_a_of_type_Int;
           ((ViewGroup.LayoutParams)localObject3).width = j;
@@ -470,30 +432,91 @@ public class ShopFolderAdapter
           this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptPicManager.a(((IPublicAccountHttpDownloader)QRoute.api(IPublicAccountHttpDownloader.class)).makeURL((String)((List)localObject1).get(i), 1), localEcshopHolder.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i], ((ViewGroup.LayoutParams)localObject3).width, ((ViewGroup.LayoutParams)localObject3).height, this);
           i += 1;
         }
-        paramView.findViewById(2131368991).setVisibility(0);
-        break label1101;
-        label1728:
-        paramView.findViewById(2131363964).setVisibility(8);
-        paramView.findViewById(2131362119).setVisibility(8);
+        paramView.findViewById(2131368713).setVisibility(0);
       }
-      label1778:
-      localObject1 = "";
+      else
+      {
+        paramView.findViewById(2131368713).setVisibility(8);
+      }
+      localEcshopHolder.jdField_a_of_type_AndroidViewView.setTag(2131374762, localObject2);
+      localEcshopHolder.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+      paramView.setTag(-3, Integer.valueOf((int)f));
+      localObject1 = (LinearLayout.LayoutParams)localEcshopHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getLayoutParams();
+      if (((RecentShopParcel)localObject2).jdField_c_of_type_Int == 1)
+      {
+        localEcshopHolder.b.setExtendText("", 0);
+        localEcshopHolder.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+        localObject3 = (ImageButton)paramView.findViewById(2131363891);
+        ((ImageButton)localObject3).setVisibility(0);
+        ((ImageButton)localObject3).setTag(2131374762, localObject2);
+        ((ImageButton)localObject3).setOnClickListener(this);
+        localObject3 = ((EcshopWebActivity)this.jdField_a_of_type_AndroidContentContext).jdField_a_of_type_JavaLangString;
+        if (!TextUtils.isEmpty((CharSequence)localObject3))
+        {
+          localObject2 = (URLImageView)paramView.findViewById(2131362150);
+          localObject4 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839505);
+        }
+      }
     }
+    try
+    {
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject4);
+      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject4);
+      localObject3 = URLDrawable.getDrawable((String)localObject3, localURLDrawableOptions);
+      if (localObject3 != null)
+      {
+        if (((URLDrawable)localObject3).getStatus() == 2) {
+          ((URLDrawable)localObject3).restartDownload();
+        }
+        ((URLImageView)localObject2).setImageDrawable((Drawable)localObject3);
+        ((URLImageView)localObject2).setVisibility(0);
+      }
+    }
+    catch (Exception localException)
+    {
+      label1734:
+      break label1734;
+    }
+    ((LinearLayout.LayoutParams)localObject1).rightMargin = AIOUtils.b(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    break label1797;
+    paramView.findViewById(2131363891).setVisibility(8);
+    paramView.findViewById(2131362150).setVisibility(8);
+    ((LinearLayout.LayoutParams)localObject1).rightMargin = AIOUtils.b(45.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    label1797:
+    localEcshopHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+    paramView.setOnClickListener(this);
+    paramView.setTag(-1, Integer.valueOf(paramInt));
+    localObject1 = paramView;
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localObject1;
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    RecentShopParcel localRecentShopParcel = (RecentShopParcel)paramView.getTag(2131375248);
-    if (i == 2131366104) {
+    RecentShopParcel localRecentShopParcel = (RecentShopParcel)paramView.getTag(2131374762);
+    if (i == 2131366021)
+    {
       a(localRecentShopParcel);
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       Object localObject;
-      if ((i == 2131371178) || (i == 2131363964))
+      if ((i != 2131370802) && (i != 2131363891))
+      {
+        if (i == 2131368343)
+        {
+          localObject = new ActivityURIRequest(this.jdField_a_of_type_AndroidContentContext, "/pubaccount/detail");
+          ((ActivityURIRequest)localObject).extra().putString("uin", localRecentShopParcel.jdField_a_of_type_JavaLangString);
+          ((ActivityURIRequest)localObject).extra().putString("report_src_param_type", "");
+          ((ActivityURIRequest)localObject).extra().putString("report_src_param_name", "");
+          ((ActivityURIRequest)localObject).setFlags(67108864);
+          QRoute.startUri((URIRequest)localObject, null);
+          ReportController.b(null, "P_CliOper", "Shop_lifeservice", "", "Shop_helperhead", "Clk_shopItemhead", 0, 0, localRecentShopParcel.jdField_a_of_type_JavaLangString, "", localRecentShopParcel.jdField_b_of_type_JavaLangString, "");
+        }
+      }
+      else
       {
         i = localRecentShopParcel.jdField_b_of_type_Int;
         this.jdField_a_of_type_JavaUtilList.remove(localRecentShopParcel);
@@ -507,22 +530,13 @@ public class ShopFolderAdapter
         ((Intent)localObject).putExtra("unReadNum", i);
         this.jdField_a_of_type_AndroidContentContext.sendBroadcast((Intent)localObject);
       }
-      else if (i == 2131368603)
-      {
-        localObject = new ActivityURIRequest(this.jdField_a_of_type_AndroidContentContext, "/pubaccount/detail");
-        ((ActivityURIRequest)localObject).extra().putString("uin", localRecentShopParcel.jdField_a_of_type_JavaLangString);
-        ((ActivityURIRequest)localObject).extra().putString("report_src_param_type", "");
-        ((ActivityURIRequest)localObject).extra().putString("report_src_param_name", "");
-        ((ActivityURIRequest)localObject).setFlags(67108864);
-        QRoute.startUri((URIRequest)localObject, null);
-        ReportController.b(null, "P_CliOper", "Shop_lifeservice", "", "Shop_helperhead", "Clk_shopItemhead", 0, 0, localRecentShopParcel.jdField_a_of_type_JavaLangString, "", localRecentShopParcel.jdField_b_of_type_JavaLangString, "");
-      }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.ShopFolderAdapter
  * JD-Core Version:    0.7.0.1
  */

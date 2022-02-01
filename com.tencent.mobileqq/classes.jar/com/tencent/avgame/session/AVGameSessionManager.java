@@ -16,37 +16,40 @@ public class AVGameSessionManager
   
   public AVGameSession a(int paramInt, String paramString, boolean paramBoolean)
   {
-    Object localObject = null;
+    AVGameSession localAVGameSession1;
     if (!TextUtils.isEmpty(paramString))
     {
-      AVGameSession localAVGameSession = (AVGameSession)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-      localObject = localAVGameSession;
-      if (localAVGameSession == null)
+      AVGameSession localAVGameSession2 = (AVGameSession)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      localAVGameSession1 = localAVGameSession2;
+      if (localAVGameSession2 == null)
       {
-        localAVGameSession = new AVGameSession(paramInt, paramString);
-        this.jdField_a_of_type_JavaUtilMap.put(paramString, localAVGameSession);
+        localAVGameSession2 = new AVGameSession(paramInt, paramString);
+        this.jdField_a_of_type_JavaUtilMap.put(paramString, localAVGameSession2);
         if (this.jdField_a_of_type_JavaUtilMap.size() != 1)
         {
-          localObject = localAVGameSession;
+          localAVGameSession1 = localAVGameSession2;
           if (!paramBoolean) {}
         }
         else
         {
           a(paramString);
-          localObject = localAVGameSession;
+          return localAVGameSession2;
         }
       }
     }
-    return localObject;
+    else
+    {
+      localAVGameSession1 = null;
+    }
+    return localAVGameSession1;
   }
   
   public AVGameSession a(String paramString)
   {
-    AVGameSession localAVGameSession = null;
     if (!this.jdField_a_of_type_JavaUtilMap.isEmpty()) {
-      localAVGameSession = (AVGameSession)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      return (AVGameSession)this.jdField_a_of_type_JavaUtilMap.get(paramString);
     }
-    return localAVGameSession;
+    return null;
   }
   
   public void a(String paramString)
@@ -54,8 +57,9 @@ public class AVGameSessionManager
     paramString = a(paramString);
     if ((paramString != null) && (!paramString.a))
     {
-      if (this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession != null) {
-        this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession.a = false;
+      AVGameSession localAVGameSession = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession;
+      if (localAVGameSession != null) {
+        localAVGameSession.a = false;
       }
       paramString.a = true;
       this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession = paramString;
@@ -66,20 +70,30 @@ public class AVGameSessionManager
   {
     if (!this.jdField_a_of_type_JavaUtilMap.isEmpty())
     {
-      paramString = (AVGameSession)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-      if ((paramString != null) && (paramString == this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession))
+      AVGameSession localAVGameSession1 = (AVGameSession)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+      paramString = localAVGameSession1;
+      if (localAVGameSession1 != null)
       {
-        this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession.a = false;
-        this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession = null;
+        AVGameSession localAVGameSession2 = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession;
+        paramString = localAVGameSession1;
+        if (localAVGameSession1 == localAVGameSession2)
+        {
+          localAVGameSession2.a = false;
+          this.jdField_a_of_type_ComTencentAvgameSessionAVGameSession = null;
+          return localAVGameSession1;
+        }
       }
-      return paramString;
     }
-    return null;
+    else
+    {
+      paramString = null;
+    }
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.session.AVGameSessionManager
  * JD-Core Version:    0.7.0.1
  */

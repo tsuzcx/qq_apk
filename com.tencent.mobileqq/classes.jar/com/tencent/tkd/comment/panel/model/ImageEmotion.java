@@ -44,15 +44,17 @@ public class ImageEmotion
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (ImageEmotion)paramObject;
-    } while ((ObjectUtil.equals(this.imageShowName, paramObject.imageShowName)) && (ObjectUtil.equals(this.imageUrl, paramObject.imageUrl)) && (ObjectUtil.equals(this.imagePath, paramObject.imagePath)));
+      return (ObjectUtil.equals(this.imageShowName, paramObject.imageShowName)) && (ObjectUtil.equals(this.imageUrl, paramObject.imageUrl)) && (ObjectUtil.equals(this.imagePath, paramObject.imagePath));
+    }
     return false;
   }
   
@@ -63,7 +65,22 @@ public class ImageEmotion
   
   public String toString()
   {
-    return "ImageEmotion{imageShowName='" + this.imageShowName + '\'' + ", imageUrl='" + this.imageUrl + '\'' + ", imagePath='" + this.imagePath + '\'' + ", imageWidth=" + this.imageWidth + ", imageHeight=" + this.imageHeight + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ImageEmotion{imageShowName='");
+    localStringBuilder.append(this.imageShowName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", imageUrl='");
+    localStringBuilder.append(this.imageUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", imagePath='");
+    localStringBuilder.append(this.imagePath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", imageWidth=");
+    localStringBuilder.append(this.imageWidth);
+    localStringBuilder.append(", imageHeight=");
+    localStringBuilder.append(this.imageHeight);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -77,7 +94,7 @@ public class ImageEmotion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.panel.model.ImageEmotion
  * JD-Core Version:    0.7.0.1
  */

@@ -19,53 +19,82 @@ public class GdtImpressionReporter
   
   private static String a(long paramLong1, long paramLong2, boolean paramBoolean, int paramInt, GdtImpressionReporter.GdtVideoReportInfo paramGdtVideoReportInfo)
   {
-    int j = 0;
-    try
+    for (;;)
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("bt", paramLong1 + "");
-      localJSONObject.put("et", paramLong2 + "");
-      StringBuilder localStringBuilder = new StringBuilder();
-      if (paramLong1 > 0L) {}
-      for (int i = 0;; i = 1)
+      try
       {
-        localJSONObject.put("bf", i + "");
+        localObject = new JSONObject();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramLong1);
+        localStringBuilder.append("");
+        ((JSONObject)localObject).put("bt", localStringBuilder.toString());
         localStringBuilder = new StringBuilder();
-        i = j;
-        if (paramBoolean) {
-          i = 1;
+        localStringBuilder.append(paramLong2);
+        localStringBuilder.append("");
+        ((JSONObject)localObject).put("et", localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        int j = 0;
+        if (paramLong1 > 0L)
+        {
+          i = 0;
+          localStringBuilder.append(i);
+          localStringBuilder.append("");
+          ((JSONObject)localObject).put("bf", localStringBuilder.toString());
+          localStringBuilder = new StringBuilder();
+          i = j;
+          if (paramBoolean) {
+            i = 1;
+          }
+          localStringBuilder.append(i);
+          localStringBuilder.append("");
+          ((JSONObject)localObject).put("ef", localStringBuilder.toString());
+          ((JSONObject)localObject).put("pp", String.valueOf(a(paramInt)));
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramGdtVideoReportInfo.a());
+          localStringBuilder.append("");
+          ((JSONObject)localObject).put("pa", localStringBuilder.toString());
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramGdtVideoReportInfo.b());
+          localStringBuilder.append("");
+          ((JSONObject)localObject).put("ft", localStringBuilder.toString());
+          if (paramGdtVideoReportInfo.a()) {
+            ((JSONObject)localObject).put("ps", String.valueOf(paramGdtVideoReportInfo.c()));
+          }
+          paramGdtVideoReportInfo = ((JSONObject)localObject).toString();
+          return paramGdtVideoReportInfo;
         }
-        localJSONObject.put("ef", i + "");
-        localJSONObject.put("pp", String.valueOf(a(paramInt)));
-        localJSONObject.put("pa", paramGdtVideoReportInfo.a() + "");
-        localJSONObject.put("ft", paramGdtVideoReportInfo.b() + "");
-        if (paramGdtVideoReportInfo.a()) {
-          localJSONObject.put("ps", String.valueOf(paramGdtVideoReportInfo.c()));
-        }
-        paramGdtVideoReportInfo = localJSONObject.toString();
-        return paramGdtVideoReportInfo;
       }
-      return null;
-    }
-    catch (JSONException paramGdtVideoReportInfo)
-    {
-      QLog.e("GdtVideoStatisticsReport", 1, "json exception: " + paramGdtVideoReportInfo.getMessage());
+      catch (JSONException paramGdtVideoReportInfo)
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("json exception: ");
+        ((StringBuilder)localObject).append(paramGdtVideoReportInfo.getMessage());
+        QLog.e("GdtVideoStatisticsReport", 1, ((StringBuilder)localObject).toString());
+        return null;
+      }
+      int i = 1;
     }
   }
   
   public static void a(GdtAd paramGdtAd, long paramLong1, long paramLong2, boolean paramBoolean, int paramInt, GdtImpressionReporter.GdtVideoReportInfo paramGdtVideoReportInfo)
   {
     paramGdtVideoReportInfo = a(paramLong1, paramLong2, paramBoolean, paramInt, paramGdtVideoReportInfo);
-    QLog.i("GdtVideoStatisticsReport", 1, "report: " + paramGdtVideoReportInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("report: ");
+    localStringBuilder.append(paramGdtVideoReportInfo);
+    QLog.i("GdtVideoStatisticsReport", 1, localStringBuilder.toString());
     a(paramGdtAd, paramGdtVideoReportInfo);
   }
   
   private static void a(GdtAd paramGdtAd, String paramString)
   {
-    if ((paramGdtAd == null) || (TextUtils.isEmpty(paramGdtAd.getUrlForImpression()))) {
-      return;
+    if (paramGdtAd != null)
+    {
+      if (TextUtils.isEmpty(paramGdtAd.getUrlForImpression())) {
+        return;
+      }
+      a(paramGdtAd.getUrlForImpression(), paramString);
     }
-    a(paramGdtAd.getUrlForImpression(), paramString);
   }
   
   private static void a(String paramString1, String paramString2)
@@ -73,18 +102,22 @@ public class GdtImpressionReporter
     if (TextUtils.isEmpty(paramString1)) {
       return;
     }
-    if (TextUtils.isEmpty(paramString2)) {}
-    for (;;)
+    if (!TextUtils.isEmpty(paramString2))
     {
-      GdtReporter.doCgiReport(paramString1);
-      return;
-      paramString1 = paramString1 + "&" + "video" + "=" + URLEncoder.encode(paramString2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("&");
+      localStringBuilder.append("video");
+      localStringBuilder.append("=");
+      localStringBuilder.append(URLEncoder.encode(paramString2));
+      paramString1 = localStringBuilder.toString();
     }
+    GdtReporter.doCgiReport(paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.statistics.GdtImpressionReporter
  * JD-Core Version:    0.7.0.1
  */

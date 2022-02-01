@@ -19,14 +19,16 @@ final class AbstractCollection$toString$1
   public final CharSequence invoke(E paramE)
   {
     if (paramE == this.this$0) {
-      return (CharSequence)"(this Collection)";
+      paramE = "(this Collection)";
+    } else {
+      paramE = String.valueOf(paramE);
     }
-    return (CharSequence)String.valueOf(paramE);
+    return (CharSequence)paramE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.collections.AbstractCollection.toString.1
  * JD-Core Version:    0.7.0.1
  */

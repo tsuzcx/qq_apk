@@ -35,7 +35,7 @@ public class AuthDetailDialog
   
   public AuthDetailDialog(@NonNull Activity paramActivity, INTERFACE.StSubscribeMessage paramStSubscribeMessage, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramActivity, 2131755237);
+    super(paramActivity, 2131755402);
     this.mContext = paramActivity;
     this.mCurSubMsg = paramStSubscribeMessage;
     setCanceledOnTouchOutside(true);
@@ -56,28 +56,28 @@ public class AuthDetailDialog
         }
       }
     }
-    while (2 != paramInt3) {
-      return;
+    else if (2 == paramInt3)
+    {
+      initCenterDialog(paramActivity);
     }
-    initCenterDialog(paramActivity);
   }
   
   private void initBottomDialog(@NonNull Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559495, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559369, null);
     setContentView(paramContext);
-    this.ivBack = ((ImageView)paramContext.findViewById(2131369571));
-    this.tvTitle = ((TextView)paramContext.findViewById(2131380206));
-    this.lvDetail = ((ListView)paramContext.findViewById(2131370871));
+    this.ivBack = ((ImageView)paramContext.findViewById(2131369281));
+    this.tvTitle = ((TextView)paramContext.findViewById(2131379523));
+    this.lvDetail = ((ListView)paramContext.findViewById(2131370504));
   }
   
   private void initCenterDialog(@NonNull Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559496, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559370, null);
     setContentView(paramContext);
-    this.tvTitle = ((TextView)paramContext.findViewById(2131380206));
-    this.tvCenterConfirm = ((TextView)paramContext.findViewById(2131380281));
-    this.lvDetail = ((ListView)paramContext.findViewById(2131370871));
+    this.tvTitle = ((TextView)paramContext.findViewById(2131379523));
+    this.tvCenterConfirm = ((TextView)paramContext.findViewById(2131379594));
+    this.lvDetail = ((ListView)paramContext.findViewById(2131370504));
   }
   
   private void initDetailList()
@@ -93,9 +93,8 @@ public class AuthDetailDialog
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    default: 
+    int i = paramView.getId();
+    if ((i != 2131369281) && (i != 2131379594)) {
       return;
     }
     dismiss();
@@ -103,29 +102,24 @@ public class AuthDetailDialog
   
   public void show()
   {
-    if ((this.mCurSubMsg != null) && (this.mCurSubMsg.example != null))
+    INTERFACE.StSubscribeMessage localStSubscribeMessage = this.mCurSubMsg;
+    if ((localStSubscribeMessage != null) && (localStSubscribeMessage.example != null))
     {
       this.tvTitle.setText(this.mCurSubMsg.example.title.get());
       initDetailList();
-      if (2 != this.dialogType) {
-        break label62;
-      }
-      this.tvCenterConfirm.setOnClickListener(this);
-    }
-    for (;;)
-    {
-      super.show();
-      return;
-      label62:
-      if (1 == this.dialogType) {
+      int i = this.dialogType;
+      if (2 == i) {
+        this.tvCenterConfirm.setOnClickListener(this);
+      } else if (1 == i) {
         this.ivBack.setOnClickListener(this);
       }
     }
+    super.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.AuthDetailDialog
  * JD-Core Version:    0.7.0.1
  */

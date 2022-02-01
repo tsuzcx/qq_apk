@@ -22,30 +22,25 @@ public class MagicfacePlayManager
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicfacePlayManager", 2, "func init begins, magicfaceDecoder:" + this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("func init begins, magicfaceDecoder:");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder);
+      QLog.d("MagicfacePlayManager", 2, localStringBuilder.toString());
     }
     if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder == null)
     {
       boolean bool = DeviceInfoUtil.d();
       long l = Math.min(DeviceInfoUtil.g(), DeviceInfoUtil.h());
-      if ((!bool) || (l < 720L)) {
-        break label118;
+      if ((bool) && (l >= 720L))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder = new MagicFaceSuperBigDecoder();
+        if (QLog.isColorLevel()) {
+          QLog.d("MagicfacePlayManager", 2, "func init, use [SuperBigDecoder]");
+        }
       }
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder = new MagicFaceSuperBigDecoder();
-      if (QLog.isColorLevel()) {
-        QLog.d("MagicfacePlayManager", 2, "func init, use [SuperBigDecoder]");
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicfaceRenderListener);
-      if (QLog.isColorLevel()) {
-        QLog.d("MagicfacePlayManager", 2, "func init ends.");
-      }
-      return;
-      label118:
-      if ("xbig".equalsIgnoreCase(MagicfaceResLoader.a()))
+      else if ("xbig".equalsIgnoreCase(MagicfaceResLoader.a()))
       {
         this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder = new MagicfaceXBigDecoder();
         if (QLog.isColorLevel()) {
@@ -60,19 +55,25 @@ public class MagicfacePlayManager
         }
       }
     }
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicfaceRenderListener);
+    if (QLog.isColorLevel()) {
+      QLog.d("MagicfacePlayManager", 2, "func init ends.");
+    }
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder.a(paramInt);
+    MagicfaceDecoder localMagicfaceDecoder = this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder;
+    if (localMagicfaceDecoder != null) {
+      localMagicfaceDecoder.a(paramInt);
     }
   }
   
   public void a(MagicfaceDecoder.MagicPlayListener paramMagicPlayListener)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder.a(paramMagicPlayListener);
+    MagicfaceDecoder localMagicfaceDecoder = this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder;
+    if (localMagicfaceDecoder != null) {
+      localMagicfaceDecoder.a(paramMagicPlayListener);
     }
   }
   
@@ -83,16 +84,14 @@ public class MagicfacePlayManager
   
   public void a(MagicfacePlayRes paramMagicfacePlayRes)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceData != null) && (paramMagicfacePlayRes.a.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceData.a))) {}
-    for (;;)
+    if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceData == null) || (!paramMagicfacePlayRes.a.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceData.a)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceData);
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder.d();
-      return;
       this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceData = this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceResLoader.a(paramMagicfacePlayRes.a, paramMagicfacePlayRes.b);
       this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceData.a = paramMagicfacePlayRes.a;
       this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceData.b = paramMagicfacePlayRes.b;
     }
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceData);
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder.d();
   }
   
   public void a(MagicfaceResLoader paramMagicfaceResLoader)
@@ -107,35 +106,39 @@ public class MagicfacePlayManager
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceResLoader.b(paramString));
+    SoundPoolUtil localSoundPoolUtil = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil;
+    if (localSoundPoolUtil != null) {
+      localSoundPoolUtil.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceResLoader.b(paramString));
     }
   }
   
   public void a(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceResLoader.b(paramString), paramInt, 3);
+    SoundPoolUtil localSoundPoolUtil = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil;
+    if (localSoundPoolUtil != null) {
+      localSoundPoolUtil.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceResLoader.b(paramString), paramInt, 3);
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder.e();
+    MagicfaceDecoder localMagicfaceDecoder = this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder;
+    if (localMagicfaceDecoder != null) {
+      localMagicfaceDecoder.e();
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder.c();
+    MagicfaceDecoder localMagicfaceDecoder = this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder;
+    if (localMagicfaceDecoder != null) {
+      localMagicfaceDecoder.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.service.MagicfacePlayManager
  * JD-Core Version:    0.7.0.1
  */

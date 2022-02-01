@@ -49,18 +49,21 @@ class AppBoxPlugin$MiniAppBox
   
   private void callbackJs(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.mJsService != null) {
-      if (!paramBoolean) {
-        break label75;
-      }
-    }
-    label75:
-    for (paramString = ApiUtil.wrapCallbackOk(paramString, getResultObj(paramInt1, paramInt2));; paramString = ApiUtil.wrapCallbackFail(paramString, getResultObj(paramInt1, paramInt2), (String)AppBoxPlugin.S_CODE_MSG_MAP.get(Integer.valueOf(paramInt2))))
+    if (this.mJsService != null)
     {
+      if (paramBoolean) {
+        paramString = ApiUtil.wrapCallbackOk(paramString, getResultObj(paramInt1, paramInt2));
+      } else {
+        paramString = ApiUtil.wrapCallbackFail(paramString, getResultObj(paramInt1, paramInt2), (String)AppBoxPlugin.S_CODE_MSG_MAP.get(Integer.valueOf(paramInt2)));
+      }
       paramString = paramString.toString();
-      QMLog.i("SDK_MiniAppBox", "evaluateCallbackJs callbackId: " + paramInt3 + " content:" + paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("evaluateCallbackJs callbackId: ");
+      localStringBuilder.append(paramInt3);
+      localStringBuilder.append(" content:");
+      localStringBuilder.append(paramString);
+      QMLog.i("SDK_MiniAppBox", localStringBuilder.toString());
       this.mJsService.evaluateCallbackJs(paramInt3, paramString);
-      return;
     }
   }
   
@@ -92,124 +95,113 @@ class AppBoxPlugin$MiniAppBox
   
   private boolean initAdParam(int paramInt1, int paramInt2)
   {
-    String str3 = LoginManager.getInstance().getAccount();
+    String str = LoginManager.getInstance().getAccount();
     if (TextUtils.isEmpty(this.appId))
     {
       QMLog.e("SDK_MiniAppBox", "TextUtils.isEmpty(appid)");
       return false;
     }
     int i;
-    label55:
-    int j;
-    label117:
-    label126:
-    Object localObject3;
-    label169:
-    String str1;
-    label187:
-    String str2;
-    Object localObject2;
-    if (MiniAppEnv.g().getContext().getResources().getConfiguration().orientation == 2)
-    {
+    if (MiniAppEnv.g().getContext().getResources().getConfiguration().orientation == 2) {
       i = 1;
-      if (i == 0) {
-        break label286;
-      }
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       i = 90;
-      QMLog.i("SDK_MiniAppBox", "handle initAdParam appId = " + this.appId + "， deviceOrient = " + i);
-      if ((AppBoxPlugin.access$200(this.this$0) == null) || (!AppBoxPlugin.access$300(this.this$0).isEngineTypeMiniApp())) {
-        break label291;
-      }
+    } else {
+      i = 0;
+    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("handle initAdParam appId = ");
+    ((StringBuilder)localObject1).append(this.appId);
+    ((StringBuilder)localObject1).append("， deviceOrient = ");
+    ((StringBuilder)localObject1).append(i);
+    QMLog.i("SDK_MiniAppBox", ((StringBuilder)localObject1).toString());
+    int j;
+    if ((AppBoxPlugin.access$200(this.this$0) != null) && (AppBoxPlugin.access$300(this.this$0).isEngineTypeMiniApp())) {
       j = 0;
-      if (j != 0) {
-        break label297;
-      }
+    } else {
+      j = 1;
+    }
+    if (j == 0) {
       j = 7;
-      localObject3 = AppBoxPlugin.access$400(this.this$0);
-      if ((localObject3 == null) || (((MiniAppInfo)localObject3).launchParam == null)) {
-        break label455;
-      }
-      if (((MiniAppInfo)localObject3).launchParam.entryPath == null) {
-        break label304;
-      }
-      localObject1 = ((MiniAppInfo)localObject3).launchParam.entryPath;
-      if (((MiniAppInfo)localObject3).launchParam == null) {
-        break label312;
-      }
-      str1 = ((MiniAppInfo)localObject3).launchParam.reportData;
-      str2 = String.valueOf(((MiniAppInfo)localObject3).launchParam.scene);
-      localObject2 = localObject1;
+    } else {
+      j = 8;
     }
-    for (Object localObject1 = str2;; localObject1 = "")
+    Object localObject6 = AppBoxPlugin.access$400(this.this$0);
+    Object localObject5 = "";
+    Object localObject2;
+    Object localObject3;
+    if ((localObject6 != null) && (((MiniAppInfo)localObject6).launchParam != null))
     {
-      label228:
-      String str4;
-      if ((localObject3 != null) && (((MiniAppInfo)localObject3).via != null))
-      {
-        str2 = ((MiniAppInfo)localObject3).via;
-        str4 = AdUtil.getSpAdGdtCookie(j);
-        WnsConfig.getConfig("QZoneSetting", "MiniGameShareRate", 53);
-        if (this.mActivity == null) {
-          break label328;
-        }
-      }
-      label286:
-      label291:
-      label297:
-      label304:
-      label312:
-      label328:
-      for (localObject3 = (Activity)this.mActivity.get();; localObject3 = null)
-      {
-        if (localObject3 != null) {
-          break label334;
-        }
-        QMLog.e("SDK_MiniAppBox", "activity is null");
-        return false;
-        i = 0;
-        break;
-        i = 0;
-        break label55;
-        j = 1;
-        break label117;
-        j = 8;
-        break label126;
+      if (((MiniAppInfo)localObject6).launchParam.entryPath != null) {
+        localObject1 = ((MiniAppInfo)localObject6).launchParam.entryPath;
+      } else {
         localObject1 = "";
-        break label169;
-        str1 = "";
-        break label187;
-        str2 = "";
-        break label228;
       }
-      label334:
-      Bundle localBundle = new Bundle();
-      localBundle.putString(AdProxy.KEY_ACCOUNT, str3);
-      localBundle.putInt(AdProxy.KEY_AD_TYPE, j);
-      localBundle.putInt(AdProxy.KEY_ORIENTATION, i);
-      localBundle.putString(AdProxy.KEY_GDT_COOKIE, str4);
-      localBundle.putString(AdProxy.KEY_ENTRY_PATH, (String)localObject2);
-      localBundle.putString(AdProxy.KEY_REPORT_DATA, str1);
-      localBundle.putString(AdProxy.KEY_REFER, (String)localObject1);
-      localBundle.putString(AdProxy.KEY_VIA, str2);
-      createBoxAdView(paramInt1, paramInt2, (Activity)localObject3, localBundle);
-      if (this.adBox != null)
-      {
-        this.adBox.loadAD();
-        return true;
+      if (((MiniAppInfo)localObject6).launchParam != null) {
+        localObject2 = ((MiniAppInfo)localObject6).launchParam.reportData;
+      } else {
+        localObject2 = "";
       }
-      this.mIsRequestingAd = false;
-      return false;
-      label455:
-      str1 = "";
-      localObject2 = "";
+      localObject3 = String.valueOf(((MiniAppInfo)localObject6).launchParam.scene);
     }
+    else
+    {
+      localObject4 = "";
+      localObject1 = localObject4;
+      localObject3 = localObject1;
+      localObject2 = localObject1;
+      localObject1 = localObject4;
+    }
+    Object localObject4 = localObject5;
+    if (localObject6 != null)
+    {
+      localObject4 = localObject5;
+      if (((MiniAppInfo)localObject6).via != null) {
+        localObject4 = ((MiniAppInfo)localObject6).via;
+      }
+    }
+    localObject6 = AdUtil.getSpAdGdtCookie(j);
+    WnsConfig.getConfig("QZoneSetting", "MiniGameShareRate", 53);
+    localObject5 = this.mActivity;
+    if (localObject5 != null) {
+      localObject5 = (Activity)((WeakReference)localObject5).get();
+    } else {
+      localObject5 = null;
+    }
+    if (localObject5 == null)
+    {
+      QMLog.e("SDK_MiniAppBox", "activity is null");
+      return false;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString(AdProxy.KEY_ACCOUNT, str);
+    localBundle.putInt(AdProxy.KEY_AD_TYPE, j);
+    localBundle.putInt(AdProxy.KEY_ORIENTATION, i);
+    localBundle.putString(AdProxy.KEY_GDT_COOKIE, (String)localObject6);
+    localBundle.putString(AdProxy.KEY_ENTRY_PATH, (String)localObject1);
+    localBundle.putString(AdProxy.KEY_REPORT_DATA, (String)localObject2);
+    localBundle.putString(AdProxy.KEY_REFER, (String)localObject3);
+    localBundle.putString(AdProxy.KEY_VIA, (String)localObject4);
+    createBoxAdView(paramInt1, paramInt2, (Activity)localObject5, localBundle);
+    localObject1 = this.adBox;
+    if (localObject1 != null)
+    {
+      ((AdProxy.AbsBoxAdView)localObject1).loadAD();
+      return true;
+    }
+    this.mIsRequestingAd = false;
+    return false;
   }
   
   boolean destroy()
   {
-    if (this.adBox != null)
+    AdProxy.AbsBoxAdView localAbsBoxAdView = this.adBox;
+    if (localAbsBoxAdView != null)
     {
-      this.adBox.destroy();
+      localAbsBoxAdView.destroy();
       this.adBox = null;
     }
     return true;
@@ -217,13 +209,12 @@ class AppBoxPlugin$MiniAppBox
   
   boolean load(int paramInt1, int paramInt2)
   {
-    boolean bool = true;
     if (!this.mIsRequestingAd)
     {
       this.mIsRequestingAd = true;
-      bool = initAdParam(paramInt1, paramInt2);
+      return initAdParam(paramInt1, paramInt2);
     }
-    return bool;
+    return true;
   }
   
   void setActivity(Activity paramActivity)
@@ -249,7 +240,7 @@ class AppBoxPlugin$MiniAppBox
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.AppBoxPlugin.MiniAppBox
  * JD-Core Version:    0.7.0.1
  */

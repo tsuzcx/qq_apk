@@ -23,126 +23,145 @@ class AIOImageProviderService$OfflineFileObserver
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public void a(ThumbnailInfo paramThumbnailInfo)
+  protected void a(ThumbnailInfo paramThumbnailInfo)
   {
     long l = paramThumbnailInfo.a;
     FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(l);
     IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack;
-    if ((localFileManagerEntity == null) || (localIAIOImageProviderCallBack == null))
+    if ((localFileManagerEntity != null) && (localIAIOImageProviderCallBack != null))
     {
-      QLog.i("AIOImageProviderService", 2, "OnFileTransferProgress: error, entity[" + localFileManagerEntity + "] callback[" + localIAIOImageProviderCallBack + "]");
-      return;
-    }
-    int i = 18;
-    if (paramThumbnailInfo.jdField_b_of_type_Int == 5) {
-      i = 16;
-    }
-    if (FileUtil.a(paramThumbnailInfo.jdField_b_of_type_JavaLangString))
-    {
-      localIAIOImageProviderCallBack.a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, 1, paramThumbnailInfo.jdField_b_of_type_JavaLangString, false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, paramThumbnailInfo.jdField_b_of_type_JavaLangString);
-      return;
-    }
-    paramThumbnailInfo = "";
-    try
-    {
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("errorType", "thumb_download");
-      ((JSONObject)localObject).put("errorCode", localFileManagerEntity.thumbInvalidCode);
-      localObject = ((JSONObject)localObject).toString();
-      paramThumbnailInfo = (ThumbnailInfo)localObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
+      int i = 18;
+      if (paramThumbnailInfo.jdField_b_of_type_Int == 5) {
+        i = 16;
       }
+      if (FileUtil.b(paramThumbnailInfo.jdField_b_of_type_JavaLangString))
+      {
+        localIAIOImageProviderCallBack.a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, 1, paramThumbnailInfo.jdField_b_of_type_JavaLangString, false);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, paramThumbnailInfo.jdField_b_of_type_JavaLangString);
+        return;
+      }
+      try
+      {
+        paramThumbnailInfo = new JSONObject();
+        paramThumbnailInfo.put("errorType", "thumb_download");
+        paramThumbnailInfo.put("errorCode", localFileManagerEntity.thumbInvalidCode);
+        paramThumbnailInfo = paramThumbnailInfo.toString();
+      }
+      catch (JSONException paramThumbnailInfo)
+      {
+        paramThumbnailInfo.printStackTrace();
+        paramThumbnailInfo = "";
+      }
+      localIAIOImageProviderCallBack.a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, 2, paramThumbnailInfo, false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, "I:E");
+      return;
     }
-    localIAIOImageProviderCallBack.a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, 2, paramThumbnailInfo, false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, "I:E");
+    paramThumbnailInfo = new StringBuilder();
+    paramThumbnailInfo.append("OnFileTransferProgress: error, entity[");
+    paramThumbnailInfo.append(localFileManagerEntity);
+    paramThumbnailInfo.append("] callback[");
+    paramThumbnailInfo.append(localIAIOImageProviderCallBack);
+    paramThumbnailInfo.append("]");
+    QLog.i("AIOImageProviderService", 2, paramThumbnailInfo.toString());
   }
   
-  public void a(ThumbnailInfo paramThumbnailInfo, int paramInt)
+  protected void a(ThumbnailInfo paramThumbnailInfo, int paramInt)
   {
     long l = paramThumbnailInfo.a;
     paramThumbnailInfo = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(l);
     IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack;
-    if ((paramThumbnailInfo == null) || (localIAIOImageProviderCallBack == null))
+    if ((paramThumbnailInfo != null) && (localIAIOImageProviderCallBack != null))
     {
-      QLog.i("AIOImageProviderService", 2, "OnFileTransferProgress: error, entity[" + paramThumbnailInfo + "] callback[" + localIAIOImageProviderCallBack + "]");
+      localIAIOImageProviderCallBack.a(paramThumbnailInfo.uniseq, paramThumbnailInfo.status, 18, paramInt, paramThumbnailInfo.fileSize, false);
       return;
     }
-    localIAIOImageProviderCallBack.a(paramThumbnailInfo.uniseq, paramThumbnailInfo.status, 18, paramInt, paramThumbnailInfo.fileSize, false);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OnFileTransferProgress: error, entity[");
+    localStringBuilder.append(paramThumbnailInfo);
+    localStringBuilder.append("] callback[");
+    localStringBuilder.append(localIAIOImageProviderCallBack);
+    localStringBuilder.append("]");
+    QLog.i("AIOImageProviderService", 2, localStringBuilder.toString());
   }
   
-  public void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
     paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong2);
     IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack;
-    if ((paramString == null) || (localIAIOImageProviderCallBack == null)) {
-      QLog.i("AIOImageProviderService", 2, "OnFileTransferProgress: error, entity[" + paramString + "] callback[" + localIAIOImageProviderCallBack + "]");
-    }
-    while (paramString.nFileType != 0) {
+    if ((paramString != null) && (localIAIOImageProviderCallBack != null))
+    {
+      if (paramString.nFileType == 0) {
+        localIAIOImageProviderCallBack.a(paramLong1, 0, 20, (int)(paramString.fProgress * 10000.0F), paramString.fileSize, false);
+      }
       return;
     }
-    localIAIOImageProviderCallBack.a(paramLong1, 0, 20, (int)(paramString.fProgress * 10000.0F), paramString.fileSize, false);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OnFileTransferProgress: error, entity[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("] callback[");
+    localStringBuilder.append(localIAIOImageProviderCallBack);
+    localStringBuilder.append("]");
+    QLog.i("AIOImageProviderService", 2, localStringBuilder.toString());
   }
   
-  public void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
     paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong2);
     IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack;
-    if ((paramString1 == null) || (localIAIOImageProviderCallBack == null)) {
-      QLog.i("AIOImageProviderService", 2, "OnFileTransferProgress: error, entity[" + paramString1 + "] callback[" + localIAIOImageProviderCallBack + "]");
-    }
-    label217:
-    do
+    if ((paramString1 != null) && (localIAIOImageProviderCallBack != null))
     {
-      do
+      if (paramBoolean)
       {
-        return;
-        if (!paramBoolean) {
-          break;
-        }
         if (paramString1.nFileType == 0)
         {
           localIAIOImageProviderCallBack.a(paramLong1, paramString1.status, 20, 1, paramString1.getFilePath(), false);
           this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(paramLong1, paramString1.status, 20, paramString1.getFilePath());
           return;
         }
-      } while (paramString1.nFileType != 2);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(paramLong1)))
-      {
-        paramString2 = BaseApplicationImpl.sApplication.getBaseContext();
-        if (paramString2 == null) {
-          break label217;
+        if (paramString1.nFileType == 2)
+        {
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(paramLong1)))
+          {
+            paramString2 = BaseApplicationImpl.sApplication.getBaseContext();
+            if (paramString2 != null) {
+              FileManagerUtil.a(paramString2, paramString1.getFilePath());
+            } else {
+              QLog.i("AIOImageProviderService<QFile>", 1, "AIO gallery service error, get context is null [c2c file save album].");
+            }
+            this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_JavaUtilArrayList.remove(Long.valueOf(paramLong1));
+          }
+          localIAIOImageProviderCallBack.a(paramLong1, paramString1.status, 269484034, 1, paramString1.getFilePath(), false);
         }
-        FileManagerUtil.a(paramString2, paramString1.getFilePath());
       }
-      for (;;)
+      else
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_JavaUtilArrayList.remove(Long.valueOf(paramLong1));
-        localIAIOImageProviderCallBack.a(paramLong1, paramString1.status, 269484034, 1, paramString1.getFilePath(), false);
-        return;
-        QLog.i("AIOImageProviderService<QFile>", 1, "AIO gallery service error, get context is null [c2c file save album].");
+        if ((paramInt2 == -7003) || (paramInt2 == -6101)) {
+          paramString1.status = 16;
+        }
+        if (paramString1.nFileType == 0)
+        {
+          localIAIOImageProviderCallBack.a(paramLong1, paramString1.status, 20, 2, paramString2, false);
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(paramLong1, paramString1.status, 20, "I:E");
+          return;
+        }
+        if (paramString1.nFileType == 2) {
+          localIAIOImageProviderCallBack.a(paramLong1, paramString1.status, 269484034, 2, paramString2, false);
+        }
       }
-      if ((paramInt2 == -7003) || (paramInt2 == -6101)) {
-        paramString1.status = 16;
-      }
-      if (paramString1.nFileType == 0)
-      {
-        localIAIOImageProviderCallBack.a(paramLong1, paramString1.status, 20, 2, paramString2, false);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(paramLong1, paramString1.status, 20, "I:E");
-        return;
-      }
-    } while (paramString1.nFileType != 2);
-    localIAIOImageProviderCallBack.a(paramLong1, paramString1.status, 269484034, 2, paramString2, false);
+      return;
+    }
+    paramString2 = new StringBuilder();
+    paramString2.append("OnFileTransferProgress: error, entity[");
+    paramString2.append(paramString1);
+    paramString2.append("] callback[");
+    paramString2.append(localIAIOImageProviderCallBack);
+    paramString2.append("]");
+    QLog.i("AIOImageProviderService", 2, paramString2.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService.OfflineFileObserver
  * JD-Core Version:    0.7.0.1
  */

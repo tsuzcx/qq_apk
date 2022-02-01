@@ -48,22 +48,20 @@ public class GetUserGroupInfoRequest
     if (paramArrayOfByte == null) {
       return null;
     }
-    INTERFACE.StGetUserGroupInfoRsp localStGetUserGroupInfoRsp = new INTERFACE.StGetUserGroupInfoRsp();
+    Object localObject = new INTERFACE.StGetUserGroupInfoRsp();
     try
     {
-      localStGetUserGroupInfoRsp.mergeFrom(decode(paramArrayOfByte));
-      if (localStGetUserGroupInfoRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("extra_json_data", localStGetUserGroupInfoRsp.userGroupInfo.get());
-        return paramArrayOfByte;
-      }
-      QMLog.d("GetUserGroupInfoRequest", "onResponse fail.rsp = null");
-      return null;
+      ((INTERFACE.StGetUserGroupInfoRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      paramArrayOfByte = new JSONObject();
+      paramArrayOfByte.put("extra_json_data", ((INTERFACE.StGetUserGroupInfoRsp)localObject).userGroupInfo.get());
+      return paramArrayOfByte;
     }
     catch (Exception paramArrayOfByte)
     {
-      QMLog.d("GetUserGroupInfoRequest", "onResponse fail." + paramArrayOfByte);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onResponse fail.");
+      ((StringBuilder)localObject).append(paramArrayOfByte);
+      QMLog.d("GetUserGroupInfoRequest", ((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -75,7 +73,7 @@ public class GetUserGroupInfoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.GetUserGroupInfoRequest
  * JD-Core Version:    0.7.0.1
  */

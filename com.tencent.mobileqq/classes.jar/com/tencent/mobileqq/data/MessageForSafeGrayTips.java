@@ -13,7 +13,11 @@ public class MessageForSafeGrayTips
   public void doParse()
   {
     this.safeInfo = new SafeMsg.SafeMoreInfo();
-    QLog.d(this.TAG, 2, "doParse versionCode:" + this.versionCode);
+    String str = this.TAG;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("doParse versionCode:");
+    ((StringBuilder)localObject).append(this.versionCode);
+    QLog.d(str, 2, ((StringBuilder)localObject).toString());
     if (this.versionCode < 3)
     {
       super.postRead();
@@ -29,31 +33,42 @@ public class MessageForSafeGrayTips
     catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
     {
       localInvalidProtocolBufferMicroException.printStackTrace();
-      QLog.d(this.TAG, 2, "dopase exception:" + localInvalidProtocolBufferMicroException.getMessage());
+      localObject = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("dopase exception:");
+      localStringBuilder.append(localInvalidProtocolBufferMicroException.getMessage());
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
   }
   
-  public void postRead()
+  protected void postRead()
   {
     this.msgId = getLogicMsgID(getId(), this.versionCode);
     parse();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
-    QLog.d(this.TAG, 2, "prewrite versionCode:" + this.versionCode);
-    if (this.versionCode < 3) {
+    Object localObject = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("prewrite versionCode:");
+    localStringBuilder.append(this.versionCode);
+    QLog.d((String)localObject, 2, localStringBuilder.toString());
+    if (this.versionCode < 3)
+    {
       super.prewrite();
-    }
-    while (this.safeInfo == null) {
       return;
     }
-    this.msgData = this.safeInfo.toByteArray();
+    localObject = this.safeInfo;
+    if (localObject == null) {
+      return;
+    }
+    this.msgData = ((SafeMsg.SafeMoreInfo)localObject).toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForSafeGrayTips
  * JD-Core Version:    0.7.0.1
  */

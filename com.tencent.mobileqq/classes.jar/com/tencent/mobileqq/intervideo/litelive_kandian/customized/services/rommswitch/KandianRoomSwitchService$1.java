@@ -31,7 +31,10 @@ class KandianRoomSwitchService$1
         return;
       }
       paramJSONObject.getString("errmsg");
-      AegisHelper.a("retCode = " + i, "RoomSwitchCgiService");
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("retCode = ");
+      paramJSONObject.append(i);
+      AegisHelper.a(paramJSONObject.toString(), "RoomSwitchCgiService");
       ThreadManager.getUIHandler().post(new KandianRoomSwitchService.1.1(this));
       return;
     }
@@ -44,7 +47,7 @@ class KandianRoomSwitchService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.litelive_kandian.customized.services.rommswitch.KandianRoomSwitchService.1
  * JD-Core Version:    0.7.0.1
  */

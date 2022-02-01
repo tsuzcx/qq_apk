@@ -2,15 +2,17 @@ package com.tencent.tkd.topicsdk.videoprocess.videocapture;
 
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
+import android.util.Log;
 import com.tencent.tkd.topicsdk.framework.TLog;
 import java.lang.ref.SoftReference;
+import java.util.UUID;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/CaptureTask;", "Landroid/os/AsyncTask;", "", "Landroid/graphics/Bitmap;", "type", "", "path", "", "position", "width", "height", "captureCallback", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/CaptureTask$OnCaptureCallback;", "(ILjava/lang/String;IIILcom/tencent/tkd/topicsdk/videoprocess/videocapture/CaptureTask$OnCaptureCallback;)V", "captureProxy", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/ICaptureProxy;", "getHeight", "()I", "setHeight", "(I)V", "id", "getId", "setId", "lock", "Ljava/lang/Object;", "onTaskListener", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/CaptureTask$OnTaskListener;", "getPath", "()Ljava/lang/String;", "setPath", "(Ljava/lang/String;)V", "getPosition", "setPosition", "resultBitmap", "getResultBitmap", "()Landroid/graphics/Bitmap;", "resultBitmapRef", "Ljava/lang/ref/SoftReference;", "tryCount", "getType", "setType", "getWidth", "setWidth", "attachCaptureProxy", "iCaptureProxy", "doInBackground", "params", "", "([Lkotlin/Unit;)Landroid/graphics/Bitmap;", "notifyResultBitmap", "onCancelled", "onPostExecute", "bitmap", "onPreExecute", "release", "setOnTaskListener", "toString", "CaptureType", "Companion", "OnCaptureCallback", "OnTaskListener", "topicsdk_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/CaptureTask;", "Landroid/os/AsyncTask;", "", "Landroid/graphics/Bitmap;", "type", "", "path", "", "position", "width", "height", "captureCallback", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/CaptureTask$OnCaptureCallback;", "(ILjava/lang/String;IIILcom/tencent/tkd/topicsdk/videoprocess/videocapture/CaptureTask$OnCaptureCallback;)V", "captureProxy", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/ICaptureProxy;", "getHeight", "()I", "id", "getId", "()Ljava/lang/String;", "lock", "Ljava/lang/Object;", "onTaskListener", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/CaptureTask$OnTaskListener;", "getPath", "getPosition", "resultBitmap", "getResultBitmap", "()Landroid/graphics/Bitmap;", "resultBitmapRef", "Ljava/lang/ref/SoftReference;", "tryCount", "getType", "getWidth", "attachCaptureProxy", "iCaptureProxy", "doInBackground", "params", "", "([Lkotlin/Unit;)Landroid/graphics/Bitmap;", "notifyResultBitmap", "onCancelled", "onPostExecute", "bitmap", "onPreExecute", "release", "setOnTaskListener", "toString", "CaptureType", "Companion", "OnCaptureCallback", "OnTaskListener", "topicsdk_release"}, k=1, mv={1, 1, 16})
 public final class CaptureTask
   extends AsyncTask<Unit, Unit, Bitmap>
 {
@@ -21,13 +23,14 @@ public final class CaptureTask
   private ICaptureProxy jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureICaptureProxy;
   private final Object jdField_a_of_type_JavaLangObject;
   @NotNull
-  private String jdField_a_of_type_JavaLangString;
+  private final String jdField_a_of_type_JavaLangString;
   private SoftReference<Bitmap> jdField_a_of_type_JavaLangRefSoftReference;
-  private int b;
-  private int c;
-  private int d;
-  private int e;
-  private int f;
+  private final int jdField_b_of_type_Int;
+  @NotNull
+  private final String jdField_b_of_type_JavaLangString;
+  private final int c;
+  private final int d;
+  private final int e;
   
   static
   {
@@ -36,13 +39,15 @@ public final class CaptureTask
   
   public CaptureTask(int paramInt1, @NotNull String paramString, int paramInt2, int paramInt3, int paramInt4, @Nullable CaptureTask.OnCaptureCallback paramOnCaptureCallback)
   {
-    this.c = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.d = paramInt2;
-    this.e = paramInt3;
-    this.f = paramInt4;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.c = paramInt2;
+    this.d = paramInt3;
+    this.e = paramInt4;
     this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureCaptureTask$OnCaptureCallback = paramOnCaptureCallback;
-    this.jdField_a_of_type_Int = -2147483648;
+    paramString = UUID.randomUUID().toString();
+    Intrinsics.checkExpressionValueIsNotNull(paramString, "UUID.randomUUID().toString()");
+    this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_JavaLangObject = new Object();
   }
   
@@ -64,27 +69,31 @@ public final class CaptureTask
   
   public final int a()
   {
-    return this.d;
+    return this.c;
   }
   
   @Nullable
   public final Bitmap a()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefSoftReference;
-    if (localObject != null)
+    Object localObject1 = this.jdField_a_of_type_JavaLangRefSoftReference;
+    Object localObject2 = null;
+    if (localObject1 != null)
     {
-      localObject = (Bitmap)((SoftReference)localObject).get();
-      if ((localObject != null) && (((Bitmap)localObject).isRecycled() == true)) {}
-    }
-    else
-    {
-      localObject = this.jdField_a_of_type_JavaLangRefSoftReference;
-      if (localObject != null) {
-        return (Bitmap)((SoftReference)localObject).get();
+      localObject3 = (Bitmap)((SoftReference)localObject1).get();
+      if (localObject3 != null)
+      {
+        localObject1 = localObject2;
+        if (((Bitmap)localObject3).isRecycled() == true) {
+          return localObject1;
+        }
       }
-      return null;
     }
-    return null;
+    Object localObject3 = this.jdField_a_of_type_JavaLangRefSoftReference;
+    localObject1 = localObject2;
+    if (localObject3 != null) {
+      localObject1 = (Bitmap)((SoftReference)localObject3).get();
+    }
+    return localObject1;
   }
   
   @Nullable
@@ -92,32 +101,39 @@ public final class CaptureTask
   {
     Intrinsics.checkParameterIsNotNull(paramVarArgs, "params");
     paramVarArgs = a();
-    if (paramVarArgs != null) {
-      return paramVarArgs;
+    if (paramVarArgs != null)
+    {
+      if (paramVarArgs != null) {
+        return paramVarArgs;
+      }
+      paramVarArgs = (Void)null;
     }
-    this.b += 1;
+    this.jdField_a_of_type_Int += 1;
     paramVarArgs = new Bitmap[1];
     paramVarArgs[0] = ((Bitmap)null);
     ??? = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureICaptureProxy;
     if (??? != null) {
-      ((ICaptureProxy)???).a(this, (CaptureTask.OnCaptureCallback)new CaptureTask.doInBackground.1(this, paramVarArgs));
+      ((ICaptureProxy)???).a(this, (CaptureTask.OnCaptureCallback)new CaptureTask.doInBackground.2(this, paramVarArgs));
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    try
     {
-      try
+      synchronized (this.jdField_a_of_type_JavaLangObject)
       {
         this.jdField_a_of_type_JavaLangObject.wait();
-        Unit localUnit = Unit.INSTANCE;
-        return paramVarArgs[0];
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
-        {
-          TLog.d("CaptureTask", localInterruptedException.toString());
-        }
       }
     }
+    catch (InterruptedException localInterruptedException)
+    {
+      TLog.d("CaptureTask", localInterruptedException.toString());
+      Unit localUnit = Unit.INSTANCE;
+      return paramVarArgs[0];
+    }
+  }
+  
+  @NotNull
+  public final String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   protected void a(@Nullable Bitmap paramBitmap)
@@ -130,20 +146,37 @@ public final class CaptureTask
     }
     if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
+      Log.d("CaptureTask", "onCaptureSuccess");
       localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureCaptureTask$OnCaptureCallback;
       if (localObject != null) {
         ((CaptureTask.OnCaptureCallback)localObject).a(paramBitmap, this);
       }
     }
-    for (;;)
+    else
     {
-      a();
-      return;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onCaptureFailed. null: ");
+      boolean bool;
+      if (paramBitmap == null) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      ((StringBuilder)localObject).append(bool);
+      ((StringBuilder)localObject).append(", isRecycled: ");
+      if (paramBitmap != null) {
+        paramBitmap = Boolean.valueOf(paramBitmap.isRecycled());
+      } else {
+        paramBitmap = null;
+      }
+      ((StringBuilder)localObject).append(paramBitmap);
+      Log.d("CaptureTask", ((StringBuilder)localObject).toString());
       paramBitmap = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureCaptureTask$OnCaptureCallback;
       if (paramBitmap != null) {
         paramBitmap.a();
       }
     }
+    a();
   }
   
   public final void a(@NotNull CaptureTask.OnTaskListener paramOnTaskListener)
@@ -159,12 +192,12 @@ public final class CaptureTask
   
   public final int b()
   {
-    return this.e;
+    return this.d;
   }
   
   public final int c()
   {
-    return this.f;
+    return this.e;
   }
   
   protected void onCancelled()
@@ -185,12 +218,26 @@ public final class CaptureTask
   @NotNull
   public String toString()
   {
-    return "CaptureTask{ id= " + this.jdField_a_of_type_Int + ", type= " + this.c + ", path= " + this.jdField_a_of_type_JavaLangString + ", position= " + this.d + ", width= " + this.e + ", height= " + this.f + " }";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CaptureTask{ id= ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", type= ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", path= ");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", position= ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", width= ");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", height= ");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(" }");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videocapture.CaptureTask
  * JD-Core Version:    0.7.0.1
  */

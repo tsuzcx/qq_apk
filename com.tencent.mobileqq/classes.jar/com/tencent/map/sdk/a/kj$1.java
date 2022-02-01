@@ -7,12 +7,13 @@ public final class kj$1
   
   public final void run()
   {
-    this.a.a(this.a.c);
+    kj localkj = this.a;
+    localkj.a(localkj.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.kj.1
  * JD-Core Version:    0.7.0.1
  */

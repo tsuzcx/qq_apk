@@ -12,19 +12,19 @@ public class HippyViewPagerItemController
   public static final String CLASS_NAME = "ViewPagerItem";
   private static final String TAG = "ViewPagerItem";
   
-  public View createViewImpl(Context paramContext)
+  protected View createViewImpl(Context paramContext)
   {
     return new HippyViewPagerItem(paramContext);
   }
   
-  public boolean shouldInterceptLayout(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected boolean shouldInterceptLayout(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.viewpager.HippyViewPagerItemController
  * JD-Core Version:    0.7.0.1
  */

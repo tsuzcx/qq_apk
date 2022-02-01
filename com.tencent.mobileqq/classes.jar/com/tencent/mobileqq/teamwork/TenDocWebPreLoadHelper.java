@@ -6,10 +6,12 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
 import com.tencent.mobileqq.config.business.tendoc.TencentDocPreloadConfigBean;
 import com.tencent.mobileqq.config.business.tendoc.TencentDocPreloadConfigProcessor;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkDocEditBrowserProxy;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class TenDocWebPreLoadHelper
@@ -21,7 +23,7 @@ public class TenDocWebPreLoadHelper
     TenDocWebViewPool localTenDocWebViewPool = TenDocWebViewPool.a();
     Object localObject = paramContext;
     if (paramContext == null) {
-      localObject = BaseApplicationImpl.sApplication;
+      localObject = BaseApplication.getContext();
     }
     return localTenDocWebViewPool.a((Context)localObject);
   }
@@ -32,13 +34,40 @@ public class TenDocWebPreLoadHelper
     TenDocWebViewPool.a().a(paramString);
   }
   
-  public static boolean a(Activity paramActivity, String paramString)
+  public static boolean a(Context paramContext, String paramString)
   {
-    if (!TencentDocPreloadConfigProcessor.a().a()) {}
-    while ((paramActivity == null) || (TextUtils.isEmpty(paramString)) || ((!(paramActivity instanceof TeamWorkDocEditBrowserActivity)) && (!TeamWorkUtils.c(paramString))) || (!TenDocWebViewPool.a().a()) || ((!paramString.contains(a)) && (a != null))) {
+    boolean bool1 = TencentDocPreloadConfigProcessor.a().a();
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
     }
-    return true;
+    if (!(paramContext instanceof Activity)) {
+      return false;
+    }
+    bool1 = bool2;
+    if (!TextUtils.isEmpty(paramString)) {
+      if (!((ITeamWorkDocEditBrowserProxy)QRoute.api(ITeamWorkDocEditBrowserProxy.class)).isInstanceClass((Activity)paramContext))
+      {
+        bool1 = bool2;
+        if (!((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).isDocsUrlForPreLoad(paramString)) {}
+      }
+      else
+      {
+        bool1 = bool2;
+        if (TenDocWebViewPool.a().a()) {
+          if (!paramString.contains(a))
+          {
+            bool1 = bool2;
+            if (a != null) {}
+          }
+          else
+          {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public static void b(String paramString)
@@ -47,23 +76,23 @@ public class TenDocWebPreLoadHelper
     if (!TextUtils.isEmpty(paramString))
     {
       a = paramString;
-      if (Looper.getMainLooper() != Looper.myLooper()) {
-        break label61;
-      }
-      if ((TeamWorkUtils.c(paramString)) && (!TenDocWebViewPool.a().a(paramString)))
+      if (Looper.getMainLooper() == Looper.myLooper())
       {
-        TenDocWebViewPool.a().a(paramString);
-        TenDocWebViewPool.a().a(paramString);
+        if ((((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).isDocsUrlForPreLoad(paramString)) && (!TenDocWebViewPool.a().a(paramString)))
+        {
+          TenDocWebViewPool.a().a(paramString);
+          TenDocWebViewPool.a().a(paramString);
+        }
+      }
+      else {
+        new Handler(Looper.getMainLooper()).post(new TenDocWebPreLoadHelper.1(paramString));
       }
     }
-    return;
-    label61:
-    new Handler(Looper.getMainLooper()).post(new TenDocWebPreLoadHelper.1(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TenDocWebPreLoadHelper
  * JD-Core Version:    0.7.0.1
  */

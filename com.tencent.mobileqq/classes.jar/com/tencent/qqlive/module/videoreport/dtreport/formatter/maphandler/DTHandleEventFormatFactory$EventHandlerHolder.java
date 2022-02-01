@@ -11,66 +11,66 @@ class DTHandleEventFormatFactory$EventHandlerHolder
   static DTAppEventMapHandler getAppEventHandler()
   {
     if (sAppOutEventHandler == null) {
-      switch (DTHandleEventFormatFactory.sElementFormatMode)
-      {
+      if (DTHandleEventFormatFactory.sElementFormatMode != 2) {
+        sAppOutEventHandler = new DTAppEventMapHandler();
+      } else {
+        sAppOutEventHandler = new DTNewsAppEventMapHandler();
       }
     }
-    for (sAppOutEventHandler = new DTAppEventMapHandler();; sAppOutEventHandler = new DTNewsAppEventMapHandler()) {
-      return sAppOutEventHandler;
-    }
+    return sAppOutEventHandler;
   }
   
   static DTBaseEventMapHandler getAudioEventMapHandler()
   {
     if (sAudioMapHandler == null) {
-      switch (DTHandleEventFormatFactory.sElementFormatMode)
-      {
+      if (DTHandleEventFormatFactory.sElementFormatMode != 2) {
+        sAudioMapHandler = new DTBaseEventMapHandler();
+      } else {
+        sAudioMapHandler = new DTNewsAudioEventMapHandler();
       }
     }
-    for (sAudioMapHandler = new DTBaseEventMapHandler();; sAudioMapHandler = new DTNewsAudioEventMapHandler()) {
-      return sAudioMapHandler;
-    }
+    return sAudioMapHandler;
   }
   
   static DTBaseEventMapHandler getBizEventHandler()
   {
     if (sBizEventHandler == null) {
-      switch (DTHandleEventFormatFactory.sElementFormatMode)
-      {
+      if (DTHandleEventFormatFactory.sElementFormatMode != 2) {
+        sBizEventHandler = new DTBaseEventMapHandler();
+      } else {
+        sBizEventHandler = new DTBizEventMapHandler();
       }
     }
-    for (sBizEventHandler = new DTBaseEventMapHandler();; sBizEventHandler = new DTBizEventMapHandler()) {
-      return sBizEventHandler;
-    }
+    return sBizEventHandler;
   }
   
   static DTPageEventMapHandler getPageEventHandler()
   {
     if (sPageEventHandler == null) {
-      switch (DTHandleEventFormatFactory.sElementFormatMode)
-      {
+      if (DTHandleEventFormatFactory.sElementFormatMode != 2) {
+        sPageEventHandler = new DTPageEventMapHandler();
+      } else {
+        sPageEventHandler = new DTNewsPageEventMapHandler();
       }
     }
-    for (sPageEventHandler = new DTPageEventMapHandler();; sPageEventHandler = new DTNewsPageEventMapHandler()) {
-      return sPageEventHandler;
-    }
+    return sPageEventHandler;
   }
   
   static DTBaseElementEventMapHandler getViewEventHandler()
   {
     if (sViewEventHandler == null) {
-      switch (DTHandleEventFormatFactory.sElementFormatMode)
-      {
+      if (DTHandleEventFormatFactory.sElementFormatMode != 2) {
+        sViewEventHandler = new DTViewFlattenEventMapHandler();
+      } else {
+        sViewEventHandler = new DTNewsElementFlattenEventMapHandler();
       }
     }
-    for (sViewEventHandler = new DTViewFlattenEventMapHandler();; sViewEventHandler = new DTNewsElementFlattenEventMapHandler()) {
-      return sViewEventHandler;
-    }
+    return sViewEventHandler;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.formatter.maphandler.DTHandleEventFormatFactory.EventHandlerHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -15,27 +15,27 @@ class QQAssistantGuider$4
   public void onClick(View paramView)
   {
     ReportController.b(null, "dc00898", "", "", "0X800B44D", "0X800B44D", 1, 0, "", "", "", "");
-    this.a.a = -1;
-    this.a.dismiss();
+    QQAssistantGuider localQQAssistantGuider = this.a;
+    localQQAssistantGuider.a = -1;
+    localQQAssistantGuider.dismiss();
     try
     {
       AssistantSwitchImpl.a(AssistantUtils.a(), true);
       WakeManager.a().a(true);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        AssistantUtils.a("HelloQQWake", "QQAssistantGuider cardHandler.setQQAssistantSwitch:" + localException.getMessage());
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QQAssistantGuider cardHandler.setQQAssistantSwitch:");
+      localStringBuilder.append(localException.getMessage());
+      AssistantUtils.a("HelloQQWake", localStringBuilder.toString());
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.wake.QQAssistantGuider.4
  * JD-Core Version:    0.7.0.1
  */

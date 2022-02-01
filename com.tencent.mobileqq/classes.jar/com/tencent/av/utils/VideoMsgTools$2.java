@@ -20,28 +20,32 @@ final class VideoMsgTools$2
     if (QLog.isColorLevel()) {
       QLog.d("VideoMsgTools", 2, "addMessage");
     }
-    if ((!ProcessUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) || (QQUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))) {
+    if ((ProcessUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) && (!QQUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())))
+    {
+      QQMessageFacade localQQMessageFacade = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
+      if (localQQMessageFacade != null)
+      {
+        MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+        if ((localMessageRecord != null) && (!TextUtils.isEmpty(localMessageRecord.frienduin))) {
+          localQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_JavaLangString);
+        }
+      }
+    }
+    else
+    {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Boolean);
     }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        CUOpenCardGuideMng.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, "qav");
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoMsgTools", 2, "addMessage end");
-      }
-      return;
-      QQMessageFacade localQQMessageFacade = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
-      if ((localQQMessageFacade != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin))) {
-        localQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_JavaLangString);
-      }
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      CUOpenCardGuideMng.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, "qav");
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoMsgTools", 2, "addMessage end");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.VideoMsgTools.2
  * JD-Core Version:    0.7.0.1
  */

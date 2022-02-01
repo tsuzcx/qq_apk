@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mqq.api;
 public final class R$style {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mqq.api.R.style
  * JD-Core Version:    0.7.0.1
  */

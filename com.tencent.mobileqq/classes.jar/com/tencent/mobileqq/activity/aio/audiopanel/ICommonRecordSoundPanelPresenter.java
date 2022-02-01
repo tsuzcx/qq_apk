@@ -1,0 +1,31 @@
+package com.tencent.mobileqq.activity.aio.audiopanel;
+
+import com.tencent.mvp.IBasePresenter;
+
+public abstract interface ICommonRecordSoundPanelPresenter
+  extends IBasePresenter
+{
+  public abstract double a();
+  
+  public abstract String a(double paramDouble);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract boolean a();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract boolean b();
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void d(int paramInt);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+ * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.ICommonRecordSoundPanelPresenter
+ * JD-Core Version:    0.7.0.1
+ */

@@ -21,37 +21,46 @@ public class LocationPermissionHelper
   
   public void a()
   {
-    if (Build.VERSION.SDK_INT < 23) {
-      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilLocationPermissionHelper$LocationPermissionCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilLocationPermissionHelper$LocationPermissionCallback.onGetLocation();
+    Object localObject;
+    if (Build.VERSION.SDK_INT < 23)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilLocationPermissionHelper$LocationPermissionCallback;
+      if (localObject != null) {
+        ((LocationPermissionHelper.LocationPermissionCallback)localObject).onGetLocation();
       }
     }
-    label119:
-    do
+    else
     {
-      do
+      localObject = this.jdField_a_of_type_AndroidAppActivity;
+      if (localObject == null) {
+        return;
+      }
+      int i;
+      if (((Activity)localObject).checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i == 0)
       {
-        do
+        localObject = this.jdField_a_of_type_AndroidAppActivity;
+        if ((localObject instanceof AppActivity))
         {
-          return;
-        } while (this.jdField_a_of_type_AndroidAppActivity == null);
-        if (this.jdField_a_of_type_AndroidAppActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0) {}
-        for (int i = 1;; i = 0)
-        {
-          if (i != 0) {
-            break label119;
-          }
-          if (!(this.jdField_a_of_type_AndroidAppActivity instanceof AppActivity)) {
-            break;
-          }
-          ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(this, 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+          ((AppActivity)localObject).requestPermissions(this, 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
           return;
         }
-      } while (!(this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity));
-      ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(this, 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
-      return;
-    } while (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilLocationPermissionHelper$LocationPermissionCallback == null);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilLocationPermissionHelper$LocationPermissionCallback.onGetLocation();
+        if ((localObject instanceof BaseActivity)) {
+          ((BaseActivity)localObject).requestPermissions(this, 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+        }
+      }
+      else
+      {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilLocationPermissionHelper$LocationPermissionCallback;
+        if (localObject != null) {
+          ((LocationPermissionHelper.LocationPermissionCallback)localObject).onGetLocation();
+        }
+      }
+    }
   }
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
@@ -61,14 +70,15 @@ public class LocationPermissionHelper
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilLocationPermissionHelper$LocationPermissionCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilLocationPermissionHelper$LocationPermissionCallback.onGetLocation();
+    paramArrayOfString = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilLocationPermissionHelper$LocationPermissionCallback;
+    if (paramArrayOfString != null) {
+      paramArrayOfString.onGetLocation();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.util.LocationPermissionHelper
  * JD-Core Version:    0.7.0.1
  */

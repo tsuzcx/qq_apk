@@ -31,20 +31,13 @@ public class RelativeLayout
       if (!localViewBase.isGone())
       {
         RelativeLayout.Params localParams = (RelativeLayout.Params)localViewBase.getComLayoutParams();
-        int j = localParams.mTop;
-        j = localViewBase.getComMeasuredHeight() + j + localParams.mLayoutMarginBottom;
-        if (j <= i) {
-          break label94;
+        int j = localParams.mTop + localViewBase.getComMeasuredHeight() + localParams.mLayoutMarginBottom;
+        if (j > i) {
+          i = j;
         }
-        i = j;
       }
     }
-    label94:
-    for (;;)
-    {
-      break;
-      return this.mPaddingBottom + (this.mBorderWidth << 1) + i;
-    }
+    return i + (this.mPaddingBottom + (this.mBorderWidth << 1));
   }
   
   private int getMaxWidth()
@@ -57,28 +50,21 @@ public class RelativeLayout
       if (!localViewBase.isGone())
       {
         RelativeLayout.Params localParams = (RelativeLayout.Params)localViewBase.getComLayoutParams();
-        int j = localParams.mLeft;
-        j = localViewBase.getComMeasuredWidth() + j + localParams.mLayoutMarginRight;
-        if (j <= i) {
-          break label94;
+        int j = localParams.mLeft + localViewBase.getComMeasuredWidth() + localParams.mLayoutMarginRight;
+        if (j > i) {
+          i = j;
         }
-        i = j;
       }
     }
-    label94:
-    for (;;)
-    {
-      break;
-      return this.mPaddingRight + (this.mBorderWidth << 1) + i;
-    }
+    return i + (this.mPaddingRight + (this.mBorderWidth << 1));
   }
   
   private int getRealHeight(int paramInt1, int paramInt2)
   {
     if (-2147483648 == paramInt1) {
-      paramInt2 = getMaxHeight();
+      return getMaxHeight();
     }
-    while (1073741824 == paramInt1) {
+    if (1073741824 == paramInt1) {
       return paramInt2;
     }
     return getMaxHeight();
@@ -87,9 +73,9 @@ public class RelativeLayout
   private int getRealWidth(int paramInt1, int paramInt2)
   {
     if (-2147483648 == paramInt1) {
-      paramInt2 = getMaxWidth();
+      return getMaxWidth();
     }
-    while (1073741824 == paramInt1) {
+    if (1073741824 == paramInt1) {
       return paramInt2;
     }
     return getMaxWidth();
@@ -97,7 +83,8 @@ public class RelativeLayout
   
   private List<ViewBase> sortHorizontal()
   {
-    if ((this.sortedHorizontalView == null) || (this.sortedHorizontalView.size() != this.mSubViews.size()))
+    List localList = this.sortedHorizontalView;
+    if ((localList == null) || (localList.size() != this.mSubViews.size()))
     {
       if (this.relativeLayoutHelper.getParent() == null) {
         this.relativeLayoutHelper.setParent(this);
@@ -109,7 +96,8 @@ public class RelativeLayout
   
   private List<ViewBase> sortVertical()
   {
-    if ((this.sortedVerticalView == null) || (this.sortedVerticalView.size() != this.mSubViews.size()))
+    List localList = this.sortedVerticalView;
+    if ((localList == null) || (localList.size() != this.mSubViews.size()))
     {
       if (this.relativeLayoutHelper.getParent() == null) {
         this.relativeLayoutHelper.setParent(this);
@@ -140,129 +128,103 @@ public class RelativeLayout
   
   public void onComMeasure(int paramInt1, int paramInt2)
   {
-    int k = View.MeasureSpec.getMode(paramInt1);
-    int m = View.MeasureSpec.getMode(paramInt2);
+    int n = View.MeasureSpec.getMode(paramInt1);
+    int i1 = View.MeasureSpec.getMode(paramInt2);
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
     paramInt2 = View.MeasureSpec.getSize(paramInt2);
-    if (k != 0) {}
-    for (;;)
-    {
-      if (m != 0) {}
-      for (;;)
-      {
-        List localList = sortHorizontal();
-        int n = localList.size();
-        boolean bool1;
-        boolean bool2;
-        label67:
-        label70:
-        ViewBase localViewBase;
-        int i;
-        RelativeLayout.Params localParams;
-        if (k != 1073741824)
-        {
-          bool1 = true;
-          if (m == 1073741824) {
-            break label198;
-          }
-          bool2 = true;
-          j = 0;
-          if (j >= n) {
-            break label207;
-          }
-          localViewBase = (ViewBase)localList.get(j);
-          i = paramInt1;
-          if (localViewBase.getVisibility() != 8)
-          {
-            localParams = (RelativeLayout.Params)localViewBase.getComLayoutParams();
-            this.relativeLayoutHelper.applyHorizontalSizeRules(localParams, paramInt1);
-            i = paramInt1;
-            if (bool1)
-            {
-              i = paramInt1;
-              if (localParams.mLayoutWidth == -1)
-              {
-                i = getMaxWidth();
-                if (i <= 0) {
-                  break label204;
-                }
-                paramInt1 = i;
-              }
-            }
-          }
-        }
-        label198:
-        label204:
-        for (;;)
-        {
-          i = paramInt1;
-          this.relativeLayoutHelper.measureChildHorizontal(localViewBase, localParams, i, paramInt2);
-          this.relativeLayoutHelper.positionChildHorizontal(localViewBase, localParams, i, bool1);
-          j += 1;
-          paramInt1 = i;
-          break label70;
-          bool1 = false;
-          break;
-          bool2 = false;
-          break label67;
-        }
-        label207:
-        localList = sortVertical();
-        int j = 0;
-        if (j < n)
-        {
-          localViewBase = (ViewBase)localList.get(j);
-          i = paramInt2;
-          if (localViewBase.getVisibility() != 8)
-          {
-            localParams = (RelativeLayout.Params)localViewBase.getComLayoutParams();
-            this.relativeLayoutHelper.applyVerticalSizeRules(localParams, paramInt2);
-            i = paramInt2;
-            if (bool2) {
-              if (localParams.mLayoutHeight != -1)
-              {
-                i = paramInt2;
-                if (!RelativeLayoutHelper.hasVerticleCenterRule(localParams)) {}
-              }
-              else
-              {
-                i = getMaxHeight();
-                if (i <= 0) {
-                  break label347;
-                }
-                paramInt2 = i;
-              }
-            }
-          }
-          label347:
-          for (;;)
-          {
-            i = paramInt2;
-            this.relativeLayoutHelper.measureChild(localViewBase, localParams, paramInt1, i);
-            this.relativeLayoutHelper.positionChildVertical(localViewBase, localParams, i, bool2);
-            j += 1;
-            paramInt2 = i;
-            break;
-          }
-        }
-        setComMeasuredDimension(getRealWidth(k, paramInt1), getRealHeight(m, paramInt2));
-        return;
-        paramInt2 = -1;
-      }
+    if (n == 0) {
       paramInt1 = -1;
     }
+    if (i1 == 0) {
+      paramInt2 = -1;
+    }
+    List localList = sortHorizontal();
+    int i2 = localList.size();
+    boolean bool2 = true;
+    int k = 0;
+    boolean bool1;
+    if (n != 1073741824) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    if (i1 == 1073741824) {
+      bool2 = false;
+    }
+    int j = 0;
+    ViewBase localViewBase;
+    int i;
+    RelativeLayout.Params localParams;
+    while (j < i2)
+    {
+      localViewBase = (ViewBase)localList.get(j);
+      i = paramInt1;
+      if (localViewBase.getVisibility() != 8)
+      {
+        localParams = (RelativeLayout.Params)localViewBase.getComLayoutParams();
+        this.relativeLayoutHelper.applyHorizontalSizeRules(localParams, paramInt1);
+        i = paramInt1;
+        if (bool1)
+        {
+          i = paramInt1;
+          if (localParams.mLayoutWidth == -1)
+          {
+            int m = getMaxWidth();
+            i = paramInt1;
+            if (m > 0) {
+              i = m;
+            }
+          }
+        }
+        this.relativeLayoutHelper.measureChildHorizontal(localViewBase, localParams, i, paramInt2);
+        this.relativeLayoutHelper.positionChildHorizontal(localViewBase, localParams, i, bool1);
+      }
+      j += 1;
+      paramInt1 = i;
+    }
+    localList = sortVertical();
+    j = k;
+    while (j < i2)
+    {
+      localViewBase = (ViewBase)localList.get(j);
+      i = paramInt2;
+      if (localViewBase.getVisibility() != 8)
+      {
+        localParams = (RelativeLayout.Params)localViewBase.getComLayoutParams();
+        this.relativeLayoutHelper.applyVerticalSizeRules(localParams, paramInt2);
+        i = paramInt2;
+        if (bool2) {
+          if (localParams.mLayoutHeight != -1)
+          {
+            i = paramInt2;
+            if (!RelativeLayoutHelper.hasVerticleCenterRule(localParams)) {}
+          }
+          else
+          {
+            k = getMaxHeight();
+            i = paramInt2;
+            if (k > 0) {
+              i = k;
+            }
+          }
+        }
+        this.relativeLayoutHelper.measureChild(localViewBase, localParams, paramInt1, i);
+        this.relativeLayoutHelper.positionChildVertical(localViewBase, localParams, i, bool2);
+      }
+      j += 1;
+      paramInt2 = i;
+    }
+    setComMeasuredDimension(getRealWidth(n, paramInt1), getRealHeight(i1, paramInt2));
   }
   
-  public boolean setAttribute(int paramInt, String paramString)
+  protected boolean setAttribute(int paramInt, String paramString)
   {
-    boolean bool = super.setAttribute(paramInt, paramString);
-    if (!bool) {}
-    return bool;
+    return super.setAttribute(paramInt, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.layout.RelativeLayout
  * JD-Core Version:    0.7.0.1
  */

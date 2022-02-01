@@ -124,16 +124,14 @@ public abstract class RoomBootBizModules
   
   public void onExitRoom(boolean paramBoolean)
   {
-    if (!this.isEnterRoom) {}
-    for (;;)
-    {
+    if (!this.isEnterRoom) {
       return;
-      if ((this.bizModules != null) && (this.bizModules.size() > 0))
-      {
-        Iterator localIterator = this.bizModules.iterator();
-        while (localIterator.hasNext()) {
-          ((RoomBizModule)localIterator.next()).onExitRoom(paramBoolean);
-        }
+    }
+    if ((this.bizModules != null) && (this.bizModules.size() > 0))
+    {
+      Iterator localIterator = this.bizModules.iterator();
+      while (localIterator.hasNext()) {
+        ((RoomBizModule)localIterator.next()).onExitRoom(paramBoolean);
       }
     }
   }
@@ -204,7 +202,7 @@ public abstract class RoomBootBizModules
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.pages.room.RoomBootBizModules
  * JD-Core Version:    0.7.0.1
  */

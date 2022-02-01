@@ -22,7 +22,10 @@ public final class NotificationCompat$Action$Builder
   private boolean mShowsUserInterface = true;
   private final CharSequence mTitle;
   
-  public NotificationCompat$Action$Builder(int paramInt, CharSequence paramCharSequence, PendingIntent paramPendingIntent) {}
+  public NotificationCompat$Action$Builder(int paramInt, CharSequence paramCharSequence, PendingIntent paramPendingIntent)
+  {
+    this(localIconCompat, paramCharSequence, paramPendingIntent, new Bundle(), null, true, 0, true, false);
+  }
   
   public NotificationCompat$Action$Builder(NotificationCompat.Action paramAction)
   {
@@ -40,22 +43,24 @@ public final class NotificationCompat$Action$Builder
     this.mTitle = NotificationCompat.Builder.limitCharSequenceLength(paramCharSequence);
     this.mIntent = paramPendingIntent;
     this.mExtras = paramBundle;
-    if (paramArrayOfRemoteInput == null) {}
-    for (paramIconCompat = null;; paramIconCompat = new ArrayList(Arrays.asList(paramArrayOfRemoteInput)))
-    {
-      this.mRemoteInputs = paramIconCompat;
-      this.mAllowGeneratedReplies = paramBoolean1;
-      this.mSemanticAction = paramInt;
-      this.mShowsUserInterface = paramBoolean2;
-      this.mIsContextual = paramBoolean3;
-      return;
+    if (paramArrayOfRemoteInput == null) {
+      paramIconCompat = null;
+    } else {
+      paramIconCompat = new ArrayList(Arrays.asList(paramArrayOfRemoteInput));
     }
+    this.mRemoteInputs = paramIconCompat;
+    this.mAllowGeneratedReplies = paramBoolean1;
+    this.mSemanticAction = paramInt;
+    this.mShowsUserInterface = paramBoolean2;
+    this.mIsContextual = paramBoolean3;
   }
   
   private void checkContextualActionNullFields()
   {
-    if (!this.mIsContextual) {}
-    while (this.mIntent != null) {
+    if (!this.mIsContextual) {
+      return;
+    }
+    if (this.mIntent != null) {
       return;
     }
     throw new NullPointerException("Contextual Actions must contain a valid PendingIntent");
@@ -82,34 +87,32 @@ public final class NotificationCompat$Action$Builder
   {
     checkContextualActionNullFields();
     Object localObject1 = new ArrayList();
-    Object localObject2 = new ArrayList();
-    if (this.mRemoteInputs != null)
+    ArrayList localArrayList = new ArrayList();
+    Object localObject2 = this.mRemoteInputs;
+    if (localObject2 != null)
     {
-      Iterator localIterator = this.mRemoteInputs.iterator();
-      while (localIterator.hasNext())
+      localObject2 = ((ArrayList)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        RemoteInput localRemoteInput = (RemoteInput)localIterator.next();
+        RemoteInput localRemoteInput = (RemoteInput)((Iterator)localObject2).next();
         if (localRemoteInput.isDataOnly()) {
           ((List)localObject1).add(localRemoteInput);
         } else {
-          ((List)localObject2).add(localRemoteInput);
+          localArrayList.add(localRemoteInput);
         }
       }
     }
-    if (((List)localObject1).isEmpty())
-    {
+    boolean bool = ((List)localObject1).isEmpty();
+    localObject2 = null;
+    if (bool) {
       localObject1 = null;
-      if (!((List)localObject2).isEmpty()) {
-        break label173;
-      }
-    }
-    label173:
-    for (localObject2 = null;; localObject2 = (RemoteInput[])((List)localObject2).toArray(new RemoteInput[((List)localObject2).size()]))
-    {
-      return new NotificationCompat.Action(this.mIcon, this.mTitle, this.mIntent, this.mExtras, (RemoteInput[])localObject2, (RemoteInput[])localObject1, this.mAllowGeneratedReplies, this.mSemanticAction, this.mShowsUserInterface, this.mIsContextual);
+    } else {
       localObject1 = (RemoteInput[])((List)localObject1).toArray(new RemoteInput[((List)localObject1).size()]);
-      break;
     }
+    if (!localArrayList.isEmpty()) {
+      localObject2 = (RemoteInput[])localArrayList.toArray(new RemoteInput[localArrayList.size()]);
+    }
+    return new NotificationCompat.Action(this.mIcon, this.mTitle, this.mIntent, this.mExtras, (RemoteInput[])localObject2, (RemoteInput[])localObject1, this.mAllowGeneratedReplies, this.mSemanticAction, this.mShowsUserInterface, this.mIsContextual);
   }
   
   public Builder extend(NotificationCompat.Action.Extender paramExtender)
@@ -150,7 +153,7 @@ public final class NotificationCompat$Action$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.NotificationCompat.Action.Builder
  * JD-Core Version:    0.7.0.1
  */

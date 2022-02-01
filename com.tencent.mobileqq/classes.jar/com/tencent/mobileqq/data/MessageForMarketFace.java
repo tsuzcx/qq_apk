@@ -3,10 +3,11 @@ package com.tencent.mobileqq.data;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.utils.MessagePkgUtils;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.mobileqq.emoticonview.api.IEmosmService;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import tencent.im.msg.im_msg_body.MarketFace;
@@ -44,14 +45,14 @@ public class MessageForMarketFace
     try
     {
       this.mMarkFaceMessage = ((MarkFaceMessage)MessagePkgUtils.a(this.msgData));
-      if ((EmojiStickerManager.f) && (this.mMarkFaceMessage != null) && (this.mMarkFaceMessage.stickerInfo != null))
+      if ((((IEmosmService)QRoute.api(IEmosmService.class)).getEmojiStickerSwitch()) && (this.mMarkFaceMessage != null) && (this.mMarkFaceMessage.stickerInfo != null))
       {
         if (this.msgtype == -2007) {
           this.msgtype = -2058;
         }
         this.mMarkFaceMessage.stickerInfo.isDisplayed = this.isread;
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -80,18 +81,22 @@ public class MessageForMarketFace
   
   public String getSummaryMsg()
   {
-    if ((this.mMarkFaceMessage != null) && (!TextUtils.isEmpty(this.mMarkFaceMessage.faceName)))
+    Object localObject = this.mMarkFaceMessage;
+    if ((localObject != null) && (!TextUtils.isEmpty(((MarkFaceMessage)localObject).faceName)))
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[").append(this.mMarkFaceMessage.faceName).append("]");
-      return localStringBuilder.toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[");
+      ((StringBuilder)localObject).append(this.mMarkFaceMessage.faceName);
+      ((StringBuilder)localObject).append("]");
+      return ((StringBuilder)localObject).toString();
     }
-    return HardCodeUtil.a(2131706603);
+    return HardCodeUtil.a(2131699761);
   }
   
   public boolean isNewSoundType()
   {
-    return (this.mMarkFaceMessage != null) && (this.mMarkFaceMessage.voicePrintItems != null) && (!this.mMarkFaceMessage.voicePrintItems.isEmpty());
+    MarkFaceMessage localMarkFaceMessage = this.mMarkFaceMessage;
+    return (localMarkFaceMessage != null) && (localMarkFaceMessage.voicePrintItems != null) && (!this.mMarkFaceMessage.voicePrintItems.isEmpty());
   }
   
   public boolean isSupportReply()
@@ -104,28 +109,30 @@ public class MessageForMarketFace
     return false;
   }
   
-  public void postRead()
+  protected void postRead()
   {
     parse();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
-    if (this.mMarkFaceMessage != null) {}
-    try
-    {
-      this.msgData = MessagePkgUtils.a(this.mMarkFaceMessage);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("MessageForMarketFace", 1, "prewrite: ", localException);
+    MarkFaceMessage localMarkFaceMessage = this.mMarkFaceMessage;
+    if (localMarkFaceMessage != null) {
+      try
+      {
+        this.msgData = MessagePkgUtils.a(localMarkFaceMessage);
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("MessageForMarketFace", 1, "prewrite: ", localException);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForMarketFace
  * JD-Core Version:    0.7.0.1
  */

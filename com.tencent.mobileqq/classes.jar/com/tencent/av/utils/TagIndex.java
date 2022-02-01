@@ -2,7 +2,6 @@ package com.tencent.av.utils;
 
 import android.view.View;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
 public class TagIndex
@@ -35,17 +34,24 @@ public class TagIndex
   
   static void a(String paramString, int paramInt, Object paramObject)
   {
-    if (AudioHelper.d())
-    {
-      paramString = paramString + HardCodeUtil.a(2131714604) + paramInt + "], object[" + paramObject.getClass().getSimpleName() + "]";
-      QLog.w("TagIndex", 1, paramString, new Throwable("打印调用栈"));
-      throw new ClassCastException(paramString);
+    if (!AudioHelper.a()) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(HardCodeUtil.a(2131714524));
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("], object[");
+    localStringBuilder.append(paramObject.getClass().getSimpleName());
+    localStringBuilder.append("]");
+    paramString = localStringBuilder.toString();
+    QLog.w("TagIndex", 1, paramString, new Throwable("打印调用栈"));
+    throw new ClassCastException(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.TagIndex
  * JD-Core Version:    0.7.0.1
  */

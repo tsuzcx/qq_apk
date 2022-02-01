@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.aditem.GdtHandler.Options;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialAd;
+import com.tencent.gdtad.api.interstitial.IGdtInterstitialAd;
 import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
@@ -21,7 +21,7 @@ class AdProxyImpl$SDKInterstitialAdView
 {
   int jdField_a_of_type_Int = 53;
   volatile long jdField_a_of_type_Long;
-  GdtInterstitialAd jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialAd;
+  IGdtInterstitialAd jdField_a_of_type_ComTencentGdtadApiInterstitialIGdtInterstitialAd;
   AdProxy.InterstitialADLisener jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener;
   String jdField_a_of_type_JavaLangString;
   WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
@@ -68,37 +68,37 @@ class AdProxyImpl$SDKInterstitialAdView
   
   public void destroy()
   {
-    this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialAd = null;
+    this.jdField_a_of_type_ComTencentGdtadApiInterstitialIGdtInterstitialAd = null;
     this.jdField_a_of_type_JavaLangRefWeakReference = null;
     this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener = null;
   }
   
   public void loadAD()
   {
-    Object localObject;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localObject != null) {
-        break label91;
-      }
-      localObject = new StringBuilder().append("loadAD, act is null, ");
-      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener == null) {
-        break label86;
-      }
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject != null) {
+      localObject = (Activity)((WeakReference)localObject).get();
+    } else {
+      localObject = null;
     }
-    label86:
-    for (boolean bool = true;; bool = false)
+    if (localObject == null)
     {
-      QLog.e("AdProxyImpl", 1, bool);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("loadAD, act is null, ");
+      boolean bool;
       if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener != null) {
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
+        bool = true;
+      } else {
+        bool = false;
+      }
+      ((StringBuilder)localObject).append(bool);
+      QLog.e("AdProxyImpl", 1, ((StringBuilder)localObject).toString());
+      localObject = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener;
+      if (localObject != null) {
+        ((AdProxy.InterstitialADLisener)localObject).onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
       }
       return;
-      localObject = null;
-      break;
     }
-    label91:
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl.requestAdInfo((Context)localObject, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.d, this.e, this.f, this.g, this.h, 1, new AdProxyImpl.SDKInterstitialAdView.1(this, (Activity)localObject));
   }
@@ -107,10 +107,11 @@ class AdProxyImpl$SDKInterstitialAdView
   {
     try
     {
-      if ((this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialAd != null) && (paramActivity != null)) {
-        this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialAd.a(paramActivity, paramInt, paramIntent);
+      if ((this.jdField_a_of_type_ComTencentGdtadApiInterstitialIGdtInterstitialAd != null) && (paramActivity != null))
+      {
+        this.jdField_a_of_type_ComTencentGdtadApiInterstitialIGdtInterstitialAd.a(paramActivity, paramInt, paramIntent);
+        return;
       }
-      return;
     }
     catch (Exception paramActivity)
     {
@@ -120,26 +121,32 @@ class AdProxyImpl$SDKInterstitialAdView
   
   public boolean show(Activity paramActivity)
   {
-    if ((this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialAd != null) && (paramActivity != null))
+    if ((this.jdField_a_of_type_ComTencentGdtadApiInterstitialIGdtInterstitialAd != null) && (paramActivity != null))
     {
-      if (this.jdField_b_of_type_JavaLangRefWeakReference != null) {}
-      for (Object localObject = (IMiniAppContext)this.jdField_b_of_type_JavaLangRefWeakReference.get();; localObject = null)
-      {
-        localObject = MiniAdAntiSpamReportUtil.a((IMiniAppContext)localObject, this.jdField_a_of_type_Long, this.jdField_b_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialAd.a((JSONObject)localObject);
-        boolean bool = this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialAd.a(paramActivity);
-        if ((bool) && (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener != null)) {
-          this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener.onShow();
-        }
-        return bool;
+      Object localObject = this.jdField_b_of_type_JavaLangRefWeakReference;
+      if (localObject != null) {
+        localObject = (IMiniAppContext)((WeakReference)localObject).get();
+      } else {
+        localObject = null;
       }
+      localObject = MiniAdAntiSpamReportUtil.a((IMiniAppContext)localObject, this.jdField_a_of_type_Long, this.jdField_b_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentGdtadApiInterstitialIGdtInterstitialAd.a((JSONObject)localObject);
+      boolean bool = this.jdField_a_of_type_ComTencentGdtadApiInterstitialIGdtInterstitialAd.a(paramActivity);
+      if (bool)
+      {
+        paramActivity = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener;
+        if (paramActivity != null) {
+          paramActivity.onShow();
+        }
+      }
+      return bool;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.SDKInterstitialAdView
  * JD-Core Version:    0.7.0.1
  */

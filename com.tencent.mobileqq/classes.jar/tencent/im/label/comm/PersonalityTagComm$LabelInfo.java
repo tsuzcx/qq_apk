@@ -32,13 +32,14 @@ public final class PersonalityTagComm$LabelInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 64, 72, 82, 90, 96, 104, 112, 122 }, new String[] { "uint32_add_time", "uint64_id", "uint32_category", "str_text", "str_fg_color", "str_bg_color", "str_cover_photo_url", "uint32_praise_count", "uint32_photo_count", "rpt_msg_photo", "bytes_photo_cookie", "uint32_unread_praise", "uint32_mod_time", "uint32_praise_flag", "rpt_last_praise_uins_info" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), "", "", "", "", Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null }, LabelInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 64, 72, 82, 90, 96, 104, 112, 122 }, new String[] { "uint32_add_time", "uint64_id", "uint32_category", "str_text", "str_fg_color", "str_bg_color", "str_cover_photo_url", "uint32_praise_count", "uint32_photo_count", "rpt_msg_photo", "bytes_photo_cookie", "uint32_unread_praise", "uint32_mod_time", "uint32_praise_flag", "rpt_last_praise_uins_info" }, new Object[] { localInteger, Long.valueOf(0L), localInteger, "", "", "", "", localInteger, localInteger, null, localByteStringMicro, localInteger, localInteger, localInteger, null }, LabelInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.label.comm.PersonalityTagComm.LabelInfo
  * JD-Core Version:    0.7.0.1
  */

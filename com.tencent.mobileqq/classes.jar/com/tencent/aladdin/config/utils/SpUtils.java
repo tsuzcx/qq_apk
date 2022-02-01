@@ -19,18 +19,24 @@ public class SpUtils
     if (paramBoolean)
     {
       str = Aladdin.getCurrentUserId();
-      str = "aladdin_sp" + "_" + str;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("aladdin_sp");
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(str);
+      str = ((StringBuilder)localObject).toString();
     }
-    if (sContext != null) {
-      return sContext.getSharedPreferences(str, 0);
+    Object localObject = sContext;
+    if (localObject != null) {
+      return ((Context)localObject).getSharedPreferences(str, 0);
     }
     return null;
   }
   
   public static <T> T getSpValue(String paramString, T paramT, boolean paramBoolean)
   {
-    if (aladdinSpOperator != null) {
-      return aladdinSpOperator.getSpValue(paramString, paramT, paramBoolean);
+    SpUtils.IAladdinSpOperator localIAladdinSpOperator = aladdinSpOperator;
+    if (localIAladdinSpOperator != null) {
+      return localIAladdinSpOperator.getSpValue(paramString, paramT, paramBoolean);
     }
     if (sContext != null) {
       return getSpValueImp(paramString, paramT, paramBoolean);
@@ -42,26 +48,27 @@ public class SpUtils
   private static <T> T getSpValueImp(String paramString, T paramT, boolean paramBoolean)
   {
     SharedPreferences localSharedPreferences = getAladdinSp(paramBoolean);
-    if (localSharedPreferences == null) {
-      Log.e("SpUtils", "[getSpValueImp] sp is null.");
-    }
-    do
+    if (localSharedPreferences == null)
     {
+      Log.e("SpUtils", "[getSpValueImp] sp is null.");
       return paramT;
-      if ((paramT instanceof String)) {
-        return localSharedPreferences.getString(paramString, (String)paramT);
-      }
-      if ((paramT instanceof Integer)) {
-        return Integer.valueOf(localSharedPreferences.getInt(paramString, ((Integer)paramT).intValue()));
-      }
-      if ((paramT instanceof Long)) {
-        return Long.valueOf(localSharedPreferences.getLong(paramString, ((Long)paramT).longValue()));
-      }
-      if ((paramT instanceof Boolean)) {
-        return Boolean.valueOf(localSharedPreferences.getBoolean(paramString, ((Boolean)paramT).booleanValue()));
-      }
-    } while (!(paramT instanceof Float));
-    return Float.valueOf(localSharedPreferences.getFloat(paramString, ((Float)paramT).floatValue()));
+    }
+    if ((paramT instanceof String)) {
+      return localSharedPreferences.getString(paramString, (String)paramT);
+    }
+    if ((paramT instanceof Integer)) {
+      return Integer.valueOf(localSharedPreferences.getInt(paramString, ((Integer)paramT).intValue()));
+    }
+    if ((paramT instanceof Long)) {
+      return Long.valueOf(localSharedPreferences.getLong(paramString, ((Long)paramT).longValue()));
+    }
+    if ((paramT instanceof Boolean)) {
+      return Boolean.valueOf(localSharedPreferences.getBoolean(paramString, ((Boolean)paramT).booleanValue()));
+    }
+    if ((paramT instanceof Float)) {
+      return Float.valueOf(localSharedPreferences.getFloat(paramString, ((Float)paramT).floatValue()));
+    }
+    return paramT;
   }
   
   public static void init(Context paramContext)
@@ -82,9 +89,10 @@ public class SpUtils
   
   public static <T> void updateSpValue(String paramString, T paramT, boolean paramBoolean)
   {
-    if (aladdinSpOperator != null)
+    SpUtils.IAladdinSpOperator localIAladdinSpOperator = aladdinSpOperator;
+    if (localIAladdinSpOperator != null)
     {
-      aladdinSpOperator.updateSpValue(paramString, paramT, paramBoolean);
+      localIAladdinSpOperator.updateSpValue(paramString, paramT, paramBoolean);
       return;
     }
     if (sContext != null)
@@ -104,40 +112,39 @@ public class SpUtils
       return;
     }
     localObject = ((SharedPreferences)localObject).edit();
-    if ((paramT instanceof String)) {
+    if ((paramT instanceof String))
+    {
       ((SharedPreferences.Editor)localObject).putString(paramString, (String)paramT);
     }
-    for (;;)
+    else if ((paramT instanceof Integer))
     {
-      ((SharedPreferences.Editor)localObject).apply();
-      return;
-      if ((paramT instanceof Integer))
-      {
-        ((SharedPreferences.Editor)localObject).putInt(paramString, ((Integer)paramT).intValue());
-      }
-      else if ((paramT instanceof Long))
-      {
-        ((SharedPreferences.Editor)localObject).putLong(paramString, ((Long)paramT).longValue());
-      }
-      else if ((paramT instanceof Float))
-      {
-        ((SharedPreferences.Editor)localObject).putFloat(paramString, ((Float)paramT).floatValue());
-      }
-      else
-      {
-        if (!(paramT instanceof Boolean)) {
-          break;
-        }
-        ((SharedPreferences.Editor)localObject).putBoolean(paramString, ((Boolean)paramT).booleanValue());
-      }
+      ((SharedPreferences.Editor)localObject).putInt(paramString, ((Integer)paramT).intValue());
     }
-    StringBuilder localStringBuilder = new StringBuilder().append("[updateSpValueImp]: unsupported type ");
-    if (paramT != null) {}
-    for (paramString = paramT.getClass();; paramString = "null")
+    else if ((paramT instanceof Long))
     {
-      Log.d("SpUtils", paramString);
-      break;
+      ((SharedPreferences.Editor)localObject).putLong(paramString, ((Long)paramT).longValue());
     }
+    else if ((paramT instanceof Float))
+    {
+      ((SharedPreferences.Editor)localObject).putFloat(paramString, ((Float)paramT).floatValue());
+    }
+    else if ((paramT instanceof Boolean))
+    {
+      ((SharedPreferences.Editor)localObject).putBoolean(paramString, ((Boolean)paramT).booleanValue());
+    }
+    else
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[updateSpValueImp]: unsupported type ");
+      if (paramT != null) {
+        paramString = paramT.getClass();
+      } else {
+        paramString = "null";
+      }
+      localStringBuilder.append(paramString);
+      Log.d("SpUtils", localStringBuilder.toString());
+    }
+    ((SharedPreferences.Editor)localObject).apply();
   }
 }
 

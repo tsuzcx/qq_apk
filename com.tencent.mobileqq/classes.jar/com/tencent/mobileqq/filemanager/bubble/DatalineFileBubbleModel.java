@@ -3,10 +3,10 @@ package com.tencent.mobileqq.filemanager.bubble;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Rect;
 import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.common.galleryactivity.AnimationUtils;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.ChatActivityFacade;
@@ -41,10 +41,10 @@ import com.tencent.mobileqq.forward.ForwardBaseOption;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.wifi.FreeWifiHelper;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qqfav.QfavBuilder;
 import cooperation.qqfav.QfavReport;
-import cooperation.qqreader.QRLocalManager;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,21 +60,20 @@ public class DatalineFileBubbleModel
   
   private DataLineMsgRecord a()
   {
-    Object localObject;
     if (!d()) {
-      localObject = null;
+      return null;
     }
-    long l;
-    DataLineMsgRecord localDataLineMsgRecord;
-    do
+    int i = this.jdField_a_of_type_ComTencentMobileqqDataMessageForDLFile.deviceType;
+    long l = this.jdField_a_of_type_ComTencentMobileqqDataMessageForDLFile.associatedId;
+    DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).a(l);
+    if (localDataLineMsgRecord == null)
     {
-      return localObject;
-      int i = this.jdField_a_of_type_ComTencentMobileqqDataMessageForDLFile.deviceType;
-      l = this.jdField_a_of_type_ComTencentMobileqqDataMessageForDLFile.associatedId;
-      localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).a(l);
-      localObject = localDataLineMsgRecord;
-    } while (localDataLineMsgRecord != null);
-    QLog.i("DatalineFileBubbleModel", 1, "getSourceDatalineFile：do not find sessionId[" + l + "]");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getSourceDatalineFile：do not find sessionId[");
+      localStringBuilder.append(l);
+      localStringBuilder.append("]");
+      QLog.i("DatalineFileBubbleModel", 1, localStringBuilder.toString());
+    }
     return localDataLineMsgRecord;
   }
   
@@ -85,21 +84,27 @@ public class DatalineFileBubbleModel
   
   private void a(DataLineMsgRecord paramDataLineMsgRecord)
   {
-    if (paramDataLineMsgRecord.nWeiyunSessionId != 0L) {}
-    for (FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramDataLineMsgRecord.nWeiyunSessionId);; localFileManagerEntity = null)
+    if (paramDataLineMsgRecord.nWeiyunSessionId != 0L) {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramDataLineMsgRecord.nWeiyunSessionId);
+    } else {
+      localObject = null;
+    }
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramDataLineMsgRecord.sessionid);
+    if (localObject == null)
     {
-      int i = DataLineMsgRecord.getDevTypeBySeId(paramDataLineMsgRecord.sessionid);
-      if (localFileManagerEntity == null)
-      {
-        FMToastUtil.b(FileManagerUtil.d(paramDataLineMsgRecord.filename) + ReadInJoyUtils.a(2131692731));
-        paramDataLineMsgRecord.nWeiyunSessionId = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(paramDataLineMsgRecord.path, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0, false).nSessionId;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).d(paramDataLineMsgRecord.msgId);
-        return;
-      }
-      FMToastUtil.b(FileManagerUtil.d(paramDataLineMsgRecord.filename) + ReadInJoyUtils.a(2131692731));
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(paramDataLineMsgRecord.nWeiyunSessionId);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(FileManagerUtil.c(paramDataLineMsgRecord.filename));
+      ((StringBuilder)localObject).append(BaseApplication.getContext().getResources().getString(2131692688));
+      FMToastUtil.b(((StringBuilder)localObject).toString());
+      paramDataLineMsgRecord.nWeiyunSessionId = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(paramDataLineMsgRecord.path, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0, false).nSessionId;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).d(paramDataLineMsgRecord.msgId);
       return;
     }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(FileManagerUtil.c(paramDataLineMsgRecord.filename));
+    ((StringBuilder)localObject).append(BaseApplication.getContext().getResources().getString(2131692688));
+    FMToastUtil.b(((StringBuilder)localObject).toString());
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(paramDataLineMsgRecord.nWeiyunSessionId);
   }
   
   private void a(boolean paramBoolean, Rect paramRect)
@@ -123,8 +128,10 @@ public class DatalineFileBubbleModel
   
   private void b(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForDLFile.isMultiMsg) && (!FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDLFile, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext))) {}
-    while (a() == null) {
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForDLFile.isMultiMsg) && (!FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDLFile, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext))) {
+      return;
+    }
+    if (a() == null) {
       return;
     }
     paramView = AnimationUtils.a(paramView);
@@ -160,53 +167,60 @@ public class DatalineFileBubbleModel
   private void h()
   {
     DataLineMsgRecord localDataLineMsgRecord = a();
-    if (localDataLineMsgRecord == null) {}
-    do
-    {
+    if (localDataLineMsgRecord == null) {
       return;
-      if ((!FileManagerUtil.a()) || (localDataLineMsgRecord.filesize <= ((IFMConfig)QRoute.api(IFMConfig.class)).getFlowDialogSize())) {
-        break;
+    }
+    if ((FileManagerUtil.a()) && (localDataLineMsgRecord.filesize > ((IFMConfig)QRoute.api(IFMConfig.class)).getFlowDialogSize()))
+    {
+      if (FreeWifiHelper.a((Activity)this.jdField_a_of_type_AndroidContentContext, 5, new DatalineFileBubbleModel.1(this))) {
+        FMDialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131692561, 2131692564, new DatalineFileBubbleModel.2(this));
       }
-    } while (!FreeWifiHelper.a((Activity)this.jdField_a_of_type_AndroidContentContext, 5, new DatalineFileBubbleModel.1(this)));
-    FMDialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131692609, 2131692612, new DatalineFileBubbleModel.2(this));
-    return;
-    a(localDataLineMsgRecord);
+    }
+    else {
+      a(localDataLineMsgRecord);
+    }
   }
   
   private void i()
   {
     DataLineMsgRecord localDataLineMsgRecord = a();
-    if (localDataLineMsgRecord == null) {}
-    String str1;
-    do
-    {
+    if (localDataLineMsgRecord == null) {
       return;
-      str1 = localDataLineMsgRecord.path;
-    } while (!FileUtils.b(str1));
-    long l = FileUtils.a(str1);
-    String str2 = FileManagerUtil.a(str1);
-    ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
-    localForwardFileInfo.b(10000);
-    localForwardFileInfo.d(6);
-    localForwardFileInfo.d(str2);
-    localForwardFileInfo.d(l);
-    if (!TextUtils.isEmpty(localDataLineMsgRecord.thumbPath)) {
-      localForwardFileInfo.f(localDataLineMsgRecord.thumbPath);
     }
-    localForwardFileInfo.a(str1);
-    localForwardFileInfo.b(localDataLineMsgRecord.entityID);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("forward_text", HardCodeUtil.a(2131706219) + str2 + HardCodeUtil.a(2131706217) + FileUtil.a(l) + "。");
-    localIntent.putExtra("forward_type", 0);
-    localIntent.putExtra("forward_filepath", str1);
-    localIntent.putExtra("fileinfo", localForwardFileInfo);
-    localIntent.putExtra("not_forward", true);
-    localIntent.putExtra("forward _key_nojump", true);
-    localIntent.putExtra("k_favorites", false);
-    if (!TextUtils.isEmpty(localDataLineMsgRecord.thumbPath)) {
-      localIntent.putExtra("forward_thumb", localDataLineMsgRecord.path);
+    String str1 = localDataLineMsgRecord.path;
+    if (FileUtils.fileExistsAndNotEmpty(str1))
+    {
+      long l = FileUtils.getFileSizes(str1);
+      String str2 = FileManagerUtil.a(str1);
+      ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
+      localForwardFileInfo.b(10000);
+      localForwardFileInfo.d(6);
+      localForwardFileInfo.d(str2);
+      localForwardFileInfo.d(l);
+      if (!TextUtils.isEmpty(localDataLineMsgRecord.thumbPath)) {
+        localForwardFileInfo.f(localDataLineMsgRecord.thumbPath);
+      }
+      localForwardFileInfo.a(str1);
+      localForwardFileInfo.b(localDataLineMsgRecord.entityID);
+      Intent localIntent = new Intent();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(HardCodeUtil.a(2131706270));
+      localStringBuilder.append(str2);
+      localStringBuilder.append(HardCodeUtil.a(2131706268));
+      localStringBuilder.append(FileUtil.a(l));
+      localStringBuilder.append("。");
+      localIntent.putExtra("forward_text", localStringBuilder.toString());
+      localIntent.putExtra("forward_type", 0);
+      localIntent.putExtra("forward_filepath", str1);
+      localIntent.putExtra("fileinfo", localForwardFileInfo);
+      localIntent.putExtra("not_forward", true);
+      localIntent.putExtra("forward _key_nojump", true);
+      localIntent.putExtra("k_favorites", false);
+      if (!TextUtils.isEmpty(localDataLineMsgRecord.thumbPath)) {
+        localIntent.putExtra("forward_thumb", localDataLineMsgRecord.path);
+      }
+      ForwardBaseOption.a((Activity)this.jdField_a_of_type_AndroidContentContext, localIntent, 21);
     }
-    ForwardBaseOption.a((Activity)this.jdField_a_of_type_AndroidContentContext, localIntent, 21);
   }
   
   private void j()
@@ -221,11 +235,6 @@ public class DatalineFileBubbleModel
       return;
     }
     Object localObject1 = FileManagerUtil.a((DataLineMsgRecord)localObject2);
-    if (QRLocalManager.a().a((FileManagerEntity)localObject1))
-    {
-      QRLocalManager.a().a(this.jdField_a_of_type_AndroidContentContext, ((FileManagerEntity)localObject1).getFilePath(), true);
-      return;
-    }
     int j = FileManagerUtil.a(((DataLineMsgRecord)localObject2).filename);
     int i = j;
     if (j == -1)
@@ -250,25 +259,27 @@ public class DatalineFileBubbleModel
   private void l()
   {
     DataLineMsgRecord localDataLineMsgRecord = a();
-    if (localDataLineMsgRecord == null) {
+    if (localDataLineMsgRecord == null)
+    {
       QLog.e("DatalineFileBubbleModel", 1, "fetchVideoFileThumb. can not find a DataLineMsgRecord");
-    }
-    while (!FileUtil.b(localDataLineMsgRecord.path)) {
       return;
     }
-    ThreadManager.executeOnSubThread(new DatalineFileBubbleModel.3(this, localDataLineMsgRecord));
+    if (FileUtil.a(localDataLineMsgRecord.path)) {
+      ThreadManager.executeOnSubThread(new DatalineFileBubbleModel.3(this, localDataLineMsgRecord));
+    }
   }
   
   private void m()
   {
     DataLineMsgRecord localDataLineMsgRecord = a();
-    if (localDataLineMsgRecord == null) {
+    if (localDataLineMsgRecord == null)
+    {
       QLog.e("DatalineFileBubbleModel", 1, "fetchImageFileThumb. can not find a DataLineMsgRecord");
-    }
-    while (!FileUtil.b(localDataLineMsgRecord.path)) {
       return;
     }
-    ThreadManager.executeOnSubThread(new DatalineFileBubbleModel.4(this, localDataLineMsgRecord));
+    if (FileUtil.a(localDataLineMsgRecord.path)) {
+      ThreadManager.executeOnSubThread(new DatalineFileBubbleModel.4(this, localDataLineMsgRecord));
+    }
   }
   
   public int a()
@@ -312,7 +323,7 @@ public class DatalineFileBubbleModel
     if (paramInt == 3) {
       localArrayList.add(Integer.valueOf(13));
     }
-    if (FileUtil.b(localDataLineMsgRecord.path))
+    if (FileUtil.a(localDataLineMsgRecord.path))
     {
       localArrayList.add(Integer.valueOf(9));
       localArrayList.add(Integer.valueOf(18));
@@ -326,31 +337,26 @@ public class DatalineFileBubbleModel
   
   public void a()
   {
-    DataLineMsgRecord localDataLineMsgRecord;
     if (this.b)
     {
       e();
       if (QLog.isColorLevel()) {
         QLog.i("DatalineFileBubbleModel", 1, "fetchFileThumb.");
       }
-      localDataLineMsgRecord = a();
-      if (localDataLineMsgRecord != null) {
-        break label36;
+      DataLineMsgRecord localDataLineMsgRecord = a();
+      if (localDataLineMsgRecord == null) {
+        return;
       }
-    }
-    label36:
-    int i;
-    do
-    {
-      return;
-      i = FileManagerUtil.a(localDataLineMsgRecord.filename);
+      int i = FileManagerUtil.a(localDataLineMsgRecord.filename);
       if (i == 2)
       {
         l();
         return;
       }
-    } while (i != 0);
-    m();
+      if (i == 0) {
+        m();
+      }
+    }
   }
   
   public void a(int paramInt)
@@ -359,20 +365,20 @@ public class DatalineFileBubbleModel
     {
     default: 
       return;
-    case 2131367398: 
-      i();
-      return;
-    case 2131366625: 
-      g();
-      return;
-    case 2131377447: 
+    case 2131376894: 
       h();
       return;
-    case 2131365636: 
-      f();
+    case 2131371660: 
+      j();
+      return;
+    case 2131367180: 
+      i();
+      return;
+    case 2131366494: 
+      g();
       return;
     }
-    j();
+    f();
   }
   
   public void a(int paramInt, View paramView)
@@ -427,20 +433,16 @@ public class DatalineFileBubbleModel
     if (localDataLineMsgRecord != null)
     {
       String str = localDataLineMsgRecord.thumbPath;
-      if (FileUtil.b(str)) {
+      if (FileUtil.a(str)) {
         return str;
       }
       int i = FileManagerUtil.a(localDataLineMsgRecord.filename);
       if (i == 2) {
-        localDataLineMsgRecord.thumbPath = FileManagerUtil.f(localDataLineMsgRecord.path);
+        localDataLineMsgRecord.thumbPath = FileManagerUtil.e(localDataLineMsgRecord.path);
+      } else if (i == 0) {
+        localDataLineMsgRecord.thumbPath = FilePicURLDrawlableHelper.a(localDataLineMsgRecord.path);
       }
-      for (;;)
-      {
-        return localDataLineMsgRecord.thumbPath;
-        if (i == 0) {
-          localDataLineMsgRecord.thumbPath = FilePicURLDrawlableHelper.a(localDataLineMsgRecord.path);
-        }
-      }
+      return localDataLineMsgRecord.thumbPath;
     }
     return "";
   }
@@ -452,7 +454,7 @@ public class DatalineFileBubbleModel
     if (localDataLineMsgRecord == null) {
       return localArrayList;
     }
-    if (FileUtil.b(localDataLineMsgRecord.path))
+    if (FileUtil.a(localDataLineMsgRecord.path))
     {
       localArrayList.add(Integer.valueOf(9));
       localArrayList.add(Integer.valueOf(18));
@@ -465,60 +467,78 @@ public class DatalineFileBubbleModel
   public int c()
   {
     DataLineMsgRecord localDataLineMsgRecord = a();
-    if (localDataLineMsgRecord == null) {}
-    do
+    int j = 0;
+    if (localDataLineMsgRecord == null) {
+      return 0;
+    }
+    if (localDataLineMsgRecord.fileMsgStatus == 2L) {
+      return 4;
+    }
+    if (localDataLineMsgRecord.fileMsgStatus == 1L) {
+      return 0;
+    }
+    if (localDataLineMsgRecord.bIsTransfering) {
+      return 3;
+    }
+    int i = j;
+    if (localDataLineMsgRecord.progress == 1.0F)
     {
-      do
+      i = j;
+      if (localDataLineMsgRecord.issuc)
       {
-        return 0;
-        if (localDataLineMsgRecord.fileMsgStatus == 2L) {
-          return 4;
+        i = j;
+        if (FileUtils.fileExistsAndNotEmpty(localDataLineMsgRecord.path)) {
+          i = 5;
         }
-      } while (localDataLineMsgRecord.fileMsgStatus == 1L);
-      if (localDataLineMsgRecord.bIsTransfering) {
-        return 3;
       }
-    } while ((localDataLineMsgRecord.progress != 1.0F) || (!localDataLineMsgRecord.issuc) || (!FileUtils.b(localDataLineMsgRecord.path)));
-    return 5;
+    }
+    return i;
   }
   
   public int d()
   {
-    int j = 4;
     DataLineMsgRecord localDataLineMsgRecord = a();
-    int i;
     if (localDataLineMsgRecord == null) {
-      i = -1;
+      return -1;
     }
-    do
+    int j = 0;
+    if (localDataLineMsgRecord.fileMsgStatus == 2L) {}
+    while (localDataLineMsgRecord.bIsTransfering) {
+      return 4;
+    }
+    int i = j;
+    if (localDataLineMsgRecord.progress == 1.0F)
     {
-      do
-      {
-        return i;
-        i = j;
-      } while (localDataLineMsgRecord.fileMsgStatus == 2L);
       i = j;
-    } while (localDataLineMsgRecord.bIsTransfering);
-    if ((localDataLineMsgRecord.progress == 1.0F) && (localDataLineMsgRecord.issuc) && (FileUtil.b(localDataLineMsgRecord.path))) {
-      return 5;
+      if (localDataLineMsgRecord.issuc)
+      {
+        i = j;
+        if (FileUtil.a(localDataLineMsgRecord.path)) {
+          i = 5;
+        }
+      }
     }
-    return 0;
+    return i;
   }
   
   public int e()
   {
-    DataLineMsgRecord localDataLineMsgRecord = a();
-    if (localDataLineMsgRecord == null) {
+    Object localObject = a();
+    if (localObject == null) {
       return 0;
     }
-    int i = (int)(localDataLineMsgRecord.progress * 100.0F);
-    QLog.i("DatalineFileBubbleModel", 1, "watertest: progress[" + i + "]");
+    int i = (int)(((DataLineMsgRecord)localObject).progress * 100.0F);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("watertest: progress[");
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append("]");
+    QLog.i("DatalineFileBubbleModel", 1, ((StringBuilder)localObject).toString());
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.bubble.DatalineFileBubbleModel
  * JD-Core Version:    0.7.0.1
  */

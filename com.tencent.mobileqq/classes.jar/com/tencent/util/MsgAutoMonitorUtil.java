@@ -31,7 +31,7 @@ public class MsgAutoMonitorUtil
   public static final String MSG_PROXY_THREAD_NUM_BEGIN = "MSG_PROXY_THREAD_NUM_BEGIN";
   public static final String MSG_PROXY_THREAD_NUM_END = "MSG_PROXY_THREAD_NUM_END";
   public static final String MSG_TABLE_NUM_KEY = "MSG_TableNum";
-  private static MsgAutoMonitorUtil util = null;
+  private static MsgAutoMonitorUtil util;
   private long addMsgNum = 0L;
   private long addMsgTime = 0L;
   private long dbIoNum = 0L;
@@ -161,11 +161,20 @@ public class MsgAutoMonitorUtil
   
   public void printDbAutoMonitorValue()
   {
-    printKeyAndValue("MSG_DbIoTime", this.dbIoTime + "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.dbIoTime);
+    localStringBuilder.append("");
+    printKeyAndValue("MSG_DbIoTime", localStringBuilder.toString());
     this.dbIoTime = 0L;
-    printKeyAndValue("MSG_DbIoNum", this.dbIoNum + "");
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.dbIoNum);
+    localStringBuilder.append("");
+    printKeyAndValue("MSG_DbIoNum", localStringBuilder.toString());
     this.dbIoNum = 0L;
-    printKeyAndValue("MSG_DbIoTransaction", this.dbIoTransaction + "");
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.dbIoTransaction);
+    localStringBuilder.append("");
+    printKeyAndValue("MSG_DbIoTransaction", localStringBuilder.toString());
     this.dbIoTransaction = 0L;
   }
   
@@ -173,10 +182,18 @@ public class MsgAutoMonitorUtil
   {
     if (QLog.isColorLevel())
     {
-      QLog.d("AutoMonitor", 2, paramString1 + ", cost=" + paramString2);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", cost=");
+      localStringBuilder.append(paramString2);
+      QLog.d("AutoMonitor", 2, localStringBuilder.toString());
       return;
     }
-    Log.i("AutoMonitor", paramString1 + ", cost=" + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(", cost=");
+    localStringBuilder.append(paramString2);
+    Log.i("AutoMonitor", localStringBuilder.toString());
   }
   
   public void printMsgInfo()
@@ -202,8 +219,14 @@ public class MsgAutoMonitorUtil
   
   public void printMsgObserverAutoMonitorValue()
   {
-    printKeyAndValue("MSG_ObserverTime", this.msgObserverTime + "");
-    printKeyAndValue("MSG_ObserverNotifyNum", this.msgObserverNotifyNum + "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.msgObserverTime);
+    localStringBuilder.append("");
+    printKeyAndValue("MSG_ObserverTime", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.msgObserverNotifyNum);
+    localStringBuilder.append("");
+    printKeyAndValue("MSG_ObserverNotifyNum", localStringBuilder.toString());
     this.msgObserverTime = 0L;
     this.msgObserverNotifyNum = 0;
   }
@@ -215,7 +238,7 @@ public class MsgAutoMonitorUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.MsgAutoMonitorUtil
  * JD-Core Version:    0.7.0.1
  */

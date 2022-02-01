@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild.msglist;
 
 import com.tencent.imcore.message.UinTypeUtil;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.activity.aio.core.AIOContext;
 import com.tencent.mobileqq.activity.aio.core.UnreadTask;
 import com.tencent.mobileqq.activity.aio.core.msglist.IReloadFilter;
@@ -21,17 +21,18 @@ public class MarketFaceReloadFilter
     {
       ChatMessage localChatMessage = (ChatMessage)paramList.get(paramList.size() - 1);
       localChatMessage.mPendantAnimatable = true;
-      if (((localChatMessage instanceof MessageForMarketFace)) && (!((FullScreenInputHelper)paramAIOContext.a(24)).b()))
+      if (((localChatMessage instanceof MessageForMarketFace)) && (!((FullScreenInputHelper)paramAIOContext.a(24)).c()))
       {
-        MarkFaceMessage localMarkFaceMessage2 = ((MessageForMarketFace)localChatMessage).mMarkFaceMessage;
+        MessageForMarketFace localMessageForMarketFace = (MessageForMarketFace)localChatMessage;
+        MarkFaceMessage localMarkFaceMessage2 = localMessageForMarketFace.mMarkFaceMessage;
         MarkFaceMessage localMarkFaceMessage1 = localMarkFaceMessage2;
         if (localMarkFaceMessage2 == null)
         {
           localChatMessage.parse();
-          localMarkFaceMessage1 = ((MessageForMarketFace)localChatMessage).mMarkFaceMessage;
+          localMarkFaceMessage1 = localMessageForMarketFace.mMarkFaceMessage;
         }
-        if (((localMarkFaceMessage1.mobileparam != null) && (localMarkFaceMessage1.mobileparam.length > 0)) || ((localMarkFaceMessage1.mediaType == 3) && (UinTypeUtil.b(paramAIOContext.a.a)))) {
-          ((MessageForMarketFace)localChatMessage).needToPlay = true;
+        if (((localMarkFaceMessage1.mobileparam != null) && (localMarkFaceMessage1.mobileparam.length > 0)) || ((localMarkFaceMessage1.mediaType == 3) && (UinTypeUtil.b(paramAIOContext.a().a)))) {
+          localMessageForMarketFace.needToPlay = true;
         }
       }
     }
@@ -40,7 +41,7 @@ public class MarketFaceReloadFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.MarketFaceReloadFilter
  * JD-Core Version:    0.7.0.1
  */

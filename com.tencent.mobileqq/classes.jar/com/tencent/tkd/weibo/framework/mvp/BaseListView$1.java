@@ -8,6 +8,8 @@ import kotlin.Metadata;
 final class BaseListView$1
   implements View.OnClickListener
 {
+  BaseListView$1(BaseListView paramBaseListView) {}
+  
   public final void onClick(View paramView)
   {
     ListContract.IListPresenter.DefaultImpls.a(BaseListView.a(this.a), null, 1, null);
@@ -15,7 +17,7 @@ final class BaseListView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.weibo.framework.mvp.BaseListView.1
  * JD-Core Version:    0.7.0.1
  */

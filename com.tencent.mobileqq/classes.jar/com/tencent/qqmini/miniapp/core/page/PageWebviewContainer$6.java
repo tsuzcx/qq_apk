@@ -11,36 +11,20 @@ class PageWebviewContainer$6
   
   public void run()
   {
-    boolean bool2 = true;
-    Object localObject;
     if ((PageWebviewContainer.access$500(this.this$0)) && (PageWebviewContainer.access$300(this.this$0) != null) && (!PageWebviewContainer.access$300(this.this$0).isRefreshing()))
     {
-      localObject = PageWebviewContainer.access$300(this.this$0);
-      if (this.val$disableRefresh) {
-        break label101;
-      }
-      bool1 = true;
-      ((MiniSwipeRefreshLayout)localObject).setEnabled(bool1);
-      localObject = new StringBuilder().append("setDisablePullDownRefresh !disable ");
-      if (this.val$disableRefresh) {
-        break label106;
-      }
+      PageWebviewContainer.access$300(this.this$0).setEnabled(this.val$disableRefresh ^ true);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setDisablePullDownRefresh !disable ");
+      localStringBuilder.append(this.val$disableRefresh ^ true);
+      QMLog.d("PageWebviewContainer", localStringBuilder.toString());
     }
-    label101:
-    label106:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      QMLog.d("PageWebviewContainer", bool1);
-      this.val$req.ok();
-      return;
-      bool1 = false;
-      break;
-    }
+    this.val$req.ok();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.PageWebviewContainer.6
  * JD-Core Version:    0.7.0.1
  */

@@ -32,47 +32,52 @@ public final class JsonAdapterAnnotationTypeAdapterFactory
   TypeAdapter<?> getTypeAdapter(ConstructorConstructor paramConstructorConstructor, Gson paramGson, TypeToken<?> paramTypeToken, JsonAdapter paramJsonAdapter)
   {
     Object localObject = paramConstructorConstructor.get(TypeToken.get(paramJsonAdapter.value())).construct();
-    if ((localObject instanceof TypeAdapter)) {}
-    for (paramConstructorConstructor = (TypeAdapter)localObject;; paramConstructorConstructor = ((TypeAdapterFactory)localObject).create(paramGson, paramTypeToken))
+    if ((localObject instanceof TypeAdapter))
+    {
+      paramConstructorConstructor = (TypeAdapter)localObject;
+    }
+    else if ((localObject instanceof TypeAdapterFactory))
+    {
+      paramConstructorConstructor = ((TypeAdapterFactory)localObject).create(paramGson, paramTypeToken);
+    }
+    else
+    {
+      boolean bool = localObject instanceof JsonSerializer;
+      if ((!bool) && (!(localObject instanceof JsonDeserializer)))
+      {
+        paramConstructorConstructor = new StringBuilder();
+        paramConstructorConstructor.append("Invalid attempt to bind an instance of ");
+        paramConstructorConstructor.append(localObject.getClass().getName());
+        paramConstructorConstructor.append(" as a @JsonAdapter for ");
+        paramConstructorConstructor.append(paramTypeToken.toString());
+        paramConstructorConstructor.append(". @JsonAdapter value must be a TypeAdapter, TypeAdapterFactory, JsonSerializer or JsonDeserializer.");
+        throw new IllegalArgumentException(paramConstructorConstructor.toString());
+      }
+      JsonDeserializer localJsonDeserializer = null;
+      if (bool) {
+        paramConstructorConstructor = (JsonSerializer)localObject;
+      } else {
+        paramConstructorConstructor = null;
+      }
+      if ((localObject instanceof JsonDeserializer)) {
+        localJsonDeserializer = (JsonDeserializer)localObject;
+      }
+      paramConstructorConstructor = new TreeTypeAdapter(paramConstructorConstructor, localJsonDeserializer, paramGson, paramTypeToken, null);
+    }
+    paramGson = paramConstructorConstructor;
+    if (paramConstructorConstructor != null)
     {
       paramGson = paramConstructorConstructor;
-      if (paramConstructorConstructor != null)
-      {
-        paramGson = paramConstructorConstructor;
-        if (paramJsonAdapter.nullSafe()) {
-          paramGson = paramConstructorConstructor.nullSafe();
-        }
-      }
-      return paramGson;
-      if (!(localObject instanceof TypeAdapterFactory)) {
-        break;
+      if (paramJsonAdapter.nullSafe()) {
+        paramGson = paramConstructorConstructor.nullSafe();
       }
     }
-    if (((localObject instanceof JsonSerializer)) || ((localObject instanceof JsonDeserializer)))
-    {
-      if ((localObject instanceof JsonSerializer))
-      {
-        paramConstructorConstructor = (JsonSerializer)localObject;
-        label114:
-        if (!(localObject instanceof JsonDeserializer)) {
-          break label151;
-        }
-      }
-      label151:
-      for (localObject = (JsonDeserializer)localObject;; localObject = null)
-      {
-        paramConstructorConstructor = new TreeTypeAdapter(paramConstructorConstructor, (JsonDeserializer)localObject, paramGson, paramTypeToken, null);
-        break;
-        paramConstructorConstructor = null;
-        break label114;
-      }
-    }
-    throw new IllegalArgumentException("Invalid attempt to bind an instance of " + localObject.getClass().getName() + " as a @JsonAdapter for " + paramTypeToken.toString() + ". @JsonAdapter value must be a TypeAdapter, TypeAdapterFactory, JsonSerializer or JsonDeserializer.");
+    return paramGson;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal.bind.JsonAdapterAnnotationTypeAdapterFactory
  * JD-Core Version:    0.7.0.1
  */

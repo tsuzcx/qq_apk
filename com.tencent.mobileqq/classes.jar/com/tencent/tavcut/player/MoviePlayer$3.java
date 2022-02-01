@@ -10,24 +10,29 @@ class MoviePlayer$3
   
   public void onAudioFocusChange(int paramInt)
   {
-    switch (paramInt)
+    if ((paramInt != -2) && (paramInt != -1))
     {
-    }
-    do
-    {
-      do
-      {
+      if (paramInt != 1) {
         return;
-      } while ((!MoviePlayer.access$1600(this.this$0)) || (MoviePlayer.access$900(this.this$0) == null));
-      MoviePlayer.access$900(this.this$0).pause();
-      return;
-    } while (MoviePlayer.access$900(this.this$0) == null);
-    MoviePlayer.access$900(this.this$0).play();
+      }
+      if (MoviePlayer.access$900(this.this$0) != null) {
+        MoviePlayer.access$900(this.this$0).play();
+      }
+    }
+    else
+    {
+      if (!MoviePlayer.access$1600(this.this$0)) {
+        return;
+      }
+      if (MoviePlayer.access$900(this.this$0) != null) {
+        MoviePlayer.access$900(this.this$0).pause();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.player.MoviePlayer.3
  * JD-Core Version:    0.7.0.1
  */

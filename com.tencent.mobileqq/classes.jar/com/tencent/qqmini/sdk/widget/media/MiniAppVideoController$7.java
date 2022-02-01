@@ -19,44 +19,42 @@ class MiniAppVideoController$7
     if (!MiniAppVideoController.access$1700(this.this$0)) {
       return;
     }
-    for (;;)
+    try
     {
-      try
+      MiniAppVideoController.access$1802(this.this$0, false);
+      MiniAppVideoController.access$1702(this.this$0, true);
+      MiniAppVideoController.access$1900(this.this$0);
+      MiniAppVideoController.access$2000(this.this$0, false);
+      if (MiniAppVideoController.access$700(this.this$0))
       {
-        MiniAppVideoController.access$1802(this.this$0, false);
-        MiniAppVideoController.access$1702(this.this$0, true);
-        MiniAppVideoController.access$1900(this.this$0);
-        MiniAppVideoController.access$2000(this.this$0, false);
-        if (MiniAppVideoController.access$700(this.this$0))
-        {
-          if (paramAbsVideoPlayer.isPlaying()) {
-            paramAbsVideoPlayer.pause();
-          }
-          ThreadManager.getUIHandler().post(new MiniAppVideoController.7.1(this));
-          MiniAppVideoController.access$702(this.this$0, false);
-          if (MiniAppVideoController.access$2500(this.this$0).size() <= 0) {
-            break;
-          }
-          MiniAppVideoController.access$2600(this.this$0).sendMessage((Message)MiniAppVideoController.access$2500(this.this$0).poll());
-          continue;
+        if (paramAbsVideoPlayer.isPlaying()) {
+          paramAbsVideoPlayer.pause();
         }
-        paramAbsVideoPlayer.start();
+        ThreadManager.getUIHandler().post(new MiniAppVideoController.7.1(this));
+        MiniAppVideoController.access$702(this.this$0, false);
       }
-      catch (JSONException paramAbsVideoPlayer)
+      else
       {
-        paramAbsVideoPlayer.printStackTrace();
-        return;
+        paramAbsVideoPlayer.start();
+        MiniAppVideoController.access$2100(this.this$0);
+        MiniAppVideoController.access$2200(this.this$0);
+        ThreadManager.getUIHandler().postDelayed(new MiniAppVideoController.7.2(this, paramAbsVideoPlayer), 200L);
+        MiniAppVideoController.access$2400(this.this$0, 200L);
       }
-      MiniAppVideoController.access$2100(this.this$0);
-      MiniAppVideoController.access$2200(this.this$0);
-      ThreadManager.getUIHandler().postDelayed(new MiniAppVideoController.7.2(this, paramAbsVideoPlayer), 200L);
-      MiniAppVideoController.access$2400(this.this$0, 200L);
+      while (MiniAppVideoController.access$2500(this.this$0).size() > 0) {
+        MiniAppVideoController.access$2600(this.this$0).sendMessage((Message)MiniAppVideoController.access$2500(this.this$0).poll());
+      }
+      return;
+    }
+    catch (JSONException paramAbsVideoPlayer)
+    {
+      paramAbsVideoPlayer.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.media.MiniAppVideoController.7
  * JD-Core Version:    0.7.0.1
  */

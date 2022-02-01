@@ -38,12 +38,15 @@ public class DefaultCustomRoomService
   
   protected String g()
   {
-    return "https://kd.ilive.qq.com/" + BusinessManager.a.a().d;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("https://kd.ilive.qq.com/");
+    localStringBuilder.append(BusinessManager.a.a().d);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.room.DefaultCustomRoomService
  * JD-Core Version:    0.7.0.1
  */

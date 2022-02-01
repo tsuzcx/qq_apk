@@ -14,21 +14,23 @@ public class TextSafe
 {
   public void a(GrayTipsItemBuilder paramGrayTipsItemBuilder, MessageRecord paramMessageRecord, GrayTipsItemBuilder.Holder paramHolder, OnLongClickAndTouchListener paramOnLongClickAndTouchListener, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    if ((paramMessageRecord instanceof MessageForSafeGrayTips)) {
+    if ((paramMessageRecord instanceof MessageForSafeGrayTips))
+    {
       if (QLog.isColorLevel()) {
         QLog.d("GrayTipsItemBuilder", 2, "getItemView MessageForSafeGrayTips");
       }
+      paramMessageRecord = (MessageForSafeGrayTips)paramMessageRecord;
     }
-    for (paramMessageRecord = (MessageForSafeGrayTips)paramMessageRecord;; paramMessageRecord = null)
+    else
     {
-      paramGrayTipsItemBuilder.a(paramMessageRecord, paramHolder.b);
-      return;
+      paramMessageRecord = null;
     }
+    paramGrayTipsItemBuilder.a(paramMessageRecord, paramHolder.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.graytipsitem.TextSafe
  * JD-Core Version:    0.7.0.1
  */

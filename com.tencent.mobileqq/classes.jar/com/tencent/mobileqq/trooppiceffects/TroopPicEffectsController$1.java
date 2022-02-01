@@ -29,11 +29,11 @@ class TroopPicEffectsController$1
       localAIOAnimationControlManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie);
       localAIOAnimationControlManager.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopEffectPic, this.jdField_a_of_type_Boolean);
       localAIOAnimationControlManager.f();
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("TroopPicEffectsController", 2, "[EffectPic] file not exist or isplaying.");
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopPicEffectsController", 2, "[EffectPic] file not exist or isplaying.");
+    }
   }
   
   public void a_(int paramInt, boolean paramBoolean)
@@ -45,7 +45,7 @@ class TroopPicEffectsController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.TroopPicEffectsController.1
  * JD-Core Version:    0.7.0.1
  */

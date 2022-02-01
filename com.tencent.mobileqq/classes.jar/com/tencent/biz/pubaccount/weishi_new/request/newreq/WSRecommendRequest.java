@@ -1,7 +1,9 @@
 package com.tencent.biz.pubaccount.weishi_new.request.newreq;
 
+import UserGrowth.stExposureFeedInfo;
 import UserGrowth.stSimpleGetFeedListReq;
 import UserGrowth.stSimpleGetFeedListRsp;
+import android.text.TextUtils;
 import com.tencent.biz.pubaccount.weishi_new.config.experiment.WSExpPreloadABTestManager;
 import com.tencent.biz.pubaccount.weishi_new.net.common.WSRequest;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
@@ -15,7 +17,7 @@ public class WSRecommendRequest
   private static final String CMD_STRING = "SimpleGetFeedList";
   private static final String TAG = "RecommendRequest";
   
-  public WSRecommendRequest(String paramString1, byte paramByte1, byte paramByte2, ArrayList<String> paramArrayList, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  public WSRecommendRequest(String paramString1, byte paramByte1, byte paramByte2, ArrayList<String> paramArrayList, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, ArrayList<stExposureFeedInfo> paramArrayList1)
   {
     super("SimpleGetFeedList", paramInt);
     stSimpleGetFeedListReq localstSimpleGetFeedListReq = new stSimpleGetFeedListReq();
@@ -32,25 +34,25 @@ public class WSRecommendRequest
     localstSimpleGetFeedListReq.linkStragetyArgs = WeishiLinkUtil.a();
     localstSimpleGetFeedListReq.qqNum = WeishiUtils.a();
     localstSimpleGetFeedListReq.subTabID = paramString6;
+    localstSimpleGetFeedListReq.exposureFeedList = paramArrayList1;
     this.req = localstSimpleGetFeedListReq;
-    if (paramByte2 == 1)
-    {
+    boolean bool2 = false;
+    if (paramByte2 == 1) {
       bool1 = true;
-      this.mIsFirst = bool1;
-      if (paramByte1 != 1) {
-        break label186;
-      }
-    }
-    label186:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.mIsRefresh = bool1;
-      this.mRequestSubId = paramString6;
-      WSLog.d("RecommendRequest", "stSimpleGetFeedListReq  = " + localstSimpleGetFeedListReq.toString());
-      return;
+    } else {
       bool1 = false;
-      break;
     }
+    this.mIsFirst = bool1;
+    boolean bool1 = bool2;
+    if (paramByte1 == 1) {
+      bool1 = true;
+    }
+    this.mIsRefresh = bool1;
+    this.mRequestSubId = paramString6;
+    paramString1 = new StringBuilder();
+    paramString1.append("stSimpleGetFeedListReq  = ");
+    paramString1.append(localstSimpleGetFeedListReq.toString());
+    WSLog.d("RecommendRequest", paramString1.toString());
   }
   
   public String getExpABTestDataStr()
@@ -65,10 +67,27 @@ public class WSRecommendRequest
   {
     return stSimpleGetFeedListRsp.class;
   }
+  
+  public boolean isNeedLaunchCalculator()
+  {
+    int i = this.mReqScene;
+    boolean bool = true;
+    if ((i == 1) && (isFirst()))
+    {
+      if (TextUtils.equals(this.mRequestSubId, "1000")) {
+        return bool;
+      }
+      if (TextUtils.isEmpty(this.mRequestSubId)) {
+        return true;
+      }
+    }
+    bool = false;
+    return bool;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.request.newreq.WSRecommendRequest
  * JD-Core Version:    0.7.0.1
  */

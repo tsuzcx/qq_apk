@@ -21,38 +21,53 @@ public class KidModeObserver
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    case 6: 
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.e("KidModeObserver", 1, new Object[] { "unknown type: ", Integer.valueOf(paramInt) });
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 5)
+            {
+              if (paramInt != 7)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.e("KidModeObserver", 1, new Object[] { "unknown type: ", Integer.valueOf(paramInt) });
+                }
+              }
+              else {
+                c(paramBoolean, paramBundle);
+              }
+            }
+            else {
+              d(paramBoolean, paramBundle);
+            }
+          }
+          else {
+            a(paramBoolean, paramBundle);
+          }
+        }
+        else {
+          b(paramBoolean, paramBundle);
+        }
       }
-      return;
-    case 3: 
-      b(paramBoolean, paramBundle);
-      return;
-    case 4: 
-      a(paramBoolean, paramBundle);
-      return;
-    case 1: 
+      else {
+        e(paramBoolean, paramBundle);
+      }
+    }
+    else
+    {
       paramInt = paramBundle.getInt("advance_setting_field");
       paramBundle.getInt("advance_setting_value");
       a(paramBoolean, paramInt);
-      return;
-    case 2: 
-      e(paramBoolean, paramBundle);
-      return;
-    case 5: 
-      d(paramBoolean, paramBundle);
-      return;
     }
-    c(paramBoolean, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.KidModeObserver
  * JD-Core Version:    0.7.0.1
  */

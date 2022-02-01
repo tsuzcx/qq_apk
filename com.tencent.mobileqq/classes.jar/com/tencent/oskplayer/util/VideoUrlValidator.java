@@ -41,7 +41,10 @@ public class VideoUrlValidator
   
   public boolean isValid(String paramString)
   {
-    PlayerUtils.log(4, "UrlValidator", "isValid " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isValid ");
+    localStringBuilder.append(paramString);
+    PlayerUtils.log(4, "UrlValidator", localStringBuilder.toString());
     if (sUrlValidateResultCache.containsKey(paramString)) {
       return ((Boolean)sUrlValidateResultCache.get(paramString)).booleanValue();
     }
@@ -50,7 +53,7 @@ public class VideoUrlValidator
     return bool;
   }
   
-  public boolean isValidQuery(String paramString)
+  protected boolean isValidQuery(String paramString)
   {
     if (paramString == null) {
       return true;
@@ -59,31 +62,43 @@ public class VideoUrlValidator
     int i = 0;
     while (i < paramString.length)
     {
-      String[] arrayOfString = paramString[i].split("=");
-      if (arrayOfString.length == 2)
+      Object localObject = paramString[i].split("=");
+      if (localObject.length == 2)
       {
-        if (this.PATTERN_INVALID_PARAM.matcher(arrayOfString[0]).find())
+        if (this.PATTERN_INVALID_PARAM.matcher(localObject[0]).find())
         {
-          PlayerUtils.log(5, "UrlValidator", "invalid query string detected " + paramString[i]);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("invalid query string detected ");
+          ((StringBuilder)localObject).append(paramString[i]);
+          PlayerUtils.log(5, "UrlValidator", ((StringBuilder)localObject).toString());
           return false;
         }
-        if (this.PATTERN_INVALID_PARAM.matcher(arrayOfString[1]).find())
+        if (this.PATTERN_INVALID_PARAM.matcher(localObject[1]).find())
         {
-          PlayerUtils.log(5, "UrlValidator", "invalid query string detected " + paramString[i]);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("invalid query string detected ");
+          ((StringBuilder)localObject).append(paramString[i]);
+          PlayerUtils.log(5, "UrlValidator", ((StringBuilder)localObject).toString());
           return false;
         }
       }
-      else if ((arrayOfString.length == 1) && (paramString[i].indexOf('=') == paramString[i].length() - 1))
+      else if ((localObject.length == 1) && (paramString[i].indexOf('=') == paramString[i].length() - 1))
       {
-        if (this.PATTERN_INVALID_PARAM.matcher(arrayOfString[0]).find())
+        if (this.PATTERN_INVALID_PARAM.matcher(localObject[0]).find())
         {
-          PlayerUtils.log(5, "UrlValidator", "invalid query string detected " + paramString[i]);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("invalid query string detected ");
+          ((StringBuilder)localObject).append(paramString[i]);
+          PlayerUtils.log(5, "UrlValidator", ((StringBuilder)localObject).toString());
           return false;
         }
       }
-      else if (arrayOfString.length > 2)
+      else if (localObject.length > 2)
       {
-        PlayerUtils.log(5, "UrlValidator", "invalid query string detected " + paramString[i]);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("invalid query string detected ");
+        ((StringBuilder)localObject).append(paramString[i]);
+        PlayerUtils.log(5, "UrlValidator", ((StringBuilder)localObject).toString());
         return false;
       }
       i += 1;
@@ -91,7 +106,7 @@ public class VideoUrlValidator
     return true;
   }
   
-  public boolean isValidScheme(String paramString)
+  protected boolean isValidScheme(String paramString)
   {
     String str = paramString;
     if (paramString == null) {
@@ -102,7 +117,7 @@ public class VideoUrlValidator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.util.VideoUrlValidator
  * JD-Core Version:    0.7.0.1
  */

@@ -20,29 +20,29 @@ class GameResultFragment$4
     if (GameResultFragment.a(this.this$0) != null)
     {
       GameResultFragment.a(this.this$0).setDrawingCacheEnabled(true);
-      Bitmap localBitmap1 = GameResultFragment.a(this.this$0).getDrawingCache();
-      if (localBitmap1 != null)
+      Bitmap localBitmap = GameResultFragment.a(this.this$0).getDrawingCache();
+      if (localBitmap != null)
       {
-        QLog.d("GameResultFragment", 2, "initViewForGameKnowledge save bitmap " + localBitmap1.getWidth());
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("initViewForGameKnowledge save bitmap ");
+        ((StringBuilder)localObject).append(localBitmap.getWidth());
+        QLog.d("GameResultFragment", 2, ((StringBuilder)localObject).toString());
         int i = ViewUtils.a(300.0F);
-        Bitmap localBitmap2 = Bitmap.createBitmap(i, i, Bitmap.Config.ARGB_8888);
-        Canvas localCanvas = new Canvas(localBitmap2);
+        localObject = Bitmap.createBitmap(i, i, Bitmap.Config.ARGB_8888);
+        Canvas localCanvas = new Canvas((Bitmap)localObject);
         localCanvas.drawARGB(255, 255, 255, 255);
-        localCanvas.drawBitmap(localBitmap1, new Rect(0, 0, localBitmap1.getWidth(), localBitmap1.getHeight()), new Rect(0, 0, i, i), null);
-        ThreadManager.getSubThreadHandler().post(new GameResultFragment.4.1(this, localBitmap2));
+        localCanvas.drawBitmap(localBitmap, new Rect(0, 0, localBitmap.getWidth(), localBitmap.getHeight()), new Rect(0, 0, i, i), null);
+        ThreadManager.getSubThreadHandler().post(new GameResultFragment.4.1(this, (Bitmap)localObject));
+        return;
       }
+      QLog.d("GameResultFragment", 2, "initViewForGameKnowledge no bitmap cache");
+      this.this$0.a(5, null, null);
     }
-    else
-    {
-      return;
-    }
-    QLog.d("GameResultFragment", 2, "initViewForGameKnowledge no bitmap cache");
-    this.this$0.a(5, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameresult.GameResultFragment.4
  * JD-Core Version:    0.7.0.1
  */

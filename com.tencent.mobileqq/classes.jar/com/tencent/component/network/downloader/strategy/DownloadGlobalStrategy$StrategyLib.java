@@ -57,20 +57,25 @@ public class DownloadGlobalStrategy$StrategyLib
   
   public void addStrategy(List<DownloadGlobalStrategy.StrategyInfo> paramList)
   {
-    if ((this.mStrategyList == null) || (paramList == null)) {
-      return;
+    ArrayList localArrayList = this.mStrategyList;
+    if (localArrayList != null)
+    {
+      if (paramList == null) {
+        return;
+      }
+      localArrayList.addAll(paramList);
     }
-    this.mStrategyList.addAll(paramList);
   }
   
   public void copyStrageList()
   {
-    if (this.mStrategyList == null)
+    ArrayList localArrayList = this.mStrategyList;
+    if (localArrayList == null)
     {
       this.mStrategyList = new ArrayList();
       return;
     }
-    this.mStrategyList = new ArrayList(this.mStrategyList);
+    this.mStrategyList = new ArrayList(localArrayList);
   }
   
   public void enableUpdate(boolean paramBoolean)
@@ -85,8 +90,9 @@ public class DownloadGlobalStrategy$StrategyLib
   
   public int getBestId()
   {
-    if (this.mBestStrategyInfo != null) {
-      return this.mBestStrategyInfo.id;
+    DownloadGlobalStrategy.StrategyInfo localStrategyInfo = this.mBestStrategyInfo;
+    if (localStrategyInfo != null) {
+      return localStrategyInfo.id;
     }
     return 0;
   }
@@ -118,87 +124,99 @@ public class DownloadGlobalStrategy$StrategyLib
   
   public DownloadGlobalStrategy.StrategyInfo getStrategyInfo(int paramInt)
   {
-    int m = -1;
     int k = paramInt;
     if (paramInt < 0) {
       k = 0;
     }
-    if (this.mBestStrategyInfo == null) {}
-    for (DownloadGlobalStrategy.StrategyInfo localStrategyInfo1 = (DownloadGlobalStrategy.StrategyInfo)this.mStrategyList.get(k % this.mStrategyList.size());; localStrategyInfo1 = this.mBestStrategyInfo)
+    Object localObject1 = null;
+    Object localObject2 = this.mBestStrategyInfo;
+    if (localObject2 == null)
     {
-      DownloadGlobalStrategy.StrategyInfo localStrategyInfo2 = localStrategyInfo1;
-      if (localStrategyInfo1 == null)
+      localObject1 = this.mStrategyList;
+      localObject1 = (DownloadGlobalStrategy.StrategyInfo)((ArrayList)localObject1).get(k % ((ArrayList)localObject1).size());
+    }
+    else if (k <= 0)
+    {
+      localObject1 = localObject2;
+    }
+    else
+    {
+      paramInt = ((DownloadGlobalStrategy.StrategyInfo)localObject2).id;
+      int i = DownloadGlobalStrategy.Strategy_DomainDirect.id;
+      int j = -1;
+      if ((paramInt != i) && (this.mBestStrategyInfo.id != DownloadGlobalStrategy.Strategy_BACKUPIP.id) && (this.mBestStrategyInfo.id != DownloadGlobalStrategy.Strategy_DOMAIN_FORCE.id))
       {
-        if (!NetworkManager.isWap()) {
-          break label383;
+        if (k == 1) {
+          updateStrategyLists();
         }
-        localStrategyInfo2 = (DownloadGlobalStrategy.StrategyInfo)DownloadGlobalStrategy.access$200().get(0);
-      }
-      return localStrategyInfo2;
-      if (k > 0) {
-        break;
-      }
-    }
-    if ((this.mBestStrategyInfo.id != DownloadGlobalStrategy.Strategy_DomainDirect.id) && (this.mBestStrategyInfo.id != DownloadGlobalStrategy.Strategy_BACKUPIP.id) && (this.mBestStrategyInfo.id != DownloadGlobalStrategy.Strategy_DOMAIN_FORCE.id))
-    {
-      if (k == 1) {
-        updateStrategyLists();
-      }
-      paramInt = 0;
-      label146:
-      if (paramInt >= this.mStrategyList.size()) {
-        break label400;
-      }
-      if (((DownloadGlobalStrategy.StrategyInfo)this.mStrategyList.get(paramInt)).id != this.mBestStrategyInfo.id) {}
-    }
-    for (;;)
-    {
-      if ((k > 0) && (k <= paramInt))
-      {
-        localStrategyInfo1 = (DownloadGlobalStrategy.StrategyInfo)this.mStrategyList.get(k - 1);
-        break;
-        paramInt += 1;
-        break label146;
-      }
-      localStrategyInfo1 = (DownloadGlobalStrategy.StrategyInfo)this.mStrategyList.get(k % this.mStrategyList.size());
-      break;
-      if (k == 1)
-      {
-        updateStrategyLists();
-        return this.mBestStrategyInfo;
-      }
-      paramInt = 0;
-      int j;
-      for (int i = -1; paramInt < this.mStrategyList.size(); i = j)
-      {
-        j = i;
-        if (((DownloadGlobalStrategy.StrategyInfo)this.mStrategyList.get(paramInt)).id == this.mBestStrategyInfo.id)
+        paramInt = 0;
+        while (paramInt < this.mStrategyList.size())
         {
-          j = i;
-          if (i < 0) {
-            j = paramInt;
+          if (((DownloadGlobalStrategy.StrategyInfo)this.mStrategyList.get(paramInt)).id == this.mBestStrategyInfo.id) {
+            break label174;
           }
-          m = paramInt;
+          paramInt += 1;
         }
-        paramInt += 1;
+        paramInt = -1;
+        label174:
+        if ((k > 0) && (k <= paramInt))
+        {
+          localObject1 = (DownloadGlobalStrategy.StrategyInfo)this.mStrategyList.get(k - 1);
+        }
+        else
+        {
+          localObject1 = this.mStrategyList;
+          localObject1 = (DownloadGlobalStrategy.StrategyInfo)((ArrayList)localObject1).get(k % ((ArrayList)localObject1).size());
+        }
       }
-      if ((k > 1) && (k <= m))
+      else
       {
-        localStrategyInfo1 = (DownloadGlobalStrategy.StrategyInfo)this.mStrategyList.get(k - 2);
-        break;
+        if (k == 1)
+        {
+          updateStrategyLists();
+          return this.mBestStrategyInfo;
+        }
+        paramInt = 0;
+        i = -1;
+        while (paramInt < this.mStrategyList.size())
+        {
+          int m = i;
+          int n = j;
+          if (((DownloadGlobalStrategy.StrategyInfo)this.mStrategyList.get(paramInt)).id == this.mBestStrategyInfo.id)
+          {
+            j = i;
+            if (i < 0) {
+              j = paramInt;
+            }
+            n = paramInt;
+            m = j;
+          }
+          paramInt += 1;
+          i = m;
+          j = n;
+        }
+        if ((k > 1) && (k <= j))
+        {
+          localObject1 = (DownloadGlobalStrategy.StrategyInfo)this.mStrategyList.get(k - 2);
+        }
+        else if (k > j)
+        {
+          localObject1 = this.mStrategyList;
+          localObject1 = (DownloadGlobalStrategy.StrategyInfo)((ArrayList)localObject1).get(k % ((ArrayList)localObject1).size());
+        }
       }
-      if (k > m)
-      {
-        localStrategyInfo1 = (DownloadGlobalStrategy.StrategyInfo)this.mStrategyList.get(k % this.mStrategyList.size());
-        break;
-        label383:
-        return (DownloadGlobalStrategy.StrategyInfo)DownloadGlobalStrategy.access$100().get(0);
-      }
-      localStrategyInfo1 = null;
-      break;
-      label400:
-      paramInt = -1;
     }
+    localObject2 = localObject1;
+    if (localObject1 == null)
+    {
+      if (NetworkManager.isWap()) {
+        localObject1 = DownloadGlobalStrategy.access$200();
+      } else {
+        localObject1 = DownloadGlobalStrategy.access$100();
+      }
+      localObject2 = (DownloadGlobalStrategy.StrategyInfo)((ArrayList)localObject1).get(0);
+    }
+    return localObject2;
   }
   
   public List<DownloadGlobalStrategy.StrategyInfo> getStrategyList()
@@ -208,8 +226,9 @@ public class DownloadGlobalStrategy$StrategyLib
   
   public int getSuggestMaxTimes()
   {
-    if (this.mStrategyList != null) {
-      return this.mStrategyList.size();
+    ArrayList localArrayList = this.mStrategyList;
+    if (localArrayList != null) {
+      return localArrayList.size();
     }
     return 0;
   }
@@ -241,7 +260,7 @@ public class DownloadGlobalStrategy$StrategyLib
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.downloader.strategy.DownloadGlobalStrategy.StrategyLib
  * JD-Core Version:    0.7.0.1
  */

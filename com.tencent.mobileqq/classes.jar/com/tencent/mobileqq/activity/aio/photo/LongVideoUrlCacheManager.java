@@ -6,13 +6,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class LongVideoUrlCacheManager
 {
-  private static int a;
+  private static int a = 900000;
   public ConcurrentHashMap<Long, LongVideoUrlCacheManager.UrlsCacheBean> a;
-  
-  static
-  {
-    jdField_a_of_type_Int = 900000;
-  }
   
   private LongVideoUrlCacheManager()
   {
@@ -47,7 +42,7 @@ public class LongVideoUrlCacheManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.LongVideoUrlCacheManager
  * JD-Core Version:    0.7.0.1
  */

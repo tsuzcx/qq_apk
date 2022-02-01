@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.animation.ObjectAnimator;
 import android.widget.ImageView;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class PersonalityLabelGalleryActivity$11
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   PersonalityLabelGalleryActivity$11(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, ObjectAnimator paramObjectAnimator) {}
   
@@ -18,34 +18,32 @@ class PersonalityLabelGalleryActivity$11
   public void onAnimationCancel(Animator paramAnimator)
   {
     paramAnimator = a(this.jdField_a_of_type_AndroidAnimationObjectAnimator);
-    if (paramAnimator != null) {
-      if (!this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.b) {
-        break label37;
-      }
-    }
-    label37:
-    for (int i = 2130845953;; i = 2130845945)
+    if (paramAnimator != null)
     {
+      int i;
+      if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.b) {
+        i = 2130845827;
+      } else {
+        i = 2130845819;
+      }
       paramAnimator.setImageResource(i);
       paramAnimator.setRotation(0.0F);
-      return;
     }
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
     paramAnimator = a(this.jdField_a_of_type_AndroidAnimationObjectAnimator);
-    if (paramAnimator != null) {
-      if (!this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.b) {
-        break label37;
-      }
-    }
-    label37:
-    for (int i = 2130845953;; i = 2130845945)
+    if (paramAnimator != null)
     {
+      int i;
+      if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.b) {
+        i = 2130845827;
+      } else {
+        i = 2130845819;
+      }
       paramAnimator.setImageResource(i);
       paramAnimator.setRotation(0.0F);
-      return;
     }
   }
   
@@ -55,7 +53,7 @@ class PersonalityLabelGalleryActivity$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.11
  * JD-Core Version:    0.7.0.1
  */

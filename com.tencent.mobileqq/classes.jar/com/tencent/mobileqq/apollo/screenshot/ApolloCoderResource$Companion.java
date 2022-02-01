@@ -8,7 +8,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/screenshot/ApolloCoderResource$Companion;", "", "()V", "TAG", "", "rootPath", "getGifFilePathByKey", "recordKey", "getOutputFilePathByKey", "getRootPath", "initOutputDirIfNeed", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/screenshot/ApolloCoderResource$Companion;", "", "()V", "TAG", "", "rootPath", "getGifFilePathByKey", "recordKey", "getOutputFilePathByKey", "getRootPath", "initOutputDirIfNeed", "", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public final class ApolloCoderResource$Companion
 {
   private final void a()
@@ -20,10 +20,11 @@ public final class ApolloCoderResource$Companion
         localFile.mkdirs();
       }
       localFile = new File(localFile, ".nomedia");
-      if (!localFile.exists()) {
+      if (!localFile.exists())
+      {
         localFile.createNewFile();
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -34,38 +35,44 @@ public final class ApolloCoderResource$Companion
   @Nullable
   public final String a()
   {
-    StringBuilder localStringBuilder;
     if (ApolloCoderResource.d() == null)
     {
-      localObject = BaseApplication.getContext();
+      Object localObject = BaseApplication.getContext();
       Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplication.getContext()");
       localObject = ((BaseApplication)localObject).getExternalCacheDir();
-      localStringBuilder = new StringBuilder();
-      if (localObject == null) {
-        break label64;
+      StringBuilder localStringBuilder = new StringBuilder();
+      if (localObject != null) {
+        localObject = ((File)localObject).getPath();
+      } else {
+        localObject = null;
       }
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append("cmshow");
+      ApolloCoderResource.a(localStringBuilder.toString());
     }
-    label64:
-    for (Object localObject = ((File)localObject).getPath();; localObject = null)
-    {
-      ApolloCoderResource.a((String)localObject + File.separator + "cmshow");
-      return ApolloCoderResource.d();
-    }
+    return ApolloCoderResource.d();
   }
   
   @Nullable
   public final String a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "recordKey");
-    if (((Companion)this).a() != null) {
-      return ((Companion)this).a() + '/' + paramString;
+    Companion localCompanion = (Companion)this;
+    if (localCompanion.a() != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localCompanion.a());
+      localStringBuilder.append('/');
+      localStringBuilder.append(paramString);
+      return localStringBuilder.toString();
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.screenshot.ApolloCoderResource.Companion
  * JD-Core Version:    0.7.0.1
  */

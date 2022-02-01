@@ -31,17 +31,18 @@ public final class qqstory_struct$GeneralFeed
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 42, 48, 58, 64, 72, 80, 88, 96, 104, 114, 122 }, new String[] { "user", "date", "feed_attr", "feed_video_info_list", "next_cookie", "seq", "feed_id", "is_end", "pull_type", "video_total", "share_to_discover", "hasVideoTag", "has_public_video", "qim_sync_wording", "ws_schemas" }, new Object[] { null, Integer.valueOf(0), localByteStringMicro1, null, localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro4, localByteStringMicro5 }, GeneralFeed.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 42, 48, 58, 64, 72, 80, 88, 96, 104, 114, 122 }, new String[] { "user", "date", "feed_attr", "feed_video_info_list", "next_cookie", "seq", "feed_id", "is_end", "pull_type", "video_total", "share_to_discover", "hasVideoTag", "has_public_video", "qim_sync_wording", "ws_schemas" }, new Object[] { null, localInteger, localByteStringMicro1, null, localByteStringMicro2, localInteger, localByteStringMicro3, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localByteStringMicro4, localByteStringMicro5 }, GeneralFeed.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.GeneralFeed
  * JD-Core Version:    0.7.0.1
  */

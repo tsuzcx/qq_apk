@@ -19,25 +19,34 @@ public class DragGallery
   
   public MotionEvent a()
   {
-    return this.jdField_a_of_type_AndroidViewMotionEvent;
+    return this.a;
   }
   
-  public void a()
+  protected void disPatchToParent()
   {
-    if (Math.abs(this.h) == 0) {}
-    for (float f = 999.0F;; f = Math.abs(this.i) / Math.abs(this.h))
+    float f;
+    if (Math.abs(this.scrollX) == 0) {
+      f = 999.0F;
+    } else {
+      f = Math.abs(this.scrollY) / Math.abs(this.scrollX);
+    }
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DragGallery", 2, "scrollY : " + Math.abs(this.i) + " scrollX : " + Math.abs(this.h) + " ratio : " + f);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("scrollY : ");
+      localStringBuilder.append(Math.abs(this.scrollY));
+      localStringBuilder.append(" scrollX : ");
+      localStringBuilder.append(Math.abs(this.scrollX));
+      localStringBuilder.append(" ratio : ");
+      localStringBuilder.append(f);
+      QLog.d("DragGallery", 2, localStringBuilder.toString());
+    }
+    if (((this.mScrollState == 1) || (this.mScrollState == -1)) && (f >= 6.0F) && (this.scrollX < 10))
+    {
+      getParent().requestDisallowInterceptTouchEvent(false);
+      if (this.mOnScollListener != null) {
+        this.mOnScollListener.onScrollEnd(this.mSelectedPosition);
       }
-      if (((this.j == 1) || (this.j == -1)) && (f >= 6.0F) && (this.h < 10))
-      {
-        getParent().requestDisallowInterceptTouchEvent(false);
-        if (this.jdField_a_of_type_ComTencentWidgetGallery$OnScollListener != null) {
-          this.jdField_a_of_type_ComTencentWidgetGallery$OnScollListener.b(this.mSelectedPosition);
-        }
-      }
-      return;
     }
   }
   
@@ -49,13 +58,13 @@ public class DragGallery
   
   public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidViewMotionEvent = paramMotionEvent;
+    this.a = paramMotionEvent;
     return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.DragGallery
  * JD-Core Version:    0.7.0.1
  */

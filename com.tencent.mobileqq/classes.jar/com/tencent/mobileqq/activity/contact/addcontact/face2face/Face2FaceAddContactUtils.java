@@ -16,28 +16,37 @@ public class Face2FaceAddContactUtils
     int j = (int)(SystemClock.elapsedRealtime() - paramLong) / 1000;
     paramList = paramList.iterator();
     int i = 0;
-    if (paramList.hasNext())
-    {
-      if (!((Face2FaceFriendInfo)paramList.next()).a()) {
-        break label99;
+    while (paramList.hasNext()) {
+      if (((Face2FaceFriendInfo)paramList.next()).a()) {
+        i += 1;
       }
-      i += 1;
     }
-    label99:
-    for (;;)
-    {
-      break;
-      a("0X800AB63", i + "", j + "", "");
-      return;
-    }
+    paramList = new StringBuilder();
+    paramList.append(i);
+    paramList.append("");
+    paramList = paramList.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(j);
+    localStringBuilder.append("");
+    a("0X800AB63", paramList, localStringBuilder.toString(), "");
   }
   
   public static void a(QQAppInterface paramQQAppInterface) {}
   
   public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Face2FaceAddContactUtils", 2, " face2faceReport tValue = " + paramString1 + " r2 = " + paramString2 + " r3 = " + paramString3 + " r4 =" + paramString4);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" face2faceReport tValue = ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" r2 = ");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(" r3 = ");
+      localStringBuilder.append(paramString3);
+      localStringBuilder.append(" r4 =");
+      localStringBuilder.append(paramString4);
+      QLog.d("Face2FaceAddContactUtils", 2, localStringBuilder.toString());
     }
     ReportController.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, paramString3, paramString4, "");
   }
@@ -59,21 +68,15 @@ public class Face2FaceAddContactUtils
   
   public static boolean b(QQAppInterface paramQQAppInterface)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramQQAppInterface != null)
-    {
-      bool1 = bool2;
-      if (!paramQQAppInterface.getPreferences().getBoolean("face2face_add_contact_guide_dialog", false)) {
-        bool1 = true;
-      }
+    if (paramQQAppInterface != null) {
+      return paramQQAppInterface.getPreferences().getBoolean("face2face_add_contact_guide_dialog", false) ^ true;
     }
-    return bool1;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactUtils
  * JD-Core Version:    0.7.0.1
  */

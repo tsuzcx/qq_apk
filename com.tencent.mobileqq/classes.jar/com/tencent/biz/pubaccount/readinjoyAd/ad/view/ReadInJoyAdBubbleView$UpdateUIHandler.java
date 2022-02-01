@@ -20,13 +20,15 @@ class ReadInJoyAdBubbleView$UpdateUIHandler
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
+    if (paramMessage.what != 2) {
       return;
-    } while ((this.a == null) || (this.a.get() == null));
+    }
+    paramMessage = this.a;
+    if (paramMessage != null) {
+      if (paramMessage.get() == null) {
+        return;
+      }
+    }
     try
     {
       ReadInJoyAdBubbleView.a((ReadInJoyAdBubbleView)this.a.get());
@@ -35,13 +37,15 @@ class ReadInJoyAdBubbleView$UpdateUIHandler
     }
     catch (Exception paramMessage)
     {
-      QLog.d("ReadInJoyAdBubbleView", 2, "ReadInJoyAdBubbleView is empty");
+      label54:
+      break label54;
     }
+    QLog.d("ReadInJoyAdBubbleView", 2, "ReadInJoyAdBubbleView is empty");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdBubbleView.UpdateUIHandler
  * JD-Core Version:    0.7.0.1
  */

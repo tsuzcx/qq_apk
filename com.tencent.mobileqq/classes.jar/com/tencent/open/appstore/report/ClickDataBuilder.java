@@ -18,12 +18,18 @@ public class ClickDataBuilder
   
   public String a()
   {
-    return b() + "|" + c() + "|" + this.n;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(b());
+    localStringBuilder.append("|");
+    localStringBuilder.append(c());
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.n);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appstore.report.ClickDataBuilder
  * JD-Core Version:    0.7.0.1
  */

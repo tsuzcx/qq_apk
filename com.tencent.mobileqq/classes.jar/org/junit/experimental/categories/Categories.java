@@ -48,10 +48,11 @@ public class Categories
     while (paramDescription.hasNext())
     {
       Description localDescription = (Description)paramDescription.next();
-      if (localDescription.getAnnotation(Category.class) != null) {
+      if (localDescription.getAnnotation(Category.class) == null) {
+        assertNoDescendantsHaveCategoryAnnotations(localDescription);
+      } else {
         throw new InitializationError("Category annotations on Parameterized classes are not supported on individual methods.");
       }
-      assertNoDescendantsHaveCategoryAnnotations(localDescription);
     }
   }
   
@@ -78,19 +79,23 @@ public class Categories
   private static Set<Class<?>> getExcludedCategory(Class<?> paramClass)
   {
     paramClass = (Categories.ExcludeCategory)paramClass.getAnnotation(Categories.ExcludeCategory.class);
-    if (paramClass == null) {}
-    for (paramClass = null;; paramClass = paramClass.value()) {
-      return createSet(paramClass);
+    if (paramClass == null) {
+      paramClass = null;
+    } else {
+      paramClass = paramClass.value();
     }
+    return createSet(paramClass);
   }
   
   private static Set<Class<?>> getIncludedCategory(Class<?> paramClass)
   {
     paramClass = (Categories.IncludeCategory)paramClass.getAnnotation(Categories.IncludeCategory.class);
-    if (paramClass == null) {}
-    for (paramClass = null;; paramClass = paramClass.value()) {
-      return createSet(paramClass);
+    if (paramClass == null) {
+      paramClass = null;
+    } else {
+      paramClass = paramClass.value();
     }
+    return createSet(paramClass);
   }
   
   private static boolean hasAssignableTo(Set<Class<?>> paramSet, Class<?> paramClass)
@@ -118,7 +123,7 @@ public class Categories
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.experimental.categories.Categories
  * JD-Core Version:    0.7.0.1
  */

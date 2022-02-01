@@ -49,17 +49,18 @@ class DropFrameCollector
   
   private final float a(double paramDouble, int paramInt)
   {
-    return (float)Math.round(paramInt * paramDouble) / paramInt;
+    double d1 = paramInt;
+    Double.isNaN(d1);
+    return (float)Math.round(paramDouble * d1) / paramInt;
   }
   
   private static final int a(int paramInt)
   {
-    int m = 1;
     if (paramInt <= 0) {
-      m = 0;
+      return 0;
     }
-    while (paramInt == 1) {
-      return m;
+    if (paramInt == 1) {
+      return 1;
     }
     if (paramInt <= 4) {
       return 2;
@@ -77,29 +78,33 @@ class DropFrameCollector
   {
     if ((paramDropFrameData != null) && (!TextUtils.isEmpty(paramDropFrameData.jdField_a_of_type_JavaLangString)))
     {
-      if (paramDropFrameData.jdField_b_of_type_Long != 0L) {
-        break label34;
-      }
-      paramDropFrameData.jdField_b_of_type_Long = paramLong;
-    }
-    for (;;)
-    {
-      this.jdField_b_of_type_Long = paramLong;
-      return;
-      label34:
-      int m = (int)(((float)(paramLong - this.jdField_b_of_type_Long) - h) / h);
-      int n = a(m);
-      paramDropFrameData.jdField_a_of_type_Long += 1L;
-      long[] arrayOfLong = paramDropFrameData.jdField_a_of_type_ArrayOfLong;
-      arrayOfLong[n] += 1L;
-      paramDropFrameData.jdField_c_of_type_Long = paramLong;
-      if (m >= 2)
+      if (paramDropFrameData.jdField_b_of_type_Long == 0L)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("FPSMonitor", 2, "catch drop frame: dropCount=" + m);
-        }
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorStackSampler.a(this.jdField_b_of_type_Long, paramLong);
+        paramDropFrameData.jdField_b_of_type_Long = paramLong;
       }
+      else
+      {
+        float f1 = (float)(paramLong - this.jdField_b_of_type_Long);
+        float f2 = h;
+        int m = (int)((f1 - f2) / f2);
+        int n = a(m);
+        paramDropFrameData.jdField_a_of_type_Long += 1L;
+        long[] arrayOfLong = paramDropFrameData.jdField_a_of_type_ArrayOfLong;
+        arrayOfLong[n] += 1L;
+        paramDropFrameData.jdField_c_of_type_Long = paramLong;
+        if (m >= 2)
+        {
+          if (QLog.isColorLevel())
+          {
+            paramDropFrameData = new StringBuilder();
+            paramDropFrameData.append("catch drop frame: dropCount=");
+            paramDropFrameData.append(m);
+            QLog.d("FPSMonitor", 2, paramDropFrameData.toString());
+          }
+          this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorStackSampler.a(this.jdField_b_of_type_Long, paramLong);
+        }
+      }
+      this.jdField_b_of_type_Long = paramLong;
     }
   }
   
@@ -108,24 +113,30 @@ class DropFrameCollector
     if (h <= 0.0F)
     {
       g = paramWindowManager.getDefaultDisplay().getRefreshRate();
-      if (g > 0.0F)
+      float f1 = g;
+      if (f1 > 0.0F)
       {
-        i = 1000.0F / g;
-        h = 1.0E+009F / g;
+        i = 1000.0F / f1;
+        h = 1.0E+009F / f1;
       }
-      if (i > 0.0F)
+      f1 = i;
+      if (f1 > 0.0F)
       {
-        jdField_a_of_type_Float = i;
-        jdField_b_of_type_Float = i * 1.5F;
-        jdField_c_of_type_Float = i * 3.0F;
-        jdField_d_of_type_Float = i * 6.0F;
-        jdField_e_of_type_Float = i * 11.5F;
-        f = i * 15.0F;
+        jdField_a_of_type_Float = f1;
+        jdField_b_of_type_Float = 1.5F * f1;
+        jdField_c_of_type_Float = 3.0F * f1;
+        jdField_d_of_type_Float = 6.0F * f1;
+        jdField_e_of_type_Float = 11.5F * f1;
+        f = f1 * 15.0F;
       }
       jdField_a_of_type_ArrayOfFloat = new float[] { jdField_a_of_type_Float, jdField_b_of_type_Float, jdField_c_of_type_Float, jdField_d_of_type_Float, jdField_e_of_type_Float, f };
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("FPSMonitor", 2, "init: sVsyncIntervalMs=" + i);
+    if (QLog.isColorLevel())
+    {
+      paramWindowManager = new StringBuilder();
+      paramWindowManager.append("init: sVsyncIntervalMs=");
+      paramWindowManager.append(i);
+      QLog.d("FPSMonitor", 2, paramWindowManager.toString());
     }
   }
   
@@ -146,13 +157,12 @@ class DropFrameCollector
   public void doFrame(long paramLong)
   {
     a(paramLong, this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorDropFrameData);
-    if (this.jdField_a_of_type_Long <= 0L) {
+    if (this.jdField_a_of_type_Long <= 0L)
+    {
       this.jdField_a_of_type_Long = paramLong;
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_AndroidViewChoreographer.postFrameCallback(this);
-      return;
       long l1 = TimeUnit.NANOSECONDS.toMillis(paramLong - this.jdField_a_of_type_Long);
       this.jdField_c_of_type_Long += 1L;
       if (l1 > 500L)
@@ -164,11 +174,12 @@ class DropFrameCollector
         this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorDropFrameCollector$DropFrameCallback.a(this.j, this.k, this.l);
       }
     }
+    this.jdField_a_of_type_AndroidViewChoreographer.postFrameCallback(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.monitor.DropFrameCollector
  * JD-Core Version:    0.7.0.1
  */

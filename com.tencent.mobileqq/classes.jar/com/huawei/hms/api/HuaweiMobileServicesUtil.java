@@ -49,7 +49,11 @@ public abstract class HuaweiMobileServicesUtil
       paramContext = paramContext.createPackageContext(HMSPackageManager.getInstance(paramContext).getHMSPackageName(), 2);
       return paramContext;
     }
-    catch (PackageManager.NameNotFoundException paramContext) {}
+    catch (PackageManager.NameNotFoundException paramContext)
+    {
+      label15:
+      break label15;
+    }
     return null;
   }
   
@@ -60,7 +64,11 @@ public abstract class HuaweiMobileServicesUtil
       paramContext = paramContext.getPackageManager().getResourcesForApplication(HMSPackageManager.getInstance(paramContext).getHMSPackageName());
       return paramContext;
     }
-    catch (PackageManager.NameNotFoundException paramContext) {}
+    catch (PackageManager.NameNotFoundException paramContext)
+    {
+      label17:
+      break label17;
+    }
     return null;
   }
   
@@ -75,30 +83,36 @@ public abstract class HuaweiMobileServicesUtil
     if (Build.VERSION.SDK_INT < 16) {
       return 21;
     }
-    Object localObject = new PackageManagerHelper(paramContext);
+    Object localObject1 = new PackageManagerHelper(paramContext);
     String str = HMSPackageManager.getInstance(paramContext).getHMSPackageName();
-    HMSLog.i("HuaweiMobileServicesUtil", "hmsPackageName is " + str);
-    PackageManagerHelper.PackageStates localPackageStates = ((PackageManagerHelper)localObject).getPackageStates(str);
-    if (PackageManagerHelper.PackageStates.NOT_INSTALLED.equals(localPackageStates))
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("hmsPackageName is ");
+    ((StringBuilder)localObject2).append(str);
+    HMSLog.i("HuaweiMobileServicesUtil", ((StringBuilder)localObject2).toString());
+    localObject2 = ((PackageManagerHelper)localObject1).getPackageStates(str);
+    if (PackageManagerHelper.PackageStates.NOT_INSTALLED.equals(localObject2))
     {
       HMSLog.i("HuaweiMobileServicesUtil", "HMS is not installed");
       return 1;
     }
-    if (PackageManagerHelper.PackageStates.DISABLED.equals(localPackageStates))
+    if (PackageManagerHelper.PackageStates.DISABLED.equals(localObject2))
     {
       HMSLog.i("HuaweiMobileServicesUtil", "HMS is disabled");
       return 3;
     }
-    localPackageStates = HMSPackageManager.getInstance(paramContext).getHMSPackageStates();
-    if (PackageManagerHelper.PackageStates.NOT_INSTALLED.equals(localPackageStates))
+    localObject2 = HMSPackageManager.getInstance(paramContext).getHMSPackageStates();
+    if (PackageManagerHelper.PackageStates.NOT_INSTALLED.equals(localObject2))
     {
-      localObject = ((PackageManagerHelper)localObject).getPackageSignature(str);
-      if ((!"B92825C2BD5D6D6D1E7F39EECD17843B7D9016F611136B75441BC6F4D3F00F05".equalsIgnoreCase((String)localObject)) && (!"3517262215D8D3008CBF888750B6418EDC4D562AC33ED6874E0D73ABA667BC3C".equalsIgnoreCase((String)localObject)) && (!"3517262215D8D3008CBF888750B6418EDC4D562AC33ED6874E0D73ABA667BC3C".equalsIgnoreCase((String)localObject))) {
+      localObject1 = ((PackageManagerHelper)localObject1).getPackageSignature(str);
+      if ((!"B92825C2BD5D6D6D1E7F39EECD17843B7D9016F611136B75441BC6F4D3F00F05".equalsIgnoreCase((String)localObject1)) && (!"3517262215D8D3008CBF888750B6418EDC4D562AC33ED6874E0D73ABA667BC3C".equalsIgnoreCase((String)localObject1)) && (!"3517262215D8D3008CBF888750B6418EDC4D562AC33ED6874E0D73ABA667BC3C".equalsIgnoreCase((String)localObject1))) {
         return 9;
       }
     }
     int i = HMSPackageManager.getInstance(paramContext).getHmsVersionCode();
-    HMSLog.i("HuaweiMobileServicesUtil", "connect versionCode:" + i);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("connect versionCode:");
+    ((StringBuilder)localObject1).append(i);
+    HMSLog.i("HuaweiMobileServicesUtil", ((StringBuilder)localObject1).toString());
     if (HMSPackageManager.getInstance(paramContext).isApkUpdateNecessary(paramInt))
     {
       HMSLog.i("HuaweiMobileServicesUtil", "The current version does not meet the minimum version requirements");
@@ -139,7 +153,7 @@ public abstract class HuaweiMobileServicesUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.api.HuaweiMobileServicesUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -42,8 +42,13 @@ public class CrmFlagsElemDecoder
   
   void a(int paramInt, List<MessageRecord> paramList, msg_comm.Msg paramMsg, TempSessionInfo paramTempSessionInfo, MessageHandler paramMessageHandler)
   {
-    if (!paramList.isEmpty()) {
-      ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr("crmelem_qidian_flag", paramInt + "");
+    if (!paramList.isEmpty())
+    {
+      paramList = (MessageRecord)paramList.get(0);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("");
+      paramList.saveExtInfoToExtStr("crmelem_qidian_flag", localStringBuilder.toString());
     }
     paramList = paramMessageHandler.a.getCurrentAccountUin();
     paramMsg = String.valueOf(paramMsg.msg_head.from_uin.get());
@@ -91,7 +96,7 @@ public class CrmFlagsElemDecoder
         if (QLog.isColorLevel()) {
           QLog.d("CrmFlagsElemDecoder", 2, String.format("received qidian bulk message taskId: %d, msgType: %d", new Object[] { Integer.valueOf(j), Integer.valueOf(k) }));
         }
-        MessageProtoCodec.a((MessageHandler)localObject, paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get());
+        MessageProtoCodec.a(paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get(), ((MessageHandler)localObject).a());
         if (j != 0)
         {
           paramCrmElem = (QidianHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER);
@@ -130,17 +135,23 @@ public class CrmFlagsElemDecoder
         if (!paramList.isEmpty())
         {
           paramCrmElem = (MessageRecord)paramList.get(0);
-          if (paramCrmElem != null) {
+          if (paramCrmElem != null)
+          {
             paramCrmElem.saveExtInfoToExtStr("qidian_ext_nick_name", paramQQAppInterface);
+            return;
           }
         }
       }
-      return;
     }
     catch (Exception paramQQAppInterface)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("CrmFlagsElemDecoder", 2, "receive ccNotify but throw exception " + paramQQAppInterface.getMessage());
+      if (QLog.isColorLevel())
+      {
+        paramCrmElem = new StringBuilder();
+        paramCrmElem.append("receive ccNotify but throw exception ");
+        paramCrmElem.append(paramQQAppInterface.getMessage());
+        QLog.e("CrmFlagsElemDecoder", 2, paramCrmElem.toString());
+      }
     }
   }
   
@@ -151,9 +162,12 @@ public class CrmFlagsElemDecoder
     paramElem = (im_msg_body.CrmElem)paramElem.crm_elem.get();
     if (paramElem != null)
     {
-      i = paramElem.uint32_qidian_flag.get();
-      if (QLog.isColorLevel()) {
-        paramStringBuilder.append("has uint32_qidian_flag:").append(i).append(";");
+      int i = paramElem.uint32_qidian_flag.get();
+      if (QLog.isColorLevel())
+      {
+        paramStringBuilder.append("has uint32_qidian_flag:");
+        paramStringBuilder.append(i);
+        paramStringBuilder.append(";");
       }
       if (i == 1) {
         a(i, paramList, paramMsg, paramTempSessionInfo, localMessageHandler);
@@ -162,12 +176,10 @@ public class CrmFlagsElemDecoder
         a(localQQAppInterface, paramElem, paramList, paramMsg, paramTempSessionInfo);
       }
     }
-    while (!QLog.isColorLevel())
+    else if (QLog.isColorLevel())
     {
-      int i;
-      return;
+      paramStringBuilder.append("has crmElem, but crmElem is null");
     }
-    paramStringBuilder.append("has crmElem, but crmElem is null");
   }
   
   public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, MessageInfo paramMessageInfo, TempSessionInfo paramTempSessionInfo, DecodeProtoPkgContext paramDecodeProtoPkgContext)
@@ -190,7 +202,7 @@ public class CrmFlagsElemDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.pbelement.CrmFlagsElemDecoder
  * JD-Core Version:    0.7.0.1
  */

@@ -29,52 +29,41 @@ public class TroopTransferActivity$TroopMemberListAdapter
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     TroopTransferActivity.TroopMemberItem localTroopMemberItem;
     int i;
-    ArrayList localArrayList;
-    int j;
-    label71:
-    Object localObject;
-    if (localTroopMemberItem == null)
-    {
+    if (localTroopMemberItem == null) {
       i = 0;
-      localArrayList = new ArrayList();
-      paramArrayList = new ArrayList();
-      j = 0;
-      if (j >= i) {
-        break label272;
-      }
-      localObject = (String)localTroopMemberItem.get(j);
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (Pattern.matches("\\d{5,}+\\|+\\d{1,}", (CharSequence)localObject))) {
-        break label125;
-      }
-    }
-    for (;;)
-    {
-      j += 1;
-      break label71;
+    } else {
       i = localTroopMemberItem.size();
-      break;
-      label125:
-      int k = ((String)localObject).indexOf('|');
-      String str = ((String)localObject).substring(0, k);
-      k = Integer.parseInt(((String)localObject).substring(k + 1));
-      if ((!TextUtils.isEmpty(str)) && ((k & 0x1) == 1))
-      {
-        localObject = new TroopTransferActivity.TroopMemberItem();
-        ((TroopTransferActivity.TroopMemberItem)localObject).jdField_a_of_type_Int = 1;
-        ((TroopTransferActivity.TroopMemberItem)localObject).jdField_a_of_type_JavaLangString = str;
-        ((TroopTransferActivity.TroopMemberItem)localObject).jdField_b_of_type_Int = k;
-        localArrayList.add(localObject);
-      }
-      else if ((!TextUtils.isEmpty(str)) && ((k & 0x1) == 0))
-      {
-        localObject = new TroopTransferActivity.TroopMemberItem();
-        ((TroopTransferActivity.TroopMemberItem)localObject).jdField_a_of_type_Int = 1;
-        ((TroopTransferActivity.TroopMemberItem)localObject).jdField_a_of_type_JavaLangString = str;
-        ((TroopTransferActivity.TroopMemberItem)localObject).jdField_b_of_type_Int = k;
-        paramArrayList.add(localObject);
-      }
     }
-    label272:
+    ArrayList localArrayList = new ArrayList();
+    paramArrayList = new ArrayList();
+    int j = 0;
+    while (j < i)
+    {
+      Object localObject = (String)localTroopMemberItem.get(j);
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (Pattern.matches("\\d{5,}+\\|+\\d{1,}", (CharSequence)localObject)))
+      {
+        int k = ((String)localObject).indexOf('|');
+        String str = ((String)localObject).substring(0, k);
+        k = Integer.parseInt(((String)localObject).substring(k + 1));
+        if ((!TextUtils.isEmpty(str)) && ((k & 0x1) == 1))
+        {
+          localObject = new TroopTransferActivity.TroopMemberItem();
+          ((TroopTransferActivity.TroopMemberItem)localObject).jdField_a_of_type_Int = 1;
+          ((TroopTransferActivity.TroopMemberItem)localObject).jdField_a_of_type_JavaLangString = str;
+          ((TroopTransferActivity.TroopMemberItem)localObject).jdField_b_of_type_Int = k;
+          localArrayList.add(localObject);
+        }
+        else if ((!TextUtils.isEmpty(str)) && ((k & 0x1) == 0))
+        {
+          localObject = new TroopTransferActivity.TroopMemberItem();
+          ((TroopTransferActivity.TroopMemberItem)localObject).jdField_a_of_type_Int = 1;
+          ((TroopTransferActivity.TroopMemberItem)localObject).jdField_a_of_type_JavaLangString = str;
+          ((TroopTransferActivity.TroopMemberItem)localObject).jdField_b_of_type_Int = k;
+          paramArrayList.add(localObject);
+        }
+      }
+      j += 1;
+    }
     if (localArrayList.size() > 0)
     {
       localTroopMemberItem = new TroopTransferActivity.TroopMemberItem();
@@ -96,23 +85,23 @@ public class TroopTransferActivity$TroopMemberListAdapter
   
   public TroopTransferActivity.TroopMemberItem a(String paramString)
   {
-    Object localObject = null;
+    Object localObject1 = null;
     int i = 0;
-    if ((localObject == null) && (i < this.jdField_a_of_type_JavaUtilArrayList.size()))
+    while ((localObject1 == null) && (i < this.jdField_a_of_type_JavaUtilArrayList.size()))
     {
       TroopTransferActivity.TroopMemberItem localTroopMemberItem = (TroopTransferActivity.TroopMemberItem)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if ((localTroopMemberItem == null) || (!Utils.a(localTroopMemberItem.jdField_a_of_type_JavaLangString, paramString))) {
-        break label61;
+      Object localObject2 = localObject1;
+      if (localTroopMemberItem != null)
+      {
+        localObject2 = localObject1;
+        if (Utils.a(localTroopMemberItem.jdField_a_of_type_JavaLangString, paramString)) {
+          localObject2 = localTroopMemberItem;
+        }
       }
-      localObject = localTroopMemberItem;
-    }
-    label61:
-    for (;;)
-    {
       i += 1;
-      break;
-      return localObject;
+      localObject1 = localObject2;
     }
+    return localObject1;
   }
   
   public List<TroopTransferActivity.TroopMemberItem> a()
@@ -127,16 +116,10 @@ public class TroopTransferActivity$TroopMemberListAdapter
   
   public Object getItem(int paramInt)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramInt >= 0)
-    {
-      localObject1 = localObject2;
-      if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()) {
-        localObject1 = (TroopTransferActivity.TroopMemberItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      }
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return (TroopTransferActivity.TroopMemberItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     }
-    return localObject1;
+    return null;
   }
   
   public long getItemId(int paramInt)
@@ -160,93 +143,87 @@ public class TroopTransferActivity$TroopMemberListAdapter
   {
     int i = getItemViewType(paramInt);
     TroopTransferActivity.TroopMemberItem localTroopMemberItem = (TroopTransferActivity.TroopMemberItem)getItem(paramInt);
+    String str = "";
+    TroopTransferActivity.ViewHolder localViewHolder = null;
+    Object localObject2 = null;
     Object localObject1;
-    if (i == 0) {
+    if (i == 0)
+    {
       if (paramView == null)
       {
-        localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559435, paramViewGroup, false);
-        paramView = new TroopTransferActivity.ViewHolder(null);
-        paramView.c = null;
-        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject1);
-        ((View)localObject1).setTag(paramView);
-        paramView.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem = localTroopMemberItem;
-        if ((localTroopMemberItem == null) || (localTroopMemberItem.jdField_b_of_type_Int != 1)) {
-          break label156;
-        }
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(2131693926);
-      }
-    }
-    label281:
-    label410:
-    for (;;)
-    {
-      if ((paramView != null) && (paramView.jdField_a_of_type_AndroidWidgetTextView != null)) {
-        ((View)localObject1).setContentDescription(paramView.jdField_a_of_type_AndroidWidgetTextView.getText());
-      }
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return localObject1;
-      Object localObject2 = (TroopTransferActivity.ViewHolder)paramView.getTag();
-      localObject1 = paramView;
-      paramView = (View)localObject2;
-      break;
-      label156:
-      if ((localTroopMemberItem != null) && (localTroopMemberItem.jdField_b_of_type_Int == 0))
-      {
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(2131720094);
+        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559309, paramViewGroup, false);
+        localViewHolder = new TroopTransferActivity.ViewHolder(null);
+        localViewHolder.c = null;
+        localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView);
+        paramView.setTag(localViewHolder);
       }
       else
       {
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText("");
-        continue;
-        if (i == 1)
-        {
-          if (paramView == null)
-          {
-            paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131563155, paramViewGroup, false);
-            paramView.findViewById(2131380189).setVisibility(8);
-            paramView.findViewById(2131364037).setVisibility(8);
-            localObject1 = new TroopTransferActivity.ViewHolder(null);
-            ((TroopTransferActivity.ViewHolder)localObject1).c = ((ImageView)paramView.findViewById(2131369676));
-            ((TroopTransferActivity.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380475));
-            paramView.setTag(localObject1);
-            ((TroopTransferActivity.ViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem = localTroopMemberItem;
-            if (localTroopMemberItem == null) {
-              break label376;
-            }
-            localObject2 = localTroopMemberItem.jdField_a_of_type_JavaLangString;
-            label300:
-            if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!((String)localObject2).equals("0"))) {
-              break label382;
-            }
-            ((TroopTransferActivity.ViewHolder)localObject1).c.setImageDrawable(ImageUtil.c());
-            label329:
-            if (localTroopMemberItem == null) {
-              break label410;
-            }
-          }
-          for (localObject2 = localTroopMemberItem.jdField_b_of_type_JavaLangString;; localObject2 = "")
-          {
-            ((TroopTransferActivity.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
-            localObject2 = paramView;
-            paramView = (View)localObject1;
-            localObject1 = localObject2;
-            break;
-            localObject1 = (TroopTransferActivity.ViewHolder)paramView.getTag();
-            break label281;
-            label376:
-            localObject2 = null;
-            break label300;
-            label382:
-            ((TroopTransferActivity.ViewHolder)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject2);
-            ((TroopTransferActivity.ViewHolder)localObject1).c.setImageBitmap(a(1, localTroopMemberItem.jdField_a_of_type_JavaLangString));
-            break label329;
-          }
-        }
-        localObject2 = null;
+        localViewHolder = (TroopTransferActivity.ViewHolder)paramView.getTag();
+      }
+      localViewHolder.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem = localTroopMemberItem;
+      if ((localTroopMemberItem != null) && (localTroopMemberItem.jdField_b_of_type_Int == 1))
+      {
+        localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(2131693882);
         localObject1 = paramView;
-        paramView = (View)localObject2;
+      }
+      else if ((localTroopMemberItem != null) && (localTroopMemberItem.jdField_b_of_type_Int == 0))
+      {
+        localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(2131719826);
+        localObject1 = paramView;
+      }
+      else
+      {
+        localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText("");
+        localObject1 = paramView;
       }
     }
+    else
+    {
+      localObject1 = paramView;
+      if (i == 1)
+      {
+        if (paramView == null)
+        {
+          paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562978, paramViewGroup, false);
+          paramView.findViewById(2131379508).setVisibility(8);
+          paramView.findViewById(2131363963).setVisibility(8);
+          localViewHolder = new TroopTransferActivity.ViewHolder(null);
+          localViewHolder.c = ((ImageView)paramView.findViewById(2131369373));
+          localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379778));
+          paramView.setTag(localViewHolder);
+        }
+        else
+        {
+          localViewHolder = (TroopTransferActivity.ViewHolder)paramView.getTag();
+        }
+        localViewHolder.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem = localTroopMemberItem;
+        localObject1 = localObject2;
+        if (localTroopMemberItem != null) {
+          localObject1 = localTroopMemberItem.jdField_a_of_type_JavaLangString;
+        }
+        if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).equals("0")))
+        {
+          localViewHolder.jdField_a_of_type_JavaLangString = ((String)localObject1);
+          localViewHolder.c.setImageBitmap(a(1, localTroopMemberItem.jdField_a_of_type_JavaLangString));
+        }
+        else
+        {
+          localViewHolder.c.setImageDrawable(ImageUtil.e());
+        }
+        localObject1 = str;
+        if (localTroopMemberItem != null) {
+          localObject1 = localTroopMemberItem.jdField_b_of_type_JavaLangString;
+        }
+        localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
+        localObject1 = paramView;
+      }
+    }
+    if ((localViewHolder != null) && (localViewHolder.jdField_a_of_type_AndroidWidgetTextView != null)) {
+      ((View)localObject1).setContentDescription(localViewHolder.jdField_a_of_type_AndroidWidgetTextView.getText());
+    }
+    EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
+    return localObject1;
   }
   
   public int getViewTypeCount()
@@ -256,7 +233,7 @@ public class TroopTransferActivity$TroopMemberListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter
  * JD-Core Version:    0.7.0.1
  */

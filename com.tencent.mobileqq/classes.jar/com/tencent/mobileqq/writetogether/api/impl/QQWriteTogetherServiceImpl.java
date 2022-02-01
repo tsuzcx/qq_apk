@@ -51,20 +51,18 @@ public class QQWriteTogetherServiceImpl
   
   public void notify(IWriteTogetherMsg paramIWriteTogetherMsg)
   {
-    if (!(paramIWriteTogetherMsg instanceof BaseWriteTogetherMsg)) {}
-    for (;;)
-    {
+    if (!(paramIWriteTogetherMsg instanceof BaseWriteTogetherMsg)) {
       return;
-      paramIWriteTogetherMsg = (BaseWriteTogetherMsg)paramIWriteTogetherMsg;
-      Type localType = paramIWriteTogetherMsg.getType();
-      Iterator localIterator = this.mUiObservers.iterator();
-      while (localIterator.hasNext()) {
-        dispatchObservers((IWriteTogetherObserver)localIterator.next(), localType, true, paramIWriteTogetherMsg, this.mUiHandler);
-      }
-      localIterator = this.mBgObservers.iterator();
-      while (localIterator.hasNext()) {
-        dispatchObservers((IWriteTogetherObserver)localIterator.next(), localType, true, paramIWriteTogetherMsg, this.mSubHandler);
-      }
+    }
+    paramIWriteTogetherMsg = (BaseWriteTogetherMsg)paramIWriteTogetherMsg;
+    Type localType = paramIWriteTogetherMsg.getType();
+    Iterator localIterator = this.mUiObservers.iterator();
+    while (localIterator.hasNext()) {
+      dispatchObservers((IWriteTogetherObserver)localIterator.next(), localType, true, paramIWriteTogetherMsg, this.mUiHandler);
+    }
+    localIterator = this.mBgObservers.iterator();
+    while (localIterator.hasNext()) {
+      dispatchObservers((IWriteTogetherObserver)localIterator.next(), localType, true, paramIWriteTogetherMsg, this.mSubHandler);
     }
   }
   
@@ -117,7 +115,7 @@ public class QQWriteTogetherServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.api.impl.QQWriteTogetherServiceImpl
  * JD-Core Version:    0.7.0.1
  */

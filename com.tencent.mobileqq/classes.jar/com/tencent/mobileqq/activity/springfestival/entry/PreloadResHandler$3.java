@@ -15,44 +15,41 @@ class PreloadResHandler$3
   public void onResult(int paramInt, IPreloadService.PathResult paramPathResult)
   {
     int i;
-    int j;
-    label13:
-    Bitmap localBitmap;
-    if (paramInt == 0)
-    {
+    if (paramInt == 0) {
       i = 1;
-      if (paramPathResult == null) {
-        break label125;
-      }
-      j = 1;
-      if (((j & i) == 0) || (StringUtil.a(paramPathResult.filePath))) {
-        break label131;
-      }
-      localBitmap = PreloadResHandler.a(paramPathResult.filePath, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryPreloadResHandler.a);
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("shua2021_PreloadResHandler", 2, String.format("getPreloadBitmap... defaultResName=[%s] onResult=%d %s", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt), paramPathResult }));
-      }
-      paramPathResult = (PreloadResHandler)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      if (paramPathResult != null) {
-        paramPathResult.a(bool, this.b, localBitmap);
-      }
-      return;
+    } else {
       i = 0;
-      break;
-      label125:
+    }
+    int j;
+    if (paramPathResult != null) {
+      j = 1;
+    } else {
       j = 0;
-      break label13;
-      label131:
+    }
+    Bitmap localBitmap;
+    boolean bool;
+    if (((i & j) != 0) && (!StringUtil.a(paramPathResult.filePath)))
+    {
+      localBitmap = PreloadResHandler.a(paramPathResult.filePath, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryPreloadResHandler.a);
+      bool = true;
+    }
+    else
+    {
       localBitmap = null;
+      bool = false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("shua2021_PreloadResHandler", 2, String.format("getPreloadBitmap... defaultResName=[%s] onResult=%d %s", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt), paramPathResult }));
+    }
+    paramPathResult = (PreloadResHandler)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (paramPathResult != null) {
+      paramPathResult.a(bool, this.b, localBitmap);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.PreloadResHandler.3
  * JD-Core Version:    0.7.0.1
  */

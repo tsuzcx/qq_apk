@@ -15,26 +15,24 @@ final class UnknownFieldData
   
   int computeSerializedSize()
   {
-    return 0 + CodedOutputByteBufferNano.computeRawVarint32Size(this.tag) + this.bytes.length;
+    return CodedOutputByteBufferNano.computeRawVarint32Size(this.tag) + 0 + this.bytes.length;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == this) {}
-    do
-    {
+    if (paramObject == this) {
       return true;
-      if (!(paramObject instanceof UnknownFieldData)) {
-        return false;
-      }
-      paramObject = (UnknownFieldData)paramObject;
-    } while ((this.tag == paramObject.tag) && (Arrays.equals(this.bytes, paramObject.bytes)));
-    return false;
+    }
+    if (!(paramObject instanceof UnknownFieldData)) {
+      return false;
+    }
+    paramObject = (UnknownFieldData)paramObject;
+    return (this.tag == paramObject.tag) && (Arrays.equals(this.bytes, paramObject.bytes));
   }
   
   public int hashCode()
   {
-    return (this.tag + 527) * 31 + Arrays.hashCode(this.bytes);
+    return (527 + this.tag) * 31 + Arrays.hashCode(this.bytes);
   }
   
   void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
@@ -45,7 +43,7 @@ final class UnknownFieldData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.protobuf.nano.UnknownFieldData
  * JD-Core Version:    0.7.0.1
  */

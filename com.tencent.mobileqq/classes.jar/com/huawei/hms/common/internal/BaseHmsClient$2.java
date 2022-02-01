@@ -11,15 +11,15 @@ class BaseHmsClient$2
   {
     if (paramInt == 0)
     {
-      BaseHmsClient.d(this.a);
+      BaseHmsClient.access$700(this.this$0);
       return;
     }
-    BaseHmsClient.b(this.a, paramInt);
+    BaseHmsClient.access$300(this.this$0, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.internal.BaseHmsClient.2
  * JD-Core Version:    0.7.0.1
  */

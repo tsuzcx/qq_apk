@@ -11,14 +11,15 @@ class MiniAppServiceImpl$6
   
   public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.val$listener != null) {
-      this.val$listener.onLaunchResult(paramBoolean, paramBundle);
+    MiniAppLaunchListener localMiniAppLaunchListener = this.val$listener;
+    if (localMiniAppLaunchListener != null) {
+      localMiniAppLaunchListener.onLaunchResult(paramBoolean, paramBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.api.impl.MiniAppServiceImpl.6
  * JD-Core Version:    0.7.0.1
  */

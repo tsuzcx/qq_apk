@@ -21,8 +21,12 @@ class QZonePluginDownloader$DownLoadListner
   
   public void onDownloadCanceled(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginManger", 1, "plugin download canceled, url=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("plugin download canceled, url=");
+      localStringBuilder.append(paramString);
+      QLog.d("QZonePluginManger", 1, localStringBuilder.toString());
     }
     paramString = Message.obtain(this.this$0.handler, 2);
     paramString.obj = this.downloadRecord;
@@ -42,21 +46,25 @@ class QZonePluginDownloader$DownLoadListner
         paramDownloadResult = new ImageDownloadReporter().obtainReportObj(paramDownloadResult, paramDownloadResult.getReport());
         paramString.arg1 = paramDownloadResult.retCode;
         if (!AppNetConnInfo.isNetSupport()) {
-          continue;
+          break label152;
         }
         i = 1;
         paramString.arg2 = i;
-        QLog.w("QZonePluginManger", 1, "plugin download failed, code=" + paramDownloadResult.retCode + ", arg2=" + paramString.arg2);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("plugin download failed, code=");
+        localStringBuilder.append(paramDownloadResult.retCode);
+        localStringBuilder.append(", arg2=");
+        localStringBuilder.append(paramString.arg2);
+        QLog.w("QZonePluginManger", 1, localStringBuilder.toString());
       }
       catch (Exception paramDownloadResult)
       {
-        int i;
         QLog.w("QZonePluginManger", 1, "onDownloadFailed", paramDownloadResult);
-        continue;
       }
       paramString.sendToTarget();
       return;
-      i = 0;
+      label152:
+      int i = 0;
     }
   }
   
@@ -73,9 +81,17 @@ class QZonePluginDownloader$DownLoadListner
   {
     if (QLog.isColorLevel())
     {
-      QLog.d("QZonePluginManger", 2, "onDownloadSucceed, downloaded path:" + paramDownloadResult.getPath());
+      paramString = new StringBuilder();
+      paramString.append("onDownloadSucceed, downloaded path:");
+      paramString.append(paramDownloadResult.getPath());
+      QLog.d("QZonePluginManger", 2, paramString.toString());
       paramString = QZonePluginUtils.getPluginDownLoadedPath(QZonePluginDownloader.access$500(this.this$0), QZonePluginDownloader.DownloadRecord.access$100(this.downloadRecord));
-      QLog.d("QZonePluginManger", 2, "onDownloadSucceed, saved path:" + paramString + ", exsit:" + paramString.exists());
+      paramDownloadResult = new StringBuilder();
+      paramDownloadResult.append("onDownloadSucceed, saved path:");
+      paramDownloadResult.append(paramString);
+      paramDownloadResult.append(", exsit:");
+      paramDownloadResult.append(paramString.exists());
+      QLog.d("QZonePluginManger", 2, paramDownloadResult.toString());
     }
     paramString = Message.obtain(this.this$0.handler, 4);
     paramString.obj = this.downloadRecord;
@@ -84,7 +100,7 @@ class QZonePluginDownloader$DownLoadListner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.plugin.QZonePluginDownloader.DownLoadListner
  * JD-Core Version:    0.7.0.1
  */

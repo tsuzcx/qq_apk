@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 public abstract interface PushBaseAnalytics
 {
-  public abstract void report(Context paramContext, Bundle paramBundle);
+  public abstract void report(Context paramContext, String paramString, Bundle paramBundle);
 }
 
 

@@ -6,7 +6,6 @@ import android.os.Process;
 import android.text.TextUtils;
 import com.tencent.av.AVPathUtil;
 import com.tencent.avcore.jni.data.SDKConfigInfo;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -18,23 +17,24 @@ public class SDKConfigInfoBuilder
   
   public SDKConfigInfoBuilder()
   {
-    String str2 = AVPathUtil.l();
-    String str1 = "com.tencent.mobileqq";
-    Object localObject2 = "";
+    String str2 = AVPathUtil.o();
     int i = Process.myPid();
-    Object localObject3 = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses().iterator();
+    Object localObject1 = ((ActivityManager)BaseApplication.getContext().getSystemService("activity")).getRunningAppProcesses().iterator();
     do
     {
-      localObject1 = localObject2;
-      if (!((Iterator)localObject3).hasNext()) {
+      bool = ((Iterator)localObject1).hasNext();
+      localObject3 = "";
+      if (!bool) {
         break;
       }
-      localObject1 = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject3).next();
-    } while (((ActivityManager.RunningAppProcessInfo)localObject1).pid != i);
-    Object localObject1 = ((ActivityManager.RunningAppProcessInfo)localObject1).processName;
-    localObject3 = "";
+      localObject2 = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject1).next();
+    } while (((ActivityManager.RunningAppProcessInfo)localObject2).pid != i);
+    localObject1 = ((ActivityManager.RunningAppProcessInfo)localObject2).processName;
+    break label80;
+    localObject1 = "";
+    label80:
     i = ((String)localObject1).lastIndexOf(':');
-    localObject2 = localObject3;
+    Object localObject2 = localObject3;
     if (i > 0)
     {
       localObject2 = localObject3;
@@ -42,16 +42,27 @@ public class SDKConfigInfoBuilder
         localObject2 = ((String)localObject1).substring(i + 1);
       }
     }
-    localObject3 = str1;
-    if (!TextUtils.isEmpty((CharSequence)localObject2))
+    boolean bool = TextUtils.isEmpty((CharSequence)localObject2);
+    String str1 = "com.tencent.mobileqq";
+    Object localObject3 = str1;
+    if (!bool)
     {
       localObject3 = str1;
-      if (!TextUtils.equals((CharSequence)localObject2, "video")) {
-        localObject3 = "com.tencent.mobileqq" + "_" + (String)localObject2;
+      if (!TextUtils.equals((CharSequence)localObject2, "video"))
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("com.tencent.mobileqq");
+        ((StringBuilder)localObject3).append("_");
+        ((StringBuilder)localObject3).append((String)localObject2);
+        localObject3 = ((StringBuilder)localObject3).toString();
       }
     }
     this.a = new SDKConfigInfo(str2, (String)localObject3, (String)localObject1, false, false, true);
-    QLog.i("SDKConfigInfoBuilder", 1, "SDKConfigInfo, info[" + this.a.toString() + "]");
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("SDKConfigInfo, info[");
+    ((StringBuilder)localObject1).append(this.a.toString());
+    ((StringBuilder)localObject1).append("]");
+    QLog.i("SDKConfigInfoBuilder", 1, ((StringBuilder)localObject1).toString());
   }
   
   public SDKConfigInfo a()
@@ -61,7 +72,7 @@ public class SDKConfigInfoBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.core.SDKConfigInfoBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -11,9 +11,10 @@ class QRScanEntryView$12
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    paramAnimator = this.jdField_a_of_type_AndroidViewView;
+    if (paramAnimator != null)
     {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+      paramAnimator.setAlpha(1.0F);
       if (!this.jdField_a_of_type_Boolean) {
         this.jdField_a_of_type_AndroidViewView.setVisibility(4);
       }
@@ -22,14 +23,15 @@ class QRScanEntryView$12
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    paramAnimator = this.jdField_a_of_type_AndroidViewView;
+    if ((paramAnimator != null) && (this.jdField_a_of_type_Boolean)) {
+      paramAnimator.setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.QRScanEntryView.12
  * JD-Core Version:    0.7.0.1
  */

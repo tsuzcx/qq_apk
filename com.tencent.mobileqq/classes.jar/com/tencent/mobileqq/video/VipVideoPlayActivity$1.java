@@ -11,21 +11,21 @@ class VipVideoPlayActivity$1
   
   public void onClick(View paramView)
   {
-    if (this.a.getRequestedOrientation() == 0) {
+    if (this.a.getRequestedOrientation() == 0)
+    {
       this.a.setRequestedOrientation(1);
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       this.a.setResult(0);
       this.a.finish();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.video.VipVideoPlayActivity.1
  * JD-Core Version:    0.7.0.1
  */

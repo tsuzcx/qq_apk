@@ -24,11 +24,14 @@ final class NalUnitTargetBuffer
       return;
     }
     paramInt2 -= paramInt1;
-    if (this.nalData.length < this.nalLength + paramInt2) {
-      this.nalData = Arrays.copyOf(this.nalData, (this.nalLength + paramInt2) * 2);
+    byte[] arrayOfByte = this.nalData;
+    int i = arrayOfByte.length;
+    int j = this.nalLength;
+    if (i < j + paramInt2) {
+      this.nalData = Arrays.copyOf(arrayOfByte, (j + paramInt2) * 2);
     }
     System.arraycopy(paramArrayOfByte, paramInt1, this.nalData, this.nalLength, paramInt2);
-    this.nalLength = (paramInt2 + this.nalLength);
+    this.nalLength += paramInt2;
   }
   
   public boolean endNalUnit(int paramInt)
@@ -55,33 +58,23 @@ final class NalUnitTargetBuffer
   
   public void startNalUnit(int paramInt)
   {
-    boolean bool2 = true;
-    if (!this.isFilling)
-    {
-      bool1 = true;
-      Assertions.checkState(bool1);
-      if (paramInt != this.targetType) {
-        break label53;
-      }
-    }
-    label53:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.isFilling = bool1;
-      if (this.isFilling)
-      {
-        this.nalLength = 3;
-        this.isCompleted = false;
-      }
-      return;
+    boolean bool2 = this.isFilling;
+    boolean bool1 = true;
+    Assertions.checkState(bool2 ^ true);
+    if (paramInt != this.targetType) {
       bool1 = false;
-      break;
+    }
+    this.isFilling = bool1;
+    if (this.isFilling)
+    {
+      this.nalLength = 3;
+      this.isCompleted = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ts.NalUnitTargetBuffer
  * JD-Core Version:    0.7.0.1
  */

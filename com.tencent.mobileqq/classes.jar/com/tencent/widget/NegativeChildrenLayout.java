@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.mobileqq.kandian.repo.dislike.DislikeInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -42,10 +42,10 @@ public class NegativeChildrenLayout
   
   private void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560357, this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131371004));
-    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131367017);
-    paramContext = this.jdField_a_of_type_AndroidViewView.findViewById(2131377830);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131560245, this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131370638));
+    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131366870);
+    paramContext = this.jdField_a_of_type_AndroidViewView.findViewById(2131377256);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramContext.getLayoutParams();
     localLayoutParams.leftMargin = 0;
     localLayoutParams.rightMargin = 0;
@@ -58,77 +58,86 @@ public class NegativeChildrenLayout
     if (paramView == null) {
       return;
     }
-    if ((paramDislikeInfo == null) || (TextUtils.isEmpty(paramDislikeInfo.a)))
+    if ((paramDislikeInfo != null) && (!TextUtils.isEmpty(paramDislikeInfo.a)))
     {
-      paramView.setVisibility(8);
+      paramView.setVisibility(0);
+      paramView.setTag(paramDislikeInfo);
+      a(paramView, paramDislikeInfo, "", false);
       return;
     }
-    paramView.setVisibility(0);
-    paramView.setTag(paramDislikeInfo);
-    a(paramView, paramDislikeInfo, "", false);
+    paramView.setVisibility(8);
   }
   
   private void a(View paramView, DislikeInfo paramDislikeInfo, String paramString, boolean paramBoolean)
   {
-    for (;;)
+    String str = "";
+    try
     {
-      try
+      localImageView = (ImageView)paramView.findViewById(2131369933);
+      localTextView1 = (TextView)paramView.findViewById(2131379046);
+      localTextView2 = (TextView)paramView.findViewById(2131369103);
+      int j = 8;
+      if (paramBoolean)
       {
-        ImageView localImageView = (ImageView)paramView.findViewById(2131370265);
-        TextView localTextView1 = (TextView)paramView.findViewById(2131379706);
-        TextView localTextView2 = (TextView)paramView.findViewById(2131369375);
-        j = 8;
-        str = "";
-        if (!paramBoolean) {
-          continue;
-        }
         i = 0;
-        paramView = str;
-        localTextView2.setText(paramView);
-        localImageView.setVisibility(i);
-        if (paramString != null) {
-          localTextView1.setText(paramString);
-        }
+        break label170;
       }
-      catch (Exception paramView)
+      i = j;
+      if (paramDislikeInfo == null) {
+        break label170;
+      }
+      i = j;
+      if (TextUtils.isEmpty(paramDislikeInfo.a)) {
+        break label170;
+      }
+      paramView = paramDislikeInfo.a;
+      i = j;
+    }
+    catch (Exception paramView)
+    {
+      for (;;)
       {
-        int j;
-        String str;
+        ImageView localImageView;
+        TextView localTextView1;
+        TextView localTextView2;
         int i;
         continue;
-      }
-      paramView = "";
-      if (paramDislikeInfo != null) {
-        paramView = paramDislikeInfo.toString();
-      }
-      QLog.e("NegativeChildrenLayout", 1, "updateItemData:" + paramView + " ,name:" + paramString);
-      return;
-      paramView = str;
-      i = j;
-      if (paramDislikeInfo != null)
-      {
-        paramView = str;
-        i = j;
-        if (!TextUtils.isEmpty(paramDislikeInfo.a))
-        {
-          paramView = paramDislikeInfo.a;
-          i = j;
-        }
+        paramView = "";
       }
     }
+    localTextView2.setText(paramView);
+    localImageView.setVisibility(i);
+    if (paramString != null) {
+      localTextView1.setText(paramString);
+    }
+    paramView = str;
+    if (paramDislikeInfo != null) {
+      paramView = paramDislikeInfo.toString();
+    }
+    paramDislikeInfo = new StringBuilder();
+    paramDislikeInfo.append("updateItemData:");
+    paramDislikeInfo.append(paramView);
+    paramDislikeInfo.append(" ,name:");
+    paramDislikeInfo.append(paramString);
+    QLog.e("NegativeChildrenLayout", 1, paramDislikeInfo.toString());
   }
   
   public void a(DislikeInfo paramDislikeInfo)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 6) {}
-    while ((paramDislikeInfo == null) || (TextUtils.isEmpty(paramDislikeInfo.a))) {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 6) {
       return;
     }
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560358, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
-    localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    localView.setTag(paramDislikeInfo);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localView);
+    if (paramDislikeInfo != null)
+    {
+      if (TextUtils.isEmpty(paramDislikeInfo.a)) {
+        return;
+      }
+      View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560246, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
+      localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      localView.setTag(paramDislikeInfo);
+      this.jdField_a_of_type_JavaUtilArrayList.add(localView);
+    }
   }
   
   public void setData(ArrayList<DislikeInfo> paramArrayList, String paramString, KandianNegativeWindow.iClickInterface paramiClickInterface)
@@ -136,10 +145,10 @@ public class NegativeChildrenLayout
     if (paramArrayList == null) {
       return;
     }
+    int i = 0;
     setVisibility(0);
     this.jdField_a_of_type_Int = 0;
     a(this.jdField_a_of_type_AndroidViewView, null, paramString, true);
-    int i = 0;
     while ((i < paramArrayList.size()) && (i < 6))
     {
       if (i > this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
@@ -165,31 +174,30 @@ public class NegativeChildrenLayout
   public void setLastSeparateLineUnvis()
   {
     int i = 0;
-    View localView2;
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
       View localView1 = (View)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      localView2 = localView1.findViewById(2131377830);
-      if (i != this.jdField_a_of_type_Int) {
-        break label68;
+      View localView2 = localView1.findViewById(2131377256);
+      int j;
+      if (i == this.jdField_a_of_type_Int)
+      {
+        j = 4;
+        localView1.setBackgroundResource(2130843062);
       }
-      localView1.setBackgroundResource(2130843154);
-    }
-    label68:
-    for (int j = 4;; j = 0)
-    {
+      else
+      {
+        j = 0;
+      }
       if (localView2 != null) {
         localView2.setVisibility(j);
       }
       i += 1;
-      break;
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.NegativeChildrenLayout
  * JD-Core Version:    0.7.0.1
  */

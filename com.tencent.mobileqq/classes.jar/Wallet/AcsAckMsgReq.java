@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class AcsAckMsgReq
   extends JceStruct
@@ -37,18 +38,20 @@ public final class AcsAckMsgReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.head != null) {
-      paramJceOutputStream.write(this.head, 0);
+    Object localObject = this.head;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
     paramJceOutputStream.write(this.uin, 1);
-    if (this.msg_id_list != null) {
-      paramJceOutputStream.write(this.msg_id_list, 2);
+    localObject = this.msg_id_list;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.AcsAckMsgReq
  * JD-Core Version:    0.7.0.1
  */

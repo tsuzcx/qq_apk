@@ -27,14 +27,16 @@ public final class oidb_0xede$RspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 56, 64, 72, 82, 88 }, new String[] { "uint64_group_code", "uint32_type", "uint32_result", "str_err_msg", "rpt_group_info", "uint64_next_group_code", "uint32_group_info_size", "uint64_alliance_id", "uint64_alliance_admin_uin", "str_alliance_admin_name", "uint64_alliance_create_time" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, null, Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro2, Long.valueOf(0L) }, RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 56, 64, 72, 82, 88 }, new String[] { "uint64_group_code", "uint32_type", "uint32_result", "str_err_msg", "rpt_group_info", "uint64_next_group_code", "uint32_group_info_size", "uint64_alliance_id", "uint64_alliance_admin_uin", "str_alliance_admin_name", "uint64_alliance_create_time" }, new Object[] { localLong, localInteger, localInteger, localByteStringMicro1, null, localLong, localInteger, localLong, localLong, localByteStringMicro2, localLong }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xede.oidb_0xede.RspBody
  * JD-Core Version:    0.7.0.1
  */

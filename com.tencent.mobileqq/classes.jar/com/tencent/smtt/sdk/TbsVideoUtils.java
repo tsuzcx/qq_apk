@@ -4,20 +4,21 @@ import android.content.Context;
 
 public class TbsVideoUtils
 {
-  private static t a = null;
+  private static t a;
   
   private static void a(Context paramContext)
   {
-    Object localObject = null;
     try
     {
       if (a == null)
       {
-        f.a(true).a(paramContext, false, false, null);
-        v localv = f.a(true).a();
-        paramContext = localObject;
-        if (localv != null) {
-          paramContext = localv.b();
+        Object localObject2 = f.a(true);
+        Object localObject1 = null;
+        ((f)localObject2).a(paramContext, false, false, null);
+        localObject2 = f.a(true).a();
+        paramContext = localObject1;
+        if (localObject2 != null) {
+          paramContext = ((v)localObject2).b();
         }
         if (paramContext != null) {
           a = new t(paramContext);
@@ -31,23 +32,25 @@ public class TbsVideoUtils
   public static void deleteVideoCache(Context paramContext, String paramString)
   {
     a(paramContext);
-    if (a != null) {
-      a.a(paramContext, paramString);
+    t localt = a;
+    if (localt != null) {
+      localt.a(paramContext, paramString);
     }
   }
   
   public static String getCurWDPDecodeType(Context paramContext)
   {
     a(paramContext);
-    if (a != null) {
-      return a.a(paramContext);
+    t localt = a;
+    if (localt != null) {
+      return localt.a(paramContext);
     }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsVideoUtils
  * JD-Core Version:    0.7.0.1
  */

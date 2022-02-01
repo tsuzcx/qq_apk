@@ -14,21 +14,18 @@ class DesktopDataManager$28
     int i = DesktopDataManager.access$3200(this.this$0);
     if (i == -1) {
       DesktopDataManager.access$1600(this.this$0).add(localDesktopAppInfo);
-    }
-    for (;;)
-    {
-      DesktopDataManager.access$1900(DesktopDataManager.access$1600(this.this$0));
-      if (DesktopDataManager.access$1500(this.this$0) != null) {
-        DesktopDataManager.access$1500(this.this$0).onDataChanged();
-      }
-      return;
+    } else {
       DesktopDataManager.access$1600(this.this$0).add(i, localDesktopAppInfo);
+    }
+    DesktopDataManager.access$1900(DesktopDataManager.access$1600(this.this$0));
+    if (DesktopDataManager.access$1500(this.this$0) != null) {
+      DesktopDataManager.access$1500(this.this$0).onDataChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.28
  * JD-Core Version:    0.7.0.1
  */

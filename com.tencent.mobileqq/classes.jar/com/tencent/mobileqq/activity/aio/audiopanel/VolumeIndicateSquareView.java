@@ -7,7 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.util.AttributeSet;
 import android.view.View;
-import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.qqui.R.styleable;
 
 public class VolumeIndicateSquareView
   extends View
@@ -24,23 +24,23 @@ public class VolumeIndicateSquareView
   public VolumeIndicateSquareView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.change_voice_volume);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.bU);
     a(paramContext);
     paramContext.recycle();
   }
   
   private void a(TypedArray paramTypedArray)
   {
-    if (paramTypedArray.getInt(2, 0) == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_Int = paramTypedArray.getInt(3, 5);
-      this.b = ((int)paramTypedArray.getDimension(5, 8.0F));
-      this.c = paramTypedArray.getColor(0, -16776961);
-      this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_Int];
-      return;
+    int i = R.styleable.cn;
+    boolean bool = false;
+    if (paramTypedArray.getInt(i, 0) == 0) {
+      bool = true;
     }
+    this.jdField_a_of_type_Boolean = bool;
+    this.jdField_a_of_type_Int = paramTypedArray.getInt(R.styleable.co, 5);
+    this.b = ((int)paramTypedArray.getDimension(R.styleable.cq, 8.0F));
+    this.c = paramTypedArray.getColor(R.styleable.cm, -16776961);
+    this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_Int];
   }
   
   public void a()
@@ -48,9 +48,13 @@ public class VolumeIndicateSquareView
     if (this.jdField_a_of_type_ArrayOfInt != null)
     {
       int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfInt.length)
+      for (;;)
       {
-        this.jdField_a_of_type_ArrayOfInt[i] = 0;
+        int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+        if (i >= arrayOfInt.length) {
+          break;
+        }
+        arrayOfInt[i] = 0;
         i += 1;
       }
       this.d = 0;
@@ -60,31 +64,32 @@ public class VolumeIndicateSquareView
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfInt[this.d] = paramInt;
-    this.d += 1;
+    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    int i = this.d;
+    arrayOfInt[i] = paramInt;
+    this.d = (i + 1);
     if (this.d >= this.jdField_a_of_type_Int) {
       this.d = 0;
     }
     invalidate();
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    int i = this.d;
+    int i = this.d - 1;
     int j = 0;
-    i -= 1;
-    if (j < this.jdField_a_of_type_Int)
-    {
-      if (i >= 0) {
-        break label176;
-      }
-      i = this.jdField_a_of_type_Int - 1;
-    }
-    label176:
     for (;;)
     {
-      float f2 = this.jdField_a_of_type_ArrayOfInt[i];
+      int m = this.jdField_a_of_type_Int;
+      if (j >= m) {
+        break;
+      }
+      int k = i;
+      if (i < 0) {
+        k = m - 1;
+      }
+      float f2 = this.jdField_a_of_type_ArrayOfInt[k];
       float f1 = f2;
       if (f2 < 1.0F) {
         f1 = 1.0F;
@@ -93,28 +98,29 @@ public class VolumeIndicateSquareView
       if (f1 > 8.0F) {
         f2 = 8.0F;
       }
-      f2 = f2 / 2.0F * this.b;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (f1 = j * 2.0F * this.b;; f1 = (this.jdField_a_of_type_Int - 1 - j) * 2.0F * this.b + this.b)
-      {
-        paramCanvas.drawRect(f1, this.e - f2, this.b + f1, this.e + f2, this.jdField_a_of_type_AndroidGraphicsPaint);
-        j += 1;
-        i -= 1;
-        break;
+      f1 = f2 / 2.0F;
+      i = this.b;
+      f2 = f1 * i;
+      if (this.jdField_a_of_type_Boolean) {
+        f1 = j * 2.0F * i;
+      } else {
+        f1 = (this.jdField_a_of_type_Int - 1 - j) * 2.0F * i + i;
       }
-      return;
+      i = this.e;
+      paramCanvas.drawRect(f1, i - f2, f1 + this.b, i + f2, this.jdField_a_of_type_AndroidGraphicsPaint);
+      i = k - 1;
+      j += 1;
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     paramInt1 = this.jdField_a_of_type_Int;
     paramInt2 = this.b;
-    int i = this.b;
-    setMeasuredDimension(paramInt1 * 2 * paramInt2 + getPaddingLeft() + getPaddingRight(), i * 8 + getPaddingTop() + getPaddingBottom());
+    setMeasuredDimension(paramInt1 * 2 * paramInt2 + getPaddingLeft() + getPaddingRight(), paramInt2 * 8 + getPaddingTop() + getPaddingBottom());
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.e = (paramInt2 / 2);
@@ -130,8 +136,9 @@ public class VolumeIndicateSquareView
   public void setColor(int paramInt)
   {
     this.c = paramInt;
-    if (this.jdField_a_of_type_AndroidGraphicsPaint != null) {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
+    Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
+    if (localPaint != null) {
+      localPaint.setColor(this.c);
     }
   }
   
@@ -149,7 +156,7 @@ public class VolumeIndicateSquareView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.VolumeIndicateSquareView
  * JD-Core Version:    0.7.0.1
  */

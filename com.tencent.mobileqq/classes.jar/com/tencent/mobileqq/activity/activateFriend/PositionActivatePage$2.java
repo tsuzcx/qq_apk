@@ -22,7 +22,7 @@ class PositionActivatePage$2
       localIntent.putExtra("key_friend_list", this.a.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid.a());
       localIntent.putExtra("key_roam_city", this.a.jdField_a_of_type_JavaLangString);
       ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).startActivityForResult(localIntent, 1000);
-      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).overridePendingTransition(2130771981, 2130771992);
+      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).overridePendingTransition(2130771993, 2130772004);
       ReportController.b(((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).app, "CliOper", "", "", "0X8004E06", "0X8004E06", 0, 0, "", "", "", "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -30,7 +30,7 @@ class PositionActivatePage$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.PositionActivatePage.2
  * JD-Core Version:    0.7.0.1
  */

@@ -4,11 +4,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
-import com.tencent.mobileqq.qassistant.command.jump.QAssistantConfigUtils;
-import com.tencent.mobileqq.qassistant.command.jump.QAssistantManager;
+import com.tencent.mobileqq.qassistant.api.IVoiceAssistantConf;
+import com.tencent.mobileqq.qassistant.api.IVoiceAssistantMain;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 
 public class QAssistantConfigProcessor
@@ -24,8 +24,12 @@ public class QAssistantConfigProcessor
   public QAssistantConfigProcessor.QAssistantConfigContent a(QConfItem[] paramArrayOfQConfItem)
   {
     QAssistantConfigProcessor.QAssistantConfigContent localQAssistantConfigContent = new QAssistantConfigProcessor.QAssistantConfigContent();
-    if (QLog.isColorLevel()) {
-      QLog.d("QAssistantConfigProcessor", 2, "onParsed confFiles.length = " + paramArrayOfQConfItem.length);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onParsed confFiles.length = ");
+      localStringBuilder.append(paramArrayOfQConfItem.length);
+      QLog.d("QAssistantConfigProcessor", 2, localStringBuilder.toString());
     }
     if (paramArrayOfQConfItem.length > 0)
     {
@@ -33,27 +37,39 @@ public class QAssistantConfigProcessor
       localQAssistantConfigContent.jdField_a_of_type_Int = paramArrayOfQConfItem.jdField_a_of_type_Int;
       localQAssistantConfigContent.jdField_a_of_type_JavaLangString = paramArrayOfQConfItem.jdField_a_of_type_JavaLangString;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QAssistantConfigProcessor", 2, "onParsed taskId = " + localQAssistantConfigContent.jdField_a_of_type_Int + " | content = " + localQAssistantConfigContent.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      paramArrayOfQConfItem = new StringBuilder();
+      paramArrayOfQConfItem.append("onParsed taskId = ");
+      paramArrayOfQConfItem.append(localQAssistantConfigContent.jdField_a_of_type_Int);
+      paramArrayOfQConfItem.append(" | content = ");
+      paramArrayOfQConfItem.append(localQAssistantConfigContent.jdField_a_of_type_JavaLangString);
+      QLog.d("QAssistantConfigProcessor", 2, paramArrayOfQConfItem.toString());
     }
     return localQAssistantConfigContent;
   }
   
   public void a(QAssistantConfigProcessor.QAssistantConfigContent paramQAssistantConfigContent)
   {
-    if ((paramQAssistantConfigContent != null) && (paramQAssistantConfigContent.jdField_a_of_type_JavaLangString != null)) {
+    if ((paramQAssistantConfigContent != null) && (paramQAssistantConfigContent.jdField_a_of_type_JavaLangString != null))
+    {
       try
       {
         String str = paramQAssistantConfigContent.jdField_a_of_type_JavaLangString;
         QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        if (QLog.isColorLevel()) {
-          QLog.d("QAssistantConfigProcessor", 2, "onUpdate content = " + paramQAssistantConfigContent.jdField_a_of_type_JavaLangString);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onUpdate content = ");
+          localStringBuilder.append(paramQAssistantConfigContent.jdField_a_of_type_JavaLangString);
+          QLog.d("QAssistantConfigProcessor", 2, localStringBuilder.toString());
         }
-        QAssistantConfigUtils.a(localQQAppInterface, str);
-        paramQAssistantConfigContent = (QAssistantManager)localQQAppInterface.getManager(QQManagerFactory.QASSISTANT_MANAGER);
-        if (paramQAssistantConfigContent != null) {
-          paramQAssistantConfigContent.a();
+        ((IVoiceAssistantMain)QRoute.api(IVoiceAssistantMain.class)).updateQAssistantConfig(localQQAppInterface, str);
+        paramQAssistantConfigContent = (IVoiceAssistantConf)localQQAppInterface.getRuntimeService(IVoiceAssistantConf.class, "");
+        if (paramQAssistantConfigContent == null) {
+          return;
         }
+        paramQAssistantConfigContent.loadConfigFromLocal();
         return;
       }
       catch (Exception paramQAssistantConfigContent)
@@ -63,7 +79,13 @@ public class QAssistantConfigProcessor
         return;
       }
     }
-    QLog.e("QAssistantConfigProcessor", 2, "onUpdate has empty content newConf is null = " + null);
+    else
+    {
+      paramQAssistantConfigContent = new StringBuilder();
+      paramQAssistantConfigContent.append("onUpdate has empty content newConf is null = ");
+      paramQAssistantConfigContent.append(null);
+      QLog.e("QAssistantConfigProcessor", 2, paramQAssistantConfigContent.toString());
+    }
   }
   
   public Class<QAssistantConfigProcessor.QAssistantConfigContent> clazz()
@@ -91,8 +113,12 @@ public class QAssistantConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QAssistantConfigProcessor", 2, "onReqFailed, code = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqFailed, code = ");
+      localStringBuilder.append(paramInt);
+      QLog.d("QAssistantConfigProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -103,7 +129,7 @@ public class QAssistantConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QAssistantConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -23,20 +23,21 @@ class SelectTroopMemberAdapter$TroopMemberFaceUtil
   
   private Bitmap a(String paramString, int paramInt1, byte paramByte, int paramInt2)
   {
-    Object localObject;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder == null) {
-      localObject = null;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    if (localObject == null) {
+      return null;
     }
-    Bitmap localBitmap;
-    do
-    {
+    localObject = ((IFaceDecoder)localObject).getBitmapFromCacheFrom(paramInt1, paramString, paramInt2);
+    if (localObject != null) {
       return localObject;
-      localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCacheFrom(paramInt1, paramString, paramInt2);
-      localObject = localBitmap;
-    } while (localBitmap != null);
-    QLog.w("SelectTroopMemberAdapter", 1, "requestDecodeFace, uin[" + paramString + "]");
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("requestDecodeFace, uin[");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("]");
+    QLog.w("SelectTroopMemberAdapter", 1, ((StringBuilder)localObject).toString());
     this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(paramString, paramInt1, true, paramByte);
-    return ImageUtil.c();
+    return ImageUtil.f();
   }
   
   public Bitmap a(SelectTroopMemberAdapter.TroopMemInfoData paramTroopMemInfoData)
@@ -48,26 +49,29 @@ class SelectTroopMemberAdapter$TroopMemberFaceUtil
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.destory();
-        this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = null;
+      if (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder == null) {
+        break label29;
       }
-      this.jdField_a_of_type_Boolean = true;
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.destory();
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = null;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = null;
-      }
+      label24:
+      label29:
+      break label24;
     }
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = null;
+    this.jdField_a_of_type_Boolean = true;
   }
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    QLog.w("SelectTroopMemberAdapter", 1, "onDecodeTaskCompleted, uin[" + paramString + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDecodeTaskCompleted, uin[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]");
+    QLog.w("SelectTroopMemberAdapter", 1, localStringBuilder.toString());
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
@@ -76,7 +80,7 @@ class SelectTroopMemberAdapter$TroopMemberFaceUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.selecttroopmember.SelectTroopMemberAdapter.TroopMemberFaceUtil
  * JD-Core Version:    0.7.0.1
  */

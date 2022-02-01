@@ -20,21 +20,22 @@ public class AudioFocusEvent
   
   public Boolean perform(BaseRuntime paramBaseRuntime)
   {
-    switch (this.what)
+    int i = this.what;
+    if (i != 1)
     {
+      if (i == 2) {
+        paramBaseRuntime.handleFocusLoss();
+      }
     }
-    for (;;)
-    {
-      return Boolean.valueOf(true);
+    else {
       paramBaseRuntime.handleFocusGain();
-      continue;
-      paramBaseRuntime.handleFocusLoss();
     }
+    return Boolean.valueOf(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.action.AudioFocusEvent
  * JD-Core Version:    0.7.0.1
  */

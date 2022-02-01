@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.content.Intent;
-import com.tencent.widget.XPanelContainer;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.troop.roamsetting.RoamSettingObserver;
+import java.util.Map;
 
 class BaseChatPie$22
-  implements Runnable
+  extends RoamSettingObserver
 {
-  BaseChatPie$22(BaseChatPie paramBaseChatPie, Intent paramIntent) {}
+  BaseChatPie$22(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, String paramString, Map<String, Integer> paramMap)
   {
-    if (this.this$0.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() != 1)
+    if (!TextUtils.isEmpty(paramString))
     {
-      this.this$0.ax();
-      this.this$0.jdField_a_of_type_MqqOsMqqHandler.postDelayed(this, 100L);
-      return;
+      if (!paramString.startsWith("message.group.policy.")) {
+        return;
+      }
+      BaseChatPie.a(this.a, paramBoolean);
     }
-    this.a.removeExtra("KEY_SHOULD_SHOW_KEYBOARD");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.22
  * JD-Core Version:    0.7.0.1
  */

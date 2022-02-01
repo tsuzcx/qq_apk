@@ -49,8 +49,12 @@ public class PersonalityLabelZan
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("uin:").append(this.uin).append("|");
-    localStringBuilder.append("nick:").append(this.nick).append("|");
+    localStringBuilder.append("uin:");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append("|");
+    localStringBuilder.append("nick:");
+    localStringBuilder.append(this.nick);
+    localStringBuilder.append("|");
     return localStringBuilder.toString();
   }
   
@@ -63,7 +67,7 @@ public class PersonalityLabelZan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelZan
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,7 @@ package org.light.device;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.ActivityManager.MemoryInfo;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -70,12 +71,12 @@ public class LightDeviceUtils
   public static final int NET_OTHER = 5;
   public static final int NET_WIFI = 1;
   public static final int RECORD_CPU_INTERVAL = 100;
-  private static final String TAG = LightDeviceUtils.class.getSimpleName();
-  private static float cpuRate;
+  private static final String TAG = "LightDeviceUtils";
+  private static float cpuRate = 0.0F;
   public static Handler handler;
   public static HandlerThread handlerThread;
   private static long lastCpuIdleTime = 0L;
-  private static long lastCpuTotalTime;
+  private static long lastCpuTotalTime = 0L;
   private static boolean mIsAllUnusable = false;
   private static boolean mIsOpenGlEsValid = true;
   public static int openGLESVersion = 65536;
@@ -83,18 +84,7 @@ public class LightDeviceUtils
   private static int sCpuCount;
   private static String sCpuName;
   private static long sMaxCpuFreq;
-  private static int sTotalMemory = 0;
-  
-  static
-  {
-    sMaxCpuFreq = 0L;
-    sCpuCount = 0;
-    handlerThread = null;
-    handler = null;
-    recordCpuCount = 0;
-    cpuRate = 0.0F;
-    lastCpuTotalTime = 0L;
-  }
+  private static int sTotalMemory;
   
   public static boolean canWriteFile(String paramString, boolean paramBoolean)
   {
@@ -115,7 +105,11 @@ public class LightDeviceUtils
         str = paramString.substring(0, i);
       }
     }
-    paramString = new File(str + File.separator + "test_temp.txt");
+    paramString = new StringBuilder();
+    paramString.append(str);
+    paramString.append(File.separator);
+    paramString.append("test_temp.txt");
+    paramString = new File(paramString.toString());
     try
     {
       if (!paramString.getParentFile().exists()) {
@@ -156,217 +150,234 @@ public class LightDeviceUtils
   private static String fetchExternalIpProviderHTML(String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: new 180	java/net/URL
-    //   6: dup
-    //   7: aload_0
-    //   8: invokespecial 181	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   11: invokevirtual 185	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   14: checkcast 187	java/net/HttpURLConnection
-    //   17: astore_0
-    //   18: iconst_1
-    //   19: invokestatic 191	java/net/HttpURLConnection:setFollowRedirects	(Z)V
-    //   22: aload_0
-    //   23: ldc 193
-    //   25: invokevirtual 196	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
-    //   28: aload_0
-    //   29: ldc 198
-    //   31: ldc 200
-    //   33: invokevirtual 204	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   36: aload_0
-    //   37: invokevirtual 208	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   40: astore_3
-    //   41: sipush 1024
-    //   44: newarray byte
-    //   46: astore 4
-    //   48: iconst_0
-    //   49: istore_1
-    //   50: iload_1
-    //   51: aload 4
-    //   53: arraylength
-    //   54: if_icmpge +27 -> 81
-    //   57: aload_3
-    //   58: aload 4
+    //   0: new 164	java/net/URL
+    //   3: dup
+    //   4: aload_0
+    //   5: invokespecial 165	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   8: invokevirtual 169	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   11: checkcast 171	java/net/HttpURLConnection
+    //   14: astore_0
+    //   15: iconst_1
+    //   16: invokestatic 175	java/net/HttpURLConnection:setFollowRedirects	(Z)V
+    //   19: aload_0
+    //   20: ldc 177
+    //   22: invokevirtual 180	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   25: aload_0
+    //   26: ldc 182
+    //   28: ldc 184
+    //   30: invokevirtual 188	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   33: aload_0
+    //   34: invokevirtual 192	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   37: astore 5
+    //   39: aload 5
+    //   41: astore_3
+    //   42: aload_0
+    //   43: astore 4
+    //   45: sipush 1024
+    //   48: newarray byte
+    //   50: astore 6
+    //   52: iconst_0
+    //   53: istore_1
+    //   54: aload 5
+    //   56: astore_3
+    //   57: aload_0
+    //   58: astore 4
     //   60: iload_1
-    //   61: aload 4
+    //   61: aload 6
     //   63: arraylength
-    //   64: iload_1
-    //   65: isub
-    //   66: invokevirtual 214	java/io/InputStream:read	([BII)I
-    //   69: istore_2
-    //   70: iload_2
-    //   71: iflt +10 -> 81
-    //   74: iload_1
-    //   75: iload_2
-    //   76: iadd
-    //   77: istore_1
-    //   78: goto -28 -> 50
-    //   81: new 115	java/lang/String
-    //   84: dup
-    //   85: aload 4
-    //   87: ldc 216
-    //   89: invokespecial 219	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   92: astore 4
-    //   94: aload_3
-    //   95: ifnull +7 -> 102
-    //   98: aload_3
-    //   99: invokevirtual 222	java/io/InputStream:close	()V
-    //   102: aload_0
-    //   103: ifnull +7 -> 110
-    //   106: aload_0
-    //   107: invokevirtual 225	java/net/HttpURLConnection:disconnect	()V
-    //   110: aload 4
-    //   112: areturn
-    //   113: astore_0
-    //   114: aload_0
-    //   115: invokevirtual 162	java/lang/Exception:printStackTrace	()V
-    //   118: goto -8 -> 110
-    //   121: astore 4
-    //   123: aconst_null
-    //   124: astore_0
-    //   125: aconst_null
-    //   126: astore_3
-    //   127: aload_0
-    //   128: astore 6
-    //   130: aload_3
-    //   131: astore 5
-    //   133: aload 4
-    //   135: invokevirtual 226	java/net/MalformedURLException:printStackTrace	()V
-    //   138: aload_3
-    //   139: ifnull +7 -> 146
-    //   142: aload_3
-    //   143: invokevirtual 222	java/io/InputStream:close	()V
-    //   146: aload_0
-    //   147: ifnull +7 -> 154
-    //   150: aload_0
-    //   151: invokevirtual 225	java/net/HttpURLConnection:disconnect	()V
-    //   154: aconst_null
-    //   155: areturn
-    //   156: astore_0
-    //   157: aload_0
-    //   158: invokevirtual 162	java/lang/Exception:printStackTrace	()V
-    //   161: goto -7 -> 154
-    //   164: astore 4
-    //   166: aconst_null
-    //   167: astore_0
-    //   168: aconst_null
-    //   169: astore_3
-    //   170: aload_0
-    //   171: astore 6
-    //   173: aload_3
-    //   174: astore 5
-    //   176: aload 4
-    //   178: invokevirtual 227	java/io/IOException:printStackTrace	()V
-    //   181: aload_3
-    //   182: ifnull +7 -> 189
-    //   185: aload_3
-    //   186: invokevirtual 222	java/io/InputStream:close	()V
-    //   189: aload_0
-    //   190: ifnull -36 -> 154
-    //   193: aload_0
-    //   194: invokevirtual 225	java/net/HttpURLConnection:disconnect	()V
-    //   197: goto -43 -> 154
-    //   200: astore_0
+    //   64: if_icmpge +34 -> 98
+    //   67: aload 5
+    //   69: astore_3
+    //   70: aload_0
+    //   71: astore 4
+    //   73: aload 5
+    //   75: aload 6
+    //   77: iload_1
+    //   78: aload 6
+    //   80: arraylength
+    //   81: iload_1
+    //   82: isub
+    //   83: invokevirtual 198	java/io/InputStream:read	([BII)I
+    //   86: istore_2
+    //   87: iload_2
+    //   88: iflt +10 -> 98
+    //   91: iload_1
+    //   92: iload_2
+    //   93: iadd
+    //   94: istore_1
+    //   95: goto -41 -> 54
+    //   98: aload 5
+    //   100: astore_3
+    //   101: aload_0
+    //   102: astore 4
+    //   104: new 99	java/lang/String
+    //   107: dup
+    //   108: aload 6
+    //   110: ldc 200
+    //   112: invokespecial 203	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   115: astore 6
+    //   117: aload 5
+    //   119: ifnull +11 -> 130
+    //   122: aload 5
+    //   124: invokevirtual 206	java/io/InputStream:close	()V
+    //   127: goto +3 -> 130
+    //   130: aload_0
+    //   131: ifnull +14 -> 145
+    //   134: aload_0
+    //   135: invokevirtual 209	java/net/HttpURLConnection:disconnect	()V
+    //   138: aload 6
+    //   140: areturn
+    //   141: aload_0
+    //   142: invokevirtual 146	java/lang/Exception:printStackTrace	()V
+    //   145: aload 6
+    //   147: areturn
+    //   148: astore 6
+    //   150: goto +48 -> 198
+    //   153: astore 6
+    //   155: goto +81 -> 236
+    //   158: astore_3
+    //   159: aconst_null
+    //   160: astore 4
+    //   162: goto +125 -> 287
+    //   165: astore 6
+    //   167: aconst_null
+    //   168: astore 5
+    //   170: goto +28 -> 198
+    //   173: astore 6
+    //   175: aconst_null
+    //   176: astore 5
+    //   178: goto +58 -> 236
+    //   181: astore_3
+    //   182: aconst_null
+    //   183: astore 4
+    //   185: aload 4
+    //   187: astore_0
+    //   188: goto +99 -> 287
+    //   191: astore 6
+    //   193: aconst_null
+    //   194: astore_0
+    //   195: aload_0
+    //   196: astore 5
+    //   198: aload 5
+    //   200: astore_3
     //   201: aload_0
-    //   202: invokevirtual 162	java/lang/Exception:printStackTrace	()V
-    //   205: goto -51 -> 154
-    //   208: astore_0
-    //   209: aconst_null
-    //   210: astore_3
-    //   211: aload_3
-    //   212: ifnull +7 -> 219
-    //   215: aload_3
-    //   216: invokevirtual 222	java/io/InputStream:close	()V
-    //   219: aload 4
-    //   221: ifnull +8 -> 229
-    //   224: aload 4
-    //   226: invokevirtual 225	java/net/HttpURLConnection:disconnect	()V
-    //   229: aload_0
-    //   230: athrow
-    //   231: astore_3
-    //   232: aload_3
-    //   233: invokevirtual 162	java/lang/Exception:printStackTrace	()V
-    //   236: goto -7 -> 229
-    //   239: astore 5
-    //   241: aconst_null
-    //   242: astore_3
-    //   243: aload_0
-    //   244: astore 4
-    //   246: aload 5
-    //   248: astore_0
-    //   249: goto -38 -> 211
-    //   252: astore 5
-    //   254: aload_0
-    //   255: astore 4
-    //   257: aload 5
-    //   259: astore_0
-    //   260: goto -49 -> 211
-    //   263: astore_0
-    //   264: aload 6
-    //   266: astore 4
-    //   268: aload 5
-    //   270: astore_3
-    //   271: goto -60 -> 211
-    //   274: astore 4
-    //   276: aconst_null
-    //   277: astore_3
-    //   278: goto -108 -> 170
-    //   281: astore 4
-    //   283: goto -113 -> 170
-    //   286: astore 4
-    //   288: aconst_null
-    //   289: astore_3
-    //   290: goto -163 -> 127
-    //   293: astore 4
-    //   295: goto -168 -> 127
+    //   202: astore 4
+    //   204: aload 6
+    //   206: invokevirtual 210	java/io/IOException:printStackTrace	()V
+    //   209: aload 5
+    //   211: ifnull +8 -> 219
+    //   214: aload 5
+    //   216: invokevirtual 206	java/io/InputStream:close	()V
+    //   219: aload_0
+    //   220: ifnull +54 -> 274
+    //   223: aload_0
+    //   224: invokevirtual 209	java/net/HttpURLConnection:disconnect	()V
+    //   227: aconst_null
+    //   228: areturn
+    //   229: astore 6
+    //   231: aconst_null
+    //   232: astore_0
+    //   233: aload_0
+    //   234: astore 5
+    //   236: aload 5
+    //   238: astore_3
+    //   239: aload_0
+    //   240: astore 4
+    //   242: aload 6
+    //   244: invokevirtual 211	java/net/MalformedURLException:printStackTrace	()V
+    //   247: aload 5
+    //   249: ifnull +11 -> 260
+    //   252: aload 5
+    //   254: invokevirtual 206	java/io/InputStream:close	()V
+    //   257: goto +3 -> 260
+    //   260: aload_0
+    //   261: ifnull +13 -> 274
+    //   264: aload_0
+    //   265: invokevirtual 209	java/net/HttpURLConnection:disconnect	()V
+    //   268: aconst_null
+    //   269: areturn
+    //   270: aload_0
+    //   271: invokevirtual 146	java/lang/Exception:printStackTrace	()V
+    //   274: aconst_null
+    //   275: areturn
+    //   276: astore 5
+    //   278: aload 4
+    //   280: astore_0
+    //   281: aload_3
+    //   282: astore 4
+    //   284: aload 5
+    //   286: astore_3
+    //   287: aload 4
+    //   289: ifnull +11 -> 300
+    //   292: aload 4
+    //   294: invokevirtual 206	java/io/InputStream:close	()V
+    //   297: goto +3 -> 300
+    //   300: aload_0
+    //   301: ifnull +14 -> 315
+    //   304: aload_0
+    //   305: invokevirtual 209	java/net/HttpURLConnection:disconnect	()V
+    //   308: goto +7 -> 315
+    //   311: aload_0
+    //   312: invokevirtual 146	java/lang/Exception:printStackTrace	()V
+    //   315: goto +5 -> 320
+    //   318: aload_3
+    //   319: athrow
+    //   320: goto -2 -> 318
+    //   323: astore_0
+    //   324: goto -183 -> 141
+    //   327: astore_0
+    //   328: goto -58 -> 270
+    //   331: astore_0
+    //   332: goto -21 -> 311
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	298	0	paramString	String
-    //   49	29	1	i	int
-    //   69	8	2	j	int
-    //   40	176	3	localInputStream1	java.io.InputStream
-    //   231	2	3	localException	Exception
-    //   242	48	3	localObject1	Object
-    //   1	110	4	localObject2	Object
-    //   121	13	4	localMalformedURLException1	java.net.MalformedURLException
-    //   164	61	4	localIOException1	IOException
-    //   244	23	4	localObject3	Object
-    //   274	1	4	localIOException2	IOException
-    //   281	1	4	localIOException3	IOException
-    //   286	1	4	localMalformedURLException2	java.net.MalformedURLException
-    //   293	1	4	localMalformedURLException3	java.net.MalformedURLException
-    //   131	44	5	localInputStream2	java.io.InputStream
-    //   239	8	5	localObject4	Object
-    //   252	17	5	localObject5	Object
-    //   128	137	6	str	String
+    //   0	335	0	paramString	String
+    //   53	42	1	i	int
+    //   86	8	2	j	int
+    //   41	60	3	localObject1	Object
+    //   158	1	3	localObject2	Object
+    //   181	1	3	localObject3	Object
+    //   200	119	3	localObject4	Object
+    //   43	250	4	localObject5	Object
+    //   37	216	5	localObject6	Object
+    //   276	9	5	localObject7	Object
+    //   50	96	6	localObject8	Object
+    //   148	1	6	localIOException1	IOException
+    //   153	1	6	localMalformedURLException1	java.net.MalformedURLException
+    //   165	1	6	localIOException2	IOException
+    //   173	1	6	localMalformedURLException2	java.net.MalformedURLException
+    //   191	14	6	localIOException3	IOException
+    //   229	14	6	localMalformedURLException3	java.net.MalformedURLException
     // Exception table:
     //   from	to	target	type
-    //   98	102	113	java/lang/Exception
-    //   106	110	113	java/lang/Exception
-    //   3	18	121	java/net/MalformedURLException
-    //   142	146	156	java/lang/Exception
-    //   150	154	156	java/lang/Exception
-    //   3	18	164	java/io/IOException
-    //   185	189	200	java/lang/Exception
-    //   193	197	200	java/lang/Exception
-    //   3	18	208	finally
-    //   215	219	231	java/lang/Exception
-    //   224	229	231	java/lang/Exception
-    //   18	41	239	finally
-    //   41	48	252	finally
-    //   50	70	252	finally
-    //   81	94	252	finally
-    //   133	138	263	finally
-    //   176	181	263	finally
-    //   18	41	274	java/io/IOException
-    //   41	48	281	java/io/IOException
-    //   50	70	281	java/io/IOException
-    //   81	94	281	java/io/IOException
-    //   18	41	286	java/net/MalformedURLException
-    //   41	48	293	java/net/MalformedURLException
-    //   50	70	293	java/net/MalformedURLException
-    //   81	94	293	java/net/MalformedURLException
+    //   45	52	148	java/io/IOException
+    //   60	67	148	java/io/IOException
+    //   73	87	148	java/io/IOException
+    //   104	117	148	java/io/IOException
+    //   45	52	153	java/net/MalformedURLException
+    //   60	67	153	java/net/MalformedURLException
+    //   73	87	153	java/net/MalformedURLException
+    //   104	117	153	java/net/MalformedURLException
+    //   15	39	158	finally
+    //   15	39	165	java/io/IOException
+    //   15	39	173	java/net/MalformedURLException
+    //   0	15	181	finally
+    //   0	15	191	java/io/IOException
+    //   0	15	229	java/net/MalformedURLException
+    //   45	52	276	finally
+    //   60	67	276	finally
+    //   73	87	276	finally
+    //   104	117	276	finally
+    //   204	209	276	finally
+    //   242	247	276	finally
+    //   122	127	323	java/lang/Exception
+    //   134	138	323	java/lang/Exception
+    //   214	219	327	java/lang/Exception
+    //   223	227	327	java/lang/Exception
+    //   252	257	327	java/lang/Exception
+    //   264	268	327	java/lang/Exception
+    //   292	297	331	java/lang/Exception
+    //   304	308	331	java/lang/Exception
   }
   
   @RequiresApi(api=19)
@@ -374,12 +385,7 @@ public class LightDeviceUtils
   {
     Debug.MemoryInfo localMemoryInfo = new Debug.MemoryInfo();
     Debug.getMemoryInfo(localMemoryInfo);
-    int i = localMemoryInfo.getTotalPrivateClean();
-    int j = localMemoryInfo.getTotalPrivateDirty();
-    int k = localMemoryInfo.getTotalPss();
-    int m = localMemoryInfo.getTotalSharedClean();
-    int n = localMemoryInfo.getTotalSharedDirty();
-    return localMemoryInfo.getTotalSwappablePss() + (i + j + k + m + n);
+    return localMemoryInfo.getTotalPrivateClean() + localMemoryInfo.getTotalPrivateDirty() + localMemoryInfo.getTotalPss() + localMemoryInfo.getTotalSharedClean() + localMemoryInfo.getTotalSharedDirty() + localMemoryInfo.getTotalSwappablePss();
   }
   
   @TargetApi(18)
@@ -404,195 +410,216 @@ public class LightDeviceUtils
   public static String getCpuName()
   {
     // Byte code:
-    //   0: new 298	java/io/BufferedReader
+    //   0: new 282	java/io/BufferedReader
     //   3: dup
-    //   4: new 300	java/io/FileReader
+    //   4: new 284	java/io/FileReader
     //   7: dup
-    //   8: ldc_w 302
-    //   11: invokespecial 303	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   14: invokespecial 306	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   8: ldc_w 286
+    //   11: invokespecial 287	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   14: invokespecial 290	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   17: astore_1
     //   18: aload_1
     //   19: astore_0
     //   20: aload_1
-    //   21: invokevirtual 309	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   21: invokevirtual 293	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   24: astore_2
     //   25: aload_2
-    //   26: ifnull +106 -> 132
+    //   26: ifnull +124 -> 150
     //   29: aload_1
     //   30: astore_0
     //   31: aload_2
-    //   32: ldc_w 311
+    //   32: ldc_w 295
     //   35: iconst_2
-    //   36: invokevirtual 315	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
+    //   36: invokevirtual 299	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
     //   39: astore_3
     //   40: aload_1
     //   41: astore_0
     //   42: aload_3
     //   43: arraylength
     //   44: iconst_1
-    //   45: if_icmple +77 -> 122
+    //   45: if_icmple +95 -> 140
     //   48: aload_1
     //   49: astore_0
     //   50: aload_3
     //   51: iconst_0
     //   52: aaload
-    //   53: invokevirtual 318	java/lang/String:trim	()Ljava/lang/String;
-    //   56: invokevirtual 321	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   59: ldc_w 323
-    //   62: invokevirtual 326	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   65: ifeq +57 -> 122
+    //   53: invokevirtual 302	java/lang/String:trim	()Ljava/lang/String;
+    //   56: invokevirtual 305	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   59: ldc_w 307
+    //   62: invokevirtual 310	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   65: ifeq +75 -> 140
     //   68: aload_1
     //   69: astore_0
-    //   70: getstatic 58	org/light/device/LightDeviceUtils:TAG	Ljava/lang/String;
-    //   73: new 129	java/lang/StringBuilder
-    //   76: dup
-    //   77: invokespecial 130	java/lang/StringBuilder:<init>	()V
-    //   80: ldc_w 328
-    //   83: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   86: aload_2
-    //   87: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   90: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   93: invokestatic 333	org/light/utils/LightLogUtil:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   96: aload_1
-    //   97: astore_0
-    //   98: aload_3
-    //   99: iconst_1
-    //   100: aaload
-    //   101: invokevirtual 318	java/lang/String:trim	()Ljava/lang/String;
-    //   104: astore_2
-    //   105: aload_1
-    //   106: ifnull +7 -> 113
-    //   109: aload_1
-    //   110: invokevirtual 334	java/io/BufferedReader:close	()V
-    //   113: aload_2
-    //   114: areturn
-    //   115: astore_0
-    //   116: aload_0
-    //   117: invokevirtual 227	java/io/IOException:printStackTrace	()V
-    //   120: aload_2
-    //   121: areturn
-    //   122: aload_1
-    //   123: astore_0
-    //   124: aload_1
-    //   125: invokevirtual 309	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   128: astore_2
-    //   129: goto -104 -> 25
-    //   132: aload_1
-    //   133: ifnull +7 -> 140
-    //   136: aload_1
-    //   137: invokevirtual 334	java/io/BufferedReader:close	()V
-    //   140: ldc_w 288
-    //   143: areturn
-    //   144: astore_0
-    //   145: aload_0
-    //   146: invokevirtual 227	java/io/IOException:printStackTrace	()V
-    //   149: goto -9 -> 140
-    //   152: astore_2
-    //   153: aconst_null
-    //   154: astore_1
-    //   155: aload_1
-    //   156: astore_0
-    //   157: aload_2
-    //   158: invokevirtual 335	java/io/FileNotFoundException:printStackTrace	()V
-    //   161: aload_1
-    //   162: ifnull -22 -> 140
-    //   165: aload_1
-    //   166: invokevirtual 334	java/io/BufferedReader:close	()V
-    //   169: goto -29 -> 140
-    //   172: astore_0
-    //   173: aload_0
-    //   174: invokevirtual 227	java/io/IOException:printStackTrace	()V
-    //   177: goto -37 -> 140
-    //   180: astore_2
-    //   181: aconst_null
-    //   182: astore_1
-    //   183: aload_1
-    //   184: astore_0
-    //   185: aload_2
-    //   186: invokevirtual 227	java/io/IOException:printStackTrace	()V
-    //   189: aload_1
-    //   190: ifnull -50 -> 140
-    //   193: aload_1
-    //   194: invokevirtual 334	java/io/BufferedReader:close	()V
-    //   197: goto -57 -> 140
-    //   200: astore_0
-    //   201: aload_0
-    //   202: invokevirtual 227	java/io/IOException:printStackTrace	()V
-    //   205: goto -65 -> 140
-    //   208: astore_1
-    //   209: aconst_null
-    //   210: astore_0
-    //   211: aload_0
-    //   212: ifnull +7 -> 219
-    //   215: aload_0
-    //   216: invokevirtual 334	java/io/BufferedReader:close	()V
-    //   219: aload_1
-    //   220: athrow
-    //   221: astore_0
-    //   222: aload_0
-    //   223: invokevirtual 227	java/io/IOException:printStackTrace	()V
-    //   226: goto -7 -> 219
-    //   229: astore_1
-    //   230: goto -19 -> 211
-    //   233: astore_2
-    //   234: goto -51 -> 183
-    //   237: astore_2
-    //   238: goto -83 -> 155
+    //   70: getstatic 64	org/light/device/LightDeviceUtils:TAG	Ljava/lang/String;
+    //   73: astore 4
+    //   75: aload_1
+    //   76: astore_0
+    //   77: new 113	java/lang/StringBuilder
+    //   80: dup
+    //   81: invokespecial 114	java/lang/StringBuilder:<init>	()V
+    //   84: astore 5
+    //   86: aload_1
+    //   87: astore_0
+    //   88: aload 5
+    //   90: ldc_w 312
+    //   93: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   96: pop
+    //   97: aload_1
+    //   98: astore_0
+    //   99: aload 5
+    //   101: aload_2
+    //   102: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   105: pop
+    //   106: aload_1
+    //   107: astore_0
+    //   108: aload 4
+    //   110: aload 5
+    //   112: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   115: invokestatic 317	org/light/utils/LightLogUtil:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   118: aload_1
+    //   119: astore_0
+    //   120: aload_3
+    //   121: iconst_1
+    //   122: aaload
+    //   123: invokevirtual 302	java/lang/String:trim	()Ljava/lang/String;
+    //   126: astore_2
+    //   127: aload_1
+    //   128: invokevirtual 318	java/io/BufferedReader:close	()V
+    //   131: aload_2
+    //   132: areturn
+    //   133: astore_0
+    //   134: aload_0
+    //   135: invokevirtual 210	java/io/IOException:printStackTrace	()V
+    //   138: aload_2
+    //   139: areturn
+    //   140: aload_1
+    //   141: astore_0
+    //   142: aload_1
+    //   143: invokevirtual 293	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   146: astore_2
+    //   147: goto -122 -> 25
+    //   150: aload_1
+    //   151: invokevirtual 318	java/io/BufferedReader:close	()V
+    //   154: goto +62 -> 216
+    //   157: astore_2
+    //   158: goto +16 -> 174
+    //   161: astore_2
+    //   162: goto +32 -> 194
+    //   165: astore_0
+    //   166: aconst_null
+    //   167: astore_1
+    //   168: goto +57 -> 225
+    //   171: astore_2
+    //   172: aconst_null
+    //   173: astore_1
+    //   174: aload_1
+    //   175: astore_0
+    //   176: aload_2
+    //   177: invokevirtual 210	java/io/IOException:printStackTrace	()V
+    //   180: aload_1
+    //   181: ifnull +35 -> 216
+    //   184: aload_1
+    //   185: invokevirtual 318	java/io/BufferedReader:close	()V
+    //   188: goto +28 -> 216
+    //   191: astore_2
+    //   192: aconst_null
+    //   193: astore_1
+    //   194: aload_1
+    //   195: astore_0
+    //   196: aload_2
+    //   197: invokevirtual 319	java/io/FileNotFoundException:printStackTrace	()V
+    //   200: aload_1
+    //   201: ifnull +15 -> 216
+    //   204: aload_1
+    //   205: invokevirtual 318	java/io/BufferedReader:close	()V
+    //   208: goto +8 -> 216
+    //   211: astore_0
+    //   212: aload_0
+    //   213: invokevirtual 210	java/io/IOException:printStackTrace	()V
+    //   216: ldc_w 272
+    //   219: areturn
+    //   220: astore_2
+    //   221: aload_0
+    //   222: astore_1
+    //   223: aload_2
+    //   224: astore_0
+    //   225: aload_1
+    //   226: ifnull +15 -> 241
+    //   229: aload_1
+    //   230: invokevirtual 318	java/io/BufferedReader:close	()V
+    //   233: goto +8 -> 241
+    //   236: astore_1
+    //   237: aload_1
+    //   238: invokevirtual 210	java/io/IOException:printStackTrace	()V
+    //   241: goto +5 -> 246
+    //   244: aload_0
+    //   245: athrow
+    //   246: goto -2 -> 244
     // Local variable table:
     //   start	length	slot	name	signature
-    //   19	79	0	localBufferedReader1	java.io.BufferedReader
-    //   115	2	0	localIOException1	IOException
-    //   123	1	0	localBufferedReader2	java.io.BufferedReader
-    //   144	2	0	localIOException2	IOException
-    //   156	1	0	localBufferedReader3	java.io.BufferedReader
-    //   172	2	0	localIOException3	IOException
-    //   184	1	0	localBufferedReader4	java.io.BufferedReader
-    //   200	2	0	localIOException4	IOException
-    //   210	6	0	localObject1	Object
-    //   221	2	0	localIOException5	IOException
-    //   17	177	1	localBufferedReader5	java.io.BufferedReader
-    //   208	12	1	localObject2	Object
-    //   229	1	1	localObject3	Object
-    //   24	105	2	str	String
-    //   152	6	2	localFileNotFoundException1	java.io.FileNotFoundException
-    //   180	6	2	localIOException6	IOException
-    //   233	1	2	localIOException7	IOException
-    //   237	1	2	localFileNotFoundException2	java.io.FileNotFoundException
-    //   39	60	3	arrayOfString	String[]
+    //   19	101	0	localObject1	Object
+    //   133	2	0	localIOException1	IOException
+    //   141	1	0	localObject2	Object
+    //   165	1	0	localObject3	Object
+    //   175	21	0	localObject4	Object
+    //   211	11	0	localIOException2	IOException
+    //   224	21	0	localObject5	Object
+    //   17	213	1	localObject6	Object
+    //   236	2	1	localIOException3	IOException
+    //   24	123	2	str1	String
+    //   157	1	2	localIOException4	IOException
+    //   161	1	2	localFileNotFoundException1	java.io.FileNotFoundException
+    //   171	6	2	localIOException5	IOException
+    //   191	6	2	localFileNotFoundException2	java.io.FileNotFoundException
+    //   220	4	2	localObject7	Object
+    //   39	82	3	arrayOfString	String[]
+    //   73	36	4	str2	String
+    //   84	27	5	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   109	113	115	java/io/IOException
-    //   136	140	144	java/io/IOException
-    //   0	18	152	java/io/FileNotFoundException
-    //   165	169	172	java/io/IOException
-    //   0	18	180	java/io/IOException
-    //   193	197	200	java/io/IOException
-    //   0	18	208	finally
-    //   215	219	221	java/io/IOException
-    //   20	25	229	finally
-    //   31	40	229	finally
-    //   42	48	229	finally
-    //   50	68	229	finally
-    //   70	96	229	finally
-    //   98	105	229	finally
-    //   124	129	229	finally
-    //   157	161	229	finally
-    //   185	189	229	finally
-    //   20	25	233	java/io/IOException
-    //   31	40	233	java/io/IOException
-    //   42	48	233	java/io/IOException
-    //   50	68	233	java/io/IOException
-    //   70	96	233	java/io/IOException
-    //   98	105	233	java/io/IOException
-    //   124	129	233	java/io/IOException
-    //   20	25	237	java/io/FileNotFoundException
-    //   31	40	237	java/io/FileNotFoundException
-    //   42	48	237	java/io/FileNotFoundException
-    //   50	68	237	java/io/FileNotFoundException
-    //   70	96	237	java/io/FileNotFoundException
-    //   98	105	237	java/io/FileNotFoundException
-    //   124	129	237	java/io/FileNotFoundException
+    //   127	131	133	java/io/IOException
+    //   20	25	157	java/io/IOException
+    //   31	40	157	java/io/IOException
+    //   42	48	157	java/io/IOException
+    //   50	68	157	java/io/IOException
+    //   70	75	157	java/io/IOException
+    //   77	86	157	java/io/IOException
+    //   88	97	157	java/io/IOException
+    //   99	106	157	java/io/IOException
+    //   108	118	157	java/io/IOException
+    //   120	127	157	java/io/IOException
+    //   142	147	157	java/io/IOException
+    //   20	25	161	java/io/FileNotFoundException
+    //   31	40	161	java/io/FileNotFoundException
+    //   42	48	161	java/io/FileNotFoundException
+    //   50	68	161	java/io/FileNotFoundException
+    //   70	75	161	java/io/FileNotFoundException
+    //   77	86	161	java/io/FileNotFoundException
+    //   88	97	161	java/io/FileNotFoundException
+    //   99	106	161	java/io/FileNotFoundException
+    //   108	118	161	java/io/FileNotFoundException
+    //   120	127	161	java/io/FileNotFoundException
+    //   142	147	161	java/io/FileNotFoundException
+    //   0	18	165	finally
+    //   0	18	171	java/io/IOException
+    //   0	18	191	java/io/FileNotFoundException
+    //   150	154	211	java/io/IOException
+    //   184	188	211	java/io/IOException
+    //   204	208	211	java/io/IOException
+    //   20	25	220	finally
+    //   31	40	220	finally
+    //   42	48	220	finally
+    //   50	68	220	finally
+    //   70	75	220	finally
+    //   77	86	220	finally
+    //   88	97	220	finally
+    //   99	106	220	finally
+    //   108	118	220	finally
+    //   120	127	220	finally
+    //   142	147	220	finally
+    //   176	180	220	finally
+    //   196	200	220	finally
+    //   229	233	236	java/io/IOException
   }
   
   public static String getCpuNameOnce()
@@ -624,28 +651,35 @@ public class LightDeviceUtils
   
   public static File getExternalFilesDir(Context paramContext)
   {
-    File localFile = paramContext.getExternalFilesDir(null);
-    Object localObject = localFile;
-    if (localFile == null)
+    Object localObject2 = paramContext.getExternalFilesDir(null);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      localObject = "/Android/data/" + paramContext.getPackageName() + "/files/";
-      localObject = new File(paramContext.getExternalFilesDir(null) + (String)localObject);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("/Android/data/");
+      ((StringBuilder)localObject1).append(paramContext.getPackageName());
+      ((StringBuilder)localObject1).append("/files/");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramContext.getExternalFilesDir(null));
+      ((StringBuilder)localObject2).append((String)localObject1);
+      localObject1 = new File(((StringBuilder)localObject2).toString());
     }
-    return localObject;
+    return localObject1;
   }
   
   public static File getExternalFilesDir(Context paramContext, String paramString)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (isExternalStorageAvailable(paramContext))
-    {
-      localObject1 = localObject2;
-      if (isExternalStorageSpaceEnough(paramContext, 52428800L)) {
-        localObject1 = getExternalFilesDir(paramContext).getPath();
-      }
+    if ((isExternalStorageAvailable(paramContext)) && (isExternalStorageSpaceEnough(paramContext, 52428800L))) {
+      paramContext = getExternalFilesDir(paramContext).getPath();
+    } else {
+      paramContext = null;
     }
-    paramContext = new File((String)localObject1 + File.separator + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
+    paramContext = new File(localStringBuilder.toString());
     try
     {
       if ((paramContext.exists()) && (paramContext.isFile())) {
@@ -679,7 +713,14 @@ public class LightDeviceUtils
   public static long getHeapAllocatedSizeInKb()
   {
     long l = getRuntimeTotalMemory(1) - getRuntimeFreeMemory(1);
-    LightLogUtil.v(TAG, "getHeapAllocatedSizeInKb(), heapAllocated = " + (float)l / 1024.0F + "(Mb), " + l + "(Kb)");
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getHeapAllocatedSizeInKb(), heapAllocated = ");
+    localStringBuilder.append((float)l / 1024.0F);
+    localStringBuilder.append("(Mb), ");
+    localStringBuilder.append(l);
+    localStringBuilder.append("(Kb)");
+    LightLogUtil.v(str, localStringBuilder.toString());
     return l;
   }
   
@@ -689,7 +730,11 @@ public class LightDeviceUtils
     try
     {
       paramContext = (ActivityManager)paramContext.getSystemService("activity");
-      LightLogUtil.v(TAG, "getHeapMaxSizeInKb(), heap size(Mb) = " + paramContext.getMemoryClass());
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getHeapMaxSizeInKb(), heap size(Mb) = ");
+      localStringBuilder.append(paramContext.getMemoryClass());
+      LightLogUtil.v(str, localStringBuilder.toString());
       int i = paramContext.getMemoryClass();
       return i * 1024;
     }
@@ -706,7 +751,11 @@ public class LightDeviceUtils
     try
     {
       paramContext = (ActivityManager)paramContext.getSystemService("activity");
-      LightLogUtil.v(TAG, "getHeapMaxSizeInMb(), heap size(Mb) = " + paramContext.getMemoryClass());
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getHeapMaxSizeInMb(), heap size(Mb) = ");
+      localStringBuilder.append(paramContext.getMemoryClass());
+      LightLogUtil.v(str, localStringBuilder.toString());
       int i = paramContext.getMemoryClass();
       return i;
     }
@@ -720,7 +769,14 @@ public class LightDeviceUtils
   public static long getHeapRemainSizeInKb(Context paramContext)
   {
     long l = getHeapMaxSizeInKb(paramContext) - getHeapAllocatedSizeInKb();
-    LightLogUtil.v(TAG, "getHeapRemainSizeInKb(), remainSize = " + (float)l / 1024.0F + "(Mb), " + l + "(Kb)");
+    paramContext = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getHeapRemainSizeInKb(), remainSize = ");
+    localStringBuilder.append((float)l / 1024.0F);
+    localStringBuilder.append("(Mb), ");
+    localStringBuilder.append(l);
+    localStringBuilder.append("(Kb)");
+    LightLogUtil.v(paramContext, localStringBuilder.toString());
     return l;
   }
   
@@ -730,7 +786,11 @@ public class LightDeviceUtils
     try
     {
       paramContext = (ActivityManager)paramContext.getSystemService("activity");
-      LightLogUtil.v(TAG, "getLargeHeapMaxSizeInKb(), heap size(Mb) = " + paramContext.getLargeMemoryClass());
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getLargeHeapMaxSizeInKb(), heap size(Mb) = ");
+      localStringBuilder.append(paramContext.getLargeMemoryClass());
+      LightLogUtil.v(str, localStringBuilder.toString());
       int i = paramContext.getLargeMemoryClass();
       return i * 1024;
     }
@@ -744,7 +804,14 @@ public class LightDeviceUtils
   public static long getLargeHeapRemainSizeInKb(Context paramContext)
   {
     long l = getLargeHeapMaxSizeInKb(paramContext) - getHeapAllocatedSizeInKb();
-    LightLogUtil.v(TAG, "getLargeHeapRemainSizeInKb(), remainSize = " + (float)l / 1024.0F + "(Mb), " + l + "(Kb)");
+    paramContext = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getLargeHeapRemainSizeInKb(), remainSize = ");
+    localStringBuilder.append((float)l / 1024.0F);
+    localStringBuilder.append("(Mb), ");
+    localStringBuilder.append(l);
+    localStringBuilder.append("(Kb)");
+    LightLogUtil.v(paramContext, localStringBuilder.toString());
     return l;
   }
   
@@ -793,233 +860,247 @@ public class LightDeviceUtils
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore_2
+    //   1: astore_3
     //   2: aconst_null
-    //   3: astore_3
-    //   4: aconst_null
-    //   5: astore_1
-    //   6: invokestatic 502	java/net/NetworkInterface:getNetworkInterfaces	()Ljava/util/Enumeration;
-    //   9: astore 6
-    //   11: iconst_0
-    //   12: istore_0
-    //   13: aconst_null
-    //   14: astore_2
-    //   15: aload 6
-    //   17: ifnull +200 -> 217
-    //   20: aload_2
-    //   21: astore 4
-    //   23: aload_2
-    //   24: astore_3
-    //   25: aload 6
-    //   27: invokeinterface 507 1 0
-    //   32: ifeq +185 -> 217
-    //   35: iload_0
-    //   36: ifne +181 -> 217
-    //   39: aload_2
-    //   40: astore 4
-    //   42: aload_2
-    //   43: astore_3
-    //   44: aload 6
-    //   46: invokeinterface 510 1 0
-    //   51: checkcast 498	java/net/NetworkInterface
-    //   54: invokevirtual 513	java/net/NetworkInterface:getInetAddresses	()Ljava/util/Enumeration;
-    //   57: astore 5
-    //   59: aload_2
-    //   60: astore 4
-    //   62: aload_2
-    //   63: astore_3
-    //   64: aload 5
-    //   66: invokeinterface 507 1 0
-    //   71: ifeq +254 -> 325
-    //   74: aload_2
-    //   75: astore 4
-    //   77: aload_2
-    //   78: astore_3
-    //   79: aload 5
-    //   81: invokeinterface 510 1 0
-    //   86: checkcast 515	java/net/InetAddress
-    //   89: astore 7
-    //   91: aload_2
-    //   92: astore 4
-    //   94: aload_2
-    //   95: astore_3
-    //   96: aload 7
-    //   98: invokevirtual 538	java/net/InetAddress:isSiteLocalAddress	()Z
-    //   101: ifne +56 -> 157
-    //   104: aload_2
-    //   105: astore 4
-    //   107: aload_2
-    //   108: astore_3
-    //   109: aload 7
-    //   111: invokevirtual 518	java/net/InetAddress:isLoopbackAddress	()Z
-    //   114: ifne +43 -> 157
-    //   117: aload_2
-    //   118: astore 4
-    //   120: aload_2
-    //   121: astore_3
-    //   122: aload 7
-    //   124: invokevirtual 523	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
-    //   127: ldc_w 540
-    //   130: invokevirtual 543	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   133: iconst_m1
-    //   134: if_icmpne +23 -> 157
-    //   137: aload_2
-    //   138: astore 4
-    //   140: aload_2
-    //   141: astore_3
-    //   142: aload 7
-    //   144: invokevirtual 523	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
-    //   147: astore 5
-    //   149: iconst_1
-    //   150: istore_0
-    //   151: aload 5
-    //   153: astore_1
-    //   154: goto +171 -> 325
-    //   157: aload_2
-    //   158: astore 4
-    //   160: aload_2
-    //   161: astore_3
-    //   162: aload 7
-    //   164: invokevirtual 538	java/net/InetAddress:isSiteLocalAddress	()Z
-    //   167: ifeq -108 -> 59
-    //   170: aload_2
-    //   171: astore 4
-    //   173: aload_2
-    //   174: astore_3
-    //   175: aload 7
-    //   177: invokevirtual 518	java/net/InetAddress:isLoopbackAddress	()Z
-    //   180: ifne -121 -> 59
-    //   183: aload_2
-    //   184: astore 4
-    //   186: aload_2
-    //   187: astore_3
-    //   188: aload 7
-    //   190: invokevirtual 523	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
-    //   193: ldc_w 540
-    //   196: invokevirtual 543	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   199: iconst_m1
-    //   200: if_icmpne -141 -> 59
-    //   203: aload_2
-    //   204: astore 4
-    //   206: aload_2
-    //   207: astore_3
-    //   208: aload 7
-    //   210: invokevirtual 523	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
-    //   213: astore_2
-    //   214: goto -155 -> 59
-    //   217: aload_1
-    //   218: invokestatic 108	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   221: ifne +5 -> 226
-    //   224: aload_1
-    //   225: areturn
-    //   226: invokestatic 545	org/light/device/LightDeviceUtils:getExternalLocalIpAddress	()Ljava/lang/String;
-    //   229: astore_3
-    //   230: aload_3
-    //   231: astore_1
-    //   232: aload_3
-    //   233: invokestatic 108	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   236: ifeq -12 -> 224
-    //   239: aload_2
-    //   240: areturn
-    //   241: astore 4
-    //   243: aconst_null
-    //   244: astore_3
-    //   245: aload 4
-    //   247: invokevirtual 546	java/net/SocketException:printStackTrace	()V
-    //   250: aload_2
-    //   251: astore_1
-    //   252: aload_2
-    //   253: invokestatic 108	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   256: ifeq -32 -> 224
-    //   259: invokestatic 545	org/light/device/LightDeviceUtils:getExternalLocalIpAddress	()Ljava/lang/String;
-    //   262: astore_2
-    //   263: aload_2
-    //   264: astore_1
-    //   265: aload_2
-    //   266: invokestatic 108	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   269: ifeq -45 -> 224
-    //   272: aload_3
-    //   273: areturn
-    //   274: astore_1
-    //   275: aconst_null
-    //   276: astore_1
-    //   277: aload_3
-    //   278: astore_2
-    //   279: aload_1
-    //   280: astore_3
-    //   281: aload_2
-    //   282: astore_1
-    //   283: aload_2
-    //   284: invokestatic 108	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   287: ifeq -63 -> 224
-    //   290: invokestatic 545	org/light/device/LightDeviceUtils:getExternalLocalIpAddress	()Ljava/lang/String;
-    //   293: astore_2
-    //   294: aload_2
-    //   295: astore_1
-    //   296: aload_2
-    //   297: invokestatic 108	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   300: ifeq -76 -> 224
-    //   303: aload_3
-    //   304: areturn
-    //   305: astore_2
-    //   306: aload 4
-    //   308: astore_3
-    //   309: aload_1
-    //   310: astore_2
-    //   311: goto -30 -> 281
-    //   314: astore_1
-    //   315: goto -34 -> 281
-    //   318: astore 4
-    //   320: aload_1
-    //   321: astore_2
-    //   322: goto -77 -> 245
-    //   325: goto -310 -> 15
+    //   3: astore 6
+    //   5: aconst_null
+    //   6: astore_2
+    //   7: invokestatic 486	java/net/NetworkInterface:getNetworkInterfaces	()Ljava/util/Enumeration;
+    //   10: astore 8
+    //   12: iconst_0
+    //   13: istore_0
+    //   14: aconst_null
+    //   15: astore 7
+    //   17: aload 7
+    //   19: astore 4
+    //   21: aload 8
+    //   23: ifnull +230 -> 253
+    //   26: aload_2
+    //   27: astore 5
+    //   29: aload_2
+    //   30: astore 6
+    //   32: aload 8
+    //   34: invokeinterface 491 1 0
+    //   39: ifeq +214 -> 253
+    //   42: iload_0
+    //   43: ifne +210 -> 253
+    //   46: aload_2
+    //   47: astore 5
+    //   49: aload_2
+    //   50: astore 6
+    //   52: aload 8
+    //   54: invokeinterface 494 1 0
+    //   59: checkcast 482	java/net/NetworkInterface
+    //   62: invokevirtual 497	java/net/NetworkInterface:getInetAddresses	()Ljava/util/Enumeration;
+    //   65: astore 9
+    //   67: aload_2
+    //   68: astore_3
+    //   69: aload_3
+    //   70: astore_2
+    //   71: aload 4
+    //   73: astore 7
+    //   75: aload_3
+    //   76: astore 5
+    //   78: aload_3
+    //   79: astore 6
+    //   81: aload 9
+    //   83: invokeinterface 491 1 0
+    //   88: ifeq -71 -> 17
+    //   91: aload_3
+    //   92: astore 5
+    //   94: aload_3
+    //   95: astore 6
+    //   97: aload 9
+    //   99: invokeinterface 494 1 0
+    //   104: checkcast 499	java/net/InetAddress
+    //   107: astore_2
+    //   108: aload_3
+    //   109: astore 5
+    //   111: aload_3
+    //   112: astore 6
+    //   114: aload_2
+    //   115: invokevirtual 522	java/net/InetAddress:isSiteLocalAddress	()Z
+    //   118: istore_1
+    //   119: iload_1
+    //   120: ifne +55 -> 175
+    //   123: aload_3
+    //   124: astore 5
+    //   126: aload_3
+    //   127: astore 6
+    //   129: aload_2
+    //   130: invokevirtual 502	java/net/InetAddress:isLoopbackAddress	()Z
+    //   133: ifne +42 -> 175
+    //   136: aload_3
+    //   137: astore 5
+    //   139: aload_3
+    //   140: astore 6
+    //   142: aload_2
+    //   143: invokevirtual 507	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   146: ldc_w 524
+    //   149: invokevirtual 527	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   152: iconst_m1
+    //   153: if_icmpne +22 -> 175
+    //   156: aload_3
+    //   157: astore 5
+    //   159: aload_3
+    //   160: astore 6
+    //   162: aload_2
+    //   163: invokevirtual 507	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   166: astore 7
+    //   168: iconst_1
+    //   169: istore_0
+    //   170: aload_3
+    //   171: astore_2
+    //   172: goto -155 -> 17
+    //   175: aload_3
+    //   176: astore 5
+    //   178: aload_3
+    //   179: astore 6
+    //   181: aload_2
+    //   182: invokevirtual 522	java/net/InetAddress:isSiteLocalAddress	()Z
+    //   185: ifeq -116 -> 69
+    //   188: aload_3
+    //   189: astore 5
+    //   191: aload_3
+    //   192: astore 6
+    //   194: aload_2
+    //   195: invokevirtual 502	java/net/InetAddress:isLoopbackAddress	()Z
+    //   198: ifne -129 -> 69
+    //   201: aload_3
+    //   202: astore 5
+    //   204: aload_3
+    //   205: astore 6
+    //   207: aload_2
+    //   208: invokevirtual 507	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   211: ldc_w 524
+    //   214: invokevirtual 527	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   217: iconst_m1
+    //   218: if_icmpne -149 -> 69
+    //   221: aload_3
+    //   222: astore 5
+    //   224: aload_3
+    //   225: astore 6
+    //   227: aload_2
+    //   228: invokevirtual 507	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   231: astore_3
+    //   232: goto -163 -> 69
+    //   235: goto +89 -> 324
+    //   238: astore 6
+    //   240: aload 5
+    //   242: astore_2
+    //   243: aload 4
+    //   245: astore_3
+    //   246: aload 6
+    //   248: astore 4
+    //   250: goto +39 -> 289
+    //   253: aload 4
+    //   255: invokestatic 92	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   258: ifne +6 -> 264
+    //   261: aload 4
+    //   263: areturn
+    //   264: invokestatic 529	org/light/device/LightDeviceUtils:getExternalLocalIpAddress	()Ljava/lang/String;
+    //   267: astore_3
+    //   268: aload_3
+    //   269: invokestatic 92	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   272: ifne +5 -> 277
+    //   275: aload_3
+    //   276: areturn
+    //   277: aload_2
+    //   278: areturn
+    //   279: aconst_null
+    //   280: astore 4
+    //   282: goto +42 -> 324
+    //   285: astore 4
+    //   287: aconst_null
+    //   288: astore_2
+    //   289: aload 4
+    //   291: invokevirtual 530	java/net/SocketException:printStackTrace	()V
+    //   294: aload_3
+    //   295: invokestatic 92	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   298: ifne +5 -> 303
+    //   301: aload_3
+    //   302: areturn
+    //   303: invokestatic 529	org/light/device/LightDeviceUtils:getExternalLocalIpAddress	()Ljava/lang/String;
+    //   306: astore_3
+    //   307: aload_3
+    //   308: invokestatic 92	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   311: ifne +5 -> 316
+    //   314: aload_3
+    //   315: areturn
+    //   316: aload_2
+    //   317: areturn
+    //   318: aload_3
+    //   319: astore 4
+    //   321: aload_2
+    //   322: astore 6
+    //   324: aload 4
+    //   326: invokestatic 92	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   329: ifne +6 -> 335
+    //   332: aload 4
+    //   334: areturn
+    //   335: invokestatic 529	org/light/device/LightDeviceUtils:getExternalLocalIpAddress	()Ljava/lang/String;
+    //   338: astore_2
+    //   339: aload_2
+    //   340: invokestatic 92	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   343: ifne +5 -> 348
+    //   346: aload_2
+    //   347: areturn
+    //   348: aload 6
+    //   350: areturn
+    //   351: astore_2
+    //   352: goto -73 -> 279
+    //   355: astore_2
+    //   356: goto -121 -> 235
+    //   359: astore 4
+    //   361: goto -43 -> 318
     // Local variable table:
     //   start	length	slot	name	signature
-    //   12	139	0	i	int
-    //   5	260	1	localObject1	Object
-    //   274	1	1	localObject2	Object
-    //   276	34	1	localObject3	Object
-    //   314	7	1	localObject4	Object
-    //   1	296	2	localObject5	Object
-    //   305	1	2	localObject6	Object
-    //   310	12	2	localObject7	Object
-    //   3	306	3	localObject8	Object
-    //   21	184	4	localObject9	Object
-    //   241	66	4	localSocketException1	SocketException
-    //   318	1	4	localSocketException2	SocketException
-    //   57	95	5	localObject10	Object
-    //   9	36	6	localEnumeration	Enumeration
-    //   89	120	7	localInetAddress	InetAddress
+    //   13	157	0	i	int
+    //   118	2	1	bool	boolean
+    //   6	341	2	localObject1	Object
+    //   351	1	2	localObject2	Object
+    //   355	1	2	localObject3	Object
+    //   1	318	3	localObject4	Object
+    //   19	262	4	localObject5	Object
+    //   285	5	4	localSocketException1	SocketException
+    //   319	14	4	localObject6	Object
+    //   359	1	4	localObject7	Object
+    //   27	214	5	localObject8	Object
+    //   3	223	6	localObject9	Object
+    //   238	9	6	localSocketException2	SocketException
+    //   322	27	6	localObject10	Object
+    //   15	152	7	localObject11	Object
+    //   10	43	8	localEnumeration1	Enumeration
+    //   65	33	9	localEnumeration2	Enumeration
     // Exception table:
     //   from	to	target	type
-    //   6	11	241	java/net/SocketException
-    //   6	11	274	finally
-    //   25	35	305	finally
-    //   44	59	305	finally
-    //   64	74	305	finally
-    //   79	91	305	finally
-    //   96	104	305	finally
-    //   109	117	305	finally
-    //   122	137	305	finally
-    //   142	149	305	finally
-    //   162	170	305	finally
-    //   175	183	305	finally
-    //   188	203	305	finally
-    //   208	214	305	finally
-    //   245	250	314	finally
-    //   25	35	318	java/net/SocketException
-    //   44	59	318	java/net/SocketException
-    //   64	74	318	java/net/SocketException
-    //   79	91	318	java/net/SocketException
-    //   96	104	318	java/net/SocketException
-    //   109	117	318	java/net/SocketException
-    //   122	137	318	java/net/SocketException
-    //   142	149	318	java/net/SocketException
-    //   162	170	318	java/net/SocketException
-    //   175	183	318	java/net/SocketException
-    //   188	203	318	java/net/SocketException
-    //   208	214	318	java/net/SocketException
+    //   32	42	238	java/net/SocketException
+    //   52	67	238	java/net/SocketException
+    //   81	91	238	java/net/SocketException
+    //   97	108	238	java/net/SocketException
+    //   114	119	238	java/net/SocketException
+    //   129	136	238	java/net/SocketException
+    //   142	156	238	java/net/SocketException
+    //   162	168	238	java/net/SocketException
+    //   181	188	238	java/net/SocketException
+    //   194	201	238	java/net/SocketException
+    //   207	221	238	java/net/SocketException
+    //   227	232	238	java/net/SocketException
+    //   7	12	285	java/net/SocketException
+    //   7	12	351	finally
+    //   32	42	355	finally
+    //   52	67	355	finally
+    //   81	91	355	finally
+    //   97	108	355	finally
+    //   114	119	355	finally
+    //   129	136	355	finally
+    //   142	156	355	finally
+    //   162	168	355	finally
+    //   181	188	355	finally
+    //   194	201	355	finally
+    //   207	221	355	finally
+    //   227	232	355	finally
+    //   289	294	359	finally
   }
   
   public static String getMachineInfo()
@@ -1031,176 +1112,189 @@ public class LightDeviceUtils
   public static long getMaxCpuFreq()
   {
     // Byte code:
-    //   0: getstatic 62	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
-    //   3: lconst_0
-    //   4: lcmp
-    //   5: ifle +7 -> 12
-    //   8: getstatic 62	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
+    //   0: getstatic 545	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
+    //   3: lstore_2
+    //   4: lload_2
+    //   5: lconst_0
+    //   6: lcmp
+    //   7: ifle +5 -> 12
+    //   10: lload_2
     //   11: lreturn
     //   12: iconst_0
     //   13: istore_0
     //   14: iload_0
-    //   15: invokestatic 562	org/light/device/LightDeviceUtils:getNumCores	()I
-    //   18: if_icmpge +194 -> 212
-    //   21: new 110	java/io/File
+    //   15: invokestatic 548	org/light/device/LightDeviceUtils:getNumCores	()I
+    //   18: if_icmpge +178 -> 196
+    //   21: new 113	java/lang/StringBuilder
     //   24: dup
-    //   25: new 129	java/lang/StringBuilder
-    //   28: dup
-    //   29: invokespecial 130	java/lang/StringBuilder:<init>	()V
-    //   32: ldc_w 564
-    //   35: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   38: iload_0
-    //   39: invokevirtual 470	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   42: ldc_w 566
-    //   45: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   48: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: invokespecial 142	java/io/File:<init>	(Ljava/lang/String;)V
-    //   54: astore_2
-    //   55: aload_2
-    //   56: invokevirtual 150	java/io/File:exists	()Z
-    //   59: ifeq +214 -> 273
-    //   62: sipush 128
-    //   65: newarray byte
-    //   67: astore_3
-    //   68: new 568	java/io/FileInputStream
-    //   71: dup
-    //   72: aload_2
-    //   73: invokespecial 571	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   76: astore_2
-    //   77: aload_2
-    //   78: aload_3
-    //   79: invokevirtual 574	java/io/FileInputStream:read	([B)I
-    //   82: pop
-    //   83: iconst_0
-    //   84: istore_1
-    //   85: aload_3
-    //   86: iload_1
-    //   87: baload
-    //   88: bipush 48
-    //   90: if_icmplt +24 -> 114
-    //   93: aload_3
-    //   94: iload_1
-    //   95: baload
-    //   96: bipush 57
-    //   98: if_icmpgt +16 -> 114
-    //   101: iload_1
-    //   102: aload_3
-    //   103: arraylength
-    //   104: if_icmpge +10 -> 114
+    //   25: invokespecial 114	java/lang/StringBuilder:<init>	()V
+    //   28: astore 4
+    //   30: aload 4
+    //   32: ldc_w 550
+    //   35: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: pop
+    //   39: aload 4
+    //   41: iload_0
+    //   42: invokevirtual 454	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   45: pop
+    //   46: aload 4
+    //   48: ldc_w 552
+    //   51: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: pop
+    //   55: new 94	java/io/File
+    //   58: dup
+    //   59: aload 4
+    //   61: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   64: invokespecial 126	java/io/File:<init>	(Ljava/lang/String;)V
+    //   67: astore 4
+    //   69: aload 4
+    //   71: invokevirtual 134	java/io/File:exists	()Z
+    //   74: ifeq +246 -> 320
+    //   77: sipush 128
+    //   80: newarray byte
+    //   82: astore 5
+    //   84: new 554	java/io/FileInputStream
+    //   87: dup
+    //   88: aload 4
+    //   90: invokespecial 557	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   93: astore 4
+    //   95: aload 4
+    //   97: aload 5
+    //   99: invokevirtual 560	java/io/FileInputStream:read	([B)I
+    //   102: pop
+    //   103: iconst_0
+    //   104: istore_1
+    //   105: aload 5
     //   107: iload_1
-    //   108: iconst_1
-    //   109: iadd
-    //   110: istore_1
-    //   111: goto -26 -> 85
-    //   114: new 115	java/lang/String
-    //   117: dup
-    //   118: aload_3
-    //   119: iconst_0
-    //   120: iload_1
-    //   121: invokespecial 577	java/lang/String:<init>	([BII)V
-    //   124: invokestatic 172	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   127: invokestatic 581	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   130: astore_3
-    //   131: aload_3
-    //   132: invokevirtual 584	java/lang/Integer:intValue	()I
-    //   135: i2l
-    //   136: getstatic 62	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
-    //   139: lcmp
-    //   140: ifle +11 -> 151
-    //   143: aload_3
-    //   144: invokevirtual 584	java/lang/Integer:intValue	()I
-    //   147: i2l
-    //   148: putstatic 62	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
-    //   151: aload_2
-    //   152: invokevirtual 585	java/io/FileInputStream:close	()V
-    //   155: goto +118 -> 273
-    //   158: astore_3
-    //   159: aload_2
-    //   160: invokevirtual 585	java/io/FileInputStream:close	()V
-    //   163: goto +110 -> 273
-    //   166: astore_2
-    //   167: ldc2_w 586
-    //   170: putstatic 62	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
-    //   173: ldc_w 589
-    //   176: new 129	java/lang/StringBuilder
-    //   179: dup
-    //   180: invokespecial 130	java/lang/StringBuilder:<init>	()V
-    //   183: ldc_w 591
-    //   186: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   189: getstatic 62	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
-    //   192: invokevirtual 454	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   195: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   198: invokestatic 459	org/light/utils/LightLogUtil:v	(Ljava/lang/String;Ljava/lang/String;)V
-    //   201: getstatic 62	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
-    //   204: lreturn
-    //   205: astore_3
-    //   206: aload_2
-    //   207: invokevirtual 585	java/io/FileInputStream:close	()V
-    //   210: aload_3
-    //   211: athrow
-    //   212: getstatic 62	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
-    //   215: ldc2_w 586
-    //   218: lcmp
-    //   219: ifne -46 -> 173
-    //   222: new 568	java/io/FileInputStream
-    //   225: dup
-    //   226: ldc_w 302
-    //   229: invokespecial 592	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   232: astore_2
-    //   233: ldc_w 594
-    //   236: aload_2
-    //   237: invokestatic 598	org/light/device/LightDeviceUtils:parseFileForValue	(Ljava/lang/String;Ljava/io/FileInputStream;)I
-    //   240: sipush 1000
-    //   243: imul
-    //   244: istore_0
-    //   245: iload_0
-    //   246: i2l
-    //   247: getstatic 62	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
-    //   250: lcmp
-    //   251: ifle +8 -> 259
-    //   254: iload_0
-    //   255: i2l
-    //   256: putstatic 62	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
-    //   259: aload_2
-    //   260: invokevirtual 585	java/io/FileInputStream:close	()V
-    //   263: goto -90 -> 173
-    //   266: astore_3
-    //   267: aload_2
-    //   268: invokevirtual 585	java/io/FileInputStream:close	()V
-    //   271: aload_3
-    //   272: athrow
-    //   273: iload_0
-    //   274: iconst_1
-    //   275: iadd
-    //   276: istore_0
-    //   277: goto -263 -> 14
+    //   108: baload
+    //   109: bipush 48
+    //   111: if_icmplt +26 -> 137
+    //   114: aload 5
+    //   116: iload_1
+    //   117: baload
+    //   118: bipush 57
+    //   120: if_icmpgt +17 -> 137
+    //   123: iload_1
+    //   124: aload 5
+    //   126: arraylength
+    //   127: if_icmpge +10 -> 137
+    //   130: iload_1
+    //   131: iconst_1
+    //   132: iadd
+    //   133: istore_1
+    //   134: goto -29 -> 105
+    //   137: new 99	java/lang/String
+    //   140: dup
+    //   141: aload 5
+    //   143: iconst_0
+    //   144: iload_1
+    //   145: invokespecial 563	java/lang/String:<init>	([BII)V
+    //   148: invokestatic 156	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   151: invokestatic 567	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   154: astore 5
+    //   156: aload 5
+    //   158: invokevirtual 570	java/lang/Integer:intValue	()I
+    //   161: i2l
+    //   162: getstatic 545	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
+    //   165: lcmp
+    //   166: ifle +12 -> 178
+    //   169: aload 5
+    //   171: invokevirtual 570	java/lang/Integer:intValue	()I
+    //   174: i2l
+    //   175: putstatic 545	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
+    //   178: aload 4
+    //   180: invokevirtual 571	java/io/FileInputStream:close	()V
+    //   183: goto +137 -> 320
+    //   186: astore 5
+    //   188: aload 4
+    //   190: invokevirtual 571	java/io/FileInputStream:close	()V
+    //   193: aload 5
+    //   195: athrow
+    //   196: getstatic 545	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
+    //   199: ldc2_w 572
+    //   202: lcmp
+    //   203: ifne +65 -> 268
+    //   206: new 554	java/io/FileInputStream
+    //   209: dup
+    //   210: ldc_w 286
+    //   213: invokespecial 574	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   216: astore 4
+    //   218: ldc_w 576
+    //   221: aload 4
+    //   223: invokestatic 580	org/light/device/LightDeviceUtils:parseFileForValue	(Ljava/lang/String;Ljava/io/FileInputStream;)I
+    //   226: sipush 1000
+    //   229: imul
+    //   230: i2l
+    //   231: lstore_2
+    //   232: lload_2
+    //   233: getstatic 545	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
+    //   236: lcmp
+    //   237: ifle +7 -> 244
+    //   240: lload_2
+    //   241: putstatic 545	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
+    //   244: aload 4
+    //   246: invokevirtual 571	java/io/FileInputStream:close	()V
+    //   249: goto +19 -> 268
+    //   252: astore 5
+    //   254: aload 4
+    //   256: invokevirtual 571	java/io/FileInputStream:close	()V
+    //   259: aload 5
+    //   261: athrow
+    //   262: ldc2_w 572
+    //   265: putstatic 545	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
+    //   268: new 113	java/lang/StringBuilder
+    //   271: dup
+    //   272: invokespecial 114	java/lang/StringBuilder:<init>	()V
+    //   275: astore 4
+    //   277: aload 4
+    //   279: ldc_w 582
+    //   282: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   285: pop
+    //   286: aload 4
+    //   288: getstatic 545	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
+    //   291: invokevirtual 438	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   294: pop
+    //   295: ldc_w 584
+    //   298: aload 4
+    //   300: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   303: invokestatic 443	org/light/utils/LightLogUtil:v	(Ljava/lang/String;Ljava/lang/String;)V
+    //   306: getstatic 545	org/light/device/LightDeviceUtils:sMaxCpuFreq	J
+    //   309: lreturn
+    //   310: astore 4
+    //   312: goto -50 -> 262
+    //   315: astore 5
+    //   317: goto -139 -> 178
+    //   320: iload_0
+    //   321: iconst_1
+    //   322: iadd
+    //   323: istore_0
+    //   324: goto -310 -> 14
     // Local variable table:
     //   start	length	slot	name	signature
-    //   13	264	0	i	int
-    //   84	37	1	j	int
-    //   54	106	2	localObject1	Object
-    //   166	41	2	localIOException	IOException
-    //   232	36	2	localFileInputStream	FileInputStream
-    //   67	77	3	localObject2	Object
-    //   158	1	3	localNumberFormatException	NumberFormatException
-    //   205	6	3	localObject3	Object
-    //   266	6	3	localObject4	Object
+    //   13	311	0	i	int
+    //   104	41	1	j	int
+    //   3	238	2	l	long
+    //   28	271	4	localObject1	Object
+    //   310	1	4	localIOException	IOException
+    //   82	88	5	localObject2	Object
+    //   186	8	5	localObject3	Object
+    //   252	8	5	localObject4	Object
+    //   315	1	5	localNumberFormatException	NumberFormatException
     // Exception table:
     //   from	to	target	type
-    //   77	83	158	java/lang/NumberFormatException
-    //   101	107	158	java/lang/NumberFormatException
-    //   114	151	158	java/lang/NumberFormatException
-    //   14	77	166	java/io/IOException
-    //   151	155	166	java/io/IOException
-    //   159	163	166	java/io/IOException
-    //   206	212	166	java/io/IOException
-    //   212	233	166	java/io/IOException
-    //   259	263	166	java/io/IOException
-    //   267	273	166	java/io/IOException
-    //   77	83	205	finally
-    //   101	107	205	finally
-    //   114	151	205	finally
-    //   233	259	266	finally
+    //   95	103	186	finally
+    //   123	130	186	finally
+    //   137	178	186	finally
+    //   218	244	252	finally
+    //   14	95	310	java/io/IOException
+    //   178	183	310	java/io/IOException
+    //   188	196	310	java/io/IOException
+    //   196	218	310	java/io/IOException
+    //   244	249	310	java/io/IOException
+    //   254	262	310	java/io/IOException
+    //   95	103	315	java/lang/NumberFormatException
+    //   123	130	315	java/lang/NumberFormatException
+    //   137	178	315	java/lang/NumberFormatException
   }
   
   public static int getMobileNetworkType(Context paramContext)
@@ -1223,10 +1317,8 @@ public class LightDeviceUtils
       case 14: 
       default: 
         return 4;
-      case 1: 
-      case 2: 
-      case 4: 
-        return 1;
+      case 13: 
+        return 3;
       case 5: 
       case 6: 
       case 8: 
@@ -1236,7 +1328,7 @@ public class LightDeviceUtils
       case 15: 
         return 2;
       }
-      return 3;
+      return 1;
     }
     return 5;
   }
@@ -1261,16 +1353,18 @@ public class LightDeviceUtils
         return 1;
       }
       int i = getMobileNetworkType(paramContext);
-      switch (i)
+      if (i != 1)
       {
-      default: 
-        return 5;
-      case 1: 
-        return 2;
-      case 2: 
+        if (i != 2)
+        {
+          if (i != 3) {
+            return 5;
+          }
+          return 4;
+        }
         return 3;
       }
-      return 4;
+      return 2;
     }
     catch (Exception paramContext)
     {
@@ -1281,47 +1375,54 @@ public class LightDeviceUtils
   
   public static String getNetworkTypeName(Context paramContext)
   {
-    switch (getNetworkType(paramContext))
+    int i = getNetworkType(paramContext);
+    if (i != 0)
     {
-    default: 
-      return "unknow";
-    case 0: 
-      return "none";
-    case 2: 
-      return "2G";
-    case 3: 
-      return "3G";
-    case 4: 
-      return "4G";
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i != 4) {
+              return "unknow";
+            }
+            return "4G";
+          }
+          return "3G";
+        }
+        return "2G";
+      }
+      return "wifi";
     }
-    return "wifi";
+    return "none";
   }
   
   public static int getNumCores()
   {
-    if (sCpuCount > 0) {
-      return sCpuCount;
+    int i = sCpuCount;
+    if (i > 0) {
+      return i;
     }
-    for (;;)
+    try
     {
-      try
-      {
-        File[] arrayOfFile = new File("/sys/devices/system/cpu/").listFiles(new LightDeviceUtils.1CpuFilter());
-        if (arrayOfFile == null) {
-          continue;
-        }
+      File[] arrayOfFile = new File("/sys/devices/system/cpu/").listFiles(new LightDeviceUtils.1CpuFilter());
+      if (arrayOfFile != null) {
         sCpuCount = arrayOfFile.length;
-      }
-      catch (Throwable localThrowable)
-      {
-        LightLogUtil.e(localThrowable);
+      } else {
         sCpuCount = 1;
-        continue;
       }
-      LightLogUtil.v("DeviceUtils", "sCpuCount:" + sCpuCount);
-      return sCpuCount;
+    }
+    catch (Throwable localThrowable)
+    {
+      LightLogUtil.e(localThrowable);
       sCpuCount = 1;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sCpuCount:");
+    localStringBuilder.append(sCpuCount);
+    LightLogUtil.v("DeviceUtils", localStringBuilder.toString());
+    return sCpuCount;
   }
   
   public static String getOSVersion()
@@ -1346,78 +1447,119 @@ public class LightDeviceUtils
   private static long getRuntimeFreeMemory(int paramInt)
   {
     long l;
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          l = Runtime.getRuntime().freeMemory();
+        } else {
+          l = Runtime.getRuntime().freeMemory() / 1024L / 1024L;
+        }
+      }
+      else {
+        l = Runtime.getRuntime().freeMemory() / 1024L;
+      }
+    }
+    else {
       l = Runtime.getRuntime().freeMemory();
     }
-    for (;;)
-    {
-      LightLogUtil.v(TAG, "[getRuntimeFreeMemory] freeMemory = " + Runtime.getRuntime().freeMemory() / 1024L / 1024L + "(Mb), " + Runtime.getRuntime().freeMemory() / 1024L + "(Kb)");
-      return l;
-      l = Runtime.getRuntime().freeMemory();
-      continue;
-      l = Runtime.getRuntime().freeMemory() / 1024L;
-      continue;
-      l = Runtime.getRuntime().freeMemory() / 1024L / 1024L;
-    }
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[getRuntimeFreeMemory] freeMemory = ");
+    localStringBuilder.append(Runtime.getRuntime().freeMemory() / 1024L / 1024L);
+    localStringBuilder.append("(Mb), ");
+    localStringBuilder.append(Runtime.getRuntime().freeMemory() / 1024L);
+    localStringBuilder.append("(Kb)");
+    LightLogUtil.v(str, localStringBuilder.toString());
+    return l;
   }
   
   private static long getRuntimeMaxMemory(int paramInt)
   {
     long l = Runtime.getRuntime().maxMemory();
-    switch (paramInt)
+    if (paramInt != 0)
     {
+      if (paramInt != 1)
+      {
+        if (paramInt == 2) {
+          l = Runtime.getRuntime().maxMemory() / 1024L / 1024L;
+        }
+      }
+      else {
+        l = Runtime.getRuntime().maxMemory() / 1024L;
+      }
     }
-    for (;;)
-    {
-      LightLogUtil.v(TAG, "[getRuntimeMaxMemory] maxMemory = " + Runtime.getRuntime().maxMemory() / 1024L / 1024L + "(Mb), " + Runtime.getRuntime().maxMemory() / 1024L + "(Kb)");
-      return l;
+    else {
       l = Runtime.getRuntime().maxMemory();
-      continue;
-      l = Runtime.getRuntime().maxMemory() / 1024L;
-      continue;
-      l = Runtime.getRuntime().maxMemory() / 1024L / 1024L;
     }
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[getRuntimeMaxMemory] maxMemory = ");
+    localStringBuilder.append(Runtime.getRuntime().maxMemory() / 1024L / 1024L);
+    localStringBuilder.append("(Mb), ");
+    localStringBuilder.append(Runtime.getRuntime().maxMemory() / 1024L);
+    localStringBuilder.append("(Kb)");
+    LightLogUtil.v(str, localStringBuilder.toString());
+    return l;
   }
   
   public static long getRuntimeRemainSize(int paramInt)
   {
     long l2 = Runtime.getRuntime().maxMemory() - getHeapAllocatedSizeInKb() * 1024L;
     long l1 = l2;
-    switch (paramInt)
-    {
-    default: 
-      l1 = l2;
+    if (paramInt != 0) {
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          l1 = l2;
+        } else {
+          l1 = l2 / 1048576L;
+        }
+      }
+      else {
+        l1 = l2 / 1024L;
+      }
     }
-    for (;;)
-    {
-      LightLogUtil.v(TAG, "[getRuntimeRemainSize] remainMemory = " + l1 + " " + paramInt);
-      return l1;
-      l1 = l2 / 1024L;
-      continue;
-      l1 = l2 / 1048576L;
-    }
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[getRuntimeRemainSize] remainMemory = ");
+    localStringBuilder.append(l1);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(paramInt);
+    LightLogUtil.v(str, localStringBuilder.toString());
+    return l1;
   }
   
   private static long getRuntimeTotalMemory(int paramInt)
   {
     long l;
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          l = Runtime.getRuntime().totalMemory();
+        } else {
+          l = Runtime.getRuntime().totalMemory() / 1024L / 1024L;
+        }
+      }
+      else {
+        l = Runtime.getRuntime().totalMemory() / 1024L;
+      }
+    }
+    else {
       l = Runtime.getRuntime().totalMemory();
     }
-    for (;;)
-    {
-      LightLogUtil.v(TAG, "[getRuntimeTotalMemory] totalMemory = " + Runtime.getRuntime().totalMemory() / 1024L / 1024L + "(Mb), " + Runtime.getRuntime().totalMemory() / 1024L + "(Kb)");
-      return l;
-      l = Runtime.getRuntime().totalMemory();
-      continue;
-      l = Runtime.getRuntime().totalMemory() / 1024L;
-      continue;
-      l = Runtime.getRuntime().totalMemory() / 1024L / 1024L;
-    }
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[getRuntimeTotalMemory] totalMemory = ");
+    localStringBuilder.append(Runtime.getRuntime().totalMemory() / 1024L / 1024L);
+    localStringBuilder.append("(Mb), ");
+    localStringBuilder.append(Runtime.getRuntime().totalMemory() / 1024L);
+    localStringBuilder.append("(Kb)");
+    LightLogUtil.v(str, localStringBuilder.toString());
+    return l;
   }
   
   public static int getScreenHeight(Context paramContext)
@@ -1449,7 +1591,12 @@ public class LightDeviceUtils
   public static String getScreenSize(Context paramContext)
   {
     paramContext = paramContext.getResources().getDisplayMetrics();
-    return "" + paramContext.widthPixels + "*" + paramContext.heightPixels;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramContext.widthPixels);
+    localStringBuilder.append("*");
+    localStringBuilder.append(paramContext.heightPixels);
+    return localStringBuilder.toString();
   }
   
   public static int getScreenWidth(Context paramContext)
@@ -1488,74 +1635,36 @@ public class LightDeviceUtils
     return -1;
   }
   
-  /* Error */
   public static long getTotalRamMemory(Context paramContext)
   {
-    // Byte code:
-    //   0: getstatic 794	android/os/Build$VERSION:SDK_INT	I
-    //   3: bipush 16
-    //   5: if_icmplt +46 -> 51
-    //   8: aload_0
-    //   9: ifnull +42 -> 51
-    //   12: new 796	android/app/ActivityManager$MemoryInfo
-    //   15: dup
-    //   16: invokespecial 797	android/app/ActivityManager$MemoryInfo:<init>	()V
-    //   19: astore 4
-    //   21: aload_0
-    //   22: ldc_w 350
-    //   25: invokevirtual 356	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   28: checkcast 358	android/app/ActivityManager
-    //   31: aload 4
-    //   33: invokevirtual 800	android/app/ActivityManager:getMemoryInfo	(Landroid/app/ActivityManager$MemoryInfo;)V
-    //   36: aload 4
-    //   38: ifnull +9 -> 47
-    //   41: aload 4
-    //   43: getfield 803	android/app/ActivityManager$MemoryInfo:totalMem	J
-    //   46: lreturn
-    //   47: ldc2_w 586
-    //   50: lreturn
-    //   51: new 568	java/io/FileInputStream
-    //   54: dup
-    //   55: ldc_w 805
-    //   58: invokespecial 592	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   61: astore_0
-    //   62: ldc_w 807
-    //   65: aload_0
-    //   66: invokestatic 598	org/light/device/LightDeviceUtils:parseFileForValue	(Ljava/lang/String;Ljava/io/FileInputStream;)I
-    //   69: istore_1
-    //   70: iload_1
-    //   71: i2l
-    //   72: ldc2_w 716
-    //   75: lmul
-    //   76: lstore_2
-    //   77: aload_0
-    //   78: invokevirtual 585	java/io/FileInputStream:close	()V
-    //   81: lload_2
-    //   82: lreturn
-    //   83: astore_0
-    //   84: lload_2
-    //   85: lreturn
-    //   86: astore 4
-    //   88: aload_0
-    //   89: invokevirtual 585	java/io/FileInputStream:close	()V
-    //   92: aload 4
-    //   94: athrow
-    //   95: astore_0
-    //   96: ldc2_w 586
-    //   99: lreturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	100	0	paramContext	Context
-    //   69	2	1	i	int
-    //   76	9	2	l	long
-    //   19	23	4	localMemoryInfo	android.app.ActivityManager.MemoryInfo
-    //   86	7	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   77	81	83	java/io/IOException
-    //   62	70	86	finally
-    //   51	62	95	java/io/IOException
-    //   88	95	95	java/io/IOException
+    if ((Build.VERSION.SDK_INT >= 16) && (paramContext != null))
+    {
+      ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
+      ((ActivityManager)paramContext.getSystemService("activity")).getMemoryInfo(localMemoryInfo);
+      return localMemoryInfo.totalMem;
+    }
+    long l2 = -1L;
+    l1 = l2;
+    try
+    {
+      paramContext = new FileInputStream("/proc/meminfo");
+      try
+      {
+        int i = parseFileForValue("MemTotal", paramContext);
+        l2 = i * 1024L;
+        l1 = l2;
+        paramContext.close();
+        return l2;
+      }
+      finally
+      {
+        l1 = l2;
+        paramContext.close();
+        l1 = l2;
+      }
+      return l1;
+    }
+    catch (IOException paramContext) {}
   }
   
   @TargetApi(18)
@@ -1612,24 +1721,28 @@ public class LightDeviceUtils
   
   public static boolean isExternalStorageAvailable(Context paramContext)
   {
-    boolean bool = false;
     try
     {
-      if (("mounted".equals(Environment.getExternalStorageState())) || (!Environment.isExternalStorageRemovable()))
-      {
-        new StatFs(paramContext.getExternalFilesDir(null).getAbsolutePath());
-        bool = true;
+      if (!"mounted".equals(Environment.getExternalStorageState())) {
+        if (Environment.isExternalStorageRemovable()) {
+          break label42;
+        }
       }
-      return bool;
+      new StatFs(paramContext.getExternalFilesDir(null).getAbsolutePath());
+      return true;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      return false;
+    }
+    label42:
     return false;
   }
   
   public static boolean isExternalStorageSpaceEnough(Context paramContext, long paramLong)
   {
-    boolean bool = false;
     paramContext = paramContext.getExternalFilesDir(null);
+    boolean bool = false;
     try
     {
       long l = getAvailableSize(new StatFs(paramContext.getAbsolutePath()));
@@ -1652,102 +1765,112 @@ public class LightDeviceUtils
   
   public static boolean isMobileNetwork(Context paramContext)
   {
-    if (paramContext == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramContext == null) {
       return false;
-      paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
-    } while (paramContext == null);
-    paramContext = paramContext.getNetworkInfo(0);
-    if ((paramContext != null) && (paramContext.isAvailable()) && (paramContext.isConnected())) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
     }
+    paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+    if (paramContext == null) {
+      return false;
+    }
+    paramContext = paramContext.getNetworkInfo(0);
+    boolean bool1 = bool2;
+    if (paramContext != null)
+    {
+      bool1 = bool2;
+      if (paramContext.isAvailable())
+      {
+        bool1 = bool2;
+        if (paramContext.isConnected()) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public static boolean isNavigationBarShow(Activity paramActivity)
   {
-    int i;
-    if (Build.MODEL.equals("Redmi 6")) {
-      if (Build.VERSION.SDK_INT < 21)
-      {
-        i = Settings.System.getInt(paramActivity.getContentResolver(), "force_fsg_nav_bar", 0);
-        if (i == 1) {
-          break label54;
-        }
-      }
-    }
-    label54:
-    label119:
-    boolean bool1;
-    boolean bool2;
-    do
+    if (Build.MODEL.equals("Redmi 6"))
     {
-      Point localPoint1;
-      Point localPoint2;
-      do
-      {
-        return true;
+      int i;
+      if (Build.VERSION.SDK_INT < 21) {
+        i = Settings.System.getInt(paramActivity.getContentResolver(), "force_fsg_nav_bar", 0);
+      } else {
         i = Settings.Global.getInt(paramActivity.getContentResolver(), "force_fsg_nav_bar", 0);
-        break;
-        return false;
-        if (Build.VERSION.SDK_INT < 17) {
-          break label119;
-        }
-        paramActivity = paramActivity.getWindowManager().getDefaultDisplay();
-        localPoint1 = new Point();
-        localPoint2 = new Point();
-        paramActivity.getSize(localPoint1);
-        paramActivity.getRealSize(localPoint2);
-      } while (localPoint2.y != localPoint1.y);
-      return false;
-      bool1 = ViewConfiguration.get(paramActivity).hasPermanentMenuKey();
-      bool2 = KeyCharacterMap.deviceHasKey(4);
-    } while ((!bool1) && (!bool2));
-    return false;
+      }
+      return i != 1;
+    }
+    if (Build.VERSION.SDK_INT >= 17)
+    {
+      paramActivity = paramActivity.getWindowManager().getDefaultDisplay();
+      Point localPoint1 = new Point();
+      Point localPoint2 = new Point();
+      paramActivity.getSize(localPoint1);
+      paramActivity.getRealSize(localPoint2);
+      return localPoint2.y != localPoint1.y;
+    }
+    boolean bool1 = ViewConfiguration.get(paramActivity).hasPermanentMenuKey();
+    boolean bool2 = KeyCharacterMap.deviceHasKey(4);
+    return (!bool1) && (!bool2);
   }
   
   public static boolean isNetworkAvailable(Context paramContext)
   {
     paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+    boolean bool2 = false;
     if (paramContext == null) {
       return false;
     }
     paramContext = paramContext.getActiveNetworkInfo();
-    if ((paramContext != null) && (paramContext.isConnectedOrConnecting())) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    boolean bool1 = bool2;
+    if (paramContext != null)
+    {
+      bool1 = bool2;
+      if (paramContext.isConnectedOrConnecting()) {
+        bool1 = true;
+      }
     }
+    return bool1;
   }
   
   public static boolean isValid(Context paramContext)
   {
-    if (getOpenGlEsVersion(paramContext) >= 131072) {}
-    for (boolean bool = true;; bool = false)
-    {
-      mIsOpenGlEsValid = bool;
-      mIsAllUnusable = false;
-      if ((mIsAllUnusable) || (!mIsOpenGlEsValid)) {
-        break;
-      }
-      return true;
+    boolean bool;
+    if (getOpenGlEsVersion(paramContext) >= 131072) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    return false;
+    mIsOpenGlEsValid = bool;
+    mIsAllUnusable = false;
+    return (!mIsAllUnusable) && (mIsOpenGlEsValid);
   }
   
   public static boolean isWifiNetwork(Context paramContext)
   {
-    if (paramContext == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramContext == null) {
       return false;
-      paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
-    } while (paramContext == null);
-    paramContext = paramContext.getNetworkInfo(1);
-    if ((paramContext != null) && (paramContext.isAvailable()) && (paramContext.isConnected())) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
     }
+    paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+    if (paramContext == null) {
+      return false;
+    }
+    paramContext = paramContext.getNetworkInfo(1);
+    boolean bool1 = bool2;
+    if (paramContext != null)
+    {
+      bool1 = bool2;
+      if (paramContext.isAvailable())
+      {
+        bool1 = bool2;
+        if (paramContext.isConnected()) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   private static String parse(String paramString)
@@ -1761,11 +1884,7 @@ public class LightDeviceUtils
   
   private static int parseFileForValue(String paramString, FileInputStream paramFileInputStream)
   {
-    byte[] arrayOfByte = new byte[1024];
-    int m;
-    int j;
-    int i;
-    int k;
+    arrayOfByte = new byte[1024];
     for (;;)
     {
       try
@@ -1773,23 +1892,37 @@ public class LightDeviceUtils
         m = paramFileInputStream.read(arrayOfByte);
         j = 0;
       }
-      catch (NumberFormatException paramString)
+      catch (IOException|NumberFormatException paramString)
       {
-        return -1;
-      }
-      catch (IOException paramString)
-      {
+        int m;
+        continue;
+        if (j >= m) {
+          continue;
+        }
+        if (arrayOfByte[j] == 10) {
+          continue;
+        }
+        int k = j;
+        if (j != 0) {
+          continue;
+        }
+        int i = j;
+        if (arrayOfByte[j] != 10) {
+          continue;
+        }
+        i = j + 1;
+        int j = i;
         continue;
       }
       k = i;
       if (j >= m) {
-        break label129;
+        continue;
       }
       k = j - i;
       if (arrayOfByte[j] != paramString.charAt(k))
       {
         k = i;
-        break label129;
+        continue;
       }
       if (k == paramString.length() - 1)
       {
@@ -1798,28 +1931,9 @@ public class LightDeviceUtils
       }
       j += 1;
     }
-    for (;;)
-    {
-      if (j < m)
-      {
-        if (arrayOfByte[j] != 10)
-        {
-          k = j;
-          if (j != 0) {}
-        }
-        else
-        {
-          i = j;
-          if (arrayOfByte[j] == 10) {
-            i = j + 1;
-          }
-          j = i;
-          break;
-        }
-        label129:
-        j = k + 1;
-      }
-    }
+    j = k + 1;
+    break label94;
+    return -1;
   }
   
   public static void recordCpuInfo()
@@ -1832,12 +1946,13 @@ public class LightDeviceUtils
       handlerThread = HandlerThreadManager.getInstance().getHandlerThread(HandlerThreadTag.CAL_CPU_RATE);
       handler = new Handler(handlerThread.getLooper());
     }
-    if (recordCpuCount % 100 == 0)
+    int i = recordCpuCount;
+    if (i % 100 == 0)
     {
       handler.post(new LightDeviceUtils.1());
       return;
     }
-    recordCpuCount += 1;
+    recordCpuCount = i + 1;
   }
   
   public static void resetWindowScreenBrightness(Window paramWindow)
@@ -1934,7 +2049,7 @@ public class LightDeviceUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.light.device.LightDeviceUtils
  * JD-Core Version:    0.7.0.1
  */

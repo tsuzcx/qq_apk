@@ -28,12 +28,18 @@ public class TimeInfo
   
   public String toString()
   {
-    return "TimeInfo{begin=" + TimeFormatterUtils.b(this.begin) + ", end=" + TimeFormatterUtils.b(this.end) + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TimeInfo{begin=");
+    localStringBuilder.append(TimeFormatterUtils.b(this.begin));
+    localStringBuilder.append(", end=");
+    localStringBuilder.append(TimeFormatterUtils.b(this.end));
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.model.TimeInfo
  * JD-Core Version:    0.7.0.1
  */

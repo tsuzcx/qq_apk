@@ -24,14 +24,19 @@ public class Utility
   
   public static void makeSureNotNull(Object paramObject, String paramString)
   {
-    if (paramObject == null) {
-      throw new NullPointerException("input param " + paramString + " cannot be null");
+    if (paramObject != null) {
+      return;
     }
+    paramObject = new StringBuilder();
+    paramObject.append("input param ");
+    paramObject.append(paramString);
+    paramObject.append(" cannot be null");
+    throw new NullPointerException(paramObject.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.luan.core.Utility
  * JD-Core Version:    0.7.0.1
  */

@@ -20,25 +20,35 @@ class BlessManager$3
     BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager).remove(this.jdField_a_of_type_JavaLangString);
     if (paramDownloadTask.a() == 3)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BlessManager", 2, "download finished " + this.b);
+      if (QLog.isColorLevel())
+      {
+        paramDownloadTask = new StringBuilder();
+        paramDownloadTask.append("download finished ");
+        paramDownloadTask.append(this.b);
+        QLog.d("BlessManager", 2, paramDownloadTask.toString());
       }
-      if ((this.b != null) && (BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager) != null) && (this.b.equals(BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager).starVideo))) {
+      if ((this.b != null) && (BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager) != null) && (this.b.equals(BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager).starVideo)))
+      {
         BlessManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager);
+        return;
       }
-    }
-    while (!QLog.isColorLevel())
-    {
-      return;
       BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager);
       return;
     }
-    QLog.d("BlessManager", 2, "downloadFile failed: " + paramDownloadTask.b + " code=" + paramDownloadTask.a);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("downloadFile failed: ");
+      localStringBuilder.append(paramDownloadTask.b);
+      localStringBuilder.append(" code=");
+      localStringBuilder.append(paramDownloadTask.a);
+      QLog.d("BlessManager", 2, localStringBuilder.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessManager.3
  * JD-Core Version:    0.7.0.1
  */

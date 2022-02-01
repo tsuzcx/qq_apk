@@ -43,12 +43,8 @@ public class DoodleFilter
   
   public void setTouchPoints(List<List<PointF>> paramList1, List<List<PointF>> paramList2, int paramInt1, int paramInt2, float paramFloat)
   {
-    if ((paramList1 == null) || (paramList1.size() == 0)) {
-      this.list.clear();
-    }
-    for (;;)
+    if ((paramList1 != null) && (paramList1.size() != 0))
     {
-      return;
       this.list = new ArrayList(paramList2.size());
       paramList1 = (PointF)((List)paramList1.get(0)).get(86);
       paramList2 = paramList2.iterator();
@@ -64,12 +60,14 @@ public class DoodleFilter
         }
         this.list.add(localArrayList);
       }
+      return;
     }
+    this.list.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.DoodleFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -9,69 +9,80 @@ import com.huawei.hms.support.log.HMSLog;
 public class AvailabilityException
   extends Exception
 {
-  private String a = "AvailabilityException";
-  private String b = null;
+  private String TAG = "AvailabilityException";
+  private String message = null;
   
-  private void a(int paramInt)
+  private ConnectionResult generateConnectionResult(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      this.b = "INTERNAL_ERROR";
-      return;
-    case 0: 
-      this.b = "success";
-      return;
-    case 21: 
-      this.b = "ANDROID_VERSION_UNSUPPORT";
-      return;
-    case 1: 
-      this.b = "SERVICE_MISSING";
-      return;
-    case 3: 
-      this.b = "SERVICE_DISABLED";
-      return;
-    }
-    this.b = "SERVICE_VERSION_UPDATE_REQUIRED";
+    String str = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("The availability check result is: ");
+    localStringBuilder.append(paramInt);
+    HMSLog.i(str, localStringBuilder.toString());
+    setMessage(paramInt);
+    return new ConnectionResult(paramInt);
   }
   
-  private ConnectionResult b(int paramInt)
+  private void setMessage(int paramInt)
   {
-    HMSLog.i(this.a, "The availability check result is: " + paramInt);
-    a(paramInt);
-    return new ConnectionResult(paramInt);
+    if (paramInt != 21)
+    {
+      if (paramInt != 0)
+      {
+        if (paramInt != 1)
+        {
+          if (paramInt != 2)
+          {
+            if (paramInt != 3)
+            {
+              this.message = "INTERNAL_ERROR";
+              return;
+            }
+            this.message = "SERVICE_DISABLED";
+            return;
+          }
+          this.message = "SERVICE_VERSION_UPDATE_REQUIRED";
+          return;
+        }
+        this.message = "SERVICE_MISSING";
+        return;
+      }
+      this.message = "success";
+      return;
+    }
+    this.message = "ANDROID_VERSION_UNSUPPORT";
   }
   
   public ConnectionResult getConnectionResult(HuaweiApi<? extends Api.ApiOptions> paramHuaweiApi)
   {
     if (paramHuaweiApi == null)
     {
-      HMSLog.e(this.a, "The huaweiApi is null.");
-      return b(8);
+      HMSLog.e(this.TAG, "The huaweiApi is null.");
+      return generateConnectionResult(8);
     }
     paramHuaweiApi = paramHuaweiApi.getContext();
-    return b(HuaweiApiAvailability.getInstance().isHuaweiMobileServicesAvailable(paramHuaweiApi, 30000000));
+    return generateConnectionResult(HuaweiApiAvailability.getInstance().isHuaweiMobileServicesAvailable(paramHuaweiApi, 30000000));
   }
   
   public ConnectionResult getConnectionResult(HuaweiApiCallable paramHuaweiApiCallable)
   {
-    if ((paramHuaweiApiCallable == null) || (paramHuaweiApiCallable.getHuaweiApi() == null))
+    if ((paramHuaweiApiCallable != null) && (paramHuaweiApiCallable.getHuaweiApi() != null))
     {
-      HMSLog.e(this.a, "The huaweiApi is null.");
-      return b(8);
+      paramHuaweiApiCallable = paramHuaweiApiCallable.getHuaweiApi().getContext();
+      return generateConnectionResult(HuaweiApiAvailability.getInstance().isHuaweiMobileServicesAvailable(paramHuaweiApiCallable, 30000000));
     }
-    paramHuaweiApiCallable = paramHuaweiApiCallable.getHuaweiApi().getContext();
-    return b(HuaweiApiAvailability.getInstance().isHuaweiMobileServicesAvailable(paramHuaweiApiCallable, 30000000));
+    HMSLog.e(this.TAG, "The huaweiApi is null.");
+    return generateConnectionResult(8);
   }
   
   public String getMessage()
   {
-    return this.b;
+    return this.message;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.api.AvailabilityException
  * JD-Core Version:    0.7.0.1
  */

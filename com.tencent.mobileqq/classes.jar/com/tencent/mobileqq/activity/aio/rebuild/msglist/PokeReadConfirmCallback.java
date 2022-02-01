@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild.msglist;
 
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.activity.aio.core.AIOContext;
 import com.tencent.mobileqq.activity.aio.core.msglist.IReadConfirmCallback;
 import com.tencent.mobileqq.activity.aio.core.msglist.MsgList;
@@ -22,7 +22,7 @@ public class PokeReadConfirmCallback
   {
     paramList = paramAIOContext.a().a().a();
     ArrayList localArrayList = new ArrayList();
-    if (paramAIOContext.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 0)
+    if (paramAIOContext.a().a == 0)
     {
       if ((paramList != null) && (!paramList.isEmpty()))
       {
@@ -40,7 +40,7 @@ public class PokeReadConfirmCallback
       {
         paramList = (MessageForPoke)localArrayList.get(0);
         if (!paramList.isPlayed) {
-          paramAIOContext.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a.put(Long.valueOf(paramList.uniseq), paramList);
+          paramAIOContext.a().getMsgCache().a.put(Long.valueOf(paramList.uniseq), paramList);
         }
       }
     }
@@ -50,7 +50,7 @@ public class PokeReadConfirmCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.PokeReadConfirmCallback
  * JD-Core Version:    0.7.0.1
  */

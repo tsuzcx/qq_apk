@@ -6,11 +6,8 @@ import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.pubaccount.PublicAccountSearchRecommendManager;
-import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
-import com.tencent.biz.pubaccount.ecshopassit.utils.JumpUtil;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager;
+import com.tencent.biz.pubaccount.api.IPublicAccountDataManager;
+import com.tencent.biz.pubaccount.api.IPublicAccountSearchRecommendManager;
 import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
 import com.tencent.biz.pubaccount.weishi_new.api.IWSManager;
 import com.tencent.common.app.AppInterface;
@@ -19,31 +16,34 @@ import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.recent.RecentUtil;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.SearchHistoryManager;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.gamecenter.util.QQGameConfigUtil;
-import com.tencent.mobileqq.gamecenter.util.QQGameHelper;
+import com.tencent.mobileqq.ecshop.api.IEcshopUtilApi;
+import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.daily.api.IKandianDailyManager;
+import com.tencent.mobileqq.kandian.glue.businesshandler.api.IKandianSubscribeManager;
 import com.tencent.mobileqq.mini.api.IMiniAppService;
 import com.tencent.mobileqq.now.NowQQLiveConstant;
 import com.tencent.mobileqq.now.NowQQLiveHelper;
+import com.tencent.mobileqq.qqgamepub.api.IQQGameConfigUtil;
+import com.tencent.mobileqq.qqgamepub.api.IQQGameHelper;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
 import com.tencent.mobileqq.qroute.route.URIRequest;
 import com.tencent.mobileqq.search.IContactSearchable;
 import com.tencent.mobileqq.search.activity.PublicAcntSearchActivity;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.business.contact.model.IContactSearchModel;
 import com.tencent.mobileqq.search.report.UniteSearchReportController;
 import com.tencent.mobileqq.search.util.HighlightModel;
 import com.tencent.mobileqq.search.util.SearchUtils;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.PAStartupTracker;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.contentbox.QZoneMsgActivity;
+import com.tencent.qzonehub.api.contentbox.IQzoneMsgApi;
 import java.util.ArrayList;
 import mqq.app.AppRuntime;
 
@@ -70,6 +70,11 @@ public class PublicAccountSearchResultModel
     this.b = IContactSearchable.P;
   }
   
+  public int a()
+  {
+    return 1;
+  }
+  
   protected long a(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
@@ -79,47 +84,57 @@ public class PublicAccountSearchResultModel
     if (l2 != -9223372036854775808L) {
       l1 = (l2 & 0x0) >> 20 | 0xFFFFFFFF & l2 | (0x0 & l2) >> 26;
     }
-    if (l1 > this.jdField_a_of_type_Long) {
-      this.jdField_a_of_type_Long = l1;
-    }
-    for (int i = 1;; i = 0)
+    int i;
+    if (l1 > this.jdField_a_of_type_Long)
     {
-      if (this.jdField_a_of_type_Long != -9223372036854775808L)
-      {
-        if (this.b != IContactSearchable.O) {
-          break label232;
-        }
+      this.jdField_a_of_type_Long = l1;
+      i = 1;
+    }
+    else
+    {
+      i = 0;
+    }
+    if (this.jdField_a_of_type_Long != -9223372036854775808L)
+    {
+      if (this.b == IContactSearchable.O) {
         this.jdField_a_of_type_Long |= 0x100000;
-        if (!this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.isOffLine)
-        {
-          this.jdField_a_of_type_Long |= 0x0;
-          if (this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.clickCount >= 3) {
-            if (this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.clickCount >= 128) {
-              break label247;
-            }
+      } else {
+        this.jdField_a_of_type_Long |= 0x80000;
+      }
+      if (!this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.isOffLine)
+      {
+        this.jdField_a_of_type_Long |= 0x0;
+        if (this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.clickCount >= 3) {
+          if (this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.clickCount < 128) {
+            this.jdField_a_of_type_Long |= (this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.clickCount & 0x7F) << 32;
+          } else {
+            this.jdField_a_of_type_Long |= 0x0;
           }
         }
       }
-      label232:
-      label247:
-      for (this.jdField_a_of_type_Long |= (this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.clickCount & 0x7F) << 32;; this.jdField_a_of_type_Long |= 0x0)
-      {
-        if (i != 0) {
-          this.jdField_a_of_type_Long |= 0x0;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.certifiedGrade == 1L) {
-          this.jdField_a_of_type_Long |= 0x80000000;
-        }
-        return this.jdField_a_of_type_Long;
-        this.jdField_a_of_type_Long |= 0x80000;
-        break;
+      if (i != 0) {
+        this.jdField_a_of_type_Long |= 0x0;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.certifiedGrade == 1L) {
+        this.jdField_a_of_type_Long |= 0x80000000;
       }
     }
+    return this.jdField_a_of_type_Long;
   }
   
   public PublicAccountInfo a()
   {
     return this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo;
+  }
+  
+  public CharSequence a()
+  {
+    SpannableString localSpannableString = new HighlightModel(new ArrayList(), b()).a(SearchUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.summary));
+    Object localObject = localSpannableString;
+    if (localSpannableString == null) {
+      localObject = "";
+    }
+    return localObject;
   }
   
   public Object a()
@@ -129,7 +144,7 @@ public class PublicAccountSearchResultModel
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.getUin();
   }
   
   public void a(int paramInt)
@@ -140,153 +155,149 @@ public class PublicAccountSearchResultModel
   public void a(View paramView)
   {
     super.a(paramView);
-    Object localObject2 = paramView.getContext();
-    if (localObject2 == null) {}
-    String str;
-    label143:
-    do
-    {
+    Object localObject3 = paramView.getContext();
+    if (localObject3 == null) {
       return;
-      if ((localObject2 instanceof UniteSearchActivity))
-      {
-        SearchUtils.a("all_result", "clk_public_uin", new String[] { "" + this.jdField_a_of_type_JavaLangString });
-        UniteSearchReportController.a(null, 0, this.c, "0X8009D51", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.getUin(), null);
-      }
-      str = this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.getUin();
-      PAStartupTracker.a(null, "pubAcc_aio_open", str);
-      localObject1 = (PublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
-      if (!AppConstants.WEISHI_UIN.equals(str)) {
-        break;
-      }
-      ((IWSManager)QRoute.api(IWSManager.class)).enterWSPublicAccount((Context)localObject2, "from_search_result", true);
-      SearchUtils.a(this.jdField_a_of_type_JavaLangString, 50, 0, paramView, str, this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.isOffLine, this.c);
-      SearchHistoryManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-      SearchUtils.a(this.jdField_a_of_type_JavaLangString, 50, paramView, false);
-    } while ((!(localObject2 instanceof BaseActivity)) || (this.jdField_a_of_type_Int <= 0));
-    Object localObject1 = null;
-    paramView = null;
-    if ((localObject2 instanceof UniteSearchActivity))
-    {
-      localObject1 = "0X8005D1C";
-      paramView = "0X8006570";
-      label224:
-      if (localObject1 == null) {
-        break label911;
-      }
-      localObject2 = ((BaseActivity)localObject2).app;
-      if (this.c != 12) {
-        break label913;
-      }
-      ReportController.b((AppRuntime)localObject2, "CliOper", "", "", paramView, paramView, 0, 1, 0, this.jdField_a_of_type_Int + "", "", str, this.jdField_a_of_type_JavaLangString);
-      label294:
-      paramView = PublicAccountSearchRecommendManager.a();
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.name;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.extendType == 2) {
-        break label977;
-      }
     }
-    label911:
-    label913:
-    label977:
-    for (boolean bool = true;; bool = false)
+    boolean bool2 = localObject3 instanceof UniteSearchActivity;
+    boolean bool1 = false;
+    if (bool2)
     {
-      paramView.a((QQAppInterface)localObject2, str, (String)localObject1, bool);
-      return;
-      if (AppConstants.TIM_TEAM_UIN.equals(str))
-      {
-        ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).enterTimTeam((Context)localObject2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        break label143;
-      }
-      if ((TextUtils.equals("2290230341", str)) && (QZoneMsgActivity.open((Context)localObject2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {
-        break label143;
-      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      SearchUtils.a("all_result", "clk_public_uin", new String[] { ((StringBuilder)localObject1).toString() });
+      UniteSearchReportController.a(null, 0, this.c, "0X8009D51", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.getUin(), null);
+    }
+    String str = this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.getUin();
+    PAStartupTracker.a(null, "pubAcc_aio_open", str);
+    Object localObject1 = (IPublicAccountDataManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
+    Object localObject2;
+    if (AppConstants.WEISHI_UIN.equals(str)) {
+      ((IWSManager)QRoute.api(IWSManager.class)).enterWSPublicAccount((Context)localObject3, "from_search_result", true);
+    } else if (AppConstants.TIM_TEAM_UIN.equals(str)) {
+      ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).enterTimTeam((Context)localObject3, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    } else if ((!TextUtils.equals("2290230341", str)) || (!((IQzoneMsgApi)QRoute.api(IQzoneMsgApi.class)).openContentBox((Context)localObject3))) {
       if (AppConstants.KANDIAN_SUBSCRIBE_UIN.equals(str))
       {
-        KandianSubscribeManager.a((Context)localObject2, 3, 2);
-        break label143;
+        ((IKandianSubscribeManager)((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getRuntimeService(IKandianSubscribeManager.class)).lanuchKandianSubscribeActivity((Context)localObject3, 3, 2);
       }
-      if (AppConstants.KANDIAN_DAILY_UIN.equals(str))
+      else if (AppConstants.KANDIAN_DAILY_UIN.equals(str))
       {
-        KandianDailyManager.a((Context)localObject2);
-        break label143;
+        ((IKandianDailyManager)QRoute.api(IKandianDailyManager.class)).launchKandianDaily((Context)localObject3);
       }
-      if (("2747277822".equals(str)) && (QQGameConfigUtil.b()))
+      else if (("2747277822".equals(str)) && (((IQQGameConfigUtil)QRoute.api(IQQGameConfigUtil.class)).checkGamePubAccountConfig()))
       {
-        QQGameHelper.a((Context)localObject2);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a("2747277822", 1008, false);
-        break label143;
+        ((IQQGameHelper)QRoute.api(IQQGameHelper.class)).startQQGamePubAccount((Context)localObject3, 3);
+        ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getConversationFacade().a("2747277822", 1008, false);
       }
-      if (((IMiniAppService)QRoute.api(IMiniAppService.class)).shouldOpenWebFragment(str))
+      else if (((IMiniAppService)QRoute.api(IMiniAppService.class)).shouldOpenWebFragment(str))
       {
-        ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchMiniGamePublicAccount((Context)localObject2);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(AppConstants.MINI_GAME_PUBLIC_ACCOUNT_UIN, 1008, false);
-        break label143;
+        ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchMiniGamePublicAccount((Context)localObject3);
+        ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getConversationFacade().a(AppConstants.MINI_GAME_PUBLIC_ACCOUNT_UIN, 1008, false);
       }
-      if (NowQQLiveConstant.jdField_a_of_type_JavaLangString.equals(str))
+      else if (NowQQLiveConstant.jdField_a_of_type_JavaLangString.equals(str))
       {
-        NowQQLiveHelper.a((Context)localObject2, str, 3);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(NowQQLiveConstant.jdField_a_of_type_JavaLangString, 1008, false);
-        break label143;
+        NowQQLiveHelper.a((Context)localObject3, str, 3);
+        ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getConversationFacade().a(NowQQLiveConstant.jdField_a_of_type_JavaLangString, 1008, false);
       }
-      if (TextUtils.equals("3046055438", str))
+      else if (TextUtils.equals("3046055438", str))
       {
-        JumpUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Context)localObject2);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a("3046055438", 1008, false);
-        break label143;
-      }
-      if (((localObject1 != null) && (((PublicAccountDataManager)localObject1).a(Long.valueOf(str)))) || ((localObject1 == null) && (((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).isFollowUin(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str))))
-      {
-        Intent localIntent = new Intent(paramView.getContext(), ChatActivity.class);
-        int i = 1008;
+        ((IEcshopUtilApi)QRoute.api(IEcshopUtilApi.class)).jump((Context)localObject3);
+        ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getConversationFacade().a("3046055438", 1008, false);
+        localObject2 = new Intent(paramView.getContext(), ChatActivity.class);
+        int i;
         if (this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.extendType == 2)
         {
-          localIntent.putExtra("chat_subType", 1);
+          ((Intent)localObject2).putExtra("chat_subType", 1);
           i = 0;
+        }
+        else
+        {
+          i = 1008;
         }
         if (TextUtils.isEmpty(str))
         {
-          if (!QLog.isColorLevel()) {
-            break;
+          if (QLog.isColorLevel()) {
+            QLog.w("PublicAccountSearchResultModel", 2, "uin is null");
           }
-          QLog.w("PublicAccountSearchResultModel", 2, "uin is null");
           return;
         }
-        localIntent.putExtra("uin", str);
-        localIntent.putExtra("uintype", i);
-        localIntent.putExtra("uinname", this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.name);
-        localIntent.putExtra("selfSet_leftViewText", ((Context)localObject2).getString(2131690778));
+        ((Intent)localObject2).putExtra("uin", str);
+        ((Intent)localObject2).putExtra("uintype", i);
+        ((Intent)localObject2).putExtra("uinname", this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.name);
+        ((Intent)localObject2).putExtra("selfSet_leftViewText", ((Context)localObject3).getString(2131690706));
         RecentUtil.a = true;
-        RecentUtil.a(localIntent);
-        ((Context)localObject2).startActivity(localIntent);
-        this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.clickCount += 1;
-        if (localObject1 == null) {
-          break label143;
+        RecentUtil.a((Intent)localObject2);
+        ((Context)localObject3).startActivity((Intent)localObject2);
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo;
+        ((PublicAccountInfo)localObject2).clickCount += 1;
+        if (localObject1 != null) {
+          ((IPublicAccountDataManager)localObject1).savePublicAccountInfo(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
         }
-        ((PublicAccountDataManager)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
-        break label143;
       }
-      if (TextUtils.isEmpty(str))
+      else
       {
-        if (!QLog.isColorLevel()) {
+        if (TextUtils.isEmpty(str))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.w("PublicAccountSearchResultModel", 2, "uin is null");
+          }
+          return;
+        }
+        localObject1 = new ActivityURIRequest((Context)localObject3, "/pubaccount/detail");
+        ((ActivityURIRequest)localObject1).extra().putString("uin", str);
+        ((ActivityURIRequest)localObject1).extra().putInt("source", 4);
+        QRoute.startUri((URIRequest)localObject1, null);
+      }
+    }
+    SearchUtils.a(this.jdField_a_of_type_JavaLangString, 50, 0, paramView, str, this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.isOffLine, this.c);
+    SearchHistoryManager.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString);
+    SearchUtils.a(this.jdField_a_of_type_JavaLangString, 50, paramView, false);
+    if (((localObject3 instanceof BaseActivity)) && (this.jdField_a_of_type_Int > 0))
+    {
+      if (bool2) {
+        localObject1 = "0X8005D1C";
+      }
+      for (paramView = "0X8006570";; paramView = "0X8006588")
+      {
+        localObject2 = localObject1;
+        localObject1 = paramView;
+        paramView = (View)localObject2;
+        break label876;
+        if (!(localObject3 instanceof PublicAcntSearchActivity)) {
           break;
         }
-        QLog.w("PublicAccountSearchResultModel", 2, "uin is null");
+        localObject1 = "0X8005D1E";
+      }
+      localObject1 = null;
+      paramView = (View)localObject1;
+      label876:
+      if (paramView == null) {
         return;
       }
-      localObject1 = new ActivityURIRequest((Context)localObject2, "/pubaccount/detail");
-      ((ActivityURIRequest)localObject1).extra().putString("uin", str);
-      ((ActivityURIRequest)localObject1).extra().putInt("source", 4);
-      QRoute.startUri((URIRequest)localObject1, null);
-      break label143;
-      if (!(localObject2 instanceof PublicAcntSearchActivity)) {
-        break label224;
+      localObject2 = ((BaseActivity)localObject3).app;
+      if (this.c == 12)
+      {
+        paramView = new StringBuilder();
+        paramView.append(this.jdField_a_of_type_Int);
+        paramView.append("");
+        ReportController.b((AppRuntime)localObject2, "CliOper", "", "", (String)localObject1, (String)localObject1, 0, 1, 0, paramView.toString(), "", str, this.jdField_a_of_type_JavaLangString);
       }
-      localObject1 = "0X8005D1E";
-      paramView = "0X8006588";
-      break label224;
-      break;
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate((AppInterface)localObject2, "P_CliOper", "Pb_account_lifeservice", str, (String)localObject1, (String)localObject1, 0, 0, this.jdField_a_of_type_Int + "", "", this.jdField_a_of_type_JavaLangString, "", false);
-      break label294;
+      else
+      {
+        localObject1 = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject3).append("");
+        ((IPublicAccountReportUtils)localObject1).publicAccountReportClickEventForMigrate((AppInterface)localObject2, "P_CliOper", "Pb_account_lifeservice", str, paramView, paramView, 0, 0, ((StringBuilder)localObject3).toString(), "", this.jdField_a_of_type_JavaLangString, "", false);
+      }
+      paramView = (IPublicAccountSearchRecommendManager)QRoute.api(IPublicAccountSearchRecommendManager.class);
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.name;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.extendType != 2) {
+        bool1 = true;
+      }
+      paramView.updatePublicAccountSearchHistoryItem((AppInterface)localObject2, str, (String)localObject1, bool1);
     }
   }
   
@@ -297,22 +308,7 @@ public class PublicAccountSearchResultModel
   
   public String b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.getUin();
-  }
-  
-  public int c()
-  {
-    return 1;
-  }
-  
-  public CharSequence c()
-  {
-    SpannableString localSpannableString = new HighlightModel(new ArrayList(), a()).a(SearchUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.summary));
-    Object localObject = localSpannableString;
-    if (localSpannableString == null) {
-      localObject = "";
-    }
-    return localObject;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   public String c()
@@ -337,7 +333,7 @@ public class PublicAccountSearchResultModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.PublicAccountSearchResultModel
  * JD-Core Version:    0.7.0.1
  */

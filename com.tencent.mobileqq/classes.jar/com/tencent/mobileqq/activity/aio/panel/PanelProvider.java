@@ -5,6 +5,7 @@ import android.view.View;
 import com.tencent.widget.XPanelContainer;
 
 public abstract interface PanelProvider<T extends View>
+  extends PanelListener
 {
   public abstract T createPanel(Context paramContext);
   
@@ -14,15 +15,11 @@ public abstract interface PanelProvider<T extends View>
   
   public abstract boolean isNeedRecreatePanel();
   
-  public abstract void onHideAllPanel();
-  
-  public abstract void onPanelChanged(int paramInt1, int paramInt2);
-  
   public abstract void onPanelIconClick(XPanelContainer paramXPanelContainer);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.PanelProvider
  * JD-Core Version:    0.7.0.1
  */

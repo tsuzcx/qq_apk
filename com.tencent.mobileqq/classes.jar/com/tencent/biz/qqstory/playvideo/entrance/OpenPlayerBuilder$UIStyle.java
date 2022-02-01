@@ -16,12 +16,22 @@ public class OpenPlayerBuilder$UIStyle
   
   public String toString()
   {
-    return "UIStyle{showVideoCoverList=" + this.showVideoCoverList + ", hideVideoDetailInfo=" + this.hideVideoDetailInfo + ", bottomWidgetShowFlag=" + this.bottomWidgetShowFlag + ", mPlayerRepeatMode=" + this.mPlayerRepeatMode + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UIStyle{showVideoCoverList=");
+    localStringBuilder.append(this.showVideoCoverList);
+    localStringBuilder.append(", hideVideoDetailInfo=");
+    localStringBuilder.append(this.hideVideoDetailInfo);
+    localStringBuilder.append(", bottomWidgetShowFlag=");
+    localStringBuilder.append(this.bottomWidgetShowFlag);
+    localStringBuilder.append(", mPlayerRepeatMode=");
+    localStringBuilder.append(this.mPlayerRepeatMode);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle
  * JD-Core Version:    0.7.0.1
  */

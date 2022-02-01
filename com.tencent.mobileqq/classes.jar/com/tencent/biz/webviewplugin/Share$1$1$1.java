@@ -30,220 +30,279 @@ class Share$1$1$1
   
   public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("shareWebPage", 2, "WebView screenshot CALLBACK. imgUrl=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("WebView screenshot CALLBACK. imgUrl=");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.e("shareWebPage", 2, ((StringBuilder)localObject1).toString());
     }
-    if (!TextUtils.isEmpty(paramString)) {}
+    boolean bool = TextUtils.isEmpty(paramString);
+    Object localObject1 = "intext_3";
+    if (!bool) {}
     try
     {
-      Object localObject1 = new BitmapFactory.Options();
+      localObject1 = new BitmapFactory.Options();
       ((BitmapFactory.Options)localObject1).inSampleSize = 1;
       localObject1 = BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject1);
       this.a.a.this$0.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(localObject1);
-      localObject3 = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
-      str2 = this.a.a.this$0.jdField_a_of_type_MqqAppAppRuntime.getAccount();
-      str3 = ((TicketManager)localObject3).getSkey(str2);
-      l2 = System.currentTimeMillis();
-      localObject2 = null;
-      localObject1 = new File(paramString);
-      if (((File)localObject1).exists())
-      {
-        l1 = ((File)localObject1).length();
-        Object localObject4 = FileUtils.c(paramString);
-        localObject1 = localObject2;
-        if (l1 > 0L)
-        {
-          localObject1 = localObject2;
-          if (!TextUtils.isEmpty((CharSequence)localObject4)) {
-            localObject1 = HttpUtil.queryImageByIP(NetworkUtil.a(String.format(Locale.getDefault(), "https://cgi.connect.qq.com/qqconnectopen/query_share_image?key=%s&size=%d&short_url=0", new Object[] { localObject4, Long.valueOf(l1) }), 1007), str2, str3);
-          }
-        }
-        l1 = System.currentTimeMillis() - l2;
-        if (localObject1 != null) {
-          break label1627;
-        }
-        localObject1 = new Pair(Integer.valueOf(-1), "");
-        if (QLog.isColorLevel()) {
-          QLog.d(Share.jdField_a_of_type_JavaLangString, 2, "queryImage, ret=" + ((Pair)localObject1).first + ",cost=" + l1 + ",url=" + (String)((Pair)localObject1).second);
-        }
-        localObject2 = new Bundle();
-        ((Bundle)localObject2).putString("report_type", "102");
-        ((Bundle)localObject2).putString("act_type", "16");
-        ((Bundle)localObject2).putString("intext_1", "" + ((Pair)localObject1).first);
-        localObject4 = new StringBuilder().append("");
-        if (((Integer)((Pair)localObject1).first).intValue() != -1) {
-          break label988;
-        }
-        i = 0;
-        ((Bundle)localObject2).putString("intext_2", i);
-        ((Bundle)localObject2).putString("intext_5", "" + l1);
-        ReportCenter.a().a((Bundle)localObject2, "", str2, false);
-        m = 1;
-        if (TextUtils.isEmpty((CharSequence)((Pair)localObject1).second)) {
-          break label1003;
-        }
-        this.a.a.this$0.i = ((String)((Pair)localObject1).second);
-        this.a.a.this$0.jdField_e_of_type_Boolean = false;
-        this.a.a.this$0.b = 0;
-        if (QLog.isColorLevel()) {
-          QLog.e("shareWebPage", 2, "Share info after WebView screenshot: title=" + this.a.a.this$0.jdField_e_of_type_JavaLangString + ", summary=" + this.a.a.this$0.h + ", thumb=" + this.a.a.this$0.i + ", shareURL=" + this.a.a.jdField_a_of_type_JavaLangString);
-        }
-        paramString = new Bundle();
-        j = 0;
-        if (TextUtils.isEmpty(this.a.a.this$0.i)) {
-          j = 1;
-        }
-        i = j;
-        if (TextUtils.isEmpty(this.a.a.this$0.h)) {
-          i = j | 0x2;
-        }
-        j = i;
-        if (TextUtils.isEmpty(this.a.a.this$0.jdField_e_of_type_JavaLangString)) {
-          j = i | 0x4;
-        }
-        paramString.putString("report_type", "102");
-        paramString.putString("act_type", "93");
-        localObject1 = new StringBuilder().append("");
-        if (j != 0) {
-          break label1604;
-        }
-        i = 0;
-        label753:
-        paramString.putString("intext_1", i);
-        paramString.putString("intext_3", "" + ReportDef.RepUtil.b(this.a.a.jdField_a_of_type_Int));
-        paramString.putString("intext_2", "" + j);
-        paramString.putString("stringext_1", this.a.a.jdField_a_of_type_JavaLangString);
-        ReportCenter.a().a(paramString, "", this.a.a.this$0.jdField_a_of_type_MqqAppAppRuntime.getAccount(), false);
-        if (QLog.isColorLevel()) {
-          QLog.e("shareWebPage", 2, "WebView screenshot END. thumb=" + this.a.a.this$0.i);
-        }
-        Share.a(this.a.a.this$0, this.a.a.jdField_a_of_type_JavaLangString, this.a.a.jdField_a_of_type_Int, this.a.a.jdField_a_of_type_Boolean);
-      }
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      label1572:
-      label1604:
-      label1613:
-      label1627:
-      for (;;)
+      label104:
+      Object localObject4;
+      Object localObject3;
+      Object localObject2;
+      long l2;
+      Object localObject5;
+      long l1;
+      Object localObject6;
+      int i;
+      HashMap localHashMap;
+      int j;
+      int k;
+      break label104;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("shareWebPage", 2, "WebView screenshot OutOfMemoryError.");
+    }
+    localObject4 = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
+    localObject3 = this.a.a.this$0.jdField_a_of_type_MqqAppAppRuntime.getAccount();
+    localObject2 = ((TicketManager)localObject4).getSkey((String)localObject3);
+    l2 = System.currentTimeMillis();
+    localObject1 = null;
+    localObject5 = new File(paramString);
+    if (((File)localObject5).exists()) {
+      l1 = ((File)localObject5).length();
+    } else {
+      l1 = 0L;
+    }
+    localObject5 = FileUtils.calcMd5(paramString);
+    if ((l1 > 0L) && (!TextUtils.isEmpty((CharSequence)localObject5))) {
+      localObject1 = HttpUtil.queryImageByIP(NetworkUtil.a(String.format(Locale.getDefault(), "https://cgi.connect.qq.com/qqconnectopen/query_share_image?key=%s&size=%d&short_url=0", new Object[] { localObject5, Long.valueOf(l1) }), 1007), (String)localObject3, (String)localObject2);
+    }
+    l1 = System.currentTimeMillis() - l2;
+    if (localObject1 == null) {
+      localObject1 = new Pair(Integer.valueOf(-1), "");
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject5 = Share.jdField_a_of_type_JavaLangString;
+      localObject6 = new StringBuilder();
+      ((StringBuilder)localObject6).append("queryImage, ret=");
+      ((StringBuilder)localObject6).append(((Pair)localObject1).first);
+      ((StringBuilder)localObject6).append(",cost=");
+      ((StringBuilder)localObject6).append(l1);
+      ((StringBuilder)localObject6).append(",url=");
+      ((StringBuilder)localObject6).append((String)((Pair)localObject1).second);
+      QLog.d((String)localObject5, 2, ((StringBuilder)localObject6).toString());
+    }
+    localObject5 = new Bundle();
+    ((Bundle)localObject5).putString("report_type", "102");
+    ((Bundle)localObject5).putString("act_type", "16");
+    localObject6 = new StringBuilder();
+    ((StringBuilder)localObject6).append("");
+    ((StringBuilder)localObject6).append(((Pair)localObject1).first);
+    ((Bundle)localObject5).putString("intext_1", ((StringBuilder)localObject6).toString());
+    localObject6 = new StringBuilder();
+    ((StringBuilder)localObject6).append("");
+    if (((Integer)((Pair)localObject1).first).intValue() == -1) {
+      i = 0;
+    } else {
+      i = ((Integer)((Pair)localObject1).first).intValue();
+    }
+    ((StringBuilder)localObject6).append(i);
+    ((Bundle)localObject5).putString("intext_2", ((StringBuilder)localObject6).toString());
+    localObject6 = new StringBuilder();
+    ((StringBuilder)localObject6).append("");
+    ((StringBuilder)localObject6).append(l1);
+    ((Bundle)localObject5).putString("intext_5", ((StringBuilder)localObject6).toString());
+    ReportCenter.a().a((Bundle)localObject5, "", (String)localObject3, false);
+    if (!TextUtils.isEmpty((CharSequence)((Pair)localObject1).second))
+    {
+      this.a.a.this$0.i = ((String)((Pair)localObject1).second);
+      this.a.a.this$0.jdField_e_of_type_Boolean = false;
+      this.a.a.this$0.b = 0;
+    }
+    else
+    {
+      if (QLog.isColorLevel())
       {
-        Object localObject3;
-        String str2;
-        String str3;
-        long l2;
-        Object localObject2;
-        long l1;
-        int i;
-        int m;
-        int j;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("WebView screenshot UPLOAD. length=");
+        ((StringBuilder)localObject1).append(new File(paramString).length());
+        QLog.e("shareWebPage", 2, ((StringBuilder)localObject1).toString());
+      }
+      localObject6 = new HashMap();
+      ((Map)localObject6).put("Connection", "keep-alive");
+      ((Map)localObject6).put("Referer", "https://www.qq.com");
+      ((Map)localObject6).put("Host", "cgi.connect.qq.com");
+      localObject1 = ((TicketManager)localObject4).getPskey((String)localObject3, "cgi.connect.qq.com");
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("p_uin=");
+        ((StringBuilder)localObject4).append((String)localObject3);
+        ((StringBuilder)localObject4).append(";p_skey=");
+        ((StringBuilder)localObject4).append((String)localObject1);
+        ((Map)localObject6).put("Cookie", ((StringBuilder)localObject4).toString());
+      }
+      localHashMap = new HashMap();
+      localHashMap.put("share_image", paramString);
+      paramString = new Bundle();
+      paramString.putString("report_type", "102");
+      paramString.putString("act_type", "51");
+      localObject5 = "intext_3";
+      paramString.putString((String)localObject5, "1");
+      localObject1 = this.a.a.jdField_a_of_type_JavaLangString;
+      localObject4 = "stringext_1";
+      paramString.putString((String)localObject4, (String)localObject1);
+      ReportCenter.a().a(paramString, "", (String)localObject3, false);
+      l1 = System.currentTimeMillis();
+      localObject1 = HttpUtil.uploadImageWithHttps(NetworkUtil.a("https://cgi.connect.qq.com/qqconnectopen/upload_share_image", 1007), "cgi.connect.qq.com", (String)localObject3, (String)localObject2, null, localHashMap, (Map)localObject6, false);
+      paramString = (String)localObject1;
+      if (localObject1 == null) {
+        paramString = HttpUtil.uploadImageWithHttps("https://cgi.connect.qq.com/qqconnectopen/upload_share_image", "cgi.connect.qq.com", (String)localObject3, (String)localObject2, null, localHashMap, (Map)localObject6, true);
+      }
+      if (paramString != null)
+      {
+        try
+        {
+          paramString = new JSONObject(paramString);
+          j = paramString.getInt("retcode");
+          i = j;
+          if (j != 0) {
+            break label1118;
+          }
+          i = j;
+          try
+          {
+            if (!paramString.has("result")) {
+              break label1118;
+            }
+            paramString = paramString.getJSONObject("result").getString("url");
+            i = j;
+            if (TextUtils.isEmpty(paramString)) {
+              break label1118;
+            }
+            this.a.a.this$0.i = paramString;
+            this.a.a.this$0.jdField_e_of_type_Boolean = false;
+            this.a.a.this$0.b = 0;
+            k = 0;
+            i = j;
+          }
+          catch (JSONException paramString) {}
+          i = j;
+        }
+        catch (JSONException paramString)
+        {
+          j = 0;
+        }
         if (QLog.isColorLevel())
         {
-          QLog.e("shareWebPage", 2, "WebView screenshot OutOfMemoryError.");
-          continue;
-          l1 = 0L;
-          continue;
-          label988:
-          i = ((Integer)localOutOfMemoryError.first).intValue();
-          continue;
-          label1003:
-          if (QLog.isColorLevel()) {
-            QLog.e("shareWebPage", 2, "WebView screenshot UPLOAD. length=" + new File(paramString).length());
-          }
-          localObject2 = new HashMap();
-          ((Map)localObject2).put("Connection", "keep-alive");
-          ((Map)localObject2).put("Referer", "https://www.qq.com");
-          ((Map)localObject2).put("Host", "cgi.connect.qq.com");
-          String str1 = ((TicketManager)localObject3).getPskey(str2, "cgi.connect.qq.com");
-          if (!TextUtils.isEmpty(str1)) {
-            ((Map)localObject2).put("Cookie", "p_uin=" + str2 + ";p_skey=" + str1);
-          }
-          localObject3 = new HashMap();
-          ((Map)localObject3).put("share_image", paramString);
-          paramString = new Bundle();
-          paramString.putString("report_type", "102");
-          paramString.putString("act_type", "51");
-          paramString.putString("intext_3", "1");
-          paramString.putString("stringext_1", this.a.a.jdField_a_of_type_JavaLangString);
-          ReportCenter.a().a(paramString, "", str2, false);
-          l1 = System.currentTimeMillis();
-          str1 = HttpUtil.uploadImageWithHttps(NetworkUtil.a("https://cgi.connect.qq.com/qqconnectopen/upload_share_image", 1007), "cgi.connect.qq.com", str2, str3, null, (Map)localObject3, (Map)localObject2, false);
-          paramString = str1;
-          if (str1 == null) {
-            paramString = HttpUtil.uploadImageWithHttps("https://cgi.connect.qq.com/qqconnectopen/upload_share_image", "cgi.connect.qq.com", str2, str3, null, (Map)localObject3, (Map)localObject2, true);
-          }
-          if (paramString != null) {}
-          for (;;)
-          {
-            try
-            {
-              paramString = new JSONObject(paramString);
-              j = paramString.getInt("retcode");
-              if (j != 0) {
-                break label1613;
-              }
-            }
-            catch (JSONException paramString)
-            {
-              try
-              {
-                if (!paramString.has("result")) {
-                  break label1613;
-                }
-                paramString = paramString.getJSONObject("result").getString("url");
-                if (TextUtils.isEmpty(paramString)) {
-                  break label1613;
-                }
-                this.a.a.this$0.i = paramString;
-                this.a.a.this$0.jdField_e_of_type_Boolean = false;
-                this.a.a.this$0.b = 0;
-                i = 0;
-                k = i;
-                i = j;
-                l2 = System.currentTimeMillis();
-                paramString = new Bundle();
-                paramString.putString("report_type", "102");
-                paramString.putString("act_type", "11");
-                paramString.putString("intext_1", "" + k);
-                paramString.putString("intext_2", "" + i);
-                paramString.putString("intext_3", "1");
-                paramString.putString("intext_5", "" + (l2 - l1));
-                if (k == 1) {
-                  paramString.putString("stringext_1", this.a.a.jdField_a_of_type_JavaLangString);
-                }
-                ReportCenter.a().a(paramString, "", str2, false);
-              }
-              catch (JSONException paramString)
-              {
-                break label1572;
-              }
-              paramString = paramString;
-              j = 0;
-            }
-            i = j;
-            int k = m;
-            if (QLog.isColorLevel())
-            {
-              QLog.d(Share.jdField_a_of_type_JavaLangString, 2, paramString.getMessage());
-              i = j;
-              k = m;
-              continue;
-              i = 1;
-              break label753;
-              i = 1;
-              continue;
-              i = 0;
-              k = m;
-            }
-          }
+          QLog.d(Share.jdField_a_of_type_JavaLangString, 2, paramString.getMessage());
+          i = j;
         }
+        label1118:
+        k = 1;
       }
+      else
+      {
+        k = 1;
+        i = 0;
+      }
+      l2 = System.currentTimeMillis();
+      paramString = new Bundle();
+      paramString.putString("report_type", "102");
+      paramString.putString("act_type", "11");
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("");
+      ((StringBuilder)localObject1).append(k);
+      paramString.putString("intext_1", ((StringBuilder)localObject1).toString());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("");
+      ((StringBuilder)localObject1).append(i);
+      paramString.putString("intext_2", ((StringBuilder)localObject1).toString());
+      paramString.putString((String)localObject5, "1");
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("");
+      ((StringBuilder)localObject1).append(l2 - l1);
+      paramString.putString("intext_5", ((StringBuilder)localObject1).toString());
+      if (k == 1) {
+        paramString.putString((String)localObject4, this.a.a.jdField_a_of_type_JavaLangString);
+      }
+      ReportCenter.a().a(paramString, "", (String)localObject3, false);
     }
+    localObject3 = "stringext_1";
+    localObject2 = "intext_3";
+    localObject1 = localObject2;
+    paramString = (String)localObject3;
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("Share info after WebView screenshot: title=");
+      paramString.append(this.a.a.this$0.jdField_e_of_type_JavaLangString);
+      paramString.append(", summary=");
+      paramString.append(this.a.a.this$0.h);
+      paramString.append(", thumb=");
+      paramString.append(this.a.a.this$0.i);
+      paramString.append(", shareURL=");
+      paramString.append(this.a.a.jdField_a_of_type_JavaLangString);
+      QLog.e("shareWebPage", 2, paramString.toString());
+      localObject1 = localObject2;
+      paramString = (String)localObject3;
+      break label1467;
+      paramString = "stringext_1";
+    }
+    label1467:
+    k = 1;
+    localObject2 = new Bundle();
+    if (TextUtils.isEmpty(this.a.a.this$0.i)) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    i = j;
+    if (TextUtils.isEmpty(this.a.a.this$0.h)) {
+      i = j | 0x2;
+    }
+    j = i;
+    if (TextUtils.isEmpty(this.a.a.this$0.jdField_e_of_type_JavaLangString)) {
+      j = i | 0x4;
+    }
+    ((Bundle)localObject2).putString("report_type", "102");
+    ((Bundle)localObject2).putString("act_type", "93");
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("");
+    i = k;
+    if (j == 0) {
+      i = 0;
+    }
+    ((StringBuilder)localObject3).append(i);
+    ((Bundle)localObject2).putString("intext_1", ((StringBuilder)localObject3).toString());
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("");
+    ((StringBuilder)localObject3).append(ReportDef.RepUtil.b(this.a.a.jdField_a_of_type_Int));
+    ((Bundle)localObject2).putString((String)localObject1, ((StringBuilder)localObject3).toString());
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("");
+    ((StringBuilder)localObject1).append(j);
+    ((Bundle)localObject2).putString("intext_2", ((StringBuilder)localObject1).toString());
+    ((Bundle)localObject2).putString(paramString, this.a.a.jdField_a_of_type_JavaLangString);
+    ReportCenter.a().a((Bundle)localObject2, "", this.a.a.this$0.jdField_a_of_type_MqqAppAppRuntime.getAccount(), false);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("WebView screenshot END. thumb=");
+      paramString.append(this.a.a.this$0.i);
+      QLog.e("shareWebPage", 2, paramString.toString());
+    }
+    Share.a(this.a.a.this$0, this.a.a.jdField_a_of_type_JavaLangString, this.a.a.jdField_a_of_type_Int, this.a.a.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.Share.1.1.1
  * JD-Core Version:    0.7.0.1
  */

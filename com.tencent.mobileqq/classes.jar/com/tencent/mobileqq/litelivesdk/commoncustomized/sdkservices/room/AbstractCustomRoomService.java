@@ -32,9 +32,9 @@ import org.json.JSONObject;
 public abstract class AbstractCustomRoomService
   implements RoomServiceInterface
 {
-  public RoomServiceAdapter a;
-  public EnterRoomInfo a;
-  public LiveInfo a;
+  protected RoomServiceAdapter a;
+  protected EnterRoomInfo a;
+  protected LiveInfo a;
   private ConcurrentHashMap<Long, EnterExitRoomCallback> a;
   protected boolean a;
   
@@ -49,59 +49,52 @@ public abstract class AbstractCustomRoomService
   
   protected void a()
   {
-    HashMap localHashMap;
     if (BusinessManager.a.b())
     {
-      localHashMap = new HashMap();
+      HashMap localHashMap = new HashMap();
       localHashMap.put("appid", "1014");
       localHashMap.put("act_type", "start_video_url");
       localHashMap.put("fromid", BusinessManager.a.b());
       localHashMap.put("userid", BusinessManager.a.a());
-      if (!BusinessManager.a.c()) {
-        break label125;
+      String str;
+      if (BusinessManager.a.d()) {
+        str = "1";
+      } else {
+        str = "0";
       }
-    }
-    label125:
-    for (String str = "1";; str = "0")
-    {
       localHashMap.put("zt_int4", str);
       localHashMap.put("zt_int5", BusinessManager.a.c());
       UserAction.onUserActionToTunnel("00000MEVUX3CBYO1", "start_video_url#room_page#room", true, -1L, -1L, localHashMap, true, true);
-      return;
     }
   }
   
-  public void a(long paramLong)
+  protected void a(long paramLong)
   {
-    HashMap localHashMap;
     if (BusinessManager.a.b())
     {
-      localHashMap = new HashMap();
+      HashMap localHashMap = new HashMap();
       localHashMap.put("appid", "1014");
       localHashMap.put("act_type", "end_video_url");
       localHashMap.put("timelong", String.valueOf(paramLong));
       localHashMap.put("fromid", BusinessManager.a.b());
       localHashMap.put("userid", BusinessManager.a.a());
-      if (!BusinessManager.a.c()) {
-        break label147;
+      String str;
+      if (BusinessManager.a.d()) {
+        str = "1";
+      } else {
+        str = "0";
       }
-    }
-    label147:
-    for (String str = "1";; str = "0")
-    {
       localHashMap.put("zt_int4", str);
       localHashMap.put("zt_int5", BusinessManager.a.c());
       UserAction.onUserActionToTunnel("00000MEVUX3CBYO1", "end_video_url#room_page#room", true, -1L, -1L, localHashMap, true, true);
-      return;
     }
   }
   
-  public void a(long paramLong, int paramInt, String paramString)
+  protected void a(long paramLong, int paramInt, String paramString)
   {
-    HashMap localHashMap;
     if (BusinessManager.a.b())
     {
-      localHashMap = new HashMap();
+      HashMap localHashMap = new HashMap();
       localHashMap.put("appid", "1014");
       localHashMap.put("act_type", "fail_video_url");
       localHashMap.put("timelong", String.valueOf(paramLong));
@@ -113,17 +106,14 @@ public abstract class AbstractCustomRoomService
         str = "";
       }
       localHashMap.put("zt_str3", str);
-      if (!BusinessManager.a.c()) {
-        break label188;
+      if (BusinessManager.a.d()) {
+        paramString = "1";
+      } else {
+        paramString = "0";
       }
-    }
-    label188:
-    for (paramString = "1";; paramString = "0")
-    {
       localHashMap.put("zt_int4", paramString);
       localHashMap.put("zt_int5", BusinessManager.a.c());
       UserAction.onUserActionToTunnel("00000MEVUX3CBYO1", "fail_video_url#room_page#room", true, -1L, -1L, localHashMap, true, true);
-      return;
     }
   }
   
@@ -191,86 +181,96 @@ public abstract class AbstractCustomRoomService
     this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceModelEnterRoomInfo = paramEnterRoomInfo;
     Object localObject1 = paramEnterRoomInfo.extData;
     int i = ((Bundle)localObject1).getInt("content_type");
-    LogFactory.a().c("AbstractCustomRoomService", "----------watchEnterRoom contentType " + i);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("Referer", g());
+    Object localObject2 = LogFactory.a();
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("----------watchEnterRoom contentType ");
+    ((StringBuilder)localObject3).append(i);
+    ((LogInterface)localObject2).c("AbstractCustomRoomService", ((StringBuilder)localObject3).toString());
+    localObject2 = new HashMap();
+    ((Map)localObject2).put("Referer", g());
     long l1 = System.currentTimeMillis();
     a();
-    Object localObject2;
+    Object localObject4;
     if (RoomUtil.b(i))
     {
       try
       {
-        localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("room_id", String.valueOf(paramEnterRoomInfo.roomId));
-        HttpsInterface localHttpsInterface = HttpsFactory.a();
-        if (this.jdField_a_of_type_Boolean) {}
-        for (localObject1 = b();; localObject1 = a())
+        localObject3 = new JSONObject();
+        ((JSONObject)localObject3).put("room_id", String.valueOf(paramEnterRoomInfo.roomId));
+        localObject4 = HttpsFactory.a();
+        if (this.jdField_a_of_type_Boolean) {
+          localObject1 = b();
+        } else {
+          localObject1 = a();
+        }
+        paramEnterRoomInfo = new AbstractCustomRoomService.1(this, paramEnterExitRoomCallback, l1, paramEnterRoomInfo);
+        paramEnterExitRoomCallback = CookieHelper.a();
+        try
         {
-          localHttpsInterface.a((String)localObject1, localHashMap, (JSONObject)localObject2, new AbstractCustomRoomService.1(this, paramEnterExitRoomCallback, l1, paramEnterRoomInfo), CookieHelper.a());
+          ((HttpsInterface)localObject4).a((String)localObject1, (Map)localObject2, (JSONObject)localObject3, paramEnterRoomInfo, paramEnterExitRoomCallback);
           return;
         }
-        if (!RoomUtil.c(i)) {
-          break label339;
-        }
-      }
-      catch (Exception paramEnterRoomInfo)
-      {
+        catch (Exception paramEnterRoomInfo) {}
         paramEnterRoomInfo.printStackTrace();
-        a(System.currentTimeMillis() - l1, -2, paramEnterRoomInfo.getMessage());
-        return;
       }
+      catch (Exception paramEnterRoomInfo) {}
+      a(System.currentTimeMillis() - l1, -2, paramEnterRoomInfo.getMessage());
+      return;
     }
-    else
+    if (RoomUtil.c(i))
     {
-      paramEnterRoomInfo = paramEnterRoomInfo.extData.getString("vid");
-      localObject1 = new AbstractCustomRoomService.2(this, l1);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(((HttpCallbacker)localObject1).a()), paramEnterExitRoomCallback);
-      localHashMap.put("cookie", CookieHelper.a());
-      paramEnterExitRoomCallback = this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceRoomServiceAdapter.getHttpInterface();
-      if (this.jdField_a_of_type_Boolean) {}
-      for (paramEnterRoomInfo = d() + "?vid=" + paramEnterRoomInfo;; paramEnterRoomInfo = c() + "?vid=" + paramEnterRoomInfo)
+      localObject1 = paramEnterRoomInfo.extData.getString("vid");
+      localObject3 = new AbstractCustomRoomService.2(this, l1);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(((HttpCallbacker)localObject3).a()), paramEnterExitRoomCallback);
+      ((Map)localObject2).put("cookie", CookieHelper.a());
+      localObject4 = this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceRoomServiceAdapter.getHttpInterface();
+      if (this.jdField_a_of_type_Boolean)
       {
-        paramEnterExitRoomCallback.get(paramEnterRoomInfo, localHashMap, (HttpResponse)localObject1);
-        return;
+        paramEnterRoomInfo = new StringBuilder();
+        paramEnterExitRoomCallback = d();
       }
+      else
+      {
+        paramEnterRoomInfo = new StringBuilder();
+        paramEnterExitRoomCallback = c();
+      }
+      paramEnterRoomInfo.append(paramEnterExitRoomCallback);
+      paramEnterRoomInfo.append("?vid=");
+      paramEnterRoomInfo.append((String)localObject1);
+      ((HttpInterface)localObject4).get(paramEnterRoomInfo.toString(), (Map)localObject2, (HttpResponse)localObject3);
+      return;
     }
-    label339:
     if (RoomUtil.a(i))
     {
       long l2 = paramEnterRoomInfo.roomId;
       paramEnterRoomInfo = ((Bundle)localObject1).getString("topicTime");
       localObject1 = new AbstractCustomRoomService.3(this, l1);
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(((HttpCallbacker)localObject1).a()), paramEnterExitRoomCallback);
-      for (;;)
+      try
       {
-        try
-        {
-          paramEnterExitRoomCallback = new JSONObject();
-          paramEnterExitRoomCallback.put("room_id", String.valueOf(l2));
-          paramEnterExitRoomCallback.put("start_ts", paramEnterRoomInfo);
-          localObject2 = HttpsFactory.a();
-          if (this.jdField_a_of_type_Boolean)
-          {
-            paramEnterRoomInfo = f();
-            ((HttpsInterface)localObject2).a(paramEnterRoomInfo, localHashMap, paramEnterExitRoomCallback, new AbstractCustomRoomService.4(this, (HttpCallbacker)localObject1), CookieHelper.a());
-            return;
-          }
+        paramEnterExitRoomCallback = new JSONObject();
+        paramEnterExitRoomCallback.put("room_id", String.valueOf(l2));
+        paramEnterExitRoomCallback.put("start_ts", paramEnterRoomInfo);
+        localObject3 = HttpsFactory.a();
+        if (this.jdField_a_of_type_Boolean) {
+          paramEnterRoomInfo = f();
+        } else {
+          paramEnterRoomInfo = e();
         }
-        catch (JSONException paramEnterRoomInfo)
-        {
-          paramEnterRoomInfo.printStackTrace();
-          a(System.currentTimeMillis() - l1, -2, paramEnterRoomInfo.getMessage());
-          return;
-        }
-        paramEnterRoomInfo = e();
+        ((HttpsInterface)localObject3).a(paramEnterRoomInfo, (Map)localObject2, paramEnterExitRoomCallback, new AbstractCustomRoomService.4(this, (HttpCallbacker)localObject1), CookieHelper.a());
+        return;
+      }
+      catch (JSONException paramEnterRoomInfo)
+      {
+        paramEnterRoomInfo.printStackTrace();
+        a(System.currentTimeMillis() - l1, -2, paramEnterRoomInfo.getMessage());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.room.AbstractCustomRoomService
  * JD-Core Version:    0.7.0.1
  */

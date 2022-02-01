@@ -11,8 +11,9 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class QQCircleFeedBase$StFeedListBusiRspData
   extends MessageMicro<StFeedListBusiRspData>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 56, 64, 74, 82, 88, 98, 106, 114, 122, 130 }, new String[] { "exploredPageData", "schoolPageData", "campanyPageData", "cityPageData", "tagPageData", "followPageData", "NoUse", "opMask", "refreshAttachInfo", "gpsPageData", "rspTimestamp", "fashionCopyPageData", "newUserPymkPageData", "commSchemaCollectPageData", "schemaTrans", "homeButtonBubbleData" }, new Object[] { null, null, null, null, null, null, Integer.valueOf(0), Integer.valueOf(0), "", null, Long.valueOf(0L), null, null, null, "", null }, StFeedListBusiRspData.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBRepeatField<Integer> NoUse = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
+  public QQCircleFeedBase.StBackflowPymkPageData backflowPymkPageData = new QQCircleFeedBase.StBackflowPymkPageData();
   public QQCircleFeedBase.StCampanyPageData campanyPageData = new QQCircleFeedBase.StCampanyPageData();
   public QQCircleFeedBase.StCityPageData cityPageData = new QQCircleFeedBase.StCityPageData();
   public QQCircleFeedBase.StCommSchemaCollectPageData commSchemaCollectPageData = new QQCircleFeedBase.StCommSchemaCollectPageData();
@@ -28,10 +29,16 @@ public final class QQCircleFeedBase$StFeedListBusiRspData
   public final PBStringField schemaTrans = PBField.initString("");
   public QQCircleFeedBase.StSchoolPageData schoolPageData = new QQCircleFeedBase.StSchoolPageData();
   public QQCircleFeedBase.StTagPageData tagPageData = new QQCircleFeedBase.StTagPageData();
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 56, 64, 74, 82, 88, 98, 106, 114, 122, 130, 138 }, new String[] { "exploredPageData", "schoolPageData", "campanyPageData", "cityPageData", "tagPageData", "followPageData", "NoUse", "opMask", "refreshAttachInfo", "gpsPageData", "rspTimestamp", "fashionCopyPageData", "newUserPymkPageData", "commSchemaCollectPageData", "schemaTrans", "homeButtonBubbleData", "backflowPymkPageData" }, new Object[] { null, null, null, null, null, null, localInteger, localInteger, "", null, Long.valueOf(0L), null, null, null, "", null, null }, StFeedListBusiRspData.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qqcircle.QQCircleFeedBase.StFeedListBusiRspData
  * JD-Core Version:    0.7.0.1
  */

@@ -15,29 +15,22 @@ class AssistantSettingFragment$3
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    boolean bool = true;
     ReportClickEventHelper.a(AssistantSettingFragment.a(this.a), "0X800B87D", paramBoolean);
-    if (!NetworkUtil.d(this.a.getActivity()))
+    if (!NetworkUtil.isNetSupport(this.a.getBaseActivity()))
     {
-      AssistantSettingFragment.a(this.a, 2131694510, 1);
-      AssistantSettingFragment localAssistantSettingFragment = this.a;
-      if (!paramBoolean) {
-        AssistantSettingFragment.a(localAssistantSettingFragment, bool, this);
-      }
+      AssistantSettingFragment.a(this.a, 2131694475, 1);
+      AssistantSettingFragment.a(this.a, paramBoolean ^ true, this);
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      bool = false;
-      break;
       ((CardHandler)AssistantSettingFragment.a(this.a).getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).q(paramBoolean);
     }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.AssistantSettingFragment.3
  * JD-Core Version:    0.7.0.1
  */

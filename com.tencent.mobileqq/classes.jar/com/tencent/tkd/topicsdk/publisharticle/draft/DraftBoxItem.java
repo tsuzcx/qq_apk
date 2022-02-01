@@ -1,5 +1,7 @@
 package com.tencent.tkd.topicsdk.publisharticle.draft;
 
+import .r8.java8methods.utility.Integer.hashCode.II;
+import .r8.java8methods.utility.Long.hashCode.IJ;
 import com.tencent.tkd.topicsdk.bean.DraftArticleInfo;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
@@ -20,57 +22,67 @@ public final class DraftBoxItem
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof DraftBoxItem))
       {
         paramObject = (DraftBoxItem)paramObject;
-        if ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long) || (!Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) || (!Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdTopicsdkBeanDraftArticleInfo, paramObject.jdField_a_of_type_ComTencentTkdTopicsdkBeanDraftArticleInfo)) || (!Intrinsics.areEqual(this.b, paramObject.b))) {}
+        if ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) && (Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentTkdTopicsdkBeanDraftArticleInfo, paramObject.jdField_a_of_type_ComTencentTkdTopicsdkBeanDraftArticleInfo)) && (Intrinsics.areEqual(this.b, paramObject.b))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public int hashCode()
   {
-    int k = 0;
-    int m = Integer.hashCode(this.jdField_a_of_type_Int);
-    int n = Long.hashCode(this.jdField_a_of_type_Long);
+    int m = .r8.java8methods.utility.Integer.hashCode.II.hashCode(this.jdField_a_of_type_Int);
+    int n = .r8.java8methods.utility.Long.hashCode.IJ.hashCode(this.jdField_a_of_type_Long);
     Object localObject = this.jdField_a_of_type_JavaLangString;
+    int k = 0;
     int i;
-    if (localObject != null)
-    {
+    if (localObject != null) {
       i = localObject.hashCode();
-      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkBeanDraftArticleInfo;
-      if (localObject == null) {
-        break label100;
-      }
-    }
-    label100:
-    for (int j = localObject.hashCode();; j = 0)
-    {
-      localObject = this.b;
-      if (localObject != null) {
-        k = localObject.hashCode();
-      }
-      return (j + (i + (m * 31 + n) * 31) * 31) * 31 + k;
+    } else {
       i = 0;
-      break;
     }
+    localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkBeanDraftArticleInfo;
+    int j;
+    if (localObject != null) {
+      j = localObject.hashCode();
+    } else {
+      j = 0;
+    }
+    localObject = this.b;
+    if (localObject != null) {
+      k = localObject.hashCode();
+    }
+    return (((m * 31 + n) * 31 + i) * 31 + j) * 31 + k;
   }
   
   @NotNull
   public String toString()
   {
-    return "DraftBoxItem(id=" + this.jdField_a_of_type_Int + ", timestamp=" + this.jdField_a_of_type_Long + ", key=" + this.jdField_a_of_type_JavaLangString + ", draftArticleInfo=" + this.jdField_a_of_type_ComTencentTkdTopicsdkBeanDraftArticleInfo + ", userId=" + this.b + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DraftBoxItem(id=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", timestamp=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", key=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", draftArticleInfo=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdTopicsdkBeanDraftArticleInfo);
+    localStringBuilder.append(", userId=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.publisharticle.draft.DraftBoxItem
  * JD-Core Version:    0.7.0.1
  */

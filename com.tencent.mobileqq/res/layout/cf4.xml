@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/frp" android:clipToPadding="false" android:layout_width="84.0dip" android:layout_height="100.0dip" android:layout_marginRight="-6.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout android:id="@id/mpz" android:layout_width="66.0dip" android:layout_height="84.0dip" android:layout_centerInParent="true" app:qqArMapGuideRadius="4">
-        <ImageView android:id="@id/nay" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-        <ImageView android:id="@id/nan" android:background="@color/gj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/fzp" android:scaleType="center" />
-        <ImageView android:id="@id/nas" android:background="@drawable/g05" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/g5m" android:scaleType="center" />
-        <TextView android:textSize="10.0dip" android:textColor="@color/ai6" android:layout_gravity="bottom|center" android:id="@id/tv_name" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout>
-</RelativeLayout>
+<LinearLayout android:id="@id/nhx" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:layout_gravity="center" android:id="@id/l7s" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+</LinearLayout>

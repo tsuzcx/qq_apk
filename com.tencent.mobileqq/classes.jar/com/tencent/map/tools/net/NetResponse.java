@@ -18,14 +18,19 @@ public class NetResponse
     this.exception = paramException;
     if ((paramException instanceof qk))
     {
-      this.errorCode = ((qk)paramException).errorCode;
-      this.statusCode = ((qk)paramException).statusCode;
+      paramException = (qk)paramException;
+      this.errorCode = paramException.errorCode;
+      this.statusCode = paramException.statusCode;
     }
   }
   
   public boolean available()
   {
-    return ((this.errorCode == 0) && (this.statusCode == 200)) || ((this.data != null) && (this.data.length > 0));
+    byte[] arrayOfByte;
+    if ((this.errorCode != 0) || (this.statusCode != 200)) {
+      arrayOfByte = this.data;
+    }
+    return (arrayOfByte != null) && (arrayOfByte.length > 0);
   }
   
   public String toString()
@@ -47,7 +52,7 @@ public class NetResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.tools.net.NetResponse
  * JD-Core Version:    0.7.0.1
  */

@@ -41,22 +41,25 @@ public class QualityReportTaskImpl
   
   public void send()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      throw new NullPointerException("缺少上报基础字段，请检查 actType以及他们的描述");
-    }
-    if (this.jdField_a_of_type_Int == 2) {
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesDatareportCustomDataReportService.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean);
-    }
-    do
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      return;
-      if (this.jdField_a_of_type_Int == 1)
+      int i = this.jdField_a_of_type_Int;
+      if (i == 2)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesDatareportCustomDataReportService.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean);
+        return;
+      }
+      if (i == 1)
       {
         this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesDatareportCustomDataReportService.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean);
         return;
       }
-    } while (this.jdField_a_of_type_Int != 3);
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesDatareportCustomDataReportService.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean);
+      if (i == 3) {
+        this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesDatareportCustomDataReportService.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean);
+      }
+      return;
+    }
+    throw new NullPointerException("缺少上报基础字段，请检查 actType以及他们的描述");
   }
   
   public QualityReportTask setActType(String paramString)
@@ -114,7 +117,7 @@ public class QualityReportTaskImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.datareport.QualityReportTaskImpl
  * JD-Core Version:    0.7.0.1
  */

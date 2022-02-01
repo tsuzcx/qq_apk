@@ -52,15 +52,22 @@ public class CircleLayoutManager
   
   private float a(float paramFloat)
   {
-    if ((Math.abs(paramFloat) < this.g) || (Math.abs(paramFloat) > this.h)) {
-      return 1.0F;
+    if (Math.abs(paramFloat) >= this.g)
+    {
+      if (Math.abs(paramFloat) > this.h) {
+        return 1.0F;
+      }
+      return (1.0F - Math.abs(paramFloat - this.jdField_d_of_type_Float) / 45.0F) * (this.jdField_c_of_type_Float - 1.0F) + 1.0F;
     }
-    return 1.0F + (1.0F - Math.abs(paramFloat - this.jdField_d_of_type_Float) / 45.0F) * (this.jdField_c_of_type_Float - 1.0F);
+    return 1.0F;
   }
   
   private int a(float paramFloat)
   {
-    return (int)(this.jdField_c_of_type_Int * Math.cos(Math.toRadians(90.0F - paramFloat)));
+    double d1 = this.jdField_c_of_type_Int;
+    double d2 = Math.cos(Math.toRadians(90.0F - paramFloat));
+    Double.isNaN(d1);
+    return (int)(d1 * d2);
   }
   
   private void a()
@@ -97,48 +104,34 @@ public class CircleLayoutManager
     }
     int m = getItemCount();
     k = 0;
-    label126:
-    View localView;
-    label260:
-    float f1;
-    if (k < m) {
+    while (k < m)
+    {
       if ((this.jdField_a_of_type_AndroidUtilSparseArray.get(k) != null) && (((Float)this.jdField_a_of_type_AndroidUtilSparseArray.get(k)).floatValue() - this.jdField_e_of_type_Float <= this.h + jdField_a_of_type_Float) && (((Float)this.jdField_a_of_type_AndroidUtilSparseArray.get(k)).floatValue() - this.jdField_e_of_type_Float >= this.g - jdField_a_of_type_Float) && (!this.jdField_a_of_type_AndroidUtilSparseBooleanArray.get(k)))
       {
         paramState = (ViewGroup)paramRecycler.getViewForPosition(k);
-        localView = paramState.getChildAt(0);
+        View localView = paramState.getChildAt(0);
         measureChildWithMargins(paramState, 0, 0);
-        if (paramInt != jdField_a_of_type_Int) {
-          break label420;
+        if (paramInt == jdField_a_of_type_Int) {
+          addView(paramState, 0);
+        } else {
+          addView(paramState);
         }
-        addView(paramState, 0);
-        f1 = ((Float)this.jdField_a_of_type_AndroidUtilSparseArray.get(k)).floatValue();
-        if (m <= 90.0F / jdField_a_of_type_Float + 1.0F) {
-          break label428;
+        float f2 = ((Float)this.jdField_a_of_type_AndroidUtilSparseArray.get(k)).floatValue();
+        float f1 = f2;
+        if (m > 90.0F / jdField_a_of_type_Float + 1.0F) {
+          f1 = f2 - this.jdField_e_of_type_Float;
         }
-        f1 -= this.jdField_e_of_type_Float;
+        int n = a(f1);
+        int i1 = b(f1);
+        paramState.setRotation(f1);
+        int i2 = this.jdField_d_of_type_Int;
+        int i3 = this.jdField_e_of_type_Int;
+        layoutDecorated(paramState, i2 + n, i3 + i1, i2 + n + this.i, i3 + i1 + this.j);
+        localView.setRotation(-f1);
+        this.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(k, true);
+        a(paramState, f1);
       }
-    }
-    label420:
-    label428:
-    for (;;)
-    {
-      int n = a(f1);
-      int i1 = b(f1);
-      paramState.setRotation(f1);
-      int i2 = this.jdField_d_of_type_Int;
-      int i3 = this.jdField_e_of_type_Int;
-      int i4 = this.jdField_d_of_type_Int;
-      int i5 = this.i;
-      int i6 = this.jdField_e_of_type_Int;
-      layoutDecorated(paramState, i2 + n, i3 + i1, i5 + (n + i4), this.j + (i6 + i1));
-      localView.setRotation(-f1);
-      this.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(k, true);
-      a(paramState, f1);
       k += 1;
-      break label126;
-      break;
-      addView(paramState);
-      break label260;
     }
   }
   
@@ -164,7 +157,10 @@ public class CircleLayoutManager
   
   private int b(float paramFloat)
   {
-    return (int)(this.jdField_c_of_type_Int * Math.sin(Math.toRadians(90.0F - paramFloat)));
+    double d1 = this.jdField_c_of_type_Int;
+    double d2 = Math.sin(Math.toRadians(90.0F - paramFloat));
+    Double.isNaN(d1);
+    return (int)(d1 * d2);
   }
   
   private int c()
@@ -192,10 +188,12 @@ public class CircleLayoutManager
     if (getChildCount() == 0) {
       return null;
     }
-    if (paramInt < getPosition(getChildAt(0))) {}
-    for (paramInt = -1;; paramInt = 1) {
-      return new PointF(paramInt, 0.0F);
+    if (paramInt < getPosition(getChildAt(0))) {
+      paramInt = -1;
+    } else {
+      paramInt = 1;
     }
+    return new PointF(paramInt, 0.0F);
   }
   
   public void a(boolean paramBoolean)
@@ -226,17 +224,9 @@ public class CircleLayoutManager
   
   public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
   {
-    int k = 0;
     try
     {
-      if ((paramState.getItemCount() <= 0) || (paramState.isPreLayout()))
-      {
-        this.jdField_e_of_type_Float = 0.0F;
-        if (paramState.getItemCount() == 0) {
-          removeAndRecycleAllViews(paramRecycler);
-        }
-      }
-      else
+      if ((paramState.getItemCount() > 0) && (!paramState.isPreLayout()))
       {
         View localView = paramRecycler.getViewForPosition(0);
         addView(localView);
@@ -246,6 +236,7 @@ public class CircleLayoutManager
         this.jdField_d_of_type_Int = (b() - this.i);
         this.jdField_e_of_type_Int = (c() - this.j);
         float f1 = this.jdField_f_of_type_Int;
+        int k = 0;
         while (k < getItemCount())
         {
           this.jdField_a_of_type_AndroidUtilSparseArray.put(k, Float.valueOf(f1));
@@ -258,6 +249,11 @@ public class CircleLayoutManager
         a(paramRecycler, paramState);
         return;
       }
+      this.jdField_e_of_type_Float = 0.0F;
+      if (paramState.getItemCount() == 0) {
+        removeAndRecycleAllViews(paramRecycler);
+      }
+      return;
     }
     catch (IndexOutOfBoundsException paramRecycler)
     {
@@ -271,70 +267,64 @@ public class CircleLayoutManager
       return 0;
     }
     int k = -paramInt;
-    float f1 = -paramInt / jdField_b_of_type_Float + this.jdField_e_of_type_Float;
-    if (f1 < 0.0F) {
-      k = (int)(-this.jdField_e_of_type_Float * jdField_b_of_type_Float);
-    }
-    label286:
-    for (;;)
+    float f2 = k;
+    float f1 = jdField_b_of_type_Float;
+    float f3 = f2 / f1;
+    f2 = this.jdField_e_of_type_Float;
+    f3 += f2;
+    if (f3 < 0.0F) {}
+    for (f1 = -f2 * f1;; f1 = (b() - this.jdField_e_of_type_Float) * jdField_b_of_type_Float)
     {
-      f1 = k / jdField_b_of_type_Float;
-      this.jdField_e_of_type_Float += f1;
-      int m = 0;
-      for (;;)
-      {
-        if (m < getChildCount())
-        {
-          ViewGroup localViewGroup = (ViewGroup)getChildAt(m);
-          View localView = localViewGroup.getChildAt(0);
-          float f2 = localViewGroup.getRotation() - f1;
-          int n = a(f2);
-          int i1 = b(f2);
-          localViewGroup.setRotation(f2);
-          int i2 = this.jdField_d_of_type_Int;
-          int i3 = this.jdField_e_of_type_Int;
-          int i4 = this.jdField_d_of_type_Int;
-          int i5 = this.i;
-          int i6 = this.jdField_e_of_type_Int;
-          layoutDecorated(localViewGroup, i2 + n, i3 + i1, i5 + (n + i4), this.j + (i6 + i1));
-          localView.setRotation(-f2);
-          a(localViewGroup, f2);
-          m += 1;
-          continue;
-          if (f1 <= b()) {
-            break label286;
-          }
-          k = (int)((b() - this.jdField_e_of_type_Float) * jdField_b_of_type_Float);
-          break;
-        }
-      }
-      if (paramInt > 0) {
-        a(paramRecycler, paramState, jdField_a_of_type_Int);
-      }
-      for (;;)
-      {
-        return k;
-        a(paramRecycler, paramState, jdField_b_of_type_Int);
+      k = (int)f1;
+      break;
+      if (f3 <= b()) {
+        break;
       }
     }
+    f1 = k / jdField_b_of_type_Float;
+    this.jdField_e_of_type_Float += f1;
+    int m = 0;
+    while (m < getChildCount())
+    {
+      ViewGroup localViewGroup = (ViewGroup)getChildAt(m);
+      View localView = localViewGroup.getChildAt(0);
+      f2 = localViewGroup.getRotation() - f1;
+      int n = a(f2);
+      int i1 = b(f2);
+      localViewGroup.setRotation(f2);
+      int i2 = this.jdField_d_of_type_Int;
+      int i3 = this.jdField_e_of_type_Int;
+      layoutDecorated(localViewGroup, i2 + n, i3 + i1, i2 + n + this.i, i3 + i1 + this.j);
+      localView.setRotation(-f2);
+      a(localViewGroup, f2);
+      m += 1;
+    }
+    if (paramInt > 0)
+    {
+      a(paramRecycler, paramState, jdField_a_of_type_Int);
+      return k;
+    }
+    a(paramRecycler, paramState, jdField_b_of_type_Int);
+    return k;
   }
   
   public void scrollToPosition(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt > getItemCount() - 1)) {}
-    for (;;)
+    if ((paramInt >= 0) && (paramInt <= getItemCount() - 1))
     {
-      EventCollector.getInstance().onRecyclerViewScrollToPosition(this);
-      return;
       float f1 = paramInt * this.jdField_f_of_type_Float;
       if (f1 != this.jdField_e_of_type_Float)
       {
         this.jdField_e_of_type_Float = f1;
         a();
         requestLayout();
-        Log.i("EditVideoSmartMusicPart", "scrollToPosition pos:" + paramInt);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("scrollToPosition pos:");
+        localStringBuilder.append(paramInt);
+        Log.i("EditVideoSmartMusicPart", localStringBuilder.toString());
       }
     }
+    EventCollector.getInstance().onRecyclerViewScrollToPosition(this);
   }
   
   public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
@@ -346,7 +336,10 @@ public class CircleLayoutManager
   {
     paramRecyclerView = new CircleLayoutManager.1(this, paramRecyclerView.getContext());
     paramRecyclerView.setTargetPosition(paramInt);
-    Log.i("EditVideoSmartMusicPart", "smoothScrollToPosition pos:" + paramInt);
+    paramState = new StringBuilder();
+    paramState.append("smoothScrollToPosition pos:");
+    paramState.append(paramInt);
+    Log.i("EditVideoSmartMusicPart", paramState.toString());
     startSmoothScroll(paramRecyclerView);
   }
   
@@ -357,7 +350,7 @@ public class CircleLayoutManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.view.smartmusicview.CircleLayoutManager
  * JD-Core Version:    0.7.0.1
  */

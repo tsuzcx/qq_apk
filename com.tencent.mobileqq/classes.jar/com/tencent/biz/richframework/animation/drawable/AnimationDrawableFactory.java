@@ -26,30 +26,29 @@ public class AnimationDrawableFactory
   
   private Bitmap a(File paramFile)
   {
-    RFLog.i("AnimationDrawableFactory", RFLog.CLR, "getBitMapFromFile fileName:" + paramFile.getName());
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramFile.exists())
-    {
-      localObject1 = localObject2;
-      if (paramFile.isFile()) {
-        localObject1 = BitmapFactory.decodeFile(paramFile.getAbsolutePath());
-      }
+    int i = RFLog.CLR;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getBitMapFromFile fileName:");
+    localStringBuilder.append(paramFile.getName());
+    RFLog.i("AnimationDrawableFactory", i, localStringBuilder.toString());
+    if ((paramFile.exists()) && (paramFile.isFile())) {
+      return BitmapFactory.decodeFile(paramFile.getAbsolutePath());
     }
-    return localObject1;
+    return null;
   }
   
   public static AnimationDrawableFactory a()
   {
-    if (jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory == null) {
-        jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory = new AnimationDrawableFactory();
+    if (jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory == null) {
+          jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory = new AnimationDrawableFactory();
+        }
       }
-      return jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory;
   }
   
   private QQAnimationDrawable a(String paramString)
@@ -68,20 +67,17 @@ public class AnimationDrawableFactory
       paramFile = paramFile.listFiles(new AnimationDrawableFactory.3());
       int j = paramFile.length;
       int i = 0;
-      if (i < j)
+      while (i < j)
       {
         File localFile = paramFile[i];
-        if (!localFile.exists()) {}
-        for (;;)
-        {
-          i += 1;
-          break;
+        if (localFile.exists()) {
           if (localFile.isDirectory()) {
             localLinkedList.addAll(a(localFile));
           } else {
             localLinkedList.add(localFile);
           }
         }
+        i += 1;
       }
     }
     return localLinkedList;
@@ -125,62 +121,90 @@ public class AnimationDrawableFactory
   
   private static String[] a(String paramString, int paramInt)
   {
-    paramString = a(paramString);
-    if ((paramString != null) && (paramString.length > 0) && (paramInt > 1))
+    String[] arrayOfString = a(paramString);
+    paramString = arrayOfString;
+    if (arrayOfString != null)
     {
-      ArrayList localArrayList = new ArrayList();
-      int i = 0;
-      while (i < paramString.length)
+      paramString = arrayOfString;
+      if (arrayOfString.length > 0)
       {
-        localArrayList.add(paramString[i]);
-        i += paramInt;
+        paramString = arrayOfString;
+        if (paramInt > 1)
+        {
+          paramString = new ArrayList();
+          int i = 0;
+          while (i < arrayOfString.length)
+          {
+            paramString.add(arrayOfString[i]);
+            i += paramInt;
+          }
+          if (arrayOfString.length % paramInt != 0) {
+            paramString.add(arrayOfString[(arrayOfString.length - 1)]);
+          }
+          paramString = (String[])paramString.toArray(new String[paramString.size()]);
+        }
       }
-      if (paramString.length % paramInt != 0) {
-        localArrayList.add(paramString[(paramString.length - 1)]);
-      }
-      return (String[])localArrayList.toArray(new String[localArrayList.size()]);
     }
     return paramString;
   }
   
   public static String[] a(String paramString, boolean paramBoolean)
   {
-    if ((paramBoolean) && (DeviceInfoUtils.b())) {}
-    for (int i = 2;; i = 1) {
-      return a(paramString, i);
+    int i;
+    if ((paramBoolean) && (DeviceInfoUtils.b())) {
+      i = 2;
+    } else {
+      i = 1;
     }
+    return a(paramString, i);
   }
   
   public void a(int paramInt, AnimationDrawableCreateOption paramAnimationDrawableCreateOption, AnimationDrawableFactory.CreateResultListener paramCreateResultListener)
   {
-    String str = paramInt + "@" + paramAnimationDrawableCreateOption.a();
-    RFLog.d("AnimationDrawableFactory", RFLog.USR, "createFromUrl" + str);
-    if (paramAnimationDrawableCreateOption.a()) {}
-    for (QQAnimationDrawable localQQAnimationDrawable = a(paramAnimationDrawableCreateOption.a());; localQQAnimationDrawable = null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("@");
+    ((StringBuilder)localObject).append(paramAnimationDrawableCreateOption.a());
+    String str = ((StringBuilder)localObject).toString();
+    paramInt = RFLog.USR;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("createFromUrl");
+    ((StringBuilder)localObject).append(str);
+    RFLog.d("AnimationDrawableFactory", paramInt, ((StringBuilder)localObject).toString());
+    if (paramAnimationDrawableCreateOption.a()) {
+      localObject = a(paramAnimationDrawableCreateOption.a());
+    } else {
+      localObject = null;
+    }
+    if (localObject != null)
     {
-      if (localQQAnimationDrawable != null)
-      {
-        RFLog.d("AnimationDrawableFactory", RFLog.USR, "getAnimationDrawable from cache success");
-        paramCreateResultListener.a(true, localQQAnimationDrawable);
-        return;
-      }
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str))
-      {
-        RFLog.d("AnimationDrawableFactory", RFLog.USR, "drawable is creating" + str);
-        paramCreateResultListener.a(false, null);
-        return;
-      }
-      paramCreateResultListener = new AnimationDrawableFactory.1(this, System.currentTimeMillis(), paramAnimationDrawableCreateOption, str, paramCreateResultListener);
-      RFLog.d("AnimationDrawableFactory", RFLog.USR, "addKey" + str);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramCreateResultListener);
-      RFWDownloaderFactory.getDownloader(paramAnimationDrawableCreateOption.a()).download(paramAnimationDrawableCreateOption.a(), paramCreateResultListener);
+      RFLog.d("AnimationDrawableFactory", RFLog.USR, "getAnimationDrawable from cache success");
+      paramCreateResultListener.a(true, (QQAnimationDrawable)localObject);
       return;
     }
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str))
+    {
+      paramInt = RFLog.USR;
+      paramAnimationDrawableCreateOption = new StringBuilder();
+      paramAnimationDrawableCreateOption.append("drawable is creating");
+      paramAnimationDrawableCreateOption.append(str);
+      RFLog.d("AnimationDrawableFactory", paramInt, paramAnimationDrawableCreateOption.toString());
+      paramCreateResultListener.a(false, null);
+      return;
+    }
+    paramCreateResultListener = new AnimationDrawableFactory.1(this, System.currentTimeMillis(), paramAnimationDrawableCreateOption, str, paramCreateResultListener);
+    paramInt = RFLog.USR;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("addKey");
+    ((StringBuilder)localObject).append(str);
+    RFLog.d("AnimationDrawableFactory", paramInt, ((StringBuilder)localObject).toString());
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramCreateResultListener);
+    RFWDownloaderFactory.getDownloader(paramAnimationDrawableCreateOption.a()).download(paramAnimationDrawableCreateOption.a(), paramCreateResultListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.animation.drawable.AnimationDrawableFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -27,15 +27,17 @@ public final class hd_video_voip_2$TelInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 152, 160, 168, 176, 184, 192, 200, 208 }, new String[] { "bytes_nation", "bytes_prefix", "bytes_mobile", "uint32_status", "uint32_appid", "uint64_uin", "uint64_uin_type", "uint64_binded_id", "uint32_binded_id_type", "uint32_mobile_type", "uint32_qq_appid", "uint32_qq_instanceid" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, TelInfo.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 152, 160, 168, 176, 184, 192, 200, 208 }, new String[] { "bytes_nation", "bytes_prefix", "bytes_mobile", "uint32_status", "uint32_appid", "uint64_uin", "uint64_uin_type", "uint64_binded_id", "uint32_binded_id_type", "uint32_mobile_type", "uint32_qq_appid", "uint32_qq_instanceid" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localInteger, localInteger, localLong, localInteger, localLong, localInteger, localInteger, localInteger, localInteger }, TelInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.longconn.voip.hd_video_voip_2.TelInfo
  * JD-Core Version:    0.7.0.1
  */

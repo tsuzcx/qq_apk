@@ -55,21 +55,24 @@ public final class operation_get_eggskeyword_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ifOpenEntrance, 0);
-    if (this.mapKeyWordEggs != null) {
-      paramJceOutputStream.write(this.mapKeyWordEggs, 1);
+    Object localObject = this.mapKeyWordEggs;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 1);
     }
-    if (this.mapKeyWord != null) {
-      paramJceOutputStream.write(this.mapKeyWord, 2);
+    localObject = this.mapKeyWord;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
-    if (this.guidePaster != null) {
-      paramJceOutputStream.write(this.guidePaster, 3);
+    localObject = this.guidePaster;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
     paramJceOutputStream.write(this.updatetime, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_get_eggskeyword_rsp
  * JD-Core Version:    0.7.0.1
  */

@@ -22,14 +22,14 @@ public class TimeoutExceptionHooker
       JavaHookBridge.findAndReplaceMethod(Class.forName("java.lang.Daemons$FinalizerWatchdogDaemon"), "finalizerTimedOut", new Object[] { Object.class, jdField_a_of_type_ComTencentMobileqqJavahookTimeoutExceptionHooker$MyReplaceMethodCallback });
       return;
     }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      localClassNotFoundException.printStackTrace();
-      return;
-    }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
       localNoSuchMethodException.printStackTrace();
+      return;
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      localClassNotFoundException.printStackTrace();
     }
   }
   
@@ -59,7 +59,7 @@ public class TimeoutExceptionHooker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.javahook.TimeoutExceptionHooker
  * JD-Core Version:    0.7.0.1
  */

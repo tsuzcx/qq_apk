@@ -13,43 +13,38 @@ class ConfigClearableEditText$1
   {
     paramView = this.a;
     int i;
-    if (paramMotionEvent.getX() > ConfigClearableEditText.a(this.a))
-    {
+    if (paramMotionEvent.getX() > ConfigClearableEditText.a(this.a)) {
       i = 1;
-      if (ConfigClearableEditText.a(this.a) != null)
-      {
-        if ((i == 0) || (paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-          break label102;
-        }
+    } else {
+      i = 0;
+    }
+    if (ConfigClearableEditText.a(this.a) != null) {
+      if ((i != 0) && (paramMotionEvent.getAction() != 1) && (paramMotionEvent.getAction() != 3)) {
         ConfigClearableEditText.a(this.a).b(true);
-      }
-      label66:
-      if ((paramView.getCompoundDrawables()[2] != null) || ((ConfigClearableEditText.a(this.a)) && (ConfigClearableEditText.a(this.a) != null))) {
-        break label118;
+      } else {
+        ConfigClearableEditText.a(this.a).b(false);
       }
     }
-    label102:
-    label118:
-    do
+    if ((paramView.getCompoundDrawables()[2] == null) && ((!ConfigClearableEditText.a(this.a)) || (ConfigClearableEditText.a(this.a) == null))) {
+      return false;
+    }
+    if (paramMotionEvent.getAction() != 1) {
+      return false;
+    }
+    if (i != 0)
     {
-      do
-      {
-        return false;
-        i = 0;
-        break;
-        ConfigClearableEditText.a(this.a).b(false);
-        break label66;
-      } while ((paramMotionEvent.getAction() != 1) || (i == 0));
       this.a.setText("");
       this.a.setClearButtonVisible(false);
-    } while (this.a.a == null);
-    this.a.a.a();
+      if (this.a.a != null) {
+        this.a.a.afterTextCleared();
+      }
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ConfigClearableEditText.1
  * JD-Core Version:    0.7.0.1
  */

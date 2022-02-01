@@ -7,33 +7,35 @@ public class ew
   
   public static ew.a dg()
   {
-    if (pm == null) {}
-    try
-    {
-      if (pm == null) {
-        pm = new ew.a();
+    if (pm == null) {
+      try
+      {
+        if (pm == null) {
+          pm = new ew.a();
+        }
       }
-      return pm;
+      finally {}
     }
-    finally {}
+    return pm;
   }
   
   public static ew.a dh()
   {
-    if (pn == null) {}
-    try
-    {
-      if (pn == null) {
-        pn = new ew.a();
+    if (pn == null) {
+      try
+      {
+        if (pn == null) {
+          pn = new ew.a();
+        }
       }
-      return pn;
+      finally {}
     }
-    finally {}
+    return pn;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.ew
  * JD-Core Version:    0.7.0.1
  */

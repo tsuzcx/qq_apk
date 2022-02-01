@@ -15,8 +15,10 @@ class DefaultDispatcher$DefaultWrpper
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    while (!(paramObject instanceof DefaultWrpper)) {
+    if (paramObject == null) {
+      return false;
+    }
+    if (!(paramObject instanceof DefaultWrpper)) {
       return false;
     }
     paramObject = (DefaultWrpper)paramObject;
@@ -35,12 +37,15 @@ class DefaultDispatcher$DefaultWrpper
   
   public String toString()
   {
-    return "DefaultWrapper_" + this.mSubscriber.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DefaultWrapper_");
+    localStringBuilder.append(this.mSubscriber.toString());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tribe.async.dispatch.DefaultDispatcher.DefaultWrpper
  * JD-Core Version:    0.7.0.1
  */

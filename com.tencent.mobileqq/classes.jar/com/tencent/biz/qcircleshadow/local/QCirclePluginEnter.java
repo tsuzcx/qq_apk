@@ -12,11 +12,11 @@ import com.tencent.biz.qcircleshadow.lib.QCircleHostClassHelper;
 import com.tencent.biz.qcircleshadow.lib.QCirclePluginInitBean;
 import com.tencent.biz.qcircleshadow.lib.delegate.ILoadPluginDelegate;
 import com.tencent.biz.qcircleshadow.local.fragment.QCirclePluginLoadingFragment;
+import com.tencent.biz.richframework.delegate.impl.RFThreadManager;
 import com.tencent.mobileqq.activity.QPublicTransFragmentActivity;
 import com.tencent.mobileqq.jump.api.IJumpApi;
-import com.tencent.mobileqq.mqq.api.IThreadManagerApi;
 import com.tencent.mobileqq.qcircle.api.impl.QCircleServiceImpl;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qcircle.cooperation.config.QCircleSpUtil;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qqcircle.beans.QCircleSchemeBean;
 import cooperation.qqcircle.proxy.QCircleInvokeProxy;
@@ -40,15 +40,18 @@ public class QCirclePluginEnter
   
   public static void enterByScheme(Context paramContext, String paramString)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
-      return;
+    if (paramContext != null)
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      Intent localIntent = new Intent(paramContext, QCircleHostClassHelper.getJumpActivityClass());
+      localIntent.setData(Uri.parse(paramString));
+      if (!(paramContext instanceof Activity)) {
+        localIntent.addFlags(268435456);
+      }
+      paramContext.startActivity(localIntent);
     }
-    Intent localIntent = new Intent(paramContext, QCircleHostClassHelper.getJumpActivityClass());
-    localIntent.setData(Uri.parse(paramString));
-    if (!(paramContext instanceof Activity)) {
-      localIntent.addFlags(268435456);
-    }
-    paramContext.startActivity(localIntent);
   }
   
   public static void enterBySchemeAction(Context paramContext, String paramString, HashMap<String, String> paramHashMap)
@@ -72,7 +75,7 @@ public class QCirclePluginEnter
       if (paramHashMap1 != null) {
         localQCircleSchemeBean.setByteAttrs(paramHashMap1);
       }
-      localQCirclePluginInitBean.setInitBean(localQCircleSchemeBean);
+      localQCirclePluginInitBean.setSchemeBean(localQCircleSchemeBean);
       localQCirclePluginInitBean.setStartTime(l);
       if (!QCircleShadow.a().a())
       {
@@ -107,15 +110,24 @@ public class QCirclePluginEnter
   
   private static String generateQCircleScheme(String paramString, HashMap<String, String> paramHashMap)
   {
-    paramString = new StringBuilder("mqqapi://" + QCircleServiceImpl.getJumpApi().getJumpActionQCircle() + "/" + paramString + "?");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("mqqapi://");
+    ((StringBuilder)localObject).append(QCircleServiceImpl.getJumpApi().getJumpActionQCircle());
+    ((StringBuilder)localObject).append("/");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("?");
+    paramString = new StringBuilder(((StringBuilder)localObject).toString());
     if (paramHashMap != null)
     {
-      Iterator localIterator = paramHashMap.keySet().iterator();
-      while (localIterator.hasNext())
+      localObject = paramHashMap.keySet().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        String str1 = (String)localIterator.next();
+        String str1 = (String)((Iterator)localObject).next();
         String str2 = (String)paramHashMap.get(str1);
-        paramString.append(str1).append("=").append(str2).append("&");
+        paramString.append(str1);
+        paramString.append("=");
+        paramString.append(str2);
+        paramString.append("&");
       }
     }
     return paramString.toString();
@@ -128,15 +140,18 @@ public class QCirclePluginEnter
   
   private static void jumpByJumpActivity(Context paramContext, String paramString, HashMap<String, String> paramHashMap)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
-      return;
+    if (paramContext != null)
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      Intent localIntent = new Intent(paramContext, QCircleHostClassHelper.getJumpActivityClass());
+      localIntent.setData(Uri.parse(generateQCircleScheme(paramString, paramHashMap)));
+      if (!(paramContext instanceof Activity)) {
+        localIntent.addFlags(268435456);
+      }
+      paramContext.startActivity(localIntent);
     }
-    Intent localIntent = new Intent(paramContext, QCircleHostClassHelper.getJumpActivityClass());
-    localIntent.setData(Uri.parse(generateQCircleScheme(paramString, paramHashMap)));
-    if (!(paramContext instanceof Activity)) {
-      localIntent.addFlags(268435456);
-    }
-    paramContext.startActivity(localIntent);
   }
   
   private static void load(Context paramContext, QCirclePluginEnterManger paramQCirclePluginEnterManger, int paramInt, QCirclePluginInitBean paramQCirclePluginInitBean)
@@ -148,40 +163,53 @@ public class QCirclePluginEnter
     localBundle.putString("KEY_PLUGIN_PART_KEY", "qcircle-plugin");
     if (paramInt == 1000) {
       localBundle.putString("KEY_SPLASH_ENTER", "com.tencent.qcircle.activity.QCirclePreloadService");
-    }
-    for (;;)
-    {
-      if (paramQCirclePluginInitBean != null)
-      {
-        localObject = new Bundle();
-        ((Bundle)localObject).putSerializable("KEY_Q_CIRCLE_PLUGIN_INIT_BEAN", paramQCirclePluginInitBean);
-        localBundle.putBundle("KEY_EXTRAS", (Bundle)localObject);
-      }
-      paramQCirclePluginEnterManger.enter(paramContext, paramInt, localBundle, null);
-      return;
+    } else {
       localBundle.putString("KEY_SPLASH_ENTER", "com.tencent.qcircle.activity.QCircleSplashActivity");
     }
+    if (paramQCirclePluginInitBean != null)
+    {
+      localObject = new Bundle();
+      ((Bundle)localObject).putSerializable("KEY_Q_CIRCLE_PLUGIN_INIT_BEAN", paramQCirclePluginInitBean);
+      localBundle.putBundle("KEY_EXTRAS", (Bundle)localObject);
+    }
+    paramQCirclePluginEnterManger.enter(paramContext, paramInt, localBundle, null);
   }
   
   public static void preloadQCirclePlugin(Context paramContext, ILoadPluginDelegate paramILoadPluginDelegate)
   {
-    if ((paramContext == null) || (sHandler == null))
+    if ((paramContext != null) && (sHandler != null))
     {
-      QLog.i("QCIRCLE_PLUGIN", 1, "context or handler is null");
+      if (!QCircleShadow.a().a())
+      {
+        sHandler.post(new QCirclePluginEnter.2(paramILoadPluginDelegate, paramContext));
+        return;
+      }
+      RFThreadManager.getUIHandler().post(new QCirclePluginEnter.3(paramILoadPluginDelegate));
+      QLog.i("QCIRCLE_PLUGIN", 1, "preloadQCirclePlugin()has preload");
       return;
     }
-    if (!QCircleShadow.a().a())
-    {
-      sHandler.post(new QCirclePluginEnter.2(paramILoadPluginDelegate, paramContext));
-      return;
-    }
-    ((IThreadManagerApi)QRoute.api(IThreadManagerApi.class)).getUIHandlerV2().post(new QCirclePluginEnter.3(paramILoadPluginDelegate));
-    QLog.i("QCIRCLE_PLUGIN", 1, "preloadQCirclePlugin()has preload");
+    QLog.i("QCIRCLE_PLUGIN", 1, "context or handler is null");
+  }
+  
+  private static void updateStartSp(int paramInt)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("SP_KEY_START_PLUGIN_VERSION_PRFIX_");
+    ((StringBuilder)localObject).append(paramInt);
+    localObject = ((StringBuilder)localObject).toString();
+    paramInt = ((Integer)QCircleSpUtil.a((String)localObject, Integer.valueOf(1))).intValue() + 1;
+    QCircleSpUtil.a((String)localObject, Integer.valueOf(paramInt));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QCircleSplashActivity#updateEnterSp:");
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(" |value");
+    localStringBuilder.append(paramInt);
+    QLog.d("QCirclePluginEnter", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.QCirclePluginEnter
  * JD-Core Version:    0.7.0.1
  */

@@ -17,38 +17,44 @@ class BaseMsgBoxActivity$9
   public void run()
   {
     oidb_0x791.RedDotInfo localRedDotInfo = ((TroopRedTouchManager)this.this$0.app.getManager(QQManagerFactory.MGR_RED_TOUCH_EX)).a(70);
-    String str;
+    Object localObject;
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("mRedpointObserver.onDataChange(): redDotInfo=");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mRedpointObserver.onDataChange(): redDotInfo=");
       if (localRedDotInfo == null)
       {
-        str = "is null";
-        QLog.d("Q.msg_box", 2, str);
+        localObject = "is null";
       }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(" num=");
+        ((StringBuilder)localObject).append(localRedDotInfo.uint32_number.get());
+        localObject = ((StringBuilder)localObject).toString();
+      }
+      localStringBuilder.append((String)localObject);
+      QLog.d("Q.msg_box", 2, localStringBuilder.toString());
     }
-    else
-    {
-      if ((localRedDotInfo == null) || (!localRedDotInfo.bool_display_reddot.get())) {
-        break label149;
-      }
+    boolean bool;
+    if ((localRedDotInfo != null) && (localRedDotInfo.bool_display_reddot.get())) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    label149:
-    for (boolean bool = true;; bool = false)
+    this.a.a(bool);
+    if (QLog.isColorLevel())
     {
-      this.a.a(bool);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg_box", 2, "mRedpointObserver.onDataChange(): showRedDot=" + bool);
-      }
-      return;
-      str = " num=" + localRedDotInfo.uint32_number.get();
-      break;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("mRedpointObserver.onDataChange(): showRedDot=");
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("Q.msg_box", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dating.BaseMsgBoxActivity.9
  * JD-Core Version:    0.7.0.1
  */

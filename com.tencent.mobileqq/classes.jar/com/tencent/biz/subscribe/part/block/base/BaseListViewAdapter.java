@@ -11,7 +11,7 @@ public abstract class BaseListViewAdapter<E>
   extends RecyclerView.Adapter
 {
   private Handler a;
-  public ArrayList<E> a;
+  protected ArrayList<E> a;
   
   public BaseListViewAdapter()
   {
@@ -33,10 +33,13 @@ public abstract class BaseListViewAdapter<E>
   
   public void a(E paramE, int paramInt)
   {
-    if ((paramE == null) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return;
+    if (paramE != null)
+    {
+      if (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+        return;
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.set(paramInt, paramE);
     }
-    this.jdField_a_of_type_JavaUtilArrayList.set(paramInt, paramE);
   }
   
   public void a(ArrayList<E> paramArrayList)
@@ -77,7 +80,7 @@ public abstract class BaseListViewAdapter<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.part.block.base.BaseListViewAdapter
  * JD-Core Version:    0.7.0.1
  */

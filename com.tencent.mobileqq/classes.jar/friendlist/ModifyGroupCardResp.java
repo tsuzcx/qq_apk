@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public final class ModifyGroupCardResp
   extends JceStruct
 {
-  static int cache_result = 0;
+  static int cache_result;
   static ArrayList<Long> cache_vecUin = new ArrayList();
   public String ErrorString = "";
   public long dwGroupCode = 0L;
@@ -47,14 +47,15 @@ public final class ModifyGroupCardResp
     paramJceOutputStream.write(this.dwGroupUin, 1);
     paramJceOutputStream.write(this.dwGroupCode, 2);
     paramJceOutputStream.write(this.vecUin, 3);
-    if (this.ErrorString != null) {
-      paramJceOutputStream.write(this.ErrorString, 4);
+    String str = this.ErrorString;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     friendlist.ModifyGroupCardResp
  * JD-Core Version:    0.7.0.1
  */

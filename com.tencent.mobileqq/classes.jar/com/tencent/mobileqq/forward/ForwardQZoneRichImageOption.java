@@ -35,7 +35,7 @@ public class ForwardQZoneRichImageOption
     this.b = this.jdField_a_of_type_AndroidOsBundle.getLong("req_share_id");
     this.o = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("is_ec_live_share", false);
     if ((this.b > 0L) && (!this.o)) {
-      Share.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.b, 0L, this.jdField_a_of_type_MqqObserverBusinessObserver);
+      Share.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.b, 0L, this.jdField_a_of_type_ComTencentOpenAppcommonOpensdkBusinessObserver);
     }
     I();
     Object localObject = new Bundle(this.jdField_a_of_type_AndroidOsBundle);
@@ -78,7 +78,7 @@ public class ForwardQZoneRichImageOption
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardQZoneRichImageOption
  * JD-Core Version:    0.7.0.1
  */

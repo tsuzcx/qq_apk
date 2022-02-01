@@ -28,11 +28,17 @@ public class TissueEnvImpl
     if (localObject != null)
     {
       int i = ((List)localObject).size();
-      QZLog.i("Tissue", " getInstalledEngineList success " + i);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" getInstalledEngineList success ");
+      localStringBuilder.append(i);
+      QZLog.i("Tissue", localStringBuilder.toString());
       if (i > 0)
       {
         localObject = (InstalledEngine)((List)localObject).get(0);
-        QZLog.i("Tissue", "verify engine " + localObject);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("verify engine ");
+        localStringBuilder.append(localObject);
+        QZLog.i("Tissue", localStringBuilder.toString());
         if (verifyTissueEngine(((InstalledEngine)localObject).engineDir)) {
           return ((InstalledEngine)localObject).engineDir;
         }
@@ -61,7 +67,7 @@ public class TissueEnvImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.tissue.TissueEnvImpl
  * JD-Core Version:    0.7.0.1
  */

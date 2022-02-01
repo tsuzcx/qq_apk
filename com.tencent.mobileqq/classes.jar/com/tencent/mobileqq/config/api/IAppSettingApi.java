@@ -11,6 +11,10 @@ public abstract interface IAppSettingApi
   
   public abstract boolean enableTalkBack();
   
+  public abstract int getAppId();
+  
+  public abstract String getPublishVersionString();
+  
   public abstract String getReportVersionName();
   
   public abstract String getSubVersion();
@@ -27,7 +31,7 @@ public abstract interface IAppSettingApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.api.IAppSettingApi
  * JD-Core Version:    0.7.0.1
  */

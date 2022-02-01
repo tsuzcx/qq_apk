@@ -5,10 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.MotionEvent;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
@@ -38,34 +38,32 @@ public class FileSearchDetailActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     this.b = a;
-    if ((this.b == null) || (this.b.a == null) || (this.b.a.size() == 0))
+    paramBundle = this.b;
+    if ((paramBundle != null) && (paramBundle.a != null) && (this.b.a.size() != 0))
     {
-      if (this.b == null) {
-        QLog.e("IphoneTitleBarActivity", 1, "FileSearchDetailActivity onCreate, searchResult is null");
-      }
-      for (;;)
-      {
-        finish();
-        return false;
-        if (this.b.a == null) {
-          QLog.e("IphoneTitleBarActivity", 1, "FileSearchDetailActivity onCreate, searchResult.lstentity is null ");
-        } else if (this.b.a.size() == 0) {
-          QLog.e("IphoneTitleBarActivity", 1, "FileSearchDetailActivity onCreate, searchResult.lstentity.size() is 0 ");
-        }
-      }
+      super.setContentView(2131558898);
+      super.setTitle(((FileManagerEntity)this.b.a.get(0)).fileName);
+      Object localObject = getSupportFragmentManager();
+      paramBundle = FileSearchDetailFragment.a(getIntent().getStringExtra("keyword"), this.b);
+      localObject = ((FragmentManager)localObject).beginTransaction();
+      ((FragmentTransaction)localObject).replace(2131365183, paramBundle);
+      ((FragmentTransaction)localObject).commit();
+      return true;
     }
-    super.setContentView(2131559004);
-    super.setTitle(((FileManagerEntity)this.b.a.get(0)).fileName);
-    Object localObject = getSupportFragmentManager();
-    paramBundle = FileSearchDetailFragment.a(getIntent().getStringExtra("keyword"), this.b);
-    localObject = ((FragmentManager)localObject).beginTransaction();
-    ((FragmentTransaction)localObject).replace(2131365308, paramBundle);
-    ((FragmentTransaction)localObject).commit();
-    return true;
+    paramBundle = this.b;
+    if (paramBundle == null) {
+      QLog.e("IphoneTitleBarActivity", 1, "FileSearchDetailActivity onCreate, searchResult is null");
+    } else if (paramBundle.a == null) {
+      QLog.e("IphoneTitleBarActivity", 1, "FileSearchDetailActivity onCreate, searchResult.lstentity is null ");
+    } else if (this.b.a.size() == 0) {
+      QLog.e("IphoneTitleBarActivity", 1, "FileSearchDetailActivity onCreate, searchResult.lstentity.size() is 0 ");
+    }
+    finish();
+    return false;
   }
   
   @Override
@@ -77,7 +75,7 @@ public class FileSearchDetailActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.FileSearchDetailActivity
  * JD-Core Version:    0.7.0.1
  */

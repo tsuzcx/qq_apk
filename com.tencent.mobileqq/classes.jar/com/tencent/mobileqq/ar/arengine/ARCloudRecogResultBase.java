@@ -13,12 +13,18 @@ public class ARCloudRecogResultBase
   
   public String toString()
   {
-    return "ARCloudRecogResultBase{hasLBSLocation = " + this.jdField_a_of_type_Boolean + ", checkResult = " + this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ARCloudRecogResultBase{hasLBSLocation = ");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", checkResult = ");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudRecogResultBase
  * JD-Core Version:    0.7.0.1
  */

@@ -8,18 +8,22 @@ class QQLSActivity$10
 {
   QQLSActivity$10(QQLSActivity paramQQLSActivity) {}
   
-  public void onPushReadedNotify(boolean paramBoolean, Object paramObject)
+  protected void onPushReadedNotify(boolean paramBoolean, Object paramObject)
   {
     super.onPushReadedNotify(paramBoolean, paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLSActivity", 2, "PC has read onPushReadedNotify finish" + Thread.currentThread().getId());
+    if (QLog.isColorLevel())
+    {
+      paramObject = new StringBuilder();
+      paramObject.append("PC has read onPushReadedNotify finish");
+      paramObject.append(Thread.currentThread().getId());
+      QLog.d("QQLSActivity", 2, paramObject.toString());
     }
     QQLSActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.10
  * JD-Core Version:    0.7.0.1
  */

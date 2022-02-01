@@ -18,43 +18,46 @@ public class QZoneCardJsHandleLogic
   
   public static void handleDownCardMethod(WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
-    str2 = "";
-    String str1 = "";
-    Object localObject1 = str1;
-    localObject2 = str2;
-    if (paramVarArgs != null)
+    Object localObject3 = "";
+    Object localObject2;
+    if ((paramVarArgs != null) && (paramVarArgs.length > 0))
     {
-      localObject1 = str1;
-      localObject2 = str2;
-      if (paramVarArgs.length > 0) {
-        localObject1 = str1;
-      }
-    }
-    try
-    {
-      localObject2 = new JSONObject(paramVarArgs[0]);
-      localObject1 = str1;
-      paramVarArgs = ((JSONObject)localObject2).getString("cardid");
-      localObject1 = paramVarArgs;
-      localObject2 = ((JSONObject)localObject2).getString("cardurl");
-      localObject1 = paramVarArgs;
-    }
-    catch (JSONException paramVarArgs)
-    {
-      for (;;)
+      try
       {
-        paramVarArgs.printStackTrace();
-        localObject2 = str2;
+        Object localObject1 = new JSONObject(paramVarArgs[0]);
+        paramVarArgs = ((JSONObject)localObject1).getString("cardid");
+        try
+        {
+          localObject1 = ((JSONObject)localObject1).getString("cardurl");
+        }
+        catch (JSONException localJSONException1) {}
+        localJSONException2.printStackTrace();
       }
+      catch (JSONException localJSONException2)
+      {
+        paramVarArgs = "";
+      }
+      localObject2 = localObject3;
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QZoneCardLogic.QZoneCardJsHandleLogicQZonePersonalizePlugin", 4, "handleDownCardMethod js give download cardurl is: " + (String)localObject2 + "\t cardid:" + (String)localObject1);
+    else
+    {
+      paramVarArgs = "";
+      localObject2 = localObject3;
+    }
+    if (QLog.isDevelopLevel())
+    {
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("handleDownCardMethod js give download cardurl is: ");
+      ((StringBuilder)localObject3).append(localObject2);
+      ((StringBuilder)localObject3).append("\t cardid:");
+      ((StringBuilder)localObject3).append(paramVarArgs);
+      QLog.d("QZoneCardLogic.QZoneCardJsHandleLogicQZonePersonalizePlugin", 4, ((StringBuilder)localObject3).toString());
     }
     paramVarArgs = new Intent("action_personalize_js2qzone");
-    localObject1 = new Bundle();
-    ((Bundle)localObject1).putString("cmd", "downloadcard");
-    ((Bundle)localObject1).putString("cardDownloadUrl", (String)localObject2);
-    paramVarArgs.putExtras((Bundle)localObject1);
+    localObject3 = new Bundle();
+    ((Bundle)localObject3).putString("cmd", "downloadcard");
+    ((Bundle)localObject3).putString("cardDownloadUrl", localObject2);
+    paramVarArgs.putExtras((Bundle)localObject3);
     QZoneHelper.forwardToQzoneTransluentActivity(paramPluginRuntime.a(), QZoneHelper.UserInfo.getInstance(), paramVarArgs);
   }
   
@@ -62,816 +65,787 @@ public class QZoneCardJsHandleLogic
   public static void handleSetSkinFinish(com.tencent.mobileqq.webview.swift.WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
     // Byte code:
-    //   0: ldc 28
-    //   2: astore 23
-    //   4: ldc 28
-    //   6: astore 18
-    //   8: ldc 28
-    //   10: astore 19
-    //   12: lconst_0
-    //   13: lstore 12
-    //   15: ldc 28
-    //   17: astore 29
-    //   19: iconst_0
-    //   20: istore 7
-    //   22: ldc 28
-    //   24: astore 21
-    //   26: iconst_0
-    //   27: istore 4
-    //   29: ldc 28
-    //   31: astore 30
-    //   33: iconst_0
-    //   34: istore 9
-    //   36: ldc 28
-    //   38: astore 27
-    //   40: ldc 28
-    //   42: astore 26
-    //   44: ldc 28
-    //   46: astore 25
-    //   48: ldc 28
-    //   50: astore 24
-    //   52: iconst_0
-    //   53: istore 8
-    //   55: aload_2
-    //   56: ifnull +1394 -> 1450
-    //   59: aload_2
-    //   60: arraylength
-    //   61: ifle +1389 -> 1450
-    //   64: aload 19
-    //   66: astore 17
-    //   68: iload 4
-    //   70: istore_3
-    //   71: aload 18
-    //   73: astore 16
-    //   75: aload 23
-    //   77: astore 15
-    //   79: new 30	org/json/JSONObject
-    //   82: dup
-    //   83: aload_2
-    //   84: iconst_0
-    //   85: aaload
-    //   86: invokespecial 33	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   89: astore 31
-    //   91: aload 19
-    //   93: astore 17
-    //   95: iload 4
-    //   97: istore_3
-    //   98: aload 18
-    //   100: astore 16
-    //   102: aload 23
-    //   104: astore 15
-    //   106: aload 31
-    //   108: ldc 115
-    //   110: invokevirtual 39	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   113: astore_0
-    //   114: aload 19
-    //   116: astore 17
+    //   0: aload_2
+    //   1: ifnull +900 -> 901
+    //   4: aload_2
+    //   5: arraylength
+    //   6: ifle +895 -> 901
+    //   9: new 30	org/json/JSONObject
+    //   12: dup
+    //   13: aload_2
+    //   14: iconst_0
+    //   15: aaload
+    //   16: invokespecial 33	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   19: astore 18
+    //   21: aload 18
+    //   23: ldc 115
+    //   25: invokevirtual 39	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   28: astore_0
+    //   29: aload 18
+    //   31: ldc 117
+    //   33: invokevirtual 39	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   36: astore_2
+    //   37: aload 18
+    //   39: ldc 119
+    //   41: invokevirtual 39	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   44: astore 11
+    //   46: aload 18
+    //   48: ldc 121
+    //   50: invokevirtual 125	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   53: istore_3
+    //   54: aload 18
+    //   56: ldc 127
+    //   58: iconst_0
+    //   59: invokevirtual 131	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
+    //   62: istore 8
+    //   64: aload 18
+    //   66: ldc 133
+    //   68: invokevirtual 136	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   71: astore 12
+    //   73: aload 18
+    //   75: ldc 138
+    //   77: invokevirtual 136	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   80: astore 13
+    //   82: aload 18
+    //   84: ldc 140
+    //   86: invokevirtual 144	org/json/JSONObject:optLong	(Ljava/lang/String;)J
+    //   89: lstore 9
+    //   91: aload 18
+    //   93: ldc 146
+    //   95: invokevirtual 125	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   98: istore 5
+    //   100: aload 18
+    //   102: ldc 148
+    //   104: invokevirtual 136	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   107: astore 17
+    //   109: aload 18
+    //   111: ldc 150
+    //   113: invokevirtual 125	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   116: istore 4
     //   118: iload 4
-    //   120: istore_3
-    //   121: aload 18
-    //   123: astore 16
-    //   125: aload_0
-    //   126: astore 15
-    //   128: aload 31
-    //   130: ldc 117
-    //   132: invokevirtual 39	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   135: astore 19
-    //   137: aload 19
-    //   139: astore 17
-    //   141: iload 4
-    //   143: istore_3
-    //   144: aload 18
-    //   146: astore 16
-    //   148: aload_0
-    //   149: astore 15
-    //   151: aload 31
-    //   153: ldc 119
-    //   155: invokevirtual 39	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   158: astore_2
-    //   159: aload 19
-    //   161: astore 17
-    //   163: iload 4
-    //   165: istore_3
-    //   166: aload_2
-    //   167: astore 16
-    //   169: aload_0
-    //   170: astore 15
-    //   172: aload 31
-    //   174: ldc 121
-    //   176: invokevirtual 125	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   179: istore 4
-    //   181: aload 19
-    //   183: astore 17
-    //   185: iload 4
-    //   187: istore_3
-    //   188: aload_2
-    //   189: astore 16
-    //   191: aload_0
-    //   192: astore 15
-    //   194: aload 31
-    //   196: ldc 127
-    //   198: iconst_0
-    //   199: invokevirtual 131	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
-    //   202: istore 14
-    //   204: aload 24
-    //   206: astore 20
-    //   208: aload 25
-    //   210: astore 18
-    //   212: aload 26
-    //   214: astore 17
-    //   216: aload 27
-    //   218: astore 15
-    //   220: aload 19
-    //   222: astore 16
-    //   224: iload 9
-    //   226: istore 6
-    //   228: aload 30
-    //   230: astore 22
-    //   232: aload 21
-    //   234: astore 23
-    //   236: iload 7
-    //   238: istore 5
-    //   240: aload 29
-    //   242: astore 21
-    //   244: lload 12
-    //   246: lstore 10
-    //   248: aload 31
-    //   250: ldc 133
-    //   252: invokevirtual 136	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   255: astore 28
-    //   257: aload 24
-    //   259: astore 20
-    //   261: aload 25
-    //   263: astore 18
-    //   265: aload 26
-    //   267: astore 17
-    //   269: aload 27
-    //   271: astore 15
-    //   273: aload 19
-    //   275: astore 16
-    //   277: iload 9
-    //   279: istore 6
-    //   281: aload 30
-    //   283: astore 22
-    //   285: aload 28
-    //   287: astore 23
-    //   289: iload 7
-    //   291: istore 5
-    //   293: aload 29
-    //   295: astore 21
-    //   297: lload 12
-    //   299: lstore 10
-    //   301: aload 31
-    //   303: ldc 138
-    //   305: invokevirtual 136	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   308: astore 29
-    //   310: aload 24
-    //   312: astore 20
-    //   314: aload 25
-    //   316: astore 18
-    //   318: aload 26
-    //   320: astore 17
-    //   322: aload 27
-    //   324: astore 15
-    //   326: aload 19
-    //   328: astore 16
-    //   330: iload 9
-    //   332: istore 6
-    //   334: aload 30
-    //   336: astore 22
-    //   338: aload 28
-    //   340: astore 23
-    //   342: iload 7
-    //   344: istore 5
-    //   346: aload 29
-    //   348: astore 21
-    //   350: lload 12
-    //   352: lstore 10
-    //   354: aload 31
-    //   356: ldc 140
-    //   358: invokevirtual 144	org/json/JSONObject:optLong	(Ljava/lang/String;)J
-    //   361: lstore 12
-    //   363: aload 24
-    //   365: astore 20
-    //   367: aload 25
-    //   369: astore 18
-    //   371: aload 26
-    //   373: astore 17
-    //   375: aload 27
-    //   377: astore 15
-    //   379: aload 19
-    //   381: astore 16
-    //   383: iload 9
-    //   385: istore 6
-    //   387: aload 30
-    //   389: astore 22
-    //   391: aload 28
-    //   393: astore 23
-    //   395: iload 7
-    //   397: istore 5
-    //   399: aload 29
-    //   401: astore 21
-    //   403: lload 12
-    //   405: lstore 10
-    //   407: aload 31
-    //   409: ldc 146
-    //   411: invokevirtual 125	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   414: istore 7
-    //   416: aload 24
-    //   418: astore 20
-    //   420: aload 25
-    //   422: astore 18
-    //   424: aload 26
-    //   426: astore 17
-    //   428: aload 27
-    //   430: astore 15
-    //   432: aload 19
-    //   434: astore 16
-    //   436: iload 9
-    //   438: istore 6
-    //   440: aload 30
-    //   442: astore 22
-    //   444: aload 28
-    //   446: astore 23
-    //   448: iload 7
-    //   450: istore 5
-    //   452: aload 29
-    //   454: astore 21
-    //   456: lload 12
-    //   458: lstore 10
-    //   460: aload 31
-    //   462: ldc 148
-    //   464: invokevirtual 136	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   467: astore 30
-    //   469: aload 24
-    //   471: astore 20
-    //   473: aload 25
-    //   475: astore 18
-    //   477: aload 26
-    //   479: astore 17
-    //   481: aload 27
-    //   483: astore 15
-    //   485: aload 19
-    //   487: astore 16
-    //   489: iload 9
-    //   491: istore 6
-    //   493: aload 30
-    //   495: astore 22
-    //   497: aload 28
-    //   499: astore 23
-    //   501: iload 7
-    //   503: istore 5
-    //   505: aload 29
-    //   507: astore 21
-    //   509: lload 12
-    //   511: lstore 10
-    //   513: aload 31
-    //   515: ldc 150
-    //   517: invokevirtual 125	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   520: iconst_1
-    //   521: if_icmpne +787 -> 1308
-    //   524: iconst_1
-    //   525: istore_3
-    //   526: iload 8
-    //   528: istore 5
-    //   530: aload 24
-    //   532: astore 20
-    //   534: aload 25
-    //   536: astore 18
-    //   538: aload 26
-    //   540: astore 17
-    //   542: aload 27
-    //   544: astore 15
-    //   546: aload 19
-    //   548: astore 16
-    //   550: iload 4
-    //   552: sipush 392
-    //   555: if_icmpne +339 -> 894
-    //   558: aload 24
-    //   560: astore 20
-    //   562: aload 25
+    //   120: iconst_1
+    //   121: if_icmpne +9 -> 130
+    //   124: iconst_1
+    //   125: istore 4
+    //   127: goto +6 -> 133
+    //   130: iconst_0
+    //   131: istore 4
+    //   133: iload_3
+    //   134: sipush 392
+    //   137: if_icmpne +223 -> 360
+    //   140: aload_2
+    //   141: astore 15
+    //   143: aload 18
+    //   145: ldc 152
+    //   147: invokevirtual 136	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   150: astore_2
+    //   151: aload_2
+    //   152: astore 15
+    //   154: aload 18
+    //   156: ldc 154
+    //   158: invokevirtual 136	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   161: astore 14
+    //   163: aload 18
+    //   165: ldc 156
+    //   167: invokevirtual 136	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   170: astore 16
+    //   172: aload 18
+    //   174: ldc 158
+    //   176: invokevirtual 136	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   179: astore 21
+    //   181: aload 18
+    //   183: ldc 160
+    //   185: invokevirtual 136	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   188: astore 22
+    //   190: aload 18
+    //   192: ldc 162
+    //   194: invokevirtual 125	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   197: istore 6
+    //   199: aload_2
+    //   200: astore 15
+    //   202: aload 14
+    //   204: astore 19
+    //   206: aload 16
+    //   208: astore 18
+    //   210: aload 21
+    //   212: astore 16
+    //   214: aload 22
+    //   216: astore 14
+    //   218: goto +164 -> 382
+    //   221: astore 15
+    //   223: iload_3
+    //   224: istore 6
+    //   226: aload_0
+    //   227: astore 20
+    //   229: aload 11
+    //   231: astore 18
+    //   233: aload 12
+    //   235: astore 19
+    //   237: aload 16
+    //   239: astore 11
+    //   241: aload 21
+    //   243: astore 12
+    //   245: aload 22
+    //   247: astore_0
+    //   248: goto +559 -> 807
+    //   251: astore 15
+    //   253: ldc 28
+    //   255: astore 22
+    //   257: iload_3
+    //   258: istore 6
+    //   260: aload_0
+    //   261: astore 20
+    //   263: aload 11
+    //   265: astore 18
+    //   267: aload 12
+    //   269: astore 19
+    //   271: aload 16
+    //   273: astore 11
+    //   275: aload 21
+    //   277: astore 12
+    //   279: aload 22
+    //   281: astore_0
+    //   282: goto +525 -> 807
+    //   285: astore 15
+    //   287: ldc 28
+    //   289: astore 18
+    //   291: aload 16
+    //   293: astore 21
+    //   295: aload 18
+    //   297: astore 16
+    //   299: goto +29 -> 328
+    //   302: astore 15
+    //   304: goto +16 -> 320
+    //   307: astore 16
+    //   309: ldc 28
+    //   311: astore 14
+    //   313: aload 15
+    //   315: astore_2
+    //   316: aload 16
+    //   318: astore 15
+    //   320: ldc 28
+    //   322: astore 21
+    //   324: ldc 28
+    //   326: astore 16
+    //   328: aload 16
+    //   330: astore 22
+    //   332: iload_3
+    //   333: istore 6
+    //   335: aload_0
+    //   336: astore 20
+    //   338: aload 11
+    //   340: astore 18
+    //   342: aload 12
+    //   344: astore 19
+    //   346: aload 21
+    //   348: astore 11
+    //   350: aload 16
+    //   352: astore 12
+    //   354: aload 22
+    //   356: astore_0
+    //   357: goto +450 -> 807
+    //   360: ldc 28
+    //   362: astore 19
+    //   364: aload 19
+    //   366: astore 18
+    //   368: aload 18
+    //   370: astore 16
+    //   372: aload 16
+    //   374: astore 14
+    //   376: iconst_0
+    //   377: istore 6
+    //   379: aload_2
+    //   380: astore 15
+    //   382: iload 6
+    //   384: istore 7
+    //   386: aload_0
+    //   387: astore_2
+    //   388: aload 13
+    //   390: astore 22
+    //   392: aload 19
+    //   394: astore 13
+    //   396: aload 18
+    //   398: astore_0
+    //   399: aload 16
+    //   401: astore 20
+    //   403: aload 14
+    //   405: astore 21
+    //   407: aload_2
+    //   408: astore 16
+    //   410: iload_3
+    //   411: istore 6
+    //   413: aload 22
+    //   415: astore_2
+    //   416: aload 11
+    //   418: astore 18
+    //   420: aload 12
+    //   422: astore 19
+    //   424: aload 17
+    //   426: astore 14
+    //   428: aload_0
+    //   429: astore 12
+    //   431: aload 20
+    //   433: astore 11
+    //   435: aload 21
+    //   437: astore_0
+    //   438: iload 7
+    //   440: istore_3
+    //   441: goto +407 -> 848
+    //   444: astore 15
+    //   446: goto +9 -> 455
+    //   449: astore 15
+    //   451: ldc 28
+    //   453: astore 17
+    //   455: ldc 28
+    //   457: astore 20
+    //   459: ldc 28
+    //   461: astore 21
+    //   463: aload 21
+    //   465: astore 22
+    //   467: aload 22
+    //   469: astore 23
+    //   471: aload_0
+    //   472: astore 16
+    //   474: aload 11
+    //   476: astore 18
+    //   478: aload 12
+    //   480: astore 19
+    //   482: goto +300 -> 782
+    //   485: astore 14
+    //   487: ldc 28
+    //   489: astore 16
+    //   491: aload 16
+    //   493: astore 17
+    //   495: aload 17
+    //   497: astore 18
+    //   499: aload 18
+    //   501: astore 19
+    //   503: aload 19
+    //   505: astore 20
+    //   507: aload 13
+    //   509: astore 15
+    //   511: goto +229 -> 740
+    //   514: astore 16
+    //   516: ldc 28
+    //   518: astore 17
+    //   520: aload 12
+    //   522: astore 14
+    //   524: aload 13
+    //   526: astore 15
+    //   528: aload 17
+    //   530: astore 12
+    //   532: goto +26 -> 558
+    //   535: astore 16
+    //   537: aload 12
+    //   539: astore 14
+    //   541: goto +9 -> 550
+    //   544: astore 16
+    //   546: ldc 28
+    //   548: astore 14
+    //   550: ldc 28
+    //   552: astore 15
+    //   554: ldc 28
+    //   556: astore 12
+    //   558: aload 12
+    //   560: astore 17
+    //   562: aload 17
     //   564: astore 18
-    //   566: aload 26
-    //   568: astore 17
-    //   570: aload 27
-    //   572: astore 15
-    //   574: aload 19
-    //   576: astore 16
-    //   578: iload_3
-    //   579: istore 6
-    //   581: aload 30
-    //   583: astore 22
-    //   585: aload 28
-    //   587: astore 23
-    //   589: iload 7
-    //   591: istore 5
-    //   593: aload 29
-    //   595: astore 21
-    //   597: lload 12
-    //   599: lstore 10
-    //   601: aload 31
-    //   603: ldc 152
-    //   605: invokevirtual 136	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   608: astore 19
-    //   610: aload 24
-    //   612: astore 20
-    //   614: aload 25
-    //   616: astore 18
-    //   618: aload 26
-    //   620: astore 17
-    //   622: aload 27
-    //   624: astore 15
-    //   626: aload 19
-    //   628: astore 16
-    //   630: iload_3
-    //   631: istore 6
-    //   633: aload 30
-    //   635: astore 22
-    //   637: aload 28
-    //   639: astore 23
-    //   641: iload 7
-    //   643: istore 5
-    //   645: aload 29
-    //   647: astore 21
-    //   649: lload 12
-    //   651: lstore 10
-    //   653: aload 31
-    //   655: ldc 154
-    //   657: invokevirtual 136	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   660: astore 27
-    //   662: aload 24
-    //   664: astore 20
-    //   666: aload 25
-    //   668: astore 18
-    //   670: aload 26
-    //   672: astore 17
-    //   674: aload 27
-    //   676: astore 15
-    //   678: aload 19
-    //   680: astore 16
-    //   682: iload_3
-    //   683: istore 6
-    //   685: aload 30
-    //   687: astore 22
-    //   689: aload 28
-    //   691: astore 23
-    //   693: iload 7
-    //   695: istore 5
-    //   697: aload 29
-    //   699: astore 21
-    //   701: lload 12
-    //   703: lstore 10
-    //   705: aload 31
-    //   707: ldc 156
-    //   709: invokevirtual 136	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   712: astore 26
-    //   714: aload 24
-    //   716: astore 20
-    //   718: aload 25
-    //   720: astore 18
-    //   722: aload 26
-    //   724: astore 17
-    //   726: aload 27
-    //   728: astore 15
-    //   730: aload 19
-    //   732: astore 16
-    //   734: iload_3
-    //   735: istore 6
-    //   737: aload 30
-    //   739: astore 22
-    //   741: aload 28
-    //   743: astore 23
-    //   745: iload 7
-    //   747: istore 5
-    //   749: aload 29
-    //   751: astore 21
-    //   753: lload 12
-    //   755: lstore 10
-    //   757: aload 31
-    //   759: ldc 158
-    //   761: invokevirtual 136	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   764: astore 25
-    //   766: aload 24
-    //   768: astore 20
-    //   770: aload 25
-    //   772: astore 18
-    //   774: aload 26
-    //   776: astore 17
-    //   778: aload 27
+    //   566: aload 18
+    //   568: astore 19
+    //   570: aload 19
+    //   572: astore 20
+    //   574: aload 16
+    //   576: astore 13
+    //   578: aload 12
+    //   580: astore 16
+    //   582: goto +147 -> 729
+    //   585: astore 12
+    //   587: ldc 28
+    //   589: astore 13
+    //   591: aload 13
+    //   593: astore 14
+    //   595: aload 14
+    //   597: astore 15
+    //   599: aload 15
+    //   601: astore 17
+    //   603: aload 17
+    //   605: astore 18
+    //   607: aload 18
+    //   609: astore 19
+    //   611: aload 19
+    //   613: astore 20
+    //   615: goto +95 -> 710
+    //   618: astore 12
+    //   620: ldc 28
+    //   622: astore 13
+    //   624: aload_0
+    //   625: astore 16
+    //   627: aload 13
+    //   629: astore_0
+    //   630: goto +49 -> 679
+    //   633: astore 12
+    //   635: ldc 28
+    //   637: astore 11
+    //   639: aload_0
+    //   640: astore 16
+    //   642: aload_2
+    //   643: astore 13
+    //   645: aload 11
+    //   647: astore_2
+    //   648: goto +23 -> 671
+    //   651: astore 12
+    //   653: goto +8 -> 661
+    //   656: astore 12
+    //   658: ldc 28
+    //   660: astore_0
+    //   661: ldc 28
+    //   663: astore 13
+    //   665: ldc 28
+    //   667: astore_2
+    //   668: aload_0
+    //   669: astore 16
+    //   671: aload_2
+    //   672: astore_0
+    //   673: aload_2
+    //   674: astore 11
+    //   676: aload 13
+    //   678: astore_2
+    //   679: aload_0
+    //   680: astore 14
+    //   682: aload 14
+    //   684: astore 15
+    //   686: aload 15
+    //   688: astore 17
+    //   690: aload 17
+    //   692: astore 18
+    //   694: aload 18
+    //   696: astore 19
+    //   698: aload 19
+    //   700: astore 20
+    //   702: iconst_0
+    //   703: istore_3
+    //   704: aload_0
+    //   705: astore 13
+    //   707: aload 16
+    //   709: astore_0
+    //   710: iconst_0
+    //   711: istore 8
+    //   713: aload 15
+    //   715: astore 16
+    //   717: aload 14
+    //   719: astore 15
+    //   721: aload 13
+    //   723: astore 14
+    //   725: aload 12
+    //   727: astore 13
+    //   729: lconst_0
+    //   730: lstore 9
+    //   732: aload 14
+    //   734: astore 12
+    //   736: aload 13
+    //   738: astore 14
+    //   740: iconst_0
+    //   741: istore 5
+    //   743: aload 20
+    //   745: astore 23
+    //   747: aload 19
+    //   749: astore 22
+    //   751: aload 18
+    //   753: astore 21
+    //   755: aload 17
+    //   757: astore 20
+    //   759: aload 16
+    //   761: astore 17
+    //   763: aload 15
+    //   765: astore 13
+    //   767: aload 12
+    //   769: astore 19
+    //   771: aload 11
+    //   773: astore 18
+    //   775: aload_0
+    //   776: astore 16
+    //   778: aload 14
     //   780: astore 15
-    //   782: aload 19
-    //   784: astore 16
-    //   786: iload_3
-    //   787: istore 6
-    //   789: aload 30
-    //   791: astore 22
-    //   793: aload 28
-    //   795: astore 23
-    //   797: iload 7
-    //   799: istore 5
-    //   801: aload 29
-    //   803: astore 21
-    //   805: lload 12
-    //   807: lstore 10
-    //   809: aload 31
-    //   811: ldc 160
-    //   813: invokevirtual 136	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   816: astore 24
-    //   818: aload 24
-    //   820: astore 20
-    //   822: aload 25
-    //   824: astore 18
-    //   826: aload 26
-    //   828: astore 17
-    //   830: aload 27
-    //   832: astore 15
-    //   834: aload 19
-    //   836: astore 16
-    //   838: iload_3
-    //   839: istore 6
-    //   841: aload 30
-    //   843: astore 22
-    //   845: aload 28
-    //   847: astore 23
-    //   849: iload 7
-    //   851: istore 5
-    //   853: aload 29
-    //   855: astore 21
-    //   857: lload 12
-    //   859: lstore 10
-    //   861: aload 31
-    //   863: ldc 162
-    //   865: invokevirtual 125	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   868: istore 8
-    //   870: iload 8
-    //   872: istore 5
-    //   874: aload 19
-    //   876: astore 16
-    //   878: aload 27
-    //   880: astore 15
-    //   882: aload 26
-    //   884: astore 17
-    //   886: aload 25
-    //   888: astore 18
-    //   890: aload 24
-    //   892: astore 20
-    //   894: aload 30
-    //   896: astore 21
-    //   898: aload 28
-    //   900: astore 22
-    //   902: iload 7
-    //   904: istore 6
-    //   906: aload 20
-    //   908: astore 23
-    //   910: aload 18
-    //   912: astore 24
-    //   914: aload 16
-    //   916: astore 18
-    //   918: aload_2
-    //   919: astore 16
-    //   921: lload 12
-    //   923: lstore 10
-    //   925: aload_0
-    //   926: astore_2
-    //   927: aload 29
-    //   929: astore 20
-    //   931: aload 15
-    //   933: astore 19
-    //   935: aload 24
-    //   937: astore 15
-    //   939: aload 23
-    //   941: astore_0
-    //   942: invokestatic 47	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   945: ifeq +48 -> 993
-    //   948: ldc 49
-    //   950: iconst_4
-    //   951: new 51	java/lang/StringBuilder
-    //   954: dup
-    //   955: invokespecial 52	java/lang/StringBuilder:<init>	()V
-    //   958: ldc 164
-    //   960: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   963: aload_2
-    //   964: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   967: ldc 166
-    //   969: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   972: aload 18
-    //   974: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   977: ldc 60
-    //   979: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   982: aload 16
-    //   984: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   987: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   990: invokestatic 68	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   993: aload_2
-    //   994: ldc 168
-    //   996: invokevirtual 174	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   999: ifeq +308 -> 1307
-    //   1002: new 70	android/content/Intent
-    //   1005: dup
-    //   1006: ldc 72
-    //   1008: invokespecial 73	android/content/Intent:<init>	(Ljava/lang/String;)V
-    //   1011: astore_2
-    //   1012: new 75	android/os/Bundle
-    //   1015: dup
-    //   1016: invokespecial 76	android/os/Bundle:<init>	()V
-    //   1019: astore 23
-    //   1021: aload 23
-    //   1023: ldc 119
-    //   1025: aload 16
-    //   1027: invokevirtual 84	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1030: aload 23
-    //   1032: ldc 176
-    //   1034: lconst_0
-    //   1035: invokevirtual 180	android/os/Bundle:putLong	(Ljava/lang/String;J)V
-    //   1038: aload 23
-    //   1040: ldc 117
-    //   1042: aload 18
-    //   1044: invokevirtual 84	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1047: aload 23
-    //   1049: ldc 182
-    //   1051: lload 10
-    //   1053: invokevirtual 180	android/os/Bundle:putLong	(Ljava/lang/String;J)V
-    //   1056: aload 23
-    //   1058: ldc 184
-    //   1060: ldc 28
-    //   1062: invokevirtual 84	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1065: aload 23
-    //   1067: ldc 138
-    //   1069: aload 20
-    //   1071: invokevirtual 84	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1074: aload 23
-    //   1076: ldc 146
-    //   1078: iload 6
-    //   1080: invokevirtual 188	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   1083: aload 23
-    //   1085: ldc 133
-    //   1087: aload 22
-    //   1089: invokevirtual 84	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1092: aload 23
-    //   1094: ldc 121
-    //   1096: iload 4
-    //   1098: invokevirtual 188	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   1101: aload 23
-    //   1103: ldc 148
-    //   1105: aload 21
-    //   1107: invokevirtual 84	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1110: aload 23
-    //   1112: ldc 154
-    //   1114: aload 19
-    //   1116: invokevirtual 84	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1119: aload 23
-    //   1121: ldc 156
-    //   1123: aload 17
-    //   1125: invokevirtual 84	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1128: aload 23
-    //   1130: ldc 158
-    //   1132: aload 15
-    //   1134: invokevirtual 84	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1137: aload 23
-    //   1139: ldc 160
-    //   1141: aload_0
-    //   1142: invokevirtual 84	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1145: aload 23
-    //   1147: ldc 162
-    //   1149: iload 5
-    //   1151: invokevirtual 188	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   1154: iload 14
-    //   1156: ifeq +232 -> 1388
-    //   1159: iconst_1
-    //   1160: istore 5
-    //   1162: aload 23
-    //   1164: ldc 127
-    //   1166: iload 5
-    //   1168: invokevirtual 188	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   1171: aload 23
-    //   1173: ldc 78
-    //   1175: ldc 190
-    //   1177: invokevirtual 84	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1180: aload_2
-    //   1181: aload 23
-    //   1183: invokevirtual 90	android/content/Intent:putExtras	(Landroid/os/Bundle;)Landroid/content/Intent;
-    //   1186: pop
-    //   1187: invokestatic 47	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   1190: ifeq +61 -> 1251
-    //   1193: ldc 49
-    //   1195: iconst_4
-    //   1196: new 51	java/lang/StringBuilder
-    //   1199: dup
-    //   1200: invokespecial 52	java/lang/StringBuilder:<init>	()V
-    //   1203: ldc 192
-    //   1205: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1208: aload_2
-    //   1209: invokevirtual 195	android/content/Intent:getAction	()Ljava/lang/String;
-    //   1212: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1215: ldc 197
-    //   1217: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1220: lload 10
-    //   1222: invokevirtual 200	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1225: ldc 202
-    //   1227: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1230: iload 4
-    //   1232: invokevirtual 205	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1235: ldc 207
-    //   1237: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1240: aload 21
-    //   1242: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1245: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1248: invokestatic 68	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1251: aload_1
-    //   1252: invokevirtual 96	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
-    //   1255: invokestatic 102	cooperation/qzone/QZoneHelper$UserInfo:getInstance	()Lcooperation/qzone/QZoneHelper$UserInfo;
-    //   1258: aload_2
-    //   1259: invokestatic 108	cooperation/qzone/QZoneHelper:forwardToQzoneTransluentActivity	(Landroid/app/Activity;Lcooperation/qzone/QZoneHelper$UserInfo;Landroid/content/Intent;)V
-    //   1262: ldc 8
-    //   1264: iconst_0
-    //   1265: aload_1
-    //   1266: invokevirtual 210	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
-    //   1269: invokevirtual 215	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   1272: invokestatic 221	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
-    //   1275: invokevirtual 225	java/lang/Long:longValue	()J
-    //   1278: invokestatic 231	cooperation/qzone/LocalMultiProcConfig:putInt4Uin	(Ljava/lang/String;IJ)V
-    //   1281: iload_3
-    //   1282: ifeq +25 -> 1307
-    //   1285: aload_1
-    //   1286: invokevirtual 96	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
-    //   1289: invokestatic 102	cooperation/qzone/QZoneHelper$UserInfo:getInstance	()Lcooperation/qzone/QZoneHelper$UserInfo;
-    //   1292: aload_1
-    //   1293: invokevirtual 210	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
-    //   1296: invokevirtual 234	com/tencent/common/app/AppInterface:getAccount	()Ljava/lang/String;
-    //   1299: iconst_0
-    //   1300: iconst_0
-    //   1301: sipush 256
-    //   1304: invokestatic 238	cooperation/qzone/QZoneHelper:forwardToUserHome	(Landroid/content/Context;Lcooperation/qzone/QZoneHelper$UserInfo;Ljava/lang/String;III)V
-    //   1307: return
-    //   1308: iconst_0
-    //   1309: istore_3
-    //   1310: goto -784 -> 526
-    //   1313: astore_0
-    //   1314: iconst_0
-    //   1315: istore 5
-    //   1317: ldc 28
-    //   1319: astore 21
-    //   1321: ldc 28
-    //   1323: astore 22
-    //   1325: iconst_0
-    //   1326: istore 6
-    //   1328: ldc 28
-    //   1330: astore 20
-    //   1332: iconst_0
-    //   1333: istore 14
-    //   1335: ldc 28
-    //   1337: astore 23
-    //   1339: ldc 28
-    //   1341: astore 24
-    //   1343: ldc 28
-    //   1345: astore 25
-    //   1347: lconst_0
-    //   1348: lstore 10
-    //   1350: ldc 28
-    //   1352: astore 19
-    //   1354: aload 15
-    //   1356: astore_2
-    //   1357: aload 17
-    //   1359: astore 18
-    //   1361: iload_3
-    //   1362: istore 4
-    //   1364: iload 5
-    //   1366: istore_3
-    //   1367: aload 25
-    //   1369: astore 17
-    //   1371: aload 24
-    //   1373: astore 15
-    //   1375: aload_0
-    //   1376: invokevirtual 111	org/json/JSONException:printStackTrace	()V
-    //   1379: iconst_0
-    //   1380: istore 5
-    //   1382: aload 23
-    //   1384: astore_0
-    //   1385: goto -443 -> 942
-    //   1388: iconst_0
-    //   1389: istore 5
-    //   1391: goto -229 -> 1162
-    //   1394: astore 26
-    //   1396: iload 6
-    //   1398: istore_3
-    //   1399: aload 23
-    //   1401: astore 24
-    //   1403: aload 21
-    //   1405: astore 25
-    //   1407: aload 15
-    //   1409: astore 19
-    //   1411: aload 20
-    //   1413: astore 23
-    //   1415: aload 18
-    //   1417: astore 15
-    //   1419: aload 22
-    //   1421: astore 21
-    //   1423: aload 24
-    //   1425: astore 22
-    //   1427: iload 5
-    //   1429: istore 6
-    //   1431: aload 25
-    //   1433: astore 20
-    //   1435: aload 16
-    //   1437: astore 18
-    //   1439: aload_2
-    //   1440: astore 16
-    //   1442: aload_0
-    //   1443: astore_2
-    //   1444: aload 26
-    //   1446: astore_0
-    //   1447: goto -72 -> 1375
-    //   1450: iconst_0
-    //   1451: istore_3
-    //   1452: ldc 28
-    //   1454: astore 21
-    //   1456: iconst_0
-    //   1457: istore 4
-    //   1459: ldc 28
-    //   1461: astore 22
-    //   1463: iconst_0
-    //   1464: istore 6
-    //   1466: ldc 28
-    //   1468: astore 20
-    //   1470: iconst_0
-    //   1471: istore 14
-    //   1473: iconst_0
-    //   1474: istore 5
-    //   1476: ldc 28
-    //   1478: astore_0
-    //   1479: ldc 28
-    //   1481: astore 15
-    //   1483: ldc 28
-    //   1485: astore 17
-    //   1487: ldc 28
-    //   1489: astore 18
-    //   1491: ldc 28
-    //   1493: astore 16
-    //   1495: lconst_0
-    //   1496: lstore 10
-    //   1498: ldc 28
-    //   1500: astore 19
-    //   1502: aload 23
-    //   1504: astore_2
-    //   1505: goto -563 -> 942
+    //   782: iconst_0
+    //   783: istore 4
+    //   785: aload 23
+    //   787: astore_0
+    //   788: aload 22
+    //   790: astore 12
+    //   792: aload 21
+    //   794: astore 11
+    //   796: aload 20
+    //   798: astore 14
+    //   800: aload 16
+    //   802: astore 20
+    //   804: iload_3
+    //   805: istore 6
+    //   807: aload 15
+    //   809: invokevirtual 44	org/json/JSONException:printStackTrace	()V
+    //   812: aload 20
+    //   814: astore 16
+    //   816: aload 13
+    //   818: astore 20
+    //   820: aload 14
+    //   822: astore 13
+    //   824: aload 11
+    //   826: astore 14
+    //   828: aload 12
+    //   830: astore 11
+    //   832: iconst_0
+    //   833: istore_3
+    //   834: aload 14
+    //   836: astore 12
+    //   838: aload 17
+    //   840: astore 14
+    //   842: aload_2
+    //   843: astore 15
+    //   845: aload 20
+    //   847: astore_2
+    //   848: aload 18
+    //   850: astore 17
+    //   852: iload 6
+    //   854: istore 7
+    //   856: aload 15
+    //   858: astore 18
+    //   860: aload 16
+    //   862: astore 23
+    //   864: iload 5
+    //   866: istore 6
+    //   868: aload 19
+    //   870: astore 15
+    //   872: iload 7
+    //   874: istore 5
+    //   876: aload 18
+    //   878: astore 16
+    //   880: aload_2
+    //   881: astore 18
+    //   883: aload 13
+    //   885: astore 19
+    //   887: aload 12
+    //   889: astore 20
+    //   891: aload 11
+    //   893: astore 21
+    //   895: aload_0
+    //   896: astore 22
+    //   898: goto +86 -> 984
+    //   901: ldc 28
+    //   903: astore 23
+    //   905: aload 23
+    //   907: astore_0
+    //   908: aload_0
+    //   909: astore_2
+    //   910: aload_2
+    //   911: astore 11
+    //   913: aload 11
+    //   915: astore 12
+    //   917: aload 12
+    //   919: astore 13
+    //   921: aload 13
+    //   923: astore 14
+    //   925: aload 14
+    //   927: astore 15
+    //   929: aload 15
+    //   931: astore 16
+    //   933: aload 16
+    //   935: astore 22
+    //   937: iconst_0
+    //   938: istore 6
+    //   940: iconst_0
+    //   941: istore 5
+    //   943: lconst_0
+    //   944: lstore 9
+    //   946: iconst_0
+    //   947: istore 8
+    //   949: iconst_0
+    //   950: istore 4
+    //   952: iconst_0
+    //   953: istore_3
+    //   954: aload 16
+    //   956: astore 21
+    //   958: aload 15
+    //   960: astore 20
+    //   962: aload 14
+    //   964: astore 19
+    //   966: aload 13
+    //   968: astore 14
+    //   970: aload 12
+    //   972: astore 18
+    //   974: aload 11
+    //   976: astore 17
+    //   978: aload_2
+    //   979: astore 16
+    //   981: aload_0
+    //   982: astore 15
+    //   984: invokestatic 50	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   987: ifeq +66 -> 1053
+    //   990: new 52	java/lang/StringBuilder
+    //   993: dup
+    //   994: invokespecial 53	java/lang/StringBuilder:<init>	()V
+    //   997: astore_0
+    //   998: aload_0
+    //   999: ldc 164
+    //   1001: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1004: pop
+    //   1005: aload_0
+    //   1006: aload 23
+    //   1008: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1011: pop
+    //   1012: aload_0
+    //   1013: ldc 166
+    //   1015: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1018: pop
+    //   1019: aload_0
+    //   1020: aload 16
+    //   1022: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1025: pop
+    //   1026: aload_0
+    //   1027: ldc 61
+    //   1029: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1032: pop
+    //   1033: aload_0
+    //   1034: aload 17
+    //   1036: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1039: pop
+    //   1040: ldc 63
+    //   1042: iconst_4
+    //   1043: aload_0
+    //   1044: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1047: invokestatic 71	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1050: goto +3 -> 1053
+    //   1053: aload 23
+    //   1055: ldc 168
+    //   1057: invokevirtual 174	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1060: ifeq +311 -> 1371
+    //   1063: new 73	android/content/Intent
+    //   1066: dup
+    //   1067: ldc 75
+    //   1069: invokespecial 76	android/content/Intent:<init>	(Ljava/lang/String;)V
+    //   1072: astore_0
+    //   1073: new 78	android/os/Bundle
+    //   1076: dup
+    //   1077: invokespecial 79	android/os/Bundle:<init>	()V
+    //   1080: astore_2
+    //   1081: aload_2
+    //   1082: ldc 119
+    //   1084: aload 17
+    //   1086: invokevirtual 87	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1089: aload_2
+    //   1090: ldc 176
+    //   1092: lconst_0
+    //   1093: invokevirtual 180	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   1096: aload_2
+    //   1097: ldc 117
+    //   1099: aload 16
+    //   1101: invokevirtual 87	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1104: aload_2
+    //   1105: ldc 182
+    //   1107: lload 9
+    //   1109: invokevirtual 180	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   1112: aload_2
+    //   1113: ldc 184
+    //   1115: ldc 28
+    //   1117: invokevirtual 87	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1120: aload_2
+    //   1121: ldc 138
+    //   1123: aload 18
+    //   1125: invokevirtual 87	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1128: aload_2
+    //   1129: ldc 146
+    //   1131: iload 6
+    //   1133: invokevirtual 188	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1136: aload_2
+    //   1137: ldc 133
+    //   1139: aload 15
+    //   1141: invokevirtual 87	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1144: aload_2
+    //   1145: ldc 121
+    //   1147: iload 5
+    //   1149: invokevirtual 188	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1152: aload_2
+    //   1153: ldc 148
+    //   1155: aload 14
+    //   1157: invokevirtual 87	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1160: aload_2
+    //   1161: ldc 154
+    //   1163: aload 19
+    //   1165: invokevirtual 87	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1168: aload_2
+    //   1169: ldc 156
+    //   1171: aload 20
+    //   1173: invokevirtual 87	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1176: aload_2
+    //   1177: ldc 158
+    //   1179: aload 21
+    //   1181: invokevirtual 87	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1184: aload_2
+    //   1185: ldc 160
+    //   1187: aload 22
+    //   1189: invokevirtual 87	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1192: aload_2
+    //   1193: ldc 162
+    //   1195: iload_3
+    //   1196: invokevirtual 188	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1199: iload 8
+    //   1201: ifeq +8 -> 1209
+    //   1204: iconst_1
+    //   1205: istore_3
+    //   1206: goto +5 -> 1211
+    //   1209: iconst_0
+    //   1210: istore_3
+    //   1211: aload_2
+    //   1212: ldc 127
+    //   1214: iload_3
+    //   1215: invokevirtual 188	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1218: aload_2
+    //   1219: ldc 81
+    //   1221: ldc 190
+    //   1223: invokevirtual 87	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1226: aload_0
+    //   1227: aload_2
+    //   1228: invokevirtual 93	android/content/Intent:putExtras	(Landroid/os/Bundle;)Landroid/content/Intent;
+    //   1231: pop
+    //   1232: invokestatic 50	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   1235: ifeq +79 -> 1314
+    //   1238: new 52	java/lang/StringBuilder
+    //   1241: dup
+    //   1242: invokespecial 53	java/lang/StringBuilder:<init>	()V
+    //   1245: astore_2
+    //   1246: aload_2
+    //   1247: ldc 192
+    //   1249: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1252: pop
+    //   1253: aload_2
+    //   1254: aload_0
+    //   1255: invokevirtual 195	android/content/Intent:getAction	()Ljava/lang/String;
+    //   1258: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1261: pop
+    //   1262: aload_2
+    //   1263: ldc 197
+    //   1265: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1268: pop
+    //   1269: aload_2
+    //   1270: lload 9
+    //   1272: invokevirtual 200	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1275: pop
+    //   1276: aload_2
+    //   1277: ldc 202
+    //   1279: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1282: pop
+    //   1283: aload_2
+    //   1284: iload 5
+    //   1286: invokevirtual 205	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1289: pop
+    //   1290: aload_2
+    //   1291: ldc 207
+    //   1293: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1296: pop
+    //   1297: aload_2
+    //   1298: aload 14
+    //   1300: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1303: pop
+    //   1304: ldc 63
+    //   1306: iconst_4
+    //   1307: aload_2
+    //   1308: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1311: invokestatic 71	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1314: aload_1
+    //   1315: invokevirtual 99	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
+    //   1318: invokestatic 105	cooperation/qzone/QZoneHelper$UserInfo:getInstance	()Lcooperation/qzone/QZoneHelper$UserInfo;
+    //   1321: aload_0
+    //   1322: invokestatic 111	cooperation/qzone/QZoneHelper:forwardToQzoneTransluentActivity	(Landroid/app/Activity;Lcooperation/qzone/QZoneHelper$UserInfo;Landroid/content/Intent;)V
+    //   1325: ldc 8
+    //   1327: iconst_0
+    //   1328: aload_1
+    //   1329: invokevirtual 210	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
+    //   1332: invokevirtual 215	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   1335: invokestatic 221	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
+    //   1338: invokevirtual 225	java/lang/Long:longValue	()J
+    //   1341: invokestatic 231	cooperation/qzone/LocalMultiProcConfig:putInt4Uin	(Ljava/lang/String;IJ)V
+    //   1344: iload 4
+    //   1346: ifeq +25 -> 1371
+    //   1349: aload_1
+    //   1350: invokevirtual 99	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
+    //   1353: invokestatic 105	cooperation/qzone/QZoneHelper$UserInfo:getInstance	()Lcooperation/qzone/QZoneHelper$UserInfo;
+    //   1356: aload_1
+    //   1357: invokevirtual 210	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
+    //   1360: invokevirtual 234	com/tencent/common/app/AppInterface:getAccount	()Ljava/lang/String;
+    //   1363: iconst_0
+    //   1364: iconst_0
+    //   1365: sipush 256
+    //   1368: invokestatic 238	cooperation/qzone/QZoneHelper:forwardToUserHome	(Landroid/content/Context;Lcooperation/qzone/QZoneHelper$UserInfo;Ljava/lang/String;III)V
+    //   1371: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1508	0	paramWebViewPlugin	com.tencent.mobileqq.webview.swift.WebViewPlugin
-    //   0	1508	1	paramPluginRuntime	WebViewPlugin.PluginRuntime
-    //   0	1508	2	paramVarArgs	String[]
-    //   70	1382	3	i	int
-    //   27	1431	4	j	int
-    //   238	1237	5	k	int
-    //   226	1239	6	m	int
-    //   20	883	7	n	int
-    //   53	818	8	i1	int
-    //   34	456	9	i2	int
-    //   246	1251	10	l1	long
-    //   13	909	12	l2	long
-    //   202	1270	14	bool	boolean
-    //   77	1405	15	localObject1	Object
-    //   73	1421	16	localObject2	Object
-    //   66	1420	17	localObject3	Object
-    //   6	1484	18	localObject4	Object
-    //   10	1491	19	localObject5	Object
-    //   206	1263	20	localObject6	Object
-    //   24	1431	21	localObject7	Object
-    //   230	1232	22	localObject8	Object
-    //   2	1501	23	localObject9	Object
-    //   50	1374	24	localObject10	Object
-    //   46	1386	25	localObject11	Object
-    //   42	841	26	str1	String
-    //   1394	51	26	localJSONException	JSONException
-    //   38	841	27	str2	String
-    //   255	644	28	str3	String
-    //   17	911	29	str4	String
-    //   31	864	30	str5	String
-    //   89	773	31	localJSONObject	JSONObject
+    //   0	1372	0	paramWebViewPlugin	com.tencent.mobileqq.webview.swift.WebViewPlugin
+    //   0	1372	1	paramPluginRuntime	WebViewPlugin.PluginRuntime
+    //   0	1372	2	paramVarArgs	String[]
+    //   53	1162	3	i	int
+    //   116	1229	4	j	int
+    //   98	1187	5	k	int
+    //   197	935	6	m	int
+    //   384	489	7	n	int
+    //   62	1138	8	bool	boolean
+    //   89	1182	9	l	long
+    //   44	931	11	localObject1	Object
+    //   71	508	12	localObject2	Object
+    //   585	1	12	localJSONException1	JSONException
+    //   618	1	12	localJSONException2	JSONException
+    //   633	1	12	localJSONException3	JSONException
+    //   651	1	12	localJSONException4	JSONException
+    //   656	70	12	localJSONException5	JSONException
+    //   734	237	12	localObject3	Object
+    //   80	887	13	localObject4	Object
+    //   161	266	14	localObject5	Object
+    //   485	1	14	localJSONException6	JSONException
+    //   522	777	14	localObject6	Object
+    //   141	60	15	arrayOfString	String[]
+    //   221	1	15	localJSONException7	JSONException
+    //   251	1	15	localJSONException8	JSONException
+    //   285	1	15	localJSONException9	JSONException
+    //   302	12	15	localJSONException10	JSONException
+    //   318	63	15	localObject7	Object
+    //   444	1	15	localJSONException11	JSONException
+    //   449	1	15	localJSONException12	JSONException
+    //   509	631	15	localObject8	Object
+    //   170	128	16	localObject9	Object
+    //   307	10	16	localJSONException13	JSONException
+    //   326	166	16	localObject10	Object
+    //   514	1	16	localJSONException14	JSONException
+    //   535	1	16	localJSONException15	JSONException
+    //   544	31	16	localJSONException16	JSONException
+    //   580	520	16	localObject11	Object
+    //   107	978	17	localObject12	Object
+    //   19	1105	18	localObject13	Object
+    //   204	960	19	localObject14	Object
+    //   227	945	20	localObject15	Object
+    //   179	1001	21	localObject16	Object
+    //   188	1000	22	localObject17	Object
+    //   469	585	23	localObject18	Object
     // Exception table:
     //   from	to	target	type
-    //   79	91	1313	org/json/JSONException
-    //   106	114	1313	org/json/JSONException
-    //   128	137	1313	org/json/JSONException
-    //   151	159	1313	org/json/JSONException
-    //   172	181	1313	org/json/JSONException
-    //   194	204	1313	org/json/JSONException
-    //   248	257	1394	org/json/JSONException
-    //   301	310	1394	org/json/JSONException
-    //   354	363	1394	org/json/JSONException
-    //   407	416	1394	org/json/JSONException
-    //   460	469	1394	org/json/JSONException
-    //   513	524	1394	org/json/JSONException
-    //   601	610	1394	org/json/JSONException
-    //   653	662	1394	org/json/JSONException
-    //   705	714	1394	org/json/JSONException
-    //   757	766	1394	org/json/JSONException
-    //   809	818	1394	org/json/JSONException
-    //   861	870	1394	org/json/JSONException
+    //   190	199	221	org/json/JSONException
+    //   181	190	251	org/json/JSONException
+    //   172	181	285	org/json/JSONException
+    //   163	172	302	org/json/JSONException
+    //   143	151	307	org/json/JSONException
+    //   154	163	307	org/json/JSONException
+    //   109	118	444	org/json/JSONException
+    //   100	109	449	org/json/JSONException
+    //   91	100	485	org/json/JSONException
+    //   82	91	514	org/json/JSONException
+    //   73	82	535	org/json/JSONException
+    //   64	73	544	org/json/JSONException
+    //   54	64	585	org/json/JSONException
+    //   46	54	618	org/json/JSONException
+    //   37	46	633	org/json/JSONException
+    //   29	37	651	org/json/JSONException
+    //   9	29	656	org/json/JSONException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.personalize.QZoneCardJsHandleLogic
  * JD-Core Version:    0.7.0.1
  */

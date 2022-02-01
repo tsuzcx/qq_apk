@@ -15,17 +15,20 @@ class ARReport$4
     if (ARReport.a(this.this$0, this.jdField_a_of_type_Long)) {
       localHashMap.put("local_load_feature_time", String.valueOf(this.jdField_a_of_type_Long));
     }
-    if (this.b > 0L) {
-      localHashMap.put("local_load_feature_count", String.valueOf(this.b));
+    long l = this.b;
+    if (l > 0L) {
+      localHashMap.put("local_load_feature_count", String.valueOf(l));
     }
     if (ARReport.a(this.this$0, this.c)) {
       localHashMap.put("local_recognize_time", String.valueOf(this.c));
     }
-    if (this.d > 0L) {
-      localHashMap.put("local_recognize_times", String.valueOf(this.d));
+    l = this.d;
+    if (l > 0L) {
+      localHashMap.put("local_recognize_times", String.valueOf(l));
     }
-    if (this.e > 0L) {
-      localHashMap.put("local_recognize_quality", String.valueOf(this.e));
+    l = this.e;
+    if (l > 0L) {
+      localHashMap.put("local_recognize_quality", String.valueOf(l));
     }
     if (!this.jdField_a_of_type_JavaLangString.equals("")) {
       localHashMap.put("local_recognize_featureid", this.jdField_a_of_type_JavaLangString);
@@ -35,7 +38,7 @@ class ARReport$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARReport.4
  * JD-Core Version:    0.7.0.1
  */

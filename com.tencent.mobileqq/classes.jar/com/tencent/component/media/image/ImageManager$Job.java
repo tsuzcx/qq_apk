@@ -15,36 +15,34 @@ class ImageManager$Job
   public int compareTo(Job paramJob)
   {
     boolean bool;
-    if (paramJob != null)
-    {
+    if (paramJob != null) {
       bool = paramJob.priorty;
-      if ((!this.priorty) || (!bool)) {
-        break label27;
-      }
-    }
-    label27:
-    do
-    {
-      return 0;
+    } else {
       bool = false;
-      break;
-      if ((this.priorty) && (!bool)) {
-        return 1;
-      }
-    } while (!bool);
-    return -1;
+    }
+    if ((this.priorty) && (bool)) {
+      return 0;
+    }
+    if ((this.priorty) && (!bool)) {
+      return 1;
+    }
+    if (bool) {
+      return -1;
+    }
+    return 0;
   }
   
   public void run()
   {
-    if (this.runnable != null) {
-      this.runnable.run();
+    Runnable localRunnable = this.runnable;
+    if (localRunnable != null) {
+      localRunnable.run();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.ImageManager.Job
  * JD-Core Version:    0.7.0.1
  */

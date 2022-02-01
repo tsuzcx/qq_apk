@@ -15,43 +15,66 @@ public class GaussianBlurFilterCompose
   
   private float[] getWeight(float paramFloat)
   {
-    int i = 0;
+    int k = 0;
+    double d1;
+    double d2;
     if (paramFloat >= 1.0F)
     {
-      double d = Math.pow(paramFloat, 2.0D);
-      i = (int)Math.floor(Math.sqrt(Math.log(0.0039063F * Math.sqrt(6.283185307179586D * Math.pow(paramFloat, 2.0D))) * (-2.0D * d)));
+      double d3 = paramFloat;
+      d1 = Math.pow(d3, 2.0D);
+      d2 = 0.0039063F;
+      d3 = Math.sqrt(Math.pow(d3, 2.0D) * 6.283185307179586D);
+      Double.isNaN(d2);
+      i = (int)Math.floor(Math.sqrt(d1 * -2.0D * Math.log(d2 * d3)));
       i += i % 2;
     }
-    float[] arrayOfFloat1 = new float[i + 1];
-    float f = 0.0F;
-    int j = 0;
-    if (j < i + 1)
+    else
     {
-      arrayOfFloat1[j] = ((float)(1.0D / Math.sqrt(6.283185307179586D * Math.pow(paramFloat, 2.0D)) * Math.exp(-Math.pow(j, 2.0D) / (2.0D * Math.pow(paramFloat, 2.0D)))));
-      if (j == 0) {}
-      for (f = arrayOfFloat1[j] + f;; f = (float)(f + 2.0D * arrayOfFloat1[j]))
+      i = 0;
+    }
+    int m = i + 1;
+    float[] arrayOfFloat1 = new float[m];
+    int j = 0;
+    float f = 0.0F;
+    while (j < m)
+    {
+      d1 = paramFloat;
+      arrayOfFloat1[j] = ((float)(1.0D / Math.sqrt(Math.pow(d1, 2.0D) * 6.283185307179586D) * Math.exp(-Math.pow(j, 2.0D) / (Math.pow(d1, 2.0D) * 2.0D))));
+      if (j == 0)
       {
-        j += 1;
-        break;
+        f += arrayOfFloat1[j];
       }
+      else
+      {
+        d1 = f;
+        d2 = arrayOfFloat1[j];
+        Double.isNaN(d2);
+        Double.isNaN(d1);
+        f = (float)(d1 + d2 * 2.0D);
+      }
+      j += 1;
     }
     j = 0;
-    while (j < i + 1)
+    while (j < m)
     {
       arrayOfFloat1[j] /= f;
       j += 1;
     }
-    int k = Math.min(i / 2 + i % 2, 7);
-    float[] arrayOfFloat2 = new float[k];
-    j = 0;
-    while (j < k)
+    m = i / 2 + i % 2;
+    j = Math.min(m, 7);
+    float[] arrayOfFloat2 = new float[j];
+    int i = 0;
+    int n;
+    while (i < j)
     {
-      paramFloat = arrayOfFloat1[(j * 2 + 1)];
-      f = arrayOfFloat1[(j * 2 + 2)];
-      arrayOfFloat2[j] = ((paramFloat * (j * 2 + 1) + f * (j * 2 + 2)) / (paramFloat + f));
-      j += 1;
+      int i1 = i * 2;
+      n = i1 + 1;
+      paramFloat = arrayOfFloat1[n];
+      i1 += 2;
+      f = arrayOfFloat1[i1];
+      arrayOfFloat2[i] = ((paramFloat * n + f * i1) / (paramFloat + f));
+      i += 1;
     }
-    j = i / 2 + i % 2;
     arrayOfFloat2 = new float[11];
     i = 0;
     while (i < 11)
@@ -60,63 +83,75 @@ public class GaussianBlurFilterCompose
       i += 1;
     }
     i = 0;
-    while (i < k)
+    while (i < j)
     {
-      arrayOfFloat2[i] = (arrayOfFloat1[(i * 2 + 1)] + arrayOfFloat1[(i * 2 + 2)]);
+      n = i * 2;
+      arrayOfFloat2[i] = (arrayOfFloat1[(n + 1)] + arrayOfFloat1[(n + 2)]);
       i += 1;
     }
-    if (j > k)
+    if (m > j)
     {
-      i = k;
-      while (i < j)
+      i = j;
+      while (i < m)
       {
-        arrayOfFloat2[i] = (arrayOfFloat1[(i * 2 + 1)] + arrayOfFloat1[(i * 2 + 2)]);
+        j = i * 2;
+        arrayOfFloat2[i] = (arrayOfFloat1[(j + 1)] + arrayOfFloat1[(j + 2)]);
         i += 1;
       }
     }
     paramFloat = -arrayOfFloat2[0];
     i = 0;
-    while (i < arrayOfFloat2.length)
+    for (;;)
     {
+      j = k;
+      if (i >= arrayOfFloat2.length) {
+        break;
+      }
       paramFloat += arrayOfFloat2[i] * 2.0F;
       i += 1;
     }
-    i = 0;
-    while (i < arrayOfFloat2.length)
+    while (j < arrayOfFloat2.length)
     {
-      arrayOfFloat2[i] /= paramFloat;
-      i += 1;
+      arrayOfFloat2[j] /= paramFloat;
+      j += 1;
     }
     return arrayOfFloat2;
   }
   
   public void destroy()
   {
-    if (this.filter != null)
+    Object localObject = this.filter;
+    if (localObject != null)
     {
-      this.filter.destroy();
+      ((GaussianBlurFilter)localObject).destroy();
       this.filter = null;
     }
-    if (this.mRenderScale != null)
+    localObject = this.mRenderScale;
+    if (localObject != null)
     {
-      GlUtil.deleteTexture(this.mRenderScale.getTexId());
+      GlUtil.deleteTexture(((RenderBuffer)localObject).getTexId());
       this.mRenderScale.destroy();
       this.mRenderScale = null;
     }
-    if (this.renderDraw != null)
+    localObject = this.renderDraw;
+    if (localObject != null)
     {
-      this.renderDraw.release();
+      ((TextureRender)localObject).release();
       this.renderDraw = null;
     }
-    if (this.mScaleTextureFirst > 0) {
-      GlUtil.deleteTexture(this.mScaleTextureFirst);
+    int i = this.mScaleTextureFirst;
+    if (i > 0) {
+      GlUtil.deleteTexture(i);
     }
   }
   
   public void drawTexture(int paramInt)
   {
-    if (this.filter == null) {}
-    while (!this.filter.isInitSucc()) {
+    GaussianBlurFilter localGaussianBlurFilter = this.filter;
+    if (localGaussianBlurFilter == null) {
+      return;
+    }
+    if (!localGaussianBlurFilter.isInitSucc()) {
       return;
     }
     this.mRenderScale.bind();
@@ -158,7 +193,7 @@ public class GaussianBlurFilterCompose
   public void init(int paramInt1, int paramInt2)
   {
     this.mScaleWidth = ((int)(paramInt1 * 0.25F));
-    this.mScaleHeight = ((int)(0.25F * paramInt2));
+    this.mScaleHeight = ((int)(paramInt2 * 0.25F));
     this.mRenderScale = new RenderBuffer(this.mScaleWidth, this.mScaleHeight, 33986);
     this.mScaleTextureFirst = GlUtil.createTextureAllocate(this.mScaleWidth, this.mScaleHeight, false);
     this.renderDraw = new TextureRender();
@@ -175,7 +210,7 @@ public class GaussianBlurFilterCompose
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.GaussianBlurFilterCompose
  * JD-Core Version:    0.7.0.1
  */

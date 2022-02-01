@@ -28,25 +28,26 @@ class GetStackRunnable$Step3Runnable
       this.mi.cacheRealStackTime = System.currentTimeMillis();
       String str = GetStackRunnable.access$100(this.this$0, true);
       Logger.INSTANCE.d(new String[] { "QAPM_looper_GetStackRunnable", "Main Thread suspend ", String.valueOf(l), " ms, and the stack is ", str });
-      this.mi.stack = str;
-      this.mi.lastStackRequestTime = 0L;
-      this.mi.scene = GetStackRunnable.access$200(this.this$0);
-      if (!TextUtils.isEmpty(this.mi.scene)) {
-        break label184;
+      MonitorInfo localMonitorInfo = this.mi;
+      localMonitorInfo.stack = str;
+      localMonitorInfo.lastStackRequestTime = 0L;
+      localMonitorInfo.scene = GetStackRunnable.access$200(this.this$0);
+      if (TextUtils.isEmpty(this.mi.scene))
+      {
+        this.mi.scene = ActivityInfo.getCurrentActivityName();
+        this.mi.needCheck = true;
       }
-      this.mi.scene = ActivityInfo.getCurrentActivityName();
+      else
+      {
+        this.mi.needCheck = false;
+      }
     }
-    label184:
-    for (this.mi.needCheck = true;; this.mi.needCheck = false)
-    {
-      this.stepHandler.post(this.this$0);
-      return;
-    }
+    this.stepHandler.post(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.looper.GetStackRunnable.Step3Runnable
  * JD-Core Version:    0.7.0.1
  */

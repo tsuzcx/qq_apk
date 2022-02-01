@@ -31,14 +31,15 @@ public final class GetBatchGeoRsp_V2
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vecGeoInfoCell != null) {
-      paramJceOutputStream.write(this.vecGeoInfoCell, 0);
+    ArrayList localArrayList = this.vecGeoInfoCell;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     LBS_V2_PROTOCOL.GetBatchGeoRsp_V2
  * JD-Core Version:    0.7.0.1
  */

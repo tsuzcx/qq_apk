@@ -42,19 +42,26 @@ public class BroadCastPlugin
     return 8589934598L;
   }
   
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  protected boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     if (paramLong == 8589934598L)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i(this.TAG, 2, "handleEvent finish or destroy. fromProfile:" + this.jdField_a_of_type_Boolean);
+      if (QLog.isColorLevel())
+      {
+        paramString = this.TAG;
+        paramMap = new StringBuilder();
+        paramMap.append("handleEvent finish or destroy. fromProfile:");
+        paramMap.append(this.jdField_a_of_type_Boolean);
+        QLog.i(paramString, 2, paramMap.toString());
       }
-      if ((this.jdField_a_of_type_JavaLangString != null) && (!"".equals(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_AndroidOsBundle != null))
+      paramString = this.jdField_a_of_type_JavaLangString;
+      if ((paramString != null) && (!"".equals(paramString)) && (this.jdField_a_of_type_AndroidOsBundle != null))
       {
         paramString = new Intent();
         paramString.setAction(this.jdField_a_of_type_JavaLangString);
-        if (this.jdField_a_of_type_AndroidOsBundle != null) {
-          paramString.putExtra("key_bundle_data", this.jdField_a_of_type_AndroidOsBundle);
+        paramMap = this.jdField_a_of_type_AndroidOsBundle;
+        if (paramMap != null) {
+          paramString.putExtra("key_bundle_data", paramMap);
         }
         this.mRuntime.a().sendBroadcast(paramString);
         this.jdField_a_of_type_AndroidOsBundle = null;
@@ -70,19 +77,35 @@ public class BroadCastPlugin
     return false;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((paramString2 == null) || (!paramString2.equalsIgnoreCase("profileJS")) || (paramString3 == null)) {}
-    while ((this.mRuntime == null) || (this.mRuntime.a() == null)) {
-      return false;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramString2 != null)
+    {
+      bool1 = bool2;
+      if (paramString2.equalsIgnoreCase("profileJS"))
+      {
+        if (paramString3 == null) {
+          return false;
+        }
+        bool1 = bool2;
+        if (this.mRuntime != null)
+        {
+          if (this.mRuntime.a() == null) {
+            return false;
+          }
+          if (paramString3.equals("onAddTag")) {
+            return a(paramVarArgs);
+          }
+          bool1 = true;
+        }
+      }
     }
-    if (paramString3.equals("onAddTag")) {
-      return a(paramVarArgs);
-    }
-    return true;
+    return bool1;
   }
   
-  public void onWebViewCreated(CustomWebView paramCustomWebView)
+  protected void onWebViewCreated(CustomWebView paramCustomWebView)
   {
     super.onWebViewCreated(paramCustomWebView);
     this.jdField_a_of_type_ComTencentSmttSdkWebView = this.mRuntime.a();
@@ -95,7 +118,7 @@ public class BroadCastPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.BroadCastPlugin
  * JD-Core Version:    0.7.0.1
  */

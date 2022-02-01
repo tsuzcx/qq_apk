@@ -15,12 +15,27 @@ public class VideoData
   
   public String toString()
   {
-    return "mType:" + this.jdField_a_of_type_Int + ", mErrorCode:" + this.b + ", mVideoTotalCount:" + this.c + ", mFirstPlayIndex:" + this.d + ", mVideoList:" + this.jdField_a_of_type_JavaUtilList.toString() + ", mFeedId:" + this.jdField_a_of_type_JavaLangString + ", mIsEnd:" + this.jdField_a_of_type_Boolean;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mType:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", mErrorCode:");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", mVideoTotalCount:");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", mFirstPlayIndex:");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", mVideoList:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.toString());
+    localStringBuilder.append(", mFeedId:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", mIsEnd:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.VideoData
  * JD-Core Version:    0.7.0.1
  */

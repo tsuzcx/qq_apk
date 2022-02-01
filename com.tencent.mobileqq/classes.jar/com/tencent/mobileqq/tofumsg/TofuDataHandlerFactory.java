@@ -21,77 +21,76 @@ public class TofuDataHandlerFactory
   
   ITofuDataHandler a(int paramInt)
   {
-    ITofuDataHandler localITofuDataHandler = (ITofuDataHandler)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localITofuDataHandler != null) {
-      ??? = localITofuDataHandler;
+    Object localObject = (ITofuDataHandler)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localObject != null) {
+      return localObject;
     }
-    do
+    if (paramInt != 0)
     {
-      do
+      if (paramInt != 1)
       {
-        return ???;
-        switch (paramInt)
+        if (paramInt != 2)
         {
-        default: 
-          ??? = localITofuDataHandler;
+          if (paramInt != 3)
+          {
+            if (paramInt == 4) {
+              localObject = new AskAnonymouslyHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+            }
+          }
+          else {
+            localObject = new NewFrdMiniCardHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+          }
         }
-      } while (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null);
-      ??? = localITofuDataHandler;
-    } while (localITofuDataHandler == null);
-    for (;;)
-    {
+        else {
+          localObject = new NicePicsDataHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        }
+      }
+      else {
+        localObject = new BaseProfileDataHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      }
+    }
+    else {
+      localObject = new IntimateAnniversaryDataHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    }
+    if ((this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null) && (localObject != null)) {
       synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
       {
-        if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null) {
-          break label186;
+        if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null) {
+          this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject);
+        } else {
+          localObject = (ITofuDataHandler)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
         }
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localITofuDataHandler);
-        return localITofuDataHandler;
+        return localObject;
       }
-      Object localObject2 = new IntimateAnniversaryDataHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      break;
-      localObject2 = new BaseProfileDataHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      break;
-      localObject2 = new NicePicsDataHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      break;
-      localObject2 = new NewFrdMiniCardHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      break;
-      localObject2 = new AskAnonymouslyHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      break;
-      label186:
-      localObject2 = (ITofuDataHandler)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
     }
+    return localITofuDataHandler;
   }
   
   void a()
   {
-    for (;;)
+    int i;
+    synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
     {
-      int i;
-      synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+      int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
+      i = 0;
+      if (i < j)
       {
-        int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
-        i = 0;
-        if (i < j)
-        {
-          ITofuDataHandler localITofuDataHandler = (ITofuDataHandler)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
-          if (localITofuDataHandler != null) {
-            localITofuDataHandler.a();
-          }
-        }
-        else
-        {
-          this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-          return;
+        ITofuDataHandler localITofuDataHandler = (ITofuDataHandler)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+        if (localITofuDataHandler != null) {
+          localITofuDataHandler.a();
         }
       }
-      i += 1;
+      else
+      {
+        this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+        return;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tofumsg.TofuDataHandlerFactory
  * JD-Core Version:    0.7.0.1
  */

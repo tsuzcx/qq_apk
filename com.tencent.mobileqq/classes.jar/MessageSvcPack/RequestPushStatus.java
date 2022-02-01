@@ -64,14 +64,15 @@ public final class RequestPushStatus
     paramJceOutputStream.write(this.nPCVer, 5);
     paramJceOutputStream.write(this.nClientType, 6);
     paramJceOutputStream.write(this.nInstanceId, 7);
-    if (this.vecInstanceList != null) {
-      paramJceOutputStream.write(this.vecInstanceList, 8);
+    ArrayList localArrayList = this.vecInstanceList;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.RequestPushStatus
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.huawei.hms.push.ups.entity;
 
 public class CodeResult
 {
-  private int a;
-  private String b;
+  public int a;
+  public String b;
   
   public CodeResult() {}
   

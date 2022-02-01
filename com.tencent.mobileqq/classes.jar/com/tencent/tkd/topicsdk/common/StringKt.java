@@ -12,8 +12,13 @@ public final class StringKt
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "$this$getNotEmpty");
     Intrinsics.checkParameterIsNotNull(paramString2, "defaultValue");
-    if (((CharSequence)paramString1).length() == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (((CharSequence)paramString1).length() == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramString2;
     }
     return paramString1;
@@ -21,7 +26,7 @@ public final class StringKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.common.StringKt
  * JD-Core Version:    0.7.0.1
  */

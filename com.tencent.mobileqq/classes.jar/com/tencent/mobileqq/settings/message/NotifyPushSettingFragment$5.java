@@ -16,38 +16,35 @@ class NotifyPushSettingFragment$5
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    boolean bool = true;
     if (QLog.isColorLevel()) {
       QLog.d("IphoneTitleBarFragment", 2, new Object[] { "avCallOnCheckedChangeListener::onCheckedChanged: invoked. ", " isChecked: ", Boolean.valueOf(paramBoolean) });
     }
     if (!NotifyPushSettingFragment.a(this.a).c())
     {
-      NotifyPushSettingFragment.a(this.a).a(this.a.getActivity());
+      NotifyPushSettingFragment.a(this.a).a(this.a.getBaseActivity());
       NotifyPushSettingFragment.a(this.a).setOnCheckedChangeListener(null);
-      FormSwitchItem localFormSwitchItem = NotifyPushSettingFragment.a(this.a);
-      if (!NotifyPushSettingFragment.a(this.a).a())
-      {
-        localFormSwitchItem.setChecked(bool);
-        NotifyPushSettingFragment.a(this.a).setOnCheckedChangeListener(this.a.a);
-      }
+      NotifyPushSettingFragment.a(this.a).setChecked(true ^ NotifyPushSettingFragment.a(this.a).a());
+      NotifyPushSettingFragment.a(this.a).setOnCheckedChangeListener(this.a.a);
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      bool = false;
-      break;
       AVUtil.a(NotifyPushSettingFragment.a(this.a).getCurrentAccountUin(), paramBoolean);
       ReportClickEventHelper.a(NotifyPushSettingFragment.a(this.a), "0X800B846", paramBoolean);
-      if (QLog.isColorLevel()) {
-        QLog.d("IphoneTitleBarFragment", 2, "isChecked[" + paramBoolean + "]");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isChecked[");
+        localStringBuilder.append(paramBoolean);
+        localStringBuilder.append("]");
+        QLog.d("IphoneTitleBarFragment", 2, localStringBuilder.toString());
       }
     }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.NotifyPushSettingFragment.5
  * JD-Core Version:    0.7.0.1
  */

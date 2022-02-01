@@ -1,8 +1,8 @@
 package com.tencent.mtt.hippy.adapter.storage;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class SQLiteHelper
@@ -42,44 +42,82 @@ public class SQLiteHelper
     }
   }
   
+  /* Error */
   private void createTableIfNotExists(SQLiteDatabase paramSQLiteDatabase)
   {
-    localObject2 = null;
-    localObject1 = null;
-    do
-    {
-      try
-      {
-        localCursor = paramSQLiteDatabase.rawQuery("SELECT DISTINCT tbl_name FROM sqlite_master WHERE tbl_name = 'hippy_engine_storage'", null);
-        if (localCursor != null)
-        {
-          localObject1 = localCursor;
-          localObject2 = localCursor;
-          int i = localCursor.getCount();
-          if (i > 0) {
-            return;
-          }
-        }
-      }
-      catch (Exception paramSQLiteDatabase)
-      {
-        Cursor localCursor;
-        localObject2 = localObject1;
-        paramSQLiteDatabase.printStackTrace();
-        return;
-      }
-      finally
-      {
-        if (localObject2 == null) {
-          break;
-        }
-        localObject2.close();
-      }
-      localObject1 = localCursor;
-      localObject2 = localCursor;
-      paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS hippy_engine_storage (key TEXT PRIMARY KEY,value TEXT NOT NULL)");
-    } while (localCursor == null);
-    localCursor.close();
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_3
+    //   2: aconst_null
+    //   3: astore 4
+    //   5: aload_1
+    //   6: ldc 58
+    //   8: aconst_null
+    //   9: invokevirtual 62	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   12: astore 5
+    //   14: aload 5
+    //   16: ifnull +35 -> 51
+    //   19: aload 5
+    //   21: astore 4
+    //   23: aload 5
+    //   25: astore_3
+    //   26: aload 5
+    //   28: invokeinterface 68 1 0
+    //   33: istore_2
+    //   34: iload_2
+    //   35: ifle +16 -> 51
+    //   38: aload 5
+    //   40: ifnull +10 -> 50
+    //   43: aload 5
+    //   45: invokeinterface 69 1 0
+    //   50: return
+    //   51: aload 5
+    //   53: astore 4
+    //   55: aload 5
+    //   57: astore_3
+    //   58: aload_1
+    //   59: ldc 18
+    //   61: invokevirtual 73	android/database/sqlite/SQLiteDatabase:execSQL	(Ljava/lang/String;)V
+    //   64: aload 5
+    //   66: ifnull +31 -> 97
+    //   69: aload 5
+    //   71: astore_3
+    //   72: goto +19 -> 91
+    //   75: astore_1
+    //   76: goto +22 -> 98
+    //   79: astore_1
+    //   80: aload_3
+    //   81: astore 4
+    //   83: aload_1
+    //   84: invokevirtual 76	java/lang/Exception:printStackTrace	()V
+    //   87: aload_3
+    //   88: ifnull +9 -> 97
+    //   91: aload_3
+    //   92: invokeinterface 69 1 0
+    //   97: return
+    //   98: aload 4
+    //   100: ifnull +10 -> 110
+    //   103: aload 4
+    //   105: invokeinterface 69 1 0
+    //   110: aload_1
+    //   111: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	112	0	this	SQLiteHelper
+    //   0	112	1	paramSQLiteDatabase	SQLiteDatabase
+    //   33	2	2	i	int
+    //   1	91	3	localObject1	Object
+    //   3	101	4	localObject2	Object
+    //   12	58	5	localCursor	android.database.Cursor
+    // Exception table:
+    //   from	to	target	type
+    //   5	14	75	finally
+    //   26	34	75	finally
+    //   58	64	75	finally
+    //   83	87	75	finally
+    //   5	14	79	java/lang/Exception
+    //   26	34	79	java/lang/Exception
+    //   58	64	79	java/lang/Exception
   }
   
   private boolean deleteDatabase()
@@ -97,94 +135,61 @@ public class SQLiteHelper
     }
   }
   
-  /* Error */
   void ensureDatabase()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 43	com/tencent/mtt/hippy/adapter/storage/SQLiteHelper:mDb	Landroid/database/sqlite/SQLiteDatabase;
-    //   6: ifnull +18 -> 24
-    //   9: aload_0
-    //   10: getfield 43	com/tencent/mtt/hippy/adapter/storage/SQLiteHelper:mDb	Landroid/database/sqlite/SQLiteDatabase;
-    //   13: invokevirtual 49	android/database/sqlite/SQLiteDatabase:isOpen	()Z
-    //   16: istore_2
-    //   17: iload_2
-    //   18: ifeq +6 -> 24
-    //   21: aload_0
-    //   22: monitorexit
-    //   23: return
-    //   24: aconst_null
-    //   25: astore_3
-    //   26: iconst_0
-    //   27: istore_1
-    //   28: iload_1
-    //   29: iconst_2
-    //   30: if_icmpge +20 -> 50
-    //   33: iload_1
-    //   34: ifle +8 -> 42
-    //   37: aload_0
-    //   38: invokespecial 91	com/tencent/mtt/hippy/adapter/storage/SQLiteHelper:deleteDatabase	()Z
-    //   41: pop
-    //   42: aload_0
-    //   43: aload_0
-    //   44: invokevirtual 95	com/tencent/mtt/hippy/adapter/storage/SQLiteHelper:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   47: putfield 43	com/tencent/mtt/hippy/adapter/storage/SQLiteHelper:mDb	Landroid/database/sqlite/SQLiteDatabase;
-    //   50: aload_0
-    //   51: getfield 43	com/tencent/mtt/hippy/adapter/storage/SQLiteHelper:mDb	Landroid/database/sqlite/SQLiteDatabase;
-    //   54: ifnonnull +35 -> 89
-    //   57: aload_3
-    //   58: athrow
-    //   59: astore_3
-    //   60: aload_0
-    //   61: monitorexit
-    //   62: aload_3
-    //   63: athrow
-    //   64: astore_3
-    //   65: ldc2_w 96
-    //   68: invokestatic 103	java/lang/Thread:sleep	(J)V
-    //   71: iload_1
-    //   72: iconst_1
-    //   73: iadd
-    //   74: istore_1
-    //   75: goto -47 -> 28
-    //   78: astore 4
-    //   80: invokestatic 107	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   83: invokevirtual 110	java/lang/Thread:interrupt	()V
-    //   86: goto -15 -> 71
-    //   89: aload_0
-    //   90: aload_0
-    //   91: getfield 43	com/tencent/mtt/hippy/adapter/storage/SQLiteHelper:mDb	Landroid/database/sqlite/SQLiteDatabase;
-    //   94: invokespecial 112	com/tencent/mtt/hippy/adapter/storage/SQLiteHelper:createTableIfNotExists	(Landroid/database/sqlite/SQLiteDatabase;)V
-    //   97: aload_0
-    //   98: getfield 43	com/tencent/mtt/hippy/adapter/storage/SQLiteHelper:mDb	Landroid/database/sqlite/SQLiteDatabase;
-    //   101: aload_0
-    //   102: getfield 36	com/tencent/mtt/hippy/adapter/storage/SQLiteHelper:mMaximumDatabaseSize	J
-    //   105: invokevirtual 116	android/database/sqlite/SQLiteDatabase:setMaximumSize	(J)J
-    //   108: pop2
-    //   109: goto -88 -> 21
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	112	0	this	SQLiteHelper
-    //   27	48	1	i	int
-    //   16	2	2	bool	boolean
-    //   25	33	3	localObject1	Object
-    //   59	4	3	localObject2	Object
-    //   64	1	3	localSQLiteException	android.database.sqlite.SQLiteException
-    //   78	1	4	localInterruptedException	java.lang.InterruptedException
-    // Exception table:
-    //   from	to	target	type
-    //   2	17	59	finally
-    //   37	42	59	finally
-    //   42	50	59	finally
-    //   50	59	59	finally
-    //   65	71	59	finally
-    //   80	86	59	finally
-    //   89	109	59	finally
-    //   37	42	64	android/database/sqlite/SQLiteException
-    //   42	50	64	android/database/sqlite/SQLiteException
-    //   65	71	78	java/lang/InterruptedException
+    try
+    {
+      if (this.mDb != null)
+      {
+        boolean bool = this.mDb.isOpen();
+        if (bool) {
+          return;
+        }
+      }
+      Object localObject1 = null;
+      i = 0;
+    }
+    finally
+    {
+      int i;
+      label63:
+      label120:
+      for (;;)
+      {
+        for (;;)
+        {
+          throw localObject2;
+        }
+      }
+    }
+    if (i < 2)
+    {
+      if (i > 0) {}
+      try
+      {
+        deleteDatabase();
+        this.mDb = getWritableDatabase();
+      }
+      catch (SQLiteException localSQLiteException) {}
+    }
+    try
+    {
+      Thread.sleep(30L);
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      break label63;
+      i += 1;
+    }
+    Thread.currentThread().interrupt();
+    break label120;
+    if (this.mDb != null)
+    {
+      createTableIfNotExists(this.mDb);
+      this.mDb.setMaximumSize(this.mMaximumDatabaseSize);
+      return;
+    }
+    throw localSQLiteException;
   }
   
   public SQLiteDatabase getDatabase()
@@ -228,7 +233,7 @@ public class SQLiteHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.adapter.storage.SQLiteHelper
  * JD-Core Version:    0.7.0.1
  */

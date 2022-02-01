@@ -10,13 +10,14 @@ class LiteActivity$30
   
   public void run()
   {
-    this.a.md5 = FileUtils.c(this.a.path);
+    MessageForPic localMessageForPic = this.a;
+    localMessageForPic.md5 = FileUtils.calcMd5(localMessageForPic.path);
     this.this$0.runOnUiThread(new LiteActivity.30.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.LiteActivity.30
  * JD-Core Version:    0.7.0.1
  */

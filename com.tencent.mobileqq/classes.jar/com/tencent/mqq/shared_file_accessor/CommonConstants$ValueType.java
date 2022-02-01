@@ -20,15 +20,17 @@ public class CommonConstants$ValueType
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool = false;
+    if (paramObject == null) {
       return false;
-      if (!(paramObject instanceof Integer)) {
-        break;
+    }
+    if ((paramObject instanceof Integer))
+    {
+      if (this.mEnumValue == ((Integer)paramObject).intValue()) {
+        bool = true;
       }
-    } while (this.mEnumValue != ((Integer)paramObject).intValue());
-    return true;
+      return bool;
+    }
     if ((paramObject instanceof String)) {
       return this.mTypeName.equals(paramObject);
     }
@@ -42,7 +44,7 @@ public class CommonConstants$ValueType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mqq.shared_file_accessor.CommonConstants.ValueType
  * JD-Core Version:    0.7.0.1
  */

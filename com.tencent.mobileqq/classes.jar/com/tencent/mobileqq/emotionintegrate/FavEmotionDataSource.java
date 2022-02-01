@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.emotionintegrate;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.emosm.CustomEmotionRoamingDBManagerBase;
+import com.tencent.mobileqq.emosm.api.ICameraEmotionRoamingDBManagerService;
+import com.tencent.mobileqq.emosm.api.IFavroamingDBManagerService;
 import com.tencent.mobileqq.emoticonview.CameraEmoticonInfo;
 import com.tencent.mobileqq.emoticonview.EmoticonInfo;
 import java.util.ArrayList;
@@ -16,12 +17,12 @@ public class FavEmotionDataSource
   
   public FavEmotionDataSource(QQAppInterface paramQQAppInterface, FavEmoticonPreviewData paramFavEmoticonPreviewData)
   {
-    if ((paramFavEmoticonPreviewData.a instanceof CameraEmoticonInfo)) {}
-    for (int i = QQManagerFactory.CAMERA_EMOTION_DB_MANAGER;; i = QQManagerFactory.FAVROAMING_DB_MANAGER)
-    {
-      this.a = ((CustomEmotionRoamingDBManagerBase)paramQQAppInterface.getManager(i));
-      return;
+    if ((paramFavEmoticonPreviewData.a instanceof CameraEmoticonInfo)) {
+      paramFavEmoticonPreviewData = ICameraEmotionRoamingDBManagerService.class;
+    } else {
+      paramFavEmoticonPreviewData = IFavroamingDBManagerService.class;
     }
+    this.a = ((CustomEmotionRoamingDBManagerBase)paramQQAppInterface.getRuntimeService(paramFavEmoticonPreviewData));
   }
   
   public int a()
@@ -31,7 +32,7 @@ public class FavEmotionDataSource
   
   public List<EmoticonPreviewData> a(boolean paramBoolean)
   {
-    Object localObject = this.a.b();
+    Object localObject = this.a.syncGetCustomEmotionInfoShowedInPanel();
     ArrayList localArrayList = new ArrayList();
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
@@ -49,7 +50,7 @@ public class FavEmotionDataSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.FavEmotionDataSource
  * JD-Core Version:    0.7.0.1
  */

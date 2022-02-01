@@ -19,17 +19,19 @@ public final class CryptoInfo
   
   public CryptoInfo()
   {
-    if (Util.SDK_INT >= 16) {}
-    for (Object localObject1 = newFrameworkCryptoInfoV16();; localObject1 = null)
-    {
-      this.frameworkCryptoInfo = ((MediaCodec.CryptoInfo)localObject1);
-      localObject1 = localObject2;
-      if (Util.SDK_INT >= 24) {
-        localObject1 = new CryptoInfo.PatternHolderV24(this.frameworkCryptoInfo, null);
-      }
-      this.patternHolder = ((CryptoInfo.PatternHolderV24)localObject1);
-      return;
+    Object localObject;
+    if (Util.SDK_INT >= 16) {
+      localObject = newFrameworkCryptoInfoV16();
+    } else {
+      localObject = null;
     }
+    this.frameworkCryptoInfo = ((MediaCodec.CryptoInfo)localObject);
+    if (Util.SDK_INT >= 24) {
+      localObject = new CryptoInfo.PatternHolderV24(this.frameworkCryptoInfo, null);
+    } else {
+      localObject = null;
+    }
+    this.patternHolder = ((CryptoInfo.PatternHolderV24)localObject);
   }
   
   @TargetApi(16)
@@ -41,12 +43,13 @@ public final class CryptoInfo
   @TargetApi(16)
   private void updateFrameworkCryptoInfoV16()
   {
-    this.frameworkCryptoInfo.numSubSamples = this.numSubSamples;
-    this.frameworkCryptoInfo.numBytesOfClearData = this.numBytesOfClearData;
-    this.frameworkCryptoInfo.numBytesOfEncryptedData = this.numBytesOfEncryptedData;
-    this.frameworkCryptoInfo.key = this.key;
-    this.frameworkCryptoInfo.iv = this.iv;
-    this.frameworkCryptoInfo.mode = this.mode;
+    MediaCodec.CryptoInfo localCryptoInfo = this.frameworkCryptoInfo;
+    localCryptoInfo.numSubSamples = this.numSubSamples;
+    localCryptoInfo.numBytesOfClearData = this.numBytesOfClearData;
+    localCryptoInfo.numBytesOfEncryptedData = this.numBytesOfEncryptedData;
+    localCryptoInfo.key = this.key;
+    localCryptoInfo.iv = this.iv;
+    localCryptoInfo.mode = this.mode;
     if (Util.SDK_INT >= 24) {
       CryptoInfo.PatternHolderV24.access$100(this.patternHolder, this.encryptedBlocks, this.clearBlocks);
     }
@@ -75,7 +78,7 @@ public final class CryptoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.decoder.CryptoInfo
  * JD-Core Version:    0.7.0.1
  */

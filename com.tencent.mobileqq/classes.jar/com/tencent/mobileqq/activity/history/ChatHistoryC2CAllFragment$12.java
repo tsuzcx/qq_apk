@@ -3,12 +3,6 @@ package com.tencent.mobileqq.activity.history;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 class ChatHistoryC2CAllFragment$12
   extends BroadcastReceiver
@@ -17,69 +11,12 @@ class ChatHistoryC2CAllFragment$12
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int j = 1;
-    paramContext = paramIntent.getAction();
-    if ((TextUtils.isEmpty(paramContext)) || (!TextUtils.equals(paramContext, "mqq.intent.action.DEVLOCK_ROAM"))) {}
-    do
-    {
-      do
-      {
-        return;
-        if (this.a.getActivity() != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.history.C2CAllFragment", 2, "OpenDevLockReceiver get activity is null");
-      return;
-    } while (this.a.jdField_a_of_type_AndroidContentBroadcastReceiver == null);
-    this.a.getActivity().getApplicationContext().unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
-    this.a.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-    boolean bool = paramIntent.getBooleanExtra("auth_dev_open", false);
-    int k = paramIntent.getIntExtra("auth_dev_open_cb_reason", 0);
-    paramIntent = paramIntent.getByteArrayExtra("devlock_roam_sig");
-    if (QLog.isColorLevel())
-    {
-      paramContext = new StringBuilder().append("openDevLock callback isOpen: ").append(bool).append(", reason: ").append(k).append(", da2 length: ");
-      if (paramIntent == null)
-      {
-        i = 0;
-        QLog.d("Q.history.C2CAllFragment", 2, i);
-      }
-    }
-    else
-    {
-      QQAppInterface localQQAppInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      String str = k + "";
-      if (!bool) {
-        break label301;
-      }
-      paramContext = "true";
-      label211:
-      VipUtils.a(localQQAppInterface, "chat_history", "LockSet", "opendev_amount", 1, 0, new String[] { str, "0", paramContext });
-      paramContext = this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(29);
-      if (!bool) {
-        break label307;
-      }
-    }
-    label301:
-    label307:
-    for (int i = j;; i = 0)
-    {
-      paramContext.arg1 = i;
-      paramContext.arg2 = k;
-      paramContext.obj = paramIntent;
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(paramContext, 500L);
-      return;
-      i = paramIntent.length;
-      break;
-      paramContext = "false";
-      break label211;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment.12
  * JD-Core Version:    0.7.0.1
  */

@@ -9,8 +9,7 @@ import android.text.TextUtils;
 import android.util.Xml;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.earlydownload.EarlyDownloadManager;
+import com.tencent.mobileqq.earlydownload.api.IEarlyDownloadService;
 import com.tencent.mobileqq.earlydownload.handler.EarlyHandler;
 import com.tencent.mobileqq.earlydownload.handler.FaceModelsDownloadHandler;
 import com.tencent.mobileqq.earlydownload.handler.FaceScanNativeSoDownloadHandler;
@@ -33,13 +32,18 @@ public class FaceScanDownloadManager
   
   public static int a(QQAppInterface paramQQAppInterface)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp()).getInt("key_download_cfg_version" + paramQQAppInterface.getLongAccountUin(), 0);
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_download_cfg_version");
+    localStringBuilder.append(paramQQAppInterface.getLongAccountUin());
+    return localSharedPreferences.getInt(localStringBuilder.toString(), 0);
   }
   
   public static void a()
   {
-    if (jdField_a_of_type_JavaUtilArrayList != null) {
-      jdField_a_of_type_JavaUtilArrayList.clear();
+    ArrayList localArrayList = jdField_a_of_type_JavaUtilArrayList;
+    if (localArrayList != null) {
+      localArrayList.clear();
     }
     if (QLog.isColorLevel()) {
       QLog.d("FaceScanDownloadManager", 2, "clearCallback");
@@ -48,23 +52,28 @@ public class FaceScanDownloadManager
   
   public static void a(int paramInt1, int paramInt2)
   {
-    for (;;)
+    try
     {
-      try
+      Object[] arrayOfObject = jdField_a_of_type_JavaUtilArrayList.toArray();
+      if (arrayOfObject != null)
       {
-        Object[] arrayOfObject = jdField_a_of_type_JavaUtilArrayList.toArray();
-        if ((arrayOfObject == null) || (arrayOfObject.length <= 0)) {
+        if (arrayOfObject.length <= 0) {
           return;
         }
+        int i = 0;
+        while (i < arrayOfObject.length)
+        {
+          FaceScanDownloadManager.DownloadCallback localDownloadCallback = (FaceScanDownloadManager.DownloadCallback)arrayOfObject[i];
+          jdField_a_of_type_AndroidOsHandler.post(new FaceScanDownloadManager.1(localDownloadCallback, paramInt1, paramInt2));
+          i += 1;
+        }
       }
-      finally {}
-      int i = 0;
-      while (i < localObject.length)
-      {
-        FaceScanDownloadManager.DownloadCallback localDownloadCallback = (FaceScanDownloadManager.DownloadCallback)localObject[i];
-        jdField_a_of_type_AndroidOsHandler.post(new FaceScanDownloadManager.1(localDownloadCallback, paramInt1, paramInt2));
-        i += 1;
-      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -77,138 +86,151 @@ public class FaceScanDownloadManager
       }
       return;
     }
-    paramQQAppInterface = (EarlyDownloadManager)paramQQAppInterface.getManager(QQManagerFactory.EARLY_DOWNLOAD_MANAGER);
-    boolean bool;
-    switch (paramInt)
+    Object localObject = (IEarlyDownloadService)paramQQAppInterface.getRuntimeService(IEarlyDownloadService.class, "");
+    paramQQAppInterface = null;
+    boolean bool = false;
+    if (paramInt != 0)
     {
-    default: 
-      bool = false;
-      paramQQAppInterface = null;
+      if (paramInt == 1)
+      {
+        paramQQAppInterface = ((IEarlyDownloadService)localObject).getEarlyHandler("qq.android.ar.face.so_v8.5.2_32");
+        bool = FaceScanNativeSoLoader.a();
+        if (paramQQAppInterface != null) {
+          BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).edit().putInt("ar_native_so_version", paramQQAppInterface.b()).commit();
+        }
+      }
     }
-    while (paramQQAppInterface != null)
+    else
+    {
+      paramQQAppInterface = ((IEarlyDownloadService)localObject).getEarlyHandler("qq.android.ar.face.models_v8.2.0");
+      bool = FaceScanModelsLoader.a();
+    }
+    if (paramQQAppInterface != null)
     {
       paramInt = paramQQAppInterface.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("FaceScanDownloadManager", 2, "initAr version=" + paramQQAppInterface.b());
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("initAr version=");
+        ((StringBuilder)localObject).append(paramQQAppInterface.b());
+        QLog.d("FaceScanDownloadManager", 2, ((StringBuilder)localObject).toString());
       }
-      if ((bool) && (paramQQAppInterface.g()) && (paramInt > 1)) {
-        break;
-      }
-      paramQQAppInterface.a(true);
-      return;
-      paramQQAppInterface = paramQQAppInterface.a("qq.android.ar.face.models_v8.2.0");
-      bool = FaceScanModelsLoader.a();
-      continue;
-      paramQQAppInterface = paramQQAppInterface.a("qq.android.ar.face.so_v8.5.2_32");
-      bool = FaceScanNativeSoLoader.a();
-      if (paramQQAppInterface != null) {
-        BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).edit().putInt("ar_native_so_version", paramQQAppInterface.b()).commit();
+      if ((!bool) || (!paramQQAppInterface.g()) || (paramInt <= 1)) {
+        paramQQAppInterface.a(true);
       }
     }
   }
   
   public static void a(int paramInt, boolean paramBoolean)
   {
-    for (;;)
+    try
     {
-      try
+      Object[] arrayOfObject = jdField_a_of_type_JavaUtilArrayList.toArray();
+      if (arrayOfObject != null)
       {
-        Object[] arrayOfObject = jdField_a_of_type_JavaUtilArrayList.toArray();
-        if ((arrayOfObject == null) || (arrayOfObject.length <= 0)) {
+        if (arrayOfObject.length <= 0) {
           return;
         }
+        int i = 0;
+        while (i < arrayOfObject.length)
+        {
+          FaceScanDownloadManager.DownloadCallback localDownloadCallback = (FaceScanDownloadManager.DownloadCallback)arrayOfObject[i];
+          jdField_a_of_type_AndroidOsHandler.post(new FaceScanDownloadManager.2(localDownloadCallback, paramInt, paramBoolean));
+          i += 1;
+        }
       }
-      finally {}
-      int i = 0;
-      while (i < localObject.length)
-      {
-        FaceScanDownloadManager.DownloadCallback localDownloadCallback = (FaceScanDownloadManager.DownloadCallback)localObject[i];
-        jdField_a_of_type_AndroidOsHandler.post(new FaceScanDownloadManager.2(localDownloadCallback, paramInt, paramBoolean));
-        i += 1;
-      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
   public static void a(QQAppInterface paramQQAppInterface)
   {
-    if (paramQQAppInterface == null) {}
-    do
+    if (paramQQAppInterface == null) {
+      return;
+    }
+    paramQQAppInterface = (IEarlyDownloadService)paramQQAppInterface.getRuntimeService(IEarlyDownloadService.class, "");
+    if (paramQQAppInterface == null) {
+      return;
+    }
+    FaceScanNativeSoDownloadHandler localFaceScanNativeSoDownloadHandler = (FaceScanNativeSoDownloadHandler)paramQQAppInterface.getEarlyHandler("qq.android.ar.face.so_v8.5.2_32");
+    if ((localFaceScanNativeSoDownloadHandler != null) && (localFaceScanNativeSoDownloadHandler.g()) && (!FaceScanNativeSoLoader.a()))
     {
-      do
-      {
-        do
-        {
-          return;
-          paramQQAppInterface = (EarlyDownloadManager)paramQQAppInterface.getManager(QQManagerFactory.EARLY_DOWNLOAD_MANAGER);
-        } while (paramQQAppInterface == null);
-        FaceScanNativeSoDownloadHandler localFaceScanNativeSoDownloadHandler = (FaceScanNativeSoDownloadHandler)paramQQAppInterface.a("qq.android.ar.face.so_v8.5.2_32");
-        if ((localFaceScanNativeSoDownloadHandler != null) && (localFaceScanNativeSoDownloadHandler.g()) && (!FaceScanNativeSoLoader.a()))
-        {
-          localFaceScanNativeSoDownloadHandler.g();
-          if (QLog.isColorLevel()) {
-            QLog.d("FaceScanDownloadManager", 2, "reset native so download state");
-          }
-        }
-        paramQQAppInterface = (FaceModelsDownloadHandler)paramQQAppInterface.a("qq.android.ar.face.models_v8.2.0");
-      } while ((paramQQAppInterface == null) || (!paramQQAppInterface.g()) || (FaceScanModelsLoader.a()));
+      localFaceScanNativeSoDownloadHandler.g();
+      if (QLog.isColorLevel()) {
+        QLog.d("FaceScanDownloadManager", 2, "reset native so download state");
+      }
+    }
+    paramQQAppInterface = (FaceModelsDownloadHandler)paramQQAppInterface.getEarlyHandler("qq.android.ar.face.models_v8.2.0");
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.g()) && (!FaceScanModelsLoader.a()))
+    {
       paramQQAppInterface.f();
-    } while (!QLog.isColorLevel());
-    QLog.d("FaceScanDownloadManager", 2, "reset modules so download state");
+      if (QLog.isColorLevel()) {
+        QLog.d("FaceScanDownloadManager", 2, "reset modules so download state");
+      }
+    }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
     SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp()).edit();
-    localEditor.putInt("key_download_cfg_version" + paramQQAppInterface.getLongAccountUin(), paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_download_cfg_version");
+    localStringBuilder.append(paramQQAppInterface.getLongAccountUin());
+    localEditor.putInt(localStringBuilder.toString(), paramInt);
     localEditor.commit();
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    XmlPullParser localXmlPullParser = Xml.newPullParser();
-    for (;;)
+    Object localObject = Xml.newPullParser();
+    boolean bool2 = false;
+    int i;
+    try
     {
-      try
-      {
-        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-        i = localXmlPullParser.getEventType();
-        bool2 = false;
+      ((XmlPullParser)localObject).setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
+      i = ((XmlPullParser)localObject).getEventType();
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      if (!QLog.isColorLevel()) {
+        break label183;
       }
-      catch (Exception paramQQAppInterface)
+      QLog.e("FaceScanDownloadManager", 2, paramString, paramQQAppInterface);
+      label183:
+      return;
+    }
+    boolean bool1 = bool2;
+    if (((XmlPullParser)localObject).getName().equalsIgnoreCase("PreDownload"))
+    {
+      bool1 = bool2;
+      if (Integer.valueOf(((XmlPullParser)localObject).nextText()).intValue() != 1) {}
+    }
+    for (bool1 = true;; bool1 = bool2)
+    {
+      i = ((XmlPullParser)localObject).next();
+      bool2 = bool1;
+      while (i == 1)
       {
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("handleResp_GetArScanFacePreDownConfig success：isPreDownload|version=");
+          ((StringBuilder)localObject).append(bool2);
+          ((StringBuilder)localObject).append("|");
+          ((StringBuilder)localObject).append(paramInt);
+          QLog.d("FaceScanDownloadManager", 2, ((StringBuilder)localObject).toString());
         }
-        QLog.e("FaceScanDownloadManager", 2, paramString, paramQQAppInterface);
+        a(paramQQAppInterface, paramInt);
+        a(paramQQAppInterface, bool2);
         return;
       }
-      int i = localXmlPullParser.next();
-      boolean bool2 = bool1;
-      break label171;
-      boolean bool1 = bool2;
-      if (localXmlPullParser.getName().equalsIgnoreCase("PreDownload"))
-      {
-        bool1 = bool2;
-        if (Integer.valueOf(localXmlPullParser.nextText()).intValue() == 1)
-        {
-          bool1 = true;
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d("FaceScanDownloadManager", 2, "handleResp_GetArScanFacePreDownConfig success：isPreDownload|version=" + bool2 + "|" + paramInt);
-          }
-          a(paramQQAppInterface, paramInt);
-          a(paramQQAppInterface, bool2);
-          return;
-          label171:
-          if (i != 1)
-          {
-            bool1 = bool2;
-            switch (i)
-            {
-            }
-            bool1 = bool2;
-          }
-        }
+      if (i == 2) {
+        break;
       }
     }
   }
@@ -216,25 +238,28 @@ public class FaceScanDownloadManager
   public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
     SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp()).edit();
-    localEditor.putBoolean("key_download_cfg_enable" + paramQQAppInterface.getLongAccountUin(), paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_download_cfg_enable");
+    localStringBuilder.append(paramQQAppInterface.getLongAccountUin());
+    localEditor.putBoolean(localStringBuilder.toString(), paramBoolean);
     localEditor.commit();
   }
   
   public static void a(FaceScanDownloadManager.DownloadCallback paramDownloadCallback)
   {
-    if (paramDownloadCallback != null) {}
-    try
-    {
-      if (!jdField_a_of_type_JavaUtilArrayList.contains(paramDownloadCallback))
+    if (paramDownloadCallback != null) {
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("FaceScanDownloadManager", 2, "addDownloadCallback");
+        if (!jdField_a_of_type_JavaUtilArrayList.contains(paramDownloadCallback))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("FaceScanDownloadManager", 2, "addDownloadCallback");
+          }
+          jdField_a_of_type_JavaUtilArrayList.add(paramDownloadCallback);
         }
-        jdField_a_of_type_JavaUtilArrayList.add(paramDownloadCallback);
       }
-      return;
+      finally {}
     }
-    finally {}
   }
   
   public static boolean a()
@@ -244,23 +269,24 @@ public class FaceScanDownloadManager
   
   public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    boolean bool3 = true;
-    if (paramQQAppInterface == null) {}
-    do
-    {
+    boolean bool4 = false;
+    if (paramQQAppInterface == null) {
       return false;
-      paramQQAppInterface = (EarlyDownloadManager)paramQQAppInterface.getManager(QQManagerFactory.EARLY_DOWNLOAD_MANAGER);
-    } while (paramQQAppInterface == null);
-    FaceScanNativeSoDownloadHandler localFaceScanNativeSoDownloadHandler = (FaceScanNativeSoDownloadHandler)paramQQAppInterface.a("qq.android.ar.face.so_v8.5.2_32");
-    boolean bool2 = a(localFaceScanNativeSoDownloadHandler);
+    }
+    paramQQAppInterface = (IEarlyDownloadService)paramQQAppInterface.getRuntimeService(IEarlyDownloadService.class, "");
+    if (paramQQAppInterface == null) {
+      return false;
+    }
+    Object localObject = (FaceScanNativeSoDownloadHandler)paramQQAppInterface.getEarlyHandler("qq.android.ar.face.so_v8.5.2_32");
+    boolean bool2 = a((EarlyHandler)localObject);
     boolean bool1 = bool2;
     if (!bool2)
     {
       bool1 = bool2;
-      if (localFaceScanNativeSoDownloadHandler != null)
+      if (localObject != null)
       {
         bool1 = bool2;
-        if (localFaceScanNativeSoDownloadHandler.g())
+        if (((FaceScanNativeSoDownloadHandler)localObject).g())
         {
           bool1 = bool2;
           if (FaceScanNativeSoLoader.a()) {
@@ -270,45 +296,75 @@ public class FaceScanDownloadManager
       }
     }
     if (bool1) {
-      localFaceScanNativeSoDownloadHandler.f();
+      ((FaceScanNativeSoDownloadHandler)localObject).f();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceScanDownloadManager", 2, "native so config is exist :" + bool1);
-    }
-    paramQQAppInterface = (FaceModelsDownloadHandler)paramQQAppInterface.a("qq.android.ar.face.models_v8.2.0");
-    bool2 = a(paramQQAppInterface);
-    if ((!bool2) && (paramQQAppInterface != null) && (paramQQAppInterface.g()) && (FaceScanModelsLoader.a())) {
-      bool2 = true;
-    }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("FaceScanDownloadManager", 2, "models config is exist :" + bool2);
-      }
-      if ((bool1) && (bool2)) {}
-      for (bool1 = bool3;; bool1 = false) {
-        return bool1;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("native so config is exist :");
+      ((StringBuilder)localObject).append(bool1);
+      QLog.d("FaceScanDownloadManager", 2, ((StringBuilder)localObject).toString());
+    }
+    paramQQAppInterface = (FaceModelsDownloadHandler)paramQQAppInterface.getEarlyHandler("qq.android.ar.face.models_v8.2.0");
+    boolean bool3 = a(paramQQAppInterface);
+    bool2 = bool3;
+    if (!bool3)
+    {
+      bool2 = bool3;
+      if (paramQQAppInterface != null)
+      {
+        bool2 = bool3;
+        if (paramQQAppInterface.g())
+        {
+          bool2 = bool3;
+          if (FaceScanModelsLoader.a()) {
+            bool2 = true;
+          }
+        }
       }
     }
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("models config is exist :");
+      paramQQAppInterface.append(bool2);
+      QLog.d("FaceScanDownloadManager", 2, paramQQAppInterface.toString());
+    }
+    bool3 = bool4;
+    if (bool1)
+    {
+      bool3 = bool4;
+      if (bool2) {
+        bool3 = true;
+      }
+    }
+    return bool3;
   }
   
   private static boolean a(EarlyHandler paramEarlyHandler)
   {
-    if (paramEarlyHandler == null) {}
-    do
+    if (paramEarlyHandler == null) {
+      return false;
+    }
+    paramEarlyHandler = paramEarlyHandler.a();
+    if (paramEarlyHandler == null) {
+      return false;
+    }
+    if ((!TextUtils.isEmpty(paramEarlyHandler.strPkgName)) && (!TextUtils.isEmpty(paramEarlyHandler.strResURL_big))) {
+      return true;
+    }
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        return false;
-        paramEarlyHandler = paramEarlyHandler.a();
-      } while (paramEarlyHandler == null);
-      if ((!TextUtils.isEmpty(paramEarlyHandler.strPkgName)) && (!TextUtils.isEmpty(paramEarlyHandler.strResURL_big))) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("FaceScanDownloadManager", 2, "strPkgName is empty:" + TextUtils.isEmpty(paramEarlyHandler.strPkgName) + " strResURL_big is empty:" + TextUtils.isEmpty(paramEarlyHandler.strResURL_big) + " loadState :" + paramEarlyHandler.loadState);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("strPkgName is empty:");
+      localStringBuilder.append(TextUtils.isEmpty(paramEarlyHandler.strPkgName));
+      localStringBuilder.append(" strResURL_big is empty:");
+      localStringBuilder.append(TextUtils.isEmpty(paramEarlyHandler.strResURL_big));
+      localStringBuilder.append(" loadState :");
+      localStringBuilder.append(paramEarlyHandler.loadState);
+      QLog.d("FaceScanDownloadManager", 2, localStringBuilder.toString());
+    }
     return false;
-    return true;
   }
   
   public static void b(QQAppInterface paramQQAppInterface)
@@ -319,12 +375,16 @@ public class FaceScanDownloadManager
   
   public static boolean b(QQAppInterface paramQQAppInterface)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp()).getBoolean("key_download_cfg_enable" + paramQQAppInterface.getLongAccountUin(), false);
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_download_cfg_enable");
+    localStringBuilder.append(paramQQAppInterface.getLongAccountUin());
+    return localSharedPreferences.getBoolean(localStringBuilder.toString(), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.FaceScanDownloadManager
  * JD-Core Version:    0.7.0.1
  */

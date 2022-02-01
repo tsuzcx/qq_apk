@@ -1,14 +1,12 @@
 package com.tencent.av.business.manager.pendant;
 
-import com.tencent.av.business.manager.EffectConfigBase.ItemBase;
-
 public class PendantItem
-  extends EffectConfigBase.ItemBase
+  extends ItemBase
 {
-  public static final int Category_BeautyMakeup = 3;
-  public static final int Category_Face = 0;
-  public static final int Category_FaceAndGesture = 2;
-  public static final int Category_Gesture = 1;
+  public static final int CATEGORY_BEAUTY_MAKEUP = 3;
+  public static final int CATEGORY_FACE = 0;
+  public static final int CATEGORY_FACE_AND_GESTURE = 2;
+  public static final int CATEGORY_GESTURE = 1;
   private int category;
   private String desc;
   public Object extraParam = null;
@@ -27,6 +25,7 @@ public class PendantItem
   private String resurl;
   private int type;
   private boolean usable;
+  private String version;
   private int voiceid = 0;
   
   public static boolean isBeautyMakeup(int paramInt)
@@ -41,7 +40,15 @@ public class PendantItem
   
   public static boolean isGesture(int paramInt)
   {
-    return (paramInt == 2) || (paramInt == 1);
+    boolean bool = true;
+    if (paramInt != 2)
+    {
+      if (paramInt == 1) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public static boolean isOnlySupportOldFilter(int paramInt)
@@ -79,7 +86,7 @@ public class PendantItem
     return this.gestureWording;
   }
   
-  public String getIconurl()
+  public String getIconUrl()
   {
     return this.iconurl;
   }
@@ -109,9 +116,14 @@ public class PendantItem
     return this.platform;
   }
   
-  public String getResurl()
+  public String getResUrl()
   {
     return this.resurl;
+  }
+  
+  public String getVersion()
+  {
+    return this.version;
   }
   
   public int getVoiceId()
@@ -139,19 +151,117 @@ public class PendantItem
     return this.usable;
   }
   
+  public void setCategory(int paramInt)
+  {
+    this.category = paramInt;
+  }
+  
+  public void setDesc(String paramString)
+  {
+    this.desc = paramString;
+  }
+  
+  public void setFiltername(String paramString)
+  {
+    this.filtername = paramString;
+  }
+  
+  public void setGestureType(String paramString)
+  {
+    this.gestureType = paramString;
+  }
+  
+  public void setGestureWording(String paramString)
+  {
+    this.gestureWording = paramString;
+  }
+  
+  public void setIconurl(String paramString)
+  {
+    this.iconurl = paramString;
+  }
+  
+  public void setId(String paramString)
+  {
+    this.id = paramString;
+  }
+  
+  public void setIsshow(boolean paramBoolean)
+  {
+    this.isshow = paramBoolean;
+  }
+  
+  public void setKind(int paramInt)
+  {
+    this.kind = paramInt;
+  }
+  
+  public void setMd5(String paramString)
+  {
+    this.md5 = paramString;
+  }
+  
+  public void setName(String paramString)
+  {
+    this.name = paramString;
+  }
+  
+  public void setPlatform(int paramInt)
+  {
+    this.platform = paramInt;
+  }
+  
+  public void setPredownload(boolean paramBoolean)
+  {
+    this.predownload = paramBoolean;
+  }
+  
+  public void setResurl(String paramString)
+  {
+    this.resurl = paramString;
+  }
+  
+  public void setType(int paramInt)
+  {
+    this.type = paramInt;
+  }
+  
   public void setUsable(boolean paramBoolean)
   {
     this.usable = paramBoolean;
   }
   
+  public void setVersion(String paramString)
+  {
+    this.version = paramString;
+  }
+  
   public String toString()
   {
-    return "id[" + this.id + "], name[" + this.name + "], type[" + this.type + "], category[" + this.category + "], gestureType[" + this.gestureType + "], kind[" + this.kind + "], isDownloading[" + this.isDownloading + "], extraParam[" + this.extraParam + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("id[");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append("], name[");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append("], type[");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append("], category[");
+    localStringBuilder.append(this.category);
+    localStringBuilder.append("], gestureType[");
+    localStringBuilder.append(this.gestureType);
+    localStringBuilder.append("], kind[");
+    localStringBuilder.append(this.kind);
+    localStringBuilder.append("], isDownloading[");
+    localStringBuilder.append(this.isDownloading);
+    localStringBuilder.append("], extraParam[");
+    localStringBuilder.append(this.extraParam);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.pendant.PendantItem
  * JD-Core Version:    0.7.0.1
  */

@@ -22,15 +22,18 @@ public class GetFeedVideoListRequest
   
   public BaseResponse a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspFriendStoryFeedVideoList localRspFriendStoryFeedVideoList = new qqstory_service.RspFriendStoryFeedVideoList();
+    Object localObject = new qqstory_service.RspFriendStoryFeedVideoList();
     try
     {
-      localRspFriendStoryFeedVideoList.mergeFrom(paramArrayOfByte);
-      return new GetFeedVideoListResponse(localRspFriendStoryFeedVideoList);
+      ((qqstory_service.RspFriendStoryFeedVideoList)localObject).mergeFrom(paramArrayOfByte);
+      return new GetFeedVideoListResponse((qqstory_service.RspFriendStoryFeedVideoList)localObject);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      SLog.d("Q.qqstory:GetFeedVideoListRequest", "" + paramArrayOfByte);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(paramArrayOfByte);
+      SLog.d("Q.qqstory:GetFeedVideoListRequest", ((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -40,7 +43,7 @@ public class GetFeedVideoListRequest
     return StoryApi.a("StorySvc.homepage_feed_loadmore_720");
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqFriendStoryFeedVideoList localReqFriendStoryFeedVideoList = new qqstory_service.ReqFriendStoryFeedVideoList();
     if (!TextUtils.isEmpty(this.a)) {
@@ -55,12 +58,22 @@ public class GetFeedVideoListRequest
   
   public String toString()
   {
-    return "GetFeedVideoListRequest{, feedId='" + this.b + '\'' + ", startCookie='" + this.a + '\'' + ", pullType=" + this.c + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetFeedVideoListRequest{, feedId='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", startCookie='");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", pullType=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetFeedVideoListRequest
  * JD-Core Version:    0.7.0.1
  */

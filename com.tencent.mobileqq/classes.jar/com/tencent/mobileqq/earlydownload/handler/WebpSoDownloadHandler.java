@@ -12,12 +12,12 @@ import com.tencent.qphone.base.util.QLog;
 public class WebpSoDownloadHandler
   extends EarlyHandler
 {
-  QQAppInterface b = null;
+  QQAppInterface a = null;
   
   public WebpSoDownloadHandler(QQAppInterface paramQQAppInterface)
   {
     super("qq.android.pic.webp.so", paramQQAppInterface);
-    this.b = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
   public int a()
@@ -39,21 +39,22 @@ public class WebpSoDownloadHandler
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QWebpSoDownloadHandler", 2, "onDownload success: " + paramString);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onDownload success: ");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("QWebpSoDownloadHandler", 2, ((StringBuilder)localObject).toString());
       }
-      String str = WebpSoLoader.a(BaseApplicationImpl.getContext());
-      if (!TextUtils.isEmpty(str)) {
-        FileUtils.a(paramString, str, false);
+      Object localObject = WebpSoLoader.a(BaseApplicationImpl.getContext());
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        FileUtils.uncompressZip(paramString, (String)localObject, false);
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QWebpSoDownloadHandler", 2, localException.getMessage());
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("QWebpSoDownloadHandler", 2, localException.getMessage());
       }
     }
     super.a(paramString);
@@ -71,7 +72,7 @@ public class WebpSoDownloadHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.WebpSoDownloadHandler
  * JD-Core Version:    0.7.0.1
  */

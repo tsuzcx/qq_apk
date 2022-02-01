@@ -36,10 +36,19 @@ public class GdtVideoCeilingScrollVIew
     return false;
   }
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    GdtLog.b("GdtVideoCeilingScrollVIew", "onScrollChanged: t -> " + paramInt2 + ", oldt -> " + paramInt4 + ", l -> " + paramInt1 + ", oldl -> " + paramInt3);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onScrollChanged: t -> ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", oldt -> ");
+    localStringBuilder.append(paramInt4);
+    localStringBuilder.append(", l -> ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", oldl -> ");
+    localStringBuilder.append(paramInt3);
+    GdtLog.b("GdtVideoCeilingScrollVIew", localStringBuilder.toString());
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -50,7 +59,7 @@ public class GdtVideoCeilingScrollVIew
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.videoceiling.GdtVideoCeilingScrollVIew
  * JD-Core Version:    0.7.0.1
  */

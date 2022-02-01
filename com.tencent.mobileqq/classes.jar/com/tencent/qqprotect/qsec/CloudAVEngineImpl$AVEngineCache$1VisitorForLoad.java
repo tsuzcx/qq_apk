@@ -27,19 +27,17 @@ final class CloudAVEngineImpl$AVEngineCache$1VisitorForLoad
         QLog.d("QSec.AVEngine", 2, String.format("Add cache entry, key: %s, %s", new Object[] { paramString, paramResultBundle.toString() }));
       }
       this.a.put(paramString, paramResultBundle);
-    }
-    for (;;)
-    {
       return true;
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, String.format("Discard expired entry, key: %s, %s", new Object[] { paramString, paramResultBundle.toString() }));
-      }
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("QSec.AVEngine", 2, String.format("Discard expired entry, key: %s, %s", new Object[] { paramString, paramResultBundle.toString() }));
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.CloudAVEngineImpl.AVEngineCache.1VisitorForLoad
  * JD-Core Version:    0.7.0.1
  */

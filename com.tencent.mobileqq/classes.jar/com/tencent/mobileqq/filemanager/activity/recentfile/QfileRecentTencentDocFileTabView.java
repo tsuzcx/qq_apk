@@ -3,11 +3,12 @@ package com.tencent.mobileqq.filemanager.activity.recentfile;
 import android.content.Context;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
+import com.tencent.mobileqq.filemanager.api.IQQFileTempUtils;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.util.IClickListenerVer51;
 import com.tencent.mobileqq.filemanager.util.IReportVer51;
-import com.tencent.mobileqq.filemanager.util.QfileTimeUtils;
-import com.tencent.mobileqq.teamwork.TeamWorkUtils;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkUtilsTemp;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -40,12 +41,13 @@ public class QfileRecentTencentDocFileTabView
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.c()) {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().H();
+    } else {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().M();
     }
-    while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListenerVer51 != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListenerVer51 != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListenerVer51);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().M();
     }
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListenerVer51 = new QfileRecentTencentDocFileTabView.1(this);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListenerVer51);
@@ -65,7 +67,7 @@ public class QfileRecentTencentDocFileTabView
       FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
       if ((!localFileManagerEntity.bDelInFM) && (localFileManagerEntity.nFileType == 13))
       {
-        String str = QfileTimeUtils.a(localFileManagerEntity.srvTime);
+        String str = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getHistoryGroupByTime(localFileManagerEntity.srvTime);
         if (!this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(str)) {
           this.jdField_a_of_type_JavaUtilLinkedHashMap.put(str, new ArrayList());
         }
@@ -93,7 +95,7 @@ public class QfileRecentTencentDocFileTabView
   
   protected boolean b(FileManagerEntity paramFileManagerEntity)
   {
-    Object localObject = QfileTimeUtils.a(paramFileManagerEntity.srvTime);
+    Object localObject = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getHistoryGroupByTime(paramFileManagerEntity.srvTime);
     if (!this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(localObject))
     {
       QLog.e(jdField_a_of_type_JavaLangString, 1, "delRecentFileRecords, fileEntities find, but recentRecords not find!");
@@ -110,19 +112,24 @@ public class QfileRecentTencentDocFileTabView
       i();
       return true;
     }
+    for (;;)
+    {
+      throw paramFileManagerEntity;
+    }
   }
   
   protected void c(FileManagerEntity paramFileManagerEntity)
   {
-    TeamWorkUtils.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, paramFileManagerEntity);
+    ((ITeamWorkUtilsTemp)QRoute.api(ITeamWorkUtilsTemp.class)).forwardTencentDoc(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, paramFileManagerEntity);
   }
   
   public void c(ArrayList<FileManagerEntity> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {}
-    for (;;)
+    if (paramArrayList != null)
     {
-      return;
+      if (paramArrayList.size() == 0) {
+        return;
+      }
       paramArrayList = paramArrayList.iterator();
       while (paramArrayList.hasNext()) {
         b((FileManagerEntity)paramArrayList.next());
@@ -145,7 +152,7 @@ public class QfileRecentTencentDocFileTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentTencentDocFileTabView
  * JD-Core Version:    0.7.0.1
  */

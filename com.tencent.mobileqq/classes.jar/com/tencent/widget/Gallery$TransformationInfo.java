@@ -5,27 +5,27 @@ import android.view.ViewDebug.ExportedProperty;
 
 class Gallery$TransformationInfo
 {
+  private final Matrix mMatrix = new Matrix();
+  boolean mMatrixDirty = false;
+  private boolean mMatrixIsIdentity = true;
   @ViewDebug.ExportedProperty
-  float jdField_a_of_type_Float = 0.0F;
-  private final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  boolean jdField_a_of_type_Boolean = false;
+  float mPivotX = 0.0F;
   @ViewDebug.ExportedProperty
-  float jdField_b_of_type_Float = 0.0F;
-  private boolean jdField_b_of_type_Boolean = true;
+  float mPivotY = 0.0F;
   @ViewDebug.ExportedProperty
-  float c = 0.0F;
+  float mRotation = 0.0F;
   @ViewDebug.ExportedProperty
-  float d = 1.0F;
+  float mScaleX = 1.0F;
   @ViewDebug.ExportedProperty
-  float e = 1.0F;
+  float mScaleY = 1.0F;
   @ViewDebug.ExportedProperty
-  float f = 0.0F;
+  float mTranslationX = 0.0F;
   @ViewDebug.ExportedProperty
-  float g = 0.0F;
+  float mTranslationY = 0.0F;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.Gallery.TransformationInfo
  * JD-Core Version:    0.7.0.1
  */

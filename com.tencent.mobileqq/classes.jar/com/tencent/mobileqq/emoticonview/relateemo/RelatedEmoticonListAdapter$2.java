@@ -13,31 +13,44 @@ class RelatedEmoticonListAdapter$2
   
   public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    QLog.e("RelatedEmoticonListAdapter", 1, "onLoadFailed: " + this.val$emotionInfo.toString());
+    paramView = new StringBuilder();
+    paramView.append("onLoadFailed: ");
+    paramView.append(this.val$emotionInfo.toString());
+    QLog.e("RelatedEmoticonListAdapter", 1, paramView.toString());
   }
   
   public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    QLog.e("RelatedEmoticonListAdapter", 1, "onLoadFailed: " + this.val$emotionInfo.toString());
+    paramView = new StringBuilder();
+    paramView.append("onLoadFailed: ");
+    paramView.append(this.val$emotionInfo.toString());
+    QLog.e("RelatedEmoticonListAdapter", 1, paramView.toString());
   }
   
   public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
   {
-    QLog.e("RelatedEmoticonListAdapter", 1, "onLoadInterrupted: " + this.val$emotionInfo.toString());
+    paramView = new StringBuilder();
+    paramView.append("onLoadInterrupted: ");
+    paramView.append(this.val$emotionInfo.toString());
+    QLog.e("RelatedEmoticonListAdapter", 1, paramView.toString());
   }
   
   public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
   
   public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("RelatedEmoticonListAdapter", 2, "onLoadSuccessed: " + this.val$emotionInfo.toString());
+    if (QLog.isColorLevel())
+    {
+      paramView = new StringBuilder();
+      paramView.append("onLoadSuccessed: ");
+      paramView.append(this.val$emotionInfo.toString());
+      QLog.i("RelatedEmoticonListAdapter", 2, paramView.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.relateemo.RelatedEmoticonListAdapter.2
  * JD-Core Version:    0.7.0.1
  */

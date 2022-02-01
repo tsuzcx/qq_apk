@@ -2,7 +2,6 @@ package com.tencent.biz.qqstory.storyHome.model;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.SerializationPB.CommentLikeFeed;
 import com.tencent.biz.qqstory.base.SerializationPB.VideoListFeed;
 import com.tencent.biz.qqstory.model.item.IFeedOwner;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -27,22 +26,28 @@ public abstract class VideoListFeedItem<T extends StoryHomeFeed, E extends IFeed
   @NonNull
   public static String makeFakeFeedId(String paramString1, String paramString2)
   {
-    return "fake-" + paramString1 + paramString2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("fake-");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(paramString2);
+    return localStringBuilder.toString();
   }
   
   public void copy(Object paramObject)
   {
     super.copy(paramObject);
     paramObject = (VideoListFeedItem)paramObject;
-    if (paramObject.mVideoSeq != -1) {
-      this.mVideoSeq = paramObject.mVideoSeq;
+    int i = paramObject.mVideoSeq;
+    if (i != -1) {
+      this.mVideoSeq = i;
     }
     if (!TextUtils.isEmpty(paramObject.mVideoNextCookie)) {
       this.mVideoNextCookie = paramObject.mVideoNextCookie;
     }
     this.mIsVideoEnd = paramObject.mIsVideoEnd;
-    if (paramObject.mVideoPullType != -1) {
-      this.mVideoPullType = paramObject.mVideoPullType;
+    i = paramObject.mVideoPullType;
+    if (i != -1) {
+      this.mVideoPullType = i;
     }
     this.mIsContribute = paramObject.mIsContribute;
     this.mHasTag = paramObject.mHasTag;
@@ -76,47 +81,37 @@ public abstract class VideoListFeedItem<T extends StoryHomeFeed, E extends IFeed
   
   protected void readVideoListFeedLocalPB(SerializationPB.VideoListFeed paramVideoListFeed)
   {
-    boolean bool2 = true;
     super.readCommentLikeFeedLocalPB(paramVideoListFeed.commet_like_feed);
     this.mVideoSeq = paramVideoListFeed.video_seq.get();
     this.mVideoNextCookie = paramVideoListFeed.video_next_cookie.get();
     this.mVideoPullType = paramVideoListFeed.video_pull_type.get();
-    if (paramVideoListFeed.is_video_end.get() == 1)
-    {
+    int i = paramVideoListFeed.is_video_end.get();
+    boolean bool2 = false;
+    if (i == 1) {
       bool1 = true;
-      this.mIsVideoEnd = bool1;
-      if (paramVideoListFeed.is_contribute.get() != 1) {
-        break label145;
-      }
-      bool1 = true;
-      label74:
-      this.mIsContribute = bool1;
-      if (paramVideoListFeed.has_tag.get() != 1) {
-        break label150;
-      }
-      bool1 = true;
-      label92:
-      this.mHasTag = bool1;
-      if (paramVideoListFeed.has_public_video.get() != 1) {
-        break label155;
-      }
+    } else {
+      bool1 = false;
     }
-    label145:
-    label150:
-    label155:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.mHasPublicVideo = bool1;
-      if (paramVideoListFeed.qim_sync_wording.has()) {
-        this.mQimSyncWording = paramVideoListFeed.qim_sync_wording.get().toStringUtf8();
-      }
-      return;
+    this.mIsVideoEnd = bool1;
+    if (paramVideoListFeed.is_contribute.get() == 1) {
+      bool1 = true;
+    } else {
       bool1 = false;
-      break;
+    }
+    this.mIsContribute = bool1;
+    if (paramVideoListFeed.has_tag.get() == 1) {
+      bool1 = true;
+    } else {
       bool1 = false;
-      break label74;
-      bool1 = false;
-      break label92;
+    }
+    this.mHasTag = bool1;
+    boolean bool1 = bool2;
+    if (paramVideoListFeed.has_public_video.get() == 1) {
+      bool1 = true;
+    }
+    this.mHasPublicVideo = bool1;
+    if (paramVideoListFeed.qim_sync_wording.has()) {
+      this.mQimSyncWording = paramVideoListFeed.qim_sync_wording.get().toStringUtf8();
     }
   }
   
@@ -129,12 +124,43 @@ public abstract class VideoListFeedItem<T extends StoryHomeFeed, E extends IFeed
   
   public String toSimpleString()
   {
-    return "VideoListFeedItem{feedId='" + this.feedId + '\'' + ", date='" + this.date + '\'' + ", dateTimeMillis='" + this.dateTimeMillis + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VideoListFeedItem{feedId='");
+    localStringBuilder.append(this.feedId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", date='");
+    localStringBuilder.append(this.date);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", dateTimeMillis='");
+    localStringBuilder.append(this.dateTimeMillis);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public String toString()
   {
-    return "VideoListFeedItem{mIsContribute=" + this.mIsContribute + "mHasTag=" + this.mHasTag + "mHasPublicVideo=" + this.mHasPublicVideo + ", mVideoSeq=" + this.mVideoSeq + ", mVideoNextCookie='" + this.mVideoNextCookie + '\'' + ", mIsVideoEnd=" + this.mIsVideoEnd + ", mVideoPullType=" + this.mVideoPullType + ", mQimSyncWording=" + this.mQimSyncWording + '}' + super.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VideoListFeedItem{mIsContribute=");
+    localStringBuilder.append(this.mIsContribute);
+    localStringBuilder.append("mHasTag=");
+    localStringBuilder.append(this.mHasTag);
+    localStringBuilder.append("mHasPublicVideo=");
+    localStringBuilder.append(this.mHasPublicVideo);
+    localStringBuilder.append(", mVideoSeq=");
+    localStringBuilder.append(this.mVideoSeq);
+    localStringBuilder.append(", mVideoNextCookie='");
+    localStringBuilder.append(this.mVideoNextCookie);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mIsVideoEnd=");
+    localStringBuilder.append(this.mIsVideoEnd);
+    localStringBuilder.append(", mVideoPullType=");
+    localStringBuilder.append(this.mVideoPullType);
+    localStringBuilder.append(", mQimSyncWording=");
+    localStringBuilder.append(this.mQimSyncWording);
+    localStringBuilder.append('}');
+    localStringBuilder.append(super.toString());
+    return localStringBuilder.toString();
   }
   
   public void updateVideoInfo(FeedVideoInfo paramFeedVideoInfo)
@@ -147,75 +173,12 @@ public abstract class VideoListFeedItem<T extends StoryHomeFeed, E extends IFeed
   
   protected SerializationPB.VideoListFeed writeVideoListFeedLocalPB()
   {
-    int j = 1;
-    SerializationPB.VideoListFeed localVideoListFeed = new SerializationPB.VideoListFeed();
-    localVideoListFeed.video_seq.set(this.mVideoSeq);
-    Object localObject2 = localVideoListFeed.video_next_cookie;
-    int i;
-    if (TextUtils.isEmpty(this.mVideoNextCookie))
-    {
-      localObject1 = "";
-      ((PBStringField)localObject2).set((String)localObject1);
-      localVideoListFeed.video_pull_type.set(this.mVideoPullType);
-      localObject1 = localVideoListFeed.is_video_end;
-      if (!this.mIsVideoEnd) {
-        break label190;
-      }
-      i = 1;
-      label76:
-      ((PBUInt32Field)localObject1).set(i);
-      localObject1 = localVideoListFeed.is_contribute;
-      if (!this.mIsContribute) {
-        break label195;
-      }
-      i = 1;
-      label96:
-      ((PBUInt32Field)localObject1).set(i);
-      localObject1 = localVideoListFeed.has_tag;
-      if (!this.mHasTag) {
-        break label200;
-      }
-      i = 1;
-      label116:
-      ((PBUInt32Field)localObject1).set(i);
-      localObject1 = localVideoListFeed.has_public_video;
-      if (!this.mHasPublicVideo) {
-        break label205;
-      }
-      i = j;
-      label136:
-      ((PBUInt32Field)localObject1).set(i);
-      localVideoListFeed.commet_like_feed.set(super.writeCommentLikeFeedlocalPB());
-      localObject2 = localVideoListFeed.qim_sync_wording;
-      if (this.mQimSyncWording != null) {
-        break label210;
-      }
-    }
-    label190:
-    label195:
-    label200:
-    label205:
-    label210:
-    for (Object localObject1 = "";; localObject1 = this.mQimSyncWording)
-    {
-      ((PBBytesField)localObject2).set(ByteStringMicro.copyFromUtf8((String)localObject1));
-      return localVideoListFeed;
-      localObject1 = this.mVideoNextCookie;
-      break;
-      i = 0;
-      break label76;
-      i = 0;
-      break label96;
-      i = 0;
-      break label116;
-      i = 0;
-      break label136;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,13 @@ class VideoController$24
   
   public void run()
   {
-    this.this$0.a(this.a, this.this$0.a().d, 12);
+    VideoController localVideoController = this.this$0;
+    localVideoController.a(this.a, localVideoController.a().c, 12);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoController.24
  * JD-Core Version:    0.7.0.1
  */

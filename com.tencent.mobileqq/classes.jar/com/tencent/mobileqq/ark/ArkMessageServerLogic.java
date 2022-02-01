@@ -4,15 +4,6 @@ import com.tencent.mobileqq.app.ThreadManager;
 
 public class ArkMessageServerLogic
 {
-  protected static boolean a = false;
-  
-  public static void a()
-  {
-    if (!a) {
-      a = true;
-    }
-  }
-  
   public static void a(ArkMessageServerLogic.IRequestArkAppListHandler paramIRequestArkAppListHandler)
   {
     ThreadManager.post(new ArkMessageServerLogic.1(paramIRequestArkAppListHandler), 5, null, true);
@@ -20,7 +11,7 @@ public class ArkMessageServerLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkMessageServerLogic
  * JD-Core Version:    0.7.0.1
  */

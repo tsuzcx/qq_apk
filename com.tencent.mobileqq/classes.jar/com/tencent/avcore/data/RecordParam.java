@@ -9,34 +9,36 @@ public class RecordParam
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    label71:
-    label74:
-    for (;;)
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof RecordParam)) {
-        break;
-      }
+    }
+    boolean bool3 = paramObject instanceof RecordParam;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bool3)
+    {
       paramObject = (RecordParam)paramObject;
-      if (this.width == paramObject.width)
-      {
+      int i;
+      if (this.width == paramObject.width) {
         i = 1;
-        if ((i == 0) || (this.height != paramObject.height)) {
-          break label71;
-        }
-      }
-      for (int i = 1;; i = 0)
-      {
-        if ((i != 0) && (this.fps == paramObject.fps)) {
-          break label74;
-        }
-        return false;
+      } else {
         i = 0;
-        break;
+      }
+      if ((i != 0) && (this.height == paramObject.height)) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      bool1 = bool2;
+      if (i != 0)
+      {
+        bool1 = bool2;
+        if (this.fps == paramObject.fps) {
+          bool1 = true;
+        }
       }
     }
-    return false;
+    return bool1;
   }
   
   public boolean isValid()
@@ -47,75 +49,87 @@ public class RecordParam
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("RecordParam{").append("width: ").append(this.width).append(", height: ").append(this.height).append(", fps: ").append(this.fps).append("}");
+    localStringBuilder.append("RecordParam{");
+    localStringBuilder.append("width: ");
+    localStringBuilder.append(this.width);
+    localStringBuilder.append(", height: ");
+    localStringBuilder.append(this.height);
+    localStringBuilder.append(", fps: ");
+    localStringBuilder.append(this.fps);
+    localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
   
   public boolean update(int paramInt1, int paramInt2, int paramInt3)
   {
-    boolean bool2 = true;
-    boolean bool1 = false;
+    boolean bool;
     if (this.width != paramInt1)
     {
       this.width = paramInt1;
-      bool1 = true;
+      bool = true;
+    }
+    else
+    {
+      bool = false;
     }
     if (this.height != paramInt2)
     {
       this.height = paramInt2;
-      bool1 = bool2;
+      bool = true;
     }
-    for (;;)
+    if (this.fps != paramInt3)
     {
-      if (this.fps != paramInt3)
-      {
-        this.fps = paramInt3;
-        if (this.fps == 0) {
-          this.fps = 15;
-        }
-        this.intervalTime = (1000 / this.fps);
-      }
-      return bool1;
-    }
-  }
-  
-  public boolean update(RecordParam paramRecordParam)
-  {
-    boolean bool2 = true;
-    boolean bool1 = false;
-    if ((paramRecordParam == null) || (!paramRecordParam.isValid()))
-    {
-      bool2 = false;
-      return bool2;
-    }
-    if (this.width != paramRecordParam.width)
-    {
-      this.width = paramRecordParam.width;
-      bool1 = true;
-    }
-    if (this.height != paramRecordParam.height)
-    {
-      this.height = paramRecordParam.height;
-      bool1 = bool2;
-    }
-    for (;;)
-    {
-      bool2 = bool1;
-      if (this.fps == paramRecordParam.fps) {
-        break;
-      }
-      this.fps = paramRecordParam.fps;
+      this.fps = paramInt3;
       if (this.fps == 0) {
         this.fps = 15;
       }
       this.intervalTime = (1000 / this.fps);
-      return bool1;
     }
+    return bool;
+  }
+  
+  public boolean update(RecordParam paramRecordParam)
+  {
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (paramRecordParam != null)
+    {
+      if (!paramRecordParam.isValid()) {
+        return false;
+      }
+      int i = this.width;
+      int j = paramRecordParam.width;
+      if (i != j)
+      {
+        this.width = j;
+        bool1 = true;
+      }
+      i = this.height;
+      j = paramRecordParam.height;
+      if (i != j)
+      {
+        this.height = j;
+        bool1 = true;
+      }
+      i = this.fps;
+      j = paramRecordParam.fps;
+      bool2 = bool1;
+      if (i != j)
+      {
+        this.fps = j;
+        if (this.fps == 0) {
+          this.fps = 15;
+        }
+        this.intervalTime = (1000 / this.fps);
+        bool2 = bool1;
+      }
+    }
+    return bool2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avcore.data.RecordParam
  * JD-Core Version:    0.7.0.1
  */

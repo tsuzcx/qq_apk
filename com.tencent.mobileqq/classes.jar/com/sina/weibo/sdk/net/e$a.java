@@ -20,64 +20,63 @@ public final class e$a
   {
     if (paramObject != null)
     {
-      if ((paramObject instanceof String)) {
+      if ((paramObject instanceof String))
+      {
         paramBundle.putString(paramString, String.valueOf(paramObject));
+        return;
       }
+      if ((paramObject instanceof Integer))
+      {
+        paramBundle.putInt(paramString, ((Integer)paramObject).intValue());
+        return;
+      }
+      if ((paramObject instanceof Short))
+      {
+        paramBundle.putShort(paramString, ((Short)paramObject).shortValue());
+        return;
+      }
+      if ((paramObject instanceof Character))
+      {
+        paramBundle.putChar(paramString, ((Character)paramObject).charValue());
+        return;
+      }
+      if ((paramObject instanceof Byte))
+      {
+        paramBundle.putByte(paramString, ((Byte)paramObject).byteValue());
+        return;
+      }
+      if ((paramObject instanceof Long))
+      {
+        paramBundle.putLong(paramString, ((Long)paramObject).longValue());
+        return;
+      }
+      if ((paramObject instanceof Float))
+      {
+        paramBundle.putFloat(paramString, ((Float)paramObject).floatValue());
+        return;
+      }
+      if ((paramObject instanceof Double))
+      {
+        paramBundle.putDouble(paramString, ((Double)paramObject).doubleValue());
+        return;
+      }
+      if ((paramObject instanceof Boolean))
+      {
+        paramBundle.putBoolean(paramString, ((Boolean)paramObject).booleanValue());
+        return;
+      }
+      if ((paramObject instanceof byte[]))
+      {
+        this.n.put(paramString, (byte[])paramObject);
+        return;
+      }
+      if ((paramObject instanceof Serializable))
+      {
+        paramBundle.putSerializable(paramString, (Serializable)paramObject);
+        return;
+      }
+      throw new IllegalArgumentException("Unsupported params type!");
     }
-    else {
-      return;
-    }
-    if ((paramObject instanceof Integer))
-    {
-      paramBundle.putInt(paramString, ((Integer)paramObject).intValue());
-      return;
-    }
-    if ((paramObject instanceof Short))
-    {
-      paramBundle.putShort(paramString, ((Short)paramObject).shortValue());
-      return;
-    }
-    if ((paramObject instanceof Character))
-    {
-      paramBundle.putChar(paramString, ((Character)paramObject).charValue());
-      return;
-    }
-    if ((paramObject instanceof Byte))
-    {
-      paramBundle.putByte(paramString, ((Byte)paramObject).byteValue());
-      return;
-    }
-    if ((paramObject instanceof Long))
-    {
-      paramBundle.putLong(paramString, ((Long)paramObject).longValue());
-      return;
-    }
-    if ((paramObject instanceof Float))
-    {
-      paramBundle.putFloat(paramString, ((Float)paramObject).floatValue());
-      return;
-    }
-    if ((paramObject instanceof Double))
-    {
-      paramBundle.putDouble(paramString, ((Double)paramObject).doubleValue());
-      return;
-    }
-    if ((paramObject instanceof Boolean))
-    {
-      paramBundle.putBoolean(paramString, ((Boolean)paramObject).booleanValue());
-      return;
-    }
-    if ((paramObject instanceof byte[]))
-    {
-      this.n.put(paramString, (byte[])paramObject);
-      return;
-    }
-    if ((paramObject instanceof Serializable))
-    {
-      paramBundle.putSerializable(paramString, (Serializable)paramObject);
-      return;
-    }
-    throw new IllegalArgumentException("Unsupported params type!");
   }
   
   public final a a(String paramString, Object paramObject)

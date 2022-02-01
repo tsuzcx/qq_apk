@@ -16,16 +16,17 @@ public final class MultipartBody$Part
   
   public static Part create(@Nullable Headers paramHeaders, RequestBody paramRequestBody)
   {
-    if (paramRequestBody == null) {
-      throw new NullPointerException("body == null");
+    if (paramRequestBody != null)
+    {
+      if ((paramHeaders != null) && (paramHeaders.get("Content-Type") != null)) {
+        throw new IllegalArgumentException("Unexpected header: Content-Type");
+      }
+      if ((paramHeaders != null) && (paramHeaders.get("Content-Length") != null)) {
+        throw new IllegalArgumentException("Unexpected header: Content-Length");
+      }
+      return new Part(paramHeaders, paramRequestBody);
     }
-    if ((paramHeaders != null) && (paramHeaders.get("Content-Type") != null)) {
-      throw new IllegalArgumentException("Unexpected header: Content-Type");
-    }
-    if ((paramHeaders != null) && (paramHeaders.get("Content-Length") != null)) {
-      throw new IllegalArgumentException("Unexpected header: Content-Length");
-    }
-    return new Part(paramHeaders, paramRequestBody);
+    throw new NullPointerException("body == null");
   }
   
   public static Part create(RequestBody paramRequestBody)
@@ -40,17 +41,18 @@ public final class MultipartBody$Part
   
   public static Part createFormData(String paramString1, @Nullable String paramString2, RequestBody paramRequestBody)
   {
-    if (paramString1 == null) {
-      throw new NullPointerException("name == null");
-    }
-    StringBuilder localStringBuilder = new StringBuilder("form-data; name=");
-    MultipartBody.appendQuotedString(localStringBuilder, paramString1);
-    if (paramString2 != null)
+    if (paramString1 != null)
     {
-      localStringBuilder.append("; filename=");
-      MultipartBody.appendQuotedString(localStringBuilder, paramString2);
+      StringBuilder localStringBuilder = new StringBuilder("form-data; name=");
+      MultipartBody.appendQuotedString(localStringBuilder, paramString1);
+      if (paramString2 != null)
+      {
+        localStringBuilder.append("; filename=");
+        MultipartBody.appendQuotedString(localStringBuilder, paramString2);
+      }
+      return create(new Headers.Builder().addUnsafeNonAscii("Content-Disposition", localStringBuilder.toString()).build(), paramRequestBody);
     }
-    return create(new Headers.Builder().addUnsafeNonAscii("Content-Disposition", localStringBuilder.toString()).build(), paramRequestBody);
+    throw new NullPointerException("name == null");
   }
   
   public RequestBody body()
@@ -66,7 +68,7 @@ public final class MultipartBody$Part
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.MultipartBody.Part
  * JD-Core Version:    0.7.0.1
  */

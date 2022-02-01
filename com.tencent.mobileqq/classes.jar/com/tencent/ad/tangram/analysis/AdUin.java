@@ -15,8 +15,9 @@ public enum AdUin
   
   private AdUinAdapter getAdapter()
   {
-    if (this.adapter != null) {
-      return (AdUinAdapter)this.adapter.get();
+    WeakReference localWeakReference = this.adapter;
+    if (localWeakReference != null) {
+      return (AdUinAdapter)localWeakReference.get();
     }
     return null;
   }

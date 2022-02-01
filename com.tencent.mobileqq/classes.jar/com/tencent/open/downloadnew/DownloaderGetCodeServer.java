@@ -25,13 +25,14 @@ public class DownloaderGetCodeServer
   
   public static DownloaderGetCodeServer a()
   {
-    if (jdField_a_of_type_ComTencentOpenDownloadnewDownloaderGetCodeServer == null) {}
-    try
-    {
-      jdField_a_of_type_ComTencentOpenDownloadnewDownloaderGetCodeServer = new DownloaderGetCodeServer();
-      return jdField_a_of_type_ComTencentOpenDownloadnewDownloaderGetCodeServer;
+    if (jdField_a_of_type_ComTencentOpenDownloadnewDownloaderGetCodeServer == null) {
+      try
+      {
+        jdField_a_of_type_ComTencentOpenDownloadnewDownloaderGetCodeServer = new DownloaderGetCodeServer();
+      }
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentOpenDownloadnewDownloaderGetCodeServer;
   }
   
   public QIPCModule a()
@@ -41,7 +42,7 @@ public class DownloaderGetCodeServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloaderGetCodeServer
  * JD-Core Version:    0.7.0.1
  */

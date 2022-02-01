@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.quicklogin;
 
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.quicklogin.business.QuickLoginObserver;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 
-class ClosePCVerifyImpl$ClosePCVerifyQuickLoginObserver
+public class ClosePCVerifyImpl$ClosePCVerifyQuickLoginObserver
   extends QuickLoginObserver
 {
   private long jdField_a_of_type_Long;
   private WeakReference<Map<Long, QuickLoginObserver>> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<QQAppInterface> b;
+  private WeakReference<BaseQQAppInterface> b;
   private WeakReference<ClosePCVerifyProxy> c;
   
-  public ClosePCVerifyImpl$ClosePCVerifyQuickLoginObserver(long paramLong, WeakReference<Map<Long, QuickLoginObserver>> paramWeakReference, WeakReference<QQAppInterface> paramWeakReference1, WeakReference<ClosePCVerifyProxy> paramWeakReference2)
+  public ClosePCVerifyImpl$ClosePCVerifyQuickLoginObserver(long paramLong, WeakReference<Map<Long, QuickLoginObserver>> paramWeakReference, WeakReference<BaseQQAppInterface> paramWeakReference1, WeakReference<ClosePCVerifyProxy> paramWeakReference2)
   {
     this.jdField_a_of_type_Long = paramLong;
     this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
@@ -24,7 +24,8 @@ class ClosePCVerifyImpl$ClosePCVerifyQuickLoginObserver
   
   private boolean a()
   {
-    return (this.c == null) || (this.c.get() == null);
+    WeakReference localWeakReference = this.c;
+    return (localWeakReference == null) || (localWeakReference.get() == null);
   }
   
   private boolean a(long paramLong)
@@ -32,7 +33,7 @@ class ClosePCVerifyImpl$ClosePCVerifyQuickLoginObserver
     return paramLong != this.jdField_a_of_type_Long;
   }
   
-  private boolean a(Map<Long, QuickLoginObserver> paramMap, QQAppInterface paramQQAppInterface)
+  private boolean a(Map<Long, QuickLoginObserver> paramMap, BaseQQAppInterface paramBaseQQAppInterface)
   {
     QLog.d("QuickLoginObserver", 1, "wrapper.remove");
     paramMap = (QuickLoginObserver)paramMap.remove(Long.valueOf(this.jdField_a_of_type_Long));
@@ -42,21 +43,32 @@ class ClosePCVerifyImpl$ClosePCVerifyQuickLoginObserver
       return true;
     }
     QLog.d("QuickLoginObserver", 1, "appInterface.removeObserver");
-    paramQQAppInterface.removeObserver(paramMap);
+    paramBaseQQAppInterface.removeObserver(paramMap);
     return false;
   }
   
   private boolean b()
   {
-    return (this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.b == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.b.get() == null);
+    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    return (localWeakReference == null) || (this.b == null) || (localWeakReference.get() == null) || (this.b.get() == null);
   }
   
   public void a(boolean paramBoolean, long paramLong)
   {
-    QLog.d("QuickLoginObserver", 1, "onSetPCVerify isSuccess: " + paramBoolean + " mark: " + paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onSetPCVerify isSuccess: ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(" mark: ");
+    localStringBuilder.append(paramLong);
+    QLog.d("QuickLoginObserver", 1, localStringBuilder.toString());
     if (a(paramLong))
     {
-      QLog.e("QuickLoginObserver", 1, "onSetPCVerify fail: observer not match mark: " + paramLong + " mPbMark: " + this.jdField_a_of_type_Long);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSetPCVerify fail: observer not match mark: ");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(" mPbMark: ");
+      localStringBuilder.append(this.jdField_a_of_type_Long);
+      QLog.e("QuickLoginObserver", 1, localStringBuilder.toString());
       return;
     }
     if (b())
@@ -64,7 +76,7 @@ class ClosePCVerifyImpl$ClosePCVerifyQuickLoginObserver
       QLog.e("QuickLoginObserver", 1, "onSetPCVerify fail: sanity check fail");
       return;
     }
-    if (a((Map)this.jdField_a_of_type_JavaLangRefWeakReference.get(), (QQAppInterface)this.b.get()))
+    if (a((Map)this.jdField_a_of_type_JavaLangRefWeakReference.get(), (BaseQQAppInterface)this.b.get()))
     {
       QLog.e("QuickLoginObserver", 1, "cleanObserverAndCheckEmpty observer empty");
       return;
@@ -79,7 +91,7 @@ class ClosePCVerifyImpl$ClosePCVerifyQuickLoginObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.quicklogin.ClosePCVerifyImpl.ClosePCVerifyQuickLoginObserver
  * JD-Core Version:    0.7.0.1
  */

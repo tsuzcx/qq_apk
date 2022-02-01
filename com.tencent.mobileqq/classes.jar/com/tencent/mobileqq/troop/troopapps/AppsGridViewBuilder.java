@@ -3,10 +3,10 @@ package com.tencent.mobileqq.troop.troopapps;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.richstatus.NoScrollGridView;
 import java.util.ArrayList;
@@ -19,9 +19,9 @@ public class AppsGridViewBuilder
   protected int b = 0;
   protected boolean c = false;
   
-  public AppsGridViewBuilder(Context paramContext, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Bundle paramBundle)
+  public AppsGridViewBuilder(Context paramContext, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, Bundle paramBundle)
   {
-    super(paramContext, paramQQAppInterface, paramFragmentActivity, null, paramBundle);
+    super(paramContext, paramQQAppInterface, paramBaseActivity, null, paramBundle);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
@@ -37,9 +37,9 @@ public class AppsGridViewBuilder
       paramViewGroup = new AppsGridViewBuilder.ItemViewHolder();
       paramView = new NoScrollGridView(this.jdField_a_of_type_AndroidContentContext);
       paramView.setNumColumns(4);
-      paramView.setVerticalSpacing(AIOUtils.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      paramView.setHorizontalSpacing(AIOUtils.a(13.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      paramView.setPadding(AIOUtils.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      paramView.setVerticalSpacing(AIOUtils.b(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      paramView.setHorizontalSpacing(AIOUtils.b(13.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      paramView.setPadding(AIOUtils.b(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       paramView.setColumnWidth(this.b);
       paramView.setSelector(new ColorDrawable(0));
       paramView.setVerticalScrollBarEnabled(false);
@@ -49,12 +49,12 @@ public class AppsGridViewBuilder
       paramView.setAdapter(paramViewGroup.a);
       paramView.setTag(paramViewGroup);
     }
-    for (;;)
+    else
     {
-      paramView.setClickable(false);
-      return paramView;
       ((AppsGridViewBuilder.ItemViewHolder)paramView.getTag()).a.a(this.jdField_a_of_type_JavaUtilList);
     }
+    paramView.setClickable(false);
+    return paramView;
   }
   
   public Object a()
@@ -71,7 +71,7 @@ public class AppsGridViewBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.AppsGridViewBuilder
  * JD-Core Version:    0.7.0.1
  */

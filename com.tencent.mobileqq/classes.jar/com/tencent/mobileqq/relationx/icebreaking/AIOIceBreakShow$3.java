@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.relationx.icebreaking;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class AIOIceBreakShow$3
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   AIOIceBreakShow$3(AIOIceBreakShow paramAIOIceBreakShow) {}
   
@@ -29,7 +29,7 @@ class AIOIceBreakShow$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakShow.3
  * JD-Core Version:    0.7.0.1
  */

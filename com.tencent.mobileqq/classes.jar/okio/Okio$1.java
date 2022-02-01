@@ -24,7 +24,11 @@ final class Okio$1
   
   public String toString()
   {
-    return "sink(" + this.val$out + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sink(");
+    localStringBuilder.append(this.val$out);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
   
   public void write(Buffer paramBuffer, long paramLong)
@@ -37,21 +41,22 @@ final class Okio$1
       int i = (int)Math.min(paramLong, localSegment.limit - localSegment.pos);
       this.val$out.write(localSegment.data, localSegment.pos, i);
       localSegment.pos += i;
-      long l = paramLong - i;
-      paramBuffer.size -= i;
-      paramLong = l;
+      long l2 = i;
+      long l1 = paramLong - l2;
+      paramBuffer.size -= l2;
+      paramLong = l1;
       if (localSegment.pos == localSegment.limit)
       {
         paramBuffer.head = localSegment.pop();
         SegmentPool.recycle(localSegment);
-        paramLong = l;
+        paramLong = l1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okio.Okio.1
  * JD-Core Version:    0.7.0.1
  */

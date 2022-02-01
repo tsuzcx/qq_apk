@@ -25,15 +25,16 @@ final class GdtReportForAntiSpam$2
       return;
     }
     AdHttp.send(localParams);
-    if (this.jdField_a_of_type_ComTencentGdtadStatisticsGdtReportForAntiSpam$ReportCallback != null) {
-      this.jdField_a_of_type_ComTencentGdtadStatisticsGdtReportForAntiSpam$ReportCallback.a(localParams);
+    GdtReportForAntiSpam.ReportCallback localReportCallback = this.jdField_a_of_type_ComTencentGdtadStatisticsGdtReportForAntiSpam$ReportCallback;
+    if (localReportCallback != null) {
+      localReportCallback.a(localParams);
     }
     GdtLog.b("GdtReportForAntiSpam", String.format(Locale.getDefault(), "reportFlyingStreaming responseCode:%d durationMillis:%d %s", new Object[] { Integer.valueOf(localParams.responseCode), Long.valueOf(localParams.durationMillis), this.jdField_a_of_type_OrgJsonJSONObject.toString() }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.statistics.GdtReportForAntiSpam.2
  * JD-Core Version:    0.7.0.1
  */

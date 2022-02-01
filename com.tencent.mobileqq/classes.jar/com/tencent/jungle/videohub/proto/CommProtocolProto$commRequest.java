@@ -47,17 +47,19 @@ public final class CommProtocolProto$commRequest
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 50, 58, 66, 72, 82, 88, 96, 104, 114, 122, 128, 136, 146, 154, 160, 170, 178, 186, 192, 200, 208, 216, 226, 232, 242 }, new String[] { "version", "app_name", "cmd", "seq", "client_ip", "service_ip", "business", "auth_key", "auth_type", "auth_ip", "auth_appid", "uid", "uin", "openid", "body", "microtime", "client_type", "client_release", "user_sig", "network", "from_id", "original_id", "original_key", "original_key_type", "original_id_type", "original_auth_appid", "tinyid", "client_ipv6", "sdkappid", "extra_room_data" }, new Object[] { Integer.valueOf(1), "", Integer.valueOf(0), Long.valueOf(0L), "", "", "", localByteStringMicro1, Integer.valueOf(0), "", Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), "", localByteStringMicro2, Long.valueOf(0L), Integer.valueOf(0), "", "", Integer.valueOf(-1), "", localByteStringMicro3, localByteStringMicro4, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), "", Integer.valueOf(0), localByteStringMicro5 }, commRequest.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 50, 58, 66, 72, 82, 88, 96, 104, 114, 122, 128, 136, 146, 154, 160, 170, 178, 186, 192, 200, 208, 216, 226, 232, 242 }, new String[] { "version", "app_name", "cmd", "seq", "client_ip", "service_ip", "business", "auth_key", "auth_type", "auth_ip", "auth_appid", "uid", "uin", "openid", "body", "microtime", "client_type", "client_release", "user_sig", "network", "from_id", "original_id", "original_key", "original_key_type", "original_id_type", "original_auth_appid", "tinyid", "client_ipv6", "sdkappid", "extra_room_data" }, new Object[] { Integer.valueOf(1), "", localInteger, localLong, "", "", "", localByteStringMicro1, localInteger, "", localLong, localLong, localLong, "", localByteStringMicro2, localLong, localInteger, "", "", Integer.valueOf(-1), "", localByteStringMicro3, localByteStringMicro4, localInteger, localInteger, localLong, localLong, "", localInteger, localByteStringMicro5 }, commRequest.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.jungle.videohub.proto.CommProtocolProto.commRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -14,16 +14,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter;
+import com.tencent.mobileqq.addfriend.api.IAddFriendApi;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.MayknowRecommendManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.mobileqq.util.ProfileCardUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -64,19 +65,29 @@ public class RecommendsAdapter
   {
     Object localObject = paramRecFriendViewHolder.jdField_a_of_type_ComTencentMobileqqDataMayKnowRecommend.getRichStatus();
     StringBuilder localStringBuilder = new StringBuilder();
-    if (((RichStatus)localObject).actionText != null) {
-      localStringBuilder.append("actionText:").append(((RichStatus)localObject).actionText);
+    if (((RichStatus)localObject).actionText != null)
+    {
+      localStringBuilder.append("actionText:");
+      localStringBuilder.append(((RichStatus)localObject).actionText);
     }
-    if (((RichStatus)localObject).dataText != null) {
-      localStringBuilder.append("dataText:").append(((RichStatus)localObject).dataText);
+    if (((RichStatus)localObject).dataText != null)
+    {
+      localStringBuilder.append("dataText:");
+      localStringBuilder.append(((RichStatus)localObject).dataText);
     }
     localStringBuilder.append("plainText:");
     localObject = ((RichStatus)localObject).getPlainText();
     if (!TextUtils.isEmpty((CharSequence)localObject)) {
       localStringBuilder.append((String)localObject);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("contacts.RecommendsAdapter", 2, "updateRichStatus, content=" + localStringBuilder + "  uin:" + paramRecFriendViewHolder.jdField_a_of_type_ComTencentMobileqqDataMayKnowRecommend.uin);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateRichStatus, content=");
+      ((StringBuilder)localObject).append(localStringBuilder);
+      ((StringBuilder)localObject).append("  uin:");
+      ((StringBuilder)localObject).append(paramRecFriendViewHolder.jdField_a_of_type_ComTencentMobileqqDataMayKnowRecommend.uin);
+      QLog.i("contacts.RecommendsAdapter", 2, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -112,81 +123,110 @@ public class RecommendsAdapter
   
   public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("contacts.RecommendsAdapter", 2, "onResume firstVisible: " + this.jdField_a_of_type_ComTencentWidgetXListView.getFirstVisiblePosition() + " lastvisible: " + this.jdField_a_of_type_ComTencentWidgetXListView.getLastVisiblePosition());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onResume firstVisible: ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentWidgetXListView.getFirstVisiblePosition());
+      ((StringBuilder)localObject).append(" lastvisible: ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentWidgetXListView.getLastVisiblePosition());
+      QLog.d("contacts.RecommendsAdapter", 2, ((StringBuilder)localObject).toString());
     }
     if ((getCount() > 0) && (this.jdField_a_of_type_ComTencentWidgetXListView.isShown()))
     {
-      MayknowRecommendManager localMayknowRecommendManager = (MayknowRecommendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER);
+      localObject = (MayknowRecommendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER);
       int i = this.jdField_a_of_type_ComTencentWidgetXListView.getFirstVisiblePosition();
       while (i <= this.jdField_a_of_type_ComTencentWidgetXListView.getLastVisiblePosition())
       {
         if ((i >= 0) && (i < getCount())) {
-          localMayknowRecommendManager.a((MayKnowRecommend)getItem(i), 20, 0, 1);
+          ((MayknowRecommendManager)localObject).a((MayKnowRecommend)getItem(i), 20, 0, 1);
         }
         i += 1;
       }
     }
-    if (this.jdField_a_of_type_ComTencentWidgetXListView != null)
+    Object localObject = this.jdField_a_of_type_ComTencentWidgetXListView;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentWidgetXListView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      ((XListView)localObject).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       this.jdField_a_of_type_ComTencentWidgetXListView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetXListView == null) {}
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentWidgetXListView == null) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("contacts.RecommendsAdapter", 2, "stopVisibleExpose firstVisible: " + this.jdField_a_of_type_ComTencentWidgetXListView.getFirstVisiblePosition() + " lastvisible: " + this.jdField_a_of_type_ComTencentWidgetXListView.getLastVisiblePosition());
-      }
-      if ((getCount() > 0) && (this.jdField_a_of_type_ComTencentWidgetXListView.isShown()))
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("stopVisibleExpose firstVisible: ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentWidgetXListView.getFirstVisiblePosition());
+      ((StringBuilder)localObject).append(" lastvisible: ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentWidgetXListView.getLastVisiblePosition());
+      QLog.d("contacts.RecommendsAdapter", 2, ((StringBuilder)localObject).toString());
+    }
+    if ((getCount() > 0) && (this.jdField_a_of_type_ComTencentWidgetXListView.isShown()))
+    {
+      localObject = (MayknowRecommendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER);
+      int i = this.jdField_a_of_type_ComTencentWidgetXListView.getFirstVisiblePosition();
+      while (i <= this.jdField_a_of_type_ComTencentWidgetXListView.getLastVisiblePosition())
       {
-        MayknowRecommendManager localMayknowRecommendManager = (MayknowRecommendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER);
-        int i = this.jdField_a_of_type_ComTencentWidgetXListView.getFirstVisiblePosition();
-        while (i <= this.jdField_a_of_type_ComTencentWidgetXListView.getLastVisiblePosition())
-        {
-          if ((i >= 0) && (i < getCount())) {
-            localMayknowRecommendManager.b((MayKnowRecommend)getItem(i), 20, 0, 1);
-          }
-          i += 1;
+        if ((i >= 0) && (i < getCount())) {
+          ((MayknowRecommendManager)localObject).b((MayKnowRecommend)getItem(i), 20, 0, 1);
         }
+        i += 1;
       }
-    } while (this.jdField_a_of_type_ComTencentWidgetXListView == null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentWidgetXListView;
+    if (localObject != null) {
+      ((XListView)localObject).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    }
   }
   
   public void e()
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetXListView != null) && (this.jdField_a_of_type_ComTencentWidgetXListView.isShown()) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
+    Object localObject = this.jdField_a_of_type_ComTencentWidgetXListView;
+    if ((localObject != null) && (((XListView)localObject).isShown()) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
     {
       this.jdField_a_of_type_ComTencentWidgetXListView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       int j = this.jdField_a_of_type_ComTencentWidgetXListView.getFirstVisiblePosition();
       int k = this.jdField_a_of_type_ComTencentWidgetXListView.getLastVisiblePosition();
+      localObject = new ArrayList();
       ArrayList localArrayList1 = new ArrayList();
       ArrayList localArrayList2 = new ArrayList();
       ArrayList localArrayList3 = new ArrayList();
-      ArrayList localArrayList4 = new ArrayList();
       int i = j;
       while (i <= k)
       {
         if ((i >= 0) && (i < this.jdField_a_of_type_JavaUtilList.size()) && (this.jdField_a_of_type_JavaUtilList.get(i) != null))
         {
-          localArrayList1.add(((MayKnowRecommend)this.jdField_a_of_type_JavaUtilList.get(i)).uin);
-          localArrayList2.add(((MayKnowRecommend)this.jdField_a_of_type_JavaUtilList.get(i)).recommendReason);
-          localArrayList3.add(Integer.valueOf(i));
-          localArrayList4.add(((MayKnowRecommend)this.jdField_a_of_type_JavaUtilList.get(i)).algBuffer);
+          ((ArrayList)localObject).add(((MayKnowRecommend)this.jdField_a_of_type_JavaUtilList.get(i)).uin);
+          localArrayList1.add(((MayKnowRecommend)this.jdField_a_of_type_JavaUtilList.get(i)).recommendReason);
+          localArrayList2.add(Integer.valueOf(i));
+          localArrayList3.add(((MayKnowRecommend)this.jdField_a_of_type_JavaUtilList.get(i)).algBuffer);
         }
         i += 1;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("contacts.RecommendsAdapter", 2, "reportRecommendFrdExpose firstVisibleItem: " + j + " lastVisibleItem: " + k + " exp_uins: " + localArrayList1 + " exp_reasons:" + localArrayList2 + " exp_positions:" + localArrayList3 + " algh_ids:" + localArrayList4);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("reportRecommendFrdExpose firstVisibleItem: ");
+        localStringBuilder.append(j);
+        localStringBuilder.append(" lastVisibleItem: ");
+        localStringBuilder.append(k);
+        localStringBuilder.append(" exp_uins: ");
+        localStringBuilder.append(localObject);
+        localStringBuilder.append(" exp_reasons:");
+        localStringBuilder.append(localArrayList1);
+        localStringBuilder.append(" exp_positions:");
+        localStringBuilder.append(localArrayList2);
+        localStringBuilder.append(" algh_ids:");
+        localStringBuilder.append(localArrayList3);
+        QLog.d("contacts.RecommendsAdapter", 2, localStringBuilder.toString());
       }
-      if (!localArrayList1.isEmpty()) {
-        ContactReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 20, localArrayList1, localArrayList2, localArrayList3, localArrayList4, 0, null);
+      if (!((ArrayList)localObject).isEmpty()) {
+        ContactReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 20, (ArrayList)localObject, localArrayList1, localArrayList2, localArrayList3, 0, null);
       }
     }
   }
@@ -198,10 +238,10 @@ public class RecommendsAdapter
   
   public Object getItem(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
-      return new MayKnowRecommend();
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return new MayKnowRecommend();
   }
   
   public long getItemId(int paramInt)
@@ -211,220 +251,238 @@ public class RecommendsAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    View localView;
-    Object localObject1;
+    RecommendsAdapter.RecFriendViewHolder localRecFriendViewHolder;
     if (paramView == null)
     {
-      paramView = new RecommendsAdapter.RecFriendViewHolder();
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559039, paramViewGroup, false);
-      paramView.c = ((ImageView)localView.findViewById(2131361796));
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131372288));
-      paramView.b = ((SingleLineTextView)localView.findViewById(2131377005));
-      paramView.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131376990));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377001));
-      if ((paramView.c instanceof ThemeImageView)) {
-        ((ThemeImageView)paramView.c).setSupportMaskView(false);
+      localRecFriendViewHolder = new RecommendsAdapter.RecFriendViewHolder();
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558933, paramViewGroup, false);
+      localRecFriendViewHolder.c = ((ImageView)paramView.findViewById(2131361799));
+      localRecFriendViewHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131371877));
+      localRecFriendViewHolder.b = ((SingleLineTextView)paramView.findViewById(2131376487));
+      localRecFriendViewHolder.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131376477));
+      localRecFriendViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376485));
+      if ((localRecFriendViewHolder.c instanceof ThemeImageView)) {
+        ((ThemeImageView)localRecFriendViewHolder.c).setSupportMaskView(false);
       }
-      localView.setTag(paramView);
-      localObject1 = (MayKnowRecommend)getItem(paramInt);
-      paramView.jdField_a_of_type_JavaLangString = ((MayKnowRecommend)localObject1).uin;
-      paramView.jdField_a_of_type_ComTencentMobileqqDataMayKnowRecommend = ((MayKnowRecommend)localObject1);
-      if (this.jdField_a_of_type_ComTencentMobileqqAppMayknowRecommendManager == null) {
-        break label688;
-      }
+      paramView.setTag(localRecFriendViewHolder);
     }
-    label543:
-    label555:
-    label688:
-    for (boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppMayknowRecommendManager.a();; bool = false)
+    else
     {
-      Object localObject2 = ((MayKnowRecommend)localObject1).getDisplayName(bool);
-      StringBuilder localStringBuilder = new StringBuilder(512);
-      if (!TextUtils.isEmpty((CharSequence)localObject2))
-      {
-        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setVisibility(0);
-        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText((CharSequence)localObject2);
-        if (AppSetting.d) {
-          localStringBuilder.append((String)localObject2);
-        }
-        label232:
-        localObject2 = new StringBuilder();
-        if (!TextUtils.isEmpty(((MayKnowRecommend)localObject1).category)) {
-          ((StringBuilder)localObject2).append(((MayKnowRecommend)localObject1).category).append(" ");
-        }
-        if (!TextUtils.isEmpty(((MayKnowRecommend)localObject1).recommendReason)) {
-          ((StringBuilder)localObject2).append(((MayKnowRecommend)localObject1).recommendReason);
-        }
-        localObject2 = ((StringBuilder)localObject2).toString();
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          break label543;
-        }
-        paramView.b.setVisibility(0);
-        paramView.b.setText((CharSequence)localObject2);
-        if (AppSetting.d) {
-          localStringBuilder.append(",").append((String)localObject2);
-        }
-        label343:
-        if (((MayKnowRecommend)localObject1).friendStatus != 0) {
-          break label555;
-        }
-        paramView.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-        paramView.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-        paramView.jdField_a_of_type_AndroidWidgetButton.setTag(localObject1);
-        paramView.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131689557));
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        if (AppSetting.d)
-        {
-          localStringBuilder.append(",点击添加");
-          paramView.jdField_a_of_type_AndroidWidgetButton.setContentDescription(HardCodeUtil.a(2131689557));
-        }
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          a(paramView);
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqAppMayknowRecommendManager != null) {
-          this.jdField_a_of_type_ComTencentMobileqqAppMayknowRecommendManager.a((MayKnowRecommend)localObject1, 20, 0, 1);
-        }
-        if (AppSetting.d) {
-          localView.setContentDescription(localStringBuilder.toString());
-        }
-        localView.setOnClickListener(this);
-        paramView.c.setImageBitmap(a(1, paramView.jdField_a_of_type_JavaLangString));
-        EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-        return localView;
-        localObject1 = (RecommendsAdapter.RecFriendViewHolder)paramView.getTag();
-        localView = paramView;
-        paramView = (View)localObject1;
-        break;
-        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setVisibility(8);
-        break label232;
-        paramView.b.setVisibility(8);
-        break label343;
-        if (((MayKnowRecommend)localObject1).friendStatus == 1)
-        {
-          paramView.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-          paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-          paramView.jdField_a_of_type_AndroidWidgetTextView.setText(2131718554);
-          if (AppSetting.d)
-          {
-            localStringBuilder.append(",等待验证");
-            paramView.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131718554));
-          }
-        }
-        else
-        {
-          paramView.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-          paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-          paramView.jdField_a_of_type_AndroidWidgetTextView.setText(2131690072);
-          if (AppSetting.d)
-          {
-            localStringBuilder.append(",已添加");
-            paramView.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131690072));
-          }
-        }
+      localRecFriendViewHolder = (RecommendsAdapter.RecFriendViewHolder)paramView.getTag();
+    }
+    MayKnowRecommend localMayKnowRecommend = (MayKnowRecommend)getItem(paramInt);
+    localRecFriendViewHolder.jdField_a_of_type_JavaLangString = localMayKnowRecommend.uin;
+    localRecFriendViewHolder.jdField_a_of_type_ComTencentMobileqqDataMayKnowRecommend = localMayKnowRecommend;
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppMayknowRecommendManager;
+    boolean bool;
+    if (localObject1 != null) {
+      bool = ((MayknowRecommendManager)localObject1).a();
+    } else {
+      bool = false;
+    }
+    Object localObject2 = localMayKnowRecommend.getDisplayName(bool);
+    localObject1 = new StringBuilder(512);
+    if (!TextUtils.isEmpty((CharSequence)localObject2))
+    {
+      localRecFriendViewHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setVisibility(0);
+      localRecFriendViewHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText((CharSequence)localObject2);
+      if (AppSetting.d) {
+        ((StringBuilder)localObject1).append((String)localObject2);
       }
     }
+    else
+    {
+      localRecFriendViewHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setVisibility(8);
+    }
+    localObject2 = new StringBuilder();
+    if (!TextUtils.isEmpty(localMayKnowRecommend.category))
+    {
+      ((StringBuilder)localObject2).append(localMayKnowRecommend.category);
+      ((StringBuilder)localObject2).append(" ");
+    }
+    if (!TextUtils.isEmpty(localMayKnowRecommend.recommendReason)) {
+      ((StringBuilder)localObject2).append(localMayKnowRecommend.recommendReason);
+    }
+    localObject2 = ((StringBuilder)localObject2).toString();
+    if (!TextUtils.isEmpty((CharSequence)localObject2))
+    {
+      localRecFriendViewHolder.b.setVisibility(0);
+      localRecFriendViewHolder.b.setText((CharSequence)localObject2);
+      if (AppSetting.d)
+      {
+        ((StringBuilder)localObject1).append(",");
+        ((StringBuilder)localObject1).append((String)localObject2);
+      }
+    }
+    else
+    {
+      localRecFriendViewHolder.b.setVisibility(8);
+    }
+    if (localMayKnowRecommend.friendStatus == 0)
+    {
+      localRecFriendViewHolder.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+      localRecFriendViewHolder.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+      localRecFriendViewHolder.jdField_a_of_type_AndroidWidgetButton.setTag(localMayKnowRecommend);
+      localRecFriendViewHolder.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131689589));
+      localRecFriendViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      if (AppSetting.d)
+      {
+        ((StringBuilder)localObject1).append(",点击添加");
+        localRecFriendViewHolder.jdField_a_of_type_AndroidWidgetButton.setContentDescription(HardCodeUtil.a(2131689589));
+      }
+    }
+    else if (localMayKnowRecommend.friendStatus == 1)
+    {
+      localRecFriendViewHolder.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+      localRecFriendViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      localRecFriendViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(2131718222);
+      if (AppSetting.d)
+      {
+        ((StringBuilder)localObject1).append(",等待验证");
+        localRecFriendViewHolder.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131718222));
+      }
+    }
+    else
+    {
+      localRecFriendViewHolder.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+      localRecFriendViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      localRecFriendViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(2131689988);
+      if (AppSetting.d)
+      {
+        ((StringBuilder)localObject1).append(",已添加");
+        localRecFriendViewHolder.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131689988));
+      }
+    }
+    if (QLog.isColorLevel()) {
+      a(localRecFriendViewHolder);
+    }
+    localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppMayknowRecommendManager;
+    if (localObject2 != null) {
+      ((MayknowRecommendManager)localObject2).a(localMayKnowRecommend, 20, 0, 1);
+    }
+    if (AppSetting.d) {
+      paramView.setContentDescription(((StringBuilder)localObject1).toString());
+    }
+    paramView.setOnClickListener(this);
+    localRecFriendViewHolder.c.setImageBitmap(a(1, localRecFriendViewHolder.jdField_a_of_type_JavaLangString));
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    }
+    int i = paramView.getId();
     Object localObject1;
+    int j;
+    Object localObject2;
     boolean bool1;
-    do
+    if (i != 2131376477)
     {
-      do
+      if (i == 2131376644)
       {
-        do
+        localObject1 = (RecommendsAdapter.RecFriendViewHolder)paramView.getTag();
+        if (localObject1 != null)
         {
-          EventCollector.getInstance().onViewClicked(paramView);
-          return;
-          localObject1 = (MayKnowRecommend)paramView.getTag();
-        } while (localObject1 == null);
+          localObject1 = ((RecommendsAdapter.RecFriendViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqDataMayKnowRecommend;
+          if (localObject1 != null)
+          {
+            j = 103;
+            localObject2 = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+            i = j;
+            if (localObject2 != null)
+            {
+              i = j;
+              if (((FriendsManager)localObject2).b(((MayKnowRecommend)localObject1).uin)) {
+                i = 1;
+              }
+            }
+            localObject2 = new AllInOne(((MayKnowRecommend)localObject1).uin, i);
+            Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppMayknowRecommendManager;
+            if (localObject3 != null) {
+              bool1 = ((MayknowRecommendManager)localObject3).a();
+            } else {
+              bool1 = false;
+            }
+            localObject3 = ((MayKnowRecommend)localObject1).getRecommendName(bool1);
+            if (!TextUtils.isEmpty((CharSequence)localObject3)) {
+              ((AllInOne)localObject2).recommendName = ((String)localObject3);
+            }
+            if (!TextUtils.isEmpty(((MayKnowRecommend)localObject1).nick)) {
+              ((AllInOne)localObject2).nickname = ((MayKnowRecommend)localObject1).nick;
+            }
+            ((AllInOne)localObject2).profileEntryType = 88;
+            bool1 = ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().getBooleanExtra("from_babyq", false);
+            localObject3 = new Bundle();
+            if (bool1) {
+              ((Bundle)localObject3).putBoolean("from_babyq", true);
+            }
+            ((Bundle)localObject3).putString("recommend_reason", ((MayKnowRecommend)localObject1).recommendReason);
+            ((Bundle)localObject3).putInt("recommend_pos", this.jdField_a_of_type_JavaUtilList.indexOf(localObject1));
+            ((Bundle)localObject3).putByteArray("recommend_algh_id", ((MayKnowRecommend)localObject1).algBuffer);
+            ProfileActivity.a(this.jdField_a_of_type_AndroidContentContext, (AllInOne)localObject2, (Bundle)localObject3);
+            localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppMayknowRecommendManager;
+            if (localObject2 != null) {
+              ((MayknowRecommendManager)localObject2).a((MayKnowRecommend)localObject1, 20, 0, 2);
+            }
+            ContactReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((MayKnowRecommend)localObject1).uin, "frd_list_clk", 20, 0, ((MayKnowRecommend)localObject1).recommendReason, this.jdField_a_of_type_JavaUtilList.indexOf(localObject1), ((MayKnowRecommend)localObject1).algBuffer, 0);
+          }
+        }
+      }
+    }
+    else
+    {
+      localObject1 = (MayKnowRecommend)paramView.getTag();
+      if (localObject1 != null)
+      {
         localObject2 = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
         if ((!((FriendsManager)localObject2).b(((MayKnowRecommend)localObject1).uin)) && (!((FriendsManager)localObject2).d(((MayKnowRecommend)localObject1).uin)))
         {
           boolean bool2 = ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().getBooleanExtra("from_babyq", false);
-          bool1 = false;
-          if (this.jdField_a_of_type_ComTencentMobileqqAppMayknowRecommendManager != null) {
-            bool1 = this.jdField_a_of_type_ComTencentMobileqqAppMayknowRecommendManager.a();
+          localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppMayknowRecommendManager;
+          if (localObject2 != null) {
+            bool1 = ((MayknowRecommendManager)localObject2).a();
+          } else {
+            bool1 = false;
           }
           localObject2 = ((MayKnowRecommend)localObject1).getDisplayName(bool1);
-          i = 3045;
-          int j = 20;
           if (bool2)
           {
             i = 3083;
             j = 1;
           }
-          localObject2 = AddFriendLogicActivity.a(this.jdField_a_of_type_AndroidContentContext, 1, ((MayKnowRecommend)localObject1).uin, null, i, j, (String)localObject2, null, null, this.jdField_a_of_type_AndroidContentContext.getString(2131689557), null);
-          ((Intent)localObject2).putExtra("key_param_age_area", ProfileCardUtil.a(this.jdField_a_of_type_AndroidContentContext, ((MayKnowRecommend)localObject1).gender, ((MayKnowRecommend)localObject1).age, ((MayKnowRecommend)localObject1).country, ((MayKnowRecommend)localObject1).province, ((MayKnowRecommend)localObject1).city));
-          ((Intent)localObject2).putExtra("from_babyq", bool2);
-          ((Activity)this.jdField_a_of_type_AndroidContentContext).startActivity((Intent)localObject2);
-        }
-        for (;;)
-        {
-          if (this.jdField_a_of_type_ComTencentMobileqqAppMayknowRecommendManager != null) {
-            this.jdField_a_of_type_ComTencentMobileqqAppMayknowRecommendManager.a((MayKnowRecommend)localObject1, 20, 0, 3);
-          }
-          ContactReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((MayKnowRecommend)localObject1).uin, "frd_list_add", 20, 1, ((MayKnowRecommend)localObject1).recommendReason, this.jdField_a_of_type_JavaUtilList.indexOf(localObject1), ((MayKnowRecommend)localObject1).algBuffer, 0);
-          break;
-          if (((FriendsManager)localObject2).b(((MayKnowRecommend)localObject1).uin))
-          {
-            ((MayKnowRecommend)localObject1).friendStatus = 2;
-            notifyDataSetChanged();
-          }
           else
           {
-            ((MayKnowRecommend)localObject1).friendStatus = 1;
-            notifyDataSetChanged();
+            i = 3045;
+            j = 20;
           }
+          localObject2 = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).startAddFriend(this.jdField_a_of_type_AndroidContentContext, 1, ((MayKnowRecommend)localObject1).uin, null, i, j, (String)localObject2, null, null, this.jdField_a_of_type_AndroidContentContext.getString(2131689589), null);
+          ((Intent)localObject2).putExtra("key_param_age_area", ProfileCardUtil.a(this.jdField_a_of_type_AndroidContentContext, ((MayKnowRecommend)localObject1).gender, ((MayKnowRecommend)localObject1).age, ((MayKnowRecommend)localObject1).country, ((MayKnowRecommend)localObject1).province, ((MayKnowRecommend)localObject1).city));
+          ((Intent)localObject2).putExtra("from_babyq", bool2);
+          ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).launchAddFriend((Activity)this.jdField_a_of_type_AndroidContentContext, (Intent)localObject2);
         }
-        localObject1 = (RecommendsAdapter.RecFriendViewHolder)paramView.getTag();
-      } while (localObject1 == null);
-      localObject1 = ((RecommendsAdapter.RecFriendViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqDataMayKnowRecommend;
-    } while (localObject1 == null);
-    Object localObject2 = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if ((localObject2 != null) && (((FriendsManager)localObject2).b(((MayKnowRecommend)localObject1).uin))) {}
-    for (int i = 1;; i = 103)
-    {
-      localObject2 = new ProfileActivity.AllInOne(((MayKnowRecommend)localObject1).uin, i);
-      bool1 = false;
-      if (this.jdField_a_of_type_ComTencentMobileqqAppMayknowRecommendManager != null) {
-        bool1 = this.jdField_a_of_type_ComTencentMobileqqAppMayknowRecommendManager.a();
+        else if (((FriendsManager)localObject2).b(((MayKnowRecommend)localObject1).uin))
+        {
+          ((MayKnowRecommend)localObject1).friendStatus = 2;
+          notifyDataSetChanged();
+        }
+        else
+        {
+          ((MayKnowRecommend)localObject1).friendStatus = 1;
+          notifyDataSetChanged();
+        }
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppMayknowRecommendManager;
+        if (localObject2 != null) {
+          ((MayknowRecommendManager)localObject2).a((MayKnowRecommend)localObject1, 20, 0, 3);
+        }
+        ContactReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((MayKnowRecommend)localObject1).uin, "frd_list_add", 20, 1, ((MayKnowRecommend)localObject1).recommendReason, this.jdField_a_of_type_JavaUtilList.indexOf(localObject1), ((MayKnowRecommend)localObject1).algBuffer, 0);
       }
-      Object localObject3 = ((MayKnowRecommend)localObject1).getRecommendName(bool1);
-      if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-        ((ProfileActivity.AllInOne)localObject2).l = ((String)localObject3);
-      }
-      if (!TextUtils.isEmpty(((MayKnowRecommend)localObject1).nick)) {
-        ((ProfileActivity.AllInOne)localObject2).jdField_h_of_type_JavaLangString = ((MayKnowRecommend)localObject1).nick;
-      }
-      ((ProfileActivity.AllInOne)localObject2).jdField_h_of_type_Int = 88;
-      bool1 = ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().getBooleanExtra("from_babyq", false);
-      localObject3 = new Bundle();
-      if (bool1) {
-        ((Bundle)localObject3).putBoolean("from_babyq", true);
-      }
-      ((Bundle)localObject3).putString("recommend_reason", ((MayKnowRecommend)localObject1).recommendReason);
-      ((Bundle)localObject3).putInt("recommend_pos", this.jdField_a_of_type_JavaUtilList.indexOf(localObject1));
-      ((Bundle)localObject3).putByteArray("recommend_algh_id", ((MayKnowRecommend)localObject1).algBuffer);
-      ProfileActivity.a(this.jdField_a_of_type_AndroidContentContext, (ProfileActivity.AllInOne)localObject2, (Bundle)localObject3);
-      if (this.jdField_a_of_type_ComTencentMobileqqAppMayknowRecommendManager != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppMayknowRecommendManager.a((MayKnowRecommend)localObject1, 20, 0, 2);
-      }
-      ContactReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((MayKnowRecommend)localObject1).uin, "frd_list_clk", 20, 0, ((MayKnowRecommend)localObject1).recommendReason, this.jdField_a_of_type_JavaUtilList.indexOf(localObject1), ((MayKnowRecommend)localObject1).algBuffer, 0);
-      break;
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.mayknow.RecommendsAdapter
  * JD-Core Version:    0.7.0.1
  */

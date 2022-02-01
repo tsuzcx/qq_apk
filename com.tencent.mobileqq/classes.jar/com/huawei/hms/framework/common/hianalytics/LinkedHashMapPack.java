@@ -13,8 +13,13 @@ public class LinkedHashMapPack
   
   public LinkedHashMapPack put(String paramString, long paramLong)
   {
-    if (paramString != null) {
-      this.map.put(paramString, "" + paramLong);
+    if (paramString != null)
+    {
+      LinkedHashMap localLinkedHashMap = this.map;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramLong);
+      localLinkedHashMap.put(paramString, localStringBuilder.toString());
     }
     return this;
   }
@@ -31,20 +36,26 @@ public class LinkedHashMapPack
   {
     if (paramString != null)
     {
-      if (paramBoolean) {
-        this.map.put(paramString, "1");
+      LinkedHashMap localLinkedHashMap;
+      String str;
+      if (paramBoolean)
+      {
+        localLinkedHashMap = this.map;
+        str = "1";
       }
+      else
+      {
+        localLinkedHashMap = this.map;
+        str = "0";
+      }
+      localLinkedHashMap.put(paramString, str);
     }
-    else {
-      return this;
-    }
-    this.map.put(paramString, "0");
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.framework.common.hianalytics.LinkedHashMapPack
  * JD-Core Version:    0.7.0.1
  */

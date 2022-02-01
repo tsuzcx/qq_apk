@@ -11,19 +11,19 @@ public class MsgNodeGuideViewHolder
 {
   public MsgNodeGuideViewHolder(ViewGroup paramViewGroup)
   {
-    super(paramViewGroup, 2131561863);
+    super(paramViewGroup, 2131561714);
   }
   
   public void a(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
     super.a(paramMsgTabNodeInfo);
     this.a.setDisplayState(5);
-    this.a.setNodeName(HardCodeUtil.a(2131706957), false);
+    this.a.setNodeName(HardCodeUtil.a(2131706979), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.viewholder.MsgNodeGuideViewHolder
  * JD-Core Version:    0.7.0.1
  */

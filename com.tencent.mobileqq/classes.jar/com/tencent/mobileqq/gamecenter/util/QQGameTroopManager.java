@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.gamecenter.util;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Handler;
@@ -14,16 +15,12 @@ import com.tencent.gamecenter.wadl.biz.entity.TrpcProxy.TrpcListReq;
 import com.tencent.gamecenter.wadl.biz.listener.WadlTrpcListener;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 import com.tencent.mobileqq.adapter.CharDividedFacePreloadBaseAdapter;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.apollo.game.api.ICmGameHelper;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBInt64Field;
@@ -32,7 +29,9 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.selectmember.ResultRecord;
+import com.tencent.mobileqq.selectmember.api.ISelectMemberApi;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
 import com.tencent.mobileqq.widget.PinnedDividerListView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.trpcprotocol.gamecenter.sgameQgroupDatacard.sgame_qgroup_datacard.GroupMemberInfo;
@@ -66,7 +65,7 @@ public class QQGameTroopManager
   private long jdField_a_of_type_Long;
   private WadlTrpcListener jdField_a_of_type_ComTencentGamecenterWadlBizListenerWadlTrpcListener = new QQGameTroopManager.2(this);
   private Comparator<TroopMemberInfo> jdField_a_of_type_JavaUtilComparator = new QQGameTroopManager.6(this);
-  public WeakReference<BaseActivity> a;
+  public WeakReference<QBaseActivity> a;
   private boolean jdField_a_of_type_Boolean = false;
   private WadlTrpcListener jdField_b_of_type_ComTencentGamecenterWadlBizListenerWadlTrpcListener = new QQGameTroopManager.3(this);
   
@@ -78,10 +77,11 @@ public class QQGameTroopManager
   
   public QQGameTroopManager(QQAppInterface paramQQAppInterface) {}
   
-  private SelectMemberActivity a()
+  private Activity a()
   {
-    if ((this.jdField_a_of_type_MqqUtilWeakReference != null) && ((this.jdField_a_of_type_MqqUtilWeakReference.get() instanceof SelectMemberActivity))) {
-      return (SelectMemberActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    WeakReference localWeakReference = this.jdField_a_of_type_MqqUtilWeakReference;
+    if ((localWeakReference != null) && ((localWeakReference.get() instanceof Activity))) {
+      return (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();
     }
     return null;
   }
@@ -91,10 +91,6 @@ public class QQGameTroopManager
     if ((paramInt == 0) || (paramInt == 1)) {
       if ((paramBoolean) && (paramInt != 1)) {}
     }
-    label151:
-    label167:
-    label173:
-    label180:
     for (;;)
     {
       try
@@ -103,9 +99,9 @@ public class QQGameTroopManager
           return;
         }
         jdField_b_of_type_Long = System.currentTimeMillis();
-        localHashMap = new HashMap();
+        HashMap localHashMap = new HashMap();
         if (!paramBoolean) {
-          break label151;
+          break label164;
         }
         localObject = "8";
         localHashMap.put(Integer.valueOf(4), localObject);
@@ -113,35 +109,115 @@ public class QQGameTroopManager
         ((JSONObject)localObject).put("groupid", paramString);
         localHashMap.put(Integer.valueOf(27), ((JSONObject)localObject).toString());
         if (paramInt != 0) {
-          break label173;
+          break label176;
         }
         if (!paramBoolean) {
-          break label167;
+          break label170;
         }
         paramString = "207966";
+        GameCenterUtils.a(((ICmGameHelper)QRoute.api(ICmGameHelper.class)).getAppInterface(), "1006", paramString, "", "100602", "1", "145", localHashMap);
+        return;
       }
       catch (Throwable paramString)
       {
-        HashMap localHashMap;
         QLog.e("QQGameTroopManager", 1, paramString, new Object[0]);
-        return;
       }
-      GameCenterUtils.a(CmGameUtil.a(), "1006", paramString, "", "100602", "1", "145", localHashMap);
       return;
+      label164:
       Object localObject = "20";
       continue;
-      do
-      {
+      label170:
+      paramString = "207939";
+      continue;
+      label176:
+      if (paramBoolean) {
+        paramString = "207965";
+      } else {
         paramString = "207940";
-        break label180;
-        return;
-        for (;;)
-        {
-          break;
-          paramString = "207939";
+      }
+    }
+  }
+  
+  public static void a(Activity paramActivity, TroopMemberInfo paramTroopMemberInfo, TextView paramTextView1, ImageView paramImageView, TextView paramTextView2)
+  {
+    if (paramTroopMemberInfo != null) {
+      try
+      {
+        paramTextView1.setVisibility(0);
+        String str = paramActivity.getResources().getString(2131719885);
+        paramTextView1.setText(str);
+        paramImageView.setVisibility(8);
+        sgame_qgroup_datacard.GroupMemberInfo localGroupMemberInfo = (sgame_qgroup_datacard.GroupMemberInfo)jdField_a_of_type_JavaUtilMap.get(paramTroopMemberInfo.memberuin);
+        if (localGroupMemberInfo != null) {
+          if (localGroupMemberInfo.ret.get() == 0)
+          {
+            if (!TextUtils.isEmpty(localGroupMemberInfo.gradeName.get())) {
+              str = localGroupMemberInfo.gradeName.get();
+            }
+            paramTextView1.setText(str);
+            if (!TextUtils.isEmpty(localGroupMemberInfo.gradeIcon.get()))
+            {
+              paramTextView1 = URLDrawable.URLDrawableOptions.obtain();
+              paramTextView1.mLoadingDrawable = URLDrawableHelperConstants.a;
+              paramTextView1.mFailedDrawable = URLDrawableHelperConstants.a;
+              paramImageView.setImageDrawable(URLDrawable.getDrawable(localGroupMemberInfo.gradeIcon.get(), paramTextView1));
+              paramImageView.setVisibility(0);
+            }
+          }
+          else if (localGroupMemberInfo.ret.get() == 200022)
+          {
+            paramTextView1.setText(paramActivity.getResources().getString(2131719886));
+          }
         }
-      } while (!paramBoolean);
-      paramString = "207965";
+        if (jdField_a_of_type_JavaUtilList == null)
+        {
+          paramTextView2.setVisibility(8);
+          return;
+        }
+        paramTextView2.setVisibility(0);
+        if (jdField_a_of_type_JavaUtilList.contains(paramTroopMemberInfo.memberuin))
+        {
+          paramTextView2.setText(paramActivity.getResources().getString(2131719230));
+          return;
+        }
+        paramTextView2.setText(paramActivity.getResources().getString(2131719229));
+        return;
+      }
+      catch (Throwable paramActivity)
+      {
+        QLog.e("QQGameTroopManager", 1, paramActivity, new Object[0]);
+      }
+    }
+  }
+  
+  private void a(Activity paramActivity, List<String> paramList, Map<String, List<TroopMemberInfo>> paramMap)
+  {
+    if (paramActivity != null)
+    {
+      if (paramMap == null) {
+        return;
+      }
+      if (paramList != null) {}
+      try
+      {
+        if (!paramList.isEmpty())
+        {
+          paramList = paramMap.keySet().iterator();
+          while (paramList.hasNext()) {
+            Collections.sort((List)paramMap.get((String)paramList.next()), this.jdField_a_of_type_JavaUtilComparator);
+          }
+        }
+        ThreadManagerV2.getUIHandlerV2().post(new QQGameTroopManager.5(this, paramActivity));
+        if (a(paramActivity))
+        {
+          a(0, 50, a());
+          return;
+        }
+      }
+      catch (Throwable paramActivity)
+      {
+        QLog.e("QQGameTroopManager", 1, paramActivity, new Object[0]);
+      }
     }
   }
   
@@ -151,102 +227,13 @@ public class QQGameTroopManager
     if ((paramString != null) && (!TextUtils.isEmpty(paramString.gradeIcon.get())))
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-      localURLDrawableOptions.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
+      localURLDrawableOptions.mLoadingDrawable = URLDrawableHelperConstants.a;
+      localURLDrawableOptions.mFailedDrawable = URLDrawableHelperConstants.a;
       paramImageView.setImageDrawable(URLDrawable.getDrawable(paramString.gradeIcon.get(), localURLDrawableOptions));
       paramImageView.setVisibility(0);
       return;
     }
     paramImageView.setVisibility(4);
-  }
-  
-  private void a(SelectMemberActivity paramSelectMemberActivity, List<String> paramList, Map<String, List<TroopMemberInfo>> paramMap)
-  {
-    if ((paramSelectMemberActivity == null) || (paramMap == null)) {}
-    do
-    {
-      return;
-      if (paramList != null) {
-        try
-        {
-          if (!paramList.isEmpty())
-          {
-            paramList = paramMap.keySet().iterator();
-            while (paramList.hasNext()) {
-              Collections.sort((List)paramMap.get((String)paramList.next()), this.jdField_a_of_type_JavaUtilComparator);
-            }
-          }
-          ThreadManagerV2.getUIHandlerV2().post(new QQGameTroopManager.5(this, paramSelectMemberActivity));
-        }
-        catch (Throwable paramSelectMemberActivity)
-        {
-          QLog.e("QQGameTroopManager", 1, paramSelectMemberActivity, new Object[0]);
-          return;
-        }
-      }
-    } while (!a(paramSelectMemberActivity));
-    a(0, 50, a());
-  }
-  
-  public static void a(BaseActivity paramBaseActivity, TroopMemberInfo paramTroopMemberInfo, TextView paramTextView1, ImageView paramImageView, TextView paramTextView2)
-  {
-    if (paramTroopMemberInfo != null)
-    {
-      try
-      {
-        paramTextView1.setVisibility(0);
-        String str = paramBaseActivity.getResources().getString(2131720152);
-        paramTextView1.setText(str);
-        paramImageView.setVisibility(8);
-        sgame_qgroup_datacard.GroupMemberInfo localGroupMemberInfo = (sgame_qgroup_datacard.GroupMemberInfo)jdField_a_of_type_JavaUtilMap.get(paramTroopMemberInfo.memberuin);
-        if (localGroupMemberInfo != null)
-        {
-          if (localGroupMemberInfo.ret.get() != 0) {
-            break label166;
-          }
-          if (!TextUtils.isEmpty(localGroupMemberInfo.gradeName.get())) {
-            break label153;
-          }
-          paramTextView1.setText(str);
-          if (!TextUtils.isEmpty(localGroupMemberInfo.gradeIcon.get()))
-          {
-            paramTextView1 = URLDrawable.URLDrawableOptions.obtain();
-            paramTextView1.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-            paramTextView1.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
-            paramImageView.setImageDrawable(URLDrawable.getDrawable(localGroupMemberInfo.gradeIcon.get(), paramTextView1));
-            paramImageView.setVisibility(0);
-          }
-        }
-        for (;;)
-        {
-          if (jdField_a_of_type_JavaUtilList != null) {
-            break label210;
-          }
-          paramTextView2.setVisibility(8);
-          return;
-          label153:
-          str = localGroupMemberInfo.gradeName.get();
-          break;
-          label166:
-          if (localGroupMemberInfo.ret.get() == 200022) {
-            paramTextView1.setText(paramBaseActivity.getResources().getString(2131720153));
-          }
-        }
-        paramTextView2.setVisibility(0);
-      }
-      catch (Throwable paramBaseActivity)
-      {
-        QLog.e("QQGameTroopManager", 1, paramBaseActivity, new Object[0]);
-        return;
-      }
-      label210:
-      if (jdField_a_of_type_JavaUtilList.contains(paramTroopMemberInfo.memberuin))
-      {
-        paramTextView2.setText(paramBaseActivity.getResources().getString(2131719512));
-        return;
-      }
-      paramTextView2.setText(paramBaseActivity.getResources().getString(2131719511));
-    }
   }
   
   public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
@@ -257,20 +244,19 @@ public class QQGameTroopManager
     try
     {
       localJSONObject.put("groupid", paramString1);
-      localJSONObject.put("roomnum", jdField_a_of_type_Int + "");
+      paramString1 = new StringBuilder();
+      paramString1.append(jdField_a_of_type_Int);
+      paramString1.append("");
+      localJSONObject.put("roomnum", paramString1.toString());
       localJSONObject.put("guestuin", paramString2);
       localJSONObject.put("adtag", paramString3);
-      localHashMap.put(Integer.valueOf(27), localJSONObject.toString());
-      GameCenterUtils.a(CmGameUtil.a(), "1006", "207967", paramString4, "100602", "1", "145", localHashMap);
-      return;
     }
     catch (JSONException paramString1)
     {
-      for (;;)
-      {
-        QLog.e("QQGameTroopManager", 1, paramString1, new Object[0]);
-      }
+      QLog.e("QQGameTroopManager", 1, paramString1, new Object[0]);
     }
+    localHashMap.put(Integer.valueOf(27), localJSONObject.toString());
+    GameCenterUtils.a(((ICmGameHelper)QRoute.api(ICmGameHelper.class)).getAppInterface(), "1006", "207967", paramString4, "100602", "1", "145", localHashMap);
   }
   
   public static void a(String paramString1, ArrayList<ResultRecord> paramArrayList, String paramString2)
@@ -285,22 +271,26 @@ public class QQGameTroopManager
         localJSONObject.put("groupid", paramString1);
         paramString1 = new StringBuilder();
         if (paramArrayList == null) {
-          continue;
+          break label187;
         }
         i = paramArrayList.size();
-        localJSONObject.put("viewnum", i + "");
-        localJSONObject.put("roomnum", jdField_a_of_type_Int + "");
+        paramString1.append(i);
+        paramString1.append("");
+        localJSONObject.put("viewnum", paramString1.toString());
+        paramString1 = new StringBuilder();
+        paramString1.append(jdField_a_of_type_Int);
+        paramString1.append("");
+        localJSONObject.put("roomnum", paramString1.toString());
       }
       catch (JSONException paramString1)
       {
-        int i;
         QLog.e("QQGameTroopManager", 1, paramString1, new Object[0]);
-        continue;
       }
       localHashMap.put(Integer.valueOf(27), localJSONObject.toString());
-      GameCenterUtils.a(CmGameUtil.a(), "1006", "207968", paramString2, "100602", "1", "145", localHashMap);
+      GameCenterUtils.a(((ICmGameHelper)QRoute.api(ICmGameHelper.class)).getAppInterface(), "1006", "207968", paramString2, "100602", "1", "145", localHashMap);
       return;
-      i = 0;
+      label187:
+      int i = 0;
     }
   }
   
@@ -322,54 +312,67 @@ public class QQGameTroopManager
   
   private void a(List<Long> paramList, String paramString, WadlTrpcListener paramWadlTrpcListener)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("QQGameTroopManager", 2, "doReqGameMemberInfo...friendsUinList size:" + paramList.size() + ",troopUin：" + paramString);
-    }
-    try
+    if (paramList != null)
     {
-      sgame_qgroup_datacard.QueryGroupMemberInfoReq localQueryGroupMemberInfoReq = new sgame_qgroup_datacard.QueryGroupMemberInfoReq();
-      localQueryGroupMemberInfoReq.groupId.set(Long.parseLong(paramString));
-      localQueryGroupMemberInfoReq.uinList.set(paramList);
-      paramList = ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).createTrpcInvokeReq("/v1/14", false, localQueryGroupMemberInfoReq.toByteArray());
-      paramString = new TrpcProxy.TrpcListReq();
-      paramString.list.add(paramList);
-      ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).addListener(paramWadlTrpcListener);
-      ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).requestTrpc(paramString, null);
-      return;
-    }
-    catch (Throwable paramList)
-    {
-      QLog.e("QQGameTroopManager", 1, paramList, new Object[0]);
+      if (paramList.size() == 0) {
+        return;
+      }
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("doReqGameMemberInfo...friendsUinList size:");
+        ((StringBuilder)localObject).append(paramList.size());
+        ((StringBuilder)localObject).append(",troopUin：");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.i("QQGameTroopManager", 2, ((StringBuilder)localObject).toString());
+      }
+      try
+      {
+        localObject = new sgame_qgroup_datacard.QueryGroupMemberInfoReq();
+        ((sgame_qgroup_datacard.QueryGroupMemberInfoReq)localObject).groupId.set(Long.parseLong(paramString));
+        ((sgame_qgroup_datacard.QueryGroupMemberInfoReq)localObject).uinList.set(paramList);
+        paramList = ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).createTrpcInvokeReq("/v1/14", false, ((sgame_qgroup_datacard.QueryGroupMemberInfoReq)localObject).toByteArray());
+        paramString = new TrpcProxy.TrpcListReq();
+        paramString.list.add(paramList);
+        ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).addListener(paramWadlTrpcListener);
+        ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).requestTrpc(paramString, null);
+        return;
+      }
+      catch (Throwable paramList)
+      {
+        QLog.e("QQGameTroopManager", 1, paramList, new Object[0]);
+      }
     }
   }
   
-  public static boolean a(SelectMemberActivity paramSelectMemberActivity)
+  public static boolean a(Activity paramActivity)
   {
-    boolean bool = true;
-    if (paramSelectMemberActivity == null) {
+    boolean bool = false;
+    if (paramActivity == null) {
       return false;
     }
-    if ((paramSelectMemberActivity.getIntent().getIntExtra("game_req_info_flag", 0) & 0x1) == 1) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
+    if ((paramActivity.getIntent().getIntExtra("game_req_info_flag", 0) & 0x1) == 1) {
+      bool = true;
     }
+    return bool;
   }
   
-  public static boolean b(SelectMemberActivity paramSelectMemberActivity)
+  public static boolean b(Activity paramActivity)
   {
-    boolean bool = true;
-    if ((paramSelectMemberActivity == null) || (paramSelectMemberActivity.app == null)) {
-      bool = false;
+    boolean bool2 = false;
+    if (paramActivity == null) {
+      return false;
     }
-    while ((paramSelectMemberActivity.getIntent().getIntExtra("param_entrance", 0) == 43) && (paramSelectMemberActivity.getIntent().getIntExtra("GAME_H5_SELECT_BUSINESS_TYPE", 0) == 1)) {
-      return bool;
+    boolean bool1 = bool2;
+    if (paramActivity.getIntent().getIntExtra("param_entrance", 0) == 43)
+    {
+      bool1 = bool2;
+      if (paramActivity.getIntent().getIntExtra("GAME_H5_SELECT_BUSINESS_TYPE", 0) == 1) {
+        bool1 = true;
+      }
     }
-    return false;
+    return bool1;
   }
   
   public void a()
@@ -379,48 +382,60 @@ public class QQGameTroopManager
     jdField_a_of_type_JavaUtilSet.add("online");
   }
   
-  public void a(int paramInt1, int paramInt2, SelectMemberActivity paramSelectMemberActivity)
+  public void a(int paramInt1, int paramInt2, Activity paramActivity)
   {
-    int j = 0;
-    if (paramSelectMemberActivity != null)
+    ArrayList localArrayList;
+    int i;
+    if (paramActivity != null)
     {
-      ArrayList localArrayList = new ArrayList();
-      int i;
+      localArrayList = new ArrayList();
+      i = 0;
       for (;;)
       {
         try
         {
-          localCharDividedFacePreloadBaseAdapter = paramSelectMemberActivity.a();
-          i = paramInt2;
-          if (paramInt1 == 0) {
+          CharDividedFacePreloadBaseAdapter localCharDividedFacePreloadBaseAdapter = ((ISelectMemberApi)QRoute.api(ISelectMemberApi.class)).getMemberListAdapter(paramActivity);
+          int j = paramInt2;
+          if (paramInt1 == 0)
+          {
             i = localCharDividedFacePreloadBaseAdapter.getCount();
+            try
+            {
+              j = Math.min(paramInt2, i - 1);
+            }
+            catch (Throwable localThrowable1)
+            {
+              continue;
+            }
           }
-        }
-        catch (Throwable localThrowable1)
-        {
-          CharDividedFacePreloadBaseAdapter localCharDividedFacePreloadBaseAdapter;
-          int k;
-          TroopMemberInfo localTroopMemberInfo;
-          i = 0;
-        }
-        try
-        {
-          j = Math.min(paramInt2, i - 1);
-          paramInt2 = j;
-          j = i;
-          i = paramInt2;
           k = paramInt1;
-          m = j;
-          paramInt2 = i;
-          if (k > i) {}
+          m = i;
+          paramInt2 = j;
+          if (k > j) {}
         }
         catch (Throwable localThrowable2)
         {
-          break label143;
+          int k;
+          TroopMemberInfo localTroopMemberInfo;
+          i = 0;
+          QLog.e("QQGameTroopManager", 1, localThrowable2, new Object[0]);
+          int m = i;
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("reqGameInfoByPosition,firstPosition:");
+            localStringBuilder.append(paramInt1);
+            localStringBuilder.append(",lastPosition:");
+            localStringBuilder.append(paramInt2);
+            localStringBuilder.append(",itemCount：");
+            localStringBuilder.append(m);
+            QLog.i("QQGameTroopManager", 2, localStringBuilder.toString());
+          }
+          a(localArrayList, paramActivity.getIntent().getStringExtra("group_uin"), this.jdField_b_of_type_ComTencentGamecenterWadlBizListenerWadlTrpcListener);
         }
         try
         {
-          localTroopMemberInfo = (TroopMemberInfo)localCharDividedFacePreloadBaseAdapter.getItem(k);
+          localTroopMemberInfo = (TroopMemberInfo)localThrowable1.getItem(k);
           if (localTroopMemberInfo != null)
           {
             long l = Long.parseLong(localTroopMemberInfo.memberuin);
@@ -435,46 +450,40 @@ public class QQGameTroopManager
         }
         k += 1;
       }
-      label143:
-      QLog.e("QQGameTroopManager", 1, localThrowable1, new Object[0]);
-      int m = i;
-      if (QLog.isColorLevel()) {
-        QLog.i("QQGameTroopManager", 2, "reqGameInfoByPosition,firstPosition:" + paramInt1 + ",lastPosition:" + paramInt2 + ",itemCount：" + m);
-      }
-      a(localArrayList, paramSelectMemberActivity.getIntent().getStringExtra("group_uin"), this.jdField_b_of_type_ComTencentGamecenterWadlBizListenerWadlTrpcListener);
     }
   }
   
-  public void a(SelectMemberActivity paramSelectMemberActivity, List<ResultRecord> paramList, int paramInt, String paramString1, String paramString2)
+  public void a(Activity paramActivity, List<ResultRecord> paramList, int paramInt, String paramString1, String paramString2)
   {
-    a(paramSelectMemberActivity);
-    String str;
+    a((QBaseActivity)paramActivity);
     if ((paramInt == 3) || (paramInt == 2))
     {
-      if (paramInt == 3)
-      {
+      String str;
+      if (paramInt == 3) {
         str = "1";
-        a(paramString2, paramString1, str, paramSelectMemberActivity.getIntent().getStringExtra("GAME_H5_SELECT_GAME_APPID"));
-      }
-    }
-    else {
-      if (a(paramSelectMemberActivity)) {
-        break label59;
-      }
-    }
-    label59:
-    do
-    {
-      do
-      {
-        return;
+      } else {
         str = "2";
-        break;
-      } while ((paramList == null) || (paramList.size() == 0));
-      if (QLog.isColorLevel()) {
-        QLog.i("QQGameTroopManager", 2, "onSearchBarDone,recordsSize：" + paramList.size() + ",searchType:" + paramInt);
       }
-      paramSelectMemberActivity = new ArrayList();
+      a(paramString2, paramString1, str, paramActivity.getIntent().getStringExtra("GAME_H5_SELECT_GAME_APPID"));
+    }
+    if (!a(paramActivity)) {
+      return;
+    }
+    if (paramList != null)
+    {
+      if (paramList.size() == 0) {
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        paramActivity = new StringBuilder();
+        paramActivity.append("onSearchBarDone,recordsSize：");
+        paramActivity.append(paramList.size());
+        paramActivity.append(",searchType:");
+        paramActivity.append(paramInt);
+        QLog.i("QQGameTroopManager", 2, paramActivity.toString());
+      }
+      paramActivity = new ArrayList();
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
@@ -483,7 +492,7 @@ public class QQGameTroopManager
           try
           {
             if (!jdField_a_of_type_JavaUtilMap.containsKey(paramString1.uin)) {
-              paramSelectMemberActivity.add(Long.valueOf(Long.parseLong(paramString1.uin)));
+              paramActivity.add(Long.valueOf(Long.parseLong(paramString1.uin)));
             }
           }
           catch (Throwable paramString1)
@@ -492,80 +501,91 @@ public class QQGameTroopManager
           }
         }
       }
-    } while (paramSelectMemberActivity.size() == 0);
-    if (paramInt == 3) {}
-    for (paramInt = 500;; paramInt = 100)
-    {
+      if (paramActivity.size() == 0) {
+        return;
+      }
+      if (paramInt == 3) {
+        paramInt = 500;
+      } else {
+        paramInt = 100;
+      }
       ThreadManager.getSubThreadHandler().removeCallbacksAndMessages("reqGameInfo");
-      ThreadManager.getSubThreadHandler().postAtTime(new QQGameTroopManager.4(this, paramSelectMemberActivity, paramString2), "reqGameInfo", SystemClock.uptimeMillis() + paramInt);
-      return;
+      ThreadManager.getSubThreadHandler().postAtTime(new QQGameTroopManager.4(this, paramActivity, paramString2), "reqGameInfo", SystemClock.uptimeMillis() + paramInt);
     }
   }
   
-  public void a(BaseActivity paramBaseActivity)
+  public void a(QBaseActivity paramQBaseActivity)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramBaseActivity);
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramQBaseActivity);
   }
   
-  public void a(PinnedDividerListView paramPinnedDividerListView, SelectMemberActivity paramSelectMemberActivity)
+  public void a(PinnedDividerListView paramPinnedDividerListView, Activity paramActivity)
   {
     if (paramPinnedDividerListView != null) {
-      a(paramPinnedDividerListView.getFirstVisiblePosition(), paramPinnedDividerListView.getLastVisiblePosition(), paramSelectMemberActivity);
+      a(paramPinnedDividerListView.getFirstVisiblePosition(), paramPinnedDividerListView.getLastVisiblePosition(), paramActivity);
     }
   }
   
   public void a(String paramString)
   {
     jdField_a_of_type_JavaUtilSet.remove(paramString);
-    SelectMemberActivity localSelectMemberActivity;
+    Object localObject;
     if (jdField_a_of_type_JavaUtilSet.size() == 0)
     {
-      localSelectMemberActivity = a();
-      if (localSelectMemberActivity != null)
+      localObject = a();
+      if (localObject != null)
       {
-        localMap = localSelectMemberActivity.a();
-        if ((localMap != null) && (localMap.size() != 0)) {}
+        Map localMap = ((ISelectMemberApi)QRoute.api(ISelectMemberApi.class)).getIndexedFriends((Activity)localObject);
+        if (localMap != null)
+        {
+          if (localMap.size() == 0) {
+            return;
+          }
+          a((Activity)localObject, jdField_a_of_type_JavaUtilList, localMap);
+        }
+        else
+        {
+          return;
+        }
       }
     }
-    while (!QLog.isColorLevel())
+    if (QLog.isColorLevel())
     {
-      Map localMap;
-      return;
-      a(localSelectMemberActivity, jdField_a_of_type_JavaUtilList, localMap);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("checkNeedSortAndPreload,sTaskSet:");
+      ((StringBuilder)localObject).append(jdField_a_of_type_JavaUtilSet.toString());
+      ((StringBuilder)localObject).append(",taskName:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("QQGameTroopManager", 2, ((StringBuilder)localObject).toString());
     }
-    QLog.i("QQGameTroopManager", 2, "checkNeedSortAndPreload,sTaskSet:" + jdField_a_of_type_JavaUtilSet.toString() + ",taskName:" + paramString);
   }
   
-  public void a(String paramString, SelectMemberActivity paramSelectMemberActivity)
-  {
-    if ((paramSelectMemberActivity == null) || (paramSelectMemberActivity.app == null)) {
-      return;
-    }
-    ((TroopHandler)paramSelectMemberActivity.app.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).t(paramString);
-  }
-  
-  public void a(String paramString, BaseActivity paramBaseActivity)
+  public void a(String paramString, QBaseActivity paramQBaseActivity)
   {
     try
     {
-      a(paramBaseActivity);
+      a(paramQBaseActivity);
       String str = paramString;
       if (TextUtils.isEmpty(paramString)) {
-        str = paramBaseActivity.getIntent().getStringExtra("group_uin");
+        str = paramQBaseActivity.getIntent().getStringExtra("group_uin");
       }
       jdField_b_of_type_JavaUtilList.clear();
       paramString = new QQGameMemberSelectInfo.QueryOldFriendsReq();
       paramString.groupCode.set(Long.parseLong(str));
       paramString = ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).createTrpcInvokeReq("/v1/12", false, paramString.toByteArray());
-      paramBaseActivity = new TrpcProxy.TrpcListReq();
-      paramBaseActivity.list.add(paramString);
+      paramQBaseActivity = new TrpcProxy.TrpcListReq();
+      paramQBaseActivity.list.add(paramString);
       ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).addListener(this.jdField_a_of_type_ComTencentGamecenterWadlBizListenerWadlTrpcListener);
       this.jdField_a_of_type_Long = System.currentTimeMillis();
-      ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).requestTrpc(paramBaseActivity, null);
-      if (QLog.isColorLevel()) {
-        QLog.i("QQGameTroopManager", 2, "doReqGameFriends...troopUin:" + str);
+      ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).requestTrpc(paramQBaseActivity, null);
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("doReqGameFriends...troopUin:");
+        paramString.append(str);
+        QLog.i("QQGameTroopManager", 2, paramString.toString());
+        return;
       }
-      return;
     }
     catch (Throwable paramString)
     {
@@ -585,18 +605,17 @@ public class QQGameTroopManager
     try
     {
       localJSONObject.put("groupid", paramString1);
-      localJSONObject.put("roomnum", jdField_a_of_type_Int + "");
-      localHashMap.put(Integer.valueOf(27), localJSONObject.toString());
-      GameCenterUtils.a(CmGameUtil.a(), "1006", "207851", paramString2, "100602", "1", "145", localHashMap);
-      return;
+      paramString1 = new StringBuilder();
+      paramString1.append(jdField_a_of_type_Int);
+      paramString1.append("");
+      localJSONObject.put("roomnum", paramString1.toString());
     }
     catch (JSONException paramString1)
     {
-      for (;;)
-      {
-        QLog.e("QQGameTroopManager", 1, paramString1, new Object[0]);
-      }
+      QLog.e("QQGameTroopManager", 1, paramString1, new Object[0]);
     }
+    localHashMap.put(Integer.valueOf(27), localJSONObject.toString());
+    GameCenterUtils.a(((ICmGameHelper)QRoute.api(ICmGameHelper.class)).getAppInterface(), "1006", "207851", paramString2, "100602", "1", "145", localHashMap);
   }
   
   public void a(List<String> paramList)
@@ -611,152 +630,206 @@ public class QQGameTroopManager
   {
     for (;;)
     {
-      Map localMap;
-      List localList1;
-      List localList2;
-      Object localObject1;
-      Object localObject2;
       try
       {
         if (a() == null) {
           return;
         }
-        SelectMemberActivity localSelectMemberActivity = a();
-        localMap = localSelectMemberActivity.a();
-        if ((localMap == null) || (localMap.size() == 0)) {
-          break label655;
-        }
-        jdField_a_of_type_Int = 0;
-        localList1 = Collections.synchronizedList(new ArrayList());
-        localList2 = Collections.synchronizedList(new ArrayList());
-        localObject1 = localMap.keySet().iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          break label220;
-        }
-        localObject2 = (List)localMap.get((String)((Iterator)localObject1).next());
-        if (localObject2 == null) {
-          continue;
-        }
-        localObject2 = ((List)localObject2).iterator();
-      }
-      catch (Throwable localThrowable)
-      {
-        try
+        localObject1 = a();
+        localObject3 = ((ISelectMemberApi)QRoute.api(ISelectMemberApi.class)).getIndexedFriends((Activity)localObject1);
+        if ((localObject3 != null) && (((Map)localObject3).size() != 0))
         {
-          if ((jdField_b_of_type_JavaUtilList != null) && (jdField_b_of_type_JavaUtilList.contains(Long.valueOf(Long.parseLong(((TroopMemberInfo)localObject3).memberuin)))))
+          jdField_a_of_type_Int = 0;
+          localObject2 = Collections.synchronizedList(new ArrayList());
+          localList = Collections.synchronizedList(new ArrayList());
+          localObject4 = ((Map)localObject3).keySet().iterator();
+          if (((Iterator)localObject4).hasNext())
           {
-            localList2.add(localObject3);
-            continue;
+            localObject5 = (List)((Map)localObject3).get((String)((Iterator)localObject4).next());
+            if (localObject5 == null) {
+              continue;
+            }
+            localObject5 = ((List)localObject5).iterator();
+            if (!((Iterator)localObject5).hasNext()) {
+              continue;
+            }
+            localObject6 = (TroopMemberInfo)((Iterator)localObject5).next();
+            if (localObject6 == null) {
+              continue;
+            }
           }
-          localList1.add(localObject3);
         }
-        catch (Exception localException) {}
-        localThrowable = localThrowable;
-        QLog.e("QQGameTroopManager", 1, localThrowable, new Object[0]);
+      }
+      catch (Throwable localThrowable2)
+      {
+        Object localObject1;
+        Object localObject3;
+        Object localObject2;
+        List localList;
+        Object localObject4;
+        Object localObject5;
+        Object localObject6;
+        int j;
+        int i;
+        QLog.e("QQGameTroopManager", 1, localThrowable2, new Object[0]);
         return;
       }
-      if (((Iterator)localObject2).hasNext())
+      try
       {
-        Object localObject3 = (TroopMemberInfo)((Iterator)localObject2).next();
-        if (localObject3 != null)
+        if ((jdField_b_of_type_JavaUtilList != null) && (jdField_b_of_type_JavaUtilList.contains(Long.valueOf(Long.parseLong(((TroopMemberInfo)localObject6).memberuin)))))
         {
-          label220:
-          jdField_a_of_type_Int = localList2.size() + localList1.size();
-          localMap = Collections.synchronizedMap(new LinkedHashMap());
-          if (localList2.size() > 0) {
-            localMap.put(localThrowable.getResources().getString(2131720146), localList2);
-          }
-          if (localList1.size() > 0)
-          {
-            if (localList2.size() <= 0) {
-              break label355;
-            }
-            localMap.put(localThrowable.getResources().getString(2131720156), localList1);
-          }
-          int j;
-          for (;;)
-          {
-            j = localMap.keySet().size();
-            if (j != 0) {
-              break;
-            }
-            if (!QLog.isColorLevel()) {
-              break label655;
-            }
-            QLog.e("QQGameTroopManager", 2, "groupSize=0");
-            return;
-            label355:
-            localMap.put(localThrowable.getResources().getString(2131720150), localList1);
-          }
-          localObject3 = localMap.keySet().iterator();
-          localObject1 = new int[j];
-          localObject2 = new String[j];
-          localObject1[0] = 0;
-          int i = 1;
-          while (i < localObject1.length)
-          {
-            int k = localObject1[i];
-            int m = localObject1[(i - 1)];
-            localObject1[i] = (((List)localMap.get(((Iterator)localObject3).next())).size() + m + 1 + k);
-            i += 1;
-          }
-          localObject3 = localMap.keySet().iterator();
-          i = 0;
-          while (((Iterator)localObject3).hasNext())
-          {
-            localObject2[i] = ((String)((Iterator)localObject3).next());
-            i += 1;
-          }
+          localList.add(localObject6);
+          continue;
+        }
+        ((List)localObject2).add(localObject6);
+      }
+      catch (Exception localException) {}
+      jdField_a_of_type_Int = localList.size() + ((List)localObject2).size();
+      localObject3 = Collections.synchronizedMap(new LinkedHashMap());
+      if (localList.size() > 0) {
+        ((Map)localObject3).put(((Activity)localObject1).getResources().getString(2131719879), localList);
+      }
+      if (((List)localObject2).size() > 0) {
+        if (localList.size() > 0) {
+          ((Map)localObject3).put(((Activity)localObject1).getResources().getString(2131719889), localObject2);
+        } else {
+          ((Map)localObject3).put(((Activity)localObject1).getResources().getString(2131719883), localObject2);
+        }
+      }
+      j = ((Map)localObject3).keySet().size();
+      if (j == 0)
+      {
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.e("QQGameTroopManager", 2, "groupSize=0");
+        return;
+      }
+      localObject6 = ((Map)localObject3).keySet().iterator();
+      localObject4 = new int[j];
+      localObject5 = new String[j];
+      localObject4[0] = 0;
+      i = 1;
+      if (i < localObject4.length)
+      {
+        localObject4[i] += localObject4[(i - 1)] + ((List)((Map)localObject3).get(((Iterator)localObject6).next())).size() + 1;
+        i += 1;
+      }
+      else
+      {
+        localObject6 = ((Map)localObject3).keySet().iterator();
+        i = 0;
+        if (((Iterator)localObject6).hasNext())
+        {
+          localObject5[i] = ((String)((Iterator)localObject6).next());
+          i += 1;
+        }
+        else
+        {
           if (Looper.getMainLooper() == Looper.myLooper()) {
-            localThrowable.a(localMap, (int[])localObject1, (String[])localObject2);
+            ((ISelectMemberApi)QRoute.api(ISelectMemberApi.class)).updateGameData((Activity)localObject1, (Map)localObject3, (int[])localObject4, (String[])localObject5);
+          } else {
+            ThreadManagerV2.getUIHandlerV2().post(new QQGameTroopManager.1(this, (Activity)localObject1, (Map)localObject3, (int[])localObject4, (String[])localObject5));
           }
-          for (;;)
+          if (QLog.isColorLevel())
           {
-            if (QLog.isColorLevel()) {
-              QLog.i("QQGameTroopManager", 2, "handleGameClockData...gameFriendList:" + localList2.size() + ",otherMemberList:" + localList1.size() + ",groupSize:" + j);
-            }
-            a(localThrowable.getIntent().getStringExtra("group_uin"), localThrowable.getIntent().getStringExtra("GAME_H5_SELECT_GAME_APPID"));
-            return;
-            ThreadManagerV2.getUIHandlerV2().post(new QQGameTroopManager.1(this, localThrowable, localMap, (int[])localObject1, (String[])localObject2));
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("handleGameClockData...gameFriendList:");
+            ((StringBuilder)localObject3).append(localList.size());
+            ((StringBuilder)localObject3).append(",otherMemberList:");
+            ((StringBuilder)localObject3).append(((List)localObject2).size());
+            ((StringBuilder)localObject3).append(",groupSize:");
+            ((StringBuilder)localObject3).append(j);
+            QLog.i("QQGameTroopManager", 2, ((StringBuilder)localObject3).toString());
           }
-          label655:
+          localObject2 = ((Activity)localObject1).getIntent().getStringExtra("group_uin");
+          localObject1 = ((Activity)localObject1).getIntent().getStringExtra("GAME_H5_SELECT_GAME_APPID");
+          try
+          {
+            a((String)localObject2, (String)localObject1);
+            return;
+          }
+          catch (Throwable localThrowable1) {}
           return;
         }
       }
     }
   }
   
+  /* Error */
   public void onDestroy()
   {
-    try
-    {
-      ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).removeListener(this.jdField_a_of_type_ComTencentGamecenterWadlBizListenerWadlTrpcListener);
-      ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).removeListener(this.jdField_b_of_type_ComTencentGamecenterWadlBizListenerWadlTrpcListener);
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_MqqUtilWeakReference = null;
-      jdField_a_of_type_JavaUtilMap.clear();
-      jdField_a_of_type_JavaUtilList = null;
-      jdField_b_of_type_JavaUtilList.clear();
-      jdField_a_of_type_JavaUtilSet.clear();
-      jdField_a_of_type_Int = 0;
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("QQGameTroopManager", 1, localThrowable, new Object[0]);
-      return;
-    }
-    finally
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QQGameTroopManager", 1, "onDestroy");
-      }
-    }
+    // Byte code:
+    //   0: ldc_w 434
+    //   3: invokestatic 154	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   6: checkcast 434	com/tencent/gamecenter/wadl/api/IQQGameTrpcService
+    //   9: aload_0
+    //   10: getfield 66	com/tencent/mobileqq/gamecenter/util/QQGameTroopManager:jdField_a_of_type_ComTencentGamecenterWadlBizListenerWadlTrpcListener	Lcom/tencent/gamecenter/wadl/biz/listener/WadlTrpcListener;
+    //   13: invokeinterface 667 2 0
+    //   18: ldc_w 434
+    //   21: invokestatic 154	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   24: checkcast 434	com/tencent/gamecenter/wadl/api/IQQGameTrpcService
+    //   27: aload_0
+    //   28: getfield 71	com/tencent/mobileqq/gamecenter/util/QQGameTroopManager:jdField_b_of_type_ComTencentGamecenterWadlBizListenerWadlTrpcListener	Lcom/tencent/gamecenter/wadl/biz/listener/WadlTrpcListener;
+    //   31: invokeinterface 667 2 0
+    //   36: aload_0
+    //   37: iconst_0
+    //   38: putfield 78	com/tencent/mobileqq/gamecenter/util/QQGameTroopManager:jdField_a_of_type_Boolean	Z
+    //   41: aload_0
+    //   42: aconst_null
+    //   43: putfield 84	com/tencent/mobileqq/gamecenter/util/QQGameTroopManager:jdField_a_of_type_MqqUtilWeakReference	Lmqq/util/WeakReference;
+    //   46: getstatic 47	com/tencent/mobileqq/gamecenter/util/QQGameTroopManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   49: invokeinterface 668 1 0
+    //   54: aconst_null
+    //   55: putstatic 282	com/tencent/mobileqq/gamecenter/util/QQGameTroopManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   58: getstatic 38	com/tencent/mobileqq/gamecenter/util/QQGameTroopManager:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   61: invokeinterface 607 1 0
+    //   66: getstatic 56	com/tencent/mobileqq/gamecenter/util/QQGameTroopManager:jdField_a_of_type_JavaUtilSet	Ljava/util/Set;
+    //   69: invokeinterface 669 1 0
+    //   74: iconst_0
+    //   75: putstatic 356	com/tencent/mobileqq/gamecenter/util/QQGameTroopManager:jdField_a_of_type_Int	I
+    //   78: invokestatic 396	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   81: ifeq +37 -> 118
+    //   84: goto +25 -> 109
+    //   87: astore_1
+    //   88: goto +31 -> 119
+    //   91: astore_1
+    //   92: ldc 175
+    //   94: iconst_1
+    //   95: aload_1
+    //   96: iconst_0
+    //   97: anewarray 4	java/lang/Object
+    //   100: invokestatic 181	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   103: invokestatic 396	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   106: ifeq +12 -> 118
+    //   109: ldc 175
+    //   111: iconst_1
+    //   112: ldc_w 670
+    //   115: invokestatic 404	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   118: return
+    //   119: invokestatic 396	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   122: ifeq +12 -> 134
+    //   125: ldc 175
+    //   127: iconst_1
+    //   128: ldc_w 670
+    //   131: invokestatic 404	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   134: aload_1
+    //   135: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	136	0	this	QQGameTroopManager
+    //   87	1	1	localObject	Object
+    //   91	44	1	localThrowable	Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   0	78	87	finally
+    //   92	103	87	finally
+    //   0	78	91	java/lang/Throwable
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.util.QQGameTroopManager
  * JD-Core Version:    0.7.0.1
  */

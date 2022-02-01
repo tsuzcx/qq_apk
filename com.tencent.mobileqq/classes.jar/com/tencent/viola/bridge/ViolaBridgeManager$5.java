@@ -16,17 +16,18 @@ class ViolaBridgeManager$5
     String str2 = this.val$instanceId;
     byte[] arrayOfByte = this.val$template.getBytes();
     int i = this.val$template.getBytes().length;
-    if (TextUtils.isEmpty(this.val$data)) {}
-    for (String str1 = "";; str1 = this.val$data)
-    {
-      localViolaBridge.createInstance(str2, arrayOfByte, i, str1, "");
-      return;
+    String str1;
+    if (TextUtils.isEmpty(this.val$data)) {
+      str1 = "";
+    } else {
+      str1 = this.val$data;
     }
+    localViolaBridge.createInstance(str2, arrayOfByte, i, str1, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.bridge.ViolaBridgeManager.5
  * JD-Core Version:    0.7.0.1
  */

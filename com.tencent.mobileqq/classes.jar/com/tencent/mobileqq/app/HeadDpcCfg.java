@@ -22,43 +22,45 @@ public class HeadDpcCfg
   
   public static HeadDpcCfg a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqAppHeadDpcCfg == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqAppHeadDpcCfg == null) {
-        jdField_a_of_type_ComTencentMobileqqAppHeadDpcCfg = new HeadDpcCfg();
+    if (jdField_a_of_type_ComTencentMobileqqAppHeadDpcCfg == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqAppHeadDpcCfg == null) {
+          jdField_a_of_type_ComTencentMobileqqAppHeadDpcCfg = new HeadDpcCfg();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqAppHeadDpcCfg;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqAppHeadDpcCfg;
   }
   
   public void a()
   {
     String str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValueWithoutAccountManager(jdField_a_of_type_JavaLangString);
-    String[] arrayOfString;
     if (!TextUtils.isEmpty(str))
     {
-      arrayOfString = str.split("\\|");
-      if (arrayOfString.length < 1) {}
-    }
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[0]).intValue();
-        if (QLog.isColorLevel()) {
-          QLog.d("HeadDpcCfg", 2, String.format("loadConfig, mDualStackPrefIpv6: %s, dpc=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), str }));
+      String[] arrayOfString = str.split("\\|");
+      if (arrayOfString.length >= 1) {
+        try
+        {
+          this.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[0]).intValue();
         }
-        return;
+        catch (Exception localException)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("loadConfig exception :");
+          localStringBuilder.append(localException.getMessage());
+          QLog.d("HeadDpcCfg", 1, localStringBuilder.toString());
+          this.jdField_a_of_type_Int = 1;
+        }
       }
-      catch (Exception localException)
-      {
-        QLog.d("HeadDpcCfg", 1, "loadConfig exception :" + localException.getMessage());
-        this.jdField_a_of_type_Int = 1;
-        continue;
-      }
+    }
+    else
+    {
       this.jdField_a_of_type_Int = 1;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("HeadDpcCfg", 2, String.format("loadConfig, mDualStackPrefIpv6: %s, dpc=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), str }));
     }
   }
   
@@ -70,7 +72,7 @@ public class HeadDpcCfg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.HeadDpcCfg
  * JD-Core Version:    0.7.0.1
  */

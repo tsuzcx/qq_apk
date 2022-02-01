@@ -2,7 +2,7 @@ package com.tencent.mobileqq.filemanager.activity.adapter;
 
 import com.tencent.biz.qrcode.CustomAccessibilityDelegate.CallBack;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.util.QQTextToSpeechHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ExpandableListView;
 
@@ -16,10 +16,16 @@ class QfileBaseExpandableListAdapter$2
     String str = (String)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getGroup(this.jdField_a_of_type_Int);
     if (QfileBaseExpandableListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter).isGroupExpanded(this.jdField_a_of_type_Int))
     {
-      QQAppInterface.speak(str + HardCodeUtil.a(2131709600));
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(HardCodeUtil.a(2131698204));
+      QQTextToSpeechHelper.a(localStringBuilder.toString());
       return;
     }
-    QQAppInterface.speak(str + HardCodeUtil.a(2131709580));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append(HardCodeUtil.a(2131698203));
+    QQTextToSpeechHelper.a(localStringBuilder.toString());
   }
   
   public void b()
@@ -29,7 +35,7 @@ class QfileBaseExpandableListAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter.2
  * JD-Core Version:    0.7.0.1
  */

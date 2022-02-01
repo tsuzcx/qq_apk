@@ -36,12 +36,13 @@ import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.face.FaceDrawable;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.screendetect.ScreenShotHelper;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vas.apng.api.VasApngFactory;
-import com.tencent.mobileqq.vas.apng.api.VasApngFactory.Options;
+import com.tencent.mobileqq.vas.apng.api.ApngOptions;
+import com.tencent.mobileqq.vas.apng.api.IVasApngFactory;
 import com.tencent.mobileqq.widget.RoundImageView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -69,9 +70,8 @@ public class HBEntryShareActivity
   private StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
   {
     StateListDrawable localStateListDrawable = new StateListDrawable();
-    int i = -16842919;
     localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
-    localStateListDrawable.addState(new int[] { i }, paramDrawable1);
+    localStateListDrawable.addState(new int[] { -16842919 }, paramDrawable1);
     return localStateListDrawable;
   }
   
@@ -84,103 +84,99 @@ public class HBEntryShareActivity
       finish();
       return null;
     }
-    int k = paramIntent.getIntExtra("all_count", 0);
-    int i = paramIntent.getIntExtra("max_count", 0);
-    int j = paramIntent.getIntExtra("pag_count", 0);
-    if (i < 0) {
+    int m = paramIntent.getIntExtra("all_count", 0);
+    int j = paramIntent.getIntExtra("max_count", 0);
+    int k = paramIntent.getIntExtra("pag_count", 0);
+    int i = j;
+    if (j < 0) {
       i = 0;
     }
-    for (;;)
-    {
-      if (j < 0) {
-        j = 0;
-      }
-      for (;;)
-      {
-        if ((k == 0) || (i == 0))
-        {
-          QLog.d("HBEntryShareActivity", 1, "loadShareLayoutByIntent finish,allCount = " + k + ",maxCount = " + i);
-          finish();
-          return null;
-        }
-        Object localObject1 = (ViewGroup)getWindow().getDecorView().findViewById(16908290);
-        ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(this).inflate(paramInt, (ViewGroup)localObject1, false);
-        localObject1 = (ImageView)localViewGroup.findViewById(2131374698);
-        Object localObject2 = (TextView)localViewGroup.findViewById(2131374699);
-        paramIntent.getStringExtra("header_icon");
-        Object localObject3 = paramIntent.getStringExtra("header_name");
-        String str = paramIntent.getStringExtra("header_text");
-        if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (!TextUtils.isEmpty((CharSequence)localObject3)) && (!TextUtils.isEmpty(str)))
-        {
-          ((ImageView)localObject1).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-          ((TextView)localObject2).setText(String.format("%s%s", new Object[] { localObject3, str }));
-          localObject1 = FaceDrawable.getDefaultDrawable(1, 3);
-          localObject1 = FaceDrawable.getFaceDrawable(this.app, 1, this.app.getCurrentAccountUin(), 3, (Drawable)localObject1, (Drawable)localObject1, null);
-          ((ImageView)localViewGroup.findViewById(2131374705)).setImageDrawable((Drawable)localObject1);
-          ((TextView)localViewGroup.findViewById(2131374706)).setText(ContactUtils.i(this.app, this.app.getCurrentUin()));
-          localObject1 = Typeface.createFromAsset(getAssets(), "fonts/HuNan-CC.ttf");
-          localObject2 = (TextView)localViewGroup.findViewById(2131374694);
-          ((TextView)localObject2).setTypeface((Typeface)localObject1);
-          ((TextView)localObject2).setText(String.valueOf(k));
-          localObject3 = (FrameLayout)localViewGroup.findViewById(2131374708);
-          localObject2 = Utils.a(this.app, paramIntent.getStringExtra("background_img2"), ((FrameLayout)localObject3).getWidth(), ((FrameLayout)localObject3).getHeight(), "default_share_bg_fullscreen");
-          localObject1 = localObject2;
-          if (localObject2 == null)
-          {
-            QLog.d("HBEntryShareActivity", 1, "load full bg null");
-            localObject1 = getResources().getDrawable(2130845547);
-          }
-          ((FrameLayout)localObject3).setBackgroundDrawable((Drawable)localObject1);
-          ((TextView)localViewGroup.findViewById(2131374695)).setText(String.format("%s%s%s", new Object[] { getResources().getString(2131699239), Integer.valueOf(i), getResources().getString(2131699237) }));
-          localObject1 = (TextView)localViewGroup.findViewById(2131374696);
-          if (j <= 0) {
-            break label757;
-          }
-          ((TextView)localObject1).setText(String.format("%s%s%s", new Object[] { getResources().getString(2131699241), Integer.valueOf(j), getResources().getString(2131699240) }));
-          ((TextView)localObject1).setVisibility(0);
-          label552:
-          localObject1 = a(getIntent().getStringExtra("middle_img2"), 320, 400);
-          if (localObject1 != null) {
-            break label794;
-          }
-          localObject1 = getResources().getDrawable(2130845546);
-        }
-        label791:
-        label794:
-        for (;;)
-        {
-          ((LinearLayout)localViewGroup.findViewById(2131374691)).setBackgroundDrawable((Drawable)localObject1);
-          localObject1 = (FrameLayout)localViewGroup.findViewById(2131374689);
-          localObject2 = (RoundImageView)localViewGroup.findViewById(2131374688);
-          localObject3 = a(getIntent().getStringExtra("qrcode_code"), 80, 80);
-          if (localObject3 != null)
-          {
-            ((FrameLayout)localObject1).setBackgroundDrawable(getResources().getDrawable(2130845556));
-            ((RoundImageView)localObject2).setImageDrawable((Drawable)localObject3);
-            label680:
-            paramIntent = paramIntent.getStringExtra("bottom_text");
-            if (!TextUtils.isEmpty(paramIntent)) {
-              break label791;
-            }
-            paramIntent = getResources().getString(2131699243);
-          }
-          for (;;)
-          {
-            ((TextView)localViewGroup.findViewById(2131374690)).setText(paramIntent);
-            return localViewGroup;
-            ((ImageView)localObject1).setImageDrawable(getResources().getDrawable(2130845400));
-            ((TextView)localObject2).setText(getResources().getString(2131699228));
-            break;
-            label757:
-            ((TextView)localObject1).setVisibility(8);
-            break label552;
-            ((FrameLayout)localObject1).setBackgroundColor(0);
-            ((RoundImageView)localObject2).setImageDrawable(getResources().getDrawable(2130845400));
-            break label680;
-          }
-        }
-      }
+    j = k;
+    if (k < 0) {
+      j = 0;
     }
+    if ((m != 0) && (i != 0))
+    {
+      Object localObject1 = (ViewGroup)getWindow().getDecorView().findViewById(16908290);
+      ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(this).inflate(paramInt, (ViewGroup)localObject1, false);
+      localObject1 = (ImageView)localViewGroup.findViewById(2131374236);
+      Object localObject2 = (TextView)localViewGroup.findViewById(2131374237);
+      paramIntent.getStringExtra("header_icon");
+      Object localObject3 = paramIntent.getStringExtra("header_name");
+      String str = paramIntent.getStringExtra("header_text");
+      if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (!TextUtils.isEmpty((CharSequence)localObject3)) && (!TextUtils.isEmpty(str)))
+      {
+        ((ImageView)localObject1).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        ((TextView)localObject2).setText(String.format("%s%s", new Object[] { localObject3, str }));
+      }
+      else
+      {
+        ((ImageView)localObject1).setImageDrawable(getResources().getDrawable(2130845273));
+        ((TextView)localObject2).setText(getResources().getString(2131699332));
+      }
+      localObject1 = FaceDrawable.getDefaultDrawable(1, 3);
+      localObject1 = FaceDrawable.getFaceDrawable(this.app, 1, this.app.getCurrentAccountUin(), 3, (Drawable)localObject1, (Drawable)localObject1, null);
+      ((ImageView)localViewGroup.findViewById(2131374243)).setImageDrawable((Drawable)localObject1);
+      ((TextView)localViewGroup.findViewById(2131374244)).setText(ContactUtils.c(this.app, this.app.getCurrentUin()));
+      localObject1 = Typeface.createFromAsset(getAssets(), "fonts/HuNan-CC.ttf");
+      localObject2 = (TextView)localViewGroup.findViewById(2131374232);
+      ((TextView)localObject2).setTypeface((Typeface)localObject1);
+      ((TextView)localObject2).setText(String.valueOf(m));
+      localObject3 = (FrameLayout)localViewGroup.findViewById(2131374246);
+      localObject2 = Utils.a(this.app, paramIntent.getStringExtra("background_img2"), ((FrameLayout)localObject3).getWidth(), ((FrameLayout)localObject3).getHeight(), "default_share_bg_fullscreen");
+      localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        QLog.d("HBEntryShareActivity", 1, "load full bg null");
+        localObject1 = getResources().getDrawable(2130845420);
+      }
+      ((FrameLayout)localObject3).setBackgroundDrawable((Drawable)localObject1);
+      ((TextView)localViewGroup.findViewById(2131374233)).setText(String.format("%s%s%s", new Object[] { getResources().getString(2131699343), Integer.valueOf(i), getResources().getString(2131699341) }));
+      localObject1 = (TextView)localViewGroup.findViewById(2131374234);
+      if (j > 0)
+      {
+        ((TextView)localObject1).setText(String.format("%s%s%s", new Object[] { getResources().getString(2131699345), Integer.valueOf(j), getResources().getString(2131699344) }));
+        ((TextView)localObject1).setVisibility(0);
+      }
+      else
+      {
+        ((TextView)localObject1).setVisibility(8);
+      }
+      localObject2 = a(getIntent().getStringExtra("middle_img2"), 320, 400);
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = getResources().getDrawable(2130845419);
+      }
+      ((LinearLayout)localViewGroup.findViewById(2131374229)).setBackgroundDrawable((Drawable)localObject1);
+      localObject1 = (FrameLayout)localViewGroup.findViewById(2131374227);
+      localObject2 = (RoundImageView)localViewGroup.findViewById(2131374226);
+      localObject3 = a(getIntent().getStringExtra("qrcode_code"), 80, 80);
+      if (localObject3 != null)
+      {
+        ((FrameLayout)localObject1).setBackgroundDrawable(getResources().getDrawable(2130845429));
+        ((RoundImageView)localObject2).setImageDrawable((Drawable)localObject3);
+      }
+      else
+      {
+        ((FrameLayout)localObject1).setBackgroundColor(0);
+        ((RoundImageView)localObject2).setImageDrawable(getResources().getDrawable(2130845273));
+      }
+      localObject1 = paramIntent.getStringExtra("bottom_text");
+      paramIntent = (Intent)localObject1;
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        paramIntent = getResources().getString(2131699347);
+      }
+      ((TextView)localViewGroup.findViewById(2131374228)).setText(paramIntent);
+      return localViewGroup;
+    }
+    paramIntent = new StringBuilder();
+    paramIntent.append("loadShareLayoutByIntent finish,allCount = ");
+    paramIntent.append(m);
+    paramIntent.append(",maxCount = ");
+    paramIntent.append(i);
+    QLog.d("HBEntryShareActivity", 1, paramIntent.toString());
+    finish();
+    return null;
   }
   
   public static String a(View paramView)
@@ -195,36 +191,53 @@ public class HBEntryShareActivity
         paramView.measure(0, 0);
         paramView.layout(0, 0, paramView.getMeasuredWidth(), paramView.getMeasuredHeight());
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("HBEntryShareActivity", 2, "saveView, width:" + paramView.getMeasuredWidth() + ", heiht:" + paramView.getMeasuredHeight());
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("saveView, width:");
+        ((StringBuilder)localObject).append(paramView.getMeasuredWidth());
+        ((StringBuilder)localObject).append(", heiht:");
+        ((StringBuilder)localObject).append(paramView.getMeasuredHeight());
+        QLog.d("HBEntryShareActivity", 2, ((StringBuilder)localObject).toString());
       }
-      Bitmap localBitmap = Bitmap.createBitmap(paramView.getMeasuredWidth(), paramView.getMeasuredHeight(), Bitmap.Config.RGB_565);
-      paramView.draw(new Canvas(localBitmap));
+      localObject = Bitmap.createBitmap(paramView.getMeasuredWidth(), paramView.getMeasuredHeight(), Bitmap.Config.RGB_565);
+      paramView.draw(new Canvas((Bitmap)localObject));
       paramView = String.format("%s/%s.jpg", new Object[] { BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath(), Long.valueOf(System.currentTimeMillis()) });
-      boolean bool = FileUtil.a(localBitmap, paramView);
-      if (QLog.isColorLevel()) {
-        QLog.d("HBEntryShareActivity", 2, "saveView, wrote:" + bool + ", path:" + paramView + ",fileSize = " + FileUtils.a(paramView));
+      boolean bool = FileUtil.a((Bitmap)localObject, paramView);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("saveView, wrote:");
+        localStringBuilder.append(bool);
+        localStringBuilder.append(", path:");
+        localStringBuilder.append(paramView);
+        localStringBuilder.append(",fileSize = ");
+        localStringBuilder.append(FileUtils.getFileSizes(paramView));
+        QLog.d("HBEntryShareActivity", 2, localStringBuilder.toString());
       }
-      localBitmap.recycle();
+      ((Bitmap)localObject).recycle();
       return paramView;
     }
     catch (Throwable paramView)
     {
       SpringHbMonitorReporter.a(404, paramView, new String[0]);
-      QLog.d("HBEntryShareActivity", 1, "saveView2File exception, throwable=" + paramView.getMessage());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("saveView2File exception, throwable=");
+      ((StringBuilder)localObject).append(paramView.getMessage());
+      QLog.d("HBEntryShareActivity", 1, ((StringBuilder)localObject).toString());
     }
     return null;
   }
   
   private void a()
   {
-    if (FileUtil.a(this.jdField_a_of_type_JavaLangString))
+    if (FileUtil.b(this.jdField_a_of_type_JavaLangString))
     {
       ScreenShotHelper.a(this, this.jdField_a_of_type_JavaLangString, true);
       return;
     }
     a(true);
-    ViewGroup localViewGroup = a(getIntent(), 2131561272);
+    ViewGroup localViewGroup = a(getIntent(), 2131561115);
     if (localViewGroup != null) {
       localViewGroup.requestLayout();
     }
@@ -233,43 +246,71 @@ public class HBEntryShareActivity
   
   public static void a(BaseActivity paramBaseActivity, String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, List<String> paramList, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13)
   {
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("startActivity ,activityId = ").append(paramString1).append(",allCnt = ").append(paramInt1).append(",maxCnt = ").append(paramInt2).append(",pagCnt = ").append(paramInt3).append(",headerIcon = ").append(paramString2).append(",headerName = ").append(paramString3).append(",headerText = ").append(paramString4).append(",bg1Url = ").append(paramString5).append(",bg2Url = ").append(paramString6).append(",bottomCode = ").append(paramString7).append(",ticketList = ");
-      if (paramList == null) {
-        break label468;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("startActivity ,activityId = ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(",allCnt = ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(",maxCnt = ");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(",pagCnt = ");
+      localStringBuilder.append(paramInt3);
+      localStringBuilder.append(",headerIcon = ");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(",headerName = ");
+      localStringBuilder.append(paramString3);
+      localStringBuilder.append(",headerText = ");
+      localStringBuilder.append(paramString4);
+      localStringBuilder.append(",bg1Url = ");
+      localStringBuilder.append(paramString5);
+      localStringBuilder.append(",bg2Url = ");
+      localStringBuilder.append(paramString6);
+      localStringBuilder.append(",bottomCode = ");
+      localStringBuilder.append(paramString7);
+      localStringBuilder.append(",ticketList = ");
+      if (paramList != null) {
+        localObject = paramList.toString();
+      } else {
+        localObject = "";
       }
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(",middleImgUrl1 = ");
+      localStringBuilder.append(paramString9);
+      localStringBuilder.append(",middleImgUrl2 = ");
+      localStringBuilder.append(paramString10);
+      localStringBuilder.append(",btnImgUrl1 = ");
+      localStringBuilder.append(paramString11);
+      localStringBuilder.append(",btnImgUrl2 = ");
+      localStringBuilder.append(paramString12);
+      localStringBuilder.append(",btnImgApngUrl = ");
+      localStringBuilder.append(paramString13);
+      QLog.d("HBEntryShareActivity", 2, localStringBuilder.toString());
     }
-    label468:
-    for (Object localObject = paramList.toString();; localObject = "")
-    {
-      QLog.d("HBEntryShareActivity", 2, (String)localObject + ",middleImgUrl1 = " + paramString9 + ",middleImgUrl2 = " + paramString10 + ",btnImgUrl1 = " + paramString11 + ",btnImgUrl2 = " + paramString12 + ",btnImgApngUrl = " + paramString13);
-      localObject = new Intent(paramBaseActivity, HBEntryShareActivity.class);
-      if ((paramList != null) && (!paramList.isEmpty())) {
-        ((Intent)localObject).putExtra("ticket_text", (String)paramList.get(new Random().nextInt(paramList.size())));
-      }
-      ((Intent)localObject).putExtra("all_count", paramInt1);
-      ((Intent)localObject).putExtra("max_count", paramInt2);
-      ((Intent)localObject).putExtra("pag_count", paramInt3);
-      ((Intent)localObject).putExtra("not_share", paramInt4);
-      ((Intent)localObject).putExtra("background_img1", paramString5);
-      ((Intent)localObject).putExtra("background_img2", paramString6);
-      ((Intent)localObject).putExtra("header_icon", paramString2);
-      ((Intent)localObject).putExtra("header_name", paramString3);
-      ((Intent)localObject).putExtra("header_text", paramString4);
-      ((Intent)localObject).putExtra("qrcode_code", paramString7);
-      ((Intent)localObject).putExtra("bottom_text", paramString8);
-      ((Intent)localObject).putExtra("activity_id", paramString1);
-      ((Intent)localObject).putExtra("button_img1", paramString11);
-      ((Intent)localObject).putExtra("button_img2", paramString12);
-      ((Intent)localObject).putExtra("button_img_apng", paramString13);
-      ((Intent)localObject).putExtra("middle_img1", paramString9);
-      ((Intent)localObject).putExtra("middle_img2", paramString10);
-      paramBaseActivity.startActivity((Intent)localObject);
-      paramBaseActivity.overridePendingTransition(2130772315, 2130771992);
-      return;
+    Object localObject = new Intent(paramBaseActivity, HBEntryShareActivity.class);
+    if ((paramList != null) && (!paramList.isEmpty())) {
+      ((Intent)localObject).putExtra("ticket_text", (String)paramList.get(new Random().nextInt(paramList.size())));
     }
+    ((Intent)localObject).putExtra("all_count", paramInt1);
+    ((Intent)localObject).putExtra("max_count", paramInt2);
+    ((Intent)localObject).putExtra("pag_count", paramInt3);
+    ((Intent)localObject).putExtra("not_share", paramInt4);
+    ((Intent)localObject).putExtra("background_img1", paramString5);
+    ((Intent)localObject).putExtra("background_img2", paramString6);
+    ((Intent)localObject).putExtra("header_icon", paramString2);
+    ((Intent)localObject).putExtra("header_name", paramString3);
+    ((Intent)localObject).putExtra("header_text", paramString4);
+    ((Intent)localObject).putExtra("qrcode_code", paramString7);
+    ((Intent)localObject).putExtra("bottom_text", paramString8);
+    ((Intent)localObject).putExtra("activity_id", paramString1);
+    ((Intent)localObject).putExtra("button_img1", paramString11);
+    ((Intent)localObject).putExtra("button_img2", paramString12);
+    ((Intent)localObject).putExtra("button_img_apng", paramString13);
+    ((Intent)localObject).putExtra("middle_img1", paramString9);
+    ((Intent)localObject).putExtra("middle_img2", paramString10);
+    paramBaseActivity.startActivity((Intent)localObject);
+    paramBaseActivity.overridePendingTransition(2130772343, 2130772004);
   }
   
   private void a(String paramString, Map<String, String> paramMap)
@@ -284,13 +325,14 @@ public class HBEntryShareActivity
   
   private void a(boolean paramBoolean)
   {
-    View localView = findViewById(2131374702);
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localView.setVisibility(i);
-      return;
+    View localView = findViewById(2131374240);
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 8;
     }
+    localView.setVisibility(i);
   }
   
   @SuppressLint({"UseCompatLoadingForDrawables"})
@@ -303,139 +345,151 @@ public class HBEntryShareActivity
       return false;
     }
     int m = paramIntent.getIntExtra("all_count", 0);
-    int j = paramIntent.getIntExtra("max_count", 0);
-    int i = paramIntent.getIntExtra("pag_count", 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("HBEntryShareActivity", 2, "allCount=" + m + ", maxCount=" + j + ", pagCount=" + i);
-    }
-    if ((m <= 0) || (j <= 0))
+    int k = paramIntent.getIntExtra("max_count", 0);
+    int j = paramIntent.getIntExtra("pag_count", 0);
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      QLog.d("HBEntryShareActivity", 1, "initViewByIntent finish,allCount = " + m + ",maxCount = " + j);
-      finish();
-      return false;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("allCount=");
+      ((StringBuilder)localObject1).append(m);
+      ((StringBuilder)localObject1).append(", maxCount=");
+      ((StringBuilder)localObject1).append(k);
+      ((StringBuilder)localObject1).append(", pagCount=");
+      ((StringBuilder)localObject1).append(j);
+      QLog.d("HBEntryShareActivity", 2, ((StringBuilder)localObject1).toString());
     }
-    if (i < 0) {
-      i = 0;
-    }
-    for (;;)
+    if ((m > 0) && (k > 0))
     {
-      if (j > m) {
+      int i = j;
+      if (j < 0) {
+        i = 0;
+      }
+      j = k;
+      if (k > m) {
         j = m;
       }
-      for (;;)
+      setContentView(2131561114);
+      findViewById(2131374231).setOnClickListener(this);
+      findViewById(2131374241).setOnClickListener(this);
+      findViewById(2131374240).setVisibility(8);
+      localObject1 = Typeface.createFromAsset(getAssets(), "fonts/HuNan-CC.ttf");
+      Object localObject2 = (TextView)findViewById(2131374232);
+      ((TextView)localObject2).setTypeface((Typeface)localObject1);
+      ((TextView)localObject2).setText(String.valueOf(m));
+      ((TextView)findViewById(2131374233)).setText(String.format("%s%s%s", new Object[] { getResources().getString(2131699343), Integer.valueOf(j), getResources().getString(2131699341) }));
+      localObject2 = paramIntent.getStringExtra("ticket_text");
+      localObject1 = localObject2;
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        localObject1 = getResources().getString(2131699346);
+      }
+      ((TextView)findViewById(2131374242)).setText((CharSequence)localObject1);
+      Object localObject3 = (RelativeLayout)findViewById(2131374238);
+      localObject2 = Utils.a(this.app, paramIntent.getStringExtra("background_img1"), ((RelativeLayout)localObject3).getWidth(), ((RelativeLayout)localObject3).getHeight(), "default_share_bg_window");
+      localObject1 = localObject2;
+      if (localObject2 == null)
       {
-        setContentView(2131561271);
-        findViewById(2131374693).setOnClickListener(this);
-        findViewById(2131374703).setOnClickListener(this);
-        findViewById(2131374702).setVisibility(8);
-        Object localObject1 = Typeface.createFromAsset(getAssets(), "fonts/HuNan-CC.ttf");
-        Object localObject2 = (TextView)findViewById(2131374694);
-        ((TextView)localObject2).setTypeface((Typeface)localObject1);
-        ((TextView)localObject2).setText(String.valueOf(m));
-        ((TextView)findViewById(2131374695)).setText(String.format("%s%s%s", new Object[] { getResources().getString(2131699239), Integer.valueOf(j), getResources().getString(2131699237) }));
-        localObject1 = paramIntent.getStringExtra("ticket_text");
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          localObject1 = getResources().getString(2131699242);
+        QLog.d("HBEntryShareActivity", 1, "load window bg null");
+        localObject1 = getResources().getDrawable(2130845418);
+      }
+      ((RelativeLayout)localObject3).setBackgroundDrawable((Drawable)localObject1);
+      localObject3 = (LinearLayout)findViewById(2131374229);
+      localObject2 = a(paramIntent.getStringExtra("middle_img1"), ((LinearLayout)localObject3).getWidth(), ((LinearLayout)localObject3).getHeight());
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = getResources().getDrawable(2130845419);
+      }
+      ((LinearLayout)localObject3).setBackgroundDrawable((Drawable)localObject1);
+      localObject1 = (ImageView)findViewById(2131374236);
+      localObject2 = (TextView)findViewById(2131374237);
+      paramIntent.getStringExtra("header_icon");
+      localObject3 = paramIntent.getStringExtra("header_name");
+      paramIntent = paramIntent.getStringExtra("header_text");
+      if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (!TextUtils.isEmpty((CharSequence)localObject3)) && (!TextUtils.isEmpty(paramIntent)))
+      {
+        ((ImageView)localObject1).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        ((TextView)localObject2).setText(String.format("%s%s", new Object[] { localObject3, paramIntent }));
+      }
+      else
+      {
+        ((ImageView)localObject1).setImageDrawable(getResources().getDrawable(2130845273));
+        ((TextView)localObject2).setText(getResources().getString(2131699332));
+      }
+      localObject1 = (TextView)findViewById(2131374241);
+      if (getIntent().getIntExtra("not_share", 0) == 1) {
+        k = 4;
+      } else {
+        k = 0;
+      }
+      ((TextView)localObject1).setVisibility(k);
+      if (((TextView)localObject1).getVisibility() == 0)
+      {
+        paramIntent = a(getIntent().getStringExtra("button_img1"), AIOUtils.b(154.0F, getResources()), AIOUtils.b(45.0F, getResources()));
+        localObject2 = a(getIntent().getStringExtra("button_img2"), AIOUtils.b(154.0F, getResources()), AIOUtils.b(45.0F, getResources()));
+        if ((paramIntent != null) && (localObject2 != null)) {
+          paramIntent = a(paramIntent, (Drawable)localObject2);
+        } else {
+          paramIntent = a(getResources().getDrawable(2130845421), getResources().getDrawable(2130845422));
         }
-        for (;;)
+        ((TextView)localObject1).setBackgroundDrawable(paramIntent);
+      }
+      try
+      {
+        paramIntent = getIntent().getStringExtra("button_img_apng");
+        if (QLog.isColorLevel())
         {
-          ((TextView)findViewById(2131374704)).setText((CharSequence)localObject1);
-          Object localObject3 = (RelativeLayout)findViewById(2131374700);
-          localObject2 = Utils.a(this.app, paramIntent.getStringExtra("background_img1"), ((RelativeLayout)localObject3).getWidth(), ((RelativeLayout)localObject3).getHeight(), "default_share_bg_window");
-          localObject1 = localObject2;
-          if (localObject2 == null)
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("initViewByIntent btnImgApngUrl = ");
+          ((StringBuilder)localObject2).append(paramIntent);
+          QLog.d("HBEntryShareActivity", 2, ((StringBuilder)localObject2).toString());
+        }
+        if (!TextUtils.isEmpty(paramIntent))
+        {
+          localObject3 = (SpringFestivalEntryManager)getAppRuntime().getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER);
+          localObject2 = ((SpringFestivalEntryManager)localObject3).b(paramIntent);
+          boolean bool = FileUtils.fileExists((String)localObject2);
+          if (QLog.isColorLevel())
           {
-            QLog.d("HBEntryShareActivity", 1, "load window bg null");
-            localObject1 = getResources().getDrawable(2130845545);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("initViewByIntent btnImgApngUrl exist = ");
+            localStringBuilder.append(bool);
+            localStringBuilder.append(",apngFilePath = ");
+            localStringBuilder.append((String)localObject2);
+            QLog.d("HBEntryShareActivity", 2, localStringBuilder.toString());
           }
-          ((RelativeLayout)localObject3).setBackgroundDrawable((Drawable)localObject1);
-          localObject3 = (LinearLayout)findViewById(2131374691);
-          localObject2 = a(paramIntent.getStringExtra("middle_img1"), ((LinearLayout)localObject3).getWidth(), ((LinearLayout)localObject3).getHeight());
-          localObject1 = localObject2;
-          if (localObject2 == null) {
-            localObject1 = getResources().getDrawable(2130845546);
-          }
-          ((LinearLayout)localObject3).setBackgroundDrawable((Drawable)localObject1);
-          localObject1 = (ImageView)findViewById(2131374698);
-          localObject2 = (TextView)findViewById(2131374699);
-          paramIntent.getStringExtra("header_icon");
-          localObject3 = paramIntent.getStringExtra("header_name");
-          paramIntent = paramIntent.getStringExtra("header_text");
-          int k;
-          if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (!TextUtils.isEmpty((CharSequence)localObject3)) && (!TextUtils.isEmpty(paramIntent)))
+          if (bool)
           {
-            ((ImageView)localObject1).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-            ((TextView)localObject2).setText(String.format("%s%s", new Object[] { localObject3, paramIntent }));
-            localObject1 = (TextView)findViewById(2131374703);
-            if (getIntent().getIntExtra("not_share", 0) != 1) {
-              break label980;
-            }
-            k = 4;
-            label608:
-            ((TextView)localObject1).setVisibility(k);
-            if (((TextView)localObject1).getVisibility() == 0)
-            {
-              paramIntent = a(getIntent().getStringExtra("button_img1"), AIOUtils.a(154.0F, getResources()), AIOUtils.a(45.0F, getResources()));
-              localObject2 = a(getIntent().getStringExtra("button_img2"), AIOUtils.a(154.0F, getResources()), AIOUtils.a(45.0F, getResources()));
-              if ((paramIntent == null) || (localObject2 == null)) {
-                break label986;
-              }
-              paramIntent = a(paramIntent, (Drawable)localObject2);
-              label711:
-              ((TextView)localObject1).setBackgroundDrawable(paramIntent);
-            }
+            paramIntent = new ApngOptions();
+            paramIntent.a(URLDrawableHelperConstants.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+            ((TextView)localObject1).setBackgroundDrawable(((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable("", paramIntent, (String)localObject2));
+            ((TextView)localObject1).setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
           }
-          for (;;)
+          else
           {
-            try
-            {
-              localObject2 = getIntent().getStringExtra("button_img_apng");
-              if (QLog.isColorLevel()) {
-                QLog.d("HBEntryShareActivity", 2, "initViewByIntent btnImgApngUrl = " + (String)localObject2);
-              }
-              if (!TextUtils.isEmpty((CharSequence)localObject2))
-              {
-                localObject3 = (SpringFestivalEntryManager)getAppRuntime().getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER);
-                paramIntent = ((SpringFestivalEntryManager)localObject3).b((String)localObject2);
-                boolean bool = FileUtils.a(paramIntent);
-                if (QLog.isColorLevel()) {
-                  QLog.d("HBEntryShareActivity", 2, "initViewByIntent btnImgApngUrl exist = " + bool + ",apngFilePath = " + paramIntent);
-                }
-                if (!bool) {
-                  continue;
-                }
-                localObject2 = new VasApngFactory.Options();
-                ((VasApngFactory.Options)localObject2).a(URLDrawableHelper.TRANSPARENT);
-                ((TextView)localObject1).setBackgroundDrawable(VasApngFactory.a("", (VasApngFactory.Options)localObject2, paramIntent));
-                ((TextView)localObject1).setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-              }
-            }
-            catch (Exception paramIntent)
-            {
-              label980:
-              label986:
-              SpringHbMonitorReporter.a(406, paramIntent, new String[0]);
-              QLog.d("HBEntryShareActivity", 1, "initViewByIntent exception ", paramIntent);
-              continue;
-            }
-            paramIntent = new HashMap();
-            paramIntent.put("ext1", String.valueOf(m));
-            paramIntent.put("ext2", String.valueOf(j));
-            paramIntent.put("ext3", String.valueOf(i));
-            a("exp", paramIntent);
-            return true;
-            ((ImageView)localObject1).setImageDrawable(getResources().getDrawable(2130845400));
-            ((TextView)localObject2).setText(getResources().getString(2131699228));
-            break;
-            k = 0;
-            break label608;
-            paramIntent = a(getResources().getDrawable(2130845548), getResources().getDrawable(2130845549));
-            break label711;
-            ((SpringFestivalEntryManager)localObject3).a(new HBEntryShareActivity.2(this, (String)localObject2, (TextView)localObject1, (SpringFestivalEntryManager)localObject3));
+            ((SpringFestivalEntryManager)localObject3).a(new HBEntryShareActivity.2(this, paramIntent, (TextView)localObject1, (SpringFestivalEntryManager)localObject3));
           }
         }
       }
+      catch (Exception paramIntent)
+      {
+        SpringHbMonitorReporter.a(406, paramIntent, new String[0]);
+        QLog.d("HBEntryShareActivity", 1, "initViewByIntent exception ", paramIntent);
+      }
+      paramIntent = new HashMap();
+      paramIntent.put("ext1", String.valueOf(m));
+      paramIntent.put("ext2", String.valueOf(j));
+      paramIntent.put("ext3", String.valueOf(i));
+      a("exp", paramIntent);
+      return true;
     }
+    paramIntent = new StringBuilder();
+    paramIntent.append("initViewByIntent finish,allCount = ");
+    paramIntent.append(m);
+    paramIntent.append(",maxCount = ");
+    paramIntent.append(k);
+    QLog.d("HBEntryShareActivity", 1, paramIntent.toString());
+    finish();
+    return false;
   }
   
   @Override
@@ -447,7 +501,7 @@ public class HBEntryShareActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     getWindow().setFlags(1024, 1024);
     this.mActNeedImmersive = false;
@@ -456,7 +510,7 @@ public class HBEntryShareActivity
     return a(getIntent());
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
   }
@@ -470,23 +524,28 @@ public class HBEntryShareActivity
   @SuppressLint({"NonConstantResourceId"})
   public void onClick(View paramView)
   {
-    int i = -1;
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131374231)
     {
+      if (i != 2131374241)
+      {
+        i = -1;
+      }
+      else
+      {
+        i = 1;
+        a();
+      }
     }
-    for (;;)
+    else
     {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("refer", String.valueOf(i));
-      a("clk", localHashMap);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       i = 2;
       finish();
-      continue;
-      i = 1;
-      a();
     }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("refer", String.valueOf(i));
+    a("clk", localHashMap);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   @Override
@@ -498,7 +557,7 @@ public class HBEntryShareActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.HBEntryShareActivity
  * JD-Core Version:    0.7.0.1
  */

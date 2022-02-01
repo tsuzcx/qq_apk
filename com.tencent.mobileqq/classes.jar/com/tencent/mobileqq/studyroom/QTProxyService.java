@@ -31,18 +31,19 @@ public class QTProxyService
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_ComTencentShadowDynamicHostPpsController != null) {}
+    PpsController localPpsController = this.jdField_a_of_type_ComTencentShadowDynamicHostPpsController;
+    if (localPpsController != null) {}
     try
     {
-      this.jdField_a_of_type_ComTencentShadowDynamicHostPpsController.exit();
-      label18:
+      localPpsController.exit();
+      label17:
       this.jdField_a_of_type_ComTencentShadowDynamicHostPpsController = null;
       Process.killProcess(Process.myPid());
       return;
     }
     catch (RemoteException localRemoteException)
     {
-      break label18;
+      break label17;
     }
   }
   
@@ -55,24 +56,22 @@ public class QTProxyService
       return;
     }
     QLog.i("studyroom.QTProxyService", 2, "onTaskRemoved");
-    if (this.jdField_a_of_type_ComTencentShadowDynamicHostPpsController != null) {
-      try
-      {
-        this.jdField_a_of_type_ComTencentShadowDynamicHostPpsController.exit();
-        return;
-      }
-      catch (RemoteException paramIntent)
-      {
-        return;
-      }
+    paramIntent = this.jdField_a_of_type_ComTencentShadowDynamicHostPpsController;
+    if (paramIntent != null) {}
+    try
+    {
+      paramIntent.exit();
+      return;
     }
+    catch (RemoteException paramIntent) {}
     QLog.i("studyroom.QTProxyService", 2, "ppsController null System.exit");
     System.exit(0);
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.QTProxyService
  * JD-Core Version:    0.7.0.1
  */

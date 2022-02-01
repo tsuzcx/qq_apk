@@ -37,7 +37,8 @@ public class g
         int i = 0;
         while (i < paramArrayOfString.length - 1)
         {
-          localStringBuilder.append(paramArrayOfString[i]).append(",");
+          localStringBuilder.append(paramArrayOfString[i]);
+          localStringBuilder.append(",");
           i += 1;
         }
       }
@@ -134,16 +135,17 @@ public class g
   
   public void c()
   {
-    if (b != null)
+    f localf = b;
+    if (localf != null)
     {
-      b.b();
+      localf.b();
       b = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.a.g
  * JD-Core Version:    0.7.0.1
  */

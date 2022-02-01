@@ -17,23 +17,22 @@ class RegisterQQNumberActivity$LHCallback
   
   public void a(String paramString, boolean paramBoolean)
   {
-    if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
+    if (Thread.currentThread() != Looper.getMainLooper().getThread())
+    {
       if (QLog.isColorLevel()) {
         QLog.i("RegisterQQNumberActivity", 2, "CheckRegisterLiangHao.RequestCallBack not called in main thread !!!");
       }
-    }
-    RegisterQQNumberActivity localRegisterQQNumberActivity;
-    do
-    {
       return;
-      localRegisterQQNumberActivity = (RegisterQQNumberActivity)this.a.get();
-    } while (localRegisterQQNumberActivity == null);
-    localRegisterQQNumberActivity.a(paramString, paramBoolean);
+    }
+    RegisterQQNumberActivity localRegisterQQNumberActivity = (RegisterQQNumberActivity)this.a.get();
+    if (localRegisterQQNumberActivity != null) {
+      localRegisterQQNumberActivity.a(paramString, paramBoolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterQQNumberActivity.LHCallback
  * JD-Core Version:    0.7.0.1
  */

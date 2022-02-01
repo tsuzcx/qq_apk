@@ -45,18 +45,20 @@ public final class ReqGetDiscussInfo
   {
     paramJceOutputStream.write(this.DiscussUin, 0);
     paramJceOutputStream.write(this.InteRemarkTimeStamp, 1);
-    if (this.UinList != null) {
-      paramJceOutputStream.write(this.UinList, 2);
+    Object localObject = this.UinList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
     paramJceOutputStream.write(this.InfoSeq, 3);
-    if (this.Signature != null) {
-      paramJceOutputStream.write(this.Signature, 4);
+    localObject = this.Signature;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.ReqGetDiscussInfo
  * JD-Core Version:    0.7.0.1
  */

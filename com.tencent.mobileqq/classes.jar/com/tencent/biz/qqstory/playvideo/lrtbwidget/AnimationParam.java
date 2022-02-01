@@ -51,89 +51,78 @@ public class AnimationParam
   public AnimationParam(@NonNull View paramView, boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
-    Object localObject2 = new Rect();
-    paramView.getGlobalVisibleRect((Rect)localObject2);
-    Object localObject1;
+    Object localObject3 = new Rect();
+    paramView.getGlobalVisibleRect((Rect)localObject3);
     if ((paramView instanceof ImageView))
     {
       localObject1 = ((ImageView)paramView).getDrawable();
       if (localObject1 != null)
       {
-        localObject1 = ((Drawable)localObject1).getConstantState();
-        if (localObject1 != null)
-        {
-          this.jdField_a_of_type_Int = (((Rect)localObject2).left + paramView.getPaddingLeft());
-          this.b = (((Rect)localObject2).top + paramView.getPaddingTop());
-          this.c = (paramView.getWidth() - paramView.getPaddingLeft() - paramView.getPaddingRight());
-          this.d = (paramView.getHeight() - paramView.getPaddingTop() - paramView.getPaddingBottom());
+        localObject2 = ((Drawable)localObject1).getConstantState();
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          break label130;
         }
+        this.jdField_a_of_type_Int = (((Rect)localObject3).left + paramView.getPaddingLeft());
+        this.b = (((Rect)localObject3).top + paramView.getPaddingTop());
+        this.c = (paramView.getWidth() - paramView.getPaddingLeft() - paramView.getPaddingRight());
+        this.d = (paramView.getHeight() - paramView.getPaddingTop() - paramView.getPaddingBottom());
+        localObject1 = localObject2;
+        break label130;
       }
     }
-    for (;;)
+    Object localObject1 = null;
+    label130:
+    if (localObject1 == null)
     {
-      if (localObject1 == null)
-      {
-        this.jdField_a_of_type_Int = ((Rect)localObject2).left;
-        this.b = ((Rect)localObject2).top;
-        this.c = paramView.getWidth();
-        this.d = paramView.getHeight();
+      this.jdField_a_of_type_Int = ((Rect)localObject3).left;
+      this.b = ((Rect)localObject3).top;
+      this.c = paramView.getWidth();
+      this.d = paramView.getHeight();
+    }
+    if (((Rect)localObject3).bottom < UIUtils.d(paramView.getContext())) {
+      if (localObject1 != null) {
+        this.b = (((Rect)localObject3).bottom - paramView.getHeight() + paramView.getPaddingTop());
+      } else {
+        this.b = (((Rect)localObject3).bottom - this.d);
       }
-      label231:
-      Drawable localDrawable;
-      if (((Rect)localObject2).bottom < UIUtils.d(paramView.getContext()))
+    }
+    if (((Rect)localObject3).right < UIUtils.a(paramView.getContext())) {
+      if (localObject1 != null) {
+        this.jdField_a_of_type_Int = (((Rect)localObject3).right - paramView.getWidth() + paramView.getPaddingLeft());
+      } else {
+        this.jdField_a_of_type_Int = (((Rect)localObject3).right - this.c);
+      }
+    }
+    Object localObject2 = (QQStoryManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.QQSTORY_MANAGER);
+    if (localObject1 != null)
+    {
+      localObject3 = ((Drawable.ConstantState)localObject1).newDrawable();
+      if ((localObject3 instanceof URLDrawable))
       {
-        if (localObject1 != null) {
-          this.b = (((Rect)localObject2).bottom - paramView.getHeight() + paramView.getPaddingTop());
+        if (((URLDrawable)localObject3).getCurrDrawable() != null)
+        {
+          ((QQStoryManager)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable.ConstantState)localObject1).newDrawable().mutate();
+          this.jdField_a_of_type_JavaLangString = String.valueOf(System.identityHashCode(((QQStoryManager)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable));
+          SLog.a("Q.qqstory.playernew.AnimationParam", "getDrawableFromView, imageKey=%s, drawable=%s", this.jdField_a_of_type_JavaLangString, localObject3);
         }
       }
       else
       {
-        if (((Rect)localObject2).right < UIUtils.a(paramView.getContext()))
-        {
-          if (localObject1 == null) {
-            break label411;
-          }
-          this.jdField_a_of_type_Int = (((Rect)localObject2).right - paramView.getWidth() + paramView.getPaddingLeft());
-        }
-        localObject2 = (QQStoryManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.QQSTORY_MANAGER);
-        if (localObject1 != null)
-        {
-          localDrawable = ((Drawable.ConstantState)localObject1).newDrawable();
-          if (!(localDrawable instanceof URLDrawable)) {
-            break label428;
-          }
-          if (((URLDrawable)localDrawable).getCurrDrawable() != null)
-          {
-            ((QQStoryManager)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable.ConstantState)localObject1).newDrawable().mutate();
-            this.jdField_a_of_type_JavaLangString = String.valueOf(System.identityHashCode(((QQStoryManager)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable));
-            SLog.a("Q.qqstory.playernew.AnimationParam", "getDrawableFromView, imageKey=%s, drawable=%s", this.jdField_a_of_type_JavaLangString, localDrawable);
-          }
-        }
-      }
-      for (;;)
-      {
-        if (this.jdField_a_of_type_JavaLangString == null)
-        {
-          paramView = BitmapUtils.a(paramView, this.c, this.d, 0, 0);
-          if (paramView != null)
-          {
-            ((QQStoryManager)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(paramView);
-            this.jdField_a_of_type_JavaLangString = String.valueOf(System.identityHashCode(((QQStoryManager)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable));
-            SLog.a("Q.qqstory.playernew.AnimationParam", "getBitmapFromView, imageKey=%s, bitmap=%s, byteCount=%d", this.jdField_a_of_type_JavaLangString, paramView, Integer.valueOf(paramView.getByteCount()));
-          }
-        }
-        return;
-        this.b = (((Rect)localObject2).bottom - this.d);
-        break;
-        label411:
-        this.jdField_a_of_type_Int = (((Rect)localObject2).right - this.c);
-        break label231;
-        label428:
         ((QQStoryManager)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable.ConstantState)localObject1).newDrawable().mutate();
         this.jdField_a_of_type_JavaLangString = String.valueOf(System.identityHashCode(((QQStoryManager)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable));
-        SLog.a("Q.qqstory.playernew.AnimationParam", "getDrawableFromView, imageKey=%s, drawable=%s", this.jdField_a_of_type_JavaLangString, localDrawable);
+        SLog.a("Q.qqstory.playernew.AnimationParam", "getDrawableFromView, imageKey=%s, drawable=%s", this.jdField_a_of_type_JavaLangString, localObject3);
       }
-      localObject1 = null;
+    }
+    if (this.jdField_a_of_type_JavaLangString == null)
+    {
+      paramView = BitmapUtils.a(paramView, this.c, this.d, 0, 0);
+      if (paramView != null)
+      {
+        ((QQStoryManager)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(paramView);
+        this.jdField_a_of_type_JavaLangString = String.valueOf(System.identityHashCode(((QQStoryManager)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable));
+        SLog.a("Q.qqstory.playernew.AnimationParam", "getBitmapFromView, imageKey=%s, bitmap=%s, byteCount=%d", this.jdField_a_of_type_JavaLangString, paramView, Integer.valueOf(paramView.getByteCount()));
+      }
     }
   }
   
@@ -142,18 +131,20 @@ public class AnimationParam
     if (!this.jdField_a_of_type_Boolean) {
       return null;
     }
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    if (localObject != null) {
+      return localObject;
     }
-    Object localObject = (QQStoryManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.QQSTORY_MANAGER);
+    localObject = (QQStoryManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.QQSTORY_MANAGER);
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((QQStoryManager)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable;
     if (TextUtils.equals(String.valueOf(System.identityHashCode(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable)), this.jdField_a_of_type_JavaLangString)) {
       ((QQStoryManager)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    }
-    while (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
-      return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    } else {
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+    }
+    localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    if (localObject != null) {
+      return localObject;
     }
     localObject = new ColorDrawable(-13421773);
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable)localObject);
@@ -167,7 +158,20 @@ public class AnimationParam
   
   public String toString()
   {
-    return "AnimationParam{positionX=" + this.jdField_a_of_type_Int + ", positionY=" + this.b + ", viewWidth=" + this.c + ", viewHeight=" + this.d + ", imageKey='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AnimationParam{positionX=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", positionY=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", viewWidth=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", viewHeight=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", imageKey='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -181,7 +185,7 @@ public class AnimationParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam
  * JD-Core Version:    0.7.0.1
  */

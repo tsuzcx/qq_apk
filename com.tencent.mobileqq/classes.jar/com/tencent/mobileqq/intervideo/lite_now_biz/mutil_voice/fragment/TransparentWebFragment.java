@@ -29,12 +29,12 @@ public class TransparentWebFragment
   
   public int a()
   {
-    return 2131559645;
+    return 2131559523;
   }
   
   public FrameLayout a(View paramView)
   {
-    return (FrameLayout)paramView.findViewById(2131377356);
+    return (FrameLayout)paramView.findViewById(2131376809);
   }
   
   public void a(Dialog paramDialog)
@@ -49,7 +49,7 @@ public class TransparentWebFragment
   
   public FrameLayout b(View paramView)
   {
-    return (FrameLayout)paramView.findViewById(2131377356);
+    return (FrameLayout)paramView.findViewById(2131376809);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -67,7 +67,7 @@ public class TransparentWebFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.mutil_voice.fragment.TransparentWebFragment
  * JD-Core Version:    0.7.0.1
  */

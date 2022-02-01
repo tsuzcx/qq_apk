@@ -21,11 +21,12 @@ public class DisplayImageOptions$Builder
   
   public Builder bitmapConfig(Bitmap.Config paramConfig)
   {
-    if (paramConfig == null) {
-      throw new IllegalArgumentException("bitmapConfig can't be null");
+    if (paramConfig != null)
+    {
+      this.decodingOptions.inPreferredConfig = paramConfig;
+      return this;
     }
-    this.decodingOptions.inPreferredConfig = paramConfig;
-    return this;
+    throw new IllegalArgumentException("bitmapConfig can't be null");
   }
   
   public DisplayImageOptions build()
@@ -88,11 +89,12 @@ public class DisplayImageOptions$Builder
   
   public Builder decodingOptions(BitmapFactory.Options paramOptions)
   {
-    if (paramOptions == null) {
-      throw new IllegalArgumentException("decodingOptions can't be null");
+    if (paramOptions != null)
+    {
+      this.decodingOptions = paramOptions;
+      return this;
     }
-    this.decodingOptions = paramOptions;
-    return this;
+    throw new IllegalArgumentException("decodingOptions can't be null");
   }
   
   public Builder displayer(BitmapDisplayer paramBitmapDisplayer)
@@ -152,7 +154,7 @@ public class DisplayImageOptions$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.libapi.imageloader.DisplayImageOptions.Builder
  * JD-Core Version:    0.7.0.1
  */

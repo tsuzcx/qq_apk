@@ -4,14 +4,16 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
-import com.tencent.av.utils.UITools;
+import com.tencent.av.utils.api.IUIToolsApi;
+import com.tencent.mobileqq.nearby.now.IResourceUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.widget.HorizontalListView;
 import java.util.List;
 
 public class StartLiveTopicLabelListView
   extends LinearLayout
 {
-  private int jdField_a_of_type_Int = 2130845791;
+  private int jdField_a_of_type_Int = ((IResourceUtil)QRoute.api(IResourceUtil.class)).getQQNearbyNowBgStartLiveNormalGap();
   private Context jdField_a_of_type_AndroidContentContext;
   private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new StartLiveTopicLabelListView.1(this);
   private StartLiveTopicLabelListView.IAddTopicClickListener jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetStartLiveTopicLabelListView$IAddTopicClickListener;
@@ -19,7 +21,7 @@ public class StartLiveTopicLabelListView
   private final String jdField_a_of_type_JavaLangString = "TopicLabelListView";
   private List<String> jdField_a_of_type_JavaUtilList;
   private int b = -1;
-  private int c = 2130845790;
+  private int c = ((IResourceUtil)QRoute.api(IResourceUtil.class)).getQQNearbyNowBgStartLiveGap();
   private int d = -1;
   
   public StartLiveTopicLabelListView(Context paramContext)
@@ -44,7 +46,7 @@ public class StartLiveTopicLabelListView
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView = new HorizontalListView(paramContext);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth((int)UITools.a(paramContext, 5.0F));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth((int)((IUIToolsApi)QRoute.api(IUIToolsApi.class)).dp2px(paramContext, 5.0F));
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_AndroidWidgetBaseAdapter);
     addView(this.jdField_a_of_type_ComTencentWidgetHorizontalListView, -1, -1);
   }
@@ -77,7 +79,7 @@ public class StartLiveTopicLabelListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView
  * JD-Core Version:    0.7.0.1
  */

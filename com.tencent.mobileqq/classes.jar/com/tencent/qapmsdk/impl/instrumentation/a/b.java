@@ -68,14 +68,6 @@ public class b
       Object localObject = this.a.getContent();
       return localObject;
     }
-    catch (IOException localIOException)
-    {
-      com.tencent.qapmsdk.impl.instrumentation.c.a(this.b, localIOException);
-      if (!this.b.f()) {
-        com.tencent.qapmsdk.impl.d.a.a(this.b.j(), localIOException);
-      }
-      throw localIOException;
-    }
     catch (IllegalStateException localIllegalStateException)
     {
       com.tencent.qapmsdk.impl.instrumentation.c.a(this.b, localIllegalStateException);
@@ -83,6 +75,14 @@ public class b
         com.tencent.qapmsdk.impl.d.a.a(this.b.j(), localIllegalStateException);
       }
       throw localIllegalStateException;
+    }
+    catch (IOException localIOException)
+    {
+      com.tencent.qapmsdk.impl.instrumentation.c.a(this.b, localIOException);
+      if (!this.b.f()) {
+        com.tencent.qapmsdk.impl.d.a.a(this.b.j(), localIOException);
+      }
+      throw localIOException;
     }
   }
   
@@ -142,7 +142,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -31,14 +31,15 @@ public final class oidb_0x6d6$UploadFileRspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 48, 58, 66, 74, 80, 98, 106, 112 }, new String[] { "int32_ret_code", "str_ret_msg", "str_client_wording", "str_upload_ip", "str_server_dns", "uint32_bus_id", "str_file_id", "bytes_file_key", "bytes_check_key", "bool_file_exist", "str_upload_ip_lan_v4", "str_upload_ip_lan_v6", "uint32_upload_port" }, new Object[] { Integer.valueOf(0), "", "", "", "", Integer.valueOf(0), "", localByteStringMicro1, localByteStringMicro2, Boolean.valueOf(false), "", "", Integer.valueOf(0) }, UploadFileRspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 48, 58, 66, 74, 80, 98, 106, 112 }, new String[] { "int32_ret_code", "str_ret_msg", "str_client_wording", "str_upload_ip", "str_server_dns", "uint32_bus_id", "str_file_id", "bytes_file_key", "bytes_check_key", "bool_file_exist", "str_upload_ip_lan_v4", "str_upload_ip_lan_v6", "uint32_upload_port" }, new Object[] { localInteger, "", "", "", "", localInteger, "", localByteStringMicro1, localByteStringMicro2, Boolean.valueOf(false), "", "", localInteger }, UploadFileRspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6d6.oidb_0x6d6.UploadFileRspBody
  * JD-Core Version:    0.7.0.1
  */

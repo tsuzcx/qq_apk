@@ -6,27 +6,28 @@ import android.content.Intent;
 public class DialogRedirectImpl
   extends DialogRedirect
 {
-  private final Activity a;
-  private final int b;
-  private final Intent c;
+  private final Activity activity;
+  private final Intent intent;
+  private final int requestCode;
   
   DialogRedirectImpl(Intent paramIntent, Activity paramActivity, int paramInt)
   {
-    this.c = paramIntent;
-    this.a = paramActivity;
-    this.b = paramInt;
+    this.intent = paramIntent;
+    this.activity = paramActivity;
+    this.requestCode = paramInt;
   }
   
   public final void redirect()
   {
-    if (this.c != null) {
-      this.a.startActivityForResult(this.c, this.b);
+    Intent localIntent = this.intent;
+    if (localIntent != null) {
+      this.activity.startActivityForResult(localIntent, this.requestCode);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.internal.DialogRedirectImpl
  * JD-Core Version:    0.7.0.1
  */

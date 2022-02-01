@@ -42,7 +42,12 @@ public class RawResourceDataSource
   
   public static Uri buildRawResourceUri(Context paramContext, int paramInt)
   {
-    return Uri.parse("android.resource:///" + paramContext.getPackageName() + "/" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("android.resource:///");
+    localStringBuilder.append(paramContext.getPackageName());
+    localStringBuilder.append("/");
+    localStringBuilder.append(paramInt);
+    return Uri.parse(localStringBuilder.toString());
   }
   
   public long available()
@@ -77,118 +82,127 @@ public class RawResourceDataSource
     //   40: putfield 106	com/tencent/oskplayer/datasource/RawResourceDataSource:assetFileDescriptor	Landroid/content/res/AssetFileDescriptor;
     //   43: aload_0
     //   44: getfield 111	com/tencent/oskplayer/datasource/RawResourceDataSource:opened	Z
-    //   47: ifeq +24 -> 71
+    //   47: ifeq +23 -> 70
     //   50: aload_0
     //   51: iconst_0
     //   52: putfield 111	com/tencent/oskplayer/datasource/RawResourceDataSource:opened	Z
     //   55: aload_0
     //   56: getfield 62	com/tencent/oskplayer/datasource/RawResourceDataSource:listener	Lcom/tencent/oskplayer/datasource/TransferListener;
-    //   59: ifnull +12 -> 71
-    //   62: aload_0
-    //   63: getfield 62	com/tencent/oskplayer/datasource/RawResourceDataSource:listener	Lcom/tencent/oskplayer/datasource/TransferListener;
-    //   66: invokeinterface 116 1 0
-    //   71: return
-    //   72: astore_1
-    //   73: new 118	com/tencent/oskplayer/datasource/RawResourceDataSource$RawResourceDataSourceException
-    //   76: dup
-    //   77: aload_1
-    //   78: invokespecial 121	com/tencent/oskplayer/datasource/RawResourceDataSource$RawResourceDataSourceException:<init>	(Ljava/io/IOException;)V
-    //   81: athrow
-    //   82: astore_1
-    //   83: aload_0
-    //   84: aconst_null
-    //   85: putfield 106	com/tencent/oskplayer/datasource/RawResourceDataSource:assetFileDescriptor	Landroid/content/res/AssetFileDescriptor;
-    //   88: aload_0
-    //   89: getfield 111	com/tencent/oskplayer/datasource/RawResourceDataSource:opened	Z
-    //   92: ifeq +24 -> 116
-    //   95: aload_0
-    //   96: iconst_0
-    //   97: putfield 111	com/tencent/oskplayer/datasource/RawResourceDataSource:opened	Z
-    //   100: aload_0
-    //   101: getfield 62	com/tencent/oskplayer/datasource/RawResourceDataSource:listener	Lcom/tencent/oskplayer/datasource/TransferListener;
-    //   104: ifnull +12 -> 116
-    //   107: aload_0
-    //   108: getfield 62	com/tencent/oskplayer/datasource/RawResourceDataSource:listener	Lcom/tencent/oskplayer/datasource/TransferListener;
-    //   111: invokeinterface 116 1 0
-    //   116: aload_1
-    //   117: athrow
-    //   118: astore_1
-    //   119: new 118	com/tencent/oskplayer/datasource/RawResourceDataSource$RawResourceDataSourceException
-    //   122: dup
-    //   123: aload_1
-    //   124: invokespecial 121	com/tencent/oskplayer/datasource/RawResourceDataSource$RawResourceDataSourceException:<init>	(Ljava/io/IOException;)V
-    //   127: athrow
-    //   128: astore_1
-    //   129: aload_0
-    //   130: aconst_null
-    //   131: putfield 100	com/tencent/oskplayer/datasource/RawResourceDataSource:inputStream	Ljava/io/InputStream;
-    //   134: aload_0
-    //   135: getfield 106	com/tencent/oskplayer/datasource/RawResourceDataSource:assetFileDescriptor	Landroid/content/res/AssetFileDescriptor;
-    //   138: ifnull +10 -> 148
-    //   141: aload_0
-    //   142: getfield 106	com/tencent/oskplayer/datasource/RawResourceDataSource:assetFileDescriptor	Landroid/content/res/AssetFileDescriptor;
-    //   145: invokevirtual 109	android/content/res/AssetFileDescriptor:close	()V
-    //   148: aload_0
-    //   149: aconst_null
-    //   150: putfield 106	com/tencent/oskplayer/datasource/RawResourceDataSource:assetFileDescriptor	Landroid/content/res/AssetFileDescriptor;
-    //   153: aload_0
-    //   154: getfield 111	com/tencent/oskplayer/datasource/RawResourceDataSource:opened	Z
-    //   157: ifeq +24 -> 181
-    //   160: aload_0
-    //   161: iconst_0
-    //   162: putfield 111	com/tencent/oskplayer/datasource/RawResourceDataSource:opened	Z
-    //   165: aload_0
-    //   166: getfield 62	com/tencent/oskplayer/datasource/RawResourceDataSource:listener	Lcom/tencent/oskplayer/datasource/TransferListener;
-    //   169: ifnull +12 -> 181
-    //   172: aload_0
-    //   173: getfield 62	com/tencent/oskplayer/datasource/RawResourceDataSource:listener	Lcom/tencent/oskplayer/datasource/TransferListener;
-    //   176: invokeinterface 116 1 0
-    //   181: aload_1
-    //   182: athrow
-    //   183: astore_1
-    //   184: new 118	com/tencent/oskplayer/datasource/RawResourceDataSource$RawResourceDataSourceException
-    //   187: dup
-    //   188: aload_1
-    //   189: invokespecial 121	com/tencent/oskplayer/datasource/RawResourceDataSource$RawResourceDataSourceException:<init>	(Ljava/io/IOException;)V
-    //   192: athrow
-    //   193: astore_1
-    //   194: aload_0
-    //   195: aconst_null
-    //   196: putfield 106	com/tencent/oskplayer/datasource/RawResourceDataSource:assetFileDescriptor	Landroid/content/res/AssetFileDescriptor;
-    //   199: aload_0
-    //   200: getfield 111	com/tencent/oskplayer/datasource/RawResourceDataSource:opened	Z
-    //   203: ifeq +24 -> 227
-    //   206: aload_0
-    //   207: iconst_0
-    //   208: putfield 111	com/tencent/oskplayer/datasource/RawResourceDataSource:opened	Z
-    //   211: aload_0
-    //   212: getfield 62	com/tencent/oskplayer/datasource/RawResourceDataSource:listener	Lcom/tencent/oskplayer/datasource/TransferListener;
-    //   215: ifnull +12 -> 227
-    //   218: aload_0
-    //   219: getfield 62	com/tencent/oskplayer/datasource/RawResourceDataSource:listener	Lcom/tencent/oskplayer/datasource/TransferListener;
-    //   222: invokeinterface 116 1 0
-    //   227: aload_1
-    //   228: athrow
+    //   59: astore_1
+    //   60: aload_1
+    //   61: ifnull +9 -> 70
+    //   64: aload_1
+    //   65: invokeinterface 116 1 0
+    //   70: return
+    //   71: astore_1
+    //   72: goto +13 -> 85
+    //   75: astore_1
+    //   76: new 118	com/tencent/oskplayer/datasource/RawResourceDataSource$RawResourceDataSourceException
+    //   79: dup
+    //   80: aload_1
+    //   81: invokespecial 121	com/tencent/oskplayer/datasource/RawResourceDataSource$RawResourceDataSourceException:<init>	(Ljava/io/IOException;)V
+    //   84: athrow
+    //   85: aload_0
+    //   86: aconst_null
+    //   87: putfield 106	com/tencent/oskplayer/datasource/RawResourceDataSource:assetFileDescriptor	Landroid/content/res/AssetFileDescriptor;
+    //   90: aload_0
+    //   91: getfield 111	com/tencent/oskplayer/datasource/RawResourceDataSource:opened	Z
+    //   94: ifeq +23 -> 117
+    //   97: aload_0
+    //   98: iconst_0
+    //   99: putfield 111	com/tencent/oskplayer/datasource/RawResourceDataSource:opened	Z
+    //   102: aload_0
+    //   103: getfield 62	com/tencent/oskplayer/datasource/RawResourceDataSource:listener	Lcom/tencent/oskplayer/datasource/TransferListener;
+    //   106: astore_2
+    //   107: aload_2
+    //   108: ifnull +9 -> 117
+    //   111: aload_2
+    //   112: invokeinterface 116 1 0
+    //   117: aload_1
+    //   118: athrow
+    //   119: astore_1
+    //   120: goto +13 -> 133
+    //   123: astore_1
+    //   124: new 118	com/tencent/oskplayer/datasource/RawResourceDataSource$RawResourceDataSourceException
+    //   127: dup
+    //   128: aload_1
+    //   129: invokespecial 121	com/tencent/oskplayer/datasource/RawResourceDataSource$RawResourceDataSourceException:<init>	(Ljava/io/IOException;)V
+    //   132: athrow
+    //   133: aload_0
+    //   134: aconst_null
+    //   135: putfield 100	com/tencent/oskplayer/datasource/RawResourceDataSource:inputStream	Ljava/io/InputStream;
+    //   138: aload_0
+    //   139: getfield 106	com/tencent/oskplayer/datasource/RawResourceDataSource:assetFileDescriptor	Landroid/content/res/AssetFileDescriptor;
+    //   142: ifnull +10 -> 152
+    //   145: aload_0
+    //   146: getfield 106	com/tencent/oskplayer/datasource/RawResourceDataSource:assetFileDescriptor	Landroid/content/res/AssetFileDescriptor;
+    //   149: invokevirtual 109	android/content/res/AssetFileDescriptor:close	()V
+    //   152: aload_0
+    //   153: aconst_null
+    //   154: putfield 106	com/tencent/oskplayer/datasource/RawResourceDataSource:assetFileDescriptor	Landroid/content/res/AssetFileDescriptor;
+    //   157: aload_0
+    //   158: getfield 111	com/tencent/oskplayer/datasource/RawResourceDataSource:opened	Z
+    //   161: ifeq +23 -> 184
+    //   164: aload_0
+    //   165: iconst_0
+    //   166: putfield 111	com/tencent/oskplayer/datasource/RawResourceDataSource:opened	Z
+    //   169: aload_0
+    //   170: getfield 62	com/tencent/oskplayer/datasource/RawResourceDataSource:listener	Lcom/tencent/oskplayer/datasource/TransferListener;
+    //   173: astore_2
+    //   174: aload_2
+    //   175: ifnull +9 -> 184
+    //   178: aload_2
+    //   179: invokeinterface 116 1 0
+    //   184: aload_1
+    //   185: athrow
+    //   186: astore_1
+    //   187: goto +13 -> 200
+    //   190: astore_1
+    //   191: new 118	com/tencent/oskplayer/datasource/RawResourceDataSource$RawResourceDataSourceException
+    //   194: dup
+    //   195: aload_1
+    //   196: invokespecial 121	com/tencent/oskplayer/datasource/RawResourceDataSource$RawResourceDataSourceException:<init>	(Ljava/io/IOException;)V
+    //   199: athrow
+    //   200: aload_0
+    //   201: aconst_null
+    //   202: putfield 106	com/tencent/oskplayer/datasource/RawResourceDataSource:assetFileDescriptor	Landroid/content/res/AssetFileDescriptor;
+    //   205: aload_0
+    //   206: getfield 111	com/tencent/oskplayer/datasource/RawResourceDataSource:opened	Z
+    //   209: ifeq +23 -> 232
+    //   212: aload_0
+    //   213: iconst_0
+    //   214: putfield 111	com/tencent/oskplayer/datasource/RawResourceDataSource:opened	Z
+    //   217: aload_0
+    //   218: getfield 62	com/tencent/oskplayer/datasource/RawResourceDataSource:listener	Lcom/tencent/oskplayer/datasource/TransferListener;
+    //   221: astore_2
+    //   222: aload_2
+    //   223: ifnull +9 -> 232
+    //   226: aload_2
+    //   227: invokeinterface 116 1 0
+    //   232: aload_1
+    //   233: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	229	0	this	RawResourceDataSource
-    //   72	6	1	localIOException1	IOException
-    //   82	35	1	localObject1	Object
-    //   118	6	1	localIOException2	IOException
-    //   128	54	1	localObject2	Object
-    //   183	6	1	localIOException3	IOException
-    //   193	35	1	localObject3	Object
+    //   0	234	0	this	RawResourceDataSource
+    //   59	6	1	localTransferListener1	TransferListener
+    //   71	1	1	localObject1	Object
+    //   75	43	1	localIOException1	IOException
+    //   119	1	1	localObject2	Object
+    //   123	62	1	localIOException2	IOException
+    //   186	1	1	localObject3	Object
+    //   190	43	1	localIOException3	IOException
+    //   106	121	2	localTransferListener2	TransferListener
     // Exception table:
     //   from	to	target	type
-    //   24	38	72	java/io/IOException
-    //   24	38	82	finally
-    //   73	82	82	finally
-    //   5	19	118	java/io/IOException
-    //   5	19	128	finally
-    //   119	128	128	finally
-    //   134	148	183	java/io/IOException
-    //   134	148	193	finally
-    //   184	193	193	finally
+    //   24	38	71	finally
+    //   76	85	71	finally
+    //   24	38	75	java/io/IOException
+    //   5	19	119	finally
+    //   124	133	119	finally
+    //   5	19	123	java/io/IOException
+    //   138	152	186	finally
+    //   191	200	186	finally
+    //   138	152	190	java/io/IOException
   }
   
   public FileType getFileType()
@@ -201,7 +215,10 @@ public class RawResourceDataSource
   
   public String getLogTag()
   {
-    return this.extraLogTag + "RawResourceDataSource";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.extraLogTag);
+    localStringBuilder.append("RawResourceDataSource");
+    return localStringBuilder.toString();
   }
   
   public long getTotalLength()
@@ -211,29 +228,30 @@ public class RawResourceDataSource
   
   public String getUri()
   {
-    if (this.uri != null) {
-      return this.uri.toString();
+    Uri localUri = this.uri;
+    if (localUri != null) {
+      return localUri.toString();
     }
     return null;
   }
   
   public long open(DataSpec paramDataSpec)
   {
-    long l1 = -1L;
     try
     {
       this.uri = paramDataSpec.uri;
-      if (!TextUtils.equals("android.resource", this.uri.getScheme())) {
-        throw new RawResourceDataSource.RawResourceDataSourceException("URI must use scheme android.resource");
-      }
+      boolean bool = TextUtils.equals("android.resource", this.uri.getScheme());
+      if (!bool) {}
     }
     catch (IOException paramDataSpec)
     {
+      int i;
+      label245:
       throw new RawResourceDataSource.RawResourceDataSourceException(paramDataSpec);
     }
     try
     {
-      int i = Integer.parseInt(this.uri.getLastPathSegment());
+      i = Integer.parseInt(this.uri.getLastPathSegment());
       this.assetFileDescriptor = this.resources.openRawResourceFd(i);
       this.assetSize = this.assetFileDescriptor.getLength();
       this.bytesAvailable = (this.assetSize - paramDataSpec.position);
@@ -242,80 +260,77 @@ public class RawResourceDataSource
         this.mimeType = URLConnection.guessContentTypeFromStream(this.inputStream);
       }
       this.inputStream.skip(this.assetFileDescriptor.getStartOffset());
-      if (this.inputStream.skip(paramDataSpec.position) < paramDataSpec.position) {
-        throw new EOFException();
+      if (this.inputStream.skip(paramDataSpec.position) >= paramDataSpec.position)
+      {
+        long l2 = paramDataSpec.length;
+        long l1 = -1L;
+        if (l2 != -1L)
+        {
+          this.bytesRemaining = paramDataSpec.length;
+        }
+        else
+        {
+          l2 = this.assetFileDescriptor.getLength();
+          if (l2 != -1L) {
+            l1 = l2 - paramDataSpec.position;
+          }
+          this.bytesRemaining = l1;
+        }
+        this.opened = true;
+        paramDataSpec = this.listener;
+        if (paramDataSpec != null) {
+          paramDataSpec.onTransferStart();
+        }
+        return this.bytesRemaining;
       }
+      throw new EOFException();
     }
     catch (NumberFormatException paramDataSpec)
     {
-      throw new RawResourceDataSource.RawResourceDataSourceException("Resource identifier must be an integer.");
+      break label245;
     }
-    if (paramDataSpec.length != -1L)
-    {
-      this.bytesRemaining = paramDataSpec.length;
-      this.opened = true;
-      if (this.listener != null) {
-        this.listener.onTransferStart();
-      }
-      return this.bytesRemaining;
-    }
-    long l2 = this.assetFileDescriptor.getLength();
-    if (l2 == -1L) {}
-    for (;;)
-    {
-      this.bytesRemaining = l1;
-      break;
-      l1 = paramDataSpec.position;
-      l1 = l2 - l1;
-    }
+    throw new RawResourceDataSource.RawResourceDataSourceException("Resource identifier must be an integer.");
+    throw new RawResourceDataSource.RawResourceDataSourceException("URI must use scheme android.resource");
   }
   
   public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    int j = -1;
-    int i;
     if (paramInt2 == 0) {
-      i = 0;
+      return 0;
     }
-    for (;;)
+    long l1 = this.bytesRemaining;
+    if (l1 == 0L) {
+      return -1;
+    }
+    long l2;
+    if (l1 != -1L) {
+      l2 = paramInt2;
+    }
+    try
     {
-      return i;
-      i = j;
-      if (this.bytesRemaining != 0L) {
-        try
-        {
-          if (this.bytesRemaining == -1L) {}
-          for (;;)
-          {
-            paramInt1 = this.inputStream.read(paramArrayOfByte, paramInt1, paramInt2);
-            if (paramInt1 != -1) {
-              break label111;
-            }
-            i = j;
-            if (this.bytesRemaining == -1L) {
-              break;
-            }
-            throw new RawResourceDataSource.RawResourceDataSourceException(new EOFException());
-            long l = Math.min(this.bytesRemaining, paramInt2);
-            paramInt2 = (int)l;
-          }
-          if (this.bytesRemaining == -1L) {
-            break label133;
-          }
+      paramInt2 = (int)Math.min(l1, l2);
+      paramInt1 = this.inputStream.read(paramArrayOfByte, paramInt1, paramInt2);
+      if (paramInt1 == -1)
+      {
+        if (this.bytesRemaining == -1L) {
+          return -1;
         }
-        catch (IOException paramArrayOfByte)
-        {
-          throw new RawResourceDataSource.RawResourceDataSourceException(paramArrayOfByte);
-        }
+        throw new RawResourceDataSource.RawResourceDataSourceException(new EOFException());
       }
+      l1 = this.bytesRemaining;
+      if (l1 != -1L) {
+        this.bytesRemaining = (l1 - paramInt1);
+      }
+      paramArrayOfByte = this.listener;
+      if (paramArrayOfByte != null) {
+        paramArrayOfByte.onBytesTransferred(paramInt1);
+      }
+      return paramInt1;
     }
-    label111:
-    this.bytesRemaining -= paramInt1;
-    label133:
-    if (this.listener != null) {
-      this.listener.onBytesTransferred(paramInt1);
+    catch (IOException paramArrayOfByte)
+    {
+      throw new RawResourceDataSource.RawResourceDataSourceException(paramArrayOfByte);
     }
-    return paramInt1;
   }
   
   public void setLogTag(String paramString)
@@ -325,7 +340,7 @@ public class RawResourceDataSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.datasource.RawResourceDataSource
  * JD-Core Version:    0.7.0.1
  */

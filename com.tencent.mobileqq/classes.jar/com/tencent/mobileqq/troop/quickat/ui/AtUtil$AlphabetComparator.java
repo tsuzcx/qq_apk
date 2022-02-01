@@ -17,52 +17,36 @@ class AtUtil$AlphabetComparator
   
   public int a(ChatHistoryTroopMemberFragment.ATroopMember paramATroopMember1, ChatHistoryTroopMemberFragment.ATroopMember paramATroopMember2)
   {
-    int j = 5;
+    boolean bool = AtUtil.b(paramATroopMember1.jdField_a_of_type_JavaLangString, this.a);
+    int j = 3;
     int i;
-    if (AtUtil.b(paramATroopMember1.jdField_a_of_type_JavaLangString, this.a)) {
+    if (bool) {
       i = 5;
-    }
-    for (;;)
-    {
-      if (AtUtil.b(paramATroopMember2.jdField_a_of_type_JavaLangString, this.a)) {}
-      for (;;)
-      {
-        if (i != j)
-        {
-          return j - i;
-          if (AtUtil.a(paramATroopMember1.jdField_a_of_type_JavaLangString, this.a))
-          {
-            i = 3;
-            break;
-          }
-          if (!paramATroopMember1.jdField_a_of_type_Boolean) {
-            break label134;
-          }
-          i = 1;
-          break;
-          if (AtUtil.a(paramATroopMember2.jdField_a_of_type_JavaLangString, this.a))
-          {
-            j = 3;
-            continue;
-          }
-          if (!paramATroopMember2.jdField_a_of_type_Boolean) {
-            break label128;
-          }
-          j = 1;
-          continue;
-        }
-        return ChnToSpell.a(AtUtil.c(paramATroopMember1), 1).compareToIgnoreCase(ChnToSpell.a(AtUtil.c(paramATroopMember2), 1));
-        label128:
-        j = 0;
-      }
-      label134:
+    } else if (AtUtil.a(paramATroopMember1.jdField_a_of_type_JavaLangString, this.a)) {
+      i = 3;
+    } else if (paramATroopMember1.jdField_a_of_type_Boolean) {
+      i = 1;
+    } else {
       i = 0;
     }
+    if (AtUtil.b(paramATroopMember2.jdField_a_of_type_JavaLangString, this.a)) {
+      j = 5;
+    } else if (!AtUtil.a(paramATroopMember2.jdField_a_of_type_JavaLangString, this.a)) {
+      if (paramATroopMember2.jdField_a_of_type_Boolean) {
+        j = 1;
+      } else {
+        j = 0;
+      }
+    }
+    if (i != j) {
+      return j - i;
+    }
+    return ChnToSpell.a(AtUtil.c(paramATroopMember1), 1).compareToIgnoreCase(ChnToSpell.a(AtUtil.c(paramATroopMember2), 1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.quickat.ui.AtUtil.AlphabetComparator
  * JD-Core Version:    0.7.0.1
  */

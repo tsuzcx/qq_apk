@@ -24,20 +24,21 @@ public abstract class AssetReaderOutput
   public final CMSampleBuffer copyNextSampleBuffer()
   {
     CMSampleBuffer localCMSampleBuffer = nextSampleBuffer();
-    if (localCMSampleBuffer.getTime().getTimeUs() > 0L) {}
-    do
-    {
-      do
-      {
-        return localCMSampleBuffer;
-        if (localCMSampleBuffer.getState().getStateCode() != -1L) {
-          break;
-        }
-      } while (this.statusListener == null);
-      this.statusListener.statusChanged(this, AssetReader.AVAssetReaderStatus.AssetReaderStatusCompleted);
+    if (localCMSampleBuffer.getTime().getTimeUs() > 0L) {
       return localCMSampleBuffer;
-    } while (this.statusListener == null);
-    this.statusListener.statusChanged(this, AssetReader.AVAssetReaderStatus.AssetReaderStatusFailed);
+    }
+    if (localCMSampleBuffer.getState().getStateCode() == -1L)
+    {
+      localStatusListener = this.statusListener;
+      if (localStatusListener != null) {
+        localStatusListener.statusChanged(this, AssetReader.AVAssetReaderStatus.AssetReaderStatusCompleted);
+      }
+      return localCMSampleBuffer;
+    }
+    AssetReaderOutput.StatusListener localStatusListener = this.statusListener;
+    if (localStatusListener != null) {
+      localStatusListener.statusChanged(this, AssetReader.AVAssetReaderStatus.AssetReaderStatusFailed);
+    }
     return localCMSampleBuffer;
   }
   
@@ -84,7 +85,7 @@ public abstract class AssetReaderOutput
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tav.core.AssetReaderOutput
  * JD-Core Version:    0.7.0.1
  */

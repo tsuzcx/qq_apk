@@ -50,7 +50,7 @@ public class ForwardTroopStoryMsgOption
     ((RelativeLayout)localObject3).addView(localURLImageView, new RelativeLayout.LayoutParams(-1, -1));
     Object localObject5 = new ImageView(this.jdField_a_of_type_AndroidAppActivity);
     ((ImageView)localObject5).setScaleType(ImageView.ScaleType.FIT_XY);
-    ((ImageView)localObject5).setImageResource(2130839727);
+    ((ImageView)localObject5).setImageResource(2130839585);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     int m = DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 8.0F);
     localLayoutParams.setMargins(0, m, m, 0);
@@ -86,14 +86,12 @@ public class ForwardTroopStoryMsgOption
         paramQQCustomDialog.restartDownload();
       }
       localURLImageView.setImageDrawable(paramQQCustomDialog);
+      return true;
     }
     catch (Exception paramQQCustomDialog)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.qqstory.troopstory.share", 2, "addStructView:", paramQQCustomDialog);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.qqstory.troopstory.share", 2, "addStructView:", paramQQCustomDialog);
       }
     }
     return true;
@@ -113,7 +111,7 @@ public class ForwardTroopStoryMsgOption
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardTroopStoryMsgOption
  * JD-Core Version:    0.7.0.1
  */

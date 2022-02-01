@@ -176,59 +176,64 @@ public final class TUtils
       {
         if (!evaluatedDeviceNeedsSetOutputSurfaceWorkaround)
         {
+          Object localObject1;
           if ("dangal".equals(Build.DEVICE))
           {
             deviceNeedsSetOutputSurfaceWorkaround = true;
-            if (LogUtils.isLogEnable()) {
-              LogUtils.d("TUtils", "deviceNeedsSetOutputSurfaceWorkaround:" + deviceNeedsSetOutputSurfaceWorkaround);
-            }
-            evaluatedDeviceNeedsSetOutputSurfaceWorkaround = true;
           }
+          else if ((Build.VERSION.SDK_INT <= 27) && ("HWEML".equals(Build.DEVICE)))
+          {
+            deviceNeedsSetOutputSurfaceWorkaround = true;
+          }
+          else if (Build.VERSION.SDK_INT < 27)
+          {
+            if (sBlackDevices.contains(Build.DEVICE)) {
+              deviceNeedsSetOutputSurfaceWorkaround = true;
+            }
+            localObject1 = Build.MODEL;
+            i = ((String)localObject1).hashCode();
+            if (i != -594534941)
+            {
+              if (i != 2006354)
+              {
+                if ((i != 2006367) || (!((String)localObject1).equals("AFTN"))) {
+                  break label222;
+                }
+                i = 1;
+                break label224;
+              }
+              if (!((String)localObject1).equals("AFTA")) {
+                break label222;
+              }
+              i = 0;
+              break label224;
+            }
+            if (!((String)localObject1).equals("JSN-L21")) {
+              break label222;
+            }
+            i = 2;
+            break label224;
+            deviceNeedsSetOutputSurfaceWorkaround = true;
+          }
+          if (LogUtils.isLogEnable())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("deviceNeedsSetOutputSurfaceWorkaround:");
+            ((StringBuilder)localObject1).append(deviceNeedsSetOutputSurfaceWorkaround);
+            LogUtils.d("TUtils", ((StringBuilder)localObject1).toString());
+          }
+          evaluatedDeviceNeedsSetOutputSurfaceWorkaround = true;
         }
-        else {
-          return deviceNeedsSetOutputSurfaceWorkaround;
-        }
-        if ((Build.VERSION.SDK_INT <= 27) && ("HWEML".equals(Build.DEVICE)))
+        else
         {
-          deviceNeedsSetOutputSurfaceWorkaround = true;
-          continue;
-        }
-        if (Build.VERSION.SDK_INT >= 27) {
-          continue;
+          return deviceNeedsSetOutputSurfaceWorkaround;
         }
       }
       finally {}
-      if (sBlackDevices.contains(Build.DEVICE)) {
-        deviceNeedsSetOutputSurfaceWorkaround = true;
-      }
-      String str = Build.MODEL;
+      label222:
       int i = -1;
-      switch (str.hashCode())
-      {
-      case 2006354: 
-        deviceNeedsSetOutputSurfaceWorkaround = true;
-        continue;
-        if (str.equals("AFTA")) {
-          i = 0;
-        }
-        break;
-      case 2006367: 
-        if (str.equals("AFTN")) {
-          i = 1;
-        }
-        break;
-      case -594534941: 
-        boolean bool = str.equals("JSN-L21");
-        if (bool) {
-          i = 2;
-        }
-        break;
-      default: 
-        switch (i)
-        {
-        }
-        break;
-      }
+      label224:
+      if ((i == 0) || (i == 1) || (i == 2)) {}
     }
   }
   
@@ -248,71 +253,91 @@ public final class TUtils
   
   public static int getCodecMaxInputSize(@NonNull String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    int j = 2;
-    if ((paramInt1 == -1) || (paramInt2 == -1)) {
-      return -1;
-    }
-    label76:
-    int i;
-    switch (paramString.hashCode())
+    if (paramInt1 != -1)
     {
-    default: 
-      i = -1;
-    }
-    for (;;)
-    {
+      if (paramInt2 == -1) {
+        return -1;
+      }
+      int i = paramString.hashCode();
+      int j = 4;
       switch (i)
       {
       default: 
-        return -1;
-        if (!paramString.equals("video/3gpp")) {
-          break label76;
+        break;
+      case 1599127257: 
+        if (paramString.equals("video/x-vnd.on2.vp9")) {
+          i = 5;
         }
-        i = 0;
-        continue;
-        if (!paramString.equals("video/mp4v-es")) {
-          break label76;
+        break;
+      case 1599127256: 
+        if (paramString.equals("video/x-vnd.on2.vp8")) {
+          i = 3;
         }
-        i = 1;
-        continue;
-        if (!paramString.equals("video/avc")) {
-          break label76;
+        break;
+      case 1331836730: 
+        if (paramString.equals("video/avc")) {
+          i = 2;
         }
-        i = 2;
-        continue;
-        if (!paramString.equals("video/x-vnd.on2.vp8")) {
-          break label76;
+        break;
+      case 1187890754: 
+        if (paramString.equals("video/mp4v-es")) {
+          i = 1;
         }
-        i = 3;
-        continue;
-        if (!paramString.equals("video/hevc")) {
-          break label76;
+        break;
+      case -1662541442: 
+        if (paramString.equals("video/hevc")) {
+          i = 4;
         }
-        i = 4;
-        continue;
-        if (!paramString.equals("video/x-vnd.on2.vp9")) {
-          break label76;
+        break;
+      case -1664118616: 
+        if (paramString.equals("video/3gpp")) {
+          i = 0;
         }
-        i = 5;
+        break;
       }
-    }
-    paramInt1 *= paramInt2;
-    paramInt2 = j;
-    for (;;)
-    {
-      return paramInt1 * 3 / (paramInt2 * 2);
-      if (("BRAVIA 4K 2015".equals(Build.MODEL)) || (("Amazon".equals(Build.MANUFACTURER)) && (("KFSOWI".equals(Build.MODEL)) || (("AFTS".equals(Build.MODEL)) && (paramBoolean))))) {
-        return -1;
+      i = -1;
+      if ((i != 0) && (i != 1)) {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if ((i != 4) && (i != 5)) {
+              return -1;
+            }
+            paramInt2 = paramInt1 * paramInt2;
+            paramInt1 = j;
+            break label320;
+          }
+        }
+        else
+        {
+          if (!"BRAVIA 4K 2015".equals(Build.MODEL))
+          {
+            if ("Amazon".equals(Build.MANUFACTURER))
+            {
+              if ("KFSOWI".equals(Build.MODEL)) {
+                break label306;
+              }
+              if (("AFTS".equals(Build.MODEL)) && (paramBoolean)) {
+                return -1;
+              }
+            }
+            paramInt1 = ceilDivide(paramInt1, 16) * ceilDivide(paramInt2, 16) * 16 * 16;
+            break label312;
+          }
+          label306:
+          return -1;
+        }
       }
-      paramInt1 = ceilDivide(paramInt1, 16) * ceilDivide(paramInt2, 16) * 16 * 16;
-      paramInt2 = j;
-      continue;
       paramInt1 *= paramInt2;
-      paramInt2 = j;
-      continue;
-      paramInt1 *= paramInt2;
-      paramInt2 = 4;
+      label312:
+      i = 2;
+      paramInt2 = paramInt1;
+      paramInt1 = i;
+      label320:
+      return paramInt2 * 3 / (paramInt1 * 2);
     }
+    return -1;
   }
   
   @NonNull
@@ -320,11 +345,15 @@ public final class TUtils
   {
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    while (i < CSD_INDEX_ARRAY.length)
+    for (;;)
     {
-      ByteBuffer localByteBuffer = paramMediaFormat.getByteBuffer(CSD_INDEX_ARRAY[i]);
-      if (localByteBuffer != null) {
-        localArrayList.add(localByteBuffer.array());
+      Object localObject = CSD_INDEX_ARRAY;
+      if (i >= localObject.length) {
+        break;
+      }
+      localObject = paramMediaFormat.getByteBuffer(localObject[i]);
+      if (localObject != null) {
+        localArrayList.add(((ByteBuffer)localObject).array());
       }
       i += 1;
     }
@@ -401,14 +430,17 @@ public final class TUtils
     int i = 0;
     while (i < paramList.size())
     {
-      paramMediaFormat.setByteBuffer("csd-" + i, ByteBuffer.wrap((byte[])paramList.get(i)));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("csd-");
+      localStringBuilder.append(i);
+      paramMediaFormat.setByteBuffer(localStringBuilder.toString(), ByteBuffer.wrap((byte[])paramList.get(i)));
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmediacodec.util.TUtils
  * JD-Core Version:    0.7.0.1
  */

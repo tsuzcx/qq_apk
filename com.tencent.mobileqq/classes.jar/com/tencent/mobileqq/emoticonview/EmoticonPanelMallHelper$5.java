@@ -9,42 +9,34 @@ class EmoticonPanelMallHelper$5
   
   public void run()
   {
-    List localList = this.this$0.mPanelController.panelDataList;
-    EmotionPanelInfo localEmotionPanelInfo;
-    int i;
+    List localList = ((EmoticonPanelController)this.this$0.mPanelController).getPanelDataList();
     if (localList != null)
     {
-      localEmotionPanelInfo = null;
-      i = 0;
+      EmotionPanelInfo localEmotionPanelInfo = null;
+      int i = 0;
       int j = localList.size();
-      if (i >= j) {
-        break label107;
-      }
-      localEmotionPanelInfo = (EmotionPanelInfo)localList.get(i);
-      if ((localEmotionPanelInfo == null) || (localEmotionPanelInfo.type != 9)) {
-        break label65;
-      }
-    }
-    for (;;)
-    {
-      if (i == -1) {}
-      label65:
-      while ((EmoticonPanelController.sLastSelectedSecondTabIndex != i) || (this.this$0.mPanelController.pageAdapter == null))
+      while (i < j)
       {
-        return;
+        localEmotionPanelInfo = (EmotionPanelInfo)localList.get(i);
+        if ((localEmotionPanelInfo != null) && (localEmotionPanelInfo.type == 9)) {
+          break label74;
+        }
         i += 1;
-        break;
       }
-      this.this$0.mPanelController.pageAdapter.refreshListViewAdapter(localEmotionPanelInfo);
-      return;
-      label107:
       i = -1;
+      label74:
+      if (i == -1) {
+        return;
+      }
+      if ((BasePanelModel.sLastSelectedSecondTabIndex == i) && (((EmoticonPanelController)this.this$0.mPanelController).getPageAdapter() != null)) {
+        ((EmoticonPanelController)this.this$0.mPanelController).getPageAdapter().refreshListViewAdapter(localEmotionPanelInfo);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.5
  * JD-Core Version:    0.7.0.1
  */

@@ -16,13 +16,14 @@ import com.tencent.mobileqq.app.proxy.BaseProxy;
 import com.tencent.mobileqq.app.proxy.BaseProxyManager;
 import com.tencent.mobileqq.app.proxy.ProxyListener;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import com.tencent.mobileqq.filemanager.api.IQQFileSelectorUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.persistence.TableBuilder;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
 import com.tencent.mobileqq.search.IContactSearchable;
 import com.tencent.mobileqq.search.util.SearchUtils;
@@ -49,7 +50,7 @@ import mqq.os.MqqHandler;
 public class FileManagerProxy
   extends BaseProxy
 {
-  private static Handler jdField_a_of_type_AndroidOsHandler = null;
+  private static Handler jdField_a_of_type_AndroidOsHandler;
   private final int jdField_a_of_type_Int = 2000;
   private long jdField_a_of_type_Long = 0L;
   List<FileManagerEntity> jdField_a_of_type_JavaUtilList = null;
@@ -72,233 +73,163 @@ public class FileManagerProxy
     List localList = TableBuilder.getValidField(paramEntity.getClass());
     int j = localList.size();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j)
-      {
-        Object localObject1 = (Field)localList.get(i);
-        String str = ((Field)localObject1).getName();
-        if (!((Field)localObject1).isAccessible()) {
-          ((Field)localObject1).setAccessible(true);
-        }
-        try
-        {
-          localObject1 = ((Field)localObject1).get(paramEntity);
-          if ((localObject1 instanceof Integer))
-          {
-            localContentValues.put(str, (Integer)localObject1);
-            i += 1;
-          }
-        }
-        catch (IllegalArgumentException localIllegalArgumentException)
-        {
-          for (;;)
-          {
-            localIllegalArgumentException.printStackTrace();
-            Object localObject2 = null;
-          }
-        }
-        catch (IllegalAccessException localIllegalAccessException)
-        {
-          for (;;)
-          {
-            localIllegalAccessException.printStackTrace();
-            Object localObject3 = null;
-            continue;
-            if ((localObject3 instanceof Long)) {
-              localContentValues.put(str, (Long)localObject3);
-            } else if ((localObject3 instanceof String)) {
-              localContentValues.put(str, (String)localObject3);
-            } else if ((localObject3 instanceof byte[])) {
-              localContentValues.put(str, (byte[])localObject3);
-            } else if ((localObject3 instanceof Short)) {
-              localContentValues.put(str, (Short)localObject3);
-            } else if ((localObject3 instanceof Boolean)) {
-              localContentValues.put(str, (Boolean)localObject3);
-            } else if ((localObject3 instanceof Double)) {
-              localContentValues.put(str, (Double)localObject3);
-            } else if ((localObject3 instanceof Float)) {
-              localContentValues.put(str, (Float)localObject3);
-            } else if ((localObject3 instanceof Byte)) {
-              localContentValues.put(str, (Byte)localObject3);
-            }
-          }
-        }
+      Object localObject2 = (Field)localList.get(i);
+      String str = ((Field)localObject2).getName();
+      if (!((Field)localObject2).isAccessible()) {
+        ((Field)localObject2).setAccessible(true);
       }
+      Object localObject1 = null;
+      try
+      {
+        localObject2 = ((Field)localObject2).get(paramEntity);
+        localObject1 = localObject2;
+      }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        localIllegalAccessException.printStackTrace();
+      }
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        localIllegalArgumentException.printStackTrace();
+      }
+      if ((localObject1 instanceof Integer)) {
+        localContentValues.put(str, (Integer)localObject1);
+      } else if ((localObject1 instanceof Long)) {
+        localContentValues.put(str, (Long)localObject1);
+      } else if ((localObject1 instanceof String)) {
+        localContentValues.put(str, (String)localObject1);
+      } else if ((localObject1 instanceof byte[])) {
+        localContentValues.put(str, (byte[])localObject1);
+      } else if ((localObject1 instanceof Short)) {
+        localContentValues.put(str, (Short)localObject1);
+      } else if ((localObject1 instanceof Boolean)) {
+        localContentValues.put(str, (Boolean)localObject1);
+      } else if ((localObject1 instanceof Double)) {
+        localContentValues.put(str, (Double)localObject1);
+      } else if ((localObject1 instanceof Float)) {
+        localContentValues.put(str, (Float)localObject1);
+      } else if ((localObject1 instanceof Byte)) {
+        localContentValues.put(str, (Byte)localObject1);
+      }
+      i += 1;
     }
     return localContentValues;
   }
   
   private boolean a(int paramInt)
   {
-    for (;;)
+    try
     {
-      boolean bool;
-      FileManagerEntity localFileManagerEntity;
-      try
+      if (this.d == null) {
+        init();
+      }
+      int i = this.d.size();
+      if (i == 0) {
+        return false;
+      }
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("select * from ( select * from ");
+      ((StringBuilder)localObject1).append(FileManagerEntity.tableName());
+      ((StringBuilder)localObject1).append(" where srvTime <= ");
+      ((StringBuilder)localObject1).append(String.valueOf(((FileManagerEntity)this.d.get(this.d.size() - 1)).srvTime));
+      ((StringBuilder)localObject1).append(" and  nSessionId != ");
+      ((StringBuilder)localObject1).append(String.valueOf(((FileManagerEntity)this.d.get(this.d.size() - 1)).nSessionId));
+      ((StringBuilder)localObject1).append("  order by srvTime desc limit ");
+      ((StringBuilder)localObject1).append(paramInt);
+      ((StringBuilder)localObject1).append(") order by srvTime desc");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject1 = this.app.getEntityManagerFactory().createEntityManager().rawQuery(FileManagerEntity.class, (String)localObject1, null);
+      if (localObject1 == null) {
+        return false;
+      }
+      paramInt = ((List)localObject1).size();
+      if (paramInt == 0) {
+        return false;
+      }
+      List localList = ((IQQFileSelectorUtil)QRoute.api(IQQFileSelectorUtil.class)).getAllApps(BaseApplicationImpl.getContext());
+      Iterator localIterator1 = ((List)localObject1).iterator();
+      while (localIterator1.hasNext())
       {
-        if (this.d == null) {
-          init();
-        }
-        int i = this.d.size();
-        if (i == 0)
-        {
-          bool = false;
-          return bool;
-        }
-        Object localObject1 = "select * from ( select * from " + FileManagerEntity.tableName() + " where srvTime <= " + String.valueOf(((FileManagerEntity)this.d.get(this.d.size() - 1)).srvTime) + " and  nSessionId != " + String.valueOf(((FileManagerEntity)this.d.get(this.d.size() - 1)).nSessionId) + "  order by srvTime desc limit " + paramInt + ") order by srvTime desc";
-        localObject1 = this.app.getEntityManagerFactory().createEntityManager().rawQuery(FileManagerEntity.class, (String)localObject1, null);
-        if (localObject1 == null)
-        {
-          bool = false;
-          continue;
-        }
-        if (((List)localObject1).size() == 0)
-        {
-          bool = false;
-          continue;
-        }
-        List localList = FileCategoryUtil.a(BaseApplicationImpl.getContext());
-        Iterator localIterator1 = ((List)localObject1).iterator();
-        if (!localIterator1.hasNext()) {
-          break label416;
-        }
-        localFileManagerEntity = (FileManagerEntity)localIterator1.next();
-        if ((localFileManagerEntity.nFileType == 5) && (localFileManagerEntity.getCloudType() == 3) && (!FileUtil.a(localFileManagerEntity.getFilePath())) && (localFileManagerEntity.strApkPackageName != null) && (localFileManagerEntity.strApkPackageName.length() > 0))
+        FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator1.next();
+        if ((localFileManagerEntity.nFileType == 5) && (localFileManagerEntity.getCloudType() == 3) && (!FileUtil.b(localFileManagerEntity.getFilePath())) && (localFileManagerEntity.strApkPackageName != null) && (localFileManagerEntity.strApkPackageName.length() > 0))
         {
           Iterator localIterator2 = localList.iterator();
-          if (localIterator2.hasNext())
+          while (localIterator2.hasNext())
           {
             PackageInfo localPackageInfo = (PackageInfo)localIterator2.next();
-            if (!localFileManagerEntity.strApkPackageName.equalsIgnoreCase(localPackageInfo.packageName)) {
-              continue;
+            if (localFileManagerEntity.strApkPackageName.equalsIgnoreCase(localPackageInfo.packageName)) {
+              localFileManagerEntity.setFilePath(localPackageInfo.applicationInfo.publicSourceDir);
             }
-            localFileManagerEntity.setFilePath(localPackageInfo.applicationInfo.publicSourceDir);
-            continue;
           }
         }
-        if (this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(localFileManagerEntity.nSessionId)) != null) {
-          break label386;
+        if (this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(localFileManagerEntity.nSessionId)) == null) {
+          this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(localFileManagerEntity.nSessionId), localFileManagerEntity);
         }
+        this.d.add(this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(localFileManagerEntity.nSessionId)));
       }
-      finally {}
-      this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(localFileManagerEntity.nSessionId), localFileManagerEntity);
-      label386:
-      this.d.add(this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(localFileManagerEntity.nSessionId)));
-      continue;
-      label416:
-      paramInt = localObject2.size();
-      if (paramInt < 30) {
-        bool = false;
-      } else {
-        bool = true;
-      }
+      paramInt = ((List)localObject1).size();
+      return paramInt >= 30;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
-  /* Error */
-  private void f()
+  private void e()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: invokestatic 323	java/lang/System:currentTimeMillis	()J
-    //   6: putfield 50	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_Long	J
-    //   9: aload_0
-    //   10: getfield 36	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   13: astore 4
-    //   15: aload 4
-    //   17: ifnonnull +6 -> 23
-    //   20: aload_0
-    //   21: monitorexit
-    //   22: return
-    //   23: aload_0
-    //   24: getfield 36	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   27: invokeinterface 324 1 0
-    //   32: istore_1
-    //   33: iload_1
-    //   34: ifeq -14 -> 20
-    //   37: aload_0
-    //   38: getfield 36	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   41: invokeinterface 328 1 0
-    //   46: invokeinterface 331 1 0
-    //   51: astore 4
-    //   53: aload 4
-    //   55: invokeinterface 256 1 0
-    //   60: ifeq -40 -> 20
-    //   63: aload 4
-    //   65: invokeinterface 260 1 0
-    //   70: checkcast 333	java/util/Map$Entry
-    //   73: astore 5
-    //   75: aload 5
-    //   77: invokeinterface 336 1 0
-    //   82: checkcast 192	com/tencent/mobileqq/filemanager/data/FileManagerEntity
-    //   85: astore 6
-    //   87: aload 6
-    //   89: getfield 339	com/tencent/mobileqq/filemanager/data/FileManagerEntity:status	I
-    //   92: iconst_2
-    //   93: if_icmpeq -40 -> 53
-    //   96: aload 6
-    //   98: getfield 339	com/tencent/mobileqq/filemanager/data/FileManagerEntity:status	I
-    //   101: bipush 14
-    //   103: if_icmpeq -50 -> 53
-    //   106: aload 6
-    //   108: getfield 339	com/tencent/mobileqq/filemanager/data/FileManagerEntity:status	I
-    //   111: bipush 15
-    //   113: if_icmpeq -60 -> 53
-    //   116: aload 6
-    //   118: getfield 339	com/tencent/mobileqq/filemanager/data/FileManagerEntity:status	I
-    //   121: iconst_4
-    //   122: if_icmpeq -69 -> 53
-    //   125: aload 5
-    //   127: invokeinterface 342 1 0
-    //   132: checkcast 128	java/lang/Long
-    //   135: invokevirtual 345	java/lang/Long:longValue	()J
-    //   138: lstore_2
-    //   139: aload 4
-    //   141: invokeinterface 348 1 0
-    //   146: invokestatic 353	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   149: ifeq -96 -> 53
-    //   152: ldc_w 355
-    //   155: iconst_2
-    //   156: new 183	java/lang/StringBuilder
-    //   159: dup
-    //   160: invokespecial 184	java/lang/StringBuilder:<init>	()V
-    //   163: ldc_w 357
-    //   166: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   169: lload_2
-    //   170: invokevirtual 360	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   173: ldc_w 362
-    //   176: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   179: invokevirtual 218	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   182: invokestatic 365	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   185: goto -132 -> 53
-    //   188: astore 4
-    //   190: goto -170 -> 20
-    //   193: astore 4
-    //   195: aload_0
-    //   196: monitorexit
-    //   197: aload 4
-    //   199: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	200	0	this	FileManagerProxy
-    //   32	2	1	i	int
-    //   138	32	2	l	long
-    //   13	127	4	localObject1	Object
-    //   188	1	4	localException	Exception
-    //   193	5	4	localObject2	Object
-    //   73	53	5	localEntry	Map.Entry
-    //   85	32	6	localFileManagerEntity	FileManagerEntity
-    // Exception table:
-    //   from	to	target	type
-    //   37	53	188	java/lang/Exception
-    //   53	185	188	java/lang/Exception
-    //   2	15	193	finally
-    //   23	33	193	finally
-    //   37	53	193	finally
-    //   53	185	193	finally
+    try
+    {
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      localObject1 = this.jdField_a_of_type_JavaUtilMap;
+      if (localObject1 == null) {
+        return;
+      }
+      int i = this.jdField_a_of_type_JavaUtilMap.size();
+      if (i == 0) {
+        return;
+      }
+    }
+    finally
+    {
+      Object localObject1;
+      for (;;)
+      {
+        label56:
+        label204:
+        throw localObject2;
+      }
+    }
+    try
+    {
+      localObject1 = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      if (((Iterator)localObject1).hasNext())
+      {
+        Object localObject3 = (Map.Entry)((Iterator)localObject1).next();
+        FileManagerEntity localFileManagerEntity = (FileManagerEntity)((Map.Entry)localObject3).getValue();
+        if ((localFileManagerEntity.status == 2) || (localFileManagerEntity.status == 14) || (localFileManagerEntity.status == 15) || (localFileManagerEntity.status == 4)) {
+          break label56;
+        }
+        long l = ((Long)((Map.Entry)localObject3).getKey()).longValue();
+        ((Iterator)localObject1).remove();
+        if (!QLog.isColorLevel()) {
+          break label56;
+        }
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("remove mem entiy [");
+        ((StringBuilder)localObject3).append(l);
+        ((StringBuilder)localObject3).append("]. remove the entity for free memory");
+        QLog.d("FileManagerProxy<FileAssistant>", 2, ((StringBuilder)localObject3).toString());
+        break label56;
+      }
+    }
+    catch (Exception localException)
+    {
+      break label204;
+    }
   }
   
   public long a(int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4)
@@ -306,35 +237,33 @@ public class FileManagerProxy
     if (this.d == null) {
       init();
     }
-    Object localObject1 = ((QQAppInterface)this.app).getMessageFacade().b(String.valueOf(paramLong3), paramInt);
+    Object localObject1 = ((QQAppInterface)this.app).getMessageFacade().a(String.valueOf(paramLong3), paramInt);
     Object localObject2;
-    int i;
     if (QLog.isColorLevel())
     {
-      localObject2 = new StringBuilder().append("------->FileManager findUinSeqForCache :msgIsTroop:").append(paramInt).append(",peerUin:").append(FileManagerUtil.e(String.valueOf(paramLong3))).append(",list size:");
-      if (localObject1 == null)
-      {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("------->FileManager findUinSeqForCache :msgIsTroop:");
+      ((StringBuilder)localObject2).append(paramInt);
+      ((StringBuilder)localObject2).append(",peerUin:");
+      ((StringBuilder)localObject2).append(FileManagerUtil.d(String.valueOf(paramLong3)));
+      ((StringBuilder)localObject2).append(",list size:");
+      int i;
+      if (localObject1 == null) {
         i = 0;
-        QLog.i("FileManagerProxy<FileAssistant>", 2, i);
+      } else {
+        i = ((List)localObject1).size();
       }
+      ((StringBuilder)localObject2).append(i);
+      QLog.i("FileManagerProxy<FileAssistant>", 2, ((StringBuilder)localObject2).toString());
     }
-    else
+    if ((localObject1 != null) && (((List)localObject1).size() > 0))
     {
-      if ((localObject1 == null) || (((List)localObject1).size() <= 0)) {
-        break label256;
-      }
       localObject1 = ((List)localObject1).iterator();
-    }
-    for (;;)
-    {
-      if (((Iterator)localObject1).hasNext())
+      while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (MessageRecord)((Iterator)localObject1).next();
-        if ((((MessageRecord)localObject2).msgUid != 0L) && (((MessageRecord)localObject2).msgUid == paramLong4))
-        {
+        if ((((MessageRecord)localObject2).msgUid != 0L) && (((MessageRecord)localObject2).msgUid == paramLong4)) {
           return ((MessageRecord)localObject2).uniseq;
-          i = ((List)localObject1).size();
-          break;
         }
         if ((Math.abs(((MessageRecord)localObject2).time - paramLong2) < 30L) && (((MessageRecord)localObject2).shmsgseq == paramLong1) && (((MessageRecord)localObject2).senderuin.equals(Long.valueOf(paramLong3))))
         {
@@ -345,7 +274,6 @@ public class FileManagerProxy
         }
       }
     }
-    label256:
     localObject1 = this.d.iterator();
     while (((Iterator)localObject1).hasNext())
     {
@@ -357,396 +285,263 @@ public class FileManagerProxy
     return -1L;
   }
   
-  /* Error */
   public FileManagerEntity a(long paramLong)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 34	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
-    //   6: ifnonnull +7 -> 13
-    //   9: aload_0
-    //   10: invokevirtual 181	com/tencent/mobileqq/filemanager/data/FileManagerProxy:init	()V
-    //   13: aload_0
-    //   14: getfield 34	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
-    //   17: invokeinterface 251 1 0
-    //   22: astore 6
-    //   24: aload 6
-    //   26: invokeinterface 256 1 0
-    //   31: ifeq +32 -> 63
-    //   34: aload 6
-    //   36: invokeinterface 260 1 0
-    //   41: checkcast 192	com/tencent/mobileqq/filemanager/data/FileManagerEntity
-    //   44: astore 5
-    //   46: aload 5
-    //   48: getfield 208	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nSessionId	J
-    //   51: lstore_3
-    //   52: lload_3
-    //   53: lload_1
-    //   54: lcmp
-    //   55: ifne -31 -> 24
-    //   58: aload_0
-    //   59: monitorexit
-    //   60: aload 5
-    //   62: areturn
-    //   63: aload_0
-    //   64: getfield 40	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   67: ifnull +49 -> 116
-    //   70: aload_0
-    //   71: getfield 40	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   74: invokeinterface 251 1 0
-    //   79: astore 6
-    //   81: aload 6
-    //   83: invokeinterface 256 1 0
-    //   88: ifeq +28 -> 116
-    //   91: aload 6
-    //   93: invokeinterface 260 1 0
-    //   98: checkcast 192	com/tencent/mobileqq/filemanager/data/FileManagerEntity
-    //   101: astore 5
-    //   103: aload 5
-    //   105: getfield 208	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nSessionId	J
-    //   108: lload_1
-    //   109: lcmp
-    //   110: ifne -29 -> 81
-    //   113: goto -55 -> 58
-    //   116: aload_0
-    //   117: getfield 36	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   120: lload_1
-    //   121: invokestatic 305	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   124: invokeinterface 308 2 0
-    //   129: checkcast 192	com/tencent/mobileqq/filemanager/data/FileManagerEntity
-    //   132: astore 5
-    //   134: goto -76 -> 58
-    //   137: astore 5
-    //   139: aload_0
-    //   140: monitorexit
-    //   141: aload 5
-    //   143: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	144	0	this	FileManagerProxy
-    //   0	144	1	paramLong	long
-    //   51	2	3	l	long
-    //   44	89	5	localFileManagerEntity	FileManagerEntity
-    //   137	5	5	localObject	Object
-    //   22	70	6	localIterator	Iterator
-    // Exception table:
-    //   from	to	target	type
-    //   2	13	137	finally
-    //   13	24	137	finally
-    //   24	52	137	finally
-    //   63	81	137	finally
-    //   81	113	137	finally
-    //   116	134	137	finally
+    try
+    {
+      if (this.d == null) {
+        init();
+      }
+      Object localObject1 = this.d.iterator();
+      FileManagerEntity localFileManagerEntity;
+      long l;
+      while (((Iterator)localObject1).hasNext())
+      {
+        localFileManagerEntity = (FileManagerEntity)((Iterator)localObject1).next();
+        l = localFileManagerEntity.nSessionId;
+        if (l == paramLong) {
+          return localFileManagerEntity;
+        }
+      }
+      if (this.jdField_a_of_type_JavaUtilList != null)
+      {
+        localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localFileManagerEntity = (FileManagerEntity)((Iterator)localObject1).next();
+          l = localFileManagerEntity.nSessionId;
+          if (l == paramLong) {
+            return localFileManagerEntity;
+          }
+        }
+      }
+      localObject1 = (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+      return localObject1;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
-  /* Error */
   public FileManagerEntity a(long paramLong, String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_3
-    //   3: invokestatic 442	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   6: istore 4
-    //   8: iload 4
-    //   10: ifeq +9 -> 19
-    //   13: aconst_null
-    //   14: astore_3
-    //   15: aload_0
-    //   16: monitorexit
-    //   17: aload_3
-    //   18: areturn
-    //   19: aload_0
-    //   20: getfield 34	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
-    //   23: ifnonnull +7 -> 30
-    //   26: aload_0
-    //   27: invokevirtual 181	com/tencent/mobileqq/filemanager/data/FileManagerProxy:init	()V
-    //   30: aload_0
-    //   31: getfield 34	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
-    //   34: invokeinterface 251 1 0
-    //   39: astore 6
-    //   41: aload 6
-    //   43: invokeinterface 256 1 0
-    //   48: ifeq +63 -> 111
-    //   51: aload 6
-    //   53: invokeinterface 260 1 0
-    //   58: checkcast 192	com/tencent/mobileqq/filemanager/data/FileManagerEntity
-    //   61: astore 5
-    //   63: aload 5
-    //   65: getfield 424	com/tencent/mobileqq/filemanager/data/FileManagerEntity:peerType	I
-    //   68: iconst_1
-    //   69: if_icmpne -28 -> 41
-    //   72: aload 5
-    //   74: getfield 445	com/tencent/mobileqq/filemanager/data/FileManagerEntity:TroopUin	J
-    //   77: lload_1
-    //   78: lcmp
-    //   79: ifne -38 -> 41
-    //   82: aload 5
-    //   84: getfield 448	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strTroopFileID	Ljava/lang/String;
-    //   87: invokestatic 442	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   90: ifne -49 -> 41
-    //   93: aload_3
-    //   94: aload 5
-    //   96: getfield 448	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strTroopFileID	Ljava/lang/String;
-    //   99: invokevirtual 419	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   102: ifeq -61 -> 41
-    //   105: aload 5
-    //   107: astore_3
-    //   108: goto -93 -> 15
-    //   111: aload_0
-    //   112: getfield 36	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   115: invokeinterface 452 1 0
-    //   120: invokeinterface 455 1 0
-    //   125: astore 6
-    //   127: aload 6
-    //   129: invokeinterface 256 1 0
-    //   134: ifeq +67 -> 201
-    //   137: aload 6
-    //   139: invokeinterface 260 1 0
-    //   144: checkcast 192	com/tencent/mobileqq/filemanager/data/FileManagerEntity
-    //   147: astore 5
-    //   149: aload 5
-    //   151: getfield 424	com/tencent/mobileqq/filemanager/data/FileManagerEntity:peerType	I
-    //   154: iconst_1
-    //   155: if_icmpne -28 -> 127
-    //   158: aload 5
-    //   160: getfield 445	com/tencent/mobileqq/filemanager/data/FileManagerEntity:TroopUin	J
-    //   163: lload_1
-    //   164: lcmp
-    //   165: ifne -38 -> 127
-    //   168: aload 5
-    //   170: getfield 448	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strTroopFileID	Ljava/lang/String;
-    //   173: invokestatic 442	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   176: ifne -49 -> 127
-    //   179: aload_3
-    //   180: aload 5
-    //   182: getfield 448	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strTroopFileID	Ljava/lang/String;
-    //   185: invokevirtual 419	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   188: istore 4
-    //   190: iload 4
-    //   192: ifeq -65 -> 127
-    //   195: aload 5
-    //   197: astore_3
-    //   198: goto -183 -> 15
-    //   201: aconst_null
-    //   202: astore_3
-    //   203: goto -188 -> 15
-    //   206: astore_3
-    //   207: aload_0
-    //   208: monitorexit
-    //   209: aload_3
-    //   210: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	211	0	this	FileManagerProxy
-    //   0	211	1	paramLong	long
-    //   0	211	3	paramString	String
-    //   6	185	4	bool	boolean
-    //   61	135	5	localFileManagerEntity	FileManagerEntity
-    //   39	99	6	localIterator	Iterator
-    // Exception table:
-    //   from	to	target	type
-    //   2	8	206	finally
-    //   19	30	206	finally
-    //   30	41	206	finally
-    //   41	105	206	finally
-    //   111	127	206	finally
-    //   127	190	206	finally
+    try
+    {
+      boolean bool = TextUtils.isEmpty(paramString);
+      if (bool) {
+        return null;
+      }
+      if (this.d == null) {
+        init();
+      }
+      Iterator localIterator = this.d.iterator();
+      FileManagerEntity localFileManagerEntity;
+      while (localIterator.hasNext())
+      {
+        localFileManagerEntity = (FileManagerEntity)localIterator.next();
+        if ((localFileManagerEntity.peerType == 1) && (localFileManagerEntity.TroopUin == paramLong) && (!TextUtils.isEmpty(localFileManagerEntity.strTroopFileID)))
+        {
+          bool = paramString.equals(localFileManagerEntity.strTroopFileID);
+          if (bool) {
+            return localFileManagerEntity;
+          }
+        }
+      }
+      localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+      while (localIterator.hasNext())
+      {
+        localFileManagerEntity = (FileManagerEntity)localIterator.next();
+        if ((localFileManagerEntity.peerType == 1) && (localFileManagerEntity.TroopUin == paramLong) && (!TextUtils.isEmpty(localFileManagerEntity.strTroopFileID)))
+        {
+          bool = paramString.equals(localFileManagerEntity.strTroopFileID);
+          if (bool) {
+            return localFileManagerEntity;
+          }
+        }
+      }
+      return null;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public FileManagerEntity a(long paramLong, String paramString, int paramInt)
   {
-    if ((paramLong != -1L) && (paramString != null)) {}
-    for (;;)
-    {
-      FileManagerEntity localFileManagerEntity;
+    if ((paramLong != -1L) && (paramString != null)) {
       try
       {
-        int i = paramString.length();
-        if (i == 0)
+        if (paramString.length() != 0)
         {
-          paramString = null;
-          return paramString;
-        }
-        if (this.d == null) {
-          init();
-        }
-        localIterator = this.d.iterator();
-        if (localIterator.hasNext())
-        {
-          localFileManagerEntity = (FileManagerEntity)localIterator.next();
-          if ((localFileManagerEntity.peerUin == null) || (localFileManagerEntity.uniseq != paramLong) || (!localFileManagerEntity.peerUin.equals(paramString))) {
-            continue;
+          if (this.d == null) {
+            init();
           }
-          paramString = localFileManagerEntity;
-          if (localFileManagerEntity.cloudType != 1) {
-            continue;
+          Iterator localIterator = this.d.iterator();
+          FileManagerEntity localFileManagerEntity;
+          while (localIterator.hasNext())
+          {
+            localFileManagerEntity = (FileManagerEntity)localIterator.next();
+            if ((localFileManagerEntity.peerUin != null) && (localFileManagerEntity.uniseq == paramLong) && (localFileManagerEntity.peerUin.equals(paramString)))
+            {
+              if ((localFileManagerEntity.cloudType == 1) && (FileManagerUtil.b(localFileManagerEntity))) {
+                localFileManagerEntity.status = 16;
+              }
+              return localFileManagerEntity;
+            }
           }
-          paramString = localFileManagerEntity;
-          if (!FileManagerUtil.b(localFileManagerEntity)) {
-            continue;
+          if (this.jdField_a_of_type_JavaUtilMap != null)
+          {
+            localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+            while (localIterator.hasNext())
+            {
+              localFileManagerEntity = (FileManagerEntity)((Map.Entry)localIterator.next()).getValue();
+              if ((localFileManagerEntity.uniseq == paramLong) && (localFileManagerEntity.peerUin != null) && (localFileManagerEntity.peerUin.equals(paramString)) && (paramInt == localFileManagerEntity.peerType))
+              {
+                if ((localFileManagerEntity.cloudType == 1) && (FileManagerUtil.b(localFileManagerEntity))) {
+                  localFileManagerEntity.status = 16;
+                }
+                return localFileManagerEntity;
+              }
+            }
           }
-          localFileManagerEntity.status = 16;
-          paramString = localFileManagerEntity;
-          continue;
-        }
-        if (this.jdField_a_of_type_JavaUtilMap == null) {
-          break label275;
+          return null;
         }
       }
       finally {}
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      for (;;)
-      {
-        if (localIterator.hasNext())
-        {
-          localFileManagerEntity = (FileManagerEntity)((Map.Entry)localIterator.next()).getValue();
-          if ((localFileManagerEntity.uniseq == paramLong) && (localFileManagerEntity.peerUin != null) && (localFileManagerEntity.peerUin.equals(paramString)) && (paramInt == localFileManagerEntity.peerType))
-          {
-            paramString = localFileManagerEntity;
-            if (localFileManagerEntity.cloudType != 1) {
-              break;
-            }
-            paramString = localFileManagerEntity;
-            if (!FileManagerUtil.b(localFileManagerEntity)) {
-              break;
-            }
-            localFileManagerEntity.status = 16;
-            paramString = localFileManagerEntity;
-            break;
-          }
-        }
-      }
-      label275:
-      paramString = null;
     }
+    return null;
   }
   
   public FileManagerEntity a(String paramString)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        if (this.d == null) {
-          init();
-        }
-        Object localObject = "select * from " + FileManagerEntity.tableName() + " where Uuid = ?";
-        EntityManager localEntityManager = this.app.getEntityManagerFactory().createEntityManager();
-        if (localEntityManager == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("FileManagerProxy<FileAssistant>", 2, "get EntityManager null!");
-          }
-          paramString = null;
-          return paramString;
-        }
-        long l1 = System.currentTimeMillis();
-        paramString = localEntityManager.rawQuery(FileManagerEntity.class, (String)localObject, new String[] { SecurityUtile.encode(paramString) });
-        long l2 = System.currentTimeMillis();
-        if (paramString == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("FileManagerProxy<FileAssistant>", 2, "queryOver, but no data!");
-          }
-        }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("FileManagerProxy<FileAssistant>", 2, "query over,startTime[" + String.valueOf(l1) + "], overTime[" + String.valueOf(l2) + "]");
-          }
-          if ((paramString.size() > 1) && (QLog.isColorLevel())) {
-            QLog.w("FileManagerProxy", 2, "why size[" + String.valueOf(paramString.size()) + "] over 1?");
-          }
-          localObject = (FileManagerEntity)paramString.get(0);
-          if (localObject == null)
-          {
-            paramString = null;
-            continue;
-          }
-          this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(((FileManagerEntity)localObject).nSessionId), localObject);
-          FileCategoryUtil.a((FileManagerEntity)localObject);
-          paramString = (String)localObject;
-          if (((FileManagerEntity)localObject).cloudType != 1) {
-            continue;
-          }
-          paramString = (String)localObject;
-          if (!FileManagerUtil.b((FileManagerEntity)localObject)) {
-            continue;
-          }
-          ((FileManagerEntity)localObject).status = 16;
-          paramString = (String)localObject;
-          continue;
-        }
-        paramString = null;
+      if (this.d == null) {
+        init();
       }
-      finally {}
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("select * from ");
+      ((StringBuilder)localObject).append(FileManagerEntity.tableName());
+      ((StringBuilder)localObject).append(" where Uuid = ?");
+      localObject = ((StringBuilder)localObject).toString();
+      EntityManager localEntityManager = this.app.getEntityManagerFactory().createEntityManager();
+      if (localEntityManager == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("FileManagerProxy<FileAssistant>", 2, "get EntityManager null!");
+        }
+        return null;
+      }
+      long l1 = System.currentTimeMillis();
+      paramString = localEntityManager.rawQuery(FileManagerEntity.class, (String)localObject, new String[] { SecurityUtile.encode(paramString) });
+      long l2 = System.currentTimeMillis();
+      if (paramString == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FileManagerProxy<FileAssistant>", 2, "queryOver, but no data!");
+        }
+        return null;
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("query over,startTime[");
+        ((StringBuilder)localObject).append(String.valueOf(l1));
+        ((StringBuilder)localObject).append("], overTime[");
+        ((StringBuilder)localObject).append(String.valueOf(l2));
+        ((StringBuilder)localObject).append("]");
+        QLog.d("FileManagerProxy<FileAssistant>", 2, ((StringBuilder)localObject).toString());
+      }
+      if ((paramString.size() > 1) && (QLog.isColorLevel()))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("why size[");
+        ((StringBuilder)localObject).append(String.valueOf(paramString.size()));
+        ((StringBuilder)localObject).append("] over 1?");
+        QLog.w("FileManagerProxy", 2, ((StringBuilder)localObject).toString());
+      }
+      paramString = (FileManagerEntity)paramString.get(0);
+      if (paramString == null) {
+        return null;
+      }
+      this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramString.nSessionId), paramString);
+      ((IQQFileSelectorUtil)QRoute.api(IQQFileSelectorUtil.class)).upDataApkPathForPackageName(paramString);
+      if ((paramString.cloudType == 1) && (FileManagerUtil.b(paramString))) {
+        paramString.status = 16;
+      }
+      return paramString;
     }
+    finally {}
   }
   
   public FileManagerEntity a(String paramString, long paramLong)
   {
-    for (;;)
+    try
     {
-      Iterator localIterator;
-      FileManagerEntity localFileManagerEntity;
-      try
-      {
-        if (this.d == null) {
-          init();
-        }
-        if ((paramString == null) || (paramLong <= 0L))
-        {
-          localObject = null;
-          return localObject;
-        }
-        localIterator = this.d.iterator();
-        if (localIterator.hasNext())
-        {
-          localFileManagerEntity = (FileManagerEntity)localIterator.next();
-          if (localFileManagerEntity.nOLfileSessionId == paramLong)
-          {
-            localObject = localFileManagerEntity;
-            if (paramString.equalsIgnoreCase(localFileManagerEntity.peerUin)) {
-              continue;
-            }
-          }
-          if ((0L != localFileManagerEntity.nOLfileSessionId) || (paramLong != localFileManagerEntity.nSessionId) || (!paramString.equalsIgnoreCase(localFileManagerEntity.peerUin))) {
-            continue;
-          }
-          localFileManagerEntity.nOLfileSessionId = paramLong;
-          d(localFileManagerEntity);
-          localObject = localFileManagerEntity;
-          continue;
-        }
-        localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+      if (this.d != null) {
+        break label266;
       }
-      finally {}
+      init();
+    }
+    finally
+    {
       for (;;)
       {
-        if (localIterator.hasNext())
+        Iterator localIterator;
+        FileManagerEntity localFileManagerEntity;
+        boolean bool;
+        for (;;)
         {
-          localFileManagerEntity = (FileManagerEntity)localIterator.next();
-          if (localFileManagerEntity.nOLfileSessionId == paramLong)
-          {
-            localObject = localFileManagerEntity;
-            if (paramString.equalsIgnoreCase(localFileManagerEntity.peerUin)) {
-              break;
-            }
-          }
-          if ((0L == localFileManagerEntity.nOLfileSessionId) && (paramLong == localFileManagerEntity.nSessionId) && (paramString.equalsIgnoreCase(localFileManagerEntity.peerUin)))
-          {
-            localFileManagerEntity.nOLfileSessionId = paramLong;
-            d(localFileManagerEntity);
-            localObject = localFileManagerEntity;
-            break;
-          }
+          throw paramString;
+        }
+        label266:
+        if (paramString != null) {
+          if (paramLong > 0L) {}
         }
       }
-      Object localObject = null;
     }
+    localIterator = this.d.iterator();
+    do
+    {
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (localFileManagerEntity.nOLfileSessionId == paramLong)
+      {
+        bool = paramString.equalsIgnoreCase(localFileManagerEntity.peerUin);
+        if (bool) {
+          return localFileManagerEntity;
+        }
+      }
+    } while ((0L != localFileManagerEntity.nOLfileSessionId) || (paramLong != localFileManagerEntity.nSessionId) || (!paramString.equalsIgnoreCase(localFileManagerEntity.peerUin)));
+    localFileManagerEntity.nOLfileSessionId = paramLong;
+    d(localFileManagerEntity);
+    return localFileManagerEntity;
+    localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    while (localIterator.hasNext())
+    {
+      localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (localFileManagerEntity.nOLfileSessionId == paramLong)
+      {
+        bool = paramString.equalsIgnoreCase(localFileManagerEntity.peerUin);
+        if (bool) {
+          return localFileManagerEntity;
+        }
+      }
+      if ((0L == localFileManagerEntity.nOLfileSessionId) && (paramLong == localFileManagerEntity.nSessionId) && (paramString.equalsIgnoreCase(localFileManagerEntity.peerUin)))
+      {
+        localFileManagerEntity.nOLfileSessionId = paramLong;
+        d(localFileManagerEntity);
+        return localFileManagerEntity;
+      }
+    }
+    return null;
+    return null;
   }
   
   public List<FileManagerEntity> a()
@@ -765,446 +560,349 @@ public class FileManagerProxy
   
   public List<FileManagerEntity> a(int paramInt)
   {
-    FileManagerEntity localFileManagerEntity1 = null;
-    for (;;)
+    try
     {
-      long l1;
-      try
-      {
-        if ((this.d == null) || (this.d.isEmpty())) {
-          init();
-        }
-        Object localObject1 = "select * from ( select * from " + FileManagerEntity.tableName() + " order by srvTime desc limit " + paramInt + ") order by srvTime desc";
-        localObject3 = this.app.getEntityManagerFactory().createEntityManager();
-        l1 = System.currentTimeMillis();
-        try
-        {
-          localObject1 = ((EntityManager)localObject3).rawQuery(FileManagerEntity.class, (String)localObject1, null);
-          if (QLog.isDevelopLevel())
-          {
-            if (localObject1 != null) {
-              continue;
-            }
-            QLog.d("FileManagerProxy<FileAssistant>", 4, "QueryMoreEntity[null]");
-          }
-          localObject3 = localFileManagerEntity1;
-          if (localObject1 != null)
-          {
-            paramInt = ((List)localObject1).size();
-            if (paramInt != 0) {
-              break label238;
-            }
-            localObject3 = localFileManagerEntity1;
-          }
-          return localObject3;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          if (!QLog.isColorLevel()) {
-            break label496;
-          }
-        }
-        QLog.e("FileManagerProxy<FileAssistant>", 2, "load " + paramInt + " data,is oom!");
+      if ((this.d == null) || (this.d.isEmpty())) {
+        init();
       }
-      finally {}
-      QLog.d("FileManagerProxy<FileAssistant>", 4, "QueryMoreEntity[" + localOutOfMemoryError.size() + "]");
-      continue;
-      label238:
-      Object localObject3 = new ArrayList();
-      Iterator localIterator1 = localObject2.iterator();
-      label256:
-      label494:
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("select * from ( select * from ");
+      ((StringBuilder)localObject1).append(FileManagerEntity.tableName());
+      ((StringBuilder)localObject1).append(" order by srvTime desc limit ");
+      ((StringBuilder)localObject1).append(paramInt);
+      ((StringBuilder)localObject1).append(") order by srvTime desc");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject4 = this.app.getEntityManagerFactory().createEntityManager();
+      l1 = System.currentTimeMillis();
+    }
+    finally
+    {
+      Object localObject1;
+      Object localObject4;
+      long l1;
+      label113:
+      long l2;
       for (;;)
       {
-        if (localIterator1.hasNext())
+        label168:
+        throw localObject2;
+      }
+    }
+    try
+    {
+      localObject1 = ((EntityManager)localObject4).rawQuery(FileManagerEntity.class, (String)localObject1, null);
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      break label113;
+      Object localObject3 = null;
+      break label168;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("load ");
+      ((StringBuilder)localObject1).append(paramInt);
+      ((StringBuilder)localObject1).append(" data,is oom!");
+      QLog.e("FileManagerProxy<FileAssistant>", 2, ((StringBuilder)localObject1).toString());
+      break label562;
+      if (QLog.isDevelopLevel()) {
+        if (localObject1 == null)
         {
-          localFileManagerEntity1 = (FileManagerEntity)localIterator1.next();
+          QLog.d("FileManagerProxy<FileAssistant>", 4, "QueryMoreEntity[null]");
+        }
+        else
+        {
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("QueryMoreEntity[");
+          ((StringBuilder)localObject4).append(((List)localObject1).size());
+          ((StringBuilder)localObject4).append("]");
+          QLog.d("FileManagerProxy<FileAssistant>", 4, ((StringBuilder)localObject4).toString());
+        }
+      }
+      if ((localObject1 != null) && (((List)localObject1).size() != 0))
+      {
+        localObject4 = new ArrayList();
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          FileManagerEntity localFileManagerEntity1 = (FileManagerEntity)((Iterator)localObject1).next();
+          int i = 0;
           if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(localFileManagerEntity1.nSessionId)) == true)
           {
             localFileManagerEntity1 = (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(localFileManagerEntity1.nSessionId));
             FileManagerUtil.a(localFileManagerEntity1);
-            ((List)localObject3).add(localFileManagerEntity1);
+            ((List)localObject4).add(localFileManagerEntity1);
           }
           else
           {
-            Iterator localIterator2 = this.d.iterator();
-            while (localIterator2.hasNext())
+            Iterator localIterator = this.d.iterator();
+            FileManagerEntity localFileManagerEntity2;
+            do
             {
-              FileManagerEntity localFileManagerEntity2 = (FileManagerEntity)localIterator2.next();
-              if (localFileManagerEntity2.nSessionId == localFileManagerEntity1.nSessionId)
-              {
-                FileManagerUtil.a(localFileManagerEntity2);
-                ((List)localObject3).add(localFileManagerEntity2);
+              paramInt = i;
+              if (!localIterator.hasNext()) {
+                break;
               }
+              localFileManagerEntity2 = (FileManagerEntity)localIterator.next();
+            } while (localFileManagerEntity2.nSessionId != localFileManagerEntity1.nSessionId);
+            FileManagerUtil.a(localFileManagerEntity2);
+            ((List)localObject4).add(localFileManagerEntity2);
+            paramInt = 1;
+            if (paramInt == 0)
+            {
+              FileManagerUtil.a(localFileManagerEntity1);
+              ((List)localObject4).add(localFileManagerEntity1);
             }
           }
         }
-        else
+        l2 = System.currentTimeMillis();
+        if (QLog.isColorLevel())
         {
-          for (paramInt = 1;; paramInt = 0)
-          {
-            if (paramInt != 0) {
-              break label494;
-            }
-            FileManagerUtil.a(localFileManagerEntity1);
-            ((List)localObject3).add(localFileManagerEntity1);
-            break label256;
-            long l2 = System.currentTimeMillis();
-            if (QLog.isColorLevel()) {
-              QLog.d("FileManagerProxy<FileAssistant>", 2, "QueryMoreEntity cost[" + (l2 - l1) + "], size[" + ((List)localObject3).size() + "]");
-            }
-            break;
-          }
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("QueryMoreEntity cost[");
+          ((StringBuilder)localObject1).append(l2 - l1);
+          ((StringBuilder)localObject1).append("], size[");
+          ((StringBuilder)localObject1).append(((List)localObject4).size());
+          ((StringBuilder)localObject1).append("]");
+          QLog.d("FileManagerProxy<FileAssistant>", 2, ((StringBuilder)localObject1).toString());
         }
+        return localObject4;
       }
-      label496:
-      localIterator1 = null;
+      return null;
     }
   }
   
   public List<FileManagerEntity> a(int paramInt1, int paramInt2)
   {
-    Object localObject5;
-    long l1;
-    for (;;)
+    try
     {
-      try
-      {
-        if ((this.d == null) || (this.d.isEmpty())) {
-          init();
-        }
-        Object localObject1 = "select * from ( select * from " + FileManagerEntity.tableName() + " order by srvTime desc limit " + paramInt1 * paramInt2 + "," + (paramInt2 + 1) * paramInt1 + ") order by srvTime desc";
-        localObject5 = this.app.getEntityManagerFactory().createEntityManager();
-        localArrayList = null;
-        l1 = System.currentTimeMillis();
-        try
-        {
-          localObject1 = ((EntityManager)localObject5).rawQuery(FileManagerEntity.class, (String)localObject1, null);
-          if (QLog.isDevelopLevel())
-          {
-            if (localObject1 == null) {
-              QLog.d("FileManagerProxy<FileAssistant>", 4, "QueryMoreEntity[null]");
-            }
-          }
-          else
-          {
-            if (localObject1 != null)
-            {
-              paramInt1 = ((List)localObject1).size();
-              if (paramInt1 != 0) {
-                break;
-              }
-            }
-            localObject1 = null;
-            return localObject1;
-          }
-        }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          Object localObject2 = localArrayList;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.e("FileManagerProxy<FileAssistant>", 2, "load " + paramInt1 + " data,is oom!");
-          localObject2 = localArrayList;
-          continue;
-        }
-        QLog.d("FileManagerProxy<FileAssistant>", 4, "QueryMoreEntity[" + localObject3.size() + "]");
+      if ((this.d == null) || (this.d.isEmpty())) {
+        init();
       }
-      finally {}
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("select * from ( select * from ");
+      ((StringBuilder)localObject1).append(FileManagerEntity.tableName());
+      ((StringBuilder)localObject1).append(" order by srvTime desc limit ");
+      ((StringBuilder)localObject1).append(paramInt1 * paramInt2);
+      ((StringBuilder)localObject1).append(",");
+      ((StringBuilder)localObject1).append((paramInt2 + 1) * paramInt1);
+      ((StringBuilder)localObject1).append(") order by srvTime desc");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject4 = this.app.getEntityManagerFactory().createEntityManager();
+      l1 = System.currentTimeMillis();
     }
-    ArrayList localArrayList = new ArrayList();
-    Object localObject4 = localObject3.iterator();
-    label275:
-    label534:
-    for (;;)
+    finally
     {
-      if (((Iterator)localObject4).hasNext())
+      Object localObject1;
+      Object localObject4;
+      long l1;
+      label135:
+      label190:
+      long l2;
+      for (;;)
       {
-        localObject5 = (FileManagerEntity)((Iterator)localObject4).next();
-        if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(((FileManagerEntity)localObject5).nSessionId)) == true)
+        throw localObject2;
+      }
+    }
+    try
+    {
+      localObject1 = ((EntityManager)localObject4).rawQuery(FileManagerEntity.class, (String)localObject1, null);
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      break label135;
+      Object localObject3 = null;
+      break label190;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("load ");
+      ((StringBuilder)localObject1).append(paramInt1);
+      ((StringBuilder)localObject1).append(" data,is oom!");
+      QLog.e("FileManagerProxy<FileAssistant>", 2, ((StringBuilder)localObject1).toString());
+      break label605;
+      if (QLog.isDevelopLevel()) {
+        if (localObject1 == null)
         {
-          localObject5 = (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(((FileManagerEntity)localObject5).nSessionId));
-          FileManagerUtil.a((FileManagerEntity)localObject5);
-          localArrayList.add(localObject5);
+          QLog.d("FileManagerProxy<FileAssistant>", 4, "QueryMoreEntity[null]");
         }
         else
         {
-          Iterator localIterator = this.d.iterator();
-          while (localIterator.hasNext())
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("QueryMoreEntity[");
+          ((StringBuilder)localObject4).append(((List)localObject1).size());
+          ((StringBuilder)localObject4).append("]");
+          QLog.d("FileManagerProxy<FileAssistant>", 4, ((StringBuilder)localObject4).toString());
+        }
+      }
+      if ((localObject1 != null) && (((List)localObject1).size() != 0))
+      {
+        localObject4 = new ArrayList();
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          FileManagerEntity localFileManagerEntity1 = (FileManagerEntity)((Iterator)localObject1).next();
+          paramInt2 = 0;
+          if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(localFileManagerEntity1.nSessionId)) == true)
           {
-            FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-            if (localFileManagerEntity.nSessionId == ((FileManagerEntity)localObject5).nSessionId)
+            localFileManagerEntity1 = (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(localFileManagerEntity1.nSessionId));
+            FileManagerUtil.a(localFileManagerEntity1);
+            ((List)localObject4).add(localFileManagerEntity1);
+          }
+          else
+          {
+            Iterator localIterator = this.d.iterator();
+            FileManagerEntity localFileManagerEntity2;
+            do
             {
-              FileManagerUtil.a(localFileManagerEntity);
-              localArrayList.add(localFileManagerEntity);
+              paramInt1 = paramInt2;
+              if (!localIterator.hasNext()) {
+                break;
+              }
+              localFileManagerEntity2 = (FileManagerEntity)localIterator.next();
+            } while (localFileManagerEntity2.nSessionId != localFileManagerEntity1.nSessionId);
+            FileManagerUtil.a(localFileManagerEntity2);
+            ((List)localObject4).add(localFileManagerEntity2);
+            paramInt1 = 1;
+            if (paramInt1 == 0)
+            {
+              FileManagerUtil.a(localFileManagerEntity1);
+              ((List)localObject4).add(localFileManagerEntity1);
             }
           }
         }
-      }
-      else
-      {
-        for (paramInt1 = 1;; paramInt1 = 0)
+        l2 = System.currentTimeMillis();
+        if (QLog.isDevelopLevel())
         {
-          if (paramInt1 != 0) {
-            break label534;
-          }
-          FileManagerUtil.a((FileManagerEntity)localObject5);
-          localArrayList.add(localObject5);
-          break label275;
-          long l2 = System.currentTimeMillis();
-          if (QLog.isDevelopLevel()) {
-            QLog.d("FileManagerProxy<FileAssistant>", 4, "QueryMoreEntity cost[" + (l2 - l1) + "]");
-          }
-          QLog.d("FileManagerProxy<FileAssistant>", 4, "QueryMoreEntity retList size" + localArrayList.size());
-          localObject4 = localArrayList;
-          break;
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("QueryMoreEntity cost[");
+          ((StringBuilder)localObject1).append(l2 - l1);
+          ((StringBuilder)localObject1).append("]");
+          QLog.d("FileManagerProxy<FileAssistant>", 4, ((StringBuilder)localObject1).toString());
         }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("QueryMoreEntity retList size");
+        ((StringBuilder)localObject1).append(((List)localObject4).size());
+        QLog.d("FileManagerProxy<FileAssistant>", 4, ((StringBuilder)localObject1).toString());
+        return localObject4;
       }
+      return null;
     }
   }
   
-  /* Error */
   public List<FileManagerEntity> a(int paramInt, String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: new 44	java/util/ArrayList
-    //   5: dup
-    //   6: invokespecial 46	java/util/ArrayList:<init>	()V
-    //   9: astore 5
-    //   11: aload_0
-    //   12: getfield 40	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   15: ifnonnull +14 -> 29
-    //   18: aload_0
-    //   19: new 44	java/util/ArrayList
-    //   22: dup
-    //   23: invokespecial 46	java/util/ArrayList:<init>	()V
-    //   26: putfield 40	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   29: aload_0
-    //   30: getfield 40	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   33: invokeinterface 251 1 0
-    //   38: astore 6
-    //   40: aload 6
-    //   42: invokeinterface 256 1 0
-    //   47: ifeq +86 -> 133
-    //   50: aload 6
-    //   52: invokeinterface 260 1 0
-    //   57: checkcast 192	com/tencent/mobileqq/filemanager/data/FileManagerEntity
-    //   60: astore 7
-    //   62: aload 7
-    //   64: ifnull +51 -> 115
-    //   67: aload 7
-    //   69: getfield 431	com/tencent/mobileqq/filemanager/data/FileManagerEntity:peerUin	Ljava/lang/String;
-    //   72: ifnull +43 -> 115
-    //   75: aload 7
-    //   77: getfield 431	com/tencent/mobileqq/filemanager/data/FileManagerEntity:peerUin	Ljava/lang/String;
-    //   80: aload_2
-    //   81: invokevirtual 419	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   84: ifeq +31 -> 115
-    //   87: aload 7
-    //   89: invokevirtual 266	com/tencent/mobileqq/filemanager/data/FileManagerEntity:getCloudType	()I
-    //   92: iconst_2
-    //   93: if_icmpne +12 -> 105
-    //   96: aload 7
-    //   98: getfield 547	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nOpType	I
-    //   101: iconst_3
-    //   102: if_icmpne +13 -> 115
-    //   105: aload 5
-    //   107: aload 7
-    //   109: invokeinterface 315 2 0
-    //   114: pop
-    //   115: aload 5
-    //   117: invokeinterface 97 1 0
-    //   122: istore_3
-    //   123: iload_3
-    //   124: iload_1
-    //   125: if_icmplt -85 -> 40
-    //   128: aload_0
-    //   129: monitorexit
-    //   130: aload 5
-    //   132: areturn
-    //   133: iconst_0
-    //   134: istore_3
-    //   135: aload 5
-    //   137: invokeinterface 97 1 0
-    //   142: ifle +6 -> 148
-    //   145: goto -17 -> 128
-    //   148: aload_0
-    //   149: sipush 200
-    //   152: iload_3
-    //   153: invokevirtual 549	com/tencent/mobileqq/filemanager/data/FileManagerProxy:a	(II)Ljava/util/List;
-    //   156: astore 6
-    //   158: aload 6
-    //   160: ifnonnull +6 -> 166
-    //   163: goto -35 -> 128
-    //   166: aload 6
-    //   168: invokeinterface 251 1 0
-    //   173: astore 6
-    //   175: aload 6
-    //   177: invokeinterface 256 1 0
-    //   182: ifeq +110 -> 292
-    //   185: aload 6
-    //   187: invokeinterface 260 1 0
-    //   192: checkcast 192	com/tencent/mobileqq/filemanager/data/FileManagerEntity
-    //   195: astore 7
-    //   197: aload 7
-    //   199: ifnull +75 -> 274
-    //   202: aload 7
-    //   204: getfield 431	com/tencent/mobileqq/filemanager/data/FileManagerEntity:peerUin	Ljava/lang/String;
-    //   207: ifnull +67 -> 274
-    //   210: aload 5
-    //   212: aload 7
-    //   214: invokeinterface 552 2 0
-    //   219: ifne +55 -> 274
-    //   222: aload 7
-    //   224: getfield 431	com/tencent/mobileqq/filemanager/data/FileManagerEntity:peerUin	Ljava/lang/String;
-    //   227: aload_2
-    //   228: invokevirtual 419	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   231: ifeq +43 -> 274
-    //   234: aload 7
-    //   236: invokevirtual 266	com/tencent/mobileqq/filemanager/data/FileManagerEntity:getCloudType	()I
-    //   239: iconst_2
-    //   240: if_icmpne +12 -> 252
-    //   243: aload 7
-    //   245: getfield 547	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nOpType	I
-    //   248: iconst_3
-    //   249: if_icmpne +25 -> 274
-    //   252: aload 5
-    //   254: aload 7
-    //   256: invokeinterface 315 2 0
-    //   261: pop
-    //   262: aload_0
-    //   263: getfield 40	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   266: aload 7
-    //   268: invokeinterface 315 2 0
-    //   273: pop
-    //   274: aload 5
-    //   276: invokeinterface 97 1 0
-    //   281: istore 4
-    //   283: iload 4
-    //   285: iload_1
-    //   286: if_icmplt -111 -> 175
-    //   289: goto -161 -> 128
-    //   292: iload_3
-    //   293: iconst_1
-    //   294: iadd
-    //   295: istore_3
-    //   296: goto -161 -> 135
-    //   299: astore_2
-    //   300: aload_0
-    //   301: monitorexit
-    //   302: aload_2
-    //   303: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	304	0	this	FileManagerProxy
-    //   0	304	1	paramInt	int
-    //   0	304	2	paramString	String
-    //   122	174	3	i	int
-    //   281	6	4	j	int
-    //   9	266	5	localArrayList	ArrayList
-    //   38	148	6	localObject	Object
-    //   60	207	7	localFileManagerEntity	FileManagerEntity
-    // Exception table:
-    //   from	to	target	type
-    //   2	29	299	finally
-    //   29	40	299	finally
-    //   40	62	299	finally
-    //   67	105	299	finally
-    //   105	115	299	finally
-    //   115	123	299	finally
-    //   135	145	299	finally
-    //   148	158	299	finally
-    //   166	175	299	finally
-    //   175	197	299	finally
-    //   202	252	299	finally
-    //   252	274	299	finally
-    //   274	283	299	finally
+    try
+    {
+      ArrayList localArrayList = new ArrayList();
+      if (this.jdField_a_of_type_JavaUtilList == null) {
+        this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      }
+      Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      FileManagerEntity localFileManagerEntity;
+      while (((Iterator)localObject).hasNext())
+      {
+        localFileManagerEntity = (FileManagerEntity)((Iterator)localObject).next();
+        if ((localFileManagerEntity != null) && (localFileManagerEntity.peerUin != null) && (localFileManagerEntity.peerUin.equals(paramString)) && ((localFileManagerEntity.getCloudType() != 2) || (localFileManagerEntity.nOpType == 3))) {
+          localArrayList.add(localFileManagerEntity);
+        }
+        i = localArrayList.size();
+        if (i >= paramInt) {
+          return localArrayList;
+        }
+      }
+      int i = 0;
+      int j = localArrayList.size();
+      if (j > 0) {
+        return localArrayList;
+      }
+      localObject = a(200, i);
+      if (localObject == null) {
+        return localArrayList;
+      }
+      j = i + 1;
+      localObject = ((List)localObject).iterator();
+      do
+      {
+        i = j;
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+        localFileManagerEntity = (FileManagerEntity)((Iterator)localObject).next();
+        if ((localFileManagerEntity != null) && (localFileManagerEntity.peerUin != null) && (!localArrayList.contains(localFileManagerEntity)) && (localFileManagerEntity.peerUin.equals(paramString)) && ((localFileManagerEntity.getCloudType() != 2) || (localFileManagerEntity.nOpType == 3)))
+        {
+          localArrayList.add(localFileManagerEntity);
+          this.jdField_a_of_type_JavaUtilList.add(localFileManagerEntity);
+        }
+        i = localArrayList.size();
+      } while (i < paramInt);
+      return localArrayList;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
-  /* Error */
   public List<FileManagerEntity> a(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 42	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   6: ifnull +33 -> 39
-    //   9: aload_0
-    //   10: getfield 42	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   13: invokeinterface 557 1 0
-    //   18: aload_0
-    //   19: aload_0
-    //   20: sipush 200
-    //   23: aload_1
-    //   24: invokevirtual 559	com/tencent/mobileqq/filemanager/data/FileManagerProxy:a	(ILjava/lang/String;)Ljava/util/List;
-    //   27: putfield 42	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   30: aload_0
-    //   31: getfield 42	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   34: astore_1
-    //   35: aload_0
-    //   36: monitorexit
-    //   37: aload_1
-    //   38: areturn
-    //   39: aload_0
-    //   40: new 44	java/util/ArrayList
-    //   43: dup
-    //   44: invokespecial 46	java/util/ArrayList:<init>	()V
-    //   47: putfield 42	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   50: goto -32 -> 18
-    //   53: astore_1
-    //   54: aload_0
-    //   55: monitorexit
-    //   56: aload_1
-    //   57: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	58	0	this	FileManagerProxy
-    //   0	58	1	paramString	String
-    // Exception table:
-    //   from	to	target	type
-    //   2	18	53	finally
-    //   18	35	53	finally
-    //   39	50	53	finally
+    try
+    {
+      if (this.jdField_b_of_type_JavaUtilList != null) {
+        this.jdField_b_of_type_JavaUtilList.clear();
+      } else {
+        this.jdField_b_of_type_JavaUtilList = new ArrayList();
+      }
+      this.jdField_b_of_type_JavaUtilList = a(200, paramString);
+      paramString = this.jdField_b_of_type_JavaUtilList;
+      return paramString;
+    }
+    finally {}
   }
   
   public List<FileManagerEntity> a(String paramString, long paramLong)
   {
-    ArrayList localArrayList;
-    Iterator localIterator;
-    Object localObject;
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileManagerProxy<FileAssistant>", 1, "call thread:" + Thread.currentThread().getName());
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("call thread:");
+        ((StringBuilder)localObject1).append(Thread.currentThread().getName());
+        QLog.i("FileManagerProxy<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
       }
       if (this.d == null) {
         init();
       }
-      localArrayList = new ArrayList();
-      localIterator = this.d.iterator();
+      Object localObject1 = new ArrayList();
+      Iterator localIterator = this.d.iterator();
+      Object localObject2;
       while (localIterator.hasNext())
       {
-        localObject = (FileManagerEntity)localIterator.next();
-        if ((((FileManagerEntity)localObject).fileSize == paramLong) && (((FileManagerEntity)localObject).fileName.equals(paramString)) && (((FileManagerEntity)localObject).status == 1) && (FileUtil.b(((FileManagerEntity)localObject).getFilePath()))) {
-          localArrayList.add(localObject);
+        localObject2 = (FileManagerEntity)localIterator.next();
+        if ((((FileManagerEntity)localObject2).fileSize == paramLong) && (((FileManagerEntity)localObject2).fileName.equals(paramString)) && (((FileManagerEntity)localObject2).status == 1) && (FileUtil.a(((FileManagerEntity)localObject2).getFilePath()))) {
+          ((ArrayList)localObject1).add(localObject2);
         }
       }
       localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        localObject2 = (Long)localIterator.next();
+        localObject2 = (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(localObject2);
+        if ((!((ArrayList)localObject1).contains(localObject2)) && (((FileManagerEntity)localObject2).fileSize == paramLong) && (((FileManagerEntity)localObject2).fileName.equals(paramString)) && (((FileManagerEntity)localObject2).status == 1) && (FileUtil.a(((FileManagerEntity)localObject2).getFilePath()))) {
+          ((ArrayList)localObject1).add(localObject2);
+        }
+      }
+      return localObject1;
     }
     finally {}
-    while (localIterator.hasNext())
+    for (;;)
     {
-      localObject = (Long)localIterator.next();
-      localObject = (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(localObject);
-      if ((!localArrayList.contains(localObject)) && (((FileManagerEntity)localObject).fileSize == paramLong) && (((FileManagerEntity)localObject).fileName.equals(paramString)) && (((FileManagerEntity)localObject).status == 1) && (FileUtil.b(((FileManagerEntity)localObject).getFilePath()))) {
-        localArrayList.add(localObject);
-      }
+      throw paramString;
     }
-    return localArrayList;
   }
   
   public List<FileManagerEntity> a(String paramString1, String paramString2, boolean paramBoolean)
@@ -1234,26 +932,27 @@ public class FileManagerProxy
   
   public List<FileManagerEntity> a(List<Integer> paramList, String paramString)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return null;
-    }
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      a();
-    }
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      if ((!TextUtils.isEmpty(localFileManagerEntity.fileName)) && (!TextUtils.isEmpty(localFileManagerEntity.peerUin)))
+      if (this.jdField_a_of_type_JavaUtilList == null) {
+        a();
+      }
+      ArrayList localArrayList = new ArrayList();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
       {
-        int i = FileManagerUtil.a(localFileManagerEntity.fileName);
-        if ((localFileManagerEntity.peerUin.equals(paramString)) && (paramList.contains(Integer.valueOf(i)))) {
-          localArrayList.add(localFileManagerEntity);
+        FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+        if ((!TextUtils.isEmpty(localFileManagerEntity.fileName)) && (!TextUtils.isEmpty(localFileManagerEntity.peerUin)))
+        {
+          int i = FileManagerUtil.a(localFileManagerEntity.fileName);
+          if ((localFileManagerEntity.peerUin.equals(paramString)) && (paramList.contains(Integer.valueOf(i)))) {
+            localArrayList.add(localFileManagerEntity);
+          }
         }
       }
+      return localArrayList;
     }
-    return localArrayList;
+    return null;
   }
   
   public Map<String, List<FileManagerEntity>> a(String paramString)
@@ -1299,7 +998,7 @@ public class FileManagerProxy
                 throw new NullPointerException("get Full String error!!!");
               }
             }
-            else if (SearchUtils.b(paramString, str.replace(HardCodeUtil.a(2131704552), "").replace(HardCodeUtil.a(2131704575), "").replace(HardCodeUtil.a(2131704570), "").replace(HardCodeUtil.a(2131704563), "").replace(HardCodeUtil.a(2131704553), "").replace(HardCodeUtil.a(2131704582), "").replace(HardCodeUtil.a(2131704568), "").replace(HardCodeUtil.a(2131704564), "").replace(HardCodeUtil.a(2131704561), "").trim(), IContactSearchable.g) > -9223372036854775808L)
+            else if (SearchUtils.b(paramString, str.replace(HardCodeUtil.a(2131704632), "").replace(HardCodeUtil.a(2131704655), "").replace(HardCodeUtil.a(2131704650), "").replace(HardCodeUtil.a(2131704643), "").replace(HardCodeUtil.a(2131704633), "").replace(HardCodeUtil.a(2131704662), "").replace(HardCodeUtil.a(2131704648), "").replace(HardCodeUtil.a(2131704644), "").replace(HardCodeUtil.a(2131704641), "").trim(), IContactSearchable.g) > -9223372036854775808L)
             {
               if (!localLinkedHashMap.containsKey(localFileManagerEntity.fileName)) {
                 localLinkedHashMap.put(localFileManagerEntity.fileName, new ArrayList());
@@ -1313,55 +1012,23 @@ public class FileManagerProxy
     return localLinkedHashMap;
   }
   
-  /* Error */
   public void a()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 34	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
-    //   6: astore_2
-    //   7: aload_2
-    //   8: ifnonnull +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: getfield 34	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
-    //   18: invokeinterface 97 1 0
-    //   23: iconst_1
-    //   24: isub
-    //   25: istore_1
-    //   26: iload_1
-    //   27: bipush 30
-    //   29: if_icmplt -18 -> 11
-    //   32: aload_0
-    //   33: getfield 34	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
-    //   36: iload_1
-    //   37: invokeinterface 649 2 0
-    //   42: pop
-    //   43: iload_1
-    //   44: iconst_1
-    //   45: isub
-    //   46: istore_1
-    //   47: goto -21 -> 26
-    //   50: astore_2
-    //   51: aload_0
-    //   52: monitorexit
-    //   53: aload_2
-    //   54: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	55	0	this	FileManagerProxy
-    //   25	22	1	i	int
-    //   6	2	2	localList	List
-    //   50	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	50	finally
-    //   14	26	50	finally
-    //   32	43	50	finally
+    if (this.d == null) {
+      init();
+    }
+    Object localObject2 = this.d.iterator();
+    for (Object localObject1 = null; ((Iterator)localObject2).hasNext(); localObject1 = ((FileManagerEntity)localObject1).getTableName())
+    {
+      localObject1 = (FileManagerEntity)((Iterator)localObject2).next();
+      ((FileManagerEntity)localObject1).isReaded = true;
+    }
+    if (localObject1 != null)
+    {
+      localObject2 = new ContentValues();
+      ((ContentValues)localObject2).put("isReaded", Boolean.valueOf(true));
+      a((String)localObject1, (ContentValues)localObject2, "isReaded=?", new String[] { "0" }, null);
+    }
   }
   
   public void a(long paramLong)
@@ -1377,8 +1044,13 @@ public class FileManagerProxy
           }
         }
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public void a(long paramLong, String paramString)
@@ -1394,10 +1066,11 @@ public class FileManagerProxy
   
   public void a(long paramLong1, String paramString, long paramLong2)
   {
-    if ((paramString == null) || (paramLong1 < 0L) || (paramLong2 <= 0L)) {}
-    do
+    if ((paramString != null) && (paramLong1 >= 0L))
     {
-      return;
+      if (paramLong2 <= 0L) {
+        return;
+      }
       if (this.c.size() > 30) {
         this.c.remove(0);
       }
@@ -1406,8 +1079,16 @@ public class FileManagerProxy
       localDeletedOlSessionInfo.jdField_a_of_type_JavaLangString = paramString;
       localDeletedOlSessionInfo.b = paramLong2;
       this.c.add(localDeletedOlSessionInfo);
-    } while (!QLog.isColorLevel());
-    QLog.i("FileManagerProxy<FileAssistant>", 2, "saveDeletedEntity nSessionId=" + paramLong1 + " nOlSessionId=" + paramLong2);
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("saveDeletedEntity nSessionId=");
+        paramString.append(paramLong1);
+        paramString.append(" nOlSessionId=");
+        paramString.append(paramLong2);
+        QLog.i("FileManagerProxy<FileAssistant>", 2, paramString.toString());
+      }
+    }
   }
   
   public void a(FileManagerEntity paramFileManagerEntity)
@@ -1429,51 +1110,52 @@ public class FileManagerProxy
   
   void a(FileManagerEntity paramFileManagerEntity, ProxyListener paramProxyListener)
   {
-    for (;;)
+    try
     {
-      try
+      paramProxyListener = this.app.getEntityManagerFactory().createEntityManager();
+      if (paramProxyListener == null) {
+        return;
+      }
+      paramProxyListener = new FileManagerEntity();
+      if (paramFileManagerEntity.nFileType != 13) {
+        paramFileManagerEntity.nFileType = FileManagerUtil.a(paramFileManagerEntity.fileName);
+      }
+      paramProxyListener.copyFrom(paramFileManagerEntity);
+      paramProxyListener.nSessionId = paramFileManagerEntity.nSessionId;
+      paramProxyListener.bSend = paramFileManagerEntity.bSend;
+      paramProxyListener.bDelInAio = paramFileManagerEntity.bDelInAio;
+      paramProxyListener.bDelInFM = paramFileManagerEntity.bDelInFM;
+      if ((paramProxyListener.status != 1) && (paramProxyListener.status != -1) && (!paramProxyListener.bSend) && (paramProxyListener.status != 4)) {
+        paramProxyListener.status = 0;
+      }
+      if ((paramProxyListener.status == 2) || (paramProxyListener.status == 18)) {
+        paramProxyListener.status = 0;
+      }
+      if (paramFileManagerEntity.status == 16) {
+        paramProxyListener.status = 16;
+      }
+      if (paramProxyListener.getStatus() == 1000)
       {
-        paramProxyListener = this.app.getEntityManagerFactory().createEntityManager();
-        if (paramProxyListener == null) {
-          return;
-        }
-        paramProxyListener = new FileManagerEntity();
-        if (paramFileManagerEntity.nFileType != 13) {
-          paramFileManagerEntity.nFileType = FileManagerUtil.a(paramFileManagerEntity.fileName);
-        }
-        paramProxyListener.copyFrom(paramFileManagerEntity);
-        paramProxyListener.nSessionId = paramFileManagerEntity.nSessionId;
-        paramProxyListener.bSend = paramFileManagerEntity.bSend;
-        paramProxyListener.bDelInAio = paramFileManagerEntity.bDelInAio;
-        paramProxyListener.bDelInFM = paramFileManagerEntity.bDelInFM;
-        if ((paramProxyListener.status != 1) && (paramProxyListener.status != -1) && (!paramProxyListener.bSend) && (paramProxyListener.status != 4)) {
-          paramProxyListener.status = 0;
-        }
-        if ((paramProxyListener.status == 2) || (paramProxyListener.status == 18)) {
-          paramProxyListener.status = 0;
-        }
-        if (paramFileManagerEntity.status == 16) {
-          paramProxyListener.status = 16;
-        }
-        if (paramProxyListener.getStatus() == 1000)
-        {
-          this.proxyManager.addMsgQueue(String.valueOf(0), 0, paramProxyListener.getTableName(), paramProxyListener, 0, null);
-          paramFileManagerEntity.setId(paramProxyListener.getId());
-          paramFileManagerEntity.setStatus(paramProxyListener.getStatus());
-          continue;
-        }
-        if (paramProxyListener.getStatus() != 1001) {
-          break label243;
-        }
+        this.proxyManager.addMsgQueue(String.valueOf(0), 0, paramProxyListener.getTableName(), paramProxyListener, 0, null);
       }
-      finally {}
-      this.proxyManager.addMsgQueue(String.valueOf(0), 0, paramProxyListener.getTableName(), paramProxyListener, 1, null);
-      continue;
-      label243:
-      if (QLog.isColorLevel()) {
-        QLog.e("FileManagerProxy<FileAssistant>", 2, "FileManagerEntity status[" + String.valueOf(paramProxyListener.getStatus()) + "] is wrong");
+      else if (paramProxyListener.getStatus() == 1001)
+      {
+        this.proxyManager.addMsgQueue(String.valueOf(0), 0, paramProxyListener.getTableName(), paramProxyListener, 1, null);
       }
+      else if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("FileManagerEntity status[");
+        localStringBuilder.append(String.valueOf(paramProxyListener.getStatus()));
+        localStringBuilder.append("] is wrong");
+        QLog.e("FileManagerProxy<FileAssistant>", 2, localStringBuilder.toString());
+      }
+      this.proxyManager.transSaveToDatabase();
+      paramFileManagerEntity.setId(paramProxyListener.getId());
+      paramFileManagerEntity.setStatus(paramProxyListener.getStatus());
+      return;
     }
+    finally {}
   }
   
   public void a(FileManagerEntity paramFileManagerEntity, String paramString)
@@ -1502,13 +1184,13 @@ public class FileManagerProxy
   
   public void a(String paramString, int paramInt)
   {
-    Object localObject2;
     try
     {
       if (this.d == null) {
         init();
       }
-      localObject1 = this.d.iterator();
+      Object localObject1 = this.d.iterator();
+      Object localObject2;
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (FileManagerEntity)((Iterator)localObject1).next();
@@ -1519,23 +1201,28 @@ public class FileManagerProxy
         }
       }
       localObject1 = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (Long)((Iterator)localObject1).next();
+        localObject2 = (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(localObject2);
+        if ((((FileManagerEntity)localObject2).peerUin != null) && (((FileManagerEntity)localObject2).peerUin.equals(paramString)) && (((FileManagerEntity)localObject2).peerType == paramInt))
+        {
+          ((FileManagerEntity)localObject2).uniseq = -1L;
+          ((FileManagerEntity)localObject2).bDelInAio = true;
+        }
+      }
+      localObject1 = new ContentValues();
+      ((ContentValues)localObject1).put("bDelInAio", Boolean.valueOf(true));
+      ((ContentValues)localObject1).put("uniseq", Integer.valueOf(-1));
+      a(FileManagerEntity.tableName(), (ContentValues)localObject1, " peerUin = ? and peerType = ? ", new String[] { paramString, String.valueOf(paramInt) }, null);
+      a(FileManagerEntity.tableName(), " bDelInAio = ? and bDelInFM = ? ", new String[] { String.valueOf(1), String.valueOf(1) }, null);
+      return;
     }
     finally {}
-    while (((Iterator)localObject1).hasNext())
+    for (;;)
     {
-      localObject2 = (Long)((Iterator)localObject1).next();
-      localObject2 = (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(localObject2);
-      if ((((FileManagerEntity)localObject2).peerUin != null) && (((FileManagerEntity)localObject2).peerUin.equals(paramString)) && (((FileManagerEntity)localObject2).peerType == paramInt))
-      {
-        ((FileManagerEntity)localObject2).uniseq = -1L;
-        ((FileManagerEntity)localObject2).bDelInAio = true;
-      }
+      throw paramString;
     }
-    Object localObject1 = new ContentValues();
-    ((ContentValues)localObject1).put("bDelInAio", Boolean.valueOf(true));
-    ((ContentValues)localObject1).put("uniseq", Integer.valueOf(-1));
-    a(FileManagerEntity.tableName(), (ContentValues)localObject1, " peerUin = ? and peerType = ? ", new String[] { paramString, String.valueOf(paramInt) }, null);
-    a(FileManagerEntity.tableName(), " bDelInAio = ? and bDelInFM = ? ", new String[] { String.valueOf(1), String.valueOf(1) }, null);
   }
   
   void a(String paramString1, ContentValues paramContentValues, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener)
@@ -1561,84 +1248,92 @@ public class FileManagerProxy
   
   public boolean a(FileManagerEntity paramFileManagerEntity, boolean paramBoolean)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (paramFileManagerEntity == null) {
-      bool1 = bool2;
+    if (paramFileManagerEntity == null) {}
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileManagerProxy<FileAssistant>", 2, "if item is null, why can choose???!!!");
+      }
+      return false;
     }
+    finally
+    {
+      Object localObject;
+      break label484;
+    }
+    localObject = this.app.getEntityManagerFactory().createEntityManager();
+    if (localObject == null) {
+      return false;
+    }
+    localObject = ((QQAppInterface)this.app).getMessageFacade().b(paramFileManagerEntity.peerUin, paramFileManagerEntity.peerType, paramFileManagerEntity.uniseq);
+    if ((paramFileManagerEntity.bDelInAio) && (paramFileManagerEntity.bDelInFM) && (localObject == null))
+    {
+      a(FileManagerEntity.tableName(), "nSessionId = ?", new String[] { String.valueOf(paramFileManagerEntity.nSessionId) }, null);
+      this.d.remove(paramFileManagerEntity);
+      if (this.jdField_a_of_type_JavaUtilList != null)
+      {
+        localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+        while (((Iterator)localObject).hasNext()) {
+          if (((Iterator)localObject).next() == paramFileManagerEntity) {
+            ((Iterator)localObject).remove();
+          }
+        }
+      }
+      localObject = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+        if (paramFileManagerEntity.nSessionId == ((FileManagerEntity)localEntry.getValue()).nSessionId) {
+          ((Iterator)localObject).remove();
+        }
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Delete FileManagerEntity[");
+        ((StringBuilder)localObject).append(String.valueOf(paramFileManagerEntity.nSessionId));
+        ((StringBuilder)localObject).append("] for memory and db:");
+        ((StringBuilder)localObject).append(FileManagerUtil.a(paramFileManagerEntity));
+        QLog.i("FileManagerProxy<FileAssistant>", 2, ((StringBuilder)localObject).toString());
+      }
+      a(paramFileManagerEntity.nSessionId, paramFileManagerEntity.peerUin, paramFileManagerEntity.nOLfileSessionId);
+      paramBoolean = a(1);
+      return paramBoolean;
+    }
+    localObject = new ContentValues();
+    ((ContentValues)localObject).put("bDelInAio", Boolean.valueOf(paramFileManagerEntity.bDelInAio));
+    ((ContentValues)localObject).put("bDelInFM", Boolean.valueOf(paramFileManagerEntity.bDelInFM));
+    ((ContentValues)localObject).put("uniseq", Long.valueOf(paramFileManagerEntity.uniseq));
+    a(FileManagerEntity.tableName(), (ContentValues)localObject, "nSessionId = ?", new String[] { String.valueOf(paramFileManagerEntity.nSessionId) }, null);
+    if (paramBoolean) {
+      this.proxyManager.transSaveToDatabase();
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Update FileManagerEntity[");
+      ((StringBuilder)localObject).append(String.valueOf(paramFileManagerEntity.nSessionId));
+      ((StringBuilder)localObject).append("] for db:");
+      ((StringBuilder)localObject).append(FileManagerUtil.a(paramFileManagerEntity));
+      QLog.i("FileManagerProxy<FileAssistant>", 2, ((StringBuilder)localObject).toString());
+    }
+    return true;
+    label484:
     for (;;)
     {
-      try
-      {
-        if (QLog.isColorLevel())
-        {
-          QLog.e("FileManagerProxy<FileAssistant>", 2, "if item is null, why can choose???!!!");
-          bool1 = bool2;
-        }
-        return bool1;
-      }
-      finally {}
-      bool1 = bool2;
-      if (this.app.getEntityManagerFactory().createEntityManager() != null)
-      {
-        Object localObject = ((QQAppInterface)this.app).getMessageFacade().b(paramFileManagerEntity.peerUin, paramFileManagerEntity.peerType, paramFileManagerEntity.uniseq);
-        if ((paramFileManagerEntity.bDelInAio) && (paramFileManagerEntity.bDelInFM) && (localObject == null))
-        {
-          a(FileManagerEntity.tableName(), "nSessionId = ?", new String[] { String.valueOf(paramFileManagerEntity.nSessionId) }, null);
-          this.d.remove(paramFileManagerEntity);
-          if (this.jdField_a_of_type_JavaUtilList != null)
-          {
-            localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-            if (((Iterator)localObject).hasNext())
-            {
-              if (((Iterator)localObject).next() != paramFileManagerEntity) {
-                continue;
-              }
-              ((Iterator)localObject).remove();
-              continue;
-            }
-          }
-          localObject = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-            if (paramFileManagerEntity.nSessionId == ((FileManagerEntity)localEntry.getValue()).nSessionId) {
-              ((Iterator)localObject).remove();
-            }
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i("FileManagerProxy<FileAssistant>", 2, "Delete FileManagerEntity[" + String.valueOf(paramFileManagerEntity.nSessionId) + "] for memory and db:" + FileManagerUtil.a(paramFileManagerEntity));
-          }
-          a(paramFileManagerEntity.nSessionId, paramFileManagerEntity.peerUin, paramFileManagerEntity.nOLfileSessionId);
-          bool1 = a(1);
-        }
-        else
-        {
-          localObject = new ContentValues();
-          ((ContentValues)localObject).put("bDelInAio", Boolean.valueOf(paramFileManagerEntity.bDelInAio));
-          ((ContentValues)localObject).put("bDelInFM", Boolean.valueOf(paramFileManagerEntity.bDelInFM));
-          ((ContentValues)localObject).put("uniseq", Long.valueOf(paramFileManagerEntity.uniseq));
-          a(FileManagerEntity.tableName(), (ContentValues)localObject, "nSessionId = ?", new String[] { String.valueOf(paramFileManagerEntity.nSessionId) }, null);
-          if (paramBoolean) {
-            this.proxyManager.transSaveToDatabase();
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i("FileManagerProxy<FileAssistant>", 2, "Update FileManagerEntity[" + String.valueOf(paramFileManagerEntity.nSessionId) + "] for db:" + FileManagerUtil.a(paramFileManagerEntity));
-          }
-          bool1 = true;
-        }
-      }
+      throw paramFileManagerEntity;
     }
   }
   
   public boolean a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilSet == null)
+    Set localSet = this.jdField_a_of_type_JavaUtilSet;
+    if (localSet == null)
     {
       this.jdField_a_of_type_JavaUtilSet = new HashSet();
       return false;
     }
-    return this.jdField_a_of_type_JavaUtilSet.contains(paramString);
+    return localSet.contains(paramString);
   }
   
   public boolean a(String paramString, long paramLong)
@@ -1673,166 +1368,113 @@ public class FileManagerProxy
   
   public FileManagerEntity b(long paramLong, String paramString, int paramInt)
   {
-    for (;;)
+    try
     {
-      try
+      if (this.d == null) {
+        init();
+      }
+      paramString = new StringBuilder();
+      paramString.append("select * from ");
+      paramString.append(FileManagerEntity.tableName());
+      paramString.append(" where uniseq = ?");
+      paramString = paramString.toString();
+      Object localObject = this.app.getEntityManagerFactory().createEntityManager();
+      if (localObject == null)
       {
-        if (this.d == null) {
-          init();
-        }
-        paramString = "select * from " + FileManagerEntity.tableName() + " where uniseq = ?";
-        localObject = this.app.getEntityManagerFactory().createEntityManager();
-        if (localObject != null) {
-          continue;
-        }
         if (QLog.isColorLevel()) {
           QLog.e("FileManagerProxy<FileAssistant>", 2, "get EntityManager null!");
         }
-        paramString = null;
+        return null;
       }
-      finally
+      long l = System.currentTimeMillis();
+      paramString = ((EntityManager)localObject).rawQuery(FileManagerEntity.class, paramString, new String[] { String.valueOf(paramLong) });
+      paramLong = System.currentTimeMillis();
+      if (QLog.isColorLevel())
       {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("query over,startTime[");
+        ((StringBuilder)localObject).append(String.valueOf(l));
+        ((StringBuilder)localObject).append("], overTime[");
+        ((StringBuilder)localObject).append(String.valueOf(paramLong));
+        ((StringBuilder)localObject).append("]");
+        QLog.d("FileManagerProxy<FileAssistant>", 2, ((StringBuilder)localObject).toString());
+      }
+      if ((paramString != null) && (paramString.size() != 0))
+      {
+        if ((paramString.size() > 1) && (QLog.isColorLevel()))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("why size[");
+          ((StringBuilder)localObject).append(String.valueOf(paramString.size()));
+          ((StringBuilder)localObject).append("] over 1?");
+          QLog.w("FileManagerProxy", 2, ((StringBuilder)localObject).toString());
+        }
+        paramString = (FileManagerEntity)paramString.get(0);
         try
         {
-          Object localObject;
-          long l;
-          this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(((FileManagerEntity)localObject).nSessionId), localObject);
-          FileCategoryUtil.a((FileManagerEntity)localObject);
-          paramString = (String)localObject;
-          if (((FileManagerEntity)localObject).cloudType != 1) {
-            continue;
+          this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramString.nSessionId), paramString);
+          ((IQQFileSelectorUtil)QRoute.api(IQQFileSelectorUtil.class)).upDataApkPathForPackageName(paramString);
+          if ((paramString.cloudType == 1) && (FileManagerUtil.b(paramString))) {
+            paramString.status = 16;
           }
-          paramString = (String)localObject;
-          if (!FileManagerUtil.b((FileManagerEntity)localObject)) {
-            continue;
-          }
-          ((FileManagerEntity)localObject).status = 16;
-          paramString = (String)localObject;
+          return paramString;
         }
         catch (Exception paramString)
         {
           QLog.e("FileManagerProxy<FileAssistant>", 1, paramString.toString());
           QLog.e("FileManagerProxy<FileAssistant>", 1, new Throwable().getStackTrace());
-          paramString = null;
+          return null;
         }
-        paramString = finally;
       }
-      return paramString;
-      l = System.currentTimeMillis();
-      paramString = ((EntityManager)localObject).rawQuery(FileManagerEntity.class, paramString, new String[] { String.valueOf(paramLong) });
-      paramLong = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
-        QLog.d("FileManagerProxy<FileAssistant>", 2, "query over,startTime[" + String.valueOf(l) + "], overTime[" + String.valueOf(paramLong) + "]");
+        QLog.d("FileManagerProxy<FileAssistant>", 2, "queryOver, but no data!");
       }
-      if ((paramString == null) || (paramString.size() == 0))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("FileManagerProxy<FileAssistant>", 2, "queryOver, but no data!");
-        }
-      }
-      else
-      {
-        if ((paramString.size() > 1) && (QLog.isColorLevel())) {
-          QLog.w("FileManagerProxy", 2, "why size[" + String.valueOf(paramString.size()) + "] over 1?");
-        }
-        localObject = (FileManagerEntity)paramString.get(0);
-        continue;
-      }
-      paramString = null;
+      return null;
     }
+    finally {}
   }
   
-  /* Error */
   public FileManagerEntity b(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 34	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
-    //   6: ifnonnull +7 -> 13
-    //   9: aload_0
-    //   10: invokevirtual 181	com/tencent/mobileqq/filemanager/data/FileManagerProxy:init	()V
-    //   13: aload_0
-    //   14: getfield 34	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
-    //   17: invokeinterface 251 1 0
-    //   22: astore 4
-    //   24: aload 4
-    //   26: invokeinterface 256 1 0
-    //   31: ifeq +40 -> 71
-    //   34: aload 4
-    //   36: invokeinterface 260 1 0
-    //   41: checkcast 192	com/tencent/mobileqq/filemanager/data/FileManagerEntity
-    //   44: astore_3
-    //   45: aload_3
-    //   46: invokevirtual 269	com/tencent/mobileqq/filemanager/data/FileManagerEntity:getFilePath	()Ljava/lang/String;
-    //   49: ifnull -25 -> 24
-    //   52: aload_3
-    //   53: invokevirtual 269	com/tencent/mobileqq/filemanager/data/FileManagerEntity:getFilePath	()Ljava/lang/String;
-    //   56: aload_1
-    //   57: invokevirtual 289	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   60: istore_2
-    //   61: iload_2
-    //   62: ifeq -38 -> 24
-    //   65: aload_3
-    //   66: astore_1
-    //   67: aload_0
-    //   68: monitorexit
-    //   69: aload_1
-    //   70: areturn
-    //   71: aload_0
-    //   72: getfield 36	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   75: invokeinterface 582 1 0
-    //   80: invokeinterface 331 1 0
-    //   85: astore 4
-    //   87: aload 4
-    //   89: invokeinterface 256 1 0
-    //   94: ifeq +53 -> 147
-    //   97: aload 4
-    //   99: invokeinterface 260 1 0
-    //   104: checkcast 128	java/lang/Long
-    //   107: astore_3
-    //   108: aload_0
-    //   109: getfield 36	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   112: aload_3
-    //   113: invokeinterface 308 2 0
-    //   118: checkcast 192	com/tencent/mobileqq/filemanager/data/FileManagerEntity
-    //   121: astore_3
-    //   122: aload_3
-    //   123: invokevirtual 269	com/tencent/mobileqq/filemanager/data/FileManagerEntity:getFilePath	()Ljava/lang/String;
-    //   126: ifnull -39 -> 87
-    //   129: aload_3
-    //   130: invokevirtual 269	com/tencent/mobileqq/filemanager/data/FileManagerEntity:getFilePath	()Ljava/lang/String;
-    //   133: aload_1
-    //   134: invokevirtual 289	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   137: istore_2
-    //   138: iload_2
-    //   139: ifeq -52 -> 87
-    //   142: aload_3
-    //   143: astore_1
-    //   144: goto -77 -> 67
-    //   147: aconst_null
-    //   148: astore_1
-    //   149: goto -82 -> 67
-    //   152: astore_1
-    //   153: aload_0
-    //   154: monitorexit
-    //   155: aload_1
-    //   156: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	157	0	this	FileManagerProxy
-    //   0	157	1	paramString	String
-    //   60	79	2	bool	boolean
-    //   44	99	3	localObject	Object
-    //   22	76	4	localIterator	Iterator
-    // Exception table:
-    //   from	to	target	type
-    //   2	13	152	finally
-    //   13	24	152	finally
-    //   24	61	152	finally
-    //   71	87	152	finally
-    //   87	138	152	finally
+    try
+    {
+      if (this.d == null) {
+        init();
+      }
+      Iterator localIterator = this.d.iterator();
+      Object localObject;
+      boolean bool;
+      while (localIterator.hasNext())
+      {
+        localObject = (FileManagerEntity)localIterator.next();
+        if (((FileManagerEntity)localObject).getFilePath() != null)
+        {
+          bool = ((FileManagerEntity)localObject).getFilePath().equalsIgnoreCase(paramString);
+          if (bool) {
+            return localObject;
+          }
+        }
+      }
+      localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (Long)localIterator.next();
+        localObject = (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(localObject);
+        if (((FileManagerEntity)localObject).getFilePath() != null)
+        {
+          bool = ((FileManagerEntity)localObject).getFilePath().equalsIgnoreCase(paramString);
+          if (bool) {
+            return localObject;
+          }
+        }
+      }
+      return null;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public List<FileManagerEntity> b()
@@ -1842,11 +1484,16 @@ public class FileManagerProxy
       if (this.jdField_a_of_type_JavaUtilList == null) {
         a();
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("FileManagerProxy<FileAssistant>", 2, "queryMaxRecentRecords size[" + this.jdField_a_of_type_JavaUtilList.size() + "]");
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("queryMaxRecentRecords size[");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilList.size());
+        ((StringBuilder)localObject1).append("]");
+        QLog.i("FileManagerProxy<FileAssistant>", 2, ((StringBuilder)localObject1).toString());
       }
-      List localList = this.jdField_a_of_type_JavaUtilList;
-      return localList;
+      Object localObject1 = this.jdField_a_of_type_JavaUtilList;
+      return localObject1;
     }
     finally {}
   }
@@ -1890,152 +1537,90 @@ public class FileManagerProxy
   
   public void b()
   {
-    if (this.d == null) {
-      init();
+    long l = System.currentTimeMillis();
+    Object localObject = this.jdField_a_of_type_JavaUtilMap;
+    if ((localObject != null) && (((Map)localObject).size() > 0) && (l - this.jdField_a_of_type_Long > 5000L)) {
+      ThreadManager.getSubThreadHandler().post(new FileManagerProxy.2(this));
     }
-    Object localObject2 = this.d.iterator();
-    for (Object localObject1 = null; ((Iterator)localObject2).hasNext(); localObject1 = ((FileManagerEntity)localObject1).getTableName())
-    {
-      localObject1 = (FileManagerEntity)((Iterator)localObject2).next();
-      ((FileManagerEntity)localObject1).isReaded = true;
-    }
-    if (localObject1 != null)
-    {
-      localObject2 = new ContentValues();
-      ((ContentValues)localObject2).put("isReaded", Boolean.valueOf(true));
-      a((String)localObject1, (ContentValues)localObject2, "isReaded=?", new String[] { "0" }, null);
+    localObject = this.jdField_a_of_type_JavaUtilSet;
+    if (localObject != null) {
+      ((Set)localObject).clear();
     }
   }
   
   public void b(FileManagerEntity paramFileManagerEntity)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        a(paramFileManagerEntity);
-        Looper localLooper = Looper.getMainLooper();
-        Thread localThread1 = Thread.currentThread();
-        Thread localThread2 = localLooper.getThread();
-        if (localThread1 == localThread2) {
-          try
-          {
-            a(paramFileManagerEntity, null);
-            c(paramFileManagerEntity);
-            return;
-          }
-          catch (Exception paramFileManagerEntity)
-          {
-            paramFileManagerEntity.printStackTrace();
-            continue;
-          }
+      a(paramFileManagerEntity);
+      Looper localLooper = Looper.getMainLooper();
+      Thread localThread1 = Thread.currentThread();
+      Thread localThread2 = localLooper.getThread();
+      if (localThread1 == localThread2) {
+        try
+        {
+          a(paramFileManagerEntity, null);
+          c(paramFileManagerEntity);
         }
+        catch (Exception paramFileManagerEntity)
+        {
+          paramFileManagerEntity.printStackTrace();
+        }
+      } else {
         new Handler(localLooper).post(new FileManagerProxy.1(this, paramFileManagerEntity));
       }
-      finally {}
+      return;
     }
+    finally {}
   }
   
-  /* Error */
   public FileManagerEntity c(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 34	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
-    //   6: ifnonnull +7 -> 13
-    //   9: aload_0
-    //   10: invokevirtual 181	com/tencent/mobileqq/filemanager/data/FileManagerProxy:init	()V
-    //   13: aload_0
-    //   14: getfield 34	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
-    //   17: invokeinterface 251 1 0
-    //   22: astore 4
-    //   24: aload 4
-    //   26: invokeinterface 256 1 0
-    //   31: ifeq +40 -> 71
-    //   34: aload 4
-    //   36: invokeinterface 260 1 0
-    //   41: checkcast 192	com/tencent/mobileqq/filemanager/data/FileManagerEntity
-    //   44: astore_3
-    //   45: aload_3
-    //   46: getfield 861	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strServerPath	Ljava/lang/String;
-    //   49: ifnull -25 -> 24
-    //   52: aload_3
-    //   53: getfield 861	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strServerPath	Ljava/lang/String;
-    //   56: aload_1
-    //   57: invokevirtual 289	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   60: istore_2
-    //   61: iload_2
-    //   62: ifeq -38 -> 24
-    //   65: aload_3
-    //   66: astore_1
-    //   67: aload_0
-    //   68: monitorexit
-    //   69: aload_1
-    //   70: areturn
-    //   71: aload_0
-    //   72: getfield 36	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   75: invokeinterface 582 1 0
-    //   80: invokeinterface 331 1 0
-    //   85: astore 4
-    //   87: aload 4
-    //   89: invokeinterface 256 1 0
-    //   94: ifeq +61 -> 155
-    //   97: aload 4
-    //   99: invokeinterface 260 1 0
-    //   104: checkcast 128	java/lang/Long
-    //   107: astore_3
-    //   108: aload_0
-    //   109: getfield 36	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   112: aload_3
-    //   113: invokeinterface 308 2 0
-    //   118: checkcast 192	com/tencent/mobileqq/filemanager/data/FileManagerEntity
-    //   121: astore_3
-    //   122: aload_3
-    //   123: getfield 861	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strServerPath	Ljava/lang/String;
-    //   126: ifnull -39 -> 87
-    //   129: aload_3
-    //   130: getfield 711	com/tencent/mobileqq/filemanager/data/FileManagerEntity:bDelInFM	Z
-    //   133: iconst_1
-    //   134: if_icmpeq -47 -> 87
-    //   137: aload_3
-    //   138: getfield 861	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strServerPath	Ljava/lang/String;
-    //   141: aload_1
-    //   142: invokevirtual 289	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   145: istore_2
-    //   146: iload_2
-    //   147: ifeq -60 -> 87
-    //   150: aload_3
-    //   151: astore_1
-    //   152: goto -85 -> 67
-    //   155: aconst_null
-    //   156: astore_1
-    //   157: goto -90 -> 67
-    //   160: astore_1
-    //   161: aload_0
-    //   162: monitorexit
-    //   163: aload_1
-    //   164: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	165	0	this	FileManagerProxy
-    //   0	165	1	paramString	String
-    //   60	87	2	bool	boolean
-    //   44	107	3	localObject	Object
-    //   22	76	4	localIterator	Iterator
-    // Exception table:
-    //   from	to	target	type
-    //   2	13	160	finally
-    //   13	24	160	finally
-    //   24	61	160	finally
-    //   71	87	160	finally
-    //   87	146	160	finally
+    try
+    {
+      if (this.d == null) {
+        init();
+      }
+      Iterator localIterator = this.d.iterator();
+      Object localObject;
+      boolean bool;
+      while (localIterator.hasNext())
+      {
+        localObject = (FileManagerEntity)localIterator.next();
+        if (((FileManagerEntity)localObject).strServerPath != null)
+        {
+          bool = ((FileManagerEntity)localObject).strServerPath.equalsIgnoreCase(paramString);
+          if (bool) {
+            return localObject;
+          }
+        }
+      }
+      localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (Long)localIterator.next();
+        localObject = (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(localObject);
+        if ((((FileManagerEntity)localObject).strServerPath != null) && (((FileManagerEntity)localObject).bDelInFM != true))
+        {
+          bool = ((FileManagerEntity)localObject).strServerPath.equalsIgnoreCase(paramString);
+          if (bool) {
+            return localObject;
+          }
+        }
+      }
+      return null;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public List<FileManagerEntity> c()
   {
-    if ((this.d == null) || (this.d.isEmpty())) {
+    List localList = this.d;
+    if ((localList == null) || (localList.isEmpty())) {
       init();
     }
     return this.d;
@@ -2043,215 +1628,275 @@ public class FileManagerProxy
   
   public void c()
   {
-    long l = System.currentTimeMillis();
-    if ((this.jdField_a_of_type_JavaUtilMap != null) && (this.jdField_a_of_type_JavaUtilMap.size() > 0) && (l - this.jdField_a_of_type_Long > 5000L)) {
-      ThreadManager.getSubThreadHandler().post(new FileManagerProxy.2(this));
-    }
-    if (this.jdField_a_of_type_JavaUtilSet != null) {
-      this.jdField_a_of_type_JavaUtilSet.clear();
-    }
-  }
-  
-  public void c(FileManagerEntity paramFileManagerEntity)
-  {
-    int i;
-    try
-    {
-      if (this.d == null) {
-        init();
-      }
-      if ((!this.d.contains(paramFileManagerEntity)) || (!QLog.isColorLevel())) {
-        break label356;
-      }
-      QLog.e("FileManagerProxy<FileAssistant>", 2, "!!!!!!!!!!!fmList has one!!!!!!!!!!!!");
-    }
-    catch (Exception paramFileManagerEntity)
-    {
-      for (;;)
-      {
-        FileManagerEntity localFileManagerEntity;
-        label286:
-        if (QLog.isColorLevel()) {
-          QLog.e("FileManagerProxy<FileAssistant>", 1, paramFileManagerEntity.toString());
-        }
-      }
-    }
-    finally {}
-    if (i < this.d.size())
-    {
-      localFileManagerEntity = (FileManagerEntity)this.d.get(i);
-      if (paramFileManagerEntity.srvTime >= localFileManagerEntity.srvTime)
-      {
-        if (!paramFileManagerEntity.bDelInFM) {
-          this.d.add(i, paramFileManagerEntity);
-        }
-        if (this.jdField_a_of_type_JavaUtilList == null) {
-          break label361;
-        }
-        this.jdField_a_of_type_JavaUtilList.add(i, paramFileManagerEntity);
-        break label361;
-      }
-    }
-    for (;;)
-    {
-      if (!bool)
-      {
-        if (this.d.size() != 0) {
-          break label286;
-        }
-        if (!paramFileManagerEntity.bDelInFM) {
-          this.d.add(0, paramFileManagerEntity);
-        }
-        if (this.jdField_a_of_type_JavaUtilList != null) {
-          this.jdField_a_of_type_JavaUtilList.add(0, paramFileManagerEntity);
-        }
-      }
-      for (;;)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("FileManagerProxy<FileAssistant>", 4, "insertToList, is add" + bool + " entityInfo:" + FileManagerUtil.a(paramFileManagerEntity));
-        }
-        this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramFileManagerEntity.nSessionId), paramFileManagerEntity);
-        if (this.d.size() > 30) {
-          this.d.remove(this.d.size() - 1);
-        }
-        return;
-        i += 1;
-        break;
-        if (!paramFileManagerEntity.bDelInFM) {
-          this.d.add(paramFileManagerEntity);
-        }
-        if (this.jdField_a_of_type_JavaUtilList != null) {
-          this.jdField_a_of_type_JavaUtilList.add(paramFileManagerEntity);
-        }
-      }
-      boolean bool = false;
-      continue;
-      label356:
-      i = 0;
-      break;
-      label361:
-      bool = true;
-    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("delete from ");
+    ((StringBuilder)localObject).append(FileManagerEntity.tableName());
+    localObject = ((StringBuilder)localObject).toString();
+    this.app.getEntityManagerFactory().createEntityManager().execSQL((String)localObject);
   }
   
   /* Error */
-  public FileManagerEntity d(String paramString)
+  public void c(FileManagerEntity paramFileManagerEntity)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 34	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
+    //   3: getfield 32	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
     //   6: ifnonnull +7 -> 13
     //   9: aload_0
-    //   10: invokevirtual 181	com/tencent/mobileqq/filemanager/data/FileManagerProxy:init	()V
+    //   10: invokevirtual 178	com/tencent/mobileqq/filemanager/data/FileManagerProxy:init	()V
     //   13: aload_0
-    //   14: getfield 34	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
-    //   17: invokeinterface 251 1 0
-    //   22: astore 4
-    //   24: aload 4
-    //   26: invokeinterface 256 1 0
-    //   31: ifeq +62 -> 93
-    //   34: aload 4
-    //   36: invokeinterface 260 1 0
-    //   41: checkcast 192	com/tencent/mobileqq/filemanager/data/FileManagerEntity
-    //   44: astore_3
-    //   45: aload_3
-    //   46: getfield 889	com/tencent/mobileqq/filemanager/data/FileManagerEntity:WeiYunFileId	Ljava/lang/String;
-    //   49: ifnull -25 -> 24
-    //   52: aload_3
-    //   53: getfield 889	com/tencent/mobileqq/filemanager/data/FileManagerEntity:WeiYunFileId	Ljava/lang/String;
-    //   56: aload_1
-    //   57: invokevirtual 289	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   60: ifeq -36 -> 24
-    //   63: aload_3
-    //   64: getfield 339	com/tencent/mobileqq/filemanager/data/FileManagerEntity:status	I
-    //   67: iconst_1
-    //   68: if_icmpne -44 -> 24
-    //   71: aload_3
-    //   72: getfield 892	com/tencent/mobileqq/filemanager/data/FileManagerEntity:imgHeight	I
-    //   75: ifle -51 -> 24
-    //   78: aload_3
-    //   79: getfield 895	com/tencent/mobileqq/filemanager/data/FileManagerEntity:imgWidth	I
-    //   82: istore_2
-    //   83: iload_2
-    //   84: ifle -60 -> 24
-    //   87: aload_3
-    //   88: astore_1
-    //   89: aload_0
-    //   90: monitorexit
-    //   91: aload_1
-    //   92: areturn
+    //   14: getfield 32	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
+    //   17: aload_1
+    //   18: invokeinterface 558 2 0
+    //   23: ifeq +346 -> 369
+    //   26: invokestatic 357	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   29: ifeq +340 -> 369
+    //   32: ldc_w 366
+    //   35: iconst_2
+    //   36: ldc_w 889
+    //   39: invokestatic 475	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   42: goto +327 -> 369
+    //   45: iload_2
+    //   46: aload_0
+    //   47: getfield 32	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
+    //   50: invokeinterface 95 1 0
+    //   55: if_icmpge +331 -> 386
+    //   58: aload_0
+    //   59: getfield 32	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
+    //   62: iload_2
+    //   63: invokeinterface 99 2 0
+    //   68: checkcast 189	com/tencent/mobileqq/filemanager/data/FileManagerEntity
+    //   71: astore 4
+    //   73: aload_1
+    //   74: getfield 197	com/tencent/mobileqq/filemanager/data/FileManagerEntity:srvTime	J
+    //   77: aload 4
+    //   79: getfield 197	com/tencent/mobileqq/filemanager/data/FileManagerEntity:srvTime	J
+    //   82: lcmp
+    //   83: iflt +296 -> 379
+    //   86: aload_1
+    //   87: getfield 736	com/tencent/mobileqq/filemanager/data/FileManagerEntity:bDelInFM	Z
+    //   90: ifne +14 -> 104
     //   93: aload_0
-    //   94: getfield 36	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   97: invokeinterface 582 1 0
-    //   102: invokeinterface 331 1 0
-    //   107: astore 4
-    //   109: aload 4
-    //   111: invokeinterface 256 1 0
-    //   116: ifeq +75 -> 191
-    //   119: aload 4
-    //   121: invokeinterface 260 1 0
-    //   126: checkcast 128	java/lang/Long
-    //   129: astore_3
-    //   130: aload_0
-    //   131: getfield 36	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   134: aload_3
-    //   135: invokeinterface 308 2 0
-    //   140: checkcast 192	com/tencent/mobileqq/filemanager/data/FileManagerEntity
-    //   143: astore_3
-    //   144: aload_3
-    //   145: getfield 889	com/tencent/mobileqq/filemanager/data/FileManagerEntity:WeiYunFileId	Ljava/lang/String;
-    //   148: ifnull -39 -> 109
-    //   151: aload_3
-    //   152: getfield 889	com/tencent/mobileqq/filemanager/data/FileManagerEntity:WeiYunFileId	Ljava/lang/String;
-    //   155: aload_1
-    //   156: invokevirtual 289	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   159: ifeq -50 -> 109
-    //   162: aload_3
-    //   163: getfield 339	com/tencent/mobileqq/filemanager/data/FileManagerEntity:status	I
-    //   166: iconst_1
-    //   167: if_icmpne -58 -> 109
-    //   170: aload_3
-    //   171: getfield 892	com/tencent/mobileqq/filemanager/data/FileManagerEntity:imgHeight	I
-    //   174: ifle -65 -> 109
-    //   177: aload_3
-    //   178: getfield 895	com/tencent/mobileqq/filemanager/data/FileManagerEntity:imgWidth	I
-    //   181: istore_2
-    //   182: iload_2
-    //   183: ifle -74 -> 109
-    //   186: aload_3
-    //   187: astore_1
-    //   188: goto -99 -> 89
-    //   191: aconst_null
-    //   192: astore_1
-    //   193: goto -104 -> 89
-    //   196: astore_1
-    //   197: aload_0
-    //   198: monitorexit
-    //   199: aload_1
-    //   200: athrow
+    //   94: getfield 32	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
+    //   97: iload_2
+    //   98: aload_1
+    //   99: invokeinterface 892 3 0
+    //   104: aload_0
+    //   105: getfield 38	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   108: ifnull +266 -> 374
+    //   111: aload_0
+    //   112: getfield 38	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   115: iload_2
+    //   116: aload_1
+    //   117: invokeinterface 892 3 0
+    //   122: goto +252 -> 374
+    //   125: iload_3
+    //   126: ifne +90 -> 216
+    //   129: aload_0
+    //   130: getfield 32	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
+    //   133: invokeinterface 95 1 0
+    //   138: ifne +42 -> 180
+    //   141: aload_1
+    //   142: getfield 736	com/tencent/mobileqq/filemanager/data/FileManagerEntity:bDelInFM	Z
+    //   145: ifne +14 -> 159
+    //   148: aload_0
+    //   149: getfield 32	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
+    //   152: iconst_0
+    //   153: aload_1
+    //   154: invokeinterface 892 3 0
+    //   159: aload_0
+    //   160: getfield 38	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   163: ifnull +53 -> 216
+    //   166: aload_0
+    //   167: getfield 38	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   170: iconst_0
+    //   171: aload_1
+    //   172: invokeinterface 892 3 0
+    //   177: goto +39 -> 216
+    //   180: aload_1
+    //   181: getfield 736	com/tencent/mobileqq/filemanager/data/FileManagerEntity:bDelInFM	Z
+    //   184: ifne +14 -> 198
+    //   187: aload_0
+    //   188: getfield 32	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
+    //   191: aload_1
+    //   192: invokeinterface 319 2 0
+    //   197: pop
+    //   198: aload_0
+    //   199: getfield 38	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   202: ifnull +14 -> 216
+    //   205: aload_0
+    //   206: getfield 38	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   209: aload_1
+    //   210: invokeinterface 319 2 0
+    //   215: pop
+    //   216: invokestatic 529	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   219: ifeq +59 -> 278
+    //   222: new 180	java/lang/StringBuilder
+    //   225: dup
+    //   226: invokespecial 181	java/lang/StringBuilder:<init>	()V
+    //   229: astore 4
+    //   231: aload 4
+    //   233: ldc_w 894
+    //   236: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   239: pop
+    //   240: aload 4
+    //   242: iload_3
+    //   243: invokevirtual 897	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   246: pop
+    //   247: aload 4
+    //   249: ldc_w 899
+    //   252: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   255: pop
+    //   256: aload 4
+    //   258: aload_1
+    //   259: invokestatic 814	com/tencent/mobileqq/filemanager/util/FileManagerUtil:a	(Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;)Ljava/lang/String;
+    //   262: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   265: pop
+    //   266: ldc_w 366
+    //   269: iconst_4
+    //   270: aload 4
+    //   272: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   275: invokestatic 369	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   278: aload_0
+    //   279: getfield 34	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   282: aload_1
+    //   283: getfield 205	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nSessionId	J
+    //   286: invokestatic 309	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   289: aload_1
+    //   290: invokeinterface 315 3 0
+    //   295: pop
+    //   296: aload_0
+    //   297: getfield 32	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
+    //   300: invokeinterface 95 1 0
+    //   305: bipush 30
+    //   307: if_icmple +49 -> 356
+    //   310: aload_0
+    //   311: getfield 32	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
+    //   314: aload_0
+    //   315: getfield 32	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
+    //   318: invokeinterface 95 1 0
+    //   323: iconst_1
+    //   324: isub
+    //   325: invokeinterface 709 2 0
+    //   330: pop
+    //   331: goto +25 -> 356
+    //   334: astore_1
+    //   335: goto +24 -> 359
+    //   338: astore_1
+    //   339: invokestatic 357	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   342: ifeq +14 -> 356
+    //   345: ldc_w 366
+    //   348: iconst_1
+    //   349: aload_1
+    //   350: invokevirtual 828	java/lang/Exception:toString	()Ljava/lang/String;
+    //   353: invokestatic 475	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   356: aload_0
+    //   357: monitorexit
+    //   358: return
+    //   359: aload_0
+    //   360: monitorexit
+    //   361: goto +5 -> 366
+    //   364: aload_1
+    //   365: athrow
+    //   366: goto -2 -> 364
+    //   369: iconst_0
+    //   370: istore_2
+    //   371: goto -326 -> 45
+    //   374: iconst_1
+    //   375: istore_3
+    //   376: goto -251 -> 125
+    //   379: iload_2
+    //   380: iconst_1
+    //   381: iadd
+    //   382: istore_2
+    //   383: goto -338 -> 45
+    //   386: iconst_0
+    //   387: istore_3
+    //   388: goto -263 -> 125
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	201	0	this	FileManagerProxy
-    //   0	201	1	paramString	String
-    //   82	101	2	i	int
-    //   44	143	3	localObject	Object
-    //   22	98	4	localIterator	Iterator
+    //   0	391	0	this	FileManagerProxy
+    //   0	391	1	paramFileManagerEntity	FileManagerEntity
+    //   45	338	2	i	int
+    //   125	263	3	bool	boolean
+    //   71	200	4	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   2	13	196	finally
-    //   13	24	196	finally
-    //   24	83	196	finally
-    //   93	109	196	finally
-    //   109	182	196	finally
+    //   2	13	334	finally
+    //   13	42	334	finally
+    //   45	104	334	finally
+    //   104	122	334	finally
+    //   129	159	334	finally
+    //   159	177	334	finally
+    //   180	198	334	finally
+    //   198	216	334	finally
+    //   216	278	334	finally
+    //   278	331	334	finally
+    //   339	356	334	finally
+    //   2	13	338	java/lang/Exception
+    //   13	42	338	java/lang/Exception
+    //   45	104	338	java/lang/Exception
+    //   104	122	338	java/lang/Exception
+    //   129	159	338	java/lang/Exception
+    //   159	177	338	java/lang/Exception
+    //   180	198	338	java/lang/Exception
+    //   198	216	338	java/lang/Exception
+    //   216	278	338	java/lang/Exception
+    //   278	331	338	java/lang/Exception
+  }
+  
+  public FileManagerEntity d(String paramString)
+  {
+    try
+    {
+      if (this.d == null) {
+        init();
+      }
+      Iterator localIterator = this.d.iterator();
+      Object localObject;
+      int i;
+      while (localIterator.hasNext())
+      {
+        localObject = (FileManagerEntity)localIterator.next();
+        if ((((FileManagerEntity)localObject).WeiYunFileId != null) && (((FileManagerEntity)localObject).WeiYunFileId.equalsIgnoreCase(paramString)) && (((FileManagerEntity)localObject).status == 1) && (((FileManagerEntity)localObject).imgHeight > 0))
+        {
+          i = ((FileManagerEntity)localObject).imgWidth;
+          if (i > 0) {
+            return localObject;
+          }
+        }
+      }
+      localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (Long)localIterator.next();
+        localObject = (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(localObject);
+        if ((((FileManagerEntity)localObject).WeiYunFileId != null) && (((FileManagerEntity)localObject).WeiYunFileId.equalsIgnoreCase(paramString)) && (((FileManagerEntity)localObject).status == 1) && (((FileManagerEntity)localObject).imgHeight > 0))
+        {
+          i = ((FileManagerEntity)localObject).imgWidth;
+          if (i > 0) {
+            return localObject;
+          }
+        }
+      }
+      return null;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public void d()
   {
-    String str = "delete from " + FileManagerEntity.tableName();
-    this.app.getEntityManagerFactory().createEntityManager().execSQL(str);
+    synchronized (this.jdField_b_of_type_JavaUtilMap)
+    {
+      this.jdField_b_of_type_JavaUtilMap.clear();
+      return;
+    }
   }
   
   public void d(FileManagerEntity paramFileManagerEntity)
@@ -2289,109 +1934,46 @@ public class FileManagerProxy
   
   public void destroy() {}
   
-  /* Error */
   public FileManagerEntity e(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 34	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
-    //   6: ifnonnull +7 -> 13
-    //   9: aload_0
-    //   10: invokevirtual 181	com/tencent/mobileqq/filemanager/data/FileManagerProxy:init	()V
-    //   13: aload_0
-    //   14: getfield 34	com/tencent/mobileqq/filemanager/data/FileManagerProxy:d	Ljava/util/List;
-    //   17: invokeinterface 251 1 0
-    //   22: astore 4
-    //   24: aload 4
-    //   26: invokeinterface 256 1 0
-    //   31: ifeq +40 -> 71
-    //   34: aload 4
-    //   36: invokeinterface 260 1 0
-    //   41: checkcast 192	com/tencent/mobileqq/filemanager/data/FileManagerEntity
-    //   44: astore_3
-    //   45: aload_3
-    //   46: getfield 913	com/tencent/mobileqq/filemanager/data/FileManagerEntity:Uuid	Ljava/lang/String;
-    //   49: ifnull -25 -> 24
-    //   52: aload_3
-    //   53: getfield 913	com/tencent/mobileqq/filemanager/data/FileManagerEntity:Uuid	Ljava/lang/String;
-    //   56: aload_1
-    //   57: invokevirtual 289	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   60: istore_2
-    //   61: iload_2
-    //   62: ifeq -38 -> 24
-    //   65: aload_3
-    //   66: astore_1
-    //   67: aload_0
-    //   68: monitorexit
-    //   69: aload_1
-    //   70: areturn
-    //   71: aload_0
-    //   72: getfield 36	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   75: invokeinterface 582 1 0
-    //   80: invokeinterface 331 1 0
-    //   85: astore 4
-    //   87: aload 4
-    //   89: invokeinterface 256 1 0
-    //   94: ifeq +60 -> 154
-    //   97: aload 4
-    //   99: invokeinterface 260 1 0
-    //   104: checkcast 128	java/lang/Long
-    //   107: astore_3
-    //   108: aload_0
-    //   109: getfield 36	com/tencent/mobileqq/filemanager/data/FileManagerProxy:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   112: aload_3
-    //   113: invokeinterface 308 2 0
-    //   118: checkcast 192	com/tencent/mobileqq/filemanager/data/FileManagerEntity
-    //   121: astore_3
-    //   122: aload_3
-    //   123: ifnull -36 -> 87
-    //   126: aload_3
-    //   127: getfield 913	com/tencent/mobileqq/filemanager/data/FileManagerEntity:Uuid	Ljava/lang/String;
-    //   130: invokestatic 442	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   133: ifne -46 -> 87
-    //   136: aload_3
-    //   137: getfield 913	com/tencent/mobileqq/filemanager/data/FileManagerEntity:Uuid	Ljava/lang/String;
-    //   140: aload_1
-    //   141: invokevirtual 289	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   144: istore_2
-    //   145: iload_2
-    //   146: ifeq -59 -> 87
-    //   149: aload_3
-    //   150: astore_1
-    //   151: goto -84 -> 67
-    //   154: aconst_null
-    //   155: astore_1
-    //   156: goto -89 -> 67
-    //   159: astore_1
-    //   160: aload_0
-    //   161: monitorexit
-    //   162: aload_1
-    //   163: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	164	0	this	FileManagerProxy
-    //   0	164	1	paramString	String
-    //   60	86	2	bool	boolean
-    //   44	106	3	localObject	Object
-    //   22	76	4	localIterator	Iterator
-    // Exception table:
-    //   from	to	target	type
-    //   2	13	159	finally
-    //   13	24	159	finally
-    //   24	61	159	finally
-    //   71	87	159	finally
-    //   87	122	159	finally
-    //   126	145	159	finally
-  }
-  
-  public void e()
-  {
-    synchronized (this.jdField_b_of_type_JavaUtilMap)
+    try
     {
-      this.jdField_b_of_type_JavaUtilMap.clear();
-      return;
+      if (this.d == null) {
+        init();
+      }
+      Iterator localIterator = this.d.iterator();
+      Object localObject;
+      boolean bool;
+      while (localIterator.hasNext())
+      {
+        localObject = (FileManagerEntity)localIterator.next();
+        if (((FileManagerEntity)localObject).Uuid != null)
+        {
+          bool = ((FileManagerEntity)localObject).Uuid.equalsIgnoreCase(paramString);
+          if (bool) {
+            return localObject;
+          }
+        }
+      }
+      localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (Long)localIterator.next();
+        localObject = (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(localObject);
+        if ((localObject != null) && (!TextUtils.isEmpty(((FileManagerEntity)localObject).Uuid)))
+        {
+          bool = ((FileManagerEntity)localObject).Uuid.equalsIgnoreCase(paramString);
+          if (bool) {
+            return localObject;
+          }
+        }
+      }
+      return null;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
@@ -2400,177 +1982,164 @@ public class FileManagerProxy
     if (paramFileManagerEntity == null) {
       return;
     }
-    for (;;)
+    try
     {
-      ContentValues localContentValues;
-      try
-      {
-        localContentValues = new ContentValues();
-        if (paramFileManagerEntity.bDelInFM)
-        {
-          localContentValues.put("bDelInFM", Boolean.valueOf(true));
-          a(FileManagerEntity.tableName(), localContentValues, "nSessionId=?", new String[] { String.valueOf(paramFileManagerEntity.nSessionId) }, null);
-          break;
-        }
+      ContentValues localContentValues = new ContentValues();
+      if (paramFileManagerEntity.bDelInFM) {
+        localContentValues.put("bDelInFM", Boolean.valueOf(true));
+      } else {
+        localContentValues.put("bDelInFM", Boolean.valueOf(false));
       }
-      finally {}
-      localContentValues.put("bDelInFM", Boolean.valueOf(false));
+      a(FileManagerEntity.tableName(), localContentValues, "nSessionId=?", new String[] { String.valueOf(paramFileManagerEntity.nSessionId) }, null);
+      return;
     }
+    finally {}
   }
   
   public FileManagerEntity f(String paramString)
   {
-    for (;;)
+    try
     {
-      ArrayList localArrayList;
-      try
-      {
-        if (this.d == null) {
-          init();
-        }
-        localArrayList = new ArrayList();
-        localObject2 = this.d.iterator();
-        if (((Iterator)localObject2).hasNext())
-        {
-          localObject1 = (FileManagerEntity)((Iterator)localObject2).next();
-          if ((((FileManagerEntity)localObject1).WeiYunFileId == null) || (!((FileManagerEntity)localObject1).WeiYunFileId.equalsIgnoreCase(paramString))) {
-            continue;
-          }
-          if (((FileManagerEntity)localObject1).status == 1)
-          {
-            boolean bool = FileUtil.b(((FileManagerEntity)localObject1).getFilePath());
-            if (bool) {
-              return localObject1;
-            }
-          }
-          localArrayList.add(localObject1);
-          continue;
-        }
-        localIterator = localArrayList.iterator();
+      if (this.d == null) {
+        init();
       }
-      finally {}
-      for (;;)
+      Object localObject1 = new ArrayList();
+      Iterator localIterator = this.d.iterator();
+      Object localObject2;
+      boolean bool;
+      while (localIterator.hasNext())
       {
-        if (localIterator.hasNext())
-        {
-          localObject2 = (FileManagerEntity)localIterator.next();
-          localObject1 = localObject2;
-          if (((FileManagerEntity)localObject2).nOpType == 5) {
-            break;
-          }
-          localObject1 = localObject2;
-          if (((FileManagerEntity)localObject2).nOpType == 50) {
-            break;
-          }
-          if (((FileManagerEntity)localObject2).cloudType == 2)
-          {
-            localObject1 = localObject2;
-            break;
-          }
-        }
-      }
-      localArrayList.clear();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-      for (;;)
-      {
-        if (!localIterator.hasNext()) {
-          break label304;
-        }
-        localObject1 = (Long)localIterator.next();
-        localObject2 = (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(localObject1);
+        localObject2 = (FileManagerEntity)localIterator.next();
         if ((((FileManagerEntity)localObject2).WeiYunFileId != null) && (((FileManagerEntity)localObject2).WeiYunFileId.equalsIgnoreCase(paramString)))
         {
           if (((FileManagerEntity)localObject2).status == 1)
           {
-            localObject1 = localObject2;
-            if (FileUtil.b(((FileManagerEntity)localObject2).getFilePath())) {
-              break;
+            bool = FileUtil.a(((FileManagerEntity)localObject2).getFilePath());
+            if (bool) {
+              return localObject2;
             }
           }
-          localArrayList.add(localObject2);
+          ((ArrayList)localObject1).add(localObject2);
         }
       }
-      label304:
-      Object localObject2 = localArrayList.iterator();
-      for (;;)
+      localIterator = ((ArrayList)localObject1).iterator();
+      int i;
+      while (localIterator.hasNext())
       {
-        if (((Iterator)localObject2).hasNext())
+        localObject2 = (FileManagerEntity)localIterator.next();
+        if ((((FileManagerEntity)localObject2).nOpType != 5) && (((FileManagerEntity)localObject2).nOpType != 50))
         {
-          paramString = (FileManagerEntity)((Iterator)localObject2).next();
-          localObject1 = paramString;
-          if (paramString.nOpType == 5) {
-            break;
-          }
-          localObject1 = paramString;
-          if (paramString.nOpType == 50) {
-            break;
-          }
-          int i = paramString.cloudType;
-          if (i == 2)
-          {
-            localObject1 = paramString;
+          i = ((FileManagerEntity)localObject2).cloudType;
+          if (i != 2) {
             break;
           }
         }
+        else
+        {
+          return localObject2;
+        }
       }
-      Object localObject1 = null;
+      ((ArrayList)localObject1).clear();
+      localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        localObject2 = (Long)localIterator.next();
+        localObject2 = (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(localObject2);
+        if ((((FileManagerEntity)localObject2).WeiYunFileId != null) && (((FileManagerEntity)localObject2).WeiYunFileId.equalsIgnoreCase(paramString)))
+        {
+          if (((FileManagerEntity)localObject2).status == 1)
+          {
+            bool = FileUtil.a(((FileManagerEntity)localObject2).getFilePath());
+            if (bool) {
+              return localObject2;
+            }
+          }
+          ((ArrayList)localObject1).add(localObject2);
+        }
+      }
+      paramString = ((ArrayList)localObject1).iterator();
+      while (paramString.hasNext())
+      {
+        localObject1 = (FileManagerEntity)paramString.next();
+        if ((((FileManagerEntity)localObject1).nOpType != 5) && (((FileManagerEntity)localObject1).nOpType != 50))
+        {
+          i = ((FileManagerEntity)localObject1).cloudType;
+          if (i != 2) {
+            break;
+          }
+        }
+        else
+        {
+          return localObject1;
+        }
+      }
+      return null;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
   public void f(FileManagerEntity paramFileManagerEntity)
   {
-    if (paramFileManagerEntity == null) {}
-    for (;;)
-    {
+    if (paramFileManagerEntity == null) {
       return;
-      try
-      {
-        ContentValues localContentValues = new ContentValues();
-        localContentValues.put("msgSeq", Long.valueOf(paramFileManagerEntity.msgSeq));
-        localContentValues.put("msgUid", Long.valueOf(paramFileManagerEntity.msgUid));
-        localContentValues.put("msgTime", Long.valueOf(paramFileManagerEntity.msgTime));
-        a(FileManagerEntity.tableName(), localContentValues, "nSessionId=?", new String[] { String.valueOf(paramFileManagerEntity.nSessionId) }, null);
-      }
-      finally {}
+    }
+    try
+    {
+      ContentValues localContentValues = new ContentValues();
+      localContentValues.put("msgSeq", Long.valueOf(paramFileManagerEntity.msgSeq));
+      localContentValues.put("msgUid", Long.valueOf(paramFileManagerEntity.msgUid));
+      localContentValues.put("msgTime", Long.valueOf(paramFileManagerEntity.msgTime));
+      a(FileManagerEntity.tableName(), localContentValues, "nSessionId=?", new String[] { String.valueOf(paramFileManagerEntity.nSessionId) }, null);
+      return;
+    }
+    finally
+    {
+      paramFileManagerEntity = finally;
+      throw paramFileManagerEntity;
     }
   }
   
   public FileManagerEntity g(String arg1)
   {
-    FileManagerEntity localFileManagerEntity;
     synchronized (this.jdField_b_of_type_JavaUtilMap)
     {
       if (this.jdField_b_of_type_JavaUtilMap.size() == 0) {
         return null;
       }
-      localFileManagerEntity = (FileManagerEntity)this.jdField_b_of_type_JavaUtilMap.get(???);
-      if (localFileManagerEntity == null) {
+      FileManagerEntity localFileManagerEntity1 = (FileManagerEntity)this.jdField_b_of_type_JavaUtilMap.get(???);
+      if (localFileManagerEntity1 == null) {
         return null;
       }
-    }
-    ??? = b(localFileManagerEntity.nSessionId);
-    if (??? != null)
-    {
-      if (??? == localFileManagerEntity)
+      ??? = b(localFileManagerEntity1.nSessionId);
+      if (??? != null)
       {
-        if (!FileUtil.b(localFileManagerEntity.getFilePath())) {
-          synchronized (this.jdField_b_of_type_JavaUtilMap)
-          {
-            this.jdField_b_of_type_JavaUtilMap.remove(localFileManagerEntity.zipInnerPath);
-            QLog.e("FileManagerProxy<FileAssistant>", 1, "getZipFileListEntity : can find the Entity in cache, but raw file is not exist! [fileName] = " + localFileManagerEntity.fileName + "[sessionId] = " + localFileManagerEntity.nSessionId);
-            return null;
+        if (??? == localFileManagerEntity1)
+        {
+          if (!FileUtil.a(localFileManagerEntity1.getFilePath())) {
+            synchronized (this.jdField_b_of_type_JavaUtilMap)
+            {
+              this.jdField_b_of_type_JavaUtilMap.remove(localFileManagerEntity1.zipInnerPath);
+              ??? = new StringBuilder();
+              ???.append("getZipFileListEntity : can find the Entity in cache, but raw file is not exist! [fileName] = ");
+              ???.append(localFileManagerEntity1.fileName);
+              ???.append("[sessionId] = ");
+              ???.append(localFileManagerEntity1.nSessionId);
+              QLog.e("FileManagerProxy<FileAssistant>", 1, ???.toString());
+              return null;
+            }
           }
+          return localFileManagerEntity2;
         }
-      }
-      else {
         synchronized (this.jdField_b_of_type_JavaUtilMap)
         {
           this.jdField_b_of_type_JavaUtilMap.put(???, ???);
           return ???;
         }
       }
-    }
-    else {
       try
       {
         this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(???.nSessionId), ???);
@@ -2578,7 +2147,6 @@ public class FileManagerProxy
       }
       finally {}
     }
-    return ???;
   }
   
   public void g(FileManagerEntity paramFileManagerEntity)
@@ -2586,7 +2154,12 @@ public class FileManagerProxy
     synchronized (this.jdField_b_of_type_JavaUtilMap)
     {
       this.jdField_b_of_type_JavaUtilMap.put(paramFileManagerEntity.zipInnerPath, paramFileManagerEntity);
-      QLog.e("FileManagerProxy<FileAssistant>", 1, "insertToZipListFile : [fileName] = " + paramFileManagerEntity.fileName + "[sessionId] = " + paramFileManagerEntity.nSessionId);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("insertToZipListFile : [fileName] = ");
+      localStringBuilder.append(paramFileManagerEntity.fileName);
+      localStringBuilder.append("[sessionId] = ");
+      localStringBuilder.append(paramFileManagerEntity.nSessionId);
+      QLog.e("FileManagerProxy<FileAssistant>", 1, localStringBuilder.toString());
       return;
     }
   }
@@ -2596,15 +2169,30 @@ public class FileManagerProxy
     if (this.d != null) {
       return;
     }
-    Object localObject2 = "select * from ( select * from " + FileManagerEntity.tableName() + " order by srvTime desc limit " + 30 + ") order by srvTime desc";
-    Object localObject3 = "update  " + FileManagerEntity.tableName() + " set bDelInFM = ?  where ( srvTime + ?  ) < ? and cloudType = ? ";
-    EntityManager localEntityManager = this.app.getEntityManagerFactory().createEntityManager();
-    localEntityManager.update((String)localObject3, new Object[] { Integer.valueOf(1), Long.valueOf(604800000L), Long.valueOf(MessageCache.a() * 1000L), Integer.valueOf(1) });
-    this.d = localEntityManager.rawQuery(FileManagerEntity.class, (String)localObject2, null);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("select * from ( select * from ");
+    ((StringBuilder)localObject1).append(FileManagerEntity.tableName());
+    ((StringBuilder)localObject1).append(" order by srvTime desc limit ");
+    ((StringBuilder)localObject1).append(30);
+    ((StringBuilder)localObject1).append(") order by srvTime desc");
+    Object localObject3 = ((StringBuilder)localObject1).toString();
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("update  ");
+    ((StringBuilder)localObject1).append(FileManagerEntity.tableName());
+    ((StringBuilder)localObject1).append(" set bDelInFM = ?  where ( srvTime + ?  ) < ? and cloudType = ? ");
+    Object localObject4 = ((StringBuilder)localObject1).toString();
+    localObject1 = this.app.getEntityManagerFactory().createEntityManager();
+    ((EntityManager)localObject1).update((String)localObject4, new Object[] { Integer.valueOf(1), Long.valueOf(604800000L), Long.valueOf(MessageCache.a() * 1000L), Integer.valueOf(1) });
+    this.d = ((EntityManager)localObject1).rawQuery(FileManagerEntity.class, (String)localObject3, null);
     if (this.d == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileManagerProxy<FileAssistant>", 2, "init , buf fmList is null,maybe is not data!,sql[" + (String)localObject2 + "]");
+      if (QLog.isColorLevel())
+      {
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("init , buf fmList is null,maybe is not data!,sql[");
+        ((StringBuilder)localObject4).append((String)localObject3);
+        ((StringBuilder)localObject4).append("]");
+        QLog.i("FileManagerProxy<FileAssistant>", 2, ((StringBuilder)localObject4).toString());
       }
       this.d = new ArrayList();
     }
@@ -2613,22 +2201,27 @@ public class FileManagerProxy
       if (this.jdField_a_of_type_JavaUtilMap == null)
       {
         this.jdField_a_of_type_JavaUtilMap = new HashMap();
-        localObject2 = this.d.iterator();
-        while (((Iterator)localObject2).hasNext())
+        localObject3 = this.d.iterator();
+        while (((Iterator)localObject3).hasNext())
         {
-          localObject3 = (FileManagerEntity)((Iterator)localObject2).next();
-          FileManagerUtil.a((FileManagerEntity)localObject3);
-          this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(((FileManagerEntity)localObject3).nSessionId), localObject3);
+          localObject4 = (FileManagerEntity)((Iterator)localObject3).next();
+          FileManagerUtil.a((FileManagerEntity)localObject4);
+          this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(((FileManagerEntity)localObject4).nSessionId), localObject4);
         }
       }
+      ((EntityManager)localObject1).close();
+      return;
     }
     finally {}
-    localObject1.close();
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FileManagerProxy
  * JD-Core Version:    0.7.0.1
  */

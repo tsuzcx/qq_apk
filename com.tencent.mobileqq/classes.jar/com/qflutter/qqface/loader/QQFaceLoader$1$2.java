@@ -13,19 +13,23 @@ class QQFaceLoader$1$2
   
   public void run()
   {
-    if ((this.val$nativeData == null) || (this.val$nativeData.isEmpty()))
+    Object localObject = this.val$nativeData;
+    if ((localObject != null) && (!((QQFaceNativeData)localObject).isEmpty()))
     {
-      Log.e("QQFaceLoader", "asyncLoadQQFace, nativeData is empty");
-      this.this$1.val$result.success(null);
+      localObject = this.this$1.this$0;
+      String str = this.this$1.val$qqFaceParam.getFaceId();
+      QQFaceNativeData localQQFaceNativeData = this.val$nativeData;
+      localObject = QQFaceLoader.access$400((QQFaceLoader)localObject, str, localQQFaceNativeData, localQQFaceNativeData.shareBitmap);
+      this.this$1.val$result.success(((QQFaceFlutterData)localObject).toMap());
       return;
     }
-    QQFaceFlutterData localQQFaceFlutterData = QQFaceLoader.access$400(this.this$1.this$0, this.this$1.val$qqFaceParam.faceId, this.val$nativeData, this.val$nativeData.shareBitmap);
-    this.this$1.val$result.success(localQQFaceFlutterData.toMap());
+    Log.e("QQFaceLoader", "asyncLoadQQFace, nativeData is empty");
+    this.this$1.val$result.success(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.qflutter.qqface.loader.QQFaceLoader.1.2
  * JD-Core Version:    0.7.0.1
  */

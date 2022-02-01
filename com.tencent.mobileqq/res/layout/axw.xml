@@ -5,7 +5,7 @@
         <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <RelativeLayout android:id="@id/icj" android:layout_width="fill_parent" android:layout_height="375.0dip">
                 <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <com.tencent.image.URLImageView android:id="@id/die" android:background="@drawable/ah5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+                    <com.tencent.image.URLImageView android:id="@id/die" android:background="@drawable/eko" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
                     <com.tencent.mobileqq.nearby.widget.AvatarWallViewPager android:id="@id/a3i" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
                 </RelativeLayout>
                 <com.tencent.widget.CustomImgView android:id="@id/diu" android:visibility="gone" android:layout_width="70.0dip" android:layout_height="70.0dip" android:scaleType="centerCrop" android:layout_centerInParent="true" />

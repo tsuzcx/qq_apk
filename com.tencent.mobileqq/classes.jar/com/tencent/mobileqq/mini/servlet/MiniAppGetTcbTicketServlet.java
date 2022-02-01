@@ -32,7 +32,7 @@ public class MiniAppGetTcbTicketServlet
     INTERFACE.StGetTCBTicketRsp localStGetTCBTicketRsp = new INTERFACE.StGetTCBTicketRsp();
     long l = paramBundle.getLong("retCode");
     String str = paramBundle.getString("errMsg");
-    if ((localStGetTCBTicketRsp != null) && (l == 0L))
+    if (l == 0L)
     {
       localStGetTCBTicketRsp.mergeFrom(paramArrayOfByte);
       paramBundle.putByteArray("key_ext_info", localStGetTCBTicketRsp.extInfo.toByteArray());
@@ -43,7 +43,12 @@ public class MiniAppGetTcbTicketServlet
       return;
     }
     notifyObserver(paramIntent, 1046, false, paramBundle, MiniAppObserver.class);
-    QLog.e("MiniAppGetTcbTicketServlet", 1, "MiniAppGetTcbTicketServlet retCode : " + l + "; errMsg : " + str);
+    paramIntent = new StringBuilder();
+    paramIntent.append("MiniAppGetTcbTicketServlet retCode : ");
+    paramIntent.append(l);
+    paramIntent.append("; errMsg : ");
+    paramIntent.append(str);
+    QLog.e("MiniAppGetTcbTicketServlet", 1, paramIntent.toString());
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -52,27 +57,14 @@ public class MiniAppGetTcbTicketServlet
     byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_ext_info");
     String str = paramIntent.getStringExtra("key_env_id");
     int i = paramIntent.getIntExtra("key_index", -1);
-    Object localObject1 = null;
-    if (arrayOfByte != null) {
+    if (arrayOfByte != null)
+    {
       localObject1 = new COMM.StCommonExt();
-    }
-    try
-    {
-      ((COMM.StCommonExt)localObject1).mergeFrom(arrayOfByte);
-      localObject2 = new GetTcbTicketRequest((COMM.StCommonExt)localObject1, (String)localObject2, str).encode(paramIntent, i, getTraceId());
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = new byte[4];
+      try
+      {
+        ((COMM.StCommonExt)localObject1).mergeFrom(arrayOfByte);
       }
-      paramPacket.setSSOCommand("LightAppSvc.mini_app_info.GetTCBTicket");
-      paramPacket.putSendData(WupUtil.a((byte[])localObject1));
-      paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-      super.onSend(paramIntent, paramPacket);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
         if (QLog.isColorLevel()) {
           QLog.e("MiniAppGetTcbTicketServlet", 2, "onSend. mergeFrom exception!");
@@ -80,11 +72,24 @@ public class MiniAppGetTcbTicketServlet
         localInvalidProtocolBufferMicroException.printStackTrace();
       }
     }
+    else
+    {
+      localObject1 = null;
+    }
+    localObject2 = new GetTcbTicketRequest((COMM.StCommonExt)localObject1, (String)localObject2, str).encode(paramIntent, i, getTraceId());
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new byte[4];
+    }
+    paramPacket.setSSOCommand("LightAppSvc.mini_app_info.GetTCBTicket");
+    paramPacket.putSendData(WupUtil.a((byte[])localObject1));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetTcbTicketServlet
  * JD-Core Version:    0.7.0.1
  */

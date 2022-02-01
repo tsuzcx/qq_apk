@@ -48,41 +48,42 @@ public class BitmapMonitor
     if (localObject != null)
     {
       localObject = ((WindowManager)localObject).getDefaultDisplay();
-      if (!AndroidVersion.isJellyBeanMr1()) {
-        break label120;
+      if (AndroidVersion.isJellyBeanMr1()) {
+        ((Display)localObject).getRealMetrics(localDisplayMetrics);
+      } else {
+        ((Display)localObject).getMetrics(localDisplayMetrics);
       }
-      ((Display)localObject).getRealMetrics(localDisplayMetrics);
     }
-    for (;;)
+    try
     {
-      try
-      {
-        localJSONObject.put("resolution", localDisplayMetrics.widthPixels + "*" + localDisplayMetrics.heightPixels);
-        localJSONObject.put("ppi", localDisplayMetrics.densityDpi);
-        localJSONObject.put("threshold", this.detector.getBitmapSizeChecker().getThreshold());
-        return localJSONObject;
-      }
-      catch (Exception localException)
-      {
-        label120:
-        Logger.INSTANCE.e(new String[] { "QAPM_bigbitmap_BitmapMonitor", "getExtraData error: ", localException.getMessage() });
-      }
-      ((Display)localObject).getMetrics(localDisplayMetrics);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(localDisplayMetrics.widthPixels);
+      ((StringBuilder)localObject).append("*");
+      ((StringBuilder)localObject).append(localDisplayMetrics.heightPixels);
+      localJSONObject.put("resolution", ((StringBuilder)localObject).toString());
+      localJSONObject.put("ppi", localDisplayMetrics.densityDpi);
+      localJSONObject.put("threshold", this.detector.getBitmapSizeChecker().getThreshold());
+      return localJSONObject;
+    }
+    catch (Exception localException)
+    {
+      Logger.INSTANCE.e(new String[] { "QAPM_bigbitmap_BitmapMonitor", "getExtraData error: ", localException.getMessage() });
     }
     return localJSONObject;
   }
   
   public static BitmapMonitor getInstance()
   {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new BitmapMonitor();
+    if (instance == null) {
+      try
+      {
+        if (instance == null) {
+          instance = new BitmapMonitor();
+        }
       }
-      return instance;
+      finally {}
     }
-    finally {}
+    return instance;
   }
   
   private void initIfNecessary()
@@ -132,7 +133,7 @@ public class BitmapMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.bigbitmap.BitmapMonitor
  * JD-Core Version:    0.7.0.1
  */

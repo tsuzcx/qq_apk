@@ -9,219 +9,204 @@ class NearbyGuideActivity$8
   public void run()
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 8
-    //   3: aconst_null
-    //   4: astore 7
-    //   6: aload_0
-    //   7: getfield 14	com/tencent/mobileqq/nearby/guide/NearbyGuideActivity$8:this$0	Lcom/tencent/mobileqq/nearby/guide/NearbyGuideActivity;
-    //   10: invokevirtual 31	com/tencent/mobileqq/nearby/guide/NearbyGuideActivity:getResources	()Landroid/content/res/Resources;
-    //   13: ldc 32
-    //   15: invokevirtual 38	android/content/res/Resources:getDimensionPixelSize	(I)I
-    //   18: istore 4
-    //   20: iconst_0
-    //   21: istore_1
-    //   22: iconst_0
-    //   23: istore_3
-    //   24: iconst_0
-    //   25: istore_2
-    //   26: new 40	java/io/FileInputStream
-    //   29: dup
-    //   30: new 42	java/io/File
-    //   33: dup
-    //   34: aload_0
-    //   35: getfield 16	com/tencent/mobileqq/nearby/guide/NearbyGuideActivity$8:a	Ljava/lang/String;
-    //   38: invokespecial 45	java/io/File:<init>	(Ljava/lang/String;)V
-    //   41: invokespecial 48	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   44: astore 5
-    //   46: iload_3
-    //   47: istore_1
-    //   48: aload 5
-    //   50: astore 6
-    //   52: new 50	android/graphics/BitmapFactory$Options
-    //   55: dup
-    //   56: invokespecial 51	android/graphics/BitmapFactory$Options:<init>	()V
-    //   59: astore 9
-    //   61: iload_3
-    //   62: istore_1
-    //   63: aload 5
-    //   65: astore 6
-    //   67: aload 9
-    //   69: aload 5
-    //   71: iload 4
-    //   73: iload 4
-    //   75: invokestatic 56	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/io/InputStream;II)D
-    //   78: d2i
-    //   79: putfield 60	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   82: iload_3
-    //   83: istore_1
-    //   84: aload 5
-    //   86: astore 6
-    //   88: aload 5
-    //   90: invokevirtual 65	java/io/InputStream:close	()V
-    //   93: aload 8
-    //   95: astore 7
-    //   97: aload_0
-    //   98: getfield 16	com/tencent/mobileqq/nearby/guide/NearbyGuideActivity$8:a	Ljava/lang/String;
-    //   101: aload 9
-    //   103: invokestatic 70	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   106: astore 8
-    //   108: aload 8
-    //   110: astore 6
-    //   112: aload 8
-    //   114: ifnull +24 -> 138
-    //   117: aload 8
-    //   119: astore 7
-    //   121: aload 8
-    //   123: aload 8
-    //   125: invokevirtual 76	android/graphics/Bitmap:getWidth	()I
-    //   128: aload 8
-    //   130: invokevirtual 79	android/graphics/Bitmap:getHeight	()I
-    //   133: invokestatic 82	com/tencent/mobileqq/utils/ImageUtil:a	(Landroid/graphics/Bitmap;II)Landroid/graphics/Bitmap;
-    //   136: astore 6
-    //   138: aload 6
-    //   140: ifnonnull +142 -> 282
-    //   143: aload_0
-    //   144: getfield 14	com/tencent/mobileqq/nearby/guide/NearbyGuideActivity$8:this$0	Lcom/tencent/mobileqq/nearby/guide/NearbyGuideActivity;
-    //   147: iconst_1
-    //   148: ldc 83
-    //   150: invokestatic 88	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
-    //   153: invokevirtual 91	com/tencent/mobileqq/nearby/guide/NearbyGuideActivity:a	(ILjava/lang/String;)V
-    //   156: return
-    //   157: astore 8
-    //   159: aconst_null
-    //   160: astore 5
-    //   162: iload_2
-    //   163: istore_1
-    //   164: aload 5
-    //   166: astore 6
-    //   168: invokestatic 97	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   171: ifeq +20 -> 191
-    //   174: iload_2
-    //   175: istore_1
-    //   176: aload 5
-    //   178: astore 6
-    //   180: ldc 99
-    //   182: iconst_2
-    //   183: aload 8
-    //   185: invokevirtual 103	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   188: invokestatic 107	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   191: aload 7
-    //   193: astore 6
-    //   195: iload_2
-    //   196: ifne -58 -> 138
-    //   199: aload 7
-    //   201: astore 6
-    //   203: aload 5
-    //   205: ifnull -67 -> 138
-    //   208: aload 5
-    //   210: invokevirtual 65	java/io/InputStream:close	()V
-    //   213: aload 7
-    //   215: astore 6
-    //   217: goto -79 -> 138
-    //   220: astore 5
-    //   222: aload 7
-    //   224: astore 6
-    //   226: invokestatic 110	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   229: ifeq -91 -> 138
-    //   232: aload 5
-    //   234: invokevirtual 113	java/io/IOException:printStackTrace	()V
-    //   237: aload 7
-    //   239: astore 6
-    //   241: goto -103 -> 138
-    //   244: astore 7
-    //   246: aconst_null
-    //   247: astore 5
-    //   249: iload_1
-    //   250: ifne +13 -> 263
-    //   253: aload 5
-    //   255: ifnull +8 -> 263
-    //   258: aload 5
-    //   260: invokevirtual 65	java/io/InputStream:close	()V
-    //   263: aload 7
-    //   265: athrow
-    //   266: astore 5
-    //   268: invokestatic 110	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   271: ifeq -8 -> 263
-    //   274: aload 5
-    //   276: invokevirtual 113	java/io/IOException:printStackTrace	()V
-    //   279: goto -16 -> 263
-    //   282: aload 6
-    //   284: ifnull -128 -> 156
-    //   287: invokestatic 119	android/os/Message:obtain	()Landroid/os/Message;
-    //   290: astore 5
-    //   292: aload 5
-    //   294: iconst_2
-    //   295: putfield 122	android/os/Message:what	I
-    //   298: aload 5
-    //   300: aload 6
-    //   302: putfield 126	android/os/Message:obj	Ljava/lang/Object;
-    //   305: aload_0
-    //   306: getfield 14	com/tencent/mobileqq/nearby/guide/NearbyGuideActivity$8:this$0	Lcom/tencent/mobileqq/nearby/guide/NearbyGuideActivity;
-    //   309: getfield 129	com/tencent/mobileqq/nearby/guide/NearbyGuideActivity:a	Landroid/os/Handler;
-    //   312: aload 5
-    //   314: invokevirtual 135	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
-    //   317: pop
-    //   318: return
-    //   319: astore 7
-    //   321: aload 6
-    //   323: astore 5
-    //   325: goto -76 -> 249
-    //   328: astore 7
-    //   330: iconst_1
-    //   331: istore_1
-    //   332: goto -83 -> 249
-    //   335: astore 8
-    //   337: goto -175 -> 162
-    //   340: astore 8
-    //   342: iconst_1
-    //   343: istore_2
-    //   344: goto -182 -> 162
+    //   0: aload_0
+    //   1: getfield 14	com/tencent/mobileqq/nearby/guide/NearbyGuideActivity$8:this$0	Lcom/tencent/mobileqq/nearby/guide/NearbyGuideActivity;
+    //   4: invokevirtual 31	com/tencent/mobileqq/nearby/guide/NearbyGuideActivity:getResources	()Landroid/content/res/Resources;
+    //   7: ldc 32
+    //   9: invokevirtual 38	android/content/res/Resources:getDimensionPixelSize	(I)I
+    //   12: istore 4
+    //   14: aconst_null
+    //   15: astore 7
+    //   17: aconst_null
+    //   18: astore 8
+    //   20: aconst_null
+    //   21: astore 6
+    //   23: iconst_0
+    //   24: istore_2
+    //   25: iconst_0
+    //   26: istore_3
+    //   27: iconst_0
+    //   28: istore_1
+    //   29: new 40	java/io/FileInputStream
+    //   32: dup
+    //   33: new 42	java/io/File
+    //   36: dup
+    //   37: aload_0
+    //   38: getfield 16	com/tencent/mobileqq/nearby/guide/NearbyGuideActivity$8:a	Ljava/lang/String;
+    //   41: invokespecial 45	java/io/File:<init>	(Ljava/lang/String;)V
+    //   44: invokespecial 48	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   47: astore 5
+    //   49: new 50	android/graphics/BitmapFactory$Options
+    //   52: dup
+    //   53: invokespecial 51	android/graphics/BitmapFactory$Options:<init>	()V
+    //   56: astore 7
+    //   58: aload 7
+    //   60: aload 5
+    //   62: iload 4
+    //   64: iload 4
+    //   66: invokestatic 56	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/io/InputStream;II)D
+    //   69: d2i
+    //   70: putfield 60	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   73: aload 5
+    //   75: invokevirtual 65	java/io/InputStream:close	()V
+    //   78: aload_0
+    //   79: getfield 16	com/tencent/mobileqq/nearby/guide/NearbyGuideActivity$8:a	Ljava/lang/String;
+    //   82: aload 7
+    //   84: invokestatic 70	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   87: astore 7
+    //   89: aload 7
+    //   91: astore 6
+    //   93: aload 7
+    //   95: ifnull +141 -> 236
+    //   98: aload 7
+    //   100: astore 6
+    //   102: aload 7
+    //   104: aload 7
+    //   106: invokevirtual 76	android/graphics/Bitmap:getWidth	()I
+    //   109: aload 7
+    //   111: invokevirtual 79	android/graphics/Bitmap:getHeight	()I
+    //   114: invokestatic 82	com/tencent/mobileqq/utils/ImageUtil:a	(Landroid/graphics/Bitmap;II)Landroid/graphics/Bitmap;
+    //   117: astore 7
+    //   119: aload 7
+    //   121: astore 6
+    //   123: goto +113 -> 236
+    //   126: astore 6
+    //   128: iconst_1
+    //   129: istore_1
+    //   130: goto +162 -> 292
+    //   133: astore 8
+    //   135: iconst_1
+    //   136: istore_2
+    //   137: goto +40 -> 177
+    //   140: astore 6
+    //   142: iload_3
+    //   143: istore_1
+    //   144: goto +148 -> 292
+    //   147: astore 8
+    //   149: aconst_null
+    //   150: astore 6
+    //   152: goto +25 -> 177
+    //   155: astore 6
+    //   157: aload 7
+    //   159: astore 5
+    //   161: goto +131 -> 292
+    //   164: astore 7
+    //   166: aconst_null
+    //   167: astore 6
+    //   169: aload 8
+    //   171: astore 5
+    //   173: aload 7
+    //   175: astore 8
+    //   177: aload 5
+    //   179: astore 7
+    //   181: iload_2
+    //   182: istore_1
+    //   183: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   186: ifeq +20 -> 206
+    //   189: aload 5
+    //   191: astore 7
+    //   193: iload_2
+    //   194: istore_1
+    //   195: ldc 90
+    //   197: iconst_2
+    //   198: aload 8
+    //   200: invokevirtual 94	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   203: invokestatic 98	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   206: iload_2
+    //   207: ifne +29 -> 236
+    //   210: aload 5
+    //   212: ifnull +24 -> 236
+    //   215: aload 5
+    //   217: invokevirtual 65	java/io/InputStream:close	()V
+    //   220: goto +16 -> 236
+    //   223: astore 5
+    //   225: invokestatic 101	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   228: ifeq +8 -> 236
+    //   231: aload 5
+    //   233: invokevirtual 104	java/io/IOException:printStackTrace	()V
+    //   236: aload 6
+    //   238: ifnonnull +17 -> 255
+    //   241: aload_0
+    //   242: getfield 14	com/tencent/mobileqq/nearby/guide/NearbyGuideActivity$8:this$0	Lcom/tencent/mobileqq/nearby/guide/NearbyGuideActivity;
+    //   245: iconst_1
+    //   246: ldc 105
+    //   248: invokestatic 110	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   251: invokevirtual 114	com/tencent/mobileqq/nearby/guide/NearbyGuideActivity:showToast	(ILjava/lang/String;)V
+    //   254: return
+    //   255: aload 6
+    //   257: ifnull +34 -> 291
+    //   260: invokestatic 120	android/os/Message:obtain	()Landroid/os/Message;
+    //   263: astore 5
+    //   265: aload 5
+    //   267: iconst_2
+    //   268: putfield 123	android/os/Message:what	I
+    //   271: aload 5
+    //   273: aload 6
+    //   275: putfield 127	android/os/Message:obj	Ljava/lang/Object;
+    //   278: aload_0
+    //   279: getfield 14	com/tencent/mobileqq/nearby/guide/NearbyGuideActivity$8:this$0	Lcom/tencent/mobileqq/nearby/guide/NearbyGuideActivity;
+    //   282: getfield 131	com/tencent/mobileqq/nearby/guide/NearbyGuideActivity:mUiHandler	Landroid/os/Handler;
+    //   285: aload 5
+    //   287: invokevirtual 137	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
+    //   290: pop
+    //   291: return
+    //   292: iload_1
+    //   293: ifne +29 -> 322
+    //   296: aload 5
+    //   298: ifnull +24 -> 322
+    //   301: aload 5
+    //   303: invokevirtual 65	java/io/InputStream:close	()V
+    //   306: goto +16 -> 322
+    //   309: astore 5
+    //   311: invokestatic 101	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   314: ifeq +8 -> 322
+    //   317: aload 5
+    //   319: invokevirtual 104	java/io/IOException:printStackTrace	()V
+    //   322: aload 6
+    //   324: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	347	0	this	8
-    //   21	311	1	i	int
-    //   25	319	2	j	int
-    //   23	60	3	k	int
-    //   18	56	4	m	int
-    //   44	165	5	localFileInputStream	java.io.FileInputStream
-    //   220	13	5	localIOException1	java.io.IOException
-    //   247	12	5	localObject1	Object
-    //   266	9	5	localIOException2	java.io.IOException
-    //   290	34	5	localObject2	Object
-    //   50	272	6	localObject3	Object
-    //   4	234	7	localBitmap1	android.graphics.Bitmap
-    //   244	20	7	localObject4	Object
-    //   319	1	7	localObject5	Object
-    //   328	1	7	localObject6	Object
-    //   1	128	8	localBitmap2	android.graphics.Bitmap
-    //   157	27	8	localThrowable1	java.lang.Throwable
-    //   335	1	8	localThrowable2	java.lang.Throwable
-    //   340	1	8	localThrowable3	java.lang.Throwable
-    //   59	43	9	localOptions	android.graphics.BitmapFactory.Options
+    //   0	325	0	this	8
+    //   28	265	1	i	int
+    //   24	183	2	j	int
+    //   26	117	3	k	int
+    //   12	53	4	m	int
+    //   47	169	5	localObject1	Object
+    //   223	9	5	localIOException1	java.io.IOException
+    //   263	39	5	localMessage	android.os.Message
+    //   309	9	5	localIOException2	java.io.IOException
+    //   21	101	6	localObject2	Object
+    //   126	1	6	localObject3	Object
+    //   140	1	6	localObject4	Object
+    //   150	1	6	localObject5	Object
+    //   155	1	6	localObject6	Object
+    //   167	156	6	localObject7	Object
+    //   15	143	7	localObject8	Object
+    //   164	10	7	localThrowable1	java.lang.Throwable
+    //   179	13	7	localObject9	Object
+    //   18	1	8	localObject10	Object
+    //   133	1	8	localThrowable2	java.lang.Throwable
+    //   147	23	8	localThrowable3	java.lang.Throwable
+    //   175	24	8	localThrowable4	java.lang.Throwable
     // Exception table:
     //   from	to	target	type
-    //   26	46	157	java/lang/Throwable
-    //   208	213	220	java/io/IOException
-    //   26	46	244	finally
-    //   258	263	266	java/io/IOException
-    //   52	61	319	finally
-    //   67	82	319	finally
-    //   88	93	319	finally
-    //   168	174	319	finally
-    //   180	191	319	finally
-    //   97	108	328	finally
-    //   121	138	328	finally
-    //   52	61	335	java/lang/Throwable
-    //   67	82	335	java/lang/Throwable
-    //   88	93	335	java/lang/Throwable
-    //   97	108	340	java/lang/Throwable
-    //   121	138	340	java/lang/Throwable
+    //   78	89	126	finally
+    //   102	119	126	finally
+    //   78	89	133	java/lang/Throwable
+    //   102	119	133	java/lang/Throwable
+    //   49	78	140	finally
+    //   49	78	147	java/lang/Throwable
+    //   29	49	155	finally
+    //   183	189	155	finally
+    //   195	206	155	finally
+    //   29	49	164	java/lang/Throwable
+    //   215	220	223	java/io/IOException
+    //   301	306	309	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.guide.NearbyGuideActivity.8
  * JD-Core Version:    0.7.0.1
  */

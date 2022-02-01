@@ -29,31 +29,28 @@ public class RegisterManager
         localBundle = new Bundle();
       }
       paramBundle = (HashMap)localBundle.getParcelable("mapSt");
-      if (paramBundle == null) {
-        break label65;
+      if (paramBundle != null) {
+        paramBundle.putAll(this.jdField_a_of_type_ComTencentMobileqqRegisterQueryAccount$RegisterFaceResult.a());
+      } else {
+        paramBundle = this.jdField_a_of_type_ComTencentMobileqqRegisterQueryAccount$RegisterFaceResult.a();
       }
-      paramBundle.putAll(this.jdField_a_of_type_ComTencentMobileqqRegisterQueryAccount$RegisterFaceResult.a());
-    }
-    for (;;)
-    {
       localBundle.putSerializable("mapSt", paramBundle);
-      return localBundle;
-      label65:
-      paramBundle = this.jdField_a_of_type_ComTencentMobileqqRegisterQueryAccount$RegisterFaceResult.a();
     }
+    return localBundle;
   }
   
   public static RegisterManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqRegisterRegisterManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqRegisterRegisterManager == null) {
-        jdField_a_of_type_ComTencentMobileqqRegisterRegisterManager = new RegisterManager();
+    if (jdField_a_of_type_ComTencentMobileqqRegisterRegisterManager == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqRegisterRegisterManager == null) {
+          jdField_a_of_type_ComTencentMobileqqRegisterRegisterManager = new RegisterManager();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqRegisterRegisterManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqRegisterRegisterManager;
   }
   
   public QueryAccount.RegisterFaceResult a()
@@ -83,7 +80,7 @@ public class RegisterManager
   public void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, Bundle paramBundle, AccountObserver paramAccountObserver)
   {
     QLog.d("RegisterManager", 1, "sendRegisterBySetPass");
-    ((AccountManager)paramAppRuntime.getManager(0)).sendRegisterBySetPass(paramString1, paramString2, paramString3, paramString4, paramBoolean, "8.5.5", a(paramBundle), paramAccountObserver);
+    ((AccountManager)paramAppRuntime.getManager(0)).sendRegisterBySetPass(paramString1, paramString2, paramString3, paramString4, paramBoolean, "8.7.0", a(paramBundle), paramAccountObserver);
   }
   
   public void b()
@@ -95,12 +92,12 @@ public class RegisterManager
   public void b(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, Bundle paramBundle, AccountObserver paramAccountObserver)
   {
     QLog.d("RegisterManager", 1, "sendRegisterBySetPassWithLH");
-    ((AccountManager)paramAppRuntime.getManager(0)).sendRegisterBySetPassWithLH(paramString1, paramString2, paramString3, paramString4, paramBoolean, "8.5.5", a(paramBundle), paramAccountObserver);
+    ((AccountManager)paramAppRuntime.getManager(0)).sendRegisterBySetPassWithLH(paramString1, paramString2, paramString3, paramString4, paramBoolean, "8.7.0", a(paramBundle), paramAccountObserver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.register.RegisterManager
  * JD-Core Version:    0.7.0.1
  */

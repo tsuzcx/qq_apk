@@ -44,60 +44,71 @@ public class ElementClickReporter
   private boolean isValidClick(DataEntity paramDataEntity, View paramView)
   {
     Long localLong = (Long)this.mClickTimeMap.get(paramView);
+    boolean bool = true;
     if (localLong != null)
     {
-      long l1 = SystemClock.uptimeMillis();
+      long l = SystemClock.uptimeMillis();
       paramView = (Long)DataEntityOperator.getInnerParam(paramDataEntity, "click_interval");
       paramDataEntity = paramView;
       if (paramView == null) {
         paramDataEntity = Long.valueOf(VideoReportInner.getInstance().getConfiguration().getClickReportInterval());
       }
-      long l2 = localLong.longValue();
-      return l1 > paramDataEntity.longValue() + l2;
+      if (l > localLong.longValue() + paramDataEntity.longValue()) {
+        return true;
+      }
+      bool = false;
     }
-    return true;
+    return bool;
   }
   
   public void onViewClick(View paramView)
   {
     Object localObject = DataBinder.getDataEntity(paramView);
-    if ((localObject == null) || (!ReportHelper.reportClick((DataEntity)localObject))) {
-      if (VideoReportInner.getInstance().isDebugMode()) {
-        Log.d("ElementClickReporter", "onViewClick: dataEntity=" + localObject);
-      }
-    }
-    do
+    if ((localObject != null) && (ReportHelper.reportClick((DataEntity)localObject)))
     {
-      do
+      if (!isValidClick((DataEntity)localObject, paramView))
       {
-        do
-        {
-          return;
-          if (isValidClick((DataEntity)localObject, paramView)) {
-            break;
-          }
-        } while (!VideoReportInner.getInstance().isDebugMode());
-        Log.d("ElementClickReporter", "onViewClick: not valid click ");
-        return;
-        this.mClickTimeMap.put(paramView, Long.valueOf(SystemClock.uptimeMillis()));
         if (VideoReportInner.getInstance().isDebugMode()) {
-          Log.d("ElementClickReporter", "onViewClick: view=" + paramView);
+          Log.d("ElementClickReporter", "onViewClick: not valid click ");
         }
-        localObject = ReversedDataCollector.collect(paramView);
-      } while (localObject == null);
-      localObject = DataBuilderFactory.obtain().build((PathData)localObject);
-    } while (localObject == null);
-    ((FinalData)localObject).setEventKey("clck");
-    IEventDynamicParams localIEventDynamicParams = VideoReportInner.getInstance().getEventDynamicParams();
-    if (localIEventDynamicParams != null) {
-      localIEventDynamicParams.setEventDynamicParams("clck", ((FinalData)localObject).getEventParams());
+        return;
+      }
+      this.mClickTimeMap.put(paramView, Long.valueOf(SystemClock.uptimeMillis()));
+      if (VideoReportInner.getInstance().isDebugMode())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onViewClick: view=");
+        ((StringBuilder)localObject).append(paramView);
+        Log.d("ElementClickReporter", ((StringBuilder)localObject).toString());
+      }
+      localObject = ReversedDataCollector.collect(paramView);
+      if (localObject == null) {
+        return;
+      }
+      localObject = DataBuilderFactory.obtain().build("clck", (PathData)localObject);
+      if (localObject == null) {
+        return;
+      }
+      ((FinalData)localObject).setEventKey("clck");
+      IEventDynamicParams localIEventDynamicParams = VideoReportInner.getInstance().getEventDynamicParams();
+      if (localIEventDynamicParams != null) {
+        localIEventDynamicParams.setEventDynamicParams("clck", ((FinalData)localObject).getEventParams());
+      }
+      FinalDataTarget.handle(paramView, (FinalData)localObject);
+      return;
     }
-    FinalDataTarget.handle(paramView, (FinalData)localObject);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      paramView = new StringBuilder();
+      paramView.append("onViewClick: dataEntity=");
+      paramView.append(localObject);
+      Log.d("ElementClickReporter", paramView.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.element.ElementClickReporter
  * JD-Core Version:    0.7.0.1
  */

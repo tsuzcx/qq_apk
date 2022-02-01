@@ -62,23 +62,19 @@ public class WebSsoJsPlugin
   public void onCmdRsp(Intent paramIntent, String paramString, long paramLong, JSONObject paramJSONObject)
   {
     int i;
-    if (paramIntent != null)
-    {
+    if (paramIntent != null) {
       i = paramIntent.getIntExtra("mini_seq", -1);
-      if (i != -1) {
-        break label26;
-      }
-    }
-    label26:
-    JSContext localJSContext;
-    do
-    {
-      return;
+    } else {
       i = -1;
-      break;
-      localJSContext = (JSContext)this.callbackMap.get(i);
-      this.callbackMap.remove(i);
-    } while (localJSContext == null);
+    }
+    if (i == -1) {
+      return;
+    }
+    JSContext localJSContext = (JSContext)this.callbackMap.get(i);
+    this.callbackMap.remove(i);
+    if (localJSContext == null) {
+      return;
+    }
     paramIntent = paramJSONObject;
     if (paramJSONObject == null) {
       paramIntent = new JSONObject();
@@ -89,22 +85,18 @@ public class WebSsoJsPlugin
       paramJSONObject.put("cmd", paramString);
       paramJSONObject.put("ret", paramLong);
       paramJSONObject.put("rsp", paramIntent);
-      if (paramLong == 0L)
-      {
-        bool = true;
-        localJSContext.evaluateCallback(bool, paramJSONObject, "");
-        return;
-      }
     }
     catch (JSONException paramIntent)
     {
-      for (;;)
-      {
-        paramIntent.printStackTrace();
-        continue;
-        boolean bool = false;
-      }
+      paramIntent.printStackTrace();
     }
+    boolean bool;
+    if (paramLong == 0L) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localJSContext.evaluateCallback(bool, paramJSONObject, "");
   }
   
   public void onDestroy() {}
@@ -116,39 +108,40 @@ public class WebSsoJsPlugin
       if (QLog.isColorLevel()) {
         QLog.w("WebSsoJsPlugin", 2, paramJSONObject.toString());
       }
-      if ("requestWebSSO".equals(paramJSONObject.optString("api_name"))) {
-        try
-        {
-          JSONObject localJSONObject = paramJSONObject.getJSONObject("data");
-          paramJSONObject = localJSONObject.getString("webssoCmdId");
-          localJSONObject = localJSONObject.getJSONObject("webssoReq");
-          Object localObject = getFilterCmds();
-          if ((TextUtils.isEmpty(paramJSONObject)) || (localObject == null) || (!((HashSet)localObject).contains(paramJSONObject)))
-          {
-            paramJSContext.evaluateCallback(false, new JSONObject(), HardCodeUtil.a(2131716719));
-            return;
-          }
-          int i = genSeq();
-          this.callbackMap.put(i, paramJSContext);
-          localObject = new Bundle();
-          ((Bundle)localObject).putInt("mini_seq", i);
-          ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).requestWebSso(paramJSONObject, localJSONObject, (Bundle)localObject);
-          return;
-        }
-        catch (Throwable paramJSONObject)
-        {
-          paramJSContext.evaluateCallback(false, new JSONObject(), HardCodeUtil.a(2131716718));
-          if (QLog.isColorLevel()) {
-            QLog.w("WebSsoJsPlugin", 2, "requestWebSSO,decode param error");
-          }
-        }
+      if (!"requestWebSSO".equals(paramJSONObject.optString("api_name"))) {}
+    }
+    try
+    {
+      JSONObject localJSONObject = paramJSONObject.getJSONObject("data");
+      paramJSONObject = localJSONObject.getString("webssoCmdId");
+      localJSONObject = localJSONObject.getJSONObject("webssoReq");
+      Object localObject = getFilterCmds();
+      if ((!TextUtils.isEmpty(paramJSONObject)) && (localObject != null) && (((HashSet)localObject).contains(paramJSONObject)))
+      {
+        int i = genSeq();
+        this.callbackMap.put(i, paramJSContext);
+        localObject = new Bundle();
+        ((Bundle)localObject).putInt("mini_seq", i);
+        ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).requestWebSso(paramJSONObject, localJSONObject, (Bundle)localObject);
+        return;
       }
+      paramJSContext.evaluateCallback(false, new JSONObject(), HardCodeUtil.a(2131716369));
+      return;
+    }
+    catch (Throwable paramJSONObject)
+    {
+      label159:
+      break label159;
+    }
+    paramJSContext.evaluateCallback(false, new JSONObject(), HardCodeUtil.a(2131716368));
+    if (QLog.isColorLevel()) {
+      QLog.w("WebSsoJsPlugin", 2, "requestWebSSO,decode param error");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.WebSsoJsPlugin
  * JD-Core Version:    0.7.0.1
  */

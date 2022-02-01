@@ -59,13 +59,13 @@ public class PlayerDataProviderFactory
     if ((paramObject instanceof MemorySelectVideoPlayInfo)) {
       return new SimpleDataProvider(new MemorySelectVideoPageLoader((MemorySelectVideoPlayInfo)paramObject));
     }
-    AssertUtils.a("play info unknown", new Object[0]);
+    AssertUtils.fail("play info unknown", new Object[0]);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.entrance.PlayerDataProviderFactory
  * JD-Core Version:    0.7.0.1
  */

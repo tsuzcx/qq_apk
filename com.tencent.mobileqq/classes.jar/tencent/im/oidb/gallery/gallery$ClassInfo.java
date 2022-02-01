@@ -18,14 +18,15 @@ public final class gallery$ClassInfo
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34 }, new String[] { "uint64_channel_id", "Bytes_channel", "uint64_second_channel_id", "Bytes_second_channel" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, Long.valueOf(0L), localByteStringMicro2 }, ClassInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34 }, new String[] { "uint64_channel_id", "Bytes_channel", "uint64_second_channel_id", "Bytes_second_channel" }, new Object[] { localLong, localByteStringMicro1, localLong, localByteStringMicro2 }, ClassInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.gallery.gallery.ClassInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -47,24 +47,21 @@ public class HippyTKDDoubleScrollView
   {
     int i = this.mNestDoubleScrollView.getNestViewScrollY();
     this.oldHiddenState = this.isHidden;
-    if (paramInt1 + paramInt2 >= this.deadLine) {
+    if (paramInt1 + paramInt2 >= this.deadLine)
+    {
       setHidden(true);
     }
-    for (;;)
+    else if ((i + paramInt2 < 0) && (i >= 0))
     {
-      if (this.oldHiddenState != this.isHidden) {
-        pageChanged();
-      }
-      return;
-      if ((i + paramInt2 < 0) && (i >= 0))
-      {
-        setHidden(false);
-        this.mNestDoubleScrollView.scrollNestViewTo(0, 0);
-      }
-      else if ((paramInt1 == this.deadLine) && (i > 0) && (paramInt2 < 0))
-      {
-        setHidden(true);
-      }
+      setHidden(false);
+      this.mNestDoubleScrollView.scrollNestViewTo(0, 0);
+    }
+    else if ((paramInt1 == this.deadLine) && (i > 0) && (paramInt2 < 0))
+    {
+      setHidden(true);
+    }
+    if (this.oldHiddenState != this.isHidden) {
+      pageChanged();
     }
   }
   
@@ -89,36 +86,37 @@ public class HippyTKDDoubleScrollView
   
   private void scrollByAuto(int paramInt)
   {
-    if (this.mNestDoubleScrollView == null) {}
-    do
-    {
+    if (this.mNestDoubleScrollView == null) {
       return;
-      if (getDeadLine() == 0) {
-        setDeadLine(getChildAt(0).getHeight() - getHeight());
-      }
-      computeHidden(getScrollY(), paramInt);
-      if (this.mNestDoubleScrollView.getNestViewScrollY() + this.mNestDoubleScrollView.getLayoutHeight() - this.deadLine + getScrollY() + paramInt < this.mNestDoubleScrollView.getRealHeight()) {
-        break;
-      }
-      this.flingController.stop();
-    } while (this.mNestDoubleScrollView.getRealHeight() == 0);
-    if (!isHidden())
+    }
+    if (getDeadLine() == 0) {
+      setDeadLine(getChildAt(0).getHeight() - getHeight());
+    }
+    computeHidden(getScrollY(), paramInt);
+    if (this.mNestDoubleScrollView.getNestViewScrollY() + this.mNestDoubleScrollView.getLayoutHeight() - this.deadLine + getScrollY() + paramInt >= this.mNestDoubleScrollView.getRealHeight())
     {
-      i = this.mNestDoubleScrollView.getRealHeight() + getHeight() - this.mNestDoubleScrollView.getLayoutHeight() - getHeight();
+      this.flingController.stop();
+      if (this.mNestDoubleScrollView.getRealHeight() == 0) {
+        return;
+      }
+      if (!isHidden())
+      {
+        i = this.mNestDoubleScrollView.getRealHeight() + getHeight() - this.mNestDoubleScrollView.getLayoutHeight() - getHeight();
+        paramInt = i;
+        if (i <= 0) {
+          paramInt = this.deadLine;
+        }
+        scrollTo(0, paramInt);
+        return;
+      }
+      int i = this.mNestDoubleScrollView.getRealHeight() - this.mNestDoubleScrollView.getLayoutHeight();
       paramInt = i;
-      if (i <= 0) {
+      if (i < 0) {
         paramInt = this.deadLine;
       }
-      scrollTo(0, paramInt);
+      this.mNestDoubleScrollView.scrollNestViewTo(0, paramInt);
       return;
     }
-    int i = this.mNestDoubleScrollView.getRealHeight() - this.mNestDoubleScrollView.getLayoutHeight();
-    paramInt = i;
-    if (i < 0) {
-      paramInt = this.deadLine;
-    }
-    this.mNestDoubleScrollView.scrollNestViewTo(0, paramInt);
-    return;
     if (this.isHidden)
     {
       if (this.mNestDoubleScrollView.getNestViewScrollY() + paramInt >= 0)
@@ -197,94 +195,97 @@ public class HippyTKDDoubleScrollView
     if (!this.mEnableDoubleScroll) {
       return false;
     }
-    switch (paramMotionEvent.getActionMasked())
+    int i = paramMotionEvent.getActionMasked();
+    if (i != 0)
     {
-    }
-    do
-    {
-      for (;;)
+      if (i != 1)
       {
-        return true;
-        this.isChildViewEvent = 0;
-        this.flingController.stop();
-        this.lastX = ((int)paramMotionEvent.getX());
-        this.lastY = ((int)paramMotionEvent.getY());
-        return false;
+        if (i != 2) {
+          return i != 3;
+        }
         if (paramMotionEvent.getPointerCount() > 1)
         {
-          int i = paramMotionEvent.getPointerId(0);
+          i = paramMotionEvent.getPointerId(0);
           this.dx = (this.lastX - (int)paramMotionEvent.getX(i));
           this.dy = (this.lastY - (int)paramMotionEvent.getY(i));
           this.lastX = ((int)paramMotionEvent.getX(i));
           this.lastY = ((int)paramMotionEvent.getY(i));
         }
-        for (;;)
+        else
         {
-          if (this.isChildViewEvent == 0)
-          {
-            if ((Math.abs(this.dx) <= 2) && (Math.abs(this.dy) <= 2)) {
-              break;
-            }
-            if (Math.abs(this.dx) / 2 <= Math.abs(this.dy))
-            {
-              this.isChildViewEvent = 2;
-              return true;
-              this.dx = (this.lastX - (int)paramMotionEvent.getX());
-              this.dy = (this.lastY - (int)paramMotionEvent.getY());
-              this.lastX = ((int)paramMotionEvent.getX());
-              this.lastY = ((int)paramMotionEvent.getY());
-            }
-            else
-            {
-              this.isChildViewEvent = 1;
-              return false;
-            }
+          this.dx = (this.lastX - (int)paramMotionEvent.getX());
+          this.dy = (this.lastY - (int)paramMotionEvent.getY());
+          this.lastX = ((int)paramMotionEvent.getX());
+          this.lastY = ((int)paramMotionEvent.getY());
+        }
+        i = this.isChildViewEvent;
+        if (i == 0)
+        {
+          if ((Math.abs(this.dx) <= 2) && (Math.abs(this.dy) <= 2)) {
+            return false;
           }
+          if (Math.abs(this.dx) / 2 <= Math.abs(this.dy))
+          {
+            this.isChildViewEvent = 2;
+            return true;
+          }
+          this.isChildViewEvent = 1;
+          return false;
         }
-        if ((this.isChildViewEvent == 1) || (this.isChildViewEvent == 0)) {
-          break;
+        if ((i == 1) || (i == 0)) {
+          return false;
         }
-        if (this.isChildViewEvent != 2) {}
       }
-      if (this.isChildViewEvent == 1) {
-        break;
+      else
+      {
+        i = this.isChildViewEvent;
+        if (i == 1) {
+          break label245;
+        }
+        if (i == 0) {
+          return false;
+        }
       }
-    } while (this.isChildViewEvent != 0);
+      return true;
+      label245:
+      return false;
+    }
+    this.isChildViewEvent = 0;
+    this.flingController.stop();
+    this.lastX = ((int)paramMotionEvent.getX());
+    this.lastY = ((int)paramMotionEvent.getY());
     return false;
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    View localView;
     if ((paramView instanceof ViewGroup))
     {
-      localView = ((ViewGroup)paramView).getChildAt(((ViewGroup)paramView).getChildCount() - 1);
-      if (localView == null) {
-        break label131;
+      Object localObject = (ViewGroup)paramView;
+      localObject = ((ViewGroup)localObject).getChildAt(((ViewGroup)localObject).getChildCount() - 1);
+      if (localObject != null) {
+        paramInt1 = ((View)localObject).getBottom();
+      } else {
+        paramInt1 = 0;
       }
-    }
-    label131:
-    for (paramInt1 = localView.getBottom();; paramInt1 = 0)
-    {
       if (paramView.getHeight() < paramInt1)
       {
         paramView.measure(View.MeasureSpec.makeMeasureSpec(paramView.getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824));
-        paramView.layout(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramInt1 + paramView.getTop());
+        paramView.layout(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getTop() + paramInt1);
       }
-      setDeadLine(paramView.getHeight() - getHeight());
-      if ((getScrollY() != getDeadLine()) && (this.mNestDoubleScrollView.getNestViewScrollY() > 0)) {
-        scrollTo(0, getDeadLine());
-      }
-      return;
+    }
+    setDeadLine(paramView.getHeight() - getHeight());
+    if ((getScrollY() != getDeadLine()) && (this.mNestDoubleScrollView.getNestViewScrollY() > 0)) {
+      scrollTo(0, getDeadLine());
     }
   }
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     HippyMap localHippyMap1 = new HippyMap();
@@ -296,95 +297,100 @@ public class HippyTKDDoubleScrollView
     localHippyMap2.pushDouble("x", PixelUtil.px2dp(getScrollX()));
     localHippyMap2.pushDouble("y", PixelUtil.px2dp(getScrollY()));
     HippyMap localHippyMap3 = new HippyMap();
-    if (getChildCount() > 0)
-    {
-      f = getChildAt(0).getWidth();
-      localHippyMap3.pushDouble("width", PixelUtil.px2dp(f));
-      if (getChildCount() <= 0) {
-        break label280;
-      }
+    if (getChildCount() > 0) {
+      paramInt1 = getChildAt(0).getWidth();
+    } else {
+      paramInt1 = getWidth();
     }
-    label280:
-    for (float f = getChildAt(0).getHeight();; f = getHeight())
-    {
-      localHippyMap3.pushDouble("height", PixelUtil.px2dp(f));
-      HippyMap localHippyMap4 = new HippyMap();
-      localHippyMap4.pushDouble("width", PixelUtil.px2dp(getWidth()));
-      localHippyMap4.pushDouble("height", PixelUtil.px2dp(getHeight()));
-      HippyMap localHippyMap5 = new HippyMap();
-      localHippyMap5.pushMap("contentInset", localHippyMap1);
-      localHippyMap5.pushMap("contentOffset", localHippyMap2);
-      localHippyMap5.pushMap("contentSize", localHippyMap3);
-      localHippyMap5.pushMap("layoutMeasurement", localHippyMap4);
-      getOnScrollEvent().send(this, localHippyMap5);
-      return;
-      f = getWidth();
-      break;
+    localHippyMap3.pushDouble("width", PixelUtil.px2dp(paramInt1));
+    if (getChildCount() > 0) {
+      paramInt1 = getChildAt(0).getHeight();
+    } else {
+      paramInt1 = getHeight();
     }
+    localHippyMap3.pushDouble("height", PixelUtil.px2dp(paramInt1));
+    HippyMap localHippyMap4 = new HippyMap();
+    localHippyMap4.pushDouble("width", PixelUtil.px2dp(getWidth()));
+    localHippyMap4.pushDouble("height", PixelUtil.px2dp(getHeight()));
+    HippyMap localHippyMap5 = new HippyMap();
+    localHippyMap5.pushMap("contentInset", localHippyMap1);
+    localHippyMap5.pushMap("contentOffset", localHippyMap2);
+    localHippyMap5.pushMap("contentSize", localHippyMap3);
+    localHippyMap5.pushMap("layoutMeasurement", localHippyMap4);
+    getOnScrollEvent().send(this, localHippyMap5);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = false;
-    switch (paramMotionEvent.getActionMasked())
+    int i = paramMotionEvent.getActionMasked();
+    if (i != 0)
     {
-    case 4: 
-    default: 
-    case 5: 
-    case 0: 
-      for (;;)
-      {
-        bool = true;
-        return bool;
-        this.isChildViewEvent = 0;
-        this.flingController.stop();
-        this.lastX = ((int)paramMotionEvent.getX());
-        this.lastY = ((int)paramMotionEvent.getY());
-      }
-    case 2: 
-      int i;
-      if (paramMotionEvent.getPointerCount() > 1) {
-        i = paramMotionEvent.getPointerId(0);
-      }
-      for (;;)
-      {
-        try
+      if (i != 1) {
+        if (i != 2)
         {
-          this.flingController.setY((int)paramMotionEvent.getY(i));
-          this.flingController.setY((int)paramMotionEvent.getY(i));
-          this.dx = (this.lastX - (int)paramMotionEvent.getX(i));
-          this.dy = (this.lastY - (int)paramMotionEvent.getY(i));
-          this.lastX = ((int)paramMotionEvent.getX(i));
-          this.lastY = ((int)paramMotionEvent.getY(i));
-          if (this.isChildViewEvent == 0)
+          if (i != 3)
           {
-            if (Math.abs(this.dx) / 2 > Math.abs(this.dy)) {
-              break label323;
+            if (i != 5)
+            {
+              if (i != 6) {
+                return true;
+              }
             }
-            this.isChildViewEvent = 2;
+            else {
+              return false;
+            }
+          }
+          else
+          {
+            this.flingController.stop();
+            return true;
+          }
+        }
+        else
+        {
+          if (paramMotionEvent.getPointerCount() > 1)
+          {
+            i = paramMotionEvent.getPointerId(0);
+            try
+            {
+              this.flingController.setY((int)paramMotionEvent.getY(i));
+            }
+            catch (IllegalArgumentException localIllegalArgumentException)
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("onTouchEvent: motionEvent.getY(flag) ");
+              localStringBuilder.append(localIllegalArgumentException.getMessage());
+              Log.e("HippyQBDoubleScrollView", localStringBuilder.toString());
+              i = 0;
+            }
+            this.flingController.setY((int)paramMotionEvent.getY(i));
+            this.dx = (this.lastX - (int)paramMotionEvent.getX(i));
+            this.dy = (this.lastY - (int)paramMotionEvent.getY(i));
+            this.lastX = ((int)paramMotionEvent.getX(i));
+            this.lastY = ((int)paramMotionEvent.getY(i));
+          }
+          else
+          {
+            this.flingController.setY((int)paramMotionEvent.getY());
+            this.dx = (this.lastX - (int)paramMotionEvent.getX());
+            this.dy = (this.lastY - (int)paramMotionEvent.getY());
+            this.lastX = ((int)paramMotionEvent.getX());
+            this.lastY = ((int)paramMotionEvent.getY());
+          }
+          if (this.isChildViewEvent == 0) {
+            if (Math.abs(this.dx) / 2 <= Math.abs(this.dy)) {
+              this.isChildViewEvent = 2;
+            } else {
+              this.isChildViewEvent = 1;
+            }
           }
           if (this.isChildViewEvent != 2) {
-            break;
+            break label378;
           }
           scrollByAuto(this.dy);
+          return true;
         }
-        catch (IllegalArgumentException localIllegalArgumentException)
-        {
-          Log.e("HippyQBDoubleScrollView", "onTouchEvent: motionEvent.getY(flag) " + localIllegalArgumentException.getMessage());
-          i = 0;
-          continue;
-        }
-        this.flingController.setY((int)paramMotionEvent.getY());
-        this.dx = (this.lastX - (int)paramMotionEvent.getX());
-        this.dy = (this.lastY - (int)paramMotionEvent.getY());
-        this.lastX = ((int)paramMotionEvent.getX());
-        this.lastY = ((int)paramMotionEvent.getY());
-        continue;
-        this.isChildViewEvent = 1;
       }
-    case 1: 
-    case 6: 
-      label323:
       if (this.isChildViewEvent != 1)
       {
         this.flingController.startFling();
@@ -394,7 +400,14 @@ public class HippyTKDDoubleScrollView
       }
       return true;
     }
-    this.flingController.stop();
+    else
+    {
+      this.isChildViewEvent = 0;
+      this.flingController.stop();
+      this.lastX = ((int)paramMotionEvent.getX());
+      this.lastY = ((int)paramMotionEvent.getY());
+    }
+    label378:
     return true;
   }
   
@@ -421,30 +434,26 @@ public class HippyTKDDoubleScrollView
   
   public void setDoubleScrollRespondView(IDoubleScroll paramIDoubleScroll, boolean paramBoolean)
   {
-    if (paramIDoubleScroll != null)
-    {
-      if (!paramBoolean) {
-        break label34;
+    if (paramIDoubleScroll != null) {
+      if (paramBoolean)
+      {
+        this.mNestDoubleScrollView = paramIDoubleScroll;
+        this.deadLine = 0;
+        paramIDoubleScroll = getChildAt(0);
+        if (paramIDoubleScroll != null) {
+          paramIDoubleScroll.addOnLayoutChangeListener(this);
+        }
       }
-      this.mNestDoubleScrollView = paramIDoubleScroll;
-      this.deadLine = 0;
-      paramIDoubleScroll = getChildAt(0);
-      if (paramIDoubleScroll != null) {
-        paramIDoubleScroll.addOnLayoutChangeListener(this);
+      else if (paramIDoubleScroll == this.mNestDoubleScrollView)
+      {
+        this.mNestDoubleScrollView = null;
+        this.deadLine = 0;
+        paramIDoubleScroll = getChildAt(0);
+        if (paramIDoubleScroll != null) {
+          paramIDoubleScroll.removeOnLayoutChangeListener(this);
+        }
       }
     }
-    label34:
-    do
-    {
-      do
-      {
-        return;
-      } while (paramIDoubleScroll != this.mNestDoubleScrollView);
-      this.mNestDoubleScrollView = null;
-      this.deadLine = 0;
-      paramIDoubleScroll = getChildAt(0);
-    } while (paramIDoubleScroll == null);
-    paramIDoubleScroll.removeOnLayoutChangeListener(this);
   }
   
   public void setEnableDoubleScroll(boolean paramBoolean)
@@ -461,7 +470,7 @@ public class HippyTKDDoubleScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.doublescrollview.HippyTKDDoubleScrollView
  * JD-Core Version:    0.7.0.1
  */

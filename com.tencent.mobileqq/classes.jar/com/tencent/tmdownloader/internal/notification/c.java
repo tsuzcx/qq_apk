@@ -41,17 +41,20 @@ public class c
     }
     try
     {
-      Notification.Builder localBuilder = new Notification.Builder(GlobalUtil.getInstance().getContext());
-      localBuilder.setContentTitle("SearchForTitle");
-      localBuilder.setContentText("SearchForText");
-      paramContext = (ViewGroup)localBuilder.build().contentView.apply(paramContext, null);
+      localObject = new Notification.Builder(GlobalUtil.getInstance().getContext());
+      ((Notification.Builder)localObject).setContentTitle("SearchForTitle");
+      ((Notification.Builder)localObject).setContentText("SearchForText");
+      paramContext = (ViewGroup)((Notification.Builder)localObject).build().contentView.apply(paramContext, null);
       a(paramContext);
       b(paramContext);
       return;
     }
     catch (Exception paramContext)
     {
-      ab.c("SDK_NotificationManager", "" + paramContext.getMessage(), paramContext);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(paramContext.getMessage());
+      ab.c("SDK_NotificationManager", ((StringBuilder)localObject).toString(), paramContext);
     }
   }
   
@@ -124,7 +127,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.notification.c
  * JD-Core Version:    0.7.0.1
  */

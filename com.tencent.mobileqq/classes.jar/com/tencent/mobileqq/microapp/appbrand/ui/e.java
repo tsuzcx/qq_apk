@@ -16,35 +16,37 @@ final class e
   
   public void run()
   {
-    switch (this.a.a)
+    int i = this.a.a;
+    if (i != -1)
     {
-    case 0: 
-    case 2: 
-    default: 
-    case 3: 
-    case 1: 
-      do
+      if (i != 1)
       {
-        return;
+        if (i != 3) {
+          return;
+        }
         h.a().a(this.b.a);
-      } while (this.a.b == null);
-      this.b.a.a.a(this.a.b, this.a.b.f.launchParam.entryPath);
-      return;
-    }
-    if (!TextUtils.isEmpty(this.a.c))
-    {
-      a locala = this.b.a.a.a(this.a.c, this.a.d);
-      if (locala != null) {
-        locala.b();
+      }
+      if (this.a.b != null) {
+        this.b.a.a.a(this.a.b, this.a.b.f.launchParam.entryPath);
       }
     }
-    AppBrandUI.a(this.b.a, true);
-    AppBrandUI.a(this.b.a);
+    else
+    {
+      if (!TextUtils.isEmpty(this.a.c))
+      {
+        a locala = this.b.a.a.a(this.a.c, this.a.d);
+        if (locala != null) {
+          locala.b();
+        }
+      }
+      AppBrandUI.a(this.b.a, true);
+      AppBrandUI.a(this.b.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.ui.e
  * JD-Core Version:    0.7.0.1
  */

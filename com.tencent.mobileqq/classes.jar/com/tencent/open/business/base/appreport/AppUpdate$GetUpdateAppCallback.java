@@ -31,19 +31,37 @@ public class AppUpdate$GetUpdateAppCallback
   
   public void a(Exception paramException)
   {
-    LogUtility.c("AppUpdate", "AppUpdate onException >>> " + paramException.toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AppUpdate onException >>> ");
+    localStringBuilder.append(paramException.toString());
+    LogUtility.c("AppUpdate", localStringBuilder.toString());
     if ((!this.jdField_a_of_type_Boolean) && (AppUtil.a(this.jdField_a_of_type_AndroidContentContext))) {
       AppReport.b(this.jdField_a_of_type_AndroidContentContext);
     }
-    if (TextUtils.isEmpty(this.b)) {}
-    for (paramException = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);";; paramException = "javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"\"});void(0);") {
-      try
-      {
-        this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramException);
-        return;
-      }
-      catch (Exception paramException) {}
+    if (TextUtils.isEmpty(this.b))
+    {
+      paramException = new StringBuilder();
+      paramException.append("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"");
+      paramException.append(this.c);
+      paramException.append("\"});}void(0);");
+      paramException = paramException.toString();
     }
+    else
+    {
+      paramException = new StringBuilder();
+      paramException.append("javascript:");
+      paramException.append(this.b);
+      paramException.append("({\"guid\":\"");
+      paramException.append(this.c);
+      paramException.append("\",\"err\":\"\"});void(0);");
+      paramException = paramException.toString();
+    }
+    try
+    {
+      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramException);
+      return;
+    }
+    catch (Exception paramException) {}
   }
   
   public void a(JSONObject paramJSONObject)
@@ -52,68 +70,92 @@ public class AppUpdate$GetUpdateAppCallback
     if (paramJSONObject == null) {
       localJSONObject = new JSONObject();
     }
-    LogUtility.c("AppUpdate", "AppUpdate onResult >>> " + localJSONObject.toString());
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("AppUpdate onResult >>> ");
+    paramJSONObject.append(localJSONObject.toString());
+    LogUtility.c("AppUpdate", paramJSONObject.toString());
     paramJSONObject = new JSONObject();
-    for (;;)
+    try
     {
-      try
+      paramJSONObject.put("guid", this.c);
+      paramJSONObject.put("content", localJSONObject.toString());
+      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
       {
-        paramJSONObject.put("guid", this.c);
-        paramJSONObject.put("content", localJSONObject.toString());
-        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpSuccess',");
+        ((StringBuilder)localObject).append(paramJSONObject.toString());
+        ((StringBuilder)localObject).append(");}void(0);");
+        paramJSONObject = ((StringBuilder)localObject).toString();
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("javascript:");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append("(");
+        ((StringBuilder)localObject).append(paramJSONObject.toString());
+        ((StringBuilder)localObject).append(");void(0);");
+        paramJSONObject = ((StringBuilder)localObject).toString();
+      }
+      localObject = paramJSONObject;
+      if (this.jdField_a_of_type_Boolean) {
+        break label334;
+      }
+      localObject = paramJSONObject;
+      if (!AppUtil.a(this.jdField_a_of_type_AndroidContentContext)) {
+        break label334;
+      }
+      if (localJSONObject.optInt("code", -1) == 0)
+      {
+        AppReport.a(this.jdField_a_of_type_AndroidContentContext);
+        localObject = paramJSONObject;
+      }
+      else
+      {
+        AppReport.b(this.jdField_a_of_type_AndroidContentContext);
+        localObject = paramJSONObject;
+      }
+    }
+    catch (JSONException paramJSONObject)
+    {
+      for (;;)
+      {
+        try
         {
-          localObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpSuccess'," + paramJSONObject.toString() + ");}void(0);";
-          paramJSONObject = (JSONObject)localObject;
-          if (!this.jdField_a_of_type_Boolean)
-          {
-            paramJSONObject = (JSONObject)localObject;
-            if (AppUtil.a(this.jdField_a_of_type_AndroidContentContext))
-            {
-              if (localJSONObject.optInt("code", -1) != 0) {
-                continue;
-              }
-              AppReport.a(this.jdField_a_of_type_AndroidContentContext);
-              paramJSONObject = (JSONObject)localObject;
-            }
+          Object localObject;
+          label334:
+          if (this.jdField_a_of_type_ComTencentSmttSdkWebView != null) {
+            this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl((String)localObject);
           }
+          return;
         }
+        catch (Exception paramJSONObject) {}
+        paramJSONObject = paramJSONObject;
       }
-      catch (JSONException paramJSONObject)
-      {
-        Object localObject;
-        if (TextUtils.isEmpty(this.b))
-        {
-          paramJSONObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);";
-          continue;
-        }
-        paramJSONObject = "javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"json format error\"});void(0);";
-        continue;
-      }
-      try
-      {
-        localObject = this.jdField_a_of_type_ComTencentSmttSdkWebView;
-        if (localObject == null) {}
-      }
-      catch (Exception paramJSONObject)
-      {
-        return;
-      }
-      try
-      {
-        this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramJSONObject);
-        return;
-      }
-      catch (Exception paramJSONObject) {}
-      localObject = "javascript:" + this.jdField_a_of_type_JavaLangString + "(" + paramJSONObject.toString() + ");void(0);";
-      continue;
-      AppReport.b(this.jdField_a_of_type_AndroidContentContext);
-      paramJSONObject = (JSONObject)localObject;
+    }
+    if (TextUtils.isEmpty(this.b))
+    {
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"");
+      paramJSONObject.append(this.c);
+      paramJSONObject.append("\"});}void(0);");
+      localObject = paramJSONObject.toString();
+    }
+    else
+    {
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("javascript:");
+      paramJSONObject.append(this.b);
+      paramJSONObject.append("({\"guid\":\"");
+      paramJSONObject.append(this.c);
+      paramJSONObject.append("\",\"err\":\"json format error\"});void(0);");
+      localObject = paramJSONObject.toString();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.business.base.appreport.AppUpdate.GetUpdateAppCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -11,15 +11,16 @@ public class StackObservable
   
   public static StackObservable a()
   {
-    if (jdField_a_of_type_ComTencentQqperfRepoterStackObservable == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentQqperfRepoterStackObservable == null) {
-        jdField_a_of_type_ComTencentQqperfRepoterStackObservable = new StackObservable();
+    if (jdField_a_of_type_ComTencentQqperfRepoterStackObservable == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentQqperfRepoterStackObservable == null) {
+          jdField_a_of_type_ComTencentQqperfRepoterStackObservable = new StackObservable();
+        }
       }
-      return jdField_a_of_type_ComTencentQqperfRepoterStackObservable;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentQqperfRepoterStackObservable;
   }
   
   public void a(HashMap<String, String> paramHashMap)
@@ -32,7 +33,7 @@ public class StackObservable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.repoter.StackObservable
  * JD-Core Version:    0.7.0.1
  */

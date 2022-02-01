@@ -8,9 +8,8 @@ import androidx.annotation.Nullable;
 import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
-import com.tencent.mobileqq.filemanager.api.IQQFileTempUtils;
 import com.tencent.mobileqq.filemanager.api.util.QStorage;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class QDatalineHttpsConfigProcessor
@@ -19,7 +18,11 @@ public class QDatalineHttpsConfigProcessor
   @NonNull
   public QDatalineHttpsConfigBean a(int paramInt)
   {
-    QLog.i("QDatalineHttpsConfigProcessor", 1, "migrateOldOrDefaultContent: type[" + paramInt + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("migrateOldOrDefaultContent: type[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    QLog.i("QDatalineHttpsConfigProcessor", 1, localStringBuilder.toString());
     return new QDatalineHttpsConfigBean();
   }
   
@@ -36,14 +39,21 @@ public class QDatalineHttpsConfigProcessor
   public void a(QDatalineHttpsConfigBean paramQDatalineHttpsConfigBean)
   {
     QLog.i("QDatalineHttpsConfigProcessor", 1, "onUpdate");
-    Object localObject = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getApp();
+    Object localObject = QQFileManagerUtil.a();
     if (localObject != null)
     {
-      localObject = ((BaseQQAppInterface)localObject).getApplicationContext().getSharedPreferences("dataline_config_" + ((BaseQQAppInterface)localObject).getCurrentUin(), 0).edit();
+      Context localContext = ((BaseQQAppInterface)localObject).getApplicationContext();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("dataline_config_");
+      localStringBuilder.append(((BaseQQAppInterface)localObject).getCurrentUin());
+      localObject = localContext.getSharedPreferences(localStringBuilder.toString(), 0).edit();
       ((SharedPreferences.Editor)localObject).putBoolean("use_new_httpclient", paramQDatalineHttpsConfigBean.jdField_a_of_type_Boolean);
       ((SharedPreferences.Editor)localObject).putBoolean("use_https_connect", paramQDatalineHttpsConfigBean.b);
       ((SharedPreferences.Editor)localObject).apply();
-      QLog.i("QDatalineHttpsConfigProcessor", 1, "save download config." + paramQDatalineHttpsConfigBean.jdField_a_of_type_JavaLangString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("save download config.");
+      ((StringBuilder)localObject).append(paramQDatalineHttpsConfigBean.jdField_a_of_type_JavaLangString);
+      QLog.i("QDatalineHttpsConfigProcessor", 1, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -69,7 +79,11 @@ public class QDatalineHttpsConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.i("QDatalineHttpsConfigProcessor", 1, "onReqFailed: failCode[" + paramInt + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReqFailed: failCode[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    QLog.i("QDatalineHttpsConfigProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -79,7 +93,7 @@ public class QDatalineHttpsConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.dataline.QDatalineHttpsConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

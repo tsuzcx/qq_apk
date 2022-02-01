@@ -1,11 +1,12 @@
 package com.tencent.sharp.jni;
 
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.sharp.jni.callback.ITraeAudioCallback;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 class AudioDeviceInterface$1
-  implements TraeAudioSession.ITraeAudioCallback
+  implements ITraeAudioCallback
 {
   AudioDeviceInterface$1(AudioDeviceInterface paramAudioDeviceInterface) {}
   
@@ -36,13 +37,11 @@ class AudioDeviceInterface$1
   
   public void a(int paramInt, String paramString, boolean paramBoolean) {}
   
-  public void a(int paramInt, boolean paramBoolean) {}
-  
   public void a(int paramInt, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3) {}
   
-  public void a(long paramLong, int paramInt) {}
+  public void a(long paramLong) {}
   
-  public void a(long paramLong, int paramInt, String paramString) {}
+  public void a(long paramLong, int paramInt) {}
   
   public void a(long paramLong, boolean paramBoolean)
   {
@@ -70,17 +69,11 @@ class AudioDeviceInterface$1
   
   public void a(String paramString) {}
   
-  public void a(String paramString, long paramLong) {}
-  
-  public void a(String paramString1, String paramString2) {}
-  
   public void a(boolean paramBoolean) {}
-  
-  public void b(int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.sharp.jni.AudioDeviceInterface.1
  * JD-Core Version:    0.7.0.1
  */

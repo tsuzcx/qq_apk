@@ -8,29 +8,30 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.biz.common.util.NetworkUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.automator.AutomatorHelper;
+import com.tencent.mobileqq.qqperf.api.IDeviceOptSwitch;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
 import com.tencent.mobileqq.util.FPSCalculator;
 import com.tencent.mobileqq.util.FPSCalculator.GetFPSListener;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqperf.opt.suspendthread.DeviceOptSwitch;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
-import mqq.manager.Manager;
+import mqq.app.MobileQQ;
 
 public class PreDownloadScheduler
-  implements Handler.Callback, Manager
+  implements Handler.Callback
 {
   private static final int MSG_CANCEL_PRE_DOWNLOAD = 1003;
   private static final int MSG_DOWNLOAD_ON_APP_BACKGROUD = 1009;
@@ -42,7 +43,7 @@ public class PreDownloadScheduler
   private static final int MSG_START_PRE_DOWNLOAD = 1001;
   private static final int MSG_UPDATE_FPS_CPU = 1005;
   private static final String TAG = "PreDownloadScheduler";
-  private QQAppInterface mApp;
+  private BaseQQAppInterface mApp;
   private boolean mAppBackground = false;
   private boolean mAppLiteStart = false;
   private boolean mBeReady = false;
@@ -69,13 +70,14 @@ public class PreDownloadScheduler
   private Object mLock = new Object();
   private boolean mNeedReport = false;
   private ArrayList<PreDownloadItem> mPendingList = new ArrayList(10);
+  private final PreDownloadConfigHelper mPreDownloadConfigHelper = new PreDownloadConfigHelper();
   private String mSdcardPath;
   private long mStartTime = 0L;
   private long mSysVolatilityCount = 6L;
   
-  public PreDownloadScheduler(QQAppInterface paramQQAppInterface)
+  public PreDownloadScheduler(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    init(paramQQAppInterface);
+    init(paramBaseQQAppInterface);
   }
   
   private void checkStateToStart()
@@ -83,67 +85,60 @@ public class PreDownloadScheduler
     if ((this.mCurrentTask != null) && (Math.abs(System.currentTimeMillis() - this.mCurrentTask.startTime) >= 60000L)) {
       this.mCurrentTask = null;
     }
-    int j;
-    int k;
     if ((checkState()) && (this.mCurrentTask == null) && (this.mPendingList.size() > 0))
     {
       Collections.sort(this.mPendingList, this.mComparator);
-      j = getStartUpCondition();
-      k = NetworkUtil.a(this.mApp.getApp());
-      if (k != 0) {
-        break label103;
+      int j = getStartUpCondition();
+      int k = PreDownloadScheduleUtil.getNetworkType(this.mApp.getApp());
+      if (k == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PreDownloadScheduler", 2, " [no network] donot start any task! ");
+        }
+        return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("PreDownloadScheduler", 2, " [no network] donot start any task! ");
-      }
-    }
-    return;
-    for (;;)
-    {
-      label103:
-      int i;
       synchronized (this.mLock)
       {
         printDownloadTaskInfo();
-        i = 0;
-        if (i >= this.mPendingList.size()) {
-          break;
-        }
-        PreDownloadItem localPreDownloadItem1 = (PreDownloadItem)this.mPendingList.get(i);
-        if ((localPreDownloadItem1 != null) && (localPreDownloadItem1.reqCondition == 1) && (j == 1))
+        int i = 0;
+        while (i < this.mPendingList.size())
         {
-          printRemoveTaskInfo(localPreDownloadItem1);
-          this.mPendingList.remove(i);
-          return;
+          PreDownloadItem localPreDownloadItem = (PreDownloadItem)this.mPendingList.get(i);
+          if ((localPreDownloadItem != null) && (localPreDownloadItem.reqCondition == 1) && (j == 1))
+          {
+            printRemoveTaskInfo(localPreDownloadItem);
+            this.mPendingList.remove(i);
+            return;
+          }
+          if ((localPreDownloadItem != null) && (((localPreDownloadItem.reqCondition == 2) && (!this.mAppBackground)) || ((localPreDownloadItem.reqNetWork == 1) && (k > 1)) || ((k > 1) && (k < localPreDownloadItem.reqNetWork)) || ((localPreDownloadItem.reqCondition == 3) && (!this.mAppLiteStart))))
+          {
+            printIgnoreTaskInfo(k, localPreDownloadItem);
+            i += 1;
+          }
+          else
+          {
+            this.mCurrentTask = ((PreDownloadItem)this.mPendingList.remove(i));
+          }
         }
+        if ((this.mCurrentTask != null) && (this.mCurrentTask.task != null))
+        {
+          if (this.mStartTime == 0L) {
+            this.mStartTime = System.currentTimeMillis();
+          }
+          this.mCurrentTask.startCondition = j;
+          this.mCurrentTask.startTime = System.currentTimeMillis();
+          this.mCurrentTask.downNetWork = PreDownloadScheduleUtil.getNetworkName(this.mApp);
+          this.mCurrentTask.state = 1;
+          this.mCurrentTask.task.start();
+          this.mDownloadList.add(this.mCurrentTask);
+          printStartTaskInfo("[start downloading] begin task :", this.mCurrentTask);
+        }
+        else
+        {
+          this.mCurrentTask = null;
+        }
+        return;
       }
-      if ((localPreDownloadItem2 != null) && (((localPreDownloadItem2.reqCondition == 2) && (!this.mAppBackground)) || ((localPreDownloadItem2.reqNetWork == 1) && (k > 1)) || ((k > 1) && (k < localPreDownloadItem2.reqNetWork)) || ((localPreDownloadItem2.reqCondition == 3) && (!this.mAppLiteStart))))
-      {
-        printIgnoreTaskInfo(k, localPreDownloadItem2);
-        i += 1;
-      }
-      else
-      {
-        this.mCurrentTask = ((PreDownloadItem)this.mPendingList.remove(i));
-      }
-    }
-    if ((this.mCurrentTask != null) && (this.mCurrentTask.task != null))
-    {
-      if (this.mStartTime == 0L) {
-        this.mStartTime = System.currentTimeMillis();
-      }
-      this.mCurrentTask.startCondition = j;
-      this.mCurrentTask.startTime = System.currentTimeMillis();
-      this.mCurrentTask.downNetWork = getNetworkName(this.mApp);
-      this.mCurrentTask.state = 1;
-      this.mCurrentTask.task.start();
-      this.mDownloadList.add(this.mCurrentTask);
-      printStartTaskInfo("[start downloading] begin task :", this.mCurrentTask);
-    }
-    for (;;)
-    {
-      return;
-      this.mCurrentTask = null;
     }
   }
   
@@ -170,12 +165,12 @@ public class PreDownloadScheduler
   
   private void directDownloadItem(PreDownloadItem paramPreDownloadItem)
   {
-    int i = NetworkUtil.a(this.mApp.getApp());
+    int i = PreDownloadScheduleUtil.getNetworkType(this.mApp.getApp());
     if ((i <= 1) || (i >= paramPreDownloadItem.reqNetWork))
     {
       paramPreDownloadItem.startCondition = getStartUpCondition();
       paramPreDownloadItem.startTime = System.currentTimeMillis();
-      paramPreDownloadItem.downNetWork = getNetworkName(this.mApp);
+      paramPreDownloadItem.downNetWork = PreDownloadScheduleUtil.getNetworkName(this.mApp);
       paramPreDownloadItem.state = 1;
       paramPreDownloadItem.task.start();
       this.mDownloadList.add(paramPreDownloadItem);
@@ -184,90 +179,24 @@ public class PreDownloadScheduler
     }
   }
   
-  private static String getNetworkName(QQAppInterface paramQQAppInterface)
-  {
-    switch (NetworkUtil.a(paramQQAppInterface.getApp()))
-    {
-    default: 
-      return "unknown";
-    case 0: 
-      return "none";
-    case 1: 
-      return "Wi-Fi";
-    case 2: 
-      return "2G";
-    case 3: 
-      return "3G";
-    case 4: 
-      return "4G";
-    }
-    return "5G";
-  }
-  
-  public static String getPreDownloadPathStatic(int paramInt, String paramString, boolean paramBoolean)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PreDownloadScheduler", 1, "department should not be empty");
-      }
-      paramString = null;
-      return paramString;
-    }
-    String str3 = (String)PreDownloadConstants.BUSINESS_NAME_ENG.get(Integer.valueOf(paramInt));
-    if (TextUtils.isEmpty(str3))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PreDownloadScheduler", 1, "Should define english name in PreDownloadConstants.BUSINESS_NAME_ENG for business");
-      }
-      return null;
-    }
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        String str1 = VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory().getAbsolutePath() + "/tencent/MobileQQ/pddata/");
-        File localFile = new File(str1);
-        if (!localFile.exists()) {
-          localFile.mkdirs();
-        }
-        str1 = str1 + paramString + "/" + str3;
-        paramString = str1;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("PreDownloadScheduler", 1, "[getPreDownloadPath] path = " + str1);
-        return str1;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PreDownloadScheduler", 1, "Exception:", localException);
-        }
-        str2 = VFSAssistantUtils.getSDKPrivatePath("/sdcard/tencent/MobileQQ/pddata/");
-        continue;
-      }
-      String str2 = BaseApplicationImpl.getContext().getFilesDir() + "/pddata/";
-    }
-  }
-  
   private int getStartUpCondition()
   {
-    int i = 0;
-    if (BaseApplicationImpl.isFirstLaunchNew) {
+    int i;
+    if (AutomatorHelper.a) {
       i = 1;
+    } else if (AutomatorHelper.b) {
+      i = 2;
+    } else {
+      i = 0;
     }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PreDownloadScheduler", 2, " getStartUpCondition  condition = " + i);
-      }
-      return i;
-      if (BaseApplicationImpl.isCurrentVersionFirstLaunch) {
-        i = 2;
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" getStartUpCondition  condition = ");
+      localStringBuilder.append(i);
+      QLog.d("PreDownloadScheduler", 2, localStringBuilder.toString());
     }
+    return i;
   }
   
   private void handleMessageForCancelPreDownload(Message paramMessage)
@@ -286,27 +215,30 @@ public class PreDownloadScheduler
         if (i < this.mPendingList.size())
         {
           PreDownloadItem localPreDownloadItem = (PreDownloadItem)this.mPendingList.get(i);
-          if (str.equals(localPreDownloadItem.downloadUrl))
-          {
-            this.mPendingList.remove(localPreDownloadItem);
-            localPreDownloadItem.state = 3;
-            report(localPreDownloadItem);
-            if (QLog.isColorLevel()) {
-              QLog.e("PreDownloadScheduler", 1, "[ msg cancel] task.url = " + localPreDownloadItem.downloadUrl);
-            }
-            if (localPreDownloadItem == this.mCurrentTask) {
-              this.mCurrentTask = null;
-            }
-            checkTaskToStopFPSCallback();
+          if (!str.equals(localPreDownloadItem.downloadUrl)) {
+            break label164;
           }
-        }
-        else
-        {
-          checkStateToStart();
-          return;
+          this.mPendingList.remove(localPreDownloadItem);
+          localPreDownloadItem.state = 3;
+          report(localPreDownloadItem);
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("[ msg cancel] task.url = ");
+            localStringBuilder.append(localPreDownloadItem.downloadUrl);
+            QLog.e("PreDownloadScheduler", 1, localStringBuilder.toString());
+          }
+          if (localPreDownloadItem == this.mCurrentTask) {
+            this.mCurrentTask = null;
+          }
+          checkTaskToStopFPSCallback();
+          break label164;
         }
       }
       finally {}
+      checkStateToStart();
+      return;
+      label164:
       i += 1;
     }
   }
@@ -326,8 +258,12 @@ public class PreDownloadScheduler
           paramMessage.downloadSize = j;
           paramMessage.downloadTime = (System.currentTimeMillis() - paramMessage.startTime);
           paramMessage.state = 2;
-          if (QLog.isColorLevel()) {
-            QLog.e("PreDownloadScheduler", 1, "[msg download sucess] task.url = " + paramMessage.downloadUrl);
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("[msg download sucess] task.url = ");
+            localStringBuilder.append(paramMessage.downloadUrl);
+            QLog.e("PreDownloadScheduler", 1, localStringBuilder.toString());
           }
           report(paramMessage);
           this.mDownloadList.remove(i);
@@ -344,10 +280,15 @@ public class PreDownloadScheduler
   private void handleMessageForOnTaskEnd(Message paramMessage)
   {
     paramMessage = (AbsPreDownloadTask)paramMessage.obj;
-    if ((this.mCurrentTask != null) && (this.mCurrentTask.task != null) && (paramMessage != null) && (this.mCurrentTask.task == paramMessage))
+    PreDownloadItem localPreDownloadItem = this.mCurrentTask;
+    if ((localPreDownloadItem != null) && (localPreDownloadItem.task != null) && (paramMessage != null) && (this.mCurrentTask.task == paramMessage))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("PreDownloadScheduler", 1, " pre download onTaskEnd task key = " + this.mCurrentTask.task.key);
+      if (QLog.isColorLevel())
+      {
+        paramMessage = new StringBuilder();
+        paramMessage.append(" pre download onTaskEnd task key = ");
+        paramMessage.append(this.mCurrentTask.task.key);
+        QLog.e("PreDownloadScheduler", 1, paramMessage.toString());
       }
       this.mCurrentTask = null;
     }
@@ -356,80 +297,85 @@ public class PreDownloadScheduler
   
   private void handleMessageForRequestPreDownload(Message paramMessage)
   {
-    int j = 0;
     PreDownloadItem localPreDownloadItem1 = (PreDownloadItem)paramMessage.obj;
     int i;
-    label138:
-    int k;
     if (this.mEnable)
     {
       paramMessage = this.mLock;
       i = 0;
+    }
+    for (;;)
+    {
       PreDownloadItem localPreDownloadItem3;
+      int j;
       try
       {
         if (i >= this.mPendingList.size()) {
-          break label332;
+          break label348;
         }
         localPreDownloadItem3 = (PreDownloadItem)this.mPendingList.get(i);
         if (!localPreDownloadItem1.downloadUrl.equals(localPreDownloadItem3.downloadUrl)) {
-          break label337;
+          break label341;
         }
         if ((!localPreDownloadItem1.downloadUrl.contains("doodle")) || (localPreDownloadItem1.filePath == null) || (localPreDownloadItem1.filePath.equals(localPreDownloadItem3.filePath))) {
-          break label344;
+          break label336;
         }
         if (!QLog.isColorLevel()) {
-          break label337;
+          break label341;
         }
         QLog.d("PreDownloadScheduler", 2, new Object[] { "mPendingList, same url, filePath diff, ", localPreDownloadItem1.downloadUrl });
       }
       finally {}
-      k = i;
+      int k = i;
       if (j < this.mDownloadList.size())
       {
         localPreDownloadItem3 = (PreDownloadItem)this.mDownloadList.get(j);
         if (!localPreDownloadItem1.downloadUrl.equals(localPreDownloadItem3.downloadUrl)) {
-          break label349;
+          break label361;
         }
-        if ((!localPreDownloadItem1.downloadUrl.contains("doodle")) || (localPreDownloadItem1.filePath == null) || (localPreDownloadItem1.filePath.equals(localPreDownloadItem3.filePath))) {
-          break label356;
+        if ((localPreDownloadItem1.downloadUrl.contains("doodle")) && (localPreDownloadItem1.filePath != null) && (!localPreDownloadItem1.filePath.equals(localPreDownloadItem3.filePath)))
+        {
+          if (!QLog.isColorLevel()) {
+            break label361;
+          }
+          QLog.d("PreDownloadScheduler", 2, new Object[] { "downloadUrl, same url, filePath diff, ", localPreDownloadItem1.downloadUrl });
+          break label361;
         }
-        if (!QLog.isColorLevel()) {
-          break label349;
-        }
-        QLog.d("PreDownloadScheduler", 2, new Object[] { "downloadUrl, same url, filePath diff, ", localPreDownloadItem1.downloadUrl });
-        break label349;
       }
-    }
-    for (;;)
-    {
-      if (k == 0) {
-        this.mPendingList.add(localPreDownloadItem1);
-      }
-      for (;;)
+      else
       {
+        if (k == 0) {
+          this.mPendingList.add(localPreDownloadItem1);
+        }
+        break label283;
+        directDownloadItem(localPreDownloadItem2);
+        label283:
         checkStateToStart();
         checkTaskToStopFPSCallback();
-        if (QLog.isColorLevel()) {
-          QLog.e("PreDownloadScheduler", 1, " [msg request add to list]  mPendingList size = " + this.mPendingList.size());
+        if (QLog.isColorLevel())
+        {
+          paramMessage = new StringBuilder();
+          paramMessage.append(" [msg request add to list]  mPendingList size = ");
+          paramMessage.append(this.mPendingList.size());
+          QLog.e("PreDownloadScheduler", 1, paramMessage.toString());
         }
         return;
-        directDownloadItem(localPreDownloadItem2);
+        label336:
+        i = 1;
+        break label350;
+        label341:
+        i += 1;
+        continue;
+        label348:
+        i = 0;
+        label350:
+        j = 0;
+        continue;
       }
-      label332:
-      i = 0;
-      break label138;
-      label337:
-      i += 1;
-      break;
-      label344:
-      i = 1;
-      break label138;
-      label349:
-      j += 1;
-      break label138;
-      label356:
       k = 1;
+      continue;
+      label361:
+      j += 1;
     }
   }
   
@@ -439,25 +385,30 @@ public class PreDownloadScheduler
     if (QLog.isColorLevel()) {
       QLog.e("PreDownloadScheduler", 1, "startPreDownload mBeReady set true, all pre download will start ");
     }
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("sp_pre_downlaod", 0);
+    SharedPreferences localSharedPreferences = MobileQQ.sMobileQQ.getSharedPreferences("sp_pre_downlaod", 0);
     int i = localSharedPreferences.getInt("sp_key_pre_download_version", 0);
-    if (i != 0)
+    if (i != this.mPreDownloadConfigHelper.getVersion())
     {
-      ArrayList localArrayList = PreDownloadController.onVersionUpdate(i, 0);
-      if ((localArrayList != null) && (localArrayList.size() > 0))
+      Object localObject = this.mPreDownloadConfigHelper;
+      localObject = ((PreDownloadConfigHelper)localObject).cleanOnVersionUpdate(i, ((PreDownloadConfigHelper)localObject).getVersion());
+      if ((localObject != null) && (!((List)localObject).isEmpty()))
       {
         i = 0;
-        while (i < localArrayList.size())
+        while (i < ((List)localObject).size())
         {
-          if (QLog.isColorLevel()) {
-            QLog.e("PreDownloadScheduler", 1, "[onVersionUpdate PreDownloadScheduler]  delete file: " + (String)localArrayList.get(i));
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("[onVersionUpdate PreDownloadScheduler]  delete file: ");
+            localStringBuilder.append((String)((List)localObject).get(i));
+            QLog.e("PreDownloadScheduler", 1, localStringBuilder.toString());
           }
-          FileUtils.a((String)localArrayList.get(i), false);
+          FileUtils.delete((String)((List)localObject).get(i), false);
           i += 1;
         }
       }
     }
-    localSharedPreferences.edit().putInt("sp_key_pre_download_version", 0).commit();
+    localSharedPreferences.edit().putInt("sp_key_pre_download_version", this.mPreDownloadConfigHelper.getVersion()).apply();
     checkStateToStart();
     checkTaskToStopFPSCallback();
   }
@@ -480,17 +431,19 @@ public class PreDownloadScheduler
         if (i < this.mPendingList.size())
         {
           PreDownloadItem localPreDownloadItem = (PreDownloadItem)this.mPendingList.get(i);
-          if (localPreDownloadItem != null) {
-            localStringBuilder.append(localPreDownloadItem.businessID).append(",");
+          if (localPreDownloadItem == null) {
+            break label95;
           }
+          localStringBuilder.append(localPreDownloadItem.businessID);
+          localStringBuilder.append(",");
+          break label95;
         }
-        else
-        {
-          QLog.d("PreDownloadScheduler", 2, localStringBuilder.toString());
-          return;
-        }
+        QLog.d("PreDownloadScheduler", 2, localStringBuilder.toString());
+        return;
       }
       finally {}
+      return;
+      label95:
       i += 1;
     }
   }
@@ -500,13 +453,20 @@ public class PreDownloadScheduler
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder("[network or reqconditon not fit] donot download task :\n");
-      localStringBuilder.append(",businessID=").append(paramPreDownloadItem.businessID);
-      localStringBuilder.append(",businessName=").append(paramPreDownloadItem.businessName);
-      localStringBuilder.append(",downloadUrl=").append(paramPreDownloadItem.downloadUrl);
-      localStringBuilder.append(",reqCondition=").append(paramPreDownloadItem.reqCondition);
-      localStringBuilder.append(",current appBackground=").append(this.mAppBackground);
-      localStringBuilder.append(",reqNetWork=").append(paramPreDownloadItem.reqNetWork);
-      localStringBuilder.append(",current netWorkType=").append(paramInt);
+      localStringBuilder.append(",businessID=");
+      localStringBuilder.append(paramPreDownloadItem.businessID);
+      localStringBuilder.append(",businessName=");
+      localStringBuilder.append(paramPreDownloadItem.businessName);
+      localStringBuilder.append(",downloadUrl=");
+      localStringBuilder.append(paramPreDownloadItem.downloadUrl);
+      localStringBuilder.append(",reqCondition=");
+      localStringBuilder.append(paramPreDownloadItem.reqCondition);
+      localStringBuilder.append(",current appBackground=");
+      localStringBuilder.append(this.mAppBackground);
+      localStringBuilder.append(",reqNetWork=");
+      localStringBuilder.append(paramPreDownloadItem.reqNetWork);
+      localStringBuilder.append(",current netWorkType=");
+      localStringBuilder.append(paramInt);
       QLog.d("PreDownloadScheduler", 2, localStringBuilder.toString());
     }
   }
@@ -516,10 +476,14 @@ public class PreDownloadScheduler
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder("[forbidden on first start] remove task :\n");
-      localStringBuilder.append(",businessID=").append(paramPreDownloadItem.businessID);
-      localStringBuilder.append(",businessName=").append(paramPreDownloadItem.businessName);
-      localStringBuilder.append(",downloadUrl=").append(paramPreDownloadItem.downloadUrl);
-      localStringBuilder.append(",reqCondition=").append(paramPreDownloadItem.reqCondition);
+      localStringBuilder.append(",businessID=");
+      localStringBuilder.append(paramPreDownloadItem.businessID);
+      localStringBuilder.append(",businessName=");
+      localStringBuilder.append(paramPreDownloadItem.businessName);
+      localStringBuilder.append(",downloadUrl=");
+      localStringBuilder.append(paramPreDownloadItem.downloadUrl);
+      localStringBuilder.append(",reqCondition=");
+      localStringBuilder.append(paramPreDownloadItem.reqCondition);
       QLog.d("PreDownloadScheduler", 2, localStringBuilder.toString());
     }
   }
@@ -529,10 +493,14 @@ public class PreDownloadScheduler
     if (QLog.isColorLevel())
     {
       paramString = new StringBuilder(paramString);
-      paramString.append(",businessID=").append(paramPreDownloadItem.businessID);
-      paramString.append(",businessName=").append(paramPreDownloadItem.businessName);
-      paramString.append(",downloadUrl=").append(paramPreDownloadItem.downloadUrl);
-      paramString.append(",fileKey=").append(paramPreDownloadItem.fileKey);
+      paramString.append(",businessID=");
+      paramString.append(paramPreDownloadItem.businessID);
+      paramString.append(",businessName=");
+      paramString.append(paramPreDownloadItem.businessName);
+      paramString.append(",downloadUrl=");
+      paramString.append(paramPreDownloadItem.downloadUrl);
+      paramString.append(",fileKey=");
+      paramString.append(paramPreDownloadItem.fileKey);
       QLog.d("PreDownloadScheduler", 2, paramString.toString());
     }
   }
@@ -565,28 +533,85 @@ public class PreDownloadScheduler
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder("[report item]:");
-      localStringBuilder.append(", ").append("businessID").append("=").append(paramPreDownloadItem.businessID);
-      localStringBuilder.append(", ").append("businessName").append("=").append(paramPreDownloadItem.businessName);
-      localStringBuilder.append(", ").append("businessEngName").append("=").append(paramPreDownloadItem.businessEngName);
-      localStringBuilder.append(", ").append("department").append("=").append(paramPreDownloadItem.department);
-      localStringBuilder.append(", ").append("fileKey").append("=").append(paramPreDownloadItem.fileKey);
-      localStringBuilder.append(", ").append("downloadUrl").append("=").append(paramPreDownloadItem.downloadUrl);
-      localStringBuilder.append(", ").append("filePath").append("=").append(paramPreDownloadItem.filePath);
-      localStringBuilder.append(", ").append("reqTime").append("=").append(String.valueOf(paramPreDownloadItem.reqTime));
-      localStringBuilder.append(", ").append("reqNetWork").append("=").append(String.valueOf(paramPreDownloadItem.reqNetWork));
-      localStringBuilder.append(", ").append("downNetWork").append("=").append(String.valueOf(paramPreDownloadItem.downNetWork));
-      localStringBuilder.append(", ").append("startTime").append("=").append(String.valueOf(paramPreDownloadItem.startTime));
-      localStringBuilder.append(", ").append("downloadTime").append("=").append(String.valueOf(paramPreDownloadItem.downloadTime));
-      localStringBuilder.append(", ").append("downloadSize").append("=").append(String.valueOf(paramPreDownloadItem.downloadSize));
-      localStringBuilder.append(", ").append("businessPriority").append("=").append(String.valueOf(paramPreDownloadItem.businessPriority));
-      localStringBuilder.append(", ").append("innerPriority").append("=").append(String.valueOf(paramPreDownloadItem.innerPriority));
-      localStringBuilder.append(", ").append("state").append("=").append(String.valueOf(paramPreDownloadItem.state));
-      localStringBuilder.append(", ").append("reqCondition").append("=").append(String.valueOf(paramPreDownloadItem.reqCondition));
-      localStringBuilder.append(", ").append("startCondition").append("=").append(String.valueOf(paramPreDownloadItem.startCondition));
-      localStringBuilder.append(", ").append("saveOnSD").append("=").append(String.valueOf(paramPreDownloadItem.saveOnSD));
+      localStringBuilder.append(", ");
+      localStringBuilder.append("businessID");
+      localStringBuilder.append("=");
+      localStringBuilder.append(paramPreDownloadItem.businessID);
+      localStringBuilder.append(", ");
+      localStringBuilder.append("businessName");
+      localStringBuilder.append("=");
+      localStringBuilder.append(paramPreDownloadItem.businessName);
+      localStringBuilder.append(", ");
+      localStringBuilder.append("businessEngName");
+      localStringBuilder.append("=");
+      localStringBuilder.append(paramPreDownloadItem.businessEngName);
+      localStringBuilder.append(", ");
+      localStringBuilder.append("department");
+      localStringBuilder.append("=");
+      localStringBuilder.append(paramPreDownloadItem.department);
+      localStringBuilder.append(", ");
+      localStringBuilder.append("fileKey");
+      localStringBuilder.append("=");
+      localStringBuilder.append(paramPreDownloadItem.fileKey);
+      localStringBuilder.append(", ");
+      localStringBuilder.append("downloadUrl");
+      localStringBuilder.append("=");
+      localStringBuilder.append(paramPreDownloadItem.downloadUrl);
+      localStringBuilder.append(", ");
+      localStringBuilder.append("filePath");
+      localStringBuilder.append("=");
+      localStringBuilder.append(paramPreDownloadItem.filePath);
+      localStringBuilder.append(", ");
+      localStringBuilder.append("reqTime");
+      localStringBuilder.append("=");
+      localStringBuilder.append(String.valueOf(paramPreDownloadItem.reqTime));
+      localStringBuilder.append(", ");
+      localStringBuilder.append("reqNetWork");
+      localStringBuilder.append("=");
+      localStringBuilder.append(String.valueOf(paramPreDownloadItem.reqNetWork));
+      localStringBuilder.append(", ");
+      localStringBuilder.append("downNetWork");
+      localStringBuilder.append("=");
+      localStringBuilder.append(String.valueOf(paramPreDownloadItem.downNetWork));
+      localStringBuilder.append(", ");
+      localStringBuilder.append("startTime");
+      localStringBuilder.append("=");
+      localStringBuilder.append(String.valueOf(paramPreDownloadItem.startTime));
+      localStringBuilder.append(", ");
+      localStringBuilder.append("downloadTime");
+      localStringBuilder.append("=");
+      localStringBuilder.append(String.valueOf(paramPreDownloadItem.downloadTime));
+      localStringBuilder.append(", ");
+      localStringBuilder.append("downloadSize");
+      localStringBuilder.append("=");
+      localStringBuilder.append(String.valueOf(paramPreDownloadItem.downloadSize));
+      localStringBuilder.append(", ");
+      localStringBuilder.append("businessPriority");
+      localStringBuilder.append("=");
+      localStringBuilder.append(String.valueOf(paramPreDownloadItem.businessPriority));
+      localStringBuilder.append(", ");
+      localStringBuilder.append("innerPriority");
+      localStringBuilder.append("=");
+      localStringBuilder.append(String.valueOf(paramPreDownloadItem.innerPriority));
+      localStringBuilder.append(", ");
+      localStringBuilder.append("state");
+      localStringBuilder.append("=");
+      localStringBuilder.append(String.valueOf(paramPreDownloadItem.state));
+      localStringBuilder.append(", ");
+      localStringBuilder.append("reqCondition");
+      localStringBuilder.append("=");
+      localStringBuilder.append(String.valueOf(paramPreDownloadItem.reqCondition));
+      localStringBuilder.append(", ");
+      localStringBuilder.append("startCondition");
+      localStringBuilder.append("=");
+      localStringBuilder.append(String.valueOf(paramPreDownloadItem.startCondition));
+      localStringBuilder.append(", ");
+      localStringBuilder.append("saveOnSD");
+      localStringBuilder.append("=");
+      localStringBuilder.append(String.valueOf(paramPreDownloadItem.saveOnSD));
       QLog.d("PreDownloadScheduler", 2, localStringBuilder.toString());
     }
-    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "PreDownloadReport", true, 0L, 0L, localHashMap, null);
+    StatisticCollector.getInstance(this.mApp.getApp()).collectPerformance(null, "PreDownloadReport", true, 0L, 0L, localHashMap, null);
   }
   
   private void reportPauseInfo(double paramDouble1, double paramDouble2, String paramString, long paramLong)
@@ -602,29 +627,43 @@ public class PreDownloadScheduler
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder("[report puse info]:");
-      localStringBuilder.append(", ").append("downloadUrl").append("=").append(paramString);
-      localStringBuilder.append(", ").append("downloadSize").append("=").append(String.valueOf(paramLong));
-      localStringBuilder.append(", ").append("CPU").append("=").append(String.valueOf(paramDouble2));
-      localStringBuilder.append(", ").append("FPS").append("=").append(String.valueOf(paramDouble1));
+      localStringBuilder.append(", ");
+      localStringBuilder.append("downloadUrl");
+      localStringBuilder.append("=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", ");
+      localStringBuilder.append("downloadSize");
+      localStringBuilder.append("=");
+      localStringBuilder.append(String.valueOf(paramLong));
+      localStringBuilder.append(", ");
+      localStringBuilder.append("CPU");
+      localStringBuilder.append("=");
+      localStringBuilder.append(String.valueOf(paramDouble2));
+      localStringBuilder.append(", ");
+      localStringBuilder.append("FPS");
+      localStringBuilder.append("=");
+      localStringBuilder.append(String.valueOf(paramDouble1));
       QLog.d("PreDownloadScheduler", 2, localStringBuilder.toString());
     }
-    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "PreDownloadReportPause", true, 0L, 0L, localHashMap, null);
+    StatisticCollector.getInstance(this.mApp.getApp()).collectPerformance(null, "PreDownloadReportPause", true, 0L, 0L, localHashMap, null);
   }
   
   public AbsPreDownloadTask cancelPreDownload(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("PreDownloadScheduler", 1, "[ cancelPreDownload ] downloadUrl = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[ cancelPreDownload ] downloadUrl = ");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.e("PreDownloadScheduler", 1, ((StringBuilder)localObject1).toString());
     }
     Object localObject1 = null;
-    Object localObject2 = null;
-    Object localObject3;
+    Object localObject2;
     int i;
     if (!TextUtils.isEmpty(paramString))
     {
-      localObject3 = this.mLock;
+      localObject2 = this.mLock;
       i = 0;
-      localObject1 = localObject2;
     }
     for (;;)
     {
@@ -632,21 +671,22 @@ public class PreDownloadScheduler
       {
         if (i < this.mPendingList.size())
         {
-          localObject2 = (PreDownloadItem)this.mPendingList.get(i);
-          if (paramString.equals(((PreDownloadItem)localObject2).downloadUrl)) {
-            localObject1 = ((PreDownloadItem)localObject2).task;
+          PreDownloadItem localPreDownloadItem = (PreDownloadItem)this.mPendingList.get(i);
+          if (!paramString.equals(localPreDownloadItem.downloadUrl)) {
+            break label149;
           }
+          localObject1 = localPreDownloadItem.task;
+          break label149;
         }
-        else
-        {
-          localObject2 = new Message();
-          ((Message)localObject2).what = 1003;
-          ((Message)localObject2).obj = paramString;
-          this.mHandler.sendMessage((Message)localObject2);
-          return localObject1;
-        }
+        localObject2 = new Message();
+        ((Message)localObject2).what = 1003;
+        ((Message)localObject2).obj = paramString;
+        this.mHandler.sendMessage((Message)localObject2);
+        return localObject1;
       }
       finally {}
+      return null;
+      label149:
       i += 1;
     }
   }
@@ -667,14 +707,17 @@ public class PreDownloadScheduler
         this.mCPUReady = true;
         this.mBeReady = true;
         QLog.d("PreDownloadScheduler", 2, "[System busy] for 60 seconds after pull msg, set download enable");
-        QLog.d("PreDownloadScheduler", 2, "mCPUThreshold = " + this.mCPUThreshold + ",mFPSThreshold=" + this.mFPSThreshold);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("mCPUThreshold = ");
+        localStringBuilder.append(this.mCPUThreshold);
+        localStringBuilder.append(",mFPSThreshold=");
+        localStringBuilder.append(this.mFPSThreshold);
+        QLog.d("PreDownloadScheduler", 2, localStringBuilder.toString());
+        return true;
       }
+      return false;
     }
-    else
-    {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public String getPreDownloadPath(int paramInt, String paramString, boolean paramBoolean)
@@ -684,113 +727,145 @@ public class PreDownloadScheduler
       if (QLog.isColorLevel()) {
         QLog.e("PreDownloadScheduler", 1, "department should not be empty");
       }
-      paramString = null;
-      return paramString;
+      return null;
     }
-    String str2 = (String)PreDownloadConstants.BUSINESS_NAME_ENG.get(Integer.valueOf(paramInt));
-    if (TextUtils.isEmpty(str2))
+    String str = (String)this.mPreDownloadConfigHelper.getBusinessNameEng().get(Integer.valueOf(paramInt));
+    if (TextUtils.isEmpty(str))
     {
       if (QLog.isColorLevel()) {
         QLog.e("PreDownloadScheduler", 1, "Should define english name in PreDownloadConstants.BUSINESS_NAME_ENG for business");
       }
       return null;
     }
-    if (paramBoolean) {}
-    for (String str1 = this.mSdcardPath;; str1 = this.mInnerPath)
-    {
-      str1 = str1 + paramString + "/" + str2;
-      paramString = str1;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("PreDownloadScheduler", 1, "[getPreDownloadPath] path = " + str1);
-      return str1;
+    Object localObject;
+    if (paramBoolean) {
+      localObject = this.mSdcardPath;
+    } else {
+      localObject = this.mInnerPath;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("/");
+    localStringBuilder.append(str);
+    paramString = localStringBuilder.toString();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[getPreDownloadPath] path = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.e("PreDownloadScheduler", 1, ((StringBuilder)localObject).toString());
+    }
+    return paramString;
   }
   
   public boolean handleMessage(Message paramMessage)
   {
     switch (paramMessage.what)
     {
-    }
-    for (;;)
-    {
-      return true;
-      handleMessageForStartPreDownload();
-      continue;
-      handleMessageForRequestPreDownload(paramMessage);
-      continue;
-      handleMessageForCancelPreDownload(paramMessage);
-      continue;
-      handleMessageForDownloadSuccess(paramMessage);
-      continue;
+    default: 
+      break;
+    case 1008: 
+    case 1009: 
       checkStateToStart();
-      checkTaskToStopFPSCallback();
-      continue;
+      break;
+    case 1007: 
       paramMessage = (Bundle)paramMessage.obj;
       reportPauseInfo(paramMessage.getDouble("FPS"), paramMessage.getDouble("CPU"), this.mCurSuccessUrl, this.mCurSuccesSize);
-      continue;
+      break;
+    case 1006: 
       handleMessageForOnTaskEnd(paramMessage);
-      continue;
+      break;
+    case 1005: 
       checkStateToStart();
+      checkTaskToStopFPSCallback();
+      break;
+    case 1004: 
+      handleMessageForDownloadSuccess(paramMessage);
+      break;
+    case 1003: 
+      handleMessageForCancelPreDownload(paramMessage);
+      break;
+    case 1002: 
+      handleMessageForRequestPreDownload(paramMessage);
+      break;
+    case 1001: 
+      handleMessageForStartPreDownload();
     }
+    return true;
   }
   
-  public void init(QQAppInterface paramQQAppInterface)
+  public void init(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    this.mApp = paramQQAppInterface;
+    this.mApp = paramBaseQQAppInterface;
     this.mHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
-    this.mInnerPath = (BaseApplicationImpl.getContext().getFilesDir() + "/pddata/");
-    paramQQAppInterface = new File(this.mInnerPath);
-    if (!paramQQAppInterface.exists()) {
-      paramQQAppInterface.mkdirs();
+    paramBaseQQAppInterface = new StringBuilder();
+    paramBaseQQAppInterface.append(MobileQQ.sMobileQQ.getFilesDir());
+    paramBaseQQAppInterface.append("/pddata/");
+    this.mInnerPath = paramBaseQQAppInterface.toString();
+    paramBaseQQAppInterface = new File(this.mInnerPath);
+    if (!paramBaseQQAppInterface.exists()) {
+      paramBaseQQAppInterface.mkdirs();
     }
-    this.mSdcardPath = (Environment.getExternalStorageDirectory().getAbsolutePath() + "/tencent/MobileQQ/pddata/");
+    paramBaseQQAppInterface = new StringBuilder();
+    paramBaseQQAppInterface.append(Environment.getExternalStorageDirectory().getAbsolutePath());
+    paramBaseQQAppInterface.append("/tencent/MobileQQ/pddata/");
+    this.mSdcardPath = paramBaseQQAppInterface.toString();
     this.mSdcardPath = VFSAssistantUtils.getSDKPrivatePath(this.mSdcardPath);
-    paramQQAppInterface = new File(this.mSdcardPath);
-    if (!paramQQAppInterface.exists()) {
-      paramQQAppInterface.mkdirs();
+    paramBaseQQAppInterface = new File(this.mSdcardPath);
+    if (!paramBaseQQAppInterface.exists()) {
+      paramBaseQQAppInterface.mkdirs();
     }
     this.mSysVolatilityCount = 6L;
     this.mFPSThreshold = 30.0D;
     this.mCPUThreshold = 50.0D;
-    paramQQAppInterface = BaseApplicationImpl.getApplication().getSharedPreferences("sp_pre_downlaod", 0);
-    boolean bool2 = paramQQAppInterface.getBoolean("sp_key_pre_sample_mark", false);
-    QLog.e("PreDownloadScheduler", 1, " pre download bSampledLastTime = " + bool2);
+    paramBaseQQAppInterface = MobileQQ.sMobileQQ.getSharedPreferences("sp_pre_downlaod", 0);
+    boolean bool2 = paramBaseQQAppInterface.getBoolean("sp_key_pre_sample_mark", false);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" pre download bSampledLastTime = ");
+    localStringBuilder.append(bool2);
+    QLog.e("PreDownloadScheduler", 1, localStringBuilder.toString());
     double d = Math.random();
     boolean bool1;
-    if (9.999999747378752E-006D >= d)
-    {
+    if (9.999999747378752E-006D >= d) {
       bool1 = true;
-      this.mNeedReport = bool1;
-      QLog.e("PreDownloadScheduler", 1, " pre download random = " + d);
-      if (!bool2) {
-        break label331;
-      }
+    } else {
+      bool1 = false;
+    }
+    this.mNeedReport = bool1;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" pre download random = ");
+    localStringBuilder.append(d);
+    QLog.e("PreDownloadScheduler", 1, localStringBuilder.toString());
+    if (bool2)
+    {
       this.mNeedReport = true;
-      paramQQAppInterface.edit().putBoolean("sp_key_pre_sample_mark", false).commit();
+      paramBaseQQAppInterface.edit().putBoolean("sp_key_pre_sample_mark", false).commit();
       QLog.e("PreDownloadScheduler", 1, " pre download last time sampled, also sampled this time");
     }
-    for (;;)
+    else
     {
-      QLog.e("PreDownloadScheduler", 1, " pre download set mNeedReport = " + this.mNeedReport);
-      return;
-      bool1 = false;
-      break;
-      label331:
-      paramQQAppInterface.edit().putBoolean("sp_key_pre_sample_mark", this.mNeedReport).commit();
+      paramBaseQQAppInterface.edit().putBoolean("sp_key_pre_sample_mark", this.mNeedReport).commit();
     }
+    paramBaseQQAppInterface = new StringBuilder();
+    paramBaseQQAppInterface.append(" pre download set mNeedReport = ");
+    paramBaseQQAppInterface.append(this.mNeedReport);
+    QLog.e("PreDownloadScheduler", 1, paramBaseQQAppInterface.toString());
   }
   
   public void onAppBackground()
   {
     this.mAppBackground = true;
-    if (QLog.isColorLevel()) {
-      QLog.e("PreDownloadScheduler", 1, "[ onAppBackground ] mAppBackground = " + this.mAppBackground);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[ onAppBackground ] mAppBackground = ");
+      ((StringBuilder)localObject).append(this.mAppBackground);
+      QLog.e("PreDownloadScheduler", 1, ((StringBuilder)localObject).toString());
     }
-    Message localMessage = new Message();
-    localMessage.what = 1009;
-    this.mHandler.sendMessage(localMessage);
+    Object localObject = new Message();
+    ((Message)localObject).what = 1009;
+    this.mHandler.sendMessage((Message)localObject);
   }
   
   public void onAppForground()
@@ -798,12 +873,16 @@ public class PreDownloadScheduler
     this.mCPUReady = false;
     this.mFPSReady = false;
     this.mAppBackground = false;
-    if (QLog.isColorLevel()) {
-      QLog.e("PreDownloadScheduler", 1, "[ onAppForground ] mAppBackground = " + this.mAppBackground);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[ onAppForground ] mAppBackground = ");
+      ((StringBuilder)localObject).append(this.mAppBackground);
+      QLog.e("PreDownloadScheduler", 1, ((StringBuilder)localObject).toString());
     }
-    Message localMessage = new Message();
-    localMessage.what = 1008;
-    this.mHandler.sendMessage(localMessage);
+    Object localObject = new Message();
+    ((Message)localObject).what = 1008;
+    this.mHandler.sendMessage((Message)localObject);
   }
   
   public void onAppLiteStart(boolean paramBoolean)
@@ -820,7 +899,8 @@ public class PreDownloadScheduler
     synchronized (this.mLock)
     {
       this.mPendingList.removeAll(this.mPendingList);
-      this.mDownloadList.removeAll(this.mDownloadList);
+      ??? = this.mDownloadList;
+      ((ArrayList)???).removeAll((Collection)???);
       return;
     }
   }
@@ -835,106 +915,128 @@ public class PreDownloadScheduler
   
   public void preDownloadSuccess(String paramString, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("PreDownloadScheduler", 1, "[ preDownloadSuccess ] downloadUrl = " + paramString + ",size = " + paramLong);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[ preDownloadSuccess ] downloadUrl = ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(",size = ");
+      ((StringBuilder)localObject).append(paramLong);
+      QLog.e("PreDownloadScheduler", 1, ((StringBuilder)localObject).toString());
     }
     this.mCurSuccessUrl = paramString;
     this.mCurSuccesSize = paramLong;
-    Message localMessage = new Message();
-    localMessage.what = 1004;
-    localMessage.obj = paramString;
-    localMessage.arg1 = ((int)paramLong);
-    this.mHandler.sendMessage(localMessage);
+    Object localObject = new Message();
+    ((Message)localObject).what = 1004;
+    ((Message)localObject).obj = paramString;
+    ((Message)localObject).arg1 = ((int)paramLong);
+    this.mHandler.sendMessage((Message)localObject);
   }
   
   public boolean requestPreDownload(int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4, int paramInt3, int paramInt4, boolean paramBoolean, AbsPreDownloadTask paramAbsPreDownloadTask)
   {
-    if ((DeviceOptSwitch.jdField_a_of_type_Boolean) && (!DeviceOptSwitch.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt1))) && (!PreDownloadConstants.sPreDownloadWhiteList.contains(Integer.valueOf(paramInt1))))
+    if ((((IDeviceOptSwitch)QRoute.api(IDeviceOptSwitch.class)).isDisablePreDownload()) && (!((IDeviceOptSwitch)QRoute.api(IDeviceOptSwitch.class)).getPreDownloadWhiteList().contains(Integer.valueOf(paramInt1))) && (!this.mPreDownloadConfigHelper.getPreDownloadWhiteList().contains(Integer.valueOf(paramInt1))))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Perf", 2, "delay pre_download,busindessID:" + paramInt1);
+      if (QLog.isColorLevel())
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("delay pre_download,busindessID:");
+        paramString1.append(paramInt1);
+        QLog.d("Perf", 2, paramString1.toString());
       }
-      DeviceOptSwitch.c = System.currentTimeMillis();
+      ((IDeviceOptSwitch)QRoute.api(IDeviceOptSwitch.class)).setDisablePreDownloadTime(System.currentTimeMillis());
       return false;
     }
-    if ((paramInt1 == 0) || (TextUtils.isEmpty(paramString3)) || (paramAbsPreDownloadTask == null))
+    if ((paramInt1 != 0) && (!TextUtils.isEmpty(paramString3)) && (paramAbsPreDownloadTask != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("PreDownloadScheduler", 1, "requestPreDownload param error! busindessID=0 or downloadUrl is empty or task is empty\n");
+      String str1 = (String)this.mPreDownloadConfigHelper.getBusinessName().get(Integer.valueOf(paramInt1));
+      if (TextUtils.isEmpty(str1))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("PreDownloadScheduler", 1, "Should define name in PreDownloadConstants.BUSINESS_NAME for business");
+        }
+        return false;
       }
-      return false;
-    }
-    String str1 = (String)PreDownloadConstants.BUSINESS_NAME.get(Integer.valueOf(paramInt1));
-    if (TextUtils.isEmpty(str1))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PreDownloadScheduler", 1, "Should define name in PreDownloadConstants.BUSINESS_NAME for business");
+      String str2 = (String)this.mPreDownloadConfigHelper.getBusinessNameEng().get(Integer.valueOf(paramInt1));
+      if (TextUtils.isEmpty(str2))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("PreDownloadScheduler", 1, "Should define english name in PreDownloadConstants.BUSINESS_NAME_ENG for business");
+        }
+        return false;
       }
-      return false;
-    }
-    String str2 = (String)PreDownloadConstants.BUSINESS_NAME_ENG.get(Integer.valueOf(paramInt1));
-    if (TextUtils.isEmpty(str2))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PreDownloadScheduler", 1, "Should define english name in PreDownloadConstants.BUSINESS_NAME_ENG for business");
+      Object localObject = (Integer)this.mPreDownloadConfigHelper.getBusinessPriority().get(Integer.valueOf(paramInt1));
+      if (localObject == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("PreDownloadScheduler", 1, "Should define priority in PreDownloadConstants.BUSINESS_PRIORITY for business");
+        }
+        return false;
       }
-      return false;
-    }
-    Object localObject = (Integer)PreDownloadConstants.BUSINESS_PRIORITY.get(Integer.valueOf(paramInt1));
-    if (localObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PreDownloadScheduler", 1, "Should define priority in PreDownloadConstants.BUSINESS_PRIORITY for business");
+      int i = ((Integer)localObject).intValue();
+      if ((i >= 0) && (i <= 4))
+      {
+        localObject = new PreDownloadItem();
+        ((PreDownloadItem)localObject).businessID = paramInt1;
+        ((PreDownloadItem)localObject).businessName = str1;
+        ((PreDownloadItem)localObject).businessEngName = str2;
+        ((PreDownloadItem)localObject).department = paramString1;
+        ((PreDownloadItem)localObject).fileKey = paramString2;
+        ((PreDownloadItem)localObject).downloadUrl = paramString3;
+        ((PreDownloadItem)localObject).reqNetWork = paramInt3;
+        ((PreDownloadItem)localObject).innerPriority = paramInt2;
+        ((PreDownloadItem)localObject).filePath = paramString4;
+        ((PreDownloadItem)localObject).state = 0;
+        ((PreDownloadItem)localObject).reqTime = System.currentTimeMillis();
+        ((PreDownloadItem)localObject).businessPriority = i;
+        ((PreDownloadItem)localObject).reqCondition = paramInt4;
+        ((PreDownloadItem)localObject).saveOnSD = paramBoolean;
+        ((PreDownloadItem)localObject).task = paramAbsPreDownloadTask;
+        paramString1 = new Message();
+        paramString1.what = 1002;
+        paramString1.obj = localObject;
+        this.mHandler.sendMessage(paramString1);
+        if (QLog.isColorLevel())
+        {
+          paramString1 = new StringBuilder();
+          paramString1.append("[ requestPreDownload ]  downloadUrl = ");
+          paramString1.append(paramString3);
+          QLog.e("PreDownloadScheduler", 1, paramString1.toString());
+        }
+        return checkState();
       }
-      return false;
-    }
-    int i = ((Integer)localObject).intValue();
-    if ((i < 0) || (i > 4))
-    {
       if (QLog.isColorLevel()) {
         QLog.e("PreDownloadScheduler", 1, " requestPreDownload param priority error,priority value should be in[0,1,2,3,4]!");
       }
       return false;
     }
-    localObject = new PreDownloadItem();
-    ((PreDownloadItem)localObject).businessID = paramInt1;
-    ((PreDownloadItem)localObject).businessName = str1;
-    ((PreDownloadItem)localObject).businessEngName = str2;
-    ((PreDownloadItem)localObject).department = paramString1;
-    ((PreDownloadItem)localObject).fileKey = paramString2;
-    ((PreDownloadItem)localObject).downloadUrl = paramString3;
-    ((PreDownloadItem)localObject).reqNetWork = paramInt3;
-    ((PreDownloadItem)localObject).innerPriority = paramInt2;
-    ((PreDownloadItem)localObject).filePath = paramString4;
-    ((PreDownloadItem)localObject).state = 0;
-    ((PreDownloadItem)localObject).reqTime = System.currentTimeMillis();
-    ((PreDownloadItem)localObject).businessPriority = i;
-    ((PreDownloadItem)localObject).reqCondition = paramInt4;
-    ((PreDownloadItem)localObject).saveOnSD = paramBoolean;
-    ((PreDownloadItem)localObject).task = paramAbsPreDownloadTask;
-    paramString1 = new Message();
-    paramString1.what = 1002;
-    paramString1.obj = localObject;
-    this.mHandler.sendMessage(paramString1);
     if (QLog.isColorLevel()) {
-      QLog.e("PreDownloadScheduler", 1, "[ requestPreDownload ]  downloadUrl = " + paramString3);
+      QLog.e("PreDownloadScheduler", 1, "requestPreDownload param error! busindessID=0 or downloadUrl is empty or task is empty\n");
     }
-    return checkState();
+    return false;
   }
   
   public void setEnable(boolean paramBoolean)
   {
     this.mEnable = paramBoolean;
-    if (QLog.isColorLevel()) {
-      QLog.e("PreDownloadScheduler", 1, "[setEnable] enable = " + this.mEnable);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[setEnable] enable = ");
+      localStringBuilder.append(this.mEnable);
+      QLog.e("PreDownloadScheduler", 1, localStringBuilder.toString());
     }
   }
   
   public void startPreDownload()
   {
     this.mEnableTime = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.e("PreDownloadScheduler", 1, "[ startPreDownload ] enable time = " + this.mEnableTime);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[ startPreDownload ] enable time = ");
+      localStringBuilder.append(this.mEnableTime);
+      QLog.e("PreDownloadScheduler", 1, localStringBuilder.toString());
     }
     if (this.mEnable)
     {
@@ -946,7 +1048,7 @@ public class PreDownloadScheduler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadScheduler
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,8 @@ package com.tencent.mobileqq.app;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.graytip.UniteGrayTipMsgUtil;
 import com.tencent.mobileqq.graytip.UniteGrayTipParam;
-import com.tencent.mobileqq.graytip.UniteGrayTipUtil;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -42,66 +42,79 @@ class MessageHandler$HandleSendTroopMessageRespPBFail
   
   public HandleSendTroopMessageRespPBFail a()
   {
-    Object localObject;
-    if ((this.jdField_a_of_type_Int == 10) || (this.jdField_a_of_type_Int == 34))
+    int i = this.jdField_a_of_type_Int;
+    Object localObject1;
+    Object localObject2;
+    if ((i == 10) || (i == 34))
     {
       this.jdField_b_of_type_Boolean = true;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.getMessageFacade().b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_b_of_type_Long);
-      if (MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, (MessageRecord)localObject, this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg)))
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.getMessageFacade().b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_b_of_type_Long);
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler;
+      if (((MessageHandler)localObject2).a((MessageRecord)localObject1, ((MessageHandler)localObject2).a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg)))
       {
         this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.jdField_a_of_type_Long);
         this.jdField_a_of_type_Boolean = true;
         return this;
       }
     }
-    long l2;
-    long l1;
     if (this.jdField_a_of_type_Int == 299)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MessageHandler", 2, "<---handleSendTroopMessageRespPB MessageRecord send fail uinseq = " + this.jdField_b_of_type_Long + ", msgseq = " + this.jdField_a_of_type_Long);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("<---handleSendTroopMessageRespPB MessageRecord send fail uinseq = ");
+        ((StringBuilder)localObject1).append(this.jdField_b_of_type_Long);
+        ((StringBuilder)localObject1).append(", msgseq = ");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+        QLog.d("Q.msg.MessageHandler", 2, ((StringBuilder)localObject1).toString());
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.getMessageFacade().b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_b_of_type_Long);
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.getMessageFacade().b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_b_of_type_Long);
       this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.jdField_a_of_type_Long);
       this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.getMsgCache().a(this.jdField_a_of_type_JavaLangString, 1, this.jdField_b_of_type_Long);
-      if (localObject == null) {
-        break label401;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MessageHandler", 2, "<---handleSendTroopMessageRespPB MessageRecord send fail, MessageRecord=" + ((MessageRecord)localObject).toString());
-      }
-      l2 = ((MessageRecord)localObject).shmsgseq;
-      l1 = ((MessageRecord)localObject).time;
-    }
-    for (;;)
-    {
-      localObject = new MessageForUniteGrayTip();
-      UniteGrayTipParam localUniteGrayTipParam = new UniteGrayTipParam(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangObject[6].toString(), 1, -5040, 131082, l1);
-      ((MessageForUniteGrayTip)localObject).initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a, localUniteGrayTipParam);
-      ((MessageForUniteGrayTip)localObject).isread = true;
-      ((MessageForUniteGrayTip)localObject).shmsgseq = l2;
-      UniteGrayTipUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a, (MessageForUniteGrayTip)localObject);
-      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp);
-      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, this.jdField_a_of_type_ArrayOfJavaLangObject, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getUin(), this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(3002, false, this.jdField_a_of_type_ArrayOfJavaLangObject);
-      this.jdField_a_of_type_Boolean = false;
-      return this;
-      label401:
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MessageHandler", 2, "<---handleSendTroopMessageRespPB MessageRecord send fail, uniseq not match !");
-      }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.getMessageFacade().b(this.jdField_a_of_type_JavaLangString, 1);
-      if ((localObject != null) && (!((List)localObject).isEmpty()) && (((MessageRecord)((List)localObject).get(((List)localObject).size() - 1)).shmsgseq > 0L))
+      long l2 = 0L;
+      long l1;
+      if (localObject1 != null)
       {
-        l2 = ((MessageRecord)((List)localObject).get(((List)localObject).size() - 1)).shmsgseq;
-        l1 = ((MessageRecord)((List)localObject).get(((List)localObject).size() - 1)).time;
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("<---handleSendTroopMessageRespPB MessageRecord send fail, MessageRecord=");
+          ((StringBuilder)localObject2).append(((MessageRecord)localObject1).toString());
+          QLog.d("Q.msg.MessageHandler", 2, ((StringBuilder)localObject2).toString());
+        }
+        l2 = ((MessageRecord)localObject1).shmsgseq;
+        l1 = ((MessageRecord)localObject1).time;
       }
-      else
+      for (;;)
       {
-        l1 = MessageCache.a();
-        l2 = 0L;
+        break;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.msg.MessageHandler", 2, "<---handleSendTroopMessageRespPB MessageRecord send fail, uniseq not match !");
+        }
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, 1);
+        if ((localObject1 != null) && (!((List)localObject1).isEmpty()) && (((MessageRecord)((List)localObject1).get(((List)localObject1).size() - 1)).shmsgseq > 0L))
+        {
+          l2 = ((MessageRecord)((List)localObject1).get(((List)localObject1).size() - 1)).shmsgseq;
+          l1 = ((MessageRecord)((List)localObject1).get(((List)localObject1).size() - 1)).time;
+        }
+        else
+        {
+          l1 = MessageCache.a();
+        }
       }
+      localObject1 = new MessageForUniteGrayTip();
+      localObject2 = this.jdField_a_of_type_JavaLangString;
+      localObject2 = new UniteGrayTipParam((String)localObject2, (String)localObject2, this.jdField_a_of_type_ArrayOfJavaLangObject[6].toString(), 1, -5040, 131082, l1);
+      ((MessageForUniteGrayTip)localObject1).initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a, (UniteGrayTipParam)localObject2);
+      ((MessageForUniteGrayTip)localObject1).isread = true;
+      ((MessageForUniteGrayTip)localObject1).shmsgseq = l2;
+      UniteGrayTipMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a, (MessageForUniteGrayTip)localObject1);
     }
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.jdField_a_of_type_ArrayOfJavaLangObject, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getUin(), this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(3002, false, this.jdField_a_of_type_ArrayOfJavaLangObject);
+    this.jdField_a_of_type_Boolean = false;
+    return this;
   }
   
   boolean a()
@@ -116,7 +129,7 @@ class MessageHandler$HandleSendTroopMessageRespPBFail
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageHandler.HandleSendTroopMessageRespPBFail
  * JD-Core Version:    0.7.0.1
  */

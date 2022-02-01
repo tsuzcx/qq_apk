@@ -10,14 +10,15 @@ final class WSFeedUtils$2
   public void onDismiss()
   {
     WSLog.b("WSFeedUtils", "onDismiss entered");
-    if (this.a != null) {
-      this.a.onDismiss();
+    ActionSheet.OnDismissListener localOnDismissListener = this.a;
+    if (localOnDismissListener != null) {
+      localOnDismissListener.onDismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WSFeedUtils.2
  * JD-Core Version:    0.7.0.1
  */

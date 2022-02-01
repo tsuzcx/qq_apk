@@ -25,34 +25,34 @@ public class HippyQQBridgeModule
   @HippyMethod(name="addFavorite")
   public void addFavorite(HippyMap paramHippyMap)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.addFavorite(paramHippyMap);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.addFavorite(paramHippyMap);
   }
   
   @HippyMethod(name="c2sReport")
   public void c2sReport(HippyMap paramHippyMap)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.c2sReport(paramHippyMap);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.c2sReport(paramHippyMap);
   }
   
   @HippyMethod(name="cancelUploadingVideo")
   public void cancelUploadingVideo(HippyMap paramHippyMap, Promise paramPromise)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.cancelUploadingVideo(paramHippyMap, paramPromise);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.cancelUploadingVideo(paramHippyMap, paramPromise);
   }
   
   @HippyMethod(name="cancelVideoPreDownload")
@@ -64,56 +64,56 @@ public class HippyQQBridgeModule
   @HippyMethod(name="chooseVideoAddToTopic")
   public void chooseVideoAddToTopic(HippyMap paramHippyMap, Promise paramPromise)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.chooseVideoAddToTopic(paramHippyMap, paramPromise);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.chooseVideoAddToTopic(paramHippyMap, paramPromise);
   }
   
   @HippyMethod(name="dwellTimeMillisReport")
   public void dwellTimeMillisReport(HippyMap paramHippyMap)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.dwellTimeMillisReport(paramHippyMap);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.dwellTimeMillisReport(paramHippyMap);
   }
   
   @HippyMethod(name="getALDConfig")
   public void getALDConfig(HippyMap paramHippyMap, Promise paramPromise)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.getALDConfig(paramHippyMap, paramPromise);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.getALDConfig(paramHippyMap, paramPromise);
   }
   
   @HippyMethod(name="getAllowedStateOfOperationAction")
   public void getAllowedStateOfOperationAction(HippyMap paramHippyMap, Promise paramPromise)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.getAllowedStateOfOperationAction(paramHippyMap, paramPromise);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.getAllowedStateOfOperationAction(paramHippyMap, paramPromise);
   }
   
   @HippyMethod(name="getCreateTopicPermission")
   public void getCreateTopicPermission(HippyMap paramHippyMap, Promise paramPromise)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.getCreateTopicPermission(paramHippyMap, paramPromise);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.getCreateTopicPermission(paramHippyMap, paramPromise);
   }
   
   @HippyMethod(name="getDeviceInfo")
@@ -125,23 +125,23 @@ public class HippyQQBridgeModule
   @HippyMethod(name="getGdtDeviceInfo")
   public void getGdtDeviceInfo(HippyMap paramHippyMap, Promise paramPromise)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.getGdtDeviceInfo(paramPromise, paramHippyMap, true);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.getGdtDeviceInfo(paramPromise, paramHippyMap, true);
   }
   
   @HippyMethod(name="getMotiveAd")
   public void getMotiveAd(HippyMap paramHippyMap, Promise paramPromise)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.getMotiveAd(paramPromise, paramHippyMap);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.getMotiveAd(paramPromise, paramHippyMap);
   }
   
   @HippyMethod(name="getNetType")
@@ -153,23 +153,23 @@ public class HippyQQBridgeModule
   @HippyMethod(name="getUploadVideoPermission")
   public void getUploadVideoPermission(HippyMap paramHippyMap, Promise paramPromise)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.getUploadVideoPermission(paramHippyMap, paramPromise);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.getUploadVideoPermission(paramHippyMap, paramPromise);
   }
   
   @HippyMethod(name="getUploadingVideoInfo")
   public void getUploadingVideoInfo(HippyMap paramHippyMap, Promise paramPromise)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.getUploadingVideoInfo(paramHippyMap, paramPromise);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.getUploadingVideoInfo(paramHippyMap, paramPromise);
   }
   
   @HippyMethod(name="getUserInfo")
@@ -181,12 +181,12 @@ public class HippyQQBridgeModule
   @HippyMethod(name="handleClick")
   public void handleClick(HippyMap paramHippyMap)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.handleClick(paramHippyMap);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.handleClick(paramHippyMap);
   }
   
   @HippyMethod(name="hasApp")
@@ -198,23 +198,23 @@ public class HippyQQBridgeModule
   @HippyMethod(name="hideTopicVideoComment")
   public void hideTopicVideoComment(HippyMap paramHippyMap)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.hideTopicVideoComment(paramHippyMap);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.hideTopicVideoComment(paramHippyMap);
   }
   
   @HippyMethod(name="invoke")
   public void invoke(HippyMap paramHippyMap, Promise paramPromise)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      HippyQQEngine.runTaskInUIThread(new HippyQQBridgeModule.2(this, paramHippyMap, paramPromise));
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    HippyQQEngine.runTaskInUIThread(new HippyQQBridgeModule.2(this, paramHippyMap, paramPromise));
   }
   
   @HippyMethod(name="isKindCard")
@@ -223,12 +223,12 @@ public class HippyQQBridgeModule
   @HippyMethod(name="openAddVideoView")
   public void openAddVideoView(HippyMap paramHippyMap, Promise paramPromise)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.openAddVideoView(paramHippyMap, paramPromise);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.openAddVideoView(paramHippyMap, paramPromise);
   }
   
   @HippyMethod(name="openApp")
@@ -246,67 +246,67 @@ public class HippyQQBridgeModule
   @HippyMethod(name="openEditTopicView")
   public void openEditTopicView(HippyMap paramHippyMap, Promise paramPromise)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.openEditTopicView(paramHippyMap, paramPromise);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.openEditTopicView(paramHippyMap, paramPromise);
   }
   
   @HippyMethod(name="openRewardAd")
   public void openRewardAd(HippyMap paramHippyMap, Promise paramPromise)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.openRewardAd(paramHippyMap, paramPromise);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.openRewardAd(paramHippyMap, paramPromise);
   }
   
   @HippyMethod(name="openTopicVideoComment")
   public void openTopicVideoComment(HippyMap paramHippyMap, Promise paramPromise)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.openTopicVideoComment(paramHippyMap, paramPromise);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.openTopicVideoComment(paramHippyMap, paramPromise);
   }
   
   @HippyMethod(name="openVideo")
   public void openVideo(HippyMap paramHippyMap)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.openVideo(paramHippyMap);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.openVideo(paramHippyMap);
   }
   
   @HippyMethod(name="pauseUploadingVideo")
   public void pauseUploadingVideo(HippyMap paramHippyMap, Promise paramPromise)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.pauseUploadingVideo(paramHippyMap, paramPromise);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.pauseUploadingVideo(paramHippyMap, paramPromise);
   }
   
   @HippyMethod(name="performLikeAnimation")
   public void performLikeAnimation(HippyMap paramHippyMap)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.performLikeAnimation(paramHippyMap);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.performLikeAnimation(paramHippyMap);
   }
   
   public void popFromBottomStateChange(Promise paramPromise) {}
@@ -326,23 +326,23 @@ public class HippyQQBridgeModule
   @HippyMethod(name="resumeUploadingVideo")
   public void resumeUploadingVideo(HippyMap paramHippyMap, Promise paramPromise)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.resumeUploadingVideo(paramHippyMap, paramPromise);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.resumeUploadingVideo(paramHippyMap, paramPromise);
   }
   
   @HippyMethod(name="setNavBtn")
   public void setNavBtn(HippyMap paramHippyMap, Promise paramPromise)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      HippyQQEngine.runTaskInUIThread(new HippyQQBridgeModule.1(this, paramHippyMap, paramPromise));
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    HippyQQEngine.runTaskInUIThread(new HippyQQBridgeModule.1(this, paramHippyMap, paramPromise));
   }
   
   public void setPresentPopFromBottom(int paramInt) {}
@@ -350,23 +350,23 @@ public class HippyQQBridgeModule
   @HippyMethod(name="shareVideoWithFriend")
   public void shareVideoWithFriend(HippyMap paramHippyMap, Promise paramPromise)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.shareVideoWithFriend(paramHippyMap, paramPromise);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.shareVideoWithFriend(paramHippyMap, paramPromise);
   }
   
   @HippyMethod(name="showLevelDialog")
   public void showLevelDialog(HippyMap paramHippyMap, Promise paramPromise)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.openUserLevelDialog(paramHippyMap, paramPromise);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.openUserLevelDialog(paramHippyMap, paramPromise);
   }
   
   @HippyMethod(name="showMotiveAd")
@@ -383,23 +383,23 @@ public class HippyQQBridgeModule
   @HippyMethod(name="startImagePreDownload")
   public void startImagePreDownload(HippyMap paramHippyMap)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.startImagePreDownload(paramHippyMap);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.startImagePreDownload(paramHippyMap);
   }
   
   @HippyMethod(name="startVideoPreDownload")
   public void startVideoPreDownload(HippyMap paramHippyMap)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.startVideoPreDownload(paramHippyMap);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.startVideoPreDownload(paramHippyMap);
   }
   
   @HippyMethod(name="susCommentViewHide")
@@ -411,12 +411,12 @@ public class HippyQQBridgeModule
   @HippyMethod(name="updateIndepentTabState")
   public void updateIndepentTabState(HippyMap paramHippyMap)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      HippyQQEngine.runTaskInUIThread(new HippyQQBridgeModule.3(this, paramHippyMap));
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    HippyQQEngine.runTaskInUIThread(new HippyQQBridgeModule.3(this, paramHippyMap));
   }
   
   @HippyMethod(name="vaNetworkChange")
@@ -428,17 +428,17 @@ public class HippyQQBridgeModule
   @HippyMethod(name="videoPlayFeedback")
   public void videoPlayFeedback(HippyMap paramHippyMap, Promise paramPromise)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
-    {
-      this.mBridgeModule.videoPlayFeedback(paramHippyMap, paramPromise);
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.toJSONObject();
+    } else {
+      paramHippyMap = new JSONObject();
     }
+    this.mBridgeModule.videoPlayFeedback(paramHippyMap, paramPromise);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.module.HippyQQBridgeModule
  * JD-Core Version:    0.7.0.1
  */

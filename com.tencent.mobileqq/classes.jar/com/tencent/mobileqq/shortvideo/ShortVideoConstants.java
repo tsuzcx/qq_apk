@@ -9,13 +9,6 @@ public abstract interface ShortVideoConstants
   public static final int CAPTURE_CAMERA = 2;
   public static final String CAPTURE_OPERATION_IN = "capture_operation_in";
   public static final String CLICK_VIDEO_BUBBLE_TIME = "click_video_bubble_time";
-  public static final int CODEC_AUDIO_INIT = 6;
-  public static final int CODEC_EDIT_INIT = 4;
-  public static final int CODEC_MAIN = 1;
-  public static final int CODEC_RECODE_H5 = 7;
-  public static final int CODEC_START_RECODER = 2;
-  public static final int CODEC_STOP_RECODER = 3;
-  public static final int CODEC_VIEW_INIT = 5;
   public static final int CUSTOM_CAMERA = 1;
   public static final String[] DEBUG_BITRATES = { "1000", "2000", "4000", "8000" };
   public static final String[] DEBUG_RESOLUTIONS;
@@ -26,95 +19,9 @@ public abstract interface ShortVideoConstants
   public static final String DEFAULT_SHOW_TEMPLATE_BTN = "default_show_template_btn";
   public static final String DEFAULT_USE_FIRST_TEMPLATE = "default_use_first_template";
   public static final double DENSITY_DEFAULT = 0.15D;
-  public static final int EDIT_VIDEO_AECAMERA = 10023;
-  public static final int EDIT_VIDEO_AIO = 10000;
-  public static final int EDIT_VIDEO_BLESS = 10003;
-  public static final int EDIT_VIDEO_CIRCLE = 10026;
-  public static final int EDIT_VIDEO_CMJOY = 10027;
-  public static final int EDIT_VIDEO_EMOJI_REDPACK = 10022;
   public static final String EDIT_VIDEO_EXTRA_FLAG_NEED_REMOVE_TEMP_DIR = "edit_video_extra_flag_need_remove_temp_dir";
-  public static final int EDIT_VIDEO_FACE_UNLOCK = 10025;
-  public static final int EDIT_VIDEO_FAKE_FOR_PRELOAD = -1000;
-  public static final int EDIT_VIDEO_GESTURE = 10010;
-  public static final int EDIT_VIDEO_MINIAPP = 10020;
-  public static final int EDIT_VIDEO_NEARBY_PROFILE_CARD = 10011;
-  public static final int EDIT_VIDEO_NEW_AIO = 10024;
-  public static final int EDIT_VIDEO_PURE = 10021;
-  public static final int EDIT_VIDEO_QQSTORY = 10002;
-  public static final int EDIT_VIDEO_QQSTORY_PHOTO_LIST = 10006;
-  public static final int EDIT_VIDEO_QQSTORY_TRIM = 10005;
-  public static final int EDIT_VIDEO_QUICK_SHOOT = 10004;
-  public static final int EDIT_VIDEO_QZONE = 10001;
-  public static final int EDIT_VIDEO_READINJOY = 10013;
-  public static final int EDIT_VIDEO_READINJOY_UGC_DELIVER = 10017;
-  public static final int EDIT_VIDEO_TRIBE = 10012;
-  public static final String EDIT_VIDEO_TYPE = "edit_video_type";
-  public static final int EDIT_VIDEO_WEB = 10007;
   public static final String ENABLE_EDIT_VIDEO = "enable_edit_video";
   public static final String ENCODE_VIDEO_PARAMS = "encode_video_params";
-  public static final int ENTRANCE_AD = 108;
-  @Deprecated
-  public static final int ENTRANCE_ADD_SHAREGROUP = 102;
-  public static final int ENTRANCE_AIO = 100;
-  public static final int ENTRANCE_AIO_GALLERY_TO_EDIT = 126;
-  public static final int ENTRANCE_AIO_LONGSHOT_EDIT = 122;
-  public static final int ENTRANCE_BLESS = 107;
-  public static final int ENTRANCE_C2C_AIO = 11;
-  @Deprecated
-  public static final int ENTRANCE_DISCOVER = 5;
-  public static final int ENTRANCE_DISCUSSION_AIO = 10;
-  public static final int ENTRANCE_FACE_UNLOCK_LEGACY = 132;
-  public static final int ENTRANCE_FILE_GALLERY_TOEDIT = 128;
-  public static final int ENTRANCE_FILE_PIC_GALLERY_TOEDIT = 130;
-  public static final int ENTRANCE_FORWARD_PREVIEW_TO_EDIT = 125;
-  public static final int ENTRANCE_HISTORY_GALLERY_TO_EDIT = 127;
-  @Deprecated
-  public static final int ENTRANCE_HOT_TOPIC = 16;
-  @Deprecated
-  public static final int ENTRANCE_JS_API = 15;
-  @Deprecated
-  public static final int ENTRANCE_MEDAL = 18;
-  @Deprecated
-  public static final int ENTRANCE_MSG_TAB = 103;
-  public static final int ENTRANCE_MSG_TAB_NEW_GUIDE = 119;
-  public static final int ENTRANCE_MULTI_FORWARD_GALLERY_TOEDIT = 129;
-  @Deprecated
-  public static final int ENTRANCE_MY_MEMORY = 3;
-  @Deprecated
-  public static final int ENTRANCE_MY_STORY = 2;
-  @Deprecated
-  public static final int ENTRANCE_MY_VIDEO = 4;
-  @Deprecated
-  public static final int ENTRANCE_NEW_GUIDE = 12;
-  @Deprecated
-  public static final int ENTRANCE_NOTIFICATION = 6;
-  @Deprecated
-  public static final int ENTRANCE_OPERATION_GUIDE = 13;
-  public static final int ENTRANCE_PHOTO_ACTIVITY_BOTTOM = 142;
-  public static final int ENTRANCE_PHOTO_ACTIVITY_PREVIEW = 143;
-  public static final int ENTRANCE_PHOTO_PANEL_BOTTOM = 140;
-  public static final int ENTRANCE_PHOTO_PANEL_PREVIEW = 141;
-  @Deprecated
-  public static final int ENTRANCE_QUICK_SHOOT = 8;
-  public static final int ENTRANCE_QZONE = 122;
-  public static final int ENTRANCE_READINJOY = 106;
-  @Deprecated
-  public static final int ENTRANCE_SKIP_ENCODE = 101;
-  @Deprecated
-  public static final int ENTRANCE_STORY_WEB = 104;
-  @Deprecated
-  public static final int ENTRANCE_TAKE_VIDEO_BUTTON = 1;
-  public static final int ENTRANCE_TRIBE = 105;
-  public static final int ENTRANCE_TROOP_AIO = 9;
-  @Deprecated
-  public static final int ENTRANCE_TROOP_STORY_MEMORY = 14;
-  public static final int ENTRANCE_UNKNOWN = 99;
-  public static final int ENTRANCE_VIDEO_STORY = 120;
-  public static final int ENTRANCE_VIDEO_STORY_DATA_CARD = 121;
-  @Deprecated
-  public static final int ENTRANCE_VIP_FORWARD = 118;
-  public static final int ENTRANCE_WEB = 7;
-  public static final int ENTRANCE_WEB_LONG_SCREEN_SHOT = 133;
   public static final String FAV_GROUP_ID = "fav_group_id";
   public static final String FAV_ID = "fav_id";
   public static final int FILETYPE_SHORTVIDEO_C2C = 1001;
@@ -165,20 +72,16 @@ public abstract interface ShortVideoConstants
   public static final String KEY_MESSAGE_FOR_SHORTVIDEO = "key_message_for_shortvideo";
   public static final String KEY_STORY_PIC_TO_RECENT = "key_story_photo_to_recent";
   public static final String KEY_STORY_VIDEO_TO_RECENT = "key_story_video_to_recent";
-  public static final int LOCAL_ALBUM = 4;
   public static final long MAX_BITRATE_DEFAULT = 4194304L;
   public static final int MAX_FPS_DEFAULT = 30;
   public static final int MAX_LENGTH_DEFAULT = 1280;
   public static final long MAX_SIZE_DEFAULT = 754974720L;
   public static final String MEDIA_INFO = "media_info";
-  public static final String MESSAGEFORSHORTVIDEO_MSG = HardCodeUtil.a(2131713980);
+  public static final String MESSAGEFORSHORTVIDEO_MSG = HardCodeUtil.a(2131713911);
   public static final String MESSAGE_CLICK_START = "message_click_start";
-  public static final String MESSAGE_FOR_SHORT_VIDEO_PTV = HardCodeUtil.a(2131714006);
+  public static final String MESSAGE_FOR_SHORT_VIDEO_PTV = HardCodeUtil.a(2131713937);
   public static final long MIN_BITRATE_DEFAULT = 1048576L;
   public static final double MIN_DENSITY_DEFAULT = 0.067D;
-  public static final String MP_VIDEO_COVER = "video_cover";
-  public static final String MP_VIDEO_CUT = "cutImage";
-  public static final String MP_VIDEO_PREVIEW = "preview";
   public static final String MSG_TAIL_TYPE = "short_video_msg_tail_type";
   public static final String MUTE_PLAY = "muate_play";
   public static final String PARAM_KEY_CAMERA_ORIENTATION = "cameraOrientation";
@@ -196,8 +99,6 @@ public abstract interface ShortVideoConstants
   public static final String PARAM_KEY_PREDICT_HIT = "predictHit";
   public static final String PARAM_KEY_PREDICT_RESULT = "predictResult";
   public static final String PARAM_KEY_PREVIEW_DURATION = "previewDuration";
-  public static final String PARAM_KEY_REDBAG_TYPE = "param_key_redbag_type";
-  public static final String PARAM_KEY_REDBAG_VIDEO_ID = "param_key_redbag_video_id";
   public static final String PARAM_KEY_SESSION_TYPE = "sessionType";
   public static final String PARAM_KEY_TRAIN_RESULT = "trainResult";
   public static final String PARAM_KEY_TRAIN_SIZE = "trainSize";
@@ -225,8 +126,6 @@ public abstract interface ShortVideoConstants
   public static final int RESULT_FAIL_VIDEO_MERGE = 9;
   public static final int RESULT_FAIT_FILESIZE_ERROR = 6;
   public static final int RESULT_SUCCESS = 1;
-  public static final int SHORTVIDEO_PTV_FILE_HEIGHT = 240;
-  public static final int SHORTVIDEO_PTV_FILE_WIDTH = 240;
   public static final int SHORTVIDEO_PTV_THUMB_HEIGHT = 160;
   public static final int SHORTVIDEO_PTV_THUMB_WIDTH = 160;
   public static final int SHORTVIDEO_THUMB_HEIGHT = 240;
@@ -295,10 +194,8 @@ public abstract interface ShortVideoConstants
   public static final String VIDEO_MOOD_TIMER_DELETE = "video_mood_timer_delete";
   public static final String VIDEO_NEW_FAKE_VID = "video_new_fake_vid";
   public static final String VIDEO_PLAY_CALLER = "video_play_caller";
-  public static final String VIDEO_SEND_AIO_KEY_IS_QIM = "video_send_aio_key_is_qim";
   public static final long VIDEO_SIZE_LIMIT = 104345600L;
   public static final long VIDEO_SIZE_LIMIT_UNCOMPRESS = 1048576000L;
-  public static final String VIDEO_SYNC_TO_STORY = "video_sync_to_story";
   public static final String VIDEO_TITLE_BAR_HIDE = "video_title_bar_hide";
   public static final String VIDEO_TOPIC_ID = "video_topic_id";
   public static final String VIDEO_TOPIC_SYNC_QZONE = "video_topic_sync_qzone";
@@ -316,7 +213,7 @@ public abstract interface ShortVideoConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoConstants
  * JD-Core Version:    0.7.0.1
  */

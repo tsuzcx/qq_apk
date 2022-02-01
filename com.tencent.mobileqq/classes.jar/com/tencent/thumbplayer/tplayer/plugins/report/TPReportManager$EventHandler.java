@@ -31,10 +31,15 @@ class TPReportManager$EventHandler
   private static final int MSG_PLAYER_STOP = 1005;
   private static final int MSG_PLAY_COMPLETE = 1009;
   private static final int MSG_PREPARE_DONE = 1002;
+  private static final int MSG_PROTOCOL_UPDATE = 1023;
   private static final int MSG_RENDERING_START = 1012;
   private static final int MSG_REPORT_LAST_EVENT = 4000;
   private static final int MSG_SEEK_COMPLETE = 1008;
+  private static final int MSG_SELECT_TRACK = 2004;
+  private static final int MSG_SELECT_TRACK_DONE = 2005;
   private static final int MSG_SET_PLAY_SPEED = 1015;
+  private static final int MSG_SIGNAL_STRENGTH_REGISTER = 4001;
+  private static final int MSG_SIGNAL_STRENGTH_UNREGISTER = 4002;
   private static final int MSG_START_PLAY = 1003;
   private static final int MSG_START_PREPARE = 1001;
   private static final int MSG_START_SEEK = 1007;
@@ -48,117 +53,150 @@ class TPReportManager$EventHandler
   
   public void handleMessage(Message paramMessage)
   {
-    Map localMap = null;
+    Map localMap;
     if ((paramMessage.obj instanceof Map)) {
       localMap = (Map)paramMessage.obj;
+    } else {
+      localMap = null;
     }
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 2100)
     {
-    default: 
-    case 999: 
-    case 1000: 
-    case 1001: 
-    case 1002: 
-    case 1003: 
-    case 1012: 
-    case 1004: 
-    case 1005: 
-    case 1006: 
-    case 1007: 
-    case 1008: 
-    case 1009: 
-    case 1010: 
-    case 1011: 
-    case 1013: 
-    case 1014: 
-    case 1015: 
-    case 1017: 
-    case 1018: 
-    case 2000: 
-    case 2001: 
-    case 2002: 
-    case 2003: 
-    case 1019: 
-    case 1022: 
-    case 1020: 
-    case 1021: 
-    case 3000: 
-    case 1016: 
-      do
+      if (i != 2101)
       {
-        return;
-        TPReportManager.access$100(this.this$0, localMap);
-        return;
-        TPReportManager.access$200(this.this$0, localMap);
-        return;
-        TPReportManager.access$300(this.this$0, localMap);
-        return;
-        TPReportManager.access$400(this.this$0, localMap);
-        return;
-        TPReportManager.access$500(this.this$0, localMap);
-        return;
-        TPReportManager.access$600(this.this$0, localMap);
-        return;
-        TPReportManager.access$700(this.this$0, localMap);
-        return;
-        TPReportManager.access$800(this.this$0, localMap);
-        return;
-        TPReportManager.access$900(this.this$0, localMap);
-        return;
-        TPReportManager.access$1000(this.this$0, localMap);
-        return;
-        TPReportManager.access$1100(this.this$0, localMap);
-        return;
-        TPReportManager.access$1200(this.this$0, localMap);
-        return;
-        TPReportManager.access$1300(this.this$0, localMap);
-        return;
-        TPReportManager.access$1400(this.this$0, localMap);
-        return;
-        TPReportManager.access$1500(this.this$0, localMap);
-        return;
-        TPReportManager.access$1600(this.this$0, localMap);
-        return;
-        TPReportManager.access$1700(this.this$0, localMap);
-        return;
-        TPReportManager.access$1800(this.this$0, localMap);
-        return;
-        TPReportManager.access$1900(this.this$0, localMap);
-        return;
-        TPReportManager.access$2000(this.this$0, localMap);
-        return;
-        TPReportManager.access$2100(this.this$0, localMap);
-        return;
-        TPReportManager.access$2200(this.this$0, localMap);
-        return;
-        TPReportManager.access$2300(this.this$0, localMap);
-        return;
-        TPReportManager.access$2400(this.this$0, localMap);
-        return;
-        TPReportManager.access$2500(this.this$0, localMap);
-        return;
-        TPReportManager.access$2600(this.this$0, localMap);
-        return;
-        TPReportManager.access$2700(this.this$0, localMap);
-        return;
-        TPReportManager.access$2800(this.this$0);
-        return;
-      } while (!(paramMessage.obj instanceof String));
-      TPReportManager.access$2900(this.this$0, (String)paramMessage.obj);
-      return;
-    case 2100: 
-      TPReportManager.access$3000(this.this$0);
-      return;
-    case 2101: 
-      TPReportManager.access$3100(this.this$0);
-      return;
+        if (i != 3000) {
+          switch (i)
+          {
+          default: 
+            switch (i)
+            {
+            default: 
+              switch (i)
+              {
+              default: 
+                return;
+              case 4002: 
+                TPReportManager.access$3700(this.this$0);
+                return;
+              case 4001: 
+                TPReportManager.access$3600(this.this$0);
+                return;
+              }
+              TPReportManager.access$3400(this.this$0);
+              return;
+            case 2005: 
+              TPReportManager.access$2400(this.this$0, localMap);
+              return;
+            case 2004: 
+              TPReportManager.access$2300(this.this$0, localMap);
+              return;
+            case 2003: 
+              TPReportManager.access$2500(this.this$0, localMap);
+              return;
+            case 2002: 
+              TPReportManager.access$2200(this.this$0, localMap);
+              return;
+            case 2001: 
+              TPReportManager.access$2100(this.this$0, localMap);
+              return;
+            }
+            TPReportManager.access$2000(this.this$0, localMap);
+            return;
+          case 1023: 
+            TPReportManager.access$3500(this.this$0, localMap);
+            return;
+          case 1022: 
+            TPReportManager.access$2700(this.this$0, localMap);
+            return;
+          case 1021: 
+            TPReportManager.access$2900(this.this$0, localMap);
+            return;
+          case 1020: 
+            TPReportManager.access$2800(this.this$0, localMap);
+            return;
+          case 1019: 
+            TPReportManager.access$2600(this.this$0, localMap);
+            return;
+          case 1018: 
+            TPReportManager.access$1900(this.this$0, localMap);
+            return;
+          case 1017: 
+            TPReportManager.access$1800(this.this$0, localMap);
+            return;
+          case 1016: 
+            if (!(paramMessage.obj instanceof String)) {
+              break;
+            }
+            TPReportManager.access$3100(this.this$0, (String)paramMessage.obj);
+            return;
+          case 1015: 
+            TPReportManager.access$1700(this.this$0, localMap);
+            return;
+          case 1014: 
+            TPReportManager.access$1600(this.this$0, localMap);
+            return;
+          case 1013: 
+            TPReportManager.access$1500(this.this$0, localMap);
+            return;
+          case 1012: 
+            TPReportManager.access$600(this.this$0, localMap);
+            return;
+          case 1011: 
+            TPReportManager.access$1400(this.this$0, localMap);
+            return;
+          case 1010: 
+            TPReportManager.access$1300(this.this$0, localMap);
+            return;
+          case 1009: 
+            TPReportManager.access$1200(this.this$0, localMap);
+            return;
+          case 1008: 
+            TPReportManager.access$1100(this.this$0, localMap);
+            return;
+          case 1007: 
+            TPReportManager.access$1000(this.this$0, localMap);
+            return;
+          case 1006: 
+            TPReportManager.access$900(this.this$0, localMap);
+            return;
+          case 1005: 
+            TPReportManager.access$800(this.this$0, localMap);
+            return;
+          case 1004: 
+            TPReportManager.access$700(this.this$0, localMap);
+            return;
+          case 1003: 
+            TPReportManager.access$500(this.this$0, localMap);
+            return;
+          case 1002: 
+            TPReportManager.access$400(this.this$0, localMap);
+            return;
+          case 1001: 
+            TPReportManager.access$300(this.this$0, localMap);
+            return;
+          case 1000: 
+            TPReportManager.access$200(this.this$0, localMap);
+            return;
+          case 999: 
+            TPReportManager.access$100(this.this$0, localMap);
+            return;
+          }
+        } else {
+          TPReportManager.access$3000(this.this$0);
+        }
+      }
+      else {
+        TPReportManager.access$3300(this.this$0);
+      }
     }
-    TPReportManager.access$3200(this.this$0);
+    else {
+      TPReportManager.access$3200(this.this$0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPReportManager.EventHandler
  * JD-Core Version:    0.7.0.1
  */

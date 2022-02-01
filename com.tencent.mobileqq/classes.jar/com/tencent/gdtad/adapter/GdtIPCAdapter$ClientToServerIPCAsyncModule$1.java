@@ -12,32 +12,28 @@ class GdtIPCAdapter$ClientToServerIPCAsyncModule$1
   
   public void onCallback(EIPCResult paramEIPCResult)
   {
-    String str2 = null;
-    String str1;
-    if (this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params != null)
-    {
-      str1 = this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params.getAction();
-      if (this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params != null) {
-        str2 = this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params.getToProcessName();
-      }
-      if (paramEIPCResult == null) {
-        break label91;
-      }
+    Object localObject = this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params;
+    String str = null;
+    if (localObject != null) {
+      localObject = ((AdIPCManager.Params)localObject).getAction();
+    } else {
+      localObject = null;
     }
-    label91:
-    for (boolean bool = paramEIPCResult.isSuccess();; bool = false)
-    {
-      GdtLog.b("GdtIPCAdapter", String.format("ClientToServerIPCAsyncModule.onCallback action:%s to:%s success:%b", new Object[] { str1, str2, Boolean.valueOf(bool) }));
-      this.jdField_a_of_type_ComTencentGdtadAdapterGdtIPCAdapter$ClientToServerIPCAsyncModule.callbackResult(this.jdField_a_of_type_Int, paramEIPCResult);
-      return;
-      str1 = null;
-      break;
+    boolean bool = false;
+    AdIPCManager.Params localParams = this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params;
+    if (localParams != null) {
+      str = localParams.getToProcessName();
     }
+    if (paramEIPCResult != null) {
+      bool = paramEIPCResult.isSuccess();
+    }
+    GdtLog.b("GdtIPCAdapter", String.format("ClientToServerIPCAsyncModule.onCallback action:%s to:%s success:%b", new Object[] { localObject, str, Boolean.valueOf(bool) }));
+    this.jdField_a_of_type_ComTencentGdtadAdapterGdtIPCAdapter$ClientToServerIPCAsyncModule.callbackResult(this.jdField_a_of_type_Int, paramEIPCResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtIPCAdapter.ClientToServerIPCAsyncModule.1
  * JD-Core Version:    0.7.0.1
  */

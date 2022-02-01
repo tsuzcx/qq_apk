@@ -15,39 +15,30 @@ final class RecentUtil$4
   public void run()
   {
     List localList = TroopBarAssistantManager.a().a(this.a);
+    int j = 0;
     int i;
-    int j;
-    label19:
-    Object localObject;
-    if (localList == null)
-    {
+    if (localList == null) {
       i = 0;
-      j = 0;
-      if (j >= i) {
-        return;
-      }
-      localObject = (TroopBarData)localList.get(j);
-      if (localObject != null) {
-        break label58;
-      }
-    }
-    for (;;)
-    {
-      j += 1;
-      break label19;
+    } else {
       i = localList.size();
-      break;
-      label58:
-      localObject = this.a.getMessageFacade().a(((TroopBarData)localObject).mUin, 1008);
-      if (localObject != null) {
-        TroopBarAssistantManager.a().a(this.a, ((Message)localObject).time);
+    }
+    while (j < i)
+    {
+      Object localObject = (TroopBarData)localList.get(j);
+      if (localObject != null)
+      {
+        localObject = this.a.getMessageFacade().getLastMessage(((TroopBarData)localObject).mUin, 1008);
+        if (localObject != null) {
+          TroopBarAssistantManager.a().a(this.a, ((Message)localObject).time);
+        }
       }
+      j += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentUtil.4
  * JD-Core Version:    0.7.0.1
  */

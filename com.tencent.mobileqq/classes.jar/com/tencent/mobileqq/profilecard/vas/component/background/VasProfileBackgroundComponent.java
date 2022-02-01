@@ -6,16 +6,16 @@ import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import com.tencent.android.gldrawable.api.IGLDrawable;
 import com.tencent.mobileqq.activity.aio.anim.FriendProfileCardBgDrawable;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.GlobalImageCache;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.profile.ProfileCardManager;
 import com.tencent.mobileqq.profilecard.base.framework.IComponentCenter;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
 import com.tencent.mobileqq.profilecard.vas.VasCardData;
 import com.tencent.mobileqq.profilecard.vas.VasProfileData;
 import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.vas.gldrawable.GLDrawableWraper;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Iterator;
@@ -47,11 +47,29 @@ public class VasProfileBackgroundComponent
       Drawable localDrawable = (Drawable)localIterator.next();
       if ((localDrawable instanceof FriendProfileCardBgDrawable)) {
         ((FriendProfileCardBgDrawable)localDrawable).a();
-      } else if (GLDrawableWraper.a(localDrawable)) {
-        GLDrawableWraper.a().a(localDrawable);
+      } else if ((localDrawable instanceof IGLDrawable)) {
+        ((IGLDrawable)localDrawable).recycle();
       }
     }
     this.mNeedToRecycleBgList.clear();
+  }
+  
+  private boolean iniProfileCaardBackground(FriendProfileCardBgDrawable paramFriendProfileCardBgDrawable)
+  {
+    Object localObject = this.mCurBgDrawable;
+    if ((localObject != null) && ((localObject instanceof FriendProfileCardBgDrawable)))
+    {
+      paramFriendProfileCardBgDrawable = paramFriendProfileCardBgDrawable.a();
+      localObject = ((FriendProfileCardBgDrawable)this.mCurBgDrawable).a();
+      if ((localObject != null) && (localObject == paramFriendProfileCardBgDrawable))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i(getTAG(), 2, "initProfileCardBackground newBitmap == currentBitmap");
+        }
+        return true;
+      }
+    }
+    return false;
   }
   
   private boolean initProfileCardBackground(VasCardData paramVasCardData)
@@ -59,46 +77,59 @@ public class VasProfileBackgroundComponent
     if (QLog.isColorLevel()) {
       QLog.d(getTAG(), 2, String.format("initProfileCardBackground styleId=%s bgId=%s url=%s strZipUrl=%s heroUrl=%s", new Object[] { Long.valueOf(paramVasCardData.getLCurrentStyleId()), Long.valueOf(paramVasCardData.getLCurrentBgId()), paramVasCardData.getBackgroundUrl(), paramVasCardData.getStrZipUrl(), paramVasCardData.getStrWzryHeroUrl() }));
     }
-    if (!TextUtils.isEmpty(paramVasCardData.getBackgroundUrl())) {
+    if (!TextUtils.isEmpty(paramVasCardData.getBackgroundUrl())) {}
+    for (;;)
+    {
       try
       {
-        Object localObject;
-        if ((paramVasCardData.getLCurrentBgId() == 160L) || (paramVasCardData.getLCurrentBgId() == 1600L))
-        {
-          localObject = ProfileCardUtil.a(this.mActivity, paramVasCardData.getBackgroundUrl());
-          if (!TextUtils.isEmpty(paramVasCardData.getStrZipUrl())) {
-            break label259;
-          }
+        if ((paramVasCardData.getLCurrentBgId() != 160L) && (paramVasCardData.getLCurrentBgId() != 1600L)) {
+          localObject1 = ProfileCardManager.a(this.mActivity, paramVasCardData.getLCurrentStyleId(), paramVasCardData.getLCurrentBgId());
+        } else {
+          localObject1 = ProfileCardUtil.a(paramVasCardData.getBackgroundUrl());
         }
-        for (String str = "";; str = ProfileCardManager.a(this.mActivity, paramVasCardData.getLCurrentBgId()) + ".dynamic")
+        if (TextUtils.isEmpty(paramVasCardData.getStrZipUrl()))
         {
-          if (QLog.isColorLevel()) {
-            QLog.d(getTAG(), 2, String.format("initProfileCardBackground fileName=%s dynamicFileDirectory=%s", new Object[] { localObject, str }));
-          }
-          File localFile = new File((String)localObject);
-          boolean bool1 = localFile.isFile();
-          boolean bool2 = localFile.exists();
-          if (QLog.isColorLevel()) {
-            QLog.d(getTAG(), 2, String.format("initProfileCardBackground isFile=%s exists=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-          }
-          if ((!bool1) || (!bool2)) {
-            break label355;
-          }
-          return loadBackground(paramVasCardData.getLCurrentBgId(), (String)localObject, str, localFile);
-          localObject = ProfileCardManager.a(this.mActivity, paramVasCardData.getLCurrentStyleId(), paramVasCardData.getLCurrentBgId());
-          break;
-          label259:
-          str = ProfileCardManager.a(this.mActivity, paramVasCardData.getLCurrentBgId()) + "dynamicBottom.jpg";
-          if (new File(str).exists()) {
-            localObject = str;
-          }
+          localObject2 = "";
         }
-        return false;
+        else
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(ProfileCardManager.a(this.mActivity, paramVasCardData.getLCurrentBgId()));
+          ((StringBuilder)localObject2).append("dynamicBottom.jpg");
+          localObject2 = ((StringBuilder)localObject2).toString();
+          if (new File((String)localObject2).exists()) {
+            localObject1 = localObject2;
+          }
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(ProfileCardManager.a(this.mActivity, paramVasCardData.getLCurrentBgId()));
+          ((StringBuilder)localObject2).append(".dynamic");
+          localObject2 = ((StringBuilder)localObject2).toString();
+        }
       }
       catch (Throwable paramVasCardData)
       {
+        Object localObject1;
+        Object localObject2;
+        File localFile;
+        boolean bool1;
+        boolean bool2;
         QLog.e(getTAG(), 1, "initProfileCardBackground fail.", paramVasCardData);
       }
+      if (QLog.isColorLevel()) {
+        QLog.d(getTAG(), 2, String.format("initProfileCardBackground fileName=%s dynamicFileDirectory=%s", new Object[] { localObject1, localObject2 }));
+      }
+      localFile = new File((String)localObject1);
+      bool1 = localFile.isFile();
+      bool2 = localFile.exists();
+      if (QLog.isColorLevel()) {
+        QLog.d(getTAG(), 2, String.format("initProfileCardBackground isFile=%s exists=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+      }
+      if ((bool1) && (bool2))
+      {
+        bool1 = loadBackground(paramVasCardData.getLCurrentBgId(), (String)localObject1, (String)localObject2, localFile);
+        return bool1;
+      }
+      return false;
     }
   }
   
@@ -107,49 +138,35 @@ public class VasProfileBackgroundComponent
     Object localObject = (Boolean)ProfileCardManager.b.get(Long.valueOf(paramLong));
     if ((localObject != null) && (((Boolean)localObject).booleanValue()))
     {
-      localObject = "profilecard:" + paramString1;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("profilecard:");
+      ((StringBuilder)localObject).append(paramString1);
+      localObject = ((StringBuilder)localObject).toString();
       GlobalImageCache.a.remove(localObject);
       ProfileCardManager.b.remove(Long.valueOf(paramLong));
     }
     localObject = new VasProfileBackgroundComponent.UserGldrawable(this, paramLong, paramString2, null).invoke();
-    if (((VasProfileBackgroundComponent.UserGldrawable)localObject).is()) {}
-    do
+    if (((VasProfileBackgroundComponent.UserGldrawable)localObject).is()) {
+      return true;
+    }
+    paramFile = new VasProfileBackgroundComponent.UseEtcDrawable(this, paramString2, paramFile, ((VasProfileBackgroundComponent.UserGldrawable)localObject).getBgDrawable()).invoke();
+    if (paramFile.is()) {
+      return true;
+    }
+    localObject = paramFile.getBgDrawable();
+    paramFile = (File)localObject;
+    if (localObject == null)
     {
-      do
-      {
-        return true;
-        paramFile = new VasProfileBackgroundComponent.UseEtcDrawable(this, paramString2, paramFile, ((VasProfileBackgroundComponent.UserGldrawable)localObject).getBgDrawable()).invoke();
-      } while (paramFile.is());
-      localObject = paramFile.getBgDrawable();
-      paramFile = (File)localObject;
-      if (localObject != null) {
-        break;
-      }
       this.mCurBgFile = null;
       paramString1 = ProfileCardUtil.a(this.mActivity.getResources(), paramString2, paramString1);
       paramFile = paramString1;
-      if (this.mCurBgDrawable == null) {
-        break;
+      if (iniProfileCaardBackground((FriendProfileCardBgDrawable)paramString1)) {
+        return true;
       }
-      paramFile = paramString1;
-      if (!(this.mCurBgDrawable instanceof FriendProfileCardBgDrawable)) {
-        break;
-      }
-      paramString2 = ((FriendProfileCardBgDrawable)paramString1).a();
-      localObject = ((FriendProfileCardBgDrawable)this.mCurBgDrawable).a();
-      paramFile = paramString1;
-      if (localObject == null) {
-        break;
-      }
-      paramFile = paramString1;
-      if (localObject != paramString2) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i(getTAG(), 2, "initProfileCardBackground newBitmap == currentBitmap");
-    return true;
-    if (this.mCurBgDrawable != null) {
-      this.mNeedToRecycleBgList.add(this.mCurBgDrawable);
+    }
+    paramString1 = this.mCurBgDrawable;
+    if (paramString1 != null) {
+      this.mNeedToRecycleBgList.add(paramString1);
     }
     if (QLog.isColorLevel()) {
       QLog.d(getTAG(), 2, String.format("initProfileCardBackground bgDrawable=%s", new Object[] { paramFile }));
@@ -163,21 +180,23 @@ public class VasProfileBackgroundComponent
     if (QLog.isColorLevel()) {
       QLog.d(getTAG(), 2, "releaseBackground");
     }
-    if (this.mCurBgDrawable != null)
+    Drawable localDrawable = this.mCurBgDrawable;
+    if (localDrawable != null)
     {
-      if ((this.mCurBgDrawable instanceof FriendProfileCardBgDrawable)) {
-        ((FriendProfileCardBgDrawable)this.mCurBgDrawable).a();
+      if ((localDrawable instanceof FriendProfileCardBgDrawable)) {
+        ((FriendProfileCardBgDrawable)localDrawable).a();
       }
-      if (GLDrawableWraper.a(this.mCurBgDrawable)) {
-        GLDrawableWraper.a().a(this.mCurBgDrawable);
+      localDrawable = this.mCurBgDrawable;
+      if ((localDrawable instanceof IGLDrawable)) {
+        ((IGLDrawable)localDrawable).recycle();
       }
     }
   }
   
-  public void onCreate(BaseActivity paramBaseActivity, Bundle paramBundle)
+  public void onCreate(QBaseActivity paramQBaseActivity, Bundle paramBundle)
   {
-    super.onCreate(paramBaseActivity, paramBundle);
-    this.mBackgroundView = new ImageView(paramBaseActivity);
+    super.onCreate(paramQBaseActivity, paramBundle);
+    this.mBackgroundView = new ImageView(paramQBaseActivity);
     this.mBackgroundView.setContentDescription("qqvip_bg");
     ((FrameLayout)this.mViewContainer).addView(this.mBackgroundView);
   }
@@ -193,37 +212,46 @@ public class VasProfileBackgroundComponent
   
   public boolean onVasDataUpdate(VasProfileData paramVasProfileData)
   {
-    if (paramVasProfileData.getCurrentTemplate() == null) {
+    if (paramVasProfileData.getCurrentTemplate() == null)
+    {
       this.mBackgroundView.setBackgroundResource(getDefaultResourceID());
+      return true;
     }
-    while ((paramVasProfileData.getCardData().equals(this.mCardData)) && (isBackgroundShow())) {
+    if ((paramVasProfileData.getCardData().equals(this.mCardData)) && (isBackgroundShow())) {
       return true;
     }
     this.mCardData = paramVasProfileData.getCardData();
     boolean bool = initProfileCardBackground(this.mCardData);
-    if (QLog.isColorLevel()) {
-      QLog.d(getTAG(), 2, "onCardUpdate initConfigResult=" + bool);
-    }
-    if (this.mCurBgDrawable != null)
+    if (QLog.isColorLevel())
     {
-      this.mBackgroundView.setBackgroundDrawable(this.mCurBgDrawable);
-      if (GLDrawableWraper.b(this.mCurBgDrawable)) {
-        setAbFactor("card-video");
-      }
-      for (;;)
+      paramVasProfileData = getTAG();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCardUpdate initConfigResult=");
+      localStringBuilder.append(bool);
+      QLog.d(paramVasProfileData, 2, localStringBuilder.toString());
+    }
+    paramVasProfileData = this.mCurBgDrawable;
+    if (paramVasProfileData != null)
+    {
+      this.mBackgroundView.setBackgroundDrawable(paramVasProfileData);
+      paramVasProfileData = this.mCurBgDrawable;
+      if ((paramVasProfileData instanceof IGLDrawable))
       {
-        setBackgroundShow(true);
-        return true;
-        if (GLDrawableWraper.c(this.mCurBgDrawable)) {
+        if (((IGLDrawable)paramVasProfileData).getResID().startsWith("video")) {
+          setAbFactor("card-video");
+        } else if (((IGLDrawable)this.mCurBgDrawable).getResID().startsWith("aetc")) {
           setAbFactor("card-etc");
-        } else if ((this.mCurBgDrawable instanceof FriendProfileCardBgDrawable)) {
-          if (((FriendProfileCardBgDrawable)this.mCurBgDrawable).d) {
-            setAbFactor("card-dynamic");
-          } else {
-            setAbFactor("card-static");
-          }
         }
       }
+      else if ((paramVasProfileData instanceof FriendProfileCardBgDrawable)) {
+        if (((FriendProfileCardBgDrawable)paramVasProfileData).d) {
+          setAbFactor("card-dynamic");
+        } else {
+          setAbFactor("card-static");
+        }
+      }
+      setBackgroundShow(true);
+      return true;
     }
     this.mBackgroundView.setBackgroundResource(getDefaultResourceID());
     setAbFactor("card-default");
@@ -233,7 +261,7 @@ public class VasProfileBackgroundComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.component.background.VasProfileBackgroundComponent
  * JD-Core Version:    0.7.0.1
  */

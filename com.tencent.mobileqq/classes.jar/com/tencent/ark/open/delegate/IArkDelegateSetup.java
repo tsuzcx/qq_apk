@@ -2,16 +2,11 @@ package com.tencent.ark.open.delegate;
 
 import java.util.ArrayList;
 
-public abstract class IArkDelegateSetup
+public abstract interface IArkDelegateSetup
 {
-  public ArrayList<String> onGetPredownloadApp()
-  {
-    return null;
-  }
+  public abstract ArrayList<String> getPredownloadApp();
   
-  public void reportEvent(String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString4, String paramString5) {}
-  
-  public void setupArkEnvironment(boolean paramBoolean) {}
+  public abstract void setupArkEnvironment(boolean paramBoolean);
 }
 
 

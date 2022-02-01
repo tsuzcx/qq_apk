@@ -14,8 +14,8 @@ class WebViewProgressBarController$DurationGenerator
   private static final int MIN_EXPECTED_FINISH_TIME = 100;
   public static final int PHASE_ONE = 0;
   public static final int PHASE_TWO = 1;
-  private static DurationGenerator sPhaseOne = null;
-  private static DurationGenerator sPhaseTwo = null;
+  private static DurationGenerator sPhaseOne;
+  private static DurationGenerator sPhaseTwo;
   private int m2GDuration = 9000;
   private int mLastSampleIndex;
   private int mNetType = 0;
@@ -28,21 +28,24 @@ class WebViewProgressBarController$DurationGenerator
   {
     this.mPhaseType = paramInt;
     this.mNetType = 0;
-    if (this.mPhaseType == 0) {
-      this.m2GDuration = 9000;
-    }
-    for (this.mNon2GDuration = 1800;; this.mNon2GDuration = 1200)
+    if (this.mPhaseType == 0)
     {
-      this.mStartingTime = 0L;
-      this.mLastSampleIndex = 0;
-      this.mSampleDuration = new int[3];
-      paramInt = 0;
-      while (paramInt < 3)
-      {
-        this.mSampleDuration[paramInt] = 0;
-        paramInt += 1;
-      }
+      this.m2GDuration = 9000;
+      this.mNon2GDuration = 1800;
+    }
+    else
+    {
       this.m2GDuration = 6000;
+      this.mNon2GDuration = 1200;
+    }
+    this.mStartingTime = 0L;
+    this.mLastSampleIndex = 0;
+    this.mSampleDuration = new int[3];
+    paramInt = 0;
+    while (paramInt < 3)
+    {
+      this.mSampleDuration[paramInt] = 0;
+      paramInt += 1;
     }
   }
   
@@ -74,25 +77,28 @@ class WebViewProgressBarController$DurationGenerator
   
   private int getSampleDuration()
   {
-    int i = 0;
+    int i1 = 0;
     int j = 0;
+    int k = 0;
     int m;
-    for (int k = 0; i < 3; k = m)
+    for (int i = 0; j < 3; i = m)
     {
-      int n = j;
-      m = k;
-      if (this.mSampleDuration[i] > 0)
+      int[] arrayOfInt = this.mSampleDuration;
+      int n = k;
+      m = i;
+      if (arrayOfInt[j] > 0)
       {
-        m = k + 1;
-        n = j + this.mSampleDuration[i];
+        n = k + 1;
+        m = i + arrayOfInt[j];
       }
-      i += 1;
-      j = n;
+      j += 1;
+      k = n;
     }
+    j = i1;
     if (k > 0) {
-      return j / k;
+      j = i / k;
     }
-    return 0;
+    return j;
   }
   
   public int getDefaultDuration()
@@ -108,74 +114,63 @@ class WebViewProgressBarController$DurationGenerator
     int j = (int)(System.currentTimeMillis() - this.mStartingTime);
     int k = getSampleDuration();
     int i;
-    if (this.mNetType == 2)
-    {
+    if (this.mNetType == 2) {
       i = this.m2GDuration;
-      if (k != 0) {
-        break label90;
-      }
-      i *= 3;
-      label36:
-      if (j > 100) {
-        if (j <= i) {
-          break label97;
-        }
-      }
+    } else {
+      i = this.mNon2GDuration;
     }
-    for (;;)
+    if (k == 0) {
+      i *= 3;
+    } else {
+      i = k * 3;
+    }
+    if (j > 100)
     {
-      this.mSampleDuration[this.mLastSampleIndex] = ((int)(i * 1.2F));
-      i = this.mLastSampleIndex + 1;
+      if (j <= i) {
+        i = j;
+      }
+      int[] arrayOfInt = this.mSampleDuration;
+      j = this.mLastSampleIndex;
+      arrayOfInt[j] = ((int)(i * 1.2F));
+      i = j + 1;
       this.mLastSampleIndex = i;
       this.mLastSampleIndex = (i % 3);
-      return;
-      i = this.mNon2GDuration;
-      break;
-      label90:
-      i = k * 3;
-      break label36;
-      label97:
-      i = j;
     }
   }
   
   public int recordStart()
   {
     this.mStartingTime = System.currentTimeMillis();
-    int j = NetworkUtil.getActiveNetworkType(AppLoaderFactory.g().getContext());
-    int i;
-    if (this.mNetType != j)
-    {
+    int k = NetworkUtil.getActiveNetworkType(AppLoaderFactory.g().getContext());
+    int i = this.mNetType;
+    int j = 0;
+    if (i != k) {
       i = 1;
-      this.mNetType = j;
-      if (i == 0) {
-        break label68;
-      }
-      if (this.mNetType != 2) {
-        break label60;
-      }
-      i = this.m2GDuration;
-      label49:
-      clearSampleDuration();
-    }
-    label60:
-    label68:
-    do
-    {
-      return i;
+    } else {
       i = 0;
-      break;
-      i = this.mNon2GDuration;
-      break label49;
-      j = getSampleDuration();
-      i = j;
-    } while (j > 0);
-    return 0;
+    }
+    this.mNetType = k;
+    if (i != 0)
+    {
+      if (this.mNetType == 2) {
+        i = this.m2GDuration;
+      } else {
+        i = this.mNon2GDuration;
+      }
+      clearSampleDuration();
+      return i;
+    }
+    k = getSampleDuration();
+    i = j;
+    if (k > 0) {
+      i = k;
+    }
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.WebViewProgressBarController.DurationGenerator
  * JD-Core Version:    0.7.0.1
  */

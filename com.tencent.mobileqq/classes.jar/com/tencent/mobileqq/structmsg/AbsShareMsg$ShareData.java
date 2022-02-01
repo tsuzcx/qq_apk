@@ -47,27 +47,23 @@ public class AbsShareMsg$ShareData
     paramObjectOutput.writeByte(this.imageUrlStatus);
     paramObjectOutput.writeByte(this.shortUrlStatus);
     paramObjectOutput.writeInt(this.status);
-    if (this.pkgName == null)
-    {
-      str = "";
-      paramObjectOutput.writeUTF(str);
-      if (this.sourceIconBig != null) {
-        break label93;
-      }
+    String str2 = this.pkgName;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    label93:
-    for (String str = "";; str = this.sourceIconBig)
-    {
-      paramObjectOutput.writeUTF(str);
-      return;
-      str = this.pkgName;
-      break;
+    paramObjectOutput.writeUTF(str1);
+    str2 = this.sourceIconBig;
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
+    paramObjectOutput.writeUTF(str1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.AbsShareMsg.ShareData
  * JD-Core Version:    0.7.0.1
  */

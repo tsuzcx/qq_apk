@@ -14,15 +14,19 @@ class PermisionPrivacyActivity$2
   public void run()
   {
     boolean bool = ((FriendsManager)this.this$0.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.this$0.app.getCurrentAccountUin()).medalSwitchDisable;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.security", 2, "PermisionPrivacyActivity initUI medalSwitchDisable = " + bool);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PermisionPrivacyActivity initUI medalSwitchDisable = ");
+      localStringBuilder.append(bool);
+      QLog.d("Q.security", 2, localStringBuilder.toString());
     }
     this.this$0.runOnUiThread(new PermisionPrivacyActivity.2.1(this, bool));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PermisionPrivacyActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -33,11 +33,13 @@ public class BuckleFaceFilter
   public BuckleFaceFilter(BuckleFaceItem paramBuckleFaceItem, String paramString)
   {
     super(BaseFilter.nativeDecrypt("precision highp float;\nattribute vec4 position;\nattribute vec4 inputTextureCoordinate;\nvarying vec2 textureCoordinate;\n\nvoid main(void) {\n    gl_Position = position;\n    textureCoordinate = inputTextureCoordinate.xy;\n}"), BaseFilter.nativeDecrypt("precision mediump float;\nvarying lowp vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\n\nvoid main(void) {\n    gl_FragColor = texture2D(inputImageTexture, textureCoordinate);\n}"));
-    if ((paramBuckleFaceItem == null) || (paramBuckleFaceItem.frameList.size() <= 0)) {
-      throw new IllegalArgumentException("BuckleFaceFilter| items length error!");
+    if ((paramBuckleFaceItem != null) && (paramBuckleFaceItem.frameList.size() > 0))
+    {
+      this.needRender = false;
+      this.mBuckleItem = paramBuckleFaceItem;
+      return;
     }
-    this.needRender = false;
-    this.mBuckleItem = paramBuckleFaceItem;
+    throw new IllegalArgumentException("BuckleFaceFilter| items length error!");
   }
   
   private static float distanceOf(PointF paramPointF1, PointF paramPointF2)
@@ -49,120 +51,142 @@ public class BuckleFaceFilter
   
   private static float radians2DEGREES(float paramFloat)
   {
-    return (float)(180.0F * paramFloat / 3.141592653589793D);
+    double d = paramFloat * 180.0F;
+    Double.isNaN(d);
+    return (float)(d / 3.141592653589793D);
   }
   
   private void updateParams(List<PointF> paramList, float[] paramArrayOfFloat, float paramFloat, int paramInt)
   {
-    if ((paramList == null) || (paramList.isEmpty()) || (paramArrayOfFloat == null) || (paramArrayOfFloat.length == 0)) {
-      this.needRender = false;
-    }
-    Object localObject1;
-    double d3;
-    double d4;
-    float f1;
-    PointF localPointF1;
-    Object localObject2;
-    Object localObject3;
-    do
+    if ((paramList != null) && (!paramList.isEmpty()) && (paramArrayOfFloat != null) && (paramArrayOfFloat.length != 0))
     {
-      return;
-      localObject1 = (BuckleFrameItem)this.mBuckleItem.frameList.get(paramInt);
-      double d1 = localObject1.size[0];
-      double d2 = localObject1.size[1];
-      d3 = localObject1.nosePoint[0];
-      d4 = localObject1.nosePoint[1];
-      f1 = (float)Math.min(d1 / this.width, d2 / this.height);
-      paramFloat = (float)(d1 / f1);
-      f2 = (float)(d2 / f1);
-      localPointF1 = new PointF((paramFloat - this.width) / 2.0F, (f2 - this.height) / 2.0F);
-      localObject2 = FaceOffUtil.getFullCoords(paramList, 3.0F);
-      if ((localObject2 == null) || (((List)localObject2).isEmpty()))
+      Object localObject1 = (BuckleFrameItem)this.mBuckleItem.frameList.get(paramInt);
+      double d4 = localObject1.size[0];
+      double d5 = localObject1.size[1];
+      double d2 = localObject1.nosePoint[0];
+      double d1 = localObject1.nosePoint[1];
+      double d3 = this.width;
+      Double.isNaN(d3);
+      d3 = d4 / d3;
+      double d6 = this.height;
+      Double.isNaN(d6);
+      d3 = (float)Math.min(d3, d5 / d6);
+      Double.isNaN(d3);
+      paramFloat = (float)(d4 / d3);
+      Double.isNaN(d3);
+      float f1 = (float)(d5 / d3);
+      Object localObject2 = new PointF((paramFloat - this.width) / 2.0F, (f1 - this.height) / 2.0F);
+      Object localObject3 = FaceOffUtil.getFullCoords(paramList, 3.0F);
+      if ((localObject3 != null) && (!((List)localObject3).isEmpty()))
       {
-        this.needRender = false;
+        paramList = ((List)localObject3).iterator();
+        while (paramList.hasNext())
+        {
+          localObject4 = (PointF)paramList.next();
+          d4 = ((PointF)localObject4).x;
+          d5 = this.mFaceDetScale;
+          Double.isNaN(d4);
+          ((PointF)localObject4).x = ((float)(d4 / d5));
+          d4 = ((PointF)localObject4).y;
+          d5 = this.mFaceDetScale;
+          Double.isNaN(d4);
+          ((PointF)localObject4).y = ((float)(d4 / d5));
+        }
+        paramList = new ArrayList();
+        paramList.add(((List)localObject3).get(99));
+        paramList.add(((List)localObject3).get(105));
+        paramList.add(((List)localObject3).get(101));
+        paramList.add(((List)localObject3).get(103));
+        this.faceCheckPoint.add(((List)localObject3).get(9));
+        this.faceCheckPoint.add(((List)localObject3).get(86));
+        this.faceCheckPoint.add(((List)localObject3).get(88));
+        this.faceCheckPoint.add(((List)localObject3).get(0));
+        this.faceCheckPoint.add(((List)localObject3).get(18));
+        Object localObject4 = this.faceCheckPoint.iterator();
+        while (((Iterator)localObject4).hasNext())
+        {
+          PointF localPointF = (PointF)((Iterator)localObject4).next();
+          if ((localPointF.x < 0.0F) || (localPointF.y < 0.0F) || (localPointF.x >= this.width) || (localPointF.y >= this.height)) {
+            this.needRender = false;
+          }
+        }
+        this.faceCheckPoint.clear();
+        if (!this.needRender) {
+          return;
+        }
+        d4 = ((BuckleFrameItem)localObject1).faceWidth;
+        Double.isNaN(d3);
+        f1 = (float)(d4 / d3);
+        float f2 = distanceOf((PointF)((List)localObject3).get(0), (PointF)((List)localObject3).get(18));
+        paramFloat = paramArrayOfFloat[1];
+        if (Math.abs(paramFloat) > 0.2D)
+        {
+          if (paramFloat > 0.0F) {
+            paramFloat -= 0.2F;
+          } else {
+            paramFloat += 0.2F;
+          }
+          paramFloat *= f1;
+        }
+        else
+        {
+          paramFloat = 0.0F;
+        }
+        localObject4 = new Matrix();
+        ((Matrix)localObject4).reset();
+        float f3 = ((PointF)((List)localObject3).get(64)).x;
+        float f4 = ((PointF)((List)localObject3).get(64)).y;
+        f1 /= f2;
+        d4 = paramArrayOfFloat[2];
+        d5 = ((BuckleFrameItem)localObject1).faceAngle;
+        Double.isNaN(d4);
+        ((Matrix)localObject4).postRotate(radians2DEGREES((float)(d4 - d5)), f3, f4);
+        ((Matrix)localObject4).postScale(f1, f1, f3, f4);
+        Double.isNaN(d3);
+        d2 /= d3;
+        d4 = ((PointF)localObject2).x;
+        Double.isNaN(d4);
+        f1 = (float)(d2 - d4);
+        Double.isNaN(d3);
+        d1 /= d3;
+        d2 = ((PointF)localObject2).y;
+        Double.isNaN(d2);
+        ((Matrix)localObject4).postTranslate(f1 - f3, (float)(d1 - d2) - f4);
+        ((Matrix)localObject4).postTranslate(paramFloat, 0.0F);
+        paramArrayOfFloat = new ArrayList();
+        localObject1 = paramList.iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (PointF)((Iterator)localObject1).next();
+          localObject3 = new float[2];
+          ((Matrix)localObject4).mapPoints((float[])localObject3, new float[] { ((PointF)localObject2).x, ((PointF)localObject2).y });
+          paramArrayOfFloat.add(new PointF(localObject3[0], localObject3[1]));
+        }
+        paramInt = 0;
+        int i = 0;
+        while (paramInt < 4)
+        {
+          localObject1 = (PointF)paramArrayOfFloat.get(paramInt);
+          this.attrPositions[i] = (((PointF)localObject1).x * 2.0F / this.width - 1.0F);
+          localObject2 = this.attrPositions;
+          int j = i + 1;
+          localObject2[j] = (((PointF)localObject1).y * 2.0F / this.height - 1.0F);
+          localObject1 = (PointF)paramList.get(paramInt);
+          this.attrTexCoords[i] = (((PointF)localObject1).x / this.width);
+          this.attrTexCoords[j] = (((PointF)localObject1).y / this.height);
+          i += 2;
+          paramInt += 1;
+        }
+        setDrawMode(AEOpenRenderConfig.DRAW_MODE.TRIANGLE_STRIP);
+        setRenderMode(0);
+        setPositions(this.attrPositions);
+        setTexCords(this.attrTexCoords);
         return;
       }
-      paramList = ((List)localObject2).iterator();
-      while (paramList.hasNext())
-      {
-        localObject3 = (PointF)paramList.next();
-        ((PointF)localObject3).x = ((float)(((PointF)localObject3).x / this.mFaceDetScale));
-        ((PointF)localObject3).y = ((float)(((PointF)localObject3).y / this.mFaceDetScale));
-      }
-      paramList = new ArrayList();
-      paramList.add(((List)localObject2).get(99));
-      paramList.add(((List)localObject2).get(105));
-      paramList.add(((List)localObject2).get(101));
-      paramList.add(((List)localObject2).get(103));
-      this.faceCheckPoint.add(((List)localObject2).get(9));
-      this.faceCheckPoint.add(((List)localObject2).get(86));
-      this.faceCheckPoint.add(((List)localObject2).get(88));
-      this.faceCheckPoint.add(((List)localObject2).get(0));
-      this.faceCheckPoint.add(((List)localObject2).get(18));
-      localObject3 = this.faceCheckPoint.iterator();
-      while (((Iterator)localObject3).hasNext())
-      {
-        PointF localPointF2 = (PointF)((Iterator)localObject3).next();
-        if ((localPointF2.x < 0.0F) || (localPointF2.y < 0.0F) || (localPointF2.x >= this.width) || (localPointF2.y >= this.height)) {
-          this.needRender = false;
-        }
-      }
-      this.faceCheckPoint.clear();
-    } while (!this.needRender);
-    float f2 = (float)(((BuckleFrameItem)localObject1).faceWidth / f1);
-    float f3 = distanceOf((PointF)((List)localObject2).get(0), (PointF)((List)localObject2).get(18));
-    paramFloat = paramArrayOfFloat[1];
-    if (Math.abs(paramFloat) > 0.2D) {
-      if (paramFloat > 0.0F) {
-        paramFloat = (paramFloat - 0.2F) * f2;
-      }
-    }
-    for (;;)
-    {
-      localObject3 = new Matrix();
-      ((Matrix)localObject3).reset();
-      float f4 = ((PointF)((List)localObject2).get(64)).x;
-      float f5 = ((PointF)((List)localObject2).get(64)).y;
-      f2 /= f3;
-      ((Matrix)localObject3).postRotate(radians2DEGREES((float)(paramArrayOfFloat[2] - ((BuckleFrameItem)localObject1).faceAngle)), f4, f5);
-      ((Matrix)localObject3).postScale(f2, f2, f4, f5);
-      ((Matrix)localObject3).postTranslate((float)(d3 / f1 - localPointF1.x) - f4, (float)(d4 / f1 - localPointF1.y) - f5);
-      ((Matrix)localObject3).postTranslate(paramFloat, 0.0F);
-      paramArrayOfFloat = new ArrayList();
-      localObject1 = paramList.iterator();
-      for (;;)
-      {
-        if (((Iterator)localObject1).hasNext())
-        {
-          localPointF1 = (PointF)((Iterator)localObject1).next();
-          localObject2 = new float[2];
-          ((Matrix)localObject3).mapPoints((float[])localObject2, new float[] { localPointF1.x, localPointF1.y });
-          paramArrayOfFloat.add(new PointF(localObject2[0], localObject2[1]));
-          continue;
-          paramFloat = (0.2F + paramFloat) * f2;
-          break;
-        }
-      }
-      int i = 0;
-      paramInt = 0;
-      while (paramInt < 4)
-      {
-        localObject1 = (PointF)paramArrayOfFloat.get(paramInt);
-        this.attrPositions[i] = (2.0F * ((PointF)localObject1).x / this.width - 1.0F);
-        this.attrPositions[(i + 1)] = (((PointF)localObject1).y * 2.0F / this.height - 1.0F);
-        localObject1 = (PointF)paramList.get(paramInt);
-        this.attrTexCoords[i] = (((PointF)localObject1).x / this.width);
-        this.attrTexCoords[(i + 1)] = (((PointF)localObject1).y / this.height);
-        i += 2;
-        paramInt += 1;
-      }
-      setDrawMode(AEOpenRenderConfig.DRAW_MODE.TRIANGLE_STRIP);
-      setRenderMode(0);
-      setPositions(this.attrPositions);
-      setTexCords(this.attrTexCoords);
+      this.needRender = false;
       return;
-      paramFloat = 0.0F;
     }
+    this.needRender = false;
   }
   
   public void ApplyGLSLFilter()
@@ -184,63 +208,45 @@ public class BuckleFaceFilter
   
   public void updatePreview(Object paramObject)
   {
-    label51:
-    int j;
     if ((paramObject instanceof PTDetectInfo))
     {
       paramObject = (PTDetectInfo)paramObject;
-      int i;
-      if (!CollectionUtils.isEmpty(this.normalRenderItems))
+      this.needRender = (CollectionUtils.isEmpty(this.normalRenderItems) ^ true);
+      Object localObject1 = this.normalRenderItems;
+      int i = 0;
+      if (localObject1 != null)
       {
-        bool = true;
-        this.needRender = bool;
-        if (this.normalRenderItems == null) {
-          break label196;
-        }
-        Iterator localIterator = this.normalRenderItems.iterator();
+        localObject1 = ((List)localObject1).iterator();
         i = 0;
-        j = i;
-        if (!localIterator.hasNext()) {
-          break label198;
-        }
-        AEFilterI localAEFilterI = ((RenderItem)localIterator.next()).filter;
-        j = i;
-        if ((localAEFilterI instanceof NormalVideoFilter))
+        while (((Iterator)localObject1).hasNext())
         {
-          localAEFilterI.updatePreview(paramObject);
-          j = i;
-          if (!((NormalVideoFilter)localAEFilterI).getStickerItem().id.equals("bgm"))
+          Object localObject2 = ((RenderItem)((Iterator)localObject1).next()).filter;
+          if ((localObject2 instanceof NormalVideoFilter))
           {
-            j = i;
-            if (((NormalVideoFilter)localAEFilterI).getStickerItem().frameDuration == this.mBuckleItem.frameDuration)
+            ((AEFilterI)localObject2).updatePreview(paramObject);
+            localObject2 = (NormalVideoFilter)localObject2;
+            if ((!((NormalVideoFilter)localObject2).getStickerItem().id.equals("bgm")) && (((NormalVideoFilter)localObject2).getStickerItem().frameDuration == this.mBuckleItem.frameDuration))
             {
-              j = ((NormalVideoFilter)localAEFilterI).getLastFrameIndex();
-              if ((!this.needRender) || (!((NormalVideoFilter)localAEFilterI).isRenderReady())) {
-                break label190;
+              i = ((NormalVideoFilter)localObject2).getLastFrameIndex();
+              boolean bool;
+              if ((this.needRender) && (((NormalVideoFilter)localObject2).isRenderReady())) {
+                bool = true;
+              } else {
+                bool = false;
               }
+              this.needRender = bool;
             }
           }
         }
       }
-      label190:
-      for (boolean bool = true;; bool = false)
+      if (this.needRender)
       {
-        this.needRender = bool;
-        i = j;
-        break label51;
-        bool = false;
-        break;
+        if (CollectionUtils.indexOutOfBounds(this.mBuckleItem.frameList, i)) {
+          return;
+        }
+        updateParams(paramObject.facePoints, paramObject.faceAngles, paramObject.phoneAngle, i);
       }
-      label196:
-      j = 0;
-      label198:
-      if ((this.needRender) && (!CollectionUtils.indexOutOfBounds(this.mBuckleItem.frameList, j))) {}
     }
-    else
-    {
-      return;
-    }
-    updateParams(paramObject.facePoints, paramObject.faceAngles, paramObject.phoneAngle, j);
   }
   
   public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
@@ -250,7 +256,7 @@ public class BuckleFaceFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.BuckleFaceFilter
  * JD-Core Version:    0.7.0.1
  */

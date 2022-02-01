@@ -10,16 +10,17 @@ import java.util.Map;
 
 public class c
 {
-  private static final String a = c.class.getSimpleName();
+  private static final String a = "c";
   private PLSharedPreferences b = null;
   
-  public c() {}
-  
-  public c(Context paramContext)
+  public c(Context paramContext, String paramString)
   {
     String str = paramContext.getPackageName();
     Logger.d(a, "get pkgname from context is{%s}", new Object[] { str });
-    this.b = new PLSharedPreferences(paramContext, "share_pre_grs_conf_" + str);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(str);
+    this.b = new PLSharedPreferences(paramContext, localStringBuilder.toString());
     a(paramContext);
   }
   
@@ -32,20 +33,17 @@ public class c
       if (!paramContext.equals(str))
       {
         Logger.i(a, "app version changed! old version{%s} and new version{%s}", new Object[] { str, paramContext });
-        b();
+        c();
         b("version", paramContext);
       }
       return;
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      Logger.w(a, "get app version failed and catch NameNotFoundException");
+      label71:
+      break label71;
     }
-  }
-  
-  public String a()
-  {
-    return a("cp", "");
+    Logger.w(a, "get app version failed and catch NameNotFoundException");
   }
   
   public String a(String paramString1, String paramString2)
@@ -53,14 +51,19 @@ public class c
     return this.b.getString(paramString1, paramString2);
   }
   
+  public Map<String, ?> a()
+  {
+    return this.b.getAll();
+  }
+  
   public void a(String paramString)
   {
     this.b.remove(paramString);
   }
   
-  public void b()
+  public String b()
   {
-    this.b.clear();
+    return a("cp", "");
   }
   
   public void b(String paramString1, String paramString2)
@@ -68,14 +71,14 @@ public class c
     this.b.putString(paramString1, paramString2);
   }
   
-  public Map<String, ?> c()
+  public void c()
   {
-    return this.b.getAll();
+    this.b.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.framework.network.grs.a.c
  * JD-Core Version:    0.7.0.1
  */

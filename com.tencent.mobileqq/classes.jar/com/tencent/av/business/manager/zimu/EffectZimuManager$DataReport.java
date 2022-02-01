@@ -12,33 +12,45 @@ import java.util.Map;
 public class EffectZimuManager$DataReport
 {
   static long jdField_a_of_type_Long = 0L;
-  static String jdField_a_of_type_JavaLangString = null;
+  static String jdField_a_of_type_JavaLangString;
   static boolean jdField_a_of_type_Boolean = false;
   
   static long a(String paramString)
   {
+    boolean bool = Utils.a(paramString, jdField_a_of_type_JavaLangString);
     long l1 = 0L;
     long l2 = l1;
-    if (!Utils.a(paramString, jdField_a_of_type_JavaLangString))
+    if (!bool)
     {
       long l3 = System.currentTimeMillis();
-      AVLog.printColorLog("EffectZimuManager", "DataReport calTime zimu:" + paramString + "|" + jdField_a_of_type_JavaLangString + "|" + jdField_a_of_type_Long);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("DataReport calTime zimu:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("|");
+      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      localStringBuilder.append("|");
+      localStringBuilder.append(jdField_a_of_type_Long);
+      AVLog.printColorLog("EffectZimuManager", localStringBuilder.toString());
       l2 = l1;
       if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
       {
-        if (jdField_a_of_type_Long != 0L)
+        l2 = jdField_a_of_type_Long;
+        if (l2 != 0L)
         {
-          l1 = l3 - jdField_a_of_type_Long;
-          AVLog.printColorLog("EffectZimuManager", "DataReport zimu:" + l1);
+          l1 = l3 - l2;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("DataReport zimu:");
+          localStringBuilder.append(l1);
+          AVLog.printColorLog("EffectZimuManager", localStringBuilder.toString());
           jdField_a_of_type_Boolean = true;
           l1 /= 1000L;
           a(jdField_a_of_type_JavaLangString, l1);
           ReportController.b(null, "CliOper", "", "", "0X800888D", "0X800888D", 0, 0, String.valueOf(l1), "", jdField_a_of_type_JavaLangString, "");
-          if (ARZimuUtil.a(jdField_a_of_type_JavaLangString)) {
-            ReportController.b(null, "CliOper", "", "", "0X8009193", "0X8009193", 0, 0, String.valueOf(l1), "", jdField_a_of_type_JavaLangString, "");
-          }
         }
-        AVLog.printColorLog("EffectZimuManager", "DataReport zimu 33:" + l1);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("DataReport zimu 33:");
+        localStringBuilder.append(l1);
+        AVLog.printColorLog("EffectZimuManager", localStringBuilder.toString());
         l2 = l1;
       }
       jdField_a_of_type_JavaLangString = paramString;
@@ -60,11 +72,16 @@ public class EffectZimuManager$DataReport
   
   public static void a(String paramString, long paramLong)
   {
-    AVLog.printColorLog("EffectZimuManager", "DataReport zimu:" + paramString + "|" + paramLong);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("zimuName", paramString);
-    localHashMap.put("duration", String.valueOf(paramLong));
-    UserAction.onUserAction("actAVFunChatZimu", true, -1L, -1L, localHashMap, true);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("DataReport zimu:");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("|");
+    ((StringBuilder)localObject).append(paramLong);
+    AVLog.printColorLog("EffectZimuManager", ((StringBuilder)localObject).toString());
+    localObject = new HashMap();
+    ((Map)localObject).put("zimuName", paramString);
+    ((Map)localObject).put("duration", String.valueOf(paramLong));
+    UserAction.onUserAction("actAVFunChatZimu", true, -1L, -1L, (Map)localObject, true);
     try
     {
       UserAction.flushObjectsToDB(true);
@@ -78,19 +95,18 @@ public class EffectZimuManager$DataReport
   
   public static void a(String paramString1, String paramString2)
   {
-    AVLog.printColorLog("EffectZimuManager", "DataReport onUsedZimu reportClickEvent:" + paramString1 + "|" + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DataReport onUsedZimu reportClickEvent:");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString2);
+    AVLog.printColorLog("EffectZimuManager", localStringBuilder.toString());
     ReportController.b(null, "CliOper", "", "", paramString1, paramString1, 0, 0, "", "", paramString2, "");
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3)
-  {
-    AVLog.printColorLog("EffectZimuManager", "DataReport onUsedZimu reportClickEvent:" + paramString1 + "|" + paramString2 + "|" + paramString3);
-    ReportController.b(null, "CliOper", "", "", paramString1, paramString1, 0, 0, "", "", paramString2, paramString3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.zimu.EffectZimuManager.DataReport
  * JD-Core Version:    0.7.0.1
  */

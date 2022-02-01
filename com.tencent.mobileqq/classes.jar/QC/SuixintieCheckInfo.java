@@ -31,14 +31,15 @@ public final class SuixintieCheckInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vSuixintieCheckList != null) {
-      paramJceOutputStream.write(this.vSuixintieCheckList, 0);
+    ArrayList localArrayList = this.vSuixintieCheckList;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.SuixintieCheckInfo
  * JD-Core Version:    0.7.0.1
  */

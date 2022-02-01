@@ -26,17 +26,19 @@ public final class WeishiDownlowdUrl
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.IOSUrl != null) {
-      paramJceOutputStream.write(this.IOSUrl, 0);
+    String str = this.IOSUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.AndUrl != null) {
-      paramJceOutputStream.write(this.AndUrl, 1);
+    str = this.AndUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.WeishiDownlowdUrl
  * JD-Core Version:    0.7.0.1
  */

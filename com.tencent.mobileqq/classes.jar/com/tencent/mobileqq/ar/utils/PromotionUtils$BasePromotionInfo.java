@@ -28,20 +28,15 @@ public abstract class PromotionUtils$BasePromotionInfo
     this.jdField_a_of_type_Long = paramBundle.getLong("RecoglizeMask", 0L);
     this.g = paramBundle.getString("H5Source", "0");
     this.h = paramBundle.getString("version", "0");
-    if (!paramBundle.getBoolean("disablecloud", false)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.c = paramBundle.getBoolean("is_from_h5_entry", false);
-      this.b = false;
-      a(paramAppInterface, paramBundle);
-      return;
-    }
+    this.jdField_a_of_type_Boolean = (paramBundle.getBoolean("disablecloud", false) ^ true);
+    this.c = paramBundle.getBoolean("is_from_h5_entry", false);
+    this.b = false;
+    a(paramAppInterface, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.utils.PromotionUtils.BasePromotionInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -8,21 +8,22 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class c
 {
   static volatile boolean a = false;
-  private static volatile c b = null;
+  private static volatile c b;
   private final ConcurrentLinkedQueue<a> c = new ConcurrentLinkedQueue();
   private final ConcurrentLinkedQueue<a> d = new ConcurrentLinkedQueue();
   
   public static c a()
   {
-    if (b == null) {}
-    try
-    {
-      if (b == null) {
-        b = new c();
+    if (b == null) {
+      try
+      {
+        if (b == null) {
+          b = new c();
+        }
       }
-      return b;
+      finally {}
     }
-    finally {}
+    return b;
   }
   
   public void a(a parama)
@@ -62,7 +63,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.e.c
  * JD-Core Version:    0.7.0.1
  */

@@ -43,37 +43,42 @@ public class OtherJsPlugin
   
   private void callbackSettingEvent(String paramString1, String paramString2, int paramInt)
   {
+    String str = "";
     Object localObject1 = this.appInterface.getAuthorizeCenter(paramString2);
-    if (localObject1 == null) {}
-    label108:
-    label242:
+    if (localObject1 == null) {
+      return;
+    }
+    Object localObject3 = ((com.tencent.mobileqq.microapp.app.a)localObject1).a(6);
     for (;;)
     {
-      return;
-      Object localObject3 = ((com.tencent.mobileqq.microapp.app.a)localObject1).a(6);
-      JSONArray localJSONArray;
-      int i;
       try
       {
         localObject1 = new JSONObject();
-        localJSONArray = new JSONArray();
+        JSONArray localJSONArray = new JSONArray();
         localObject3 = ((List)localObject3).iterator();
-        for (;;)
+        if (((Iterator)localObject3).hasNext())
         {
-          if (((Iterator)localObject3).hasNext())
-          {
-            a.a locala = (a.a)((Iterator)localObject3).next();
-            JSONObject localJSONObject = new JSONObject();
-            localJSONObject.put("scope", locala.a);
-            if (locala.b == 2)
-            {
-              i = 1;
-              localJSONObject.put("state", i);
-              localJSONArray.put(localJSONObject);
-              continue;
-              paramString2 = paramString2.toString();
-            }
+          a.a locala = (a.a)((Iterator)localObject3).next();
+          JSONObject localJSONObject = new JSONObject();
+          localJSONObject.put("scope", locala.a);
+          if (locala.b != 2) {
+            break label241;
           }
+          i = 1;
+          localJSONObject.put("state", i);
+          localJSONArray.put(localJSONObject);
+          continue;
+        }
+        ((JSONObject)localObject1).put("authSetting", localJSONArray);
+        localObject1 = com.tencent.mobileqq.microapp.a.c.a(paramString1, (JSONObject)localObject1);
+        if (localObject1 == null) {
+          break label247;
+        }
+        localObject1 = ((JSONObject)localObject1).toString();
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        {
+          handleNativeResponse(paramString1, (String)localObject1, paramInt);
+          return;
         }
       }
       catch (JSONException localJSONException)
@@ -81,29 +86,21 @@ public class OtherJsPlugin
         if (com.tencent.mobileqq.microapp.appbrand.b.c.b(paramString2)) {
           com.tencent.mobileqq.microapp.appbrand.b.c.a("OtherJsPlugin", 2, paramString2, localJSONException, new Object[0]);
         }
-        paramString2 = com.tencent.mobileqq.microapp.a.c.b(paramString1, null);
-        if (paramString2 == null) {}
-      }
-      for (;;)
-      {
-        if (paramString2 == null) {
-          break label242;
+        localObject2 = com.tencent.mobileqq.microapp.a.c.b(paramString1, null);
+        paramString2 = str;
+        if (localObject2 != null) {
+          paramString2 = ((JSONObject)localObject2).toString();
         }
-        handleNativeResponse(paramString1, paramString2, paramInt);
-        return;
-        i = 0;
-        break label108;
-        localJSONException.put("authSetting", localJSONArray);
-        Object localObject2 = com.tencent.mobileqq.microapp.a.c.a(paramString1, localJSONException);
-        if (localObject2 != null) {}
-        for (localObject2 = ((JSONObject)localObject2).toString(); !TextUtils.isEmpty((CharSequence)localObject2); localObject2 = "")
-        {
-          handleNativeResponse(paramString1, (String)localObject2, paramInt);
-          return;
+        if (paramString2 != null) {
+          handleNativeResponse(paramString1, paramString2, paramInt);
         }
-        break;
-        paramString2 = "";
       }
+      return;
+      label241:
+      int i = 0;
+      continue;
+      label247:
+      Object localObject2 = "";
     }
   }
   
@@ -111,7 +108,7 @@ public class OtherJsPlugin
   
   public void enterQRCode(BaseActivity paramBaseActivity)
   {
-    if (!RecentOptPopBar.a(paramBaseActivity)) {
+    if (!RecentOptPopBar.canEnterQRCode(paramBaseActivity)) {
       return;
     }
     Intent localIntent = new Intent(paramBaseActivity, ScannerActivity.class);
@@ -120,21 +117,22 @@ public class OtherJsPlugin
     localIntent.putExtra("start_time", System.currentTimeMillis());
     localIntent.putExtra("from", "micro_app");
     paramBaseActivity.startActivity(localIntent);
-    if (this.scanResultReceiver != null) {}
+    Object localObject = this.scanResultReceiver;
+    if (localObject != null) {}
     try
     {
-      paramBaseActivity.unregisterReceiver(this.scanResultReceiver);
-      label86:
+      paramBaseActivity.unregisterReceiver((BroadcastReceiver)localObject);
+      label85:
       this.scanResultReceiver = null;
       this.scanResultReceiver = new a(this);
-      IntentFilter localIntentFilter = new IntentFilter("com.tencent.mobileqq.microapp.out.plugins.scanResultAction");
-      paramBaseActivity.registerReceiver(this.scanResultReceiver, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
+      localObject = new IntentFilter("com.tencent.mobileqq.microapp.out.plugins.scanResultAction");
+      paramBaseActivity.registerReceiver(this.scanResultReceiver, (IntentFilter)localObject, "com.tencent.msg.permission.pushnotify", null);
       paramBaseActivity.startActivity(localIntent);
       return;
     }
     catch (Exception localException)
     {
-      break label86;
+      break label85;
     }
   }
   
@@ -150,24 +148,21 @@ public class OtherJsPlugin
       MiniAppController.getInstance().setActivityResultListener(new b(this, paramString1, paramString2, paramInt));
       openSettingActivity(paramActivity, paramString1);
     }
-    for (;;)
+    else if ("getSetting".equals(paramString2))
     {
-      return super.handleNativeRequest(paramActivity, paramString1, paramString2, paramString3, paramInt);
-      if ("getSetting".equals(paramString2))
-      {
-        com.tencent.mobileqq.microapp.appbrand.b.a.a(new c(this, paramString2, paramString1, paramInt));
-      }
-      else if ("scanCode".equals(paramString2))
-      {
-        this.mSeq = paramInt;
-        enterQRCode((BaseActivity)paramActivity);
-      }
+      com.tencent.mobileqq.microapp.appbrand.b.a.a(new c(this, paramString2, paramString1, paramInt));
     }
+    else if ("scanCode".equals(paramString2))
+    {
+      this.mSeq = paramInt;
+      enterQRCode((BaseActivity)paramActivity);
+    }
+    return super.handleNativeRequest(paramActivity, paramString1, paramString2, paramString3, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.out.plugins.OtherJsPlugin
  * JD-Core Version:    0.7.0.1
  */

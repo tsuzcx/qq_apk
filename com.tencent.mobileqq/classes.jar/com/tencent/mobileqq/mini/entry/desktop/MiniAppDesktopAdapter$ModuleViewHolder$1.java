@@ -13,22 +13,21 @@ class MiniAppDesktopAdapter$ModuleViewHolder$1
   public void onClick(View paramView)
   {
     paramView = (Activity)MiniAppDesktopAdapter.ModuleViewHolder.access$2700(this.this$0).get();
-    if ((paramView != null) && (MiniAppDesktopAdapter.ModuleViewHolder.access$2800(this.this$0) != null)) {
-      if (this.val$moduleType != 1) {
-        break label53;
-      }
-    }
-    label53:
-    for (int i = 3005;; i = 3004)
+    if ((paramView != null) && (MiniAppDesktopAdapter.ModuleViewHolder.access$2800(this.this$0) != null))
     {
+      int i;
+      if (this.val$moduleType == 1) {
+        i = 3005;
+      } else {
+        i = 3004;
+      }
       MiniAppDesktopAdapter.startMiniApp(paramView, MiniAppDesktopAdapter.ModuleViewHolder.access$2800(this.this$0), i);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.ModuleViewHolder.1
  * JD-Core Version:    0.7.0.1
  */

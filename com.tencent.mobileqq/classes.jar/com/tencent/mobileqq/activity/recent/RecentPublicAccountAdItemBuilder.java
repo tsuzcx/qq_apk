@@ -15,8 +15,8 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout.OnDragModeChangedListener;
 import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.RecentDynamicAvatarView;
 import com.tencent.widget.SingleLineTextView;
@@ -26,8 +26,8 @@ public class RecentPublicAccountAdItemBuilder
 {
   private static void a(Context paramContext, View paramView)
   {
-    Animation localAnimation = AnimationUtils.loadAnimation(paramContext, 2130772143);
-    paramContext = AnimationUtils.loadAnimation(paramContext, 2130772142);
+    Animation localAnimation = AnimationUtils.loadAnimation(paramContext, 2130772171);
+    paramContext = AnimationUtils.loadAnimation(paramContext, 2130772170);
     localAnimation.setAnimationListener(new RecentPublicAccountAdItemBuilder.1(paramView, paramContext));
     paramContext.setAnimationListener(new RecentPublicAccountAdItemBuilder.2(paramView, localAnimation));
     paramView.startAnimation(localAnimation);
@@ -35,71 +35,65 @@ public class RecentPublicAccountAdItemBuilder
   
   public View a(int paramInt, Object paramObject, RecentFaceDecoder paramRecentFaceDecoder, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, DragFrameLayout.OnDragModeChangedListener paramOnDragModeChangedListener)
   {
-    RecentPublicAccountAdItemBuilder.RecentPublicAccountAdItemBuilderHolder localRecentPublicAccountAdItemBuilderHolder;
-    if ((paramView == null) || (!(paramView.getTag() instanceof RecentPublicAccountAdItemBuilder.RecentPublicAccountAdItemBuilderHolder)))
-    {
-      localRecentPublicAccountAdItemBuilderHolder = new RecentPublicAccountAdItemBuilder.RecentPublicAccountAdItemBuilderHolder(null);
-      View localView = a(paramContext, 2131562917, localRecentPublicAccountAdItemBuilderHolder);
-      localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)localView.findViewById(2131368603));
-      localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131380944));
-      localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131379432));
-      localRecentPublicAccountAdItemBuilderHolder.b = ((SingleLineTextView)localView.findViewById(2131365699));
-      localRecentPublicAccountAdItemBuilderHolder.b.setGravity(16);
-      localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131362733));
-      localRecentPublicAccountAdItemBuilderHolder.c = ((ImageView)localView.findViewById(2131362732));
-      Object localObject = paramContext.getResources();
-      float f = DeviceInfoUtil.a();
-      paramView = ((Resources)localObject).getColorStateList(2131167117);
-      ColorStateList localColorStateList = ((Resources)localObject).getColorStateList(2131167040);
-      localObject = ((Resources)localObject).getColorStateList(2131167118);
-      localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(localColorStateList);
-      if (ThemeUtil.isNowThemeIsDefault(null, false, null))
-      {
-        localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor((ColorStateList)localObject, 0);
-        localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(12.0F, 0);
-        localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding((int)(3.0F * f));
-        localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablePadding((int)(2.0F * f), (int)(1.0F * f));
-        localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextPadding((int)(5.0F * f), 2);
-        localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramView, 2);
-        localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(17.0F, 2);
-        localRecentPublicAccountAdItemBuilderHolder.b.setTextColor(paramView);
-        localRecentPublicAccountAdItemBuilderHolder.b.setExtendTextPadding((int)(f * 2.0F), 1);
-        localRecentPublicAccountAdItemBuilderHolder.b.setExtendTextSize(14.0F, 1);
-        localView.setTag(localRecentPublicAccountAdItemBuilderHolder);
-        paramView = localView;
-        if (this.a != null)
-        {
-          localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.a.a());
-          paramView = localView;
-        }
-      }
+    if ((paramView != null) && ((paramView.getTag() instanceof RecentPublicAccountAdItemBuilder.RecentPublicAccountAdItemBuilderHolder))) {
+      break label376;
     }
-    for (;;)
-    {
-      return super.a(paramInt, paramObject, paramRecentFaceDecoder, paramView, paramViewGroup, paramContext, paramOnClickListener, paramOnLongClickListener, paramOnDragModeChangedListener);
-      localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramView, 0);
-      break;
+    RecentPublicAccountAdItemBuilder.RecentPublicAccountAdItemBuilderHolder localRecentPublicAccountAdItemBuilderHolder = new RecentPublicAccountAdItemBuilder.RecentPublicAccountAdItemBuilderHolder(null);
+    paramView = a(paramContext, 2131562732, localRecentPublicAccountAdItemBuilderHolder);
+    localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)paramView.findViewById(2131368343));
+    localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131380210));
+    localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131378784));
+    localRecentPublicAccountAdItemBuilderHolder.b = ((SingleLineTextView)paramView.findViewById(2131365536));
+    localRecentPublicAccountAdItemBuilderHolder.b.setGravity(16);
+    localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131362689));
+    localRecentPublicAccountAdItemBuilderHolder.c = ((ImageView)paramView.findViewById(2131362688));
+    Object localObject2 = paramContext.getResources();
+    float f = DeviceInfoUtil.a();
+    ColorStateList localColorStateList = ((Resources)localObject2).getColorStateList(2131167142);
+    Object localObject1 = ((Resources)localObject2).getColorStateList(2131167063);
+    localObject2 = ((Resources)localObject2).getColorStateList(2131167143);
+    localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor((ColorStateList)localObject1);
+    if (ThemeUtil.isNowThemeIsDefault(null, false, null)) {
+      localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor((ColorStateList)localObject2, 0);
+    } else {
+      localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(localColorStateList, 0);
     }
+    localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(12.0F, 0);
+    localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding((int)(3.0F * f));
+    localObject1 = localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView;
+    int i = (int)(2.0F * f);
+    ((SingleLineTextView)localObject1).setIconDrawablePadding(i, (int)(1.0F * f));
+    localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextPadding((int)(f * 5.0F), 2);
+    localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(localColorStateList, 2);
+    localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(17.0F, 2);
+    localRecentPublicAccountAdItemBuilderHolder.b.setTextColor(localColorStateList);
+    localRecentPublicAccountAdItemBuilderHolder.b.setExtendTextPadding(i, 1);
+    localRecentPublicAccountAdItemBuilderHolder.b.setExtendTextSize(14.0F, 1);
+    paramView.setTag(localRecentPublicAccountAdItemBuilderHolder);
+    if (this.a != null) {
+      localRecentPublicAccountAdItemBuilderHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.a.a());
+    }
+    label376:
+    return super.a(paramInt, paramObject, paramRecentFaceDecoder, paramView, paramViewGroup, paramContext, paramOnClickListener, paramOnLongClickListener, paramOnDragModeChangedListener);
   }
   
   public void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, Drawable paramDrawable)
   {
-    if ((paramView == null) || (paramRecentBaseData == null))
+    if ((paramView != null) && (paramRecentBaseData != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, "bindView|param invalidate");
+      RecentPublicAccountAdItemBuilder.RecentPublicAccountAdItemBuilderHolder localRecentPublicAccountAdItemBuilderHolder = null;
+      if ((paramView.getTag() instanceof RecentPublicAccountAdItemBuilder.RecentPublicAccountAdItemBuilderHolder)) {
+        localRecentPublicAccountAdItemBuilderHolder = (RecentPublicAccountAdItemBuilder.RecentPublicAccountAdItemBuilderHolder)paramView.getTag();
       }
-      return;
-    }
-    if ((paramView.getTag() instanceof RecentPublicAccountAdItemBuilder.RecentPublicAccountAdItemBuilderHolder)) {}
-    for (RecentPublicAccountAdItemBuilder.RecentPublicAccountAdItemBuilderHolder localRecentPublicAccountAdItemBuilderHolder = (RecentPublicAccountAdItemBuilder.RecentPublicAccountAdItemBuilderHolder)paramView.getTag();; localRecentPublicAccountAdItemBuilderHolder = null)
-    {
       if (localRecentPublicAccountAdItemBuilderHolder == null)
       {
-        if (!QLog.isColorLevel()) {
-          break;
+        if (QLog.isColorLevel())
+        {
+          paramRecentBaseData = new StringBuilder();
+          paramRecentBaseData.append("bindView|holder is null, tag = ");
+          paramRecentBaseData.append(paramView.getTag());
+          QLog.i("Q.recent", 2, paramRecentBaseData.toString());
         }
-        QLog.i("Q.recent", 2, "bindView|holder is null, tag = " + paramView.getTag());
         return;
       }
       super.a(paramView, paramRecentBaseData, paramContext, paramDrawable);
@@ -109,11 +103,14 @@ public class RecentPublicAccountAdItemBuilder
       a(paramContext, localRecentPublicAccountAdItemBuilderHolder.c);
       return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, "bindView|param invalidate");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentPublicAccountAdItemBuilder
  * JD-Core Version:    0.7.0.1
  */

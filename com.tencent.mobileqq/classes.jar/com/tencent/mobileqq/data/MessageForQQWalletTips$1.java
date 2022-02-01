@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -40,41 +40,29 @@ class MessageForQQWalletTips$1
       return;
     }
     localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
-    label136:
-    label230:
-    label233:
-    for (;;)
+    while (((Iterator)localObject1).hasNext())
     {
-      if (((Iterator)localObject1).hasNext())
+      localObject2 = (String)((Iterator)localObject1).next();
+      int j = 1;
+      localIterator = localLinkedList.iterator();
+      do
       {
-        localObject2 = (String)((Iterator)localObject1).next();
-        if (localLinkedList == null) {
-          break label230;
+        i = j;
+        if (!localIterator.hasNext()) {
+          break;
         }
-        localIterator = localLinkedList.iterator();
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localObject3 = (TroopMemberInfo)localIterator.next();
-        } while ((localObject3 == null) || (!QWalletTools.c(((TroopMemberInfo)localObject3).memberuin, (String)localObject2)));
-      }
-      for (int i = 0;; i = 1)
-      {
-        if (i == 0) {
-          break label233;
-        }
+        localObject3 = (TroopMemberInfo)localIterator.next();
+      } while ((localObject3 == null) || (!TextUtils.equals(((TroopMemberInfo)localObject3).memberuin, (CharSequence)localObject2)));
+      int i = 0;
+      if (i != 0) {
         ThreadManager.executeOnNetWorkThread(new MessageForQQWalletTips.1.1(this, (String)localObject2));
-        break label136;
-        break;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForQQWalletTips.1
  * JD-Core Version:    0.7.0.1
  */

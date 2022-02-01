@@ -43,30 +43,47 @@ public class QQIliveJsPlugin
   
   private long getRoomId()
   {
-    Object localObject = this.mJsBizAdapter.getModuleRoomEngine();
-    if (localObject == null) {}
-    do
+    Object localObject = this.mJsBizAdapter;
+    if (localObject == null) {
+      return 0L;
+    }
+    localObject = ((JsBizAdapter)localObject).getModuleRoomEngine();
+    if (localObject == null) {
+      return 0L;
+    }
+    localObject = ((RoomEngine)localObject).getEnginLogic();
+    if (localObject == null) {
+      return 0L;
+    }
+    localObject = ((RoomEnginLogic)localObject).getLiveInfo();
+    if (localObject != null)
     {
-      do
-      {
+      if (((LiveInfo)localObject).roomInfo == null) {
         return 0L;
-        localObject = ((RoomEngine)localObject).getEnginLogic();
-      } while (localObject == null);
-      localObject = ((RoomEnginLogic)localObject).getLiveInfo();
-    } while ((localObject == null) || (((LiveInfo)localObject).roomInfo == null));
-    return ((LiveInfo)localObject).roomInfo.roomId;
+      }
+      return ((LiveInfo)localObject).roomInfo.roomId;
+    }
+    return 0L;
+  }
+  
+  private void sendToJsExit(long paramLong, int paramInt, JSONObject paramJSONObject)
+  {
+    callJs(this.mCloseCallbackId, new String[] { paramJSONObject.toString() });
+    this.mOptionMap.put(Long.valueOf(paramLong), Integer.valueOf(paramInt));
+    IliveLiteHelper.b();
   }
   
   @VasWebviewJsPluginV2.JsbridgeSubscribe(args="saveType", method="closeAnchorLive")
   public void closeAnchorLive(int paramInt)
   {
-    if (this.mOptionMap.get(Long.valueOf(getRoomId())) != null) {}
-    for (paramInt = ((Integer)this.mOptionMap.get(Long.valueOf(getRoomId()))).intValue();; paramInt = 1)
-    {
-      if ((this.mJsBizAdapter != null) && (this.mJsBizAdapter.getModuleEvent() != null)) {
-        this.mJsBizAdapter.getModuleEvent().post(new RoomCloseEvent((short)paramInt));
-      }
-      return;
+    if (this.mOptionMap.get(Long.valueOf(getRoomId())) != null) {
+      paramInt = ((Integer)this.mOptionMap.get(Long.valueOf(getRoomId()))).intValue();
+    } else {
+      paramInt = 1001;
+    }
+    JsBizAdapter localJsBizAdapter = this.mJsBizAdapter;
+    if ((localJsBizAdapter != null) && (localJsBizAdapter.getModuleEvent() != null)) {
+      this.mJsBizAdapter.getModuleEvent().post(new RoomCloseEvent((short)paramInt));
     }
   }
   
@@ -87,6 +104,18 @@ public class QQIliveJsPlugin
     }
   }
   
+  @VasWebviewJsPluginV2.JsbridgeSubscribe(args="callback", method="getCurrentRoomId")
+  public void getCurrentRoomId(String paramString)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getCurrentRoomId callback = ");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.e("QQIliveJsPlugin", 1, ((StringBuilder)localObject).toString());
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("callback_id", paramString);
+    IliveLiteEventCenter.a().a("ACTION_WEBVIEW_GET_CURRENT_ROOM_ID", (Bundle)localObject);
+  }
+  
   @VasWebviewJsPluginV2.JsbridgeSubscribe(args="callback|roomId", method="getLiveRoomIndex")
   public void getLiveRoomIndex(String paramString1, String paramString2)
   {
@@ -102,7 +131,10 @@ public class QQIliveJsPlugin
     }
     catch (Exception paramString1)
     {
-      QLog.e("QQIliveJsPlugin", 1, "error getLiveRoomIndex " + paramString1);
+      paramString2 = new StringBuilder();
+      paramString2.append("error getLiveRoomIndex ");
+      paramString2.append(paramString1);
+      QLog.e("QQIliveJsPlugin", 1, paramString2.toString());
     }
   }
   
@@ -116,20 +148,39 @@ public class QQIliveJsPlugin
   @VasWebviewJsPluginV2.JsbridgeSubscribe(args="OperType", method="notifyLiveMessage")
   public void notifyLiveMessage(int paramInt)
   {
-    if ((this.mJsBizAdapter != null) && (this.mJsBizAdapter.getModuleEvent() != null) && (paramInt == 1)) {
-      this.mJsBizAdapter.getModuleEvent().post(new RoomCloseEvent((short)1));
+    JsBizAdapter localJsBizAdapter = this.mJsBizAdapter;
+    if ((localJsBizAdapter != null) && (localJsBizAdapter.getModuleEvent() != null) && (paramInt == 1)) {
+      this.mJsBizAdapter.getModuleEvent().post(new RoomCloseEvent((short)1001));
     }
   }
   
   @VasWebviewJsPluginV2.JsbridgeSubscribe(args="roomId|programId|status", method="notifyStatus")
   public void notifyStatus(String paramString1, String paramString2, String paramString3)
   {
-    if ((this.mJsBizAdapter != null) && (this.mJsBizAdapter.getModuleEvent() != null) && (paramString3.equals("2"))) {
-      this.mJsBizAdapter.getModuleEvent().post(new RoomCloseEvent((short)1));
+    paramString1 = this.mJsBizAdapter;
+    if ((paramString1 != null) && (paramString1.getModuleEvent() != null) && (paramString3.equals("2"))) {
+      this.mJsBizAdapter.getModuleEvent().post(new RoomCloseEvent((short)1001));
     }
   }
   
-  public void onDestroy()
+  @VasWebviewJsPluginV2.JsbridgeSubscribe(args="visible", method="notifyVisibility")
+  public void notifyVisibility(int paramInt)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("notifyVisibility visible = ");
+    ((StringBuilder)localObject).append(paramInt);
+    localObject = ((StringBuilder)localObject).toString();
+    boolean bool = true;
+    QLog.e("QQIliveJsPlugin", 1, (String)localObject);
+    localObject = new Bundle();
+    if (paramInt != 1) {
+      bool = false;
+    }
+    ((Bundle)localObject).putBoolean("webview_visible", bool);
+    IliveLiteEventCenter.a().a("ACTION_WEBVIEW_VISIBILITY", (Bundle)localObject);
+  }
+  
+  protected void onDestroy()
   {
     super.onDestroy();
     IliveLiteEventCenter.a().b(this.mObserver);
@@ -168,6 +219,22 @@ public class QQIliveJsPlugin
     }
   }
   
+  @VasWebviewJsPluginV2.JsbridgeSubscribe(args="url", method="reload")
+  public void reload(String paramString)
+  {
+    QLog.e("QQIliveJsPlugin", 1, "reload");
+    Bundle localBundle = new Bundle();
+    localBundle.putString("reload_url", paramString);
+    IliveLiteEventCenter.a().a("ACTION_WEBVIEW_RELOAD", localBundle);
+  }
+  
+  @VasWebviewJsPluginV2.JsbridgeSubscribe(args="", method="showGuide")
+  public void showGuide()
+  {
+    QLog.e("IliveGuideModule", 1, "showGuide js");
+    IliveLiteEventCenter.a().a("ACTION_SHOW_GUIDE", null);
+  }
+  
   @VasWebviewJsPluginV2.JsbridgeSubscribe(args="roomid", method="switchLiveRoom")
   public void switchLiveRoom(String paramString)
   {
@@ -175,10 +242,22 @@ public class QQIliveJsPlugin
     paramString = new IliveJumpParams(BaseApplicationImpl.getContext(), "", paramString, "", false, null, "", 99);
     IliveLiteHelper.a().a(paramString);
   }
+  
+  @VasWebviewJsPluginV2.JsbridgeSubscribe(args="callback", method="switchRoomListener")
+  public void switchRoomListener(String paramString)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("switchRoomListener callback = ");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.e("QQIliveJsPlugin", 1, ((StringBuilder)localObject).toString());
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("callback_id", paramString);
+    IliveLiteEventCenter.a().a("ACTION_WEBVIEW_SET_SWITCH", (Bundle)localObject);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QQIliveJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -9,10 +9,11 @@ public class RecentFaceDecoderProxy
   
   public static Drawable a(BaseQQAppInterface paramBaseQQAppInterface, int paramInt, String paramString)
   {
-    if (a == null) {
+    RecentFaceDecoderProxy.Proxy localProxy = a;
+    if (localProxy == null) {
       return null;
     }
-    return a.a(paramBaseQQAppInterface, paramInt, paramString);
+    return localProxy.a(paramBaseQQAppInterface, paramInt, paramString);
   }
   
   public static void a(RecentFaceDecoderProxy.Proxy paramProxy)
@@ -22,7 +23,7 @@ public class RecentFaceDecoderProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.proxy.business.RecentFaceDecoderProxy
  * JD-Core Version:    0.7.0.1
  */

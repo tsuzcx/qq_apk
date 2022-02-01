@@ -30,18 +30,18 @@ public final class OperatorZipIterable<T1, T2, R>
         localObject = Subscribers.empty();
         return localObject;
       }
+      return new OperatorZipIterable.1(this, paramSubscriber, paramSubscriber, (Iterator)localObject);
     }
     catch (Throwable localThrowable)
     {
       Exceptions.throwOrReport(localThrowable, paramSubscriber);
-      return Subscribers.empty();
     }
-    return new OperatorZipIterable.1(this, paramSubscriber, paramSubscriber, localThrowable);
+    return Subscribers.empty();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorZipIterable
  * JD-Core Version:    0.7.0.1
  */

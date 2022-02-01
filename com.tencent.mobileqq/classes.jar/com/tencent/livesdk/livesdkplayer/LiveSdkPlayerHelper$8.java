@@ -9,12 +9,15 @@ class LiveSdkPlayerHelper$8
   
   public void onSeekComplete(IMediaPlayerMgr paramIMediaPlayerMgr)
   {
-    TPLogUtil.i("LiveSdkPlayerHelper", "onSeekComplete: " + paramIMediaPlayerMgr.getCurrentPositionMs());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onSeekComplete: ");
+    localStringBuilder.append(paramIMediaPlayerMgr.getCurrentPositionMs());
+    TPLogUtil.i("LiveSdkPlayerHelper", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.livesdkplayer.LiveSdkPlayerHelper.8
  * JD-Core Version:    0.7.0.1
  */

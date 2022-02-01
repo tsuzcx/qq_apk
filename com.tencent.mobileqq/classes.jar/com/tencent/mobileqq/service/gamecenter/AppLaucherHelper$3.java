@@ -20,37 +20,40 @@ class AppLaucherHelper$3
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 0)
     {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.b = true;
-      if (this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent != null)
+      if (i != 1) {
+        return;
+      }
+      paramMessage = this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper;
+      paramMessage.b = true;
+      if (paramMessage.jdField_a_of_type_MqqAppNewIntent != null)
       {
         this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
         this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent = null;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d(getClass().getSimpleName(), 2, "lauchApp time out");
-      }
-      paramMessage = AppLaucherHelper.a(this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString);
-      AppUtil.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramMessage, this.jdField_a_of_type_Int);
-      AppLaucherHelper.jdField_a_of_type_Boolean = false;
+      AppLaucherHelper.a(this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.b, this.c, this.jdField_a_of_type_JavaLangString, "", this.jdField_a_of_type_Int);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.b = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent != null)
+    paramMessage = this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper;
+    paramMessage.b = true;
+    if (paramMessage.jdField_a_of_type_MqqAppNewIntent != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
       this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent = null;
     }
-    AppLaucherHelper.a(this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.b, this.c, this.jdField_a_of_type_JavaLangString, "", this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d(getClass().getSimpleName(), 2, "lauchApp time out");
+    }
+    paramMessage = AppLaucherHelper.a(this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString);
+    AppUtil.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramMessage, this.jdField_a_of_type_Int);
+    AppLaucherHelper.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.gamecenter.AppLaucherHelper.3
  * JD-Core Version:    0.7.0.1
  */

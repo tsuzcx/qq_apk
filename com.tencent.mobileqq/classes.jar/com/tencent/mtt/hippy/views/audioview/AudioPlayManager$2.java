@@ -15,25 +15,19 @@ class AudioPlayManager$2
     paramMediaPlayer = (AudioPlayManager.AudioManagerListener)AudioPlayManager.access$100(this.this$0).get(AudioPlayManager.access$000(this.this$0));
     AudioPlayManager.access$400(this.this$0).seekTo(i);
     AudioPlayManager.access$400(this.this$0).start();
-    if (paramMediaPlayer != null)
-    {
-      if (i != 0) {
-        break label99;
+    if (paramMediaPlayer != null) {
+      if (i == 0) {
+        paramMediaPlayer.onPlayStart(AudioPlayManager.access$200(this.this$0));
+      } else {
+        paramMediaPlayer.onPlayResume(AudioPlayManager.access$200(this.this$0));
       }
-      paramMediaPlayer.onPlayStart(AudioPlayManager.access$200(this.this$0));
     }
-    for (;;)
-    {
-      AudioPlayManager.access$500(this.this$0);
-      return;
-      label99:
-      paramMediaPlayer.onPlayResume(AudioPlayManager.access$200(this.this$0));
-    }
+    AudioPlayManager.access$500(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.audioview.AudioPlayManager.2
  * JD-Core Version:    0.7.0.1
  */

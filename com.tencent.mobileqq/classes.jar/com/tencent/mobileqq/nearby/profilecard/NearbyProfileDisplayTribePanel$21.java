@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import com.tencent.mobileqq.nearby.NearbyLikeLimitManager.onDoVoteListener;
+import com.tencent.mobileqq.nearby.INearbyLikeLimitManager.onDoVoteListener;
 
 class NearbyProfileDisplayTribePanel$21
-  implements NearbyLikeLimitManager.onDoVoteListener
+  implements INearbyLikeLimitManager.onDoVoteListener
 {
   NearbyProfileDisplayTribePanel$21(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
   
@@ -15,7 +15,7 @@ class NearbyProfileDisplayTribePanel$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.21
  * JD-Core Version:    0.7.0.1
  */

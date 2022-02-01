@@ -9,21 +9,22 @@ class ArkAiAppPanel$3
 {
   ArkAiAppPanel$3(ArkAiAppPanel paramArkAiAppPanel) {}
   
-  public void a()
+  public void a() {}
+  
+  public void b()
   {
     boolean bool = ((ArkAioContainerWrapper)ArkAiAppPanel.a(this.a).get(ArkAiAppPanel.a(this.a))).checkShare();
     if (bool != ArkAiAppPanel.a(this.a))
     {
       ArkAiAppPanel.a(this.a, bool);
-      ArkAiAppPanel.a(this.a, ArkAiAppPanel.a(this.a));
+      ArkAiAppPanel localArkAiAppPanel = this.a;
+      ArkAiAppPanel.a(localArkAiAppPanel, ArkAiAppPanel.a(localArkAiAppPanel));
     }
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkAiAppPanel.3
  * JD-Core Version:    0.7.0.1
  */

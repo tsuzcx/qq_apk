@@ -24,18 +24,21 @@ public class RecentDataListManagerInjector
     while (paramList.hasNext())
     {
       RecentUser localRecentUser = (RecentUser)paramList.next();
-      switch (localRecentUser.getType())
+      int i = localRecentUser.getType();
+      if (i != 0)
       {
-      default: 
-        break;
-      case 0: 
+        if (i != 1)
+        {
+          if (i == 3000) {
+            localArrayList3.add(localRecentUser.uin);
+          }
+        }
+        else {
+          localArrayList2.add(localRecentUser.uin);
+        }
+      }
+      else {
         localArrayList1.add(localRecentUser.uin);
-        break;
-      case 1: 
-        localArrayList2.add(localRecentUser.uin);
-        break;
-      case 3000: 
-        localArrayList3.add(localRecentUser.uin);
       }
     }
     TraceUtils.traceEnd();
@@ -52,7 +55,7 @@ public class RecentDataListManagerInjector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentDataListManagerInjector
  * JD-Core Version:    0.7.0.1
  */

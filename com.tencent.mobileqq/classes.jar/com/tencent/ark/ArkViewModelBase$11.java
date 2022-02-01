@@ -10,14 +10,15 @@ class ArkViewModelBase$11
     ArkVsync.getInstance().removeFrameCallback(this.this$0);
     if (this.this$0.mContainer != null)
     {
-      ArkViewModelBase.ENV.logD("ArkApp.ArkViewModelBase", String.format("ArkViewModelBase.destroy.delete.container.this.%h.container.%h", new Object[] { this, this.this$0.mContainer }));
+      Logger.logD("ArkApp.ViewModel", String.format("ArkViewModelBase.destroy.delete.container.this.%h.container.%h", new Object[] { this, this.this$0.mContainer }));
       this.this$0.mContainer.DeletePtr();
       this.this$0.mContainer = null;
     }
     if (this.this$0.mApplication != null)
     {
-      ArkViewModelBase.ENV.logD("ArkApp.ArkViewModelBase", String.format("ArkViewModelBase.destroy.release.application=%h.this=%h", new Object[] { this.this$0.mApplication, this }));
-      this.this$0.applicationRelease(this.this$0.mApplication);
+      Logger.logD("ArkApp.ViewModel", String.format("ArkViewModelBase.destroy.release.application=%h.this=%h", new Object[] { this.this$0.mApplication, this }));
+      ArkViewModelBase localArkViewModelBase = this.this$0;
+      localArkViewModelBase.applicationRelease(localArkViewModelBase.mApplication);
       this.this$0.mApplication.Release();
       this.this$0.mApplication = null;
     }

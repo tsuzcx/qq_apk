@@ -35,12 +35,8 @@ class StudyRoomLoadingFragment$WeakCallback
   
   public void onEnterComplete()
   {
-    StudyRoomLoadingFragment localStudyRoomLoadingFragment = (StudyRoomLoadingFragment)this.a.get();
-    if (localStudyRoomLoadingFragment != null)
-    {
-      StudyRoomLoadingFragment.a(localStudyRoomLoadingFragment);
-      localStudyRoomLoadingFragment.a();
-    }
+    QLog.d("studyroom.StudyRoomLoadingFragment", 4, "onEnterComplete");
+    ThreadManager.getUIHandler().postDelayed(new StudyRoomLoadingFragment.WeakCallback.3(this), 2000L);
   }
   
   public void onShowLoadingView(View paramView)
@@ -51,7 +47,7 @@ class StudyRoomLoadingFragment$WeakCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.ui.StudyRoomLoadingFragment.WeakCallback
  * JD-Core Version:    0.7.0.1
  */

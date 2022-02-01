@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.WindowManager.LayoutParams;
 import com.tencent.falco.base.floatwindow.widget.LiveFloatWindowManager;
 import com.tencent.falco.utils.ThreadCenter;
+import com.tencent.falco.utils.ThreadCenter.HandlerKeyable;
 import com.tencent.falco.utils.UIUtil;
 
 class FloatWindowComponentImpl$3
@@ -14,24 +15,28 @@ class FloatWindowComponentImpl$3
   
   public void run()
   {
-    WindowManager.LayoutParams localLayoutParams = LiveFloatWindowManager.getInstance().getParams("FloatWindowComponentImpl");
-    if ((localLayoutParams != null) && (FloatWindowComponentImpl.access$400(this.this$0) != null))
+    Object localObject = LiveFloatWindowManager.getInstance().getParams("FloatWindowComponentImpl");
+    if ((localObject != null) && (FloatWindowComponentImpl.access$400(this.this$0) != null))
     {
-      int i = localLayoutParams.x;
-      Log.d("FloatWindowComponent", "viewApp.getX()=" + i);
+      int i = ((WindowManager.LayoutParams)localObject).x;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("viewApp.getX()=");
+      localStringBuilder.append(i);
+      Log.d("FloatWindowComponent", localStringBuilder.toString());
       if (i > UIUtil.getScreenWidth(FloatWindowComponentImpl.access$400(this.this$0).getApplicationContext()))
       {
         i = LiveFloatWindowManager.getInstance().getWidth("FloatWindowComponentImpl");
-        localLayoutParams.x = (UIUtil.getScreenWidth(FloatWindowComponentImpl.access$400(this.this$0).getApplicationContext()) - i);
-        LiveFloatWindowManager.getInstance().updateParams("FloatWindowComponentImpl", localLayoutParams);
+        ((WindowManager.LayoutParams)localObject).x = (UIUtil.getScreenWidth(FloatWindowComponentImpl.access$400(this.this$0).getApplicationContext()) - i);
+        LiveFloatWindowManager.getInstance().updateParams("FloatWindowComponentImpl", (WindowManager.LayoutParams)localObject);
       }
     }
-    ThreadCenter.postDelayedUITask(this.this$0, this.this$0.loacationRunnable, 2000L);
+    localObject = this.this$0;
+    ThreadCenter.postDelayedUITask((ThreadCenter.HandlerKeyable)localObject, ((FloatWindowComponentImpl)localObject).loacationRunnable, 2000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.uicomponent.floatwindowcomponent.FloatWindowComponentImpl.3
  * JD-Core Version:    0.7.0.1
  */

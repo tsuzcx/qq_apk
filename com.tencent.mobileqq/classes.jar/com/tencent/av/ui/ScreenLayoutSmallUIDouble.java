@@ -33,35 +33,23 @@ public class ScreenLayoutSmallUIDouble
   
   public void a(GLVideoView[] paramArrayOfGLVideoView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
   {
-    boolean bool;
-    if (!this.a.getCurrentAccountUin().equals(paramArrayOfGLVideoView[1].a(0)))
-    {
-      bool = true;
-      AVLog.printColorLog("ScreenLayoutSmallUIDouble", "layoutCommon: " + paramBoolean + "|" + bool);
-      if (!bool) {
-        break label112;
-      }
-      if (paramBoolean) {
-        break label94;
-      }
-      paramBoolean = true;
+    boolean bool2 = this.a.getCurrentAccountUin().equals(paramArrayOfGLVideoView[1].a(0)) ^ true;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("layoutCommon: ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("|");
+    localStringBuilder.append(bool2);
+    AVLog.printColorLog("ScreenLayoutSmallUIDouble", localStringBuilder.toString());
+    boolean bool1 = paramBoolean;
+    if (bool2) {
+      bool1 = paramBoolean ^ true;
     }
-    label94:
-    label112:
-    for (;;)
+    if (bool1)
     {
-      if (paramBoolean)
-      {
-        a(paramArrayOfGLVideoView[0], paramArrayOfGLVideoView[1], paramInt1);
-        return;
-        bool = false;
-        break;
-        paramBoolean = false;
-        continue;
-      }
-      a(paramArrayOfGLVideoView[1], paramArrayOfGLVideoView[0], paramInt1);
+      a(paramArrayOfGLVideoView[0], paramArrayOfGLVideoView[1], paramInt1);
       return;
     }
+    a(paramArrayOfGLVideoView[1], paramArrayOfGLVideoView[0], paramInt1);
   }
   
   public boolean b()
@@ -71,7 +59,7 @@ public class ScreenLayoutSmallUIDouble
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.ScreenLayoutSmallUIDouble
  * JD-Core Version:    0.7.0.1
  */

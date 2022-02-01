@@ -11,10 +11,11 @@ public class ArrayUtils
   
   public static <T> boolean a(T[] paramArrayOfT, T paramT)
   {
-    if ((paramArrayOfT == null) || (paramT == null)) {}
-    for (;;)
+    if (paramArrayOfT != null)
     {
-      return false;
+      if (paramT == null) {
+        return false;
+      }
       int j = paramArrayOfT.length;
       int i = 0;
       while (i < j)
@@ -26,11 +27,12 @@ public class ArrayUtils
         i += 1;
       }
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.ArrayUtils
  * JD-Core Version:    0.7.0.1
  */

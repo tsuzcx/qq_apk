@@ -7,7 +7,7 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import com.tencent.mobileqq.phonecontact.api.IContactSyncService;
 import com.tencent.qphone.base.util.QLog;
 import friendlist.GetOnlineInfoResp;
 
@@ -16,156 +16,141 @@ class ContactSyncJumpActivity$2
 {
   ContactSyncJumpActivity$2(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  public void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
-    int j = -10000;
-    if ((!paramString.equals(ContactSyncJumpActivity.a(this.a))) && (!paramString.equals(ContactSyncJumpActivity.b(this.a) + ContactSyncJumpActivity.c(this.a)))) {}
-    label103:
-    int i;
-    label132:
-    label161:
-    label189:
-    label216:
-    label358:
-    label364:
-    label372:
-    label380:
-    do
+    Object localObject;
+    if (!paramString.equals(ContactSyncJumpActivity.a(this.a)))
     {
-      return;
-      boolean bool;
-      if (QLog.isColorLevel())
-      {
-        paramString = new StringBuilder();
-        paramString.append("onGetOnlineInfo | isSuccess = ").append(paramBoolean);
-        localObject = paramString.append(" | resp = ");
-        if (paramGetOnlineInfoResp == null) {
-          break label358;
-        }
-        bool = true;
-        ((StringBuilder)localObject).append(bool);
-        localObject = paramString.append(" | resp.result = ");
-        if (paramGetOnlineInfoResp == null) {
-          break label364;
-        }
-        i = paramGetOnlineInfoResp.result;
-        ((StringBuilder)localObject).append(i);
-        localObject = paramString.append(" | resp.errorCode = ");
-        if (paramGetOnlineInfoResp == null) {
-          break label372;
-        }
-        i = paramGetOnlineInfoResp.errorCode;
-        ((StringBuilder)localObject).append(i);
-        localObject = paramString.append(" | resp.iTermType = ");
-        if (paramGetOnlineInfoResp == null) {
-          break label380;
-        }
-        paramLong = paramGetOnlineInfoResp.iTermType;
-        ((StringBuilder)localObject).append(paramLong);
-        localObject = paramString.append(" | resp.status = ");
-        if (paramGetOnlineInfoResp == null) {
-          break label387;
-        }
-        paramLong = paramGetOnlineInfoResp.dwStatus;
-        ((StringBuilder)localObject).append(paramLong);
-        localObject = paramString.append(" | resp.ability = ");
-        if (paramGetOnlineInfoResp == null) {
-          break label394;
-        }
-      }
-      for (paramLong = paramGetOnlineInfoResp.uAbiFlag;; paramLong = -10000L)
-      {
-        ((StringBuilder)localObject).append(paramLong);
-        localObject = paramString.append(" | resp.network = ");
-        i = j;
-        if (paramGetOnlineInfoResp != null) {
-          i = paramGetOnlineInfoResp.eNetworkType;
-        }
-        ((StringBuilder)localObject).append(i);
-        QLog.d("ContactSync.JumpActivity", 2, paramString.toString());
-        if ((paramBoolean) && (paramGetOnlineInfoResp != null)) {
-          break label401;
-        }
-        if ((this.a.jdField_a_of_type_AndroidAppDialog == null) || (this.a.jdField_a_of_type_Int != 2)) {
-          break;
-        }
-        paramString = (TextView)this.a.jdField_a_of_type_AndroidAppDialog.findViewById(2131365841);
-        paramString.setText(2131698658);
-        paramString.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(ContactSyncJumpActivity.b(this.a));
+      ((StringBuilder)localObject).append(ContactSyncJumpActivity.c(this.a));
+      if (!paramString.equals(((StringBuilder)localObject).toString())) {
         return;
-        bool = false;
-        break label103;
-        i = -10000;
-        break label132;
-        i = -10000;
-        break label161;
-        paramLong = -10000L;
-        break label189;
-        paramLong = -10000L;
-        break label216;
       }
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("onGetOnlineInfo | isSuccess = ");
+      paramString.append(paramBoolean);
+      paramString.append(" | resp = ");
+      boolean bool2;
+      if (paramGetOnlineInfoResp != null) {
+        bool2 = true;
+      } else {
+        bool2 = false;
+      }
+      paramString.append(bool2);
+      paramString.append(" | resp.result = ");
+      int j = -10000;
+      if (paramGetOnlineInfoResp != null) {
+        i = paramGetOnlineInfoResp.result;
+      } else {
+        i = -10000;
+      }
+      paramString.append(i);
+      paramString.append(" | resp.errorCode = ");
+      if (paramGetOnlineInfoResp != null) {
+        i = paramGetOnlineInfoResp.errorCode;
+      } else {
+        i = -10000;
+      }
+      paramString.append(i);
+      paramString.append(" | resp.iTermType = ");
+      long l = -10000L;
+      if (paramGetOnlineInfoResp != null) {
+        paramLong = paramGetOnlineInfoResp.iTermType;
+      } else {
+        paramLong = -10000L;
+      }
+      paramString.append(paramLong);
+      paramString.append(" | resp.status = ");
+      if (paramGetOnlineInfoResp != null) {
+        paramLong = paramGetOnlineInfoResp.dwStatus;
+      } else {
+        paramLong = -10000L;
+      }
+      paramString.append(paramLong);
+      paramString.append(" | resp.ability = ");
+      paramLong = l;
+      if (paramGetOnlineInfoResp != null) {
+        paramLong = paramGetOnlineInfoResp.uAbiFlag;
+      }
+      paramString.append(paramLong);
+      paramString.append(" | resp.network = ");
+      int i = j;
+      if (paramGetOnlineInfoResp != null) {
+        i = paramGetOnlineInfoResp.eNetworkType;
+      }
+      paramString.append(i);
+      QLog.d("ContactSync.JumpActivity", 2, paramString.toString());
+    }
+    if ((paramBoolean) && (paramGetOnlineInfoResp != null))
+    {
       if (paramGetOnlineInfoResp.result == 1)
       {
-        if ((paramGetOnlineInfoResp.errorCode == 60001) || (paramGetOnlineInfoResp.errorCode == -5535))
+        if ((paramGetOnlineInfoResp.errorCode != 60001) && (paramGetOnlineInfoResp.errorCode != -5535))
         {
-          paramString = String.format(this.a.getResources().getString(2131698651), new Object[] { ContactSyncJumpActivity.d(this.a) });
-          ContactSyncJumpActivity.a(this.a).a(ContactSyncJumpActivity.e(this.a));
-          ContactSyncJumpActivity.a(this.a, 1, paramString);
+          this.a.finish();
           return;
         }
-        this.a.finish();
+        paramString = String.format(this.a.getResources().getString(2131698719), new Object[] { ContactSyncJumpActivity.d(this.a) });
+        ContactSyncJumpActivity.a(this.a).deleteSyncContact(ContactSyncJumpActivity.e(this.a));
+        ContactSyncJumpActivity.a(this.a, 1, paramString);
         return;
       }
-    } while ((this.a.jdField_a_of_type_AndroidAppDialog == null) && (this.a.jdField_a_of_type_Int != 2));
-    label387:
-    label394:
-    label401:
-    paramString = "";
-    String str1 = ContactSyncJumpActivity.a(this.a).a(paramGetOnlineInfoResp);
-    String str2 = ContactSyncJumpActivity.a(this.a).b(paramGetOnlineInfoResp);
-    if (!TextUtils.isEmpty(str1)) {
-      paramString = str1;
-    }
-    Object localObject = paramString;
-    if (!TextUtils.isEmpty(str1))
-    {
+      if ((this.a.jdField_a_of_type_AndroidAppDialog == null) && (this.a.jdField_a_of_type_Int != 2)) {
+        return;
+      }
+      String str1 = ContactSyncJumpActivity.a(this.a).getStatusDescription(paramGetOnlineInfoResp);
+      String str2 = ContactSyncJumpActivity.a(this.a).getNetworkDescription(paramGetOnlineInfoResp);
+      if (!TextUtils.isEmpty(str1)) {
+        paramString = str1;
+      } else {
+        paramString = "";
+      }
       localObject = paramString;
-      if (!TextUtils.isEmpty(str2))
+      if (!TextUtils.isEmpty(str1))
       {
-        paramString = paramString + "\n";
-        localObject = paramString + str2;
+        localObject = paramString;
+        if (!TextUtils.isEmpty(str2))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append("\n");
+          paramString = ((StringBuilder)localObject).toString();
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append(str2);
+          localObject = ((StringBuilder)localObject).toString();
+        }
+      }
+      boolean bool1 = TextUtils.isEmpty((CharSequence)localObject) ^ true;
+      if (!bool1) {
+        localObject = this.a.getResources().getString(2131698726);
+      }
+      paramString = (TextView)this.a.jdField_a_of_type_AndroidAppDialog.findViewById(2131365678);
+      paramString.setText((CharSequence)localObject);
+      paramString.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+      if ((bool1) && ((paramGetOnlineInfoResp.eNetworkType == 4) || (paramGetOnlineInfoResp.eNetworkType == 5) || (paramGetOnlineInfoResp.eNetworkType == 1)))
+      {
+        paramString = new Message();
+        paramString.what = 1000;
+        paramString.arg1 = 4;
+        ContactSyncJumpActivity.a(this.a).sendMessage(paramString);
       }
     }
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    else if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_Int == 2))
     {
-      i = 1;
-      label642:
-      if (i != 0) {
-        break label769;
-      }
-    }
-    label769:
-    for (paramString = this.a.getResources().getString(2131698658);; paramString = (String)localObject)
-    {
-      localObject = (TextView)this.a.jdField_a_of_type_AndroidAppDialog.findViewById(2131365841);
-      ((TextView)localObject).setText(paramString);
-      ((TextView)localObject).setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-      if ((i == 0) || ((paramGetOnlineInfoResp.eNetworkType != 4) && (paramGetOnlineInfoResp.eNetworkType != 5) && (paramGetOnlineInfoResp.eNetworkType != 1))) {
-        break;
-      }
-      paramString = new Message();
-      paramString.what = 1000;
-      paramString.arg1 = 4;
-      ContactSyncJumpActivity.a(this.a).sendMessage(paramString);
-      return;
-      i = 0;
-      break label642;
+      paramString = (TextView)this.a.jdField_a_of_type_AndroidAppDialog.findViewById(2131365678);
+      paramString.setText(2131698726);
+      paramString.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ContactSyncJumpActivity.2
  * JD-Core Version:    0.7.0.1
  */

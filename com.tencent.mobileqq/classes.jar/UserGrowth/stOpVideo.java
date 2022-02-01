@@ -40,26 +40,31 @@ public final class stOpVideo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.videoType, 0);
-    if (this.h5_url != null) {
-      paramJceOutputStream.write(this.h5_url, 1);
+    Object localObject = this.h5_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.schema != null) {
-      paramJceOutputStream.write(this.schema, 2);
+    localObject = this.schema;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.jump != null) {
-      paramJceOutputStream.write(this.jump, 3);
+    localObject = this.jump;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.text != null) {
-      paramJceOutputStream.write(this.text, 4);
+    localObject = this.text;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.img_url != null) {
-      paramJceOutputStream.write(this.img_url, 5);
+    localObject = this.img_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stOpVideo
  * JD-Core Version:    0.7.0.1
  */

@@ -24,8 +24,9 @@ public class TransitParam
     if (!TextUtils.isEmpty(this.a)) {
       localfn.a("policy", this.a);
     }
-    if (this.b > 0L) {
-      localfn.a("departure_time", this.b);
+    long l = this.b;
+    if (l > 0L) {
+      localfn.a("departure_time", l);
     }
     return localfn;
   }
@@ -69,7 +70,8 @@ public class TransitParam
       while (i < j)
       {
         paramPolicy = paramVarArgs[i];
-        localStringBuilder.append(",").append(paramPolicy.name());
+        localStringBuilder.append(",");
+        localStringBuilder.append(paramPolicy.name());
         i += 1;
       }
     }
@@ -79,7 +81,7 @@ public class TransitParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.lbssearch.object.param.TransitParam
  * JD-Core Version:    0.7.0.1
  */

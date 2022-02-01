@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout android:layout_width="wrap_content" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <CheckBox android:layout_gravity="center" android:id="@id/c3h" android:background="@drawable/nj" android:focusable="false" android:focusableInTouchMode="false" android:visibility="invisible" android:clickable="false" android:layout_width="24.0dip" android:layout_height="24.0dip" android:button="@null" android:contentDescription="@null" />
+    <CheckBox android:layout_gravity="center" android:id="@id/c3h" android:background="@drawable/big" android:focusable="false" android:focusableInTouchMode="false" android:visibility="invisible" android:clickable="false" android:layout_width="24.0dip" android:layout_height="24.0dip" android:button="@null" android:contentDescription="@null" />
 </FrameLayout>

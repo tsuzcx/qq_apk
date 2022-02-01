@@ -64,25 +64,27 @@ public final class TaskStackBuilder
   @NonNull
   public TaskStackBuilder addParentStack(@NonNull Activity paramActivity)
   {
-    Object localObject = null;
+    Object localObject1;
     if ((paramActivity instanceof TaskStackBuilder.SupportParentable)) {
-      localObject = ((TaskStackBuilder.SupportParentable)paramActivity).getSupportParentActivityIntent();
+      localObject1 = ((TaskStackBuilder.SupportParentable)paramActivity).getSupportParentActivityIntent();
+    } else {
+      localObject1 = null;
     }
-    if (localObject == null) {}
-    for (paramActivity = NavUtils.getParentActivityIntent(paramActivity);; paramActivity = (Activity)localObject)
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = NavUtils.getParentActivityIntent(paramActivity);
+    }
+    if (localObject2 != null)
     {
-      if (paramActivity != null)
-      {
-        ComponentName localComponentName = paramActivity.getComponent();
-        localObject = localComponentName;
-        if (localComponentName == null) {
-          localObject = paramActivity.resolveActivity(this.mSourceContext.getPackageManager());
-        }
-        addParentStack((ComponentName)localObject);
-        addNextIntent(paramActivity);
+      localObject1 = ((Intent)localObject2).getComponent();
+      paramActivity = (Activity)localObject1;
+      if (localObject1 == null) {
+        paramActivity = ((Intent)localObject2).resolveActivity(this.mSourceContext.getPackageManager());
       }
-      return this;
+      addParentStack(paramActivity);
+      addNextIntent((Intent)localObject2);
     }
+    return this;
   }
   
   public TaskStackBuilder addParentStack(ComponentName paramComponentName)
@@ -98,7 +100,11 @@ public final class TaskStackBuilder
     catch (PackageManager.NameNotFoundException paramComponentName)
     {
       Log.e("TaskStackBuilder", "Bad ComponentName while traversing activity parent metadata");
-      throw new IllegalArgumentException(paramComponentName);
+      paramComponentName = new IllegalArgumentException(paramComponentName);
+    }
+    for (;;)
+    {
+      throw paramComponentName;
     }
   }
   
@@ -151,15 +157,17 @@ public final class TaskStackBuilder
   @Nullable
   public PendingIntent getPendingIntent(int paramInt1, int paramInt2, @Nullable Bundle paramBundle)
   {
-    if (this.mIntents.isEmpty()) {
-      throw new IllegalStateException("No intents added to TaskStackBuilder; cannot getPendingIntent");
+    if (!this.mIntents.isEmpty())
+    {
+      Object localObject = this.mIntents;
+      localObject = (Intent[])((ArrayList)localObject).toArray(new Intent[((ArrayList)localObject).size()]);
+      localObject[0] = new Intent(localObject[0]).addFlags(268484608);
+      if (Build.VERSION.SDK_INT >= 16) {
+        return PendingIntent.getActivities(this.mSourceContext, paramInt1, (Intent[])localObject, paramInt2, paramBundle);
+      }
+      return PendingIntent.getActivities(this.mSourceContext, paramInt1, (Intent[])localObject, paramInt2);
     }
-    Intent[] arrayOfIntent = (Intent[])this.mIntents.toArray(new Intent[this.mIntents.size()]);
-    arrayOfIntent[0] = new Intent(arrayOfIntent[0]).addFlags(268484608);
-    if (Build.VERSION.SDK_INT >= 16) {
-      return PendingIntent.getActivities(this.mSourceContext, paramInt1, arrayOfIntent, paramInt2, paramBundle);
-    }
-    return PendingIntent.getActivities(this.mSourceContext, paramInt1, arrayOfIntent, paramInt2);
+    throw new IllegalStateException("No intents added to TaskStackBuilder; cannot getPendingIntent");
   }
   
   @Deprecated
@@ -175,22 +183,25 @@ public final class TaskStackBuilder
   
   public void startActivities(@Nullable Bundle paramBundle)
   {
-    if (this.mIntents.isEmpty()) {
-      throw new IllegalStateException("No intents added to TaskStackBuilder; cannot startActivities");
-    }
-    Intent[] arrayOfIntent = (Intent[])this.mIntents.toArray(new Intent[this.mIntents.size()]);
-    arrayOfIntent[0] = new Intent(arrayOfIntent[0]).addFlags(268484608);
-    if (!ContextCompat.startActivities(this.mSourceContext, arrayOfIntent, paramBundle))
+    if (!this.mIntents.isEmpty())
     {
-      paramBundle = new Intent(arrayOfIntent[(arrayOfIntent.length - 1)]);
-      paramBundle.addFlags(268435456);
-      this.mSourceContext.startActivity(paramBundle);
+      Object localObject = this.mIntents;
+      localObject = (Intent[])((ArrayList)localObject).toArray(new Intent[((ArrayList)localObject).size()]);
+      localObject[0] = new Intent(localObject[0]).addFlags(268484608);
+      if (!ContextCompat.startActivities(this.mSourceContext, (Intent[])localObject, paramBundle))
+      {
+        paramBundle = new Intent(localObject[(localObject.length - 1)]);
+        paramBundle.addFlags(268435456);
+        this.mSourceContext.startActivity(paramBundle);
+      }
+      return;
     }
+    throw new IllegalStateException("No intents added to TaskStackBuilder; cannot startActivities");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.TaskStackBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -34,41 +34,51 @@ class ScoreReportController$ReportData
   public ScoreReportController$ReportData()
   {
     this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "8.5.5";
+    this.jdField_b_of_type_JavaLangString = "8.7.0";
     this.jdField_c_of_type_JavaLangString = Build.MODEL;
   }
   
   public int a()
   {
-    int i2 = 0;
-    int i1;
-    if (AppNetConnInfo.isWifiConn()) {
+    boolean bool = AppNetConnInfo.isWifiConn();
+    int i1 = 3;
+    if (bool)
+    {
       i1 = 2;
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ScoreReportController", 2, "getNetType: " + i1);
-      }
-      return i1;
-      i1 = i2;
-      if (AppNetConnInfo.isMobileConn()) {
-        switch (AppNetConnInfo.getMobileInfo())
+      if (AppNetConnInfo.isMobileConn())
+      {
+        int i2 = AppNetConnInfo.getMobileInfo();
+        if (i2 == 1) {
+          break label55;
+        }
+        if (i2 != 2)
         {
-        default: 
-          i1 = i2;
-          break;
-        case 1: 
-          i1 = 3;
-          break;
-        case 2: 
+          if (i2 == 3)
+          {
+            i1 = 5;
+            break label55;
+          }
+        }
+        else
+        {
           i1 = 4;
-          break;
-        case 3: 
-          i1 = 5;
+          break label55;
         }
       }
+      i1 = 0;
     }
+    label55:
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getNetType: ");
+      localStringBuilder.append(i1);
+      QLog.d("ScoreReportController", 2, localStringBuilder.toString());
+    }
+    return i1;
   }
   
   public String a()
@@ -125,7 +135,7 @@ class ScoreReportController$ReportData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.ScoreReportController.ReportData
  * JD-Core Version:    0.7.0.1
  */

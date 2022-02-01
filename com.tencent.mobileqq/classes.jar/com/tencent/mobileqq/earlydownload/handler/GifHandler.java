@@ -24,8 +24,12 @@ public class GifHandler
   
   public void a(XmlData paramXmlData)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GifHandler", 2, "func doOnServerResp begins, respData" + paramXmlData);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("func doOnServerResp begins, respData");
+      localStringBuilder.append(paramXmlData);
+      QLog.d("GifHandler", 2, localStringBuilder.toString());
     }
   }
   
@@ -46,7 +50,7 @@ public class GifHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.GifHandler
  * JD-Core Version:    0.7.0.1
  */

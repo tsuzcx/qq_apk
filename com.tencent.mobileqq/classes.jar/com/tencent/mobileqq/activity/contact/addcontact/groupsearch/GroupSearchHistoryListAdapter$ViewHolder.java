@@ -27,19 +27,16 @@ class GroupSearchHistoryListAdapter$ViewHolder
       GroupSearchHistoryManager.a().b(GroupSearchHistoryListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchHistoryListAdapter), str);
       this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchHistoryListAdapter.a();
     }
-    for (;;)
+    else if ((paramView == this.jdField_a_of_type_AndroidViewView) && (GroupSearchHistoryListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchHistoryListAdapter) != null))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((paramView == this.jdField_a_of_type_AndroidViewView) && (GroupSearchHistoryListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchHistoryListAdapter) != null)) {
-        GroupSearchHistoryListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchHistoryListAdapter).a(str);
-      }
+      GroupSearchHistoryListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchGroupSearchHistoryListAdapter).a(str);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchHistoryListAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

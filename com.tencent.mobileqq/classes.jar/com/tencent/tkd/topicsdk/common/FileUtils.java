@@ -20,40 +20,38 @@ public final class FileUtils
   @JvmStatic
   public static final void a(@Nullable String paramString)
   {
-    if (!a.a(paramString)) {}
-    try
-    {
-      a.a(paramString);
-      return;
-    }
-    catch (IOException paramString)
-    {
-      Log.i("FileUtils", "createFileIfNotExits", (Throwable)paramString);
+    if (!a.a(paramString)) {
+      try
+      {
+        a.a(paramString);
+        return;
+      }
+      catch (IOException paramString)
+      {
+        Log.i("FileUtils", "createFileIfNotExits", (Throwable)paramString);
+      }
     }
   }
   
   @JvmStatic
   public static final long b(@Nullable String paramString)
   {
+    long l = 0L;
     if (paramString != null)
     {
       paramString = MmrExtensionsKt.a(new MediaMetadataRetriever(), paramString);
       if (paramString != null)
       {
         String str = paramString.extractMetadata(9);
-        if (str != null) {}
-        for (long l = Long.parseLong(str);; l = 0L)
-        {
-          paramString.release();
-          return l;
+        if (str != null) {
+          l = Long.parseLong(str);
         }
+        paramString.release();
+        return l;
       }
       paramString = (Void)null;
     }
-    for (;;)
-    {
-      return 0L;
-    }
+    return 0L;
   }
   
   public final long a(@Nullable String paramString)
@@ -74,43 +72,52 @@ public final class FileUtils
   public final File a(@Nullable String paramString)
   {
     paramString = new File(paramString);
-    if (!paramString.exists())
-    {
-      if ((paramString.getParentFile() == null) || (paramString.getParentFile().exists())) {
-        break label50;
+    if (!paramString.exists()) {
+      if ((paramString.getParentFile() != null) && (!paramString.getParentFile().exists()))
+      {
+        if (paramString.getParentFile().mkdirs())
+        {
+          paramString.createNewFile();
+          return paramString;
+        }
       }
-      if (paramString.getParentFile().mkdirs()) {
+      else {
         paramString.createNewFile();
       }
     }
-    return paramString;
-    label50:
-    paramString.createNewFile();
     return paramString;
   }
   
   @NotNull
   public final String a(@Nullable String paramString)
   {
-    int i;
     if (paramString != null)
     {
-      i = StringsKt.lastIndexOf$default((CharSequence)paramString, ".", 0, false, 6, null);
-      if ((i < 0) || (i >= paramString.length() - 1)) {
+      int i = StringsKt.lastIndexOf$default((CharSequence)paramString, ".", 0, false, 6, null);
+      if ((i >= 0) && (i < paramString.length() - 1))
+      {
+        int j = paramString.length();
+        if (paramString != null)
+        {
+          paramString = paramString.substring(i + 1, j);
+          Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+        }
+        else
+        {
+          throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+        }
+      }
+      else
+      {
         paramString = "";
       }
     }
-    while (paramString != null)
+    else
     {
-      return paramString;
-      int j = paramString.length();
-      if (paramString == null) {
-        throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
-      }
-      paramString = paramString.substring(i + 1, j);
-      Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-      continue;
       paramString = null;
+    }
+    if (paramString != null) {
+      return paramString;
     }
     return "";
   }
@@ -127,30 +134,30 @@ public final class FileUtils
       while (i < j)
       {
         Object localObject = arrayOfString[i];
-        localObject = new File(paramFile.getAbsoluteFile().toString() + "/" + (String)localObject);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramFile.getAbsoluteFile().toString());
+        localStringBuilder.append("/");
+        localStringBuilder.append((String)localObject);
+        localObject = new File(localStringBuilder.toString());
         a.a((File)localObject, true);
         i += 1;
       }
       if (paramBoolean) {
         a(paramFile);
       }
-      return;
     }
-    a(paramFile);
+    else
+    {
+      a(paramFile);
+    }
   }
   
   public final boolean a(@Nullable File paramFile)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramFile != null)
-    {
-      bool1 = bool2;
-      if (paramFile.exists() == true) {
-        bool1 = paramFile.delete();
-      }
+    if ((paramFile != null) && (paramFile.exists() == true)) {
+      return paramFile.delete();
     }
-    return bool1;
+    return false;
   }
   
   public final boolean a(@Nullable String paramString)
@@ -163,17 +170,16 @@ public final class FileUtils
   
   public final boolean b(@Nullable String paramString)
   {
-    boolean bool = true;
     paramString = new File(paramString);
     if (paramString.exists()) {
-      bool = paramString.delete();
+      return paramString.delete();
     }
-    return bool;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.common.FileUtils
  * JD-Core Version:    0.7.0.1
  */

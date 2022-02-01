@@ -1,8 +1,8 @@
 package com.tencent.biz.subscribe.widget.relativevideo;
 
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 import android.widget.RadioGroup;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.biz.subscribe.SubImageLoader;
 import com.tencent.biz.subscribe.fragments.SubscribeBaseBottomPersonalFragment;
 import java.util.List;
@@ -29,7 +29,7 @@ class RelativePersonalBottomView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView.2
  * JD-Core Version:    0.7.0.1
  */

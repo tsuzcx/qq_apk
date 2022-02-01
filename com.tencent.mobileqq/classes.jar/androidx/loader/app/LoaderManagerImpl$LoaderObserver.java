@@ -37,8 +37,14 @@ class LoaderManagerImpl$LoaderObserver<D>
   
   public void onChanged(@Nullable D paramD)
   {
-    if (LoaderManagerImpl.DEBUG) {
-      Log.v("LoaderManager", "  onLoadFinished in " + this.mLoader + ": " + this.mLoader.dataToString(paramD));
+    if (LoaderManagerImpl.DEBUG)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("  onLoadFinished in ");
+      localStringBuilder.append(this.mLoader);
+      localStringBuilder.append(": ");
+      localStringBuilder.append(this.mLoader.dataToString(paramD));
+      Log.v("LoaderManager", localStringBuilder.toString());
     }
     this.mCallback.onLoadFinished(this.mLoader, paramD);
     this.mDeliveredData = true;
@@ -49,8 +55,12 @@ class LoaderManagerImpl$LoaderObserver<D>
   {
     if (this.mDeliveredData)
     {
-      if (LoaderManagerImpl.DEBUG) {
-        Log.v("LoaderManager", "  Resetting: " + this.mLoader);
+      if (LoaderManagerImpl.DEBUG)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("  Resetting: ");
+        localStringBuilder.append(this.mLoader);
+        Log.v("LoaderManager", localStringBuilder.toString());
       }
       this.mCallback.onLoaderReset(this.mLoader);
     }
@@ -63,7 +73,7 @@ class LoaderManagerImpl$LoaderObserver<D>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.loader.app.LoaderManagerImpl.LoaderObserver
  * JD-Core Version:    0.7.0.1
  */

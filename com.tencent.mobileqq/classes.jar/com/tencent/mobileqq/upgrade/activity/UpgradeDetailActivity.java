@@ -61,150 +61,184 @@ public class UpgradeDetailActivity
   
   private int a(String paramString)
   {
-    j = 0;
-    i = j;
-    if (!TextUtils.isEmpty(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("UpgradeDetailActivity", 2, "supportGoMarketPhoneID,jumpMarketSupportPhone," + paramString + ",manufacture:" + Build.MANUFACTURER);
-      }
-    }
-    for (;;)
+    boolean bool = TextUtils.isEmpty(paramString);
+    int j = 0;
+    int i = j;
+    int k;
+    if (!bool)
     {
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("supportGoMarketPhoneID,jumpMarketSupportPhone,");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(",manufacture:");
+        ((StringBuilder)localObject).append(Build.MANUFACTURER);
+        QLog.i("UpgradeDetailActivity", 2, ((StringBuilder)localObject).toString());
+      }
       try
       {
         localObject = getPackageManager();
-        if ((!paramString.contains("vivo")) || (!Build.MANUFACTURER.equalsIgnoreCase("vivo"))) {
-          continue;
+        bool = paramString.contains("vivo");
+        if ((bool) && (Build.MANUFACTURER.equalsIgnoreCase("vivo")))
+        {
+          k = ((PackageManager)localObject).getPackageInfo("com.bbk.appstore", 0).versionCode;
+          if (QLog.isColorLevel())
+          {
+            paramString = new StringBuilder();
+            paramString.append("supportGoMarketPhoneID versioncode:");
+            paramString.append(k);
+            QLog.i("UpgradeDetailActivity", 2, paramString.toString());
+          }
         }
-        k = ((PackageManager)localObject).getPackageInfo("com.bbk.appstore", 0).versionCode;
-        if (QLog.isColorLevel()) {
-          QLog.i("UpgradeDetailActivity", 2, "supportGoMarketPhoneID versioncode:" + k);
+        else if ((paramString.contains("xiaomi")) && (Build.MANUFACTURER.equalsIgnoreCase("xiaomi")))
+        {
+          i = j;
+          if (((PackageManager)localObject).getPackageInfo("com.xiaomi.market", 0) != null) {
+            i = 2;
+          }
         }
-        i = j;
-        if (k >= 3100) {
-          i = 1;
+        else
+        {
+          if (paramString.contains("oppo"))
+          {
+            bool = Build.MANUFACTURER.equalsIgnoreCase("oppo");
+            if (bool)
+            {
+              k = 3;
+              try
+              {
+                paramString = ((PackageManager)localObject).getPackageInfo("com.oppo.market", 0);
+                i = j;
+                if (paramString == null) {
+                  break label601;
+                }
+                i = j;
+                if (paramString.applicationInfo == null) {
+                  break label601;
+                }
+                i = j;
+                if (!paramString.applicationInfo.enabled) {
+                  break label601;
+                }
+                int m = paramString.versionCode;
+                if (QLog.isColorLevel())
+                {
+                  paramString = new StringBuilder();
+                  paramString.append("supportGoMarketPhoneID oppo market versioncode:");
+                  paramString.append(m);
+                  QLog.i("UpgradeDetailActivity", 2, paramString.toString());
+                }
+                i = j;
+                if (m <= 6300) {
+                  break label601;
+                }
+                i = 3;
+              }
+              catch (Throwable paramString)
+              {
+                try
+                {
+                  localObject = ((PackageManager)localObject).getPackageInfo("com.heytap.market", 0);
+                  if (QLog.isColorLevel())
+                  {
+                    StringBuilder localStringBuilder = new StringBuilder();
+                    localStringBuilder.append("oppo.market exception:");
+                    localStringBuilder.append(paramString.getMessage());
+                    QLog.i("UpgradeDetailActivity", 2, localStringBuilder.toString());
+                  }
+                  if ((localObject != null) && (((PackageInfo)localObject).applicationInfo != null))
+                  {
+                    bool = ((PackageInfo)localObject).applicationInfo.enabled;
+                    if (bool)
+                    {
+                      i = k;
+                      break label408;
+                    }
+                  }
+                  i = 0;
+                }
+                catch (Throwable paramString)
+                {
+                  label408:
+                  i = j;
+                  if (!QLog.isColorLevel()) {
+                    break label601;
+                  }
+                }
+                localObject = new StringBuilder();
+                ((StringBuilder)localObject).append("heytap.market exception:");
+                ((StringBuilder)localObject).append(paramString.getMessage());
+                QLog.i("UpgradeDetailActivity", 2, ((StringBuilder)localObject).toString());
+                i = j;
+              }
+            }
+          }
+          i = j;
+          if (paramString.contains("huawei"))
+          {
+            i = j;
+            if (Build.MANUFACTURER.equalsIgnoreCase("huawei"))
+            {
+              k = ((PackageManager)localObject).getPackageInfo("com.huawei.appmarket", 0).versionCode;
+              if (QLog.isColorLevel())
+              {
+                paramString = new StringBuilder();
+                paramString.append("supportGoMarketPhoneID versioncode:");
+                paramString.append(k);
+                QLog.i("UpgradeDetailActivity", 2, paramString.toString());
+              }
+              i = j;
+              if (k >= 80003300) {
+                i = 4;
+              }
+            }
+          }
         }
       }
       catch (Exception paramString)
       {
-        Object localObject;
-        boolean bool;
         i = j;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("UpgradeDetailActivity", 2, "supportGoMarketPhoneID exception:" + paramString.getMessage());
-        i = j;
-        continue;
-        i = j;
-        if (!paramString.contains("huawei")) {
-          continue;
-        }
-        i = j;
-        if (!Build.MANUFACTURER.equalsIgnoreCase("huawei")) {
-          continue;
-        }
-        int k = ((PackageManager)localObject).getPackageInfo("com.huawei.appmarket", 0).versionCode;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("UpgradeDetailActivity", 2, "supportGoMarketPhoneID versioncode:" + k);
-        i = j;
-        if (k < 80003300) {
-          continue;
-        }
-        i = 4;
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("UpgradeDetailActivity", 2, "supportGoMarketPhoneID returnid:" + i);
-      }
-      return i;
-      if ((paramString.contains("xiaomi")) && (Build.MANUFACTURER.equalsIgnoreCase("xiaomi")))
-      {
-        i = j;
-        if (((PackageManager)localObject).getPackageInfo("com.xiaomi.market", 0) != null) {
-          i = 2;
-        }
-      }
-      else
-      {
-        if (!paramString.contains("oppo")) {
-          continue;
-        }
-        bool = Build.MANUFACTURER.equalsIgnoreCase("oppo");
-        if (!bool) {
-          continue;
-        }
-        try
-        {
-          paramString = ((PackageManager)localObject).getPackageInfo("com.oppo.market", 0);
-          i = j;
-          if (paramString == null) {
-            continue;
-          }
-          i = j;
-          if (paramString.applicationInfo == null) {
-            continue;
-          }
-          i = j;
-          if (!paramString.applicationInfo.enabled) {
-            continue;
-          }
-          k = paramString.versionCode;
-          if (QLog.isColorLevel()) {
-            QLog.i("UpgradeDetailActivity", 2, "supportGoMarketPhoneID oppo market versioncode:" + k);
-          }
-          i = j;
-          if (k <= 6300) {
-            continue;
-          }
-          i = 3;
-        }
-        catch (Throwable paramString)
-        {
-          try
-          {
-            localObject = ((PackageManager)localObject).getPackageInfo("com.heytap.market", 0);
-            if (QLog.isColorLevel()) {
-              QLog.i("UpgradeDetailActivity", 2, "oppo.market exception:" + paramString.getMessage());
-            }
-            i = j;
-            if (localObject == null) {
-              continue;
-            }
-            i = j;
-            if (((PackageInfo)localObject).applicationInfo == null) {
-              continue;
-            }
-            bool = ((PackageInfo)localObject).applicationInfo.enabled;
-            i = j;
-            if (!bool) {
-              continue;
-            }
-            i = 3;
-          }
-          catch (Throwable paramString)
-          {
-            i = j;
-          }
-        }
         if (QLog.isColorLevel())
         {
-          QLog.i("UpgradeDetailActivity", 2, "heytap.market exception:" + paramString.getMessage());
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("supportGoMarketPhoneID exception:");
+          ((StringBuilder)localObject).append(paramString.getMessage());
+          QLog.i("UpgradeDetailActivity", 2, ((StringBuilder)localObject).toString());
           i = j;
         }
+      }
+    }
+    for (;;)
+    {
+      label601:
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("supportGoMarketPhoneID returnid:");
+        paramString.append(i);
+        QLog.i("UpgradeDetailActivity", 2, paramString.toString());
+      }
+      return i;
+      i = j;
+      if (k >= 3100) {
+        i = 1;
       }
     }
   }
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131380025);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131379354);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentSmttSdkWebView = ((ProtectedWebView)findViewById(2131380027));
+    this.jdField_a_of_type_ComTencentSmttSdkWebView = ((ProtectedWebView)findViewById(2131379356));
     WebSettings localWebSettings = this.jdField_a_of_type_ComTencentSmttSdkWebView.getSettings();
-    localWebSettings.setUserAgentString(localWebSettings.getUserAgentString() + " " + QZoneHelper.getQUA());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localWebSettings.getUserAgentString());
+    localStringBuilder.append(" ");
+    localStringBuilder.append(QZoneHelper.getQUA());
+    localWebSettings.setUserAgentString(localStringBuilder.toString());
     localWebSettings.setJavaScriptEnabled(true);
     localWebSettings.setGeolocationEnabled(true);
     localWebSettings.setCacheMode(2);
@@ -212,36 +246,36 @@ public class UpgradeDetailActivity
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebChromeClient(new UpgradeDetailActivity.TroopSeedWebChromeClient(this, null));
     this.jdField_a_of_type_ComTencentMobileqqJsbridgeJsBridge = new JsBridge();
     this.jdField_a_of_type_ComTencentMobileqqJsbridgeJsBridge.a(new UpgradeDetailActivity.JsCover(this), "qqupgrade");
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131380028));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131379357));
   }
   
   private void a(int paramInt1, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 1)
     {
-    }
-    do
-    {
-      do
+      if (paramInt1 != 2)
       {
-        do
+        if (paramInt1 != 3)
         {
-          do
-          {
+          if (paramInt1 != 4) {
             return;
-            if (paramInt2 == 1)
-            {
-              ReportController.b(null, "dc00898", "", "", "0X800AB96", "0X800AB96", 0, 0, "", "", "", "");
-              return;
-            }
-            if (paramInt2 == 2)
-            {
-              ReportController.b(null, "dc00898", "", "", "0X800AB97", "0X800AB97", 0, 0, "", "", "", "");
-              return;
-            }
-          } while (paramInt2 != 3);
-          ReportController.b(null, "dc00898", "", "", "0X800AB98", "0X800AB98", 0, 0, "", "", "", "");
-          return;
+          }
+          if (paramInt2 == 1)
+          {
+            ReportController.b(null, "dc00898", "", "", "0X800AB96", "0X800AB96", 0, 0, "", "", "", "");
+            return;
+          }
+          if (paramInt2 == 2)
+          {
+            ReportController.b(null, "dc00898", "", "", "0X800AB97", "0X800AB97", 0, 0, "", "", "", "");
+            return;
+          }
+          if (paramInt2 == 3) {
+            ReportController.b(null, "dc00898", "", "", "0X800AB98", "0X800AB98", 0, 0, "", "", "", "");
+          }
+        }
+        else
+        {
           if (paramInt2 == 1)
           {
             ReportController.b(null, "dc00898", "", "", "0X800AB99", "0X800AB99", 0, 0, "", "", "", "");
@@ -252,34 +286,44 @@ public class UpgradeDetailActivity
             ReportController.b(null, "dc00898", "", "", "0X800AB9A", "0X800AB9A", 0, 0, "", "", "", "");
             return;
           }
-        } while (paramInt2 != 3);
-        ReportController.b(null, "dc00898", "", "", "0X800AB9B", "0X800AB9B", 0, 0, "", "", "", "");
-        return;
+          if (paramInt2 == 3) {
+            ReportController.b(null, "dc00898", "", "", "0X800AB9B", "0X800AB9B", 0, 0, "", "", "", "");
+          }
+        }
+      }
+      else
+      {
         if (paramInt2 == 1)
         {
-          ReportController.b(null, "dc00898", "", "", "0X800AB9C", "0X800AB9C", 0, 0, "", "", "", "");
+          ReportController.b(null, "dc00898", "", "", "0X800AB9F", "0X800AB9F", 0, 0, "", "", "", "");
           return;
         }
         if (paramInt2 == 2)
         {
-          ReportController.b(null, "dc00898", "", "", "0X800AB9D", "0X800AB9D", 0, 0, "", "", "", "");
+          ReportController.b(null, "dc00898", "", "", "0X800ABA0", "0X800ABA0", 0, 0, "", "", "", "");
           return;
         }
-      } while (paramInt2 != 3);
-      ReportController.b(null, "dc00898", "", "", "0X800AB9E", "0X800AB9E", 0, 0, "", "", "", "");
-      return;
+        if (paramInt2 == 3) {
+          ReportController.b(null, "dc00898", "", "", "0X800ABA1", "0X800ABA1", 0, 0, "", "", "", "");
+        }
+      }
+    }
+    else
+    {
       if (paramInt2 == 1)
       {
-        ReportController.b(null, "dc00898", "", "", "0X800AB9F", "0X800AB9F", 0, 0, "", "", "", "");
+        ReportController.b(null, "dc00898", "", "", "0X800AB9C", "0X800AB9C", 0, 0, "", "", "", "");
         return;
       }
       if (paramInt2 == 2)
       {
-        ReportController.b(null, "dc00898", "", "", "0X800ABA0", "0X800ABA0", 0, 0, "", "", "", "");
+        ReportController.b(null, "dc00898", "", "", "0X800AB9D", "0X800AB9D", 0, 0, "", "", "", "");
         return;
       }
-    } while (paramInt2 != 3);
-    ReportController.b(null, "dc00898", "", "", "0X800ABA1", "0X800ABA1", 0, 0, "", "", "", "");
+      if (paramInt2 == 3) {
+        ReportController.b(null, "dc00898", "", "", "0X800AB9E", "0X800AB9E", 0, 0, "", "", "", "");
+      }
+    }
   }
   
   public static void a(Activity paramActivity, UpgradeDetailWrapper paramUpgradeDetailWrapper, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
@@ -292,7 +336,7 @@ public class UpgradeDetailActivity
     localIntent.putExtra("need_left_back", paramBoolean3);
     paramActivity.startActivity(localIntent);
     if (paramBoolean1) {
-      paramActivity.overridePendingTransition(2130771981, 2130771982);
+      paramActivity.overridePendingTransition(2130771993, 2130771994);
     }
   }
   
@@ -301,109 +345,133 @@ public class UpgradeDetailActivity
     Object localObject1;
     Intent localIntent;
     Object localObject4;
-    String str;
-    switch (paramInt)
-    {
-    default: 
-    case 1: 
-    case 2: 
-      do
+    if (paramInt != 1) {
+      if (paramInt != 2)
       {
-        do
+        if (paramInt != 3)
         {
-          return;
-          localObject1 = new Intent();
-          ((Intent)localObject1).setData(Uri.parse("vivomarket://details?id=" + "com.tencent.mobileqq" + "&th_name=self_update"));
-          ((Intent)localObject1).setPackage("com.bbk.appstore");
+          if (paramInt != 4) {
+            return;
+          }
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("hiapplink://com.huawei.appmarket?appId=C9319&accessID=%2F687abcc2447f49059f0c8873390a1686&caller=");
+          ((StringBuilder)localObject1).append("com.tencent.mobileqq");
+          localObject1 = new Intent("android.intent.action.VIEW", Uri.parse(((StringBuilder)localObject1).toString()));
+          ((Intent)localObject1).setPackage("com.huawei.appmarket");
           ((Intent)localObject1).setFlags(335544320);
           ((Intent)localObject1).putExtra("big_brother_source_key", "biz_src_jc_appstore");
           paramContext.startActivity((Intent)localObject1);
-        } while (!QLog.isColorLevel());
-        QLog.i("UpgradeDetailActivity", 2, "jumpToPhoneMarketDetailUpdate vivo");
+          if (!QLog.isColorLevel()) {
+            break label615;
+          }
+          QLog.i("UpgradeDetailActivity", 2, "jumpToPhoneMarketDetailUpdate huawei");
+          return;
+        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("market://details?id=");
+        ((StringBuilder)localObject1).append("com.tencent.mobileqq");
+        ((StringBuilder)localObject1).append("&caller=");
+        ((StringBuilder)localObject1).append("com.tencent.mobileqq");
+        ((StringBuilder)localObject1).append("&token=273b98f0a5b2c20d&atd=true&style=0");
+        localIntent = new Intent("android.intent.action.VIEW", Uri.parse(((StringBuilder)localObject1).toString()));
+        localObject4 = paramContext.getPackageManager();
+        localObject3 = "";
+      }
+    }
+    try
+    {
+      PackageInfo localPackageInfo = ((PackageManager)localObject4).getPackageInfo("com.oppo.market", 0);
+      localObject1 = localObject3;
+      if (localPackageInfo != null)
+      {
+        localObject1 = localObject3;
+        if (localPackageInfo.applicationInfo != null)
+        {
+          bool = localPackageInfo.applicationInfo.enabled;
+          localObject1 = localObject3;
+          if (bool) {
+            localObject1 = "com.oppo.market";
+          }
+        }
+      }
+    }
+    catch (Throwable localThrowable1)
+    {
+      boolean bool;
+      label258:
+      label313:
+      label615:
+      break label258;
+    }
+    try
+    {
+      localObject4 = ((PackageManager)localObject4).getPackageInfo("com.heytap.market", 0);
+      localObject1 = localObject3;
+      if (localObject4 != null)
+      {
+        localObject1 = localObject3;
+        if (((PackageInfo)localObject4).applicationInfo != null)
+        {
+          bool = ((PackageInfo)localObject4).applicationInfo.enabled;
+          localObject1 = localObject3;
+          if (bool) {
+            localObject1 = "com.heytap.market";
+          }
+        }
+      }
+    }
+    catch (Throwable localThrowable2)
+    {
+      Object localObject2 = localObject3;
+      break label313;
+    }
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      localIntent.setPackage((String)localObject1);
+      localIntent.setFlags(270532608);
+      localIntent.putExtra("big_brother_source_key", "biz_src_jc_appstore");
+      paramContext.startActivity(localIntent);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("jumpToPhoneMarketDetailUpdate oppo,oppopkg:");
+      paramContext.append((String)localObject1);
+      QLog.i("UpgradeDetailActivity", 2, paramContext.toString());
+      return;
+      localObject1 = new Intent();
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("mimarket://details?id=");
+      ((StringBuilder)localObject3).append("com.tencent.mobileqq");
+      ((StringBuilder)localObject3).append("&ref=com.tencent.mobileqq_selfupdate&startDownload=true");
+      ((Intent)localObject1).setData(Uri.parse(((StringBuilder)localObject3).toString()));
+      ((Intent)localObject1).setPackage("com.xiaomi.market");
+      ((Intent)localObject1).setFlags(335544320);
+      ((Intent)localObject1).putExtra("big_brother_source_key", "biz_src_jc_appstore");
+      paramContext.startActivity((Intent)localObject1);
+      if (QLog.isColorLevel())
+      {
+        QLog.i("UpgradeDetailActivity", 2, "jumpToPhoneMarketDetailUpdate xiaomi");
         return;
         localObject1 = new Intent();
-        ((Intent)localObject1).setData(Uri.parse("mimarket://details?id=" + "com.tencent.mobileqq" + "&ref=com.tencent.mobileqq_selfupdate&startDownload=true"));
-        ((Intent)localObject1).setPackage("com.xiaomi.market");
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("vivomarket://details?id=");
+        ((StringBuilder)localObject3).append("com.tencent.mobileqq");
+        ((StringBuilder)localObject3).append("&th_name=self_update");
+        ((Intent)localObject1).setData(Uri.parse(((StringBuilder)localObject3).toString()));
+        ((Intent)localObject1).setPackage("com.bbk.appstore");
         ((Intent)localObject1).setFlags(335544320);
         ((Intent)localObject1).putExtra("big_brother_source_key", "biz_src_jc_appstore");
         paramContext.startActivity((Intent)localObject1);
-      } while (!QLog.isColorLevel());
-      QLog.i("UpgradeDetailActivity", 2, "jumpToPhoneMarketDetailUpdate xiaomi");
-      return;
-    case 3: 
-      localIntent = new Intent("android.intent.action.VIEW", Uri.parse("market://details?id=" + "com.tencent.mobileqq" + "&caller=" + "com.tencent.mobileqq" + "&token=273b98f0a5b2c20d&atd=true&style=0"));
-      localObject4 = paramContext.getPackageManager();
-      str = "";
-    }
-    for (;;)
-    {
-      try
-      {
-        PackageInfo localPackageInfo = ((PackageManager)localObject4).getPackageInfo("com.oppo.market", 0);
-        localObject1 = str;
-        if (localPackageInfo != null)
-        {
-          localObject1 = str;
-          if (localPackageInfo.applicationInfo != null)
-          {
-            localObject1 = str;
-            if (localPackageInfo.applicationInfo.enabled) {
-              localObject1 = "com.oppo.market";
-            }
-          }
+        if (QLog.isColorLevel()) {
+          QLog.i("UpgradeDetailActivity", 2, "jumpToPhoneMarketDetailUpdate vivo");
         }
-        if (!TextUtils.isEmpty((CharSequence)localObject1))
-        {
-          localIntent.setPackage((String)localObject1);
-          localIntent.setFlags(270532608);
-          localIntent.putExtra("big_brother_source_key", "biz_src_jc_appstore");
-          paramContext.startActivity(localIntent);
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("UpgradeDetailActivity", 2, "jumpToPhoneMarketDetailUpdate oppo,oppopkg:" + (String)localObject1);
-        return;
       }
-      catch (Throwable localThrowable1) {}
-      try
-      {
-        localObject4 = ((PackageManager)localObject4).getPackageInfo("com.heytap.market", 0);
-        localObject2 = str;
-        if (localObject4 == null) {
-          continue;
-        }
-        localObject2 = str;
-        if (((PackageInfo)localObject4).applicationInfo == null) {
-          continue;
-        }
-        localObject2 = str;
-        if (!((PackageInfo)localObject4).applicationInfo.enabled) {
-          continue;
-        }
-        localObject2 = "com.heytap.market";
-      }
-      catch (Throwable localThrowable2)
-      {
-        Object localObject2;
-        Object localObject3 = str;
-      }
-      localObject2 = new Intent("android.intent.action.VIEW", Uri.parse("hiapplink://com.huawei.appmarket?appId=C9319&accessID=%2F687abcc2447f49059f0c8873390a1686&caller=" + "com.tencent.mobileqq"));
-      ((Intent)localObject2).setPackage("com.huawei.appmarket");
-      ((Intent)localObject2).setFlags(335544320);
-      ((Intent)localObject2).putExtra("big_brother_source_key", "biz_src_jc_appstore");
-      paramContext.startActivity((Intent)localObject2);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("UpgradeDetailActivity", 2, "jumpToPhoneMarketDetailUpdate huawei");
-      return;
     }
   }
   
   private boolean a()
   {
-    boolean bool = false;
     if (this.jdField_a_of_type_ComTencentSmttSdkWebView.canGoBack()) {
       if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {
         this.jdField_a_of_type_AndroidViewView.setVisibility(8);
@@ -412,14 +480,14 @@ public class UpgradeDetailActivity
     try
     {
       this.jdField_a_of_type_ComTencentSmttSdkWebView.stopLoading();
-      label38:
+      label36:
       this.jdField_a_of_type_ComTencentSmttSdkWebView.goBack();
-      bool = true;
-      return bool;
+      return true;
+      return false;
     }
     catch (Exception localException)
     {
-      break label38;
+      break label36;
     }
   }
   
@@ -434,59 +502,72 @@ public class UpgradeDetailActivity
   
   private void b(boolean paramBoolean)
   {
-    Object localObject;
-    String str1;
-    if ((this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iIncrementUpgrade == 1))
+    Object localObject1;
+    Object localObject2;
+    if ((this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iIncrementUpgrade != 1))
     {
+      int i = a(this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_b_of_type_JavaLangString);
       if (QLog.isColorLevel())
       {
-        localObject = new StringBuilder().append("checkAndStartdownload");
-        if (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo != null) {
-          break label82;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("checkAndStartdownload market supportMarketID:");
+        ((StringBuilder)localObject1).append(i);
+        QLog.d("UpgradeDetailActivity", 2, ((StringBuilder)localObject1).toString());
+      }
+      if (i != 0)
+      {
+        if (paramBoolean) {
+          this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(100, 0, 0).sendToTarget();
         }
-      }
-      label82:
-      for (str1 = "null";; str1 = "iIncrementUpgrade==1")
-      {
-        QLog.d("UpgradeDetailActivity", 2, str1);
-        UpgradeController.a().b(false);
-        return;
-      }
-    }
-    int i = a(this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_b_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "checkAndStartdownload market supportMarketID:" + i);
-    }
-    if (i != 0)
-    {
-      if (paramBoolean) {
-        this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(100, 0, 0).sendToTarget();
-      }
-      localObject = DialogUtil.a(this, 230);
-      UpgradeDetailActivity.1 local1 = new UpgradeDetailActivity.1(this, i);
-      str1 = "";
-      switch (i)
-      {
-      }
-      for (;;)
-      {
-        String str2 = getString(2131691702, new Object[] { str1 });
-        str1 = getString(2131691700, new Object[] { str1 });
-        ((QQCustomDialog)localObject).setMessage(str2);
-        ((QQCustomDialog)localObject).setTitle(2131691704);
-        ((QQCustomDialog)localObject).setNegativeButton(2131691699, local1);
-        ((QQCustomDialog)localObject).setPositiveButton(str1, getResources().getColor(2131165381), local1);
-        ((QQCustomDialog)localObject).show();
+        localObject2 = DialogUtil.a(this, 230);
+        UpgradeDetailActivity.1 local1 = new UpgradeDetailActivity.1(this, i);
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i != 3)
+            {
+              if (i != 4) {
+                localObject1 = "";
+              } else {
+                localObject1 = getString(2131691623);
+              }
+            }
+            else {
+              localObject1 = getString(2131691625);
+            }
+          }
+          else {
+            localObject1 = getString(2131691628);
+          }
+        }
+        else {
+          localObject1 = getString(2131691627);
+        }
+        String str = getString(2131691624, new Object[] { localObject1 });
+        localObject1 = getString(2131691622, new Object[] { localObject1 });
+        ((QQCustomDialog)localObject2).setMessage(str);
+        ((QQCustomDialog)localObject2).setTitle(2131691626);
+        ((QQCustomDialog)localObject2).setNegativeButton(2131691621, local1);
+        ((QQCustomDialog)localObject2).setPositiveButton((String)localObject1, getResources().getColor(2131165349), local1);
+        ((QQCustomDialog)localObject2).show();
         a(i, 1);
         return;
-        str1 = getString(2131691706);
-        continue;
-        str1 = getString(2131691705);
-        continue;
-        str1 = getString(2131691703);
-        continue;
-        str1 = getString(2131691701);
       }
+      UpgradeController.a().b(false);
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("checkAndStartdownload");
+      if (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) {
+        localObject1 = "null";
+      } else {
+        localObject1 = "iIncrementUpgrade==1";
+      }
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.d("UpgradeDetailActivity", 2, ((StringBuilder)localObject2).toString());
     }
     UpgradeController.a().b(false);
   }
@@ -496,10 +577,19 @@ public class UpgradeDetailActivity
     if (this.jdField_a_of_type_ComTencentSmttSdkWebView == null) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "invokeDownloadStateToWebView: " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("invokeDownloadStateToWebView: ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("UpgradeDetailActivity", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript:onDownloadStateChanged(" + paramInt + ")");
+    Object localObject = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("javascript:onDownloadStateChanged(");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(")");
+    ((WebView)localObject).loadUrl(localStringBuilder.toString());
   }
   
   public void a(int paramInt, UpgradeController paramUpgradeController)
@@ -516,8 +606,12 @@ public class UpgradeDetailActivity
       this.jdField_a_of_type_ComTencentSmttSdkWebView.stopLoading();
       label7:
       this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("UpgradeDetailActivity", 2, "loadUrl: " + paramString);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("loadUrl: ");
+        localStringBuilder.append(paramString);
+        QLog.d("UpgradeDetailActivity", 2, localStringBuilder.toString());
       }
       return;
     }
@@ -556,31 +650,33 @@ public class UpgradeDetailActivity
       QLog.d("UpgradeController", 2, "UpgradeDetailActivity.finish start");
     }
     super.finish();
+    Object localObject;
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler != null)
+      localObject = this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
+      if (localObject != null)
       {
-        this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(100);
+        ((MqqWeakReferenceHandler)localObject).removeMessages(100);
         this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(101);
       }
-      if (this.jdField_a_of_type_ComTencentSmttSdkWebView == null) {}
+      localObject = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+      if (localObject == null) {}
     }
     try
     {
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript:onDestroy()");
-      label74:
-      if (this.jdField_b_of_type_Boolean) {
-        overridePendingTransition(2130771979, 2130771980);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("UpgradeController", 2, "UpgradeDetailActivity.finish stop");
-      }
-      return;
+      ((WebView)localObject).loadUrl("javascript:onDestroy()");
     }
     catch (Exception localException)
     {
-      break label74;
+      label75:
+      break label75;
+    }
+    if (this.jdField_b_of_type_Boolean) {
+      overridePendingTransition(2130771991, 2130771992);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeController", 2, "UpgradeDetailActivity.finish stop");
     }
   }
   
@@ -588,17 +684,13 @@ public class UpgradeDetailActivity
   {
     if (paramMessage.what == 100) {
       a(paramMessage.arg1);
+    } else if (paramMessage.what == 101) {
+      b(false);
     }
-    for (;;)
-    {
-      return true;
-      if (paramMessage.what == 101) {
-        b(false);
-      }
-    }
+    return true;
   }
   
-  public boolean isWrapContent()
+  protected boolean isWrapContent()
   {
     return false;
   }
@@ -622,83 +714,98 @@ public class UpgradeDetailActivity
   {
     super.onCreate(paramBundle);
     paramBundle = UpgradeController.a().a();
-    if ((paramBundle == null) || (paramBundle.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) || (paramBundle.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType <= 0))
+    if ((paramBundle != null) && (paramBundle.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo != null) && (paramBundle.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType > 0))
     {
-      finish();
-      return;
-    }
-    super.setContentView(2131563175);
-    removeWebViewLayerType();
-    Intent localIntent = getIntent();
-    this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper = ((UpgradeDetailWrapper)localIntent.getParcelableExtra("detail_wrapper"));
-    this.jdField_b_of_type_Boolean = localIntent.getBooleanExtra("is_anim", true);
-    UpgradeController.a().a(this);
-    if (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo != null)
-    {
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_b_of_type_JavaLangString;
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_Long;
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail != null) && (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.updatemethod == 4)) {
-      this.jdField_a_of_type_Long = Math.min(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.patchsize);
-    }
-    String str1 = HardCodeUtil.a(2131715766);
-    paramBundle = null;
-    String str2;
-    if (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo != null)
-    {
-      paramBundle = this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strNewUpgradeDescURL;
-      str2 = "fontSetting=" + FontSettingManager.getFontLevel();
-      if (!paramBundle.endsWith("?")) {
-        break label332;
+      super.setContentView(2131562999);
+      removeWebViewLayerType();
+      Intent localIntent = getIntent();
+      this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper = ((UpgradeDetailWrapper)localIntent.getParcelableExtra("detail_wrapper"));
+      this.jdField_b_of_type_Boolean = localIntent.getBooleanExtra("is_anim", true);
+      UpgradeController.a().a(this);
+      if (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo != null)
+      {
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_b_of_type_JavaLangString;
+        this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_JavaLangString;
+        this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_Long;
       }
-      paramBundle = paramBundle + str2;
-    }
-    for (;;)
-    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail != null) && (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.updatemethod == 4)) {
+        this.jdField_a_of_type_Long = Math.min(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.patchsize);
+      }
+      String str = HardCodeUtil.a(2131715690);
+      paramBundle = null;
+      if (this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo != null)
+      {
+        paramBundle = this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strNewUpgradeDescURL;
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("fontSetting=");
+        ((StringBuilder)localObject).append(FontSettingManager.getFontLevel());
+        localObject = ((StringBuilder)localObject).toString();
+        StringBuilder localStringBuilder;
+        if (paramBundle.endsWith("?"))
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramBundle);
+          localStringBuilder.append((String)localObject);
+          paramBundle = localStringBuilder.toString();
+        }
+        else if (paramBundle.contains("?"))
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramBundle);
+          localStringBuilder.append("&");
+          localStringBuilder.append((String)localObject);
+          paramBundle = localStringBuilder.toString();
+        }
+        else
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramBundle);
+          localStringBuilder.append("?");
+          localStringBuilder.append((String)localObject);
+          paramBundle = localStringBuilder.toString();
+        }
+      }
       this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(this);
       if (localIntent.getBooleanExtra("download_right_now", false)) {
         this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageAtTime(101, 1500L);
       }
-      b(str1);
+      b(str);
       a();
       if (paramBundle != null) {
         a(paramBundle);
       }
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
       return;
-      label332:
-      if (paramBundle.contains("?")) {
-        paramBundle = paramBundle + "&" + str2;
-      } else {
-        paramBundle = paramBundle + "?" + str2;
-      }
     }
+    finish();
   }
   
   public void onDestroy()
   {
+    Object localObject;
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler != null)
+      localObject = this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
+      if (localObject != null)
       {
-        this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(100);
+        ((MqqWeakReferenceHandler)localObject).removeMessages(100);
         this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(101);
       }
-      if (this.jdField_a_of_type_ComTencentSmttSdkWebView == null) {}
+      localObject = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+      if (localObject == null) {}
     }
     try
     {
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript:onDestroy()");
-      label54:
+      ((WebView)localObject).loadUrl("javascript:onDestroy()");
+      label52:
       UpgradeController.a().b(this);
       super.onDestroy();
       return;
     }
     catch (Exception localException)
     {
-      break label54;
+      break label52;
     }
   }
   
@@ -710,17 +817,19 @@ public class UpgradeDetailActivity
     {
       this.jdField_a_of_type_ComTencentSmttSdkWebView.stopLoading();
       this.jdField_a_of_type_ComTencentSmttSdkWebView.clearView();
-      try
-      {
-        label27:
-        this.jdField_a_of_type_ComTencentSmttSdkWebView.destroy();
-        return;
-      }
-      catch (Exception localException1) {}
     }
-    catch (Exception localException2)
+    catch (Exception localException1)
     {
-      break label27;
+      for (;;)
+      {
+        try
+        {
+          this.jdField_a_of_type_ComTencentSmttSdkWebView.destroy();
+          return;
+        }
+        catch (Exception localException2) {}
+        localException1 = localException1;
+      }
     }
   }
   
@@ -748,7 +857,7 @@ public class UpgradeDetailActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity
  * JD-Core Version:    0.7.0.1
  */

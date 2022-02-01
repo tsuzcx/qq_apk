@@ -16,31 +16,36 @@ class GAudioMembersCtrlActivity$VideoMsgReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if ((TextUtils.isEmpty(paramIntent.getPackage())) || (!paramIntent.getPackage().equals(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getPackageName()))) {
-      if (QLog.isColorLevel()) {
-        QLog.d("GAudioMembersCtrlActivity", 2, "receive broadcast from wrong package:" + paramIntent.getPackage() + ",action:" + paramContext);
-      }
-    }
-    int i;
-    long l;
-    do
+    if ((!TextUtils.isEmpty(paramIntent.getPackage())) && (paramIntent.getPackage().equals(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getPackageName())))
     {
-      do
+      if (paramContext.equals("tencent.av.v2q.StopVideoChat"))
       {
-        return;
-      } while (!paramContext.equals("tencent.av.v2q.StopVideoChat"));
-      i = paramIntent.getIntExtra("stopReason3rd", -1);
-      l = paramIntent.getLongExtra("groupId", -1L);
-    } while ((i != 1) || (this.a.jdField_a_of_type_Long != l));
-    if (QLog.isColorLevel()) {
-      QLog.d("GAudioMembersCtrlActivity", 2, "ACTION_STOP_VIDEO_CHAT");
+        int i = paramIntent.getIntExtra("stopReason3rd", -1);
+        long l = paramIntent.getLongExtra("groupId", -1L);
+        if ((i == 1) && (this.a.jdField_a_of_type_Long == l))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("GAudioMembersCtrlActivity", 2, "ACTION_STOP_VIDEO_CHAT");
+          }
+          this.a.finish();
+        }
+      }
+      return;
     }
-    this.a.finish();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("receive broadcast from wrong package:");
+      localStringBuilder.append(paramIntent.getPackage());
+      localStringBuilder.append(",action:");
+      localStringBuilder.append(paramContext);
+      QLog.d("GAudioMembersCtrlActivity", 2, localStringBuilder.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.GAudioMembersCtrlActivity.VideoMsgReceiver
  * JD-Core Version:    0.7.0.1
  */

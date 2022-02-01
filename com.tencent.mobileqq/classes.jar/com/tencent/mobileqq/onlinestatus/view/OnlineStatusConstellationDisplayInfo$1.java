@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.onlinestatus.view;
 
 import android.os.Bundle;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.onlinestatus.BaseOnlineStatusDisplayInfo.UpdateUIListener;
 import com.tencent.mobileqq.onlinestatus.constellation.StatusExtInfoObserver;
-import org.jetbrains.annotations.Nullable;
 
 class OnlineStatusConstellationDisplayInfo$1
   extends StatusExtInfoObserver
@@ -24,7 +24,7 @@ class OnlineStatusConstellationDisplayInfo$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.OnlineStatusConstellationDisplayInfo.1
  * JD-Core Version:    0.7.0.1
  */

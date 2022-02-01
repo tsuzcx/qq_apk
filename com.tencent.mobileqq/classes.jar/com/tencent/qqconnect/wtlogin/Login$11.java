@@ -10,20 +10,17 @@ class Login$11
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (paramMessage.what == 0)
     {
-    }
-    for (;;)
-    {
-      return true;
       this.a.setResult(0);
       this.a.finish();
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqconnect.wtlogin.Login.11
  * JD-Core Version:    0.7.0.1
  */

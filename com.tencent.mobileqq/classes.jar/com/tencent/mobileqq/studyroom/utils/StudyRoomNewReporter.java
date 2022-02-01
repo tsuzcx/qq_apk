@@ -2,6 +2,7 @@ package com.tencent.mobileqq.studyroom.utils;
 
 import com.tencent.beacon.event.UserAction;
 import com.tencent.beacon.upload.TunnelInfo;
+import com.tencent.mobileqq.statistics.QQUserAction;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,18 +22,18 @@ public class StudyRoomNewReporter
     if (paramMap == null) {
       paramMap = new HashMap();
     }
-    for (;;)
-    {
-      paramMap.put("channelid", "android");
-      QLog.d("StudyRoomNewReporter", 2, "-----[" + paramString + "]");
-      UserAction.onUserActionToTunnel("0AND08QT664PZRTU", paramString, paramBoolean1, paramLong1, paramLong2, paramMap, paramBoolean2, paramBoolean3);
-      return;
-    }
+    paramMap.put("channelid", "android");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("-----[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]");
+    QLog.d("StudyRoomNewReporter", 2, localStringBuilder.toString());
+    QQUserAction.a("0AND08QT664PZRTU", paramString, paramBoolean1, paramLong1, paramLong2, paramMap, paramBoolean2, paramBoolean3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.utils.StudyRoomNewReporter
  * JD-Core Version:    0.7.0.1
  */

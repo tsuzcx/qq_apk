@@ -8,8 +8,13 @@ public class SharePreferenceUtils
 {
   public static String a(Context paramContext, String paramString)
   {
+    return a(paramContext, "c_profile_sharepreference", paramString);
+  }
+  
+  public static String a(Context paramContext, String paramString1, String paramString2)
+  {
     if (paramContext != null) {
-      return paramContext.getSharedPreferences("c_profile_sharepreference", 4).getString(paramString, "");
+      return paramContext.getSharedPreferences(paramString1, 4).getString(paramString2, "");
     }
     return "";
   }
@@ -29,16 +34,33 @@ public class SharePreferenceUtils
     b(paramContext, paramString1, paramString2);
   }
   
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3)
+  {
+    b(paramContext, paramString1, paramString2, paramString3);
+  }
+  
+  public static void b(Context paramContext, String paramString)
+  {
+    if (paramContext != null) {
+      paramContext.getSharedPreferences(paramString, 4).edit().clear().commit();
+    }
+  }
+  
   private static void b(Context paramContext, String paramString1, String paramString2)
   {
-    paramContext = paramContext.getSharedPreferences("c_profile_sharepreference", 4).edit();
-    paramContext.putString(paramString1, paramString2);
+    b(paramContext, "c_profile_sharepreference", paramString1, paramString2);
+  }
+  
+  private static void b(Context paramContext, String paramString1, String paramString2, String paramString3)
+  {
+    paramContext = paramContext.getSharedPreferences(paramString1, 4).edit();
+    paramContext.putString(paramString2, paramString3);
     paramContext.commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.SharePreferenceUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -15,9 +15,7 @@ class PluginManagerV2$CancelDownloadClickListener
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != -2) {
       return;
     }
     this.jdField_a_of_type_CooperationPluginPluginManagerV2.cancelInstall(this.jdField_a_of_type_JavaLangString);
@@ -25,7 +23,7 @@ class PluginManagerV2$CancelDownloadClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.plugin.PluginManagerV2.CancelDownloadClickListener
  * JD-Core Version:    0.7.0.1
  */

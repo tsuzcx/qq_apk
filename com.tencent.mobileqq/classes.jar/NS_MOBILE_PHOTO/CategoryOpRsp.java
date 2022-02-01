@@ -38,17 +38,19 @@ public final class CategoryOpRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 1);
+    Object localObject = this.msg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.oldkey_2_newkey != null) {
-      paramJceOutputStream.write(this.oldkey_2_newkey, 2);
+    localObject = this.oldkey_2_newkey;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.CategoryOpRsp
  * JD-Core Version:    0.7.0.1
  */

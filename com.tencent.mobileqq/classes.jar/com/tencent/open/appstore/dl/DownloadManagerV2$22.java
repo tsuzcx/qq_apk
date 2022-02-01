@@ -17,85 +17,110 @@ class DownloadManagerV2$22
   
   public void run()
   {
-    String str1;
     try
     {
-      Object localObject1 = this.a.getString(DownloadConstants.a);
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      String str1 = this.a.getString(DownloadConstants.a);
+      if (TextUtils.isEmpty(str1)) {
         return;
       }
-      localObject1 = this.this$0.a((String)localObject1);
+      Object localObject1 = this.this$0.a(str1);
       str1 = this.a.getString("PackageName");
       if (localObject1 == null)
       {
-        LogUtility.e("DownloadManagerV2", "[writeApkCodeAsync]  pkgName=" + str1 + " download info is null");
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("[writeApkCodeAsync]  pkgName=");
+        ((StringBuilder)localObject1).append(str1);
+        ((StringBuilder)localObject1).append(" download info is null");
+        LogUtility.e("DownloadManagerV2", ((StringBuilder)localObject1).toString());
+        return;
+      }
+      String str2 = this.a.getString("Code");
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[writeApkCodeAsync] pkgName=");
+      ((StringBuilder)localObject2).append(str1);
+      ((StringBuilder)localObject2).append(", code=");
+      ((StringBuilder)localObject2).append(str2);
+      LogUtility.b("DownloadManagerV2", ((StringBuilder)localObject2).toString());
+      boolean bool = TextUtils.isEmpty(str2);
+      if (bool)
+      {
+        ((DownloadInfo)localObject1).j = 0;
+        ((DownloadInfo)localObject1).a(4);
+        this.this$0.c((DownloadInfo)localObject1);
+        this.this$0.a(4, (DownloadInfo)localObject1);
+        this.this$0.a((DownloadInfo)localObject1, ((DownloadInfo)localObject1).c);
+        LogUtility.b("AppCenterReporter", "from:[writeApkCodeAsync] code is empty");
+        AppCenterReporter.b((DownloadInfo)localObject1);
+        if (!((DownloadInfo)localObject1).a) {
+          return;
+        }
+        this.this$0.a((DownloadInfo)localObject1, false);
+        return;
+      }
+      this.a.getInt("VersionCode");
+      localObject2 = new File(((DownloadInfo)localObject1).l);
+      try
+      {
+        ApkExternalInfoTool.a((File)localObject2, str2);
+        localObject2 = ApkExternalInfoTool.a((File)localObject2);
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("[writeApkCodeAsync] pkgName=");
+        localStringBuilder2.append(str1);
+        localStringBuilder2.append(",check code=");
+        localStringBuilder2.append((String)localObject2);
+        LogUtility.b("DownloadManagerV2", localStringBuilder2.toString());
+        bool = str2.equals(localObject2);
+      }
+      catch (IOException localIOException)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("[writeApkCodeAsync] Exception=");
+        ((StringBuilder)localObject2).append(localIOException.getMessage());
+        LogUtility.b("DownloadManagerV2", ((StringBuilder)localObject2).toString());
+        bool = false;
+      }
+      StringBuilder localStringBuilder1;
+      if (bool)
+      {
+        localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("[writeApkCodeAsync]  pkgName=");
+        localStringBuilder1.append(str1);
+        localStringBuilder1.append(" write code and check code suc");
+        LogUtility.b("DownloadManagerV2", localStringBuilder1.toString());
+        ((DownloadInfo)localObject1).j = 0;
+        this.this$0.c((DownloadInfo)localObject1);
+        this.this$0.a(4, (DownloadInfo)localObject1);
+        this.this$0.a((DownloadInfo)localObject1, ((DownloadInfo)localObject1).c);
+        LogUtility.b("AppCenterReporter", "from:[writeApkCodeAsync] APK_WRITE_CODE_SUC");
+        AppCenterReporter.b((DownloadInfo)localObject1);
+        if (((DownloadInfo)localObject1).a) {
+          this.this$0.a((DownloadInfo)localObject1, false);
+        }
+      }
+      else
+      {
+        localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("[writeApkCodeAsync] pkgName=");
+        localStringBuilder1.append(str1);
+        localStringBuilder1.append(" write code or check code fail");
+        LogUtility.b("DownloadManagerV2", localStringBuilder1.toString());
+        ((DownloadInfo)localObject1).j = -20;
+        ((DownloadInfo)localObject1).a(-2);
+        this.this$0.c((DownloadInfo)localObject1);
+        DownloadManagerV2.a(this.this$0, (DownloadInfo)localObject1, ((DownloadInfo)localObject1).j, null);
         return;
       }
     }
     catch (Exception localException)
     {
       LogUtility.c("DownloadManagerV2", "[writeApkCodeAsync] >>>", localException);
-      return;
     }
-    String str2 = this.a.getString("Code");
-    LogUtility.b("DownloadManagerV2", "[writeApkCodeAsync] pkgName=" + str1 + ", code=" + str2);
-    if (TextUtils.isEmpty(str2))
-    {
-      localException.j = 0;
-      localException.a(4);
-      this.this$0.c(localException);
-      this.this$0.a(4, localException);
-      this.this$0.a(localException, localException.c);
-      LogUtility.b("AppCenterReporter", "from:[writeApkCodeAsync] code is empty");
-      AppCenterReporter.b(localException);
-      if (localException.a) {
-        this.this$0.a(localException, false);
-      }
-    }
-    else
-    {
-      this.a.getInt("VersionCode");
-      Object localObject2 = new File(localException.l);
-      try
-      {
-        ApkExternalInfoTool.a((File)localObject2, str2);
-        localObject2 = ApkExternalInfoTool.a((File)localObject2);
-        LogUtility.b("DownloadManagerV2", "[writeApkCodeAsync] pkgName=" + str1 + ",check code=" + (String)localObject2);
-        bool = str2.equals(localObject2);
-        if (bool)
-        {
-          LogUtility.b("DownloadManagerV2", "[writeApkCodeAsync]  pkgName=" + str1 + " write code and check code suc");
-          localException.j = 0;
-          this.this$0.c(localException);
-          this.this$0.a(4, localException);
-          this.this$0.a(localException, localException.c);
-          LogUtility.b("AppCenterReporter", "from:[writeApkCodeAsync] APK_WRITE_CODE_SUC");
-          AppCenterReporter.b(localException);
-          if (!localException.a) {
-            return;
-          }
-          this.this$0.a(localException, false);
-        }
-      }
-      catch (IOException localIOException)
-      {
-        for (;;)
-        {
-          LogUtility.b("DownloadManagerV2", "[writeApkCodeAsync] Exception=" + localIOException.getMessage());
-          boolean bool = false;
-        }
-        LogUtility.b("DownloadManagerV2", "[writeApkCodeAsync] pkgName=" + str1 + " write code or check code fail");
-        localException.j = -20;
-        localException.a(-2);
-        this.this$0.c(localException);
-        DownloadManagerV2.a(this.this$0, localException, localException.j, null);
-      }
-    }
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.22
  * JD-Core Version:    0.7.0.1
  */

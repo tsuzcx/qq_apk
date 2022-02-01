@@ -30,10 +30,11 @@ import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 import com.tencent.mobileqq.profilecard.base.utils.ProfileCardUtils;
 import com.tencent.mobileqq.profilecard.bussiness.medalwall.ProfileMedalWallEntryInfo;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.tofumsg.DrawCircleCornerImageView;
 import com.tencent.mobileqq.tofumsg.TofuConst;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
+import com.tencent.mobileqq.webview.util.WebViewComUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -42,7 +43,7 @@ public class TofuBaseProfileItemBuilder
   implements View.OnClickListener, View.OnLayoutChangeListener
 {
   int a;
-  int c = 0;
+  int b = 0;
   int d = 0;
   int e;
   int f = 0;
@@ -53,9 +54,9 @@ public class TofuBaseProfileItemBuilder
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
     this.jdField_a_of_type_Int = 0;
     this.jdField_e_of_type_Int = 0;
-    this.d = AIOUtils.a(16.0F, paramContext.getResources());
-    this.jdField_e_of_type_Int = AIOUtils.a(108.0F, paramContext.getResources());
-    this.jdField_a_of_type_Int = (paramContext.getResources().getDisplayMetrics().widthPixels - paramContext.getResources().getDimensionPixelSize(2131296421) * 2);
+    this.d = AIOUtils.b(16.0F, paramContext.getResources());
+    this.jdField_e_of_type_Int = AIOUtils.b(108.0F, paramContext.getResources());
+    this.jdField_a_of_type_Int = (paramContext.getResources().getDisplayMetrics().widthPixels - paramContext.getResources().getDimensionPixelSize(2131296400) * 2);
     paramQQAppInterface = (BeancurdManager)paramQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER);
     if (paramQQAppInterface != null) {
       paramQQAppInterface.a(3, 9);
@@ -67,15 +68,15 @@ public class TofuBaseProfileItemBuilder
     Object localObject1 = paramView;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558936, null);
-      paramHolder.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131365294);
-      paramHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)paramView.findViewById(2131371065));
-      paramHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379432));
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558834, null);
+      paramHolder.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131365169);
+      paramHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)paramView.findViewById(2131370699));
+      paramHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378784));
       paramHolder.jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[3];
-      paramHolder.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0] = ((TextView)paramView.findViewById(2131370383));
-      paramHolder.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1] = ((TextView)paramView.findViewById(2131370384));
-      paramHolder.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2] = ((TextView)paramView.findViewById(2131370385));
-      paramHolder.c = paramView.findViewById(2131365922);
+      paramHolder.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0] = ((TextView)paramView.findViewById(2131370044));
+      paramHolder.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1] = ((TextView)paramView.findViewById(2131370045));
+      paramHolder.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2] = ((TextView)paramView.findViewById(2131370046));
+      paramHolder.c = paramView.findViewById(2131365759);
       localObject1 = paramHolder.jdField_b_of_type_AndroidWidgetTextView.getCompoundDrawables();
       int j = localObject1.length;
       int i = 0;
@@ -87,7 +88,7 @@ public class TofuBaseProfileItemBuilder
         }
         i += 1;
       }
-      paramHolder.jdField_a_of_type_ComTencentMobileqqTofumsgDrawCircleCornerImageView = ((DrawCircleCornerImageView)paramView.findViewById(2131363573));
+      paramHolder.jdField_a_of_type_ComTencentMobileqqTofumsgDrawCircleCornerImageView = ((DrawCircleCornerImageView)paramView.findViewById(2131363496));
       paramHolder.jdField_a_of_type_ComTencentMobileqqTofumsgDrawCircleCornerImageView.setRadius(this.d);
       paramHolder.jdField_a_of_type_ComTencentMobileqqTofumsgDrawCircleCornerImageView.setImageDrawable(new ColorDrawable(-657670));
       paramHolder.jdField_b_of_type_AndroidViewView.setOnTouchListener(UITools.a);
@@ -110,8 +111,8 @@ public class TofuBaseProfileItemBuilder
   
   private void a(TofuBaseProfileItemBuilder.Holder paramHolder, int paramInt1, int paramInt2)
   {
-    paramInt1 -= AIOUtils.a(30.5F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    paramInt2 = AIOUtils.a(54.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    paramInt1 -= AIOUtils.b(30.5F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    paramInt2 = AIOUtils.b(54.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     if (paramInt1 > 0)
     {
       paramHolder.jdField_a_of_type_ComTencentMobileqqTofumsgDrawCircleCornerImageView.setCircle(paramInt1, paramInt2, this.jdField_e_of_type_Int, -920839);
@@ -119,63 +120,69 @@ public class TofuBaseProfileItemBuilder
     }
   }
   
-  public View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
+  protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    int j = 8;
-    paramMessageRecord = (MessageForTofuBaseProfile)paramMessageRecord;
-    paramViewHolder = (TofuBaseProfileItemBuilder.Holder)paramViewHolder;
-    paramView = a(paramView, paramViewHolder);
-    paramViewHolder.jdField_a_of_type_Long = paramMessageRecord.uniseq;
-    paramViewHolder.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    paramLinearLayout = PLNewsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, 6);
-    paramLinearLayout = paramView.getResources().getString(2131690037, new Object[] { paramLinearLayout });
-    paramViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(paramLinearLayout);
+    paramLinearLayout = (MessageForTofuBaseProfile)paramMessageRecord;
+    paramMessageRecord = (TofuBaseProfileItemBuilder.Holder)paramViewHolder;
+    paramViewHolder = a(paramView, paramMessageRecord);
+    paramMessageRecord.jdField_a_of_type_Long = paramLinearLayout.uniseq;
+    paramMessageRecord.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+    paramView = PLNewsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, 6);
+    paramView = paramViewHolder.getResources().getString(2131689952, new Object[] { paramView });
+    paramMessageRecord.jdField_b_of_type_AndroidWidgetTextView.setText(paramView);
     int i = 0;
-    if (i < 3)
+    int j;
+    for (;;)
     {
-      if (paramViewHolder.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i] != null)
-      {
-        if (i >= paramMessageRecord.linesCnt) {
-          break label152;
-        }
-        paramLinearLayout = paramMessageRecord.lines[i];
-        paramViewHolder.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setText(paramLinearLayout);
-        paramViewHolder.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setVisibility(0);
-      }
-      for (;;)
-      {
-        i += 1;
+      j = 8;
+      if (i >= 3) {
         break;
-        label152:
-        paramViewHolder.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setText("");
-        paramViewHolder.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setVisibility(8);
       }
+      if (paramMessageRecord.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i] != null) {
+        if (i < paramLinearLayout.linesCnt)
+        {
+          paramView = paramLinearLayout.lines[i];
+          paramMessageRecord.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setText(paramView);
+          paramMessageRecord.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setVisibility(0);
+        }
+        else
+        {
+          paramMessageRecord.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setText("");
+          paramMessageRecord.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setVisibility(8);
+        }
+      }
+      i += 1;
     }
-    paramLinearLayout = paramViewHolder.c;
-    if (paramMessageRecord.linesCnt > 3) {}
-    for (i = 0;; i = 8)
+    paramView = paramMessageRecord.c;
+    if (paramLinearLayout.linesCnt > 3) {
+      i = 0;
+    } else {
+      i = 8;
+    }
+    paramView.setVisibility(i);
+    boolean bool = ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    paramView = paramMessageRecord.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
+    i = j;
+    if (bool) {
+      i = 0;
+    }
+    paramView.setVisibility(i);
+    paramMessageRecord.jdField_b_of_type_AndroidViewView.setTag(paramMessageRecord);
+    if (jdField_e_of_type_Boolean)
     {
-      paramLinearLayout.setVisibility(i);
-      boolean bool = ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      paramMessageRecord = paramViewHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-      i = j;
-      if (bool) {
-        i = 0;
-      }
-      paramMessageRecord.setVisibility(i);
-      paramViewHolder.jdField_b_of_type_AndroidViewView.setTag(paramViewHolder);
-      if (jdField_e_of_type_Boolean)
-      {
-        paramViewHolder.jdField_b_of_type_JavaLangStringBuilder.append(paramViewHolder.jdField_b_of_type_AndroidWidgetTextView).append(paramViewHolder.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0].getText()).append(paramViewHolder.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1].getText()).append(paramViewHolder.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2].getText());
-        paramView.setContentDescription(paramViewHolder.jdField_b_of_type_JavaLangStringBuilder.toString());
-      }
-      paramViewHolder.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-      TofuConst.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800AE5D", 0);
-      return paramView;
+      paramView = paramMessageRecord.jdField_b_of_type_JavaLangStringBuilder;
+      paramView.append(paramMessageRecord.jdField_b_of_type_AndroidWidgetTextView);
+      paramView.append(paramMessageRecord.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0].getText());
+      paramView.append(paramMessageRecord.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1].getText());
+      paramView.append(paramMessageRecord.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2].getText());
+      paramViewHolder.setContentDescription(paramMessageRecord.jdField_b_of_type_JavaLangStringBuilder.toString());
     }
+    paramMessageRecord.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
+    TofuConst.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800AE5D", 0);
+    return paramViewHolder;
   }
   
-  public AbstractChatItemBuilder.ViewHolder a()
+  protected AbstractChatItemBuilder.ViewHolder a()
   {
     return new TofuBaseProfileItemBuilder.Holder(this);
   }
@@ -188,15 +195,12 @@ public class TofuBaseProfileItemBuilder
   public void onClick(View paramView)
   {
     TofuBaseProfileItemBuilder.Holder localHolder = (TofuBaseProfileItemBuilder.Holder)paramView.getTag();
-    if (localHolder == null) {}
-    for (;;)
+    if (localHolder != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       Object localObject = new ProfileMedalWallEntryInfo();
       ((ProfileMedalWallEntryInfo)localObject).showMetalWall = true;
-      localObject = ProfileCardUtils.getProfileDetailUrl(localHolder.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAppid(), "android-8.5.5", null, (ProfileMedalWallEntryInfo)localObject);
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (QQBrowserActivity.checkNotFrequentlyThenEnter(500L)))
+      localObject = ProfileCardUtils.getProfileDetailUrl(localHolder.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAppid(), "android-8.7.0", null, (ProfileMedalWallEntryInfo)localObject);
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (WebViewComUtils.a(500L)))
       {
         Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
         localIntent.putExtra("url", (String)localObject);
@@ -206,11 +210,16 @@ public class TofuBaseProfileItemBuilder
         localIntent.putExtra("big_brother_source_key", "biz_src_jc_gxl");
         this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("TofuBaseProfileItemBuilder", 2, "jump profile detail:" + localHolder.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("jump profile detail:");
+        ((StringBuilder)localObject).append(localHolder.jdField_a_of_type_JavaLangString);
+        QLog.d("TofuBaseProfileItemBuilder", 2, ((StringBuilder)localObject).toString());
       }
       TofuConst.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800AE5E", 0);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
@@ -220,20 +229,18 @@ public class TofuBaseProfileItemBuilder
     if ((paramInt1 > 0) && (paramInt2 > 0) && (paramInt1 != this.f) && (paramInt2 != this.g))
     {
       paramView = (TofuBaseProfileItemBuilder.Holder)paramView.getTag();
-      if (paramView != null) {}
+      if (paramView == null) {
+        return;
+      }
+      this.f = paramInt1;
+      this.g = paramInt2;
+      a(paramView, paramInt1, paramInt2);
     }
-    else
-    {
-      return;
-    }
-    this.f = paramInt1;
-    this.g = paramInt2;
-    a(paramView, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TofuBaseProfileItemBuilder
  * JD-Core Version:    0.7.0.1
  */

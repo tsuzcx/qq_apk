@@ -9,8 +9,17 @@ public class ShareData
 {
   public int a;
   public StoryVideoItem a;
-  public Map<String, String> a = new HashMap();
-  public final String b = "Q.qqstory.share." + getClass().getSimpleName();
+  public Map<String, String> a;
+  public final String b;
+  
+  public ShareData()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Q.qqstory.share.");
+    localStringBuilder.append(getClass().getSimpleName());
+    this.b = localStringBuilder.toString();
+    this.a = new HashMap();
+  }
   
   public final void a(String paramString1, String paramString2)
   {
@@ -21,7 +30,7 @@ public class ShareData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.model.ShareData
  * JD-Core Version:    0.7.0.1
  */

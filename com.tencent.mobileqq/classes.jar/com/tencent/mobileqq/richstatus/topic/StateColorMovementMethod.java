@@ -47,57 +47,58 @@ public class StateColorMovementMethod
         paramSpannable = localObject[0];
         if (i == 1)
         {
-          if (this.jdField_a_of_type_ComTencentMobileqqTextITopic != null)
+          paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqTextITopic;
+          if (paramMotionEvent != null)
           {
-            this.jdField_a_of_type_ComTencentMobileqqTextITopic.setPressed(paramTextView, false);
+            paramMotionEvent.setPressed(paramTextView, false);
             this.jdField_a_of_type_ComTencentMobileqqTextITopic = null;
           }
           paramSpannable.onClick(paramTextView);
-        }
-        for (;;)
-        {
           return true;
-          if (i == 0)
+        }
+        if (i == 0)
+        {
+          paramSpannable.setPressed(paramTextView, true);
+          this.jdField_a_of_type_ComTencentMobileqqTextITopic = paramSpannable;
+          return true;
+        }
+        if (i == 3)
+        {
+          paramSpannable = this.jdField_a_of_type_ComTencentMobileqqTextITopic;
+          if (paramSpannable != null)
           {
-            paramSpannable.setPressed(paramTextView, true);
-            this.jdField_a_of_type_ComTencentMobileqqTextITopic = paramSpannable;
-          }
-          else if ((i == 3) && (this.jdField_a_of_type_ComTencentMobileqqTextITopic != null))
-          {
-            this.jdField_a_of_type_ComTencentMobileqqTextITopic.setPressed(paramTextView, false);
+            paramSpannable.setPressed(paramTextView, false);
             this.jdField_a_of_type_ComTencentMobileqqTextITopic = null;
           }
         }
+        return true;
       }
-      if (i != 1) {
-        break label312;
-      }
-      if (this.jdField_a_of_type_Boolean)
+      if (i == 1)
       {
-        this.jdField_a_of_type_Boolean = false;
-        paramTextView.performClick();
+        if (this.jdField_a_of_type_Boolean)
+        {
+          this.jdField_a_of_type_Boolean = false;
+          paramTextView.performClick();
+        }
       }
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqTextITopic != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTextITopic.setPressed(paramTextView, false);
-        this.jdField_a_of_type_ComTencentMobileqqTextITopic = null;
-      }
-      return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
-      label312:
-      if (i == 0) {
+      else if (i == 0) {
         this.jdField_a_of_type_Boolean = true;
       } else if (i == 3) {
         this.jdField_a_of_type_Boolean = false;
       }
+      localObject = this.jdField_a_of_type_ComTencentMobileqqTextITopic;
+      if (localObject != null)
+      {
+        ((ITopic)localObject).setPressed(paramTextView, false);
+        this.jdField_a_of_type_ComTencentMobileqqTextITopic = null;
+      }
     }
+    return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.topic.StateColorMovementMethod
  * JD-Core Version:    0.7.0.1
  */

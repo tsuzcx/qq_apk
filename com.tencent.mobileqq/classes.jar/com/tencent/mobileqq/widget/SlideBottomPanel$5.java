@@ -1,25 +1,26 @@
 package com.tencent.mobileqq.widget;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 
 class SlideBottomPanel$5
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   SlideBottomPanel$5(SlideBottomPanel paramSlideBottomPanel) {}
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener != null) {
+    paramAnimator = this.a;
+    paramAnimator.jdField_a_of_type_Boolean = false;
+    if (paramAnimator.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener != null) {
       this.a.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener.displayPanelFinish();
     }
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener != null) {
+    paramAnimator = this.a;
+    paramAnimator.jdField_a_of_type_Boolean = false;
+    if (paramAnimator.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener != null) {
       this.a.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener.displayPanelFinish();
     }
   }
@@ -33,7 +34,7 @@ class SlideBottomPanel$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SlideBottomPanel.5
  * JD-Core Version:    0.7.0.1
  */

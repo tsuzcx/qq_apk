@@ -10,7 +10,7 @@ public final class EnumAdvLimitQzaSubCmd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_SEVEN_PIECE_PUZZLE_ADV_LIMIT.EnumAdvLimitQzaSubCmd
  * JD-Core Version:    0.7.0.1
  */

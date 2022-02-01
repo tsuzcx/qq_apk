@@ -21,54 +21,45 @@ public class TextureRotationUtil
   
   private static float flip(float paramFloat)
   {
-    float f = 0.0F;
     if (paramFloat == 0.0F) {
-      f = 1.0F;
+      return 1.0F;
     }
-    return f;
+    return 0.0F;
   }
   
   public static float[] getRotation(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    Object localObject;
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      localObject = TEXTURE_NO_ROTATION2;
-      if (paramBoolean1)
+      if (paramInt != 2)
       {
-        float[] arrayOfFloat = new float[8];
-        arrayOfFloat[0] = flip(localObject[0]);
-        arrayOfFloat[1] = localObject[1];
-        arrayOfFloat[2] = flip(localObject[2]);
-        arrayOfFloat[3] = localObject[3];
-        arrayOfFloat[4] = flip(localObject[4]);
-        arrayOfFloat[5] = localObject[5];
-        arrayOfFloat[6] = flip(localObject[6]);
-        arrayOfFloat[7] = localObject[7];
-        localObject = arrayOfFloat;
+        if (paramInt != 3) {
+          localObject1 = TEXTURE_NO_ROTATION2;
+        } else {
+          localObject1 = TEXTURE_ROTATED2_270;
+        }
       }
-      break;
-    }
-    for (;;)
-    {
-      if (paramBoolean2)
-      {
-        return new float[] { localObject[0], flip(localObject[1]), localObject[2], flip(localObject[3]), localObject[4], flip(localObject[5]), localObject[6], flip(localObject[7]) };
-        localObject = TEXTURE_ROTATED2_90;
-        break;
-        localObject = TEXTURE_ROTATED2_180;
-        break;
-        localObject = TEXTURE_ROTATED2_270;
-        break;
+      else {
+        localObject1 = TEXTURE_ROTATED2_180;
       }
-      return localObject;
     }
+    else {
+      localObject1 = TEXTURE_ROTATED2_90;
+    }
+    Object localObject2 = localObject1;
+    if (paramBoolean1) {
+      localObject2 = new float[] { flip(localObject1[0]), localObject1[1], flip(localObject1[2]), localObject1[3], flip(localObject1[4]), localObject1[5], flip(localObject1[6]), localObject1[7] };
+    }
+    Object localObject1 = localObject2;
+    if (paramBoolean2) {
+      localObject1 = new float[] { localObject2[0], flip(localObject2[1]), localObject2[2], flip(localObject2[3]), localObject2[4], flip(localObject2[5]), localObject2[6], flip(localObject2[7]) };
+    }
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.util.TextureRotationUtil
  * JD-Core Version:    0.7.0.1
  */

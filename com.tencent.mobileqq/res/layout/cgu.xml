@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@drawable/trans" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/mjo" android:layout_width="fill_parent" android:layout_height="64.0dip" android:minHeight="64.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:id="@id/noo" android:background="#99000000" android:padding="8.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="60.0dip" android:text="指令性能分析数据" />
-    <TextView android:textSize="18.0sp" android:textColor="@color/al3" android:id="@id/nop" android:background="#ff00bcd4" android:padding="8.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="转发快照" android:layout_below="@id/noo" />
-    <com.tencent.mobileqq.qassistant.view.VoicePanelSlideContainer android:id="@id/o5u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
-        <androidx.recyclerview.widget.RecyclerView android:id="@id/oln" android:background="@drawable/f3l" android:layout_width="267.0dip" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:layout_centerHorizontal="true" />
-        <RelativeLayout android:id="@id/o5t" android:background="@drawable/f3l" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignLeft="@id/oln" android:layout_alignTop="@id/oln" android:layout_alignRight="@id/oln" android:layout_alignBottom="@id/oln">
-            <TextView android:textSize="20.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/o5s" android:background="@drawable/trans" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/y9z" android:alpha="0.5" />
-        </RelativeLayout>
-        <ImageView android:id="@id/mdd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-28.0dip" android:src="@drawable/ges" android:layout_alignTop="@id/oln" android:layout_centerHorizontal="true" />
-    </com.tencent.mobileqq.qassistant.view.VoicePanelSlideContainer>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/mj_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="35.0dip" android:layout_marginRight="24.0dip">
+        <ImageView android:id="@id/mj5" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="34.0dip" />
+        <TextView android:textSize="@dimen/aw6" android:textColor="#fffeffff" android:id="@id/mji" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:singleLine="true" />
+    </LinearLayout>
+    <TextView android:textSize="14.0sp" android:textColor="#fffeffff" android:gravity="center" android:id="@id/mjk" android:layout_width="36.0dip" android:layout_height="28.0dip" android:layout_marginLeft="20.0dip" android:text="1" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
 </RelativeLayout>

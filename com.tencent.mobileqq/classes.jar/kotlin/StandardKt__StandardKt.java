@@ -16,7 +16,10 @@ class StandardKt__StandardKt
   @InlineOnly
   private static final Void TODO(String paramString)
   {
-    throw ((Throwable)new NotImplementedError("An operation is not implemented: " + paramString));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("An operation is not implemented: ");
+    localStringBuilder.append(paramString);
+    throw ((Throwable)new NotImplementedError(localStringBuilder.toString()));
   }
   
   @SinceKotlin(version="1.1")
@@ -91,7 +94,7 @@ class StandardKt__StandardKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.StandardKt__StandardKt
  * JD-Core Version:    0.7.0.1
  */

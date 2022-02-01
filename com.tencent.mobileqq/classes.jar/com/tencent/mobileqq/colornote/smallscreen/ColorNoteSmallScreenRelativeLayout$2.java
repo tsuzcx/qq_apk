@@ -13,18 +13,15 @@ class ColorNoteSmallScreenRelativeLayout$2
   {
     if (Build.VERSION.SDK_INT < 16) {
       this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
-    for (;;)
-    {
-      ColorNoteSmallScreenRelativeLayout.a(this.a);
-      return;
+    } else {
       this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
+    ColorNoteSmallScreenRelativeLayout.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout.2
  * JD-Core Version:    0.7.0.1
  */

@@ -23,17 +23,19 @@ public class SpringConfigRegistry
   
   public boolean addSpringConfig(SpringConfig paramSpringConfig, String paramString)
   {
-    if (paramSpringConfig == null) {
-      throw new IllegalArgumentException("springConfig is required");
-    }
-    if (paramString == null) {
+    if (paramSpringConfig != null)
+    {
+      if (paramString != null)
+      {
+        if (this.mSpringConfigMap.containsKey(paramSpringConfig)) {
+          return false;
+        }
+        this.mSpringConfigMap.put(paramSpringConfig, paramString);
+        return true;
+      }
       throw new IllegalArgumentException("configName is required");
     }
-    if (this.mSpringConfigMap.containsKey(paramSpringConfig)) {
-      return false;
-    }
-    this.mSpringConfigMap.put(paramSpringConfig, paramString);
-    return true;
+    throw new IllegalArgumentException("springConfig is required");
   }
   
   public Map<SpringConfig, String> getAllSpringConfig()
@@ -48,15 +50,15 @@ public class SpringConfigRegistry
   
   public boolean removeSpringConfig(SpringConfig paramSpringConfig)
   {
-    if (paramSpringConfig == null) {
-      throw new IllegalArgumentException("springConfig is required");
+    if (paramSpringConfig != null) {
+      return this.mSpringConfigMap.remove(paramSpringConfig) != null;
     }
-    return this.mSpringConfigMap.remove(paramSpringConfig) != null;
+    throw new IllegalArgumentException("springConfig is required");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.animation.rebound.SpringConfigRegistry
  * JD-Core Version:    0.7.0.1
  */

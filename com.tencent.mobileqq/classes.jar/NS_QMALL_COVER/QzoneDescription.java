@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class QzoneDescription
   extends JceStruct
 {
-  static int cache_iType = 0;
+  static int cache_iType;
   public int iHeight = 0;
   public int iType = 0;
   public int iWidth = 0;
@@ -36,11 +36,13 @@ public final class QzoneDescription
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strUrl != null) {
-      paramJceOutputStream.write(this.strUrl, 0);
+    String str = this.strUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.strJumpUrl != null) {
-      paramJceOutputStream.write(this.strJumpUrl, 1);
+    str = this.strJumpUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.iType, 2);
     paramJceOutputStream.write(this.iHeight, 3);
@@ -49,7 +51,7 @@ public final class QzoneDescription
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.QzoneDescription
  * JD-Core Version:    0.7.0.1
  */

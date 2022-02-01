@@ -11,21 +11,23 @@ public class LyricParseHelper
     if ((paramString != null) && (paramString.length() >= 0))
     {
       if (paramBoolean) {}
-      for (;;)
+      try
       {
-        try
-        {
-          paramString = new ParsingQrc(paramString).a();
-          if ((paramString == null) || (paramString.a.size() <= 0)) {
-            break;
-          }
-          return paramString;
-        }
-        catch (Exception paramString)
-        {
-          Log.e("LyricParseHelper", "parse exception:", paramString);
-        }
+        paramString = new ParsingQrc(paramString).a();
+        break label42;
         paramString = new ParsingLrc(paramString).a();
+        label42:
+        if (paramString != null)
+        {
+          int i = paramString.a.size();
+          if (i > 0) {
+            return paramString;
+          }
+        }
+      }
+      catch (Exception paramString)
+      {
+        Log.e("LyricParseHelper", "parse exception:", paramString);
       }
     }
     return null;
@@ -33,7 +35,7 @@ public class LyricParseHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.util.LyricParseHelper
  * JD-Core Version:    0.7.0.1
  */

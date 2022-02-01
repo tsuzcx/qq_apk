@@ -4,6 +4,7 @@ import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
+import oicq.wlogin_sdk.report.event.EventSaver;
 import oicq.wlogin_sdk.tools.util;
 
 final class WtloginReporter$1
@@ -13,56 +14,50 @@ final class WtloginReporter$1
   
   public void run()
   {
+    WtloginReporter.a(BaseApplicationImpl.getContext(), new EventSaver(), "wtlogin_illegal_error", this.a);
     Object localObject1 = util.get_cost_time(BaseApplicationImpl.getContext());
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+    boolean bool = TextUtils.isEmpty((CharSequence)localObject1);
+    int k = 2;
+    if (bool)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("WtloginReporter", 2, "costValue is null");
       }
+      return;
     }
     int i;
+    if (Math.random() <= 0.001D) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    localObject1 = ((String)localObject1).split(";");
     int j;
-    label59:
     long l1;
-    label391:
-    label416:
-    do
+    if (localObject1 != null)
     {
-      return;
-      Object localObject2;
-      if (Math.random() <= 0.001D)
+      j = 0;
+      while (j < localObject1.length)
       {
-        i = 1;
-        localObject1 = ((String)localObject1).split(";");
-        if (localObject1 == null) {
-          break label416;
-        }
-        j = 0;
-        if (j >= localObject1.length) {
-          break label416;
-        }
-        localObject2 = localObject1[j].split("\\|");
-        if ((localObject2 == null) || (localObject2.length != 5)) {
-          break label391;
-        }
-      }
-      for (;;)
-      {
-        try
-        {
-          l1 = Long.parseLong(localObject2[0]);
-          int k = Integer.parseInt(localObject2[1]);
-          long l2 = Long.parseLong(localObject2[2]);
-          long l3 = Long.parseLong(localObject2[3]);
-          long l4 = Long.parseLong(localObject2[4]);
-          if (QLog.isColorLevel()) {
-            QLog.d("WtloginReporter", 2, new Object[] { "recordTime:", Long.valueOf(l1), " fromType:", Integer.valueOf(k), " costTime1:", Long.valueOf(l2), " costTime2:", Long.valueOf(l3), " costTime3:", Long.valueOf(l4) });
-          }
-          if (i != 0)
+        Object localObject2 = localObject1[j].split("\\|");
+        if ((localObject2 != null) && (localObject2.length == 5)) {
+          try
           {
+            l1 = Long.parseLong(localObject2[0]);
+            int m = Integer.parseInt(localObject2[1]);
+            long l2 = Long.parseLong(localObject2[2]);
+            long l3 = Long.parseLong(localObject2[3]);
+            long l4 = Long.parseLong(localObject2[4]);
+            if (QLog.isColorLevel()) {
+              QLog.d("WtloginReporter", 2, new Object[] { "recordTime:", Long.valueOf(l1), " fromType:", Integer.valueOf(m), " costTime1:", Long.valueOf(l2), " costTime2:", Long.valueOf(l3), " costTime3:", Long.valueOf(l4) });
+            }
+            if (i == 0) {
+              break label437;
+            }
             localObject2 = new HashMap();
             ((HashMap)localObject2).put("uin", this.a);
             ((HashMap)localObject2).put("recordTime", String.valueOf(l1));
-            ((HashMap)localObject2).put("fromType", String.valueOf(k));
+            ((HashMap)localObject2).put("fromType", String.valueOf(m));
             ((HashMap)localObject2).put("costTime1", String.valueOf(l2));
             ((HashMap)localObject2).put("costTime2", String.valueOf(l3));
             ((HashMap)localObject2).put("costTime3", String.valueOf(l4));
@@ -70,76 +65,89 @@ final class WtloginReporter$1
               ((HashMap)localObject2).put("warnCost", "1");
             }
             StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(this.a, "wtloginCost", true, 0L, 0L, (HashMap)localObject2, "");
-            if (QLog.isColorLevel()) {
-              QLog.d("WtloginReporter", 2, "wtlogin report cost");
+            if (!QLog.isColorLevel()) {
+              break label437;
             }
+            QLog.d("WtloginReporter", 2, "wtlogin report cost");
           }
+          catch (Throwable localThrowable3)
+          {
+            QLog.e("WtloginReporter", 1, localThrowable3, new Object[0]);
+          }
+        } else {
+          QLog.e("WtloginReporter", 1, new Object[] { "error costTimes:", localObject1[j] });
         }
-        catch (Throwable localThrowable1)
-        {
-          QLog.e("WtloginReporter", 1, localThrowable1, new Object[0]);
-          continue;
-        }
+        label437:
         j += 1;
-        break label59;
-        i = 0;
-        break;
-        QLog.e("WtloginReporter", 1, new Object[] { "error costTimes:", localObject1[j] });
-      }
-      util.save_cost_time(BaseApplicationImpl.getContext(), "");
-      localObject1 = util.get_cost_trace(BaseApplicationImpl.getContext());
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("WtloginReporter", 2, "backTraceValue is null");
-    return;
-    localObject1 = ((String)localObject1).split("\\|");
-    if (localObject1 != null)
-    {
-      j = 0;
-      if (j < localObject1.length)
-      {
-        Object localObject3 = localObject1[j].split(",");
-        if ((localObject3 != null) && (localObject3.length == 2)) {}
-        for (;;)
-        {
-          try
-          {
-            l1 = Long.parseLong(localObject3[0]);
-            localObject3 = localObject3[1];
-            if (QLog.isColorLevel()) {
-              QLog.d("WtloginReporter", 2, new Object[] { "recordTime:", Long.valueOf(l1), " backTrace:", localObject3 });
-            }
-            if (i != 0)
-            {
-              HashMap localHashMap = new HashMap();
-              localHashMap.put("uin", this.a);
-              localHashMap.put("recordTime", String.valueOf(l1));
-              localHashMap.put("backTrace", localObject3);
-              StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(this.a, "wtloginCostTrace", true, 0L, 0L, localHashMap, "");
-              if (QLog.isColorLevel()) {
-                QLog.d("WtloginReporter", 2, "wtlogin report cost back trace");
-              }
-            }
-          }
-          catch (Throwable localThrowable2)
-          {
-            QLog.e("WtloginReporter", 1, localThrowable2, new Object[0]);
-            continue;
-          }
-          j += 1;
-          break;
-          QLog.e("WtloginReporter", 1, new Object[] { "error traceItems:", localObject1[j] });
-        }
       }
     }
-    util.save_cost_trace(BaseApplicationImpl.getContext(), "");
+    util.save_cost_time(BaseApplicationImpl.getContext(), "");
+    localObject1 = util.get_cost_trace(BaseApplicationImpl.getContext());
+    if (TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WtloginReporter", 2, "backTraceValue is null");
+      }
+      return;
+    }
+    String[] arrayOfString = ((String)localObject1).split("\\|");
+    if (arrayOfString != null)
+    {
+      j = 0;
+      if (j < arrayOfString.length)
+      {
+        localObject1 = arrayOfString[j].split(",");
+        if ((localObject1 == null) || (localObject1.length != k)) {}
+      }
+    }
+    label692:
+    label725:
+    label741:
+    for (;;)
+    {
+      try
+      {
+        l1 = Long.parseLong(localObject1[0]);
+        localObject1 = localObject1[1];
+        if (!QLog.isColorLevel()) {
+          break label741;
+        }
+        try
+        {
+          QLog.d("WtloginReporter", 2, new Object[] { "recordTime:", Long.valueOf(l1), " backTrace:", localObject1 });
+          if (i == 0) {
+            break label692;
+          }
+          HashMap localHashMap = new HashMap();
+          localHashMap.put("uin", this.a);
+          localHashMap.put("recordTime", String.valueOf(l1));
+          localHashMap.put("backTrace", localObject1);
+          StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(this.a, "wtloginCostTrace", true, 0L, 0L, localHashMap, "");
+          if (!QLog.isColorLevel()) {
+            break label692;
+          }
+          QLog.d("WtloginReporter", 2, "wtlogin report cost back trace");
+        }
+        catch (Throwable localThrowable1) {}
+        QLog.e("WtloginReporter", 1, localThrowable2, new Object[0]);
+      }
+      catch (Throwable localThrowable2) {}
+      k = 2;
+      break label725;
+      Object[] arrayOfObject = new Object[k];
+      arrayOfObject[0] = "error traceItems:";
+      arrayOfObject[1] = arrayOfString[j];
+      QLog.e("WtloginReporter", 1, arrayOfObject);
+      j += 1;
+      break;
+      util.save_cost_trace(BaseApplicationImpl.getContext(), "");
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.WtloginReporter.1
  * JD-Core Version:    0.7.0.1
  */

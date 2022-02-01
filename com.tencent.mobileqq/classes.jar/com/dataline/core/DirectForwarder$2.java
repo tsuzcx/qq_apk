@@ -11,21 +11,23 @@ final class DirectForwarder$2
   public void a()
   {
     this.jdField_a_of_type_AndroidOsAsyncTask.execute(new Integer[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFMDialogUtil$FMDialogInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFMDialogUtil$FMDialogInterface.a();
+    FMDialogUtil.FMDialogInterface localFMDialogInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFMDialogUtil$FMDialogInterface;
+    if (localFMDialogInterface != null) {
+      localFMDialogInterface.a();
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFMDialogUtil$FMDialogInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFMDialogUtil$FMDialogInterface.b();
+    FMDialogUtil.FMDialogInterface localFMDialogInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFMDialogUtil$FMDialogInterface;
+    if (localFMDialogInterface != null) {
+      localFMDialogInterface.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.core.DirectForwarder.2
  * JD-Core Version:    0.7.0.1
  */

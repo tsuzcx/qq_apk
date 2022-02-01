@@ -92,18 +92,30 @@ public final class QQHeadInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("uin=").append(this.uin);
-    localStringBuilder.append(",dwTimestamp=").append(this.dwTimestamp);
-    localStringBuilder.append(",cHeadType=").append(this.cHeadType);
-    localStringBuilder.append(",dstUsrType=").append(this.dstUsrType);
-    localStringBuilder.append(",dwFaceFlgas=").append(this.dwFaceFlgas);
-    localStringBuilder.append(",systemHeadID=").append(this.systemHeadID);
-    localStringBuilder.append(",phoneNum=").append(this.phoneNum);
-    localStringBuilder.append(",headLevel=").append(this.headLevel);
-    localStringBuilder.append(",idType=").append(this.idType);
-    localStringBuilder.append(",originUsrType=").append(this.originUsrType);
-    localStringBuilder.append(",sizeType=").append(this.sizeType);
-    localStringBuilder.append(",downLoadUrl=").append(this.downLoadUrl);
+    localStringBuilder.append("uin=");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append(",dwTimestamp=");
+    localStringBuilder.append(this.dwTimestamp);
+    localStringBuilder.append(",cHeadType=");
+    localStringBuilder.append(this.cHeadType);
+    localStringBuilder.append(",dstUsrType=");
+    localStringBuilder.append(this.dstUsrType);
+    localStringBuilder.append(",dwFaceFlgas=");
+    localStringBuilder.append(this.dwFaceFlgas);
+    localStringBuilder.append(",systemHeadID=");
+    localStringBuilder.append(this.systemHeadID);
+    localStringBuilder.append(",phoneNum=");
+    localStringBuilder.append(this.phoneNum);
+    localStringBuilder.append(",headLevel=");
+    localStringBuilder.append(this.headLevel);
+    localStringBuilder.append(",idType=");
+    localStringBuilder.append(this.idType);
+    localStringBuilder.append(",originUsrType=");
+    localStringBuilder.append(this.originUsrType);
+    localStringBuilder.append(",sizeType=");
+    localStringBuilder.append(this.sizeType);
+    localStringBuilder.append(",downLoadUrl=");
+    localStringBuilder.append(this.downLoadUrl);
     return localStringBuilder.toString();
   }
   
@@ -116,8 +128,9 @@ public final class QQHeadInfo
     paramJceOutputStream.write(this.dwFaceFlgas, 4);
     paramJceOutputStream.write(this.downLoadUrl, 5);
     paramJceOutputStream.write(this.systemHeadID, 6);
-    if (this.phoneNum != null) {
-      paramJceOutputStream.write(this.phoneNum, 7);
+    String str = this.phoneNum;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
   }
   
@@ -138,7 +151,7 @@ public final class QQHeadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     AvatarInfo.QQHeadInfo
  * JD-Core Version:    0.7.0.1
  */

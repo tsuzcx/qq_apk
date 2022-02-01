@@ -67,7 +67,15 @@ public class TroopZipInnerFileDownloadWorker
   
   String a(long paramLong)
   {
-    return (paramLong & 0xFF) + "." + (paramLong >> 8 & 0xFF) + "." + (paramLong >> 16 & 0xFF) + "." + (paramLong >> 24 & 0xFF);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramLong & 0xFF);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramLong >> 8 & 0xFF);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramLong >> 16 & 0xFF);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramLong >> 24 & 0xFF);
+    return localStringBuilder.toString();
   }
   
   public boolean a()
@@ -79,50 +87,68 @@ public class TroopZipInnerFileDownloadWorker
   protected void f()
   {
     TroopFileDataCenter.a(this.jdField_c_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 8);
-    QQAppInterface localQQAppInterface = TroopFileTransferUtil.a();
-    if (localQQAppInterface == null)
+    Object localObject1 = TroopFileTransferUtil.a();
+    if (localObject1 == null)
     {
-      TroopFileTransferUtil.Log.a("TroopZipInnerFileDownloadWorker", TroopFileTransferUtil.Log.a, "[" + this.jdField_a_of_type_JavaLangString + "] reqDownload app=null");
+      i = TroopFileTransferUtil.Log.a;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append("] reqDownload app=null");
+      TroopFileTransferUtil.Log.a("TroopZipInnerFileDownloadWorker", i, ((StringBuilder)localObject1).toString());
       this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileDataReporter$ReportTransferItem.c = 9;
       this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileDataReporter$ReportTransferItem.d = 902;
       a(true, TroopTechReportUtils.TroopFileReportResultCode.b, TroopTechReportUtils.TroopFileReportResultCode.w, 1);
       return;
     }
-    TroopFileTransferUtil.Log.c("TroopZipInnerFileDownloadWorker", TroopFileTransferUtil.Log.a, "[" + this.jdField_a_of_type_JavaLangString + "] reqDownload");
-    Object localObject = TroopFileTransferUtil.a(this.jdField_c_of_type_Long);
-    if (localObject != null)
+    int i = TroopFileTransferUtil.Log.a;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("[");
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append("] reqDownload");
+    TroopFileTransferUtil.Log.c("TroopZipInnerFileDownloadWorker", i, ((StringBuilder)localObject2).toString());
+    Object localObject3 = TroopFileTransferUtil.a(this.jdField_c_of_type_Long);
+    if (localObject3 != null)
     {
-      TroopFileInfo localTroopFileInfo = ((TroopFileManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath);
-      if (localTroopFileInfo != null)
+      localObject2 = ((TroopFileManager)localObject3).a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath);
+      if (localObject2 != null)
       {
-        localObject = ((TroopFileManager)localObject).a(localTroopFileInfo.g);
-        if (localObject != null)
+        localObject3 = ((TroopFileManager)localObject3).a(((TroopFileInfo)localObject2).g);
+        if (localObject3 != null)
         {
-          localTroopFileInfo.e = 8;
-          ((TroopFileInfo)localObject).a(localTroopFileInfo);
+          ((TroopFileInfo)localObject2).e = 8;
+          ((TroopFileInfo)localObject3).a((TroopFileInfo)localObject2);
         }
       }
     }
     this.jdField_a_of_type_Boolean = false;
     this.g = null;
-    this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileProtoReqMgr$ProtoRequest = TroopFileProtocol.a(localQQAppInterface, this.jdField_c_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.zipFilePath, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.zipBusId, this.jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileGetFilePreviewObserver);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiITroopFileProtoReq = TroopFileProtocol.a((QQAppInterface)localObject1, this.jdField_c_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.zipFilePath, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.zipBusId, this.jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileGetFilePreviewObserver);
     b(1);
     TroopTechReportUtils.b();
   }
   
   protected void g()
   {
-    QQAppInterface localQQAppInterface = TroopFileTransferUtil.a();
-    if (localQQAppInterface == null)
+    Object localObject1 = TroopFileTransferUtil.a();
+    if (localObject1 == null)
     {
-      TroopFileTransferUtil.Log.a("TroopZipInnerFileDownloadWorker", TroopFileTransferUtil.Log.a, "[" + this.jdField_a_of_type_JavaLangString + "] startDownload app=null");
+      i = TroopFileTransferUtil.Log.a;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append("] startDownload app=null");
+      TroopFileTransferUtil.Log.a("TroopZipInnerFileDownloadWorker", i, ((StringBuilder)localObject1).toString());
       this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileDataReporter$ReportTransferItem.c = 9;
       this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileDataReporter$ReportTransferItem.d = 902;
       a(true, TroopTechReportUtils.TroopFileReportResultCode.b, TroopTechReportUtils.TroopFileReportResultCode.w, 1);
       return;
     }
-    String str = MD5.toMD5(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath);
-    this.jdField_d_of_type_JavaLangString = (this.jdField_c_of_type_JavaLangString + str);
+    Object localObject2 = MD5.toMD5(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append((String)localObject2);
+    this.jdField_d_of_type_JavaLangString = localStringBuilder.toString();
     if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloader != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloader.c();
@@ -131,8 +157,20 @@ public class TroopZipInnerFileDownloadWorker
     this.jdField_d_of_type_Long = System.currentTimeMillis();
     this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileDataReporter$ReportTransferItem.a = FileUtil.a(this.jdField_d_of_type_JavaLangString);
     long l = TroopFileTransferUtil.a();
-    TroopFileTransferUtil.Log.c("TroopZipInnerFileDownloadWorker", TroopFileTransferUtil.Log.a, "[" + this.jdField_a_of_type_JavaLangString + "] startDownload. nSessionId:" + l + " firstIP=" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp + " urlParams:" + this.f + " mTmpFilePath:" + this.jdField_d_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloader = TroopFileDownloader.a(localQQAppInterface, l, this.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ProgressTotal, this.jdField_a_of_type_JavaUtilList, this.f, null, this.jdField_a_of_type_Boolean, this.g);
+    int i = TroopFileTransferUtil.Log.a;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("[");
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append("] startDownload. nSessionId:");
+    ((StringBuilder)localObject2).append(l);
+    ((StringBuilder)localObject2).append(" firstIP=");
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp);
+    ((StringBuilder)localObject2).append(" urlParams:");
+    ((StringBuilder)localObject2).append(this.f);
+    ((StringBuilder)localObject2).append(" mTmpFilePath:");
+    ((StringBuilder)localObject2).append(this.jdField_d_of_type_JavaLangString);
+    TroopFileTransferUtil.Log.c("TroopZipInnerFileDownloadWorker", i, ((StringBuilder)localObject2).toString());
+    this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloader = TroopFileDownloader.a((QQAppInterface)localObject1, l, this.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ProgressTotal, this.jdField_a_of_type_JavaUtilList, this.f, null, this.jdField_a_of_type_Boolean, this.g);
     if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloader == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileDataReporter$ReportTransferItem.c = 9;
@@ -147,7 +185,7 @@ public class TroopZipInnerFileDownloadWorker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.download.TroopZipInnerFileDownloadWorker
  * JD-Core Version:    0.7.0.1
  */

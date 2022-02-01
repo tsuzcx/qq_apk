@@ -2,21 +2,22 @@ package com.tencent.mobileqq.now.message;
 
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.PagerAdapter;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
 import com.tencent.mobileqq.activity.aio.ChatItemBuilder;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.core.msglist.item.ItemBuilderFactory;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.nearby.now.utils.ImageLoader;
+import com.tencent.mobileqq.nearby.now.utils.IImageLoader;
 import com.tencent.mobileqq.now.roport.NowQQLiveDataReport;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.structmsg.AbsStructMsgElement;
 import com.tencent.mobileqq.structmsg.StructMsgClickHandler;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
@@ -26,14 +27,14 @@ import java.util.List;
 public class MessageReceivingAdapter
   extends PagerAdapter
 {
-  private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
   private ItemBuilderFactory jdField_a_of_type_ComTencentMobileqqActivityAioCoreMsglistItemItemBuilderFactory;
+  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private List<ChatMessage> jdField_a_of_type_JavaUtilList;
   
-  public MessageReceivingAdapter(FragmentActivity paramFragmentActivity, BaseChatPie paramBaseChatPie)
+  public MessageReceivingAdapter(BaseActivity paramBaseActivity, BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramFragmentActivity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreMsglistItemItemBuilderFactory = new ItemBuilderFactory(paramFragmentActivity, paramFragmentActivity.app, paramBaseChatPie.a, null, paramBaseChatPie);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreMsglistItemItemBuilderFactory = new ItemBuilderFactory(paramBaseActivity, paramBaseActivity.app, paramBaseChatPie.a, null, paramBaseChatPie);
   }
   
   private View a(Context paramContext, ViewGroup paramViewGroup, MessageForArkApp paramMessageForArkApp, int paramInt)
@@ -50,7 +51,7 @@ public class MessageReceivingAdapter
     {
       StructMsgForGeneralShare localStructMsgForGeneralShare = (StructMsgForGeneralShare)paramMessageForStructing.structingMsg;
       paramContext = new GeneralSharePagerView(paramContext);
-      ImageLoader.a().a(paramContext.a, localStructMsgForGeneralShare.mContentCover, new ColorDrawable(0), new ColorDrawable(0), null);
+      ((IImageLoader)QRoute.api(IImageLoader.class)).displayImage(paramContext.a, localStructMsgForGeneralShare.mContentCover, new ColorDrawable(0), new ColorDrawable(0), null);
       paramContext.a(localChatItemBuilder.a(paramInt, getCount(), paramMessageForStructing, null, paramViewGroup, new MessageReceivingAdapter.1(this, paramInt, paramMessageForStructing, localStructMsgForGeneralShare)));
       return paramContext;
     }
@@ -59,29 +60,31 @@ public class MessageReceivingAdapter
   
   private View a(ViewGroup paramViewGroup, int paramInt)
   {
-    if (paramInt >= getCount()) {}
-    ChatMessage localChatMessage;
-    do
-    {
+    int i = getCount();
+    View localView = null;
+    if (paramInt >= i) {
       return null;
-      if (paramInt == 3) {
-        return b(paramViewGroup, paramInt);
-      }
-      localChatMessage = a(paramInt);
-      if ((localChatMessage instanceof MessageForStructing))
-      {
-        paramViewGroup = a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramViewGroup, (MessageForStructing)localChatMessage, paramInt);
-        NowQQLiveDataReport.a(paramInt + 1, ChatMessageHelper.b(localChatMessage), "2");
-        return paramViewGroup;
-      }
-      if ((localChatMessage instanceof MessageForArkApp))
-      {
-        paramViewGroup = a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramViewGroup, (MessageForArkApp)localChatMessage, paramInt);
-        NowQQLiveDataReport.a(paramInt + 1, ChatMessageHelper.b(localChatMessage), "1");
-        return paramViewGroup;
-      }
-    } while (localChatMessage == null);
-    return a(paramViewGroup, localChatMessage, paramInt);
+    }
+    if (paramInt == 3) {
+      return b(paramViewGroup, paramInt);
+    }
+    ChatMessage localChatMessage = a(paramInt);
+    if ((localChatMessage instanceof MessageForStructing))
+    {
+      paramViewGroup = a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramViewGroup, (MessageForStructing)localChatMessage, paramInt);
+      NowQQLiveDataReport.a(paramInt + 1, ChatMessageHelper.b(localChatMessage), "2");
+      return paramViewGroup;
+    }
+    if ((localChatMessage instanceof MessageForArkApp))
+    {
+      paramViewGroup = a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramViewGroup, (MessageForArkApp)localChatMessage, paramInt);
+      NowQQLiveDataReport.a(paramInt + 1, ChatMessageHelper.b(localChatMessage), "1");
+      return paramViewGroup;
+    }
+    if (localChatMessage != null) {
+      localView = a(paramViewGroup, localChatMessage, paramInt);
+    }
+    return localView;
   }
   
   private View a(ViewGroup paramViewGroup, ChatMessage paramChatMessage, int paramInt)
@@ -91,7 +94,7 @@ public class MessageReceivingAdapter
   
   private boolean a(View paramView, ChatMessage paramChatMessage, StructMsgForGeneralShare paramStructMsgForGeneralShare)
   {
-    paramView = new StructMsgClickHandler(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, paramView, paramChatMessage);
+    paramView = new StructMsgClickHandler(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, paramView, paramChatMessage);
     if (!TextUtils.isEmpty(paramStructMsgForGeneralShare.mMsgUrl)) {
       return paramView.a(paramStructMsgForGeneralShare.mMsgUrl, paramChatMessage.getId(), null);
     }
@@ -108,12 +111,13 @@ public class MessageReceivingAdapter
   
   private View b(@NonNull ViewGroup paramViewGroup, int paramInt)
   {
-    return LayoutInflater.from(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity).inflate(2131559643, paramViewGroup, false);
+    return LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2131559520, paramViewGroup, false);
   }
   
   public ChatMessage a(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if ((localList != null) && (paramInt < localList.size())) {
       return (ChatMessage)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
     return null;
@@ -132,13 +136,15 @@ public class MessageReceivingAdapter
   
   public int getCount()
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      return 0;
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if ((localList != null) && (localList.size() != 0))
+    {
+      if (this.jdField_a_of_type_JavaUtilList.size() > 3) {
+        return 4;
+      }
+      return this.jdField_a_of_type_JavaUtilList.size();
     }
-    if (this.jdField_a_of_type_JavaUtilList.size() > 3) {
-      return 4;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return 0;
   }
   
   public int getItemPosition(Object paramObject)
@@ -163,7 +169,7 @@ public class MessageReceivingAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.message.MessageReceivingAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -12,10 +12,12 @@ class SubscribePermissionSettingFragment$6
   
   public void run()
   {
-    SubscribePermissionSettingFragment.access$802(this.this$0, new SubscribePermissionAdapter(this.val$dataList, SubscribePermissionSettingFragment.access$900(this.this$0)));
+    SubscribePermissionSettingFragment localSubscribePermissionSettingFragment = this.this$0;
+    SubscribePermissionSettingFragment.access$802(localSubscribePermissionSettingFragment, new SubscribePermissionAdapter(this.val$dataList, SubscribePermissionSettingFragment.access$900(localSubscribePermissionSettingFragment)));
     if (SubscribePermissionSettingFragment.access$1000(this.this$0) == null)
     {
-      SubscribePermissionSettingFragment.access$1002(this.this$0, new LinearLayoutManager(this.this$0.getActivity()));
+      localSubscribePermissionSettingFragment = this.this$0;
+      SubscribePermissionSettingFragment.access$1002(localSubscribePermissionSettingFragment, new LinearLayoutManager(localSubscribePermissionSettingFragment.getBaseActivity()));
       SubscribePermissionSettingFragment.access$1100(this.this$0).setLayoutManager(SubscribePermissionSettingFragment.access$1000(this.this$0));
     }
     SubscribePermissionSettingFragment.access$1100(this.this$0).setAdapter(SubscribePermissionSettingFragment.access$800(this.this$0));
@@ -23,7 +25,7 @@ class SubscribePermissionSettingFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.activity.SubscribePermissionSettingFragment.6
  * JD-Core Version:    0.7.0.1
  */

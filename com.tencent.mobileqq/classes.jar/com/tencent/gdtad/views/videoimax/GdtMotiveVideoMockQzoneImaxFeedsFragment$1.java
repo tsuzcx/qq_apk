@@ -3,7 +3,6 @@ package com.tencent.gdtad.views.videoimax;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,6 +11,7 @@ import com.tencent.gdtad.aditem.GdtHandler;
 import com.tencent.gdtad.aditem.GdtHandler.Params;
 import com.tencent.gdtad.log.GdtLog;
 import com.tencent.gdtad.views.video.GdtVideoData;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -31,7 +31,7 @@ class GdtMotiveVideoMockQzoneImaxFeedsFragment$1
   {
     GdtHandler.Params localParams = new GdtHandler.Params();
     localParams.c = 2;
-    localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.a.getActivity());
+    localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.a.getBaseActivity());
     Object localObject = GdtMotiveVideoMockQzoneImaxFeedsFragment.a(this.a).getAd();
     ((GdtAd)localObject).info.product_type.set(1000);
     ((GdtAd)localObject).info.dest_info.dest_type.set(4);
@@ -41,26 +41,34 @@ class GdtMotiveVideoMockQzoneImaxFeedsFragment$1
     localParams.jdField_a_of_type_Boolean = true;
     localObject = new int[2];
     paramView.getLocationInWindow((int[])localObject);
-    GdtLog.a("GdtMotiveVideoMockQzoneImaxFeedsFragment", "onClick() getLocationInWindow = [" + Arrays.toString((int[])localObject) + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onClick() getLocationInWindow = [");
+    localStringBuilder.append(Arrays.toString((int[])localObject));
+    localStringBuilder.append("]");
+    GdtLog.a("GdtMotiveVideoMockQzoneImaxFeedsFragment", localStringBuilder.toString());
     paramView.getLocationOnScreen((int[])localObject);
-    GdtLog.a("GdtMotiveVideoMockQzoneImaxFeedsFragment", "onClick() getLocationOnScreen = [" + Arrays.toString((int[])localObject) + "]");
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onClick() getLocationOnScreen = [");
+    localStringBuilder.append(Arrays.toString((int[])localObject));
+    localStringBuilder.append("]");
+    GdtLog.a("GdtMotiveVideoMockQzoneImaxFeedsFragment", localStringBuilder.toString());
     localParams.jdField_a_of_type_AndroidGraphicsRect = new Rect(localObject[0], localObject[1], localObject[0] + paramView.getWidth(), localObject[1] + paramView.getHeight());
-    localObject = this.a.getActivity().getIntent();
-    if (TextUtils.isEmpty(((Intent)localObject).getStringExtra("big_brother_ref_source_key"))) {}
-    for (localObject = ((Intent)localObject).getStringExtra("big_brother_source_key");; localObject = ((Intent)localObject).getStringExtra("big_brother_ref_source_key"))
-    {
-      localParams.jdField_a_of_type_AndroidOsBundle = new Bundle();
-      localParams.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", (String)localObject);
-      localParams.f = true;
-      GdtHandler.a(localParams);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    localObject = this.a.getBaseActivity().getIntent();
+    if (TextUtils.isEmpty(((Intent)localObject).getStringExtra("big_brother_ref_source_key"))) {
+      localObject = ((Intent)localObject).getStringExtra("big_brother_source_key");
+    } else {
+      localObject = ((Intent)localObject).getStringExtra("big_brother_ref_source_key");
     }
+    localParams.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    localParams.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", (String)localObject);
+    localParams.f = true;
+    GdtHandler.a(localParams);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.GdtMotiveVideoMockQzoneImaxFeedsFragment.1
  * JD-Core Version:    0.7.0.1
  */

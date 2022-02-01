@@ -12,26 +12,26 @@ public final class UserActionHandlerImpl$observer$1
   public void a(@NotNull ClickActionEvent paramClickActionEvent)
   {
     Intrinsics.checkParameterIsNotNull(paramClickActionEvent, "event");
-    switch (paramClickActionEvent.a())
+    int i = paramClickActionEvent.a();
+    if (i != 30001)
     {
-    default: 
-      return;
-    case 30001: 
-      UserActionHandlerImpl.a(this.a, paramClickActionEvent.a());
-      return;
-    case 40001: 
+      if (i != 50001)
+      {
+        if (i != 60001) {
+          return;
+        }
+        UserActionHandlerImpl.c(this.a, paramClickActionEvent.a());
+        return;
+      }
       UserActionHandlerImpl.b(this.a, paramClickActionEvent.a());
       return;
-    case 50001: 
-      UserActionHandlerImpl.c(this.a, paramClickActionEvent.a());
-      return;
     }
-    UserActionHandlerImpl.d(this.a, paramClickActionEvent.a());
+    UserActionHandlerImpl.a(this.a, paramClickActionEvent.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.UserActionHandlerImpl.observer.1
  * JD-Core Version:    0.7.0.1
  */

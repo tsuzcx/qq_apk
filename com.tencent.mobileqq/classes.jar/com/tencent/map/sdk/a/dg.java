@@ -38,166 +38,162 @@ public final class dg
   
   public static String a()
   {
+    String str = a;
     int i = 1;
-    String str1 = a;
-    for (;;)
-    {
-      if ((str1 != null) || (i != 0)) {}
-      try
-      {
-        str1 = ((TelephonyManager)ac.a().getSystemService("phone")).getDeviceId();
-        label29:
-        if (!TextUtils.isEmpty(str1)) {
-          if (!ac.g) {
-            break label104;
-          }
-        }
-      }
-      catch (Throwable localThrowable1)
-      {
-        try
-        {
-          label64:
-          String str2;
-          label104:
-          for (a = "M_" + df.a(str1);; a = str2)
-          {
-            if (TextUtils.isEmpty(a)) {
-              a = "UNKNOWN";
-            }
-            return a;
-            if (str1.trim().length() == 0) {
-              break;
-            }
-            i = 0;
-            break;
-            localThrowable1 = localThrowable1;
-            str2 = "";
-            break label29;
-          }
-        }
-        catch (Throwable localThrowable2)
-        {
-          break label64;
-        }
-      }
+    if ((str != null) && (str.trim().length() != 0)) {
+      i = 0;
     }
+    if (i != 0) {}
+    try
+    {
+      str = ((TelephonyManager)ac.a().getSystemService("phone")).getDeviceId();
+    }
+    catch (Throwable localThrowable1)
+    {
+      label50:
+      break label50;
+    }
+    str = "";
+    if ((TextUtils.isEmpty(str)) || (ac.g)) {}
+    try
+    {
+      StringBuilder localStringBuilder = new StringBuilder("M_");
+      localStringBuilder.append(df.a(str));
+      a = localStringBuilder.toString();
+    }
+    catch (Throwable localThrowable2)
+    {
+      label95:
+      break label95;
+    }
+    break label102;
+    a = str;
+    label102:
+    if (TextUtils.isEmpty(a)) {
+      a = "UNKNOWN";
+    }
+    return a;
   }
   
   /* Error */
   public static String a(int paramInt)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: new 65	java/lang/StringBuilder
-    //   6: dup
-    //   7: ldc 101
-    //   9: invokespecial 71	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   12: iload_0
-    //   13: invokevirtual 104	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   16: ldc 106
-    //   18: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   24: astore_1
-    //   25: new 108	java/io/BufferedReader
-    //   28: dup
-    //   29: new 110	java/io/FileReader
-    //   32: dup
-    //   33: aload_1
-    //   34: invokespecial 111	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   37: invokespecial 114	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   40: astore_2
-    //   41: aload_2
-    //   42: astore_1
-    //   43: aload_2
-    //   44: invokevirtual 117	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   47: astore_3
+    //   0: new 68	java/lang/StringBuilder
+    //   3: dup
+    //   4: ldc 95
+    //   6: invokespecial 74	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   9: astore_1
+    //   10: aload_1
+    //   11: iload_0
+    //   12: invokevirtual 98	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   15: pop
+    //   16: aload_1
+    //   17: ldc 100
+    //   19: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   22: pop
+    //   23: aload_1
+    //   24: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   27: astore_2
+    //   28: aconst_null
+    //   29: astore_1
+    //   30: new 102	java/io/BufferedReader
+    //   33: dup
+    //   34: new 104	java/io/FileReader
+    //   37: dup
+    //   38: aload_2
+    //   39: invokespecial 105	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   42: invokespecial 108	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   45: astore_2
+    //   46: aload_2
+    //   47: astore_1
     //   48: aload_2
-    //   49: astore_1
-    //   50: aload_3
-    //   51: invokestatic 59	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   54: ifne +71 -> 125
+    //   49: invokevirtual 111	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   52: astore 4
+    //   54: aload 4
+    //   56: astore_3
     //   57: aload_2
     //   58: astore_1
-    //   59: aload_3
-    //   60: invokevirtual 90	java/lang/String:trim	()Ljava/lang/String;
-    //   63: astore_3
-    //   64: aload_3
-    //   65: astore_1
-    //   66: aload_2
-    //   67: invokevirtual 120	java/io/BufferedReader:close	()V
-    //   70: aload_1
-    //   71: areturn
-    //   72: astore_3
-    //   73: aconst_null
-    //   74: astore_2
+    //   59: aload 4
+    //   61: invokestatic 62	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   64: ifne +11 -> 75
+    //   67: aload_2
+    //   68: astore_1
+    //   69: aload 4
+    //   71: invokevirtual 34	java/lang/String:trim	()Ljava/lang/String;
+    //   74: astore_3
     //   75: aload_2
-    //   76: astore_1
-    //   77: aload_3
-    //   78: invokevirtual 123	java/lang/Exception:printStackTrace	()V
-    //   81: aload 4
-    //   83: astore_1
-    //   84: aload_2
-    //   85: ifnull -15 -> 70
-    //   88: aload_2
-    //   89: invokevirtual 120	java/io/BufferedReader:close	()V
-    //   92: aconst_null
-    //   93: areturn
-    //   94: astore_1
-    //   95: aconst_null
-    //   96: areturn
-    //   97: astore_2
-    //   98: aconst_null
-    //   99: astore_1
-    //   100: aload_1
-    //   101: ifnull +7 -> 108
-    //   104: aload_1
-    //   105: invokevirtual 120	java/io/BufferedReader:close	()V
-    //   108: aload_2
-    //   109: athrow
-    //   110: astore_2
-    //   111: aload_1
-    //   112: areturn
-    //   113: astore_1
-    //   114: goto -6 -> 108
-    //   117: astore_2
-    //   118: goto -18 -> 100
-    //   121: astore_3
-    //   122: goto -47 -> 75
-    //   125: aload_3
-    //   126: astore_1
-    //   127: goto -61 -> 66
+    //   76: invokevirtual 114	java/io/BufferedReader:close	()V
+    //   79: aload_3
+    //   80: areturn
+    //   81: astore_3
+    //   82: goto +14 -> 96
+    //   85: astore_3
+    //   86: aload_1
+    //   87: astore_2
+    //   88: aload_3
+    //   89: astore_1
+    //   90: goto +27 -> 117
+    //   93: astore_3
+    //   94: aconst_null
+    //   95: astore_2
+    //   96: aload_2
+    //   97: astore_1
+    //   98: aload_3
+    //   99: invokevirtual 117	java/lang/Exception:printStackTrace	()V
+    //   102: aload_2
+    //   103: ifnull +7 -> 110
+    //   106: aload_2
+    //   107: invokevirtual 114	java/io/BufferedReader:close	()V
+    //   110: aconst_null
+    //   111: areturn
+    //   112: astore_3
+    //   113: aload_1
+    //   114: astore_2
+    //   115: aload_3
+    //   116: astore_1
+    //   117: aload_2
+    //   118: ifnull +7 -> 125
+    //   121: aload_2
+    //   122: invokevirtual 114	java/io/BufferedReader:close	()V
+    //   125: aload_1
+    //   126: athrow
+    //   127: astore_1
+    //   128: aload_3
+    //   129: areturn
+    //   130: astore_1
+    //   131: aconst_null
+    //   132: areturn
+    //   133: astore_2
+    //   134: goto -9 -> 125
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	130	0	paramInt	int
-    //   24	60	1	localObject1	Object
-    //   94	1	1	localIOException1	java.io.IOException
-    //   99	13	1	str1	String
-    //   113	1	1	localIOException2	java.io.IOException
-    //   126	1	1	localObject2	Object
-    //   40	49	2	localBufferedReader	java.io.BufferedReader
-    //   97	12	2	localObject3	Object
-    //   110	1	2	localIOException3	java.io.IOException
-    //   117	1	2	localObject4	Object
-    //   47	18	3	str2	String
-    //   72	6	3	localException1	Exception
-    //   121	5	3	localException2	Exception
-    //   1	81	4	localObject5	Object
+    //   0	137	0	paramInt	int
+    //   9	117	1	localObject1	Object
+    //   127	1	1	localIOException1	java.io.IOException
+    //   130	1	1	localIOException2	java.io.IOException
+    //   27	95	2	localObject2	Object
+    //   133	1	2	localIOException3	java.io.IOException
+    //   56	24	3	str1	String
+    //   81	1	3	localException1	Exception
+    //   85	4	3	localObject3	Object
+    //   93	6	3	localException2	Exception
+    //   112	17	3	str2	String
+    //   52	18	4	str3	String
     // Exception table:
     //   from	to	target	type
-    //   25	41	72	java/lang/Exception
-    //   88	92	94	java/io/IOException
-    //   25	41	97	finally
-    //   66	70	110	java/io/IOException
-    //   104	108	113	java/io/IOException
-    //   43	48	117	finally
-    //   50	57	117	finally
-    //   59	64	117	finally
-    //   77	81	117	finally
-    //   43	48	121	java/lang/Exception
-    //   50	57	121	java/lang/Exception
-    //   59	64	121	java/lang/Exception
+    //   48	54	81	java/lang/Exception
+    //   59	67	81	java/lang/Exception
+    //   69	75	81	java/lang/Exception
+    //   30	46	85	finally
+    //   30	46	93	java/lang/Exception
+    //   48	54	112	finally
+    //   59	67	112	finally
+    //   69	75	112	finally
+    //   98	102	112	finally
+    //   75	79	127	java/io/IOException
+    //   106	110	130	java/io/IOException
+    //   121	125	133	java/io/IOException
   }
   
   public static String a(long paramLong, String paramString)
@@ -220,42 +216,36 @@ public final class dg
   public static String a(Context paramContext, int paramInt)
   {
     paramContext = paramContext.getSystemService("activity");
-    if (paramContext != null) {}
-    for (;;)
-    {
+    if (paramContext != null) {
       try
       {
         paramContext = (ActivityManager)paramContext;
-        if (paramContext != null) {
-          break;
-        }
-        return null;
       }
       catch (Throwable paramContext)
       {
         paramContext.printStackTrace();
       }
+    } else {
       paramContext = null;
     }
+    if (paramContext == null) {
+      return null;
+    }
     paramContext = paramContext.getRunningAppProcesses();
-    int i;
-    ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo;
     if ((paramContext != null) && (paramContext.size() > 0))
     {
       int j = paramContext.size();
-      i = 0;
-      if (i < j)
+      int i = 0;
+      while (i < j)
       {
-        localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.get(i);
-        if ((localRunningAppProcessInfo == null) || (localRunningAppProcessInfo.pid != paramInt)) {}
+        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.get(i);
+        if ((localRunningAppProcessInfo != null) && (localRunningAppProcessInfo.pid == paramInt)) {
+          return localRunningAppProcessInfo.processName;
+        }
+        i += 1;
       }
     }
-    for (paramContext = localRunningAppProcessInfo.processName;; paramContext = null)
-    {
-      return paramContext;
-      i += 1;
-      break;
-    }
+    return null;
   }
   
   public static String a(Throwable paramThrowable)
@@ -264,24 +254,26 @@ public final class dg
     if (!TextUtils.isEmpty(paramThrowable))
     {
       paramThrowable = paramThrowable.split("\n");
-      if (paramThrowable.length >= 2) {
-        return paramThrowable[0] + paramThrowable[1];
+      if (paramThrowable.length >= 2)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramThrowable[0]);
+        localStringBuilder.append(paramThrowable[1]);
+        return localStringBuilder.toString();
       }
       if (paramThrowable.length == 1) {
         return paramThrowable[0];
       }
-      return "";
     }
     return "";
   }
   
   public static boolean a(String paramString)
   {
-    if (paramString == null) {}
-    while (paramString.trim().length() == 0) {
+    if (paramString == null) {
       return true;
     }
-    return false;
+    return paramString.trim().length() == 0;
   }
   
   public static boolean a(byte[] paramArrayOfByte)
@@ -291,50 +283,41 @@ public final class dg
   
   public static String b()
   {
+    String str = b;
     int i = 1;
-    String str1 = b;
-    for (;;)
-    {
-      if ((str1 != null) || (i != 0)) {}
-      try
-      {
-        str1 = ((TelephonyManager)ac.a().getSystemService("phone")).getSubscriberId();
-        label29:
-        if (!TextUtils.isEmpty(str1)) {
-          if (!ac.g) {
-            break label104;
-          }
-        }
-      }
-      catch (Throwable localThrowable1)
-      {
-        try
-        {
-          label64:
-          String str2;
-          label104:
-          for (b = "M_" + df.a(str1);; b = str2)
-          {
-            if (TextUtils.isEmpty(b)) {
-              b = "UNKNOWN";
-            }
-            return b;
-            if (str1.trim().length() == 0) {
-              break;
-            }
-            i = 0;
-            break;
-            localThrowable1 = localThrowable1;
-            str2 = "";
-            break label29;
-          }
-        }
-        catch (Throwable localThrowable2)
-        {
-          break label64;
-        }
-      }
+    if ((str != null) && (str.trim().length() != 0)) {
+      i = 0;
     }
+    if (i != 0) {}
+    try
+    {
+      str = ((TelephonyManager)ac.a().getSystemService("phone")).getSubscriberId();
+    }
+    catch (Throwable localThrowable1)
+    {
+      label50:
+      break label50;
+    }
+    str = "";
+    if ((TextUtils.isEmpty(str)) || (ac.g)) {}
+    try
+    {
+      StringBuilder localStringBuilder = new StringBuilder("M_");
+      localStringBuilder.append(df.a(str));
+      b = localStringBuilder.toString();
+    }
+    catch (Throwable localThrowable2)
+    {
+      label95:
+      break label95;
+    }
+    break label102;
+    b = str;
+    label102:
+    if (TextUtils.isEmpty(b)) {
+      b = "UNKNOWN";
+    }
+    return b;
   }
   
   public static String b(String paramString)
@@ -361,63 +344,57 @@ public final class dg
       return "null";
     }
     int j = Math.min(i, paramArrayOfByte.length);
-    StringBuffer localStringBuffer = new StringBuffer("size:" + j + ",content:");
+    Object localObject = new StringBuilder("size:");
+    ((StringBuilder)localObject).append(j);
+    ((StringBuilder)localObject).append(",content:");
+    localObject = new StringBuffer(((StringBuilder)localObject).toString());
     i = 0;
     while (i < j)
     {
-      localStringBuffer.append(Integer.toHexString(paramArrayOfByte[i] >> 4 & 0xF));
-      localStringBuffer.append(Integer.toHexString(paramArrayOfByte[i] & 0xF));
+      ((StringBuffer)localObject).append(Integer.toHexString(paramArrayOfByte[i] >> 4 & 0xF));
+      ((StringBuffer)localObject).append(Integer.toHexString(paramArrayOfByte[i] & 0xF));
       i += 1;
     }
-    return localStringBuffer.toString();
+    return ((StringBuffer)localObject).toString();
   }
   
   public static String c()
   {
+    String str = c;
     int i = 1;
-    String str1 = c;
-    for (;;)
-    {
-      if ((str1 != null) || (i != 0)) {}
-      try
-      {
-        str1 = ((WifiManager)ac.a().getApplicationContext().getSystemService("wifi")).getConnectionInfo().getMacAddress();
-        label35:
-        if (!TextUtils.isEmpty(str1)) {
-          if (!ac.g) {
-            break label110;
-          }
-        }
-      }
-      catch (Throwable localThrowable1)
-      {
-        try
-        {
-          label70:
-          String str2;
-          label110:
-          for (c = "M_" + df.a(str1);; c = str2)
-          {
-            if (TextUtils.isEmpty(c)) {
-              c = "UNKNOWN";
-            }
-            return c;
-            if (str1.trim().length() == 0) {
-              break;
-            }
-            i = 0;
-            break;
-            localThrowable1 = localThrowable1;
-            str2 = "";
-            break label35;
-          }
-        }
-        catch (Throwable localThrowable2)
-        {
-          break label70;
-        }
-      }
+    if ((str != null) && (str.trim().length() != 0)) {
+      i = 0;
     }
+    if (i != 0) {}
+    try
+    {
+      str = ((WifiManager)ac.a().getApplicationContext().getSystemService("wifi")).getConnectionInfo().getMacAddress();
+    }
+    catch (Throwable localThrowable1)
+    {
+      label56:
+      break label56;
+    }
+    str = "";
+    if ((TextUtils.isEmpty(str)) || (ac.g)) {}
+    try
+    {
+      StringBuilder localStringBuilder = new StringBuilder("M_");
+      localStringBuilder.append(df.a(str));
+      c = localStringBuilder.toString();
+    }
+    catch (Throwable localThrowable2)
+    {
+      label101:
+      break label101;
+    }
+    break label108;
+    c = str;
+    label108:
+    if (TextUtils.isEmpty(c)) {
+      c = "UNKNOWN";
+    }
+    return c;
   }
   
   public static String c(String paramString)
@@ -449,39 +426,49 @@ public final class dg
     catch (Throwable localThrowable)
     {
       localThrowable.printStackTrace();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(System.currentTimeMillis());
+      return localStringBuilder.toString();
     }
-    return System.currentTimeMillis();
   }
   
   public static boolean d(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    if (paramString.contains(":"))
+    {
+      if ((paramString.charAt(0) == '[') && (paramString.charAt(paramString.length() - 1) == ']')) {
+        return as.c(paramString.substring(1, paramString.length() - 1));
+      }
+      return as.c(paramString);
+    }
+    paramString = paramString.split("\\.");
+    if (paramString.length != 4) {
+      return false;
+    }
+    int j = paramString.length;
+    int i = 0;
     for (;;)
     {
-      return false;
-      if (paramString.contains(":"))
-      {
-        if ((paramString.charAt(0) == '[') && (paramString.charAt(paramString.length() - 1) == ']')) {
-          return as.c(paramString.substring(1, paramString.length() - 1));
-        }
-        return as.c(paramString);
-      }
-      paramString = paramString.split("\\.");
-      int i;
       String str;
-      if (paramString.length == 4)
-      {
-        int j = paramString.length;
-        i = 0;
-        if (i < j) {
-          str = paramString[i];
-        }
+      if (i < j) {
+        str = paramString[i];
       }
       try
       {
         int k = Integer.parseInt(str);
-        if ((k >= 0) && (k <= 255)) {
+        if (k >= 0)
+        {
+          if (k > 255) {
+            return false;
+          }
           i += 1;
+        }
+        else
+        {
+          return false;
         }
       }
       catch (NumberFormatException paramString) {}
@@ -492,41 +479,64 @@ public final class dg
   
   public static String e()
   {
-    int i = 1;
     try
     {
       String str = d;
-      if (str == null) {}
-      for (;;)
-      {
-        if (i != 0) {
-          d = Settings.Secure.getString(ac.a().getContentResolver(), "android_id");
-        }
-        return d;
-        int j = str.trim().length();
-        if (j != 0) {
-          i = 0;
+      i = 1;
+      if (str != null) {
+        if (str.trim().length() != 0) {
+          break label56;
         }
       }
-      return "";
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        continue;
+        label56:
+        int i = 0;
+      }
+    }
+    if (i != 0) {
+      d = Settings.Secure.getString(ac.a().getContentResolver(), "android_id");
+    }
+    return d;
+    return "";
   }
   
   public static String f()
   {
     try
     {
-      String str = "35" + Build.BOARD.length() % 10 + Build.BRAND.length() % 10 + Build.CPU_ABI.length() % 10 + Build.DEVICE.length() % 10 + Build.DISPLAY.length() % 10 + Build.HOST.length() % 10 + Build.ID.length() % 10 + Build.MANUFACTURER.length() % 10 + Build.MODEL.length() % 10 + Build.PRODUCT.length() % 10 + Build.TAGS.length() % 10 + Build.TYPE.length() % 10 + Build.USER.length() % 10;
-      return str;
+      Object localObject = new StringBuilder("35");
+      ((StringBuilder)localObject).append(Build.BOARD.length() % 10);
+      ((StringBuilder)localObject).append(Build.BRAND.length() % 10);
+      ((StringBuilder)localObject).append(Build.CPU_ABI.length() % 10);
+      ((StringBuilder)localObject).append(Build.DEVICE.length() % 10);
+      ((StringBuilder)localObject).append(Build.DISPLAY.length() % 10);
+      ((StringBuilder)localObject).append(Build.HOST.length() % 10);
+      ((StringBuilder)localObject).append(Build.ID.length() % 10);
+      ((StringBuilder)localObject).append(Build.MANUFACTURER.length() % 10);
+      ((StringBuilder)localObject).append(Build.MODEL.length() % 10);
+      ((StringBuilder)localObject).append(Build.PRODUCT.length() % 10);
+      ((StringBuilder)localObject).append(Build.TAGS.length() % 10);
+      ((StringBuilder)localObject).append(Build.TYPE.length() % 10);
+      ((StringBuilder)localObject).append(Build.USER.length() % 10);
+      localObject = ((StringBuilder)localObject).toString();
+      return localObject;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label200:
+      break label200;
+    }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.dg
  * JD-Core Version:    0.7.0.1
  */

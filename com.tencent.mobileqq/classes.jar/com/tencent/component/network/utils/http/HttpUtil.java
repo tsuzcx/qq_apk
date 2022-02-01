@@ -37,7 +37,6 @@ import org.apache.http.conn.params.ConnManagerParams;
 import org.apache.http.conn.scheme.PlainSocketFactory;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.scheme.SchemeRegistry;
-import org.apache.http.conn.scheme.SocketFactory;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.conn.DefaultHttpRoutePlanner;
@@ -77,15 +76,10 @@ public class HttpUtil
     if (paramHttpRequest != null)
     {
       paramHttpRequest = paramHttpRequest.getParams().getParameter("http.route.default-proxy");
-      if ((paramHttpRequest == null) || (!(paramHttpRequest instanceof HttpHost))) {}
+      return (paramHttpRequest != null) && ((paramHttpRequest instanceof HttpHost));
     }
-    do
-    {
-      return true;
-      return false;
-      paramHttpRequest = prepareRequest(paramRequestOptions);
-    } while ((paramHttpRequest != null) && (paramHttpRequest.address() != null));
-    return false;
+    paramHttpRequest = prepareRequest(paramRequestOptions);
+    return (paramHttpRequest != null) && (paramHttpRequest.address() != null);
   }
   
   public static OkHttpClient createHttp2Client()
@@ -110,15 +104,15 @@ public class HttpUtil
   
   public static QZoneHttpClient createHttpClient(HttpUtil.ClientOptions paramClientOptions)
   {
-    Object localObject1 = paramClientOptions;
+    Object localObject = paramClientOptions;
     if (paramClientOptions == null) {
-      localObject1 = DEFAULT_CLIENT_OPTIONS;
+      localObject = DEFAULT_CLIENT_OPTIONS;
     }
     BasicHttpParams localBasicHttpParams = new BasicHttpParams();
     HttpConnectionParams.setStaleCheckingEnabled(localBasicHttpParams, false);
-    HttpConnectionParams.setConnectionTimeout(localBasicHttpParams, ((HttpUtil.ClientOptions)localObject1).connTimeout);
+    HttpConnectionParams.setConnectionTimeout(localBasicHttpParams, ((HttpUtil.ClientOptions)localObject).connTimeout);
     HttpConnectionParams.setTcpNoDelay(localBasicHttpParams, true);
-    HttpConnectionParams.setSoTimeout(localBasicHttpParams, ((HttpUtil.ClientOptions)localObject1).soTimeout);
+    HttpConnectionParams.setSoTimeout(localBasicHttpParams, ((HttpUtil.ClientOptions)localObject).soTimeout);
     HttpConnectionParams.setSocketBufferSize(localBasicHttpParams, 8192);
     HttpProtocolParams.setVersion(localBasicHttpParams, HttpVersion.HTTP_1_1);
     HttpProtocolParams.setUserAgent(localBasicHttpParams, Config.getUserAgent());
@@ -126,36 +120,35 @@ public class HttpUtil
     try
     {
       paramClientOptions.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
-      Object localObject2 = new SniSSLSocketFactory(null);
-      ((SSLSocketFactory)localObject2).setHostnameVerifier(new SNIVerifier());
-      paramClientOptions.register(new Scheme("https", (SocketFactory)localObject2, 443));
-      if (((HttpUtil.ClientOptions)localObject1).multiConnection)
-      {
-        localObject2 = new PoolingClientConnectionManager(paramClientOptions, ((HttpUtil.ClientOptions)localObject1).timeToLive, ((HttpUtil.ClientOptions)localObject1).timeToLiveUnit, new SystemDefaultDnsResolver(), ((HttpUtil.ClientOptions)localObject1).dnsResolve);
-        if (((HttpUtil.ClientOptions)localObject1).maxConnectionPerRoute > 0) {
-          ((PoolingClientConnectionManager)localObject2).setDefaultMaxPerRoute(((HttpUtil.ClientOptions)localObject1).maxConnectionPerRoute);
-        }
-        paramClientOptions = (HttpUtil.ClientOptions)localObject2;
-        if (((HttpUtil.ClientOptions)localObject1).maxConnection > 0)
-        {
-          ((PoolingClientConnectionManager)localObject2).setMaxTotal(((HttpUtil.ClientOptions)localObject1).maxConnection);
-          paramClientOptions = (HttpUtil.ClientOptions)localObject2;
-        }
-        ConnManagerParams.setTimeout(localBasicHttpParams, ((HttpUtil.ClientOptions)localObject1).connManagerTimeout);
-        localObject1 = new QZoneHttpClient(paramClientOptions, localBasicHttpParams);
-        ((QZoneHttpClient)localObject1).setRoutePlanner(new DefaultHttpRoutePlanner(paramClientOptions.getSchemeRegistry()));
-        return localObject1;
-      }
+      SniSSLSocketFactory localSniSSLSocketFactory = new SniSSLSocketFactory(null);
+      localSniSSLSocketFactory.setHostnameVerifier(new SNIVerifier());
+      paramClientOptions.register(new Scheme("https", localSniSSLSocketFactory, 443));
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
+      QDLog.e("downloader", "", localThrowable);
+    }
+    if (((HttpUtil.ClientOptions)localObject).multiConnection)
+    {
+      PoolingClientConnectionManager localPoolingClientConnectionManager = new PoolingClientConnectionManager(paramClientOptions, ((HttpUtil.ClientOptions)localObject).timeToLive, ((HttpUtil.ClientOptions)localObject).timeToLiveUnit, new SystemDefaultDnsResolver(), ((HttpUtil.ClientOptions)localObject).dnsResolve);
+      if (((HttpUtil.ClientOptions)localObject).maxConnectionPerRoute > 0) {
+        localPoolingClientConnectionManager.setDefaultMaxPerRoute(((HttpUtil.ClientOptions)localObject).maxConnectionPerRoute);
+      }
+      paramClientOptions = localPoolingClientConnectionManager;
+      if (((HttpUtil.ClientOptions)localObject).maxConnection > 0)
       {
-        QDLog.e("downloader", "", localThrowable);
-        continue;
-        paramClientOptions = new SingleClientConnManager(localBasicHttpParams, paramClientOptions);
+        localPoolingClientConnectionManager.setMaxTotal(((HttpUtil.ClientOptions)localObject).maxConnection);
+        paramClientOptions = localPoolingClientConnectionManager;
       }
     }
+    else
+    {
+      paramClientOptions = new SingleClientConnManager(localBasicHttpParams, paramClientOptions);
+    }
+    ConnManagerParams.setTimeout(localBasicHttpParams, ((HttpUtil.ClientOptions)localObject).connManagerTimeout);
+    localObject = new QZoneHttpClient(paramClientOptions, localBasicHttpParams);
+    ((QZoneHttpClient)localObject).setRoutePlanner(new DefaultHttpRoutePlanner(paramClientOptions.getSchemeRegistry()));
+    return localObject;
   }
   
   public static HttpClient createHttpClient()
@@ -282,16 +275,14 @@ public class HttpUtil
     }
     if (!TextUtils.isEmpty(paramContext)) {
       paramString3.addHeader("Referer", paramContext);
-    }
-    for (;;)
-    {
-      paramContext = Config.getUserAgent();
-      if ((paramString3 != null) && (!TextUtils.isEmpty(paramContext))) {
-        paramString3.header("User-Agent", paramContext);
-      }
-      return paramString3;
+    } else {
       paramString3.addHeader("Referer", paramString1);
     }
+    paramContext = Config.getUserAgent();
+    if ((paramString3 != null) && (!TextUtils.isEmpty(paramContext))) {
+      paramString3.header("User-Agent", paramContext);
+    }
+    return paramString3;
   }
   
   public static Request.Builder createOkHttpGet(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
@@ -342,161 +333,163 @@ public class HttpUtil
   
   private static String prepareHost(String paramString)
   {
-    if (paramString != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      AssertUtil.assertTrue(bool);
-      return new URL(paramString).getAuthority();
+    boolean bool;
+    if (paramString != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    AssertUtil.assertTrue(bool);
+    return new URL(paramString).getAuthority();
   }
   
   public static String prepareRefer(String paramString)
   {
-    if (paramString != null) {}
-    int i;
-    for (boolean bool = true;; bool = false)
-    {
-      AssertUtil.assertTrue(bool);
-      i = paramString.indexOf("&rf=");
-      if (i >= 0) {
-        break;
-      }
+    boolean bool;
+    if (paramString != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    AssertUtil.assertTrue(bool);
+    int i = paramString.indexOf("&rf=");
+    if (i < 0) {
       return "";
     }
-    int j = paramString.indexOf("&", "&rf=".length() + i);
-    if (j > "&rf=".length() + i) {
-      return paramString.substring("&rf=".length() + i, j);
+    i += 4;
+    int j = paramString.indexOf("&", i);
+    if (j > i) {
+      return paramString.substring(i, j);
     }
-    return paramString.substring("&rf=".length() + i);
+    return paramString.substring(i);
   }
   
   public static Proxy prepareRequest(HttpUtil.RequestOptions paramRequestOptions)
   {
-    Object localObject = Proxy.NO_PROXY;
-    Context localContext = Global.getContext();
-    if (localContext == null) {}
-    label160:
-    label163:
-    for (;;)
-    {
-      return localObject;
-      if ((paramRequestOptions != null) && (paramRequestOptions.mobileProxy != null) && (NetworkUtils.isMobileConnected(localContext))) {
-        return paramRequestOptions.mobileProxy;
-      }
-      boolean bool1;
-      if (paramRequestOptions != null)
-      {
-        bool1 = paramRequestOptions.allowProxy;
-        if (paramRequestOptions == null) {
-          break label160;
-        }
-      }
-      for (boolean bool2 = paramRequestOptions.apnProxy;; bool2 = false)
-      {
-        if ((!bool1) || (!NetworkUtils.isMobileConnected(localContext))) {
-          break label163;
-        }
-        paramRequestOptions = NetworkUtils.getProxy(localContext, bool2);
-        if ((paramRequestOptions != null) && (QDLog.isDebugEnable()) && ((paramRequestOptions.address() instanceof InetSocketAddress)))
-        {
-          localObject = (InetSocketAddress)paramRequestOptions.address();
-          QDLog.d("downloader", "use proxy[host:" + ((InetSocketAddress)localObject).getHostName() + ",port:" + ((InetSocketAddress)localObject).getPort() + "]");
-        }
-        return paramRequestOptions;
-        bool1 = true;
-        break;
-      }
+    Object localObject1 = Proxy.NO_PROXY;
+    Object localObject2 = Global.getContext();
+    if (localObject2 == null) {
+      return localObject1;
     }
+    if ((paramRequestOptions != null) && (paramRequestOptions.mobileProxy != null) && (NetworkUtils.isMobileConnected((Context)localObject2))) {
+      return paramRequestOptions.mobileProxy;
+    }
+    boolean bool1;
+    if (paramRequestOptions != null) {
+      bool1 = paramRequestOptions.allowProxy;
+    } else {
+      bool1 = true;
+    }
+    boolean bool2;
+    if (paramRequestOptions != null) {
+      bool2 = paramRequestOptions.apnProxy;
+    } else {
+      bool2 = false;
+    }
+    if ((bool1) && (NetworkUtils.isMobileConnected((Context)localObject2)))
+    {
+      paramRequestOptions = NetworkUtils.getProxy((Context)localObject2, bool2);
+      if ((paramRequestOptions != null) && (QDLog.isDebugEnable()) && ((paramRequestOptions.address() instanceof InetSocketAddress)))
+      {
+        localObject1 = (InetSocketAddress)paramRequestOptions.address();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("use proxy[host:");
+        ((StringBuilder)localObject2).append(((InetSocketAddress)localObject1).getHostName());
+        ((StringBuilder)localObject2).append(",port:");
+        ((StringBuilder)localObject2).append(((InetSocketAddress)localObject1).getPort());
+        ((StringBuilder)localObject2).append("]");
+        QDLog.d("downloader", ((StringBuilder)localObject2).toString());
+      }
+      return paramRequestOptions;
+    }
+    return localObject1;
   }
   
   private static void prepareRequest(Context paramContext, HttpRequest paramHttpRequest, HttpUtil.RequestOptions paramRequestOptions)
   {
-    if ((paramRequestOptions != null) && (paramRequestOptions.mobileProxy != null) && (NetworkUtils.isMobileConnected(paramContext))) {
-      paramHttpRequest.getParams().setParameter("http.route.default-proxy", paramRequestOptions.mobileProxy);
-    }
-    label46:
-    label181:
-    label185:
-    for (;;)
+    if ((paramRequestOptions != null) && (paramRequestOptions.mobileProxy != null) && (NetworkUtils.isMobileConnected(paramContext)))
     {
+      paramHttpRequest.getParams().setParameter("http.route.default-proxy", paramRequestOptions.mobileProxy);
       return;
-      boolean bool1;
-      if (paramRequestOptions != null)
+    }
+    boolean bool1;
+    if (paramRequestOptions != null) {
+      bool1 = paramRequestOptions.allowProxy;
+    } else {
+      bool1 = true;
+    }
+    boolean bool2;
+    if (paramRequestOptions != null) {
+      bool2 = paramRequestOptions.apnProxy;
+    } else {
+      bool2 = false;
+    }
+    if ((bool1) && (NetworkUtils.isMobileConnected(paramContext)))
+    {
+      paramContext = NetworkUtils.getProxy(paramContext, bool2);
+      if (paramContext != null)
       {
-        bool1 = paramRequestOptions.allowProxy;
-        if (paramRequestOptions == null) {
-          break label181;
-        }
-      }
-      for (boolean bool2 = paramRequestOptions.apnProxy;; bool2 = false)
-      {
-        if ((!bool1) || (!NetworkUtils.isMobileConnected(paramContext))) {
-          break label185;
-        }
-        paramContext = NetworkUtils.getProxy(paramContext, bool2);
-        if (paramContext == null) {
-          break;
-        }
         paramContext = (InetSocketAddress)paramContext.address();
-        if (paramContext == null) {
-          break;
+        if (paramContext != null)
+        {
+          paramRequestOptions = new HttpHost(paramContext.getHostName(), paramContext.getPort());
+          paramHttpRequest.getParams().setParameter("http.route.default-proxy", paramRequestOptions);
+          if (QDLog.isDebugEnable())
+          {
+            paramHttpRequest = new StringBuilder();
+            paramHttpRequest.append("use proxy[host:");
+            paramHttpRequest.append(paramContext.getHostName());
+            paramHttpRequest.append(",port:");
+            paramHttpRequest.append(paramContext.getPort());
+            paramHttpRequest.append("]");
+            QDLog.d("downloader", paramHttpRequest.toString());
+          }
         }
-        paramRequestOptions = new HttpHost(paramContext.getHostName(), paramContext.getPort());
-        paramHttpRequest.getParams().setParameter("http.route.default-proxy", paramRequestOptions);
-        if (!QDLog.isDebugEnable()) {
-          break;
-        }
-        QDLog.d("downloader", "use proxy[host:" + paramContext.getHostName() + ",port:" + paramContext.getPort() + "]");
-        return;
-        bool1 = true;
-        break label46;
       }
     }
   }
   
   private static String prepareUrl(String paramString)
   {
-    if (paramString != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      AssertUtil.assertTrue(bool);
-      String str = paramString.trim().replace(" ", "");
-      int i = str.indexOf('#');
-      paramString = str;
-      if (i > 0) {
-        paramString = str.substring(0, i);
-      }
-      return paramString;
+    boolean bool;
+    if (paramString != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    AssertUtil.assertTrue(bool);
+    String str = paramString.trim().replace(" ", "");
+    int i = str.indexOf('#');
+    paramString = str;
+    if (i > 0) {
+      paramString = str.substring(0, i);
+    }
+    return paramString;
   }
   
   public static void setKeepAliveEnabled(HttpRequest paramHttpRequest, Request.Builder paramBuilder, boolean paramBoolean)
   {
-    if (paramHttpRequest != null) {
-      if (paramBoolean)
-      {
-        paramBuilder = "Keep-Alive";
-        paramHttpRequest.setHeader("Connection", paramBuilder);
-      }
-    }
-    while (paramBuilder == null) {
-      for (;;)
-      {
-        return;
-        paramBuilder = "Close";
-      }
-    }
-    if (paramBoolean) {}
-    for (paramHttpRequest = "Keep-Alive";; paramHttpRequest = "Close")
+    String str = "Keep-Alive";
+    if (paramHttpRequest != null)
     {
-      paramBuilder.header("Connection", paramHttpRequest);
+      if (!paramBoolean) {
+        str = "Close";
+      }
+      paramHttpRequest.setHeader("Connection", str);
       return;
+    }
+    if (paramBuilder != null)
+    {
+      if (!paramBoolean) {
+        str = "Close";
+      }
+      paramBuilder.header("Connection", str);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.utils.http.HttpUtil
  * JD-Core Version:    0.7.0.1
  */

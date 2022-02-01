@@ -33,34 +33,34 @@ public class HippyTKDViewGroup
   public void changeExternalScrollEnabled(boolean paramBoolean)
   {
     ViewParent localViewParent = getParent();
-    int i = 0;
-    if ((localViewParent != null) && (i < this.disableExternalScoll)) {
-      if ((localViewParent instanceof HippyScrollView))
-      {
-        ((HippyScrollView)localViewParent).setScrollEnabled(paramBoolean);
-        i += 1;
-      }
-    }
-    for (;;)
+    int j;
+    for (int i = 0; (localViewParent != null) && (i < this.disableExternalScoll); i = j)
     {
+      if ((localViewParent instanceof HippyScrollView)) {
+        ((HippyScrollView)localViewParent).setScrollEnabled(paramBoolean);
+      }
+      for (;;)
+      {
+        j = i + 1;
+        break;
+        if ((localViewParent instanceof HippyListView))
+        {
+          ((HippyListView)localViewParent).setScrollEnable(paramBoolean);
+        }
+        else
+        {
+          j = i;
+          if (!(localViewParent instanceof HippyViewPager)) {
+            break;
+          }
+          ((HippyViewPager)localViewParent).setScrollEnabled(paramBoolean);
+        }
+      }
       localViewParent = localViewParent.getParent();
-      break;
-      if ((localViewParent instanceof HippyListView))
-      {
-        ((HippyListView)localViewParent).setScrollEnable(paramBoolean);
-        i += 1;
-      }
-      else if ((localViewParent instanceof HippyViewPager))
-      {
-        ((HippyViewPager)localViewParent).setScrollEnabled(paramBoolean);
-        i += 1;
-        continue;
-        return;
-      }
     }
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     try
     {
@@ -69,15 +69,16 @@ public class HippyTKDViewGroup
     }
     catch (StackOverflowError paramCanvas)
     {
-      do
-      {
-        do
-        {
-          paramCanvas = getContext();
-        } while (!(paramCanvas instanceof HippyInstanceContext));
-        paramCanvas = ((HippyInstanceContext)paramCanvas).getEngineContext().getGlobalConfigs().getExceptionHandler();
-      } while (paramCanvas == null);
-      paramCanvas.handleNativeException(new RuntimeException("HippyViewGroup StackOverflowError"), true);
+      label6:
+      break label6;
+    }
+    paramCanvas = getContext();
+    if ((paramCanvas instanceof HippyInstanceContext))
+    {
+      paramCanvas = ((HippyInstanceContext)paramCanvas).getEngineContext().getGlobalConfigs().getExceptionHandler();
+      if (paramCanvas != null) {
+        paramCanvas.handleNativeException(new RuntimeException("HippyViewGroup StackOverflowError"), true);
+      }
     }
   }
   
@@ -86,11 +87,12 @@ public class HippyTKDViewGroup
     this.mHippyTKDSkinHandler.switchSkin(this);
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.mOnSizeChangeListener != null) {
-      this.mOnSizeChangeListener.onHippyViewGroupSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
+    HippyTKDViewGroup.OnSizeChangeListener localOnSizeChangeListener = this.mOnSizeChangeListener;
+    if (localOnSizeChangeListener != null) {
+      localOnSizeChangeListener.onHippyViewGroupSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
@@ -99,16 +101,15 @@ public class HippyTKDViewGroup
     boolean bool = super.onTouchEvent(paramMotionEvent);
     if (this.disableExternalScoll > 0)
     {
-      if (paramMotionEvent.getAction() != 0) {
-        break label27;
+      if (paramMotionEvent.getAction() == 0)
+      {
+        changeExternalScrollEnabled(false);
+        return bool;
       }
-      changeExternalScrollEnabled(false);
+      if ((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1)) {
+        changeExternalScrollEnabled(true);
+      }
     }
-    label27:
-    while ((paramMotionEvent.getAction() != 3) && (paramMotionEvent.getAction() != 1)) {
-      return bool;
-    }
-    changeExternalScrollEnabled(true);
     return bool;
   }
   
@@ -161,7 +162,7 @@ public class HippyTKDViewGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.view.HippyTKDViewGroup
  * JD-Core Version:    0.7.0.1
  */

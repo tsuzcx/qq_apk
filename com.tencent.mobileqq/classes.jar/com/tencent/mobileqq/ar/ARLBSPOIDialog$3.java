@@ -16,14 +16,20 @@ class ARLBSPOIDialog$3
   public void onClick(View paramView)
   {
     this.a.dismiss();
-    Intent localIntent = new Intent(paramView.getContext(), PoiMapActivity.class).putExtra("lat", Double.toString(this.a.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult$POIInfo.a * 1.0D / 1000000.0D)).putExtra("lon", Double.toString(this.a.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult$POIInfo.b * 1.0D / 1000000.0D));
+    Intent localIntent = new Intent(paramView.getContext(), PoiMapActivity.class);
+    double d = this.a.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult$POIInfo.a;
+    Double.isNaN(d);
+    localIntent = localIntent.putExtra("lat", Double.toString(d * 1.0D / 1000000.0D));
+    d = this.a.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult$POIInfo.b;
+    Double.isNaN(d);
+    localIntent = localIntent.putExtra("lon", Double.toString(d * 1.0D / 1000000.0D));
     this.a.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARLBSPOIDialog.3
  * JD-Core Version:    0.7.0.1
  */

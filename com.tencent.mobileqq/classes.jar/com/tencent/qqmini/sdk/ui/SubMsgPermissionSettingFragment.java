@@ -22,7 +22,6 @@ import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.qqmini.sdk.R.id;
 import com.tencent.qqmini.sdk.R.layout;
 import com.tencent.qqmini.sdk.annotation.MiniKeep;
@@ -50,7 +49,7 @@ public class SubMsgPermissionSettingFragment
   public static final long NOT_LOGIN_ERR_CODE = -101510007L;
   public static final String SETTING_APP_MSG_SUBSCRIBED = "setting.appMsgSubscribed";
   public static final String SETTING_APP_ONCE_MSG_SUBSCRIBED = "setting.onceMsgSubscribed";
-  private static final String TAG = SubMsgPermissionSettingFragment.class.getName();
+  private static final String TAG = "com.tencent.qqmini.sdk.ui.SubMsgPermissionSettingFragment";
   public static boolean hasCancel = false;
   private SubMsgPermissionListAdapter adapter;
   String appId;
@@ -80,26 +79,26 @@ public class SubMsgPermissionSettingFragment
           return;
         }
         paramJSONObject = paramJSONObject.opt("originalData");
-        Object localObject = new INTERFACE.StGetUserSettingRsp();
+        localObject1 = new INTERFACE.StGetUserSettingRsp();
         if ((paramJSONObject instanceof byte[]))
         {
-          ((INTERFACE.StGetUserSettingRsp)localObject).mergeFrom((byte[])paramJSONObject);
-          paramJSONObject = ((INTERFACE.StGetUserSettingRsp)localObject).setting.subItems.get();
-          localObject = new ArrayList();
+          ((INTERFACE.StGetUserSettingRsp)localObject1).mergeFrom((byte[])paramJSONObject);
+          paramJSONObject = ((INTERFACE.StGetUserSettingRsp)localObject1).setting.subItems.get();
+          localObject1 = new ArrayList();
           i = 0;
           if (i < paramJSONObject.size())
           {
-            INTERFACE.StSubscribeMessage localStSubscribeMessage = (INTERFACE.StSubscribeMessage)paramJSONObject.get(i);
-            if (localStSubscribeMessage.authState.get() == 0) {
-              break label236;
+            localObject2 = (INTERFACE.StSubscribeMessage)paramJSONObject.get(i);
+            if (((INTERFACE.StSubscribeMessage)localObject2).authState.get() == 0) {
+              break label250;
             }
-            ((List)localObject).add(localStSubscribeMessage);
-            break label236;
+            ((List)localObject1).add(localObject2);
+            break label250;
           }
-          if (((List)localObject).size() > 0)
+          if (((List)localObject1).size() > 0)
           {
             this.adapter = new SubMsgPermissionListAdapter(getActivity(), this);
-            this.adapter.setSubMsgMaintainAuth((List)localObject);
+            this.adapter.setSubMsgMaintainAuth((List)localObject1);
             this.adapter.setInnerOnClickListener(new SubMsgPermissionSettingFragment.4(this));
             this.adapter.setInnerCheckedChangeListener(this.onceSubMsgCheckListener);
             getActivity().runOnUiThread(new SubMsgPermissionSettingFragment.5(this));
@@ -109,18 +108,22 @@ public class SubMsgPermissionSettingFragment
       }
       catch (InvalidProtocolBufferMicroException paramJSONObject)
       {
-        QMLog.e(TAG, "handleOnceSubscribeResponse InvalidProtocolBufferMicroException:" + paramJSONObject);
+        Object localObject1 = TAG;
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("handleOnceSubscribeResponse InvalidProtocolBufferMicroException:");
+        ((StringBuilder)localObject2).append(paramJSONObject);
+        QMLog.e((String)localObject1, ((StringBuilder)localObject2).toString());
       }
       return;
-      label236:
+      label250:
       i += 1;
     }
   }
   
   private void initSettingUI()
   {
-    boolean bool = true;
     int i = this.authState.getAuthFlag("setting.appMsgSubscribed");
+    boolean bool = true;
     if (1 != i)
     {
       this.subMsgTips.setText("允许发送内容更新、活动更新等消息");
@@ -128,27 +131,24 @@ public class SubMsgPermissionSettingFragment
       this.subMsgSwitcher.getSwitch().setTag("setting.appMsgSubscribed");
       this.subMsgSwitcher.setText("接受订阅消息");
       FormSwitchItem localFormSwitchItem = this.subMsgSwitcher;
-      if (i == 2)
-      {
-        localFormSwitchItem.setChecked(bool);
-        this.subMsgTips.setVisibility(0);
-        this.subMsgSwitcher.setVisibility(0);
+      if (i != 2) {
+        bool = false;
       }
+      localFormSwitchItem.setChecked(bool);
+      this.subMsgTips.setVisibility(0);
+      this.subMsgSwitcher.setVisibility(0);
     }
-    for (;;)
+    else
     {
-      if (this.mProgress == null) {
-        this.mProgress = new MiniProgressDialog(getActivity());
-      }
-      this.mProgress.setMessage("正在获取权限信息，请稍候...");
-      this.mProgress.show();
-      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getUserSetting(this.appId, "", "setting.onceMsgSubscribed", null, new SubMsgPermissionSettingFragment.3(this));
-      return;
-      bool = false;
-      break;
       this.subMsgTips.setVisibility(8);
       this.subMsgSwitcher.setVisibility(8);
     }
+    if (this.mProgress == null) {
+      this.mProgress = new MiniProgressDialog(getActivity());
+    }
+    this.mProgress.setMessage("正在获取权限信息，请稍候...");
+    this.mProgress.show();
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getUserSetting(this.appId, "", "setting.onceMsgSubscribed", null, new SubMsgPermissionSettingFragment.3(this));
   }
   
   public static void launch(Context paramContext, String paramString)
@@ -178,7 +178,6 @@ public class SubMsgPermissionSettingFragment
       paramLayoutInflater.setPadding(0, ImmersiveUtils.getStatusBarHeight(getActivity()), 0, 0);
     }
     paramLayoutInflater.setBackgroundColor(Color.parseColor("#EFEFF4"));
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
@@ -212,7 +211,7 @@ public class SubMsgPermissionSettingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.SubMsgPermissionSettingFragment
  * JD-Core Version:    0.7.0.1
  */

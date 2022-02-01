@@ -25,25 +25,42 @@ class TroopGiftAnimationController$3
   public void a(Sprite paramSprite)
   {
     AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    Object localObject1;
     if (this.a.jdField_a_of_type_Int >= 4)
     {
-      NearbyFlowerManager.a("cartoon", "clk_inter", TroopGiftAnimationController.a(this.a).frienduin, TroopGiftUtil.b(TroopGiftAnimationController.a(this.a)) + "", "", "");
-      paramSprite = TroopGiftAnimationController.a(this.a);
-      if ((paramSprite != null) && (NetworkUtil.a(paramSprite) == 0))
-      {
-        ((TroopGiftToAllSurfaceView)this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).a();
-        paramSprite = paramSprite.getString(2131697610);
-        ((TroopGiftToAllSurfaceView)this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).a(paramSprite, TroopGiftAnimationController.a(this.a).n, DisplayUtil.a(TroopGiftAnimationController.a(this.a), 16.0F));
-      }
+      paramSprite = TroopGiftAnimationController.a(this.a).frienduin;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(TroopGiftUtil.b(TroopGiftAnimationController.a(this.a)));
+      ((StringBuilder)localObject1).append("");
+      NearbyFlowerManager.a("cartoon", "clk_inter", paramSprite, ((StringBuilder)localObject1).toString(), "", "");
     }
     else
     {
-      if (TroopGiftAnimationController.a(this.a) != null) {}
-      for (paramSprite = "0";; paramSprite = "1")
-      {
-        ReportController.b(null, "dc00899", "Grp_flower", "", "forall", "Clk_grab", 0, 0, "" + TroopGiftAnimationController.a(this.a).frienduin, "" + TroopGiftUtil.b(TroopGiftAnimationController.a(this.a)), paramSprite, "" + TroopMemberUtil.a(localAppInterface, localAppInterface.getCurrentAccountUin(), TroopGiftAnimationController.a(this.a).frienduin));
-        break;
+      if (TroopGiftAnimationController.a(this.a) != null) {
+        paramSprite = "0";
+      } else {
+        paramSprite = "1";
       }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("");
+      ((StringBuilder)localObject1).append(TroopGiftAnimationController.a(this.a).frienduin);
+      localObject1 = ((StringBuilder)localObject1).toString();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("");
+      ((StringBuilder)localObject2).append(TroopGiftUtil.b(TroopGiftAnimationController.a(this.a)));
+      localObject2 = ((StringBuilder)localObject2).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(TroopMemberUtil.a(localAppInterface, localAppInterface.getCurrentAccountUin(), TroopGiftAnimationController.a(this.a).frienduin));
+      ReportController.b(null, "dc00899", "Grp_flower", "", "forall", "Clk_grab", 0, 0, (String)localObject1, (String)localObject2, paramSprite, localStringBuilder.toString());
+    }
+    paramSprite = TroopGiftAnimationController.a(this.a);
+    if ((paramSprite != null) && (NetworkUtil.getSystemNetwork(paramSprite) == 0))
+    {
+      ((TroopGiftToAllSurfaceView)this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).a();
+      paramSprite = paramSprite.getString(2131697616);
+      ((TroopGiftToAllSurfaceView)this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).a(paramSprite, TroopGiftAnimationController.a(this.a).n, DisplayUtil.a(TroopGiftAnimationController.a(this.a), 16.0F));
+      return;
     }
     ((TroopGiftToAllSurfaceView)this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).a();
     paramSprite = (TroopGiftManager)localAppInterface.getManager(QQManagerFactory.TROOP_GIFT_MANAGER);
@@ -58,7 +75,7 @@ class TroopGiftAnimationController$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftAnimationController.3
  * JD-Core Version:    0.7.0.1
  */

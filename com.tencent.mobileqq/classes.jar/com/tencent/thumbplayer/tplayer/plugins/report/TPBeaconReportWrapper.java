@@ -27,34 +27,50 @@ public class TPBeaconReportWrapper
   
   private static String getEventId(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 5)
     {
-    default: 
-      return "";
-    case 5: 
-      return "init_player";
-    case 15: 
+      if (paramInt != 15)
+      {
+        if (paramInt != 30)
+        {
+          if (paramInt != 40)
+          {
+            if (paramInt != 50)
+            {
+              if (paramInt != 150)
+              {
+                if (paramInt != 205)
+                {
+                  if (paramInt != 263)
+                  {
+                    switch (paramInt)
+                    {
+                    default: 
+                      return "";
+                    case 35: 
+                      return "second_buffering";
+                    case 34: 
+                      return "302_redirect";
+                    case 33: 
+                      return "load_subtitle";
+                    }
+                    return "first_rendering";
+                  }
+                  return "live_period";
+                }
+                return "live_loading";
+              }
+              return "live_error";
+            }
+            return "play_done";
+          }
+          return "user_seek";
+        }
+        return "first_load";
+      }
       return "get_cdn_url";
-    case 30: 
-      return "first_load";
-    case 32: 
-      return "first_rendering";
-    case 33: 
-      return "load_subtitle";
-    case 34: 
-      return "302_redirect";
-    case 35: 
-      return "second_buffering";
-    case 40: 
-      return "user_seek";
-    case 50: 
-      return "play_done";
-    case 205: 
-      return "live_loading";
-    case 263: 
-      return "live_period";
     }
-    return "live_error";
+    return "init_player";
   }
   
   public static void init(Context paramContext)
@@ -78,16 +94,31 @@ public class TPBeaconReportWrapper
         paramITPReportProperties = getEventId(Integer.parseInt(paramITPReportProperties));
         if (!TextUtils.isEmpty(paramITPReportProperties))
         {
-          TPLogUtil.i("TPBeaconReportWrapper", "reportEvent: eventId = " + paramITPReportProperties);
-          BeaconAdapter.onUserActionToTunnel("00000GODBG3702Y1", paramITPReportProperties, true, -1L, -1L, localHashMap, true, true);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("reportEvent: eventId = ");
+          localStringBuilder.append(paramITPReportProperties);
+          TPLogUtil.i("TPBeaconReportWrapper", localStringBuilder.toString());
+          trackCustomKVEvent(paramITPReportProperties, "00000GODBG3702Y1", localHashMap);
         }
       }
     }
   }
+  
+  public static void trackCustomKVEvent(String paramString, ITPReportProperties paramITPReportProperties)
+  {
+    HashMap localHashMap = new HashMap();
+    paramITPReportProperties.propertiesToMap(localHashMap);
+    trackCustomKVEvent(paramString, "00000GODBG3702Y1", localHashMap);
+  }
+  
+  public static void trackCustomKVEvent(String paramString1, String paramString2, Map<String, String> paramMap)
+  {
+    BeaconAdapter.onUserActionToTunnel(paramString2, paramString1, true, -1L, -1L, paramMap, true, true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPBeaconReportWrapper
  * JD-Core Version:    0.7.0.1
  */

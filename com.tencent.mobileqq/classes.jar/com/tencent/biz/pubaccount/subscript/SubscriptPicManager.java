@@ -25,99 +25,89 @@ public class SubscriptPicManager
   
   public void a(Object paramObject, ImageView paramImageView, int paramInt1, int paramInt2, SubscriptPicManager.ImageHostListener paramImageHostListener)
   {
-    if ((paramObject != null) && ((paramObject instanceof String))) {}
-    for (;;)
+    if ((paramObject != null) && ((paramObject instanceof String)))
     {
       try
       {
         paramObject = URLDrawableHelper.getDrawable((String)paramObject, paramInt1, paramInt2);
-        if (paramObject != null) {
-          break label74;
-        }
-        return;
       }
       catch (IllegalArgumentException paramObject)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("SubscriptPicManager", 2, paramObject.toString());
+        if (!QLog.isColorLevel()) {
+          break label70;
         }
-        paramObject = null;
-        continue;
       }
-      if ((paramObject != null) && ((paramObject instanceof URL)))
-      {
-        paramObject = URLDrawableHelper.getDrawable((URL)paramObject, paramInt1, paramInt2);
-        continue;
-        label74:
-        if (paramObject.getStatus() != 1)
-        {
-          paramImageView.setTag(2131378707, paramObject.getURL());
-          SubscriptPicManager.DrawableProperty localDrawableProperty = new SubscriptPicManager.DrawableProperty(this, null);
-          localDrawableProperty.a = new WeakReference(paramImageView);
-          localDrawableProperty.b = new WeakReference(paramImageHostListener);
-          this.a.put(paramObject, localDrawableProperty);
-          paramObject.setURLDrawableListener(this);
-        }
-        paramImageView.setImageDrawable(null);
-        paramImageView.setImageDrawable(paramObject);
-      }
-      else
-      {
-        paramObject = null;
-      }
+      QLog.i("SubscriptPicManager", 2, paramObject.toString());
     }
+    else if ((paramObject != null) && ((paramObject instanceof URL)))
+    {
+      paramObject = URLDrawableHelper.getDrawable((URL)paramObject, paramInt1, paramInt2);
+      break label72;
+    }
+    label70:
+    paramObject = null;
+    label72:
+    if (paramObject == null) {
+      return;
+    }
+    if (paramObject.getStatus() != 1)
+    {
+      paramImageView.setTag(2131378102, paramObject.getURL());
+      SubscriptPicManager.DrawableProperty localDrawableProperty = new SubscriptPicManager.DrawableProperty(this, null);
+      localDrawableProperty.a = new WeakReference(paramImageView);
+      localDrawableProperty.b = new WeakReference(paramImageHostListener);
+      this.a.put(paramObject, localDrawableProperty);
+      paramObject.setURLDrawableListener(this);
+    }
+    paramImageView.setImageDrawable(null);
+    paramImageView.setImageDrawable(paramObject);
   }
   
   public void a(Object paramObject, ImageView paramImageView, int paramInt1, int paramInt2, SubscriptPicManager.ImageHostListener paramImageHostListener, int paramInt3)
   {
-    if ((paramObject != null) && ((paramObject instanceof String))) {}
-    for (;;)
+    if ((paramObject != null) && ((paramObject instanceof String)))
     {
       try
       {
         paramObject = URLDrawableHelper.getDrawable((String)paramObject);
-        if (paramObject != null) {
-          break label68;
-        }
-        return;
       }
       catch (IllegalArgumentException paramObject)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("SubscriptPicManager", 2, paramObject.toString());
+        if (!QLog.isColorLevel()) {
+          break label64;
         }
-        paramObject = null;
-        continue;
       }
-      if ((paramObject != null) && ((paramObject instanceof URL)))
-      {
-        paramObject = URLDrawableHelper.getDrawable((URL)paramObject);
-        continue;
-        label68:
-        paramImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-        if (paramObject.getStatus() != 1)
-        {
-          paramImageView.setTag(2131378707, paramObject.getURL());
-          paramImageView.setTag(2131378701, Boolean.TRUE);
-          paramImageView.setTag(2131378704, Integer.valueOf(paramInt1));
-          paramImageView.setTag(2131378702, Integer.valueOf(paramInt2));
-          paramImageView.setTag(2131378703, Integer.valueOf(paramInt3));
-          SubscriptPicManager.DrawableProperty localDrawableProperty = new SubscriptPicManager.DrawableProperty(this, null);
-          localDrawableProperty.a = new WeakReference(paramImageView);
-          localDrawableProperty.b = new WeakReference(paramImageHostListener);
-          this.a.put(paramObject, localDrawableProperty);
-          paramObject.setURLDrawableListener(this);
-        }
-        paramObject.setTag(URLDrawableDecodeHandler.b(paramInt1, paramInt2, (int)(paramInt3 * DeviceInfoUtil.a())));
-        paramObject.setDecodeHandler(URLDrawableDecodeHandler.j);
-        paramImageView.setImageDrawable(null);
-        paramImageView.setImageDrawable(paramObject);
-      }
-      else
-      {
-        paramObject = null;
-      }
+      QLog.i("SubscriptPicManager", 2, paramObject.toString());
     }
+    else if ((paramObject != null) && ((paramObject instanceof URL)))
+    {
+      paramObject = URLDrawableHelper.getDrawable((URL)paramObject);
+      break label66;
+    }
+    label64:
+    paramObject = null;
+    label66:
+    if (paramObject == null) {
+      return;
+    }
+    paramImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+    if (paramObject.getStatus() != 1)
+    {
+      paramImageView.setTag(2131378102, paramObject.getURL());
+      paramImageView.setTag(2131378096, Boolean.TRUE);
+      paramImageView.setTag(2131378099, Integer.valueOf(paramInt1));
+      paramImageView.setTag(2131378097, Integer.valueOf(paramInt2));
+      paramImageView.setTag(2131378098, Integer.valueOf(paramInt3));
+      SubscriptPicManager.DrawableProperty localDrawableProperty = new SubscriptPicManager.DrawableProperty(this, null);
+      localDrawableProperty.a = new WeakReference(paramImageView);
+      localDrawableProperty.b = new WeakReference(paramImageHostListener);
+      this.a.put(paramObject, localDrawableProperty);
+      paramObject.setURLDrawableListener(this);
+    }
+    paramObject.setTag(URLDrawableDecodeHandler.b(paramInt1, paramInt2, (int)(paramInt3 * DeviceInfoUtil.a())));
+    paramObject.setDecodeHandler(URLDrawableDecodeHandler.i);
+    paramImageView.setImageDrawable(null);
+    paramImageView.setImageDrawable(paramObject);
   }
   
   public void onLoadCanceled(URLDrawable paramURLDrawable) {}
@@ -128,36 +118,42 @@ public class SubscriptPicManager
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if ((this.a == null) || (paramURLDrawable == null)) {}
-    Object localObject;
-    ImageView localImageView;
-    do
+    Object localObject1 = this.a;
+    if (localObject1 != null)
     {
-      do
+      if (paramURLDrawable == null) {
+        return;
+      }
+      Object localObject2 = (SubscriptPicManager.DrawableProperty)((HashMap)localObject1).get(paramURLDrawable);
+      if (localObject2 == null) {
+        return;
+      }
+      this.a.remove(paramURLDrawable);
+      localObject1 = (ImageView)((SubscriptPicManager.DrawableProperty)localObject2).a.get();
+      if (localObject1 != null)
       {
-        do
-        {
+        if (!paramURLDrawable.getURL().equals(((ImageView)localObject1).getTag(2131378102))) {
           return;
-          localObject = (SubscriptPicManager.DrawableProperty)this.a.get(paramURLDrawable);
-        } while (localObject == null);
-        this.a.remove(paramURLDrawable);
-        localImageView = (ImageView)((SubscriptPicManager.DrawableProperty)localObject).a.get();
-      } while ((localImageView == null) || (!paramURLDrawable.getURL().equals(localImageView.getTag(2131378707))));
-      localObject = (SubscriptPicManager.ImageHostListener)((SubscriptPicManager.DrawableProperty)localObject).b.get();
-    } while ((localObject != null) && (!((SubscriptPicManager.ImageHostListener)localObject).a(localImageView)));
-    if ((localImageView.getTag(2131378701) != null) && (((Boolean)localImageView.getTag(2131378701)).booleanValue()))
-    {
-      paramURLDrawable.setTag(URLDrawableDecodeHandler.b(((Integer)localImageView.getTag(2131378704)).intValue(), ((Integer)localImageView.getTag(2131378702)).intValue(), (int)(((Integer)localImageView.getTag(2131378703)).intValue() * DeviceInfoUtil.a())));
-      paramURLDrawable.setDecodeHandler(URLDrawableDecodeHandler.j);
+        }
+        localObject2 = (SubscriptPicManager.ImageHostListener)((SubscriptPicManager.DrawableProperty)localObject2).b.get();
+        if ((localObject2 == null) || (((SubscriptPicManager.ImageHostListener)localObject2).a((ImageView)localObject1)))
+        {
+          if ((((ImageView)localObject1).getTag(2131378096) != null) && (((Boolean)((ImageView)localObject1).getTag(2131378096)).booleanValue()))
+          {
+            paramURLDrawable.setTag(URLDrawableDecodeHandler.b(((Integer)((ImageView)localObject1).getTag(2131378099)).intValue(), ((Integer)((ImageView)localObject1).getTag(2131378097)).intValue(), (int)(((Integer)((ImageView)localObject1).getTag(2131378098)).intValue() * DeviceInfoUtil.a())));
+            paramURLDrawable.setDecodeHandler(URLDrawableDecodeHandler.i);
+          }
+          ((ImageView)localObject1).setImageDrawable(null);
+          ((ImageView)localObject1).setImageDrawable(paramURLDrawable);
+          ((ImageView)localObject1).setTag(2131378102, null);
+        }
+      }
     }
-    localImageView.setImageDrawable(null);
-    localImageView.setImageDrawable(paramURLDrawable);
-    localImageView.setTag(2131378707, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptPicManager
  * JD-Core Version:    0.7.0.1
  */

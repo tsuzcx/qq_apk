@@ -18,56 +18,74 @@ class QQMapActivity$14
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqmap", 2, "activiy.receiver.onReceive:" + paramContext);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("activiy.receiver.onReceive:");
+      ((StringBuilder)localObject).append(paramContext);
+      QLog.d("Q.qqmap", 2, ((StringBuilder)localObject).toString());
     }
     if (paramContext.equals("com.tencent.mobileqq.onGetStreetViewUrl"))
     {
-      this.a.j = paramIntent.getStringExtra("streetViewUrl");
-      this.a.n();
+      this.a.mStreetViewUrl = paramIntent.getStringExtra("streetViewUrl");
+      this.a.refreshStreetViewIcon();
+      return;
     }
-    do
+    if (paramContext.equals("com.tencent.mobileqq.onGetLbsShareSearch"))
     {
-      do
-      {
-        do
-        {
-          return;
-          if (paramContext.equals("com.tencent.mobileqq.onGetLbsShareSearch"))
-          {
-            byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-            localObject = new LBSShare.LocationResp();
-            paramContext = (Context)localObject;
-            if (arrayOfByte != null) {}
-            try
-            {
-              paramContext = (LBSShare.LocationResp)((LBSShare.LocationResp)localObject).mergeFrom(arrayOfByte);
-              paramIntent = paramIntent.getExtras().getBundle("req");
-              this.a.a(paramContext, paramIntent);
-              return;
-            }
-            catch (InvalidProtocolBufferMicroException paramContext)
-            {
-              for (;;)
-              {
-                if (QLog.isColorLevel()) {
-                  paramContext.printStackTrace();
-                }
-                paramContext = null;
-              }
-            }
-          }
-          if (!paramContext.equals("com.tencent.mobileqq.onGetLbsShareShop")) {
-            break;
-          }
-          paramContext = paramIntent.getByteArrayExtra("data");
-        } while (paramContext == null);
-        Object localObject = new LBSShare.NearByShopsResp();
+      localObject = paramIntent.getByteArrayExtra("data");
+      paramContext = new LBSShare.LocationResp();
+      if (localObject != null) {
         try
         {
-          paramContext = (LBSShare.NearByShopsResp)((LBSShare.NearByShopsResp)localObject).mergeFrom(paramContext);
-          paramIntent = paramIntent.getExtras().getBundle("req");
-          this.a.a(paramContext, paramIntent);
+          paramContext = (LBSShare.LocationResp)paramContext.mergeFrom((byte[])localObject);
+        }
+        catch (InvalidProtocolBufferMicroException paramContext)
+        {
+          if (QLog.isColorLevel()) {
+            paramContext.printStackTrace();
+          }
+          paramContext = null;
+        }
+      }
+      paramIntent = paramIntent.getExtras().getBundle("req");
+      this.a.onGetLbsShareSearch(paramContext, paramIntent);
+      return;
+    }
+    if (paramContext.equals("com.tencent.mobileqq.onGetLbsShareShop"))
+    {
+      paramContext = paramIntent.getByteArrayExtra("data");
+      if (paramContext == null) {
+        return;
+      }
+      localObject = new LBSShare.NearByShopsResp();
+      try
+      {
+        paramContext = (LBSShare.NearByShopsResp)((LBSShare.NearByShopsResp)localObject).mergeFrom(paramContext);
+        paramIntent = paramIntent.getExtras().getBundle("req");
+        this.a.onGetLbsShareShop(paramContext, paramIntent);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramContext)
+      {
+        if (QLog.isColorLevel()) {
+          paramContext.printStackTrace();
+        }
+        this.a.onGetLbsShareShop(null, null);
+        return;
+      }
+    }
+    if (paramContext.equals("com.tencent.mobileqq.onGetShareShopDetail"))
+    {
+      paramContext = paramIntent.getByteArrayExtra("data");
+      if (paramContext != null)
+      {
+        paramIntent = new LBSShare.GetShopsByIdsResp();
+        try
+        {
+          paramContext = (LBSShare.GetShopsByIdsResp)paramIntent.mergeFrom(paramContext);
+          this.a.onGetShareShopDetail(paramContext);
           return;
         }
         catch (InvalidProtocolBufferMicroException paramContext)
@@ -75,31 +93,15 @@ class QQMapActivity$14
           if (QLog.isColorLevel()) {
             paramContext.printStackTrace();
           }
-          this.a.a(null, null);
-          return;
+          this.a.onGetShareShopDetail(null);
         }
-      } while (!paramContext.equals("com.tencent.mobileqq.onGetShareShopDetail"));
-      paramContext = paramIntent.getByteArrayExtra("data");
-    } while (paramContext == null);
-    paramIntent = new LBSShare.GetShopsByIdsResp();
-    try
-    {
-      paramContext = (LBSShare.GetShopsByIdsResp)paramIntent.mergeFrom(paramContext);
-      this.a.a(paramContext);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramContext)
-    {
-      if (QLog.isColorLevel()) {
-        paramContext.printStackTrace();
       }
-      this.a.a(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQMapActivity.14
  * JD-Core Version:    0.7.0.1
  */

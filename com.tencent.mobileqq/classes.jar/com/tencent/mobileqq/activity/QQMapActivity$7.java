@@ -14,16 +14,17 @@ class QQMapActivity$7
   
   public void onClick(View paramView)
   {
-    if (this.a.a == null)
+    if (this.a.mActionSheet == null)
     {
-      this.a.a = ((ActionSheet)ActionSheetHelper.a(this.a, null));
-      this.a.a.addButton(2131698097);
-      this.a.a.addButton(2131692258);
-      this.a.a.addCancelButton(2131690800);
-      this.a.a.setOnButtonClickListener(new QQMapActivity.7.1(this));
+      QQMapActivity localQQMapActivity = this.a;
+      localQQMapActivity.mActionSheet = ((ActionSheet)ActionSheetHelper.a(localQQMapActivity, null));
+      this.a.mActionSheet.addButton(2131698104);
+      this.a.mActionSheet.addButton(2131692184);
+      this.a.mActionSheet.addCancelButton(2131690728);
+      this.a.mActionSheet.setOnButtonClickListener(new QQMapActivity.7.1(this));
     }
-    if (!this.a.a.isShowing()) {
-      this.a.a.show();
+    if (!this.a.mActionSheet.isShowing()) {
+      this.a.mActionSheet.show();
     }
     ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_menu", 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
@@ -31,7 +32,7 @@ class QQMapActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQMapActivity.7
  * JD-Core Version:    0.7.0.1
  */

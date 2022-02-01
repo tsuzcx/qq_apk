@@ -19,18 +19,18 @@ import android.widget.FrameLayout;
 public class SlideBottomPanel
   extends FrameLayout
 {
-  protected static float a;
+  protected static float a = 5.0F;
   protected int a;
   protected long a;
   private Context jdField_a_of_type_AndroidContentContext;
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   protected Interpolator a;
-  public ISlidePanelListener a;
-  public boolean a;
+  protected ISlidePanelListener a;
+  protected boolean a;
   protected float b;
-  public int b;
+  protected int b;
   protected Interpolator b;
-  public boolean b;
+  protected boolean b;
   protected float c;
   protected int c;
   protected boolean c;
@@ -39,7 +39,7 @@ public class SlideBottomPanel
   protected boolean d;
   protected float e;
   protected int e;
-  public boolean e;
+  protected boolean e;
   protected float f;
   protected int f;
   protected float g;
@@ -48,14 +48,9 @@ public class SlideBottomPanel
   private int h;
   protected float i;
   private int i;
-  public float j;
+  protected float j;
   protected float k;
   private float l;
-  
-  static
-  {
-    jdField_a_of_type_Float = 5.0F;
-  }
   
   public SlideBottomPanel(Context paramContext)
   {
@@ -94,15 +89,17 @@ public class SlideBottomPanel
     this.k = a(30);
     this.jdField_c_of_type_Int = 250;
     this.jdField_b_of_type_Int = this.jdField_i_of_type_Int;
-    if (a(this.jdField_a_of_type_AndroidContentContext)) {
-      this.jdField_d_of_type_Int = a(30);
-    }
-    for (this.jdField_e_of_type_Int = ((int)(this.j - this.jdField_d_of_type_Int + QQUIDelegate.a(this.jdField_a_of_type_AndroidContentContext)));; this.jdField_e_of_type_Int = ((int)(this.j - this.jdField_d_of_type_Int)))
+    if (a(this.jdField_a_of_type_AndroidContentContext))
     {
-      this.jdField_f_of_type_Int = a(5);
-      return;
-      this.jdField_d_of_type_Int = a(51);
+      this.jdField_d_of_type_Int = a(30);
+      this.jdField_e_of_type_Int = ((int)(this.j - this.jdField_d_of_type_Int + QQUIDelegate.a(this.jdField_a_of_type_AndroidContentContext)));
     }
+    else
+    {
+      this.jdField_d_of_type_Int = a(51);
+      this.jdField_e_of_type_Int = ((int)(this.j - this.jdField_d_of_type_Int));
+    }
+    this.jdField_f_of_type_Int = a(5);
   }
   
   private int a(int paramInt)
@@ -125,9 +122,10 @@ public class SlideBottomPanel
   
   private void g()
   {
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker != null)
+    VelocityTracker localVelocityTracker = this.jdField_a_of_type_AndroidViewVelocityTracker;
+    if (localVelocityTracker != null)
     {
-      this.jdField_a_of_type_AndroidViewVelocityTracker.clear();
+      localVelocityTracker.clear();
       this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
       this.jdField_a_of_type_AndroidViewVelocityTracker = null;
     }
@@ -144,75 +142,104 @@ public class SlideBottomPanel
   {
     if (this.jdField_e_of_type_Boolean)
     {
-      if (a(this.jdField_a_of_type_AndroidContentContext)) {
-        return this.jdField_b_of_type_Int - this.jdField_d_of_type_Int - QQUIDelegate.a(this.jdField_a_of_type_AndroidContentContext);
+      int m;
+      int n;
+      if (a(this.jdField_a_of_type_AndroidContentContext))
+      {
+        m = this.jdField_b_of_type_Int - this.jdField_d_of_type_Int;
+        n = QQUIDelegate.a(this.jdField_a_of_type_AndroidContentContext);
       }
-      return this.jdField_b_of_type_Int - this.jdField_d_of_type_Int;
+      else
+      {
+        m = this.jdField_b_of_type_Int;
+        n = this.jdField_d_of_type_Int;
+      }
+      return m - n;
     }
     return (int)(this.jdField_b_of_type_Int - this.j);
   }
   
   public void a()
   {
-    if ((this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Boolean)) {}
-    do
+    if (!this.jdField_b_of_type_Boolean)
     {
-      return;
-      View localView = findViewWithTag(Integer.valueOf(1));
-      ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { localView.getY(), this.jdField_b_of_type_Int - this.jdField_i_of_type_Float }).setDuration(this.jdField_c_of_type_Int);
-      localValueAnimator.setTarget(localView);
+      if (this.jdField_a_of_type_Boolean) {
+        return;
+      }
+      Object localObject = findViewWithTag(Integer.valueOf(1));
+      ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { ((View)localObject).getY(), this.jdField_b_of_type_Int - this.jdField_i_of_type_Float }).setDuration(this.jdField_c_of_type_Int);
+      localValueAnimator.setTarget(localObject);
       localValueAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-      localValueAnimator.addUpdateListener(new SlideBottomPanel.4(this, localView));
+      localValueAnimator.addUpdateListener(new SlideBottomPanel.4(this, (View)localObject));
       localValueAnimator.addListener(new SlideBottomPanel.5(this));
       localValueAnimator.start();
       this.jdField_b_of_type_Boolean = true;
       this.jdField_e_of_type_Boolean = false;
-    } while (this.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener == null);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener.displayPanel();
+      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener;
+      if (localObject != null) {
+        ((ISlidePanelListener)localObject).displayPanel();
+      }
+    }
   }
   
   protected void a(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_d_of_type_Boolean) {}
-    View localView;
-    do
+    if (!this.jdField_d_of_type_Boolean) {
+      return;
+    }
+    f();
+    if (Math.abs(this.jdField_b_of_type_Float) > Math.abs(this.jdField_c_of_type_Float)) {
+      return;
+    }
+    View localView = findViewWithTag(Integer.valueOf(1));
+    if ((!this.jdField_c_of_type_Boolean) && (Math.abs(paramMotionEvent.getY() - this.jdField_f_of_type_Float) > this.jdField_d_of_type_Float))
     {
-      do
-      {
-        do
-        {
-          return;
-          f();
-        } while (Math.abs(this.jdField_b_of_type_Float) > Math.abs(this.jdField_c_of_type_Float));
-        localView = findViewWithTag(Integer.valueOf(1));
-        if ((!this.jdField_c_of_type_Boolean) && (Math.abs(paramMotionEvent.getY() - this.jdField_f_of_type_Float) > this.jdField_d_of_type_Float))
-        {
-          this.jdField_c_of_type_Boolean = true;
-          this.jdField_g_of_type_Float = paramMotionEvent.getY();
-          localView.addOnLayoutChangeListener(new SlideBottomPanel.1(this));
-        }
-      } while (!this.jdField_c_of_type_Boolean);
+      this.jdField_c_of_type_Boolean = true;
+      this.jdField_g_of_type_Float = paramMotionEvent.getY();
+      localView.addOnLayoutChangeListener(new SlideBottomPanel.1(this));
+    }
+    if (this.jdField_c_of_type_Boolean)
+    {
       this.jdField_h_of_type_Float = (paramMotionEvent.getY() - this.jdField_g_of_type_Float);
       this.jdField_g_of_type_Float = paramMotionEvent.getY();
       float f1 = localView.getY();
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener != null) && (f1 > this.jdField_b_of_type_Int - this.jdField_i_of_type_Float) && (f1 < this.jdField_b_of_type_Int - this.j)) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener.fadeBackground(1.0F - f1 / (this.jdField_b_of_type_Int - this.j));
-      }
-      if (this.jdField_h_of_type_Float + f1 <= this.jdField_b_of_type_Int - this.jdField_i_of_type_Float)
+      paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener;
+      if (paramMotionEvent != null)
       {
-        localView.offsetTopAndBottom((int)(this.jdField_b_of_type_Int - this.jdField_i_of_type_Float - f1));
+        m = this.jdField_b_of_type_Int;
+        if (f1 > m - this.jdField_i_of_type_Float)
+        {
+          f2 = m;
+          f3 = this.j;
+          if (f1 < f2 - f3) {
+            paramMotionEvent.fadeBackground(1.0F - f1 / (m - f3));
+          }
+        }
+      }
+      float f2 = this.jdField_h_of_type_Float;
+      int m = this.jdField_b_of_type_Int;
+      float f3 = m;
+      float f4 = this.jdField_i_of_type_Float;
+      if (f1 + f2 <= f3 - f4)
+      {
+        localView.offsetTopAndBottom((int)(m - f4 - f1));
         return;
       }
-      if (f1 + this.jdField_h_of_type_Float < a()) {
-        break;
+      if (f1 + f2 >= a())
+      {
+        if (this.jdField_e_of_type_Boolean) {
+          return;
+        }
+        f1 = this.jdField_h_of_type_Float;
+        m = this.jdField_e_of_type_Int;
+        if (f1 > m) {
+          this.jdField_h_of_type_Float = m;
+        }
+        localView.offsetTopAndBottom((int)this.jdField_h_of_type_Float);
+        return;
       }
-    } while (this.jdField_e_of_type_Boolean);
-    if (this.jdField_h_of_type_Float > this.jdField_e_of_type_Int) {
-      this.jdField_h_of_type_Float = this.jdField_e_of_type_Int;
+      localView.offsetTopAndBottom((int)this.jdField_h_of_type_Float);
     }
-    localView.offsetTopAndBottom((int)this.jdField_h_of_type_Float);
-    return;
-    localView.offsetTopAndBottom((int)this.jdField_h_of_type_Float);
   }
   
   public boolean a()
@@ -235,37 +262,48 @@ public class SlideBottomPanel
     if ((!this.jdField_b_of_type_Boolean) && (this.jdField_g_of_type_Float <= a()))
     {
       this.jdField_d_of_type_Boolean = false;
-      return false;
     }
-    if ((this.jdField_b_of_type_Boolean) && (this.jdField_g_of_type_Float > this.jdField_b_of_type_Int - this.jdField_i_of_type_Float) && (this.jdField_g_of_type_Float <= this.jdField_b_of_type_Int - this.jdField_i_of_type_Float + this.j))
+    else
     {
-      this.jdField_d_of_type_Boolean = true;
-      return false;
+      if (this.jdField_b_of_type_Boolean)
+      {
+        f1 = this.jdField_g_of_type_Float;
+        int m = this.jdField_b_of_type_Int;
+        float f2 = m;
+        float f3 = this.jdField_i_of_type_Float;
+        if ((f1 > f2 - f3) && (f1 <= m - f3 + this.j))
+        {
+          this.jdField_d_of_type_Boolean = true;
+          break label180;
+        }
+      }
+      if ((this.jdField_b_of_type_Boolean) && (this.jdField_g_of_type_Float < this.jdField_b_of_type_Int - this.jdField_i_of_type_Float))
+      {
+        b();
+        this.jdField_d_of_type_Boolean = false;
+      }
     }
-    if ((this.jdField_b_of_type_Boolean) && (this.jdField_g_of_type_Float < this.jdField_b_of_type_Int - this.jdField_i_of_type_Float))
-    {
-      b();
-      this.jdField_d_of_type_Boolean = false;
-    }
+    label180:
     return false;
   }
   
   protected void b()
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
-    {
+    if (this.jdField_a_of_type_Boolean) {
       return;
-      View localView = findViewWithTag(Integer.valueOf(1));
-      int m = (int)(this.jdField_b_of_type_Int - this.j);
-      ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { localView.getY(), this.jdField_b_of_type_Int - this.j });
-      localValueAnimator.setInterpolator(this.jdField_b_of_type_AndroidViewAnimationInterpolator);
-      localValueAnimator.setTarget(localView);
-      localValueAnimator.addUpdateListener(new SlideBottomPanel.2(this, localView, m));
-      localValueAnimator.addListener(new SlideBottomPanel.3(this));
-      localValueAnimator.start();
-    } while (this.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener == null);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener.hidePanel();
+    }
+    Object localObject = findViewWithTag(Integer.valueOf(1));
+    int m = (int)(this.jdField_b_of_type_Int - this.j);
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { ((View)localObject).getY(), this.jdField_b_of_type_Int - this.j });
+    localValueAnimator.setInterpolator(this.jdField_b_of_type_AndroidViewAnimationInterpolator);
+    localValueAnimator.setTarget(localObject);
+    localValueAnimator.addUpdateListener(new SlideBottomPanel.2(this, (View)localObject, m));
+    localValueAnimator.addListener(new SlideBottomPanel.3(this));
+    localValueAnimator.start();
+    localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener;
+    if (localObject != null) {
+      ((ISlidePanelListener)localObject).hidePanel();
+    }
   }
   
   protected void b(MotionEvent paramMotionEvent)
@@ -277,48 +315,67 @@ public class SlideBottomPanel
     long l2 = this.jdField_a_of_type_Long;
     f();
     float f1;
-    if (((!this.jdField_b_of_type_Boolean) && (paramMotionEvent.getY() - this.jdField_f_of_type_Float < 0.0F) && (Math.abs(paramMotionEvent.getY() - this.jdField_f_of_type_Float) > this.k)) || ((this.jdField_c_of_type_Float < 0.0F) && (Math.abs(this.jdField_c_of_type_Float) > Math.abs(this.jdField_b_of_type_Float)) && (Math.abs(this.jdField_c_of_type_Float) > this.jdField_a_of_type_Int)))
+    if ((this.jdField_b_of_type_Boolean) || (paramMotionEvent.getY() - this.jdField_f_of_type_Float >= 0.0F) || (Math.abs(paramMotionEvent.getY() - this.jdField_f_of_type_Float) <= this.k))
+    {
+      f1 = this.jdField_c_of_type_Float;
+      if ((f1 >= 0.0F) || (Math.abs(f1) <= Math.abs(this.jdField_b_of_type_Float)) || (Math.abs(this.jdField_c_of_type_Float) <= this.jdField_a_of_type_Int)) {}
+    }
+    else
     {
       a();
-      if (this.jdField_b_of_type_Boolean)
-      {
-        paramMotionEvent = findViewWithTag(Integer.valueOf(1));
-        f1 = paramMotionEvent.getY();
-        if ((f1 >= this.jdField_b_of_type_Int - this.jdField_i_of_type_Float) && (f1 >= this.jdField_b_of_type_Int - this.jdField_i_of_type_Float + this.k)) {
-          break label434;
-        }
-        ObjectAnimator.ofFloat(paramMotionEvent, "y", new float[] { f1, this.jdField_b_of_type_Int - this.jdField_i_of_type_Float }).setDuration(this.jdField_c_of_type_Int).start();
-      }
+      break label330;
     }
-    for (;;)
+    float f2;
+    if ((!this.jdField_b_of_type_Boolean) && (l1 - l2 < 300L))
     {
-      this.jdField_d_of_type_Boolean = false;
-      this.jdField_c_of_type_Boolean = false;
-      this.jdField_h_of_type_Float = 0.0F;
-      return;
-      if ((!this.jdField_b_of_type_Boolean) && (l1 - l2 < 300L) && (paramMotionEvent.getY() - this.jdField_f_of_type_Float < 0.0F) && (a(this.jdField_e_of_type_Float, this.jdField_f_of_type_Float, paramMotionEvent.getX(), paramMotionEvent.getY()) < jdField_a_of_type_Float))
+      f1 = paramMotionEvent.getY();
+      f2 = this.jdField_f_of_type_Float;
+      if ((f1 - f2 < 0.0F) && (a(this.jdField_e_of_type_Float, f2, paramMotionEvent.getX(), paramMotionEvent.getY()) < jdField_a_of_type_Float))
       {
         a();
-        break;
+        break label330;
       }
-      if ((this.jdField_b_of_type_Boolean) || (!this.jdField_c_of_type_Boolean)) {
-        break;
-      }
-      int m = (int)(paramMotionEvent.getY() - this.jdField_f_of_type_Float);
+    }
+    int m;
+    if ((!this.jdField_b_of_type_Boolean) && (this.jdField_c_of_type_Boolean))
+    {
+      m = (int)(paramMotionEvent.getY() - this.jdField_f_of_type_Float);
       if (((!this.jdField_e_of_type_Boolean) && (m > this.jdField_f_of_type_Int)) || ((this.jdField_e_of_type_Boolean) && (m < 0) && (Math.abs(m) < this.k))) {
         c();
       }
-      if ((this.jdField_e_of_type_Boolean) || (m >= 0) || (Math.abs(m) >= this.k)) {
-        break;
-      }
-      paramMotionEvent = findViewWithTag(Integer.valueOf(1));
-      ObjectAnimator.ofFloat(paramMotionEvent, "y", new float[] { paramMotionEvent.getY(), this.jdField_b_of_type_Int - this.j }).setDuration(this.jdField_c_of_type_Int).start();
-      break;
-      label434:
-      if (f1 > this.jdField_b_of_type_Int - this.jdField_i_of_type_Float + this.k) {
-        b();
+      if ((!this.jdField_e_of_type_Boolean) && (m < 0) && (Math.abs(m) < this.k))
+      {
+        paramMotionEvent = findViewWithTag(Integer.valueOf(1));
+        ObjectAnimator.ofFloat(paramMotionEvent, "y", new float[] { paramMotionEvent.getY(), this.jdField_b_of_type_Int - this.j }).setDuration(this.jdField_c_of_type_Int).start();
       }
     }
+    label330:
+    if (this.jdField_b_of_type_Boolean)
+    {
+      paramMotionEvent = findViewWithTag(Integer.valueOf(1));
+      f1 = paramMotionEvent.getY();
+      m = this.jdField_b_of_type_Int;
+      float f3 = m;
+      f2 = this.jdField_i_of_type_Float;
+      if (f1 >= f3 - f2)
+      {
+        f3 = m;
+        float f4 = this.k;
+        if (f1 >= f3 - f2 + f4)
+        {
+          if (f1 <= m - f2 + f4) {
+            break label460;
+          }
+          b();
+          break label460;
+        }
+      }
+      ObjectAnimator.ofFloat(paramMotionEvent, "y", new float[] { f1, this.jdField_b_of_type_Int - this.jdField_i_of_type_Float }).setDuration(this.jdField_c_of_type_Int).start();
+    }
+    label460:
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_h_of_type_Float = 0.0F;
   }
   
   public boolean b()
@@ -329,14 +386,15 @@ public class SlideBottomPanel
   public void c()
   {
     View localView = findViewWithTag(Integer.valueOf(1));
-    float f2 = localView.getY();
-    if (a(this.jdField_a_of_type_AndroidContentContext)) {}
-    for (float f1 = this.jdField_b_of_type_Int - this.jdField_d_of_type_Int + QQUIDelegate.a(this.jdField_a_of_type_AndroidContentContext);; f1 = this.jdField_b_of_type_Int - this.jdField_d_of_type_Int)
-    {
-      ObjectAnimator.ofFloat(localView, "y", new float[] { f2, f1 }).setDuration(this.jdField_c_of_type_Int).start();
-      this.jdField_e_of_type_Boolean = true;
-      return;
+    float f1 = localView.getY();
+    int m;
+    if (a(this.jdField_a_of_type_AndroidContentContext)) {
+      m = this.jdField_b_of_type_Int - this.jdField_d_of_type_Int + QQUIDelegate.a(this.jdField_a_of_type_AndroidContentContext);
+    } else {
+      m = this.jdField_b_of_type_Int - this.jdField_d_of_type_Int;
     }
+    ObjectAnimator.ofFloat(localView, "y", new float[] { f1, m }).setDuration(this.jdField_c_of_type_Int).start();
+    this.jdField_e_of_type_Boolean = true;
   }
   
   public void d()
@@ -348,37 +406,41 @@ public class SlideBottomPanel
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool2 = false;
     c(paramMotionEvent);
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener.cancelAnimator();
+    ISlidePanelListener localISlidePanelListener = this.jdField_a_of_type_ComTencentMobileqqWidgetISlidePanelListener;
+    if (localISlidePanelListener != null) {
+      localISlidePanelListener.cancelAnimator();
     }
-    switch (paramMotionEvent.getAction())
+    int m = paramMotionEvent.getAction();
+    boolean bool2 = true;
+    boolean bool1;
+    if (m != 0)
     {
-    }
-    for (;;)
-    {
-      boolean bool1 = false;
-      for (;;)
+      if (m != 1)
       {
-        if (!bool1)
-        {
-          bool1 = bool2;
-          if (!super.dispatchTouchEvent(paramMotionEvent)) {}
+        if (m == 2) {
+          a(paramMotionEvent);
         }
-        else
-        {
-          bool1 = true;
-        }
-        return bool1;
-        bool1 = a(paramMotionEvent);
-        continue;
-        a(paramMotionEvent);
-        bool1 = false;
       }
-      b(paramMotionEvent);
-      g();
+      else
+      {
+        b(paramMotionEvent);
+        g();
+      }
+      bool1 = false;
     }
+    else
+    {
+      bool1 = a(paramMotionEvent);
+    }
+    if (!bool1)
+    {
+      if (super.dispatchTouchEvent(paramMotionEvent)) {
+        return true;
+      }
+      bool2 = false;
+    }
+    return bool2;
   }
   
   public void e()
@@ -401,7 +463,7 @@ public class SlideBottomPanel
     return this.jdField_c_of_type_Boolean;
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_g_of_type_Int = getChildCount();
@@ -428,7 +490,7 @@ public class SlideBottomPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SlideBottomPanel
  * JD-Core Version:    0.7.0.1
  */

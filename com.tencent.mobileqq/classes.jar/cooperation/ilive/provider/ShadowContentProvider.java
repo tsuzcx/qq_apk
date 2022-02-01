@@ -35,16 +35,13 @@ public class ShadowContentProvider
     try
     {
       paramUri = (Integer)this.jdField_a_of_type_JavaLangClass.getMethod("bulkInsert", new Class[] { Uri.class, [Landroid.content.ContentValues.class }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramUri, paramArrayOfContentValues });
-      return paramUri.intValue();
     }
     catch (Exception paramUri)
     {
-      for (;;)
-      {
-        paramUri.printStackTrace();
-        paramUri = Integer.valueOf(0);
-      }
+      paramUri.printStackTrace();
+      paramUri = Integer.valueOf(0);
     }
+    return paramUri.intValue();
   }
   
   public Bundle call(String paramString1, String paramString2, Bundle paramBundle)
@@ -66,16 +63,13 @@ public class ShadowContentProvider
     try
     {
       paramUri = (Integer)this.jdField_a_of_type_JavaLangClass.getMethod("delete", new Class[] { Uri.class, String.class, [Ljava.lang.String.class }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramUri, paramString, paramArrayOfString });
-      return paramUri.intValue();
     }
     catch (Exception paramUri)
     {
-      for (;;)
-      {
-        paramUri.printStackTrace();
-        paramUri = Integer.valueOf(0);
-      }
+      paramUri.printStackTrace();
+      paramUri = Integer.valueOf(0);
     }
+    return paramUri.intValue();
   }
   
   public String getType(Uri paramUri)
@@ -197,21 +191,18 @@ public class ShadowContentProvider
     try
     {
       paramUri = (Integer)this.jdField_a_of_type_JavaLangClass.getMethod("update", new Class[] { Uri.class, ContentValues.class, String.class, [Ljava.lang.String.class }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramUri, paramContentValues, paramString, paramArrayOfString });
-      return paramUri.intValue();
     }
     catch (Exception paramUri)
     {
-      for (;;)
-      {
-        paramUri.printStackTrace();
-        paramUri = Integer.valueOf(0);
-      }
+      paramUri.printStackTrace();
+      paramUri = Integer.valueOf(0);
     }
+    return paramUri.intValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.provider.ShadowContentProvider
  * JD-Core Version:    0.7.0.1
  */

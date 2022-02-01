@@ -5,19 +5,15 @@ import android.content.Context;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
-import android.os.Build;
 import android.os.Build.VERSION;
-import android.os.PowerManager;
 import android.os.SystemClock;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import com.qq.jce.wup.UniPacket;
 import com.tencent.mobileqq.msf.core.c.j;
-import com.tencent.mobileqq.msf.core.c.j.c;
 import com.tencent.mobileqq.msf.core.net.b.o;
 import com.tencent.mobileqq.msf.core.net.n;
 import com.tencent.mobileqq.msf.core.push.g;
@@ -32,7 +28,6 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
@@ -70,7 +65,10 @@ public class s
   
   private s()
   {
-    QLog.i("MSF.D.NetCenterNewImpl", 1, BaseApplication.processName + " create NetConnInfoCenterNewImpl instance");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplication.processName);
+    localStringBuilder.append(" create NetConnInfoCenterNewImpl instance");
+    QLog.i("MSF.D.NetCenterNewImpl", 1, localStringBuilder.toString());
     this.i = new com.tencent.mobileqq.msf.sdk.a.a();
     this.i.a(this);
     this.i.a(q.d());
@@ -102,21 +100,27 @@ public class s
     ac.c("");
     ac.d(0);
     I();
-    if ((b != null) && (b.pushManager != null)) {
+    MsfCore localMsfCore = b;
+    if ((localMsfCore != null) && (localMsfCore.pushManager != null)) {
       b.pushManager.c();
     }
   }
   
   private void H()
   {
-    if ((o()) && (b != null) && (b.standbyModeManager != null)) {
-      b.standbyModeManager.d();
+    if (o())
+    {
+      MsfCore localMsfCore = b;
+      if ((localMsfCore != null) && (localMsfCore.standbyModeManager != null)) {
+        b.standbyModeManager.d();
+      }
     }
   }
   
   private void I()
   {
-    if ((b != null) && (b.sender != null) && (b.getStatReporter() != null)) {
+    MsfCore localMsfCore = b;
+    if ((localMsfCore != null) && (localMsfCore.sender != null) && (b.getStatReporter() != null)) {
       b.getStatReporter().i();
     }
   }
@@ -125,135 +129,62 @@ public class s
   {
     if (b != null)
     {
-      localToServiceMsg = new ToServiceMsg("", "0", "login.time");
+      ToServiceMsg localToServiceMsg = new ToServiceMsg("", "0", "login.time");
       localToServiceMsg.setMsfCommand(MsfCommand.getServerTime);
-      if (b.sender.m() == -1)
-      {
+      int i1;
+      if (b.sender.m() == -1) {
         i1 = 100;
-        localToServiceMsg.setAppId(i1);
-        localToServiceMsg.setTimeout(30000L);
-        localToServiceMsg.setRequestSsoSeq(MsfCore.getNextSeq());
-        localUniPacket = new UniPacket(true);
-        localUniPacket.setServantName("test");
-        localUniPacket.setFuncName("cmdstr");
-        locald = new d(1, 15, MsfCore.getNextSeq(), 1, "0", b.sender.m(), String.valueOf(b.sender.m()), "123", 0);
-        localc = new com.tencent.msf.service.protocol.security.c();
-        localc.a = ((int)(System.currentTimeMillis() / 1000L));
-        localUniPacket.put("RequestHeader", locald);
-        localUniPacket.put("RequestGetServerTime", localc);
-        localToServiceMsg.putWupBuffer(localUniPacket.encode());
-        b.sender.b(localToServiceMsg);
+      } else {
+        i1 = b.sender.m();
       }
+      localToServiceMsg.setAppId(i1);
+      localToServiceMsg.setTimeout(30000L);
+      localToServiceMsg.setRequestSsoSeq(MsfCore.getNextSeq());
+      UniPacket localUniPacket = new UniPacket(true);
+      localUniPacket.setServantName("test");
+      localUniPacket.setFuncName("cmdstr");
+      d locald = new d(1, 15, MsfCore.getNextSeq(), 1, "0", b.sender.m(), String.valueOf(b.sender.m()), "123", 0);
+      com.tencent.msf.service.protocol.security.c localc = new com.tencent.msf.service.protocol.security.c();
+      localc.a = ((int)(System.currentTimeMillis() / 1000L));
+      localUniPacket.put("RequestHeader", locald);
+      localUniPacket.put("RequestGetServerTime", localc);
+      localToServiceMsg.putWupBuffer(localUniPacket.encode());
+      b.sender.b(localToServiceMsg);
+      return;
     }
-    while (!QLog.isDevelopLevel()) {
-      for (;;)
-      {
-        ToServiceMsg localToServiceMsg;
-        UniPacket localUniPacket;
-        d locald;
-        com.tencent.msf.service.protocol.security.c localc;
-        return;
-        int i1 = b.sender.m();
-      }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("MSF.D.NetCenterNewImpl", 4, "msfCore not inited. can not send checkServerTimeMsg.");
     }
-    QLog.d("MSF.D.NetCenterNewImpl", 4, "msfCore not inited. can not send checkServerTimeMsg.");
   }
   
   private void K()
   {
     if (b != null)
     {
-      localToServiceMsg = new ToServiceMsg("", "0", "Client.CorrectTime");
+      ToServiceMsg localToServiceMsg = new ToServiceMsg("", "0", "Client.CorrectTime");
       localToServiceMsg.setMsfCommand(MsfCommand.getServerTime);
-      if (b.sender.m() == -1)
-      {
+      int i1;
+      if (b.sender.m() == -1) {
         i1 = 100;
-        localToServiceMsg.setAppId(i1);
-        localToServiceMsg.setTimeout(30000L);
-        localToServiceMsg.setRequestSsoSeq(MsfCore.getNextSeq());
-        localToServiceMsg.addAttribute("__base_tag_isAppMsg", Boolean.valueOf(true));
-        localToServiceMsg.putWupBuffer(MsfSdkUtils.convertInt2Bytes(4));
-        b.sender.b(localToServiceMsg);
+      } else {
+        i1 = b.sender.m();
       }
+      localToServiceMsg.setAppId(i1);
+      localToServiceMsg.setTimeout(30000L);
+      localToServiceMsg.setRequestSsoSeq(MsfCore.getNextSeq());
+      localToServiceMsg.addAttribute("__base_tag_isAppMsg", Boolean.valueOf(true));
+      localToServiceMsg.putWupBuffer(MsfSdkUtils.convertInt2Bytes(4));
+      b.sender.b(localToServiceMsg);
+      return;
     }
-    while (!QLog.isDevelopLevel()) {
-      for (;;)
-      {
-        ToServiceMsg localToServiceMsg;
-        return;
-        int i1 = b.sender.m();
-      }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("MSF.D.NetCenterNewImpl", 4, "msfCore not inited. can not send checkServerTimeMsg.");
     }
-    QLog.d("MSF.D.NetCenterNewImpl", 4, "msfCore not inited. can not send checkServerTimeMsg.");
   }
   
   private void L()
   {
-    int i1;
-    if (Math.random() <= 0.01D)
-    {
-      i1 = 1;
-      if (i1 == 0) {}
-    }
-    label362:
-    label367:
-    label372:
-    for (;;)
-    {
-      try
-      {
-        SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("dozeWhiteList", 0);
-        long l1 = localSharedPreferences.getLong("keyDozeLastTime", 0L);
-        if (Math.abs(System.currentTimeMillis() - l1) >= 86400000L)
-        {
-          if (Build.VERSION.SDK_INT < 23) {
-            break label367;
-          }
-          if (((PowerManager)BaseApplication.getContext().getSystemService("power")).isIgnoringBatteryOptimizations("com.tencent.mobileqq"))
-          {
-            i1 = 1;
-            break label372;
-            if (Build.VERSION.SDK_INT < 24) {
-              break label362;
-            }
-            i2 = ((ConnectivityManager)BaseApplication.getContext().getSystemService("connectivity")).getRestrictBackgroundStatus();
-            if (QLog.isColorLevel())
-            {
-              localObject = new StringBuilder(30);
-              ((StringBuilder)localObject).append("report:");
-              ((StringBuilder)localObject).append(", ").append(i1);
-              ((StringBuilder)localObject).append(", ").append(Build.MODEL);
-              ((StringBuilder)localObject).append(", ").append(Build.MANUFACTURER);
-              ((StringBuilder)localObject).append(", ").append(i2);
-              QLog.d("MSF.D.NetCenterNewImpl", 1, ((StringBuilder)localObject).toString());
-            }
-            Object localObject = new HashMap(10);
-            ((HashMap)localObject).put("osVersion", Build.VERSION.SDK_INT + "");
-            ((HashMap)localObject).put("ignoreBat", String.valueOf(i1));
-            ((HashMap)localObject).put("model", Build.MODEL);
-            ((HashMap)localObject).put("manufacture", Build.MANUFACTURER);
-            ((HashMap)localObject).put("restrictBgStatus", String.valueOf(i2));
-            b.statReporter.a("EvtDozeWhiteList", true, 0L, 0L, (Map)localObject, false, false);
-          }
-        }
-        else
-        {
-          localSharedPreferences.edit().putLong("keyDozeLastTime", System.currentTimeMillis()).commit();
-          return;
-          i1 = 0;
-          break;
-        }
-        i1 = 0;
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.d("MSF.D.NetCenterNewImpl", 1, "report doze whiteList exception ", localThrowable);
-        return;
-      }
-      int i2 = -1;
-      continue;
-      i1 = -1;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public static s a()
@@ -263,7 +194,8 @@ public class s
   
   private void a(String paramString, int paramInt)
   {
-    if ((b != null) && (b.sender != null))
+    MsfCore localMsfCore = b;
+    if ((localMsfCore != null) && (localMsfCore.sender != null))
     {
       b.sender.b.g.a(paramString, paramInt);
       if (b.standbyModeManager != null) {
@@ -297,46 +229,47 @@ public class s
       try
       {
         boolean bool = this.h;
-        if (!bool) {
-          break label147;
-        }
-        try
-        {
-          Object localObject1 = (WifiManager)BaseApplication.getContext().getApplicationContext().getSystemService("wifi");
-          if (localObject1 != null)
+        if (bool) {
+          try
           {
-            localObject1 = ((WifiManager)localObject1).getConnectionInfo();
+            Object localObject1 = (WifiManager)BaseApplication.getContext().getApplicationContext().getSystemService("wifi");
             if (localObject1 == null) {
               continue;
             }
+            localObject1 = ((WifiManager)localObject1).getConnectionInfo();
+            if (localObject1 == null) {
+              break label161;
+            }
             i1 = 1;
             if (((WifiInfo)localObject1).getBSSID() == null) {
-              continue;
+              break label166;
             }
             i2 = 1;
-            if ((i2 & i1) != 0) {
-              this.e = WifiManager.calculateSignalLevel(((WifiInfo)localObject1).getRssi(), 32);
+            if ((i1 & i2) == 0) {
+              continue;
             }
+            this.e = WifiManager.calculateSignalLevel(((WifiInfo)localObject1).getRssi(), 32);
           }
-        }
-        catch (Exception localException)
-        {
-          int i1;
-          int i2;
-          QLog.d("MSF.D.NetCenterNewImpl", 1, "check WifiState error " + localException, localException);
-          this.h = false;
-          continue;
+          catch (Exception localException)
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("check WifiState error ");
+            localStringBuilder.append(localException);
+            QLog.d("MSF.D.NetCenterNewImpl", 1, localStringBuilder.toString(), localException);
+            this.h = false;
+          }
+        } else {
+          this.e = 0;
         }
         com.tencent.mobileqq.a.a.a.a().a(0, this.e);
         return;
       }
       finally {}
-      i1 = 0;
+      label161:
+      int i1 = 0;
       continue;
-      i2 = 0;
-      continue;
-      label147:
-      this.e = 0;
+      label166:
+      int i2 = 0;
     }
   }
   
@@ -356,8 +289,16 @@ public class s
       if (localWifiInfo != null)
       {
         int i1 = localWifiInfo.getIpAddress();
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.D.NetCenterNewImpl", 2, "wifiConnected localAddress " + i1 + "(" + NetConnInfoCenter.intToInetAddress(i1).getHostAddress() + "), " + localWifiInfo.toString());
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("wifiConnected localAddress ");
+          localStringBuilder.append(i1);
+          localStringBuilder.append("(");
+          localStringBuilder.append(NetConnInfoCenter.intToInetAddress(i1).getHostAddress());
+          localStringBuilder.append("), ");
+          localStringBuilder.append(localWifiInfo.toString());
+          QLog.d("MSF.D.NetCenterNewImpl", 2, localStringBuilder.toString());
         }
         if ((b != null) && (b.getStatReporter() != null)) {
           b.getStatReporter().a(localWifiInfo);
@@ -366,10 +307,7 @@ public class s
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
     D();
     a(this.i.k(), paramInt);
@@ -380,15 +318,23 @@ public class s
   
   public void a(long paramLong)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MSF.D.NetCenterNewImpl", 4, "handleGetServerTimeResp servertime is " + paramLong);
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleGetServerTimeResp servertime is ");
+      ((StringBuilder)localObject).append(paramLong);
+      QLog.d("MSF.D.NetCenterNewImpl", 4, ((StringBuilder)localObject).toString());
     }
     NetConnInfoCenter.servetTimeSecondInterv = paramLong - System.currentTimeMillis() / 1000L;
-    SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences(this.j, 0).edit();
-    localEditor.putLong("servetTimeDiff", NetConnInfoCenter.servetTimeSecondInterv);
-    localEditor.commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.D.NetCenterNewImpl", 2, "set serverTime is " + b.timeFormatter.format(Long.valueOf(System.currentTimeMillis() + NetConnInfoCenter.servetTimeSecondInterv * 1000L)));
+    Object localObject = BaseApplication.getContext().getSharedPreferences(this.j, 0).edit();
+    ((SharedPreferences.Editor)localObject).putLong("servetTimeDiff", NetConnInfoCenter.servetTimeSecondInterv);
+    ((SharedPreferences.Editor)localObject).commit();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("set serverTime is ");
+      ((StringBuilder)localObject).append(b.timeFormatter.format(Long.valueOf(System.currentTimeMillis() + NetConnInfoCenter.servetTimeSecondInterv * 1000L)));
+      QLog.d("MSF.D.NetCenterNewImpl", 2, ((StringBuilder)localObject).toString());
     }
     MsfCore.initAppProMsg("*", b.sender.m());
   }
@@ -424,7 +370,8 @@ public class s
   public void a(com.tencent.qphone.base.a parama)
   {
     NetConnInfoCenter.socketConnState = 1;
-    if ((b != null) || (b.pushManager != null)) {
+    MsfCore localMsfCore = b;
+    if ((localMsfCore != null) || (localMsfCore.pushManager != null)) {
       try
       {
         b.pushManager.a(parama);
@@ -451,10 +398,17 @@ public class s
   {
     if ((paramString2 != null) && ((paramString1 == null) || (!paramString1.equals(paramString2))))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.D.NetCenterNewImpl", 2, "SSID changed, new ssid :  " + paramString2 + " old ssid: " + paramString1);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("SSID changed, new ssid :  ");
+        localStringBuilder.append(paramString2);
+        localStringBuilder.append(" old ssid: ");
+        localStringBuilder.append(paramString1);
+        QLog.d("MSF.D.NetCenterNewImpl", 2, localStringBuilder.toString());
       }
-      if ((b != null) && (b.ssoListManager != null)) {
+      paramString1 = b;
+      if ((paramString1 != null) && (paramString1.ssoListManager != null)) {
         b.ssoListManager.c();
       }
     }
@@ -471,137 +425,395 @@ public class s
     this.s.set(Long.valueOf(l1));
   }
   
+  /* Error */
   protected void b(Context paramContext)
   {
-    boolean bool3 = false;
-    boolean bool1 = false;
-    if ((MsfCore.sCore == null) || (MsfCore.sCore.statReporter == null)) {
-      return;
-    }
-    paramContext = (PowerManager)paramContext.getSystemService("power");
-    for (;;)
-    {
-      try
-      {
-        localMethod = paramContext.getClass().getMethod("isDeviceIdleMode", new Class[0]);
-        localMethod.setAccessible(true);
-        bool2 = ((Boolean)localMethod.invoke(paramContext, new Object[0])).booleanValue();
-        bool1 = bool3;
-      }
-      catch (Exception paramContext)
-      {
-        Method localMethod;
-        boolean bool4;
-        boolean bool2 = false;
-        paramContext.printStackTrace();
-        QLog.d("MSF.D.NetCenterNewImpl", 1, paramContext, new Object[0]);
-        b.statReporter.a(bool2, 0L, 0L, 0L, 0L, bool1, false);
-        return;
-      }
-      try
-      {
-        localMethod = paramContext.getClass().getMethod("isPowerSaveMode", new Class[0]);
-        bool1 = bool3;
-        localMethod.setAccessible(true);
-        bool1 = bool3;
-        bool3 = ((Boolean)localMethod.invoke(paramContext, new Object[0])).booleanValue();
-        bool1 = bool3;
-        localMethod = paramContext.getClass().getMethod("isInteractive", new Class[0]);
-        bool1 = bool3;
-        localMethod.setAccessible(true);
-        bool1 = bool3;
-        bool4 = ((Boolean)localMethod.invoke(paramContext, new Object[0])).booleanValue();
-        l1 = 0L;
-        l2 = 0L;
-        l6 = 0L;
-        if (b.statReporter.Y == null) {
-          b.statReporter.Y = new j.c();
-        }
-        b.statReporter.Y.a = bool2;
-        if (!bool2) {
-          break label640;
-        }
-        b.statReporter.Y.b = System.currentTimeMillis();
-        if (b.statReporter.Y.c > 0L) {
-          l1 = System.currentTimeMillis() - b.statReporter.Y.c;
-        }
-        l3 = l6;
-        if (b.statReporter.Y.e > 0L)
-        {
-          l4 = System.currentTimeMillis() - b.statReporter.Y.e;
-          l3 = l6;
-          l2 = l4;
-          if (b.statReporter.Y.f > 0L)
-          {
-            l3 = b.statReporter.Y.f - b.statReporter.Y.e;
-            l2 = l4;
-          }
-        }
-        l5 = l1;
-        l6 = l3;
-        l4 = l2;
-        if (b.pushManager == null) {
-          break label788;
-        }
-        QLog.d("MSF.D.NetCenterNewImpl", 1, "MSF_Alive_Log do register alarm by device ,interval = " + b.pushManager.e());
-        b.pushManager.a(b.pushManager.e());
-        b.pushManager.p = System.currentTimeMillis();
-        l5 = 0L;
-        l4 = l3;
-        l3 = l5;
-      }
-      catch (Exception paramContext)
-      {
-        continue;
-        l3 = 0L;
-        l1 = l5;
-        l2 = l4;
-        l4 = l6;
-        continue;
-      }
-      paramContext = new StringBuilder(128);
-      paramContext.append("MSF_Alive_Log deviceIdleChanged: isDeviceIdleMode=").append(bool2);
-      paramContext.append(" takeTimes=").append(l1);
-      paramContext.append(" alarmCost=").append(l3);
-      paramContext.append(" connFailCost=").append(l4);
-      paramContext.append(" screenOffCost=").append(l2);
-      paramContext.append(" isPowerSaveMode=").append(bool3);
-      paramContext.append(" isInteractive=").append(bool4);
-      QLog.d("MSF.D.NetCenterNewImpl", 1, paramContext.toString());
-      if (l1 <= 0L) {
-        break;
-      }
-      b.statReporter.a(bool2, l1, l3, l2, l4, bool3, bool4);
-      return;
-      label640:
-      b.statReporter.Y.c = System.currentTimeMillis();
-      b.statReporter.Y.e = 0L;
-      b.statReporter.Y.f = 0L;
-      l5 = l1;
-      l4 = l2;
-      if (b.statReporter.Y.b <= 0L) {
-        break label788;
-      }
-      l1 = System.currentTimeMillis();
-      l4 = b.statReporter.Y.b;
-      l3 = b.statReporter.Y.d;
-      b.statReporter.Y.d = 0L;
-      if (b.pushManager != null) {
-        b.pushManager.p = 0L;
-      }
-      l1 -= l4;
-      l4 = 0L;
-    }
+    // Byte code:
+    //   0: getstatic 649	com/tencent/mobileqq/msf/core/MsfCore:sCore	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   3: ifnull +774 -> 777
+    //   6: getstatic 649	com/tencent/mobileqq/msf/core/MsfCore:sCore	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   9: getfield 653	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   12: ifnonnull +4 -> 16
+    //   15: return
+    //   16: aload_1
+    //   17: ldc_w 655
+    //   20: invokevirtual 407	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   23: checkcast 657	android/os/PowerManager
+    //   26: astore_1
+    //   27: aload_1
+    //   28: invokevirtual 661	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   31: ldc_w 663
+    //   34: iconst_0
+    //   35: anewarray 665	java/lang/Class
+    //   38: invokevirtual 669	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   41: astore 15
+    //   43: aload 15
+    //   45: iconst_1
+    //   46: invokevirtual 674	java/lang/reflect/Method:setAccessible	(Z)V
+    //   49: aload 15
+    //   51: aload_1
+    //   52: iconst_0
+    //   53: anewarray 4	java/lang/Object
+    //   56: invokevirtual 678	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   59: checkcast 330	java/lang/Boolean
+    //   62: invokevirtual 681	java/lang/Boolean:booleanValue	()Z
+    //   65: istore_2
+    //   66: aload_1
+    //   67: invokevirtual 661	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   70: ldc_w 683
+    //   73: iconst_0
+    //   74: anewarray 665	java/lang/Class
+    //   77: invokevirtual 669	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   80: astore 15
+    //   82: aload 15
+    //   84: iconst_1
+    //   85: invokevirtual 674	java/lang/reflect/Method:setAccessible	(Z)V
+    //   88: aload 15
+    //   90: aload_1
+    //   91: iconst_0
+    //   92: anewarray 4	java/lang/Object
+    //   95: invokevirtual 678	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   98: checkcast 330	java/lang/Boolean
+    //   101: invokevirtual 681	java/lang/Boolean:booleanValue	()Z
+    //   104: istore_3
+    //   105: aload_1
+    //   106: invokevirtual 661	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   109: ldc_w 685
+    //   112: iconst_0
+    //   113: anewarray 665	java/lang/Class
+    //   116: invokevirtual 669	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   119: astore 15
+    //   121: aload 15
+    //   123: iconst_1
+    //   124: invokevirtual 674	java/lang/reflect/Method:setAccessible	(Z)V
+    //   127: aload 15
+    //   129: aload_1
+    //   130: iconst_0
+    //   131: anewarray 4	java/lang/Object
+    //   134: invokevirtual 678	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   137: checkcast 330	java/lang/Boolean
+    //   140: invokevirtual 681	java/lang/Boolean:booleanValue	()Z
+    //   143: istore 4
+    //   145: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   148: getfield 653	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   151: getfield 689	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
+    //   154: ifnonnull +19 -> 173
+    //   157: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   160: getfield 653	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   163: new 691	com/tencent/mobileqq/msf/core/c/j$c
+    //   166: dup
+    //   167: invokespecial 692	com/tencent/mobileqq/msf/core/c/j$c:<init>	()V
+    //   170: putfield 689	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
+    //   173: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   176: getfield 653	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   179: getfield 689	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
+    //   182: iload_2
+    //   183: putfield 694	com/tencent/mobileqq/msf/core/c/j$c:a	Z
+    //   186: iload_2
+    //   187: ifeq +247 -> 434
+    //   190: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   193: getfield 653	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   196: getfield 689	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
+    //   199: invokestatic 161	java/lang/System:currentTimeMillis	()J
+    //   202: putfield 696	com/tencent/mobileqq/msf/core/c/j$c:b	J
+    //   205: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   208: getfield 653	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   211: getfield 689	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
+    //   214: getfield 698	com/tencent/mobileqq/msf/core/c/j$c:c	J
+    //   217: lconst_0
+    //   218: lcmp
+    //   219: ifle +24 -> 243
+    //   222: invokestatic 161	java/lang/System:currentTimeMillis	()J
+    //   225: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   228: getfield 653	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   231: getfield 689	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
+    //   234: getfield 698	com/tencent/mobileqq/msf/core/c/j$c:c	J
+    //   237: lsub
+    //   238: lstore 7
+    //   240: goto +6 -> 246
+    //   243: lconst_0
+    //   244: lstore 7
+    //   246: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   249: getfield 653	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   252: getfield 689	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
+    //   255: getfield 700	com/tencent/mobileqq/msf/core/c/j$c:e	J
+    //   258: lconst_0
+    //   259: lcmp
+    //   260: ifle +74 -> 334
+    //   263: invokestatic 161	java/lang/System:currentTimeMillis	()J
+    //   266: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   269: getfield 653	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   272: getfield 689	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
+    //   275: getfield 700	com/tencent/mobileqq/msf/core/c/j$c:e	J
+    //   278: lsub
+    //   279: lstore 9
+    //   281: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   284: getfield 653	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   287: getfield 689	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
+    //   290: getfield 702	com/tencent/mobileqq/msf/core/c/j$c:f	J
+    //   293: lconst_0
+    //   294: lcmp
+    //   295: ifle +33 -> 328
+    //   298: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   301: getfield 653	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   304: getfield 689	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
+    //   307: getfield 702	com/tencent/mobileqq/msf/core/c/j$c:f	J
+    //   310: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   313: getfield 653	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   316: getfield 689	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
+    //   319: getfield 700	com/tencent/mobileqq/msf/core/c/j$c:e	J
+    //   322: lsub
+    //   323: lstore 5
+    //   325: goto +16 -> 341
+    //   328: lconst_0
+    //   329: lstore 5
+    //   331: goto +10 -> 341
+    //   334: lconst_0
+    //   335: lstore 9
+    //   337: lload 9
+    //   339: lstore 5
+    //   341: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   344: getfield 216	com/tencent/mobileqq/msf/core/MsfCore:pushManager	Lcom/tencent/mobileqq/msf/core/push/g;
+    //   347: ifnull +73 -> 420
+    //   350: new 99	java/lang/StringBuilder
+    //   353: dup
+    //   354: invokespecial 100	java/lang/StringBuilder:<init>	()V
+    //   357: astore_1
+    //   358: aload_1
+    //   359: ldc_w 704
+    //   362: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   365: pop
+    //   366: aload_1
+    //   367: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   370: getfield 216	com/tencent/mobileqq/msf/core/MsfCore:pushManager	Lcom/tencent/mobileqq/msf/core/push/g;
+    //   373: invokevirtual 706	com/tencent/mobileqq/msf/core/push/g:e	()J
+    //   376: invokevirtual 490	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   379: pop
+    //   380: ldc 12
+    //   382: iconst_1
+    //   383: aload_1
+    //   384: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   387: invokestatic 323	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   390: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   393: getfield 216	com/tencent/mobileqq/msf/core/MsfCore:pushManager	Lcom/tencent/mobileqq/msf/core/push/g;
+    //   396: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   399: getfield 216	com/tencent/mobileqq/msf/core/MsfCore:pushManager	Lcom/tencent/mobileqq/msf/core/push/g;
+    //   402: invokevirtual 706	com/tencent/mobileqq/msf/core/push/g:e	()J
+    //   405: invokevirtual 708	com/tencent/mobileqq/msf/core/push/g:a	(J)V
+    //   408: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   411: getfield 216	com/tencent/mobileqq/msf/core/MsfCore:pushManager	Lcom/tencent/mobileqq/msf/core/push/g;
+    //   414: invokestatic 161	java/lang/System:currentTimeMillis	()J
+    //   417: putfield 710	com/tencent/mobileqq/msf/core/push/g:p	J
+    //   420: lload 9
+    //   422: lstore 11
+    //   424: lconst_0
+    //   425: lstore 9
+    //   427: lload 5
+    //   429: lstore 13
+    //   431: goto +149 -> 580
+    //   434: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   437: getfield 653	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   440: getfield 689	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
+    //   443: invokestatic 161	java/lang/System:currentTimeMillis	()J
+    //   446: putfield 698	com/tencent/mobileqq/msf/core/c/j$c:c	J
+    //   449: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   452: getfield 653	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   455: getfield 689	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
+    //   458: lconst_0
+    //   459: putfield 700	com/tencent/mobileqq/msf/core/c/j$c:e	J
+    //   462: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   465: getfield 653	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   468: getfield 689	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
+    //   471: lconst_0
+    //   472: putfield 702	com/tencent/mobileqq/msf/core/c/j$c:f	J
+    //   475: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   478: getfield 653	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   481: getfield 689	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
+    //   484: getfield 696	com/tencent/mobileqq/msf/core/c/j$c:b	J
+    //   487: lconst_0
+    //   488: lcmp
+    //   489: ifle +70 -> 559
+    //   492: invokestatic 161	java/lang/System:currentTimeMillis	()J
+    //   495: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   498: getfield 653	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   501: getfield 689	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
+    //   504: getfield 696	com/tencent/mobileqq/msf/core/c/j$c:b	J
+    //   507: lsub
+    //   508: lstore 5
+    //   510: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   513: getfield 653	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   516: getfield 689	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
+    //   519: getfield 712	com/tencent/mobileqq/msf/core/c/j$c:d	J
+    //   522: lstore 7
+    //   524: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   527: getfield 653	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   530: getfield 689	com/tencent/mobileqq/msf/core/c/j:Y	Lcom/tencent/mobileqq/msf/core/c/j$c;
+    //   533: lconst_0
+    //   534: putfield 712	com/tencent/mobileqq/msf/core/c/j$c:d	J
+    //   537: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   540: getfield 216	com/tencent/mobileqq/msf/core/MsfCore:pushManager	Lcom/tencent/mobileqq/msf/core/push/g;
+    //   543: ifnull +13 -> 556
+    //   546: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   549: getfield 216	com/tencent/mobileqq/msf/core/MsfCore:pushManager	Lcom/tencent/mobileqq/msf/core/push/g;
+    //   552: lconst_0
+    //   553: putfield 710	com/tencent/mobileqq/msf/core/push/g:p	J
+    //   556: goto +10 -> 566
+    //   559: lconst_0
+    //   560: lstore 5
+    //   562: lload 5
+    //   564: lstore 7
+    //   566: lconst_0
+    //   567: lstore 11
+    //   569: lconst_0
+    //   570: lstore 13
+    //   572: lload 7
+    //   574: lstore 9
+    //   576: lload 5
+    //   578: lstore 7
+    //   580: new 99	java/lang/StringBuilder
+    //   583: dup
+    //   584: sipush 128
+    //   587: invokespecial 714	java/lang/StringBuilder:<init>	(I)V
+    //   590: astore_1
+    //   591: aload_1
+    //   592: ldc_w 716
+    //   595: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   598: pop
+    //   599: aload_1
+    //   600: iload_2
+    //   601: invokevirtual 719	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   604: pop
+    //   605: aload_1
+    //   606: ldc_w 721
+    //   609: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   612: pop
+    //   613: aload_1
+    //   614: lload 7
+    //   616: invokevirtual 490	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   619: pop
+    //   620: aload_1
+    //   621: ldc_w 723
+    //   624: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   627: pop
+    //   628: aload_1
+    //   629: lload 9
+    //   631: invokevirtual 490	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   634: pop
+    //   635: aload_1
+    //   636: ldc_w 725
+    //   639: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   642: pop
+    //   643: aload_1
+    //   644: lload 13
+    //   646: invokevirtual 490	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   649: pop
+    //   650: aload_1
+    //   651: ldc_w 727
+    //   654: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   657: pop
+    //   658: aload_1
+    //   659: lload 11
+    //   661: invokevirtual 490	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   664: pop
+    //   665: aload_1
+    //   666: ldc_w 729
+    //   669: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   672: pop
+    //   673: aload_1
+    //   674: iload_3
+    //   675: invokevirtual 719	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   678: pop
+    //   679: aload_1
+    //   680: ldc_w 731
+    //   683: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   686: pop
+    //   687: aload_1
+    //   688: iload 4
+    //   690: invokevirtual 719	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   693: pop
+    //   694: ldc 12
+    //   696: iconst_1
+    //   697: aload_1
+    //   698: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   701: invokestatic 323	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   704: lload 7
+    //   706: lconst_0
+    //   707: lcmp
+    //   708: ifle +24 -> 732
+    //   711: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   714: getfield 653	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   717: iload_2
+    //   718: lload 7
+    //   720: lload 9
+    //   722: lload 11
+    //   724: lload 13
+    //   726: iload_3
+    //   727: iload 4
+    //   729: invokevirtual 734	com/tencent/mobileqq/msf/core/c/j:a	(ZJJJJZZ)V
+    //   732: return
+    //   733: astore_1
+    //   734: goto +12 -> 746
+    //   737: astore_1
+    //   738: goto +6 -> 744
+    //   741: astore_1
+    //   742: iconst_0
+    //   743: istore_2
+    //   744: iconst_0
+    //   745: istore_3
+    //   746: aload_1
+    //   747: invokevirtual 480	java/lang/Exception:printStackTrace	()V
+    //   750: ldc 12
+    //   752: iconst_1
+    //   753: aload_1
+    //   754: iconst_0
+    //   755: anewarray 4	java/lang/Object
+    //   758: invokestatic 737	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   761: getstatic 182	com/tencent/mobileqq/msf/core/s:b	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   764: getfield 653	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   767: iload_2
+    //   768: lconst_0
+    //   769: lconst_0
+    //   770: lconst_0
+    //   771: lconst_0
+    //   772: iload_3
+    //   773: iconst_0
+    //   774: invokevirtual 734	com/tencent/mobileqq/msf/core/c/j:a	(ZJJJJZZ)V
+    //   777: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	778	0	this	s
+    //   0	778	1	paramContext	Context
+    //   65	703	2	bool1	boolean
+    //   104	669	3	bool2	boolean
+    //   143	585	4	bool3	boolean
+    //   323	254	5	l1	long
+    //   238	481	7	l2	long
+    //   279	442	9	l3	long
+    //   422	301	11	l4	long
+    //   429	296	13	l5	long
+    //   41	87	15	localMethod	java.lang.reflect.Method
+    // Exception table:
+    //   from	to	target	type
+    //   105	145	733	java/lang/Exception
+    //   66	105	737	java/lang/Exception
+    //   27	66	741	java/lang/Exception
   }
   
   public void b(String paramString1, String paramString2)
   {
     if ((paramString2 != null) && ((paramString1 == null) || (!paramString1.equals(paramString2))))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.D.NetCenterNewImpl", 2, "Mobile APN changed, load sso list new apn :  " + paramString2 + " old apn: " + paramString1);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Mobile APN changed, load sso list new apn :  ");
+        localStringBuilder.append(paramString2);
+        localStringBuilder.append(" old apn: ");
+        localStringBuilder.append(paramString1);
+        QLog.d("MSF.D.NetCenterNewImpl", 2, localStringBuilder.toString());
       }
-      if ((b != null) && (b.ssoListManager != null)) {
+      paramString1 = b;
+      if ((paramString1 != null) && (paramString1.ssoListManager != null)) {
         b.ssoListManager.b();
       }
     }
@@ -619,7 +831,12 @@ public class s
     if ((!this.t) && (Math.abs(SystemClock.uptimeMillis() - ((Long)this.s.get()).longValue()) > 120000L))
     {
       this.t = true;
-      QLog.w("MSF.D.NetCenterNewImpl", 1, "checkConnInfo refresh held 2min!!! enter=" + l1 + " now=" + System.currentTimeMillis());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkConnInfo refresh held 2min!!! enter=");
+      localStringBuilder.append(l1);
+      localStringBuilder.append(" now=");
+      localStringBuilder.append(System.currentTimeMillis());
+      QLog.w("MSF.D.NetCenterNewImpl", 1, localStringBuilder.toString());
       MsfCore.sCore.statReporter.a("", 0L);
     }
   }
@@ -635,28 +852,29 @@ public class s
   public void c(String paramString1, String paramString2)
   {
     NetConnInfoCenter.socketConnState = 2;
-    if (b == null)
+    Object localObject = b;
+    if (localObject == null)
     {
       QLog.d("MSF.D.NetCenterNewImpl", 1, "onConnOpened, return by msfCore null");
       return;
     }
-    b.pushManager.d();
+    ((MsfCore)localObject).pushManager.d();
     if (l.a) {
       l.a(null);
     }
     if ((b.standbyModeManager != null) && (!b.standbyModeManager.b()))
     {
-      FromServiceMsg localFromServiceMsg = new FromServiceMsg(b.getMsfAppid(), MsfCore.getNextSeq(), "0", "cmd_connOpened");
-      localFromServiceMsg.setMsgSuccess();
-      localFromServiceMsg.setRequestSsoSeq(MsfCore.getNextSeq());
-      localFromServiceMsg.setMsfCommand(MsfCommand.onConnOpened);
-      localFromServiceMsg.addAttribute("resp_connopen_serverAdd", paramString1);
-      localFromServiceMsg.addAttribute("resp_connopen_localAdd", paramString2);
+      localObject = new FromServiceMsg(b.getMsfAppid(), MsfCore.getNextSeq(), "0", "cmd_connOpened");
+      ((FromServiceMsg)localObject).setMsgSuccess();
+      ((FromServiceMsg)localObject).setRequestSsoSeq(MsfCore.getNextSeq());
+      ((FromServiceMsg)localObject).setMsfCommand(MsfCommand.onConnOpened);
+      ((FromServiceMsg)localObject).addAttribute("resp_connopen_serverAdd", paramString1);
+      ((FromServiceMsg)localObject).addAttribute("resp_connopen_localAdd", paramString2);
       if (b.pushManager.b()) {
-        localFromServiceMsg.addAttribute("resp_needBootApp", Integer.valueOf(1));
+        ((FromServiceMsg)localObject).addAttribute("resp_needBootApp", Integer.valueOf(1));
       }
-      MsfSdkUtils.addFromMsgProcessName("*", localFromServiceMsg);
-      b.addRespToQuque(null, localFromServiceMsg);
+      MsfSdkUtils.addFromMsgProcessName("*", (FromServiceMsg)localObject);
+      b.addRespToQuque(null, (FromServiceMsg)localObject);
       return;
     }
     if (b.standbyModeManager != null) {
@@ -670,7 +888,8 @@ public class s
     if (QLog.isColorLevel()) {
       QLog.d("MSF.D.NetCenterNewImpl", 2, "wifiDisConnected");
     }
-    if ((b != null) && (b.sender != null)) {
+    MsfCore localMsfCore = b;
+    if ((localMsfCore != null) && (localMsfCore.sender != null)) {
       b.sender.b.g.a();
     }
   }
@@ -749,26 +968,27 @@ public class s
   
   public void p()
   {
-    if ((b != null) && (b.standbyModeManager != null) && (!b.standbyModeManager.b()))
+    Object localObject = b;
+    if ((localObject != null) && (((MsfCore)localObject).standbyModeManager != null) && (!b.standbyModeManager.b()))
     {
       NetConnInfoCenter.socketConnState = 3;
-      FromServiceMsg localFromServiceMsg = new FromServiceMsg(b.getMsfAppid(), MsfCore.getNextSeq(), "0", "cmd_connAllFailed");
-      localFromServiceMsg.setMsgSuccess();
-      localFromServiceMsg.setRequestSsoSeq(MsfCore.getNextSeq());
-      localFromServiceMsg.setMsfCommand(MsfCommand.onOepnConnAllFailed);
+      localObject = new FromServiceMsg(b.getMsfAppid(), MsfCore.getNextSeq(), "0", "cmd_connAllFailed");
+      ((FromServiceMsg)localObject).setMsgSuccess();
+      ((FromServiceMsg)localObject).setRequestSsoSeq(MsfCore.getNextSeq());
+      ((FromServiceMsg)localObject).setMsfCommand(MsfCommand.onOepnConnAllFailed);
       if (b.pushManager.b()) {
-        localFromServiceMsg.addAttribute("resp_needBootApp", Integer.valueOf(1));
+        ((FromServiceMsg)localObject).addAttribute("resp_needBootApp", Integer.valueOf(1));
       }
-      MsfSdkUtils.addFromMsgProcessName("*", localFromServiceMsg);
-      b.addRespToQuque(null, localFromServiceMsg);
+      MsfSdkUtils.addFromMsgProcessName("*", (FromServiceMsg)localObject);
+      b.addRespToQuque(null, (FromServiceMsg)localObject);
     }
-    for (;;)
+    else
     {
-      if ((b != null) && (b.sender != null)) {
-        b.sender.b.g.b();
-      }
-      return;
       QLog.d("MSF.D.NetCenterNewImpl", 1, "onOepnConnAllFailed, stop notify by standby");
+    }
+    localObject = b;
+    if ((localObject != null) && (((MsfCore)localObject).sender != null)) {
+      b.sender.b.g.b();
     }
   }
   
@@ -784,21 +1004,26 @@ public class s
   
   public void s()
   {
-    if ((n()) && (b != null) && (b.sender != null)) {
-      b.sender.b.g.a(this.i.k());
+    Object localObject;
+    if (n())
+    {
+      localObject = b;
+      if ((localObject != null) && (((MsfCore)localObject).sender != null)) {
+        b.sender.b.g.a(this.i.k());
+      }
     }
     if ((b.standbyModeManager != null) && (!b.standbyModeManager.b()))
     {
       NetConnInfoCenter.socketConnState = 4;
-      FromServiceMsg localFromServiceMsg = new FromServiceMsg(b.getMsfAppid(), MsfCore.getNextSeq(), "0", "cmd_recvFirstResp");
-      localFromServiceMsg.setMsgSuccess();
-      localFromServiceMsg.setRequestSsoSeq(MsfCore.getNextSeq());
-      localFromServiceMsg.setMsfCommand(MsfCommand.onReceFirstResp);
+      localObject = new FromServiceMsg(b.getMsfAppid(), MsfCore.getNextSeq(), "0", "cmd_recvFirstResp");
+      ((FromServiceMsg)localObject).setMsgSuccess();
+      ((FromServiceMsg)localObject).setRequestSsoSeq(MsfCore.getNextSeq());
+      ((FromServiceMsg)localObject).setMsfCommand(MsfCommand.onReceFirstResp);
       if (b.pushManager.b()) {
-        localFromServiceMsg.addAttribute("resp_needBootApp", Integer.valueOf(1));
+        ((FromServiceMsg)localObject).addAttribute("resp_needBootApp", Integer.valueOf(1));
       }
-      MsfSdkUtils.addFromMsgProcessName("*", localFromServiceMsg);
-      b.addRespToQuque(null, localFromServiceMsg);
+      MsfSdkUtils.addFromMsgProcessName("*", (FromServiceMsg)localObject);
+      b.addRespToQuque(null, (FromServiceMsg)localObject);
       return;
     }
     QLog.d("MSF.D.NetCenterNewImpl", 1, "onRecvFirstResp, stop notify by standby");
@@ -821,14 +1046,13 @@ public class s
   
   public int w()
   {
-    int i1 = 0;
     if (n()) {
-      i1 = this.i.i();
+      return this.i.i();
     }
-    while (!o()) {
-      return i1;
+    if (o()) {
+      return this.i.g() + 10000;
     }
-    return this.i.g() + 10000;
+    return 0;
   }
   
   public int x()
@@ -840,7 +1064,8 @@ public class s
   {
     System.currentTimeMillis();
     long l1 = SystemClock.elapsedRealtime();
-    if ((l1 - this.y > 0L) && (l1 - this.y <= com.tencent.mobileqq.msf.core.a.a.K()))
+    long l2 = this.y;
+    if ((l1 - l2 > 0L) && (l1 - l2 <= com.tencent.mobileqq.msf.core.a.a.K()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("MSF.D.NetCenterNewImpl", 2, "quit to checkTimeMsg too frequency.");
@@ -853,23 +1078,23 @@ public class s
       this.x += 1;
       this.y = l1;
     }
-    for (;;)
+    else if (QLog.isColorLevel())
     {
-      long l2 = System.currentTimeMillis();
-      if ((this.w == 0L) || (l1 - this.w > 600000L))
-      {
-        this.w = l1;
-        this.x = 0;
-      }
-      l = l2;
-      if (MsfStore.getNativeConfigStore() == null) {
-        break;
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("also send checkTimeMsg ");
+      localStringBuilder.append(this.x);
+      QLog.d("MSF.D.NetCenterNewImpl", 2, localStringBuilder.toString());
+    }
+    l2 = System.currentTimeMillis();
+    long l3 = this.w;
+    if ((l3 == 0L) || (l1 - l3 > 600000L))
+    {
+      this.w = l1;
+      this.x = 0;
+    }
+    l = l2;
+    if (MsfStore.getNativeConfigStore() != null) {
       MsfStore.getNativeConfigStore().n_setConfig("recordSysTimeKey", String.valueOf(l2));
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.D.NetCenterNewImpl", 2, "also send checkTimeMsg " + this.x);
-      }
     }
   }
   
@@ -881,58 +1106,71 @@ public class s
       if ((0L != m) && (l1 > m + com.tencent.mobileqq.msf.core.a.a.N()))
       {
         m = l1;
-        String str;
-        if ((-1L == l) && (MsfStore.getNativeConfigStore() != null))
+        l1 = l;
+        if ((-1L == l1) && (MsfStore.getNativeConfigStore() != null))
         {
-          str = MsfStore.getNativeConfigStore().getConfig("recordSysTimeKey");
-          if (str == null) {}
-        }
-        try
-        {
-          l = Long.parseLong(str);
-          l1 = System.currentTimeMillis();
-          if (-1L != l)
-          {
-            if (l1 <= l + com.tencent.mobileqq.msf.core.a.a.L() + Math.random() * com.tencent.mobileqq.msf.core.a.a.M()) {
-              return;
+          String str = MsfStore.getNativeConfigStore().getConfig("recordSysTimeKey");
+          if (str != null) {
+            try
+            {
+              l = Long.parseLong(str);
             }
+            catch (Exception localException1)
+            {
+              if (QLog.isColorLevel())
+              {
+                localStringBuilder = new StringBuilder();
+                localStringBuilder.append("get lastCheckTime catch Exception ");
+                localStringBuilder.append(localException1);
+                QLog.d("MSF.D.NetCenterNewImpl", 2, localStringBuilder.toString());
+              }
+            }
+          }
+        }
+        l1 = System.currentTimeMillis();
+        if (-1L != l)
+        {
+          double d1 = l1;
+          double d2 = l + com.tencent.mobileqq.msf.core.a.a.L();
+          double d3 = Math.random();
+          l1 = com.tencent.mobileqq.msf.core.a.a.M();
+          double d4 = l1;
+          Double.isNaN(d4);
+          Double.isNaN(d2);
+          if (d1 > d2 + d3 * d4) {
             y();
           }
         }
-        catch (Exception localException1)
+        else
         {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("MSF.D.NetCenterNewImpl", 2, "get lastCheckTime catch Exception " + localException1);
-            }
+          l = l1;
+          if (MsfStore.getNativeConfigStore() != null) {
+            MsfStore.getNativeConfigStore().n_setConfig("recordSysTimeKey", String.valueOf(l));
           }
         }
       }
-      return;
+      else if (0L == m)
+      {
+        m = l1;
+        return;
+      }
     }
     catch (Exception localException2)
     {
+      StringBuilder localStringBuilder;
       if (QLog.isColorLevel())
       {
-        QLog.d("MSF.D.NetCenterNewImpl", 2, "checkRecordTime catch Exception " + localException2);
-        return;
-        l = l1;
-        if (MsfStore.getNativeConfigStore() != null)
-        {
-          MsfStore.getNativeConfigStore().n_setConfig("recordSysTimeKey", String.valueOf(l));
-          return;
-          if (0L == m) {
-            m = l1;
-          }
-        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("checkRecordTime catch Exception ");
+        localStringBuilder.append(localException2);
+        QLog.d("MSF.D.NetCenterNewImpl", 2, localStringBuilder.toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.s
  * JD-Core Version:    0.7.0.1
  */

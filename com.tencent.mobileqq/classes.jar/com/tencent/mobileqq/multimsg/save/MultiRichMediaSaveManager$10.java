@@ -25,22 +25,28 @@ class MultiRichMediaSaveManager$10
   
   public void a(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("MultiRichMediaSaveManager", 2, "saveVideoFile fail, errorCode = " + paramInt + " ,errorMsg = " + paramString);
-    }
-    FileSaveResult localFileSaveResult = this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq.a());
-    if (localFileSaveResult != null)
+    if (QLog.isColorLevel())
     {
-      localFileSaveResult.jdField_a_of_type_Int = -1;
-      localFileSaveResult.b = paramInt;
-      localFileSaveResult.jdField_a_of_type_JavaLangString = paramString;
-      MultiRichMediaSaveManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager, localFileSaveResult);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("saveVideoFile fail, errorCode = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" ,errorMsg = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.e("MultiRichMediaSaveManager", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq.a());
+    if (localObject != null)
+    {
+      ((FileSaveResult)localObject).jdField_a_of_type_Int = -1;
+      ((FileSaveResult)localObject).b = paramInt;
+      ((FileSaveResult)localObject).jdField_a_of_type_JavaLangString = paramString;
+      MultiRichMediaSaveManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager, (FileSaveResult)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.save.MultiRichMediaSaveManager.10
  * JD-Core Version:    0.7.0.1
  */

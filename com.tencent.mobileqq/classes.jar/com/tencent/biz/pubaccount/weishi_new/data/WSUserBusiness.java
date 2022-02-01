@@ -27,25 +27,30 @@ public class WSUserBusiness
     localFollowEvent.setPersonId(paramString);
     if (paramInt == 1) {
       localFollowEvent.setIsFollow(1);
-    }
-    for (;;)
-    {
-      WSSimpleEventBus.a().a(localFollowEvent);
-      return;
+    } else {
       localFollowEvent.setIsFollow(2);
     }
+    WSSimpleEventBus.a().a(localFollowEvent);
   }
   
   public void a(String paramString)
   {
-    WSLog.b("WSUserBusiness", "[actionBlockRecommendPerson] personID : " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[actionBlockRecommendPerson] personID : ");
+    localStringBuilder.append(paramString);
+    WSLog.b("WSUserBusiness", localStringBuilder.toString());
     paramString = new WeishiTask(new BlockRecommendPersonRequest(paramString), null, new WSUserBusiness.1(this), 4006);
     WeishiBusinessLooper.a().a(paramString);
   }
   
   public void a(String paramString, int paramInt)
   {
-    WSLog.b("WSUserBusiness", "[actionChangeFollow] personID : " + paramString + "  followStatus:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[actionChangeFollow] personID : ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("  followStatus:");
+    localStringBuilder.append(paramInt);
+    WSLog.b("WSUserBusiness", localStringBuilder.toString());
     b(paramString, paramInt);
     paramString = new WeishiTask(new ChangeFollowRequest(paramString, paramInt), null, a(paramString, paramInt), 4005);
     WeishiBusinessLooper.a().a(paramString);
@@ -53,7 +58,7 @@ public class WSUserBusiness
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.data.WSUserBusiness
  * JD-Core Version:    0.7.0.1
  */

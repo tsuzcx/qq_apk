@@ -17,31 +17,23 @@ public final class ApiUtil
       }
       return paramString;
     }
-    if (paramJSONObject == null) {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        paramJSONObject = localJSONObject;
-        label63:
-        for (;;) {}
-      }
-      catch (Exception paramString)
-      {
-        try
-        {
-          paramJSONObject.put("errMsg", paramString + ":fail cancel");
-          for (;;)
-          {
-            return paramJSONObject;
-            paramString = paramString;
-          }
-        }
-        catch (Exception paramString)
-        {
-          break label63;
-        }
-      }
+    JSONObject localJSONObject = paramJSONObject;
+    if (paramJSONObject == null) {}
+    try
+    {
+      localJSONObject = new JSONObject();
+      paramJSONObject = localJSONObject;
+      StringBuilder localStringBuilder = new StringBuilder();
+      paramJSONObject = localJSONObject;
+      localStringBuilder.append(paramString);
+      paramJSONObject = localJSONObject;
+      localStringBuilder.append(":fail cancel");
+      paramJSONObject = localJSONObject;
+      localJSONObject.put("errMsg", localStringBuilder.toString());
+      return localJSONObject;
     }
+    catch (Exception paramString) {}
+    return paramJSONObject;
   }
   
   public static JSONObject wrapCallbackFail(String paramString, JSONObject paramJSONObject)
@@ -49,82 +41,51 @@ public final class ApiUtil
     return wrapCallbackFail(paramString, paramJSONObject, null);
   }
   
-  /* Error */
   public static JSONObject wrapCallbackFail(String paramString1, JSONObject paramJSONObject, String paramString2)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokestatic 23	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   4: ifeq +19 -> 23
-    //   7: aload_1
-    //   8: astore_0
-    //   9: aload_1
-    //   10: ifnonnull +11 -> 21
-    //   13: new 25	org/json/JSONObject
-    //   16: dup
-    //   17: invokespecial 26	org/json/JSONObject:<init>	()V
-    //   20: astore_0
-    //   21: aload_0
-    //   22: areturn
-    //   23: aload_1
-    //   24: ifnonnull +89 -> 113
-    //   27: new 25	org/json/JSONObject
-    //   30: dup
-    //   31: invokespecial 26	org/json/JSONObject:<init>	()V
-    //   34: astore_3
-    //   35: aload_3
-    //   36: astore_1
-    //   37: new 30	java/lang/StringBuilder
-    //   40: dup
-    //   41: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   44: aload_0
-    //   45: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   48: ldc 51
-    //   50: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   53: astore_3
-    //   54: aload_2
-    //   55: invokestatic 23	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   58: ifeq +24 -> 82
-    //   61: ldc 53
-    //   63: astore_0
-    //   64: aload_1
-    //   65: ldc 28
-    //   67: aload_3
-    //   68: aload_0
-    //   69: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   72: invokevirtual 41	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   75: invokevirtual 45	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   78: pop
-    //   79: goto +37 -> 116
-    //   82: new 30	java/lang/StringBuilder
-    //   85: dup
-    //   86: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   89: ldc 55
-    //   91: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   94: aload_2
-    //   95: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   98: invokevirtual 41	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   101: astore_0
-    //   102: goto -38 -> 64
-    //   105: astore_0
-    //   106: goto +10 -> 116
-    //   109: astore_0
-    //   110: goto +6 -> 116
-    //   113: goto -76 -> 37
-    //   116: aload_1
-    //   117: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	118	0	paramString1	String
-    //   0	118	1	paramJSONObject	JSONObject
-    //   0	118	2	paramString2	String
-    //   34	34	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   27	35	105	java/lang/Exception
-    //   37	61	109	java/lang/Exception
-    //   64	79	109	java/lang/Exception
-    //   82	102	109	java/lang/Exception
+    if (TextUtils.isEmpty(paramString1))
+    {
+      paramString1 = paramJSONObject;
+      if (paramJSONObject == null) {
+        paramString1 = new JSONObject();
+      }
+      return paramString1;
+    }
+    JSONObject localJSONObject = paramJSONObject;
+    if (paramJSONObject == null) {}
+    try
+    {
+      localJSONObject = new JSONObject();
+      paramJSONObject = localJSONObject;
+      StringBuilder localStringBuilder = new StringBuilder();
+      paramJSONObject = localJSONObject;
+      localStringBuilder.append(paramString1);
+      paramJSONObject = localJSONObject;
+      localStringBuilder.append(":fail");
+      paramJSONObject = localJSONObject;
+      if (TextUtils.isEmpty(paramString2))
+      {
+        paramString1 = "";
+      }
+      else
+      {
+        paramJSONObject = localJSONObject;
+        paramString1 = new StringBuilder();
+        paramJSONObject = localJSONObject;
+        paramString1.append(" ");
+        paramJSONObject = localJSONObject;
+        paramString1.append(paramString2);
+        paramJSONObject = localJSONObject;
+        paramString1 = paramString1.toString();
+      }
+      paramJSONObject = localJSONObject;
+      localStringBuilder.append(paramString1);
+      paramJSONObject = localJSONObject;
+      localJSONObject.put("errMsg", localStringBuilder.toString());
+      return localJSONObject;
+    }
+    catch (Exception paramString1) {}
+    return paramJSONObject;
   }
   
   public static JSONObject wrapCallbackOk(String paramString, JSONObject paramJSONObject)
@@ -137,36 +98,28 @@ public final class ApiUtil
       }
       return paramString;
     }
-    if (paramJSONObject == null) {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        paramJSONObject = localJSONObject;
-        label63:
-        for (;;) {}
-      }
-      catch (Exception paramString)
-      {
-        try
-        {
-          paramJSONObject.put("errMsg", paramString + ":ok");
-          for (;;)
-          {
-            return paramJSONObject;
-            paramString = paramString;
-          }
-        }
-        catch (Exception paramString)
-        {
-          break label63;
-        }
-      }
+    JSONObject localJSONObject = paramJSONObject;
+    if (paramJSONObject == null) {}
+    try
+    {
+      localJSONObject = new JSONObject();
+      paramJSONObject = localJSONObject;
+      StringBuilder localStringBuilder = new StringBuilder();
+      paramJSONObject = localJSONObject;
+      localStringBuilder.append(paramString);
+      paramJSONObject = localJSONObject;
+      localStringBuilder.append(":ok");
+      paramJSONObject = localJSONObject;
+      localJSONObject.put("errMsg", localStringBuilder.toString());
+      return localJSONObject;
     }
+    catch (Exception paramString) {}
+    return paramJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.utils.ApiUtil
  * JD-Core Version:    0.7.0.1
  */

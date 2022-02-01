@@ -2,7 +2,7 @@ package com.tencent.mobileqq.shortvideo.gesture;
 
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import com.tencent.mobileqq.startup.step.AVSoUtils;
+import com.tencent.av.utils.AVSoUtils;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -11,154 +11,179 @@ public class GestureUtil
 {
   public static int a(DownloadInfo paramDownloadInfo)
   {
-    if (paramDownloadInfo == null) {}
-    label132:
-    label135:
-    for (;;)
-    {
+    if (paramDownloadInfo == null) {
       return 11;
-      if (TextUtils.isEmpty(paramDownloadInfo.MD5_so))
-      {
-        if (QLog.isDevelopLevel())
-        {
-          QLog.d("QavGesture", 4, String.format("getEnableFlag, %s", new Object[] { paramDownloadInfo }));
-          return 11;
-        }
+    }
+    if (TextUtils.isEmpty(paramDownloadInfo.MD5_so))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QavGesture", 4, String.format("getEnableFlag, %s", new Object[] { paramDownloadInfo }));
       }
-      else
-      {
-        int i;
-        int j;
-        if (paramDownloadInfo.enable) {
-          if ((!d(paramDownloadInfo)) || (!c(paramDownloadInfo)))
-          {
-            i = 11;
-            if (!paramDownloadInfo.gameEnable) {
-              break label132;
-            }
-            if ((d(paramDownloadInfo)) && (b(paramDownloadInfo))) {
-              break label127;
-            }
-            j = 11;
-          }
-        }
-        for (;;)
-        {
-          if ((j == 11) || (i == 11)) {
-            break label135;
-          }
-          if ((j != 2) || (i != 2)) {
-            break label137;
-          }
-          return 2;
-          i = 1;
-          break;
-          i = 2;
-          break;
-          label127:
-          j = 1;
-          continue;
-          j = 2;
-        }
+      return 11;
+    }
+    int i;
+    if (paramDownloadInfo.enable)
+    {
+      if ((d(paramDownloadInfo)) && (c(paramDownloadInfo))) {
+        i = 1;
+      } else {
+        i = 11;
       }
     }
-    label137:
-    return 1;
+    else {
+      i = 2;
+    }
+    int j;
+    if (paramDownloadInfo.gameEnable)
+    {
+      if ((d(paramDownloadInfo)) && (b(paramDownloadInfo))) {
+        j = 1;
+      } else {
+        j = 11;
+      }
+    }
+    else {
+      j = 2;
+    }
+    if (j != 11)
+    {
+      if (i == 11) {
+        return 11;
+      }
+      if ((j == 2) && (i == 2)) {
+        return 2;
+      }
+      return 1;
+    }
+    return 11;
   }
   
   public static String a()
   {
-    return b() + "model" + File.separator;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(b());
+    localStringBuilder.append("model");
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
   }
   
   public static boolean a(DownloadInfo paramDownloadInfo)
   {
-    if (paramDownloadInfo == null) {}
-    while ((TextUtils.isEmpty(paramDownloadInfo.url_zip_gamemodel)) || (TextUtils.isEmpty(paramDownloadInfo.MD5_zip_gamemodel)) || (TextUtils.isEmpty(paramDownloadInfo.gamemodel_fullname))) {
+    boolean bool2 = false;
+    if (paramDownloadInfo == null) {
       return false;
     }
-    return true;
+    boolean bool1 = bool2;
+    if (!TextUtils.isEmpty(paramDownloadInfo.url_zip_gamemodel))
+    {
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(paramDownloadInfo.MD5_zip_gamemodel))
+      {
+        bool1 = bool2;
+        if (!TextUtils.isEmpty(paramDownloadInfo.gamemodel_fullname)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public static String b()
   {
-    return AVSoUtils.b() + "so763" + File.separator;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AVSoUtils.b());
+    localStringBuilder.append("so763");
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
   }
   
   public static boolean b(DownloadInfo paramDownloadInfo)
   {
-    String str1 = paramDownloadInfo.MD5_zip_gamemodel;
-    paramDownloadInfo = c() + paramDownloadInfo.gamemodel_fullname;
-    String str2 = DownloadInfo.getSP().getString("gamemodel_zip_md5", null);
-    if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QavGesture", 4, String.format("isGameModelReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
-      }
-    }
-    do
+    String str = paramDownloadInfo.MD5_zip_gamemodel;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(c());
+    ((StringBuilder)localObject).append(paramDownloadInfo.gamemodel_fullname);
+    paramDownloadInfo = ((StringBuilder)localObject).toString();
+    localObject = DownloadInfo.getSP().getString("gamemodel_zip_md5", null);
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(str)))
     {
-      return false;
-      if (FileUtils.a(paramDownloadInfo)) {
-        break;
+      if (!FileUtils.fileExists(paramDownloadInfo))
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("QavGesture", 4, String.format("isGameModelReady, file no exist,  fileName[%s]", new Object[] { paramDownloadInfo }));
+        }
+        return false;
       }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("QavGesture", 4, String.format("isGameModelReady, file no exist,  fileName[%s]", new Object[] { paramDownloadInfo }));
+      return true;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGesture", 4, String.format("isGameModelReady, sp_md5[%s], xmlMd5[%s]", new Object[] { localObject, str }));
+    }
     return false;
-    return true;
   }
   
   public static String c()
   {
-    return b() + "gamemodel" + File.separator;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(b());
+    localStringBuilder.append("gamemodel");
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
   }
   
   public static boolean c(DownloadInfo paramDownloadInfo)
   {
-    String str1 = paramDownloadInfo.MD5_zip_model;
-    paramDownloadInfo = a() + paramDownloadInfo.model_fullname;
-    String str2 = DownloadInfo.getSP().getString("model_zip_md5", null);
-    if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QavGesture", 4, String.format("isModelReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
-      }
-    }
-    do
+    String str = paramDownloadInfo.MD5_zip_model;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(a());
+    ((StringBuilder)localObject).append(paramDownloadInfo.model_fullname);
+    paramDownloadInfo = ((StringBuilder)localObject).toString();
+    localObject = DownloadInfo.getSP().getString("model_zip_md5", null);
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(str)))
     {
-      return false;
-      if (FileUtils.a(paramDownloadInfo)) {
-        break;
+      if (!FileUtils.fileExists(paramDownloadInfo))
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("QavGesture", 4, String.format("isModelReady, file no exist,  fileName[%s]", new Object[] { paramDownloadInfo }));
+        }
+        return false;
       }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("QavGesture", 4, String.format("isModelReady, file no exist,  fileName[%s]", new Object[] { paramDownloadInfo }));
+      return true;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGesture", 4, String.format("isModelReady, sp_md5[%s], xmlMd5[%s]", new Object[] { localObject, str }));
+    }
     return false;
-    return true;
   }
   
   public static boolean d(DownloadInfo paramDownloadInfo)
   {
-    String str1 = paramDownloadInfo.MD5_zip_so;
-    paramDownloadInfo = b() + paramDownloadInfo.so_fullname;
-    String str2 = DownloadInfo.getSP().getString("so_zip_md5", null);
-    if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QavGesture", 4, String.format("isSoReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
-      }
-    }
-    do
+    String str = paramDownloadInfo.MD5_zip_so;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(b());
+    ((StringBuilder)localObject).append(paramDownloadInfo.so_fullname);
+    paramDownloadInfo = ((StringBuilder)localObject).toString();
+    localObject = DownloadInfo.getSP().getString("so_zip_md5", null);
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(str)))
     {
-      return false;
-      if (FileUtils.a(paramDownloadInfo)) {
-        break;
+      if (!FileUtils.fileExists(paramDownloadInfo))
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("QavGesture", 4, String.format("isSoReady, file no exist,  fileName[%s]", new Object[] { paramDownloadInfo }));
+        }
+        return false;
       }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("QavGesture", 4, String.format("isSoReady, file no exist,  fileName[%s]", new Object[] { paramDownloadInfo }));
+      return true;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGesture", 4, String.format("isSoReady, sp_md5[%s], xmlMd5[%s]", new Object[] { localObject, str }));
+    }
     return false;
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.gesture.GestureUtil
  * JD-Core Version:    0.7.0.1
  */

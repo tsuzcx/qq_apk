@@ -34,17 +34,18 @@ public class TTBeautyV5SmoothFilter
     addParam(new UniformParam.FloatParam("blurStrength", 0.0F));
     addParam(new UniformParam.FloatParam("sharpenStrength", 0.0F));
     addParam(new UniformParam.FloatParam("curveAdjustStrength", 1.0F));
-    if (enableFacecolor) {}
-    for (float f = this.whitenStrength;; f = 0.0F)
-    {
-      addParam(new UniformParam.FloatParam("whitenStrength", f));
-      addParam(new UniformParam.FloatParam("skinMaskAlpha", 0.0F));
-      addParam(new UniformParam.FloatParam("lutLeftIntensity", 0.8F));
-      addParam(new UniformParam.FloatParam("lutRightIntensity", 0.8F));
-      addParam(new UniformParam.FloatParam("lutPosition", 1.01F));
-      addParam(new UniformParam.FloatParam("exposure", 1.0F));
-      return;
+    float f;
+    if (enableFacecolor) {
+      f = this.whitenStrength;
+    } else {
+      f = 0.0F;
     }
+    addParam(new UniformParam.FloatParam("whitenStrength", f));
+    addParam(new UniformParam.FloatParam("skinMaskAlpha", 0.0F));
+    addParam(new UniformParam.FloatParam("lutLeftIntensity", 0.8F));
+    addParam(new UniformParam.FloatParam("lutRightIntensity", 0.8F));
+    addParam(new UniformParam.FloatParam("lutPosition", 1.01F));
+    addParam(new UniformParam.FloatParam("exposure", 1.0F));
   }
   
   public void setBlurStrength(float paramFloat)
@@ -54,23 +55,24 @@ public class TTBeautyV5SmoothFilter
   
   public void setBlurTexture(int paramInt)
   {
-    if (enableFacecolor) {}
-    for (float f = this.whitenStrength;; f = 0.0F)
-    {
-      addParam(new UniformParam.FloatParam("whitenStrength", f));
-      addParam(new UniformParam.TextureParam("inputImageTexture2", paramInt, 33986));
-      return;
+    float f;
+    if (enableFacecolor) {
+      f = this.whitenStrength;
+    } else {
+      f = 0.0F;
     }
+    addParam(new UniformParam.FloatParam("whitenStrength", f));
+    addParam(new UniformParam.TextureParam("inputImageTexture2", paramInt, 33986));
   }
   
   public void setExposureValue(int paramInt)
   {
     if (paramInt > 50)
     {
-      addParam(new UniformParam.FloatParam("exposure", 0.0136F * (paramInt - 50) + 1.0F));
+      addParam(new UniformParam.FloatParam("exposure", (paramInt - 50) * 0.0136F + 1.0F));
       return;
     }
-    addParam(new UniformParam.FloatParam("exposure", 0.01F * paramInt + 0.5F));
+    addParam(new UniformParam.FloatParam("exposure", paramInt * 0.01F + 0.5F));
   }
   
   public void setLookUpCurve(int paramInt)
@@ -122,17 +124,17 @@ public class TTBeautyV5SmoothFilter
   public void setWhitenStrength(float paramFloat)
   {
     this.whitenStrength = paramFloat;
-    if (enableFacecolor) {}
-    for (paramFloat = this.whitenStrength;; paramFloat = 0.0F)
-    {
-      addParam(new UniformParam.FloatParam("whitenStrength", paramFloat));
-      return;
+    if (enableFacecolor) {
+      paramFloat = this.whitenStrength;
+    } else {
+      paramFloat = 0.0F;
     }
+    addParam(new UniformParam.FloatParam("whitenStrength", paramFloat));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.TTBeautyV5SmoothFilter
  * JD-Core Version:    0.7.0.1
  */

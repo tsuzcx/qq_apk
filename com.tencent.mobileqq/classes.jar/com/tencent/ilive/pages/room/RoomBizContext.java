@@ -17,15 +17,17 @@ public class RoomBizContext
   
   public boolean checkLiveInfoComplete()
   {
-    return (this.mLiveInfo != null) && (this.mLiveInfo.roomInfo != null) && (this.mLiveInfo.anchorInfo != null) && (this.mLiveInfo.mediaInfo != null);
+    LiveInfo localLiveInfo = this.mLiveInfo;
+    return (localLiveInfo != null) && (localLiveInfo.roomInfo != null) && (this.mLiveInfo.anchorInfo != null) && (this.mLiveInfo.mediaInfo != null);
   }
   
   public LiveAnchorInfo getAnchorInfo()
   {
-    if (this.mLiveInfo == null) {
+    LiveInfo localLiveInfo = this.mLiveInfo;
+    if (localLiveInfo == null) {
       return null;
     }
-    return this.mLiveInfo.anchorInfo;
+    return localLiveInfo.anchorInfo;
   }
   
   public EnterRoomInfo getEnterRoomInfo()
@@ -35,18 +37,20 @@ public class RoomBizContext
   
   public LiveMediaInfo getMediaInfo()
   {
-    if (this.mLiveInfo == null) {
+    LiveInfo localLiveInfo = this.mLiveInfo;
+    if (localLiveInfo == null) {
       return null;
     }
-    return this.mLiveInfo.mediaInfo;
+    return localLiveInfo.mediaInfo;
   }
   
   public LiveRoomInfo getRoomInfo()
   {
-    if (this.mLiveInfo == null) {
+    LiveInfo localLiveInfo = this.mLiveInfo;
+    if (localLiveInfo == null) {
       return null;
     }
-    return this.mLiveInfo.roomInfo;
+    return localLiveInfo.roomInfo;
   }
   
   public RoomState getRoomState()
@@ -61,7 +65,7 @@ public class RoomBizContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.pages.room.RoomBizContext
  * JD-Core Version:    0.7.0.1
  */

@@ -7,9 +7,9 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.troop.api.handler.ITroopMemberListHandler;
 import com.tencent.mobileqq.troop.api.observer.TroopObserver;
 import com.tencent.qphone.base.util.QLog;
 
@@ -50,27 +50,31 @@ public class TroopMemberListRefresher
   public void a(boolean paramBoolean)
   {
     QLog.e("RefreshMemberList", 4, "Prepare refreshMemberListFromServer");
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    String str;
-    do
-    {
-      return;
-      str = a(this.jdField_a_of_type_JavaLangString);
-    } while (TextUtils.isEmpty(str));
-    long l1 = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("last_update_time", 4).getLong("key_last_update_time" + str, 0L);
-    long l2 = System.currentTimeMillis();
-    if ((paramBoolean) || (l1 == 0L) || ((l1 > 0L) && (l2 - l1 > 300000L)))
-    {
-      ((TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a(true, this.jdField_a_of_type_JavaLangString, str, 5);
-      if (l1 == 0L)
-      {
-        QLog.e("RefreshMemberList", 4, "Not refresh now, will refresh.");
-        return;
-      }
-      QLog.e("RefreshMemberList", 4, "> 5min, will refresh.");
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       return;
     }
-    QLog.e("RefreshMemberList", 4, "< 5min, Will not refresh.");
+    String str = a(this.jdField_a_of_type_JavaLangString);
+    if (TextUtils.isEmpty(str)) {
+      return;
+    }
+    SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("last_update_time", 4);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_last_update_time");
+    localStringBuilder.append(str);
+    long l1 = localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
+    long l2 = System.currentTimeMillis();
+    if ((!paramBoolean) && (l1 != 0L) && ((l1 <= 0L) || (l2 - l1 <= 300000L)))
+    {
+      QLog.e("RefreshMemberList", 4, "< 5min, Will not refresh.");
+      return;
+    }
+    ((ITroopMemberListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_LIST_HANDLER)).a(true, this.jdField_a_of_type_JavaLangString, str, 5);
+    if (l1 == 0L)
+    {
+      QLog.e("RefreshMemberList", 4, "Not refresh now, will refresh.");
+      return;
+    }
+    QLog.e("RefreshMemberList", 4, "> 5min, will refresh.");
   }
   
   public void b()
@@ -81,7 +85,7 @@ public class TroopMemberListRefresher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.data.TroopMemberListRefresher
  * JD-Core Version:    0.7.0.1
  */

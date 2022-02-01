@@ -13,7 +13,7 @@ class BubbleDiyFetcher$3
   
   public void run()
   {
-    HashSet localHashSet = new HashSet();
+    Object localObject = new HashSet();
     Iterator localIterator = this.this$0.a.iterator();
     while (localIterator.hasNext())
     {
@@ -21,12 +21,18 @@ class BubbleDiyFetcher$3
       if ((localVipBubbleDrawable != null) && (localVipBubbleDrawable.getCallback() != null))
       {
         String str = localVipBubbleDrawable.a;
-        if ((this.a.contains(str)) && (!localHashSet.contains(localVipBubbleDrawable)))
+        if ((this.a.contains(str)) && (!((HashSet)localObject).contains(localVipBubbleDrawable)))
         {
-          if (QLog.isColorLevel()) {
-            QLog.i("BubbleDiyFetcher", 2, "refresh uinAndDiyId drawables: " + str + ", vipBubbleDrawable:" + localVipBubbleDrawable.toString());
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("refresh uinAndDiyId drawables: ");
+            localStringBuilder.append(str);
+            localStringBuilder.append(", vipBubbleDrawable:");
+            localStringBuilder.append(localVipBubbleDrawable.toString());
+            QLog.i("BubbleDiyFetcher", 2, localStringBuilder.toString());
           }
-          localHashSet.add(localVipBubbleDrawable);
+          ((HashSet)localObject).add(localVipBubbleDrawable);
           localVipBubbleDrawable.invalidateSelf();
           this.this$0.a.remove(localVipBubbleDrawable);
         }
@@ -36,14 +42,18 @@ class BubbleDiyFetcher$3
         this.this$0.a.remove(localVipBubbleDrawable);
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleDiyFetcher", 2, "wait for refresh size: " + this.this$0.a.size());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("wait for refresh size: ");
+      ((StringBuilder)localObject).append(this.this$0.a.size());
+      QLog.i("BubbleDiyFetcher", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleDiyFetcher.3
  * JD-Core Version:    0.7.0.1
  */

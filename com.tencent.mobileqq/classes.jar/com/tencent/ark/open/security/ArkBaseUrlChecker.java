@@ -5,6 +5,7 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.ark.ArkEnvironmentManager;
+import com.tencent.ark.Logger;
 import com.tencent.ark.open.ArkAppInfo.ArkWhiteUrlItem;
 import com.tencent.ark.open.ArkUtil;
 import java.net.MalformedURLException;
@@ -56,179 +57,175 @@ public class ArkBaseUrlChecker
       }
       return;
     }
-    finally {}
+    finally
+    {
+      label139:
+      break label139;
+    }
+    throw paramArrayList1;
   }
   
   private static boolean isUrlValidInList(String paramString, ArrayList<ArkAppInfo.ArkWhiteUrlItem> paramArrayList)
   {
-    boolean bool4;
-    if ((TextUtils.isEmpty(paramString)) || (paramArrayList == null))
+    Object localObject2;
+    Object localObject1;
+    if ((!TextUtils.isEmpty(paramString)) && (paramArrayList != null))
     {
-      ENV.logE("ArkApp.ArkBaseUrlChecker", "ArkSafe.isUrlValidInList return true");
-      bool4 = true;
-    }
-    for (;;)
-    {
-      return bool4;
-      Object localObject = parseURL(paramString);
-      if (localObject == null)
+      localObject2 = parseURL(paramString);
+      if (localObject2 == null)
       {
-        ENV.logI("ArkApp.ArkBaseUrlChecker", new Object[] { "ArkSafe.isUrlValidInList invalid url, url = ", ArkUtil.filterKeyForLog(paramString, new String[0]) });
+        Logger.logI("ArkApp.ArkBaseUrlChecker", new Object[] { "ArkSafe.isUrlValidInList invalid url, url = ", ArkUtil.filterKeyForLog(paramString, new String[0]) });
         return false;
       }
-      String str = ((URL)localObject).getAuthority();
-      localObject = ((URL)localObject).getPath();
-      ENV.logI("ArkApp.ArkBaseUrlChecker", new Object[] { "ArkSafe.isUrlValidInList url = ", ArkUtil.filterKeyForLog(paramString, new String[0]), ", urlDomain=", str, ", urlPath=", localObject });
-      boolean bool6 = false;
-      boolean bool3 = false;
-      boolean bool5 = false;
-      boolean bool2 = false;
-      bool4 = true;
-      boolean bool1 = true;
+      localObject1 = ((URL)localObject2).getAuthority();
+      localObject2 = ((URL)localObject2).getPath();
+      Logger.logI("ArkApp.ArkBaseUrlChecker", new Object[] { "ArkSafe.isUrlValidInList url = ", ArkUtil.filterKeyForLog(paramString, new String[0]), ", urlDomain=", localObject1, ", urlPath=", localObject2 });
+    }
+    label460:
+    label593:
+    for (;;)
+    {
+      boolean bool1;
+      boolean bool3;
+      boolean bool2;
       try
       {
-        paramArrayList = paramArrayList.iterator();
+        Iterator localIterator = paramArrayList.iterator();
+        bool1 = false;
+        bool3 = false;
+        bool2 = true;
         bool4 = bool1;
-        bool5 = bool2;
-        bool6 = bool3;
-        if (paramArrayList.hasNext())
+        bool5 = bool3;
+        bool6 = bool2;
+        try
         {
-          bool4 = bool1;
-          bool5 = bool2;
-          bool6 = bool3;
-          localArkWhiteUrlItem = (ArkAppInfo.ArkWhiteUrlItem)paramArrayList.next();
-          if (localArkWhiteUrlItem != null)
-          {
-            bool4 = bool1;
-            bool5 = bool2;
-            bool6 = bool3;
-            ENV.logI("ArkApp.ArkBaseUrlChecker", new Object[] { "ArkSafe.isUrlValidInList.handle ruleDomain=", localArkWhiteUrlItem.ruleDomain, ", rulePath=", localArkWhiteUrlItem.rulePath });
-            bool4 = bool1;
-            bool5 = bool2;
-            bool6 = bool3;
-            boolean bool7 = TextUtils.isEmpty(localArkWhiteUrlItem.ruleDomain);
-            if (bool7) {
-              bool3 = true;
-            }
+          if (!localIterator.hasNext()) {
+            break label509;
           }
-        }
-      }
-      catch (Exception paramArrayList)
-      {
-        for (;;)
-        {
-          try
+          paramArrayList = (ArkAppInfo.ArkWhiteUrlItem)localIterator.next();
+          bool4 = bool1;
+          bool5 = bool3;
+          bool6 = bool2;
+          if (paramArrayList != null)
           {
-            ArkAppInfo.ArkWhiteUrlItem localArkWhiteUrlItem;
-            bool4 = TextUtils.isEmpty(localArkWhiteUrlItem.rulePath);
+            Logger.logI("ArkApp.ArkBaseUrlChecker", new Object[] { "ArkSafe.isUrlValidInList.handle ruleDomain=", paramArrayList.ruleDomain, ", rulePath=", paramArrayList.rulePath });
+            bool4 = TextUtils.isEmpty(paramArrayList.ruleDomain);
             int i;
             if (bool4)
             {
               bool1 = true;
-              if ((!bool3) || (!bool1)) {
-                continue;
-              }
-              bool4 = true;
-              bool2 = bool1;
-              bool1 = bool4;
-              bool4 = bool1;
-              if (bool1) {
-                break;
-              }
-              ENV.logI("ArkApp.ArkBaseUrlChecker", new Object[] { "ArkSafe.isUrlValidInList url=", ArkUtil.filterKeyForLog(paramString, new String[0]), ", return isValid=", Boolean.valueOf(bool1), ", isDomainValid=", Boolean.valueOf(bool3), ", isPathValid=", Boolean.valueOf(bool2) });
-              return bool1;
-              bool4 = bool1;
-              bool5 = bool2;
-              bool6 = bool3;
-              if ((localArkWhiteUrlItem.ruleDomain.startsWith("*")) && (str != null))
-              {
-                bool4 = bool1;
-                bool5 = bool2;
-                bool6 = bool3;
-                int k = localArkWhiteUrlItem.ruleDomain.length() - 1;
-                bool4 = bool1;
-                bool5 = bool2;
-                bool6 = bool3;
-                int j = str.length() - k;
-                i = j;
-                if (j < 0) {
-                  i = 0;
-                }
-                bool4 = bool1;
-                bool5 = bool2;
-                bool6 = bool3;
-                bool3 = str.regionMatches(true, i, localArkWhiteUrlItem.ruleDomain, 1, k);
-                continue;
-              }
-              bool4 = bool1;
-              bool5 = bool2;
-              bool6 = bool3;
-              bool3 = localArkWhiteUrlItem.ruleDomain.equalsIgnoreCase(str);
-              continue;
             }
-            if ((localArkWhiteUrlItem.rulePath.endsWith("*")) && (localObject != null))
+            else if ((paramArrayList.ruleDomain.startsWith("*")) && (localObject1 != null))
             {
-              i = localArkWhiteUrlItem.rulePath.length();
-              bool4 = ((String)localObject).regionMatches(0, localArkWhiteUrlItem.rulePath, 0, i - 1);
+              int j = paramArrayList.ruleDomain.length() - 1;
+              i = ((String)localObject1).length() - j;
+              if (i >= 0) {
+                break label593;
+              }
+              i = 0;
+              bool4 = ((String)localObject1).regionMatches(true, i, paramArrayList.ruleDomain, 1, j);
               bool1 = bool4;
-              continue;
             }
-            bool4 = localArkWhiteUrlItem.rulePath.equals(localObject);
-            bool1 = bool4;
-            continue;
-            bool2 = false;
-            bool4 = bool1;
-            bool1 = bool2;
-            bool2 = bool4;
+            else
+            {
+              bool4 = paramArrayList.ruleDomain.equalsIgnoreCase((String)localObject1);
+              bool1 = bool4;
+            }
+            try
+            {
+              if (TextUtils.isEmpty(paramArrayList.rulePath))
+              {
+                bool2 = true;
+              }
+              else if ((paramArrayList.rulePath.endsWith("*")) && (localObject2 != null))
+              {
+                i = paramArrayList.rulePath.length();
+                bool4 = ((String)localObject2).regionMatches(0, paramArrayList.rulePath, 0, i - 1);
+                bool2 = bool4;
+              }
+              else
+              {
+                bool4 = paramArrayList.rulePath.equals(localObject2);
+                bool2 = bool4;
+              }
+              if ((bool1) && (bool2))
+              {
+                bool6 = true;
+                bool4 = bool1;
+                bool5 = bool2;
+                break label509;
+              }
+              bool6 = false;
+              bool4 = bool1;
+              bool5 = bool2;
+            }
+            catch (Exception paramArrayList)
+            {
+              break label460;
+            }
           }
-          catch (Exception paramArrayList)
-          {
-            bool6 = bool3;
-            continue;
-          }
-          paramArrayList = paramArrayList;
-          bool2 = bool5;
           bool1 = bool4;
-          ENV.logE("ArkApp.ArkBaseUrlChecker", "ArkSafe.isUrlValidInList.exception2=" + paramArrayList.toString());
-          bool3 = bool6;
-          continue;
-          bool4 = bool2;
-          bool2 = bool1;
-          bool1 = bool4;
-          continue;
-          bool4 = bool1;
+          bool3 = bool5;
+          bool2 = bool6;
         }
+        catch (Exception paramArrayList) {}
+        localObject1 = new StringBuilder();
       }
+      catch (Exception paramArrayList)
+      {
+        bool1 = false;
+        bool3 = false;
+        bool2 = true;
+      }
+      ((StringBuilder)localObject1).append("ArkSafe.isUrlValidInList.exception2=");
+      ((StringBuilder)localObject1).append(paramArrayList.toString());
+      Logger.logE("ArkApp.ArkBaseUrlChecker", ((StringBuilder)localObject1).toString());
+      boolean bool6 = bool2;
+      boolean bool5 = bool3;
+      boolean bool4 = bool1;
+      label509:
+      if (!bool6) {
+        Logger.logI("ArkApp.ArkBaseUrlChecker", new Object[] { "ArkSafe.isUrlValidInList url=", ArkUtil.filterKeyForLog(paramString, new String[0]), ", return isValid=", Boolean.valueOf(bool6), ", isDomainValid=", Boolean.valueOf(bool4), ", isPathValid=", Boolean.valueOf(bool5) });
+      }
+      return bool6;
+      Logger.logE("ArkApp.ArkBaseUrlChecker", "ArkSafe.isUrlValidInList return true");
+      return true;
     }
   }
   
   private static URL parseURL(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      try
-      {
-        URL localURL = new URL(paramString);
-        return localURL;
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        ENV.logE("ArkApp.ArkBaseUrlChecker", "ArkSafe.isUrlValidInList Exception:" + localMalformedURLException.toString());
-        i = paramString.indexOf('?');
-      }
-    } while (i < 0);
-    paramString = paramString.substring(0, i);
+    }
     try
     {
-      paramString = new URL(paramString);
-      return paramString;
+      URL localURL = new URL(paramString);
+      return localURL;
     }
-    catch (MalformedURLException paramString)
+    catch (MalformedURLException localMalformedURLException)
     {
-      ENV.logE("ArkApp.ArkBaseUrlChecker", "ArkSafe.isUrlValidInList Exception:" + paramString.toString());
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("ArkSafe.isUrlValidInList Exception:");
+      localStringBuilder2.append(localMalformedURLException.toString());
+      Logger.logE("ArkApp.ArkBaseUrlChecker", localStringBuilder2.toString());
+      int i = paramString.indexOf('?');
+      if (i < 0) {
+        return null;
+      }
+      paramString = paramString.substring(0, i);
+      try
+      {
+        paramString = new URL(paramString);
+        return paramString;
+      }
+      catch (MalformedURLException paramString)
+      {
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("ArkSafe.isUrlValidInList Exception:");
+        localStringBuilder1.append(paramString.toString());
+        Logger.logE("ArkApp.ArkBaseUrlChecker", localStringBuilder1.toString());
+      }
     }
     return null;
   }
@@ -237,26 +234,29 @@ public class ArkBaseUrlChecker
   {
     if (TextUtils.isEmpty(paramString))
     {
-      ENV.logE("ArkApp.ArkBaseUrlChecker", "ArkSafe.checkURLLoose return TYPE_VALID for null url");
+      Logger.logE("ArkApp.ArkBaseUrlChecker", "ArkSafe.checkURLLoose return TYPE_VALID for null url");
       return 0;
     }
-    synchronized (this.mLock)
+    for (;;)
     {
-      if ((this.mGlobalBlackList == null) || (this.mGlobalBlackList.size() <= 0)) {
-        break label160;
-      }
-      if (!isUrlValidInList(paramString, this.mGlobalBlackList))
+      synchronized (this.mLock)
       {
-        ENV.logD("ArkApp.ArkBaseUrlChecker", new Object[] { "ArkSafe.checkURLLoose.not in black list.type=", Integer.valueOf(0), ", url=", ArkUtil.filterKeyForLog(paramString, new String[0]) });
-        return 0;
+        if ((this.mGlobalBlackList != null) && (this.mGlobalBlackList.size() > 0))
+        {
+          if (!isUrlValidInList(paramString, this.mGlobalBlackList))
+          {
+            Logger.logD("ArkApp.ArkBaseUrlChecker", new Object[] { "ArkSafe.checkURLLoose.not in black list.type=", Integer.valueOf(0), ", url=", ArkUtil.filterKeyForLog(paramString, new String[0]) });
+            return 0;
+          }
+          if (!isUrlValidInList(paramString, this.mWhiteList))
+          {
+            i = 1;
+            Logger.logI("ArkApp.ArkBaseUrlChecker", new Object[] { "ArkSafe.checkURLLoose.type=", Integer.valueOf(i), ", url=", ArkUtil.filterKeyForLog(paramString, new String[0]) });
+            return i;
+          }
+        }
       }
-    }
-    if (!isUrlValidInList(paramString, this.mWhiteList)) {}
-    label160:
-    for (int i = 1;; i = 0)
-    {
-      ENV.logI("ArkApp.ArkBaseUrlChecker", new Object[] { "ArkSafe.checkURLLoose.type=", Integer.valueOf(i), ", url=", ArkUtil.filterKeyForLog(paramString, new String[0]) });
-      return i;
+      int i = 0;
     }
   }
   
@@ -264,52 +264,50 @@ public class ArkBaseUrlChecker
   {
     if (TextUtils.isEmpty(paramString))
     {
-      ENV.logE("ArkApp.ArkBaseUrlChecker", "ArkSafe.checkURLStrict return TYPE_VALID for null url");
+      Logger.logE("ArkApp.ArkBaseUrlChecker", "ArkSafe.checkURLStrict return TYPE_VALID for null url");
       return 0;
     }
     for (;;)
     {
-      boolean bool;
       synchronized (this.mLock)
       {
         if ((this.mGlobalBlackList != null) && (this.mGlobalBlackList.size() > 0))
         {
           if (isUrlValidInList(paramString, this.mGlobalBlackList)) {
-            break label234;
+            break label215;
           }
           bool = true;
-          ENV.logD("ArkApp.ArkBaseUrlChecker", new Object[] { "ArkSafe.checkURLStrict.isGlobalBlackValid=", Boolean.valueOf(bool) });
+          Logger.logD("ArkApp.ArkBaseUrlChecker", new Object[] { "ArkSafe.checkURLStrict.isGlobalBlackValid=", Boolean.valueOf(bool) });
           if (!bool)
           {
-            ENV.logI("ArkApp.ArkBaseUrlChecker", new Object[] { "ArkSafe.checkURLStrict.type=", Integer.valueOf(1), ",url=", ArkUtil.filterKeyForLog(paramString, new String[0]) });
+            Logger.logI("ArkApp.ArkBaseUrlChecker", new Object[] { "ArkSafe.checkURLStrict.type=", Integer.valueOf(1), ",url=", ArkUtil.filterKeyForLog(paramString, new String[0]) });
             return 1;
           }
         }
-        if ((this.mGlobalWhiteList == null) || (this.mGlobalWhiteList.size() <= 0) || (!isUrlValidInList(paramString, this.mGlobalWhiteList))) {
-          if (isUrlValidInList(paramString, this.mWhiteList))
-          {
-            break label239;
-            label173:
-            ENV.logI("ArkApp.ArkBaseUrlChecker", new Object[] { "ArkSafe.checkURLStrict.type=", Integer.valueOf(i), ", url=", ArkUtil.filterKeyForLog(paramString, new String[0]) });
-            return i;
-          }
-          else
-          {
-            i = 0;
-          }
+        if ((this.mGlobalWhiteList != null) && (this.mGlobalWhiteList.size() > 0) && (isUrlValidInList(paramString, this.mGlobalWhiteList))) {
+          break label220;
         }
+        if (!isUrlValidInList(paramString, this.mWhiteList)) {
+          break label225;
+        }
+        break label220;
+        Logger.logI("ArkApp.ArkBaseUrlChecker", new Object[] { "ArkSafe.checkURLStrict.type=", Integer.valueOf(i), ", url=", ArkUtil.filterKeyForLog(paramString, new String[0]) });
+        return i;
       }
-      label234:
-      label239:
-      do
-      {
+      label215:
+      boolean bool = false;
+      continue;
+      label220:
+      int i = 1;
+      break label227;
+      label225:
+      i = 0;
+      label227:
+      if (i == 0) {
+        i = 2;
+      } else {
         i = 0;
-        break label173;
-        bool = false;
-        break;
-        i = 1;
-      } while (i != 0);
-      int i = 2;
+      }
     }
   }
   
@@ -321,14 +319,20 @@ public class ArkBaseUrlChecker
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("{");
-    if (this.mWhiteList != null) {
-      localStringBuilder.append("list:").append(this.mWhiteList.toString());
+    if (this.mWhiteList != null)
+    {
+      localStringBuilder.append("list:");
+      localStringBuilder.append(this.mWhiteList.toString());
     }
-    if (this.mGlobalWhiteList != null) {
-      localStringBuilder.append("gloablwhite:").append(this.mGlobalWhiteList.toString());
+    if (this.mGlobalWhiteList != null)
+    {
+      localStringBuilder.append("gloablwhite:");
+      localStringBuilder.append(this.mGlobalWhiteList.toString());
     }
-    if (this.mGlobalBlackList != null) {
-      localStringBuilder.append("gloablblack:").append(this.mGlobalBlackList.toString());
+    if (this.mGlobalBlackList != null)
+    {
+      localStringBuilder.append("gloablblack:");
+      localStringBuilder.append(this.mGlobalBlackList.toString());
     }
     localStringBuilder.append("}");
     return localStringBuilder.toString();

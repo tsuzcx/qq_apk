@@ -80,19 +80,17 @@ public class BizWifiConfigManager
   
   private static String a(String paramString)
   {
-    String str;
     if (TextUtils.isEmpty(paramString)) {
-      str = null;
+      return null;
     }
-    do
-    {
-      return str;
-      if (paramString.charAt(0) != '"') {
-        break;
-      }
-      str = paramString;
-    } while (paramString.charAt(paramString.length() - 1) == '"');
-    return '"' + paramString + '"';
+    if ((paramString.charAt(0) == '"') && (paramString.charAt(paramString.length() - 1) == '"')) {
+      return paramString;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append('"');
+    localStringBuilder.append(paramString);
+    localStringBuilder.append('"');
+    return localStringBuilder.toString();
   }
   
   private static String a(String paramString, int... paramVarArgs)
@@ -105,40 +103,53 @@ public class BizWifiConfigManager
   
   private static boolean a(WifiManager paramWifiManager, WifiConfiguration paramWifiConfiguration)
   {
-    Integer localInteger = a(paramWifiManager, paramWifiConfiguration.SSID);
-    if (localInteger != null)
+    Object localObject = a(paramWifiManager, paramWifiConfiguration.SSID);
+    if (localObject != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BizWifiConfigManager", 2, "Removing old configuration for network " + paramWifiConfiguration.SSID);
-      }
-      paramWifiManager.removeNetwork(localInteger.intValue());
-      if (paramWifiManager.saveConfiguration()) {}
-    }
-    label163:
-    do
-    {
-      do
+      if (QLog.isColorLevel())
       {
-        do
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Removing old configuration for network ");
+        localStringBuilder.append(paramWifiConfiguration.SSID);
+        QLog.d("BizWifiConfigManager", 2, localStringBuilder.toString());
+      }
+      paramWifiManager.removeNetwork(((Integer)localObject).intValue());
+      if (!paramWifiManager.saveConfiguration()) {
+        return false;
+      }
+    }
+    int i = paramWifiManager.addNetwork(paramWifiConfiguration);
+    if (i >= 0)
+    {
+      if (paramWifiManager.enableNetwork(i, true))
+      {
+        if (QLog.isColorLevel())
         {
-          return false;
-          int i = paramWifiManager.addNetwork(paramWifiConfiguration);
-          if (i < 0) {
-            break label163;
-          }
-          if (!paramWifiManager.enableNetwork(i, true)) {
-            break;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("BizWifiConfigManager", 2, "Associating to network " + paramWifiConfiguration.SSID);
-          }
-        } while (!paramWifiManager.saveConfiguration());
-        return true;
-      } while (!QLog.isColorLevel());
-      QLog.d("BizWifiConfigManager", 2, "Failed to enable network " + paramWifiConfiguration.SSID);
-      return false;
-    } while (!QLog.isColorLevel());
-    QLog.d("BizWifiConfigManager", 2, "Unable to add network " + paramWifiConfiguration.SSID);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("Associating to network ");
+          ((StringBuilder)localObject).append(paramWifiConfiguration.SSID);
+          QLog.d("BizWifiConfigManager", 2, ((StringBuilder)localObject).toString());
+        }
+        if (paramWifiManager.saveConfiguration()) {
+          return true;
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        paramWifiManager = new StringBuilder();
+        paramWifiManager.append("Failed to enable network ");
+        paramWifiManager.append(paramWifiConfiguration.SSID);
+        QLog.d("BizWifiConfigManager", 2, paramWifiManager.toString());
+        return false;
+      }
+    }
+    else if (QLog.isColorLevel())
+    {
+      paramWifiManager = new StringBuilder();
+      paramWifiManager.append("Unable to add network ");
+      paramWifiManager.append(paramWifiConfiguration.SSID);
+      QLog.d("BizWifiConfigManager", 2, paramWifiManager.toString());
+    }
     return false;
   }
   
@@ -158,31 +169,25 @@ public class BizWifiConfigManager
   
   private static boolean a(CharSequence paramCharSequence, int... paramVarArgs)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((paramCharSequence == null) || (!jdField_a_of_type_JavaUtilRegexPattern.matcher(paramCharSequence).matches())) {
-      bool1 = false;
-    }
-    do
+    if (paramCharSequence != null)
     {
-      return bool1;
-      bool1 = bool2;
-    } while (paramVarArgs.length == 0);
-    int j = paramVarArgs.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i >= j) {
-        break label72;
+      if (!jdField_a_of_type_JavaUtilRegexPattern.matcher(paramCharSequence).matches()) {
+        return false;
       }
-      int k = paramVarArgs[i];
-      bool1 = bool2;
-      if (paramCharSequence.length() == k) {
-        break;
+      if (paramVarArgs.length == 0) {
+        return true;
       }
-      i += 1;
+      int j = paramVarArgs.length;
+      int i = 0;
+      while (i < j)
+      {
+        int k = paramVarArgs[i];
+        if (paramCharSequence.length() == k) {
+          return true;
+        }
+        i += 1;
+      }
     }
-    label72:
     return false;
   }
   
@@ -233,46 +238,45 @@ public class BizWifiConfigManager
           if (QLog.isColorLevel()) {
             QLog.d("BizWifiConfigManager", 2, "Took too long to enable wi-fi, quitting");
           }
-          label84:
-          do
-          {
-            return false;
-          } while (!QLog.isColorLevel());
-          QLog.d("BizWifiConfigManager", 2, "Wi-fi could not be enabled!");
           return false;
         }
       }
       try
       {
         Thread.sleep(1000L);
-        label109:
+        label92:
         i += 1;
         continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("BizWifiConfigManager", 2, "Wi-fi could not be enabled!");
+        }
+        return false;
         String str = paramWifiParsedResult.c();
-        if ((TextUtils.isEmpty(str)) || (str.equals("nopass"))) {
-          return c(this.jdField_a_of_type_AndroidNetWifiWifiManager, paramWifiParsedResult);
+        if ((!TextUtils.isEmpty(str)) && (!str.equals("nopass")))
+        {
+          if (!TextUtils.isEmpty(paramWifiParsedResult.d()))
+          {
+            if ("WEP".equals(str)) {
+              return a(this.jdField_a_of_type_AndroidNetWifiWifiManager, paramWifiParsedResult);
+            }
+            if ("WPA".equals(str)) {
+              return b(this.jdField_a_of_type_AndroidNetWifiWifiManager, paramWifiParsedResult);
+            }
+          }
+          return false;
         }
-        if (TextUtils.isEmpty(paramWifiParsedResult.d())) {
-          break label84;
-        }
-        if ("WEP".equals(str)) {
-          return a(this.jdField_a_of_type_AndroidNetWifiWifiManager, paramWifiParsedResult);
-        }
-        if (!"WPA".equals(str)) {
-          break label84;
-        }
-        return b(this.jdField_a_of_type_AndroidNetWifiWifiManager, paramWifiParsedResult);
+        return c(this.jdField_a_of_type_AndroidNetWifiWifiManager, paramWifiParsedResult);
       }
       catch (InterruptedException localInterruptedException)
       {
-        break label109;
+        break label92;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.zxing.client.android.wifi.BizWifiConfigManager
  * JD-Core Version:    0.7.0.1
  */

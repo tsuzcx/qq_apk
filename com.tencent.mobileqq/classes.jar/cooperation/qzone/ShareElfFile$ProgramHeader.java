@@ -28,34 +28,38 @@ public class ShareElfFile$ProgramHeader
   
   private ShareElfFile$ProgramHeader(ByteBuffer paramByteBuffer, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      throw new IOException("Unexpected elf class: " + paramInt);
-    case 1: 
-      this.pType = paramByteBuffer.getInt();
-      this.pOffset = paramByteBuffer.getInt();
-      this.pVddr = paramByteBuffer.getInt();
-      this.pPddr = paramByteBuffer.getInt();
-      this.pFileSize = paramByteBuffer.getInt();
-      this.pMemSize = paramByteBuffer.getInt();
-      this.pFlags = paramByteBuffer.getInt();
-      this.pAlign = paramByteBuffer.getInt();
-      return;
+      if (paramInt == 2)
+      {
+        this.pType = paramByteBuffer.getInt();
+        this.pFlags = paramByteBuffer.getInt();
+        this.pOffset = paramByteBuffer.getLong();
+        this.pVddr = paramByteBuffer.getLong();
+        this.pPddr = paramByteBuffer.getLong();
+        this.pFileSize = paramByteBuffer.getLong();
+        this.pMemSize = paramByteBuffer.getLong();
+        this.pAlign = paramByteBuffer.getLong();
+        return;
+      }
+      paramByteBuffer = new StringBuilder();
+      paramByteBuffer.append("Unexpected elf class: ");
+      paramByteBuffer.append(paramInt);
+      throw new IOException(paramByteBuffer.toString());
     }
     this.pType = paramByteBuffer.getInt();
+    this.pOffset = paramByteBuffer.getInt();
+    this.pVddr = paramByteBuffer.getInt();
+    this.pPddr = paramByteBuffer.getInt();
+    this.pFileSize = paramByteBuffer.getInt();
+    this.pMemSize = paramByteBuffer.getInt();
     this.pFlags = paramByteBuffer.getInt();
-    this.pOffset = paramByteBuffer.getLong();
-    this.pVddr = paramByteBuffer.getLong();
-    this.pPddr = paramByteBuffer.getLong();
-    this.pFileSize = paramByteBuffer.getLong();
-    this.pMemSize = paramByteBuffer.getLong();
-    this.pAlign = paramByteBuffer.getLong();
+    this.pAlign = paramByteBuffer.getInt();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.ShareElfFile.ProgramHeader
  * JD-Core Version:    0.7.0.1
  */

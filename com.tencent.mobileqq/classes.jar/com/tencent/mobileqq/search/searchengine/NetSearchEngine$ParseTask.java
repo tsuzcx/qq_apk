@@ -3,6 +3,7 @@ package com.tencent.mobileqq.search.searchengine;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.search.base.engine.ISearchListener;
 import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.pb.profilecard.SummaryCardBusiEntry.comm;
@@ -31,88 +32,92 @@ class NetSearchEngine$ParseTask
   
   private List<ISearchResultGroupModel> a(String paramString, ArrayList<byte[]> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList(12);
-    StringBuilder localStringBuilder = new StringBuilder(paramArrayList.size() * 64);
-    int k = paramArrayList.size();
-    int i = 0;
-    if (i < k)
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
-      Object localObject = (byte[])paramArrayList.get(i);
-      int j;
-      if (localObject == null)
+      ArrayList localArrayList = new ArrayList(12);
+      StringBuilder localStringBuilder = new StringBuilder(paramArrayList.size() * 64);
+      int k = paramArrayList.size();
+      int i = 0;
+      while (i < k)
       {
-        j = 0;
-        label72:
-        if (j > 10) {
-          break label94;
+        Object localObject = (byte[])paramArrayList.get(i);
+        int j;
+        if (localObject == null) {
+          j = 0;
+        } else {
+          j = localObject.length;
         }
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        j = localObject.length;
-        break label72;
-        label94:
-        int n = (int)PkgTools.getLongData((byte[])localObject, 1);
-        int m = (int)PkgTools.getLongData((byte[])localObject, 5);
-        if ((n > 0) && (n + 9 < j))
+        if (j > 10)
         {
-          byte[] arrayOfByte = new byte[n];
-          PkgTools.copyData(arrayOfByte, 0, (byte[])localObject, 9, n);
-          j = n + 9;
-          SummaryCardBusiEntry.comm localcomm = new SummaryCardBusiEntry.comm();
-          try
+          int i1 = (int)PkgTools.getLongData((byte[])localObject, 1);
+          int m = (int)PkgTools.getLongData((byte[])localObject, 5);
+          if (i1 > 0)
           {
-            localcomm.mergeFrom(arrayOfByte);
-            n = localcomm.result.get();
-            if (n != 0) {
-              break label278;
+            int n = 9 + i1;
+            if (n < j)
+            {
+              byte[] arrayOfByte = new byte[i1];
+              PkgTools.copyData(arrayOfByte, 0, (byte[])localObject, 9, i1);
+              SummaryCardBusiEntry.comm localcomm = new SummaryCardBusiEntry.comm();
+              try
+              {
+                localcomm.mergeFrom(arrayOfByte);
+                j = localcomm.result.get();
+                if (j == 0)
+                {
+                  j = localcomm.service.get();
+                  arrayOfByte = new byte[m];
+                  PkgTools.copyData(arrayOfByte, 0, (byte[])localObject, n, m);
+                  localObject = this.this$0.a(paramString, j, localcomm, arrayOfByte);
+                  if ((localObject != null) && (((List)localObject).size() > 0)) {
+                    localArrayList.addAll((Collection)localObject);
+                  }
+                }
+                else
+                {
+                  localStringBuilder.append(" |busi entry, [");
+                  localStringBuilder.append(localcomm.service.get());
+                  localStringBuilder.append(",");
+                  localStringBuilder.append(j);
+                  localStringBuilder.append(",");
+                  localStringBuilder.append(localcomm.err_msg.get());
+                }
+              }
+              catch (Exception localException)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.i("Q.uniteSearch.NetSearchEngine", 2, localException.toString());
+                }
+              }
             }
-            n = localcomm.service.get();
-            arrayOfByte = new byte[m];
-            PkgTools.copyData(arrayOfByte, 0, (byte[])localObject, j, m);
-            localObject = this.this$0.a(paramString, n, localcomm, arrayOfByte);
-            if ((localObject == null) || (((List)localObject).size() <= 0)) {
-              continue;
-            }
-            localArrayList.addAll((Collection)localObject);
-          }
-          catch (Exception localException) {}
-          if (QLog.isColorLevel())
-          {
-            QLog.i("Q.uniteSearch.NetSearchEngine", 2, localException.toString());
-            continue;
-            label278:
-            localStringBuilder.append(" |busi entry, [").append(localcomm.service.get()).append(",").append(n).append(",").append(localcomm.err_msg.get());
           }
         }
+        i += 1;
       }
+      if (QLog.isDevelopLevel()) {
+        QLog.i("Q.uniteSearch.NetSearchEngine", 4, localStringBuilder.toString());
+      }
+      return localArrayList;
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("Q.uniteSearch.NetSearchEngine", 4, localStringBuilder.toString());
-    }
-    return localArrayList;
+    return null;
   }
   
   public void run()
   {
     List localList = a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList);
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject != null)
     {
-      ISearchListener localISearchListener = (ISearchListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localISearchListener != null) {
-        localISearchListener.a(localList, 1);
+      localObject = (ISearchListener)((WeakReference)localObject).get();
+      if (localObject != null) {
+        ((ISearchListener)localObject).a(localList, 1);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.NetSearchEngine.ParseTask
  * JD-Core Version:    0.7.0.1
  */

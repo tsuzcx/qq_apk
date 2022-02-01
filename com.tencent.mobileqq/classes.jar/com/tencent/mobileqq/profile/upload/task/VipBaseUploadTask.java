@@ -72,10 +72,15 @@ public abstract class VipBaseUploadTask
   
   protected int a()
   {
-    if (this.g == null) {}
-    for (String str = "";; str = this.g) {
-      return (str + System.currentTimeMillis()).hashCode();
+    Object localObject2 = this.g;
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = "";
     }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(System.currentTimeMillis());
+    return ((StringBuilder)localObject2).toString().hashCode();
   }
   
   public final Object a()
@@ -90,26 +95,31 @@ public abstract class VipBaseUploadTask
   
   protected void a()
   {
-    if (this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask == null) {
-      throw new NullPointerException("Are you forget call buildTask()?");
-    }
-    if (!a()) {
+    if (this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask != null)
+    {
+      if (!a()) {
+        return;
+      }
+      b();
+      b();
       return;
     }
-    b();
-    b();
+    throw new NullPointerException("Are you forget call buildTask()?");
   }
   
   protected abstract void a(int paramInt, Object... paramVarArgs);
   
   protected boolean a()
   {
-    if ((this.jdField_c_of_type_ArrayOfByte == null) || (this.jdField_b_of_type_ArrayOfByte == null) || (this.jdField_b_of_type_ArrayOfByte.length == 0))
+    if (this.jdField_c_of_type_ArrayOfByte != null)
     {
-      this.jdField_b_of_type_ComTencentUploadUinterfaceIUploadTaskCallback.onUploadError(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask, -3, "invalid login data");
-      return false;
+      byte[] arrayOfByte = this.jdField_b_of_type_ArrayOfByte;
+      if ((arrayOfByte != null) && (arrayOfByte.length != 0)) {
+        return true;
+      }
     }
-    return true;
+    this.jdField_b_of_type_ComTencentUploadUinterfaceIUploadTaskCallback.onUploadError(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask, -3, "invalid login data");
+    return false;
   }
   
   protected void b()
@@ -132,18 +142,18 @@ public abstract class VipBaseUploadTask
       return false;
     }
     File localFile = new File(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask.uploadFilePath);
-    if ((localFile == null) || (!localFile.exists()) || (localFile.length() == 0L) || (localFile.isDirectory()))
+    if ((localFile.exists()) && (localFile.length() != 0L) && (!localFile.isDirectory()))
     {
-      this.jdField_b_of_type_ComTencentUploadUinterfaceIUploadTaskCallback.onUploadError(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask, -2, "file is not exist or empty!");
-      return false;
+      this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask.transferData.put("task_state", "running_task");
+      return UploadServiceBuilder.getInstance().upload(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask);
     }
-    this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask.transferData.put("task_state", "running_task");
-    return UploadServiceBuilder.getInstance().upload(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask);
+    this.jdField_b_of_type_ComTencentUploadUinterfaceIUploadTaskCallback.onUploadError(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask, -2, "file is not exist or empty!");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.upload.task.VipBaseUploadTask
  * JD-Core Version:    0.7.0.1
  */

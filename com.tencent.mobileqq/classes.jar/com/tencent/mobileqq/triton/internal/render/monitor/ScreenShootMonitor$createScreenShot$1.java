@@ -15,20 +15,19 @@ final class ScreenShootMonitor$createScreenShot$1
   
   public final void run()
   {
-    Object localObject = new int[this.$w * this.$h];
+    int i = this.$w;
     int k = this.$h;
-    int i = 0;
+    Object localObject = new int[i * k];
+    i = 0;
     while (i < k)
     {
       int m = this.$w;
       int n = this.$h;
-      int i1 = this.$w;
-      int i2 = this.$w;
       int j = 0;
-      while (j < i2)
+      while (j < m)
       {
-        int i3 = this.$bitmapBuffer[(i * m + j)];
-        localObject[(i1 * (n - i - 1) + j)] = (i3 & 0xFF00FF00 | i3 << 16 & 0xFF0000 | i3 >> 16 & 0xFF);
+        int i1 = this.$bitmapBuffer[(i * m + j)];
+        localObject[((n - i - 1) * m + j)] = (i1 & 0xFF00FF00 | i1 << 16 & 0xFF0000 | i1 >> 16 & 0xFF);
         j += 1;
       }
       i += 1;
@@ -42,7 +41,7 @@ final class ScreenShootMonitor$createScreenShot$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.render.monitor.ScreenShootMonitor.createScreenShot.1
  * JD-Core Version:    0.7.0.1
  */

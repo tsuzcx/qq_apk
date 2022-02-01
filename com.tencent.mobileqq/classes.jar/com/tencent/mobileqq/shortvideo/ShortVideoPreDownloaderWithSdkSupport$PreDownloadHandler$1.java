@@ -10,12 +10,12 @@ class ShortVideoPreDownloaderWithSdkSupport$PreDownloadHandler$1
   public void onSDKInited(boolean paramBoolean)
   {
     ShortVideoPreDownloaderWithSdkSupport.PreDownloadHandler.a(this.a);
-    BaseShortVideoOprerator.a(this.a.a.a, ShortVideoPreDownloaderWithSdkSupport.PreDownloadHandler.a(this.a));
+    BaseSVReceiveOperator.a(this.a.a.a, ShortVideoPreDownloaderWithSdkSupport.PreDownloadHandler.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoPreDownloaderWithSdkSupport.PreDownloadHandler.1
  * JD-Core Version:    0.7.0.1
  */

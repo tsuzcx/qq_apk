@@ -45,46 +45,59 @@ public class ScreenshotObserver
   
   public void onChange(boolean paramBoolean, Uri paramUri)
   {
-    Cursor localCursor;
-    String str;
+    Object localObject1;
+    Object localObject2;
     long l;
     if (paramUri == null)
     {
-      localCursor = this.jdField_a_of_type_AndroidContentContentResolver.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, jdField_a_of_type_ArrayOfJavaLangString, null, null, "date_added DESC");
-      if ((localCursor != null) && (localCursor.moveToFirst()))
+      localObject1 = this.jdField_a_of_type_AndroidContentContentResolver.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, jdField_a_of_type_ArrayOfJavaLangString, null, null, "date_added DESC");
+      if ((localObject1 != null) && (((Cursor)localObject1).moveToFirst()))
       {
-        str = localCursor.getString(localCursor.getColumnIndex("_data"));
-        l = localCursor.getLong(localCursor.getColumnIndex("date_added"));
-        if ((Math.abs(System.currentTimeMillis() / 1000L - l) <= 3L) && (str.toLowerCase().contains("screenshot")) && (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScreenshotObserver$Listener != null)) {
-          this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScreenshotObserver$Listener.a(paramUri);
+        localObject2 = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndex("_data"));
+        l = ((Cursor)localObject1).getLong(((Cursor)localObject1).getColumnIndex("date_added"));
+        if ((Math.abs(System.currentTimeMillis() / 1000L - l) <= 3L) && (((String)localObject2).toLowerCase().contains("screenshot")))
+        {
+          localObject2 = this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScreenshotObserver$Listener;
+          if (localObject2 != null) {
+            ((ScreenshotObserver.Listener)localObject2).a(paramUri);
+          }
         }
       }
-      if (localCursor != null) {
-        localCursor.close();
+      if (localObject1 != null) {
+        ((Cursor)localObject1).close();
       }
     }
-    do
+    else
     {
-      do
+      localObject1 = paramUri.toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append("/\\d+");
+      if (((String)localObject1).matches(((StringBuilder)localObject2).toString()))
       {
-        return;
-      } while (!paramUri.toString().matches(jdField_a_of_type_JavaLangString + "/\\d+"));
-      localCursor = this.jdField_a_of_type_AndroidContentContentResolver.query(paramUri, jdField_a_of_type_ArrayOfJavaLangString, null, null, null);
-      if ((localCursor != null) && (localCursor.moveToFirst()))
-      {
-        str = localCursor.getString(localCursor.getColumnIndex("_data"));
-        l = localCursor.getLong(localCursor.getColumnIndex("date_added"));
-        if ((Math.abs(System.currentTimeMillis() / 1000L - l) <= 3L) && (str.toLowerCase().contains("screenshot")) && (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScreenshotObserver$Listener != null)) {
-          this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScreenshotObserver$Listener.a(paramUri);
+        localObject1 = this.jdField_a_of_type_AndroidContentContentResolver.query(paramUri, jdField_a_of_type_ArrayOfJavaLangString, null, null, null);
+        if ((localObject1 != null) && (((Cursor)localObject1).moveToFirst()))
+        {
+          localObject2 = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndex("_data"));
+          l = ((Cursor)localObject1).getLong(((Cursor)localObject1).getColumnIndex("date_added"));
+          if ((Math.abs(System.currentTimeMillis() / 1000L - l) <= 3L) && (((String)localObject2).toLowerCase().contains("screenshot")))
+          {
+            localObject2 = this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScreenshotObserver$Listener;
+            if (localObject2 != null) {
+              ((ScreenshotObserver.Listener)localObject2).a(paramUri);
+            }
+          }
+        }
+        if (localObject1 != null) {
+          ((Cursor)localObject1).close();
         }
       }
-    } while (localCursor == null);
-    localCursor.close();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.ScreenshotObserver
  * JD-Core Version:    0.7.0.1
  */

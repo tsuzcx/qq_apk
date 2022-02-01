@@ -9,24 +9,26 @@ class ChatHistoryC2CFileFragment$2
 {
   public int compare(Object paramObject1, Object paramObject2)
   {
-    if ((paramObject2 instanceof FileManagerEntity)) {
-      if (((FileManagerEntity)paramObject1).srvTime <= ((FileManagerEntity)paramObject2).srvTime) {}
-    }
-    do
+    if ((paramObject2 instanceof FileManagerEntity))
     {
-      return -1;
-      return 1;
-      if (!(paramObject2 instanceof TencentDocData)) {
-        break;
+      if (((FileManagerEntity)paramObject1).srvTime > ((FileManagerEntity)paramObject2).srvTime) {
+        return -1;
       }
-    } while (((FileManagerEntity)paramObject1).srvTime > ((TencentDocData)paramObject2).aioTime);
-    return 1;
+      return 1;
+    }
+    if ((paramObject2 instanceof TencentDocData))
+    {
+      if (((FileManagerEntity)paramObject1).srvTime > ((TencentDocData)paramObject2).aioTime) {
+        return -1;
+      }
+      return 1;
+    }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -8,15 +8,15 @@ final class GGMM$1
   public Pair<String, String> a(String paramString)
   {
     paramString = paramString.split(":", 2);
-    if ((paramString == null) || (paramString.length < 2)) {
-      return null;
+    if ((paramString != null) && (paramString.length >= 2)) {
+      return new Pair(paramString[0].trim(), paramString[1].trim());
     }
-    return new Pair(paramString[0].trim(), paramString[1].trim());
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.GGMM.1
  * JD-Core Version:    0.7.0.1
  */

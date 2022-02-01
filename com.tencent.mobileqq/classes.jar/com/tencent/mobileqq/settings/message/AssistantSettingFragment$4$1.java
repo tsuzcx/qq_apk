@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.settings.message;
 
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.qassistant.wake.WakeServiceCallBack;
 
 class AssistantSettingFragment$4$1
@@ -10,12 +10,12 @@ class AssistantSettingFragment$4$1
   
   public void a(boolean paramBoolean)
   {
-    this.a.a.getActivity().runOnUiThread(new AssistantSettingFragment.4.1.1(this, paramBoolean));
+    this.a.a.getBaseActivity().runOnUiThread(new AssistantSettingFragment.4.1.1(this, paramBoolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.AssistantSettingFragment.4.1
  * JD-Core Version:    0.7.0.1
  */

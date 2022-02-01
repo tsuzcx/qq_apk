@@ -21,7 +21,7 @@ public class MiniAppAddPhoneNumberServlet
     INTERFACE.StAddPhoneNumberRsp localStAddPhoneNumberRsp = new INTERFACE.StAddPhoneNumberRsp();
     long l = paramBundle.getLong("retCode");
     String str = paramBundle.getString("errMsg");
-    if ((localStAddPhoneNumberRsp != null) && (l == 0L))
+    if (l == 0L)
     {
       localStAddPhoneNumberRsp.mergeFrom(paramArrayOfByte);
       paramBundle.putString("encryptedData", localStAddPhoneNumberRsp.encryptedData.get());
@@ -30,7 +30,12 @@ public class MiniAppAddPhoneNumberServlet
       return;
     }
     notifyObserver(paramIntent, 1073, false, paramBundle, MiniAppObserver.class);
-    QLog.e("MiniAppAbstractServlet", 1, "MiniAppAddPhoneNumberServlet retCode : " + l + "; errMsg : " + str);
+    paramIntent = new StringBuilder();
+    paramIntent.append("MiniAppAddPhoneNumberServlet retCode : ");
+    paramIntent.append(l);
+    paramIntent.append("; errMsg : ");
+    paramIntent.append(str);
+    QLog.e("MiniAppAbstractServlet", 1, paramIntent.toString());
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -54,7 +59,7 @@ public class MiniAppAddPhoneNumberServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppAddPhoneNumberServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -46,32 +46,32 @@ public class Interactive3DRenderable
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_Interactive3DRenderable", 2, "setNativeState, mCurState=" + this.jdField_a_of_type_Int + ", new State=" + paramInt);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setNativeState, mCurState=");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(", new State=");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("AREngine_Interactive3DRenderable", 2, ((StringBuilder)localObject).toString());
     }
     this.jdField_a_of_type_Int = paramInt;
+    if (paramInt != 2) {}
     switch (paramInt)
     {
-    case 3: 
-    case 4: 
-    case 5: 
-    case 11: 
     default: 
-      return;
-    case 2: 
-      ARGLSurfaceView.nativeSetLogLevel(QLog.getUIN_REPORTLOG_LEVEL());
-      this.b = this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.getIndentification();
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeCreateEngineBusiness(this.b, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DResourceInfo.b, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getAssets(), this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DResourceInfo.c, this.d, this.e, 100);
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.setupActionCallback(this);
-      a(7);
-      return;
-    case 6: 
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeonSurfaceChanged(this.b, this.d, this.e);
-      return;
-    case 7: 
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeResume(this.b);
-      this.c = 0;
-      a(11);
+    case 10: 
+      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeDestroyCertainEngine(this.b);
+      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.setupActionCallback(null);
+      this.b = 0;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqArARMusicController;
+      if (localObject != null)
+      {
+        ((ARMusicController)localObject).b();
+        this.jdField_a_of_type_ComTencentMobileqqArARMusicController.c();
+      }
+      this.jdField_a_of_type_Int = 1;
       return;
     case 9: 
       this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new Interactive3DRenderable.1(this));
@@ -79,16 +79,24 @@ public class Interactive3DRenderable
     case 8: 
       this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativePause(this.b);
       return;
+    case 7: 
+      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeResume(this.b);
+      this.c = 0;
+      a(11);
+      return;
+    case 6: 
+      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeonSurfaceChanged(this.b, this.d, this.e);
+      return;
+      ARGLSurfaceView.nativeSetLogLevel(QLog.getUIN_REPORTLOG_LEVEL());
+      this.b = this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.getIndentification();
+      localObject = this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge;
+      long l = this.b;
+      String str = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DResourceInfo.b;
+      Context localContext = this.jdField_a_of_type_AndroidContentContext;
+      ((ARNativeBridge)localObject).nativeCreateEngineBusiness(l, str, localContext, localContext.getAssets(), this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DResourceInfo.c, this.d, this.e, 100);
+      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.setupActionCallback(this);
+      a(7);
     }
-    this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeDestroyCertainEngine(this.b);
-    this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.setupActionCallback(null);
-    this.b = 0;
-    if (this.jdField_a_of_type_ComTencentMobileqqArARMusicController != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArARMusicController.b();
-      this.jdField_a_of_type_ComTencentMobileqqArARMusicController.c();
-    }
-    this.jdField_a_of_type_Int = 1;
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -104,8 +112,12 @@ public class Interactive3DRenderable
   
   public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_Interactive3DRenderable", 2, "playEffectMusic, " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("playEffectMusic, ");
+      localStringBuilder.append(paramString);
+      QLog.d("AREngine_Interactive3DRenderable", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new Interactive3DRenderable.10(this, paramString));
   }
@@ -117,8 +129,12 @@ public class Interactive3DRenderable
   
   public void b(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_Interactive3DRenderable", 2, "playBgMusic, " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("playBgMusic, ");
+      localStringBuilder.append(paramString);
+      QLog.d("AREngine_Interactive3DRenderable", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new Interactive3DRenderable.11(this, paramString));
   }
@@ -142,39 +158,61 @@ public class Interactive3DRenderable
   
   public void callback(int paramInt1, String paramString1, int paramInt2, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_Interactive3DRenderable", 2, "fNativeDoActionCallback action=" + paramInt1 + ", params=" + paramString1 + ", callbackId=" + paramInt2 + ", result=" + paramString2);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback == null) {}
-    do
+    if (QLog.isColorLevel())
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("fNativeDoActionCallback action=");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(", params=");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", callbackId=");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(", result=");
+      localStringBuilder.append(paramString2);
+      QLog.d("AREngine_Interactive3DRenderable", 2, localStringBuilder.toString());
+    }
+    paramString1 = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback;
+    if (paramString1 == null) {
       return;
+    }
+    if (paramInt1 != 100) {}
+    switch (paramInt1)
+    {
+    default: 
       switch (paramInt1)
       {
-      case 57: 
       default: 
-        this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(this, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DResourceInfo.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, paramInt1, 0, paramString2);
+        paramString1.a(this, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DResourceInfo.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, paramInt1, 0, paramString2);
+        return;
+      case 64: 
+        b("res/music/gameend_background.mp3");
+        return;
+      case 63: 
+        a("res/music/aimed.mp3");
+        return;
+      case 62: 
+        a("res/music/redpack_get.mp3");
         return;
       }
-    } while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 300L);
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    a("res/music/fudai_click.mp3");
-    return;
-    a("res/music/fudai_explode.mp3");
-    return;
-    a("res/music/fudai_appear.mp3");
-    b("res/music/fudai_background.mp3");
-    return;
-    b("res/music/gameing_background.mp3");
-    return;
-    b("res/music/gameend_background.mp3");
-    return;
-    a("res/music/redpack_get.mp3");
-    return;
-    a("res/music/aimed.mp3");
-    return;
-    this.g += 1;
-    this.f += paramInt2;
+      b("res/music/gameing_background.mp3");
+      return;
+    case 59: 
+      a("res/music/fudai_explode.mp3");
+      return;
+    case 58: 
+      if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 300L) {
+        return;
+      }
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      a("res/music/fudai_click.mp3");
+      return;
+    case 56: 
+      a("res/music/fudai_appear.mp3");
+      b("res/music/fudai_background.mp3");
+      return;
+      this.g += 1;
+      this.f += paramInt2;
+    }
   }
   
   public void d()
@@ -184,24 +222,57 @@ public class Interactive3DRenderable
     }
     if (1 == this.jdField_a_of_type_Int)
     {
-      String str = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DResourceInfo.c;
-      this.jdField_a_of_type_JavaLangString = str;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DResourceInfo.c;
+      this.jdField_a_of_type_JavaLangString = ((String)localObject);
       this.jdField_a_of_type_ArrayOfJavaLangString = new String[8];
-      this.jdField_a_of_type_ArrayOfJavaLangString[0] = (str + "res/music/loading.mp3");
-      this.jdField_a_of_type_ArrayOfJavaLangString[1] = (str + "res/music/321ready.mp3");
-      this.jdField_a_of_type_ArrayOfJavaLangString[2] = (str + "res/music/redpack_open.mp3");
-      this.jdField_a_of_type_ArrayOfJavaLangString[3] = (str + "res/music/fudai_click.mp3");
-      this.jdField_a_of_type_ArrayOfJavaLangString[4] = (str + "res/music/fudai_explode.mp3");
-      this.jdField_a_of_type_ArrayOfJavaLangString[5] = (str + "res/music/fudai_appear.mp3");
-      this.jdField_a_of_type_ArrayOfJavaLangString[6] = (str + "res/music/redpack_get.mp3");
-      this.jdField_a_of_type_ArrayOfJavaLangString[7] = (str + "res/music/aimed.mp3");
+      String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("res/music/loading.mp3");
+      arrayOfString[0] = localStringBuilder.toString();
+      arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("res/music/321ready.mp3");
+      arrayOfString[1] = localStringBuilder.toString();
+      arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("res/music/redpack_open.mp3");
+      arrayOfString[2] = localStringBuilder.toString();
+      arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("res/music/fudai_click.mp3");
+      arrayOfString[3] = localStringBuilder.toString();
+      arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("res/music/fudai_explode.mp3");
+      arrayOfString[4] = localStringBuilder.toString();
+      arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("res/music/fudai_appear.mp3");
+      arrayOfString[5] = localStringBuilder.toString();
+      arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("res/music/redpack_get.mp3");
+      arrayOfString[6] = localStringBuilder.toString();
+      arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("res/music/aimed.mp3");
+      arrayOfString[7] = localStringBuilder.toString();
       this.jdField_a_of_type_ComTencentMobileqqArARMusicController = new ARMusicController(1, this.jdField_a_of_type_ArrayOfJavaLangString);
       a(2);
       this.g = 0;
       this.f = 0;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(this, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DResourceInfo.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, 100, 0, null);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback;
+    if (localObject != null) {
+      ((ARRenderMangerInnerCallback)localObject).a(this, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DResourceInfo.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, 100, 0, null);
     }
   }
   
@@ -229,43 +300,58 @@ public class Interactive3DRenderable
   
   public void f()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_Interactive3DRenderable", 2, "onDestroy, " + this);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDestroy, ");
+      ((StringBuilder)localObject).append(this);
+      QLog.d("AREngine_Interactive3DRenderable", 2, ((StringBuilder)localObject).toString());
     }
     if (this.jdField_a_of_type_Int == 9)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AREngine_Interactive3DRenderable", 2, "onDestroy, queueEvent, " + this);
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback != null) && (this.jdField_a_of_type_Boolean == true))
+      if (QLog.isColorLevel())
       {
-        this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.b(1, 0);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onDestroy, queueEvent, ");
+        ((StringBuilder)localObject).append(this);
+        QLog.d("AREngine_Interactive3DRenderable", 2, ((StringBuilder)localObject).toString());
+      }
+      localObject = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback;
+      if ((localObject != null) && (this.jdField_a_of_type_Boolean == true))
+      {
+        ((ARRenderMangerInnerCallback)localObject).b(1, 0);
         this.jdField_a_of_type_Boolean = false;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback != null)
+      localObject = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback;
+      if (localObject != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DResourceInfo.jdField_a_of_type_JavaLangString);
-        QLog.d("AREngine_Interactive3DRenderable", 2, "onDestroy, remove hsRender here, " + this);
+        ((ARRenderMangerInnerCallback)localObject).a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DResourceInfo.jdField_a_of_type_JavaLangString);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onDestroy, remove hsRender here, ");
+        ((StringBuilder)localObject).append(this);
+        QLog.d("AREngine_Interactive3DRenderable", 2, ((StringBuilder)localObject).toString());
         this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(this, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DResourceInfo.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, 101, 0, null);
       }
       if (this.jdField_a_of_type_Int == 9) {
         a(10);
       }
     }
-    if (this.g > 0)
+    int i = this.g;
+    if (i > 0)
     {
-      float f1 = this.f * 1.0F / this.g;
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("fps_total", String.valueOf(this.f));
-      localHashMap.put("fps_count", String.valueOf(this.g));
-      localHashMap.put("fps_avg", String.format(Locale.getDefault(), "%.1f", new Object[] { Float.valueOf(f1) }));
-      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(BaseActivity.sTopActivity.getCurrentAccountUin(), "binhai_fps", true, 0L, 0L, localHashMap, "", false);
+      float f1 = this.f * 1.0F / i;
+      localObject = new HashMap();
+      ((HashMap)localObject).put("fps_total", String.valueOf(this.f));
+      ((HashMap)localObject).put("fps_count", String.valueOf(this.g));
+      ((HashMap)localObject).put("fps_avg", String.format(Locale.getDefault(), "%.1f", new Object[] { Float.valueOf(f1) }));
+      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(BaseActivity.sTopActivity.getCurrentAccountUin(), "binhai_fps", true, 0L, 0L, (HashMap)localObject, "", false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable
  * JD-Core Version:    0.7.0.1
  */

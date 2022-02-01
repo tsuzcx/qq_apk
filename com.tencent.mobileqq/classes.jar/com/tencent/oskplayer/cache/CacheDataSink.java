@@ -36,18 +36,25 @@ public class CacheDataSink
   
   private void closeCurrentOutputStream()
   {
-    if (this.outputStream == null)
+    Object localObject1 = this.outputStream;
+    if (localObject1 == null)
     {
       PlayerUtils.log(4, getLogTag(), "finish cache: outputStream == null");
       return;
     }
     try
     {
-      this.outputStream.flush();
+      ((BufferedOutputStream)localObject1).flush();
       this.fileOutputStream.getFD().sync();
       closeQuietly(this.outputStream);
       commitFile();
-      PlayerUtils.log(4, getLogTag(), "finish cache " + this.file.getAbsolutePath() + "  filesize=" + this.file.length());
+      localObject1 = getLogTag();
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("finish cache ");
+      ((StringBuilder)localObject3).append(this.file.getAbsolutePath());
+      ((StringBuilder)localObject3).append("  filesize=");
+      ((StringBuilder)localObject3).append(this.file.length());
+      PlayerUtils.log(4, (String)localObject1, ((StringBuilder)localObject3).toString());
       this.fileOutputStream = null;
       this.outputStream = null;
       this.file = null;
@@ -57,7 +64,11 @@ public class CacheDataSink
     {
       closeQuietly(this.outputStream);
       this.file.delete();
-      PlayerUtils.log(6, getLogTag(), "closeCurrentOutputStream failed: " + this.file.getAbsolutePath());
+      Object localObject3 = getLogTag();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("closeCurrentOutputStream failed: ");
+      localStringBuilder.append(this.file.getAbsolutePath());
+      PlayerUtils.log(6, (String)localObject3, localStringBuilder.toString());
       this.fileOutputStream = null;
       this.outputStream = null;
       this.file = null;
@@ -79,7 +90,11 @@ public class CacheDataSink
     try
     {
       closeCurrentOutputStream();
-      PlayerUtils.log(4, getLogTag(), "close " + String.format("total cached %d bytes", new Object[] { Long.valueOf(this.dataSpecBytesWritten) }));
+      String str = getLogTag();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("close ");
+      localStringBuilder.append(String.format("total cached %d bytes", new Object[] { Long.valueOf(this.dataSpecBytesWritten) }));
+      PlayerUtils.log(4, str, localStringBuilder.toString());
       return;
     }
     catch (IOException localIOException)
@@ -95,35 +110,44 @@ public class CacheDataSink
   
   public String getLogTag()
   {
-    return this.extraLogTag + this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.extraLogTag);
+    localStringBuilder.append(this.TAG);
+    return localStringBuilder.toString();
   }
   
   public DataSink open(DataSpec paramDataSpec, long paramLong, FileType paramFileType)
   {
-    if (paramDataSpec.length != -1L) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (paramDataSpec.length != -1L) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    Assertions.checkState(bool);
+    this.totalLength = paramLong;
+    this.fileType = paramFileType;
+    try
     {
-      Assertions.checkState(bool);
-      this.totalLength = paramLong;
-      this.fileType = paramFileType;
-      try
-      {
-        this.dataSpec = paramDataSpec;
-        this.dataSpecBytesWritten = 0L;
-        openNextOutputStream();
-        return this;
-      }
-      catch (IOException paramDataSpec)
-      {
-        throw new CacheDataSink.CacheDataSinkException(paramDataSpec);
-      }
+      this.dataSpec = paramDataSpec;
+      this.dataSpecBytesWritten = 0L;
+      openNextOutputStream();
+      return this;
+    }
+    catch (IOException paramDataSpec)
+    {
+      throw new CacheDataSink.CacheDataSinkException(paramDataSpec);
     }
   }
   
   protected void openNextOutputStream()
   {
     startFile();
-    PlayerUtils.log(4, getLogTag(), "start cache " + this.file.getAbsolutePath());
+    String str = getLogTag();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("start cache ");
+    localStringBuilder.append(this.file.getAbsolutePath());
+    PlayerUtils.log(4, str, localStringBuilder.toString());
     this.fileOutputStream = new FileOutputStream(this.file);
     this.outputStream = new BufferedOutputStream(this.fileOutputStream);
     this.outputStreamBytesWritten = 0L;
@@ -153,8 +177,10 @@ public class CacheDataSink
         int j = (int)Math.min(paramInt2 - i, this.maxCacheFileSize - this.outputStreamBytesWritten);
         this.outputStream.write(paramArrayOfByte, paramInt1 + i, j);
         i += j;
-        this.outputStreamBytesWritten += j;
-        this.dataSpecBytesWritten += j;
+        long l1 = this.outputStreamBytesWritten;
+        long l2 = j;
+        this.outputStreamBytesWritten = (l1 + l2);
+        this.dataSpecBytesWritten += l2;
       }
       catch (IOException paramArrayOfByte)
       {
@@ -165,7 +191,7 @@ public class CacheDataSink
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.cache.CacheDataSink
  * JD-Core Version:    0.7.0.1
  */

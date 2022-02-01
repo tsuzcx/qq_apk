@@ -9,7 +9,12 @@ class WSExpPolicyManager$2
   
   public void a(int paramInt, String paramString)
   {
-    WSLog.d("WSExpPolicyManager", "[WSExpPolicyManager.java][onGetExperimentFailed] errorCode:" + paramInt + ", errMsg:" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSExpPolicyManager.java][onGetExperimentFailed] errorCode:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", errMsg:");
+    localStringBuilder.append(paramString);
+    WSLog.d("WSExpPolicyManager", localStringBuilder.toString());
   }
   
   public void a(WSExpPolicyEntities paramWSExpPolicyEntities)
@@ -22,7 +27,7 @@ class WSExpPolicyManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.config.experiment.WSExpPolicyManager.2
  * JD-Core Version:    0.7.0.1
  */

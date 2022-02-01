@@ -83,44 +83,37 @@ public class HotChatPostItemView
   
   public static Bitmap a(Bitmap paramBitmap, float paramFloat)
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    if (paramBitmap == null) {}
-    do
+    Object localObject = null;
+    if (paramBitmap == null) {
+      return null;
+    }
+    try
     {
-      return localObject2;
-      try
-      {
-        localObject2 = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-        localObject1 = localObject2;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        for (;;)
-        {
-          Paint localPaint;
-          Rect localRect;
-          RectF localRectF;
-          localOutOfMemoryError.printStackTrace();
-        }
-      }
-      localObject2 = localObject1;
-    } while (localObject1 == null);
-    localObject2 = new Canvas(localObject1);
-    localPaint = new Paint();
-    localRect = new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
-    localRectF = new RectF(localRect);
-    localPaint.setAntiAlias(true);
-    ((Canvas)localObject2).drawRoundRect(localRectF, paramFloat, paramFloat, localPaint);
-    localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-    ((Canvas)localObject2).drawBitmap(paramBitmap, localRect, localRect, localPaint);
-    return localObject1;
+      Bitmap localBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+      localObject = localBitmap;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      localOutOfMemoryError.printStackTrace();
+    }
+    if (localObject != null)
+    {
+      Canvas localCanvas = new Canvas(localObject);
+      Paint localPaint = new Paint();
+      Rect localRect = new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
+      RectF localRectF = new RectF(localRect);
+      localPaint.setAntiAlias(true);
+      localCanvas.drawRoundRect(localRectF, paramFloat, paramFloat, localPaint);
+      localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+      localCanvas.drawBitmap(paramBitmap, localRect, localRect, localPaint);
+    }
+    return localObject;
   }
   
   public static Bitmap a(Drawable paramDrawable)
   {
     Canvas localCanvas = null;
-    localObject = localCanvas;
+    Object localObject = localCanvas;
     try
     {
       Drawable localDrawable = paramDrawable.getConstantState().newDrawable();
@@ -129,136 +122,128 @@ public class HotChatPostItemView
       localObject = localCanvas;
       int j = localDrawable.getIntrinsicHeight();
       localObject = localCanvas;
-      if (localDrawable.getOpacity() != -1) {
-        localObject = localCanvas;
-      }
-      for (paramDrawable = Bitmap.Config.ARGB_8888;; paramDrawable = Bitmap.Config.RGB_565)
+      if (localDrawable.getOpacity() != -1)
       {
         localObject = localCanvas;
-        paramDrawable = Bitmap.createBitmap(i, j, paramDrawable);
-        localObject = paramDrawable;
-        localCanvas = new Canvas(paramDrawable);
-        localObject = paramDrawable;
-        localDrawable.setBounds(0, 0, i, j);
-        localObject = paramDrawable;
-        localDrawable.draw(localCanvas);
-        return paramDrawable;
-        localObject = localCanvas;
+        paramDrawable = Bitmap.Config.ARGB_8888;
       }
-      return localObject;
+      else
+      {
+        localObject = localCanvas;
+        paramDrawable = Bitmap.Config.RGB_565;
+      }
+      localObject = localCanvas;
+      paramDrawable = Bitmap.createBitmap(i, j, paramDrawable);
+      localObject = paramDrawable;
+      localCanvas = new Canvas(paramDrawable);
+      localObject = paramDrawable;
+      localDrawable.setBounds(0, 0, i, j);
+      localObject = paramDrawable;
+      localDrawable.draw(localCanvas);
+      return paramDrawable;
     }
     catch (OutOfMemoryError paramDrawable)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("HotChatPostItemViewQ.hotchat.aio_post_list_req", 2, "drawableToBitamp, OutOfMemoryError");
-      }
-      jdField_a_of_type_JavaUtilQueue.clear();
-      jdField_a_of_type_JavaUtilHashMap.clear();
+      label106:
+      break label106;
     }
+    if (QLog.isColorLevel()) {
+      QLog.e("HotChatPostItemViewQ.hotchat.aio_post_list_req", 2, "drawableToBitamp, OutOfMemoryError");
+    }
+    jdField_a_of_type_JavaUtilQueue.clear();
+    jdField_a_of_type_JavaUtilHashMap.clear();
+    return localObject;
   }
   
-  /* Error */
   private static Bitmap a(String paramString)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 37	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_JavaUtilQueue	Ljava/util/Queue;
-    //   6: aload_0
-    //   7: invokeinterface 180 2 0
-    //   12: ifeq +29 -> 41
-    //   15: getstatic 32	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   18: aload_0
-    //   19: invokevirtual 183	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
-    //   22: ifeq +19 -> 41
-    //   25: getstatic 32	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   28: aload_0
-    //   29: invokevirtual 187	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   32: checkcast 59	android/graphics/Bitmap
-    //   35: astore_0
-    //   36: ldc 2
-    //   38: monitorexit
-    //   39: aload_0
-    //   40: areturn
-    //   41: aconst_null
-    //   42: astore_0
-    //   43: goto -7 -> 36
-    //   46: astore_0
-    //   47: ldc 2
-    //   49: monitorexit
-    //   50: aload_0
-    //   51: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	52	0	paramString	String
-    // Exception table:
-    //   from	to	target	type
-    //   3	36	46	finally
+    try
+    {
+      if ((jdField_a_of_type_JavaUtilQueue.contains(paramString)) && (jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)))
+      {
+        paramString = (Bitmap)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        return paramString;
+      }
+      return null;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
   }
   
   public static Drawable a(Drawable paramDrawable, float paramFloat)
   {
-    Object localObject;
     if (paramDrawable == null) {
-      localObject = null;
+      return null;
     }
-    do
-    {
-      return localObject;
-      localObject = paramDrawable;
-    } while (paramFloat <= 0.0F);
-    for (;;)
-    {
-      try
-      {
-        int i = paramDrawable.getIntrinsicWidth();
-        int j = paramDrawable.getIntrinsicHeight();
-        if (paramDrawable.getOpacity() != -1)
-        {
-          localObject = Bitmap.Config.ARGB_8888;
-          localObject = Bitmap.createBitmap(i, j, (Bitmap.Config)localObject);
-          Canvas localCanvas = new Canvas((Bitmap)localObject);
-          paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight());
-          paramDrawable.draw(localCanvas);
-          paramDrawable = new BitmapDrawable(a((Bitmap)localObject, paramFloat));
-          return paramDrawable;
-        }
-      }
-      catch (OutOfMemoryError paramDrawable)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("HotChatPostItemViewQ.hotchat.aio_post_list_req", 2, "round, OutOfMemoryError");
-        }
-        return null;
-      }
-      localObject = Bitmap.Config.RGB_565;
+    if (paramFloat <= 0.0F) {
+      return paramDrawable;
     }
+    try
+    {
+      int i = paramDrawable.getIntrinsicWidth();
+      int j = paramDrawable.getIntrinsicHeight();
+      if (paramDrawable.getOpacity() != -1) {
+        localObject = Bitmap.Config.ARGB_8888;
+      } else {
+        localObject = Bitmap.Config.RGB_565;
+      }
+      Object localObject = Bitmap.createBitmap(i, j, (Bitmap.Config)localObject);
+      Canvas localCanvas = new Canvas((Bitmap)localObject);
+      paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight());
+      paramDrawable.draw(localCanvas);
+      paramDrawable = new BitmapDrawable(a((Bitmap)localObject, paramFloat));
+      return paramDrawable;
+    }
+    catch (OutOfMemoryError paramDrawable)
+    {
+      label101:
+      break label101;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("HotChatPostItemViewQ.hotchat.aio_post_list_req", 2, "round, OutOfMemoryError");
+    }
+    return null;
   }
   
   private String a(long paramLong)
   {
-    Calendar localCalendar = Calendar.getInstance();
+    Object localObject = Calendar.getInstance();
     Date localDate = new Date(paramLong);
-    localCalendar.setTime(localDate);
+    ((Calendar)localObject).setTime(localDate);
     Calendar.getInstance().setTimeInMillis(this.jdField_a_of_type_Long);
     paramLong = this.jdField_a_of_type_Long - paramLong;
     if (paramLong <= 59L) {
-      return HardCodeUtil.a(2131705603);
+      return HardCodeUtil.a(2131705669);
     }
     if (paramLong <= 60L) {
       return "1分钟前";
     }
-    if (paramLong < 3600L) {
-      return (int)Math.floor(paramLong / 60L) + HardCodeUtil.a(2131705595);
+    if (paramLong < 3600L)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append((int)Math.floor(paramLong / 60L));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131705661));
+      return ((StringBuilder)localObject).toString();
     }
-    if (paramLong < 86400L) {
-      return (int)Math.floor(paramLong / 3600L) + HardCodeUtil.a(2131705591);
+    if (paramLong < 86400L)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append((int)Math.floor(paramLong / 3600L));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131705657));
+      return ((StringBuilder)localObject).toString();
     }
     if ((paramLong >= 86400L) && (paramLong < 172800L)) {
-      return HardCodeUtil.a(2131705612);
+      return HardCodeUtil.a(2131705678);
     }
-    if (paramLong < 2592000L) {
-      return (int)Math.ceil(paramLong / 86400L) + HardCodeUtil.a(2131705602);
+    if (paramLong < 2592000L)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append((int)Math.ceil(paramLong / 86400L));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131705668));
+      return ((StringBuilder)localObject).toString();
     }
     if ((paramLong >= 2592000L) && (paramLong < 31104000L)) {
       return new SimpleDateFormat("MM-dd").format(localDate);
@@ -285,57 +270,60 @@ public class HotChatPostItemView
     if (paramImageView == null) {
       return;
     }
-    Object localObject;
-    URLDrawable localURLDrawable;
     try
     {
-      localObject = "Dalvik/1.6.0 (Linux; U; Android " + Build.VERSION.RELEASE + "; " + Build.MODEL + ")";
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Dalvik/1.6.0 (Linux; U; Android ");
+      ((StringBuilder)localObject1).append(Build.VERSION.RELEASE);
+      ((StringBuilder)localObject1).append("; ");
+      ((StringBuilder)localObject1).append(Build.MODEL);
+      ((StringBuilder)localObject1).append(")");
+      Object localObject2 = ((StringBuilder)localObject1).toString();
       new URL(paramString);
-      if (paramInt5 <= 0) {
-        break label128;
+      if (paramInt5 > 0) {
+        localObject1 = URLDrawable.getDrawable(paramString, paramInt5, paramInt5 * 2 / 3);
+      } else {
+        localObject1 = URLDrawable.getDrawable(paramString);
       }
-      localURLDrawable = URLDrawable.getDrawable(paramString, paramInt5, paramInt5 * 2 / 3);
+      ((URLDrawable)localObject1).addHeader("User-Agent", (String)localObject2);
+      if (((URLDrawable)localObject1).isDownloadStarted())
+      {
+        localObject2 = a(paramString);
+        if (localObject2 != null)
+        {
+          paramImageView.setImageBitmap((Bitmap)localObject2);
+          return;
+        }
+        paramImageView.setImageDrawable(a((Drawable)localObject1, paramFloat));
+      }
+      else
+      {
+        localObject2 = a(paramString);
+        if (localObject2 != null)
+        {
+          paramImageView.setImageBitmap((Bitmap)localObject2);
+          return;
+        }
+        paramImageView.setImageDrawable((Drawable)localObject1);
+      }
+      ((URLDrawable)localObject1).setURLDrawableListener(new HotChatPostItemView.1(paramImageView, paramInt6, paramInt4, paramInt5, paramString, (URLDrawable)localObject1, paramFloat, paramInt3));
+      return;
     }
     catch (MalformedURLException paramString)
     {
-      for (;;)
-      {
-        paramImageView.setImageDrawable(null);
-        paramImageView.setBackgroundColor(Color.parseColor("#e7e7e7"));
-        return;
-        localURLDrawable = URLDrawable.getDrawable(paramString);
-      }
-      paramImageView.setImageDrawable(a(localURLDrawable, paramFloat));
-      localURLDrawable.setURLDrawableListener(new HotChatPostItemView.1(paramImageView, paramInt6, paramInt4, paramInt5, paramString, localURLDrawable, paramFloat, paramInt3));
-      return;
+      break label219;
     }
     catch (OutOfMemoryError paramImageView)
     {
-      label128:
-      jdField_a_of_type_JavaUtilQueue.clear();
-      jdField_a_of_type_JavaUtilHashMap.clear();
-      return;
+      label204:
+      break label204;
     }
-    localURLDrawable.addHeader("User-Agent", (String)localObject);
-    if (localURLDrawable.isDownloadStarted())
-    {
-      localObject = a(paramString);
-      if (localObject != null)
-      {
-        paramImageView.setImageBitmap((Bitmap)localObject);
-        return;
-      }
-    }
-    for (;;)
-    {
-      localObject = a(paramString);
-      if (localObject != null)
-      {
-        paramImageView.setImageBitmap((Bitmap)localObject);
-        return;
-      }
-      paramImageView.setImageDrawable(localURLDrawable);
-    }
+    jdField_a_of_type_JavaUtilQueue.clear();
+    jdField_a_of_type_JavaUtilHashMap.clear();
+    return;
+    label219:
+    paramImageView.setImageDrawable(null);
+    paramImageView.setBackgroundColor(Color.parseColor("#e7e7e7"));
   }
   
   public static void setImage(ImageView paramImageView, String paramString, int paramInt1, int paramInt2, int paramInt3)
@@ -345,19 +333,19 @@ public class HotChatPostItemView
   
   public View a()
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560060, null);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559930, null);
     addView(localView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131372287));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379432));
-    this.d = ((TextView)localView.findViewById(2131365294));
-    this.e = ((TextView)localView.findViewById(2131365097));
-    this.f = ((TextView)localView.findViewById(2131376503));
-    this.c = ((TextView)localView.findViewById(2131379371));
-    this.g = ((TextView)localView.findViewById(2131382129));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131368312));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131365430));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371876));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378784));
+    this.d = ((TextView)localView.findViewById(2131365169));
+    this.e = ((TextView)localView.findViewById(2131364978));
+    this.f = ((TextView)localView.findViewById(2131376005));
+    this.c = ((TextView)localView.findViewById(2131378722));
+    this.g = ((TextView)localView.findViewById(2131381333));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131368064));
+    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131365295));
     this.jdField_a_of_type_AndroidViewView = localView;
-    setBackgroundResource(2130842520);
+    setBackgroundResource(2130842419);
     return this;
   }
   
@@ -365,281 +353,282 @@ public class HotChatPostItemView
   public void setData(String paramString)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
-    //   2: sipush 360
-    //   5: istore_3
-    //   6: new 442	org/json/JSONObject
-    //   9: dup
-    //   10: aload_1
-    //   11: invokespecial 443	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   14: astore 5
-    //   16: aload 5
-    //   18: ldc_w 445
-    //   21: invokevirtual 449	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   24: ifeq +51 -> 75
-    //   27: aload 5
-    //   29: ldc_w 445
-    //   32: invokevirtual 453	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   35: astore_1
-    //   36: aload_0
-    //   37: aload_1
-    //   38: ldc_w 455
-    //   41: invokestatic 461	java/lang/System:currentTimeMillis	()J
-    //   44: ldc2_w 462
-    //   47: ldiv
-    //   48: invokevirtual 467	org/json/JSONObject:optLong	(Ljava/lang/String;J)J
-    //   51: putfield 213	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Long	J
-    //   54: aload_1
-    //   55: ldc_w 469
-    //   58: invokevirtual 472	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   61: istore_2
-    //   62: aload_1
-    //   63: ldc_w 474
-    //   66: invokevirtual 472	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   69: istore_3
-    //   70: aload_0
-    //   71: iload_3
-    //   72: putfield 43	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Int	I
-    //   75: aload 5
-    //   77: ldc_w 476
-    //   80: invokevirtual 453	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   83: astore 6
-    //   85: aload 5
-    //   87: ldc_w 478
-    //   90: invokevirtual 453	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   93: astore 9
-    //   95: aload 6
-    //   97: ldc_w 480
-    //   100: invokevirtual 484	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   103: astore 7
-    //   105: aload 6
-    //   107: ldc_w 486
-    //   110: invokevirtual 484	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   113: astore_1
-    //   114: aload 9
-    //   116: ldc_w 488
-    //   119: invokevirtual 492	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   122: astore 4
-    //   124: aload 5
-    //   126: ldc_w 494
-    //   129: invokevirtual 484	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   132: astore 8
-    //   134: aload 9
-    //   136: ldc_w 496
-    //   139: invokevirtual 484	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   142: astore 9
-    //   144: aload 5
-    //   146: ldc_w 498
-    //   149: invokevirtual 501	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   152: astore 10
-    //   154: aload 5
-    //   156: ldc_w 503
-    //   159: invokevirtual 484	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   162: astore 11
-    //   164: aload 5
-    //   166: ldc_w 505
-    //   169: invokevirtual 501	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   172: astore 12
-    //   174: aload 5
-    //   176: ldc_w 507
-    //   179: invokevirtual 484	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   182: astore 5
-    //   184: aload_0
-    //   185: getfield 403	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   188: aload 7
-    //   190: invokevirtual 511	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   193: aload_0
-    //   194: getfield 403	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   197: aload 6
-    //   199: ldc_w 513
-    //   202: invokevirtual 517	org/json/JSONObject:opt	(Ljava/lang/String;)Ljava/lang/Object;
-    //   205: invokevirtual 521	android/widget/TextView:setTag	(Ljava/lang/Object;)V
-    //   208: aload_0
-    //   209: getfield 406	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   212: aload 8
-    //   214: invokevirtual 511	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   217: aload_0
-    //   218: getfield 409	com/tencent/mobileqq/troop/widget/HotChatPostItemView:d	Landroid/widget/TextView;
-    //   221: aload 9
-    //   223: invokevirtual 511	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   226: ldc_w 523
-    //   229: aload 11
-    //   231: invokevirtual 528	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   234: ifne +12 -> 246
-    //   237: aload_0
-    //   238: getfield 412	com/tencent/mobileqq/troop/widget/HotChatPostItemView:e	Landroid/widget/TextView;
-    //   241: aload 11
-    //   243: invokevirtual 511	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   246: ldc_w 523
-    //   249: aload 12
-    //   251: invokevirtual 528	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   254: ifne +12 -> 266
-    //   257: aload_0
-    //   258: getfield 415	com/tencent/mobileqq/troop/widget/HotChatPostItemView:f	Landroid/widget/TextView;
-    //   261: aload 12
-    //   263: invokevirtual 511	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   266: ldc_w 523
-    //   269: aload 5
-    //   271: invokevirtual 528	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   274: ifne +12 -> 286
-    //   277: aload_0
-    //   278: getfield 421	com/tencent/mobileqq/troop/widget/HotChatPostItemView:g	Landroid/widget/TextView;
-    //   281: aload 5
-    //   283: invokevirtual 511	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   286: aload_0
-    //   287: getfield 418	com/tencent/mobileqq/troop/widget/HotChatPostItemView:c	Landroid/widget/TextView;
-    //   290: aload_0
-    //   291: aload 10
-    //   293: invokestatic 534	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   296: invokespecial 536	com/tencent/mobileqq/troop/widget/HotChatPostItemView:a	(J)Ljava/lang/String;
-    //   299: invokevirtual 511	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   302: aload_0
-    //   303: getfield 43	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Int	I
-    //   306: ifne +28 -> 334
-    //   309: aload_0
-    //   310: aload_0
-    //   311: getfield 45	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   314: ldc_w 538
-    //   317: invokevirtual 543	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   320: checkcast 545	android/view/WindowManager
-    //   323: invokeinterface 549 1 0
-    //   328: invokevirtual 552	android/view/Display:getWidth	()I
-    //   331: putfield 43	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Int	I
-    //   334: aload_0
-    //   335: getfield 43	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Int	I
-    //   338: ifle +46 -> 384
-    //   341: aload_0
-    //   342: getfield 429	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
-    //   345: invokevirtual 556	com/tencent/image/URLImageView:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
-    //   348: checkcast 558	android/widget/LinearLayout$LayoutParams
-    //   351: astore 5
-    //   353: aload 5
-    //   355: aload_0
-    //   356: getfield 43	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Int	I
-    //   359: putfield 561	android/widget/LinearLayout$LayoutParams:width	I
-    //   362: aload 5
-    //   364: aload_0
-    //   365: getfield 43	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Int	I
-    //   368: iconst_2
-    //   369: imul
-    //   370: iconst_3
-    //   371: idiv
-    //   372: putfield 564	android/widget/LinearLayout$LayoutParams:height	I
-    //   375: aload_0
-    //   376: getfield 429	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
-    //   379: aload 5
-    //   381: invokevirtual 568	com/tencent/image/URLImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
-    //   384: aload 4
-    //   386: ifnull +131 -> 517
-    //   389: aload 4
-    //   391: invokevirtual 573	org/json/JSONArray:length	()I
-    //   394: ifle +123 -> 517
-    //   397: aload 4
-    //   399: iconst_0
-    //   400: invokevirtual 577	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   403: astore 4
-    //   405: aload 4
-    //   407: ldc_w 579
-    //   410: invokevirtual 484	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   413: astore 5
-    //   415: aload 4
-    //   417: ldc_w 581
-    //   420: invokevirtual 472	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   423: sipush 200
-    //   426: if_icmple +73 -> 499
-    //   429: aload_0
-    //   430: getfield 429	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
-    //   433: aload 5
-    //   435: invokevirtual 582	com/tencent/image/URLImageView:setTag	(Ljava/lang/Object;)V
-    //   438: aload_0
-    //   439: getfield 429	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
-    //   442: aload 5
+    //   0: new 443	org/json/JSONObject
+    //   3: dup
+    //   4: aload_1
+    //   5: invokespecial 444	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   8: astore 5
+    //   10: aload 5
+    //   12: ldc_w 446
+    //   15: invokevirtual 450	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   18: ifeq +513 -> 531
+    //   21: aload 5
+    //   23: ldc_w 446
+    //   26: invokevirtual 454	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   29: astore_1
+    //   30: aload_0
+    //   31: aload_1
+    //   32: ldc_w 456
+    //   35: invokestatic 462	java/lang/System:currentTimeMillis	()J
+    //   38: ldc2_w 463
+    //   41: ldiv
+    //   42: invokevirtual 468	org/json/JSONObject:optLong	(Ljava/lang/String;J)J
+    //   45: putfield 212	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Long	J
+    //   48: aload_1
+    //   49: ldc_w 470
+    //   52: invokevirtual 473	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   55: istore_3
+    //   56: aload_1
+    //   57: ldc_w 475
+    //   60: invokevirtual 473	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   63: istore_2
+    //   64: aload_0
+    //   65: iload_2
+    //   66: putfield 42	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Int	I
+    //   69: goto +3 -> 72
+    //   72: aload 5
+    //   74: ldc_w 477
+    //   77: invokevirtual 454	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   80: astore 6
+    //   82: aload 5
+    //   84: ldc_w 479
+    //   87: invokevirtual 454	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   90: astore 9
+    //   92: aload 6
+    //   94: ldc_w 481
+    //   97: invokevirtual 485	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   100: astore 7
+    //   102: aload 6
+    //   104: ldc_w 487
+    //   107: invokevirtual 485	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   110: astore_1
+    //   111: aload 9
+    //   113: ldc_w 489
+    //   116: invokevirtual 493	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   119: astore 4
+    //   121: aload 5
+    //   123: ldc_w 495
+    //   126: invokevirtual 485	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   129: astore 8
+    //   131: aload 9
+    //   133: ldc_w 497
+    //   136: invokevirtual 485	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   139: astore 9
+    //   141: aload 5
+    //   143: ldc_w 499
+    //   146: invokevirtual 502	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   149: astore 10
+    //   151: aload 5
+    //   153: ldc_w 504
+    //   156: invokevirtual 485	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   159: astore 11
+    //   161: aload 5
+    //   163: ldc_w 506
+    //   166: invokevirtual 502	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   169: astore 12
+    //   171: aload 5
+    //   173: ldc_w 508
+    //   176: invokevirtual 485	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   179: astore 5
+    //   181: aload_0
+    //   182: getfield 404	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   185: aload 7
+    //   187: invokevirtual 512	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   190: aload_0
+    //   191: getfield 404	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   194: aload 6
+    //   196: ldc_w 514
+    //   199: invokevirtual 518	org/json/JSONObject:opt	(Ljava/lang/String;)Ljava/lang/Object;
+    //   202: invokevirtual 522	android/widget/TextView:setTag	(Ljava/lang/Object;)V
+    //   205: aload_0
+    //   206: getfield 407	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   209: aload 8
+    //   211: invokevirtual 512	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   214: aload_0
+    //   215: getfield 410	com/tencent/mobileqq/troop/widget/HotChatPostItemView:d	Landroid/widget/TextView;
+    //   218: aload 9
+    //   220: invokevirtual 512	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   223: ldc_w 524
+    //   226: aload 11
+    //   228: invokevirtual 529	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   231: ifne +12 -> 243
+    //   234: aload_0
+    //   235: getfield 413	com/tencent/mobileqq/troop/widget/HotChatPostItemView:e	Landroid/widget/TextView;
+    //   238: aload 11
+    //   240: invokevirtual 512	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   243: ldc_w 524
+    //   246: aload 12
+    //   248: invokevirtual 529	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   251: ifne +12 -> 263
+    //   254: aload_0
+    //   255: getfield 416	com/tencent/mobileqq/troop/widget/HotChatPostItemView:f	Landroid/widget/TextView;
+    //   258: aload 12
+    //   260: invokevirtual 512	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   263: ldc_w 524
+    //   266: aload 5
+    //   268: invokevirtual 529	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   271: ifne +12 -> 283
+    //   274: aload_0
+    //   275: getfield 422	com/tencent/mobileqq/troop/widget/HotChatPostItemView:g	Landroid/widget/TextView;
+    //   278: aload 5
+    //   280: invokevirtual 512	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   283: aload_0
+    //   284: getfield 419	com/tencent/mobileqq/troop/widget/HotChatPostItemView:c	Landroid/widget/TextView;
+    //   287: aload_0
+    //   288: aload 10
+    //   290: invokestatic 535	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   293: invokespecial 537	com/tencent/mobileqq/troop/widget/HotChatPostItemView:a	(J)Ljava/lang/String;
+    //   296: invokevirtual 512	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   299: aload_0
+    //   300: getfield 42	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Int	I
+    //   303: ifne +28 -> 331
+    //   306: aload_0
+    //   307: aload_0
+    //   308: getfield 44	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   311: ldc_w 539
+    //   314: invokevirtual 544	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   317: checkcast 546	android/view/WindowManager
+    //   320: invokeinterface 550 1 0
+    //   325: invokevirtual 553	android/view/Display:getWidth	()I
+    //   328: putfield 42	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Int	I
+    //   331: aload_0
+    //   332: getfield 42	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Int	I
+    //   335: ifle +46 -> 381
+    //   338: aload_0
+    //   339: getfield 430	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
+    //   342: invokevirtual 557	com/tencent/image/URLImageView:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
+    //   345: checkcast 559	android/widget/LinearLayout$LayoutParams
+    //   348: astore 5
+    //   350: aload 5
+    //   352: aload_0
+    //   353: getfield 42	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Int	I
+    //   356: putfield 562	android/widget/LinearLayout$LayoutParams:width	I
+    //   359: aload 5
+    //   361: aload_0
+    //   362: getfield 42	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Int	I
+    //   365: iconst_2
+    //   366: imul
+    //   367: iconst_3
+    //   368: idiv
+    //   369: putfield 565	android/widget/LinearLayout$LayoutParams:height	I
+    //   372: aload_0
+    //   373: getfield 430	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
+    //   376: aload 5
+    //   378: invokevirtual 569	com/tencent/image/URLImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   381: aload 4
+    //   383: ifnull +91 -> 474
+    //   386: aload 4
+    //   388: invokevirtual 574	org/json/JSONArray:length	()I
+    //   391: ifle +83 -> 474
+    //   394: aload 4
+    //   396: iconst_0
+    //   397: invokevirtual 578	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   400: astore 4
+    //   402: aload 4
+    //   404: ldc_w 580
+    //   407: invokevirtual 485	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   410: astore 5
+    //   412: aload 4
+    //   414: ldc_w 582
+    //   417: invokevirtual 473	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   420: sipush 200
+    //   423: if_icmple +39 -> 462
+    //   426: aload_0
+    //   427: getfield 430	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
+    //   430: aload 5
+    //   432: invokevirtual 583	com/tencent/image/URLImageView:setTag	(Ljava/lang/Object;)V
+    //   435: aload_0
+    //   436: getfield 430	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
+    //   439: aload 5
+    //   441: iconst_0
+    //   442: iconst_0
+    //   443: fconst_0
     //   444: iconst_0
-    //   445: iconst_0
-    //   446: fconst_0
-    //   447: iconst_0
-    //   448: iload_2
-    //   449: iload_3
-    //   450: iconst_1
-    //   451: invokestatic 377	com/tencent/mobileqq/troop/widget/HotChatPostItemView:setImage	(Landroid/widget/ImageView;Ljava/lang/String;IIFIIII)V
-    //   454: aload_0
-    //   455: getfield 429	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
-    //   458: iconst_0
-    //   459: invokevirtual 585	com/tencent/image/URLImageView:setVisibility	(I)V
+    //   445: iload_3
+    //   446: iload_2
+    //   447: iconst_1
+    //   448: invokestatic 378	com/tencent/mobileqq/troop/widget/HotChatPostItemView:setImage	(Landroid/widget/ImageView;Ljava/lang/String;IIFIIII)V
+    //   451: aload_0
+    //   452: getfield 430	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
+    //   455: iconst_0
+    //   456: invokevirtual 586	com/tencent/image/URLImageView:setVisibility	(I)V
+    //   459: goto +24 -> 483
     //   462: aload_0
-    //   463: getfield 426	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
-    //   466: aload_1
-    //   467: aload_0
-    //   468: getfield 426	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
-    //   471: invokevirtual 586	com/tencent/image/URLImageView:getWidth	()I
+    //   463: getfield 430	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
+    //   466: bipush 8
+    //   468: invokevirtual 586	com/tencent/image/URLImageView:setVisibility	(I)V
+    //   471: goto +12 -> 483
     //   474: aload_0
-    //   475: getfield 426	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
-    //   478: invokevirtual 586	com/tencent/image/URLImageView:getWidth	()I
-    //   481: aload_0
-    //   482: getfield 426	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
-    //   485: invokevirtual 586	com/tencent/image/URLImageView:getWidth	()I
-    //   488: iconst_2
-    //   489: idiv
-    //   490: i2f
-    //   491: iconst_0
-    //   492: iconst_0
-    //   493: iconst_0
-    //   494: iconst_0
-    //   495: invokestatic 377	com/tencent/mobileqq/troop/widget/HotChatPostItemView:setImage	(Landroid/widget/ImageView;Ljava/lang/String;IIFIIII)V
-    //   498: return
-    //   499: aload_0
-    //   500: getfield 429	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
-    //   503: bipush 8
-    //   505: invokevirtual 585	com/tencent/image/URLImageView:setVisibility	(I)V
-    //   508: goto -46 -> 462
-    //   511: astore_1
-    //   512: aload_1
-    //   513: invokevirtual 587	org/json/JSONException:printStackTrace	()V
-    //   516: return
-    //   517: aload_0
-    //   518: getfield 429	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
-    //   521: bipush 8
-    //   523: invokevirtual 585	com/tencent/image/URLImageView:setVisibility	(I)V
-    //   526: goto -64 -> 462
-    //   529: astore 5
-    //   531: goto -229 -> 302
+    //   475: getfield 430	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
+    //   478: bipush 8
+    //   480: invokevirtual 586	com/tencent/image/URLImageView:setVisibility	(I)V
+    //   483: aload_0
+    //   484: getfield 427	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
+    //   487: aload_1
+    //   488: aload_0
+    //   489: getfield 427	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
+    //   492: invokevirtual 587	com/tencent/image/URLImageView:getWidth	()I
+    //   495: aload_0
+    //   496: getfield 427	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
+    //   499: invokevirtual 587	com/tencent/image/URLImageView:getWidth	()I
+    //   502: aload_0
+    //   503: getfield 427	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
+    //   506: invokevirtual 587	com/tencent/image/URLImageView:getWidth	()I
+    //   509: iconst_2
+    //   510: idiv
+    //   511: i2f
+    //   512: iconst_0
+    //   513: iconst_0
+    //   514: iconst_0
+    //   515: iconst_0
+    //   516: invokestatic 378	com/tencent/mobileqq/troop/widget/HotChatPostItemView:setImage	(Landroid/widget/ImageView;Ljava/lang/String;IIFIIII)V
+    //   519: return
+    //   520: astore_1
+    //   521: aload_1
+    //   522: invokevirtual 588	org/json/JSONException:printStackTrace	()V
+    //   525: return
+    //   526: astore 5
+    //   528: goto -229 -> 299
+    //   531: iconst_0
+    //   532: istore_3
+    //   533: sipush 360
+    //   536: istore_2
+    //   537: goto -465 -> 72
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	534	0	this	HotChatPostItemView
-    //   0	534	1	paramString	String
-    //   1	448	2	i	int
-    //   5	445	3	j	int
-    //   122	294	4	localObject1	Object
-    //   14	429	5	localObject2	Object
-    //   529	1	5	localNumberFormatException	java.lang.NumberFormatException
-    //   83	115	6	localJSONObject	org.json.JSONObject
-    //   103	86	7	str1	String
-    //   132	81	8	str2	String
-    //   93	129	9	localObject3	Object
-    //   152	140	10	str3	String
-    //   162	80	11	str4	String
-    //   172	90	12	str5	String
+    //   0	540	0	this	HotChatPostItemView
+    //   0	540	1	paramString	String
+    //   63	474	2	i	int
+    //   55	478	3	j	int
+    //   119	294	4	localObject1	Object
+    //   8	432	5	localObject2	Object
+    //   526	1	5	localNumberFormatException	java.lang.NumberFormatException
+    //   80	115	6	localJSONObject	org.json.JSONObject
+    //   100	86	7	str1	String
+    //   129	81	8	str2	String
+    //   90	129	9	localObject3	Object
+    //   149	140	10	str3	String
+    //   159	80	11	str4	String
+    //   169	90	12	str5	String
     // Exception table:
     //   from	to	target	type
-    //   6	16	511	org/json/JSONException
-    //   16	75	511	org/json/JSONException
-    //   75	246	511	org/json/JSONException
-    //   246	266	511	org/json/JSONException
-    //   266	286	511	org/json/JSONException
-    //   286	302	511	org/json/JSONException
-    //   302	334	511	org/json/JSONException
-    //   334	384	511	org/json/JSONException
-    //   389	462	511	org/json/JSONException
-    //   462	498	511	org/json/JSONException
-    //   499	508	511	org/json/JSONException
-    //   517	526	511	org/json/JSONException
-    //   286	302	529	java/lang/NumberFormatException
+    //   0	69	520	org/json/JSONException
+    //   72	243	520	org/json/JSONException
+    //   243	263	520	org/json/JSONException
+    //   263	283	520	org/json/JSONException
+    //   283	299	520	org/json/JSONException
+    //   299	331	520	org/json/JSONException
+    //   331	381	520	org/json/JSONException
+    //   386	459	520	org/json/JSONException
+    //   462	471	520	org/json/JSONException
+    //   474	483	520	org/json/JSONException
+    //   483	519	520	org/json/JSONException
+    //   283	299	526	java/lang/NumberFormatException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.HotChatPostItemView
  * JD-Core Version:    0.7.0.1
  */

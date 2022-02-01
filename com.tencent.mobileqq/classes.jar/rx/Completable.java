@@ -78,10 +78,13 @@ public class Completable
   public static Completable concat(Observable<? extends Completable> paramObservable, int paramInt)
   {
     requireNonNull(paramObservable);
-    if (paramInt < 1) {
-      throw new IllegalArgumentException("prefetch > 0 required but it was " + paramInt);
+    if (paramInt >= 1) {
+      return create(new CompletableOnSubscribeConcat(paramObservable, paramInt));
     }
-    return create(new CompletableOnSubscribeConcat(paramObservable, paramInt));
+    paramObservable = new StringBuilder();
+    paramObservable.append("prefetch > 0 required but it was ");
+    paramObservable.append(paramInt);
+    throw new IllegalArgumentException(paramObservable.toString());
   }
   
   public static Completable concat(Completable... paramVarArgs)
@@ -104,14 +107,14 @@ public class Completable
       paramCompletableOnSubscribe = new Completable(paramCompletableOnSubscribe);
       return paramCompletableOnSubscribe;
     }
-    catch (NullPointerException paramCompletableOnSubscribe)
-    {
-      throw paramCompletableOnSubscribe;
-    }
     catch (Throwable paramCompletableOnSubscribe)
     {
       ERROR_HANDLER.handleError(paramCompletableOnSubscribe);
       throw toNpe(paramCompletableOnSubscribe);
+    }
+    catch (NullPointerException paramCompletableOnSubscribe)
+    {
+      throw paramCompletableOnSubscribe;
     }
   }
   
@@ -200,10 +203,13 @@ public class Completable
   protected static Completable merge0(Observable<? extends Completable> paramObservable, int paramInt, boolean paramBoolean)
   {
     requireNonNull(paramObservable);
-    if (paramInt < 1) {
-      throw new IllegalArgumentException("maxConcurrency > 0 required but it was " + paramInt);
+    if (paramInt >= 1) {
+      return create(new CompletableOnSubscribeMerge(paramObservable, paramInt, paramBoolean));
     }
-    return create(new CompletableOnSubscribeMerge(paramObservable, paramInt, paramBoolean));
+    paramObservable = new StringBuilder();
+    paramObservable.append("maxConcurrency > 0 required but it was ");
+    paramObservable.append(paramInt);
+    throw new IllegalArgumentException(paramObservable.toString());
   }
   
   public static Completable mergeDelayError(Iterable<? extends Completable> paramIterable)
@@ -235,10 +241,10 @@ public class Completable
   
   static <T> T requireNonNull(T paramT)
   {
-    if (paramT == null) {
-      throw new NullPointerException();
+    if (paramT != null) {
+      return paramT;
     }
-    return paramT;
+    throw new NullPointerException();
   }
   
   public static Completable timer(long paramLong, TimeUnit paramTimeUnit)
@@ -290,68 +296,51 @@ public class Completable
     CountDownLatch localCountDownLatch = new CountDownLatch(1);
     Throwable[] arrayOfThrowable = new Throwable[1];
     subscribe(new Completable.14(this, localCountDownLatch, arrayOfThrowable));
-    if (localCountDownLatch.getCount() == 0L) {
+    if (localCountDownLatch.getCount() == 0L)
+    {
       if (arrayOfThrowable[0] != null) {
         Exceptions.propagate(arrayOfThrowable[0]);
       }
-    }
-    for (;;)
-    {
       return;
-      try
-      {
-        localCountDownLatch.await();
-        if (arrayOfThrowable[0] == null) {
-          continue;
-        }
+    }
+    try
+    {
+      localCountDownLatch.await();
+      if (arrayOfThrowable[0] != null) {
         Exceptions.propagate(arrayOfThrowable[0]);
-        return;
       }
-      catch (InterruptedException localInterruptedException)
-      {
-        throw Exceptions.propagate(localInterruptedException);
-      }
+      return;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      throw Exceptions.propagate(localInterruptedException);
     }
   }
   
   public final boolean await(long paramLong, TimeUnit paramTimeUnit)
   {
-    boolean bool2 = true;
     requireNonNull(paramTimeUnit);
     CountDownLatch localCountDownLatch = new CountDownLatch(1);
     Throwable[] arrayOfThrowable = new Throwable[1];
     subscribe(new Completable.15(this, localCountDownLatch, arrayOfThrowable));
-    boolean bool1;
     if (localCountDownLatch.getCount() == 0L)
     {
-      bool1 = bool2;
-      if (arrayOfThrowable[0] != null)
-      {
+      if (arrayOfThrowable[0] != null) {
         Exceptions.propagate(arrayOfThrowable[0]);
-        bool1 = bool2;
       }
+      return true;
     }
-    for (;;)
+    try
     {
-      return bool1;
-      try
-      {
-        bool2 = localCountDownLatch.await(paramLong, paramTimeUnit);
-        bool1 = bool2;
-        if (!bool2) {
-          continue;
-        }
-        bool1 = bool2;
-        if (arrayOfThrowable[0] == null) {
-          continue;
-        }
+      boolean bool = localCountDownLatch.await(paramLong, paramTimeUnit);
+      if ((bool) && (arrayOfThrowable[0] != null)) {
         Exceptions.propagate(arrayOfThrowable[0]);
-        return bool2;
       }
-      catch (InterruptedException paramTimeUnit)
-      {
-        throw Exceptions.propagate(paramTimeUnit);
-      }
+      return bool;
+    }
+    catch (InterruptedException paramTimeUnit)
+    {
+      throw Exceptions.propagate(paramTimeUnit);
     }
   }
   
@@ -473,13 +462,13 @@ public class Completable
       if (bool) {
         return arrayOfThrowable[0];
       }
+      Exceptions.propagate(new TimeoutException());
+      return null;
     }
     catch (InterruptedException paramTimeUnit)
     {
       throw Exceptions.propagate(paramTimeUnit);
     }
-    Exceptions.propagate(new TimeoutException());
-    return null;
   }
   
   public final Completable lift(Completable.CompletableOperator paramCompletableOperator)
@@ -597,36 +586,40 @@ public class Completable
       this.onSubscribe.call(paramCompletableSubscriber);
       return;
     }
-    catch (NullPointerException paramCompletableSubscriber)
-    {
-      throw paramCompletableSubscriber;
-    }
     catch (Throwable paramCompletableSubscriber)
     {
       ERROR_HANDLER.handleError(paramCompletableSubscriber);
       throw toNpe(paramCompletableSubscriber);
+    }
+    catch (NullPointerException paramCompletableSubscriber)
+    {
+      throw paramCompletableSubscriber;
     }
   }
   
   public final <T> void subscribe(Subscriber<T> paramSubscriber)
   {
     requireNonNull(paramSubscriber);
-    if (paramSubscriber == null) {}
+    if (paramSubscriber != null) {}
     try
     {
-      throw new NullPointerException("The RxJavaPlugins.onSubscribe returned a null Subscriber");
-    }
-    catch (NullPointerException paramSubscriber)
-    {
-      throw paramSubscriber;
       subscribe(new Completable.28(this, paramSubscriber));
       return;
     }
     catch (Throwable paramSubscriber)
     {
-      ERROR_HANDLER.handleError(paramSubscriber);
-      throw toNpe(paramSubscriber);
+      break label34;
     }
+    catch (NullPointerException paramSubscriber)
+    {
+      break label46;
+    }
+    throw new NullPointerException("The RxJavaPlugins.onSubscribe returned a null Subscriber");
+    label34:
+    ERROR_HANDLER.handleError(paramSubscriber);
+    throw toNpe(paramSubscriber);
+    label46:
+    throw paramSubscriber;
   }
   
   public final Completable subscribeOn(Scheduler paramScheduler)
@@ -694,7 +687,7 @@ public class Completable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.Completable
  * JD-Core Version:    0.7.0.1
  */

@@ -152,26 +152,22 @@ public class MessageRecordParcel
       b(paramParcel, (DataLineMsgRecord)localObject);
       paramParcel = (Parcel)localObject;
     }
-    for (;;)
+    else if (((String)localObject).equals("MpfileTaskRecord"))
     {
-      if (paramParcel != null)
-      {
-        return new MessageRecordParcel(paramParcel);
-        if (((String)localObject).equals("MpfileTaskRecord"))
-        {
-          localObject = new MpfileTaskRecord();
-          paramParcel = paramParcel.readBundle();
-          b(paramParcel, (MessageRecord)localObject);
-          b(paramParcel, (MpfileTaskRecord)localObject);
-          paramParcel = (Parcel)localObject;
-        }
-      }
-      else
-      {
-        return null;
-      }
+      localObject = new MpfileTaskRecord();
+      paramParcel = paramParcel.readBundle();
+      b(paramParcel, (MessageRecord)localObject);
+      b(paramParcel, (MpfileTaskRecord)localObject);
+      paramParcel = (Parcel)localObject;
+    }
+    else
+    {
       paramParcel = null;
     }
+    if (paramParcel != null) {
+      return new MessageRecordParcel(paramParcel);
+    }
+    return null;
   }
   
   private static void b(Bundle paramBundle, MpfileTaskRecord paramMpfileTaskRecord)
@@ -264,27 +260,29 @@ public class MessageRecordParcel
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    if ((this.a instanceof DataLineMsgRecord))
+    Object localObject = this.a;
+    if ((localObject instanceof DataLineMsgRecord))
     {
       paramParcel.writeString("DataLineMsgRecord");
-      localBundle = new Bundle();
-      a(localBundle, this.a);
-      a(localBundle, (DataLineMsgRecord)this.a);
-      paramParcel.writeBundle(localBundle);
-    }
-    while (!(this.a instanceof MpfileTaskRecord)) {
+      localObject = new Bundle();
+      a((Bundle)localObject, this.a);
+      a((Bundle)localObject, (DataLineMsgRecord)this.a);
+      paramParcel.writeBundle((Bundle)localObject);
       return;
     }
-    paramParcel.writeString("MpfileTaskRecord");
-    Bundle localBundle = new Bundle();
-    a(localBundle, this.a);
-    a(localBundle, (MpfileTaskRecord)this.a);
-    paramParcel.writeBundle(localBundle);
+    if ((localObject instanceof MpfileTaskRecord))
+    {
+      paramParcel.writeString("MpfileTaskRecord");
+      localObject = new Bundle();
+      a((Bundle)localObject, this.a);
+      a((Bundle)localObject, (MpfileTaskRecord)this.a);
+      paramParcel.writeBundle((Bundle)localObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqdataline.ipc.MessageRecordParcel
  * JD-Core Version:    0.7.0.1
  */

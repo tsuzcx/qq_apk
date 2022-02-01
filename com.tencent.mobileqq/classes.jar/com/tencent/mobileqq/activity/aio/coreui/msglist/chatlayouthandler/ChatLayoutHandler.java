@@ -14,11 +14,11 @@ import com.tencent.mobileqq.data.ChatMessage;
 public abstract class ChatLayoutHandler
 {
   protected Context a;
-  public View.OnClickListener a;
+  protected View.OnClickListener a;
   protected View.OnLongClickListener a;
-  public SessionInfo a;
+  protected SessionInfo a;
   private IChatLayoutListenerController a;
-  public QQAppInterface a;
+  protected QQAppInterface a;
   
   public ChatLayoutHandler(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, IChatLayoutListenerController paramIChatLayoutListenerController)
   {
@@ -34,14 +34,15 @@ public abstract class ChatLayoutHandler
   
   protected final void a(int paramInt, IChatLayoutListener.ChatLayoutListenerInfo paramChatLayoutListenerInfo)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistChatlayouthandlerIChatLayoutListenerController != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistChatlayouthandlerIChatLayoutListenerController.a(paramInt, paramChatLayoutListenerInfo);
+    IChatLayoutListenerController localIChatLayoutListenerController = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistChatlayouthandlerIChatLayoutListenerController;
+    if (localIChatLayoutListenerController != null) {
+      localIChatLayoutListenerController.a(paramInt, paramChatLayoutListenerInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.chatlayouthandler.ChatLayoutHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -15,8 +15,8 @@ import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 
 public class TroopUnreadTipsChatItemBuilder
   extends AbstractChatItemBuilder
@@ -26,37 +26,37 @@ public class TroopUnreadTipsChatItemBuilder
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
   }
   
-  public View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
+  protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     paramViewHolder = (TroopUnreadTipsChatItemBuilder.Holder)paramViewHolder;
     paramViewHolder = paramView;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558966, null);
-      paramViewHolder = (TextView)paramView.findViewById(2131368045);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558864, null);
+      paramViewHolder = (TextView)paramView.findViewById(2131367798);
       paramViewHolder.setMovementMethod(null);
       paramViewHolder.setGravity(17);
       paramViewHolder = paramView;
       if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
       {
-        paramViewHolder = (TextView)paramView.findViewById(2131368406);
-        paramLinearLayout = (TextView)paramView.findViewById(2131368407);
-        paramViewHolder.setBackgroundColor(2130842732);
-        paramLinearLayout.setBackgroundColor(2130842732);
+        paramViewHolder = (TextView)paramView.findViewById(2131368157);
+        paramLinearLayout = (TextView)paramView.findViewById(2131368158);
+        paramViewHolder.setBackgroundColor(2130842631);
+        paramLinearLayout.setBackgroundColor(2130842631);
         paramViewHolder = paramView;
       }
     }
-    paramView = (TextView)paramViewHolder.findViewById(2131368045);
+    paramView = (TextView)paramViewHolder.findViewById(2131367798);
     if ((paramMessageRecord.istroop == 1) && (AnonymousChatHelper.a().a(paramMessageRecord.senderuin)))
     {
       paramView.setTextColor(AnonymousChatHelper.d);
       return paramViewHolder;
     }
-    paramView.setTextColor(paramViewHolder.getResources().getColorStateList(2131165551));
+    paramView.setTextColor(paramViewHolder.getResources().getColorStateList(2131165527));
     return paramViewHolder;
   }
   
-  public AbstractChatItemBuilder.ViewHolder a()
+  protected AbstractChatItemBuilder.ViewHolder a()
   {
     return new TroopUnreadTipsChatItemBuilder.Holder(this);
   }
@@ -70,7 +70,7 @@ public class TroopUnreadTipsChatItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopUnreadTipsChatItemBuilder
  * JD-Core Version:    0.7.0.1
  */

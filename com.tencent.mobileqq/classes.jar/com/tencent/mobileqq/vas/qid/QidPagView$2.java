@@ -1,13 +1,19 @@
 package com.tencent.mobileqq.vas.qid;
 
 import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.transfile.URLDrawableHelper.Adapter;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import org.libpag.PAGView;
 
 class QidPagView$2
-  extends URLDrawableHelper.Adapter
+  implements URLDrawable.URLDrawableListener
 {
   QidPagView$2(QidPagView paramQidPagView, PAGView paramPAGView, int paramInt) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
@@ -16,7 +22,7 @@ class QidPagView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qid.QidPagView.2
  * JD-Core Version:    0.7.0.1
  */

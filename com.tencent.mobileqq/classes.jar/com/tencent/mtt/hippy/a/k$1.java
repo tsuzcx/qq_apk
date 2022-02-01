@@ -10,27 +10,21 @@ class k$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 0: 
-      this.b.b();
-      return;
-    }
-    paramDialogInterface = k.a(this.b);
-    if (!this.a) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramDialogInterface.a(bool);
+      if (paramInt != 1) {
+        return;
+      }
+      k.a(this.b).a(true ^ this.a);
       this.b.c();
       return;
     }
+    this.b.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.a.k.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/idg" android:background="@drawable/gw5" android:layout_width="@dimen/bgh" android:layout_height="@dimen/bgg"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/oih" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <View android:background="@drawable/e9_" android:layout_width="fill_parent" android:layout_height="133.29999dip" android:alpha="0.7" />
-        <TextView android:textSize="17.0sp" android:textColor="@color/al3" android:id="@id/kbs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="13.299988dip" android:layout_marginRight="16.0dip" android:text="" android:maxLines="2" android:lineSpacingExtra="0.0dip" />
-        <View android:background="@drawable/e96" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_alignParentBottom="true" android:alpha="0.5" />
-        <ImageButton android:id="@id/fv0" android:background="@null" android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/duf" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip" android:layout_alignParentBottom="true">
-            <TextView android:textSize="11.0sp" android:textColor="@color/al3" android:id="@id/okc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:minWidth="24.0dip" android:minHeight="11.0dip" android:text="01:32" />
-            <SeekBar android:layout_gravity="center" android:id="@id/ilh" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxHeight="2.0dip" android:progressDrawable="@drawable/a1k" android:minHeight="2.0dip" android:thumb="@drawable/a2f" android:thumbOffset="3.0dip" android:layout_weight="1.0" />
-            <TextView android:textSize="11.0sp" android:textColor="@color/al3" android:id="@id/oik" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:minWidth="24.0dip" android:minHeight="11.0dip" android:text="01:32" />
-        </LinearLayout>
-    </RelativeLayout>
-    <ProgressBar android:id="@id/okb" android:layout_width="fill_parent" android:layout_height="2.0dip" android:progressDrawable="@drawable/a1l" android:thumb="@color/ajr" android:layout_alignParentBottom="true" style="@android:style/Widget.ProgressBar.Horizontal" />
-    <ImageView android:id="@id/bb4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerInside" />
+    <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/y38" android:layout_centerHorizontal="true" />
 </RelativeLayout>

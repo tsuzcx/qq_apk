@@ -21,76 +21,81 @@ class HbEventPlugin$DataReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     int i = paramIntent.getIntExtra("bc_seq", -1);
-    if (i < 0) {
-      if (QLog.isColorLevel()) {
-        QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive sequence = " + i + "| wrong seq");
-      }
-    }
-    byte[] arrayOfByte;
-    do
+    if (i < 0)
     {
-      do
+      if (QLog.isColorLevel())
       {
-        return;
-        if (i == this.jdField_a_of_type_Int) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive sequence != seq | miss hit");
-      return;
-      paramContext = paramIntent.getExtras();
-      arrayOfByte = paramContext.getByteArray("bc_data");
-      i = paramIntent.getIntExtra("portal_type_key", -1);
-      if (arrayOfByte != null) {
-        break;
+        paramContext = new StringBuilder();
+        paramContext.append("DataReceive | onReceive sequence = ");
+        paramContext.append(i);
+        paramContext.append("| wrong seq");
+        QLog.d("PortalManager.HbEventPlugin", 2, paramContext.toString());
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive data = null");
-    return;
+      return;
+    }
+    if (i != this.jdField_a_of_type_Int)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive sequence != seq | miss hit");
+      }
+      return;
+    }
+    paramContext = paramIntent.getExtras();
+    byte[] arrayOfByte = paramContext.getByteArray("bc_data");
+    i = paramIntent.getIntExtra("portal_type_key", -1);
+    if (arrayOfByte == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive data = null");
+      }
+      return;
+    }
     if (QLog.isColorLevel())
     {
-      if (i != 1009) {
-        break label286;
+      if (i == 1009) {
+        paramContext = "REQ_TYPE_GET_HEAD returned";
+      } else {
+        paramContext = paramContext.toString();
       }
-      paramContext = "REQ_TYPE_GET_HEAD returned";
+      paramIntent = new StringBuilder();
+      paramIntent.append("DataReceiver.onReceive | ");
+      paramIntent.append(i);
+      paramIntent.append(",");
+      paramIntent.append(this.jdField_a_of_type_Int);
+      paramIntent.append(",");
+      paramIntent.append(this.jdField_a_of_type_JavaLangString);
+      paramIntent.append(",");
+      paramIntent.append(paramContext);
+      QLog.d("PortalManager.HbEventPlugin", 2, paramIntent.toString());
     }
-    for (;;)
+    switch (i)
     {
-      QLog.d("PortalManager.HbEventPlugin", 2, "DataReceiver.onReceive | " + i + "," + this.jdField_a_of_type_Int + "," + this.jdField_a_of_type_JavaLangString + "," + paramContext);
-      switch (i)
-      {
-      default: 
-        return;
-      }
-      this.jdField_a_of_type_ComTencentBizWebviewpluginHbEventPlugin.a(this.jdField_a_of_type_Int);
-      paramIntent = PortalUtils.b(arrayOfByte);
-      paramContext = paramIntent;
-      if (paramIntent == null) {
-        paramContext = new JSONObject();
-      }
+    default: 
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizWebviewpluginHbEventPlugin.a(this.jdField_a_of_type_Int);
+    paramIntent = PortalUtils.b(arrayOfByte);
+    paramContext = paramIntent;
+    if (paramIntent == null)
+    {
+      paramContext = new JSONObject();
       try
       {
         paramContext.put("errorCode", -1);
         paramContext = paramContext.toString();
-        this.jdField_a_of_type_ComTencentBizWebviewpluginHbEventPlugin.a(this.jdField_a_of_type_JavaLangString, new String[] { paramContext });
-        return;
-        label286:
-        paramContext = paramContext.toString();
       }
       catch (JSONException paramContext)
       {
-        for (;;)
-        {
-          paramContext.printStackTrace();
-          paramContext = paramIntent;
-        }
+        paramContext.printStackTrace();
+        paramContext = paramIntent;
       }
     }
+    this.jdField_a_of_type_ComTencentBizWebviewpluginHbEventPlugin.a(this.jdField_a_of_type_JavaLangString, new String[] { paramContext });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.HbEventPlugin.DataReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -8,16 +8,32 @@ public abstract class ComparisonCriteria
 {
   private int assertArraysAreSameLength(Object paramObject1, Object paramObject2, String paramString)
   {
-    if (paramObject1 == null) {
-      Assert.fail(paramString + "expected array was null");
+    StringBuilder localStringBuilder;
+    if (paramObject1 == null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("expected array was null");
+      Assert.fail(localStringBuilder.toString());
     }
-    if (paramObject2 == null) {
-      Assert.fail(paramString + "actual array was null");
+    if (paramObject2 == null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("actual array was null");
+      Assert.fail(localStringBuilder.toString());
     }
     int i = Array.getLength(paramObject2);
     int j = Array.getLength(paramObject1);
-    if (i != j) {
-      Assert.fail(paramString + "array lengths differed, expected.length=" + j + " actual.length=" + i);
+    if (i != j)
+    {
+      paramObject1 = new StringBuilder();
+      paramObject1.append(paramString);
+      paramObject1.append("array lengths differed, expected.length=");
+      paramObject1.append(j);
+      paramObject1.append(" actual.length=");
+      paramObject1.append(i);
+      Assert.fail(paramObject1.toString());
     }
     return j;
   }
@@ -29,48 +45,49 @@ public abstract class ComparisonCriteria
   
   public void arrayEquals(String paramString, Object paramObject1, Object paramObject2)
   {
-    int i = 0;
-    if (paramObject1 != paramObject2) {
-      if (!Arrays.deepEquals(new Object[] { paramObject1 }, new Object[] { paramObject2 })) {
-        break label31;
-      }
-    }
-    label31:
-    String str;
-    int j;
-    do
+    if (paramObject1 != paramObject2)
     {
-      return;
-      if (paramString != null) {
-        break;
+      int i = 0;
+      if (Arrays.deepEquals(new Object[] { paramObject1 }, new Object[] { paramObject2 })) {
+        return;
       }
-      str = "";
-      j = assertArraysAreSameLength(paramObject1, paramObject2, str);
-    } while (i >= j);
-    Object localObject1 = Array.get(paramObject1, i);
-    Object localObject2 = Array.get(paramObject2, i);
-    if ((isArray(localObject1)) && (isArray(localObject2))) {}
-    for (;;)
-    {
-      try
+      Object localObject1;
+      if (paramString == null)
       {
-        arrayEquals(paramString, localObject1, localObject2);
-        i += 1;
+        localObject1 = "";
       }
-      catch (ArrayComparisonFailure paramString)
+      else
       {
-        paramString.addDimension(i);
-        throw paramString;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramString);
+        ((StringBuilder)localObject1).append(": ");
+        localObject1 = ((StringBuilder)localObject1).toString();
       }
-      str = paramString + ": ";
-      break;
-      try
+      int j = assertArraysAreSameLength(paramObject1, paramObject2, (String)localObject1);
+      while (i < j)
       {
-        assertElementsEqual(localObject1, localObject2);
-      }
-      catch (AssertionError paramString)
-      {
-        throw new ArrayComparisonFailure(str, paramString, i);
+        Object localObject2 = Array.get(paramObject1, i);
+        Object localObject3 = Array.get(paramObject2, i);
+        if ((isArray(localObject2)) && (isArray(localObject3))) {
+          try
+          {
+            arrayEquals(paramString, localObject2, localObject3);
+          }
+          catch (ArrayComparisonFailure paramString)
+          {
+            paramString.addDimension(i);
+            throw paramString;
+          }
+        }
+        try
+        {
+          assertElementsEqual(localObject2, localObject3);
+          i += 1;
+        }
+        catch (AssertionError paramString)
+        {
+          throw new ArrayComparisonFailure((String)localObject1, paramString, i);
+        }
       }
     }
   }
@@ -79,7 +96,7 @@ public abstract class ComparisonCriteria
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.internal.ComparisonCriteria
  * JD-Core Version:    0.7.0.1
  */

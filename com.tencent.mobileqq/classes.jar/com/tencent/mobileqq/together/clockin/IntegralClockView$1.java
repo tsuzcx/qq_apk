@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.together.clockin;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 import com.tencent.qphone.base.util.QLog;
 
 class IntegralClockView$1
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   IntegralClockView$1(IntegralClockView paramIntegralClockView) {}
   
@@ -34,7 +34,7 @@ class IntegralClockView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.together.clockin.IntegralClockView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,6 @@ package com.tencent.mobileqq.shortvideo.filter;
 import android.annotation.TargetApi;
 import android.opengl.EGL14;
 import android.opengl.GLES20;
-import android.text.TextUtils;
 import com.tencent.aekit.openrender.internal.FrameBufferCache;
 import com.tencent.sveffects.SLog;
 import java.util.ArrayList;
@@ -29,61 +28,71 @@ final class FilterManagerInternal
   
   private void checkStackIsLeakage()
   {
-    Object localObject2;
-    for (;;)
+    try
     {
-      try
+      if (this.mChains.size() >= 10)
       {
-        if (this.mChains.size() < 10) {
-          break label256;
-        }
-        HashMap localHashMap = new HashMap();
-        localIterator = this.mChains.iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject2 = (FilterManagerInternal.FilterChain)localIterator.next();
-        if (localHashMap.containsKey(((FilterManagerInternal.FilterChain)localObject2).getId()))
+        Object localObject1 = new HashMap();
+        Object localObject3 = this.mChains.iterator();
+        Object localObject4;
+        while (((Iterator)localObject3).hasNext())
         {
-          i = ((Integer)localHashMap.get(((FilterManagerInternal.FilterChain)localObject2).getId())).intValue();
-          localHashMap.put(((FilterManagerInternal.FilterChain)localObject2).getId(), Integer.valueOf(i + 1));
+          localObject4 = (FilterManagerInternal.FilterChain)((Iterator)localObject3).next();
+          if (((HashMap)localObject1).containsKey(((FilterManagerInternal.FilterChain)localObject4).getId()))
+          {
+            i = ((Integer)((HashMap)localObject1).get(((FilterManagerInternal.FilterChain)localObject4).getId())).intValue();
+            ((HashMap)localObject1).put(((FilterManagerInternal.FilterChain)localObject4).getId(), Integer.valueOf(i + 1));
+          }
+          else
+          {
+            ((HashMap)localObject1).put(((FilterManagerInternal.FilterChain)localObject4).getId(), Integer.valueOf(1));
+          }
         }
-        else
+        int i = 0;
+        localObject3 = ((HashMap)localObject1).keySet().iterator();
+        while (((Iterator)localObject3).hasNext())
         {
-          localObject1.put(((FilterManagerInternal.FilterChain)localObject2).getId(), Integer.valueOf(1));
+          localObject4 = (String)((Iterator)localObject3).next();
+          int j = ((Integer)((HashMap)localObject1).get(localObject4)).intValue();
+          if (j >= 2)
+          {
+            i += 1;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(" key=");
+            localStringBuilder.append((String)localObject4);
+            localStringBuilder.append(" value=");
+            localStringBuilder.append(j);
+            printLog("checkStackIsLeakage", localStringBuilder.toString(), null);
+          }
         }
+        localObject1 = generateStackTrace();
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(" count=");
+        ((StringBuilder)localObject3).append(i);
+        ((StringBuilder)localObject3).append(" traceInfo=");
+        ((StringBuilder)localObject3).append((String)localObject1);
+        printLog("checkStackIsLeakage", ((StringBuilder)localObject3).toString(), null);
       }
-      finally {}
+      return;
     }
-    int i = 0;
-    Iterator localIterator = localObject1.keySet().iterator();
+    finally {}
     for (;;)
     {
-      if (localIterator.hasNext())
-      {
-        localObject2 = (String)localIterator.next();
-        int j = ((Integer)localObject1.get(localObject2)).intValue();
-        if (j >= 2)
-        {
-          printLog("checkStackIsLeakage", " key=" + (String)localObject2 + " value=" + j, null);
-          i += 1;
-        }
-      }
-      else
-      {
-        String str = generateStackTrace();
-        printLog("checkStackIsLeakage", " count=" + i + " traceInfo=" + str, null);
-        label256:
-        return;
-      }
+      throw localObject2;
     }
   }
   
   private void checkThreadSecurity(String paramString)
   {
-    if (!isExeInGlThread()) {
-      throw new RuntimeException("在非渲染线程执行: [" + paramString + "] threadName=" + Thread.currentThread().getName());
+    if (isExeInGlThread()) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("在非渲染线程执行: [");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("] threadName=");
+    localStringBuilder.append(Thread.currentThread().getName());
+    throw new RuntimeException(localStringBuilder.toString());
   }
   
   private void decQuote(FilterManagerInternal.FilterChain paramFilterChain)
@@ -115,19 +124,20 @@ final class FilterManagerInternal
   
   private void insertFollowSerial(int paramInt, Object paramObject, ArrayList<Integer> paramArrayList, ArrayList<Object> paramArrayList1)
   {
-    int k = paramArrayList.size();
+    int m = paramArrayList.size();
+    int k = 0;
     int j = 0;
     int i = 0;
-    while ((j < k) && (paramInt >= ((Integer)paramArrayList.get(j)).intValue()))
+    while ((j < m) && (paramInt >= ((Integer)paramArrayList.get(j)).intValue()))
     {
       i = j + 1;
-      j += 1;
+      j = i;
     }
     paramArrayList.add(i, Integer.valueOf(paramInt));
     if (i > paramArrayList1.size())
     {
       j = paramArrayList1.size();
-      paramInt = 0;
+      paramInt = k;
       while (paramInt < i - j)
       {
         paramArrayList1.add(null);
@@ -145,27 +155,18 @@ final class FilterManagerInternal
   
   private boolean isOldChainFollowSerial(ArrayList<Integer> paramArrayList)
   {
-    boolean bool2 = true;
     int j = ((Integer)paramArrayList.get(0)).intValue();
     int i = 1;
-    for (;;)
+    while (i < paramArrayList.size())
     {
-      boolean bool1 = bool2;
-      int k;
-      if (i < paramArrayList.size())
-      {
-        k = ((Integer)paramArrayList.get(i)).intValue();
-        if (j > k) {
-          bool1 = false;
-        }
-      }
-      else
-      {
-        return bool1;
+      int k = ((Integer)paramArrayList.get(i)).intValue();
+      if (j > k) {
+        return false;
       }
       i += 1;
       j = k;
     }
+    return true;
   }
   
   private void newAddQuote(FilterManagerInternal.FilterChain paramFilterChain)
@@ -184,66 +185,267 @@ final class FilterManagerInternal
     }
   }
   
+  /* Error */
   private void popAndReleaseInternal(String paramString, boolean paramBoolean)
   {
-    FilterManagerInternal.FilterChain localFilterChain;
-    for (;;)
-    {
-      try
-      {
-        checkThreadSecurity("popAndReleaseInternal");
-        try
-        {
-          localFilterChain = (FilterManagerInternal.FilterChain)this.mChains.peek();
-          if (localFilterChain != null) {
-            break label59;
-          }
-          this.mChains.pop();
-          printLog("popAndReleaseInternal", "currentChain=null", null);
-        }
-        catch (EmptyStackException paramString)
-        {
-          printLog("popAndReleaseInternal", "EmptyStackException", paramString);
-          continue;
-        }
-        return;
-      }
-      finally {}
-      label59:
-      if (TextUtils.isEmpty(paramString)) {
-        throw new RuntimeException("popAndRelease Id=" + paramString + " needRelease=" + paramBoolean + " realID=" + localFilterChain.mId);
-      }
-      if (!localFilterChain.mId.equalsIgnoreCase(paramString)) {
-        break;
-      }
-      this.mChains.pop();
-      printLog("popAndReleaseInternal", "pop " + localFilterChain.info, null);
-      runChainPauseInternal(localFilterChain);
-      decQuote(localFilterChain);
-      recoveryTopChainParams();
-      printLog("popAndReleaseInternal", "needRelease " + paramBoolean, null);
-      if (paramBoolean) {
-        releaseChainResource(localFilterChain);
-      }
-    }
-    throw new RuntimeException("popAndRelease Id=" + paramString + " currentChain.mId=" + localFilterChain.mId);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: ldc 236
+    //   5: invokespecial 238	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:checkThreadSecurity	(Ljava/lang/String;)V
+    //   8: aload_0
+    //   9: getfield 39	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:mChains	Ljava/util/Stack;
+    //   12: invokevirtual 241	java/util/Stack:peek	()Ljava/lang/Object;
+    //   15: checkcast 66	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal$FilterChain
+    //   18: astore_3
+    //   19: aload_3
+    //   20: ifnonnull +22 -> 42
+    //   23: aload_0
+    //   24: getfield 39	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:mChains	Ljava/util/Stack;
+    //   27: invokevirtual 244	java/util/Stack:pop	()Ljava/lang/Object;
+    //   30: pop
+    //   31: ldc 236
+    //   33: ldc 246
+    //   35: aconst_null
+    //   36: invokestatic 122	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:printLog	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   39: aload_0
+    //   40: monitorexit
+    //   41: return
+    //   42: aload_1
+    //   43: invokestatic 252	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   46: ifne +172 -> 218
+    //   49: aload_3
+    //   50: getfield 255	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal$FilterChain:mId	Ljava/lang/String;
+    //   53: aload_1
+    //   54: invokevirtual 259	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   57: ifeq +104 -> 161
+    //   60: aload_0
+    //   61: getfield 39	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:mChains	Ljava/util/Stack;
+    //   64: invokevirtual 244	java/util/Stack:pop	()Ljava/lang/Object;
+    //   67: pop
+    //   68: new 102	java/lang/StringBuilder
+    //   71: dup
+    //   72: invokespecial 103	java/lang/StringBuilder:<init>	()V
+    //   75: astore_1
+    //   76: aload_1
+    //   77: ldc_w 261
+    //   80: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   83: pop
+    //   84: aload_1
+    //   85: aload_3
+    //   86: getfield 264	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal$FilterChain:info	Ljava/lang/String;
+    //   89: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   92: pop
+    //   93: ldc 236
+    //   95: aload_1
+    //   96: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   99: aconst_null
+    //   100: invokestatic 122	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:printLog	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   103: aload_0
+    //   104: aload_3
+    //   105: invokespecial 267	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:runChainPauseInternal	(Lcom/tencent/mobileqq/shortvideo/filter/FilterManagerInternal$FilterChain;)V
+    //   108: aload_0
+    //   109: aload_3
+    //   110: invokespecial 269	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:decQuote	(Lcom/tencent/mobileqq/shortvideo/filter/FilterManagerInternal$FilterChain;)V
+    //   113: aload_0
+    //   114: invokespecial 272	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:recoveryTopChainParams	()V
+    //   117: new 102	java/lang/StringBuilder
+    //   120: dup
+    //   121: invokespecial 103	java/lang/StringBuilder:<init>	()V
+    //   124: astore_1
+    //   125: aload_1
+    //   126: ldc_w 274
+    //   129: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   132: pop
+    //   133: aload_1
+    //   134: iload_2
+    //   135: invokevirtual 277	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   138: pop
+    //   139: ldc 236
+    //   141: aload_1
+    //   142: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   145: aconst_null
+    //   146: invokestatic 122	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:printLog	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   149: iload_2
+    //   150: ifeq +8 -> 158
+    //   153: aload_0
+    //   154: aload_3
+    //   155: invokespecial 280	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:releaseChainResource	(Lcom/tencent/mobileqq/shortvideo/filter/FilterManagerInternal$FilterChain;)V
+    //   158: aload_0
+    //   159: monitorexit
+    //   160: return
+    //   161: new 102	java/lang/StringBuilder
+    //   164: dup
+    //   165: invokespecial 103	java/lang/StringBuilder:<init>	()V
+    //   168: astore 4
+    //   170: aload 4
+    //   172: ldc_w 282
+    //   175: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   178: pop
+    //   179: aload 4
+    //   181: aload_1
+    //   182: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   185: pop
+    //   186: aload 4
+    //   188: ldc_w 284
+    //   191: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   194: pop
+    //   195: aload 4
+    //   197: aload_3
+    //   198: getfield 255	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal$FilterChain:mId	Ljava/lang/String;
+    //   201: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   204: pop
+    //   205: new 149	java/lang/RuntimeException
+    //   208: dup
+    //   209: aload 4
+    //   211: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   214: invokespecial 151	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   217: athrow
+    //   218: new 102	java/lang/StringBuilder
+    //   221: dup
+    //   222: invokespecial 103	java/lang/StringBuilder:<init>	()V
+    //   225: astore 4
+    //   227: aload 4
+    //   229: ldc_w 282
+    //   232: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   235: pop
+    //   236: aload 4
+    //   238: aload_1
+    //   239: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   242: pop
+    //   243: aload 4
+    //   245: ldc_w 286
+    //   248: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   251: pop
+    //   252: aload 4
+    //   254: iload_2
+    //   255: invokevirtual 277	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   258: pop
+    //   259: aload 4
+    //   261: ldc_w 288
+    //   264: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   267: pop
+    //   268: aload 4
+    //   270: aload_3
+    //   271: getfield 255	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal$FilterChain:mId	Ljava/lang/String;
+    //   274: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   277: pop
+    //   278: new 149	java/lang/RuntimeException
+    //   281: dup
+    //   282: aload 4
+    //   284: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   287: invokespecial 151	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   290: athrow
+    //   291: astore_1
+    //   292: ldc 236
+    //   294: ldc_w 290
+    //   297: aload_1
+    //   298: invokestatic 122	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:printLog	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   301: aload_0
+    //   302: monitorexit
+    //   303: return
+    //   304: astore_1
+    //   305: aload_0
+    //   306: monitorexit
+    //   307: aload_1
+    //   308: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	309	0	this	FilterManagerInternal
+    //   0	309	1	paramString	String
+    //   0	309	2	paramBoolean	boolean
+    //   18	253	3	localFilterChain	FilterManagerInternal.FilterChain
+    //   168	115	4	localStringBuilder	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   8	19	291	java/util/EmptyStackException
+    //   2	8	304	finally
+    //   8	19	304	finally
+    //   23	39	304	finally
+    //   42	149	304	finally
+    //   153	158	304	finally
+    //   161	218	304	finally
+    //   218	291	304	finally
+    //   292	301	304	finally
   }
   
   private static void printLog(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (paramThrowable != null) {
-      if (SLog.isEnable()) {
-        SLog.e("FilterManagerInternal", paramString1 + ": " + paramString2, paramThrowable);
+    if (paramThrowable != null)
+    {
+      if (SLog.isEnable())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append(": ");
+        localStringBuilder.append(paramString2);
+        SLog.e("FilterManagerInternal", localStringBuilder.toString(), paramThrowable);
       }
     }
-    while (!SLog.isEnable()) {
-      return;
+    else if (SLog.isEnable())
+    {
+      paramThrowable = new StringBuilder();
+      paramThrowable.append(paramString1);
+      paramThrowable.append(": ");
+      paramThrowable.append(paramString2);
+      SLog.i("FilterManagerInternal", paramThrowable.toString());
     }
-    SLog.i("FilterManagerInternal", paramString1 + ": " + paramString2);
+  }
+  
+  private void printStackReleaseInfo()
+  {
+    try
+    {
+      try
+      {
+        Object localObject1 = (FilterManagerInternal.FilterChain)this.mChains.peek();
+        Object localObject3;
+        if (localObject1 != null)
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("top ");
+          ((StringBuilder)localObject3).append(((FilterManagerInternal.FilterChain)localObject1).info);
+          printLog("printReleaseInfo", ((StringBuilder)localObject3).toString(), null);
+        }
+        if (this.mChains.size() > 0)
+        {
+          localObject1 = this.mChains.iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            localObject3 = (FilterManagerInternal.FilterChain)((Iterator)localObject1).next();
+            if (localObject3 != null)
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("For ");
+              localStringBuilder.append(((FilterManagerInternal.FilterChain)localObject3).info);
+              printLog("printReleaseInfo", localStringBuilder.toString(), null);
+            }
+          }
+        }
+        printLog("printReleaseInfo", " mChains.size()=0", null);
+      }
+      finally
+      {
+        break label163;
+      }
+    }
+    catch (EmptyStackException localEmptyStackException)
+    {
+      label150:
+      label163:
+      break label150;
+    }
+    printLog("printReleaseInfo", " EmptyStackException", null);
+    return;
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   /* Error */
-  private void printStackReleaseInfo()
+  private String pushChainInternal(int[] paramArrayOfInt, Object[] paramArrayOfObject)
   {
     // Byte code:
     //   0: aload_0
@@ -252,117 +454,84 @@ final class FilterManagerInternal
     //   3: getfield 39	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:mChains	Ljava/util/Stack;
     //   6: invokevirtual 241	java/util/Stack:peek	()Ljava/lang/Object;
     //   9: checkcast 66	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal$FilterChain
-    //   12: astore_1
-    //   13: aload_1
-    //   14: ifnull +33 -> 47
-    //   17: ldc_w 307
-    //   20: new 103	java/lang/StringBuilder
-    //   23: dup
-    //   24: invokespecial 104	java/lang/StringBuilder:<init>	()V
-    //   27: ldc_w 309
-    //   30: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   33: aload_1
-    //   34: getfield 275	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal$FilterChain:info	Ljava/lang/String;
-    //   37: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   40: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   43: aconst_null
-    //   44: invokestatic 122	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:printLog	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   47: aload_0
-    //   48: getfield 39	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:mChains	Ljava/util/Stack;
-    //   51: invokevirtual 47	java/util/Stack:size	()I
-    //   54: ifle +81 -> 135
-    //   57: aload_0
-    //   58: getfield 39	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:mChains	Ljava/util/Stack;
-    //   61: invokevirtual 54	java/util/Stack:iterator	()Ljava/util/Iterator;
-    //   64: astore_1
-    //   65: aload_1
-    //   66: invokeinterface 60 1 0
-    //   71: ifeq +61 -> 132
-    //   74: aload_1
-    //   75: invokeinterface 64 1 0
-    //   80: checkcast 66	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal$FilterChain
-    //   83: astore_2
-    //   84: aload_2
-    //   85: ifnull -20 -> 65
-    //   88: ldc_w 307
-    //   91: new 103	java/lang/StringBuilder
-    //   94: dup
-    //   95: invokespecial 104	java/lang/StringBuilder:<init>	()V
-    //   98: ldc_w 311
-    //   101: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   104: aload_2
-    //   105: getfield 275	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal$FilterChain:info	Ljava/lang/String;
-    //   108: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   111: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   114: aconst_null
-    //   115: invokestatic 122	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:printLog	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   118: goto -53 -> 65
-    //   121: astore_1
-    //   122: ldc_w 307
-    //   125: ldc_w 313
-    //   128: aconst_null
-    //   129: invokestatic 122	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:printLog	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   132: aload_0
-    //   133: monitorexit
-    //   134: return
-    //   135: ldc_w 307
-    //   138: ldc_w 315
-    //   141: aconst_null
-    //   142: invokestatic 122	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:printLog	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   145: goto -13 -> 132
-    //   148: astore_1
-    //   149: aload_0
-    //   150: monitorexit
-    //   151: aload_1
-    //   152: athrow
+    //   12: astore_3
+    //   13: goto +53 -> 66
+    //   16: astore_1
+    //   17: goto +103 -> 120
+    //   20: astore_3
+    //   21: aload_3
+    //   22: invokevirtual 320	java/util/EmptyStackException:printStackTrace	()V
+    //   25: new 102	java/lang/StringBuilder
+    //   28: dup
+    //   29: invokespecial 103	java/lang/StringBuilder:<init>	()V
+    //   32: astore_3
+    //   33: aload_3
+    //   34: ldc_w 322
+    //   37: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   40: pop
+    //   41: aload_3
+    //   42: aload_0
+    //   43: getfield 39	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:mChains	Ljava/util/Stack;
+    //   46: invokevirtual 47	java/util/Stack:size	()I
+    //   49: invokevirtual 114	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   52: pop
+    //   53: ldc_w 323
+    //   56: aload_3
+    //   57: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   60: aconst_null
+    //   61: invokestatic 122	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:printLog	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   64: aconst_null
+    //   65: astore_3
+    //   66: new 66	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal$FilterChain
+    //   69: dup
+    //   70: aload_0
+    //   71: aload_1
+    //   72: aload_2
+    //   73: invokespecial 326	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal$FilterChain:<init>	(Lcom/tencent/mobileqq/shortvideo/filter/FilterManagerInternal;[I[Ljava/lang/Object;)V
+    //   76: astore_1
+    //   77: aload_1
+    //   78: aload_3
+    //   79: putfield 330	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal$FilterChain:oldTopChain	Lcom/tencent/mobileqq/shortvideo/filter/FilterManagerInternal$FilterChain;
+    //   82: aload_0
+    //   83: aload_1
+    //   84: invokespecial 332	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:newAddQuote	(Lcom/tencent/mobileqq/shortvideo/filter/FilterManagerInternal$FilterChain;)V
+    //   87: aload_0
+    //   88: getfield 39	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:mChains	Ljava/util/Stack;
+    //   91: aload_1
+    //   92: invokevirtual 335	java/util/Stack:push	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   95: pop
+    //   96: ldc_w 323
+    //   99: aload_1
+    //   100: getfield 264	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal$FilterChain:info	Ljava/lang/String;
+    //   103: aconst_null
+    //   104: invokestatic 122	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:printLog	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   107: aload_0
+    //   108: invokespecial 337	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:checkStackIsLeakage	()V
+    //   111: aload_1
+    //   112: invokevirtual 70	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal$FilterChain:getId	()Ljava/lang/String;
+    //   115: astore_1
+    //   116: aload_0
+    //   117: monitorexit
+    //   118: aload_1
+    //   119: areturn
+    //   120: aload_0
+    //   121: monitorexit
+    //   122: aload_1
+    //   123: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	153	0	this	FilterManagerInternal
-    //   12	63	1	localObject1	Object
-    //   121	1	1	localEmptyStackException	EmptyStackException
-    //   148	4	1	localObject2	Object
-    //   83	22	2	localFilterChain	FilterManagerInternal.FilterChain
+    //   0	124	0	this	FilterManagerInternal
+    //   0	124	1	paramArrayOfInt	int[]
+    //   0	124	2	paramArrayOfObject	Object[]
+    //   12	1	3	localFilterChain	FilterManagerInternal.FilterChain
+    //   20	2	3	localEmptyStackException	EmptyStackException
+    //   32	47	3	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   2	13	121	java/util/EmptyStackException
-    //   17	47	121	java/util/EmptyStackException
-    //   47	65	121	java/util/EmptyStackException
-    //   65	84	121	java/util/EmptyStackException
-    //   88	118	121	java/util/EmptyStackException
-    //   135	145	121	java/util/EmptyStackException
-    //   2	13	148	finally
-    //   17	47	148	finally
-    //   47	65	148	finally
-    //   65	84	148	finally
-    //   88	118	148	finally
-    //   122	132	148	finally
-    //   135	145	148	finally
-  }
-  
-  private String pushChainInternal(int[] paramArrayOfInt, Object[] paramArrayOfObject)
-  {
-    try
-    {
-      FilterManagerInternal.FilterChain localFilterChain = (FilterManagerInternal.FilterChain)this.mChains.peek();
-      paramArrayOfInt = new FilterManagerInternal.FilterChain(this, paramArrayOfInt, paramArrayOfObject);
-      paramArrayOfInt.oldTopChain = localFilterChain;
-      newAddQuote(paramArrayOfInt);
-      this.mChains.push(paramArrayOfInt);
-      printLog("pushChainInternal", paramArrayOfInt.info, null);
-      checkStackIsLeakage();
-      paramArrayOfInt = paramArrayOfInt.getId();
-      return paramArrayOfInt;
-    }
-    catch (EmptyStackException localEmptyStackException)
-    {
-      for (;;)
-      {
-        localEmptyStackException.printStackTrace();
-        printLog("pushChainInternal", " EmptyStackException[First push] size=" + this.mChains.size(), null);
-        Object localObject = null;
-      }
-    }
-    finally {}
+    //   2	13	16	finally
+    //   21	64	16	finally
+    //   66	116	16	finally
+    //   2	13	20	java/util/EmptyStackException
   }
   
   private void pushChainRunSecurity(FilterManagerInternal.FilterChain paramFilterChain1, FilterManagerInternal.FilterChain paramFilterChain2)
@@ -384,24 +553,28 @@ final class FilterManagerInternal
         printLog("recoveryTopChainParams", "peek currentChain=null", null);
         return;
       }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("peek ");
+      localStringBuilder.append(localFilterChain.info);
+      printLog("recoveryTopChainParams", localStringBuilder.toString(), null);
+      if (localFilterChain.mFilters != null)
+      {
+        int i = 0;
+        while (i < localFilterChain.mFilters.length)
+        {
+          ((QQBaseFilter)localFilterChain.mHighCache.get(i)).setSpecificParam(localFilterChain.getParam(i));
+          i += 1;
+        }
+      }
+      runChainResumeInternal(localFilterChain);
+      return;
     }
     catch (EmptyStackException localEmptyStackException)
     {
-      while (!SLog.isEnable()) {}
-      SLog.e("FilterManagerInternal", "recoveryTopChainParams: peek=null", localEmptyStackException);
-      return;
-    }
-    printLog("recoveryTopChainParams", "peek " + localEmptyStackException.info, null);
-    if (localEmptyStackException.mFilters != null)
-    {
-      int i = 0;
-      while (i < localEmptyStackException.mFilters.length)
-      {
-        ((QQBaseFilter)localEmptyStackException.mHighCache.get(i)).setSpecificParam(localEmptyStackException.getParam(i));
-        i += 1;
+      if (SLog.isEnable()) {
+        SLog.e("FilterManagerInternal", "recoveryTopChainParams: peek=null", localEmptyStackException);
       }
     }
-    runChainResumeInternal(localEmptyStackException);
   }
   
   private void releaseChainResource(FilterManagerInternal.FilterChain paramFilterChain)
@@ -418,7 +591,10 @@ final class FilterManagerInternal
         QQBaseFilter localQQBaseFilter = this.mCacheQueue.getFilterByType(k);
         if (localQQBaseFilter.mQuoteCount.get() == 0)
         {
-          printLog("releaseChainResource", " [cnt=0] name=" + localQQBaseFilter.getClass().getName(), null);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" [cnt=0] name=");
+          localStringBuilder.append(localQQBaseFilter.getClass().getName());
+          printLog("releaseChainResource", localStringBuilder.toString(), null);
           localQQBaseFilter.onSurfaceDestroy();
           localQQBaseFilter.mStatus = 0;
           this.mCacheQueue.removeFilter(k);
@@ -468,17 +644,20 @@ final class FilterManagerInternal
     try
     {
       Object localObject = (FilterManagerInternal.FilterChain)this.mChains.peek();
-      if ((localObject != null) && (((FilterManagerInternal.FilterChain)localObject).hasFilterType(paramInt)))
-      {
-        localObject = this.mCacheQueue.getFilterByType(paramInt);
-        return localObject;
+      if ((localObject == null) || (!((FilterManagerInternal.FilterChain)localObject).hasFilterType(paramInt))) {
+        break label49;
       }
+      localObject = this.mCacheQueue.getFilterByType(paramInt);
+      return localObject;
     }
     catch (EmptyStackException localEmptyStackException)
     {
-      if (SLog.isEnable()) {
-        SLog.e("FilterManagerInternal", "currentChainGetFilter: EmptyStackException ", null);
-      }
+      label34:
+      label49:
+      break label34;
+    }
+    if (SLog.isEnable()) {
+      SLog.e("FilterManagerInternal", "currentChainGetFilter: EmptyStackException ", null);
     }
     return null;
   }
@@ -503,125 +682,58 @@ final class FilterManagerInternal
     return false;
   }
   
-  /* Error */
   final String generateStackTrace()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: new 103	java/lang/StringBuilder
-    //   5: dup
-    //   6: invokespecial 104	java/lang/StringBuilder:<init>	()V
-    //   9: astore_2
-    //   10: aload_0
-    //   11: getfield 39	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:mChains	Ljava/util/Stack;
-    //   14: invokevirtual 241	java/util/Stack:peek	()Ljava/lang/Object;
-    //   17: checkcast 66	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal$FilterChain
-    //   20: astore_3
-    //   21: aload_2
-    //   22: ldc_w 407
-    //   25: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   28: pop
-    //   29: aload_3
-    //   30: ifnull +96 -> 126
-    //   33: aload_2
-    //   34: aload_3
-    //   35: getfield 275	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal$FilterChain:info	Ljava/lang/String;
-    //   38: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   41: pop
-    //   42: aload_2
-    //   43: ldc_w 409
-    //   46: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   49: pop
-    //   50: aload_2
-    //   51: ldc_w 411
-    //   54: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   57: pop
-    //   58: aload_0
-    //   59: getfield 39	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:mChains	Ljava/util/Stack;
-    //   62: invokevirtual 47	java/util/Stack:size	()I
-    //   65: istore_1
-    //   66: aload_2
-    //   67: iload_1
-    //   68: invokevirtual 115	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   71: pop
-    //   72: iload_1
-    //   73: ifle +73 -> 146
-    //   76: aload_0
-    //   77: getfield 39	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:mChains	Ljava/util/Stack;
-    //   80: invokevirtual 47	java/util/Stack:size	()I
-    //   83: iconst_1
-    //   84: isub
-    //   85: istore_1
-    //   86: iload_1
-    //   87: iflt +59 -> 146
-    //   90: aload_0
-    //   91: getfield 39	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal:mChains	Ljava/util/Stack;
-    //   94: iload_1
-    //   95: invokevirtual 412	java/util/Stack:get	(I)Ljava/lang/Object;
-    //   98: checkcast 66	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal$FilterChain
-    //   101: astore_3
-    //   102: aload_2
-    //   103: ldc_w 409
-    //   106: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   109: pop
-    //   110: aload_2
-    //   111: aload_3
-    //   112: getfield 275	com/tencent/mobileqq/shortvideo/filter/FilterManagerInternal$FilterChain:info	Ljava/lang/String;
-    //   115: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   118: pop
-    //   119: iload_1
-    //   120: iconst_1
-    //   121: isub
-    //   122: istore_1
-    //   123: goto -37 -> 86
-    //   126: aload_2
-    //   127: ldc_w 414
-    //   130: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   133: pop
-    //   134: goto -92 -> 42
-    //   137: astore_3
-    //   138: aload_2
-    //   139: ldc_w 416
-    //   142: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   145: pop
-    //   146: aload_2
-    //   147: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   150: astore_2
-    //   151: aload_0
-    //   152: monitorexit
-    //   153: aload_2
-    //   154: areturn
-    //   155: astore_2
-    //   156: aload_0
-    //   157: monitorexit
-    //   158: aload_2
-    //   159: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	160	0	this	FilterManagerInternal
-    //   65	58	1	i	int
-    //   9	145	2	localObject1	Object
-    //   155	4	2	localObject2	Object
-    //   20	92	3	localFilterChain	FilterManagerInternal.FilterChain
-    //   137	1	3	localEmptyStackException	EmptyStackException
-    // Exception table:
-    //   from	to	target	type
-    //   10	29	137	java/util/EmptyStackException
-    //   33	42	137	java/util/EmptyStackException
-    //   42	72	137	java/util/EmptyStackException
-    //   76	86	137	java/util/EmptyStackException
-    //   90	119	137	java/util/EmptyStackException
-    //   126	134	137	java/util/EmptyStackException
-    //   2	10	155	finally
-    //   10	29	155	finally
-    //   33	42	155	finally
-    //   42	72	155	finally
-    //   76	86	155	finally
-    //   90	119	155	finally
-    //   126	134	155	finally
-    //   138	146	155	finally
-    //   146	151	155	finally
+    try
+    {
+      localObject1 = new StringBuilder();
+    }
+    finally
+    {
+      Object localObject1;
+      FilterManagerInternal.FilterChain localFilterChain;
+      int i;
+      label137:
+      label145:
+      for (;;)
+      {
+        label97:
+        throw localObject2;
+      }
+    }
+    try
+    {
+      localFilterChain = (FilterManagerInternal.FilterChain)this.mChains.peek();
+      ((StringBuilder)localObject1).append("current: ");
+      if (localFilterChain != null) {
+        ((StringBuilder)localObject1).append(localFilterChain.info);
+      } else {
+        ((StringBuilder)localObject1).append("null");
+      }
+      ((StringBuilder)localObject1).append("\n");
+      ((StringBuilder)localObject1).append("stacktrace: ");
+      i = this.mChains.size();
+      ((StringBuilder)localObject1).append(i);
+      if (i <= 0) {
+        break label145;
+      }
+      i = this.mChains.size() - 1;
+      if (i < 0) {
+        break label145;
+      }
+      localFilterChain = (FilterManagerInternal.FilterChain)this.mChains.get(i);
+      ((StringBuilder)localObject1).append("\n");
+      ((StringBuilder)localObject1).append(localFilterChain.info);
+      i -= 1;
+      break label97;
+    }
+    catch (EmptyStackException localEmptyStackException)
+    {
+      break label137;
+    }
+    ((StringBuilder)localObject1).append("stack empty!");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    return localObject1;
   }
   
   void getAllActiveFilter(List<QQBaseFilter> paramList)
@@ -732,28 +844,32 @@ final class FilterManagerInternal
   {
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    if ((getCurrentChainData(localArrayList1, localArrayList2)) && (localArrayList1.size() > 0)) {
-      if (isOldChainFollowSerial(localArrayList1)) {
+    if ((getCurrentChainData(localArrayList1, localArrayList2)) && (localArrayList1.size() > 0))
+    {
+      if (isOldChainFollowSerial(localArrayList1))
+      {
         insertFollowSerial(paramInt, paramObject, localArrayList1, localArrayList2);
       }
-    }
-    for (;;)
-    {
-      return push(localArrayList1, localArrayList2);
-      int j = localArrayList1.size();
-      int k = localArrayList2.size();
-      int i = 0;
-      while (i < j - k)
+      else
       {
-        localArrayList2.add(null);
-        i += 1;
+        int j = localArrayList1.size();
+        int k = localArrayList2.size();
+        int i = 0;
+        while (i < j - k)
+        {
+          localArrayList2.add(null);
+          i += 1;
+        }
+        localArrayList1.add(Integer.valueOf(paramInt));
+        localArrayList2.add(paramObject);
       }
-      localArrayList1.add(Integer.valueOf(paramInt));
-      localArrayList2.add(paramObject);
-      continue;
+    }
+    else
+    {
       localArrayList1.add(Integer.valueOf(paramInt));
       localArrayList2.add(paramObject);
     }
+    return push(localArrayList1, localArrayList2);
   }
   
   boolean isFilterWork(int paramInt)
@@ -791,8 +907,9 @@ final class FilterManagerInternal
     }
     catch (EmptyStackException localEmptyStackException)
     {
-      while (!SLog.isEnable()) {}
-      SLog.e("FilterManagerInternal", "onCurrentChainPause: EmptyStackException ", localEmptyStackException);
+      if (SLog.isEnable()) {
+        SLog.e("FilterManagerInternal", "onCurrentChainPause: EmptyStackException ", localEmptyStackException);
+      }
     }
   }
   
@@ -806,8 +923,9 @@ final class FilterManagerInternal
     }
     catch (EmptyStackException localEmptyStackException)
     {
-      while (!SLog.isEnable()) {}
-      SLog.e("FilterManagerInternal", "onCurrentChainResume: EmptyStackException ", localEmptyStackException);
+      if (SLog.isEnable()) {
+        SLog.e("FilterManagerInternal", "onCurrentChainResume: EmptyStackException ", localEmptyStackException);
+      }
     }
   }
   
@@ -826,23 +944,20 @@ final class FilterManagerInternal
     Object localObject = null;
     if (paramArrayList != null)
     {
-      localObject = new int[paramArrayList.size()];
+      int[] arrayOfInt = new int[paramArrayList.size()];
       int i = 0;
       while (i < paramArrayList.size())
       {
-        localObject[i] = ((Integer)paramArrayList.get(i)).intValue();
+        arrayOfInt[i] = ((Integer)paramArrayList.get(i)).intValue();
         i += 1;
       }
-      if (paramArrayList1 == null) {
-        break label68;
+      paramArrayList = localObject;
+      if (paramArrayList1 != null) {
+        paramArrayList = paramArrayList1.toArray();
       }
+      return push(arrayOfInt, paramArrayList);
     }
-    label68:
-    for (paramArrayList = paramArrayList1.toArray();; paramArrayList = null)
-    {
-      localObject = push((int[])localObject, paramArrayList);
-      return localObject;
-    }
+    return null;
   }
   
   String push(int[] paramArrayOfInt)
@@ -857,66 +972,82 @@ final class FilterManagerInternal
   
   void releaseAllResource()
   {
-    printLog("releaseAllResource", "releaseAllResource currentThreadName=" + Thread.currentThread().getName(), null);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("releaseAllResource currentThreadName=");
+    ((StringBuilder)localObject).append(Thread.currentThread().getName());
+    printLog("releaseAllResource", ((StringBuilder)localObject).toString(), null);
     this.mReleased = true;
     printStackReleaseInfo();
     this.mChains.clear();
-    Iterator localIterator = this.mCacheQueue.getFilterList().iterator();
-    while (localIterator.hasNext())
+    localObject = this.mCacheQueue.getFilterList().iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      QQBaseFilter localQQBaseFilter = (QQBaseFilter)localIterator.next();
+      QQBaseFilter localQQBaseFilter = (QQBaseFilter)((Iterator)localObject).next();
       localQQBaseFilter.onSurfaceDestroy();
       localQQBaseFilter.mStatus = 0;
-      printLog("releaseAllResource", "releaseAllResource " + localQQBaseFilter.getClass().getName(), null);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("releaseAllResource ");
+      localStringBuilder.append(localQQBaseFilter.getClass().getName());
+      printLog("releaseAllResource", localStringBuilder.toString(), null);
     }
     this.mCacheQueue.clearAll();
   }
   
   int runChain(int paramInt)
   {
-    printLog("runChain", "runChain currentThreadName=" + Thread.currentThread().getName(), null);
-    if (this.mReleased) {
-      SLog.e("FilterManagerInternal", "runChain: mReleased=true");
-    }
-    Object localObject1;
-    do
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("runChain currentThreadName=");
+    ((StringBuilder)localObject1).append(Thread.currentThread().getName());
+    printLog("runChain", ((StringBuilder)localObject1).toString(), null);
+    if (this.mReleased)
     {
+      SLog.e("FilterManagerInternal", "runChain: mReleased=true");
       return paramInt;
-      try
-      {
-        FilterManagerInternal.FilterChain localFilterChain = (FilterManagerInternal.FilterChain)this.mChains.peek();
-        if (localFilterChain == null)
-        {
-          printLog("runChain", "peek currentChain=null", null);
-          return paramInt;
-        }
-      }
-      catch (EmptyStackException localEmptyStackException)
-      {
-        for (;;)
-        {
-          printLog("FilterManagerInternal", "peek == null", null);
-          localObject1 = null;
-        }
-      }
-    } while (((FilterManagerInternal.FilterChain)localObject1).mFilters == null);
+    }
+    try
+    {
+      localObject1 = (FilterManagerInternal.FilterChain)this.mChains.peek();
+    }
+    catch (EmptyStackException localEmptyStackException)
+    {
+      label74:
+      Object localObject2;
+      int i;
+      Object localObject3;
+      break label74;
+    }
+    printLog("FilterManagerInternal", "peek == null", null);
+    localObject1 = null;
+    if (localObject1 == null)
+    {
+      printLog("runChain", "peek currentChain=null", null);
+      return paramInt;
+    }
+    if (((FilterManagerInternal.FilterChain)localObject1).mFilters == null) {
+      return paramInt;
+    }
     if (((FilterManagerInternal.FilterChain)localObject1).mCreateResume) {
       pushChainRunSecurity((FilterManagerInternal.FilterChain)localObject1, ((FilterManagerInternal.FilterChain)localObject1).oldTopChain);
     }
-    Object localObject2 = ((FilterManagerInternal.FilterChain)localObject1).mHighCache.iterator();
-    while (((Iterator)localObject2).hasNext())
+    localObject2 = ((FilterManagerInternal.FilterChain)localObject1).mHighCache.iterator();
+    for (;;)
     {
-      QQBaseFilter localQQBaseFilter = (QQBaseFilter)((Iterator)localObject2).next();
-      if (localQQBaseFilter.mStatus == 0)
-      {
-        localQQBaseFilter.onSurfaceCreate();
-        localQQBaseFilter.onSurfaceChange(this.mCommonParam.getFilterWidth(), this.mCommonParam.getFilterHeight());
-        localQQBaseFilter.mStatus = 2;
+      boolean bool = ((Iterator)localObject2).hasNext();
+      i = 2;
+      if (!bool) {
+        break;
       }
-      else if (localQQBaseFilter.mStatus == 1)
+      localObject3 = (QQBaseFilter)((Iterator)localObject2).next();
+      if (((QQBaseFilter)localObject3).mStatus == 0)
       {
-        localQQBaseFilter.onSurfaceChange(this.mCommonParam.getFilterWidth(), this.mCommonParam.getFilterHeight());
-        localQQBaseFilter.mStatus = 2;
+        ((QQBaseFilter)localObject3).onSurfaceCreate();
+        ((QQBaseFilter)localObject3).onSurfaceChange(this.mCommonParam.getFilterWidth(), this.mCommonParam.getFilterHeight());
+        ((QQBaseFilter)localObject3).mStatus = 2;
+      }
+      else if (((QQBaseFilter)localObject3).mStatus == 1)
+      {
+        ((QQBaseFilter)localObject3).onSurfaceChange(this.mCommonParam.getFilterWidth(), this.mCommonParam.getFilterHeight());
+        ((QQBaseFilter)localObject3).mStatus = 2;
       }
     }
     if (((FilterManagerInternal.FilterChain)localObject1).mCreateResume)
@@ -933,30 +1064,35 @@ final class FilterManagerInternal
     }
     QQFilterLogManager.setLogStart("mFaceDetect");
     localObject2 = this.mFaceDetect;
-    if (this.needFaceDetect) {}
-    for (int i = 1;; i = 2)
+    if (this.needFaceDetect) {
+      i = 1;
+    }
+    ((QQFaceDetectBase)localObject2).setFaceDetectType(i);
+    this.mFaceDetect.setCaptureMode(this.isCaptureMode);
+    i = paramInt;
+    if (this.needFaceDetect)
     {
-      ((QQFaceDetectBase)localObject2).setFaceDetectType(i);
-      this.mFaceDetect.setCaptureMode(this.isCaptureMode);
-      i = paramInt;
-      if (this.needFaceDetect)
-      {
-        this.mFaceDetect.setInputTextureID(paramInt);
-        this.mFaceDetect.onDrawFrame();
-        i = this.mFaceDetect.getOutputTextureID();
-      }
-      QQFilterLogManager.setLogEnd("mFaceDetect: needFaceDetect=" + this.needFaceDetect);
-      localObject1 = ((FilterManagerInternal.FilterChain)localObject1).mHighCache.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (QQBaseFilter)((Iterator)localObject1).next();
-        ((QQBaseFilter)localObject2).setCaptureMode(this.isCaptureMode);
-        QQFilterLogManager.setOnDrawFilterStart();
-        ((QQBaseFilter)localObject2).setInputTextureID(i);
-        ((QQBaseFilter)localObject2).onDrawFrame();
-        i = ((QQBaseFilter)localObject2).getOutputTextureID();
-        QQFilterLogManager.setOnDrawFilterEnd("runChain: " + localObject2.getClass().getName());
-      }
+      this.mFaceDetect.setInputTextureID(paramInt);
+      this.mFaceDetect.onDrawFrame();
+      i = this.mFaceDetect.getOutputTextureID();
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("mFaceDetect: needFaceDetect=");
+    ((StringBuilder)localObject2).append(this.needFaceDetect);
+    QQFilterLogManager.setLogEnd(((StringBuilder)localObject2).toString());
+    localObject1 = ((FilterManagerInternal.FilterChain)localObject1).mHighCache.iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (QQBaseFilter)((Iterator)localObject1).next();
+      ((QQBaseFilter)localObject2).setCaptureMode(this.isCaptureMode);
+      QQFilterLogManager.setOnDrawFilterStart();
+      ((QQBaseFilter)localObject2).setInputTextureID(i);
+      ((QQBaseFilter)localObject2).onDrawFrame();
+      i = ((QQBaseFilter)localObject2).getOutputTextureID();
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("runChain: ");
+      ((StringBuilder)localObject3).append(localObject2.getClass().getName());
+      QQFilterLogManager.setOnDrawFilterEnd(((StringBuilder)localObject3).toString());
     }
     GLES20.glDisable(2929);
     FrameBufferCache.getInstance().forceRecycle();
@@ -976,23 +1112,20 @@ final class FilterManagerInternal
   
   void setFilterSpecificParam(int paramInt, Object paramObject)
   {
+    Object localObject;
     try
     {
       FilterManagerInternal.FilterChain localFilterChain = (FilterManagerInternal.FilterChain)this.mChains.peek();
-      if ((localFilterChain != null) && (localFilterChain.hasFilterType(paramInt))) {
-        this.mCacheQueue.getFilterByType(paramInt).setSpecificParam(paramObject);
-      }
-      return;
     }
     catch (EmptyStackException localEmptyStackException)
     {
-      for (;;)
-      {
-        if (SLog.isEnable()) {
-          SLog.e("FilterManagerInternal", "setFilterSpecificParam: EmptyStackException ", localEmptyStackException);
-        }
-        Object localObject = null;
+      if (SLog.isEnable()) {
+        SLog.e("FilterManagerInternal", "setFilterSpecificParam: EmptyStackException ", localEmptyStackException);
       }
+      localObject = null;
+    }
+    if ((localObject != null) && (localObject.hasFilterType(paramInt))) {
+      this.mCacheQueue.getFilterByType(paramInt).setSpecificParam(paramObject);
     }
   }
   
@@ -1003,7 +1136,7 @@ final class FilterManagerInternal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.FilterManagerInternal
  * JD-Core Version:    0.7.0.1
  */

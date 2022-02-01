@@ -17,7 +17,7 @@ public class QzoneAlbumJsPlugin
   extends QzoneInternalWebViewPlugin
 {
   public static final String NAMESPACE = "Qzone";
-  private static String TAG = QzoneAlbumJsPlugin.class.getSimpleName();
+  private static String TAG = "QzoneAlbumJsPlugin";
   
   private void defaultHandleMethodByBroadcast(WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString, String paramString)
   {
@@ -28,11 +28,12 @@ public class QzoneAlbumJsPlugin
       {
         paramArrayOfString = new Intent();
         paramArrayOfString.setAction(paramString);
-        if (paramPluginRuntime.a() != null) {
+        if (paramPluginRuntime.a() != null)
+        {
           paramPluginRuntime.a().sendBroadcast(paramArrayOfString);
+          return;
         }
       }
-      return;
     }
     catch (Exception paramPluginRuntime)
     {
@@ -43,49 +44,53 @@ public class QzoneAlbumJsPlugin
   private void handleAlbumFacadeCate(WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
   {
     Activity localActivity = this.parentPlugin.mRuntime.a();
-    if ((localActivity == null) || (localActivity.isFinishing())) {}
-    do
+    if (localActivity != null)
     {
-      String str;
-      do
-      {
+      if (localActivity.isFinishing()) {
         return;
-        try
+      }
+      try
+      {
+        paramArrayOfString = new JSONObject(paramArrayOfString[0]);
+        Object localObject2 = new Intent();
+        ((Intent)localObject2).putExtra("key_item_id", paramArrayOfString.optInt("item_id"));
+        ((Intent)localObject2).putExtra("key_thumb_url", paramArrayOfString.optString("thumb"));
+        ((Intent)localObject2).putExtra("key_item_type", paramArrayOfString.optInt("item_type"));
+        ((Intent)localObject2).setAction("action_album_skin_js_to_qzone");
+        String str = paramArrayOfString.optString("callback");
+        Object localObject1 = paramArrayOfString.optString("entry");
+        if (TextUtils.isEmpty((CharSequence)localObject1))
         {
-          paramArrayOfString = new JSONObject(paramArrayOfString[0]);
-          localObject2 = new Intent();
-          ((Intent)localObject2).putExtra("key_item_id", paramArrayOfString.optInt("item_id"));
-          ((Intent)localObject2).putExtra("key_thumb_url", paramArrayOfString.optString("thumb"));
-          ((Intent)localObject2).putExtra("key_item_type", paramArrayOfString.optInt("item_type"));
-          ((Intent)localObject2).setAction("action_album_skin_js_to_qzone");
-          str = paramArrayOfString.optString("callback");
-          localObject1 = paramArrayOfString.optString("entry");
-          if (TextUtils.isEmpty((CharSequence)localObject1))
+          this.parentPlugin.callJs(str, new String[] { "{\"result\":\"false\"}" });
+          return;
+        }
+        boolean bool = "createAlbum".equals(localObject1);
+        if ((bool) || ("editAlbum".equals(localObject1)) || ("personal".equals(localObject1)) || ("photolist".equals(localObject1)))
+        {
+          if (paramPluginRuntime.a() != null) {
+            paramPluginRuntime.a().sendBroadcast((Intent)localObject2);
+          }
+          this.parentPlugin.callJs(str, new String[] { "{\"result\":\"true\"}" });
+          paramPluginRuntime = this.parentPlugin.mRuntime.a();
+          if (("personal".equals(localObject1)) && (paramPluginRuntime != null))
           {
-            this.parentPlugin.callJs(str, new String[] { "{\"result\":\"false\"}" });
+            localObject1 = QZoneHelper.UserInfo.getInstance();
+            ((QZoneHelper.UserInfo)localObject1).qzone_uin = paramPluginRuntime.getCurrentAccountUin();
+            localObject2 = new BaseBusinessAlbumInfo();
+            ((BaseBusinessAlbumInfo)localObject2).mAlbumId = paramArrayOfString.optString("albumid");
+            ((BaseBusinessAlbumInfo)localObject2).mUin = paramPluginRuntime.getLongAccountUin();
+            ((BaseBusinessAlbumInfo)localObject2).mAlbumType = 0;
+            ((BaseBusinessAlbumInfo)localObject2).isIndividualityAlbum = true;
+            QZoneHelper.forwardToPersonalAlbumPhotoList(localActivity, (QZoneHelper.UserInfo)localObject1, (BaseBusinessAlbumInfo)localObject2, -1);
             return;
           }
         }
-        catch (JSONException paramPluginRuntime)
-        {
-          paramPluginRuntime.printStackTrace();
-          return;
-        }
-      } while ((!"createAlbum".equals(localObject1)) && (!"editAlbum".equals(localObject1)) && (!"personal".equals(localObject1)) && (!"photolist".equals(localObject1)));
-      if (paramPluginRuntime.a() != null) {
-        paramPluginRuntime.a().sendBroadcast((Intent)localObject2);
       }
-      this.parentPlugin.callJs(str, new String[] { "{\"result\":\"true\"}" });
-      paramPluginRuntime = this.parentPlugin.mRuntime.a();
-    } while ((!"personal".equals(localObject1)) || (paramPluginRuntime == null));
-    Object localObject1 = QZoneHelper.UserInfo.getInstance();
-    ((QZoneHelper.UserInfo)localObject1).qzone_uin = paramPluginRuntime.getCurrentAccountUin();
-    Object localObject2 = new BaseBusinessAlbumInfo();
-    ((BaseBusinessAlbumInfo)localObject2).mAlbumId = paramArrayOfString.optString("albumid");
-    ((BaseBusinessAlbumInfo)localObject2).mUin = paramPluginRuntime.getLongAccountUin();
-    ((BaseBusinessAlbumInfo)localObject2).mAlbumType = 0;
-    ((BaseBusinessAlbumInfo)localObject2).isIndividualityAlbum = true;
-    QZoneHelper.forwardToPersonalAlbumPhotoList(localActivity, (QZoneHelper.UserInfo)localObject1, (BaseBusinessAlbumInfo)localObject2, -1);
+      catch (JSONException paramPluginRuntime)
+      {
+        paramPluginRuntime.printStackTrace();
+      }
+    }
   }
   
   private void handleNotifyShareData(WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
@@ -100,11 +105,12 @@ public class QzoneAlbumJsPlugin
         if ((paramArrayOfString != null) && (paramArrayOfString.length > 0)) {
           ((Intent)localObject).putExtra("share_data", paramArrayOfString[0]);
         }
-        if (paramPluginRuntime.a() != null) {
+        if (paramPluginRuntime.a() != null)
+        {
           paramPluginRuntime.a().sendBroadcast((Intent)localObject);
+          return;
         }
       }
-      return;
     }
     catch (Exception paramPluginRuntime)
     {
@@ -133,11 +139,12 @@ public class QzoneAlbumJsPlugin
         localObject = new Intent();
         ((Intent)localObject).putExtra("key_album_comment_list_count", paramArrayOfString.optInt("count"));
         ((Intent)localObject).setAction("broadcastActionUpdateAlbumCommentList");
-        if (paramPluginRuntime.a() != null) {
+        if (paramPluginRuntime.a() != null)
+        {
           paramPluginRuntime.a().sendBroadcast((Intent)localObject);
+          return;
         }
       }
-      return;
     }
     catch (Exception paramPluginRuntime)
     {
@@ -147,40 +154,43 @@ public class QzoneAlbumJsPlugin
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((!paramString2.equals("Qzone")) || (this.parentPlugin == null) || (this.parentPlugin.mRuntime == null)) {
-      return false;
-    }
-    if ((paramString3.equalsIgnoreCase("SetAlbumSkin")) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
+    if ((paramString2.equals("Qzone")) && (this.parentPlugin != null))
     {
-      handleAlbumFacadeCate(this.parentPlugin.mRuntime, paramVarArgs);
-      return true;
-    }
-    if ((paramString3.equalsIgnoreCase("UpdateAlbumCommentList")) && (paramVarArgs != null) && (paramVarArgs.length > 0))
-    {
-      handleUpdateAlbumCommentList(this.parentPlugin.mRuntime, paramVarArgs);
-      return true;
-    }
-    if ("refreshPhotoList".equalsIgnoreCase(paramString3))
-    {
-      handleRefreshPhotoList(this.parentPlugin.mRuntime, paramVarArgs);
-      return true;
-    }
-    if ("RefreshAlbumList".equalsIgnoreCase(paramString3))
-    {
-      handleRefreshAlbumList(this.parentPlugin.mRuntime, paramVarArgs);
-      return true;
-    }
-    if ("getBlogArkShareData".equalsIgnoreCase(paramString3))
-    {
-      handleNotifyShareData(this.parentPlugin.mRuntime, paramVarArgs);
-      return true;
+      if (this.parentPlugin.mRuntime == null) {
+        return false;
+      }
+      if ((paramString3.equalsIgnoreCase("SetAlbumSkin")) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
+      {
+        handleAlbumFacadeCate(this.parentPlugin.mRuntime, paramVarArgs);
+        return true;
+      }
+      if ((paramString3.equalsIgnoreCase("UpdateAlbumCommentList")) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+      {
+        handleUpdateAlbumCommentList(this.parentPlugin.mRuntime, paramVarArgs);
+        return true;
+      }
+      if ("refreshPhotoList".equalsIgnoreCase(paramString3))
+      {
+        handleRefreshPhotoList(this.parentPlugin.mRuntime, paramVarArgs);
+        return true;
+      }
+      if ("RefreshAlbumList".equalsIgnoreCase(paramString3))
+      {
+        handleRefreshAlbumList(this.parentPlugin.mRuntime, paramVarArgs);
+        return true;
+      }
+      if ("getBlogArkShareData".equalsIgnoreCase(paramString3))
+      {
+        handleNotifyShareData(this.parentPlugin.mRuntime, paramVarArgs);
+        return true;
+      }
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneAlbumJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -43,20 +43,21 @@ class GeneralSettingActivity$1
   
   public void b(boolean paramBoolean, Bundle paramBundle)
   {
-    if (!this.a.isResume()) {
+    if (!this.a.isResume())
+    {
       if (QLog.isColorLevel()) {
         QLog.d("KidModeObserver", 1, "onSendGetKidModeStatusSuccess but setting Activity is not resume");
       }
-    }
-    while (!paramBoolean) {
       return;
     }
-    StudyModeManager.a(paramBundle.getInt("KID_MODE_NEED_VERIFY"));
+    if (paramBoolean) {
+      StudyModeManager.a(paramBundle.getInt("KID_MODE_NEED_VERIFY"));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GeneralSettingActivity.1
  * JD-Core Version:    0.7.0.1
  */

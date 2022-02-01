@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.activity.aio.avatardoubletap;
 
 import android.animation.ObjectAnimator;
+import android.util.Property;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.mobileqq.multiaio.MultiAIOStarter;
@@ -18,9 +19,12 @@ public class DoubleTapEffect
   
   private void a(View paramView)
   {
-    paramView.setPivotX(0.5F * paramView.getWidth());
-    paramView.setPivotY(1.0F * paramView.getHeight());
-    paramView = ObjectAnimator.ofFloat(paramView, View.ROTATION, new float[] { 0.0F, -10, 0.0F, 10, 0.0F, -10, 0.0F, 10, 0.0F });
+    paramView.setPivotX(paramView.getWidth() * 0.5F);
+    paramView.setPivotY(paramView.getHeight() * 1.0F);
+    Property localProperty = View.ROTATION;
+    float f1 = -10;
+    float f2 = 10;
+    paramView = ObjectAnimator.ofFloat(paramView, localProperty, new float[] { 0.0F, f1, 0.0F, f2, 0.0F, f1, 0.0F, f2, 0.0F });
     paramView.setDuration(300L);
     paramView.addListener(new DoubleTapEffect.1(this));
     paramView.start();
@@ -32,7 +36,7 @@ public class DoubleTapEffect
       QLog.d("DoubleTapEffect", 2, "start() called");
     }
     a(this.a);
-    View localView = ((ViewGroup)this.a.getParent()).findViewById(2131364654);
+    View localView = ((ViewGroup)this.a.getParent()).findViewById(2131364541);
     if ((localView != null) && (localView.isShown())) {
       a(localView);
     }
@@ -41,7 +45,7 @@ public class DoubleTapEffect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.avatardoubletap.DoubleTapEffect
  * JD-Core Version:    0.7.0.1
  */

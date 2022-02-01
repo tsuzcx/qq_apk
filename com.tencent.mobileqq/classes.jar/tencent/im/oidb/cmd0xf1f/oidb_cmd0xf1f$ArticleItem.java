@@ -20,13 +20,14 @@ public final class oidb_cmd0xf1f$ArticleItem
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40 }, new String[] { "bytes_rowkey", "uint64_feeds_id", "uint32_play_time", "uint32_is_end", "uint32_duration" }, new Object[] { localByteStringMicro, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, ArticleItem.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40 }, new String[] { "bytes_rowkey", "uint64_feeds_id", "uint32_play_time", "uint32_is_end", "uint32_duration" }, new Object[] { localByteStringMicro, Long.valueOf(0L), localInteger, localInteger, localInteger }, ArticleItem.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xf1f.oidb_cmd0xf1f.ArticleItem
  * JD-Core Version:    0.7.0.1
  */

@@ -21,14 +21,15 @@ public final class DefaultRoomInfo
   
   public static DefaultRoomInfo[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new DefaultRoomInfo[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new DefaultRoomInfo[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static DefaultRoomInfo parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -50,43 +51,48 @@ public final class DefaultRoomInfo
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
-    int n = 0;
     int j = super.computeSerializedSize();
+    int k = this.appid;
     int i = j;
-    if (this.appid != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(1, this.appid);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeUInt32Size(1, k);
     }
+    Object localObject = this.names;
     j = i;
-    if (this.names != null)
+    if (localObject != null)
     {
       j = i;
-      if (this.names.length > 0)
+      if (localObject.length > 0)
       {
-        int k = 0;
-        int m = 0;
-        j = n;
-        while (j < this.names.length)
+        j = 0;
+        k = 0;
+        int n;
+        for (int m = 0;; m = n)
         {
-          String str = this.names[j];
+          localObject = this.names;
+          if (j >= localObject.length) {
+            break;
+          }
+          localObject = localObject[j];
           int i1 = k;
           n = m;
-          if (str != null)
+          if (localObject != null)
           {
             n = m + 1;
-            i1 = k + CodedOutputByteBufferNano.computeStringSizeNoTag(str);
+            i1 = k + CodedOutputByteBufferNano.computeStringSizeNoTag((String)localObject);
           }
           j += 1;
           k = i1;
-          m = n;
         }
         j = i + k + m * 1;
       }
     }
+    k = this.logoNum;
     i = j;
-    if (this.logoNum != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(3, this.logoNum);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeUInt32Size(3, k);
     }
     return i;
   }
@@ -96,23 +102,32 @@ public final class DefaultRoomInfo
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.appid = paramCodedInputByteBufferNano.readUInt32();
+      if (i == 0) {
         break;
-      case 18: 
-        int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 18);
-        if (this.names == null) {}
-        String[] arrayOfString;
-        for (i = 0;; i = this.names.length)
+      }
+      if (i != 8)
+      {
+        if (i != 18)
         {
+          if (i != 24)
+          {
+            if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+              return this;
+            }
+          }
+          else {
+            this.logoNum = paramCodedInputByteBufferNano.readUInt32();
+          }
+        }
+        else
+        {
+          int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 18);
+          String[] arrayOfString = this.names;
+          if (arrayOfString == null) {
+            i = 0;
+          } else {
+            i = arrayOfString.length;
+          }
           arrayOfString = new String[j + i];
           j = i;
           if (i != 0)
@@ -126,41 +141,50 @@ public final class DefaultRoomInfo
             paramCodedInputByteBufferNano.readTag();
             j += 1;
           }
+          arrayOfString[j] = paramCodedInputByteBufferNano.readString();
+          this.names = arrayOfString;
         }
-        arrayOfString[j] = paramCodedInputByteBufferNano.readString();
-        this.names = arrayOfString;
-        break;
       }
-      this.logoNum = paramCodedInputByteBufferNano.readUInt32();
+      else {
+        this.appid = paramCodedInputByteBufferNano.readUInt32();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.appid != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(1, this.appid);
+    int i = this.appid;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(1, i);
     }
-    if ((this.names != null) && (this.names.length > 0))
+    Object localObject = this.names;
+    if ((localObject != null) && (localObject.length > 0))
     {
-      int i = 0;
-      while (i < this.names.length)
+      i = 0;
+      for (;;)
       {
-        String str = this.names[i];
-        if (str != null) {
-          paramCodedOutputByteBufferNano.writeString(2, str);
+        localObject = this.names;
+        if (i >= localObject.length) {
+          break;
+        }
+        localObject = localObject[i];
+        if (localObject != null) {
+          paramCodedOutputByteBufferNano.writeString(2, (String)localObject);
         }
         i += 1;
       }
     }
-    if (this.logoNum != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(3, this.logoNum);
+    i = this.logoNum;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(3, i);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.iliveRoomPlay.nano.DefaultRoomInfo
  * JD-Core Version:    0.7.0.1
  */

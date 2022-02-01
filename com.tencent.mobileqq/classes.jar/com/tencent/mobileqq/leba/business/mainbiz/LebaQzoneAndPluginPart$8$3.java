@@ -29,20 +29,24 @@ class LebaQzoneAndPluginPart$8$3
       if ((this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.jdField_a_of_type_AndroidWidgetImageSwitcher != null) && (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper != null)) {
         this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper.a(localArrayList);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.jdField_a_of_type_AndroidViewView != null) {
-        AccessibilityUtil.a(this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.jdField_a_of_type_AndroidViewView, HardCodeUtil.a(2131706034));
+      if (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.jdField_a_of_type_AndroidViewView != null)
+      {
+        AccessibilityUtil.a(this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.jdField_a_of_type_AndroidViewView, HardCodeUtil.a(2131706086));
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      QLog.e("Leba", 1, "updateQZoneRedFlag" + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateQZoneRedFlag");
+      localStringBuilder.append(localException);
+      QLog.e("Leba", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.mainbiz.LebaQzoneAndPluginPart.8.3
  * JD-Core Version:    0.7.0.1
  */

@@ -7,8 +7,8 @@ import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
 import android.hardware.Camera.PreviewCallback;
 import com.tencent.av.opengl.effects.CameraFrame;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
 public class MyPreviewCallback
@@ -17,7 +17,7 @@ public class MyPreviewCallback
 {
   public boolean a;
   
-  public MyPreviewCallback(AndroidCamera paramAndroidCamera, AndroidCamera.CameraPreviewCallback paramCameraPreviewCallback)
+  public MyPreviewCallback(AndroidCamera paramAndroidCamera, CameraPreviewCallback paramCameraPreviewCallback)
   {
     super(paramAndroidCamera, paramCameraPreviewCallback);
     this.jdField_a_of_type_Boolean = true;
@@ -28,8 +28,19 @@ public class MyPreviewCallback
     int i = ImageFormat.getBitsPerPixel(paramInt);
     float f = i * 1.0F / 8.0F;
     int j = (int)(AndroidCamera.b * AndroidCamera.jdField_a_of_type_Int * f);
-    if (AudioHelper.e()) {
-      QLog.w("MyPreviewCallback", 1, "getPreviewBufferSize, previewFormat[" + paramInt + "], bitPixel[" + i + "], byteNum[" + f + "], bufSize[" + j + "]");
+    if (AudioHelper.b())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getPreviewBufferSize, previewFormat[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("], bitPixel[");
+      localStringBuilder.append(i);
+      localStringBuilder.append("], byteNum[");
+      localStringBuilder.append(f);
+      localStringBuilder.append("], bufSize[");
+      localStringBuilder.append(j);
+      localStringBuilder.append("]");
+      QLog.w("MyPreviewCallback", 1, localStringBuilder.toString());
     }
     return j;
   }
@@ -42,24 +53,28 @@ public class MyPreviewCallback
     try
     {
       FrameBufMgr.a().a(paramInt);
+    }
+    catch (OutOfMemoryError localOutOfMemoryError2)
+    {
+      label17:
+      break label17;
+    }
+    URLDrawable.clearMemoryCache();
+    try
+    {
+      FrameBufMgr.a().a(paramInt);
       return true;
     }
     catch (OutOfMemoryError localOutOfMemoryError1)
     {
-      for (;;)
-      {
-        URLDrawable.clearMemoryCache();
-        try
-        {
-          FrameBufMgr.a().a(paramInt);
-        }
-        catch (OutOfMemoryError localOutOfMemoryError2)
-        {
-          QLog.e("MyPreviewCallback", 2, "allocateFrame failed , size:" + paramInt + ", " + localOutOfMemoryError2.getMessage());
-        }
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("allocateFrame failed , size:");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(localOutOfMemoryError1.getMessage());
+      QLog.e("MyPreviewCallback", 2, localStringBuilder.toString());
+      return false;
     }
-    return false;
   }
   
   public void a()
@@ -73,15 +88,15 @@ public class MyPreviewCallback
   public void a(long paramLong, SurfaceTexture paramSurfaceTexture)
   {
     this.jdField_a_of_type_ComTencentAvCameraPreviewCallbackInfo.a();
-    int j;
-    int k;
     int i;
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.a() != null)) {
-      if (a(a(this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.a().getPreviewFormat())))
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.a() != null))
+    {
+      boolean bool = a(a(this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.a().getPreviewFormat()));
+      i = 2;
+      if (bool)
       {
-        j = 0;
-        k = 0;
-        if (j < FrameBufMgr.a().a())
+        int j = 0;
+        for (int k = 0; j < FrameBufMgr.a().a(); k = i)
         {
           paramSurfaceTexture = FrameBufMgr.a().a(0);
           i = k;
@@ -91,29 +106,32 @@ public class MyPreviewCallback
             this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_a_of_type_AndroidHardwareCamera.addCallbackBuffer(paramSurfaceTexture);
             k += 1;
             i = k;
-            if (k < 2) {}
+            if (k >= 2) {
+              break;
+            }
           }
+          j += 1;
         }
-        else
-        {
-          this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_a_of_type_AndroidHardwareCamera.setPreviewCallbackWithBuffer(this);
-          i = 1;
-        }
+        this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_a_of_type_AndroidHardwareCamera.setPreviewCallbackWithBuffer(this);
+        i = 1;
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_a_of_type_AndroidHardwareCamera.setPreviewCallback(this);
       }
     }
-    for (;;)
+    else
     {
-      QLog.w("MyPreviewCallback", 1, "setPreviewCallback, type[" + i + "], seq[" + paramLong + "]");
-      return;
-      j += 1;
-      k = i;
-      break;
-      this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_a_of_type_AndroidHardwareCamera.setPreviewCallback(this);
-      i = 2;
-      continue;
       i = 3;
       this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_a_of_type_AndroidHardwareCamera.setPreviewCallback(this);
     }
+    paramSurfaceTexture = new StringBuilder();
+    paramSurfaceTexture.append("setPreviewCallback, type[");
+    paramSurfaceTexture.append(i);
+    paramSurfaceTexture.append("], seq[");
+    paramSurfaceTexture.append(paramLong);
+    paramSurfaceTexture.append("]");
+    QLog.w("MyPreviewCallback", 1, paramSurfaceTexture.toString());
   }
   
   @TargetApi(8)
@@ -121,93 +139,99 @@ public class MyPreviewCallback
   {
     if (paramArrayOfByte == null)
     {
-      if (AudioHelper.e()) {
-        QLog.w("MyPreviewCallback", 1, "onPreviewFrame, data is null, Camera[" + paramCamera + "], camera[" + this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_a_of_type_AndroidHardwareCamera + "]");
+      if (AudioHelper.b())
+      {
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("onPreviewFrame, data is null, Camera[");
+        paramArrayOfByte.append(paramCamera);
+        paramArrayOfByte.append("], camera[");
+        paramArrayOfByte.append(this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_a_of_type_AndroidHardwareCamera);
+        paramArrayOfByte.append("]");
+        QLog.w("MyPreviewCallback", 1, paramArrayOfByte.toString());
       }
       this.jdField_a_of_type_ComTencentAvCameraPreviewCallbackInfo.b();
-    }
-    int n;
-    int j;
-    int i;
-    boolean bool;
-    label327:
-    do
-    {
       return;
-      a(this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam);
-      n = paramArrayOfByte.length;
-      j = AndroidCamera.jdField_a_of_type_Int;
-      i = AndroidCamera.b;
-      int k = i;
-      int m = j;
-      if (n != j * i * 3 / 2)
-      {
-        if (n != 460800) {
-          break;
-        }
-        j = 640;
-        i = 480;
-        k = i;
-        m = j;
-        if (AudioHelper.e())
-        {
-          QLog.w("MyPreviewCallback", 1, "OnPreviewData false, expectSize[" + AndroidCamera.jdField_a_of_type_Int + ", " + AndroidCamera.b + "], dataLen[" + n + "], fixSize[" + j + ", " + i + "]");
-          m = j;
-          k = i;
-        }
-      }
-      this.jdField_a_of_type_ComTencentAvCameraPreviewCallbackInfo.a(this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_f_of_type_Int, AndroidCamera.d, this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_f_of_type_Boolean, this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.c, this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.d, this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.b, n, m, k);
-      if (this.jdField_a_of_type_ComTencentAvCameraAndroidCamera$CameraPreviewCallback != null)
-      {
-        paramCamera = CameraFrame.a();
-        long l = this.jdField_a_of_type_ComTencentAvCameraPreviewCallbackInfo.j;
-        i = AndroidCamera.c;
-        j = this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.jdField_a_of_type_Int;
-        n = this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.b;
-        if (this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_f_of_type_Int != 1) {
-          break label467;
-        }
-        bool = true;
-        paramCamera.a(l, paramArrayOfByte, m, k, i, j, n, bool, AndroidCamera.d, System.currentTimeMillis());
-        this.jdField_a_of_type_ComTencentAvCameraAndroidCamera$CameraPreviewCallback.a(paramCamera);
-      }
-    } while ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_a_of_type_AndroidHardwareCamera == null));
-    paramCamera = FrameBufMgr.a().a(0);
-    if (paramCamera == null)
+    }
+    a(this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam);
+    int n = paramArrayOfByte.length;
+    int i = AndroidCamera.jdField_a_of_type_Int;
+    int j = AndroidCamera.b;
+    int k = i;
+    int m = j;
+    if (n != i * j * 3 / 2)
     {
-      paramCamera = paramArrayOfByte;
-      if (QLog.isDevelopLevel())
+      if (n == 460800)
       {
-        QLog.w("MyPreviewCallback", 1, "OnPreviewData, 没有空闲的缓存");
+        i = 640;
+        j = 480;
+      }
+      else if (n == 1382400)
+      {
+        i = 1280;
+        j = 720;
+      }
+      else if (n == 115200)
+      {
+        i = 320;
+        j = 240;
+      }
+      k = i;
+      m = j;
+      if (AudioHelper.b())
+      {
+        paramCamera = new StringBuilder();
+        paramCamera.append("OnPreviewData false, expectSize[");
+        paramCamera.append(AndroidCamera.jdField_a_of_type_Int);
+        paramCamera.append(", ");
+        paramCamera.append(AndroidCamera.b);
+        paramCamera.append("], dataLen[");
+        paramCamera.append(n);
+        paramCamera.append("], fixSize[");
+        paramCamera.append(i);
+        paramCamera.append(", ");
+        paramCamera.append(j);
+        paramCamera.append("]");
+        QLog.w("MyPreviewCallback", 1, paramCamera.toString());
+        m = j;
+        k = i;
+      }
+    }
+    this.jdField_a_of_type_ComTencentAvCameraPreviewCallbackInfo.a(this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_f_of_type_Int, AndroidCamera.d, this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_f_of_type_Boolean, this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.c, this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.d, this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.b, n, k, m);
+    if (this.jdField_a_of_type_ComTencentAvCameraCameraPreviewCallback != null)
+    {
+      paramCamera = CameraFrame.a();
+      long l = this.jdField_a_of_type_ComTencentAvCameraPreviewCallbackInfo.j;
+      i = AndroidCamera.c;
+      j = this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.jdField_a_of_type_Int;
+      n = this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.b;
+      boolean bool;
+      if (this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_f_of_type_Int == 1) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      paramCamera.a(l, paramArrayOfByte, k, m, i, j, n, bool, AndroidCamera.d, System.currentTimeMillis());
+      this.jdField_a_of_type_ComTencentAvCameraCameraPreviewCallback.onPreviewData(paramCamera);
+    }
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_a_of_type_AndroidHardwareCamera != null))
+    {
+      byte[] arrayOfByte = FrameBufMgr.a().a(0);
+      paramCamera = arrayOfByte;
+      if (arrayOfByte == null)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.w("MyPreviewCallback", 1, "OnPreviewData, 没有空闲的缓存");
+        }
         paramCamera = paramArrayOfByte;
       }
-    }
-    for (;;)
-    {
       FrameBufMgr.a().a(paramCamera, 1);
       this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_a_of_type_AndroidHardwareCamera.addCallbackBuffer(paramCamera);
-      return;
-      if (n == 1382400)
-      {
-        j = 1280;
-        i = 720;
-        break;
-      }
-      if (n != 115200) {
-        break;
-      }
-      j = 320;
-      i = 240;
-      break;
-      label467:
-      bool = false;
-      break label327;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.camera.MyPreviewCallback
  * JD-Core Version:    0.7.0.1
  */

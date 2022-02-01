@@ -12,26 +12,24 @@ class TroopNickRuleFragment$4
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i;
     if (paramView == this.a.a)
     {
-      i = paramMotionEvent.getAction();
-      if (i != 0) {
-        break label32;
+      int i = paramMotionEvent.getAction();
+      if (i == 0)
+      {
+        paramView.getParent().requestDisallowInterceptTouchEvent(true);
+        return false;
       }
-      paramView.getParent().requestDisallowInterceptTouchEvent(true);
+      if ((i == 1) || (i == 3)) {
+        paramView.getParent().requestDisallowInterceptTouchEvent(false);
+      }
     }
-    label32:
-    while ((i != 1) && (i != 3)) {
-      return false;
-    }
-    paramView.getParent().requestDisallowInterceptTouchEvent(false);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopNickRuleFragment.4
  * JD-Core Version:    0.7.0.1
  */

@@ -80,17 +80,19 @@ public final class RspGetPositionApi
     paramJceOutputStream.write(this.strRoad, 6);
     paramJceOutputStream.write(this.strPremises, 7);
     paramJceOutputStream.write(this.iDistrictCode, 8);
-    if (this.vMacs != null) {
-      paramJceOutputStream.write(this.vMacs, 9);
+    ArrayList localArrayList = this.vMacs;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 9);
     }
-    if (this.vCells != null) {
-      paramJceOutputStream.write(this.vCells, 10);
+    localArrayList = this.vCells;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 10);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     LBSAddrProtocol.RspGetPositionApi
  * JD-Core Version:    0.7.0.1
  */

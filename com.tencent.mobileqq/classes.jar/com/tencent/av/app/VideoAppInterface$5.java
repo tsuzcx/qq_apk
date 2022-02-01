@@ -13,11 +13,17 @@ class VideoAppInterface$5
   {
     if (VideoAppInterface.a(this.this$0).a())
     {
-      String str = VideoAppInterface.a(this.this$0).a();
-      BeautyConfigUtil.a(this.this$0.getCurrentAccountUin(), str);
+      String str1 = VideoAppInterface.a(this.this$0).a();
+      BeautyConfigUtil.a(this.this$0.getCurrentAccountUin(), str1);
       VideoAppInterface.a(this.this$0).a();
-      if (QLog.isColorLevel()) {
-        QLog.i(VideoAppInterface.c(), 2, "saveBeautyConfig, config[" + str + "]");
+      if (QLog.isColorLevel())
+      {
+        String str2 = VideoAppInterface.c();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("saveBeautyConfig, config[");
+        localStringBuilder.append(str1);
+        localStringBuilder.append("]");
+        QLog.i(str2, 2, localStringBuilder.toString());
       }
     }
     VideoAppInterface.b(this.this$0, null);
@@ -25,7 +31,7 @@ class VideoAppInterface$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.VideoAppInterface.5
  * JD-Core Version:    0.7.0.1
  */

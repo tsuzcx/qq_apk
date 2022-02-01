@@ -14,37 +14,38 @@ class GapWorker$LayoutPrefetchRegistryImpl
   
   public void addPosition(int paramInt1, int paramInt2)
   {
-    if (paramInt1 < 0) {
-      throw new IllegalArgumentException("Layout positions must be non-negative");
-    }
-    if (paramInt2 < 0) {
+    if (paramInt1 >= 0)
+    {
+      if (paramInt2 >= 0)
+      {
+        int i = this.mCount * 2;
+        int[] arrayOfInt = this.mPrefetchArray;
+        if (arrayOfInt == null)
+        {
+          this.mPrefetchArray = new int[4];
+          Arrays.fill(this.mPrefetchArray, -1);
+        }
+        else if (i >= arrayOfInt.length)
+        {
+          this.mPrefetchArray = new int[i * 2];
+          System.arraycopy(arrayOfInt, 0, this.mPrefetchArray, 0, arrayOfInt.length);
+        }
+        arrayOfInt = this.mPrefetchArray;
+        arrayOfInt[i] = paramInt1;
+        arrayOfInt[(i + 1)] = paramInt2;
+        this.mCount += 1;
+        return;
+      }
       throw new IllegalArgumentException("Pixel distance must be non-negative");
     }
-    int i = this.mCount * 2;
-    if (this.mPrefetchArray == null)
-    {
-      this.mPrefetchArray = new int[4];
-      Arrays.fill(this.mPrefetchArray, -1);
-    }
-    for (;;)
-    {
-      this.mPrefetchArray[i] = paramInt1;
-      this.mPrefetchArray[(i + 1)] = paramInt2;
-      this.mCount += 1;
-      return;
-      if (i >= this.mPrefetchArray.length)
-      {
-        int[] arrayOfInt = this.mPrefetchArray;
-        this.mPrefetchArray = new int[i * 2];
-        System.arraycopy(arrayOfInt, 0, this.mPrefetchArray, 0, arrayOfInt.length);
-      }
-    }
+    throw new IllegalArgumentException("Layout positions must be non-negative");
   }
   
   void clearPrefetchPositions()
   {
-    if (this.mPrefetchArray != null) {
-      Arrays.fill(this.mPrefetchArray, -1);
+    int[] arrayOfInt = this.mPrefetchArray;
+    if (arrayOfInt != null) {
+      Arrays.fill(arrayOfInt, -1);
     }
     this.mCount = 0;
   }
@@ -52,60 +53,46 @@ class GapWorker$LayoutPrefetchRegistryImpl
   void collectPrefetchPositionsFromView(RecyclerView paramRecyclerView, boolean paramBoolean)
   {
     this.mCount = 0;
-    if (this.mPrefetchArray != null) {
-      Arrays.fill(this.mPrefetchArray, -1);
+    Object localObject = this.mPrefetchArray;
+    if (localObject != null) {
+      Arrays.fill((int[])localObject, -1);
     }
-    RecyclerView.LayoutManager localLayoutManager = paramRecyclerView.mLayout;
-    if ((paramRecyclerView.mAdapter != null) && (localLayoutManager != null) && (localLayoutManager.isItemPrefetchEnabled()))
+    localObject = paramRecyclerView.mLayout;
+    if ((paramRecyclerView.mAdapter != null) && (localObject != null) && (((RecyclerView.LayoutManager)localObject).isItemPrefetchEnabled()))
     {
-      if (!paramBoolean) {
-        break label101;
-      }
-      if (!paramRecyclerView.mAdapterHelper.hasPendingUpdates()) {
-        localLayoutManager.collectInitialPrefetchPositions(paramRecyclerView.mAdapter.getItemCount(), this);
-      }
-    }
-    for (;;)
-    {
-      if (this.mCount > localLayoutManager.mPrefetchMaxCountObserved)
+      if (paramBoolean)
       {
-        localLayoutManager.mPrefetchMaxCountObserved = this.mCount;
-        localLayoutManager.mPrefetchMaxObservedInInitialPrefetch = paramBoolean;
-        paramRecyclerView.mRecycler.updateViewCacheSize();
+        if (!paramRecyclerView.mAdapterHelper.hasPendingUpdates()) {
+          ((RecyclerView.LayoutManager)localObject).collectInitialPrefetchPositions(paramRecyclerView.mAdapter.getItemCount(), this);
+        }
       }
-      return;
-      label101:
-      if (!paramRecyclerView.hasPendingAdapterUpdates()) {
-        localLayoutManager.collectAdjacentPrefetchPositions(this.mPrefetchDx, this.mPrefetchDy, paramRecyclerView.mState, this);
+      else if (!paramRecyclerView.hasPendingAdapterUpdates()) {
+        ((RecyclerView.LayoutManager)localObject).collectAdjacentPrefetchPositions(this.mPrefetchDx, this.mPrefetchDy, paramRecyclerView.mState, this);
+      }
+      if (this.mCount > ((RecyclerView.LayoutManager)localObject).mPrefetchMaxCountObserved)
+      {
+        ((RecyclerView.LayoutManager)localObject).mPrefetchMaxCountObserved = this.mCount;
+        ((RecyclerView.LayoutManager)localObject).mPrefetchMaxObservedInInitialPrefetch = paramBoolean;
+        paramRecyclerView.mRecycler.updateViewCacheSize();
       }
     }
   }
   
   boolean lastPrefetchIncludedPosition(int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    int j;
-    int i;
     if (this.mPrefetchArray != null)
     {
-      j = this.mCount;
-      i = 0;
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j * 2)
+      int j = this.mCount;
+      int i = 0;
+      while (i < j * 2)
       {
         if (this.mPrefetchArray[i] == paramInt) {
-          bool1 = true;
+          return true;
         }
+        i += 2;
       }
-      else {
-        return bool1;
-      }
-      i += 2;
     }
+    return false;
   }
   
   void setPrefetchVector(int paramInt1, int paramInt2)
@@ -116,7 +103,7 @@ class GapWorker$LayoutPrefetchRegistryImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.GapWorker.LayoutPrefetchRegistryImpl
  * JD-Core Version:    0.7.0.1
  */

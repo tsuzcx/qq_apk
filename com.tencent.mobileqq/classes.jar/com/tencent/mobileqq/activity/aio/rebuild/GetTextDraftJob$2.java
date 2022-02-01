@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.helper.AIODraftHelper;
 import com.tencent.mobileqq.data.DraftTextInfo;
 import java.lang.ref.WeakReference;
 
@@ -11,16 +12,20 @@ class GetTextDraftJob$2
   
   public void run()
   {
-    BaseChatPie localBaseChatPie = (BaseChatPie)GetTextDraftJob.a(this.this$0).get();
-    if (localBaseChatPie == null) {
+    Object localObject = (BaseChatPie)GetTextDraftJob.a(this.this$0).get();
+    if (localObject == null) {
       return;
     }
-    localBaseChatPie.a(this.a);
+    localObject = (AIODraftHelper)((BaseChatPie)localObject).a(111);
+    if (localObject == null) {
+      return;
+    }
+    ((AIODraftHelper)localObject).a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GetTextDraftJob.2
  * JD-Core Version:    0.7.0.1
  */

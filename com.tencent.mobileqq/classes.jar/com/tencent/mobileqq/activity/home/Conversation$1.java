@@ -10,13 +10,13 @@ class Conversation$1
   
   public void run()
   {
-    boolean bool = NetworkUtil.e(BaseApplication.getContext());
+    boolean bool = NetworkUtil.isNetSupportHw(BaseApplication.getContext());
     this.this$0.b(new Conversation.1.1(this, bool));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.1
  * JD-Core Version:    0.7.0.1
  */

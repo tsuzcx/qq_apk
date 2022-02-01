@@ -23,14 +23,15 @@ class NavigationJsPlugin$4
       if ((NavigationJsPlugin.access$300(this.this$0).getAttachedActivity() != null) && (!NavigationJsPlugin.access$400(this.this$0).getAttachedActivity().isFinishing())) {
         NavigationJsPlugin.access$500(this.this$0).getAttachedActivity().finish();
       }
-      return;
     }
-    QMLog.e("NavigationJsPlugin", "navigateBackMiniApp failed");
+    else {
+      QMLog.e("NavigationJsPlugin", "navigateBackMiniApp failed");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.NavigationJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

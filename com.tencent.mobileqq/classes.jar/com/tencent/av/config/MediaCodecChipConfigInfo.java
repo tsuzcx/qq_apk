@@ -74,10 +74,10 @@ public class MediaCodecChipConfigInfo
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject(paramString);
+      Object localObject1 = new JSONObject(paramString);
       paramString = new MediaCodecChipConfigInfo();
-      JSONArray localJSONArray = localJSONObject.getJSONArray("cpuConfig");
-      if (localJSONObject.has("cpuConfig"))
+      JSONArray localJSONArray = ((JSONObject)localObject1).getJSONArray("cpuConfig");
+      if (((JSONObject)localObject1).has("cpuConfig"))
       {
         int j = localJSONArray.length();
         if (j > 0)
@@ -85,23 +85,29 @@ public class MediaCodecChipConfigInfo
           int i = 0;
           while (i < j)
           {
-            localJSONObject = localJSONArray.getJSONObject(i);
-            MediaCodecChipConfigInfo.ChipAbilityInfo localChipAbilityInfo = new MediaCodecChipConfigInfo.ChipAbilityInfo();
-            if (localJSONObject.has("descriptionName")) {
-              localChipAbilityInfo.jdField_a_of_type_Long = a(localJSONObject.optString("descriptionName"));
+            Object localObject2 = localJSONArray.getJSONObject(i);
+            localObject1 = new MediaCodecChipConfigInfo.ChipAbilityInfo();
+            if (((JSONObject)localObject2).has("descriptionName")) {
+              ((MediaCodecChipConfigInfo.ChipAbilityInfo)localObject1).jdField_a_of_type_Long = a(((JSONObject)localObject2).optString("descriptionName"));
             }
-            if (localJSONObject.has("support")) {
-              localChipAbilityInfo.jdField_a_of_type_Boolean = localJSONObject.optBoolean("support");
+            if (((JSONObject)localObject2).has("support")) {
+              ((MediaCodecChipConfigInfo.ChipAbilityInfo)localObject1).jdField_a_of_type_Boolean = ((JSONObject)localObject2).optBoolean("support");
             }
-            if (localJSONObject.has("max_width")) {
-              localChipAbilityInfo.jdField_a_of_type_Int = localJSONObject.optInt("max_width");
+            if (((JSONObject)localObject2).has("max_width")) {
+              ((MediaCodecChipConfigInfo.ChipAbilityInfo)localObject1).jdField_a_of_type_Int = ((JSONObject)localObject2).optInt("max_width");
             }
-            if (localJSONObject.has("max_height")) {
-              localChipAbilityInfo.b = localJSONObject.optInt("max_height");
+            if (((JSONObject)localObject2).has("max_height")) {
+              ((MediaCodecChipConfigInfo.ChipAbilityInfo)localObject1).b = ((JSONObject)localObject2).optInt("max_height");
             }
-            paramString.a(localChipAbilityInfo);
-            if (QLog.isColorLevel()) {
-              QLog.d("MediaCodecChipConfigInfo", 2, "MediaCodecChipConfigInfo parseJson index: " + i + "," + localChipAbilityInfo.toString());
+            paramString.a((MediaCodecChipConfigInfo.ChipAbilityInfo)localObject1);
+            if (QLog.isColorLevel())
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("MediaCodecChipConfigInfo parseJson index: ");
+              ((StringBuilder)localObject2).append(i);
+              ((StringBuilder)localObject2).append(",");
+              ((StringBuilder)localObject2).append(((MediaCodecChipConfigInfo.ChipAbilityInfo)localObject1).toString());
+              QLog.d("MediaCodecChipConfigInfo", 2, ((StringBuilder)localObject2).toString());
             }
             i += 1;
           }
@@ -196,14 +202,16 @@ public class MediaCodecChipConfigInfo
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("MediaCodecChipConfigInfo{");
-    localStringBuffer.append("content = '").append(Arrays.toString(this.jdField_a_of_type_JavaUtilArrayList.toArray())).append('\'');
+    localStringBuffer.append("content = '");
+    localStringBuffer.append(Arrays.toString(this.jdField_a_of_type_JavaUtilArrayList.toArray()));
+    localStringBuffer.append('\'');
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.config.MediaCodecChipConfigInfo
  * JD-Core Version:    0.7.0.1
  */

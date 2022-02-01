@@ -4,7 +4,6 @@ import android.support.v7.widget.RecyclerView.Recycler;
 import android.support.v7.widget.RecyclerView.State;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class WSStaggeredGridLayoutManager
   extends StaggeredGridLayoutManager
@@ -23,7 +22,10 @@ public class WSStaggeredGridLayoutManager
     }
     catch (Exception paramRecycler)
     {
-      WSLog.d("WSStaggeredGridLayoutManager", "onLayoutChildren exception: " + paramRecycler.getLocalizedMessage());
+      paramState = new StringBuilder();
+      paramState.append("onLayoutChildren exception: ");
+      paramState.append(paramRecycler.getLocalizedMessage());
+      WSLog.d("WSStaggeredGridLayoutManager", paramState.toString());
     }
   }
   
@@ -32,21 +34,20 @@ public class WSStaggeredGridLayoutManager
     try
     {
       super.scrollToPosition(paramInt);
-      EventCollector.getInstance().onRecyclerViewScrollToPosition(this);
       return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        WSLog.d("WSStaggeredGridLayoutManager", "scrollToPosition exception: " + localException.getLocalizedMessage());
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("scrollToPosition exception: ");
+      localStringBuilder.append(localException.getLocalizedMessage());
+      WSLog.d("WSStaggeredGridLayoutManager", localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSStaggeredGridLayoutManager
  * JD-Core Version:    0.7.0.1
  */

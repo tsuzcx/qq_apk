@@ -43,22 +43,23 @@ public class WSSubTabsHelper
   public static List<WSTabInfo> a(WSSubTabData paramWSSubTabData)
   {
     Object localObject = new ArrayList();
-    if ((paramWSSubTabData == null) || (paramWSSubTabData.a == null) || (paramWSSubTabData.a.size() == 0)) {
-      return localObject;
-    }
-    int i = 0;
-    if (i < paramWSSubTabData.a.size())
+    if ((paramWSSubTabData != null) && (paramWSSubTabData.a != null))
     {
-      localObject = (WSTabInfo)paramWSSubTabData.a.get(i);
-      if (localObject == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        ((WSTabInfo)localObject).a(false).a(16);
+      if (paramWSSubTabData.a.size() == 0) {
+        return localObject;
       }
+      int i = 0;
+      while (i < paramWSSubTabData.a.size())
+      {
+        localObject = (WSTabInfo)paramWSSubTabData.a.get(i);
+        if (localObject != null) {
+          ((WSTabInfo)localObject).a(false).a(16);
+        }
+        i += 1;
+      }
+      return paramWSSubTabData.a;
     }
-    return paramWSSubTabData.a;
+    return localObject;
   }
   
   private static JSONObject a(String paramString)
@@ -83,7 +84,7 @@ public class WSSubTabsHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.tabLayout.WSSubTabsHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,6 @@ public class b
   
   public static b.a a()
   {
-    int i;
     try
     {
       NetworkInfo localNetworkInfo = b.getActiveNetworkInfo();
@@ -25,44 +24,44 @@ public class b
       if (!localNetworkInfo.isConnected()) {
         return b.a.a;
       }
-      i = localNetworkInfo.getType();
+      int i = localNetworkInfo.getType();
       if (i == 1) {
         return b.a.c;
       }
+      if (i == 0) {
+        return b.a.b;
+      }
+      return b.a.d;
     }
     catch (Exception localException)
     {
-      return b.a.a;
+      label52:
+      break label52;
     }
-    if (i == 0) {
-      return b.a.b;
-    }
-    return b.a.d;
+    return b.a.a;
   }
   
   public static void a(Context paramContext)
   {
-    if (a == null) {}
-    try
-    {
-      a = (WifiManager)paramContext.getApplicationContext().getSystemService("wifi");
-      if (b != null) {}
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+    if (a == null) {
+      try
       {
-        try
-        {
-          b = (ConnectivityManager)paramContext.getApplicationContext().getSystemService("connectivity");
-          return;
-        }
-        catch (Exception paramContext)
-        {
-          Logger.INSTANCE.exception("QAPM_DNS_NetworkUtils", "get ConnectivityManager failed", paramContext);
-        }
-        localException = localException;
+        a = (WifiManager)paramContext.getApplicationContext().getSystemService("wifi");
+      }
+      catch (Exception localException)
+      {
         Logger.INSTANCE.exception("QAPM_DNS_NetworkUtils", "get WifiManager failed", localException);
+      }
+    }
+    if (b == null) {
+      try
+      {
+        b = (ConnectivityManager)paramContext.getApplicationContext().getSystemService("connectivity");
+        return;
+      }
+      catch (Exception paramContext)
+      {
+        Logger.INSTANCE.exception("QAPM_DNS_NetworkUtils", "get ConnectivityManager failed", paramContext);
       }
     }
   }
@@ -79,30 +78,32 @@ public class b
   
   public static String c()
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
+    Object localObject;
     if (b()) {
-      localObject1 = a;
+      localObject = a;
     }
     try
     {
-      WifiInfo localWifiInfo = ((WifiManager)localObject1).getConnectionInfo();
-      localObject1 = localObject2;
-      if (localWifiInfo != null) {
-        localObject1 = localWifiInfo.getSSID();
+      localObject = ((WifiManager)localObject).getConnectionInfo();
+      if (localObject == null) {
+        break label46;
       }
-      return localObject1;
+      localObject = ((WifiInfo)localObject).getSSID();
+      return localObject;
     }
     catch (Throwable localThrowable)
     {
-      Logger.INSTANCE.w(new String[] { "QAPM_DNS_NetworkUtils", "get wifi connection info failed" });
+      label26:
+      label46:
+      break label26;
     }
+    Logger.INSTANCE.w(new String[] { "QAPM_DNS_NetworkUtils", "get wifi connection info failed" });
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.dns.network.b
  * JD-Core Version:    0.7.0.1
  */

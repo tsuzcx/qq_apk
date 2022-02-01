@@ -13,7 +13,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class oidb_0xefd$SubCommentCreateReq
   extends MessageMicro<SubCommentCreateReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 50, 58, 64, 72, 80, 90, 96, 106, 114, 120, 130, 136, 144, 152, 162, 170, 184, 194, 200, 810 }, new String[] { "article_id", "first_comment_id", "author_id", "src_author_id", "replied_sub_author_id", "replied_sub_comment_id", "content", "is_anonymous", "content_src", "src", "business_info", "create_time", "media_data", "user_info", "is_multi_media", "rpt_media_data_list", "hide_name", "src_uin", "shared_uin", "rowkey", "rpt_data", "scene", "link_data", "detect_dirty_word", "extra_param" }, new Object[] { "", "", Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Long.valueOf(0L), null, null, Integer.valueOf(0), null, Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), "", null, Integer.valueOf(0), null, Integer.valueOf(0), "" }, SubCommentCreateReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField article_id = PBField.initString("");
   public final PBUInt64Field author_id = PBField.initUInt64(0L);
   public final PBStringField business_info = PBField.initString("");
@@ -39,10 +39,17 @@ public final class oidb_0xefd$SubCommentCreateReq
   public final PBUInt64Field src_author_id = PBField.initUInt64(0L);
   public final PBUInt64Field src_uin = PBField.initUInt64(0L);
   public oidb_0xefd.UserInfo user_info = new oidb_0xefd.UserInfo();
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 50, 58, 64, 72, 80, 90, 96, 106, 114, 120, 130, 136, 144, 152, 162, 170, 184, 194, 200, 810 }, new String[] { "article_id", "first_comment_id", "author_id", "src_author_id", "replied_sub_author_id", "replied_sub_comment_id", "content", "is_anonymous", "content_src", "src", "business_info", "create_time", "media_data", "user_info", "is_multi_media", "rpt_media_data_list", "hide_name", "src_uin", "shared_uin", "rowkey", "rpt_data", "scene", "link_data", "detect_dirty_word", "extra_param" }, new Object[] { "", "", localLong, localLong, localLong, "", "", localInteger, localInteger, localInteger, "", localLong, null, null, localInteger, null, localInteger, localLong, localInteger, "", null, localInteger, null, localInteger, "" }, SubCommentCreateReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.oidb_0xefd.oidb_0xefd.SubCommentCreateReq
  * JD-Core Version:    0.7.0.1
  */

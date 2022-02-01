@@ -34,14 +34,11 @@ public abstract class AbstractPlugin
   
   private <T> T a(String paramString)
   {
+    String[] arrayOfString = c();
     int i = 0;
-    if ((c() == null) || (c().length == 0)) {
-      LogUtil.b("Plugin", "loadInstanceClass: instance classes is empty.", new Object[0]);
-    }
-    for (;;)
+    if ((arrayOfString != null) && (c().length != 0))
     {
-      return null;
-      String[] arrayOfString = c();
+      arrayOfString = c();
       int j = arrayOfString.length;
       while (i < j)
       {
@@ -50,15 +47,19 @@ public abstract class AbstractPlugin
         }
         i += 1;
       }
+      return null;
     }
+    LogUtil.b("Plugin", "loadInstanceClass: instance classes is empty.", new Object[0]);
+    return null;
   }
   
   private <T> void a(String paramString, T paramT)
   {
-    if ((c() == null) || (c().length == 0)) {}
-    for (;;)
+    if (c() != null)
     {
-      return;
+      if (c().length == 0) {
+        return;
+      }
       String[] arrayOfString = c();
       int j = arrayOfString.length;
       int i = 0;
@@ -90,20 +91,20 @@ public abstract class AbstractPlugin
   
   public <T> T a(Class<T> paramClass, String paramString)
   {
-    if ((paramClass == null) || (paramString == null))
+    if ((paramClass != null) && (paramString != null))
     {
-      LogUtil.b("Plugin", "loadClass: cls is null or className is null", new Object[0]);
-      return null;
+      Object localObject = a(paramString);
+      if (localObject != null)
+      {
+        LogUtil.b("Plugin", "loadClass: load instance class %s success.", new Object[] { paramString });
+        return localObject;
+      }
+      paramClass = this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPluginClassLoader.a(paramClass, paramString);
+      a(paramString, paramClass);
+      return paramClass;
     }
-    Object localObject = a(paramString);
-    if (localObject != null)
-    {
-      LogUtil.b("Plugin", "loadClass: load instance class %s success.", new Object[] { paramString });
-      return localObject;
-    }
-    paramClass = this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIPluginClassLoader.a(paramClass, paramString);
-    a(paramString, paramClass);
-    return paramClass;
+    LogUtil.b("Plugin", "loadClass: cls is null or className is null", new Object[0]);
+    return null;
   }
   
   public String a()
@@ -143,10 +144,11 @@ public abstract class AbstractPlugin
   
   public String[] b()
   {
-    if (this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInstallPluginConfig$PluginFileInfo == null) {
+    PluginConfig.PluginFileInfo localPluginFileInfo = this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInstallPluginConfig$PluginFileInfo;
+    if (localPluginFileInfo == null) {
       return new String[0];
     }
-    return this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInstallPluginConfig$PluginFileInfo.jdField_b_of_type_ArrayOfJavaLangString;
+    return localPluginFileInfo.jdField_b_of_type_ArrayOfJavaLangString;
   }
   
   public String c()
@@ -166,149 +168,154 @@ public abstract class AbstractPlugin
   
   public String e()
   {
-    return this.c + "/" + this.jdField_a_of_type_JavaLangString + ".apk";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("/");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(".apk");
+    return localStringBuilder.toString();
   }
   
   public String f()
   {
-    return this.c + "/dex";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("/dex");
+    return localStringBuilder.toString();
   }
   
   public String g()
   {
-    return this.c + "/libs";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("/libs");
+    return localStringBuilder.toString();
   }
   
   public final String h()
   {
-    return "UN-" + this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UN-");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    return localStringBuilder.toString();
   }
   
   public String i()
   {
-    return this.c + "/copiedfile";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("/copiedfile");
+    return localStringBuilder.toString();
   }
   
   public String j()
   {
-    return this.c + "/config.json";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("/config.json");
+    return localStringBuilder.toString();
   }
   
   public String k()
   {
+    File localFile1 = new File(e());
+    File localFile2 = new File(g());
+    File localFile3 = new File(j());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c());
+    localStringBuilder.append(b());
+    boolean bool = localFile3.exists();
     long l2 = 0L;
-    Object localObject1 = new File(e());
-    File localFile = new File(g());
-    Object localObject2 = new File(j());
-    StringBuilder localStringBuilder = new StringBuilder().append(c()).append(b());
-    if (((File)localObject2).exists())
-    {
-      l1 = ((File)localObject2).lastModified();
-      localStringBuilder = localStringBuilder.append(l1);
-      if (!((File)localObject2).exists()) {
-        break label208;
-      }
-      l1 = ((File)localObject2).length();
-      label100:
-      localObject2 = localStringBuilder.append(l1);
-      if (!((File)localObject1).exists()) {
-        break label213;
-      }
-      l1 = ((File)localObject1).lastModified();
-      label122:
-      localObject2 = ((StringBuilder)localObject2).append(l1);
-      if (!((File)localObject1).exists()) {
-        break label218;
-      }
-      l1 = ((File)localObject1).length();
-      label144:
-      localObject1 = ((StringBuilder)localObject2).append(l1);
-      if (!localFile.exists()) {
-        break label223;
-      }
+    if (bool) {
+      l1 = localFile3.lastModified();
+    } else {
+      l1 = 0L;
     }
-    label208:
-    label213:
-    label218:
-    label223:
-    for (long l1 = localFile.lastModified();; l1 = 0L)
-    {
-      localObject1 = ((StringBuilder)localObject1).append(l1);
-      l1 = l2;
-      if (localFile.exists()) {
-        l1 = localFile.length();
-      }
-      return MD5Utils.toMD5(l1);
+    localStringBuilder.append(l1);
+    if (localFile3.exists()) {
+      l1 = localFile3.length();
+    } else {
       l1 = 0L;
-      break;
-      l1 = 0L;
-      break label100;
-      l1 = 0L;
-      break label122;
-      l1 = 0L;
-      break label144;
     }
+    localStringBuilder.append(l1);
+    if (localFile1.exists()) {
+      l1 = localFile1.lastModified();
+    } else {
+      l1 = 0L;
+    }
+    localStringBuilder.append(l1);
+    if (localFile1.exists()) {
+      l1 = localFile1.length();
+    } else {
+      l1 = 0L;
+    }
+    localStringBuilder.append(l1);
+    if (localFile2.exists()) {
+      l1 = localFile2.lastModified();
+    } else {
+      l1 = 0L;
+    }
+    localStringBuilder.append(l1);
+    long l1 = l2;
+    if (localFile2.exists()) {
+      l1 = localFile2.length();
+    }
+    localStringBuilder.append(l1);
+    return MD5Utils.toMD5(localStringBuilder.toString());
   }
   
   public String l()
   {
+    File localFile1 = new File(e());
+    File localFile2 = new File(g());
+    File localFile3 = new File(j());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c());
+    localStringBuilder.append(b());
+    localStringBuilder.append(a());
+    boolean bool = localFile3.exists();
     long l2 = 0L;
-    Object localObject1 = new File(e());
-    File localFile = new File(g());
-    Object localObject2 = new File(j());
-    StringBuilder localStringBuilder = new StringBuilder().append(c()).append(b()).append(a());
-    if (((File)localObject2).exists())
-    {
-      l1 = ((File)localObject2).lastModified();
-      localStringBuilder = localStringBuilder.append(l1);
-      if (!((File)localObject2).exists()) {
-        break label215;
-      }
-      l1 = ((File)localObject2).length();
-      label107:
-      localObject2 = localStringBuilder.append(l1);
-      if (!((File)localObject1).exists()) {
-        break label220;
-      }
-      l1 = ((File)localObject1).lastModified();
-      label129:
-      localObject2 = ((StringBuilder)localObject2).append(l1);
-      if (!((File)localObject1).exists()) {
-        break label225;
-      }
-      l1 = ((File)localObject1).length();
-      label151:
-      localObject1 = ((StringBuilder)localObject2).append(l1);
-      if (!localFile.exists()) {
-        break label230;
-      }
+    if (bool) {
+      l1 = localFile3.lastModified();
+    } else {
+      l1 = 0L;
     }
-    label215:
-    label220:
-    label225:
-    label230:
-    for (long l1 = localFile.lastModified();; l1 = 0L)
-    {
-      localObject1 = ((StringBuilder)localObject1).append(l1);
-      l1 = l2;
-      if (localFile.exists()) {
-        l1 = localFile.length();
-      }
-      return MD5Utils.toMD5(l1);
+    localStringBuilder.append(l1);
+    if (localFile3.exists()) {
+      l1 = localFile3.length();
+    } else {
       l1 = 0L;
-      break;
-      l1 = 0L;
-      break label107;
-      l1 = 0L;
-      break label129;
-      l1 = 0L;
-      break label151;
     }
+    localStringBuilder.append(l1);
+    if (localFile1.exists()) {
+      l1 = localFile1.lastModified();
+    } else {
+      l1 = 0L;
+    }
+    localStringBuilder.append(l1);
+    if (localFile1.exists()) {
+      l1 = localFile1.length();
+    } else {
+      l1 = 0L;
+    }
+    localStringBuilder.append(l1);
+    if (localFile2.exists()) {
+      l1 = localFile2.lastModified();
+    } else {
+      l1 = 0L;
+    }
+    localStringBuilder.append(l1);
+    long l1 = l2;
+    if (localFile2.exists()) {
+      l1 = localFile2.length();
+    }
+    localStringBuilder.append(l1);
+    return MD5Utils.toMD5(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.pluginloaderservice.AbstractPlugin
  * JD-Core Version:    0.7.0.1
  */

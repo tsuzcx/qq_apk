@@ -1,29 +1,73 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.mutualmark.oldlogic.ReCheckInHelper;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 class FriendChatPie$12
-  implements Runnable
+  extends FriendListObserver
 {
-  FriendChatPie$12(FriendChatPie paramFriendChatPie, MessageRecord paramMessageRecord) {}
+  FriendChatPie$12(FriendChatPie paramFriendChatPie) {}
   
-  public void run()
+  protected void onAddFriend(String paramString)
   {
-    if (this.a.sendFailCode == 41)
-    {
-      QQToast.a(this.this$0.a.getApp(), 2131692004, 0).a();
+    if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(paramString)) {
       return;
     }
-    QQToast.a(this.this$0.a.getApp(), 2131719517, 0).a();
-    VasWebviewUtil.reportCommercialDrainage(this.this$0.a.getCurrentUin(), "Stick", "Send", "1", 0, 6, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.b, 2, "onAddFriend");
+    }
+    FriendChatPie.a(this.a, false);
+  }
+  
+  protected void onReqRecheckInHotReactive(boolean paramBoolean, String paramString1, String paramString2, int paramInt)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqMutualmarkOldlogicReCheckInHelper.a(paramBoolean, paramString1, paramString2, paramInt);
+  }
+  
+  protected void onSetAsNormalContacts(boolean paramBoolean, List<String> paramList)
+  {
+    if (!paramBoolean) {
+      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getString(2131718794), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+    }
+  }
+  
+  protected void onSetAsUncommonlyUsedContacts(boolean paramBoolean, List<String> paramList) {}
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    super.onUpdateFriendInfo(paramString, paramBoolean);
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (paramString.contains(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.b, 2, "onUpdateHotFriendLevel");
+      }
+      this.a.t();
+    }
+  }
+  
+  protected void onUpdateHotFriendLevel(boolean paramBoolean, ArrayList<String> paramArrayList)
+  {
+    super.onUpdateHotFriendLevel(paramBoolean, paramArrayList);
+    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.contains(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.b, 2, "onUpdateHotFriendLevel");
+      }
+      this.a.t();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.FriendChatPie.12
  * JD-Core Version:    0.7.0.1
  */

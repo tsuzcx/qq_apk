@@ -32,17 +32,18 @@ public final class oidb_0x9fb$RgroupInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 48, 56, 66, 74, 82, 88, 96, 104, 112, 120, 130 }, new String[] { "uint64_group_code", "uint64_owner_uin", "bytes_group_name", "bytes_group_memo", "uint32_member_num", "uint32_group_face", "uint32_group_class", "bytes_group_face_url", "rpt_group_label", "bytes_group_class_text", "uint32_max_member_num", "uint32_group_level", "uint32_group_bitmap", "uint32_group_hot_degree", "uint32_group_flag", "bytes_recommend_reason" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3, null, localByteStringMicro4, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro5 }, RgroupInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 48, 56, 66, 74, 82, 88, 96, 104, 112, 120, 130 }, new String[] { "uint64_group_code", "uint64_owner_uin", "bytes_group_name", "bytes_group_memo", "uint32_member_num", "uint32_group_face", "uint32_group_class", "bytes_group_face_url", "rpt_group_label", "bytes_group_class_text", "uint32_max_member_num", "uint32_group_level", "uint32_group_bitmap", "uint32_group_hot_degree", "uint32_group_flag", "bytes_recommend_reason" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, localInteger, localInteger, localInteger, localByteStringMicro3, null, localByteStringMicro4, localInteger, localInteger, localInteger, localInteger, localInteger, localByteStringMicro5 }, RgroupInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x9fb.oidb_0x9fb.RgroupInfo
  * JD-Core Version:    0.7.0.1
  */

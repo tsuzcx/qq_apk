@@ -45,9 +45,9 @@ public class SelectableLinearLayout
   
   public void clearHighlightContent()
   {
+    int i = 0;
     this.jdField_a_of_type_Boolean = false;
     int j = getChildCount();
-    int i = 0;
     while (i < j)
     {
       View localView = getChildAt(i);
@@ -77,24 +77,19 @@ public class SelectableLinearLayout
   
   public int contentLength()
   {
-    int k = getChildCount();
-    int j = 0;
+    int m = getChildCount();
     int i = 0;
-    if (j < k)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      View localView = getChildAt(j);
-      if (!(localView instanceof SelectableComponent)) {
-        break label51;
+      View localView = getChildAt(i);
+      k = j;
+      if ((localView instanceof SelectableComponent)) {
+        k = j + ((SelectableComponent)localView).contentLength();
       }
-      i = ((SelectableComponent)localView).contentLength() + i;
+      i += 1;
     }
-    label51:
-    for (;;)
-    {
-      j += 1;
-      break;
-      return i;
-    }
+    return j;
   }
   
   @Nullable
@@ -105,15 +100,17 @@ public class SelectableLinearLayout
   
   public void doSelecting(ChatMessage paramChatMessage)
   {
-    if (paramChatMessage == null) {
+    if (paramChatMessage == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("SelectableLinearLayout", 2, "doSelecting msg = null.");
       }
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(paramChatMessage);
+    SelectableDelegate localSelectableDelegate = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate;
+    if (localSelectableDelegate != null) {
+      localSelectableDelegate.a(paramChatMessage);
+    }
   }
   
   public boolean hasSelected()
@@ -124,19 +121,20 @@ public class SelectableLinearLayout
   public boolean hasTouchSelectableArea(int paramInt1, int paramInt2)
   {
     getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-    int i = paramInt1 - this.jdField_a_of_type_ArrayOfInt[0];
-    paramInt2 = paramInt2 - this.jdField_a_of_type_ArrayOfInt[1] - getPaddingTop();
+    Object localObject = this.jdField_a_of_type_ArrayOfInt;
+    int i = paramInt1 - localObject[0];
+    paramInt2 = paramInt2 - localObject[1] - getPaddingTop();
     int j = getChildCount();
     paramInt1 = 0;
     while (paramInt1 < j)
     {
-      View localView = getChildAt(paramInt1);
-      if ((localView instanceof SelectableComponent))
+      localObject = getChildAt(paramInt1);
+      if ((localObject instanceof SelectableComponent))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("SelectableLinearLayout", 2, new Object[] { "left=", Integer.valueOf(localView.getLeft()), " right=", Integer.valueOf(localView.getRight()), " top=", Integer.valueOf(localView.getTop()), " bottom=", Integer.valueOf(localView.getBottom()), " relativeX=", Integer.valueOf(i), " relativeY=", Integer.valueOf(paramInt2) });
+          QLog.d("SelectableLinearLayout", 2, new Object[] { "left=", Integer.valueOf(((View)localObject).getLeft()), " right=", Integer.valueOf(((View)localObject).getRight()), " top=", Integer.valueOf(((View)localObject).getTop()), " bottom=", Integer.valueOf(((View)localObject).getBottom()), " relativeX=", Integer.valueOf(i), " relativeY=", Integer.valueOf(paramInt2) });
         }
-        if ((i > localView.getLeft()) && (i < localView.getRight()) && (paramInt2 > localView.getTop()) && (paramInt2 < localView.getBottom())) {
+        if ((i > ((View)localObject).getLeft()) && (i < ((View)localObject).getRight()) && (paramInt2 > ((View)localObject).getTop()) && (paramInt2 < ((View)localObject).getBottom())) {
           return true;
         }
       }
@@ -159,55 +157,52 @@ public class SelectableLinearLayout
     }
     int j = getChildCount();
     int i = 0;
-    label19:
-    Object localObject;
-    if (i < j)
+    while (i < j)
     {
-      localObject = getChildAt(i);
+      Object localObject = getChildAt(i);
       if ((localObject instanceof SelectableComponent))
       {
         localObject = (SelectableComponent)localObject;
-        if (!((SelectableComponent)localObject).hasSelected()) {
-          break label74;
+        if (((SelectableComponent)localObject).hasSelected())
+        {
+          ((SelectableComponent)localObject).highlightBackgroundColor(this.jdField_c_of_type_Int);
+          ((SelectableComponent)localObject).highlightContent();
         }
-        ((SelectableComponent)localObject).highlightBackgroundColor(this.jdField_c_of_type_Int);
-        ((SelectableComponent)localObject).highlightContent();
+        else
+        {
+          ((SelectableComponent)localObject).clearHighlightContent();
+        }
       }
-    }
-    for (;;)
-    {
       i += 1;
-      break label19;
-      break;
-      label74:
-      ((SelectableComponent)localObject).clearHighlightContent();
     }
   }
   
   public void locationByIndex(int paramInt, @NonNull int[] paramArrayOfInt, boolean paramBoolean)
   {
-    int j = getChildCount();
-    int i = 0;
-    Object localObject;
-    if (i < j)
+    int k = getChildCount();
+    int j = 0;
+    int i = paramInt;
+    paramInt = j;
+    while (paramInt < k)
     {
-      localObject = getChildAt(i);
-      if (!(localObject instanceof SelectableComponent)) {
-        break label79;
+      Object localObject = getChildAt(paramInt);
+      j = i;
+      if ((localObject instanceof SelectableComponent))
+      {
+        localObject = (SelectableComponent)localObject;
+        j = ((SelectableComponent)localObject).contentLength();
+        if (i > j)
+        {
+          j = i - j;
+        }
+        else
+        {
+          ((SelectableComponent)localObject).locationByIndex(i, paramArrayOfInt, paramBoolean);
+          return;
+        }
       }
-      localObject = (SelectableComponent)localObject;
-      int k = ((SelectableComponent)localObject).contentLength();
-      if (paramInt > k) {
-        paramInt -= k;
-      }
-    }
-    label79:
-    for (;;)
-    {
-      i += 1;
-      break;
-      ((SelectableComponent)localObject).locationByIndex(paramInt, paramArrayOfInt, paramBoolean);
-      return;
+      paramInt += 1;
+      i = j;
     }
   }
   
@@ -223,154 +218,139 @@ public class SelectableLinearLayout
   
   public void selectContent(int paramInt1, int paramInt2)
   {
-    int i;
-    int k;
-    label46:
-    SelectableComponent localSelectableComponent;
-    int m;
-    int j;
-    if ((paramInt1 == -1) || (paramInt2 == -1))
+    if ((paramInt1 != -1) && (paramInt2 != -1))
+    {
+      if (paramInt1 > paramInt2)
+      {
+        this.jdField_a_of_type_Int = paramInt2;
+        this.jdField_b_of_type_Int = paramInt1;
+      }
+      else
+      {
+        this.jdField_a_of_type_Int = paramInt1;
+        this.jdField_b_of_type_Int = paramInt2;
+      }
+      if (this.jdField_b_of_type_Int - this.jdField_a_of_type_Int > 0) {
+        this.jdField_b_of_type_Boolean = true;
+      }
+    }
+    else
     {
       this.jdField_a_of_type_Int = -1;
       this.jdField_b_of_type_Int = -1;
       this.jdField_b_of_type_Boolean = false;
-      paramInt2 = this.jdField_a_of_type_Int;
-      i = this.jdField_b_of_type_Int;
-      int n = getChildCount();
-      k = 0;
-      paramInt1 = 0;
-      if (k >= n) {
-        break label257;
-      }
-      View localView = getChildAt(k);
-      if (!(localView instanceof SelectableComponent)) {
-        break label266;
-      }
-      localSelectableComponent = (SelectableComponent)localView;
-      if (paramInt1 != 0) {
-        break label237;
-      }
-      m = localSelectableComponent.contentLength();
-      if (paramInt2 < m) {
-        break label190;
-      }
-      i -= m;
-      localSelectableComponent.selectContent(-1, -1);
-      j = paramInt2 - m;
-      paramInt2 = paramInt1;
-      paramInt1 = j;
-      label120:
-      localView.invalidate();
     }
-    for (;;)
+    int i = this.jdField_a_of_type_Int;
+    paramInt1 = this.jdField_b_of_type_Int;
+    int i1 = getChildCount();
+    int m = 0;
+    int j;
+    for (paramInt2 = 0; m < i1; paramInt2 = j)
     {
-      k += 1;
+      View localView = getChildAt(m);
+      int n = i;
+      int k = paramInt1;
       j = paramInt2;
-      paramInt2 = paramInt1;
-      paramInt1 = j;
-      break label46;
-      if (paramInt1 > paramInt2) {
-        this.jdField_a_of_type_Int = paramInt2;
-      }
-      for (this.jdField_b_of_type_Int = paramInt1;; this.jdField_b_of_type_Int = paramInt2)
+      if ((localView instanceof SelectableComponent))
       {
-        if (this.jdField_b_of_type_Int - this.jdField_a_of_type_Int <= 0) {
-          break label188;
+        SelectableComponent localSelectableComponent = (SelectableComponent)localView;
+        if (paramInt2 == 0)
+        {
+          n = localSelectableComponent.contentLength();
+          if (i >= n)
+          {
+            i -= n;
+            paramInt1 -= n;
+            localSelectableComponent.selectContent(-1, -1);
+            k = paramInt2;
+            paramInt2 = paramInt1;
+          }
+          else
+          {
+            if (paramInt1 > n)
+            {
+              j = paramInt2;
+              paramInt2 = n;
+            }
+            else
+            {
+              paramInt2 = paramInt1;
+              j = 1;
+            }
+            localSelectableComponent.selectContent(i, paramInt2);
+            paramInt2 = paramInt1;
+            k = j;
+            if (j == 0)
+            {
+              paramInt2 = paramInt1 - n;
+              i = 0;
+              k = j;
+            }
+          }
+          paramInt1 = paramInt2;
+          paramInt2 = k;
         }
-        this.jdField_b_of_type_Boolean = true;
-        break;
-        this.jdField_a_of_type_Int = paramInt1;
-      }
-      label188:
-      break;
-      label190:
-      if (i > m)
-      {
-        j = paramInt1;
-        paramInt1 = m;
-      }
-      for (;;)
-      {
-        localSelectableComponent.selectContent(paramInt2, paramInt1);
-        if (j != 0) {
-          break label258;
+        else
+        {
+          localSelectableComponent.selectContent(-1, -1);
         }
-        i -= m;
-        paramInt1 = 0;
-        paramInt2 = j;
-        break;
-        paramInt1 = i;
-        j = 1;
+        localView.invalidate();
+        j = paramInt2;
+        k = paramInt1;
+        n = i;
       }
-      label237:
-      localSelectableComponent.selectContent(-1, -1);
-      j = paramInt1;
-      paramInt1 = paramInt2;
-      paramInt2 = j;
-      break label120;
-      label257:
-      return;
-      label258:
-      paramInt1 = paramInt2;
-      paramInt2 = j;
-      break label120;
-      label266:
-      j = paramInt1;
-      paramInt1 = paramInt2;
-      paramInt2 = j;
+      m += 1;
+      i = n;
+      paramInt1 = k;
     }
   }
   
   public int touchIndex(int paramInt1, int paramInt2)
   {
     getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-    int m = paramInt1 - this.jdField_a_of_type_ArrayOfInt[0] - getPaddingLeft();
-    int n = paramInt2 - this.jdField_a_of_type_ArrayOfInt[1] - getPaddingTop();
-    int k = getChildCount();
-    int j = 0;
+    Object localObject = this.jdField_a_of_type_ArrayOfInt;
+    int m = 0;
+    int i1 = paramInt1 - localObject[0] - getPaddingLeft();
+    int i2 = paramInt2 - this.jdField_a_of_type_ArrayOfInt[1] - getPaddingTop();
+    int n = getChildCount();
     int i = 0;
-    Object localObject;
-    if (j < k)
+    int k;
+    SelectableComponent localSelectableComponent;
+    for (int j = 0; i < n; j = k)
     {
-      localObject = getChildAt(j);
-      if (!(localObject instanceof SelectableComponent)) {
-        break label238;
-      }
-      SelectableComponent localSelectableComponent = (SelectableComponent)localObject;
-      if ((m > ((View)localObject).getLeft()) && (m < ((View)localObject).getRight()) && (n > ((View)localObject).getTop()) && (n < ((View)localObject).getBottom()))
+      localObject = getChildAt(i);
+      k = j;
+      if ((localObject instanceof SelectableComponent))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent = localSelectableComponent;
-        return localSelectableComponent.touchIndex(paramInt1, paramInt2) + i;
-      }
-      i = localSelectableComponent.contentLength() + i;
-    }
-    label235:
-    label238:
-    for (;;)
-    {
-      j += 1;
-      break;
-      j = 0;
-      i = 0;
-      if (j < k)
-      {
-        localObject = getChildAt(j);
-        if (!(localObject instanceof SelectableComponent)) {
-          break label235;
+        localSelectableComponent = (SelectableComponent)localObject;
+        if ((i1 > ((View)localObject).getLeft()) && (i1 < ((View)localObject).getRight()) && (i2 > ((View)localObject).getTop()) && (i2 < ((View)localObject).getBottom()))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent = localSelectableComponent;
+          return j + localSelectableComponent.touchIndex(paramInt1, paramInt2);
         }
+        k = j + localSelectableComponent.contentLength();
+      }
+      i += 1;
+    }
+    j = 0;
+    i = m;
+    while (i < n)
+    {
+      localObject = getChildAt(i);
+      k = j;
+      if ((localObject instanceof SelectableComponent))
+      {
         localObject = (SelectableComponent)localObject;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent == localObject) {
-          return this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.touchIndex(paramInt1, paramInt2) + i;
+        localSelectableComponent = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent;
+        if (localSelectableComponent == localObject) {
+          return j + localSelectableComponent.touchIndex(paramInt1, paramInt2);
         }
-        i = ((SelectableComponent)localObject).contentLength() + i;
+        k = j + ((SelectableComponent)localObject).contentLength();
       }
-      for (;;)
-      {
-        j += 1;
-        break;
-        return -1;
-      }
+      i += 1;
+      j = k;
     }
+    return -1;
   }
   
   @NonNull
@@ -381,7 +361,7 @@ public class SelectableLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectable.SelectableLinearLayout
  * JD-Core Version:    0.7.0.1
  */

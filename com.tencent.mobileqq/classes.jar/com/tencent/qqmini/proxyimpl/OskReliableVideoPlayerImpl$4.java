@@ -11,14 +11,15 @@ class OskReliableVideoPlayerImpl$4
   
   public void onBufferingUpdate(IMediaPlayer paramIMediaPlayer, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnBufferingUpdateListener != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnBufferingUpdateListener.onBufferingUpdate(this.jdField_a_of_type_ComTencentQqminiProxyimplOskReliableVideoPlayerImpl, paramInt);
+    paramIMediaPlayer = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnBufferingUpdateListener;
+    if (paramIMediaPlayer != null) {
+      paramIMediaPlayer.onBufferingUpdate(this.jdField_a_of_type_ComTencentQqminiProxyimplOskReliableVideoPlayerImpl, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.OskReliableVideoPlayerImpl.4
  * JD-Core Version:    0.7.0.1
  */

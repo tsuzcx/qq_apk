@@ -17,21 +17,21 @@ class StoryManager$1
   public void run()
   {
     Object localObject = this.this$0.a(this.a);
-    if ((localObject == null) || (!((StoryVideoItem)localObject).isBasicInfoOK()))
+    if ((localObject != null) && (((StoryVideoItem)localObject).isBasicInfoOK()))
     {
-      localObject = new ArrayList(1);
-      ((List)localObject).add(this.a);
-      new VidToBasicInfoHandler((List)localObject, true).a();
+      VidToBasicInfoHandler.GetVideoBasicInfoListEvent localGetVideoBasicInfoListEvent = new VidToBasicInfoHandler.GetVideoBasicInfoListEvent();
+      localGetVideoBasicInfoListEvent.a = Collections.singletonList(localObject);
+      StoryDispatcher.a().dispatch(localGetVideoBasicInfoListEvent);
       return;
     }
-    VidToBasicInfoHandler.GetVideoBasicInfoListEvent localGetVideoBasicInfoListEvent = new VidToBasicInfoHandler.GetVideoBasicInfoListEvent();
-    localGetVideoBasicInfoListEvent.a = Collections.singletonList(localObject);
-    StoryDispatcher.a().dispatch(localGetVideoBasicInfoListEvent);
+    localObject = new ArrayList(1);
+    ((List)localObject).add(this.a);
+    new VidToBasicInfoHandler((List)localObject, true).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.StoryManager.1
  * JD-Core Version:    0.7.0.1
  */

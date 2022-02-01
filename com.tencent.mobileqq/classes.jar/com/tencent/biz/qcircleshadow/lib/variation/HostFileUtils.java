@@ -1,5 +1,6 @@
 package com.tencent.biz.qcircleshadow.lib.variation;
 
+import com.tencent.biz.qcircleshadow.local.util.QCircleFileUtils;
 import java.io.File;
 
 public class HostFileUtils
@@ -11,17 +12,17 @@ public class HostFileUtils
   
   public static void createFileIfNotExits(String paramString)
   {
-    com.tencent.mobileqq.utils.FileUtils.c(paramString);
+    com.tencent.mobileqq.utils.FileUtils.createFileIfNotExits(paramString);
   }
   
   public static void delete(String paramString, boolean paramBoolean)
   {
-    com.tencent.mobileqq.utils.FileUtils.a(paramString, paramBoolean);
+    com.tencent.mobileqq.utils.FileUtils.delete(paramString, paramBoolean);
   }
   
   public static void deleteDirectory(String paramString)
   {
-    com.tencent.mobileqq.utils.FileUtils.a(paramString);
+    com.tencent.mobileqq.utils.FileUtils.deleteDirectory(paramString);
   }
   
   public static void deleteFile(File paramFile)
@@ -31,17 +32,17 @@ public class HostFileUtils
   
   public static String estimateFileType(String paramString)
   {
-    return com.tencent.mobileqq.utils.FileUtils.b(paramString);
+    return com.tencent.mobileqq.utils.FileUtils.estimateFileType(paramString);
   }
   
   public static boolean fileExists(String paramString)
   {
-    return com.tencent.mobileqq.utils.FileUtils.a(paramString);
+    return com.tencent.mobileqq.utils.FileUtils.fileExists(paramString);
   }
   
   public static boolean fileExistsAndNotEmpty(String paramString)
   {
-    return com.tencent.mobileqq.utils.FileUtils.b(paramString);
+    return com.tencent.mobileqq.utils.FileUtils.fileExistsAndNotEmpty(paramString);
   }
   
   public static boolean isFileJPEG(String paramString)
@@ -51,12 +52,12 @@ public class HostFileUtils
   
   public static boolean moveFile(String paramString1, String paramString2)
   {
-    return com.tencent.mobileqq.utils.FileUtils.b(paramString1, paramString2);
+    return QCircleFileUtils.a(paramString1, paramString2);
   }
   
   public static String readFileContent(File paramFile)
   {
-    return com.tencent.mobileqq.utils.FileUtils.a(paramFile);
+    return com.tencent.mobileqq.utils.FileUtils.readFileContent(paramFile);
   }
   
   public static boolean unzip(File paramFile1, File paramFile2)
@@ -66,7 +67,7 @@ public class HostFileUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.variation.HostFileUtils
  * JD-Core Version:    0.7.0.1
  */

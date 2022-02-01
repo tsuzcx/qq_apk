@@ -13,32 +13,26 @@ public class NetworkUtil
   
   public static int getMobileSubType(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 20)
     {
-    case 16: 
-    case 17: 
-    case 18: 
-    case 19: 
-    default: 
-      return 0;
-    case 1: 
-    case 2: 
-    case 4: 
-    case 7: 
-    case 11: 
+      switch (paramInt)
+      {
+      default: 
+        return 0;
+      case 13: 
+        return 4;
+      case 3: 
+      case 5: 
+      case 6: 
+      case 8: 
+      case 9: 
+      case 10: 
+      case 12: 
+      case 14: 
+      case 15: 
+        return 3;
+      }
       return 2;
-    case 3: 
-    case 5: 
-    case 6: 
-    case 8: 
-    case 9: 
-    case 10: 
-    case 12: 
-    case 14: 
-    case 15: 
-      return 3;
-    case 13: 
-      return 4;
     }
     return 5;
   }
@@ -53,30 +47,36 @@ public class NetworkUtil
     try
     {
       localObject = (ConnectivityManager)((Context)localObject).getSystemService("connectivity");
-      if (localObject == null) {
-        break label109;
-      }
-      localObject = ((ConnectivityManager)localObject).getActiveNetworkInfo();
-      if ((localObject == null) || (!((NetworkInfo)localObject).isConnected())) {
-        break label109;
-      }
-      switch (((NetworkInfo)localObject).getType())
+      if (localObject != null)
       {
-      case 0: 
-        i = getMobileSubType(((NetworkInfo)localObject).getSubtype());
+        localObject = ((ConnectivityManager)localObject).getActiveNetworkInfo();
+        if ((localObject != null) && (((NetworkInfo)localObject).isConnected()))
+        {
+          int i = ((NetworkInfo)localObject).getType();
+          if (i != 0)
+          {
+            if (i == 1) {
+              break label84;
+            }
+            if (i == 9) {
+              break label81;
+            }
+            return 0;
+          }
+          i = getMobileSubType(((NetworkInfo)localObject).getSubtype());
+          return i;
+        }
       }
     }
     catch (Exception localException)
     {
       TPLogUtil.e("NetworkUtil", localException);
-      i = 0;
     }
-    int i = 1;
-    return i;
+    return 0;
+    label81:
     return 10;
-    label109:
-    i = 0;
-    return i;
+    label84:
+    return 1;
   }
   
   public static boolean isWifiConnected()
@@ -86,7 +86,7 @@ public class NetworkUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.utils.NetworkUtil
  * JD-Core Version:    0.7.0.1
  */

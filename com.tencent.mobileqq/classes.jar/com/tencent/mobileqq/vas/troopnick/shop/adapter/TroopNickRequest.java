@@ -6,8 +6,10 @@ import QC.ModuleData;
 import android.os.Handler;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.vas.api.IJce;
+import com.tencent.mobileqq.vas.api.IJce.Util;
 import com.tencent.mobileqq.vas.troopnick.shop.widget.ShopAdapter;
-import com.tencent.mobileqq.vip.JceProtocol;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
 import java.util.ArrayList;
@@ -30,7 +32,11 @@ public class TroopNickRequest
   
   static
   {
-    jdField_a_of_type_JavaLangString = BaseApplicationImpl.getContext().getFilesDir().getAbsolutePath() + File.separator + "list_cache";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplicationImpl.getContext().getFilesDir().getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("list_cache");
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
   }
   
   public TroopNickRequest(int paramInt, long paramLong, ShopAdapter paramShopAdapter)
@@ -66,16 +72,20 @@ public class TroopNickRequest
       ThreadManagerV2.getUIHandlerV2().post(new TroopNickRequest.2(this, paramObject));
       return;
     }
+    for (;;)
+    {
+      throw paramObject;
+    }
   }
   
   public void b()
   {
-    new JceProtocol("QC.MallChiefServer.MallChiefObj", "QCMallChief.getChiefList", 1).a("getChiefList", new CGetChiefReq(JceProtocol.a(), this.jdField_b_of_type_Int, 3, this.jdField_a_of_type_Long, null), new CGetChiefRsp(), new TroopNickRequest.3(this), this.jdField_a_of_type_Boolean);
+    ((IJce)QRoute.api(IJce.class)).build("QC.MallChiefServer.MallChiefObj", "QCMallChief.getChiefList", 1).request("getChiefList", new CGetChiefReq(IJce.Util.a(), this.jdField_b_of_type_Int, 3, this.jdField_a_of_type_Long, null), new CGetChiefRsp(), new TroopNickRequest.3(this), this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.shop.adapter.TroopNickRequest
  * JD-Core Version:    0.7.0.1
  */

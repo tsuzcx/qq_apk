@@ -1,5 +1,8 @@
 package com.tencent.mtt.hippy.dom.node;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.text.BoringLayout;
 import android.text.BoringLayout.Metrics;
@@ -22,12 +25,15 @@ import android.text.style.UnderlineSpan;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.HippyGlobalConfigs;
 import com.tencent.mtt.hippy.adapter.font.HippyFontScaleAdapter;
+import com.tencent.mtt.hippy.adapter.image.HippyImageLoader;
 import com.tencent.mtt.hippy.annotation.HippyControllerProps;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.dom.DomManager;
 import com.tencent.mtt.hippy.dom.a.g.a;
 import com.tencent.mtt.hippy.utils.LogUtils;
 import com.tencent.mtt.hippy.utils.PixelUtil;
+import com.tencent.mtt.hippy.views.text.HippyTextView;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +42,7 @@ public class TextNode
 {
   public static final int DEFAULT_TEXT_SHADOW_COLOR = 1426063360;
   private static final String ELLIPSIS = "…";
+  public static final String IMAGE_SPAN_TEXT = "[img]";
   public static final String PROP_SHADOW_COLOR = "textShadowColor";
   public static final String PROP_SHADOW_OFFSET = "textShadowOffset";
   public static final String PROP_SHADOW_OFFSET_HEIGHT = "height";
@@ -52,6 +59,7 @@ public class TextNode
   private int mFontStyle = -1;
   private int mFontWeight = -1;
   private ArrayList<String> mGestureTypes = null;
+  protected HippyImageLoader mImageAdapter;
   private boolean mIsBackgroundColorSet = false;
   private boolean mIsLineThroughTextDecorationSet = false;
   private boolean mIsUnderlineTextDecorationSet = false;
@@ -66,6 +74,7 @@ public class TextNode
   private float mTextShadowOffsetDx = 0.0F;
   private float mTextShadowOffsetDy = 0.0F;
   private float mTextShadowRadius = 1.0F;
+  private WeakReference<HippyTextView> mTextViewWeakRefrence = null;
   protected TextUtils.TruncateAt mTruncateAt = TextUtils.TruncateAt.END;
   final TextPaint sTextPaintInstance = new TextPaint(1);
   
@@ -77,109 +86,136 @@ public class TextNode
     }
   }
   
+  private void createImageSpanOperation(List<TextNode.a> paramList, SpannableStringBuilder paramSpannableStringBuilder, ImageNode paramImageNode)
+  {
+    Object localObject = paramImageNode.getTotalProps();
+    if ((localObject != null) && (((HippyMap)localObject).containsKey("src"))) {
+      localObject = ((HippyMap)localObject).getString("src");
+    } else {
+      localObject = null;
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return;
+    }
+    ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#00000000"));
+    localColorDrawable.setBounds(0, 0, Math.round(paramImageNode.getStyleWidth()), Math.round(paramImageNode.getStyleHeight()));
+    localObject = new c(localColorDrawable, (String)localObject, paramImageNode, this.mImageAdapter);
+    paramImageNode.setImageSpan((c)localObject);
+    int i = paramSpannableStringBuilder.length();
+    paramSpannableStringBuilder.append("[img]");
+    int j = i + 5;
+    paramList.add(new TextNode.a(i, j, localObject));
+    if ((paramImageNode.getGestureTypes() != null) && (paramImageNode.getGestureTypes().size() > 0))
+    {
+      paramSpannableStringBuilder = new f(paramImageNode.getId(), true);
+      paramSpannableStringBuilder.a(paramImageNode.getGestureTypes());
+      paramList.add(new TextNode.a(i, j, paramSpannableStringBuilder));
+    }
+  }
+  
   private Layout createLayout(float paramFloat, com.tencent.mtt.hippy.dom.a.f paramf)
   {
     TextPaint localTextPaint = this.sTextPaintInstance;
-    Object localObject;
-    Spanned localSpanned;
-    if (this.mSpanned == null)
-    {
-      localObject = new SpannedString("");
-      localSpanned = (Spanned)localObject;
-      localObject = null;
+    Object localObject2 = this.mSpanned;
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new SpannedString("");
     }
+    Spanned localSpanned = (Spanned)localObject1;
+    localObject1 = null;
     try
     {
-      BoringLayout.Metrics localMetrics = BoringLayout.isBoring(localSpanned, localTextPaint);
-      localObject = localMetrics;
+      localObject2 = BoringLayout.isBoring(localSpanned, localTextPaint);
+      localObject1 = localObject2;
     }
     catch (Throwable localThrowable)
     {
-      label47:
-      float f;
-      label60:
-      int i;
-      label76:
-      break label47;
-    }
-    if (localObject == null)
-    {
-      f = Layout.getDesiredWidth(localSpanned, localTextPaint);
-      if ((paramf != com.tencent.mtt.hippy.dom.a.f.a) && (paramFloat >= 0.0F)) {
-        break label238;
-      }
-      i = 1;
-      if ((localObject != null) || ((i == 0) && ((com.tencent.mtt.hippy.dom.a.c.a(f)) || (f > paramFloat)))) {
-        break label244;
-      }
-      paramf = new StaticLayout(localSpanned, localTextPaint, (int)Math.ceil(f), this.mTextAlign, 1.0F, 0.0F, true);
-    }
-    for (;;)
-    {
-      localObject = paramf;
-      if (this.mNumberOfLines != -1)
+      for (;;)
       {
-        localObject = paramf;
-        if (this.mNumberOfLines > 0)
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("createLayout: ");
+        localStringBuilder.append(localThrowable.getMessage());
+        LogUtils.d("TextNode", localStringBuilder.toString());
+      }
+    }
+    float f;
+    if (localObject1 == null) {
+      f = Layout.getDesiredWidth(localSpanned, localTextPaint);
+    } else {
+      f = (0.0F / 0.0F);
+    }
+    if ((paramf != com.tencent.mtt.hippy.dom.a.f.a) && (paramFloat >= 0.0F)) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    if ((localObject1 == null) && ((i != 0) || ((!com.tencent.mtt.hippy.dom.a.c.a(f)) && (f <= paramFloat)))) {
+      paramf = new StaticLayout(localSpanned, localTextPaint, (int)Math.ceil(f), this.mTextAlign, 1.0F, 0.0F, true);
+    } else if ((localObject1 != null) && ((i != 0) || (((BoringLayout.Metrics)localObject1).width <= paramFloat))) {
+      paramf = BoringLayout.make(localSpanned, localTextPaint, ((BoringLayout.Metrics)localObject1).width, this.mTextAlign, 1.0F, 0.0F, (BoringLayout.Metrics)localObject1, true);
+    } else {
+      paramf = new StaticLayout(localSpanned, localTextPaint, (int)Math.ceil(paramFloat), this.mTextAlign, 1.0F, 0.0F, true);
+    }
+    int i = this.mNumberOfLines;
+    localObject1 = paramf;
+    if (i != -1)
+    {
+      localObject1 = paramf;
+      if (i > 0)
+      {
+        i = paramf.getLineCount();
+        int j = this.mNumberOfLines;
+        localObject1 = paramf;
+        if (i > j)
         {
-          localObject = paramf;
-          if (paramf.getLineCount() > this.mNumberOfLines)
-          {
-            i = paramf.getLineStart(this.mNumberOfLines - 1);
-            int j = paramf.getLineEnd(this.mNumberOfLines - 1);
-            localObject = paramf;
-            if (i < j) {
-              localObject = createLayoutWithNumberOfLine(i, j, paramf.getWidth());
-            }
+          i = paramf.getLineStart(j - 1);
+          j = paramf.getLineEnd(this.mNumberOfLines - 1);
+          localObject1 = paramf;
+          if (i < j) {
+            localObject1 = createLayoutWithNumberOfLine(i, j, paramf.getWidth());
           }
         }
       }
-      ((Layout)localObject).getPaint().setTextSize(this.mFontSize);
-      return localObject;
-      localObject = this.mSpanned;
-      break;
-      f = (0.0F / 0.0F);
-      break label60;
-      label238:
-      i = 0;
-      break label76;
-      label244:
-      if ((localObject != null) && ((i != 0) || (((BoringLayout.Metrics)localObject).width <= paramFloat))) {
-        paramf = BoringLayout.make(localSpanned, localTextPaint, ((BoringLayout.Metrics)localObject).width, this.mTextAlign, 1.0F, 0.0F, (BoringLayout.Metrics)localObject, true);
-      } else {
-        paramf = new StaticLayout(localSpanned, localTextPaint, (int)paramFloat, this.mTextAlign, 1.0F, 0.0F, true);
-      }
     }
+    ((Layout)localObject1).getPaint().setTextSize(this.mFontSize);
+    return localObject1;
   }
   
   private StaticLayout createLayoutWithNumberOfLine(int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = 0;
-    if (this.mSpanned == null) {
+    Object localObject1 = this.mSpanned;
+    if (localObject1 == null) {
       return null;
     }
-    String str = this.mSpanned.toString();
-    SpannableStringBuilder localSpannableStringBuilder = (SpannableStringBuilder)this.mSpanned.subSequence(0, str.length());
-    Object localObject1 = str.subSequence(0, paramInt1).toString() + truncate(str.substring(paramInt1, paramInt2), this.sTextPaintInstance, paramInt3, this.mTruncateAt);
-    if (((String)localObject1).length() - 1 >= 0) {}
-    for (paramInt1 = ((String)localObject1).length() - 1;; paramInt1 = 0)
+    localObject1 = ((SpannableStringBuilder)localObject1).toString();
+    SpannableStringBuilder localSpannableStringBuilder = this.mSpanned;
+    int i = ((String)localObject1).length();
+    paramInt2 = 0;
+    localSpannableStringBuilder = (SpannableStringBuilder)localSpannableStringBuilder.subSequence(0, i);
+    Object localObject2 = (String)TextUtils.ellipsize(((String)localObject1).substring(paramInt1), this.sTextPaintInstance, paramInt3, TextUtils.TruncateAt.END);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(((String)localObject1).subSequence(0, paramInt1).toString());
+    localStringBuilder.append(truncate((String)localObject2, this.sTextPaintInstance, paramInt3, this.mTruncateAt));
+    localObject2 = localStringBuilder.toString();
+    if (((String)localObject2).length() - 1 >= 0) {
+      paramInt1 = ((String)localObject2).length() - 1;
+    } else {
+      paramInt1 = 0;
+    }
+    localObject2 = (CharacterStyle[])localSpannableStringBuilder.getSpans(paramInt1, ((String)localObject1).length(), CharacterStyle.class);
+    if ((localObject2 != null) && (localObject2.length > 0))
     {
-      localObject1 = (CharacterStyle[])localSpannableStringBuilder.getSpans(paramInt1, str.length(), CharacterStyle.class);
-      if ((localObject1 == null) || (localObject1.length <= 0)) {
-        break;
-      }
-      int j = localObject1.length;
-      paramInt2 = i;
-      while (paramInt2 < j)
+      i = localObject2.length;
+      while (paramInt2 < i)
       {
-        Object localObject2 = localObject1[paramInt2];
-        if (localSpannableStringBuilder.getSpanStart(localObject2) >= paramInt1) {
-          localSpannableStringBuilder.removeSpan(localObject2);
+        localStringBuilder = localObject2[paramInt2];
+        if (localSpannableStringBuilder.getSpanStart(localStringBuilder) >= paramInt1) {
+          localSpannableStringBuilder.removeSpan(localStringBuilder);
         }
         paramInt2 += 1;
       }
     }
-    return new StaticLayout(localSpannableStringBuilder.replace(paramInt1, str.length(), "…"), this.sTextPaintInstance, paramInt3, this.mTextAlign, 1.0F, 0.0F, true);
+    return new StaticLayout(localSpannableStringBuilder.replace(paramInt1, ((String)localObject1).length(), "…"), this.sTextPaintInstance, paramInt3, this.mTextAlign, 1.0F, 0.0F, true);
   }
   
   private SpannableStringBuilder createSpan(CharSequence paramCharSequence, boolean paramBoolean)
@@ -214,23 +250,24 @@ public class TextNode
         paramList.add(new TextNode.a(k, m, new BackgroundColorSpan(paramTextNode.mBackgroundColor)));
       }
       if ((paramTextNode.mLetterSpacing != -1.0F) && (Build.VERSION.SDK_INT >= 21)) {
-        paramList.add(new TextNode.a(k, m, new c(paramTextNode.mLetterSpacing)));
+        paramList.add(new TextNode.a(k, m, new d(paramTextNode.mLetterSpacing)));
       }
-      if (paramTextNode.mFontSize != -1)
+      int j = paramTextNode.mFontSize;
+      if (j != -1)
       {
-        int j = paramTextNode.mFontSize;
+        paramCharSequence = paramTextNode.mFontScaleAdapter;
         i = j;
-        if (paramTextNode.mFontScaleAdapter != null)
+        if (paramCharSequence != null)
         {
           i = j;
           if (paramTextNode.mEnableScale) {
-            i = (int)(j * paramTextNode.mFontScaleAdapter.getFontScale());
+            i = (int)(j * paramCharSequence.getFontScale());
           }
         }
         paramList.add(new TextNode.a(k, m, new AbsoluteSizeSpan(i)));
       }
       if ((paramTextNode.mFontStyle != -1) || (paramTextNode.mFontWeight != -1) || (paramTextNode.mFontFamily != null)) {
-        paramList.add(new TextNode.a(k, m, new g(paramTextNode.mFontStyle, paramTextNode.mFontWeight, paramTextNode.mFontFamily)));
+        paramList.add(new TextNode.a(k, m, new h(paramTextNode.mFontStyle, paramTextNode.mFontWeight, paramTextNode.mFontFamily)));
       }
       if (paramTextNode.mIsUnderlineTextDecorationSet) {
         paramList.add(new TextNode.a(k, m, new UnderlineSpan()));
@@ -239,60 +276,65 @@ public class TextNode
         paramList.add(new TextNode.a(k, m, new StrikethroughSpan()));
       }
       if ((paramTextNode.mTextShadowOffsetDx != 0.0F) || (paramTextNode.mTextShadowOffsetDy != 0.0F)) {
-        paramList.add(new TextNode.a(k, m, new f(paramTextNode.mTextShadowOffsetDx, paramTextNode.mTextShadowOffsetDy, paramTextNode.mTextShadowRadius, paramTextNode.mTextShadowColor)));
+        paramList.add(new TextNode.a(k, m, new g(paramTextNode.mTextShadowOffsetDx, paramTextNode.mTextShadowOffsetDy, paramTextNode.mTextShadowRadius, paramTextNode.mTextShadowColor)));
       }
-      if (paramTextNode.mLineHeight != -1.0F)
+      float f2 = paramTextNode.mLineHeight;
+      if (f2 != -1.0F)
       {
-        float f2 = paramTextNode.mLineHeight;
+        paramCharSequence = paramTextNode.mFontScaleAdapter;
         float f1 = f2;
-        if (paramTextNode.mFontScaleAdapter != null)
+        if (paramCharSequence != null)
         {
           f1 = f2;
           if (paramTextNode.mEnableScale) {
-            f1 = f2 * paramTextNode.mFontScaleAdapter.getFontScale();
+            f1 = f2 * paramCharSequence.getFontScale();
           }
         }
-        paramList.add(new TextNode.a(k, m, new d(f1)));
+        paramList.add(new TextNode.a(k, m, new e(f1)));
       }
-      if ((paramTextNode.mGestureTypes != null) && (paramTextNode.mGestureTypes.size() > 0))
+      paramCharSequence = paramTextNode.mGestureTypes;
+      if ((paramCharSequence != null) && (paramCharSequence.size() > 0))
       {
-        paramCharSequence = new e(paramTextNode.getId(), isVirtual());
+        paramCharSequence = new f(paramTextNode.getId(), isVirtual());
         paramCharSequence.a(paramTextNode.mGestureTypes);
         paramList.add(new TextNode.a(k, m, paramCharSequence));
       }
     }
-    b localb;
-    TextNode localTextNode;
     if (paramBoolean)
     {
       i = 0;
-      if (i < paramTextNode.getChildCount())
+      while (i < paramTextNode.getChildCount())
       {
-        localb = paramTextNode.getChildAt(i);
+        b localb = paramTextNode.getChildAt(i);
         if ((localb instanceof TextNode))
         {
-          localTextNode = (TextNode)localb;
+          TextNode localTextNode = (TextNode)localb;
           paramCharSequence = localTextNode.mText;
-          if ((this.mFontScaleAdapter == null) || (TextUtils.isEmpty(paramCharSequence))) {
-            break label690;
+          if ((this.mFontScaleAdapter != null) && (!TextUtils.isEmpty(paramCharSequence)))
+          {
+            CharSequence localCharSequence = this.mFontScaleAdapter.getEmoticonText(paramCharSequence, localTextNode.mFontSize);
+            if (localCharSequence != null) {
+              paramCharSequence = localCharSequence;
+            }
           }
-          CharSequence localCharSequence = this.mFontScaleAdapter.getEmoticonText(paramCharSequence, localTextNode.mFontSize);
-          if (localCharSequence == null) {
-            break label690;
-          }
-          paramCharSequence = localCharSequence;
+          createSpanOperations(paramList, paramSpannableStringBuilder, localTextNode, paramCharSequence, paramBoolean);
         }
+        else
+        {
+          if (!(localb instanceof ImageNode)) {
+            break label684;
+          }
+          createImageSpanOperation(paramList, paramSpannableStringBuilder, (ImageNode)localb);
+        }
+        localb.markUpdateSeen();
+        i += 1;
+        continue;
+        label684:
+        paramList = new StringBuilder();
+        paramList.append(localb.getViewClass());
+        paramList.append("is not support in Text");
+        throw new RuntimeException(paramList.toString());
       }
-    }
-    label690:
-    for (;;)
-    {
-      createSpanOperations(paramList, paramSpannableStringBuilder, localTextNode, paramCharSequence, paramBoolean);
-      localb.markUpdateSeen();
-      i += 1;
-      break;
-      throw new RuntimeException(localb.getViewClass() + "is not support in Text");
-      return;
     }
   }
   
@@ -354,21 +396,18 @@ public class TextNode
   @HippyControllerProps(defaultString="normal", defaultType="string", name="fontStyle")
   public void fontStyle(String paramString)
   {
-    int i = -1;
+    int i;
     if ("italic".equals(paramString)) {
       i = 2;
+    } else if ("normal".equals(paramString)) {
+      i = 0;
+    } else {
+      i = -1;
     }
-    for (;;)
+    if (i != this.mFontStyle)
     {
-      if (i != this.mFontStyle)
-      {
-        this.mFontStyle = i;
-        markUpdated();
-      }
-      return;
-      if ("normal".equals(paramString)) {
-        i = 0;
-      }
+      this.mFontStyle = i;
+      markUpdated();
     }
   }
   
@@ -377,26 +416,14 @@ public class TextNode
   {
     int k = -1;
     int j;
-    int i;
-    if (paramString != null)
-    {
+    if (paramString != null) {
       j = parseArgument(paramString);
-      if ((j < 500) && (!"bold".equals(paramString))) {
-        break label54;
-      }
-      i = 1;
-    }
-    for (;;)
-    {
-      if (i != this.mFontWeight)
-      {
-        this.mFontWeight = i;
-        markUpdated();
-      }
-      return;
+    } else {
       j = -1;
-      break;
-      label54:
+    }
+    int i;
+    if ((j < 500) && (!"bold".equals(paramString)))
+    {
       if (!"normal".equals(paramString))
       {
         i = k;
@@ -410,6 +437,14 @@ public class TextNode
       {
         i = 0;
       }
+    }
+    else {
+      i = 1;
+    }
+    if (i != this.mFontWeight)
+    {
+      this.mFontWeight = i;
+      markUpdated();
     }
   }
   
@@ -427,10 +462,15 @@ public class TextNode
   {
     if (!isVirtual())
     {
-      LogUtils.d("TextNode", "measure:layoutAfter w: " + getLayoutWidth() + " h: " + getLayoutHeight());
-      Layout localLayout = createLayout(getLayoutWidth() - getPadding(0) - getPadding(2), com.tencent.mtt.hippy.dom.a.f.b);
-      paramHippyEngineContext.getDomManager().a(localLayout);
-      setData(localLayout);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("measure:layoutAfter w: ");
+      ((StringBuilder)localObject).append(getLayoutWidth());
+      ((StringBuilder)localObject).append(" h: ");
+      ((StringBuilder)localObject).append(getLayoutHeight());
+      LogUtils.d("TextNode", ((StringBuilder)localObject).toString());
+      localObject = createLayout(getLayoutWidth() - getPadding(0) - getPadding(2), com.tencent.mtt.hippy.dom.a.f.b);
+      paramHippyEngineContext.getDomManager().a((Layout)localObject);
+      setData(localObject);
     }
   }
   
@@ -439,6 +479,9 @@ public class TextNode
     super.layoutBefore(paramHippyEngineContext);
     if (this.mFontScaleAdapter == null) {
       this.mFontScaleAdapter = paramHippyEngineContext.getGlobalConfigs().getFontScaleAdapter();
+    }
+    if (this.mImageAdapter == null) {
+      this.mImageAdapter = paramHippyEngineContext.getGlobalConfigs().getImageLoaderAdapter();
     }
     if (this.mIsVirtual) {
       return;
@@ -466,13 +509,14 @@ public class TextNode
   @HippyControllerProps(defaultNumber=-1.0D, defaultType="number", name="lineHeight")
   public void lineHeight(int paramInt)
   {
-    if (paramInt == -1) {}
-    for (float f = -1.0F;; f = PixelUtil.dp2px(paramInt))
-    {
-      this.mLineHeight = f;
-      markUpdated();
-      return;
+    float f;
+    if (paramInt == -1) {
+      f = -1.0F;
+    } else {
+      f = PixelUtil.dp2px(paramInt);
     }
+    this.mLineHeight = f;
+    markUpdated();
   }
   
   @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onLongClick")
@@ -492,6 +536,14 @@ public class TextNode
     super.markUpdated();
     if (!this.mIsVirtual) {
       super.dirty();
+    }
+  }
+  
+  public void postInvalidateDelayed(long paramLong)
+  {
+    WeakReference localWeakReference = this.mTextViewWeakRefrence;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+      ((HippyTextView)this.mTextViewWeakRefrence.get()).postInvalidateDelayed(paramLong);
     }
   }
   
@@ -533,34 +585,30 @@ public class TextNode
   @HippyControllerProps(defaultString="left", defaultType="string", name="textAlign")
   public void setTextAlign(String paramString)
   {
-    if ((paramString == null) || ("auto".equals(paramString))) {
-      this.mTextAlign = Layout.Alignment.ALIGN_NORMAL;
-    }
-    for (;;)
+    if ((paramString != null) && (!"auto".equals(paramString)) && (!"left".equals(paramString)))
     {
-      markUpdated();
-      return;
-      if ("left".equals(paramString))
+      if ("right".equals(paramString))
       {
-        this.mTextAlign = Layout.Alignment.ALIGN_NORMAL;
+        paramString = Layout.Alignment.ALIGN_OPPOSITE;
+        break label115;
       }
-      else if ("right".equals(paramString))
+      if ("center".equals(paramString))
       {
-        this.mTextAlign = Layout.Alignment.ALIGN_OPPOSITE;
+        paramString = Layout.Alignment.ALIGN_CENTER;
+        break label115;
       }
-      else if ("center".equals(paramString))
+      if (!"justify".equals(paramString))
       {
-        this.mTextAlign = Layout.Alignment.ALIGN_CENTER;
-      }
-      else
-      {
-        if (!"justify".equals(paramString)) {
-          break;
-        }
-        this.mTextAlign = Layout.Alignment.ALIGN_NORMAL;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Invalid textAlign: ");
+        localStringBuilder.append(paramString);
+        throw new RuntimeException(localStringBuilder.toString());
       }
     }
-    throw new RuntimeException("Invalid textAlign: " + paramString);
+    paramString = Layout.Alignment.ALIGN_NORMAL;
+    label115:
+    this.mTextAlign = paramString;
+    markUpdated();
   }
   
   @HippyControllerProps(defaultNumber=0.0D, defaultType="number", name="textShadowColor")
@@ -571,6 +619,11 @@ public class TextNode
       this.mTextShadowColor = paramInt;
       markUpdated();
     }
+  }
+  
+  public void setTextView(HippyTextView paramHippyTextView)
+  {
+    this.mTextViewWeakRefrence = new WeakReference(paramHippyTextView);
   }
   
   @HippyControllerProps(name="text")
@@ -590,20 +643,15 @@ public class TextNode
     {
       paramString = paramString.split(" ");
       int j = paramString.length;
-      if (i < j)
+      while (i < j)
       {
         Object localObject = paramString[i];
         if ("underline".equals(localObject)) {
           this.mIsUnderlineTextDecorationSet = true;
+        } else if ("line-through".equals(localObject)) {
+          this.mIsLineThroughTextDecorationSet = true;
         }
-        for (;;)
-        {
-          i += 1;
-          break;
-          if ("line-through".equals(localObject)) {
-            this.mIsLineThroughTextDecorationSet = true;
-          }
-        }
+        i += 1;
       }
     }
     markUpdated();
@@ -692,27 +740,25 @@ public class TextNode
       while (i > 0)
       {
         Object localObject = new StringBuilder(i + 1);
-        int j;
-        if (paramTruncateAt != null) {
-          if (i > 1)
-          {
-            j = i - 1;
-            ((StringBuilder)localObject).append(paramString, 0, j);
-            ((StringBuilder)localObject).append("…");
-          }
-        }
-        for (;;)
+        if (paramTruncateAt != null)
         {
-          localObject = createSpan(((StringBuilder)localObject).toString(), false);
-          if (new StaticLayout((CharSequence)localObject, paramTextPaint, paramInt, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true).getLineCount() > 1) {
-            break label128;
+          int j;
+          if (i > 1) {
+            j = i - 1;
+          } else {
+            j = i;
           }
-          return localObject.toString();
-          j = i;
-          break;
+          ((StringBuilder)localObject).append(paramString, 0, j);
+          ((StringBuilder)localObject).append("…");
+        }
+        else
+        {
           ((StringBuilder)localObject).append(paramString, 0, i);
         }
-        label128:
+        localObject = createSpan(((StringBuilder)localObject).toString(), false);
+        if (new StaticLayout((CharSequence)localObject, paramTextPaint, paramInt, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true).getLineCount() <= 1) {
+          return localObject.toString();
+        }
         i -= 1;
       }
     }
@@ -730,7 +776,7 @@ public class TextNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.node.TextNode
  * JD-Core Version:    0.7.0.1
  */

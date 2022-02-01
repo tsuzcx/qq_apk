@@ -1,7 +1,7 @@
 package com.tencent.av.ui;
 
 import android.content.Context;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
 class AVActivity$VideoOrientationEventListener
@@ -15,15 +15,26 @@ class AVActivity$VideoOrientationEventListener
   public void a(int paramInt, boolean paramBoolean)
   {
     long l = AudioHelper.b();
-    if (this.a.h != paramInt) {
-      QLog.d(this.a.b, 1, "onVideoOrientationChanged, mRotationAngle[" + this.a.h + "->" + paramInt + "], seq[" + l + "], isFinishing[" + this.a.isFinishing() + "]");
+    if (this.a.h != paramInt)
+    {
+      String str = this.a.b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onVideoOrientationChanged, mRotationAngle[");
+      localStringBuilder.append(this.a.h);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("], seq[");
+      localStringBuilder.append(l);
+      localStringBuilder.append("], isFinishing[");
+      localStringBuilder.append(this.a.isFinishing());
+      localStringBuilder.append("]");
+      QLog.d(str, 1, localStringBuilder.toString());
     }
     if (this.a.isFinishing()) {
       return;
     }
-    switch (paramInt)
+    if ((paramInt != 0) && (paramInt != 90) && (paramInt != 180) && (paramInt != 270))
     {
-    default: 
       this.a.a(l, 270, paramBoolean);
       return;
     }
@@ -32,7 +43,7 @@ class AVActivity$VideoOrientationEventListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.AVActivity.VideoOrientationEventListener
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.text.TextUtils;
 import com.tencent.biz.troop.TroopMemberApiClient;
-import com.tencent.mobileqq.intervideo.huayang.HuayangJsPlugin;
+import com.tencent.mobileqq.intervideo.huayang.IHuayangJsPlugin;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
@@ -35,37 +36,49 @@ public class GVideoWebPlugin
     return 8589934615L;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("GroupVideoManager.GVideoWebPlugin", 2, "url:" + paramString1 + " pkgName:" + paramString2 + " method:" + paramString3 + " args:" + paramVarArgs);
-    }
-    if ((!TextUtils.equals(paramString2, "groupVideo")) || (paramVarArgs == null) || (paramVarArgs.length == 0)) {}
-    do
+    if (QLog.isColorLevel())
     {
-      return false;
+      paramJsBridgeListener = new StringBuilder();
+      paramJsBridgeListener.append("url:");
+      paramJsBridgeListener.append(paramString1);
+      paramJsBridgeListener.append(" pkgName:");
+      paramJsBridgeListener.append(paramString2);
+      paramJsBridgeListener.append(" method:");
+      paramJsBridgeListener.append(paramString3);
+      paramJsBridgeListener.append(" args:");
+      paramJsBridgeListener.append(paramVarArgs);
+      QLog.i("GroupVideoManager.GVideoWebPlugin", 2, paramJsBridgeListener.toString());
+    }
+    if ((TextUtils.equals(paramString2, "groupVideo")) && (paramVarArgs != null))
+    {
+      if (paramVarArgs.length == 0) {
+        return false;
+      }
       int i;
-      if (TextUtils.equals(paramString3, "closeGroupVideoAPI")) {
+      if (TextUtils.equals(paramString3, "closeGroupVideoAPI"))
+      {
         try
         {
           paramJsBridgeListener = getJsonFromJSBridge(paramString1);
-          if (paramJsBridgeListener == null) {
-            break;
-          }
-          i = paramJsBridgeListener.optInt("type");
-          paramJsBridgeListener = new Intent("tencent.video.webjs.cmd");
-          paramJsBridgeListener.putExtra("type", i);
-          switch (i)
+          if (paramJsBridgeListener != null)
           {
-          case 1: 
-          case 2: 
+            i = paramJsBridgeListener.optInt("type");
+            paramJsBridgeListener = new Intent("tencent.video.webjs.cmd");
+            paramJsBridgeListener.putExtra("type", i);
+            if ((i != 1) && (i != 2)) {
+              return true;
+            }
             this.jdField_a_of_type_AndroidContentContext.sendBroadcast(paramJsBridgeListener);
+            return true;
           }
         }
         catch (Exception paramJsBridgeListener)
         {
           paramJsBridgeListener.printStackTrace();
         }
+        return true;
       }
       if (TextUtils.equals(paramString3, "openRoom"))
       {
@@ -83,35 +96,36 @@ public class GVideoWebPlugin
             localObject = ((JSONObject)localObject).optString("extra");
             this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(paramJsBridgeListener, i, paramString3, paramString1, paramString2, paramVarArgs, (String)localObject);
             GroupVideoManager.a("group_video", new GVideoWebPlugin.1(this, paramString3));
+            return true;
           }
         }
         catch (Exception paramJsBridgeListener)
         {
-          for (;;)
-          {
-            paramJsBridgeListener.printStackTrace();
-          }
+          paramJsBridgeListener.printStackTrace();
         }
         return true;
       }
-    } while (!TextUtils.equals(paramString3, "preload"));
-    try
-    {
-      QLog.e("GroupVideoManager.GVideoWebPlugin", 2, "preload url:" + paramString1);
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.e(null);
-      return true;
-    }
-    catch (Exception paramJsBridgeListener)
-    {
-      for (;;)
-      {
-        paramJsBridgeListener.printStackTrace();
+      if (TextUtils.equals(paramString3, "preload")) {
+        try
+        {
+          paramJsBridgeListener = new StringBuilder();
+          paramJsBridgeListener.append("preload url:");
+          paramJsBridgeListener.append(paramString1);
+          QLog.e("GroupVideoManager.GVideoWebPlugin", 2, paramJsBridgeListener.toString());
+          this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.e(null);
+          return true;
+        }
+        catch (Exception paramJsBridgeListener)
+        {
+          paramJsBridgeListener.printStackTrace();
+          return true;
+        }
       }
     }
-    return true;
+    return false;
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
     this.jdField_a_of_type_AndroidContentContext = this.mRuntime.a().getApplicationContext();
@@ -120,17 +134,18 @@ public class GVideoWebPlugin
     if (QLog.isColorLevel()) {
       QLog.i("GroupVideoManager.GVideoWebPlugin", 2, "GVideoWebPlugin onCreate");
     }
-    IntentFilter localIntentFilter = new IntentFilter(HuayangJsPlugin.a("com.tencent.od"));
-    localIntentFilter.addAction(HuayangJsPlugin.b("com.tencent.od"));
+    IntentFilter localIntentFilter = new IntentFilter(((IHuayangJsPlugin)QRoute.api(IHuayangJsPlugin.class)).getDownloadNotifyAction("com.tencent.od"));
+    localIntentFilter.addAction(((IHuayangJsPlugin)QRoute.api(IHuayangJsPlugin.class)).getBackNotifyAction("com.tencent.od"));
     this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.mRuntime.a());
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient != null) {
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b();
+    TroopMemberApiClient localTroopMemberApiClient = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
+    if (localTroopMemberApiClient != null) {
+      localTroopMemberApiClient.b();
     }
     try
     {
@@ -143,7 +158,7 @@ public class GVideoWebPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.GVideoWebPlugin
  * JD-Core Version:    0.7.0.1
  */

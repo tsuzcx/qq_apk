@@ -8,42 +8,41 @@ public class SpecialMsgDevStatus
 {
   public void a(MessageObserver paramMessageObserver, int paramInt, boolean paramBoolean, Object paramObject, Object[] paramArrayOfObject, StatictisInfo paramStatictisInfo)
   {
-    switch (paramInt)
+    if (paramInt != 8038)
     {
-    case 8037: 
-    case 8040: 
-    case 8041: 
-    case 8042: 
-    case 8043: 
-    case 8044: 
-    case 8045: 
-    default: 
-      return;
-    case 8033: 
-      paramMessageObserver.macOnlinesStatus(paramArrayOfObject);
-      return;
-    case 8038: 
-      paramMessageObserver.watchOnlineStatus(paramArrayOfObject);
-      return;
-    case 8034: 
-      paramMessageObserver.danceMachine(paramObject);
-      return;
-    case 8035: 
-      paramMessageObserver.handle_NOTIFY_TYPE_CONFESS_TMP(paramBoolean, paramArrayOfObject);
-      return;
-    case 8036: 
-      paramMessageObserver.hiboomAuth(paramArrayOfObject);
-      return;
-    case 8039: 
+      if (paramInt != 8039)
+      {
+        if (paramInt != 8046)
+        {
+          switch (paramInt)
+          {
+          default: 
+            return;
+          case 8036: 
+            paramMessageObserver.hiboomAuth(paramArrayOfObject);
+            return;
+          case 8035: 
+            paramMessageObserver.handle_NOTIFY_TYPE_CONFESS_TMP(paramBoolean, paramArrayOfObject);
+            return;
+          case 8034: 
+            paramMessageObserver.danceMachine(paramObject);
+            return;
+          }
+          paramMessageObserver.macOnlinesStatus(paramArrayOfObject);
+          return;
+        }
+        paramMessageObserver.sendResultWithTransinfo(paramBoolean, paramObject);
+        return;
+      }
       paramMessageObserver.deleteAllSystemMsg(paramBoolean, paramArrayOfObject);
       return;
     }
-    paramMessageObserver.sendResultWithTransinfo(paramBoolean, paramObject);
+    paramMessageObserver.watchOnlineStatus(paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.messageobserver.SpecialMsgDevStatus
  * JD-Core Version:    0.7.0.1
  */

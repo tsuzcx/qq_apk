@@ -11,32 +11,32 @@ public class DateUtils
     {
     default: 
       return "";
-    case 1: 
-      return "星期日";
-    case 2: 
-      return "星期一";
-    case 3: 
-      return "星期二";
-    case 4: 
-      return "星期三";
-    case 5: 
-      return "星期四";
+    case 7: 
+      return "星期六";
     case 6: 
       return "星期五";
+    case 5: 
+      return "星期四";
+    case 4: 
+      return "星期三";
+    case 3: 
+      return "星期二";
+    case 2: 
+      return "星期一";
     }
-    return "星期六";
+    return "星期日";
   }
   
   public static String a(long paramLong)
   {
     long l = System.currentTimeMillis();
     String str1 = b(paramLong);
-    if (!a(paramLong, l)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      String str2 = a(paramLong, bool, true, true);
-      return str2 + " " + str1;
-    }
+    String str2 = a(paramLong, a(paramLong, l) ^ true, true, true);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str2);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(str1);
+    return localStringBuilder.toString();
   }
   
   public static String a(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
@@ -44,30 +44,31 @@ public class DateUtils
     Calendar localCalendar = Calendar.getInstance();
     localCalendar.setTimeInMillis(paramLong);
     StringBuilder localStringBuilder = new StringBuilder();
+    String str = "";
     if (paramBoolean1)
     {
-      str = localCalendar.get(1) + "-";
-      localStringBuilder = localStringBuilder.append(str);
-      if (!paramBoolean2) {
-        break label143;
-      }
-      str = String.format("%02d-", new Object[] { Integer.valueOf(localCalendar.get(2) + 1) });
-      label88:
-      localStringBuilder = localStringBuilder.append(str);
-      if (!paramBoolean3) {
-        break label150;
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(localCalendar.get(1));
+      ((StringBuilder)localObject).append("-");
+      localObject = ((StringBuilder)localObject).toString();
     }
-    label143:
-    label150:
-    for (String str = String.format("%02d", new Object[] { Integer.valueOf(localCalendar.get(5)) });; str = "")
+    else
     {
-      return str;
-      str = "";
-      break;
-      str = "";
-      break label88;
+      localObject = "";
     }
+    localStringBuilder.append((String)localObject);
+    if (paramBoolean2) {
+      localObject = String.format("%02d-", new Object[] { Integer.valueOf(localCalendar.get(2) + 1) });
+    } else {
+      localObject = "";
+    }
+    localStringBuilder.append((String)localObject);
+    Object localObject = str;
+    if (paramBoolean3) {
+      localObject = String.format("%02d", new Object[] { Integer.valueOf(localCalendar.get(5)) });
+    }
+    localStringBuilder.append((String)localObject);
+    return localStringBuilder.toString();
   }
   
   public static boolean a(long paramLong1, long paramLong2)
@@ -87,7 +88,7 @@ public class DateUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.upcoming.DateUtils
  * JD-Core Version:    0.7.0.1
  */

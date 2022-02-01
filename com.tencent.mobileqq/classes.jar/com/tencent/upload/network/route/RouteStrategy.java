@@ -10,9 +10,9 @@ import java.util.List;
 public class RouteStrategy
   implements IUploadRouteStrategy
 {
-  protected final String TAG = "RouteStrategy[" + hashCode() + "]";
+  protected final String TAG;
   @Deprecated
-  protected boolean mCausedByApnChanged = false;
+  protected boolean mCausedByApnChanged;
   protected List<Integer> mPorts;
   protected Iterator<Integer> mPortsIterator;
   protected RecentRouteRecord mRecentRouteRecord;
@@ -21,79 +21,122 @@ public class RouteStrategy
   private ServerRouteTable mServerRouteTable;
   protected String mUsedApn;
   @Deprecated
-  protected List<RouteStrategy.UsedRouteInfo> mUsedRouteInfos = new ArrayList();
+  protected List<RouteStrategy.UsedRouteInfo> mUsedRouteInfos;
   
   public RouteStrategy(ServerRouteTable paramServerRouteTable)
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RouteStrategy[");
+    localStringBuilder.append(hashCode());
+    localStringBuilder.append("]");
+    this.TAG = localStringBuilder.toString();
+    this.mCausedByApnChanged = false;
+    this.mUsedRouteInfos = new ArrayList();
     this.mServerRouteTable = paramServerRouteTable;
   }
   
   private void doInitParams()
   {
     this.mRoutes = getServerRouteTable().getUploadRoutes();
-    if ((this.mRoutes == null) || (this.mRoutes.size() == 0)) {
-      throw new RuntimeException(this.TAG + " doInitParams, getUploadRoutes illegal");
-    }
-    this.mPorts = RouteFactory.getUploadRoutePorts();
-    if ((this.mPorts == null) || (this.mPorts.size() == 0)) {
-      throw new RuntimeException(this.TAG + " doInitParams, getUploadRoutePorts illegal");
-    }
-    this.mRoutesIterator = this.mRoutes.iterator();
-    this.mPortsIterator = this.mPorts.iterator();
-    StringBuffer localStringBuffer = new StringBuffer(this.mRoutes.size());
-    Iterator localIterator = this.mRoutes.iterator();
-    while (localIterator.hasNext())
+    Object localObject1 = this.mRoutes;
+    if ((localObject1 != null) && (((List)localObject1).size() != 0))
     {
-      UploadRoute localUploadRoute = (UploadRoute)localIterator.next();
-      localStringBuffer.append(localUploadRoute.toString() + " ");
+      this.mPorts = RouteFactory.getUploadRoutePorts();
+      localObject1 = this.mPorts;
+      if ((localObject1 != null) && (((List)localObject1).size() != 0))
+      {
+        this.mRoutesIterator = this.mRoutes.iterator();
+        this.mPortsIterator = this.mPorts.iterator();
+        localObject1 = new StringBuffer(this.mRoutes.size());
+        Object localObject2 = this.mRoutes.iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject3 = (UploadRoute)((Iterator)localObject2).next();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(((UploadRoute)localObject3).toString());
+          localStringBuilder.append(" ");
+          ((StringBuffer)localObject1).append(localStringBuilder.toString());
+        }
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("[iplist] ");
+        ((StringBuilder)localObject2).append(this.TAG);
+        localObject2 = ((StringBuilder)localObject2).toString();
+        Object localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(" doInitParams, all Route List:");
+        ((StringBuilder)localObject3).append(((StringBuffer)localObject1).toString());
+        ((StringBuilder)localObject3).append(", all Port List:");
+        ((StringBuilder)localObject3).append(this.mPorts.toString());
+        UploadLog.d((String)localObject2, ((StringBuilder)localObject3).toString());
+        return;
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(this.TAG);
+      ((StringBuilder)localObject1).append(" doInitParams, getUploadRoutePorts illegal");
+      throw new RuntimeException(((StringBuilder)localObject1).toString());
     }
-    UploadLog.d("[iplist] " + this.TAG, " doInitParams, all Route List:" + localStringBuffer.toString() + ", all Port List:" + this.mPorts.toString());
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(this.TAG);
+    ((StringBuilder)localObject1).append(" doInitParams, getUploadRoutes illegal");
+    localObject1 = new RuntimeException(((StringBuilder)localObject1).toString());
+    for (;;)
+    {
+      throw ((Throwable)localObject1);
+    }
   }
   
   private UploadRoute getAvailableRoute()
   {
-    if ((!this.mRoutesIterator.hasNext()) || (!this.mPortsIterator.hasNext()))
+    if ((this.mRoutesIterator.hasNext()) && (this.mPortsIterator.hasNext()))
     {
-      UploadLog.d(this.TAG, " getAvailableRoute return null");
-      return null;
+      UploadRoute localUploadRoute = (UploadRoute)this.mRoutesIterator.next();
+      localUploadRoute.setPort(((Integer)this.mPortsIterator.next()).intValue());
+      Object localObject = getRecentRoute();
+      if ((localObject != null) && (((UploadRoute)localObject).isDuplicate(localUploadRoute)))
+      {
+        localObject = this.TAG;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" getAvailableRoute isDuplicate with recent, matchNextRouteFormRouteTable:");
+        localStringBuilder.append(localUploadRoute.toString());
+        UploadLog.d((String)localObject, localStringBuilder.toString());
+        return matchNextRouteFormRouteTable(localUploadRoute);
+      }
+      localObject = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" getAvailableRoute return:");
+      localStringBuilder.append(localUploadRoute.toString());
+      UploadLog.d((String)localObject, localStringBuilder.toString());
+      return localUploadRoute;
     }
-    UploadRoute localUploadRoute1 = (UploadRoute)this.mRoutesIterator.next();
-    localUploadRoute1.setPort(((Integer)this.mPortsIterator.next()).intValue());
-    UploadRoute localUploadRoute2 = getRecentRoute();
-    if ((localUploadRoute2 != null) && (localUploadRoute2.isDuplicate(localUploadRoute1)))
-    {
-      UploadLog.d(this.TAG, " getAvailableRoute isDuplicate with recent, matchNextRouteFormRouteTable:" + localUploadRoute1.toString());
-      return matchNextRouteFormRouteTable(localUploadRoute1);
-    }
-    UploadLog.d(this.TAG, " getAvailableRoute return:" + localUploadRoute1.toString());
-    return localUploadRoute1;
+    UploadLog.d(this.TAG, " getAvailableRoute return null");
+    return null;
   }
   
   private UploadRoute getRecentRoute()
   {
-    if (this.mRecentRouteRecord == null) {}
-    UploadRoute localUploadRoute;
-    do
-    {
+    Object localObject = this.mRecentRouteRecord;
+    if (localObject == null) {
       return null;
-      localUploadRoute = this.mRecentRouteRecord.getRecentRoute();
-    } while (localUploadRoute == null);
-    UploadLog.d(this.TAG, " getRecentRoute: " + localUploadRoute.toString());
-    return localUploadRoute;
+    }
+    localObject = ((RecentRouteRecord)localObject).getRecentRoute();
+    if (localObject != null)
+    {
+      String str = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" getRecentRoute: ");
+      localStringBuilder.append(((UploadRoute)localObject).toString());
+      UploadLog.d(str, localStringBuilder.toString());
+      return localObject;
+    }
+    return null;
   }
   
   private boolean isApnChanged()
   {
-    boolean bool = true;
-    if (this.mUsedApn == null) {
-      if (UploadConfiguration.getCurrentApn() == null) {
-        bool = false;
-      }
+    String str = this.mUsedApn;
+    if (str == null) {
+      return UploadConfiguration.getCurrentApn() != null;
     }
-    while (this.mUsedApn.compareToIgnoreCase(UploadConfiguration.getCurrentApn()) != 0) {
-      return bool;
-    }
-    return false;
+    return str.compareToIgnoreCase(UploadConfiguration.getCurrentApn()) != 0;
   }
   
   private void loadRecentRouteRecord()
@@ -109,59 +152,71 @@ public class RouteStrategy
   
   private UploadRoute matchNextRouteFormRouteTable(UploadRoute paramUploadRoute)
   {
-    UploadRoute localUploadRoute1 = null;
-    UploadRoute localUploadRoute2 = null;
+    Object localObject1 = null;
+    Object localObject2 = null;
     if (paramUploadRoute == null)
     {
-      paramUploadRoute = localUploadRoute2;
+      paramUploadRoute = (UploadRoute)localObject2;
       if (this.mRoutesIterator.hasNext()) {
         paramUploadRoute = (UploadRoute)this.mRoutesIterator.next();
       }
-      UploadLog.d(this.TAG, "matchNextRouteFormRouteTable: lastRoute == null now = " + paramUploadRoute);
-      localUploadRoute1 = paramUploadRoute;
-      return localUploadRoute1;
+      localObject1 = this.TAG;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("matchNextRouteFormRouteTable: lastRoute == null now = ");
+      ((StringBuilder)localObject2).append(paramUploadRoute);
+      UploadLog.d((String)localObject1, ((StringBuilder)localObject2).toString());
+      return paramUploadRoute;
     }
     paramUploadRoute = paramUploadRoute.clone();
-    UploadLog.d(this.TAG, "matchNextRouteFormRouteTable: currentRoute:" + paramUploadRoute);
+    localObject2 = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("matchNextRouteFormRouteTable: currentRoute:");
+    localStringBuilder.append(paramUploadRoute);
+    UploadLog.d((String)localObject2, localStringBuilder.toString());
     if (this.mPortsIterator.hasNext())
     {
       paramUploadRoute.setPort(((Integer)this.mPortsIterator.next()).intValue());
-      UploadLog.d(this.TAG, "matchNextRouteFormRouteTable: to next port" + paramUploadRoute);
+      localObject1 = this.TAG;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("matchNextRouteFormRouteTable: to next port");
+      ((StringBuilder)localObject2).append(paramUploadRoute);
+      UploadLog.d((String)localObject1, ((StringBuilder)localObject2).toString());
     }
-    for (;;)
+    else if (this.mRoutesIterator.hasNext())
     {
-      localUploadRoute2 = getRecentRoute();
-      localUploadRoute1 = paramUploadRoute;
-      if (localUploadRoute2 == null) {
-        break;
-      }
-      localUploadRoute1 = paramUploadRoute;
-      if (!localUploadRoute2.isDuplicate(paramUploadRoute)) {
-        break;
-      }
-      UploadLog.d(this.TAG, "matchNextRouteFormRouteTable: isDuplicate with recent" + paramUploadRoute.toString());
-      return matchNextRouteFormRouteTable(paramUploadRoute);
-      if (this.mRoutesIterator.hasNext())
+      this.mPortsIterator = this.mPorts.iterator();
+      if (this.mPortsIterator.hasNext())
       {
-        this.mPortsIterator = this.mPorts.iterator();
-        if (this.mPortsIterator.hasNext())
-        {
-          paramUploadRoute = ((UploadRoute)this.mRoutesIterator.next()).clone();
-          paramUploadRoute.setPort(((Integer)this.mPortsIterator.next()).intValue());
-          UploadLog.d(this.TAG, "matchNextRouteFormRouteTable: to next ip" + paramUploadRoute);
-        }
-        else
-        {
-          UploadLog.w(this.TAG, "matchNextRouteFormRouteTable: to next ip, but no port. exception");
-          paramUploadRoute = localUploadRoute1;
-        }
+        paramUploadRoute = ((UploadRoute)this.mRoutesIterator.next()).clone();
+        paramUploadRoute.setPort(((Integer)this.mPortsIterator.next()).intValue());
+        localObject1 = this.TAG;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("matchNextRouteFormRouteTable: to next ip");
+        ((StringBuilder)localObject2).append(paramUploadRoute);
+        UploadLog.d((String)localObject1, ((StringBuilder)localObject2).toString());
       }
       else
       {
-        UploadLog.d(this.TAG, "matchNextRouteFormRouteTable: finish, return null");
-        paramUploadRoute = localUploadRoute1;
+        UploadLog.w(this.TAG, "matchNextRouteFormRouteTable: to next ip, but no port. exception");
+        paramUploadRoute = (UploadRoute)localObject1;
       }
     }
+    else
+    {
+      UploadLog.d(this.TAG, "matchNextRouteFormRouteTable: finish, return null");
+      paramUploadRoute = (UploadRoute)localObject1;
+    }
+    localObject1 = getRecentRoute();
+    if ((localObject1 != null) && (((UploadRoute)localObject1).isDuplicate(paramUploadRoute)))
+    {
+      localObject1 = this.TAG;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("matchNextRouteFormRouteTable: isDuplicate with recent");
+      ((StringBuilder)localObject2).append(paramUploadRoute.toString());
+      UploadLog.d((String)localObject1, ((StringBuilder)localObject2).toString());
+      return matchNextRouteFormRouteTable(paramUploadRoute);
+    }
+    return paramUploadRoute;
   }
   
   public ServerRouteTable getServerRouteTable()
@@ -171,73 +226,89 @@ public class RouteStrategy
   
   public UploadRoute next(UploadRoute paramUploadRoute, int paramInt)
   {
+    Object localObject1 = null;
     if (paramUploadRoute == null)
     {
       UploadLog.d(this.TAG, " next: null, route == null");
       return null;
     }
     this.mUsedRouteInfos.add(new RouteStrategy.UsedRouteInfo(paramUploadRoute.clone(), paramInt));
-    boolean bool2 = UploadConfiguration.isNetworkAvailable();
-    if (!bool2) {}
-    for (boolean bool1 = true;; bool1 = false)
+    boolean bool = UploadConfiguration.isNetworkAvailable();
+    this.mCausedByApnChanged = (bool ^ true);
+    if (!bool)
     {
-      this.mCausedByApnChanged = bool1;
-      if (bool2) {
-        break;
-      }
       UploadLog.d(this.TAG, " next: null, !isNetworkAvailable");
       return null;
     }
-    bool1 = isApnChanged();
-    this.mCausedByApnChanged = bool1;
-    if (bool1)
+    bool = isApnChanged();
+    this.mCausedByApnChanged = bool;
+    if (bool)
     {
-      UploadLog.d(this.TAG, " next: null, isApnChanged:" + bool1);
+      paramUploadRoute = this.TAG;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(" next: null, isApnChanged:");
+      ((StringBuilder)localObject1).append(bool);
+      UploadLog.d(paramUploadRoute, ((StringBuilder)localObject1).toString());
       return null;
     }
-    Object localObject1;
     if ((paramInt != 4) && (paramUploadRoute.getRouteCategory() == IUploadRouteStrategy.RouteCategoryType.RECENT))
     {
-      localObject1 = getAvailableRoute();
-      if (localObject1 != null)
+      localObject2 = getAvailableRoute();
+      if (localObject2 != null)
       {
-        UploadLog.d(this.TAG, " next: return" + localObject1);
-        return localObject1;
+        paramUploadRoute = this.TAG;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" next: return");
+        ((StringBuilder)localObject1).append(localObject2);
+        UploadLog.d(paramUploadRoute, ((StringBuilder)localObject1).toString());
+        return localObject2;
       }
     }
-    bool1 = UploadConfiguration.isWapSetting();
-    UploadLog.d(this.TAG, " next start: " + Const.FailureCode.print(paramInt) + " failureCode:" + paramInt + " wap:" + bool1);
-    Object localObject2;
-    StringBuilder localStringBuilder;
-    switch (paramInt)
-    {
-    case 5: 
-    default: 
-      localObject1 = null;
-      localObject2 = this.TAG;
-      localStringBuilder = new StringBuilder().append(" next return: ");
-      if (localObject1 != null) {
-        break;
+    bool = UploadConfiguration.isWapSetting();
+    Object localObject2 = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" next start: ");
+    localStringBuilder.append(Const.FailureCode.print(paramInt));
+    localStringBuilder.append(" failureCode:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" wap:");
+    localStringBuilder.append(bool);
+    UploadLog.d((String)localObject2, localStringBuilder.toString());
+    if ((paramInt != 0) && (paramInt != 1) && (paramInt != 2)) {
+      if (paramInt != 3)
+      {
+        if ((paramInt != 4) && (paramInt != 6)) {
+          break label366;
+        }
+      }
+      else
+      {
+        while (this.mPortsIterator.hasNext()) {
+          this.mPortsIterator.next();
+        }
+        localObject2 = matchNextRouteFormRouteTable(paramUploadRoute);
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          break label366;
+        }
+        ((UploadRoute)localObject2).setRouteCategory(paramUploadRoute.getRouteCategory());
+        localObject1 = localObject2;
+        break label366;
       }
     }
-    for (paramUploadRoute = "null";; paramUploadRoute = ((UploadRoute)localObject1).toString())
-    {
-      UploadLog.d((String)localObject2, paramUploadRoute);
-      return localObject1;
-      localObject1 = matchNextRouteFormRouteTable(paramUploadRoute);
-      break;
-      while (this.mPortsIterator.hasNext()) {
-        this.mPortsIterator.next();
-      }
-      localObject2 = matchNextRouteFormRouteTable(paramUploadRoute);
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        break;
-      }
-      ((UploadRoute)localObject2).setRouteCategory(paramUploadRoute.getRouteCategory());
-      localObject1 = localObject2;
-      break;
+    localObject1 = matchNextRouteFormRouteTable(paramUploadRoute);
+    label366:
+    localObject2 = this.TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" next return: ");
+    if (localObject1 == null) {
+      paramUploadRoute = "null";
+    } else {
+      paramUploadRoute = ((UploadRoute)localObject1).toString();
     }
+    localStringBuilder.append(paramUploadRoute);
+    UploadLog.d((String)localObject2, localStringBuilder.toString());
+    return localObject1;
   }
   
   public UploadRoute reset()
@@ -250,15 +321,25 @@ public class RouteStrategy
       loadRecentRouteRecord();
     }
     UploadRoute localUploadRoute = getRecentRoute();
+    String str;
+    StringBuilder localStringBuilder;
     if (localUploadRoute != null)
     {
-      UploadLog.d(this.TAG, " reset, return recentRoute: " + localUploadRoute.toString());
+      str = this.TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" reset, return recentRoute: ");
+      localStringBuilder.append(localUploadRoute.toString());
+      UploadLog.d(str, localStringBuilder.toString());
       return localUploadRoute;
     }
     localUploadRoute = getAvailableRoute();
     if (localUploadRoute != null)
     {
-      UploadLog.d(this.TAG, " reset, return firstRoute:" + localUploadRoute);
+      str = this.TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" reset, return firstRoute:");
+      localStringBuilder.append(localUploadRoute);
+      UploadLog.d(str, localStringBuilder.toString());
       return localUploadRoute;
     }
     UploadLog.d(this.TAG, " reset, return null");
@@ -267,30 +348,34 @@ public class RouteStrategy
   
   public boolean save(UploadRoute paramUploadRoute)
   {
-    boolean bool = true;
-    String str = UploadConfiguration.getRecentRouteApnKey();
-    if (str == null)
+    String str1 = UploadConfiguration.getRecentRouteApnKey();
+    if (str1 == null)
     {
       UploadLog.d(this.TAG, "save, unknown key");
-      bool = false;
+      return false;
     }
-    do
+    if ((str1 != null) && (str1.length() > 0))
     {
-      return bool;
-      if ((str == null) || (str.length() <= 0)) {
-        break;
+      if (!paramUploadRoute.getIp().endsWith(".com"))
+      {
+        this.mRecentRouteRecord = UploadConfiguration.saveAsRecentIp(getServerRouteTable(), str1, paramUploadRoute);
+        String str2 = this.TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" save: as recent:");
+        localStringBuilder.append(paramUploadRoute);
+        localStringBuilder.append(" recentApnKey:");
+        localStringBuilder.append(str1);
+        UploadLog.d(str2, localStringBuilder.toString());
       }
-    } while (paramUploadRoute.getIp().endsWith(".com"));
-    this.mRecentRouteRecord = UploadConfiguration.saveAsRecentIp(getServerRouteTable(), str, paramUploadRoute);
-    UploadLog.d(this.TAG, " save: as recent:" + paramUploadRoute + " recentApnKey:" + str);
-    return true;
+      return true;
+    }
     UploadLog.d(this.TAG, " save: apnKey isNullOrEmpty");
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.network.route.RouteStrategy
  * JD-Core Version:    0.7.0.1
  */

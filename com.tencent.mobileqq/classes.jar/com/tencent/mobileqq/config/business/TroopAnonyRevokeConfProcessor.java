@@ -25,24 +25,28 @@ public class TroopAnonyRevokeConfProcessor
   public GeneralDataBean a(QConfItem[] paramArrayOfQConfItem)
   {
     QLog.i("TroopFoldMsgConfProcessor", 1, "[onParsed] config");
-    Object localObject = null;
+    Object localObject;
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
-      localGeneralDataBean = GeneralDataBean.a(paramArrayOfQConfItem[0].a);
+      GeneralDataBean localGeneralDataBean = GeneralDataBean.a(paramArrayOfQConfItem[0].a);
       localObject = localGeneralDataBean;
       if (QLog.isColorLevel())
       {
-        QLog.d("TroopFoldMsgConfProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
-        localObject = localGeneralDataBean;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onParsed ");
+        ((StringBuilder)localObject).append(paramArrayOfQConfItem[0].a);
+        QLog.d("TroopFoldMsgConfProcessor", 2, ((StringBuilder)localObject).toString());
+        return localGeneralDataBean;
       }
     }
-    while (!QLog.isColorLevel())
+    else
     {
-      GeneralDataBean localGeneralDataBean;
-      return localObject;
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopFoldMsgConfProcessor", 2, "onParsed is null");
+      }
+      localObject = null;
     }
-    QLog.d("TroopFoldMsgConfProcessor", 2, "onParsed is null");
-    return null;
+    return localObject;
   }
   
   public void a(GeneralDataBean paramGeneralDataBean)
@@ -77,7 +81,10 @@ public class TroopAnonyRevokeConfProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.i("TroopFoldMsgConfProcessor", 1, "[onReqFailed] failCode=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[onReqFailed] failCode=");
+    localStringBuilder.append(paramInt);
+    QLog.i("TroopFoldMsgConfProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -87,7 +94,7 @@ public class TroopAnonyRevokeConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.TroopAnonyRevokeConfProcessor
  * JD-Core Version:    0.7.0.1
  */

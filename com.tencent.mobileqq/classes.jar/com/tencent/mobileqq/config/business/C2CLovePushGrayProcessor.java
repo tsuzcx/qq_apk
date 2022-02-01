@@ -21,8 +21,12 @@ public class C2CLovePushGrayProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       C2CLovePushGrayConfBean localC2CLovePushGrayConfBean = C2CLovePushGrayConfBean.a(paramArrayOfQConfItem[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("C2CLovePushGrayProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("C2CLovePushGrayProcessor", 2, localStringBuilder.toString());
       }
       return localC2CLovePushGrayConfBean;
     }
@@ -53,8 +57,12 @@ public class C2CLovePushGrayProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CLovePushGrayProcessor", 2, "onReqFailed " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqFailed ");
+      localStringBuilder.append(paramInt);
+      QLog.d("C2CLovePushGrayProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -65,7 +73,7 @@ public class C2CLovePushGrayProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.C2CLovePushGrayProcessor
  * JD-Core Version:    0.7.0.1
  */

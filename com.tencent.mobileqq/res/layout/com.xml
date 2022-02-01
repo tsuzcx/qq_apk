@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.pubaccount.readinjoy.view.FixWidthRatioRelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" app:ratioH="1" app:ratioW="1"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.image.URLImageView android:id="@id/duw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <TextView android:textSize="10.0sp" android:textColor="#ffffffff" android:id="@id/oct" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="6.0dip" android:text="" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-    <ImageView android:id="@id/ogd" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/e5p" android:alpha="0.4" />
-    <FrameLayout android:id="@id/enp" android:background="@drawable/e5g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/h1a" />
-    </FrameLayout>
-</com.tencent.biz.pubaccount.readinjoy.view.FixWidthRatioRelativeLayout>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.pubaccount.weishi_new.view.WSViewPager android:id="@id/oqy" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/oqd" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <ImageView android:id="@id/opw" android:paddingLeft="@dimen/mp" android:paddingTop="@dimen/mp" android:paddingRight="@dimen/mp" android:paddingBottom="@dimen/mp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dtr" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerInParent="true">
+            <com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView android:layout_gravity="center_vertical" android:id="@id/oq5" android:visibility="gone" android:layout_width="@dimen/n7" android:layout_height="@dimen/n7" android:layout_marginLeft="@dimen/mw" android:layout_marginRight="@dimen/mw" />
+            <com.tencent.biz.pubaccount.weishi_new.view.tabLayout.WSTabLayout android:id="@id/oqg" android:layout_width="120.0dip" android:layout_height="fill_parent" />
+        </LinearLayout>
+        <ImageView android:id="@id/opz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/crg" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <RelativeLayout android:id="@id/oqb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="52.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <com.tencent.biz.pubaccount.weishi_new.view.RoundImageView android:id="@id/oq_" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/com" />
+            <ImageView android:id="@id/oq3" android:background="@drawable/e7i" android:visibility="gone" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_alignRight="@id/oq_" />
+        </RelativeLayout>
+        <View android:id="@id/oqi" android:background="#33979797" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <ViewStub android:layout_gravity="bottom|center|right" android:id="@id/or0" android:layout="@layout/cow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/mw" android:layout_marginRight="@dimen/mw" android:layout_marginBottom="@dimen/n5" />
+    <ViewStub android:id="@id/oq8" android:layout="@layout/a9t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

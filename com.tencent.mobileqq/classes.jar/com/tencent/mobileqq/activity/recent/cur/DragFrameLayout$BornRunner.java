@@ -20,25 +20,23 @@ class DragFrameLayout$BornRunner
   
   public Bitmap a()
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Int >= 0)
-    {
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_Int >= DragFrameLayout.a().length) {}
-    }
-    try
-    {
-      localObject1 = BitmapFactory.decodeResource(this.this$0.getResources(), DragFrameLayout.a()[this.jdField_a_of_type_Int]);
-      return localObject1;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      do
+    int i = this.jdField_a_of_type_Int;
+    if ((i >= 0) && (i < DragFrameLayout.a().length)) {
+      try
       {
-        localObject1 = localObject2;
-      } while (!QLog.isColorLevel());
-      QLog.e("DragRelativeLayout", 2, "decodeBitmap failed" + localOutOfMemoryError, localOutOfMemoryError);
+        Bitmap localBitmap = BitmapFactory.decodeResource(this.this$0.getResources(), DragFrameLayout.a()[this.jdField_a_of_type_Int]);
+        return localBitmap;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("decodeBitmap failed");
+          localStringBuilder.append(localOutOfMemoryError);
+          QLog.e("DragRelativeLayout", 2, localStringBuilder.toString(), localOutOfMemoryError);
+        }
+      }
     }
     return null;
   }
@@ -51,45 +49,49 @@ class DragFrameLayout$BornRunner
         DragFrameLayout.a(this.this$0, null);
       }
       DragFrameLayout.a(this.this$0, null);
-      if (DragFrameLayout.a(this.this$0) == 2) {
-        if (DragFrameLayout.a(this.this$0) == null) {
-          break label221;
+      if (DragFrameLayout.a(this.this$0) == 2)
+      {
+        List localList;
+        if (DragFrameLayout.a(this.this$0) != null) {
+          localList = DragFrameLayout.a(this.this$0).a();
+        } else {
+          localList = null;
+        }
+        if ((DragFrameLayout.a(this.this$0) != null) && (localList != null) && (localList.size() > 0))
+        {
+          DragFrameLayout.a(this.this$0, 5);
+          DragFrameLayout localDragFrameLayout = this.this$0;
+          DragFrameLayout.a(localDragFrameLayout, new DragFrameLayout.AllBornRunner(localDragFrameLayout, localList));
+        }
+        else
+        {
+          DragFrameLayout.a(this.this$0, -1);
+          if (QLog.isColorLevel()) {
+            QLog.d("Drag", 2, "DONE!");
+          }
+          DragFrameLayout.a(this.this$0, true);
         }
       }
+      else
+      {
+        DragFrameLayout.a(this.this$0, -1);
+        if (QLog.isColorLevel()) {
+          QLog.d("Drag", 2, "DONE!");
+        }
+        DragFrameLayout.a(this.this$0, true);
+      }
+      DragFrameLayout.a(this.this$0, null);
     }
-    label221:
-    for (List localList = DragFrameLayout.a(this.this$0).a();; localList = null)
+    else
     {
-      if ((DragFrameLayout.a(this.this$0) != null) && (localList != null) && (localList.size() > 0))
-      {
-        DragFrameLayout.a(this.this$0, 5);
-        DragFrameLayout.a(this.this$0, new DragFrameLayout.AllBornRunner(this.this$0, localList));
-        DragFrameLayout.a(this.this$0, null);
-      }
-      for (;;)
-      {
-        this.this$0.invalidate();
-        return;
-        DragFrameLayout.a(this.this$0, -1);
-        if (QLog.isColorLevel()) {
-          QLog.d("Drag", 2, "DONE!");
-        }
-        DragFrameLayout.a(this.this$0, true);
-        break;
-        DragFrameLayout.a(this.this$0, -1);
-        if (QLog.isColorLevel()) {
-          QLog.d("Drag", 2, "DONE!");
-        }
-        DragFrameLayout.a(this.this$0, true);
-        break;
-        this.jdField_a_of_type_Int += 1;
-      }
+      this.jdField_a_of_type_Int += 1;
     }
+    this.this$0.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.cur.DragFrameLayout.BornRunner
  * JD-Core Version:    0.7.0.1
  */

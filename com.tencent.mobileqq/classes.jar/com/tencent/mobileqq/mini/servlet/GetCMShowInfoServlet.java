@@ -45,6 +45,7 @@ public class GetCMShowInfoServlet
       {
         int i = localObject.length - 4;
         paramFromServiceMsg = new byte[i];
+        boolean bool = false;
         PkgTools.copyData(paramFromServiceMsg, 0, (byte[])localObject, 4, i);
         try
         {
@@ -53,13 +54,11 @@ public class GetCMShowInfoServlet
           localBundle.putLong("retCode", ((WebSSOAgent.UniSsoServerRsp)localObject).ret.get());
           localBundle.putString("errMsg", ((WebSSOAgent.UniSsoServerRsp)localObject).errmsg.get());
           localBundle.putString("result_data", ((WebSSOAgent.UniSsoServerRsp)localObject).rspdata.get());
-          if (((WebSSOAgent.UniSsoServerRsp)localObject).ret.get() == 0L) {}
-          for (boolean bool = true;; bool = false)
-          {
-            notifyObserver(paramIntent, 1088, bool, localBundle, MiniAppObserver.class);
-            return;
+          if (((WebSSOAgent.UniSsoServerRsp)localObject).ret.get() == 0L) {
+            bool = true;
           }
-          notifyObserver(paramIntent, 1087, false, localBundle, MiniAppObserver.class);
+          notifyObserver(paramIntent, 1088, bool, localBundle, MiniAppObserver.class);
+          return;
         }
         catch (Throwable paramFromServiceMsg)
         {
@@ -67,52 +66,49 @@ public class GetCMShowInfoServlet
         }
       }
     }
+    notifyObserver(paramIntent, 1087, false, localBundle, MiniAppObserver.class);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    Object localObject1 = paramIntent.getStringExtra("openids");
-    String str1 = paramIntent.getStringExtra("appid");
-    String str2 = paramIntent.getStringExtra("engine_name");
-    String str3 = paramIntent.getStringExtra("engine_version");
-    String str4 = paramIntent.getStringExtra("avatar_type");
-    Object localObject2 = new WebSSOAgent.UniSsoServerReqComm();
-    ((WebSSOAgent.UniSsoServerReqComm)localObject2).platform.set(109L);
-    ((WebSSOAgent.UniSsoServerReqComm)localObject2).osver.set(Build.VERSION.RELEASE);
-    ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.5.5");
+    String str1 = paramIntent.getStringExtra("openids");
+    String str2 = paramIntent.getStringExtra("appid");
+    String str3 = paramIntent.getStringExtra("engine_name");
+    String str4 = paramIntent.getStringExtra("engine_version");
+    String str5 = paramIntent.getStringExtra("avatar_type");
+    Object localObject = new WebSSOAgent.UniSsoServerReqComm();
+    ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
+    ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
+    ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.7.0");
     paramIntent = new WebSSOAgent.UniSsoServerReq();
-    paramIntent.comm.set((MessageMicro)localObject2);
-    localObject2 = new JSONObject();
+    paramIntent.comm.set((MessageMicro)localObject);
+    localObject = new JSONObject();
     try
     {
       JSONArray localJSONArray = new JSONArray();
-      localJSONArray.put(localObject1);
-      ((JSONObject)localObject2).put("openids", localJSONArray);
-      ((JSONObject)localObject2).put("appid", str1);
-      ((JSONObject)localObject2).put("engine_name", str2);
-      ((JSONObject)localObject2).put("engine_version", str3);
-      ((JSONObject)localObject2).put("avatar_type", str4);
-      paramIntent.reqdata.set(((JSONObject)localObject2).toString());
-      paramIntent = paramIntent.toByteArray();
-      localObject1 = new byte[paramIntent.length + 4];
-      PkgTools.DWord2Byte((byte[])localObject1, 0, paramIntent.length + 4);
-      PkgTools.copyData((byte[])localObject1, 4, paramIntent, paramIntent.length);
-      paramPacket.setSSOCommand("apollo_router_light.apollo_arkitsvr_linkcmd_getavatar");
-      paramPacket.putSendData((byte[])localObject1);
-      return;
+      localJSONArray.put(str1);
+      ((JSONObject)localObject).put("openids", localJSONArray);
+      ((JSONObject)localObject).put("appid", str2);
+      ((JSONObject)localObject).put("engine_name", str3);
+      ((JSONObject)localObject).put("engine_version", str4);
+      ((JSONObject)localObject).put("avatar_type", str5);
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        QLog.e("GetCMShowInfoServlet", 1, "[onSend] params error!", localJSONException);
-      }
+      QLog.e("GetCMShowInfoServlet", 1, "[onSend] params error!", localJSONException);
     }
+    paramIntent.reqdata.set(((JSONObject)localObject).toString());
+    paramIntent = paramIntent.toByteArray();
+    byte[] arrayOfByte = new byte[paramIntent.length + 4];
+    PkgTools.dWord2Byte(arrayOfByte, 0, paramIntent.length + 4);
+    PkgTools.copyData(arrayOfByte, 4, paramIntent, paramIntent.length);
+    paramPacket.setSSOCommand("apollo_router_light.apollo_arkitsvr_linkcmd_getavatar");
+    paramPacket.putSendData(arrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.GetCMShowInfoServlet
  * JD-Core Version:    0.7.0.1
  */

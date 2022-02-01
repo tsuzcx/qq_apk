@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<bitmap android:src="@drawable/f3y" android:tileMode="repeat"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<shape android:shape="rectangle"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="@dimen/bcm" />
+    <solid android:color="@android:color/white" />
+    <padding android:left="@dimen/bck" android:top="@dimen/bcl" android:right="@dimen/bck" android:bottom="@dimen/bcl" />
+</shape>

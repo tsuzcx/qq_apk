@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity.specialcare;
 
+import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
@@ -23,19 +24,18 @@ class QQSpecialFriendSettingActivity$1
     Object localObject;
     if (QQAppInterface.isNotificationEnabled() == 0)
     {
-      localObject = new MsgNotifyPushForSpecialCareDialog(this.a, this.a.app, QQSpecialFriendSettingActivity.a(this.a));
+      localObject = this.a;
+      localObject = new MsgNotifyPushForSpecialCareDialog((Context)localObject, ((QQSpecialFriendSettingActivity)localObject).app, QQSpecialFriendSettingActivity.a(this.a));
       ((MsgNotifyPushForSpecialCareDialog)localObject).setOnDismissListener(new QQSpecialFriendSettingActivity.1.1(this, (MsgNotifyPushForSpecialCareDialog)localObject));
       ((MsgNotifyPushForSpecialCareDialog)localObject).show();
       ReportController.b(null, "dc00898", "", "", "0X8009ACB", "0X8009ACB", 0, 0, "", "", "", "");
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       if (QLog.isColorLevel()) {
         QLog.d("QQSpecialFriendSettingActivity", 2, "finish all setings");
       }
-      if (NetworkUtil.g(this.a))
+      if (NetworkUtil.isNetworkAvailable(this.a))
       {
         boolean bool1 = QQSpecialFriendSettingActivity.a(this.a).a();
         boolean bool2 = QQSpecialFriendSettingActivity.b(this.a).a();
@@ -44,25 +44,29 @@ class QQSpecialFriendSettingActivity$1
         int i = QQSpecialFriendSettingActivity.a(this.a);
         ((FriendListHandler)localObject).setSpecialCareSwitchesOfAPerson(str, new int[] { 2, 3 }, new boolean[] { bool1, bool2 }, new String[] { String.valueOf(i), null });
         localObject = this.a.a.obtainMessage(8193);
-        ((Message)localObject).obj = this.a.getString(2131699210);
+        ((Message)localObject).obj = this.a.getString(2131699314);
         this.a.a.sendMessage((Message)localObject);
-        if ((bool1) && (bool2)) {}
-        for (localObject = "0";; localObject = "1")
-        {
-          ReportController.b(null, "CliOper", "", "", "0X80050E2", "0X80050E2", 0, 0, (String)localObject, "", "", "");
-          break;
+        if ((bool1) && (bool2)) {
+          localObject = "0";
+        } else {
+          localObject = "1";
         }
+        ReportController.b(null, "CliOper", "", "", "0X80050E2", "0X80050E2", 0, 0, (String)localObject, "", "", "");
       }
-      localObject = this.a.a.obtainMessage(8195);
-      ((Message)localObject).arg1 = 0;
-      ((Message)localObject).arg2 = 2131692257;
-      this.a.a.sendMessage((Message)localObject);
+      else
+      {
+        localObject = this.a.a.obtainMessage(8195);
+        ((Message)localObject).arg1 = 0;
+        ((Message)localObject).arg2 = 2131692183;
+        this.a.a.sendMessage((Message)localObject);
+      }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
 import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.troop.api.ITroopMemberApiClientApi.Callback;
 
 class AIOGalleryAdapter$4
-  implements TroopMemberApiClient.Callback
+  implements ITroopMemberApiClientApi.Callback
 {
   AIOGalleryAdapter$4(AIOGalleryAdapter paramAIOGalleryAdapter, int paramInt, AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, AIOImageData paramAIOImageData) {}
   
@@ -16,7 +16,7 @@ class AIOGalleryAdapter$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.4
  * JD-Core Version:    0.7.0.1
  */

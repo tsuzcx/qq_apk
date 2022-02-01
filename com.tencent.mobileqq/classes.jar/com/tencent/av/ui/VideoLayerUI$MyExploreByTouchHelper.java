@@ -35,37 +35,36 @@ class VideoLayerUI$MyExploreByTouchHelper
     if ((this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView != null) && (paramInt >= 0) && (paramInt < this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView.length))
     {
       int i = -1;
-      int j = this.a.jdField_a_of_type_ComTencentAvVideoController.a().j;
+      int j = this.a.jdField_a_of_type_ComTencentAvVideoController.a().k;
       if (j == 3000) {
         i = 1004;
+      } else if (j == 1) {
+        i = 1000;
+      } else if (j == 0) {
+        i = 0;
       }
-      Resources localResources;
-      String str2;
-      for (;;)
+      Resources localResources = this.a.jdField_a_of_type_AndroidContentContext.getApplicationContext().getResources();
+      Object localObject2 = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
+      Object localObject1 = this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt].c();
+      if (localObject1 != null)
       {
-        localResources = this.a.jdField_a_of_type_AndroidContentContext.getApplicationContext().getResources();
-        String str1 = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-        str2 = this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt].c();
-        if (str2 == null) {
-          break label214;
+        if (((String)localObject1).equals(localObject2))
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(localResources.getString(2131694384));
+          ((StringBuilder)localObject1).append(localResources.getString(2131695561));
+          return ((StringBuilder)localObject1).toString();
         }
-        if (!str2.equals(str1)) {
-          break;
-        }
-        return localResources.getString(2131694419) + localResources.getString(2131695550);
-        if (j == 1) {
-          i = 1000;
-        } else if (j == 0) {
-          i = 0;
-        }
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(i, (String)localObject1, String.valueOf(this.a.jdField_a_of_type_ComTencentAvVideoController.a().f)));
+        ((StringBuilder)localObject2).append(localResources.getString(2131695561));
+        return ((StringBuilder)localObject2).toString();
       }
-      return this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(i, str2, String.valueOf(this.a.jdField_a_of_type_ComTencentAvVideoController.a().g)) + localResources.getString(2131695550);
     }
-    label214:
     return "";
   }
   
-  public int getVirtualViewAt(float paramFloat1, float paramFloat2)
+  protected int getVirtualViewAt(float paramFloat1, float paramFloat2)
   {
     if (this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView != null)
     {
@@ -81,7 +80,7 @@ class VideoLayerUI$MyExploreByTouchHelper
     return 0;
   }
   
-  public void getVisibleVirtualViews(List<Integer> paramList)
+  protected void getVisibleVirtualViews(List<Integer> paramList)
   {
     if (this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView != null)
     {
@@ -95,17 +94,17 @@ class VideoLayerUI$MyExploreByTouchHelper
     }
   }
   
-  public boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
+  protected boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
   {
     return false;
   }
   
-  public void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
+  protected void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
   {
     paramAccessibilityEvent.setContentDescription(a(paramInt));
   }
   
-  public void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  protected void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
     paramAccessibilityNodeInfoCompat.addAction(16);
     paramAccessibilityNodeInfoCompat.setContentDescription(a(paramInt));
@@ -118,7 +117,7 @@ class VideoLayerUI$MyExploreByTouchHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoLayerUI.MyExploreByTouchHelper
  * JD-Core Version:    0.7.0.1
  */

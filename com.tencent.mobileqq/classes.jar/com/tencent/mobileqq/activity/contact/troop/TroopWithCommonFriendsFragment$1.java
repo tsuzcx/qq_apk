@@ -23,17 +23,16 @@ class TroopWithCommonFriendsFragment$1
     }
     if (this.a.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder != null)
     {
-      if (paramInt == 0) {
-        break label77;
+      if (paramInt != 0)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.cancelPendingRequests();
+        this.a.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.pause();
+        return;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.cancelPendingRequests();
-      this.a.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.pause();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing()) {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.resume();
+      }
     }
-    label77:
-    while (!this.a.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing()) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.resume();
   }
   
   public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
@@ -43,7 +42,7 @@ class TroopWithCommonFriendsFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment.1
  * JD-Core Version:    0.7.0.1
  */

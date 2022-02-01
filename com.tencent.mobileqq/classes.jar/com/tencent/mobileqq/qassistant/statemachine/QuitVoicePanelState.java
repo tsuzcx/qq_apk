@@ -27,9 +27,7 @@ public class QuitVoicePanelState
   
   public boolean a(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 4) {
       return super.a(paramMessage);
     }
     if (this.a != null)
@@ -55,7 +53,7 @@ public class QuitVoicePanelState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.statemachine.QuitVoicePanelState
  * JD-Core Version:    0.7.0.1
  */

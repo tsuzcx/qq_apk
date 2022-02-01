@@ -6,12 +6,12 @@ import com.tencent.mobileqq.app.DataLineHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.FileExecutor;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.IThumbResult;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtil.FileExecutor;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtil.IThumbResult;
 import java.util.concurrent.Executor;
 
 public class WLANSender
-  implements FileManagerUtil.IThumbResult
+  implements QQFileManagerUtil.IThumbResult
 {
   Session jdField_a_of_type_ComTencentLitetransfersdkSession = null;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
@@ -34,16 +34,20 @@ public class WLANSender
   public void a(String paramString)
   {
     paramString = (DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-    FileManagerUtil.FileExecutor.a().execute(new WLANSender.1(this, paramString));
+    QQFileManagerUtil.FileExecutor.a().execute(new WLANSender.1(this, paramString));
   }
   
   public boolean a(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentLitetransfersdkSession == null) {}
-    while (this.jdField_a_of_type_ComTencentLitetransfersdkSession.uSessionID != paramLong) {
+    Session localSession = this.jdField_a_of_type_ComTencentLitetransfersdkSession;
+    boolean bool = false;
+    if (localSession == null) {
       return false;
     }
-    return true;
+    if (localSession.uSessionID == paramLong) {
+      bool = true;
+    }
+    return bool;
   }
   
   public void b()
@@ -53,7 +57,7 @@ public class WLANSender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.transfer.WLANSender
  * JD-Core Version:    0.7.0.1
  */

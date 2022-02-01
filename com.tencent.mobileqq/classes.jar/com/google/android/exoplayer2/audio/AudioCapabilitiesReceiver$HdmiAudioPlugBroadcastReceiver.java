@@ -16,15 +16,16 @@ final class AudioCapabilitiesReceiver$HdmiAudioPlugBroadcastReceiver
       paramContext = AudioCapabilities.getCapabilities(paramIntent);
       if (!paramContext.equals(this.this$0.audioCapabilities))
       {
-        this.this$0.audioCapabilities = paramContext;
-        AudioCapabilitiesReceiver.access$100(this.this$0).onAudioCapabilitiesChanged(paramContext);
+        paramIntent = this.this$0;
+        paramIntent.audioCapabilities = paramContext;
+        AudioCapabilitiesReceiver.access$100(paramIntent).onAudioCapabilitiesChanged(paramContext);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.audio.AudioCapabilitiesReceiver.HdmiAudioPlugBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

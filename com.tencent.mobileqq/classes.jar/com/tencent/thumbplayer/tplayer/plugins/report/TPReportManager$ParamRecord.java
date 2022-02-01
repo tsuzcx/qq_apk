@@ -1,5 +1,7 @@
 package com.tencent.thumbplayer.tplayer.plugins.report;
 
+import java.util.ArrayList;
+
 class TPReportManager$ParamRecord
 {
   int bufferingCount = 0;
@@ -11,6 +13,7 @@ class TPReportManager$ParamRecord
   long endBufferingTimeMs = 0L;
   long endPrepareTimeMs = 0L;
   int getSpeedCnt = 0;
+  int hitDownloaded = -1;
   boolean isMultiTrack = false;
   boolean isSelectedSubtitle = false;
   boolean isSwitchingDef = false;
@@ -21,6 +24,7 @@ class TPReportManager$ParamRecord
   long startBufferingTimeMs = 0L;
   long startPlayTimeMs = 0L;
   long startPrepareTimeMs = 0L;
+  ArrayList<TPReportManager.SubtitleInfo> subtitleInfos = new ArrayList();
   int totalSpeed = 0;
   String tuid = "";
   
@@ -43,17 +47,19 @@ class TPReportManager$ParamRecord
     this.isSelectedSubtitle = false;
     this.isMultiTrack = false;
     this.isSwitchingDef = false;
+    this.hitDownloaded = -1;
     this.defId = "";
     this.cdnUrl = "";
     this.cdnIp = "";
     this.cdnUip = "";
     this.spanId = "";
     this.tuid = "";
+    this.subtitleInfos.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPReportManager.ParamRecord
  * JD-Core Version:    0.7.0.1
  */

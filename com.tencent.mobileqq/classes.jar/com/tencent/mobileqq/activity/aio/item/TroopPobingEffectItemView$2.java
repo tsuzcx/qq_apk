@@ -10,12 +10,13 @@ class TroopPobingEffectItemView$2
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    TroopPobingEffectItemView.a(this.a, TroopPobingEffectItemView.a(this.a));
+    paramURLDrawable = this.a;
+    TroopPobingEffectItemView.a(paramURLDrawable, TroopPobingEffectItemView.a(paramURLDrawable));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopPobingEffectItemView.2
  * JD-Core Version:    0.7.0.1
  */

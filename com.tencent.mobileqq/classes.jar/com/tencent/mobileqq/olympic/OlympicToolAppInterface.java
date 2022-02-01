@@ -11,7 +11,7 @@ import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.service.MobileQQServiceBase;
 import com.tencent.mobileqq.transfile.NetEngineFactory;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.QQAudioHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -33,7 +33,7 @@ public class OlympicToolAppInterface
     super(paramBaseApplicationImpl, paramString);
   }
   
-  public void addManager(int paramInt, Manager paramManager)
+  protected void addManager(int paramInt, Manager paramManager)
   {
     if (this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)) != null) {
       return;
@@ -78,20 +78,24 @@ public class OlympicToolAppInterface
     }
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
       QLog.i("olympic.OlympicToolAppInterface", 2, "onCreate");
     }
     super.onCreate(paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolService = new OlympicToolService(this);
-    AudioHelper.a((BaseApplicationImpl)this.app, getLongAccountUin());
+    QQAudioHelper.a((BaseApplicationImpl)this.app, getLongAccountUin());
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("olympic.OlympicToolAppInterface", 2, "onDestroy ,FaceScanModelsLoader.hasFaceModelInit = " + FaceScanModelsLoader.b);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDestroy ,FaceScanModelsLoader.hasFaceModelInit = ");
+      localStringBuilder.append(FaceScanModelsLoader.b);
+      QLog.i("olympic.OlympicToolAppInterface", 2, localStringBuilder.toString());
     }
     super.onDestroy();
     if (this.mHwEngine != null) {
@@ -124,7 +128,7 @@ public class OlympicToolAppInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.OlympicToolAppInterface
  * JD-Core Version:    0.7.0.1
  */

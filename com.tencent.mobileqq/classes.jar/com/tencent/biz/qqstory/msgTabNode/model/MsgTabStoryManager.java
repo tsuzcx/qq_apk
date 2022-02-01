@@ -93,7 +93,7 @@ public class MsgTabStoryManager
     //   48: astore_0
     //   49: aload_0
     //   50: invokeinterface 136 1 0
-    //   55: ifeq +55 -> 110
+    //   55: ifeq +40 -> 95
     //   58: aload_0
     //   59: invokeinterface 140 1 0
     //   64: checkcast 117	com/tencent/biz/qqstory/database/MsgTabNodeEntity
@@ -105,50 +105,53 @@ public class MsgTabStoryManager
     //   76: aload_3
     //   77: getfield 141	com/tencent/biz/qqstory/database/MsgTabNodeEntity:nodeType	I
     //   80: iconst_2
-    //   81: if_icmpeq -32 -> 49
-    //   84: aload_2
-    //   85: aload_3
-    //   86: invokevirtual 103	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
-    //   89: goto -40 -> 49
-    //   92: astore_0
-    //   93: ldc 143
-    //   95: aload_0
-    //   96: invokestatic 148	com/tencent/biz/qqstory/utils/StoryDebugUtils$StoryExceptionCallback:b	(Ljava/lang/String;Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   99: invokestatic 153	com/tencent/mobileqq/statistics/CaughtExceptionReport:a	(Ljava/lang/Throwable;)V
-    //   102: aload_2
-    //   103: invokevirtual 110	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   106: invokevirtual 156	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   109: return
-    //   110: aload_2
-    //   111: invokevirtual 110	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   114: invokevirtual 159	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
-    //   117: aload_2
-    //   118: invokevirtual 110	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   121: invokevirtual 156	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   124: return
-    //   125: astore_0
-    //   126: aload_2
-    //   127: invokevirtual 110	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   130: invokevirtual 156	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   133: aload_0
-    //   134: athrow
+    //   81: if_icmpne +6 -> 87
+    //   84: goto -35 -> 49
+    //   87: aload_2
+    //   88: aload_3
+    //   89: invokevirtual 103	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   92: goto -43 -> 49
+    //   95: aload_2
+    //   96: invokevirtual 110	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   99: invokevirtual 144	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   102: goto +17 -> 119
+    //   105: astore_0
+    //   106: goto +21 -> 127
+    //   109: astore_0
+    //   110: ldc 146
+    //   112: aload_0
+    //   113: invokestatic 151	com/tencent/biz/qqstory/utils/StoryDebugUtils$StoryExceptionCallback:b	(Ljava/lang/String;Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   116: invokestatic 156	com/tencent/qqperf/monitor/crash/catchedexception/CaughtExceptionReport:a	(Ljava/lang/Throwable;)V
+    //   119: aload_2
+    //   120: invokevirtual 110	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   123: invokevirtual 159	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   126: return
+    //   127: aload_2
+    //   128: invokevirtual 110	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   131: invokevirtual 159	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   134: goto +5 -> 139
+    //   137: aload_0
+    //   138: athrow
+    //   139: goto -2 -> 137
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	135	0	paramArrayList	ArrayList<MsgTabNodeEntity>
-    //   0	135	1	paramBoolean	boolean
-    //   9	118	2	localEntityManager	EntityManager
-    //   28	58	3	localMsgTabNodeEntity	MsgTabNodeEntity
+    //   0	142	0	paramArrayList	ArrayList<MsgTabNodeEntity>
+    //   0	142	1	paramBoolean	boolean
+    //   9	119	2	localEntityManager	EntityManager
+    //   28	61	3	localMsgTabNodeEntity	MsgTabNodeEntity
     // Exception table:
     //   from	to	target	type
-    //   21	44	92	java/lang/NullPointerException
-    //   44	49	92	java/lang/NullPointerException
-    //   49	89	92	java/lang/NullPointerException
-    //   110	117	92	java/lang/NullPointerException
-    //   21	44	125	finally
-    //   44	49	125	finally
-    //   49	89	125	finally
-    //   93	102	125	finally
-    //   110	117	125	finally
+    //   21	44	105	finally
+    //   44	49	105	finally
+    //   49	84	105	finally
+    //   87	92	105	finally
+    //   95	102	105	finally
+    //   110	119	105	finally
+    //   21	44	109	java/lang/NullPointerException
+    //   44	49	109	java/lang/NullPointerException
+    //   49	84	109	java/lang/NullPointerException
+    //   87	92	109	java/lang/NullPointerException
+    //   95	102	109	java/lang/NullPointerException
   }
   
   public static boolean a(MsgTabNodeInfo paramMsgTabNodeInfo)
@@ -163,36 +166,49 @@ public class MsgTabStoryManager
   
   public static byte[] a(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
-    byte[] arrayOfByte = null;
     Object localObject = QQStoryContext.a().a().createEntityManager().query(MsgTabNodeVidListEntity.class, MsgTabNodeVidListEntity.class.getSimpleName(), false, MsgTabNodeVidListEntity.getSelection(), MsgTabNodeVidListEntity.getArgs(paramMsgTabNodeInfo), null, null, null, null, null);
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
       localObject = (MsgTabNodeVidListEntity)((List)localObject).get(0);
       if (((MsgTabNodeVidListEntity)localObject).reqTimeStamp == paramMsgTabNodeInfo.c)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.msgTab.mgr", 2, "db has valid vid list, nodeType=" + paramMsgTabNodeInfo.jdField_a_of_type_Int + ", unionId=" + paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("db has valid vid list, nodeType=");
+          localStringBuilder.append(paramMsgTabNodeInfo.jdField_a_of_type_Int);
+          localStringBuilder.append(", unionId=");
+          localStringBuilder.append(paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString);
+          QLog.d("Q.qqstory.msgTab.mgr", 2, localStringBuilder.toString());
         }
-        arrayOfByte = ((MsgTabNodeVidListEntity)localObject).rspData;
+        return ((MsgTabNodeVidListEntity)localObject).rspData;
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("db vid list expired, nodeType=");
+        ((StringBuilder)localObject).append(paramMsgTabNodeInfo.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(", unionId=");
+        ((StringBuilder)localObject).append(paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString);
+        QLog.d("Q.qqstory.msgTab.mgr", 2, ((StringBuilder)localObject).toString());
       }
     }
-    while (!QLog.isColorLevel())
+    else if (QLog.isColorLevel())
     {
-      do
-      {
-        return arrayOfByte;
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.qqstory.msgTab.mgr", 2, "db vid list expired, nodeType=" + paramMsgTabNodeInfo.jdField_a_of_type_Int + ", unionId=" + paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString);
-      return null;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("no db vid list, nodeType=");
+      ((StringBuilder)localObject).append(paramMsgTabNodeInfo.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(", unionId=");
+      ((StringBuilder)localObject).append(paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString);
+      QLog.d("Q.qqstory.msgTab.mgr", 2, ((StringBuilder)localObject).toString());
     }
-    QLog.d("Q.qqstory.msgTab.mgr", 2, "no db vid list, nodeType=" + paramMsgTabNodeInfo.jdField_a_of_type_Int + ", unionId=" + paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString);
     return null;
   }
   
   public static final boolean b(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
-    boolean bool2 = false;
     paramMsgTabNodeInfo = QQStoryContext.a().a().createEntityManager().query(MsgTabNodeRecommendActivityReadEntity.class, MsgTabNodeRecommendActivityReadEntity.class.getSimpleName(), false, MsgTabNodeRecommendActivityReadEntity.getSelection(), MsgTabNodeRecommendActivityReadEntity.getArgs(paramMsgTabNodeInfo), null, null, null, null, null);
+    boolean bool2 = false;
     boolean bool1 = bool2;
     if (paramMsgTabNodeInfo != null)
     {
@@ -220,7 +236,9 @@ public class MsgTabStoryManager
   
   public MsgTabNodeInfo a()
   {
-    List localList = ((StoryManager)SuperManager.a(5)).a(false);
+    Object localObject1 = (StoryManager)SuperManager.a(5);
+    int i = 0;
+    List localList = ((StoryManager)localObject1).a(false);
     MsgTabNodeInfo localMsgTabNodeInfo = new MsgTabNodeInfo();
     localMsgTabNodeInfo.jdField_a_of_type_Int = 5;
     localMsgTabNodeInfo.jdField_a_of_type_JavaLangString = QQStoryContext.a().b();
@@ -229,45 +247,41 @@ public class MsgTabStoryManager
     localMsgTabNodeInfo.jdField_d_of_type_Long = (System.currentTimeMillis() / 1000L);
     localMsgTabNodeInfo.jdField_b_of_type_Boolean = false;
     localMsgTabNodeInfo.jdField_b_of_type_Int = localList.size();
-    int i = 0;
-    String str2 = "";
+    localObject1 = "";
+    Object localObject2 = localObject1;
     boolean bool = false;
-    String str1 = "";
-    StoryVideoItem localStoryVideoItem;
-    if (i < localList.size())
+    while (i < localList.size())
     {
-      localStoryVideoItem = (StoryVideoItem)localList.get(i);
-      if (!localStoryVideoItem.isUploading()) {
-        break label288;
-      }
-      bool = true;
-      if (TextUtils.isEmpty(localStoryVideoItem.mVideoLocalThumbnailPath)) {
-        str1 = ImageDownloader.FILE.a(localStoryVideoItem.mVideoLocalThumbnailOrigFakePath);
-      }
-    }
-    label159:
-    label288:
-    for (;;)
-    {
-      if (TextUtils.isEmpty(localStoryVideoItem.mVideoLocalThumbnailPath)) {}
-      for (str2 = ImageDownloader.FILE.a(localStoryVideoItem.mVideoLocalThumbnailOrigFakePath);; str2 = ImageDownloader.FILE.a(localStoryVideoItem.mVideoLocalThumbnailPath))
+      Object localObject3 = (StoryVideoItem)localList.get(i);
+      localObject2 = localObject1;
+      if (((StoryVideoItem)localObject3).isUploading())
       {
-        SLog.b("Q.qqstory.msgTab.mgrVASH", "getLocalList: %d time: %d %d vid: %s", Integer.valueOf(i), Long.valueOf(localStoryVideoItem.mLocalCreateTime), Long.valueOf(localStoryVideoItem.mCreateTime), localStoryVideoItem.mVid);
-        i += 1;
-        break;
-        str1 = ImageDownloader.FILE.a(localStoryVideoItem.mVideoLocalThumbnailPath);
-        break label159;
+        if (TextUtils.isEmpty(((StoryVideoItem)localObject3).mVideoLocalThumbnailPath)) {
+          localObject1 = ImageDownloader.FILE.a(((StoryVideoItem)localObject3).mVideoLocalThumbnailOrigFakePath);
+        } else {
+          localObject1 = ImageDownloader.FILE.a(((StoryVideoItem)localObject3).mVideoLocalThumbnailPath);
+        }
+        bool = true;
+        localObject2 = localObject1;
       }
-      localMsgTabNodeInfo.jdField_b_of_type_Boolean = bool;
-      if (!TextUtils.isEmpty(str1)) {}
-      for (;;)
-      {
-        localMsgTabNodeInfo.h = str1;
-        SLog.b("VASH", "getUnUploadInfo %s", String.valueOf(localMsgTabNodeInfo));
-        return localMsgTabNodeInfo;
-        str1 = str2;
+      if (TextUtils.isEmpty(((StoryVideoItem)localObject3).mVideoLocalThumbnailPath)) {
+        localObject1 = ImageDownloader.FILE.a(((StoryVideoItem)localObject3).mVideoLocalThumbnailOrigFakePath);
+      } else {
+        localObject1 = ImageDownloader.FILE.a(((StoryVideoItem)localObject3).mVideoLocalThumbnailPath);
       }
+      SLog.b("Q.qqstory.msgTab.mgrVASH", "getLocalList: %d time: %d %d vid: %s", Integer.valueOf(i), Long.valueOf(((StoryVideoItem)localObject3).mLocalCreateTime), Long.valueOf(((StoryVideoItem)localObject3).mCreateTime), ((StoryVideoItem)localObject3).mVid);
+      i += 1;
+      localObject3 = localObject1;
+      localObject1 = localObject2;
+      localObject2 = localObject3;
     }
+    localMsgTabNodeInfo.jdField_b_of_type_Boolean = bool;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      localObject1 = localObject2;
+    }
+    localMsgTabNodeInfo.h = ((String)localObject1);
+    SLog.b("VASH", "getUnUploadInfo %s", String.valueOf(localMsgTabNodeInfo));
+    return localMsgTabNodeInfo;
   }
   
   @UiThread
@@ -295,15 +309,16 @@ public class MsgTabStoryManager
   
   public MsgTabStoryVideoPreloader a()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader == null) {}
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader == null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader = new MsgTabStoryVideoPreloader();
+    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader == null) {
+      try
+      {
+        if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader == null) {
+          this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader = new MsgTabStoryVideoPreloader();
+        }
       }
-      return this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader;
+      finally {}
     }
-    finally {}
+    return this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader;
   }
   
   public ArrayList<MsgTabNodeInfo> a()
@@ -337,25 +352,32 @@ public class MsgTabStoryManager
   
   public void a(MsgTabNodeEntity paramMsgTabNodeEntity)
   {
-    if (Looper.myLooper() == ThreadManagerV2.getFileThreadLooper()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      AssertUtils.a(bool);
-      if ((paramMsgTabNodeEntity.nodeType != 1) && (paramMsgTabNodeEntity.nodeType != 2)) {
-        break;
-      }
-      return;
+    boolean bool;
+    if (Looper.myLooper() == ThreadManagerV2.getFileThreadLooper()) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    QQStoryContext.a().a().createEntityManager().persistOrReplace(paramMsgTabNodeEntity);
+    AssertUtils.assertTrue(bool);
+    if (paramMsgTabNodeEntity.nodeType != 1)
+    {
+      if (paramMsgTabNodeEntity.nodeType == 2) {
+        return;
+      }
+      QQStoryContext.a().a().createEntityManager().persistOrReplace(paramMsgTabNodeEntity);
+    }
   }
   
   public void a(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
     paramMsgTabNodeInfo = paramMsgTabNodeInfo.a();
-    if ((paramMsgTabNodeInfo.nodeType == 1) || (paramMsgTabNodeInfo.nodeType == 2)) {
-      return;
+    if (paramMsgTabNodeInfo.nodeType != 1)
+    {
+      if (paramMsgTabNodeInfo.nodeType == 2) {
+        return;
+      }
+      ThreadManagerV2.executeOnFileThread(new MsgTabStoryManager.2(this, paramMsgTabNodeInfo));
     }
-    ThreadManagerV2.executeOnFileThread(new MsgTabStoryManager.2(this, paramMsgTabNodeInfo));
   }
   
   public void a(List<MsgTabNodeInfo> paramList, boolean paramBoolean)
@@ -400,28 +422,35 @@ public class MsgTabStoryManager
   
   public void b(MsgTabNodeEntity paramMsgTabNodeEntity)
   {
-    if (Looper.myLooper() == ThreadManagerV2.getFileThreadLooper()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      AssertUtils.a(bool);
-      if ((paramMsgTabNodeEntity.nodeType != 1) && (paramMsgTabNodeEntity.nodeType != 2)) {
-        break;
-      }
-      return;
+    boolean bool;
+    if (Looper.myLooper() == ThreadManagerV2.getFileThreadLooper()) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
-    paramMsgTabNodeEntity.setStatus(1001);
-    localEntityManager.remove(paramMsgTabNodeEntity, "nodeType=? and uid=? and unionId=?", new String[] { String.valueOf(paramMsgTabNodeEntity.nodeType), String.valueOf(paramMsgTabNodeEntity.uid), paramMsgTabNodeEntity.unionId });
-    localEntityManager.remove(paramMsgTabNodeEntity);
+    AssertUtils.assertTrue(bool);
+    if (paramMsgTabNodeEntity.nodeType != 1)
+    {
+      if (paramMsgTabNodeEntity.nodeType == 2) {
+        return;
+      }
+      EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
+      paramMsgTabNodeEntity.setStatus(1001);
+      localEntityManager.remove(paramMsgTabNodeEntity, "nodeType=? and uid=? and unionId=?", new String[] { String.valueOf(paramMsgTabNodeEntity.nodeType), String.valueOf(paramMsgTabNodeEntity.uid), paramMsgTabNodeEntity.unionId });
+      localEntityManager.remove(paramMsgTabNodeEntity);
+    }
   }
   
   public void b(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
     paramMsgTabNodeInfo = paramMsgTabNodeInfo.a();
-    if ((paramMsgTabNodeInfo.nodeType == 1) || (paramMsgTabNodeInfo.nodeType == 2)) {
-      return;
+    if (paramMsgTabNodeInfo.nodeType != 1)
+    {
+      if (paramMsgTabNodeInfo.nodeType == 2) {
+        return;
+      }
+      ThreadManagerV2.executeOnFileThread(new MsgTabStoryManager.3(this, paramMsgTabNodeInfo));
     }
-    ThreadManagerV2.executeOnFileThread(new MsgTabStoryManager.3(this, paramMsgTabNodeInfo));
   }
   
   public boolean b()
@@ -450,14 +479,15 @@ public class MsgTabStoryManager
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader.a();
+    MsgTabNodeListLoader localMsgTabNodeListLoader = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader;
+    if (localMsgTabNodeListLoader != null) {
+      localMsgTabNodeListLoader.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryManager
  * JD-Core Version:    0.7.0.1
  */

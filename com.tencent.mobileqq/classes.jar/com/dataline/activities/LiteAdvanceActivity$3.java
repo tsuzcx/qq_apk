@@ -12,13 +12,14 @@ class LiteAdvanceActivity$3
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     LiteAdvanceActivity.d(this.a, paramBoolean);
-    LiteAdvanceActivity.b(this.a, LiteAdvanceActivity.b(this.a));
+    LiteAdvanceActivity localLiteAdvanceActivity = this.a;
+    LiteAdvanceActivity.b(localLiteAdvanceActivity, LiteAdvanceActivity.b(localLiteAdvanceActivity));
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.LiteAdvanceActivity.3
  * JD-Core Version:    0.7.0.1
  */

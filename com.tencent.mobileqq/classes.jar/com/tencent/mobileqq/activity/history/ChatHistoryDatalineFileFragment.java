@@ -35,8 +35,13 @@ public class ChatHistoryDatalineFileFragment
     long l = paramFileManagerEntity.datalineEntitySessionId;
     int i = DataLineMsgRecord.getDevTypeBySeId(l);
     paramFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).a(l);
-    if (paramFileManagerEntity == null) {
-      QLog.i("ChatHistoryDatalineFileFragment", 1, "getSourceDatalineFile：do not find sessionId[" + l + "]");
+    if (paramFileManagerEntity == null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getSourceDatalineFile：do not find sessionId[");
+      localStringBuilder.append(l);
+      localStringBuilder.append("]");
+      QLog.i("ChatHistoryDatalineFileFragment", 1, localStringBuilder.toString());
     }
     return paramFileManagerEntity;
   }
@@ -209,7 +214,7 @@ public class ChatHistoryDatalineFileFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryDatalineFileFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -42,33 +42,32 @@ public final class i<TResult>
   
   private void b()
   {
+    synchronized (this.a)
+    {
+      Iterator localIterator = this.f.iterator();
+      while (localIterator.hasNext())
+      {
+        ExecuteResult localExecuteResult = (ExecuteResult)localIterator.next();
+        try
+        {
+          localExecuteResult.onComplete(this);
+        }
+        catch (Exception localException)
+        {
+          throw new RuntimeException(localException);
+        }
+        catch (RuntimeException localRuntimeException)
+        {
+          throw localRuntimeException;
+        }
+      }
+      this.f = null;
+      return;
+    }
     for (;;)
     {
-      ExecuteResult localExecuteResult;
-      synchronized (this.a)
-      {
-        Iterator localIterator = this.f.iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localExecuteResult = (ExecuteResult)localIterator.next();
-      }
-      try
-      {
-        localExecuteResult.onComplete(this);
-      }
-      catch (RuntimeException localRuntimeException)
-      {
-        throw localRuntimeException;
-        localObject2 = finally;
-        throw localObject2;
-      }
-      catch (Exception localException)
-      {
-        throw new RuntimeException(localException);
-      }
+      throw localObject2;
     }
-    this.f = null;
   }
   
   public final void a(Exception paramException)
@@ -221,31 +220,32 @@ public final class i<TResult>
   {
     synchronized (this.a)
     {
-      if (this.e != null) {
-        throw new RuntimeException(this.e);
+      if (this.e == null)
+      {
+        Object localObject2 = this.d;
+        return localObject2;
       }
+      throw new RuntimeException(this.e);
     }
-    Object localObject3 = this.d;
-    return localObject3;
   }
   
   public final <E extends Throwable> TResult getResultThrowException(Class<E> paramClass)
   {
     Object localObject = this.a;
-    if (paramClass != null) {
-      try
-      {
-        if (paramClass.isInstance(this.e)) {
-          throw ((Throwable)paramClass.cast(this.e));
-        }
+    if (paramClass != null) {}
+    try
+    {
+      if (paramClass.isInstance(this.e)) {
+        throw ((Throwable)paramClass.cast(this.e));
       }
-      finally {}
-    }
-    if (this.e != null) {
+      if (this.e == null)
+      {
+        paramClass = this.d;
+        return paramClass;
+      }
       throw new RuntimeException(this.e);
     }
-    paramClass = this.d;
-    return paramClass;
+    finally {}
   }
   
   public final boolean isCanceled()
@@ -294,7 +294,7 @@ public final class i<TResult>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hmf.tasks.a.i
  * JD-Core Version:    0.7.0.1
  */

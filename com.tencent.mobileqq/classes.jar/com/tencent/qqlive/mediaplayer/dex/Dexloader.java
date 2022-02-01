@@ -9,7 +9,7 @@ import java.lang.reflect.Constructor;
 
 public class Dexloader
 {
-  private static Dexloader a = null;
+  private static Dexloader a;
   private static Context b;
   
   public static Dexloader a(Context paramContext)
@@ -30,70 +30,91 @@ public class Dexloader
   
   public ClassLoader a(String paramString1, String paramString2)
   {
+    Constructor localConstructor = null;
     if (paramString1 == null)
     {
-      d.a(5, "Dexloader.java", "MediaPlayerMgr", "getClassLoader filePath error, jarPath: " + paramString1 + ", soPath: " + paramString2);
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("getClassLoader filePath error, jarPath: ");
+      localStringBuilder1.append(paramString1);
+      localStringBuilder1.append(", soPath: ");
+      localStringBuilder1.append(paramString2);
+      d.a(5, "Dexloader.java", "MediaPlayerMgr", localStringBuilder1.toString());
       return null;
     }
-    d.a(3, "Dexloader.java", "MediaPlayerMgr", "getClassLoader jarPath: " + paramString1 + ", soPath: " + paramString2);
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("getClassLoader jarPath: ");
+    localStringBuilder1.append(paramString1);
+    localStringBuilder1.append(", soPath: ");
+    localStringBuilder1.append(paramString2);
+    d.a(3, "Dexloader.java", "MediaPlayerMgr", localStringBuilder1.toString());
+    Object localObject2;
     try
     {
       d.a(3, "Dexloader.java", "MediaPlayerMgr", "getClassLoader, print so dir content...");
       d.a(new File(paramString2), 2);
-      if (b != null)
-      {
-        Context localContext = b.getApplicationContext();
-        if (localContext != null) {
-          break label196;
-        }
-        d.a(5, "Dexloader.java", "MediaPlayerMgr", "getClassLoader context == null, should not happen !!" + paramString1 + ", soPath: " + paramString2);
-        return null;
-      }
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        d.a(5, "Dexloader.java", "MediaPlayerMgr", "getClassLoader, print so dir content error, " + localThrowable.toString());
-        continue;
-        localObject = TVK_SDKMgr.getAppContext();
-      }
-      label196:
-      Object localObject = ((Context)localObject).getDir("assets", 0).getAbsolutePath();
-      if (new File(paramString1).exists()) {
-        try
-        {
-          paramString2 = new DexClassLoader(paramString1, (String)localObject, paramString2, b.getApplicationContext().getClassLoader());
-        }
-        catch (Exception paramString2)
-        {
-          for (;;)
-          {
-            try
-            {
-              Constructor localConstructor = Class.forName("dalvik.system.LexClassLoader").getConstructor(new Class[] { String.class, String.class, String.class, ClassLoader.class });
-              String str = new File(paramString1).getName().replaceAll("\\.[a-zA-Z0-9]+", ".lex");
-              paramString1 = (ClassLoader)localConstructor.newInstance(new Object[] { (String)localObject + File.separator + str, localObject, paramString1, b.getApplicationContext().getClassLoader() });
-              return paramString1;
-            }
-            catch (Exception paramString1)
-            {
-              return paramString2;
-            }
-            paramString2 = paramString2;
-            d.a(5, "Dexloader.java", "MediaPlayerMgr", "DexClassLoader failed! error:" + paramString2.getMessage());
-            paramString2 = null;
-          }
-        }
-      }
-      d.a(3, "Dexloader.java", "MediaPlayerMgr", "files do not exist, creat dexclassloader failed");
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getClassLoader, print so dir content error, ");
+      ((StringBuilder)localObject2).append(localThrowable.toString());
+      d.a(5, "Dexloader.java", "MediaPlayerMgr", ((StringBuilder)localObject2).toString());
     }
+    Object localObject1 = b;
+    if (localObject1 != null) {
+      localObject1 = ((Context)localObject1).getApplicationContext();
+    } else {
+      localObject1 = TVK_SDKMgr.getAppContext();
+    }
+    if (localObject1 == null)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getClassLoader context == null, should not happen !!");
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append(", soPath: ");
+      ((StringBuilder)localObject1).append(paramString2);
+      d.a(5, "Dexloader.java", "MediaPlayerMgr", ((StringBuilder)localObject1).toString());
+      return null;
+    }
+    localObject1 = ((Context)localObject1).getDir("assets", 0).getAbsolutePath();
+    if (new File(paramString1).exists()) {
+      try
+      {
+        paramString2 = new DexClassLoader(paramString1, (String)localObject1, paramString2, b.getApplicationContext().getClassLoader());
+      }
+      catch (Exception paramString2)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("DexClassLoader failed! error:");
+        ((StringBuilder)localObject2).append(paramString2.getMessage());
+        d.a(5, "Dexloader.java", "MediaPlayerMgr", ((StringBuilder)localObject2).toString());
+        paramString2 = localConstructor;
+      }
+    }
+    try
+    {
+      localConstructor = Class.forName("dalvik.system.LexClassLoader").getConstructor(new Class[] { String.class, String.class, String.class, ClassLoader.class });
+      localObject2 = new File(paramString1).getName().replaceAll("\\.[a-zA-Z0-9]+", ".lex");
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append((String)localObject1);
+      localStringBuilder2.append(File.separator);
+      localStringBuilder2.append((String)localObject2);
+      paramString1 = (ClassLoader)localConstructor.newInstance(new Object[] { localStringBuilder2.toString(), localObject1, paramString1, b.getApplicationContext().getClassLoader() });
+      return paramString1;
+    }
+    catch (Exception paramString1)
+    {
+      label461:
+      break label461;
+    }
+    return paramString2;
+    d.a(3, "Dexloader.java", "MediaPlayerMgr", "files do not exist, creat dexclassloader failed");
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.mediaplayer.dex.Dexloader
  * JD-Core Version:    0.7.0.1
  */

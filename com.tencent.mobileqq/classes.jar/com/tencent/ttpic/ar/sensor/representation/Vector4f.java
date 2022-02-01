@@ -6,18 +6,20 @@ public class Vector4f
   
   public Vector4f()
   {
-    this.points[0] = 0.0F;
-    this.points[1] = 0.0F;
-    this.points[2] = 0.0F;
-    this.points[3] = 0.0F;
+    float[] arrayOfFloat = this.points;
+    arrayOfFloat[0] = 0.0F;
+    arrayOfFloat[1] = 0.0F;
+    arrayOfFloat[2] = 0.0F;
+    arrayOfFloat[3] = 0.0F;
   }
   
   public Vector4f(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    this.points[0] = paramFloat1;
-    this.points[1] = paramFloat2;
-    this.points[2] = paramFloat3;
-    this.points[3] = paramFloat4;
+    float[] arrayOfFloat = this.points;
+    arrayOfFloat[0] = paramFloat1;
+    arrayOfFloat[1] = paramFloat2;
+    arrayOfFloat[2] = paramFloat3;
+    arrayOfFloat[3] = paramFloat4;
   }
   
   public Vector4f(Vector3f paramVector3f, float paramFloat)
@@ -43,13 +45,12 @@ public class Vector4f
   public void add(Vector4f paramVector4f)
   {
     float[] arrayOfFloat = this.points;
-    arrayOfFloat[0] += paramVector4f.points[0];
-    arrayOfFloat = this.points;
-    arrayOfFloat[1] += paramVector4f.points[1];
-    arrayOfFloat = this.points;
-    arrayOfFloat[2] += paramVector4f.points[2];
-    arrayOfFloat = this.points;
-    arrayOfFloat[3] += paramVector4f.points[3];
+    float f = arrayOfFloat[0];
+    paramVector4f = paramVector4f.points;
+    arrayOfFloat[0] = (f + paramVector4f[0]);
+    arrayOfFloat[1] += paramVector4f[1];
+    arrayOfFloat[2] += paramVector4f[2];
+    arrayOfFloat[3] += paramVector4f[3];
   }
   
   public float[] array()
@@ -59,7 +60,27 @@ public class Vector4f
   
   public boolean compareTo(Vector4f paramVector4f)
   {
-    return (this.points[0] == paramVector4f.points[0]) && (this.points[1] == paramVector4f.points[1]) && (this.points[2] == paramVector4f.points[2]) && (this.points[3] == paramVector4f.points[3]);
+    float[] arrayOfFloat = this.points;
+    boolean bool2 = false;
+    float f = arrayOfFloat[0];
+    paramVector4f = paramVector4f.points;
+    boolean bool1 = bool2;
+    if (f == paramVector4f[0])
+    {
+      bool1 = bool2;
+      if (arrayOfFloat[1] == paramVector4f[1])
+      {
+        bool1 = bool2;
+        if (arrayOfFloat[2] == paramVector4f[2])
+        {
+          bool1 = bool2;
+          if (arrayOfFloat[3] == paramVector4f[3]) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public Vector4f copy()
@@ -79,15 +100,20 @@ public class Vector4f
   
   public void copyVec4(Vector4f paramVector4f)
   {
-    this.points[0] = paramVector4f.points[0];
-    this.points[1] = paramVector4f.points[1];
-    this.points[2] = paramVector4f.points[2];
-    this.points[3] = paramVector4f.points[3];
+    float[] arrayOfFloat = this.points;
+    paramVector4f = paramVector4f.points;
+    arrayOfFloat[0] = paramVector4f[0];
+    arrayOfFloat[1] = paramVector4f[1];
+    arrayOfFloat[2] = paramVector4f[2];
+    arrayOfFloat[3] = paramVector4f[3];
   }
   
   public float dotProduct(Vector4f paramVector4f)
   {
-    return this.points[0] * paramVector4f.points[0] + this.points[1] * paramVector4f.points[1] + this.points[2] * paramVector4f.points[2] + this.points[3] * paramVector4f.points[3];
+    float[] arrayOfFloat = this.points;
+    float f = arrayOfFloat[0];
+    paramVector4f = paramVector4f.points;
+    return f * paramVector4f[0] + arrayOfFloat[1] * paramVector4f[1] + arrayOfFloat[2] * paramVector4f[2] + arrayOfFloat[3] * paramVector4f[3];
   }
   
   public float getW()
@@ -112,39 +138,46 @@ public class Vector4f
   
   public void lerp(Vector4f paramVector4f1, Vector4f paramVector4f2, float paramFloat)
   {
-    paramVector4f2.points[0] = (this.points[0] * (1.0F * paramFloat) + paramVector4f1.points[0] * paramFloat);
-    paramVector4f2.points[1] = (this.points[1] * (1.0F * paramFloat) + paramVector4f1.points[1] * paramFloat);
-    paramVector4f2.points[2] = (this.points[2] * (1.0F * paramFloat) + paramVector4f1.points[2] * paramFloat);
-    paramVector4f2.points[3] = (this.points[3] * (1.0F * paramFloat) + paramVector4f1.points[3] * paramFloat);
+    paramVector4f2 = paramVector4f2.points;
+    float[] arrayOfFloat = this.points;
+    float f1 = arrayOfFloat[0];
+    float f2 = 1.0F * paramFloat;
+    paramVector4f1 = paramVector4f1.points;
+    paramVector4f2[0] = (f1 * f2 + paramVector4f1[0] * paramFloat);
+    paramVector4f2[1] = (arrayOfFloat[1] * f2 + paramVector4f1[1] * paramFloat);
+    paramVector4f2[2] = (arrayOfFloat[2] * f2 + paramVector4f1[2] * paramFloat);
+    paramVector4f2[3] = (arrayOfFloat[3] * f2 + paramVector4f1[3] * paramFloat);
   }
   
   public void multiplyByScalar(float paramFloat)
   {
     float[] arrayOfFloat = this.points;
     arrayOfFloat[0] *= paramFloat;
-    arrayOfFloat = this.points;
     arrayOfFloat[1] *= paramFloat;
-    arrayOfFloat = this.points;
     arrayOfFloat[2] *= paramFloat;
-    arrayOfFloat = this.points;
     arrayOfFloat[3] *= paramFloat;
   }
   
   public void normalize()
   {
-    if (this.points[3] == 0.0F) {
+    float[] arrayOfFloat = this.points;
+    if (arrayOfFloat[3] == 0.0F) {
       return;
     }
-    float[] arrayOfFloat = this.points;
-    arrayOfFloat[0] /= this.points[3];
+    arrayOfFloat[0] /= arrayOfFloat[3];
+    arrayOfFloat[1] /= arrayOfFloat[3];
+    arrayOfFloat[2] /= arrayOfFloat[3];
+    double d1 = Math.sqrt(arrayOfFloat[0] * arrayOfFloat[0] + arrayOfFloat[1] * arrayOfFloat[1] + arrayOfFloat[2] * arrayOfFloat[2]);
     arrayOfFloat = this.points;
-    arrayOfFloat[1] /= this.points[3];
-    arrayOfFloat = this.points;
-    arrayOfFloat[2] /= this.points[3];
-    double d = Math.sqrt(this.points[0] * this.points[0] + this.points[1] * this.points[1] + this.points[2] * this.points[2]);
-    this.points[0] = ((float)(this.points[0] / d));
-    this.points[1] = ((float)(this.points[1] / d));
-    this.points[2] = ((float)(this.points[2] / d));
+    double d2 = arrayOfFloat[0];
+    Double.isNaN(d2);
+    arrayOfFloat[0] = ((float)(d2 / d1));
+    d2 = arrayOfFloat[1];
+    Double.isNaN(d2);
+    arrayOfFloat[1] = ((float)(d2 / d1));
+    d2 = arrayOfFloat[2];
+    Double.isNaN(d2);
+    arrayOfFloat[2] = ((float)(d2 / d1));
   }
   
   public void setW(float paramFloat)
@@ -159,10 +192,11 @@ public class Vector4f
   
   public void setXYZW(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    this.points[0] = paramFloat1;
-    this.points[1] = paramFloat2;
-    this.points[2] = paramFloat3;
-    this.points[3] = paramFloat4;
+    float[] arrayOfFloat = this.points;
+    arrayOfFloat[0] = paramFloat1;
+    arrayOfFloat[1] = paramFloat2;
+    arrayOfFloat[2] = paramFloat3;
+    arrayOfFloat[3] = paramFloat4;
   }
   
   public void setY(float paramFloat)
@@ -178,36 +212,46 @@ public class Vector4f
   public void subdivide(Vector4f paramVector4f)
   {
     float[] arrayOfFloat = this.points;
-    arrayOfFloat[0] /= paramVector4f.points[0];
-    arrayOfFloat = this.points;
-    arrayOfFloat[1] /= paramVector4f.points[1];
-    arrayOfFloat = this.points;
-    arrayOfFloat[2] /= paramVector4f.points[2];
-    arrayOfFloat = this.points;
-    arrayOfFloat[3] /= paramVector4f.points[3];
+    float f = arrayOfFloat[0];
+    paramVector4f = paramVector4f.points;
+    arrayOfFloat[0] = (f / paramVector4f[0]);
+    arrayOfFloat[1] /= paramVector4f[1];
+    arrayOfFloat[2] /= paramVector4f[2];
+    arrayOfFloat[3] /= paramVector4f[3];
   }
   
   public Vector4f subtract(Vector4f paramVector4f)
   {
     float[] arrayOfFloat = this.points;
-    arrayOfFloat[0] -= paramVector4f.points[0];
-    arrayOfFloat = this.points;
-    arrayOfFloat[1] -= paramVector4f.points[1];
-    arrayOfFloat = this.points;
-    arrayOfFloat[2] -= paramVector4f.points[2];
-    arrayOfFloat = this.points;
-    arrayOfFloat[3] -= paramVector4f.points[3];
+    float f = arrayOfFloat[0];
+    paramVector4f = paramVector4f.points;
+    arrayOfFloat[0] = (f - paramVector4f[0]);
+    arrayOfFloat[1] -= paramVector4f[1];
+    arrayOfFloat[2] -= paramVector4f[2];
+    arrayOfFloat[3] -= paramVector4f[3];
     return this;
   }
   
   public void subtract(Vector4f paramVector4f1, Vector4f paramVector4f2)
   {
-    paramVector4f2.setXYZW(this.points[0] - paramVector4f1.points[0], this.points[1] - paramVector4f1.points[1], this.points[2] - paramVector4f1.points[2], this.points[3] - paramVector4f1.points[3]);
+    float[] arrayOfFloat = this.points;
+    float f = arrayOfFloat[0];
+    paramVector4f1 = paramVector4f1.points;
+    paramVector4f2.setXYZW(f - paramVector4f1[0], arrayOfFloat[1] - paramVector4f1[1], arrayOfFloat[2] - paramVector4f1[2], arrayOfFloat[3] - paramVector4f1[3]);
   }
   
   public String toString()
   {
-    return "X:" + this.points[0] + " Y:" + this.points[1] + " Z:" + this.points[2] + " W:" + this.points[3];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("X:");
+    localStringBuilder.append(this.points[0]);
+    localStringBuilder.append(" Y:");
+    localStringBuilder.append(this.points[1]);
+    localStringBuilder.append(" Z:");
+    localStringBuilder.append(this.points[2]);
+    localStringBuilder.append(" W:");
+    localStringBuilder.append(this.points[3]);
+    return localStringBuilder.toString();
   }
   
   public float w()
@@ -252,7 +296,7 @@ public class Vector4f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.ar.sensor.representation.Vector4f
  * JD-Core Version:    0.7.0.1
  */

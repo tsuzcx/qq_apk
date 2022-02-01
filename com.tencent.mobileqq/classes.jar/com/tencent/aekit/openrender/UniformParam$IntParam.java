@@ -20,12 +20,19 @@ public class UniformParam$IntParam
       return;
     }
     GLES20.glUniform1i(this.handle, this.value);
-    GlUtil.checkGlError("IntParam setParams: " + toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("IntParam setParams: ");
+    localStringBuilder.append(toString());
+    GlUtil.checkGlError(localStringBuilder.toString());
   }
   
   public String toString()
   {
-    return this.name + " = " + this.value;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(" = ");
+    localStringBuilder.append(this.value);
+    return localStringBuilder.toString();
   }
 }
 

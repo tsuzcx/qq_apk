@@ -12,12 +12,12 @@ class FaceUIController$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 1: 
-      QQToast.a(this.a.a, 2, 2131690201, 0).a();
+      if (paramInt != 1) {
+        return;
+      }
+      QQToast.a(this.a.a, 2, 2131690117, 0).a();
       paramDialogInterface.dismiss();
       ReportController.b(null, "dc00898", "", "", "0X8008353", "0X8008353", 0, 0, "", "", "", "");
       return;
@@ -27,7 +27,7 @@ class FaceUIController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.FaceUIController.1
  * JD-Core Version:    0.7.0.1
  */

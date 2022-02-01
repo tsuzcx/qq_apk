@@ -8,24 +8,25 @@ class AccountManageActivity$32
 {
   AccountManageActivity$32(AccountManageActivity paramAccountManageActivity) {}
   
-  public void a(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  protected void a(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
-    AccountManageActivity.a(this.a, AccountManageActivity.c(this.a));
+    paramSubAccountBackProtocData = this.a;
+    AccountManageActivity.a(paramSubAccountBackProtocData, AccountManageActivity.c(paramSubAccountBackProtocData));
   }
   
-  public void b(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  protected void b(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
     AccountManageActivity.a(this.a, false);
   }
   
-  public void c(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  protected void c(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
     AccountManageActivity.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.32
  * JD-Core Version:    0.7.0.1
  */

@@ -10,24 +10,27 @@ public class gq
   {
     try
     {
-      if (Build.VERSION.SDK_INT >= 21) {
-        return gt.a("android.content.pm.PackageParser", null);
+      int i = Build.VERSION.SDK_INT;
+      if (i >= 21) {
+        paramString = gt.a("android.content.pm.PackageParser", null);
+      } else {
+        paramString = gt.a("android.content.pm.PackageParser", new Object[] { paramString });
       }
-      paramString = gt.a("android.content.pm.PackageParser", new Object[] { paramString });
-      return paramString;
     }
     catch (Throwable paramString)
     {
       paramString.printStackTrace();
+      return null;
     }
-    return null;
+    return paramString;
   }
   
   public static Object a(Object paramObject, File paramFile, String paramString, DisplayMetrics paramDisplayMetrics, int paramInt)
   {
     try
     {
-      if (Build.VERSION.SDK_INT >= 21) {
+      int i = Build.VERSION.SDK_INT;
+      if (i >= 21) {
         return gt.a(paramObject, "parsePackage", new Object[] { paramFile, Integer.valueOf(paramInt) });
       }
       paramObject = gt.a(paramObject, "parsePackage", new Object[] { paramFile, paramString, paramDisplayMetrics, Integer.valueOf(paramInt) });
@@ -42,7 +45,7 @@ public class gq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.gq
  * JD-Core Version:    0.7.0.1
  */

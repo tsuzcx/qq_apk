@@ -1,32 +1,51 @@
 package com.tencent.biz.pubaccount.api.impl;
 
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mobileqq.webview.swift.proxy.WebKernelCallBackProxy;
+import com.tencent.mobileqq.webview.swift.utils.WebViewKernelCallBack;
+import com.tencent.smtt.sdk.WebView;
 
 class PublicAccountBrowserImpl$PublicAccountBrowserFragment$5
-  implements Runnable
+  extends WebKernelCallBackProxy
 {
-  PublicAccountBrowserImpl$PublicAccountBrowserFragment$5(PublicAccountBrowserImpl.PublicAccountBrowserFragment paramPublicAccountBrowserFragment) {}
-  
-  public void run()
+  PublicAccountBrowserImpl$PublicAccountBrowserFragment$5(PublicAccountBrowserImpl.PublicAccountBrowserFragment paramPublicAccountBrowserFragment, WebViewKernelCallBack paramWebViewKernelCallBack)
   {
-    try
-    {
-      boolean bool = SubscriptRecommendController.a(this.this$0.mApp, false, this.this$0.mUrl);
-      if (QLog.isColorLevel()) {
-        QLog.d("WebLog_WebViewFragment", 2, "set subscribe full recommend switch = false , result : " + bool);
-      }
-      return;
+    super(paramWebViewKernelCallBack);
+  }
+  
+  public boolean afterWebViewEngineHandleOverrideUrl(WebView paramWebView, String paramString)
+  {
+    return this.a.a(paramWebView, paramString);
+  }
+  
+  public String getUAMark()
+  {
+    return "PA";
+  }
+  
+  public void onFinalState(Bundle paramBundle)
+  {
+    super.onFinalState(paramBundle);
+    this.a.a(paramBundle);
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
+    if (paramInt == -8) {
+      QRUtils.a(1, 2131695210);
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    return this.a.a(paramWebView, paramString, this.webViewKernelCallBack);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountBrowserImpl.PublicAccountBrowserFragment.5
  * JD-Core Version:    0.7.0.1
  */

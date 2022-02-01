@@ -1,6 +1,6 @@
 package com.tencent.av.wtogether.callback;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import com.tencent.av.wtogether.gles.WatchTogetherSurfaceTextureHolder;
 
 public abstract interface VideoSink
@@ -13,7 +13,7 @@ public abstract interface VideoSink
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.callback.VideoSink
  * JD-Core Version:    0.7.0.1
  */

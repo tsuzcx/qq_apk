@@ -7,7 +7,6 @@ import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.biz.webviewplugin.WebSoPlugin;
 import com.tencent.mobileqq.webview.WebViewDirector;
@@ -33,8 +32,9 @@ public class EcWebviewWrapper
   
   public void callJs(String paramString)
   {
-    if (this.mWebViewBuilder != null) {
-      this.mWebViewBuilder.callJs(paramString);
+    QzoneWebViewBaseBuilder localQzoneWebViewBaseBuilder = this.mWebViewBuilder;
+    if (localQzoneWebViewBaseBuilder != null) {
+      localQzoneWebViewBaseBuilder.callJs(paramString);
     }
   }
   
@@ -60,8 +60,9 @@ public class EcWebviewWrapper
   {
     this.guard.close();
     onDetach();
-    if (this.mWebViewBuilder != null) {
-      this.mWebViewBuilder.onDestroy();
+    QzoneWebViewBaseBuilder localQzoneWebViewBaseBuilder = this.mWebViewBuilder;
+    if (localQzoneWebViewBaseBuilder != null) {
+      localQzoneWebViewBaseBuilder.onDestroy();
     }
     this.mWebview = null;
     this.mContext = null;
@@ -69,11 +70,12 @@ public class EcWebviewWrapper
   
   public void onDetach()
   {
-    if (this.mWebview != null)
+    Object localObject = this.mWebview;
+    if (localObject != null)
     {
-      ViewParent localViewParent = this.mWebview.getParent();
-      if ((localViewParent != null) && ((localViewParent instanceof ViewGroup))) {
-        ((ViewGroup)localViewParent).removeAllViewsInLayout();
+      localObject = ((TouchWebView)localObject).getParent();
+      if ((localObject != null) && ((localObject instanceof ViewGroup))) {
+        ((ViewGroup)localObject).removeAllViewsInLayout();
       }
     }
   }
@@ -90,82 +92,99 @@ public class EcWebviewWrapper
   
   public void onPause()
   {
-    if (this.mWebViewBuilder != null) {
-      this.mWebViewBuilder.onPause();
+    QzoneWebViewBaseBuilder localQzoneWebViewBaseBuilder = this.mWebViewBuilder;
+    if (localQzoneWebViewBaseBuilder != null) {
+      localQzoneWebViewBaseBuilder.onPause();
     }
   }
   
   public void onResume()
   {
-    if (this.mWebViewBuilder != null) {
-      this.mWebViewBuilder.onResume();
+    QzoneWebViewBaseBuilder localQzoneWebViewBaseBuilder = this.mWebViewBuilder;
+    if (localQzoneWebViewBaseBuilder != null) {
+      localQzoneWebViewBaseBuilder.onResume();
     }
   }
   
   public void onWebViewReady(Intent paramIntent, boolean paramBoolean)
   {
-    boolean bool1 = true;
-    if ((paramIntent == null) || (this.mWebview == null)) {}
     String str2;
     String str1;
-    do
+    int i;
+    if (paramIntent != null)
     {
-      boolean bool2;
-      do
-      {
+      if (this.mWebview == null) {
         return;
-        str2 = paramIntent.getStringExtra("wns_proxy_http_data");
-        str1 = paramIntent.getStringExtra("url");
-        bool2 = TextUtils.isEmpty(str2);
-      } while (((bool2) && (TextUtils.isEmpty(str1))) || ((!paramBoolean) && (bool2)));
-      boolean bool3 = paramIntent.getBooleanExtra("key_wns_cache_hit", false);
-      if (QLog.isColorLevel()) {
-        QLog.i("WebviewWrapper", 2, "CoverQzoneShowWebView load Url: " + str1 + ", wns proxy html hit caches:" + bool3);
       }
-      if (bool3)
+      str2 = paramIntent.getStringExtra("wns_proxy_http_data");
+      str1 = paramIntent.getStringExtra("url");
+      boolean bool1 = TextUtils.isEmpty(str2);
+      if ((bool1) && (TextUtils.isEmpty(str1))) {
+        return;
+      }
+      if ((!paramBoolean) && (bool1)) {
+        return;
+      }
+      boolean bool2 = paramIntent.getBooleanExtra("key_wns_cache_hit", false);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("CoverQzoneShowWebView load Url: ");
+        ((StringBuilder)localObject).append(str1);
+        ((StringBuilder)localObject).append(", wns proxy html hit caches:");
+        ((StringBuilder)localObject).append(bool2);
+        QLog.i("WebviewWrapper", 2, ((StringBuilder)localObject).toString());
+      }
+      if (bool2)
       {
         QLog.i("WebviewWrapper", 2, "bHitCache is true");
         return;
       }
-      if ((!paramBoolean) || (!bool2)) {
-        break;
+      if ((paramBoolean) && (bool1))
+      {
+        this.mWebview.loadUrl(str1);
+        if (QLog.isColorLevel())
+        {
+          paramIntent = new StringBuilder();
+          paramIntent.append("CoverQzoneShowWebView load Url: ");
+          paramIntent.append(str1);
+          paramIntent.append(", wns proxy html return failed!");
+          QLog.i("WebviewWrapper", 2, paramIntent.toString());
+        }
+        return;
       }
-      this.mWebview.loadUrl(str1);
-    } while (!QLog.isColorLevel());
-    QLog.i("WebviewWrapper", 2, "CoverQzoneShowWebView load Url: " + str1 + ", wns proxy html return failed!");
-    return;
-    String str3 = this.mWebview.getUrl();
-    if ((TextUtils.isEmpty(str3)) || ("about:blank".equals(str3))) {}
-    for (int i = 1;; i = 0)
+      Object localObject = this.mWebview.getUrl();
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!"about:blank".equals(localObject))) {
+        i = 0;
+      } else {
+        i = 1;
+      }
+      if (i != 0) {}
+    }
+    try
     {
-      if (i == 0) {}
-      try
-      {
-        if (paramIntent.getBooleanExtra("need_force_refresh", false))
-        {
-          QLog.i("WebviewWrapper", 2, "saxon@ isCurrentUrlEmpty loadDataWithBaseURL");
-          WebSoPlugin.a(this.mWebview, str1, str2);
-        }
+      if (!paramIntent.getBooleanExtra("need_force_refresh", false)) {
+        break label289;
       }
-      catch (Exception paramIntent)
-      {
-        for (;;)
-        {
-          QLog.e("WebviewWrapper", 1, "saxon@ onwebview ready exception", paramIntent);
-          continue;
-          paramBoolean = false;
-        }
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      paramIntent = new StringBuilder().append("CoverQzoneShowWebView load Url: ").append(str1).append(", htmlBody(true), currentUrl(");
-      if (i != 0) {
-        break label317;
-      }
-      paramBoolean = bool1;
-      QLog.i("WebviewWrapper", 2, paramBoolean + ")");
-      return;
+      QLog.i("WebviewWrapper", 2, "saxon@ isCurrentUrlEmpty loadDataWithBaseURL");
+      WebSoPlugin.a(this.mWebview, str1, str2);
+    }
+    catch (Exception paramIntent)
+    {
+      label280:
+      break label280;
+    }
+    QLog.e("WebviewWrapper", 1, "saxon@ onwebview ready exception", paramIntent);
+    label289:
+    if (QLog.isColorLevel())
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("CoverQzoneShowWebView load Url: ");
+      paramIntent.append(str1);
+      paramIntent.append(", htmlBody(true), currentUrl(");
+      paramIntent.append(i ^ 0x1);
+      paramIntent.append(")");
+      QLog.i("WebviewWrapper", 2, paramIntent.toString());
     }
   }
   
@@ -177,14 +196,17 @@ public class EcWebviewWrapper
       this.mWebview = new TouchWebView(this.mContext);
       if (Build.VERSION.SDK_INT >= 21)
       {
-        WebSettings localWebSettings = this.mWebview.getSettings();
-        if (localWebSettings != null)
+        localObject = this.mWebview.getSettings();
+        if (localObject != null)
         {
-          localWebSettings.setMixedContentMode(0);
-          localWebSettings.setMixedContentMode(0);
+          ((WebSettings)localObject).setMixedContentMode(0);
+          ((WebSettings)localObject).setMixedContentMode(0);
         }
       }
-      QLog.i("WebviewWrapper", 2, "saxon@ new TouchWebView cost " + (System.currentTimeMillis() - l));
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("saxon@ new TouchWebView cost ");
+      ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+      QLog.i("WebviewWrapper", 2, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -192,7 +214,7 @@ public class EcWebviewWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewwrapper.EcWebviewWrapper
  * JD-Core Version:    0.7.0.1
  */

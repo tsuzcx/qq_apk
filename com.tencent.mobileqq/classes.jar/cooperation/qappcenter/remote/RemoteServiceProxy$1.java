@@ -12,8 +12,14 @@ class RemoteServiceProxy$1
   
   public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RemoteServiceProxy", 2, " onServiceConnected service:" + paramComponentName + ",mActionListener:" + RemoteServiceProxy.a(this.a));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" onServiceConnected service:");
+      localStringBuilder.append(paramComponentName);
+      localStringBuilder.append(",mActionListener:");
+      localStringBuilder.append(RemoteServiceProxy.a(this.a));
+      QLog.d("RemoteServiceProxy", 2, localStringBuilder.toString());
     }
     this.a.a = IServiceHandler.Stub.a(paramIBinder);
     if (RemoteServiceProxy.a(this.a) != null)
@@ -27,15 +33,21 @@ class RemoteServiceProxy$1
   
   public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RemoteServiceProxy", 2, " onServiceDisconnected " + paramComponentName + ",mActionListener:" + RemoteServiceProxy.a(this.a));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" onServiceDisconnected ");
+      localStringBuilder.append(paramComponentName);
+      localStringBuilder.append(",mActionListener:");
+      localStringBuilder.append(RemoteServiceProxy.a(this.a));
+      QLog.d("RemoteServiceProxy", 2, localStringBuilder.toString());
     }
     this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qappcenter.remote.RemoteServiceProxy.1
  * JD-Core Version:    0.7.0.1
  */

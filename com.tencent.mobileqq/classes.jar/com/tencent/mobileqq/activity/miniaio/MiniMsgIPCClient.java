@@ -27,15 +27,16 @@ public class MiniMsgIPCClient
   
   public static MiniMsgIPCClient getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new MiniMsgIPCClient("mini_msg_client_module");
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new MiniMsgIPCClient("mini_msg_client_module");
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public static Bundle getModuleBundle()
@@ -76,15 +77,15 @@ public class MiniMsgIPCClient
       localMiniMsgBusinessInfo.a = paramInt;
       paramString.put(Integer.valueOf(paramInt), localMiniMsgBusinessInfo);
       paramString = getInstance();
-    }
-    try
-    {
-      QIPCClientHelper.getInstance().register(paramString);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("mini_msg_IPCClient", 1, "register ipc module error.", paramString);
+      try
+      {
+        QIPCClientHelper.getInstance().register(paramString);
+        return;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("mini_msg_IPCClient", 1, "register ipc module error.", paramString);
+      }
     }
   }
   
@@ -118,8 +119,12 @@ public class MiniMsgIPCClient
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("mini_msg_IPCClient", 2, "onCall.action = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCall.action = ");
+      localStringBuilder.append(paramString);
+      QLog.d("mini_msg_IPCClient", 2, localStringBuilder.toString());
     }
     if ("action_sync_unreadcount".equals(paramString))
     {
@@ -213,7 +218,7 @@ public class MiniMsgIPCClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMsgIPCClient
  * JD-Core Version:    0.7.0.1
  */

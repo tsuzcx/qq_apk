@@ -62,17 +62,19 @@ public class GreetingYUVProgram
   
   private int a(int paramInt, String paramString)
   {
-    paramInt = GLES20.glCreateShader(paramInt);
-    if (paramInt != 0)
+    int i1 = GLES20.glCreateShader(paramInt);
+    paramInt = i1;
+    if (i1 != 0)
     {
-      GLES20.glShaderSource(paramInt, paramString);
-      GLES20.glCompileShader(paramInt);
+      GLES20.glShaderSource(i1, paramString);
+      GLES20.glCompileShader(i1);
       paramString = new int[1];
-      GLES20.glGetShaderiv(paramInt, 35713, paramString, 0);
+      GLES20.glGetShaderiv(i1, 35713, paramString, 0);
+      paramInt = i1;
       if (paramString[0] == 0)
       {
-        GLES20.glDeleteShader(paramInt);
-        return 0;
+        GLES20.glDeleteShader(i1);
+        paramInt = 0;
       }
     }
     return paramInt;
@@ -81,32 +83,39 @@ public class GreetingYUVProgram
   private void a(String paramString)
   {
     int i1 = GLES20.glGetError();
-    if (i1 != 0) {
-      QLog.i("GreetingYUVProgram", 1, paramString + ": glError 0x" + Integer.toHexString(i1));
+    if (i1 != 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": glError 0x");
+      localStringBuilder.append(Integer.toHexString(i1));
+      QLog.i("GreetingYUVProgram", 1, localStringBuilder.toString());
     }
   }
   
   public int a(String paramString1, String paramString2)
   {
-    int i1 = a(35633, paramString1);
-    int i2 = a(35632, paramString2);
-    int i3 = GLES20.glCreateProgram();
-    if (i3 != 0)
+    int i3 = a(35633, paramString1);
+    int i4 = a(35632, paramString2);
+    int i2 = GLES20.glCreateProgram();
+    int i1 = i2;
+    if (i2 != 0)
     {
-      GLES20.glAttachShader(i3, i1);
+      GLES20.glAttachShader(i2, i3);
       a("glAttachShader");
-      GLES20.glAttachShader(i3, i2);
+      GLES20.glAttachShader(i2, i4);
       a("glAttachShader");
-      GLES20.glLinkProgram(i3);
+      GLES20.glLinkProgram(i2);
       paramString1 = new int[1];
-      GLES20.glGetProgramiv(i3, 35714, paramString1, 0);
+      GLES20.glGetProgramiv(i2, 35714, paramString1, 0);
+      i1 = i2;
       if (paramString1[0] != 1)
       {
-        GLES20.glDeleteProgram(i3);
-        return 0;
+        GLES20.glDeleteProgram(i2);
+        i1 = 0;
       }
     }
-    return i3;
+    return i1;
   }
   
   public void a()
@@ -144,27 +153,42 @@ public class GreetingYUVProgram
   
   public void a(int paramInt)
   {
-    switch (this.jdField_a_of_type_Int)
+    paramInt = this.jdField_a_of_type_Int;
+    if (paramInt != 1)
     {
-    default: 
-      this.jdField_h_of_type_ArrayOfFloat = jdField_a_of_type_ArrayOfFloat;
-      this.jdField_c_of_type_Int = 33984;
-      this.jdField_d_of_type_Int = 33985;
-      this.jdField_e_of_type_Int = 33986;
-      this.jdField_f_of_type_Int = 0;
-      this.jdField_g_of_type_Int = 1;
-      this.jdField_h_of_type_Int = 2;
-      return;
-    case 1: 
-      this.jdField_h_of_type_ArrayOfFloat = jdField_c_of_type_ArrayOfFloat;
-      this.jdField_c_of_type_Int = 33984;
-      this.jdField_d_of_type_Int = 33985;
-      this.jdField_e_of_type_Int = 33986;
-      this.jdField_f_of_type_Int = 0;
-      this.jdField_g_of_type_Int = 1;
-      this.jdField_h_of_type_Int = 2;
-      return;
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            this.jdField_h_of_type_ArrayOfFloat = jdField_a_of_type_ArrayOfFloat;
+            this.jdField_c_of_type_Int = 33984;
+            this.jdField_d_of_type_Int = 33985;
+            this.jdField_e_of_type_Int = 33986;
+            this.jdField_f_of_type_Int = 0;
+            this.jdField_g_of_type_Int = 1;
+            this.jdField_h_of_type_Int = 2;
+            return;
+          }
+          this.jdField_h_of_type_ArrayOfFloat = jdField_f_of_type_ArrayOfFloat;
+          this.jdField_c_of_type_Int = 33993;
+          this.jdField_d_of_type_Int = 33994;
+          this.jdField_e_of_type_Int = 33995;
+          this.jdField_f_of_type_Int = 9;
+          this.jdField_g_of_type_Int = 10;
+          this.jdField_h_of_type_Int = 11;
+          return;
+        }
+        this.jdField_h_of_type_ArrayOfFloat = jdField_e_of_type_ArrayOfFloat;
+        this.jdField_c_of_type_Int = 33990;
+        this.jdField_d_of_type_Int = 33991;
+        this.jdField_e_of_type_Int = 33992;
+        this.jdField_f_of_type_Int = 6;
+        this.jdField_g_of_type_Int = 7;
+        this.jdField_h_of_type_Int = 8;
+        return;
+      }
       this.jdField_h_of_type_ArrayOfFloat = jdField_d_of_type_ArrayOfFloat;
       this.jdField_c_of_type_Int = 33987;
       this.jdField_d_of_type_Int = 33988;
@@ -173,94 +197,96 @@ public class GreetingYUVProgram
       this.jdField_g_of_type_Int = 4;
       this.jdField_h_of_type_Int = 5;
       return;
-    case 3: 
-      this.jdField_h_of_type_ArrayOfFloat = jdField_e_of_type_ArrayOfFloat;
-      this.jdField_c_of_type_Int = 33990;
-      this.jdField_d_of_type_Int = 33991;
-      this.jdField_e_of_type_Int = 33992;
-      this.jdField_f_of_type_Int = 6;
-      this.jdField_g_of_type_Int = 7;
-      this.jdField_h_of_type_Int = 8;
-      return;
     }
-    this.jdField_h_of_type_ArrayOfFloat = jdField_f_of_type_ArrayOfFloat;
-    this.jdField_c_of_type_Int = 33993;
-    this.jdField_d_of_type_Int = 33994;
-    this.jdField_e_of_type_Int = 33995;
-    this.jdField_f_of_type_Int = 9;
-    this.jdField_g_of_type_Int = 10;
-    this.jdField_h_of_type_Int = 11;
+    this.jdField_h_of_type_ArrayOfFloat = jdField_c_of_type_ArrayOfFloat;
+    this.jdField_c_of_type_Int = 33984;
+    this.jdField_d_of_type_Int = 33985;
+    this.jdField_e_of_type_Int = 33986;
+    this.jdField_f_of_type_Int = 0;
+    this.jdField_g_of_type_Int = 1;
+    this.jdField_h_of_type_Int = 2;
   }
   
   public void a(Buffer paramBuffer1, Buffer paramBuffer2, Buffer paramBuffer3, int paramInt1, int paramInt2)
   {
-    if ((paramInt1 != this.q) || (paramInt2 != this.r)) {}
-    for (int i1 = 1;; i1 = 0)
-    {
-      if (i1 != 0)
-      {
-        this.q = paramInt1;
-        this.r = paramInt2;
-      }
-      if ((this.n < 0) || (i1 != 0))
-      {
-        if (this.n >= 0)
-        {
-          GLES20.glDeleteTextures(1, new int[] { this.n }, 0);
-          a("glDeleteTextures");
-        }
-        int[] arrayOfInt = new int[1];
-        GLES20.glGenTextures(1, arrayOfInt, 0);
-        a("glGenTextures");
-        this.n = arrayOfInt[0];
-      }
-      QLog.d("AVGAmeRender", 1, "buildTextures : w=" + this.q + " h=" + this.r + " yData=" + paramBuffer1.capacity());
-      GLES20.glBindTexture(3553, this.n);
-      a("glBindTexture");
-      GLES20.glTexImage2D(3553, 0, 6409, this.q, this.r, 0, 6409, 5121, paramBuffer1);
-      a("glTexImage2D");
-      GLES20.glTexParameterf(3553, 10241, 9728.0F);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameteri(3553, 10242, 33071);
-      GLES20.glTexParameteri(3553, 10243, 33071);
-      if ((this.o < 0) || (i1 != 0))
-      {
-        if (this.o >= 0)
-        {
-          GLES20.glDeleteTextures(1, new int[] { this.o }, 0);
-          a("glDeleteTextures");
-        }
-        paramBuffer1 = new int[1];
-        GLES20.glGenTextures(1, paramBuffer1, 0);
-        a("glGenTextures");
-        this.o = paramBuffer1[0];
-      }
-      GLES20.glBindTexture(3553, this.o);
-      GLES20.glTexImage2D(3553, 0, 6409, this.q / 2, this.r / 2, 0, 6409, 5121, paramBuffer2);
-      GLES20.glTexParameterf(3553, 10241, 9728.0F);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameteri(3553, 10242, 33071);
-      GLES20.glTexParameteri(3553, 10243, 33071);
-      if ((this.p < 0) || (i1 != 0))
-      {
-        if (this.p >= 0)
-        {
-          GLES20.glDeleteTextures(1, new int[] { this.p }, 0);
-          a("glDeleteTextures");
-        }
-        paramBuffer1 = new int[1];
-        GLES20.glGenTextures(1, paramBuffer1, 0);
-        a("glGenTextures");
-        this.p = paramBuffer1[0];
-      }
-      GLES20.glBindTexture(3553, this.p);
-      GLES20.glTexImage2D(3553, 0, 6409, this.q / 2, this.r / 2, 0, 6409, 5121, paramBuffer3);
-      GLES20.glTexParameterf(3553, 10241, 9728.0F);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameteri(3553, 10242, 33071);
-      GLES20.glTexParameteri(3553, 10243, 33071);
-      return;
+    int i1;
+    if ((paramInt1 == this.q) && (paramInt2 == this.r)) {
+      i1 = 0;
+    } else {
+      i1 = 1;
     }
+    if (i1 != 0)
+    {
+      this.q = paramInt1;
+      this.r = paramInt2;
+    }
+    if ((this.n < 0) || (i1 != 0))
+    {
+      paramInt1 = this.n;
+      if (paramInt1 >= 0)
+      {
+        GLES20.glDeleteTextures(1, new int[] { paramInt1 }, 0);
+        a("glDeleteTextures");
+      }
+      localObject = new int[1];
+      GLES20.glGenTextures(1, (int[])localObject, 0);
+      a("glGenTextures");
+      this.n = localObject[0];
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("buildTextures : w=");
+    ((StringBuilder)localObject).append(this.q);
+    ((StringBuilder)localObject).append(" h=");
+    ((StringBuilder)localObject).append(this.r);
+    ((StringBuilder)localObject).append(" yData=");
+    ((StringBuilder)localObject).append(paramBuffer1.capacity());
+    QLog.d("AVGAmeRender", 1, ((StringBuilder)localObject).toString());
+    GLES20.glBindTexture(3553, this.n);
+    a("glBindTexture");
+    GLES20.glTexImage2D(3553, 0, 6409, this.q, this.r, 0, 6409, 5121, paramBuffer1);
+    a("glTexImage2D");
+    GLES20.glTexParameterf(3553, 10241, 9728.0F);
+    GLES20.glTexParameterf(3553, 10240, 9729.0F);
+    GLES20.glTexParameteri(3553, 10242, 33071);
+    GLES20.glTexParameteri(3553, 10243, 33071);
+    if ((this.o < 0) || (i1 != 0))
+    {
+      paramInt1 = this.o;
+      if (paramInt1 >= 0)
+      {
+        GLES20.glDeleteTextures(1, new int[] { paramInt1 }, 0);
+        a("glDeleteTextures");
+      }
+      paramBuffer1 = new int[1];
+      GLES20.glGenTextures(1, paramBuffer1, 0);
+      a("glGenTextures");
+      this.o = paramBuffer1[0];
+    }
+    GLES20.glBindTexture(3553, this.o);
+    GLES20.glTexImage2D(3553, 0, 6409, this.q / 2, this.r / 2, 0, 6409, 5121, paramBuffer2);
+    GLES20.glTexParameterf(3553, 10241, 9728.0F);
+    GLES20.glTexParameterf(3553, 10240, 9729.0F);
+    GLES20.glTexParameteri(3553, 10242, 33071);
+    GLES20.glTexParameteri(3553, 10243, 33071);
+    if ((this.p < 0) || (i1 != 0))
+    {
+      paramInt1 = this.p;
+      if (paramInt1 >= 0)
+      {
+        GLES20.glDeleteTextures(1, new int[] { paramInt1 }, 0);
+        a("glDeleteTextures");
+      }
+      paramBuffer1 = new int[1];
+      GLES20.glGenTextures(1, paramBuffer1, 0);
+      a("glGenTextures");
+      this.p = paramBuffer1[0];
+    }
+    GLES20.glBindTexture(3553, this.p);
+    GLES20.glTexImage2D(3553, 0, 6409, this.q / 2, this.r / 2, 0, 6409, 5121, paramBuffer3);
+    GLES20.glTexParameterf(3553, 10241, 9728.0F);
+    GLES20.glTexParameterf(3553, 10240, 9729.0F);
+    GLES20.glTexParameteri(3553, 10242, 33071);
+    GLES20.glTexParameteri(3553, 10243, 33071);
   }
   
   public void a(float[] paramArrayOfFloat)
@@ -311,28 +337,32 @@ public class GreetingYUVProgram
   
   public void c()
   {
-    if (this.n != -1)
+    int i1 = this.n;
+    if (i1 != -1)
     {
-      GLES20.glDeleteTextures(1, new int[] { this.n }, 0);
+      GLES20.glDeleteTextures(1, new int[] { i1 }, 0);
       a("glDeleteTextures");
       this.n = -1;
     }
-    if (this.o != -1)
+    i1 = this.o;
+    if (i1 != -1)
     {
-      GLES20.glDeleteTextures(1, new int[] { this.o }, 0);
+      GLES20.glDeleteTextures(1, new int[] { i1 }, 0);
       a("glDeleteTextures");
       this.o = -1;
     }
-    if (this.p != -1)
+    i1 = this.p;
+    if (i1 != -1)
     {
-      GLES20.glDeleteTextures(1, new int[] { this.p }, 0);
+      GLES20.glDeleteTextures(1, new int[] { i1 }, 0);
       a("glDeleteTextures");
       this.p = -1;
     }
-    if (this.jdField_b_of_type_Int > 0)
+    i1 = this.jdField_b_of_type_Int;
+    if (i1 > 0)
     {
       this.jdField_a_of_type_Boolean = false;
-      GLES20.glDeleteProgram(this.jdField_b_of_type_Int);
+      GLES20.glDeleteProgram(i1);
       a("glDeleteProgram");
       this.jdField_b_of_type_Int = 0;
     }
@@ -340,7 +370,7 @@ public class GreetingYUVProgram
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.GreetingYUVProgram
  * JD-Core Version:    0.7.0.1
  */

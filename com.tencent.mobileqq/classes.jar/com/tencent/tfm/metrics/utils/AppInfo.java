@@ -15,10 +15,10 @@ import java.util.List;
 
 public class AppInfo
 {
-  private static String appVersion = null;
+  private static String appVersion;
   private static String channel = "";
   private static String networkType = "unknown";
-  private static String processName = null;
+  private static String processName;
   
   public static String getAppVersion(Context paramContext)
   {
@@ -38,17 +38,18 @@ public class AppInfo
     if (Build.VERSION.SDK_INT < 21) {
       return "";
     }
-    if (processName == null)
+    Object localObject = processName;
+    if (localObject == null)
     {
       try
       {
         paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
         while (paramContext.hasNext())
         {
-          ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-          if (localRunningAppProcessInfo.pid == Process.myPid())
+          localObject = (ActivityManager.RunningAppProcessInfo)paramContext.next();
+          if (((ActivityManager.RunningAppProcessInfo)localObject).pid == Process.myPid())
           {
-            processName = localRunningAppProcessInfo.processName;
+            processName = ((ActivityManager.RunningAppProcessInfo)localObject).processName;
             paramContext = processName;
             return paramContext;
           }
@@ -60,7 +61,7 @@ public class AppInfo
       }
       return "UNKNOW";
     }
-    return processName;
+    return localObject;
   }
   
   public static String getNetWorkType()
@@ -71,22 +72,20 @@ public class AppInfo
   private static String getPackageName(Context paramContext)
   {
     if (paramContext == null) {
-      paramContext = null;
+      return null;
     }
-    String str;
-    do
-    {
-      return paramContext;
-      str = paramContext.getPackageName();
-      paramContext = str;
-    } while (!TextUtils.isEmpty(str));
-    return "";
+    String str = paramContext.getPackageName();
+    paramContext = str;
+    if (TextUtils.isEmpty(str)) {
+      paramContext = "";
+    }
+    return paramContext;
   }
   
   private static String getVersionName(Context paramContext)
   {
-    Object localObject = getPackageName(paramContext);
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
+    String str = getPackageName(paramContext);
+    if (TextUtils.isEmpty(str)) {
       return null;
     }
     for (;;)
@@ -95,30 +94,44 @@ public class AppInfo
       int k;
       try
       {
-        paramContext = paramContext.getPackageManager().getPackageInfo((String)localObject, 0);
-        localObject = paramContext.versionName;
+        paramContext = paramContext.getPackageManager().getPackageInfo(str, 0);
+        str = paramContext.versionName;
         int m = paramContext.versionCode;
-        if ((localObject == null) || (((String)localObject).trim().length() <= 0)) {
-          return "" + m;
-        }
-        paramContext = ((String)localObject).trim().replace('\n', ' ').replace('\r', ' ').replace("|", "%7C");
-        localObject = paramContext.toCharArray();
-        i = 0;
-        j = 0;
-        if (i < localObject.length)
+        if ((str != null) && (str.trim().length() > 0))
         {
-          k = j;
-          if (localObject[i] != '.') {
-            break label222;
+          str = str.trim().replace('\n', ' ').replace('\r', ' ').replace("|", "%7C");
+          paramContext = str.toCharArray();
+          i = 0;
+          j = 0;
+          if (i < paramContext.length)
+          {
+            k = j;
+            if (paramContext[i] == '.') {
+              k = j + 1;
+            }
           }
-          k = j + 1;
-          break label222;
+          else
+          {
+            paramContext = str;
+            if (j < 3)
+            {
+              ELog.debug("[AppInfo] add versionCode: %s", new Object[] { Integer.valueOf(m) });
+              paramContext = new StringBuilder();
+              paramContext.append(str);
+              paramContext.append(".");
+              paramContext.append(m);
+              paramContext = paramContext.toString();
+            }
+            ELog.debug("[AppInfo] final Version: %s", new Object[] { paramContext });
+            return paramContext;
+          }
         }
-        if (j < 3)
+        else
         {
-          ELog.debug("[AppInfo] add versionCode: %s", new Object[] { Integer.valueOf(m) });
-          paramContext = paramContext + "." + m;
-          ELog.debug("[AppInfo] final Version: %s", new Object[] { paramContext });
+          paramContext = new StringBuilder();
+          paramContext.append("");
+          paramContext.append(m);
+          paramContext = paramContext.toString();
           return paramContext;
         }
       }
@@ -128,8 +141,6 @@ public class AppInfo
         ELog.error(paramContext.toString(), new Object[0]);
         return "";
       }
-      continue;
-      label222:
       i += 1;
       int j = k;
     }
@@ -143,7 +154,10 @@ public class AppInfo
   public static void updateNetWorkType(Context paramContext)
   {
     networkType = updateNetWorkTypeInternal(paramContext);
-    ELog.debug("[AppInfo] NetWork Type:" + networkType, new Object[0]);
+    paramContext = new StringBuilder();
+    paramContext.append("[AppInfo] NetWork Type:");
+    paramContext.append(networkType);
+    ELog.debug(paramContext.toString(), new Object[0]);
   }
   
   private static String updateNetWorkTypeInternal(Context paramContext)
@@ -155,18 +169,18 @@ public class AppInfo
         return "unknown";
       }
       paramContext = paramContext.getActiveNetworkInfo();
-      if (paramContext != null) {
-        if (paramContext.getType() == 1) {
-          paramContext = "wifi";
-        } else if (paramContext.getType() == 0) {
-          paramContext = paramContext.getSubtypeName();
-        }
+      if (paramContext == null) {
+        return "unknown";
+      }
+      if (paramContext.getType() == 1) {
+        paramContext = "wifi";
+      } else if (paramContext.getType() == 0) {
+        paramContext = paramContext.getSubtypeName();
       }
     }
     catch (Exception paramContext)
     {
       ELog.printStackTrace(paramContext);
-      paramContext = "unknown";
     }
     return "unknown";
     return paramContext;
@@ -174,7 +188,7 @@ public class AppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tfm.metrics.utils.AppInfo
  * JD-Core Version:    0.7.0.1
  */

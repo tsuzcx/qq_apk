@@ -1,26 +1,24 @@
 package com.tencent.biz.troop;
 
-import android.os.Bundle;
-import com.tencent.mobileqq.avatar.observer.AvatarObserver;
+import com.tencent.mobileqq.troop.association.api.TroopAssociationObserver;
+import com.tencent.mobileqq.troop.association.data.AllianceItem;
 
 class TroopMemberApiService$8
-  extends AvatarObserver
+  extends TroopAssociationObserver
 {
   TroopMemberApiService$8(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  protected void a(boolean paramBoolean, String paramString, int paramInt, long paramLong, AllianceItem paramAllianceItem)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 3);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putSerializable("data", new Object[] { paramString });
-    localBundle.putSerializable("observer_type", Integer.valueOf(2));
-    this.a.a(3, localBundle);
+    TroopMemberApiService localTroopMemberApiService = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService;
+    int i = jdField_a_of_type_Int;
+    String str = getClass().getSuperclass().getName();
+    TroopMemberApiService.a(localTroopMemberApiService, i, paramBoolean, new Object[] { paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong), paramAllianceItem }, str, "com.tencent.mobileqq:troopmanage");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiService.8
  * JD-Core Version:    0.7.0.1
  */

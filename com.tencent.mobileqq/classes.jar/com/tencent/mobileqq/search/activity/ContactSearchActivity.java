@@ -6,19 +6,22 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import com.tencent.av.wtogether.util.WTBusinessForWebPlugin;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.mobileqq.search.base.activity.BaseSearchActivity;
+import com.tencent.mobileqq.search.base.fragment.BaseSearchFragment;
+import com.tencent.mobileqq.search.business.contact.fragment.ContactSearchFragment;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Stack;
 
 public class ContactSearchActivity
   extends BaseSearchActivity
 {
-  private ContactSearchActivity.GroupFileSearchListener a;
+  private int jdField_a_of_type_Int;
+  private ContactSearchActivity.GroupFileSearchListener jdField_a_of_type_ComTencentMobileqqSearchActivityContactSearchActivity$GroupFileSearchListener;
   private boolean c;
-  private int d;
   private int e;
   private int f;
   
@@ -57,20 +60,18 @@ public class ContactSearchActivity
   
   protected BaseSearchFragment a()
   {
-    return ContactSearchFragment.a(this.e, this.d, null, null, this.jdField_a_of_type_ComTencentMobileqqSearchActivityContactSearchActivity$GroupFileSearchListener, this.c, this.f, -1L);
+    return ContactSearchFragment.a(this.e, this.jdField_a_of_type_Int, null, null, this.jdField_a_of_type_ComTencentMobileqqSearchActivityContactSearchActivity$GroupFileSearchListener, this.c, this.f, -1L);
   }
   
   protected String a()
   {
     if ((getIntent() != null) && (getIntent().getIntExtra("key_from_type", 0) != 0)) {
-      return HardCodeUtil.a(2131699446);
+      return HardCodeUtil.a(2131699551);
     }
-    switch (this.d)
-    {
-    default: 
-      return HardCodeUtil.a(2131702595);
+    if (this.jdField_a_of_type_Int != 197437) {
+      return HardCodeUtil.a(2131702727);
     }
-    return HardCodeUtil.a(2131702577);
+    return HardCodeUtil.a(2131702709);
   }
   
   @Override
@@ -82,36 +83,44 @@ public class ContactSearchActivity
     return bool;
   }
   
-  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (paramInt1 == 1300) {
+    if (paramInt1 == 1300)
+    {
       if ((-1 == paramInt2) && (paramIntent != null))
       {
         paramIntent = paramIntent.getStringExtra("roomId");
         if (paramIntent != null)
         {
           TroopUtils.a(this, paramIntent, true);
-          ReportController.b(this.app, "CliOper", "", "", "0X8006360", "0X8006360", 0, 0, "", "", "", "");
+          ReportController.b(getAppRuntime(), "CliOper", "", "", "0X8006360", "0X8006360", 0, 0, "", "", "", "");
         }
       }
     }
-    while ((paramInt1 != 2020) || (-1 != paramInt2) || (paramIntent == null)) {
-      return;
+    else if ((paramInt1 == 2020) && (-1 == paramInt2) && (paramIntent != null))
+    {
+      setResult(-1, paramIntent);
+      finish();
     }
-    setResult(-1, paramIntent);
-    finish();
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     this.jdField_a_of_type_Boolean = true;
     this.e = getIntent().getIntExtra("fromType", -1);
-    this.d = getIntent().getIntExtra("contactSearchSource", 197437);
+    this.jdField_a_of_type_Int = getIntent().getIntExtra("contactSearchSource", 197437);
     this.c = getIntent().getBooleanExtra("isApproximate", false);
     this.f = getIntent().getIntExtra("ContactCombineType", 0);
     b();
+    WTBusinessForWebPlugin.a.push(this);
     super.doOnCreate(paramBundle);
     return true;
+  }
+  
+  protected void doOnDestroy()
+  {
+    WTBusinessForWebPlugin.a.pop();
+    super.doOnDestroy();
   }
   
   @Override
@@ -123,7 +132,7 @@ public class ContactSearchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.ContactSearchActivity
  * JD-Core Version:    0.7.0.1
  */

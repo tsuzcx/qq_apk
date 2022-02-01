@@ -34,14 +34,17 @@ public final class AudioRoomOpenWebViewHandler
   
   private final void a(String paramString, Bundle paramBundle)
   {
-    String str = paramBundle.getString("cookie");
-    if (str != null)
+    paramBundle = paramBundle.getString("cookie");
+    if (paramBundle != null)
     {
+      Object localObject = (CharSequence)paramBundle;
       int i;
-      if (((CharSequence)str).length() > 0) {
+      if (((CharSequence)localObject).length() > 0) {
         i = 1;
+      } else {
+        i = 0;
       }
-      while (i == 1)
+      if (i == 1)
       {
         paramBundle = BaseApplicationImpl.getApplication();
         Intrinsics.checkExpressionValueIsNotNull(paramBundle, "BaseApplicationImpl.getApplication()");
@@ -52,17 +55,11 @@ public final class AudioRoomOpenWebViewHandler
         if (paramBundle != null) {
           paramString = paramBundle;
         }
-        paramBundle = ((Iterable)StringsKt.split$default((CharSequence)str, new String[] { ";" }, false, 0, 6, null)).iterator();
-        for (;;)
+        paramBundle = ((Iterable)StringsKt.split$default((CharSequence)localObject, new String[] { ";" }, false, 0, 6, null)).iterator();
+        while (paramBundle.hasNext())
         {
-          if (paramBundle.hasNext())
-          {
-            str = (String)paramBundle.next();
-            CookieManager.getInstance().setCookie(paramString, str);
-            continue;
-            i = 0;
-            break;
-          }
+          localObject = (String)paramBundle.next();
+          CookieManager.getInstance().setCookie(paramString, (String)localObject);
         }
         CookieSyncManager.getInstance().sync();
       }
@@ -74,26 +71,25 @@ public final class AudioRoomOpenWebViewHandler
   {
     Intrinsics.checkParameterIsNotNull(paramBundle, "bundle");
     String str = paramBundle.getString("url");
-    if (str != null) {
-      if (((CharSequence)str).length() <= 0) {
-        break label52;
-      }
-    }
-    label52:
-    for (int i = 1;; i = 0)
+    if (str != null)
     {
+      int i;
+      if (((CharSequence)str).length() > 0) {
+        i = 1;
+      } else {
+        i = 0;
+      }
       if (i == 1)
       {
         INSTANCE.a(str, paramBundle);
         INSTANCE.a(str);
       }
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.audioroom.pluginimpl.AudioRoomOpenWebViewHandler
  * JD-Core Version:    0.7.0.1
  */

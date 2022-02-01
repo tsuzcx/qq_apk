@@ -31,12 +31,12 @@ public class QQCustomDialogWtihInput
   {
     if ("VIVO".equalsIgnoreCase(Build.MANUFACTURER))
     {
-      if ((!Build.MODEL.toUpperCase().contains("Y8")) && (!Build.MODEL.toUpperCase().contains("V18"))) {}
-    }
-    else {
-      while (("HUAWEI".equalsIgnoreCase(Build.MANUFACTURER)) && (Build.MODEL.toUpperCase().contains("VOG-AL10"))) {
+      if ((Build.MODEL.toUpperCase().contains("Y8")) || (Build.MODEL.toUpperCase().contains("V18"))) {
         return true;
       }
+    }
+    else if (("HUAWEI".equalsIgnoreCase(Build.MANUFACTURER)) && (Build.MODEL.toUpperCase().contains("VOG-AL10"))) {
+      return true;
     }
     return false;
   }
@@ -70,7 +70,7 @@ public class QQCustomDialogWtihInput
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131369141));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131368874));
   }
   
   public QQCustomDialog setPositiveButton(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
@@ -102,7 +102,7 @@ public class QQCustomDialogWtihInput
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihInput
  * JD-Core Version:    0.7.0.1
  */

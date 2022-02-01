@@ -1,47 +1,38 @@
 package com.tencent.mobileqq.troop.activity;
 
-import android.text.TextUtils;
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class TroopAvatarWallPreviewActivity$9
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  TroopAvatarWallPreviewActivity$9(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, ActionSheet paramActionSheet, URLDrawable paramURLDrawable, String paramString1, String paramString2) {}
+  TroopAvatarWallPreviewActivity$9(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet.getContent(paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131693308).equals(paramView))
+    switch (paramView.getId())
     {
-      TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, Long.parseLong(this.jdField_a_of_type_JavaLangString), "0", null, 20006);
-    }
-    for (;;)
-    {
-      ReportController.b(null, "dc00899", "grp_lbs", this.jdField_a_of_type_JavaLangString, "video", "clk_rep", 0, 0, "", "", "", "");
+    default: 
       break;
-      if ((TextUtils.isEmpty(this.b)) || ("0".equals(this.b))) {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, 2, HardCodeUtil.a(2131715069), 0).a();
-      } else {
-        ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, 0L, this.b, null, 20006);
-      }
+    case 2131372188: 
+      TroopAvatarWallPreviewActivity.access$1200(this.a);
+      break;
+    case 2131372170: 
+      TroopAvatarWallPreviewActivity.access$900(this.a);
+      break;
+    case 2131372168: 
+      TroopAvatarWallPreviewActivity.access$1100(this.a);
+      break;
+    case 2131372167: 
+      TroopAvatarWallPreviewActivity.access$1000(this.a);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.9
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,13 @@ class AccountManageActivity$22$1
   
   public void run()
   {
-    int i = 0;
     try
     {
       this.a.this$0.jdField_a_of_type_AndroidWidgetLinearLayout.removeViewAt(this.a.a);
-      label22:
-      if (!this.a.this$0.jdField_a_of_type_Boolean) {
+      label20:
+      boolean bool = this.a.this$0.jdField_a_of_type_Boolean;
+      int i = 0;
+      if (!bool) {
         this.a.this$0.a(false);
       }
       AccountManageActivity.a(this.a.this$0, null);
@@ -34,13 +35,13 @@ class AccountManageActivity$22$1
     }
     catch (Exception localException)
     {
-      break label22;
+      break label20;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.22.1
  * JD-Core Version:    0.7.0.1
  */

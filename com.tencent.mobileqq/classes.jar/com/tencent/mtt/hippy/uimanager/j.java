@@ -11,41 +11,42 @@ public class j
   
   private static double a(HippyMap paramHippyMap, String paramString)
   {
+    boolean bool = paramHippyMap.get(paramString) instanceof String;
+    int j = 1;
     int i = 1;
     double d;
-    if ((paramHippyMap.get(paramString) instanceof String))
+    if (bool)
     {
       paramString = (String)paramHippyMap.get(paramString);
       if (paramString.endsWith("rad"))
       {
         paramHippyMap = paramString.substring(0, paramString.length() - 3);
-        d = Float.parseFloat(paramHippyMap);
       }
-    }
-    for (;;)
-    {
-      if (i != 0)
+      else
       {
-        return d;
         paramHippyMap = paramString;
-        if (!paramString.endsWith("deg")) {
-          break;
+        if (paramString.endsWith("deg"))
+        {
+          paramHippyMap = paramString.substring(0, paramString.length() - 3);
+          i = 0;
         }
-        paramHippyMap = paramString.substring(0, paramString.length() - 3);
-        i = 0;
-        break;
-        if (!(paramHippyMap.get(paramString) instanceof Number)) {
-          break label120;
-        }
-        d = ((Number)paramHippyMap.get(paramString)).doubleValue();
-        i = 1;
-        continue;
       }
-      return f.b(d);
-      label120:
-      i = 1;
-      d = 0.0D;
+      d = Float.parseFloat(paramHippyMap);
     }
+    else if ((paramHippyMap.get(paramString) instanceof Number))
+    {
+      d = ((Number)paramHippyMap.get(paramString)).doubleValue();
+      i = j;
+    }
+    else
+    {
+      d = 0.0D;
+      i = j;
+    }
+    if (i != 0) {
+      return d;
+    }
+    return f.b(d);
   }
   
   public static void a(HippyArray paramHippyArray, double[] paramArrayOfDouble)
@@ -54,23 +55,16 @@ public class j
     f.e(paramArrayOfDouble);
     int k = paramHippyArray.size();
     int i = 0;
-    Object localObject2;
-    String str;
-    Object localObject1;
-    label194:
-    double d1;
-    label381:
-    double d2;
-    if (i < k)
+    while (i < k)
     {
-      localObject2 = paramHippyArray.getMap(i);
-      str = (String)((HippyMap)localObject2).keySet().iterator().next();
+      Object localObject2 = paramHippyArray.getMap(i);
+      Object localObject1 = (String)((HippyMap)localObject2).keySet().iterator().next();
       f.e(arrayOfDouble);
-      localObject1 = ((HippyMap)localObject2).get(str);
+      Object localObject3 = ((HippyMap)localObject2).get((String)localObject1);
       int j;
-      if (("matrix".equals(str)) && ((localObject1 instanceof HippyArray)))
+      if (("matrix".equals(localObject1)) && ((localObject3 instanceof HippyArray)))
       {
-        localObject1 = (HippyArray)localObject1;
+        localObject1 = (HippyArray)localObject3;
         j = 0;
       }
       while (j < 16)
@@ -81,111 +75,124 @@ public class j
         }
         j += 1;
         continue;
-        if ((!"perspective".equals(str)) || (!(localObject1 instanceof Number))) {
-          break label194;
-        }
-        f.b(arrayOfDouble, ((Number)localObject1).doubleValue());
-      }
-      for (;;)
-      {
-        f.a(paramArrayOfDouble, paramArrayOfDouble, arrayOfDouble);
-        i += 1;
-        break;
-        if ("rotateX".equals(str))
+        if (("perspective".equals(localObject1)) && ((localObject3 instanceof Number)))
         {
-          f.g(arrayOfDouble, a((HippyMap)localObject2, str));
-        }
-        else if ("rotateY".equals(str))
-        {
-          f.h(arrayOfDouble, a((HippyMap)localObject2, str));
-        }
-        else if (("rotate".equals(str)) || ("rotateZ".equals(str)))
-        {
-          f.i(arrayOfDouble, a((HippyMap)localObject2, str));
-        }
-        else if (("scale".equals(str)) && ((localObject1 instanceof Number)))
-        {
-          d1 = ((Number)localObject1).doubleValue();
-          f.c(arrayOfDouble, d1);
-          f.d(arrayOfDouble, d1);
-        }
-        else if (("scaleX".equals(str)) && ((localObject1 instanceof Number)))
-        {
-          f.c(arrayOfDouble, ((Number)localObject1).doubleValue());
+          f.b(arrayOfDouble, ((Number)localObject3).doubleValue());
         }
         else
         {
-          if (!"scaleY".equals(str)) {
-            break label381;
+          if (!"rotateX".equals(localObject1)) {
+            break label206;
           }
-          f.d(arrayOfDouble, ((Number)localObject1).doubleValue());
+          f.g(arrayOfDouble, a((HippyMap)localObject2, (String)localObject1));
         }
       }
-      if (("translate".equals(str)) && ((localObject1 instanceof HippyArray)))
+      label415:
+      label456:
+      for (;;)
       {
-        d2 = 0.0D;
-        d3 = 0.0D;
-        d1 = d2;
-        if (((HippyArray)localObject1).size() > 0)
+        break;
+        label206:
+        if ("rotateY".equals(localObject1))
         {
-          localObject2 = ((HippyArray)localObject1).getObject(0);
-          d1 = d2;
-          if ((localObject2 instanceof Number)) {
-            d1 = ((Number)localObject2).doubleValue();
-          }
+          f.h(arrayOfDouble, a((HippyMap)localObject2, (String)localObject1));
         }
-        d2 = d3;
-        if (((HippyArray)localObject1).size() > 1)
+        else if ((!"rotate".equals(localObject1)) && (!"rotateZ".equals(localObject1)))
         {
-          localObject2 = ((HippyArray)localObject1).getObject(1);
-          d2 = d3;
-          if ((localObject2 instanceof Number)) {
-            d2 = ((Number)localObject2).doubleValue();
+          double d1;
+          if (("scale".equals(localObject1)) && ((localObject3 instanceof Number)))
+          {
+            d1 = ((Number)localObject3).doubleValue();
+            f.c(arrayOfDouble, d1);
+          }
+          for (;;)
+          {
+            f.d(arrayOfDouble, d1);
+            break;
+            if (("scaleX".equals(localObject1)) && ((localObject3 instanceof Number)))
+            {
+              f.c(arrayOfDouble, ((Number)localObject3).doubleValue());
+              break;
+            }
+            if (!"scaleY".equals(localObject1)) {
+              break label352;
+            }
+            d1 = ((Number)localObject3).doubleValue();
+          }
+          label352:
+          if (("translate".equals(localObject1)) && ((localObject3 instanceof HippyArray)))
+          {
+            localObject1 = (HippyArray)localObject3;
+            if (((HippyArray)localObject1).size() > 0)
+            {
+              localObject2 = ((HippyArray)localObject1).getObject(0);
+              if ((localObject2 instanceof Number))
+              {
+                d1 = ((Number)localObject2).doubleValue();
+                break label415;
+              }
+            }
+            d1 = 0.0D;
+            if (((HippyArray)localObject1).size() > 1)
+            {
+              localObject2 = ((HippyArray)localObject1).getObject(1);
+              if ((localObject2 instanceof Number))
+              {
+                d2 = ((Number)localObject2).doubleValue();
+                break label456;
+              }
+            }
+            double d2 = 0.0D;
+            if (((HippyArray)localObject1).size() > 2)
+            {
+              localObject1 = ((HippyArray)localObject1).getObject(2);
+              if ((localObject1 instanceof Number))
+              {
+                d3 = ((Number)localObject1).doubleValue();
+                break label497;
+              }
+            }
+            double d3 = 0.0D;
+            label497:
+            f.a(arrayOfDouble, d1, d2, d3);
+          }
+          else if (("translateX".equals(localObject1)) && ((localObject3 instanceof Number)))
+          {
+            f.a(arrayOfDouble, ((Number)localObject3).doubleValue(), 0.0D);
+          }
+          else if (("translateY".equals(localObject1)) && ((localObject3 instanceof Number)))
+          {
+            f.a(arrayOfDouble, 0.0D, ((Number)localObject3).doubleValue());
+          }
+          else if ("skewX".equals(localObject1))
+          {
+            f.e(arrayOfDouble, a((HippyMap)localObject2, (String)localObject1));
+          }
+          else if ("skewY".equals(localObject1))
+          {
+            f.f(arrayOfDouble, a((HippyMap)localObject2, (String)localObject1));
+          }
+          else
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("Unsupported transform type: ");
+            ((StringBuilder)localObject2).append((String)localObject1);
+            new RuntimeException(((StringBuilder)localObject2).toString()).printStackTrace();
           }
         }
-        if (((HippyArray)localObject1).size() <= 2) {
-          break label707;
-        }
-        localObject1 = ((HippyArray)localObject1).getObject(2);
-        if (!(localObject1 instanceof Number)) {
-          break label707;
+        else
+        {
+          f.i(arrayOfDouble, a((HippyMap)localObject2, (String)localObject1));
         }
       }
-    }
-    label707:
-    for (double d3 = ((Number)localObject1).doubleValue();; d3 = 0.0D)
-    {
-      f.a(arrayOfDouble, d1, d2, d3);
-      break;
-      if (("translateX".equals(str)) && ((localObject1 instanceof Number)))
-      {
-        f.a(arrayOfDouble, ((Number)localObject1).doubleValue(), 0.0D);
-        break;
-      }
-      if (("translateY".equals(str)) && ((localObject1 instanceof Number)))
-      {
-        f.a(arrayOfDouble, 0.0D, ((Number)localObject1).doubleValue());
-        break;
-      }
-      if ("skewX".equals(str))
-      {
-        f.e(arrayOfDouble, a((HippyMap)localObject2, str));
-        break;
-      }
-      if ("skewY".equals(str))
-      {
-        f.f(arrayOfDouble, a((HippyMap)localObject2, str));
-        break;
-      }
-      new RuntimeException("Unsupported transform type: " + str).printStackTrace();
-      break;
-      return;
+      f.a(paramArrayOfDouble, paramArrayOfDouble, arrayOfDouble);
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.j
  * JD-Core Version:    0.7.0.1
  */

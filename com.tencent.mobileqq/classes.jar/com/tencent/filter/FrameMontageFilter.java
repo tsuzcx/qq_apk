@@ -19,66 +19,80 @@ public class FrameMontageFilter
   
   public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
-    float f2 = 0.0F;
-    if (this.imagebitmap == null)
+    Bitmap localBitmap = this.imagebitmap;
+    if (localBitmap == null)
     {
       super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
       return;
     }
-    addParam(new UniformParam.TextureBitmapParam("inputImageTexture2", this.imagebitmap, 33986, false));
+    addParam(new UniformParam.TextureBitmapParam("inputImageTexture2", localBitmap, 33986, false));
+    float f1;
+    float f2;
     if (this.type == 0)
     {
       this.glslProgramShader = BaseFilter.getFragmentShader(51);
-      f1 = (float)Math.floor(paramFloat2 / this.imagebitmap.getHeight() + 0.999999D);
-      f2 = (float)Math.floor(paramFloat1 / this.imagebitmap.getWidth() + 0.999999D);
+      double d = paramFloat2 / this.imagebitmap.getHeight();
+      Double.isNaN(d);
+      f1 = (float)Math.floor(d + 0.999999D);
+      d = paramFloat1 / this.imagebitmap.getWidth();
+      Double.isNaN(d);
+      f2 = (float)Math.floor(d + 0.999999D);
       addParam(new UniformParam.FloatParam("height_scale", f1));
       addParam(new UniformParam.FloatParam("width_scale", f2));
-      super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
-      return;
     }
-    this.glslVertextShader = BaseFilter.getVertexShader(6);
-    this.glslProgramShader = BaseFilter.getFragmentShader(50);
-    float f1 = this.imagebitmap.getHeight() / this.imagebitmap.getWidth();
-    if (this.type == 1)
+    else
     {
-      this.glslVertextShader = BaseFilter.getVertexShader(7);
-      if (paramFloat2 > paramFloat1 * f1) {
-        f1 = (paramFloat2 - f1 * paramFloat1) / 2.0F / paramFloat2;
-      }
-    }
-    for (;;)
-    {
-      addParam(new UniformParam.FloatParam("height_offset", f1));
-      addParam(new UniformParam.FloatParam("width_offset", f2));
-      break;
-      f2 = (paramFloat1 - paramFloat2 / f1) / 2.0F / paramFloat1;
+      this.glslVertextShader = BaseFilter.getVertexShader(6);
+      this.glslProgramShader = BaseFilter.getFragmentShader(50);
+      float f3 = this.imagebitmap.getHeight() / this.imagebitmap.getWidth();
+      int i = this.type;
+      f2 = 0.0F;
       f1 = 0.0F;
-      continue;
-      if (this.type == 2)
+      if (i == 1)
       {
-        this.glslVertextShader = BaseFilter.getVertexShader(8);
-        if (paramFloat2 < paramFloat1 * f1)
-        {
-          f1 = (paramFloat1 * f1 - paramFloat2) / 2.0F / (f1 * paramFloat1);
-        }
-        else
-        {
-          f2 = (paramFloat2 / f1 - paramFloat1) / 2.0F / (paramFloat2 / f1);
-          f1 = 0.0F;
+        this.glslVertextShader = BaseFilter.getVertexShader(7);
+        f1 = paramFloat1 * f3;
+        if (paramFloat2 > f1) {
+          f1 = (paramFloat2 - f1) / 2.0F / paramFloat2;
         }
       }
-      else
+      for (;;)
       {
-        f1 = 0.0F;
+        break;
+        f1 = (paramFloat1 - paramFloat2 / f3) / 2.0F / paramFloat1;
+        break label329;
+        if (i == 2)
+        {
+          this.glslVertextShader = BaseFilter.getVertexShader(8);
+          f1 = paramFloat1 * f3;
+          if (paramFloat2 < f1)
+          {
+            f1 = (f1 - paramFloat2) / 2.0F / f1;
+          }
+          else
+          {
+            f1 = paramFloat2 / f3;
+            f1 = (f1 - paramFloat1) / 2.0F / f1;
+            break label329;
+          }
+        }
       }
+      f3 = 0.0F;
+      f2 = f1;
+      f1 = f3;
+      label329:
+      addParam(new UniformParam.FloatParam("height_offset", f2));
+      addParam(new UniformParam.FloatParam("width_offset", f1));
     }
+    super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
   }
   
   public void clearGLSL()
   {
-    if (this.imagebitmap != null)
+    Bitmap localBitmap = this.imagebitmap;
+    if (localBitmap != null)
     {
-      this.imagebitmap.recycle();
+      localBitmap.recycle();
       this.imagebitmap = null;
     }
     super.clearGLSL();
@@ -96,7 +110,7 @@ public class FrameMontageFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.filter.FrameMontageFilter
  * JD-Core Version:    0.7.0.1
  */

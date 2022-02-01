@@ -6,74 +6,68 @@ public class IndividuationConfigInfo
 {
   public static boolean a(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return false;
-    }
-    paramString1 = paramString1.split("\\.");
-    paramString2 = paramString2.split("\\.");
-    int m = Math.max(paramString1.length, paramString2.length);
-    int k = 0;
-    label42:
-    if (k < m) {
-      if (k >= paramString1.length) {
-        break label142;
-      }
-    }
-    for (;;)
+    if (!TextUtils.isEmpty(paramString1))
     {
-      try
-      {
-        i = Integer.parseInt(paramString1[k]);
-        if (k >= paramString2.length) {
-          break label137;
-        }
+      if (TextUtils.isEmpty(paramString2)) {
+        return false;
       }
-      catch (Exception localException1)
+      paramString1 = paramString1.split("\\.");
+      paramString2 = paramString2.split("\\.");
+      int m = Math.max(paramString1.length, paramString2.length);
+      int i = 0;
+      for (;;)
       {
+        if ((i >= m) || (i < paramString1.length)) {}
         try
         {
-          j = Integer.parseInt(paramString2[k]);
-          if (k == m - 1) {
-            break label123;
-          }
-          if (j > i)
-          {
-            return true;
-            localException1 = localException1;
-            i = 0;
-          }
+          j = Integer.parseInt(paramString1[i]);
+        }
+        catch (Exception localException1)
+        {
+          int j;
+          label63:
+          break label63;
+        }
+        j = 0;
+        if (i < paramString2.length) {}
+        try
+        {
+          k = Integer.parseInt(paramString2[i]);
         }
         catch (Exception localException2)
         {
-          j = 0;
-          continue;
+          int k;
+          label82:
+          break label82;
         }
-      }
-      if (j < i) {
-        break;
-      }
-      label123:
-      do
-      {
-        k += 1;
-        break label42;
-        break;
-        if (j >= i) {
-          return true;
+        k = 0;
+        if (i != m - 1)
+        {
+          if (k > j) {
+            return true;
+          }
+          if (k < j) {
+            return false;
+          }
         }
-      } while (j >= i);
-      return false;
-      label137:
-      int j = 0;
-      continue;
-      label142:
-      int i = 0;
+        else
+        {
+          if (k >= j) {
+            return true;
+          }
+          if (k < j) {
+            return false;
+          }
+        }
+        i += 1;
+      }
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.IndividuationConfigInfo
  * JD-Core Version:    0.7.0.1
  */

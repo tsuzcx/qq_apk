@@ -8,7 +8,7 @@ import java.util.Map;
 public abstract class BaseMediaModel
   implements Serializable, Cloneable
 {
-  private final HashMap<String, String> extraParams = new HashMap(0);
+  private final transient HashMap<String, String> extraParams = new HashMap(0);
   
   public void clearExtraParams()
   {
@@ -23,6 +23,30 @@ public abstract class BaseMediaModel
   public Map<String, String> getExtraParams()
   {
     return this.extraParams;
+  }
+  
+  public int getIntParam(String paramString)
+  {
+    paramString = (String)this.extraParams.get(paramString);
+    if ((paramString == null) || (paramString.startsWith("0x"))) {}
+    try
+    {
+      i = Integer.parseInt(paramString.substring(2), 16);
+      return i;
+    }
+    catch (Exception paramString)
+    {
+      int i;
+      return 0;
+    }
+    try
+    {
+      i = Integer.parseInt(paramString);
+      return i;
+    }
+    catch (Exception paramString) {}
+    return 0;
+    return 0;
   }
   
   public String getParam(String paramString)
@@ -50,7 +74,7 @@ public abstract class BaseMediaModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.BaseMediaModel
  * JD-Core Version:    0.7.0.1
  */

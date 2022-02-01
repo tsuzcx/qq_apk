@@ -83,15 +83,16 @@ public class TabBar
   
   public View getBtnView(TabBarInfo.ButtonInfo paramButtonInfo, int paramInt)
   {
-    if ((paramButtonInfo == null) || (TextUtils.isEmpty(paramButtonInfo.text))) {
-      return null;
+    if ((paramButtonInfo != null) && (!TextUtils.isEmpty(paramButtonInfo.text)))
+    {
+      View localView = getItemView();
+      TabBar.ItemHolder localItemHolder = TabBar.ItemHolder.getItemHolder(localView, paramButtonInfo, this.mInfo);
+      localItemHolder.init();
+      this.mItemHolders.add(localItemHolder);
+      localView.setOnClickListener(new TabBar.1(this, paramInt, paramButtonInfo));
+      return localView;
     }
-    View localView = getItemView();
-    TabBar.ItemHolder localItemHolder = TabBar.ItemHolder.getItemHolder(localView, paramButtonInfo, this.mInfo);
-    localItemHolder.init();
-    this.mItemHolders.add(localItemHolder);
-    localView.setOnClickListener(new TabBar.1(this, paramInt, paramButtonInfo));
-    return localView;
+    return null;
   }
   
   public View getItemView()
@@ -189,24 +190,27 @@ public class TabBar
     if (getVisibility() != 8)
     {
       this.needShow = false;
-      if (this.mInfo != null) {
-        this.mInfo.setShow(false);
+      TabBarInfo localTabBarInfo = this.mInfo;
+      if (localTabBarInfo != null) {
+        localTabBarInfo.setShow(false);
       }
-      if ((!paramBoolean) || (this.mInfo == null)) {
-        break label108;
+      if (paramBoolean)
+      {
+        localTabBarInfo = this.mInfo;
+        if (localTabBarInfo != null)
+        {
+          int i;
+          if ("top".equals(localTabBarInfo.position)) {
+            i = -getHeight();
+          } else {
+            i = getHeight();
+          }
+          animate().translationY(i).setDuration(300L).setInterpolator(new AccelerateDecelerateInterpolator()).setListener(new TabBar.2(this));
+          return;
+        }
       }
-      if (!"top".equals(this.mInfo.position)) {
-        break label100;
-      }
+      setVisibility(8);
     }
-    label100:
-    for (int i = -getHeight();; i = getHeight())
-    {
-      animate().translationY(i).setDuration(300L).setInterpolator(new AccelerateDecelerateInterpolator()).setListener(new TabBar.2(this));
-      return;
-    }
-    label108:
-    setVisibility(8);
   }
   
   public void hideTabBarRedDot(int paramInt)
@@ -259,26 +263,20 @@ public class TabBar
   
   public void setTabBarBadge(int paramInt, String paramString)
   {
-    String str;
     if ((paramInt != -1) && (paramInt < this.mItemHolders.size()) && (paramString != null))
     {
-      str = paramString;
+      String str = paramString;
       if (paramString.length() > 3) {
         str = "...";
       }
       paramString = (TabBar.ItemHolder)this.mItemHolders.get(paramInt);
-      if (!TextUtils.isEmpty(str)) {
-        break label78;
+      if (TextUtils.isEmpty(str)) {
+        paramString.badge.setVisibility(4);
+      } else {
+        paramString.badge.setVisibility(0);
       }
-      paramString.badge.setVisibility(4);
-    }
-    for (;;)
-    {
       paramString.badge.setText(str);
       paramString.redDot.setVisibility(4);
-      return;
-      label78:
-      paramString.badge.setVisibility(0);
     }
   }
   
@@ -304,64 +302,53 @@ public class TabBar
   {
     TabBarInfo localTabBarInfo = this.mInfo;
     int i;
-    if (TextUtils.isEmpty(paramString1))
-    {
+    if (TextUtils.isEmpty(paramString1)) {
       i = this.mInfo.color;
-      localTabBarInfo.color = i;
-      paramString1 = this.mInfo;
-      if (!TextUtils.isEmpty(paramString2)) {
-        break label146;
-      }
-      i = this.mInfo.selectedColor;
-      label50:
-      paramString1.selectedColor = i;
-      paramString1 = this.mInfo;
-      if (!TextUtils.isEmpty(paramString3)) {
-        break label155;
-      }
-      i = this.mInfo.backgroundColor;
-      label77:
-      paramString1.backgroundColor = i;
-      paramString2 = this.mInfo;
-      if (!isWhiteStyle(paramString4)) {
-        break label164;
-      }
-    }
-    label146:
-    label155:
-    label164:
-    for (paramString1 = "white";; paramString1 = "black")
-    {
-      paramString2.borderStyle = paramString1;
-      paramString1 = this.mItemHolders.iterator();
-      while (paramString1.hasNext()) {
-        ((TabBar.ItemHolder)paramString1.next()).invalidateStatusSelf();
-      }
+    } else {
       i = DisplayUtil.parseColor(paramString1);
-      break;
+    }
+    localTabBarInfo.color = i;
+    paramString1 = this.mInfo;
+    if (TextUtils.isEmpty(paramString2)) {
+      i = this.mInfo.selectedColor;
+    } else {
       i = DisplayUtil.parseColor(paramString2);
-      break label50;
+    }
+    paramString1.selectedColor = i;
+    paramString1 = this.mInfo;
+    if (TextUtils.isEmpty(paramString3)) {
+      i = this.mInfo.backgroundColor;
+    } else {
       i = DisplayUtil.parseColor(paramString3);
-      break label77;
+    }
+    paramString1.backgroundColor = i;
+    paramString2 = this.mInfo;
+    if (isWhiteStyle(paramString4)) {
+      paramString1 = "white";
+    } else {
+      paramString1 = "black";
+    }
+    paramString2.borderStyle = paramString1;
+    paramString1 = this.mItemHolders.iterator();
+    while (paramString1.hasNext()) {
+      ((TabBar.ItemHolder)paramString1.next()).invalidateStatusSelf();
     }
   }
   
   public void setTabSelected(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    TabBar.ItemHolder localItemHolder;
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      Iterator localIterator;
-      while (!localIterator.hasNext())
-      {
-        paramString = AppBrandUtil.getUrlWithoutParams(paramString);
-        localIterator = this.mItemHolders.iterator();
+    }
+    paramString = AppBrandUtil.getUrlWithoutParams(paramString);
+    Iterator localIterator = this.mItemHolders.iterator();
+    while (localIterator.hasNext())
+    {
+      TabBar.ItemHolder localItemHolder = (TabBar.ItemHolder)localIterator.next();
+      if (localItemHolder.btnInfo.pagePath.equals(paramString)) {
+        setItemSelected(localItemHolder);
       }
-      localItemHolder = (TabBar.ItemHolder)localIterator.next();
-    } while (!localItemHolder.btnInfo.pagePath.equals(paramString));
-    setItemSelected(localItemHolder);
+    }
   }
   
   public void showTabBar(boolean paramBoolean)
@@ -369,26 +356,29 @@ public class TabBar
     if (getVisibility() != 0)
     {
       this.needShow = true;
-      if (this.mInfo != null) {
-        this.mInfo.setShow(true);
+      TabBarInfo localTabBarInfo = this.mInfo;
+      if (localTabBarInfo != null) {
+        localTabBarInfo.setShow(true);
       }
       setVisibility(0);
-      if ((!paramBoolean) || (this.mInfo == null)) {
-        break label105;
+      if (paramBoolean)
+      {
+        localTabBarInfo = this.mInfo;
+        if (localTabBarInfo != null)
+        {
+          int i;
+          if ("top".equals(localTabBarInfo.position)) {
+            i = -getHeight();
+          } else {
+            i = getHeight();
+          }
+          setTranslationY(i);
+          animate().translationY(0.0F).setDuration(300L).setInterpolator(new AccelerateDecelerateInterpolator());
+          return;
+        }
       }
-      if (!"top".equals(this.mInfo.position)) {
-        break label97;
-      }
+      setTranslationY(0.0F);
     }
-    label97:
-    for (int i = -getHeight();; i = getHeight())
-    {
-      setTranslationY(i);
-      animate().translationY(0.0F).setDuration(300L).setInterpolator(new AccelerateDecelerateInterpolator());
-      return;
-    }
-    label105:
-    setTranslationY(0.0F);
   }
   
   public void showTabBarRedDot(int paramInt)
@@ -403,7 +393,7 @@ public class TabBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.TabBar
  * JD-Core Version:    0.7.0.1
  */

@@ -12,25 +12,28 @@ final class BadTokenHooker$2
   
   public void run()
   {
-    String str = null;
     Object localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
     if (localObject != null) {
-      str = ((QQAppInterface)localObject).getCurrentAccountUin();
+      localObject = ((QQAppInterface)localObject).getCurrentAccountUin();
+    } else {
+      localObject = null;
     }
-    localObject = new HashMap();
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      ((HashMap)localObject).put("activity", this.jdField_a_of_type_JavaLangString);
+    HashMap localHashMap = new HashMap();
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (str != null) {
+      localHashMap.put("activity", str);
     }
-    if (this.b != null) {
-      ((HashMap)localObject).put("detail", this.b);
+    str = this.b;
+    if (str != null) {
+      localHashMap.put("detail", str);
     }
-    ((HashMap)localObject).put("type", String.valueOf(this.jdField_a_of_type_Int));
-    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(str, "BadTokenHooker", false, 0L, 0L, (HashMap)localObject, "", true);
+    localHashMap.put("type", String.valueOf(this.jdField_a_of_type_Int));
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance((String)localObject, "BadTokenHooker", false, 0L, 0L, localHashMap, "", true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.javahook.BadTokenHooker.2
  * JD-Core Version:    0.7.0.1
  */

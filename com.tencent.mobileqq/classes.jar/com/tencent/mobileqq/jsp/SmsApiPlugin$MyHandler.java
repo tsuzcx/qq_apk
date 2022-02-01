@@ -23,21 +23,22 @@ public class SmsApiPlugin$MyHandler
     if (this.a == null) {
       return;
     }
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      paramMessage = (String)paramMessage.obj;
-      this.a.a(paramMessage);
+      if (i != 2) {
+        return;
+      }
+      this.a.a();
       return;
     }
-    this.a.a();
+    paramMessage = (String)paramMessage.obj;
+    this.a.a(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.SmsApiPlugin.MyHandler
  * JD-Core Version:    0.7.0.1
  */

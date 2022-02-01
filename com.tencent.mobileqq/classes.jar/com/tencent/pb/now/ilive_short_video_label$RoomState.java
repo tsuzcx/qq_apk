@@ -39,17 +39,18 @@ public final class ilive_short_video_label$RoomState
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 56, 64, 72, 82, 88, 96, 104, 112, 120, 128, 138, 146, 152, 160, 178, 186 }, new String[] { "uint64_anchor", "uint32_state", "uint32_roomid", "uint32_subroomid", "bytes_vid", "uint32_starttime", "uint32_stoptime", "uint32_callbacktime", "uint32_is_hls", "bytes_m3u8_path", "int32_transcode_result", "uint32_mp4State", "uint32_hlsState", "uint32_inuinwhitelist", "uint32_indeletewhitelist", "uint32_viddeletedbyuser", "bytes_sdk_fileid", "bytes_sdk_videourl", "uint32_sdk_starttime", "uint32_sdk_stoptime", "bytes_sdk_json", "rpt_extra_cb" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3, localByteStringMicro4, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro5, null }, RoomState.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 56, 64, 72, 82, 88, 96, 104, 112, 120, 128, 138, 146, 152, 160, 178, 186 }, new String[] { "uint64_anchor", "uint32_state", "uint32_roomid", "uint32_subroomid", "bytes_vid", "uint32_starttime", "uint32_stoptime", "uint32_callbacktime", "uint32_is_hls", "bytes_m3u8_path", "int32_transcode_result", "uint32_mp4State", "uint32_hlsState", "uint32_inuinwhitelist", "uint32_indeletewhitelist", "uint32_viddeletedbyuser", "bytes_sdk_fileid", "bytes_sdk_videourl", "uint32_sdk_starttime", "uint32_sdk_stoptime", "bytes_sdk_json", "rpt_extra_cb" }, new Object[] { Long.valueOf(0L), localInteger, localInteger, localInteger, localByteStringMicro1, localInteger, localInteger, localInteger, localInteger, localByteStringMicro2, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localByteStringMicro3, localByteStringMicro4, localInteger, localInteger, localByteStringMicro5, null }, RoomState.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.now.ilive_short_video_label.RoomState
  * JD-Core Version:    0.7.0.1
  */

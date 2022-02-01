@@ -13,12 +13,23 @@ class DropFrameData
   
   public String toString()
   {
-    return "DropFrameData{scene='" + this.jdField_a_of_type_JavaLangString + '\'' + ", frameCount=" + this.jdField_a_of_type_Long + ", dropTimes=" + Arrays.toString(this.jdField_a_of_type_ArrayOfLong) + ", scrollDurationMs=" + this.d + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DropFrameData{scene='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", frameCount=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", dropTimes=");
+    localStringBuilder.append(Arrays.toString(this.jdField_a_of_type_ArrayOfLong));
+    localStringBuilder.append(", scrollDurationMs=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.monitor.DropFrameData
  * JD-Core Version:    0.7.0.1
  */

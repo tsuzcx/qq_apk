@@ -16,8 +16,8 @@ import java.util.concurrent.locks.ReentrantLock;
 public class YTAGReflectLiveCheckJNIInterface
 {
   public static int TIME_REGULATION_LOOSE = 1;
-  public static int TIME_REGULATION_STRICT = 0;
-  private static YTAGReflectLiveCheckJNIInterface instance = null;
+  public static int TIME_REGULATION_STRICT;
+  private static YTAGReflectLiveCheckJNIInterface instance;
   private static Lock instanceLock = new ReentrantLock();
   private static YTAGReflectLiveCheckJNIInterface.IYtLoggerListener loggerListener;
   private long FRnativePtr;
@@ -38,22 +38,22 @@ public class YTAGReflectLiveCheckJNIInterface
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 32	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instanceLock	Ljava/util/concurrent/locks/Lock;
-    //   6: invokeinterface 49 1 0
-    //   11: getstatic 25	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instance	Lcom/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface;
+    //   3: getstatic 27	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instanceLock	Ljava/util/concurrent/locks/Lock;
+    //   6: invokeinterface 44 1 0
+    //   11: getstatic 46	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instance	Lcom/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface;
     //   14: ifnull +13 -> 27
-    //   17: getstatic 25	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instance	Lcom/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface;
-    //   20: invokevirtual 52	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:FRNativeDestructor	()V
+    //   17: getstatic 46	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instance	Lcom/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface;
+    //   20: invokevirtual 49	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:FRNativeDestructor	()V
     //   23: aconst_null
-    //   24: putstatic 25	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instance	Lcom/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface;
-    //   27: getstatic 32	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instanceLock	Ljava/util/concurrent/locks/Lock;
-    //   30: invokeinterface 55 1 0
+    //   24: putstatic 46	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instance	Lcom/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface;
+    //   27: getstatic 27	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instanceLock	Ljava/util/concurrent/locks/Lock;
+    //   30: invokeinterface 52 1 0
     //   35: ldc 2
     //   37: monitorexit
     //   38: return
     //   39: astore_0
-    //   40: getstatic 32	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instanceLock	Ljava/util/concurrent/locks/Lock;
-    //   43: invokeinterface 55 1 0
+    //   40: getstatic 27	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instanceLock	Ljava/util/concurrent/locks/Lock;
+    //   43: invokeinterface 52 1 0
     //   48: aload_0
     //   49: athrow
     //   50: astore_0
@@ -76,19 +76,27 @@ public class YTAGReflectLiveCheckJNIInterface
   {
     try
     {
-      Object localObject = new File("/sdcard/reflect/");
-      if (!((File)localObject).exists()) {
-        ((File)localObject).mkdirs();
+      Object localObject1 = new File("/sdcard/reflect/");
+      if (!((File)localObject1).exists()) {
+        ((File)localObject1).mkdirs();
       }
-      localObject = "/sdcard/reflect/" + paramInt + "/";
-      File localFile = new File((String)localObject);
-      if (!localFile.exists()) {
-        localFile.mkdirs();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("/sdcard/reflect/");
+      ((StringBuilder)localObject1).append(paramInt);
+      ((StringBuilder)localObject1).append("/");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      Object localObject2 = new File((String)localObject1);
+      if (!((File)localObject2).exists()) {
+        ((File)localObject2).mkdirs();
       }
-      localObject = new FileOutputStream(new File((String)localObject, "mytestInJava_" + System.currentTimeMillis() + ".jpg"));
-      paramBitmap.compress(Bitmap.CompressFormat.JPEG, paramInt, (OutputStream)localObject);
-      ((FileOutputStream)localObject).flush();
-      ((FileOutputStream)localObject).close();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("mytestInJava_");
+      ((StringBuilder)localObject2).append(System.currentTimeMillis());
+      ((StringBuilder)localObject2).append(".jpg");
+      localObject1 = new FileOutputStream(new File((String)localObject1, ((StringBuilder)localObject2).toString()));
+      paramBitmap.compress(Bitmap.CompressFormat.JPEG, paramInt, (OutputStream)localObject1);
+      ((FileOutputStream)localObject1).flush();
+      ((FileOutputStream)localObject1).close();
       return;
     }
     catch (Exception paramBitmap)
@@ -119,25 +127,25 @@ public class YTAGReflectLiveCheckJNIInterface
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 32	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instanceLock	Ljava/util/concurrent/locks/Lock;
-    //   6: invokeinterface 49 1 0
-    //   11: getstatic 25	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instance	Lcom/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface;
+    //   3: getstatic 27	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instanceLock	Ljava/util/concurrent/locks/Lock;
+    //   6: invokeinterface 44 1 0
+    //   11: getstatic 46	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instance	Lcom/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface;
     //   14: ifnonnull +13 -> 27
     //   17: new 2	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface
     //   20: dup
-    //   21: invokespecial 145	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:<init>	()V
-    //   24: putstatic 25	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instance	Lcom/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface;
-    //   27: getstatic 32	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instanceLock	Ljava/util/concurrent/locks/Lock;
-    //   30: invokeinterface 55 1 0
-    //   35: getstatic 25	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instance	Lcom/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface;
+    //   21: invokespecial 142	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:<init>	()V
+    //   24: putstatic 46	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instance	Lcom/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface;
+    //   27: getstatic 27	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instanceLock	Ljava/util/concurrent/locks/Lock;
+    //   30: invokeinterface 52 1 0
+    //   35: getstatic 46	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instance	Lcom/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface;
     //   38: astore_0
     //   39: ldc 2
     //   41: monitorexit
     //   42: aload_0
     //   43: areturn
     //   44: astore_0
-    //   45: getstatic 32	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instanceLock	Ljava/util/concurrent/locks/Lock;
-    //   48: invokeinterface 55 1 0
+    //   45: getstatic 27	com/tencent/youtu/ytagreflectlivecheck/jni/YTAGReflectLiveCheckJNIInterface:instanceLock	Ljava/util/concurrent/locks/Lock;
+    //   48: invokeinterface 52 1 0
     //   53: aload_0
     //   54: athrow
     //   55: astore_0
@@ -164,15 +172,17 @@ public class YTAGReflectLiveCheckJNIInterface
   
   public static void nativeLog(int paramInt, String paramString)
   {
-    if (loggerListener != null) {
-      loggerListener.log("[YTAGReflectLiveCheckJNIInterface.nativeLog]", paramString);
+    YTAGReflectLiveCheckJNIInterface.IYtLoggerListener localIYtLoggerListener = loggerListener;
+    if (localIYtLoggerListener != null) {
+      localIYtLoggerListener.log("[YTAGReflectLiveCheckJNIInterface.nativeLog]", paramString);
     }
   }
   
   public static void nativeLog(String paramString1, String paramString2)
   {
-    if (loggerListener != null) {
-      loggerListener.log(paramString1, paramString2);
+    YTAGReflectLiveCheckJNIInterface.IYtLoggerListener localIYtLoggerListener = loggerListener;
+    if (localIYtLoggerListener != null) {
+      localIYtLoggerListener.log(paramString1, paramString2);
     }
   }
   
@@ -244,7 +254,7 @@ public class YTAGReflectLiveCheckJNIInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.ytagreflectlivecheck.jni.YTAGReflectLiveCheckJNIInterface
  * JD-Core Version:    0.7.0.1
  */

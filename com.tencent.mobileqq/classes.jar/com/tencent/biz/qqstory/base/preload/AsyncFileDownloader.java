@@ -38,10 +38,11 @@ public class AsyncFileDownloader
     {
       String str = ((VideoServerInfoManager)SuperManager.a(4)).a();
       SLog.a("AsyncFileDownloader", "get url key:%s", str);
-      if ((str == null) || (str.equals("00"))) {
+      if ((str != null) && (!str.equals("00"))) {
+        paramDownloadTask.d = URLUtil.a(paramDownloadTask.d, "authkey", str);
+      } else {
         return false;
       }
-      paramDownloadTask.d = URLUtil.a(paramDownloadTask.d, "authkey", str);
     }
     return true;
   }
@@ -82,63 +83,75 @@ public class AsyncFileDownloader
       SLog.d("AsyncFileDownloader", "task is empty");
       return false;
     }
+    Object localObject2 = null;
+    Object localObject3 = null;
     if (TextUtils.isEmpty(paramDownloadTask.d))
     {
-      if ((!TroopStoryUtil.a(paramDownloadTask.b)) || ((paramDownloadTask.jdField_a_of_type_Int != 2) && (paramDownloadTask.jdField_a_of_type_Int != 0))) {
-        break label279;
+      Object localObject1 = localObject3;
+      if (TroopStoryUtil.a(paramDownloadTask.b)) {
+        if (paramDownloadTask.jdField_a_of_type_Int != 2)
+        {
+          localObject1 = localObject3;
+          if (paramDownloadTask.jdField_a_of_type_Int != 0) {}
+        }
+        else
+        {
+          QQStoryContext.a();
+          localObject2 = TroopStoryUtil.a(QQStoryContext.a(), paramDownloadTask.b);
+          localObject1 = localObject3;
+          if ((localObject2 instanceof MessageForShortVideo)) {
+            localObject1 = (MessageForShortVideo)localObject2;
+          }
+        }
       }
-      QQStoryContext.a();
-      localObject1 = TroopStoryUtil.a(QQStoryContext.a(), paramDownloadTask.b);
-      if (!(localObject1 instanceof MessageForShortVideo)) {
-        break label279;
-      }
-    }
-    label279:
-    for (Object localObject1 = (MessageForShortVideo)localObject1;; localObject1 = null)
-    {
-      Object localObject2 = localObject1;
+      localObject2 = localObject1;
       if (localObject1 == null)
       {
         if (paramDownloadResult != null) {
           paramDownloadResult.a(paramDownloadTask, new ErrorMessage(14, "ERR_URL_EMPTY"));
         }
         return false;
-        localObject2 = null;
       }
-      if (!NetworkUtils.a(QQStoryContext.a().a()))
-      {
-        if (paramDownloadResult != null) {
-          paramDownloadResult.a(paramDownloadTask, new ErrorMessage(9004, "no net work"));
-        }
-        return false;
-      }
-      if (!b(paramDownloadTask))
-      {
-        if (paramDownloadResult != null) {
-          paramDownloadResult.a(paramDownloadTask, new ErrorMessage(200, "ERR_VERIFY_ERROR"));
-        }
-        return false;
-      }
-      paramDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult = paramDownloadResult;
-      paramDownloadTask.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (localObject2 != null) {
-        paramDownloadTask.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = localObject2;
-      }
-      for (paramDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerDownloader = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerAIOShortVideoDownloader; !paramDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerDownloader.a(); paramDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerDownloader = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerBaseDownloader)
-      {
-        if (paramDownloadResult != null) {
-          paramDownloadResult.a(paramDownloadTask, new ErrorMessage(15, "downloader not prepare"));
-        }
-        return false;
-      }
-      Bosses.get().postJob(new AsyncFileDownloader.1(this, "AsyncFileDownloader", paramDownloadTask));
-      return true;
     }
+    if (!NetworkUtils.a(QQStoryContext.a().a()))
+    {
+      if (paramDownloadResult != null) {
+        paramDownloadResult.a(paramDownloadTask, new ErrorMessage(9004, "no net work"));
+      }
+      return false;
+    }
+    if (!b(paramDownloadTask))
+    {
+      if (paramDownloadResult != null) {
+        paramDownloadResult.a(paramDownloadTask, new ErrorMessage(200, "ERR_VERIFY_ERROR"));
+      }
+      return false;
+    }
+    paramDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult = paramDownloadResult;
+    paramDownloadTask.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (localObject2 != null)
+    {
+      paramDownloadTask.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = ((MessageForShortVideo)localObject2);
+      paramDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerDownloader = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerAIOShortVideoDownloader;
+    }
+    else
+    {
+      paramDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerDownloader = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerBaseDownloader;
+    }
+    if (!paramDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerDownloader.a())
+    {
+      if (paramDownloadResult != null) {
+        paramDownloadResult.a(paramDownloadTask, new ErrorMessage(15, "downloader not prepare"));
+      }
+      return false;
+    }
+    Bosses.get().postJob(new AsyncFileDownloader.1(this, "AsyncFileDownloader", paramDownloadTask));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.AsyncFileDownloader
  * JD-Core Version:    0.7.0.1
  */

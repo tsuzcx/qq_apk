@@ -14,26 +14,25 @@ class TextItemBuilder$3
   
   public void run()
   {
-    String str = null;
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.jdField_a_of_type_AndroidViewView.getMeasuredWidth() < DisplayUtil.a(this.this$0.jdField_a_of_type_AndroidContentContext, 70.0F)) && (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.isSend())) {
       TextItemBuilder.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.d);
-    }
-    for (;;)
-    {
-      QQAppInterface localQQAppInterface = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      View localView = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.d;
-      if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-        str = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-      }
-      TroopEssenceReportUtil.a(localQQAppInterface, localView, str);
-      return;
+    } else {
       this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.d, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, null, this.b, 0, null);
     }
+    QQAppInterface localQQAppInterface = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    View localView = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.d;
+    String str;
+    if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
+      str = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+    } else {
+      str = null;
+    }
+    TroopEssenceReportUtil.a(localQQAppInterface, localView, str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TextItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

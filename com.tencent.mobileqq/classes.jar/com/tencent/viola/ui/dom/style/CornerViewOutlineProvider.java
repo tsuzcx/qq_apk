@@ -27,30 +27,28 @@ public class CornerViewOutlineProvider
   public void getOutline(View paramView, Outline paramOutline)
   {
     int j;
-    int k;
-    int i;
-    if (this.mType == 2)
-    {
+    if (this.mType == 2) {
       j = -25;
-      k = paramView.getWidth();
-      if (this.mType != 0) {
-        break label58;
-      }
+    } else {
+      j = 0;
+    }
+    int k = paramView.getWidth();
+    int i;
+    if (this.mType == 0)
+    {
       i = paramView.getHeight();
     }
-    for (;;)
+    else
     {
-      paramOutline.setRoundRect(new Rect(0, j, k, i), this.mRadius);
-      return;
-      j = 0;
-      break;
-      label58:
-      if (paramView.getHeight() > this.mHeight) {
+      i = paramView.getHeight();
+      int m = this.mHeight;
+      if (i > m) {
         i = paramView.getHeight() + 25;
       } else {
-        i = this.mHeight + 25;
+        i = m + 25;
       }
     }
+    paramOutline.setRoundRect(new Rect(0, j, k, i), this.mRadius);
   }
   
   public void setRadius(float paramFloat)
@@ -60,7 +58,7 @@ public class CornerViewOutlineProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.dom.style.CornerViewOutlineProvider
  * JD-Core Version:    0.7.0.1
  */

@@ -66,25 +66,29 @@ public class c
     try
     {
       localByteArrayOutputStream.close();
-      label66:
+      label70:
       if (com.tencent.hlyyb.common.b.b.a(paramList))
       {
         this.p = 6;
         return;
       }
+      int i1;
       if (!paramString.toLowerCase().equals(com.tencent.hlyyb.common.b.a.a(paramList).toLowerCase()))
       {
-        this.p = -1;
-        return;
+        i1 = -1;
       }
-      this.p = 0;
-      return;
-      this.p = 3;
+      else
+      {
+        this.p = 0;
+        return;
+        i1 = 3;
+      }
+      this.p = i1;
       return;
     }
     catch (IOException localIOException)
     {
-      break label66;
+      break label70;
     }
   }
   
@@ -93,91 +97,91 @@ public class c
     byte[] arrayOfByte = null;
     int i1 = 0;
     Object localObject;
-    boolean bool;
-    label26:
-    int i2;
-    if (i1 < 2)
-    {
-      localObject = this.k;
-      if (!this.a)
-      {
-        bool = true;
-        this.n = new f(parama, null, paramb, false, (com.tencent.hlyyb.downloader.a.b)localObject, bool, 2);
-        this.n.p();
-        i2 = this.n.a();
-        this.g.e.add(i2);
-        if (i2 != 0) {
-          break label161;
-        }
-        arrayOfByte = this.n.q();
-      }
-    }
-    label161:
-    label190:
-    label193:
     for (;;)
     {
-      label104:
-      if ((i2 == 0) || (i2 == -66) || (i2 == -15) || (i2 == -16)) {}
-      for (i2 = 1;; i2 = 0)
-      {
-        localObject = arrayOfByte;
-        if (i2 != 0) {
-          break label190;
-        }
-        SystemClock.sleep(50L);
-        i1 += 1;
+      localObject = arrayOfByte;
+      if (i1 >= 2) {
         break;
-        bool = false;
-        break label26;
-        if (i2 != -74) {
-          break label193;
-        }
+      }
+      localObject = this.k;
+      boolean bool = this.a;
+      int i3 = 1;
+      this.n = new f(parama, null, paramb, false, (com.tencent.hlyyb.downloader.a.b)localObject, bool ^ true, 2);
+      this.n.p();
+      int i4 = this.n.a();
+      localObject = this.g.e;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(i4);
+      ((List)localObject).add(localStringBuilder.toString());
+      if (i4 == 0)
+      {
+        arrayOfByte = this.n.q();
+      }
+      else if (i4 == -74)
+      {
         this.p = 7;
         arrayOfByte = null;
-        break label104;
+      }
+      int i2 = i3;
+      if (i4 != 0)
+      {
+        i2 = i3;
+        if (i4 != -66)
+        {
+          i2 = i3;
+          if (i4 != -15) {
+            if (i4 == -16) {
+              i2 = i3;
+            } else {
+              i2 = 0;
+            }
+          }
+        }
       }
       localObject = arrayOfByte;
-      return localObject;
+      if (i2 != 0) {
+        break;
+      }
+      SystemClock.sleep(50L);
+      i1 += 1;
     }
+    return localObject;
   }
   
   private void d()
   {
-    if (this.b.b == com.tencent.hlyyb.downloader.e.d.b.j) {
-      this.p = 0;
-    }
-    ArrayList localArrayList;
-    String str;
-    do
+    int i2 = this.b.b;
+    int i3 = com.tencent.hlyyb.downloader.e.d.b.j;
+    int i1 = 0;
+    if (i2 == i3)
     {
+      this.p = 0;
       return;
-      localArrayList = new ArrayList();
-      List localList = f();
-      if (localList == null) {
-        break label121;
-      }
-      str = this.m.c();
-      int i1 = 0;
-      for (;;)
+    }
+    ArrayList localArrayList = new ArrayList();
+    List localList = f();
+    if (localList != null)
+    {
+      String str = this.m.c();
+      while (i1 < localList.size())
       {
-        if (i1 >= localList.size()) {
-          break label113;
-        }
         byte[] arrayOfByte = a(this.b, (com.tencent.hlyyb.downloader.a.a.b)localList.get(i1));
-        if (arrayOfByte == null) {
-          break;
+        if (arrayOfByte != null)
+        {
+          localArrayList.add(arrayOfByte);
+          i1 += 1;
         }
-        localArrayList.add(arrayOfByte);
-        i1 += 1;
+        else
+        {
+          if (this.p != 7) {
+            this.p = 4;
+          }
+          return;
+        }
       }
-    } while (this.p == 7);
-    this.p = 4;
-    return;
-    label113:
-    a(localArrayList, str);
-    return;
-    label121:
+      a(localArrayList, str);
+      return;
+    }
     this.p = 2;
   }
   
@@ -194,26 +198,36 @@ public class c
           localArrayList.add(localc);
         }
       }
+      return localArrayList;
     }
-    return localList1;
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   private List<com.tencent.hlyyb.downloader.a.a.b> f()
   {
     ArrayList localArrayList = new ArrayList();
     int i1 = 0;
-    while (i1 < this.o.size())
+    for (;;)
     {
-      com.tencent.hlyyb.downloader.d.a locala = (com.tencent.hlyyb.downloader.d.a)this.o.get(i1);
-      long l1 = locala.a;
-      long l2 = locala.b + l1 - 1L;
+      localObject = localArrayList;
+      if (i1 >= this.o.size()) {
+        break label105;
+      }
+      localObject = (com.tencent.hlyyb.downloader.d.a)this.o.get(i1);
+      long l1 = ((com.tencent.hlyyb.downloader.d.a)localObject).a;
+      long l2 = ((com.tencent.hlyyb.downloader.d.a)localObject).b + l1 - 1L;
       if ((l1 < 0L) || (l1 > l2)) {
-        return null;
+        break;
       }
       localArrayList.add(new com.tencent.hlyyb.downloader.a.a.b(l1, l2));
       i1 += 1;
     }
-    return localArrayList;
+    Object localObject = null;
+    label105:
+    return localObject;
   }
   
   public final void a()
@@ -236,8 +250,9 @@ public class c
   {
     this.t = paramInt1;
     this.u = paramInt2;
-    this.g.b = paramInt1;
-    this.g.d = paramInt2;
+    e locale = this.g;
+    locale.b = paramInt1;
+    locale.d = paramInt2;
   }
   
   public final void a(String paramString)
@@ -247,15 +262,29 @@ public class c
   
   public final String b()
   {
-    String str = "";
-    if (this.p == -1) {}
-    for (int i1 = 1;; i1 = 0)
-    {
-      if ((i1 != 0) || (this.p == 7)) {
-        str = "" + this.p + "," + this.t + "," + this.b.c + "," + this.u + "," + com.tencent.hlyyb.common.b.b.b(this.n.e());
-      }
-      return str;
+    int i1;
+    if (this.p == -1) {
+      i1 = 1;
+    } else {
+      i1 = 0;
     }
+    Object localObject = "";
+    if ((i1 != 0) || (this.p == 7))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(this.p);
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(this.t);
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(this.b.c);
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(this.u);
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(com.tencent.hlyyb.common.b.b.b(this.n.e()));
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    return localObject;
   }
   
   public final void b(String paramString)
@@ -272,548 +301,565 @@ public class c
   public void run()
   {
     // Byte code:
-    //   0: iconst_1
-    //   1: istore_2
-    //   2: new 177	java/lang/StringBuilder
-    //   5: dup
-    //   6: ldc_w 272
-    //   9: invokespecial 274	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   12: getstatic 51	com/tencent/hlyyb/downloader/b/c:i	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   15: invokevirtual 277	java/util/concurrent/atomic/AtomicInteger:getAndIncrement	()I
-    //   18: invokevirtual 182	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   21: pop
-    //   22: invokestatic 281	android/os/SystemClock:elapsedRealtime	()J
-    //   25: lstore_3
-    //   26: aload_0
-    //   27: getfield 61	com/tencent/hlyyb/downloader/b/c:e	Z
-    //   30: istore 5
-    //   32: iload 5
-    //   34: ifeq +202 -> 236
-    //   37: aload_0
-    //   38: getfield 61	com/tencent/hlyyb/downloader/b/c:e	Z
-    //   41: ifeq +1066 -> 1107
-    //   44: aload_0
-    //   45: getfield 63	com/tencent/hlyyb/downloader/b/c:p	I
-    //   48: bipush 168
-    //   50: if_icmpne +1057 -> 1107
-    //   53: aload_0
-    //   54: iconst_5
-    //   55: putfield 63	com/tencent/hlyyb/downloader/b/c:p	I
-    //   58: aload_0
-    //   59: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   62: aload_0
-    //   63: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
-    //   66: getfield 258	com/tencent/hlyyb/downloader/e/d/a:c	I
-    //   69: putfield 282	com/tencent/hlyyb/downloader/b/e:c	I
-    //   72: aload_0
-    //   73: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   76: aload_0
-    //   77: getfield 63	com/tencent/hlyyb/downloader/b/c:p	I
-    //   80: putfield 284	com/tencent/hlyyb/downloader/b/e:f	I
-    //   83: aload_0
-    //   84: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
+    //   0: new 177	java/lang/StringBuilder
+    //   3: dup
+    //   4: ldc_w 272
+    //   7: invokespecial 274	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   10: getstatic 51	com/tencent/hlyyb/downloader/b/c:i	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   13: invokevirtual 277	java/util/concurrent/atomic/AtomicInteger:getAndIncrement	()I
+    //   16: invokevirtual 182	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   19: pop
+    //   20: invokestatic 281	android/os/SystemClock:elapsedRealtime	()J
+    //   23: lstore_3
+    //   24: aload_0
+    //   25: getfield 61	com/tencent/hlyyb/downloader/b/c:e	Z
+    //   28: istore 5
+    //   30: iload 5
+    //   32: ifeq +202 -> 234
+    //   35: aload_0
+    //   36: getfield 61	com/tencent/hlyyb/downloader/b/c:e	Z
+    //   39: ifeq +17 -> 56
+    //   42: aload_0
+    //   43: getfield 63	com/tencent/hlyyb/downloader/b/c:p	I
+    //   46: bipush 168
+    //   48: if_icmpne +8 -> 56
+    //   51: aload_0
+    //   52: iconst_5
+    //   53: putfield 63	com/tencent/hlyyb/downloader/b/c:p	I
+    //   56: aload_0
+    //   57: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
+    //   60: aload_0
+    //   61: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
+    //   64: getfield 258	com/tencent/hlyyb/downloader/e/d/a:c	I
+    //   67: putfield 282	com/tencent/hlyyb/downloader/b/e:c	I
+    //   70: aload_0
+    //   71: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
+    //   74: astore 6
+    //   76: aload 6
+    //   78: aload_0
+    //   79: getfield 63	com/tencent/hlyyb/downloader/b/c:p	I
+    //   82: putfield 284	com/tencent/hlyyb/downloader/b/e:f	I
+    //   85: aload 6
     //   87: ldc 251
     //   89: putfield 287	com/tencent/hlyyb/downloader/b/e:g	Ljava/lang/String;
-    //   92: aload_0
-    //   93: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   96: invokestatic 281	android/os/SystemClock:elapsedRealtime	()J
-    //   99: lload_3
-    //   100: lsub
-    //   101: l2i
-    //   102: putfield 289	com/tencent/hlyyb/downloader/b/e:h	I
-    //   105: aload_0
-    //   106: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   109: invokestatic 281	android/os/SystemClock:elapsedRealtime	()J
-    //   112: aload_0
-    //   113: getfield 76	com/tencent/hlyyb/downloader/b/c:h	J
-    //   116: lsub
-    //   117: l2i
-    //   118: putfield 291	com/tencent/hlyyb/downloader/b/e:i	I
-    //   121: aload_0
-    //   122: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   125: aload_0
-    //   126: getfield 95	com/tencent/hlyyb/downloader/b/c:s	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   129: invokevirtual 294	java/util/concurrent/atomic/AtomicInteger:incrementAndGet	()I
-    //   132: putfield 296	com/tencent/hlyyb/downloader/b/e:a	I
-    //   135: aload_0
-    //   136: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
-    //   139: getfield 298	com/tencent/hlyyb/downloader/e/d/a:a	Ljava/lang/String;
-    //   142: astore 7
-    //   144: aload_0
-    //   145: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
-    //   148: astore 6
-    //   150: aload 6
-    //   152: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
-    //   155: invokestatic 306	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   158: ifne +58 -> 216
-    //   161: aload 6
-    //   163: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
-    //   166: astore 6
-    //   168: aload 7
-    //   170: aload 6
-    //   172: invokevirtual 158	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   175: ifne +40 -> 215
-    //   178: aload_0
-    //   179: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   182: astore 7
-    //   184: aload_0
-    //   185: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
-    //   188: astore 6
-    //   190: aload 6
-    //   192: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
-    //   195: invokestatic 306	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   198: ifne +28 -> 226
-    //   201: aload 6
-    //   203: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
-    //   206: astore 6
-    //   208: aload 7
-    //   210: aload 6
-    //   212: putfield 308	com/tencent/hlyyb/downloader/b/e:m	Ljava/lang/String;
-    //   215: return
-    //   216: aload 6
-    //   218: getfield 298	com/tencent/hlyyb/downloader/e/d/a:a	Ljava/lang/String;
-    //   221: astore 6
-    //   223: goto -55 -> 168
-    //   226: aload 6
-    //   228: getfield 298	com/tencent/hlyyb/downloader/e/d/a:a	Ljava/lang/String;
-    //   231: astore 6
-    //   233: goto -25 -> 208
-    //   236: aload_0
-    //   237: invokespecial 310	com/tencent/hlyyb/downloader/b/c:d	()V
-    //   240: aload_0
-    //   241: getfield 61	com/tencent/hlyyb/downloader/b/c:e	Z
-    //   244: ifne +571 -> 815
-    //   247: aload_0
-    //   248: getfield 63	com/tencent/hlyyb/downloader/b/c:p	I
-    //   251: ifne +343 -> 594
-    //   254: aload_0
-    //   255: getfield 80	com/tencent/hlyyb/downloader/b/c:m	Lcom/tencent/hlyyb/downloader/e/d/c;
-    //   258: aload_0
-    //   259: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
-    //   262: invokevirtual 313	com/tencent/hlyyb/downloader/e/d/c:a	(Lcom/tencent/hlyyb/downloader/e/d/a;)V
-    //   265: aload_0
-    //   266: getfield 65	com/tencent/hlyyb/downloader/b/c:q	Z
-    //   269: ifne +738 -> 1007
-    //   272: aload_0
-    //   273: getfield 80	com/tencent/hlyyb/downloader/b/c:m	Lcom/tencent/hlyyb/downloader/e/d/c;
-    //   276: invokevirtual 315	com/tencent/hlyyb/downloader/e/d/c:e	()I
-    //   279: ifle +715 -> 994
-    //   282: aload_0
-    //   283: invokespecial 317	com/tencent/hlyyb/downloader/b/c:e	()Ljava/util/List;
-    //   286: astore 6
-    //   288: ldc 2
-    //   290: monitorenter
-    //   291: aload 6
-    //   293: invokeinterface 115 1 0
-    //   298: astore 6
-    //   300: aload 6
-    //   302: invokeinterface 121 1 0
-    //   307: ifeq +505 -> 812
-    //   310: aload 6
-    //   312: invokeinterface 125 1 0
-    //   317: checkcast 2	com/tencent/hlyyb/downloader/b/c
-    //   320: astore 7
-    //   322: aload 7
-    //   324: iconst_1
-    //   325: putfield 59	com/tencent/hlyyb/downloader/b/c:d	Z
-    //   328: aload_0
-    //   329: getfield 93	com/tencent/hlyyb/downloader/b/c:l	Lcom/tencent/hlyyb/downloader/b/d;
-    //   332: aload 7
-    //   334: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
-    //   337: invokeinterface 320 2 0
-    //   342: goto -42 -> 300
-    //   345: astore 6
-    //   347: ldc 2
-    //   349: monitorexit
-    //   350: aload 6
-    //   352: athrow
-    //   353: astore 6
-    //   355: aload_0
-    //   356: iconst_1
-    //   357: putfield 63	com/tencent/hlyyb/downloader/b/c:p	I
-    //   360: new 177	java/lang/StringBuilder
-    //   363: dup
-    //   364: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   367: aload 6
-    //   369: invokevirtual 324	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   372: invokevirtual 329	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   375: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   378: ldc_w 331
-    //   381: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   384: aload 6
-    //   386: invokevirtual 334	java/lang/Throwable:getLocalizedMessage	()Ljava/lang/String;
-    //   389: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   392: ldc_w 336
-    //   395: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   398: invokevirtual 185	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   401: astore 6
-    //   403: aload 6
-    //   405: astore 7
-    //   407: aload_0
-    //   408: getfield 61	com/tencent/hlyyb/downloader/b/c:e	Z
-    //   411: ifeq +25 -> 436
-    //   414: aload 6
-    //   416: astore 7
-    //   418: aload_0
-    //   419: getfield 63	com/tencent/hlyyb/downloader/b/c:p	I
-    //   422: bipush 168
-    //   424: if_icmpne +12 -> 436
-    //   427: aload_0
-    //   428: iconst_5
-    //   429: putfield 63	com/tencent/hlyyb/downloader/b/c:p	I
-    //   432: ldc 251
-    //   434: astore 7
-    //   436: aload_0
-    //   437: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   440: aload_0
-    //   441: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
-    //   444: getfield 258	com/tencent/hlyyb/downloader/e/d/a:c	I
-    //   447: putfield 282	com/tencent/hlyyb/downloader/b/e:c	I
-    //   450: aload_0
-    //   451: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   454: aload_0
-    //   455: getfield 63	com/tencent/hlyyb/downloader/b/c:p	I
-    //   458: putfield 284	com/tencent/hlyyb/downloader/b/e:f	I
-    //   461: aload_0
-    //   462: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   465: aload 7
-    //   467: putfield 287	com/tencent/hlyyb/downloader/b/e:g	Ljava/lang/String;
-    //   470: aload_0
-    //   471: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   474: invokestatic 281	android/os/SystemClock:elapsedRealtime	()J
-    //   477: lload_3
-    //   478: lsub
-    //   479: l2i
-    //   480: putfield 289	com/tencent/hlyyb/downloader/b/e:h	I
-    //   483: aload_0
-    //   484: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   487: invokestatic 281	android/os/SystemClock:elapsedRealtime	()J
-    //   490: aload_0
-    //   491: getfield 76	com/tencent/hlyyb/downloader/b/c:h	J
-    //   494: lsub
-    //   495: l2i
-    //   496: putfield 291	com/tencent/hlyyb/downloader/b/e:i	I
-    //   499: aload_0
-    //   500: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   503: aload_0
-    //   504: getfield 95	com/tencent/hlyyb/downloader/b/c:s	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   507: invokevirtual 294	java/util/concurrent/atomic/AtomicInteger:incrementAndGet	()I
-    //   510: putfield 296	com/tencent/hlyyb/downloader/b/e:a	I
-    //   513: aload_0
-    //   514: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
-    //   517: getfield 298	com/tencent/hlyyb/downloader/e/d/a:a	Ljava/lang/String;
-    //   520: astore 7
-    //   522: aload_0
-    //   523: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
-    //   526: astore 6
-    //   528: aload 6
-    //   530: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
-    //   533: invokestatic 306	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   536: ifne +531 -> 1067
-    //   539: aload 6
-    //   541: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
-    //   544: astore 6
-    //   546: aload 7
-    //   548: aload 6
-    //   550: invokevirtual 158	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   553: ifne -338 -> 215
-    //   556: aload_0
-    //   557: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   560: astore 7
-    //   562: aload_0
-    //   563: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
-    //   566: astore 6
-    //   568: aload 6
-    //   570: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
-    //   573: invokestatic 306	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   576: ifne +501 -> 1077
-    //   579: aload 6
-    //   581: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
-    //   584: astore 6
-    //   586: aload 7
-    //   588: aload 6
-    //   590: putfield 308	com/tencent/hlyyb/downloader/b/e:m	Ljava/lang/String;
-    //   593: return
-    //   594: aload_0
-    //   595: getfield 63	com/tencent/hlyyb/downloader/b/c:p	I
-    //   598: iconst_m1
-    //   599: if_icmpne +208 -> 807
-    //   602: iconst_1
-    //   603: istore_1
-    //   604: iload_1
-    //   605: ifeq -340 -> 265
-    //   608: aload_0
-    //   609: iconst_1
-    //   610: putfield 57	com/tencent/hlyyb/downloader/b/c:c	Z
-    //   613: aload_0
-    //   614: getfield 97	com/tencent/hlyyb/downloader/b/c:r	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   617: invokevirtual 294	java/util/concurrent/atomic/AtomicInteger:incrementAndGet	()I
-    //   620: pop
-    //   621: goto -356 -> 265
-    //   624: astore 7
-    //   626: aload_0
-    //   627: getfield 61	com/tencent/hlyyb/downloader/b/c:e	Z
-    //   630: ifeq +17 -> 647
-    //   633: aload_0
-    //   634: getfield 63	com/tencent/hlyyb/downloader/b/c:p	I
-    //   637: bipush 168
-    //   639: if_icmpne +8 -> 647
-    //   642: aload_0
-    //   643: iconst_5
-    //   644: putfield 63	com/tencent/hlyyb/downloader/b/c:p	I
+    //   92: aload 6
+    //   94: invokestatic 281	android/os/SystemClock:elapsedRealtime	()J
+    //   97: lload_3
+    //   98: lsub
+    //   99: l2i
+    //   100: putfield 289	com/tencent/hlyyb/downloader/b/e:h	I
+    //   103: aload_0
+    //   104: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
+    //   107: invokestatic 281	android/os/SystemClock:elapsedRealtime	()J
+    //   110: aload_0
+    //   111: getfield 76	com/tencent/hlyyb/downloader/b/c:h	J
+    //   114: lsub
+    //   115: l2i
+    //   116: putfield 291	com/tencent/hlyyb/downloader/b/e:i	I
+    //   119: aload_0
+    //   120: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
+    //   123: aload_0
+    //   124: getfield 95	com/tencent/hlyyb/downloader/b/c:s	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   127: invokevirtual 294	java/util/concurrent/atomic/AtomicInteger:incrementAndGet	()I
+    //   130: putfield 296	com/tencent/hlyyb/downloader/b/e:a	I
+    //   133: aload_0
+    //   134: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
+    //   137: getfield 298	com/tencent/hlyyb/downloader/e/d/a:a	Ljava/lang/String;
+    //   140: astore 7
+    //   142: aload_0
+    //   143: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
+    //   146: astore 6
+    //   148: aload 6
+    //   150: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
+    //   153: invokestatic 306	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   156: ifne +13 -> 169
+    //   159: aload 6
+    //   161: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
+    //   164: astore 6
+    //   166: goto +10 -> 176
+    //   169: aload 6
+    //   171: getfield 298	com/tencent/hlyyb/downloader/e/d/a:a	Ljava/lang/String;
+    //   174: astore 6
+    //   176: aload 7
+    //   178: aload 6
+    //   180: invokevirtual 158	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   183: ifne +50 -> 233
+    //   186: aload_0
+    //   187: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
+    //   190: astore 7
+    //   192: aload_0
+    //   193: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
+    //   196: astore 6
+    //   198: aload 6
+    //   200: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
+    //   203: invokestatic 306	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   206: ifne +13 -> 219
+    //   209: aload 6
+    //   211: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
+    //   214: astore 6
+    //   216: goto +10 -> 226
+    //   219: aload 6
+    //   221: getfield 298	com/tencent/hlyyb/downloader/e/d/a:a	Ljava/lang/String;
+    //   224: astore 6
+    //   226: aload 7
+    //   228: aload 6
+    //   230: putfield 308	com/tencent/hlyyb/downloader/b/e:m	Ljava/lang/String;
+    //   233: return
+    //   234: aload_0
+    //   235: invokespecial 310	com/tencent/hlyyb/downloader/b/c:d	()V
+    //   238: aload_0
+    //   239: getfield 61	com/tencent/hlyyb/downloader/b/c:e	Z
+    //   242: ifne +199 -> 441
+    //   245: aload_0
+    //   246: getfield 63	com/tencent/hlyyb/downloader/b/c:p	I
+    //   249: istore_1
+    //   250: iconst_0
+    //   251: istore_2
+    //   252: iload_1
+    //   253: ifne +17 -> 270
+    //   256: aload_0
+    //   257: getfield 80	com/tencent/hlyyb/downloader/b/c:m	Lcom/tencent/hlyyb/downloader/e/d/c;
+    //   260: aload_0
+    //   261: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
+    //   264: invokevirtual 313	com/tencent/hlyyb/downloader/e/d/c:a	(Lcom/tencent/hlyyb/downloader/e/d/a;)V
+    //   267: goto +33 -> 300
+    //   270: aload_0
+    //   271: getfield 63	com/tencent/hlyyb/downloader/b/c:p	I
+    //   274: iconst_m1
+    //   275: if_icmpne +854 -> 1129
+    //   278: iconst_1
+    //   279: istore_1
+    //   280: goto +3 -> 283
+    //   283: iload_1
+    //   284: ifeq +16 -> 300
+    //   287: aload_0
+    //   288: iconst_1
+    //   289: putfield 57	com/tencent/hlyyb/downloader/b/c:c	Z
+    //   292: aload_0
+    //   293: getfield 97	com/tencent/hlyyb/downloader/b/c:r	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   296: invokevirtual 294	java/util/concurrent/atomic/AtomicInteger:incrementAndGet	()I
+    //   299: pop
+    //   300: aload_0
+    //   301: getfield 65	com/tencent/hlyyb/downloader/b/c:q	Z
+    //   304: ifne +103 -> 407
+    //   307: aload_0
+    //   308: getfield 80	com/tencent/hlyyb/downloader/b/c:m	Lcom/tencent/hlyyb/downloader/e/d/c;
+    //   311: invokevirtual 315	com/tencent/hlyyb/downloader/e/d/c:e	()I
+    //   314: ifle +80 -> 394
+    //   317: aload_0
+    //   318: invokespecial 317	com/tencent/hlyyb/downloader/b/c:e	()Ljava/util/List;
+    //   321: astore 6
+    //   323: ldc 2
+    //   325: monitorenter
+    //   326: aload 6
+    //   328: invokeinterface 115 1 0
+    //   333: astore 6
+    //   335: aload 6
+    //   337: invokeinterface 121 1 0
+    //   342: ifeq +38 -> 380
+    //   345: aload 6
+    //   347: invokeinterface 125 1 0
+    //   352: checkcast 2	com/tencent/hlyyb/downloader/b/c
+    //   355: astore 7
+    //   357: aload 7
+    //   359: iconst_1
+    //   360: putfield 59	com/tencent/hlyyb/downloader/b/c:d	Z
+    //   363: aload_0
+    //   364: getfield 93	com/tencent/hlyyb/downloader/b/c:l	Lcom/tencent/hlyyb/downloader/b/d;
+    //   367: aload 7
+    //   369: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
+    //   372: invokeinterface 320 2 0
+    //   377: goto -42 -> 335
+    //   380: ldc 2
+    //   382: monitorexit
+    //   383: goto +58 -> 441
+    //   386: astore 6
+    //   388: ldc 2
+    //   390: monitorexit
+    //   391: aload 6
+    //   393: athrow
+    //   394: aload_0
+    //   395: getfield 93	com/tencent/hlyyb/downloader/b/c:l	Lcom/tencent/hlyyb/downloader/b/d;
+    //   398: invokeinterface 323 1 0
+    //   403: pop
+    //   404: goto +37 -> 441
+    //   407: iload_2
+    //   408: istore_1
+    //   409: aload_0
+    //   410: getfield 63	com/tencent/hlyyb/downloader/b/c:p	I
+    //   413: iconst_m1
+    //   414: if_icmpne +5 -> 419
+    //   417: iconst_1
+    //   418: istore_1
+    //   419: iload_1
+    //   420: ifeq +21 -> 441
+    //   423: aload_0
+    //   424: iconst_1
+    //   425: putfield 59	com/tencent/hlyyb/downloader/b/c:d	Z
+    //   428: aload_0
+    //   429: getfield 93	com/tencent/hlyyb/downloader/b/c:l	Lcom/tencent/hlyyb/downloader/b/d;
+    //   432: aload_0
+    //   433: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
+    //   436: invokeinterface 320 2 0
+    //   441: aload_0
+    //   442: getfield 61	com/tencent/hlyyb/downloader/b/c:e	Z
+    //   445: ifeq +17 -> 462
+    //   448: aload_0
+    //   449: getfield 63	com/tencent/hlyyb/downloader/b/c:p	I
+    //   452: bipush 168
+    //   454: if_icmpne +8 -> 462
+    //   457: aload_0
+    //   458: iconst_5
+    //   459: putfield 63	com/tencent/hlyyb/downloader/b/c:p	I
+    //   462: aload_0
+    //   463: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
+    //   466: aload_0
+    //   467: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
+    //   470: getfield 258	com/tencent/hlyyb/downloader/e/d/a:c	I
+    //   473: putfield 282	com/tencent/hlyyb/downloader/b/e:c	I
+    //   476: aload_0
+    //   477: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
+    //   480: astore 6
+    //   482: aload 6
+    //   484: aload_0
+    //   485: getfield 63	com/tencent/hlyyb/downloader/b/c:p	I
+    //   488: putfield 284	com/tencent/hlyyb/downloader/b/e:f	I
+    //   491: aload 6
+    //   493: ldc 251
+    //   495: putfield 287	com/tencent/hlyyb/downloader/b/e:g	Ljava/lang/String;
+    //   498: aload 6
+    //   500: invokestatic 281	android/os/SystemClock:elapsedRealtime	()J
+    //   503: lload_3
+    //   504: lsub
+    //   505: l2i
+    //   506: putfield 289	com/tencent/hlyyb/downloader/b/e:h	I
+    //   509: aload_0
+    //   510: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
+    //   513: invokestatic 281	android/os/SystemClock:elapsedRealtime	()J
+    //   516: aload_0
+    //   517: getfield 76	com/tencent/hlyyb/downloader/b/c:h	J
+    //   520: lsub
+    //   521: l2i
+    //   522: putfield 291	com/tencent/hlyyb/downloader/b/e:i	I
+    //   525: aload_0
+    //   526: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
+    //   529: aload_0
+    //   530: getfield 95	com/tencent/hlyyb/downloader/b/c:s	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   533: invokevirtual 294	java/util/concurrent/atomic/AtomicInteger:incrementAndGet	()I
+    //   536: putfield 296	com/tencent/hlyyb/downloader/b/e:a	I
+    //   539: aload_0
+    //   540: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
+    //   543: getfield 298	com/tencent/hlyyb/downloader/e/d/a:a	Ljava/lang/String;
+    //   546: astore 7
+    //   548: aload_0
+    //   549: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
+    //   552: astore 6
+    //   554: aload 6
+    //   556: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
+    //   559: invokestatic 306	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   562: ifne +13 -> 575
+    //   565: aload 6
+    //   567: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
+    //   570: astore 6
+    //   572: goto +10 -> 582
+    //   575: aload 6
+    //   577: getfield 298	com/tencent/hlyyb/downloader/e/d/a:a	Ljava/lang/String;
+    //   580: astore 6
+    //   582: aload 7
+    //   584: aload 6
+    //   586: invokevirtual 158	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   589: ifne +332 -> 921
+    //   592: aload_0
+    //   593: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
+    //   596: astore 7
+    //   598: aload_0
+    //   599: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
+    //   602: astore 6
+    //   604: aload 6
+    //   606: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
+    //   609: invokestatic 306	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   612: ifne +13 -> 625
+    //   615: aload 6
+    //   617: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
+    //   620: astore 6
+    //   622: goto +10 -> 632
+    //   625: aload 6
+    //   627: getfield 298	com/tencent/hlyyb/downloader/e/d/a:a	Ljava/lang/String;
+    //   630: astore 6
+    //   632: aload 7
+    //   634: aload 6
+    //   636: putfield 308	com/tencent/hlyyb/downloader/b/e:m	Ljava/lang/String;
+    //   639: return
+    //   640: astore 7
+    //   642: goto +280 -> 922
+    //   645: astore 6
     //   647: aload_0
-    //   648: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   651: aload_0
-    //   652: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
-    //   655: getfield 258	com/tencent/hlyyb/downloader/e/d/a:c	I
-    //   658: putfield 282	com/tencent/hlyyb/downloader/b/e:c	I
-    //   661: aload_0
-    //   662: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   665: aload_0
-    //   666: getfield 63	com/tencent/hlyyb/downloader/b/c:p	I
-    //   669: putfield 284	com/tencent/hlyyb/downloader/b/e:f	I
-    //   672: aload_0
-    //   673: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   676: ldc 251
-    //   678: putfield 287	com/tencent/hlyyb/downloader/b/e:g	Ljava/lang/String;
-    //   681: aload_0
-    //   682: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   685: invokestatic 281	android/os/SystemClock:elapsedRealtime	()J
-    //   688: lload_3
-    //   689: lsub
-    //   690: l2i
-    //   691: putfield 289	com/tencent/hlyyb/downloader/b/e:h	I
-    //   694: aload_0
-    //   695: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   698: invokestatic 281	android/os/SystemClock:elapsedRealtime	()J
-    //   701: aload_0
-    //   702: getfield 76	com/tencent/hlyyb/downloader/b/c:h	J
-    //   705: lsub
-    //   706: l2i
-    //   707: putfield 291	com/tencent/hlyyb/downloader/b/e:i	I
-    //   710: aload_0
-    //   711: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   714: aload_0
-    //   715: getfield 95	com/tencent/hlyyb/downloader/b/c:s	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   718: invokevirtual 294	java/util/concurrent/atomic/AtomicInteger:incrementAndGet	()I
-    //   721: putfield 296	com/tencent/hlyyb/downloader/b/e:a	I
-    //   724: aload_0
-    //   725: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
-    //   728: getfield 298	com/tencent/hlyyb/downloader/e/d/a:a	Ljava/lang/String;
-    //   731: astore 8
-    //   733: aload_0
-    //   734: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
-    //   737: astore 6
-    //   739: aload 6
-    //   741: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
-    //   744: invokestatic 306	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   747: ifne +340 -> 1087
-    //   750: aload 6
-    //   752: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
-    //   755: astore 6
-    //   757: aload 8
-    //   759: aload 6
-    //   761: invokevirtual 158	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   764: ifne +40 -> 804
-    //   767: aload_0
-    //   768: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   771: astore 8
-    //   773: aload_0
-    //   774: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
-    //   777: astore 6
-    //   779: aload 6
-    //   781: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
-    //   784: invokestatic 306	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   787: ifne +310 -> 1097
-    //   790: aload 6
-    //   792: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
-    //   795: astore 6
-    //   797: aload 8
-    //   799: aload 6
-    //   801: putfield 308	com/tencent/hlyyb/downloader/b/e:m	Ljava/lang/String;
-    //   804: aload 7
-    //   806: athrow
-    //   807: iconst_0
-    //   808: istore_1
-    //   809: goto -205 -> 604
-    //   812: ldc 2
-    //   814: monitorexit
-    //   815: aload_0
-    //   816: getfield 61	com/tencent/hlyyb/downloader/b/c:e	Z
-    //   819: ifeq +17 -> 836
-    //   822: aload_0
-    //   823: getfield 63	com/tencent/hlyyb/downloader/b/c:p	I
-    //   826: bipush 168
-    //   828: if_icmpne +8 -> 836
-    //   831: aload_0
-    //   832: iconst_5
-    //   833: putfield 63	com/tencent/hlyyb/downloader/b/c:p	I
-    //   836: aload_0
-    //   837: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   840: aload_0
-    //   841: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
-    //   844: getfield 258	com/tencent/hlyyb/downloader/e/d/a:c	I
-    //   847: putfield 282	com/tencent/hlyyb/downloader/b/e:c	I
-    //   850: aload_0
-    //   851: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   854: aload_0
-    //   855: getfield 63	com/tencent/hlyyb/downloader/b/c:p	I
-    //   858: putfield 284	com/tencent/hlyyb/downloader/b/e:f	I
-    //   861: aload_0
-    //   862: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   865: ldc 251
-    //   867: putfield 287	com/tencent/hlyyb/downloader/b/e:g	Ljava/lang/String;
-    //   870: aload_0
-    //   871: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   874: invokestatic 281	android/os/SystemClock:elapsedRealtime	()J
-    //   877: lload_3
-    //   878: lsub
-    //   879: l2i
-    //   880: putfield 289	com/tencent/hlyyb/downloader/b/e:h	I
-    //   883: aload_0
-    //   884: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   887: invokestatic 281	android/os/SystemClock:elapsedRealtime	()J
-    //   890: aload_0
-    //   891: getfield 76	com/tencent/hlyyb/downloader/b/c:h	J
-    //   894: lsub
-    //   895: l2i
-    //   896: putfield 291	com/tencent/hlyyb/downloader/b/e:i	I
-    //   899: aload_0
-    //   900: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   903: aload_0
-    //   904: getfield 95	com/tencent/hlyyb/downloader/b/c:s	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   907: invokevirtual 294	java/util/concurrent/atomic/AtomicInteger:incrementAndGet	()I
-    //   910: putfield 296	com/tencent/hlyyb/downloader/b/e:a	I
-    //   913: aload_0
-    //   914: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
-    //   917: getfield 298	com/tencent/hlyyb/downloader/e/d/a:a	Ljava/lang/String;
-    //   920: astore 7
+    //   648: iconst_1
+    //   649: putfield 63	com/tencent/hlyyb/downloader/b/c:p	I
+    //   652: new 177	java/lang/StringBuilder
+    //   655: dup
+    //   656: invokespecial 178	java/lang/StringBuilder:<init>	()V
+    //   659: astore 7
+    //   661: aload 7
+    //   663: aload 6
+    //   665: invokevirtual 327	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   668: invokevirtual 332	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   671: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   674: pop
+    //   675: aload 7
+    //   677: ldc_w 334
+    //   680: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   683: pop
+    //   684: aload 7
+    //   686: aload 6
+    //   688: invokevirtual 337	java/lang/Throwable:getLocalizedMessage	()Ljava/lang/String;
+    //   691: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   694: pop
+    //   695: aload 7
+    //   697: ldc_w 339
+    //   700: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   703: pop
+    //   704: aload 7
+    //   706: invokevirtual 185	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   709: astore 7
+    //   711: aload 7
+    //   713: astore 6
+    //   715: aload_0
+    //   716: getfield 61	com/tencent/hlyyb/downloader/b/c:e	Z
+    //   719: ifeq +25 -> 744
+    //   722: aload 7
+    //   724: astore 6
+    //   726: aload_0
+    //   727: getfield 63	com/tencent/hlyyb/downloader/b/c:p	I
+    //   730: bipush 168
+    //   732: if_icmpne +12 -> 744
+    //   735: aload_0
+    //   736: iconst_5
+    //   737: putfield 63	com/tencent/hlyyb/downloader/b/c:p	I
+    //   740: ldc 251
+    //   742: astore 6
+    //   744: aload_0
+    //   745: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
+    //   748: aload_0
+    //   749: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
+    //   752: getfield 258	com/tencent/hlyyb/downloader/e/d/a:c	I
+    //   755: putfield 282	com/tencent/hlyyb/downloader/b/e:c	I
+    //   758: aload_0
+    //   759: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
+    //   762: astore 7
+    //   764: aload 7
+    //   766: aload_0
+    //   767: getfield 63	com/tencent/hlyyb/downloader/b/c:p	I
+    //   770: putfield 284	com/tencent/hlyyb/downloader/b/e:f	I
+    //   773: aload 7
+    //   775: aload 6
+    //   777: putfield 287	com/tencent/hlyyb/downloader/b/e:g	Ljava/lang/String;
+    //   780: aload 7
+    //   782: invokestatic 281	android/os/SystemClock:elapsedRealtime	()J
+    //   785: lload_3
+    //   786: lsub
+    //   787: l2i
+    //   788: putfield 289	com/tencent/hlyyb/downloader/b/e:h	I
+    //   791: aload_0
+    //   792: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
+    //   795: invokestatic 281	android/os/SystemClock:elapsedRealtime	()J
+    //   798: aload_0
+    //   799: getfield 76	com/tencent/hlyyb/downloader/b/c:h	J
+    //   802: lsub
+    //   803: l2i
+    //   804: putfield 291	com/tencent/hlyyb/downloader/b/e:i	I
+    //   807: aload_0
+    //   808: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
+    //   811: aload_0
+    //   812: getfield 95	com/tencent/hlyyb/downloader/b/c:s	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   815: invokevirtual 294	java/util/concurrent/atomic/AtomicInteger:incrementAndGet	()I
+    //   818: putfield 296	com/tencent/hlyyb/downloader/b/e:a	I
+    //   821: aload_0
+    //   822: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
+    //   825: getfield 298	com/tencent/hlyyb/downloader/e/d/a:a	Ljava/lang/String;
+    //   828: astore 7
+    //   830: aload_0
+    //   831: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
+    //   834: astore 6
+    //   836: aload 6
+    //   838: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
+    //   841: invokestatic 306	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   844: ifne +13 -> 857
+    //   847: aload 6
+    //   849: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
+    //   852: astore 6
+    //   854: goto +10 -> 864
+    //   857: aload 6
+    //   859: getfield 298	com/tencent/hlyyb/downloader/e/d/a:a	Ljava/lang/String;
+    //   862: astore 6
+    //   864: aload 7
+    //   866: aload 6
+    //   868: invokevirtual 158	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   871: ifne +50 -> 921
+    //   874: aload_0
+    //   875: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
+    //   878: astore 7
+    //   880: aload_0
+    //   881: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
+    //   884: astore 6
+    //   886: aload 6
+    //   888: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
+    //   891: invokestatic 306	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   894: ifne +13 -> 907
+    //   897: aload 6
+    //   899: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
+    //   902: astore 6
+    //   904: goto +10 -> 914
+    //   907: aload 6
+    //   909: getfield 298	com/tencent/hlyyb/downloader/e/d/a:a	Ljava/lang/String;
+    //   912: astore 6
+    //   914: aload 7
+    //   916: aload 6
+    //   918: putfield 308	com/tencent/hlyyb/downloader/b/e:m	Ljava/lang/String;
+    //   921: return
     //   922: aload_0
-    //   923: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
-    //   926: astore 6
-    //   928: aload 6
-    //   930: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
-    //   933: invokestatic 306	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   936: ifne +111 -> 1047
-    //   939: aload 6
-    //   941: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
-    //   944: astore 6
-    //   946: aload 7
-    //   948: aload 6
-    //   950: invokevirtual 158	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   953: ifne -738 -> 215
-    //   956: aload_0
-    //   957: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
-    //   960: astore 7
-    //   962: aload_0
-    //   963: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
-    //   966: astore 6
-    //   968: aload 6
-    //   970: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
-    //   973: invokestatic 306	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   976: ifne +81 -> 1057
+    //   923: getfield 61	com/tencent/hlyyb/downloader/b/c:e	Z
+    //   926: ifeq +17 -> 943
+    //   929: aload_0
+    //   930: getfield 63	com/tencent/hlyyb/downloader/b/c:p	I
+    //   933: bipush 168
+    //   935: if_icmpne +8 -> 943
+    //   938: aload_0
+    //   939: iconst_5
+    //   940: putfield 63	com/tencent/hlyyb/downloader/b/c:p	I
+    //   943: aload_0
+    //   944: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
+    //   947: aload_0
+    //   948: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
+    //   951: getfield 258	com/tencent/hlyyb/downloader/e/d/a:c	I
+    //   954: putfield 282	com/tencent/hlyyb/downloader/b/e:c	I
+    //   957: aload_0
+    //   958: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
+    //   961: astore 6
+    //   963: aload 6
+    //   965: aload_0
+    //   966: getfield 63	com/tencent/hlyyb/downloader/b/c:p	I
+    //   969: putfield 284	com/tencent/hlyyb/downloader/b/e:f	I
+    //   972: aload 6
+    //   974: ldc 251
+    //   976: putfield 287	com/tencent/hlyyb/downloader/b/e:g	Ljava/lang/String;
     //   979: aload 6
-    //   981: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
-    //   984: astore 6
-    //   986: aload 7
-    //   988: aload 6
-    //   990: putfield 308	com/tencent/hlyyb/downloader/b/e:m	Ljava/lang/String;
-    //   993: return
-    //   994: aload_0
-    //   995: getfield 93	com/tencent/hlyyb/downloader/b/c:l	Lcom/tencent/hlyyb/downloader/b/d;
-    //   998: invokeinterface 339 1 0
-    //   1003: pop
-    //   1004: goto -189 -> 815
-    //   1007: aload_0
-    //   1008: getfield 63	com/tencent/hlyyb/downloader/b/c:p	I
-    //   1011: iconst_m1
-    //   1012: if_icmpne +30 -> 1042
-    //   1015: iload_2
-    //   1016: istore_1
-    //   1017: iload_1
-    //   1018: ifeq -203 -> 815
-    //   1021: aload_0
-    //   1022: iconst_1
-    //   1023: putfield 59	com/tencent/hlyyb/downloader/b/c:d	Z
-    //   1026: aload_0
-    //   1027: getfield 93	com/tencent/hlyyb/downloader/b/c:l	Lcom/tencent/hlyyb/downloader/b/d;
-    //   1030: aload_0
-    //   1031: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
-    //   1034: invokeinterface 320 2 0
-    //   1039: goto -224 -> 815
-    //   1042: iconst_0
-    //   1043: istore_1
-    //   1044: goto -27 -> 1017
-    //   1047: aload 6
-    //   1049: getfield 298	com/tencent/hlyyb/downloader/e/d/a:a	Ljava/lang/String;
-    //   1052: astore 6
-    //   1054: goto -108 -> 946
-    //   1057: aload 6
-    //   1059: getfield 298	com/tencent/hlyyb/downloader/e/d/a:a	Ljava/lang/String;
-    //   1062: astore 6
-    //   1064: goto -78 -> 986
-    //   1067: aload 6
-    //   1069: getfield 298	com/tencent/hlyyb/downloader/e/d/a:a	Ljava/lang/String;
-    //   1072: astore 6
-    //   1074: goto -528 -> 546
-    //   1077: aload 6
-    //   1079: getfield 298	com/tencent/hlyyb/downloader/e/d/a:a	Ljava/lang/String;
-    //   1082: astore 6
-    //   1084: goto -498 -> 586
-    //   1087: aload 6
-    //   1089: getfield 298	com/tencent/hlyyb/downloader/e/d/a:a	Ljava/lang/String;
-    //   1092: astore 6
-    //   1094: goto -337 -> 757
-    //   1097: aload 6
-    //   1099: getfield 298	com/tencent/hlyyb/downloader/e/d/a:a	Ljava/lang/String;
-    //   1102: astore 6
-    //   1104: goto -307 -> 797
-    //   1107: goto -1049 -> 58
+    //   981: invokestatic 281	android/os/SystemClock:elapsedRealtime	()J
+    //   984: lload_3
+    //   985: lsub
+    //   986: l2i
+    //   987: putfield 289	com/tencent/hlyyb/downloader/b/e:h	I
+    //   990: aload_0
+    //   991: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
+    //   994: invokestatic 281	android/os/SystemClock:elapsedRealtime	()J
+    //   997: aload_0
+    //   998: getfield 76	com/tencent/hlyyb/downloader/b/c:h	J
+    //   1001: lsub
+    //   1002: l2i
+    //   1003: putfield 291	com/tencent/hlyyb/downloader/b/e:i	I
+    //   1006: aload_0
+    //   1007: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
+    //   1010: aload_0
+    //   1011: getfield 95	com/tencent/hlyyb/downloader/b/c:s	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   1014: invokevirtual 294	java/util/concurrent/atomic/AtomicInteger:incrementAndGet	()I
+    //   1017: putfield 296	com/tencent/hlyyb/downloader/b/e:a	I
+    //   1020: aload_0
+    //   1021: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
+    //   1024: getfield 298	com/tencent/hlyyb/downloader/e/d/a:a	Ljava/lang/String;
+    //   1027: astore 8
+    //   1029: aload_0
+    //   1030: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
+    //   1033: astore 6
+    //   1035: aload 6
+    //   1037: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
+    //   1040: invokestatic 306	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1043: ifne +13 -> 1056
+    //   1046: aload 6
+    //   1048: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
+    //   1051: astore 6
+    //   1053: goto +10 -> 1063
+    //   1056: aload 6
+    //   1058: getfield 298	com/tencent/hlyyb/downloader/e/d/a:a	Ljava/lang/String;
+    //   1061: astore 6
+    //   1063: aload 8
+    //   1065: aload 6
+    //   1067: invokevirtual 158	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1070: ifne +50 -> 1120
+    //   1073: aload_0
+    //   1074: getfield 74	com/tencent/hlyyb/downloader/b/c:g	Lcom/tencent/hlyyb/downloader/b/e;
+    //   1077: astore 8
+    //   1079: aload_0
+    //   1080: getfield 89	com/tencent/hlyyb/downloader/b/c:b	Lcom/tencent/hlyyb/downloader/e/d/a;
+    //   1083: astore 6
+    //   1085: aload 6
+    //   1087: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
+    //   1090: invokestatic 306	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1093: ifne +13 -> 1106
+    //   1096: aload 6
+    //   1098: getfield 300	com/tencent/hlyyb/downloader/e/d/a:e	Ljava/lang/String;
+    //   1101: astore 6
+    //   1103: goto +10 -> 1113
+    //   1106: aload 6
+    //   1108: getfield 298	com/tencent/hlyyb/downloader/e/d/a:a	Ljava/lang/String;
+    //   1111: astore 6
+    //   1113: aload 8
+    //   1115: aload 6
+    //   1117: putfield 308	com/tencent/hlyyb/downloader/b/e:m	Ljava/lang/String;
+    //   1120: goto +6 -> 1126
+    //   1123: aload 7
+    //   1125: athrow
+    //   1126: goto -3 -> 1123
+    //   1129: iconst_0
+    //   1130: istore_1
+    //   1131: goto -848 -> 283
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1110	0	this	c
-    //   603	441	1	i1	int
-    //   1	1015	2	i2	int
-    //   25	853	3	l1	long
-    //   30	3	5	bool	boolean
-    //   148	163	6	localObject1	Object
-    //   345	6	6	localObject2	Object
-    //   353	32	6	localThrowable	java.lang.Throwable
-    //   401	702	6	localObject3	Object
-    //   142	445	7	localObject4	Object
-    //   624	181	7	localObject5	Object
-    //   920	67	7	localObject6	Object
-    //   731	67	8	localObject7	Object
+    //   0	1134	0	this	c
+    //   249	882	1	i1	int
+    //   251	157	2	i2	int
+    //   23	962	3	l1	long
+    //   28	3	5	bool	boolean
+    //   74	272	6	localObject1	Object
+    //   386	6	6	localObject2	Object
+    //   480	155	6	localObject3	Object
+    //   645	42	6	localThrowable	java.lang.Throwable
+    //   713	403	6	localObject4	Object
+    //   140	493	7	localObject5	Object
+    //   640	1	7	localObject6	Object
+    //   659	465	7	localObject7	Object
+    //   1027	87	8	localObject8	Object
     // Exception table:
     //   from	to	target	type
-    //   291	300	345	finally
-    //   300	342	345	finally
-    //   347	350	345	finally
-    //   812	815	345	finally
-    //   26	32	353	java/lang/Throwable
-    //   236	265	353	java/lang/Throwable
-    //   265	291	353	java/lang/Throwable
-    //   350	353	353	java/lang/Throwable
-    //   594	602	353	java/lang/Throwable
-    //   608	621	353	java/lang/Throwable
-    //   994	1004	353	java/lang/Throwable
-    //   1007	1015	353	java/lang/Throwable
-    //   1021	1039	353	java/lang/Throwable
-    //   26	32	624	finally
-    //   236	265	624	finally
-    //   265	291	624	finally
-    //   350	353	624	finally
-    //   355	403	624	finally
-    //   594	602	624	finally
-    //   608	621	624	finally
-    //   994	1004	624	finally
-    //   1007	1015	624	finally
-    //   1021	1039	624	finally
+    //   326	335	386	finally
+    //   335	377	386	finally
+    //   380	383	386	finally
+    //   388	391	386	finally
+    //   24	30	640	finally
+    //   234	250	640	finally
+    //   256	267	640	finally
+    //   270	278	640	finally
+    //   287	300	640	finally
+    //   300	326	640	finally
+    //   391	394	640	finally
+    //   394	404	640	finally
+    //   409	417	640	finally
+    //   423	441	640	finally
+    //   647	711	640	finally
+    //   24	30	645	java/lang/Throwable
+    //   234	250	645	java/lang/Throwable
+    //   256	267	645	java/lang/Throwable
+    //   270	278	645	java/lang/Throwable
+    //   287	300	645	java/lang/Throwable
+    //   300	326	645	java/lang/Throwable
+    //   391	394	645	java/lang/Throwable
+    //   394	404	645	java/lang/Throwable
+    //   409	417	645	java/lang/Throwable
+    //   423	441	645	java/lang/Throwable
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hlyyb.downloader.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -3,16 +3,16 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView android:background="#00000000" android:visibility="visible" android:layout_width="1.0px" android:layout_height="1.0px" />
     <LinearLayout android:orientation="vertical" android:id="@id/m8e" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="#ff989eb4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="12.0dip" android:text="@string/y_q" android:includeFontPadding="false" />
+        <TextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="#ff989eb4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="12.0dip" android:text="@string/yhx" android:includeFontPadding="false" />
         <android.support.v7.widget.RecyclerView android:id="@id/m8c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" />
         <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:id="@id/m8_" android:background="@drawable/hdr" android:paddingLeft="14.0dip" android:paddingRight="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip">
             <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:layout_gravity="center_vertical" android:id="@id/m8a" android:paddingTop="4.0dip" android:paddingBottom="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1条新评论" />
             <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/hjl" />
         </LinearLayout>
         <TextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="#ff989eb4" android:id="@id/m87" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="12.0dip" android:text="关注的订阅号直播间" android:includeFontPadding="false" />
-        <RelativeLayout android:id="@id/mw5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <ImageView android:id="@id/mw4" android:layout_width="165.0dip" android:layout_height="165.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="16.0dip" android:layout_centerHorizontal="true" />
-            <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:id="@id/mw6" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginTop="8.0dip" android:text="当前没有关注的直播哦" android:layout_below="@id/mw4" android:layout_centerHorizontal="true" />
+        <RelativeLayout android:id="@id/myn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/mym" android:layout_width="165.0dip" android:layout_height="165.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="16.0dip" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:id="@id/myo" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginTop="8.0dip" android:text="当前没有关注的直播哦" android:layout_below="@id/mym" android:layout_centerHorizontal="true" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

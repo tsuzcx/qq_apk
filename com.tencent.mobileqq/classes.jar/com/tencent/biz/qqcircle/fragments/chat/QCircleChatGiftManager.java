@@ -16,20 +16,25 @@ public class QCircleChatGiftManager
   
   public static QCircleChatGiftManager getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new QCircleChatGiftManager();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new QCircleChatGiftManager();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
-  public QQCirclePrivateMsgShow.UserPMGiftInfo getUserGiftInfo(String paramString)
+  public byte[] getUserGiftInfo(String paramString)
   {
-    return (QQCirclePrivateMsgShow.UserPMGiftInfo)this.mGiftInfoMap.get(paramString);
+    paramString = (QQCirclePrivateMsgShow.UserPMGiftInfo)this.mGiftInfoMap.get(paramString);
+    if (paramString != null) {
+      return paramString.toByteArray();
+    }
+    return null;
   }
   
   public void saveGiftInfo(List<byte[]> paramList)
@@ -48,7 +53,7 @@ public class QCircleChatGiftManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqcircle.fragments.chat.QCircleChatGiftManager
  * JD-Core Version:    0.7.0.1
  */

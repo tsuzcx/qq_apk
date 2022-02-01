@@ -20,13 +20,26 @@ public class QQLevelIconCallback
   
   public static void downloadQQLevelIcon(int paramInt, QuickUpdateListener paramQuickUpdateListener, boolean paramBoolean)
   {
-    sInstance.download("qqVipLevel." + paramInt, paramQuickUpdateListener, paramBoolean);
+    QQLevelIconCallback localQQLevelIconCallback = sInstance;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("qqVipLevel.");
+    localStringBuilder.append(paramInt);
+    localQQLevelIconCallback.download(localStringBuilder.toString(), paramQuickUpdateListener, paramBoolean);
   }
   
   public static String getName(Context paramContext, int paramInt)
   {
-    paramContext = sInstance.getDir(paramContext, "qqVipLevel." + paramInt);
-    paramContext = FileUtils.a(new File(paramContext + File.separator + paramInt + ".json"));
+    Object localObject = sInstance;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("qqVipLevel.");
+    localStringBuilder.append(paramInt);
+    paramContext = ((QQLevelIconCallback)localObject).getDir(paramContext, localStringBuilder.toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramContext);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(".json");
+    paramContext = FileUtils.readFileContent(new File(((StringBuilder)localObject).toString()));
     if (!TextUtils.isEmpty(paramContext)) {
       try
       {
@@ -39,20 +52,35 @@ public class QQLevelIconCallback
         return null;
       }
     }
-    QLog.e("QQLevelIconCallback", 1, "getName missing json: " + paramInt);
+    paramContext = new StringBuilder();
+    paramContext.append("getName missing json: ");
+    paramContext.append(paramInt);
+    QLog.e("QQLevelIconCallback", 1, paramContext.toString());
     return null;
   }
   
   public static String getQQLevelIconFilePath(Context paramContext, int paramInt)
   {
-    paramContext = sInstance.getDir(paramContext, "qqVipLevel." + paramInt);
-    return paramContext + File.separator + paramInt + ".wav";
+    Object localObject = sInstance;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("qqVipLevel.");
+    localStringBuilder.append(paramInt);
+    paramContext = ((QQLevelIconCallback)localObject).getDir(paramContext, localStringBuilder.toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramContext);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(".wav");
+    return ((StringBuilder)localObject).toString();
   }
   
   public static boolean isQQLevelIconExists(Context paramContext, int paramInt)
   {
-    String str = "qqVipLevel." + paramInt;
-    return new File(sInstance.getDir(paramContext, str)).exists();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("qqVipLevel.");
+    ((StringBuilder)localObject).append(paramInt);
+    localObject = ((StringBuilder)localObject).toString();
+    return new File(sInstance.getDir(paramContext, (String)localObject)).exists();
   }
   
   public long getBID()
@@ -72,7 +100,7 @@ public class QQLevelIconCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.quickupdate.QQLevelIconCallback
  * JD-Core Version:    0.7.0.1
  */

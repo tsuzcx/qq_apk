@@ -43,18 +43,20 @@ public final class mobile_facade_get_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iCode, 0);
-    if (this.stFacade != null) {
-      paramJceOutputStream.write(this.stFacade, 1);
+    Object localObject = this.stFacade;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.mapExtInfo != null) {
-      paramJceOutputStream.write(this.mapExtInfo, 2);
+    localObject = this.mapExtInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
     paramJceOutputStream.write(this.iShowOnFriDyn, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_CUSTOM.mobile_facade_get_rsp
  * JD-Core Version:    0.7.0.1
  */

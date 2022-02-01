@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.qwallet.preload.impl;
 
 import Wallet.ResInfo;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 import com.tencent.mobileqq.config.QConfigManager;
+import com.tencent.mobileqq.qwallet.impl.QWalletTools;
 import com.tencent.mobileqq.qwallet.preload.PreloadStaticApi;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
@@ -27,32 +27,38 @@ public class PreloadBackControlConfig
   
   public static String getConfigPath(AppRuntime paramAppRuntime)
   {
-    return PreloadStaticApi.a(paramAppRuntime) + "back_config";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(PreloadStaticApi.a(paramAppRuntime));
+    localStringBuilder.append("back_config");
+    return localStringBuilder.toString();
   }
   
   public static PreloadBackControlConfig readBackControlConfig(AppRuntime paramAppRuntime)
   {
     try
     {
-      PreloadBackControlConfig localPreloadBackControlConfig = (PreloadBackControlConfig)QWalletTools.a(getConfigPath(paramAppRuntime));
-      if (localPreloadBackControlConfig == null)
-      {
-        localPreloadBackControlConfig = new PreloadBackControlConfig(paramAppRuntime);
-        if (QLog.isColorLevel()) {
-          QLog.d("BackControlConfig", 2, "readBackControlConfig:" + localPreloadBackControlConfig);
-        }
-        return localPreloadBackControlConfig;
-      }
+      localPreloadBackControlConfig = (PreloadBackControlConfig)QWalletTools.a(getConfigPath(paramAppRuntime));
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Object localObject = null;
-        continue;
-        localObject.a = paramAppRuntime;
-      }
+      PreloadBackControlConfig localPreloadBackControlConfig;
+      label14:
+      break label14;
     }
+    localPreloadBackControlConfig = null;
+    if (localPreloadBackControlConfig == null) {
+      localPreloadBackControlConfig = new PreloadBackControlConfig(paramAppRuntime);
+    } else {
+      localPreloadBackControlConfig.a = paramAppRuntime;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramAppRuntime = new StringBuilder();
+      paramAppRuntime.append("readBackControlConfig:");
+      paramAppRuntime.append(localPreloadBackControlConfig);
+      QLog.d("BackControlConfig", 2, paramAppRuntime.toString());
+    }
+    return localPreloadBackControlConfig;
   }
   
   public ArrayList<ResInfo> getLastBackResInfos()
@@ -67,59 +73,39 @@ public class PreloadBackControlConfig
           localArrayList.add((ResInfo)localIterator.next());
         }
       }
+      return localArrayList;
     }
     finally {}
-    return localArrayList1;
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
-  /* Error */
   public boolean isLocalResNewest()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: invokestatic 112	com/tencent/mobileqq/config/QConfigManager:a	()Lcom/tencent/mobileqq/config/QConfigManager;
-    //   5: bipush 68
-    //   7: aload_0
-    //   8: getfield 28	com/tencent/mobileqq/qwallet/preload/impl/PreloadBackControlConfig:a	Lmqq/app/AppRuntime;
-    //   11: invokevirtual 118	mqq/app/AppRuntime:getLongAccountUin	()J
-    //   14: invokevirtual 121	com/tencent/mobileqq/config/QConfigManager:a	(IJ)I
-    //   17: istore_1
-    //   18: aload_0
-    //   19: getfield 30	com/tencent/mobileqq/qwallet/preload/impl/PreloadBackControlConfig:mConfigVersion	I
-    //   22: istore_2
-    //   23: iload_1
-    //   24: iload_2
-    //   25: if_icmpeq +9 -> 34
-    //   28: iconst_0
-    //   29: istore_3
-    //   30: aload_0
-    //   31: monitorexit
-    //   32: iload_3
-    //   33: ireturn
-    //   34: iconst_1
-    //   35: istore_3
-    //   36: goto -6 -> 30
-    //   39: astore 4
-    //   41: aload_0
-    //   42: monitorexit
-    //   43: aload 4
-    //   45: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	46	0	this	PreloadBackControlConfig
-    //   17	9	1	i	int
-    //   22	4	2	j	int
-    //   29	7	3	bool	boolean
-    //   39	5	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	23	39	finally
+    try
+    {
+      int i = QConfigManager.a().a(68, this.a.getLongAccountUin());
+      int j = this.mConfigVersion;
+      return i == j;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public String toString()
   {
-    return "BackControlConfig [mVersion=" + this.mConfigVersion + ", mLastRes=" + this.mLastBackResInfos + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BackControlConfig [mVersion=");
+    localStringBuilder.append(this.mConfigVersion);
+    localStringBuilder.append(", mLastRes=");
+    localStringBuilder.append(this.mLastBackResInfos);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void update(ArrayList<ResInfo> paramArrayList)
@@ -140,7 +126,7 @@ public class PreloadBackControlConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadBackControlConfig
  * JD-Core Version:    0.7.0.1
  */

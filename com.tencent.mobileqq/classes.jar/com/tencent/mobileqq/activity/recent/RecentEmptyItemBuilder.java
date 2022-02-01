@@ -24,52 +24,44 @@ public class RecentEmptyItemBuilder
     if (paramView != null)
     {
       paramRecentFaceDecoder = paramView;
-      if ("R.layout.conversation_no_chat".equals(paramView.getTag(2131559048))) {}
+      if ("R.layout.conversation_no_chat".equals(paramView.getTag(2131558942))) {}
     }
     else
     {
-      paramRecentFaceDecoder = View.inflate(paramContext, 2131559048, null);
-      this.b = paramContext.getResources().getDimensionPixelSize(2131298884);
-      this.a = paramContext.getResources().getDimensionPixelSize(2131298887);
-      this.c = paramContext.getResources().getDimensionPixelSize(2131298891);
+      paramRecentFaceDecoder = View.inflate(paramContext, 2131558942, null);
+      this.b = paramContext.getResources().getDimensionPixelSize(2131298888);
+      this.a = paramContext.getResources().getDimensionPixelSize(2131298891);
+      this.c = paramContext.getResources().getDimensionPixelSize(2131298895);
     }
     int i = paramViewGroup.getHeight() - this.a * 2 - this.b;
-    if (i > this.c)
-    {
-      paramView = new AbsListView.LayoutParams(-1, -1);
-      paramView.width = -1;
-      paramView.height = i;
-      paramRecentFaceDecoder.setLayoutParams(paramView);
-      paramRecentFaceDecoder.setTag(Boolean.valueOf(true));
-      paramView = (TextView)paramRecentFaceDecoder.findViewById(2131372312);
-      paramViewGroup = (Button)paramRecentFaceDecoder.findViewById(2131363912);
-      if (!(paramObject instanceof Integer)) {
-        break label382;
-      }
-      i = ((Integer)paramObject).intValue();
-      if (i != 1) {
-        break label263;
-      }
-      paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130841563, 0, 0);
-      paramView.setVisibility(0);
-      paramView.setText(2131694890);
-      paramView.setTextColor(paramContext.getResources().getColorStateList(2131167119));
-      paramViewGroup.setVisibility(8);
-      paramViewGroup.setOnClickListener(null);
+    int j = this.c;
+    if (i <= j) {
+      i = j;
     }
-    for (;;)
+    paramView = new AbsListView.LayoutParams(-1, -1);
+    paramView.width = -1;
+    paramView.height = i;
+    paramRecentFaceDecoder.setLayoutParams(paramView);
+    paramRecentFaceDecoder.setTag(Boolean.valueOf(true));
+    paramView = (TextView)paramRecentFaceDecoder.findViewById(2131371897);
+    paramViewGroup = (Button)paramRecentFaceDecoder.findViewById(2131363840);
+    if ((paramObject instanceof Integer))
     {
-      paramRecentFaceDecoder.setTag(-1, Integer.valueOf(paramInt));
-      paramRecentFaceDecoder.setTag(2131559048, "R.layout.conversation_no_chat");
-      return paramRecentFaceDecoder;
-      i = this.c;
-      break;
-      label263:
-      if (i == 0)
+      i = ((Integer)paramObject).intValue();
+      if (i == 1)
+      {
+        paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130841446, 0, 0);
+        paramView.setVisibility(0);
+        paramView.setText(2131694879);
+        paramView.setTextColor(paramContext.getResources().getColorStateList(2131167144));
+        paramViewGroup.setVisibility(8);
+        paramViewGroup.setOnClickListener(null);
+      }
+      else if (i == 0)
       {
         if ((paramContext instanceof MsgBoxListActivity))
         {
-          if (((MsgBoxListActivity)paramContext).f)
+          if (((MsgBoxListActivity)paramContext).isHideNoChatImg)
           {
             paramView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
             paramView.setVisibility(0);
@@ -78,10 +70,10 @@ public class RecentEmptyItemBuilder
         }
         else
         {
-          paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130841563, 0, 0);
+          paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130841446, 0, 0);
           paramView.setVisibility(0);
-          paramView.setText(2131694500);
-          paramView.setTextColor(paramContext.getResources().getColorStateList(2131167119));
+          paramView.setText(2131694466);
+          paramView.setTextColor(paramContext.getResources().getColorStateList(2131167144));
           paramViewGroup.setVisibility(8);
           paramViewGroup.setOnClickListener(null);
         }
@@ -90,18 +82,22 @@ public class RecentEmptyItemBuilder
       {
         paramView.setVisibility(4);
         paramView.setText("");
-        continue;
-        label382:
-        paramView.setVisibility(8);
-        paramView.setText("");
-        paramViewGroup.setVisibility(8);
       }
     }
+    else
+    {
+      paramView.setVisibility(8);
+      paramView.setText("");
+      paramViewGroup.setVisibility(8);
+    }
+    paramRecentFaceDecoder.setTag(-1, Integer.valueOf(paramInt));
+    paramRecentFaceDecoder.setTag(2131558942, "R.layout.conversation_no_chat");
+    return paramRecentFaceDecoder;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentEmptyItemBuilder
  * JD-Core Version:    0.7.0.1
  */

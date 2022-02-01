@@ -51,7 +51,7 @@ public final class UInt
   @InlineOnly
   private static final int compareTo-xj2QHRw(int paramInt, short paramShort)
   {
-    return UnsignedKt.uintCompare(paramInt, constructor-impl(0xFFFF & paramShort));
+    return UnsignedKt.uintCompare(paramInt, constructor-impl(paramShort & 0xFFFF));
   }
   
   @PublishedApi
@@ -87,7 +87,7 @@ public final class UInt
   @InlineOnly
   private static final int div-xj2QHRw(int paramInt, short paramShort)
   {
-    return UnsignedKt.uintDivide-J1ME1BU(paramInt, constructor-impl(0xFFFF & paramShort));
+    return UnsignedKt.uintDivide-J1ME1BU(paramInt, constructor-impl(paramShort & 0xFFFF));
   }
   
   public static boolean equals-impl(int paramInt, @Nullable Object paramObject)
@@ -138,7 +138,7 @@ public final class UInt
   @InlineOnly
   private static final int minus-xj2QHRw(int paramInt, short paramShort)
   {
-    return constructor-impl(paramInt - constructor-impl(0xFFFF & paramShort));
+    return constructor-impl(paramInt - constructor-impl(paramShort & 0xFFFF));
   }
   
   @InlineOnly
@@ -150,7 +150,7 @@ public final class UInt
   @InlineOnly
   private static final int plus-7apg3OU(int paramInt, byte paramByte)
   {
-    return constructor-impl(constructor-impl(paramByte & 0xFF) + paramInt);
+    return constructor-impl(paramInt + constructor-impl(paramByte & 0xFF));
   }
   
   @InlineOnly
@@ -168,7 +168,7 @@ public final class UInt
   @InlineOnly
   private static final int plus-xj2QHRw(int paramInt, short paramShort)
   {
-    return constructor-impl(constructor-impl(0xFFFF & paramShort) + paramInt);
+    return constructor-impl(paramInt + constructor-impl(paramShort & 0xFFFF));
   }
   
   @InlineOnly
@@ -198,7 +198,7 @@ public final class UInt
   @InlineOnly
   private static final int rem-xj2QHRw(int paramInt, short paramShort)
   {
-    return UnsignedKt.uintRemainder-J1ME1BU(paramInt, constructor-impl(0xFFFF & paramShort));
+    return UnsignedKt.uintRemainder-J1ME1BU(paramInt, constructor-impl(paramShort & 0xFFFF));
   }
   
   @InlineOnly
@@ -216,7 +216,7 @@ public final class UInt
   @InlineOnly
   private static final int times-7apg3OU(int paramInt, byte paramByte)
   {
-    return constructor-impl(constructor-impl(paramByte & 0xFF) * paramInt);
+    return constructor-impl(paramInt * constructor-impl(paramByte & 0xFF));
   }
   
   @InlineOnly
@@ -234,7 +234,7 @@ public final class UInt
   @InlineOnly
   private static final int times-xj2QHRw(int paramInt, short paramShort)
   {
-    return constructor-impl(constructor-impl(0xFFFF & paramShort) * paramInt);
+    return constructor-impl(paramInt * constructor-impl(paramShort & 0xFFFF));
   }
   
   @InlineOnly
@@ -327,7 +327,7 @@ public final class UInt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.UInt
  * JD-Core Version:    0.7.0.1
  */

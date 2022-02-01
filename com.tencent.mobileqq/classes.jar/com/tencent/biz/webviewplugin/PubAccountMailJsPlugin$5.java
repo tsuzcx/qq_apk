@@ -17,29 +17,31 @@ class PubAccountMailJsPlugin$5
       if (QLog.isColorLevel()) {
         QLog.d("PubAccountMailJsPlugin", 2, String.format("Contact menu dialog click phone = %s, which = %d", new Object[] { this.a.a, Integer.valueOf(paramInt) }));
       }
-      switch (paramInt)
+      if (paramInt != 1)
       {
-      default: 
-        if (QLog.isColorLevel()) {
-          QLog.d("PubAccountMailJsPlugin", 2, String.format("Unknow contact button %d", new Object[] { Integer.valueOf(paramInt) }));
+        if (paramInt != 2)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("PubAccountMailJsPlugin", 2, String.format("Unknow contact button %d", new Object[] { Integer.valueOf(paramInt) }));
+          }
         }
-        break;
+        else {
+          PubAccountMailJsPlugin.i(this.a);
+        }
+      }
+      else {
+        PubAccountMailJsPlugin.h(this.a);
       }
     }
-    while (!QLog.isColorLevel())
+    else if (QLog.isColorLevel())
     {
-      return;
-      PubAccountMailJsPlugin.h(this.a);
-      return;
-      PubAccountMailJsPlugin.i(this.a);
-      return;
+      QLog.d("PubAccountMailJsPlugin", 2, "phone is empty");
     }
-    QLog.d("PubAccountMailJsPlugin", 2, "phone is empty");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.PubAccountMailJsPlugin.5
  * JD-Core Version:    0.7.0.1
  */

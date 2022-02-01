@@ -16,38 +16,40 @@ public abstract class ILebaRedTouchBiz
   
   protected int a(RedTouch paramRedTouch)
   {
-    if ((paramRedTouch == null) || (!paramRedTouch.a())) {}
-    do
+    if (paramRedTouch != null)
     {
-      return 0;
+      if (!paramRedTouch.a()) {
+        return 0;
+      }
       paramRedTouch = paramRedTouch.a();
-    } while (paramRedTouch == null);
-    if (paramRedTouch.red_type.get() == 0) {
-      return 1;
-    }
-    if (paramRedTouch.red_type.get() == 5) {
-      return 2;
-    }
-    if (paramRedTouch.red_type.get() == 11) {
+      if (paramRedTouch == null) {
+        return 0;
+      }
+      if (paramRedTouch.red_type.get() == 0) {
+        return 1;
+      }
+      if (paramRedTouch.red_type.get() == 5) {
+        return 2;
+      }
+      if (paramRedTouch.red_type.get() == 11) {}
       return 3;
     }
-    return 3;
+    return 0;
   }
   
-  public void a(long paramLong, RedTouch paramRedTouch)
+  protected void a(long paramLong, RedTouch paramRedTouch)
   {
-    if (this.a == null) {}
-    int i;
-    do
-    {
+    if (this.a == null) {
       return;
-      int j = LebaConstant.a(paramRedTouch);
-      i = j;
-      if (j == 0) {
-        i = a(paramRedTouch);
-      }
-    } while (i == 0);
-    this.a.put(Long.valueOf(paramLong), new LebaExposureInfo(i, LebaConstant.b(paramRedTouch)));
+    }
+    int j = LebaConstant.a(paramRedTouch);
+    int i = j;
+    if (j == 0) {
+      i = a(paramRedTouch);
+    }
+    if (i != 0) {
+      this.a.put(Long.valueOf(paramLong), new LebaExposureInfo(i, LebaConstant.b(paramRedTouch)));
+    }
   }
   
   public abstract void a(AppRuntime paramAppRuntime, String paramString, BusinessInfoCheckUpdate.AppInfo paramAppInfo);
@@ -56,7 +58,7 @@ public abstract class ILebaRedTouchBiz
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.ILebaRedTouchBiz
  * JD-Core Version:    0.7.0.1
  */

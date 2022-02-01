@@ -15,14 +15,14 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
-import com.tencent.biz.pubaccount.util.VideoFeedsWeiShiUtils;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.biz.qqstory.utils.WeishiGuideUtils;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.video.api.IVideoFeedsWeiShiUtils;
+import com.tencent.mobileqq.kandian.biz.video.playfeeds.api.IVideoReporter;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -61,7 +61,7 @@ public class WeShiGuideDialog
   
   public WeShiGuideDialog(@NonNull Context paramContext, String paramString)
   {
-    this(paramContext, 2131755842, paramString);
+    this(paramContext, 2131756189, paramString);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
@@ -79,20 +79,21 @@ public class WeShiGuideDialog
   
   private void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryViewWeShiGuideDialog$OnWsDialogDismissListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWeShiGuideDialog$OnWsDialogDismissListener.a(this, paramInt);
+    WeShiGuideDialog.OnWsDialogDismissListener localOnWsDialogDismissListener = this.jdField_a_of_type_ComTencentBizQqstoryViewWeShiGuideDialog$OnWsDialogDismissListener;
+    if (localOnWsDialogDismissListener != null) {
+      localOnWsDialogDismissListener.a(this, paramInt);
     }
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363987));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369611));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370576);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380448));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363914));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369319));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370231);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379760));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131716760));
+    this.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131716410));
     a();
     if (TextUtils.isEmpty(this.b)) {
       this.b = "https://pub.idqqimg.com/pc/misc/files/20180423/03d546703c3f49a3857c67be2e94f928.png";
@@ -111,9 +112,10 @@ public class WeShiGuideDialog
       if (i == 2) {
         ((URLDrawable)localObject).restartDownload();
       }
-      return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    else {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
   }
   
   public WeShiGuideDialog a(int paramInt, String paramString)
@@ -143,15 +145,13 @@ public class WeShiGuideDialog
     if (this.jdField_a_of_type_Boolean != bool)
     {
       this.jdField_a_of_type_Boolean = bool;
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131716761));
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131716411));
+        return;
       }
+      this.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131716414));
     }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131716764));
   }
   
   public void onBackPressed()
@@ -162,102 +162,109 @@ public class WeShiGuideDialog
   
   public void onClick(View paramView)
   {
-    int m = 1;
-    int i;
-    label117:
+    int i = paramView.getId();
+    int n = 1;
+    Object localObject;
     int k;
-    label182:
     int j;
-    switch (paramView.getId())
+    int m;
+    JSONObject localJSONObject;
+    if (i != 2131363914)
     {
-    default: 
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    case 2131363987: 
+      if (i == 2131369319)
+      {
+        dismiss();
+        a(-1);
+        if (TextUtils.isEmpty(this.f)) {
+          StoryReportor.a("weishi_share", "cover_close", 0, 0, new String[] { this.d, this.c, "weishi", this.e });
+        }
+      }
+    }
+    else
+    {
       a();
       if (TextUtils.isEmpty(this.f))
       {
-        if (this.jdField_a_of_type_Boolean) {
-          WeishiGuideUtils.a(getContext(), this.g, this.jdField_a_of_type_JavaLangString);
-        }
-        for (i = 0;; i = 1)
+        if (this.jdField_a_of_type_Boolean)
         {
-          StoryReportor.a("weishi_share", "cover_clk", 0, 0, new String[] { this.d, this.c, "weishi", this.e });
-          dismiss();
-          a(i);
-          break;
-          QQToast.a(getContext(), HardCodeUtil.a(2131716762), 0).a();
+          WeishiGuideUtils.a(getContext(), this.g, this.jdField_a_of_type_JavaLangString);
+          i = 0;
+        }
+        else
+        {
+          QQToast.a(getContext(), HardCodeUtil.a(2131716412), 0).a();
           WeishiGuideUtils.a(getContext(), this.g);
+          i = 1;
         }
+        StoryReportor.a("weishi_share", "cover_clk", 0, 0, new String[] { this.d, this.c, "weishi", this.e });
       }
-      if (this.jdField_a_of_type_Boolean)
+      else
       {
-        VideoFeedsWeiShiUtils.a(getContext(), this.f);
-        i = 0;
-        if (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-          break label535;
+        if (this.jdField_a_of_type_Boolean)
+        {
+          ((IVideoFeedsWeiShiUtils)QRoute.api(IVideoFeedsWeiShiUtils.class)).openWeishi(getContext(), this.f);
+          i = 0;
         }
-        k = ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().getIntExtra("REPORT_VIDEO_FEEDS_JUMP_FROM", 0);
-        j = ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().getIntExtra("VIDEO_FROM_TYPE", -1);
-        if ((j != 9) && (j != 12)) {
-          break label397;
+        else
+        {
+          QQToast.a(getContext(), -1, HardCodeUtil.a(2131716413), 0).b(getContext().getResources().getDimensionPixelSize(2131299168));
+          ((IVideoFeedsWeiShiUtils)QRoute.api(IVideoFeedsWeiShiUtils.class)).gotoWeishiDownload(getContext(), this.f);
+          i = 1;
         }
-        j = 1;
+        localObject = this.jdField_a_of_type_AndroidContentContext;
+        if ((localObject instanceof Activity))
+        {
+          k = ((Activity)localObject).getIntent().getIntExtra("REPORT_VIDEO_FEEDS_JUMP_FROM", 0);
+          j = ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().getIntExtra("VIDEO_FROM_TYPE", -1);
+          if ((j != 9) && (j != 12)) {
+            j = 0;
+          } else {
+            j = 1;
+          }
+          m = j;
+          j = k;
+        }
+        else
+        {
+          m = 0;
+          j = 0;
+        }
+        localJSONObject = new JSONObject();
       }
-      break;
     }
     for (;;)
     {
-      label242:
-      JSONObject localJSONObject = new JSONObject();
-      for (;;)
+      try
       {
-        try
-        {
-          if (!this.jdField_a_of_type_Boolean) {
-            continue;
-          }
-          str = "0";
-          localJSONObject.put("download", str);
-          if (j == 0) {
-            continue;
-          }
-          j = m;
-          VideoReporter.a(localJSONObject, j);
+        if (!this.jdField_a_of_type_Boolean) {
+          break label598;
         }
-        catch (JSONException localJSONException)
-        {
-          String str;
-          label397:
-          localJSONException.printStackTrace();
-          continue;
-          ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X80092A9", "0X80092A9", 0, 0, String.valueOf(k), "", "", VideoReporter.a(null, null, "", "", localJSONObject), false);
+        localObject = "0";
+        localJSONObject.put("download", localObject);
+        localObject = (IVideoReporter)QRoute.api(IVideoReporter.class);
+        if (m == 0) {
+          break label606;
         }
-        if (!"video_type_videopublic".equals(this.f)) {
-          continue;
-        }
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X80092A7", "0X80092A7", 0, 0, String.valueOf(k), "", "", VideoReporter.a(null, null, "", "", localJSONObject), false);
-        break;
-        QQToast.a(getContext(), -1, HardCodeUtil.a(2131716763), 0).b(getContext().getResources().getDimensionPixelSize(2131299166));
-        VideoFeedsWeiShiUtils.b(getContext(), this.f);
-        i = 1;
-        break label182;
-        j = 0;
-        break label242;
-        str = "1";
-        continue;
-        j = 0;
+        k = n;
+        ((IVideoReporter)localObject).addKanDianTagForWeishiReport(localJSONObject, k);
       }
-      break label117;
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
+      if (((IVideoFeedsWeiShiUtils)QRoute.api(IVideoFeedsWeiShiUtils.class)).isWeishi(this.f)) {
+        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X80092A7", "0X80092A7", 0, 0, String.valueOf(j), "", "", ((IVideoReporter)QRoute.api(IVideoReporter.class)).videoReportBaseR5(null, null, "", "", localJSONObject), false);
+      } else {
+        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X80092A9", "0X80092A9", 0, 0, String.valueOf(j), "", "", ((IVideoReporter)QRoute.api(IVideoReporter.class)).videoReportBaseR5(null, null, "", "", localJSONObject), false);
+      }
       dismiss();
-      a(-1);
-      if (!TextUtils.isEmpty(this.f)) {
-        break;
-      }
-      StoryReportor.a("weishi_share", "cover_close", 0, 0, new String[] { this.d, this.c, "weishi", this.e });
-      break;
-      label535:
-      j = 0;
+      a(i);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label598:
+      String str = "1";
+      continue;
+      label606:
       k = 0;
     }
   }
@@ -265,7 +272,7 @@ public class WeShiGuideDialog
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131562004);
+    setContentView(2131561837);
     b();
     setCanceledOnTouchOutside(false);
   }
@@ -280,7 +287,7 @@ public class WeShiGuideDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.WeShiGuideDialog
  * JD-Core Version:    0.7.0.1
  */

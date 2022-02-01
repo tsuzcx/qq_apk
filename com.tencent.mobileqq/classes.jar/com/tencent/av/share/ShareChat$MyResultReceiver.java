@@ -25,57 +25,87 @@ class ShareChat$MyResultReceiver
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
-    int i = 2;
     paramBundle = (ShareChat.SharePanel)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramBundle == null) {}
-    do
-    {
+    if (paramBundle == null) {
       return;
-      switch (this.jdField_a_of_type_Int)
-      {
-      default: 
-        return;
-      case 1: 
-        QLog.w("ShareChat", 1, "shareToQzone.onReceiveResult, resultCode[" + paramInt + "], seq[" + this.jdField_a_of_type_Long + "]");
-        j = this.b;
-        if (paramInt == -1) {}
-        for (;;)
-        {
-          paramBundle.a(1, j, i);
-          return;
-          i = 3;
-        }
-      case 2: 
-      case 3: 
-        QLog.w("ShareChat", 1, "shareToMobileQQ.onReceiveResult, resultCode[" + paramInt + "], seq[" + this.jdField_a_of_type_Long + "]");
-        j = this.b;
-        if (paramInt == -1) {}
-        for (;;)
-        {
-          paramBundle.a(0, j, i);
-          return;
-          i = 3;
-        }
-      case 4: 
-        QLog.w("ShareChat", 1, "startTroop2DCode.PARAM_QRForwardReceiver, resultCode[" + paramInt + "], seq[" + this.jdField_a_of_type_Long + "], mIHandle[" + paramBundle.a + "]");
-      }
-    } while (paramBundle.a == null);
-    paramBundle = paramBundle.a;
-    int j = this.b;
-    if (paramInt == -1) {}
-    for (;;)
-    {
-      paramBundle.b(5, j, i);
-      return;
-      i = 3;
     }
-    QLog.w("ShareChat", 1, "startTroop2DCode.PARAM_ActivityResultReceiver, resultCode[" + paramInt + "], seq[" + this.jdField_a_of_type_Long + "]");
-    paramBundle.a(5, this.b, 3);
+    int j = this.jdField_a_of_type_Int;
+    int i = 2;
+    StringBuilder localStringBuilder;
+    if (j != 1)
+    {
+      if ((j != 2) && (j != 3))
+      {
+        if (j != 4)
+        {
+          if (j != 5) {
+            return;
+          }
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("startTroop2DCode.PARAM_ActivityResultReceiver, resultCode[");
+          localStringBuilder.append(paramInt);
+          localStringBuilder.append("], seq[");
+          localStringBuilder.append(this.jdField_a_of_type_Long);
+          localStringBuilder.append("]");
+          QLog.w("ShareChat", 1, localStringBuilder.toString());
+          paramBundle.a(5, this.b, 3);
+          return;
+        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("startTroop2DCode.PARAM_QRForwardReceiver, resultCode[");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append("], seq[");
+        localStringBuilder.append(this.jdField_a_of_type_Long);
+        localStringBuilder.append("], mIHandle[");
+        localStringBuilder.append(paramBundle.a);
+        localStringBuilder.append("]");
+        QLog.w("ShareChat", 1, localStringBuilder.toString());
+        if (paramBundle.a != null)
+        {
+          paramBundle = paramBundle.a;
+          j = this.b;
+          if (paramInt != -1) {
+            i = 3;
+          }
+          paramBundle.b(5, j, i);
+        }
+      }
+      else
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("shareToMobileQQ.onReceiveResult, resultCode[");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append("], seq[");
+        localStringBuilder.append(this.jdField_a_of_type_Long);
+        localStringBuilder.append("]");
+        QLog.w("ShareChat", 1, localStringBuilder.toString());
+        j = this.b;
+        if (paramInt != -1) {
+          i = 3;
+        }
+        paramBundle.a(0, j, i);
+      }
+    }
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("shareToQzone.onReceiveResult, resultCode[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("], seq[");
+      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append("]");
+      QLog.w("ShareChat", 1, localStringBuilder.toString());
+      j = this.b;
+      if (paramInt != -1) {
+        i = 3;
+      }
+      paramBundle.a(1, j, i);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.share.ShareChat.MyResultReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -38,7 +38,7 @@ public class WatchTogetherVideoBgRender
   private Bitmap a(long paramLong)
   {
     Object localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-    Bitmap localBitmap = ((VideoController)localObject).a(String.valueOf(paramLong), String.valueOf(((VideoController)localObject).a().g), ((VideoController)localObject).a().F, true, false);
+    Bitmap localBitmap = ((VideoController)localObject).a(String.valueOf(paramLong), String.valueOf(((VideoController)localObject).a().f), ((VideoController)localObject).a().E, true, false);
     if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
       localObject = localBitmap;
@@ -46,7 +46,7 @@ public class WatchTogetherVideoBgRender
     }
     else
     {
-      localObject = UITools.a(this.jdField_a_of_type_AndroidContentContext, 2130840707);
+      localObject = UITools.a(this.jdField_a_of_type_AndroidContentContext, 2130840582);
     }
     return ImageUtil.a((Bitmap)localObject, ImageUtil.a(((Bitmap)localObject).getWidth()));
   }
@@ -55,7 +55,7 @@ public class WatchTogetherVideoBgRender
   {
     if (this.jdField_a_of_type_ComTencentAvOpenglTextureBitmapTexture == null)
     {
-      this.jdField_a_of_type_ComTencentAvOpenglTextureBitmapTexture = new BitmapTexture(UITools.a(this.jdField_a_of_type_AndroidContentContext, 2130842500));
+      this.jdField_a_of_type_ComTencentAvOpenglTextureBitmapTexture = new BitmapTexture(UITools.a(this.jdField_a_of_type_AndroidContentContext, 2130842399));
       this.jdField_a_of_type_ComTencentAvOpenglTextureBitmapTexture.a(false);
     }
     if (this.c == null)
@@ -65,7 +65,7 @@ public class WatchTogetherVideoBgRender
     }
     if (this.jdField_b_of_type_ComTencentAvOpenglTextureBitmapTexture == null)
     {
-      this.jdField_b_of_type_ComTencentAvOpenglTextureBitmapTexture = new BitmapTexture(UITools.a(this.jdField_a_of_type_AndroidContentContext, 2130842499));
+      this.jdField_b_of_type_ComTencentAvOpenglTextureBitmapTexture = new BitmapTexture(UITools.a(this.jdField_a_of_type_AndroidContentContext, 2130842398));
       this.jdField_b_of_type_ComTencentAvOpenglTextureBitmapTexture.a(false);
     }
     if (this.d == null)
@@ -78,28 +78,27 @@ public class WatchTogetherVideoBgRender
   private void a(GLCanvas paramGLCanvas, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     BitmapTexture localBitmapTexture1;
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       localBitmapTexture1 = this.jdField_a_of_type_ComTencentAvOpenglTextureBitmapTexture;
-      if (!paramBoolean) {
-        break label139;
-      }
-    }
-    label139:
-    for (BitmapTexture localBitmapTexture2 = this.c;; localBitmapTexture2 = this.d)
-    {
-      int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298050);
-      int j = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298050);
-      int k = paramInt1 + (paramInt3 - paramInt1) / 2;
-      int m = paramInt2 + (paramInt4 - paramInt2) / 2;
-      paramGLCanvas.a(k, m);
-      paramGLCanvas.a(localBitmapTexture1, 0, 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
-      paramGLCanvas.a(localBitmapTexture2, 0, 0, i, j);
-      paramGLCanvas.a(-k, -m);
-      return;
+    } else {
       localBitmapTexture1 = this.jdField_b_of_type_ComTencentAvOpenglTextureBitmapTexture;
-      break;
     }
+    BitmapTexture localBitmapTexture2;
+    if (paramBoolean) {
+      localBitmapTexture2 = this.c;
+    } else {
+      localBitmapTexture2 = this.d;
+    }
+    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298044);
+    int j = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298044);
+    paramInt3 -= paramInt1;
+    paramInt1 += paramInt3 / 2;
+    paramInt4 -= paramInt2;
+    paramInt2 += paramInt4 / 2;
+    paramGLCanvas.a(paramInt1, paramInt2);
+    paramGLCanvas.a(localBitmapTexture1, 0, 0, paramInt3, paramInt4);
+    paramGLCanvas.a(localBitmapTexture2, 0, 0, i, j);
+    paramGLCanvas.a(-paramInt1, -paramInt2);
   }
   
   private void b()
@@ -108,43 +107,46 @@ public class WatchTogetherVideoBgRender
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    int k = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298051);
-    int m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298049);
-    int n = (this.jdField_a_of_type_Int - k * 2 - 2) / 2;
-    int i = this.jdField_b_of_type_Int - m - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298052);
-    int j = AIOUtils.a(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) + WTogetherUtil.a(this.jdField_a_of_type_AndroidContentContext) + WTogetherUtil.a();
-    if (i < j) {
-      i = j;
+    int m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298045);
+    int i1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298043);
+    int n = (this.jdField_a_of_type_Int - m * 2 - 2) / 2;
+    int j = this.jdField_b_of_type_Int - i1 - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298046);
+    int k = AIOUtils.b(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) + WTogetherUtil.a(this.jdField_a_of_type_AndroidContentContext) + WTogetherUtil.a();
+    int i = j;
+    if (j < k) {
+      i = k;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect(n, i, n + k, i + m);
-      j = n + k + 2;
-      this.jdField_b_of_type_AndroidGraphicsRect = new Rect(j, i, k + j, m + i);
-      return;
-    }
+    j = n + m;
+    k = i1 + i;
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(n, i, j, k);
+    j += 2;
+    this.jdField_b_of_type_AndroidGraphicsRect = new Rect(j, i, m + j, k);
   }
   
   public void a()
   {
-    if (this.c != null)
+    BitmapTexture localBitmapTexture = this.c;
+    if (localBitmapTexture != null)
     {
-      this.c.a();
+      localBitmapTexture.a();
       this.c = null;
     }
-    if (this.d != null)
+    localBitmapTexture = this.d;
+    if (localBitmapTexture != null)
     {
-      this.d.a();
+      localBitmapTexture.a();
       this.d = null;
     }
-    if (this.jdField_a_of_type_ComTencentAvOpenglTextureBitmapTexture != null)
+    localBitmapTexture = this.jdField_a_of_type_ComTencentAvOpenglTextureBitmapTexture;
+    if (localBitmapTexture != null)
     {
-      this.jdField_a_of_type_ComTencentAvOpenglTextureBitmapTexture.a();
+      localBitmapTexture.a();
       this.jdField_a_of_type_ComTencentAvOpenglTextureBitmapTexture = null;
     }
-    if (this.jdField_b_of_type_ComTencentAvOpenglTextureBitmapTexture != null)
+    localBitmapTexture = this.jdField_b_of_type_ComTencentAvOpenglTextureBitmapTexture;
+    if (localBitmapTexture != null)
     {
-      this.jdField_b_of_type_ComTencentAvOpenglTextureBitmapTexture.a();
+      localBitmapTexture.a();
       this.jdField_b_of_type_ComTencentAvOpenglTextureBitmapTexture = null;
     }
   }
@@ -169,7 +171,7 @@ public class WatchTogetherVideoBgRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.gles.WatchTogetherVideoBgRender
  * JD-Core Version:    0.7.0.1
  */

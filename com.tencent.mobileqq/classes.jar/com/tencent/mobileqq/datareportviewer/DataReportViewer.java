@@ -60,24 +60,25 @@ public class DataReportViewer
     this.jdField_a_of_type_Float = 0.0F;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_a_of_type_Boolean = true;
-    LayoutInflater.from(paramContext).inflate(2131559724, this);
-    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131373634);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370481));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373633));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131371780));
-    this.b = ((Button)findViewById(2131364777));
-    this.c = ((Button)findViewById(2131377899));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131363145));
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131370459));
-    localLinearLayout.setBackgroundColor(getResources().getColor(2131165393));
+    LayoutInflater.from(paramContext).inflate(2131559600, this);
+    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131373207);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370141));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373206));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131371406));
+    this.b = ((Button)findViewById(2131364665));
+    this.c = ((Button)findViewById(2131377325));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131363086));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131370118));
+    localLinearLayout.setBackgroundColor(getResources().getColor(2131165367));
     int i = 0;
     while (i < localLinearLayout.getChildCount())
     {
-      View localView = localLinearLayout.getChildAt(i);
-      if ((localView instanceof TextView))
+      Object localObject = localLinearLayout.getChildAt(i);
+      if ((localObject instanceof TextView))
       {
-        ((TextView)localView).setTextColor(-1);
-        ((TextView)localView).setTypeface(Typeface.defaultFromStyle(1));
+        localObject = (TextView)localObject;
+        ((TextView)localObject).setTextColor(-1);
+        ((TextView)localObject).setTypeface(Typeface.defaultFromStyle(1));
       }
       i += 1;
     }
@@ -104,7 +105,7 @@ public class DataReportViewer
     }
     WindowManager localWindowManager = (WindowManager)getContext().getSystemService("window");
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(paramContext).inflate(2131559722, null));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(paramContext).inflate(2131559598, null));
     }
     DataReportViewer.ViewHolder localViewHolder = new DataReportViewer.ViewHolder(this, this.jdField_a_of_type_AndroidWidgetRelativeLayout);
     ReportData localReportData = (ReportData)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
@@ -118,17 +119,17 @@ public class DataReportViewer
     localViewHolder.h.setText(localReportData.r3);
     localViewHolder.i.setText(localReportData.r4);
     localViewHolder.j.setText(localReportData.r5);
-    ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365802)).setOnClickListener(new DataReportViewer.3(this, localWindowManager));
-    ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365796)).setOnClickListener(new DataReportViewer.4(this, paramContext, localReportData, localWindowManager));
-    if (Build.VERSION.SDK_INT >= 26) {}
-    for (paramInt = 2038;; paramInt = 2003)
-    {
-      paramContext = new WindowManager.LayoutParams(-1, -1, paramInt, 776, -2);
-      paramContext.gravity = 49;
-      localWindowManager.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, paramContext);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new DataReportViewer.5(this, localWindowManager));
-      return;
+    ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365639)).setOnClickListener(new DataReportViewer.3(this, localWindowManager));
+    ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365633)).setOnClickListener(new DataReportViewer.4(this, paramContext, localReportData, localWindowManager));
+    if (Build.VERSION.SDK_INT >= 26) {
+      paramInt = 2038;
+    } else {
+      paramInt = 2003;
     }
+    paramContext = new WindowManager.LayoutParams(-1, -1, paramInt, 776, -2);
+    paramContext.gravity = 49;
+    localWindowManager.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, paramContext);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new DataReportViewer.5(this, localWindowManager));
   }
   
   protected void a()
@@ -147,15 +148,12 @@ public class DataReportViewer
     {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
       a();
-    }
-    while (this.jdField_a_of_type_JavaUtilArrayList.size() <= 1) {
       return;
     }
-    if (!((ReportData)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 2)).isLightBlueBg) {}
-    for (boolean bool = true;; bool = false)
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 1)
     {
-      paramReportData.isLightBlueBg = bool;
-      return;
+      ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+      paramReportData.isLightBlueBg = (((ReportData)localArrayList.get(localArrayList.size() - 2)).isLightBlueBg ^ true);
     }
   }
   
@@ -189,16 +187,16 @@ public class DataReportViewer
     paramCanvas.setDrawFilter(new PaintFlagsDrawFilter(0, 3));
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
     Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-    float f2 = DisplayUtil.a(getContext(), 25.0F);
     float f3 = DisplayUtil.a(getContext(), 25.0F);
-    if (this.jdField_a_of_type_Float == 0.0F) {}
-    for (float f1 = getWidth();; f1 = this.jdField_a_of_type_Float)
-    {
-      localPath.addCircle(f2, f3, f1, Path.Direction.CW);
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
-      super.draw(paramCanvas);
-      return;
+    float f4 = DisplayUtil.a(getContext(), 25.0F);
+    float f2 = this.jdField_a_of_type_Float;
+    float f1 = f2;
+    if (f2 == 0.0F) {
+      f1 = getWidth();
     }
+    localPath.addCircle(f3, f4, f1, Path.Direction.CW);
+    paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+    super.draw(paramCanvas);
   }
   
   public void e() {}
@@ -207,28 +205,30 @@ public class DataReportViewer
   {
     switch (paramView.getId())
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      c();
-      continue;
+    default: 
+      break;
+    case 2131377325: 
+      PublicFragmentActivity.Launcher.a(getContext(), PublicFragmentActivity.class, DataReportSettingFragment.class);
+      break;
+    case 2131373206: 
       b();
-      continue;
+      break;
+    case 2131371406: 
+      c();
+      break;
+    case 2131364665: 
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_JavaUtilArrayList.clear();
       this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()));
       this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer$DataAdapter.notifyDataSetChanged();
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(new DataReportViewer.11(this), 3000L);
-      continue;
-      PublicFragmentActivity.Launcher.a(getContext(), PublicFragmentActivity.class, DataReportSettingFragment.class);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.DataReportViewer
  * JD-Core Version:    0.7.0.1
  */

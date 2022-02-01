@@ -22,30 +22,29 @@ class OpenDataCommonJsPlugin$10
       try
       {
         ((JSONObject)localObject).putOpt("list", new JSONArray());
-        for (;;)
-        {
-          this.val$req.ok((JSONObject)localObject);
-          return;
-          ((JSONObject)localObject).putOpt("list", paramJSONObject);
-        }
       }
       catch (JSONException paramJSONObject)
       {
-        for (;;)
-        {
-          paramJSONObject.printStackTrace();
-        }
+        paramJSONObject.printStackTrace();
       }
+      ((JSONObject)localObject).putOpt("list", paramJSONObject);
+      this.val$req.ok((JSONObject)localObject);
+      return;
     }
     long l = paramJSONObject.optLong("retCode");
     Object localObject = paramJSONObject.optString("errMsg");
-    QMLog.e("OpenDataCommonJsPlugin", "getReactiveFriendList fail, retCode: " + l + "; errMsg : " + (String)localObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getReactiveFriendList fail, retCode: ");
+    localStringBuilder.append(l);
+    localStringBuilder.append("; errMsg : ");
+    localStringBuilder.append((String)localObject);
+    QMLog.e("OpenDataCommonJsPlugin", localStringBuilder.toString());
     this.val$req.fail(paramJSONObject, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.OpenDataCommonJsPlugin.10
  * JD-Core Version:    0.7.0.1
  */

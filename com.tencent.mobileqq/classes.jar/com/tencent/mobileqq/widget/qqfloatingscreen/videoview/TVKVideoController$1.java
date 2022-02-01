@@ -18,10 +18,20 @@ class TVKVideoController$1
   {
     if (TVKVideoController.a(this.a) != null)
     {
-      int i = (int)(paramInt * TVKVideoController.a(this.a).getVideoDurationMs() / 100.0D);
+      double d1 = paramInt;
+      double d2 = TVKVideoController.a(this.a).getVideoDurationMs();
+      Double.isNaN(d1);
+      Double.isNaN(d2);
+      int i = (int)(d1 * d2 / 100.0D);
       TVKVideoController.a(this.a, i);
-      if (QLog.isColorLevel()) {
-        QLog.d("TVKVideoController", 2, "mOuterStatusListener notifyVideoSeek : " + paramInt + "  seekMillSec :" + i);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("mOuterStatusListener notifyVideoSeek : ");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append("  seekMillSec :");
+        localStringBuilder.append(i);
+        QLog.d("TVKVideoController", 2, localStringBuilder.toString());
       }
     }
   }
@@ -38,7 +48,7 @@ class TVKVideoController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qqfloatingscreen.videoview.TVKVideoController.1
  * JD-Core Version:    0.7.0.1
  */

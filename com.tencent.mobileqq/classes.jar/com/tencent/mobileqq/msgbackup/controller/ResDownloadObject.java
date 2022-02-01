@@ -10,10 +10,11 @@ public class ResDownloadObject
   
   public String a(IMsgBackupRichProcessor paramIMsgBackupRichProcessor, MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (str == null) {
       return paramIMsgBackupRichProcessor.a(paramMessageRecord, paramMsgBackupResEntity);
     }
-    return this.jdField_a_of_type_JavaLangString;
+    return str;
   }
   
   public boolean a()
@@ -23,7 +24,7 @@ public class ResDownloadObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.controller.ResDownloadObject
  * JD-Core Version:    0.7.0.1
  */

@@ -15,20 +15,28 @@ class QCircleReporter$5
   
   public void onReceive(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, APP_REPORT_TRANSFER.StDataReportRsp paramStDataReportRsp)
   {
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStDataReportRsp == null)) {
-      if (!TextUtils.isEmpty(paramString)) {
-        RFLog.e("QCircleReporter", RFLog.USR, "performCommandReport error:" + paramString + ",traceId:" + paramBaseRequest.getTraceId());
+    if ((paramBoolean) && (paramLong == 0L) && (paramStDataReportRsp != null))
+    {
+      if (((IAppSettingApi)QRoute.api(IAppSettingApi.class)).isDebugVersion()) {
+        RFLog.d("QCircleReporter", RFLog.CLR, "performCommandReport success!");
       }
-    }
-    while (!((IAppSettingApi)QRoute.api(IAppSettingApi.class)).isDebugVersion()) {
       return;
     }
-    RFLog.d("QCircleReporter", RFLog.CLR, "performCommandReport success!");
+    if (!TextUtils.isEmpty(paramString))
+    {
+      int i = RFLog.USR;
+      paramStDataReportRsp = new StringBuilder();
+      paramStDataReportRsp.append("performCommandReport error:");
+      paramStDataReportRsp.append(paramString);
+      paramStDataReportRsp.append(",traceId:");
+      paramStDataReportRsp.append(paramBaseRequest.getTraceId());
+      RFLog.e("QCircleReporter", i, paramStDataReportRsp.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleReporter.5
  * JD-Core Version:    0.7.0.1
  */

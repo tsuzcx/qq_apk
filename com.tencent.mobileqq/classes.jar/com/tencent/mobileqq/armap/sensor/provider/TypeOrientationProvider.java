@@ -64,18 +64,15 @@ public class TypeOrientationProvider
         this.d[2] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[2]));
         SensorUtil.a(SensorUtil.a(this.d), this.e);
         super.a(this.e);
+        return;
       }
+      a(this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[2]);
     }
-    else
-    {
-      return;
-    }
-    a(this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[2]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.sensor.provider.TypeOrientationProvider
  * JD-Core Version:    0.7.0.1
  */

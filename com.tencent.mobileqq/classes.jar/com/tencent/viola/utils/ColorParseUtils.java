@@ -28,7 +28,9 @@ public class ColorParseUtils
     FUNCTIONAL_RGBA_MAPPER = new ColorParseUtils.2();
     colorMap.put("aliceblue", Integer.valueOf(-984833));
     colorMap.put("antiquewhite", Integer.valueOf(-332841));
-    colorMap.put("aqua", Integer.valueOf(-16711681));
+    Object localObject1 = colorMap;
+    Object localObject2 = Integer.valueOf(-16711681);
+    ((Map)localObject1).put("aqua", localObject2);
     colorMap.put("aquamarine", Integer.valueOf(-8388652));
     colorMap.put("azure", Integer.valueOf(-983041));
     colorMap.put("beige", Integer.valueOf(-657956));
@@ -46,7 +48,7 @@ public class ColorParseUtils
     colorMap.put("cornflowerblue", Integer.valueOf(-10185235));
     colorMap.put("cornsilk", Integer.valueOf(-1828));
     colorMap.put("crimson", Integer.valueOf(-2354116));
-    colorMap.put("cyan", Integer.valueOf(-16711681));
+    colorMap.put("cyan", localObject2);
     colorMap.put("darkblue", Integer.valueOf(-16777077));
     colorMap.put("darkcyan", Integer.valueOf(-16741493));
     colorMap.put("darkgoldenrod", Integer.valueOf(-4684277));
@@ -61,25 +63,33 @@ public class ColorParseUtils
     colorMap.put("darksalmon", Integer.valueOf(-1468806));
     colorMap.put("darkseagreen", Integer.valueOf(-7357297));
     colorMap.put("darkslateblue", Integer.valueOf(-12042869));
-    colorMap.put("darkslategray", Integer.valueOf(-13676721));
-    colorMap.put("darkslategrey", Integer.valueOf(-13676721));
+    localObject1 = colorMap;
+    localObject2 = Integer.valueOf(-13676721);
+    ((Map)localObject1).put("darkslategray", localObject2);
+    colorMap.put("darkslategrey", localObject2);
     colorMap.put("darkturquoise", Integer.valueOf(-16724271));
     colorMap.put("darkviolet", Integer.valueOf(-7077677));
     colorMap.put("deeppink", Integer.valueOf(-60269));
     colorMap.put("deepskyblue", Integer.valueOf(-16728065));
-    colorMap.put("dimgray", Integer.valueOf(-9868951));
-    colorMap.put("dimgrey", Integer.valueOf(-9868951));
+    localObject1 = colorMap;
+    localObject2 = Integer.valueOf(-9868951);
+    ((Map)localObject1).put("dimgray", localObject2);
+    colorMap.put("dimgrey", localObject2);
     colorMap.put("dodgerblue", Integer.valueOf(-14774017));
     colorMap.put("firebrick", Integer.valueOf(-5103070));
     colorMap.put("floralwhite", Integer.valueOf(-1296));
     colorMap.put("forestgreen", Integer.valueOf(-14513374));
-    colorMap.put("fuchsia", Integer.valueOf(-65281));
+    localObject2 = colorMap;
+    localObject1 = Integer.valueOf(-65281);
+    ((Map)localObject2).put("fuchsia", localObject1);
     colorMap.put("gainsboro", Integer.valueOf(-2302756));
     colorMap.put("ghostwhite", Integer.valueOf(-460545));
     colorMap.put("gold", Integer.valueOf(-10496));
     colorMap.put("goldenrod", Integer.valueOf(-2448096));
-    colorMap.put("gray", Integer.valueOf(-8355712));
-    colorMap.put("grey", Integer.valueOf(-8355712));
+    localObject2 = colorMap;
+    Integer localInteger = Integer.valueOf(-8355712);
+    ((Map)localObject2).put("gray", localInteger);
+    colorMap.put("grey", localInteger);
     colorMap.put("green", Integer.valueOf(-16744448));
     colorMap.put("greenyellow", Integer.valueOf(-5374161));
     colorMap.put("honeydew", Integer.valueOf(-983056));
@@ -96,21 +106,25 @@ public class ColorParseUtils
     colorMap.put("lightcoral", Integer.valueOf(-1015680));
     colorMap.put("lightcyan", Integer.valueOf(-2031617));
     colorMap.put("lightgoldenrodyellow", Integer.valueOf(-329006));
-    colorMap.put("lightgray", Integer.valueOf(-2894893));
-    colorMap.put("lightgrey", Integer.valueOf(-2894893));
+    localObject2 = colorMap;
+    localInteger = Integer.valueOf(-2894893);
+    ((Map)localObject2).put("lightgray", localInteger);
+    colorMap.put("lightgrey", localInteger);
     colorMap.put("lightgreen", Integer.valueOf(-7278960));
     colorMap.put("lightpink", Integer.valueOf(-18751));
     colorMap.put("lightsalmon", Integer.valueOf(-24454));
     colorMap.put("lightseagreen", Integer.valueOf(-14634326));
     colorMap.put("lightskyblue", Integer.valueOf(-7876870));
-    colorMap.put("lightslategray", Integer.valueOf(-8943463));
-    colorMap.put("lightslategrey", Integer.valueOf(-8943463));
+    localObject2 = colorMap;
+    localInteger = Integer.valueOf(-8943463);
+    ((Map)localObject2).put("lightslategray", localInteger);
+    colorMap.put("lightslategrey", localInteger);
     colorMap.put("lightsteelblue", Integer.valueOf(-5192482));
     colorMap.put("lightyellow", Integer.valueOf(-32));
     colorMap.put("lime", Integer.valueOf(-16711936));
     colorMap.put("limegreen", Integer.valueOf(-13447886));
     colorMap.put("linen", Integer.valueOf(-331546));
-    colorMap.put("magenta", Integer.valueOf(-65281));
+    colorMap.put("magenta", localObject1);
     colorMap.put("maroon", Integer.valueOf(-8388608));
     colorMap.put("mediumaquamarine", Integer.valueOf(-10039894));
     colorMap.put("mediumblue", Integer.valueOf(-16777011));
@@ -183,7 +197,7 @@ public class ColorParseUtils
   
   private static int parseAlpha(float paramFloat)
   {
-    return (int)(255.0F * paramFloat);
+    return (int)(paramFloat * 255.0F);
   }
   
   public static int parseColor(String paramString)
@@ -193,41 +207,42 @@ public class ColorParseUtils
   
   public static int parseColor(String paramString, int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return paramInt;
-      paramString = paramString.trim();
-      if (isNamedColor(paramString)) {
-        return ((Integer)colorMap.get(paramString)).intValue();
-      }
-      Pair localPair = transHexColor(paramString);
-      if (((Boolean)localPair.first).booleanValue()) {
-        return ((Integer)localPair.second).intValue();
-      }
-      try
+    }
+    paramString = paramString.trim();
+    if (isNamedColor(paramString)) {
+      return ((Integer)colorMap.get(paramString)).intValue();
+    }
+    Object localObject = transHexColor(paramString);
+    if (((Boolean)((Pair)localObject).first).booleanValue()) {
+      return ((Integer)((Pair)localObject).second).intValue();
+    }
+    try
+    {
+      if (paramString.indexOf("rgba") == 0)
       {
-        if (paramString.indexOf("rgba") == 0)
-        {
-          localPair = transRGBAColor(paramString);
-          if (((Boolean)localPair.first).booleanValue()) {
-            return ((Integer)localPair.second).intValue();
-          }
-        }
-        if (paramString.indexOf("rgb") == 0)
-        {
-          paramString = transRGBColor(paramString);
-          if (((Boolean)paramString.first).booleanValue())
-          {
-            int i = ((Integer)paramString.second).intValue();
-            return i;
-          }
+        localObject = transRGBAColor(paramString);
+        if (((Boolean)((Pair)localObject).first).booleanValue()) {
+          return ((Integer)((Pair)localObject).second).intValue();
         }
       }
-      catch (RuntimeException paramString)
+      if (paramString.indexOf("rgb") == 0)
       {
-        ViolaLogUtils.e("ColorUtils", "parseColor " + paramString.getMessage());
+        paramString = transRGBColor(paramString);
+        if (((Boolean)paramString.first).booleanValue())
+        {
+          int i = ((Integer)paramString.second).intValue();
+          return i;
+        }
       }
+    }
+    catch (RuntimeException paramString)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("parseColor ");
+      ((StringBuilder)localObject).append(paramString.getMessage());
+      ViolaLogUtils.e("ColorUtils", ((StringBuilder)localObject).toString());
     }
     return paramInt;
   }
@@ -242,10 +257,10 @@ public class ColorParseUtils
       int k = Integer.parseInt(paramString.substring(3, 4), 16);
       return new Pair(Boolean.TRUE, Integer.valueOf(Color.rgb(i + (i << 4), j + (j << 4), k + (k << 4))));
     }
-    if ((paramString.length() == 7) || (paramString.length() == 9)) {
-      return new Pair(Boolean.TRUE, Integer.valueOf(Color.parseColor(paramString)));
+    if ((paramString.length() != 7) && (paramString.length() != 9)) {
+      return new Pair(Boolean.FALSE, Integer.valueOf(0));
     }
-    return new Pair(Boolean.FALSE, Integer.valueOf(0));
+    return new Pair(Boolean.TRUE, Integer.valueOf(Color.parseColor(paramString)));
   }
   
   @NonNull
@@ -270,7 +285,7 @@ public class ColorParseUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.utils.ColorParseUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -10,11 +10,13 @@ import com.tencent.falco.base.libapi.imageloader.ImageLoaderInterface;
 import com.tencent.falco.base.libapi.log.LogInterface;
 import com.tencent.falco.base.libapi.login.LoginInfo;
 import com.tencent.falco.base.libapi.login.LoginServiceInterface;
+import com.tencent.falco.base.libapi.lottie.LottieAnimationViewInterface;
+import com.tencent.falco.base.libapi.lottie.LottieCompositionInterface;
+import com.tencent.falco.base.libapi.lottie.LottieServiceInterface;
+import com.tencent.falco.base.libapi.lottie.LottieViewInterface;
 import com.tencent.falco.utils.StringUtil;
 import com.tencent.ilive.enginemanager.BizEngineMgr;
 import com.tencent.ilive.pages.room.RoomBizContext;
-import com.tencent.ilive.uicomponent.luxurygiftcomponent_interface.LottieServiceInterface;
-import com.tencent.ilive.uicomponent.luxurygiftcomponent_interface.LottieViewInterface;
 import com.tencent.ilive.uicomponent.luxurygiftcomponent_interface.LuxuryGiftAdapter;
 import com.tencent.ilive.uicomponent.luxurygiftcomponent_interface.model.LuxuryGiftInfo;
 import com.tencent.ilive.uicomponent.luxurygiftcomponent_interface.model.OnFetchH264GiftInfoListener;
@@ -34,27 +36,33 @@ class LiteLuxuryGiftModule$1
 {
   LiteLuxuryGiftModule$1(LiteLuxuryGiftModule paramLiteLuxuryGiftModule) {}
   
-  public LottieViewInterface createLottieView(Context paramContext, LuxuryGiftAdapter paramLuxuryGiftAdapter)
+  public LottieAnimationViewInterface createLottieAnimationView(Context paramContext)
   {
-    return LiteLuxuryGiftModule.access$1500(this.this$0).getLottieView(paramContext, paramLuxuryGiftAdapter);
+    return LiteLuxuryGiftModule.access$1400(this.this$0).a(paramContext);
   }
   
   public void fetchGiftResByGiftInfo(LuxuryGiftInfo paramLuxuryGiftInfo, OnFetchH264ResListener paramOnFetchH264ResListener)
   {
-    paramLuxuryGiftInfo = LiteLuxuryGiftModule.access$1200(this.this$0, paramLuxuryGiftInfo);
+    paramLuxuryGiftInfo = LiteLuxuryGiftModule.access$1100(this.this$0, paramLuxuryGiftInfo);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramLuxuryGiftInfo);
-    LiteLuxuryGiftModule.access$500(this.this$0).queryH264GiftRes(localArrayList, new LiteLuxuryGiftModule.1.2(this, paramOnFetchH264ResListener));
+    if (this.this$0.getGiftServiceInterface() == null) {
+      return;
+    }
+    this.this$0.getGiftServiceInterface().queryH264GiftRes(localArrayList, new LiteLuxuryGiftModule.1.2(this, paramOnFetchH264ResListener));
   }
   
   public void fetchH264GiftInfo(ArrayList<String> paramArrayList, OnFetchH264GiftInfoListener paramOnFetchH264GiftInfoListener)
   {
-    LiteLuxuryGiftModule.access$500(this.this$0).queryH264GiftInfo(paramArrayList, new LiteLuxuryGiftModule.1.3(this, paramOnFetchH264GiftInfoListener));
+    if (this.this$0.getGiftServiceInterface() == null) {
+      return;
+    }
+    this.this$0.getGiftServiceInterface().queryH264GiftInfo(paramArrayList, new LiteLuxuryGiftModule.1.3(this, paramOnFetchH264GiftInfoListener));
   }
   
   public long getAccountUin()
   {
-    return LiteLuxuryGiftModule.access$1000(this.this$0).getLoginInfo().uid;
+    return LiteLuxuryGiftModule.access$900(this.this$0).getLoginInfo().uid;
   }
   
   public ActivityLifeService getActivityLifeService()
@@ -64,8 +72,8 @@ class LiteLuxuryGiftModule$1
   
   public long getAnchorUin()
   {
-    if (LiteLuxuryGiftModule.access$700(this.this$0) != null) {
-      return LiteLuxuryGiftModule.access$800(this.this$0).getAnchorInfo().uid;
+    if (LiteLuxuryGiftModule.access$600(this.this$0) != null) {
+      return LiteLuxuryGiftModule.access$700(this.this$0).getAnchorInfo().uid;
     }
     return 0L;
   }
@@ -77,7 +85,7 @@ class LiteLuxuryGiftModule$1
   
   public Context getContext()
   {
-    return LiteLuxuryGiftModule.access$1100(this.this$0);
+    return LiteLuxuryGiftModule.access$1000(this.this$0);
   }
   
   public DataReportInterface getDataReport()
@@ -92,23 +100,21 @@ class LiteLuxuryGiftModule$1
   
   public String getGiftLogoUrl(String paramString, long paramLong)
   {
-    String str;
-    if (TextUtils.isEmpty(LiteLuxuryGiftModule.access$1400(this.this$0)))
+    if (TextUtils.isEmpty(LiteLuxuryGiftModule.access$1300(this.this$0)))
     {
-      str = null;
+      localObject = null;
       if (StringUtil.isEmpty(null)) {
-        break label98;
+        localObject = "https://now8.gtimg.com/huayang/resource/%s?timastamp=%d";
       }
+      LiteLuxuryGiftModule.access$1302(this.this$0, (String)localObject);
     }
-    for (;;)
-    {
-      LiteLuxuryGiftModule.access$1402(this.this$0, str);
-      paramString = String.format(LiteLuxuryGiftModule.access$1400(this.this$0), new Object[] { paramString, Long.valueOf(paramLong) });
-      LiteLuxuryGiftModule.access$900(this.this$0).d("LiteLuxuryGiftModule", "getGiftLogoUrl urlString = \n" + paramString, new Object[0]);
-      return paramString;
-      label98:
-      str = "https://now8.gtimg.com/huayang/resource/%s?timastamp=%d";
-    }
+    paramString = String.format(LiteLuxuryGiftModule.access$1300(this.this$0), new Object[] { paramString, Long.valueOf(paramLong) });
+    Object localObject = LiteLuxuryGiftModule.access$800(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getGiftLogoUrl urlString = \n");
+    localStringBuilder.append(paramString);
+    ((LogInterface)localObject).d("LiteLuxuryGiftModule", localStringBuilder.toString(), new Object[0]);
+    return paramString;
   }
   
   public HttpInterface getHttp()
@@ -126,26 +132,41 @@ class LiteLuxuryGiftModule$1
     return (LogInterface)BizEngineMgr.getInstance().getLiveEngine().getService(LogInterface.class);
   }
   
+  public LottieCompositionInterface getLottieComposition()
+  {
+    return LiteLuxuryGiftModule.access$1400(this.this$0).a();
+  }
+  
   public LuxuryGiftInfo getLuxuryGiftInfo(int paramInt, long paramLong, boolean paramBoolean)
   {
-    GiftInfo localGiftInfo = LiteLuxuryGiftModule.access$500(this.this$0).getGiftInfo((int)paramLong);
+    if (this.this$0.getGiftServiceInterface() == null) {
+      return null;
+    }
+    GiftInfo localGiftInfo = this.this$0.getGiftServiceInterface().getGiftInfo((int)paramLong);
     if (localGiftInfo == null) {
       return null;
     }
-    return LiteLuxuryGiftModule.access$600(this.this$0, localGiftInfo);
+    return LiteLuxuryGiftModule.access$500(this.this$0, localGiftInfo);
   }
   
   public String getLuxuryGiftLogoUrl(String paramString, long paramLong)
   {
-    String str = null;
-    if (!TextUtils.isEmpty(null)) {}
-    for (;;)
-    {
-      paramString = String.format(str, new Object[] { paramString, Long.valueOf(paramLong) });
-      LiteLuxuryGiftModule.access$900(this.this$0).d("LiteLuxuryGiftModule", "getGiftLogoUrl urlString = \n" + paramString, new Object[0]);
-      return paramString;
-      str = "https://now8.gtimg.com/huayang/resource/%s?timastamp=%d";
+    Object localObject = null;
+    if (TextUtils.isEmpty(null)) {
+      localObject = "https://now8.gtimg.com/huayang/resource/%s?timastamp=%d";
     }
+    paramString = String.format((String)localObject, new Object[] { paramString, Long.valueOf(paramLong) });
+    localObject = LiteLuxuryGiftModule.access$800(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getGiftLogoUrl urlString = \n");
+    localStringBuilder.append(paramString);
+    ((LogInterface)localObject).d("LiteLuxuryGiftModule", localStringBuilder.toString(), new Object[0]);
+    return paramString;
+  }
+  
+  public LottieViewInterface getLuxuryGiftLottieView(Context paramContext)
+  {
+    return LiteLuxuryGiftModule.access$1400(this.this$0).a(paramContext);
   }
   
   public JSONObject getWhiteListJson()
@@ -155,7 +176,10 @@ class LiteLuxuryGiftModule$1
   
   public void queryH264GiftInfo(ArrayList<String> paramArrayList)
   {
-    LiteLuxuryGiftModule.access$500(this.this$0).queryH264GiftInfo(paramArrayList, null);
+    if (this.this$0.getGiftServiceInterface() == null) {
+      return;
+    }
+    this.this$0.getGiftServiceInterface().queryH264GiftInfo(paramArrayList, null);
   }
   
   public void queryH264GiftRes(List<LuxuryGiftInfo> paramList)
@@ -165,19 +189,25 @@ class LiteLuxuryGiftModule$1
     while (paramList.hasNext())
     {
       LuxuryGiftInfo localLuxuryGiftInfo = (LuxuryGiftInfo)paramList.next();
-      localArrayList.add(LiteLuxuryGiftModule.access$1200(this.this$0, localLuxuryGiftInfo));
+      localArrayList.add(LiteLuxuryGiftModule.access$1100(this.this$0, localLuxuryGiftInfo));
     }
-    LiteLuxuryGiftModule.access$500(this.this$0).queryH264GiftRes(localArrayList, null);
+    if (this.this$0.getGiftServiceInterface() == null) {
+      return;
+    }
+    this.this$0.getGiftServiceInterface().queryH264GiftRes(localArrayList, null);
   }
   
   public void queryLuxuryGiftInfo(long paramLong, OnQueryLGInfoListener paramOnQueryLGInfoListener)
   {
-    LiteLuxuryGiftModule.access$500(this.this$0).queryGiftInfo((int)paramLong, new LiteLuxuryGiftModule.1.1(this, paramOnQueryLGInfoListener));
+    if (this.this$0.getGiftServiceInterface() == null) {
+      return;
+    }
+    this.this$0.getGiftServiceInterface().queryGiftInfo((int)paramLong, new LiteLuxuryGiftModule.1.1(this, paramOnQueryLGInfoListener));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.bizmodule.LiteLuxuryGiftModule.1
  * JD-Core Version:    0.7.0.1
  */

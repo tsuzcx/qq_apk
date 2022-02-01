@@ -14,13 +14,17 @@ class NativeInvokeHelper$1
     }
     catch (Exception localException)
     {
-      throw new RuntimeException(this.val$target + "Invoker " + this.val$invoker.toString(), localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.val$target);
+      localStringBuilder.append("Invoker ");
+      localStringBuilder.append(this.val$invoker.toString());
+      throw new RuntimeException(localStringBuilder.toString(), localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.bridge.NativeInvokeHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,33 @@
 package com.huawei.hms.api;
 
-import android.os.Handler;
-import android.os.Looper;
-import com.huawei.hms.support.api.ResolveResult;
-import com.huawei.hms.support.api.client.ResultCallback;
-import com.huawei.hms.support.api.entity.core.DisconnectResp;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.huawei.hms.support.log.HMSLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class HuaweiApiClientImpl$b
-  implements ResultCallback<ResolveResult<DisconnectResp>>
+  implements Handler.Callback
 {
-  private HuaweiApiClientImpl$b(HuaweiApiClientImpl paramHuaweiApiClientImpl) {}
+  HuaweiApiClientImpl$b(HuaweiApiClientImpl paramHuaweiApiClientImpl) {}
   
-  public void a(ResolveResult<DisconnectResp> paramResolveResult)
+  public boolean handleMessage(Message paramMessage)
   {
-    new Handler(Looper.getMainLooper()).post(new HuaweiApiClientImpl.b.1(this, paramResolveResult));
+    if ((paramMessage != null) && (paramMessage.what == 2))
+    {
+      HMSLog.e("HuaweiApiClientImpl", "In connect, bind core service time out");
+      if (HuaweiApiClientImpl.b(this.a).get() == 5)
+      {
+        HuaweiApiClientImpl.a(this.a, 1);
+        HuaweiApiClientImpl.c(this.a);
+      }
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.api.HuaweiApiClientImpl.b
  * JD-Core Version:    0.7.0.1
  */

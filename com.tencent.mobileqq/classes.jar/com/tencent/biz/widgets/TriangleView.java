@@ -24,23 +24,28 @@ public class TriangleView
     this.b.setStrokeWidth(2.0F);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int i = getMeasuredHeight();
-    int j = 150 + i * 2;
-    int k = 150 + i;
-    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(k, 0.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo('', i);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(j, i);
+    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+    float f1 = i + 150;
+    localPath.moveTo(f1, 0.0F);
+    localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+    float f2 = '';
+    float f3 = i;
+    localPath.lineTo(f2, f3);
+    localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+    float f4 = i * 2 + 150;
+    localPath.lineTo(f4, f3);
     this.jdField_a_of_type_AndroidGraphicsPath.close();
     paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
     this.b.setStrokeWidth(1.0F);
-    paramCanvas.drawLine(k, 0.0F, '', i, this.b);
-    paramCanvas.drawLine(k, 0.0F, j, i, this.b);
+    paramCanvas.drawLine(f1, 0.0F, f2, f3, this.b);
+    paramCanvas.drawLine(f1, 0.0F, f4, f3, this.b);
     this.b.setStrokeWidth(2.0F);
-    paramCanvas.drawLine(0.0F, i, '', i, this.b);
-    paramCanvas.drawLine(j, i, getMeasuredWidth(), i, this.b);
+    paramCanvas.drawLine(0.0F, f3, f2, f3, this.b);
+    paramCanvas.drawLine(f4, f3, getMeasuredWidth(), f3, this.b);
   }
   
   public void setColor(int paramInt)
@@ -50,7 +55,7 @@ public class TriangleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.widgets.TriangleView
  * JD-Core Version:    0.7.0.1
  */

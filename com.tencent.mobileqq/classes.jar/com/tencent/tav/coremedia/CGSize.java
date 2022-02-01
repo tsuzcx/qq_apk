@@ -25,23 +25,37 @@ public class CGSize
   
   public boolean equals(Object paramObject)
   {
-    if (!(paramObject instanceof CGSize)) {
+    boolean bool1 = paramObject instanceof CGSize;
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
     }
-    if ((((CGSize)paramObject).width == this.width) && (((CGSize)paramObject).height == this.height)) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    paramObject = (CGSize)paramObject;
+    bool1 = bool2;
+    if (paramObject.width == this.width)
+    {
+      bool1 = bool2;
+      if (paramObject.height == this.height) {
+        bool1 = true;
+      }
     }
+    return bool1;
   }
   
   public String toString()
   {
-    return "[" + this.width + "," + this.height + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.width);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.height);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tav.coremedia.CGSize
  * JD-Core Version:    0.7.0.1
  */

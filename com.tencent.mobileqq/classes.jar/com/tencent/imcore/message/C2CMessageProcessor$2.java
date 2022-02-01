@@ -15,7 +15,7 @@ class C2CMessageProcessor$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.C2CMessageProcessor.2
  * JD-Core Version:    0.7.0.1
  */

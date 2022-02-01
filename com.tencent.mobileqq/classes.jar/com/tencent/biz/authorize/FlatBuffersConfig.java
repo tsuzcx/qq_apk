@@ -1,6 +1,7 @@
 package com.tencent.biz.authorize;
 
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import com.tencent.biz.AuthorizeConfig;
 import com.tencent.biz.flatbuffers.FbArray;
@@ -45,29 +46,24 @@ public class FlatBuffersConfig
   
   public static int a(FbArray paramFbArray, int paramInt1, int paramInt2, String paramString)
   {
-    int k = 1;
-    int m = 0;
-    int n = paramString.length();
+    int j = paramString.length();
     int i = 0;
-    while ((i < n) && (paramInt1 < paramInt2))
+    while ((i < j) && (paramInt1 < paramInt2))
     {
-      int i1 = paramFbArray.a(paramInt1);
-      int j;
-      if (i1 < 0) {
-        j = -1;
+      int k = paramFbArray.a(paramInt1);
+      if (k < 0) {
+        return -1;
       }
-      do
-      {
-        return j;
-        j = k;
-      } while (i1 != paramString.charAt(i));
+      if (k != paramString.charAt(i)) {
+        return 1;
+      }
       i += 1;
       paramInt1 += 1;
     }
-    if (paramInt1 == paramInt2) {}
-    for (paramInt1 = m;; paramInt1 = 1) {
-      return paramInt1;
+    if (paramInt1 == paramInt2) {
+      return 0;
     }
+    return 1;
   }
   
   public static void a(OutputStream paramOutputStream, ByteBuffer paramByteBuffer)
@@ -88,35 +84,46 @@ public class FlatBuffersConfig
     paramStringBuilder.append("\"");
     int j = paramString.length();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       char c = paramString.charAt(i);
-      switch (c)
+      if (c != '\f')
       {
-      default: 
-        if (c <= '\037') {
-          paramStringBuilder.append(String.format("\\u%04x", new Object[] { Integer.valueOf(c) }));
+        if (c != '\r')
+        {
+          if ((c != '"') && (c != '/') && (c != '\\')) {}
+          switch (c)
+          {
+          default: 
+            if (c <= '\037') {
+              paramStringBuilder.append(String.format("\\u%04x", new Object[] { Integer.valueOf(c) }));
+            } else {
+              paramStringBuilder.append(c);
+            }
+            break;
+          case '\n': 
+            paramStringBuilder.append("\\n");
+            break;
+          case '\t': 
+            paramStringBuilder.append("\\t");
+            break;
+          case '\b': 
+            paramStringBuilder.append("\\b");
+            break;
+            paramStringBuilder.append('\\');
+            paramStringBuilder.append(c);
+            break;
+          }
         }
-        break;
+        else
+        {
+          paramStringBuilder.append("\\r");
+        }
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        paramStringBuilder.append('\\').append(c);
-        continue;
-        paramStringBuilder.append("\\t");
-        continue;
-        paramStringBuilder.append("\\b");
-        continue;
-        paramStringBuilder.append("\\n");
-        continue;
-        paramStringBuilder.append("\\r");
-        continue;
+      else {
         paramStringBuilder.append("\\f");
-        continue;
-        paramStringBuilder.append(c);
       }
+      i += 1;
     }
     paramStringBuilder.append("\"");
   }
@@ -129,52 +136,47 @@ public class FlatBuffersConfig
       paramStringBuilder.append(",");
       paramStringBuilder.append(paramString2);
       paramStringBuilder.append(":");
-      if (!paramBoolean) {
+      if (!paramBoolean)
+      {
         paramStringBuilder.append(paramString1);
+        return;
       }
+      a(paramString1, paramStringBuilder);
     }
-    else
-    {
-      return;
-    }
-    a(paramString1, paramStringBuilder);
   }
   
   public static boolean a(FbArray paramFbArray, String paramString)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((paramFbArray.a() == 0) || (TextUtils.isEmpty(paramString))) {
-      bool1 = false;
-    }
-    int i;
-    do
+    int i = paramFbArray.a();
+    boolean bool3 = false;
+    boolean bool2 = false;
+    boolean bool1 = bool3;
+    if (i != 0)
     {
-      do
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
+      }
+      i = paramFbArray.a();
+      if ((i == 1) && (paramFbArray.a(0) == 42)) {
+        return true;
+      }
+      if ((i == 3) && (a(paramFbArray, 0, i, "*.*") == 0))
       {
-        do
-        {
-          return bool1;
-          i = paramFbArray.a();
-          if (i != 1) {
-            break;
-          }
-          bool1 = bool2;
-        } while (paramFbArray.a(0) == 42);
-        if ((i != 3) || (a(paramFbArray, 0, i, "*.*") != 0)) {
-          break;
-        }
         bool1 = bool2;
-      } while (paramString.indexOf('.') != -1);
-      return false;
-      if (paramFbArray.a(0) == 42) {
+        if (paramString.indexOf('.') != -1) {
+          bool1 = true;
+        }
+        return bool1;
+      }
+      if (paramFbArray.a(0) == 42)
+      {
         i = b(paramFbArray, 1, i, paramString);
       }
-      while (i < 0)
+      else
       {
-        return AuthorizeConfig.b(paramFbArray.a(), paramString);
-        if (paramFbArray.a(i - 1) == 42) {
-          i = a(paramFbArray, 0, i - 1, paramString);
+        int j = i - 1;
+        if (paramFbArray.a(j) == 42) {
+          i = a(paramFbArray, 0, j, paramString);
         } else {
           try
           {
@@ -191,37 +193,39 @@ public class FlatBuffersConfig
           }
         }
       }
-      bool1 = bool2;
-    } while (i == 0);
-    return false;
+      if (i < 0) {
+        return AuthorizeConfig.b(paramFbArray.a(), paramString);
+      }
+      bool1 = bool3;
+      if (i == 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public static int b(FbArray paramFbArray, int paramInt1, int paramInt2, String paramString)
   {
-    int k = 1;
-    int i = paramString.length() - 1;
-    int m;
-    int j;
-    if ((i >= 0) && (paramInt1 < paramInt2))
+    int i = paramString.length();
+    int j = 1;
+    i -= 1;
+    while ((i >= 0) && (paramInt1 < paramInt2))
     {
-      m = paramFbArray.a(paramInt2 - 1);
-      if (m < 0) {
-        j = -1;
+      int k = paramFbArray.a(paramInt2 - 1);
+      if (k < 0) {
+        return -1;
       }
-    }
-    do
-    {
-      do
-      {
-        return j;
-        j = k;
-      } while (m != paramString.charAt(i));
+      if (k != paramString.charAt(i)) {
+        return 1;
+      }
       i -= 1;
       paramInt2 -= 1;
-      break;
-      j = k;
-    } while (paramInt1 != paramInt2);
-    return 0;
+    }
+    i = j;
+    if (paramInt1 == paramInt2) {
+      i = 0;
+    }
+    return i;
   }
   
   public int a(String paramString1, String paramString2)
@@ -231,45 +235,46 @@ public class FlatBuffersConfig
       return a(false, true);
     }
     localObject = ((FbTable)localObject).a(0);
-    if ((localObject == null) || (((FbArray)localObject).a() == 0)) {
-      return a(false, true);
-    }
-    FbTable localFbTable = new FbTable();
-    FbArray localFbArray1 = new FbArray();
-    FbArray localFbArray2 = new FbArray();
-    FbArray localFbArray3 = new FbArray();
-    int m = ((FbArray)localObject).a();
-    int i = 0;
-    while (i < m)
+    if ((localObject != null) && (((FbArray)localObject).a() != 0))
     {
-      ((FbArray)localObject).a(i, localFbTable);
-      localFbTable.a(0, localFbArray1);
-      int n = localFbArray1.a();
-      int j = 0;
-      if (j < n)
+      FbTable localFbTable = new FbTable();
+      FbArray localFbArray1 = new FbArray();
+      FbArray localFbArray2 = new FbArray();
+      FbArray localFbArray3 = new FbArray();
+      int m = ((FbArray)localObject).a();
+      int i = 0;
+      while (i < m)
       {
-        localFbArray1.a(j, localFbArray3);
-        if (!a(localFbArray3, paramString1)) {}
-        for (;;)
+        ((FbArray)localObject).a(i, localFbTable);
+        localFbTable.a(0, localFbArray1);
+        int n = localFbArray1.a();
+        int j = 0;
+        while (j < n)
         {
-          j += 1;
-          break;
-          localFbTable.a(1, localFbArray2);
-          int k = 0;
-          int i1 = localFbArray2.a();
-          while (k < i1)
-          {
-            localFbArray2.a(k, localFbArray3);
-            if (a(localFbArray3, paramString2)) {
-              return a(true, false);
+          localFbArray1.a(j, localFbArray3);
+          if (a(localFbArray3, paramString1)) {
+            for (;;)
+            {
+              localFbTable.a(1, localFbArray2);
+              int i1 = localFbArray2.a();
+              int k = 0;
+              while (k < i1)
+              {
+                localFbArray2.a(k, localFbArray3);
+                if (a(localFbArray3, paramString2)) {
+                  return a(true, false);
+                }
+                k += 1;
+              }
             }
-            k += 1;
           }
+          j += 1;
         }
+        i += 1;
       }
-      i += 1;
+      return a(false, false);
     }
-    return a(false, false);
+    return a(false, true);
   }
   
   public FbTable a()
@@ -298,684 +303,363 @@ public class FlatBuffersConfig
     return localFbTable.a(1);
   }
   
-  /* Error */
-  public String a(android.content.SharedPreferences.Editor paramEditor, String paramString)
+  public String a(SharedPreferences.Editor paramEditor, String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: aload_0
-    //   4: getfield 56	com/tencent/biz/authorize/FlatBuffersConfig:jdField_a_of_type_ComTencentBizFlatbuffersFlatBuffersParser	Lcom/tencent/biz/flatbuffers/FlatBuffersParser;
-    //   7: aload_2
-    //   8: ldc 253
-    //   10: invokevirtual 256	com/tencent/biz/flatbuffers/FlatBuffersParser:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/nio/ByteBuffer;
-    //   13: iconst_1
-    //   14: invokevirtual 259	com/tencent/biz/authorize/FlatBuffersConfig:a	(Ljava/nio/ByteBuffer;Z)Ljava/lang/String;
-    //   17: astore 5
-    //   19: aload_0
-    //   20: getfield 229	com/tencent/biz/authorize/FlatBuffersConfig:jdField_a_of_type_ComTencentBizFlatbuffersFbTable	Lcom/tencent/biz/flatbuffers/FbTable;
-    //   23: ifnonnull +34 -> 57
-    //   26: ldc 194
-    //   28: iconst_1
-    //   29: ldc_w 261
-    //   32: invokestatic 265	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   35: aload_0
-    //   36: invokevirtual 267	com/tencent/biz/authorize/FlatBuffersConfig:a	()Ljava/io/File;
-    //   39: invokevirtual 270	java/io/File:delete	()Z
-    //   42: pop
-    //   43: aload_0
-    //   44: getfield 272	com/tencent/biz/authorize/FlatBuffersConfig:jdField_a_of_type_ComTencentBizAuthorizeJsonConfig	Lcom/tencent/biz/authorize/JsonConfig;
-    //   47: aload_1
-    //   48: aload_2
-    //   49: invokevirtual 276	com/tencent/biz/authorize/JsonConfig:a	(Landroid/content/SharedPreferences$Editor;Ljava/lang/String;)Ljava/lang/String;
-    //   52: astore_1
-    //   53: aload_0
-    //   54: monitorexit
-    //   55: aload_1
-    //   56: areturn
-    //   57: aload_0
-    //   58: getfield 229	com/tencent/biz/authorize/FlatBuffersConfig:jdField_a_of_type_ComTencentBizFlatbuffersFbTable	Lcom/tencent/biz/flatbuffers/FbTable;
-    //   61: iconst_5
-    //   62: ldc2_w 48
-    //   65: invokevirtual 279	com/tencent/biz/flatbuffers/FbTable:a	(IJ)J
-    //   68: lstore_3
-    //   69: ldc 194
-    //   71: iconst_1
-    //   72: new 121	java/lang/StringBuilder
-    //   75: dup
-    //   76: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   79: ldc_w 282
-    //   82: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   85: lload_3
-    //   86: invokevirtual 285	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   89: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   92: invokestatic 265	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   95: aload_1
-    //   96: ldc_w 290
-    //   99: lload_3
-    //   100: invokeinterface 296 4 0
-    //   105: pop
-    //   106: aload_0
-    //   107: getfield 272	com/tencent/biz/authorize/FlatBuffersConfig:jdField_a_of_type_ComTencentBizAuthorizeJsonConfig	Lcom/tencent/biz/authorize/JsonConfig;
-    //   110: invokevirtual 298	com/tencent/biz/authorize/JsonConfig:a	()V
-    //   113: aload 5
-    //   115: astore_1
-    //   116: goto -63 -> 53
-    //   119: astore_1
-    //   120: aload_0
-    //   121: monitorexit
-    //   122: aload_1
-    //   123: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	124	0	this	FlatBuffersConfig
-    //   0	124	1	paramEditor	android.content.SharedPreferences.Editor
-    //   0	124	2	paramString	String
-    //   68	32	3	l	long
-    //   17	97	5	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   2	53	119	finally
-    //   57	113	119	finally
+    try
+    {
+      String str = a(this.jdField_a_of_type_ComTencentBizFlatbuffersFlatBuffersParser.a(paramString, "namespace com.tencent.biz.flatbuffers;\n\nattribute \"qq_map\";\n\ntable JsApi {\n\tmatch:[string];\n\tapi:[string];\n}\n\ntable Extra (qq_map) {\n}\n\ntable Schema {\n\tmatch:[string];\n\tscheme:[string];\n}\n\ntable AuthorizeTable {\n  allow:[JsApi];\n  offline:Extra;\n  ext:Extra;\n  jump:Extra;\n  schemes:[Schema];\n  publishSeq:long;\n  \n  skey:[string];\n  pskey:[string];\n  a1:[string];\n  a2:[string];\n  ptlogin2:[string];\n  pt4_token:[string];\n  schemes_map:string;\n}\n\nroot_type AuthorizeTable;\n"), true);
+      if (this.jdField_a_of_type_ComTencentBizFlatbuffersFbTable == null)
+      {
+        QLog.i("AuthorizeConfig", 1, "flatbuffers commitConfig failed ");
+        a().delete();
+        paramEditor = this.jdField_a_of_type_ComTencentBizAuthorizeJsonConfig.a(paramEditor, paramString);
+        return paramEditor;
+      }
+      long l = this.jdField_a_of_type_ComTencentBizFlatbuffersFbTable.a(5, -1L);
+      paramString = new StringBuilder();
+      paramString.append("flatbuffers commitConfig success with publishSeq: ");
+      paramString.append(l);
+      QLog.i("AuthorizeConfig", 1, paramString.toString());
+      paramEditor.putLong("publishSeq", l);
+      this.jdField_a_of_type_ComTencentBizAuthorizeJsonConfig.a();
+      return str;
+    }
+    finally {}
   }
   
-  /* Error */
   public String a(ByteBuffer paramByteBuffer, boolean paramBoolean)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ifnonnull +11 -> 14
-    //   6: aconst_null
-    //   7: astore 7
-    //   9: aload_0
-    //   10: monitorexit
-    //   11: aload 7
-    //   13: areturn
-    //   14: ldc_w 300
-    //   17: astore 7
-    //   19: aload 7
-    //   21: astore 5
-    //   23: aload_1
-    //   24: invokestatic 303	com/tencent/biz/flatbuffers/FbTable:a	(Ljava/nio/ByteBuffer;)Lcom/tencent/biz/flatbuffers/FbTable;
-    //   27: astore 9
-    //   29: aload 9
-    //   31: ifnonnull +167 -> 198
-    //   34: aload 7
-    //   36: astore 5
-    //   38: new 121	java/lang/StringBuilder
-    //   41: dup
-    //   42: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   45: ldc_w 300
-    //   48: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   51: ldc_w 305
-    //   54: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   57: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   60: astore 6
-    //   62: aload 6
-    //   64: astore 5
-    //   66: aload 5
-    //   68: invokestatic 173	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   71: ifeq +10 -> 81
-    //   74: aload_0
-    //   75: getfield 229	com/tencent/biz/authorize/FlatBuffersConfig:jdField_a_of_type_ComTencentBizFlatbuffersFbTable	Lcom/tencent/biz/flatbuffers/FbTable;
-    //   78: ifnonnull +878 -> 956
-    //   81: ldc 194
-    //   83: iconst_1
-    //   84: new 121	java/lang/StringBuilder
-    //   87: dup
-    //   88: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   91: ldc_w 307
-    //   94: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   97: aload 5
-    //   99: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   102: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   105: invokestatic 309	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   108: iconst_1
-    //   109: invokestatic 312	com/tencent/biz/flatbuffers/FlatBuffersParser:b	(Z)V
-    //   112: aload_0
-    //   113: invokevirtual 314	com/tencent/biz/authorize/FlatBuffersConfig:b	()Ljava/io/File;
-    //   116: astore 6
-    //   118: iload_2
-    //   119: ifne +860 -> 979
-    //   122: aload_0
-    //   123: invokevirtual 267	com/tencent/biz/authorize/FlatBuffersConfig:a	()Ljava/io/File;
-    //   126: invokevirtual 270	java/io/File:delete	()Z
-    //   129: istore_2
-    //   130: ldc 194
-    //   132: iconst_1
-    //   133: new 121	java/lang/StringBuilder
-    //   136: dup
-    //   137: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   140: ldc_w 316
-    //   143: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   146: iload_2
-    //   147: invokevirtual 319	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   150: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   153: invokestatic 309	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   156: iconst_0
-    //   157: istore_2
-    //   158: aload 5
-    //   160: astore 7
-    //   162: aload 6
-    //   164: ifnull -155 -> 9
-    //   167: new 321	com/tencent/biz/authorize/FlatBuffersConfig$2
-    //   170: dup
-    //   171: aload_0
-    //   172: aload_1
-    //   173: aload 6
-    //   175: iload_2
-    //   176: invokespecial 324	com/tencent/biz/authorize/FlatBuffersConfig$2:<init>	(Lcom/tencent/biz/authorize/FlatBuffersConfig;Ljava/nio/ByteBuffer;Ljava/io/File;Z)V
-    //   179: bipush 8
-    //   181: aconst_null
-    //   182: iconst_1
-    //   183: invokestatic 330	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
-    //   186: aload 5
-    //   188: astore 7
-    //   190: goto -181 -> 9
-    //   193: astore_1
-    //   194: aload_0
-    //   195: monitorexit
-    //   196: aload_1
-    //   197: athrow
-    //   198: aload 7
-    //   200: astore 5
-    //   202: new 65	com/tencent/biz/flatbuffers/FbArray
-    //   205: dup
-    //   206: invokespecial 216	com/tencent/biz/flatbuffers/FbArray:<init>	()V
-    //   209: astore 10
-    //   211: aload 7
-    //   213: astore 5
-    //   215: aload 9
-    //   217: iconst_0
-    //   218: aload 10
-    //   220: invokevirtual 222	com/tencent/biz/flatbuffers/FbTable:a	(ILcom/tencent/biz/flatbuffers/FbArray;)Lcom/tencent/biz/flatbuffers/FbArray;
-    //   223: ifnonnull +608 -> 831
-    //   226: aload 7
-    //   228: astore 5
-    //   230: new 121	java/lang/StringBuilder
-    //   233: dup
-    //   234: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   237: ldc_w 300
-    //   240: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   243: ldc_w 332
-    //   246: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   249: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   252: astore 6
-    //   254: aload 6
-    //   256: astore 7
-    //   258: aload 6
-    //   260: astore 5
-    //   262: aload 9
-    //   264: iconst_1
-    //   265: invokevirtual 250	com/tencent/biz/flatbuffers/FbTable:a	(I)Ljava/lang/String;
-    //   268: ifnonnull +30 -> 298
-    //   271: aload 6
-    //   273: astore 5
-    //   275: new 121	java/lang/StringBuilder
-    //   278: dup
-    //   279: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   282: aload 6
-    //   284: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   287: ldc_w 334
-    //   290: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   293: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   296: astore 7
-    //   298: aload 7
-    //   300: astore 6
-    //   302: aload 7
-    //   304: astore 5
-    //   306: aload 9
-    //   308: iconst_2
-    //   309: invokevirtual 250	com/tencent/biz/flatbuffers/FbTable:a	(I)Ljava/lang/String;
-    //   312: ifnonnull +30 -> 342
-    //   315: aload 7
-    //   317: astore 5
-    //   319: new 121	java/lang/StringBuilder
-    //   322: dup
-    //   323: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   326: aload 7
-    //   328: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   331: ldc_w 336
-    //   334: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   337: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   340: astore 6
-    //   342: aload 6
-    //   344: astore 7
-    //   346: aload 6
-    //   348: astore 5
-    //   350: aload 9
-    //   352: iconst_3
-    //   353: invokevirtual 250	com/tencent/biz/flatbuffers/FbTable:a	(I)Ljava/lang/String;
-    //   356: ifnonnull +30 -> 386
-    //   359: aload 6
-    //   361: astore 5
-    //   363: new 121	java/lang/StringBuilder
-    //   366: dup
-    //   367: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   370: aload 6
-    //   372: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   375: ldc_w 338
-    //   378: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   381: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   384: astore 7
-    //   386: aload 7
-    //   388: astore 6
-    //   390: aload 7
-    //   392: astore 5
-    //   394: aload 9
-    //   396: iconst_4
-    //   397: aload 10
-    //   399: invokevirtual 222	com/tencent/biz/flatbuffers/FbTable:a	(ILcom/tencent/biz/flatbuffers/FbArray;)Lcom/tencent/biz/flatbuffers/FbArray;
-    //   402: ifnonnull +48 -> 450
-    //   405: aload 7
-    //   407: astore 6
-    //   409: aload 7
-    //   411: astore 5
-    //   413: aload 9
-    //   415: bipush 12
-    //   417: invokevirtual 250	com/tencent/biz/flatbuffers/FbTable:a	(I)Ljava/lang/String;
-    //   420: ifnonnull +30 -> 450
-    //   423: aload 7
-    //   425: astore 5
-    //   427: new 121	java/lang/StringBuilder
-    //   430: dup
-    //   431: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   434: aload 7
-    //   436: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   439: ldc_w 340
-    //   442: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   445: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   448: astore 6
-    //   450: aload 6
-    //   452: astore 7
-    //   454: aload 6
-    //   456: astore 5
-    //   458: aload 9
-    //   460: bipush 6
-    //   462: aload 10
-    //   464: invokevirtual 222	com/tencent/biz/flatbuffers/FbTable:a	(ILcom/tencent/biz/flatbuffers/FbArray;)Lcom/tencent/biz/flatbuffers/FbArray;
-    //   467: ifnonnull +30 -> 497
-    //   470: aload 6
-    //   472: astore 5
-    //   474: new 121	java/lang/StringBuilder
-    //   477: dup
-    //   478: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   481: aload 6
-    //   483: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   486: ldc_w 342
-    //   489: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   492: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   495: astore 7
-    //   497: aload 7
-    //   499: astore 6
-    //   501: aload 7
-    //   503: astore 5
-    //   505: aload 9
-    //   507: bipush 7
-    //   509: aload 10
-    //   511: invokevirtual 222	com/tencent/biz/flatbuffers/FbTable:a	(ILcom/tencent/biz/flatbuffers/FbArray;)Lcom/tencent/biz/flatbuffers/FbArray;
-    //   514: ifnonnull +30 -> 544
-    //   517: aload 7
-    //   519: astore 5
-    //   521: new 121	java/lang/StringBuilder
-    //   524: dup
-    //   525: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   528: aload 7
-    //   530: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   533: ldc_w 344
-    //   536: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   539: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   542: astore 6
-    //   544: aload 6
-    //   546: astore 7
-    //   548: aload 6
-    //   550: astore 5
-    //   552: aload 9
-    //   554: bipush 8
-    //   556: aload 10
-    //   558: invokevirtual 222	com/tencent/biz/flatbuffers/FbTable:a	(ILcom/tencent/biz/flatbuffers/FbArray;)Lcom/tencent/biz/flatbuffers/FbArray;
-    //   561: ifnonnull +30 -> 591
-    //   564: aload 6
-    //   566: astore 5
-    //   568: new 121	java/lang/StringBuilder
-    //   571: dup
-    //   572: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   575: aload 6
-    //   577: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   580: ldc_w 346
-    //   583: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   586: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   589: astore 7
-    //   591: aload 7
-    //   593: astore 6
-    //   595: aload 7
-    //   597: astore 5
-    //   599: aload 9
-    //   601: bipush 9
-    //   603: aload 10
-    //   605: invokevirtual 222	com/tencent/biz/flatbuffers/FbTable:a	(ILcom/tencent/biz/flatbuffers/FbArray;)Lcom/tencent/biz/flatbuffers/FbArray;
-    //   608: ifnonnull +30 -> 638
-    //   611: aload 7
-    //   613: astore 5
-    //   615: new 121	java/lang/StringBuilder
-    //   618: dup
-    //   619: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   622: aload 7
-    //   624: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   627: ldc_w 348
-    //   630: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   633: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   636: astore 6
-    //   638: aload 6
-    //   640: astore 7
-    //   642: aload 6
-    //   644: astore 5
-    //   646: aload 9
-    //   648: bipush 10
-    //   650: aload 10
-    //   652: invokevirtual 222	com/tencent/biz/flatbuffers/FbTable:a	(ILcom/tencent/biz/flatbuffers/FbArray;)Lcom/tencent/biz/flatbuffers/FbArray;
-    //   655: ifnonnull +30 -> 685
-    //   658: aload 6
-    //   660: astore 5
-    //   662: new 121	java/lang/StringBuilder
-    //   665: dup
-    //   666: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   669: aload 6
-    //   671: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   674: ldc_w 350
-    //   677: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   680: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   683: astore 7
-    //   685: aload 7
-    //   687: astore 5
-    //   689: aload 9
-    //   691: bipush 11
-    //   693: aload 10
-    //   695: invokevirtual 222	com/tencent/biz/flatbuffers/FbTable:a	(ILcom/tencent/biz/flatbuffers/FbArray;)Lcom/tencent/biz/flatbuffers/FbArray;
-    //   698: ifnonnull +286 -> 984
-    //   701: aload 7
-    //   703: astore 5
-    //   705: new 121	java/lang/StringBuilder
-    //   708: dup
-    //   709: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   712: aload 7
-    //   714: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   717: ldc_w 352
-    //   720: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   723: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   726: astore 6
-    //   728: aload 6
-    //   730: astore 5
-    //   732: aload_0
-    //   733: aload 9
-    //   735: putfield 229	com/tencent/biz/authorize/FlatBuffersConfig:jdField_a_of_type_ComTencentBizFlatbuffersFbTable	Lcom/tencent/biz/flatbuffers/FbTable;
-    //   738: aload 9
-    //   740: iconst_5
-    //   741: ldc2_w 48
-    //   744: invokevirtual 279	com/tencent/biz/flatbuffers/FbTable:a	(IJ)J
-    //   747: lstore_3
-    //   748: ldc 194
-    //   750: iconst_1
-    //   751: new 121	java/lang/StringBuilder
-    //   754: dup
-    //   755: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   758: ldc_w 354
-    //   761: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   764: aload_1
-    //   765: invokevirtual 92	java/nio/ByteBuffer:capacity	()I
-    //   768: invokevirtual 357	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   771: ldc_w 359
-    //   774: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   777: lload_3
-    //   778: invokevirtual 285	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   781: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   784: invokestatic 265	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   787: goto -721 -> 66
-    //   790: astore 6
-    //   792: ldc 194
-    //   794: iconst_1
-    //   795: ldc_w 361
-    //   798: aload 6
-    //   800: invokestatic 202	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   803: new 121	java/lang/StringBuilder
-    //   806: dup
-    //   807: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   810: aload 5
-    //   812: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   815: aload 6
-    //   817: invokevirtual 364	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   820: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   823: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   826: astore 5
-    //   828: goto -762 -> 66
-    //   831: aload 7
-    //   833: astore 5
-    //   835: aload 10
-    //   837: invokevirtual 167	com/tencent/biz/flatbuffers/FbArray:a	()I
-    //   840: ifle +104 -> 944
-    //   843: aload 7
-    //   845: astore 5
-    //   847: aload 10
-    //   849: iconst_0
-    //   850: invokevirtual 367	com/tencent/biz/flatbuffers/FbArray:a	(I)Lcom/tencent/biz/flatbuffers/FbTable;
-    //   853: astore 6
-    //   855: aload 6
-    //   857: ifnull +93 -> 950
-    //   860: aload 7
-    //   862: astore 5
-    //   864: aload 6
-    //   866: iconst_0
-    //   867: invokevirtual 214	com/tencent/biz/flatbuffers/FbTable:a	(I)Lcom/tencent/biz/flatbuffers/FbArray;
-    //   870: astore 8
-    //   872: aload 7
-    //   874: astore 6
-    //   876: aload 8
-    //   878: ifnull -624 -> 254
-    //   881: aload 7
-    //   883: astore 6
-    //   885: aload 7
-    //   887: astore 5
-    //   889: aload 8
-    //   891: invokevirtual 167	com/tencent/biz/flatbuffers/FbArray:a	()I
-    //   894: ifle -640 -> 254
-    //   897: aload 7
-    //   899: astore 5
-    //   901: ldc 194
-    //   903: iconst_1
-    //   904: new 121	java/lang/StringBuilder
-    //   907: dup
-    //   908: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   911: ldc_w 369
-    //   914: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   917: aload 8
-    //   919: iconst_0
-    //   920: invokevirtual 370	com/tencent/biz/flatbuffers/FbArray:a	(I)Ljava/lang/String;
-    //   923: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   926: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   929: invokestatic 265	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   932: aload 7
-    //   934: astore 6
-    //   936: goto -682 -> 254
-    //   939: astore 6
-    //   941: goto -149 -> 792
-    //   944: aconst_null
-    //   945: astore 6
-    //   947: goto -92 -> 855
-    //   950: aconst_null
-    //   951: astore 8
-    //   953: goto -81 -> 872
-    //   956: iload_2
-    //   957: ifeq +14 -> 971
-    //   960: aload_0
-    //   961: invokevirtual 267	com/tencent/biz/authorize/FlatBuffersConfig:a	()Ljava/io/File;
-    //   964: astore 6
-    //   966: iconst_1
-    //   967: istore_2
-    //   968: goto -810 -> 158
-    //   971: aconst_null
-    //   972: astore 6
-    //   974: iconst_0
-    //   975: istore_2
-    //   976: goto -818 -> 158
-    //   979: iconst_0
-    //   980: istore_2
-    //   981: goto -823 -> 158
-    //   984: aload 7
-    //   986: astore 5
-    //   988: goto -256 -> 732
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	991	0	this	FlatBuffersConfig
-    //   0	991	1	paramByteBuffer	ByteBuffer
-    //   0	991	2	paramBoolean	boolean
-    //   747	31	3	l	long
-    //   21	966	5	localObject1	Object
-    //   60	669	6	localObject2	Object
-    //   790	26	6	localThrowable1	Throwable
-    //   853	82	6	localObject3	Object
-    //   939	1	6	localThrowable2	Throwable
-    //   945	28	6	localFile	File
-    //   7	978	7	localObject4	Object
-    //   870	82	8	localFbArray1	FbArray
-    //   27	712	9	localFbTable	FbTable
-    //   209	639	10	localFbArray2	FbArray
-    // Exception table:
-    //   from	to	target	type
-    //   23	29	193	finally
-    //   38	62	193	finally
-    //   66	81	193	finally
-    //   81	118	193	finally
-    //   122	156	193	finally
-    //   167	186	193	finally
-    //   202	211	193	finally
-    //   215	226	193	finally
-    //   230	254	193	finally
-    //   262	271	193	finally
-    //   275	298	193	finally
-    //   306	315	193	finally
-    //   319	342	193	finally
-    //   350	359	193	finally
-    //   363	386	193	finally
-    //   394	405	193	finally
-    //   413	423	193	finally
-    //   427	450	193	finally
-    //   458	470	193	finally
-    //   474	497	193	finally
-    //   505	517	193	finally
-    //   521	544	193	finally
-    //   552	564	193	finally
-    //   568	591	193	finally
-    //   599	611	193	finally
-    //   615	638	193	finally
-    //   646	658	193	finally
-    //   662	685	193	finally
-    //   689	701	193	finally
-    //   705	728	193	finally
-    //   732	787	193	finally
-    //   792	828	193	finally
-    //   835	843	193	finally
-    //   847	855	193	finally
-    //   864	872	193	finally
-    //   889	897	193	finally
-    //   901	932	193	finally
-    //   960	966	193	finally
-    //   732	787	790	java/lang/Throwable
-    //   23	29	939	java/lang/Throwable
-    //   38	62	939	java/lang/Throwable
-    //   202	211	939	java/lang/Throwable
-    //   215	226	939	java/lang/Throwable
-    //   230	254	939	java/lang/Throwable
-    //   262	271	939	java/lang/Throwable
-    //   275	298	939	java/lang/Throwable
-    //   306	315	939	java/lang/Throwable
-    //   319	342	939	java/lang/Throwable
-    //   350	359	939	java/lang/Throwable
-    //   363	386	939	java/lang/Throwable
-    //   394	405	939	java/lang/Throwable
-    //   413	423	939	java/lang/Throwable
-    //   427	450	939	java/lang/Throwable
-    //   458	470	939	java/lang/Throwable
-    //   474	497	939	java/lang/Throwable
-    //   505	517	939	java/lang/Throwable
-    //   521	544	939	java/lang/Throwable
-    //   552	564	939	java/lang/Throwable
-    //   568	591	939	java/lang/Throwable
-    //   599	611	939	java/lang/Throwable
-    //   615	638	939	java/lang/Throwable
-    //   646	658	939	java/lang/Throwable
-    //   662	685	939	java/lang/Throwable
-    //   689	701	939	java/lang/Throwable
-    //   705	728	939	java/lang/Throwable
-    //   835	843	939	java/lang/Throwable
-    //   847	855	939	java/lang/Throwable
-    //   864	872	939	java/lang/Throwable
-    //   889	897	939	java/lang/Throwable
-    //   901	932	939	java/lang/Throwable
+    if (paramByteBuffer == null) {
+      return null;
+    }
+    Object localObject3 = "";
+    boolean bool = false;
+    Object localObject1 = localObject3;
+    for (;;)
+    {
+      try
+      {
+        try
+        {
+          FbTable localFbTable = FbTable.a(paramByteBuffer);
+          Object localObject2;
+          if (localFbTable == null)
+          {
+            localObject1 = localObject3;
+            localObject2 = new StringBuilder();
+            localObject1 = localObject3;
+            ((StringBuilder)localObject2).append("");
+            localObject1 = localObject3;
+            ((StringBuilder)localObject2).append("error root");
+            localObject1 = localObject3;
+            localObject2 = ((StringBuilder)localObject2).toString();
+          }
+          else
+          {
+            localObject1 = localObject3;
+            FbArray localFbArray2 = new FbArray();
+            localObject1 = localObject3;
+            if (localFbTable.a(0, localFbArray2) == null)
+            {
+              localObject1 = localObject3;
+              localObject2 = new StringBuilder();
+              localObject1 = localObject3;
+              ((StringBuilder)localObject2).append("");
+              localObject1 = localObject3;
+              ((StringBuilder)localObject2).append("allow");
+              localObject1 = localObject3;
+              localObject2 = ((StringBuilder)localObject2).toString();
+            }
+            else
+            {
+              localObject1 = localObject3;
+              if (localFbArray2.a() <= 0) {
+                break label1318;
+              }
+              localObject1 = localObject3;
+              localObject2 = localFbArray2.a(0);
+              if (localObject2 == null) {
+                break label1324;
+              }
+              localObject1 = localObject3;
+              localFbArray1 = ((FbTable)localObject2).a(0);
+              localObject2 = localObject3;
+              if (localFbArray1 != null)
+              {
+                localObject2 = localObject3;
+                localObject1 = localObject3;
+                if (localFbArray1.a() > 0)
+                {
+                  localObject1 = localObject3;
+                  localObject2 = new StringBuilder();
+                  localObject1 = localObject3;
+                  ((StringBuilder)localObject2).append("authTable first string : ");
+                  localObject1 = localObject3;
+                  ((StringBuilder)localObject2).append(localFbArray1.a(0));
+                  localObject1 = localObject3;
+                  QLog.i("AuthorizeConfig", 1, ((StringBuilder)localObject2).toString());
+                  localObject2 = localObject3;
+                }
+              }
+            }
+            localObject3 = localObject2;
+            localObject1 = localObject2;
+            if (localFbTable.a(1) == null)
+            {
+              localObject1 = localObject2;
+              localObject3 = new StringBuilder();
+              localObject1 = localObject2;
+              ((StringBuilder)localObject3).append((String)localObject2);
+              localObject1 = localObject2;
+              ((StringBuilder)localObject3).append("|offline");
+              localObject1 = localObject2;
+              localObject3 = ((StringBuilder)localObject3).toString();
+            }
+            localObject2 = localObject3;
+            localObject1 = localObject3;
+            if (localFbTable.a(2) == null)
+            {
+              localObject1 = localObject3;
+              localObject2 = new StringBuilder();
+              localObject1 = localObject3;
+              ((StringBuilder)localObject2).append((String)localObject3);
+              localObject1 = localObject3;
+              ((StringBuilder)localObject2).append("|ext");
+              localObject1 = localObject3;
+              localObject2 = ((StringBuilder)localObject2).toString();
+            }
+            localObject3 = localObject2;
+            localObject1 = localObject2;
+            if (localFbTable.a(3) == null)
+            {
+              localObject1 = localObject2;
+              localObject3 = new StringBuilder();
+              localObject1 = localObject2;
+              ((StringBuilder)localObject3).append((String)localObject2);
+              localObject1 = localObject2;
+              ((StringBuilder)localObject3).append("|jump");
+              localObject1 = localObject2;
+              localObject3 = ((StringBuilder)localObject3).toString();
+            }
+            localObject2 = localObject3;
+            localObject1 = localObject3;
+            if (localFbTable.a(4, localFbArray2) == null)
+            {
+              localObject2 = localObject3;
+              localObject1 = localObject3;
+              if (localFbTable.a(12) == null)
+              {
+                localObject1 = localObject3;
+                localObject2 = new StringBuilder();
+                localObject1 = localObject3;
+                ((StringBuilder)localObject2).append((String)localObject3);
+                localObject1 = localObject3;
+                ((StringBuilder)localObject2).append("|schemes");
+                localObject1 = localObject3;
+                localObject2 = ((StringBuilder)localObject2).toString();
+              }
+            }
+            localObject3 = localObject2;
+            localObject1 = localObject2;
+            if (localFbTable.a(6, localFbArray2) == null)
+            {
+              localObject1 = localObject2;
+              localObject3 = new StringBuilder();
+              localObject1 = localObject2;
+              ((StringBuilder)localObject3).append((String)localObject2);
+              localObject1 = localObject2;
+              ((StringBuilder)localObject3).append("|skey");
+              localObject1 = localObject2;
+              localObject3 = ((StringBuilder)localObject3).toString();
+            }
+            localObject2 = localObject3;
+            localObject1 = localObject3;
+            if (localFbTable.a(7, localFbArray2) == null)
+            {
+              localObject1 = localObject3;
+              localObject2 = new StringBuilder();
+              localObject1 = localObject3;
+              ((StringBuilder)localObject2).append((String)localObject3);
+              localObject1 = localObject3;
+              ((StringBuilder)localObject2).append("|pskey");
+              localObject1 = localObject3;
+              localObject2 = ((StringBuilder)localObject2).toString();
+            }
+            localObject3 = localObject2;
+            localObject1 = localObject2;
+            if (localFbTable.a(8, localFbArray2) == null)
+            {
+              localObject1 = localObject2;
+              localObject3 = new StringBuilder();
+              localObject1 = localObject2;
+              ((StringBuilder)localObject3).append((String)localObject2);
+              localObject1 = localObject2;
+              ((StringBuilder)localObject3).append("|a1");
+              localObject1 = localObject2;
+              localObject3 = ((StringBuilder)localObject3).toString();
+            }
+            localObject2 = localObject3;
+            localObject1 = localObject3;
+            if (localFbTable.a(9, localFbArray2) == null)
+            {
+              localObject1 = localObject3;
+              localObject2 = new StringBuilder();
+              localObject1 = localObject3;
+              ((StringBuilder)localObject2).append((String)localObject3);
+              localObject1 = localObject3;
+              ((StringBuilder)localObject2).append("|a2");
+              localObject1 = localObject3;
+              localObject2 = ((StringBuilder)localObject2).toString();
+            }
+            localObject3 = localObject2;
+            localObject1 = localObject2;
+            if (localFbTable.a(10, localFbArray2) == null)
+            {
+              localObject1 = localObject2;
+              localObject3 = new StringBuilder();
+              localObject1 = localObject2;
+              ((StringBuilder)localObject3).append((String)localObject2);
+              localObject1 = localObject2;
+              ((StringBuilder)localObject3).append("|ptlogin2");
+              localObject1 = localObject2;
+              localObject3 = ((StringBuilder)localObject3).toString();
+            }
+            localObject2 = localObject3;
+            localObject1 = localObject3;
+            if (localFbTable.a(11, localFbArray2) == null)
+            {
+              localObject1 = localObject3;
+              localObject2 = new StringBuilder();
+              localObject1 = localObject3;
+              ((StringBuilder)localObject2).append((String)localObject3);
+              localObject1 = localObject3;
+              ((StringBuilder)localObject2).append("|pt4_token");
+              localObject1 = localObject3;
+              localObject2 = ((StringBuilder)localObject2).toString();
+            }
+            localObject1 = localObject2;
+            this.jdField_a_of_type_ComTencentBizFlatbuffersFbTable = localFbTable;
+            localObject1 = localObject2;
+            long l = localFbTable.a(5, -1L);
+            localObject1 = localObject2;
+            localObject3 = new StringBuilder();
+            localObject1 = localObject2;
+            ((StringBuilder)localObject3).append("flatbuffers is correct with length: ");
+            localObject1 = localObject2;
+            ((StringBuilder)localObject3).append(paramByteBuffer.capacity());
+            localObject1 = localObject2;
+            ((StringBuilder)localObject3).append(" publishSeq ");
+            localObject1 = localObject2;
+            ((StringBuilder)localObject3).append(l);
+            localObject1 = localObject2;
+            QLog.i("AuthorizeConfig", 1, ((StringBuilder)localObject3).toString());
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          QLog.e("AuthorizeConfig", 1, "flatbuffers", localThrowable);
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append((String)localObject1);
+          ((StringBuilder)localObject3).append(localThrowable.getMessage());
+          str = ((StringBuilder)localObject3).toString();
+        }
+        if ((TextUtils.isEmpty(str)) && (this.jdField_a_of_type_ComTencentBizFlatbuffersFbTable != null))
+        {
+          if (!paramBoolean) {
+            break label1330;
+          }
+          localObject1 = a();
+          paramBoolean = true;
+        }
+        else
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("flatbuffers has failedList: ");
+          ((StringBuilder)localObject1).append(str);
+          QLog.e("AuthorizeConfig", 1, ((StringBuilder)localObject1).toString());
+          FlatBuffersParser.b(true);
+          localObject1 = b();
+          if (paramBoolean) {
+            break label1338;
+          }
+          paramBoolean = a().delete();
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("authFile is broken, delete return : ");
+          ((StringBuilder)localObject3).append(paramBoolean);
+          QLog.e("AuthorizeConfig", 1, ((StringBuilder)localObject3).toString());
+          break label1338;
+        }
+        if (localObject1 != null) {
+          ThreadManager.post(new FlatBuffersConfig.2(this, paramByteBuffer, (File)localObject1, paramBoolean), 8, null, true);
+        }
+        return str;
+      }
+      finally {}
+      label1318:
+      String str = null;
+      continue;
+      label1324:
+      FbArray localFbArray1 = null;
+      continue;
+      label1330:
+      localObject1 = null;
+      paramBoolean = bool;
+      continue;
+      label1338:
+      paramBoolean = bool;
+    }
   }
   
   public JSONArray a(String paramString)
   {
     Object localObject = a();
-    if (localObject == null)
-    {
-      paramString = null;
-      return paramString;
+    if (localObject == null) {
+      return null;
     }
-    FbArray localFbArray = ((FbTable)localObject).a(((Integer)jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue());
-    if (localFbArray == null) {
+    paramString = ((FbTable)localObject).a(((Integer)jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue());
+    if (paramString == null) {
       return null;
     }
     localObject = new JSONArray();
     int i = 0;
-    int j = localFbArray.a();
-    for (;;)
+    int j = paramString.a();
+    while (i < j)
     {
-      paramString = (String)localObject;
-      if (i >= j) {
-        break;
-      }
-      paramString = localFbArray.a(i);
-      if (paramString != null) {
-        ((JSONArray)localObject).put(paramString);
+      String str = paramString.a(i);
+      if (str != null) {
+        ((JSONArray)localObject).put(str);
       }
       i += 1;
     }
+    return localObject;
   }
   
   public JSONObject a()
   {
-    Object localObject1 = null;
-    Object localObject2 = a();
-    if (localObject2 == null) {}
-    Object localObject3;
-    do
-    {
-      return localObject1;
-      localObject3 = ((FbTable)localObject2).a(12);
-      if (localObject3 != null) {
-        return new JSONObject((String)localObject3);
-      }
-      localObject3 = ((FbTable)localObject2).a(4);
-    } while (localObject3 == null);
+    Object localObject1 = a();
+    if (localObject1 == null) {
+      return null;
+    }
+    Object localObject2 = ((FbTable)localObject1).a(12);
+    if (localObject2 != null) {
+      return new JSONObject((String)localObject2);
+    }
+    localObject1 = ((FbTable)localObject1).a(4);
+    if (localObject1 == null) {
+      return null;
+    }
     localObject2 = new JSONObject();
     FbTable localFbTable = new FbTable();
     FbArray localFbArray1 = new FbArray();
     FbArray localFbArray2 = new FbArray();
-    int k = ((FbArray)localObject3).a();
+    int k = ((FbArray)localObject1).a();
     int i = 0;
-    for (;;)
+    while (i < k)
     {
-      localObject1 = localObject2;
-      if (i >= k) {
-        break;
-      }
-      ((FbArray)localObject3).a(i, localFbTable);
+      ((FbArray)localObject1).a(i, localFbTable);
       localFbTable.a(0, localFbArray1);
       localFbTable.a(1, localFbArray2);
-      localObject1 = new JSONArray();
+      JSONArray localJSONArray = new JSONArray();
       int m = localFbArray2.a();
       int j = 0;
       String str;
@@ -983,7 +667,7 @@ public class FlatBuffersConfig
       {
         str = localFbArray2.a(j);
         if (str != null) {
-          ((JSONArray)localObject1).put(str);
+          localJSONArray.put(str);
         }
         j += 1;
       }
@@ -993,12 +677,13 @@ public class FlatBuffersConfig
       {
         str = localFbArray1.a(j);
         if (str != null) {
-          ((JSONObject)localObject2).put(str, localObject1);
+          ((JSONObject)localObject2).put(str, localJSONArray);
         }
         j += 1;
       }
       i += 1;
     }
+    return localObject2;
   }
   
   /* Error */
@@ -1016,214 +701,255 @@ public class FlatBuffersConfig
     //   12: return
     //   13: aload_0
     //   14: invokevirtual 267	com/tencent/biz/authorize/FlatBuffersConfig:a	()Ljava/io/File;
-    //   17: astore 5
-    //   19: aload 5
+    //   17: astore 11
+    //   19: aload 11
     //   21: invokevirtual 239	java/io/File:exists	()Z
-    //   24: ifeq -14 -> 10
-    //   27: aload 5
+    //   24: ifeq +383 -> 407
+    //   27: aload 11
     //   29: invokevirtual 396	java/io/File:length	()J
     //   32: lconst_0
     //   33: lcmp
-    //   34: ifeq -24 -> 10
-    //   37: aload 5
-    //   39: invokevirtual 399	java/io/File:lastModified	()J
-    //   42: lstore_3
-    //   43: ldc 194
-    //   45: iconst_1
+    //   34: ifne +6 -> 40
+    //   37: goto +370 -> 407
+    //   40: aload 11
+    //   42: invokevirtual 399	java/io/File:lastModified	()J
+    //   45: lstore_3
     //   46: new 121	java/lang/StringBuilder
     //   49: dup
     //   50: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   53: ldc_w 401
-    //   56: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   59: aload_0
-    //   60: getfield 51	com/tencent/biz/authorize/FlatBuffersConfig:jdField_a_of_type_Long	J
-    //   63: invokevirtual 285	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   66: ldc_w 403
-    //   69: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   72: lload_3
-    //   73: invokevirtual 285	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   76: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   79: invokestatic 265	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   82: aload_0
-    //   83: getfield 229	com/tencent/biz/authorize/FlatBuffersConfig:jdField_a_of_type_ComTencentBizFlatbuffersFbTable	Lcom/tencent/biz/flatbuffers/FbTable;
-    //   86: ifnull +12 -> 98
-    //   89: aload_0
-    //   90: getfield 51	com/tencent/biz/authorize/FlatBuffersConfig:jdField_a_of_type_Long	J
-    //   93: lload_3
-    //   94: lcmp
-    //   95: ifeq -85 -> 10
-    //   98: aload_0
-    //   99: lload_3
-    //   100: putfield 51	com/tencent/biz/authorize/FlatBuffersConfig:jdField_a_of_type_Long	J
-    //   103: aload 5
-    //   105: invokevirtual 396	java/io/File:length	()J
-    //   108: l2i
-    //   109: newarray byte
-    //   111: astore 7
-    //   113: new 405	java/io/FileInputStream
-    //   116: dup
-    //   117: aload 5
-    //   119: invokespecial 408	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   122: astore 6
-    //   124: aload 6
-    //   126: astore 5
-    //   128: aload 6
-    //   130: aload 7
-    //   132: invokevirtual 412	java/io/FileInputStream:read	([B)I
-    //   135: istore_1
-    //   136: aload 6
-    //   138: astore 5
-    //   140: iload_1
-    //   141: aload 7
-    //   143: arraylength
-    //   144: if_icmpeq +81 -> 225
-    //   147: aload 6
-    //   149: astore 5
-    //   151: ldc 194
-    //   153: iconst_1
-    //   154: new 121	java/lang/StringBuilder
-    //   157: dup
-    //   158: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   161: ldc_w 414
-    //   164: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   167: iload_1
-    //   168: invokevirtual 357	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   171: ldc_w 416
-    //   174: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   177: aload 7
-    //   179: arraylength
-    //   180: invokevirtual 357	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   183: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   186: invokestatic 309	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   189: aload 6
-    //   191: ifnull -181 -> 10
-    //   194: aload 6
-    //   196: invokevirtual 419	java/io/FileInputStream:close	()V
-    //   199: goto -189 -> 10
-    //   202: astore 5
-    //   204: ldc 194
-    //   206: iconst_1
-    //   207: ldc_w 361
-    //   210: aload 5
-    //   212: invokestatic 202	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   215: goto -205 -> 10
-    //   218: astore 5
-    //   220: aload_0
-    //   221: monitorexit
-    //   222: aload 5
-    //   224: athrow
-    //   225: aload 6
-    //   227: ifnull +8 -> 235
-    //   230: aload 6
-    //   232: invokevirtual 419	java/io/FileInputStream:close	()V
-    //   235: aload_0
-    //   236: aload 7
-    //   238: invokestatic 422	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
-    //   241: iconst_0
-    //   242: invokevirtual 259	com/tencent/biz/authorize/FlatBuffersConfig:a	(Ljava/nio/ByteBuffer;Z)Ljava/lang/String;
-    //   245: pop
-    //   246: ldc 194
-    //   248: iconst_1
-    //   249: ldc_w 424
-    //   252: invokestatic 265	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   255: goto -245 -> 10
-    //   258: astore 5
-    //   260: ldc 194
-    //   262: iconst_1
-    //   263: ldc_w 361
-    //   266: aload 5
-    //   268: invokestatic 202	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   271: goto -36 -> 235
-    //   274: astore 7
-    //   276: aconst_null
-    //   277: astore 6
-    //   279: aload 6
-    //   281: astore 5
-    //   283: ldc 194
-    //   285: iconst_1
-    //   286: ldc_w 361
-    //   289: aload 7
-    //   291: invokestatic 202	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   294: aload 6
-    //   296: ifnull -286 -> 10
-    //   299: aload 6
-    //   301: invokevirtual 419	java/io/FileInputStream:close	()V
-    //   304: goto -294 -> 10
-    //   307: astore 5
-    //   309: ldc 194
-    //   311: iconst_1
-    //   312: ldc_w 361
-    //   315: aload 5
-    //   317: invokestatic 202	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   320: goto -310 -> 10
-    //   323: astore 6
-    //   325: aconst_null
-    //   326: astore 5
-    //   328: aload 5
-    //   330: ifnull +8 -> 338
-    //   333: aload 5
-    //   335: invokevirtual 419	java/io/FileInputStream:close	()V
-    //   338: aload 6
-    //   340: athrow
-    //   341: astore 5
-    //   343: ldc 194
-    //   345: iconst_1
-    //   346: ldc_w 361
-    //   349: aload 5
-    //   351: invokestatic 202	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   354: goto -16 -> 338
-    //   357: astore 6
-    //   359: goto -31 -> 328
+    //   53: astore 7
+    //   55: aload 7
+    //   57: ldc_w 401
+    //   60: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   63: pop
+    //   64: aload 7
+    //   66: aload_0
+    //   67: getfield 51	com/tencent/biz/authorize/FlatBuffersConfig:jdField_a_of_type_Long	J
+    //   70: invokevirtual 285	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   73: pop
+    //   74: aload 7
+    //   76: ldc_w 403
+    //   79: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   82: pop
+    //   83: aload 7
+    //   85: lload_3
+    //   86: invokevirtual 285	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   89: pop
+    //   90: ldc 186
+    //   92: iconst_1
+    //   93: aload 7
+    //   95: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   98: invokestatic 265	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   101: aload_0
+    //   102: getfield 229	com/tencent/biz/authorize/FlatBuffersConfig:jdField_a_of_type_ComTencentBizFlatbuffersFbTable	Lcom/tencent/biz/flatbuffers/FbTable;
+    //   105: ifnull +19 -> 124
+    //   108: aload_0
+    //   109: getfield 51	com/tencent/biz/authorize/FlatBuffersConfig:jdField_a_of_type_Long	J
+    //   112: lstore 5
+    //   114: lload 5
+    //   116: lload_3
+    //   117: lcmp
+    //   118: ifne +6 -> 124
+    //   121: aload_0
+    //   122: monitorexit
+    //   123: return
+    //   124: aload_0
+    //   125: lload_3
+    //   126: putfield 51	com/tencent/biz/authorize/FlatBuffersConfig:jdField_a_of_type_Long	J
+    //   129: aconst_null
+    //   130: astore 9
+    //   132: aconst_null
+    //   133: astore 8
+    //   135: aload 8
+    //   137: astore 7
+    //   139: aload 11
+    //   141: invokevirtual 396	java/io/File:length	()J
+    //   144: l2i
+    //   145: newarray byte
+    //   147: astore 10
+    //   149: aload 8
+    //   151: astore 7
+    //   153: new 405	java/io/FileInputStream
+    //   156: dup
+    //   157: aload 11
+    //   159: invokespecial 408	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   162: astore 8
+    //   164: aload 8
+    //   166: aload 10
+    //   168: invokevirtual 412	java/io/FileInputStream:read	([B)I
+    //   171: istore_1
+    //   172: iload_1
+    //   173: aload 10
+    //   175: arraylength
+    //   176: if_icmpeq +81 -> 257
+    //   179: new 121	java/lang/StringBuilder
+    //   182: dup
+    //   183: invokespecial 280	java/lang/StringBuilder:<init>	()V
+    //   186: astore 7
+    //   188: aload 7
+    //   190: ldc_w 414
+    //   193: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   196: pop
+    //   197: aload 7
+    //   199: iload_1
+    //   200: invokevirtual 338	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   203: pop
+    //   204: aload 7
+    //   206: ldc_w 416
+    //   209: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   212: pop
+    //   213: aload 7
+    //   215: aload 10
+    //   217: arraylength
+    //   218: invokevirtual 338	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   221: pop
+    //   222: ldc 186
+    //   224: iconst_1
+    //   225: aload 7
+    //   227: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   230: invokestatic 349	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   233: aload 8
+    //   235: invokevirtual 419	java/io/FileInputStream:close	()V
+    //   238: goto +16 -> 254
+    //   241: astore 7
+    //   243: ldc 186
+    //   245: iconst_1
+    //   246: ldc_w 342
+    //   249: aload 7
+    //   251: invokestatic 194	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   254: aload_0
+    //   255: monitorexit
+    //   256: return
+    //   257: aload 8
+    //   259: invokevirtual 419	java/io/FileInputStream:close	()V
+    //   262: goto +16 -> 278
+    //   265: astore 7
+    //   267: ldc 186
+    //   269: iconst_1
+    //   270: ldc_w 342
+    //   273: aload 7
+    //   275: invokestatic 194	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   278: aload_0
+    //   279: aload 10
+    //   281: invokestatic 422	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
+    //   284: iconst_0
+    //   285: invokevirtual 259	com/tencent/biz/authorize/FlatBuffersConfig:a	(Ljava/nio/ByteBuffer;Z)Ljava/lang/String;
+    //   288: pop
+    //   289: ldc 186
+    //   291: iconst_1
+    //   292: ldc_w 424
+    //   295: invokestatic 265	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   298: aload_0
+    //   299: monitorexit
+    //   300: return
+    //   301: astore 7
+    //   303: goto +75 -> 378
+    //   306: astore 9
+    //   308: goto +26 -> 334
+    //   311: astore 9
+    //   313: aload 7
+    //   315: astore 8
+    //   317: aload 9
+    //   319: astore 7
+    //   321: goto +57 -> 378
+    //   324: astore 7
+    //   326: aload 9
+    //   328: astore 8
+    //   330: aload 7
+    //   332: astore 9
+    //   334: aload 8
+    //   336: astore 7
+    //   338: ldc 186
+    //   340: iconst_1
+    //   341: ldc_w 342
+    //   344: aload 9
+    //   346: invokestatic 194	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   349: aload 8
+    //   351: ifnull +24 -> 375
+    //   354: aload 8
+    //   356: invokevirtual 419	java/io/FileInputStream:close	()V
+    //   359: goto +16 -> 375
     //   362: astore 7
-    //   364: goto -85 -> 279
+    //   364: ldc 186
+    //   366: iconst_1
+    //   367: ldc_w 342
+    //   370: aload 7
+    //   372: invokestatic 194	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   375: aload_0
+    //   376: monitorexit
+    //   377: return
+    //   378: aload 8
+    //   380: ifnull +24 -> 404
+    //   383: aload 8
+    //   385: invokevirtual 419	java/io/FileInputStream:close	()V
+    //   388: goto +16 -> 404
+    //   391: astore 8
+    //   393: ldc 186
+    //   395: iconst_1
+    //   396: ldc_w 342
+    //   399: aload 8
+    //   401: invokestatic 194	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   404: aload 7
+    //   406: athrow
+    //   407: aload_0
+    //   408: monitorexit
+    //   409: return
+    //   410: astore 7
+    //   412: aload_0
+    //   413: monitorexit
+    //   414: aload 7
+    //   416: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	367	0	this	FlatBuffersConfig
-    //   135	33	1	i	int
+    //   0	417	0	this	FlatBuffersConfig
+    //   171	29	1	i	int
     //   5	2	2	bool	boolean
-    //   42	58	3	l	long
-    //   17	133	5	localObject1	Object
-    //   202	9	5	localIOException1	java.io.IOException
-    //   218	5	5	localObject2	Object
-    //   258	9	5	localIOException2	java.io.IOException
-    //   281	1	5	localObject3	Object
-    //   307	9	5	localIOException3	java.io.IOException
-    //   326	8	5	localObject4	Object
-    //   341	9	5	localIOException4	java.io.IOException
-    //   122	178	6	localFileInputStream	java.io.FileInputStream
-    //   323	16	6	localObject5	Object
-    //   357	1	6	localObject6	Object
-    //   111	126	7	arrayOfByte	byte[]
-    //   274	16	7	localThrowable1	Throwable
-    //   362	1	7	localThrowable2	Throwable
+    //   45	81	3	l1	long
+    //   112	3	5	l2	long
+    //   53	173	7	localObject1	Object
+    //   241	9	7	localIOException1	java.io.IOException
+    //   265	9	7	localIOException2	java.io.IOException
+    //   301	13	7	localObject2	Object
+    //   319	1	7	localObject3	Object
+    //   324	7	7	localThrowable1	Throwable
+    //   336	1	7	localObject4	Object
+    //   362	43	7	localIOException3	java.io.IOException
+    //   410	5	7	localObject5	Object
+    //   133	251	8	localObject6	Object
+    //   391	9	8	localIOException4	java.io.IOException
+    //   130	1	9	localObject7	Object
+    //   306	1	9	localThrowable2	Throwable
+    //   311	16	9	localObject8	Object
+    //   332	13	9	localThrowable3	Throwable
+    //   147	133	10	arrayOfByte	byte[]
+    //   17	141	11	localFile	File
     // Exception table:
     //   from	to	target	type
-    //   194	199	202	java/io/IOException
-    //   2	6	218	finally
-    //   13	98	218	finally
-    //   98	103	218	finally
-    //   194	199	218	finally
-    //   204	215	218	finally
-    //   230	235	218	finally
-    //   235	255	218	finally
-    //   260	271	218	finally
-    //   299	304	218	finally
-    //   309	320	218	finally
-    //   333	338	218	finally
-    //   338	341	218	finally
-    //   343	354	218	finally
-    //   230	235	258	java/io/IOException
-    //   103	124	274	java/lang/Throwable
-    //   299	304	307	java/io/IOException
-    //   103	124	323	finally
-    //   333	338	341	java/io/IOException
-    //   128	136	357	finally
-    //   140	147	357	finally
-    //   151	189	357	finally
-    //   283	294	357	finally
-    //   128	136	362	java/lang/Throwable
-    //   140	147	362	java/lang/Throwable
-    //   151	189	362	java/lang/Throwable
+    //   233	238	241	java/io/IOException
+    //   257	262	265	java/io/IOException
+    //   164	233	301	finally
+    //   164	233	306	java/lang/Throwable
+    //   139	149	311	finally
+    //   153	164	311	finally
+    //   338	349	311	finally
+    //   139	149	324	java/lang/Throwable
+    //   153	164	324	java/lang/Throwable
+    //   354	359	362	java/io/IOException
+    //   383	388	391	java/io/IOException
+    //   2	6	410	finally
+    //   13	37	410	finally
+    //   40	114	410	finally
+    //   124	129	410	finally
+    //   233	238	410	finally
+    //   243	254	410	finally
+    //   257	262	410	finally
+    //   267	278	410	finally
+    //   278	298	410	finally
+    //   354	359	410	finally
+    //   364	375	410	finally
+    //   383	388	410	finally
+    //   393	404	410	finally
+    //   404	407	410	finally
   }
   
   public void a(JsonConfig paramJsonConfig)
@@ -1240,263 +966,307 @@ public class FlatBuffersConfig
   public boolean a(ByteBuffer paramByteBuffer, File paramFile, boolean paramBoolean)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore 4
-    //   3: new 232	java/io/File
-    //   6: dup
-    //   7: new 121	java/lang/StringBuilder
-    //   10: dup
-    //   11: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   14: aload_2
-    //   15: invokevirtual 429	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   18: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   0: new 121	java/lang/StringBuilder
+    //   3: dup
+    //   4: invokespecial 280	java/lang/StringBuilder:<init>	()V
+    //   7: astore 5
+    //   9: aload 5
+    //   11: aload_2
+    //   12: invokevirtual 429	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   15: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   18: pop
+    //   19: aload 5
     //   21: invokestatic 434	java/lang/System:nanoTime	()J
     //   24: invokevirtual 285	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   27: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   30: invokespecial 236	java/io/File:<init>	(Ljava/lang/String;)V
-    //   33: astore 9
-    //   35: aconst_null
-    //   36: astore 7
-    //   38: aconst_null
-    //   39: astore 8
-    //   41: aload 7
-    //   43: astore 6
-    //   45: aload 9
-    //   47: invokevirtual 437	java/io/File:createNewFile	()Z
-    //   50: ifne +71 -> 121
-    //   53: aload 7
-    //   55: astore 6
-    //   57: ldc 194
-    //   59: iconst_1
-    //   60: new 121	java/lang/StringBuilder
-    //   63: dup
-    //   64: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   67: ldc_w 439
-    //   70: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   73: aload 9
-    //   75: invokevirtual 429	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   78: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   81: ldc_w 441
-    //   84: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   87: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   90: invokestatic 309	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   93: iconst_0
-    //   94: ifeq +11 -> 105
-    //   97: new 443	java/lang/NullPointerException
-    //   100: dup
-    //   101: invokespecial 444	java/lang/NullPointerException:<init>	()V
-    //   104: athrow
-    //   105: iload 4
-    //   107: ireturn
-    //   108: astore_1
-    //   109: ldc 194
-    //   111: iconst_1
-    //   112: ldc_w 446
-    //   115: aload_1
-    //   116: invokestatic 202	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   119: iconst_0
-    //   120: ireturn
-    //   121: aload 7
-    //   123: astore 6
-    //   125: ldc 194
-    //   127: iconst_1
-    //   128: new 121	java/lang/StringBuilder
-    //   131: dup
-    //   132: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   135: ldc_w 448
-    //   138: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   141: aload_2
-    //   142: invokevirtual 451	java/io/File:getName	()Ljava/lang/String;
-    //   145: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   148: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   151: invokestatic 265	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   154: aload 7
-    //   156: astore 6
-    //   158: new 453	java/io/FileOutputStream
-    //   161: dup
-    //   162: aload 9
-    //   164: invokespecial 454	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   167: astore 7
-    //   169: aload 7
-    //   171: aload_1
-    //   172: invokestatic 456	com/tencent/biz/authorize/FlatBuffersConfig:a	(Ljava/io/OutputStream;Ljava/nio/ByteBuffer;)V
-    //   175: ldc 194
-    //   177: iconst_1
-    //   178: ldc_w 458
-    //   181: invokestatic 265	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   184: aload 7
-    //   186: ifnull +8 -> 194
-    //   189: aload 7
-    //   191: invokevirtual 459	java/io/FileOutputStream:close	()V
-    //   194: aload_2
-    //   195: invokevirtual 239	java/io/File:exists	()Z
-    //   198: ifeq +287 -> 485
-    //   201: aload_2
-    //   202: invokevirtual 270	java/io/File:delete	()Z
-    //   205: istore 4
-    //   207: ldc 194
-    //   209: iconst_1
-    //   210: new 121	java/lang/StringBuilder
-    //   213: dup
-    //   214: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   217: ldc_w 461
-    //   220: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   223: iload 4
-    //   225: invokevirtual 319	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   228: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   231: invokestatic 265	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   234: iload 4
-    //   236: ifeq +226 -> 462
-    //   239: aload 9
-    //   241: aload_2
-    //   242: invokevirtual 465	java/io/File:renameTo	(Ljava/io/File;)Z
-    //   245: istore 5
-    //   247: ldc 194
-    //   249: iconst_1
-    //   250: new 121	java/lang/StringBuilder
-    //   253: dup
-    //   254: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   257: ldc_w 467
-    //   260: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   263: iload 5
-    //   265: invokevirtual 319	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   268: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   271: invokestatic 265	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   274: iload 5
-    //   276: istore 4
-    //   278: iload 5
-    //   280: ifeq -175 -> 105
-    //   283: iload 5
-    //   285: istore 4
-    //   287: iload_3
-    //   288: ifeq -183 -> 105
-    //   291: aload_0
-    //   292: aload_2
-    //   293: invokevirtual 399	java/io/File:lastModified	()J
-    //   296: putfield 51	com/tencent/biz/authorize/FlatBuffersConfig:jdField_a_of_type_Long	J
-    //   299: ldc 194
-    //   301: iconst_1
-    //   302: new 121	java/lang/StringBuilder
-    //   305: dup
-    //   306: invokespecial 280	java/lang/StringBuilder:<init>	()V
-    //   309: ldc_w 401
-    //   312: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   315: aload_0
-    //   316: getfield 51	com/tencent/biz/authorize/FlatBuffersConfig:jdField_a_of_type_Long	J
-    //   319: invokevirtual 285	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   27: pop
+    //   28: new 232	java/io/File
+    //   31: dup
+    //   32: aload 5
+    //   34: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   37: invokespecial 236	java/io/File:<init>	(Ljava/lang/String;)V
+    //   40: astore 8
+    //   42: aconst_null
+    //   43: astore 7
+    //   45: aconst_null
+    //   46: astore 6
+    //   48: aload 6
+    //   50: astore 5
+    //   52: aload 8
+    //   54: invokevirtual 437	java/io/File:createNewFile	()Z
+    //   57: ifne +69 -> 126
+    //   60: aload 6
+    //   62: astore 5
+    //   64: new 121	java/lang/StringBuilder
+    //   67: dup
+    //   68: invokespecial 280	java/lang/StringBuilder:<init>	()V
+    //   71: astore_1
+    //   72: aload 6
+    //   74: astore 5
+    //   76: aload_1
+    //   77: ldc_w 439
+    //   80: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   83: pop
+    //   84: aload 6
+    //   86: astore 5
+    //   88: aload_1
+    //   89: aload 8
+    //   91: invokevirtual 429	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   94: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   97: pop
+    //   98: aload 6
+    //   100: astore 5
+    //   102: aload_1
+    //   103: ldc_w 441
+    //   106: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   109: pop
+    //   110: aload 6
+    //   112: astore 5
+    //   114: ldc 186
+    //   116: iconst_1
+    //   117: aload_1
+    //   118: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   121: invokestatic 349	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   124: iconst_0
+    //   125: ireturn
+    //   126: aload 6
+    //   128: astore 5
+    //   130: new 121	java/lang/StringBuilder
+    //   133: dup
+    //   134: invokespecial 280	java/lang/StringBuilder:<init>	()V
+    //   137: astore 9
+    //   139: aload 6
+    //   141: astore 5
+    //   143: aload 9
+    //   145: ldc_w 443
+    //   148: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   151: pop
+    //   152: aload 6
+    //   154: astore 5
+    //   156: aload 9
+    //   158: aload_2
+    //   159: invokevirtual 446	java/io/File:getName	()Ljava/lang/String;
+    //   162: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   165: pop
+    //   166: aload 6
+    //   168: astore 5
+    //   170: ldc 186
+    //   172: iconst_1
+    //   173: aload 9
+    //   175: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   178: invokestatic 265	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   181: aload 6
+    //   183: astore 5
+    //   185: new 448	java/io/FileOutputStream
+    //   188: dup
+    //   189: aload 8
+    //   191: invokespecial 449	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   194: astore 6
+    //   196: aload 6
+    //   198: aload_1
+    //   199: invokestatic 451	com/tencent/biz/authorize/FlatBuffersConfig:a	(Ljava/io/OutputStream;Ljava/nio/ByteBuffer;)V
+    //   202: ldc 186
+    //   204: iconst_1
+    //   205: ldc_w 453
+    //   208: invokestatic 265	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   211: aload 6
+    //   213: invokevirtual 454	java/io/FileOutputStream:close	()V
+    //   216: goto +14 -> 230
+    //   219: astore_1
+    //   220: ldc 186
+    //   222: iconst_1
+    //   223: ldc_w 456
+    //   226: aload_1
+    //   227: invokestatic 194	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   230: aload_2
+    //   231: invokevirtual 239	java/io/File:exists	()Z
+    //   234: ifeq +45 -> 279
+    //   237: aload_2
+    //   238: invokevirtual 270	java/io/File:delete	()Z
+    //   241: istore 4
+    //   243: new 121	java/lang/StringBuilder
+    //   246: dup
+    //   247: invokespecial 280	java/lang/StringBuilder:<init>	()V
+    //   250: astore_1
+    //   251: aload_1
+    //   252: ldc_w 458
+    //   255: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   258: pop
+    //   259: aload_1
+    //   260: iload 4
+    //   262: invokevirtual 359	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   265: pop
+    //   266: ldc 186
+    //   268: iconst_1
+    //   269: aload_1
+    //   270: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   273: invokestatic 265	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   276: goto +6 -> 282
+    //   279: iconst_1
+    //   280: istore 4
+    //   282: iload 4
+    //   284: ifeq +142 -> 426
+    //   287: aload 8
+    //   289: aload_2
+    //   290: invokevirtual 462	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   293: istore 4
+    //   295: new 121	java/lang/StringBuilder
+    //   298: dup
+    //   299: invokespecial 280	java/lang/StringBuilder:<init>	()V
+    //   302: astore_1
+    //   303: aload_1
+    //   304: ldc_w 464
+    //   307: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   310: pop
+    //   311: aload_1
+    //   312: iload 4
+    //   314: invokevirtual 359	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   317: pop
+    //   318: ldc 186
+    //   320: iconst_1
+    //   321: aload_1
     //   322: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   325: invokestatic 265	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   328: aload_0
-    //   329: getfield 150	com/tencent/biz/authorize/FlatBuffersConfig:jdField_a_of_type_AndroidContentSharedPreferences	Landroid/content/SharedPreferences;
-    //   332: invokeinterface 471 1 0
-    //   337: astore_1
-    //   338: aload_1
-    //   339: ldc_w 473
-    //   342: ldc_w 300
-    //   345: invokeinterface 477 3 0
-    //   350: pop
-    //   351: aload_1
-    //   352: ldc_w 479
-    //   355: ldc_w 300
-    //   358: invokeinterface 477 3 0
-    //   363: pop
-    //   364: aload_1
-    //   365: invokeinterface 482 1 0
-    //   370: pop
-    //   371: iload 5
-    //   373: ireturn
-    //   374: astore_1
-    //   375: ldc 194
-    //   377: iconst_1
-    //   378: ldc_w 446
-    //   381: aload_1
-    //   382: invokestatic 202	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   385: goto -191 -> 194
-    //   388: astore_2
-    //   389: aload 8
-    //   391: astore_1
-    //   392: aload_1
-    //   393: astore 6
-    //   395: ldc 194
-    //   397: iconst_1
-    //   398: ldc_w 484
-    //   401: aload_2
-    //   402: invokestatic 202	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   405: aload_1
-    //   406: ifnull +7 -> 413
-    //   409: aload_1
-    //   410: invokevirtual 459	java/io/FileOutputStream:close	()V
-    //   413: aload 9
-    //   415: invokevirtual 270	java/io/File:delete	()Z
-    //   418: pop
-    //   419: iconst_0
-    //   420: ireturn
-    //   421: astore_1
-    //   422: ldc 194
-    //   424: iconst_1
-    //   425: ldc_w 446
-    //   428: aload_1
-    //   429: invokestatic 202	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   432: goto -19 -> 413
-    //   435: astore_1
-    //   436: aload 6
-    //   438: ifnull +8 -> 446
-    //   441: aload 6
-    //   443: invokevirtual 459	java/io/FileOutputStream:close	()V
-    //   446: aload_1
-    //   447: athrow
-    //   448: astore_2
-    //   449: ldc 194
-    //   451: iconst_1
-    //   452: ldc_w 446
-    //   455: aload_2
-    //   456: invokestatic 202	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   459: goto -13 -> 446
-    //   462: aload 9
-    //   464: invokevirtual 270	java/io/File:delete	()Z
-    //   467: pop
-    //   468: iconst_0
-    //   469: ireturn
-    //   470: astore_1
-    //   471: aload 7
-    //   473: astore 6
-    //   475: goto -39 -> 436
-    //   478: astore_2
-    //   479: aload 7
+    //   328: iload 4
+    //   330: ifeq +93 -> 423
+    //   333: iload_3
+    //   334: ifeq +89 -> 423
+    //   337: aload_0
+    //   338: aload_2
+    //   339: invokevirtual 399	java/io/File:lastModified	()J
+    //   342: putfield 51	com/tencent/biz/authorize/FlatBuffersConfig:jdField_a_of_type_Long	J
+    //   345: new 121	java/lang/StringBuilder
+    //   348: dup
+    //   349: invokespecial 280	java/lang/StringBuilder:<init>	()V
+    //   352: astore_1
+    //   353: aload_1
+    //   354: ldc_w 401
+    //   357: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   360: pop
+    //   361: aload_1
+    //   362: aload_0
+    //   363: getfield 51	com/tencent/biz/authorize/FlatBuffersConfig:jdField_a_of_type_Long	J
+    //   366: invokevirtual 285	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   369: pop
+    //   370: ldc 186
+    //   372: iconst_1
+    //   373: aload_1
+    //   374: invokevirtual 288	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   377: invokestatic 265	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   380: aload_0
+    //   381: getfield 150	com/tencent/biz/authorize/FlatBuffersConfig:jdField_a_of_type_AndroidContentSharedPreferences	Landroid/content/SharedPreferences;
+    //   384: invokeinterface 468 1 0
+    //   389: astore_1
+    //   390: aload_1
+    //   391: ldc_w 470
+    //   394: ldc_w 300
+    //   397: invokeinterface 474 3 0
+    //   402: pop
+    //   403: aload_1
+    //   404: ldc_w 476
+    //   407: ldc_w 300
+    //   410: invokeinterface 474 3 0
+    //   415: pop
+    //   416: aload_1
+    //   417: invokeinterface 479 1 0
+    //   422: pop
+    //   423: iload 4
+    //   425: ireturn
+    //   426: aload 8
+    //   428: invokevirtual 270	java/io/File:delete	()Z
+    //   431: pop
+    //   432: iconst_0
+    //   433: ireturn
+    //   434: astore_1
+    //   435: aload 6
+    //   437: astore 5
+    //   439: goto +61 -> 500
+    //   442: astore_2
+    //   443: aload 6
+    //   445: astore_1
+    //   446: goto +11 -> 457
+    //   449: astore_1
+    //   450: goto +50 -> 500
+    //   453: astore_2
+    //   454: aload 7
+    //   456: astore_1
+    //   457: aload_1
+    //   458: astore 5
+    //   460: ldc 186
+    //   462: iconst_1
+    //   463: ldc_w 481
+    //   466: aload_2
+    //   467: invokestatic 194	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   470: aload_1
+    //   471: ifnull +21 -> 492
+    //   474: aload_1
+    //   475: invokevirtual 454	java/io/FileOutputStream:close	()V
+    //   478: goto +14 -> 492
     //   481: astore_1
-    //   482: goto -90 -> 392
-    //   485: iconst_1
-    //   486: istore 4
-    //   488: goto -254 -> 234
+    //   482: ldc 186
+    //   484: iconst_1
+    //   485: ldc_w 456
+    //   488: aload_1
+    //   489: invokestatic 194	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   492: aload 8
+    //   494: invokevirtual 270	java/io/File:delete	()Z
+    //   497: pop
+    //   498: iconst_0
+    //   499: ireturn
+    //   500: aload 5
+    //   502: ifnull +22 -> 524
+    //   505: aload 5
+    //   507: invokevirtual 454	java/io/FileOutputStream:close	()V
+    //   510: goto +14 -> 524
+    //   513: astore_2
+    //   514: ldc 186
+    //   516: iconst_1
+    //   517: ldc_w 456
+    //   520: aload_2
+    //   521: invokestatic 194	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   524: aload_1
+    //   525: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	491	0	this	FlatBuffersConfig
-    //   0	491	1	paramByteBuffer	ByteBuffer
-    //   0	491	2	paramFile	File
-    //   0	491	3	paramBoolean	boolean
-    //   1	486	4	bool1	boolean
-    //   245	127	5	bool2	boolean
-    //   43	431	6	localObject1	Object
-    //   36	444	7	localFileOutputStream	java.io.FileOutputStream
-    //   39	351	8	localObject2	Object
-    //   33	430	9	localFile	File
+    //   0	526	0	this	FlatBuffersConfig
+    //   0	526	1	paramByteBuffer	ByteBuffer
+    //   0	526	2	paramFile	File
+    //   0	526	3	paramBoolean	boolean
+    //   241	183	4	bool	boolean
+    //   7	499	5	localObject1	Object
+    //   46	398	6	localFileOutputStream	java.io.FileOutputStream
+    //   43	412	7	localObject2	Object
+    //   40	453	8	localFile	File
+    //   137	37	9	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   97	105	108	java/io/IOException
-    //   189	194	374	java/io/IOException
-    //   45	53	388	java/io/IOException
-    //   57	93	388	java/io/IOException
-    //   125	154	388	java/io/IOException
-    //   158	169	388	java/io/IOException
-    //   409	413	421	java/io/IOException
-    //   45	53	435	finally
-    //   57	93	435	finally
-    //   125	154	435	finally
-    //   158	169	435	finally
-    //   395	405	435	finally
-    //   441	446	448	java/io/IOException
-    //   169	184	470	finally
-    //   169	184	478	java/io/IOException
+    //   211	216	219	java/io/IOException
+    //   196	211	434	finally
+    //   196	211	442	java/io/IOException
+    //   52	60	449	finally
+    //   64	72	449	finally
+    //   76	84	449	finally
+    //   88	98	449	finally
+    //   102	110	449	finally
+    //   114	124	449	finally
+    //   130	139	449	finally
+    //   143	152	449	finally
+    //   156	166	449	finally
+    //   170	181	449	finally
+    //   185	196	449	finally
+    //   460	470	449	finally
+    //   52	60	453	java/io/IOException
+    //   64	72	453	java/io/IOException
+    //   76	84	453	java/io/IOException
+    //   88	98	453	java/io/IOException
+    //   102	110	453	java/io/IOException
+    //   114	124	453	java/io/IOException
+    //   130	139	453	java/io/IOException
+    //   143	152	453	java/io/IOException
+    //   156	166	453	java/io/IOException
+    //   170	181	453	java/io/IOException
+    //   185	196	453	java/io/IOException
+    //   474	478	481	java/io/IOException
+    //   505	510	513	java/io/IOException
   }
   
   public File b()
@@ -1519,10 +1289,13 @@ public class FlatBuffersConfig
   
   public void b()
   {
-    if ((!FlatBuffersParser.a()) || (this.jdField_a_of_type_ComTencentBizFlatbuffersFbTable != null)) {
-      return;
+    if (FlatBuffersParser.a())
+    {
+      if (this.jdField_a_of_type_ComTencentBizFlatbuffersFbTable != null) {
+        return;
+      }
+      ThreadManager.post(new FlatBuffersConfig.1(this), 8, null, true);
     }
-    ThreadManager.post(new FlatBuffersConfig.1(this), 8, null, true);
   }
   
   public String c()
@@ -1536,62 +1309,70 @@ public class FlatBuffersConfig
   
   public void c()
   {
-    int i = 0;
-    label303:
-    for (;;)
+    try
     {
+      Object localObject1 = this.jdField_a_of_type_ComTencentBizFlatbuffersFbTable;
+      if (localObject1 != null) {
+        return;
+      }
+      Object localObject3 = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("cmd_config_new", null);
+      if (localObject3 == null) {
+        return;
+      }
       try
       {
-        Object localObject1 = this.jdField_a_of_type_ComTencentBizFlatbuffersFbTable;
-        if (localObject1 != null) {
-          return;
-        }
-        Object localObject3 = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("cmd_config_new", null);
-        if (localObject3 != null)
+        localObject1 = new StringBuilder(((String)localObject3).length() + 10240);
+        ((StringBuilder)localObject1).append("{");
+        ((StringBuilder)localObject1).append("allow:");
+        ((StringBuilder)localObject1).append((String)localObject3);
+        a((StringBuilder)localObject1, "offlineHtml", "offline", false);
+        a((StringBuilder)localObject1, "extra", "ext", false);
+        a((StringBuilder)localObject1, "jump", "jump", false);
+        a((StringBuilder)localObject1, "schemes", "schemes_map", true);
+        localObject3 = AuthorizeConfig.a;
+        int j = localObject3.length;
+        int i = 0;
+        while (i < j)
         {
-          try
-          {
-            localObject1 = new StringBuilder(((String)localObject3).length() + 10240);
-            ((StringBuilder)localObject1).append("{");
-            ((StringBuilder)localObject1).append("allow:");
-            ((StringBuilder)localObject1).append((String)localObject3);
-            a((StringBuilder)localObject1, "offlineHtml", "offline", false);
-            a((StringBuilder)localObject1, "extra", "ext", false);
-            a((StringBuilder)localObject1, "jump", "jump", false);
-            a((StringBuilder)localObject1, "schemes", "schemes_map", true);
-            localObject3 = AuthorizeConfig.a;
-            int j = localObject3.length;
-            if (i < j)
-            {
-              String str = localObject3[i];
-              a((StringBuilder)localObject1, str, str, false);
-              i += 1;
-              continue;
-            }
-            ((StringBuilder)localObject1).append(",publishSeq:" + this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("publishSeq", -1L));
-            ((StringBuilder)localObject1).append("}");
-            a(this.jdField_a_of_type_ComTencentBizFlatbuffersFlatBuffersParser.a(((StringBuilder)localObject1).toString(), "namespace com.tencent.biz.flatbuffers;\n\nattribute \"qq_map\";\n\ntable JsApi {\n\tmatch:[string];\n\tapi:[string];\n}\n\ntable Extra (qq_map) {\n}\n\ntable Schema {\n\tmatch:[string];\n\tscheme:[string];\n}\n\ntable AuthorizeTable {\n  allow:[JsApi];\n  offline:Extra;\n  ext:Extra;\n  jump:Extra;\n  schemes:[Schema];\n  publishSeq:long;\n  \n  skey:[string];\n  pskey:[string];\n  a1:[string];\n  a2:[string];\n  ptlogin2:[string];\n  pt4_token:[string];\n  schemes_map:string;\n}\n\nroot_type AuthorizeTable;\n"), true);
-            if (this.jdField_a_of_type_ComTencentBizFlatbuffersFbTable == null) {
-              break label303;
-            }
-            QLog.i("AuthorizeConfig", 1, "flatbuffers convertJson2FlatBuffers success with publishSeq: " + this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("publishSeq", -1L));
-            this.jdField_a_of_type_ComTencentBizAuthorizeJsonConfig.a();
-          }
-          catch (Throwable localThrowable)
-          {
-            QLog.e("AuthorizeConfig", 1, "convertJson2FlatBuffers error!", localThrowable);
-          }
-          continue;
+          String str = localObject3[i];
+          a((StringBuilder)localObject1, str, str, false);
+          i += 1;
+        }
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(",publishSeq:");
+        ((StringBuilder)localObject3).append(this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("publishSeq", -1L));
+        ((StringBuilder)localObject1).append(((StringBuilder)localObject3).toString());
+        ((StringBuilder)localObject1).append("}");
+        a(this.jdField_a_of_type_ComTencentBizFlatbuffersFlatBuffersParser.a(((StringBuilder)localObject1).toString(), "namespace com.tencent.biz.flatbuffers;\n\nattribute \"qq_map\";\n\ntable JsApi {\n\tmatch:[string];\n\tapi:[string];\n}\n\ntable Extra (qq_map) {\n}\n\ntable Schema {\n\tmatch:[string];\n\tscheme:[string];\n}\n\ntable AuthorizeTable {\n  allow:[JsApi];\n  offline:Extra;\n  ext:Extra;\n  jump:Extra;\n  schemes:[Schema];\n  publishSeq:long;\n  \n  skey:[string];\n  pskey:[string];\n  a1:[string];\n  a2:[string];\n  ptlogin2:[string];\n  pt4_token:[string];\n  schemes_map:string;\n}\n\nroot_type AuthorizeTable;\n"), true);
+        if (this.jdField_a_of_type_ComTencentBizFlatbuffersFbTable != null)
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("flatbuffers convertJson2FlatBuffers success with publishSeq: ");
+          ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("publishSeq", -1L));
+          QLog.i("AuthorizeConfig", 1, ((StringBuilder)localObject1).toString());
+          this.jdField_a_of_type_ComTencentBizAuthorizeJsonConfig.a();
+        }
+        else
+        {
           QLog.i("AuthorizeConfig", 1, "flatbuffers convertJson2FlatBuffers failed");
         }
       }
-      finally {}
+      catch (Throwable localThrowable)
+      {
+        QLog.e("AuthorizeConfig", 1, "convertJson2FlatBuffers error!", localThrowable);
+      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.authorize.FlatBuffersConfig
  * JD-Core Version:    0.7.0.1
  */

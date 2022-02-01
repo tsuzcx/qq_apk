@@ -33,11 +33,13 @@ public abstract class ExploreByTouchHelper
   
   public ExploreByTouchHelper(View paramView)
   {
-    if (paramView == null) {
-      throw new IllegalArgumentException("View may not be null");
+    if (paramView != null)
+    {
+      this.mView = paramView;
+      this.mManager = ((AccessibilityManager)paramView.getContext().getSystemService("accessibility"));
+      return;
     }
-    this.mView = paramView;
-    this.mManager = ((AccessibilityManager)paramView.getContext().getSystemService("accessibility"));
+    throw new IllegalArgumentException("View may not be null");
   }
   
   private boolean clearAccessibilityFocus(int paramInt)
@@ -54,9 +56,7 @@ public abstract class ExploreByTouchHelper
   
   private AccessibilityEvent createEvent(int paramInt1, int paramInt2)
   {
-    switch (paramInt1)
-    {
-    default: 
+    if (paramInt1 != -1) {
       return createEventForChild(paramInt1, paramInt2);
     }
     return createEventForHost(paramInt2);
@@ -85,9 +85,7 @@ public abstract class ExploreByTouchHelper
   
   private AccessibilityNodeInfoCompat createNode(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != -1) {
       return createNodeForChild(paramInt);
     }
     return createNodeForHost();
@@ -103,41 +101,57 @@ public abstract class ExploreByTouchHelper
       throw new RuntimeException("Callbacks must add text or a content description in populateNodeForVirtualViewId()");
     }
     localAccessibilityNodeInfoCompat.getBoundsInParent(this.mTempParentRect);
-    if (this.mTempParentRect.isEmpty()) {
-      throw new RuntimeException("Callbacks must set parent bounds in populateNodeForVirtualViewId(), Rect(" + this.mTempParentRect.left + "," + this.mTempParentRect.top + "," + this.mTempParentRect.right + "," + this.mTempParentRect.bottom + "), nodeText(" + localAccessibilityNodeInfoCompat.getContentDescription() + ")");
-    }
-    int i = localAccessibilityNodeInfoCompat.getActions();
-    if ((i & 0x40) != 0) {
+    if (!this.mTempParentRect.isEmpty())
+    {
+      int i = localAccessibilityNodeInfoCompat.getActions();
+      if ((i & 0x40) == 0)
+      {
+        if ((i & 0x80) == 0)
+        {
+          localAccessibilityNodeInfoCompat.setPackageName(this.mView.getContext().getPackageName());
+          localAccessibilityNodeInfoCompat.setSource(this.mView, paramInt);
+          localAccessibilityNodeInfoCompat.setParent(this.mView);
+          if (this.mFocusedVirtualViewId == paramInt)
+          {
+            localAccessibilityNodeInfoCompat.setAccessibilityFocused(true);
+            localAccessibilityNodeInfoCompat.addAction(128);
+          }
+          else
+          {
+            localAccessibilityNodeInfoCompat.setAccessibilityFocused(false);
+            localAccessibilityNodeInfoCompat.addAction(64);
+          }
+          if (intersectVisibleToUser(this.mTempParentRect))
+          {
+            localAccessibilityNodeInfoCompat.setVisibleToUser(true);
+            localAccessibilityNodeInfoCompat.setBoundsInParent(this.mTempParentRect);
+          }
+          this.mView.getLocationOnScreen(this.mTempGlobalRect);
+          localObject = this.mTempGlobalRect;
+          paramInt = localObject[0];
+          i = localObject[1];
+          this.mTempScreenRect.set(this.mTempParentRect);
+          this.mTempScreenRect.offset(paramInt, i);
+          localAccessibilityNodeInfoCompat.setBoundsInScreen(this.mTempScreenRect);
+          return localAccessibilityNodeInfoCompat;
+        }
+        throw new RuntimeException("Callbacks must not add ACTION_CLEAR_ACCESSIBILITY_FOCUS in populateNodeForVirtualViewId()");
+      }
       throw new RuntimeException("Callbacks must not add ACTION_ACCESSIBILITY_FOCUS in populateNodeForVirtualViewId()");
     }
-    if ((i & 0x80) != 0) {
-      throw new RuntimeException("Callbacks must not add ACTION_CLEAR_ACCESSIBILITY_FOCUS in populateNodeForVirtualViewId()");
-    }
-    localAccessibilityNodeInfoCompat.setPackageName(this.mView.getContext().getPackageName());
-    localAccessibilityNodeInfoCompat.setSource(this.mView, paramInt);
-    localAccessibilityNodeInfoCompat.setParent(this.mView);
-    if (this.mFocusedVirtualViewId == paramInt)
-    {
-      localAccessibilityNodeInfoCompat.setAccessibilityFocused(true);
-      localAccessibilityNodeInfoCompat.addAction(128);
-    }
-    for (;;)
-    {
-      if (intersectVisibleToUser(this.mTempParentRect))
-      {
-        localAccessibilityNodeInfoCompat.setVisibleToUser(true);
-        localAccessibilityNodeInfoCompat.setBoundsInParent(this.mTempParentRect);
-      }
-      this.mView.getLocationOnScreen(this.mTempGlobalRect);
-      paramInt = this.mTempGlobalRect[0];
-      i = this.mTempGlobalRect[1];
-      this.mTempScreenRect.set(this.mTempParentRect);
-      this.mTempScreenRect.offset(paramInt, i);
-      localAccessibilityNodeInfoCompat.setBoundsInScreen(this.mTempScreenRect);
-      return localAccessibilityNodeInfoCompat;
-      localAccessibilityNodeInfoCompat.setAccessibilityFocused(false);
-      localAccessibilityNodeInfoCompat.addAction(64);
-    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Callbacks must set parent bounds in populateNodeForVirtualViewId(), Rect(");
+    ((StringBuilder)localObject).append(this.mTempParentRect.left);
+    ((StringBuilder)localObject).append(",");
+    ((StringBuilder)localObject).append(this.mTempParentRect.top);
+    ((StringBuilder)localObject).append(",");
+    ((StringBuilder)localObject).append(this.mTempParentRect.right);
+    ((StringBuilder)localObject).append(",");
+    ((StringBuilder)localObject).append(this.mTempParentRect.bottom);
+    ((StringBuilder)localObject).append("), nodeText(");
+    ((StringBuilder)localObject).append(localAccessibilityNodeInfoCompat.getContentDescription());
+    ((StringBuilder)localObject).append(")");
+    throw new RuntimeException(((StringBuilder)localObject).toString());
   }
   
   private AccessibilityNodeInfoCompat createNodeForHost()
@@ -157,26 +171,39 @@ public abstract class ExploreByTouchHelper
   
   private boolean intersectVisibleToUser(Rect paramRect)
   {
-    if ((paramRect == null) || (paramRect.isEmpty())) {
-      return false;
-    }
-    if (this.mView.getWindowVisibility() != 0) {
-      return false;
-    }
-    for (Object localObject = this.mView.getParent(); (localObject instanceof View); localObject = ((View)localObject).getParent())
+    if (paramRect != null)
     {
-      localObject = (View)localObject;
-      if ((((View)localObject).getAlpha() <= 0.0F) || (((View)localObject).getVisibility() != 0)) {
+      if (paramRect.isEmpty()) {
         return false;
       }
+      if (this.mView.getWindowVisibility() != 0) {
+        return false;
+      }
+      Object localObject = this.mView.getParent();
+      while ((localObject instanceof View))
+      {
+        localObject = (View)localObject;
+        if (((View)localObject).getAlpha() > 0.0F)
+        {
+          if (((View)localObject).getVisibility() != 0) {
+            return false;
+          }
+          localObject = ((View)localObject).getParent();
+        }
+        else
+        {
+          return false;
+        }
+      }
+      if (localObject == null) {
+        return false;
+      }
+      if (!this.mView.getLocalVisibleRect(this.mTempVisibleRect)) {
+        return false;
+      }
+      return paramRect.intersect(this.mTempVisibleRect);
     }
-    if (localObject == null) {
-      return false;
-    }
-    if (!this.mView.getLocalVisibleRect(this.mTempVisibleRect)) {
-      return false;
-    }
-    return paramRect.intersect(this.mTempVisibleRect);
+    return false;
   }
   
   private boolean isAccessibilityFocused(int paramInt)
@@ -186,21 +213,19 @@ public abstract class ExploreByTouchHelper
   
   private boolean manageFocusForChild(int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    switch (paramInt2)
+    if (paramInt2 != 64)
     {
-    default: 
-      return false;
-    case 64: 
-      return requestAccessibilityFocus(paramInt1);
+      if (paramInt2 != 128) {
+        return false;
+      }
+      return clearAccessibilityFocus(paramInt1);
     }
-    return clearAccessibilityFocus(paramInt1);
+    return requestAccessibilityFocus(paramInt1);
   }
   
   private boolean performAction(int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    switch (paramInt1)
-    {
-    default: 
+    if (paramInt1 != -1) {
       return performActionForChild(paramInt1, paramInt2, paramBundle);
     }
     return performActionForHost(paramInt2, paramBundle);
@@ -208,9 +233,7 @@ public abstract class ExploreByTouchHelper
   
   private boolean performActionForChild(int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    switch (paramInt2)
-    {
-    default: 
+    if ((paramInt2 != 64) && (paramInt2 != 128)) {
       return onPerformActionForVirtualView(paramInt1, paramInt2, paramBundle);
     }
     return manageFocusForChild(paramInt1, paramInt2, paramBundle);
@@ -223,22 +246,28 @@ public abstract class ExploreByTouchHelper
   
   private boolean requestAccessibilityFocus(int paramInt)
   {
-    if ((!this.mManager.isEnabled()) || (!this.mManager.isTouchExplorationEnabled())) {}
-    while (isAccessibilityFocused(paramInt)) {
-      return false;
+    if (this.mManager.isEnabled())
+    {
+      if (!this.mManager.isTouchExplorationEnabled()) {
+        return false;
+      }
+      if (!isAccessibilityFocused(paramInt))
+      {
+        this.mFocusedVirtualViewId = paramInt;
+        this.mView.invalidate();
+        sendEventForVirtualView(paramInt, 32768);
+        return true;
+      }
     }
-    this.mFocusedVirtualViewId = paramInt;
-    this.mView.invalidate();
-    sendEventForVirtualView(paramInt, 32768);
-    return true;
+    return false;
   }
   
   private void updateHoveredVirtualView(int paramInt)
   {
-    if (this.mHoveredVirtualViewId == paramInt) {
+    int i = this.mHoveredVirtualViewId;
+    if (i == paramInt) {
       return;
     }
-    int i = this.mHoveredVirtualViewId;
     this.mHoveredVirtualViewId = paramInt;
     sendEventForVirtualView(paramInt, 128);
     sendEventForVirtualView(i, 256);
@@ -246,30 +275,35 @@ public abstract class ExploreByTouchHelper
   
   public boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
-    if ((!this.mManager.isEnabled()) || (!this.mManager.isTouchExplorationEnabled())) {}
-    do
+    boolean bool3 = this.mManager.isEnabled();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bool3)
     {
-      return false;
-      switch (paramMotionEvent.getAction())
-      {
-      case 8: 
-      default: 
+      if (!this.mManager.isTouchExplorationEnabled()) {
         return false;
-      case 7: 
-      case 9: 
-        int i = getVirtualViewAt(paramMotionEvent.getX(), paramMotionEvent.getY());
-        updateHoveredVirtualView(i);
-        if (i != -2147483648) {}
-        for (;;)
-        {
-          return bool;
-          bool = false;
-        }
       }
-    } while (this.mFocusedVirtualViewId == -2147483648);
-    updateHoveredVirtualView(-2147483648);
-    return true;
+      int i = paramMotionEvent.getAction();
+      if ((i != 7) && (i != 9))
+      {
+        if (i != 10) {
+          return false;
+        }
+        if (this.mFocusedVirtualViewId != -2147483648)
+        {
+          updateHoveredVirtualView(-2147483648);
+          return true;
+        }
+        return false;
+      }
+      i = getVirtualViewAt(paramMotionEvent.getX(), paramMotionEvent.getY());
+      updateHoveredVirtualView(i);
+      bool1 = bool2;
+      if (i != -2147483648) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public AccessibilityNodeProviderCompat getAccessibilityNodeProvider(View paramView)
@@ -307,15 +341,19 @@ public abstract class ExploreByTouchHelper
   
   public boolean sendEventForVirtualView(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 == -2147483648) || (!this.mManager.isEnabled())) {}
-    ViewParent localViewParent;
-    do
+    if (paramInt1 != -2147483648)
     {
-      return false;
-      localViewParent = this.mView.getParent();
-    } while (localViewParent == null);
-    AccessibilityEvent localAccessibilityEvent = createEvent(paramInt1, paramInt2);
-    return localViewParent.requestSendAccessibilityEvent(this.mView, localAccessibilityEvent);
+      if (!this.mManager.isEnabled()) {
+        return false;
+      }
+      ViewParent localViewParent = this.mView.getParent();
+      if (localViewParent == null) {
+        return false;
+      }
+      AccessibilityEvent localAccessibilityEvent = createEvent(paramInt1, paramInt2);
+      return localViewParent.requestSendAccessibilityEvent(this.mView, localAccessibilityEvent);
+    }
+    return false;
   }
 }
 

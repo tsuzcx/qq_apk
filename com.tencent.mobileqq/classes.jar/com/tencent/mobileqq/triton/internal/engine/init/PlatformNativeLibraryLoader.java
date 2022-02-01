@@ -33,35 +33,43 @@ public final class PlatformNativeLibraryLoader
     try
     {
       System.load(localFile.getAbsolutePath());
-      for (;;)
-      {
-        long l2 = System.currentTimeMillis();
-        if (paramEnginePackage != null) {
-          break;
-        }
-        bool = true;
-        paramList.add(new NativeLibraryLoadStatistic(bool, paramString, localFile, paramBoolean, l2 - l1, paramEnginePackage));
-        if (paramEnginePackage == null) {
-          return;
-        }
-        if (paramBoolean) {
-          break label173;
-        }
-        Logger.e("TritonNativeLibraryLoader", paramEnginePackage.getMessage(), (Throwable)paramEnginePackage);
-        throw ((Throwable)paramEnginePackage);
-        System.loadLibrary(paramString);
-      }
+      break label39;
+      System.loadLibrary(paramString);
     }
     catch (UnsatisfiedLinkError paramEnginePackage)
     {
-      for (;;)
+      label39:
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed to load library [");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("] file:[");
+      localStringBuilder.append(localFile);
+      localStringBuilder.append("] ");
+      localStringBuilder.append(paramEnginePackage.getMessage());
+      paramEnginePackage = (TritonException)new TritonInitException(localStringBuilder.toString(), ErrorCodes.NATIVE_LOAD_LIBRARY, (Throwable)paramEnginePackage);
+    }
+    long l2 = System.currentTimeMillis();
+    boolean bool;
+    if (paramEnginePackage == null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    paramList.add(new NativeLibraryLoadStatistic(bool, paramString, localFile, paramBoolean, l2 - l1, paramEnginePackage));
+    if (paramEnginePackage != null)
+    {
+      if (paramBoolean)
       {
-        paramEnginePackage = (TritonException)new TritonInitException("failed to load library [" + paramString + "] file:[" + localFile + "] " + paramEnginePackage.getMessage(), ErrorCodes.NATIVE_LOAD_LIBRARY, (Throwable)paramEnginePackage);
-        continue;
-        boolean bool = false;
+        paramString = new StringBuilder();
+        paramString.append("optional library load failed, ");
+        paramString.append(paramEnginePackage.getMessage());
+        Logger.i$default("TritonNativeLibraryLoader", paramString.toString(), null, 4, null);
+        return;
       }
-      label173:
-      Logger.i$default("TritonNativeLibraryLoader", "optional library load failed, " + paramEnginePackage.getMessage(), null, 4, null);
+      paramString = paramEnginePackage.getMessage();
+      paramEnginePackage = (Throwable)paramEnginePackage;
+      Logger.e("TritonNativeLibraryLoader", paramString, paramEnginePackage);
+      throw paramEnginePackage;
     }
   }
   
@@ -81,7 +89,7 @@ public final class PlatformNativeLibraryLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.engine.init.PlatformNativeLibraryLoader
  * JD-Core Version:    0.7.0.1
  */

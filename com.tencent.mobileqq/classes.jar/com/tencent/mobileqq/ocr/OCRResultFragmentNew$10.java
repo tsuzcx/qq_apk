@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ocr;
 
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.gallery.picocr.PicOcrObserver;
 import com.tencent.mobileqq.gallery.picocr.PicOcrRspResult;
 
@@ -9,7 +9,7 @@ class OCRResultFragmentNew$10
 {
   OCRResultFragmentNew$10(OCRResultFragmentNew paramOCRResultFragmentNew) {}
   
-  public void a(boolean paramBoolean, PicOcrRspResult paramPicOcrRspResult)
+  protected void a(boolean paramBoolean, PicOcrRspResult paramPicOcrRspResult)
   {
     if (!OCRResultFragmentNew.a(this.a)) {
       return;
@@ -20,7 +20,7 @@ class OCRResultFragmentNew$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRResultFragmentNew.10
  * JD-Core Version:    0.7.0.1
  */

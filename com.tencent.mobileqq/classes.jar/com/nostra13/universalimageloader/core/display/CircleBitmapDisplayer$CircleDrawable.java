@@ -35,27 +35,31 @@ public class CircleBitmapDisplayer$CircleDrawable
     this.paint.setShader(this.bitmapShader);
     this.paint.setFilterBitmap(true);
     this.paint.setDither(true);
-    if (paramInteger == null) {
+    if (paramInteger == null)
+    {
       this.strokePaint = null;
     }
-    for (;;)
+    else
     {
-      this.strokeWidth = paramFloat;
-      this.strokeRadius = (this.radius - paramFloat / 2.0F);
-      return;
       this.strokePaint = new Paint();
       this.strokePaint.setStyle(Paint.Style.STROKE);
       this.strokePaint.setColor(paramInteger.intValue());
       this.strokePaint.setStrokeWidth(paramFloat);
       this.strokePaint.setAntiAlias(true);
     }
+    this.strokeWidth = paramFloat;
+    this.strokeRadius = (this.radius - paramFloat / 2.0F);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    paramCanvas.drawCircle(this.radius, this.radius, this.radius, this.paint);
-    if (this.strokePaint != null) {
-      paramCanvas.drawCircle(this.radius, this.radius, this.strokeRadius, this.strokePaint);
+    float f = this.radius;
+    paramCanvas.drawCircle(f, f, f, this.paint);
+    Paint localPaint = this.strokePaint;
+    if (localPaint != null)
+    {
+      f = this.radius;
+      paramCanvas.drawCircle(f, f, this.strokeRadius, localPaint);
     }
   }
   
@@ -87,7 +91,7 @@ public class CircleBitmapDisplayer$CircleDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.core.display.CircleBitmapDisplayer.CircleDrawable
  * JD-Core Version:    0.7.0.1
  */

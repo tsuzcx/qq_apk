@@ -5,8 +5,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
 import com.tencent.mobileqq.nearby.interestTag.InterestTag;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 public class LabelDisplayCtrl
   extends LabelBaseCtrl
@@ -15,30 +15,28 @@ public class LabelDisplayCtrl
   
   protected int a()
   {
-    return 2131561340;
+    return 2131561179;
   }
   
   protected LabelContainer a(View paramView, int paramInt1, InterestTag paramInterestTag, int paramInt2)
   {
-    paramInterestTag = (ImageView)paramView.findViewById(2131380840);
+    paramInterestTag = (ImageView)paramView.findViewById(2131380104);
     if (paramInt1 == 7) {
       paramInterestTag.setVisibility(8);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() != 0)
-      {
-        paramInterestTag = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-        paramInterestTag.topMargin = DisplayUtil.b(this.jdField_a_of_type_AndroidContentContext, 16.0F);
-        paramView.setLayoutParams(paramInterestTag);
-      }
-      paramInt1 = DisplayUtil.b(this.jdField_a_of_type_AndroidContentContext, 7.0F);
-      paramInt2 = DisplayUtil.b(this.jdField_a_of_type_AndroidContentContext, 7.0F);
-      paramView = (LabelContainer)paramView.findViewById(2131370030);
-      paramView.setSpace(paramInt1, paramInt2);
-      return paramView;
+    } else {
       paramInterestTag.setImageResource(b[paramInt1]);
     }
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() != 0)
+    {
+      paramInterestTag = (LinearLayout.LayoutParams)paramView.getLayoutParams();
+      paramInterestTag.topMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 16.0F);
+      paramView.setLayoutParams(paramInterestTag);
+    }
+    paramInt1 = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 7.0F);
+    paramInt2 = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 7.0F);
+    paramView = (LabelContainer)paramView.findViewById(2131369714);
+    paramView.setSpace(paramInt1, paramInt2);
+    return paramView;
   }
   
   public void a(Context paramContext, LinearLayout paramLinearLayout, View paramView)
@@ -55,17 +53,17 @@ public class LabelDisplayCtrl
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
-    for (;;)
+    else
     {
-      return true;
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.LabelDisplayCtrl
  * JD-Core Version:    0.7.0.1
  */

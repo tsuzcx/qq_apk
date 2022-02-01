@@ -38,7 +38,8 @@ public final class mobile_feeds_req
   
   static
   {
-    cache_busi_param.put(Integer.valueOf(0), "");
+    Object localObject = Integer.valueOf(0);
+    cache_busi_param.put(localObject, "");
     cache_feed_infos = new HashMap();
     cache_feed_infos.put("", "");
     cache_gps_info = new s_gps();
@@ -47,13 +48,13 @@ public final class mobile_feeds_req
     cache_kitFileInfos = new HashMap();
     cache_kitFileInfos.put("", "");
     cache_rank_param = new HashMap();
-    cache_rank_param.put(Integer.valueOf(0), "");
+    cache_rank_param.put(localObject, "");
     cache_mapDesc = new HashMap();
-    cache_mapDesc.put(Integer.valueOf(0), "");
+    cache_mapDesc.put(localObject, "");
     cache_mapBinaryExtendInfo = new HashMap();
-    byte[] arrayOfByte = (byte[])new byte[1];
-    ((byte[])arrayOfByte)[0] = 0;
-    cache_mapBinaryExtendInfo.put("", arrayOfByte);
+    localObject = (byte[])new byte[1];
+    ((byte[])localObject)[0] = 0;
+    cache_mapBinaryExtendInfo.put("", localObject);
   }
   
   public mobile_feeds_req() {}
@@ -107,50 +108,62 @@ public final class mobile_feeds_req
     paramJceOutputStream.write(this.refresh_type, 0);
     paramJceOutputStream.write(this.relation_type, 1);
     paramJceOutputStream.write(this.count, 2);
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 3);
+    Object localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.device_info != null) {
-      paramJceOutputStream.write(this.device_info, 4);
+    localObject = this.device_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 5);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 5);
     }
     paramJceOutputStream.write(this.offset, 6);
-    if (this.tlv_attach_info != null) {
-      paramJceOutputStream.write(this.tlv_attach_info, 7);
+    localObject = this.tlv_attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.feed_infos != null) {
-      paramJceOutputStream.write(this.feed_infos, 8);
+    localObject = this.feed_infos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 8);
     }
-    if (this.feed_attach_info != null) {
-      paramJceOutputStream.write(this.feed_attach_info, 9);
+    localObject = this.feed_attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
     paramJceOutputStream.write(this.force, 10);
-    if (this.gps_info != null) {
-      paramJceOutputStream.write(this.gps_info, 11);
+    localObject = this.gps_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 11);
     }
-    if (this.stMapExtendinfo != null) {
-      paramJceOutputStream.write(this.stMapExtendinfo, 12);
+    localObject = this.stMapExtendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 12);
     }
-    if (this.kitFileInfos != null) {
-      paramJceOutputStream.write(this.kitFileInfos, 13);
+    localObject = this.kitFileInfos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 13);
     }
-    if (this.rank_param != null) {
-      paramJceOutputStream.write(this.rank_param, 14);
+    localObject = this.rank_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 14);
     }
-    if (this.mapDesc != null) {
-      paramJceOutputStream.write(this.mapDesc, 15);
+    localObject = this.mapDesc;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 15);
     }
-    if (this.mapBinaryExtendInfo != null) {
-      paramJceOutputStream.write(this.mapBinaryExtendInfo, 16);
+    localObject = this.mapBinaryExtendInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 16);
     }
     paramJceOutputStream.write(this.scene, 17);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_feeds_req
  * JD-Core Version:    0.7.0.1
  */

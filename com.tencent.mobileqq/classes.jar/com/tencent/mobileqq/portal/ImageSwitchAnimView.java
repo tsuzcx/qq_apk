@@ -23,78 +23,78 @@ public class ImageSwitchAnimView
   
   public void a(Bitmap paramBitmap)
   {
-    if (this.a != null) {
-      this.a.a(paramBitmap);
+    ImageSwitchAnim localImageSwitchAnim = this.a;
+    if (localImageSwitchAnim != null) {
+      localImageSwitchAnim.a(paramBitmap);
     }
-    if (this.a != null) {
-      this.a.a();
+    paramBitmap = this.a;
+    if (paramBitmap != null) {
+      paramBitmap.a();
     }
     invalidate();
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    boolean bool = false;
     super.onDraw(paramCanvas);
-    int j;
-    int k;
-    if ((this.a != null) && (this.a.a() == 0))
+    ImageSwitchAnim localImageSwitchAnim = this.a;
+    if ((localImageSwitchAnim != null) && (localImageSwitchAnim.a() == 0))
     {
-      j = getWidth();
-      k = getHeight();
-      if (j >= k) {
-        break label109;
+      int i = getWidth();
+      int j = getHeight();
+      float f;
+      if (i < j) {
+        f = i;
+      } else {
+        f = j;
       }
+      int k = (int)(f / 1.35F);
+      int m = (i - k) / 2;
+      int n = (j - k) / 2;
+      this.a.a(i, j, 0, 0, m, n, k, k);
     }
-    label109:
-    for (int i = (int)(j / 1.35F);; i = (int)(k / 1.35F))
-    {
-      int m = (j - i) / 2;
-      int n = (k - i) / 2;
-      this.a.a(j, k, 0, 0, m, n, i, i);
-      if (this.a != null) {
-        bool = this.a.a(paramCanvas);
-      }
-      if (bool) {
-        invalidate();
-      }
-      return;
+    boolean bool = false;
+    localImageSwitchAnim = this.a;
+    if (localImageSwitchAnim != null) {
+      bool = localImageSwitchAnim.a(paramCanvas);
+    }
+    if (bool) {
+      invalidate();
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    int i;
     if ((getWidth() > 0) && (this.a != null))
     {
-      paramInt2 = getWidth();
-      i = getHeight();
-      if (paramInt2 >= i) {
-        break label74;
+      paramInt1 = getWidth();
+      paramInt2 = getHeight();
+      float f;
+      if (paramInt1 < paramInt2) {
+        f = paramInt1;
+      } else {
+        f = paramInt2;
       }
-    }
-    label74:
-    for (paramInt1 = (int)(paramInt2 / 1.35F);; paramInt1 = (int)(i / 1.35F))
-    {
-      int j = (paramInt2 - paramInt1) / 2;
-      int k = (i - paramInt1) / 2;
-      this.a.a(paramInt2, i, 0, 0, j, k, paramInt1, paramInt1);
-      return;
+      int i = (int)(f / 1.35F);
+      int j = (paramInt1 - i) / 2;
+      int k = (paramInt2 - i) / 2;
+      this.a.a(paramInt1, paramInt2, 0, 0, j, k, i, i);
     }
   }
   
   public void setLogo(Bitmap paramBitmap)
   {
-    if (this.a != null) {
-      this.a.b(paramBitmap);
+    ImageSwitchAnim localImageSwitchAnim = this.a;
+    if (localImageSwitchAnim != null) {
+      localImageSwitchAnim.b(paramBitmap);
     }
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ImageSwitchAnimView
  * JD-Core Version:    0.7.0.1
  */

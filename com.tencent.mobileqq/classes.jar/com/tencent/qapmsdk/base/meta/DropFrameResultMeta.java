@@ -69,58 +69,43 @@ public final class DropFrameResultMeta
   
   public boolean equals(@Nullable Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (this != paramObject)
     {
-      bool1 = bool2;
-      if (!(paramObject instanceof DropFrameResultMeta)) {
-        break label96;
-      }
-      paramObject = (DropFrameResultMeta)paramObject;
-      if (this.dropCount != paramObject.dropCount) {
-        break label98;
-      }
-    }
-    label96:
-    label98:
-    for (int i = 1;; i = 0)
-    {
-      bool1 = bool2;
-      if (i != 0)
+      if ((paramObject instanceof DropFrameResultMeta))
       {
-        bool1 = bool2;
-        if (Float.compare(this.duration, paramObject.duration) == 0)
-        {
-          bool1 = bool2;
-          if (Intrinsics.areEqual(this.dropIntervals, paramObject.dropIntervals))
-          {
-            bool1 = bool2;
-            if (Intrinsics.areEqual(this.scene, paramObject.scene)) {
-              bool1 = true;
-            }
-          }
+        paramObject = (DropFrameResultMeta)paramObject;
+        int i;
+        if (this.dropCount == paramObject.dropCount) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        if ((i != 0) && (Float.compare(this.duration, paramObject.duration) == 0) && (Intrinsics.areEqual(this.dropIntervals, paramObject.dropIntervals)) && (Intrinsics.areEqual(this.scene, paramObject.scene))) {
+          return true;
         }
       }
-      return bool1;
+      return false;
     }
+    return true;
   }
   
   public int hashCode()
   {
-    int j = 0;
     int k = this.dropCount;
     int m = Float.floatToIntBits(this.duration);
     Object localObject = this.dropIntervals;
-    if (localObject != null) {}
-    for (int i = Arrays.hashCode((long[])localObject);; i = 0)
-    {
-      localObject = this.scene;
-      if (localObject != null) {
-        j = localObject.hashCode();
-      }
-      return (i + (k * 31 + m) * 31) * 31 + j;
+    int j = 0;
+    int i;
+    if (localObject != null) {
+      i = Arrays.hashCode((long[])localObject);
+    } else {
+      i = 0;
     }
+    localObject = this.scene;
+    if (localObject != null) {
+      j = localObject.hashCode();
+    }
+    return ((k * 31 + m) * 31 + i) * 31 + j;
   }
   
   public void reset()
@@ -141,12 +126,22 @@ public final class DropFrameResultMeta
   @NotNull
   public String toString()
   {
-    return "DropFrameResultMeta(dropCount=" + this.dropCount + ", duration=" + this.duration + ", dropIntervals=" + Arrays.toString(this.dropIntervals) + ", scene=" + this.scene + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DropFrameResultMeta(dropCount=");
+    localStringBuilder.append(this.dropCount);
+    localStringBuilder.append(", duration=");
+    localStringBuilder.append(this.duration);
+    localStringBuilder.append(", dropIntervals=");
+    localStringBuilder.append(Arrays.toString(this.dropIntervals));
+    localStringBuilder.append(", scene=");
+    localStringBuilder.append(this.scene);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.base.meta.DropFrameResultMeta
  * JD-Core Version:    0.7.0.1
  */

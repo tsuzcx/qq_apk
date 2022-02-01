@@ -2,15 +2,14 @@ package com.tencent.mobileqq.mixedmsg;
 
 import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.MediaMessageObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.MessageForLongTextMsg;
 import com.tencent.mobileqq.data.MessageForMixedMsg;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.pic.UpCallBack;
 import com.tencent.mobileqq.pic.UpCallBack.SendResult;
-import com.tencent.mobileqq.richmedia.ordersend.OrderMediaMsgManager;
+import com.tencent.mobileqq.richmedia.ordersend.IOrderMediaMsgService;
 import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -22,7 +21,7 @@ class MixedMsgManager$4
 {
   MessageForLongTextMsg jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg;
   
-  MixedMsgManager$4(MixedMsgManager paramMixedMsgManager, QQAppInterface paramQQAppInterface, MessageForMixedMsg paramMessageForMixedMsg, MessageObserver paramMessageObserver) {}
+  MixedMsgManager$4(MixedMsgManager paramMixedMsgManager, QQAppInterface paramQQAppInterface, MessageForMixedMsg paramMessageForMixedMsg, MediaMessageObserver paramMediaMessageObserver) {}
   
   public MessageRecord a(im_msg_body.RichText paramRichText)
   {
@@ -37,15 +36,21 @@ class MixedMsgManager$4
     {
       if (paramSendResult.jdField_a_of_type_Int == 0)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MixedMsgManager", 2, "step3: sendLongTextMsg pack upload cost: " + (System.currentTimeMillis() - MixedMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager)) + ",mResid:" + paramSendResult.c);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("step3: sendLongTextMsg pack upload cost: ");
+          ((StringBuilder)localObject).append(System.currentTimeMillis() - MixedMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager));
+          ((StringBuilder)localObject).append(",mResid:");
+          ((StringBuilder)localObject).append(paramSendResult.c);
+          QLog.d("MixedMsgManager", 2, ((StringBuilder)localObject).toString());
         }
-        StructMsgForGeneralShare localStructMsgForGeneralShare = ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
-        localStructMsgForGeneralShare.mResid = paramSendResult.c;
-        localStructMsgForGeneralShare.mFileName = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
-        localStructMsgForGeneralShare.multiMsgFlag = 1;
+        localObject = ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
+        ((StructMsgForGeneralShare)localObject).mResid = paramSendResult.c;
+        ((StructMsgForGeneralShare)localObject).mFileName = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
+        ((StructMsgForGeneralShare)localObject).multiMsgFlag = 1;
         this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg = ((MessageForLongTextMsg)MessageRecordFactory.a(-1051));
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.structingMsg = localStructMsgForGeneralShare;
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.structingMsg = ((StructMsgForGeneralShare)localObject);
         this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.frienduin = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin;
         this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.istroop = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.istroop;
         this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.selfuin = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.selfuin;
@@ -64,13 +69,24 @@ class MixedMsgManager$4
         this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.longMsgId = ((short)(int)this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.shmsgseq);
         this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.saveExtInfoToExtStr("long_text_msg_resid", paramSendResult.c);
         AnonymousChatHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg);
-        ((OrderMediaMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MEDIA_MSG_ORDER_SEND_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg, this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
+        ((IOrderMediaMsgService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IOrderMediaMsgService.class)).sendOrderMsg(this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg, this.jdField_a_of_type_ComTencentMobileqqAppMediaMessageObserver);
         return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("MixedMsgManager", 2, "upload multi msg pack failed, result.errStr=" + paramSendResult.b + ",result.errStr=" + paramSendResult.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("upload multi msg pack failed, result.errStr=");
+        ((StringBuilder)localObject).append(paramSendResult.b);
+        ((StringBuilder)localObject).append(",result.errStr=");
+        ((StringBuilder)localObject).append(paramSendResult.jdField_a_of_type_JavaLangString);
+        QLog.d("MixedMsgManager", 2, ((StringBuilder)localObject).toString());
       }
-      MixedMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, true, "upload longMsg pack fail: errCode = " + paramSendResult.b);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager;
+      localMessageForMixedMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("upload longMsg pack fail: errCode = ");
+      localStringBuilder.append(paramSendResult.b);
+      MixedMsgManager.a((MixedMsgManager)localObject, localMessageForMixedMsg, true, localStringBuilder.toString());
       return;
     }
     catch (Exception paramSendResult)
@@ -78,13 +94,18 @@ class MixedMsgManager$4
       if (QLog.isColorLevel()) {
         QLog.d("MixedMsgManager", 2, "upload multi msg pack failed, catch exception", paramSendResult);
       }
-      MixedMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, true, "sendStructLongMsg fail: exception" + paramSendResult.getMessage());
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager;
+      MessageForMixedMsg localMessageForMixedMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sendStructLongMsg fail: exception");
+      localStringBuilder.append(paramSendResult.getMessage());
+      MixedMsgManager.a((MixedMsgManager)localObject, localMessageForMixedMsg, true, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mixedmsg.MixedMsgManager.4
  * JD-Core Version:    0.7.0.1
  */

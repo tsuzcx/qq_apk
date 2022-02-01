@@ -17,7 +17,7 @@ public class HomeWorkAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130844011;
+    return 2130843931;
   }
   
   public int getAppID()
@@ -38,7 +38,7 @@ public class HomeWorkAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131690908);
+    return BaseApplicationImpl.getContext().getString(2131690837);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
@@ -54,7 +54,7 @@ public class HomeWorkAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.HomeWorkAppInfo
  * JD-Core Version:    0.7.0.1
  */

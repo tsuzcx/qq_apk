@@ -26,9 +26,10 @@ final class ResponseBody$BomAwareReader
   public void close()
   {
     this.closed = true;
-    if (this.delegate != null)
+    Reader localReader = this.delegate;
+    if (localReader != null)
     {
-      this.delegate.close();
+      localReader.close();
       return;
     }
     this.source.close();
@@ -36,23 +37,24 @@ final class ResponseBody$BomAwareReader
   
   public int read(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
-    if (this.closed) {
-      throw new IOException("Stream closed");
-    }
-    Reader localReader = this.delegate;
-    Object localObject = localReader;
-    if (localReader == null)
+    if (!this.closed)
     {
-      localObject = Util.bomAwareCharset(this.source, this.charset);
-      localObject = new InputStreamReader(this.source.inputStream(), (Charset)localObject);
-      this.delegate = ((Reader)localObject);
+      Reader localReader = this.delegate;
+      Object localObject = localReader;
+      if (localReader == null)
+      {
+        localObject = Util.bomAwareCharset(this.source, this.charset);
+        localObject = new InputStreamReader(this.source.inputStream(), (Charset)localObject);
+        this.delegate = ((Reader)localObject);
+      }
+      return ((Reader)localObject).read(paramArrayOfChar, paramInt1, paramInt2);
     }
-    return ((Reader)localObject).read(paramArrayOfChar, paramInt1, paramInt2);
+    throw new IOException("Stream closed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.ResponseBody.BomAwareReader
  * JD-Core Version:    0.7.0.1
  */

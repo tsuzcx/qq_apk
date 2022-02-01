@@ -15,14 +15,17 @@ class WriteTogetherEditorView$2
   
   public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    if (!WriteTogetherEditorView.a(this.a)) {}
-    while (paramMenuItem.getItemId() != 1) {
+    if (!WriteTogetherEditorView.a(this.a)) {
       return false;
     }
-    WriteTogetherEditorView.a(this.a).a(this.a.getText().toString(), this.a.getSelectionStart(), this.a.getSelectionEnd());
-    paramActionMode.finish();
-    ReportController.b(null, "dc00898", "", "", "0X800AF34", "0X800AF34", 5, 0, "", "", "", "");
-    return true;
+    if (paramMenuItem.getItemId() == 1)
+    {
+      WriteTogetherEditorView.a(this.a).a(this.a.getText().toString(), this.a.getSelectionStart(), this.a.getSelectionEnd());
+      paramActionMode.finish();
+      ReportController.b(null, "dc00898", "", "", "0X800AF34", "0X800AF34", 5, 0, "", "", "", "");
+      return true;
+    }
+    return false;
   }
   
   public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
@@ -48,7 +51,7 @@ class WriteTogetherEditorView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.WriteTogetherEditorView.2
  * JD-Core Version:    0.7.0.1
  */

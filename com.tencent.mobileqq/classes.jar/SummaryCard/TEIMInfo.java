@@ -13,16 +13,6 @@ public final class TEIMInfo
   public int iBindCompanyEmailStatus = 0;
   public String sBindCompanyEmail = "";
   
-  static
-  {
-    if (!TEIMInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public TEIMInfo() {}
   
   public TEIMInfo(int paramInt, String paramString)
@@ -38,18 +28,17 @@ public final class TEIMInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -68,13 +57,20 @@ public final class TEIMInfo
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (TEIMInfo)paramObject;
-    } while ((!JceUtil.equals(this.iBindCompanyEmailStatus, paramObject.iBindCompanyEmailStatus)) || (!JceUtil.equals(this.sBindCompanyEmail, paramObject.sBindCompanyEmail)));
-    return true;
+    }
+    paramObject = (TEIMInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.iBindCompanyEmailStatus, paramObject.iBindCompanyEmailStatus))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.sBindCompanyEmail, paramObject.sBindCompanyEmail)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -124,8 +120,9 @@ public final class TEIMInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iBindCompanyEmailStatus, 0);
-    if (this.sBindCompanyEmail != null) {
-      paramJceOutputStream.write(this.sBindCompanyEmail, 1);
+    String str = this.sBindCompanyEmail;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }

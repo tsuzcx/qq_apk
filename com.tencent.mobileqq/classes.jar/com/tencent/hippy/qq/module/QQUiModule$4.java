@@ -14,19 +14,19 @@ class QQUiModule$4
   public void run()
   {
     Activity localActivity = this.this$0.getActivity();
-    if ((localActivity == null) || (localActivity.isFinishing()))
+    if ((localActivity != null) && (!localActivity.isFinishing()))
     {
-      QLog.e("QQUiModule", 1, "showDialog activity is finish");
+      QQUiModule.4.1 local1 = new QQUiModule.4.1(this);
+      QQUiModule.4.2 local2 = new QQUiModule.4.2(this);
+      UiApiPlugin.a(localActivity, this.val$json, local1, local1, local2);
       return;
     }
-    QQUiModule.4.1 local1 = new QQUiModule.4.1(this);
-    QQUiModule.4.2 local2 = new QQUiModule.4.2(this);
-    UiApiPlugin.a(localActivity, this.val$json, local1, local1, local2);
+    QLog.e("QQUiModule", 1, "showDialog activity is finish");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQUiModule.4
  * JD-Core Version:    0.7.0.1
  */

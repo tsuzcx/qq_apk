@@ -29,10 +29,10 @@ class ArkAiAppPanel$ArkInputPanelTabAdapter
   
   public ArkAiInfo a(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
-      return null;
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return (ArkAiInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    return (ArkAiInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return null;
   }
   
   public void a(List<ArkAiInfo> paramList)
@@ -54,38 +54,36 @@ class ArkAiAppPanel$ArkInputPanelTabAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject1;
+    ArkAiAppPanel.ArkInputPanelTabAdapter.ViewHolder localViewHolder;
     if (paramView == null)
     {
-      paramView = new ArkAiAppPanel.ArkInputPanelTabAdapter.ViewHolder(this);
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845019);
-      localObject1 = new ViewGroup.LayoutParams(MessageForArkApp.dp2px(50.0F), -1);
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      localObject1 = new RelativeLayout.LayoutParams(MessageForArkApp.dp2px(28.0F), MessageForArkApp.dp2px(25.0F));
-      ((RelativeLayout.LayoutParams)localObject1).addRule(13);
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramView.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject1);
-      localObject1 = paramView.jdField_a_of_type_AndroidWidgetRelativeLayout;
-      ((View)localObject1).setTag(paramView);
+      localViewHolder = new ArkAiAppPanel.ArkInputPanelTabAdapter.ViewHolder(this);
+      localViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+      localViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130844895);
+      paramView = new ViewGroup.LayoutParams(MessageForArkApp.dp2px(50.0F), -1);
+      localViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
+      localViewHolder.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      paramView = new RelativeLayout.LayoutParams(MessageForArkApp.dp2px(28.0F), MessageForArkApp.dp2px(25.0F));
+      paramView.addRule(13);
+      localViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(localViewHolder.jdField_a_of_type_AndroidWidgetImageView, paramView);
+      paramView = localViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      paramView.setTag(localViewHolder);
     }
-    for (;;)
+    else
     {
-      Object localObject2 = a(paramInt);
-      if ((localObject2 != null) && (!TextUtils.isEmpty(((ArkAiInfo)localObject2).d))) {
-        ArkAppCacheMgr.getAppIcon(((ArkAiInfo)localObject2).a, new ArkAiAppPanel.ArkInputPanelTabAdapter.1(this, paramView));
-      }
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return localObject1;
-      localObject2 = (ArkAiAppPanel.ArkInputPanelTabAdapter.ViewHolder)paramView.getTag();
-      localObject1 = paramView;
-      paramView = (View)localObject2;
+      localViewHolder = (ArkAiAppPanel.ArkInputPanelTabAdapter.ViewHolder)paramView.getTag();
     }
+    ArkAiInfo localArkAiInfo = a(paramInt);
+    if ((localArkAiInfo != null) && (!TextUtils.isEmpty(localArkAiInfo.d))) {
+      ArkAppCacheMgr.getAppIcon(localArkAiInfo.a, new ArkAiAppPanel.ArkInputPanelTabAdapter.1(this, localViewHolder));
+    }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkAiAppPanel.ArkInputPanelTabAdapter
  * JD-Core Version:    0.7.0.1
  */

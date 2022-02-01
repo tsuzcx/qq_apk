@@ -10,11 +10,17 @@ class EmosmActivity$8
   
   public void onCoverComplete(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
   {
-    if ((paramEmoticonPackage == null) || (paramInt1 != 2) || (paramInt2 != 0)) {}
-    while (this.a.jdField_a_of_type_JavaUtilArrayList == null) {
-      return;
+    if ((paramEmoticonPackage != null) && (paramInt1 == 2))
+    {
+      if (paramInt2 != 0) {
+        return;
+      }
+      if (this.a.mEPDatas == null) {
+        return;
+      }
+      paramEmoticonPackage = this.a;
+      paramEmoticonPackage.runOnUiThread(paramEmoticonPackage.mRefreshTask);
     }
-    this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
   }
   
   public void onPackageEnd(EmoticonPackage paramEmoticonPackage, int paramInt) {}
@@ -23,7 +29,7 @@ class EmosmActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.EmosmActivity.8
  * JD-Core Version:    0.7.0.1
  */

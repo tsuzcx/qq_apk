@@ -23,32 +23,26 @@ public class SubscribeReportController
     localReportData.i = paramString7;
     localReportData.j = paramString8;
     paramString1 = localReportData.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("SubscribeReportController", 1, "getReportingDetail=" + paramString1);
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("getReportingDetail=");
+      paramString2.append(paramString1);
+      QLog.i("SubscribeReportController", 1, paramString2.toString());
     }
     return paramString1;
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
-    QQAppInterface localQQAppInterface = paramQQAppInterface;
-    if (paramQQAppInterface == null)
+    if ((paramQQAppInterface == null) && (BaseApplicationImpl.sProcessId == 1))
     {
-      localQQAppInterface = paramQQAppInterface;
-      if (BaseApplicationImpl.sProcessId == 1)
-      {
-        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
-        localQQAppInterface = paramQQAppInterface;
-        if (localAppRuntime != null)
-        {
-          localQQAppInterface = paramQQAppInterface;
-          if ((localAppRuntime instanceof QQAppInterface)) {
-            localQQAppInterface = (QQAppInterface)localAppRuntime;
-          }
-        }
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
+      if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
+        paramQQAppInterface = (QQAppInterface)localAppRuntime;
       }
     }
-    if (localQQAppInterface == null)
+    if (paramQQAppInterface == null)
     {
       paramQQAppInterface = a("${uin_unknown}", paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramString4, paramString5, paramString6, paramString7);
       paramString1 = new Intent();
@@ -60,7 +54,7 @@ public class SubscribeReportController
       BaseApplicationImpl.getApplication().sendBroadcast(paramString1);
       return;
     }
-    ReportController.b(localQQAppInterface, "dc05263", a(localQQAppInterface.getCurrentAccountUin(), paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramString4, paramString5, paramString6, paramString7), paramInt2);
+    ReportController.b(paramQQAppInterface, "dc05263", a(paramQQAppInterface.getCurrentAccountUin(), paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramString4, paramString5, paramString6, paramString7), paramInt2);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7)
@@ -70,7 +64,7 @@ public class SubscribeReportController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.SubscribeReportController
  * JD-Core Version:    0.7.0.1
  */

@@ -25,13 +25,14 @@ public final class msg_svc$PbGroupMsgWithDrawResp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50, 58, 66 }, new String[] { "result", "errmsg", "uint32_sub_cmd", "uint32_group_type", "uint64_group_code", "failed_msg_list", "bytes_userdef", "msg_wording_info" }, new Object[] { Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), null, localByteStringMicro, null }, PbGroupMsgWithDrawResp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50, 58, 66 }, new String[] { "result", "errmsg", "uint32_sub_cmd", "uint32_group_type", "uint64_group_code", "failed_msg_list", "bytes_userdef", "msg_wording_info" }, new Object[] { localInteger, "", localInteger, localInteger, Long.valueOf(0L), null, localByteStringMicro, null }, PbGroupMsgWithDrawResp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     msf.msgsvc.msg_svc.PbGroupMsgWithDrawResp
  * JD-Core Version:    0.7.0.1
  */

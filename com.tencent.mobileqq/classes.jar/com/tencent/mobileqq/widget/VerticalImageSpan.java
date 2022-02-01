@@ -30,22 +30,23 @@ public class VerticalImageSpan
     if (paramFontMetricsInt != null)
     {
       paramPaint = paramPaint.getFontMetricsInt();
-      paramInt2 = paramPaint.bottom - paramPaint.top;
-      int i = paramCharSequence.bottom - paramCharSequence.top;
-      paramInt1 = i / 2 - paramInt2 / 4;
-      i /= 2;
-      paramInt2 = paramInt2 / 4 + i;
-      paramFontMetricsInt.ascent = (-paramInt2);
-      paramFontMetricsInt.top = (-paramInt2);
-      paramFontMetricsInt.bottom = paramInt1;
-      paramFontMetricsInt.descent = paramInt1;
+      paramInt2 = paramPaint.bottom;
+      int i = paramPaint.top;
+      paramInt1 = (paramCharSequence.bottom - paramCharSequence.top) / 2;
+      i = (paramInt2 - i) / 4;
+      paramInt2 = paramInt1 - i;
+      paramInt1 = -(paramInt1 + i);
+      paramFontMetricsInt.ascent = paramInt1;
+      paramFontMetricsInt.top = paramInt1;
+      paramFontMetricsInt.bottom = paramInt2;
+      paramFontMetricsInt.descent = paramInt2;
     }
     return paramCharSequence.right;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.VerticalImageSpan
  * JD-Core Version:    0.7.0.1
  */

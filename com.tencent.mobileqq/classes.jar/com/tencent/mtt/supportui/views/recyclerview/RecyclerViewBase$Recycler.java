@@ -24,22 +24,26 @@ public class RecyclerViewBase$Recycler
   private void dispatchViewStateChange(View paramView, int paramInt)
   {
     if ((paramView instanceof IViewRecycleStateListener)) {
-      switch (paramInt)
+      if (paramInt != 1)
       {
+        if (paramInt == 2) {
+          ((IViewRecycleStateListener)paramView).onRecycle();
+        }
+      }
+      else {
+        ((IViewRecycleStateListener)paramView).onUse();
       }
     }
-    while ((paramView instanceof ViewGroup))
+    if ((paramView instanceof ViewGroup))
     {
-      int j = ((ViewGroup)paramView).getChildCount();
+      paramView = (ViewGroup)paramView;
+      int j = paramView.getChildCount();
       int i = 0;
       while (i < j)
       {
-        dispatchViewStateChange(((ViewGroup)paramView).getChildAt(i), paramInt);
+        dispatchViewStateChange(paramView.getChildAt(i), paramInt);
         i += 1;
       }
-      ((IViewRecycleStateListener)paramView).onUse();
-      continue;
-      ((IViewRecycleStateListener)paramView).onRecycle();
     }
   }
   
@@ -176,8 +180,8 @@ public class RecyclerViewBase$Recycler
   
   RecyclerViewBase.ViewHolder getScrapViewForId(long paramLong, int paramInt)
   {
-    int j = 0;
     int k = this.mAttachedScrap.size();
+    int j = 0;
     int i = 0;
     RecyclerViewBase.ViewHolder localViewHolder;
     while (i < k)
@@ -211,121 +215,106 @@ public class RecyclerViewBase$Recycler
   
   RecyclerViewBase.ViewHolder getScrapViewForPosition(int paramInt1, int paramInt2)
   {
-    int j = 0;
     int k = this.mAttachedScrap.size();
+    int j = 0;
     int i = 0;
-    Object localObject;
-    if (i < k)
+    RecyclerViewBase.ViewHolder localViewHolder;
+    while (i < k)
     {
-      localObject = (RecyclerViewBase.ViewHolder)this.mAttachedScrap.get(i);
-      if ((((RecyclerViewBase.ViewHolder)localObject).getPosition() != paramInt1) || (((RecyclerViewBase.ViewHolder)localObject).isInvalid()) || ((!this.this$0.mInPreLayout) && (((RecyclerViewBase.ViewHolder)localObject).isRemoved()))) {
-        break label243;
-      }
-      if ((paramInt2 == -1) || (((RecyclerViewBase.ViewHolder)localObject).getItemViewType() == paramInt2)) {}
-    }
-    else
-    {
-      if (this.this$0.mNumAnimatingViews != 0) {
-        handleAnimatingViewInGetScrapView(this.this$0.getAnimatingView(paramInt1, paramInt2));
-      }
-      k = this.mCachedViews.size();
-      i = j;
-    }
-    for (;;)
-    {
-      if (i < k)
+      localViewHolder = (RecyclerViewBase.ViewHolder)this.mAttachedScrap.get(i);
+      if ((localViewHolder.getPosition() == paramInt1) && (!localViewHolder.isInvalid()) && ((this.this$0.mInPreLayout) || (!localViewHolder.isRemoved())))
       {
-        RecyclerViewBase.ViewHolder localViewHolder = (RecyclerViewBase.ViewHolder)this.mCachedViews.get(i);
-        if (localViewHolder.getPosition() != paramInt1) {
-          break label250;
+        if ((paramInt2 != -1) && (localViewHolder.getItemViewType() != paramInt2)) {
+          break;
         }
+        this.mAttachedScrap.remove(i);
+        localViewHolder.setScrapContainer(null);
+        return localViewHolder;
+      }
+      i += 1;
+    }
+    if (this.this$0.mNumAnimatingViews != 0) {
+      handleAnimatingViewInGetScrapView(this.this$0.getAnimatingView(paramInt1, paramInt2));
+    }
+    k = this.mCachedViews.size();
+    i = j;
+    while (i < k)
+    {
+      localViewHolder = (RecyclerViewBase.ViewHolder)this.mCachedViews.get(i);
+      if (localViewHolder.getPosition() == paramInt1)
+      {
         this.mCachedViews.remove(i);
-        if (!localViewHolder.isInvalid())
-        {
-          localObject = localViewHolder;
-          if (paramInt2 == -1) {
-            break label222;
-          }
-          localObject = localViewHolder;
-          if (localViewHolder.getItemViewType() == paramInt2) {
-            break label222;
-          }
+        if ((!localViewHolder.isInvalid()) && ((paramInt2 == -1) || (localViewHolder.getItemViewType() == paramInt2))) {
+          return localViewHolder;
         }
         dispatchViewRecycled(localViewHolder);
-        if (localViewHolder.isRecyclable()) {
-          getRecycledViewPool().putRecycledView(localViewHolder, this.this$0.mAdapter);
+        if (!localViewHolder.isRecyclable()) {
+          break;
         }
+        getRecycledViewPool().putRecycledView(localViewHolder, this.this$0.mAdapter);
+        break;
       }
-      if (paramInt2 != -1) {
-        break label257;
-      }
-      localObject = null;
-      label222:
-      return localObject;
-      this.mAttachedScrap.remove(i);
-      ((RecyclerViewBase.ViewHolder)localObject).setScrapContainer(null);
-      return localObject;
-      label243:
-      i += 1;
-      break;
-      label250:
       i += 1;
     }
-    label257:
+    if (paramInt2 == -1) {
+      return null;
+    }
     return getRecycledViewPool().getRecycledView(paramInt2, this.this$0.mAdapter.getViewHolderReUseKey(paramInt1));
   }
   
   public View getSuspendViewForPosition(int paramInt)
   {
-    boolean bool = false;
     if (this.this$0.mAdapter == null) {
       return null;
     }
     paramInt = this.this$0.findPositionOffset(paramInt);
-    if (this.this$0.mAdapter.hasCustomRecycler()) {}
-    for (Object localObject1 = this.this$0.mAdapter.findSuspendHolderForPosition(paramInt, this);; localObject1 = null)
-    {
-      Object localObject2 = localObject1;
-      if (localObject1 == null)
+    Object localObject1;
+    if (this.this$0.mAdapter.hasCustomRecycler()) {
+      localObject1 = this.this$0.mAdapter.findSuspendHolderForPosition(paramInt, this);
+    } else {
+      localObject1 = null;
+    }
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      if (paramInt >= 0)
       {
-        if ((paramInt < 0) || (paramInt >= this.this$0.mAdapter.getItemCount())) {
-          break;
+        if (paramInt >= this.this$0.mAdapter.getItemCount()) {
+          return null;
         }
-        localObject2 = this.this$0.mAdapter.createSuspendViewHolderWithPos(this.this$0, paramInt, this.this$0.mAdapter.getItemViewType(paramInt));
+        localObject1 = this.this$0.mAdapter;
+        localObject2 = this.this$0;
+        localObject2 = ((RecyclerViewBase.Adapter)localObject1).createSuspendViewHolderWithPos((RecyclerViewBase)localObject2, paramInt, ((RecyclerViewBase)localObject2).mAdapter.getItemViewType(paramInt));
       }
-      if (localObject2 == null) {
-        break;
+      else
+      {
+        return null;
       }
+    }
+    if (localObject2 != null)
+    {
       if ((((RecyclerViewBase.ViewHolder)localObject2).mBindNextTime) || (((RecyclerViewBase.ViewHolder)localObject2).mForceBind) || ((!((RecyclerViewBase.ViewHolder)localObject2).isRemoved()) && ((!((RecyclerViewBase.ViewHolder)localObject2).isBound()) || (((RecyclerViewBase.ViewHolder)localObject2).needsUpdate()))))
       {
         ((RecyclerViewBase.ViewHolder)localObject2).mBindNextTime = false;
-        localObject1 = this.this$0.mAdapter;
-        if (!((RecyclerViewBase.ViewHolder)localObject2).isBound()) {
-          bool = true;
-        }
-        ((RecyclerViewBase.Adapter)localObject1).bindViewHolder((RecyclerViewBase.ViewHolder)localObject2, paramInt, bool, this.this$0.mLayoutType, this.this$0.mAdapter.getCardItemViewType(paramInt));
+        this.this$0.mAdapter.bindViewHolder((RecyclerViewBase.ViewHolder)localObject2, paramInt, ((RecyclerViewBase.ViewHolder)localObject2).isBound() ^ true, this.this$0.mLayoutType, this.this$0.mAdapter.getCardItemViewType(paramInt));
       }
       ViewGroup.LayoutParams localLayoutParams = ((RecyclerViewBase.ViewHolder)localObject2).itemView.getLayoutParams();
-      if (localLayoutParams == null)
+      if (localLayoutParams == null) {}
+      for (localObject1 = this.this$0.generateDefaultLayoutParams();; localObject1 = this.this$0.generateLayoutParams(localLayoutParams))
       {
-        localObject1 = this.this$0.generateDefaultLayoutParams();
         ((RecyclerViewBase.ViewHolder)localObject2).itemView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      }
-      for (;;)
-      {
-        ((RecyclerViewBase.LayoutParams)localObject1).mViewHolder = ((RecyclerViewBase.ViewHolder)localObject2);
-        if (((RecyclerViewBase.ViewHolder)localObject2).mContentHolder != null) {
-          dispatchViewStateChange(((RecyclerViewBase.ViewHolder)localObject2).mContentHolder.mContentView, 1);
-        }
-        return ((RecyclerViewBase.ViewHolder)localObject2).itemView;
+        break;
         localObject1 = localLayoutParams;
-        if (!this.this$0.checkLayoutParams(localLayoutParams))
-        {
-          localObject1 = this.this$0.generateLayoutParams(localLayoutParams);
-          ((RecyclerViewBase.ViewHolder)localObject2).itemView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        if (this.this$0.checkLayoutParams(localLayoutParams)) {
+          break;
         }
       }
+      ((RecyclerViewBase.LayoutParams)localObject1).mViewHolder = ((RecyclerViewBase.ViewHolder)localObject2);
+      if (((RecyclerViewBase.ViewHolder)localObject2).mContentHolder != null) {
+        dispatchViewStateChange(((RecyclerViewBase.ViewHolder)localObject2).mContentHolder.mContentView, 1);
+      }
+      return ((RecyclerViewBase.ViewHolder)localObject2).itemView;
     }
+    return null;
   }
   
   public View getViewForPosition(int paramInt)
@@ -349,59 +338,69 @@ public class RecyclerViewBase$Recycler
         ((BaseLayoutManager)this.this$0.getLayoutManager()).removeSuspentions();
       }
     }
-    if (this.this$0.mAdapter.hasCustomRecycler()) {}
-    for (Object localObject1 = this.this$0.mAdapter.findBestHolderForPosition(paramInt, this);; localObject1 = getViewHolderForPosition(paramInt))
-    {
-      localObject2 = localObject1;
-      if (localObject1 != null) {
-        break label266;
-      }
-      if ((paramInt >= 0) && (paramInt < this.this$0.mAdapter.getItemCount())) {
-        break;
-      }
-      return null;
+    if (this.this$0.mAdapter.hasCustomRecycler()) {
+      localObject1 = this.this$0.mAdapter.findBestHolderForPosition(paramInt, this);
+    } else {
+      localObject1 = getViewHolderForPosition(paramInt);
     }
-    Object localObject2 = this.this$0.mAdapter.createViewHolderWithPos(this.this$0, paramInt, this.this$0.mAdapter.getItemViewType(paramInt));
-    localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = this.this$0.mAdapter.createViewHolder(this.this$0, this.this$0.mAdapter.getItemViewType(paramInt));
-    }
+    Object localObject2 = localObject1;
     if (localObject1 == null) {
-      throw new RuntimeException("Must implement onCreateContentView or onCreateContentViewWithPos in your adapter");
+      if (paramInt >= 0)
+      {
+        if (paramInt >= this.this$0.mAdapter.getItemCount()) {
+          return null;
+        }
+        localObject1 = this.this$0.mAdapter;
+        localObject2 = this.this$0;
+        localObject2 = ((RecyclerViewBase.Adapter)localObject1).createViewHolderWithPos((RecyclerViewBase)localObject2, paramInt, ((RecyclerViewBase)localObject2).mAdapter.getItemViewType(paramInt));
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          localObject1 = this.this$0.mAdapter;
+          localObject2 = this.this$0;
+          localObject1 = ((RecyclerViewBase.Adapter)localObject1).createViewHolder((RecyclerViewBase)localObject2, ((RecyclerViewBase)localObject2).mAdapter.getItemViewType(paramInt));
+        }
+        if (localObject1 != null)
+        {
+          ((RecyclerViewBase.ViewHolder)localObject1).mHolderReuseKey = this.this$0.mAdapter.getViewHolderReUseKey(paramInt);
+          localObject2 = localObject1;
+        }
+        else
+        {
+          throw new RuntimeException("Must implement onCreateContentView or onCreateContentViewWithPos in your adapter");
+        }
+      }
+      else
+      {
+        return null;
+      }
     }
-    ((RecyclerViewBase.ViewHolder)localObject1).mHolderReuseKey = this.this$0.mAdapter.getViewHolderReUseKey(paramInt);
-    localObject2 = localObject1;
-    label266:
     handleBindViewHolderInGetView((RecyclerViewBase.ViewHolder)localObject2, paramInt);
     ViewGroup.LayoutParams localLayoutParams = ((RecyclerViewBase.ViewHolder)localObject2).itemView.getLayoutParams();
-    if (localLayoutParams == null)
+    if (localLayoutParams == null) {}
+    for (Object localObject1 = this.this$0.generateDefaultLayoutParams();; localObject1 = this.this$0.generateLayoutParams(localLayoutParams))
     {
-      localObject1 = this.this$0.generateDefaultLayoutParams();
       ((RecyclerViewBase.ViewHolder)localObject2).itemView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    }
-    for (;;)
-    {
-      ((RecyclerViewBase.LayoutParams)localObject1).mViewHolder = ((RecyclerViewBase.ViewHolder)localObject2);
-      if (((RecyclerViewBase.ViewHolder)localObject2).mContentHolder != null) {
-        dispatchViewStateChange(((RecyclerViewBase.ViewHolder)localObject2).mContentHolder.mContentView, 1);
-      }
-      return ((RecyclerViewBase.ViewHolder)localObject2).itemView;
+      break;
       localObject1 = localLayoutParams;
-      if (!this.this$0.checkLayoutParams(localLayoutParams))
-      {
-        localObject1 = this.this$0.generateLayoutParams(localLayoutParams);
-        ((RecyclerViewBase.ViewHolder)localObject2).itemView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      if (this.this$0.checkLayoutParams(localLayoutParams)) {
+        break;
       }
     }
+    ((RecyclerViewBase.LayoutParams)localObject1).mViewHolder = ((RecyclerViewBase.ViewHolder)localObject2);
+    if (((RecyclerViewBase.ViewHolder)localObject2).mContentHolder != null) {
+      dispatchViewStateChange(((RecyclerViewBase.ViewHolder)localObject2).mContentHolder.mContentView, 1);
+    }
+    return ((RecyclerViewBase.ViewHolder)localObject2).itemView;
   }
   
   public RecyclerViewBase.ViewHolder getViewHolderForPosition(int paramInt)
   {
     RecyclerViewBase.ViewHolder localViewHolder2 = getScrapViewForPosition(paramInt, -1);
+    RecyclerViewBase.ViewHolder localViewHolder1;
     if (localViewHolder2 != null)
     {
-      RecyclerViewBase.ViewHolder localViewHolder1 = localViewHolder2;
-      int i;
+      localViewHolder1 = localViewHolder2;
       if (checkShouldValidateViewHolder())
       {
         localViewHolder1 = localViewHolder2;
@@ -409,18 +408,21 @@ public class RecyclerViewBase$Recycler
         {
           RecyclerViewBase.access$200(this.this$0, localViewHolder2.itemView, false);
           quickRecycleScrapView(localViewHolder2.itemView);
-          i = this.this$0.mAdapter.getItemViewType(paramInt);
-          if (!this.this$0.mAdapter.hasStableIds()) {
-            break label102;
+          int i = this.this$0.mAdapter.getItemViewType(paramInt);
+          if (this.this$0.mAdapter.hasStableIds()) {
+            localViewHolder1 = getScrapViewForId(this.this$0.mAdapter.getItemId(paramInt), i);
+          } else {
+            localViewHolder1 = getScrapViewForPosition(paramInt, i);
           }
-          localViewHolder1 = getScrapViewForId(this.this$0.mAdapter.getItemId(paramInt), i);
+          return localViewHolder1;
         }
       }
-      return localViewHolder1;
-      label102:
-      return getScrapViewForPosition(paramInt, i);
     }
-    return getRecycledViewPool().getRecycledView(this.this$0.mAdapter.getItemViewType(paramInt), this.this$0.mAdapter.getViewHolderReUseKey(paramInt));
+    else
+    {
+      localViewHolder1 = getRecycledViewPool().getRecycledView(this.this$0.mAdapter.getItemViewType(paramInt), this.this$0.mAdapter.getViewHolderReUseKey(paramInt));
+    }
+    return localViewHolder1;
   }
   
   protected void handleAnimatingViewInGetScrapView(View paramView) {}
@@ -473,28 +475,22 @@ public class RecyclerViewBase$Recycler
   protected void offsetPositionRecordsForRemove(int paramInt1, int paramInt2)
   {
     int i = this.mCachedViews.size() - 1;
-    if (i >= 0)
+    while (i >= 0)
     {
       RecyclerViewBase.ViewHolder localViewHolder = (RecyclerViewBase.ViewHolder)this.mCachedViews.get(i);
-      if (localViewHolder != null)
-      {
-        if (localViewHolder.getPosition() < paramInt1 + paramInt2) {
-          break label57;
+      if (localViewHolder != null) {
+        if (localViewHolder.getPosition() >= paramInt1 + paramInt2)
+        {
+          localViewHolder.offsetPosition(-paramInt2);
         }
-        localViewHolder.offsetPosition(-paramInt2);
-      }
-      for (;;)
-      {
-        i -= 1;
-        break;
-        label57:
-        if (localViewHolder.getPosition() >= paramInt1)
+        else if (localViewHolder.getPosition() >= paramInt1)
         {
           this.mCachedViews.remove(i);
           dispatchViewRecycled(localViewHolder);
           getRecycledViewPool().putRecycledView(localViewHolder, this.this$0.mAdapter);
         }
       }
+      i -= 1;
     }
   }
   
@@ -534,56 +530,62 @@ public class RecyclerViewBase$Recycler
   
   void recycleViewHolder(RecyclerViewBase.ViewHolder paramViewHolder)
   {
-    int j = 0;
-    if (paramViewHolder == null) {}
-    while (paramViewHolder.mViewType != 3) {
+    if (paramViewHolder == null) {
       return;
     }
-    if ((paramViewHolder.isScrap()) || (paramViewHolder.itemView.getParent() != null)) {
-      throw new IllegalArgumentException("Scrapped or attached views may not be recycled.");
+    if (paramViewHolder.mViewType != 3) {
+      return;
     }
-    int i = j;
-    if (!paramViewHolder.isInvalid()) {
-      if (!this.this$0.mInPreLayout)
-      {
-        i = j;
-        if (paramViewHolder.isRemoved()) {}
+    if ((!paramViewHolder.isScrap()) && (paramViewHolder.itemView.getParent() == null))
+    {
+      boolean bool = paramViewHolder.isInvalid();
+      int j = 0;
+      int i = j;
+      if (!bool) {
+        if (!this.this$0.mInPreLayout)
+        {
+          i = j;
+          if (paramViewHolder.isRemoved()) {}
+        }
+        else
+        {
+          if ((this.mCachedViews.size() == this.mViewCacheMax) && (!this.mCachedViews.isEmpty()))
+          {
+            i = 0;
+            while (i < this.mCachedViews.size())
+            {
+              RecyclerViewBase.ViewHolder localViewHolder = (RecyclerViewBase.ViewHolder)this.mCachedViews.get(i);
+              if (localViewHolder.isRecyclable())
+              {
+                this.mCachedViews.remove(i);
+                dispatchViewRecycled(localViewHolder);
+                getRecycledViewPool().putRecycledView(localViewHolder, this.this$0.mAdapter);
+                break;
+              }
+              i += 1;
+            }
+          }
+          i = j;
+          if (this.mCachedViews.size() < this.mViewCacheMax)
+          {
+            this.mCachedViews.add(paramViewHolder);
+            i = 1;
+          }
+        }
       }
-      else if ((this.mCachedViews.size() == this.mViewCacheMax) && (!this.mCachedViews.isEmpty()))
+      if ((i == 0) && (paramViewHolder.isRecyclable()))
       {
-        i = 0;
+        dispatchViewRecycled(paramViewHolder);
+        getRecycledViewPool().putRecycledView(paramViewHolder, this.this$0.mAdapter);
       }
+      this.this$0.mState.mPreLayoutHolderMap.remove(paramViewHolder);
+      this.this$0.mState.mPostLayoutHolderMap.remove(paramViewHolder);
+      return;
     }
+    paramViewHolder = new IllegalArgumentException("Scrapped or attached views may not be recycled.");
     for (;;)
     {
-      if (i < this.mCachedViews.size())
-      {
-        RecyclerViewBase.ViewHolder localViewHolder = (RecyclerViewBase.ViewHolder)this.mCachedViews.get(i);
-        if (localViewHolder.isRecyclable())
-        {
-          this.mCachedViews.remove(i);
-          dispatchViewRecycled(localViewHolder);
-          getRecycledViewPool().putRecycledView(localViewHolder, this.this$0.mAdapter);
-        }
-      }
-      else
-      {
-        i = j;
-        if (this.mCachedViews.size() < this.mViewCacheMax)
-        {
-          this.mCachedViews.add(paramViewHolder);
-          i = 1;
-        }
-        if ((i == 0) && (paramViewHolder.isRecyclable()))
-        {
-          dispatchViewRecycled(paramViewHolder);
-          getRecycledViewPool().putRecycledView(paramViewHolder, this.this$0.mAdapter);
-        }
-        this.this$0.mState.mPreLayoutHolderMap.remove(paramViewHolder);
-        this.this$0.mState.mPostLayoutHolderMap.remove(paramViewHolder);
-        return;
-      }
-      i += 1;
+      throw paramViewHolder;
     }
   }
   
@@ -599,8 +601,9 @@ public class RecyclerViewBase$Recycler
   
   void setRecycledViewPool(RecyclerViewBase.RecycledViewPool paramRecycledViewPool)
   {
-    if (this.mRecyclerPool != null) {
-      this.mRecyclerPool.detach();
+    RecyclerViewBase.RecycledViewPool localRecycledViewPool = this.mRecyclerPool;
+    if (localRecycledViewPool != null) {
+      localRecycledViewPool.detach();
     }
     this.mRecyclerPool = paramRecycledViewPool;
     if (paramRecycledViewPool != null) {
@@ -611,8 +614,10 @@ public class RecyclerViewBase$Recycler
   public void setViewCacheSize(int paramInt)
   {
     this.mViewCacheMax = paramInt;
-    while (this.mCachedViews.size() > paramInt) {
-      this.mCachedViews.remove(this.mCachedViews.size() - 1);
+    while (this.mCachedViews.size() > paramInt)
+    {
+      ArrayList localArrayList = this.mCachedViews;
+      localArrayList.remove(localArrayList.size() - 1);
     }
   }
   
@@ -624,10 +629,10 @@ public class RecyclerViewBase$Recycler
   
   public void updateHolderPositionWhenDelete(int paramInt)
   {
-    int j = 0;
     if (paramInt >= 0)
     {
       int k = this.mCachedViews.size();
+      int j = 0;
       int i = 0;
       while (i < k)
       {
@@ -665,17 +670,27 @@ public class RecyclerViewBase$Recycler
   
   boolean validateViewHolderForOffsetPosition(RecyclerViewBase.ViewHolder paramViewHolder, int paramInt)
   {
-    if (paramViewHolder.isRemoved()) {}
-    do
-    {
+    if (paramViewHolder.isRemoved()) {
       return true;
-      if ((paramInt < 0) || (paramInt >= this.this$0.mAdapter.getItemCount())) {
+    }
+    boolean bool = false;
+    if (paramInt >= 0)
+    {
+      if (paramInt >= this.this$0.mAdapter.getItemCount()) {
         return false;
       }
       if (this.this$0.mAdapter.getItemViewType(paramInt) != paramViewHolder.getItemViewType()) {
         return false;
       }
-    } while ((!this.this$0.mAdapter.hasStableIds()) || (paramViewHolder.getItemId() == this.this$0.mAdapter.getItemId(paramInt)));
+      if (this.this$0.mAdapter.hasStableIds())
+      {
+        if (paramViewHolder.getItemId() == this.this$0.mAdapter.getItemId(paramInt)) {
+          bool = true;
+        }
+        return bool;
+      }
+      return true;
+    }
     return false;
   }
   
@@ -683,25 +698,23 @@ public class RecyclerViewBase$Recycler
   {
     int j = this.mCachedViews.size();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       RecyclerViewBase.ViewHolder localViewHolder = (RecyclerViewBase.ViewHolder)this.mCachedViews.get(i);
-      if (localViewHolder == null) {}
-      for (;;)
+      if (localViewHolder != null)
       {
-        i += 1;
-        break;
         int k = localViewHolder.getPosition();
-        if ((k >= paramInt1) && (k < paramInt1 + paramInt2)) {
+        if ((k >= paramInt1) && (k < paramInt2 + paramInt1)) {
           localViewHolder.addFlags(2);
         }
       }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.views.recyclerview.RecyclerViewBase.Recycler
  * JD-Core Version:    0.7.0.1
  */

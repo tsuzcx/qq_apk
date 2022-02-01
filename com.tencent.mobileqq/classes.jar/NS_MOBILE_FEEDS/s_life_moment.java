@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class s_life_moment
   extends JceStruct
@@ -66,38 +67,47 @@ public final class s_life_moment
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.show_type, 0);
-    if (this.vec_lifemoment != null) {
-      paramJceOutputStream.write(this.vec_lifemoment, 1);
+    Object localObject = this.vec_lifemoment;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.left_title != null) {
-      paramJceOutputStream.write(this.left_title, 2);
+    localObject = this.left_title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.right_title != null) {
-      paramJceOutputStream.write(this.right_title, 3);
+    localObject = this.right_title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.action_url != null) {
-      paramJceOutputStream.write(this.action_url, 4);
+    localObject = this.action_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.summary != null) {
-      paramJceOutputStream.write(this.summary, 5);
+    localObject = this.summary;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.button_text != null) {
-      paramJceOutputStream.write(this.button_text, 6);
+    localObject = this.button_text;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.vec_picurls != null) {
-      paramJceOutputStream.write(this.vec_picurls, 7);
+    localObject = this.vec_picurls;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 7);
     }
-    if (this.stMomentFeed != null) {
-      paramJceOutputStream.write(this.stMomentFeed, 8);
+    localObject = this.stMomentFeed;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 8);
     }
-    if (this.stCount != null) {
-      paramJceOutputStream.write(this.stCount, 9);
+    localObject = this.stCount;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_life_moment
  * JD-Core Version:    0.7.0.1
  */

@@ -11,28 +11,28 @@ class BaseHandler$1
   
   public void println(String paramString)
   {
-    if ((!BaseHandler.isBusy) && (!((Boolean)BaseHandler.isRegulated.get()).booleanValue())) {}
-    do
-    {
+    if ((!BaseHandler.isBusy) && (!((Boolean)BaseHandler.isRegulated.get()).booleanValue())) {
       return;
-      if (!BaseHandler.access$000())
-      {
-        Looper.myLooper().setMessageLogging(null);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseHandler", 2, paramString);
-      }
-      if ((paramString != null) && (paramString.contains(">>>>> Dispatching to"))) {
-        BaseHandler.access$100(this.this$0);
-      }
-    } while ((paramString == null) || (!paramString.contains("<<<<< Finished to")));
-    BaseHandler.access$200(this.this$0);
+    }
+    if (!BaseHandler.access$000())
+    {
+      Looper.myLooper().setMessageLogging(null);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseHandler", 2, paramString);
+    }
+    if ((paramString != null) && (paramString.contains(">>>>> Dispatching to"))) {
+      BaseHandler.access$100(this.this$0);
+    }
+    if ((paramString != null) && (paramString.contains("<<<<< Finished to"))) {
+      BaseHandler.access$200(this.this$0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.thread.BaseHandler.1
  * JD-Core Version:    0.7.0.1
  */

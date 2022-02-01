@@ -1,13 +1,12 @@
 package com.tencent.ilivesdk.avpreloadservice;
 
-import com.tencent.ilivesdk.avpreloadservice_interface.AVPreloadTaskInterface;
 import java.util.Iterator;
 import java.util.Set;
 
 class AVPreloadEngine$2
   implements Runnable
 {
-  AVPreloadEngine$2(AVPreloadEngine paramAVPreloadEngine, AVPreloadTaskInterface paramAVPreloadTaskInterface) {}
+  AVPreloadEngine$2(AVPreloadEngine paramAVPreloadEngine) {}
   
   public void run()
   {
@@ -16,14 +15,14 @@ class AVPreloadEngine$2
     {
       AVPreloadEngine.PreloadResultListener localPreloadResultListener = (AVPreloadEngine.PreloadResultListener)localIterator.next();
       if (localPreloadResultListener != null) {
-        localPreloadResultListener.c(this.a);
+        localPreloadResultListener.a(AVPreloadEngine.a(this.this$0));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadservice.AVPreloadEngine.2
  * JD-Core Version:    0.7.0.1
  */

@@ -32,59 +32,74 @@ public class WebProcessPreloadImpl
   
   private boolean isDnsParseTime(String paramString)
   {
-    if (isNeedPreparseDns == 0) {}
-    long l;
-    do
-    {
+    int i = isNeedPreparseDns;
+    boolean bool = false;
+    if (i == 0) {
       return false;
-      l = getDnsPreParseTimeMills(paramString).longValue();
-    } while ((l != 0L) && (System.currentTimeMillis() - l <= 600000L));
-    return true;
+    }
+    long l = getDnsPreParseTimeMills(paramString).longValue();
+    if ((l == 0L) || (System.currentTimeMillis() - l > 600000L)) {
+      bool = true;
+    }
+    return bool;
   }
   
   private static void reportTimeUsed(String paramString, long paramLong)
   {
-    int i = 0;
     try
     {
-      int j = NetworkUtil.a(null);
-      i = j;
+      i = NetworkUtil.getSystemNetwork(null);
     }
     catch (Exception localException)
     {
-      label11:
-      String str;
-      break label11;
+      int i;
+      label8:
+      Object localObject;
+      break label8;
     }
-    switch (i)
+    i = 0;
+    if (i != 1)
     {
-    default: 
-      str = "";
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4) {
+            localObject = "";
+          } else {
+            localObject = "4G";
+          }
+        }
+        else {
+          localObject = "3G";
+        }
+      }
+      else {
+        localObject = "2G";
+      }
+    }
+    else {
+      localObject = "wifi";
     }
     try
     {
-      for (;;)
-      {
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("net_state", str);
-        localHashMap.put("current_url", paramString);
-        localHashMap.put("time_used", String.valueOf(paramLong));
-        paramString = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
-        StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(paramString, "dns_parse_time", true, paramLong, 1L, localHashMap, "", false);
-        return;
-        str = "2G";
-        continue;
-        str = "3G";
-        continue;
-        str = "4G";
-        continue;
-        str = "wifi";
-      }
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("net_state", localObject);
+      localHashMap.put("current_url", paramString);
+      localHashMap.put("time_used", String.valueOf(paramLong));
+      paramString = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
+      StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(paramString, "dns_parse_time", true, paramLong, 1L, localHashMap, "", false);
+      return;
     }
     catch (Exception paramString)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("WebProcessStartServiceImpl", 2, "report dns parse time error=" + paramString.toString());
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("report dns parse time error=");
+        ((StringBuilder)localObject).append(paramString.toString());
+        QLog.i("WebProcessStartServiceImpl", 2, ((StringBuilder)localObject).toString());
+      }
       return;
     }
   }
@@ -101,7 +116,13 @@ public class WebProcessPreloadImpl
   
   public long getBusinessClickTimeMills(String paramString1, String paramString2)
   {
-    return MobileQQ.getContext().getSharedPreferences("web_process_preload_file", 4).getLong("key_business_click_time" + paramString1 + "_" + paramString2, -1L);
+    SharedPreferences localSharedPreferences = MobileQQ.getContext().getSharedPreferences("web_process_preload_file", 4);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_business_click_time");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    return localSharedPreferences.getLong(localStringBuilder.toString(), -1L);
   }
   
   public boolean isPreloadWebProcess()
@@ -114,8 +135,12 @@ public class WebProcessPreloadImpl
     Util.a("Web_Module_Check_Is_Exit");
     boolean bool = QIPCServerHelper.getInstance().isModuleRunning("modular_web");
     Util.b("Web_Module_Check_Is_Exit");
-    if (QLog.isColorLevel()) {
-      QLog.d("WebProcessStartServiceImpl", 2, "Web module is exist: " + bool);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Web module is exist: ");
+      localStringBuilder.append(bool);
+      QLog.d("WebProcessStartServiceImpl", 2, localStringBuilder.toString());
     }
     return bool;
   }
@@ -125,8 +150,12 @@ public class WebProcessPreloadImpl
     if (!isDnsParseTime(paramString)) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("WebProcessStartServiceImpl", 2, "begin to parse dns,isNeedPreparseDns = " + isNeedPreparseDns);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("begin to parse dns,isNeedPreparseDns = ");
+      localStringBuilder.append(isNeedPreparseDns);
+      QLog.d("WebProcessStartServiceImpl", 2, localStringBuilder.toString());
     }
     setDnsPreParseTimeMills(paramString, System.currentTimeMillis());
     ThreadManager.post(new WebProcessPreloadImpl.1(this, paramList), 5, null, true);
@@ -140,41 +169,39 @@ public class WebProcessPreloadImpl
     try
     {
       setPreloadSuccess(false);
-      localObject = MobileQQ.getContext().getSharedPreferences("CrashControl_com.tencent.mobileqq:web", 4);
+      Object localObject = MobileQQ.getContext().getSharedPreferences("CrashControl_com.tencent.mobileqq:web", 4);
       if ((localObject != null) && (!((SharedPreferences)localObject).getBoolean("allowpreload", true)))
       {
         long l1 = ((SharedPreferences)localObject).getLong("starttime", 0L);
         int i = ((SharedPreferences)localObject).getInt("controlwindow", 86400);
         long l2 = System.currentTimeMillis();
-        if ((l1 <= 0L) || (i <= 0) || (l2 <= l1) || (l2 - l1 <= i * 1000)) {
-          break label213;
+        if ((l1 > 0L) && (i > 0) && (l2 > l1) && (l2 - l1 > i * 1000))
+        {
+          ((SharedPreferences)localObject).edit().putBoolean("allowpreload", true).commit();
         }
-        ((SharedPreferences)localObject).edit().putBoolean("allowpreload", true).commit();
+        else
+        {
+          QLog.d("WebProcessStartServiceImpl", 1, "preloadWebProcess is not allowed as crash frequently.");
+          setPreloadWebProcess(false);
+          localObject = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
+          StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance((String)localObject, "actNoPreloadWeb", true, 0L, 0L, null, "");
+          return;
+        }
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Object localObject;
-        localException.printStackTrace();
+      localException.printStackTrace();
+      Intent localIntent = new Intent();
+      localIntent.putExtra("from", paramInt);
+      localIntent.setAction("com.tencent.mobileqq.webprocess.preload_web_process");
+      localIntent.setPackage(MobileQQ.getContext().getPackageName());
+      localIntent.putExtra("com.tencent.mobileqq.webprocess.start_time", System.currentTimeMillis());
+      MobileQQ.getContext().sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
+      if (QLog.isColorLevel()) {
+        QLog.d("WebProcessStartServiceImpl", 2, "Send preload web process broadcast...");
       }
     }
-    localObject = new Intent();
-    ((Intent)localObject).putExtra("from", paramInt);
-    ((Intent)localObject).setAction("com.tencent.mobileqq.webprocess.preload_web_process");
-    ((Intent)localObject).setPackage(MobileQQ.getContext().getPackageName());
-    ((Intent)localObject).putExtra("com.tencent.mobileqq.webprocess.start_time", System.currentTimeMillis());
-    MobileQQ.getContext().sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
-    if (QLog.isColorLevel()) {
-      QLog.d("WebProcessStartServiceImpl", 2, "Send preload web process broadcast...");
-    }
-    return;
-    label213:
-    QLog.d("WebProcessStartServiceImpl", 1, "preloadWebProcess is not allowed as crash frequently.");
-    setPreloadWebProcess(false);
-    localObject = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
-    StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance((String)localObject, "actNoPreloadWeb", true, 0L, 0L, null, "");
   }
   
   public void releaseLightWebProcess()
@@ -190,7 +217,13 @@ public class WebProcessPreloadImpl
   
   public void setBusinessClickTimeMills(String paramString1, String paramString2)
   {
-    MobileQQ.getContext().getSharedPreferences("web_process_preload_file", 4).edit().putLong("key_business_click_time" + paramString1 + "_" + paramString2, System.currentTimeMillis()).apply();
+    SharedPreferences.Editor localEditor = MobileQQ.getContext().getSharedPreferences("web_process_preload_file", 4).edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_business_click_time");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    localEditor.putLong(localStringBuilder.toString(), System.currentTimeMillis()).apply();
   }
   
   public void setPreloadWebProcess(boolean paramBoolean)
@@ -211,7 +244,7 @@ public class WebProcessPreloadImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.api.impl.WebProcessPreloadImpl
  * JD-Core Version:    0.7.0.1
  */

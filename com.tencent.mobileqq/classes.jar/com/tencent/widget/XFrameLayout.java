@@ -52,52 +52,66 @@ public class XFrameLayout
     int j = getHeight();
     this.mLastRadius = this.mRadius;
     this.mRoundPath.reset();
-    switch (this.mRoundMode)
+    int k = this.mRoundMode;
+    if (k != 1)
     {
-    default: 
-      return;
-    case 1: 
-      this.mRoundPath.addRoundRect(new RectF(0.0F, 0.0F, i, j), this.mRadius, this.mRadius, Path.Direction.CW);
-      return;
-    case 2: 
+      if (k != 2)
+      {
+        if (k != 3)
+        {
+          if (k != 4)
+          {
+            if (k != 5) {
+              return;
+            }
+            localPath = this.mRoundPath;
+            localRectF = new RectF(0.0F, 0.0F, i, j);
+            i = this.mRadius;
+            f1 = i;
+            f2 = i;
+            f3 = i;
+            f4 = i;
+            localDirection = Path.Direction.CW;
+            localPath.addRoundRect(localRectF, new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f1, f2, f3, f4 }, localDirection);
+            return;
+          }
+          localPath = this.mRoundPath;
+          localRectF = new RectF(0.0F, 0.0F, i, j);
+          i = this.mRadius;
+          f1 = i;
+          f2 = i;
+          f3 = i;
+          f4 = i;
+          localDirection = Path.Direction.CW;
+          localPath.addRoundRect(localRectF, new float[] { 0.0F, 0.0F, f1, f2, f3, f4, 0.0F, 0.0F }, localDirection);
+          return;
+        }
+        localPath = this.mRoundPath;
+        localRectF = new RectF(0.0F, 0.0F, i, j);
+        i = this.mRadius;
+        f1 = i;
+        f2 = i;
+        f3 = i;
+        f4 = i;
+        localDirection = Path.Direction.CW;
+        localPath.addRoundRect(localRectF, new float[] { f1, f2, f3, f4, 0.0F, 0.0F, 0.0F, 0.0F }, localDirection);
+        return;
+      }
       localPath = this.mRoundPath;
       localRectF = new RectF(0.0F, 0.0F, i, j);
-      f1 = this.mRadius;
-      f2 = this.mRadius;
-      f3 = this.mRadius;
-      f4 = this.mRadius;
-      localDirection = Path.Direction.CW;
+      i = this.mRadius;
+      float f1 = i;
+      float f2 = i;
+      float f3 = i;
+      float f4 = i;
+      Path.Direction localDirection = Path.Direction.CW;
       localPath.addRoundRect(localRectF, new float[] { f1, f2, 0.0F, 0.0F, 0.0F, 0.0F, f3, f4 }, localDirection);
-      return;
-    case 3: 
-      localPath = this.mRoundPath;
-      localRectF = new RectF(0.0F, 0.0F, i, j);
-      f1 = this.mRadius;
-      f2 = this.mRadius;
-      f3 = this.mRadius;
-      f4 = this.mRadius;
-      localDirection = Path.Direction.CW;
-      localPath.addRoundRect(localRectF, new float[] { f1, f2, f3, f4, 0.0F, 0.0F, 0.0F, 0.0F }, localDirection);
-      return;
-    case 4: 
-      localPath = this.mRoundPath;
-      localRectF = new RectF(0.0F, 0.0F, i, j);
-      f1 = this.mRadius;
-      f2 = this.mRadius;
-      f3 = this.mRadius;
-      f4 = this.mRadius;
-      localDirection = Path.Direction.CW;
-      localPath.addRoundRect(localRectF, new float[] { 0.0F, 0.0F, f1, f2, f3, f4, 0.0F, 0.0F }, localDirection);
       return;
     }
     Path localPath = this.mRoundPath;
     RectF localRectF = new RectF(0.0F, 0.0F, i, j);
-    float f1 = this.mRadius;
-    float f2 = this.mRadius;
-    float f3 = this.mRadius;
-    float f4 = this.mRadius;
-    Path.Direction localDirection = Path.Direction.CW;
-    localPath.addRoundRect(localRectF, new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f1, f2, f3, f4 }, localDirection);
+    i = this.mRadius;
+    localPath.addRoundRect(localRectF, i, i, Path.Direction.CW);
   }
   
   public void draw(Canvas paramCanvas)
@@ -114,18 +128,20 @@ public class XFrameLayout
     super.draw(paramCanvas);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     int i = paramInt2;
     if (this.mMaxHeight > 0)
     {
       int j = View.MeasureSpec.getMode(paramInt2);
+      int k = View.MeasureSpec.getSize(paramInt2);
+      int m = this.mMaxHeight;
       i = paramInt2;
-      if (View.MeasureSpec.getSize(paramInt2) > this.mMaxHeight)
+      if (k > m)
       {
         i = paramInt2;
         if (j != 0) {
-          i = View.MeasureSpec.makeMeasureSpec(this.mMaxHeight, j);
+          i = View.MeasureSpec.makeMeasureSpec(m, j);
         }
       }
     }
@@ -148,7 +164,7 @@ public class XFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.XFrameLayout
  * JD-Core Version:    0.7.0.1
  */

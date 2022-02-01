@@ -8,27 +8,27 @@ class AssociatedAccountManageActivity$11
 {
   AssociatedAccountManageActivity$11(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void a(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  protected void a(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
-    this.a.e();
-    AssociatedAccountManageActivity.b(this.a);
+    this.a.hideJuhua();
+    AssociatedAccountManageActivity.access$1600(this.a);
   }
   
-  public void b(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  protected void b(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
-    this.a.e();
-    AssociatedAccountManageActivity.b(this.a);
+    this.a.hideJuhua();
+    AssociatedAccountManageActivity.access$1600(this.a);
   }
   
-  public void c(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  protected void c(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
-    this.a.e();
-    AssociatedAccountManageActivity.b(this.a);
+    this.a.hideJuhua();
+    AssociatedAccountManageActivity.access$1600(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountManageActivity.11
  * JD-Core Version:    0.7.0.1
  */

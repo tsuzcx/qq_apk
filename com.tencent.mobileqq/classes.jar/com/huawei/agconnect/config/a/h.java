@@ -1,47 +1,61 @@
 package com.huawei.agconnect.config.a;
 
-import android.util.Log;
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.io.Writer;
+import android.content.Context;
+import android.content.res.Resources;
+import android.content.res.Resources.NotFoundException;
+import android.text.TextUtils;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
-public final class h
+class h
+  implements d
 {
-  public static String a(InputStream paramInputStream, String paramString)
+  private final Context a;
+  private final String b;
+  
+  h(Context paramContext, String paramString)
   {
-    StringWriter localStringWriter = new StringWriter();
-    a(new InputStreamReader(paramInputStream, paramString), localStringWriter);
-    return localStringWriter.toString();
+    this.a = paramContext;
+    this.b = paramString;
   }
   
-  public static void a(Closeable paramCloseable)
+  private static String a(String paramString)
   {
-    if (paramCloseable != null) {}
     try
     {
-      paramCloseable.close();
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("agc_");
+      localStringBuilder.append(e.a(a(paramString.getBytes("UTF-8"))));
+      paramString = localStringBuilder.toString();
+      return paramString;
     }
-    catch (IOException paramCloseable)
+    catch (UnsupportedEncodingException|NoSuchAlgorithmException paramString) {}
+    return "";
+  }
+  
+  private static byte[] a(byte[] paramArrayOfByte)
+  {
+    return MessageDigest.getInstance("SHA-256").digest(paramArrayOfByte);
+  }
+  
+  public String getString(String paramString1, String paramString2)
+  {
+    paramString1 = a(paramString1);
+    if (TextUtils.isEmpty(paramString1)) {
+      return paramString2;
+    }
+    int i = this.a.getResources().getIdentifier(paramString1, "string", this.b);
+    if (i == 0) {
+      return paramString2;
+    }
+    try
     {
-      Log.e("Utils", "Exception when closing the 'Closeable'.");
+      paramString1 = this.a.getResources().getString(i);
+      return paramString1;
     }
-  }
-  
-  public static void a(Reader paramReader, Writer paramWriter)
-  {
-    a(paramReader, paramWriter, new char[4096]);
-  }
-  
-  public static void a(Reader paramReader, Writer paramWriter, char[] paramArrayOfChar)
-  {
-    for (int i = paramReader.read(paramArrayOfChar); -1 != i; i = paramReader.read(paramArrayOfChar)) {
-      paramWriter.write(paramArrayOfChar, 0, i);
-    }
+    catch (Resources.NotFoundException paramString1) {}
+    return paramString2;
   }
 }
 

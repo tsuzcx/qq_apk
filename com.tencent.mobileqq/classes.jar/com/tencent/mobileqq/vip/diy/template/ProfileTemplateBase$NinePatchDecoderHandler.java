@@ -34,12 +34,18 @@ public class ProfileTemplateBase$NinePatchDecoderHandler
   
   public String toString()
   {
-    return "NinePatchDecoderHandler{reqW=" + this.a + ", reqH=" + this.b + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("NinePatchDecoderHandler{reqW=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", reqH=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.diy.template.ProfileTemplateBase.NinePatchDecoderHandler
  * JD-Core Version:    0.7.0.1
  */

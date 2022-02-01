@@ -51,29 +51,32 @@ public class DynamicEffectTextView
   
   public void cancelAnimation()
   {
-    if ((this.mAnimator != null) && (this.mAnimator.isRunning()))
+    ValueAnimator localValueAnimator = this.mAnimator;
+    if ((localValueAnimator != null) && (localValueAnimator.isRunning()))
     {
       QLog.d("DynamicEffectTextView", 1, "cancelAnimation");
       this.mAnimator.cancel();
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.mGradientMatrix != null)
+    Matrix localMatrix = this.mGradientMatrix;
+    if (localMatrix != null)
     {
-      this.mGradientMatrix.setTranslate(this.mTranslate, 0.0F);
+      localMatrix.setTranslate(this.mTranslate, 0.0F);
       if (this.mAnimationPaint != null) {
         paramCanvas.drawText(getText().toString(), 0.0F, this.mDrawOffsetY, this.mAnimationPaint);
       }
-      if (this.mBitmapShader != null) {
-        this.mBitmapShader.setLocalMatrix(this.mGradientMatrix);
+      paramCanvas = this.mBitmapShader;
+      if (paramCanvas != null) {
+        paramCanvas.setLocalMatrix(this.mGradientMatrix);
       }
     }
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.mViewWidth == 0)
@@ -141,7 +144,8 @@ public class DynamicEffectTextView
       QLog.w("DynamicEffectTextView", 1, "startAnimation gradient matrix is null.");
       return;
     }
-    this.mAnimator = ValueAnimator.ofInt(new int[] { -this.mViewWidth / 2, this.mViewWidth + this.mViewWidth / 2 });
+    int i = this.mViewWidth;
+    this.mAnimator = ValueAnimator.ofInt(new int[] { -i / 2, i + i / 2 });
     this.mAnimator.setDuration(this.mDuration);
     this.mAnimator.setInterpolator(new LinearInterpolator());
     this.mAnimator.setRepeatCount(-1);
@@ -152,7 +156,7 @@ public class DynamicEffectTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.circle.view.DynamicEffectTextView
  * JD-Core Version:    0.7.0.1
  */

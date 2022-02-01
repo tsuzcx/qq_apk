@@ -12,24 +12,24 @@ class ShortVideoCommentsView$15
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      if (paramInt == 1) {
+        ShortVideoCommentsView.access$2200(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
       }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.f(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
-      continue;
-      ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+    }
+    else {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.jump2Report(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+    }
+    paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    if (paramView != null) {
+      paramView.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView.15
  * JD-Core Version:    0.7.0.1
  */

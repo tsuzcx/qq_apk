@@ -39,21 +39,17 @@ public class WXPayEntryActivity
     try
     {
       WXPayHelper.getInstance().handleIntent(getIntent());
-      finish();
-      return;
     }
     catch (Exception paramBundle)
     {
-      for (;;)
-      {
-        paramBundle.printStackTrace();
-      }
+      paramBundle.printStackTrace();
     }
+    finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.wxapi.WXPayEntryActivity
  * JD-Core Version:    0.7.0.1
  */

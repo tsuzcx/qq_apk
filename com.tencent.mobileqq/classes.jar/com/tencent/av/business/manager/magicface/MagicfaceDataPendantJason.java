@@ -16,12 +16,29 @@ public class MagicfaceDataPendantJason
   
   public String toString()
   {
-    return "MagicfaceDataPendantJason{name='" + this.name + '\'' + ", belongto='" + this.belongto + '\'' + ", trigger='" + this.trigger + '\'' + ", startframe=" + this.startframe + ", duration=" + this.duration + ", mirror=" + this.mirror + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MagicfaceDataPendantJason{name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", belongto='");
+    localStringBuilder.append(this.belongto);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", trigger='");
+    localStringBuilder.append(this.trigger);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", startframe=");
+    localStringBuilder.append(this.startframe);
+    localStringBuilder.append(", duration=");
+    localStringBuilder.append(this.duration);
+    localStringBuilder.append(", mirror=");
+    localStringBuilder.append(this.mirror);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.magicface.MagicfaceDataPendantJason
  * JD-Core Version:    0.7.0.1
  */

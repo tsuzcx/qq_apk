@@ -28,12 +28,32 @@ public class MemoriesFeedPlayInfo
   
   public String toString()
   {
-    return "MemoriesFeedPlayInfo{mKeyList=" + this.mKeyList + ", mIsEnd=" + this.mIsEnd + ", mStartFeedId='" + this.mStartFeedId + '\'' + ", mStartVid='" + this.mStartVid + '\'' + ", mUid='" + this.mUid + '\'' + ", mContext='" + this.mContext + '\'' + ", mDataType=" + this.mDataType + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MemoriesFeedPlayInfo{mKeyList=");
+    localStringBuilder.append(this.mKeyList);
+    localStringBuilder.append(", mIsEnd=");
+    localStringBuilder.append(this.mIsEnd);
+    localStringBuilder.append(", mStartFeedId='");
+    localStringBuilder.append(this.mStartFeedId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mStartVid='");
+    localStringBuilder.append(this.mStartVid);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mUid='");
+    localStringBuilder.append(this.mUid);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mContext='");
+    localStringBuilder.append(this.mContext);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mDataType=");
+    localStringBuilder.append(this.mDataType);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.entrance.MemoriesFeedPlayInfo
  * JD-Core Version:    0.7.0.1
  */

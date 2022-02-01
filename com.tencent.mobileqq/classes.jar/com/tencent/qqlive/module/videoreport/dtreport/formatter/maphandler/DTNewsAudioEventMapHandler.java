@@ -40,10 +40,11 @@ class DTNewsAudioEventMapHandler
   public void formatCustomParams(String paramString, Map<String, Object> paramMap1, Map<String, Object> paramMap2)
   {
     super.formatCustomParams(paramString, paramMap1, paramMap2);
-    if ((!isValidMap(paramMap1)) || (!isValidMap(paramMap2))) {}
-    do
+    if (isValidMap(paramMap1))
     {
-      return;
+      if (!isValidMap(paramMap2)) {
+        return;
+      }
       if ("dt_audio_start".equals(paramString))
       {
         formatAudioStartParams(paramMap1, paramMap2);
@@ -54,8 +55,10 @@ class DTNewsAudioEventMapHandler
         formatAudioEndParams(paramMap1, paramMap2);
         return;
       }
-    } while (!"dt_audio_heartbeat".equals(paramString));
-    formatAudioHeartParams(paramMap1, paramMap2);
+      if ("dt_audio_heartbeat".equals(paramString)) {
+        formatAudioHeartParams(paramMap1, paramMap2);
+      }
+    }
   }
   
   Object getOrRemove(@NonNull Map<?, ?> paramMap, String paramString)
@@ -65,7 +68,7 @@ class DTNewsAudioEventMapHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.formatter.maphandler.DTNewsAudioEventMapHandler
  * JD-Core Version:    0.7.0.1
  */

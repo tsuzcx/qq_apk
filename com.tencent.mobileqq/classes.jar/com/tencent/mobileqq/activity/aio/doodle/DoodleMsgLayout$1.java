@@ -24,21 +24,19 @@ class DoodleMsgLayout$1
     {
       DoodleMsgLayout.a(this.a, true);
       DoodleMsgLayout.a(this.a);
-    }
-    do
-    {
       return;
-      if (paramView == DoodleMsgLayout.b(this.a))
-      {
-        ((GifDrawable)paramURLDrawable.getCurrDrawable()).setGIFPlayOnceListener(this.a);
-        return;
-      }
-    } while (paramView != DoodleMsgLayout.c(this.a));
+    }
+    if (paramView == DoodleMsgLayout.b(this.a))
+    {
+      ((GifDrawable)paramURLDrawable.getCurrDrawable()).setGIFPlayOnceListener(this.a);
+      return;
+    }
+    DoodleMsgLayout.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout.1
  * JD-Core Version:    0.7.0.1
  */

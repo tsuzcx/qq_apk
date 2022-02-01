@@ -12,9 +12,7 @@ final class VideoItemBuilder$3
   public void OnClick(View paramView, int paramInt)
   {
     this.jdField_a_of_type_ComTencentAvUtilsVideoActionSheet.dismiss();
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 0) {
       return;
     }
     boolean bool = this.jdField_a_of_type_ComTencentMobileqqDataMessageForVideo.isVideo;
@@ -30,7 +28,7 @@ final class VideoItemBuilder$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.VideoItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

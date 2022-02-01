@@ -10,7 +10,10 @@ class ResultMatchers$3
   
   public void describeTo(Description paramDescription)
   {
-    paramDescription.appendText("has failure containing " + this.val$string);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("has failure containing ");
+    localStringBuilder.append(this.val$string);
+    paramDescription.appendText(localStringBuilder.toString());
   }
   
   public boolean matches(Object paramObject)
@@ -20,7 +23,7 @@ class ResultMatchers$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.experimental.results.ResultMatchers.3
  * JD-Core Version:    0.7.0.1
  */

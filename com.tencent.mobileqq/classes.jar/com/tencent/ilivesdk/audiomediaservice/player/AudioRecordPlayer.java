@@ -74,42 +74,38 @@ public class AudioRecordPlayer
   
   private void b()
   {
-    if (this.jdField_a_of_type_ComTencentIliveOpensdkApiinterfacesIOpenSdk == null)
+    IOpenSdk localIOpenSdk = this.jdField_a_of_type_ComTencentIliveOpensdkApiinterfacesIOpenSdk;
+    if (localIOpenSdk == null)
     {
       this.jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface.i("AudioRecordPlayer", "changeRolesToLinkMicAudio.", new Object[0]);
       return;
     }
-    this.jdField_a_of_type_ComTencentIliveOpensdkApiinterfacesIOpenSdk.changeRole(3, new AudioRecordPlayer.4(this));
+    localIOpenSdk.changeRole(3, new AudioRecordPlayer.4(this));
   }
   
   private void b(AudioEnterRoomParam paramAudioEnterRoomParam)
   {
     this.jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface.i("AudioRecordPlayer", "openAudioStream: start open audio stream.", new Object[0]);
+    int i = paramAudioEnterRoomParam.d;
     String str = "audience";
-    if (paramAudioEnterRoomParam.d == 0) {
-      str = "audience";
+    if ((i != 0) && (paramAudioEnterRoomParam.d == 3)) {
+      str = "voicelianmai";
     }
-    for (;;)
-    {
-      OpenSdkParams localOpenSdkParams = new OpenSdkParams.OpenSdkParamsBuilder().setSelfUid(paramAudioEnterRoomParam.jdField_b_of_type_Long).setAuthEncryptionType(1).setUid(paramAudioEnterRoomParam.jdField_a_of_type_Long).setRoomId(paramAudioEnterRoomParam.jdField_c_of_type_Long).setRoomSig(paramAudioEnterRoomParam.jdField_a_of_type_ArrayOfByte).setSwitchRoom(Boolean.valueOf(false)).setRoles(str).build();
-      RtcRoomEnterParams localRtcRoomEnterParams = new RtcRoomEnterParams((int)paramAudioEnterRoomParam.jdField_c_of_type_Long, paramAudioEnterRoomParam.jdField_c_of_type_Int);
-      localRtcRoomEnterParams.setOpenSdkParams(localOpenSdkParams);
-      localRtcRoomEnterParams.controlRole = str;
-      localRtcRoomEnterParams.setAVCoreEventCallback(this.jdField_a_of_type_ComTencentIliveOpensdkCallbacksRtcCoreEventCallback);
-      this.jdField_a_of_type_ComTencentIliveOpensdkApiinterfacesIOpenSdk.initAnchor(1, paramAudioEnterRoomParam.d, paramAudioEnterRoomParam.jdField_a_of_type_ArrayOfByte, null);
-      this.jdField_a_of_type_ComTencentIliveOpensdkApiinterfacesIOpenSdk.start();
-      this.jdField_a_of_type_ComTencentIliveOpensdkApiinterfacesIOpenSdk.enterRoom(localRtcRoomEnterParams);
-      return;
-      if (paramAudioEnterRoomParam.d == 3) {
-        str = "voicelianmai";
-      }
-    }
+    OpenSdkParams localOpenSdkParams = new OpenSdkParams.OpenSdkParamsBuilder().setSelfUid(paramAudioEnterRoomParam.jdField_b_of_type_Long).setAuthEncryptionType(1).setUid(paramAudioEnterRoomParam.jdField_a_of_type_Long).setRoomId(paramAudioEnterRoomParam.jdField_c_of_type_Long).setRoomSig(paramAudioEnterRoomParam.jdField_a_of_type_ArrayOfByte).setSwitchRoom(Boolean.valueOf(false)).setRoles(str).build();
+    RtcRoomEnterParams localRtcRoomEnterParams = new RtcRoomEnterParams((int)paramAudioEnterRoomParam.jdField_c_of_type_Long, paramAudioEnterRoomParam.jdField_c_of_type_Int);
+    localRtcRoomEnterParams.setOpenSdkParams(localOpenSdkParams);
+    localRtcRoomEnterParams.controlRole = str;
+    localRtcRoomEnterParams.setAVCoreEventCallback(this.jdField_a_of_type_ComTencentIliveOpensdkCallbacksRtcCoreEventCallback);
+    this.jdField_a_of_type_ComTencentIliveOpensdkApiinterfacesIOpenSdk.initAnchor(1, paramAudioEnterRoomParam.d, paramAudioEnterRoomParam.jdField_a_of_type_ArrayOfByte, null);
+    this.jdField_a_of_type_ComTencentIliveOpensdkApiinterfacesIOpenSdk.start();
+    this.jdField_a_of_type_ComTencentIliveOpensdkApiinterfacesIOpenSdk.enterRoom(localRtcRoomEnterParams);
   }
   
   public long a(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentIliveOpensdkApiinterfacesIOpenSdk != null) {
-      return this.jdField_a_of_type_ComTencentIliveOpensdkApiinterfacesIOpenSdk.getDynamicVolume(paramLong);
+    IOpenSdk localIOpenSdk = this.jdField_a_of_type_ComTencentIliveOpensdkApiinterfacesIOpenSdk;
+    if (localIOpenSdk != null) {
+      return localIOpenSdk.getDynamicVolume(paramLong);
     }
     return 0L;
   }
@@ -124,9 +120,10 @@ public class AudioRecordPlayer
     this.jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface.i("AudioRecordPlayer", "release: the audioRecordPlayer release.", new Object[0]);
     this.c = true;
     this.jdField_a_of_type_ComTencentIlivesdkAudiomediaservicePlayerVoiceWaveScheduled.b();
-    if (this.jdField_a_of_type_ComTencentIliveOpensdkApiinterfacesIOpenSdk != null)
+    IOpenSdk localIOpenSdk = this.jdField_a_of_type_ComTencentIliveOpensdkApiinterfacesIOpenSdk;
+    if (localIOpenSdk != null)
     {
-      this.jdField_a_of_type_ComTencentIliveOpensdkApiinterfacesIOpenSdk.enableMic(false);
+      localIOpenSdk.enableMic(false);
       this.jdField_a_of_type_ComTencentIliveOpensdkApiinterfacesIOpenSdk.stop();
       this.jdField_a_of_type_ComTencentIliveOpensdkApiinterfacesIOpenSdk.exitRoom();
       this.jdField_a_of_type_ComTencentIliveOpensdkApiinterfacesIOpenSdk.release();
@@ -158,23 +155,23 @@ public class AudioRecordPlayer
   {
     this.b = paramBoolean;
     this.jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface.i("AudioRecordPlayer", "enableMic: enable mic %s.", new Object[] { String.valueOf(paramBoolean) });
-    if ((this.jdField_a_of_type_ComTencentIliveOpensdkApiinterfacesIOpenSdk == null) || (!this.jdField_a_of_type_Boolean))
+    if ((this.jdField_a_of_type_ComTencentIliveOpensdkApiinterfacesIOpenSdk != null) && (this.jdField_a_of_type_Boolean))
     {
-      this.jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface.i("AudioRecordPlayer", "enableMic: the openSdk is not started.", new Object[0]);
+      if (this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesAudioEnterRoomParam.d != 3)
+      {
+        this.jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface.i("AudioRecordPlayer", "enableMic: change roles to link mic audio.", new Object[0]);
+        b();
+        return;
+      }
+      this.jdField_a_of_type_ComTencentIliveOpensdkApiinterfacesIOpenSdk.enableMic(paramBoolean);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesAudioEnterRoomParam.d != 3)
-    {
-      this.jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface.i("AudioRecordPlayer", "enableMic: change roles to link mic audio.", new Object[0]);
-      b();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentIliveOpensdkApiinterfacesIOpenSdk.enableMic(paramBoolean);
+    this.jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface.i("AudioRecordPlayer", "enableMic: the openSdk is not started.", new Object[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.audiomediaservice.player.AudioRecordPlayer
  * JD-Core Version:    0.7.0.1
  */

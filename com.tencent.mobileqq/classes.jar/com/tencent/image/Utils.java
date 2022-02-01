@@ -39,48 +39,44 @@ public class Utils
   
   public static final long Crc64Long(String paramString)
   {
-    int k = 0;
-    long l2;
-    if ((paramString == null) || (paramString.length() == 0))
+    if ((paramString != null) && (paramString.length() != 0))
     {
-      l2 = 0L;
-      return l2;
-    }
-    if (!init)
-    {
-      i = 0;
-      while (i < 256)
+      long l2 = -1L;
+      boolean bool = init;
+      int k = 0;
+      if (!bool)
       {
-        l1 = i;
-        j = 0;
-        if (j < 8)
+        i = 0;
+        while (i < 256)
         {
-          if (((int)l1 & 0x1) != 0) {}
-          for (l1 = l1 >> 1 ^ 0xAC4BC9B5;; l1 >>= 1)
+          l1 = i;
+          j = 0;
+          while (j < 8)
           {
+            if (((int)l1 & 0x1) != 0) {
+              l1 = l1 >> 1 ^ 0xAC4BC9B5;
+            } else {
+              l1 >>= 1;
+            }
             j += 1;
-            break;
           }
+          CRCTable[i] = l1;
+          i += 1;
         }
-        CRCTable[i] = l1;
+        init = true;
+      }
+      int j = paramString.length();
+      int i = k;
+      long l1 = l2;
+      while (i < j)
+      {
+        k = paramString.charAt(i);
+        l1 = l1 >> 8 ^ CRCTable[((k ^ (int)l1) & 0xFF)];
         i += 1;
       }
-      init = true;
+      return l1;
     }
-    int j = paramString.length();
-    long l1 = -1L;
-    int i = k;
-    for (;;)
-    {
-      l2 = l1;
-      if (i >= j) {
-        break;
-      }
-      k = paramString.charAt(i);
-      l2 = CRCTable[((k ^ (int)l1) & 0xFF)];
-      i += 1;
-      l1 = l2 ^ l1 >> 8;
-    }
+    return 0L;
   }
   
   public static final String Crc64String(String paramString)
@@ -110,45 +106,40 @@ public class Utils
   
   public static int calculateInSampleSize(Rect paramRect, int paramInt1, int paramInt2)
   {
-    int i = 1;
     int j = 1;
-    if ((paramInt1 == 0) || (paramInt2 == 0) || (paramInt1 == -1) || (paramInt2 == -1)) {
-      if (paramRect.width() * paramRect.height() > 5000000)
+    if ((paramInt1 != 0) && (paramInt2 != 0) && (paramInt1 != -1) && (paramInt2 != -1))
+    {
+      int k = paramRect.width();
+      int i = paramRect.height();
+      while ((i > paramInt2) || (k > paramInt1))
       {
-        if (URLDrawable.depImp.mLog.isColorLevel()) {
-          URLDrawable.depImp.mLog.d("URLDrawable.Utils", 2, "calculateInSampleSize options.outWidth*options.outHeight=" + paramRect.width() * paramRect.height());
+        int m = Math.round(i / paramInt2);
+        int n = Math.round(k / paramInt1);
+        if (m <= n) {
+          m = n;
         }
-        j = 2;
+        if (m < 2) {
+          break;
+        }
+        k /= 2;
+        i /= 2;
+        j *= 2;
       }
-    }
-    int m;
-    int k;
-    label110:
-    do
-    {
       return j;
-      m = paramRect.width();
-      k = paramRect.height();
-      if (k > paramInt2) {
-        break;
-      }
-      j = i;
-    } while (m <= paramInt1);
-    int n = Math.round(k / paramInt2);
-    j = Math.round(m / paramInt1);
-    if (n > j) {}
-    for (;;)
-    {
-      j = i;
-      if (n < 2) {
-        break;
-      }
-      m /= 2;
-      k /= 2;
-      i *= 2;
-      break label110;
-      n = j;
     }
+    if (paramRect.width() * paramRect.height() > 5000000)
+    {
+      if (URLDrawable.depImp.mLog.isColorLevel())
+      {
+        ILog localILog = URLDrawable.depImp.mLog;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("calculateInSampleSize options.outWidth*options.outHeight=");
+        localStringBuilder.append(paramRect.width() * paramRect.height());
+        localILog.d("URLDrawable.Utils", 2, localStringBuilder.toString());
+      }
+      return 2;
+    }
+    return 1;
   }
   
   public static final void copyFile(File paramFile1, File paramFile2)
@@ -254,8 +245,15 @@ public class Utils
     if (hasExternalCacheDir()) {
       return paramContext.getExternalCacheDir();
     }
-    paramContext = "/Android/data/" + paramContext.getPackageName() + "/imagecache/";
-    return new File(Environment.getExternalStorageDirectory().getPath() + paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("/Android/data/");
+    localStringBuilder.append(paramContext.getPackageName());
+    localStringBuilder.append("/imagecache/");
+    paramContext = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getExternalStorageDirectory().getPath());
+    localStringBuilder.append(paramContext);
+    return new File(localStringBuilder.toString());
   }
   
   public static int getHeifOrientation(String paramString)
@@ -263,19 +261,16 @@ public class Utils
     try
     {
       paramString = new ExifInterface(paramString);
-      if (paramString == null) {
-        return 1;
-      }
     }
     catch (IOException paramString)
     {
-      for (;;)
-      {
-        if (URLDrawable.depImp.mLog.isColorLevel()) {
-          URLDrawable.depImp.mLog.e("URLDrawable.Utils", 2, "new ExifInterface", paramString);
-        }
-        paramString = null;
+      if (URLDrawable.depImp.mLog.isColorLevel()) {
+        URLDrawable.depImp.mLog.e("URLDrawable.Utils", 2, "new ExifInterface", paramString);
       }
+      paramString = null;
+    }
+    if (paramString == null) {
+      return 1;
     }
     return paramString.getAttributeInt("Orientation", 1);
   }
@@ -292,8 +287,7 @@ public class Utils
       return paramFile.getUsableSpace();
     }
     paramFile = new StatFs(paramFile.getPath());
-    long l = paramFile.getBlockSize();
-    return paramFile.getAvailableBlocks() * l;
+    return paramFile.getBlockSize() * paramFile.getAvailableBlocks();
   }
   
   public static boolean hasActionBar()
@@ -324,138 +318,138 @@ public class Utils
   public static boolean isHeifFile(String paramString)
   {
     // Byte code:
-    //   0: new 310	java/io/File
+    //   0: new 315	java/io/File
     //   3: dup
     //   4: aload_0
     //   5: invokespecial 321	java/io/File:<init>	(Ljava/lang/String;)V
-    //   8: astore_0
-    //   9: new 375	java/io/RandomAccessFile
-    //   12: dup
-    //   13: aload_0
-    //   14: ldc_w 377
-    //   17: invokespecial 380	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   20: astore 4
-    //   22: aload 4
-    //   24: astore_0
-    //   25: getstatic 47	com/tencent/image/Utils:HEIF_SIGNATURE	[B
-    //   28: arraylength
-    //   29: newarray byte
-    //   31: astore 5
-    //   33: aload 4
+    //   8: astore 4
+    //   10: aconst_null
+    //   11: astore 5
+    //   13: aconst_null
+    //   14: astore_0
+    //   15: new 375	java/io/RandomAccessFile
+    //   18: dup
+    //   19: aload 4
+    //   21: ldc_w 377
+    //   24: invokespecial 380	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   27: astore 4
+    //   29: getstatic 47	com/tencent/image/Utils:HEIF_SIGNATURE	[B
+    //   32: arraylength
+    //   33: newarray byte
     //   35: astore_0
     //   36: aload 4
-    //   38: aload 5
-    //   40: invokevirtual 381	java/io/RandomAccessFile:read	([B)I
-    //   43: pop
-    //   44: iconst_0
-    //   45: istore_1
-    //   46: aload 4
-    //   48: astore_0
-    //   49: iload_1
-    //   50: getstatic 47	com/tencent/image/Utils:HEIF_SIGNATURE	[B
-    //   53: arraylength
-    //   54: if_icmpge +43 -> 97
-    //   57: aload 5
-    //   59: iload_1
-    //   60: baload
-    //   61: istore_2
-    //   62: aload 4
-    //   64: astore_0
-    //   65: getstatic 47	com/tencent/image/Utils:HEIF_SIGNATURE	[B
-    //   68: iload_1
-    //   69: baload
-    //   70: istore_3
-    //   71: iload_2
-    //   72: iload_3
-    //   73: if_icmpeq +17 -> 90
-    //   76: aload 4
-    //   78: invokevirtual 382	java/io/RandomAccessFile:close	()V
-    //   81: iconst_0
-    //   82: ireturn
-    //   83: astore_0
-    //   84: aload_0
-    //   85: invokevirtual 385	java/lang/Exception:printStackTrace	()V
-    //   88: iconst_0
-    //   89: ireturn
-    //   90: iload_1
-    //   91: iconst_1
-    //   92: iadd
-    //   93: istore_1
-    //   94: goto -48 -> 46
-    //   97: aload 4
-    //   99: invokevirtual 382	java/io/RandomAccessFile:close	()V
+    //   38: aload_0
+    //   39: invokevirtual 381	java/io/RandomAccessFile:read	([B)I
+    //   42: pop
+    //   43: iconst_0
+    //   44: istore_1
+    //   45: iload_1
+    //   46: getstatic 47	com/tencent/image/Utils:HEIF_SIGNATURE	[B
+    //   49: arraylength
+    //   50: if_icmpge +39 -> 89
+    //   53: aload_0
+    //   54: iload_1
+    //   55: baload
+    //   56: istore_2
+    //   57: getstatic 47	com/tencent/image/Utils:HEIF_SIGNATURE	[B
+    //   60: iload_1
+    //   61: baload
+    //   62: istore_3
+    //   63: iload_2
+    //   64: iload_3
+    //   65: if_icmpeq +17 -> 82
+    //   68: aload 4
+    //   70: invokevirtual 382	java/io/RandomAccessFile:close	()V
+    //   73: iconst_0
+    //   74: ireturn
+    //   75: astore_0
+    //   76: aload_0
+    //   77: invokevirtual 385	java/lang/Exception:printStackTrace	()V
+    //   80: iconst_0
+    //   81: ireturn
+    //   82: iload_1
+    //   83: iconst_1
+    //   84: iadd
+    //   85: istore_1
+    //   86: goto -41 -> 45
+    //   89: aload 4
+    //   91: invokevirtual 382	java/io/RandomAccessFile:close	()V
+    //   94: goto +8 -> 102
+    //   97: astore_0
+    //   98: aload_0
+    //   99: invokevirtual 385	java/lang/Exception:printStackTrace	()V
     //   102: iconst_1
     //   103: ireturn
     //   104: astore_0
-    //   105: aload_0
-    //   106: invokevirtual 385	java/lang/Exception:printStackTrace	()V
-    //   109: iconst_1
-    //   110: ireturn
-    //   111: astore 5
-    //   113: aconst_null
-    //   114: astore 4
-    //   116: aload 4
-    //   118: astore_0
-    //   119: aload 5
-    //   121: invokevirtual 386	java/io/IOException:printStackTrace	()V
-    //   124: aload 4
-    //   126: invokevirtual 382	java/io/RandomAccessFile:close	()V
-    //   129: iconst_0
-    //   130: ireturn
-    //   131: astore_0
-    //   132: aload_0
-    //   133: invokevirtual 385	java/lang/Exception:printStackTrace	()V
-    //   136: iconst_0
-    //   137: ireturn
-    //   138: astore 4
-    //   140: aconst_null
-    //   141: astore_0
-    //   142: aload_0
-    //   143: invokevirtual 382	java/io/RandomAccessFile:close	()V
-    //   146: aload 4
-    //   148: athrow
-    //   149: astore_0
-    //   150: aload_0
-    //   151: invokevirtual 385	java/lang/Exception:printStackTrace	()V
-    //   154: goto -8 -> 146
-    //   157: astore 4
-    //   159: goto -17 -> 142
-    //   162: astore 5
-    //   164: goto -48 -> 116
+    //   105: goto +49 -> 154
+    //   108: astore 5
+    //   110: goto +22 -> 132
+    //   113: astore 5
+    //   115: aload_0
+    //   116: astore 4
+    //   118: aload 5
+    //   120: astore_0
+    //   121: goto +33 -> 154
+    //   124: astore_0
+    //   125: aload 5
+    //   127: astore 4
+    //   129: aload_0
+    //   130: astore 5
+    //   132: aload 4
+    //   134: astore_0
+    //   135: aload 5
+    //   137: invokevirtual 386	java/io/IOException:printStackTrace	()V
+    //   140: aload 4
+    //   142: invokevirtual 382	java/io/RandomAccessFile:close	()V
+    //   145: iconst_0
+    //   146: ireturn
+    //   147: astore_0
+    //   148: aload_0
+    //   149: invokevirtual 385	java/lang/Exception:printStackTrace	()V
+    //   152: iconst_0
+    //   153: ireturn
+    //   154: aload 4
+    //   156: invokevirtual 382	java/io/RandomAccessFile:close	()V
+    //   159: goto +10 -> 169
+    //   162: astore 4
+    //   164: aload 4
+    //   166: invokevirtual 385	java/lang/Exception:printStackTrace	()V
+    //   169: goto +5 -> 174
+    //   172: aload_0
+    //   173: athrow
+    //   174: goto -2 -> 172
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	167	0	paramString	String
-    //   45	49	1	i	int
-    //   61	13	2	j	int
-    //   70	4	3	k	int
-    //   20	105	4	localRandomAccessFile	java.io.RandomAccessFile
-    //   138	9	4	localObject1	Object
-    //   157	1	4	localObject2	Object
-    //   31	27	5	arrayOfByte	byte[]
-    //   111	9	5	localIOException1	IOException
-    //   162	1	5	localIOException2	IOException
+    //   0	177	0	paramString	String
+    //   44	42	1	i	int
+    //   56	10	2	j	int
+    //   62	4	3	k	int
+    //   8	147	4	localObject1	Object
+    //   162	3	4	localException	java.lang.Exception
+    //   11	1	5	localObject2	Object
+    //   108	1	5	localIOException	IOException
+    //   113	13	5	localObject3	Object
+    //   130	6	5	str	String
     // Exception table:
     //   from	to	target	type
-    //   76	81	83	java/lang/Exception
-    //   97	102	104	java/lang/Exception
-    //   9	22	111	java/io/IOException
-    //   124	129	131	java/lang/Exception
-    //   9	22	138	finally
-    //   142	146	149	java/lang/Exception
-    //   25	33	157	finally
-    //   36	44	157	finally
-    //   49	57	157	finally
-    //   65	71	157	finally
-    //   119	124	157	finally
-    //   25	33	162	java/io/IOException
-    //   36	44	162	java/io/IOException
-    //   49	57	162	java/io/IOException
-    //   65	71	162	java/io/IOException
+    //   68	73	75	java/lang/Exception
+    //   89	94	97	java/lang/Exception
+    //   29	43	104	finally
+    //   45	53	104	finally
+    //   57	63	104	finally
+    //   29	43	108	java/io/IOException
+    //   45	53	108	java/io/IOException
+    //   57	63	108	java/io/IOException
+    //   15	29	113	finally
+    //   135	140	113	finally
+    //   15	29	124	java/io/IOException
+    //   140	145	147	java/lang/Exception
+    //   154	159	162	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.image.Utils
  * JD-Core Version:    0.7.0.1
  */

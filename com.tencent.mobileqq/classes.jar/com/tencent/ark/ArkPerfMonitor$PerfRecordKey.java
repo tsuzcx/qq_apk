@@ -13,15 +13,19 @@ class ArkPerfMonitor$PerfRecordKey
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (PerfRecordKey)paramObject;
-    } while ((this.appID.equals(paramObject.appID)) && (this.view.equals(paramObject.view)));
+      if ((this.appID.equals(paramObject.appID)) && (this.view.equals(paramObject.view))) {
+        return true;
+      }
+    }
     return false;
   }
   

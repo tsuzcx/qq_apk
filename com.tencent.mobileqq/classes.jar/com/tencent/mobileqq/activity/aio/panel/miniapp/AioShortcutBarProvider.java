@@ -1,10 +1,12 @@
 package com.tencent.mobileqq.activity.aio.panel.miniapp;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.View;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.helper.ShortcutBarAIOHelper;
 import com.tencent.mobileqq.activity.aio.panel.PanelProvider;
+import com.tencent.mobileqq.activity.aio.rebuild.input.shortcutbar.AIOShortcutBarHelper;
+import com.tencent.mobileqq.activity.aio.rebuild.input.shortcutbar.AIOShortcutBarHelper.AIOShortcutBarEvent;
 import com.tencent.widget.XPanelContainer;
 
 public class AioShortcutBarProvider
@@ -41,22 +43,32 @@ public class AioShortcutBarProvider
   
   public void onPanelChanged(int paramInt1, int paramInt2)
   {
-    ShortcutBarAIOHelper localShortcutBarAIOHelper = (ShortcutBarAIOHelper)this.a.a(52);
-    if (paramInt2 == 0)
+    AIOShortcutBarHelper localAIOShortcutBarHelper = (AIOShortcutBarHelper)this.a.a(52);
+    if (localAIOShortcutBarHelper != null)
     {
-      localShortcutBarAIOHelper.c(false);
-      localShortcutBarAIOHelper.h();
-      return;
+      AIOShortcutBarHelper.AIOShortcutBarEvent localAIOShortcutBarEvent = new AIOShortcutBarHelper.AIOShortcutBarEvent();
+      if (paramInt2 == 0)
+      {
+        localAIOShortcutBarEvent.a = 12;
+        localAIOShortcutBarEvent.a().putBoolean("InputJump", false);
+        localAIOShortcutBarHelper.a(localAIOShortcutBarEvent);
+        return;
+      }
+      localAIOShortcutBarEvent.a = 11;
+      localAIOShortcutBarEvent.a().putBoolean("InputJump", true);
+      localAIOShortcutBarHelper.a(localAIOShortcutBarEvent);
     }
-    localShortcutBarAIOHelper.c(true);
-    localShortcutBarAIOHelper.i();
   }
   
   public void onPanelIconClick(XPanelContainer paramXPanelContainer) {}
+  
+  public void onPanelIconClickBeforeCreate(int paramInt) {}
+  
+  public void postOnPanelChanged(int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.miniapp.AioShortcutBarProvider
  * JD-Core Version:    0.7.0.1
  */

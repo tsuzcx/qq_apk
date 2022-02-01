@@ -8,7 +8,7 @@ import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.banner.BannerManager;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.vas.IndividuationUrlHelper;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ThemeVersionUpdateBannerProcessor$1
@@ -20,8 +20,8 @@ class ThemeVersionUpdateBannerProcessor$1
   {
     Intent localIntent = new Intent(ThemeVersionUpdateBannerProcessor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorThemeVersionUpdateBannerProcessor), QQBrowserActivity.class);
     localIntent.putExtra("individuation_url_type", 40100);
-    VasWebviewUtil.openQQBrowserWithoutAD(ThemeVersionUpdateBannerProcessor.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorThemeVersionUpdateBannerProcessor), IndividuationUrlHelper.a(ThemeVersionUpdateBannerProcessor.c(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorThemeVersionUpdateBannerProcessor), "themeDetail", this.jdField_a_of_type_JavaLangString, ""), 32L, localIntent, true, -1);
-    BannerManager.a().a(27, 0, null);
+    VasWebviewUtil.b(ThemeVersionUpdateBannerProcessor.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorThemeVersionUpdateBannerProcessor), IndividuationUrlHelper.a(ThemeVersionUpdateBannerProcessor.c(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorThemeVersionUpdateBannerProcessor), "themeDetail", this.jdField_a_of_type_JavaLangString, ""), 32L, localIntent, true, -1);
+    BannerManager.a().a(ThemeVersionUpdateBannerProcessor.a, 0, null);
     ReportController.b(ThemeVersionUpdateBannerProcessor.d(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorThemeVersionUpdateBannerProcessor).getAppRuntime(), "CliOper", "", "", "0X8005B9F", "0X8005B9F", 0, 0, "", "", "", "");
     ReportController.a(ThemeVersionUpdateBannerProcessor.e(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorThemeVersionUpdateBannerProcessor).getAppRuntime(), "dc00898", "", "", "0X8009EE2", "0X8009EE2", 16, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
@@ -29,7 +29,7 @@ class ThemeVersionUpdateBannerProcessor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.ThemeVersionUpdateBannerProcessor.1
  * JD-Core Version:    0.7.0.1
  */

@@ -25,27 +25,35 @@ public class TimTeamPlugin
     try
     {
       paramJSONObject = new JSONObject(paramJSONObject.getString("data")).getString("action");
-      if (QLog.isColorLevel()) {
-        QLog.d("TimTeamPlugin", 2, "onInvoke|" + paramJSONObject);
-      }
-      if (TextUtils.equals(paramJSONObject, "showCoopSpaceProfile"))
+      if (QLog.isColorLevel())
       {
-        paramJSONObject = new ActivityURIRequest(paramJSContext.getActivity(), "/pubaccount/detail");
-        paramJSONObject.extra().putString("uin", AppConstants.TIM_TEAM_UIN);
-        QRoute.startUri(paramJSONObject, null);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onInvoke|");
+        localStringBuilder.append(paramJSONObject);
+        QLog.d("TimTeamPlugin", 2, localStringBuilder.toString());
       }
+      if (!TextUtils.equals(paramJSONObject, "showCoopSpaceProfile")) {
+        break label117;
+      }
+      paramJSONObject = new ActivityURIRequest(paramJSContext.getActivity(), "/pubaccount/detail");
+      paramJSONObject.extra().putString("uin", AppConstants.TIM_TEAM_UIN);
+      QRoute.startUri(paramJSONObject, null);
       return;
     }
     catch (Exception paramJSONObject)
     {
-      while (!QLog.isColorLevel()) {}
+      label103:
+      label117:
+      break label103;
+    }
+    if (QLog.isColorLevel()) {
       QLog.w("TimTeamPlugin", 2, "decode param error");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.TimTeamPlugin
  * JD-Core Version:    0.7.0.1
  */

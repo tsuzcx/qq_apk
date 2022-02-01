@@ -12,20 +12,20 @@ public class AdMaterialObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, (String)paramObject);
+      if (paramInt != 2) {
+        return;
+      }
+      a(paramBoolean, (List)paramObject);
       return;
     }
-    a(paramBoolean, (List)paramObject);
+    a(paramBoolean, (String)paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.AdMaterialObserver
  * JD-Core Version:    0.7.0.1
  */

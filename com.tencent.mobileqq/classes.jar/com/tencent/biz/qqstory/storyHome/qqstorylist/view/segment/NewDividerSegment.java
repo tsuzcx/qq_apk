@@ -29,7 +29,7 @@ public class NewDividerSegment
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    return new BaseViewHolder(LayoutInflater.from(this.a).inflate(2131561786, paramViewGroup, false));
+    return new BaseViewHolder(LayoutInflater.from(this.a).inflate(2131561648, paramViewGroup, false));
   }
   
   public String a()
@@ -39,7 +39,7 @@ public class NewDividerSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewDividerSegment
  * JD-Core Version:    0.7.0.1
  */

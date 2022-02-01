@@ -7,18 +7,20 @@ import org.libpag.PAGImage;
 
 public class TAVSourceImage
 {
-  private static final String TAG = TAVSourceImage.class.getSimpleName();
+  private static final String TAG = "TAVSourceImage";
   private int index = 0;
   private Matrix matrix = null;
   private PAGImage pagImage = null;
   
   public TAVSourceImage(Bitmap paramBitmap, int paramInt)
   {
-    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
-      throw new IllegalArgumentException("<init> parameter 'bitmap' is illegal!");
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
+    {
+      this.pagImage = PAGImage.FromBitmap(paramBitmap);
+      this.index = paramInt;
+      return;
     }
-    this.pagImage = PAGImage.FromBitmap(paramBitmap);
-    this.index = paramInt;
+    throw new IllegalArgumentException("<init> parameter 'bitmap' is illegal!");
   }
   
   public TAVSourceImage(TextureInfo paramTextureInfo, int paramInt)
@@ -57,14 +59,15 @@ public class TAVSourceImage
   public void setMatrix(Matrix paramMatrix)
   {
     this.matrix = paramMatrix;
-    if (this.pagImage != null) {
-      this.pagImage.setMatrix(paramMatrix);
+    PAGImage localPAGImage = this.pagImage;
+    if (localPAGImage != null) {
+      localPAGImage.setMatrix(paramMatrix);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavsticker.model.TAVSourceImage
  * JD-Core Version:    0.7.0.1
  */

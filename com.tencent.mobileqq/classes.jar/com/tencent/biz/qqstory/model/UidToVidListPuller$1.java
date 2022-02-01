@@ -8,26 +8,25 @@ class UidToVidListPuller$1
 {
   public void a(boolean paramBoolean)
   {
-    StringBuilder localStringBuilder;
     if (this.a.a != null)
     {
       this.a.a.a(paramBoolean);
-      localStringBuilder = new StringBuilder().append("Finish !");
-      if (!paramBoolean) {
-        break label57;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Finish !");
+      String str;
+      if (paramBoolean) {
+        str = "Every task success";
+      } else {
+        str = "Some task error";
       }
-    }
-    label57:
-    for (String str = "Every task success";; str = "Some task error")
-    {
-      SLog.d("Q.qqstory.net:UidToVidListPuller", str);
-      return;
+      localStringBuilder.append(str);
+      SLog.d("Q.qqstory.net:UidToVidListPuller", localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.UidToVidListPuller.1
  * JD-Core Version:    0.7.0.1
  */

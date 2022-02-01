@@ -1,20 +1,22 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.support.v4.app.FragmentActivity;
-import androidx.annotation.NonNull;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.ChatAdapter1;
 import com.tencent.mobileqq.activity.aio.core.AIOContext;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.widget.ScrollerRunnable;
 import java.util.List;
 
 public class MultiForwardContext
   extends AIOContext
 {
-  public MultiForwardContext(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, @NonNull SessionInfo paramSessionInfo, @NonNull BaseChatPie paramBaseChatPie)
+  public ChatAdapter1 a()
   {
-    super(paramQQAppInterface, paramFragmentActivity, paramSessionInfo, paramBaseChatPie);
+    return ((MultiForwardChatPie)this.a).a();
+  }
+  
+  public ScrollerRunnable a()
+  {
+    return ((MultiForwardChatPie)this.a).a;
   }
   
   public void a(List<ChatMessage> paramList, CharSequence paramCharSequence) {}
@@ -23,7 +25,7 @@ public class MultiForwardContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.MultiForwardContext
  * JD-Core Version:    0.7.0.1
  */

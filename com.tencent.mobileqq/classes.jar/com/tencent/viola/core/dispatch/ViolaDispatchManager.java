@@ -13,15 +13,16 @@ public class ViolaDispatchManager
   
   public static ViolaDispatchManager getInstance()
   {
-    if (sManager == null) {}
-    try
-    {
-      if (sManager == null) {
-        sManager = new ViolaDispatchManager();
+    if (sManager == null) {
+      try
+      {
+        if (sManager == null) {
+          sManager = new ViolaDispatchManager();
+        }
       }
-      return sManager;
+      finally {}
     }
-    finally {}
+    return sManager;
   }
   
   public void addObserver(String paramString, IObserver paramIObserver)
@@ -44,36 +45,39 @@ public class ViolaDispatchManager
   {
     synchronized (this.mObserversMap)
     {
-      localObject = (ArrayList)this.mObserversMap.get(paramString);
-      if (localObject == null) {
-        break label168;
-      }
-      if (paramIEvent == null)
+      Object localObject = (ArrayList)this.mObserversMap.get(paramString);
+      if (localObject != null)
       {
-        paramString = ((ArrayList)localObject).iterator();
-        if (!paramString.hasNext()) {
-          break label168;
+        if (paramIEvent == null)
+        {
+          paramString = ((ArrayList)localObject).iterator();
+          while (paramString.hasNext()) {
+            ((IObserver)paramString.next()).onReceive(null);
+          }
         }
-        ((IObserver)paramString.next()).onReceive(null);
+        paramString = paramIEvent.getRef();
+        if (TextUtils.isEmpty(paramString))
+        {
+          paramString = ((ArrayList)localObject).iterator();
+          while (paramString.hasNext()) {
+            ((IObserver)paramString.next()).onReceive(paramIEvent);
+          }
+        }
+        localObject = ((ArrayList)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          IObserver localIObserver = (IObserver)((Iterator)localObject).next();
+          if (paramString.equals(localIObserver.getRef())) {
+            localIObserver.onReceive(paramIEvent);
+          }
+        }
       }
+      return;
     }
-    paramString = paramIEvent.getRef();
-    if (TextUtils.isEmpty(paramString))
+    for (;;)
     {
-      paramString = ((ArrayList)localObject).iterator();
-      while (paramString.hasNext()) {
-        ((IObserver)paramString.next()).onReceive(paramIEvent);
-      }
+      throw paramString;
     }
-    Object localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      IObserver localIObserver = (IObserver)((Iterator)localObject).next();
-      if (paramString.equals(localIObserver.getRef())) {
-        localIObserver.onReceive(paramIEvent);
-      }
-    }
-    label168:
   }
   
   public void removeObserver(String paramString, IObserver paramIObserver)
@@ -91,7 +95,7 @@ public class ViolaDispatchManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.core.dispatch.ViolaDispatchManager
  * JD-Core Version:    0.7.0.1
  */

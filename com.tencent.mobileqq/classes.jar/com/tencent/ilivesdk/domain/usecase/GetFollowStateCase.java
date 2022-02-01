@@ -45,14 +45,19 @@ public class GetFollowStateCase
     return null;
   }
   
-  public void executeRoomUseCase(RoomEngine paramRoomEngine, Object paramObject)
+  protected void executeRoomUseCase(RoomEngine paramRoomEngine, Object paramObject)
   {
     this.mMiniCardService = ((MiniCardServiceInterface)paramRoomEngine.getService(MiniCardServiceInterface.class));
     this.mRoomService = ((RoomServiceInterface)paramRoomEngine.getService(RoomServiceInterface.class));
     this.anchorUidInfo = getAnchorUidInfo();
     this.selfUidInfo = getSelfUidInfo();
-    if ((this.anchorUidInfo != null) && (this.selfUidInfo != null)) {
-      queryFollowStatus(this.anchorUidInfo, this.selfUidInfo);
+    paramRoomEngine = this.anchorUidInfo;
+    if (paramRoomEngine != null)
+    {
+      paramObject = this.selfUidInfo;
+      if (paramObject != null) {
+        queryFollowStatus(paramRoomEngine, paramObject);
+      }
     }
     this.mLoginService.addRoomReLoginObserver(this.loginObserver);
     this.mMiniCardService.addUserInfoUpdateListener(this.onUserInfoUpdateCallback);
@@ -87,7 +92,7 @@ public class GetFollowStateCase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.domain.usecase.GetFollowStateCase
  * JD-Core Version:    0.7.0.1
  */

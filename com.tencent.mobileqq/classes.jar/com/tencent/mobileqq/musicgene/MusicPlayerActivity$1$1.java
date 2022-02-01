@@ -14,25 +14,28 @@ class MusicPlayerActivity$1$1
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
+      if (paramInt != 1)
+      {
+        if ((paramInt == 2) || (paramInt == 3)) {
+          ThreadManager.post(new MusicPlayerActivity.1.1.1(this, paramInt), 8, null, true);
+        }
+      }
+      else {
+        MusicPlayerActivity.b(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$1.a, this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$ShareInfo.a, this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$ShareInfo.b, this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$ShareInfo.d, this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$ShareInfo.c, this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$ShareInfo.e);
+      }
     }
-    for (;;)
-    {
-      MusicPlayerActivity.1.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$1).dismiss();
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-      return;
+    else {
       MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$1.a, this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$ShareInfo.a, this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$ShareInfo.b, this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$ShareInfo.d, this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$ShareInfo.c, this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$ShareInfo.e);
-      continue;
-      MusicPlayerActivity.b(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$1.a, this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$ShareInfo.a, this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$ShareInfo.b, this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$ShareInfo.d, this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$ShareInfo.c, this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$ShareInfo.e);
-      continue;
-      ThreadManager.post(new MusicPlayerActivity.1.1.1(this, paramInt), 8, null, true);
     }
+    MusicPlayerActivity.1.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$1).dismiss();
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.MusicPlayerActivity.1.1
  * JD-Core Version:    0.7.0.1
  */

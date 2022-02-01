@@ -99,37 +99,36 @@ public class TPSystemClipPlayer
   
   private List<ITPMediaTrackClip> getClipListWithAsset(ITPMediaAsset paramITPMediaAsset)
   {
-    int i = 0;
-    if ((!(paramITPMediaAsset instanceof TPMediaComposition)) && (!(paramITPMediaAsset instanceof TPMediaCompositionTrack)) && (!(paramITPMediaAsset instanceof TPMediaCompositionTrackClip))) {
+    boolean bool = paramITPMediaAsset instanceof TPMediaComposition;
+    if ((!bool) && (!(paramITPMediaAsset instanceof TPMediaCompositionTrack)) && (!(paramITPMediaAsset instanceof TPMediaCompositionTrackClip))) {
       throw new IllegalStateException("system mediaPlayer : media asset is illegal source!");
     }
     ArrayList localArrayList = new ArrayList();
-    if ((paramITPMediaAsset instanceof TPMediaComposition))
+    int i = 0;
+    if (bool)
     {
       paramITPMediaAsset = ((TPMediaComposition)paramITPMediaAsset).getAllAVTracks();
-      if ((TPCommonUtils.isEmpty(paramITPMediaAsset)) || (paramITPMediaAsset.get(0) == null)) {
+      if ((!TPCommonUtils.isEmpty(paramITPMediaAsset)) && (paramITPMediaAsset.get(0) != null)) {
+        paramITPMediaAsset = ((ITPMediaTrack)paramITPMediaAsset.get(0)).getAllTrackClips();
+      } else {
         throw new IllegalStateException("empty av tracks when set data source!");
       }
-      paramITPMediaAsset = ((ITPMediaTrack)paramITPMediaAsset.get(0)).getAllTrackClips();
     }
-    for (;;)
+    else if ((paramITPMediaAsset instanceof TPMediaCompositionTrack))
     {
-      long l = 0L;
-      while (i < paramITPMediaAsset.size())
-      {
-        ((ITPMediaTrackClip)paramITPMediaAsset.get(i)).setStartPositionMs(l);
-        l += ((ITPMediaTrackClip)paramITPMediaAsset.get(i)).getOriginalDurationMs();
-        i += 1;
-      }
-      if ((paramITPMediaAsset instanceof TPMediaCompositionTrack))
-      {
-        paramITPMediaAsset = ((TPMediaCompositionTrack)paramITPMediaAsset).getAllTrackClips();
-      }
-      else
-      {
-        localArrayList.add((ITPMediaTrackClip)paramITPMediaAsset);
-        paramITPMediaAsset = localArrayList;
-      }
+      paramITPMediaAsset = ((TPMediaCompositionTrack)paramITPMediaAsset).getAllTrackClips();
+    }
+    else
+    {
+      localArrayList.add((ITPMediaTrackClip)paramITPMediaAsset);
+      paramITPMediaAsset = localArrayList;
+    }
+    long l = 0L;
+    while (i < paramITPMediaAsset.size())
+    {
+      ((ITPMediaTrackClip)paramITPMediaAsset.get(i)).setStartPositionMs(l);
+      l += ((ITPMediaTrackClip)paramITPMediaAsset.get(i)).getOriginalDurationMs();
+      i += 1;
     }
     return paramITPMediaAsset;
   }
@@ -173,7 +172,11 @@ public class TPSystemClipPlayer
     }
     catch (IOException localIOException)
     {
-      this.mLogger.info("handleOnComplete:" + localIOException.toString());
+      TPBaseLogger localTPBaseLogger = this.mLogger;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleOnComplete:");
+      localStringBuilder.append(localIOException.toString());
+      localTPBaseLogger.info(localStringBuilder.toString());
     }
   }
   
@@ -195,29 +198,30 @@ public class TPSystemClipPlayer
   
   private void handleOnPrepared()
   {
-    if (this.mPlayerListeners != null) {
-      this.mPlayerListeners.onInfo(152, this.mCurrentClip, 0L, null);
+    Object localObject = this.mPlayerListeners;
+    if (localObject != null) {
+      ((TPPlayerBaseListeners)localObject).onInfo(152, this.mCurrentClip, 0L, null);
     }
     if (this.isPlayingClip)
     {
       start();
       if ((this.isSwitchingDef) && (this.mPlayerListeners != null) && (!TPCommonUtils.isEmpty(this.mSwitchingDefTagQueue)))
       {
-        localLong = (Long)this.mSwitchingDefTagQueue.poll();
-        if (localLong != null) {
-          this.mPlayerListeners.onInfo(3, localLong.longValue(), 0L, null);
+        localObject = (Long)this.mSwitchingDefTagQueue.poll();
+        if (localObject != null) {
+          this.mPlayerListeners.onInfo(3, ((Long)localObject).longValue(), 0L, null);
         }
         this.isSwitchingDef = false;
       }
+      return;
     }
-    while (!this.mStateChecker.validStateCallback(1))
-    {
-      Long localLong;
+    if (!this.mStateChecker.validStateCallback(1)) {
       return;
     }
     this.mPlayerState.changeState(4);
-    if (this.mPlayerListeners != null) {
-      this.mPlayerListeners.onPrepared();
+    localObject = this.mPlayerListeners;
+    if (localObject != null) {
+      ((TPPlayerBaseListeners)localObject).onPrepared();
     }
     setPlayerParamAfterPrepared(this.mPlayerBase);
   }
@@ -267,47 +271,43 @@ public class TPSystemClipPlayer
   private void selectClipPlayer(int paramInt)
   {
     int i = 0;
-    for (;;)
+    while (i < this.mClipList.size())
     {
-      if (i < this.mClipList.size())
-      {
-        long l;
-        if ((((ITPMediaTrackClip)this.mClipList.get(i)).getStartPositionMs() <= paramInt) && (paramInt <= ((ITPMediaTrackClip)this.mClipList.get(i)).getStartPositionMs() + ((ITPMediaTrackClip)this.mClipList.get(i)).getOriginalDurationMs())) {
-          l = paramInt;
-        }
+      long l1 = ((ITPMediaTrackClip)this.mClipList.get(i)).getStartPositionMs();
+      long l2 = paramInt;
+      if ((l1 <= l2) && (l2 <= ((ITPMediaTrackClip)this.mClipList.get(i)).getStartPositionMs() + ((ITPMediaTrackClip)this.mClipList.get(i)).getOriginalDurationMs())) {
         try
         {
-          switchPlayer(i, l - ((ITPMediaTrackClip)this.mClipList.get(i)).getStartPositionMs());
-          i += 1;
+          switchPlayer(i, l2 - ((ITPMediaTrackClip)this.mClipList.get(i)).getStartPositionMs());
         }
         catch (IOException localIOException)
         {
-          for (;;)
-          {
-            this.mLogger.info("selectClipPlayer:" + localIOException.toString());
-          }
+          TPBaseLogger localTPBaseLogger = this.mLogger;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("selectClipPlayer:");
+          localStringBuilder.append(localIOException.toString());
+          localTPBaseLogger.info(localStringBuilder.toString());
         }
       }
+      i += 1;
     }
   }
   
   private void setPlayerParamAfterPrepared(ITPPlayerBase paramITPPlayerBase)
   {
     TPTrackInfo[] arrayOfTPTrackInfo = getTrackInfo();
-    if (arrayOfTPTrackInfo == null) {}
-    for (;;)
-    {
+    if (arrayOfTPTrackInfo == null) {
       return;
-      int i = 0;
-      while (i < arrayOfTPTrackInfo.length)
-      {
-        int j = arrayOfTPTrackInfo[i].getTrackType();
-        TPTrackInfo localTPTrackInfo = this.mPlayerInitParams.getTrackInfoByType(j);
-        if (arrayOfTPTrackInfo[i].equals(localTPTrackInfo)) {
-          paramITPPlayerBase.selectTrack(i, -1L);
-        }
-        i += 1;
+    }
+    int i = 0;
+    while (i < arrayOfTPTrackInfo.length)
+    {
+      int j = arrayOfTPTrackInfo[i].getTrackType();
+      TPTrackInfo localTPTrackInfo = this.mPlayerInitParams.getTrackInfoByType(j);
+      if (arrayOfTPTrackInfo[i].equals(localTPTrackInfo)) {
+        paramITPPlayerBase.selectTrack(i, -1L);
       }
+      i += 1;
     }
   }
   
@@ -348,39 +348,43 @@ public class TPSystemClipPlayer
     }
     if ((this.mPlayerInitParams.surface() instanceof SurfaceHolder)) {
       paramITPPlayerBase.setSurfaceHolder((SurfaceHolder)this.mPlayerInitParams.surface());
+    } else if ((this.mPlayerInitParams.surface() instanceof Surface)) {
+      paramITPPlayerBase.setSurface((Surface)this.mPlayerInitParams.surface());
     }
-    for (;;)
-    {
-      paramITPPlayerBase.setOnInfoListener(this.mPlayerCallback);
-      paramITPPlayerBase.setOnPreparedListener(this.mPlayerCallback);
-      paramITPPlayerBase.setOnCompletionListener(this.mPlayerCallback);
-      paramITPPlayerBase.setOnErrorListener(this.mPlayerCallback);
-      paramITPPlayerBase.setOnSeekCompleteListener(this.mPlayerCallback);
-      paramITPPlayerBase.setOnVideoSizeChangedListener(this.mPlayerCallback);
-      paramITPPlayerBase.setOnSubtitleDataListener(this.mPlayerCallback);
-      return;
-      if ((this.mPlayerInitParams.surface() instanceof Surface)) {
-        paramITPPlayerBase.setSurface((Surface)this.mPlayerInitParams.surface());
-      }
-    }
+    paramITPPlayerBase.setOnInfoListener(this.mPlayerCallback);
+    paramITPPlayerBase.setOnPreparedListener(this.mPlayerCallback);
+    paramITPPlayerBase.setOnCompletionListener(this.mPlayerCallback);
+    paramITPPlayerBase.setOnErrorListener(this.mPlayerCallback);
+    paramITPPlayerBase.setOnSeekCompleteListener(this.mPlayerCallback);
+    paramITPPlayerBase.setOnVideoSizeChangedListener(this.mPlayerCallback);
+    paramITPPlayerBase.setOnSubtitleDataListener(this.mPlayerCallback);
   }
   
   private void switchPlayer(int paramInt, long paramLong)
   {
-    this.mLogger.debug("switchPlayer: clipNo:" + paramInt + "   startPostion:" + paramLong);
-    if (this.mPlayerBase != null) {
-      this.mPlayerBase.release();
+    Object localObject = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("switchPlayer: clipNo:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("   startPostion:");
+    localStringBuilder.append(paramLong);
+    ((TPBaseLogger)localObject).debug(localStringBuilder.toString());
+    localObject = this.mPlayerBase;
+    if (localObject != null) {
+      ((ITPPlayerBase)localObject).release();
     }
     this.isPlayingClip = true;
     this.mCurrentClip = paramInt;
     this.mPlayerInitParams.setDataSource(((ITPMediaTrackClip)this.mClipList.get(this.mCurrentClip)).getFilePath());
     this.mPlayerBase = createPlayerBase();
-    if (this.mPlayerBase == null) {
-      throw new RuntimeException("error , create player failed");
+    if (this.mPlayerBase != null)
+    {
+      localObject = new TPOptionalParam().buildLong(100, paramLong);
+      this.mPlayerBase.setPlayerOptionalParam((TPOptionalParam)localObject);
+      this.mPlayerBase.prepare();
+      return;
     }
-    TPOptionalParam localTPOptionalParam = new TPOptionalParam().buildLong(100, paramLong);
-    this.mPlayerBase.setPlayerOptionalParam(localTPOptionalParam);
-    this.mPlayerBase.prepare();
+    throw new RuntimeException("error , create player failed");
   }
   
   public void addAudioTrackSource(String paramString1, String paramString2, List<TPOptionalParam> paramList)
@@ -395,8 +399,9 @@ public class TPSystemClipPlayer
   
   public void captureVideo(TPCaptureParams paramTPCaptureParams, TPCaptureCallBack paramTPCaptureCallBack)
   {
-    if (this.mPlayerBase != null) {
-      this.mPlayerBase.captureVideo(paramTPCaptureParams, paramTPCaptureCallBack);
+    ITPPlayerBase localITPPlayerBase = this.mPlayerBase;
+    if (localITPPlayerBase != null) {
+      localITPPlayerBase.captureVideo(paramTPCaptureParams, paramTPCaptureCallBack);
     }
   }
   
@@ -423,7 +428,7 @@ public class TPSystemClipPlayer
   public long getDurationMs()
   {
     Iterator localIterator = this.mClipList.iterator();
-    for (long l = 0L; localIterator.hasNext(); l = ((ITPMediaTrackClip)localIterator.next()).getOriginalDurationMs() + l) {}
+    for (long l = 0L; localIterator.hasNext(); l += ((ITPMediaTrackClip)localIterator.next()).getOriginalDurationMs()) {}
     return l;
   }
   
@@ -436,8 +441,9 @@ public class TPSystemClipPlayer
   {
     if (!this.mStateChecker.validStateCall(15))
     {
-      if (this.mTPPlaybackInfo != null) {
-        return this.mTPPlaybackInfo.getPlayableDurationMs();
+      TPPlaybackInfo localTPPlaybackInfo = this.mTPPlaybackInfo;
+      if (localTPPlaybackInfo != null) {
+        return localTPPlaybackInfo.getPlayableDurationMs();
       }
       return 0L;
     }
@@ -452,16 +458,18 @@ public class TPSystemClipPlayer
   
   public long getPropertyLong(int paramInt)
   {
-    if (this.mPlayerBase != null) {
-      return this.mPlayerBase.getPropertyLong(paramInt);
+    ITPPlayerBase localITPPlayerBase = this.mPlayerBase;
+    if (localITPPlayerBase != null) {
+      return localITPPlayerBase.getPropertyLong(paramInt);
     }
     return -1L;
   }
   
   public String getPropertyString(int paramInt)
   {
-    if (this.mPlayerBase != null) {
-      return this.mPlayerBase.getPropertyString(paramInt);
+    ITPPlayerBase localITPPlayerBase = this.mPlayerBase;
+    if (localITPPlayerBase != null) {
+      return localITPPlayerBase.getPropertyString(paramInt);
     }
     return "";
   }
@@ -474,30 +482,36 @@ public class TPSystemClipPlayer
   
   public int getVideoHeight()
   {
-    if (this.mTPPlaybackInfo == null) {}
-    do
-    {
+    TPPlaybackInfo localTPPlaybackInfo = this.mTPPlaybackInfo;
+    if (localTPPlaybackInfo == null) {
       return 0;
-      if (this.mTPPlaybackInfo.getHeight() > 0L) {
-        return (int)this.mTPPlaybackInfo.getHeight();
+    }
+    if (localTPPlaybackInfo.getHeight() > 0L) {}
+    for (long l = this.mTPPlaybackInfo.getHeight();; l = this.mTPPlaybackInfo.getHeight())
+    {
+      return (int)l;
+      if (!this.mStateChecker.validStateCall(13)) {
+        return 0;
       }
-    } while (!this.mStateChecker.validStateCall(13));
-    this.mTPPlaybackInfo.setHeight(this.mPlayerBase.getVideoHeight());
-    return (int)this.mTPPlaybackInfo.getHeight();
+      this.mTPPlaybackInfo.setHeight(this.mPlayerBase.getVideoHeight());
+    }
   }
   
   public int getVideoWidth()
   {
-    if (this.mTPPlaybackInfo == null) {}
-    do
-    {
+    TPPlaybackInfo localTPPlaybackInfo = this.mTPPlaybackInfo;
+    if (localTPPlaybackInfo == null) {
       return 0;
-      if (this.mTPPlaybackInfo.getWidth() > 0L) {
-        return (int)this.mTPPlaybackInfo.getWidth();
+    }
+    if (localTPPlaybackInfo.getWidth() > 0L) {}
+    for (long l = this.mTPPlaybackInfo.getWidth();; l = this.mTPPlaybackInfo.getWidth())
+    {
+      return (int)l;
+      if (!this.mStateChecker.validStateCall(13)) {
+        return 0;
       }
-    } while (!this.mStateChecker.validStateCall(13));
-    this.mTPPlaybackInfo.setWidth(this.mPlayerBase.getVideoWidth());
-    return (int)this.mTPPlaybackInfo.getWidth();
+      this.mTPPlaybackInfo.setWidth(this.mPlayerBase.getVideoWidth());
+    }
   }
   
   public void pause()
@@ -505,19 +519,21 @@ public class TPSystemClipPlayer
     if (!this.mStateChecker.validStateCall(6)) {
       return;
     }
-    if (this.mPlayerBase == null) {
-      throw new IllegalStateException("error , pause , player is null");
-    }
+    ITPPlayerBase localITPPlayerBase = this.mPlayerBase;
+    if (localITPPlayerBase != null) {}
     try
     {
-      this.mPlayerBase.pause();
+      localITPPlayerBase.pause();
       this.mPlayerState.changeState(6);
       return;
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      throw new IllegalStateException("error , pause ,state invalid");
+      label38:
+      break label38;
     }
+    throw new IllegalStateException("error , pause ,state invalid");
+    throw new IllegalStateException("error , pause , player is null");
   }
   
   public void prepare()
@@ -525,15 +541,18 @@ public class TPSystemClipPlayer
     if (!this.mStateChecker.validStateCall(1)) {
       return;
     }
-    if (!this.mPlayerInitParams.validDataSource()) {
-      throw new IOException("error , prepare , data source invalid");
-    }
-    this.mPlayerBase = createPlayerBase();
-    if (this.mPlayerBase == null) {
+    if (this.mPlayerInitParams.validDataSource())
+    {
+      this.mPlayerBase = createPlayerBase();
+      if (this.mPlayerBase != null)
+      {
+        this.mPlayerState.changeState(3);
+        this.mPlayerBase.prepare();
+        return;
+      }
       throw new RuntimeException("error , create player failed");
     }
-    this.mPlayerState.changeState(3);
-    this.mPlayerBase.prepare();
+    throw new IOException("error , prepare , data source invalid");
   }
   
   public void prepareAsync()
@@ -541,23 +560,31 @@ public class TPSystemClipPlayer
     if (!this.mStateChecker.validStateCall(1)) {
       return;
     }
-    if (!this.mPlayerInitParams.validDataSource()) {
-      throw new IllegalStateException("error , prepare , state invalid , data source invalid");
-    }
-    this.mPlayerBase = createPlayerBase();
-    if (this.mPlayerBase == null) {
+    if (this.mPlayerInitParams.validDataSource())
+    {
+      this.mPlayerBase = createPlayerBase();
+      if (this.mPlayerBase != null)
+      {
+        this.mPlayerState.changeState(3);
+        this.mPlayerBase.prepareAsync();
+        return;
+      }
       throw new RuntimeException("error , create player failed");
     }
-    this.mPlayerState.changeState(3);
-    this.mPlayerBase.prepareAsync();
+    throw new IllegalStateException("error , prepare , state invalid , data source invalid");
   }
   
   public void release()
   {
-    this.mLogger.info("release, current state:" + this.mPlayerState);
-    if (this.mPlayerBase != null)
+    Object localObject = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("release, current state:");
+    localStringBuilder.append(this.mPlayerState);
+    ((TPBaseLogger)localObject).info(localStringBuilder.toString());
+    localObject = this.mPlayerBase;
+    if (localObject != null)
     {
-      this.mPlayerBase.release();
+      ((ITPPlayerBase)localObject).release();
       this.mPlayerBase = null;
     }
     this.mPlayerInitParams.reset();
@@ -567,9 +594,14 @@ public class TPSystemClipPlayer
   
   public void reset()
   {
-    this.mLogger.info("reset, current state:" + this.mPlayerState);
-    if (this.mPlayerBase != null) {
-      this.mPlayerBase.reset();
+    Object localObject = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("reset, current state:");
+    localStringBuilder.append(this.mPlayerState);
+    ((TPBaseLogger)localObject).info(localStringBuilder.toString());
+    localObject = this.mPlayerBase;
+    if (localObject != null) {
+      ((ITPPlayerBase)localObject).reset();
     }
     this.mPlayerInitParams.reset();
     this.mPlayerListeners.clear();
@@ -578,34 +610,50 @@ public class TPSystemClipPlayer
   
   public void seekTo(int paramInt)
   {
-    if (!this.mStateChecker.validStateCall(9)) {}
-    do
-    {
+    if (!this.mStateChecker.validStateCall(9)) {
       return;
-      if ((paramInt < getCurrentClip().getStartPositionMs()) || (paramInt > getCurrentClip().getStartPositionMs() + getCurrentClip().getOriginalDurationMs())) {
-        break;
+    }
+    long l = paramInt;
+    if ((l >= getCurrentClip().getStartPositionMs()) && (l <= getCurrentClip().getStartPositionMs() + getCurrentClip().getOriginalDurationMs()))
+    {
+      if (this.mPlayerBase != null)
+      {
+        TPBaseLogger localTPBaseLogger = this.mLogger;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("seek to:");
+        localStringBuilder.append(paramInt);
+        localTPBaseLogger.debug(localStringBuilder.toString());
+        this.mPlayerBase.seekTo((int)(l - getCurrentClip().getStartPositionMs()));
       }
-    } while (this.mPlayerBase == null);
-    this.mLogger.debug("seek to:" + paramInt);
-    this.mPlayerBase.seekTo((int)(paramInt - getCurrentClip().getStartPositionMs()));
-    return;
-    selectClipPlayer(paramInt);
+    }
+    else {
+      selectClipPlayer(paramInt);
+    }
   }
   
   public void seekTo(int paramInt1, @TPCommonEnum.TPSeekMode int paramInt2)
   {
-    if (!this.mStateChecker.validStateCall(9)) {}
-    do
-    {
+    if (!this.mStateChecker.validStateCall(9)) {
       return;
-      if ((paramInt1 < getCurrentClip().getStartPositionMs()) || (paramInt1 > getCurrentClip().getStartPositionMs() + getCurrentClip().getOriginalDurationMs())) {
-        break;
+    }
+    long l = paramInt1;
+    if ((l >= getCurrentClip().getStartPositionMs()) && (l <= getCurrentClip().getStartPositionMs() + getCurrentClip().getOriginalDurationMs()))
+    {
+      if (this.mPlayerBase != null)
+      {
+        TPBaseLogger localTPBaseLogger = this.mLogger;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("seek to:");
+        localStringBuilder.append(paramInt1);
+        localStringBuilder.append("/mode=");
+        localStringBuilder.append(paramInt2);
+        localTPBaseLogger.debug(localStringBuilder.toString());
+        this.mPlayerBase.seekTo((int)(l - getCurrentClip().getStartPositionMs()), paramInt2);
       }
-    } while (this.mPlayerBase == null);
-    this.mLogger.debug("seek to:" + paramInt1 + "/mode=" + paramInt2);
-    this.mPlayerBase.seekTo((int)(paramInt1 - getCurrentClip().getStartPositionMs()), paramInt2);
-    return;
-    selectClipPlayer(paramInt1);
+    }
+    else {
+      selectClipPlayer(paramInt1);
+    }
   }
   
   public void selectProgram(int paramInt, long paramLong)
@@ -623,8 +671,9 @@ public class TPSystemClipPlayer
     if (!this.mStateChecker.validStateCall(3)) {
       return;
     }
-    if (this.mPlayerBase != null) {
-      this.mPlayerBase.setAudioGainRatio(paramFloat);
+    ITPPlayerBase localITPPlayerBase = this.mPlayerBase;
+    if (localITPPlayerBase != null) {
+      localITPPlayerBase.setAudioGainRatio(paramFloat);
     }
     this.mPlayerInitParams.setAudioGainRatio(paramFloat);
   }
@@ -670,8 +719,9 @@ public class TPSystemClipPlayer
     if (!this.mStateChecker.validStateCall(3)) {
       return;
     }
-    if (this.mPlayerBase != null) {
-      this.mPlayerBase.setLoopback(paramBoolean);
+    ITPPlayerBase localITPPlayerBase = this.mPlayerBase;
+    if (localITPPlayerBase != null) {
+      localITPPlayerBase.setLoopback(paramBoolean);
     }
     this.mPlayerInitParams.setLoopback(paramBoolean);
   }
@@ -681,8 +731,9 @@ public class TPSystemClipPlayer
     if (!this.mStateChecker.validStateCall(3)) {
       return;
     }
-    if (this.mPlayerBase != null) {
-      this.mPlayerBase.setLoopback(paramBoolean, paramLong1, paramLong2);
+    ITPPlayerBase localITPPlayerBase = this.mPlayerBase;
+    if (localITPPlayerBase != null) {
+      localITPPlayerBase.setLoopback(paramBoolean, paramLong1, paramLong2);
     }
     this.mPlayerInitParams.setLoopback(paramBoolean, paramLong1, paramLong2);
   }
@@ -727,10 +778,7 @@ public class TPSystemClipPlayer
     this.mPlayerListeners.setOnSubtitleDataListener(paramIOnSubtitleDataListener);
   }
   
-  public void setOnSubtitleFrameOutListener(ITPPlayerBaseListener.IOnSubtitleFrameOutListener paramIOnSubtitleFrameOutListener)
-  {
-    throw new IllegalStateException("system Mediaplayer now not support subtitle frame out");
-  }
+  public void setOnSubtitleFrameOutListener(ITPPlayerBaseListener.IOnSubtitleFrameOutListener paramIOnSubtitleFrameOutListener) {}
   
   public void setOnVideoFrameOutListener(ITPPlayerBaseListener.IOnVideoFrameOutListener paramIOnVideoFrameOutListener)
   {
@@ -752,8 +800,9 @@ public class TPSystemClipPlayer
     if (!this.mStateChecker.validStateCall(3)) {
       return;
     }
-    if (this.mPlayerBase != null) {
-      this.mPlayerBase.setOutputMute(paramBoolean);
+    ITPPlayerBase localITPPlayerBase = this.mPlayerBase;
+    if (localITPPlayerBase != null) {
+      localITPPlayerBase.setOutputMute(paramBoolean);
     }
     this.mPlayerInitParams.setOutputMute(paramBoolean);
   }
@@ -763,59 +812,79 @@ public class TPSystemClipPlayer
     if (!this.mStateChecker.validStateCall(3)) {
       return;
     }
-    if (this.mPlayerBase != null) {
-      this.mPlayerBase.setPlaySpeedRatio(paramFloat);
+    ITPPlayerBase localITPPlayerBase = this.mPlayerBase;
+    if (localITPPlayerBase != null) {
+      localITPPlayerBase.setPlaySpeedRatio(paramFloat);
     }
     this.mPlayerInitParams.setSpeedRatio(paramFloat);
   }
   
   public void setPlayerOptionalParam(TPOptionalParam paramTPOptionalParam)
   {
-    if (!this.mStateChecker.validStateCall(3)) {
-      throw new IllegalStateException("setPlayerOptionalParam , state invalid");
-    }
-    if (paramTPOptionalParam.getKey() == 100)
+    if (this.mStateChecker.validStateCall(3))
     {
-      int j = (int)paramTPOptionalParam.getParamLong().value;
-      this.mLogger.debug("start position:" + j);
-      int i = 0;
-      while (i < this.mClipList.size())
+      if (paramTPOptionalParam.getKey() == 100)
       {
-        if ((((ITPMediaTrackClip)this.mClipList.get(i)).getStartPositionMs() <= j) && (j <= ((ITPMediaTrackClip)this.mClipList.get(i)).getStartPositionMs() + ((ITPMediaTrackClip)this.mClipList.get(i)).getOriginalDurationMs()))
+        int j = (int)paramTPOptionalParam.getParamLong().value;
+        localObject = this.mLogger;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("start position:");
+        localStringBuilder.append(j);
+        ((TPBaseLogger)localObject).debug(localStringBuilder.toString());
+        int i = 0;
+        while (i < this.mClipList.size())
         {
-          this.mCurrentClip = i;
-          this.mPlayerInitParams.setDataSource(((ITPMediaTrackClip)this.mClipList.get(i)).getFilePath());
-          paramTPOptionalParam.getParamLong().value = (j - ((ITPMediaTrackClip)this.mClipList.get(i)).getStartPositionMs());
+          long l1 = ((ITPMediaTrackClip)this.mClipList.get(i)).getStartPositionMs();
+          long l2 = j;
+          if ((l1 <= l2) && (l2 <= ((ITPMediaTrackClip)this.mClipList.get(i)).getStartPositionMs() + ((ITPMediaTrackClip)this.mClipList.get(i)).getOriginalDurationMs()))
+          {
+            this.mCurrentClip = i;
+            this.mPlayerInitParams.setDataSource(((ITPMediaTrackClip)this.mClipList.get(i)).getFilePath());
+            paramTPOptionalParam.getParamLong().value = (l2 - ((ITPMediaTrackClip)this.mClipList.get(i)).getStartPositionMs());
+          }
+          i += 1;
         }
-        i += 1;
       }
+      Object localObject = this.mPlayerBase;
+      if (localObject != null) {
+        ((ITPPlayerBase)localObject).setPlayerOptionalParam(paramTPOptionalParam);
+      }
+      this.mPlayerInitParams.addOptionalParams(paramTPOptionalParam);
+      return;
     }
-    if (this.mPlayerBase != null) {
-      this.mPlayerBase.setPlayerOptionalParam(paramTPOptionalParam);
+    paramTPOptionalParam = new IllegalStateException("setPlayerOptionalParam , state invalid");
+    for (;;)
+    {
+      throw paramTPOptionalParam;
     }
-    this.mPlayerInitParams.addOptionalParams(paramTPOptionalParam);
   }
   
   public void setSurface(Surface paramSurface)
   {
-    if (!this.mStateChecker.validStateCall(4)) {
-      throw new IllegalStateException("setSurface , state invalid");
+    if (this.mStateChecker.validStateCall(4))
+    {
+      ITPPlayerBase localITPPlayerBase = this.mPlayerBase;
+      if (localITPPlayerBase != null) {
+        localITPPlayerBase.setSurface(paramSurface);
+      }
+      this.mPlayerInitParams.setSurface(paramSurface);
+      return;
     }
-    if (this.mPlayerBase != null) {
-      this.mPlayerBase.setSurface(paramSurface);
-    }
-    this.mPlayerInitParams.setSurface(paramSurface);
+    throw new IllegalStateException("setSurface , state invalid");
   }
   
   public void setSurfaceHolder(SurfaceHolder paramSurfaceHolder)
   {
-    if (!this.mStateChecker.validStateCall(4)) {
-      throw new IllegalStateException("setSurfaceHolder , state invalid");
+    if (this.mStateChecker.validStateCall(4))
+    {
+      ITPPlayerBase localITPPlayerBase = this.mPlayerBase;
+      if (localITPPlayerBase != null) {
+        localITPPlayerBase.setSurfaceHolder(paramSurfaceHolder);
+      }
+      this.mPlayerInitParams.setSurfaceHolder(paramSurfaceHolder);
+      return;
     }
-    if (this.mPlayerBase != null) {
-      this.mPlayerBase.setSurfaceHolder(paramSurfaceHolder);
-    }
-    this.mPlayerInitParams.setSurfaceHolder(paramSurfaceHolder);
+    throw new IllegalStateException("setSurfaceHolder , state invalid");
   }
   
   public void start()
@@ -823,84 +892,127 @@ public class TPSystemClipPlayer
     if (!this.mStateChecker.validStateCall(5)) {
       return;
     }
-    if (this.mPlayerBase == null) {
-      throw new IllegalStateException("error , start , player is null");
-    }
+    ITPPlayerBase localITPPlayerBase = this.mPlayerBase;
+    if (localITPPlayerBase != null) {}
     try
     {
-      this.mPlayerBase.start();
+      localITPPlayerBase.start();
       this.mPlayerState.changeState(5);
       return;
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      throw new IllegalStateException("error , start ,state invalid");
+      label36:
+      break label36;
     }
+    throw new IllegalStateException("error , start ,state invalid");
+    throw new IllegalStateException("error , start , player is null");
   }
   
+  /* Error */
   public void stop()
   {
-    if (!this.mStateChecker.validStateCall(7)) {
-      return;
-    }
-    if (this.mPlayerBase == null) {
-      throw new IllegalStateException("error , stop , player is null");
-    }
-    try
-    {
-      this.mPlayerState.changeState(8);
-      this.mPlayerBase.stop();
-      return;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      throw new IllegalStateException("error , pause ,state invalid");
-    }
-    finally
-    {
-      this.mPlayerState.changeState(9);
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 99	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemClipPlayer:mStateChecker	Lcom/tencent/thumbplayer/adapter/TPPlayerStateStrategy;
+    //   4: bipush 7
+    //   6: invokevirtual 578	com/tencent/thumbplayer/adapter/TPPlayerStateStrategy:validStateCall	(I)Z
+    //   9: ifne +4 -> 13
+    //   12: return
+    //   13: aload_0
+    //   14: getfield 308	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemClipPlayer:mPlayerBase	Lcom/tencent/thumbplayer/adapter/player/ITPPlayerBase;
+    //   17: ifnull +57 -> 74
+    //   20: aload_0
+    //   21: getfield 69	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemClipPlayer:mPlayerState	Lcom/tencent/thumbplayer/api/TPPlayerState;
+    //   24: bipush 8
+    //   26: invokevirtual 254	com/tencent/thumbplayer/api/TPPlayerState:changeState	(I)V
+    //   29: aload_0
+    //   30: getfield 308	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemClipPlayer:mPlayerBase	Lcom/tencent/thumbplayer/adapter/player/ITPPlayerBase;
+    //   33: invokeinterface 752 1 0
+    //   38: aload_0
+    //   39: getfield 69	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemClipPlayer:mPlayerState	Lcom/tencent/thumbplayer/api/TPPlayerState;
+    //   42: bipush 9
+    //   44: invokevirtual 254	com/tencent/thumbplayer/api/TPPlayerState:changeState	(I)V
+    //   47: return
+    //   48: astore_1
+    //   49: goto +14 -> 63
+    //   52: new 189	java/lang/IllegalStateException
+    //   55: dup
+    //   56: ldc_w 621
+    //   59: invokespecial 192	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   62: athrow
+    //   63: aload_0
+    //   64: getfield 69	com/tencent/thumbplayer/adapter/player/systemplayer/TPSystemClipPlayer:mPlayerState	Lcom/tencent/thumbplayer/api/TPPlayerState;
+    //   67: bipush 9
+    //   69: invokevirtual 254	com/tencent/thumbplayer/api/TPPlayerState:changeState	(I)V
+    //   72: aload_1
+    //   73: athrow
+    //   74: new 189	java/lang/IllegalStateException
+    //   77: dup
+    //   78: ldc_w 754
+    //   81: invokespecial 192	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   84: athrow
+    //   85: astore_1
+    //   86: goto -34 -> 52
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	89	0	this	TPSystemClipPlayer
+    //   48	25	1	localObject	Object
+    //   85	1	1	localIllegalStateException	IllegalStateException
+    // Exception table:
+    //   from	to	target	type
+    //   20	38	48	finally
+    //   52	63	48	finally
+    //   20	38	85	java/lang/IllegalStateException
   }
   
   public void switchDefinition(ITPMediaAsset paramITPMediaAsset, @TPCommonEnum.TPSwitchDefMode int paramInt, long paramLong)
   {
     paramITPMediaAsset = getClipListWithAsset(paramITPMediaAsset);
-    if (TPCommonUtils.isEmpty(paramITPMediaAsset)) {
-      throw new IllegalStateException("exception when switch Definition with clip mediaAsset empty source!");
-    }
-    long l = getCurrentPositionMs();
-    try
+    if (!TPCommonUtils.isEmpty(paramITPMediaAsset))
     {
-      this.mClipList = paramITPMediaAsset;
-      this.isSwitchingDef = true;
-      if (TPCommonUtils.isEmpty(this.mSwitchingDefTagQueue)) {
-        this.mSwitchingDefTagQueue = new LinkedList();
+      long l = getCurrentPositionMs();
+      try
+      {
+        this.mClipList = paramITPMediaAsset;
+        this.isSwitchingDef = true;
+        if (TPCommonUtils.isEmpty(this.mSwitchingDefTagQueue)) {
+          this.mSwitchingDefTagQueue = new LinkedList();
+        }
+        this.mSwitchingDefTagQueue.offer(Long.valueOf(paramLong));
+        paramITPMediaAsset = this.mLogger;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("try to switch definition with system clip player, current clipNo:");
+        localStringBuilder.append(this.mCurrentClip);
+        paramITPMediaAsset.info(localStringBuilder.toString());
+        selectClipPlayer((int)l);
+        return;
       }
-      this.mSwitchingDefTagQueue.offer(Long.valueOf(paramLong));
-      this.mLogger.info("try to switch definition with system clip player, current clipNo:" + this.mCurrentClip);
-      selectClipPlayer((int)l);
-      return;
+      catch (Exception paramITPMediaAsset)
+      {
+        this.mLogger.printException(paramITPMediaAsset);
+        throw new IllegalStateException("exception when system clip player switch definition!");
+      }
     }
-    catch (Exception paramITPMediaAsset)
-    {
-      this.mLogger.printException(paramITPMediaAsset);
-      throw new IllegalStateException("exception when system clip player switch definition!");
-    }
+    throw new IllegalStateException("exception when switch Definition with clip mediaAsset empty source!");
   }
   
   public void switchDefinition(String paramString, @TPCommonEnum.TPSwitchDefMode int paramInt, long paramLong) {}
   
+  public void switchDefinition(String paramString, Map<String, String> paramMap, @TPCommonEnum.TPSwitchDefMode int paramInt, long paramLong) {}
+  
   public void updateLoggerContext(TPLoggerContext paramTPLoggerContext)
   {
     this.mLogger.updateContext(new TPLoggerContext(paramTPLoggerContext, "TPSystemClipPlayer"));
-    if ((this.mPlayerListeners != null) && (paramTPLoggerContext != null)) {
-      this.mPlayerListeners.updateTag(this.mLogger.getTPLoggerContext().getTag());
+    TPPlayerBaseListeners localTPPlayerBaseListeners = this.mPlayerListeners;
+    if ((localTPPlayerBaseListeners != null) && (paramTPLoggerContext != null)) {
+      localTPPlayerBaseListeners.updateTag(this.mLogger.getTPLoggerContext().getTag());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.systemplayer.TPSystemClipPlayer
  * JD-Core Version:    0.7.0.1
  */

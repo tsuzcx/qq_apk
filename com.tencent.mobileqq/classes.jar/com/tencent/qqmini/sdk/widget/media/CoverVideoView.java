@@ -59,29 +59,33 @@ public class CoverVideoView
   
   public void onAddColorNote()
   {
-    if (this.videoController != null) {
-      this.videoController.stop();
+    MiniAppVideoController localMiniAppVideoController = this.videoController;
+    if (localMiniAppVideoController != null) {
+      localMiniAppVideoController.stop();
     }
   }
   
   public void onPageBackground()
   {
-    if (this.videoController != null) {
-      this.videoController.onPageBackground();
+    MiniAppVideoController localMiniAppVideoController = this.videoController;
+    if (localMiniAppVideoController != null) {
+      localMiniAppVideoController.onPageBackground();
     }
   }
   
   public void onPageForeground()
   {
-    if (this.videoController != null) {
-      this.videoController.onPageForeground();
+    MiniAppVideoController localMiniAppVideoController = this.videoController;
+    if (localMiniAppVideoController != null) {
+      localMiniAppVideoController.onPageForeground();
     }
   }
   
   public void onPageWebViewDestory()
   {
-    if (this.videoController != null) {
-      this.videoController.release();
+    MiniAppVideoController localMiniAppVideoController = this.videoController;
+    if (localMiniAppVideoController != null) {
+      localMiniAppVideoController.release();
     }
   }
   
@@ -174,7 +178,7 @@ public class CoverVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.media.CoverVideoView
  * JD-Core Version:    0.7.0.1
  */

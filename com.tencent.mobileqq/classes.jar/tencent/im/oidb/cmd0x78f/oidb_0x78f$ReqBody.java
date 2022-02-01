@@ -26,7 +26,7 @@ public final class oidb_0x78f$ReqBody
   public static final int TIME_END_FIELD_NUMBER = 11;
   public static final int UIN_BLACK_LIST_FIELD_NUMBER = 7;
   public static final int UIN_WHITE_LIST_FIELD_NUMBER = 6;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112 }, new String[] { "group_code", "keyword_list", "num_per_page", "page_id", "rank_type", "uin_white_list", "uin_black_list", "msg_len_min", "msg_len_max", "time_begin", "time_end", "msg_seq_begin", "msg_seq_end", "elem_type_list" }, new Object[] { Long.valueOf(0L), "", Integer.valueOf(20), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(-1), Integer.valueOf(-1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, ReqBody.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public static final ReqBody __repeatHelper__ = new ReqBody();
   public final PBRepeatField<Integer> elem_type_list = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
   public final PBUInt64Field group_code = PBField.initUInt64(0L);
@@ -42,10 +42,17 @@ public final class oidb_0x78f$ReqBody
   public final PBInt32Field time_end = PBField.initInt32(0);
   public final PBRepeatField<Long> uin_black_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBRepeatField<Long> uin_white_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112 }, new String[] { "group_code", "keyword_list", "num_per_page", "page_id", "rank_type", "uin_white_list", "uin_black_list", "msg_len_min", "msg_len_max", "time_begin", "time_end", "msg_seq_begin", "msg_seq_end", "elem_type_list" }, new Object[] { localLong, "", Integer.valueOf(20), localInteger, localInteger, localLong, localLong, Integer.valueOf(-1), Integer.valueOf(-1), localInteger, localInteger, localInteger, localInteger, localInteger }, ReqBody.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x78f.oidb_0x78f.ReqBody
  * JD-Core Version:    0.7.0.1
  */

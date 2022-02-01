@@ -14,7 +14,7 @@ public class g
 {
   protected static final char[] a = "0123456789abcdef".toCharArray();
   private static String b = "";
-  private static byte[] c = null;
+  private static byte[] c;
   private static g f = null;
   private static String g;
   private Cipher d = null;
@@ -22,15 +22,25 @@ public class g
   
   private g()
   {
-    g = String.valueOf(new Random().nextInt(89999999) + 10000000) + String.valueOf(new Random().nextInt(89999999) + 10000000) + String.valueOf(new Random().nextInt(89999999) + 10000000);
-    Object localObject = "00000000";
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(String.valueOf(new Random().nextInt(89999999) + 10000000));
+    ((StringBuilder)localObject).append(String.valueOf(new Random().nextInt(89999999) + 10000000));
+    ((StringBuilder)localObject).append(String.valueOf(new Random().nextInt(89999999) + 10000000));
+    g = ((StringBuilder)localObject).toString();
+    localObject = "00000000";
     int i = 0;
     while (i < 12)
     {
-      localObject = (String)localObject + String.valueOf(new Random().nextInt(89999999) + 10000000);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(String.valueOf(new Random().nextInt(89999999) + 10000000));
+      localObject = localStringBuilder.toString();
       i += 1;
     }
-    c = ((String)localObject + g).getBytes();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(g);
+    c = localStringBuilder.toString().getBytes();
     this.d = Cipher.getInstance("RSA/ECB/NoPadding");
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append(d());
@@ -74,16 +84,18 @@ public class g
   
   public static String b(byte[] paramArrayOfByte)
   {
-    char[] arrayOfChar = new char[paramArrayOfByte.length * 2];
+    char[] arrayOfChar1 = new char[paramArrayOfByte.length * 2];
     int i = 0;
     while (i < paramArrayOfByte.length)
     {
       int j = paramArrayOfByte[i] & 0xFF;
-      arrayOfChar[(i * 2)] = a[(j >>> 4)];
-      arrayOfChar[(i * 2 + 1)] = a[(j & 0xF)];
+      int k = i * 2;
+      char[] arrayOfChar2 = a;
+      arrayOfChar1[k] = arrayOfChar2[(j >>> 4)];
+      arrayOfChar1[(k + 1)] = arrayOfChar2[(j & 0xF)];
       i += 1;
     }
-    return new String(arrayOfChar);
+    return new String(arrayOfChar1);
   }
   
   public static byte[] b(byte[] paramArrayOfByte, String paramString)
@@ -148,7 +160,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.utils.g
  * JD-Core Version:    0.7.0.1
  */

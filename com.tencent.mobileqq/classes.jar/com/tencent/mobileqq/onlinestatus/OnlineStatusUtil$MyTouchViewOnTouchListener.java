@@ -16,22 +16,22 @@ public class OnlineStatusUtil$MyTouchViewOnTouchListener
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      this.a.setVisibility(0);
+      if ((i != 1) && (i != 3)) {
+        return false;
+      }
+      this.a.setVisibility(8);
       return false;
     }
-    this.a.setVisibility(8);
+    this.a.setVisibility(0);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnlineStatusUtil.MyTouchViewOnTouchListener
  * JD-Core Version:    0.7.0.1
  */

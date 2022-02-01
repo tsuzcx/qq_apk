@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.msgbackup.controller;
 
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.data.MessageForMarketFace;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageForPtt;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.mixedmsg.api.IMsgMixed;
 import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
 import com.tencent.mobileqq.msgbackup.msgprocess.MsgProcessCommon;
 import com.tencent.mobileqq.msgbackup.msgprocess.MsgProcessImport;
@@ -18,6 +18,7 @@ import com.tencent.mobileqq.msgbackup.msgprocess.MsgProcessPttImport;
 import com.tencent.mobileqq.msgbackup.msgprocess.MsgProcessRichMedia;
 import com.tencent.mobileqq.msgbackup.msgprocess.MsgProcessVideo;
 import com.tencent.mobileqq.msgbackup.msgprocess.MsgProcessVideoImport;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Collection;
 import java.util.Iterator;
@@ -28,23 +29,26 @@ public class RichMediaProcessor
 {
   public RichMediaProcessor() {}
   
-  public RichMediaProcessor(QQAppInterface paramQQAppInterface)
+  public RichMediaProcessor(BaseQQAppInterface paramBaseQQAppInterface)
   {
     this();
   }
   
   public static MsgProcessImport a(MsgBackupResEntity paramMsgBackupResEntity)
   {
-    switch (paramMsgBackupResEntity.msgType)
+    int i = paramMsgBackupResEntity.msgType;
+    if (i != 1)
     {
-    default: 
-      return null;
-    case 1: 
-      return new MsgProcessPicImport(paramMsgBackupResEntity);
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3) {
+          return null;
+        }
+        return new MsgProcessPttImport(paramMsgBackupResEntity);
+      }
       return new MsgProcessVideoImport(paramMsgBackupResEntity);
     }
-    return new MsgProcessPttImport(paramMsgBackupResEntity);
+    return new MsgProcessPicImport(paramMsgBackupResEntity);
   }
   
   public static MsgProcessRichMedia a(MessageRecord paramMessageRecord)
@@ -61,8 +65,8 @@ public class RichMediaProcessor
     if ((paramMessageRecord instanceof MessageForMarketFace)) {
       return new MsgProcessCommon(paramMessageRecord);
     }
-    if ((paramMessageRecord instanceof MessageForMixedMsg)) {
-      return new MsgProcessMixed((MessageForMixedMsg)paramMessageRecord);
+    if (((IMsgMixed)QRoute.api(IMsgMixed.class)).isMessageForMixedMsg(paramMessageRecord)) {
+      return new MsgProcessMixed(paramMessageRecord);
     }
     return null;
   }
@@ -100,8 +104,12 @@ public class RichMediaProcessor
           while (paramList.hasNext())
           {
             localObject = (MsgBackupResEntity)paramList.next();
-            if (QLog.isColorLevel()) {
-              paramMessageRecord.a("export resEntity:" + ((MsgBackupResEntity)localObject).toLogString());
+            if (QLog.isColorLevel())
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("export resEntity:");
+              localStringBuilder.append(((MsgBackupResEntity)localObject).toLogString());
+              paramMessageRecord.a(localStringBuilder.toString());
             }
           }
         }
@@ -123,7 +131,10 @@ public class RichMediaProcessor
   
   public boolean a(MsgBackupResEntity paramMsgBackupResEntity)
   {
-    return (paramMsgBackupResEntity.msgType == 1) || (paramMsgBackupResEntity.msgType == 2) || (paramMsgBackupResEntity.msgType == 3);
+    if ((paramMsgBackupResEntity.msgType != 1) && (paramMsgBackupResEntity.msgType != 2)) {
+      return paramMsgBackupResEntity.msgType == 3;
+    }
+    return true;
   }
   
   public void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
@@ -131,8 +142,14 @@ public class RichMediaProcessor
     MsgProcessRichMedia localMsgProcessRichMedia = a(paramMessageRecord);
     if (localMsgProcessRichMedia != null)
     {
-      if (QLog.isColorLevel()) {
-        localMsgProcessRichMedia.a("onImport,uniseq:" + paramMessageRecord.uniseq + " msg:" + paramMessageRecord);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onImport,uniseq:");
+        localStringBuilder.append(paramMessageRecord.uniseq);
+        localStringBuilder.append(" msg:");
+        localStringBuilder.append(paramMessageRecord);
+        localMsgProcessRichMedia.a(localStringBuilder.toString());
       }
       localMsgProcessRichMedia.b();
       if (paramList != null)
@@ -151,7 +168,7 @@ public class RichMediaProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.controller.RichMediaProcessor
  * JD-Core Version:    0.7.0.1
  */

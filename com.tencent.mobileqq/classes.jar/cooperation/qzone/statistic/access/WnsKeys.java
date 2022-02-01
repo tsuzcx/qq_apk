@@ -11,20 +11,20 @@ public class WnsKeys
   public static Key CommandId;
   public static Key DType;
   public static Key Detail;
-  public static Key Device;
+  public static Key Device = new Key("device");
   public static Key DeviceInfo;
   public static Key DnsTime;
   public static Key Frequency;
   public static Key ODetails;
   public static Key Port;
   public static Key[] PrivateKeys;
-  public static Key[] PublicKeys = null;
+  public static Key[] PublicKeys;
   public static Key Qua;
   public static Key ReleaseVersion;
   public static Key RequestSize;
   public static Key ResponseSize;
   public static Key ResultCode_i;
-  public static Key SDKVersion;
+  public static Key SDKVersion = new Key("sdkversion");
   public static Key Sequence;
   public static Key ServerIP;
   public static Key TEST;
@@ -35,9 +35,6 @@ public class WnsKeys
   
   static
   {
-    PrivateKeys = null;
-    Device = new Key("device");
-    SDKVersion = new Key("sdkversion");
     DeviceInfo = new Key("deviceinfo");
     CommandId = new Key("commandid");
     APN = new Key("apn");
@@ -70,7 +67,7 @@ public class WnsKeys
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.statistic.access.WnsKeys
  * JD-Core Version:    0.7.0.1
  */

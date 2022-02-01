@@ -14,39 +14,40 @@ public class NotificationBannerBean
   
   public static NotificationBannerBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    Object localObject;
     if (paramArrayOfQConfItem == null) {
-      localObject = jdField_a_of_type_ComTencentMobileqqConfigBusinessNotificationBannerBean;
+      return jdField_a_of_type_ComTencentMobileqqConfigBusinessNotificationBannerBean;
     }
     for (;;)
     {
-      return localObject;
       try
       {
         NotificationBannerBean localNotificationBannerBean = new NotificationBannerBean();
         int j = paramArrayOfQConfItem.length;
         int i = 0;
-        localObject = localNotificationBannerBean;
-        if (i >= j) {
-          continue;
-        }
-        localObject = new JSONObject(paramArrayOfQConfItem[i].jdField_a_of_type_JavaLangString);
-        if (((JSONObject)localObject).optInt("visible", 0) == 1) {}
-        for (boolean bool = true;; bool = false)
+        if (i < j)
         {
-          localNotificationBannerBean.jdField_a_of_type_Boolean = bool;
-          localNotificationBannerBean.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("guideText", "");
-          localNotificationBannerBean.b = ((JSONObject)localObject).optString("guideHighlightText", "");
-          localNotificationBannerBean.jdField_a_of_type_Long = ((JSONObject)localObject).optLong("showIntervalMs", 0L);
-          i += 1;
-          break;
+          JSONObject localJSONObject = new JSONObject(paramArrayOfQConfItem[i].jdField_a_of_type_JavaLangString);
+          if (localJSONObject.optInt("visible", 0) == 1)
+          {
+            bool = true;
+            localNotificationBannerBean.jdField_a_of_type_Boolean = bool;
+            localNotificationBannerBean.jdField_a_of_type_JavaLangString = localJSONObject.optString("guideText", "");
+            localNotificationBannerBean.b = localJSONObject.optString("guideHighlightText", "");
+            localNotificationBannerBean.jdField_a_of_type_Long = localJSONObject.optLong("showIntervalMs", 0L);
+            i += 1;
+          }
         }
-        return jdField_a_of_type_ComTencentMobileqqConfigBusinessNotificationBannerBean;
+        else
+        {
+          return localNotificationBannerBean;
+        }
       }
       catch (Exception paramArrayOfQConfItem)
       {
         QLog.e("NotificationBannerBean", 1, "parse: failed. ", paramArrayOfQConfItem);
+        return jdField_a_of_type_ComTencentMobileqqConfigBusinessNotificationBannerBean;
       }
+      boolean bool = false;
     }
   }
   
@@ -72,7 +73,7 @@ public class NotificationBannerBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.NotificationBannerBean
  * JD-Core Version:    0.7.0.1
  */

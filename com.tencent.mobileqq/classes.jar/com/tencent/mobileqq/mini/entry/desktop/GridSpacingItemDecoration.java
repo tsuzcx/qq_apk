@@ -24,31 +24,33 @@ public class GridSpacingItemDecoration
   public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
     int i = paramRecyclerView.getChildAdapterPosition(paramView);
-    if (i < 0) {}
-    do
-    {
+    if (i < 0) {
       return;
-      int j = paramRecyclerView.getAdapter().getItemViewType(i);
-      int k = i % this.spanCount;
-      if (this.includeEdge)
+    }
+    int m = paramRecyclerView.getAdapter().getItemViewType(i);
+    int j = this.spanCount;
+    int k = i % j;
+    if (this.includeEdge)
+    {
+      if (m == 2)
       {
-        if (j == 2)
-        {
-          paramRect.bottom = this.spacing;
-          return;
-        }
-        paramRect.bottom = 0;
+        paramRect.bottom = this.spacing;
         return;
       }
-      paramRect.left = (this.spacing * k / this.spanCount);
-      paramRect.right = (this.spacing - (k + 1) * this.spacing / this.spanCount);
-    } while (i < this.spanCount);
-    paramRect.top = this.spacing;
+      paramRect.bottom = 0;
+      return;
+    }
+    m = this.spacing;
+    paramRect.left = (k * m / j);
+    paramRect.right = (m - (k + 1) * m / j);
+    if (i >= j) {
+      paramRect.top = m;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.GridSpacingItemDecoration
  * JD-Core Version:    0.7.0.1
  */

@@ -18,30 +18,37 @@ final class PicAioQzonePreSendMgr$1
   public void onBusiProtoResp(RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp)
   {
     int j = 0;
-    if (j < paramRichProtoResp.resps.size())
+    while (j < paramRichProtoResp.resps.size())
     {
       paramRichProtoReq = (RichProto.RichProtoResp.RespCommon)paramRichProtoResp.resps.get(j);
       int i = -1;
       if ((paramRichProtoReq instanceof RichProto.RichProtoResp.GroupPicUpResp)) {
         i = ((RichProto.RichProtoResp.GroupPicUpResp)paramRichProtoReq).result;
+      } else if ((paramRichProtoReq instanceof RichProto.RichProtoResp.C2CPicUpResp)) {
+        i = ((RichProto.RichProtoResp.C2CPicUpResp)paramRichProtoReq).result;
       }
-      for (;;)
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("PicAioQzonePreSendMgr", 2, "picPreSendProcess request Result, resultCode:" + i + ", selfUin:" + this.jdField_a_of_type_JavaLangString + ", friendUin:" + this.b + ", md5:" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.rawMd5 + ", commonInfo:" + paramRichProtoReq.toString());
-        }
-        j += 1;
-        break;
-        if ((paramRichProtoReq instanceof RichProto.RichProtoResp.C2CPicUpResp)) {
-          i = ((RichProto.RichProtoResp.C2CPicUpResp)paramRichProtoReq).result;
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("picPreSendProcess request Result, resultCode:");
+        localStringBuilder.append(i);
+        localStringBuilder.append(", selfUin:");
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(", friendUin:");
+        localStringBuilder.append(this.b);
+        localStringBuilder.append(", md5:");
+        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.rawMd5);
+        localStringBuilder.append(", commonInfo:");
+        localStringBuilder.append(paramRichProtoReq.toString());
+        QLog.i("PicAioQzonePreSendMgr", 2, localStringBuilder.toString());
       }
+      j += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicAioQzonePreSendMgr.1
  * JD-Core Version:    0.7.0.1
  */

@@ -35,16 +35,39 @@ public class WebSoCgiService$WebSoCgiState
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("unikey=").append(this.jdField_a_of_type_JavaLangString).append(",url=").append(this.jdField_b_of_type_JavaLangString).append(" ,header=").append(this.jdField_c_of_type_JavaLangString).append(",htmlbody len=");
-    if (TextUtils.isEmpty(this.d)) {}
-    for (int i = 0;; i = this.d.length()) {
-      return i + ",reqState=" + this.jdField_a_of_type_Int + ",httpStatusCode=" + this.jdField_b_of_type_Int + ",needBase64Rsp=" + this.jdField_a_of_type_Boolean + ",jsCallback=" + this.e + ",resultCode=" + this.jdField_c_of_type_Int + ",errorMsg=" + this.f;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("unikey=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",url=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" ,header=");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(",htmlbody len=");
+    int i;
+    if (TextUtils.isEmpty(this.d)) {
+      i = 0;
+    } else {
+      i = this.d.length();
     }
+    localStringBuilder.append(i);
+    localStringBuilder.append(",reqState=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",httpStatusCode=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(",needBase64Rsp=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(",jsCallback=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(",resultCode=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(",errorMsg=");
+    localStringBuilder.append(this.f);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.WebSoCgiService.WebSoCgiState
  * JD-Core Version:    0.7.0.1
  */

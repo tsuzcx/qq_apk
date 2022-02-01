@@ -14,9 +14,7 @@ class WebViewProgressBarController$MainThreadHandler
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 200) {
       return;
     }
     this.this$0.refreshUI();
@@ -24,7 +22,7 @@ class WebViewProgressBarController$MainThreadHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.WebViewProgressBarController.MainThreadHandler
  * JD-Core Version:    0.7.0.1
  */

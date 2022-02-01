@@ -44,20 +44,42 @@ class EGLContextHolder$DeviceMatcher
   
   public boolean matchGL(String paramString1, String paramString2)
   {
-    if ((this.mRenderer == null) && (this.mVersion == null)) {}
-    while ((!matchImpl(this.mRenderer, paramString1)) || (!matchImpl(this.mVersion, paramString2))) {
+    Pattern localPattern = this.mRenderer;
+    boolean bool2 = false;
+    if ((localPattern == null) && (this.mVersion == null)) {
       return false;
     }
-    return true;
+    boolean bool1 = bool2;
+    if (matchImpl(this.mRenderer, paramString1))
+    {
+      bool1 = bool2;
+      if (matchImpl(this.mVersion, paramString2)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public boolean matchOS(String paramString1, String paramString2, String paramString3)
   {
-    if ((this.mFingerprint == null) && (this.mRom == null) && (this.mModel == null)) {}
-    while ((!matchImpl(this.mFingerprint, paramString1)) || (!matchImpl(this.mRom, paramString2)) || (!matchImpl(this.mModel, paramString3))) {
+    Pattern localPattern = this.mFingerprint;
+    boolean bool2 = false;
+    if ((localPattern == null) && (this.mRom == null) && (this.mModel == null)) {
       return false;
     }
-    return true;
+    boolean bool1 = bool2;
+    if (matchImpl(this.mFingerprint, paramString1))
+    {
+      bool1 = bool2;
+      if (matchImpl(this.mRom, paramString2))
+      {
+        bool1 = bool2;
+        if (matchImpl(this.mModel, paramString3)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
 }
 

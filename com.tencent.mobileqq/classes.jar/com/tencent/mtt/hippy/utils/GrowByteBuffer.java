@@ -35,54 +35,54 @@ public class GrowByteBuffer
   
   private void ensureCapacityInternal(int paramInt)
   {
-    if (paramInt - this.value.length > 0) {
-      this.value = Arrays.copyOf(this.value, newCapacity(paramInt));
+    byte[] arrayOfByte = this.value;
+    if (paramInt - arrayOfByte.length > 0) {
+      this.value = Arrays.copyOf(arrayOfByte, newCapacity(paramInt));
     }
   }
   
   private static void getBytesFromInt(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
-    int j;
     int i;
     if (paramInt1 < 0)
     {
-      j = -paramInt1;
       i = 45;
-      paramInt1 = paramInt2;
-      paramInt2 = j;
+      paramInt1 = -paramInt1;
+    }
+    else
+    {
+      i = 0;
+    }
+    int j;
+    int k;
+    for (;;)
+    {
+      j = paramInt1;
+      k = paramInt2;
+      if (paramInt1 < 65536) {
+        break;
+      }
+      j = paramInt1 / 100;
+      paramInt1 -= (j << 6) + (j << 5) + (j << 2);
+      paramInt2 -= 1;
+      paramArrayOfByte[paramInt2] = DigitOnes[paramInt1];
+      paramInt2 -= 1;
+      paramArrayOfByte[paramInt2] = DigitTens[paramInt1];
+      paramInt1 = j;
     }
     for (;;)
     {
-      int k = paramInt1;
-      j = paramInt2;
-      if (paramInt2 >= 65536)
+      paramInt1 = 52429 * j >>> 19;
+      k -= 1;
+      paramArrayOfByte[k] = digits[(j - ((paramInt1 << 3) + (paramInt1 << 1)))];
+      if (paramInt1 == 0)
       {
-        j = paramInt2 / 100;
-        paramInt2 -= (j << 6) + (j << 5) + (j << 2);
-        paramInt1 -= 1;
-        paramArrayOfByte[paramInt1] = DigitOnes[paramInt2];
-        paramInt1 -= 1;
-        paramArrayOfByte[paramInt1] = DigitTens[paramInt2];
-        paramInt2 = j;
-      }
-      else
-      {
-        do
-        {
-          j = paramInt1;
-          paramInt1 = 52429 * j >>> 19;
-          k -= 1;
-          paramArrayOfByte[k] = digits[(j - ((paramInt1 << 3) + (paramInt1 << 1)))];
-        } while (paramInt1 != 0);
         if (i != 0) {
           paramArrayOfByte[(k - 1)] = i;
         }
         return;
-        i = 0;
-        j = paramInt1;
-        paramInt1 = paramInt2;
-        paramInt2 = j;
       }
+      j = paramInt1;
     }
   }
   
@@ -91,66 +91,65 @@ public class GrowByteBuffer
     int i;
     if (paramLong < 0L)
     {
-      paramLong = -paramLong;
       i = 45;
+      paramLong = -paramLong;
+    }
+    else
+    {
+      i = 0;
+    }
+    while (paramLong > 2147483647L)
+    {
+      long l = paramLong / 100L;
+      j = (int)(paramLong - ((l << 6) + (l << 5) + (l << 2)));
+      paramInt -= 1;
+      paramArrayOfByte[paramInt] = DigitOnes[j];
+      paramInt -= 1;
+      paramArrayOfByte[paramInt] = DigitTens[j];
+      paramLong = l;
+    }
+    int k;
+    int m;
+    for (int j = (int)paramLong;; j = k)
+    {
+      k = j;
+      m = paramInt;
+      if (j < 65536) {
+        break;
+      }
+      k = j / 100;
+      j -= (k << 6) + (k << 5) + (k << 2);
+      paramInt -= 1;
+      paramArrayOfByte[paramInt] = DigitOnes[j];
+      paramInt -= 1;
+      paramArrayOfByte[paramInt] = DigitTens[j];
     }
     for (;;)
     {
-      int j;
-      if (paramLong > 2147483647L)
+      paramInt = 52429 * k >>> 19;
+      m -= 1;
+      paramArrayOfByte[m] = digits[(k - ((paramInt << 3) + (paramInt << 1)))];
+      if (paramInt == 0)
       {
-        long l = paramLong / 100L;
-        j = (int)(paramLong - ((l << 6) + (l << 5) + (l << 2)));
-        paramInt -= 1;
-        paramArrayOfByte[paramInt] = DigitOnes[j];
-        paramInt -= 1;
-        paramArrayOfByte[paramInt] = DigitTens[j];
-        paramLong = l;
-      }
-      else
-      {
-        int k = (int)paramLong;
-        j = paramInt;
-        paramInt = k;
-        while (paramInt >= 65536)
-        {
-          k = paramInt / 100;
-          paramInt -= (k << 6) + (k << 5) + (k << 2);
-          j -= 1;
-          paramArrayOfByte[j] = DigitOnes[paramInt];
-          j -= 1;
-          paramArrayOfByte[j] = DigitTens[paramInt];
-          paramInt = k;
-          continue;
-          paramInt = k;
+        if (i != 0) {
+          paramArrayOfByte[(m - 1)] = i;
         }
-        for (;;)
-        {
-          k = 52429 * paramInt >>> 19;
-          j -= 1;
-          paramArrayOfByte[j] = digits[(paramInt - ((k << 3) + (k << 1)))];
-          if (k != 0) {
-            break;
-          }
-          if (i != 0) {
-            paramArrayOfByte[(j - 1)] = i;
-          }
-          return;
-        }
-        i = 0;
+        return;
       }
+      k = paramInt;
     }
   }
   
   private int hugeCapacity(int paramInt)
   {
-    if (2147483647 - paramInt < 0) {
-      throw new OutOfMemoryError();
+    if (2147483647 - paramInt >= 0)
+    {
+      if (paramInt > 2147483639) {
+        return paramInt;
+      }
+      return 2147483639;
     }
-    if (paramInt > 2147483639) {
-      return paramInt;
-    }
-    return 2147483639;
+    throw new OutOfMemoryError();
   }
   
   private static int intStringSize(int paramInt)
@@ -225,10 +224,13 @@ public class GrowByteBuffer
   
   public GrowByteBuffer putBoolean(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (byte[] arrayOfByte = TRUE_BYTES;; arrayOfByte = FALSE_BYTES) {
-      return putByteArray(arrayOfByte);
+    byte[] arrayOfByte;
+    if (paramBoolean) {
+      arrayOfByte = TRUE_BYTES;
+    } else {
+      arrayOfByte = FALSE_BYTES;
     }
+    return putByteArray(arrayOfByte);
   }
   
   public GrowByteBuffer putByte(byte paramByte)
@@ -246,7 +248,7 @@ public class GrowByteBuffer
     int i = paramArrayOfByte.length;
     ensureCapacityInternal(this.count + i);
     System.arraycopy(paramArrayOfByte, 0, this.value, this.count, i);
-    this.count = (i + this.count);
+    this.count += i;
     return this;
   }
   
@@ -270,15 +272,16 @@ public class GrowByteBuffer
     if (paramInt == -2147483648) {
       return putByteArray(INT_MIN_BYTES);
     }
-    if (paramInt < 0) {}
-    for (int i = intStringSize(-paramInt) + 1;; i = intStringSize(paramInt))
-    {
-      i += this.count;
-      ensureCapacityInternal(i);
-      getBytesFromInt(paramInt, i, this.value);
-      this.count = i;
-      return this;
+    if (paramInt < 0) {
+      i = intStringSize(-paramInt) + 1;
+    } else {
+      i = intStringSize(paramInt);
     }
+    int i = this.count + i;
+    ensureCapacityInternal(i);
+    getBytesFromInt(paramInt, i, this.value);
+    this.count = i;
+    return this;
   }
   
   public GrowByteBuffer putLong(long paramLong)
@@ -286,15 +289,16 @@ public class GrowByteBuffer
     if (paramLong == -9223372036854775808L) {
       return putByteArray(LONG_MIN_BYTES);
     }
-    if (paramLong < 0L) {}
-    for (int i = longStringSize(-paramLong) + 1;; i = longStringSize(paramLong))
-    {
-      i += this.count;
-      ensureCapacityInternal(i);
-      getBytesFromLong(paramLong, i, this.value);
-      this.count = i;
-      return this;
+    if (paramLong < 0L) {
+      i = longStringSize(-paramLong) + 1;
+    } else {
+      i = longStringSize(paramLong);
     }
+    int i = this.count + i;
+    ensureCapacityInternal(i);
+    getBytesFromLong(paramLong, i, this.value);
+    this.count = i;
+    return this;
   }
   
   public GrowByteBuffer putString(String paramString)
@@ -305,21 +309,24 @@ public class GrowByteBuffer
   public final void reset()
   {
     this.count = 0;
-    if (this.stringBuilder != null) {
-      this.stringBuilder.setLength(0);
+    StringBuilder localStringBuilder = this.stringBuilder;
+    if (localStringBuilder != null) {
+      localStringBuilder.setLength(0);
     }
   }
   
   public final void trimToSize()
   {
-    if (this.count < this.value.length) {
-      this.value = Arrays.copyOf(this.value, this.count);
+    int i = this.count;
+    byte[] arrayOfByte = this.value;
+    if (i < arrayOfByte.length) {
+      this.value = Arrays.copyOf(arrayOfByte, i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.utils.GrowByteBuffer
  * JD-Core Version:    0.7.0.1
  */

@@ -36,12 +36,13 @@ public class PagerSnapHelper
     int[] arrayOfInt = new int[2];
     if (paramLinearLayoutManager.canScrollHorizontally()) {
       arrayOfInt[0] = distanceToCenter(paramLinearLayoutManager, paramView, getOrientationHelper(paramLinearLayoutManager));
+    } else {
+      arrayOfInt[0] = 0;
     }
-    while (paramLinearLayoutManager.canScrollVertically())
+    if (paramLinearLayoutManager.canScrollVertically())
     {
       arrayOfInt[1] = distanceToCenter(paramLinearLayoutManager, paramView, getOrientationHelper(paramLinearLayoutManager));
       return arrayOfInt;
-      arrayOfInt[0] = 0;
     }
     arrayOfInt[1] = 0;
     return arrayOfInt;
@@ -55,12 +56,14 @@ public class PagerSnapHelper
   
   private void checkRecyclerViewState(RecyclerView paramRecyclerView)
   {
-    if ((paramRecyclerView == null) || (paramRecyclerView.getAdapter() == null) || (paramRecyclerView.getLayoutManager() == null)) {
-      throw new IllegalStateException("PagerSnapHelper can't attach to the RecyclerView before setup Adapter or LayoutManager");
-    }
-    if (!(paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager)) {
+    if ((paramRecyclerView != null) && (paramRecyclerView.getAdapter() != null) && (paramRecyclerView.getLayoutManager() != null))
+    {
+      if ((paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager)) {
+        return;
+      }
       throw new IllegalStateException("PagerSnapHelper can only attach to the RecyclerView with LinearLayoutManager");
     }
+    throw new IllegalStateException("PagerSnapHelper can't attach to the RecyclerView before setup Adapter or LayoutManager");
   }
   
   private void destroyCallbacks()
@@ -71,96 +74,92 @@ public class PagerSnapHelper
   
   private void dispatchPagerChanged(View paramView, boolean paramBoolean)
   {
-    RecyclerView.ViewHolder localViewHolder;
-    int i;
-    if ((paramView != null) && (this.recyclerView != null) && (this.layoutManager != null))
+    if (paramView != null)
     {
-      localViewHolder = this.recyclerView.getChildViewHolder(paramView);
-      i = this.layoutManager.getPosition(paramView);
-      if ((localViewHolder != null) && (i != -1) && ((i != this.centerPosition) || (paramBoolean)) && (!checkIsPositionOutOfBound(i, this.layoutManager))) {
-        break label72;
+      Object localObject = this.recyclerView;
+      if ((localObject != null) && (this.layoutManager != null))
+      {
+        localObject = ((RecyclerViewCompat)localObject).getChildViewHolder(paramView);
+        int i = this.layoutManager.getPosition(paramView);
+        if ((localObject != null) && (i != -1) && ((i != this.centerPosition) || (paramBoolean)))
+        {
+          if (checkIsPositionOutOfBound(i, this.layoutManager)) {
+            return;
+          }
+          this.centerPosition = i;
+          paramView = this.eventListener;
+          if (paramView != null) {
+            paramView.onPagerChanged((RecyclerView.ViewHolder)localObject);
+          }
+        }
       }
     }
-    label72:
-    do
-    {
-      return;
-      this.centerPosition = i;
-    } while (this.eventListener == null);
-    this.eventListener.onPagerChanged(localViewHolder);
   }
   
   private int distanceToCenter(@NonNull LinearLayoutManager paramLinearLayoutManager, @NonNull View paramView, OrientationHelper paramOrientationHelper)
   {
     int j = paramOrientationHelper.getDecoratedStart(paramView);
     int k = paramOrientationHelper.getDecoratedMeasurement(paramView) / 2;
-    if (paramLinearLayoutManager.getClipToPadding()) {}
-    for (int i = paramOrientationHelper.getStartAfterPadding() + paramOrientationHelper.getTotalSpace() / 2;; i = paramOrientationHelper.getEnd() / 2) {
-      return k + j - i;
+    int i;
+    if (paramLinearLayoutManager.getClipToPadding()) {
+      i = paramOrientationHelper.getStartAfterPadding() + paramOrientationHelper.getTotalSpace() / 2;
+    } else {
+      i = paramOrientationHelper.getEnd() / 2;
     }
+    return j + k - i;
   }
   
   @Nullable
   private View findFirstVisibleView(LinearLayoutManager paramLinearLayoutManager)
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    int m = paramLinearLayoutManager.getChildCount();
-    if (m == 0) {}
-    OrientationHelper localOrientationHelper;
-    int i;
-    int j;
-    do
-    {
-      return localObject2;
-      localOrientationHelper = getOrientationHelper(paramLinearLayoutManager);
-      i = 2147483647;
-      j = 0;
-      localObject2 = localObject1;
-    } while (j >= m);
-    localObject2 = paramLinearLayoutManager.getChildAt(j);
-    int k = localOrientationHelper.getDecoratedStart((View)localObject2);
-    if (k < i)
-    {
-      localObject1 = localObject2;
-      i = k;
+    int n = paramLinearLayoutManager.getChildCount();
+    Object localObject = null;
+    if (n == 0) {
+      return null;
     }
-    for (;;)
+    OrientationHelper localOrientationHelper = getOrientationHelper(paramLinearLayoutManager);
+    int j = 2147483647;
+    int i = 0;
+    while (i < n)
     {
-      j += 1;
-      break;
+      View localView = paramLinearLayoutManager.getChildAt(i);
+      int m = localOrientationHelper.getDecoratedStart(localView);
+      int k = j;
+      if (m < j)
+      {
+        localObject = localView;
+        k = m;
+      }
+      i += 1;
+      j = k;
     }
+    return localObject;
   }
   
   private View findLastVisibleView(LinearLayoutManager paramLinearLayoutManager)
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    int m = paramLinearLayoutManager.getChildCount();
-    if (m == 0) {}
-    OrientationHelper localOrientationHelper;
-    int i;
-    int j;
-    do
-    {
-      return localObject2;
-      localOrientationHelper = getOrientationHelper(paramLinearLayoutManager);
-      i = -2147483648;
-      j = 0;
-      localObject2 = localObject1;
-    } while (j >= m);
-    localObject2 = paramLinearLayoutManager.getChildAt(j);
-    int k = localOrientationHelper.getDecoratedStart((View)localObject2);
-    if (k > i)
-    {
-      localObject1 = localObject2;
-      i = k;
+    int n = paramLinearLayoutManager.getChildCount();
+    Object localObject = null;
+    if (n == 0) {
+      return null;
     }
-    for (;;)
+    OrientationHelper localOrientationHelper = getOrientationHelper(paramLinearLayoutManager);
+    int j = -2147483648;
+    int i = 0;
+    while (i < n)
     {
-      j += 1;
-      break;
+      View localView = paramLinearLayoutManager.getChildAt(i);
+      int m = localOrientationHelper.getDecoratedStart(localView);
+      int k = j;
+      if (m > j)
+      {
+        localObject = localView;
+        k = m;
+      }
+      i += 1;
+      j = k;
     }
+    return localObject;
   }
   
   private int getEndPosition(RecyclerView.LayoutManager paramLayoutManager)
@@ -175,96 +174,83 @@ public class PagerSnapHelper
   
   private void setupCallbacks()
   {
-    if (this.recyclerView.getOnFlingListenerCompat() != null) {
-      throw new IllegalStateException("An instance of OnFlingListener already set.");
+    if (this.recyclerView.getOnFlingListenerCompat() == null)
+    {
+      this.touchEventProcessor = new PagerSnapHelper.TouchEventProcessor(this, null);
+      this.onLayoutChangedListener = new PagerSnapHelper.OnLayoutChangedListenerImpl(this, null);
+      this.recyclerView.addOnScrollListener(this.touchEventProcessor);
+      this.recyclerView.setOnFlingListenerCompat(this.touchEventProcessor);
+      this.recyclerView.addOnLayoutChangeListener(this.onLayoutChangedListener);
+      this.recyclerView.getAdapter().registerAdapterDataObserver(new PagerSnapHelper.1(this));
+      return;
     }
-    this.touchEventProcessor = new PagerSnapHelper.TouchEventProcessor(this, null);
-    this.onLayoutChangedListener = new PagerSnapHelper.OnLayoutChangedListenerImpl(this, null);
-    this.recyclerView.addOnScrollListener(this.touchEventProcessor);
-    this.recyclerView.setOnFlingListenerCompat(this.touchEventProcessor);
-    this.recyclerView.addOnLayoutChangeListener(this.onLayoutChangedListener);
-    this.recyclerView.getAdapter().registerAdapterDataObserver(new PagerSnapHelper.1(this));
+    throw new IllegalStateException("An instance of OnFlingListener already set.");
   }
   
   private boolean snapFromFling(@NonNull LinearLayoutManager paramLinearLayoutManager, float paramFloat1, float paramFloat2, int paramInt)
   {
+    if (paramLinearLayoutManager.getItemCount() == 0) {
+      return false;
+    }
+    View localView = findCenterView(paramLinearLayoutManager);
+    if (localView == null) {
+      return false;
+    }
+    int m = paramLinearLayoutManager.getPosition(localView);
+    if (m == -1) {
+      return false;
+    }
+    boolean bool = paramLinearLayoutManager.canScrollHorizontally();
     int i = 1;
-    if (paramLinearLayoutManager.getItemCount() == 0) {}
-    int m;
-    do
+    if (bool)
     {
-      View localView;
-      do
+      if (paramFloat1 > 0.0F) {}
+    }
+    else {
+      while (paramFloat2 <= 0.0F)
       {
-        return false;
-        localView = findCenterView(paramLinearLayoutManager);
-      } while (localView == null);
-      m = paramLinearLayoutManager.getPosition(localView);
-    } while (m == -1);
-    label51:
-    int j;
-    if (paramLinearLayoutManager.canScrollHorizontally()) {
-      if (paramFloat1 > 0.0F)
-      {
-        int k = getStartPosition();
-        j = getEndPosition(paramLinearLayoutManager);
-        if ((paramInt == -1) || (m == paramInt)) {
-          break label123;
-        }
-        paramInt = m;
-        label81:
-        if (paramInt == -1) {
-          break label144;
-        }
-        if (paramInt >= k) {
-          break label146;
-        }
-        i = k;
+        i = 0;
+        break;
       }
     }
-    for (;;)
-    {
-      return snapToTargetPosition(i);
-      i = 0;
-      break label51;
-      if (paramFloat2 > 0.0F) {
-        break label51;
-      }
-      i = 0;
-      break label51;
-      label123:
-      if (i != 0)
-      {
-        paramInt = m + 1;
-        break label81;
-      }
+    int j = getStartPosition();
+    int k = getEndPosition(paramLinearLayoutManager);
+    if ((paramInt != -1) && (m != paramInt)) {
+      paramInt = m;
+    } else if (i != 0) {
+      paramInt = m + 1;
+    } else {
       paramInt = m - 1;
-      break label81;
-      label144:
-      break;
-      label146:
-      i = paramInt;
-      if (paramInt > j) {
-        i = j;
-      }
     }
+    if (paramInt == -1) {
+      return false;
+    }
+    if (paramInt < j) {
+      paramInt = j;
+    } else if (paramInt > k) {
+      paramInt = k;
+    }
+    return snapToTargetPosition(paramInt);
   }
   
   public void attachToRecyclerView(@Nullable RecyclerViewCompat paramRecyclerViewCompat)
   {
-    if (this.recyclerView == paramRecyclerViewCompat) {}
-    do
-    {
+    RecyclerViewCompat localRecyclerViewCompat = this.recyclerView;
+    if (localRecyclerViewCompat == paramRecyclerViewCompat) {
       return;
-      if (this.recyclerView != null) {
-        destroyCallbacks();
-      }
-      this.recyclerView = paramRecyclerViewCompat;
-    } while (this.recyclerView == null);
-    checkRecyclerViewState(this.recyclerView);
-    this.layoutManager = ((LinearLayoutManager)this.recyclerView.getLayoutManager());
-    setupCallbacks();
-    snapToCenterPosition();
+    }
+    if (localRecyclerViewCompat != null) {
+      destroyCallbacks();
+    }
+    this.recyclerView = paramRecyclerViewCompat;
+    paramRecyclerViewCompat = this.recyclerView;
+    if (paramRecyclerViewCompat != null)
+    {
+      checkRecyclerViewState(paramRecyclerViewCompat);
+      this.layoutManager = ((LinearLayoutManager)this.recyclerView.getLayoutManager());
+      setupCallbacks();
+      snapToCenterPosition();
+    }
   }
   
   protected LinearSmoothScroller createSnapScroller(LinearLayoutManager paramLinearLayoutManager)
@@ -275,41 +261,34 @@ public class PagerSnapHelper
   @Nullable
   public View findCenterView(LinearLayoutManager paramLinearLayoutManager)
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    int n = paramLinearLayoutManager.getChildCount();
-    if (n == 0) {}
-    OrientationHelper localOrientationHelper;
-    int j;
+    int i1 = paramLinearLayoutManager.getChildCount();
+    Object localObject = null;
+    if (i1 == 0) {
+      return null;
+    }
+    OrientationHelper localOrientationHelper = getOrientationHelper(paramLinearLayoutManager);
     int i;
-    int k;
-    label54:
-    do
+    if (paramLinearLayoutManager.getClipToPadding()) {
+      i = localOrientationHelper.getStartAfterPadding() + localOrientationHelper.getTotalSpace() / 2;
+    } else {
+      i = localOrientationHelper.getEnd() / 2;
+    }
+    int k = 2147483647;
+    int j = 0;
+    while (j < i1)
     {
-      return localObject2;
-      localOrientationHelper = getOrientationHelper(paramLinearLayoutManager);
-      if (!paramLinearLayoutManager.getClipToPadding()) {
-        break;
+      View localView = paramLinearLayoutManager.getChildAt(j);
+      int n = Math.abs(localOrientationHelper.getDecoratedStart(localView) + localOrientationHelper.getDecoratedMeasurement(localView) / 2 - i);
+      int m = k;
+      if (n < k)
+      {
+        localObject = localView;
+        m = n;
       }
-      j = localOrientationHelper.getStartAfterPadding() + localOrientationHelper.getTotalSpace() / 2;
-      i = 2147483647;
-      k = 0;
-      localObject2 = localObject1;
-    } while (k >= n);
-    localObject2 = paramLinearLayoutManager.getChildAt(k);
-    int m = Math.abs(localOrientationHelper.getDecoratedStart((View)localObject2) + localOrientationHelper.getDecoratedMeasurement((View)localObject2) / 2 - j);
-    if (m < i)
-    {
-      localObject1 = localObject2;
-      i = m;
+      j += 1;
+      k = m;
     }
-    for (;;)
-    {
-      k += 1;
-      break label54;
-      j = localOrientationHelper.getEnd() / 2;
-      break;
-    }
+    return localObject;
   }
   
   public int getCurrentPosition()
@@ -340,16 +319,26 @@ public class PagerSnapHelper
   
   public void offsetToTargetPosition(View paramView)
   {
-    if ((this.recyclerView == null) || (this.layoutManager == null)) {}
-    do
+    if (this.recyclerView != null)
     {
-      do
-      {
+      LinearLayoutManager localLinearLayoutManager = this.layoutManager;
+      if (localLinearLayoutManager == null) {
         return;
-      } while ((paramView == null) || (checkIsPositionOutOfBound(this.layoutManager.getPosition(paramView), this.layoutManager)) || (paramView == null));
-      paramView = calculateDistanceToFinalSnap(this.layoutManager, paramView);
-    } while ((paramView[0] == 0) && (paramView[1] == 0));
-    this.recyclerView.scrollBy(paramView[0], paramView[1]);
+      }
+      if (paramView == null) {
+        return;
+      }
+      if (checkIsPositionOutOfBound(localLinearLayoutManager.getPosition(paramView), this.layoutManager)) {
+        return;
+      }
+      if (paramView != null)
+      {
+        paramView = calculateDistanceToFinalSnap(this.layoutManager, paramView);
+        if ((paramView[0] != 0) || (paramView[1] != 0)) {
+          this.recyclerView.scrollBy(paramView[0], paramView[1]);
+        }
+      }
+    }
   }
   
   public void requestLayoutChanged()
@@ -379,40 +368,55 @@ public class PagerSnapHelper
   
   public boolean snapToCenterPosition()
   {
-    if ((this.recyclerView == null) || (this.layoutManager == null)) {}
-    View localView;
-    do
+    if (this.recyclerView != null)
     {
-      return false;
-      localView = findCenterView(this.layoutManager);
-    } while (localView == null);
-    return snapToTargetView(localView);
+      Object localObject = this.layoutManager;
+      if (localObject == null) {
+        return false;
+      }
+      localObject = findCenterView((LinearLayoutManager)localObject);
+      if (localObject == null) {
+        return false;
+      }
+      return snapToTargetView((View)localObject);
+    }
+    return false;
   }
   
   public boolean snapToNextPosition()
   {
-    if ((this.recyclerView == null) || (this.layoutManager == null)) {}
-    int i;
-    do
+    if (this.recyclerView != null)
     {
-      return false;
-      i = this.centerPosition + 1;
-    } while (checkIsPositionOutOfBound(i, this.layoutManager));
-    snapToTargetPosition(i);
-    return true;
+      LinearLayoutManager localLinearLayoutManager = this.layoutManager;
+      if (localLinearLayoutManager == null) {
+        return false;
+      }
+      int i = this.centerPosition + 1;
+      if (checkIsPositionOutOfBound(i, localLinearLayoutManager)) {
+        return false;
+      }
+      snapToTargetPosition(i);
+      return true;
+    }
+    return false;
   }
   
   public boolean snapToPreviousPosition()
   {
-    if ((this.recyclerView == null) || (this.layoutManager == null)) {}
-    int i;
-    do
+    if (this.recyclerView != null)
     {
-      return false;
-      i = this.centerPosition - 1;
-    } while (checkIsPositionOutOfBound(i, this.layoutManager));
-    snapToTargetPosition(i);
-    return true;
+      LinearLayoutManager localLinearLayoutManager = this.layoutManager;
+      if (localLinearLayoutManager == null) {
+        return false;
+      }
+      int i = this.centerPosition - 1;
+      if (checkIsPositionOutOfBound(i, localLinearLayoutManager)) {
+        return false;
+      }
+      snapToTargetPosition(i);
+      return true;
+    }
+    return false;
   }
   
   public boolean snapToTargetPosition(int paramInt)
@@ -439,30 +443,28 @@ public class PagerSnapHelper
   
   public boolean snapToTargetView(View paramView)
   {
-    if (paramView == null) {}
-    int i;
-    do
-    {
+    if (paramView == null) {
       return false;
-      i = this.layoutManager.getPosition(paramView);
-    } while (i == -1);
-    int j = getStartPosition();
-    int k = getEndPosition(this.layoutManager);
-    if (i < j) {
-      i = j;
     }
-    for (;;)
+    int j = this.layoutManager.getPosition(paramView);
+    if (j == -1) {
+      return false;
+    }
+    int i = getStartPosition();
+    int k = getEndPosition(this.layoutManager);
+    if (j >= i)
     {
-      return snapToTargetPosition(i);
-      if (i > k) {
+      i = j;
+      if (j > k) {
         i = k;
       }
     }
+    return snapToTargetPosition(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.support.PagerSnapHelper
  * JD-Core Version:    0.7.0.1
  */

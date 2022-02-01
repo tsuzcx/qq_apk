@@ -11,12 +11,17 @@ class MiniAppRealTimeLogReporter$1
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QLog.e("[mini] MiniAppRealTimeLogReporter", 1, "realTimeLogReport  ReportLog isSuc: " + paramBoolean + "  ret:" + paramJSONObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("realTimeLogReport  ReportLog isSuc: ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("  ret:");
+    localStringBuilder.append(paramJSONObject);
+    QLog.e("[mini] MiniAppRealTimeLogReporter", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniAppRealTimeLogReporter.1
  * JD-Core Version:    0.7.0.1
  */

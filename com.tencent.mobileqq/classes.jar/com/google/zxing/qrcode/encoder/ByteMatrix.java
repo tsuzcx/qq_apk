@@ -47,13 +47,7 @@ public final class ByteMatrix
   
   public void a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    byte[] arrayOfByte = this.jdField_a_of_type_Array2dOfByte[paramInt2];
-    if (paramBoolean) {}
-    for (paramInt2 = 1;; paramInt2 = 0)
-    {
-      arrayOfByte[paramInt1] = ((byte)paramInt2);
-      return;
-    }
+    this.jdField_a_of_type_Array2dOfByte[paramInt2][paramInt1] = ((byte)paramBoolean);
   }
   
   public byte[][] a()
@@ -73,21 +67,21 @@ public final class ByteMatrix
     while (i < this.b)
     {
       int j = 0;
-      if (j < this.jdField_a_of_type_Int)
+      while (j < this.jdField_a_of_type_Int)
       {
-        switch (this.jdField_a_of_type_Array2dOfByte[i][j])
+        int k = this.jdField_a_of_type_Array2dOfByte[i][j];
+        if (k != 0)
         {
-        default: 
-          localStringBuilder.append("  ");
+          if (k != 1) {
+            localStringBuilder.append("  ");
+          } else {
+            localStringBuilder.append(" 1");
+          }
         }
-        for (;;)
-        {
-          j += 1;
-          break;
+        else {
           localStringBuilder.append(" 0");
-          continue;
-          localStringBuilder.append(" 1");
         }
+        j += 1;
       }
       localStringBuilder.append('\n');
       i += 1;

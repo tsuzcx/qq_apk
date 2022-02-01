@@ -14,15 +14,17 @@ class QZoneShareActivity$16
     if ((paramInt == 1) && ((paramObject instanceof OpenID)))
     {
       paramObject = (OpenID)paramObject;
-      if ((paramObject.openID != null) && (!paramObject.openID.equals(this.val$shareOpenid))) {
-        this.this$0.showOpenIdConfirmDialog(this.this$0, this.val$shareData);
+      if ((paramObject.openID != null) && (!paramObject.openID.equals(this.val$shareOpenid)))
+      {
+        paramObject = this.this$0;
+        paramObject.showOpenIdConfirmDialog(paramObject, this.val$shareData);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.16
  * JD-Core Version:    0.7.0.1
  */

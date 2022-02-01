@@ -1,9 +1,7 @@
 package com.tencent.qqmini.sdk.widget;
 
 import android.annotation.TargetApi;
-import android.app.AppOpsManager;
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
 import android.content.res.Resources;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
@@ -64,13 +62,6 @@ public class MiniToast
   private int mToastType = 0;
   private CharSequence message = null;
   
-  static
-  {
-    sAppOpsClass = null;
-    sCheckOpNoThrow = null;
-    sOpPostNotification = null;
-  }
-  
   public MiniToast(Context paramContext)
   {
     this.mContext = paramContext.getApplicationContext();
@@ -80,44 +71,44 @@ public class MiniToast
   
   public static boolean canUseCustomToast(Context paramContext, boolean paramBoolean)
   {
-    if (Build.VERSION.SDK_INT < 11) {}
-    do
-    {
+    if (Build.VERSION.SDK_INT < 11) {
       return false;
-      if ((useCustomToast == -1) || (paramBoolean))
-      {
-        int i = useCustomToast;
-        useCustomToast = isNotificationEnabled(paramContext);
-        QMLog.d("QQToast", "canUseCustomToast = " + useCustomToast);
-        if ((i == 0) && (useCustomToast == 1)) {
-          QMLog.d("QQToast", "Temp Report mark: now Notification from disable to Enabled ");
-        }
+    }
+    if ((useCustomToast == -1) || (paramBoolean))
+    {
+      int i = useCustomToast;
+      useCustomToast = isNotificationEnabled(paramContext);
+      paramContext = new StringBuilder();
+      paramContext.append("canUseCustomToast = ");
+      paramContext.append(useCustomToast);
+      QMLog.d("QQToast", paramContext.toString());
+      if ((i == 0) && (useCustomToast == 1)) {
+        QMLog.d("QQToast", "Temp Report mark: now Notification from disable to Enabled ");
       }
-    } while (useCustomToast == 1);
-    return true;
+    }
+    return useCustomToast != 1;
   }
   
   public static int getBgColor(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      if (!useIOSLikeUI()) {
-        break;
-      }
-    case 1: 
-    case 2: 
-      do
+      if (paramInt != 2)
       {
-        return -1;
         if (useIOSLikeUI()) {
-          return -103316;
+          return -1;
         }
-        return -436310932;
-      } while (useIOSLikeUI());
+        return -452984832;
+      }
+      if (useIOSLikeUI()) {
+        return -1;
+      }
       return -452984832;
     }
-    return -452984832;
+    if (useIOSLikeUI()) {
+      return -103316;
+    }
+    return -436310932;
   }
   
   private static long getDelay(TextView paramTextView)
@@ -130,34 +121,33 @@ public class MiniToast
   
   public static int getIconColor(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return -15550475;
-    case 1: 
-      return -1;
+      if (paramInt != 2) {
+        return -15550475;
+      }
+      return -7745469;
     }
-    return -7745469;
+    return -1;
   }
   
   public static int getIconRes(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return R.drawable.mini_sdk_black_tips_icon_info;
-    case 1: 
-      return R.drawable.mini_sdk_black_tips_icon_caution;
+      if (paramInt != 2) {
+        return R.drawable.mini_sdk_black_tips_icon_info;
+      }
+      return R.drawable.mini_sdk_black_tips_icon_success;
     }
-    return R.drawable.mini_sdk_black_tips_icon_success;
+    return R.drawable.mini_sdk_black_tips_icon_caution;
   }
   
   private static int getTextColorType(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    case 2: 
-    default: 
+      if (paramInt != 2) {}
       return -16777216;
     }
     return -16578533;
@@ -176,51 +166,7 @@ public class MiniToast
   @TargetApi(19)
   public static int isNotificationEnabled(Context paramContext)
   {
-    int i = 1;
-    try
-    {
-      if (Build.VERSION.SDK_INT < 19) {
-        return 2;
-      }
-      boolean bool;
-      if (Build.VERSION.SDK_INT >= 24) {
-        bool = true;
-      }
-      while (QMLog.isColorLevel())
-      {
-        QMLog.d("PushOpenNotify", "isNotificationEnabled,  isEnabled, " + bool);
-        break;
-        if (sAppOpsClass == null) {
-          sAppOpsClass = Class.forName(AppOpsManager.class.getName());
-        }
-        if (sCheckOpNoThrow == null) {
-          sCheckOpNoThrow = sAppOpsClass.getMethod("checkOpNoThrow", new Class[] { Integer.TYPE, Integer.TYPE, String.class });
-        }
-        if (sOpPostNotification == null) {
-          sOpPostNotification = sAppOpsClass.getDeclaredField("OP_POST_NOTIFICATION");
-        }
-        int j = paramContext.getApplicationInfo().uid;
-        int k = ((Integer)sOpPostNotification.get(Integer.class)).intValue();
-        AppOpsManager localAppOpsManager = (AppOpsManager)paramContext.getSystemService("appops");
-        paramContext = paramContext.getApplicationContext().getPackageName();
-        j = ((Integer)sCheckOpNoThrow.invoke(localAppOpsManager, new Object[] { Integer.valueOf(k), Integer.valueOf(j), paramContext })).intValue();
-        if (j == 0) {
-          bool = true;
-        } else {
-          bool = false;
-        }
-      }
-      while (bool) {}
-    }
-    catch (Throwable paramContext)
-    {
-      if (QMLog.isColorLevel()) {
-        QMLog.d("PushOpenNotify", " isNotificationEnabled, get except, " + paramContext.getMessage());
-      }
-      i = 2;
-      return i;
-    }
-    return 0;
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge Z and I\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:806)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public static MiniToast makeText(Context paramContext, int paramInt1, int paramInt2)
@@ -307,37 +253,37 @@ public class MiniToast
       ((ImageView)localObject).setImageDrawable(this.icon);
       ((ImageView)localObject).setColorFilter(getIconColor(this.mToastType), PorterDuff.Mode.MULTIPLY);
     }
-    for (;;)
+    else
     {
-      if (this.message != null)
-      {
-        localObject = (TextView)localView.findViewById(R.id.toast_msg);
-        ((TextView)localObject).setTextColor(getTextColorType(this.mToastType));
-        ((TextView)localObject).setText(this.message);
-        String str = this.message.toString();
-        TextPaint localTextPaint = ((TextView)localObject).getPaint();
-        float f1 = localTextPaint.measureText(str);
-        DisplayMetrics localDisplayMetrics = this.mResources.getDisplayMetrics();
-        float f2 = localDisplayMetrics.densityDpi / 160 * 50;
-        f2 = localDisplayMetrics.widthPixels - f2;
-        if (f1 > f2) {
-          ((TextView)localObject).setTextSize(2, ((TextView)localObject).getTextSize() * 5.0F / 6.0F / localDisplayMetrics.density);
-        }
-        if (this.mAutoTextSize)
-        {
-          f1 = localTextPaint.measureText(str);
-          if (f1 > f2) {
-            ((TextView)localObject).setTextSize(2, ((TextView)localObject).getTextSize() * f2 / f1 / localDisplayMetrics.scaledDensity);
-          }
-        }
-      }
-      setGravity(paramInt1, localProtectedToast);
-      localProtectedToast.setView(localView);
-      localProtectedToast.setDuration(this.mDuration);
-      setOnTouchListener(paramOnTouchListener, localProtectedToast, localView);
-      return localProtectedToast;
       ((ImageView)localView.findViewById(R.id.toast_icon)).setVisibility(8);
     }
+    if (this.message != null)
+    {
+      localObject = (TextView)localView.findViewById(R.id.toast_msg);
+      ((TextView)localObject).setTextColor(getTextColorType(this.mToastType));
+      ((TextView)localObject).setText(this.message);
+      String str = this.message.toString();
+      TextPaint localTextPaint = ((TextView)localObject).getPaint();
+      float f1 = localTextPaint.measureText(str);
+      DisplayMetrics localDisplayMetrics = this.mResources.getDisplayMetrics();
+      float f2 = localDisplayMetrics.densityDpi / 160 * 50;
+      f2 = localDisplayMetrics.widthPixels - f2;
+      if (f1 > f2) {
+        ((TextView)localObject).setTextSize(2, ((TextView)localObject).getTextSize() * 5.0F / 6.0F / localDisplayMetrics.density);
+      }
+      if (this.mAutoTextSize)
+      {
+        f1 = localTextPaint.measureText(str);
+        if (f1 > f2) {
+          ((TextView)localObject).setTextSize(2, ((TextView)localObject).getTextSize() * f2 / f1 / localDisplayMetrics.scaledDensity);
+        }
+      }
+    }
+    setGravity(paramInt1, localProtectedToast);
+    localProtectedToast.setView(localView);
+    localProtectedToast.setDuration(this.mDuration);
+    setOnTouchListener(paramOnTouchListener, localProtectedToast, localView);
+    return localProtectedToast;
   }
   
   public int getStatusBarHeight()
@@ -347,8 +293,15 @@ public class MiniToast
       int i = Resources.getSystem().getDimensionPixelSize(Resources.getSystem().getIdentifier("status_bar_height", "dimen", "android"));
       return i;
     }
-    catch (Exception localException) {}
-    return (int)(this.mResources.getDisplayMetrics().density * 25.0F + 0.5D);
+    catch (Exception localException)
+    {
+      label24:
+      double d;
+      break label24;
+    }
+    d = this.mResources.getDisplayMetrics().density * 25.0F;
+    Double.isNaN(d);
+    return (int)(d + 0.5D);
   }
   
   public int getTitleBarHeight()
@@ -358,17 +311,26 @@ public class MiniToast
       int i = Resources.getSystem().getDimensionPixelSize(Resources.getSystem().getIdentifier("navigation_bar_height", "dimen", "android"));
       return i;
     }
-    catch (Exception localException) {}
-    return (int)(this.mResources.getDisplayMetrics().density * 44.0F + 0.5D);
+    catch (Exception localException)
+    {
+      label24:
+      double d;
+      break label24;
+    }
+    d = this.mResources.getDisplayMetrics().density * 44.0F;
+    Double.isNaN(d);
+    return (int)(d + 0.5D);
   }
   
   public boolean isShowing()
   {
-    if (this.mDuration == 0) {}
-    for (long l = 2000L; (System.currentTimeMillis() - this.mLastShowedTime > l) || (this.isUserTouched); l = 3500L) {
-      return false;
+    long l;
+    if (this.mDuration == 0) {
+      l = 2000L;
+    } else {
+      l = 3500L;
     }
-    return true;
+    return (System.currentTimeMillis() - this.mLastShowedTime <= l) && (!this.isUserTouched);
   }
   
   public void setAutoTextSize()
@@ -413,14 +375,14 @@ public class MiniToast
       this.mShowingToast = create(getStatusBarHeight());
       this.mShowingToast.show();
     }
-    for (;;)
+    else
     {
-      this.isUserTouched = false;
-      this.mLastShowedTime = System.currentTimeMillis();
-      return this.mShowingToast;
       this.mShowingToast = create(0);
       this.mShowingToast.show();
     }
+    this.isUserTouched = false;
+    this.mLastShowedTime = System.currentTimeMillis();
+    return this.mShowingToast;
   }
   
   public Toast show(int paramInt)
@@ -434,7 +396,7 @@ public class MiniToast
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.MiniToast
  * JD-Core Version:    0.7.0.1
  */

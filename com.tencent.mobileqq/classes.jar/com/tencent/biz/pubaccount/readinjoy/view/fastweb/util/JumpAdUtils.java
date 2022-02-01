@@ -5,17 +5,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
-import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendAdData;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusBannerBigPicItemData;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusBannerVideoItemData;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusInnerData;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdService;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
+import com.tencent.mobileqq.kandian.biz.fastweb.data.AdData;
+import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.BaseData;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.widget.KandianPopupWindowForAd;
 
@@ -27,41 +25,64 @@ public class JumpAdUtils
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("param_ad_json", paramString);
-    PublicTransFragmentActivity.b(paramActivity, localIntent, ReadInJoyNativeAdFragment.class);
+    PublicTransFragmentActivity.b(paramActivity, localIntent, ((IRIJAdService)QRoute.api(IRIJAdService.class)).getReadInJoyNativeAdFragment());
     return Integer.valueOf(0);
   }
   
   public static Integer a(Context paramContext, String paramString)
   {
-    String str = paramString;
+    Object localObject = paramString;
     if (!TextUtils.isEmpty(paramString))
     {
-      str = paramString;
-      if (NetworkUtil.h(paramContext)) {
-        str = paramString + "&acttype=42";
+      localObject = paramString;
+      if (NetworkUtil.isWifiConnected(paramContext))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append("&acttype=42");
+        localObject = ((StringBuilder)localObject).toString();
       }
     }
-    return ReadInJoyUtils.a(paramContext, str);
+    return Integer.valueOf(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).jumpTo(paramContext, (String)localObject));
   }
   
   public static Integer a(Context paramContext, String paramString1, String paramString2)
   {
-    String str = paramString2;
+    Object localObject = paramString2;
     if (!TextUtils.isEmpty(paramString2)) {
-      if (!paramString2.contains("?")) {
-        break label70;
+      if (paramString2.contains("?"))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString2);
+        ((StringBuilder)localObject).append("?");
+        localObject = ((StringBuilder)localObject).toString();
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString2);
+        ((StringBuilder)localObject).append("&");
+        localObject = ((StringBuilder)localObject).toString();
       }
     }
-    label70:
-    for (str = paramString2 + "?"; NativeAdUtils.a(paramContext, paramString1); str = paramString2 + "&") {
-      return ReadInJoyUtils.a(paramContext, str + "_wv=33554437");
+    if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAppInstall(paramContext, paramString1))
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append((String)localObject);
+      paramString1.append("_wv=33554437");
+      paramString1 = paramString1.toString();
+      return Integer.valueOf(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).jumpTo(paramContext, paramString1));
     }
-    return a(paramContext, str + "_wv=1");
+    paramString1 = new StringBuilder();
+    paramString1.append((String)localObject);
+    paramString1.append("_wv=1");
+    return a(paramContext, paramString1.toString());
   }
   
   public static void a()
   {
-    if ((a != null) && (a.isShowing())) {
+    KandianPopupWindowForAd localKandianPopupWindowForAd = a;
+    if ((localKandianPopupWindowForAd != null) && (localKandianPopupWindowForAd.isShowing())) {
       a.dismiss();
     }
     a = null;
@@ -69,63 +90,50 @@ public class JumpAdUtils
   
   public static void a(Activity paramActivity, AdData paramAdData)
   {
-    if (paramAdData.a) {
-      paramActivity = a(paramActivity, paramAdData.j);
+    if (paramAdData.c) {
+      paramActivity = a(paramActivity, paramAdData.r);
+    } else if (paramAdData.d == 12) {
+      paramActivity = a(paramActivity, paramAdData.p, paramAdData.n);
+    } else {
+      paramActivity = a(paramActivity, paramAdData.n);
     }
-    for (;;)
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)ReadInJoyUtils.a();
-      if (localQQAppInterface != null) {
-        NativeAdUtils.a(localQQAppInterface, paramAdData, paramActivity);
-      }
-      return;
-      if (paramAdData.jdField_b_of_type_Int == 12) {
-        paramActivity = a(paramActivity, paramAdData.h, paramAdData.f);
-      } else {
-        paramActivity = a(paramActivity, paramAdData.f);
-      }
+    QQAppInterface localQQAppInterface = (QQAppInterface)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime();
+    if (localQQAppInterface != null) {
+      ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).reportNativeEngineAdClick(localQQAppInterface, paramAdData, paramActivity);
     }
   }
   
   public static void a(BaseData paramBaseData, View paramView, Context paramContext)
   {
-    Object localObject;
-    if ((paramBaseData != null) && ((paramBaseData.s == 10) || (paramBaseData.s == 17) || (paramBaseData.s == 22) || (paramBaseData.s == 9)))
+    if ((paramBaseData != null) && ((paramBaseData.u == 10) || (paramBaseData.u == 17) || (paramBaseData.u == 22) || (paramBaseData.u == 9)))
     {
-      if (paramBaseData.s != 17) {
-        break label138;
+      if (paramBaseData.u == 17) {
+        paramBaseData = (ProteusBannerVideoItemData)paramBaseData;
+      } else if (paramBaseData.u == 10) {
+        paramBaseData = (AdData)paramBaseData;
+      } else if (paramBaseData.u == 9) {
+        paramBaseData = (AdData)paramBaseData;
+      } else {
+        paramBaseData = (AdData)paramBaseData;
       }
-      localObject = (ProteusBannerVideoItemData)paramBaseData;
-    }
-    for (;;)
-    {
       if (a == null) {
         a = new KandianPopupWindowForAd((Activity)paramContext);
       }
       if (!a.a()) {
         a.a();
       }
-      paramBaseData = new JumpAdUtils.1(paramContext, paramBaseData, (AdData)localObject);
-      if (a.a(0, ((AdData)localObject).jdField_b_of_type_JavaUtilArrayList))
+      JumpAdUtils.1 local1 = new JumpAdUtils.1(paramContext, paramBaseData);
+      if (a.a(0, paramBaseData.b))
       {
-        a.a(paramView, paramBaseData);
-        a.a(new JumpAdUtils.2(paramContext, (AdData)localObject));
-      }
-      return;
-      label138:
-      if (paramBaseData.s == 10) {
-        localObject = (ProteusBannerBigPicItemData)paramBaseData;
-      } else if (paramBaseData.s == 9) {
-        localObject = (RecommendAdData)paramBaseData;
-      } else {
-        localObject = (ProteusInnerData)paramBaseData;
+        a.a(paramView, local1);
+        a.a(new JumpAdUtils.2(paramContext, paramBaseData));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.JumpAdUtils
  * JD-Core Version:    0.7.0.1
  */

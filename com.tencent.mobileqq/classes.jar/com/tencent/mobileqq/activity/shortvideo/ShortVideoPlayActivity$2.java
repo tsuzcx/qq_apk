@@ -18,52 +18,72 @@ class ShortVideoPlayActivity$2
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    }
-    do
-    {
-      do
+      if (i != 2)
       {
-        do
+        if (i != 3)
         {
-          return;
-          QQToast.a(this.a, 2131719357, 0).a();
-          return;
-          String str = this.a.getString(2131719358);
-          paramMessage = (String)paramMessage.obj;
-          QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 2, str + paramMessage, 0).a();
-          ImageUtil.a(this.a, paramMessage);
-          return;
-          paramMessage = DialogUtil.a(this.a.jdField_a_of_type_AndroidContentContext, 232, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719389), this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719388), 2131719372, 2131718540, new ShortVideoPlayActivity.2.1(this), new ShortVideoPlayActivity.2.2(this));
-          ShortVideoPlayActivity.a(this.a, paramMessage);
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.d("ShortVideoPlayActivity", 2, "...mobile/none => wifi...");
+          if (i != 4)
+          {
+            if (i != 5) {
+              return;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("ShortVideoPlayActivity", 2, "...mobile/none => wifi...");
+            }
+            if ((this.a.mMediaPlayer != null) && (this.a.mMediaPlayer.get() != null)) {
+              ((TVK_IMediaPlayer)this.a.mMediaPlayer.get()).setDownloadNetworkChange(1);
+            }
           }
-        } while ((this.a.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null));
-        ((TVK_IMediaPlayer)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).setDownloadNetworkChange(1);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoPlayActivity", 2, "...wifi/none => mobile...");
+          else
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ShortVideoPlayActivity", 2, "...wifi/none => mobile...");
+            }
+            if ((this.a.mMediaPlayer != null) && (this.a.mMediaPlayer.get() != null)) {
+              ((TVK_IMediaPlayer)this.a.mMediaPlayer.get()).setDownloadNetworkChange(2);
+            }
+            if ((this.a.mPlayCallerType != 1) && (this.a.mPlayCallerType != 2))
+            {
+              if ((this.a.mPlayCallerType == 0) || (this.a.mPlayCallerType == 5)) {
+                ShortVideoPlayActivity.access$100(this.a);
+              }
+            }
+            else if (this.a.isPlaying())
+            {
+              this.a.pause();
+              this.a.showNetAlertDlg();
+            }
+          }
         }
-        if ((this.a.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-          ((TVK_IMediaPlayer)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).setDownloadNetworkChange(2);
+        else
+        {
+          paramMessage = DialogUtil.a(this.a.mContext, 232, this.a.mContext.getResources().getString(2131719107), this.a.mContext.getResources().getString(2131719106), 2131719090, 2131718205, new ShortVideoPlayActivity.2.1(this), new ShortVideoPlayActivity.2.2(this));
+          ShortVideoPlayActivity.access$000(this.a, paramMessage);
         }
-        if ((this.a.b != 1) && (this.a.b != 2)) {
-          break;
-        }
-      } while (!this.a.b());
-      this.a.j();
-      this.a.r();
-      return;
-    } while ((this.a.b != 0) && (this.a.b != 5));
-    ShortVideoPlayActivity.a(this.a);
+      }
+      else
+      {
+        String str = this.a.getString(2131719076);
+        paramMessage = (String)paramMessage.obj;
+        Context localContext = this.a.mContext;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append(paramMessage);
+        QQToast.a(localContext, 2, localStringBuilder.toString(), 0).a();
+        ImageUtil.a(this.a, paramMessage);
+      }
+    }
+    else {
+      QQToast.a(this.a, 2131719075, 0).a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.2
  * JD-Core Version:    0.7.0.1
  */

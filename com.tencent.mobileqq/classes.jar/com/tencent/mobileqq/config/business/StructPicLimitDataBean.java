@@ -16,32 +16,37 @@ public class StructPicLimitDataBean
   
   public static StructPicLimitDataBean a(String paramString)
   {
-    if (paramString == null) {}
+    if (paramString == null) {
+      return null;
+    }
     for (;;)
     {
-      return null;
       try
       {
         StructPicLimitDataBean localStructPicLimitDataBean = new StructPicLimitDataBean();
         paramString = new JSONObject(paramString);
-        if (paramString.optInt("openSwitch", 0) == 0) {}
-        for (boolean bool = true;; bool = false)
+        if (paramString.optInt("openSwitch", 0) == 0)
         {
+          bool = true;
           localStructPicLimitDataBean.jdField_a_of_type_Boolean = bool;
           localStructPicLimitDataBean.jdField_a_of_type_Long = paramString.optLong("picMaxLen", 134217728L);
           return localStructPicLimitDataBean;
         }
-        if (!QLog.isColorLevel()) {}
       }
-      catch (Exception paramString) {}
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("GlobalSearchConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+        }
+        return null;
+      }
+      boolean bool = false;
     }
-    QLog.e("GlobalSearchConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.StructPicLimitDataBean
  * JD-Core Version:    0.7.0.1
  */

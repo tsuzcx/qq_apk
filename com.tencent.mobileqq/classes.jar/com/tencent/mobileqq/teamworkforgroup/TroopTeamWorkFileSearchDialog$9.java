@@ -14,45 +14,40 @@ class TroopTeamWorkFileSearchDialog$9
     ??? = this.a;
     ???.jdField_a_of_type_Int -= 1;
     if ((paramBoolean1) && (paramInt1 == 0)) {
-      for (;;)
+      synchronized (this.a.jdField_a_of_type_JavaLangObject)
       {
-        synchronized (this.a.jdField_a_of_type_JavaLangObject)
-        {
-          if (this.a.jdField_a_of_type_JavaUtilList != null)
-          {
-            this.a.jdField_a_of_type_JavaUtilList.clear();
-            this.a.c = paramInt2;
-            this.a.e = paramBoolean2;
-            if (paramList == null) {
-              break;
-            }
-            this.a.jdField_b_of_type_Int = paramList.size();
-          }
-        }
-        synchronized (this.a.jdField_a_of_type_JavaLangObject)
-        {
-          this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
-          ??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5);
-          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(???);
-          return;
+        if (this.a.jdField_a_of_type_JavaUtilList != null) {
+          this.a.jdField_a_of_type_JavaUtilList.clear();
+        } else {
           this.a.jdField_a_of_type_JavaUtilList = new ArrayList();
-          continue;
-          paramList = finally;
-          throw paramList;
+        }
+        ??? = this.a;
+        ???.c = paramInt2;
+        ???.e = paramBoolean2;
+        if (paramList != null)
+        {
+          ???.jdField_b_of_type_Int = paramList.size();
+          synchronized (this.a.jdField_a_of_type_JavaLangObject)
+          {
+            this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
+            ??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5);
+            this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(???);
+            return;
+          }
         }
       }
     }
-    if (this.a.jdField_b_of_type_Boolean) {}
-    for (??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);; ??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5))
-    {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(???);
-      return;
+    if (this.a.jdField_b_of_type_Boolean) {
+      ??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);
+    } else {
+      ??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5);
     }
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(???);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.TroopTeamWorkFileSearchDialog.9
  * JD-Core Version:    0.7.0.1
  */

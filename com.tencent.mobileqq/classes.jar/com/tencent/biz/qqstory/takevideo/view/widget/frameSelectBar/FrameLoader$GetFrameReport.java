@@ -34,18 +34,23 @@ public class FrameLoader$GetFrameReport
   {
     StringBuilder localStringBuilder = new StringBuilder();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-    for (long l = 0L; localIterator.hasNext(); l = ((Long)((Map.Entry)localIterator.next()).getValue()).longValue() + l) {}
+    for (long l = 0L; localIterator.hasNext(); l += ((Long)((Map.Entry)localIterator.next()).getValue()).longValue()) {}
     if (this.jdField_a_of_type_JavaUtilMap.size() == 0) {
       return "there_is_no_frame";
     }
     this.jdField_a_of_type_Int = ((int)l / this.jdField_a_of_type_JavaUtilMap.size());
-    localStringBuilder.append("avg:").append(this.jdField_a_of_type_Int).append("|max:").append(this.jdField_a_of_type_Long).append("|maxId:").append(this.b);
+    localStringBuilder.append("avg:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("|max:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("|maxId:");
+    localStringBuilder.append(this.b);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.FrameLoader.GetFrameReport
  * JD-Core Version:    0.7.0.1
  */

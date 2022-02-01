@@ -6,7 +6,7 @@ public abstract interface FileUpload$UploadCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.upload.FileUpload.UploadCallback
  * JD-Core Version:    0.7.0.1
  */

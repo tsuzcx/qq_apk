@@ -23,15 +23,49 @@ class ReporterMachine$getFileRunnable
   {
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      if (!this.jdField_a_of_type_JavaLangString.endsWith("/")) {
-        this.jdField_a_of_type_JavaLangString += "/";
+      if (!this.jdField_a_of_type_JavaLangString.endsWith("/"))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append("/");
+        this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
       }
-      this.jdField_a_of_type_JavaUtilArrayList.add(VFSAssistantUtils.getSDKPrivatePath(this.jdField_a_of_type_JavaLangString + this.b + this.d));
-      this.jdField_a_of_type_JavaUtilArrayList.add(VFSAssistantUtils.getSDKPrivatePath(this.jdField_a_of_type_JavaLangString + this.b + this.e));
-      this.jdField_a_of_type_JavaUtilArrayList.add(VFSAssistantUtils.getSDKPrivatePath(this.jdField_a_of_type_JavaLangString + this.b + this.f));
-      this.jdField_a_of_type_JavaUtilArrayList.add(VFSAssistantUtils.getSDKPrivatePath(this.jdField_a_of_type_JavaLangString + this.c + this.d));
-      this.jdField_a_of_type_JavaUtilArrayList.add(VFSAssistantUtils.getSDKPrivatePath(this.jdField_a_of_type_JavaLangString + this.c + this.e));
-      this.jdField_a_of_type_JavaUtilArrayList.add(VFSAssistantUtils.getSDKPrivatePath(this.jdField_a_of_type_JavaLangString + this.c + this.f));
+      Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
+      localStringBuilder.append(this.d);
+      ((ArrayList)localObject).add(VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString()));
+      localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
+      localStringBuilder.append(this.e);
+      ((ArrayList)localObject).add(VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString()));
+      localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
+      localStringBuilder.append(this.f);
+      ((ArrayList)localObject).add(VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString()));
+      localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.c);
+      localStringBuilder.append(this.d);
+      ((ArrayList)localObject).add(VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString()));
+      localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.c);
+      localStringBuilder.append(this.e);
+      ((ArrayList)localObject).add(VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString()));
+      localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.c);
+      localStringBuilder.append(this.f);
+      ((ArrayList)localObject).add(VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString()));
     }
   }
   
@@ -43,7 +77,7 @@ class ReporterMachine$getFileRunnable
     while (localIterator.hasNext())
     {
       localObject = new File((String)localIterator.next());
-      if ((localObject != null) && (((File)localObject).exists()) && (((File)localObject).isDirectory()))
+      if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
       {
         localObject = ((File)localObject).listFiles();
         if (localObject != null) {
@@ -58,21 +92,21 @@ class ReporterMachine$getFileRunnable
       try
       {
         ReporterMachine.a().add(str);
-        label108:
+        label107:
         i += 1;
         continue;
         return;
       }
       catch (Exception localException)
       {
-        break label108;
+        break label107;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.repoter.ReporterMachine.getFileRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -14,66 +14,70 @@ public class ApkgFileUtils
   
   public static HashMap<String, ApkgFileUtils.WxapkgFile> getFileMapFromApkg(File paramFile)
   {
-    if (!isApkgFileExist(paramFile))
-    {
-      paramFile = null;
-      return paramFile;
+    if (!isApkgFileExist(paramFile)) {
+      return null;
     }
     HashMap localHashMap = new HashMap();
-    RandomAccessFile localRandomAccessFile;
     try
     {
-      localRandomAccessFile = new RandomAccessFile(paramFile, "r");
-      if (localRandomAccessFile.readByte() != -66) {
-        throw new RuntimeException("File type error");
+      RandomAccessFile localRandomAccessFile = new RandomAccessFile(paramFile, "r");
+      if (localRandomAccessFile.readByte() == -66)
+      {
+        localRandomAccessFile.seek(14L);
+        int j = localRandomAccessFile.readInt();
+        int i = 0;
+        while (i < j)
+        {
+          int k = localRandomAccessFile.readInt();
+          paramFile = new byte[k];
+          localRandomAccessFile.read(paramFile, 0, k);
+          String str = new File(new String(paramFile, 0, k)).getAbsolutePath();
+          paramFile = str;
+          if (str.charAt(0) == '/') {
+            paramFile = str.substring(1);
+          }
+          localHashMap.put(paramFile, new ApkgFileUtils.WxapkgFile(paramFile, localRandomAccessFile.readInt(), localRandomAccessFile.readInt()));
+          i += 1;
+        }
       }
+      throw new RuntimeException("File type error");
     }
     catch (Throwable paramFile)
     {
       QMLog.e(TAG, "getFileMapFromApkg fail", paramFile);
-      return localHashMap;
     }
-    localRandomAccessFile.seek(14L);
-    int j = localRandomAccessFile.readInt();
-    int i = 0;
-    for (;;)
-    {
-      paramFile = localHashMap;
-      if (i >= j) {
-        break;
-      }
-      int k = localRandomAccessFile.readInt();
-      paramFile = new byte[k];
-      localRandomAccessFile.read(paramFile, 0, k);
-      String str = new File(new String(paramFile, 0, k)).getAbsolutePath();
-      paramFile = str;
-      if (str.charAt(0) == '/') {
-        paramFile = str.substring(1);
-      }
-      localHashMap.put(paramFile, new ApkgFileUtils.WxapkgFile(paramFile, localRandomAccessFile.readInt(), localRandomAccessFile.readInt()));
-      i += 1;
-    }
+    return localHashMap;
   }
   
   public static boolean isApkgFileExist(File paramFile)
   {
-    boolean bool;
     if (paramFile == null) {
-      bool = false;
+      return false;
     }
-    do
+    if (paramFile.exists())
     {
-      return bool;
-      bool = true;
-      if (!paramFile.exists()) {
-        break;
+      if (!paramFile.isDirectory())
+      {
+        if (paramFile.canRead()) {
+          return true;
+        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("File '");
+        localStringBuilder.append(paramFile);
+        localStringBuilder.append("' cannot be read");
+        throw new IOException(localStringBuilder.toString());
       }
-      if (paramFile.isDirectory()) {
-        throw new IOException("File '" + paramFile + "' exists but is a directory");
-      }
-    } while (paramFile.canRead());
-    throw new IOException("File '" + paramFile + "' cannot be read");
-    throw new FileNotFoundException("File '" + paramFile + "' does not exist");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("File '");
+      localStringBuilder.append(paramFile);
+      localStringBuilder.append("' exists but is a directory");
+      throw new IOException(localStringBuilder.toString());
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("File '");
+    localStringBuilder.append(paramFile);
+    localStringBuilder.append("' does not exist");
+    throw new FileNotFoundException(localStringBuilder.toString());
   }
   
   public static byte[] readApkgToByte(File paramFile, int paramInt1, int paramInt2)
@@ -155,7 +159,7 @@ public class ApkgFileUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.utils.ApkgFileUtils
  * JD-Core Version:    0.7.0.1
  */

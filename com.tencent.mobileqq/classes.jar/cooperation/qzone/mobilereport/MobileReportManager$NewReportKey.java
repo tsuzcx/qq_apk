@@ -24,26 +24,25 @@ class MobileReportManager$NewReportKey
   
   public static NewReportKey build(@NonNull BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
-    String str1 = "0";
-    str2 = "";
     String str3 = paramAppInfo.buffer.get();
-    localObject = str2;
+    boolean bool = TextUtils.isEmpty(str3);
+    String str1 = "0";
+    String str2 = "";
     paramAppInfo = str1;
-    if (!TextUtils.isEmpty(str3)) {
-      paramAppInfo = str1;
-    }
-    try
+    Object localObject = str2;
+    if (!bool)
     {
-      localObject = new JSONObject(str3);
       paramAppInfo = str1;
-      str1 = ((JSONObject)localObject).getString("ad_id");
-      paramAppInfo = str1;
-      localObject = ((JSONObject)localObject).getString("pos_id");
-      paramAppInfo = str1;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      try
+      {
+        localObject = new JSONObject(str3);
+        paramAppInfo = str1;
+        str1 = ((JSONObject)localObject).getString("ad_id");
+        paramAppInfo = str1;
+        localObject = ((JSONObject)localObject).getString("pos_id");
+        paramAppInfo = str1;
+      }
+      catch (Exception localException)
       {
         localException.printStackTrace();
         localObject = str2;
@@ -61,24 +60,40 @@ class MobileReportManager$NewReportKey
       ((JSONObject)localObject).put("page_id", this.mPageId);
       ((JSONObject)localObject).put("item_id", this.mItemId);
       ((JSONObject)localObject).put("item_type", this.mItemType);
-      localObject = "" + ((JSONObject)localObject).toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(((JSONObject)localObject).toString());
+      localObject = localStringBuilder.toString();
       return localObject;
     }
     catch (Exception localException)
     {
-      QLog.e("MobileReport.Manager", 1, "parse json exception " + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parse json exception ");
+      localStringBuilder.append(localException);
+      QLog.e("MobileReport.Manager", 1, localStringBuilder.toString());
     }
     return "";
   }
   
   public String toString()
   {
-    return "ReportKey{appid=" + this.mAppId + ", pageId=" + this.mPageId + ", mItemId=" + this.mItemId + ", mItemType=" + this.mItemType + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ReportKey{appid=");
+    localStringBuilder.append(this.mAppId);
+    localStringBuilder.append(", pageId=");
+    localStringBuilder.append(this.mPageId);
+    localStringBuilder.append(", mItemId=");
+    localStringBuilder.append(this.mItemId);
+    localStringBuilder.append(", mItemType=");
+    localStringBuilder.append(this.mItemType);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.mobilereport.MobileReportManager.NewReportKey
  * JD-Core Version:    0.7.0.1
  */

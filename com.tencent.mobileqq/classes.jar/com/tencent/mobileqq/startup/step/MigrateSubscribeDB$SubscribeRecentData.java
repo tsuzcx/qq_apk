@@ -17,12 +17,33 @@ class MigrateSubscribeDB$SubscribeRecentData
   
   public String toString()
   {
-    return "mSubscribeID: " + this.jdField_a_of_type_JavaLangString + " | mSubscribeName: " + this.jdField_b_of_type_JavaLangString + " | mLastMsg: " + this.jdField_c_of_type_JavaLangString + " | mLastMsgTime: " + this.jdField_a_of_type_Long + " | mLastMsgID: " + this.jdField_b_of_type_Long + " | mLastReorderTime: " + this.jdField_c_of_type_Long + " | mDraft: " + this.d + " | mDraftTime: " + this.e + " | mSubscribeHeadUrl: " + this.f + " | mUnreadCount: " + this.jdField_a_of_type_Int;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mSubscribeID: ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" | mSubscribeName: ");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" | mLastMsg: ");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(" | mLastMsgTime: ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" | mLastMsgID: ");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(" | mLastReorderTime: ");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(" | mDraft: ");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(" | mDraftTime: ");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(" | mSubscribeHeadUrl: ");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(" | mUnreadCount: ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.MigrateSubscribeDB.SubscribeRecentData
  * JD-Core Version:    0.7.0.1
  */

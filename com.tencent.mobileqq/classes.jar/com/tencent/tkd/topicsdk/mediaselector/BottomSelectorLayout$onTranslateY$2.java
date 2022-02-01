@@ -15,12 +15,13 @@ final class BottomSelectorLayout$onTranslateY$2
     if (BottomSelectorLayout.a(this.a)) {
       BottomSelectorLayout.a(this.a);
     }
-    BottomSelectorLayout.a(this.a, 0.0F, this.a.f(), false, 4, null);
+    paramView = this.a;
+    BottomSelectorLayout.a(paramView, 0.0F, paramView.e(), false, 4, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.BottomSelectorLayout.onTranslateY.2
  * JD-Core Version:    0.7.0.1
  */

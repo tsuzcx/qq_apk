@@ -16,10 +16,10 @@ import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profilecard.base.config.ProfileConfig;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.ProfileConfigHelper;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -37,11 +37,11 @@ public class InterestSwitchEditActivity
   private LinearLayoutManager jdField_a_of_type_AndroidxRecyclerviewWidgetLinearLayoutManager = new InterestSwitchEditActivity.3(this, this);
   private RecyclerView jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView;
   private Card jdField_a_of_type_ComTencentMobileqqDataCard;
+  private ProfileConfig jdField_a_of_type_ComTencentMobileqqProfilecardBaseConfigProfileConfig = null;
   private CardSettingHandler jdField_a_of_type_ComTencentMobileqqProfilesettingCardSettingHandler;
   private CardSettingObserver jdField_a_of_type_ComTencentMobileqqProfilesettingCardSettingObserver = new InterestSwitchEditActivity.1(this);
   private ProfileBasePrivacySettingAdapter.PrivacySettingClickListener jdField_a_of_type_ComTencentMobileqqProfilesettingProfileBasePrivacySettingAdapter$PrivacySettingClickListener = new InterestSwitchEditActivity.2(this);
   private ProfileBasePrivacySettingAdapter jdField_a_of_type_ComTencentMobileqqProfilesettingProfileBasePrivacySettingAdapter;
-  private ProfileConfigHelper jdField_a_of_type_ComTencentMobileqqWidgetProfileConfigHelper = null;
   private ArrayList<ProfileDisplaySettingItem> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
   private int a(ProfileDisplaySettingItem paramProfileDisplaySettingItem)
@@ -53,14 +53,10 @@ public class InterestSwitchEditActivity
     {
     default: 
       return -1;
-    case 40272: 
-      return 6;
-    case 41611: 
-      return 1;
-    case 41610: 
-      return 2;
-    case 41609: 
-      return 3;
+    case 41623: 
+      return 10;
+    case 41622: 
+      return 9;
     case 41619: 
       return 4;
     case 41618: 
@@ -69,12 +65,16 @@ public class InterestSwitchEditActivity
       return 7;
     case 41613: 
       return 8;
-    case 41622: 
-      return 9;
-    case 41623: 
-      return 10;
+    case 41611: 
+      return 1;
+    case 41610: 
+      return 2;
+    case 41609: 
+      return 3;
+    case 41607: 
+      return 11;
     }
-    return 11;
+    return 6;
   }
   
   public static Intent a(Context paramContext)
@@ -84,44 +84,40 @@ public class InterestSwitchEditActivity
   
   private void a()
   {
-    int i = 1;
-    Object localObject;
     if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      localObject = ProfileSettingUtils.a.a(42505, this.jdField_a_of_type_JavaUtilArrayList);
-      int j = ProfileSettingUtils.a.a(42505, this.jdField_a_of_type_ComTencentMobileqqDataCard, this.app);
+      Object localObject = ProfileSettingUtils.a.a(42505, this.jdField_a_of_type_JavaUtilArrayList);
+      int i = ProfileSettingUtils.a.a(42505, this.jdField_a_of_type_ComTencentMobileqqDataCard, this.app);
       if (localObject != null)
       {
         localObject = this.app;
-        if (j != 1) {
-          break label78;
+        if (i == 1) {
+          i = 1;
+        } else {
+          i = 2;
         }
+        ReportController.b((AppRuntime)localObject, "dc00898", "", "", "0X800B5F0", "0X800B5F0", i, 0, "", "", "", "");
       }
-    }
-    for (;;)
-    {
-      ReportController.b((AppRuntime)localObject, "dc00898", "", "", "0X800B5F0", "0X800B5F0", i, 0, "", "", "", "");
-      return;
-      label78:
-      i = 2;
     }
   }
   
   private void a(int paramInt, ProfileDisplaySettingItem paramProfileDisplaySettingItem)
   {
     int i = a(paramProfileDisplaySettingItem);
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 0: 
-      ReportController.b(this.app, "dc00898", "", "", "0X800B1D7", "0X800B1D7", i, 0, "", "", "", "");
-      return;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          return;
+        }
+        ReportController.b(this.app, "dc00898", "", "", "0X800B1D8", "0X800B1D8", i, 0, "", "", "", "");
+        return;
+      }
       ReportController.b(this.app, "dc00898", "", "", "0X800B1D9", "0X800B1D9", i, 0, "", "", "", "");
       return;
     }
-    ReportController.b(this.app, "dc00898", "", "", "0X800B1D8", "0X800B1D8", i, 0, "", "", "", "");
+    ReportController.b(this.app, "dc00898", "", "", "0X800B1D7", "0X800B1D7", i, 0, "", "", "", "");
   }
   
   private void a(ProfileDisplaySettingItem paramProfileDisplaySettingItem)
@@ -131,42 +127,45 @@ public class InterestSwitchEditActivity
     switch (paramProfileDisplaySettingItem.b())
     {
     default: 
-    case 42172: 
-    case 42128: 
     case 42425: 
-      do
+      if (!paramProfileDisplaySettingItem.b())
       {
-        return;
-        if (paramProfileDisplaySettingItem.b())
-        {
-          ReportController.b(this.app, "dc00898", "", "", "0X80092ED", "0X80092ED", 0, 0, "", "", "", "");
-          return;
-        }
-        ReportController.b(this.app, "dc00898", "", "", "0X80092EE", "0X80092EE", 0, 0, "", "", "", "");
-        return;
-        localQQAppInterface = this.app;
-        if (paramProfileDisplaySettingItem.b()) {}
-        for (i = 1;; i = 2)
-        {
-          ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8008407", "0X8008407", i, 0, "", "", "", "");
-          return;
-        }
-      } while (paramProfileDisplaySettingItem.b());
-      ReportController.b(this.app, "dc00898", "", "", "0X800B479", "0X800B479", 0, 0, "", "", "", "");
-      return;
-    case 42340: 
-      localQQAppInterface = this.app;
-      if (paramProfileDisplaySettingItem.b()) {}
-      for (i = 1;; i = 2)
-      {
-        ReportController.b(localQQAppInterface, "dc00898", "", "", "0X800A7DA", "qq_vip", i, 0, "", "", "", "");
+        ReportController.b(this.app, "dc00898", "", "", "0X800B479", "0X800B479", 0, 0, "", "", "", "");
         return;
       }
+      break;
+    case 42377: 
+      ((IWSMinePanel)QRoute.api(IWSMinePanel.class)).reportProfileSettingBtnClick(paramProfileDisplaySettingItem.b());
+      return;
     case 42356: 
       ReportController.b(this.app, "dc00898", "", "", "0X800AB37", "0X800AB37", 0, 0, "", "", "", "");
       return;
+    case 42340: 
+      localQQAppInterface = this.app;
+      if (paramProfileDisplaySettingItem.b()) {
+        i = 1;
+      } else {
+        i = 2;
+      }
+      ReportController.b(localQQAppInterface, "dc00898", "", "", "0X800A7DA", "qq_vip", i, 0, "", "", "", "");
+      return;
+    case 42172: 
+      if (paramProfileDisplaySettingItem.b())
+      {
+        ReportController.b(this.app, "dc00898", "", "", "0X80092ED", "0X80092ED", 0, 0, "", "", "", "");
+        return;
+      }
+      ReportController.b(this.app, "dc00898", "", "", "0X80092EE", "0X80092EE", 0, 0, "", "", "", "");
+      return;
+    case 42128: 
+      localQQAppInterface = this.app;
+      if (paramProfileDisplaySettingItem.b()) {
+        i = 1;
+      } else {
+        i = 2;
+      }
+      ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8008407", "0X8008407", i, 0, "", "", "", "");
     }
-    ((IWSMinePanel)QRoute.api(IWSMinePanel.class)).reportProfileSettingBtnClick(paramProfileDisplaySettingItem.b());
   }
   
   private void a(ProfileDisplaySettingItem paramProfileDisplaySettingItem, int paramInt)
@@ -189,18 +188,18 @@ public class InterestSwitchEditActivity
   private void b(ProfileDisplaySettingItem paramProfileDisplaySettingItem)
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
-    RecyclerView localRecyclerView = (RecyclerView)View.inflate(this, 2131561482, null);
+    RecyclerView localRecyclerView = (RecyclerView)View.inflate(this, 2131561326, null);
     localRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     ActionSheetPrivacySelectAdapter localActionSheetPrivacySelectAdapter = new ActionSheetPrivacySelectAdapter(this, paramProfileDisplaySettingItem);
     localActionSheetPrivacySelectAdapter.a(new InterestSwitchEditActivity.4(this, paramProfileDisplaySettingItem, localActionSheet));
     paramProfileDisplaySettingItem = new ArrayList();
-    paramProfileDisplaySettingItem.add(new ActionSheetPrivacySelectAdapter.ActionSheetPrivacySelectBean(0, getString(2131695096)));
-    paramProfileDisplaySettingItem.add(new ActionSheetPrivacySelectAdapter.ActionSheetPrivacySelectBean(1, getString(2131695113)));
-    paramProfileDisplaySettingItem.add(new ActionSheetPrivacySelectAdapter.ActionSheetPrivacySelectBean(2, getString(2131695114)));
+    paramProfileDisplaySettingItem.add(new ActionSheetPrivacySelectAdapter.ActionSheetPrivacySelectBean(0, getString(2131695086)));
+    paramProfileDisplaySettingItem.add(new ActionSheetPrivacySelectAdapter.ActionSheetPrivacySelectBean(1, getString(2131695103)));
+    paramProfileDisplaySettingItem.add(new ActionSheetPrivacySelectAdapter.ActionSheetPrivacySelectBean(2, getString(2131695104)));
     localActionSheetPrivacySelectAdapter.a(paramProfileDisplaySettingItem);
     localRecyclerView.setAdapter(localActionSheetPrivacySelectAdapter);
     localActionSheet.addView(localRecyclerView);
-    localActionSheet.addCancelButton(2131690800);
+    localActionSheet.addCancelButton(2131690728);
     localActionSheet.setRoundCornerTop(true);
     if (!isFinishing()) {
       localActionSheet.show();
@@ -227,23 +226,17 @@ public class InterestSwitchEditActivity
     {
     default: 
       return;
-    case 41611: 
-      ReportController.b(this.app, "dc00898", "", "", "0X800B1CC", "0X800B1CC", 0, 0, "", "", "", "");
+    case 41623: 
+      ReportController.b(this.app, "dc00898", "", "", "0X800B1D4", "0X800B1D4", 0, 0, "", "", "", "");
       return;
-    case 41610: 
-      ReportController.b(this.app, "dc00898", "", "", "0X800B1D5", "0X800B1D5", 0, 0, "", "", "", "");
-      return;
-    case 41607: 
-      ReportController.b(this.app, "dc00898", "", "", "0X800B1CD", "0X800B1CD", 0, 0, "", "", "", "");
-      return;
-    case 41609: 
-      ReportController.b(this.app, "dc00898", "", "", "0X800B1D6", "0X800B1D6", 0, 0, "", "", "", "");
-      return;
-    case 41618: 
-      ReportController.b(this.app, "dc00898", "", "", "0X800B1CF", "0X800B1CF", 0, 0, "", "", "", "");
+    case 41622: 
+      ReportController.b(this.app, "dc00898", "", "", "0X800B1D3", "0X800B1D3", 0, 0, "", "", "", "");
       return;
     case 41619: 
       ReportController.b(this.app, "dc00898", "", "", "0X800B1CE", "0X800B1CE", 0, 0, "", "", "", "");
+      return;
+    case 41618: 
+      ReportController.b(this.app, "dc00898", "", "", "0X800B1CF", "0X800B1CF", 0, 0, "", "", "", "");
       return;
     case 41614: 
       ReportController.b(this.app, "dc00898", "", "", "0X800B1D1", "0X800B1D1", 0, 0, "", "", "", "");
@@ -251,11 +244,17 @@ public class InterestSwitchEditActivity
     case 41613: 
       ReportController.b(this.app, "dc00898", "", "", "0X800B1D2", "0X800B1D2", 0, 0, "", "", "", "");
       return;
-    case 41622: 
-      ReportController.b(this.app, "dc00898", "", "", "0X800B1D3", "0X800B1D3", 0, 0, "", "", "", "");
+    case 41611: 
+      ReportController.b(this.app, "dc00898", "", "", "0X800B1CC", "0X800B1CC", 0, 0, "", "", "", "");
       return;
-    case 41623: 
-      ReportController.b(this.app, "dc00898", "", "", "0X800B1D4", "0X800B1D4", 0, 0, "", "", "", "");
+    case 41610: 
+      ReportController.b(this.app, "dc00898", "", "", "0X800B1D5", "0X800B1D5", 0, 0, "", "", "", "");
+      return;
+    case 41609: 
+      ReportController.b(this.app, "dc00898", "", "", "0X800B1D6", "0X800B1D6", 0, 0, "", "", "", "");
+      return;
+    case 41607: 
+      ReportController.b(this.app, "dc00898", "", "", "0X800B1CD", "0X800B1CD", 0, 0, "", "", "", "");
       return;
     }
     ReportController.b(this.app, "dc00898", "", "", "0X800B1D0", "0X800B1D0", 0, 0, "", "", "", "");
@@ -270,62 +269,58 @@ public class InterestSwitchEditActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561481);
+    super.setContentView(2131561325);
     this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqProfilesettingCardSettingObserver);
-    setTitle(getString(2131695069));
-    this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView = ((RecyclerView)findViewById(2131363516));
+    setTitle(getString(2131695059));
+    this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView = ((RecyclerView)findViewById(2131363443));
     this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileBasePrivacySettingAdapter = new ProfileBasePrivacySettingAdapter(this, this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileBasePrivacySettingAdapter$PrivacySettingClickListener);
     this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidxRecyclerviewWidgetLinearLayoutManager);
     this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileBasePrivacySettingAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetProfileConfigHelper = new ProfileConfigHelper(this.app, null);
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqWidgetProfileConfigHelper.a(11);
+    this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseConfigProfileConfig = new ProfileConfig(this.app, null);
+    boolean bool = this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseConfigProfileConfig.isSwitchEnable(11);
     ((IWSMinePanel)QRoute.api(IWSMinePanel.class)).reportProfileSettingExposure(bool);
     this.jdField_a_of_type_ComTencentMobileqqDataCard = ((FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.app.getCurrentUin());
     this.jdField_a_of_type_JavaUtilArrayList.clear();
-    ProfileSettingUtils.a.a(this.app, this.jdField_a_of_type_ComTencentMobileqqDataCard, this.jdField_a_of_type_ComTencentMobileqqWidgetProfileConfigHelper, this.jdField_a_of_type_JavaUtilArrayList);
+    ProfileSettingUtils.a.a(this.app, this.jdField_a_of_type_ComTencentMobileqqDataCard, this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseConfigProfileConfig, this.jdField_a_of_type_JavaUtilArrayList);
     a();
     bool = ProfileSettingUtils.a.a(this.jdField_a_of_type_JavaUtilArrayList);
     this.jdField_a_of_type_ComTencentMobileqqProfilesettingCardSettingHandler = ((CardSettingHandler)this.app.getBusinessHandler(BusinessHandlerFactory.CARD_SETTING_HANDLER));
-    if (bool)
-    {
-      if (NetworkUtil.d(BaseApplication.getContext())) {
-        break label289;
+    if (bool) {
+      if (!NetworkUtil.isNetSupport(BaseApplication.getContext())) {
+        QQToast.a(BaseApplicationImpl.sApplication, 2131694422, 0).b(getTitleBarHeight());
+      } else {
+        c();
       }
-      QQToast.a(BaseApplicationImpl.sApplication, 2131694457, 0).b(getTitleBarHeight());
     }
-    for (;;)
-    {
-      b();
-      if (QLog.isColorLevel()) {
-        QLog.i("InterestSwitchEditActivity", 2, String.format("doOnCreate needReq=%s items=%s", new Object[] { Boolean.valueOf(bool), this.jdField_a_of_type_JavaUtilArrayList }));
-      }
-      return true;
-      label289:
-      c();
+    b();
+    if (QLog.isColorLevel()) {
+      QLog.i("InterestSwitchEditActivity", 2, String.format("doOnCreate needReq=%s items=%s", new Object[] { Boolean.valueOf(bool), this.jdField_a_of_type_JavaUtilArrayList }));
     }
+    return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetProfileConfigHelper != null)
+    ProfileConfig localProfileConfig = this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseConfigProfileConfig;
+    if (localProfileConfig != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetProfileConfigHelper.a();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetProfileConfigHelper = null;
+      localProfileConfig.destroy();
+      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseConfigProfileConfig = null;
     }
     this.app.removeObserver(this.jdField_a_of_type_ComTencentMobileqqProfilesettingCardSettingObserver);
   }
   
-  public void doOnPause()
+  protected void doOnPause()
   {
     super.doOnPause();
     ((IWSMinePanel)QRoute.api(IWSMinePanel.class)).reportProfileSettingPageVisitExit();
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
     ((IWSMinePanel)QRoute.api(IWSMinePanel.class)).reportProfileSettingPageVisitEnter();
@@ -356,7 +351,7 @@ public class InterestSwitchEditActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.InterestSwitchEditActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -14,42 +14,42 @@ class PublicAccountAdvertisementActivity$6
   
   public void run()
   {
-    Object localObject;
     if (!PublicAccountAdvertisementActivity.f(this.this$0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PublicAccountAdvertisementActivity", 2, "doAutoJump = canScrollUp " + this.this$0.a());
-      }
-      localObject = PublicAccountAdvertisementActivity.a(this.this$0).a;
-      if ((localObject != null) && (((VideoDownloadItem)localObject).k == 1))
+      if (QLog.isColorLevel())
       {
-        if (!this.this$0.a()) {
-          break label130;
-        }
-        if ((PublicAccountAdvertisementActivity.c(this.this$0)) && (PublicAccountAdvertisementActivity.a(this.this$0) != null))
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("doAutoJump = canScrollUp ");
+        ((StringBuilder)localObject).append(this.this$0.a());
+        QLog.d("PublicAccountAdvertisementActivity", 2, ((StringBuilder)localObject).toString());
+      }
+      Object localObject = PublicAccountAdvertisementActivity.a(this.this$0).a;
+      if ((localObject != null) && (((VideoDownloadItem)localObject).k == 1)) {
+        if (this.this$0.a())
         {
-          PublicAccountAdvertisementActivity.e(this.this$0, true);
-          PublicAccountAdvertisementActivity.a(this.this$0).setCurrentPage(1);
+          if ((PublicAccountAdvertisementActivity.c(this.this$0)) && (PublicAccountAdvertisementActivity.a(this.this$0) != null))
+          {
+            PublicAccountAdvertisementActivity.e(this.this$0, true);
+            PublicAccountAdvertisementActivity.a(this.this$0).setCurrentPage(1);
+            PublicAccountAdvertisementActivity.b(this.this$0, 1);
+          }
+        }
+        else if (PublicAccountAdvertisementActivity.a(this.this$0).b())
+        {
+          localObject = PublicAccountAdvertisementActivity.a(this.this$0).a();
+          if ((localObject != null) && (((View)localObject).getVisibility() == 0) && (((View)localObject).isClickable()))
+          {
+            PublicAccountAdvertisementActivity.e(this.this$0, true);
+            ((View)localObject).performClick();
+          }
         }
       }
     }
-    label130:
-    do
-    {
-      PublicAccountAdvertisementActivity.b(this.this$0, 1);
-      do
-      {
-        return;
-      } while (!PublicAccountAdvertisementActivity.a(this.this$0).b());
-      localObject = PublicAccountAdvertisementActivity.a(this.this$0).a();
-    } while ((localObject == null) || (((View)localObject).getVisibility() != 0) || (!((View)localObject).isClickable()));
-    PublicAccountAdvertisementActivity.e(this.this$0, true);
-    ((View)localObject).performClick();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity.6
  * JD-Core Version:    0.7.0.1
  */

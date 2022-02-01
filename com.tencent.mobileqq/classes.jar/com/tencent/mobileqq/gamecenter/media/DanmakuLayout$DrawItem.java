@@ -48,15 +48,12 @@ class DanmakuLayout$DrawItem
       this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth();
       this.jdField_c_of_type_Int = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredHeight();
       this.jdField_c_of_type_Float = (this.jdField_b_of_type_Int + DanmakuLayout.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuLayout));
-      if (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuHost$Item.jdField_b_of_type_Double != 0.0D) {
-        break label122;
+      if (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuHost$Item.jdField_b_of_type_Double == 0.0D) {
+        this.jdField_b_of_type_Long = a(this.jdField_b_of_type_Int);
+      } else {
+        this.jdField_b_of_type_Long = ((this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuHost$Item.jdField_b_of_type_Double * 1000.0D));
       }
-    }
-    label122:
-    for (this.jdField_b_of_type_Long = a(this.jdField_b_of_type_Int);; this.jdField_b_of_type_Long = ((this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuHost$Item.jdField_b_of_type_Double * 1000.0D)))
-    {
       this.jdField_b_of_type_Float = (this.jdField_c_of_type_Float / (float)this.jdField_b_of_type_Long);
-      return;
     }
   }
   
@@ -96,41 +93,32 @@ class DanmakuLayout$DrawItem
       this.jdField_a_of_type_Long = paramLong;
     }
     b();
-    float f;
-    int i;
-    if (this.jdField_b_of_type_Long != 0L)
-    {
-      f = (float)(paramLong - this.jdField_a_of_type_Long) / (float)this.jdField_b_of_type_Long;
-      if (f < 1.0F) {
-        break label158;
-      }
+    long l = this.jdField_b_of_type_Long;
+    if (l != 0L) {
+      f = (float)(paramLong - this.jdField_a_of_type_Long) / (float)l;
+    } else if (paramLong < this.jdField_a_of_type_Long) {
+      f = 0.0F;
+    } else {
+      f = 1.0F;
+    }
+    if (f >= 1.0F) {
       i = 1;
-      label54:
-      if (i != 0) {
-        break label164;
-      }
-    }
-    label158:
-    label164:
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_Float = (Math.max(Math.min(f, 1.0F), 0.0F) * this.jdField_c_of_type_Float);
-      this.jdField_a_of_type_Int = ((int)(DanmakuLayout.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuLayout) - this.jdField_a_of_type_Float));
-      this.jdField_a_of_type_AndroidWidgetTextView.layout(this.jdField_a_of_type_Int, paramInt, this.jdField_a_of_type_Int + this.jdField_b_of_type_Int, this.jdField_c_of_type_Int + paramInt);
-      return this.jdField_a_of_type_Boolean;
-      if (paramLong < this.jdField_a_of_type_Long) {}
-      for (f = 0.0F;; f = 1.0F) {
-        break;
-      }
+    } else {
       i = 0;
-      break label54;
     }
+    this.jdField_a_of_type_Boolean = (0x1 ^ i);
+    float f = Math.max(Math.min(f, 1.0F), 0.0F);
+    this.jdField_a_of_type_Float = (this.jdField_c_of_type_Float * f);
+    this.jdField_a_of_type_Int = ((int)(DanmakuLayout.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuLayout) - this.jdField_a_of_type_Float));
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    int i = this.jdField_a_of_type_Int;
+    localTextView.layout(i, paramInt, this.jdField_b_of_type_Int + i, this.jdField_c_of_type_Int + paramInt);
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.media.DanmakuLayout.DrawItem
  * JD-Core Version:    0.7.0.1
  */

@@ -108,21 +108,27 @@ public class InnerShareData$Builder
     this.shareData.shareTarget = paramInt;
     switch (paramInt)
     {
-    }
-    for (;;)
-    {
-      if (MoreItem.isValidExtendedItemId(paramInt)) {
-        setShareItemId(paramInt);
-      }
-      return this;
-      setShareItemId(1);
-      continue;
-      setShareItemId(2);
-      continue;
-      setShareItemId(3);
-      continue;
+    default: 
+      break;
+    case 4: 
       setShareItemId(4);
+      break;
+    case 3: 
+      setShareItemId(3);
+      break;
+    case 1: 
+      setShareItemId(2);
+      break;
+    case 0: 
+    case 2: 
+    case 5: 
+    case 6: 
+      setShareItemId(1);
     }
+    if (MoreItem.isValidExtendedItemId(paramInt)) {
+      setShareItemId(paramInt);
+    }
+    return this;
   }
   
   public Builder setSubScene(int paramInt)
@@ -175,7 +181,7 @@ public class InnerShareData$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.InnerShareData.Builder
  * JD-Core Version:    0.7.0.1
  */

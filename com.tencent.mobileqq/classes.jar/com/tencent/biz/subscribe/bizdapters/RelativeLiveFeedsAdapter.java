@@ -88,7 +88,7 @@ public class RelativeLiveFeedsAdapter
   
   private RecyclerView.ViewHolder a(ViewGroup paramViewGroup)
   {
-    Object localObject = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559762, paramViewGroup, false);
+    Object localObject = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559638, paramViewGroup, false);
     paramViewGroup = new RelativeLiveFeedsAdapter.RelativeLiveVH(this, (View)localObject);
     this.jdField_d_of_type_Int = ((View)localObject).getResources().getDisplayMetrics().widthPixels;
     int i = (int)(this.jdField_d_of_type_Int * 0.5F - ViewUtils.b(8.5F));
@@ -97,10 +97,11 @@ public class RelativeLiveFeedsAdapter
     int k = ViewUtils.b(54.0F);
     localObject = (RelativeLayout.LayoutParams)paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject).width = i;
-    ((RelativeLayout.LayoutParams)localObject).height = (k + j);
+    ((RelativeLayout.LayoutParams)localObject).height = (j + k);
     localObject = (RelativeLayout.LayoutParams)paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.getLayoutParams();
-    ((RelativeLayout.LayoutParams)localObject).width = this.jdField_e_of_type_Int;
-    ((RelativeLayout.LayoutParams)localObject).height = this.jdField_e_of_type_Int;
+    i = this.jdField_e_of_type_Int;
+    ((RelativeLayout.LayoutParams)localObject).width = i;
+    ((RelativeLayout.LayoutParams)localObject).height = i;
     return paramViewGroup;
   }
   
@@ -117,49 +118,54 @@ public class RelativeLiveFeedsAdapter
     paramViewGroup.setTextColor(Color.parseColor("#989eb4"));
     paramViewGroup.getPaint().setFakeBoldText(true);
     localLayoutParams.topMargin = ImmersiveUtils.dpToPx(10.0F);
-    paramViewGroup.setText(HardCodeUtil.a(2131701581));
+    paramViewGroup.setText(HardCodeUtil.a(2131701721));
     return localFrameLayout;
   }
   
   private void a(boolean paramBoolean, Object paramObject)
   {
     if (!paramBoolean) {
-      break label4;
-    }
-    for (;;)
-    {
-      label4:
       return;
-      if ((paramBoolean) && ((paramObject instanceof CertifiedAccountRead.GetSubscriptionRsp)))
+    }
+    if ((paramBoolean) && ((paramObject instanceof CertifiedAccountRead.GetSubscriptionRsp)))
+    {
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("isSuccess:");
+      ((StringBuilder)localObject1).append(paramBoolean);
+      ((StringBuilder)localObject1).append(" updateFeedsData:");
+      QLog.d("RelativeFeedsAdapter", 2, ((StringBuilder)localObject1).toString());
+      Object localObject2 = (CertifiedAccountRead.GetSubscriptionRsp)paramObject;
+      paramObject = ((CertifiedAccountRead.GetSubscriptionRsp)localObject2).room_lst.get();
+      localObject1 = (CertifiedAccountRead.GetSubscriptionRsp.Bottom)((CertifiedAccountRead.GetSubscriptionRsp)localObject2).bottom.get();
+      localObject2 = ((CertifiedAccountRead.GetSubscriptionRsp)localObject2).page_info.get();
+      a().b((String)localObject2);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView != null)
       {
-        QLog.d("RelativeFeedsAdapter", 2, "isSuccess:" + paramBoolean + " updateFeedsData:");
-        Object localObject = (CertifiedAccountRead.GetSubscriptionRsp)paramObject;
-        paramObject = ((CertifiedAccountRead.GetSubscriptionRsp)localObject).room_lst.get();
-        CertifiedAccountRead.GetSubscriptionRsp.Bottom localBottom = (CertifiedAccountRead.GetSubscriptionRsp.Bottom)((CertifiedAccountRead.GetSubscriptionRsp)localObject).bottom.get();
-        localObject = ((CertifiedAccountRead.GetSubscriptionRsp)localObject).page_info.get();
-        a().b((String)localObject);
-        if (this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView == null) {
-          break;
-        }
         if ((paramObject != null) && (paramObject.size() > 0))
         {
-          paramBoolean = a(false, paramObject);
-          if (paramBoolean)
+          boolean bool = a(false, paramObject);
+          paramBoolean = bool;
+          if (bool)
           {
             this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView.b(false);
-            a(paramObject, localBottom, (String)localObject);
-            if (localBottom != null) {
-              this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView.a(true, localBottom.desc.get(), localBottom.jump_url.get());
+            a(paramObject, (CertifiedAccountRead.GetSubscriptionRsp.Bottom)localObject1, (String)localObject2);
+            paramBoolean = bool;
+            if (localObject1 != null)
+            {
+              this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView.a(true, ((CertifiedAccountRead.GetSubscriptionRsp.Bottom)localObject1).desc.get(), ((CertifiedAccountRead.GetSubscriptionRsp.Bottom)localObject1).jump_url.get());
+              paramBoolean = bool;
             }
           }
         }
-        while (!paramBoolean)
+        else
+        {
+          paramBoolean = false;
+        }
+        if (!paramBoolean)
         {
           a();
           this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView.b(true);
           this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView.a(false, null, null);
-          return;
-          paramBoolean = false;
         }
       }
     }
@@ -187,16 +193,10 @@ public class RelativeLiveFeedsAdapter
   {
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    for (;;)
+    while (localIterator.hasNext())
     {
-      FeedsItemInfo localFeedsItemInfo;
-      if (localIterator.hasNext())
-      {
-        localFeedsItemInfo = (FeedsItemInfo)localIterator.next();
-        if (localFeedsItemInfo.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$GetPortalRsp$RoomItem != null) {}
-      }
-      else
-      {
+      FeedsItemInfo localFeedsItemInfo = (FeedsItemInfo)localIterator.next();
+      if (localFeedsItemInfo.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$GetPortalRsp$RoomItem == null) {
         return localArrayList;
       }
       try
@@ -208,6 +208,7 @@ public class RelativeLiveFeedsAdapter
         localUnsupportedEncodingException.printStackTrace();
       }
     }
+    return localArrayList;
   }
   
   public void a(int paramInt)
@@ -254,19 +255,14 @@ public class RelativeLiveFeedsAdapter
     localGetSubscriptionReq.page_id.set(2);
     if ((this.jdField_c_of_type_Int != -1) && ((paramLoadInfo.c()) || (paramLoadInfo.d()))) {
       localGetSubscriptionReq.page_info.set("");
-    }
-    for (;;)
-    {
-      PbProtocol.a("QQLive.GetSubscriptionData", localGetSubscriptionReq, CertifiedAccountRead.GetSubscriptionRsp.class, new RelativeLiveFeedsAdapter.1(this));
-      return;
-      if ((this.jdField_c_of_type_Int != -1) && (paramLoadInfo.e())) {
-        if (!TextUtils.isEmpty(a().b())) {
-          localGetSubscriptionReq.page_info.set(a().b());
-        } else {
-          localGetSubscriptionReq.page_info.set("");
-        }
+    } else if ((this.jdField_c_of_type_Int != -1) && (paramLoadInfo.e())) {
+      if (!TextUtils.isEmpty(a().b())) {
+        localGetSubscriptionReq.page_info.set(a().b());
+      } else {
+        localGetSubscriptionReq.page_info.set("");
       }
     }
+    PbProtocol.a("QQLive.GetSubscriptionData", localGetSubscriptionReq, CertifiedAccountRead.GetSubscriptionRsp.class, new RelativeLiveFeedsAdapter.1(this));
   }
   
   public void a(String paramString, BlockMerger.ShareData paramShareData)
@@ -286,28 +282,28 @@ public class RelativeLiveFeedsAdapter
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     int i = 0;
-    while (i < paramList.size())
+    for (;;)
     {
-      paramBottom = ((CertifiedAccountRead.GetPortalRsp.RoomLstItem)paramList.get(i)).room_lst.get();
-      if ((paramBottom == null) || (paramBottom.size() == 0))
-      {
-        i += 1;
+      int j = paramList.size();
+      boolean bool = true;
+      if (i >= j) {
+        break;
       }
-      else
+      paramBottom = ((CertifiedAccountRead.GetPortalRsp.RoomLstItem)paramList.get(i)).room_lst.get();
+      if ((paramBottom != null) && (paramBottom.size() != 0))
       {
-        if ((i == 0) && (this.f == 0)) {}
-        for (boolean bool = true;; bool = false)
+        if ((i != 0) || (this.f != 0)) {
+          bool = false;
+        }
+        this.jdField_a_of_type_JavaUtilArrayList.add(new FeedsItemInfo(((CertifiedAccountRead.GetPortalRsp.RoomLstItem)paramList.get(i)).tab_info.name.get(), null));
+        j = 0;
+        while (j < paramBottom.size())
         {
-          this.jdField_a_of_type_JavaUtilArrayList.add(new FeedsItemInfo(((CertifiedAccountRead.GetPortalRsp.RoomLstItem)paramList.get(i)).tab_info.name.get(), null));
-          int j = 0;
-          while (j < paramBottom.size())
-          {
-            this.jdField_a_of_type_JavaUtilArrayList.add(new FeedsItemInfo(null, (CertifiedAccountRead.GetPortalRsp.RoomItem)paramBottom.get(j), bool));
-            j += 1;
-          }
-          break;
+          this.jdField_a_of_type_JavaUtilArrayList.add(new FeedsItemInfo(null, (CertifiedAccountRead.GetPortalRsp.RoomItem)paramBottom.get(j), bool));
+          j += 1;
         }
       }
+      i += 1;
     }
     d(true);
   }
@@ -321,20 +317,14 @@ public class RelativeLiveFeedsAdapter
   public boolean a(boolean paramBoolean, List<CertifiedAccountRead.GetPortalRsp.RoomLstItem> paramList)
   {
     int i = 0;
-    for (;;)
+    while (i < paramList.size())
     {
-      boolean bool = paramBoolean;
-      if (i < paramList.size())
-      {
-        if (((CertifiedAccountRead.GetPortalRsp.RoomLstItem)paramList.get(i)).room_lst.size() > 0) {
-          bool = true;
-        }
-      }
-      else {
-        return bool;
+      if (((CertifiedAccountRead.GetPortalRsp.RoomLstItem)paramList.get(i)).room_lst.size() > 0) {
+        return true;
       }
       i += 1;
     }
+    return paramBoolean;
   }
   
   public void b(int paramInt)
@@ -350,30 +340,30 @@ public class RelativeLiveFeedsAdapter
     this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$GetSubscriptionRsp$Bottom = paramBottom;
     this.jdField_a_of_type_JavaLangString = paramString;
     int i = 0;
-    while (i < paramList.size())
+    for (;;)
     {
-      paramBottom = ((CertifiedAccountRead.GetPortalRsp.RoomLstItem)paramList.get(i)).room_lst.get();
-      if ((paramBottom == null) || (paramBottom.size() == 0))
-      {
-        i += 1;
+      int j = paramList.size();
+      boolean bool = true;
+      if (i >= j) {
+        break;
       }
-      else
+      paramBottom = ((CertifiedAccountRead.GetPortalRsp.RoomLstItem)paramList.get(i)).room_lst.get();
+      if ((paramBottom != null) && (paramBottom.size() != 0))
       {
-        if ((i == 0) && (this.f == 0)) {}
-        for (boolean bool = true;; bool = false)
+        if ((i != 0) || (this.f != 0)) {
+          bool = false;
+        }
+        if ((this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (i != 0)) {
+          this.jdField_a_of_type_JavaUtilArrayList.add(new FeedsItemInfo(((CertifiedAccountRead.GetPortalRsp.RoomLstItem)paramList.get(i)).tab_info.name.get(), null));
+        }
+        j = 0;
+        while (j < paramBottom.size())
         {
-          if ((this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (i != 0)) {
-            this.jdField_a_of_type_JavaUtilArrayList.add(new FeedsItemInfo(((CertifiedAccountRead.GetPortalRsp.RoomLstItem)paramList.get(i)).tab_info.name.get(), null));
-          }
-          int j = 0;
-          while (j < paramBottom.size())
-          {
-            this.jdField_a_of_type_JavaUtilArrayList.add(new FeedsItemInfo(null, (CertifiedAccountRead.GetPortalRsp.RoomItem)paramBottom.get(j), bool));
-            j += 1;
-          }
-          break;
+          this.jdField_a_of_type_JavaUtilArrayList.add(new FeedsItemInfo(null, (CertifiedAccountRead.GetPortalRsp.RoomItem)paramBottom.get(j), bool));
+          j += 1;
         }
       }
+      i += 1;
     }
     d(true);
   }
@@ -389,16 +379,15 @@ public class RelativeLiveFeedsAdapter
     {
       a().a(4);
       a().setRefreshing(false);
-      if (!f()) {
-        break label53;
+      if (f())
+      {
+        a().a(paramBoolean, a().a());
+        return;
       }
-      a().a(paramBoolean, a().a());
+      if ((a() != null) && (b() != null) && (b().size() == 0)) {
+        a().a(paramBoolean, false);
+      }
     }
-    label53:
-    while ((a() == null) || (b() == null) || (b().size() != 0)) {
-      return;
-    }
-    a().a(paramBoolean, false);
   }
   
   public int getItemCount()
@@ -441,11 +430,8 @@ public class RelativeLiveFeedsAdapter
     if (this.jdField_c_of_type_Boolean) {
       i = paramInt - 1;
     }
-    if (ArrayUtils.a(i, b())) {}
-    for (;;)
+    if (!ArrayUtils.a(i, b()))
     {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, i, getItemId(i));
-      return;
       FeedsItemInfo localFeedsItemInfo;
       if ((paramViewHolder instanceof RelativeLiveFeedsAdapter.RelativeFeedVH))
       {
@@ -455,10 +441,12 @@ public class RelativeLiveFeedsAdapter
       if ((paramViewHolder instanceof RelativeLiveFeedsAdapter.RelativeLiveVH))
       {
         localFeedsItemInfo = (FeedsItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        ((RelativeLiveFeedsAdapter.RelativeLiveVH)paramViewHolder).a(localFeedsItemInfo);
-        ((RelativeLiveFeedsAdapter.RelativeLiveVH)paramViewHolder).a((RelativeLiveFeedsAdapter.RelativeLiveVH)paramViewHolder, localFeedsItemInfo);
+        RelativeLiveFeedsAdapter.RelativeLiveVH localRelativeLiveVH = (RelativeLiveFeedsAdapter.RelativeLiveVH)paramViewHolder;
+        localRelativeLiveVH.a(localFeedsItemInfo);
+        localRelativeLiveVH.a(localRelativeLiveVH, localFeedsItemInfo);
       }
     }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, i, getItemId(i));
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
@@ -479,7 +467,7 @@ public class RelativeLiveFeedsAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.bizdapters.RelativeLiveFeedsAdapter
  * JD-Core Version:    0.7.0.1
  */

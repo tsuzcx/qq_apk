@@ -31,14 +31,15 @@ public final class CKV_MusicListInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vMusicList != null) {
-      paramJceOutputStream.write(this.vMusicList, 0);
+    ArrayList localArrayList = this.vMusicList;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.CKV_MusicListInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -70,20 +70,22 @@ public abstract class AbsSubscribeShareCardView
   
   public Bitmap a()
   {
+    Bitmap localBitmap = null;
     try
     {
       if (this.jdField_b_of_type_AndroidViewView != null)
       {
-        Bitmap localBitmap = Bitmap.createBitmap(this.jdField_b_of_type_AndroidViewView.getLayoutParams().width, this.jdField_b_of_type_AndroidViewView.getLayoutParams().height, Bitmap.Config.RGB_565);
+        localBitmap = Bitmap.createBitmap(this.jdField_b_of_type_AndroidViewView.getLayoutParams().width, this.jdField_b_of_type_AndroidViewView.getLayoutParams().height, Bitmap.Config.RGB_565);
         this.jdField_b_of_type_AndroidViewView.draw(new Canvas(localBitmap));
-        return localBitmap;
       }
+      return localBitmap;
     }
     catch (Throwable localThrowable)
     {
-      QLog.d("AbsSubscribeShareCardView", 4, "failed to get bitmap from view");
-      return null;
+      label53:
+      break label53;
     }
+    QLog.d("AbsSubscribeShareCardView", 4, "failed to get bitmap from view");
     return null;
   }
   
@@ -98,39 +100,37 @@ public abstract class AbsSubscribeShareCardView
     int i = e;
     if (a() != null)
     {
-      if ((paramInt1 != 0) && (paramInt2 != 0) && (paramInt1 != paramInt2)) {
-        break label140;
+      if ((paramInt1 != 0) && (paramInt2 != 0) && (paramInt1 != paramInt2))
+      {
+        if (paramInt1 > paramInt2)
+        {
+          paramInt1 = jdField_a_of_type_Int;
+          paramInt2 = (int)(paramInt1 / this.jdField_a_of_type_Float);
+        }
+        else
+        {
+          i = d;
+          paramInt1 = jdField_a_of_type_Int;
+          paramInt2 = Math.min((int)(paramInt1 * this.jdField_a_of_type_Float), jdField_b_of_type_Int);
+        }
       }
-      paramInt2 = jdField_a_of_type_Int;
-      paramInt1 = jdField_a_of_type_Int;
-    }
-    for (;;)
-    {
-      a().getLayoutParams().width = paramInt2;
-      a().getLayoutParams().height = paramInt1;
+      else
+      {
+        paramInt1 = jdField_a_of_type_Int;
+        paramInt2 = paramInt1;
+      }
+      a().getLayoutParams().width = paramInt1;
+      a().getLayoutParams().height = paramInt2;
       a().setLayoutParams(a().getLayoutParams());
       if (paramFrameLayout != null)
       {
-        paramFrameLayout.getLayoutParams().width = paramInt2;
+        paramFrameLayout.getLayoutParams().width = paramInt1;
         paramFrameLayout.getLayoutParams().height = (i - ScreenUtil.dip2px(168.0F));
         paramFrameLayout.setLayoutParams(paramFrameLayout.getLayoutParams());
       }
       this.jdField_b_of_type_AndroidViewView.getLayoutParams().height = i;
       measure(c, i);
       layout(0, 0, getMeasuredWidth(), getMeasuredHeight());
-      return;
-      label140:
-      if (paramInt1 > paramInt2)
-      {
-        paramInt2 = jdField_a_of_type_Int;
-        paramInt1 = (int)(paramInt2 / this.jdField_a_of_type_Float);
-      }
-      else
-      {
-        i = d;
-        paramInt2 = jdField_a_of_type_Int;
-        paramInt1 = Math.min((int)(paramInt2 * this.jdField_a_of_type_Float), jdField_b_of_type_Int);
-      }
     }
   }
   
@@ -144,34 +144,37 @@ public abstract class AbsSubscribeShareCardView
   
   protected void a(ArrayList<String> paramArrayList, ArrayList<ImageView> paramArrayList1, AbsSubscribeShareCardView.ShareDataBindListener paramShareDataBindListener)
   {
-    int i = 0;
     if ((paramArrayList != null) && (paramArrayList.size() == paramArrayList1.size()))
     {
+      int i = 0;
       this.f = 0;
-      if (i < paramArrayList.size())
+      while (i < paramArrayList.size())
       {
-        String str = SubscribeQRCodeShareHelper.a + Md5Utils.getMD5((String)paramArrayList.get(i)) + ".png";
-        if (new File(str).exists())
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(SubscribeQRCodeShareHelper.a);
+        ((StringBuilder)localObject).append(Md5Utils.getMD5((String)paramArrayList.get(i)));
+        ((StringBuilder)localObject).append(".png");
+        localObject = ((StringBuilder)localObject).toString();
+        if (new File((String)localObject).exists())
         {
-          ((ImageView)paramArrayList1.get(i)).setImageBitmap(SafeBitmapFactory.decodeFile(str));
+          ((ImageView)paramArrayList1.get(i)).setImageBitmap(SafeBitmapFactory.decodeFile((String)localObject));
           this.f += 1;
           if (this.f == paramArrayList.size()) {
             ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.1(this, paramShareDataBindListener));
           }
         }
-        for (;;)
+        else
         {
-          i += 1;
-          break;
-          ThreadManagerV2.executeOnFileThread(new AbsSubscribeShareCardView.2(this, paramArrayList1, i, str, paramArrayList, paramShareDataBindListener));
+          ThreadManagerV2.executeOnFileThread(new AbsSubscribeShareCardView.2(this, paramArrayList1, i, (String)localObject, paramArrayList, paramShareDataBindListener));
         }
+        i += 1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView
  * JD-Core Version:    0.7.0.1
  */

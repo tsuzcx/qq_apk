@@ -12,35 +12,30 @@ import mqq.app.NewIntent;
 public class VipCheckGift
   extends AsyncStep
 {
-  public int a()
+  protected int doStep()
   {
-    Object localObject = (VipGiftManager)this.a.a.getManager(QQManagerFactory.VIP_GIF_MANAGER);
+    Object localObject = (VipGiftManager)this.mAutomator.a.getManager(QQManagerFactory.VIP_GIF_MANAGER);
     VipGiftDownloadInfo localVipGiftDownloadInfo = ((VipGiftManager)localObject).a();
-    if (localVipGiftDownloadInfo != null)
-    {
-      if ((localVipGiftDownloadInfo.d != 0L) || (localVipGiftDownloadInfo.a == 0L)) {
-        break label55;
-      }
-      ((VipGiftManager)localObject).a(localVipGiftDownloadInfo.a);
-    }
-    for (;;)
-    {
-      return 7;
-      label55:
-      if (localVipGiftDownloadInfo.d == 2L)
+    if (localVipGiftDownloadInfo != null) {
+      if ((localVipGiftDownloadInfo.d == 0L) && (localVipGiftDownloadInfo.a != 0L))
       {
-        localObject = new NewIntent(this.a.a.getApplication(), VipGifServlet.class);
+        ((VipGiftManager)localObject).a(localVipGiftDownloadInfo.a);
+      }
+      else if (localVipGiftDownloadInfo.d == 2L)
+      {
+        localObject = new NewIntent(this.mAutomator.a.getApplication(), VipGifServlet.class);
         ((NewIntent)localObject).setAction("gif_ui_show");
         ((NewIntent)localObject).putExtra("gif_ui_show_bid", 0);
         ((NewIntent)localObject).putExtra("gif_ui_show_seq", localVipGiftDownloadInfo.a);
-        this.a.a.startServlet((NewIntent)localObject);
+        this.mAutomator.a.startServlet((NewIntent)localObject);
       }
     }
+    return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.VipCheckGift
  * JD-Core Version:    0.7.0.1
  */

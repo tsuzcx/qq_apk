@@ -39,13 +39,11 @@ public class QfavRemoteProxyForQQ
     if ((this.jdField_a_of_type_CooperationQqfavIpcIQfavRemoteProxyInterface != null) && (paramQfavRemoteProxyCallWrapper != null))
     {
       Looper localLooper = Looper.getMainLooper();
-      if (Thread.currentThread() != localLooper.getThread()) {
+      if (Thread.currentThread() != localLooper.getThread())
+      {
         new Handler(localLooper).post(new QfavRemoteProxyForQQ.1(this, paramQfavRemoteProxyCallWrapper));
+        return;
       }
-    }
-    else
-    {
-      return;
     }
     try
     {
@@ -57,14 +55,18 @@ public class QfavRemoteProxyForQQ
   
   private boolean a()
   {
-    if ((this.jdField_a_of_type_CooperationQqfavIpcIQfavRemoteProxyInterface == null) && (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
+    if ((this.jdField_a_of_type_CooperationQqfavIpcIQfavRemoteProxyInterface == null) && (!this.jdField_a_of_type_Boolean))
     {
-      AppRuntime localAppRuntime = (AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localAppRuntime != null)
+      Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+      if (localObject != null)
       {
-        QfavPluginProxyService.a(localAppRuntime, this.jdField_a_of_type_AndroidContentServiceConnection, "com.qqfav.ipc.QfavRemoteProxyService");
-        this.jdField_a_of_type_Boolean = true;
-        return true;
+        localObject = (AppRuntime)((WeakReference)localObject).get();
+        if (localObject != null)
+        {
+          QfavPluginProxyService.a((AppRuntime)localObject, this.jdField_a_of_type_AndroidContentServiceConnection, "com.qqfav.ipc.QfavRemoteProxyService");
+          this.jdField_a_of_type_Boolean = true;
+          return true;
+        }
       }
     }
     return false;
@@ -91,22 +93,23 @@ public class QfavRemoteProxyForQQ
     if (this.jdField_a_of_type_JavaUtilHashSet.contains(paramString))
     {
       paramString = new QfavRemoteProxyForQQ.QfavRemoteProxyCallWrapper(this, paramInt, paramBundle);
-      if (this.jdField_a_of_type_CooperationQqfavIpcIQfavRemoteProxyInterface != null) {
+      if (this.jdField_a_of_type_CooperationQqfavIpcIQfavRemoteProxyInterface != null)
+      {
         a(paramString);
       }
-      for (;;)
+      else
       {
-        return true;
         a(paramString);
         a();
       }
+      return true;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cooperation.qqfav.ipc.QfavRemoteProxyForQQ
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ import kotlin.TypeCastException;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/impl/FloatViewUtil$Companion;", "", "()V", "TAG", "", "bringToFront", "", "floatViewData", "Lcom/tencent/xaction/api/data/FloatViewData;", "view", "Landroid/view/View;", "removeViewToFloat", "XActionEngine_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/impl/FloatViewUtil$Companion;", "", "()V", "TAG", "", "bringToFront", "", "floatViewData", "Lcom/tencent/xaction/api/data/FloatViewData;", "view", "Landroid/view/View;", "removeViewToFloat", "XActionCore_release"}, k=1, mv={1, 1, 16})
 public final class FloatViewUtil$Companion
 {
   public final void a(@NotNull FloatViewData paramFloatViewData, @NotNull View paramView)
@@ -22,22 +22,30 @@ public final class FloatViewUtil$Companion
     Intrinsics.checkParameterIsNotNull(paramView, "view");
     if (((Intrinsics.areEqual(paramView.getParent(), paramFloatViewData.getParent()) ^ true)) && ((paramFloatViewData.getParent() instanceof ViewGroup)))
     {
-      Log.v("FloatViewUtils", "removeViewToFloat view.parent:" + paramView.getParent() + " view:" + paramView);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("removeViewToFloat view.parent:");
+      ((StringBuilder)localObject).append(paramView.getParent());
+      ((StringBuilder)localObject).append(" view:");
+      ((StringBuilder)localObject).append(paramView);
+      Log.v("FloatViewUtils", ((StringBuilder)localObject).toString());
       if (paramView.getParent() != null)
       {
-        localViewParent = paramView.getParent();
-        if (localViewParent == null) {
+        localObject = paramView.getParent();
+        if (localObject != null) {
+          ((ViewGroup)localObject).removeView(paramView);
+        } else {
           throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup");
         }
-        ((ViewGroup)localViewParent).removeView(paramView);
       }
-      ViewParent localViewParent = paramFloatViewData.getParent();
-      if (localViewParent == null) {
-        throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup");
+      localObject = paramFloatViewData.getParent();
+      if (localObject != null)
+      {
+        ((ViewGroup)localObject).addView(paramView, paramFloatViewData.getIndex(), paramFloatViewData.getLayoutParam());
+        paramFloatViewData.setParent((ViewParent)null);
+        paramFloatViewData.setLayoutParam((ViewGroup.LayoutParams)null);
+        return;
       }
-      ((ViewGroup)localViewParent).addView(paramView, paramFloatViewData.getIndex(), paramFloatViewData.getLayoutParam());
-      paramFloatViewData.setParent((ViewParent)null);
-      paramFloatViewData.setLayoutParam((ViewGroup.LayoutParams)null);
+      throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup");
     }
   }
   
@@ -47,8 +55,13 @@ public final class FloatViewUtil$Companion
     Intrinsics.checkParameterIsNotNull(paramView, "view");
     if (((paramView.getParent() instanceof ViewGroup)) && ((Intrinsics.areEqual(paramFloatViewData.getParent(), paramView.getParent()) ^ true)) && ((Intrinsics.areEqual(paramView.getRootView(), paramView.getParent()) ^ true)))
     {
-      Log.v("FloatViewUtils", "bringToFront view.parent:" + paramView.getParent() + " view:" + paramView);
-      View localView = paramView.getRootView();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("bringToFront view.parent:");
+      ((StringBuilder)localObject).append(paramView.getParent());
+      ((StringBuilder)localObject).append(" view:");
+      ((StringBuilder)localObject).append(paramView);
+      Log.v("FloatViewUtils", ((StringBuilder)localObject).toString());
+      localObject = paramView.getRootView();
       int[] arrayOfInt = new int[2];
       paramView.getLocationOnScreen(arrayOfInt);
       if (paramView.getParent() != null)
@@ -56,29 +69,34 @@ public final class FloatViewUtil$Companion
         paramFloatViewData.setParent(paramView.getParent());
         paramFloatViewData.setLayoutParam(paramView.getLayoutParams());
         ViewParent localViewParent = paramView.getParent();
-        if (localViewParent == null) {
+        if (localViewParent != null)
+        {
+          paramFloatViewData.setIndex(((ViewGroup)localViewParent).indexOfChild(paramView));
+          paramFloatViewData = paramView.getParent();
+          if (paramFloatViewData != null) {
+            ((ViewGroup)paramFloatViewData).removeView(paramView);
+          } else {
+            throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup");
+          }
+        }
+        else
+        {
           throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup");
         }
-        paramFloatViewData.setIndex(((ViewGroup)localViewParent).indexOfChild(paramView));
-        paramFloatViewData = paramView.getParent();
-        if (paramFloatViewData == null) {
-          throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup");
-        }
-        ((ViewGroup)paramFloatViewData).removeView(paramView);
       }
-      if ((localView != null) && ((localView instanceof FrameLayout)))
+      if ((localObject != null) && ((localObject instanceof FrameLayout)))
       {
         paramFloatViewData = new FrameLayout.LayoutParams(paramView.getLayoutParams());
         paramFloatViewData.leftMargin = arrayOfInt[0];
         paramFloatViewData.topMargin = arrayOfInt[1];
-        ((FrameLayout)localView).addView(paramView, (ViewGroup.LayoutParams)paramFloatViewData);
+        ((FrameLayout)localObject).addView(paramView, (ViewGroup.LayoutParams)paramFloatViewData);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.impl.FloatViewUtil.Companion
  * JD-Core Version:    0.7.0.1
  */

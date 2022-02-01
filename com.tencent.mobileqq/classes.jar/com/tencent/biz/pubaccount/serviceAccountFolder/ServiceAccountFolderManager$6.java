@@ -13,21 +13,29 @@ class ServiceAccountFolderManager$6
   
   public void run()
   {
-    Object localObject = BaseApplication.getContext().getSharedPreferences("sp_public_account_with_cuin_" + this.a.getCurrentAccountUin(), 0);
+    Object localObject = BaseApplication.getContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sp_public_account_with_cuin_");
+    localStringBuilder.append(this.a.getCurrentAccountUin());
+    localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
       ((SharedPreferences.Editor)localObject).putLong("service_account_folder_last_enter_time", ServiceAccountFolderManager.a(this.this$0));
       ((SharedPreferences.Editor)localObject).commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("ServiceAccountFolderManager", 2, "setFolderLastEnterTime->mFolderLastEnterTime:" + ServiceAccountFolderManager.a(this.this$0));
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("setFolderLastEnterTime->mFolderLastEnterTime:");
+        ((StringBuilder)localObject).append(ServiceAccountFolderManager.a(this.this$0));
+        QLog.d("ServiceAccountFolderManager", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager.6
  * JD-Core Version:    0.7.0.1
  */

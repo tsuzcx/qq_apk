@@ -30,8 +30,13 @@ final class ImageDownloaderInitializer$1
   
   public void prepareRequest(String paramString1, String paramString2, HttpRequest paramHttpRequest, Request.Builder paramBuilder, int paramInt)
   {
-    if ((paramHttpRequest != null) && (paramString2 != null) && (ImageDownloaderInitializer.access$100(paramString2))) {
-      paramHttpRequest.addHeader("Cookie", "uin=o" + Config.getCurrentUin() + ";");
+    if ((paramHttpRequest != null) && (paramString2 != null) && (ImageDownloaderInitializer.access$100(paramString2)))
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("uin=o");
+      paramString1.append(Config.getCurrentUin());
+      paramString1.append(";");
+      paramHttpRequest.addHeader("Cookie", paramString1.toString());
     }
   }
   
@@ -42,7 +47,7 @@ final class ImageDownloaderInitializer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.downloader.impl.ImageDownloaderInitializer.1
  * JD-Core Version:    0.7.0.1
  */

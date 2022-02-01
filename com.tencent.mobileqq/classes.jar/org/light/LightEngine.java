@@ -1,7 +1,7 @@
 package org.light;
 
 import android.content.Context;
-import java.util.Map;
+import org.light.report.avreport.LightSDKRecord;
 
 public class LightEngine
 {
@@ -39,13 +39,17 @@ public class LightEngine
     nativeFinalize();
   }
   
+  public native String getBenchData();
+  
+  public native boolean getDisableRenderer();
+  
   public native int getOriginTexture();
   
   public native int getResultTexture();
   
-  public native PerformanceData performanceData();
+  public native LightSDKRecord getSDKRecord();
   
-  public native Map<String, String> performanceMonitorData();
+  public native PerformanceData performanceData();
   
   public void release()
   {
@@ -62,13 +66,17 @@ public class LightEngine
   
   public native void setDefaultBeautyVersion(String paramString);
   
+  public native void setDisableRenderer(boolean paramBoolean);
+  
+  public native void setImageDebugInfo(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3);
+  
   public native boolean setSurface(LightSurface paramLightSurface);
   
   public native VideoOutput videoOutput();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.light.LightEngine
  * JD-Core Version:    0.7.0.1
  */

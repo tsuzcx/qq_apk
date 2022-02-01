@@ -14,7 +14,7 @@ import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.emoticonview.IPicEmoticonInfo;
 import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
@@ -95,25 +95,29 @@ public class ForwardMarketFaceOption
     if (QLog.isColorLevel()) {
       QLog.d("ForwardOption.ForwardMarketFaceOption", 2, "setPreviewImage");
     }
-    if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_emotion_from_preview", false)) {}
-    for (Object localObject = AIOEmotionFragment.a; localObject == null; localObject = MarketFaceItemBuilder.a) {
+    if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_emotion_from_preview", false)) {
+      localObject = AIOEmotionFragment.a;
+    } else {
+      localObject = MarketFaceItemBuilder.a;
+    }
+    if (localObject == null) {
       return;
     }
-    localObject = ((PicEmoticonInfo)localObject).getLoadingDrawable("fromAIO", false);
+    Object localObject = ((IPicEmoticonInfo)localObject).getLoadingDrawable("fromAIO", false);
     ((URLDrawable)localObject).setBounds(ImageUtil.a((Drawable)localObject, 36, 100, this.jdField_a_of_type_Float));
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
     ((URLDrawable)localObject).setURLDrawableListener(new ForwardMarketFaceOption.1(this));
   }
   
-  public void k()
-  {
-    super.k();
-    AbstractGifImage.pauseAll();
-  }
-  
   public void l()
   {
     super.l();
+    AbstractGifImage.pauseAll();
+  }
+  
+  public void m()
+  {
+    super.m();
     AbstractGifImage.resumeAll();
   }
   
@@ -124,7 +128,7 @@ public class ForwardMarketFaceOption
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardMarketFaceOption
  * JD-Core Version:    0.7.0.1
  */

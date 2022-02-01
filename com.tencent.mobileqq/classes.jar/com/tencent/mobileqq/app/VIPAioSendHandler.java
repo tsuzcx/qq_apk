@@ -12,16 +12,10 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 public class VIPAioSendHandler
   extends BusinessHandler
 {
-  public static int a;
-  public static String a;
+  public static int a = 1;
+  public static String a = "AIOSendSvc.CheckPopGrayStips";
   public static String b = "AIOSendSvc.getUserKeyWordStips";
   private QQAppInterface a;
-  
-  static
-  {
-    jdField_a_of_type_Int = 1;
-    jdField_a_of_type_JavaLangString = "AIOSendSvc.CheckPopGrayStips";
-  }
   
   protected VIPAioSendHandler(QQAppInterface paramQQAppInterface)
   {
@@ -51,32 +45,28 @@ public class VIPAioSendHandler
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null))
+    if ((paramToServiceMsg != null) && (paramFromServiceMsg != null) && (paramObject != null))
     {
-      notifyUI(jdField_a_of_type_Int, false, null);
-      return;
-    }
-    paramToServiceMsg = paramToServiceMsg.getServiceCmd();
-    if (jdField_a_of_type_JavaLangString.equals(paramToServiceMsg))
-    {
-      paramToServiceMsg = (AIOSendRes)paramObject;
-      AioVipDonateHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramToServiceMsg);
-    }
-    for (;;)
-    {
-      notifyUI(jdField_a_of_type_Int, true, paramObject);
-      return;
-      if (b.equals(paramToServiceMsg))
+      paramToServiceMsg = paramToServiceMsg.getServiceCmd();
+      if (jdField_a_of_type_JavaLangString.equals(paramToServiceMsg))
+      {
+        paramToServiceMsg = (AIOSendRes)paramObject;
+        AioVipDonateHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramToServiceMsg);
+      }
+      else if (b.equals(paramToServiceMsg))
       {
         paramToServiceMsg = (AIOSendRes)paramObject;
         AioVipKeywordHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramToServiceMsg);
       }
+      notifyUI(jdField_a_of_type_Int, true, paramObject);
+      return;
     }
+    notifyUI(jdField_a_of_type_Int, false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.VIPAioSendHandler
  * JD-Core Version:    0.7.0.1
  */

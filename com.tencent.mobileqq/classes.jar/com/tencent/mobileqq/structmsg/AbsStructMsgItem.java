@@ -54,7 +54,8 @@ public abstract class AbsStructMsgItem
   
   private boolean b()
   {
-    return (this.jdField_p_of_type_Int >= 0) && (this.jdField_p_of_type_Int <= 3);
+    int i = this.jdField_p_of_type_Int;
+    return (i >= 0) && (i <= 3);
   }
   
   public int a(Context paramContext, int paramInt)
@@ -70,12 +71,14 @@ public abstract class AbsStructMsgItem
   public String a()
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(b()).append(this.jdField_o_of_type_Int);
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    localStringBuffer.append(b());
+    localStringBuffer.append(this.jdField_o_of_type_Int);
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        localStringBuffer.append(((AbsStructMsgElement)localIterator.next()).a());
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        localStringBuffer.append(((AbsStructMsgElement)((Iterator)localObject).next()).a());
       }
     }
     return localStringBuffer.toString();
@@ -83,22 +86,29 @@ public abstract class AbsStructMsgItem
   
   public void a(View paramView)
   {
-    if (!TextUtils.isEmpty(this.b)) {}
-    switch (a())
+    if (!TextUtils.isEmpty(this.b))
     {
-    default: 
-      return;
-    case 0: 
-      paramView.setBackgroundResource(2130838419);
-      return;
-    case 1: 
-      paramView.setBackgroundResource(2130838420);
-      return;
-    case 2: 
-      paramView.setBackgroundResource(2130838418);
-      return;
+      int i = a();
+      if (i != 0)
+      {
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i != 3) {
+              return;
+            }
+            paramView.setBackgroundResource(2130838253);
+            return;
+          }
+          paramView.setBackgroundResource(2130838254);
+          return;
+        }
+        paramView.setBackgroundResource(2130838256);
+        return;
+      }
+      paramView.setBackgroundResource(2130838255);
     }
-    paramView.setBackgroundResource(2130838417);
   }
   
   public void a(AbsShareMsg paramAbsShareMsg)
@@ -120,10 +130,6 @@ public abstract class AbsStructMsgItem
   public void a(ObjectInput paramObjectInput)
   {
     this.jdField_a_of_type_Int = paramObjectInput.readInt();
-    int k;
-    int i;
-    String str;
-    Object localObject;
     if ((this.jdField_a_of_type_Int > 0) && (this.jdField_a_of_type_Int <= 18))
     {
       this.b = paramObjectInput.readUTF();
@@ -138,30 +144,43 @@ public abstract class AbsStructMsgItem
         this.jdField_p_of_type_Int = paramObjectInput.readInt();
       }
       int m = paramObjectInput.readInt();
-      k = 0;
-      i = 1;
-      if (k < m)
+      int k = 0;
+      int i = 1;
+      while (k < m)
       {
-        str = paramObjectInput.readUTF();
-        if ("item".equals(str)) {
+        String str = paramObjectInput.readUTF();
+        Object localObject;
+        if ("item".equals(str))
+        {
           localObject = StructMsgElementFactory.a(paramObjectInput.readInt());
         }
-      }
-    }
-    for (;;)
-    {
-      label182:
-      str = b();
-      if ((str != null) && (localObject != null) && ((localObject instanceof StructMsgItemCover)))
-      {
-        if ((!str.endsWith("Layout4")) && (!str.endsWith("Layout2")) && (!str.endsWith("Layout9"))) {
-          break label350;
+        else
+        {
+          localObject = StructMsgElementFactory.a(str);
+          int j = i;
+          if ("button".equals(str))
+          {
+            ((AbsStructMsgElement)localObject).aa = String.valueOf(i);
+            ((AbsStructMsgElement)localObject).ab = this.ab;
+            j = i + 1;
+          }
+          if ((localObject != null) && (AbsStructMsgItem.class.isInstance(localObject))) {
+            paramObjectInput.readInt();
+          }
+          i = j;
         }
-        ((StructMsgItemCover)localObject).t = StructMsgItemCover.jdField_q_of_type_Int;
-      }
-      int j;
-      for (;;)
-      {
+        str = b();
+        if ((str != null) && (localObject != null) && ((localObject instanceof StructMsgItemCover))) {
+          if ((!str.endsWith("Layout4")) && (!str.endsWith("Layout2")) && (!str.endsWith("Layout9")))
+          {
+            if (str.endsWith("Layout3")) {
+              ((StructMsgItemCover)localObject).t = StructMsgItemCover.jdField_r_of_type_Int;
+            }
+          }
+          else {
+            ((StructMsgItemCover)localObject).t = StructMsgItemCover.jdField_q_of_type_Int;
+          }
+        }
         if (localObject != null)
         {
           ((AbsStructMsgElement)localObject).jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
@@ -169,25 +188,6 @@ public abstract class AbsStructMsgItem
           a((AbsStructMsgElement)localObject);
         }
         k += 1;
-        break;
-        localObject = StructMsgElementFactory.a(str);
-        j = i;
-        if ("button".equals(str))
-        {
-          ((AbsStructMsgElement)localObject).aa = String.valueOf(i);
-          ((AbsStructMsgElement)localObject).ab = this.ab;
-          j = i + 1;
-        }
-        if ((localObject == null) || (!AbsStructMsgItem.class.isInstance(localObject))) {
-          break label1041;
-        }
-        paramObjectInput.readInt();
-        i = j;
-        break label182;
-        label350:
-        if (str.endsWith("Layout3")) {
-          ((StructMsgItemCover)localObject).t = StructMsgItemCover.jdField_r_of_type_Int;
-        }
       }
       if ((this.jdField_a_of_type_Int >= 3) && (this.jdField_a_of_type_Int <= 18))
       {
@@ -277,9 +277,11 @@ public abstract class AbsStructMsgItem
         }
       }
       return;
-      throw new IOException("structmsg_version_error");
-      label1041:
-      i = j;
+    }
+    paramObjectInput = new IOException("structmsg_version_error");
+    for (;;)
+    {
+      throw paramObjectInput;
     }
   }
   
@@ -288,290 +290,283 @@ public abstract class AbsStructMsgItem
     paramObjectOutput.writeUTF(this.jdField_a_of_type_JavaLangString);
     paramObjectOutput.writeInt(this.jdField_r_of_type_Int);
     paramObjectOutput.writeInt(this.jdField_a_of_type_Int);
-    if (this.b == null)
-    {
+    Object localObject = this.b;
+    String str1 = "";
+    if (localObject == null) {
       localObject = "";
-      paramObjectOutput.writeUTF((String)localObject);
-      if (this.jdField_c_of_type_JavaLangString != null) {
-        break label252;
-      }
-      localObject = "";
-      label59:
-      paramObjectOutput.writeUTF((String)localObject);
-      if (this.jdField_d_of_type_JavaLangString != null) {
-        break label260;
-      }
-      localObject = "";
-      label77:
-      paramObjectOutput.writeUTF((String)localObject);
-      if (this.jdField_e_of_type_JavaLangString != null) {
-        break label268;
-      }
-      localObject = "";
-      label95:
-      paramObjectOutput.writeUTF((String)localObject);
-      if (this.jdField_f_of_type_JavaLangString != null) {
-        break label276;
-      }
-      localObject = "";
-      label113:
-      paramObjectOutput.writeUTF((String)localObject);
-      if (this.jdField_g_of_type_JavaLangString != null) {
-        break label284;
-      }
-    }
-    label260:
-    label268:
-    label276:
-    label284:
-    for (Object localObject = "";; localObject = this.jdField_g_of_type_JavaLangString)
-    {
-      paramObjectOutput.writeUTF((String)localObject);
-      paramObjectOutput.writeInt(this.jdField_m_of_type_Int);
-      paramObjectOutput.writeInt(this.jdField_o_of_type_Int);
-      paramObjectOutput.writeInt(this.jdField_p_of_type_Int);
-      paramObjectOutput.writeInt(this.jdField_a_of_type_JavaUtilArrayList.size());
-      QLog.i("getStructMsgFromXmlBuff", 2, "mVersion: " + this.jdField_a_of_type_Int);
-      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((AbsStructMsgElement)((Iterator)localObject).next()).a(paramObjectOutput);
-      }
+    } else {
       localObject = this.b;
-      break;
-      label252:
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.jdField_c_of_type_JavaLangString == null) {
+      localObject = "";
+    } else {
       localObject = this.jdField_c_of_type_JavaLangString;
-      break label59;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.jdField_d_of_type_JavaLangString == null) {
+      localObject = "";
+    } else {
       localObject = this.jdField_d_of_type_JavaLangString;
-      break label77;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.jdField_e_of_type_JavaLangString == null) {
+      localObject = "";
+    } else {
       localObject = this.jdField_e_of_type_JavaLangString;
-      break label95;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.jdField_f_of_type_JavaLangString == null) {
+      localObject = "";
+    } else {
       localObject = this.jdField_f_of_type_JavaLangString;
-      break label113;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.jdField_g_of_type_JavaLangString == null) {
+      localObject = "";
+    } else {
+      localObject = this.jdField_g_of_type_JavaLangString;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    paramObjectOutput.writeInt(this.jdField_m_of_type_Int);
+    paramObjectOutput.writeInt(this.jdField_o_of_type_Int);
+    paramObjectOutput.writeInt(this.jdField_p_of_type_Int);
+    paramObjectOutput.writeInt(this.jdField_a_of_type_JavaUtilArrayList.size());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("mVersion: ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    QLog.i("getStructMsgFromXmlBuff", 2, ((StringBuilder)localObject).toString());
+    localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((AbsStructMsgElement)((Iterator)localObject).next()).a(paramObjectOutput);
     }
     if ((this.jdField_a_of_type_Int >= 3) && (this.jdField_a_of_type_Int <= 18))
     {
-      if (this.jdField_h_of_type_JavaLangString != null) {
-        break label1300;
+      if (this.jdField_h_of_type_JavaLangString == null) {
+        localObject = "";
+      } else {
+        localObject = this.jdField_h_of_type_JavaLangString;
       }
-      localObject = "";
       paramObjectOutput.writeUTF((String)localObject);
       if (this.jdField_a_of_type_Int > 5)
       {
-        if (this.jdField_j_of_type_JavaLangString != null) {
-          break label1308;
+        if (this.jdField_j_of_type_JavaLangString == null) {
+          localObject = "";
+        } else {
+          localObject = this.jdField_j_of_type_JavaLangString;
         }
-        localObject = "";
-        label346:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.jdField_k_of_type_JavaLangString != null) {
-          break label1316;
+        if (this.jdField_k_of_type_JavaLangString == null) {
+          localObject = "";
+        } else {
+          localObject = this.jdField_k_of_type_JavaLangString;
         }
-        localObject = "";
-        label364:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.jdField_l_of_type_JavaLangString != null) {
-          break label1324;
+        if (this.jdField_l_of_type_JavaLangString == null) {
+          localObject = "";
+        } else {
+          localObject = this.jdField_l_of_type_JavaLangString;
         }
-        localObject = "";
-        label382:
         paramObjectOutput.writeUTF((String)localObject);
       }
       if (this.jdField_a_of_type_Int > 8)
       {
-        if (this.jdField_i_of_type_JavaLangString != null) {
-          break label1332;
+        if (this.jdField_i_of_type_JavaLangString == null) {
+          localObject = "";
+        } else {
+          localObject = this.jdField_i_of_type_JavaLangString;
         }
-        localObject = "";
-        label409:
         paramObjectOutput.writeUTF((String)localObject);
       }
       if (this.jdField_a_of_type_Int > 9)
       {
-        if (this.n != null) {
-          break label1340;
+        if (this.n == null) {
+          localObject = "";
+        } else {
+          localObject = this.n;
         }
-        localObject = "";
-        label436:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.jdField_o_of_type_JavaLangString != null) {
-          break label1348;
+        if (this.jdField_o_of_type_JavaLangString == null) {
+          localObject = "";
+        } else {
+          localObject = this.jdField_o_of_type_JavaLangString;
         }
-        localObject = "";
-        label454:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.jdField_p_of_type_JavaLangString != null) {
-          break label1356;
+        if (this.jdField_p_of_type_JavaLangString == null) {
+          localObject = "";
+        } else {
+          localObject = this.jdField_p_of_type_JavaLangString;
         }
-        localObject = "";
-        label472:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.jdField_m_of_type_JavaLangString != null) {
-          break label1364;
+        if (this.jdField_m_of_type_JavaLangString == null) {
+          localObject = "";
+        } else {
+          localObject = this.jdField_m_of_type_JavaLangString;
         }
-        localObject = "";
-        label490:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.jdField_q_of_type_JavaLangString != null) {
-          break label1372;
+        if (this.jdField_q_of_type_JavaLangString == null) {
+          localObject = "";
+        } else {
+          localObject = this.jdField_q_of_type_JavaLangString;
         }
-        localObject = "";
-        label508:
         paramObjectOutput.writeUTF((String)localObject);
       }
       if (this.jdField_a_of_type_Int > 10)
       {
         paramObjectOutput.writeInt(this.jdField_c_of_type_Int);
-        if (this.jdField_r_of_type_JavaLangString != null) {
-          break label1380;
+        localObject = this.jdField_r_of_type_JavaLangString;
+        String str2 = "0";
+        if (localObject == null) {
+          localObject = "0";
+        } else {
+          localObject = this.jdField_r_of_type_JavaLangString;
         }
-        localObject = "0";
-        label545:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.s != null) {
-          break label1388;
+        if (this.s == null) {
+          localObject = str2;
+        } else {
+          localObject = this.s;
         }
-        localObject = "0";
-        label563:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.t != null) {
-          break label1396;
+        if (this.t == null) {
+          localObject = "";
+        } else {
+          localObject = this.t;
         }
-        localObject = "";
-        label581:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.u != null) {
-          break label1404;
+        if (this.u == null) {
+          localObject = "";
+        } else {
+          localObject = this.u;
         }
-        localObject = "";
-        label599:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.v != null) {
-          break label1412;
+        if (this.v == null) {
+          localObject = "";
+        } else {
+          localObject = this.v;
         }
-        localObject = "";
-        label617:
         paramObjectOutput.writeUTF((String)localObject);
         paramObjectOutput.writeInt(this.jdField_d_of_type_Int);
-        if (this.w != null) {
-          break label1420;
+        if (this.w == null) {
+          localObject = "";
+        } else {
+          localObject = this.w;
         }
-        localObject = "";
-        label645:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.x != null) {
-          break label1428;
+        if (this.x == null) {
+          localObject = "";
+        } else {
+          localObject = this.x;
         }
-        localObject = "";
-        label663:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.y != null) {
-          break label1436;
+        if (this.y == null) {
+          localObject = "";
+        } else {
+          localObject = this.y;
         }
-        localObject = "";
-        label681:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.z != null) {
-          break label1444;
+        if (this.z == null) {
+          localObject = "";
+        } else {
+          localObject = this.z;
         }
-        localObject = "";
-        label699:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.A != null) {
-          break label1452;
+        if (this.A == null) {
+          localObject = "";
+        } else {
+          localObject = this.A;
         }
-        localObject = "";
-        label717:
         paramObjectOutput.writeUTF((String)localObject);
         paramObjectOutput.writeInt(this.jdField_e_of_type_Int);
-        if (this.B != null) {
-          break label1460;
+        if (this.B == null) {
+          localObject = "";
+        } else {
+          localObject = this.B;
         }
-        localObject = "";
-        label745:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.C != null) {
-          break label1468;
+        if (this.C == null) {
+          localObject = "";
+        } else {
+          localObject = this.C;
         }
-        localObject = "";
-        label763:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.D != null) {
-          break label1476;
+        if (this.D == null) {
+          localObject = "";
+        } else {
+          localObject = this.D;
         }
-        localObject = "";
-        label781:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.E != null) {
-          break label1484;
+        if (this.E == null) {
+          localObject = "";
+        } else {
+          localObject = this.E;
         }
-        localObject = "";
-        label799:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.F != null) {
-          break label1492;
+        if (this.F == null) {
+          localObject = "";
+        } else {
+          localObject = this.F;
         }
-        localObject = "";
-        label817:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.G != null) {
-          break label1500;
+        if (this.G == null) {
+          localObject = "";
+        } else {
+          localObject = this.G;
         }
-        localObject = "";
-        label835:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.H != null) {
-          break label1508;
+        if (this.H == null) {
+          localObject = "";
+        } else {
+          localObject = this.H;
         }
-        localObject = "";
-        label853:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.I != null) {
-          break label1516;
+        if (this.I == null) {
+          localObject = "";
+        } else {
+          localObject = this.I;
         }
-        localObject = "";
-        label871:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.J != null) {
-          break label1524;
+        if (this.J == null) {
+          localObject = "";
+        } else {
+          localObject = this.J;
         }
-        localObject = "";
-        label889:
         paramObjectOutput.writeUTF((String)localObject);
       }
       if (this.jdField_a_of_type_Int > 11)
       {
-        if (this.K != null) {
-          break label1532;
+        if (this.K == null) {
+          localObject = "";
+        } else {
+          localObject = this.K;
         }
-        localObject = "";
-        label916:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.L != null) {
-          break label1540;
+        if (this.L == null) {
+          localObject = "";
+        } else {
+          localObject = this.L;
         }
-        localObject = "";
-        label934:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.M != null) {
-          break label1548;
+        if (this.M == null) {
+          localObject = "";
+        } else {
+          localObject = this.M;
         }
-        localObject = "";
-        label952:
         paramObjectOutput.writeUTF((String)localObject);
       }
       if (this.jdField_a_of_type_Int > 12)
       {
-        if (this.N != null) {
-          break label1556;
+        if (this.N == null) {
+          localObject = "";
+        } else {
+          localObject = this.N;
         }
-        localObject = "";
-        label979:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.O != null) {
-          break label1564;
+        if (this.O == null) {
+          localObject = "";
+        } else {
+          localObject = this.O;
         }
-        localObject = "";
-        label997:
         paramObjectOutput.writeUTF((String)localObject);
       }
       if (this.jdField_a_of_type_Int > 13) {
@@ -584,183 +579,77 @@ public abstract class AbsStructMsgItem
       }
       if (this.jdField_a_of_type_Int > 15)
       {
-        if (this.P != null) {
-          break label1572;
+        if (this.P == null) {
+          localObject = "";
+        } else {
+          localObject = this.P;
         }
-        localObject = "";
-        label1072:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.Q != null) {
-          break label1580;
+        if (this.Q == null) {
+          localObject = "";
+        } else {
+          localObject = this.Q;
         }
-        localObject = "";
-        label1090:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.R != null) {
-          break label1588;
+        if (this.R == null) {
+          localObject = "";
+        } else {
+          localObject = this.R;
         }
-        localObject = "";
-        label1108:
         paramObjectOutput.writeUTF((String)localObject);
         paramObjectOutput.writeInt(this.jdField_i_of_type_Int);
         paramObjectOutput.writeInt(this.jdField_j_of_type_Int);
         paramObjectOutput.writeInt(this.jdField_k_of_type_Int);
         paramObjectOutput.writeInt(this.jdField_l_of_type_Int);
-        if (this.S != null) {
-          break label1596;
+        if (this.S == null) {
+          localObject = "";
+        } else {
+          localObject = this.S;
         }
-        localObject = "";
-        label1166:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.T != null) {
-          break label1604;
+        if (this.T == null) {
+          localObject = "";
+        } else {
+          localObject = this.T;
         }
-        localObject = "";
-        label1184:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.U != null) {
-          break label1612;
+        if (this.U == null) {
+          localObject = "";
+        } else {
+          localObject = this.U;
         }
-        localObject = "";
-        label1202:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.V != null) {
-          break label1620;
+        if (this.V == null) {
+          localObject = "";
+        } else {
+          localObject = this.V;
         }
-        localObject = "";
-        label1220:
         paramObjectOutput.writeUTF((String)localObject);
       }
       if (this.jdField_a_of_type_Int > 16)
       {
-        if (this.W != null) {
-          break label1628;
+        if (this.W == null) {
+          localObject = "";
+        } else {
+          localObject = this.W;
         }
-        localObject = "";
-        label1247:
         paramObjectOutput.writeUTF((String)localObject);
       }
       if (this.jdField_a_of_type_Int > 17)
       {
-        if (this.X != null) {
-          break label1636;
+        if (this.X == null) {
+          localObject = "";
+        } else {
+          localObject = this.X;
         }
-        localObject = "";
-        label1274:
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.Y != null) {
-          break label1644;
+        if (this.Y == null) {
+          localObject = str1;
+        } else {
+          localObject = this.Y;
         }
+        paramObjectOutput.writeUTF((String)localObject);
       }
-    }
-    label1300:
-    label1308:
-    label1316:
-    label1324:
-    label1332:
-    label1340:
-    label1348:
-    label1356:
-    label1364:
-    label1372:
-    label1380:
-    label1644:
-    for (localObject = "";; localObject = this.Y)
-    {
-      paramObjectOutput.writeUTF((String)localObject);
-      return;
-      localObject = this.jdField_h_of_type_JavaLangString;
-      break;
-      localObject = this.jdField_j_of_type_JavaLangString;
-      break label346;
-      localObject = this.jdField_k_of_type_JavaLangString;
-      break label364;
-      localObject = this.jdField_l_of_type_JavaLangString;
-      break label382;
-      localObject = this.jdField_i_of_type_JavaLangString;
-      break label409;
-      localObject = this.n;
-      break label436;
-      localObject = this.jdField_o_of_type_JavaLangString;
-      break label454;
-      localObject = this.jdField_p_of_type_JavaLangString;
-      break label472;
-      localObject = this.jdField_m_of_type_JavaLangString;
-      break label490;
-      localObject = this.jdField_q_of_type_JavaLangString;
-      break label508;
-      localObject = this.jdField_r_of_type_JavaLangString;
-      break label545;
-      label1388:
-      localObject = this.s;
-      break label563;
-      label1396:
-      localObject = this.t;
-      break label581;
-      label1404:
-      localObject = this.u;
-      break label599;
-      localObject = this.v;
-      break label617;
-      localObject = this.w;
-      break label645;
-      localObject = this.x;
-      break label663;
-      localObject = this.y;
-      break label681;
-      localObject = this.z;
-      break label699;
-      localObject = this.A;
-      break label717;
-      localObject = this.B;
-      break label745;
-      localObject = this.C;
-      break label763;
-      localObject = this.D;
-      break label781;
-      localObject = this.E;
-      break label799;
-      localObject = this.F;
-      break label817;
-      localObject = this.G;
-      break label835;
-      localObject = this.H;
-      break label853;
-      label1516:
-      localObject = this.I;
-      break label871;
-      label1524:
-      localObject = this.J;
-      break label889;
-      label1532:
-      localObject = this.K;
-      break label916;
-      localObject = this.L;
-      break label934;
-      localObject = this.M;
-      break label952;
-      localObject = this.N;
-      break label979;
-      localObject = this.O;
-      break label997;
-      localObject = this.P;
-      break label1072;
-      localObject = this.Q;
-      break label1090;
-      localObject = this.R;
-      break label1108;
-      localObject = this.S;
-      break label1166;
-      localObject = this.T;
-      break label1184;
-      localObject = this.U;
-      break label1202;
-      localObject = this.V;
-      break label1220;
-      localObject = this.W;
-      break label1247;
-      localObject = this.X;
-      break label1274;
     }
   }
   
@@ -815,203 +704,207 @@ public abstract class AbsStructMsgItem
   public void a(XmlSerializer paramXmlSerializer)
   {
     paramXmlSerializer.startTag(null, this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_r_of_type_Int < 0) {}
-    for (Object localObject = "0";; localObject = String.valueOf(this.jdField_r_of_type_Int))
-    {
-      paramXmlSerializer.attribute(null, "layout", (String)localObject);
-      if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-        paramXmlSerializer.attribute(null, "action", this.jdField_c_of_type_JavaLangString);
-      }
-      if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
-        paramXmlSerializer.attribute(null, "actionData", this.jdField_d_of_type_JavaLangString);
-      }
-      if (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
-        paramXmlSerializer.attribute(null, "a_actionData", this.jdField_e_of_type_JavaLangString);
-      }
-      if (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString)) {
-        paramXmlSerializer.attribute(null, "i_actionData", this.jdField_f_of_type_JavaLangString);
-      }
-      if (!TextUtils.isEmpty(this.b)) {
-        paramXmlSerializer.attribute(null, "url", this.b);
-      }
-      if (!TextUtils.isEmpty(this.jdField_g_of_type_JavaLangString)) {
-        paramXmlSerializer.attribute(null, "brief", this.jdField_g_of_type_JavaLangString);
-      }
-      if (this.jdField_m_of_type_Int != 0) {
-        paramXmlSerializer.attribute(null, "flag", String.valueOf(this.jdField_m_of_type_Int));
-      }
-      if (this.jdField_o_of_type_Int != 0) {
-        paramXmlSerializer.attribute(null, "mode", String.valueOf(this.jdField_o_of_type_Int));
-      }
-      if (this.jdField_p_of_type_Int != 0) {
-        paramXmlSerializer.attribute(null, "bg", String.valueOf(this.jdField_p_of_type_Int));
-      }
-      if (!TextUtils.isEmpty(this.jdField_h_of_type_JavaLangString)) {
-        paramXmlSerializer.attribute(null, "businessData", this.jdField_h_of_type_JavaLangString);
-      }
-      if (!TextUtils.isEmpty(this.jdField_i_of_type_JavaLangString)) {
-        paramXmlSerializer.attribute(null, "commonData", this.jdField_i_of_type_JavaLangString);
-      }
-      if (!TextUtils.isEmpty(this.jdField_j_of_type_JavaLangString)) {
-        paramXmlSerializer.attribute(null, "index", this.jdField_j_of_type_JavaLangString);
-      }
-      if (!TextUtils.isEmpty(this.jdField_k_of_type_JavaLangString)) {
-        paramXmlSerializer.attribute(null, "index_name", this.jdField_k_of_type_JavaLangString);
-      }
-      if (!TextUtils.isEmpty(this.jdField_l_of_type_JavaLangString)) {
-        paramXmlSerializer.attribute(null, "index_type", this.jdField_l_of_type_JavaLangString);
-      }
-      if (!TextUtils.isEmpty(this.jdField_o_of_type_JavaLangString)) {
-        paramXmlSerializer.attribute(null, "canvas", this.jdField_o_of_type_JavaLangString);
-      }
-      if (!TextUtils.isEmpty(this.jdField_m_of_type_JavaLangString)) {
-        paramXmlSerializer.attribute(null, "rurl", this.jdField_m_of_type_JavaLangString);
-      }
-      if (!TextUtils.isEmpty(this.jdField_p_of_type_JavaLangString)) {
-        paramXmlSerializer.attribute(null, "disType", this.jdField_p_of_type_JavaLangString);
-      }
-      if (!TextUtils.isEmpty(this.n)) {
-        paramXmlSerializer.attribute(null, "tid", this.n);
-      }
-      if (!TextUtils.isEmpty(this.jdField_q_of_type_JavaLangString)) {
-        paramXmlSerializer.attribute(null, "apurl", this.jdField_q_of_type_JavaLangString);
-      }
-      if (this.jdField_c_of_type_Int != 0) {
-        paramXmlSerializer.attribute(null, "action_type", String.valueOf(this.jdField_c_of_type_Int));
-      }
-      if (!TextUtils.isEmpty(this.jdField_r_of_type_JavaLangString)) {
-        paramXmlSerializer.attribute(null, "advertiser_id", this.jdField_r_of_type_JavaLangString);
-      }
-      if (!TextUtils.isEmpty(this.s)) {
-        paramXmlSerializer.attribute(null, "aid", this.s);
-      }
-      if (!TextUtils.isEmpty(this.t)) {
-        paramXmlSerializer.attribute(null, "app_download_schema", this.t);
-      }
-      if (!TextUtils.isEmpty(this.u)) {
-        paramXmlSerializer.attribute(null, "canvas_json", this.u);
-      }
-      if (!TextUtils.isEmpty(this.v)) {
-        paramXmlSerializer.attribute(null, "customized_invoke_url", this.v);
-      }
-      if (this.jdField_d_of_type_Int != 0) {
-        paramXmlSerializer.attribute(null, "dest_type", String.valueOf(this.jdField_d_of_type_Int));
-      }
-      if (!TextUtils.isEmpty(this.w)) {
-        paramXmlSerializer.attribute(null, "effect_url", this.w);
-      }
-      if (!TextUtils.isEmpty(this.x)) {
-        paramXmlSerializer.attribute(null, "landing_page", this.x);
-      }
-      if (!TextUtils.isEmpty(this.y)) {
-        paramXmlSerializer.attribute(null, "landing_page_report_url", this.y);
-      }
-      if (!TextUtils.isEmpty(this.z)) {
-        paramXmlSerializer.attribute(null, "noco_id", this.z);
-      }
-      if (!TextUtils.isEmpty(this.A)) {
-        paramXmlSerializer.attribute(null, "product_id", this.A);
-      }
-      if (this.jdField_e_of_type_Int != 0) {
-        paramXmlSerializer.attribute(null, "product_type", String.valueOf(this.jdField_e_of_type_Int));
-      }
-      if (this.jdField_f_of_type_Int != 0) {
-        paramXmlSerializer.attribute(null, "mini_program_type", String.valueOf(this.jdField_f_of_type_Int));
-      }
-      if (!TextUtils.isEmpty(this.B)) {
-        paramXmlSerializer.attribute(null, "rl", this.B);
-      }
-      if (!TextUtils.isEmpty(this.C)) {
-        paramXmlSerializer.attribute(null, "subordinate_product_id", this.C);
-      }
-      if (!TextUtils.isEmpty(this.D)) {
-        paramXmlSerializer.attribute(null, "traceid", this.D);
-      }
-      if (!TextUtils.isEmpty(this.E)) {
-        paramXmlSerializer.attribute(null, "via", this.E);
-      }
-      if (!TextUtils.isEmpty(this.F)) {
-        paramXmlSerializer.attribute(null, "video_url", this.F);
-      }
-      if (!TextUtils.isEmpty(this.G)) {
-        paramXmlSerializer.attribute(null, "appname", this.G);
-      }
-      if (!TextUtils.isEmpty(this.H)) {
-        paramXmlSerializer.attribute(null, "customized_invoke_url", this.H);
-      }
-      if (!TextUtils.isEmpty(this.I)) {
-        paramXmlSerializer.attribute(null, "pkg_name", this.I);
-      }
-      if (!TextUtils.isEmpty(this.J)) {
-        paramXmlSerializer.attribute(null, "pkgurl", this.J);
-      }
-      if (!TextUtils.isEmpty(this.L)) {
-        paramXmlSerializer.attribute(null, "api_exposure_monitor_url", this.L);
-      }
-      if (!TextUtils.isEmpty(this.K)) {
-        paramXmlSerializer.attribute(null, "api_click_monitor_url", this.K);
-      }
-      if (!TextUtils.isEmpty(this.M)) {
-        paramXmlSerializer.attribute(null, "trace_info_aid", this.M);
-      }
-      if (!TextUtils.isEmpty(this.N)) {
-        paramXmlSerializer.attribute(null, "corporate_image_name", this.N);
-      }
-      if (!TextUtils.isEmpty(this.O)) {
-        paramXmlSerializer.attribute(null, "corporate_logo", this.O);
-      }
-      if (this.jdField_g_of_type_Int != 0) {
-        paramXmlSerializer.attribute(null, "tab_id", String.valueOf(this.jdField_g_of_type_Int));
-      }
-      if (this.jdField_h_of_type_Int != 0) {
-        paramXmlSerializer.attribute(null, "is_hidden", String.valueOf(this.jdField_h_of_type_Int));
-      }
-      if (!TextUtils.isEmpty(this.P)) {
-        paramXmlSerializer.attribute(null, "negative_feedback_url", this.P);
-      }
-      if (!TextUtils.isEmpty(this.Q)) {
-        paramXmlSerializer.attribute(null, "sdk_exposure_monitor_url", this.Q);
-      }
-      if (!TextUtils.isEmpty(this.R)) {
-        paramXmlSerializer.attribute(null, "sdk_click_monitor_url", this.R);
-      }
-      if (this.jdField_i_of_type_Int != 0) {
-        paramXmlSerializer.attribute(null, "media_duration", String.valueOf(this.jdField_i_of_type_Int));
-      }
-      if (this.jdField_j_of_type_Int != 0) {
-        paramXmlSerializer.attribute(null, "video_file_size", String.valueOf(this.jdField_j_of_type_Int));
-      }
-      if (this.jdField_k_of_type_Int != 0) {
-        paramXmlSerializer.attribute(null, "app_score_num", String.valueOf(this.jdField_k_of_type_Int));
-      }
-      if (this.jdField_l_of_type_Int != 0) {
-        paramXmlSerializer.attribute(null, "download_num", String.valueOf(this.jdField_l_of_type_Int));
-      }
-      if (!TextUtils.isEmpty(this.S)) {
-        paramXmlSerializer.attribute(null, "universal_link", this.S);
-      }
-      if (!TextUtils.isEmpty(this.T)) {
-        paramXmlSerializer.attribute(null, "sdk_data", this.T);
-      }
-      if (!TextUtils.isEmpty(this.U)) {
-        paramXmlSerializer.attribute(null, "tencent_video_id", this.U);
-      }
-      if (!TextUtils.isEmpty(this.V)) {
-        paramXmlSerializer.attribute(null, "view_id", this.V);
-      }
-      if (!TextUtils.isEmpty(this.W)) {
-        paramXmlSerializer.attribute(null, "qgg_ext", this.W);
-      }
-      if (!TextUtils.isEmpty(this.X)) {
-        paramXmlSerializer.attribute(null, "adInfo", this.X);
-      }
-      if (!TextUtils.isEmpty(this.Y)) {
-        paramXmlSerializer.attribute(null, "is_report_click", this.Y);
-      }
-      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((AbsStructMsgElement)((Iterator)localObject).next()).a(paramXmlSerializer);
-      }
+    int i = this.jdField_r_of_type_Int;
+    if (i < 0) {
+      localObject = "0";
+    } else {
+      localObject = String.valueOf(i);
+    }
+    paramXmlSerializer.attribute(null, "layout", (String)localObject);
+    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+      paramXmlSerializer.attribute(null, "action", this.jdField_c_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
+      paramXmlSerializer.attribute(null, "actionData", this.jdField_d_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
+      paramXmlSerializer.attribute(null, "a_actionData", this.jdField_e_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString)) {
+      paramXmlSerializer.attribute(null, "i_actionData", this.jdField_f_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.b)) {
+      paramXmlSerializer.attribute(null, "url", this.b);
+    }
+    if (!TextUtils.isEmpty(this.jdField_g_of_type_JavaLangString)) {
+      paramXmlSerializer.attribute(null, "brief", this.jdField_g_of_type_JavaLangString);
+    }
+    if (this.jdField_m_of_type_Int != 0) {
+      paramXmlSerializer.attribute(null, "flag", String.valueOf(this.jdField_m_of_type_Int));
+    }
+    i = this.jdField_o_of_type_Int;
+    if (i != 0) {
+      paramXmlSerializer.attribute(null, "mode", String.valueOf(i));
+    }
+    i = this.jdField_p_of_type_Int;
+    if (i != 0) {
+      paramXmlSerializer.attribute(null, "bg", String.valueOf(i));
+    }
+    if (!TextUtils.isEmpty(this.jdField_h_of_type_JavaLangString)) {
+      paramXmlSerializer.attribute(null, "businessData", this.jdField_h_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.jdField_i_of_type_JavaLangString)) {
+      paramXmlSerializer.attribute(null, "commonData", this.jdField_i_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.jdField_j_of_type_JavaLangString)) {
+      paramXmlSerializer.attribute(null, "index", this.jdField_j_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.jdField_k_of_type_JavaLangString)) {
+      paramXmlSerializer.attribute(null, "index_name", this.jdField_k_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.jdField_l_of_type_JavaLangString)) {
+      paramXmlSerializer.attribute(null, "index_type", this.jdField_l_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.jdField_o_of_type_JavaLangString)) {
+      paramXmlSerializer.attribute(null, "canvas", this.jdField_o_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.jdField_m_of_type_JavaLangString)) {
+      paramXmlSerializer.attribute(null, "rurl", this.jdField_m_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.jdField_p_of_type_JavaLangString)) {
+      paramXmlSerializer.attribute(null, "disType", this.jdField_p_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.n)) {
+      paramXmlSerializer.attribute(null, "tid", this.n);
+    }
+    if (!TextUtils.isEmpty(this.jdField_q_of_type_JavaLangString)) {
+      paramXmlSerializer.attribute(null, "apurl", this.jdField_q_of_type_JavaLangString);
+    }
+    if (this.jdField_c_of_type_Int != 0) {
+      paramXmlSerializer.attribute(null, "action_type", String.valueOf(this.jdField_c_of_type_Int));
+    }
+    if (!TextUtils.isEmpty(this.jdField_r_of_type_JavaLangString)) {
+      paramXmlSerializer.attribute(null, "advertiser_id", this.jdField_r_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.s)) {
+      paramXmlSerializer.attribute(null, "aid", this.s);
+    }
+    if (!TextUtils.isEmpty(this.t)) {
+      paramXmlSerializer.attribute(null, "app_download_schema", this.t);
+    }
+    if (!TextUtils.isEmpty(this.u)) {
+      paramXmlSerializer.attribute(null, "canvas_json", this.u);
+    }
+    if (!TextUtils.isEmpty(this.v)) {
+      paramXmlSerializer.attribute(null, "customized_invoke_url", this.v);
+    }
+    if (this.jdField_d_of_type_Int != 0) {
+      paramXmlSerializer.attribute(null, "dest_type", String.valueOf(this.jdField_d_of_type_Int));
+    }
+    if (!TextUtils.isEmpty(this.w)) {
+      paramXmlSerializer.attribute(null, "effect_url", this.w);
+    }
+    if (!TextUtils.isEmpty(this.x)) {
+      paramXmlSerializer.attribute(null, "landing_page", this.x);
+    }
+    if (!TextUtils.isEmpty(this.y)) {
+      paramXmlSerializer.attribute(null, "landing_page_report_url", this.y);
+    }
+    if (!TextUtils.isEmpty(this.z)) {
+      paramXmlSerializer.attribute(null, "noco_id", this.z);
+    }
+    if (!TextUtils.isEmpty(this.A)) {
+      paramXmlSerializer.attribute(null, "product_id", this.A);
+    }
+    if (this.jdField_e_of_type_Int != 0) {
+      paramXmlSerializer.attribute(null, "product_type", String.valueOf(this.jdField_e_of_type_Int));
+    }
+    if (this.jdField_f_of_type_Int != 0) {
+      paramXmlSerializer.attribute(null, "mini_program_type", String.valueOf(this.jdField_f_of_type_Int));
+    }
+    if (!TextUtils.isEmpty(this.B)) {
+      paramXmlSerializer.attribute(null, "rl", this.B);
+    }
+    if (!TextUtils.isEmpty(this.C)) {
+      paramXmlSerializer.attribute(null, "subordinate_product_id", this.C);
+    }
+    if (!TextUtils.isEmpty(this.D)) {
+      paramXmlSerializer.attribute(null, "traceid", this.D);
+    }
+    if (!TextUtils.isEmpty(this.E)) {
+      paramXmlSerializer.attribute(null, "via", this.E);
+    }
+    if (!TextUtils.isEmpty(this.F)) {
+      paramXmlSerializer.attribute(null, "video_url", this.F);
+    }
+    if (!TextUtils.isEmpty(this.G)) {
+      paramXmlSerializer.attribute(null, "appname", this.G);
+    }
+    if (!TextUtils.isEmpty(this.H)) {
+      paramXmlSerializer.attribute(null, "customized_invoke_url", this.H);
+    }
+    if (!TextUtils.isEmpty(this.I)) {
+      paramXmlSerializer.attribute(null, "pkg_name", this.I);
+    }
+    if (!TextUtils.isEmpty(this.J)) {
+      paramXmlSerializer.attribute(null, "pkgurl", this.J);
+    }
+    if (!TextUtils.isEmpty(this.L)) {
+      paramXmlSerializer.attribute(null, "api_exposure_monitor_url", this.L);
+    }
+    if (!TextUtils.isEmpty(this.K)) {
+      paramXmlSerializer.attribute(null, "api_click_monitor_url", this.K);
+    }
+    if (!TextUtils.isEmpty(this.M)) {
+      paramXmlSerializer.attribute(null, "trace_info_aid", this.M);
+    }
+    if (!TextUtils.isEmpty(this.N)) {
+      paramXmlSerializer.attribute(null, "corporate_image_name", this.N);
+    }
+    if (!TextUtils.isEmpty(this.O)) {
+      paramXmlSerializer.attribute(null, "corporate_logo", this.O);
+    }
+    if (this.jdField_g_of_type_Int != 0) {
+      paramXmlSerializer.attribute(null, "tab_id", String.valueOf(this.jdField_g_of_type_Int));
+    }
+    if (this.jdField_h_of_type_Int != 0) {
+      paramXmlSerializer.attribute(null, "is_hidden", String.valueOf(this.jdField_h_of_type_Int));
+    }
+    if (!TextUtils.isEmpty(this.P)) {
+      paramXmlSerializer.attribute(null, "negative_feedback_url", this.P);
+    }
+    if (!TextUtils.isEmpty(this.Q)) {
+      paramXmlSerializer.attribute(null, "sdk_exposure_monitor_url", this.Q);
+    }
+    if (!TextUtils.isEmpty(this.R)) {
+      paramXmlSerializer.attribute(null, "sdk_click_monitor_url", this.R);
+    }
+    if (this.jdField_i_of_type_Int != 0) {
+      paramXmlSerializer.attribute(null, "media_duration", String.valueOf(this.jdField_i_of_type_Int));
+    }
+    if (this.jdField_j_of_type_Int != 0) {
+      paramXmlSerializer.attribute(null, "video_file_size", String.valueOf(this.jdField_j_of_type_Int));
+    }
+    if (this.jdField_k_of_type_Int != 0) {
+      paramXmlSerializer.attribute(null, "app_score_num", String.valueOf(this.jdField_k_of_type_Int));
+    }
+    if (this.jdField_l_of_type_Int != 0) {
+      paramXmlSerializer.attribute(null, "download_num", String.valueOf(this.jdField_l_of_type_Int));
+    }
+    if (!TextUtils.isEmpty(this.S)) {
+      paramXmlSerializer.attribute(null, "universal_link", this.S);
+    }
+    if (!TextUtils.isEmpty(this.T)) {
+      paramXmlSerializer.attribute(null, "sdk_data", this.T);
+    }
+    if (!TextUtils.isEmpty(this.U)) {
+      paramXmlSerializer.attribute(null, "tencent_video_id", this.U);
+    }
+    if (!TextUtils.isEmpty(this.V)) {
+      paramXmlSerializer.attribute(null, "view_id", this.V);
+    }
+    if (!TextUtils.isEmpty(this.W)) {
+      paramXmlSerializer.attribute(null, "qgg_ext", this.W);
+    }
+    if (!TextUtils.isEmpty(this.X)) {
+      paramXmlSerializer.attribute(null, "adInfo", this.X);
+    }
+    if (!TextUtils.isEmpty(this.Y)) {
+      paramXmlSerializer.attribute(null, "is_report_click", this.Y);
+    }
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((AbsStructMsgElement)((Iterator)localObject).next()).a(paramXmlSerializer);
     }
     paramXmlSerializer.endTag(null, this.jdField_a_of_type_JavaLangString);
   }
@@ -1023,324 +916,320 @@ public abstract class AbsStructMsgItem
   
   public boolean a(StructMsgNode paramStructMsgNode)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (paramStructMsgNode == null) {
-      bool1 = true;
+      return true;
     }
-    for (;;)
+    this.jdField_c_of_type_JavaLangString = paramStructMsgNode.a("action");
+    this.jdField_d_of_type_JavaLangString = paramStructMsgNode.a("actionData");
+    this.jdField_e_of_type_JavaLangString = paramStructMsgNode.a("a_actionData");
+    this.jdField_f_of_type_JavaLangString = paramStructMsgNode.a("i_actionData");
+    this.b = paramStructMsgNode.a("url");
+    this.jdField_g_of_type_JavaLangString = paramStructMsgNode.a("brief");
+    this.jdField_q_of_type_JavaLangString = paramStructMsgNode.a("apurl");
+    Object localObject1 = paramStructMsgNode.a("flag");
+    if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
+    try
     {
-      return bool1;
-      this.jdField_c_of_type_JavaLangString = paramStructMsgNode.a("action");
-      this.jdField_d_of_type_JavaLangString = paramStructMsgNode.a("actionData");
-      this.jdField_e_of_type_JavaLangString = paramStructMsgNode.a("a_actionData");
-      this.jdField_f_of_type_JavaLangString = paramStructMsgNode.a("i_actionData");
-      this.b = paramStructMsgNode.a("url");
-      this.jdField_g_of_type_JavaLangString = paramStructMsgNode.a("brief");
-      this.jdField_q_of_type_JavaLangString = paramStructMsgNode.a("apurl");
-      Object localObject1 = paramStructMsgNode.a("flag");
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
+      this.jdField_m_of_type_Int = Integer.parseInt((String)localObject1);
+    }
+    catch (NumberFormatException localNumberFormatException1)
+    {
+      label112:
+      break label112;
+    }
+    this.jdField_m_of_type_Int = 0;
+    localObject1 = paramStructMsgNode.a("mode");
+    if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
+    try
+    {
+      this.jdField_o_of_type_Int = Integer.parseInt((String)localObject1);
+    }
+    catch (NumberFormatException localNumberFormatException2)
+    {
+      label146:
+      break label146;
+    }
+    this.jdField_o_of_type_Int = 0;
+    localObject1 = paramStructMsgNode.a("bg");
+    try
+    {
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        break label249;
+      }
+      if (((String)localObject1).startsWith("#")) {
+        this.jdField_p_of_type_Int = Color.parseColor((String)localObject1);
+      } else {
+        this.jdField_p_of_type_Int = Integer.parseInt((String)localObject1);
+      }
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      label203:
+      label249:
+      Object localObject2;
+      break label203;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Item bg value is ");
+      ((StringBuilder)localObject1).append(this.jdField_p_of_type_Int);
+      QLog.i("AbsStructMsgItem", 2, ((StringBuilder)localObject1).toString());
+    }
+    this.jdField_h_of_type_JavaLangString = paramStructMsgNode.a("businessData");
+    this.jdField_i_of_type_JavaLangString = paramStructMsgNode.a("commonData");
+    this.jdField_j_of_type_JavaLangString = paramStructMsgNode.a("index");
+    this.jdField_k_of_type_JavaLangString = paramStructMsgNode.a("index_name");
+    this.jdField_l_of_type_JavaLangString = paramStructMsgNode.a("index_type");
+    this.jdField_o_of_type_JavaLangString = paramStructMsgNode.a("canvas");
+    this.jdField_m_of_type_JavaLangString = paramStructMsgNode.a("rurl");
+    this.jdField_p_of_type_JavaLangString = paramStructMsgNode.a("disType");
+    this.n = paramStructMsgNode.a("tid");
+    if (this.jdField_a_of_type_Int > 10)
+    {
+      localObject1 = paramStructMsgNode.a;
+      if (localObject1 != null)
+      {
+        localObject2 = ((StructMsgNode)localObject1).a("action_type");
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {}
+      }
+    }
+    try
+    {
+      this.jdField_c_of_type_Int = Integer.parseInt((String)localObject2);
+    }
+    catch (NumberFormatException localNumberFormatException5)
+    {
+      label398:
+      label433:
+      break label398;
+    }
+    this.jdField_c_of_type_Int = 0;
+    localObject2 = ((StructMsgNode)localObject1).a("dest_type");
+    if (!TextUtils.isEmpty((CharSequence)localObject2)) {}
+    try
+    {
+      this.jdField_d_of_type_Int = Integer.parseInt((String)localObject2);
+    }
+    catch (NumberFormatException localNumberFormatException6)
+    {
+      break label433;
+    }
+    this.jdField_d_of_type_Int = 0;
+    localObject2 = ((StructMsgNode)localObject1).a("product_type");
+    if (!TextUtils.isEmpty((CharSequence)localObject2)) {}
+    try
+    {
+      this.jdField_e_of_type_Int = Integer.parseInt((String)localObject2);
+    }
+    catch (NumberFormatException localNumberFormatException7)
+    {
+      label468:
+      break label468;
+    }
+    this.jdField_e_of_type_Int = 0;
+    this.jdField_r_of_type_JavaLangString = ((StructMsgNode)localObject1).a("advertiser_id");
+    this.s = ((StructMsgNode)localObject1).a("aid");
+    this.t = ((StructMsgNode)localObject1).a("app_download_schema");
+    this.u = ((StructMsgNode)localObject1).a("canvas_json");
+    this.v = ((StructMsgNode)localObject1).a("customized_invoke_url");
+    this.w = ((StructMsgNode)localObject1).a("effect_url");
+    this.x = ((StructMsgNode)localObject1).a("landing_page");
+    this.y = ((StructMsgNode)localObject1).a("landing_page_report_url");
+    this.z = ((StructMsgNode)localObject1).a("noco_id");
+    this.A = ((StructMsgNode)localObject1).a("product_id");
+    this.B = ((StructMsgNode)localObject1).a("rl");
+    this.C = ((StructMsgNode)localObject1).a("subordinate_product_id");
+    this.D = ((StructMsgNode)localObject1).a("traceid");
+    this.E = ((StructMsgNode)localObject1).a("via");
+    this.F = ((StructMsgNode)localObject1).a("video_url");
+    this.G = ((StructMsgNode)localObject1).a("appname");
+    this.H = ((StructMsgNode)localObject1).a("customized_invoke_url");
+    this.I = ((StructMsgNode)localObject1).a("pkg_name");
+    this.J = ((StructMsgNode)localObject1).a("pkgurl");
+    this.jdField_q_of_type_JavaLangString = ((StructMsgNode)localObject1).a("apurl");
+    if (this.jdField_a_of_type_Int > 11)
+    {
+      localObject1 = paramStructMsgNode.a;
+      if (localObject1 != null)
+      {
+        this.K = ((StructMsgNode)localObject1).a("api_click_monitor_url");
+        this.L = ((StructMsgNode)localObject1).a("api_exposure_monitor_url");
+        this.M = ((StructMsgNode)localObject1).a("trace_info_aid");
+      }
+    }
+    if (this.jdField_a_of_type_Int > 12)
+    {
+      localObject1 = paramStructMsgNode.a;
+      if (localObject1 != null)
+      {
+        this.N = ((StructMsgNode)localObject1).a("corporate_image_name");
+        this.O = ((StructMsgNode)localObject1).a("corporate_logo");
+      }
+    }
+    if (this.jdField_a_of_type_Int > 13)
+    {
+      localObject1 = paramStructMsgNode.a.a("mini_program_type");
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {}
+    }
+    try
+    {
+      this.jdField_f_of_type_Int = Integer.parseInt((String)localObject1);
+    }
+    catch (NumberFormatException localNumberFormatException3)
+    {
+      label854:
+      break label854;
+    }
+    this.jdField_f_of_type_Int = 0;
+    if (this.jdField_a_of_type_Int > 14)
+    {
+      localObject1 = paramStructMsgNode.a;
+      if (localObject1 != null)
+      {
+        localObject2 = ((StructMsgNode)localObject1).a("tab_id");
+        if (StringUtil.a((String)localObject2)) {}
+      }
+    }
+    try
+    {
+      this.jdField_g_of_type_Int = Integer.parseInt((String)localObject2);
+    }
+    catch (NumberFormatException localNumberFormatException8)
+    {
+      label909:
+      label944:
+      break label909;
+    }
+    this.jdField_g_of_type_Int = 0;
+    localObject1 = ((StructMsgNode)localObject1).a("is_hidden");
+    if (!StringUtil.a((String)localObject1)) {}
+    try
+    {
+      this.jdField_h_of_type_Int = Integer.parseInt((String)localObject1);
+    }
+    catch (NumberFormatException localNumberFormatException4)
+    {
+      break label944;
+    }
+    this.jdField_h_of_type_Int = 0;
+    if (this.jdField_a_of_type_Int > 15)
+    {
+      localObject1 = paramStructMsgNode.a;
+      this.P = ((StructMsgNode)localObject1).a("negative_feedback_url");
+      this.Q = ((StructMsgNode)localObject1).a("sdk_exposure_monitor_url");
+      this.R = ((StructMsgNode)localObject1).a("sdk_click_monitor_url");
+      localObject2 = ((StructMsgNode)localObject1).a("media_duration");
+      if (StringUtil.a((String)localObject2)) {}
+    }
+    try
+    {
+      this.jdField_i_of_type_Int = Integer.parseInt((String)localObject2);
+    }
+    catch (NumberFormatException localNumberFormatException9)
+    {
+      label1030:
+      break label1030;
+    }
+    this.jdField_i_of_type_Int = 0;
+    localObject2 = ((StructMsgNode)localObject1).a("video_file_size");
+    if (!StringUtil.a((String)localObject2)) {}
+    try
+    {
+      this.jdField_j_of_type_Int = Integer.parseInt((String)localObject2);
+    }
+    catch (NumberFormatException localNumberFormatException10)
+    {
+      label1065:
+      break label1065;
+    }
+    this.jdField_j_of_type_Int = 0;
+    localObject2 = ((StructMsgNode)localObject1).a("app_score_num");
+    if (!StringUtil.a((String)localObject2)) {}
+    try
+    {
+      this.jdField_k_of_type_Int = Integer.parseInt((String)localObject2);
+    }
+    catch (NumberFormatException localNumberFormatException11)
+    {
+      label1100:
+      break label1100;
+    }
+    this.jdField_k_of_type_Int = 0;
+    localObject2 = ((StructMsgNode)localObject1).a("download_num");
+    if (!StringUtil.a((String)localObject2)) {}
+    try
+    {
+      this.jdField_l_of_type_Int = Integer.parseInt((String)localObject2);
+    }
+    catch (NumberFormatException localNumberFormatException12)
+    {
+      label1135:
+      int k;
+      int i;
+      break label1135;
+    }
+    this.jdField_l_of_type_Int = 0;
+    this.S = ((StructMsgNode)localObject1).a("universal_link");
+    this.T = ((StructMsgNode)localObject1).a("sdk_data");
+    this.U = ((StructMsgNode)localObject1).a("tencent_video_id");
+    this.V = ((StructMsgNode)localObject1).a("view_id");
+    if (this.jdField_a_of_type_Int > 16) {
+      this.W = paramStructMsgNode.a.a("qgg_ext");
+    }
+    if (this.jdField_a_of_type_Int > 17)
+    {
+      localObject1 = paramStructMsgNode.a;
+      this.X = ((StructMsgNode)localObject1).a("adInfo");
+      this.Y = ((StructMsgNode)localObject1).a("is_report_click");
+    }
+    k = paramStructMsgNode.a();
+    i = 0;
+    while (i < k)
+    {
+      localObject2 = paramStructMsgNode.a(i);
+      if (localObject2 != null) {
+        if ("item".equals(((StructMsgNode)localObject2).b)) {
+          localObject1 = ((StructMsgNode)localObject2).a("layout");
+        }
+      }
       try
       {
-        this.jdField_m_of_type_Int = Integer.parseInt((String)localObject1);
-        localObject1 = paramStructMsgNode.a("mode");
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {}
+        int j;
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          j = Integer.parseInt((String)localObject1);
+        } else {
+          j = 0;
+        }
+        localObject1 = StructMsgElementFactory.a(j);
       }
-      catch (NumberFormatException localNumberFormatException11)
+      catch (NumberFormatException paramStructMsgNode)
       {
-        try
-        {
-          this.jdField_o_of_type_Int = Integer.parseInt((String)localObject1);
-          localObject1 = paramStructMsgNode.a("bg");
-        }
-        catch (NumberFormatException localNumberFormatException11)
-        {
-          try
-          {
-            if (!TextUtils.isEmpty((CharSequence)localObject1))
-            {
-              if (((String)localObject1).startsWith("#")) {
-                this.jdField_p_of_type_Int = Color.parseColor((String)localObject1);
-              }
-            }
-            else
-            {
-              this.jdField_h_of_type_JavaLangString = paramStructMsgNode.a("businessData");
-              this.jdField_i_of_type_JavaLangString = paramStructMsgNode.a("commonData");
-              this.jdField_j_of_type_JavaLangString = paramStructMsgNode.a("index");
-              this.jdField_k_of_type_JavaLangString = paramStructMsgNode.a("index_name");
-              this.jdField_l_of_type_JavaLangString = paramStructMsgNode.a("index_type");
-              this.jdField_o_of_type_JavaLangString = paramStructMsgNode.a("canvas");
-              this.jdField_m_of_type_JavaLangString = paramStructMsgNode.a("rurl");
-              this.jdField_p_of_type_JavaLangString = paramStructMsgNode.a("disType");
-              this.n = paramStructMsgNode.a("tid");
-              if (this.jdField_a_of_type_Int > 10)
-              {
-                localObject1 = paramStructMsgNode.a;
-                if (localObject1 != null)
-                {
-                  localObject3 = ((StructMsgNode)localObject1).a("action_type");
-                  if (TextUtils.isEmpty((CharSequence)localObject3)) {}
-                }
-              }
-            }
-          }
-          catch (IllegalArgumentException localNumberFormatException11)
-          {
-            try
-            {
-              this.jdField_c_of_type_Int = Integer.parseInt((String)localObject3);
-              localObject3 = ((StructMsgNode)localObject1).a("dest_type");
-              if (TextUtils.isEmpty((CharSequence)localObject3)) {}
-            }
-            catch (NumberFormatException localNumberFormatException11)
-            {
-              try
-              {
-                this.jdField_d_of_type_Int = Integer.parseInt((String)localObject3);
-                localObject3 = ((StructMsgNode)localObject1).a("product_type");
-                if (TextUtils.isEmpty((CharSequence)localObject3)) {}
-              }
-              catch (NumberFormatException localNumberFormatException11)
-              {
-                try
-                {
-                  this.jdField_e_of_type_Int = Integer.parseInt((String)localObject3);
-                  this.jdField_r_of_type_JavaLangString = ((StructMsgNode)localObject1).a("advertiser_id");
-                  this.s = ((StructMsgNode)localObject1).a("aid");
-                  this.t = ((StructMsgNode)localObject1).a("app_download_schema");
-                  this.u = ((StructMsgNode)localObject1).a("canvas_json");
-                  this.v = ((StructMsgNode)localObject1).a("customized_invoke_url");
-                  this.w = ((StructMsgNode)localObject1).a("effect_url");
-                  this.x = ((StructMsgNode)localObject1).a("landing_page");
-                  this.y = ((StructMsgNode)localObject1).a("landing_page_report_url");
-                  this.z = ((StructMsgNode)localObject1).a("noco_id");
-                  this.A = ((StructMsgNode)localObject1).a("product_id");
-                  this.B = ((StructMsgNode)localObject1).a("rl");
-                  this.C = ((StructMsgNode)localObject1).a("subordinate_product_id");
-                  this.D = ((StructMsgNode)localObject1).a("traceid");
-                  this.E = ((StructMsgNode)localObject1).a("via");
-                  this.F = ((StructMsgNode)localObject1).a("video_url");
-                  this.G = ((StructMsgNode)localObject1).a("appname");
-                  this.H = ((StructMsgNode)localObject1).a("customized_invoke_url");
-                  this.I = ((StructMsgNode)localObject1).a("pkg_name");
-                  this.J = ((StructMsgNode)localObject1).a("pkgurl");
-                  this.jdField_q_of_type_JavaLangString = ((StructMsgNode)localObject1).a("apurl");
-                  if (this.jdField_a_of_type_Int > 11)
-                  {
-                    localObject1 = paramStructMsgNode.a;
-                    if (localObject1 != null)
-                    {
-                      this.K = ((StructMsgNode)localObject1).a("api_click_monitor_url");
-                      this.L = ((StructMsgNode)localObject1).a("api_exposure_monitor_url");
-                      this.M = ((StructMsgNode)localObject1).a("trace_info_aid");
-                    }
-                  }
-                  if (this.jdField_a_of_type_Int > 12)
-                  {
-                    localObject1 = paramStructMsgNode.a;
-                    if (localObject1 != null)
-                    {
-                      this.N = ((StructMsgNode)localObject1).a("corporate_image_name");
-                      this.O = ((StructMsgNode)localObject1).a("corporate_logo");
-                    }
-                  }
-                  if (this.jdField_a_of_type_Int > 13)
-                  {
-                    localObject1 = paramStructMsgNode.a.a("mini_program_type");
-                    if (TextUtils.isEmpty((CharSequence)localObject1)) {}
-                  }
-                }
-                catch (NumberFormatException localNumberFormatException11)
-                {
-                  try
-                  {
-                    this.jdField_f_of_type_Int = Integer.parseInt((String)localObject1);
-                    if (this.jdField_a_of_type_Int > 14)
-                    {
-                      localObject1 = paramStructMsgNode.a;
-                      if (localObject1 != null)
-                      {
-                        localObject3 = ((StructMsgNode)localObject1).a("tab_id");
-                        if (StringUtil.a((String)localObject3)) {}
-                      }
-                    }
-                  }
-                  catch (NumberFormatException localNumberFormatException11)
-                  {
-                    try
-                    {
-                      this.jdField_g_of_type_Int = Integer.parseInt((String)localObject3);
-                      localObject1 = ((StructMsgNode)localObject1).a("is_hidden");
-                      if (StringUtil.a((String)localObject1)) {}
-                    }
-                    catch (NumberFormatException localNumberFormatException11)
-                    {
-                      try
-                      {
-                        this.jdField_h_of_type_Int = Integer.parseInt((String)localObject1);
-                        if (this.jdField_a_of_type_Int > 15)
-                        {
-                          localObject1 = paramStructMsgNode.a;
-                          this.P = ((StructMsgNode)localObject1).a("negative_feedback_url");
-                          this.Q = ((StructMsgNode)localObject1).a("sdk_exposure_monitor_url");
-                          this.R = ((StructMsgNode)localObject1).a("sdk_click_monitor_url");
-                          localObject3 = ((StructMsgNode)localObject1).a("media_duration");
-                          if (StringUtil.a((String)localObject3)) {}
-                        }
-                      }
-                      catch (NumberFormatException localNumberFormatException11)
-                      {
-                        try
-                        {
-                          this.jdField_i_of_type_Int = Integer.parseInt((String)localObject3);
-                          localObject3 = ((StructMsgNode)localObject1).a("video_file_size");
-                          if (StringUtil.a((String)localObject3)) {}
-                        }
-                        catch (NumberFormatException localNumberFormatException11)
-                        {
-                          try
-                          {
-                            this.jdField_j_of_type_Int = Integer.parseInt((String)localObject3);
-                            localObject3 = ((StructMsgNode)localObject1).a("app_score_num");
-                            if (StringUtil.a((String)localObject3)) {}
-                          }
-                          catch (NumberFormatException localNumberFormatException11)
-                          {
-                            try
-                            {
-                              this.jdField_k_of_type_Int = Integer.parseInt((String)localObject3);
-                              localObject3 = ((StructMsgNode)localObject1).a("download_num");
-                              if (StringUtil.a((String)localObject3)) {}
-                            }
-                            catch (NumberFormatException localNumberFormatException11)
-                            {
-                              try
-                              {
-                                for (;;)
-                                {
-                                  Object localObject3;
-                                  this.jdField_l_of_type_Int = Integer.parseInt((String)localObject3);
-                                  this.S = ((StructMsgNode)localObject1).a("universal_link");
-                                  this.T = ((StructMsgNode)localObject1).a("sdk_data");
-                                  this.U = ((StructMsgNode)localObject1).a("tencent_video_id");
-                                  this.V = ((StructMsgNode)localObject1).a("view_id");
-                                  if (this.jdField_a_of_type_Int > 16) {
-                                    this.W = paramStructMsgNode.a.a("qgg_ext");
-                                  }
-                                  if (this.jdField_a_of_type_Int > 17)
-                                  {
-                                    localObject1 = paramStructMsgNode.a;
-                                    this.X = ((StructMsgNode)localObject1).a("adInfo");
-                                    this.Y = ((StructMsgNode)localObject1).a("is_report_click");
-                                  }
-                                  int k = paramStructMsgNode.a();
-                                  int i = 0;
-                                  for (;;)
-                                  {
-                                    if (i >= k) {
-                                      break label1439;
-                                    }
-                                    localObject3 = paramStructMsgNode.a(i);
-                                    if (localObject3 != null) {
-                                      break;
-                                    }
-                                    label1126:
-                                    i += 1;
-                                  }
-                                  localNumberFormatException1 = localNumberFormatException1;
-                                  this.jdField_m_of_type_Int = 0;
-                                  continue;
-                                  localNumberFormatException2 = localNumberFormatException2;
-                                  this.jdField_o_of_type_Int = 0;
-                                  continue;
-                                  this.jdField_p_of_type_Int = Integer.parseInt(localNumberFormatException2);
-                                  continue;
-                                  localIllegalArgumentException = localIllegalArgumentException;
-                                  if (QLog.isColorLevel())
-                                  {
-                                    QLog.i("AbsStructMsgItem", 2, "Item bg value is " + this.jdField_p_of_type_Int);
-                                    continue;
-                                    localNumberFormatException5 = localNumberFormatException5;
-                                    this.jdField_c_of_type_Int = 0;
-                                    continue;
-                                    localNumberFormatException6 = localNumberFormatException6;
-                                    this.jdField_d_of_type_Int = 0;
-                                    continue;
-                                    localNumberFormatException7 = localNumberFormatException7;
-                                    this.jdField_e_of_type_Int = 0;
-                                    continue;
-                                    localNumberFormatException3 = localNumberFormatException3;
-                                    this.jdField_f_of_type_Int = 0;
-                                    continue;
-                                    localNumberFormatException8 = localNumberFormatException8;
-                                    this.jdField_g_of_type_Int = 0;
-                                    continue;
-                                    localNumberFormatException4 = localNumberFormatException4;
-                                    this.jdField_h_of_type_Int = 0;
-                                    continue;
-                                    localNumberFormatException9 = localNumberFormatException9;
-                                    this.jdField_i_of_type_Int = 0;
-                                    continue;
-                                    localNumberFormatException10 = localNumberFormatException10;
-                                    this.jdField_j_of_type_Int = 0;
-                                  }
-                                }
-                                localNumberFormatException11 = localNumberFormatException11;
-                                this.jdField_k_of_type_Int = 0;
-                              }
-                              catch (NumberFormatException localNumberFormatException12)
-                              {
-                                for (;;)
-                                {
-                                  this.jdField_l_of_type_Int = 0;
-                                }
-                                if ("item".equals(localNumberFormatException12.b)) {}
-                                for (Object localObject2 = localNumberFormatException12.a("layout");; localObject2 = StructMsgElementFactory.a(localNumberFormatException12.b))
-                                {
-                                  try
-                                  {
-                                    if (!TextUtils.isEmpty((CharSequence)localObject2)) {}
-                                    for (int j = Integer.parseInt((String)localObject2);; j = 0)
-                                    {
-                                      localObject2 = StructMsgElementFactory.a(j);
-                                      bool1 = bool2;
-                                      if (localObject2 == null) {
-                                        break;
-                                      }
-                                      bool1 = bool2;
-                                      if (!((AbsStructMsgElement)localObject2).a(localNumberFormatException12)) {
-                                        break;
-                                      }
-                                      a((AbsStructMsgElement)localObject2);
-                                      break label1126;
-                                    }
-                                    if (!QLog.isColorLevel()) {
-                                      break;
-                                    }
-                                  }
-                                  catch (NumberFormatException paramStructMsgNode)
-                                  {
-                                    bool1 = bool2;
-                                  }
-                                  QLog.i("AbsStructMsgItem", 2, "Item layout value is " + 0);
-                                  return false;
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+        label1330:
+        break label1330;
+      }
+      if (QLog.isColorLevel())
+      {
+        paramStructMsgNode = new StringBuilder();
+        paramStructMsgNode.append("Item layout value is ");
+        paramStructMsgNode.append(0);
+        QLog.i("AbsStructMsgItem", 2, paramStructMsgNode.toString());
+      }
+      return false;
+      localObject1 = StructMsgElementFactory.a(((StructMsgNode)localObject2).b);
+      if (localObject1 == null) {
+        return false;
+      }
+      if (((AbsStructMsgElement)localObject1).a((StructMsgNode)localObject2))
+      {
+        a((AbsStructMsgElement)localObject1);
+        i += 1;
+      }
+      else
+      {
+        return false;
       }
     }
-    label1439:
     return true;
   }
   
@@ -1364,32 +1253,41 @@ public abstract class AbsStructMsgItem
       int j = paramView.getPaddingTop();
       int k = paramView.getPaddingRight();
       int m = paramView.getPaddingBottom();
-      switch (a())
+      int n = a();
+      if (n != 0)
       {
-      default: 
-        paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        paramView.setPadding(i, j, k, m);
-        localObject = paramView.findViewById(2131368907);
-        if ((localObject != null) && ((localObject instanceof PAHighLightImageView))) {
-          ((PAHighLightImageView)localObject).a();
+        if (n != 1)
+        {
+          if (n != 2)
+          {
+            if (n == 3) {
+              paramView.setBackgroundResource(2130838253);
+            }
+          }
+          else {
+            paramView.setBackgroundResource(2130838254);
+          }
         }
-        break;
+        else {
+          paramView.setBackgroundResource(2130838256);
+        }
+      }
+      else {
+        paramView.setBackgroundResource(2130838255);
+      }
+      paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      paramView.setPadding(i, j, k, m);
+      localObject = paramView.findViewById(2131368633);
+      if ((localObject != null) && ((localObject instanceof PAHighLightImageView)))
+      {
+        ((PAHighLightImageView)localObject).a();
+        return;
+      }
+      paramView = paramView.findViewById(2131377977);
+      if ((paramView != null) && ((paramView instanceof PAHighLightImageView))) {
+        ((PAHighLightImageView)paramView).a();
       }
     }
-    do
-    {
-      return;
-      paramView.setBackgroundResource(2130838419);
-      break;
-      paramView.setBackgroundResource(2130838420);
-      break;
-      paramView.setBackgroundResource(2130838418);
-      break;
-      paramView.setBackgroundResource(2130838417);
-      break;
-      paramView = paramView.findViewById(2131378566);
-    } while ((paramView == null) || (!(paramView instanceof PAHighLightImageView)));
-    ((PAHighLightImageView)paramView).a();
   }
   
   public void b(String paramString)
@@ -1400,96 +1298,91 @@ public abstract class AbsStructMsgItem
   
   public void c(View paramView)
   {
-    ViewGroup.LayoutParams localLayoutParams;
-    int i;
-    int j;
-    int k;
-    int m;
     if (!TextUtils.isEmpty(this.b))
     {
-      localLayoutParams = paramView.getLayoutParams();
-      i = paramView.getPaddingLeft();
-      j = paramView.getPaddingTop();
-      k = paramView.getPaddingRight();
-      m = paramView.getPaddingBottom();
-      switch (a())
+      ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+      int i = paramView.getPaddingLeft();
+      int j = paramView.getPaddingTop();
+      int k = paramView.getPaddingRight();
+      int m = paramView.getPaddingBottom();
+      int n = a();
+      if (n != 0)
       {
+        if (n != 1)
+        {
+          if (n != 2)
+          {
+            if (n == 3) {
+              paramView.setBackgroundResource(2130838269);
+            }
+          }
+          else {
+            paramView.setBackgroundResource(2130838266);
+          }
+        }
+        else {
+          paramView.setBackgroundResource(2130838270);
+        }
       }
-    }
-    for (;;)
-    {
+      else {
+        paramView.setBackgroundResource(2130838267);
+      }
       paramView.setLayoutParams(localLayoutParams);
       paramView.setPadding(i, j, k, m);
-      return;
-      paramView.setBackgroundResource(2130838431);
-      continue;
-      paramView.setBackgroundResource(2130838434);
-      continue;
-      paramView.setBackgroundResource(2130838430);
-      continue;
-      paramView.setBackgroundResource(2130838433);
     }
   }
   
   @TargetApi(16)
   protected void d(View paramView)
   {
-    if ((b()) && (a())) {
-      switch (this.jdField_p_of_type_Int)
+    if ((b()) && (a()))
+    {
+      int i = this.jdField_p_of_type_Int;
+      if (i != 1)
       {
-      default: 
-        if ((paramView != null) && (a() == 1))
-        {
-          if (this.jdField_q_of_type_Int == 0) {
-            break label128;
+        if (i == 2) {
+          if (!TextUtils.isEmpty(this.b)) {
+            this.jdField_q_of_type_Int = 2130838258;
+          } else {
+            this.jdField_q_of_type_Int = 2130838283;
           }
-          paramView.setBackgroundResource(this.jdField_q_of_type_Int);
         }
-        break;
+      }
+      else if (!TextUtils.isEmpty(this.b)) {
+        this.jdField_q_of_type_Int = 2130838257;
+      } else {
+        this.jdField_q_of_type_Int = 2130838271;
+      }
+      if ((paramView != null) && (a() == 1))
+      {
+        i = this.jdField_q_of_type_Int;
+        if (i != 0)
+        {
+          paramView.setBackgroundResource(i);
+          return;
+        }
+        paramView.setBackgroundResource(2130838256);
       }
     }
-    label128:
-    StateListDrawable localStateListDrawable;
-    do
+    else if ((a()) && (this.jdField_p_of_type_Int != 0))
     {
-      do
+      float f = AIOUtils.b(4.0F, paramView.getResources());
+      StateListDrawable localStateListDrawable = StructMsgUtils.a(paramView.getResources(), this.jdField_p_of_type_Int, new float[] { f, f, f, f, 0.0F, 0.0F, 0.0F, 0.0F });
+      if (localStateListDrawable != null)
       {
-        return;
-        if (!TextUtils.isEmpty(this.b))
+        if (Build.VERSION.SDK_INT < 16)
         {
-          this.jdField_q_of_type_Int = 2130838421;
-          break;
+          paramView.setBackgroundDrawable(localStateListDrawable);
+          return;
         }
-        this.jdField_q_of_type_Int = 2130838435;
-        break;
-        if (!TextUtils.isEmpty(this.b))
-        {
-          this.jdField_q_of_type_Int = 2130838422;
-          break;
-        }
-        this.jdField_q_of_type_Int = 2130838436;
-        break;
-        paramView.setBackgroundResource(2130838420);
-        return;
-      } while ((!a()) || (this.jdField_p_of_type_Int == 0));
-      int i = AIOUtils.a(4.0F, paramView.getResources());
-      float f1 = i;
-      float f2 = i;
-      float f3 = i;
-      float f4 = i;
-      localStateListDrawable = StructMsgUtils.a(paramView.getResources(), this.jdField_p_of_type_Int, new float[] { f1, f2, f3, f4, 0.0F, 0.0F, 0.0F, 0.0F });
-    } while (localStateListDrawable == null);
-    if (Build.VERSION.SDK_INT < 16)
-    {
-      paramView.setBackgroundDrawable(localStateListDrawable);
-      return;
+        paramView.setBackground(localStateListDrawable);
+      }
     }
-    paramView.setBackground(localStateListDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.AbsStructMsgItem
  * JD-Core Version:    0.7.0.1
  */

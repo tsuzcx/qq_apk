@@ -49,8 +49,8 @@ public class LiteRoomWebModule
   public void onCreate(Context paramContext)
   {
     super.onCreate(paramContext);
-    Object localObject = (ViewStub)getRootView().findViewById(2131363733);
-    ((ViewStub)localObject).setLayoutResource(2131559351);
+    Object localObject = (ViewStub)getRootView().findViewById(2131363663);
+    ((ViewStub)localObject).setLayoutResource(2131559226);
     this.viewGroup = ((ViewGroup)((ViewStub)localObject).inflate());
     this.viewGroup.setBackgroundColor(0);
     boolean bool = ((AppGeneralInfoService)getRoomEngine().getService(AppGeneralInfoService.class)).isSvrTestEnv();
@@ -58,29 +58,32 @@ public class LiteRoomWebModule
     if (this.mVideoType == VideoType.VIDEO.ordinal())
     {
       String str = this.roomBizContext.getEnterRoomInfo().videoId;
-      if (bool) {}
-      for (localObject = "https://fastest.now.qq.com/lite/h5/lite_record.html?vid=%s";; localObject = "https://now.qq.com/lite/h5/lite_record.html?vid=%s")
-      {
-        this.mUrl = String.format((String)localObject, new Object[] { str });
-        System.currentTimeMillis();
-        this.mWebView = new LiteWebView(paramContext, getRootView(), new LiteRoomWebModule.1(this));
-        this.mWebView.setBackgroundColor(0);
-        this.mWebView.loadUrl(this.mUrl);
-        this.viewGroup.addView(this.mWebView);
-        plantCookie();
-        return;
+      if (bool) {
+        localObject = "https://fastest.now.qq.com/lite/h5/lite_record.html?vid=%s";
+      } else {
+        localObject = "https://now.qq.com/lite/h5/lite_record.html?vid=%s";
       }
+      this.mUrl = String.format((String)localObject, new Object[] { str });
     }
-    long l = this.roomBizContext.getEnterRoomInfo().roomId;
-    if (bool) {}
-    for (localObject = "https://fastest.now.qq.com/lite/h5/lite_room.html?roomid=%s";; localObject = "https://now.qq.com/lite/h5/lite_room.html?roomid=%s")
+    else
     {
+      long l = this.roomBizContext.getEnterRoomInfo().roomId;
+      if (bool) {
+        localObject = "https://fastest.now.qq.com/lite/h5/lite_room.html?roomid=%s";
+      } else {
+        localObject = "https://now.qq.com/lite/h5/lite_room.html?roomid=%s";
+      }
       this.mUrl = String.format((String)localObject, new Object[] { Long.valueOf(l) });
-      break;
     }
+    System.currentTimeMillis();
+    this.mWebView = new LiteWebView(paramContext, getRootView(), new LiteRoomWebModule.1(this));
+    this.mWebView.setBackgroundColor(0);
+    this.mWebView.loadUrl(this.mUrl);
+    this.viewGroup.addView(this.mWebView);
+    plantCookie();
   }
   
-  public void onCreateCases()
+  protected void onCreateCases()
   {
     this.listenVideoTimeCase = getLiveCaseFactory().getCase(LiveCaseType.LISTEN_VIDEO_CURRENT_POSITION);
   }
@@ -110,7 +113,7 @@ public class LiteRoomWebModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.bizmodule.LiteRoomWebModule
  * JD-Core Version:    0.7.0.1
  */

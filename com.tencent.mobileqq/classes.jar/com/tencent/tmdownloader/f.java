@@ -24,15 +24,16 @@ public class f
   
   public static f a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new f();
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new f();
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   public int a(AppDetailReqParam paramAppDetailReqParam, IGetAppInfoCallback paramIGetAppInfoCallback)
@@ -40,7 +41,11 @@ public class f
     if (this.mServiceInterface != null) {
       try
       {
-        ab.c("RemoteOpProxy", "<requestAppInfo> process:" + s.e() + ", mServiceInterface is ok");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("<requestAppInfo> process:");
+        localStringBuilder.append(s.e());
+        localStringBuilder.append(", mServiceInterface is ok");
+        ab.c("RemoteOpProxy", localStringBuilder.toString());
         int i = ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).a(paramAppDetailReqParam, paramIGetAppInfoCallback);
         return i;
       }
@@ -49,7 +54,11 @@ public class f
         paramAppDetailReqParam.printStackTrace();
       }
     }
-    ab.c("RemoteOpProxy", "<requestAppInfo> process:" + s.e() + ", mServiceInterface is null");
+    paramAppDetailReqParam = new StringBuilder();
+    paramAppDetailReqParam.append("<requestAppInfo> process:");
+    paramAppDetailReqParam.append(s.e());
+    paramAppDetailReqParam.append(", mServiceInterface is null");
+    ab.c("RemoteOpProxy", paramAppDetailReqParam.toString());
     return -1;
   }
   
@@ -63,7 +72,11 @@ public class f
     if (this.mServiceInterface != null) {
       try
       {
-        ab.c("RemoteOpProxy", "<setInt> process:" + s.e() + ", mServiceInterface is ok");
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("<setInt> process:");
+        localStringBuilder.append(s.e());
+        localStringBuilder.append(", mServiceInterface is ok");
+        ab.c("RemoteOpProxy", localStringBuilder.toString());
         ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).a(paramString, paramInt);
         return;
       }
@@ -73,7 +86,11 @@ public class f
         return;
       }
     }
-    ab.c("RemoteOpProxy", "<setInt> process:" + s.e() + ", mServiceInterface is null, post the operation");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("<setInt> process:");
+    localStringBuilder.append(s.e());
+    localStringBuilder.append(", mServiceInterface is null, post the operation");
+    ab.c("RemoteOpProxy", localStringBuilder.toString());
     com.tencent.tmassistantbase.util.k.a().post(new p(this, paramString, paramInt));
   }
   
@@ -82,7 +99,11 @@ public class f
     if (this.mServiceInterface != null) {
       try
       {
-        ab.c("RemoteOpProxy", "<setLong> process:" + s.e() + ", mServiceInterface is ok");
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("<setLong> process:");
+        localStringBuilder.append(s.e());
+        localStringBuilder.append(", mServiceInterface is ok");
+        ab.c("RemoteOpProxy", localStringBuilder.toString());
         ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).a(paramString, paramLong);
         return;
       }
@@ -92,7 +113,11 @@ public class f
         return;
       }
     }
-    ab.c("RemoteOpProxy", "<setLong> process:" + s.e() + ", mServiceInterface is null, post the operation");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("<setLong> process:");
+    localStringBuilder.append(s.e());
+    localStringBuilder.append(", mServiceInterface is null, post the operation");
+    ab.c("RemoteOpProxy", localStringBuilder.toString());
     com.tencent.tmassistantbase.util.k.a().post(new o(this, paramString, paramLong));
   }
   
@@ -101,7 +126,11 @@ public class f
     if (this.mServiceInterface != null) {
       try
       {
-        ab.c("RemoteOpProxy", "<setString> process:" + s.e() + ", mServiceInterface is ok");
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("<setString> process:");
+        localStringBuilder.append(s.e());
+        localStringBuilder.append(", mServiceInterface is ok");
+        ab.c("RemoteOpProxy", localStringBuilder.toString());
         ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).a(paramString1, paramString2);
         return;
       }
@@ -111,7 +140,11 @@ public class f
         return;
       }
     }
-    ab.c("RemoteOpProxy", "<setString> process:" + s.e() + ", mServiceInterface is null, post the operation");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("<setString> process:");
+    localStringBuilder.append(s.e());
+    localStringBuilder.append(", mServiceInterface is null, post the operation");
+    ab.c("RemoteOpProxy", localStringBuilder.toString());
     com.tencent.tmassistantbase.util.k.a().post(new n(this, paramString1, paramString2));
   }
   
@@ -120,7 +153,11 @@ public class f
     if (this.mServiceInterface != null) {
       try
       {
-        ab.c("RemoteOpProxy", "<setBoolean> process:" + s.e() + ", mServiceInterface is ok");
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("<setBoolean> process:");
+        localStringBuilder.append(s.e());
+        localStringBuilder.append(", mServiceInterface is ok");
+        ab.c("RemoteOpProxy", localStringBuilder.toString());
         ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).a(paramString, paramBoolean);
         return;
       }
@@ -130,7 +167,11 @@ public class f
         return;
       }
     }
-    ab.c("RemoteOpProxy", "<setBoolean> process:" + s.e() + ", mServiceInterface is null, post the operation");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("<setBoolean> process:");
+    localStringBuilder.append(s.e());
+    localStringBuilder.append(", mServiceInterface is null, post the operation");
+    ab.c("RemoteOpProxy", localStringBuilder.toString());
     com.tencent.tmassistantbase.util.k.a().post(new q(this, paramString, paramBoolean));
   }
   
@@ -139,7 +180,11 @@ public class f
     if (this.mServiceInterface != null) {
       try
       {
-        ab.c("RemoteOpProxy", "<setBlob> process:" + s.e() + ", mServiceInterface is ok");
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("<setBlob> process:");
+        localStringBuilder.append(s.e());
+        localStringBuilder.append(", mServiceInterface is ok");
+        ab.c("RemoteOpProxy", localStringBuilder.toString());
         ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).a(paramString, paramArrayOfByte);
         return;
       }
@@ -149,7 +194,11 @@ public class f
         return;
       }
     }
-    ab.c("RemoteOpProxy", "<setBlob> process:" + s.e() + ", mServiceInterface is null, post the operation");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("<setBlob> process:");
+    localStringBuilder.append(s.e());
+    localStringBuilder.append(", mServiceInterface is null, post the operation");
+    ab.c("RemoteOpProxy", localStringBuilder.toString());
     com.tencent.tmassistantbase.util.k.a().post(new m(this, paramString, paramArrayOfByte));
   }
   
@@ -158,7 +207,11 @@ public class f
     if (this.mServiceInterface != null) {
       try
       {
-        ab.c("RemoteOpProxy", "<getBlob> process:" + s.e() + ", mServiceInterface is ok");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("<getBlob> process:");
+        localStringBuilder.append(s.e());
+        localStringBuilder.append(", mServiceInterface is ok");
+        ab.c("RemoteOpProxy", localStringBuilder.toString());
         paramString = ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).a(paramString);
         return paramString;
       }
@@ -167,7 +220,11 @@ public class f
         paramString.printStackTrace();
       }
     }
-    ab.c("RemoteOpProxy", "<getBlob> process:" + s.e() + ", mServiceInterface is null");
+    paramString = new StringBuilder();
+    paramString.append("<getBlob> process:");
+    paramString.append(s.e());
+    paramString.append(", mServiceInterface is null");
+    ab.c("RemoteOpProxy", paramString.toString());
     com.tencent.tmassistantbase.util.k.a().post(new h(this));
     return new byte[0];
   }
@@ -177,7 +234,11 @@ public class f
     if (this.mServiceInterface != null) {
       try
       {
-        ab.c("RemoteOpProxy", "<getString> process:" + s.e() + ", mServiceInterface is ok");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("<getString> process:");
+        localStringBuilder.append(s.e());
+        localStringBuilder.append(", mServiceInterface is ok");
+        ab.c("RemoteOpProxy", localStringBuilder.toString());
         paramString = ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).d(paramString);
         return paramString;
       }
@@ -186,7 +247,11 @@ public class f
         paramString.printStackTrace();
       }
     }
-    ab.c("RemoteOpProxy", "<getString> process:" + s.e() + ", mServiceInterface is null");
+    paramString = new StringBuilder();
+    paramString.append("<getString> process:");
+    paramString.append(s.e());
+    paramString.append(", mServiceInterface is null");
+    ab.c("RemoteOpProxy", paramString.toString());
     return "";
   }
   
@@ -195,7 +260,11 @@ public class f
     if (this.mServiceInterface != null) {
       try
       {
-        ab.c("RemoteOpProxy", "<requestAllConfig> process:" + s.e() + ", mServiceInterface is ok");
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("<requestAllConfig> process:");
+        localStringBuilder1.append(s.e());
+        localStringBuilder1.append(", mServiceInterface is ok");
+        ab.c("RemoteOpProxy", localStringBuilder1.toString());
         ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).b();
         return;
       }
@@ -205,7 +274,11 @@ public class f
         return;
       }
     }
-    ab.c("RemoteOpProxy", "<requestAllConfig> process:" + s.e() + ", mServiceInterface is null, post the operation");
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("<requestAllConfig> process:");
+    localStringBuilder2.append(s.e());
+    localStringBuilder2.append(", mServiceInterface is null, post the operation");
+    ab.c("RemoteOpProxy", localStringBuilder2.toString());
     com.tencent.tmassistantbase.util.k.a().post(new j(this));
   }
   
@@ -214,7 +287,11 @@ public class f
     if (this.mServiceInterface != null) {
       try
       {
-        ab.c("RemoteOpProxy", "<getLong> process:" + s.e() + ", mServiceInterface is ok");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("<getLong> process:");
+        localStringBuilder.append(s.e());
+        localStringBuilder.append(", mServiceInterface is ok");
+        ab.c("RemoteOpProxy", localStringBuilder.toString());
         long l = ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).c(paramString);
         return l;
       }
@@ -223,7 +300,11 @@ public class f
         paramString.printStackTrace();
       }
     }
-    ab.c("RemoteOpProxy", "<getLong> process:" + s.e() + ", mServiceInterface is null");
+    paramString = new StringBuilder();
+    paramString.append("<getLong> process:");
+    paramString.append(s.e());
+    paramString.append(", mServiceInterface is null");
+    ab.c("RemoteOpProxy", paramString.toString());
     return 0L;
   }
   
@@ -232,7 +313,11 @@ public class f
     if (this.mServiceInterface != null) {
       try
       {
-        ab.c("RemoteOpProxy", "<requestShareUrl> process:" + s.e() + ", mServiceInterface is ok");
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("<requestShareUrl> process:");
+        localStringBuilder1.append(s.e());
+        localStringBuilder1.append(", mServiceInterface is ok");
+        ab.c("RemoteOpProxy", localStringBuilder1.toString());
         ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).c();
         return;
       }
@@ -242,7 +327,11 @@ public class f
         return;
       }
     }
-    ab.c("RemoteOpProxy", "<requestShareUrl> process:" + s.e() + ", mServiceInterface is null, post the operation");
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("<requestShareUrl> process:");
+    localStringBuilder2.append(s.e());
+    localStringBuilder2.append(", mServiceInterface is null, post the operation");
+    ab.c("RemoteOpProxy", localStringBuilder2.toString());
     com.tencent.tmassistantbase.util.k.a().post(new k(this));
   }
   
@@ -251,7 +340,11 @@ public class f
     if (this.mServiceInterface != null) {
       try
       {
-        ab.c("RemoteOpProxy", "<getInt> process:" + s.e() + ", mServiceInterface is ok");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("<getInt> process:");
+        localStringBuilder.append(s.e());
+        localStringBuilder.append(", mServiceInterface is ok");
+        ab.c("RemoteOpProxy", localStringBuilder.toString());
         int i = ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).b(paramString);
         return i;
       }
@@ -260,7 +353,11 @@ public class f
         paramString.printStackTrace();
       }
     }
-    ab.c("RemoteOpProxy", "<getInt> process:" + s.e() + ", mServiceInterface is null");
+    paramString = new StringBuilder();
+    paramString.append("<getInt> process:");
+    paramString.append(s.e());
+    paramString.append(", mServiceInterface is null");
+    ab.c("RemoteOpProxy", paramString.toString());
     return 0;
   }
   
@@ -269,7 +366,11 @@ public class f
     if (this.mServiceInterface != null) {
       try
       {
-        ab.c("RemoteOpProxy", "<requestNewAppCenterConfig> process:" + s.e() + ", mServiceInterface is ok");
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("<requestNewAppCenterConfig> process:");
+        localStringBuilder1.append(s.e());
+        localStringBuilder1.append(", mServiceInterface is ok");
+        ab.c("RemoteOpProxy", localStringBuilder1.toString());
         ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).d();
         return;
       }
@@ -279,7 +380,11 @@ public class f
         return;
       }
     }
-    ab.c("RemoteOpProxy", "<requestNewAppCenterConfig> process:" + s.e() + ", mServiceInterface is null, post the operation");
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("<requestNewAppCenterConfig> process:");
+    localStringBuilder2.append(s.e());
+    localStringBuilder2.append(", mServiceInterface is null, post the operation");
+    ab.c("RemoteOpProxy", localStringBuilder2.toString());
     com.tencent.tmassistantbase.util.k.a().post(new l(this));
   }
   
@@ -293,7 +398,11 @@ public class f
     if (this.mServiceInterface != null) {
       try
       {
-        ab.c("RemoteOpProxy", "<getBoolean> process:" + s.e() + ", mServiceInterface is ok");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("<getBoolean> process:");
+        localStringBuilder.append(s.e());
+        localStringBuilder.append(", mServiceInterface is ok");
+        ab.c("RemoteOpProxy", localStringBuilder.toString());
         boolean bool = ((com.tencent.tmdownloader.internal.remote.a)this.mServiceInterface).e(paramString);
         return bool;
       }
@@ -302,7 +411,11 @@ public class f
         paramString.printStackTrace();
       }
     }
-    ab.c("RemoteOpProxy", "<getBoolean> process:" + s.e() + ", mServiceInterface is null");
+    paramString = new StringBuilder();
+    paramString.append("<getBoolean> process:");
+    paramString.append(s.e());
+    paramString.append(", mServiceInterface is null");
+    ab.c("RemoteOpProxy", paramString.toString());
     return false;
   }
   
@@ -324,7 +437,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmdownloader.f
  * JD-Core Version:    0.7.0.1
  */

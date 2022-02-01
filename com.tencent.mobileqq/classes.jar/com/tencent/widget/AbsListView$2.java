@@ -10,11 +10,11 @@ class AbsListView$2
     if (this.this$0.mCachingStarted)
     {
       AbsListView localAbsListView = this.this$0;
-      this.this$0.mCachingActive = false;
+      localAbsListView.mCachingActive = false;
       localAbsListView.mCachingStarted = false;
-      AbsListView.access$3200(this.this$0, false);
-      if ((AbsListView.access$3300(this.this$0) & 0x2) == 0) {
-        AbsListView.access$3400(this.this$0, false);
+      AbsListView.access$2400(localAbsListView, false);
+      if ((this.this$0.getQQPersistentDrawingCache() & 0x2) == 0) {
+        AbsListView.access$2500(this.this$0, false);
       }
       if (!this.this$0.isAlwaysDrawnWithCacheEnabled()) {
         this.this$0.invalidate();
@@ -24,7 +24,7 @@ class AbsListView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.AbsListView.2
  * JD-Core Version:    0.7.0.1
  */

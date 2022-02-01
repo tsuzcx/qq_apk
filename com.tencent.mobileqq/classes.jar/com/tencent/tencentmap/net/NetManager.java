@@ -60,13 +60,11 @@ public class NetManager
   
   public NetResponse doGet(String paramString1, String paramString2, int paramInt1, int paramInt2, HashMap<String, String> paramHashMap)
   {
-    Object localObject = null;
-    paramString2 = com.tencent.map.tools.net.NetManager.getInstance().doGet(paramString1, paramString2, paramInt1, paramInt2, paramHashMap, null);
-    paramString1 = localObject;
-    if (paramString2 != null) {
-      paramString1 = new NetResponse(paramString2);
+    paramString1 = com.tencent.map.tools.net.NetManager.getInstance().doGet(paramString1, paramString2, paramInt1, paramInt2, paramHashMap, null);
+    if (paramString1 != null) {
+      return new NetResponse(paramString1);
     }
-    return paramString1;
+    return null;
   }
   
   public NetResponse doGet(String paramString1, String paramString2, int paramInt1, int paramInt2, HashMap<String, String> paramHashMap, HttpCanceler paramHttpCanceler)
@@ -116,13 +114,11 @@ public class NetManager
   
   public NetResponse doPost(String paramString1, String paramString2, byte[] paramArrayOfByte, int paramInt1, int paramInt2, HashMap<String, String> paramHashMap)
   {
-    Object localObject = null;
-    paramString2 = com.tencent.map.tools.net.NetManager.getInstance().doPost(paramString1, paramString2, paramArrayOfByte, paramInt1, paramInt2, paramHashMap, null);
-    paramString1 = localObject;
-    if (paramString2 != null) {
-      paramString1 = new NetResponse(paramString2);
+    paramString1 = com.tencent.map.tools.net.NetManager.getInstance().doPost(paramString1, paramString2, paramArrayOfByte, paramInt1, paramInt2, paramHashMap, null);
+    if (paramString1 != null) {
+      return new NetResponse(paramString1);
     }
-    return paramString1;
+    return null;
   }
   
   public NetResponse doPost(String paramString1, String paramString2, byte[] paramArrayOfByte, int paramInt, HttpCanceler paramHttpCanceler)
@@ -136,13 +132,11 @@ public class NetManager
   
   public NetResponse doPost(String paramString1, String paramString2, byte[] paramArrayOfByte, int paramInt1, HashMap<String, String> paramHashMap, int paramInt2)
   {
-    Object localObject = null;
-    paramString2 = com.tencent.map.tools.net.NetManager.getInstance().doPost(paramString1, paramString2, paramArrayOfByte, paramInt1, paramInt2, paramHashMap, null);
-    paramString1 = localObject;
-    if (paramString2 != null) {
-      paramString1 = new NetResponse(paramString2);
+    paramString1 = com.tencent.map.tools.net.NetManager.getInstance().doPost(paramString1, paramString2, paramArrayOfByte, paramInt1, paramInt2, paramHashMap, null);
+    if (paramString1 != null) {
+      return new NetResponse(paramString1);
     }
-    return paramString1;
+    return null;
   }
   
   public NetResponse doPost(String paramString1, String paramString2, byte[] paramArrayOfByte, int paramInt, HashMap<String, String> paramHashMap, HttpCanceler paramHttpCanceler)
@@ -202,7 +196,7 @@ public class NetManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.net.NetManager
  * JD-Core Version:    0.7.0.1
  */

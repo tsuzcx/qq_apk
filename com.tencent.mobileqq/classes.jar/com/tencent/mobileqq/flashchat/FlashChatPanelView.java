@@ -10,7 +10,7 @@ import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.hiboom.HiBoomManager;
+import com.tencent.mobileqq.hiboom.HiBoomConstants;
 import com.tencent.mobileqq.hiboom.RichTextPanelExtendHelper;
 import com.tencent.mobileqq.hiboom.RichTextPanelView;
 import com.tencent.mobileqq.statistics.ReportController;
@@ -25,7 +25,7 @@ public class FlashChatPanelView
   extends RichTextPanelView
   implements OnHolderItemClickListener
 {
-  private static final String jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131704638);
+  private static final String jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131704718);
   private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = null;
   private FlashChatTextEffectView jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatTextEffectView;
   private RichTextPanelExtendHelper jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanelExtendHelper;
@@ -59,41 +59,48 @@ public class FlashChatPanelView
   
   public void a(View paramView, int paramInt1, int paramInt2)
   {
-    if (!HiBoomManager.c.get()) {}
-    label128:
-    do
-    {
+    if (!HiBoomConstants.b.get()) {
       return;
-      Object localObject = new StringBuilder();
-      FlashChatPanel.PluginData localPluginData = this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatTextEffectView.a(paramInt1);
-      if ((localPluginData != null) && (localPluginData.a != null)) {}
-      for (paramInt1 = localPluginData.a.id;; paramInt1 = -1)
-      {
-        paramView = (FlashChatManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FLASH_CHAT_MANAGER);
-        paramView.a(((StringBuilder)localObject).toString());
-        if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString().isEmpty()) {
-          break label128;
-        }
-        if ((localPluginData == null) || (localPluginData.a == null) || (localPluginData.a.id != -100001)) {
-          break;
-        }
+    }
+    Object localObject = new StringBuilder();
+    FlashChatPanel.PluginData localPluginData = this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatTextEffectView.a(paramInt1);
+    if ((localPluginData != null) && (localPluginData.a != null)) {
+      paramInt1 = localPluginData.a.id;
+    } else {
+      paramInt1 = -1;
+    }
+    paramView = (FlashChatManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FLASH_CHAT_MANAGER);
+    paramView.a(((StringBuilder)localObject).toString());
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString().isEmpty())
+    {
+      if (localPluginData == null) {
         return;
       }
-      localObject = FlashChatManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString()).replaceAll("\\s", "");
-      if (((String)localObject).length() > 20) {
-        break;
+      if (localPluginData.a == null) {
+        return;
       }
+      paramInt1 = localPluginData.a.id;
+      return;
+    }
+    localObject = FlashChatManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString()).replaceAll("\\s", "");
+    if (((String)localObject).length() <= 20)
+    {
       paramView = paramView.a((String)localObject, 0, paramInt1);
-    } while (paramView == null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setCompoundDrawables(null, null, null, null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131374320, null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(0);
-    ChatActivityFacade.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), paramView);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80094D6", "0X80094D6", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.ax();
-    return;
-    QQToast.a(getContext(), HardCodeUtil.a(2131704637), 0).a();
+      if (paramView != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setCompoundDrawables(null, null, null, null);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131373876, null);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(0);
+        ChatActivityFacade.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), paramView);
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80094D6", "0X80094D6", 0, 0, "", "", "", "");
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.Y();
+      }
+    }
+    else
+    {
+      QQToast.a(getContext(), HardCodeUtil.a(2131704717), 0).a();
+    }
   }
   
   public void a(boolean paramBoolean)
@@ -155,7 +162,7 @@ public class FlashChatPanelView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatPanelView
  * JD-Core Version:    0.7.0.1
  */

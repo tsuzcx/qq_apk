@@ -12,17 +12,20 @@ class VideoMoveAnimator$2
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((paramValueAnimator == null) || (paramValueAnimator.getAnimatedValue() == null)) {
-      return;
+    if (paramValueAnimator != null)
+    {
+      if (paramValueAnimator.getAnimatedValue() == null) {
+        return;
+      }
+      ViewGroup.LayoutParams localLayoutParams = VideoMoveAnimator.access$000(this.this$0).getLayoutParams();
+      localLayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+      VideoMoveAnimator.access$000(this.this$0).setLayoutParams(localLayoutParams);
     }
-    ViewGroup.LayoutParams localLayoutParams = VideoMoveAnimator.access$000(this.this$0).getLayoutParams();
-    localLayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    VideoMoveAnimator.access$000(this.this$0).setLayoutParams(localLayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.seamless.VideoMoveAnimator.2
  * JD-Core Version:    0.7.0.1
  */

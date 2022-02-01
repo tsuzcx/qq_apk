@@ -25,24 +25,24 @@ public class StoryDetailPresenter$DetailFeedPushObserver
       SLog.a("DetailFeedPushObserver", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, this.jdField_a_of_type_JavaLangString);
       return;
     }
-    if ((paramStoryPushMsg.a == 15) || (paramStoryPushMsg.a == 19))
+    if ((paramStoryPushMsg.a != 15) && (paramStoryPushMsg.a != 19))
     {
-      SLog.a("DetailFeedPushObserver", "Receive new comment PUSH: %s, refreshing comments......", paramStoryPushMsg);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailPresenter$DetailFeedPushObserver$OnPushCallback.a(1);
-      return;
-    }
-    if ((paramStoryPushMsg.a == 14) || (paramStoryPushMsg.a == 16) || (paramStoryPushMsg.a == 18))
-    {
+      if ((paramStoryPushMsg.a != 14) && (paramStoryPushMsg.a != 16) && (paramStoryPushMsg.a != 18))
+      {
+        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailPresenter$DetailFeedPushObserver$OnPushCallback.a(0);
+        return;
+      }
       SLog.a("DetailFeedPushObserver", "Receive new like PUSH: %s, refreshing likes......", paramStoryPushMsg);
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailPresenter$DetailFeedPushObserver$OnPushCallback.a(2);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailPresenter$DetailFeedPushObserver$OnPushCallback.a(0);
+    SLog.a("DetailFeedPushObserver", "Receive new comment PUSH: %s, refreshing comments......", paramStoryPushMsg);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailPresenter$DetailFeedPushObserver$OnPushCallback.a(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailPresenter.DetailFeedPushObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -30,229 +30,244 @@ public final class Code93Reader
   
   private static void checkOneChecksum(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
+    int j = paramInt1 - 1;
+    int k = 0;
     int i = 1;
-    int k = paramInt1 - 1;
-    int m;
-    int i1;
-    for (int j = 0;; j = i1 * m + j)
+    while (j >= 0)
     {
-      m = i;
-      if (k < 0) {
-        break;
-      }
-      i1 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-. $/+%abcd*".indexOf(paramCharSequence.charAt(k));
-      int n = m + 1;
-      i = n;
-      if (n > paramInt2) {
+      k += "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-. $/+%abcd*".indexOf(paramCharSequence.charAt(j)) * i;
+      int m = i + 1;
+      i = m;
+      if (m > paramInt2) {
         i = 1;
       }
-      k -= 1;
+      j -= 1;
     }
-    if (paramCharSequence.charAt(paramInt1) != ALPHABET[(j % 47)]) {
-      throw ChecksumException.getChecksumInstance();
+    if (paramCharSequence.charAt(paramInt1) == ALPHABET[(k % 47)]) {
+      return;
+    }
+    paramCharSequence = ChecksumException.getChecksumInstance();
+    for (;;)
+    {
+      throw paramCharSequence;
     }
   }
   
   private static String decodeExtended(CharSequence paramCharSequence)
   {
-    int j = paramCharSequence.length();
-    StringBuilder localStringBuilder = new StringBuilder(j);
+    int k = paramCharSequence.length();
+    StringBuilder localStringBuilder = new StringBuilder(k);
     int i = 0;
-    if (i < j)
+    while (i < k)
     {
       char c = paramCharSequence.charAt(i);
-      int k;
       if ((c >= 'a') && (c <= 'd'))
       {
-        if (i >= j - 1) {
+        if (i < k - 1)
+        {
+          int j = i + 1;
+          i = paramCharSequence.charAt(j);
+          switch (c)
+          {
+          default: 
+          case 'd': 
+          case 'c': 
+          case 'b': 
+            do
+            {
+              c = '\000';
+              break label327;
+              if ((i >= 65) && (i <= 90))
+              {
+                i += 32;
+                break;
+              }
+              throw FormatException.getFormatInstance();
+              if ((i >= 65) && (i <= 79))
+              {
+                i -= 32;
+                break;
+              }
+              if (i == 90)
+              {
+                c = ':';
+                break label327;
+              }
+              throw FormatException.getFormatInstance();
+              if ((i >= 65) && (i <= 69))
+              {
+                i -= 38;
+                break;
+              }
+              if ((i >= 70) && (i <= 74))
+              {
+                i -= 11;
+                break;
+              }
+              if ((i >= 75) && (i <= 79))
+              {
+                i += 16;
+                break;
+              }
+              if ((i >= 80) && (i <= 84))
+              {
+                i += 43;
+                break;
+              }
+            } while (i == 85);
+            if (i == 86) {
+              c = '@';
+            } else if (i == 87) {
+              c = '`';
+            } else if ((i >= 88) && (i <= 90)) {
+              c = '';
+            } else {
+              throw FormatException.getFormatInstance();
+            }
+            break;
+          case 'a': 
+            if ((i >= 65) && (i <= 90))
+            {
+              i -= 64;
+              c = (char)i;
+            }
+            else
+            {
+              throw FormatException.getFormatInstance();
+            }
+            break;
+          }
+          label327:
+          localStringBuilder.append(c);
+          i = j;
+        }
+        else
+        {
           throw FormatException.getFormatInstance();
         }
-        k = paramCharSequence.charAt(i + 1);
-        switch (c)
-        {
-        default: 
-          c = '\000';
-          label98:
-          localStringBuilder.append(c);
-          i += 1;
-        }
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if ((k >= 65) && (k <= 90))
-        {
-          c = (char)(k + 32);
-          break label98;
-        }
-        throw FormatException.getFormatInstance();
-        if ((k >= 65) && (k <= 90))
-        {
-          c = (char)(k - 64);
-          break label98;
-        }
-        throw FormatException.getFormatInstance();
-        if ((k >= 65) && (k <= 69))
-        {
-          c = (char)(k - 38);
-          break label98;
-        }
-        if ((k >= 70) && (k <= 74))
-        {
-          c = (char)(k - 11);
-          break label98;
-        }
-        if ((k >= 75) && (k <= 79))
-        {
-          c = (char)(k + 16);
-          break label98;
-        }
-        if ((k >= 80) && (k <= 84))
-        {
-          c = (char)(k + 43);
-          break label98;
-        }
-        if (k == 85)
-        {
-          c = '\000';
-          break label98;
-        }
-        if (k == 86)
-        {
-          c = '@';
-          break label98;
-        }
-        if (k == 87)
-        {
-          c = '`';
-          break label98;
-        }
-        if ((k >= 88) && (k <= 90))
-        {
-          c = '';
-          break label98;
-        }
-        throw FormatException.getFormatInstance();
-        if ((k >= 65) && (k <= 79))
-        {
-          c = (char)(k - 32);
-          break label98;
-        }
-        if (k == 90)
-        {
-          c = ':';
-          break label98;
-        }
-        throw FormatException.getFormatInstance();
+      else {
         localStringBuilder.append(c);
       }
+      i += 1;
     }
     return localStringBuilder.toString();
   }
   
   private int[] findAsteriskPattern(BitArray paramBitArray)
   {
-    int m = paramBitArray.getSize();
-    int i = paramBitArray.getNextSet(0);
+    int n = paramBitArray.getSize();
+    int k = paramBitArray.getNextSet(0);
     Arrays.fill(this.counters, 0);
     int[] arrayOfInt = this.counters;
-    int n = arrayOfInt.length;
-    int k = i;
-    int i1 = 0;
+    int i1 = arrayOfInt.length;
+    int i = k;
+    int i2 = 0;
     int j = 0;
-    if (k < m)
+    while (k < n)
     {
-      if (paramBitArray.get(k) != i1) {
-        arrayOfInt[j] += 1;
-      }
-      for (;;)
+      int m;
+      if (paramBitArray.get(k) != i2)
       {
-        k += 1;
-        break;
-        if (j == n - 1)
+        arrayOfInt[j] += 1;
+        m = i;
+      }
+      else
+      {
+        if (j == i1 - 1)
         {
           if (toPattern(arrayOfInt) == ASTERISK_ENCODING) {
             return new int[] { i, k };
           }
-          i += arrayOfInt[0] + arrayOfInt[1];
-          System.arraycopy(arrayOfInt, 2, arrayOfInt, 0, j - 1);
-          arrayOfInt[(j - 1)] = 0;
+          m = i + (arrayOfInt[0] + arrayOfInt[1]);
+          i = j - 1;
+          System.arraycopy(arrayOfInt, 2, arrayOfInt, 0, i);
+          arrayOfInt[i] = 0;
           arrayOfInt[j] = 0;
-          j -= 1;
+          i = j - 1;
+          j = m;
         }
-        for (;;)
+        else
         {
-          arrayOfInt[j] = 1;
-          if (i1 != 0) {
-            break label171;
-          }
-          i1 = 1;
-          break;
-          j += 1;
+          m = j + 1;
+          j = i;
+          i = m;
         }
-        label171:
-        i1 = 0;
+        arrayOfInt[i] = 1;
+        i2 ^= 0x1;
+        m = j;
+        j = i;
       }
+      k += 1;
+      i = m;
     }
-    throw NotFoundException.getNotFoundInstance();
+    paramBitArray = NotFoundException.getNotFoundInstance();
+    for (;;)
+    {
+      throw paramBitArray;
+    }
   }
   
   private static char patternToChar(int paramInt)
   {
     int i = 0;
-    while (i < CHARACTER_ENCODINGS.length)
+    for (;;)
     {
-      if (CHARACTER_ENCODINGS[i] == paramInt) {
+      localObject = CHARACTER_ENCODINGS;
+      if (i >= localObject.length) {
+        break;
+      }
+      if (localObject[i] == paramInt) {
         return ALPHABET[i];
       }
       i += 1;
     }
-    throw NotFoundException.getNotFoundInstance();
+    Object localObject = NotFoundException.getNotFoundInstance();
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
   
   private static int toPattern(int[] paramArrayOfInt)
   {
-    int j = paramArrayOfInt.length;
+    int k = paramArrayOfInt.length;
     int i = 0;
-    for (int k = 0; i < j; k = m + k)
+    int j = 0;
+    while (i < k)
     {
-      m = paramArrayOfInt[i];
+      j += paramArrayOfInt[i];
       i += 1;
     }
-    int i1 = paramArrayOfInt.length;
-    int m = 0;
-    for (i = 0;; i = j)
+    int n = paramArrayOfInt.length;
+    k = 0;
+    i = 0;
+    while (k < n)
     {
-      j = i;
-      int i2;
-      if (m < i1)
+      int i1 = Math.round(paramArrayOfInt[k] * 9.0F / j);
+      if ((i1 >= 1) && (i1 <= 4))
       {
-        i2 = Math.round(paramArrayOfInt[m] * 9.0F / k);
-        if ((i2 < 1) || (i2 > 4)) {
-          j = -1;
+        if ((k & 0x1) == 0)
+        {
+          int m = 0;
+          while (m < i1)
+          {
+            i = i << 1 | 0x1;
+            m += 1;
+          }
         }
+        else
+        {
+          i <<= i1;
+        }
+        k += 1;
       }
       else
       {
-        return j;
+        return -1;
       }
-      if ((m & 0x1) == 0)
-      {
-        int n = 0;
-        for (;;)
-        {
-          j = i;
-          if (n >= i2) {
-            break;
-          }
-          n += 1;
-          i = i << 1 | 0x1;
-        }
-      }
-      j = i << i2;
-      m += 1;
     }
+    return i;
   }
   
   public Result decodeRow(int paramInt, BitArray paramBitArray, Map<DecodeHintType, ?> paramMap)
@@ -269,13 +284,13 @@ public final class Code93Reader
       recordPattern(paramBitArray, i, (int[])localObject1);
       int j = toPattern((int[])localObject1);
       if (j < 0) {
-        throw NotFoundException.getNotFoundInstance();
+        break;
       }
       char c = patternToChar(j);
       ((StringBuilder)localObject2).append(c);
       int m = localObject1.length;
-      j = 0;
       int k = i;
+      j = 0;
       while (j < m)
       {
         k += localObject1[j];
@@ -285,38 +300,46 @@ public final class Code93Reader
       if (c == '*')
       {
         ((StringBuilder)localObject2).deleteCharAt(((StringBuilder)localObject2).length() - 1);
-        k = 0;
         int i1 = localObject1.length;
         j = 0;
+        k = 0;
         while (j < i1)
         {
           k += localObject1[j];
           j += 1;
         }
-        if ((m == n) || (!paramBitArray.get(m))) {
+        if ((m != n) && (paramBitArray.get(m)))
+        {
+          if (((StringBuilder)localObject2).length() >= 2)
+          {
+            checkChecksums((CharSequence)localObject2);
+            ((StringBuilder)localObject2).setLength(((StringBuilder)localObject2).length() - 2);
+            paramBitArray = decodeExtended((CharSequence)localObject2);
+            float f1 = (paramMap[1] + paramMap[0]) / 2.0F;
+            float f2 = i;
+            float f3 = k / 2.0F;
+            float f4 = paramInt;
+            paramMap = new ResultPoint(f1, f4);
+            localObject1 = new ResultPoint(f2 + f3, f4);
+            localObject2 = BarcodeFormat.CODE_93;
+            return new Result(paramBitArray, null, new ResultPoint[] { paramMap, localObject1 }, (BarcodeFormat)localObject2);
+          }
           throw NotFoundException.getNotFoundInstance();
         }
-        if (((StringBuilder)localObject2).length() < 2) {
-          throw NotFoundException.getNotFoundInstance();
-        }
-        checkChecksums((CharSequence)localObject2);
-        ((StringBuilder)localObject2).setLength(((StringBuilder)localObject2).length() - 2);
-        paramBitArray = decodeExtended((CharSequence)localObject2);
-        float f1 = (paramMap[1] + paramMap[0]) / 2.0F;
-        float f2 = i;
-        float f3 = k / 2.0F;
-        paramMap = new ResultPoint(f1, paramInt);
-        localObject1 = new ResultPoint(f2 + f3, paramInt);
-        localObject2 = BarcodeFormat.CODE_93;
-        return new Result(paramBitArray, null, new ResultPoint[] { paramMap, localObject1 }, (BarcodeFormat)localObject2);
+        throw NotFoundException.getNotFoundInstance();
       }
       i = m;
+    }
+    paramBitArray = NotFoundException.getNotFoundInstance();
+    for (;;)
+    {
+      throw paramBitArray;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.oned.Code93Reader
  * JD-Core Version:    0.7.0.1
  */

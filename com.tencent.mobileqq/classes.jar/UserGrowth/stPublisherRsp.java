@@ -47,27 +47,32 @@ public final class stPublisherRsp
   {
     paramJceOutputStream.write(this.enable, 0);
     paramJceOutputStream.write(this.newUser, 1);
-    if (this.newsUserText != null) {
-      paramJceOutputStream.write(this.newsUserText, 2);
+    Object localObject = this.newsUserText;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.weishiSchema != null) {
-      paramJceOutputStream.write(this.weishiSchema, 3);
+    localObject = this.weishiSchema;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.noInstallAction, 4);
-    if (this.guide != null) {
-      paramJceOutputStream.write(this.guide, 5);
+    localObject = this.guide;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.miniAppSchema != null) {
-      paramJceOutputStream.write(this.miniAppSchema, 6);
+    localObject = this.miniAppSchema;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.h5Url != null) {
-      paramJceOutputStream.write(this.h5Url, 7);
+    localObject = this.h5Url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stPublisherRsp
  * JD-Core Version:    0.7.0.1
  */

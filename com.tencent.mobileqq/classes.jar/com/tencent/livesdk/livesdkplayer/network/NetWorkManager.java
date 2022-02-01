@@ -9,22 +9,23 @@ import java.util.Set;
 public class NetWorkManager
   implements NetWorkReceiver.OnNetworkCallback
 {
-  private static NetWorkManager sInstance = null;
+  private static NetWorkManager sInstance;
   private boolean isInit = false;
   private NetWorkReceiver netWorkReceiver;
   private Set<NetWorkReceiver.OnNetworkCallback> networkCallbacks = new HashSet();
   
   public static NetWorkManager getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new NetWorkManager();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new NetWorkManager();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   private void initNetwork(Context paramContext)
@@ -65,7 +66,7 @@ public class NetWorkManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.livesdkplayer.network.NetWorkManager
  * JD-Core Version:    0.7.0.1
  */

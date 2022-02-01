@@ -13,12 +13,20 @@ class AVContextImpl$AVStartCallback
   {
     this.mStartParam = paramStartParam;
     this.mCallback = paramAVCallback;
-    Log.e("SdkJni", "mStartParam.useSurfaceTexture = " + this.mStartParam.useSurfaceTexture);
+    paramAVContextImpl = new StringBuilder();
+    paramAVContextImpl.append("mStartParam.useSurfaceTexture = ");
+    paramAVContextImpl.append(this.mStartParam.useSurfaceTexture);
+    Log.e("SdkJni", paramAVContextImpl.toString());
   }
   
   public void onComplete(int paramInt, String paramString)
   {
-    Log.e("SdkJni", "mStartParam.useSurfaceTexture = " + this.mStartParam.useSurfaceTexture + paramInt + paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("mStartParam.useSurfaceTexture = ");
+    ((StringBuilder)localObject).append(this.mStartParam.useSurfaceTexture);
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(paramString);
+    Log.e("SdkJni", ((StringBuilder)localObject).toString());
     if (paramInt == 0)
     {
       this.this$0.getAudioCtrl();
@@ -28,8 +36,9 @@ class AVContextImpl$AVStartCallback
       }
       this.this$0.setRenderMgr(GraphicRendererMgr.getInstance());
     }
-    if (this.mCallback != null) {
-      this.mCallback.onComplete(paramInt, paramString);
+    localObject = this.mCallback;
+    if (localObject != null) {
+      ((AVCallback)localObject).onComplete(paramInt, paramString);
     }
   }
 }

@@ -25,49 +25,46 @@ public class RADeclareManager
   
   private void init(String paramString)
   {
-    Object localObject1;
-    Object localObject2;
-    for (;;)
+    try
     {
-      Object localObject3;
-      try
+      paramString = Class.forName(paramString);
+      localObject1 = ((Map)paramString.getDeclaredField("sDeclareMap").get(null)).entrySet().iterator();
+      Object localObject2;
+      while (((Iterator)localObject1).hasNext())
       {
-        paramString = Class.forName(paramString);
-        localObject1 = ((Map)paramString.getDeclaredField("sDeclareMap").get(null)).entrySet().iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          break;
-        }
-        localObject3 = (Map.Entry)((Iterator)localObject1).next();
+        Object localObject3 = (Map.Entry)((Iterator)localObject1).next();
         localObject2 = (String)((Map.Entry)localObject3).getKey();
         localObject3 = (IServiceEntry)((Map.Entry)localObject3).getValue();
         IServiceEntry localIServiceEntry = (IServiceEntry)this.mServiceEntryMap.get(localObject2);
-        if (localIServiceEntry == null)
-        {
+        if (localIServiceEntry == null) {
           this.mServiceEntryMap.put(localObject2, localObject3);
-          continue;
-        }
-        if (localIServiceEntry.getPriority() >= ((IServiceEntry)localObject3).getPriority()) {
-          continue;
+        } else if (localIServiceEntry.getPriority() < ((IServiceEntry)localObject3).getPriority()) {
+          this.mServiceEntryMap.put(localObject2, localObject3);
         }
       }
-      catch (Exception paramString)
+      paramString = ((Map)paramString.getDeclaredField("sConstantMap").get(null)).entrySet().iterator();
+      while (paramString.hasNext())
       {
-        RLog.w("RADeclareManager", new Object[] { "init entryMap error :" + paramString });
-        return;
+        localObject2 = (Map.Entry)paramString.next();
+        localObject1 = (String)((Map.Entry)localObject2).getKey();
+        localObject2 = (String)((Map.Entry)localObject2).getValue();
+        if (!this.mDeclareConstants.containsKey(localObject1)) {
+          this.mDeclareConstants.put(localObject1, localObject2);
+        }
       }
-      this.mServiceEntryMap.put(localObject2, localObject3);
+      paramString = new StringBuilder();
+      paramString.append("init success :");
+      paramString.append(this.mServiceEntryMap);
+      RLog.d("RADeclareManager", new Object[] { paramString.toString() });
+      return;
     }
-    paramString = ((Map)paramString.getDeclaredField("sConstantMap").get(null)).entrySet().iterator();
-    while (paramString.hasNext())
+    catch (Exception paramString)
     {
-      localObject2 = (Map.Entry)paramString.next();
-      localObject1 = (String)((Map.Entry)localObject2).getKey();
-      localObject2 = (String)((Map.Entry)localObject2).getValue();
-      if (!this.mDeclareConstants.containsKey(localObject1)) {
-        this.mDeclareConstants.put(localObject1, localObject2);
-      }
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("init entryMap error :");
+      ((StringBuilder)localObject1).append(paramString);
+      RLog.w("RADeclareManager", new Object[] { ((StringBuilder)localObject1).toString() });
     }
-    RLog.d("RADeclareManager", new Object[] { "init success :" + this.mServiceEntryMap });
   }
   
   public void destroy()
@@ -90,7 +87,10 @@ public class RADeclareManager
     Object localObject = (IServiceEntry)this.mServiceEntryMap.get(paramString);
     if (localObject == null)
     {
-      RLog.w("RADeclareManager", new Object[] { "cannot found declare >> " + paramString });
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("cannot found declare >> ");
+      ((StringBuilder)localObject).append(paramString);
+      RLog.w("RADeclareManager", new Object[] { ((StringBuilder)localObject).toString() });
       return null;
     }
     localObject = ((IServiceEntry)localObject).createService().service;
@@ -100,7 +100,7 @@ public class RADeclareManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.raft.raftframework.declare.RADeclareManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,18 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.support.v4.app.FragmentActivity;
-import androidx.annotation.NonNull;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.AIOContext;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.aio.core.BaseTroopAIOContext;
 
 public class HotChatContext
-  extends AIOContext
+  extends BaseTroopAIOContext
 {
-  public HotChatContext(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, @NonNull SessionInfo paramSessionInfo, @NonNull BaseChatPie paramBaseChatPie)
+  public int f()
   {
-    super(paramQQAppInterface, paramFragmentActivity, paramSessionInfo, paramBaseChatPie);
-  }
-  
-  public int d()
-  {
-    return ((HotChatPie)this.a).k();
+    return ((HotChatPie)this.a).g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatContext
  * JD-Core Version:    0.7.0.1
  */

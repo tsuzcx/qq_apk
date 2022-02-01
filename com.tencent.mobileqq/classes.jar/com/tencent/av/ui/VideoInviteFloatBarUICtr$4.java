@@ -16,20 +16,18 @@ class VideoInviteFloatBarUICtr$4
     if (this.this$0.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar != null)
     {
       this.this$0.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.a(str);
-      if (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a() % 60L >= 1L) {
+      if (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a() % 60L >= 1L)
+      {
         this.this$0.a();
+        return;
       }
+      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
     }
-    else
-    {
-      return;
-    }
-    this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoInviteFloatBarUICtr.4
  * JD-Core Version:    0.7.0.1
  */

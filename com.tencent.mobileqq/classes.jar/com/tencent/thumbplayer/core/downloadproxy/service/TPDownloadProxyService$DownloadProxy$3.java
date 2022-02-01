@@ -13,14 +13,18 @@ class TPDownloadProxyService$DownloadProxy$3
   {
     try
     {
-      if (this.val$preloadListener != null) {
+      if (this.val$preloadListener != null)
+      {
         this.val$preloadListener.onPrepareDownloadProgressUpdate(paramInt1, paramInt2, paramLong1, paramLong2, paramString);
+        return;
       }
-      return;
     }
     catch (Throwable paramString)
     {
-      TPDLProxyLog.e("TPDownloadProxyService", 0, "tpdlnative", "onPrepareDownloadProgressUpdate failed, error:" + paramString.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPrepareDownloadProgressUpdate failed, error:");
+      localStringBuilder.append(paramString.toString());
+      TPDLProxyLog.e("TPDownloadProxyService", 0, "tpdlnative", localStringBuilder.toString());
     }
   }
   
@@ -28,14 +32,18 @@ class TPDownloadProxyService$DownloadProxy$3
   {
     try
     {
-      if (this.val$preloadListener != null) {
+      if (this.val$preloadListener != null)
+      {
         this.val$preloadListener.onPrepareError(paramInt1, paramInt2, paramString);
+        return;
       }
-      return;
     }
     catch (Throwable paramString)
     {
-      TPDLProxyLog.e("TPDownloadProxyService", 0, "tpdlnative", "onPrepareError failed, error:" + paramString.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPrepareError failed, error:");
+      localStringBuilder.append(paramString.toString());
+      TPDLProxyLog.e("TPDownloadProxyService", 0, "tpdlnative", localStringBuilder.toString());
     }
   }
   
@@ -43,20 +51,24 @@ class TPDownloadProxyService$DownloadProxy$3
   {
     try
     {
-      if (this.val$preloadListener != null) {
+      if (this.val$preloadListener != null)
+      {
         this.val$preloadListener.onPrepareOK();
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
-      TPDLProxyLog.e("TPDownloadProxyService", 0, "tpdlnative", "onPrepareOK failed, error:" + localThrowable.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPrepareOK failed, error:");
+      localStringBuilder.append(localThrowable.toString());
+      TPDLProxyLog.e("TPDownloadProxyService", 0, "tpdlnative", localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.service.TPDownloadProxyService.DownloadProxy.3
  * JD-Core Version:    0.7.0.1
  */

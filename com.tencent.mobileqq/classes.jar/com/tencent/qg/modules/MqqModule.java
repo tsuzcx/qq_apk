@@ -15,31 +15,26 @@ public class MqqModule
   
   public boolean handleJsRequest(String paramString, JSONObject paramJSONObject, InvokeCallback paramInvokeCallback)
   {
-    boolean bool = false;
-    if ("getQQVersion".equals(paramString)) {
+    if ("getQQVersion".equals(paramString))
+    {
       paramString = new JSONObject();
-    }
-    while (!"getQQVersionSync".equals(paramString)) {
       try
       {
-        paramString.putOpt("version", "8.5.5");
-        bool = paramInvokeCallback.exec(0, paramString);
-        return bool;
+        paramString.putOpt("version", "8.7.0");
       }
       catch (JSONException paramJSONObject)
       {
-        for (;;)
-        {
-          paramJSONObject.printStackTrace();
-        }
+        paramJSONObject.printStackTrace();
       }
+      return paramInvokeCallback.exec(0, paramString);
     }
+    "getQQVersionSync".equals(paramString);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qg.modules.MqqModule
  * JD-Core Version:    0.7.0.1
  */

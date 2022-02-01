@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.open.agent.entity.VirtualAccountInfo;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.SwipListView.SwipListListener;
 import com.tencent.widget.SwipRightMenuBuilder;
@@ -26,46 +27,46 @@ class OpenCardContainer$VirtualAccountAdapter
   int jdField_a_of_type_Int = -1;
   SwipRightMenuBuilder jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder = a(paramContext);
   String jdField_a_of_type_JavaLangString;
-  private List<OpenCardContainer.VirtualAccountInfo> jdField_a_of_type_JavaUtilList;
+  private List<VirtualAccountInfo> jdField_a_of_type_JavaUtilList;
   
   OpenCardContainer$VirtualAccountAdapter(OpenCardContainer paramOpenCardContainer, Context paramContext) {}
   
   private void a(OpenCardContainer.VirtualAccountViewHolder paramVirtualAccountViewHolder, int paramInt, View paramView)
   {
-    paramView = (OpenCardContainer.VirtualAccountInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    paramView = (VirtualAccountInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     OpenCardContainer.VirtualAccountViewHolder.a(paramVirtualAccountViewHolder).setText(paramView.b);
     if (paramView.jdField_a_of_type_Boolean)
     {
       OpenCardContainer.VirtualAccountViewHolder.a(paramVirtualAccountViewHolder).setVisibility(0);
       this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setMainAccountSelect(false);
     }
-    for (;;)
+    else
     {
-      if (paramView.jdField_a_of_type_JavaLangString != null) {
-        OpenCardContainer.a(this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer, OpenCardContainer.VirtualAccountViewHolder.a(paramVirtualAccountViewHolder), paramView.jdField_a_of_type_JavaLangString);
-      }
-      return;
       OpenCardContainer.VirtualAccountViewHolder.a(paramVirtualAccountViewHolder).setVisibility(4);
+    }
+    if (paramView.jdField_a_of_type_JavaLangString != null) {
+      OpenCardContainer.a(this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer, OpenCardContainer.VirtualAccountViewHolder.a(paramVirtualAccountViewHolder), paramView.jdField_a_of_type_JavaLangString);
     }
   }
   
   protected SwipRightMenuBuilder a(Context paramContext)
   {
-    int i = paramContext.getResources().getDimensionPixelSize(2131298882);
-    int j = paramContext.getResources().getDimensionPixelSize(2131298883);
-    paramContext = OpenCardContainer.c;
-    int[] arrayOfInt1 = OpenCardContainer.jdField_a_of_type_ArrayOfInt;
-    int[] arrayOfInt2 = OpenCardContainer.b;
+    int i = paramContext.getResources().getDimensionPixelSize(2131298886);
+    int j = paramContext.getResources().getDimensionPixelSize(2131298887);
+    paramContext = OpenCardContainer.a();
+    int[] arrayOfInt1 = OpenCardContainer.b();
+    int[] arrayOfInt2 = OpenCardContainer.c();
     return new OpenCardContainer.VirtualAccountAdapter.2(this, 1, 2, new int[] { i, j }, -1, paramContext, arrayOfInt1, arrayOfInt2);
   }
   
   void a()
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        ((OpenCardContainer.VirtualAccountInfo)localIterator.next()).jdField_a_of_type_Boolean = false;
+      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((VirtualAccountInfo)((Iterator)localObject).next()).jdField_a_of_type_Boolean = false;
       }
       notifyDataSetChanged();
     }
@@ -76,7 +77,7 @@ class OpenCardContainer$VirtualAccountAdapter
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      OpenCardContainer.VirtualAccountInfo localVirtualAccountInfo = (OpenCardContainer.VirtualAccountInfo)localIterator.next();
+      VirtualAccountInfo localVirtualAccountInfo = (VirtualAccountInfo)localIterator.next();
       if (localVirtualAccountInfo.jdField_a_of_type_Long == paramLong) {
         localVirtualAccountInfo.jdField_a_of_type_Boolean = true;
       } else {
@@ -88,63 +89,67 @@ class OpenCardContainer$VirtualAccountAdapter
   
   protected void a(Context paramContext, View paramView, int paramInt, Object paramObject, SwipRightMenuBuilder.SwipItemBaseHolder paramSwipItemBaseHolder, View.OnClickListener paramOnClickListener)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder != null) {}
-    for (int i = this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder.a(paramContext, paramView, paramInt, paramObject, paramSwipItemBaseHolder, paramOnClickListener);; i = 0)
+    SwipRightMenuBuilder localSwipRightMenuBuilder = this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder;
+    int i;
+    if (localSwipRightMenuBuilder != null) {
+      i = localSwipRightMenuBuilder.updateRightMenuView(paramContext, paramView, paramInt, paramObject, paramSwipItemBaseHolder, paramOnClickListener);
+    } else {
+      i = 0;
+    }
+    int j = paramView.getScrollX();
+    if ((paramInt >= 0) && (this.jdField_a_of_type_Int == paramInt))
     {
-      int j = paramView.getScrollX();
-      if ((paramInt >= 0) && (this.jdField_a_of_type_Int == paramInt)) {
-        paramView.scrollTo(i, 0);
-      }
-      while (j == 0) {
-        return;
-      }
-      paramView.scrollTo(0, 0);
+      paramView.scrollTo(i, 0);
       return;
+    }
+    if (j != 0) {
+      paramView.scrollTo(0, 0);
     }
   }
   
-  void a(List<OpenCardContainer.VirtualAccountInfo> paramList, String paramString)
+  void a(List<VirtualAccountInfo> paramList, String paramString)
   {
     if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      if (paramString.equals(this.jdField_a_of_type_JavaLangString)) {
-        break label33;
+      Object localObject = paramString;
+      if (paramString == null) {
+        localObject = "";
       }
-      this.jdField_a_of_type_JavaLangString = paramString;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaUtilList = paramList;
-      notifyDataSetChanged();
-      return;
-      label33:
-      if (paramList != null)
+      if (!((String)localObject).equals(this.jdField_a_of_type_JavaLangString))
+      {
+        this.jdField_a_of_type_JavaLangString = ((String)localObject);
+      }
+      else if (paramList != null)
       {
         paramString = paramList.iterator();
         while (paramString.hasNext())
         {
-          OpenCardContainer.VirtualAccountInfo localVirtualAccountInfo = (OpenCardContainer.VirtualAccountInfo)paramString.next();
-          if (localVirtualAccountInfo.jdField_a_of_type_Long == this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.a()) {
-            localVirtualAccountInfo.jdField_a_of_type_Boolean = true;
+          localObject = (VirtualAccountInfo)paramString.next();
+          if (((VirtualAccountInfo)localObject).jdField_a_of_type_Long == this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.a()) {
+            ((VirtualAccountInfo)localObject).jdField_a_of_type_Boolean = true;
           } else {
-            localVirtualAccountInfo.jdField_a_of_type_Boolean = false;
+            ((VirtualAccountInfo)localObject).jdField_a_of_type_Boolean = false;
           }
         }
       }
     }
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList != null) {
+      return localList.size();
     }
     return 0;
   }
   
   public Object getItem(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if ((localList != null) && (paramInt < localList.size())) {
       return this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
     return null;
@@ -157,28 +162,30 @@ class OpenCardContainer$VirtualAccountAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    OpenCardContainer.VirtualAccountViewHolder localVirtualAccountViewHolder;
+    View localView;
     if (paramView == null)
     {
-      localVirtualAccountViewHolder = new OpenCardContainer.VirtualAccountViewHolder(this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer, null);
-      paramView = this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559801, paramViewGroup, false);
-      OpenCardContainer.VirtualAccountViewHolder.a(localVirtualAccountViewHolder, (URLImageView)paramView.findViewById(2131381723));
-      OpenCardContainer.VirtualAccountViewHolder.a(localVirtualAccountViewHolder, (TextView)paramView.findViewById(2131381726));
-      OpenCardContainer.VirtualAccountViewHolder.a(localVirtualAccountViewHolder, (ImageView)paramView.findViewById(2131377739));
-      OpenCardContainer.VirtualAccountViewHolder.a(localVirtualAccountViewHolder, (Button)paramView.findViewById(2131365666));
-      paramView.setTag(localVirtualAccountViewHolder);
-      paramView.setTag(-3, Integer.valueOf(DisplayUtil.a(this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.jdField_a_of_type_AndroidContentContext, 66.0F)));
+      paramView = new OpenCardContainer.VirtualAccountViewHolder(null);
+      localView = OpenCardContainer.a(this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer).inflate(2131559678, paramViewGroup, false);
+      OpenCardContainer.VirtualAccountViewHolder.a(paramView, (URLImageView)localView.findViewById(2131380955));
+      OpenCardContainer.VirtualAccountViewHolder.a(paramView, (TextView)localView.findViewById(2131380958));
+      OpenCardContainer.VirtualAccountViewHolder.a(paramView, (ImageView)localView.findViewById(2131377166));
+      OpenCardContainer.VirtualAccountViewHolder.a(paramView, (Button)localView.findViewById(2131365509));
+      localView.setTag(paramView);
+      localView.setTag(-3, Integer.valueOf(DisplayUtil.a(this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.jdField_a_of_type_AndroidContentContext, 66.0F)));
     }
-    for (;;)
+    else
     {
-      a(localVirtualAccountViewHolder, paramInt, paramView);
-      OpenCardContainer.VirtualAccountViewHolder.a(localVirtualAccountViewHolder).setOnClickListener(new OpenCardContainer.VirtualAccountAdapter.1(this, paramInt));
-      paramView.setTag(-1, Integer.valueOf(paramInt));
-      a(this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_JavaUtilList.get(paramInt), localVirtualAccountViewHolder, this);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localVirtualAccountViewHolder = (OpenCardContainer.VirtualAccountViewHolder)paramView.getTag();
+      OpenCardContainer.VirtualAccountViewHolder localVirtualAccountViewHolder = (OpenCardContainer.VirtualAccountViewHolder)paramView.getTag();
+      localView = paramView;
+      paramView = localVirtualAccountViewHolder;
     }
+    a(paramView, paramInt, localView);
+    OpenCardContainer.VirtualAccountViewHolder.a(paramView).setOnClickListener(new OpenCardContainer.VirtualAccountAdapter.1(this, paramInt));
+    localView.setTag(-1, Integer.valueOf(paramInt));
+    a(this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.jdField_a_of_type_AndroidContentContext, localView, paramInt, this.jdField_a_of_type_JavaUtilList.get(paramInt), paramView, this);
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
   
   public void hideMenuPop() {}
@@ -188,67 +195,57 @@ class OpenCardContainer$VirtualAccountAdapter
   public void notifyDataSetChanged()
   {
     Object localObject = this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer;
+    List localList = this.jdField_a_of_type_JavaUtilList;
     int i;
-    if (this.jdField_a_of_type_JavaUtilList == null)
-    {
+    if (localList == null) {
       i = 0;
-      OpenCardContainer.a((OpenCardContainer)localObject, i);
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() != 0)) {
-        break label67;
-      }
-      this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setMainAccountSelect(true);
+    } else {
+      i = localList.size();
     }
-    label137:
-    label138:
-    for (;;)
+    OpenCardContainer.a((OpenCardContainer)localObject, i);
+    localObject = this.jdField_a_of_type_JavaUtilList;
+    if ((localObject != null) && (((List)localObject).size() != 0))
     {
-      super.notifyDataSetChanged();
-      return;
-      i = this.jdField_a_of_type_JavaUtilList.size();
-      break;
-      label67:
       localObject = this.jdField_a_of_type_JavaUtilList.iterator();
       i = 0;
-      label79:
-      if (((Iterator)localObject).hasNext())
-      {
-        if (!((OpenCardContainer.VirtualAccountInfo)((Iterator)localObject).next()).jdField_a_of_type_Boolean) {
-          break label137;
+      while (((Iterator)localObject).hasNext()) {
+        if (((VirtualAccountInfo)((Iterator)localObject).next()).jdField_a_of_type_Boolean)
+        {
+          this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setMainAccountSelect(false);
+          i = 1;
         }
-        this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setMainAccountSelect(false);
-        i = 1;
       }
-      for (;;)
-      {
-        break label79;
-        if (i != 0) {
-          break label138;
-        }
+      if (i == 0) {
         this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setMainAccountSelect(true);
-        break;
       }
     }
+    else
+    {
+      this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setMainAccountSelect(true);
+    }
+    super.notifyDataSetChanged();
   }
   
   public void onClick(View paramView) {}
   
   public void updateCurShowRightView(View paramView)
   {
+    int j = -1;
+    int i = j;
     if (paramView != null)
     {
       paramView = paramView.getTag(-1);
-      if (!(paramView instanceof Integer)) {}
+      i = j;
+      if ((paramView instanceof Integer)) {
+        i = ((Integer)paramView).intValue();
+      }
     }
-    for (int i = ((Integer)paramView).intValue();; i = -1)
-    {
-      this.jdField_a_of_type_Int = i;
-      return;
-    }
+    this.jdField_a_of_type_Int = i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.OpenCardContainer.VirtualAccountAdapter
  * JD-Core Version:    0.7.0.1
  */

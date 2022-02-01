@@ -11,14 +11,14 @@ class MultiForwardChatPie$LongTextDownloadCallback$2
   public void run()
   {
     MultiForwardChatPie.a(this.a).setVisibility(0);
-    MultiForwardChatPie.a(this.a).setText(2131698458);
-    this.a.e.setText(this.a.g);
-    this.a.F();
+    MultiForwardChatPie.a(this.a).setText(2131698524);
+    this.a.jdField_e_of_type_AndroidWidgetTextView.setText(this.a.jdField_e_of_type_JavaLangString);
+    this.a.u();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie.LongTextDownloadCallback.2
  * JD-Core Version:    0.7.0.1
  */

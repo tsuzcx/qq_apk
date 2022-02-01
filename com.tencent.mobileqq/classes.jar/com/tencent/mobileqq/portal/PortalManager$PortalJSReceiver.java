@@ -19,95 +19,74 @@ class PortalManager$PortalJSReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int j = 1;
-    int i = 1;
     int k = paramIntent.getIntExtra("portal_type_key", -1);
     int m = paramIntent.getIntExtra("bc_seq", -1);
     paramContext = paramIntent.getStringExtra("portal_agrs");
-    if (QLog.isColorLevel()) {
-      QLog.i("PortalManager", 2, "PortalSwictherReceiver, " + paramIntent.getExtras());
-    }
     Object localObject;
-    int n;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("PortalSwictherReceiver, ");
+      ((StringBuilder)localObject).append(paramIntent.getExtras());
+      QLog.i("PortalManager", 2, ((StringBuilder)localObject).toString());
+    }
+    int j = 1;
+    int i = 1;
     switch (k)
     {
     default: 
-    case 1010: 
-    case 1011: 
-      do
-      {
-        return;
-        try
-        {
-          paramContext = new JSONObject();
-          paramIntent = paramContext.put("errorCode", 0);
-          if (this.a.a() != -1)
-          {
-            paramIntent.put("result", i);
-            PortalManager.a(this.a, k, paramContext.toString(), m);
-            return;
-          }
-        }
-        catch (JSONException paramContext)
-        {
-          for (;;)
-          {
-            paramContext.printStackTrace();
-            try
-            {
-              paramContext = new JSONObject();
-              paramContext.put("errorCode", -1);
-              PortalManager.a(this.a, k, paramContext.toString(), m);
-              return;
-            }
-            catch (JSONException paramContext)
-            {
-              paramContext.printStackTrace();
-              return;
-            }
-            i = 0;
-          }
-          if (!TextUtils.isEmpty(paramContext)) {
-            break;
-          }
-          PortalManager.a(this.a, k, m, null, -1, "params is null");
-          return;
-        }
-        catch (Exception paramContext) {}
-      } while (!QLog.isColorLevel());
-      QLog.e("PortalManager", 2, "", paramContext);
       return;
-      paramContext = new JSONObject(paramContext);
-      paramIntent = paramContext.getString("key");
-      localObject = PortalUtils.b(paramIntent);
-      localObject = ContactUtils.l(PortalManager.a(this.a), (String)localObject);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        paramContext.put("errorCode", 0).put("result", localObject).put("key", paramIntent);
-      }
-      for (;;)
-      {
-        PortalManager.a(this.a, k, paramContext.toString(), m);
-        return;
-        paramContext.put("errorCode", -1).put("key", paramIntent);
-      }
-    case 1008: 
+    }
+    try
+    {
       if (TextUtils.isEmpty(paramContext))
       {
         PortalManager.a(this.a, k, m, null, -1, "params is null");
         return;
       }
       paramContext = new JSONObject(paramContext);
-      int i1 = paramContext.getInt("type");
-      n = paramContext.getInt("count");
-      i = j;
-      switch (i1)
-      {
+      paramIntent = paramContext.getString("key");
+      localObject = PortalUtils.b(paramIntent);
+      localObject = ContactUtils.f(PortalManager.a(this.a), (String)localObject);
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        paramContext.put("errorCode", 0).put("result", localObject).put("key", paramIntent);
+      } else {
+        paramContext.put("errorCode", -1).put("key", paramIntent);
       }
-      break;
+      PortalManager.a(this.a, k, paramContext.toString(), m);
+      return;
     }
-    for (;;)
+    catch (Exception paramContext)
     {
-      RedPacketServlet.a(PortalManager.a(this.a), i, n, k, m);
+      int i1;
+      int n;
+      if (!QLog.isColorLevel()) {
+        break label709;
+      }
+      QLog.e("PortalManager", 2, "", paramContext);
+      return;
+    }
+    catch (JSONException paramContext)
+    {
+      paramContext.printStackTrace();
+      try
+      {
+        paramContext = new JSONObject();
+        paramContext.put("errorCode", -1);
+        PortalManager.a(this.a, k, paramContext.toString(), m);
+        return;
+      }
+      catch (JSONException paramContext)
+      {
+        paramContext.printStackTrace();
+      }
+    }
+    paramContext = new JSONObject();
+    paramIntent = paramContext.put("errorCode", 0);
+    if (this.a.a() != -1)
+    {
+      paramIntent.put("result", i);
+      PortalManager.a(this.a, k, paramContext.toString(), m);
       return;
       if (TextUtils.isEmpty(paramContext))
       {
@@ -134,26 +113,61 @@ class PortalManager$PortalJSReceiver
         ((PortalManager.IconReqDetails)localObject).b = k;
         ((PortalManager.IconReqDetails)localObject).jdField_a_of_type_Int = m;
         this.a.a.put(paramIntent, localObject);
-        if ((PortalManager.a(this.a).getFaceBitmap(paramIntent, true) != null) || (!QLog.isColorLevel())) {
-          break;
+        if ((PortalManager.a(this.a).getFaceBitmap(paramIntent, true) == null) && (QLog.isColorLevel()))
+        {
+          paramIntent = ContactUtils.d(PortalManager.a(this.a), String.valueOf(paramIntent));
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("昵称为");
+          ((StringBuilder)localObject).append(paramIntent);
+          ((StringBuilder)localObject).append("，本地不存在头像，key = ");
+          ((StringBuilder)localObject).append(paramContext);
+          QLog.d("PortalManager", 2, ((StringBuilder)localObject).toString());
         }
-        paramIntent = ContactUtils.j(PortalManager.a(this.a), String.valueOf(paramIntent));
-        QLog.d("PortalManager", 2, "昵称为" + paramIntent + "，本地不存在头像，key = " + paramContext);
-        return;
       }
-      PortalManager.a(this.a, k, m, null, -1, "key is null");
+      else
+      {
+        PortalManager.a(this.a, k, m, null, -1, "key is null");
+        return;
+        if (TextUtils.isEmpty(paramContext))
+        {
+          PortalManager.a(this.a, k, m, null, -1, "params is null");
+          return;
+        }
+        paramContext = new JSONObject(paramContext);
+        i1 = paramContext.getInt("type");
+        n = paramContext.getInt("count");
+        i = j;
+        if (i1 != 1)
+        {
+          if (i1 == 2) {
+            break label720;
+          }
+          if (i1 == 3) {
+            break label715;
+          }
+          i = j;
+        }
+      }
+    }
+    for (;;)
+    {
+      RedPacketServlet.a(PortalManager.a(this.a), i, n, k, m);
       return;
-      i = j;
-      continue;
-      i = 2;
-      continue;
+      label709:
+      return;
+      i = 0;
+      break;
+      label715:
       i = 3;
+      continue;
+      label720:
+      i = 2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.PortalManager.PortalJSReceiver
  * JD-Core Version:    0.7.0.1
  */

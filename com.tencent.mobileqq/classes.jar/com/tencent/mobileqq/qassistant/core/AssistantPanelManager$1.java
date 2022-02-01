@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.qassistant.core;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class AssistantPanelManager$1
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   AssistantPanelManager$1(AssistantPanelManager paramAssistantPanelManager, boolean paramBoolean) {}
   
@@ -24,7 +24,7 @@ class AssistantPanelManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.core.AssistantPanelManager.1
  * JD-Core Version:    0.7.0.1
  */

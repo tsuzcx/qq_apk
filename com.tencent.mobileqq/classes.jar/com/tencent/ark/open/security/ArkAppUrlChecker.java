@@ -29,7 +29,12 @@ public class ArkAppUrlChecker
       }
       return;
     }
-    finally {}
+    finally
+    {
+      label98:
+      break label98;
+    }
+    throw paramAppUrlWhiteList;
   }
   
   public int checkUrlIsValidByAppNavigationList(String paramString)

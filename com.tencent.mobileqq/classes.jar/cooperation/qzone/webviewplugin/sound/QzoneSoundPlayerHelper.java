@@ -1,181 +1,56 @@
 package cooperation.qzone.webviewplugin.sound;
 
-import android.content.Context;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
-import android.net.Uri;
-import java.io.IOException;
 
 public class QzoneSoundPlayerHelper
 {
   private MediaPlayer mp;
   
-  /* Error */
   public int getCurrentPosition()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   6: astore_2
-    //   7: aload_2
-    //   8: ifnonnull +9 -> 17
-    //   11: iconst_m1
-    //   12: istore_1
-    //   13: aload_0
-    //   14: monitorexit
-    //   15: iload_1
-    //   16: ireturn
-    //   17: aload_0
-    //   18: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   21: invokevirtual 19	android/media/MediaPlayer:getCurrentPosition	()I
-    //   24: istore_1
-    //   25: goto -12 -> 13
-    //   28: astore_2
-    //   29: aload_0
-    //   30: monitorexit
-    //   31: aload_2
-    //   32: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	33	0	this	QzoneSoundPlayerHelper
-    //   12	13	1	i	int
-    //   6	2	2	localMediaPlayer	MediaPlayer
-    //   28	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	28	finally
-    //   17	25	28	finally
+    try
+    {
+      MediaPlayer localMediaPlayer = this.mp;
+      if (localMediaPlayer == null) {
+        return -1;
+      }
+      int i = this.mp.getCurrentPosition();
+      return i;
+    }
+    finally {}
   }
   
-  /* Error */
   public int getDuration()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   6: astore_2
-    //   7: aload_2
-    //   8: ifnonnull +9 -> 17
-    //   11: iconst_m1
-    //   12: istore_1
-    //   13: aload_0
-    //   14: monitorexit
-    //   15: iload_1
-    //   16: ireturn
-    //   17: aload_0
-    //   18: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   21: invokevirtual 22	android/media/MediaPlayer:getDuration	()I
-    //   24: istore_1
-    //   25: goto -12 -> 13
-    //   28: astore_2
-    //   29: aload_0
-    //   30: monitorexit
-    //   31: aload_2
-    //   32: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	33	0	this	QzoneSoundPlayerHelper
-    //   12	13	1	i	int
-    //   6	2	2	localMediaPlayer	MediaPlayer
-    //   28	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	28	finally
-    //   17	25	28	finally
+    try
+    {
+      MediaPlayer localMediaPlayer = this.mp;
+      if (localMediaPlayer == null) {
+        return -1;
+      }
+      int i = this.mp.getDuration();
+      return i;
+    }
+    finally {}
   }
   
-  /* Error */
   public boolean isPlaying()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   6: astore_2
-    //   7: aload_2
-    //   8: ifnonnull +9 -> 17
-    //   11: iconst_0
-    //   12: istore_1
-    //   13: aload_0
-    //   14: monitorexit
-    //   15: iload_1
-    //   16: ireturn
-    //   17: aload_0
-    //   18: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   21: invokevirtual 26	android/media/MediaPlayer:isPlaying	()Z
-    //   24: istore_1
-    //   25: goto -12 -> 13
-    //   28: astore_2
-    //   29: aload_0
-    //   30: monitorexit
-    //   31: aload_2
-    //   32: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	33	0	this	QzoneSoundPlayerHelper
-    //   12	13	1	bool	boolean
-    //   6	2	2	localMediaPlayer	MediaPlayer
-    //   28	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	28	finally
-    //   17	25	28	finally
+    try
+    {
+      MediaPlayer localMediaPlayer = this.mp;
+      if (localMediaPlayer == null) {
+        return false;
+      }
+      boolean bool = this.mp.isPlaying();
+      return bool;
+    }
+    finally {}
   }
   
   /* Error */
   public boolean pause()
-  {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_1
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: aload_0
-    //   5: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   8: astore_2
-    //   9: aload_2
-    //   10: ifnonnull +7 -> 17
-    //   13: aload_0
-    //   14: monitorexit
-    //   15: iload_1
-    //   16: ireturn
-    //   17: aload_0
-    //   18: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   21: invokevirtual 31	android/media/MediaPlayer:pause	()V
-    //   24: iconst_1
-    //   25: istore_1
-    //   26: goto -13 -> 13
-    //   29: astore_2
-    //   30: aload_2
-    //   31: invokevirtual 34	java/lang/IllegalStateException:printStackTrace	()V
-    //   34: goto -21 -> 13
-    //   37: astore_2
-    //   38: aload_0
-    //   39: monitorexit
-    //   40: aload_2
-    //   41: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	42	0	this	QzoneSoundPlayerHelper
-    //   1	25	1	bool	boolean
-    //   8	2	2	localMediaPlayer	MediaPlayer
-    //   29	2	2	localIllegalStateException	IllegalStateException
-    //   37	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   17	24	29	java/lang/IllegalStateException
-    //   4	9	37	finally
-    //   17	24	37	finally
-    //   30	34	37	finally
-  }
-  
-  /* Error */
-  public void release()
   {
     // Byte code:
     //   0: aload_0
@@ -184,696 +59,674 @@ public class QzoneSoundPlayerHelper
     //   3: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
     //   6: astore_1
     //   7: aload_1
-    //   8: ifnonnull +6 -> 14
+    //   8: ifnonnull +7 -> 15
     //   11: aload_0
     //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   18: invokevirtual 38	android/media/MediaPlayer:stop	()V
-    //   21: aload_0
-    //   22: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   25: invokevirtual 40	android/media/MediaPlayer:release	()V
-    //   28: aload_0
-    //   29: aconst_null
-    //   30: putfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   33: goto -22 -> 11
-    //   36: astore_1
-    //   37: aload_0
-    //   38: monitorexit
-    //   39: aload_1
-    //   40: athrow
+    //   13: iconst_0
+    //   14: ireturn
+    //   15: aload_0
+    //   16: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
+    //   19: invokevirtual 31	android/media/MediaPlayer:pause	()V
+    //   22: aload_0
+    //   23: monitorexit
+    //   24: iconst_1
+    //   25: ireturn
+    //   26: astore_1
+    //   27: aload_1
+    //   28: invokevirtual 34	java/lang/IllegalStateException:printStackTrace	()V
+    //   31: aload_0
+    //   32: monitorexit
+    //   33: iconst_0
+    //   34: ireturn
+    //   35: astore_1
+    //   36: aload_0
+    //   37: monitorexit
+    //   38: aload_1
+    //   39: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	41	0	this	QzoneSoundPlayerHelper
+    //   0	40	0	this	QzoneSoundPlayerHelper
     //   6	2	1	localMediaPlayer	MediaPlayer
-    //   36	4	1	localObject	Object
+    //   26	2	1	localIllegalStateException	java.lang.IllegalStateException
+    //   35	4	1	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   2	7	36	finally
-    //   14	33	36	finally
+    //   15	22	26	java/lang/IllegalStateException
+    //   2	7	35	finally
+    //   15	22	35	finally
+    //   27	31	35	finally
   }
   
-  public boolean setDataSource(Context paramContext, Uri paramUri)
+  public void release()
   {
-    boolean bool = false;
-    for (;;)
+    try
     {
-      try
-      {
-        if (this.mp == null) {
-          this.mp = new MediaPlayer();
-        }
+      MediaPlayer localMediaPlayer = this.mp;
+      if (localMediaPlayer == null) {
+        return;
       }
-      finally {}
-      try
-      {
-        this.mp.setAudioStreamType(3);
-        this.mp.setDataSource(paramContext, paramUri);
-        this.mp.prepare();
-        bool = true;
-      }
-      catch (IllegalStateException paramContext)
-      {
-        paramContext.printStackTrace();
-        continue;
-      }
-      catch (IOException paramContext)
-      {
-        paramContext.printStackTrace();
-        continue;
-      }
-      catch (IllegalArgumentException paramContext)
-      {
-        paramContext.printStackTrace();
-        continue;
-      }
-      catch (SecurityException paramContext)
-      {
-        paramContext.printStackTrace();
-        continue;
-      }
-      return bool;
-      this.mp.reset();
+      this.mp.stop();
+      this.mp.release();
+      this.mp = null;
+      return;
     }
+    finally {}
   }
   
   /* Error */
-  public boolean setDataSource(Context paramContext, java.lang.String paramString)
+  public boolean setDataSource(android.content.Context paramContext, android.net.Uri paramUri)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore 4
-    //   3: aload_0
-    //   4: monitorenter
-    //   5: aload_0
-    //   6: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   9: ifnonnull +87 -> 96
-    //   12: aload_0
-    //   13: new 17	android/media/MediaPlayer
-    //   16: dup
-    //   17: invokespecial 49	android/media/MediaPlayer:<init>	()V
-    //   20: putfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   23: aconst_null
-    //   24: astore 6
-    //   26: aconst_null
-    //   27: astore 8
-    //   29: aconst_null
-    //   30: astore 9
-    //   32: aconst_null
-    //   33: astore 7
-    //   35: aload 9
-    //   37: astore 5
-    //   39: aload_0
-    //   40: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   43: iconst_3
-    //   44: invokevirtual 53	android/media/MediaPlayer:setAudioStreamType	(I)V
-    //   47: aload 9
-    //   49: astore 5
-    //   51: new 68	java/io/File
-    //   54: dup
-    //   55: aload_1
-    //   56: invokevirtual 74	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   59: aload_2
-    //   60: invokespecial 77	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   63: astore_1
-    //   64: aload 9
-    //   66: astore 5
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
+    //   6: ifnonnull +17 -> 23
+    //   9: aload_0
+    //   10: new 17	android/media/MediaPlayer
+    //   13: dup
+    //   14: invokespecial 49	android/media/MediaPlayer:<init>	()V
+    //   17: putfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
+    //   20: goto +10 -> 30
+    //   23: aload_0
+    //   24: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
+    //   27: invokevirtual 52	android/media/MediaPlayer:reset	()V
+    //   30: aload_0
+    //   31: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
+    //   34: iconst_3
+    //   35: invokevirtual 56	android/media/MediaPlayer:setAudioStreamType	(I)V
+    //   38: aload_0
+    //   39: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
+    //   42: aload_1
+    //   43: aload_2
+    //   44: invokevirtual 59	android/media/MediaPlayer:setDataSource	(Landroid/content/Context;Landroid/net/Uri;)V
+    //   47: aload_0
+    //   48: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
+    //   51: invokevirtual 62	android/media/MediaPlayer:prepare	()V
+    //   54: aload_0
+    //   55: monitorexit
+    //   56: iconst_1
+    //   57: ireturn
+    //   58: astore_1
+    //   59: aload_1
+    //   60: invokevirtual 63	java/lang/SecurityException:printStackTrace	()V
+    //   63: aload_0
+    //   64: monitorexit
+    //   65: iconst_0
+    //   66: ireturn
+    //   67: astore_1
     //   68: aload_1
-    //   69: invokevirtual 80	java/io/File:exists	()Z
-    //   72: istore_3
-    //   73: iload_3
-    //   74: ifne +37 -> 111
-    //   77: iload 4
-    //   79: istore_3
-    //   80: iconst_0
-    //   81: ifeq +11 -> 92
-    //   84: new 82	java/lang/NullPointerException
-    //   87: dup
-    //   88: invokespecial 83	java/lang/NullPointerException:<init>	()V
-    //   91: athrow
-    //   92: aload_0
-    //   93: monitorexit
-    //   94: iload_3
-    //   95: ireturn
-    //   96: aload_0
-    //   97: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   100: invokevirtual 62	android/media/MediaPlayer:reset	()V
-    //   103: goto -80 -> 23
-    //   106: astore_1
-    //   107: aload_0
-    //   108: monitorexit
-    //   109: aload_1
-    //   110: athrow
-    //   111: aload 9
-    //   113: astore 5
-    //   115: new 85	java/io/FileInputStream
-    //   118: dup
-    //   119: aload_1
-    //   120: invokevirtual 89	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   123: invokespecial 92	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   126: astore_1
-    //   127: aload_1
-    //   128: astore_2
-    //   129: aload_0
-    //   130: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   133: aload_1
-    //   134: invokevirtual 96	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
-    //   137: invokevirtual 99	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
-    //   140: aload_1
-    //   141: astore_2
-    //   142: aload_0
-    //   143: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   146: invokevirtual 59	android/media/MediaPlayer:prepare	()V
-    //   149: aload_1
-    //   150: astore_2
-    //   151: aload_1
-    //   152: invokevirtual 102	java/io/FileInputStream:close	()V
-    //   155: aload_1
-    //   156: ifnull +7 -> 163
-    //   159: aload_1
-    //   160: invokevirtual 102	java/io/FileInputStream:close	()V
-    //   163: iconst_1
-    //   164: istore_3
-    //   165: goto -73 -> 92
-    //   168: astore 5
-    //   170: aconst_null
-    //   171: astore_1
-    //   172: aload_1
-    //   173: astore_2
-    //   174: aload 5
-    //   176: invokevirtual 34	java/lang/IllegalStateException:printStackTrace	()V
-    //   179: iload 4
-    //   181: istore_3
-    //   182: aload_1
-    //   183: ifnull -91 -> 92
-    //   186: aload_1
-    //   187: invokevirtual 102	java/io/FileInputStream:close	()V
-    //   190: iload 4
-    //   192: istore_3
-    //   193: goto -101 -> 92
-    //   196: astore_1
-    //   197: iload 4
-    //   199: istore_3
-    //   200: goto -108 -> 92
-    //   203: astore_2
-    //   204: aload 7
-    //   206: astore_1
-    //   207: aload_1
-    //   208: astore 5
-    //   210: aload_2
-    //   211: invokevirtual 63	java/io/IOException:printStackTrace	()V
-    //   214: iload 4
-    //   216: istore_3
-    //   217: aload_1
-    //   218: ifnull -126 -> 92
-    //   221: aload_1
-    //   222: invokevirtual 102	java/io/FileInputStream:close	()V
-    //   225: iload 4
-    //   227: istore_3
-    //   228: goto -136 -> 92
-    //   231: astore_1
-    //   232: iload 4
-    //   234: istore_3
-    //   235: goto -143 -> 92
-    //   238: astore_2
-    //   239: aload 6
-    //   241: astore_1
-    //   242: aload_1
-    //   243: astore 5
-    //   245: aload_2
-    //   246: invokevirtual 64	java/lang/IllegalArgumentException:printStackTrace	()V
-    //   249: iload 4
-    //   251: istore_3
-    //   252: aload_1
-    //   253: ifnull -161 -> 92
-    //   256: aload_1
-    //   257: invokevirtual 102	java/io/FileInputStream:close	()V
-    //   260: iload 4
-    //   262: istore_3
-    //   263: goto -171 -> 92
-    //   266: astore_1
-    //   267: iload 4
-    //   269: istore_3
-    //   270: goto -178 -> 92
-    //   273: astore_2
-    //   274: aload 8
-    //   276: astore_1
-    //   277: aload_1
-    //   278: astore 5
-    //   280: aload_2
-    //   281: invokevirtual 65	java/lang/SecurityException:printStackTrace	()V
-    //   284: iload 4
-    //   286: istore_3
-    //   287: aload_1
-    //   288: ifnull -196 -> 92
-    //   291: aload_1
-    //   292: invokevirtual 102	java/io/FileInputStream:close	()V
-    //   295: iload 4
-    //   297: istore_3
-    //   298: goto -206 -> 92
-    //   301: astore_1
-    //   302: iload 4
-    //   304: istore_3
-    //   305: goto -213 -> 92
-    //   308: astore_1
-    //   309: aload 5
-    //   311: ifnull +8 -> 319
-    //   314: aload 5
-    //   316: invokevirtual 102	java/io/FileInputStream:close	()V
-    //   319: aload_1
-    //   320: athrow
-    //   321: astore_1
-    //   322: iload 4
-    //   324: istore_3
-    //   325: goto -233 -> 92
-    //   328: astore_1
-    //   329: goto -166 -> 163
-    //   332: astore_2
-    //   333: goto -14 -> 319
-    //   336: astore_1
-    //   337: aload_2
-    //   338: astore 5
-    //   340: goto -31 -> 309
-    //   343: astore_2
-    //   344: goto -67 -> 277
-    //   347: astore_2
-    //   348: goto -106 -> 242
-    //   351: astore_2
-    //   352: goto -145 -> 207
-    //   355: astore 5
-    //   357: goto -185 -> 172
+    //   69: invokevirtual 64	java/lang/IllegalArgumentException:printStackTrace	()V
+    //   72: aload_0
+    //   73: monitorexit
+    //   74: iconst_0
+    //   75: ireturn
+    //   76: astore_1
+    //   77: aload_1
+    //   78: invokevirtual 65	java/io/IOException:printStackTrace	()V
+    //   81: aload_0
+    //   82: monitorexit
+    //   83: iconst_0
+    //   84: ireturn
+    //   85: astore_1
+    //   86: aload_1
+    //   87: invokevirtual 34	java/lang/IllegalStateException:printStackTrace	()V
+    //   90: aload_0
+    //   91: monitorexit
+    //   92: iconst_0
+    //   93: ireturn
+    //   94: astore_1
+    //   95: aload_0
+    //   96: monitorexit
+    //   97: aload_1
+    //   98: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	360	0	this	QzoneSoundPlayerHelper
-    //   0	360	1	paramContext	Context
-    //   0	360	2	paramString	java.lang.String
-    //   72	253	3	bool1	boolean
-    //   1	322	4	bool2	boolean
-    //   37	77	5	localObject1	Object
-    //   168	7	5	localIllegalStateException1	IllegalStateException
-    //   208	131	5	localObject2	Object
-    //   355	1	5	localIllegalStateException2	IllegalStateException
-    //   24	216	6	localObject3	Object
-    //   33	172	7	localObject4	Object
-    //   27	248	8	localObject5	Object
-    //   30	82	9	localObject6	Object
+    //   0	99	0	this	QzoneSoundPlayerHelper
+    //   0	99	1	paramContext	android.content.Context
+    //   0	99	2	paramUri	android.net.Uri
     // Exception table:
     //   from	to	target	type
-    //   5	23	106	finally
-    //   84	92	106	finally
-    //   96	103	106	finally
-    //   159	163	106	finally
-    //   186	190	106	finally
-    //   221	225	106	finally
-    //   256	260	106	finally
-    //   291	295	106	finally
-    //   314	319	106	finally
-    //   319	321	106	finally
-    //   39	47	168	java/lang/IllegalStateException
-    //   51	64	168	java/lang/IllegalStateException
-    //   68	73	168	java/lang/IllegalStateException
-    //   115	127	168	java/lang/IllegalStateException
-    //   186	190	196	java/io/IOException
-    //   39	47	203	java/io/IOException
-    //   51	64	203	java/io/IOException
-    //   68	73	203	java/io/IOException
-    //   115	127	203	java/io/IOException
-    //   221	225	231	java/io/IOException
-    //   39	47	238	java/lang/IllegalArgumentException
-    //   51	64	238	java/lang/IllegalArgumentException
-    //   68	73	238	java/lang/IllegalArgumentException
-    //   115	127	238	java/lang/IllegalArgumentException
-    //   256	260	266	java/io/IOException
-    //   39	47	273	java/lang/SecurityException
-    //   51	64	273	java/lang/SecurityException
-    //   68	73	273	java/lang/SecurityException
-    //   115	127	273	java/lang/SecurityException
-    //   291	295	301	java/io/IOException
-    //   39	47	308	finally
-    //   51	64	308	finally
-    //   68	73	308	finally
-    //   115	127	308	finally
-    //   210	214	308	finally
-    //   245	249	308	finally
-    //   280	284	308	finally
-    //   84	92	321	java/io/IOException
-    //   159	163	328	java/io/IOException
-    //   314	319	332	java/io/IOException
-    //   129	140	336	finally
-    //   142	149	336	finally
-    //   151	155	336	finally
-    //   174	179	336	finally
-    //   129	140	343	java/lang/SecurityException
-    //   142	149	343	java/lang/SecurityException
-    //   151	155	343	java/lang/SecurityException
-    //   129	140	347	java/lang/IllegalArgumentException
-    //   142	149	347	java/lang/IllegalArgumentException
-    //   151	155	347	java/lang/IllegalArgumentException
-    //   129	140	351	java/io/IOException
-    //   142	149	351	java/io/IOException
-    //   151	155	351	java/io/IOException
-    //   129	140	355	java/lang/IllegalStateException
-    //   142	149	355	java/lang/IllegalStateException
-    //   151	155	355	java/lang/IllegalStateException
+    //   30	54	58	java/lang/SecurityException
+    //   30	54	67	java/lang/IllegalArgumentException
+    //   30	54	76	java/io/IOException
+    //   30	54	85	java/lang/IllegalStateException
+    //   2	20	94	finally
+    //   23	30	94	finally
+    //   30	54	94	finally
+    //   59	63	94	finally
+    //   68	72	94	finally
+    //   77	81	94	finally
+    //   86	90	94	finally
+  }
+  
+  /* Error */
+  public boolean setDataSource(android.content.Context paramContext, java.lang.String paramString)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
+    //   6: ifnonnull +17 -> 23
+    //   9: aload_0
+    //   10: new 17	android/media/MediaPlayer
+    //   13: dup
+    //   14: invokespecial 49	android/media/MediaPlayer:<init>	()V
+    //   17: putfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
+    //   20: goto +10 -> 30
+    //   23: aload_0
+    //   24: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
+    //   27: invokevirtual 52	android/media/MediaPlayer:reset	()V
+    //   30: aconst_null
+    //   31: astore 5
+    //   33: aconst_null
+    //   34: astore 6
+    //   36: aconst_null
+    //   37: astore 7
+    //   39: aconst_null
+    //   40: astore 8
+    //   42: aconst_null
+    //   43: astore 9
+    //   45: aload 9
+    //   47: astore 4
+    //   49: aload_0
+    //   50: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
+    //   53: iconst_3
+    //   54: invokevirtual 56	android/media/MediaPlayer:setAudioStreamType	(I)V
+    //   57: aload 9
+    //   59: astore 4
+    //   61: new 68	java/io/File
+    //   64: dup
+    //   65: aload_1
+    //   66: invokevirtual 74	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   69: aload_2
+    //   70: invokespecial 77	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   73: astore_1
+    //   74: aload 9
+    //   76: astore 4
+    //   78: aload_1
+    //   79: invokevirtual 80	java/io/File:exists	()Z
+    //   82: istore_3
+    //   83: iload_3
+    //   84: ifne +7 -> 91
+    //   87: aload_0
+    //   88: monitorexit
+    //   89: iconst_0
+    //   90: ireturn
+    //   91: aload 9
+    //   93: astore 4
+    //   95: new 82	java/io/FileInputStream
+    //   98: dup
+    //   99: aload_1
+    //   100: invokevirtual 86	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   103: invokespecial 89	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   106: astore_1
+    //   107: aload_0
+    //   108: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
+    //   111: aload_1
+    //   112: invokevirtual 93	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
+    //   115: invokevirtual 96	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
+    //   118: aload_0
+    //   119: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
+    //   122: invokevirtual 62	android/media/MediaPlayer:prepare	()V
+    //   125: aload_1
+    //   126: invokevirtual 99	java/io/FileInputStream:close	()V
+    //   129: aload_1
+    //   130: invokevirtual 99	java/io/FileInputStream:close	()V
+    //   133: aload_0
+    //   134: monitorexit
+    //   135: iconst_1
+    //   136: ireturn
+    //   137: astore_2
+    //   138: aload_1
+    //   139: astore 4
+    //   141: aload_2
+    //   142: astore_1
+    //   143: goto +115 -> 258
+    //   146: astore_2
+    //   147: goto +23 -> 170
+    //   150: astore_2
+    //   151: goto +42 -> 193
+    //   154: astore_2
+    //   155: goto +61 -> 216
+    //   158: astore_2
+    //   159: goto +80 -> 239
+    //   162: astore_1
+    //   163: goto +95 -> 258
+    //   166: astore_2
+    //   167: aload 5
+    //   169: astore_1
+    //   170: aload_1
+    //   171: astore 4
+    //   173: aload_2
+    //   174: invokevirtual 63	java/lang/SecurityException:printStackTrace	()V
+    //   177: aload_1
+    //   178: ifnull +7 -> 185
+    //   181: aload_1
+    //   182: invokevirtual 99	java/io/FileInputStream:close	()V
+    //   185: aload_0
+    //   186: monitorexit
+    //   187: iconst_0
+    //   188: ireturn
+    //   189: astore_2
+    //   190: aload 6
+    //   192: astore_1
+    //   193: aload_1
+    //   194: astore 4
+    //   196: aload_2
+    //   197: invokevirtual 64	java/lang/IllegalArgumentException:printStackTrace	()V
+    //   200: aload_1
+    //   201: ifnull +7 -> 208
+    //   204: aload_1
+    //   205: invokevirtual 99	java/io/FileInputStream:close	()V
+    //   208: aload_0
+    //   209: monitorexit
+    //   210: iconst_0
+    //   211: ireturn
+    //   212: astore_2
+    //   213: aload 7
+    //   215: astore_1
+    //   216: aload_1
+    //   217: astore 4
+    //   219: aload_2
+    //   220: invokevirtual 65	java/io/IOException:printStackTrace	()V
+    //   223: aload_1
+    //   224: ifnull +7 -> 231
+    //   227: aload_1
+    //   228: invokevirtual 99	java/io/FileInputStream:close	()V
+    //   231: aload_0
+    //   232: monitorexit
+    //   233: iconst_0
+    //   234: ireturn
+    //   235: astore_2
+    //   236: aload 8
+    //   238: astore_1
+    //   239: aload_1
+    //   240: astore 4
+    //   242: aload_2
+    //   243: invokevirtual 34	java/lang/IllegalStateException:printStackTrace	()V
+    //   246: aload_1
+    //   247: ifnull +7 -> 254
+    //   250: aload_1
+    //   251: invokevirtual 99	java/io/FileInputStream:close	()V
+    //   254: aload_0
+    //   255: monitorexit
+    //   256: iconst_0
+    //   257: ireturn
+    //   258: aload 4
+    //   260: ifnull +8 -> 268
+    //   263: aload 4
+    //   265: invokevirtual 99	java/io/FileInputStream:close	()V
+    //   268: aload_1
+    //   269: athrow
+    //   270: astore_1
+    //   271: aload_0
+    //   272: monitorexit
+    //   273: aload_1
+    //   274: athrow
+    //   275: astore_1
+    //   276: goto -143 -> 133
+    //   279: astore_1
+    //   280: goto -95 -> 185
+    //   283: astore_1
+    //   284: goto -76 -> 208
+    //   287: astore_1
+    //   288: goto -57 -> 231
+    //   291: astore_1
+    //   292: goto -38 -> 254
+    //   295: astore_2
+    //   296: goto -28 -> 268
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	299	0	this	QzoneSoundPlayerHelper
+    //   0	299	1	paramContext	android.content.Context
+    //   0	299	2	paramString	java.lang.String
+    //   82	2	3	bool	boolean
+    //   47	217	4	localObject1	Object
+    //   31	137	5	localObject2	Object
+    //   34	157	6	localObject3	Object
+    //   37	177	7	localObject4	Object
+    //   40	197	8	localObject5	Object
+    //   43	49	9	localObject6	Object
+    // Exception table:
+    //   from	to	target	type
+    //   107	129	137	finally
+    //   107	129	146	java/lang/SecurityException
+    //   107	129	150	java/lang/IllegalArgumentException
+    //   107	129	154	java/io/IOException
+    //   107	129	158	java/lang/IllegalStateException
+    //   49	57	162	finally
+    //   61	74	162	finally
+    //   78	83	162	finally
+    //   95	107	162	finally
+    //   173	177	162	finally
+    //   196	200	162	finally
+    //   219	223	162	finally
+    //   242	246	162	finally
+    //   49	57	166	java/lang/SecurityException
+    //   61	74	166	java/lang/SecurityException
+    //   78	83	166	java/lang/SecurityException
+    //   95	107	166	java/lang/SecurityException
+    //   49	57	189	java/lang/IllegalArgumentException
+    //   61	74	189	java/lang/IllegalArgumentException
+    //   78	83	189	java/lang/IllegalArgumentException
+    //   95	107	189	java/lang/IllegalArgumentException
+    //   49	57	212	java/io/IOException
+    //   61	74	212	java/io/IOException
+    //   78	83	212	java/io/IOException
+    //   95	107	212	java/io/IOException
+    //   49	57	235	java/lang/IllegalStateException
+    //   61	74	235	java/lang/IllegalStateException
+    //   78	83	235	java/lang/IllegalStateException
+    //   95	107	235	java/lang/IllegalStateException
+    //   2	20	270	finally
+    //   23	30	270	finally
+    //   129	133	270	finally
+    //   181	185	270	finally
+    //   204	208	270	finally
+    //   227	231	270	finally
+    //   250	254	270	finally
+    //   263	268	270	finally
+    //   268	270	270	finally
+    //   129	133	275	java/io/IOException
+    //   181	185	279	java/io/IOException
+    //   204	208	283	java/io/IOException
+    //   227	231	287	java/io/IOException
+    //   250	254	291	java/io/IOException
+    //   263	268	295	java/io/IOException
   }
   
   /* Error */
   public boolean setDataSource(java.lang.String paramString)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_3
+    //   0: aload_0
+    //   1: monitorenter
     //   2: aload_0
-    //   3: monitorenter
-    //   4: aload_0
-    //   5: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   8: ifnonnull +82 -> 90
-    //   11: aload_0
-    //   12: new 17	android/media/MediaPlayer
-    //   15: dup
-    //   16: invokespecial 49	android/media/MediaPlayer:<init>	()V
-    //   19: putfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   22: aconst_null
-    //   23: astore 7
-    //   25: aconst_null
-    //   26: astore 5
-    //   28: aconst_null
-    //   29: astore 8
-    //   31: aconst_null
-    //   32: astore 6
-    //   34: aload 8
-    //   36: astore 4
-    //   38: aload_0
-    //   39: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   42: iconst_3
-    //   43: invokevirtual 53	android/media/MediaPlayer:setAudioStreamType	(I)V
-    //   46: aload 8
-    //   48: astore 4
-    //   50: new 68	java/io/File
-    //   53: dup
-    //   54: aload_1
-    //   55: invokespecial 104	java/io/File:<init>	(Ljava/lang/String;)V
-    //   58: astore_1
-    //   59: aload 8
-    //   61: astore 4
+    //   3: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
+    //   6: ifnonnull +17 -> 23
+    //   9: aload_0
+    //   10: new 17	android/media/MediaPlayer
+    //   13: dup
+    //   14: invokespecial 49	android/media/MediaPlayer:<init>	()V
+    //   17: putfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
+    //   20: goto +10 -> 30
+    //   23: aload_0
+    //   24: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
+    //   27: invokevirtual 52	android/media/MediaPlayer:reset	()V
+    //   30: aconst_null
+    //   31: astore 5
+    //   33: aconst_null
+    //   34: astore 6
+    //   36: aconst_null
+    //   37: astore 7
+    //   39: aconst_null
+    //   40: astore 8
+    //   42: aconst_null
+    //   43: astore 4
+    //   45: aload 4
+    //   47: astore_3
+    //   48: aload_0
+    //   49: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
+    //   52: iconst_3
+    //   53: invokevirtual 56	android/media/MediaPlayer:setAudioStreamType	(I)V
+    //   56: aload 4
+    //   58: astore_3
+    //   59: new 68	java/io/File
+    //   62: dup
     //   63: aload_1
-    //   64: invokevirtual 80	java/io/File:exists	()Z
-    //   67: istore_2
-    //   68: iload_2
-    //   69: ifne +36 -> 105
-    //   72: iload_3
-    //   73: istore_2
-    //   74: iconst_0
-    //   75: ifeq +11 -> 86
-    //   78: new 82	java/lang/NullPointerException
-    //   81: dup
-    //   82: invokespecial 83	java/lang/NullPointerException:<init>	()V
-    //   85: athrow
-    //   86: aload_0
-    //   87: monitorexit
-    //   88: iload_2
-    //   89: ireturn
-    //   90: aload_0
-    //   91: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   94: invokevirtual 62	android/media/MediaPlayer:reset	()V
-    //   97: goto -75 -> 22
-    //   100: astore_1
-    //   101: aload_0
-    //   102: monitorexit
+    //   64: invokespecial 101	java/io/File:<init>	(Ljava/lang/String;)V
+    //   67: astore_1
+    //   68: aload 4
+    //   70: astore_3
+    //   71: aload_1
+    //   72: invokevirtual 80	java/io/File:exists	()Z
+    //   75: istore_2
+    //   76: iload_2
+    //   77: ifne +7 -> 84
+    //   80: aload_0
+    //   81: monitorexit
+    //   82: iconst_0
+    //   83: ireturn
+    //   84: aload 4
+    //   86: astore_3
+    //   87: new 82	java/io/FileInputStream
+    //   90: dup
+    //   91: aload_1
+    //   92: invokevirtual 86	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   95: invokespecial 89	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   98: astore_1
+    //   99: aload_0
+    //   100: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
     //   103: aload_1
-    //   104: athrow
-    //   105: aload 8
-    //   107: astore 4
-    //   109: new 85	java/io/FileInputStream
-    //   112: dup
-    //   113: aload_1
-    //   114: invokevirtual 89	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   117: invokespecial 92	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   120: astore_1
+    //   104: invokevirtual 93	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
+    //   107: invokevirtual 96	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
+    //   110: aload_0
+    //   111: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
+    //   114: invokevirtual 62	android/media/MediaPlayer:prepare	()V
+    //   117: aload_1
+    //   118: invokevirtual 99	java/io/FileInputStream:close	()V
     //   121: aload_1
-    //   122: astore 4
-    //   124: aload_0
-    //   125: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   128: aload_1
-    //   129: invokevirtual 96	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
-    //   132: invokevirtual 99	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
-    //   135: aload_1
+    //   122: invokevirtual 99	java/io/FileInputStream:close	()V
+    //   125: aload_0
+    //   126: monitorexit
+    //   127: iconst_1
+    //   128: ireturn
+    //   129: astore 4
+    //   131: aload_1
+    //   132: astore_3
+    //   133: goto +124 -> 257
     //   136: astore 4
-    //   138: aload_0
-    //   139: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   142: invokevirtual 59	android/media/MediaPlayer:prepare	()V
-    //   145: aload_1
+    //   138: goto +28 -> 166
+    //   141: astore 4
+    //   143: goto +47 -> 190
     //   146: astore 4
-    //   148: aload_1
-    //   149: invokevirtual 102	java/io/FileInputStream:close	()V
-    //   152: aload_1
-    //   153: ifnull +7 -> 160
-    //   156: aload_1
-    //   157: invokevirtual 102	java/io/FileInputStream:close	()V
-    //   160: iconst_1
-    //   161: istore_2
-    //   162: goto -76 -> 86
-    //   165: astore 5
-    //   167: aconst_null
-    //   168: astore_1
-    //   169: aload_1
-    //   170: astore 4
-    //   172: aload 5
-    //   174: invokevirtual 34	java/lang/IllegalStateException:printStackTrace	()V
-    //   177: iload_3
-    //   178: istore_2
-    //   179: aload_1
-    //   180: ifnull -94 -> 86
-    //   183: aload_1
-    //   184: invokevirtual 102	java/io/FileInputStream:close	()V
-    //   187: iload_3
-    //   188: istore_2
-    //   189: goto -103 -> 86
-    //   192: astore_1
-    //   193: iload_3
-    //   194: istore_2
-    //   195: goto -109 -> 86
-    //   198: astore 5
-    //   200: aload 6
-    //   202: astore_1
-    //   203: aload_1
-    //   204: astore 4
-    //   206: aload 5
-    //   208: invokevirtual 63	java/io/IOException:printStackTrace	()V
-    //   211: iload_3
-    //   212: istore_2
-    //   213: aload_1
-    //   214: ifnull -128 -> 86
-    //   217: aload_1
-    //   218: invokevirtual 102	java/io/FileInputStream:close	()V
-    //   221: iload_3
-    //   222: istore_2
-    //   223: goto -137 -> 86
-    //   226: astore_1
-    //   227: iload_3
-    //   228: istore_2
-    //   229: goto -143 -> 86
-    //   232: astore 5
-    //   234: aload 7
-    //   236: astore_1
-    //   237: aload_1
-    //   238: astore 4
-    //   240: aload 5
-    //   242: invokevirtual 64	java/lang/IllegalArgumentException:printStackTrace	()V
-    //   245: iload_3
-    //   246: istore_2
-    //   247: aload_1
-    //   248: ifnull -162 -> 86
-    //   251: aload_1
-    //   252: invokevirtual 102	java/io/FileInputStream:close	()V
-    //   255: iload_3
-    //   256: istore_2
-    //   257: goto -171 -> 86
-    //   260: astore_1
-    //   261: iload_3
-    //   262: istore_2
-    //   263: goto -177 -> 86
-    //   266: astore 4
-    //   268: aload 5
-    //   270: astore_1
-    //   271: aload 4
-    //   273: astore 5
-    //   275: aload_1
-    //   276: astore 4
-    //   278: aload 5
-    //   280: invokevirtual 65	java/lang/SecurityException:printStackTrace	()V
-    //   283: iload_3
-    //   284: istore_2
-    //   285: aload_1
-    //   286: ifnull -200 -> 86
-    //   289: aload_1
-    //   290: invokevirtual 102	java/io/FileInputStream:close	()V
-    //   293: iload_3
-    //   294: istore_2
-    //   295: goto -209 -> 86
-    //   298: astore_1
-    //   299: iload_3
-    //   300: istore_2
-    //   301: goto -215 -> 86
-    //   304: astore_1
-    //   305: aload 4
-    //   307: ifnull +8 -> 315
-    //   310: aload 4
-    //   312: invokevirtual 102	java/io/FileInputStream:close	()V
-    //   315: aload_1
-    //   316: athrow
-    //   317: astore_1
-    //   318: iload_3
-    //   319: istore_2
-    //   320: goto -234 -> 86
-    //   323: astore_1
-    //   324: goto -164 -> 160
-    //   327: astore 4
-    //   329: goto -14 -> 315
-    //   332: astore_1
-    //   333: goto -28 -> 305
-    //   336: astore 5
-    //   338: goto -63 -> 275
-    //   341: astore 5
-    //   343: goto -106 -> 237
-    //   346: astore 5
-    //   348: goto -145 -> 203
-    //   351: astore 5
-    //   353: goto -184 -> 169
+    //   148: goto +66 -> 214
+    //   151: astore 4
+    //   153: goto +85 -> 238
+    //   156: astore 4
+    //   158: goto +99 -> 257
+    //   161: astore 4
+    //   163: aload 5
+    //   165: astore_1
+    //   166: aload_1
+    //   167: astore_3
+    //   168: aload 4
+    //   170: invokevirtual 63	java/lang/SecurityException:printStackTrace	()V
+    //   173: aload_1
+    //   174: ifnull +7 -> 181
+    //   177: aload_1
+    //   178: invokevirtual 99	java/io/FileInputStream:close	()V
+    //   181: aload_0
+    //   182: monitorexit
+    //   183: iconst_0
+    //   184: ireturn
+    //   185: astore 4
+    //   187: aload 6
+    //   189: astore_1
+    //   190: aload_1
+    //   191: astore_3
+    //   192: aload 4
+    //   194: invokevirtual 64	java/lang/IllegalArgumentException:printStackTrace	()V
+    //   197: aload_1
+    //   198: ifnull +7 -> 205
+    //   201: aload_1
+    //   202: invokevirtual 99	java/io/FileInputStream:close	()V
+    //   205: aload_0
+    //   206: monitorexit
+    //   207: iconst_0
+    //   208: ireturn
+    //   209: astore 4
+    //   211: aload 7
+    //   213: astore_1
+    //   214: aload_1
+    //   215: astore_3
+    //   216: aload 4
+    //   218: invokevirtual 65	java/io/IOException:printStackTrace	()V
+    //   221: aload_1
+    //   222: ifnull +7 -> 229
+    //   225: aload_1
+    //   226: invokevirtual 99	java/io/FileInputStream:close	()V
+    //   229: aload_0
+    //   230: monitorexit
+    //   231: iconst_0
+    //   232: ireturn
+    //   233: astore 4
+    //   235: aload 8
+    //   237: astore_1
+    //   238: aload_1
+    //   239: astore_3
+    //   240: aload 4
+    //   242: invokevirtual 34	java/lang/IllegalStateException:printStackTrace	()V
+    //   245: aload_1
+    //   246: ifnull +7 -> 253
+    //   249: aload_1
+    //   250: invokevirtual 99	java/io/FileInputStream:close	()V
+    //   253: aload_0
+    //   254: monitorexit
+    //   255: iconst_0
+    //   256: ireturn
+    //   257: aload_3
+    //   258: ifnull +7 -> 265
+    //   261: aload_3
+    //   262: invokevirtual 99	java/io/FileInputStream:close	()V
+    //   265: aload 4
+    //   267: athrow
+    //   268: astore_1
+    //   269: aload_0
+    //   270: monitorexit
+    //   271: aload_1
+    //   272: athrow
+    //   273: astore_1
+    //   274: goto -149 -> 125
+    //   277: astore_1
+    //   278: goto -97 -> 181
+    //   281: astore_1
+    //   282: goto -77 -> 205
+    //   285: astore_1
+    //   286: goto -57 -> 229
+    //   289: astore_1
+    //   290: goto -37 -> 253
+    //   293: astore_1
+    //   294: goto -29 -> 265
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	356	0	this	QzoneSoundPlayerHelper
-    //   0	356	1	paramString	java.lang.String
-    //   67	253	2	bool1	boolean
-    //   1	318	3	bool2	boolean
-    //   36	203	4	localObject1	Object
-    //   266	6	4	localSecurityException1	SecurityException
-    //   276	35	4	str	java.lang.String
-    //   327	1	4	localIOException1	IOException
-    //   26	1	5	localObject2	Object
-    //   165	8	5	localIllegalStateException1	IllegalStateException
-    //   198	9	5	localIOException2	IOException
-    //   232	37	5	localIllegalArgumentException1	IllegalArgumentException
-    //   273	6	5	localObject3	Object
-    //   336	1	5	localSecurityException2	SecurityException
-    //   341	1	5	localIllegalArgumentException2	IllegalArgumentException
-    //   346	1	5	localIOException3	IOException
-    //   351	1	5	localIllegalStateException2	IllegalStateException
-    //   32	169	6	localObject4	Object
-    //   23	212	7	localObject5	Object
-    //   29	77	8	localObject6	Object
+    //   0	297	0	this	QzoneSoundPlayerHelper
+    //   0	297	1	paramString	java.lang.String
+    //   75	2	2	bool	boolean
+    //   47	215	3	localObject1	Object
+    //   43	42	4	localObject2	Object
+    //   129	1	4	localObject3	Object
+    //   136	1	4	localSecurityException1	java.lang.SecurityException
+    //   141	1	4	localIllegalArgumentException1	java.lang.IllegalArgumentException
+    //   146	1	4	localIOException1	java.io.IOException
+    //   151	1	4	localIllegalStateException1	java.lang.IllegalStateException
+    //   156	1	4	localObject4	Object
+    //   161	8	4	localSecurityException2	java.lang.SecurityException
+    //   185	8	4	localIllegalArgumentException2	java.lang.IllegalArgumentException
+    //   209	8	4	localIOException2	java.io.IOException
+    //   233	33	4	localIllegalStateException2	java.lang.IllegalStateException
+    //   31	133	5	localObject5	Object
+    //   34	154	6	localObject6	Object
+    //   37	175	7	localObject7	Object
+    //   40	196	8	localObject8	Object
     // Exception table:
     //   from	to	target	type
-    //   4	22	100	finally
-    //   78	86	100	finally
-    //   90	97	100	finally
-    //   156	160	100	finally
-    //   183	187	100	finally
-    //   217	221	100	finally
-    //   251	255	100	finally
-    //   289	293	100	finally
-    //   310	315	100	finally
-    //   315	317	100	finally
-    //   38	46	165	java/lang/IllegalStateException
-    //   50	59	165	java/lang/IllegalStateException
-    //   63	68	165	java/lang/IllegalStateException
-    //   109	121	165	java/lang/IllegalStateException
-    //   183	187	192	java/io/IOException
-    //   38	46	198	java/io/IOException
-    //   50	59	198	java/io/IOException
-    //   63	68	198	java/io/IOException
-    //   109	121	198	java/io/IOException
-    //   217	221	226	java/io/IOException
-    //   38	46	232	java/lang/IllegalArgumentException
-    //   50	59	232	java/lang/IllegalArgumentException
-    //   63	68	232	java/lang/IllegalArgumentException
-    //   109	121	232	java/lang/IllegalArgumentException
-    //   251	255	260	java/io/IOException
-    //   38	46	266	java/lang/SecurityException
-    //   50	59	266	java/lang/SecurityException
-    //   63	68	266	java/lang/SecurityException
-    //   109	121	266	java/lang/SecurityException
-    //   289	293	298	java/io/IOException
-    //   38	46	304	finally
-    //   50	59	304	finally
-    //   63	68	304	finally
-    //   109	121	304	finally
-    //   206	211	304	finally
-    //   240	245	304	finally
-    //   278	283	304	finally
-    //   78	86	317	java/io/IOException
-    //   156	160	323	java/io/IOException
-    //   310	315	327	java/io/IOException
-    //   124	135	332	finally
-    //   138	145	332	finally
-    //   148	152	332	finally
-    //   172	177	332	finally
-    //   124	135	336	java/lang/SecurityException
-    //   138	145	336	java/lang/SecurityException
-    //   148	152	336	java/lang/SecurityException
-    //   124	135	341	java/lang/IllegalArgumentException
-    //   138	145	341	java/lang/IllegalArgumentException
-    //   148	152	341	java/lang/IllegalArgumentException
-    //   124	135	346	java/io/IOException
-    //   138	145	346	java/io/IOException
-    //   148	152	346	java/io/IOException
-    //   124	135	351	java/lang/IllegalStateException
-    //   138	145	351	java/lang/IllegalStateException
-    //   148	152	351	java/lang/IllegalStateException
+    //   99	121	129	finally
+    //   99	121	136	java/lang/SecurityException
+    //   99	121	141	java/lang/IllegalArgumentException
+    //   99	121	146	java/io/IOException
+    //   99	121	151	java/lang/IllegalStateException
+    //   48	56	156	finally
+    //   59	68	156	finally
+    //   71	76	156	finally
+    //   87	99	156	finally
+    //   168	173	156	finally
+    //   192	197	156	finally
+    //   216	221	156	finally
+    //   240	245	156	finally
+    //   48	56	161	java/lang/SecurityException
+    //   59	68	161	java/lang/SecurityException
+    //   71	76	161	java/lang/SecurityException
+    //   87	99	161	java/lang/SecurityException
+    //   48	56	185	java/lang/IllegalArgumentException
+    //   59	68	185	java/lang/IllegalArgumentException
+    //   71	76	185	java/lang/IllegalArgumentException
+    //   87	99	185	java/lang/IllegalArgumentException
+    //   48	56	209	java/io/IOException
+    //   59	68	209	java/io/IOException
+    //   71	76	209	java/io/IOException
+    //   87	99	209	java/io/IOException
+    //   48	56	233	java/lang/IllegalStateException
+    //   59	68	233	java/lang/IllegalStateException
+    //   71	76	233	java/lang/IllegalStateException
+    //   87	99	233	java/lang/IllegalStateException
+    //   2	20	268	finally
+    //   23	30	268	finally
+    //   121	125	268	finally
+    //   177	181	268	finally
+    //   201	205	268	finally
+    //   225	229	268	finally
+    //   249	253	268	finally
+    //   261	265	268	finally
+    //   265	268	268	finally
+    //   121	125	273	java/io/IOException
+    //   177	181	277	java/io/IOException
+    //   201	205	281	java/io/IOException
+    //   225	229	285	java/io/IOException
+    //   249	253	289	java/io/IOException
+    //   261	265	293	java/io/IOException
   }
   
   /* Error */
   public boolean setLooping(boolean paramBoolean)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
+    //   0: aload_0
+    //   1: monitorenter
     //   2: aload_0
-    //   3: monitorenter
-    //   4: aload_0
-    //   5: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   8: astore_3
-    //   9: aload_3
-    //   10: ifnonnull +9 -> 19
-    //   13: iload_2
-    //   14: istore_1
+    //   3: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
+    //   6: astore_2
+    //   7: aload_2
+    //   8: ifnonnull +7 -> 15
+    //   11: aload_0
+    //   12: monitorexit
+    //   13: iconst_0
+    //   14: ireturn
     //   15: aload_0
-    //   16: monitorexit
-    //   17: iload_1
-    //   18: ireturn
-    //   19: aload_0
-    //   20: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   23: iload_1
-    //   24: invokevirtual 109	android/media/MediaPlayer:setLooping	(Z)V
-    //   27: iconst_1
-    //   28: istore_1
-    //   29: goto -14 -> 15
-    //   32: astore_3
-    //   33: aload_3
-    //   34: invokevirtual 34	java/lang/IllegalStateException:printStackTrace	()V
-    //   37: iload_2
-    //   38: istore_1
-    //   39: goto -24 -> 15
-    //   42: astore_3
-    //   43: aload_0
-    //   44: monitorexit
-    //   45: aload_3
-    //   46: athrow
+    //   16: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
+    //   19: iload_1
+    //   20: invokevirtual 106	android/media/MediaPlayer:setLooping	(Z)V
+    //   23: aload_0
+    //   24: monitorexit
+    //   25: iconst_1
+    //   26: ireturn
+    //   27: astore_2
+    //   28: aload_2
+    //   29: invokevirtual 34	java/lang/IllegalStateException:printStackTrace	()V
+    //   32: aload_0
+    //   33: monitorexit
+    //   34: iconst_0
+    //   35: ireturn
+    //   36: astore_2
+    //   37: aload_0
+    //   38: monitorexit
+    //   39: aload_2
+    //   40: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	47	0	this	QzoneSoundPlayerHelper
-    //   0	47	1	paramBoolean	boolean
-    //   1	37	2	bool	boolean
-    //   8	2	3	localMediaPlayer	MediaPlayer
-    //   32	2	3	localIllegalStateException	IllegalStateException
-    //   42	4	3	localObject	Object
+    //   0	41	0	this	QzoneSoundPlayerHelper
+    //   0	41	1	paramBoolean	boolean
+    //   6	2	2	localMediaPlayer	MediaPlayer
+    //   27	2	2	localIllegalStateException	java.lang.IllegalStateException
+    //   36	4	2	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   19	27	32	java/lang/IllegalStateException
-    //   4	9	42	finally
-    //   19	27	42	finally
-    //   33	37	42	finally
+    //   15	23	27	java/lang/IllegalStateException
+    //   2	7	36	finally
+    //   15	23	36	finally
+    //   28	32	36	finally
   }
   
   public void setOnCompletionListener(MediaPlayer.OnCompletionListener paramOnCompletionListener)
@@ -893,99 +746,101 @@ public class QzoneSoundPlayerHelper
   public boolean start()
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_1
+    //   0: aload_0
+    //   1: monitorenter
     //   2: aload_0
-    //   3: monitorenter
-    //   4: aload_0
-    //   5: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   8: astore_2
-    //   9: aload_2
-    //   10: ifnonnull +7 -> 17
-    //   13: aload_0
-    //   14: monitorexit
-    //   15: iload_1
-    //   16: ireturn
-    //   17: aload_0
-    //   18: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   21: invokevirtual 116	android/media/MediaPlayer:start	()V
+    //   3: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
+    //   6: astore_1
+    //   7: aload_1
+    //   8: ifnonnull +7 -> 15
+    //   11: aload_0
+    //   12: monitorexit
+    //   13: iconst_0
+    //   14: ireturn
+    //   15: aload_0
+    //   16: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
+    //   19: invokevirtual 113	android/media/MediaPlayer:start	()V
+    //   22: aload_0
+    //   23: monitorexit
     //   24: iconst_1
-    //   25: istore_1
-    //   26: goto -13 -> 13
-    //   29: astore_2
-    //   30: aload_2
-    //   31: invokevirtual 34	java/lang/IllegalStateException:printStackTrace	()V
-    //   34: goto -21 -> 13
-    //   37: astore_2
-    //   38: aload_0
-    //   39: monitorexit
-    //   40: aload_2
-    //   41: athrow
+    //   25: ireturn
+    //   26: astore_1
+    //   27: aload_1
+    //   28: invokevirtual 34	java/lang/IllegalStateException:printStackTrace	()V
+    //   31: aload_0
+    //   32: monitorexit
+    //   33: iconst_0
+    //   34: ireturn
+    //   35: astore_1
+    //   36: aload_0
+    //   37: monitorexit
+    //   38: aload_1
+    //   39: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	42	0	this	QzoneSoundPlayerHelper
-    //   1	25	1	bool	boolean
-    //   8	2	2	localMediaPlayer	MediaPlayer
-    //   29	2	2	localIllegalStateException	IllegalStateException
-    //   37	4	2	localObject	Object
+    //   0	40	0	this	QzoneSoundPlayerHelper
+    //   6	2	1	localMediaPlayer	MediaPlayer
+    //   26	2	1	localIllegalStateException	java.lang.IllegalStateException
+    //   35	4	1	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   17	24	29	java/lang/IllegalStateException
-    //   4	9	37	finally
-    //   17	24	37	finally
-    //   30	34	37	finally
+    //   15	22	26	java/lang/IllegalStateException
+    //   2	7	35	finally
+    //   15	22	35	finally
+    //   27	31	35	finally
   }
   
   /* Error */
   public boolean stop()
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_1
+    //   0: aload_0
+    //   1: monitorenter
     //   2: aload_0
-    //   3: monitorenter
-    //   4: aload_0
-    //   5: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   8: astore_2
-    //   9: aload_2
-    //   10: ifnonnull +7 -> 17
-    //   13: aload_0
-    //   14: monitorexit
-    //   15: iload_1
-    //   16: ireturn
-    //   17: aload_0
-    //   18: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
-    //   21: invokevirtual 38	android/media/MediaPlayer:stop	()V
+    //   3: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
+    //   6: astore_1
+    //   7: aload_1
+    //   8: ifnonnull +7 -> 15
+    //   11: aload_0
+    //   12: monitorexit
+    //   13: iconst_0
+    //   14: ireturn
+    //   15: aload_0
+    //   16: getfield 15	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:mp	Landroid/media/MediaPlayer;
+    //   19: invokevirtual 38	android/media/MediaPlayer:stop	()V
+    //   22: aload_0
+    //   23: monitorexit
     //   24: iconst_1
-    //   25: istore_1
-    //   26: goto -13 -> 13
-    //   29: astore_2
-    //   30: aload_2
-    //   31: invokevirtual 34	java/lang/IllegalStateException:printStackTrace	()V
-    //   34: goto -21 -> 13
-    //   37: astore_2
-    //   38: aload_0
-    //   39: monitorexit
-    //   40: aload_2
-    //   41: athrow
+    //   25: ireturn
+    //   26: astore_1
+    //   27: aload_1
+    //   28: invokevirtual 34	java/lang/IllegalStateException:printStackTrace	()V
+    //   31: aload_0
+    //   32: monitorexit
+    //   33: iconst_0
+    //   34: ireturn
+    //   35: astore_1
+    //   36: aload_0
+    //   37: monitorexit
+    //   38: aload_1
+    //   39: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	42	0	this	QzoneSoundPlayerHelper
-    //   1	25	1	bool	boolean
-    //   8	2	2	localMediaPlayer	MediaPlayer
-    //   29	2	2	localIllegalStateException	IllegalStateException
-    //   37	4	2	localObject	Object
+    //   0	40	0	this	QzoneSoundPlayerHelper
+    //   6	2	1	localMediaPlayer	MediaPlayer
+    //   26	2	1	localIllegalStateException	java.lang.IllegalStateException
+    //   35	4	1	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   17	24	29	java/lang/IllegalStateException
-    //   4	9	37	finally
-    //   17	24	37	finally
-    //   30	34	37	finally
+    //   15	22	26	java/lang/IllegalStateException
+    //   2	7	35	finally
+    //   15	22	35	finally
+    //   27	31	35	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.sound.QzoneSoundPlayerHelper
  * JD-Core Version:    0.7.0.1
  */

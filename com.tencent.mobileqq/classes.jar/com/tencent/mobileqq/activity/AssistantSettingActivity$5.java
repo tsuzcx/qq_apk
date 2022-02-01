@@ -12,13 +12,13 @@ class AssistantSettingActivity$5
   
   public void onClick(View paramView)
   {
-    new TipsDialog(this.a).a(this.a.getString(2131695297)).b(this.a.getString(2131695296)).c(this.a.getString(2131692958)).show();
+    new TipsDialog(this.a).a(this.a.getString(2131695306)).b(this.a.getString(2131695305)).c(this.a.getString(2131692918)).show();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssistantSettingActivity.5
  * JD-Core Version:    0.7.0.1
  */

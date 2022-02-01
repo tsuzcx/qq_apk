@@ -73,25 +73,47 @@ public class ChatRoomInfo
   
   public boolean equals(Object paramObject)
   {
-    if (!(paramObject instanceof ChatRoomInfo)) {}
-    do
-    {
+    boolean bool1 = paramObject instanceof ChatRoomInfo;
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
-      paramObject = (ChatRoomInfo)paramObject;
-    } while ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long) || (this.jdField_b_of_type_Long != paramObject.jdField_b_of_type_Long) || (this.jdField_c_of_type_Long != paramObject.jdField_c_of_type_Long));
-    return true;
+    }
+    paramObject = (ChatRoomInfo)paramObject;
+    bool1 = bool2;
+    if (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long)
+      {
+        bool1 = bool2;
+        if (this.jdField_b_of_type_Long == paramObject.jdField_b_of_type_Long)
+        {
+          bool1 = bool2;
+          if (this.jdField_c_of_type_Long == paramObject.jdField_c_of_type_Long) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
     localStringBuilder.append("ChatRoomInfo{");
-    localStringBuilder.append("type: ").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", roomID: ").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(", id: ").append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(", createTime: ").append(this.jdField_c_of_type_Long);
-    localStringBuilder.append(", isFromSwitchTerminal: ").append(this.jdField_c_of_type_Boolean);
-    localStringBuilder.append(", preRoomId: ").append(this.jdField_d_of_type_Long);
+    localStringBuilder.append("type: ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", roomID: ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", id: ");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", createTime: ");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(", isFromSwitchTerminal: ");
+    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(", preRoomId: ");
+    localStringBuilder.append(this.jdField_d_of_type_Long);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
@@ -106,7 +128,7 @@ public class ChatRoomInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.chatroom.ChatRoomInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ public class MiniAppEntryHandler
     super(paramQQAppInterface);
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return MiniAppEntryObserver.class;
   }
@@ -23,7 +23,7 @@ public class MiniAppEntryHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppEntryHandler
  * JD-Core Version:    0.7.0.1
  */

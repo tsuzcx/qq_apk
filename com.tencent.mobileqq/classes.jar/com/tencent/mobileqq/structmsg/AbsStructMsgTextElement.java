@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.structmsg;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Html;
@@ -61,59 +63,53 @@ public abstract class AbsStructMsgTextElement
   
   public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
-    boolean bool = false;
     if ((paramView != null) && (a().isInstance(paramView)))
     {
       paramView = (TextView)paramView;
-      paramView.setTag(this);
-      if (!this.jdField_b_of_type_Boolean) {
-        break label263;
-      }
-      paramView.setSingleLine(true);
     }
-    for (;;)
+    else
     {
-      if ((this.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_Boolean)) {
-        paramView.setEllipsize(a());
-      }
-      paramContext = a(paramContext.getResources());
-      if (paramContext == null) {
-        break label291;
-      }
+      paramView = a(paramContext);
+      paramView.setId(c());
+    }
+    paramView.setTag(this);
+    if (this.jdField_b_of_type_Boolean) {
+      paramView.setSingleLine(true);
+    } else if (!this.jdField_a_of_type_Boolean) {
+      paramView.setMaxLines(b());
+    }
+    if ((this.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_Boolean)) {
+      paramView.setEllipsize(a());
+    }
+    paramContext = a(paramContext.getResources());
+    if (paramContext != null)
+    {
       paramView.setTextColor(paramContext.jdField_a_of_type_Int);
       paramView.requestLayout();
       paramView.setTypeface(Typeface.DEFAULT, paramContext.jdField_b_of_type_Int);
       paramView.setTextSize(paramContext.c);
-      paramView.setLineSpacing(AIOUtils.a(d() * 1.0F / 2.0F, paramView.getResources()), 1.0F);
+      paramView.setLineSpacing(AIOUtils.b(d() * 1.0F / 2.0F, paramView.getResources()), 1.0F);
       if (paramContext.jdField_a_of_type_Boolean == true) {
         paramView.getPaint().setFlags(8);
       }
       if (paramContext.jdField_b_of_type_Boolean == true) {
         paramView.getPaint().setFlags(16);
       }
+      boolean bool = false;
       if (paramBundle != null) {
         bool = paramBundle.getBoolean("pre_dialog", false);
       }
       if ((bool) && (!TextUtils.isEmpty(this.am))) {
         paramContext.jdField_a_of_type_JavaLangString = this.am;
       }
-      if ((paramContext.jdField_b_of_type_JavaLangString == null) || (paramContext.jdField_b_of_type_JavaLangString.equals("")) || (!paramContext.jdField_b_of_type_JavaLangString.trim().equals("1"))) {
-        break label281;
+      if ((paramContext.jdField_b_of_type_JavaLangString != null) && (!paramContext.jdField_b_of_type_JavaLangString.equals("")) && (paramContext.jdField_b_of_type_JavaLangString.trim().equals("1")))
+      {
+        paramView.setText(Html.fromHtml(paramContext.jdField_a_of_type_JavaLangString));
+        return paramView;
       }
-      paramView.setText(Html.fromHtml(paramContext.jdField_a_of_type_JavaLangString));
+      paramView.setText(paramContext.jdField_a_of_type_JavaLangString);
       return paramView;
-      paramView = a(paramContext);
-      paramView.setId(c());
-      break;
-      label263:
-      if (!this.jdField_a_of_type_Boolean) {
-        paramView.setMaxLines(b());
-      }
     }
-    label281:
-    paramView.setText(paramContext.jdField_a_of_type_JavaLangString);
-    return paramView;
-    label291:
     paramView.setText("");
     return paramView;
   }
@@ -126,192 +122,102 @@ public abstract class AbsStructMsgTextElement
     return new EllipsizingTextView(paramContext, null);
   }
   
-  /* Error */
-  public AbsStructMsgTextElement.RichText a(android.content.res.Resources paramResources)
+  public AbsStructMsgTextElement.RichText a(Resources paramResources)
   {
-    // Byte code:
-    //   0: new 86	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement$RichText
-    //   3: dup
-    //   4: invokespecial 210	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement$RichText:<init>	()V
-    //   7: astore_1
-    //   8: aload_0
-    //   9: getfield 212	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement:ad	Ljava/lang/String;
-    //   12: invokestatic 154	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   15: ifne +151 -> 166
-    //   18: aload_1
-    //   19: aload_0
-    //   20: getfield 212	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement:ad	Ljava/lang/String;
-    //   23: invokestatic 218	android/graphics/Color:parseColor	(Ljava/lang/String;)I
-    //   26: putfield 87	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement$RichText:jdField_a_of_type_Int	I
-    //   29: aload_0
-    //   30: getfield 220	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement:ae	Ljava/lang/String;
-    //   33: invokestatic 154	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   36: ifeq +176 -> 212
-    //   39: aload_0
-    //   40: invokevirtual 223	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement:g	()I
-    //   43: istore_2
-    //   44: aload_1
-    //   45: iload_2
-    //   46: putfield 102	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement$RichText:jdField_b_of_type_Int	I
-    //   49: aload_0
-    //   50: getfield 225	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement:aj	Ljava/lang/String;
-    //   53: invokestatic 154	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   56: ifeq +167 -> 223
-    //   59: iconst_0
-    //   60: istore_2
-    //   61: aload_1
-    //   62: iload_2
-    //   63: putfield 227	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement$RichText:d	I
-    //   66: aload_1
-    //   67: iconst_0
-    //   68: putfield 128	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement$RichText:jdField_a_of_type_Boolean	Z
-    //   71: aload_1
-    //   72: getfield 102	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement$RichText:jdField_b_of_type_Int	I
-    //   75: iflt +11 -> 86
-    //   78: aload_1
-    //   79: getfield 102	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement$RichText:jdField_b_of_type_Int	I
-    //   82: iconst_4
-    //   83: if_icmplt +24 -> 107
-    //   86: aload_1
-    //   87: getfield 102	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement$RichText:jdField_b_of_type_Int	I
-    //   90: iconst_4
-    //   91: if_icmpne +152 -> 243
-    //   94: aload_1
-    //   95: iconst_1
-    //   96: putfield 128	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement$RichText:jdField_a_of_type_Boolean	Z
-    //   99: aload_1
-    //   100: aload_0
-    //   101: invokevirtual 223	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement:g	()I
-    //   104: putfield 102	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement$RichText:jdField_b_of_type_Int	I
-    //   107: aload_0
-    //   108: getfield 229	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement:ag	Ljava/lang/String;
-    //   111: invokestatic 154	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   114: ifne +145 -> 259
-    //   117: aload_1
-    //   118: aload_0
-    //   119: getfield 229	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement:ag	Ljava/lang/String;
-    //   122: invokestatic 234	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   125: putfield 109	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement$RichText:c	I
-    //   128: aload_1
-    //   129: getfield 109	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement$RichText:c	I
-    //   132: iconst_1
-    //   133: if_icmpge +11 -> 144
-    //   136: aload_1
-    //   137: aload_0
-    //   138: invokevirtual 237	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement:f	()I
-    //   141: putfield 109	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement$RichText:c	I
-    //   144: aload_1
-    //   145: aload_1
-    //   146: getfield 109	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement$RichText:c	I
-    //   149: iconst_2
-    //   150: idiv
-    //   151: putfield 109	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement$RichText:c	I
-    //   154: aload_0
-    //   155: invokevirtual 239	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement:b	()Ljava/lang/String;
-    //   158: invokestatic 154	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   161: ifeq +132 -> 293
-    //   164: aconst_null
-    //   165: areturn
-    //   166: aload_0
-    //   167: getfield 241	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement:ac	Ljava/lang/String;
-    //   170: invokestatic 154	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   173: ifeq +28 -> 201
-    //   176: aload_0
-    //   177: invokevirtual 244	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement:e	()I
-    //   180: istore_2
-    //   181: aload_1
-    //   182: iload_2
-    //   183: putfield 87	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement$RichText:jdField_a_of_type_Int	I
-    //   186: goto -157 -> 29
-    //   189: astore_3
-    //   190: aload_1
-    //   191: aload_0
-    //   192: invokevirtual 244	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement:e	()I
-    //   195: putfield 87	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement$RichText:jdField_a_of_type_Int	I
-    //   198: goto -169 -> 29
-    //   201: aload_0
-    //   202: getfield 241	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement:ac	Ljava/lang/String;
-    //   205: invokestatic 218	android/graphics/Color:parseColor	(Ljava/lang/String;)I
-    //   208: istore_2
-    //   209: goto -28 -> 181
-    //   212: aload_0
-    //   213: getfield 220	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement:ae	Ljava/lang/String;
-    //   216: invokestatic 234	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   219: istore_2
-    //   220: goto -176 -> 44
-    //   223: aload_0
-    //   224: getfield 225	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement:aj	Ljava/lang/String;
-    //   227: invokestatic 234	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   230: istore_2
-    //   231: goto -170 -> 61
-    //   234: astore_3
-    //   235: aload_1
-    //   236: iconst_0
-    //   237: putfield 227	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement$RichText:d	I
-    //   240: goto -174 -> 66
-    //   243: aload_1
-    //   244: getfield 102	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement$RichText:jdField_b_of_type_Int	I
-    //   247: iconst_5
-    //   248: if_icmpne -149 -> 99
-    //   251: aload_1
-    //   252: iconst_1
-    //   253: putfield 138	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement$RichText:jdField_b_of_type_Boolean	Z
-    //   256: goto -157 -> 99
-    //   259: aload_0
-    //   260: getfield 246	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement:af	Ljava/lang/String;
-    //   263: invokestatic 154	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   266: ifeq +16 -> 282
-    //   269: aload_0
-    //   270: invokevirtual 237	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement:f	()I
-    //   273: istore_2
-    //   274: aload_1
-    //   275: iload_2
-    //   276: putfield 109	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement$RichText:c	I
-    //   279: goto -151 -> 128
-    //   282: aload_0
-    //   283: getfield 246	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement:af	Ljava/lang/String;
-    //   286: invokestatic 234	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   289: istore_2
-    //   290: goto -16 -> 274
-    //   293: aload_1
-    //   294: aload_0
-    //   295: invokevirtual 239	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement:b	()Ljava/lang/String;
-    //   298: putfield 155	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement$RichText:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   301: aload_1
-    //   302: aload_0
-    //   303: getfield 248	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement:ah	Ljava/lang/String;
-    //   306: putfield 157	com/tencent/mobileqq/structmsg/AbsStructMsgTextElement$RichText:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   309: aload_1
-    //   310: areturn
-    //   311: astore_3
-    //   312: goto -263 -> 49
-    //   315: astore_3
-    //   316: goto -188 -> 128
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	319	0	this	AbsStructMsgTextElement
-    //   0	319	1	paramResources	android.content.res.Resources
-    //   43	247	2	i	int
-    //   189	1	3	localException1	Exception
-    //   234	1	3	localException2	Exception
-    //   311	1	3	localException3	Exception
-    //   315	1	3	localException4	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   8	29	189	java/lang/Exception
-    //   166	181	189	java/lang/Exception
-    //   181	186	189	java/lang/Exception
-    //   201	209	189	java/lang/Exception
-    //   49	59	234	java/lang/Exception
-    //   61	66	234	java/lang/Exception
-    //   223	231	234	java/lang/Exception
-    //   29	44	311	java/lang/Exception
-    //   44	49	311	java/lang/Exception
-    //   212	220	311	java/lang/Exception
-    //   107	128	315	java/lang/Exception
-    //   259	274	315	java/lang/Exception
-    //   274	279	315	java/lang/Exception
-    //   282	290	315	java/lang/Exception
+    paramResources = new AbsStructMsgTextElement.RichText();
+    try
+    {
+      if (!TextUtils.isEmpty(this.ad))
+      {
+        paramResources.jdField_a_of_type_Int = Color.parseColor(this.ad);
+      }
+      else
+      {
+        if (TextUtils.isEmpty(this.ac)) {
+          i = e();
+        } else {
+          i = Color.parseColor(this.ac);
+        }
+        paramResources.jdField_a_of_type_Int = i;
+      }
+    }
+    catch (Exception localException1)
+    {
+      int i;
+      label66:
+      break label66;
+    }
+    paramResources.jdField_a_of_type_Int = e();
+    label136:
+    try
+    {
+      if (TextUtils.isEmpty(this.ae)) {
+        i = g();
+      } else {
+        i = Integer.parseInt(this.ae);
+      }
+      paramResources.jdField_b_of_type_Int = i;
+    }
+    catch (Exception localException2)
+    {
+      label105:
+      break label105;
+    }
+    try
+    {
+      if (TextUtils.isEmpty(this.aj)) {
+        i = 0;
+      } else {
+        i = Integer.parseInt(this.aj);
+      }
+      paramResources.d = i;
+    }
+    catch (Exception localException3)
+    {
+      break label136;
+    }
+    paramResources.d = 0;
+    paramResources.jdField_a_of_type_Boolean = false;
+    if ((paramResources.jdField_b_of_type_Int < 0) || (paramResources.jdField_b_of_type_Int >= 4))
+    {
+      if (paramResources.jdField_b_of_type_Int == 4) {
+        paramResources.jdField_a_of_type_Boolean = true;
+      } else if (paramResources.jdField_b_of_type_Int == 5) {
+        paramResources.jdField_b_of_type_Boolean = true;
+      }
+      paramResources.jdField_b_of_type_Int = g();
+    }
+    try
+    {
+      if (!TextUtils.isEmpty(this.ag))
+      {
+        paramResources.c = Integer.parseInt(this.ag);
+      }
+      else
+      {
+        if (TextUtils.isEmpty(this.af)) {
+          i = f();
+        } else {
+          i = Integer.parseInt(this.af);
+        }
+        paramResources.c = i;
+      }
+    }
+    catch (Exception localException4)
+    {
+      label253:
+      break label253;
+    }
+    if (paramResources.c < 1) {
+      paramResources.c = f();
+    }
+    paramResources.c /= 2;
+    if (TextUtils.isEmpty(b())) {
+      return null;
+    }
+    paramResources.jdField_a_of_type_JavaLangString = b();
+    paramResources.jdField_b_of_type_JavaLangString = this.ah;
+    return paramResources;
   }
   
   protected Class<? extends TextView> a()
@@ -327,221 +233,186 @@ public abstract class AbsStructMsgTextElement
   public void a(ObjectInput paramObjectInput)
   {
     super.a(paramObjectInput);
-    if (this.jdField_a_of_type_Int == 1) {
-      this.ai = MessageUtils.a(paramObjectInput.readUTF(), false);
-    }
-    do
+    if (this.jdField_a_of_type_Int == 1)
     {
-      do
-      {
-        return;
-        if (this.jdField_a_of_type_Int == 2)
-        {
-          this.ac = MessageUtils.a(paramObjectInput.readUTF(), false);
-          this.ae = MessageUtils.a(paramObjectInput.readUTF(), false);
-          this.af = MessageUtils.a(paramObjectInput.readUTF(), false);
-          this.ai = MessageUtils.a(paramObjectInput.readUTF(), false);
-          return;
-        }
-        if (this.jdField_a_of_type_Int == 3)
-        {
-          this.ac = MessageUtils.a(paramObjectInput.readUTF(), false);
-          this.ae = MessageUtils.a(paramObjectInput.readUTF(), false);
-          this.af = MessageUtils.a(paramObjectInput.readUTF(), false);
-          this.ai = MessageUtils.a(paramObjectInput.readUTF(), false);
-          this.ah = MessageUtils.a(paramObjectInput.readUTF(), false);
-          return;
-        }
-      } while (this.jdField_a_of_type_Int < 4);
+      this.ai = MessageUtils.a(paramObjectInput.readUTF(), false);
+      return;
+    }
+    if (this.jdField_a_of_type_Int == 2)
+    {
+      this.ac = MessageUtils.a(paramObjectInput.readUTF(), false);
+      this.ae = MessageUtils.a(paramObjectInput.readUTF(), false);
+      this.af = MessageUtils.a(paramObjectInput.readUTF(), false);
+      this.ai = MessageUtils.a(paramObjectInput.readUTF(), false);
+      return;
+    }
+    if (this.jdField_a_of_type_Int == 3)
+    {
+      this.ac = MessageUtils.a(paramObjectInput.readUTF(), false);
+      this.ae = MessageUtils.a(paramObjectInput.readUTF(), false);
+      this.af = MessageUtils.a(paramObjectInput.readUTF(), false);
+      this.ai = MessageUtils.a(paramObjectInput.readUTF(), false);
+      this.ah = MessageUtils.a(paramObjectInput.readUTF(), false);
+      return;
+    }
+    if (this.jdField_a_of_type_Int >= 4)
+    {
       this.ac = MessageUtils.a(paramObjectInput.readUTF(), false);
       this.ae = MessageUtils.a(paramObjectInput.readUTF(), false);
       this.af = MessageUtils.a(paramObjectInput.readUTF(), false);
       this.ai = MessageUtils.a(paramObjectInput.readUTF(), false);
       this.ah = MessageUtils.a(paramObjectInput.readUTF(), false);
       this.aj = MessageUtils.a(paramObjectInput.readUTF(), false);
-    } while (this.jdField_a_of_type_Int < 11);
-    this.ak = MessageUtils.a(paramObjectInput.readUTF(), false);
-    this.al = MessageUtils.a(paramObjectInput.readUTF(), false);
+      if (this.jdField_a_of_type_Int >= 11)
+      {
+        this.ak = MessageUtils.a(paramObjectInput.readUTF(), false);
+        this.al = MessageUtils.a(paramObjectInput.readUTF(), false);
+      }
+    }
   }
   
   public void a(ObjectOutput paramObjectOutput)
   {
     super.a(paramObjectOutput);
-    if (this.jdField_a_of_type_Int == 1) {
-      if (this.ai == null)
-      {
-        str = "";
-        paramObjectOutput.writeUTF(str);
-      }
-    }
-    label78:
-    label95:
-    label225:
-    label363:
-    label380:
-    do
+    int i = this.jdField_a_of_type_Int;
+    Object localObject1 = "";
+    Object localObject2;
+    if (i == 1)
     {
-      do
-      {
-        return;
-        str = MessageUtils.a(this.ai, false);
-        break;
-        if (this.jdField_a_of_type_Int == 2)
-        {
-          if (this.ac == null)
-          {
-            str = "";
-            paramObjectOutput.writeUTF(str);
-            if (this.ae != null) {
-              break label128;
-            }
-            str = "";
-            paramObjectOutput.writeUTF(str);
-            if (this.af != null) {
-              break label136;
-            }
-            str = "";
-            paramObjectOutput.writeUTF(str);
-            if (this.ai != null) {
-              break label144;
-            }
-          }
-          for (str = "";; str = MessageUtils.a(this.ai, false))
-          {
-            paramObjectOutput.writeUTF(str);
-            return;
-            str = this.ac;
-            break;
-            str = this.ae;
-            break label78;
-            str = this.af;
-            break label95;
-          }
-        }
-        if (this.jdField_a_of_type_Int == 3)
-        {
-          if (this.ac == null)
-          {
-            str = "";
-            paramObjectOutput.writeUTF(str);
-            if (this.ae != null) {
-              break label258;
-            }
-            str = "";
-            paramObjectOutput.writeUTF(str);
-            if (this.af != null) {
-              break label266;
-            }
-            str = "";
-            paramObjectOutput.writeUTF(str);
-            if (this.ai != null) {
-              break label274;
-            }
-            str = "";
-            paramObjectOutput.writeUTF(str);
-            if (this.ah != null) {
-              break label286;
-            }
-          }
-          for (str = "";; str = this.ah)
-          {
-            paramObjectOutput.writeUTF(str);
-            return;
-            str = this.ac;
-            break;
-            str = this.ae;
-            break label191;
-            str = this.af;
-            break label208;
-            str = MessageUtils.a(this.ai, false);
-            break label225;
-          }
-        }
-      } while (this.jdField_a_of_type_Int < 4);
-      if (this.ac != null) {
-        break label448;
+      localObject2 = this.ai;
+      if (localObject2 != null) {
+        localObject1 = MessageUtils.a((String)localObject2, false);
       }
-      str = "";
-      paramObjectOutput.writeUTF(str);
-      if (this.ae != null) {
-        break label456;
-      }
-      str = "";
-      paramObjectOutput.writeUTF(str);
-      if (this.af != null) {
-        break label464;
-      }
-      str = "";
-      paramObjectOutput.writeUTF(str);
-      if (this.ai != null) {
-        break label472;
-      }
-      str = "";
-      paramObjectOutput.writeUTF(str);
-      if (this.ah != null) {
-        break label484;
-      }
-      str = "";
-      paramObjectOutput.writeUTF(str);
-      if (this.aj != null) {
-        break label492;
-      }
-      str = "";
-      paramObjectOutput.writeUTF(str);
-    } while (this.jdField_a_of_type_Int < 11);
-    label128:
-    label136:
-    label144:
-    label191:
-    label208:
-    label346:
-    if (this.ak == null)
-    {
-      str = "";
-      paramObjectOutput.writeUTF(str);
-      if (this.al != null) {
-        break label508;
-      }
-    }
-    label258:
-    label266:
-    label274:
-    label286:
-    label329:
-    label464:
-    label472:
-    label484:
-    label492:
-    label508:
-    for (String str = "";; str = this.al)
-    {
-      paramObjectOutput.writeUTF(str);
+      paramObjectOutput.writeUTF((String)localObject1);
       return;
-      str = this.ac;
-      break;
+    }
+    if (this.jdField_a_of_type_Int == 2)
+    {
+      String str = this.ac;
+      localObject2 = str;
+      if (str == null) {
+        localObject2 = "";
+      }
+      paramObjectOutput.writeUTF((String)localObject2);
       str = this.ae;
-      break label329;
+      localObject2 = str;
+      if (str == null) {
+        localObject2 = "";
+      }
+      paramObjectOutput.writeUTF((String)localObject2);
       str = this.af;
-      break label346;
-      str = MessageUtils.a(this.ai, false);
-      break label363;
-      str = this.ah;
-      break label380;
-      str = this.aj;
-      break label397;
-      str = this.ak;
-      break label423;
+      localObject2 = str;
+      if (str == null) {
+        localObject2 = "";
+      }
+      paramObjectOutput.writeUTF((String)localObject2);
+      localObject2 = this.ai;
+      if (localObject2 != null) {
+        localObject1 = MessageUtils.a((String)localObject2, false);
+      }
+      paramObjectOutput.writeUTF((String)localObject1);
+      return;
+    }
+    if (this.jdField_a_of_type_Int == 3)
+    {
+      localObject2 = this.ac;
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      paramObjectOutput.writeUTF((String)localObject1);
+      localObject2 = this.ae;
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      paramObjectOutput.writeUTF((String)localObject1);
+      localObject2 = this.af;
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      paramObjectOutput.writeUTF((String)localObject1);
+      localObject1 = this.ai;
+      if (localObject1 == null) {
+        localObject1 = "";
+      } else {
+        localObject1 = MessageUtils.a((String)localObject1, false);
+      }
+      paramObjectOutput.writeUTF((String)localObject1);
+      localObject2 = this.ah;
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      paramObjectOutput.writeUTF((String)localObject1);
+      return;
+    }
+    if (this.jdField_a_of_type_Int >= 4)
+    {
+      localObject2 = this.ac;
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      paramObjectOutput.writeUTF((String)localObject1);
+      localObject2 = this.ae;
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      paramObjectOutput.writeUTF((String)localObject1);
+      localObject2 = this.af;
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      paramObjectOutput.writeUTF((String)localObject1);
+      localObject1 = this.ai;
+      if (localObject1 == null) {
+        localObject1 = "";
+      } else {
+        localObject1 = MessageUtils.a((String)localObject1, false);
+      }
+      paramObjectOutput.writeUTF((String)localObject1);
+      localObject2 = this.ah;
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      paramObjectOutput.writeUTF((String)localObject1);
+      localObject2 = this.aj;
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      paramObjectOutput.writeUTF((String)localObject1);
+      if (this.jdField_a_of_type_Int >= 11)
+      {
+        localObject2 = this.ak;
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = "";
+        }
+        paramObjectOutput.writeUTF((String)localObject1);
+        localObject2 = this.al;
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = "";
+        }
+        paramObjectOutput.writeUTF((String)localObject1);
+      }
     }
   }
   
   public void a(String paramString)
   {
-    if ((paramString == null) || (paramString.equals("")))
+    if ((paramString != null) && (!paramString.equals("")))
     {
-      this.ai = paramString;
+      this.ai = StringUtil.f(paramString);
       return;
     }
-    this.ai = StringUtil.f(paramString);
+    this.ai = paramString;
   }
   
   public void a(XmlSerializer paramXmlSerializer)
@@ -598,25 +469,29 @@ public abstract class AbsStructMsgTextElement
   
   public int b()
   {
-    if (!TextUtils.isEmpty(this.ak)) {
-      try
-      {
-        int i = Integer.parseInt(this.ak);
-        return i;
-      }
-      catch (Exception localException) {}
+    if (!TextUtils.isEmpty(this.ak)) {}
+    try
+    {
+      int i = Integer.parseInt(this.ak);
+      return i;
+    }
+    catch (Exception localException)
+    {
+      label20:
+      break label20;
     }
     return 2;
   }
   
   public String b()
   {
-    if (this.ai == null) {}
-    for (String str = "";; str = this.ai)
-    {
-      this.ai = str;
-      return this.ai;
+    String str2 = this.ai;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
+    this.ai = str1;
+    return this.ai;
   }
   
   public void b(String paramString)
@@ -638,13 +513,16 @@ public abstract class AbsStructMsgTextElement
   
   protected int d()
   {
-    if (!TextUtils.isEmpty(this.al)) {
-      try
-      {
-        int i = Integer.parseInt(this.al);
-        return i;
-      }
-      catch (Exception localException) {}
+    if (!TextUtils.isEmpty(this.al)) {}
+    try
+    {
+      int i = Integer.parseInt(this.al);
+      return i;
+    }
+    catch (Exception localException)
+    {
+      label20:
+      break label20;
     }
     return 0;
   }
@@ -706,7 +584,7 @@ public abstract class AbsStructMsgTextElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.AbsStructMsgTextElement
  * JD-Core Version:    0.7.0.1
  */

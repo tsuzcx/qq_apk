@@ -21,39 +21,37 @@ public class AdGiftInfo
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
+    AdGiftInfo localAdGiftInfo;
     try
     {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      paramString = new AdGiftInfo();
+      paramString = new JSONObject(paramString);
+      localAdGiftInfo = new AdGiftInfo();
       try
       {
-        paramString.jdField_a_of_type_Int = localJSONObject.optInt("gift_id", 0);
-        paramString.jdField_a_of_type_JavaLangString = localJSONObject.optString("gift_name", "");
-        paramString.b = localJSONObject.optString("activity_id", "");
-        paramString.c = localJSONObject.optString("gift_icon", "");
-        paramString.g = localJSONObject.optString("gift_desc", "");
-        paramString.d = localJSONObject.optString("bag_item_icon_1", "");
-        paramString.e = localJSONObject.optString("bag_item_icon_2", "");
-        paramString.f = localJSONObject.optString("bag_item_icon_3", "");
-        paramString.h = localJSONObject.optString("need_role", "");
-        return paramString;
+        localAdGiftInfo.jdField_a_of_type_Int = paramString.optInt("gift_id", 0);
+        localAdGiftInfo.jdField_a_of_type_JavaLangString = paramString.optString("gift_name", "");
+        localAdGiftInfo.b = paramString.optString("activity_id", "");
+        localAdGiftInfo.c = paramString.optString("gift_icon", "");
+        localAdGiftInfo.g = paramString.optString("gift_desc", "");
+        localAdGiftInfo.d = paramString.optString("bag_item_icon_1", "");
+        localAdGiftInfo.e = paramString.optString("bag_item_icon_2", "");
+        localAdGiftInfo.f = paramString.optString("bag_item_icon_3", "");
+        localAdGiftInfo.h = paramString.optString("need_role", "");
+        return localAdGiftInfo;
       }
-      catch (JSONException localJSONException1) {}
+      catch (JSONException paramString) {}
+      paramString.printStackTrace();
     }
-    catch (JSONException localJSONException2)
+    catch (JSONException paramString)
     {
-      for (;;)
-      {
-        paramString = null;
-      }
+      localAdGiftInfo = null;
     }
-    localJSONException1.printStackTrace();
-    return paramString;
+    return localAdGiftInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdGiftInfo
  * JD-Core Version:    0.7.0.1
  */

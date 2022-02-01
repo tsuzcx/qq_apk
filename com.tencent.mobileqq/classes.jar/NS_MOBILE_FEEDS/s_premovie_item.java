@@ -41,24 +41,27 @@ public final class s_premovie_item
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vid != null) {
-      paramJceOutputStream.write(this.vid, 0);
+    String str = this.vid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.videourl != null) {
-      paramJceOutputStream.write(this.videourl, 1);
+    str = this.videourl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.width, 2);
     paramJceOutputStream.write(this.height, 3);
     paramJceOutputStream.write(this.duration, 4);
     paramJceOutputStream.write(this.actiontype, 5);
-    if (this.jumpurl != null) {
-      paramJceOutputStream.write(this.jumpurl, 6);
+    str = this.jumpurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_premovie_item
  * JD-Core Version:    0.7.0.1
  */

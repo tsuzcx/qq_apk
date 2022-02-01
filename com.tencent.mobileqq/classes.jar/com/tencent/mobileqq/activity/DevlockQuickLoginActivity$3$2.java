@@ -12,12 +12,12 @@ class DevlockQuickLoginActivity$3$2
   {
     this.a.a.a();
     DevlockQuickLoginActivity.c(this.a.a);
-    DevlockQuickLoginActivity.c(this.a.a, 0, 2130772003);
+    DevlockQuickLoginActivity.c(this.a.a, 0, 2130772015);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DevlockQuickLoginActivity.3.2
  * JD-Core Version:    0.7.0.1
  */

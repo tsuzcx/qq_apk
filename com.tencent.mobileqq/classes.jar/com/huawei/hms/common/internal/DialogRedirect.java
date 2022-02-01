@@ -16,19 +16,22 @@ public abstract class DialogRedirect
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
+    for (;;)
     {
-      redirect();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      HMSLog.e("DialogRedirect", "Failed to start resolution intent");
-      return;
-    }
-    finally
-    {
-      paramDialogInterface.dismiss();
+      try
+      {
+        redirect();
+      }
+      finally {}
+      try
+      {
+        HMSLog.e("DialogRedirect", "Failed to start resolution intent");
+        return;
+      }
+      finally
+      {
+        paramDialogInterface.dismiss();
+      }
     }
   }
   
@@ -36,7 +39,7 @@ public abstract class DialogRedirect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.internal.DialogRedirect
  * JD-Core Version:    0.7.0.1
  */

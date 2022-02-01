@@ -25,169 +25,193 @@ import org.json.JSONObject;
 
 public class MobileInfoUtil
 {
-  protected static String a;
-  protected static String b;
-  protected static String c;
-  protected static String d;
-  protected static String e;
+  public static final int APP_VERSION = 1;
+  private static final String BUSINESS_ID_IMEI = "52b7f2";
+  private static final String BUSINESS_ID_IMSI = "ea6862";
+  private static final String BUSINESS_ID_MAC_ADDRESS = "7ef1aa";
+  public static final String IMEI = "imei";
+  public static final String IMSI = "imsi";
+  protected static final String MOBILE_INFO = "appcenter_mobileinfo";
+  public static final String WIFI_MAC_ADDRESS = "wifi_mac_address";
+  protected static String imei;
+  protected static String imsi;
+  protected static String localMacAddress;
+  protected static String location;
+  protected static String resolution;
   
-  public static String a()
+  public static String getCity()
   {
-    if (TextUtils.isEmpty(a)) {
-      a = "";
-    }
+    return "";
+  }
+  
+  public static String getDeviceinfoForCgiReport(boolean paramBoolean)
+  {
     try
     {
-      Object localObject = BaseApplication.getContext();
-      if (localObject != null)
-      {
-        a = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 4).getString("wifi_mac_address", "");
-        if (TextUtils.isEmpty(a))
-        {
-          a = QQDeviceInfo.getMAC("7ef1aa");
-          if (a != null)
-          {
-            localObject = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 4).edit();
-            ((SharedPreferences.Editor)localObject).putString("wifi_mac_address", a);
-            ((SharedPreferences.Editor)localObject).commit();
-          }
-        }
+      localBaseApplication = BaseApplication.getContext();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("imei=");
+      String str2 = "";
+      if (paramBoolean) {
+        str1 = "";
+      } else {
+        str1 = getImei();
       }
+      localStringBuilder.append(str1);
+      localStringBuilder.append('&');
+      localStringBuilder.append("model=");
+      localStringBuilder.append(Build.MODEL);
+      localStringBuilder.append('&');
+      localStringBuilder.append("os=");
+      localStringBuilder.append(Build.VERSION.RELEASE);
+      localStringBuilder.append('&');
+      localStringBuilder.append("apilevel=");
+      localStringBuilder.append(Build.VERSION.SDK_INT);
+      localStringBuilder.append('&');
+      str1 = APNUtil.b(localBaseApplication);
+      if (str1 != null) {
+        break label289;
+      }
+      str1 = str2;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        localException.printStackTrace();
+        BaseApplication localBaseApplication;
+        StringBuilder localStringBuilder;
+        String str1;
+        continue;
+        label289:
+        continue;
+        int i = 0;
       }
     }
-    return a;
-  }
-  
-  public static String a(boolean paramBoolean)
-  {
-    try
+    localStringBuilder.append("network=");
+    localStringBuilder.append(str1);
+    localStringBuilder.append('&');
+    localStringBuilder.append("sdcard=");
+    if (Environment.getExternalStorageState().equals("mounted"))
     {
-      BaseApplication localBaseApplication = BaseApplication.getContext();
-      StringBuilder localStringBuilder = new StringBuilder();
-      Object localObject2 = localStringBuilder.append("imei=");
-      Object localObject1;
-      if (paramBoolean)
-      {
-        localObject1 = "";
-        ((StringBuilder)localObject2).append((String)localObject1).append('&');
-        localStringBuilder.append("model=").append(Build.MODEL).append('&');
-        localStringBuilder.append("os=").append(Build.VERSION.RELEASE).append('&');
-        localStringBuilder.append("apilevel=").append(Build.VERSION.SDK_INT).append('&');
-        localObject2 = APNUtil.b(localBaseApplication);
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = "";
-        }
-        localStringBuilder.append("network=").append((String)localObject1).append('&');
-        localObject1 = localStringBuilder.append("sdcard=");
-        if (!Environment.getExternalStorageState().equals("mounted")) {
-          break label228;
-        }
-      }
-      label228:
-      for (int i = 1;; i = 0)
-      {
-        ((StringBuilder)localObject1).append(i).append('&');
-        localStringBuilder.append("display=").append(e()).append('&');
-        localStringBuilder.append("manu=").append(Build.MANUFACTURER).append("&");
-        localStringBuilder.append("wifi=").append(APNUtil.e(localBaseApplication));
-        return localStringBuilder.toString();
-        localObject1 = c();
-        break;
-      }
+      i = 1;
+      localStringBuilder.append(i);
+      localStringBuilder.append('&');
+      localStringBuilder.append("display=");
+      localStringBuilder.append(getResolution());
+      localStringBuilder.append('&');
+      localStringBuilder.append("manu=");
+      localStringBuilder.append(Build.MANUFACTURER);
+      localStringBuilder.append("&");
+      localStringBuilder.append("wifi=");
+      localStringBuilder.append(APNUtil.e(localBaseApplication));
+      str1 = localStringBuilder.toString();
+      return str1;
       return null;
     }
-    catch (Exception localException) {}
   }
   
-  public static String b()
+  public static String getImei()
+  {
+    Object localObject;
+    if (TextUtils.isEmpty(imei))
+    {
+      imei = "";
+      localObject = BaseApplication.getContext();
+      if (localObject != null)
+      {
+        imei = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 4).getString("imei", "");
+        if (!TextUtils.isEmpty(imei)) {}
+      }
+    }
+    try
+    {
+      imei = QQDeviceInfo.getIMEI("52b7f2");
+      label58:
+      if (imei != null)
+      {
+        localObject = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 4).edit();
+        ((SharedPreferences.Editor)localObject).putString("imei", imei);
+        ((SharedPreferences.Editor)localObject).commit();
+      }
+      return imei;
+    }
+    catch (Exception localException)
+    {
+      break label58;
+    }
+  }
+  
+  public static String getImsi()
+  {
+    Object localObject;
+    if (TextUtils.isEmpty(imsi))
+    {
+      imsi = "";
+      localObject = BaseApplication.getContext();
+      if (localObject != null)
+      {
+        imsi = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 4).getString("imsi", "");
+        if (!TextUtils.isEmpty(imsi)) {}
+      }
+    }
+    try
+    {
+      imsi = QQDeviceInfo.getIMSI("ea6862");
+      label58:
+      if (imsi != null)
+      {
+        localObject = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 4).edit();
+        ((SharedPreferences.Editor)localObject).putString("imsi", imsi);
+        ((SharedPreferences.Editor)localObject).commit();
+      }
+      return imsi;
+    }
+    catch (Exception localException)
+    {
+      break label58;
+    }
+  }
+  
+  public static String getLanguage()
   {
     return Locale.getDefault().getLanguage();
   }
   
-  public static String c()
+  public static String getLocalMacAddress()
   {
-    Object localObject;
-    if (TextUtils.isEmpty(c))
+    if (TextUtils.isEmpty(localMacAddress))
     {
-      c = "";
-      localObject = BaseApplication.getContext();
-      if (localObject != null)
+      localMacAddress = "";
+      try
       {
-        c = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 4).getString("imei", "");
-        if (!TextUtils.isEmpty(c)) {}
+        Object localObject = BaseApplication.getContext();
+        if (localObject != null)
+        {
+          localMacAddress = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 4).getString("wifi_mac_address", "");
+          if (TextUtils.isEmpty(localMacAddress))
+          {
+            localMacAddress = QQDeviceInfo.getMAC("7ef1aa");
+            if (localMacAddress != null)
+            {
+              localObject = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 4).edit();
+              ((SharedPreferences.Editor)localObject).putString("wifi_mac_address", localMacAddress);
+              ((SharedPreferences.Editor)localObject).commit();
+            }
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
       }
     }
-    try
-    {
-      c = QQDeviceInfo.getIMEI("52b7f2");
-      label58:
-      if (c != null)
-      {
-        localObject = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 4).edit();
-        ((SharedPreferences.Editor)localObject).putString("imei", c);
-        ((SharedPreferences.Editor)localObject).commit();
-      }
-      return c;
-    }
-    catch (Exception localException)
-    {
-      break label58;
-    }
+    return localMacAddress;
   }
   
-  public static String d()
+  public static String getLocation()
   {
-    Object localObject;
-    if (TextUtils.isEmpty(d))
-    {
-      d = "";
-      localObject = BaseApplication.getContext();
-      if (localObject != null)
-      {
-        d = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 4).getString("imsi", "");
-        if (!TextUtils.isEmpty(d)) {}
-      }
-    }
-    try
-    {
-      d = QQDeviceInfo.getIMSI("ea6862");
-      label58:
-      if (d != null)
-      {
-        localObject = ((Context)localObject).getSharedPreferences("appcenter_mobileinfo", 4).edit();
-        ((SharedPreferences.Editor)localObject).putString("imsi", d);
-        ((SharedPreferences.Editor)localObject).commit();
-      }
-      return d;
-    }
-    catch (Exception localException)
-    {
-      break label58;
-    }
-  }
-  
-  public static String e()
-  {
-    if (!TextUtils.isEmpty(b)) {
-      return b;
-    }
-    WindowManager localWindowManager = (WindowManager)BaseApplication.getContext().getSystemService("window");
-    int i = localWindowManager.getDefaultDisplay().getWidth();
-    int j = localWindowManager.getDefaultDisplay().getHeight();
-    return i + "x" + j;
-  }
-  
-  public static String f()
-  {
-    if (!TextUtils.isEmpty(e)) {
-      return e;
+    if (!TextUtils.isEmpty(location)) {
+      return location;
     }
     Object localObject1 = BaseApplication.getContext();
     if (localObject1 == null) {
@@ -208,7 +232,11 @@ public class MobileInfoUtil
         }
         double d1 = ((Location)localObject1).getLatitude();
         double d2 = ((Location)localObject1).getLongitude();
-        localObject1 = d1 + "*" + d2;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(d1);
+        ((StringBuilder)localObject1).append("*");
+        ((StringBuilder)localObject1).append(d2);
+        localObject1 = ((StringBuilder)localObject1).toString();
         return localObject1;
       }
     }
@@ -219,38 +247,33 @@ public class MobileInfoUtil
     return "";
   }
   
-  public static String g()
-  {
-    return "";
-  }
-  
-  public static String h()
+  public static String getMobileInfo()
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("qua", CommonDataAdapter.a().f());
-      localJSONObject.put("longitude", f());
+      localJSONObject.put("longitude", getLocation());
       localJSONObject.put("platform", CommonDataAdapter.a().g());
       localJSONObject.put("uin", CommonDataAdapter.a().a());
-      localJSONObject.put("imei", c());
-      localJSONObject.put("imei", c());
-      localJSONObject.put("resolution", e());
+      localJSONObject.put("imei", getImei());
+      localJSONObject.put("imei", getImei());
+      localJSONObject.put("resolution", getResolution());
       localJSONObject.put("network", APNUtil.a(CommonDataAdapter.a().a()));
-      localJSONObject.put("wifimac", a());
+      localJSONObject.put("wifimac", getLocalMacAddress());
       localJSONObject.put("mobile_pf", "1");
       localJSONObject.put("os_ver", Build.VERSION.RELEASE);
-      localJSONObject.put("lang", b());
+      localJSONObject.put("lang", getLanguage());
       localJSONObject.put("device", Build.DEVICE);
       localJSONObject.put("model_name", Build.MODEL);
       localJSONObject.put("sdk_ver", "1.5");
       localJSONObject.put("timezone", TimeZone.getDefault().getID());
-      localJSONObject.put("city", g());
-      localJSONObject.put("longitude", f());
+      localJSONObject.put("city", getCity());
+      localJSONObject.put("longitude", getLocation());
       localJSONObject.put("ret_code", "0");
       localJSONObject.put("qua", CommonDataAdapter.a().f());
       localJSONObject.put("qz_ver", CommonDataAdapter.a().c());
-      localJSONObject.put("imsi", d());
+      localJSONObject.put("imsi", getImsi());
       localJSONObject.put("androidID", Settings.Secure.getString(CommonDataAdapter.a().a().getContentResolver(), "android_id"));
       localJSONObject.put("os_api_level", Build.VERSION.SDK_INT);
       localJSONObject.put("sdkVersionCode", 1);
@@ -258,20 +281,45 @@ public class MobileInfoUtil
       localJSONObject.put("brand", GlobalUtil.getInstance().getBrand());
       localJSONObject.put("manufacture", GlobalUtil.getInstance().getManufacture());
       localJSONObject.put("product", GlobalUtil.getInstance().getProduct());
-      return localJSONObject.toString();
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        LogUtility.e("getMobileInfo", "gather mobile info exception.");
-      }
+      label371:
+      break label371;
     }
+    LogUtility.e("getMobileInfo", "gather mobile info exception.");
+    return localJSONObject.toString();
+  }
+  
+  public static String getResolution()
+  {
+    try
+    {
+      if (!TextUtils.isEmpty(resolution)) {
+        return resolution;
+      }
+      Object localObject = (WindowManager)BaseApplication.getContext().getSystemService("window");
+      int i = ((WindowManager)localObject).getDefaultDisplay().getWidth();
+      int j = ((WindowManager)localObject).getDefaultDisplay().getHeight();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("x");
+      ((StringBuilder)localObject).append(j);
+      localObject = ((StringBuilder)localObject).toString();
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      label81:
+      break label81;
+    }
+    LogUtility.e("getResolution", "gather width height exception.");
+    return "0x0";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.business.base.MobileInfoUtil
  * JD-Core Version:    0.7.0.1
  */

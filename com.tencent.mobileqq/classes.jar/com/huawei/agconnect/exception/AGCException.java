@@ -24,7 +24,12 @@ public abstract class AGCException
   
   public String getMessage()
   {
-    return " code: " + this.code + " message: " + this.errMsg;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" code: ");
+    localStringBuilder.append(this.code);
+    localStringBuilder.append(" message: ");
+    localStringBuilder.append(this.errMsg);
+    return localStringBuilder.toString();
   }
 }
 

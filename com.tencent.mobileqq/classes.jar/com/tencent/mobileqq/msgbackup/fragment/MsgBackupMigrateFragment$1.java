@@ -11,9 +11,7 @@ class MsgBackupMigrateFragment$1
   
   public void onItemSelect(View paramView, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if ((paramInt != 1) && (paramInt != 8)) {
       return;
     }
     MsgBackupReporter.a("0X800A242", 1);
@@ -22,7 +20,7 @@ class MsgBackupMigrateFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupMigrateFragment.1
  * JD-Core Version:    0.7.0.1
  */

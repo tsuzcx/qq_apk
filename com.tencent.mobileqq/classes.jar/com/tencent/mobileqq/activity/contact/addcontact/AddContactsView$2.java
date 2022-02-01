@@ -13,23 +13,22 @@ class AddContactsView$2
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.a.i != null)
-    {
-      if (paramInt2 < this.a.i.getY() + this.a.i.getHeight() * 2 / 3) {
-        break label74;
+    if (this.a.i != null) {
+      if (paramInt2 >= this.a.i.getY() + this.a.i.getHeight() * 2 / 3)
+      {
+        if ((this.a.a != null) && (this.a.a.isShowing())) {
+          AddContactsView.a(this.a, false);
+        }
       }
-      if ((this.a.a != null) && (this.a.a.isShowing())) {
-        AddContactsView.a(this.a, false);
+      else {
+        AddContactsView.a(this.a);
       }
     }
-    return;
-    label74:
-    AddContactsView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.AddContactsView.2
  * JD-Core Version:    0.7.0.1
  */

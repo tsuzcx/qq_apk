@@ -14,12 +14,16 @@ class MiniAppGameDebugSettingFragment$7
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount() + "_user_embedded_video_", 4).edit().putBoolean("_user_embedded_video_", paramBoolean).commit();
+    paramCompoundButton = BaseApplicationImpl.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    localStringBuilder.append("_user_embedded_video_");
+    paramCompoundButton.getSharedPreferences(localStringBuilder.toString(), 4).edit().putBoolean("_user_embedded_video_", paramBoolean).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.activity.MiniAppGameDebugSettingFragment.7
  * JD-Core Version:    0.7.0.1
  */

@@ -32,13 +32,13 @@ class ApolloCardWindow$2
     }
     catch (Exception paramDownloadTask)
     {
-      QLog.e("ApolloCardWindow", 1, "onDoneFile error:", paramDownloadTask);
+      QLog.e("[cmshow]ApolloCardWindow", 1, "onDoneFile error:", paramDownloadTask);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow.2
  * JD-Core Version:    0.7.0.1
  */

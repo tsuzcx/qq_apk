@@ -37,7 +37,7 @@ public final class photo_adapt_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.photo_adapt_rsp
  * JD-Core Version:    0.7.0.1
  */

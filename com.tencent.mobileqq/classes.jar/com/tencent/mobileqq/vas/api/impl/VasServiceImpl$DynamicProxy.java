@@ -19,27 +19,35 @@ final class VasServiceImpl$DynamicProxy
   {
     Intrinsics.checkParameterIsNotNull(paramObject, "proxy");
     Intrinsics.checkParameterIsNotNull(paramMethod, "method");
-    QLog.i("VasServiceImpl", 1, "call " + paramMethod.getName() + " at " + VasServiceImpl.access$getPROCESS_NAME$cp());
-    if (paramArrayOfObject != null) {
-      if (paramArrayOfObject.length != 0) {
-        break label89;
+    paramObject = new StringBuilder();
+    paramObject.append("call ");
+    paramObject.append(paramMethod.getName());
+    paramObject.append(" at ");
+    paramObject.append(VasServiceImpl.access$getPROCESS_NAME$cp());
+    QLog.i("VasServiceImpl", 1, paramObject.toString());
+    if (paramArrayOfObject != null)
+    {
+      int i;
+      if (paramArrayOfObject.length == 0) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i == 0)
+      {
+        paramObject = paramMethod.invoke(this.a, new Object[] { paramArrayOfObject });
+        Intrinsics.checkExpressionValueIsNotNull(paramObject, "method.invoke(o, args)");
+        return paramObject;
       }
     }
-    label89:
-    for (int i = 1; i != 0; i = 0)
-    {
-      paramObject = paramMethod.invoke(this.a, new Object[0]);
-      Intrinsics.checkExpressionValueIsNotNull(paramObject, "method.invoke(o)");
-      return paramObject;
-    }
-    paramObject = paramMethod.invoke(this.a, new Object[] { paramArrayOfObject });
-    Intrinsics.checkExpressionValueIsNotNull(paramObject, "method.invoke(o, args)");
+    paramObject = paramMethod.invoke(this.a, new Object[0]);
+    Intrinsics.checkExpressionValueIsNotNull(paramObject, "method.invoke(o)");
     return paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.api.impl.VasServiceImpl.DynamicProxy
  * JD-Core Version:    0.7.0.1
  */

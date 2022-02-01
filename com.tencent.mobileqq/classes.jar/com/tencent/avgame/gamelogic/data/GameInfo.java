@@ -90,8 +90,13 @@ public class GameInfo
   
   public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(getClass().getName(), 2, "finishType = " + this.g);
+    if (QLog.isColorLevel())
+    {
+      String str = getClass().getName();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("finishType = ");
+      localStringBuilder.append(this.g);
+      QLog.i(str, 2, localStringBuilder.toString());
     }
     return this.g == 0;
   }
@@ -99,22 +104,51 @@ public class GameInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("typeSvr").append("=").append(this.jdField_a_of_type_Int).append("|");
-    localStringBuilder.append("typeLoc").append("=").append(this.b).append("|");
-    localStringBuilder.append("gameDuration").append("=").append(this.c).append("|");
-    localStringBuilder.append("gamePrepareDuration").append("=").append(this.d).append("|");
-    localStringBuilder.append("topicDuration").append("=").append(this.e).append("|");
-    localStringBuilder.append("topicInterim").append("=").append(this.f).append("|");
-    localStringBuilder.append("finishType").append("=").append(this.g).append("|");
-    localStringBuilder.append("finishTopicNum").append("=").append(this.h).append("|");
-    localStringBuilder.append("questionClass").append("=").append(this.jdField_a_of_type_JavaLangString).append("|");
-    localStringBuilder.append("answerCountDownForVideoClick=").append(this.i).append("|");
+    localStringBuilder.append("typeSvr");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("|");
+    localStringBuilder.append("typeLoc");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("|");
+    localStringBuilder.append("gameDuration");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("|");
+    localStringBuilder.append("gamePrepareDuration");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("|");
+    localStringBuilder.append("topicDuration");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append("|");
+    localStringBuilder.append("topicInterim");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append("|");
+    localStringBuilder.append("finishType");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append("|");
+    localStringBuilder.append("finishTopicNum");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("|");
+    localStringBuilder.append("questionClass");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("|");
+    localStringBuilder.append("answerCountDownForVideoClick=");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append("|");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.data.GameInfo
  * JD-Core Version:    0.7.0.1
  */

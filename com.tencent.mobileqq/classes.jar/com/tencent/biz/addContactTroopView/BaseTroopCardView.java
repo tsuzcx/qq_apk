@@ -20,20 +20,22 @@ public abstract class BaseTroopCardView
   
   public void a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      if ((paramString.startsWith("http://")) || (paramString.startsWith("https://")))
-      {
-        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-        localIntent.putExtra("url", paramString);
-        this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-        return;
-      }
+    }
+    if ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://")))
+    {
       paramString = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.a(), this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.a(), paramString);
-    } while (paramString == null);
-    paramString.a();
+      if (paramString != null) {
+        paramString.a();
+      }
+    }
+    else
+    {
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramString);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    }
   }
   
   public void setContentView(int paramInt)
@@ -43,7 +45,7 @@ public abstract class BaseTroopCardView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.addContactTroopView.BaseTroopCardView
  * JD-Core Version:    0.7.0.1
  */

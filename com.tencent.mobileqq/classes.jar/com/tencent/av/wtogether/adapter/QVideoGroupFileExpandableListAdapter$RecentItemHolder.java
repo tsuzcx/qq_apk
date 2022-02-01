@@ -21,7 +21,7 @@ public class QVideoGroupFileExpandableListAdapter$RecentItemHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.wtogether.adapter.QVideoGroupFileExpandableListAdapter.RecentItemHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -42,27 +42,32 @@ public final class nagative_fb_info
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.fb_type, 0);
-    if (this.fb_name != null) {
-      paramJceOutputStream.write(this.fb_name, 1);
+    String str = this.fb_name;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.tag_type, 2);
-    if (this.tag_name != null) {
-      paramJceOutputStream.write(this.tag_name, 3);
+    str = this.tag_name;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 4);
+    str = this.attach_info;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.fb_tag_txt != null) {
-      paramJceOutputStream.write(this.fb_tag_txt, 5);
+    str = this.fb_tag_txt;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (-1 != this.id) {
-      paramJceOutputStream.write(this.id, 6);
+    int i = this.id;
+    if (-1 != i) {
+      paramJceOutputStream.write(i, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.nagative_fb_info
  * JD-Core Version:    0.7.0.1
  */

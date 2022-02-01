@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
+import com.tencent.mobileqq.emoticon.StickerInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 import tencent.im.msg.hummer.resv3.CustomFaceExtPb.AnimationImageShow;
 import tencent.im.msg.hummer.resv3.CustomFaceExtPb.ResvAttr;
 import tencent.im.msg.hummer.resv6.NotOnlineImageExtPb.ResvAttr;
@@ -27,7 +27,7 @@ public class PicMessageExtraData
   public String mTemplateName;
   public String packageName;
   public String source;
-  public EmojiStickerManager.StickerInfo stickerInfo;
+  public StickerInfo stickerInfo;
   public String textSummary = "";
   public String webUrl;
   
@@ -93,12 +93,10 @@ public class PicMessageExtraData
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      for (;;)
-      {
-        localNumberFormatException.printStackTrace();
-      }
+      localNumberFormatException.printStackTrace();
     }
-    if ((this.animationImageShow != null) && (this.animationImageShow.has())) {
+    CustomFaceExtPb.AnimationImageShow localAnimationImageShow = this.animationImageShow;
+    if ((localAnimationImageShow != null) && (localAnimationImageShow.has())) {
       localResvAttr.msg_image_show.set(this.animationImageShow);
     }
     if (!TextUtils.isEmpty(this.textSummary)) {
@@ -149,10 +147,7 @@ public class PicMessageExtraData
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      for (;;)
-      {
-        localNumberFormatException.printStackTrace();
-      }
+      localNumberFormatException.printStackTrace();
     }
     if (!TextUtils.isEmpty(this.textSummary)) {
       localResvAttr.bytes_text_summary.set(ByteStringMicro.copyFromUtf8(this.textSummary));
@@ -243,22 +238,30 @@ public class PicMessageExtraData
   public void setAdEmoDescStr(String paramString)
   {
     this.mAdEmoDescStr = paramString;
-    if ((QLog.isColorLevel()) && (paramString != null)) {
-      QLog.d("PicMessageExtraData", 0, "adEmoDescStr, length = " + paramString.length());
+    if ((QLog.isColorLevel()) && (paramString != null))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("adEmoDescStr, length = ");
+      localStringBuilder.append(paramString.length());
+      QLog.d("PicMessageExtraData", 2, localStringBuilder.toString());
     }
   }
   
   public void setAdEmoJumpUrl(String paramString)
   {
     this.mAdEmoJumpUrl = paramString;
-    if ((QLog.isColorLevel()) && (paramString != null)) {
-      QLog.d("PicMessageExtraData", 0, "setAdEmoJumpUrl, length = " + paramString.length());
+    if ((QLog.isColorLevel()) && (paramString != null))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setAdEmoJumpUrl, length = ");
+      localStringBuilder.append(paramString.length());
+      QLog.d("PicMessageExtraData", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.PicMessageExtraData
  * JD-Core Version:    0.7.0.1
  */

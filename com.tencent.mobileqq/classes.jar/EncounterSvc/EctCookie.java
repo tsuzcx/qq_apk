@@ -51,8 +51,9 @@ public final class EctCookie
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vCookie != null) {
-      paramJceOutputStream.write(this.vCookie, 0);
+    byte[] arrayOfByte = this.vCookie;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 0);
     }
     paramJceOutputStream.write(this.lCurrentGrid, 1);
     paramJceOutputStream.write(this.lOriginGridS, 2);
@@ -65,7 +66,7 @@ public final class EctCookie
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     EncounterSvc.EctCookie
  * JD-Core Version:    0.7.0.1
  */

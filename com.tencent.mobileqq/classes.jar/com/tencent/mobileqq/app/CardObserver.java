@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.app;
 
 import NS_MOBILE_MAIN_PAGE.mobile_sub_get_cover_rsp;
-import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp;
 import android.os.Bundle;
 import com.tencent.mobileqq.data.AutoReplyText;
 import com.tencent.mobileqq.data.Card;
@@ -23,7 +22,7 @@ public class CardObserver
 {
   private void onUpdate_onAnonymousSettingMeRedPoint(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 115) {
+    if (paramInt != 111) {
       return;
     }
     boolean bool = false;
@@ -47,15 +46,6 @@ public class CardObserver
       return;
     }
     onCardLabelUpdate(paramBoolean, paramObject);
-  }
-  
-  private void onUpdate_onDelQZonePhotoWall(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (paramInt != 70) {}
-    while (paramObject == null) {
-      return;
-    }
-    onDelQZonePhotoWall(paramBoolean, (String)((Object[])(Object[])paramObject)[0]);
   }
   
   private void onUpdate_onDeletePortrait(int paramInt, boolean paramBoolean, Object paramObject)
@@ -108,7 +98,7 @@ public class CardObserver
   
   private void onUpdate_onGetAccountType(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 89) {
+    if (paramInt != 87) {
       return;
     }
     onGetAccountType(paramBoolean, (BmqqAccountType)paramObject);
@@ -143,7 +133,7 @@ public class CardObserver
   
   private void onUpdate_onGetAllowStrangerInviteToGroupSwitch(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 95) {
+    if (paramInt != 93) {
       return;
     }
     if ((paramObject != null) && ((paramObject instanceof Object[])))
@@ -157,17 +147,19 @@ public class CardObserver
   
   private void onUpdate_onGetAutoReplyList(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 97) {}
-    while (!(paramObject instanceof Object[])) {
+    if (paramInt != 95) {
       return;
     }
-    paramObject = (Object[])paramObject;
-    onGetAutoReplyList(paramBoolean, (List)paramObject[0], ((Integer)paramObject[1]).intValue());
+    if ((paramObject instanceof Object[]))
+    {
+      paramObject = (Object[])paramObject;
+      onGetAutoReplyList(paramBoolean, (List)paramObject[0], ((Integer)paramObject[1]).intValue());
+    }
   }
   
   private void onUpdate_onGetBabyQSwitch(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 75) {
+    if (paramInt != 73) {
       return;
     }
     onGetBabyQSwitch(paramBoolean, ((Boolean)paramObject).booleanValue());
@@ -175,7 +167,7 @@ public class CardObserver
   
   private void onUpdate_onGetCalReactiveDays(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 72) {
+    if (paramInt != 70) {
       return;
     }
     onGetCalReactiveDays(paramBoolean, ((Boolean)paramObject).booleanValue());
@@ -183,7 +175,6 @@ public class CardObserver
   
   private void onUpdate_onGetCardSwitch(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    boolean bool2 = true;
     if (paramInt != 33) {
       return;
     }
@@ -191,28 +182,22 @@ public class CardObserver
     String str = paramObject.getString("uin");
     long l1 = paramObject.getLong("uCloseNeighborVote", 0L);
     long l2 = paramObject.getLong("uColseTimeEntityManager", 0L);
+    boolean bool2 = true;
     boolean bool1;
-    if (l1 == 0L)
-    {
+    if (l1 == 0L) {
       bool1 = true;
-      if (l2 != 0L) {
-        break label76;
-      }
-    }
-    for (;;)
-    {
-      onGetCardSwitch(paramBoolean, str, bool1, bool2);
-      return;
+    } else {
       bool1 = false;
-      break;
-      label76:
+    }
+    if (l2 != 0L) {
       bool2 = false;
     }
+    onGetCardSwitch(paramBoolean, str, bool1, bool2);
   }
   
   private void onUpdate_onGetCareBarEnable(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 103) {
+    if (paramInt != 101) {
       return;
     }
     paramObject = new CardObserver.1(this, paramBoolean, paramObject);
@@ -221,45 +206,47 @@ public class CardObserver
   
   private void onUpdate_onGetCommonSwitchFromDetailInfo(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 85) {}
-    while (!(paramObject instanceof Object[])) {
+    if (paramInt != 83) {
       return;
     }
-    paramObject = (Object[])paramObject;
-    onGetCommonSwitchFromDetailInfo(paramBoolean, (short[])paramObject[0], (Map)paramObject[1]);
+    if ((paramObject instanceof Object[]))
+    {
+      paramObject = (Object[])paramObject;
+      onGetCommonSwitchFromDetailInfo(paramBoolean, (short[])paramObject[0], (Map)paramObject[1]);
+    }
   }
   
   private void onUpdate_onGetConnectionsSwitch(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 111) {}
-    do
+    if (paramInt != 108) {
+      return;
+    }
+    if ((paramObject instanceof Object[]))
     {
-      do
-      {
-        return;
-      } while (!(paramObject instanceof Object[]));
       paramObject = (Object[])paramObject;
-    } while (paramObject.length < 2);
-    onGetConnectionsSwitch(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
+      if (paramObject.length >= 2) {
+        onGetConnectionsSwitch(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
+      }
+    }
   }
   
   private void onUpdate_onGetEducationList(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 101) {}
-    do
+    if (paramInt != 99) {
+      return;
+    }
+    if ((paramObject instanceof Object[]))
     {
-      do
-      {
-        return;
-      } while (!(paramObject instanceof Object[]));
       paramObject = (Object[])paramObject;
-    } while (paramObject.length < 2);
-    onGetEducationList(paramBoolean, ((Long)paramObject[0]).longValue(), (ArrayList)paramObject[1]);
+      if (paramObject.length >= 2) {
+        onGetEducationList(paramBoolean, ((Long)paramObject[0]).longValue(), (ArrayList)paramObject[1]);
+      }
+    }
   }
   
   private void onUpdate_onGetHelloLiveMessageState(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 88) {
+    if (paramInt != 86) {
       return;
     }
     onGetHelloLiveMessageState(paramBoolean, Boolean.parseBoolean(paramObject.toString()));
@@ -267,7 +254,7 @@ public class CardObserver
   
   private void onUpdate_onGetHiddenSession(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 107) {
+    if (paramInt != 104) {
       return;
     }
     onGetHiddenSession(paramBoolean);
@@ -275,7 +262,7 @@ public class CardObserver
   
   private void onUpdate_onGetKplCard(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 90) {
+    if (paramInt != 88) {
       return;
     }
     onGetKplCard(paramBoolean, paramObject);
@@ -283,17 +270,19 @@ public class CardObserver
   
   private void onUpdate_onGetLocationDescription(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 43) {}
-    while ((!paramBoolean) || (paramObject == null)) {
+    if (paramInt != 43) {
       return;
     }
-    paramObject = (Card)paramObject;
-    onGetLocationDescription(true, paramObject.uin, paramObject);
+    if ((paramBoolean) && (paramObject != null))
+    {
+      paramObject = (Card)paramObject;
+      onGetLocationDescription(true, paramObject.uin, paramObject);
+    }
   }
   
   private void onUpdate_onGetMedal(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 77) {
+    if (paramInt != 75) {
       return;
     }
     onGetMedal(paramBoolean, ((Boolean)paramObject).booleanValue());
@@ -314,18 +303,18 @@ public class CardObserver
   
   private void onUpdate_onGetNotDisturb(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 98) {}
-    do
-    {
+    if (paramInt != 96) {
       return;
-      paramObject = (String[])paramObject;
-    } while ((paramObject == null) || (paramObject.length != 2));
-    onGetNotDisturb(paramBoolean, paramObject[0], paramObject[1]);
+    }
+    paramObject = (String[])paramObject;
+    if ((paramObject != null) && (paramObject.length == 2)) {
+      onGetNotDisturb(paramBoolean, paramObject[0], paramObject[1]);
+    }
   }
   
   private void onUpdate_onGetNotifyOnLikeRankingList(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 79) {
+    if (paramInt != 77) {
       return;
     }
     onGetNotifyOnLikeRankingList(paramBoolean, ((Boolean)paramObject).booleanValue());
@@ -341,7 +330,7 @@ public class CardObserver
   
   private void onUpdate_onGetPartakeLikeRankingList(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 83) {
+    if (paramInt != 81) {
       return;
     }
     onGetPartakeLikeRankingList(paramBoolean, ((Boolean)paramObject).booleanValue());
@@ -357,7 +346,7 @@ public class CardObserver
   
   private void onUpdate_onGetPrettyOwnerFlag(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 110) {
+    if (paramInt != 107) {
       return;
     }
     onGetPrettyOwnerFlag(paramBoolean, paramObject);
@@ -365,35 +354,19 @@ public class CardObserver
   
   private void onUpdate_onGetQZoneCover(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 40) {}
-    while (paramObject == null) {
+    if (paramInt != 40) {
       return;
     }
-    paramObject = (Object[])paramObject;
-    onGetQZoneCover(paramBoolean, (String)paramObject[0], (mobile_sub_get_cover_rsp)paramObject[1]);
-  }
-  
-  private void onUpdate_onGetQZonePhotoWall(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (paramInt != 69) {}
-    while (paramObject == null) {
-      return;
+    if (paramObject != null)
+    {
+      paramObject = (Object[])paramObject;
+      onGetQZoneCover(paramBoolean, (String)paramObject[0], (mobile_sub_get_cover_rsp)paramObject[1]);
     }
-    paramObject = (Object[])paramObject;
-    onGetQZonePhotoWall(paramBoolean, (String)paramObject[0], (mobile_sub_get_photo_wall_rsp)paramObject[1], (String)paramObject[2]);
-  }
-  
-  private void onUpdate_onGetSelfAddFriendSetting(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (paramInt != 106) {
-      return;
-    }
-    onGetSelfAddFriendSetting(paramBoolean, ((Integer)paramObject).intValue());
   }
   
   private void onUpdate_onGetSignInInfo(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 84) {
+    if (paramInt != 82) {
       return;
     }
     onGetSignInInfo(paramBoolean);
@@ -401,21 +374,24 @@ public class CardObserver
   
   private void onUpdate_onGetTroopHonorSwitch(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 113) {}
-    while ((paramObject == null) || (!(paramObject instanceof Object))) {
+    if (paramInt != 110) {
       return;
     }
-    onGetTroopHonorSwitch(paramBoolean, ((Boolean)paramObject).booleanValue());
+    if ((paramObject != null) && ((paramObject instanceof Object))) {
+      onGetTroopHonorSwitch(paramBoolean, ((Boolean)paramObject).booleanValue());
+    }
   }
   
   private void onUpdate_onGetWholePeopleVoteLebaSwitch(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 91) {}
-    while (!(paramObject instanceof Object[])) {
+    if (paramInt != 89) {
       return;
     }
-    paramObject = (Object[])paramObject;
-    onGetWholePeopleVoteLebaSwitch(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue());
+    if ((paramObject instanceof Object[]))
+    {
+      paramObject = (Object[])paramObject;
+      onGetWholePeopleVoteLebaSwitch(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue());
+    }
   }
   
   private void onUpdate_onGreetingRecv(int paramInt, boolean paramBoolean, Object paramObject)
@@ -452,21 +428,20 @@ public class CardObserver
   
   private void onUpdate_onLabelLikeSet(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 53) {}
-    do
-    {
-      do
-      {
-        return;
-        if (!paramBoolean) {
-          break;
-        }
-      } while (!(paramObject instanceof Object[]));
-      paramObject = (Object[])paramObject;
-      onLabelLikeSet(paramBoolean, (Card)paramObject[0], ((Long)paramObject[1]).longValue());
+    if (paramInt != 53) {
       return;
-    } while (!(paramObject instanceof Card));
-    onLabelLikeSet(paramBoolean, (Card)paramObject, -1L);
+    }
+    if (paramBoolean)
+    {
+      if ((paramObject instanceof Object[]))
+      {
+        paramObject = (Object[])paramObject;
+        onLabelLikeSet(paramBoolean, (Card)paramObject[0], ((Long)paramObject[1]).longValue());
+      }
+    }
+    else if ((paramObject instanceof Card)) {
+      onLabelLikeSet(paramBoolean, (Card)paramObject, -1L);
+    }
   }
   
   private void onUpdate_onMedalChange(int paramInt, boolean paramBoolean, Object paramObject)
@@ -487,31 +462,17 @@ public class CardObserver
   
   private void onUpdate_onNewVotePush(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 28) {}
-    while (!paramBoolean) {
+    if (paramInt != 28) {
       return;
     }
-    Object localObject = (Object[])paramObject;
-    paramObject = (Card)localObject[0];
-    localObject = (Bundle)localObject[1];
-    ((Bundle)localObject).getString("uin");
-    paramInt = ((Bundle)localObject).getInt("newVoteCount");
-    onNewVotePush(paramBoolean, ((Bundle)localObject).getString("voteeUin"), paramInt, paramObject);
-  }
-  
-  private void onUpdate_onPraiseLifeAchievement(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    int i = -1;
-    if (paramInt != 114) {
-      return;
-    }
-    if ((paramObject instanceof Bundle)) {
-      i = ((Bundle)paramObject).getInt("life_achievement_praise_action_type_key", -1);
-    }
-    for (paramInt = ((Bundle)paramObject).getInt("life_achievement_praise_id_key", -1);; paramInt = -1)
+    if (paramBoolean)
     {
-      onPraiseLifeAchievement(paramBoolean, i, paramInt);
-      return;
+      Object localObject = (Object[])paramObject;
+      paramObject = (Card)localObject[0];
+      localObject = (Bundle)localObject[1];
+      ((Bundle)localObject).getString("uin");
+      paramInt = ((Bundle)localObject).getInt("newVoteCount");
+      onNewVotePush(paramBoolean, ((Bundle)localObject).getString("voteeUin"), paramInt, paramObject);
     }
   }
   
@@ -525,22 +486,24 @@ public class CardObserver
   
   private void onUpdate_onReqFavoriteResult(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 32) {}
-    while (!(paramObject instanceof Bundle)) {
+    if (paramInt != 32) {
       return;
     }
-    paramObject = (Bundle)paramObject;
-    if (paramObject.getInt("favoriteSource") == 43)
+    if ((paramObject instanceof Bundle))
     {
-      onReqFavoriteResultRank(paramBoolean, paramObject.getString("selfUin"), paramObject.getString("targetUin"), paramObject.getInt("toplist_type"), paramObject.getInt("iCount", 0));
-      return;
+      paramObject = (Bundle)paramObject;
+      if (paramObject.getInt("favoriteSource") == 43)
+      {
+        onReqFavoriteResultRank(paramBoolean, paramObject.getString("selfUin"), paramObject.getString("targetUin"), paramObject.getInt("toplist_type"), paramObject.getInt("iCount", 0));
+        return;
+      }
+      onReqFavoriteResult(paramBoolean, paramObject.getString("selfUin"), paramObject.getString("targetUin"), paramObject.getInt("iCount", 0), paramObject.getInt("from", 0));
     }
-    onReqFavoriteResult(paramBoolean, paramObject.getString("selfUin"), paramObject.getString("targetUin"), paramObject.getInt("iCount", 0), paramObject.getInt("from", 0));
   }
   
   private void onUpdate_onReqLikeRankingListResult(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 78) {
+    if (paramInt != 76) {
       return;
     }
     if (paramBoolean)
@@ -573,7 +536,7 @@ public class CardObserver
   
   private void onUpdate_onSetAutoReplyList(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 99) {
+    if (paramInt != 97) {
       return;
     }
     onSetAutoReplyList(paramBoolean);
@@ -581,7 +544,7 @@ public class CardObserver
   
   private void onUpdate_onSetBabyQSwitch(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 74) {
+    if (paramInt != 72) {
       return;
     }
     onSetBabyQSwitch(paramBoolean, ((Boolean)paramObject).booleanValue());
@@ -589,7 +552,7 @@ public class CardObserver
   
   private void onUpdate_onSetCalReactiveDays(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 73) {
+    if (paramInt != 71) {
       return;
     }
     onSetCalReactiveDays(paramBoolean);
@@ -614,7 +577,7 @@ public class CardObserver
   
   private void onUpdate_onSetCareBarEnable(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 102) {
+    if (paramInt != 100) {
       return;
     }
     onSetCareBarEnable(paramBoolean, Boolean.parseBoolean(paramObject.toString()));
@@ -622,31 +585,33 @@ public class CardObserver
   
   private void onUpdate_onSetCommonSwitchFromDetailInfo(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 86) {}
-    while (!(paramObject instanceof Object[])) {
+    if (paramInt != 84) {
       return;
     }
-    paramObject = (Object[])paramObject;
-    onSetCommonSwitchFromDetailInfo(paramBoolean, ((Short)paramObject[0]).shortValue(), ((Short)paramObject[1]).shortValue());
+    if ((paramObject instanceof Object[]))
+    {
+      paramObject = (Object[])paramObject;
+      onSetCommonSwitchFromDetailInfo(paramBoolean, ((Short)paramObject[0]).shortValue(), ((Short)paramObject[1]).shortValue());
+    }
   }
   
   private void onUpdate_onSetConnectionsSwitch(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 112) {}
-    do
+    if (paramInt != 109) {
+      return;
+    }
+    if ((paramObject instanceof Object[]))
     {
-      do
-      {
-        return;
-      } while (!(paramObject instanceof Object[]));
       paramObject = (Object[])paramObject;
-    } while (paramObject.length < 2);
-    onSetConnectionsSwitch(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
+      if (paramObject.length >= 2) {
+        onSetConnectionsSwitch(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
+      }
+    }
   }
   
   private void onUpdate_onSetEmotionRecSwitch(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 104) {
+    if (paramInt != 102) {
       return;
     }
     onSetEmotionRecSwitch(paramBoolean, Boolean.parseBoolean(paramObject.toString()));
@@ -654,30 +619,32 @@ public class CardObserver
   
   private void onUpdate_onSetHelloLiveMessageState(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 87) {}
-    while (!(paramObject instanceof Object[])) {
+    if (paramInt != 85) {
       return;
     }
-    paramObject = (Object[])paramObject;
-    onSetHelloLiveMessageState(paramBoolean, Boolean.parseBoolean(paramObject[0].toString()), paramObject[1].toString(), paramObject[2].toString());
+    if ((paramObject instanceof Object[]))
+    {
+      paramObject = (Object[])paramObject;
+      onSetHelloLiveMessageState(paramBoolean, Boolean.parseBoolean(paramObject[0].toString()), paramObject[1].toString(), paramObject[2].toString());
+    }
   }
   
   private void onUpdate_onSetHiddenSession(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 108) {
+    if (paramInt != 105) {
       return;
     }
-    if (paramObject == null) {}
-    for (paramInt = 0;; paramInt = ((Integer)paramObject).intValue())
-    {
-      onSetHiddenSession(paramBoolean, paramInt);
-      return;
+    if (paramObject == null) {
+      paramInt = 0;
+    } else {
+      paramInt = ((Integer)paramObject).intValue();
     }
+    onSetHiddenSession(paramBoolean, paramInt);
   }
   
   private void onUpdate_onSetMedal(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 76) {
+    if (paramInt != 74) {
       return;
     }
     onSetMedal(paramBoolean);
@@ -685,7 +652,7 @@ public class CardObserver
   
   private void onUpdate_onSetNick(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 94) {
+    if (paramInt != 92) {
       return;
     }
     onSetNick(paramBoolean, (String)paramObject);
@@ -693,18 +660,18 @@ public class CardObserver
   
   private void onUpdate_onSetNotDisturb(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 96) {}
-    do
-    {
+    if (paramInt != 94) {
       return;
-      paramObject = (String[])paramObject;
-    } while ((paramObject == null) || (paramObject.length != 2));
-    onSetNotDisturb(paramBoolean, paramObject[0], paramObject[1]);
+    }
+    paramObject = (String[])paramObject;
+    if ((paramObject != null) && (paramObject.length == 2)) {
+      onSetNotDisturb(paramBoolean, paramObject[0], paramObject[1]);
+    }
   }
   
   private void onUpdate_onSetNotifyOnLikeRankingList(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 80) {
+    if (paramInt != 78) {
       return;
     }
     onSetNotifyOnLikeRankingList(paramBoolean, ((Boolean)paramObject).booleanValue());
@@ -712,17 +679,19 @@ public class CardObserver
   
   private void onUpdate_onSetPCActiveState(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 55) {}
-    while (!(paramObject instanceof Object[])) {
+    if (paramInt != 55) {
       return;
     }
-    paramObject = (Object[])paramObject;
-    onSetPCActiveState(paramBoolean, Boolean.parseBoolean(paramObject[0].toString()), paramObject[1].toString(), paramObject[2].toString());
+    if ((paramObject instanceof Object[]))
+    {
+      paramObject = (Object[])paramObject;
+      onSetPCActiveState(paramBoolean, Boolean.parseBoolean(paramObject[0].toString()), paramObject[1].toString(), paramObject[2].toString());
+    }
   }
   
   private void onUpdate_onSetPartakeLikeRankingList(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 82) {
+    if (paramInt != 80) {
       return;
     }
     onSetPartakeLikeRankingList(paramBoolean, ((Boolean)paramObject).booleanValue());
@@ -738,7 +707,7 @@ public class CardObserver
   
   private void onUpdate_onSetPrettyOwnerFlag(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 109) {
+    if (paramInt != 106) {
       return;
     }
     onSetPrettyOwnerFlag(paramBoolean, paramObject);
@@ -746,7 +715,7 @@ public class CardObserver
   
   private void onUpdate_onSetPttAutoToTxtSwitch(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 105) {
+    if (paramInt != 103) {
       return;
     }
     onSetPttAutoToTxtSwitch(paramBoolean, paramObject);
@@ -754,7 +723,7 @@ public class CardObserver
   
   private void onUpdate_onSetShowPushNotice(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 92) {
+    if (paramInt != 90) {
       return;
     }
     onSetShowPushNotice(paramBoolean, ((Boolean)paramObject).booleanValue());
@@ -762,7 +731,7 @@ public class CardObserver
   
   private void onUpdate_onSetSubaccountDisplayThirdQQ(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 81) {
+    if (paramInt != 79) {
       return;
     }
     onSetSubaccountDisplayThirdQQ(paramBoolean);
@@ -811,21 +780,24 @@ public class CardObserver
   
   private void onUpdate_onUploadQZonePhotoWall(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 71) {}
-    while (paramObject == null) {
+    if (paramInt != 69) {
       return;
     }
-    onUploadQZonePhotoWall(paramBoolean, paramObject);
+    if (paramObject != null) {
+      onUploadQZonePhotoWall(paramBoolean, paramObject);
+    }
   }
   
   private void onUpdate_onVoiceManager(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 35) {}
-    while (!(paramObject instanceof Object[])) {
+    if (paramInt != 35) {
       return;
     }
-    paramObject = (Object[])paramObject;
-    onVoiceManager(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (Card)paramObject[2]);
+    if ((paramObject instanceof Object[]))
+    {
+      paramObject = (Object[])paramObject;
+      onVoiceManager(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (Card)paramObject[2]);
+    }
   }
   
   private void onUpdate_onVoterList(int paramInt, boolean paramBoolean, Object paramObject)
@@ -855,7 +827,7 @@ public class CardObserver
   
   private void onupdateOnreqdelvoterecord(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != 93) {
+    if (paramInt != 91) {
       return;
     }
     paramObject = (Object[])paramObject;
@@ -867,8 +839,6 @@ public class CardObserver
   protected void onCardInBlackList(boolean paramBoolean, String paramString) {}
   
   protected void onCardLabelUpdate(boolean paramBoolean, Object paramObject) {}
-  
-  protected void onDelQZonePhotoWall(boolean paramBoolean, String paramString) {}
   
   protected void onDeletePortrait(boolean paramBoolean, Card paramCard, int paramInt, byte[] paramArrayOfByte) {}
   
@@ -928,10 +898,6 @@ public class CardObserver
   
   protected void onGetQZoneCover(boolean paramBoolean, String paramString, mobile_sub_get_cover_rsp parammobile_sub_get_cover_rsp) {}
   
-  protected void onGetQZonePhotoWall(boolean paramBoolean, String paramString1, mobile_sub_get_photo_wall_rsp parammobile_sub_get_photo_wall_rsp, String paramString2) {}
-  
-  protected void onGetSelfAddFriendSetting(boolean paramBoolean, int paramInt) {}
-  
   protected void onGetShoppingInfo(boolean paramBoolean, String paramString, List<ShoppingPhotoItemInfo> paramList, int paramInt1, int paramInt2, int paramInt3) {}
   
   protected void onGetSignInInfo(boolean paramBoolean) {}
@@ -953,8 +919,6 @@ public class CardObserver
   protected void onNearByProfileSymbolGet(boolean paramBoolean, int paramInt) {}
   
   protected void onNewVotePush(boolean paramBoolean, String paramString, int paramInt, Card paramCard) {}
-  
-  protected void onPraiseLifeAchievement(boolean paramBoolean, int paramInt1, int paramInt2) {}
   
   protected void onReqApplyUploadVoice(boolean paramBoolean, String paramString) {}
   
@@ -1043,8 +1007,6 @@ public class CardObserver
     onUpdate_onGetPhoneNumSearchable(paramInt, paramBoolean, paramObject);
     onUpdate_onSetPhoneNumSearchable(paramInt, paramBoolean, paramObject);
     onUpdate_onGetQZoneCover(paramInt, paramBoolean, paramObject);
-    onUpdate_onGetQZonePhotoWall(paramInt, paramBoolean, paramObject);
-    onUpdate_onDelQZonePhotoWall(paramInt, paramBoolean, paramObject);
     onUpdate_onUploadQZonePhotoWall(paramInt, paramBoolean, paramObject);
     onUpdate_onGetPCActiveState(paramInt, paramBoolean, paramObject);
     onUpdate_onSetPCActiveState(paramInt, paramBoolean, paramObject);
@@ -1090,14 +1052,12 @@ public class CardObserver
     onUpdate_onSetCareBarEnable(paramInt, paramBoolean, paramObject);
     onUpdate_onGetCareBarEnable(paramInt, paramBoolean, paramObject);
     onUpdate_onSetEmotionRecSwitch(paramInt, paramBoolean, paramObject);
-    onUpdate_onGetSelfAddFriendSetting(paramInt, paramBoolean, paramObject);
     onUpdate_onSetPttAutoToTxtSwitch(paramInt, paramBoolean, paramObject);
     onUpdate_onGetPrettyOwnerFlag(paramInt, paramBoolean, paramObject);
     onUpdate_onSetPrettyOwnerFlag(paramInt, paramBoolean, paramObject);
     onUpdate_onGetConnectionsSwitch(paramInt, paramBoolean, paramObject);
     onUpdate_onSetConnectionsSwitch(paramInt, paramBoolean, paramObject);
     onUpdate_onGetTroopHonorSwitch(paramInt, paramBoolean, paramObject);
-    onUpdate_onPraiseLifeAchievement(paramInt, paramBoolean, paramObject);
     onUpdate_onAnonymousSettingMeRedPoint(paramInt, paramBoolean, paramObject);
   }
   
@@ -1119,7 +1079,7 @@ public class CardObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.CardObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -9,37 +9,44 @@ class BaseMsgBoxActivity$3
 {
   BaseMsgBoxActivity$3(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.msgbox.tab", 2, "BaseMsgBoxActivity, onTabSelected: old=" + paramInt1 + ", cur=" + paramInt2 + ", msgTabIdx=" + this.a.b + ", unReadMsgNum=" + this.a.c);
-    }
-    Intent localIntent;
-    if ((paramInt1 == this.a.b) && (paramInt2 != this.a.b))
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      localIntent = new Intent();
-      localIntent.putExtra("curIndex", paramInt2);
-      if (!this.a.e) {
-        break label176;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("BaseMsgBoxActivity, onTabSelected: old=");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(", cur=");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append(", msgTabIdx=");
+      ((StringBuilder)localObject).append(this.a.mMsgBoxTabIndex);
+      ((StringBuilder)localObject).append(", unReadMsgNum=");
+      ((StringBuilder)localObject).append(this.a.mUnReadMsgNum);
+      QLog.d("nearby.msgbox.tab", 2, ((StringBuilder)localObject).toString());
+    }
+    if ((paramInt1 == this.a.mMsgBoxTabIndex) && (paramInt2 != this.a.mMsgBoxTabIndex))
+    {
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("curIndex", paramInt2);
+      if (this.a.mIsNeedShowRedDot) {
+        paramInt1 = this.a.mUnReadMsgNum;
+      } else {
+        paramInt1 = 0;
       }
-    }
-    label176:
-    for (paramInt1 = this.a.c;; paramInt1 = 0)
-    {
-      localIntent.putExtra("unReadMsgNum", paramInt1);
-      this.a.setResult(-1, localIntent);
+      ((Intent)localObject).putExtra("unReadMsgNum", paramInt1);
+      this.a.setResult(-1, (Intent)localObject);
       this.a.finish();
-      this.a.overridePendingTransition(2130772247, 2130772247);
+      this.a.overridePendingTransition(2130772275, 2130772275);
       if (QLog.isColorLevel()) {
         QLog.d("nearby.msgbox.tab", 2, "finish");
       }
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dating.BaseMsgBoxActivity.3
  * JD-Core Version:    0.7.0.1
  */

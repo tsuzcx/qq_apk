@@ -21,7 +21,6 @@ import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.qqmini.sdk.annotation.MiniKeep;
 import com.tencent.qqmini.sdk.auth.AuthState;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
@@ -69,16 +68,15 @@ public class SubscribePermissionSettingFragment
   
   private SubscribeItemModel getLongTermSubscribe(INTERFACE.StUserSettingInfo paramStUserSettingInfo)
   {
-    boolean bool = true;
     if (paramStUserSettingInfo.authState.get() != 0)
     {
       SubscribeItemModel.Builder localBuilder = new SubscribeItemModel.Builder().setViewType(SubscribeItemModel.SubscribeViewType.LONG_TERM_SUBSCRIBE).setContent(paramStUserSettingInfo.desc.get());
-      if (paramStUserSettingInfo.authState.get() == 1) {}
-      for (;;)
-      {
-        return localBuilder.setIsChecked(bool).build();
+      int i = paramStUserSettingInfo.authState.get();
+      boolean bool = true;
+      if (i != 1) {
         bool = false;
       }
+      return localBuilder.setIsChecked(bool).build();
     }
     return null;
   }
@@ -88,24 +86,20 @@ public class SubscribePermissionSettingFragment
     ArrayList localArrayList = new ArrayList();
     paramStUserSettingInfo = paramStUserSettingInfo.subItems.get();
     int i = 0;
-    if (i < paramStUserSettingInfo.size())
+    while (i < paramStUserSettingInfo.size())
     {
       INTERFACE.StSubscribeMessage localStSubscribeMessage = (INTERFACE.StSubscribeMessage)paramStUserSettingInfo.get(i);
-      SubscribeItemModel.Builder localBuilder;
       if (localStSubscribeMessage.authState.get() != 0)
       {
-        localBuilder = new SubscribeItemModel.Builder().setViewType(paramSubscribeViewType).setContent(localStSubscribeMessage.example.title.get());
-        if (localStSubscribeMessage.authState.get() != 1) {
-          break label124;
+        SubscribeItemModel.Builder localBuilder = new SubscribeItemModel.Builder().setViewType(paramSubscribeViewType).setContent(localStSubscribeMessage.example.title.get());
+        int j = localStSubscribeMessage.authState.get();
+        boolean bool = true;
+        if (j != 1) {
+          bool = false;
         }
-      }
-      label124:
-      for (boolean bool = true;; bool = false)
-      {
         localArrayList.add(localBuilder.setIsChecked(bool).setStSubscribeMessage(localStSubscribeMessage).build());
-        i += 1;
-        break;
       }
+      i += 1;
     }
     return localArrayList;
   }
@@ -118,71 +112,69 @@ public class SubscribePermissionSettingFragment
   private List<SubscribeItemModel> handleAuthList(boolean paramBoolean, JSONObject paramJSONObject)
   {
     ArrayList localArrayList1 = new ArrayList();
-    if ((!paramBoolean) || (paramJSONObject == null))
+    if ((paramBoolean) && (paramJSONObject != null))
     {
-      QMLog.e("SubscribePermissionSettingFragment", "getSetting-getAuthList failed");
-      return localArrayList1;
-    }
-    QMLog.i("SubscribePermissionSettingFragment", "getSetting-getAuthList suc, ret:" + paramJSONObject.toString());
-    paramJSONObject = paramJSONObject.opt("authList");
-    if (!(paramJSONObject instanceof byte[]))
-    {
-      QMLog.e("SubscribePermissionSettingFragment", "getSetting-getAuthList failed, obj type error");
-      return localArrayList1;
-    }
-    Object localObject1 = new INTERFACE.StGetAuthListRsp();
-    ArrayList localArrayList2;
-    try
-    {
-      ((INTERFACE.StGetAuthListRsp)localObject1).mergeFrom((byte[])paramJSONObject);
-      Object localObject2 = ((INTERFACE.StGetAuthListRsp)localObject1).settings.get();
-      paramJSONObject = new ArrayList();
-      localObject1 = new ArrayList();
-      localArrayList2 = new ArrayList();
-      localObject2 = ((List)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getSetting-getAuthList suc, ret:");
+      ((StringBuilder)localObject1).append(paramJSONObject.toString());
+      QMLog.i("SubscribePermissionSettingFragment", ((StringBuilder)localObject1).toString());
+      paramJSONObject = paramJSONObject.opt("authList");
+      if (!(paramJSONObject instanceof byte[]))
       {
-        INTERFACE.StUserSettingInfo localStUserSettingInfo = (INTERFACE.StUserSettingInfo)((Iterator)localObject2).next();
-        if ("setting.appMsgSubscribed".equals(localStUserSettingInfo.settingItem.get()))
+        QMLog.e("SubscribePermissionSettingFragment", "getSetting-getAuthList failed, obj type error");
+        return localArrayList1;
+      }
+      localObject1 = new INTERFACE.StGetAuthListRsp();
+      try
+      {
+        ((INTERFACE.StGetAuthListRsp)localObject1).mergeFrom((byte[])paramJSONObject);
+        Object localObject2 = ((INTERFACE.StGetAuthListRsp)localObject1).settings.get();
+        paramJSONObject = new ArrayList();
+        localObject1 = new ArrayList();
+        ArrayList localArrayList2 = new ArrayList();
+        localObject2 = ((List)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext())
         {
-          SubscribeItemModel localSubscribeItemModel = getLongTermSubscribe(localStUserSettingInfo);
-          if (localSubscribeItemModel != null) {
-            paramJSONObject.add(localSubscribeItemModel);
+          INTERFACE.StUserSettingInfo localStUserSettingInfo = (INTERFACE.StUserSettingInfo)((Iterator)localObject2).next();
+          if ("setting.appMsgSubscribed".equals(localStUserSettingInfo.settingItem.get()))
+          {
+            SubscribeItemModel localSubscribeItemModel = getLongTermSubscribe(localStUserSettingInfo);
+            if (localSubscribeItemModel != null) {
+              paramJSONObject.add(localSubscribeItemModel);
+            }
+          }
+          if ("setting.onceMsgSubscribed".equals(localStUserSettingInfo.settingItem.get())) {
+            ((List)localObject1).addAll(getOneTimeSubscribeList(localStUserSettingInfo, SubscribeItemModel.SubscribeViewType.ONE_TIME_SUBSCRIBE));
+          }
+          if ("setting.sysMsgSubscribed".equals(localStUserSettingInfo.settingItem.get())) {
+            localArrayList2.addAll(getOneTimeSubscribeList(localStUserSettingInfo, SubscribeItemModel.SubscribeViewType.INTERACTIVE_SUBSCRIBE));
           }
         }
-        if ("setting.onceMsgSubscribed".equals(localStUserSettingInfo.settingItem.get())) {
-          ((List)localObject1).addAll(getOneTimeSubscribeList(localStUserSettingInfo, SubscribeItemModel.SubscribeViewType.ONE_TIME_SUBSCRIBE));
-        }
-        if ("setting.sysMsgSubscribed".equals(localStUserSettingInfo.settingItem.get()))
+        if (paramJSONObject.size() > 0)
         {
-          localArrayList2.addAll(getOneTimeSubscribeList(localStUserSettingInfo, SubscribeItemModel.SubscribeViewType.INTERACTIVE_SUBSCRIBE));
-          continue;
+          localArrayList1.add(getTitleSubscribeItemModel("允许发送内容更新、活动更新等消息"));
+          localArrayList1.addAll(paramJSONObject);
+        }
+        if (((List)localObject1).size() > 0)
+        {
+          localArrayList1.add(getTitleSubscribeItemModel("允许发送一次以下消息"));
+          localArrayList1.addAll((Collection)localObject1);
+        }
+        if (localArrayList2.size() > 0)
+        {
+          localArrayList1.add(getTitleSubscribeItemModel("允许多次发送以下消息"));
+          localArrayList1.addAll(localArrayList2);
           return localArrayList1;
         }
       }
-    }
-    catch (InvalidProtocolBufferMicroException paramJSONObject)
-    {
-      QMLog.e("SubscribePermissionSettingFragment", "getSetting, InvalidProtocolBufferMicroException:", paramJSONObject);
-    }
-    for (;;)
-    {
-      if (paramJSONObject.size() > 0)
+      catch (InvalidProtocolBufferMicroException paramJSONObject)
       {
-        localArrayList1.add(getTitleSubscribeItemModel("允许发送内容更新、活动更新等消息"));
-        localArrayList1.addAll(paramJSONObject);
+        QMLog.e("SubscribePermissionSettingFragment", "getSetting, InvalidProtocolBufferMicroException:", paramJSONObject);
       }
-      if (((List)localObject1).size() > 0)
-      {
-        localArrayList1.add(getTitleSubscribeItemModel("允许发送一次以下消息"));
-        localArrayList1.addAll((Collection)localObject1);
-      }
-      if (localArrayList2.size() > 0)
-      {
-        localArrayList1.add(getTitleSubscribeItemModel("允许多次发送以下消息"));
-        localArrayList1.addAll(localArrayList2);
-      }
+      return localArrayList1;
     }
+    QMLog.e("SubscribePermissionSettingFragment", "getSetting-getAuthList failed");
+    return localArrayList1;
   }
   
   public static void launch(Context paramContext, String paramString)
@@ -203,14 +195,15 @@ public class SubscribePermissionSettingFragment
     ArrayList localArrayList = new ArrayList();
     INTERFACE.StSubscribeMessage localStSubscribeMessage = paramSubscribeItemModel.getStSubscribeMessage();
     PBInt32Field localPBInt32Field = localStSubscribeMessage.authState;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      localPBInt32Field.set(i);
-      localArrayList.add(localStSubscribeMessage);
-      this.authState.updateOnceSubMsgSetting(paramString, paramBoolean, localArrayList, new SubscribePermissionSettingFragment.7(this, paramInt, paramBoolean, paramSubscribeItemModel));
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 1;
+    } else {
+      i = 2;
     }
+    localPBInt32Field.set(i);
+    localArrayList.add(localStSubscribeMessage);
+    this.authState.updateOnceSubMsgSetting(paramString, paramBoolean, localArrayList, new SubscribePermissionSettingFragment.7(this, paramInt, paramBoolean, paramSubscribeItemModel));
   }
   
   private void requestAuthList()
@@ -243,7 +236,6 @@ public class SubscribePermissionSettingFragment
       paramLayoutInflater.setPadding(0, ImmersiveUtils.getStatusBarHeight(getActivity()), 0, 0);
     }
     paramLayoutInflater.setBackgroundColor(Color.parseColor("#EFEFF4"));
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
@@ -274,7 +266,7 @@ public class SubscribePermissionSettingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.SubscribePermissionSettingFragment
  * JD-Core Version:    0.7.0.1
  */

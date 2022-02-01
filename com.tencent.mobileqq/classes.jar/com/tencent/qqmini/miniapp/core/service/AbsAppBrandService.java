@@ -69,9 +69,14 @@ public abstract class AbsAppBrandService
       localArrayList.addAll(this.mWaitingJsList);
       this.mWaitingJsList.clear();
       ??? = localArrayList.iterator();
-      if (((Iterator)???).hasNext()) {
+      while (((Iterator)???).hasNext()) {
         evaluateJs((String)((Iterator)???).next(), null);
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
@@ -109,22 +114,17 @@ public abstract class AbsAppBrandService
   {
     if (paramState == this.stateWaJsLoading) {
       MiniReportManager.reportEventType(this.miniAppContext.getMiniAppInfo(), 14, "0");
+    } else if (this.stateWaJsLoadSucc == paramState) {
+      MiniReportManager.reportEventType(this.miniAppContext.getMiniAppInfo(), 15, "0");
+    } else if (paramState == this.stateAppServiceJsLoading) {
+      MiniReportManager.reportEventType(this.miniAppContext.getMiniAppInfo(), 104, "0");
+    } else if (this.stateLoadSucc == paramState) {
+      MiniReportManager.reportEventType(this.miniAppContext.getMiniAppInfo(), 105, "0");
     }
-    for (;;)
-    {
-      if (this.stateLoadSucc == paramState) {
-        evaluateWaitJs();
-      }
-      super.setCurrState(paramState);
-      return;
-      if (this.stateWaJsLoadSucc == paramState) {
-        MiniReportManager.reportEventType(this.miniAppContext.getMiniAppInfo(), 15, "0");
-      } else if (paramState == this.stateAppServiceJsLoading) {
-        MiniReportManager.reportEventType(this.miniAppContext.getMiniAppInfo(), 104, "0");
-      } else if (this.stateLoadSucc == paramState) {
-        MiniReportManager.reportEventType(this.miniAppContext.getMiniAppInfo(), 105, "0");
-      }
+    if (this.stateLoadSucc == paramState) {
+      evaluateWaitJs();
     }
+    super.setCurrState(paramState);
   }
   
   public void setDefaultConfigJs(String paramString)
@@ -147,7 +147,7 @@ public abstract class AbsAppBrandService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.service.AbsAppBrandService
  * JD-Core Version:    0.7.0.1
  */

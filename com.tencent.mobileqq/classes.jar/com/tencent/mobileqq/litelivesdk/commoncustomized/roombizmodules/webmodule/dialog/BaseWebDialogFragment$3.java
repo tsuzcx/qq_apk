@@ -20,15 +20,28 @@ class BaseWebDialogFragment$3
   
   public void callJsFunctionByNative(String paramString, JSONObject paramJSONObject, JsBizAdapter.ValueCallback paramValueCallback)
   {
-    if (this.a.a == null) {
+    if (this.a.jdField_a_of_type_ComTencentSmttSdkWebView == null) {
       return;
     }
-    if (paramJSONObject != null) {}
-    for (paramString = "javascript:(" + paramString + "(" + paramJSONObject.toString() + "))";; paramString = "javascript:" + paramString + "()")
+    if (paramJSONObject != null)
     {
-      this.a.a.evaluateJavascript(paramString, new BaseWebDialogFragment.3.1(this, paramValueCallback));
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("javascript:(");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("(");
+      localStringBuilder.append(paramJSONObject.toString());
+      localStringBuilder.append("))");
+      paramString = localStringBuilder.toString();
     }
+    else
+    {
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("javascript:");
+      paramJSONObject.append(paramString);
+      paramJSONObject.append("()");
+      paramString = paramJSONObject.toString();
+    }
+    this.a.jdField_a_of_type_ComTencentSmttSdkWebView.evaluateJavascript(paramString, new BaseWebDialogFragment.3.1(this, paramValueCallback));
   }
   
   public HttpInterface getHttp()
@@ -43,7 +56,7 @@ class BaseWebDialogFragment$3
   
   public ModuleEvent getModuleEvent()
   {
-    return null;
+    return this.a.jdField_a_of_type_ComTencentIliveBaseEventModuleEvent;
   }
   
   public RoomEngine getModuleRoomEngine()
@@ -66,7 +79,7 @@ class BaseWebDialogFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.dialog.BaseWebDialogFragment.3
  * JD-Core Version:    0.7.0.1
  */

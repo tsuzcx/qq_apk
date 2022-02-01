@@ -8,11 +8,11 @@ class CSProcessorImpl$2
 {
   CSProcessorImpl$2(CSProcessorImpl paramCSProcessorImpl) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle) {}
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.CSProcessorImpl.2
  * JD-Core Version:    0.7.0.1
  */

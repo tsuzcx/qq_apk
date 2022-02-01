@@ -70,7 +70,7 @@ public class ChatHistoryDatalineFileAdapter
       }
       if ((paramFileManagerEntity.progress == 1.0F) && (paramFileManagerEntity.issuc))
       {
-        if (FileUtils.b(paramFileManagerEntity.path))
+        if (FileUtils.fileExistsAndNotEmpty(paramFileManagerEntity.path))
         {
           paramFileItemHolder.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
           paramFileItemHolder.jdField_a_of_type_Int = 0;
@@ -90,7 +90,7 @@ public class ChatHistoryDatalineFileAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.adapter.ChatHistoryDatalineFileAdapter
  * JD-Core Version:    0.7.0.1
  */

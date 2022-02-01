@@ -34,47 +34,83 @@ public class AppBrandUI
   
   private void doDetectMemory()
   {
-    if (!this.enableMemoryDetect) {}
-    ActivityManager.MemoryInfo localMemoryInfo;
-    do
-    {
+    if (!this.enableMemoryDetect) {
       return;
-      if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_process_mem_detect_enable", 1) == 1) {}
-      for (int i = 1; i == 0; i = 0)
+    }
+    int i;
+    if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_process_mem_detect_enable", 1) == 1) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0)
+    {
+      QLog.i("miniapp-start_AppBrandUI", 1, "MemoryDetect disabled by config!");
+      return;
+    }
+    try
+    {
+      float f1 = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_process_mem_detect_alerm", 0.95F);
+      Object localObject = (ActivityManager)getSystemService("activity");
+      ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
+      ((ActivityManager)localObject).getMemoryInfo(localMemoryInfo);
+      long l = Runtime.getRuntime().maxMemory();
+      double d = l;
+      Double.isNaN(d);
+      float f2 = (float)(d * 1.0D / 1048576.0D);
+      l = Runtime.getRuntime().totalMemory();
+      d = l;
+      Double.isNaN(d);
+      float f3 = (float)(d * 1.0D / 1048576.0D);
+      l = Runtime.getRuntime().freeMemory();
+      d = l;
+      Double.isNaN(d);
+      float f4 = (float)(d * 1.0D / 1048576.0D);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("MemoryDetect maxMemory=");
+      ((StringBuilder)localObject).append(f2);
+      ((StringBuilder)localObject).append(" currMemory=");
+      ((StringBuilder)localObject).append(f3);
+      ((StringBuilder)localObject).append(" freeMemory=");
+      ((StringBuilder)localObject).append(f4);
+      ((StringBuilder)localObject).append(" percent=");
+      f2 = f3 / f2;
+      ((StringBuilder)localObject).append(f2);
+      ((StringBuilder)localObject).append(" alermThreshold=");
+      ((StringBuilder)localObject).append(f1);
+      QLog.i("miniapp-start_AppBrandUI", 1, ((StringBuilder)localObject).toString());
+      if (f2 >= f1)
       {
-        QLog.i("miniapp-start_AppBrandUI", 1, "MemoryDetect disabled by config!");
+        ThreadManager.getUIHandler().post(new AppBrandUI.4(this));
         return;
       }
-      try
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("MemoryInfo availMem=");
+      ((StringBuilder)localObject).append(localMemoryInfo.availMem);
+      ((StringBuilder)localObject).append(" threshold=");
+      ((StringBuilder)localObject).append(localMemoryInfo.threshold);
+      ((StringBuilder)localObject).append(" lowMemory=");
+      ((StringBuilder)localObject).append(localMemoryInfo.lowMemory);
+      QLog.i("miniapp-start_AppBrandUI", 1, ((StringBuilder)localObject).toString());
+      if (localMemoryInfo.lowMemory)
       {
-        float f1 = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_process_mem_detect_alerm", 0.95F);
-        ActivityManager localActivityManager = (ActivityManager)getSystemService("activity");
-        localMemoryInfo = new ActivityManager.MemoryInfo();
-        localActivityManager.getMemoryInfo(localMemoryInfo);
-        float f2 = (float)(Runtime.getRuntime().maxMemory() * 1.0D / 1048576.0D);
-        float f3 = (float)(Runtime.getRuntime().totalMemory() * 1.0D / 1048576.0D);
-        float f4 = (float)(Runtime.getRuntime().freeMemory() * 1.0D / 1048576.0D);
-        QLog.i("miniapp-start_AppBrandUI", 1, "MemoryDetect maxMemory=" + f2 + " currMemory=" + f3 + " freeMemory=" + f4 + " percent=" + f3 / f2 + " alermThreshold=" + f1);
-        if (f3 / f2 >= f1)
-        {
-          ThreadManager.getUIHandler().post(new AppBrandUI.4(this));
-          return;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("miniapp-start_AppBrandUI", 1, "", localThrowable);
+        ThreadManager.getUIHandler().post(new AppBrandUI.5(this));
         return;
       }
-      QLog.i("miniapp-start_AppBrandUI", 1, "MemoryInfo availMem=" + localMemoryInfo.availMem + " threshold=" + localMemoryInfo.threshold + " lowMemory=" + localMemoryInfo.lowMemory);
-    } while (!localMemoryInfo.lowMemory);
-    ThreadManager.getUIHandler().post(new AppBrandUI.5(this));
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("miniapp-start_AppBrandUI", 1, "", localThrowable);
+    }
   }
   
   private void enableDetectMemory(boolean paramBoolean)
   {
     this.enableMemoryDetect = paramBoolean;
-    QLog.i("miniapp-start_AppBrandUI", 1, "MemoryDetect enableDetectMemory:" + this.enableMemoryDetect);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MemoryDetect enableDetectMemory:");
+    localStringBuilder.append(this.enableMemoryDetect);
+    QLog.i("miniapp-start_AppBrandUI", 1, localStringBuilder.toString());
   }
   
   private void showRestartDialog()
@@ -84,19 +120,19 @@ public class AppBrandUI
       int i = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_process_mem_alert_mode", 0);
       if (i == 0)
       {
-        Toast.makeText(this, 2131694195, 0).show();
+        Toast.makeText(this, 2131694159, 0).show();
         return;
       }
       if (i == 1)
       {
         if (this.mRestartDialog == null)
         {
-          this.mRestartDialog = new QQCustomDialog(this, 2131755842);
-          this.mRestartDialog.setContentView(2131559060);
-          this.mRestartDialog.setTitle(2131694156);
-          this.mRestartDialog.setMessage(2131694195);
-          this.mRestartDialog.setPositiveButton(HardCodeUtil.a(2131705911), new AppBrandUI.6(this));
-          this.mRestartDialog.setNegativeButton(HardCodeUtil.a(2131705908), new AppBrandUI.7(this));
+          this.mRestartDialog = new QQCustomDialog(this, 2131756189);
+          this.mRestartDialog.setContentView(2131558954);
+          this.mRestartDialog.setTitle(2131694111);
+          this.mRestartDialog.setMessage(2131694159);
+          this.mRestartDialog.setPositiveButton(HardCodeUtil.a(2131705963), new AppBrandUI.6(this));
+          this.mRestartDialog.setNegativeButton(HardCodeUtil.a(2131705960), new AppBrandUI.7(this));
           this.mRestartDialog.setCanceledOnTouchOutside(true);
         }
         if (!this.mRestartDialog.isShowing())
@@ -121,9 +157,14 @@ public class AppBrandUI
     return super.doDispatchKeyEvent(paramKeyEvent);
   }
   
-  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    QLog.i("miniapp-start_AppBrandUI", 1, "doOnActivityResult requestCode=" + paramInt1 + " resultCode=" + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doOnActivityResult requestCode=");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" resultCode=");
+    localStringBuilder.append(paramInt2);
+    QLog.i("miniapp-start_AppBrandUI", 1, localStringBuilder.toString());
     getFakeBrandUI().doOnActivityResult(this, paramInt1, paramInt2, paramIntent);
   }
   
@@ -139,7 +180,7 @@ public class AppBrandUI
     getFakeBrandUI().doOnBackPressed(this, false);
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     QLog.i("miniapp-start_AppBrandUI", 1, "doOnCreate");
     setRequestedOrientation(1);
@@ -150,7 +191,7 @@ public class AppBrandUI
     return getFakeBrandUI().doOnCreate(this, paramBundle);
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     QLog.i("miniapp-start_AppBrandUI", 1, "doOnDestroy");
     getFakeBrandUI().doOnDestroy(this);
@@ -158,21 +199,21 @@ public class AppBrandUI
     super.doOnDestroy();
   }
   
-  public void doOnNewIntent(Intent paramIntent)
+  protected void doOnNewIntent(Intent paramIntent)
   {
     QLog.i("miniapp-start_AppBrandUI", 1, "doOnNewIntent");
     super.doOnNewIntent(paramIntent);
     getFakeBrandUI().doOnNewIntent(this, paramIntent);
   }
   
-  public void doOnPause()
+  protected void doOnPause()
   {
     QLog.i("miniapp-start_AppBrandUI", 1, "doOnPause");
     getFakeBrandUI().doOnPause(this);
     super.doOnPause();
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     QLog.i("miniapp-start_AppBrandUI", 1, "doOnResume");
     super.doOnResume();
@@ -180,7 +221,7 @@ public class AppBrandUI
     enableDetectMemory(true);
   }
   
-  public void doOnStart()
+  protected void doOnStart()
   {
     QLog.i("miniapp-start_AppBrandUI", 1, "doOnStart");
     super.doOnStart();
@@ -190,7 +231,7 @@ public class AppBrandUI
     }
   }
   
-  public void doOnStop()
+  protected void doOnStop()
   {
     QLog.i("miniapp-start_AppBrandUI", 1, "doOnStop");
     super.doOnStop();
@@ -214,28 +255,37 @@ public class AppBrandUI
   
   public IFakeBrandUI getFakeBrandUI()
   {
-    if (this.mFakeBrandUI != null) {
-      return this.mFakeBrandUI;
+    IFakeBrandUI localIFakeBrandUI = this.mFakeBrandUI;
+    if (localIFakeBrandUI != null) {
+      return localIFakeBrandUI;
     }
     this.mFakeBrandUI = new FakeSdkBrandUI();
     return this.mFakeBrandUI;
   }
   
-  public boolean isWrapContent()
+  protected boolean isWrapContent()
   {
     return getFakeBrandUI().isWrapContent(this);
   }
   
   public boolean moveTaskToBack(boolean paramBoolean)
   {
-    QLog.i("miniapp-start_AppBrandUI", 1, "moveTaskToBack nonRoot=" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("moveTaskToBack nonRoot=");
+    localStringBuilder.append(paramBoolean);
+    QLog.i("miniapp-start_AppBrandUI", 1, localStringBuilder.toString());
     getFakeBrandUI().moveTaskToBack(this, paramBoolean, true);
     return super.moveTaskToBack(paramBoolean);
   }
   
   public boolean moveTaskToBack(boolean paramBoolean1, boolean paramBoolean2)
   {
-    QLog.i("miniapp-start_AppBrandUI", 1, "moveTaskToBack nonRoot=" + paramBoolean1 + " bAnim=" + paramBoolean2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("moveTaskToBack nonRoot=");
+    localStringBuilder.append(paramBoolean1);
+    localStringBuilder.append(" bAnim=");
+    localStringBuilder.append(paramBoolean2);
+    QLog.i("miniapp-start_AppBrandUI", 1, localStringBuilder.toString());
     return getFakeBrandUI().moveTaskToBack(this, paramBoolean1, paramBoolean2);
   }
   
@@ -266,14 +316,14 @@ public class AppBrandUI
     getFakeBrandUI().onRefreshMiniBadge(this, paramBundle);
   }
   
-  public void requestWindowFeature(Intent paramIntent)
+  protected void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.AppBrandUI
  * JD-Core Version:    0.7.0.1
  */

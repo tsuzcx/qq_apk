@@ -10,7 +10,7 @@ import com.tencent.mobileqq.ar.ARRecord.VideoEncoderUtils;
 import com.tencent.mobileqq.ar.ARRecord.VideoRecordController;
 import com.tencent.mobileqq.ar.model.UniformGLRenderManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 
 public class ScanGLRenderEnvFragment
   extends ScanGLRenderBaseFragment
@@ -34,7 +34,7 @@ public class ScanGLRenderEnvFragment
     {
       if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController = new VideoRecordController(getActivity());
+        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController = new VideoRecordController(getQBaseActivity());
         ARVideoRecordUIControllerImpl.a().a(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
       }
       UniformGLRenderManager localUniformGLRenderManager = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
@@ -71,7 +71,7 @@ public class ScanGLRenderEnvFragment
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     c();
     paramLayoutInflater = this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView;
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
@@ -96,7 +96,7 @@ public class ScanGLRenderEnvFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ScanGLRenderEnvFragment
  * JD-Core Version:    0.7.0.1
  */

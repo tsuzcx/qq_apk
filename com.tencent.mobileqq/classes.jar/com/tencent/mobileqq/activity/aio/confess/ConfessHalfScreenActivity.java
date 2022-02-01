@@ -45,10 +45,10 @@ public class ConfessHalfScreenActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    getWindow().setBackgroundDrawableResource(2131167305);
-    paramBundle = findViewById(2131363879);
+    getWindow().setBackgroundDrawableResource(2131167333);
+    paramBundle = findViewById(2131363807);
     if (paramBundle != null) {
-      paramBundle.setBackgroundResource(2131167305);
+      paramBundle.setBackgroundResource(2131167333);
     }
     this.jdField_a_of_type_Int = getIntent().getIntExtra("confessDstHeight", 0);
     if (this.jdField_a_of_type_Int <= 0)
@@ -70,12 +70,14 @@ public class ConfessHalfScreenActivity
     }
     catch (Exception paramBundle)
     {
-      QLog.e("WebLog_QQBrowserActivity", 1, "register mFinishReceiver receiver exception.");
+      label116:
+      break label116;
     }
+    QLog.e("WebLog_QQBrowserActivity", 1, "register mFinishReceiver receiver exception.");
     return bool;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     try
     {
@@ -84,21 +86,21 @@ public class ConfessHalfScreenActivity
         unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
         this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
       }
-      super.doOnDestroy();
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("WebLog_QQBrowserActivity", 2, "doOnDestroy mFinishReceiver unregisterReceiver, e:" + localException.getMessage());
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("doOnDestroy mFinishReceiver unregisterReceiver, e:");
+        localStringBuilder.append(localException.getMessage());
+        QLog.e("WebLog_QQBrowserActivity", 2, localStringBuilder.toString());
       }
     }
+    super.doOnDestroy();
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
     ThreadManager.executeOnSubThread(new ConfessHalfScreenActivity.2(this));
@@ -114,7 +116,7 @@ public class ConfessHalfScreenActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity
  * JD-Core Version:    0.7.0.1
  */

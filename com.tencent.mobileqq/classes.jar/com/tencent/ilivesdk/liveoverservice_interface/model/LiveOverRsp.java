@@ -14,15 +14,17 @@ public class LiveOverRsp
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (LiveOverRsp)paramObject;
-    } while ((this.anchorUin == paramObject.anchorUin) && (this.watchCount == paramObject.watchCount) && (this.liveTimeSecond == paramObject.liveTimeSecond) && (Objects.equals(this.anchorNickname, paramObject.anchorNickname)) && (Objects.equals(this.headLogoUrl, paramObject.headLogoUrl)));
+      return (this.anchorUin == paramObject.anchorUin) && (this.watchCount == paramObject.watchCount) && (this.liveTimeSecond == paramObject.liveTimeSecond) && (Objects.equals(this.anchorNickname, paramObject.anchorNickname)) && (Objects.equals(this.headLogoUrl, paramObject.headLogoUrl));
+    }
     return false;
   }
   
@@ -33,12 +35,26 @@ public class LiveOverRsp
   
   public String toString()
   {
-    return "LiveOverRsp{anchorUin=" + this.anchorUin + ", anchorNickname='" + this.anchorNickname + '\'' + ", headLogoUrl='" + this.headLogoUrl + '\'' + ", watchCount=" + this.watchCount + ", liveTime=" + this.liveTimeSecond + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LiveOverRsp{anchorUin=");
+    localStringBuilder.append(this.anchorUin);
+    localStringBuilder.append(", anchorNickname='");
+    localStringBuilder.append(this.anchorNickname);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", headLogoUrl='");
+    localStringBuilder.append(this.headLogoUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", watchCount=");
+    localStringBuilder.append(this.watchCount);
+    localStringBuilder.append(", liveTime=");
+    localStringBuilder.append(this.liveTimeSecond);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.liveoverservice_interface.model.LiveOverRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -14,23 +14,30 @@ public class BeautyToolbar$DataReport
   
   public static void b(String paramString)
   {
-    int i = 0;
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    int i;
     if ((localObject instanceof VideoAppInterface)) {
       i = ((VideoAppInterface)localObject).b("BEAUTY_SKIN");
+    } else {
+      i = 0;
     }
-    if (i > 0) {}
-    for (localObject = "0X80076B4";; localObject = "0X80076B3")
-    {
-      a((String)localObject);
-      AVLog.printColorLog("BeautyToolbar", "DataReport onUserBeauty:" + paramString + "|" + i);
-      return;
+    if (i > 0) {
+      localObject = "0X80076B4";
+    } else {
+      localObject = "0X80076B3";
     }
+    a((String)localObject);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("DataReport onUserBeauty:");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("|");
+    ((StringBuilder)localObject).append(i);
+    AVLog.printColorLog("BeautyToolbar", ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.BeautyToolbar.DataReport
  * JD-Core Version:    0.7.0.1
  */

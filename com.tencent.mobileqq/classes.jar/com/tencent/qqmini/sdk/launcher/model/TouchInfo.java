@@ -30,20 +30,17 @@ public class TouchInfo
       localJSONObject.put("tex", this.endX);
       localJSONObject.put("tey", this.endY);
       localJSONObject.put("td", this.duration);
-      return localJSONObject.toString();
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    return localJSONObject.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.TouchInfo
  * JD-Core Version:    0.7.0.1
  */

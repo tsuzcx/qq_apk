@@ -65,11 +65,17 @@ public final class CacheControl
     if (this.noStore) {
       localStringBuilder.append("no-store, ");
     }
-    if (this.maxAgeSeconds != -1) {
-      localStringBuilder.append("max-age=").append(this.maxAgeSeconds).append(", ");
+    if (this.maxAgeSeconds != -1)
+    {
+      localStringBuilder.append("max-age=");
+      localStringBuilder.append(this.maxAgeSeconds);
+      localStringBuilder.append(", ");
     }
-    if (this.sMaxAgeSeconds != -1) {
-      localStringBuilder.append("s-maxage=").append(this.sMaxAgeSeconds).append(", ");
+    if (this.sMaxAgeSeconds != -1)
+    {
+      localStringBuilder.append("s-maxage=");
+      localStringBuilder.append(this.sMaxAgeSeconds);
+      localStringBuilder.append(", ");
     }
     if (this.isPrivate) {
       localStringBuilder.append("private, ");
@@ -80,11 +86,17 @@ public final class CacheControl
     if (this.mustRevalidate) {
       localStringBuilder.append("must-revalidate, ");
     }
-    if (this.maxStaleSeconds != -1) {
-      localStringBuilder.append("max-stale=").append(this.maxStaleSeconds).append(", ");
+    if (this.maxStaleSeconds != -1)
+    {
+      localStringBuilder.append("max-stale=");
+      localStringBuilder.append(this.maxStaleSeconds);
+      localStringBuilder.append(", ");
     }
-    if (this.minFreshSeconds != -1) {
-      localStringBuilder.append("min-fresh=").append(this.minFreshSeconds).append(", ");
+    if (this.minFreshSeconds != -1)
+    {
+      localStringBuilder.append("min-fresh=");
+      localStringBuilder.append(this.minFreshSeconds);
+      localStringBuilder.append(", ");
     }
     if (this.onlyIfCached) {
       localStringBuilder.append("only-if-cached, ");
@@ -104,187 +116,331 @@ public final class CacheControl
   
   public static CacheControl parse(Headers paramHeaders)
   {
-    boolean bool6 = false;
-    int i1 = -1;
-    int n = -1;
-    boolean bool8 = false;
-    boolean bool7 = false;
-    boolean bool5 = false;
-    int m = -1;
-    int k = -1;
-    boolean bool4 = false;
-    boolean bool3 = false;
-    boolean bool2 = false;
-    int i = 1;
     int i8 = paramHeaders.size();
     int i2 = 0;
+    int j = 1;
     Object localObject1 = null;
+    boolean bool8 = false;
+    boolean bool7 = false;
+    int i1 = -1;
+    int n = -1;
+    boolean bool6 = false;
+    boolean bool5 = false;
+    boolean bool4 = false;
+    int m = -1;
+    int k = -1;
+    boolean bool3 = false;
     boolean bool1 = false;
-    while (i2 < i8)
+    boolean bool16;
+    for (boolean bool2 = false;; bool2 = bool16)
     {
-      Object localObject2 = paramHeaders.name(i2);
-      String str1 = paramHeaders.value(i2);
+      Object localObject2 = paramHeaders;
+      if (i2 >= i8) {
+        break;
+      }
+      String str2 = ((Headers)localObject2).name(i2);
+      String str1 = ((Headers)localObject2).value(i2);
+      int i7;
+      boolean bool9;
+      boolean bool10;
+      int i;
       int i3;
-      if (((String)localObject2).equalsIgnoreCase("Cache-Control")) {
-        if (localObject1 != null)
+      boolean bool11;
+      boolean bool12;
+      boolean bool13;
+      int i4;
+      int i5;
+      boolean bool14;
+      boolean bool15;
+      if (str2.equalsIgnoreCase("Cache-Control"))
+      {
+        if (localObject1 == null)
         {
-          i = 0;
-          i3 = 0;
+          localObject1 = str1;
+          break label167;
         }
       }
+      else
+      {
+        i7 = j;
+        localObject2 = localObject1;
+        bool9 = bool8;
+        bool10 = bool7;
+        i = i1;
+        i3 = n;
+        bool11 = bool6;
+        bool12 = bool5;
+        bool13 = bool4;
+        i4 = m;
+        i5 = k;
+        bool14 = bool3;
+        bool15 = bool1;
+        bool16 = bool2;
+        if (!str2.equalsIgnoreCase("Pragma")) {
+          break label1163;
+        }
+      }
+      j = 0;
+      label167:
+      int i6 = 0;
       for (;;)
       {
-        label92:
+        i7 = j;
         localObject2 = localObject1;
-        bool16 = bool6;
-        i7 = i1;
-        i6 = n;
-        bool15 = bool8;
-        bool14 = bool7;
-        bool13 = bool5;
-        i5 = m;
-        i4 = k;
-        bool12 = bool4;
-        bool11 = bool3;
-        bool10 = bool2;
-        j = i;
-        bool9 = bool1;
-        if (i3 >= str1.length()) {
-          break label633;
-        }
-        j = HttpHeaders.skipUntil(str1, i3, "=,;");
-        String str2 = str1.substring(i3, j).trim();
-        if ((j == str1.length()) || (str1.charAt(j) == ',') || (str1.charAt(j) == ';'))
-        {
-          j += 1;
-          localObject2 = null;
-        }
-        for (;;)
-        {
-          if (!"no-cache".equalsIgnoreCase(str2)) {
-            break label348;
-          }
-          bool1 = true;
-          i3 = j;
-          break label92;
-          localObject1 = str1;
+        bool9 = bool8;
+        bool10 = bool7;
+        i = i1;
+        i3 = n;
+        bool11 = bool6;
+        bool12 = bool5;
+        bool13 = bool4;
+        i4 = m;
+        i5 = k;
+        bool14 = bool3;
+        bool15 = bool1;
+        bool16 = bool2;
+        if (i6 >= str1.length()) {
           break;
-          if (!((String)localObject2).equalsIgnoreCase("Pragma")) {
-            break label580;
-          }
-          i = 0;
-          break;
-          i3 = HttpHeaders.skipWhitespace(str1, j + 1);
+        }
+        i = HttpHeaders.skipUntil(str1, i6, "=,;");
+        str2 = str1.substring(i6, i).trim();
+        if ((i != str1.length()) && (str1.charAt(i) != ',') && (str1.charAt(i) != ';'))
+        {
+          i3 = HttpHeaders.skipWhitespace(str1, i + 1);
           if ((i3 < str1.length()) && (str1.charAt(i3) == '"'))
           {
-            j = i3 + 1;
-            i3 = HttpHeaders.skipUntil(str1, j, "\"");
-            localObject2 = str1.substring(j, i3);
-            j = i3 + 1;
+            i = i3 + 1;
+            i3 = HttpHeaders.skipUntil(str1, i, "\"");
+            localObject2 = str1.substring(i, i3);
+            i = i3 + 1;
           }
           else
           {
-            j = HttpHeaders.skipUntil(str1, i3, ",;");
-            localObject2 = str1.substring(i3, j).trim();
+            i = HttpHeaders.skipUntil(str1, i3, ",;");
+            localObject2 = str1.substring(i3, i).trim();
           }
-        }
-        label348:
-        if ("no-store".equalsIgnoreCase(str2))
-        {
-          bool6 = true;
-          i3 = j;
-        }
-        else if ("max-age".equalsIgnoreCase(str2))
-        {
-          i1 = HttpHeaders.parseSeconds((String)localObject2, -1);
-          i3 = j;
-        }
-        else if ("s-maxage".equalsIgnoreCase(str2))
-        {
-          n = HttpHeaders.parseSeconds((String)localObject2, -1);
-          i3 = j;
-        }
-        else if ("private".equalsIgnoreCase(str2))
-        {
-          bool8 = true;
-          i3 = j;
-        }
-        else if ("public".equalsIgnoreCase(str2))
-        {
-          bool7 = true;
-          i3 = j;
-        }
-        else if ("must-revalidate".equalsIgnoreCase(str2))
-        {
-          bool5 = true;
-          i3 = j;
-        }
-        else if ("max-stale".equalsIgnoreCase(str2))
-        {
-          m = HttpHeaders.parseSeconds((String)localObject2, 2147483647);
-          i3 = j;
-        }
-        else if ("min-fresh".equalsIgnoreCase(str2))
-        {
-          k = HttpHeaders.parseSeconds((String)localObject2, -1);
-          i3 = j;
-        }
-        else if ("only-if-cached".equalsIgnoreCase(str2))
-        {
-          bool4 = true;
-          i3 = j;
-        }
-        else if ("no-transform".equalsIgnoreCase(str2))
-        {
-          bool3 = true;
-          i3 = j;
         }
         else
         {
-          i3 = j;
+          i += 1;
+          localObject2 = null;
+        }
+        if ("no-cache".equalsIgnoreCase(str2))
+        {
+          bool9 = true;
+          bool10 = bool7;
+          i3 = i1;
+          i4 = n;
+          bool11 = bool6;
+          bool12 = bool5;
+          bool13 = bool4;
+          i5 = m;
+          i7 = k;
+          bool14 = bool3;
+          bool15 = bool1;
+        }
+        else if ("no-store".equalsIgnoreCase(str2))
+        {
+          bool10 = true;
+          bool9 = bool8;
+          i3 = i1;
+          i4 = n;
+          bool11 = bool6;
+          bool12 = bool5;
+          bool13 = bool4;
+          i5 = m;
+          i7 = k;
+          bool14 = bool3;
+          bool15 = bool1;
+        }
+        else if ("max-age".equalsIgnoreCase(str2))
+        {
+          i3 = HttpHeaders.parseSeconds((String)localObject2, -1);
+          bool9 = bool8;
+          bool10 = bool7;
+          i4 = n;
+          bool11 = bool6;
+          bool12 = bool5;
+          bool13 = bool4;
+          i5 = m;
+          i7 = k;
+          bool14 = bool3;
+          bool15 = bool1;
+        }
+        else if ("s-maxage".equalsIgnoreCase(str2))
+        {
+          i4 = HttpHeaders.parseSeconds((String)localObject2, -1);
+          bool9 = bool8;
+          bool10 = bool7;
+          i3 = i1;
+          bool11 = bool6;
+          bool12 = bool5;
+          bool13 = bool4;
+          i5 = m;
+          i7 = k;
+          bool14 = bool3;
+          bool15 = bool1;
+        }
+        else if ("private".equalsIgnoreCase(str2))
+        {
+          bool11 = true;
+          bool9 = bool8;
+          bool10 = bool7;
+          i3 = i1;
+          i4 = n;
+          bool12 = bool5;
+          bool13 = bool4;
+          i5 = m;
+          i7 = k;
+          bool14 = bool3;
+          bool15 = bool1;
+        }
+        else if ("public".equalsIgnoreCase(str2))
+        {
+          bool12 = true;
+          bool9 = bool8;
+          bool10 = bool7;
+          i3 = i1;
+          i4 = n;
+          bool11 = bool6;
+          bool13 = bool4;
+          i5 = m;
+          i7 = k;
+          bool14 = bool3;
+          bool15 = bool1;
+        }
+        else if ("must-revalidate".equalsIgnoreCase(str2))
+        {
+          bool13 = true;
+          bool9 = bool8;
+          bool10 = bool7;
+          i3 = i1;
+          i4 = n;
+          bool11 = bool6;
+          bool12 = bool5;
+          i5 = m;
+          i7 = k;
+          bool14 = bool3;
+          bool15 = bool1;
+        }
+        else if ("max-stale".equalsIgnoreCase(str2))
+        {
+          i5 = HttpHeaders.parseSeconds((String)localObject2, 2147483647);
+          bool9 = bool8;
+          bool10 = bool7;
+          i3 = i1;
+          i4 = n;
+          bool11 = bool6;
+          bool12 = bool5;
+          bool13 = bool4;
+          i7 = k;
+          bool14 = bool3;
+          bool15 = bool1;
+        }
+        else if ("min-fresh".equalsIgnoreCase(str2))
+        {
+          i7 = HttpHeaders.parseSeconds((String)localObject2, -1);
+          bool9 = bool8;
+          bool10 = bool7;
+          i3 = i1;
+          i4 = n;
+          bool11 = bool6;
+          bool12 = bool5;
+          bool13 = bool4;
+          i5 = m;
+          bool14 = bool3;
+          bool15 = bool1;
+        }
+        else if ("only-if-cached".equalsIgnoreCase(str2))
+        {
+          bool14 = true;
+          bool9 = bool8;
+          bool10 = bool7;
+          i3 = i1;
+          i4 = n;
+          bool11 = bool6;
+          bool12 = bool5;
+          bool13 = bool4;
+          i5 = m;
+          i7 = k;
+          bool15 = bool1;
+        }
+        else if ("no-transform".equalsIgnoreCase(str2))
+        {
+          bool15 = true;
+          bool9 = bool8;
+          bool10 = bool7;
+          i3 = i1;
+          i4 = n;
+          bool11 = bool6;
+          bool12 = bool5;
+          bool13 = bool4;
+          i5 = m;
+          i7 = k;
+          bool14 = bool3;
+        }
+        else
+        {
+          bool9 = bool8;
+          bool10 = bool7;
+          i3 = i1;
+          i4 = n;
+          bool11 = bool6;
+          bool12 = bool5;
+          bool13 = bool4;
+          i5 = m;
+          i7 = k;
+          bool14 = bool3;
+          bool15 = bool1;
           if ("immutable".equalsIgnoreCase(str2))
           {
             bool2 = true;
-            i3 = j;
+            bool15 = bool1;
+            bool14 = bool3;
+            i7 = k;
+            i5 = m;
+            bool13 = bool4;
+            bool12 = bool5;
+            bool11 = bool6;
+            i4 = n;
+            i3 = i1;
+            bool10 = bool7;
+            bool9 = bool8;
           }
         }
+        i6 = i;
+        bool8 = bool9;
+        bool7 = bool10;
+        i1 = i3;
+        n = i4;
+        bool6 = bool11;
+        bool5 = bool12;
+        bool4 = bool13;
+        m = i5;
+        k = i7;
+        bool3 = bool14;
+        bool1 = bool15;
       }
-      label580:
-      boolean bool9 = bool1;
-      int j = i;
-      boolean bool10 = bool2;
-      boolean bool11 = bool3;
-      boolean bool12 = bool4;
-      int i4 = k;
-      int i5 = m;
-      boolean bool13 = bool5;
-      boolean bool14 = bool7;
-      boolean bool15 = bool8;
-      int i6 = n;
-      int i7 = i1;
-      boolean bool16 = bool6;
-      localObject2 = localObject1;
-      label633:
+      label1163:
       i2 += 1;
-      bool1 = bool9;
+      j = i7;
       localObject1 = localObject2;
-      bool6 = bool16;
-      i1 = i7;
-      n = i6;
-      bool8 = bool15;
-      bool7 = bool14;
-      bool5 = bool13;
-      m = i5;
-      k = i4;
-      bool4 = bool12;
-      bool3 = bool11;
-      bool2 = bool10;
-      i = j;
+      bool8 = bool9;
+      bool7 = bool10;
+      i1 = i;
+      n = i3;
+      bool6 = bool11;
+      bool5 = bool12;
+      bool4 = bool13;
+      m = i4;
+      k = i5;
+      bool3 = bool14;
+      bool1 = bool15;
     }
-    if (i == 0) {}
-    for (paramHeaders = null;; paramHeaders = localObject1) {
-      return new CacheControl(bool1, bool6, i1, n, bool8, bool7, bool5, m, k, bool4, bool3, bool2, paramHeaders);
+    if (j == 0) {
+      localObject1 = null;
     }
+    return new CacheControl(bool8, bool7, i1, n, bool6, bool5, bool4, m, k, bool3, bool1, bool2, localObject1);
   }
   
   public boolean immutable()
@@ -360,7 +516,7 @@ public final class CacheControl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.CacheControl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_vertical" android:id="@id/rlCommenTitle" android:background="@drawable/gs7" android:padding="0.0px" android:layout_width="fill_parent" android:layout_height="44.0dip"
+<RelativeLayout android:gravity="center_vertical" android:id="@id/rlCommenTitle" android:background="@drawable/gt_" android:padding="0.0px" android:layout_width="fill_parent" android:layout_height="44.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView android:ellipsize="end" android:gravity="center" android:id="@id/ivTitleName" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="96.0dip" android:layout_marginRight="96.0dip" android:text="@null" android:singleLine="true" android:layout_centerInParent="true" style="@style/z3" />
-    <TextView android:gravity="center" android:id="@id/ivTitleBtnLeft" android:background="@drawable/dk7" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="16.0dip" android:maxWidth="88.0dip" android:minWidth="40.0dip" android:text="@null" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/z2" />
+    <TextView android:gravity="center" android:id="@id/ivTitleBtnLeft" android:background="@drawable/dmz" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="16.0dip" android:maxWidth="88.0dip" android:minWidth="40.0dip" android:text="@null" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/z2" />
 </RelativeLayout>

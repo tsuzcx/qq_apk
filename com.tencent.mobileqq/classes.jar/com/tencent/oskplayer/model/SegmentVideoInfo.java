@@ -48,53 +48,42 @@ public class SegmentVideoInfo
   
   public static int maxFloor(Set<Integer> paramSet, int paramInt)
   {
-    if ((paramSet == null) || (paramSet.size() == 0)) {}
-    label73:
-    label74:
-    for (;;)
+    int i = paramInt;
+    if (paramSet != null)
     {
-      return paramInt;
+      if (paramSet.size() == 0) {
+        return paramInt;
+      }
+      i = 0;
       paramSet = paramSet.iterator();
-      int i = 0;
-      if (paramSet.hasNext())
+      while (paramSet.hasNext())
       {
         Integer localInteger = (Integer)paramSet.next();
-        if ((localInteger.intValue() <= i) || (localInteger.intValue() > paramInt)) {
-          break label73;
+        if ((localInteger.intValue() > i) && (localInteger.intValue() <= paramInt)) {
+          i = localInteger.intValue();
         }
-        i = localInteger.intValue();
       }
-      for (;;)
-      {
-        break;
-        if (i == 0) {
-          break label74;
-        }
-        return i;
+      if (i == 0) {
+        return paramInt;
       }
     }
+    return i;
   }
   
   private void resetStreamTypeIfNeeded()
   {
-    int i;
-    if ((this.streams != null) && (this.streams.size() > 0))
+    Object localObject = this.streams;
+    if ((localObject != null) && (((HashMap)localObject).size() > 0))
     {
-      Iterator localIterator = this.streams.keySet().iterator();
-      i = 0;
-      if (localIterator.hasNext())
+      localObject = this.streams.keySet().iterator();
+      int i = 0;
+      while (((Iterator)localObject).hasNext())
       {
-        Integer localInteger = (Integer)localIterator.next();
-        if (localInteger.intValue() <= i) {
-          break label103;
+        Integer localInteger = (Integer)((Iterator)localObject).next();
+        if (localInteger.intValue() > i) {
+          i = localInteger.intValue();
         }
-        i = localInteger.intValue();
       }
-    }
-    label103:
-    for (;;)
-    {
-      break;
       if (i <= 4)
       {
         if (this.defaultStreamRate >= 750) {
@@ -104,7 +93,6 @@ public class SegmentVideoInfo
           this.currentStreamRate = 0;
         }
       }
-      return;
     }
   }
   
@@ -136,18 +124,23 @@ public class SegmentVideoInfo
   
   public String getRealSegmentUrl(int paramInt1, int paramInt2)
   {
-    Object localObject = getStreamInfo(paramInt1);
-    if ((localObject == null) || (((SegmentVideoInfo.StreamInfo)localObject).segmentInfos == null)) {
-      return "";
+    SegmentVideoInfo.StreamInfo localStreamInfo = getStreamInfo(paramInt1);
+    Object localObject = "";
+    if (localStreamInfo != null)
+    {
+      if (localStreamInfo.segmentInfos == null) {
+        return "";
+      }
+      localObject = (SegmentVideoInfo.SegmentInfo)localStreamInfo.segmentInfos.get(paramInt2);
+      if (localObject == null) {
+        return "";
+      }
+      if (TextUtils.isEmpty(((SegmentVideoInfo.SegmentInfo)localObject).url)) {
+        return "";
+      }
+      localObject = ((SegmentVideoInfo.SegmentInfo)localObject).url;
     }
-    localObject = (SegmentVideoInfo.SegmentInfo)((SegmentVideoInfo.StreamInfo)localObject).segmentInfos.get(paramInt2);
-    if (localObject == null) {
-      return "";
-    }
-    if (TextUtils.isEmpty(((SegmentVideoInfo.SegmentInfo)localObject).url)) {
-      return "";
-    }
-    return ((SegmentVideoInfo.SegmentInfo)localObject).url;
+    return localObject;
   }
   
   public int getSegmentCount()
@@ -161,10 +154,11 @@ public class SegmentVideoInfo
   
   public SegmentVideoInfo.StreamInfo getStreamInfo(int paramInt)
   {
-    if ((this.streams == null) || (this.streams.size() == 0)) {
-      return null;
+    HashMap localHashMap = this.streams;
+    if ((localHashMap != null) && (localHashMap.size() != 0)) {
+      return (SegmentVideoInfo.StreamInfo)this.streams.get(Integer.valueOf(paramInt));
     }
-    return (SegmentVideoInfo.StreamInfo)this.streams.get(Integer.valueOf(paramInt));
+    return null;
   }
   
   public HashMap<Integer, SegmentVideoInfo.StreamInfo> getStreams()
@@ -180,18 +174,19 @@ public class SegmentVideoInfo
   
   public boolean isValid()
   {
-    if ((this.streams == null) || (this.streams.isEmpty()))
+    Object localObject = this.streams;
+    if ((localObject != null) && (!((HashMap)localObject).isEmpty()))
     {
-      PlayerUtils.log(6, "SegmentVideoInfo", "streams is null or empty");
-      return false;
-    }
-    Iterator localIterator = this.streams.values().iterator();
-    while (localIterator.hasNext()) {
-      if (!((SegmentVideoInfo.StreamInfo)localIterator.next()).isValid()) {
-        return false;
+      localObject = this.streams.values().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (!((SegmentVideoInfo.StreamInfo)((Iterator)localObject).next()).isValid()) {
+          return false;
+        }
       }
+      return true;
     }
-    return true;
+    PlayerUtils.log(6, "SegmentVideoInfo", "streams is null or empty");
+    return false;
   }
   
   public void setCurrentStreamType(int paramInt)
@@ -208,10 +203,11 @@ public class SegmentVideoInfo
   
   public void setStreamInfo(SegmentVideoInfo.StreamInfo paramStreamInfo, int paramInt)
   {
-    if (this.streams == null) {
+    HashMap localHashMap = this.streams;
+    if (localHashMap == null) {
       return;
     }
-    this.streams.put(Integer.valueOf(paramInt), paramStreamInfo);
+    localHashMap.put(Integer.valueOf(paramInt), paramStreamInfo);
   }
   
   public void setStreams(HashMap<Integer, SegmentVideoInfo.StreamInfo> paramHashMap)
@@ -226,33 +222,35 @@ public class SegmentVideoInfo
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder(64).append("SegmentVideoInfo{streams=[");
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    localStringBuilder.append("SegmentVideoInfo{streams=[");
     Iterator localIterator = this.streams.entrySet().iterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       Object localObject = (Map.Entry)localIterator.next();
-      localStringBuilder.append("{streamType=").append(((Map.Entry)localObject).getKey()).append(", streamInfo=");
+      localStringBuilder.append("{streamType=");
+      localStringBuilder.append(((Map.Entry)localObject).getKey());
+      localStringBuilder.append(", streamInfo=");
       localObject = (SegmentVideoInfo.StreamInfo)((Map.Entry)localObject).getValue();
       if (localObject == null) {
         localStringBuilder.append("null");
-      }
-      for (;;)
-      {
-        localStringBuilder.append("}, ");
-        break;
+      } else {
         localStringBuilder.append(((SegmentVideoInfo.StreamInfo)localObject).toString());
       }
+      localStringBuilder.append("}, ");
     }
     localStringBuilder.append("]");
-    localStringBuilder.append(", defaultStreamRate=").append(this.defaultStreamRate);
-    localStringBuilder.append(", currentStreamRate=").append(this.currentStreamRate);
+    localStringBuilder.append(", defaultStreamRate=");
+    localStringBuilder.append(this.defaultStreamRate);
+    localStringBuilder.append(", currentStreamRate=");
+    localStringBuilder.append(this.currentStreamRate);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.model.SegmentVideoInfo
  * JD-Core Version:    0.7.0.1
  */

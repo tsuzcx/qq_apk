@@ -10,10 +10,12 @@ class WSGridDataManager$WSGridRspModel
   
   public ArrayList<stSimpleMetaFeed> a()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      return new ArrayList();
+    ArrayList localArrayList2 = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList1 = localArrayList2;
+    if (localArrayList2 == null) {
+      localArrayList1 = new ArrayList();
     }
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    return localArrayList1;
   }
   
   public void a(ArrayList<stSimpleMetaFeed> paramArrayList)
@@ -33,7 +35,7 @@ class WSGridDataManager$WSGridRspModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.data.WSGridDataManager.WSGridRspModel
  * JD-Core Version:    0.7.0.1
  */

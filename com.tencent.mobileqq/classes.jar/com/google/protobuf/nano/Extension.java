@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.List<Lcom.google.protobuf.nano.UnknownFieldData;>;
 
 public class Extension<M extends ExtendableMessageNano<M>, T>
 {
@@ -67,34 +66,30 @@ public class Extension<M extends ExtendableMessageNano<M>, T>
   
   private T getRepeatedValueFrom(List<UnknownFieldData> paramList)
   {
-    int j = 0;
     ArrayList localArrayList = new ArrayList();
+    int j = 0;
     int i = 0;
     while (i < paramList.size())
     {
-      localObject = (UnknownFieldData)paramList.get(i);
-      if (((UnknownFieldData)localObject).bytes.length != 0) {
-        readDataInto((UnknownFieldData)localObject, localArrayList);
+      UnknownFieldData localUnknownFieldData = (UnknownFieldData)paramList.get(i);
+      if (localUnknownFieldData.bytes.length != 0) {
+        readDataInto(localUnknownFieldData, localArrayList);
       }
       i += 1;
     }
     int k = localArrayList.size();
-    if (k == 0)
-    {
-      paramList = null;
-      return paramList;
+    if (k == 0) {
+      return null;
     }
-    Object localObject = this.clazz.cast(Array.newInstance(this.clazz.getComponentType(), k));
+    paramList = this.clazz;
+    paramList = paramList.cast(Array.newInstance(paramList.getComponentType(), k));
     i = j;
-    for (;;)
+    while (i < k)
     {
-      paramList = (List<UnknownFieldData>)localObject;
-      if (i >= k) {
-        break;
-      }
-      Array.set(localObject, i, localArrayList.get(i));
+      Array.set(paramList, i, localArrayList.get(i));
       i += 1;
     }
+    return paramList;
   }
   
   private T getSingularValueFrom(List<UnknownFieldData> paramList)
@@ -108,17 +103,16 @@ public class Extension<M extends ExtendableMessageNano<M>, T>
   
   protected int computeRepeatedSerializedSize(Object paramObject)
   {
-    int j = 0;
     int m = Array.getLength(paramObject);
     int i = 0;
-    while (i < m)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      int k = j;
+      k = j;
       if (Array.get(paramObject, i) != null) {
         k = j + computeSingularSerializedSize(Array.get(paramObject, i));
       }
       i += 1;
-      j = k;
     }
     return j;
   }
@@ -134,14 +128,18 @@ public class Extension<M extends ExtendableMessageNano<M>, T>
   protected int computeSingularSerializedSize(Object paramObject)
   {
     int i = WireFormatNano.getTagFieldNumber(this.tag);
-    switch (this.type)
+    int j = this.type;
+    if (j != 10)
     {
-    default: 
-      throw new IllegalArgumentException("Unknown type " + this.type);
-    case 10: 
-      return CodedOutputByteBufferNano.computeGroupSize(i, (MessageNano)paramObject);
+      if (j == 11) {
+        return CodedOutputByteBufferNano.computeMessageSize(i, (MessageNano)paramObject);
+      }
+      paramObject = new StringBuilder();
+      paramObject.append("Unknown type ");
+      paramObject.append(this.type);
+      throw new IllegalArgumentException(paramObject.toString());
     }
-    return CodedOutputByteBufferNano.computeMessageSize(i, (MessageNano)paramObject);
+    return CodedOutputByteBufferNano.computeGroupSize(i, (MessageNano)paramObject);
   }
   
   final T getValueFrom(List<UnknownFieldData> paramList)
@@ -160,37 +158,46 @@ public class Extension<M extends ExtendableMessageNano<M>, T>
     Class localClass;
     if (this.repeated) {
       localClass = this.clazz.getComponentType();
+    } else {
+      localClass = this.clazz;
     }
-    for (;;)
+    try
     {
-      try
+      int i = this.type;
+      if (i != 10)
       {
-        switch (this.type)
+        if (i == 11)
         {
-        case 10: 
-          throw new IllegalArgumentException("Unknown type " + this.type);
+          localObject = (MessageNano)localClass.newInstance();
+          paramCodedInputByteBufferNano.readMessage((MessageNano)localObject);
+          return localObject;
         }
+        paramCodedInputByteBufferNano = new StringBuilder();
+        paramCodedInputByteBufferNano.append("Unknown type ");
+        paramCodedInputByteBufferNano.append(this.type);
+        throw new IllegalArgumentException(paramCodedInputByteBufferNano.toString());
       }
-      catch (InstantiationException paramCodedInputByteBufferNano)
-      {
-        throw new IllegalArgumentException("Error creating instance of class " + localClass, paramCodedInputByteBufferNano);
-        localClass = this.clazz;
-        continue;
-        MessageNano localMessageNano = (MessageNano)localClass.newInstance();
-        paramCodedInputByteBufferNano.readGroup(localMessageNano, WireFormatNano.getTagFieldNumber(this.tag));
-        return localMessageNano;
-        localMessageNano = (MessageNano)localClass.newInstance();
-        paramCodedInputByteBufferNano.readMessage(localMessageNano);
-        return localMessageNano;
-      }
-      catch (IllegalAccessException paramCodedInputByteBufferNano)
-      {
-        throw new IllegalArgumentException("Error creating instance of class " + localClass, paramCodedInputByteBufferNano);
-      }
-      catch (IOException paramCodedInputByteBufferNano)
-      {
-        throw new IllegalArgumentException("Error reading extension field", paramCodedInputByteBufferNano);
-      }
+      localObject = (MessageNano)localClass.newInstance();
+      paramCodedInputByteBufferNano.readGroup((MessageNano)localObject, WireFormatNano.getTagFieldNumber(this.tag));
+      return localObject;
+    }
+    catch (IOException paramCodedInputByteBufferNano)
+    {
+      throw new IllegalArgumentException("Error reading extension field", paramCodedInputByteBufferNano);
+    }
+    catch (IllegalAccessException paramCodedInputByteBufferNano)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Error creating instance of class ");
+      ((StringBuilder)localObject).append(localClass);
+      throw new IllegalArgumentException(((StringBuilder)localObject).toString(), paramCodedInputByteBufferNano);
+    }
+    catch (InstantiationException paramCodedInputByteBufferNano)
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Error creating instance of class ");
+      ((StringBuilder)localObject).append(localClass);
+      throw new IllegalArgumentException(((StringBuilder)localObject).toString(), paramCodedInputByteBufferNano);
     }
   }
   
@@ -215,28 +222,31 @@ public class Extension<M extends ExtendableMessageNano<M>, T>
   
   protected void writeSingularData(Object paramObject, CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    for (;;)
+    try
     {
-      try
+      paramCodedOutputByteBufferNano.writeRawVarint32(this.tag);
+      int i = this.type;
+      if (i != 10)
       {
-        paramCodedOutputByteBufferNano.writeRawVarint32(this.tag);
-        switch (this.type)
+        if (i == 11)
         {
-        case 10: 
-          throw new IllegalArgumentException("Unknown type " + this.type);
+          paramCodedOutputByteBufferNano.writeMessageNoTag((MessageNano)paramObject);
+          return;
         }
-      }
-      catch (IOException paramObject)
-      {
-        throw new IllegalStateException(paramObject);
+        paramObject = new StringBuilder();
+        paramObject.append("Unknown type ");
+        paramObject.append(this.type);
+        throw new IllegalArgumentException(paramObject.toString());
       }
       paramObject = (MessageNano)paramObject;
-      int i = WireFormatNano.getTagFieldNumber(this.tag);
+      i = WireFormatNano.getTagFieldNumber(this.tag);
       paramCodedOutputByteBufferNano.writeGroupNoTag(paramObject);
       paramCodedOutputByteBufferNano.writeTag(i, 4);
       return;
-      paramCodedOutputByteBufferNano.writeMessageNoTag((MessageNano)paramObject);
-      return;
+    }
+    catch (IOException paramObject)
+    {
+      throw new IllegalStateException(paramObject);
     }
   }
   
@@ -252,7 +262,7 @@ public class Extension<M extends ExtendableMessageNano<M>, T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.protobuf.nano.Extension
  * JD-Core Version:    0.7.0.1
  */

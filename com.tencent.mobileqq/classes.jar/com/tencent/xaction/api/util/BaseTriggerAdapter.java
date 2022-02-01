@@ -14,7 +14,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/util/BaseTriggerAdapter;", "Lcom/google/gson/JsonSerializer;", "Lcom/tencent/xaction/trigger/BaseTrigger;", "Lcom/google/gson/JsonDeserializer;", "()V", "deserialize", "json", "Lcom/google/gson/JsonElement;", "typeOfT", "Ljava/lang/reflect/Type;", "context", "Lcom/google/gson/JsonDeserializationContext;", "serialize", "src", "typeOfSrc", "Lcom/google/gson/JsonSerializationContext;", "XActionEngine_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/util/BaseTriggerAdapter;", "Lcom/google/gson/JsonSerializer;", "Lcom/tencent/xaction/trigger/BaseTrigger;", "Lcom/google/gson/JsonDeserializer;", "()V", "deserialize", "json", "Lcom/google/gson/JsonElement;", "typeOfT", "Ljava/lang/reflect/Type;", "context", "Lcom/google/gson/JsonDeserializationContext;", "serialize", "src", "typeOfSrc", "Lcom/google/gson/JsonSerializationContext;", "XActionCore_release"}, k=1, mv={1, 1, 16})
 public final class BaseTriggerAdapter
   implements JsonDeserializer<BaseTrigger>, JsonSerializer<BaseTrigger>
 {
@@ -41,12 +41,12 @@ public final class BaseTriggerAdapter
     if (paramType != null) {
       return (BaseTrigger)paramJsonDeserializationContext.deserialize(paramJsonElement, (Type)paramType);
     }
-    return null;
+    return (BaseTrigger)new BaseTriggerAdapter.deserialize.1();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.api.util.BaseTriggerAdapter
  * JD-Core Version:    0.7.0.1
  */

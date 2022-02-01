@@ -1,28 +1,25 @@
 package com.tencent.open.agent;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.view.View;
 import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.biz.qrcode.util.QRUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import com.tencent.mobileqq.utils.HexUtil;
+import com.tencent.mobileqq.qrscan.OnQRHandleResultCallback;
 import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.open.agent.util.QRLoginAuthUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
 import java.lang.ref.WeakReference;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
 import mqq.app.AppRuntime;
 import mqq.manager.WtloginManager;
 import mqq.observer.WtloginObserver;
@@ -32,19 +29,14 @@ import org.json.JSONObject;
 public class QrAgentLoginManager
 {
   private static volatile QrAgentLoginManager jdField_a_of_type_ComTencentOpenAgentQrAgentLoginManager;
-  public static boolean a;
+  public static boolean a = true;
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
-  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<OnQRHandleResultCallback> jdField_a_of_type_JavaLangRefWeakReference;
   private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new QrAgentLoginManager.2(this);
   private byte[] jdField_a_of_type_ArrayOfByte;
   private String jdField_b_of_type_JavaLangString;
   private boolean jdField_b_of_type_Boolean;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = true;
-  }
   
   private QrAgentLoginManager()
   {
@@ -53,15 +45,16 @@ public class QrAgentLoginManager
   
   public static QrAgentLoginManager a()
   {
-    if (jdField_a_of_type_ComTencentOpenAgentQrAgentLoginManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentOpenAgentQrAgentLoginManager == null) {
-        jdField_a_of_type_ComTencentOpenAgentQrAgentLoginManager = new QrAgentLoginManager();
+    if (jdField_a_of_type_ComTencentOpenAgentQrAgentLoginManager == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentOpenAgentQrAgentLoginManager == null) {
+          jdField_a_of_type_ComTencentOpenAgentQrAgentLoginManager = new QrAgentLoginManager();
+        }
       }
-      return jdField_a_of_type_ComTencentOpenAgentQrAgentLoginManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentOpenAgentQrAgentLoginManager;
   }
   
   @Nullable
@@ -95,15 +88,13 @@ public class QrAgentLoginManager
   
   private void a()
   {
+    int j = BaseApplicationImpl.sProcessId;
     int i = 1;
-    if (BaseApplicationImpl.sProcessId == 1) {}
-    for (;;)
-    {
-      if (i != 0) {
-        QIPCServerHelper.getInstance().register(new QrAgentLoginManager.1(this, "QR_LOGIN_QIPC_MODULE_NAME"));
-      }
-      return;
+    if (j != 1) {
       i = 0;
+    }
+    if (i != 0) {
+      QIPCServerHelper.getInstance().register(new QrAgentLoginManager.1(this, "QR_LOGIN_QIPC_MODULE_NAME"));
     }
   }
   
@@ -125,33 +116,39 @@ public class QrAgentLoginManager
   
   private void a(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte != null) {}
-    for (paramArrayOfByte = new String(paramArrayOfByte);; paramArrayOfByte = HardCodeUtil.a(2131711162))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QrAgentLoginManager", 2, "onQRCodeExpired: invoked.  error: " + paramArrayOfByte);
-      }
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-      {
-        paramArrayOfByte = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (paramArrayOfByte != null) {
-          paramArrayOfByte.setVisibility(8);
-        }
-      }
-      paramArrayOfByte = BaseActivity.sTopActivity;
-      if (!(paramArrayOfByte instanceof ScannerActivity)) {
-        break;
-      }
-      Intent localIntent = new Intent(paramArrayOfByte, QRLoginAuthActivity.class);
-      localIntent.putExtra("QR_CODE_STRING", this.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("KEY_QR_CODE_EXPIRED", true);
-      paramArrayOfByte.startActivityForResult(localIntent, 2);
-      return;
+    if (paramArrayOfByte != null) {
+      paramArrayOfByte = new String(paramArrayOfByte);
+    } else {
+      paramArrayOfByte = HardCodeUtil.a(2131711138);
     }
-    paramArrayOfByte = new Intent(BaseApplicationImpl.context, QRLoginAuthActivity.class);
-    paramArrayOfByte.putExtra("QR_CODE_STRING", this.jdField_a_of_type_JavaLangString);
-    paramArrayOfByte.putExtra("KEY_QR_CODE_EXPIRED", true);
-    BaseApplicationImpl.context.startActivity(paramArrayOfByte);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onQRCodeExpired: invoked.  error: ");
+      ((StringBuilder)localObject).append(paramArrayOfByte);
+      QLog.i("QrAgentLoginManager", 2, ((StringBuilder)localObject).toString());
+    }
+    paramArrayOfByte = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (paramArrayOfByte == null) {
+      paramArrayOfByte = null;
+    } else {
+      paramArrayOfByte = (OnQRHandleResultCallback)paramArrayOfByte.get();
+    }
+    if (paramArrayOfByte != null) {
+      paramArrayOfByte.a(false);
+    }
+    Intent localIntent = new Intent();
+    localIntent.putExtra("QR_CODE_STRING", this.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("KEY_QR_CODE_EXPIRED", true);
+    Object localObject = QBaseActivity.sTopActivity;
+    if (localObject == null) {
+      localObject = BaseApplicationImpl.context;
+    }
+    localIntent.setClass((Context)localObject, QRLoginAuthActivity.class);
+    ((Context)localObject).startActivity(localIntent);
+    if (paramArrayOfByte != null) {
+      paramArrayOfByte.b();
+    }
   }
   
   private boolean a()
@@ -194,8 +191,8 @@ public class QrAgentLoginManager
   
   public void a(long paramLong, String paramString)
   {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    Intent localIntent = new Intent(localBaseActivity, AgentActivity.class);
+    QBaseActivity localQBaseActivity = QBaseActivity.sTopActivity;
+    Intent localIntent = new Intent(localQBaseActivity, AgentActivity.class);
     localIntent.putExtra("key_action", "action_login");
     Bundle localBundle = new Bundle();
     localBundle.putBoolean("key_login_by_qr_scan", true);
@@ -204,80 +201,47 @@ public class QrAgentLoginManager
     localBundle.putLong("KEY_ONLINE_STATUS", this.jdField_a_of_type_Long);
     localBundle.putByteArray("key_qr_code", this.jdField_a_of_type_ArrayOfByte);
     localIntent.putExtra("key_params", localBundle);
-    localBaseActivity.startActivity(localIntent);
+    localQBaseActivity.startActivity(localIntent);
   }
   
   public void a(Bundle paramBundle, boolean paramBoolean)
   {
-    OpenSDKAppInterface localOpenSDKAppInterface = a();
-    if (localOpenSDKAppInterface == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QrAgentLoginManager", 2, " openSDKApp: " + localOpenSDKAppInterface);
-      }
-      return;
-    }
-    long l = paramBundle.getLong("KEY_ONLINE_STATUS");
-    paramBundle = paramBundle.getByteArray("key_qr_code");
-    Object localObject1 = QRUtils.a(l);
-    Object localObject2 = ByteBuffer.allocate(localObject1.length + 4);
-    ((ByteBuffer)localObject2).putShort((short)2);
-    ((ByteBuffer)localObject2).putShort((short)localObject1.length);
-    ((ByteBuffer)localObject2).put((byte[])localObject1);
-    Object localObject3 = ((ByteBuffer)localObject2).array();
-    localObject1 = localOpenSDKAppInterface.getAccount();
-    localObject2 = new ArrayList();
-    if ((!TextUtils.isEmpty("")) && (!"".equals(localObject1)))
-    {
-      byte[] arrayOfByte = "".getBytes();
-      ByteBuffer localByteBuffer = ByteBuffer.allocate(arrayOfByte.length + 4);
-      localByteBuffer.putShort((short)1);
-      localByteBuffer.putShort((short)arrayOfByte.length);
-      localByteBuffer.put(arrayOfByte);
-      arrayOfByte = localByteBuffer.array();
-      localByteBuffer = ByteBuffer.allocate(arrayOfByte.length + 4);
-      localByteBuffer.putShort((short)4);
-      localByteBuffer.putShort((short)arrayOfByte.length);
-      localByteBuffer.put(arrayOfByte);
-      arrayOfByte = localByteBuffer.array();
-      ((ArrayList)localObject2).add(HexUtil.bytes2HexStr((byte[])localObject3));
-      ((ArrayList)localObject2).add(HexUtil.bytes2HexStr(arrayOfByte));
-      localObject3 = ByteBuffer.allocate(8);
-      ((ByteBuffer)localObject3).putShort((short)21);
-      ((ByteBuffer)localObject3).putShort((short)4);
-      if (!paramBoolean) {
-        break label352;
-      }
-    }
-    label352:
-    for (int i = 1;; i = 0)
-    {
-      ((ByteBuffer)localObject3).putInt(i);
-      ((ArrayList)localObject2).add(HexUtil.bytes2HexStr(((ByteBuffer)localObject3).array()));
-      ((WtloginManager)localOpenSDKAppInterface.getManager(1)).closeCode((String)localObject1, 16L, paramBundle, 1, (ArrayList)localObject2, this.jdField_a_of_type_MqqObserverWtloginObserver);
-      return;
-      ((ArrayList)localObject2).add(HexUtil.bytes2HexStr((byte[])localObject3));
-      break;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  public void a(QQAppInterface paramQQAppInterface, String paramString, View paramView, boolean paramBoolean)
+  public void a(QQAppInterface paramQQAppInterface, String paramString, OnQRHandleResultCallback paramOnQRHandleResultCallback, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QrAgentLoginManager", 2, "requestQRLogin: invoked.  qrCodeStr: " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("requestQRLogin: invoked.  qrCodeStr: ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("QrAgentLoginManager", 2, ((StringBuilder)localObject).toString());
     }
     this.jdField_a_of_type_Long = paramQQAppInterface.getOnlineStauts();
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnQRHandleResultCallback);
     this.jdField_a_of_type_JavaLangString = paramString;
-    BaseApplicationImpl.context.getSharedPreferences("SP_QR_AGENT_LOGIN", 4).edit().putString("KEY_QR_AGENT_LOGIN_CODE" + paramQQAppInterface.getCurrentUin(), this.jdField_a_of_type_JavaLangString).apply();
-    paramView = (WtloginManager)paramQQAppInterface.getManager(1);
+    paramOnQRHandleResultCallback = BaseApplicationImpl.context.getSharedPreferences("SP_QR_AGENT_LOGIN", 4).edit();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("KEY_QR_AGENT_LOGIN_CODE");
+    ((StringBuilder)localObject).append(paramQQAppInterface.getCurrentUin());
+    paramOnQRHandleResultCallback.putString(((StringBuilder)localObject).toString(), this.jdField_a_of_type_JavaLangString).apply();
+    paramOnQRHandleResultCallback = (WtloginManager)paramQQAppInterface.getManager(1);
     int i = paramString.indexOf("?k=") + 3;
-    Object localObject = paramString.substring(i, i + 32);
-    this.jdField_a_of_type_ArrayOfByte = QRLoginAuthActivity.a(((String)localObject).getBytes(), ((String)localObject).length());
+    localObject = paramString.substring(i, i + 32);
+    this.jdField_a_of_type_ArrayOfByte = QRLoginAuthUtil.a(((String)localObject).getBytes(), ((String)localObject).length());
     paramString = paramString.substring(paramString.indexOf("&f=") + 3);
     paramQQAppInterface = paramQQAppInterface.getAccount();
-    if (QLog.isColorLevel()) {
-      QLog.i("QrAgentLoginManager", 2, "requestQRLogin: invoked.  userAccount: " + paramQQAppInterface + " carAppIdString: " + paramString + " content: " + (String)localObject);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("requestQRLogin: invoked.  userAccount: ");
+      localStringBuilder.append(paramQQAppInterface);
+      localStringBuilder.append(" carAppIdString: ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" content: ");
+      localStringBuilder.append((String)localObject);
+      QLog.i("QrAgentLoginManager", 2, localStringBuilder.toString());
     }
     this.jdField_b_of_type_Boolean = paramBoolean;
     if (this.jdField_b_of_type_Boolean) {
@@ -285,12 +249,12 @@ public class QrAgentLoginManager
     }
     paramString = this.jdField_a_of_type_ArrayOfByte;
     localObject = this.jdField_a_of_type_MqqObserverWtloginObserver;
-    paramView.verifyCode(paramQQAppInterface, 16L, true, paramString, new int[] { 3, 5, 32, 54 }, 1, (WtloginObserver)localObject);
+    paramOnQRHandleResultCallback.verifyCode(paramQQAppInterface, 16L, true, paramString, new int[] { 3, 5, 32, 54 }, 1, (WtloginObserver)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.QrAgentLoginManager
  * JD-Core Version:    0.7.0.1
  */

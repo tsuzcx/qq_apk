@@ -21,97 +21,93 @@ class ZhituPanelView$1
   public void run()
   {
     Object localObject3;
+    Object localObject2;
     if (!this.a.jdField_b_of_type_Boolean)
     {
       localObject3 = ZhituManager.a(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.a.jdField_a_of_type_JavaLangString, this.a.c);
-      if (!(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof BitmapDrawable)) {
-        break label496;
+      Object localObject1;
+      if ((this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof BitmapDrawable)) {
+        localObject1 = ((BitmapDrawable)this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable).getBitmap();
+      } else {
+        localObject1 = null;
       }
-    }
-    File localFile;
-    label340:
-    label496:
-    for (Object localObject1 = ((BitmapDrawable)this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable).getBitmap();; localFile = null)
-    {
       if (localObject1 == null) {
         return;
       }
-      for (;;)
+      try
       {
-        for (;;)
+        if (!((File)localObject3).exists())
         {
-          try
-          {
-            if (!((File)localObject3).exists())
-            {
-              ((File)localObject3).getParentFile().mkdirs();
-              ((File)localObject3).createNewFile();
-            }
-            boolean bool = FileUtils.a((Bitmap)localObject1, ((File)localObject3).getAbsolutePath());
-            if (!bool) {
-              break;
-            }
-            localObject1 = localObject3;
-            if (ZhituManager.a(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a() != 7220) {
-              break label340;
-            }
-            this.a.jdField_b_of_type_JavaLangString = ((File)localObject1).getAbsolutePath();
-            ZhituManager.a(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).f(this.a);
-            ReportController.b(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008C72", "0X8008C72", ZhituManager.a(ZhituManager.a(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a()), 0, "", "", "", "");
-            return;
-          }
-          catch (IOException localIOException)
-          {
-            localIOException.printStackTrace();
-            return;
-          }
-          catch (OutOfMemoryError localOutOfMemoryError1)
-          {
-            ZhituManager.a(localOutOfMemoryError1);
-            return;
-          }
-          if (this.a.jdField_b_of_type_JavaLangString == null) {
-            try
-            {
-              Object localObject2 = ZhituManager.a(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.a);
-              if (localObject2 == null) {
-                break;
-              }
-              localObject2 = new File((String)localObject2);
-            }
-            catch (OutOfMemoryError localOutOfMemoryError2)
-            {
-              for (;;)
-              {
-                QLog.e(ZhituPanelView.b(), 1, "oom when save bitmap");
-                ZhituManager.a(localOutOfMemoryError2);
-                localFile = null;
-              }
-            }
-          }
+          ((File)localObject3).getParentFile().mkdirs();
+          ((File)localObject3).createNewFile();
         }
-        localFile = ZhituManager.a(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.a.jdField_a_of_type_JavaLangString, this.a.c);
-        FileUtils.d(this.a.jdField_b_of_type_JavaLangString, localFile.getAbsolutePath());
-        continue;
-        localObject3 = new Intent();
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.add(localFile.getAbsolutePath());
-        ((Intent)localObject3).putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
-        ((Intent)localObject3).putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1049);
-        ((Intent)localObject3).putExtra("uin", this.this$0.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        ((Intent)localObject3).putExtra("uintype", this.this$0.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-        ((Intent)localObject3).putExtra("troop_uin", this.this$0.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_JavaLangString);
-        ((Intent)localObject3).putExtra("PhotoConst.SEND_SIZE_SPEC", 0);
-        ((Intent)localObject3).putExtra("send_in_background", true);
-        ((Intent)localObject3).putExtra("PhotoConst.SINGLE_PHOTO_PATH", localArrayList);
-        new SendPhotoTask(this.this$0.a.a(), (Intent)localObject3, null).run();
+        boolean bool = FileUtils.saveBitmapToFile((Bitmap)localObject1, ((File)localObject3).getAbsolutePath());
+        localObject1 = localObject3;
+        if (bool) {
+          break label239;
+        }
+        return;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError1)
+      {
+        ZhituManager.a(localOutOfMemoryError1);
+        return;
+      }
+      catch (IOException localIOException)
+      {
+        localIOException.printStackTrace();
+        return;
       }
     }
+    else if (this.a.jdField_b_of_type_JavaLangString == null)
+    {
+      try
+      {
+        String str = ZhituManager.a(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.a);
+      }
+      catch (OutOfMemoryError localOutOfMemoryError2)
+      {
+        QLog.e(ZhituPanelView.b(), 1, "oom when save bitmap");
+        ZhituManager.a(localOutOfMemoryError2);
+        localObject2 = null;
+      }
+      if (localObject2 == null) {
+        return;
+      }
+      localObject2 = new File((String)localObject2);
+    }
+    else
+    {
+      localObject2 = ZhituManager.a(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.a.jdField_a_of_type_JavaLangString, this.a.c);
+      FileUtils.copyFile(this.a.jdField_b_of_type_JavaLangString, ((File)localObject2).getAbsolutePath());
+    }
+    label239:
+    if (ZhituManager.a(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a() == 7220)
+    {
+      this.a.jdField_b_of_type_JavaLangString = ((File)localObject2).getAbsolutePath();
+      ZhituManager.a(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).f(this.a);
+    }
+    else
+    {
+      localObject3 = new Intent();
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(((File)localObject2).getAbsolutePath());
+      ((Intent)localObject3).putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
+      ((Intent)localObject3).putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1049);
+      ((Intent)localObject3).putExtra("uin", this.this$0.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      ((Intent)localObject3).putExtra("uintype", this.this$0.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+      ((Intent)localObject3).putExtra("troop_uin", this.this$0.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_JavaLangString);
+      ((Intent)localObject3).putExtra("PhotoConst.SEND_SIZE_SPEC", 0);
+      ((Intent)localObject3).putExtra("send_in_background", true);
+      ((Intent)localObject3).putExtra("PhotoConst.SINGLE_PHOTO_PATH", localArrayList);
+      new SendPhotoTask(this.this$0.a.a(), (Intent)localObject3, null).run();
+    }
+    ReportController.b(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008C72", "0X8008C72", ZhituManager.a(ZhituManager.a(this.this$0.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a()), 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituPanelView.1
  * JD-Core Version:    0.7.0.1
  */

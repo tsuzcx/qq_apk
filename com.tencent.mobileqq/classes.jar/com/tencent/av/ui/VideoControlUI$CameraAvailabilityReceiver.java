@@ -20,40 +20,58 @@ class VideoControlUI$CameraAvailabilityReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramIntent == null) || (this.a.jdField_a_of_type_ComTencentAvVideoController == null)) {
-      return;
-    }
-    long l = SeqUtil.a(paramIntent);
-    paramContext = paramIntent.getStringExtra("camera_id");
-    int i = paramIntent.getIntExtra("availability", 1);
-    QLog.w(this.a.d, 1, "CameraAvailabilityReceiver, cameraId[" + paramContext + "], availability[" + i + "], mCameraAvailable[" + this.a.jdField_a_of_type_ComTencentAvVideoController.a().aa + "], seq[" + l + "]");
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(paramContext, i);
-    if (i == 0)
+    if (paramIntent != null)
     {
-      VideoControlUI.a(this.a, l, i);
-      return;
-    }
-    paramContext = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-    if ((paramContext != null) && (paramContext.size() > 0))
-    {
-      paramContext = paramContext.entrySet().iterator();
-      do
+      if (this.a.jdField_a_of_type_ComTencentAvVideoController == null) {
+        return;
+      }
+      long l = SeqUtil.a(paramIntent);
+      paramContext = paramIntent.getStringExtra("camera_id");
+      int i = paramIntent.getIntExtra("availability", 1);
+      paramIntent = this.a.d;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("CameraAvailabilityReceiver, cameraId[");
+      localStringBuilder.append(paramContext);
+      localStringBuilder.append("], availability[");
+      localStringBuilder.append(i);
+      localStringBuilder.append("], mCameraAvailable[");
+      localStringBuilder.append(this.a.jdField_a_of_type_ComTencentAvVideoController.a().aa);
+      localStringBuilder.append("], seq[");
+      localStringBuilder.append(l);
+      localStringBuilder.append("]");
+      QLog.w(paramIntent, 1, localStringBuilder.toString());
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(paramContext, i);
+      if (i == 0)
       {
-        if (!paramContext.hasNext()) {
-          break;
+        VideoControlUI.a(this.a, l, i);
+        return;
+      }
+      int j = -1;
+      paramContext = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+      i = j;
+      if (paramContext != null)
+      {
+        i = j;
+        if (paramContext.size() > 0)
+        {
+          paramContext = paramContext.entrySet().iterator();
+          do
+          {
+            i = j;
+            if (!paramContext.hasNext()) {
+              break;
+            }
+          } while (((Integer)((Map.Entry)paramContext.next()).getValue()).intValue() != 0);
+          i = 0;
         }
-      } while (((Integer)((Map.Entry)paramContext.next()).getValue()).intValue() != 0);
-    }
-    for (i = 0;; i = -1)
-    {
+      }
       VideoControlUI.a(this.a, l, i);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoControlUI.CameraAvailabilityReceiver
  * JD-Core Version:    0.7.0.1
  */

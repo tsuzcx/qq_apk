@@ -21,11 +21,14 @@ public class SplashADWebPlugin
     this.mPluginNameSpace = "splashADPlugin";
   }
   
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  protected boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     if (paramLong == 8589934598L)
     {
-      QLog.i("QSplash@QbossSplashUtil", 1, "handleEvent finish or destroy. isFromSP:" + this.a);
+      paramString = new StringBuilder();
+      paramString.append("handleEvent finish or destroy. isFromSP:");
+      paramString.append(this.a);
+      QLog.i("QSplash@VasSplashUtil", 1, paramString.toString());
       if (this.a) {
         this.mRuntime.a().startActivity(new Intent(this.mRuntime.a(), SplashActivity.class));
       }
@@ -52,7 +55,7 @@ public class SplashADWebPlugin
     return bool1;
   }
   
-  public void onWebViewCreated(CustomWebView paramCustomWebView)
+  protected void onWebViewCreated(CustomWebView paramCustomWebView)
   {
     super.onWebViewCreated(paramCustomWebView);
     if (this.mRuntime.a().getIntent() != null) {
@@ -62,7 +65,7 @@ public class SplashADWebPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.splashad.SplashADWebPlugin
  * JD-Core Version:    0.7.0.1
  */

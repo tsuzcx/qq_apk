@@ -26,11 +26,7 @@ public class PlistHandler
   
   public void endElement(String paramString1, String paramString2, String paramString3)
   {
-    if ("plist".equals(paramString2)) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaLangStringBuilder.delete(0, this.jdField_a_of_type_JavaLangStringBuilder.length());
-      return;
+    if (!"plist".equals(paramString2)) {
       if ("array".equals(paramString2)) {
         this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaUtilStack.pop();
       } else if ("dict".equals(paramString2)) {
@@ -45,66 +41,60 @@ public class PlistHandler
         }
       }
     }
+    paramString1 = this.jdField_a_of_type_JavaLangStringBuilder;
+    paramString1.delete(0, paramString1.length());
   }
   
   public void startDocument() {}
   
   public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
   {
-    if ("plist".equals(paramString2)) {
+    if ("plist".equals(paramString2))
+    {
       this.jdField_a_of_type_Boolean = true;
-    }
-    do
-    {
       return;
-      if ("array".equals(paramString2))
+    }
+    if ("array".equals(paramString2))
+    {
+      if (this.jdField_a_of_type_Boolean)
       {
-        if (this.jdField_a_of_type_Boolean)
-        {
-          paramString1 = new ArrayList();
-          this.jdField_a_of_type_JavaUtilStack.push(paramString1);
-          this.jdField_a_of_type_Boolean = false;
-          return;
-        }
-        paramString1 = this.jdField_a_of_type_JavaUtilStack.peek();
-        paramString2 = new ArrayList();
-        if ((paramString1 instanceof ArrayList)) {
-          ((ArrayList)paramString1).add(paramString2);
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_JavaUtilStack.push(paramString2);
-          return;
-          if ((paramString1 instanceof HashMap)) {
-            ((HashMap)paramString1).put(this.jdField_a_of_type_JavaLangString, paramString2);
-          }
-        }
+        paramString1 = new ArrayList();
+        this.jdField_a_of_type_JavaUtilStack.push(paramString1);
+        this.jdField_a_of_type_Boolean = false;
+        return;
       }
-    } while (!"dict".equals(paramString2));
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_JavaUtilStack.push(new HashMap());
-      this.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    paramString1 = this.jdField_a_of_type_JavaUtilStack.peek();
-    paramString2 = new HashMap();
-    if ((paramString1 instanceof ArrayList)) {
-      ((ArrayList)paramString1).add(paramString2);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaUtilStack.push(paramString2);
-      return;
-      if ((paramString1 instanceof HashMap)) {
+      paramString1 = this.jdField_a_of_type_JavaUtilStack.peek();
+      paramString2 = new ArrayList();
+      if ((paramString1 instanceof ArrayList)) {
+        ((ArrayList)paramString1).add(paramString2);
+      } else if ((paramString1 instanceof HashMap)) {
         ((HashMap)paramString1).put(this.jdField_a_of_type_JavaLangString, paramString2);
       }
+      this.jdField_a_of_type_JavaUtilStack.push(paramString2);
+      return;
+    }
+    if ("dict".equals(paramString2))
+    {
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_JavaUtilStack.push(new HashMap());
+        this.jdField_a_of_type_Boolean = false;
+        return;
+      }
+      paramString1 = this.jdField_a_of_type_JavaUtilStack.peek();
+      paramString2 = new HashMap();
+      if ((paramString1 instanceof ArrayList)) {
+        ((ArrayList)paramString1).add(paramString2);
+      } else if ((paramString1 instanceof HashMap)) {
+        ((HashMap)paramString1).put(this.jdField_a_of_type_JavaLangString, paramString2);
+      }
+      this.jdField_a_of_type_JavaUtilStack.push(paramString2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.PlistHandler
  * JD-Core Version:    0.7.0.1
  */

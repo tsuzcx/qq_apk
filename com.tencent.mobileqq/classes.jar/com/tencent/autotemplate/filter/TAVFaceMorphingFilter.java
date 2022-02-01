@@ -59,20 +59,10 @@ public class TAVFaceMorphingFilter
   
   private PTFaceAttr getFaceInfo(ImageCollection.TrackImagePair paramTrackImagePair, TextureInfo paramTextureInfo)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramTrackImagePair != null)
-    {
-      localObject1 = localObject2;
-      if (paramTrackImagePair.getTrack() != null)
-      {
-        localObject1 = localObject2;
-        if ((paramTrackImagePair.getTrack().getExtraTrackInfo("extra_face_info") instanceof FaceInfo)) {
-          localObject1 = transform((FaceInfo)paramTrackImagePair.getTrack().getExtraTrackInfo("extra_face_info"), paramTextureInfo);
-        }
-      }
+    if ((paramTrackImagePair != null) && (paramTrackImagePair.getTrack() != null) && ((paramTrackImagePair.getTrack().getExtraTrackInfo("extra_face_info") instanceof FaceInfo))) {
+      return transform((FaceInfo)paramTrackImagePair.getTrack().getExtraTrackInfo("extra_face_info"), paramTextureInfo);
     }
-    return localObject1;
+    return null;
   }
   
   private List<PTFaceAttr> getFaceInfos(List<ImageCollection.TrackImagePair> paramList, List<TextureInfo> paramList1)
@@ -89,20 +79,10 @@ public class TAVFaceMorphingFilter
   
   private Rect getFrameInfo(ImageCollection.TrackImagePair paramTrackImagePair, TextureInfo paramTextureInfo)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramTrackImagePair != null)
-    {
-      localObject1 = localObject2;
-      if (paramTrackImagePair.getTrack() != null)
-      {
-        localObject1 = localObject2;
-        if ((paramTrackImagePair.getTrack().getExtraTrackInfo("extra_frame_info") instanceof FrameInfo)) {
-          localObject1 = transform((FrameInfo)paramTrackImagePair.getTrack().getExtraTrackInfo("extra_frame_info"), paramTextureInfo);
-        }
-      }
+    if ((paramTrackImagePair != null) && (paramTrackImagePair.getTrack() != null) && ((paramTrackImagePair.getTrack().getExtraTrackInfo("extra_frame_info") instanceof FrameInfo))) {
+      return transform((FrameInfo)paramTrackImagePair.getTrack().getExtraTrackInfo("extra_frame_info"), paramTextureInfo);
     }
-    return localObject1;
+    return null;
   }
   
   private List<Rect> getFrameInfos(List<ImageCollection.TrackImagePair> paramList, List<TextureInfo> paramList1)
@@ -130,17 +110,18 @@ public class TAVFaceMorphingFilter
   private float getTransitionProgress()
   {
     CMTimeRange localCMTimeRange = getTransitionTimeRange(this.currentTime);
-    if (localCMTimeRange == null) {}
-    float f;
-    do
-    {
+    if (localCMTimeRange == null) {
       return 0.0F;
-      f = (float)(this.currentTime.getTimeUs() - localCMTimeRange.getStartUs()) / (float)localCMTimeRange.getDurationUs();
-    } while (f < 0.0F);
-    if (f > 1.0F) {
-      return 1.0F;
     }
-    return f;
+    float f2 = (float)(this.currentTime.getTimeUs() - localCMTimeRange.getStartUs()) / (float)localCMTimeRange.getDurationUs();
+    if (f2 < 0.0F) {
+      return 0.0F;
+    }
+    float f1 = f2;
+    if (f2 > 1.0F) {
+      f1 = 1.0F;
+    }
+    return f1;
   }
   
   private CMTimeRange getTransitionTimeRange(CMTime paramCMTime)
@@ -172,7 +153,7 @@ public class TAVFaceMorphingFilter
     Rect localRect = paramFrameInfo.frame;
     float f1 = paramTextureInfo.width / paramFrameInfo.sourceWidth;
     float f2 = paramTextureInfo.height / paramFrameInfo.sourceHeight;
-    return new Rect((int)(localRect.left * f1), (int)(localRect.top * f2), (int)(f1 * localRect.right), (int)(localRect.bottom * f2));
+    return new Rect((int)(localRect.left * f1), (int)(localRect.top * f2), (int)(localRect.right * f1), (int)(localRect.bottom * f2));
   }
   
   private PTFaceAttr transform(FaceInfo paramFaceInfo, TextureInfo paramTextureInfo)
@@ -188,9 +169,10 @@ public class TAVFaceMorphingFilter
     super.apply(paramTAVVideoMixEffect, paramImageCollection, paramRenderInfo);
     List localList = paramImageCollection.getVideoChannelImages();
     CGSize localCGSize = paramRenderInfo.getRenderSize();
+    boolean bool = CollectionUtil.isEmptyList(localList);
     paramTAVVideoMixEffect = null;
     paramImageCollection = null;
-    if (!CollectionUtil.isEmptyList(localList))
+    if (!bool)
     {
       BenchUtil.benchStart("renderExtraChain");
       paramTAVVideoMixEffect = paramImageCollection;
@@ -222,7 +204,7 @@ public class TAVFaceMorphingFilter
     paramTextureInfo = TAVGLUtils.saveBitmap(paramTextureInfo);
     Canvas localCanvas = new Canvas(paramTextureInfo);
     Object localObject = (List)paramPTFaceAttr.getAllFacePoints().get(0);
-    double d = paramPTFaceAttr.getFaceDetectScale();
+    double d1 = paramPTFaceAttr.getFaceDetectScale();
     paramPTFaceAttr = new Paint();
     paramPTFaceAttr.setColor(Color.parseColor("#ff00ff"));
     paramPTFaceAttr.setAntiAlias(true);
@@ -231,7 +213,12 @@ public class TAVFaceMorphingFilter
     while (((Iterator)localObject).hasNext())
     {
       PointF localPointF = (PointF)((Iterator)localObject).next();
-      localCanvas.drawPoint((float)(localPointF.x / d), (float)(localPointF.y / d), paramPTFaceAttr);
+      double d2 = localPointF.x;
+      Double.isNaN(d2);
+      float f = (float)(d2 / d1);
+      d2 = localPointF.y;
+      Double.isNaN(d2);
+      localCanvas.drawPoint(f, (float)(d2 / d1), paramPTFaceAttr);
     }
     return paramTextureInfo;
   }
@@ -287,9 +274,10 @@ public class TAVFaceMorphingFilter
   public void release()
   {
     super.release();
-    if (this.gradientFaceEffect != null)
+    SmartKitGradientFaceEffect localSmartKitGradientFaceEffect = this.gradientFaceEffect;
+    if (localSmartKitGradientFaceEffect != null)
     {
-      this.gradientFaceEffect.clean();
+      localSmartKitGradientFaceEffect.clean();
       this.gradientFaceEffect = null;
     }
   }

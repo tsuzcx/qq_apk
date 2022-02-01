@@ -10,26 +10,26 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import com.tencent.TMG.utils.QLog;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.profile.DataTag;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
 import com.tencent.mobileqq.profilecard.base.component.AbsProfileContentComponent;
+import com.tencent.mobileqq.profilecard.base.config.IProfileConfig;
 import com.tencent.mobileqq.profilecard.base.framework.IComponentCenter;
 import com.tencent.mobileqq.profilecard.base.view.ProfileContentTitleView;
+import com.tencent.mobileqq.profilecard.bussiness.favor.view.ProfileCardFavorItemDetailView;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
 import com.tencent.mobileqq.profilecard.entity.ProfileColor;
 import com.tencent.mobileqq.profilecard.entity.ProfileGroupLabel;
 import com.tencent.mobileqq.profilecard.entity.ProfileSummaryHobbiesEntry;
 import com.tencent.mobileqq.profilecard.entity.ProfileSummaryHobbiesItem;
+import com.tencent.mobileqq.profilecard.utils.ProfilePAUtils;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.ProfileCardFavorItemDetailView;
-import com.tencent.mobileqq.widget.ProfileConfigHelper;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,55 +52,65 @@ public class ProfileFavorComponent
     ProfileContentTitleView localProfileContentTitleView = new ProfileContentTitleView(this.mActivity);
     localProfileContentTitleView.setTitle(paramProfileSummaryHobbiesEntry.strName);
     if (QLog.isColorLevel()) {
-      QLog.d("ProfileFavorComponent", 0, String.format("addFavorItem title=%s", new Object[] { paramProfileSummaryHobbiesEntry.strName }));
+      QLog.d("ProfileFavorComponent", 2, String.format("addFavorItem title=%s", new Object[] { paramProfileSummaryHobbiesEntry.strName }));
     }
     int i = 0;
-    if (i < paramProfileSummaryHobbiesEntry.sProfileSummaryHobbiesItem.size())
+    while (i < paramProfileSummaryHobbiesEntry.sProfileSummaryHobbiesItem.size())
     {
       ProfileSummaryHobbiesItem localProfileSummaryHobbiesItem = (ProfileSummaryHobbiesItem)paramProfileSummaryHobbiesEntry.sProfileSummaryHobbiesItem.get(i);
       ProfileCardFavorItemDetailView localProfileCardFavorItemDetailView = new ProfileCardFavorItemDetailView(this.mActivity);
       localProfileCardFavorItemDetailView.setTitle(localProfileSummaryHobbiesItem.strTitle);
       localProfileCardFavorItemDetailView.setContent(localProfileSummaryHobbiesItem.strSubInfo);
       localProfileCardFavorItemDetailView.setDesc(localProfileSummaryHobbiesItem.strDesc);
-      Drawable localDrawable = paramResources.getDrawable(2131166381);
+      Drawable localDrawable = paramResources.getDrawable(2131166392);
       Object localObject = localDrawable;
       if (!TextUtils.isEmpty(localProfileSummaryHobbiesItem.strCoverUrl))
       {
         localObject = URLDrawable.URLDrawableOptions.obtain();
         ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localDrawable;
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = AIOUtils.a(70.0F, paramResources);
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = AIOUtils.a(70.0F, paramResources);
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = Utils.a(70.0F, paramResources);
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = Utils.a(70.0F, paramResources);
         localObject = URLDrawable.getDrawable(localProfileSummaryHobbiesItem.strCoverUrl, (URLDrawable.URLDrawableOptions)localObject);
       }
       localProfileCardFavorItemDetailView.setIcon((Drawable)localObject);
       if (!TextUtils.isEmpty(localProfileSummaryHobbiesItem.strTitleIconUrl)) {
-        localProfileCardFavorItemDetailView.a(localProfileSummaryHobbiesItem.strTitleIconUrl, 2);
+        localProfileCardFavorItemDetailView.addLabel(localProfileSummaryHobbiesItem.strTitleIconUrl, 2);
       }
-      if ((localProfileSummaryHobbiesItem.labels != null) && (localProfileSummaryHobbiesItem.labels.size() > 0))
+      localObject = localProfileSummaryHobbiesItem;
+      if (localProfileSummaryHobbiesItem.labels != null)
       {
-        int j = 0;
-        while (j < localProfileSummaryHobbiesItem.labels.size())
+        localObject = localProfileSummaryHobbiesItem;
+        if (localProfileSummaryHobbiesItem.labels.size() > 0)
         {
-          localObject = (ProfileGroupLabel)localProfileSummaryHobbiesItem.labels.get(j);
-          int k = Color.rgb((int)((ProfileGroupLabel)localObject).edgingColor.red, (int)((ProfileGroupLabel)localObject).edgingColor.green, (int)((ProfileGroupLabel)localObject).edgingColor.blue);
-          localProfileCardFavorItemDetailView.a(null, ((ProfileGroupLabel)localObject).strWording, k, 3);
-          j += 1;
+          int j = 0;
+          for (;;)
+          {
+            localObject = localProfileSummaryHobbiesItem;
+            if (j >= localProfileSummaryHobbiesItem.labels.size()) {
+              break;
+            }
+            localObject = (ProfileGroupLabel)localProfileSummaryHobbiesItem.labels.get(j);
+            int k = Color.rgb((int)((ProfileGroupLabel)localObject).edgingColor.red, (int)((ProfileGroupLabel)localObject).edgingColor.green, (int)((ProfileGroupLabel)localObject).edgingColor.blue);
+            localProfileCardFavorItemDetailView.addLabel(null, ((ProfileGroupLabel)localObject).strWording, k, 3);
+            j += 1;
+          }
         }
       }
-      localProfileCardFavorItemDetailView.setBackgroundResource(2130839577);
+      localProfileCardFavorItemDetailView.setBackgroundResource(2130839435);
       localProfileContentTitleView.addContentView(localProfileCardFavorItemDetailView);
-      localProfileCardFavorItemDetailView.setTag(new DataTag(62, localProfileSummaryHobbiesItem));
+      localProfileCardFavorItemDetailView.setTag(new DataTag(62, localObject));
       localProfileCardFavorItemDetailView.setOnClickListener(this);
-      if (i != 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        localProfileCardFavorItemDetailView.setNeedTopMargin(bool);
-        favorHobbyItemExposureReport(localProfileSummaryHobbiesItem);
-        updateItemTheme(localProfileCardFavorItemDetailView.a, localProfileCardFavorItemDetailView.b);
-        updateItemTheme(null, localProfileCardFavorItemDetailView.c);
-        i += 1;
-        break;
+      boolean bool;
+      if (i != 0) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      localProfileCardFavorItemDetailView.setNeedTopMargin(bool);
+      favorHobbyItemExposureReport((ProfileSummaryHobbiesItem)localObject);
+      updateItemTheme(localProfileCardFavorItemDetailView.row1Content, localProfileCardFavorItemDetailView.row2Content);
+      updateItemTheme(null, localProfileCardFavorItemDetailView.row3Content);
+      i += 1;
     }
     paramProfileSummaryHobbiesEntry = new DataTag(61, paramProfileSummaryHobbiesEntry);
     localProfileContentTitleView.mTitleContainer.setTag(paramProfileSummaryHobbiesEntry);
@@ -116,180 +126,149 @@ public class ProfileFavorComponent
   
   private void favorHobbyItemClickReport(ProfileSummaryHobbiesItem paramProfileSummaryHobbiesItem)
   {
-    switch (paramProfileSummaryHobbiesItem.serviceType)
+    int i = paramProfileSummaryHobbiesItem.serviceType;
+    if (i != 2)
     {
-    case 3: 
-    default: 
-      return;
-    case 2: 
-      ReportController.b(this.mApp, "dc00898", "", "", "0X80070AA", "0X80070AA", 0, 0, "", "", "", "");
+      if (i != 4) {
+        return;
+      }
+      ReportController.b(this.mApp, "dc00898", "", "", "0X80070AE", "0X80070AE", 0, 0, "", "", "", "");
       return;
     }
-    ReportController.b(this.mApp, "dc00898", "", "", "0X80070AE", "0X80070AE", 0, 0, "", "", "", "");
+    ReportController.b(this.mApp, "dc00898", "", "", "0X80070AA", "0X80070AA", 0, 0, "", "", "", "");
   }
   
   private void favorHobbyItemExposureReport(ProfileSummaryHobbiesItem paramProfileSummaryHobbiesItem)
   {
-    switch (paramProfileSummaryHobbiesItem.serviceType)
+    int i = paramProfileSummaryHobbiesItem.serviceType;
+    if (i != 2)
     {
-    }
-    do
-    {
-      do
-      {
+      if (i != 4) {
         return;
-      } while (this.hasReportedMusic);
+      }
+      if (!this.hasReportedBuluo)
+      {
+        ReportController.b(this.mApp, "dc00898", "", "", "0X80070AD", "0X80070AD", 0, 0, "", "", "", "");
+        this.hasReportedBuluo = true;
+      }
+    }
+    else if (!this.hasReportedMusic)
+    {
       ReportController.b(this.mApp, "dc00898", "", "", "0X80070A9", "0X80070A9", 0, 0, "", "", "", "");
       this.hasReportedMusic = true;
-      return;
-    } while (this.hasReportedBuluo);
-    ReportController.b(this.mApp, "dc00898", "", "", "0X80070AD", "0X80070AD", 0, 0, "", "", "", "");
-    this.hasReportedBuluo = true;
+    }
   }
   
   private int fillUpFavorItem(LinearLayout paramLinearLayout, Card paramCard)
   {
     paramCard = paramCard.getBigOrderEntrys();
-    int k;
+    int i = 0;
+    int j = 0;
     if (paramCard != null)
     {
       paramLinearLayout.removeAllViews();
-      int j = 0;
-      int i = 0;
-      k = i;
-      if (j < paramCard.size())
+      int k;
+      for (i = 0; j < paramCard.size(); i = k)
       {
         ProfileSummaryHobbiesEntry localProfileSummaryHobbiesEntry = (ProfileSummaryHobbiesEntry)paramCard.get(j);
         k = i;
         if (!TextUtils.isEmpty(localProfileSummaryHobbiesEntry.strName))
         {
           k = i;
-          if (localProfileSummaryHobbiesEntry.sProfileSummaryHobbiesItem != null)
-          {
-            if (localProfileSummaryHobbiesEntry.serviceType != 5) {
-              break label94;
+          if (localProfileSummaryHobbiesEntry.sProfileSummaryHobbiesItem != null) {
+            if (localProfileSummaryHobbiesEntry.serviceType == 5)
+            {
+              k = i;
             }
-            k = i;
+            else if ((localProfileSummaryHobbiesEntry.serviceType == 4) && (this.mConfigHelper != null) && (!this.mConfigHelper.isSwitchEnable(5)))
+            {
+              k = i;
+            }
+            else if ((localProfileSummaryHobbiesEntry.serviceType == 2) && (this.mConfigHelper != null) && (!this.mConfigHelper.isSwitchEnable(4)))
+            {
+              k = i;
+            }
+            else
+            {
+              addFavorItem(localProfileSummaryHobbiesEntry, paramLinearLayout, this.mActivity.getResources());
+              k = i + 1;
+            }
           }
         }
-        for (;;)
-        {
-          j += 1;
-          i = k;
-          break;
-          label94:
-          if ((localProfileSummaryHobbiesEntry.serviceType == 4) && (this.mConfigHelper != null))
-          {
-            k = i;
-            if (!this.mConfigHelper.a(5)) {}
-          }
-          else if ((localProfileSummaryHobbiesEntry.serviceType == 2) && (this.mConfigHelper != null))
-          {
-            k = i;
-            if (!this.mConfigHelper.a(4)) {}
-          }
-          else
-          {
-            addFavorItem(localProfileSummaryHobbiesEntry, paramLinearLayout, this.mActivity.getResources());
-            k = i + 1;
-          }
-        }
+        j += 1;
       }
     }
-    else
-    {
-      k = 0;
-    }
-    return k;
+    return i;
   }
   
   private void handleHobbyClick(DataTag paramDataTag)
   {
-    Intent localIntent;
     if ((paramDataTag.jdField_a_of_type_JavaLangObject instanceof ProfileSummaryHobbiesEntry))
     {
       paramDataTag = (ProfileSummaryHobbiesEntry)paramDataTag.jdField_a_of_type_JavaLangObject;
-      localIntent = new Intent(this.mActivity, QQBrowserActivity.class);
+      Intent localIntent = new Intent(this.mActivity, QQBrowserActivity.class);
       localIntent.putExtra("url", paramDataTag.strServiceUrl);
-      if (paramDataTag.serviceType != 2) {
-        break label81;
-      }
-      localIntent.putExtra("big_brother_source_key", "biz_src_qqmusic");
-    }
-    for (;;)
-    {
-      this.mActivity.startActivity(localIntent);
-      favorHobbyClickReport(paramDataTag.serviceType);
-      return;
-      label81:
-      if (paramDataTag.serviceType == 4) {
+      if (paramDataTag.serviceType == 2) {
+        localIntent.putExtra("big_brother_source_key", "biz_src_qqmusic");
+      } else if (paramDataTag.serviceType == 4) {
         localIntent.putExtra("big_brother_source_key", "biz_src_feeds_buluo");
       }
+      this.mActivity.startActivity(localIntent);
+      favorHobbyClickReport(paramDataTag.serviceType);
     }
   }
   
   private void handleHobbyItemClick(DataTag paramDataTag)
   {
-    Intent localIntent;
     if ((paramDataTag.jdField_a_of_type_JavaLangObject instanceof ProfileSummaryHobbiesItem))
     {
       paramDataTag = (ProfileSummaryHobbiesItem)paramDataTag.jdField_a_of_type_JavaLangObject;
-      localIntent = new Intent(this.mActivity, QQBrowserActivity.class);
+      Intent localIntent = new Intent(this.mActivity, QQBrowserActivity.class);
       localIntent.putExtra("url", paramDataTag.strJmpUrl);
-      if (paramDataTag.serviceType != 2) {
-        break label78;
-      }
-      localIntent.putExtra("big_brother_source_key", "biz_src_qqmusic");
-    }
-    for (;;)
-    {
-      this.mActivity.startActivity(localIntent);
-      favorHobbyItemClickReport(paramDataTag);
-      return;
-      label78:
-      if (paramDataTag.serviceType == 4) {
+      if (paramDataTag.serviceType == 2) {
+        localIntent.putExtra("big_brother_source_key", "biz_src_qqmusic");
+      } else if (paramDataTag.serviceType == 4) {
         localIntent.putExtra("big_brother_source_key", "biz_src_feeds_buluo");
       }
+      this.mActivity.startActivity(localIntent);
+      favorHobbyItemClickReport(paramDataTag);
     }
   }
   
   private boolean makeOrRefreshFavor(Card paramCard, boolean paramBoolean)
   {
-    boolean bool1 = false;
+    boolean bool = ProfilePAUtils.isPaTypeStrangerInContact(((ProfileCardInfo)this.mData).allInOne);
     paramBoolean = false;
-    boolean bool2 = ProfileActivity.AllInOne.i(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
-    if ((paramCard == null) || (bool2))
+    if ((paramCard != null) && (!bool))
     {
-      paramBoolean = bool1;
-      if (this.mViewContainer != null) {
-        this.mViewContainer = null;
-      }
-    }
-    else
-    {
-      for (;;)
+      LinearLayout localLinearLayout;
+      if (this.mViewContainer == null)
       {
-        return true;
-        LinearLayout localLinearLayout;
-        if (this.mViewContainer == null)
-        {
-          localLinearLayout = (LinearLayout)LayoutInflater.from(this.mActivity).inflate(2131561466, null, false);
-          localLinearLayout.setTag(2131367599, Boolean.TRUE);
-          this.mViewContainer = localLinearLayout;
-          paramBoolean = true;
-        }
-        while (fillUpFavorItem(localLinearLayout, paramCard) <= 0)
-        {
-          if (this.mViewContainer == null) {
-            return paramBoolean;
-          }
-          this.mViewContainer = null;
-          return true;
-          localLinearLayout = (LinearLayout)this.mViewContainer;
-        }
+        localLinearLayout = (LinearLayout)LayoutInflater.from(this.mActivity).inflate(2131561310, null, false);
+        localLinearLayout.setTag(2131367357, Boolean.TRUE);
+        this.mViewContainer = localLinearLayout;
+        paramBoolean = true;
       }
+      else
+      {
+        localLinearLayout = (LinearLayout)this.mViewContainer;
+      }
+      if (fillUpFavorItem(localLinearLayout, paramCard) > 0) {
+        return true;
+      }
+      if (this.mViewContainer != null)
+      {
+        this.mViewContainer = null;
+        return true;
+      }
+      return paramBoolean;
     }
-    return paramBoolean;
+    if (this.mViewContainer != null)
+    {
+      this.mViewContainer = null;
+      return true;
+    }
+    return false;
   }
   
   public String getComponentName()
@@ -309,33 +288,31 @@ public class ProfileFavorComponent
   
   public void onClick(View paramView)
   {
-    DataTag localDataTag;
     if ((paramView.getTag() instanceof DataTag))
     {
-      localDataTag = (DataTag)paramView.getTag();
-      switch (localDataTag.jdField_a_of_type_Int)
+      DataTag localDataTag = (DataTag)paramView.getTag();
+      int i = localDataTag.jdField_a_of_type_Int;
+      if (i != 61)
       {
+        if (i == 62) {
+          handleHobbyItemClick(localDataTag);
+        }
+      }
+      else {
+        handleHobbyClick(localDataTag);
       }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      handleHobbyClick(localDataTag);
-      continue;
-      handleHobbyItemClick(localDataTag);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public boolean onDataUpdate(ProfileCardInfo paramProfileCardInfo)
   {
-    boolean bool = super.onDataUpdate(paramProfileCardInfo);
-    return makeOrRefreshFavor(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqDataCard, ((ProfileCardInfo)this.mData).d) | bool;
+    return super.onDataUpdate(paramProfileCardInfo) | makeOrRefreshFavor(((ProfileCardInfo)this.mData).card, ((ProfileCardInfo)this.mData).isNetRet);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.favor.ProfileFavorComponent
  * JD-Core Version:    0.7.0.1
  */

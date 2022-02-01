@@ -3,7 +3,7 @@ package com.tencent.avgame.gameroom.gamelist;
 import android.content.Context;
 import com.tencent.avgame.gamelogic.data.EngineData;
 import com.tencent.avgame.gamelogic.listener.SimpleGameStatusListener;
-import com.tencent.avgame.util.AVGameUtils;
+import com.tencent.avgame.util.AVGameUtil;
 
 class GameListPresenterImp$1
   extends SimpleGameStatusListener
@@ -15,8 +15,8 @@ class GameListPresenterImp$1
     if (GameListPresenterImp.a(this.a))
     {
       GameListPresenterImp.a(this.a, false);
-      if (AVGameUtils.b() == 2) {
-        this.a.a.a(this.a.a.a().getString(2131690466));
+      if (AVGameUtil.b() == 2) {
+        this.a.a.a(this.a.a.a().getString(2131690390));
       }
     }
   }
@@ -33,7 +33,7 @@ class GameListPresenterImp$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.gamelist.GameListPresenterImp.1
  * JD-Core Version:    0.7.0.1
  */

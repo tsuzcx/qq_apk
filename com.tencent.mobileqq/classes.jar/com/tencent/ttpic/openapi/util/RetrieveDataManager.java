@@ -27,24 +27,17 @@ public class RetrieveDataManager
   
   public boolean isValid(int paramInt)
   {
-    boolean bool2 = false;
     RetrieveDataManager.DATA_TYPE[] arrayOfDATA_TYPE = RetrieveDataManager.DATA_TYPE.values();
     int j = arrayOfDATA_TYPE.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (arrayOfDATA_TYPE[i].value == paramInt) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+      if (arrayOfDATA_TYPE[i].value == paramInt) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   public byte[] retrieveData(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -58,7 +51,7 @@ public class RetrieveDataManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.RetrieveDataManager
  * JD-Core Version:    0.7.0.1
  */

@@ -73,45 +73,70 @@ public final class SongRedPackMatchReq
   
   public String toString()
   {
-    return "SongRedPackMatchReq{grabUin=" + this.grabUin + ", billno='" + this.billno + '\'' + ", songId=" + this.songId + ", songType=" + this.songType + ", earphoneStatus=" + this.earphoneStatus + ", makeUin=" + this.makeUin + ", sKey='" + this.sKey + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SongRedPackMatchReq{grabUin=");
+    localStringBuilder.append(this.grabUin);
+    localStringBuilder.append(", billno='");
+    localStringBuilder.append(this.billno);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", songId=");
+    localStringBuilder.append(this.songId);
+    localStringBuilder.append(", songType=");
+    localStringBuilder.append(this.songType);
+    localStringBuilder.append(", earphoneStatus=");
+    localStringBuilder.append(this.earphoneStatus);
+    localStringBuilder.append(", makeUin=");
+    localStringBuilder.append(this.makeUin);
+    localStringBuilder.append(", sKey='");
+    localStringBuilder.append(this.sKey);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.grabUin, 0);
-    if (this.billno != null) {
-      paramJceOutputStream.write(this.billno, 1);
+    Object localObject = this.billno;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.songId, 2);
     paramJceOutputStream.write(this.songType, 3);
     paramJceOutputStream.write(this.earphoneStatus, 4);
     paramJceOutputStream.write(this.makeUin, 5);
-    if (this.sKey != null) {
-      paramJceOutputStream.write(this.sKey, 6);
+    localObject = this.sKey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
     paramJceOutputStream.write(this.appid, 7);
     paramJceOutputStream.write(this.fromType, 8);
     paramJceOutputStream.write(this.platform, 9);
-    if (this.qqVersion != null) {
-      paramJceOutputStream.write(this.qqVersion, 10);
+    localObject = this.qqVersion;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.gVoiceRecordInfo != null) {
-      paramJceOutputStream.write(this.gVoiceRecordInfo, 11);
+    localObject = this.gVoiceRecordInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 11);
     }
-    if (this.gVoiceMixRecordInfo != null) {
-      paramJceOutputStream.write(this.gVoiceMixRecordInfo, 12);
+    localObject = this.gVoiceMixRecordInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 12);
     }
-    if (this.c2cRecordVoiceInfo != null) {
-      paramJceOutputStream.write(this.c2cRecordVoiceInfo, 13);
+    localObject = this.c2cRecordVoiceInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 13);
     }
-    if (this.c2cRecordMixVoiceInfo != null) {
-      paramJceOutputStream.write(this.c2cRecordMixVoiceInfo, 14);
+    localObject = this.c2cRecordMixVoiceInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 14);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.SongRedPackMatchReq
  * JD-Core Version:    0.7.0.1
  */

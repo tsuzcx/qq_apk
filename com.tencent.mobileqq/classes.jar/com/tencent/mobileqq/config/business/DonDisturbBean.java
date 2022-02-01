@@ -31,12 +31,16 @@ public class DonDisturbBean
   
   public String toString()
   {
-    return super.toString() + " showDonDisturb=" + this.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" showDonDisturb=");
+    localStringBuilder.append(this.a);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.DonDisturbBean
  * JD-Core Version:    0.7.0.1
  */

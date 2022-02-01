@@ -1,51 +1,40 @@
 package com.tencent.mobileqq.apollo.store.webview;
 
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.CmShowRscDownloader;
-import com.tencent.mobileqq.apollo.api.res.ICmShowRscCacheManager;
-import com.tencent.mobileqq.apollo.api.res.impl.CmShowRscCacheManagerImpl;
-import com.tencent.mobileqq.apollo.api.res.impl.CmShowRscUpdateHandlerImpl.ContentUpdateCheckResult;
-import com.tencent.mobileqq.apollo.api.res.impl.CmShowRscUpdateHandlerImpl.OnCheckContentListener;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.apollo.res.api.IApolloResDownloader.OnFaceDataDownloadListener;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 class ApolloPluginRscLoader$5
-  implements CmShowRscUpdateHandlerImpl.OnCheckContentListener
+  implements IApolloResDownloader.OnFaceDataDownloadListener
 {
-  ApolloPluginRscLoader$5(ApolloPluginRscLoader paramApolloPluginRscLoader, int paramInt, String paramString, AppInterface paramAppInterface, File paramFile) {}
+  ApolloPluginRscLoader$5(ApolloPluginRscLoader paramApolloPluginRscLoader, File paramFile, String paramString) {}
   
-  public void a(boolean paramBoolean, CmShowRscUpdateHandlerImpl.ContentUpdateCheckResult paramContentUpdateCheckResult)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    paramContentUpdateCheckResult = ((CmShowRscCacheManagerImpl)QRoute.api(ICmShowRscCacheManager.class)).getRscItem(8, this.jdField_a_of_type_Int);
-    Object localObject = new StringBuilder().append("downloadApolloRes onCheckFinish success:").append(paramBoolean).append(" downloadItem:");
-    if (paramContentUpdateCheckResult == null) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    if (QLog.isColorLevel())
     {
-      QLog.i("ApolloPluginRscLoader", 1, paramBoolean);
-      localObject = ApolloPluginRscLoader.a(this.jdField_a_of_type_JavaLangString);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        break;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getApolloRsc checkDownloadFaceData onDownLoadFinish: sucess:");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("[cmshow]ApolloPluginRscLoader", 2, localStringBuilder.toString());
+    }
+    if (paramBoolean)
+    {
+      if (this.jdField_a_of_type_JavaIoFile.exists())
+      {
+        this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloPluginRscLoader.a(this.jdField_a_of_type_JavaLangString, 0, HardCodeUtil.a(2131700705));
+        return;
       }
-      QLog.e("ApolloPluginRscLoader", 1, "getApolloRsc error callbackId is null resourceUrl:" + this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloPluginRscLoader.a(this.jdField_a_of_type_JavaLangString, 2, HardCodeUtil.a(2131700734));
       return;
     }
-    if (paramContentUpdateCheckResult == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloPluginRscLoader.a((String)localObject, 2, this.jdField_a_of_type_Int + " json里无此id");
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramContentUpdateCheckResult);
-    CmShowRscDownloader.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "", new ApolloPluginRscLoader.5.1(this, (String)localObject), localArrayList, false, null);
+    this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloPluginRscLoader.a(this.jdField_a_of_type_JavaLangString, 2, HardCodeUtil.a(2131700716));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.webview.ApolloPluginRscLoader.5
  * JD-Core Version:    0.7.0.1
  */

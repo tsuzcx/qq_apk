@@ -17,7 +17,8 @@ public final class AdBrowserAdapter$Params
   
   public boolean isValid()
   {
-    return (this.activity != null) && (this.activity.get() != null) && (!TextUtils.isEmpty(this.url));
+    WeakReference localWeakReference = this.activity;
+    return (localWeakReference != null) && (localWeakReference.get() != null) && (!TextUtils.isEmpty(this.url));
   }
 }
 

@@ -34,35 +34,39 @@ public class PlusPanelViewBinder
   void a(ArrayList<PluginData> paramArrayList, PanelAdapter paramPanelAdapter, EmoticonPagerRadioGroup paramEmoticonPagerRadioGroup)
   {
     paramPanelAdapter.a(paramArrayList);
-    if (paramPanelAdapter.getCount() > 1) {}
-    for (;;)
+    int j = paramPanelAdapter.getCount();
+    int i = 0;
+    if (j > 1)
     {
       try
       {
         paramEmoticonPagerRadioGroup.synButton(paramPanelAdapter.getCount());
-        paramEmoticonPagerRadioGroup.setVisibility(0);
-        paramPanelAdapter.notifyDataSetChanged();
-        int j = paramPanelAdapter.getCount();
-        int i = 0;
-        if (i >= j) {
-          break;
-        }
-        paramPanelAdapter.a(i);
-        i += 1;
-        continue;
       }
       catch (Exception paramArrayList)
       {
-        QLog.d("PlusPanel", 2, "e=" + paramArrayList);
-        continue;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("e=");
+        localStringBuilder.append(paramArrayList);
+        QLog.d("PlusPanel", 2, localStringBuilder.toString());
       }
+      paramEmoticonPagerRadioGroup.setVisibility(0);
+    }
+    else
+    {
       paramEmoticonPagerRadioGroup.setVisibility(4);
+    }
+    paramPanelAdapter.notifyDataSetChanged();
+    j = paramPanelAdapter.getCount();
+    while (i < j)
+    {
+      paramPanelAdapter.a(i);
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewBinder
  * JD-Core Version:    0.7.0.1
  */

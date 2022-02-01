@@ -8,20 +8,21 @@ public final class VideoCapturePresenter$loadPreviewListCapture$1
 {
   public void a(int paramInt1, int paramInt2, long paramLong)
   {
-    VideoCaptureContract.IVideoCaptureView localIVideoCaptureView = VideoCapturePresenter.a(this.a);
-    if (localIVideoCaptureView != null) {
-      localIVideoCaptureView.b(paramLong);
+    Object localObject = VideoCapturePresenter.a(this.a);
+    if (localObject != null) {
+      ((VideoCaptureContract.IVideoCaptureView)localObject).b(paramLong);
     }
-    this.a.a((int)(this.a.a() * (float)paramLong));
-    localIVideoCaptureView = VideoCapturePresenter.a(this.a);
-    if (localIVideoCaptureView != null) {
-      localIVideoCaptureView.a(this.a.a(), false);
+    localObject = this.a;
+    ((VideoCapturePresenter)localObject).b((int)(((VideoCapturePresenter)localObject).a() * (float)paramLong));
+    localObject = VideoCapturePresenter.a(this.a);
+    if (localObject != null) {
+      ((VideoCaptureContract.IVideoCaptureView)localObject).a(this.a.a(), false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videocapture.VideoCapturePresenter.loadPreviewListCapture.1
  * JD-Core Version:    0.7.0.1
  */

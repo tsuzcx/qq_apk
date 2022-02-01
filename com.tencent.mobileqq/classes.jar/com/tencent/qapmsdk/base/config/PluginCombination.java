@@ -1,5 +1,6 @@
 package com.tencent.qapmsdk.base.config;
 
+import java.util.Collection;
 import java.util.List;
 import kotlin.Lazy;
 import kotlin.LazyKt;
@@ -16,7 +17,7 @@ public final class PluginCombination
   @JvmField
   @NotNull
   public static final DefaultPluginConfig anrPlugin;
-  private static final List<DefaultPluginConfig> austerityPlugins = CollectionsKt.listOf(new DefaultPluginConfig[] { dropFramePlugin, dbPlugin, ioPlugin, leakPlugin, ceilingHprofPlugin, ceilingValuePlugin, devicePlugin, anrPlugin, crashPlugin, statisticsPlugin, bigBitmapPlugin, startUpPlugin });
+  private static final List<DefaultPluginConfig> austerityPlugins;
   @JvmField
   @NotNull
   public static final DefaultPluginConfig bigBitmapPlugin;
@@ -101,11 +102,19 @@ public final class PluginCombination
     modeAll$delegate = LazyKt.lazy((Function0)PluginCombination.Companion.modeAll.2.INSTANCE);
     modeStable$delegate = LazyKt.lazy((Function0)PluginCombination.Companion.modeStable.2.INSTANCE);
     stablePlugins = CollectionsKt.listOf(new DefaultPluginConfig[] { loopStackPlugin, resourcePlugin, dropFramePlugin, userBreadCrumbPlugin, anrPlugin, crashPlugin });
+    Collection localCollection = (Collection)CollectionsKt.listOf(new DefaultPluginConfig[] { dropFramePlugin, dbPlugin, ioPlugin, leakPlugin, ceilingHprofPlugin, ceilingValuePlugin, devicePlugin, anrPlugin, crashPlugin, statisticsPlugin, bigBitmapPlugin, startUpPlugin });
+    List localList;
+    if (!SDKConfig.PURE_QAPM) {
+      localList = CollectionsKt.listOf(qqBatteryPlugin);
+    } else {
+      localList = CollectionsKt.emptyList();
+    }
+    austerityPlugins = CollectionsKt.plus(localCollection, (Iterable)localList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.base.config.PluginCombination
  * JD-Core Version:    0.7.0.1
  */

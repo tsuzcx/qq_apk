@@ -15,7 +15,7 @@ public final class AudioTransClientInfo$InfoC2SFailedRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.audiotrans.AudioTransClientInfo.InfoC2SFailedRsp
  * JD-Core Version:    0.7.0.1
  */

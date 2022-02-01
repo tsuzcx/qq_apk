@@ -5,6 +5,7 @@ import android.view.View.OnClickListener;
 import com.tencent.mobileqq.data.IPSiteModel.Goods;
 import com.tencent.mobileqq.emoticonview.api.IBigEmotionService;
 import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class IPSiteListGoodsAdapter$2
@@ -15,13 +16,13 @@ class IPSiteListGoodsAdapter$2
   public void onClick(View paramView)
   {
     ((IBigEmotionService)QRoute.api(IBigEmotionService.class)).openQQBrowserWithoutAD(IPSiteListGoodsAdapter.access$100(this.this$0), this.val$goods.moreUrl, -1L, null, false, -1);
-    ((IBigEmotionService)QRoute.api(IBigEmotionService.class)).reportCommercialDrainage(IPSiteListGoodsAdapter.access$200(this.this$0), "IP", "aio_productmore", "", 0, 0, 0, IPSiteListGoodsAdapter.access$300(this.this$0), IPSiteListGoodsAdapter.access$400(this.this$0), "", "", "", "", "", 0, 0, 0, 0);
+    VasWebviewUtil.a(IPSiteListGoodsAdapter.access$200(this.this$0), "IP", "aio_productmore", "", 0, 0, 0, IPSiteListGoodsAdapter.access$300(this.this$0), IPSiteListGoodsAdapter.access$400(this.this$0), "", "", "", "", "", 0, 0, 0, 0);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.IPSiteListGoodsAdapter.2
  * JD-Core Version:    0.7.0.1
  */

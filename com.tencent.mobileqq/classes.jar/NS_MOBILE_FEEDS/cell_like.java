@@ -39,14 +39,15 @@ public final class cell_like
   {
     paramJceOutputStream.write(this.num, 0);
     paramJceOutputStream.write(this.isliked, 1);
-    if (this.likemans != null) {
-      paramJceOutputStream.write(this.likemans, 2);
+    ArrayList localArrayList = this.likemans;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_like
  * JD-Core Version:    0.7.0.1
  */

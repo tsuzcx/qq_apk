@@ -17,13 +17,22 @@ class DefaultDispatcher$SubscriberKey
   
   public boolean equals(Object paramObject)
   {
-    if (!(paramObject instanceof SubscriberKey)) {
+    boolean bool1 = paramObject instanceof SubscriberKey;
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
     }
-    if ((this.dispatchClass.equals(((SubscriberKey)paramObject).dispatchClass)) && (this.group.equals(((SubscriberKey)paramObject).group))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    Class localClass = this.dispatchClass;
+    paramObject = (SubscriberKey)paramObject;
+    bool1 = bool2;
+    if (localClass.equals(paramObject.dispatchClass))
+    {
+      bool1 = bool2;
+      if (this.group.equals(paramObject.group)) {
+        bool1 = true;
+      }
     }
+    return bool1;
   }
   
   public int hashCode()
@@ -33,12 +42,18 @@ class DefaultDispatcher$SubscriberKey
   
   public String toString()
   {
-    return "SubscriberKey{dispatchClass=" + this.dispatchClass + ", group=" + this.group + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SubscriberKey{dispatchClass=");
+    localStringBuilder.append(this.dispatchClass);
+    localStringBuilder.append(", group=");
+    localStringBuilder.append(this.group);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tribe.async.dispatch.DefaultDispatcher.SubscriberKey
  * JD-Core Version:    0.7.0.1
  */

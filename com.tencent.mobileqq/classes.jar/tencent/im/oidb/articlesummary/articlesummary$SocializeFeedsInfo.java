@@ -56,18 +56,19 @@ public final class articlesummary$SocializeFeedsInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 90, 98, 106, 114, 120, 128, 136, 146, 152, 160, 168, 178, 186, 194, 202, 210, 216, 224, 234, 242, 250, 256, 266, 290, 298, 304, 314, 320, 330, 338, 346, 378, 394, 402, 418, 426, 434 }, new String[] { "uint64_feeds_id", "uint32_feeds_style", "uint64_article_id", "msg_master_uin", "rpt_recommend_list", "bytes_comments", "bytes_recommend_reason", "uint32_like_count", "uint32_myself_like_status", "uint32_comments_count", "msg_socialize_feeds_ext_info", "uint32_biu_time", "uint32_myself_biu_status", "uint32_biu_count", "msg_biu_mutli_level", "msg_ugc_topic_feeds_info", "msg_pgc_topic_feeds_info", "msg_verify_result", "msg_topic_recommend_feeds_info", "uint32_follow_status", "uint32_follow_counts", "bytes_recommend_account_reason", "buluo_info", "wenda_info", "uint32_is_origin_feeds_deleted", "icon_wording_info", "share_web_page_info", "location_info", "uint32_feed_status", "bytes_private_status_title", "uint32_is_jump_recommend_page", "bytes_jump_recommend_url", "bytes_jump_recommend_prompt", "visible_info", "msg_card_jump_info", "game_live_info", "long_content_info", "msg_column_topic_info", "msg_fusion_info", "msg_topic_entrance_info" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), null, null, localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, null, null, null, null, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3, null, null, Integer.valueOf(0), null, null, null, Integer.valueOf(0), localByteStringMicro4, Integer.valueOf(0), localByteStringMicro5, localByteStringMicro6, null, null, null, null, null, null, null }, SocializeFeedsInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 90, 98, 106, 114, 120, 128, 136, 146, 152, 160, 168, 178, 186, 194, 202, 210, 216, 224, 234, 242, 250, 256, 266, 290, 298, 304, 314, 320, 330, 338, 346, 378, 394, 402, 418, 426, 434 }, new String[] { "uint64_feeds_id", "uint32_feeds_style", "uint64_article_id", "msg_master_uin", "rpt_recommend_list", "bytes_comments", "bytes_recommend_reason", "uint32_like_count", "uint32_myself_like_status", "uint32_comments_count", "msg_socialize_feeds_ext_info", "uint32_biu_time", "uint32_myself_biu_status", "uint32_biu_count", "msg_biu_mutli_level", "msg_ugc_topic_feeds_info", "msg_pgc_topic_feeds_info", "msg_verify_result", "msg_topic_recommend_feeds_info", "uint32_follow_status", "uint32_follow_counts", "bytes_recommend_account_reason", "buluo_info", "wenda_info", "uint32_is_origin_feeds_deleted", "icon_wording_info", "share_web_page_info", "location_info", "uint32_feed_status", "bytes_private_status_title", "uint32_is_jump_recommend_page", "bytes_jump_recommend_url", "bytes_jump_recommend_prompt", "visible_info", "msg_card_jump_info", "game_live_info", "long_content_info", "msg_column_topic_info", "msg_fusion_info", "msg_topic_entrance_info" }, new Object[] { Long.valueOf(0L), localInteger, Long.valueOf(0L), null, null, localByteStringMicro1, localByteStringMicro2, localInteger, localInteger, localInteger, null, localInteger, localInteger, localInteger, null, null, null, null, null, localInteger, localInteger, localByteStringMicro3, null, null, localInteger, null, null, null, localInteger, localByteStringMicro4, localInteger, localByteStringMicro5, localByteStringMicro6, null, null, null, null, null, null, null }, SocializeFeedsInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.articlesummary.articlesummary.SocializeFeedsInfo
  * JD-Core Version:    0.7.0.1
  */

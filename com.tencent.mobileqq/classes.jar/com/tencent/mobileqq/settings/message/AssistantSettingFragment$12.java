@@ -13,14 +13,14 @@ class AssistantSettingFragment$12
   
   public void onClick(View paramView)
   {
-    CustomizeGrayTipsManager.a(AssistantSettingFragment.a(this.a), this.a.getActivity(), "2", -1);
+    CustomizeGrayTipsManager.a(AssistantSettingFragment.a(this.a), this.a.getBaseActivity(), "2", -1);
     ReportController.b(AssistantSettingFragment.a(this.a), "dc00898", "", "", "0X800B87C", "0X800B87C", 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.AssistantSettingFragment.12
  * JD-Core Version:    0.7.0.1
  */

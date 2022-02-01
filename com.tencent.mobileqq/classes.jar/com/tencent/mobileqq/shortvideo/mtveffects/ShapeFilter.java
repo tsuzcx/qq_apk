@@ -15,7 +15,7 @@ public class ShapeFilter
     super("precision highp float;\n\nvarying highp vec2 vTextureCoord;\nuniform sampler2D inputImageTexture;\nuniform sampler2D maskTexture;\n\nvoid main() {\n    if(all(equal(texture2D(maskTexture, vTextureCoord), vec4(0,0,0,0))))\n    {\n       gl_FragColor = vec4(0,0,0,0);\n    }\n    else{\n       gl_FragColor = texture2D(inputImageTexture, vTextureCoord);\n   }\n}\n");
   }
   
-  public void onInitialized()
+  protected void onInitialized()
   {
     super.onInitialized();
     int i = getProgram();
@@ -28,8 +28,10 @@ public class ShapeFilter
   
   public boolean process(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    if (paramInt1 < 0) {}
-    while (!processBegin(paramArrayOfFloat2, paramArrayOfFloat1)) {
+    if (paramInt1 < 0) {
+      return false;
+    }
+    if (!processBegin(paramArrayOfFloat2, paramArrayOfFloat1)) {
       return false;
     }
     GLES20.glActiveTexture(33984);
@@ -41,19 +43,18 @@ public class ShapeFilter
       GLES20.glBindTexture(this.mTextureType, paramInt2);
       GLES20.glUniform1i(this.mUniMaskTexture, 1);
     }
-    if (paramInt2 >= 0) {
-      processEnd(true, new int[] { 33984, 33985 });
-    }
-    for (;;)
+    if (paramInt2 >= 0)
     {
+      processEnd(true, new int[] { 33984, 33985 });
       return true;
-      processEnd(true, new int[] { 33984 });
     }
+    processEnd(true, new int[] { 33984 });
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mtveffects.ShapeFilter
  * JD-Core Version:    0.7.0.1
  */

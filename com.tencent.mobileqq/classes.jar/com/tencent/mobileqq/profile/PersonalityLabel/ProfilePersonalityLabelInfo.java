@@ -22,7 +22,7 @@ public class ProfilePersonalityLabelInfo
 {
   public static final Parcelable.Creator<ProfilePersonalityLabelInfo> CREATOR = new ProfilePersonalityLabelInfo.1();
   public static int CURRENT_VERSION = 2;
-  public int isCloseByUser = 0;
+  public int isCloseByUser;
   public long lastPraiseUin;
   public int maxPhotoCount;
   public List<PersonalityLabelInfo> personalityLabelInfos;
@@ -33,12 +33,15 @@ public class ProfilePersonalityLabelInfo
   
   public ProfilePersonalityLabelInfo()
   {
+    this.isCloseByUser = 0;
     this.personalityLabelInfos = new ArrayList();
     this.remainCount = 10;
   }
   
   protected ProfilePersonalityLabelInfo(Parcel paramParcel)
   {
+    int k = 0;
+    this.isCloseByUser = 0;
     int i = paramParcel.readInt();
     this.personalityLabelInfos = paramParcel.createTypedArrayList(PersonalityLabelInfo.CREATOR);
     this.remainCount = paramParcel.readInt();
@@ -50,139 +53,146 @@ public class ProfilePersonalityLabelInfo
     if (i >= 2) {
       this.isCloseByUser = paramParcel.readInt();
     }
-    if ((this.personalityLabelInfos != null) && (this.personalityLabelInfos.size() > 0)) {
-      i = 0;
-    }
-    for (;;)
+    paramParcel = this.personalityLabelInfos;
+    if ((paramParcel != null) && (paramParcel.size() > 0))
     {
-      int j = k;
-      if (i < this.personalityLabelInfos.size())
+      i = 0;
+      int j;
+      for (;;)
       {
-        if (this.personalityLabelInfos.get(i) == null) {
-          j = 1;
+        j = k;
+        if (i >= this.personalityLabelInfos.size()) {
+          break;
         }
-      }
-      else
-      {
-        if (j != 0)
+        if (this.personalityLabelInfos.get(i) == null)
         {
-          this.personalityLabelInfos.clear();
-          a();
+          j = 1;
+          break;
         }
-        b();
-        return;
+        i += 1;
       }
-      i += 1;
+      if (j != 0)
+      {
+        this.personalityLabelInfos.clear();
+        a();
+      }
     }
+    b();
   }
   
   private void a()
   {
-    if (this.personalityLabelInfos != null) {
-      this.personalityLabelInfos.clear();
-    }
-    for (;;)
-    {
-      this.remainCount = 0;
-      this.photoCount = 0;
-      this.praiseCount = 0;
-      this.maxPhotoCount = 0;
-      this.unreadCount = 0;
-      this.lastPraiseUin = 0L;
-      this.isCloseByUser = 0;
-      return;
+    List localList = this.personalityLabelInfos;
+    if (localList != null) {
+      localList.clear();
+    } else {
       this.personalityLabelInfos = new ArrayList();
     }
+    this.remainCount = 0;
+    this.photoCount = 0;
+    this.praiseCount = 0;
+    this.maxPhotoCount = 0;
+    this.unreadCount = 0;
+    this.lastPraiseUin = 0L;
+    this.isCloseByUser = 0;
   }
   
   private void b()
   {
-    if ((this.personalityLabelInfos != null) && (this.personalityLabelInfos.size() > 0))
+    Object localObject = this.personalityLabelInfos;
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("PersonalityLabel", 2, "before unmarsh:" + this.personalityLabelInfos.toString());
+      if (QLog.isDevelopLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("before unmarsh:");
+        ((StringBuilder)localObject).append(this.personalityLabelInfos.toString());
+        QLog.i("PersonalityLabel", 2, ((StringBuilder)localObject).toString());
       }
       Collections.sort(this.personalityLabelInfos, new ProfilePersonalityLabelInfo.ModTimeComparator(this));
-      if (QLog.isDevelopLevel()) {
-        QLog.i("PersonalityLabel", 2, "after unmarsh:" + this.personalityLabelInfos.toString());
+      if (QLog.isDevelopLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("after unmarsh:");
+        ((StringBuilder)localObject).append(this.personalityLabelInfos.toString());
+        QLog.i("PersonalityLabel", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
   
   public static ProfilePersonalityLabelInfo convertFromBytes(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      paramArrayOfByte = null;
-    }
-    ProfilePersonalityLabelInfo localProfilePersonalityLabelInfo;
-    do
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
     {
-      return paramArrayOfByte;
-      localProfilePersonalityLabelInfo = (ProfilePersonalityLabelInfo)ParcelableUtil.a(paramArrayOfByte, CREATOR);
-      paramArrayOfByte = localProfilePersonalityLabelInfo;
-    } while (!QLog.isColorLevel());
-    if ("convertFromBytes:" + localProfilePersonalityLabelInfo == null) {}
-    for (paramArrayOfByte = "null";; paramArrayOfByte = localProfilePersonalityLabelInfo.toString())
-    {
-      QLog.i("PersonalityLabel", 2, paramArrayOfByte);
+      ProfilePersonalityLabelInfo localProfilePersonalityLabelInfo = (ProfilePersonalityLabelInfo)ParcelableUtil.a(paramArrayOfByte, CREATOR);
+      if (QLog.isColorLevel())
+      {
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("convertFromBytes:");
+        paramArrayOfByte.append(localProfilePersonalityLabelInfo);
+        if (paramArrayOfByte.toString() == null) {
+          paramArrayOfByte = "null";
+        } else {
+          paramArrayOfByte = localProfilePersonalityLabelInfo.toString();
+        }
+        QLog.i("PersonalityLabel", 2, paramArrayOfByte);
+      }
       return localProfilePersonalityLabelInfo;
     }
+    return null;
   }
   
   public static ProfilePersonalityLabelInfo convertFromPb(cmd0x8f0.RspBody paramRspBody)
   {
-    int j = 0;
     ProfilePersonalityLabelInfo localProfilePersonalityLabelInfo = new ProfilePersonalityLabelInfo();
-    label53:
-    label77:
-    label101:
-    label125:
-    long l;
-    if (paramRspBody.uint32_remain_quota.has())
-    {
+    boolean bool = paramRspBody.uint32_remain_quota.has();
+    int j = 0;
+    int i;
+    if (bool) {
       i = paramRspBody.uint32_remain_quota.get();
-      localProfilePersonalityLabelInfo.remainCount = i;
-      if (!paramRspBody.uint32_total_photo.has()) {
-        break label253;
-      }
-      i = paramRspBody.uint32_total_photo.get();
-      localProfilePersonalityLabelInfo.photoCount = i;
-      if (!paramRspBody.uint32_total_praise.has()) {
-        break label258;
-      }
-      i = paramRspBody.uint32_total_praise.get();
-      localProfilePersonalityLabelInfo.praiseCount = i;
-      if (!paramRspBody.uint32_max_photo_quota.has()) {
-        break label263;
-      }
-      i = paramRspBody.uint32_max_photo_quota.get();
-      localProfilePersonalityLabelInfo.maxPhotoCount = i;
-      if (!paramRspBody.uint32_unread_praise.has()) {
-        break label268;
-      }
-      i = paramRspBody.uint32_unread_praise.get();
-      localProfilePersonalityLabelInfo.unreadCount = i;
-      if (!paramRspBody.uint64_last_praise_uin.has()) {
-        break label273;
-      }
-      l = paramRspBody.uint64_last_praise_uin.get();
-      label149:
-      localProfilePersonalityLabelInfo.lastPraiseUin = l;
-      if (!paramRspBody.uint32_is_close.has()) {
-        break label278;
-      }
+    } else {
+      i = 0;
     }
-    label258:
-    label263:
-    label268:
-    label273:
-    label278:
-    for (int i = paramRspBody.uint32_is_close.get();; i = 0)
+    localProfilePersonalityLabelInfo.remainCount = i;
+    if (paramRspBody.uint32_total_photo.has()) {
+      i = paramRspBody.uint32_total_photo.get();
+    } else {
+      i = 0;
+    }
+    localProfilePersonalityLabelInfo.photoCount = i;
+    if (paramRspBody.uint32_total_praise.has()) {
+      i = paramRspBody.uint32_total_praise.get();
+    } else {
+      i = 0;
+    }
+    localProfilePersonalityLabelInfo.praiseCount = i;
+    if (paramRspBody.uint32_max_photo_quota.has()) {
+      i = paramRspBody.uint32_max_photo_quota.get();
+    } else {
+      i = 0;
+    }
+    localProfilePersonalityLabelInfo.maxPhotoCount = i;
+    if (paramRspBody.uint32_unread_praise.has()) {
+      i = paramRspBody.uint32_unread_praise.get();
+    } else {
+      i = 0;
+    }
+    localProfilePersonalityLabelInfo.unreadCount = i;
+    long l;
+    if (paramRspBody.uint64_last_praise_uin.has()) {
+      l = paramRspBody.uint64_last_praise_uin.get();
+    } else {
+      l = 0L;
+    }
+    localProfilePersonalityLabelInfo.lastPraiseUin = l;
+    if (paramRspBody.uint32_is_close.has()) {
+      i = paramRspBody.uint32_is_close.get();
+    } else {
+      i = 0;
+    }
+    localProfilePersonalityLabelInfo.isCloseByUser = i;
+    if ((paramRspBody.rpt_msg_labels.has()) && (paramRspBody.rpt_msg_labels.size() > 0))
     {
-      localProfilePersonalityLabelInfo.isCloseByUser = i;
-      if ((!paramRspBody.rpt_msg_labels.has()) || (paramRspBody.rpt_msg_labels.size() <= 0)) {
-        break label288;
-      }
       i = j;
       while (i < paramRspBody.rpt_msg_labels.size())
       {
@@ -190,24 +200,14 @@ public class ProfilePersonalityLabelInfo
         localProfilePersonalityLabelInfo.personalityLabelInfos.add(localPersonalityLabelInfo);
         i += 1;
       }
-      i = 0;
-      break;
-      label253:
-      i = 0;
-      break label53;
-      i = 0;
-      break label77;
-      i = 0;
-      break label101;
-      i = 0;
-      break label125;
-      l = 0L;
-      break label149;
+      localProfilePersonalityLabelInfo.b();
     }
-    localProfilePersonalityLabelInfo.b();
-    label288:
-    if (QLog.isColorLevel()) {
-      QLog.i("PersonalityLabel", 2, "convertFromPb:" + localProfilePersonalityLabelInfo.toString());
+    if (QLog.isColorLevel())
+    {
+      paramRspBody = new StringBuilder();
+      paramRspBody.append("convertFromPb:");
+      paramRspBody.append(localProfilePersonalityLabelInfo.toString());
+      QLog.i("PersonalityLabel", 2, paramRspBody.toString());
     }
     return localProfilePersonalityLabelInfo;
   }
@@ -217,41 +217,40 @@ public class ProfilePersonalityLabelInfo
     if (QLog.isColorLevel()) {
       QLog.i("PersonalityLabel", 2, "convertFromPbBytes");
     }
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return new ProfilePersonalityLabelInfo();
-    }
-    cmd0x8f0.RspBody localRspBody = new cmd0x8f0.RspBody();
-    try
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
     {
-      localRspBody.mergeFrom(paramArrayOfByte);
+      cmd0x8f0.RspBody localRspBody = new cmd0x8f0.RspBody();
+      try
+      {
+        localRspBody.mergeFrom(paramArrayOfByte);
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("PersonalityLabel", 2, "convertFromPbBytes failed.", paramArrayOfByte);
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("PersonalityLabel", 2, "convertFromPbBytes failed.", paramArrayOfByte);
+        }
+      }
       return convertFromPb(localRspBody);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("PersonalityLabel", 2, "convertFromPbBytes failed.", paramArrayOfByte);
-        }
-      }
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("PersonalityLabel", 2, "convertFromPbBytes failed.", paramArrayOfByte);
-        }
-      }
-    }
+    return new ProfilePersonalityLabelInfo();
   }
   
   public static byte[] convertToBytes(ProfilePersonalityLabelInfo paramProfilePersonalityLabelInfo)
   {
     if (paramProfilePersonalityLabelInfo != null)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("PersonalityLabel", 4, "convertToBytes:" + paramProfilePersonalityLabelInfo.toString());
+      if (QLog.isDevelopLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("convertToBytes:");
+        localStringBuilder.append(paramProfilePersonalityLabelInfo.toString());
+        QLog.i("PersonalityLabel", 4, localStringBuilder.toString());
       }
       return ParcelableUtil.a(paramProfilePersonalityLabelInfo);
     }
@@ -265,25 +264,21 @@ public class ProfilePersonalityLabelInfo
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    ProfilePersonalityLabelInfo localProfilePersonalityLabelInfo;
-    do
-    {
+    if (paramObject == null) {
       return false;
-      localProfilePersonalityLabelInfo = (ProfilePersonalityLabelInfo)paramObject;
-    } while (((ProfilePersonalityLabelInfo)paramObject).personalityLabelInfos.size() != this.personalityLabelInfos.size());
+    }
+    paramObject = (ProfilePersonalityLabelInfo)paramObject;
+    if (paramObject.personalityLabelInfos.size() != this.personalityLabelInfos.size()) {
+      return false;
+    }
     int i = 0;
-    for (;;)
+    while (i < this.personalityLabelInfos.size())
     {
-      if (i >= this.personalityLabelInfos.size()) {
-        break label89;
-      }
-      if (!((PersonalityLabelInfo)localProfilePersonalityLabelInfo.personalityLabelInfos.get(i)).equals((PersonalityLabelInfo)this.personalityLabelInfos.get(i))) {
-        break;
+      if (!((PersonalityLabelInfo)paramObject.personalityLabelInfos.get(i)).equals((PersonalityLabelInfo)this.personalityLabelInfos.get(i))) {
+        return false;
       }
       i += 1;
     }
-    label89:
     return true;
   }
   
@@ -323,7 +318,8 @@ public class ProfilePersonalityLabelInfo
   
   public int getLatestLabelPhotoSize()
   {
-    if ((this.personalityLabelInfos != null) && (this.personalityLabelInfos.size() > 0) && (((PersonalityLabelInfo)this.personalityLabelInfos.get(0)).personalityLabelPhotos != null)) {
+    List localList = this.personalityLabelInfos;
+    if ((localList != null) && (localList.size() > 0) && (((PersonalityLabelInfo)this.personalityLabelInfos.get(0)).personalityLabelPhotos != null)) {
       return ((PersonalityLabelInfo)this.personalityLabelInfos.get(0)).personalityLabelPhotos.size();
     }
     return 0;
@@ -331,7 +327,8 @@ public class ProfilePersonalityLabelInfo
   
   public String getLatestLabelText()
   {
-    if ((this.personalityLabelInfos != null) && (this.personalityLabelInfos.size() > 0)) {
+    List localList = this.personalityLabelInfos;
+    if ((localList != null) && (localList.size() > 0)) {
       return ((PersonalityLabelInfo)this.personalityLabelInfos.get(0)).text;
     }
     return "";
@@ -339,7 +336,8 @@ public class ProfilePersonalityLabelInfo
   
   public String getLatestThumbLocalUrl()
   {
-    if ((this.personalityLabelInfos != null) && (this.personalityLabelInfos.size() > 0) && (((PersonalityLabelInfo)this.personalityLabelInfos.get(0)).personalityLabelPhotos != null) && (((PersonalityLabelInfo)this.personalityLabelInfos.get(0)).personalityLabelPhotos.size() > 0)) {
+    List localList = this.personalityLabelInfos;
+    if ((localList != null) && (localList.size() > 0) && (((PersonalityLabelInfo)this.personalityLabelInfos.get(0)).personalityLabelPhotos != null) && (((PersonalityLabelInfo)this.personalityLabelInfos.get(0)).personalityLabelPhotos.size() > 0)) {
       return ((PersonalityLabelPhoto)((PersonalityLabelInfo)this.personalityLabelInfos.get(0)).personalityLabelPhotos.get(0)).localThumbPath;
     }
     return null;
@@ -347,7 +345,8 @@ public class ProfilePersonalityLabelInfo
   
   public String getLatestThumbUrl()
   {
-    if ((this.personalityLabelInfos != null) && (this.personalityLabelInfos.size() > 0) && (((PersonalityLabelInfo)this.personalityLabelInfos.get(0)).personalityLabelPhotos != null) && (((PersonalityLabelInfo)this.personalityLabelInfos.get(0)).personalityLabelPhotos.size() > 0)) {
+    List localList = this.personalityLabelInfos;
+    if ((localList != null) && (localList.size() > 0) && (((PersonalityLabelInfo)this.personalityLabelInfos.get(0)).personalityLabelPhotos != null) && (((PersonalityLabelInfo)this.personalityLabelInfos.get(0)).personalityLabelPhotos.size() > 0)) {
       return ((PersonalityLabelPhoto)((PersonalityLabelInfo)this.personalityLabelInfos.get(0)).personalityLabelPhotos.get(0)).get128SizeUrl();
     }
     return null;
@@ -355,26 +354,52 @@ public class ProfilePersonalityLabelInfo
   
   public int getSize()
   {
-    if (this.personalityLabelInfos == null) {
+    List localList = this.personalityLabelInfos;
+    if (localList == null) {
       return 0;
     }
-    return this.personalityLabelInfos.size();
+    return localList.size();
   }
   
   public String toString()
   {
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    localStringBuilder.append("currentVersion");
+    localStringBuilder.append(":");
+    localStringBuilder.append(CURRENT_VERSION);
+    localStringBuilder.append("|");
+    localStringBuilder.append("isCloseByUser");
+    int i = this.isCloseByUser;
     boolean bool = true;
-    StringBuilder localStringBuilder1 = new StringBuilder(1024);
-    localStringBuilder1.append("currentVersion").append(":").append(CURRENT_VERSION).append("|");
-    StringBuilder localStringBuilder2 = localStringBuilder1.append("isCloseByUser");
-    if (this.isCloseByUser == 1) {}
-    for (;;)
-    {
-      localStringBuilder2.append(bool).append("|");
-      localStringBuilder1.append("remainCount").append(":").append(this.remainCount).append("|").append("labelInfoSize:").append(this.personalityLabelInfos.size()).append("|").append("photoCount:").append(this.photoCount).append("|").append("praiseCount:").append(this.praiseCount).append("|").append("unreadCount:").append(this.unreadCount).append("|").append("lastPraiseUin:").append(this.lastPraiseUin).append("|").append("LabelInfos").append(":[").append(this.personalityLabelInfos).append("]");
-      return localStringBuilder1.toString();
+    if (i != 1) {
       bool = false;
     }
+    localStringBuilder.append(bool);
+    localStringBuilder.append("|");
+    localStringBuilder.append("remainCount");
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.remainCount);
+    localStringBuilder.append("|");
+    localStringBuilder.append("labelInfoSize:");
+    localStringBuilder.append(this.personalityLabelInfos.size());
+    localStringBuilder.append("|");
+    localStringBuilder.append("photoCount:");
+    localStringBuilder.append(this.photoCount);
+    localStringBuilder.append("|");
+    localStringBuilder.append("praiseCount:");
+    localStringBuilder.append(this.praiseCount);
+    localStringBuilder.append("|");
+    localStringBuilder.append("unreadCount:");
+    localStringBuilder.append(this.unreadCount);
+    localStringBuilder.append("|");
+    localStringBuilder.append("lastPraiseUin:");
+    localStringBuilder.append(this.lastPraiseUin);
+    localStringBuilder.append("|");
+    localStringBuilder.append("LabelInfos");
+    localStringBuilder.append(":[");
+    localStringBuilder.append(this.personalityLabelInfos);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -392,7 +417,7 @@ public class ProfilePersonalityLabelInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.ProfilePersonalityLabelInfo
  * JD-Core Version:    0.7.0.1
  */

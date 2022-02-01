@@ -53,24 +53,21 @@ public class ODRoomSwitchService
     ArrayList localArrayList = new ArrayList();
     localArrayList.addAll(paramList1);
     int i = 0;
-    SwitchRoomInfo localSwitchRoomInfo;
-    if (i < paramList2.size())
+    while (i < paramList2.size())
     {
-      localSwitchRoomInfo = (SwitchRoomInfo)paramList2.get(i);
-      if ((paramList1.size() >= 0) || (((SwitchRoomInfo)paramList1.get(0)).roomId != localSwitchRoomInfo.roomId)) {
-        break label101;
+      SwitchRoomInfo localSwitchRoomInfo = (SwitchRoomInfo)paramList2.get(i);
+      int j;
+      if ((paramList1.size() > 0) && (((SwitchRoomInfo)paramList1.get(0)).roomId == localSwitchRoomInfo.roomId)) {
+        j = 1;
+      } else {
+        j = 0;
       }
-    }
-    label101:
-    for (int j = 1;; j = 0)
-    {
       if (j == 0) {
         localArrayList.add(localSwitchRoomInfo);
       }
       i += 1;
-      break;
-      return localArrayList;
     }
+    return localArrayList;
   }
   
   private void a(int paramInt, ODRoomSwitchService.IGetNeighborRoomListener paramIGetNeighborRoomListener)
@@ -86,7 +83,7 @@ public class ODRoomSwitchService
   
   private boolean a(List<SwitchRoomInfo> paramList, int paramInt)
   {
-    if (paramInt + 5 > paramList.size()) {}
+    paramList.size();
     return false;
   }
   
@@ -132,7 +129,7 @@ public class ODRoomSwitchService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.now_od.services.ODRoomSwitchService
  * JD-Core Version:    0.7.0.1
  */

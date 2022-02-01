@@ -15,7 +15,13 @@ class UserEngineLogic$6
   public void onFail(int paramInt, String paramString)
   {
     ((ToastInterface)UserEngineLogic.access$100(this.this$0).getService(ToastInterface.class)).showToast("直播模块登录异常，请尝试重新登录");
-    UserEngineLogic.access$200(this.this$0).e("UserEngineLogic", "updateAuthTicket-> refreshLogin invalid, code=" + paramInt + ", msg=" + paramString, new Object[0]);
+    LogInterface localLogInterface = UserEngineLogic.access$200(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateAuthTicket-> refreshLogin invalid, code=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", msg=");
+    localStringBuilder.append(paramString);
+    localLogInterface.e("UserEngineLogic", localStringBuilder.toString(), new Object[0]);
   }
   
   public void onSucceed(LoginInfo paramLoginInfo)
@@ -26,7 +32,7 @@ class UserEngineLogic$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.accountengine.UserEngineLogic.6
  * JD-Core Version:    0.7.0.1
  */

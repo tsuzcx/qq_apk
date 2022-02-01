@@ -32,15 +32,16 @@ public class NatMemMonitor
   
   public static NatMemMonitor a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqStatisticsNatmemNatMemMonitor == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqStatisticsNatmemNatMemMonitor == null) {
-        jdField_a_of_type_ComTencentMobileqqStatisticsNatmemNatMemMonitor = new NatMemMonitor();
+    if (jdField_a_of_type_ComTencentMobileqqStatisticsNatmemNatMemMonitor == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqStatisticsNatmemNatMemMonitor == null) {
+          jdField_a_of_type_ComTencentMobileqqStatisticsNatmemNatMemMonitor = new NatMemMonitor();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqStatisticsNatmemNatMemMonitor;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqStatisticsNatmemNatMemMonitor;
   }
   
   private void a(String paramString)
@@ -50,14 +51,14 @@ public class NatMemMonitor
       if (TextUtils.isEmpty(paramString)) {
         return;
       }
-      if (new File(paramString).exists())
+      if (!new File(paramString).exists()) {
+        return;
+      }
+      FileUtils.deleteFilesInDirectory(paramString);
+      if (QLog.isColorLevel())
       {
-        FileUtils.b(paramString);
-        if (QLog.isColorLevel())
-        {
-          QLog.d("NatMem", 2, new Object[] { "delete files in ", paramString });
-          return;
-        }
+        QLog.d("NatMem", 2, new Object[] { "delete files in ", paramString });
+        return;
       }
     }
     catch (Exception paramString)
@@ -72,99 +73,105 @@ public class NatMemMonitor
     // Byte code:
     //   0: new 51	java/io/File
     //   3: dup
-    //   4: invokestatic 90	com/tencent/mobileqq/statistics/natmem/NativeMemoryUtils:a	()Ljava/lang/String;
+    //   4: invokestatic 91	com/tencent/mobileqq/statistics/natmem/NativeMemoryUtils:a	()Ljava/lang/String;
     //   7: invokespecial 53	java/io/File:<init>	(Ljava/lang/String;)V
-    //   10: astore 4
+    //   10: astore 5
     //   12: new 51	java/io/File
     //   15: dup
     //   16: aload_1
     //   17: invokespecial 53	java/io/File:<init>	(Ljava/lang/String;)V
     //   20: astore_1
     //   21: aconst_null
-    //   22: astore_3
-    //   23: aload 4
-    //   25: invokevirtual 57	java/io/File:exists	()Z
-    //   28: ifne +9 -> 37
-    //   31: aload 4
-    //   33: invokevirtual 93	java/io/File:mkdirs	()Z
-    //   36: pop
-    //   37: aload_1
-    //   38: invokevirtual 57	java/io/File:exists	()Z
-    //   41: ifne +8 -> 49
-    //   44: aload_1
-    //   45: invokevirtual 96	java/io/File:createNewFile	()Z
-    //   48: pop
-    //   49: new 98	java/io/BufferedWriter
-    //   52: dup
-    //   53: new 100	java/io/FileWriter
-    //   56: dup
-    //   57: aload_1
-    //   58: iconst_1
-    //   59: invokespecial 103	java/io/FileWriter:<init>	(Ljava/io/File;Z)V
-    //   62: sipush 8192
-    //   65: invokespecial 106	java/io/BufferedWriter:<init>	(Ljava/io/Writer;I)V
-    //   68: astore_1
-    //   69: aload_1
-    //   70: aload_2
-    //   71: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   74: invokevirtual 112	java/io/BufferedWriter:write	(Ljava/lang/String;)V
-    //   77: aload_1
-    //   78: invokevirtual 115	java/io/BufferedWriter:flush	()V
-    //   81: ldc 68
-    //   83: ldc 117
-    //   85: invokestatic 120	com/tencent/mobileqq/statistics/natmem/NativeMemoryUtils:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   88: aload_1
-    //   89: ifnull +7 -> 96
-    //   92: aload_1
-    //   93: invokevirtual 123	java/io/BufferedWriter:close	()V
-    //   96: return
-    //   97: astore_1
-    //   98: aload_3
-    //   99: astore_1
-    //   100: aload_1
-    //   101: ifnull -5 -> 96
-    //   104: aload_1
-    //   105: invokevirtual 123	java/io/BufferedWriter:close	()V
-    //   108: return
-    //   109: astore_1
-    //   110: return
-    //   111: astore_2
-    //   112: aconst_null
-    //   113: astore_1
-    //   114: aload_1
-    //   115: ifnull +7 -> 122
+    //   22: astore 4
+    //   24: aconst_null
+    //   25: astore_3
+    //   26: aload 5
+    //   28: invokevirtual 57	java/io/File:exists	()Z
+    //   31: ifne +9 -> 40
+    //   34: aload 5
+    //   36: invokevirtual 94	java/io/File:mkdirs	()Z
+    //   39: pop
+    //   40: aload_1
+    //   41: invokevirtual 57	java/io/File:exists	()Z
+    //   44: ifne +8 -> 52
+    //   47: aload_1
+    //   48: invokevirtual 97	java/io/File:createNewFile	()Z
+    //   51: pop
+    //   52: new 99	java/io/BufferedWriter
+    //   55: dup
+    //   56: new 101	java/io/FileWriter
+    //   59: dup
+    //   60: aload_1
+    //   61: iconst_1
+    //   62: invokespecial 104	java/io/FileWriter:<init>	(Ljava/io/File;Z)V
+    //   65: sipush 8192
+    //   68: invokespecial 107	java/io/BufferedWriter:<init>	(Ljava/io/Writer;I)V
+    //   71: astore_1
+    //   72: aload_1
+    //   73: aload_2
+    //   74: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   77: invokevirtual 113	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   80: aload_1
+    //   81: invokevirtual 116	java/io/BufferedWriter:flush	()V
+    //   84: ldc 69
+    //   86: ldc 118
+    //   88: invokestatic 121	com/tencent/mobileqq/statistics/natmem/NativeMemoryUtils:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   91: aload_1
+    //   92: invokevirtual 124	java/io/BufferedWriter:close	()V
+    //   95: return
+    //   96: astore_3
+    //   97: aload_1
+    //   98: astore_2
+    //   99: aload_3
+    //   100: astore_1
+    //   101: goto +9 -> 110
+    //   104: goto +16 -> 120
+    //   107: astore_1
+    //   108: aload_3
+    //   109: astore_2
+    //   110: aload_2
+    //   111: ifnull +7 -> 118
+    //   114: aload_2
+    //   115: invokevirtual 124	java/io/BufferedWriter:close	()V
     //   118: aload_1
-    //   119: invokevirtual 123	java/io/BufferedWriter:close	()V
-    //   122: aload_2
-    //   123: athrow
-    //   124: astore_1
-    //   125: return
-    //   126: astore_1
-    //   127: goto -5 -> 122
-    //   130: astore_2
-    //   131: goto -17 -> 114
-    //   134: astore_2
-    //   135: goto -35 -> 100
+    //   119: athrow
+    //   120: aload_1
+    //   121: ifnull +7 -> 128
+    //   124: aload_1
+    //   125: invokevirtual 124	java/io/BufferedWriter:close	()V
+    //   128: return
+    //   129: astore_1
+    //   130: aload 4
+    //   132: astore_1
+    //   133: goto -13 -> 120
+    //   136: astore_2
+    //   137: goto -33 -> 104
+    //   140: astore_1
+    //   141: return
+    //   142: astore_2
+    //   143: goto -25 -> 118
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	138	0	this	NatMemMonitor
-    //   0	138	1	paramString	String
-    //   0	138	2	paramStringBuilder	StringBuilder
-    //   22	77	3	localObject	Object
-    //   10	22	4	localFile	File
+    //   0	146	0	this	NatMemMonitor
+    //   0	146	1	paramString	String
+    //   0	146	2	paramStringBuilder	StringBuilder
+    //   25	1	3	localObject1	Object
+    //   96	13	3	localObject2	Object
+    //   22	109	4	localObject3	Object
+    //   10	25	5	localFile	File
     // Exception table:
     //   from	to	target	type
-    //   23	37	97	java/lang/Throwable
-    //   37	49	97	java/lang/Throwable
-    //   49	69	97	java/lang/Throwable
-    //   104	108	109	java/io/IOException
-    //   23	37	111	finally
-    //   37	49	111	finally
-    //   49	69	111	finally
-    //   92	96	124	java/io/IOException
-    //   118	122	126	java/io/IOException
-    //   69	88	130	finally
-    //   69	88	134	java/lang/Throwable
+    //   72	91	96	finally
+    //   26	40	107	finally
+    //   40	52	107	finally
+    //   52	72	107	finally
+    //   26	40	129	java/lang/Throwable
+    //   40	52	129	java/lang/Throwable
+    //   52	72	129	java/lang/Throwable
+    //   72	91	136	java/lang/Throwable
+    //   91	95	140	java/io/IOException
+    //   124	128	140	java/io/IOException
+    //   114	118	142	java/io/IOException
   }
   
   private void e()
@@ -188,7 +195,7 @@ public class NatMemMonitor
           if ((!str.contains(".txt")) && (!str.contains(".zip"))) {
             break label105;
           }
-          FileUtils.e(localObject2.getAbsolutePath());
+          FileUtils.deleteFile(localObject2.getAbsolutePath());
           break label105;
         }
         if (QLog.isColorLevel())
@@ -210,14 +217,14 @@ public class NatMemMonitor
   public File a()
   {
     Object localObject1 = null;
+    Object localObject2 = null;
     for (;;)
     {
-      String str;
       int i;
       try
       {
         Object localObject3 = NativeMemoryUtils.b();
-        str = NativeMemoryUtils.a();
+        String str = NativeMemoryUtils.a();
         ArrayList localArrayList = new ArrayList();
         localObject3 = new File((String)localObject3);
         if (!((File)localObject3).exists()) {
@@ -230,167 +237,87 @@ public class NatMemMonitor
         {
           Object localObject4 = localObject3[i];
           if (localObject4.getName().contains(".zip")) {
-            break label213;
+            break label225;
           }
           localArrayList.add(localObject4.getAbsolutePath());
+          break label225;
         }
-      }
-      catch (Throwable localThrowable1)
-      {
-        QLog.e("NatMem", 2, localThrowable1, new Object[0]);
-        return localObject1;
-      }
-      if (localThrowable1.size() > 0)
-      {
-        str = str + System.currentTimeMillis() + ".zip";
-        Object localObject2;
-        if (FileUtils.a(localThrowable1, str)) {
-          localObject2 = new File(str);
-        }
-        try
+        if (localArrayList.size() > 0)
         {
-          boolean bool = ((File)localObject2).exists();
-          if (!bool) {
-            break label211;
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(str);
+          ((StringBuilder)localObject1).append(System.currentTimeMillis());
+          ((StringBuilder)localObject1).append(".zip");
+          localObject1 = ((StringBuilder)localObject1).toString();
+          if (FileUtils.zipFiles(localArrayList, (String)localObject1))
+          {
+            localObject1 = new File((String)localObject1);
+            try
+            {
+              boolean bool = ((File)localObject1).exists();
+              if (!bool) {
+                return null;
+              }
+              return localObject1;
+            }
+            catch (Throwable localThrowable1) {}
           }
-          return localObject2;
+          else
+          {
+            QLog.e("NatMem", 2, "zip fail");
+            return null;
+          }
         }
-        catch (Throwable localThrowable2)
-        {
-          localObject1 = localObject2;
-          localObject2 = localThrowable2;
-        }
-        QLog.e("NatMem", 2, "zip fail");
-        return null;
-        continue;
       }
-      label211:
-      return null;
-      label213:
+      catch (Throwable localThrowable2)
+      {
+        localObject1 = localObject2;
+        QLog.e("NatMem", 2, localThrowable2, new Object[0]);
+      }
+      return localObject1;
+      label225:
       i += 1;
     }
   }
   
-  /* Error */
   public void a()
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: aload_0
-    //   5: getfield 17	com/tencent/mobileqq/statistics/natmem/NatMemMonitor:jdField_a_of_type_Boolean	Z
-    //   8: istore 4
-    //   10: iload 4
-    //   12: ifne +6 -> 18
-    //   15: aload_0
-    //   16: monitorexit
-    //   17: return
-    //   18: aload_0
-    //   19: invokestatic 187	com/tencent/mobileqq/statistics/natmem/NativeMemoryUtils:a	()I
-    //   22: invokestatic 189	com/tencent/mobileqq/statistics/natmem/NativeMemoryUtils:b	()I
-    //   25: invokestatic 191	com/tencent/mobileqq/statistics/natmem/NativeMemoryUtils:c	()I
-    //   28: invokevirtual 195	com/tencent/mobileqq/statistics/natmem/NatMemMonitor:nativeInitSampleRate	(III)V
-    //   31: getstatic 198	com/tencent/mobileqq/statistics/natmem/NativeMemoryUtils:a	[Ljava/lang/String;
-    //   34: astore 5
-    //   36: aload 5
-    //   38: arraylength
-    //   39: istore_3
-    //   40: iconst_0
-    //   41: istore_1
-    //   42: iload_1
-    //   43: iload_3
-    //   44: if_icmpge +19 -> 63
-    //   47: aload_0
-    //   48: aload 5
-    //   50: iload_1
-    //   51: aaload
-    //   52: invokevirtual 202	com/tencent/mobileqq/statistics/natmem/NatMemMonitor:nativeRegisterAppLib	(Ljava/lang/String;)I
-    //   55: pop
-    //   56: iload_1
-    //   57: iconst_1
-    //   58: iadd
-    //   59: istore_1
-    //   60: goto -18 -> 42
-    //   63: getstatic 204	com/tencent/mobileqq/statistics/natmem/NativeMemoryUtils:b	[Ljava/lang/String;
-    //   66: astore 5
-    //   68: aload 5
-    //   70: arraylength
-    //   71: istore_3
-    //   72: iconst_0
-    //   73: istore_1
-    //   74: iload_1
-    //   75: iload_3
-    //   76: if_icmpge +19 -> 95
-    //   79: aload_0
-    //   80: aload 5
-    //   82: iload_1
-    //   83: aaload
-    //   84: invokevirtual 207	com/tencent/mobileqq/statistics/natmem/NatMemMonitor:nativeIgnoreHook	(Ljava/lang/String;)I
-    //   87: pop
-    //   88: iload_1
-    //   89: iconst_1
-    //   90: iadd
-    //   91: istore_1
-    //   92: goto -18 -> 74
-    //   95: invokestatic 209	com/tencent/mobileqq/statistics/natmem/NativeMemoryUtils:b	()Z
-    //   98: ifne +35 -> 133
-    //   101: getstatic 211	com/tencent/mobileqq/statistics/natmem/NativeMemoryUtils:c	[Ljava/lang/String;
-    //   104: astore 5
-    //   106: aload 5
-    //   108: arraylength
-    //   109: istore_3
-    //   110: iload_2
-    //   111: istore_1
-    //   112: iload_1
-    //   113: iload_3
-    //   114: if_icmpge +19 -> 133
-    //   117: aload_0
-    //   118: aload 5
-    //   120: iload_1
-    //   121: aaload
-    //   122: invokevirtual 207	com/tencent/mobileqq/statistics/natmem/NatMemMonitor:nativeIgnoreHook	(Ljava/lang/String;)I
-    //   125: pop
-    //   126: iload_1
-    //   127: iconst_1
-    //   128: iadd
-    //   129: istore_1
-    //   130: goto -18 -> 112
-    //   133: aload_0
-    //   134: invokestatic 209	com/tencent/mobileqq/statistics/natmem/NativeMemoryUtils:b	()Z
-    //   137: invokevirtual 215	com/tencent/mobileqq/statistics/natmem/NatMemMonitor:nativeRegisterSysLib	(Z)V
-    //   140: aload_0
-    //   141: invokevirtual 218	com/tencent/mobileqq/statistics/natmem/NatMemMonitor:nativeStartHook	()I
-    //   144: pop
-    //   145: aload_0
-    //   146: iconst_1
-    //   147: putfield 21	com/tencent/mobileqq/statistics/natmem/NatMemMonitor:c	Z
-    //   150: goto -135 -> 15
-    //   153: astore 5
-    //   155: aload_0
-    //   156: monitorexit
-    //   157: aload 5
-    //   159: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	160	0	this	NatMemMonitor
-    //   41	89	1	i	int
-    //   1	110	2	j	int
-    //   39	76	3	k	int
-    //   8	3	4	bool	boolean
-    //   34	85	5	arrayOfString	String[]
-    //   153	5	5	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   4	10	153	finally
-    //   18	40	153	finally
-    //   47	56	153	finally
-    //   63	72	153	finally
-    //   79	88	153	finally
-    //   95	110	153	finally
-    //   117	126	153	finally
-    //   133	150	153	finally
+    try
+    {
+      boolean bool = this.jdField_a_of_type_Boolean;
+      if (!bool) {
+        return;
+      }
+      nativeInitSampleRate(NativeMemoryUtils.a(), NativeMemoryUtils.b(), NativeMemoryUtils.c());
+      Object localObject1 = NativeMemoryUtils.jdField_a_of_type_ArrayOfJavaLangString;
+      int j = localObject1.length;
+      int i = 0;
+      while (i < j)
+      {
+        nativeRegisterAppLib(localObject1[i]);
+        i += 1;
+      }
+      localObject1 = NativeMemoryUtils.jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject1).hasNext()) {
+        nativeIgnoreHook((String)((Iterator)localObject1).next());
+      }
+      if (!NativeMemoryUtils.b())
+      {
+        localObject1 = NativeMemoryUtils.b.iterator();
+        while (((Iterator)localObject1).hasNext()) {
+          nativeIgnoreHook((String)((Iterator)localObject1).next());
+        }
+      }
+      nativeRegisterSysLib(NativeMemoryUtils.b());
+      nativeStartHook();
+      this.c = true;
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public void b()
@@ -412,7 +339,7 @@ public class NatMemMonitor
   {
     if (NativeMemoryUtils.d())
     {
-      localFile = a();
+      File localFile = a();
       if (localFile != null)
       {
         e();
@@ -421,20 +348,23 @@ public class NatMemMonitor
           try
           {
             localJSONObject1 = new JSONObject();
-            localJSONObject2 = new JSONObject();
-            localJSONObject2.put("fileObj1", localFile.getAbsolutePath());
-            localJSONObject3 = new JSONObject();
-            localJSONObject3.put("p_id", MagnifierSDK.b());
-            localJSONObject3.put("plugin", String.valueOf(137));
-            localJSONObject3.put("newplugin", String.valueOf(137));
-            localJSONObject1.put("fileObj", localJSONObject2);
-            localJSONObject1.put("clientinfo", localJSONObject3);
+            localObject = new JSONObject();
+            ((JSONObject)localObject).put("fileObj1", localFile.getAbsolutePath());
+            JSONObject localJSONObject2 = new JSONObject();
+            localJSONObject2.put("p_id", MagnifierSDK.b());
+            localJSONObject2.put("plugin", String.valueOf(137));
+            localJSONObject2.put("newplugin", String.valueOf(137));
+            localJSONObject1.put("fileObj", localObject);
+            localJSONObject1.put("clientinfo", localJSONObject2);
             l1 = 0L;
           }
           catch (Throwable localThrowable)
           {
+            JSONObject localJSONObject1;
+            Object localObject;
+            long l1;
+            long l2;
             QLog.e("NatMem", 2, "report fail.", localThrowable);
-            continue;
           }
           try
           {
@@ -443,33 +373,33 @@ public class NatMemMonitor
           }
           catch (Exception localException)
           {
-            QLog.e("NatMem", 2, "uploadReportFile get uin " + 0L);
+            continue;
           }
-        }
-        ReporterMachine.a(new ResultObject(0, "testcase", true, 1L, 1L, localJSONObject1, true, false, l1));
-        if (QLog.isColorLevel()) {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("uploadReportFile get uin ");
+          ((StringBuilder)localObject).append(0L);
+          QLog.e("NatMem", 2, ((StringBuilder)localObject).toString());
+          continue;
+          ReporterMachine.a(new ResultObject(0, "testcase", true, 1L, 1L, localJSONObject1, true, false, l1));
+          if (!QLog.isColorLevel()) {
+            break label252;
+          }
           QLog.d("NatMem", 2, new Object[] { "uploadReportFile success ", localFile.getAbsolutePath() });
+          break label252;
         }
+        label252:
         NativeMemoryUtils.a(System.currentTimeMillis());
         a(NativeMemoryUtils.b());
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("NatMem", 2, "no file to report");
       }
     }
-    while (!QLog.isColorLevel())
+    else if (QLog.isColorLevel())
     {
-      File localFile;
-      JSONObject localJSONObject1;
-      JSONObject localJSONObject2;
-      JSONObject localJSONObject3;
-      long l1;
-      long l2;
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("NatMem", 2, "no file to report");
-      return;
+      QLog.d("NatMem", 2, "uploadReportFile failed because of interval");
     }
-    QLog.d("NatMem", 2, "uploadReportFile failed because of interval");
   }
   
   public void d()
@@ -491,7 +421,12 @@ public class NatMemMonitor
       while (((Iterator)localObject1).hasNext()) {
         ((StringBuilder)localObject2).append(((NativeMemoryInfo)((Iterator)localObject1).next()).toString());
       }
-      a(NativeMemoryUtils.a() + "mon_" + System.currentTimeMillis() + ".txt", (StringBuilder)localObject2);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(NativeMemoryUtils.a());
+      ((StringBuilder)localObject1).append("mon_");
+      ((StringBuilder)localObject1).append(System.currentTimeMillis());
+      ((StringBuilder)localObject1).append(".txt");
+      a(((StringBuilder)localObject1).toString(), (StringBuilder)localObject2);
       return;
     }
     NativeMemoryUtils.a("NatMem", "no memory infos");
@@ -533,7 +468,7 @@ public class NatMemMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.natmem.NatMemMonitor
  * JD-Core Version:    0.7.0.1
  */

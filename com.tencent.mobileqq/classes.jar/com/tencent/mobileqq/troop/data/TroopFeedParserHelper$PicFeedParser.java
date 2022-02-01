@@ -11,74 +11,91 @@ public class TroopFeedParserHelper$PicFeedParser
 {
   public TroopFeedItem a(JSONObject paramJSONObject)
   {
-    int i = 0;
     TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
     if (localTroopFeedItem == null) {
       return null;
     }
     for (;;)
     {
-      JSONObject localJSONObject;
       try
       {
         paramJSONObject = paramJSONObject.getJSONArray("content");
-        if (i >= paramJSONObject.length()) {
-          break label283;
-        }
-        localJSONObject = paramJSONObject.getJSONObject(i);
-        int j = localJSONObject.getInt("type");
-        if (j == 5)
+        i = 0;
+        if (i < paramJSONObject.length())
         {
-          if (localJSONObject.has("file_path")) {
-            localTroopFeedItem.linkUrl = localJSONObject.getString("file_path");
-          }
-          localTroopFeedItem.type = 0;
-          if (localJSONObject.has("sharesize")) {
-            localTroopFeedItem.ex_1 = ("" + localJSONObject.getLong("sharesize"));
-          }
-          boolean bool = localJSONObject.has("bus_id");
-          if (bool) {}
-          try
+          localJSONObject = paramJSONObject.getJSONObject(i);
+          j = localJSONObject.getInt("type");
+          if (j == 5)
           {
-            localTroopFeedItem.content = ("" + localJSONObject.getLong("bus_id"));
-            if (!localJSONObject.has("sharefile")) {
-              break label308;
+            if (localJSONObject.has("file_path")) {
+              localTroopFeedItem.linkUrl = localJSONObject.getString("file_path");
             }
-            localTroopFeedItem.title = localJSONObject.getString("sharefile");
+            localTroopFeedItem.type = 0;
+            boolean bool = localJSONObject.has("sharesize");
+            if (bool)
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("");
+              localStringBuilder.append(localJSONObject.getLong("sharesize"));
+              localTroopFeedItem.ex_1 = localStringBuilder.toString();
+            }
+            bool = localJSONObject.has("bus_id");
+            if (!bool) {}
           }
-          catch (JSONException localJSONException)
-          {
-            localTroopFeedItem.content = ("" + localJSONObject.getString("bus_id"));
-            continue;
-          }
-        }
-        if (j != 3) {
-          break label308;
         }
       }
       catch (JSONException paramJSONObject)
       {
+        int i;
+        JSONObject localJSONObject;
+        int j;
+        StringBuilder localStringBuilder;
         paramJSONObject.printStackTrace();
         return null;
       }
-      if (localJSONObject.has("pic_id"))
+      try
       {
-        localTroopFeedItem.picPath = ("https://gdynamic.qpic.cn/gdynamic/" + localJSONObject.getString("pic_id") + "/109");
-        break label308;
-        label283:
-        if ((StringUtil.a(localTroopFeedItem.linkUrl)) || (StringUtil.a(localTroopFeedItem.content))) {
-          break;
-        }
-        return localTroopFeedItem;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("");
+        localStringBuilder.append(localJSONObject.getLong("bus_id"));
+        localTroopFeedItem.content = localStringBuilder.toString();
       }
-      label308:
+      catch (JSONException localJSONException)
+      {
+        continue;
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(localJSONObject.getString("bus_id"));
+      localTroopFeedItem.content = localStringBuilder.toString();
+      if (localJSONObject.has("sharefile"))
+      {
+        localTroopFeedItem.title = localJSONObject.getString("sharefile");
+        continue;
+        if ((j == 3) && (localJSONObject.has("pic_id")))
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("https://gdynamic.qpic.cn/gdynamic/");
+          localStringBuilder.append(localJSONObject.getString("pic_id"));
+          localStringBuilder.append("/109");
+          localTroopFeedItem.picPath = localStringBuilder.toString();
+        }
+      }
       i += 1;
     }
+    if (!StringUtil.a(localTroopFeedItem.linkUrl))
+    {
+      if (StringUtil.a(localTroopFeedItem.content)) {
+        return null;
+      }
+      return localTroopFeedItem;
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFeedParserHelper.PicFeedParser
  * JD-Core Version:    0.7.0.1
  */

@@ -22,42 +22,36 @@ class EcShopFirstRunMsgConfigs$1
   public void onDone(DownloadTask paramDownloadTask)
   {
     super.onDone(paramDownloadTask);
-    if ((paramDownloadTask.a == 0) && (this.a.a.a != null))
+    if ((paramDownloadTask.a == 0) && (this.a.mAutomator.a != null))
     {
-      str = paramDownloadTask.a().getString("path");
-      if ((this.a.a.a != null) && (!TextUtils.isEmpty(str)))
-      {
-        if (!EcShopAssistantManager.e.equals(str)) {
-          break label143;
+      String str = paramDownloadTask.a().getString("path");
+      if ((this.a.mAutomator.a != null) && (!TextUtils.isEmpty(str))) {
+        if (EcShopAssistantManager.e.equals(str))
+        {
+          this.a.mAutomator.a.getApp().getSharedPreferences("ecshop_sp", 0).edit().putLong("last_modified_report_json", paramDownloadTask.i).commit();
+          ((EcshopReportHandler)this.a.mAutomator.a.getBusinessHandler(BusinessHandlerFactory.EC_SHOP_REPORT_HANDLER)).a();
+          if (QLog.isColorLevel()) {
+            QLog.i("Ecshop", 2, "download report json success.");
+          }
         }
-        this.a.a.a.getApp().getSharedPreferences("ecshop_sp", 0).edit().putLong("last_modified_report_json", paramDownloadTask.i).commit();
-        ((EcshopReportHandler)this.a.a.a.getBusinessHandler(BusinessHandlerFactory.EC_SHOP_REPORT_HANDLER)).a();
-        if (QLog.isColorLevel()) {
-          QLog.i("Ecshop", 2, "download report json success.");
+        else if (EcShopAssistantManager.f.equals(str))
+        {
+          this.a.mAutomator.a.getApp().getSharedPreferences("ecshop_sp", 0).edit().putLong("last_modified_behaviors_json", paramDownloadTask.i).commit();
+          if (QLog.isColorLevel()) {
+            QLog.i("Ecshop", 2, "download behaviors json success.");
+          }
         }
       }
-    }
-    label143:
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        String str;
-        do
-        {
-          return;
-        } while (!EcShopAssistantManager.f.equals(str));
-        this.a.a.a.getApp().getSharedPreferences("ecshop_sp", 0).edit().putLong("last_modified_behaviors_json", paramDownloadTask.i).commit();
-      } while (!QLog.isColorLevel());
-      QLog.i("Ecshop", 2, "download behaviors json success.");
       return;
     }
-    QLog.i("Ecshop", 2, "download json failed.");
+    if (QLog.isColorLevel()) {
+      QLog.i("Ecshop", 2, "download json failed.");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.EcShopFirstRunMsgConfigs.1
  * JD-Core Version:    0.7.0.1
  */

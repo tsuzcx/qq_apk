@@ -48,14 +48,18 @@ public class UpdateUrlInfoPtr
     catch (Throwable localThrowable)
     {
       localThrowable.printStackTrace();
-      VasUpdateWrapper.getLog().e("VasUpdate_UpdateUrlInfoPtr", "parseJsonToUpdateUrlInfoPtr error data = " + paramJSONObject.toString());
+      IVasLog localIVasLog = VasUpdateWrapper.getLog();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseJsonToUpdateUrlInfoPtr error data = ");
+      localStringBuilder.append(paramJSONObject.toString());
+      localIVasLog.e("VasUpdate_UpdateUrlInfoPtr", localStringBuilder.toString());
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.vas.update.entity.UpdateUrlInfoPtr
  * JD-Core Version:    0.7.0.1
  */

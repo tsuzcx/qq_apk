@@ -21,14 +21,15 @@ public final class ad
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.bY != 0L) {
-      paramJceOutputStream.write(this.bY, 0);
+    long l = this.bY;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.ad
  * JD-Core Version:    0.7.0.1
  */

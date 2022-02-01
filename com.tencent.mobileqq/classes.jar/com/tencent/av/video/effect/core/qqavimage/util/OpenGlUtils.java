@@ -63,52 +63,57 @@ public class OpenGlUtils
   
   public static int loadShader(String paramString, int paramInt, boolean paramBoolean)
   {
-    int[] arrayOfInt = new int[1];
+    Object localObject = new int[1];
     int i = GLES20.glCreateShader(paramInt);
     if (i == 0)
     {
       Log.d("OpenGlUtils", "Load loadShader: shader == 0");
       return i;
     }
-    if (paramBoolean) {
-      try
-      {
-        paramInt = Integer.parseInt(paramString);
-        if (paramInt == 0)
-        {
-          Log.d("OpenGlUtils", "Load loadShader: get shader source index fail");
-          return 0;
-        }
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          Log.d("OpenGlUtils", "Load loadShader: " + paramString);
-          paramInt = 0;
-        }
-      }
-    }
-    for (;;)
+    if (paramBoolean)
     {
       try
       {
-        ShaderManager.nativeGLShaderSource(i, paramInt);
-        GLES20.glCompileShader(i);
-        GLES20.glGetShaderiv(i, 35713, arrayOfInt, 0);
-        if (arrayOfInt[0] != 0) {
-          break;
-        }
-        Log.d("OpenGlUtils", "Load Program: Vertex Shader Failed1");
+        paramInt = Integer.parseInt(paramString);
+      }
+      catch (Exception paramString)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Load loadShader: ");
+        localStringBuilder.append(paramString);
+        Log.d("OpenGlUtils", localStringBuilder.toString());
+        paramInt = 0;
+      }
+      if (paramInt == 0)
+      {
+        Log.d("OpenGlUtils", "Load loadShader: get shader source index fail");
         return 0;
+      }
+      try
+      {
+        ShaderManager.nativeGLShaderSource(i, paramInt);
       }
       catch (Throwable paramString)
       {
-        Log.e("OpenGlUtils", "Load loadShader: nativeGLShaderSource Exception e : " + paramString);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Load loadShader: nativeGLShaderSource Exception e : ");
+        ((StringBuilder)localObject).append(paramString);
+        Log.e("OpenGlUtils", ((StringBuilder)localObject).toString());
         return 0;
       }
+    }
+    else
+    {
       GLES20.glShaderSource(i, paramString);
     }
+    GLES20.glCompileShader(i);
+    GLES20.glGetShaderiv(i, 35713, (int[])localObject, 0);
+    if (localObject[0] == 0)
+    {
+      Log.d("OpenGlUtils", "Load Program: Vertex Shader Failed1");
+      return 0;
+    }
+    return i;
   }
   
   public static int loadTexture(Bitmap paramBitmap, int paramInt)
@@ -129,16 +134,16 @@ public class OpenGlUtils
       GLES20.glTexParameterf(3553, 10243, 33071.0F);
       GLUtils.texImage2D(3553, 0, paramBitmap, 0);
     }
-    for (;;)
+    else
     {
-      if (paramBoolean) {
-        paramBitmap.recycle();
-      }
-      return arrayOfInt[0];
       GLES20.glBindTexture(3553, paramInt);
       GLUtils.texSubImage2D(3553, 0, 0, 0, paramBitmap);
       arrayOfInt[0] = paramInt;
     }
+    if (paramBoolean) {
+      paramBitmap.recycle();
+    }
+    return arrayOfInt[0];
   }
   
   public static int loadTexture(IntBuffer paramIntBuffer, Camera.Size paramSize, int paramInt)
@@ -154,13 +159,13 @@ public class OpenGlUtils
       GLES20.glTexParameterf(3553, 10243, 33071.0F);
       GLES20.glTexImage2D(3553, 0, 6408, paramSize.width, paramSize.height, 0, 6408, 5121, paramIntBuffer);
     }
-    for (;;)
+    else
     {
-      return arrayOfInt[0];
       GLES20.glBindTexture(3553, paramInt);
       GLES20.glTexSubImage2D(3553, 0, 0, 0, paramSize.width, paramSize.height, 6408, 5121, paramIntBuffer);
       arrayOfInt[0] = paramInt;
     }
+    return arrayOfInt[0];
   }
   
   public static int loadTextureAsBitmap(IntBuffer paramIntBuffer, Camera.Size paramSize, int paramInt)
@@ -192,12 +197,12 @@ public class OpenGlUtils
   
   public static float rnd(float paramFloat1, float paramFloat2)
   {
-    return (float)Math.random() * (paramFloat2 - paramFloat1) + paramFloat1;
+    return paramFloat1 + (paramFloat2 - paramFloat1) * (float)Math.random();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.util.OpenGlUtils
  * JD-Core Version:    0.7.0.1
  */

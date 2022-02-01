@@ -2,13 +2,13 @@ package com.tencent.biz.pubaccount.weishi_new.verticalvideo.presenter;
 
 import UserGrowth.stSimpleMetaFeed;
 import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.weishi_new.data.IFetchDataRspListener;
 import com.tencent.biz.pubaccount.weishi_new.event.WSCommentEvent;
 import com.tencent.biz.pubaccount.weishi_new.net.WeishiBusinessLooper;
 import com.tencent.biz.pubaccount.weishi_new.net.WeishiTask;
 import com.tencent.biz.pubaccount.weishi_new.request.GetFeedDetailRequest;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageContract.View;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.IVerticalRspListener;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataUtil;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalItemData;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalVideoHolder;
@@ -43,7 +43,10 @@ public class WSVerticalForMiniAppPresenter
   public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
     super.a(paramViewHolder, paramInt);
-    WSLog.d("WSVerticalForMiniAppPresenter", "WSVerticalForMiniAppPresenter onPageSelected: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WSVerticalForMiniAppPresenter onPageSelected: ");
+    localStringBuilder.append(paramInt);
+    WSLog.d("WSVerticalForMiniAppPresenter", localStringBuilder.toString());
     if ((paramViewHolder instanceof WSVerticalVideoHolder))
     {
       paramViewHolder = (WSVerticalVideoHolder)paramViewHolder;
@@ -53,9 +56,9 @@ public class WSVerticalForMiniAppPresenter
     }
   }
   
-  public void a(String paramString, IVerticalRspListener paramIVerticalRspListener, long paramLong)
+  public void a(String paramString, IFetchDataRspListener<WSVerticalItemData> paramIFetchDataRspListener, long paramLong)
   {
-    paramString = new WeishiTask(new GetFeedDetailRequest(paramString), null, new WSVerticalForMiniAppPresenter.1(this, paramLong, paramIVerticalRspListener), 4002);
+    paramString = new WeishiTask(new GetFeedDetailRequest(paramString), null, new WSVerticalForMiniAppPresenter.1(this, paramLong, paramIFetchDataRspListener), 4002);
     WeishiBusinessLooper.a().a(paramString);
   }
   
@@ -67,7 +70,7 @@ public class WSVerticalForMiniAppPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.presenter.WSVerticalForMiniAppPresenter
  * JD-Core Version:    0.7.0.1
  */

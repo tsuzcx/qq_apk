@@ -20,6 +20,8 @@ public final class gdt_analysis_event
   public static final int CANVAS_STYLE_FULL_SCREEN = 100;
   public static final int CANVAS_STYLE_HALF_SCREEN = 101;
   public static final int CANVAS_STYLE_VIDEO_CEILING = 102;
+  public static final int DEVICE_INFO_V1 = 0;
+  public static final int DEVICE_INFO_V2 = 1;
   public static final int EVENT_APP_INSATLLED = 1062;
   public static final int EVENT_APP_PREORDER_CAN_START_DOWNLOAD = 1206;
   public static final int EVENT_APP_PREORDER_CLICKED = 1205;

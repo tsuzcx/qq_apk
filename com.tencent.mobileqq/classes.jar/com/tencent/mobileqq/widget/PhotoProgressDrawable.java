@@ -47,10 +47,11 @@ public class PhotoProgressDrawable
   {
     paramCanvas.save();
     paramCanvas.setDrawFilter(new PaintFlagsDrawFilter(0, 3));
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (localObject == null) {
       return;
     }
-    int i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2;
+    int i = ((Bitmap)localObject).getWidth() / 2;
     int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
     if (!this.jdField_a_of_type_Boolean)
     {
@@ -62,19 +63,40 @@ public class PhotoProgressDrawable
     paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
     if (this.jdField_b_of_type_Boolean)
     {
-      if (this.c < 10) {
-        break label183;
+      double d1;
+      double d2;
+      float f;
+      if (this.c >= 10)
+      {
+        localObject = this.jdField_a_of_type_JavaLangString;
+        d1 = this.jdField_a_of_type_Int;
+        d2 = i;
+        Double.isNaN(d2);
+        Double.isNaN(d1);
+        f = (float)(d1 - d2 * 0.6D);
+        d1 = this.jdField_b_of_type_Int;
+        d2 = j;
+        Double.isNaN(d2);
+        Double.isNaN(d1);
+        paramCanvas.drawText((String)localObject, f, (float)(d1 + d2 * 0.25D), this.jdField_a_of_type_AndroidGraphicsPaint);
       }
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, (float)(this.jdField_a_of_type_Int - i * 0.6D), (float)(this.jdField_b_of_type_Int + j * 0.25D), this.jdField_a_of_type_AndroidGraphicsPaint);
+      else
+      {
+        localObject = this.jdField_a_of_type_JavaLangString;
+        d1 = this.jdField_a_of_type_Int;
+        d2 = i;
+        Double.isNaN(d2);
+        Double.isNaN(d1);
+        f = (float)(d1 - d2 * 0.375D);
+        d1 = this.jdField_b_of_type_Int;
+        d2 = j;
+        Double.isNaN(d2);
+        Double.isNaN(d1);
+        paramCanvas.drawText((String)localObject, f, (float)(d1 + d2 * 0.25D), this.jdField_a_of_type_AndroidGraphicsPaint);
+      }
     }
-    for (;;)
-    {
-      paramCanvas.restore();
-      invalidateSelf();
-      return;
-      label183:
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, (float)(this.jdField_a_of_type_Int - i * 0.375D), (float)(this.jdField_b_of_type_Int + j * 0.25D), this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
+    paramCanvas.restore();
+    invalidateSelf();
   }
   
   public int getOpacity()
@@ -84,16 +106,17 @@ public class PhotoProgressDrawable
   
   protected boolean onLevelChange(int paramInt)
   {
-    int i = 99;
     int j = paramInt / 85;
-    if (j > 99) {}
-    for (;;)
-    {
-      this.c = i;
-      this.jdField_a_of_type_JavaLangString = (this.c + "%");
-      return super.onLevelChange(paramInt);
-      i = j;
+    int i = j;
+    if (j > 99) {
+      i = 99;
     }
+    this.c = i;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("%");
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    return super.onLevelChange(paramInt);
   }
   
   public void setAlpha(int paramInt) {}
@@ -110,7 +133,7 @@ public class PhotoProgressDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PhotoProgressDrawable
  * JD-Core Version:    0.7.0.1
  */

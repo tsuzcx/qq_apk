@@ -9,7 +9,7 @@ import java.util.Locale;
 public class ARMapTracer
   implements ARGLSurfaceView.TraceCallback
 {
-  private static int jdField_a_of_type_Int = 0;
+  private static int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private ARMapTracer.TraceResultListener jdField_a_of_type_ComTencentMobileqqArmapARMapTracer$TraceResultListener;
   private String jdField_a_of_type_JavaLangString;
@@ -24,145 +24,156 @@ public class ARMapTracer
   
   public static int a()
   {
-    float f1;
-    int i;
-    float f2;
     if (jdField_a_of_type_Int == 0)
     {
-      f1 = (float)DeviceInfoUtil.a() / 1.073742E+009F;
-      i = DeviceInfoUtil.b();
-      f2 = (float)DeviceInfoUtil.c() / 1000000.0F;
-      if ((i < 4) || (f2 < 2.0F) || (f1 < 2.5F)) {
-        break label106;
-      }
-      jdField_a_of_type_Int = 1;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("ARMapTracer", 2, String.format(Locale.getDefault(), "DEV_TYPE: %d, RAM: %f, CPU-NUM: %d, CPU-Freq: %f", new Object[] { Integer.valueOf(jdField_a_of_type_Int), Float.valueOf(f1), Integer.valueOf(i), Float.valueOf(f2) }));
-      }
-      return jdField_a_of_type_Int;
-      label106:
-      if ((i >= 4) && (f2 >= 1.5F) && (f1 >= 1.7F)) {
+      float f1 = (float)DeviceInfoUtil.a() / 1.073742E+009F;
+      int i = DeviceInfoUtil.b();
+      float f2 = (float)DeviceInfoUtil.c() / 1000000.0F;
+      if ((i >= 4) && (f2 >= 2.0F) && (f1 >= 2.5F)) {
+        jdField_a_of_type_Int = 1;
+      } else if ((i >= 4) && (f2 >= 1.5F) && (f1 >= 1.7F)) {
         jdField_a_of_type_Int = 2;
       } else {
         jdField_a_of_type_Int = 3;
       }
+      if (QLog.isColorLevel()) {
+        QLog.i("ARMapTracer", 2, String.format(Locale.getDefault(), "DEV_TYPE: %d, RAM: %f, CPU-NUM: %d, CPU-Freq: %f", new Object[] { Integer.valueOf(jdField_a_of_type_Int), Float.valueOf(f1), Integer.valueOf(i), Float.valueOf(f2) }));
+      }
     }
+    return jdField_a_of_type_Int;
   }
   
   public boolean a(int[] paramArrayOfInt)
   {
-    boolean bool = true;
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length != 3) || (paramArrayOfInt[0] + paramArrayOfInt[1] + paramArrayOfInt[2] <= 0)) {
-      bool = false;
-    }
-    float f1;
-    do
+    if ((paramArrayOfInt != null) && (paramArrayOfInt.length == 3))
     {
-      float f2;
-      do
-      {
-        do
-        {
-          return bool;
-          f2 = paramArrayOfInt[0] + paramArrayOfInt[1] + paramArrayOfInt[2];
-          f1 = (paramArrayOfInt[1] + paramArrayOfInt[2]) / f2;
-          f2 = paramArrayOfInt[2] / f2;
-          switch (this.d)
-          {
-          }
-        } while (f1 >= 0.9F);
+      if (paramArrayOfInt[0] + paramArrayOfInt[1] + paramArrayOfInt[2] <= 0) {
         return false;
-      } while (f2 >= 0.9F);
-      return false;
-    } while (f1 >= 0.9F);
+      }
+      float f2 = paramArrayOfInt[0] + paramArrayOfInt[1] + paramArrayOfInt[2];
+      float f1 = (paramArrayOfInt[1] + paramArrayOfInt[2]) / f2;
+      f2 = paramArrayOfInt[2] / f2;
+      int i = this.d;
+      if ((i != 1) && (i != 2)) {
+        if (i != 3) {
+          if (f1 < 0.9F) {
+            break label110;
+          }
+        }
+      }
+      while (f2 >= 0.9F) {
+        for (;;)
+        {
+          return true;
+          if (f1 < 0.9F) {
+            break;
+          }
+        }
+      }
+    }
+    label110:
     return false;
   }
   
   public void endTrace()
   {
-    if (this.jdField_a_of_type_Long == 0L) {}
-    long l1;
-    long l2;
-    float f1;
-    do
-    {
+    if (this.jdField_a_of_type_Long == 0L) {
       return;
-      l1 = SystemClock.elapsedRealtime();
-      l2 = this.jdField_a_of_type_Long;
-      this.jdField_a_of_type_Long = 0L;
-      f1 = this.jdField_a_of_type_ArrayOfInt[0] + this.jdField_a_of_type_ArrayOfInt[1] + this.jdField_a_of_type_ArrayOfInt[2];
-    } while (f1 <= 0.0F);
-    ARMapTracer.ReportRunnable localReportRunnable = new ARMapTracer.ReportRunnable(this.jdField_a_of_type_JavaLangString);
-    localReportRunnable.jdField_a_of_type_Boolean = a(this.jdField_a_of_type_ArrayOfInt);
-    localReportRunnable.jdField_a_of_type_Float = (this.e / f1);
-    localReportRunnable.b = (this.jdField_a_of_type_ArrayOfInt[0] / f1);
-    localReportRunnable.c = (this.jdField_a_of_type_ArrayOfInt[1] / f1);
-    localReportRunnable.d = (this.jdField_a_of_type_ArrayOfInt[2] / f1);
-    localReportRunnable.jdField_a_of_type_Long = (l1 - l2);
-    localReportRunnable.jdField_a_of_type_Int = this.c;
-    if (QLog.isDevelopLevel()) {
-      QLog.i("ARMapTracer", 4, String.format(Locale.getDefault(), "\r\n duration: %d, curLevel: %d, fps [average: %s, <18: %f, 18-25: %s, >=25: %s]", new Object[] { Integer.valueOf(localReportRunnable.jdField_a_of_type_Int), Integer.valueOf(localReportRunnable.jdField_a_of_type_Int), Float.valueOf(localReportRunnable.jdField_a_of_type_Float), Float.valueOf(localReportRunnable.b), Float.valueOf(localReportRunnable.c), Float.valueOf(localReportRunnable.d) }));
     }
-    ThreadManager.post(localReportRunnable, 2, null, false);
+    long l1 = SystemClock.elapsedRealtime();
+    long l2 = this.jdField_a_of_type_Long;
+    this.jdField_a_of_type_Long = 0L;
+    Object localObject = this.jdField_a_of_type_ArrayOfInt;
+    float f1 = localObject[0] + localObject[1] + localObject[2];
+    if (f1 > 0.0F)
+    {
+      localObject = new ARMapTracer.ReportRunnable(this.jdField_a_of_type_JavaLangString);
+      ((ARMapTracer.ReportRunnable)localObject).jdField_a_of_type_Boolean = a(this.jdField_a_of_type_ArrayOfInt);
+      ((ARMapTracer.ReportRunnable)localObject).jdField_a_of_type_Float = (this.e / f1);
+      int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      ((ARMapTracer.ReportRunnable)localObject).b = (arrayOfInt[0] / f1);
+      ((ARMapTracer.ReportRunnable)localObject).c = (arrayOfInt[1] / f1);
+      ((ARMapTracer.ReportRunnable)localObject).d = (arrayOfInt[2] / f1);
+      ((ARMapTracer.ReportRunnable)localObject).jdField_a_of_type_Long = (l1 - l2);
+      ((ARMapTracer.ReportRunnable)localObject).jdField_a_of_type_Int = this.c;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("ARMapTracer", 4, String.format(Locale.getDefault(), "\r\n duration: %d, curLevel: %d, fps [average: %s, <18: %f, 18-25: %s, >=25: %s]", new Object[] { Integer.valueOf(((ARMapTracer.ReportRunnable)localObject).jdField_a_of_type_Int), Integer.valueOf(((ARMapTracer.ReportRunnable)localObject).jdField_a_of_type_Int), Float.valueOf(((ARMapTracer.ReportRunnable)localObject).jdField_a_of_type_Float), Float.valueOf(((ARMapTracer.ReportRunnable)localObject).b), Float.valueOf(((ARMapTracer.ReportRunnable)localObject).c), Float.valueOf(((ARMapTracer.ReportRunnable)localObject).d) }));
+      }
+      ThreadManager.post((Runnable)localObject, 2, null, false);
+    }
   }
   
   public void startTrace()
   {
-    if (this.jdField_a_of_type_Long != 0L) {}
-    do
-    {
+    if (this.jdField_a_of_type_Long != 0L) {
       return;
-      this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-      this.e = 0;
-      this.f = 0;
-      this.jdField_b_of_type_Int = 0;
-      int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfInt.length)
-      {
-        this.jdField_a_of_type_ArrayOfInt[i] = 0;
-        this.jdField_b_of_type_ArrayOfInt[i] = 0;
-        i += 1;
+    }
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    this.e = 0;
+    this.f = 0;
+    this.jdField_b_of_type_Int = 0;
+    int i = 0;
+    for (;;)
+    {
+      int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      if (i >= arrayOfInt.length) {
+        break;
       }
-    } while (!QLog.isDevelopLevel());
-    QLog.i("ARMapTracer", 4, "startTrace");
+      arrayOfInt[i] = 0;
+      this.jdField_b_of_type_ArrayOfInt[i] = 0;
+      i += 1;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("ARMapTracer", 4, "startTrace");
+    }
   }
   
   public void trace(long paramLong)
   {
-    if (this.jdField_a_of_type_Long == 0L) {
+    if (this.jdField_a_of_type_Long == 0L)
+    {
       if (this.jdField_a_of_type_Boolean) {
         startTrace();
       }
-    }
-    int i;
-    int[] arrayOfInt1;
-    do
-    {
       return;
-      this.e = ((int)(this.e + paramLong));
-      this.f += 1;
-      if (paramLong >= 18L) {
-        break;
-      }
+    }
+    this.e = ((int)(this.e + paramLong));
+    this.f += 1;
+    int i;
+    if (paramLong < 18L) {
       i = 0;
-      arrayOfInt1 = this.jdField_a_of_type_ArrayOfInt;
-      arrayOfInt1[i] += 1;
-      arrayOfInt1 = this.jdField_b_of_type_ArrayOfInt;
-      arrayOfInt1[i] += 1;
-    } while ((this.f < 30) || (this.jdField_a_of_type_ComTencentMobileqqArmapARMapTracer$TraceResultListener == null));
-    if (this.jdField_b_of_type_Int > 0) {
-      this.jdField_b_of_type_Int -= 1;
+    } else if (paramLong < 25L) {
+      i = 1;
+    } else {
+      i = 2;
     }
-    boolean bool = a(this.jdField_b_of_type_ArrayOfInt);
-    int j = this.c;
-    if (this.jdField_b_of_type_Int > 0) {
-      i = j;
-    }
-    for (;;)
+    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    arrayOfInt[i] += 1;
+    arrayOfInt = this.jdField_b_of_type_ArrayOfInt;
+    arrayOfInt[i] += 1;
+    if ((this.f >= 30) && (this.jdField_a_of_type_ComTencentMobileqqArmapARMapTracer$TraceResultListener != null))
     {
+      i = this.jdField_b_of_type_Int;
+      if (i > 0) {
+        this.jdField_b_of_type_Int = (i - 1);
+      }
+      boolean bool = a(this.jdField_b_of_type_ArrayOfInt);
+      int j = this.c;
+      if (this.jdField_b_of_type_Int > 0)
+      {
+        i = j;
+      }
+      else
+      {
+        i = j;
+        if (!bool)
+        {
+          i = j;
+          if (j > 8) {
+            i = j - 1;
+          }
+        }
+      }
       if ((i != this.c) && (this.d > 2) && (this.jdField_a_of_type_ComTencentMobileqqArmapARMapTracer$TraceResultListener.a(i)))
       {
         this.c = i;
@@ -172,33 +183,16 @@ public class ARMapTracer
         QLog.i("ARMapTracer", 4, String.format(Locale.getDefault(), "isOk: %b, mLastRecommendFlag: %d, recommendLevel: %d, mCurLevel: %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(i), Integer.valueOf(this.c) }));
       }
       this.f = 0;
-      arrayOfInt1 = this.jdField_b_of_type_ArrayOfInt;
-      int[] arrayOfInt2 = this.jdField_b_of_type_ArrayOfInt;
-      this.jdField_b_of_type_ArrayOfInt[2] = 0;
-      arrayOfInt2[1] = 0;
-      arrayOfInt1[0] = 0;
-      return;
-      if (paramLong < 25L)
-      {
-        i = 1;
-        break;
-      }
-      i = 2;
-      break;
-      i = j;
-      if (!bool)
-      {
-        i = j;
-        if (this.c > 8) {
-          i = this.c - 1;
-        }
-      }
+      arrayOfInt = this.jdField_b_of_type_ArrayOfInt;
+      arrayOfInt[2] = 0;
+      arrayOfInt[1] = 0;
+      arrayOfInt[0] = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ARMapTracer
  * JD-Core Version:    0.7.0.1
  */

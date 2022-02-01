@@ -1,22 +1,36 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.extendfriend.ExtendFriendManager;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class LimitChatPie$8
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  LimitChatPie$8(LimitChatPie paramLimitChatPie, ExtendFriendManager paramExtendFriendManager) {}
+  LimitChatPie$8(LimitChatPie paramLimitChatPie, boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendManager.a("sp_extend_friend_prompt_aio_save_empty_node", 2);
+    if (this.this$0.a != null)
+    {
+      if (this.this$0.a.isFinishing()) {
+        return;
+      }
+      if ((this.this$0.u()) && (LimitChatPie.a(this.this$0))) {
+        return;
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        LimitChatPie.a(this.this$0);
+        return;
+      }
+      if (this.b) {
+        LimitChatPie.a(this.this$0, this.jdField_a_of_type_Int);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.8
  * JD-Core Version:    0.7.0.1
  */

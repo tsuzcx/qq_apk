@@ -24,13 +24,15 @@ public final class Crm$CrmAllocKfext
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 48, 58 }, new String[] { "int32_flag", "crm_msg_flag", "crm_msg", "uint64_alloc_from_uin", "uint64_alloc_to_uin", "uint32_track_right", "str_add_tips" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), "" }, CrmAllocKfext.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 48, 58 }, new String[] { "int32_flag", "crm_msg_flag", "crm_msg", "uint64_alloc_from_uin", "uint64_alloc_to_uin", "uint32_track_right", "str_add_tips" }, new Object[] { localInteger, localInteger, localByteStringMicro, localLong, localLong, localInteger, "" }, CrmAllocKfext.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.bmqq.protocol.Crm.CrmAllocKfext
  * JD-Core Version:    0.7.0.1
  */

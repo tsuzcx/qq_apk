@@ -15,18 +15,17 @@ class PluginContainerContentProvider$1
       localHostContentProviderDelegate = ContentProviderDelegateProviderHolder.contentProviderDelegateProvider.getHostContentProviderDelegate();
       localHostContentProviderDelegate.onCreate();
     }
-    for (;;)
+    else
     {
-      PluginContainerContentProvider.access$002(this.this$0, localHostContentProviderDelegate);
-      return;
       Log.e("ContentProvider_", "PluginContainerContentProvider: DelegateProviderHolder没有初始化");
       localHostContentProviderDelegate = null;
     }
+    PluginContainerContentProvider.access$002(this.this$0, localHostContentProviderDelegate);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.shadow.core.runtime.container.PluginContainerContentProvider.1
  * JD-Core Version:    0.7.0.1
  */

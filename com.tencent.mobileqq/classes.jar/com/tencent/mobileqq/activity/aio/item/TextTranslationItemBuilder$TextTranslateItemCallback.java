@@ -50,19 +50,19 @@ class TextTranslationItemBuilder$TextTranslateItemCallback
   
   private void a(Language paramLanguage)
   {
-    if (paramLanguage.toString().equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
+    if (paramLanguage.toString().equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))
+    {
+      TextTranslationItemBuilder.g += 1;
+      return;
+    }
+    if ((paramLanguage.toString().equalsIgnoreCase("zh-CHS")) && (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("zh-CN")))
+    {
+      TextTranslationItemBuilder.g += 1;
+      return;
+    }
+    if ((paramLanguage.toString().equalsIgnoreCase("zh-CHT")) && (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("zh-TW"))) {
       TextTranslationItemBuilder.g += 1;
     }
-    do
-    {
-      return;
-      if ((paramLanguage.toString().equalsIgnoreCase("zh-CHS")) && (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("zh-CN")))
-      {
-        TextTranslationItemBuilder.g += 1;
-        return;
-      }
-    } while ((!paramLanguage.toString().equalsIgnoreCase("zh-CHT")) || (!this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("zh-TW")));
-    TextTranslationItemBuilder.g += 1;
   }
   
   void a(int paramInt)
@@ -73,17 +73,27 @@ class TextTranslationItemBuilder$TextTranslateItemCallback
   public void a(long paramLong, String paramString1, Language paramLanguage, String paramString2, TextTranslationItemBuilder.Holder paramHolder)
   {
     TextTranslationItemBuilder.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder);
+    Boolean localBoolean = Boolean.valueOf(false);
     if (paramHolder != null) {
-      TranslateCache.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_JavaLangString, paramHolder.jdField_c_of_type_JavaLangString, paramHolder.jdField_b_of_type_Long, Boolean.valueOf(false));
+      TranslateCache.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_JavaLangString, paramHolder.jdField_c_of_type_JavaLangString, paramHolder.jdField_b_of_type_Long, localBoolean);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("Translator", 2, "[ChatAdapter]holder id:" + this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.jdField_b_of_type_Long + "request id:" + paramLong);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[ChatAdapter]holder id:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.jdField_b_of_type_Long);
+      ((StringBuilder)localObject).append("request id:");
+      ((StringBuilder)localObject).append(paramLong);
+      QLog.i("Translator", 2, ((StringBuilder)localObject).toString());
     }
     if ((paramString1.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.jdField_b_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.jdField_b_of_type_Long == paramLong) && (paramHolder != null) && (paramHolder.jdField_c_of_type_AndroidViewView != null))
     {
       a(paramLanguage);
-      String str = a();
-      StatisticCollector.getInstance(this.jdField_a_of_type_AndroidContentContext).reportActionCountRes(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "Translate_external", "Translate_external", 0, 1, 0, String.valueOf(SystemClock.uptimeMillis() - paramHolder.jdField_c_of_type_Long), str, paramLanguage.toString(), this.jdField_a_of_type_JavaLangString);
+      localObject = a();
+      StatisticCollector localStatisticCollector = StatisticCollector.getInstance(this.jdField_a_of_type_AndroidContentContext);
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      localStatisticCollector.reportActionCountRes(localQQAppInterface, localQQAppInterface.getCurrentAccountUin(), "", "Translate_external", "Translate_external", 0, 1, 0, String.valueOf(SystemClock.uptimeMillis() - paramHolder.jdField_c_of_type_Long), (String)localObject, paramLanguage.toString(), this.jdField_a_of_type_JavaLangString);
       if ((!paramLanguage.toString().equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) && (!paramString2.equalsIgnoreCase(paramString1)))
       {
         paramLanguage = TranslateCache.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext());
@@ -96,9 +106,9 @@ class TextTranslationItemBuilder$TextTranslateItemCallback
       }
       paramLanguage = TranslateCache.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext());
       if (paramLanguage != null) {
-        paramLanguage.a(paramString1, paramString2, paramLong, Boolean.valueOf(false), this.jdField_a_of_type_JavaLangString);
+        paramLanguage.a(paramString1, paramString2, paramLong, localBoolean, this.jdField_a_of_type_JavaLangString);
       }
-      a(2131717073);
+      a(2131716732);
       return;
     }
     if (!paramLanguage.toString().equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))
@@ -106,7 +116,7 @@ class TextTranslationItemBuilder$TextTranslateItemCallback
       TranslateCache.a(this.jdField_a_of_type_AndroidContentContext).a(paramString1, paramString2, paramLong, Boolean.valueOf(true), this.jdField_a_of_type_JavaLangString);
       return;
     }
-    TranslateCache.a(this.jdField_a_of_type_AndroidContentContext).a(paramString1, paramString2, paramLong, Boolean.valueOf(false), this.jdField_a_of_type_JavaLangString);
+    TranslateCache.a(this.jdField_a_of_type_AndroidContentContext).a(paramString1, paramString2, paramLong, localBoolean, this.jdField_a_of_type_JavaLangString);
   }
   
   public void a(long paramLong, String paramString, TranslateError paramTranslateError, TextTranslationItemBuilder.Holder paramHolder)
@@ -115,34 +125,40 @@ class TextTranslationItemBuilder$TextTranslateItemCallback
     if (paramHolder != null) {
       TranslateCache.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_JavaLangString, paramHolder.jdField_c_of_type_JavaLangString, paramHolder.jdField_b_of_type_Long, Boolean.valueOf(false));
     }
-    if ((paramHolder != null) && (paramHolder.jdField_c_of_type_AndroidViewView != null) && (paramTranslateError != null)) {
-      if ((paramTranslateError.getMessage() != null) && (paramTranslateError.getMessage().length() > 0)) {
-        if ((paramTranslateError.getMessage().indexOf("Unable to resolve host") >= 0) || (paramTranslateError.getMessage().indexOf("can't resolve host") >= 0))
-        {
-          a(2131717074);
-          paramString = a();
-          StatisticCollector.getInstance(this.jdField_a_of_type_AndroidContentContext).reportActionCountRes(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "Translate_external", "Translate_external", 0, 1, 1, "", paramString, "", "");
-          if (QLog.isColorLevel()) {
-            QLog.e("Translator", 2, "onFailed:" + paramTranslateError);
-          }
+    if ((paramHolder != null) && (paramHolder.jdField_c_of_type_AndroidViewView != null) && (paramTranslateError != null))
+    {
+      if ((paramTranslateError.getMessage() != null) && (paramTranslateError.getMessage().length() > 0))
+      {
+        if ((paramTranslateError.getMessage().indexOf("Unable to resolve host") < 0) && (paramTranslateError.getMessage().indexOf("can't resolve host") < 0)) {
+          a(2131716735);
+        } else {
+          a(2131716733);
         }
       }
-    }
-    while (!QLog.isColorLevel()) {
-      for (;;)
+      else {
+        a(2131716736);
+      }
+      paramString = a();
+      paramHolder = StatisticCollector.getInstance(this.jdField_a_of_type_AndroidContentContext);
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      paramHolder.reportActionCountRes(localQQAppInterface, localQQAppInterface.getCurrentAccountUin(), "", "Translate_external", "Translate_external", 0, 1, 1, "", paramString, "", "");
+      if (QLog.isColorLevel())
       {
-        return;
-        a(2131717076);
-        continue;
-        a(2131717077);
+        paramString = new StringBuilder();
+        paramString.append("onFailed:");
+        paramString.append(paramTranslateError);
+        QLog.e("Translator", 2, paramString.toString());
       }
     }
-    QLog.e("Translator", 2, "onFailed:e is null");
+    else if (QLog.isColorLevel())
+    {
+      QLog.e("Translator", 2, "onFailed:e is null");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TextTranslationItemBuilder.TextTranslateItemCallback
  * JD-Core Version:    0.7.0.1
  */

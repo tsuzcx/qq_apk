@@ -27,14 +27,15 @@ public final class CommRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iErrCode, 0);
-    if (this.sErrMsg != null) {
-      paramJceOutputStream.write(this.sErrMsg, 1);
+    String str = this.sErrMsg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.CommRsp
  * JD-Core Version:    0.7.0.1
  */

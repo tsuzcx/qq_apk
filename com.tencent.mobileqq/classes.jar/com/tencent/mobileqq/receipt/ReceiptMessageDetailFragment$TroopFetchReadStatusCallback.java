@@ -15,10 +15,14 @@ class ReceiptMessageDetailFragment$TroopFetchReadStatusCallback
     super(paramReceiptMessageDetailFragment);
   }
   
-  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "mTroopFetchReadStatusCallback onRes: " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("mTroopFetchReadStatusCallback onRes: ");
+      paramBundle.append(paramInt);
+      QLog.d("ReceiptMessageDetailFragment", 2, paramBundle.toString());
     }
     if ((paramInt == 0) && (paramArrayOfByte != null)) {}
     try
@@ -35,16 +39,18 @@ class ReceiptMessageDetailFragment$TroopFetchReadStatusCallback
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      QLog.d("ReceiptMessageDetailFragment", 1, "fetch read member fail on invalid data");
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
+      break label125;
     }
     ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
     return;
+    label125:
+    QLog.d("ReceiptMessageDetailFragment", 1, "fetch read member fail on invalid data");
+    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.TroopFetchReadStatusCallback
  * JD-Core Version:    0.7.0.1
  */

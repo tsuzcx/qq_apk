@@ -36,14 +36,15 @@ public final class UploadRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.result, 0);
-    if (this.voice_id != null) {
-      paramJceOutputStream.write(this.voice_id, 1);
+    String str = this.voice_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Sound.UploadRsp
  * JD-Core Version:    0.7.0.1
  */

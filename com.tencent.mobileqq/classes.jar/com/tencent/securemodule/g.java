@@ -41,23 +41,27 @@ public final class g
     paramJceOutputStream.write(this.b, 1);
     paramJceOutputStream.write(this.c, 2);
     paramJceOutputStream.write(this.d, 3);
-    if (this.e != 0) {
-      paramJceOutputStream.write(this.e, 4);
+    int i = this.e;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 4);
     }
-    if (this.f != null) {
-      paramJceOutputStream.write(this.f, 5);
+    String str = this.f;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.g) {
-      paramJceOutputStream.write(this.g, 6);
+    boolean bool = this.g;
+    if (bool) {
+      paramJceOutputStream.write(bool, 6);
     }
-    if (this.h != null) {
-      paramJceOutputStream.write(this.h, 7);
+    str = this.h;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.securemodule.g
  * JD-Core Version:    0.7.0.1
  */

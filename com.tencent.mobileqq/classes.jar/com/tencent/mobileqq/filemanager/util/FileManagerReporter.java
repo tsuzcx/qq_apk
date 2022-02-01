@@ -1,56 +1,35 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
 
 public class FileManagerReporter
 {
   public static void a(String paramString)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject != null) && ((localObject instanceof QQAppInterface))) {}
-    for (localObject = (QQAppInterface)localObject;; localObject = null)
+    Object localObject = new FileManagerReporter.FileAssistantReportData();
+    ((FileManagerReporter.FileAssistantReportData)localObject).jdField_b_of_type_JavaLangString = paramString;
+    ((FileManagerReporter.FileAssistantReportData)localObject).jdField_a_of_type_JavaLangString = paramString;
+    boolean bool = ((FileManagerReporter.FileAssistantReportData)localObject).jdField_a_of_type_Boolean;
+    ReportController.b(null, "CliOper", "", "", ((FileManagerReporter.FileAssistantReportData)localObject).jdField_a_of_type_JavaLangString, ((FileManagerReporter.FileAssistantReportData)localObject).jdField_b_of_type_JavaLangString, ((FileManagerReporter.FileAssistantReportData)localObject).jdField_a_of_type_Int, ((FileManagerReporter.FileAssistantReportData)localObject).jdField_b_of_type_Int, bool ^ true, String.valueOf(((FileManagerReporter.FileAssistantReportData)localObject).jdField_b_of_type_Long), ((FileManagerReporter.FileAssistantReportData)localObject).d, FileManagerReporter.FileAssistantReportData.a((FileManagerReporter.FileAssistantReportData)localObject), ((FileManagerReporter.FileAssistantReportData)localObject).c);
+    if (QLog.isColorLevel())
     {
-      if (localObject == null) {
-        return;
-      }
-      FileManagerReporter.FileAssistantReportData localFileAssistantReportData = new FileManagerReporter.FileAssistantReportData();
-      localFileAssistantReportData.jdField_b_of_type_JavaLangString = paramString;
-      localFileAssistantReportData.jdField_a_of_type_JavaLangString = paramString;
-      if (localFileAssistantReportData.jdField_a_of_type_Boolean) {}
-      for (int i = 0;; i = 1)
-      {
-        ReportController.b((AppRuntime)localObject, "CliOper", "", "", localFileAssistantReportData.jdField_a_of_type_JavaLangString, localFileAssistantReportData.jdField_b_of_type_JavaLangString, localFileAssistantReportData.jdField_a_of_type_Int, localFileAssistantReportData.jdField_b_of_type_Int, i, String.valueOf(localFileAssistantReportData.jdField_b_of_type_Long), localFileAssistantReportData.d, FileManagerReporter.FileAssistantReportData.a(localFileAssistantReportData), localFileAssistantReportData.c);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("FileManagerReporter<FileAssistant>", 2, "report key:" + paramString);
-        return;
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("report key:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("FileManagerReporter<FileAssistant>", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   public static void a(String paramString, FileManagerReporter.FileAssistantReportData paramFileAssistantReportData)
   {
-    paramString = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramString != null) && ((paramString instanceof QQAppInterface))) {}
-    for (paramString = (QQAppInterface)paramString;; paramString = null)
-    {
-      if (paramFileAssistantReportData.jdField_a_of_type_Boolean) {}
-      for (int i = 0;; i = 1)
-      {
-        ReportController.b(paramString, "CliOper", "", "", paramFileAssistantReportData.jdField_a_of_type_JavaLangString, paramFileAssistantReportData.jdField_b_of_type_JavaLangString, paramFileAssistantReportData.jdField_a_of_type_Int, paramFileAssistantReportData.jdField_b_of_type_Int, i, String.valueOf(paramFileAssistantReportData.jdField_b_of_type_Long), paramFileAssistantReportData.d, FileManagerReporter.FileAssistantReportData.a(paramFileAssistantReportData), paramFileAssistantReportData.c);
-        return;
-      }
-    }
+    boolean bool = paramFileAssistantReportData.jdField_a_of_type_Boolean;
+    ReportController.b(null, "CliOper", "", "", paramFileAssistantReportData.jdField_a_of_type_JavaLangString, paramFileAssistantReportData.jdField_b_of_type_JavaLangString, paramFileAssistantReportData.jdField_a_of_type_Int, paramFileAssistantReportData.jdField_b_of_type_Int, bool ^ true, String.valueOf(paramFileAssistantReportData.jdField_b_of_type_Long), paramFileAssistantReportData.d, FileManagerReporter.FileAssistantReportData.a(paramFileAssistantReportData), paramFileAssistantReportData.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FileManagerReporter
  * JD-Core Version:    0.7.0.1
  */

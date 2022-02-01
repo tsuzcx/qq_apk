@@ -55,17 +55,18 @@ public class AVDecode
       this.videoParam.fps_num = this.mVideoMetaData[7];
       this.videoParam.fps_den = this.mVideoMetaData[8];
       this.videoParam.rotation = this.mVideoMetaData[9];
-    }
-    while (paramInt != 1096108367) {
       return;
     }
-    this.audioParam.errcode = this.mAudioMetaData[0];
-    this.audioParam.stream_kind = this.mAudioMetaData[1];
-    this.audioParam.duration = this.mAudioMetaData[2];
-    this.audioParam.sample_rate = this.mAudioMetaData[3];
-    this.audioParam.numsample = this.mAudioMetaData[4];
-    this.audioParam.channels = this.mAudioMetaData[5];
-    this.audioParam.frameIndex = this.mAudioMetaData[6];
+    if (paramInt == 1096108367)
+    {
+      this.audioParam.errcode = this.mAudioMetaData[0];
+      this.audioParam.stream_kind = this.mAudioMetaData[1];
+      this.audioParam.duration = this.mAudioMetaData[2];
+      this.audioParam.sample_rate = this.mAudioMetaData[3];
+      this.audioParam.numsample = this.mAudioMetaData[4];
+      this.audioParam.channels = this.mAudioMetaData[5];
+      this.audioParam.frameIndex = this.mAudioMetaData[6];
+    }
   }
   
   private static void initDecodeGlobalEnv()
@@ -97,31 +98,30 @@ public class AVDecode
   
   public static AVDecode newInstance(AVDecodeOption paramAVDecodeOption)
   {
+    Object localObject = null;
     try
     {
-      AbstractAVDecode.checkSoLoaded();
-      initDecodeGlobalEnv();
-      AVDecode localAVDecode = new AVDecode(paramAVDecodeOption);
-      if (localAVDecode != null) {
-        localAVDecode.setWantedFps((int)paramAVDecodeOption.wantedFps, paramAVDecodeOption.fixDuration);
+      try
+      {
+        AbstractAVDecode.checkSoLoaded();
+        initDecodeGlobalEnv();
+        AVDecode localAVDecode = new AVDecode(paramAVDecodeOption);
+        localObject = localAVDecode;
       }
-      return localAVDecode;
+      catch (AVideoException localAVideoException)
+      {
+        localAVideoException.printStackTrace();
+      }
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      for (;;)
-      {
-        Object localObject1 = null;
-      }
+      label30:
+      break label30;
     }
-    catch (AVideoException localAVideoException)
-    {
-      for (;;)
-      {
-        localAVideoException.printStackTrace();
-        Object localObject2 = null;
-      }
+    if (localObject != null) {
+      localObject.setWantedFps((int)paramAVDecodeOption.wantedFps, paramAVDecodeOption.fixDuration);
     }
+    return localObject;
   }
   
   public static AVDecode newInstanceUncatched(AVDecodeOption paramAVDecodeOption)
@@ -130,49 +130,47 @@ public class AVDecode
     {
       AbstractAVDecode.checkSoLoaded();
       initDecodeGlobalEnv();
-      AVDecode localAVDecode = new AVDecode(paramAVDecodeOption);
-      if (localAVDecode != null) {
-        localAVDecode.setWantedFps((int)paramAVDecodeOption.wantedFps, paramAVDecodeOption.fixDuration);
-      }
-      return localAVDecode;
+      localAVDecode = new AVDecode(paramAVDecodeOption);
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      for (;;)
-      {
-        AVDecodeError.throwException(-200);
-        Object localObject = null;
-      }
+      AVDecode localAVDecode;
+      label18:
+      break label18;
     }
+    AVDecodeError.throwException(-200);
+    localAVDecode = null;
+    if (localAVDecode != null) {
+      localAVDecode.setWantedFps((int)paramAVDecodeOption.wantedFps, paramAVDecodeOption.fixDuration);
+    }
+    return localAVDecode;
   }
   
   private Object seekToNextAudioFrame()
   {
-    localObject1 = null;
     AbstractAVDecode.checkSoLoaded();
+    Object localObject1 = null;
     try
     {
-      localObject2 = nativeSeekToNextAudioFrame(this.nativeptr, this.mAudioMetaData);
+      Object localObject2 = nativeSeekToNextAudioFrame(this.nativeptr, this.mAudioMetaData);
       localObject1 = localObject2;
       i = this.mAudioMetaData[0];
+      localObject1 = localObject2;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      Object localObject3;
-      for (;;)
-      {
-        Object localObject2;
-        int i = -200;
-        localObject3 = localObject1;
-      }
-      convertToAVParam(1096108367);
-      return localObject3;
+      int i;
+      label32:
+      break label32;
     }
+    i = -200;
     if (i != 0)
     {
       AVDecodeError.throwException(i);
-      return localObject2;
+      return localObject1;
     }
+    convertToAVParam(1096108367);
+    return localObject1;
   }
   
   private void setWantedFps(int paramInt, boolean paramBoolean)
@@ -203,21 +201,20 @@ public class AVDecode
   
   public void resetVideoPlayer(AVDecodeOption paramAVDecodeOption)
   {
-    int i = 0;
     try
     {
       nativeResetState(this.nativeptr, paramAVDecodeOption.cycle, paramAVDecodeOption.ignore_audio);
-      if (i != 0) {
-        AVDecodeError.throwException(i);
-      }
-      return;
+      i = 0;
     }
     catch (UnsatisfiedLinkError paramAVDecodeOption)
     {
-      for (;;)
-      {
-        i = -200;
-      }
+      int i;
+      label21:
+      break label21;
+    }
+    i = -200;
+    if (i != 0) {
+      AVDecodeError.throwException(i);
     }
   }
   
@@ -251,25 +248,25 @@ public class AVDecode
     try
     {
       i = nativeSeekToNextFrame(this.nativeptr, paramBitmap, this.mVideoMetaData);
-      if (i != 0)
-      {
-        AVDecodeError.throwException(i);
-        return;
-      }
     }
     catch (UnsatisfiedLinkError paramBitmap)
     {
-      for (;;)
-      {
-        int i = -200;
-      }
-      convertToAVParam(1447642447);
+      int i;
+      label20:
+      break label20;
     }
+    i = -200;
+    if (i != 0)
+    {
+      AVDecodeError.throwException(i);
+      return;
+    }
+    convertToAVParam(1447642447);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.video.decode.AVDecode
  * JD-Core Version:    0.7.0.1
  */

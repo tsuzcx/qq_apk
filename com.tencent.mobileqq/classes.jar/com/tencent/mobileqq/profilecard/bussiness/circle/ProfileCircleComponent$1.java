@@ -7,8 +7,8 @@ import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.qcircle.utils.QCircleUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
 import com.tencent.mobileqq.profilecard.base.report.ProfileCardReport;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
 import com.tencent.mobileqq.qcircle.api.IQCircleReportApi;
 import com.tencent.mobileqq.qcircle.api.IQCircleService;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -24,7 +24,7 @@ class ProfileCircleComponent$1
   public void onClick(View paramView)
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("uin", this.val$cardInfo.a.uin);
+    localHashMap.put("uin", this.val$cardInfo.card.uin);
     localHashMap.put("key_jump_from", "5");
     localHashMap.put("xsj_main_entrance", "qq_profile");
     QCircleUtils.a().enterBySchemeAction(BaseApplication.getContext(), "openmainpage", localHashMap);
@@ -36,20 +36,19 @@ class ProfileCircleComponent$1
         ProfileCircleComponent.access$400().remove(this.val$card.uin);
       }
     }
-    for (;;)
+    else
     {
-      ProfileCardReport.reportQQCircleClick(this.val$app, this.val$cardInfo);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       localHashMap = new HashMap();
       localHashMap.put("ext1", ProfileCircleComponent.access$900(this.this$0));
       ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504(this.val$card.uin, 3, 1, 2, localHashMap, null, null);
     }
+    ProfileCardReport.reportQQCircleClick(this.val$app, this.val$cardInfo);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.circle.ProfileCircleComponent.1
  * JD-Core Version:    0.7.0.1
  */

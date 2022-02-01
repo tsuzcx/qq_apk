@@ -34,26 +34,26 @@ final class TroopGiftComboView$setPAGResource$1
     PAGFont localPAGFont = PAGFont.RegisterFont(this.$fontPath);
     paramPAGView.setFile((PAGFile)localObject);
     localObject = paramPAGView.getFile();
-    if (localObject != null) {}
-    for (localObject = ((PAGFile)localObject).getTextData(0);; localObject = null)
-    {
-      if (localObject != null) {
-        ((PAGText)localObject).fontFamily = localPAGFont.fontFamily;
-      }
-      if (localObject != null) {
-        ((PAGText)localObject).fontStyle = localPAGFont.fontStyle;
-      }
-      paramPAGView.setTextData(0, (PAGText)localObject);
-      paramPAGView.setProgress(0.0D);
-      paramPAGView.play();
-      TroopGiftComboView.a(this.this$0, paramPAGView.duration() / 1000 - 300);
-      return;
+    if (localObject != null) {
+      localObject = ((PAGFile)localObject).getTextData(0);
+    } else {
+      localObject = null;
     }
+    if (localObject != null) {
+      ((PAGText)localObject).fontFamily = localPAGFont.fontFamily;
+    }
+    if (localObject != null) {
+      ((PAGText)localObject).fontStyle = localPAGFont.fontStyle;
+    }
+    paramPAGView.setTextData(0, (PAGText)localObject);
+    paramPAGView.setProgress(0.0D);
+    paramPAGView.play();
+    TroopGiftComboView.a(this.this$0, paramPAGView.duration() / 1000 - 300);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopgift.TroopGiftComboView.setPAGResource.1
  * JD-Core Version:    0.7.0.1
  */

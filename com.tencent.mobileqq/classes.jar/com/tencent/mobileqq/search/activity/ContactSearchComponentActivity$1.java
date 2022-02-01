@@ -13,7 +13,7 @@ class ContactSearchComponentActivity$1
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramMotionEvent.getAction() == 1) && (TextUtils.isEmpty(this.a.a)))
+    if ((paramMotionEvent.getAction() == 1) && (TextUtils.isEmpty(ContactSearchComponentActivity.a(this.a))))
     {
       paramView = this.a.getActivity();
       if (paramView != null) {
@@ -25,7 +25,7 @@ class ContactSearchComponentActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.ContactSearchComponentActivity.1
  * JD-Core Version:    0.7.0.1
  */

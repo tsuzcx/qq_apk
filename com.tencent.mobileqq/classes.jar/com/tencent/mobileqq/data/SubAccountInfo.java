@@ -45,39 +45,70 @@ public class SubAccountInfo
   
   public void cloneTo(SubAccountInfo paramSubAccountInfo)
   {
-    if ((paramSubAccountInfo != null) && (paramSubAccountInfo.subuin != null) && (paramSubAccountInfo.trunkuin != null))
+    if (paramSubAccountInfo != null)
     {
-      this.subuin = paramSubAccountInfo.subuin;
-      this.subname = paramSubAccountInfo.subname;
-      this.trunkuin = paramSubAccountInfo.trunkuin;
-      this.isbind = paramSubAccountInfo.isbind;
-      this.lasttime = paramSubAccountInfo.lasttime;
-      this.lastUin = paramSubAccountInfo.lastUin;
-      this.lastUinNick = paramSubAccountInfo.lastUinNick;
-      this.lastMsg = paramSubAccountInfo.lastMsg;
-      this.A2 = paramSubAccountInfo.A2;
-      this.unreadMsgNum = paramSubAccountInfo.unreadMsgNum;
-      this.unreadSenderNum = paramSubAccountInfo.unreadSenderNum;
-      this.unreadTroopMsgNum = paramSubAccountInfo.unreadTroopMsgNum;
-      this.unNotifySender = paramSubAccountInfo.unNotifySender;
-      this.isTop = paramSubAccountInfo.isTop;
-      this.cookie = paramSubAccountInfo.cookie;
-      this.serverErrorType = paramSubAccountInfo.serverErrorType;
-      this.serverErrorMsg = paramSubAccountInfo.serverErrorMsg;
-      this.lastCleanQZoneMessageTime = paramSubAccountInfo.lastCleanQZoneMessageTime;
+      String str1 = paramSubAccountInfo.subuin;
+      if (str1 != null)
+      {
+        String str2 = paramSubAccountInfo.trunkuin;
+        if (str2 != null)
+        {
+          this.subuin = str1;
+          this.subname = paramSubAccountInfo.subname;
+          this.trunkuin = str2;
+          this.isbind = paramSubAccountInfo.isbind;
+          this.lasttime = paramSubAccountInfo.lasttime;
+          this.lastUin = paramSubAccountInfo.lastUin;
+          this.lastUinNick = paramSubAccountInfo.lastUinNick;
+          this.lastMsg = paramSubAccountInfo.lastMsg;
+          this.A2 = paramSubAccountInfo.A2;
+          this.unreadMsgNum = paramSubAccountInfo.unreadMsgNum;
+          this.unreadSenderNum = paramSubAccountInfo.unreadSenderNum;
+          this.unreadTroopMsgNum = paramSubAccountInfo.unreadTroopMsgNum;
+          this.unNotifySender = paramSubAccountInfo.unNotifySender;
+          this.isTop = paramSubAccountInfo.isTop;
+          this.cookie = paramSubAccountInfo.cookie;
+          this.serverErrorType = paramSubAccountInfo.serverErrorType;
+          this.serverErrorMsg = paramSubAccountInfo.serverErrorMsg;
+          this.lastCleanQZoneMessageTime = paramSubAccountInfo.lastCleanQZoneMessageTime;
+        }
+      }
     }
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("SubAccountINfo,");
-    localStringBuilder.append("subuin:").append(this.subuin).append(",subname:").append(this.subname).append(",trunk:").append(this.trunkuin).append(",isbind:").append(this.isbind).append(",unreadMsgNum:").append(this.unreadMsgNum).append(",unreadSenderNum:").append(this.unreadSenderNum).append(",unreadTroopMsgNum:").append(this.unreadTroopMsgNum).append(",unNotificationSender:").append(this.unNotifySender).append(",lasttime:").append(this.lasttime).append(",serverErrorType:").append(this.serverErrorType).append(",serverErrorMsg:").append(this.serverErrorMsg).append(",lastCleanQZoneMessageTime:").append(this.lastCleanQZoneMessageTime);
+    localStringBuilder.append("subuin:");
+    localStringBuilder.append(this.subuin);
+    localStringBuilder.append(",subname:");
+    localStringBuilder.append(this.subname);
+    localStringBuilder.append(",trunk:");
+    localStringBuilder.append(this.trunkuin);
+    localStringBuilder.append(",isbind:");
+    localStringBuilder.append(this.isbind);
+    localStringBuilder.append(",unreadMsgNum:");
+    localStringBuilder.append(this.unreadMsgNum);
+    localStringBuilder.append(",unreadSenderNum:");
+    localStringBuilder.append(this.unreadSenderNum);
+    localStringBuilder.append(",unreadTroopMsgNum:");
+    localStringBuilder.append(this.unreadTroopMsgNum);
+    localStringBuilder.append(",unNotificationSender:");
+    localStringBuilder.append(this.unNotifySender);
+    localStringBuilder.append(",lasttime:");
+    localStringBuilder.append(this.lasttime);
+    localStringBuilder.append(",serverErrorType:");
+    localStringBuilder.append(this.serverErrorType);
+    localStringBuilder.append(",serverErrorMsg:");
+    localStringBuilder.append(this.serverErrorMsg);
+    localStringBuilder.append(",lastCleanQZoneMessageTime:");
+    localStringBuilder.append(this.lastCleanQZoneMessageTime);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.SubAccountInfo
  * JD-Core Version:    0.7.0.1
  */

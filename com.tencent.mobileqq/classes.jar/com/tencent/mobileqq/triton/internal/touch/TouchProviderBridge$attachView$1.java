@@ -30,14 +30,16 @@ final class TouchProviderBridge$attachView$1
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      TouchProviderBridge.Companion.access$nativeOnTouchEvent(TouchProviderBridge.Companion, TouchProviderBridge.access$getNativeInstance$p(this.this$0), paramArrayList);
-      paramArrayList = Unit.INSTANCE;
+      label25:
+      break label25;
     }
+    TouchProviderBridge.Companion.access$nativeOnTouchEvent(TouchProviderBridge.Companion, TouchProviderBridge.access$getNativeInstance$p(this.this$0), paramArrayList);
+    paramArrayList = Unit.INSTANCE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.touch.TouchProviderBridge.attachView.1
  * JD-Core Version:    0.7.0.1
  */

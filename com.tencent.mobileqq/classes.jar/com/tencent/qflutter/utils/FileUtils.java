@@ -75,14 +75,15 @@ public class FileUtils
   
   public static void copyAssetFiles(Context paramContext, String paramString1, String paramString2)
   {
-    int i = 0;
     try
     {
       String[] arrayOfString = paramContext.getAssets().list(paramString1);
-      if (arrayOfString.length > 0)
+      int j = arrayOfString.length;
+      int i = 0;
+      if (j > 0)
       {
         new File(paramString2).mkdirs();
-        int j = arrayOfString.length;
+        j = arrayOfString.length;
         while (i < j)
         {
           String str = arrayOfString[i];
@@ -120,7 +121,7 @@ public class FileUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qflutter.utils.FileUtils
  * JD-Core Version:    0.7.0.1
  */

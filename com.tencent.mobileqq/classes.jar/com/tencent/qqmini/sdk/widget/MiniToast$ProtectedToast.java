@@ -84,9 +84,47 @@ class MiniToast$ProtectedToast
   {
     try
     {
-      if (getView() == null) {
-        throw new RuntimeException("setView must have been called");
+      if (getView() != null)
+      {
+        if (mTNField == null)
+        {
+          mTNField = Toast.class.getDeclaredField("mTN");
+          mTNField.setAccessible(true);
+        }
+        Object localObject1 = mTNField.get(this);
+        if (MiniToast.useIOSLikeUI())
+        {
+          Object localObject2 = localObject1.getClass().getDeclaredField("mParams");
+          ((Field)localObject2).setAccessible(true);
+          params = (WindowManager.LayoutParams)((Field)localObject2).get(localObject1);
+          params.flags = 40;
+          params.windowAnimations = R.style.mini_sdk_custom_animation_toast;
+          try
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("");
+            ((StringBuilder)localObject2).append(Build.MANUFACTURER);
+            if (((StringBuilder)localObject2).toString().equalsIgnoreCase("SAMSUNG")) {
+              params.getClass().getField("layoutInDisplayCutoutMode").setInt(params, 1);
+            }
+          }
+          catch (Exception localException)
+          {
+            QMLog.e("QQToast", localException.getMessage(), localException);
+          }
+        }
+        long l = MiniToast.access$200((TextView)getView().findViewById(R.id.toast_msg));
+        ThreadManager.getUIHandler().postDelayed(this.cancelRunnable, l);
+        QMLog.d("QQToast", "show");
+        if (!MiniToast.canUseCustomToast(getView().getContext(), false))
+        {
+          super.show();
+          return;
+        }
+        invokeShow(localObject1);
+        return;
       }
+      throw new RuntimeException("setView must have been called");
     }
     catch (Throwable localThrowable)
     {
@@ -94,49 +132,12 @@ class MiniToast$ProtectedToast
       if (((localThrowable instanceof NoSuchMethodException)) || ((localThrowable instanceof NoSuchFieldException))) {
         super.show();
       }
-      return;
-    }
-    if (mTNField == null)
-    {
-      mTNField = Toast.class.getDeclaredField("mTN");
-      mTNField.setAccessible(true);
-    }
-    Object localObject = mTNField.get(this);
-    if (MiniToast.useIOSLikeUI())
-    {
-      Field localField = localObject.getClass().getDeclaredField("mParams");
-      localField.setAccessible(true);
-      params = (WindowManager.LayoutParams)localField.get(localObject);
-      params.flags = 40;
-      params.windowAnimations = R.style.mini_sdk_custom_animation_toast;
-    }
-    try
-    {
-      if (("" + Build.MANUFACTURER).equalsIgnoreCase("SAMSUNG")) {
-        params.getClass().getField("layoutInDisplayCutoutMode").setInt(params, 1);
-      }
-      long l = MiniToast.access$200((TextView)getView().findViewById(R.id.toast_msg));
-      ThreadManager.getUIHandler().postDelayed(this.cancelRunnable, l);
-      QMLog.d("QQToast", "show");
-      if (!MiniToast.canUseCustomToast(getView().getContext(), false))
-      {
-        super.show();
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QMLog.e("QQToast", localException.getMessage(), localException);
-      }
-      invokeShow(localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.MiniToast.ProtectedToast
  * JD-Core Version:    0.7.0.1
  */

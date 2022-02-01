@@ -12,12 +12,10 @@ public abstract interface EffectController
   public abstract void a(CameraFrame paramCameraFrame);
   
   public abstract boolean a();
-  
-  public abstract void b(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.effects.EffectController
  * JD-Core Version:    0.7.0.1
  */

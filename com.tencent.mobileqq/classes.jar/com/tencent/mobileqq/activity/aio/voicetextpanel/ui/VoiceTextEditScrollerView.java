@@ -17,7 +17,6 @@ import android.widget.RelativeLayout;
 import com.tencent.mobileqq.activity.aio.voicetextpanel.listeners.VoiceTextScrollerListener;
 import com.tencent.mobileqq.activity.aio.voicetextpanel.utils.ReportUtils;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import com.tencent.widget.XPanelContainer;
 
 public class VoiceTextEditScrollerView
   extends RelativeLayout
@@ -59,7 +58,7 @@ public class VoiceTextEditScrollerView
     paramContext = ViewConfiguration.get(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_Int = paramContext.getScaledMaximumFlingVelocity();
     this.jdField_a_of_type_Float = (paramContext.getScaledTouchSlop() * 2);
-    this.jdField_b_of_type_Float = (3.0F * this.jdField_a_of_type_Float);
+    this.jdField_b_of_type_Float = (this.jdField_a_of_type_Float * 3.0F);
     paramContext = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
     paramAttributeSet = new DisplayMetrics();
     paramContext.getDefaultDisplay().getMetrics(paramAttributeSet);
@@ -79,10 +78,12 @@ public class VoiceTextEditScrollerView
   
   private void a(int paramInt)
   {
-    int i = XPanelContainer.jdField_a_of_type_Int;
-    int j = getHeight();
-    int k = getHeight();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextScrollerListener != null) {
+    VoiceTextScrollerListener localVoiceTextScrollerListener = this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextScrollerListener;
+    if (localVoiceTextScrollerListener != null)
+    {
+      int i = localVoiceTextScrollerListener.a();
+      int j = getHeight();
+      int k = getHeight();
       this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextScrollerListener.a(this.jdField_b_of_type_Int - i - paramInt, j - i, k);
     }
     b();
@@ -92,8 +93,12 @@ public class VoiceTextEditScrollerView
   {
     float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
     float f2 = paramValueAnimator.getAnimatedFraction();
-    paramView.measure(View.MeasureSpec.makeMeasureSpec(getRight() - getLeft(), 1073741824), View.MeasureSpec.makeMeasureSpec((int)(paramInt1 - paramInt2 * f2), 1073741824));
-    paramView.layout(getLeft(), (int)f1, getRight(), (int)f1 + (int)(paramInt1 - f2 * paramInt2));
+    int i = View.MeasureSpec.makeMeasureSpec(getRight() - getLeft(), 1073741824);
+    paramInt1 = (int)(paramInt1 - f2 * paramInt2);
+    paramView.measure(i, View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824));
+    paramInt2 = getLeft();
+    i = (int)f1;
+    paramView.layout(paramInt2, i, getRight(), paramInt1 + i);
   }
   
   private void a(MotionEvent paramMotionEvent)
@@ -106,8 +111,9 @@ public class VoiceTextEditScrollerView
     this.f = -1.0F;
     this.jdField_b_of_type_Boolean = false;
     d(paramMotionEvent);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextScrollerListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextScrollerListener.a(this.jdField_b_of_type_Int);
+    paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextScrollerListener;
+    if (paramMotionEvent != null) {
+      paramMotionEvent.a(this.jdField_b_of_type_Int);
     }
   }
   
@@ -137,28 +143,26 @@ public class VoiceTextEditScrollerView
   {
     float f1 = Math.abs(paramMotionEvent.getRawX() - this.jdField_d_of_type_Float);
     float f2 = Math.abs(paramMotionEvent.getRawY() - this.jdField_e_of_type_Float);
-    int i;
-    int j;
-    int k;
-    if ((f1 > this.jdField_a_of_type_Float) || (f2 > this.jdField_a_of_type_Float))
-    {
-      this.jdField_b_of_type_Boolean = true;
-      if (f2 > this.jdField_b_of_type_Float) {
-        c();
-      }
-      i = (int)(paramMotionEvent.getRawY() - this.g);
-      j = getTop() + i;
-      k = getBottom();
-      if (j >= this.jdField_e_of_type_Int) {
-        break label99;
-      }
+    float f3 = this.jdField_a_of_type_Float;
+    if ((f1 <= f3) && (f2 <= f3)) {
+      return;
     }
-    label99:
-    while (j >= this.jdField_b_of_type_Int - XPanelContainer.jdField_a_of_type_Int - this.jdField_c_of_type_Int) {
+    this.jdField_b_of_type_Boolean = true;
+    if (f2 > this.jdField_b_of_type_Float) {
+      c();
+    }
+    int i = (int)(paramMotionEvent.getRawY() - this.g);
+    int j = getTop() + i;
+    int k = getBottom();
+    if (j < this.jdField_e_of_type_Int) {
+      return;
+    }
+    VoiceTextScrollerListener localVoiceTextScrollerListener = this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextScrollerListener;
+    if ((localVoiceTextScrollerListener != null) && (j >= this.jdField_b_of_type_Int - localVoiceTextScrollerListener.a() - this.jdField_c_of_type_Int)) {
       return;
     }
     setTop(j);
-    setBottom(i + k);
+    setBottom(k + i);
     this.f = this.jdField_c_of_type_Float;
     this.g = paramMotionEvent.getRawY();
   }
@@ -167,8 +171,9 @@ public class VoiceTextEditScrollerView
   {
     if (this.jdField_c_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextScrollerListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextScrollerListener.a();
+      VoiceTextScrollerListener localVoiceTextScrollerListener = this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextScrollerListener;
+      if (localVoiceTextScrollerListener != null) {
+        localVoiceTextScrollerListener.a();
       }
       this.jdField_c_of_type_Boolean = false;
     }
@@ -179,17 +184,15 @@ public class VoiceTextEditScrollerView
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextScrollerListener != null)
     {
       c();
-      if (a(paramMotionEvent.getRawY())) {
+      if (a(paramMotionEvent.getRawY()))
+      {
         a(this.jdField_c_of_type_Int);
+        return;
       }
+      int i = this.jdField_d_of_type_Int;
+      int j = this.jdField_c_of_type_Int;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextScrollerListener.a(i - j, j);
     }
-    else
-    {
-      return;
-    }
-    int i = this.jdField_d_of_type_Int;
-    int j = this.jdField_c_of_type_Int;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextScrollerListener.a(i - j, this.jdField_c_of_type_Int);
   }
   
   private void d(MotionEvent paramMotionEvent)
@@ -221,20 +224,32 @@ public class VoiceTextEditScrollerView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return this.jdField_a_of_type_Boolean;
-      a(paramMotionEvent);
-      continue;
-      d(paramMotionEvent);
-      a();
-      b(paramMotionEvent);
-      continue;
+      if (i != 1) {
+        if (i != 2)
+        {
+          if (i != 3) {
+            break label57;
+          }
+        }
+        else
+        {
+          d(paramMotionEvent);
+          a();
+          b(paramMotionEvent);
+          break label57;
+        }
+      }
       c(paramMotionEvent);
     }
+    else
+    {
+      a(paramMotionEvent);
+    }
+    label57:
+    return this.jdField_a_of_type_Boolean;
   }
   
   public void setListener(VoiceTextScrollerListener paramVoiceTextScrollerListener)
@@ -266,7 +281,7 @@ public class VoiceTextEditScrollerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextEditScrollerView
  * JD-Core Version:    0.7.0.1
  */

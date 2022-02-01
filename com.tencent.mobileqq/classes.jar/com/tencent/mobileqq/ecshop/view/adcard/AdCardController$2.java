@@ -1,0 +1,52 @@
+package com.tencent.mobileqq.ecshop.view.adcard;
+
+import android.app.Activity;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.ecshop.api.IEcshopService;
+import com.tencent.mobileqq.ecshop.report.api.IEcshopReportApi;
+import com.tencent.mobileqq.ecshop.utils.AppUtils;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import mqq.app.AppRuntime;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class AdCardController$2
+  implements View.OnClickListener
+{
+  AdCardController$2(AdCardController paramAdCardController) {}
+  
+  public final void onClick(View paramView)
+  {
+    Object localObject1 = (IEcshopService)AppUtils.a().getRuntimeService(IEcshopService.class, "");
+    Object localObject2 = AdCardController.a(this.a).a();
+    boolean bool = AdCardController.a(this.a).a();
+    Context localContext = AdCardController.a(this.a).getContext();
+    if (localContext != null)
+    {
+      ((IEcshopService)localObject1).enterGDTVideoActivity((qq_ad_get.QQAdGetRsp.AdInfo)localObject2, "3046055438", bool, (Activity)localContext);
+      localObject1 = (IEcshopReportApi)QRoute.api(IEcshopReportApi.class);
+      localObject2 = AppUtils.a();
+      if (localObject2 != null)
+      {
+        ((IEcshopReportApi)localObject1).doClickReport((BaseQQAppInterface)localObject2, AdCardController.a(this.a).a(), 1);
+        AdCardController.a(this.a);
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+      }
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.common.app.business.BaseQQAppInterface");
+    }
+    throw new TypeCastException("null cannot be cast to non-null type android.app.Activity");
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+ * Qualified Name:     com.tencent.mobileqq.ecshop.view.adcard.AdCardController.2
+ * JD-Core Version:    0.7.0.1
+ */

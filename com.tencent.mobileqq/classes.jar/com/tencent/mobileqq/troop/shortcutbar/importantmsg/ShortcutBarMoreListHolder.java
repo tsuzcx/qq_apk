@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.contact.recommendtroop.base.ViewHolder;
+import com.tencent.mobileqq.troop.adapter.base.ViewHolder;
 import com.tencent.mobileqq.troop.shortcutbar.ShortcutBarInfo;
 
 public class ShortcutBarMoreListHolder
@@ -25,7 +25,7 @@ public class ShortcutBarMoreListHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.ShortcutBarMoreListHolder
  * JD-Core Version:    0.7.0.1
  */

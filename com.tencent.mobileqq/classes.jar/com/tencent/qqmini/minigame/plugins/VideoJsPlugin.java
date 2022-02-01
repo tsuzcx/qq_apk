@@ -37,34 +37,38 @@ public class VideoJsPlugin
   
   private boolean insertVideoPlayer(IMiniAppContext paramIMiniAppContext, IJsService paramIJsService, int paramInt, JSONObject paramJSONObject)
   {
-    QMLog.i("VideoPlugin", "insertVideoPlayer: " + paramJSONObject);
-    if ((paramIMiniAppContext == null) || (paramIMiniAppContext.getAttachedActivity() == null)) {
-      return false;
-    }
-    Activity localActivity = paramIMiniAppContext.getAttachedActivity();
-    Object localObject = (CoverView)this.mCoverViewSparseArray.get(paramInt);
-    if (localObject == null)
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("insertVideoPlayer: ");
+    ((StringBuilder)localObject1).append(paramJSONObject);
+    QMLog.i("VideoPlugin", ((StringBuilder)localObject1).toString());
+    if ((paramIMiniAppContext != null) && (paramIMiniAppContext.getAttachedActivity() != null))
     {
-      localObject = new CoverVideoView(localActivity);
-      ((CoverVideoView)localObject).setData(paramJSONObject.optString("data"));
-      ((CoverVideoView)localObject).setPageWebView(paramIJsService);
-      ((CoverVideoView)localObject).setVideoPlayerId(paramInt);
-      ((CoverVideoView)localObject).setParentId(paramInt);
-      this.mCoverViewSparseArray.put(paramInt, localObject);
-      GameVideoPlayerManager.addPlayerView(paramIMiniAppContext, (ViewGroup)localObject);
-    }
-    for (paramIJsService = (IJsService)localObject;; paramIJsService = (IJsService)localObject)
-    {
-      if ((paramIJsService instanceof CoverVideoView))
+      Activity localActivity = paramIMiniAppContext.getAttachedActivity();
+      Object localObject2 = (CoverView)this.mCoverViewSparseArray.get(paramInt);
+      localObject1 = localObject2;
+      if (localObject2 == null)
       {
-        ((CoverVideoView)paramIJsService).setMiniAppContext(paramIMiniAppContext);
-        ((CoverVideoView)paramIJsService).initVideoPlayerSettings(paramJSONObject);
+        localObject1 = new CoverVideoView(localActivity);
+        localObject2 = (CoverVideoView)localObject1;
+        ((CoverVideoView)localObject2).setData(paramJSONObject.optString("data"));
+        ((CoverVideoView)localObject2).setPageWebView(paramIJsService);
+        ((CoverVideoView)localObject2).setVideoPlayerId(paramInt);
+        ((CoverVideoView)localObject2).setParentId(paramInt);
+        this.mCoverViewSparseArray.put(paramInt, localObject1);
+        GameVideoPlayerManager.addPlayerView(paramIMiniAppContext, (ViewGroup)localObject1);
+      }
+      if ((localObject1 instanceof CoverVideoView))
+      {
+        paramIJsService = (CoverVideoView)localObject1;
+        paramIJsService.setMiniAppContext(paramIMiniAppContext);
+        paramIJsService.initVideoPlayerSettings(paramJSONObject);
         if (paramJSONObject.optBoolean("hide")) {
-          ((CoverVideoView)paramIJsService).setVisibility(8);
+          paramIJsService.setVisibility(8);
         }
       }
       return true;
     }
+    return false;
   }
   
   private boolean operatePlayerSeek(String paramString, CoverVideoView paramCoverVideoView)
@@ -76,7 +80,10 @@ public class VideoJsPlugin
     }
     catch (Exception paramCoverVideoView)
     {
-      QMLog.e("VideoPlugin", "wrong seek pram. " + paramString, paramCoverVideoView);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("wrong seek pram. ");
+      localStringBuilder.append(paramString);
+      QMLog.e("VideoPlugin", localStringBuilder.toString(), paramCoverVideoView);
     }
     return false;
   }
@@ -88,26 +95,29 @@ public class VideoJsPlugin
       try
       {
         JSONArray localJSONArray = new JSONArray(paramString);
+        paramString = null;
         if (localJSONArray.length() == 2)
         {
           paramString = localJSONArray.getString(0);
           i = ColorUtils.parseColor(localJSONArray.getString(1));
-          paramCoverVideoView.playDanmu(paramString, i);
-          return true;
         }
-        if (localJSONArray.length() == 1)
+        else
         {
+          if (localJSONArray.length() != 1) {
+            break label79;
+          }
           paramString = localJSONArray.getString(0);
-          i = 0;
-          continue;
+          break label79;
         }
-        paramString = null;
+        paramCoverVideoView.playDanmu(paramString, i);
+        return true;
       }
       catch (Exception paramString)
       {
         QMLog.e("VideoPlugin", "sendDanmu error.", paramString);
         return false;
       }
+      label79:
       int i = 0;
     }
   }
@@ -115,27 +125,24 @@ public class VideoJsPlugin
   private void removeCoverChildView(int paramInt)
   {
     int i = 0;
-    if (i < this.mCoverViewSparseArray.size())
+    while (i < this.mCoverViewSparseArray.size())
     {
       int j = this.mCoverViewSparseArray.keyAt(i);
       CoverView localCoverView1 = (CoverView)this.mCoverViewSparseArray.get(j);
-      if ((localCoverView1 != null) && (localCoverView1.getParentId() == paramInt))
-      {
-        if (localCoverView1.getParentId() != 0) {
-          break label73;
+      if ((localCoverView1 != null) && (localCoverView1.getParentId() == paramInt)) {
+        if (localCoverView1.getParentId() == 0)
+        {
+          GameVideoPlayerManager.removeView(this.mMiniAppContext, localCoverView1);
         }
-        GameVideoPlayerManager.removeView(this.mMiniAppContext, localCoverView1);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        label73:
-        CoverView localCoverView2 = (CoverView)this.mCoverViewSparseArray.get(localCoverView1.getParentId());
-        if (localCoverView2 != null) {
-          localCoverView2.removeView(localCoverView1);
+        else
+        {
+          CoverView localCoverView2 = (CoverView)this.mCoverViewSparseArray.get(localCoverView1.getParentId());
+          if (localCoverView2 != null) {
+            localCoverView2.removeView(localCoverView1);
+          }
         }
       }
+      i += 1;
     }
   }
   
@@ -151,16 +158,17 @@ public class VideoJsPlugin
   
   private void updateVideoPlayer(int paramInt, JSONObject paramJSONObject)
   {
-    CoverView localCoverView = (CoverView)this.mCoverViewSparseArray.get(paramInt);
-    if ((localCoverView instanceof CoverVideoView))
+    Object localObject = (CoverView)this.mCoverViewSparseArray.get(paramInt);
+    if ((localObject instanceof CoverVideoView))
     {
-      ((CoverVideoView)localCoverView).updateVideoPlayerSettings(paramJSONObject);
+      localObject = (CoverVideoView)localObject;
+      ((CoverVideoView)localObject).updateVideoPlayerSettings(paramJSONObject);
       if (!paramJSONObject.optBoolean("hide")) {
-        ((CoverVideoView)localCoverView).setVisibility(0);
+        ((CoverVideoView)localObject).setVisibility(0);
       }
       paramJSONObject = paramJSONObject.optString("src");
       if (!StringUtil.isEmpty(paramJSONObject)) {
-        ((CoverVideoView)localCoverView).setVideoPath(paramJSONObject);
+        ((CoverVideoView)localObject).setVideoPath(paramJSONObject);
       }
     }
   }
@@ -173,16 +181,18 @@ public class VideoJsPlugin
     }
     try
     {
-      JSONObject localJSONObject1 = new JSONObject(paramRequestEvent.jsonParams);
-      int i = localJSONObject1.optInt("videoPlayerId");
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("containerId", i);
-      ThreadManager.getUIHandler().post(new VideoJsPlugin.1(this, paramRequestEvent, i, localJSONObject1, localJSONObject2));
-      return "{}";
+      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
+      int i = localJSONObject.optInt("videoPlayerId");
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("containerId", i);
+      ThreadManager.getUIHandler().post(new VideoJsPlugin.1(this, paramRequestEvent, i, localJSONObject, (JSONObject)localObject));
     }
     catch (Throwable localThrowable)
     {
-      QMLog.e("VideoPlugin", paramRequestEvent.event + " error.", localThrowable);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramRequestEvent.event);
+      ((StringBuilder)localObject).append(" error.");
+      QMLog.e("VideoPlugin", ((StringBuilder)localObject).toString(), localThrowable);
     }
     return "{}";
   }
@@ -196,14 +206,16 @@ public class VideoJsPlugin
     try
     {
       JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      String str = localJSONObject.optString("type");
+      localObject = localJSONObject.optString("type");
       int i = localJSONObject.optInt("videoPlayerId");
-      ThreadManager.getUIHandler().post(new VideoJsPlugin.3(this, i, str, paramRequestEvent));
-      return "{}";
+      ThreadManager.getUIHandler().post(new VideoJsPlugin.3(this, i, (String)localObject, paramRequestEvent));
     }
     catch (Throwable localThrowable)
     {
-      QMLog.e("VideoPlugin", paramRequestEvent.event + " error.", localThrowable);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramRequestEvent.event);
+      ((StringBuilder)localObject).append(" error.");
+      QMLog.e("VideoPlugin", ((StringBuilder)localObject).toString(), localThrowable);
     }
     return "{}";
   }
@@ -239,15 +251,17 @@ public class VideoJsPlugin
     }
     if ("requestFullScreen".equals(paramString1))
     {
-      if (!((CoverVideoView)localCoverView).isFullScreen()) {
-        ((CoverVideoView)localCoverView).fullScreen();
+      paramString1 = (CoverVideoView)localCoverView;
+      if (!paramString1.isFullScreen()) {
+        paramString1.fullScreen();
       }
       return true;
     }
     if ("exitFullScreen".equals(paramString1))
     {
-      if (((CoverVideoView)localCoverView).isFullScreen()) {
-        ((CoverVideoView)localCoverView).smallScreen();
+      paramString1 = (CoverVideoView)localCoverView;
+      if (paramString1.isFullScreen()) {
+        paramString1.smallScreen();
       }
       return true;
     }
@@ -274,11 +288,13 @@ public class VideoJsPlugin
         ((CoverVideoView)localCoverView).release();
       }
       ThreadManager.getUIHandler().post(new VideoJsPlugin.4(this, i, paramRequestEvent));
-      return "{}";
     }
     catch (Throwable localThrowable)
     {
-      QMLog.e("VideoPlugin", paramRequestEvent.event + " error.", localThrowable);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramRequestEvent.event);
+      localStringBuilder.append(" error.");
+      QMLog.e("VideoPlugin", localStringBuilder.toString(), localThrowable);
     }
     return "{}";
   }
@@ -294,18 +310,20 @@ public class VideoJsPlugin
       JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
       int i = localJSONObject.optInt("videoPlayerId");
       ThreadManager.getUIHandler().post(new VideoJsPlugin.2(this, i, localJSONObject, paramRequestEvent));
-      return "{}";
     }
     catch (Throwable localThrowable)
     {
-      QMLog.e("VideoPlugin", paramRequestEvent.event + " error.", localThrowable);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramRequestEvent.event);
+      localStringBuilder.append(" error.");
+      QMLog.e("VideoPlugin", localStringBuilder.toString(), localThrowable);
     }
     return "{}";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.VideoJsPlugin
  * JD-Core Version:    0.7.0.1
  */

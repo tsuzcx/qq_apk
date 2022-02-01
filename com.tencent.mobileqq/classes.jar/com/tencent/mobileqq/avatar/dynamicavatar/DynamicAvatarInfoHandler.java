@@ -30,79 +30,76 @@ public class DynamicAvatarInfoHandler
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {
-      notifyUI(1001, false, null);
-    }
-    oidb_0x74b.RspBody localRspBody;
-    int j;
-    int k;
-    int m;
-    boolean bool;
-    do
+    if ((paramToServiceMsg != null) && (paramFromServiceMsg != null))
     {
-      return;
-      localRspBody = new oidb_0x74b.RspBody();
+      oidb_0x74b.RspBody localRspBody = new oidb_0x74b.RspBody();
       int i = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
       paramFromServiceMsg = Long.valueOf(paramToServiceMsg.extraData.getLong("id"));
-      j = paramToServiceMsg.extraData.getInt("type");
-      k = paramToServiceMsg.extraData.getInt("headType");
-      m = paramToServiceMsg.extraData.getInt("sizeType");
-      bool = paramToServiceMsg.extraData.getBoolean("isSmartMode");
-      QLog.i("Q.dynamicAvatar", 2, "handleDynamicAvatarInfo, result : " + i);
-      if (i != 0) {
-        break;
+      int j = paramToServiceMsg.extraData.getInt("type");
+      int k = paramToServiceMsg.extraData.getInt("headType");
+      int m = paramToServiceMsg.extraData.getInt("sizeType");
+      boolean bool = paramToServiceMsg.extraData.getBoolean("isSmartMode");
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("handleDynamicAvatarInfo, result : ");
+      paramToServiceMsg.append(i);
+      QLog.i("Q.dynamicAvatar", 2, paramToServiceMsg.toString());
+      if (i == 0)
+      {
+        paramToServiceMsg = DynamicAvatarInfo.a(localRspBody);
+        notifyUI(1001, true, new Object[] { paramToServiceMsg, paramFromServiceMsg, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(bool) });
+        paramFromServiceMsg = (DynamicAvatarManager)this.a.getManager(QQManagerFactory.DYNAMIC_AVATAR_MANAGER);
+        if (paramFromServiceMsg != null)
+        {
+          if ((this.a instanceof QQAppInterface))
+          {
+            paramFromServiceMsg.a(paramToServiceMsg);
+            return;
+          }
+          paramFromServiceMsg.a(localRspBody.toByteArray());
+        }
+        return;
       }
-      paramToServiceMsg = DynamicAvatarInfo.a(localRspBody);
-      notifyUI(1001, true, new Object[] { paramToServiceMsg, paramFromServiceMsg, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(bool) });
-      paramFromServiceMsg = (DynamicAvatarManager)this.a.getManager(QQManagerFactory.DYNAMIC_AVATAR_MANAGER);
-    } while (paramFromServiceMsg == null);
-    if ((this.a instanceof QQAppInterface))
-    {
-      paramFromServiceMsg.a(paramToServiceMsg);
+      QLog.i("Q.dynamicAvatar", 1, "handleGetDynamicAvatarInfo result not success.");
+      notifyUI(1001, false, new Object[] { null, paramFromServiceMsg, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(bool) });
       return;
     }
-    paramFromServiceMsg.a(localRspBody.toByteArray());
-    return;
-    QLog.i("Q.dynamicAvatar", 1, "handleGetDynamicAvatarInfo result not success.");
-    notifyUI(1001, false, new Object[] { null, paramFromServiceMsg, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(bool) });
+    notifyUI(1001, false, null);
   }
   
   public void a(Long paramLong, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    Object localObject = null;
     ArrayList localArrayList2 = new ArrayList();
     localArrayList2.add(Integer.valueOf(17));
     localArrayList2.add(Integer.valueOf(18));
-    ArrayList localArrayList1;
+    ArrayList localArrayList1 = null;
     if (paramInt1 != 18)
+    {
+      localObject = new ArrayList();
+      ((ArrayList)localObject).add(paramLong);
+    }
+    else
     {
       localArrayList1 = new ArrayList();
       localArrayList1.add(paramLong);
+      localObject = null;
     }
-    for (;;)
-    {
-      oidb_0x74b.ReqBody localReqBody = new oidb_0x74b.ReqBody();
-      if ((localArrayList1 != null) && (!localArrayList1.isEmpty())) {
-        localReqBody.rpt_uint64_uin.set(localArrayList1);
-      }
-      if ((localObject != null) && (!((ArrayList)localObject).isEmpty())) {
-        localReqBody.rpt_uint64_tinyid.set((List)localObject);
-      }
-      if ((localArrayList2 != null) && (!localArrayList2.isEmpty())) {
-        localReqBody.rpt_head_type.set(localArrayList2);
-      }
-      localObject = makeOIDBPkg("OidbSvc.0x74b", 1867, 0, localReqBody.toByteArray());
-      ((ToServiceMsg)localObject).extraData.putLong("id", paramLong.longValue());
-      ((ToServiceMsg)localObject).extraData.putInt("type", paramInt1);
-      ((ToServiceMsg)localObject).extraData.putInt("headType", paramInt2);
-      ((ToServiceMsg)localObject).extraData.putInt("sizeType", paramInt3);
-      ((ToServiceMsg)localObject).extraData.putBoolean("isSmartMode", paramBoolean);
-      sendPbReq((ToServiceMsg)localObject);
-      return;
-      localObject = new ArrayList();
-      ((ArrayList)localObject).add(paramLong);
-      localArrayList1 = null;
+    oidb_0x74b.ReqBody localReqBody = new oidb_0x74b.ReqBody();
+    if ((localObject != null) && (!((ArrayList)localObject).isEmpty())) {
+      localReqBody.rpt_uint64_uin.set((List)localObject);
     }
+    if ((localArrayList1 != null) && (!localArrayList1.isEmpty())) {
+      localReqBody.rpt_uint64_tinyid.set(localArrayList1);
+    }
+    if (!localArrayList2.isEmpty()) {
+      localReqBody.rpt_head_type.set(localArrayList2);
+    }
+    Object localObject = makeOIDBPkg("OidbSvc.0x74b", 1867, 0, localReqBody.toByteArray());
+    ((ToServiceMsg)localObject).extraData.putLong("id", paramLong.longValue());
+    ((ToServiceMsg)localObject).extraData.putInt("type", paramInt1);
+    ((ToServiceMsg)localObject).extraData.putInt("headType", paramInt2);
+    ((ToServiceMsg)localObject).extraData.putInt("sizeType", paramInt3);
+    ((ToServiceMsg)localObject).extraData.putBoolean("isSmartMode", paramBoolean);
+    sendPbReq((ToServiceMsg)localObject);
   }
   
   public Set<String> getCommandList()
@@ -115,28 +112,31 @@ public class DynamicAvatarInfoHandler
     return this.allowCmdSet;
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return DynamicAvatarInfoObserver.class;
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
-    do
+    if (paramToServiceMsg != null)
     {
-      do
-      {
+      if (paramFromServiceMsg == null) {
         return;
-      } while (msgCmdFilter(paramFromServiceMsg.getServiceCmd()));
+      }
+      if (msgCmdFilter(paramFromServiceMsg.getServiceCmd())) {
+        return;
+      }
       paramFromServiceMsg.getServiceCmd();
-    } while (!"OidbSvc.0x74b".equals(paramFromServiceMsg.getServiceCmd()));
-    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      if ("OidbSvc.0x74b".equals(paramFromServiceMsg.getServiceCmd())) {
+        a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarInfoHandler
  * JD-Core Version:    0.7.0.1
  */

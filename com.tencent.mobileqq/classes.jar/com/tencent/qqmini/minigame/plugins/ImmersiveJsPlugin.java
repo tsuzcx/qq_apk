@@ -28,27 +28,23 @@ public class ImmersiveJsPlugin
   
   private static void setStatusBarTextColor(Activity paramActivity, boolean paramBoolean)
   {
-    if (paramActivity == null) {}
-    for (;;)
-    {
+    if (paramActivity == null) {
       return;
-      paramActivity = paramActivity.getWindow();
-      if (Build.VERSION.SDK_INT >= 21)
-      {
-        paramActivity.getDecorView().setSystemUiVisibility(1282);
-        paramActivity.setStatusBarColor(0);
-        paramActivity.setNavigationBarColor(0);
-      }
-      while ((Build.VERSION.SDK_INT >= 23) && (paramBoolean))
-      {
-        paramActivity.getDecorView().setSystemUiVisibility(9218);
-        return;
-        if (Build.VERSION.SDK_INT >= 19)
-        {
-          WindowManager.LayoutParams localLayoutParams = paramActivity.getAttributes();
-          localLayoutParams.flags = (0x4000000 | localLayoutParams.flags);
-        }
-      }
+    }
+    paramActivity = paramActivity.getWindow();
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      paramActivity.getDecorView().setSystemUiVisibility(1282);
+      paramActivity.setStatusBarColor(0);
+      paramActivity.setNavigationBarColor(0);
+    }
+    else if (Build.VERSION.SDK_INT >= 19)
+    {
+      WindowManager.LayoutParams localLayoutParams = paramActivity.getAttributes();
+      localLayoutParams.flags = (0x4000000 | localLayoutParams.flags);
+    }
+    if ((Build.VERSION.SDK_INT >= 23) && (paramBoolean)) {
+      paramActivity.getDecorView().setSystemUiVisibility(9218);
     }
   }
   
@@ -67,25 +63,29 @@ public class ImmersiveJsPlugin
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      if (this.mMiniAppContext.getAttachedActivity() == null) {
-        return ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "activity not exist").toString();
-      }
+      localObject = new JSONObject(paramRequestEvent.jsonParams);
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localObject = new JSONObject();
-      }
-      Object localObject = ((JSONObject)localObject).optString("style", null);
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (("light".equals(localObject)) || ("dark".equals(localObject))))
-      {
-        MiniAppEnv.g().setMenuStyle((String)localObject);
-        return paramRequestEvent.ok();
-      }
-      return paramRequestEvent.fail("invalid style " + (String)localObject);
+      Object localObject;
+      label15:
+      StringBuilder localStringBuilder;
+      break label15;
     }
+    localObject = new JSONObject();
+    if (this.mMiniAppContext.getAttachedActivity() == null) {
+      return ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "activity not exist").toString();
+    }
+    localObject = ((JSONObject)localObject).optString("style", null);
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (("light".equals(localObject)) || ("dark".equals(localObject))))
+    {
+      MiniAppEnv.g().setMenuStyle((String)localObject);
+      return paramRequestEvent.ok();
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("invalid style ");
+    localStringBuilder.append((String)localObject);
+    return paramRequestEvent.fail(localStringBuilder.toString());
   }
   
   @JsEvent({"setStatusBarStyle"})
@@ -93,32 +93,35 @@ public class ImmersiveJsPlugin
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      localActivity = this.mMiniAppContext.getAttachedActivity();
-      if (localActivity == null) {
-        return ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "activity not exist").toString();
-      }
+      localObject1 = new JSONObject(paramRequestEvent.jsonParams);
     }
     catch (Throwable localThrowable)
     {
-      Activity localActivity;
-      for (;;)
-      {
-        localObject = new JSONObject();
-      }
-      Object localObject = ((JSONObject)localObject).optString("style", null);
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (("white".equals(localObject)) || ("black".equals(localObject))))
-      {
-        localActivity.runOnUiThread(new ImmersiveJsPlugin.1(this, localActivity, (String)localObject));
-        return paramRequestEvent.ok();
-      }
-      return paramRequestEvent.fail("invalid style " + (String)localObject);
+      Object localObject1;
+      label15:
+      Object localObject2;
+      break label15;
     }
+    localObject1 = new JSONObject();
+    localObject2 = this.mMiniAppContext.getAttachedActivity();
+    if (localObject2 == null) {
+      return ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "activity not exist").toString();
+    }
+    localObject1 = ((JSONObject)localObject1).optString("style", null);
+    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (("white".equals(localObject1)) || ("black".equals(localObject1))))
+    {
+      ((Activity)localObject2).runOnUiThread(new ImmersiveJsPlugin.1(this, (Activity)localObject2, (String)localObject1));
+      return paramRequestEvent.ok();
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("invalid style ");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    return paramRequestEvent.fail(((StringBuilder)localObject2).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.ImmersiveJsPlugin
  * JD-Core Version:    0.7.0.1
  */

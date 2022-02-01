@@ -21,7 +21,7 @@ import org.json.JSONObject;
 public class RemoteRequestSender
   implements RemoteHandleConst
 {
-  private static final String TAG = RemoteRequestSender.class.getName();
+  private static final String TAG = "cooperation.qzone.remote.logic.RemoteRequestSender";
   private RemoteHandleManager manager;
   
   public RemoteRequestSender(RemoteHandleManager paramRemoteHandleManager)
@@ -429,10 +429,13 @@ public class RemoteRequestSender
   
   public void startWnsProxyRequestWithCheck(DiscoverTab paramDiscoverTab)
   {
-    QLog.d("QZoneDiscoverActivity", 2, "startWebSoRequestWithCheck name:" + paramDiscoverTab.name);
-    Bundle localBundle = new Bundle();
-    localBundle.putParcelable("tab", paramDiscoverTab);
-    this.manager.sendData("cmd.discover.startWebSoRequestWithCheck", localBundle, false);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("startWebSoRequestWithCheck name:");
+    ((StringBuilder)localObject).append(paramDiscoverTab.name);
+    QLog.d("QZoneDiscoverActivity", 2, ((StringBuilder)localObject).toString());
+    localObject = new Bundle();
+    ((Bundle)localObject).putParcelable("tab", paramDiscoverTab);
+    this.manager.sendData("cmd.discover.startWebSoRequestWithCheck", (Bundle)localObject, false);
   }
   
   public void stopAllVideo()
@@ -483,30 +486,30 @@ public class RemoteRequestSender
   
   public void updateSchoolCertificate(String paramString1, String paramString2, String paramString3)
   {
-    if (TextUtils.isEmpty(paramString3)) {}
-    do
+    if (TextUtils.isEmpty(paramString3)) {
+      return;
+    }
+    try
     {
-      for (;;)
+      if (new JSONObject(paramString1).optInt("certificateResult") == 1)
       {
-        return;
-        try
+        boolean bool = paramString2.equals("notifyCampusFriendCertificateResult");
+        if (bool)
         {
-          if (new JSONObject(paramString1).optInt("certificateResult") == 1) {
-            if (paramString2.equals("notifyCampusFriendCertificateResult"))
-            {
-              LocalMultiProcConfig.putInt4Uin("qzone_campusInfo_verfyStatus", 2, Long.valueOf(paramString3).longValue());
-              return;
-            }
-          }
+          LocalMultiProcConfig.putInt4Uin("qzone_campusInfo_verfyStatus", 2, Long.valueOf(paramString3).longValue());
+          return;
         }
-        catch (JSONException paramString1)
+        if (paramString2.equals("notifyUploadSutudentIDResult"))
         {
-          QLog.i(TAG, 1, "updateSchoolCertificate exception", paramString1);
+          LocalMultiProcConfig.putInt4Uin("qzone_campusInfo_verfyStatus", 1, Long.valueOf(paramString3).longValue());
           return;
         }
       }
-    } while (!paramString2.equals("notifyUploadSutudentIDResult"));
-    LocalMultiProcConfig.putInt4Uin("qzone_campusInfo_verfyStatus", 1, Long.valueOf(paramString3).longValue());
+    }
+    catch (JSONException paramString1)
+    {
+      QLog.i(TAG, 1, "updateSchoolCertificate exception", paramString1);
+    }
   }
   
   public void updateSchoolinfo(Bundle paramBundle, String paramString)
@@ -556,29 +559,26 @@ public class RemoteRequestSender
     localBundle.putString("UploadPhoto.key_album_id", paramString4);
     localBundle.putString("UploadPhoto.key_album_name", paramString5);
     localBundle.putString("refer", "mqqChat");
-    int i = paramInt;
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      i = paramInt;
+      if (paramInt == 2) {
+        paramInt = 3;
+      }
     }
-    for (;;)
-    {
-      localBundle.putStringArrayList("PhotoConst.PHOTO_PATHS", paramArrayList);
-      localBundle.putInt("key_quality", i);
-      paramString2 = String.valueOf(MessageUtils.a());
-      localBundle.putString("key_upload_client_key", paramString2);
-      paramString3 = QZoneHelper.UserInfo.getInstance();
-      paramString3.qzone_uin = paramString1;
-      localBundle.putString("qzone_uin", paramString3.qzone_uin);
-      localBundle.putString("nickname", paramString3.nickname);
-      paramIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", paramArrayList);
-      paramIntent.putExtra("key_upload_client_key", paramString2);
-      return this.manager.sendData("cmd_upload_troop_photos", localBundle, true);
-      i = 0;
-      continue;
-      i = 3;
+    else {
+      paramInt = 0;
     }
+    localBundle.putStringArrayList("PhotoConst.PHOTO_PATHS", paramArrayList);
+    localBundle.putInt("key_quality", paramInt);
+    paramString2 = String.valueOf(MessageUtils.a());
+    localBundle.putString("key_upload_client_key", paramString2);
+    paramString3 = QZoneHelper.UserInfo.getInstance();
+    paramString3.qzone_uin = paramString1;
+    localBundle.putString("qzone_uin", paramString3.qzone_uin);
+    localBundle.putString("nickname", paramString3.nickname);
+    paramIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", paramArrayList);
+    paramIntent.putExtra("key_upload_client_key", paramString2);
+    return this.manager.sendData("cmd_upload_troop_photos", localBundle, true);
   }
   
   public int uploadUps(String paramString1, String paramString2)
@@ -598,7 +598,7 @@ public class RemoteRequestSender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.remote.logic.RemoteRequestSender
  * JD-Core Version:    0.7.0.1
  */

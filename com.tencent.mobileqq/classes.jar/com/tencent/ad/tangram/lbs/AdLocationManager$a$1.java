@@ -15,58 +15,22 @@ class AdLocationManager$a$1
   public void onCallback(AdIPCManager.Params paramParams, AdIPCManager.Result paramResult)
   {
     paramParams = AdProcessManager.INSTANCE.isOnMainProcess();
-    if (paramParams != null) {
-      if (paramParams.booleanValue()) {
-        paramParams = null;
-      }
-    }
-    for (;;)
+    if ((paramParams != null) && (!paramParams.booleanValue()) && (paramResult != null) && (paramResult.success) && (paramResult.bundle != null) && (paramResult.bundle.containsKey("LOCATION")))
     {
-      AdLog.i("AdLocationManager", String.format("IPCHandler.onCallback result:%s", new Object[] { paramParams }));
-      return;
-      if (paramResult == null)
+      paramParams = paramResult.bundle.getSerializable("LOCATION");
+      if ((paramParams != null) && ((paramParams instanceof AdLocation)))
       {
-        paramParams = null;
-      }
-      else if (!paramResult.success)
-      {
-        paramParams = null;
-      }
-      else if (paramResult.bundle == null)
-      {
-        paramParams = null;
-      }
-      else if (!paramResult.bundle.containsKey("LOCATION"))
-      {
-        paramParams = null;
-      }
-      else
-      {
-        paramParams = paramResult.bundle.getSerializable("LOCATION");
-        if (paramParams == null)
+        paramParams = (AdLocation)AdLocation.class.cast(paramParams);
+        if (paramParams.isValid())
         {
-          paramParams = null;
-        }
-        else if (!(paramParams instanceof AdLocation))
-        {
-          paramParams = null;
-        }
-        else
-        {
-          paramParams = (AdLocation)AdLocation.class.cast(paramParams);
-          if (!paramParams.isValid())
-          {
-            paramParams = null;
-          }
-          else
-          {
-            AdLocationManager.access$200(AdLocationManager.INSTANCE, paramParams);
-            continue;
-            paramParams = null;
-          }
+          AdLocationManager.access$200(AdLocationManager.INSTANCE, paramParams);
+          break label122;
         }
       }
     }
+    paramParams = null;
+    label122:
+    AdLog.i("AdLocationManager", String.format("IPCHandler.onCallback result:%s", new Object[] { paramParams }));
   }
 }
 

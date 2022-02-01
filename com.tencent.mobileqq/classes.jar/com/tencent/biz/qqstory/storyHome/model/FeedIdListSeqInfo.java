@@ -33,34 +33,33 @@ public class FeedIdListSeqInfo
     this.jdField_a_of_type_Int = paramFeedSeqInfo.seq.get();
     this.jdField_b_of_type_JavaLangString = paramFeedSeqInfo.union_id.get().toStringUtf8();
     this.c = String.valueOf(paramFeedSeqInfo.date.get());
-    if (paramFeedSeqInfo.is_playable.has()) {
-      if (paramFeedSeqInfo.is_playable.get() != 1) {}
-    }
-    for (;;)
+    boolean bool2 = paramFeedSeqInfo.is_playable.has();
+    boolean bool1 = true;
+    if (bool2)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      try
-      {
-        for (;;)
-        {
-          if (!TextUtils.isEmpty(this.c)) {
-            this.jdField_a_of_type_Long = FeedManager.a().parse(this.c).getTime();
-          }
-          AssertUtils.a(this.jdField_a_of_type_JavaLangString);
-          return;
-          bool = false;
-          break;
-          this.jdField_a_of_type_Boolean = true;
-        }
+      if (paramFeedSeqInfo.is_playable.get() != 1) {
+        bool1 = false;
       }
-      catch (Exception paramFeedSeqInfo)
-      {
-        for (;;)
-        {
-          SLog.c("Q.qqstory.home", "parse date " + this.c, paramFeedSeqInfo);
-        }
+      this.jdField_a_of_type_Boolean = bool1;
+    }
+    else
+    {
+      this.jdField_a_of_type_Boolean = true;
+    }
+    try
+    {
+      if (!TextUtils.isEmpty(this.c)) {
+        this.jdField_a_of_type_Long = FeedManager.a().parse(this.c).getTime();
       }
     }
+    catch (Exception paramFeedSeqInfo)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parse date ");
+      localStringBuilder.append(this.c);
+      SLog.c("Q.qqstory.home", localStringBuilder.toString(), paramFeedSeqInfo);
+    }
+    AssertUtils.checkNotEmpty(this.jdField_a_of_type_JavaLangString);
   }
   
   public FeedIdListSeqInfo(@NonNull String paramString1, int paramInt, String paramString2, String paramString3)
@@ -76,16 +75,12 @@ public class FeedIdListSeqInfo
       if (!TextUtils.isEmpty(this.c)) {
         this.jdField_a_of_type_Long = FeedManager.a().parse(this.c).getTime();
       }
-      AssertUtils.a(paramString1);
-      return;
     }
     catch (ParseException paramString2)
     {
-      for (;;)
-      {
-        SLog.c("Q.qqstory.home", "parse date", paramString2);
-      }
+      SLog.c("Q.qqstory.home", "parse date", paramString2);
     }
+    AssertUtils.checkNotNull(paramString1);
   }
   
   public static int a(List<FeedIdListSeqInfo> paramList, String paramString)
@@ -135,12 +130,25 @@ public class FeedIdListSeqInfo
   
   public String toString()
   {
-    return "FeedIdListSeqInfo{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mSeq=" + this.jdField_a_of_type_Int + ", mUnionId='" + this.jdField_b_of_type_JavaLangString + '\'' + ", date='" + this.c + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FeedIdListSeqInfo{feedId='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mSeq=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", mUnionId='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", date='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.FeedIdListSeqInfo
  * JD-Core Version:    0.7.0.1
  */

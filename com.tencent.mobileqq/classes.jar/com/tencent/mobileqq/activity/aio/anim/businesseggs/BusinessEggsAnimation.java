@@ -18,10 +18,10 @@ public class BusinessEggsAnimation
   extends AIOAnimationConatiner.AIOAnimator
 {
   private BusinessEggsAnimation.BusinessEggsQueueDriver jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsBusinessEggsAnimation$BusinessEggsQueueDriver;
-  private Map<Long, AioAnimationRule> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Queue<BusinessEggsElement> jdField_a_of_type_JavaUtilQueue = new LinkedList();
-  private Queue<BusinessEggsElement> b = new LinkedList();
-  private Queue<BusinessEggsElement> c = new LinkedList();
+  private final Map<Long, AioAnimationRule> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private final Queue<BusinessEggsElement> jdField_a_of_type_JavaUtilQueue = new LinkedList();
+  private final Queue<BusinessEggsElement> b = new LinkedList();
+  private final Queue<BusinessEggsElement> c = new LinkedList();
   
   public BusinessEggsAnimation(int paramInt, AIOAnimationConatiner paramAIOAnimationConatiner, ListView paramListView)
   {
@@ -33,18 +33,28 @@ public class BusinessEggsAnimation
     BusinessEggsElement localBusinessEggsElement = new BusinessEggsElement(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, this.jdField_a_of_type_ComTencentWidgetListView);
     try
     {
-      Drawable localDrawable = (Drawable)paramVarArgs[0];
+      Object localObject = (Drawable)paramVarArgs[0];
       paramVarArgs = (AioAnimationRule)paramVarArgs[1];
       long l = RandomUtils.a();
       this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(l), paramVarArgs);
       localBusinessEggsElement.a = l;
-      localBusinessEggsElement.a(localDrawable);
-      if (QLog.isColorLevel()) {
-        QLog.d("BusinessEggsAnimation", 2, "[parseEggsAnimationInfo] sig: " + l + ", rule id: " + paramVarArgs.b);
+      localBusinessEggsElement.a((Drawable)localObject);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[parseEggsAnimationInfo] sig: ");
+        ((StringBuilder)localObject).append(l);
+        ((StringBuilder)localObject).append(", rule id: ");
+        ((StringBuilder)localObject).append(paramVarArgs.b);
+        QLog.d("BusinessEggsAnimation", 2, ((StringBuilder)localObject).toString());
       }
       return localBusinessEggsElement;
     }
-    catch (Exception paramVarArgs) {}
+    catch (Exception paramVarArgs)
+    {
+      label126:
+      break label126;
+    }
     return null;
   }
   
@@ -83,55 +93,54 @@ public class BusinessEggsAnimation
     }
   }
   
-  public void a() {}
+  protected void a() {}
   
-  public boolean a(int paramInt)
+  protected boolean a(int paramInt)
   {
     return paramInt == 8;
   }
   
-  public boolean a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected boolean a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     return false;
   }
   
-  public boolean a(Object... paramVarArgs)
+  protected boolean a(Object... paramVarArgs)
   {
     if (QLog.isColorLevel()) {
       QLog.i("BusinessEggsAnimation", 2, "[start] start animation");
     }
-    if (this.jdField_a_of_type_JavaUtilQueue.size() >= 10) {}
-    BusinessEggsElement localBusinessEggsElement;
-    do
-    {
+    if (this.jdField_a_of_type_JavaUtilQueue.size() >= 10) {
       return false;
-      localBusinessEggsElement = a(paramVarArgs);
-    } while (localBusinessEggsElement == null);
+    }
+    BusinessEggsElement localBusinessEggsElement = a(paramVarArgs);
+    if (localBusinessEggsElement == null) {
+      return false;
+    }
     try
     {
       paramVarArgs = (ChatMessage)paramVarArgs[2];
-      a(localBusinessEggsElement, paramVarArgs);
-      this.jdField_a_of_type_JavaUtilQueue.add(localBusinessEggsElement);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsBusinessEggsAnimation$BusinessEggsQueueDriver == null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsBusinessEggsAnimation$BusinessEggsQueueDriver = new BusinessEggsAnimation.BusinessEggsQueueDriver(this, null);
-        this.jdField_a_of_type_ComTencentWidgetListView.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsBusinessEggsAnimation$BusinessEggsQueueDriver);
-      }
-      return true;
     }
     catch (Exception paramVarArgs)
     {
-      for (;;)
-      {
-        QLog.e("BusinessEggsAnimation", 1, "[start] message is null");
-        paramVarArgs = null;
-      }
+      label52:
+      break label52;
     }
+    QLog.e("BusinessEggsAnimation", 1, "[start] message is null");
+    paramVarArgs = null;
+    a(localBusinessEggsElement, paramVarArgs);
+    this.jdField_a_of_type_JavaUtilQueue.add(localBusinessEggsElement);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsBusinessEggsAnimation$BusinessEggsQueueDriver == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsBusinessEggsAnimation$BusinessEggsQueueDriver = new BusinessEggsAnimation.BusinessEggsQueueDriver(this, null);
+      this.jdField_a_of_type_ComTencentWidgetListView.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsBusinessEggsAnimation$BusinessEggsQueueDriver);
+    }
+    return true;
   }
   
-  public void b() {}
+  protected void b() {}
   
-  public void c()
+  protected void c()
   {
     if (QLog.isColorLevel()) {
       QLog.i("BusinessEggsAnimation", 2, "[stop] stop animation");
@@ -142,7 +151,7 @@ public class BusinessEggsAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.businesseggs.BusinessEggsAnimation
  * JD-Core Version:    0.7.0.1
  */

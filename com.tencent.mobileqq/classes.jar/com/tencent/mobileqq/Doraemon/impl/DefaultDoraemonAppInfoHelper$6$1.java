@@ -2,11 +2,11 @@ package com.tencent.mobileqq.Doraemon.impl;
 
 import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
 import com.tencent.mobileqq.miniapp.MiniAppInfo;
-import com.tencent.mobileqq.miniapp.MiniAppInfoManager.MiniAppInfoCallback;
+import com.tencent.mobileqq.miniapp.MiniAppInfoCallback;
 import com.tribe.async.async.JobSegment;
 
 class DefaultDoraemonAppInfoHelper$6$1
-  extends MiniAppInfoManager.MiniAppInfoCallback<JobSegment>
+  extends MiniAppInfoCallback<JobSegment>
 {
   DefaultDoraemonAppInfoHelper$6$1(DefaultDoraemonAppInfoHelper.6 param6, JobSegment paramJobSegment)
   {
@@ -25,7 +25,7 @@ class DefaultDoraemonAppInfoHelper$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAppInfoHelper.6.1
  * JD-Core Version:    0.7.0.1
  */

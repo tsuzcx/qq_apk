@@ -25,21 +25,21 @@ public class ResourcePluginListener$CallbackRunner
     }
     if (localResourcePluginListener != null)
     {
-      if (this.jdField_a_of_type_Int != 2) {
-        break label50;
+      int i = this.jdField_a_of_type_Int;
+      if (i == 2)
+      {
+        localResourcePluginListener.b(this.jdField_a_of_type_Byte);
+        return;
       }
-      localResourcePluginListener.b(this.jdField_a_of_type_Byte);
+      if (i == 1) {
+        localResourcePluginListener.a(this.jdField_a_of_type_Byte);
+      }
     }
-    label50:
-    while (this.jdField_a_of_type_Int != 1) {
-      return;
-    }
-    localResourcePluginListener.a(this.jdField_a_of_type_Byte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.observer.ResourcePluginListener.CallbackRunner
  * JD-Core Version:    0.7.0.1
  */

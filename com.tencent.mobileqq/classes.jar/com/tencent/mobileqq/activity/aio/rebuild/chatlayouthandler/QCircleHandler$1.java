@@ -21,13 +21,15 @@ class QCircleHandler$1
     }
     catch (Exception localException)
     {
-      QZLog.e("QZLog", "QzonePluginInstalled failed");
+      label21:
+      break label21;
     }
+    QZLog.e("QZLog", "QzonePluginInstalled failed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatlayouthandler.QCircleHandler.1
  * JD-Core Version:    0.7.0.1
  */

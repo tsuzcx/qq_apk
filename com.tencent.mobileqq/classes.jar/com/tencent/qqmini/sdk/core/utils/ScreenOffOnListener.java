@@ -13,15 +13,16 @@ public class ScreenOffOnListener
   
   public static ScreenOffOnListener getInstance()
   {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new ScreenOffOnListener();
+    if (instance == null) {
+      try
+      {
+        if (instance == null) {
+          instance = new ScreenOffOnListener();
+        }
       }
-      return instance;
+      finally {}
     }
-    finally {}
+    return instance;
   }
   
   public void registListener(ScreenOffOnListener.ReceiveListener paramReceiveListener)
@@ -44,7 +45,7 @@ public class ScreenOffOnListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.ScreenOffOnListener
  * JD-Core Version:    0.7.0.1
  */

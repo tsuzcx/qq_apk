@@ -23,6 +23,7 @@ class DownloadProxy$1
         Object localObject1 = ???.next();
         if ((localObject1 instanceof AppSimpleDetail))
         {
+          localObject1 = (AppSimpleDetail)localObject1;
           int i = ((AppSimpleDetail)localObject1).versionCode;
           if (i > 0) {
             DownloadProxy.a(this.a).put(((AppSimpleDetail)localObject1).packageName, Integer.valueOf(i));
@@ -35,11 +36,15 @@ class DownloadProxy$1
       DownloadProxy.a(this.a).notify();
       return;
     }
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadProxy.1
  * JD-Core Version:    0.7.0.1
  */

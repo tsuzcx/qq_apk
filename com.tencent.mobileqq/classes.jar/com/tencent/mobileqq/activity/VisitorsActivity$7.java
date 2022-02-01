@@ -18,18 +18,24 @@ class VisitorsActivity$7
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return true;
-      if (Build.VERSION.SDK_INT >= 16)
+      if (i != 1)
       {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(127);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
-        this.a.b.setAlpha(127);
-        continue;
+        if (i != 3) {
+          return true;
+        }
+        if (Build.VERSION.SDK_INT >= 16)
+        {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
+          this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+          this.a.b.setAlpha(255);
+          return true;
+        }
+      }
+      else
+      {
         if (Build.VERSION.SDK_INT >= 16)
         {
           this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
@@ -40,22 +46,24 @@ class VisitorsActivity$7
         LikeRankingUtil.a(this.a, QFlutterDPC.a().b());
         this.a.d.setVisibility(8);
         this.a.f.clearAnimation();
-        this.a.c = 0;
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-        continue;
-        if (Build.VERSION.SDK_INT >= 16)
-        {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
-          this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-          this.a.b.setAlpha(255);
-        }
+        paramView = this.a;
+        paramView.c = 0;
+        paramView.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+        return true;
       }
     }
+    else if (Build.VERSION.SDK_INT >= 16)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(127);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+      this.a.b.setAlpha(127);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VisitorsActivity.7
  * JD-Core Version:    0.7.0.1
  */

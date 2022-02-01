@@ -3,7 +3,7 @@ package com.tencent.mobileqq.customviews;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import com.tencent.mobileqq.transfile.BasePicUploadProcessor;
+import com.tencent.mobileqq.pic.api.IPicTransFile.IPicUploadPro;
 import com.tencent.mobileqq.transfile.BaseTransProcessor;
 import com.tencent.mobileqq.widget.MessageProgressView;
 import com.tencent.qphone.base.util.QLog;
@@ -38,79 +38,107 @@ public class PicProgressView
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor == null) {}
-    label222:
-    do
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor;
+    if (localObject == null) {
+      return;
+    }
+    int i;
+    if ((((BaseTransProcessor)localObject).getCurrentProgress() < 100) && (paramInt1 >= 100))
     {
-      int i;
-      do
+      i = 100;
+    }
+    else
+    {
+      i = paramInt1;
+      if (paramInt1 >= 100)
       {
-        return;
-        if ((this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getCurrentProgress() < 100) && (paramInt1 >= 100)) {
-          i = 100;
-        }
-        do
-        {
-          this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.setCurrentProgress(i);
-          paramInt1 = Math.max(this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getRealProgress(), 0);
-          long l = 25L;
-          if (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getRealProgress() < 0) {
-            l = 1000L;
-          }
-          if (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getCurrentProgress() > paramInt1) {
-            break label222;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("PicProgressView", 2, "currentProgress " + i + " receiveProgress " + paramInt1 + "addProgress" + paramInt2 + " processor.getKey() " + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getKey() + " processor " + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor);
-          }
-          setProgress(i);
-          if (this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable != null) {
-            break;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable = new PicProgressView.RefreshProgressRunnable(this, i, paramInt2);
-          postDelayed(this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable, l);
-          return;
-          i = paramInt1;
-        } while (paramInt1 < 100);
         this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor = null;
         return;
-      } while (paramInt2 == 1);
-      this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable.a(paramInt2);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("PicProgressView", 2, "doUpdateCurrentProgress ,currentProgress:" + i + " receiveProgress " + paramInt1 + "addProgress" + paramInt2 + " processor.getKey() " + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getKey() + " processor " + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor);
       }
-    } while (paramInt1 < this.jdField_a_of_type_Int);
-    setProgress(paramInt1);
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getCurrentProgress();
     }
-    return 0;
+    this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.setCurrentProgress(i);
+    paramInt1 = Math.max(this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getRealProgress(), 0);
+    long l = 25L;
+    if (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getRealProgress() < 0) {
+      l = 1000L;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getCurrentProgress() <= paramInt1)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("currentProgress ");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(" receiveProgress ");
+        ((StringBuilder)localObject).append(paramInt1);
+        ((StringBuilder)localObject).append("addProgress");
+        ((StringBuilder)localObject).append(paramInt2);
+        ((StringBuilder)localObject).append(" processor.getKey() ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getKey());
+        ((StringBuilder)localObject).append(" processor ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor);
+        QLog.d("PicProgressView", 2, ((StringBuilder)localObject).toString());
+      }
+      setProgress(i);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable;
+      if (localObject == null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable = new PicProgressView.RefreshProgressRunnable(this, i, paramInt2);
+        postDelayed(this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable, l);
+        return;
+      }
+      if (paramInt2 != 1) {
+        ((PicProgressView.RefreshProgressRunnable)localObject).a(paramInt2);
+      }
+    }
+    else
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("doUpdateCurrentProgress ,currentProgress:");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(" receiveProgress ");
+        ((StringBuilder)localObject).append(paramInt1);
+        ((StringBuilder)localObject).append("addProgress");
+        ((StringBuilder)localObject).append(paramInt2);
+        ((StringBuilder)localObject).append(" processor.getKey() ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getKey());
+        ((StringBuilder)localObject).append(" processor ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor);
+        QLog.d("PicProgressView", 2, ((StringBuilder)localObject).toString());
+      }
+      if (paramInt1 >= this.jdField_a_of_type_Int) {
+        setProgress(paramInt1);
+      }
+    }
   }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicProgressView", 2, "updateProgress processor:" + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateProgress processor:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor);
+      QLog.d("PicProgressView", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor != null) {
-      a(this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getCurrentProgress(), 1);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor;
+    if (localObject != null) {
+      a(((BaseTransProcessor)localObject).getCurrentProgress(), 1);
     }
   }
   
-  public void a(Canvas paramCanvas)
+  protected void a(Canvas paramCanvas)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor != null) && ((this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor instanceof BasePicUploadProcessor)) && (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getFileStatus() < 1001L)) {
+    BaseTransProcessor localBaseTransProcessor = this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor;
+    if ((localBaseTransProcessor != null) && ((localBaseTransProcessor instanceof IPicTransFile.IPicUploadPro)) && (localBaseTransProcessor.getFileStatus() < 1001L)) {
       return;
     }
     super.a(paramCanvas);
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable);
     super.onDetachedFromWindow();
@@ -121,9 +149,10 @@ public class PicProgressView
     if (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor == paramBaseTransProcessor) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable != null)
+    PicProgressView.RefreshProgressRunnable localRefreshProgressRunnable = this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable;
+    if (localRefreshProgressRunnable != null)
     {
-      removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable);
+      removeCallbacks(localRefreshProgressRunnable);
       this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable = null;
     }
     this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor = paramBaseTransProcessor;
@@ -147,22 +176,20 @@ public class PicProgressView
   
   public void setShowProgress(boolean paramBoolean)
   {
+    boolean bool = this.b;
     int i = 1;
-    if ((!this.b) && (paramBoolean == true)) {}
-    for (;;)
-    {
-      this.b = paramBoolean;
-      if (i != 0) {
-        invalidate();
-      }
-      return;
+    if ((bool) || (paramBoolean != true)) {
       i = 0;
+    }
+    this.b = paramBoolean;
+    if (i != 0) {
+      invalidate();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.customviews.PicProgressView
  * JD-Core Version:    0.7.0.1
  */

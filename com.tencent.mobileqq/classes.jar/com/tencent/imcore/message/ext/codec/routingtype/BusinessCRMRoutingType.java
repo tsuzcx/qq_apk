@@ -1,5 +1,6 @@
 package com.tencent.imcore.message.ext.codec.routingtype;
 
+import com.tencent.common.app.AppInterface;
 import com.tencent.imcore.message.core.codec.RoutingType;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -13,7 +14,7 @@ import msf.msgsvc.msg_svc.BusinessWPATmp;
 import msf.msgsvc.msg_svc.RoutingHead;
 
 public class BusinessCRMRoutingType
-  implements RoutingType
+  implements RoutingType<AppInterface>
 {
   public int a()
   {
@@ -25,31 +26,44 @@ public class BusinessCRMRoutingType
     return false;
   }
   
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, AppInterface paramAppInterface)
   {
-    byte[] arrayOfByte = paramQQAppInterface.getMsgCache().d(paramMessageRecord.frienduin);
-    msg_svc.BusinessWPATmp localBusinessWPATmp = new msg_svc.BusinessWPATmp();
-    localBusinessWPATmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    if (arrayOfByte != null)
+    QQAppInterface localQQAppInterface = (QQAppInterface)paramAppInterface;
+    Object localObject = localQQAppInterface.getMsgCache().d(paramMessageRecord.frienduin);
+    paramAppInterface = new msg_svc.BusinessWPATmp();
+    paramAppInterface.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    if (localObject != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BusinessCRMRoutingType", 2, "conversation------>sig:" + HexUtil.bytes2HexStr(arrayOfByte) + ",length:" + arrayOfByte.length);
+      if (QLog.isColorLevel())
+      {
+        paramMessageRecord = new StringBuilder();
+        paramMessageRecord.append("conversation------>sig:");
+        paramMessageRecord.append(HexUtil.bytes2HexStr((byte[])localObject));
+        paramMessageRecord.append(",length:");
+        paramMessageRecord.append(localObject.length);
+        QLog.d("BusinessCRMRoutingType", 2, paramMessageRecord.toString());
       }
-      localBusinessWPATmp.sig.set(ByteStringMicro.copyFrom(arrayOfByte));
+      paramAppInterface.sig.set(ByteStringMicro.copyFrom((byte[])localObject));
     }
-    for (;;)
+    else
     {
-      paramRoutingHead.business_wpa_tmp.set(localBusinessWPATmp);
-      return true;
-      paramMessageRecord = paramQQAppInterface.getMsgCache().e(paramMessageRecord.frienduin);
+      paramMessageRecord = localQQAppInterface.getMsgCache().e(paramMessageRecord.frienduin);
       if (paramMessageRecord != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("BusinessCRMRoutingType", 2, "conversation------>sigt:" + HexUtil.bytes2HexStr(paramMessageRecord) + ",length:" + paramMessageRecord.length);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("conversation------>sigt:");
+          ((StringBuilder)localObject).append(HexUtil.bytes2HexStr(paramMessageRecord));
+          ((StringBuilder)localObject).append(",length:");
+          ((StringBuilder)localObject).append(paramMessageRecord.length);
+          QLog.d("BusinessCRMRoutingType", 2, ((StringBuilder)localObject).toString());
         }
-        localBusinessWPATmp.sigt.set(ByteStringMicro.copyFrom(paramMessageRecord));
+        paramAppInterface.sigt.set(ByteStringMicro.copyFrom(paramMessageRecord));
       }
     }
+    paramRoutingHead.business_wpa_tmp.set(paramAppInterface);
+    return true;
   }
   
   public int b()
@@ -59,7 +73,7 @@ public class BusinessCRMRoutingType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.routingtype.BusinessCRMRoutingType
  * JD-Core Version:    0.7.0.1
  */

@@ -11,9 +11,9 @@ class AddPhoneNumberFragment$1
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131371548)
+    if (paramView.getId() == 2131371168)
     {
-      paramView = this.this$0.getActivity();
+      paramView = this.this$0.getBaseActivity();
       if ((paramView != null) && (!paramView.isFinishing()))
       {
         paramView.setResult(0);
@@ -24,7 +24,7 @@ class AddPhoneNumberFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.mainpage.AddPhoneNumberFragment.1
  * JD-Core Version:    0.7.0.1
  */

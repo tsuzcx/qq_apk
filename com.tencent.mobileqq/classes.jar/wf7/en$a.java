@@ -37,16 +37,16 @@ public class en$a
   public boolean cW()
   {
     long l2 = Math.abs(System.currentTimeMillis() - this.ol);
-    if (this.oj > 0L) {}
-    for (long l1 = this.oj; l2 >= l1; l1 = 185000L) {
-      return true;
+    long l1 = this.oj;
+    if (l1 <= 0L) {
+      l1 = 185000L;
     }
-    return false;
+    return l2 >= l1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.en.a
  * JD-Core Version:    0.7.0.1
  */

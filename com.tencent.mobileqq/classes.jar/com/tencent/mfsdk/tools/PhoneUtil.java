@@ -21,88 +21,99 @@ public class PhoneUtil
     if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
       return jdField_a_of_type_JavaLangString;
     }
-    String str1 = "";
+    Object localObject2 = "";
     Context localContext = paramApplication.getApplicationContext();
-    Object localObject = str1;
+    Object localObject1 = localObject2;
     if (a(paramApplication))
     {
-      paramApplication = (TelephonyManager)localContext.getSystemService("phone");
-      String str2 = paramApplication.getDeviceId();
-      localObject = str1;
-      if (!TextUtils.isEmpty(str2)) {
-        localObject = "" + str2;
-      }
-      str1 = paramApplication.getSubscriberId();
-      if (TextUtils.isEmpty(str1)) {
-        break label174;
-      }
-      paramApplication = (String)localObject + str1;
-    }
-    for (;;)
-    {
-      localObject = paramApplication;
-      if (TextUtils.isEmpty(paramApplication))
+      localObject1 = (TelephonyManager)localContext.getSystemService("phone");
+      String str = ((TelephonyManager)localObject1).getDeviceId();
+      paramApplication = (Application)localObject2;
+      if (!TextUtils.isEmpty(str))
       {
-        localObject = paramApplication;
+        paramApplication = new StringBuilder();
+        paramApplication.append("");
+        paramApplication.append(str);
+        paramApplication = paramApplication.toString();
+      }
+      localObject2 = ((TelephonyManager)localObject1).getSubscriberId();
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramApplication);
+        ((StringBuilder)localObject1).append((String)localObject2);
+      }
+      for (paramApplication = ((StringBuilder)localObject1).toString();; paramApplication = ((StringBuilder)localObject2).toString())
+      {
+        localObject2 = paramApplication;
+        break;
+        localObject1 = ((TelephonyManager)localObject1).getSimOperator();
+        localObject2 = paramApplication;
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          break;
+        }
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(paramApplication);
+        ((StringBuilder)localObject2).append((String)localObject1);
+      }
+      localObject1 = localObject2;
+      if (TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        localObject1 = localObject2;
         if (Build.VERSION.SDK_INT >= 23) {
-          localObject = QQDeviceInfo.getSerial(paramActivity);
+          localObject1 = QQDeviceInfo.getSerial(paramActivity);
         }
       }
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        paramApplication = (Application)localObject;
-        if (!((String)localObject).startsWith("012345678912345")) {}
-      }
-      else
-      {
-        paramApplication = Settings.Secure.getString(localContext.getContentResolver(), "android_id");
-      }
-      jdField_a_of_type_JavaLangString = MD5.toMD5(paramApplication);
-      return jdField_a_of_type_JavaLangString;
-      label174:
-      str1 = paramApplication.getSimOperator();
-      paramApplication = (Application)localObject;
-      if (!TextUtils.isEmpty(str1)) {
-        paramApplication = (String)localObject + str1;
-      }
     }
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      paramApplication = (Application)localObject1;
+      if (!((String)localObject1).startsWith("012345678912345")) {}
+    }
+    else
+    {
+      paramApplication = Settings.Secure.getString(localContext.getContentResolver(), "android_id");
+    }
+    jdField_a_of_type_JavaLangString = MD5.toMD5(paramApplication);
+    return jdField_a_of_type_JavaLangString;
   }
   
   private static boolean a(Application paramApplication)
   {
-    boolean bool = true;
-    if (jdField_a_of_type_Int == -1)
+    int i = jdField_a_of_type_Int;
+    if (i == -1)
     {
-      bool = a(paramApplication, "android.permission.READ_PHONE_STATE");
-      if (bool) {
-        jdField_a_of_type_Int = 1;
-      }
-    }
-    while (jdField_a_of_type_Int > 0) {
-      for (;;)
+      boolean bool = a(paramApplication, "android.permission.READ_PHONE_STATE");
+      if (bool)
       {
+        jdField_a_of_type_Int = 1;
         return bool;
-        jdField_a_of_type_Int = 0;
       }
+      jdField_a_of_type_Int = 0;
+      return bool;
     }
-    return false;
+    return i > 0;
   }
   
   private static boolean a(Application paramApplication, String paramString)
   {
-    if (paramApplication == null) {}
-    PackageManager localPackageManager;
-    do
-    {
+    boolean bool = false;
+    if (paramApplication == null) {
       return false;
-      localPackageManager = paramApplication.getPackageManager();
-    } while ((localPackageManager == null) || (localPackageManager.checkPermission(paramString, paramApplication.getPackageName()) != 0));
-    return true;
+    }
+    PackageManager localPackageManager = paramApplication.getPackageManager();
+    if (localPackageManager == null) {
+      return false;
+    }
+    if (localPackageManager.checkPermission(paramString, paramApplication.getPackageName()) == 0) {
+      bool = true;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mfsdk.tools.PhoneUtil
  * JD-Core Version:    0.7.0.1
  */

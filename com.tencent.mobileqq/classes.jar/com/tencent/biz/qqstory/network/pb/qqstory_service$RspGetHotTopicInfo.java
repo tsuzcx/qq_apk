@@ -22,17 +22,18 @@ public final class qqstory_service$RspGetHotTopicInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 42, 48, 58, 66 }, new String[] { "result", "pic_url", "subject", "join_count", "guide_word", "bkg_color", "topic_label", "cover_url" }, new Object[] { null, localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0), localByteStringMicro4, localByteStringMicro5 }, RspGetHotTopicInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 42, 48, 58, 66 }, new String[] { "result", "pic_url", "subject", "join_count", "guide_word", "bkg_color", "topic_label", "cover_url" }, new Object[] { null, localByteStringMicro1, localByteStringMicro2, localInteger, localByteStringMicro3, localInteger, localByteStringMicro4, localByteStringMicro5 }, RspGetHotTopicInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetHotTopicInfo
  * JD-Core Version:    0.7.0.1
  */

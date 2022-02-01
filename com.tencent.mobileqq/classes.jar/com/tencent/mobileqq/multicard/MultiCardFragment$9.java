@@ -11,8 +11,13 @@ class MultiCardFragment$9
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardFragment", 2, "onActionUpNotFling() called with: initialVelocity = [" + paramInt + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActionUpNotFling() called with: initialVelocity = [");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("]");
+      QLog.d("MultiCardFragment", 2, localStringBuilder.toString());
     }
     if (MultiCardFragment.a(this.a) != null) {
       MultiCardFragment.a(this.a).setViewPagerBusy(true);
@@ -28,7 +33,7 @@ class MultiCardFragment$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardFragment.9
  * JD-Core Version:    0.7.0.1
  */

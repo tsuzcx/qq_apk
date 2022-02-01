@@ -2,6 +2,8 @@ package com.tencent.biz.pubaccount.weishi_new.push;
 
 public abstract interface WSJumpType
 {
+  public static final int TYPE_DRAMA_PREVIEW = 6;
+  public static final int TYPE_DRAMA_PREVIEW_AND_CALL_WS = 7;
   public static final int TYPE_JUMP_FOLLOW = 5;
   public static final int TYPE_JUMP_H5 = 4;
   public static final int TYPE_JUMP_RECOMMEND = 1;
@@ -10,7 +12,7 @@ public abstract interface WSJumpType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.push.WSJumpType
  * JD-Core Version:    0.7.0.1
  */

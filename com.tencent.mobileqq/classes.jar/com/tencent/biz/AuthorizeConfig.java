@@ -20,7 +20,7 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.vas.updatesystem.VasUpdateUtil;
 import com.tencent.mobileqq.webview.authorize.IAuthorizeConfigDownloadInjector;
 import com.tencent.mobileqq.webview.authorize.IAuthorizeConfigInjector;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtilss;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
 import com.tencent.mobileqq.webview.util.WebViewConstant;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -61,7 +61,6 @@ public class AuthorizeConfig
   FlatBuffersConfig jdField_a_of_type_ComTencentBizAuthorizeFlatBuffersConfig;
   JsonConfig jdField_a_of_type_ComTencentBizAuthorizeJsonConfig;
   private IAuthorizeConfigDownloadInjector jdField_a_of_type_ComTencentMobileqqWebviewAuthorizeIAuthorizeConfigDownloadInjector;
-  private final String jdField_a_of_type_JavaLangString = "faceUnblockCamera.startPTVActivity";
   private ArrayList<IAuthorizeConfigInjector> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   protected final ConcurrentHashMap<String, JSONArray> a;
   public final AtomicInteger a;
@@ -69,13 +68,11 @@ public class AuthorizeConfig
   protected volatile JSONArray a;
   protected volatile JSONObject a;
   private boolean jdField_a_of_type_Boolean = false;
-  private final String jdField_b_of_type_JavaLangString = "https://mysec.qq.com/v2/account_control/index.html";
   private ArrayList<String> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   protected final ConcurrentHashMap<String, Set<String>> b;
   protected volatile JSONArray b;
   protected volatile JSONObject b;
   protected volatile long c;
-  private final String c;
   protected volatile JSONArray c;
   protected volatile JSONObject c;
   protected volatile long d;
@@ -104,7 +101,6 @@ public class AuthorizeConfig
   private AuthorizeConfig(Context paramContext)
   {
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(-1);
-    this.jdField_c_of_type_JavaLangString = "qbizApi.getClientInfo";
     this.jdField_a_of_type_Int = -1;
     this.jdField_d_of_type_Long = -1L;
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(jdField_a_of_type_ArrayOfJavaLangString.length);
@@ -125,48 +121,47 @@ public class AuthorizeConfig
   
   public static AuthorizeConfig a()
   {
-    if (jdField_a_of_type_ComTencentBizAuthorizeConfig == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentBizAuthorizeConfig == null) {
-        jdField_a_of_type_ComTencentBizAuthorizeConfig = new AuthorizeConfig(BaseApplication.getContext());
+    if (jdField_a_of_type_ComTencentBizAuthorizeConfig == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentBizAuthorizeConfig == null) {
+          jdField_a_of_type_ComTencentBizAuthorizeConfig = new AuthorizeConfig(BaseApplication.getContext());
+        }
       }
-      jdField_a_of_type_ComTencentBizAuthorizeConfig.a();
-      if (!jdField_a_of_type_ComTencentBizAuthorizeConfig.a(true)) {
-        jdField_a_of_type_ComTencentBizAuthorizeConfig.i();
-      }
-      return jdField_a_of_type_ComTencentBizAuthorizeConfig;
+      finally {}
     }
-    finally {}
+    jdField_a_of_type_ComTencentBizAuthorizeConfig.a();
+    if (!jdField_a_of_type_ComTencentBizAuthorizeConfig.a(true)) {
+      jdField_a_of_type_ComTencentBizAuthorizeConfig.i();
+    }
+    return jdField_a_of_type_ComTencentBizAuthorizeConfig;
   }
   
   public static AuthorizeConfig a(boolean paramBoolean)
   {
-    if (jdField_a_of_type_ComTencentBizAuthorizeConfig == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentBizAuthorizeConfig == null) {
-        jdField_a_of_type_ComTencentBizAuthorizeConfig = new AuthorizeConfig(BaseApplication.getContext());
+    if (jdField_a_of_type_ComTencentBizAuthorizeConfig == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentBizAuthorizeConfig == null) {
+          jdField_a_of_type_ComTencentBizAuthorizeConfig = new AuthorizeConfig(BaseApplication.getContext());
+        }
       }
-      jdField_a_of_type_ComTencentBizAuthorizeConfig.a();
-      jdField_a_of_type_ComTencentBizAuthorizeConfig.a(paramBoolean);
-      return jdField_a_of_type_ComTencentBizAuthorizeConfig;
+      finally {}
     }
-    finally {}
+    jdField_a_of_type_ComTencentBizAuthorizeConfig.a();
+    jdField_a_of_type_ComTencentBizAuthorizeConfig.a(paramBoolean);
+    return jdField_a_of_type_ComTencentBizAuthorizeConfig;
   }
   
   private static String a(String paramString1, String paramString2, Set<String> paramSet)
   {
     Object localObject1;
-    Object localObject2;
     if (!TextUtils.isEmpty(paramString2))
     {
       localObject1 = Uri.parse(paramString2);
-      localObject2 = ((Uri)localObject1).getScheme();
-      if ((!"http".equals(localObject2)) && (!"https".equals(localObject2)))
-      {
-        localObject1 = "";
-        return localObject1;
+      Object localObject2 = ((Uri)localObject1).getScheme();
+      if ((!"http".equals(localObject2)) && (!"https".equals(localObject2))) {
+        return "";
       }
       if (((Uri)localObject1).isHierarchical())
       {
@@ -174,463 +169,333 @@ public class AuthorizeConfig
         if (localObject1 != null)
         {
           localObject1 = ((String)localObject1).toLowerCase();
-          if (paramSet.contains(localObject1)) {
+          if (paramSet.contains(localObject1))
+          {
             paramSet = (Set<String>)localObject1;
+            break label149;
+          }
+          localObject2 = paramSet.iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            paramSet = (String)((Iterator)localObject2).next();
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(".");
+            localStringBuilder.append(paramSet);
+            if (((String)localObject1).endsWith(localStringBuilder.toString())) {
+              break label149;
+            }
           }
         }
       }
     }
-    for (;;)
+    paramSet = "";
+    label149:
+    if (QLog.isColorLevel())
     {
-      localObject1 = paramSet;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
       if (!TextUtils.isEmpty(paramSet))
       {
-        QLog.d("AuthorizeConfig", 2, paramSet + " need " + paramString1 + " which extract from " + paramString2);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramSet);
+        ((StringBuilder)localObject1).append(" need ");
+        ((StringBuilder)localObject1).append(paramString1);
+        ((StringBuilder)localObject1).append(" which extract from ");
+        ((StringBuilder)localObject1).append(paramString2);
+        QLog.d("AuthorizeConfig", 2, ((StringBuilder)localObject1).toString());
         return paramSet;
-        localObject2 = paramSet.iterator();
-        do
-        {
-          if (!((Iterator)localObject2).hasNext()) {
-            break;
-          }
-          paramSet = (String)((Iterator)localObject2).next();
-        } while (!((String)localObject1).endsWith("." + paramSet));
       }
-      else
-      {
-        QLog.d("AuthorizeConfig", 2, paramString2 + " not need " + paramString1);
-        return paramSet;
-        paramSet = "";
-      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramString2);
+      ((StringBuilder)localObject1).append(" not need ");
+      ((StringBuilder)localObject1).append(paramString1);
+      QLog.d("AuthorizeConfig", 2, ((StringBuilder)localObject1).toString());
     }
+    return paramSet;
   }
   
   /* Error */
   public static String a(byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: new 325	java/io/ByteArrayOutputStream
-    //   3: dup
-    //   4: invokespecial 326	java/io/ByteArrayOutputStream:<init>	()V
-    //   7: astore_2
-    //   8: aload_2
-    //   9: astore_1
-    //   10: new 328	java/util/zip/Inflater
-    //   13: dup
-    //   14: invokespecial 329	java/util/zip/Inflater:<init>	()V
-    //   17: astore_3
-    //   18: aload_2
+    //   0: aconst_null
+    //   1: astore_3
+    //   2: aconst_null
+    //   3: astore_1
+    //   4: new 312	java/io/ByteArrayOutputStream
+    //   7: dup
+    //   8: invokespecial 313	java/io/ByteArrayOutputStream:<init>	()V
+    //   11: astore_2
+    //   12: new 315	java/util/zip/Inflater
+    //   15: dup
+    //   16: invokespecial 316	java/util/zip/Inflater:<init>	()V
     //   19: astore_1
-    //   20: aload_3
+    //   20: aload_1
     //   21: aload_0
-    //   22: invokevirtual 333	java/util/zip/Inflater:setInput	([B)V
-    //   25: aload_2
-    //   26: astore_1
-    //   27: sipush 1024
-    //   30: newarray byte
-    //   32: astore_0
-    //   33: aload_2
-    //   34: astore_1
-    //   35: aload_3
-    //   36: invokevirtual 336	java/util/zip/Inflater:finished	()Z
-    //   39: ifne +58 -> 97
-    //   42: aload_2
-    //   43: astore_1
-    //   44: aload_2
-    //   45: aload_0
-    //   46: iconst_0
-    //   47: aload_3
-    //   48: aload_0
-    //   49: invokevirtual 340	java/util/zip/Inflater:inflate	([B)I
-    //   52: invokevirtual 344	java/io/ByteArrayOutputStream:write	([BII)V
-    //   55: goto -22 -> 33
-    //   58: astore_1
-    //   59: aload_2
-    //   60: astore_0
-    //   61: aload_1
-    //   62: astore_2
-    //   63: aload_0
-    //   64: astore_1
-    //   65: invokestatic 164	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   68: ifeq +15 -> 83
-    //   71: aload_0
-    //   72: astore_1
-    //   73: ldc 166
-    //   75: iconst_2
-    //   76: ldc_w 267
-    //   79: aload_2
-    //   80: invokestatic 347	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   83: aload_0
-    //   84: ifnull +7 -> 91
-    //   87: aload_0
-    //   88: invokevirtual 350	java/io/ByteArrayOutputStream:close	()V
-    //   91: ldc_w 267
-    //   94: astore_0
-    //   95: aload_0
-    //   96: areturn
+    //   22: invokevirtual 320	java/util/zip/Inflater:setInput	([B)V
+    //   25: sipush 1024
+    //   28: newarray byte
+    //   30: astore_0
+    //   31: aload_1
+    //   32: invokevirtual 323	java/util/zip/Inflater:finished	()Z
+    //   35: ifne +17 -> 52
+    //   38: aload_2
+    //   39: aload_0
+    //   40: iconst_0
+    //   41: aload_1
+    //   42: aload_0
+    //   43: invokevirtual 327	java/util/zip/Inflater:inflate	([B)I
+    //   46: invokevirtual 331	java/io/ByteArrayOutputStream:write	([BII)V
+    //   49: goto -18 -> 31
+    //   52: aload_1
+    //   53: invokevirtual 334	java/util/zip/Inflater:end	()V
+    //   56: new 40	java/lang/String
+    //   59: dup
+    //   60: aload_2
+    //   61: invokevirtual 338	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   64: invokespecial 340	java/lang/String:<init>	([B)V
+    //   67: astore_0
+    //   68: aload_2
+    //   69: invokevirtual 343	java/io/ByteArrayOutputStream:close	()V
+    //   72: aload_0
+    //   73: areturn
+    //   74: astore_1
+    //   75: invokestatic 151	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   78: ifeq +12 -> 90
+    //   81: ldc 153
+    //   83: iconst_2
+    //   84: ldc 254
+    //   86: aload_1
+    //   87: invokestatic 346	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   90: aload_0
+    //   91: areturn
+    //   92: astore_0
+    //   93: goto +69 -> 162
+    //   96: astore_1
     //   97: aload_2
-    //   98: astore_1
-    //   99: aload_3
-    //   100: invokevirtual 353	java/util/zip/Inflater:end	()V
-    //   103: aload_2
-    //   104: astore_1
-    //   105: new 41	java/lang/String
-    //   108: dup
-    //   109: aload_2
-    //   110: invokevirtual 357	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   113: invokespecial 359	java/lang/String:<init>	([B)V
-    //   116: astore_3
-    //   117: aload_3
-    //   118: astore_0
-    //   119: aload_2
-    //   120: ifnull -25 -> 95
-    //   123: aload_2
-    //   124: invokevirtual 350	java/io/ByteArrayOutputStream:close	()V
-    //   127: aload_3
-    //   128: areturn
-    //   129: astore_1
-    //   130: aload_3
-    //   131: astore_0
-    //   132: invokestatic 164	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   135: ifeq -40 -> 95
-    //   138: ldc 166
-    //   140: iconst_2
-    //   141: ldc_w 267
-    //   144: aload_1
-    //   145: invokestatic 347	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   148: aload_3
-    //   149: areturn
-    //   150: astore_0
-    //   151: invokestatic 164	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   154: ifeq -63 -> 91
-    //   157: ldc 166
-    //   159: iconst_2
-    //   160: ldc_w 267
-    //   163: aload_0
-    //   164: invokestatic 347	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   167: goto -76 -> 91
-    //   170: astore_0
-    //   171: aconst_null
-    //   172: astore_1
-    //   173: aload_1
-    //   174: ifnull +7 -> 181
-    //   177: aload_1
-    //   178: invokevirtual 350	java/io/ByteArrayOutputStream:close	()V
-    //   181: aload_0
-    //   182: athrow
-    //   183: astore_1
-    //   184: invokestatic 164	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   187: ifeq -6 -> 181
-    //   190: ldc 166
-    //   192: iconst_2
-    //   193: ldc_w 267
-    //   196: aload_1
-    //   197: invokestatic 347	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   200: goto -19 -> 181
-    //   203: astore_0
-    //   204: goto -31 -> 173
-    //   207: astore_2
-    //   208: aconst_null
-    //   209: astore_0
-    //   210: goto -147 -> 63
+    //   98: astore_0
+    //   99: aload_1
+    //   100: astore_2
+    //   101: goto +12 -> 113
+    //   104: astore_0
+    //   105: aload_1
+    //   106: astore_2
+    //   107: goto +55 -> 162
+    //   110: astore_2
+    //   111: aload_3
+    //   112: astore_0
+    //   113: aload_0
+    //   114: astore_1
+    //   115: invokestatic 151	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   118: ifeq +14 -> 132
+    //   121: aload_0
+    //   122: astore_1
+    //   123: ldc 153
+    //   125: iconst_2
+    //   126: ldc 254
+    //   128: aload_2
+    //   129: invokestatic 346	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   132: aload_0
+    //   133: ifnull +26 -> 159
+    //   136: aload_0
+    //   137: invokevirtual 343	java/io/ByteArrayOutputStream:close	()V
+    //   140: ldc 254
+    //   142: areturn
+    //   143: astore_0
+    //   144: invokestatic 151	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   147: ifeq +12 -> 159
+    //   150: ldc 153
+    //   152: iconst_2
+    //   153: ldc 254
+    //   155: aload_0
+    //   156: invokestatic 346	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   159: ldc 254
+    //   161: areturn
+    //   162: aload_2
+    //   163: ifnull +26 -> 189
+    //   166: aload_2
+    //   167: invokevirtual 343	java/io/ByteArrayOutputStream:close	()V
+    //   170: goto +19 -> 189
+    //   173: astore_1
+    //   174: invokestatic 151	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   177: ifeq +12 -> 189
+    //   180: ldc 153
+    //   182: iconst_2
+    //   183: ldc 254
+    //   185: aload_1
+    //   186: invokestatic 346	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   189: goto +5 -> 194
+    //   192: aload_0
+    //   193: athrow
+    //   194: goto -2 -> 192
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	213	0	paramArrayOfByte	byte[]
-    //   9	35	1	localObject1	Object
-    //   58	4	1	localThrowable1	Throwable
-    //   64	41	1	localObject2	Object
-    //   129	16	1	localException1	Exception
-    //   172	6	1	localObject3	Object
-    //   183	14	1	localException2	Exception
-    //   7	117	2	localObject4	Object
-    //   207	1	2	localThrowable2	Throwable
-    //   17	132	3	localObject5	Object
+    //   0	197	0	paramArrayOfByte	byte[]
+    //   3	50	1	localInflater	java.util.zip.Inflater
+    //   74	13	1	localException1	Exception
+    //   96	10	1	localThrowable1	Throwable
+    //   114	9	1	arrayOfByte	byte[]
+    //   173	13	1	localException2	Exception
+    //   11	96	2	localObject1	Object
+    //   110	57	2	localThrowable2	Throwable
+    //   1	111	3	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   10	18	58	java/lang/Throwable
-    //   20	25	58	java/lang/Throwable
-    //   27	33	58	java/lang/Throwable
-    //   35	42	58	java/lang/Throwable
-    //   44	55	58	java/lang/Throwable
-    //   99	103	58	java/lang/Throwable
-    //   105	117	58	java/lang/Throwable
-    //   123	127	129	java/lang/Exception
-    //   87	91	150	java/lang/Exception
-    //   0	8	170	finally
-    //   177	181	183	java/lang/Exception
-    //   10	18	203	finally
-    //   20	25	203	finally
-    //   27	33	203	finally
-    //   35	42	203	finally
-    //   44	55	203	finally
-    //   65	71	203	finally
-    //   73	83	203	finally
-    //   99	103	203	finally
-    //   105	117	203	finally
-    //   0	8	207	java/lang/Throwable
+    //   68	72	74	java/lang/Exception
+    //   12	31	92	finally
+    //   31	49	92	finally
+    //   52	68	92	finally
+    //   12	31	96	java/lang/Throwable
+    //   31	49	96	java/lang/Throwable
+    //   52	68	96	java/lang/Throwable
+    //   4	12	104	finally
+    //   115	121	104	finally
+    //   123	132	104	finally
+    //   4	12	110	java/lang/Throwable
+    //   136	140	143	java/lang/Exception
+    //   166	170	173	java/lang/Exception
   }
   
-  /* Error */
   private JSONArray a(String paramString)
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_3
-    //   2: aload_1
-    //   3: invokestatic 247	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   6: ifeq +15 -> 21
-    //   9: new 364	org/json/JSONArray
-    //   12: dup
-    //   13: invokespecial 365	org/json/JSONArray:<init>	()V
-    //   16: astore 5
-    //   18: aload 5
-    //   20: areturn
-    //   21: aload_0
-    //   22: getfield 145	com/tencent/biz/AuthorizeConfig:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   25: aload_1
-    //   26: invokevirtual 369	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   29: checkcast 364	org/json/JSONArray
-    //   32: astore 6
-    //   34: aload 6
-    //   36: astore 5
-    //   38: aload 6
-    //   40: ifnonnull -22 -> 18
-    //   43: aload_0
-    //   44: getfield 145	com/tencent/biz/AuthorizeConfig:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   47: astore 8
-    //   49: aload 8
-    //   51: monitorenter
-    //   52: aload_0
-    //   53: getfield 145	com/tencent/biz/AuthorizeConfig:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   56: aload_1
-    //   57: invokevirtual 369	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   60: checkcast 364	org/json/JSONArray
-    //   63: astore 5
-    //   65: aload 5
-    //   67: astore 6
-    //   69: aload 5
-    //   71: ifnonnull +139 -> 210
-    //   74: aload_0
-    //   75: getfield 197	com/tencent/biz/AuthorizeConfig:jdField_a_of_type_ComTencentBizAuthorizeJsonConfig	Lcom/tencent/biz/authorize/JsonConfig;
-    //   78: aload_1
-    //   79: invokevirtual 371	com/tencent/biz/authorize/JsonConfig:a	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   82: astore 6
-    //   84: aload 6
-    //   86: ifnonnull +195 -> 281
-    //   89: new 364	org/json/JSONArray
-    //   92: dup
-    //   93: getstatic 63	com/tencent/biz/AuthorizeConfig:jdField_a_of_type_AndroidSupportV4UtilArrayMap	Landroid/support/v4/util/ArrayMap;
-    //   96: aload_1
-    //   97: invokevirtual 372	android/support/v4/util/ArrayMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   100: checkcast 41	java/lang/String
-    //   103: invokespecial 375	org/json/JSONArray:<init>	(Ljava/lang/String;)V
-    //   106: astore 5
-    //   108: invokestatic 164	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   111: ifeq +29 -> 140
-    //   114: ldc 166
-    //   116: iconst_2
-    //   117: new 283	java/lang/StringBuilder
-    //   120: dup
-    //   121: invokespecial 284	java/lang/StringBuilder:<init>	()V
-    //   124: ldc_w 377
-    //   127: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   130: aload_1
-    //   131: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   134: invokevirtual 295	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   137: invokestatic 379	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   140: aload 5
-    //   142: astore 6
-    //   144: aload 5
-    //   146: ifnonnull +44 -> 190
-    //   149: invokestatic 164	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   152: ifeq +29 -> 181
-    //   155: ldc 166
-    //   157: iconst_2
-    //   158: new 283	java/lang/StringBuilder
-    //   161: dup
-    //   162: invokespecial 284	java/lang/StringBuilder:<init>	()V
-    //   165: aload_1
-    //   166: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   169: ldc_w 381
-    //   172: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   175: invokevirtual 295	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   178: invokestatic 379	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   181: new 364	org/json/JSONArray
-    //   184: dup
-    //   185: invokespecial 365	org/json/JSONArray:<init>	()V
-    //   188: astore 6
-    //   190: aload_0
-    //   191: getfield 145	com/tencent/biz/AuthorizeConfig:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   194: aload_1
-    //   195: aload 6
-    //   197: invokevirtual 382	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   200: pop
-    //   201: aload_0
-    //   202: getfield 147	com/tencent/biz/AuthorizeConfig:jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   205: aload_1
-    //   206: invokevirtual 385	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   209: pop
-    //   210: aload 8
-    //   212: monitorexit
-    //   213: aload 6
-    //   215: areturn
-    //   216: astore_1
-    //   217: aload 8
-    //   219: monitorexit
-    //   220: aload_1
-    //   221: athrow
-    //   222: astore 7
-    //   224: aload 6
-    //   226: astore 5
-    //   228: aload 7
-    //   230: astore 6
-    //   232: invokestatic 164	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   235: ifeq +151 -> 386
-    //   238: ldc 166
-    //   240: iconst_2
-    //   241: new 283	java/lang/StringBuilder
-    //   244: dup
-    //   245: invokespecial 284	java/lang/StringBuilder:<init>	()V
-    //   248: ldc_w 387
-    //   251: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   254: aload_1
-    //   255: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   258: ldc_w 389
-    //   261: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   264: aload 6
-    //   266: invokevirtual 392	org/json/JSONException:getMessage	()Ljava/lang/String;
-    //   269: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   272: invokevirtual 295	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   275: invokestatic 379	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   278: goto +108 -> 386
-    //   281: ldc 45
-    //   283: aload_1
-    //   284: invokevirtual 263	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   287: istore 4
-    //   289: iload 4
-    //   291: ifeq +78 -> 369
-    //   294: new 364	org/json/JSONArray
-    //   297: dup
-    //   298: getstatic 63	com/tencent/biz/AuthorizeConfig:jdField_a_of_type_AndroidSupportV4UtilArrayMap	Landroid/support/v4/util/ArrayMap;
-    //   301: ldc 45
-    //   303: invokevirtual 372	android/support/v4/util/ArrayMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   306: checkcast 41	java/lang/String
-    //   309: invokespecial 375	org/json/JSONArray:<init>	(Ljava/lang/String;)V
-    //   312: astore 5
-    //   314: aload 5
-    //   316: invokevirtual 396	org/json/JSONArray:length	()I
-    //   319: istore_2
-    //   320: iload_3
-    //   321: iload_2
-    //   322: if_icmpge +32 -> 354
-    //   325: aload 6
-    //   327: aload 5
-    //   329: iload_3
-    //   330: invokevirtual 400	org/json/JSONArray:optString	(I)Ljava/lang/String;
-    //   333: invokevirtual 403	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
-    //   336: pop
-    //   337: iload_3
-    //   338: iconst_1
-    //   339: iadd
-    //   340: istore_3
-    //   341: goto -21 -> 320
-    //   344: aload 7
-    //   346: invokevirtual 406	org/json/JSONException:printStackTrace	()V
-    //   349: iconst_0
-    //   350: istore_2
-    //   351: goto -31 -> 320
-    //   354: invokestatic 164	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   357: ifeq +12 -> 369
-    //   360: ldc 166
-    //   362: iconst_2
-    //   363: ldc_w 408
-    //   366: invokestatic 171	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   369: aload 6
-    //   371: astore 5
-    //   373: goto -233 -> 140
-    //   376: astore 7
-    //   378: goto -34 -> 344
-    //   381: astore 6
-    //   383: goto -151 -> 232
-    //   386: goto -246 -> 140
-    //   389: astore 7
-    //   391: aconst_null
-    //   392: astore 5
-    //   394: goto -50 -> 344
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	397	0	this	AuthorizeConfig
-    //   0	397	1	paramString	String
-    //   319	32	2	i	int
-    //   1	340	3	j	int
-    //   287	3	4	bool	boolean
-    //   16	377	5	localObject1	Object
-    //   32	338	6	localObject2	Object
-    //   381	1	6	localJSONException1	JSONException
-    //   222	123	7	localJSONException2	JSONException
-    //   376	1	7	localJSONException3	JSONException
-    //   389	1	7	localJSONException4	JSONException
-    //   47	171	8	localConcurrentHashMap	ConcurrentHashMap
-    // Exception table:
-    //   from	to	target	type
-    //   52	65	216	finally
-    //   74	84	216	finally
-    //   89	108	216	finally
-    //   108	140	216	finally
-    //   149	181	216	finally
-    //   181	190	216	finally
-    //   190	210	216	finally
-    //   210	213	216	finally
-    //   217	220	216	finally
-    //   232	278	216	finally
-    //   281	289	216	finally
-    //   294	314	216	finally
-    //   314	320	216	finally
-    //   325	337	216	finally
-    //   344	349	216	finally
-    //   354	369	216	finally
-    //   89	108	222	org/json/JSONException
-    //   314	320	376	org/json/JSONException
-    //   108	140	381	org/json/JSONException
-    //   294	314	389	org/json/JSONException
+    if (TextUtils.isEmpty(paramString)) {
+      return new JSONArray();
+    }
+    Object localObject1 = (JSONArray)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if (localObject1 == null) {}
+    for (;;)
+    {
+      Object localObject2;
+      synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+      {
+        localObject2 = (JSONArray)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          localObject2 = this.jdField_a_of_type_ComTencentBizAuthorizeJsonConfig.a(paramString);
+          if (localObject2 == null)
+          {
+            try
+            {
+              JSONArray localJSONArray = new JSONArray((String)jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString));
+              localObject1 = localJSONArray;
+              try
+              {
+                if (!QLog.isColorLevel()) {
+                  continue;
+                }
+                localObject1 = new StringBuilder();
+                ((StringBuilder)localObject1).append("Load local default config for ");
+                ((StringBuilder)localObject1).append(paramString);
+                QLog.e("AuthorizeConfig", 2, ((StringBuilder)localObject1).toString());
+                localObject1 = localJSONArray;
+              }
+              catch (JSONException localJSONException3)
+              {
+                localObject2 = localJSONArray;
+              }
+              localObject1 = localObject2;
+            }
+            catch (JSONException localJSONException4) {}
+            if (QLog.isColorLevel())
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("Decode builtin ");
+              ((StringBuilder)localObject1).append(paramString);
+              ((StringBuilder)localObject1).append(" config failed ");
+              ((StringBuilder)localObject1).append(localJSONException4.getMessage());
+              QLog.e("AuthorizeConfig", 2, ((StringBuilder)localObject1).toString());
+              localObject1 = localObject2;
+            }
+          }
+          else
+          {
+            boolean bool = "pskey".equals(paramString);
+            if (!bool) {
+              break label441;
+            }
+            Object localObject3 = null;
+            int j = 0;
+            try
+            {
+              localObject1 = new JSONArray((String)jdField_a_of_type_AndroidSupportV4UtilArrayMap.get("pskey"));
+              try
+              {
+                i = ((JSONArray)localObject1).length();
+              }
+              catch (JSONException localJSONException1) {}
+              localJSONException2.printStackTrace();
+            }
+            catch (JSONException localJSONException2)
+            {
+              localObject1 = localObject3;
+            }
+            int i = 0;
+            if (j < i)
+            {
+              ((JSONArray)localObject2).put(((JSONArray)localObject1).optString(j));
+              j += 1;
+              continue;
+            }
+            if (!QLog.isColorLevel()) {
+              break label441;
+            }
+            QLog.d("AuthorizeConfig", 2, "p_skey need merge server and local config");
+            break label441;
+          }
+          localObject2 = localObject1;
+          if (localObject1 == null)
+          {
+            if (QLog.isColorLevel())
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append(paramString);
+              ((StringBuilder)localObject1).append(" config is null, please check server and local configuration!");
+              QLog.e("AuthorizeConfig", 2, ((StringBuilder)localObject1).toString());
+            }
+            localObject2 = new JSONArray();
+          }
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject2);
+          this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+          localObject1 = localObject2;
+        }
+        return localObject1;
+      }
+      return localObject1;
+      label441:
+      localObject1 = localObject2;
+    }
   }
   
   private JSONObject a()
   {
-    JSONObject localJSONObject3 = this.jdField_a_of_type_OrgJsonJSONObject;
+    JSONObject localJSONObject2 = this.jdField_a_of_type_OrgJsonJSONObject;
     System.currentTimeMillis();
-    Object localObject = localJSONObject3;
-    JSONObject localJSONObject1;
-    if (localJSONObject3 == null)
+    Object localObject = localJSONObject2;
+    if (localJSONObject2 == null)
     {
       localObject = this.jdField_a_of_type_ComTencentBizAuthorizeJsonConfig.a();
-      localJSONObject1 = localJSONObject3;
+      localJSONObject1 = localJSONObject2;
       if (localObject == null) {}
     }
     try
     {
       localJSONObject1 = new JSONObject((String)localObject);
-      localObject = localJSONObject1;
-      if (localJSONObject1 == null) {
-        localObject = new JSONObject();
-      }
-      return localObject;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        JSONObject localJSONObject2 = localJSONObject3;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("AuthorizeConfig", 2, "Decode mOfflineConfig  error");
-          localJSONObject2 = localJSONObject3;
-        }
-      }
+      label41:
+      break label41;
     }
+    JSONObject localJSONObject1 = localJSONObject2;
+    if (QLog.isColorLevel())
+    {
+      QLog.d("AuthorizeConfig", 2, "Decode mOfflineConfig  error");
+      localJSONObject1 = localJSONObject2;
+    }
+    localObject = localJSONObject1;
+    if (localJSONObject1 == null) {
+      localObject = new JSONObject();
+    }
+    return localObject;
   }
   
   private String b(String paramString1, String paramString2)
@@ -644,85 +509,87 @@ public class AuthorizeConfig
   
   private JSONObject b()
   {
-    Object localObject3 = this.jdField_b_of_type_OrgJsonJSONObject;
+    Object localObject2 = this.jdField_b_of_type_OrgJsonJSONObject;
     System.currentTimeMillis();
-    Object localObject1 = localObject3;
+    Object localObject1 = localObject2;
     String str;
-    if (localObject3 == null)
+    if (localObject2 == null)
     {
       str = this.jdField_a_of_type_ComTencentBizAuthorizeJsonConfig.b();
-      localObject1 = localObject3;
+      localObject1 = localObject2;
       if (str == null) {}
     }
     try
     {
       localObject1 = new JSONObject(str);
-      localObject3 = localObject1;
-      if (localObject1 == null) {
-        localObject3 = new JSONObject();
-      }
-      this.jdField_b_of_type_OrgJsonJSONObject = ((JSONObject)localObject3);
-      localObject1 = localObject3;
-      return localObject1;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        Object localObject2 = localObject3;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("AuthorizeConfig", 2, "Decode mExtraConfig error");
-          localObject2 = localObject3;
-        }
-      }
+      label41:
+      break label41;
     }
+    localObject1 = localObject2;
+    if (QLog.isColorLevel())
+    {
+      QLog.d("AuthorizeConfig", 2, "Decode mExtraConfig error");
+      localObject1 = localObject2;
+    }
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = new JSONObject();
+    }
+    this.jdField_b_of_type_OrgJsonJSONObject = ((JSONObject)localObject2);
+    localObject1 = localObject2;
+    return localObject1;
   }
   
   public static boolean b(String paramString1, String paramString2)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      bool1 = false;
-    }
-    do
+    boolean bool2 = TextUtils.isEmpty(paramString1);
+    boolean bool1 = false;
+    if (!bool2)
     {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while ("*".equals(paramString1));
-      if (!"*.*".equals(paramString1)) {
-        break;
+      if (TextUtils.isEmpty(paramString2)) {
+        return false;
       }
-      bool1 = bool2;
-    } while (paramString2.indexOf('.') != -1);
+      if ("*".equals(paramString1)) {
+        return true;
+      }
+      if ("*.*".equals(paramString1))
+      {
+        if (paramString2.indexOf('.') != -1) {
+          bool1 = true;
+        }
+        return bool1;
+      }
+      if (paramString1.startsWith("*")) {
+        return paramString2.endsWith(paramString1.substring(1));
+      }
+      if (paramString1.endsWith("*")) {
+        return paramString2.startsWith(paramString1.substring(0, paramString1.length() - 1));
+      }
+      return paramString2.equals(paramString1);
+    }
     return false;
-    if (paramString1.startsWith("*")) {
-      return paramString2.endsWith(paramString1.substring(1));
-    }
-    if (paramString1.endsWith("*")) {
-      return paramString2.startsWith(paramString1.substring(0, paramString1.length() - 1));
-    }
-    return paramString2.equals(paramString1);
   }
   
   private boolean f()
   {
-    boolean bool = false;
     for (;;)
     {
+      boolean bool;
       synchronized (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger)
       {
-        if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1) {
+        i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+        bool = false;
+        if (i == 1) {
           return false;
         }
         if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 3) {
           return true;
         }
         if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != -1) {
-          break label122;
+          break label125;
         }
         if (MobileQQ.sProcessId == 1)
         {
@@ -730,26 +597,26 @@ public class AuthorizeConfig
           this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
           long l = System.currentTimeMillis() - jdField_b_of_type_Long;
           if (l < 0L) {
-            break label127;
+            break label135;
           }
           if (l < 1800000L) {
-            break label117;
+            break label130;
           }
-          break label127;
+          break label135;
           return bool;
         }
       }
       int i = 0;
       continue;
-      label117:
-      int j = 0;
-      break label129;
-      label122:
+      label125:
       i = 0;
       continue;
-      label127:
+      label130:
+      int j = 0;
+      break label137;
+      label135:
       j = 1;
-      label129:
+      label137:
       if ((i != 0) || (j != 0)) {
         bool = true;
       }
@@ -769,42 +636,37 @@ public class AuthorizeConfig
   
   private void l()
   {
-    do
+    try
     {
-      try
+      if (AuthorizeConfigInjectUtil.jdField_a_of_type_JavaUtilArrayList != null)
       {
-        if (AuthorizeConfigInjectUtil.jdField_a_of_type_JavaUtilArrayList != null)
+        Iterator localIterator = AuthorizeConfigInjectUtil.jdField_a_of_type_JavaUtilArrayList.iterator();
+        while (localIterator.hasNext())
         {
-          Iterator localIterator = AuthorizeConfigInjectUtil.jdField_a_of_type_JavaUtilArrayList.iterator();
-          while (localIterator.hasNext())
-          {
-            IAuthorizeConfigInjector localIAuthorizeConfigInjector = (IAuthorizeConfigInjector)((Class)localIterator.next()).newInstance();
-            this.jdField_a_of_type_JavaUtilArrayList.add(localIAuthorizeConfigInjector);
-          }
+          IAuthorizeConfigInjector localIAuthorizeConfigInjector = (IAuthorizeConfigInjector)((Class)localIterator.next()).newInstance();
+          this.jdField_a_of_type_JavaUtilArrayList.add(localIAuthorizeConfigInjector);
         }
-        while (AuthorizeConfigInjectUtil.jdField_b_of_type_JavaUtilArrayList == null) {}
       }
-      catch (Throwable localThrowable)
+      if ((AuthorizeConfigInjectUtil.jdField_b_of_type_JavaUtilArrayList != null) && (AuthorizeConfigInjectUtil.jdField_b_of_type_JavaUtilArrayList.size() > 0))
       {
-        QLog.e("AuthorizeConfig", 1, "initBusinessInjetor Fail,", localThrowable);
+        this.jdField_a_of_type_ComTencentMobileqqWebviewAuthorizeIAuthorizeConfigDownloadInjector = ((IAuthorizeConfigDownloadInjector)((Class)AuthorizeConfigInjectUtil.jdField_b_of_type_JavaUtilArrayList.get(0)).newInstance());
         return;
       }
-    } while (AuthorizeConfigInjectUtil.jdField_b_of_type_JavaUtilArrayList.size() <= 0);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewAuthorizeIAuthorizeConfigDownloadInjector = ((IAuthorizeConfigDownloadInjector)((Class)AuthorizeConfigInjectUtil.jdField_b_of_type_JavaUtilArrayList.get(0)).newInstance());
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("AuthorizeConfig", 1, "initBusinessInjetor Fail,", localThrowable);
+    }
   }
   
   public int a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      JSONObject localJSONObject;
-      do
-      {
-        return 0;
-        paramString = paramString.split("\\?");
-        localJSONObject = a();
-      } while (!localJSONObject.has(paramString[0]));
+    if (TextUtils.isEmpty(paramString)) {
+      return 0;
+    }
+    paramString = paramString.split("\\?");
+    JSONObject localJSONObject = a();
+    if (localJSONObject.has(paramString[0])) {
       try
       {
         int i = localJSONObject.getJSONObject(paramString[0]).getInt("delay");
@@ -813,9 +675,11 @@ public class AuthorizeConfig
       catch (JSONException paramString)
       {
         paramString.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.d("AuthorizeConfig", 2, "getCheckUpDelayTime error");
+        }
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("AuthorizeConfig", 2, "getCheckUpDelayTime error");
+    }
     return 0;
   }
   
@@ -827,247 +691,142 @@ public class AuthorizeConfig
     return this.jdField_d_of_type_Long;
   }
   
-  /* Error */
   public Boolean a(String paramString1, String paramString2)
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: ifnonnull +8 -> 9
-    //   4: iconst_0
-    //   5: invokestatic 526	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   8: areturn
-    //   9: aload_1
-    //   10: invokestatic 253	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   13: astore 5
-    //   15: aload 5
-    //   17: invokevirtual 257	android/net/Uri:getScheme	()Ljava/lang/String;
-    //   20: astore 6
-    //   22: ldc_w 528
-    //   25: aload 6
-    //   27: invokevirtual 263	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   30: ifeq +78 -> 108
-    //   33: getstatic 532	mqq/app/MobileQQ:sMobileQQ	Lmqq/app/MobileQQ;
-    //   36: aconst_null
-    //   37: invokevirtual 536	mqq/app/MobileQQ:waitAppRuntime	(Lmqq/app/BaseActivity;)Lmqq/app/AppRuntime;
-    //   40: astore_2
-    //   41: aload_1
-    //   42: invokevirtual 431	java/lang/String:length	()I
-    //   45: sipush 200
-    //   48: if_icmple +57 -> 105
-    //   51: aload_1
-    //   52: iconst_0
-    //   53: sipush 200
-    //   56: invokevirtual 452	java/lang/String:substring	(II)Ljava/lang/String;
-    //   59: astore_1
-    //   60: aload_2
-    //   61: ldc_w 538
-    //   64: ldc_w 540
-    //   67: ldc_w 267
-    //   70: ldc_w 542
-    //   73: ldc_w 544
-    //   76: iconst_0
-    //   77: iconst_0
-    //   78: aload_1
-    //   79: ldc_w 267
-    //   82: ldc_w 267
-    //   85: ldc_w 267
-    //   88: invokestatic 549	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   91: ldc 166
-    //   93: iconst_1
-    //   94: ldc_w 551
-    //   97: invokestatic 379	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   100: iconst_0
-    //   101: invokestatic 526	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   104: areturn
-    //   105: goto -45 -> 60
-    //   108: ldc_w 259
-    //   111: aload 6
-    //   113: invokevirtual 263	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   116: ifne +19 -> 135
-    //   119: ldc_w 265
-    //   122: aload 6
-    //   124: invokevirtual 263	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   127: ifne +8 -> 135
-    //   130: iconst_0
-    //   131: invokestatic 526	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   134: areturn
-    //   135: aload 5
-    //   137: invokevirtual 273	android/net/Uri:getHost	()Ljava/lang/String;
-    //   140: astore_1
-    //   141: aload_1
-    //   142: astore 5
-    //   144: aload_1
-    //   145: invokestatic 247	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   148: ifne +9 -> 157
-    //   151: aload_1
-    //   152: invokevirtual 276	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   155: astore 5
-    //   157: aload_0
-    //   158: getfield 553	com/tencent/biz/AuthorizeConfig:jdField_c_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
-    //   161: astore_1
-    //   162: invokestatic 417	java/lang/System:currentTimeMillis	()J
-    //   165: pop2
-    //   166: aload_1
-    //   167: ifnonnull +238 -> 405
-    //   170: aload_0
-    //   171: getfield 197	com/tencent/biz/AuthorizeConfig:jdField_a_of_type_ComTencentBizAuthorizeJsonConfig	Lcom/tencent/biz/authorize/JsonConfig;
-    //   174: invokevirtual 555	com/tencent/biz/authorize/JsonConfig:c	()Ljava/lang/String;
-    //   177: astore 6
-    //   179: aload 6
-    //   181: ifnull +101 -> 282
-    //   184: new 421	org/json/JSONObject
-    //   187: dup
-    //   188: aload 6
-    //   190: invokespecial 422	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   193: astore 6
-    //   195: aload 6
-    //   197: astore_1
-    //   198: aload_1
-    //   199: ifnonnull +203 -> 402
-    //   202: new 421	org/json/JSONObject
-    //   205: dup
-    //   206: ldc_w 557
-    //   209: invokespecial 422	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   212: astore 6
-    //   214: aload 6
-    //   216: astore_1
-    //   217: aload_0
-    //   218: aload_1
-    //   219: putfield 553	com/tencent/biz/AuthorizeConfig:jdField_c_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
-    //   222: aload_1
-    //   223: ldc_w 559
-    //   226: invokevirtual 562	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   229: astore 6
-    //   231: aload 6
-    //   233: invokevirtual 396	org/json/JSONArray:length	()I
-    //   236: istore 4
-    //   238: iconst_0
-    //   239: istore_3
-    //   240: iload_3
-    //   241: iload 4
-    //   243: if_icmpge +56 -> 299
-    //   246: aload 6
-    //   248: iload_3
-    //   249: invokevirtual 400	org/json/JSONArray:optString	(I)Ljava/lang/String;
-    //   252: aload 5
-    //   254: invokestatic 564	com/tencent/biz/AuthorizeConfig:b	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   257: ifeq +33 -> 290
-    //   260: iconst_1
-    //   261: invokestatic 526	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   264: areturn
-    //   265: astore 6
-    //   267: invokestatic 164	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   270: ifeq +12 -> 282
-    //   273: ldc 166
-    //   275: iconst_2
-    //   276: ldc_w 566
-    //   279: invokestatic 171	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   282: goto -84 -> 198
-    //   285: astore 6
-    //   287: goto -70 -> 217
-    //   290: iload_3
-    //   291: iconst_1
-    //   292: iadd
-    //   293: istore_3
-    //   294: goto -54 -> 240
-    //   297: astore 5
-    //   299: aload_1
-    //   300: ldc_w 568
-    //   303: invokevirtual 562	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   306: astore 5
-    //   308: aload 5
-    //   310: invokevirtual 396	org/json/JSONArray:length	()I
-    //   313: istore 4
-    //   315: iconst_0
-    //   316: istore_3
-    //   317: iload_3
-    //   318: iload 4
-    //   320: if_icmpge +30 -> 350
-    //   323: aload 5
-    //   325: iload_3
-    //   326: invokevirtual 400	org/json/JSONArray:optString	(I)Ljava/lang/String;
-    //   329: aload_2
-    //   330: invokevirtual 263	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   333: ifeq +8 -> 341
-    //   336: iconst_1
-    //   337: invokestatic 526	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   340: areturn
-    //   341: iload_3
-    //   342: iconst_1
-    //   343: iadd
-    //   344: istore_3
-    //   345: goto -28 -> 317
-    //   348: astore 5
-    //   350: aload_1
-    //   351: ldc_w 570
-    //   354: invokevirtual 562	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   357: astore_1
-    //   358: aload_1
-    //   359: invokevirtual 396	org/json/JSONArray:length	()I
-    //   362: istore 4
-    //   364: iconst_0
-    //   365: istore_3
-    //   366: iload_3
-    //   367: iload 4
-    //   369: if_icmpge +28 -> 397
-    //   372: aload_1
-    //   373: iload_3
-    //   374: invokevirtual 400	org/json/JSONArray:optString	(I)Ljava/lang/String;
-    //   377: aload_2
-    //   378: invokevirtual 263	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   381: ifeq +8 -> 389
-    //   384: iconst_1
-    //   385: invokestatic 526	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   388: areturn
-    //   389: iload_3
-    //   390: iconst_1
-    //   391: iadd
-    //   392: istore_3
-    //   393: goto -27 -> 366
-    //   396: astore_1
-    //   397: iconst_0
-    //   398: invokestatic 526	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   401: areturn
-    //   402: goto -185 -> 217
-    //   405: goto -183 -> 222
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	408	0	this	AuthorizeConfig
-    //   0	408	1	paramString1	String
-    //   0	408	2	paramString2	String
-    //   239	154	3	i	int
-    //   236	134	4	j	int
-    //   13	240	5	localObject1	Object
-    //   297	1	5	localJSONException1	JSONException
-    //   306	18	5	localJSONArray	JSONArray
-    //   348	1	5	localJSONException2	JSONException
-    //   20	227	6	localObject2	Object
-    //   265	1	6	localJSONException3	JSONException
-    //   285	1	6	localJSONException4	JSONException
-    // Exception table:
-    //   from	to	target	type
-    //   184	195	265	org/json/JSONException
-    //   202	214	285	org/json/JSONException
-    //   222	238	297	org/json/JSONException
-    //   246	260	297	org/json/JSONException
-    //   299	315	348	org/json/JSONException
-    //   323	336	348	org/json/JSONException
-    //   350	364	396	org/json/JSONException
-    //   372	384	396	org/json/JSONException
+    Object localObject1 = paramString1;
+    int j = 0;
+    Boolean localBoolean = Boolean.valueOf(false);
+    if (localObject1 == null) {
+      return localBoolean;
+    }
+    Object localObject2 = Uri.parse(paramString1);
+    String str2 = ((Uri)localObject2).getScheme();
+    if ("file".equals(str2))
+    {
+      localObject2 = MobileQQ.sMobileQQ.waitAppRuntime(null);
+      paramString2 = (String)localObject1;
+      if (paramString1.length() > 200) {
+        paramString2 = ((String)localObject1).substring(0, 200);
+      }
+      ReportController.b((AppRuntime)localObject2, "dc00899", "Grp_tech_report", "", "webview", "file_jump", 0, 0, paramString2, "", "", "");
+      QLog.e("AuthorizeConfig", 1, "action deprecated with file protocol");
+      return localBoolean;
+    }
+    if ((!"http".equals(str2)) && (!"https".equals(str2))) {
+      return localBoolean;
+    }
+    paramString1 = ((Uri)localObject2).getHost();
+    localObject2 = paramString1;
+    if (!TextUtils.isEmpty(paramString1)) {
+      localObject2 = paramString1.toLowerCase();
+    }
+    localObject1 = this.jdField_c_of_type_OrgJsonJSONObject;
+    System.currentTimeMillis();
+    paramString1 = (String)localObject1;
+    if (localObject1 == null)
+    {
+      str2 = this.jdField_a_of_type_ComTencentBizAuthorizeJsonConfig.c();
+      paramString1 = (String)localObject1;
+      if (str2 == null) {}
+    }
+    try
+    {
+      paramString1 = new JSONObject(str2);
+    }
+    catch (JSONException paramString1)
+    {
+      try
+      {
+        localObject1 = new JSONObject("{\"host\": [\"*.qq.com\",\"*.tenpay.com\"]}");
+        this.jdField_c_of_type_OrgJsonJSONObject = ((JSONObject)localObject1);
+        paramString1 = (String)localObject1;
+        try
+        {
+          localObject1 = paramString1.getJSONArray("host");
+          k = ((JSONArray)localObject1).length();
+          i = 0;
+          while (i < k)
+          {
+            if (b(((JSONArray)localObject1).optString(i), (String)localObject2)) {
+              return Boolean.valueOf(true);
+            }
+            i += 1;
+          }
+        }
+        catch (JSONException localJSONException2)
+        {
+          int k;
+          int i;
+          label308:
+          label326:
+          label357:
+          label374:
+          String str1;
+          break label308;
+        }
+        try
+        {
+          localObject1 = paramString1.getJSONArray("scheme");
+          k = ((JSONArray)localObject1).length();
+          i = 0;
+          if (i < k)
+          {
+            if (((JSONArray)localObject1).optString(i).equals(paramString2)) {
+              return Boolean.valueOf(true);
+            }
+            i += 1;
+            break label326;
+          }
+        }
+        catch (JSONException localJSONException3)
+        {
+          break label357;
+        }
+        try
+        {
+          paramString1 = paramString1.getJSONArray("scheme_a");
+          k = paramString1.length();
+          i = j;
+          if (i < k)
+          {
+            if (paramString1.optString(i).equals(paramString2)) {
+              return Boolean.valueOf(true);
+            }
+            i += 1;
+            break label374;
+          }
+          return localBoolean;
+        }
+        catch (JSONException paramString1) {}
+        paramString1 = paramString1;
+      }
+      catch (JSONException localJSONException1)
+      {
+        for (;;)
+        {
+          str1 = paramString1;
+        }
+      }
+    }
+    paramString1 = (String)localObject1;
+    if (QLog.isColorLevel())
+    {
+      QLog.d("AuthorizeConfig", 2, "Decode mJumpConfig error");
+      paramString1 = (String)localObject1;
+    }
+    localObject1 = paramString1;
+    if (paramString1 == null) {}
+    return localBoolean;
   }
   
   public String a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      JSONObject localJSONObject;
-      do
-      {
-        return null;
-        paramString = paramString.split("\\?");
-        localJSONObject = a();
-      } while (!localJSONObject.has(paramString[0]));
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    paramString = paramString.split("\\?");
+    JSONObject localJSONObject = a();
+    if (localJSONObject.has(paramString[0])) {
       try
       {
         paramString = localJSONObject.getJSONObject(paramString[0]).getString("bid");
@@ -1076,9 +835,11 @@ public class AuthorizeConfig
       catch (JSONException paramString)
       {
         paramString.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.d("AuthorizeConfig", 2, "getOfflineId error");
+        }
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("AuthorizeConfig", 2, "getOfflineId error");
+    }
     return null;
   }
   
@@ -1089,51 +850,53 @@ public class AuthorizeConfig
   
   public Set<String> a(String paramString)
   {
-    Object localObject1;
     if (TextUtils.isEmpty(paramString)) {
-      localObject1 = new HashSet();
+      return new HashSet();
     }
-    Object localObject2;
-    do
-    {
-      return localObject1;
-      localObject2 = (Set)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      localObject1 = localObject2;
-    } while (localObject2 != null);
+    Object localObject1 = (Set)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if (localObject1 == null) {}
     for (;;)
     {
       int i;
       synchronized (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap)
       {
-        localObject2 = (Set)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+        Object localObject2 = (Set)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
         localObject1 = localObject2;
-        if (localObject2 != null) {
-          break label234;
-        }
-        localObject2 = new HashSet(32);
-        localObject1 = a(paramString);
-        if ((localObject1 != null) && (((JSONArray)localObject1).length() != 0))
+        if (localObject2 == null)
         {
-          int j = ((JSONArray)localObject1).length();
-          i = 0;
-          if (i < j) {
-            if ("skey".equals(paramString)) {
-              ((Set)localObject2).add(b(((JSONArray)localObject1).optString(i, ""), "*."));
-            } else {
+          localObject2 = new HashSet(32);
+          localObject1 = a(paramString);
+          if ((localObject1 != null) && (((JSONArray)localObject1).length() != 0))
+          {
+            int j = ((JSONArray)localObject1).length();
+            i = 0;
+            if (i < j)
+            {
+              if ("skey".equals(paramString))
+              {
+                ((Set)localObject2).add(b(((JSONArray)localObject1).optString(i, ""), "*."));
+                break label246;
+              }
               ((Set)localObject2).add(((JSONArray)localObject1).optString(i, ""));
+              break label246;
             }
           }
+          this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject2);
+          localObject1 = localObject2;
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append(paramString);
+            ((StringBuilder)localObject1).append(" domain white list: ");
+            ((StringBuilder)localObject1).append(localObject2);
+            QLog.d("AuthorizeConfig", 2, ((StringBuilder)localObject1).toString());
+            localObject1 = localObject2;
+          }
         }
+        return localObject1;
       }
-      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject2);
-      localObject1 = localObject2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("AuthorizeConfig", 2, paramString + " domain white list: " + localObject2);
-        localObject1 = localObject2;
-      }
-      label234:
       return localObject1;
+      label246:
       i += 1;
     }
   }
@@ -1147,71 +910,90 @@ public class AuthorizeConfig
   {
     System.currentTimeMillis();
     SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    if (FlatBuffersParser.a()) {}
-    for (paramString1 = this.jdField_a_of_type_ComTencentBizAuthorizeFlatBuffersConfig.a(localEditor, paramString1); paramString1 == null; paramString1 = this.jdField_a_of_type_ComTencentBizAuthorizeJsonConfig.a(localEditor, paramString1)) {
+    if (FlatBuffersParser.a()) {
+      paramString1 = this.jdField_a_of_type_ComTencentBizAuthorizeFlatBuffersConfig.a(localEditor, paramString1);
+    } else {
+      paramString1 = this.jdField_a_of_type_ComTencentBizAuthorizeJsonConfig.a(localEditor, paramString1);
+    }
+    if (paramString1 == null) {
       return;
     }
     long l = this.jdField_d_of_type_Long;
     this.jdField_d_of_type_Long = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("publishSeq", this.jdField_d_of_type_Long);
-    QLog.i("AuthorizeConfig", 1, "update white list's publishSeq from " + l + " to " + this.jdField_d_of_type_Long + ".");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("update white list's publishSeq from ");
+    localStringBuilder.append(l);
+    localStringBuilder.append(" to ");
+    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(".");
+    QLog.i("AuthorizeConfig", 1, localStringBuilder.toString());
     if (TextUtils.isEmpty(paramString1))
     {
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
       localEditor.putLong("lastUpdate", System.currentTimeMillis());
-      localEditor.putString("qqVersion", "2013 8.5.5");
+      localEditor.putString("qqVersion", "2013 8.7.0");
       localEditor.putString(paramString3, paramString2);
-      if (QLog.isColorLevel()) {
-        QLog.d("AuthorizeConfig", 2, "White list update completed as version=" + paramString2);
+      if (QLog.isColorLevel())
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("White list update completed as version=");
+        paramString1.append(paramString2);
+        QLog.d("AuthorizeConfig", 2, paramString1.toString());
       }
       ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_ok", 0, 1, 0, "", "", "", "");
     }
-    for (;;)
+    else
     {
-      localEditor.commit();
-      g();
-      i();
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      return;
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
       ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_failed", 0, 1, 0, "", "", "", "");
-      if (QLog.isColorLevel()) {
-        QLog.e("AuthorizeConfig", 2, "Authorize config parse failed include: " + paramString1);
+      if (QLog.isColorLevel())
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("Authorize config parse failed include: ");
+        paramString2.append(paramString1);
+        QLog.e("AuthorizeConfig", 2, paramString2.toString());
       }
     }
+    localEditor.commit();
+    g();
+    i();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
   }
   
   public boolean a()
   {
     String str = WebCgiWhiteListManager.a();
-    if (!TextUtils.isEmpty(str)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AuthorizeConfig", 2, "CgiConfig sp content: " + str);
-      }
-    }
-    for (;;)
+    if (!TextUtils.isEmpty(str))
     {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("CgiConfig sp content: ");
+        localStringBuilder.append(str);
+        QLog.d("AuthorizeConfig", 2, localStringBuilder.toString());
+      }
       try
       {
         this.jdField_a_of_type_OrgJsonJSONArray = new JSONArray(str);
-        if (this.jdField_a_of_type_OrgJsonJSONArray == null) {
-          break;
-        }
-        return true;
       }
       catch (JSONException localJSONException)
       {
         if (!QLog.isColorLevel()) {
-          continue;
+          break label124;
         }
-        QLog.d("AuthorizeConfig", 2, "CgiConfig load exception: " + localJSONException.getMessage());
-        continue;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("AuthorizeConfig", 2, "CgiConfig sp content empty!");
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("CgiConfig load exception: ");
+      localStringBuilder.append(localJSONException.getMessage());
+      QLog.d("AuthorizeConfig", 2, localStringBuilder.toString());
     }
-    return false;
+    else if (QLog.isColorLevel())
+    {
+      QLog.d("AuthorizeConfig", 2, "CgiConfig sp content empty!");
+    }
+    label124:
+    return this.jdField_a_of_type_OrgJsonJSONArray != null;
   }
   
   public boolean a(String paramString)
@@ -1240,71 +1022,67 @@ public class AuthorizeConfig
   
   public boolean a(String paramString1, String paramString2)
   {
-    if (paramString1 == null) {}
-    Object localObject;
-    do
+    String str1 = paramString1;
+    if (str1 == null) {
+      return false;
+    }
+    Object localObject = Uri.parse(paramString1);
+    String str2 = ((Uri)localObject).getScheme();
+    if ("file".equals(str2))
     {
-      while (!((Iterator)localObject).hasNext())
-      {
-        int i;
-        do
-        {
-          String str;
-          do
-          {
-            return false;
-            localObject = Uri.parse(paramString1);
-            str = ((Uri)localObject).getScheme();
-            if ("file".equals(str))
-            {
-              paramString2 = MobileQQ.sMobileQQ.waitAppRuntime(null);
-              if (paramString1.length() > 200) {
-                paramString1 = paramString1.substring(0, 200);
-              }
-              for (;;)
-              {
-                ReportController.b(paramString2, "dc00899", "Grp_tech_report", "", "webview", "file_js", 0, 0, paramString1, "", "", "");
-                QLog.e("AuthorizeConfig", 1, "action deprecated with file protocol");
-                return false;
-              }
-            }
-          } while ((!"http".equals(str)) && (!"https".equals(str)));
-          if ("data.checkPermission".equals(paramString2)) {
-            return paramString1.startsWith("https://qqweb.qq.com/m/whitelist/testing/");
-          }
-          if (paramString2.startsWith("CAPTCHA.")) {
-            return true;
-          }
-          if ((paramString2.startsWith("login.openSmsPage")) && ("ti.qq.com".equals(((Uri)localObject).getHost()))) {
-            return true;
-          }
-          if ("identification.loginVerify".equals(paramString2)) {
-            return true;
-          }
-          if (("identification.identifyNoLogin".equals(paramString2)) && (jdField_a_of_type_JavaUtilList.contains(((Uri)localObject).getHost()))) {
-            return true;
-          }
-          if ("faceUnblockCamera.startPTVActivity".equals(paramString2)) {
-            return true;
-          }
-          if (("qbizApi.getClientInfo".equals(paramString2)) && (paramString1.startsWith("https://mysec.qq.com/v2/account_control/index.html"))) {
-            return true;
-          }
-          System.currentTimeMillis();
-          i = this.jdField_a_of_type_ComTencentBizAuthorizeJsonConfig.a(((Uri)localObject).getHost(), paramString2);
-          if (AbstractConfig.a(i)) {
-            return true;
-          }
-        } while (AbstractConfig.b(i));
-        localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
+      paramString2 = str1;
+      if (paramString1.length() > 200) {
+        paramString2 = str1.substring(0, 200);
       }
-    } while (!((IAuthorizeConfigInjector)((Iterator)localObject).next()).a(paramString1, paramString2));
-    return true;
+      ReportController.b((AppRuntime)localObject, "dc00899", "Grp_tech_report", "", "webview", "file_js", 0, 0, paramString2, "", "", "");
+      QLog.e("AuthorizeConfig", 1, "action deprecated with file protocol");
+      return false;
+    }
+    if ((!"http".equals(str2)) && (!"https".equals(str2))) {
+      return false;
+    }
+    if ("data.checkPermission".equals(paramString2)) {
+      return str1.startsWith("https://qqweb.qq.com/m/whitelist/testing/");
+    }
+    if (paramString2.startsWith("CAPTCHA.")) {
+      return true;
+    }
+    if ((paramString2.startsWith("login.openSmsPage")) && ("ti.qq.com".equals(((Uri)localObject).getHost()))) {
+      return true;
+    }
+    if ("identification.loginVerify".equals(paramString2)) {
+      return true;
+    }
+    if (("identification.identifyNoLogin".equals(paramString2)) && (jdField_a_of_type_JavaUtilList.contains(((Uri)localObject).getHost()))) {
+      return true;
+    }
+    if ("faceUnblockCamera.startPTVActivity".equals(paramString2)) {
+      return true;
+    }
+    if (("qbizApi.getClientInfo".equals(paramString2)) && (str1.startsWith("https://mysec.qq.com/v2/account_control/index.html"))) {
+      return true;
+    }
+    System.currentTimeMillis();
+    int i = this.jdField_a_of_type_ComTencentBizAuthorizeJsonConfig.a(((Uri)localObject).getHost(), paramString2);
+    if (AbstractConfig.a(i)) {
+      return true;
+    }
+    if (AbstractConfig.b(i)) {
+      return false;
+    }
+    paramString1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (paramString1.hasNext()) {
+      if (((IAuthorizeConfigInjector)paramString1.next()).a(str1, paramString2)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public boolean a(JSONObject paramJSONObject)
   {
-    return SwiftWebViewUtilss.a(paramJSONObject, "sonicWhiteList");
+    return SwiftWebViewUtils.a(paramJSONObject, "sonicWhiteList");
   }
   
   protected boolean a(boolean paramBoolean)
@@ -1320,16 +1098,12 @@ public class AuthorizeConfig
   
   public String b(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      JSONObject localJSONObject;
-      do
-      {
-        return null;
-        paramString = paramString.split("\\?");
-        localJSONObject = a();
-      } while (!localJSONObject.has(paramString[0]));
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    paramString = paramString.split("\\?");
+    JSONObject localJSONObject = a();
+    if (localJSONObject.has(paramString[0])) {
       try
       {
         paramString = localJSONObject.getJSONObject(paramString[0]).getString("duck");
@@ -1338,9 +1112,11 @@ public class AuthorizeConfig
       catch (JSONException paramString)
       {
         paramString.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.d("AuthorizeConfig", 2, "getCheckUpType error");
+        }
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("AuthorizeConfig", 2, "getCheckUpType error");
+    }
     return null;
   }
   
@@ -1356,34 +1132,36 @@ public class AuthorizeConfig
   public boolean b()
   {
     String str = WebCgiWhiteListManager.b();
-    if (!TextUtils.isEmpty(str)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AuthorizeConfig", 2, "AsyncCheckConfig sp content: " + str);
-      }
-    }
-    for (;;)
+    if (!TextUtils.isEmpty(str))
     {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("AsyncCheckConfig sp content: ");
+        localStringBuilder.append(str);
+        QLog.d("AuthorizeConfig", 2, localStringBuilder.toString());
+      }
       try
       {
         this.jdField_b_of_type_OrgJsonJSONArray = new JSONArray(str);
-        if (this.jdField_b_of_type_OrgJsonJSONArray == null) {
-          break;
-        }
-        return true;
       }
       catch (JSONException localJSONException)
       {
         if (!QLog.isColorLevel()) {
-          continue;
+          break label124;
         }
-        QLog.d("AuthorizeConfig", 2, "AsyncCheckConfig load exception: " + localJSONException.getMessage());
-        continue;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("AuthorizeConfig", 2, "AsyncCheckConfig sp content empty!");
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("AsyncCheckConfig load exception: ");
+      localStringBuilder.append(localJSONException.getMessage());
+      QLog.d("AuthorizeConfig", 2, localStringBuilder.toString());
     }
-    return false;
+    else if (QLog.isColorLevel())
+    {
+      QLog.d("AuthorizeConfig", 2, "AsyncCheckConfig sp content empty!");
+    }
+    label124:
+    return this.jdField_b_of_type_OrgJsonJSONArray != null;
   }
   
   public boolean b(String paramString)
@@ -1393,36 +1171,51 @@ public class AuthorizeConfig
       int i;
       try
       {
-        if (!TextUtils.isEmpty(paramString))
+        boolean bool = TextUtils.isEmpty(paramString);
+        if (!bool)
         {
           if ((this.jdField_a_of_type_OrgJsonJSONArray == null) && (!a()))
           {
-            if (QLog.isColorLevel())
-            {
-              QLog.d("AuthorizeConfig", 2, "CgiConfig loadfromsp fail , url: " + Util.b(paramString, new String[0]));
-              return false;
+            if (!QLog.isColorLevel()) {
+              break label287;
             }
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("CgiConfig loadfromsp fail , url: ");
+            ((StringBuilder)localObject1).append(Util.b(paramString, new String[0]));
+            QLog.d("AuthorizeConfig", 2, ((StringBuilder)localObject1).toString());
+            return false;
           }
-          else
+          Object localObject1 = Uri.parse(paramString).getHost();
+          if ((this.jdField_a_of_type_OrgJsonJSONArray.length() != 0) && (!TextUtils.isEmpty((CharSequence)localObject1)))
           {
-            String str1 = Uri.parse(paramString).getHost();
-            if ((this.jdField_a_of_type_OrgJsonJSONArray.length() != 0) && (!TextUtils.isEmpty(str1)))
+            Object localObject2 = ((String)localObject1).toLowerCase();
+            int j = this.jdField_a_of_type_OrgJsonJSONArray.length();
+            i = 0;
+            if (i < j)
             {
-              str1 = str1.toLowerCase();
-              int j = this.jdField_a_of_type_OrgJsonJSONArray.length();
-              i = 0;
-              if (i < j)
-              {
-                String str2 = this.jdField_a_of_type_OrgJsonJSONArray.optString(i, "");
-                if ((TextUtils.isEmpty(str2)) || ((!TextUtils.equals(str1, str2)) && (!str1.endsWith("." + str2)))) {
-                  break label250;
-                }
-                if (!QLog.isColorLevel()) {
-                  break label248;
-                }
-                QLog.d("AuthorizeConfig", 2, "CgiConfig hit , url: " + Util.b(paramString, new String[0]) + " domain: " + str2);
-                break label248;
+              localObject1 = this.jdField_a_of_type_OrgJsonJSONArray.optString(i, "");
+              if (TextUtils.isEmpty((CharSequence)localObject1)) {
+                break label291;
               }
+              if (!TextUtils.equals((CharSequence)localObject2, (CharSequence)localObject1))
+              {
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append(".");
+                localStringBuilder.append((String)localObject1);
+                if (!((String)localObject2).endsWith(localStringBuilder.toString())) {
+                  break label291;
+                }
+              }
+              if (!QLog.isColorLevel()) {
+                break label289;
+              }
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("CgiConfig hit , url: ");
+              ((StringBuilder)localObject2).append(Util.b(paramString, new String[0]));
+              ((StringBuilder)localObject2).append(" domain: ");
+              ((StringBuilder)localObject2).append((String)localObject1);
+              QLog.d("AuthorizeConfig", 2, ((StringBuilder)localObject2).toString());
+              break label289;
             }
           }
         }
@@ -1437,9 +1230,11 @@ public class AuthorizeConfig
         paramString.printStackTrace();
       }
       return false;
-      label248:
+      label287:
+      return false;
+      label289:
       return true;
-      label250:
+      label291:
       i += 1;
     }
   }
@@ -1458,58 +1253,67 @@ public class AuthorizeConfig
     Object localObject2 = VasUpdateUtil.a((AppRuntime)localObject1, "VASBiz_FuncDev_webview.json", false, null);
     if ((localObject2 != null) && (localObject1 != null) && (((AppRuntime)localObject1).isLogin()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("AuthorizeConfig", 2, "receive X5Config data: " + ((JSONObject)localObject2).toString());
+      Object localObject3;
+      if (QLog.isColorLevel())
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("receive X5Config data: ");
+        ((StringBuilder)localObject3).append(((JSONObject)localObject2).toString());
+        QLog.i("AuthorizeConfig", 2, ((StringBuilder)localObject3).toString());
       }
       localObject2 = ((JSONObject)localObject2).optJSONArray("vipGrayConfig2");
       if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0))
       {
         int i = 0;
-        boolean bool3 = true;
         boolean bool1 = true;
-        if (i < ((JSONArray)localObject2).length())
+        boolean bool2;
+        for (boolean bool3 = true; i < ((JSONArray)localObject2).length(); bool3 = bool2)
         {
-          JSONObject localJSONObject = ((JSONArray)localObject2).optJSONObject(i);
-          boolean bool2 = bool3;
+          localObject3 = ((JSONArray)localObject2).optJSONObject(i);
           boolean bool4 = bool1;
-          if (localJSONObject != null)
+          bool2 = bool3;
+          if (localObject3 != null)
           {
-            if (SwiftWebViewUtilss.a(localJSONObject, "X5Config"))
-            {
-              if (localJSONObject.optInt("mainThreadControl", 0) != 0) {
-                break label221;
+            if (SwiftWebViewUtils.a((JSONObject)localObject3, "X5Config")) {
+              if (((JSONObject)localObject3).optInt("mainThreadControl", 0) == 0) {
+                bool1 = true;
+              } else {
+                bool1 = false;
               }
-              bool1 = true;
             }
-            label173:
-            bool2 = bool3;
             bool4 = bool1;
-            if (SwiftWebViewUtilss.a(localJSONObject, "X5Config"))
-            {
-              if (localJSONObject.optInt("enableQuic", 1) != 1) {
-                break label226;
+            bool2 = bool3;
+            if (SwiftWebViewUtils.a((JSONObject)localObject3, "X5Config")) {
+              if (((JSONObject)localObject3).optInt("enableQuic", 1) == 1)
+              {
+                bool2 = true;
+                bool4 = bool1;
               }
-              bool2 = true;
+              else
+              {
+                bool2 = false;
+                bool4 = bool1;
+              }
             }
           }
-          for (bool4 = bool1;; bool4 = bool1)
-          {
-            i += 1;
-            bool3 = bool2;
-            bool1 = bool4;
-            break;
-            label221:
-            bool1 = false;
-            break label173;
-            label226:
-            bool2 = false;
-          }
+          i += 1;
+          bool1 = bool4;
         }
-        if (QLog.isColorLevel()) {
-          QLog.i("AuthorizeConfig", 2, "readAndSaveX5Config isInitOnSubThread : " + bool1 + ", enable quick: " + bool3);
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("readAndSaveX5Config isInitOnSubThread : ");
+          ((StringBuilder)localObject2).append(bool1);
+          ((StringBuilder)localObject2).append(", enable quick: ");
+          ((StringBuilder)localObject2).append(bool3);
+          QLog.i("AuthorizeConfig", 2, ((StringBuilder)localObject2).toString());
         }
         localObject2 = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
-        localObject1 = ((AppRuntime)localObject1).getApplication().getSharedPreferences("sp_x5_config_" + (String)localObject2, 4).edit();
+        localObject1 = ((AppRuntime)localObject1).getApplication();
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("sp_x5_config_");
+        ((StringBuilder)localObject3).append((String)localObject2);
+        localObject1 = ((MobileQQ)localObject1).getSharedPreferences(((StringBuilder)localObject3).toString(), 4).edit();
         ((SharedPreferences.Editor)localObject1).putBoolean("key_x5_init_sub_thread", bool1);
         ((SharedPreferences.Editor)localObject1).putBoolean("key_x5_enable_quic", bool3);
         ((SharedPreferences.Editor)localObject1).apply();
@@ -1520,34 +1324,36 @@ public class AuthorizeConfig
   public boolean c()
   {
     String str = WebCgiWhiteListManager.c();
-    if (!TextUtils.isEmpty(str)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AuthorizeConfig", 2, "SkipInputWarningConfig sp content: " + str);
-      }
-    }
-    for (;;)
+    if (!TextUtils.isEmpty(str))
     {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("SkipInputWarningConfig sp content: ");
+        localStringBuilder.append(str);
+        QLog.d("AuthorizeConfig", 2, localStringBuilder.toString());
+      }
       try
       {
         this.jdField_c_of_type_OrgJsonJSONArray = new JSONArray(str);
-        if (this.jdField_c_of_type_OrgJsonJSONArray == null) {
-          break;
-        }
-        return true;
       }
       catch (JSONException localJSONException)
       {
         if (!QLog.isColorLevel()) {
-          continue;
+          break label124;
         }
-        QLog.d("AuthorizeConfig", 2, "SkipInputWarningConfig load exception: " + localJSONException.getMessage());
-        continue;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("AuthorizeConfig", 2, "SkipInputWarningConfig sp content empty!");
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("SkipInputWarningConfig load exception: ");
+      localStringBuilder.append(localJSONException.getMessage());
+      QLog.d("AuthorizeConfig", 2, localStringBuilder.toString());
     }
-    return false;
+    else if (QLog.isColorLevel())
+    {
+      QLog.d("AuthorizeConfig", 2, "SkipInputWarningConfig sp content empty!");
+    }
+    label124:
+    return this.jdField_c_of_type_OrgJsonJSONArray != null;
   }
   
   public boolean c(String paramString)
@@ -1561,32 +1367,46 @@ public class AuthorizeConfig
         {
           if ((this.jdField_b_of_type_OrgJsonJSONArray == null) && (!b()))
           {
-            if (QLog.isColorLevel())
-            {
-              QLog.d("AuthorizeConfig", 2, "AsyncCheckConfig loadfromsp fail , url: " + Util.b(paramString, new String[0]));
-              return false;
+            if (!QLog.isColorLevel()) {
+              break label289;
             }
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("AsyncCheckConfig loadfromsp fail , url: ");
+            ((StringBuilder)localObject1).append(Util.b(paramString, new String[0]));
+            QLog.d("AuthorizeConfig", 2, ((StringBuilder)localObject1).toString());
+            return false;
           }
-          else
+          Object localObject1 = Uri.parse(paramString).getHost();
+          int j = this.jdField_b_of_type_OrgJsonJSONArray.length();
+          if ((j != 0) && (!TextUtils.isEmpty((CharSequence)localObject1)))
           {
-            String str1 = Uri.parse(paramString).getHost();
-            int j = this.jdField_b_of_type_OrgJsonJSONArray.length();
-            if ((j != 0) && (!TextUtils.isEmpty(str1)))
+            Object localObject2 = ((String)localObject1).toLowerCase();
+            i = 0;
+            if (i < j)
             {
-              str1 = str1.toLowerCase();
-              i = 0;
-              if (i < j)
-              {
-                String str2 = this.jdField_b_of_type_OrgJsonJSONArray.optString(i, "");
-                if ((TextUtils.isEmpty(str2)) || ((!TextUtils.equals(str1, str2)) && (!str1.endsWith("." + str2)))) {
-                  break label256;
-                }
-                if (!QLog.isColorLevel()) {
-                  break label254;
-                }
-                QLog.d("AuthorizeConfig", 2, "AsyncCheckConfig hit , url: " + Util.b(paramString, new String[0]) + " domain: " + str2);
-                break label254;
+              localObject1 = this.jdField_b_of_type_OrgJsonJSONArray.optString(i, "");
+              if (TextUtils.isEmpty((CharSequence)localObject1)) {
+                break label293;
               }
+              if (!TextUtils.equals((CharSequence)localObject2, (CharSequence)localObject1))
+              {
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append(".");
+                localStringBuilder.append((String)localObject1);
+                if (!((String)localObject2).endsWith(localStringBuilder.toString())) {
+                  break label293;
+                }
+              }
+              if (!QLog.isColorLevel()) {
+                break label291;
+              }
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("AsyncCheckConfig hit , url: ");
+              ((StringBuilder)localObject2).append(Util.b(paramString, new String[0]));
+              ((StringBuilder)localObject2).append(" domain: ");
+              ((StringBuilder)localObject2).append((String)localObject1);
+              QLog.d("AuthorizeConfig", 2, ((StringBuilder)localObject2).toString());
+              break label291;
             }
           }
         }
@@ -1603,114 +1423,112 @@ public class AuthorizeConfig
         }
       }
       return false;
-      label254:
+      label289:
+      return false;
+      label291:
       return true;
-      label256:
+      label293:
       i += 1;
     }
   }
   
   public boolean c(String paramString1, String paramString2)
   {
-    Object localObject1;
-    if (paramString1 != null)
+    localObject1 = paramString1;
+    if (localObject1 != null)
     {
-      localObject1 = paramString1;
-      if (!"about:blank".equalsIgnoreCase(paramString1)) {}
+      paramString1 = (String)localObject1;
+      if (!"about:blank".equalsIgnoreCase((String)localObject1)) {}
     }
     else
     {
-      localObject1 = "https://localhost/";
+      paramString1 = "https://localhost/";
     }
-    Object localObject2 = Uri.parse((String)localObject1);
-    paramString1 = ((Uri)localObject2).getScheme();
-    if ("file".equals(paramString1))
+    localUri = Uri.parse(paramString1);
+    localObject1 = localUri.getScheme();
+    if ("file".equals(localObject1))
     {
-      paramString2 = MobileQQ.sMobileQQ.waitAppRuntime(null);
-      if (((String)localObject1).length() > 200)
-      {
-        paramString1 = ((String)localObject1).substring(0, 200);
-        ReportController.b(paramString2, "dc00899", "Grp_tech_report", "", "webview", "file_scheme", 0, 0, paramString1, "", "", "");
-        QLog.e("AuthorizeConfig", 1, "action deprecated with file protocol");
+      localObject1 = MobileQQ.sMobileQQ.waitAppRuntime(null);
+      paramString2 = paramString1;
+      if (paramString1.length() > 200) {
+        paramString2 = paramString1.substring(0, 200);
       }
-    }
-    for (;;)
-    {
+      ReportController.b((AppRuntime)localObject1, "dc00899", "Grp_tech_report", "", "webview", "file_scheme", 0, 0, paramString2, "", "", "");
+      QLog.e("AuthorizeConfig", 1, "action deprecated with file protocol");
       return false;
-      paramString1 = (String)localObject1;
-      break;
-      if ((!"http".equals(paramString1)) && (!"https".equals(paramString1))) {
-        continue;
-      }
-      localObject1 = this.jdField_f_of_type_OrgJsonJSONObject;
-      System.currentTimeMillis();
-      paramString1 = (String)localObject1;
-      if (localObject1 == null) {}
+    }
+    if ((!"http".equals(localObject1)) && (!"https".equals(localObject1))) {
+      return false;
+    }
+    localObject2 = this.jdField_f_of_type_OrgJsonJSONObject;
+    System.currentTimeMillis();
+    localObject1 = localObject2;
+    if (localObject2 == null) {}
+    try
+    {
+      paramString1 = this.jdField_a_of_type_ComTencentBizAuthorizeJsonConfig.a();
+    }
+    catch (JSONException paramString1)
+    {
       try
       {
-        paramString1 = this.jdField_a_of_type_ComTencentBizAuthorizeJsonConfig.a();
-        if (paramString1 == null)
-        {
-          try
-          {
-            localObject1 = new JSONObject("{\"*.qq.com\":[\"*\"],\"*.tencent.com\":[\"*\"],\"*.soso.com\":[\"*\"],\"*.paipai.com\":[\"*\"],\"*.tenpay.com\":[\"*\"],\"*.yixun.com\":[\"*\"],\"*.myapp.com\":[\"*\"],\"*.wanggou.com\":[\"*\"],\"*.qzone.com\":[\"*\"],\"*.weishi.com\":[\"*\"],\"*.weiyun.com\":[\"*\"],\"*\":[\"tel\",\"sms\",\"http\",\"https\",\"file\", \"mqqc2b\"]}");
-            paramString1 = (String)localObject1;
-          }
-          catch (JSONException localJSONException)
-          {
-            label187:
-            do
-            {
-              JSONArray localJSONArray;
-              int k;
-              int i;
-              break label187;
-              localObject2 = paramString1.optJSONArray((String)localObject2);
-            } while (localObject2 == null);
-            int m = ((JSONArray)localObject2).length();
-            int j = 0;
-            while (j < m)
-            {
-              if (b(((JSONArray)localObject2).optString(j), paramString2)) {
-                return true;
-              }
-              j += 1;
-            }
-          }
-          this.jdField_f_of_type_OrgJsonJSONObject = paramString1;
-          localJSONArray = paramString1.names();
-          if (localJSONArray == null) {
-            continue;
-          }
-          localObject2 = ((Uri)localObject2).getHost();
-          localObject1 = localObject2;
-          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-            localObject1 = ((String)localObject2).toLowerCase();
-          }
-          k = localJSONArray.length();
-          i = 0;
-          while (i < k)
-          {
-            localObject2 = localJSONArray.optString(i);
-            if (b((String)localObject2, (String)localObject1)) {
-              break label296;
-            }
-            i += 1;
-          }
+        localObject1 = new JSONObject("{\"*.qq.com\":[\"*\"],\"*.tencent.com\":[\"*\"],\"*.soso.com\":[\"*\"],\"*.paipai.com\":[\"*\"],\"*.tenpay.com\":[\"*\"],\"*.yixun.com\":[\"*\"],\"*.myapp.com\":[\"*\"],\"*.wanggou.com\":[\"*\"],\"*.qzone.com\":[\"*\"],\"*.weishi.com\":[\"*\"],\"*.weiyun.com\":[\"*\"],\"*\":[\"tel\",\"sms\",\"http\",\"https\",\"file\", \"mqqc2b\"]}");
+        this.jdField_f_of_type_OrgJsonJSONObject = ((JSONObject)localObject1);
+        JSONArray localJSONArray = ((JSONObject)localObject1).names();
+        if (localJSONArray != null) {
+          break label231;
         }
+        return false;
+        localObject2 = localUri.getHost();
+        paramString1 = (String)localObject2;
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          break label255;
+        }
+        paramString1 = ((String)localObject2).toLowerCase();
+        int k = localJSONArray.length();
+        int i = 0;
+        while (i < k)
+        {
+          localObject2 = localJSONArray.optString(i);
+          if (b((String)localObject2, paramString1)) {
+            for (;;)
+            {
+              localObject2 = ((JSONObject)localObject1).optJSONArray((String)localObject2);
+              if (localObject2 != null)
+              {
+                int m = ((JSONArray)localObject2).length();
+                int j = 0;
+                while (j < m)
+                {
+                  if (b(((JSONArray)localObject2).optString(j), paramString2)) {
+                    return true;
+                  }
+                  j += 1;
+                }
+              }
+            }
+          }
+          i += 1;
+        }
+        return false;
+        paramString1 = paramString1;
       }
-      catch (JSONException paramString1)
+      catch (JSONException localJSONException)
       {
-        label296:
         for (;;)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("AuthorizeConfig", 2, "Decode mSchemeConfig error");
-          }
-          paramString1 = (String)localObject1;
+          String str = paramString1;
         }
       }
     }
+    paramString1 = (String)localObject2;
+    if (QLog.isColorLevel())
+    {
+      QLog.d("AuthorizeConfig", 2, "Decode mSchemeConfig error");
+      paramString1 = (String)localObject2;
+    }
+    localObject1 = paramString1;
+    if (paramString1 != null) {}
   }
   
   public String d(String paramString)
@@ -1723,23 +1541,26 @@ public class AuthorizeConfig
     if (QLog.isColorLevel()) {
       QLog.i("AuthorizeConfig", 2, "readAndSaveX5PreloadWhiteListConfig from VasQuickUpdateManager.SCID_FUNCDEV_WEBVIEW.");
     }
-    Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    JSONObject localJSONObject = VasUpdateUtil.a((AppRuntime)localObject, "VASBiz_FuncDev_webview.json", false, null);
-    if ((localJSONObject != null) && (localObject != null) && (((AppRuntime)localObject).isLogin()))
+    Object localObject2 = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    Object localObject1 = VasUpdateUtil.a((AppRuntime)localObject2, "VASBiz_FuncDev_webview.json", false, null);
+    if ((localObject1 != null) && (localObject2 != null) && (((AppRuntime)localObject2).isLogin()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("AuthorizeConfig", 2, "receive X5PreloadWhiteList data: " + localJSONObject.toString());
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("receive X5PreloadWhiteList data: ");
+        ((StringBuilder)localObject2).append(((JSONObject)localObject1).toString());
+        QLog.i("AuthorizeConfig", 2, ((StringBuilder)localObject2).toString());
       }
-      localObject = localJSONObject.optJSONArray("x5PreloadWhiteList");
-      if ((localObject != null) && (((JSONArray)localObject).length() > 0)) {
-        this.jdField_d_of_type_OrgJsonJSONObject = ((JSONArray)localObject).optJSONObject(0);
+      localObject1 = ((JSONObject)localObject1).optJSONArray("x5PreloadWhiteList");
+      if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0)) {
+        this.jdField_d_of_type_OrgJsonJSONObject = ((JSONArray)localObject1).optJSONObject(0);
       }
     }
   }
   
   public boolean d()
   {
-    boolean bool = true;
     try
     {
       if ((this.jdField_a_of_type_Int == -1) && (!e()))
@@ -1753,21 +1574,17 @@ public class AuthorizeConfig
       else
       {
         int i = this.jdField_a_of_type_Int;
-        if (i == 1) {}
-        for (;;)
-        {
-          return bool;
-          bool = false;
-        }
+        return i == 1;
       }
-      return false;
     }
     catch (Exception localException)
     {
       if (QLog.isColorLevel()) {
         QLog.e("AuthorizeConfig", 2, "forceHttps enable check exception", localException);
       }
+      return false;
     }
+    return false;
   }
   
   public boolean d(String paramString)
@@ -1781,32 +1598,46 @@ public class AuthorizeConfig
         {
           if ((this.jdField_c_of_type_OrgJsonJSONArray == null) && (!c()))
           {
-            if (QLog.isColorLevel())
-            {
-              QLog.d("AuthorizeConfig", 2, "SkipInputWarningConfig loadfromsp fail , url: " + Util.b(paramString, new String[0]));
-              return false;
+            if (!QLog.isColorLevel()) {
+              break label289;
             }
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("SkipInputWarningConfig loadfromsp fail , url: ");
+            ((StringBuilder)localObject1).append(Util.b(paramString, new String[0]));
+            QLog.d("AuthorizeConfig", 2, ((StringBuilder)localObject1).toString());
+            return false;
           }
-          else
+          Object localObject1 = Uri.parse(paramString).getHost();
+          int j = this.jdField_c_of_type_OrgJsonJSONArray.length();
+          if ((j != 0) && (!TextUtils.isEmpty((CharSequence)localObject1)))
           {
-            String str1 = Uri.parse(paramString).getHost();
-            int j = this.jdField_c_of_type_OrgJsonJSONArray.length();
-            if ((j != 0) && (!TextUtils.isEmpty(str1)))
+            Object localObject2 = ((String)localObject1).toLowerCase();
+            i = 0;
+            if (i < j)
             {
-              str1 = str1.toLowerCase();
-              i = 0;
-              if (i < j)
-              {
-                String str2 = this.jdField_c_of_type_OrgJsonJSONArray.optString(i, "");
-                if ((TextUtils.isEmpty(str2)) || ((!TextUtils.equals(str1, str2)) && (!str1.endsWith("." + str2)))) {
-                  break label256;
-                }
-                if (!QLog.isColorLevel()) {
-                  break label254;
-                }
-                QLog.d("AuthorizeConfig", 2, "SkipInputWarningConfig hit , url: " + Util.b(paramString, new String[0]) + " domain: " + str2);
-                break label254;
+              localObject1 = this.jdField_c_of_type_OrgJsonJSONArray.optString(i, "");
+              if (TextUtils.isEmpty((CharSequence)localObject1)) {
+                break label293;
               }
+              if (!TextUtils.equals((CharSequence)localObject2, (CharSequence)localObject1))
+              {
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append(".");
+                localStringBuilder.append((String)localObject1);
+                if (!((String)localObject2).endsWith(localStringBuilder.toString())) {
+                  break label293;
+                }
+              }
+              if (!QLog.isColorLevel()) {
+                break label291;
+              }
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("SkipInputWarningConfig hit , url: ");
+              ((StringBuilder)localObject2).append(Util.b(paramString, new String[0]));
+              ((StringBuilder)localObject2).append(" domain: ");
+              ((StringBuilder)localObject2).append((String)localObject1);
+              QLog.d("AuthorizeConfig", 2, ((StringBuilder)localObject2).toString());
+              break label291;
             }
           }
         }
@@ -1823,9 +1654,11 @@ public class AuthorizeConfig
         }
       }
       return false;
-      label254:
+      label289:
+      return false;
+      label291:
       return true;
-      label256:
+      label293:
       i += 1;
     }
   }
@@ -1850,194 +1683,154 @@ public class AuthorizeConfig
   
   public void e()
   {
-    int i = 0;
     if (QLog.isColorLevel()) {
       QLog.i("AuthorizeConfig", 2, "readAndSaveSonicWhiteListConfig from VasQuickUpdateManager.SCID_FUNCDEV_WEBVIEW.");
     }
     Object localObject2 = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    int i = 0;
     Object localObject1 = VasUpdateUtil.a((AppRuntime)localObject2, "VASBiz_FuncDev_webview.json", false, null);
-    Object localObject3;
     if (localObject1 != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("AuthorizeConfig", 2, "receive WhiteListConfig data: " + ((JSONObject)localObject1).toString());
+      Object localObject3;
+      if (QLog.isColorLevel())
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("receive WhiteListConfig data: ");
+        ((StringBuilder)localObject3).append(((JSONObject)localObject1).toString());
+        QLog.i("AuthorizeConfig", 2, ((StringBuilder)localObject3).toString());
       }
       localObject1 = ((JSONObject)localObject1).optJSONArray("vipGrayConfig2");
       if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
       {
-        if (i >= ((JSONArray)localObject1).length()) {
-          break label282;
+        while (i < ((JSONArray)localObject1).length())
+        {
+          localObject3 = ((JSONArray)localObject1).optJSONObject(i);
+          if ((localObject3 != null) && (a((JSONObject)localObject3)))
+          {
+            localObject1 = ((JSONObject)localObject3).optJSONObject("configs");
+            break label153;
+          }
+          i += 1;
         }
-        localObject3 = ((JSONArray)localObject1).optJSONObject(i);
-        if ((localObject3 == null) || (!a((JSONObject)localObject3))) {
-          break label243;
+        localObject1 = null;
+        label153:
+        localObject3 = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
+        localObject2 = ((AppRuntime)localObject2).getApplication();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("sp_sonic_white_list_config_");
+        localStringBuilder.append((String)localObject3);
+        localObject2 = ((MobileQQ)localObject2).getSharedPreferences(localStringBuilder.toString(), 4).edit();
+        if (localObject1 != null)
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("readAndSaveSonicWhiteListConfig: ");
+            ((StringBuilder)localObject3).append(((JSONObject)localObject1).toString());
+            QLog.i("AuthorizeConfig", 2, ((StringBuilder)localObject3).toString());
+          }
+          ((SharedPreferences.Editor)localObject2).putString("key_sonic_white_list_conifg", ((JSONObject)localObject1).toString());
         }
-      }
-    }
-    label282:
-    for (localObject1 = ((JSONObject)localObject3).optJSONObject("configs");; localObject1 = null)
-    {
-      localObject3 = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
-      localObject2 = ((AppRuntime)localObject2).getApplication().getSharedPreferences("sp_sonic_white_list_config_" + (String)localObject3, 4).edit();
-      if (localObject1 != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("AuthorizeConfig", 2, "readAndSaveSonicWhiteListConfig: " + ((JSONObject)localObject1).toString());
+        else
+        {
+          QLog.e("AuthorizeConfig", 1, "readAndSaveSonicWhiteListConfig encounter error!. so remove all sonic white list.");
+          ((SharedPreferences.Editor)localObject2).remove("key_sonic_white_list_conifg");
         }
-        ((SharedPreferences.Editor)localObject2).putString("key_sonic_white_list_conifg", ((JSONObject)localObject1).toString());
-      }
-      for (;;)
-      {
         this.jdField_e_of_type_OrgJsonJSONObject = ((JSONObject)localObject1);
         ((SharedPreferences.Editor)localObject2).apply();
-        return;
-        label243:
-        i += 1;
-        break;
-        QLog.e("AuthorizeConfig", 1, "readAndSaveSonicWhiteListConfig encounter error!. so remove all sonic white list.");
-        ((SharedPreferences.Editor)localObject2).remove("key_sonic_white_list_conifg");
       }
+    }
+    else
+    {
       QLog.d("AuthorizeConfig", 1, "readAndSaveSonicWhiteListConfig VasQuickUpdateManager.SCID_FUNCDEV_WEBVIEW is null");
-      return;
     }
   }
   
-  /* Error */
   public boolean e()
   {
-    // Byte code:
-    //   0: invokestatic 927	com/tencent/biz/WebCgiWhiteListManager:b	()I
-    //   3: istore_2
-    //   4: iload_2
-    //   5: iconst_1
-    //   6: if_icmpne +141 -> 147
-    //   9: iconst_1
-    //   10: istore_1
-    //   11: aload_0
-    //   12: iload_1
-    //   13: putfield 138	com/tencent/biz/AuthorizeConfig:jdField_a_of_type_Int	I
-    //   16: invokestatic 929	com/tencent/biz/WebCgiWhiteListManager:d	()Ljava/lang/String;
-    //   19: astore_3
-    //   20: aload_3
-    //   21: invokestatic 247	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   24: ifne +167 -> 191
-    //   27: invokestatic 164	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   30: ifeq +29 -> 59
-    //   33: ldc 166
-    //   35: iconst_2
-    //   36: new 283	java/lang/StringBuilder
-    //   39: dup
-    //   40: invokespecial 284	java/lang/StringBuilder:<init>	()V
-    //   43: ldc_w 931
-    //   46: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   49: aload_3
-    //   50: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   53: invokevirtual 295	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   56: invokestatic 171	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   59: aload_0
-    //   60: new 364	org/json/JSONArray
-    //   63: dup
-    //   64: aload_3
-    //   65: invokespecial 375	org/json/JSONArray:<init>	(Ljava/lang/String;)V
-    //   68: putfield 933	com/tencent/biz/AuthorizeConfig:jdField_d_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
-    //   71: invokestatic 935	com/tencent/biz/WebCgiWhiteListManager:e	()Ljava/lang/String;
-    //   74: astore_3
-    //   75: aload_3
-    //   76: invokestatic 247	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   79: ifne +169 -> 248
-    //   82: invokestatic 164	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   85: ifeq +29 -> 114
-    //   88: ldc 166
-    //   90: iconst_2
-    //   91: new 283	java/lang/StringBuilder
-    //   94: dup
-    //   95: invokespecial 284	java/lang/StringBuilder:<init>	()V
-    //   98: ldc_w 937
-    //   101: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   104: aload_3
-    //   105: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   108: invokevirtual 295	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   111: invokestatic 171	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   114: aload_0
-    //   115: new 364	org/json/JSONArray
-    //   118: dup
-    //   119: aload_3
-    //   120: invokespecial 375	org/json/JSONArray:<init>	(Ljava/lang/String;)V
-    //   123: putfield 939	com/tencent/biz/AuthorizeConfig:jdField_e_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
-    //   126: iload_2
-    //   127: iconst_m1
-    //   128: if_icmpeq +138 -> 266
-    //   131: aload_0
-    //   132: getfield 933	com/tencent/biz/AuthorizeConfig:jdField_d_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
-    //   135: ifnull +131 -> 266
-    //   138: aload_0
-    //   139: getfield 939	com/tencent/biz/AuthorizeConfig:jdField_e_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
-    //   142: ifnull +124 -> 266
-    //   145: iconst_1
-    //   146: ireturn
-    //   147: iconst_0
-    //   148: istore_1
-    //   149: goto -138 -> 11
-    //   152: astore_3
-    //   153: invokestatic 164	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   156: ifeq -85 -> 71
-    //   159: ldc 166
-    //   161: iconst_2
-    //   162: new 283	java/lang/StringBuilder
-    //   165: dup
-    //   166: invokespecial 284	java/lang/StringBuilder:<init>	()V
-    //   169: ldc_w 941
-    //   172: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   175: aload_3
-    //   176: invokevirtual 392	org/json/JSONException:getMessage	()Ljava/lang/String;
-    //   179: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   182: invokevirtual 295	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   185: invokestatic 171	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   188: goto -117 -> 71
-    //   191: invokestatic 164	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   194: ifeq -123 -> 71
-    //   197: ldc 166
-    //   199: iconst_2
-    //   200: ldc_w 943
-    //   203: invokestatic 171	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   206: goto -135 -> 71
-    //   209: astore_3
-    //   210: invokestatic 164	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   213: ifeq -87 -> 126
-    //   216: ldc 166
-    //   218: iconst_2
-    //   219: new 283	java/lang/StringBuilder
-    //   222: dup
-    //   223: invokespecial 284	java/lang/StringBuilder:<init>	()V
-    //   226: ldc_w 945
-    //   229: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   232: aload_3
-    //   233: invokevirtual 392	org/json/JSONException:getMessage	()Ljava/lang/String;
-    //   236: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   239: invokevirtual 295	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   242: invokestatic 171	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   245: goto -119 -> 126
-    //   248: invokestatic 164	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   251: ifeq -125 -> 126
-    //   254: ldc 166
-    //   256: iconst_2
-    //   257: ldc_w 947
-    //   260: invokestatic 171	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   263: goto -137 -> 126
-    //   266: iconst_0
-    //   267: ireturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	268	0	this	AuthorizeConfig
-    //   10	139	1	i	int
-    //   3	126	2	j	int
-    //   19	101	3	str	String
-    //   152	24	3	localJSONException1	JSONException
-    //   209	24	3	localJSONException2	JSONException
-    // Exception table:
-    //   from	to	target	type
-    //   59	71	152	org/json/JSONException
-    //   114	126	209	org/json/JSONException
+    int j = WebCgiWhiteListManager.b();
+    boolean bool2 = false;
+    int i;
+    if (j == 1) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    this.jdField_a_of_type_Int = i;
+    String str1 = WebCgiWhiteListManager.d();
+    StringBuilder localStringBuilder;
+    if (!TextUtils.isEmpty(str1))
+    {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("forceHttpsConfig sp content: ");
+        localStringBuilder.append(str1);
+        QLog.d("AuthorizeConfig", 2, localStringBuilder.toString());
+      }
+      try
+      {
+        this.jdField_d_of_type_OrgJsonJSONArray = new JSONArray(str1);
+      }
+      catch (JSONException localJSONException1)
+      {
+        if (!QLog.isColorLevel()) {
+          break label162;
+        }
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("forceHttpsConfig load exception: ");
+      localStringBuilder.append(localJSONException1.getMessage());
+      QLog.d("AuthorizeConfig", 2, localStringBuilder.toString());
+    }
+    else if (QLog.isColorLevel())
+    {
+      QLog.d("AuthorizeConfig", 2, "forceHttpsConfig sp content empty!");
+    }
+    label162:
+    String str2 = WebCgiWhiteListManager.e();
+    if (!TextUtils.isEmpty(str2))
+    {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("forceHttpsExcludeConfig sp content: ");
+        localStringBuilder.append(str2);
+        QLog.d("AuthorizeConfig", 2, localStringBuilder.toString());
+      }
+      try
+      {
+        this.jdField_e_of_type_OrgJsonJSONArray = new JSONArray(str2);
+      }
+      catch (JSONException localJSONException2)
+      {
+        if (!QLog.isColorLevel()) {
+          break label300;
+        }
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("forceHttpsExcludeConfig load exception: ");
+      localStringBuilder.append(localJSONException2.getMessage());
+      QLog.d("AuthorizeConfig", 2, localStringBuilder.toString());
+    }
+    else if (QLog.isColorLevel())
+    {
+      QLog.d("AuthorizeConfig", 2, "forceHttpsExcludeConfig sp content empty!");
+    }
+    label300:
+    boolean bool1 = bool2;
+    if (j != -1)
+    {
+      bool1 = bool2;
+      if (this.jdField_d_of_type_OrgJsonJSONArray != null)
+      {
+        bool1 = bool2;
+        if (this.jdField_e_of_type_OrgJsonJSONArray != null) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public boolean e(String paramString)
@@ -2051,32 +1844,46 @@ public class AuthorizeConfig
         {
           if ((this.jdField_d_of_type_OrgJsonJSONArray == null) && (!e()))
           {
-            if (QLog.isColorLevel())
-            {
-              QLog.d("AuthorizeConfig", 2, "forceHttpsConfig loadfromsp fail , url: " + Util.b(paramString, new String[0]));
-              return false;
+            if (!QLog.isColorLevel()) {
+              break label289;
             }
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("forceHttpsConfig loadfromsp fail , url: ");
+            ((StringBuilder)localObject1).append(Util.b(paramString, new String[0]));
+            QLog.d("AuthorizeConfig", 2, ((StringBuilder)localObject1).toString());
+            return false;
           }
-          else
+          Object localObject1 = Uri.parse(paramString).getHost();
+          int j = this.jdField_d_of_type_OrgJsonJSONArray.length();
+          if ((j != 0) && (!TextUtils.isEmpty((CharSequence)localObject1)))
           {
-            String str1 = Uri.parse(paramString).getHost();
-            int j = this.jdField_d_of_type_OrgJsonJSONArray.length();
-            if ((j != 0) && (!TextUtils.isEmpty(str1)))
+            Object localObject2 = ((String)localObject1).toLowerCase();
+            i = 0;
+            if (i < j)
             {
-              str1 = str1.toLowerCase();
-              i = 0;
-              if (i < j)
-              {
-                String str2 = this.jdField_d_of_type_OrgJsonJSONArray.optString(i, "");
-                if ((TextUtils.isEmpty(str2)) || ((!TextUtils.equals(str1, str2)) && (!str1.endsWith("." + str2)))) {
-                  break label256;
-                }
-                if (!QLog.isColorLevel()) {
-                  break label254;
-                }
-                QLog.d("AuthorizeConfig", 2, "forceHttpsConfig hit , url: " + Util.b(paramString, new String[0]) + " domain: " + str2);
-                break label254;
+              localObject1 = this.jdField_d_of_type_OrgJsonJSONArray.optString(i, "");
+              if (TextUtils.isEmpty((CharSequence)localObject1)) {
+                break label293;
               }
+              if (!TextUtils.equals((CharSequence)localObject2, (CharSequence)localObject1))
+              {
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append(".");
+                localStringBuilder.append((String)localObject1);
+                if (!((String)localObject2).endsWith(localStringBuilder.toString())) {
+                  break label293;
+                }
+              }
+              if (!QLog.isColorLevel()) {
+                break label291;
+              }
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("forceHttpsConfig hit , url: ");
+              ((StringBuilder)localObject2).append(Util.b(paramString, new String[0]));
+              ((StringBuilder)localObject2).append(" domain: ");
+              ((StringBuilder)localObject2).append((String)localObject1);
+              QLog.d("AuthorizeConfig", 2, ((StringBuilder)localObject2).toString());
+              break label291;
             }
           }
         }
@@ -2093,56 +1900,62 @@ public class AuthorizeConfig
         }
       }
       return false;
-      label254:
+      label289:
+      return false;
+      label291:
       return true;
-      label256:
+      label293:
       i += 1;
     }
   }
   
   public void f()
   {
-    boolean bool = true;
     Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if ((localObject == null) || (!((AppRuntime)localObject).isLogin()))
+    boolean bool = true;
+    if ((localObject != null) && (((AppRuntime)localObject).isLogin()))
     {
-      QLog.e("AuthorizeConfig", 1, "loadSonicWhiteListConfigFromSp, runtime is null or is not login!");
-      return;
-    }
-    String str = ((AppRuntime)localObject).getAccount();
-    localObject = ((AppRuntime)localObject).getApplication().getSharedPreferences("sp_sonic_white_list_config_" + str, 4).getString("key_sonic_white_list_conifg", null);
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {}
-    for (;;)
-    {
-      try
+      String str = ((AppRuntime)localObject).getAccount();
+      localObject = ((AppRuntime)localObject).getApplication();
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("sp_sonic_white_list_config_");
+      localStringBuilder2.append(str);
+      str = ((MobileQQ)localObject).getSharedPreferences(localStringBuilder2.toString(), 4).getString("key_sonic_white_list_conifg", null);
+      if (!TextUtils.isEmpty(str))
       {
-        this.jdField_e_of_type_OrgJsonJSONObject = new JSONObject((String)localObject);
-        if (this.jdField_e_of_type_OrgJsonJSONObject == null) {
-          e();
+        try
+        {
+          this.jdField_e_of_type_OrgJsonJSONObject = new JSONObject(str);
         }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        localObject = new StringBuilder().append("loadSonicWhiteListConfigFromSp:  ");
-        if (this.jdField_e_of_type_OrgJsonJSONObject == null) {
-          break label178;
-        }
-        QLog.i("AuthorizeConfig", 2, bool);
-        return;
-      }
-      catch (Exception localException)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
+        catch (Exception localException)
+        {
+          if (!QLog.isColorLevel()) {
+            break label129;
+          }
         }
         QLog.e("AuthorizeConfig", 2, "", localException);
-        continue;
       }
-      QLog.e("AuthorizeConfig", 1, "loadSonicWhiteListConfigFromSp is null!");
-      continue;
-      label178:
-      bool = false;
+      else
+      {
+        QLog.e("AuthorizeConfig", 1, "loadSonicWhiteListConfigFromSp is null!");
+      }
+      label129:
+      if (this.jdField_e_of_type_OrgJsonJSONObject == null) {
+        e();
+      }
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("loadSonicWhiteListConfigFromSp:  ");
+        if (this.jdField_e_of_type_OrgJsonJSONObject == null) {
+          bool = false;
+        }
+        localStringBuilder1.append(bool);
+        QLog.i("AuthorizeConfig", 2, localStringBuilder1.toString());
+      }
+      return;
     }
+    QLog.e("AuthorizeConfig", 1, "loadSonicWhiteListConfigFromSp, runtime is null or is not login!");
   }
   
   public boolean f(String paramString)
@@ -2156,32 +1969,46 @@ public class AuthorizeConfig
         {
           if ((this.jdField_e_of_type_OrgJsonJSONArray == null) && (!e()))
           {
-            if (QLog.isColorLevel())
-            {
-              QLog.d("AuthorizeConfig", 2, "forceHttpsExcludeConfig loadfromsp fail , url: " + Util.b(paramString, new String[0]));
-              return false;
+            if (!QLog.isColorLevel()) {
+              break label289;
             }
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("forceHttpsExcludeConfig loadfromsp fail , url: ");
+            ((StringBuilder)localObject1).append(Util.b(paramString, new String[0]));
+            QLog.d("AuthorizeConfig", 2, ((StringBuilder)localObject1).toString());
+            return false;
           }
-          else
+          Object localObject1 = Uri.parse(paramString).getHost();
+          int j = this.jdField_e_of_type_OrgJsonJSONArray.length();
+          if ((j != 0) && (!TextUtils.isEmpty((CharSequence)localObject1)))
           {
-            String str1 = Uri.parse(paramString).getHost();
-            int j = this.jdField_e_of_type_OrgJsonJSONArray.length();
-            if ((j != 0) && (!TextUtils.isEmpty(str1)))
+            Object localObject2 = ((String)localObject1).toLowerCase();
+            i = 0;
+            if (i < j)
             {
-              str1 = str1.toLowerCase();
-              i = 0;
-              if (i < j)
-              {
-                String str2 = this.jdField_e_of_type_OrgJsonJSONArray.optString(i, "");
-                if ((TextUtils.isEmpty(str2)) || ((!TextUtils.equals(str1, str2)) && (!str1.endsWith("." + str2)))) {
-                  break label256;
-                }
-                if (!QLog.isColorLevel()) {
-                  break label254;
-                }
-                QLog.d("AuthorizeConfig", 2, "forceHttpsExcludeConfig hit , url: " + Util.b(paramString, new String[0]) + " domain: " + str2);
-                break label254;
+              localObject1 = this.jdField_e_of_type_OrgJsonJSONArray.optString(i, "");
+              if (TextUtils.isEmpty((CharSequence)localObject1)) {
+                break label293;
               }
+              if (!TextUtils.equals((CharSequence)localObject2, (CharSequence)localObject1))
+              {
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append(".");
+                localStringBuilder.append((String)localObject1);
+                if (!((String)localObject2).endsWith(localStringBuilder.toString())) {
+                  break label293;
+                }
+              }
+              if (!QLog.isColorLevel()) {
+                break label291;
+              }
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("forceHttpsExcludeConfig hit , url: ");
+              ((StringBuilder)localObject2).append(Util.b(paramString, new String[0]));
+              ((StringBuilder)localObject2).append(" domain: ");
+              ((StringBuilder)localObject2).append((String)localObject1);
+              QLog.d("AuthorizeConfig", 2, ((StringBuilder)localObject2).toString());
+              break label291;
             }
           }
         }
@@ -2198,39 +2025,43 @@ public class AuthorizeConfig
         }
       }
       return false;
-      label254:
+      label289:
+      return false;
+      label291:
       return true;
-      label256:
+      label293:
       i += 1;
     }
   }
   
   public void g()
   {
-    long l = System.currentTimeMillis();
-    if (l - jdField_e_of_type_Long < 86400000L) {
+    long l1 = System.currentTimeMillis();
+    long l2 = jdField_e_of_type_Long;
+    int j = 0;
+    if (l1 - l2 < 86400000L)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("AuthorizeConfig", 1, new Object[] { "cachePreloadPskeyList too often lastTime:", Long.valueOf(jdField_e_of_type_Long), " interval:", Long.valueOf(86400000L) });
       }
-    }
-    do
-    {
       return;
-      if (MobileQQ.sMobileQQ.waitAppRuntime(null).isLogin()) {
-        break;
+    }
+    if (!MobileQQ.sMobileQQ.waitAppRuntime(null).isLogin())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AuthorizeConfig", 2, "cachePreloadPskeyList is not login");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("AuthorizeConfig", 2, "cachePreloadPskeyList is not login");
-    return;
+      return;
+    }
     if (((WVPreloadPskeyConfBean)QConfigManager.a().a(585)).jdField_a_of_type_Int == 1)
     {
       Object localObject3 = a("pskey");
       ArrayList localArrayList = new ArrayList(((Set)localObject3).size());
       ??? = new HashSet(20);
       Object localObject4 = WebViewConstant.jdField_a_of_type_ArrayOfJavaLangString;
-      int j = localObject4.length;
+      int k = localObject4.length;
       int i = 0;
-      while (i < j)
+      while (i < k)
       {
         ((HashSet)???).add(localObject4[i]);
         i += 1;
@@ -2243,31 +2074,25 @@ public class AuthorizeConfig
           localArrayList.add(localObject4);
         }
       }
-      for (;;)
+      synchronized (jdField_a_of_type_JavaLangObject)
       {
-        synchronized (jdField_a_of_type_JavaLangObject)
+        this.jdField_b_of_type_JavaUtilArrayList = localArrayList;
+        if (QLog.isColorLevel())
         {
-          this.jdField_b_of_type_JavaUtilArrayList = localArrayList;
-          if (QLog.isColorLevel())
-          {
-            if (this.jdField_b_of_type_JavaUtilArrayList != null)
-            {
-              i = this.jdField_b_of_type_JavaUtilArrayList.size();
-              QLog.d("AuthorizeConfig", 2, new Object[] { "preloadPskey list:", Integer.valueOf(i), " waitPt4Token:", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
-            }
+          localArrayList = this.jdField_b_of_type_JavaUtilArrayList;
+          i = j;
+          if (localArrayList != null) {
+            i = localArrayList.size();
           }
-          else
-          {
-            if (this.jdField_a_of_type_Boolean) {
-              break;
-            }
-            h();
-            jdField_e_of_type_Long = l;
-            this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("lastPreloadPskey", jdField_e_of_type_Long).commit();
-            return;
-          }
+          QLog.d("AuthorizeConfig", 2, new Object[] { "preloadPskey list:", Integer.valueOf(i), " waitPt4Token:", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
         }
-        i = 0;
+        if (this.jdField_a_of_type_Boolean) {
+          return;
+        }
+        h();
+        jdField_e_of_type_Long = l1;
+        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("lastPreloadPskey", jdField_e_of_type_Long).commit();
+        return;
       }
     }
     QLog.d("AuthorizeConfig", 1, "do not support preloadPskey.");
@@ -2275,119 +2100,143 @@ public class AuthorizeConfig
   
   public boolean g(String paramString)
   {
-    Object localObject = Uri.parse(paramString);
-    String str;
-    int i;
-    boolean bool;
-    if ((localObject != null) && (((Uri)localObject).isHierarchical()))
+    Object localObject2 = Uri.parse(paramString);
+    Object localObject1;
+    if ((localObject2 != null) && (((Uri)localObject2).isHierarchical()))
     {
       if (this.jdField_e_of_type_OrgJsonJSONObject == null) {
         f();
       }
-      if (this.jdField_e_of_type_OrgJsonJSONObject != null)
+      localObject1 = this.jdField_e_of_type_OrgJsonJSONObject;
+      boolean bool2 = true;
+      if (localObject1 != null)
       {
-        str = ((Uri)localObject).getHost();
-        localObject = ((Uri)localObject).getPath();
-        if (this.jdField_e_of_type_OrgJsonJSONObject == null) {
-          break label273;
+        localObject1 = ((Uri)localObject2).getHost();
+        localObject2 = ((Uri)localObject2).getPath();
+        if (this.jdField_e_of_type_OrgJsonJSONObject != null)
+        {
+          JSONArray localJSONArray = this.jdField_e_of_type_OrgJsonJSONObject.optJSONArray((String)localObject1);
+          if ((localJSONArray != null) && (localJSONArray.length() > 0))
+          {
+            if (QLog.isColorLevel())
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("isInSonicWhiteList, host: ");
+              localStringBuilder.append((String)localObject1);
+              localStringBuilder.append(", rules: ");
+              localStringBuilder.append(localJSONArray.toString());
+              QLog.i("AuthorizeConfig", 2, localStringBuilder.toString());
+            }
+            int i = 0;
+            while (i < localJSONArray.length())
+            {
+              localObject1 = localJSONArray.optString(i);
+              bool1 = bool2;
+              if (((String)localObject1).equalsIgnoreCase((String)localObject2)) {
+                break label254;
+              }
+              if (((String)localObject1).equals("*"))
+              {
+                bool1 = bool2;
+                break label254;
+              }
+              if ((((String)localObject1).endsWith("*")) && (((String)localObject2).startsWith(((String)localObject1).replace("/*", ""))))
+              {
+                bool1 = bool2;
+                break label254;
+              }
+              i += 1;
+            }
+          }
         }
-        JSONArray localJSONArray = this.jdField_e_of_type_OrgJsonJSONObject.optJSONArray(str);
-        if ((localJSONArray == null) || (localJSONArray.length() <= 0)) {
-          break label273;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("AuthorizeConfig", 2, "isInSonicWhiteList, host: " + str + ", rules: " + localJSONArray.toString());
-        }
-        i = 0;
-        if (i >= localJSONArray.length()) {
-          break label273;
-        }
-        str = localJSONArray.optString(i);
-        if ((str.equalsIgnoreCase((String)localObject)) || (str.equals("*"))) {
-          bool = true;
-        }
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("AuthorizeConfig", 2, "isInSonicWhiteList: " + bool + ", url: " + Util.b(paramString, new String[0]));
-      }
-      return bool;
-      if ((str.endsWith("*")) && (((String)localObject).startsWith(str.replace("/*", ""))))
-      {
-        bool = true;
       }
       else
       {
-        i += 1;
-        break;
         QLog.e("AuthorizeConfig", 1, "mSonicWhiteListConfig is null! ");
-        label273:
-        bool = false;
       }
     }
+    boolean bool1 = false;
+    label254:
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("isInSonicWhiteList: ");
+      ((StringBuilder)localObject1).append(bool1);
+      ((StringBuilder)localObject1).append(", url: ");
+      ((StringBuilder)localObject1).append(Util.b(paramString, new String[0]));
+      QLog.i("AuthorizeConfig", 2, ((StringBuilder)localObject1).toString());
+    }
+    return bool1;
   }
   
   public void h()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_Boolean)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("AuthorizeConfig", 2, "preloadPskey waiting");
       }
-    }
-    AppRuntime localAppRuntime;
-    do
-    {
       return;
-      localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
-      if (localAppRuntime.isLogin()) {
-        break;
+    }
+    Object localObject1 = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if (!((AppRuntime)localObject1).isLogin())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AuthorizeConfig", 2, "preloadPskey is not login");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("AuthorizeConfig", 2, "preloadPskey is not login");
-    return;
-    TicketManager localTicketManager = (TicketManager)localAppRuntime.getManager(2);
+      return;
+    }
+    TicketManager localTicketManager = (TicketManager)((AppRuntime)localObject1).getManager(2);
     ArrayList localArrayList1 = new ArrayList(20);
     ArrayList localArrayList2 = new ArrayList();
-    Object localObject2 = jdField_a_of_type_JavaLangObject;
+    Object localObject3 = jdField_a_of_type_JavaLangObject;
     int i = 0;
     for (;;)
     {
       try
       {
-        if (i < this.jdField_b_of_type_JavaUtilArrayList.size()) {
+        if (i < this.jdField_b_of_type_JavaUtilArrayList.size())
+        {
           if (i < 20) {
             localArrayList1.add(this.jdField_b_of_type_JavaUtilArrayList.get(i));
           } else {
             localArrayList2.add(this.jdField_b_of_type_JavaUtilArrayList.get(i));
           }
         }
+        else
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("AuthorizeConfig", 2, new Object[] { "preload:", Integer.valueOf(this.jdField_b_of_type_JavaUtilArrayList.size()), " cur:", Integer.valueOf(localArrayList1.size()), " left:", Integer.valueOf(localArrayList2.size()) });
+          }
+          this.jdField_b_of_type_JavaUtilArrayList = localArrayList2;
+          if (localArrayList1.size() == 0) {
+            return;
+          }
+          localObject3 = new String[localArrayList1.size()];
+          i = 0;
+          if (i < localArrayList1.size())
+          {
+            localObject3[i] = String.format("(%d)%s", new Object[] { Integer.valueOf(1048576), localArrayList1.get(i) });
+            i += 1;
+            continue;
+          }
+          localObject1 = new AuthorizeConfig.4(this, localTicketManager, ((AppRuntime)localObject1).getAccount(), (String[])localObject3);
+          if (Looper.myLooper() != Looper.getMainLooper())
+          {
+            ((Runnable)localObject1).run();
+            return;
+          }
+          ThreadManager.post((Runnable)localObject1, 8, null, true);
+          return;
+        }
       }
-      finally {}
-      if (QLog.isColorLevel()) {
-        QLog.d("AuthorizeConfig", 2, new Object[] { "preload:", Integer.valueOf(this.jdField_b_of_type_JavaUtilArrayList.size()), " cur:", Integer.valueOf(localArrayList1.size()), " left:", Integer.valueOf(localArrayList2.size()) });
-      }
-      this.jdField_b_of_type_JavaUtilArrayList = localArrayList2;
-      if (localArrayList1.size() == 0) {
-        break;
-      }
-      localObject2 = new String[localArrayList1.size()];
-      i = 0;
-      while (i < localArrayList1.size())
+      finally
       {
-        localObject2[i] = String.format("(%d)%s", new Object[] { Integer.valueOf(1048576), localArrayList1.get(i) });
+        continue;
+        throw localObject2;
+        continue;
         i += 1;
       }
-      AuthorizeConfig.4 local4 = new AuthorizeConfig.4(this, localTicketManager, localObject1.getAccount(), (String[])localObject2);
-      if (Looper.myLooper() != Looper.getMainLooper())
-      {
-        local4.run();
-        return;
-      }
-      ThreadManager.post(local4, 8, null, true);
-      return;
-      i += 1;
     }
   }
   
@@ -2397,163 +2246,162 @@ public class AuthorizeConfig
     if ((!"http".equals(localObject)) && (!"https".equals(localObject))) {
       return false;
     }
-    localObject = a("a1");
-    paramString = Uri.parse(paramString).getHost();
-    if (!TextUtils.isEmpty(paramString)) {
-      paramString = paramString.toLowerCase();
+    Set localSet = a("a1");
+    localObject = Uri.parse(paramString).getHost();
+    paramString = (String)localObject;
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      paramString = ((String)localObject).toLowerCase();
     }
-    for (;;)
-    {
-      if (((Set)localObject).contains(paramString)) {
+    if (localSet.contains(paramString)) {
+      return true;
+    }
+    localObject = localSet.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      if (b((String)((Iterator)localObject).next(), paramString)) {
         return true;
       }
-      localObject = ((Set)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        if (b((String)((Iterator)localObject).next(), paramString)) {
-          return true;
-        }
-      }
-      return false;
     }
+    return false;
   }
   
   public void i()
   {
     long l = System.currentTimeMillis();
-    if (l - jdField_f_of_type_Long < 21600000L) {
-      QLog.d("AuthorizeConfig", 1, "preload too often");
-    }
-    do
+    if (l - jdField_f_of_type_Long < 21600000L)
     {
+      QLog.d("AuthorizeConfig", 1, "preload too often");
       return;
-      synchronized (jdField_b_of_type_JavaLangObject)
+    }
+    synchronized (jdField_b_of_type_JavaLangObject)
+    {
+      if (l - jdField_f_of_type_Long < 21600000L)
       {
-        if (l - jdField_f_of_type_Long < 21600000L)
-        {
-          QLog.d("AuthorizeConfig", 1, "preload too often");
-          return;
-        }
+        QLog.d("AuthorizeConfig", 1, "preload too often");
+        return;
       }
       jdField_f_of_type_Long = l;
       ??? = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    } while ((MobileQQ.sProcessId != 1) || (!((AppRuntime)???).isLogin()));
-    if (com.tencent.mobileqq.webprocess.WebAccelerateHelper.getInstance().getWebViewFeatureParams()[3].intValue() == 1)
-    {
-      TicketManager localTicketManager = (TicketManager)((AppRuntime)???).getManager(2);
-      Object localObject3 = a("pt4_token");
-      String[] arrayOfString = new String[((Set)localObject3).size()];
-      localObject3 = ((Set)localObject3).iterator();
-      int i = 0;
-      while (((Iterator)localObject3).hasNext())
-      {
-        arrayOfString[i] = String.format("(%d)%s", new Object[] { Integer.valueOf(134217728), (String)((Iterator)localObject3).next() });
-        i += 1;
+      if (MobileQQ.sProcessId != 1) {
+        return;
       }
-      ??? = new AuthorizeConfig.5(this, localTicketManager, ((AppRuntime)???).getAccount(), arrayOfString);
-      if (Looper.myLooper() != Looper.getMainLooper()) {
-        ((Runnable)???).run();
+      if (!((AppRuntime)???).isLogin()) {
+        return;
       }
-      for (;;)
+      if (com.tencent.mobileqq.webprocess.WebAccelerateHelper.getInstance().getWebViewFeatureParams()[3].intValue() == 1)
       {
+        TicketManager localTicketManager = (TicketManager)((AppRuntime)???).getManager(2);
+        Object localObject3 = a("pt4_token");
+        String[] arrayOfString = new String[((Set)localObject3).size()];
+        localObject3 = ((Set)localObject3).iterator();
+        int i = 0;
+        while (((Iterator)localObject3).hasNext())
+        {
+          arrayOfString[i] = String.format("(%d)%s", new Object[] { Integer.valueOf(134217728), (String)((Iterator)localObject3).next() });
+          i += 1;
+        }
+        ??? = new AuthorizeConfig.5(this, localTicketManager, ((AppRuntime)???).getAccount(), arrayOfString);
+        if (Looper.myLooper() != Looper.getMainLooper()) {
+          ((Runnable)???).run();
+        } else {
+          ThreadManager.post((Runnable)???, 8, null, true);
+        }
         this.jdField_a_of_type_Boolean = true;
         return;
-        ThreadManager.post((Runnable)???, 8, null, true);
       }
+      QLog.d("AuthorizeConfig", 1, "do not support preload.");
+      return;
     }
-    QLog.d("AuthorizeConfig", 1, "do not support preload.");
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public boolean i(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      localObject = paramString;
+      localObject1 = paramString;
       if (!"about:blank".equalsIgnoreCase(paramString)) {}
     }
     else
     {
-      localObject = "https://localhost/";
+      localObject1 = "https://localhost/";
     }
-    Uri localUri = Uri.parse((String)localObject);
+    Uri localUri = Uri.parse((String)localObject1);
     paramString = localUri.getScheme();
     if ((!"http".equals(paramString)) && (!"https".equals(paramString))) {
       return false;
     }
-    Object localObject = this.jdField_f_of_type_OrgJsonJSONObject;
+    Object localObject2 = this.jdField_f_of_type_OrgJsonJSONObject;
     System.currentTimeMillis();
-    paramString = (String)localObject;
-    if (localObject == null) {}
-    label169:
-    label213:
-    label224:
-    for (;;)
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {}
+    try
     {
-      try
+      paramString = this.jdField_a_of_type_ComTencentBizAuthorizeJsonConfig.a();
+    }
+    catch (JSONException paramString)
+    {
+      label88:
+      break label88;
+    }
+    paramString = (String)localObject2;
+    if (QLog.isColorLevel())
+    {
+      QLog.d("AuthorizeConfig", 2, "Decode mSchemeConfig error");
+      paramString = (String)localObject2;
+    }
+    localObject1 = paramString;
+    if (paramString == null) {}
+    try
+    {
+      localObject1 = new JSONObject("{\"*.qq.com\":[\"*\"],\"*.tencent.com\":[\"*\"],\"*.soso.com\":[\"*\"],\"*.paipai.com\":[\"*\"],\"*.tenpay.com\":[\"*\"],\"*.yixun.com\":[\"*\"],\"*.myapp.com\":[\"*\"],\"*.wanggou.com\":[\"*\"],\"*.qzone.com\":[\"*\"],\"*.weishi.com\":[\"*\"],\"*.weiyun.com\":[\"*\"],\"*\":[\"tel\",\"sms\",\"http\",\"https\",\"file\", \"mqqc2b\"]}");
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
       {
-        paramString = this.jdField_a_of_type_ComTencentBizAuthorizeJsonConfig.a();
-        if (paramString == null)
-        {
-          try
-          {
-            localObject = new JSONObject("{\"*.qq.com\":[\"*\"],\"*.tencent.com\":[\"*\"],\"*.soso.com\":[\"*\"],\"*.paipai.com\":[\"*\"],\"*.tenpay.com\":[\"*\"],\"*.yixun.com\":[\"*\"],\"*.myapp.com\":[\"*\"],\"*.wanggou.com\":[\"*\"],\"*.qzone.com\":[\"*\"],\"*.weishi.com\":[\"*\"],\"*.weiyun.com\":[\"*\"],\"*\":[\"tel\",\"sms\",\"http\",\"https\",\"file\", \"mqqc2b\"]}");
-            paramString = (String)localObject;
-          }
-          catch (JSONException localJSONException)
-          {
-            JSONArray localJSONArray;
-            continue;
-            String str = localUri.getHost();
-            paramString = str;
-            if (TextUtils.isEmpty(str)) {
-              break label169;
-            }
-            paramString = str.toLowerCase();
-            int j = localJSONArray.length();
-            int i = 0;
-            if (i >= j) {
-              break label224;
-            }
-            str = localJSONArray.optString(i);
-            if ((str == null) || (!str.equals("*"))) {
-              break label213;
-            }
-            while (!b(str, paramString))
-            {
-              i += 1;
-              break;
-            }
-            return true;
-            return false;
-          }
-          localJSONArray = paramString.names();
-          if (localJSONArray == null) {
-            return false;
-          }
-        }
-      }
-      catch (JSONException paramString)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AuthorizeConfig", 2, "Decode mSchemeConfig error");
-        }
-        paramString = (String)localObject;
+        int j;
+        int i;
+        String str = paramString;
       }
     }
+    localObject2 = ((JSONObject)localObject1).names();
+    if (localObject2 == null) {
+      return false;
+    }
+    localObject1 = localUri.getHost();
+    paramString = (String)localObject1;
+    if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+      paramString = ((String)localObject1).toLowerCase();
+    }
+    j = ((JSONArray)localObject2).length();
+    i = 0;
+    while (i < j)
+    {
+      localObject1 = ((JSONArray)localObject2).optString(i);
+      if (((localObject1 != null) && (((String)localObject1).equals("*"))) || (!b((String)localObject1, paramString))) {
+        i += 1;
+      } else {
+        return true;
+      }
+    }
+    return false;
   }
   
   public void j()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewAuthorizeIAuthorizeConfigDownloadInjector == null) {}
-    for (;;)
-    {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewAuthorizeIAuthorizeConfigDownloadInjector;
+    if (localObject == null) {
       return;
-      JSONObject localJSONObject = this.jdField_a_of_type_ComTencentMobileqqWebviewAuthorizeIAuthorizeConfigDownloadInjector.a();
-      if (localJSONObject == null) {
-        break;
-      }
+    }
+    localObject = ((IAuthorizeConfigDownloadInjector)localObject).a();
+    if (localObject != null)
+    {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext()) {
-        ((IAuthorizeConfigInjector)localIterator.next()).a(localJSONObject);
+        ((IAuthorizeConfigInjector)localIterator.next()).a((JSONObject)localObject);
       }
     }
     QLog.d("AuthorizeConfig", 1, "WebViewSwitchAio loadFuncDevWebViewConfig return null");
@@ -2610,7 +2458,7 @@ public class AuthorizeConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.AuthorizeConfig
  * JD-Core Version:    0.7.0.1
  */

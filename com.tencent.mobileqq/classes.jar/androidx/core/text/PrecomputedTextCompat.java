@@ -47,13 +47,10 @@ public class PrecomputedTextCompat
     this.mText = paramPrecomputedText;
     this.mParams = paramParams;
     this.mParagraphEnds = null;
-    if (Build.VERSION.SDK_INT >= 29) {}
-    for (;;)
-    {
-      this.mWrapped = paramPrecomputedText;
-      return;
+    if (Build.VERSION.SDK_INT < 29) {
       paramPrecomputedText = null;
     }
+    this.mWrapped = paramPrecomputedText;
   }
   
   private PrecomputedTextCompat(@NonNull CharSequence paramCharSequence, @NonNull PrecomputedTextCompat.Params paramParams, @NonNull int[] paramArrayOfInt)
@@ -69,7 +66,6 @@ public class PrecomputedTextCompat
   {
     Preconditions.checkNotNull(paramCharSequence);
     Preconditions.checkNotNull(paramParams);
-    ArrayList localArrayList;
     for (;;)
     {
       try
@@ -78,32 +74,37 @@ public class PrecomputedTextCompat
         if ((Build.VERSION.SDK_INT >= 29) && (paramParams.mWrapped != null))
         {
           paramCharSequence = new PrecomputedTextCompat(PrecomputedText.create(paramCharSequence, paramParams.mWrapped), paramParams);
+          TraceCompat.endSection();
           return paramCharSequence;
         }
         localArrayList = new ArrayList();
         int j = paramCharSequence.length();
         i = 0;
         if (i >= j) {
-          break;
+          continue;
         }
         i = TextUtils.indexOf(paramCharSequence, '\n', i, j);
-        if (i < 0)
-        {
-          i = j;
-          localArrayList.add(Integer.valueOf(i));
+        if (i >= 0) {
+          continue;
         }
-        else
-        {
-          i += 1;
-        }
+        i = j;
       }
       finally
       {
+        ArrayList localArrayList;
+        int i;
+        int[] arrayOfInt;
         TraceCompat.endSection();
+        continue;
+        throw paramCharSequence;
+        continue;
+        i += 1;
+        continue;
       }
+      localArrayList.add(Integer.valueOf(i));
     }
-    int[] arrayOfInt = new int[localArrayList.size()];
-    int i = 0;
+    arrayOfInt = new int[localArrayList.size()];
+    i = 0;
     while (i < localArrayList.size())
     {
       arrayOfInt[i] = ((Integer)localArrayList.get(i)).intValue();
@@ -111,16 +112,12 @@ public class PrecomputedTextCompat
     }
     if (Build.VERSION.SDK_INT >= 23) {
       StaticLayout.Builder.obtain(paramCharSequence, 0, paramCharSequence.length(), paramParams.getTextPaint(), 2147483647).setBreakStrategy(paramParams.getBreakStrategy()).setHyphenationFrequency(paramParams.getHyphenationFrequency()).setTextDirection(paramParams.getTextDirection()).build();
+    } else if (Build.VERSION.SDK_INT >= 21) {
+      new StaticLayout(paramCharSequence, paramParams.getTextPaint(), 2147483647, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false);
     }
-    for (;;)
-    {
-      paramCharSequence = new PrecomputedTextCompat(paramCharSequence, paramParams, arrayOfInt);
-      TraceCompat.endSection();
-      return paramCharSequence;
-      if (Build.VERSION.SDK_INT >= 21) {
-        new StaticLayout(paramCharSequence, paramParams.getTextPaint(), 2147483647, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false);
-      }
-    }
+    paramCharSequence = new PrecomputedTextCompat(paramCharSequence, paramParams, arrayOfInt);
+    TraceCompat.endSection();
+    return paramCharSequence;
   }
   
   @UiThread
@@ -128,16 +125,17 @@ public class PrecomputedTextCompat
   {
     paramParams = new PrecomputedTextCompat.PrecomputedTextFutureTask(paramParams, paramCharSequence);
     paramCharSequence = ???;
-    if (??? == null) {}
-    synchronized (sLock)
-    {
-      if (sExecutor == null) {
-        sExecutor = Executors.newFixedThreadPool(1);
+    if (??? == null) {
+      synchronized (sLock)
+      {
+        if (sExecutor == null) {
+          sExecutor = Executors.newFixedThreadPool(1);
+        }
+        paramCharSequence = sExecutor;
       }
-      paramCharSequence = sExecutor;
-      paramCharSequence.execute(paramParams);
-      return paramParams;
     }
+    paramCharSequence.execute(paramParams);
+    return paramParams;
   }
   
   public char charAt(int paramInt)
@@ -170,13 +168,12 @@ public class PrecomputedTextCompat
   @IntRange(from=0L)
   public int getParagraphStart(@IntRange(from=0L) int paramInt)
   {
-    int i = 0;
     Preconditions.checkArgumentInRange(paramInt, 0, getParagraphCount(), "paraIndex");
     if (Build.VERSION.SDK_INT >= 29) {
-      i = this.mWrapped.getParagraphStart(paramInt);
+      return this.mWrapped.getParagraphStart(paramInt);
     }
-    while (paramInt == 0) {
-      return i;
+    if (paramInt == 0) {
+      return 0;
     }
     return this.mParagraphEnds[(paramInt - 1)];
   }
@@ -192,8 +189,9 @@ public class PrecomputedTextCompat
   @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
   public PrecomputedText getPrecomputedText()
   {
-    if ((this.mText instanceof PrecomputedText)) {
-      return (PrecomputedText)this.mText;
+    Spannable localSpannable = this.mText;
+    if ((localSpannable instanceof PrecomputedText)) {
+      return (PrecomputedText)localSpannable;
     }
     return null;
   }
@@ -235,29 +233,33 @@ public class PrecomputedTextCompat
   @SuppressLint({"NewApi"})
   public void removeSpan(Object paramObject)
   {
-    if ((paramObject instanceof MetricAffectingSpan)) {
-      throw new IllegalArgumentException("MetricAffectingSpan can not be removed from PrecomputedText.");
-    }
-    if (Build.VERSION.SDK_INT >= 29)
+    if (!(paramObject instanceof MetricAffectingSpan))
     {
-      this.mWrapped.removeSpan(paramObject);
+      if (Build.VERSION.SDK_INT >= 29)
+      {
+        this.mWrapped.removeSpan(paramObject);
+        return;
+      }
+      this.mText.removeSpan(paramObject);
       return;
     }
-    this.mText.removeSpan(paramObject);
+    throw new IllegalArgumentException("MetricAffectingSpan can not be removed from PrecomputedText.");
   }
   
   @SuppressLint({"NewApi"})
   public void setSpan(Object paramObject, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramObject instanceof MetricAffectingSpan)) {
-      throw new IllegalArgumentException("MetricAffectingSpan can not be set to PrecomputedText.");
-    }
-    if (Build.VERSION.SDK_INT >= 29)
+    if (!(paramObject instanceof MetricAffectingSpan))
     {
-      this.mWrapped.setSpan(paramObject, paramInt1, paramInt2, paramInt3);
+      if (Build.VERSION.SDK_INT >= 29)
+      {
+        this.mWrapped.setSpan(paramObject, paramInt1, paramInt2, paramInt3);
+        return;
+      }
+      this.mText.setSpan(paramObject, paramInt1, paramInt2, paramInt3);
       return;
     }
-    this.mText.setSpan(paramObject, paramInt1, paramInt2, paramInt3);
+    throw new IllegalArgumentException("MetricAffectingSpan can not be set to PrecomputedText.");
   }
   
   public CharSequence subSequence(int paramInt1, int paramInt2)
@@ -273,7 +275,7 @@ public class PrecomputedTextCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.text.PrecomputedTextCompat
  * JD-Core Version:    0.7.0.1
  */

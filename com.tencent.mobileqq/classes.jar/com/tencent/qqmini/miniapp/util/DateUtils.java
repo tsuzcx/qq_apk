@@ -77,44 +77,39 @@ public class DateUtils
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    SimpleDateFormat localSimpleDateFormat;
-    if (paramString.length() >= 10) {
-      if (Pattern.compile(AppLoaderFactory.g().getContext().getResources().getString(R.string.mini_app_time_pattern)).matcher(paramString).matches()) {
-        localSimpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
-      }
-    }
-    for (;;)
+    Object localObject;
+    if (paramString.length() >= 10)
     {
-      if (localSimpleDateFormat == null)
-      {
-        return null;
-        localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        continue;
-        if (paramString.length() >= 7)
-        {
-          localSimpleDateFormat = new SimpleDateFormat("yyyy-MM");
-          continue;
-        }
-        if (paramString.length() >= 4) {
-          localSimpleDateFormat = new SimpleDateFormat("yyyy");
-        }
+      if (Pattern.compile(AppLoaderFactory.g().getContext().getResources().getString(R.string.mini_app_time_pattern)).matcher(paramString).matches()) {
+        localObject = new SimpleDateFormat("yyyy年MM月dd日");
+      } else {
+        localObject = new SimpleDateFormat("yyyy-MM-dd");
       }
-      else
-      {
-        try
-        {
-          paramString = localSimpleDateFormat.parse(paramString);
-          return paramString;
-        }
-        catch (ParseException paramString)
-        {
-          paramString.printStackTrace();
-          QMLog.e("DateUtils", "getDateByStrTime exception." + paramString);
-          return null;
-        }
-      }
-      localSimpleDateFormat = null;
     }
+    else if (paramString.length() >= 7) {
+      localObject = new SimpleDateFormat("yyyy-MM");
+    } else if (paramString.length() >= 4) {
+      localObject = new SimpleDateFormat("yyyy");
+    } else {
+      localObject = null;
+    }
+    if (localObject == null) {
+      return null;
+    }
+    try
+    {
+      paramString = ((SimpleDateFormat)localObject).parse(paramString);
+      return paramString;
+    }
+    catch (ParseException paramString)
+    {
+      paramString.printStackTrace();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getDateByStrTime exception.");
+      ((StringBuilder)localObject).append(paramString);
+      QMLog.e("DateUtils", ((StringBuilder)localObject).toString());
+    }
+    return null;
   }
   
   public static Date getTimeByStrTime(String paramString)
@@ -144,7 +139,7 @@ public class DateUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.util.DateUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -39,15 +39,16 @@ public class GradientAnimTextView
     paramContext.recycle();
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning())) {
+    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    if ((localValueAnimator != null) && (localValueAnimator.isRunning())) {
       this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
@@ -59,36 +60,40 @@ public class GradientAnimTextView
       this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new GradientAnimTextView.1(this));
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
     }
-    if (this.jdField_a_of_type_AndroidGraphicsMatrix != null)
+    paramCanvas = this.jdField_a_of_type_AndroidGraphicsMatrix;
+    if (paramCanvas != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate(this.b, 0.0F);
+      paramCanvas.setTranslate(this.b, 0.0F);
       this.jdField_a_of_type_AndroidGraphicsLinearGradient.setLocalMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
     }
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.c == -1) || (this.d == -2)) {}
-    do
+    if (this.c != -1)
     {
-      do
-      {
+      if (this.d == -2) {
         return;
-      } while (this.jdField_a_of_type_Int != 0);
-      this.jdField_a_of_type_Int = getMeasuredWidth();
-    } while (this.jdField_a_of_type_Int <= 0);
-    this.jdField_a_of_type_AndroidGraphicsPaint = getPaint();
-    float f1 = this.jdField_a_of_type_Int * -2;
-    float f2 = this.jdField_a_of_type_Int;
-    paramInt1 = this.c;
-    paramInt2 = this.d;
-    paramInt3 = this.c;
-    paramInt4 = this.d;
-    Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
-    this.jdField_a_of_type_AndroidGraphicsLinearGradient = new LinearGradient(f1, 0.0F, f2, 0.0F, new int[] { paramInt1, paramInt2, paramInt3, paramInt4 }, null, localTileMode);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setShader(this.jdField_a_of_type_AndroidGraphicsLinearGradient);
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+      }
+      if (this.jdField_a_of_type_Int == 0)
+      {
+        this.jdField_a_of_type_Int = getMeasuredWidth();
+        if (this.jdField_a_of_type_Int > 0)
+        {
+          this.jdField_a_of_type_AndroidGraphicsPaint = getPaint();
+          paramInt1 = this.jdField_a_of_type_Int;
+          float f1 = paramInt1 * -2;
+          float f2 = paramInt1;
+          paramInt1 = this.c;
+          paramInt2 = this.d;
+          Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
+          this.jdField_a_of_type_AndroidGraphicsLinearGradient = new LinearGradient(f1, 0.0F, f2, 0.0F, new int[] { paramInt1, paramInt2, paramInt1, paramInt2 }, null, localTileMode);
+          this.jdField_a_of_type_AndroidGraphicsPaint.setShader(this.jdField_a_of_type_AndroidGraphicsLinearGradient);
+          this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+        }
+      }
+    }
   }
   
   public void setGradientAnimColor(int paramInt1, int paramInt2)
@@ -99,7 +104,7 @@ public class GradientAnimTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.widget.GradientAnimTextView
  * JD-Core Version:    0.7.0.1
  */

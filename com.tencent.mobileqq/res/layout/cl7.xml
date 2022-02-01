@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<RelativeLayout android:layout_width="296.0dip" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="@color/qzone_skin_feed_second_content_text_color" android:id="@id/cnj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="24.0dip" android:text="@string/byr" />
-    <LinearLayout android:orientation="vertical" android:id="@id/cni" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_marginRight="24.0dip" android:layout_marginBottom="4.0dip" android:layout_below="@id/cnj" android:layout_alignLeft="@id/cnj" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/bt7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginRight="24.0dip" android:layout_marginBottom="16.0dip" android:layout_below="@id/cni" android:layout_alignLeft="@id/cnj">
-        <TextView android:textSize="12.0dip" android:textColor="#ff4d94ff" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/byq" />
+    <com.tencent.image.URLImageView android:id="@id/joh" android:layout_width="fill_parent" android:layout_height="212.0dip" android:scaleType="fitXY" android:layout_alignParentTop="true" />
+    <TextView android:textSize="20.0dip" android:textColor="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="9.0dip" android:text="@string/x0f" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/no2" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginTop="9.5dip" android:layout_marginRight="20.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
+        <ImageView android:layout_gravity="center" android:id="@id/no1" android:layout_width="20.0dip" android:layout_height="20.0dip" />
+        <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="换一换" android:includeFontPadding="false" />
     </LinearLayout>
-</merge>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/i2z" android:background="@drawable/dn1" android:layout_width="278.0dip" android:layout_height="wrap_content" android:layout_marginTop="43.0dip" android:layout_centerHorizontal="true" />
+</RelativeLayout>

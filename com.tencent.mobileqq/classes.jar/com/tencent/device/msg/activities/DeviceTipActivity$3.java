@@ -14,8 +14,8 @@ class DeviceTipActivity$3
   
   public void onClick(View paramView)
   {
-    if (!NetworkUtil.g(this.a)) {
-      QQToast.a(this.a, HardCodeUtil.a(2131703261), 2000).a();
+    if (!NetworkUtil.isNetworkAvailable(this.a)) {
+      QQToast.a(this.a, HardCodeUtil.a(2131703393), 2000).a();
     }
     DeviceTipActivity.a(this.a, 2);
     this.a.finish();
@@ -24,7 +24,7 @@ class DeviceTipActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.msg.activities.DeviceTipActivity.3
  * JD-Core Version:    0.7.0.1
  */

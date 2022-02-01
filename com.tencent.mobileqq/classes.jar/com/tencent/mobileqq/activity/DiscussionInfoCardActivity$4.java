@@ -4,7 +4,6 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.data.DiscussionInfo;
 import com.tencent.mobileqq.statistics.ReportTask;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -16,38 +15,27 @@ class DiscussionInfoCardActivity$4
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
+    String str;
     if (AppSetting.d)
     {
-      localObject1 = this.a.getString(2131693109);
-      DiscussionInfoCardActivity.b(this.a).setContentDescription((CharSequence)localObject1);
+      str = this.a.getString(2131693069);
+      DiscussionInfoCardActivity.b(this.a).setContentDescription(str);
     }
-    boolean bool2 = DiscussionInfoCardActivity.a(this.a).a(this.a.a);
-    Object localObject1 = DiscussionInfoCardActivity.a(this.a);
-    Object localObject2 = this.a.a;
-    boolean bool1;
-    if (!bool2)
-    {
-      bool1 = true;
-      ((DiscussionHandler)localObject1).a((DiscussionInfo)localObject2, bool1);
-      localObject2 = new ReportTask(this.a.app).a("dc00899").b("Grp_Dis_set").c("Dis_info");
-      if (!bool2) {
-        break label145;
-      }
+    boolean bool = DiscussionInfoCardActivity.a(this.a).a(this.a.a);
+    DiscussionInfoCardActivity.a(this.a).a(this.a.a, bool ^ true);
+    ReportTask localReportTask = new ReportTask(this.a.app).a("dc00899").b("Grp_Dis_set").c("Dis_info");
+    if (bool) {
+      str = "Clk_unstick";
+    } else {
+      str = "Clk_stick";
     }
-    label145:
-    for (localObject1 = "Clk_unstick";; localObject1 = "Clk_stick")
-    {
-      ((ReportTask)localObject2).d((String)localObject1).a();
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      bool1 = false;
-      break;
-    }
+    localReportTask.d(str).a();
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionInfoCardActivity.4
  * JD-Core Version:    0.7.0.1
  */

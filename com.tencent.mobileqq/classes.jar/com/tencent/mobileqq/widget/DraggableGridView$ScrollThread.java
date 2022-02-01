@@ -32,36 +32,33 @@ class DraggableGridView$ScrollThread
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    for (;;)
     {
-      int i = 0;
-      if (this.jdField_a_of_type_Int == 1) {
-        i = DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.getContext(), 10.0F);
-      }
-      for (;;)
+      if (!this.jdField_a_of_type_Boolean)
       {
-        for (;;)
-        {
-          Message localMessage = new Message();
-          localMessage.arg1 = i;
-          DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).sendMessage(localMessage);
-          try
-          {
-            Thread.sleep(16L);
-          }
-          catch (InterruptedException localInterruptedException) {}
-        }
-        break;
-        if (this.jdField_a_of_type_Int == 2) {
+        int i = 0;
+        int j = this.jdField_a_of_type_Int;
+        if (j == 1) {
+          i = DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.getContext(), 10.0F);
+        } else if (j == 2) {
           i = -DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.getContext(), 10.0F);
         }
+        Message localMessage = new Message();
+        localMessage.arg1 = i;
+        DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).sendMessage(localMessage);
       }
+      try
+      {
+        Thread.sleep(16L);
+      }
+      catch (InterruptedException localInterruptedException) {}
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.DraggableGridView.ScrollThread
  * JD-Core Version:    0.7.0.1
  */

@@ -23,16 +23,12 @@ class NewerGuidePlugin$9
     {
       JSONObject localJSONObject = new JSONObject();
       this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respRecommend", new String[] { localJSONObject.toString() });
-      QQCustomDialog.showPermissionSettingDialog(this.jdField_a_of_type_AndroidAppActivity, HardCodeUtil.a(2131707442));
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.e("NewerGuidePlugin", 1, "deniedReadContacts fail.", localException);
-      }
+      QLog.e("NewerGuidePlugin", 1, "deniedReadContacts fail.", localException);
     }
+    QQCustomDialog.showPermissionSettingDialog(this.jdField_a_of_type_AndroidAppActivity, HardCodeUtil.a(2131707467));
   }
   
   @QQPermissionGrant(1)
@@ -54,7 +50,7 @@ class NewerGuidePlugin$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewerGuidePlugin.9
  * JD-Core Version:    0.7.0.1
  */

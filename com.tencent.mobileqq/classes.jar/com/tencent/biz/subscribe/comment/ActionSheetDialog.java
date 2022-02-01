@@ -49,22 +49,25 @@ public class ActionSheetDialog
     super(paramContext, paramInt);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_b_of_type_AndroidContentContext = paramContext;
-    setContentView(2131558885);
+    setContentView(2131558783);
     b();
     c();
-    K_();
+    D_();
   }
   
-  public ActionSheetDialog(Context paramContext, boolean paramBoolean1, boolean paramBoolean2) {}
+  public ActionSheetDialog(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this(paramContext, i);
+  }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365506));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370914));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131361945));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365352));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370548));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131361951));
     this.jdField_a_of_type_AndroidWidgetButton.setDrawingCacheEnabled(false);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131363419);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379432));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131363349);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378784));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetTextView.setText("");
   }
@@ -108,49 +111,59 @@ public class ActionSheetDialog
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localButton);
     Object localObject = (LinearLayout.LayoutParams)localButton.getLayoutParams();
     ((LinearLayout.LayoutParams)localObject).width = -1;
-    ((LinearLayout.LayoutParams)localObject).height = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131297346));
-    ((LinearLayout.LayoutParams)localObject).bottomMargin = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131296795));
+    ((LinearLayout.LayoutParams)localObject).height = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131297335));
+    ((LinearLayout.LayoutParams)localObject).bottomMargin = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131296775));
     ((LinearLayout.LayoutParams)localObject).gravity = 17;
     localButton.setLayoutParams((ViewGroup.LayoutParams)localObject);
     localButton.setText(paramString);
-    int i;
-    switch (paramInt)
+    int i = 2130839056;
+    if (paramInt != 1)
     {
-    default: 
-      i = this.jdField_b_of_type_AndroidContentContext.getResources().getColor(2131165296);
-      paramInt = 2130839203;
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 5) {
+              paramInt = this.jdField_b_of_type_AndroidContentContext.getResources().getColor(2131165260);
+            } else {
+              paramInt = -14833678;
+            }
+          }
+          else
+          {
+            paramInt = this.jdField_b_of_type_AndroidContentContext.getResources().getColor(2131167443);
+            localButton.setTypeface(Typeface.defaultFromStyle(1));
+          }
+        }
+        else
+        {
+          paramInt = -16777216;
+          int j = AIOUtils.b(8.0F, getContext().getResources());
+          paramString = new SpannableString(localButton.getText());
+          localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840419);
+          ((Drawable)localObject).setBounds(j, 0, ((Drawable)localObject).getIntrinsicWidth() + j, ((Drawable)localObject).getIntrinsicHeight());
+          paramString.setSpan(new ImageSpan((Drawable)localObject, 1), paramString.length() - 1, paramString.length(), 33);
+          localButton.setText(paramString);
+        }
+      }
+      else
+      {
+        paramInt = -14207157;
+        i = 2130839054;
+      }
     }
-    for (;;)
-    {
-      localButton.setBackgroundDrawable(this.jdField_b_of_type_AndroidContentContext.getResources().getDrawable(paramInt));
-      localButton.setTextColor(i);
-      localButton.setTextSize(16.0F);
-      localButton.setOnClickListener(paramOnClickListener);
-      this.jdField_a_of_type_Int += 1;
-      this.jdField_a_of_type_JavaUtilArrayList.add(localButton);
-      return localButton;
-      i = this.jdField_b_of_type_AndroidContentContext.getResources().getColor(2131166925);
-      paramInt = 2130839203;
-      continue;
-      i = -14207157;
-      paramInt = 2130839201;
-      continue;
-      paramInt = AIOUtils.a(8.0F, getContext().getResources());
-      paramString = new SpannableString(localButton.getText());
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840550);
-      ((Drawable)localObject).setBounds(paramInt, 0, ((Drawable)localObject).getIntrinsicWidth() + paramInt, ((Drawable)localObject).getIntrinsicHeight());
-      paramString.setSpan(new ImageSpan((Drawable)localObject, 1), paramString.length() - 1, paramString.length(), 33);
-      localButton.setText(paramString);
-      i = -16777216;
-      paramInt = 2130839203;
-      continue;
-      i = this.jdField_b_of_type_AndroidContentContext.getResources().getColor(2131167423);
-      localButton.setTypeface(Typeface.defaultFromStyle(1));
-      paramInt = 2130839203;
-      continue;
-      i = -14833678;
-      paramInt = 2130839203;
+    else {
+      paramInt = this.jdField_b_of_type_AndroidContentContext.getResources().getColor(2131166941);
     }
+    localButton.setBackgroundDrawable(this.jdField_b_of_type_AndroidContentContext.getResources().getDrawable(i));
+    localButton.setTextColor(paramInt);
+    localButton.setTextSize(16.0F);
+    localButton.setOnClickListener(paramOnClickListener);
+    this.jdField_a_of_type_Int += 1;
+    this.jdField_a_of_type_JavaUtilArrayList.add(localButton);
+    return localButton;
   }
   
   public void a(String paramString)
@@ -174,10 +187,11 @@ public class ActionSheetDialog
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {}
+    paramDialogInterface = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+    if (paramDialogInterface != null) {}
     try
     {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(null);
+      paramDialogInterface.onClick(null);
       return;
     }
     catch (Exception paramDialogInterface) {}
@@ -201,8 +215,11 @@ public class ActionSheetDialog
   
   public void show()
   {
-    if (isShowing()) {}
-    while (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (((Activity)this.jdField_a_of_type_AndroidContentContext).isFinishing())) {
+    if (isShowing()) {
+      return;
+    }
+    Context localContext = this.jdField_a_of_type_AndroidContentContext;
+    if (((localContext instanceof Activity)) && (((Activity)localContext).isFinishing())) {
       return;
     }
     super.show();
@@ -213,7 +230,7 @@ public class ActionSheetDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.ActionSheetDialog
  * JD-Core Version:    0.7.0.1
  */

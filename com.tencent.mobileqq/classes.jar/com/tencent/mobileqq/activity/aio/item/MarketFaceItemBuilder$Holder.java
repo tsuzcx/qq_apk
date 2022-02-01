@@ -10,7 +10,7 @@ import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
 import com.tencent.mobileqq.activity.contact.connections.TriangleView;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.doutu.DuiButtonImageView;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.emoticonview.IPicEmoticonInfo;
 
 public class MarketFaceItemBuilder$Holder
   extends BaseBubbleBuilder.ViewHolder
@@ -27,7 +27,7 @@ public class MarketFaceItemBuilder$Holder
   public TriangleView a;
   EmoticonPackage jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage;
   DuiButtonImageView jdField_a_of_type_ComTencentMobileqqDoutuDuiButtonImageView;
-  public PicEmoticonInfo a;
+  public IPicEmoticonInfo a;
   public boolean a;
   ImageView b;
   public RelativeLayout b;
@@ -41,20 +41,23 @@ public class MarketFaceItemBuilder$Holder
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView.a();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView;
+    if (localObject != null) {
+      ((PttAudioPlayView)localObject).a();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.b();
+    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView;
+    if (localObject != null) {
+      ((PttAudioWaveView)localObject).b();
     }
-    if ((this.g != null) && ((this.g.getDrawable() instanceof Animatable))) {
+    localObject = this.g;
+    if ((localObject != null) && ((((ImageView)localObject).getDrawable() instanceof Animatable))) {
       ((Animatable)this.g.getDrawable()).stop();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder
  * JD-Core Version:    0.7.0.1
  */

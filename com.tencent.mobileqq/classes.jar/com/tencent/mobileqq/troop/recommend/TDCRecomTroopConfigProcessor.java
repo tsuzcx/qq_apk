@@ -13,8 +13,12 @@ public class TDCRecomTroopConfigProcessor
   public static TDCRecomTroopConfigProcessor.TDCRecomTroopConfigBean a()
   {
     TDCRecomTroopConfigProcessor.TDCRecomTroopConfigBean localTDCRecomTroopConfigBean = (TDCRecomTroopConfigProcessor.TDCRecomTroopConfigBean)QConfigManager.a().a(547);
-    if (QLog.isColorLevel()) {
-      QLog.d("TDCRecomTroopConfigProcessor", 2, "getConfigBean configBean = " + localTDCRecomTroopConfigBean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getConfigBean configBean = ");
+      localStringBuilder.append(localTDCRecomTroopConfigBean);
+      QLog.d("TDCRecomTroopConfigProcessor", 2, localStringBuilder.toString());
     }
     return localTDCRecomTroopConfigBean;
   }
@@ -28,14 +32,19 @@ public class TDCRecomTroopConfigProcessor
   @Nullable
   public TDCRecomTroopConfigProcessor.TDCRecomTroopConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length == 0)) {
-      return null;
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length != 0))
+    {
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" onParsed,configID:547, content:");
+        localStringBuilder.append(paramArrayOfQConfItem);
+        QLog.d("TDCRecomTroopConfigProcessor", 2, localStringBuilder.toString());
+      }
+      return TDCRecomTroopConfigProcessor.TDCRecomTroopConfigBean.a(paramArrayOfQConfItem);
     }
-    paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("TDCRecomTroopConfigProcessor", 2, " onParsed,configID:547, content:" + paramArrayOfQConfItem);
-    }
-    return TDCRecomTroopConfigProcessor.TDCRecomTroopConfigBean.a(paramArrayOfQConfItem);
+    return null;
   }
   
   public void a(TDCRecomTroopConfigProcessor.TDCRecomTroopConfigBean paramTDCRecomTroopConfigBean) {}
@@ -69,7 +78,7 @@ public class TDCRecomTroopConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.recommend.TDCRecomTroopConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

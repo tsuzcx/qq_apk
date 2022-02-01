@@ -10,12 +10,23 @@ public class PtvTemplateManager$DoodleInfo
   
   public String toString()
   {
-    return "PtvTemplateInfo{id='" + this.doodleId + '\'' + ", doodleName='" + this.doodleName + '\'' + ", doodleUsable='" + this.doodleUsable + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PtvTemplateInfo{id='");
+    localStringBuilder.append(this.doodleId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", doodleName='");
+    localStringBuilder.append(this.doodleName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", doodleUsable='");
+    localStringBuilder.append(this.doodleUsable);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfo
  * JD-Core Version:    0.7.0.1
  */

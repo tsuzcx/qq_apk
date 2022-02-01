@@ -1,0 +1,45 @@
+package com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle;
+
+import android.graphics.Matrix;
+import android.graphics.Path;
+import java.util.ArrayList;
+
+public class PureLinePath
+  extends DoodleLinePath
+{
+  public Path a;
+  ArrayList<PointAction> a;
+  public int b;
+  public int c;
+  
+  public PureLinePath(Path paramPath, int paramInt1, int paramInt2, int paramInt3)
+  {
+    super(paramInt1);
+    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public PureLinePath(DoodleLinePath paramDoodleLinePath, float paramFloat)
+  {
+    super(paramDoodleLinePath.jdField_a_of_type_Int);
+    if ((paramDoodleLinePath instanceof PureLinePath))
+    {
+      paramDoodleLinePath = (PureLinePath)paramDoodleLinePath;
+      Matrix localMatrix = new Matrix();
+      localMatrix.postScale(paramFloat, paramFloat);
+      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+      this.jdField_a_of_type_AndroidGraphicsPath.addPath(paramDoodleLinePath.jdField_a_of_type_AndroidGraphicsPath, localMatrix);
+      this.jdField_a_of_type_Int = paramDoodleLinePath.jdField_a_of_type_Int;
+      this.b = paramDoodleLinePath.b;
+      this.c = ((int)(paramDoodleLinePath.c * paramFloat));
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.PureLinePath
+ * JD-Core Version:    0.7.0.1
+ */

@@ -36,12 +36,12 @@ public class SliceBitmapDrawable
   private SliceBitmapDrawable(SliceBitmapDrawable.BitmapState paramBitmapState, Resources paramResources)
   {
     this.mBitmapState = paramBitmapState;
-    if (paramResources != null) {}
-    for (this.mTargetDensity = paramResources.getDisplayMetrics().densityDpi;; this.mTargetDensity = paramBitmapState.mTargetDensity)
-    {
-      computeBitmapSize();
-      return;
+    if (paramResources != null) {
+      this.mTargetDensity = paramResources.getDisplayMetrics().densityDpi;
+    } else {
+      this.mTargetDensity = paramBitmapState.mTargetDensity;
     }
+    computeBitmapSize();
   }
   
   private void computeBitmapSize()
@@ -99,10 +99,10 @@ public class SliceBitmapDrawable
   
   public int getOpacity()
   {
-    if ((this.mBitmapState.mSliceBitmap.hasAlpha) || (this.mBitmapState.mPaint.getAlpha() < 255)) {
-      return -3;
+    if ((!this.mBitmapState.mSliceBitmap.hasAlpha) && (this.mBitmapState.mPaint.getAlpha() >= 255)) {
+      return -1;
     }
-    return -1;
+    return -3;
   }
   
   public final Paint getPaint()
@@ -184,7 +184,7 @@ public class SliceBitmapDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.drawable.SliceBitmapDrawable
  * JD-Core Version:    0.7.0.1
  */

@@ -27,7 +27,7 @@ public class WXShareHelperFromQQMiniApp
   public static final String WX_APPID_DEBUG = "wx76a769350165bcff";
   public static final String WX_APPID_RELEASE = "wxf0a80d0ac2e82aa7";
   private static final byte[] lock = new byte[0];
-  private static WXShareHelperFromQQMiniApp mWxShareHelperFromQQMiniApp = null;
+  private static WXShareHelperFromQQMiniApp mWxShareHelperFromQQMiniApp;
   private IWXAPI api = WXAPIFactory.createWXAPI(BaseApplicationImpl.getApplication(), this.mWxAppId, true);
   private LaunchParam launchParamFromQQ;
   private String mWxAppId = "wxf0a80d0ac2e82aa7";
@@ -42,14 +42,15 @@ public class WXShareHelperFromQQMiniApp
   
   public static WXShareHelperFromQQMiniApp getInstance()
   {
-    if (mWxShareHelperFromQQMiniApp == null) {}
-    synchronized (lock)
-    {
-      if (mWxShareHelperFromQQMiniApp == null) {
-        mWxShareHelperFromQQMiniApp = new WXShareHelperFromQQMiniApp();
+    if (mWxShareHelperFromQQMiniApp == null) {
+      synchronized (lock)
+      {
+        if (mWxShareHelperFromQQMiniApp == null) {
+          mWxShareHelperFromQQMiniApp = new WXShareHelperFromQQMiniApp();
+        }
       }
-      return mWxShareHelperFromQQMiniApp;
     }
+    return mWxShareHelperFromQQMiniApp;
   }
   
   public void handleWXEntryActivityIntent(Activity paramActivity, Intent paramIntent)
@@ -64,25 +65,31 @@ public class WXShareHelperFromQQMiniApp
       }
       this.api.handleIntent(paramIntent, this);
     }
-    if ((this.miniAppInfoFromQQ != null) && (this.launchParamFromQQ != null)) {}
-    while (this.miniAppInfoFromSDK == null) {
-      try
+    paramIntent = this.miniAppInfoFromQQ;
+    if (paramIntent != null)
+    {
+      LaunchParam localLaunchParam = this.launchParamFromQQ;
+      if (localLaunchParam != null)
       {
-        MiniAppController.launchMiniAppByAppInfo(paramActivity, this.miniAppInfoFromQQ, this.launchParamFromQQ);
+        try
+        {
+          MiniAppController.launchMiniAppByAppInfo(paramActivity, paramIntent, localLaunchParam);
+        }
+        catch (MiniAppException paramActivity)
+        {
+          paramActivity.printStackTrace();
+        }
         this.miniAppInfoFromQQ = null;
         this.launchParamFromQQ = null;
         return;
       }
-      catch (MiniAppException paramActivity)
-      {
-        for (;;)
-        {
-          paramActivity.printStackTrace();
-        }
-      }
     }
-    MiniSDK.startMiniApp(paramActivity, this.miniAppInfoFromSDK);
-    this.miniAppInfoFromSDK = null;
+    paramIntent = this.miniAppInfoFromSDK;
+    if (paramIntent != null)
+    {
+      MiniSDK.startMiniApp(paramActivity, paramIntent);
+      this.miniAppInfoFromSDK = null;
+    }
   }
   
   public void onReceive(Context paramContext, Intent paramIntent) {}
@@ -110,10 +117,11 @@ public class WXShareHelperFromQQMiniApp
     try
     {
       this.api.registerApp(this.mWxAppId);
-      if (QLog.isColorLevel()) {
+      if (QLog.isColorLevel())
+      {
         QLog.d("WXShareHelperFromQQMiniApp", 1, "registerApp()");
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -123,7 +131,7 @@ public class WXShareHelperFromQQMiniApp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.WXShareHelperFromQQMiniApp
  * JD-Core Version:    0.7.0.1
  */

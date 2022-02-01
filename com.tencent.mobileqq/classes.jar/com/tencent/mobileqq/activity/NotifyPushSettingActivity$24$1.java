@@ -15,22 +15,14 @@ class NotifyPushSettingActivity$24$1
   
   public void run()
   {
-    boolean bool = true;
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity$24.a.getActivity(), 1, HardCodeUtil.a(2131707635), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299166));
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity$24.a.getActivity(), 1, HardCodeUtil.a(2131707660), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299168));
     NotifyPushSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity$24.a).a().setText(this.jdField_a_of_type_JavaLangString);
-    NotifyPushSettingActivity localNotifyPushSettingActivity = this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity$24.a;
-    if (!NotifyPushSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity$24.a).a()) {}
-    for (;;)
-    {
-      NotifyPushSettingActivity.a(localNotifyPushSettingActivity, bool);
-      return;
-      bool = false;
-    }
+    NotifyPushSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity$24.a, NotifyPushSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity$24.a).a() ^ true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotifyPushSettingActivity.24.1
  * JD-Core Version:    0.7.0.1
  */

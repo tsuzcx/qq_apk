@@ -42,30 +42,32 @@ public class WatchPanelView
   
   private void b()
   {
-    LayoutInflater.from(getContext()).inflate(2131561089, this, true);
-    setBackgroundResource(2130838066);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379627));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379622));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379630));
-    this.jdField_a_of_type_ComTencentWidgetPatchedButton = ((PatchedButton)findViewById(2131379628));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379629));
+    LayoutInflater.from(getContext()).inflate(2131560953, this, true);
+    setBackgroundResource(2130837913);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378971));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378966));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378974));
+    this.jdField_a_of_type_ComTencentWidgetPatchedButton = ((PatchedButton)findViewById(2131378972));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378973));
     this.jdField_a_of_type_ComTencentWidgetPatchedButton.setOnClickListener(this);
-    this.jdField_a_of_type_Int = AIOUtils.a(39.0F, getResources());
+    this.jdField_a_of_type_Int = AIOUtils.b(39.0F, getResources());
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null)
+    URLDrawable localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    if (localURLDrawable != null)
     {
-      this.jdField_a_of_type_ComTencentImageURLDrawable.setDecodeHandler(null);
+      localURLDrawable.setDecodeHandler(null);
       this.jdField_a_of_type_ComTencentImageURLDrawable = null;
     }
   }
   
   public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetImageView instanceof ThemeImageView)) {
-      ((ThemeImageView)this.jdField_a_of_type_AndroidWidgetImageView).setMaskShape(paramInt);
+    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    if ((localImageView instanceof ThemeImageView)) {
+      ((ThemeImageView)localImageView).setMaskShape(paramInt);
     }
   }
   
@@ -86,22 +88,27 @@ public class WatchPanelView
         int i = this.jdField_a_of_type_Int;
         ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i;
         ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i;
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localDrawable;
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localDrawable;
         localObject = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
-        ((URLDrawable)localObject).setTag(URLDrawableDecodeHandler.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, 6));
-        ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.e);
+        i = this.jdField_a_of_type_Int;
+        ((URLDrawable)localObject).setTag(URLDrawableDecodeHandler.b(i, i, 6));
+        ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.d);
         this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
         this.jdField_a_of_type_AndroidWidgetImageView.setTag(paramString);
-        if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {
-          this.jdField_a_of_type_ComTencentImageURLDrawable.setDecodeHandler(null);
+        paramString = this.jdField_a_of_type_ComTencentImageURLDrawable;
+        if (paramString != null) {
+          paramString.setDecodeHandler(null);
         }
         this.jdField_a_of_type_ComTencentImageURLDrawable = ((URLDrawable)localObject);
       }
-      return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_AndroidWidgetImageView.setTag("");
+    else
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      this.jdField_a_of_type_AndroidWidgetImageView.setTag("");
+    }
   }
   
   public void a(String paramString, int paramInt)
@@ -117,14 +124,15 @@ public class WatchPanelView
     if (TextUtils.isEmpty(paramString))
     {
       this.jdField_b_of_type_AndroidWidgetImageView.setTag("");
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(ImageUtil.c());
-    }
-    while (paramString.equals((String)this.jdField_b_of_type_AndroidWidgetImageView.getTag())) {
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(ImageUtil.e());
       return;
     }
-    paramQQAppInterface = paramQQAppInterface.getFaceBitmap(paramString, true);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(paramQQAppInterface);
-    this.jdField_b_of_type_AndroidWidgetImageView.setTag(paramString);
+    if (!paramString.equals((String)this.jdField_b_of_type_AndroidWidgetImageView.getTag()))
+    {
+      paramQQAppInterface = paramQQAppInterface.getFaceBitmap(paramString, true);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(paramQQAppInterface);
+      this.jdField_b_of_type_AndroidWidgetImageView.setTag(paramString);
+    }
   }
   
   public void b(int paramInt)
@@ -149,15 +157,16 @@ public class WatchPanelView
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    View.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+    if (localOnClickListener != null) {
+      localOnClickListener.onClick(paramView);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.together.ui.WatchPanelView
  * JD-Core Version:    0.7.0.1
  */

@@ -18,22 +18,22 @@ public final class ThreadUtils
   
   public static void addLooperPrinter(Looper paramLooper, Printer paramPrinter)
   {
-    if (paramLooper == null) {
-      throw new RuntimeException("null looper");
-    }
-    synchronized (sLooperPrinters)
-    {
-      ThreadUtils.PrinterWrapper localPrinterWrapper2 = (ThreadUtils.PrinterWrapper)sLooperPrinters.get(paramLooper);
-      ThreadUtils.PrinterWrapper localPrinterWrapper1 = localPrinterWrapper2;
-      if (localPrinterWrapper2 == null)
+    if (paramLooper != null) {
+      synchronized (sLooperPrinters)
       {
-        localPrinterWrapper1 = new ThreadUtils.PrinterWrapper();
-        sLooperPrinters.put(paramLooper, localPrinterWrapper1);
-        paramLooper.setMessageLogging(localPrinterWrapper1);
+        ThreadUtils.PrinterWrapper localPrinterWrapper2 = (ThreadUtils.PrinterWrapper)sLooperPrinters.get(paramLooper);
+        ThreadUtils.PrinterWrapper localPrinterWrapper1 = localPrinterWrapper2;
+        if (localPrinterWrapper2 == null)
+        {
+          localPrinterWrapper1 = new ThreadUtils.PrinterWrapper();
+          sLooperPrinters.put(paramLooper, localPrinterWrapper1);
+          paramLooper.setMessageLogging(localPrinterWrapper1);
+        }
+        localPrinterWrapper1.add(paramPrinter);
+        return;
       }
-      localPrinterWrapper1.add(paramPrinter);
-      return;
     }
+    throw new RuntimeException("null looper");
   }
   
   public static void addLooperPrinter(Printer paramPrinter)
@@ -78,7 +78,7 @@ public final class ThreadUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weiyun.transmission.utils.thread.ThreadUtils
  * JD-Core Version:    0.7.0.1
  */

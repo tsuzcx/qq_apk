@@ -7,7 +7,7 @@ public class ProfileUtil
     if (paramInt == 0) {
       return 0;
     }
-    return (0xFF00 & paramInt) >> 8;
+    return (paramInt & 0xFF00) >> 8;
   }
   
   public static int b(int paramInt)
@@ -20,7 +20,7 @@ public class ProfileUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.profile.ProfileUtil
  * JD-Core Version:    0.7.0.1
  */

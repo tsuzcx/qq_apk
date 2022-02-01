@@ -12,14 +12,20 @@ class GdtDrawableLoader$1
   public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
     GdtDrawableLoader.a(this.a, paramURLDrawable);
-    GdtLog.b("GdtDrawableLoader", "onLoadCanceled " + GdtDrawableLoader.a(this.a));
+    paramURLDrawable = new StringBuilder();
+    paramURLDrawable.append("onLoadCanceled ");
+    paramURLDrawable.append(GdtDrawableLoader.a(this.a));
+    GdtLog.b("GdtDrawableLoader", paramURLDrawable.toString());
     GdtDrawableLoader.a(this.a, false);
   }
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
     GdtDrawableLoader.a(this.a, paramURLDrawable);
-    GdtLog.d("GdtDrawableLoader", "onLoadFialed " + GdtDrawableLoader.a(this.a), paramThrowable);
+    paramURLDrawable = new StringBuilder();
+    paramURLDrawable.append("onLoadFialed ");
+    paramURLDrawable.append(GdtDrawableLoader.a(this.a));
+    GdtLog.d("GdtDrawableLoader", paramURLDrawable.toString(), paramThrowable);
     if (!GdtDrawableLoader.a(this.a)) {
       GdtDrawableLoader.a(this.a, false);
     }
@@ -28,19 +34,27 @@ class GdtDrawableLoader$1
   public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
   {
     GdtDrawableLoader.a(this.a, paramURLDrawable);
-    GdtLog.b("GdtDrawableLoader", "onLoadProgressed " + paramInt + " " + GdtDrawableLoader.a(this.a));
+    paramURLDrawable = new StringBuilder();
+    paramURLDrawable.append("onLoadProgressed ");
+    paramURLDrawable.append(paramInt);
+    paramURLDrawable.append(" ");
+    paramURLDrawable.append(GdtDrawableLoader.a(this.a));
+    GdtLog.b("GdtDrawableLoader", paramURLDrawable.toString());
   }
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
     GdtDrawableLoader.a(this.a, paramURLDrawable);
-    GdtLog.b("GdtDrawableLoader", "onLoadSuccessed " + GdtDrawableLoader.a(this.a));
+    paramURLDrawable = new StringBuilder();
+    paramURLDrawable.append("onLoadSuccessed ");
+    paramURLDrawable.append(GdtDrawableLoader.a(this.a));
+    GdtLog.b("GdtDrawableLoader", paramURLDrawable.toString());
     GdtDrawableLoader.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.image.GdtDrawableLoader.1
  * JD-Core Version:    0.7.0.1
  */

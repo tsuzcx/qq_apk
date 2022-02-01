@@ -15,17 +15,20 @@ public final class AdUriUtil
   
   public static String getQueryParameter(Uri paramUri, String paramString)
   {
-    if ((paramUri == null) || (TextUtils.isEmpty(paramString))) {
-      return null;
-    }
-    try
+    if (paramUri != null)
     {
-      paramUri = paramUri.getQueryParameter(paramString);
-      return paramUri;
-    }
-    catch (Throwable paramUri)
-    {
-      AdLog.e("AdUriUtil", "getQueryParameter", paramUri);
+      if (TextUtils.isEmpty(paramString)) {
+        return null;
+      }
+      try
+      {
+        paramUri = paramUri.getQueryParameter(paramString);
+        return paramUri;
+      }
+      catch (Throwable paramUri)
+      {
+        AdLog.e("AdUriUtil", "getQueryParameter", paramUri);
+      }
     }
     return null;
   }
@@ -49,8 +52,16 @@ public final class AdUriUtil
   
   public static String replaceHttpsWithHttpForVivoY67OnAndroidM(String paramString)
   {
-    if (TextUtils.isEmpty(Build.MODEL)) {}
-    while ((!Build.MODEL.toLowerCase().contains("vivo")) || (!Build.MODEL.toLowerCase().contains("y67")) || (Build.VERSION.SDK_INT != 23)) {
+    if (TextUtils.isEmpty(Build.MODEL)) {
+      return paramString;
+    }
+    if (!Build.MODEL.toLowerCase().contains("vivo")) {
+      return paramString;
+    }
+    if (!Build.MODEL.toLowerCase().contains("y67")) {
+      return paramString;
+    }
+    if (Build.VERSION.SDK_INT != 23) {
       return paramString;
     }
     return replaceSchemaOfUrl(paramString, "https", "http");
@@ -58,24 +69,30 @@ public final class AdUriUtil
   
   private static String replaceSchemaOfUrl(String paramString1, String paramString2, String paramString3)
   {
-    if (TextUtils.isEmpty(paramString1)) {}
-    do
-    {
-      do
-      {
-        Uri localUri;
-        do
-        {
-          do
-          {
-            return paramString1;
-          } while ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)));
-          localUri = parse(paramString1);
-        } while ((localUri == null) || (!paramString2.equalsIgnoreCase(localUri.getScheme())));
-        paramString2 = localUri.buildUpon();
-      } while (paramString2 == null);
-      paramString2 = paramString2.scheme(paramString3);
-    } while (paramString2 == null);
+    if (TextUtils.isEmpty(paramString1)) {
+      return paramString1;
+    }
+    if (TextUtils.isEmpty(paramString2)) {
+      return paramString1;
+    }
+    if (TextUtils.isEmpty(paramString3)) {
+      return paramString1;
+    }
+    Uri localUri = parse(paramString1);
+    if (localUri == null) {
+      return paramString1;
+    }
+    if (!paramString2.equalsIgnoreCase(localUri.getScheme())) {
+      return paramString1;
+    }
+    paramString2 = localUri.buildUpon();
+    if (paramString2 == null) {
+      return paramString1;
+    }
+    paramString2 = paramString2.scheme(paramString3);
+    if (paramString2 == null) {
+      return paramString1;
+    }
     return paramString2.toString();
   }
 }

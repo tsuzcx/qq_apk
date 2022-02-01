@@ -14,17 +14,17 @@ class GdtQQReminderAdapter$1
   {
     boolean bool = true;
     GdtLog.b("GdtQQReminderAdapter", String.format("QQReminderSwitchListener.onResult %b", new Object[] { Boolean.valueOf(paramBoolean) }));
-    if ((paramBoolean) && (QQReminderAMSHelper.a())) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      AdQQReminderManager.INSTANCE.onQQReminderSwichOnResult(paramBoolean);
-      return;
+    if ((paramBoolean) && (QQReminderAMSHelper.a())) {
+      paramBoolean = bool;
+    } else {
+      paramBoolean = false;
     }
+    AdQQReminderManager.INSTANCE.onQQReminderSwichOnResult(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtQQReminderAdapter.1
  * JD-Core Version:    0.7.0.1
  */

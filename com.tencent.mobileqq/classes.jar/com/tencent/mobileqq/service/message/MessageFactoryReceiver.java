@@ -26,18 +26,17 @@ import QQService.StreamInfo;
 import android.os.Bundle;
 import com.qq.jce.wup.UniPacket;
 import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.log.ReportLog;
-import com.tencent.mobileqq.streamtransfile.StreamDataManager;
+import com.tencent.imcore.message.InitMsgModule;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class MessageFactoryReceiver
 {
-  private static final String a = MessageHandler.class.getSimpleName();
+  private static MessageFactoryReceiver.Callback a;
+  
+  static {}
   
   private <T> T a(byte[] paramArrayOfByte, String paramString, T paramT)
   {
@@ -51,12 +50,13 @@ public class MessageFactoryReceiver
       localUniPacket.decode(paramArrayOfByte);
       return localUniPacket.getByClass(paramString, paramT);
     }
-    catch (Exception paramArrayOfByte)
-    {
-      return null;
-    }
-    catch (RuntimeException paramArrayOfByte) {}
+    catch (RuntimeException|Exception paramArrayOfByte) {}
     return null;
+  }
+  
+  public static void a(MessageFactoryReceiver.Callback paramCallback)
+  {
+    a = paramCallback;
   }
   
   private void a(ToServiceMsg paramToServiceMsg, int paramInt, String paramString, long paramLong) {}
@@ -77,17 +77,18 @@ public class MessageFactoryReceiver
   private Object c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     RespGetSign localRespGetSign = (RespGetSign)a(paramFromServiceMsg.getWupBuffer(), "RespGetSign", new RespGetSign());
-    if ((localRespGetSign == null) || (localRespGetSign.iReplyCode != 0))
-    {
-      if (localRespGetSign == null) {}
-      for (long l = 2139062143L;; l = localRespGetSign.iReplyCode)
-      {
-        a(paramToServiceMsg, l);
-        paramFromServiceMsg.extraData.putLong("ServerReplyCode", l);
-        return null;
-      }
+    if ((localRespGetSign != null) && (localRespGetSign.iReplyCode == 0)) {
+      return new MessageFactoryReceiver.SigStruct(this, localRespGetSign.vKey, localRespGetSign.vSign);
     }
-    return new MessageFactoryReceiver.SigStruct(this, localRespGetSign.vKey, localRespGetSign.vSign);
+    long l;
+    if (localRespGetSign == null) {
+      l = 2139062143L;
+    } else {
+      l = localRespGetSign.iReplyCode;
+    }
+    a(paramToServiceMsg, l);
+    paramFromServiceMsg.extraData.putLong("ServerReplyCode", l);
+    return null;
   }
   
   private Object d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -97,7 +98,7 @@ public class MessageFactoryReceiver
       return null;
     }
     paramFromServiceMsg = paramToServiceMsg.stStreamInfo;
-    return new MessageFactoryReceiver.UploadStreamStruct(StreamDataManager.a(paramFromServiceMsg.iMsgId, 0), paramToServiceMsg.shResetSeq, paramFromServiceMsg.shFlowLayer, paramFromServiceMsg, paramToServiceMsg.result);
+    return new MessageFactoryReceiver.UploadStreamStruct(a.a(paramFromServiceMsg.iMsgId), paramToServiceMsg.shResetSeq, paramFromServiceMsg.shFlowLayer, paramFromServiceMsg, paramToServiceMsg.result);
   }
   
   private Object e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -106,20 +107,32 @@ public class MessageFactoryReceiver
     if (paramToServiceMsg == null) {
       return null;
     }
-    paramFromServiceMsg = paramToServiceMsg.stStreamInfo;
+    Object localObject = paramToServiceMsg.stStreamInfo;
     StreamData localStreamData = paramToServiceMsg.stStreamData;
     long l = paramToServiceMsg.lKey;
-    Object[] arrayOfObject = new Object[6];
-    arrayOfObject[0] = Long.valueOf(l);
-    arrayOfObject[1] = paramFromServiceMsg;
-    arrayOfObject[2] = localStreamData;
-    arrayOfObject[3] = Long.valueOf(paramToServiceMsg.bubbleID);
-    arrayOfObject[4] = Long.valueOf(paramToServiceMsg.subBubbleId);
-    arrayOfObject[5] = Long.valueOf(paramToServiceMsg.diyAddonId);
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, "decodeServerPushStream: iSeq:" + paramToServiceMsg.iSeq + ", lKey: " + l + ", vipBubbleID:" + arrayOfObject[3] + ", subBubbleId:" + arrayOfObject[4] + ", diyAddonId:" + arrayOfObject[5]);
+    paramFromServiceMsg = new Object[6];
+    paramFromServiceMsg[0] = Long.valueOf(l);
+    paramFromServiceMsg[1] = localObject;
+    paramFromServiceMsg[2] = localStreamData;
+    paramFromServiceMsg[3] = Long.valueOf(paramToServiceMsg.bubbleID);
+    paramFromServiceMsg[4] = Long.valueOf(paramToServiceMsg.subBubbleId);
+    paramFromServiceMsg[5] = Long.valueOf(paramToServiceMsg.diyAddonId);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("decodeServerPushStream: iSeq:");
+      ((StringBuilder)localObject).append(paramToServiceMsg.iSeq);
+      ((StringBuilder)localObject).append(", lKey: ");
+      ((StringBuilder)localObject).append(l);
+      ((StringBuilder)localObject).append(", vipBubbleID:");
+      ((StringBuilder)localObject).append(paramFromServiceMsg[3]);
+      ((StringBuilder)localObject).append(", subBubbleId:");
+      ((StringBuilder)localObject).append(paramFromServiceMsg[4]);
+      ((StringBuilder)localObject).append(", diyAddonId:");
+      ((StringBuilder)localObject).append(paramFromServiceMsg[5]);
+      QLog.d("MessageHandler", 2, ((StringBuilder)localObject).toString());
     }
-    return arrayOfObject;
+    return paramFromServiceMsg;
   }
   
   private Object f(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -144,22 +157,20 @@ public class MessageFactoryReceiver
   {
     RespInsertBlackList localRespInsertBlackList = (RespInsertBlackList)a(paramFromServiceMsg.getWupBuffer(), "RespInsertBlackList", new RespInsertBlackList());
     paramFromServiceMsg.extraData.putString("insertUin", paramToServiceMsg.extraData.getString("insertUin"));
-    paramToServiceMsg = localRespInsertBlackList;
     if (localRespInsertBlackList.stHeader.eReplyCode != 0) {
-      paramToServiceMsg = null;
+      return null;
     }
-    return paramToServiceMsg;
+    return localRespInsertBlackList;
   }
   
   private Object j(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     RespDeleteBlackList localRespDeleteBlackList = (RespDeleteBlackList)a(paramFromServiceMsg.getWupBuffer(), "RespDeleteBlackList", new RespDeleteBlackList());
     paramFromServiceMsg.extraData.putString("deleteUin", paramToServiceMsg.extraData.getString("deleteUin"));
-    paramToServiceMsg = localRespDeleteBlackList;
     if (localRespDeleteBlackList.stHeader.eReplyCode != 0) {
-      paramToServiceMsg = null;
+      return null;
     }
-    return paramToServiceMsg;
+    return localRespDeleteBlackList;
   }
   
   private Object k(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -192,7 +203,7 @@ public class MessageFactoryReceiver
     paramToServiceMsg = (SvcResponseGetMsgV2)a(paramFromServiceMsg.getWupBuffer(), "resp_GetMsgV2", new SvcResponseGetMsgV2());
     if (paramToServiceMsg != null)
     {
-      ReportLog.a("Video", "Receive message packet: seq = " + paramFromServiceMsg.getRequestSsoSeq() + " size = " + paramToServiceMsg.vMsgInfos.size());
+      a.a(paramFromServiceMsg, paramToServiceMsg);
       return paramToServiceMsg;
     }
     return null;
@@ -209,129 +220,148 @@ public class MessageFactoryReceiver
   
   private Object q(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    RespOffFilePack localRespOffFilePack = (RespOffFilePack)a(paramFromServiceMsg.getWupBuffer(), "RespOffFilePack", new RespOffFilePack());
+    Object localObject1 = (RespOffFilePack)a(paramFromServiceMsg.getWupBuffer(), "RespOffFilePack", new RespOffFilePack());
     paramToServiceMsg.extraData.getLong("msgTime");
     byte b1 = paramToServiceMsg.extraData.getByte("type");
     paramToServiceMsg.extraData.getString("friendUin");
-    if ((localRespOffFilePack == null) || (localRespOffFilePack.iReplyCode != 0))
+    long l1;
+    if ((localObject1 != null) && (((RespOffFilePack)localObject1).iReplyCode == 0))
     {
-      paramToServiceMsg = paramFromServiceMsg.extraData;
-      if (localRespOffFilePack == null) {}
-      for (l1 = 2139062143L;; l1 = localRespOffFilePack.iReplyCode)
+      byte b2 = localObject1.vBody[0];
+      l1 = PkgTools.getLongData(((RespOffFilePack)localObject1).vBody, 1);
+      int i = PkgTools.getShortData(((RespOffFilePack)localObject1).vBody, 5);
+      paramFromServiceMsg = new byte[i];
+      PkgTools.copyData(paramFromServiceMsg, 0, ((RespOffFilePack)localObject1).vBody, 7, i);
+      paramFromServiceMsg = PkgTools.getUTFString(paramFromServiceMsg, 0, i);
+      i = 7 + i;
+      if (QLog.isColorLevel())
       {
-        paramToServiceMsg.putLong("ServerReplyCode", l1);
-        return null;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("<<<<decodeGetOffLineFileResp cSubCmd:");
+        ((StringBuilder)localObject2).append(b2);
+        QLog.d("MessageHandler", 2, ((StringBuilder)localObject2).toString());
       }
-    }
-    byte b2 = localRespOffFilePack.vBody[0];
-    long l1 = PkgTools.getLongData(localRespOffFilePack.vBody, 1);
-    int i = PkgTools.getShortData(localRespOffFilePack.vBody, 5);
-    paramFromServiceMsg = new byte[i];
-    PkgTools.copyData(paramFromServiceMsg, 0, localRespOffFilePack.vBody, 7, i);
-    paramFromServiceMsg = PkgTools.getUTFString(paramFromServiceMsg, 0, i);
-    i += 7;
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, "<<<<decodeGetOffLineFileResp cSubCmd:" + b2);
-    }
-    long l2;
-    long l3;
-    long l4;
-    long l5;
-    byte[] arrayOfByte;
-    switch (b2)
-    {
-    case 4: 
-    case 5: 
-    default: 
-      return null;
-    case 1: 
-      l2 = PkgTools.getLongLongData(localRespOffFilePack.vBody, i);
+      if (b2 != 1)
+      {
+        if (b2 != 2)
+        {
+          if (b2 != 3)
+          {
+            if (b2 != 6) {
+              return null;
+            }
+            j = PkgTools.getShortData(((RespOffFilePack)localObject1).vBody, i);
+            paramToServiceMsg = new byte[j];
+            PkgTools.copyData(paramToServiceMsg, 0, ((RespOffFilePack)localObject1).vBody, i + 2, j);
+            return new MessageFactoryReceiver.OffLineFileInfo(this, l1, paramFromServiceMsg, b2, b1, paramToServiceMsg);
+          }
+          j = localObject1.vBody[i];
+          i += 1;
+          PkgTools.getShortData(((RespOffFilePack)localObject1).vBody, i);
+          i += 2;
+          PkgTools.getShortData(((RespOffFilePack)localObject1).vBody, i);
+          i += 2;
+          PkgTools.getShortData(((RespOffFilePack)localObject1).vBody, i);
+          i += 2;
+          PkgTools.getShortData(((RespOffFilePack)localObject1).vBody, i);
+          i += 2;
+          j = localObject1.vBody[i];
+          i += 1;
+          l2 = PkgTools.getLongData(((RespOffFilePack)localObject1).vBody, i);
+          j = i + 4;
+          i = PkgTools.getShortData(((RespOffFilePack)localObject1).vBody, j);
+          j += 2;
+          PkgTools.copyData(new byte[i], 0, ((RespOffFilePack)localObject1).vBody, j, i);
+          j += i;
+          i = PkgTools.getShortData(((RespOffFilePack)localObject1).vBody, j);
+          j += 2;
+          localObject2 = new byte[i];
+          PkgTools.copyData((byte[])localObject2, 0, ((RespOffFilePack)localObject1).vBody, j, i);
+          j += i;
+          i = localObject1.vBody[j];
+          j += 1;
+          PkgTools.copyData(new byte[i], 0, ((RespOffFilePack)localObject1).vBody, j, i);
+          j += i;
+          i = localObject1.vBody[j];
+          j += 1;
+          PkgTools.copyData(new byte[i], 0, ((RespOffFilePack)localObject1).vBody, j, i);
+          j += i;
+          i = PkgTools.getShortData(((RespOffFilePack)localObject1).vBody, j);
+          j += 2;
+          Object localObject3 = new byte[i];
+          PkgTools.copyData((byte[])localObject3, 0, ((RespOffFilePack)localObject1).vBody, j, i);
+          localObject3 = PkgTools.getUTFString((byte[])localObject3, 0, i);
+          i = j + i;
+          j = localObject1.vBody[i];
+          i += 1;
+          l3 = PkgTools.getLongData(((RespOffFilePack)localObject1).vBody, i);
+          i += 4;
+          l4 = PkgTools.getLongData(((RespOffFilePack)localObject1).vBody, i);
+          i += 4;
+          PkgTools.getShortData(((RespOffFilePack)localObject1).vBody, i);
+          i += 2;
+          PkgTools.getLongData(((RespOffFilePack)localObject1).vBody, i);
+          l5 = PkgTools.getLongData(((RespOffFilePack)localObject1).vBody, i + 4);
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("<<<<decodeGetOffLineFileResp dwUploadTime = ");
+            ((StringBuilder)localObject1).append(l5);
+            QLog.i("MessageHandler", 2, ((StringBuilder)localObject1).toString());
+          }
+          return new MessageFactoryReceiver.OffLineFileInfo(this, l1, paramFromServiceMsg, b2, b1, l2, HexUtil.bytes2HexStr((byte[])localObject2), l4, paramToServiceMsg.extraData.getLong("msgTime"), paramToServiceMsg.extraData.getShort("msgSeq"), l3, (String)localObject3, paramToServiceMsg.extraData.getLong("delUin"));
+        }
+        return new MessageFactoryReceiver.OffLineFileInfo(this, l1, paramFromServiceMsg, b2, b1);
+      }
+      long l2 = PkgTools.getLongLongData(((RespOffFilePack)localObject1).vBody, i);
       i += 8;
-      l3 = PkgTools.getLongLongData(localRespOffFilePack.vBody, i);
+      long l3 = PkgTools.getLongLongData(((RespOffFilePack)localObject1).vBody, i);
       i += 8;
-      l4 = PkgTools.getLongData(localRespOffFilePack.vBody, i);
+      long l4 = PkgTools.getLongData(((RespOffFilePack)localObject1).vBody, i);
       i += 4;
-      l5 = PkgTools.getLongData(localRespOffFilePack.vBody, i);
+      long l5 = PkgTools.getLongData(((RespOffFilePack)localObject1).vBody, i);
       i += 4;
-      short s = PkgTools.getShortData(localRespOffFilePack.vBody, i);
-      j = i + 2;
-      i = PkgTools.getShortData(localRespOffFilePack.vBody, j);
+      short s = PkgTools.getShortData(((RespOffFilePack)localObject1).vBody, i);
+      int j = i + 2;
+      i = PkgTools.getShortData(((RespOffFilePack)localObject1).vBody, j);
       j += 2;
       paramToServiceMsg = new byte[i];
-      PkgTools.copyData(paramToServiceMsg, 0, localRespOffFilePack.vBody, j, paramToServiceMsg.length);
+      PkgTools.copyData(paramToServiceMsg, 0, ((RespOffFilePack)localObject1).vBody, j, paramToServiceMsg.length);
       j += paramToServiceMsg.length;
-      i = PkgTools.getShortData(localRespOffFilePack.vBody, j);
+      i = PkgTools.getShortData(((RespOffFilePack)localObject1).vBody, j);
       j += 2;
-      arrayOfByte = new byte[i];
-      PkgTools.copyData(arrayOfByte, 0, localRespOffFilePack.vBody, j, arrayOfByte.length);
-      i = j + arrayOfByte.length;
-      byte b3 = localRespOffFilePack.vBody[i];
-      i += 1;
-      long l6 = PkgTools.getLongData(localRespOffFilePack.vBody, i);
-      if (QLog.isColorLevel()) {
-        QLog.d("wk", 2, "" + l1 + "|" + l5 + "|" + s + "|" + paramToServiceMsg + "|" + arrayOfByte + "|" + b3);
+      Object localObject2 = new byte[i];
+      PkgTools.copyData((byte[])localObject2, 0, ((RespOffFilePack)localObject1).vBody, j, localObject2.length);
+      i = j + localObject2.length;
+      byte b3 = localObject1.vBody[i];
+      long l6 = PkgTools.getLongData(((RespOffFilePack)localObject1).vBody, i + 1);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("");
+        ((StringBuilder)localObject1).append(l1);
+        ((StringBuilder)localObject1).append("|");
+        ((StringBuilder)localObject1).append(l5);
+        ((StringBuilder)localObject1).append("|");
+        ((StringBuilder)localObject1).append(s);
+        ((StringBuilder)localObject1).append("|");
+        ((StringBuilder)localObject1).append(paramToServiceMsg);
+        ((StringBuilder)localObject1).append("|");
+        ((StringBuilder)localObject1).append(localObject2);
+        ((StringBuilder)localObject1).append("|");
+        ((StringBuilder)localObject1).append(b3);
+        QLog.d("wk", 2, ((StringBuilder)localObject1).toString());
       }
-      return new MessageFactoryReceiver.OffLineFileInfo(this, l1, paramFromServiceMsg, b2, b1, l2, l3, l4, l5, s, paramToServiceMsg, arrayOfByte, b3, l6);
-    case 2: 
-      return new MessageFactoryReceiver.OffLineFileInfo(this, l1, paramFromServiceMsg, b2, b1);
-    case 3: 
-      j = localRespOffFilePack.vBody[i];
-      i += 1;
-      PkgTools.getShortData(localRespOffFilePack.vBody, i);
-      i += 2;
-      PkgTools.getShortData(localRespOffFilePack.vBody, i);
-      i += 2;
-      PkgTools.getShortData(localRespOffFilePack.vBody, i);
-      i += 2;
-      PkgTools.getShortData(localRespOffFilePack.vBody, i);
-      i += 2;
-      j = localRespOffFilePack.vBody[i];
-      i += 1;
-      l2 = PkgTools.getLongData(localRespOffFilePack.vBody, i);
-      j = i + 4;
-      i = PkgTools.getShortData(localRespOffFilePack.vBody, j);
-      j += 2;
-      PkgTools.copyData(new byte[i], 0, localRespOffFilePack.vBody, j, i);
-      j += i;
-      i = PkgTools.getShortData(localRespOffFilePack.vBody, j);
-      j += 2;
-      arrayOfByte = new byte[i];
-      PkgTools.copyData(arrayOfByte, 0, localRespOffFilePack.vBody, j, i);
-      j += i;
-      i = localRespOffFilePack.vBody[j];
-      j += 1;
-      PkgTools.copyData(new byte[i], 0, localRespOffFilePack.vBody, j, i);
-      j += i;
-      i = localRespOffFilePack.vBody[j];
-      j += 1;
-      PkgTools.copyData(new byte[i], 0, localRespOffFilePack.vBody, j, i);
-      j += i;
-      i = PkgTools.getShortData(localRespOffFilePack.vBody, j);
-      j += 2;
-      Object localObject = new byte[i];
-      PkgTools.copyData((byte[])localObject, 0, localRespOffFilePack.vBody, j, i);
-      localObject = PkgTools.getUTFString((byte[])localObject, 0, i);
-      i = j + i;
-      j = localRespOffFilePack.vBody[i];
-      i += 1;
-      l3 = PkgTools.getLongData(localRespOffFilePack.vBody, i);
-      i += 4;
-      l4 = PkgTools.getLongData(localRespOffFilePack.vBody, i);
-      i += 4;
-      PkgTools.getShortData(localRespOffFilePack.vBody, i);
-      i += 2;
-      PkgTools.getLongData(localRespOffFilePack.vBody, i);
-      i += 4;
-      l5 = PkgTools.getLongData(localRespOffFilePack.vBody, i);
-      if (QLog.isColorLevel()) {
-        QLog.i(a, 2, "<<<<decodeGetOffLineFileResp dwUploadTime = " + l5);
-      }
-      return new MessageFactoryReceiver.OffLineFileInfo(this, l1, paramFromServiceMsg, b2, b1, l2, HexUtil.bytes2HexStr(arrayOfByte), l4, paramToServiceMsg.extraData.getLong("msgTime"), paramToServiceMsg.extraData.getShort("msgSeq"), l3, (String)localObject, paramToServiceMsg.extraData.getLong("delUin"));
+      return new MessageFactoryReceiver.OffLineFileInfo(this, l1, paramFromServiceMsg, b2, b1, l2, l3, l4, l5, s, paramToServiceMsg, (byte[])localObject2, b3, l6);
     }
-    int j = PkgTools.getShortData(localRespOffFilePack.vBody, i);
-    paramToServiceMsg = new byte[j];
-    PkgTools.copyData(paramToServiceMsg, 0, localRespOffFilePack.vBody, i + 2, j);
-    return new MessageFactoryReceiver.OffLineFileInfo(this, l1, paramFromServiceMsg, b2, b1, paramToServiceMsg);
+    paramToServiceMsg = paramFromServiceMsg.extraData;
+    if (localObject1 == null) {
+      l1 = 2139062143L;
+    } else {
+      l1 = ((RespOffFilePack)localObject1).iReplyCode;
+    }
+    paramToServiceMsg.putLong("ServerReplyCode", l1);
+    return null;
   }
   
   private Object r(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -352,8 +382,12 @@ public class MessageFactoryReceiver
   private Object u(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     paramToServiceMsg = (SvcResponsePullGroupMsgSeq)a(paramFromServiceMsg.getWupBuffer(), "resp_PullGroupMsgSeq", new SvcResponsePullGroupMsgSeq());
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, "decodePullGroupMsgNumResp res" + paramToServiceMsg);
+    if (QLog.isColorLevel())
+    {
+      paramFromServiceMsg = new StringBuilder();
+      paramFromServiceMsg.append("decodePullGroupMsgNumResp res");
+      paramFromServiceMsg.append(paramToServiceMsg);
+      QLog.d("MessageHandler", 2, paramFromServiceMsg.toString());
     }
     return paramToServiceMsg;
   }
@@ -366,8 +400,12 @@ public class MessageFactoryReceiver
   public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     String str = paramFromServiceMsg.getServiceCmd();
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, "decodeRespMsg cmd: " + str);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("decodeRespMsg cmd: ");
+      localStringBuilder.append(str);
+      QLog.d("MessageHandler", 2, localStringBuilder.toString());
     }
     if ("MessageSvc.PushNotify".equalsIgnoreCase(str)) {
       return f(paramToServiceMsg, paramFromServiceMsg);
@@ -437,7 +475,7 @@ public class MessageFactoryReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.MessageFactoryReceiver
  * JD-Core Version:    0.7.0.1
  */

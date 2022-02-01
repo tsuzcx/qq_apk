@@ -34,8 +34,9 @@ public class VideoQCallDecoder
     }
     catch (Exception paramMessageHandler)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(paramString, 2, "exception when process qcall offline msg", paramMessageHandler);
+      if (QLog.isColorLevel()) {
+        QLog.d(paramString, 2, "exception when process qcall offline msg", paramMessageHandler);
+      }
     }
   }
   
@@ -59,7 +60,12 @@ public class VideoQCallDecoder
       }
       if (QLog.isColorLevel())
       {
-        QLog.d(paramString, 2, "error msgType:" + i + ", or subType:" + j);
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("error msgType:");
+        paramArrayOfByte.append(i);
+        paramArrayOfByte.append(", or subType:");
+        paramArrayOfByte.append(j);
+        QLog.d(paramString, 2, paramArrayOfByte.toString());
         return null;
       }
     }
@@ -74,77 +80,95 @@ public class VideoQCallDecoder
   
   public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, DecodeProtoPkgContext paramDecodeProtoPkgContext)
   {
-    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has())) {
-      if (QLog.isColorLevel()) {
-        QLog.e("VideoQCallDecoder", 2, "<---decodeC2CMsgPkg_QCall return null:hasBody:" + paramMsg.msg_body.has() + ",hasMsgContent" + ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has());
-      }
-    }
-    long l1;
-    long l3;
-    long l4;
-    long l2;
-    boolean bool;
-    do
+    if ((paramMsg.msg_body.has()) && (((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has()))
     {
-      do
+      long l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
+      long l3 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_uid.get();
+      long l4 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.get();
+      long l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
+      ((msg_comm.MsgHead)paramMsg.msg_head.get()).to_uin.get();
+      paramList = new StringBuilder();
+      paramList.append(l4);
+      paramList.append("-");
+      paramList.append(l3);
+      paramList = paramList.toString();
+      if (QLog.isColorLevel())
       {
-        int i;
-        int j;
-        do
-        {
-          do
-          {
-            return;
-            l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
-            l3 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_uid.get();
-            l4 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.get();
-            l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
-            ((msg_comm.MsgHead)paramMsg.msg_head.get()).to_uin.get();
-            paramList = l4 + "-" + l3;
-            if (QLog.isColorLevel()) {
-              QLog.d("decodeC2CMsgPkg_QCall", 2, "<---decodeC2CMsgPkg_QCall :  key:" + paramList);
-            }
-            if (!paramMessageHandler.a.getMsgCache().a(l2, paramList)) {
-              break;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d("decodeC2CMsgPkg_QCall", 2, "msg has been pulled");
-          return;
-          l3 = MessageCache.a();
-          l4 = Long.valueOf(paramMessageHandler.a.getCurrentAccountUin()).longValue();
-          paramMsg = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
-          paramList = new byte[4];
-          byte[] arrayOfByte = new byte[4];
-          System.arraycopy(paramMsg, 0, paramList, 0, 4);
-          System.arraycopy(paramMsg, 4, arrayOfByte, 0, 4);
-          i = VideoPackageUtils.a(paramList, 4);
-          j = VideoPackageUtils.a(arrayOfByte, 4);
-          if ((i > 0) && (j > 0)) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("decodeC2CMsgPkg_QCall", 2, "invalid head length:" + i + " or body length:" + j);
-        return;
-        paramMsg = a("decodeC2CMsgPkg_QCall", paramMsg, 8, i, j);
-        if (paramMsg != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("decodeC2CMsgPkg_QCall", 2, "msg sharp content null, return;");
-      return;
-      bool = AVMsgUtil.a(paramMsg);
-      if (((paramDecodeProtoPkgContext.jdField_a_of_type_Boolean) || (paramDecodeProtoPkgContext.f)) && ((paramDecodeProtoPkgContext.jdField_a_of_type_Long == paramDecodeProtoPkgContext.b) && ((paramDecodeProtoPkgContext.jdField_a_of_type_Long != paramDecodeProtoPkgContext.b) || (bool)))) {
-        break;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("<---decodeC2CMsgPkg_QCall :  key:");
+        ((StringBuilder)localObject).append(paramList);
+        QLog.d("decodeC2CMsgPkg_QCall", 2, ((StringBuilder)localObject).toString());
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("decodeC2CMsgPkg_QCall", 2, "<---decodeC2CMsgPkg_QCall return null:,isReaded:" + paramDecodeProtoPkgContext.jdField_a_of_type_Boolean + "syncOther:" + paramDecodeProtoPkgContext.f + ",isSharpRequest" + bool);
-    return;
-    a(paramMessageHandler, "decodeC2CMsgPkg_QCall", (int)l1, l2, l4, l3 - l1, paramMsg, bool);
+      if (paramMessageHandler.a.getMsgCache().a(l2, paramList))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("decodeC2CMsgPkg_QCall", 2, "msg has been pulled");
+        }
+        return;
+      }
+      l3 = MessageCache.a();
+      l4 = Long.valueOf(paramMessageHandler.a.getCurrentAccountUin()).longValue();
+      paramMsg = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
+      paramList = new byte[4];
+      Object localObject = new byte[4];
+      System.arraycopy(paramMsg, 0, paramList, 0, 4);
+      System.arraycopy(paramMsg, 4, localObject, 0, 4);
+      int i = VideoPackageUtils.a(paramList, 4);
+      int j = VideoPackageUtils.a((byte[])localObject, 4);
+      if ((i > 0) && (j > 0))
+      {
+        paramMsg = a("decodeC2CMsgPkg_QCall", paramMsg, 8, i, j);
+        if (paramMsg == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("decodeC2CMsgPkg_QCall", 2, "msg sharp content null, return;");
+          }
+          return;
+        }
+        boolean bool = AVMsgUtil.a(paramMsg);
+        if (((!paramDecodeProtoPkgContext.jdField_a_of_type_Boolean) && (!paramDecodeProtoPkgContext.f)) || ((paramDecodeProtoPkgContext.jdField_a_of_type_Long == paramDecodeProtoPkgContext.b) && ((paramDecodeProtoPkgContext.jdField_a_of_type_Long != paramDecodeProtoPkgContext.b) || (bool))))
+        {
+          a(paramMessageHandler, "decodeC2CMsgPkg_QCall", (int)l1, l2, l4, l3 - l1, paramMsg, bool);
+          return;
+        }
+        if (QLog.isColorLevel())
+        {
+          paramMessageHandler = new StringBuilder();
+          paramMessageHandler.append("<---decodeC2CMsgPkg_QCall return null:,isReaded:");
+          paramMessageHandler.append(paramDecodeProtoPkgContext.jdField_a_of_type_Boolean);
+          paramMessageHandler.append("syncOther:");
+          paramMessageHandler.append(paramDecodeProtoPkgContext.f);
+          paramMessageHandler.append(",isSharpRequest");
+          paramMessageHandler.append(bool);
+          QLog.e("decodeC2CMsgPkg_QCall", 2, paramMessageHandler.toString());
+        }
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        paramMessageHandler = new StringBuilder();
+        paramMessageHandler.append("invalid head length:");
+        paramMessageHandler.append(i);
+        paramMessageHandler.append(" or body length:");
+        paramMessageHandler.append(j);
+        QLog.d("decodeC2CMsgPkg_QCall", 2, paramMessageHandler.toString());
+      }
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramMessageHandler = new StringBuilder();
+      paramMessageHandler.append("<---decodeC2CMsgPkg_QCall return null:hasBody:");
+      paramMessageHandler.append(paramMsg.msg_body.has());
+      paramMessageHandler.append(",hasMsgContent");
+      paramMessageHandler.append(((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has());
+      QLog.e("VideoQCallDecoder", 2, paramMessageHandler.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.VideoQCallDecoder
  * JD-Core Version:    0.7.0.1
  */

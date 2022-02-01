@@ -25,16 +25,20 @@ public class CertifiedAccountModifyFeedRequest
   
   public static CertifiedAccountWrite.StModifyFeedRsp a(byte[] paramArrayOfByte)
   {
-    CertifiedAccountWrite.StModifyFeedRsp localStModifyFeedRsp = new CertifiedAccountWrite.StModifyFeedRsp();
+    Object localObject = new CertifiedAccountWrite.StModifyFeedRsp();
     try
     {
-      paramArrayOfByte = (CertifiedAccountWrite.StModifyFeedRsp)localStModifyFeedRsp.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (CertifiedAccountWrite.StModifyFeedRsp)((CertifiedAccountWrite.StModifyFeedRsp)localObject).mergeFrom(paramArrayOfByte);
       return paramArrayOfByte;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("CertifiedAccountModifyFeedRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("CertifiedAccountModifyFeedRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -47,7 +51,7 @@ public class CertifiedAccountModifyFeedRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.servlet.CertifiedAccountModifyFeedRequest
  * JD-Core Version:    0.7.0.1
  */

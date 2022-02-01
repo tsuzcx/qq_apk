@@ -13,19 +13,15 @@ class RecentContactsGuideItemBuilder$1
   {
     if (paramMotionEvent.getAction() == 0) {
       paramView.setAlpha(0.5F);
+    } else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
+      paramView.setAlpha(1.0F);
     }
-    for (;;)
-    {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-        paramView.setAlpha(1.0F);
-      }
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentContactsGuideItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

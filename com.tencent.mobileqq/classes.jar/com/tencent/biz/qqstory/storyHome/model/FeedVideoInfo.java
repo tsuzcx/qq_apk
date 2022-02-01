@@ -40,12 +40,28 @@ public class FeedVideoInfo
   
   public String toString()
   {
-    return "FeedVideoInfo{feedId='" + this.feedId + '\'' + ", mVideoItemList=" + this.mVideoItemList.size() + ", mVideoSeq=" + this.mVideoSeq + ", mVideoPullType=" + this.mVideoPullType + ", mVideoNextCookie='" + this.mVideoNextCookie + '\'' + ", mIsVideoEnd=" + this.mIsVideoEnd + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FeedVideoInfo{feedId='");
+    localStringBuilder.append(this.feedId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mVideoItemList=");
+    localStringBuilder.append(this.mVideoItemList.size());
+    localStringBuilder.append(", mVideoSeq=");
+    localStringBuilder.append(this.mVideoSeq);
+    localStringBuilder.append(", mVideoPullType=");
+    localStringBuilder.append(this.mVideoPullType);
+    localStringBuilder.append(", mVideoNextCookie='");
+    localStringBuilder.append(this.mVideoNextCookie);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mIsVideoEnd=");
+    localStringBuilder.append(this.mIsVideoEnd);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo
  * JD-Core Version:    0.7.0.1
  */

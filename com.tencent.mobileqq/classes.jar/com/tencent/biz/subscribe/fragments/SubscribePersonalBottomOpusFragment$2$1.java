@@ -15,28 +15,23 @@ class SubscribePersonalBottomOpusFragment$2$1
   
   public void a(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    boolean bool = true;
-    COMM.StCommonExt localStCommonExt;
     if ((paramBoolean) && (paramStGetMainPageRsp != null))
     {
       paramBaseRequest = this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter;
       paramString = paramStGetMainPageRsp.vecFeed.get();
-      localStCommonExt = paramStGetMainPageRsp.extInfo;
-      if (paramStGetMainPageRsp.isFinish.get() != 1) {
-        break label59;
+      COMM.StCommonExt localStCommonExt = paramStGetMainPageRsp.extInfo;
+      int i = paramStGetMainPageRsp.isFinish.get();
+      paramBoolean = true;
+      if (i != 1) {
+        paramBoolean = false;
       }
-    }
-    label59:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
       paramBaseRequest.b(paramString, localStCommonExt, paramBoolean);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

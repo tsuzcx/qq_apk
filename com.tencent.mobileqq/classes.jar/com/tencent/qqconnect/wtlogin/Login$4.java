@@ -11,24 +11,24 @@ class Login$4
   
   public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText)
+    if (paramView == this.a.pswd)
     {
-      if (true == paramBoolean) {
-        this.a.jdField_b_of_type_AndroidWidgetEditText.selectAll();
+      if (paramBoolean) {
+        this.a.pswd.selectAll();
       }
       if (!paramBoolean) {
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
+        this.a.mDelPassBtn.setVisibility(4);
       }
     }
-    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramBoolean)) {
-      return;
+    else if ((paramView == this.a.name) && (!paramBoolean))
+    {
+      this.a.mDelBtn.setVisibility(4);
     }
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqconnect.wtlogin.Login.4
  * JD-Core Version:    0.7.0.1
  */

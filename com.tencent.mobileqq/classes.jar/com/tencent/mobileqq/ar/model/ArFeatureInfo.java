@@ -33,11 +33,21 @@ public class ArFeatureInfo
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("ArFeatureInfo{");
-    localStringBuffer.append("featureMd5='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", featureSize=").append(this.jdField_a_of_type_Long).append('\'');
-    localStringBuffer.append(", featureUrl=").append(this.b).append('\'');
-    localStringBuffer.append(", featurefileName=").append(this.c).append('\'');
-    localStringBuffer.append(", modelRootDir=").append(this.d).append('\'');
+    localStringBuffer.append("featureMd5='");
+    localStringBuffer.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", featureSize=");
+    localStringBuffer.append(this.jdField_a_of_type_Long);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", featureUrl=");
+    localStringBuffer.append(this.b);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", featurefileName=");
+    localStringBuffer.append(this.c);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", modelRootDir=");
+    localStringBuffer.append(this.d);
+    localStringBuffer.append('\'');
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
@@ -53,7 +63,7 @@ public class ArFeatureInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.ArFeatureInfo
  * JD-Core Version:    0.7.0.1
  */

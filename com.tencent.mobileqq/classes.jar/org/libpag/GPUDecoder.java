@@ -51,11 +51,14 @@ public class GPUDecoder
       if (Build.VERSION.SDK_INT >= 21)
       {
         localGPUDecoder.surfaceTexture.setOnFrameAvailableListener(localGPUDecoder, new Handler(handlerThread.getLooper()));
-        localGPUDecoder.outputSurface = new Surface(localGPUDecoder.surfaceTexture);
-        return localGPUDecoder;
       }
-      localGPUDecoder.surfaceTexture.setOnFrameAvailableListener(localGPUDecoder);
-      localGPUDecoder.reflectLooper();
+      else
+      {
+        localGPUDecoder.surfaceTexture.setOnFrameAvailableListener(localGPUDecoder);
+        localGPUDecoder.reflectLooper();
+      }
+      localGPUDecoder.outputSurface = new Surface(localGPUDecoder.surfaceTexture);
+      return localGPUDecoder;
     }
   }
   
@@ -80,12 +83,13 @@ public class GPUDecoder
   
   private boolean attachToGLContext(int paramInt)
   {
-    if (this.surfaceTexture == null) {
+    SurfaceTexture localSurfaceTexture = this.surfaceTexture;
+    if (localSurfaceTexture == null) {
       return false;
     }
     try
     {
-      this.surfaceTexture.detachFromGLContext();
+      localSurfaceTexture.detachFromGLContext();
       this.surfaceTexture.attachToGLContext(paramInt);
       return true;
     }
@@ -98,8 +102,9 @@ public class GPUDecoder
   
   private boolean awaitNewImage()
   {
+    Object localObject1 = this.frameSyncObject;
     int i = 10;
-    synchronized (this.frameSyncObject)
+    try
     {
       for (;;)
       {
@@ -121,19 +126,20 @@ public class GPUDecoder
       if (i == 0) {
         return false;
       }
+      try
+      {
+        this.surfaceTexture.updateTexImage();
+        return true;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return false;
+      }
+      throw localObject2;
     }
-    try
-    {
-      this.surfaceTexture.updateTexImage();
-      return true;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    localObject2 = finally;
-    throw localObject2;
-    return false;
+    finally {}
+    for (;;) {}
   }
   
   private int dequeueInputBuffer()
@@ -143,16 +149,9 @@ public class GPUDecoder
       int i = this.decoder.dequeueInputBuffer(1000L);
       return i;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      return -1;
-    }
-    catch (Error localError)
-    {
-      label14:
-      break label14;
-    }
+    catch (Error localError) {}catch (Exception localException) {}
+    localException.printStackTrace();
+    return -1;
   }
   
   private int dequeueOutputBuffer()
@@ -184,75 +183,73 @@ public class GPUDecoder
       ByteBuffer localByteBuffer = this.decoder.getInputBuffers()[paramInt];
       return localByteBuffer;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      return null;
-    }
-    catch (Error localError)
-    {
-      label30:
-      break label30;
-    }
+    catch (Error localError) {}catch (Exception localException) {}
+    localException.printStackTrace();
+    return null;
   }
   
   private boolean onConfigure(MediaFormat paramMediaFormat)
   {
-    if (this.outputSurface == null) {}
-    do
-    {
+    if (this.outputSurface == null) {
       return false;
-      this.targetWidth = paramMediaFormat.getInteger("width");
-      this.targetHeight = paramMediaFormat.getInteger("height");
-      this.outputFormat = paramMediaFormat;
-      try
-      {
-        this.decoder = MediaCodec.createDecoderByType(paramMediaFormat.getString("mime"));
-        this.decoder.configure(paramMediaFormat, this.outputSurface, null, 0);
-        this.decoder.start();
-        return true;
-      }
-      catch (Exception paramMediaFormat) {}
-    } while (this.decoder == null);
-    this.decoder.release();
-    this.decoder = null;
+    }
+    this.targetWidth = paramMediaFormat.getInteger("width");
+    this.targetHeight = paramMediaFormat.getInteger("height");
+    this.outputFormat = paramMediaFormat;
+    try
+    {
+      this.decoder = MediaCodec.createDecoderByType(paramMediaFormat.getString("mime"));
+      this.decoder.configure(paramMediaFormat, this.outputSurface, null, 0);
+      this.decoder.start();
+      return true;
+    }
+    catch (Exception paramMediaFormat)
+    {
+      label70:
+      break label70;
+    }
+    paramMediaFormat = this.decoder;
+    if (paramMediaFormat != null)
+    {
+      paramMediaFormat.release();
+      this.decoder = null;
+    }
     return false;
   }
   
   private int onDecodeFrame()
   {
-    int i = -1;
     releaseOutputBuffer();
     try
     {
-      int j = dequeueOutputBuffer();
+      int i = dequeueOutputBuffer();
       if ((this.bufferInfo.flags & 0x4) != 0)
       {
-        if (j >= 0) {
-          this.lastOutputBufferIndex = j;
+        if (i >= 0) {
+          this.lastOutputBufferIndex = i;
         }
       }
       else
       {
-        if (j >= 0) {
-          this.lastOutputBufferIndex = j;
+        if (i >= 0) {
+          this.lastOutputBufferIndex = i;
+        } else if (i == -2) {
+          this.outputFormat = this.decoder.getOutputFormat();
         }
-        while (this.lastOutputBufferIndex != -1)
-        {
-          return 0;
-          if (j == -2) {
-            this.outputFormat = this.decoder.getOutputFormat();
-          }
+        int j = this.lastOutputBufferIndex;
+        i = -1;
+        if (j != -1) {
+          i = 0;
         }
+        return i;
       }
-      i = -3;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
       return -2;
     }
-    return i;
+    return -3;
   }
   
   private int onEndOfStream()
@@ -281,67 +278,63 @@ public class GPUDecoder
   
   private void onRelease()
   {
-    if (this.released) {}
-    for (;;)
-    {
+    if (this.released) {
       return;
-      this.released = true;
-      releaseOutputBuffer();
-      synchronized (handlerLock)
+    }
+    this.released = true;
+    releaseOutputBuffer();
+    Object localObject2;
+    synchronized (handlerLock)
+    {
+      HandlerThreadCount -= 1;
+      if (HandlerThreadCount == 0)
       {
-        HandlerThreadCount -= 1;
-        if (HandlerThreadCount == 0)
-        {
-          handlerThread.quit();
-          handlerThread = null;
-        }
-        if (this.decoder == null) {}
+        handlerThread.quit();
+        handlerThread = null;
       }
-      try
-      {
-        this.decoder.stop();
-      }
-      catch (Exception localException1)
+      ??? = this.decoder;
+      if (??? != null)
       {
         try
         {
-          for (;;)
-          {
-            this.decoder.release();
-            this.decoder = null;
-            if (this.outputSurface != null)
-            {
-              this.outputSurface.release();
-              this.outputSurface = null;
-            }
-            if (this.surfaceTexture == null) {
-              break;
-            }
-            this.surfaceTexture.release();
-            this.surfaceTexture = null;
-            return;
-            localObject2 = finally;
-            throw localObject2;
-            localException1 = localException1;
-            localException1.printStackTrace();
-          }
+          ((MediaCodec)???).stop();
+        }
+        catch (Exception localException1)
+        {
+          localException1.printStackTrace();
+        }
+        try
+        {
+          this.decoder.release();
         }
         catch (Exception localException2)
         {
-          for (;;)
-          {
-            localException2.printStackTrace();
-          }
+          localException2.printStackTrace();
         }
+        this.decoder = null;
       }
+      localObject2 = this.outputSurface;
+      if (localObject2 != null)
+      {
+        ((Surface)localObject2).release();
+        this.outputSurface = null;
+      }
+      localObject2 = this.surfaceTexture;
+      if (localObject2 != null)
+      {
+        ((SurfaceTexture)localObject2).release();
+        this.surfaceTexture = null;
+      }
+      return;
     }
   }
   
   private GPUDecoder.OutputFrame onRenderFrame()
   {
-    if (this.lastOutputBufferIndex != -1)
+    int i = this.lastOutputBufferIndex;
+    if (i != -1)
     {
-      int i = releaseOutputBuffer(this.lastOutputBufferIndex, true);
+      i = releaseOutputBuffer(i, true);
       this.lastOutputBufferIndex = -1;
       if ((i == 0) && (awaitNewImage())) {
         return this.successFrame;
@@ -379,51 +372,40 @@ public class GPUDecoder
       this.decoder.queueInputBuffer(paramInt1, paramInt2, paramInt3, paramLong, paramInt4);
       return 0;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      return -2;
-    }
-    catch (Error localError)
-    {
-      label18:
-      break label18;
-    }
+    catch (Error localError) {}catch (Exception localException) {}
+    localException.printStackTrace();
+    return -2;
   }
   
   private void reflectLooper()
   {
-    Object localObject3 = SurfaceTexture.class.getDeclaredClasses();
-    int j = localObject3.length;
+    Object localObject2 = SurfaceTexture.class.getDeclaredClasses();
+    int j = localObject2.length;
     int i = 0;
-    Object localObject1;
-    if (i < j)
+    while (i < j)
     {
-      localObject1 = localObject3[i];
-      if (!localObject1.getName().toLowerCase().contains("handler")) {}
+      localObject1 = localObject2[i];
+      if (localObject1.getName().toLowerCase().contains("handler")) {
+        break label51;
+      }
+      i += 1;
     }
-    for (;;)
+    Object localObject1 = null;
+    label51:
+    if (localObject1 == null) {
+      return;
+    }
+    try
     {
-      if (localObject1 == null)
-      {
-        return;
-        i += 1;
-        break;
-      }
-      try
-      {
-        localObject1 = localObject1.getConstructor(new Class[] { SurfaceTexture.class, Looper.class }).newInstance(new Object[] { this.surfaceTexture, handlerThread.getLooper() });
-        localObject3 = this.surfaceTexture.getClass().getDeclaredField("mEventHandler");
-        ((Field)localObject3).setAccessible(true);
-        ((Field)localObject3).set(this.surfaceTexture, localObject1);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      Object localObject2 = null;
+      localObject1 = localObject1.getConstructor(new Class[] { SurfaceTexture.class, Looper.class }).newInstance(new Object[] { this.surfaceTexture, handlerThread.getLooper() });
+      localObject2 = this.surfaceTexture.getClass().getDeclaredField("mEventHandler");
+      ((Field)localObject2).setAccessible(true);
+      ((Field)localObject2).set(this.surfaceTexture, localObject1);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
   
@@ -434,23 +416,17 @@ public class GPUDecoder
       this.decoder.releaseOutputBuffer(paramInt, paramBoolean);
       return 0;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      return -2;
-    }
-    catch (Error localError)
-    {
-      label12:
-      break label12;
-    }
+    catch (Error localError) {}catch (Exception localException) {}
+    localException.printStackTrace();
+    return -2;
   }
   
   private void releaseOutputBuffer()
   {
-    if (this.lastOutputBufferIndex != -1)
+    int i = this.lastOutputBufferIndex;
+    if (i != -1)
     {
-      releaseOutputBuffer(this.lastOutputBufferIndex, false);
+      releaseOutputBuffer(i, false);
       this.lastOutputBufferIndex = -1;
     }
   }
@@ -461,7 +437,7 @@ public class GPUDecoder
     this.surfaceTexture.getTransformMatrix(arrayOfFloat);
     float f = Math.abs(arrayOfFloat[5]);
     if (f > 0.0F) {
-      return this.targetHeight / ((arrayOfFloat[13] - f) * 2.0F + f);
+      return this.targetHeight / (f + (arrayOfFloat[13] - f) * 2.0F);
     }
     return this.targetHeight;
   }
@@ -472,7 +448,7 @@ public class GPUDecoder
     this.surfaceTexture.getTransformMatrix(arrayOfFloat);
     float f = Math.abs(arrayOfFloat[0]);
     if (f > 0.0F) {
-      return this.targetWidth / (arrayOfFloat[12] * 2.0F + f);
+      return this.targetWidth / (f + arrayOfFloat[12] * 2.0F);
     }
     return this.targetWidth;
   }
@@ -494,7 +470,7 @@ public class GPUDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.libpag.GPUDecoder
  * JD-Core Version:    0.7.0.1
  */

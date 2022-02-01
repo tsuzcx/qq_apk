@@ -48,16 +48,26 @@ public class BreathLightData
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("BreathLightData{, configTimeInfo=").append(this.configTimeInfo).append(", taskTimeInfo=").append(this.taskTimeInfo).append(", type=");
-    if (this.type == 0) {}
-    for (String str = "yellow";; str = "red") {
-      return str + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BreathLightData{, configTimeInfo=");
+    localStringBuilder.append(this.configTimeInfo);
+    localStringBuilder.append(", taskTimeInfo=");
+    localStringBuilder.append(this.taskTimeInfo);
+    localStringBuilder.append(", type=");
+    String str;
+    if (this.type == 0) {
+      str = "yellow";
+    } else {
+      str = "red";
     }
+    localStringBuilder.append(str);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.model.BreathLightData
  * JD-Core Version:    0.7.0.1
  */

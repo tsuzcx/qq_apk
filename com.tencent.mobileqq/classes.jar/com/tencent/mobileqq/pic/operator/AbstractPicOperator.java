@@ -3,7 +3,7 @@ package com.tencent.mobileqq.pic.operator;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.pic.Logger;
 import com.tencent.mobileqq.pic.PicBusiManager;
 import com.tencent.mobileqq.pic.PicInfoInterface.ErrInfo;
@@ -14,21 +14,25 @@ import com.tencent.mobileqq.pic.UiCallBack;
 public abstract class AbstractPicOperator
 {
   protected Handler a;
-  protected QQAppInterface a;
+  protected AppInterface a;
   public PicReq a;
   protected UiCallBack a;
   public String a;
   public String b;
-  protected String c = "PicOperator." + getClass().getSimpleName();
+  protected String c;
   
   public AbstractPicOperator()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = PicBusiManager.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PicOperator.");
+    localStringBuilder.append(getClass().getSimpleName());
+    this.c = localStringBuilder.toString();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = PicBusiManager.a();
   }
   
   public abstract void a();
   
-  public void a(int paramInt1, int paramInt2, Object paramObject)
+  protected void a(int paramInt1, int paramInt2, Object paramObject)
   {
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
       return;
@@ -57,14 +61,19 @@ public abstract class AbstractPicOperator
   
   protected void a(int paramInt, PicResult paramPicResult)
   {
-    PicResult localPicResult = paramPicResult;
+    Object localObject = paramPicResult;
     if (paramPicResult == null) {
-      localPicResult = new PicResult();
+      localObject = new PicResult();
     }
-    localPicResult.jdField_a_of_type_Int = 0;
-    localPicResult.jdField_a_of_type_ComTencentMobileqqPicPicReq = this.jdField_a_of_type_ComTencentMobileqqPicPicReq;
-    a(paramInt, 0, localPicResult);
-    Logger.a(this.b, this.jdField_a_of_type_JavaLangString, "handleSuccess", "what:" + paramInt);
+    ((PicResult)localObject).jdField_a_of_type_Int = 0;
+    ((PicResult)localObject).jdField_a_of_type_ComTencentMobileqqPicPicReq = this.jdField_a_of_type_ComTencentMobileqqPicPicReq;
+    a(paramInt, 0, localObject);
+    paramPicResult = this.b;
+    localObject = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("what:");
+    localStringBuilder.append(paramInt);
+    Logger.a(paramPicResult, (String)localObject, "handleSuccess", localStringBuilder.toString());
   }
   
   public void a(UiCallBack paramUiCallBack)
@@ -78,7 +87,7 @@ public abstract class AbstractPicOperator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.operator.AbstractPicOperator
  * JD-Core Version:    0.7.0.1
  */

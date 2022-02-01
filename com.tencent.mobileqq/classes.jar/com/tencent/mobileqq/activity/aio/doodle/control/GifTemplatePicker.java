@@ -6,27 +6,26 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.doodle.DoodleResHelper;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.scribble.ScribbleResMgr.ResCallback;
-import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
+import com.tencent.mobileqq.scribble.ResCallback;
+import com.tencent.mobileqq.scribble.ResInfo;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class GifTemplatePicker
   extends RDBaseListLayout<GifTemplatePicker.GifTemplatePickerData, GifTemplatePicker.ViewHolder>
-  implements View.OnClickListener, ScribbleResMgr.ResCallback
+  implements View.OnClickListener, ResCallback
 {
   private GifTemplatePicker.GifTemplatePickerListener a;
   
@@ -50,25 +49,23 @@ public class GifTemplatePicker
   
   private void b(boolean paramBoolean)
   {
-    a(new GifTemplatePicker.GifTemplatePickerData(2130838098, 0), false);
+    a(new GifTemplatePicker.GifTemplatePickerData(2130837948, 0), false);
     Object localObject = DoodleResHelper.a().a(1);
-    if (localObject == null) {}
-    for (;;)
-    {
+    if (localObject == null) {
       return;
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+    }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      Integer localInteger = (Integer)((Iterator)localObject).next();
+      if (!DoodleResHelper.a().a(1, localInteger.intValue()))
       {
-        Integer localInteger = (Integer)((Iterator)localObject).next();
-        if (!DoodleResHelper.a().a(1, localInteger.intValue()))
-        {
-          if (paramBoolean) {
-            DoodleResHelper.a().a(1, localInteger.intValue(), this, this);
-          }
+        if (paramBoolean) {
+          DoodleResHelper.a().a(1, localInteger.intValue(), this, this);
         }
-        else {
-          a(new GifTemplatePicker.GifTemplatePickerData(localInteger.intValue(), 1), false);
-        }
+      }
+      else {
+        a(new GifTemplatePicker.GifTemplatePickerData(localInteger.intValue(), 1), false);
       }
     }
   }
@@ -78,33 +75,30 @@ public class GifTemplatePicker
     GifTemplatePicker.ViewHolder localViewHolder = new GifTemplatePicker.ViewHolder();
     RelativeLayout localRelativeLayout = new RelativeLayout(getContext());
     localRelativeLayout.setOnClickListener(this);
-    localRelativeLayout.setLayoutParams(new RelativeLayout.LayoutParams(AIOUtils.a(50.0F, getResources()), AIOUtils.a(37.0F, getResources())));
+    localRelativeLayout.setLayoutParams(new RelativeLayout.LayoutParams(Utils.a(50.0F, getResources()), Utils.a(37.0F, getResources())));
     localViewHolder.a(localRelativeLayout);
     localViewHolder.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    Object localObject = new RelativeLayout.LayoutParams(AIOUtils.a(40.0F, getResources()), AIOUtils.a(27.0F, getResources()));
-    paramInt = AIOUtils.a(5.0F, getResources());
-    ((RelativeLayout.LayoutParams)localObject).leftMargin = paramInt;
-    ((RelativeLayout.LayoutParams)localObject).topMargin = paramInt;
-    localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localObject = null;
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(Utils.a(40.0F, getResources()), Utils.a(27.0F, getResources()));
+    paramInt = Utils.a(5.0F, getResources());
+    localLayoutParams.leftMargin = paramInt;
+    localLayoutParams.topMargin = paramInt;
+    localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
     if (paramGifTemplatePickerData.a == 1) {
-      localObject = DoodleResHelper.a().a(1, paramGifTemplatePickerData.b);
+      paramGifTemplatePickerData = DoodleResHelper.a().a(1, paramGifTemplatePickerData.b);
+    } else if (paramGifTemplatePickerData.a == 0) {
+      paramGifTemplatePickerData = getContext().getResources().getDrawable(paramGifTemplatePickerData.b);
+    } else {
+      paramGifTemplatePickerData = null;
     }
-    for (;;)
-    {
-      localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      localRelativeLayout.addView(localViewHolder.jdField_a_of_type_AndroidWidgetImageView);
-      localViewHolder.jdField_a_of_type_AndroidViewView = new View(getContext());
-      localViewHolder.jdField_a_of_type_AndroidViewView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-      localViewHolder.jdField_a_of_type_AndroidViewView.setBackgroundColor(-1427313428);
-      localViewHolder.jdField_a_of_type_AndroidViewView.setClickable(false);
-      localRelativeLayout.addView(localViewHolder.jdField_a_of_type_AndroidViewView, 0);
-      return localViewHolder;
-      if (paramGifTemplatePickerData.a == 0) {
-        localObject = getContext().getResources().getDrawable(paramGifTemplatePickerData.b);
-      }
-    }
+    localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+    localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramGifTemplatePickerData);
+    localRelativeLayout.addView(localViewHolder.jdField_a_of_type_AndroidWidgetImageView);
+    localViewHolder.jdField_a_of_type_AndroidViewView = new View(getContext());
+    localViewHolder.jdField_a_of_type_AndroidViewView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+    localViewHolder.jdField_a_of_type_AndroidViewView.setBackgroundColor(-1427313428);
+    localViewHolder.jdField_a_of_type_AndroidViewView.setClickable(false);
+    localRelativeLayout.addView(localViewHolder.jdField_a_of_type_AndroidViewView, 0);
+    return localViewHolder;
   }
   
   public void a()
@@ -116,71 +110,72 @@ public class GifTemplatePicker
   {
     if ((this.a != null) && (paramGifTemplatePickerData != null))
     {
-      if (paramGifTemplatePickerData.a == 0) {
+      if (paramGifTemplatePickerData.a == 0)
+      {
         this.a.a(-1);
+        return;
       }
+      this.a.a(paramGifTemplatePickerData.b);
     }
-    else {
-      return;
-    }
-    this.a.a(paramGifTemplatePickerData.b);
   }
   
   public void a(int paramInt, GifTemplatePicker.GifTemplatePickerData paramGifTemplatePickerData, GifTemplatePicker.ViewHolder paramViewHolder)
   {
     if (paramViewHolder.jdField_a_of_type_AndroidWidgetImageView != null)
     {
-      localObject = null;
-      if (paramGifTemplatePickerData.a != 1) {
-        break label89;
+      Object localObject = null;
+      if (paramGifTemplatePickerData.a == 1) {
+        localObject = DoodleResHelper.a().a(1, paramGifTemplatePickerData.b);
+      } else if (paramGifTemplatePickerData.a == 0) {
+        localObject = getContext().getResources().getDrawable(paramGifTemplatePickerData.b);
       }
-      localObject = DoodleResHelper.a().a(1, paramGifTemplatePickerData.b);
       paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      if (AppSetting.d) {
-        if (paramInt != 0) {
-          break label115;
-        }
-      }
-    }
-    label89:
-    label115:
-    for (Object localObject = HardCodeUtil.a(2131705284);; localObject = HardCodeUtil.a(2131705283) + paramInt)
-    {
-      paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setContentDescription((CharSequence)localObject);
-      if (paramViewHolder.jdField_a_of_type_AndroidViewView != null)
+      if (AppSetting.d)
       {
-        if (!paramGifTemplatePickerData.a()) {
-          break label142;
+        if (paramInt == 0)
+        {
+          localObject = HardCodeUtil.a(2131705358);
         }
-        paramViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(HardCodeUtil.a(2131705357));
+          ((StringBuilder)localObject).append(paramInt);
+          localObject = ((StringBuilder)localObject).toString();
+        }
+        paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setContentDescription((CharSequence)localObject);
       }
-      return;
-      if (paramGifTemplatePickerData.a != 0) {
-        break;
-      }
-      localObject = getContext().getResources().getDrawable(paramGifTemplatePickerData.b);
-      break;
     }
-    label142:
-    paramViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (paramViewHolder.jdField_a_of_type_AndroidViewView != null)
+    {
+      if (paramGifTemplatePickerData.a())
+      {
+        paramViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        return;
+      }
+      paramViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
   }
   
-  public void a(View paramView, int paramInt1, ScribbleResMgr.ResInfo paramResInfo, int paramInt2)
+  public void a(View paramView, int paramInt1, ResInfo paramResInfo, int paramInt2)
   {
     if (paramInt1 == 4)
     {
-      if (1 != paramInt2) {
-        break label26;
+      if (1 == paramInt2)
+      {
+        a(false);
+        b(false);
+        c();
+        return;
       }
-      a(false);
-      b(false);
-      c();
+      if (4 == paramInt2) {
+        return;
+      }
+      paramView = new StringBuilder();
+      paramView.append("ScribbleResMgr down error:");
+      paramView.append(paramInt2);
+      QLog.d("GifTemplatePicker", 2, paramView.toString());
     }
-    label26:
-    while (4 == paramInt2) {
-      return;
-    }
-    QLog.d("GifTemplatePicker", 2, "ScribbleResMgr down error:" + paramInt2);
   }
   
   public boolean a()
@@ -195,22 +190,16 @@ public class GifTemplatePicker
     int i = a(paramView);
     a(i, false);
     GifTemplatePicker.GifTemplatePickerData localGifTemplatePickerData = (GifTemplatePicker.GifTemplatePickerData)a(i);
-    QQAppInterface localQQAppInterface;
     if (localGifTemplatePickerData != null)
     {
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (1 != localGifTemplatePickerData.a) {
-        break label89;
+      AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+      if (1 == localGifTemplatePickerData.a) {
+        ReportController.b(localAppRuntime, "dc00898", "", "", "0X80081B4", "0X80081B4", 1, localGifTemplatePickerData.b, "", "", "", "");
+      } else {
+        ReportController.b(localAppRuntime, "dc00898", "", "", "0X80081B4", "0X80081B4", 1, 0, "", "", "", "");
       }
-      ReportController.b(localQQAppInterface, "dc00898", "", "", "0X80081B4", "0X80081B4", 1, localGifTemplatePickerData.b, "", "", "", "");
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label89:
-      ReportController.b(localQQAppInterface, "dc00898", "", "", "0X80081B4", "0X80081B4", 1, 0, "", "", "", "");
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void setListener(GifTemplatePicker.GifTemplatePickerListener paramGifTemplatePickerListener)
@@ -220,7 +209,7 @@ public class GifTemplatePicker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.control.GifTemplatePicker
  * JD-Core Version:    0.7.0.1
  */

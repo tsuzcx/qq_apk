@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 
 public class ThemeRecentDynamicAvatarView
   extends RecentDynamicAvatarView
@@ -43,7 +43,7 @@ public class ThemeRecentDynamicAvatarView
     c = paramString;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     if ((this.e) && (ThemeUtil.isNowThemeIsNight(null, false, ThemeUtil.curThemeId)))
     {
@@ -62,7 +62,7 @@ public class ThemeRecentDynamicAvatarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ThemeRecentDynamicAvatarView
  * JD-Core Version:    0.7.0.1
  */

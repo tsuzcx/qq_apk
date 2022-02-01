@@ -23,13 +23,15 @@ public final class SubMsgType0x7$MsgBody$RNFCNotify
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 29, 32, 40, 48 }, new String[] { "uint64_sessionid", "bytes_token", "fixed32_ip", "uint32_port", "uint64_svrTaskId", "bool_file_assist" }, new Object[] { Long.valueOf(0L), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Boolean.valueOf(false) }, RNFCNotify.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 29, 32, 40, 48 }, new String[] { "uint64_sessionid", "bytes_token", "fixed32_ip", "uint32_port", "uint64_svrTaskId", "bool_file_assist" }, new Object[] { localLong, localByteStringMicro, localInteger, localInteger, localLong, Boolean.valueOf(false) }, RNFCNotify.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.RNFCNotify
  * JD-Core Version:    0.7.0.1
  */

@@ -12,18 +12,12 @@ import org.json.JSONObject;
 
 public class QzoneStringMatcher
 {
-  private static final int QzoneStringMatcherLruMapSize;
+  private static final int QzoneStringMatcherLruMapSize = QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneRegLruMapSize", 50);
   public static final String TAG = "QzoneStringMatcher";
   private static final long UPDATE_CONFIG_INTERVAL_MS = 180000L;
   private static long gLastReadConfigTime = 0L;
-  private static LRULinkedHashMap<String, Pattern> gPatternCacheMap = null;
-  private static String gUrlConfig;
-  
-  static
-  {
-    QzoneStringMatcherLruMapSize = QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneRegLruMapSize", 50);
-    gUrlConfig = null;
-  }
+  private static LRULinkedHashMap<String, Pattern> gPatternCacheMap;
+  private static String gUrlConfig = null;
   
   private static String getUrlConfig()
   {
@@ -89,89 +83,94 @@ public class QzoneStringMatcher
     if (TextUtils.isEmpty(str1)) {
       return false;
     }
-    int i;
-    label102:
-    int j;
-    try
-    {
-      localJSONArray = new JSONArray(str1);
-      if (localJSONArray.length() > 0) {
-        break label291;
-      }
-      return false;
-    }
-    catch (JSONException paramString1)
-    {
-      JSONArray localJSONArray;
-      Object localObject1;
-      Object localObject2;
-      String str2;
-      label147:
-      QLog.e("QzoneStringMatcher", 1, "config is not valid json. " + str1);
-    }
-    if (i < localJSONArray.length())
-    {
-      localObject1 = localJSONArray.getJSONObject(i);
-      localObject2 = ((JSONObject)localObject1).optJSONArray("domains");
-      if (localObject2 == null) {
-        break label296;
-      }
-      if (((JSONArray)localObject2).length() != 0) {
-        break label303;
-      }
-      break label296;
-      if (j >= ((JSONArray)localObject2).length()) {
-        break label285;
-      }
-      str2 = (String)((JSONArray)localObject2).get(j);
-      if ((TextUtils.isEmpty(str2)) || (!isMatch(paramString1, str2))) {
-        break label309;
-      }
-      j = 1;
-      if (j == 0) {
-        break label296;
-      }
-      localObject1 = ((JSONObject)localObject1).optJSONArray("items");
-      if ((localObject1 == null) || (((JSONArray)localObject1).length() == 0)) {
-        break label296;
-      }
-      j = 0;
-    }
     for (;;)
     {
-      if (j < ((JSONArray)localObject1).length())
+      try
       {
-        localObject2 = (String)((JSONArray)localObject1).get(j);
-        if ((TextUtils.isEmpty((CharSequence)localObject2)) || (!isMatch(paramString2, (String)localObject2))) {
-          break label318;
+        localJSONArray1 = new JSONArray(str1);
+        if (localJSONArray1.length() > 0) {
+          continue;
         }
-        QLog.d("QzoneStringMatcher", 2, "match url:" + paramString2 + ",item=" + (String)localObject2);
-        return true;
         return false;
-        label285:
-        j = 0;
-        break label147;
-        label291:
-        i = 0;
-        break;
       }
-      label296:
+      catch (JSONException paramString1)
+      {
+        JSONArray localJSONArray1;
+        Object localObject;
+        JSONArray localJSONArray2;
+        String str2;
+        continue;
+        int i = 0;
+        continue;
+        int j = 0;
+        continue;
+        j += 1;
+        continue;
+        j = 0;
+        if (j != 0) {
+          continue;
+        }
+        continue;
+        j = 0;
+        continue;
+      }
+      if (i >= localJSONArray1.length()) {
+        continue;
+      }
+      localObject = localJSONArray1.getJSONObject(i);
+      localJSONArray2 = ((JSONObject)localObject).optJSONArray("domains");
+      if (localJSONArray2 != null)
+      {
+        if (localJSONArray2.length() != 0) {
+          continue;
+        }
+        continue;
+        if (j >= localJSONArray2.length()) {
+          continue;
+        }
+        str2 = (String)localJSONArray2.get(j);
+        if ((TextUtils.isEmpty(str2)) || (!isMatch(paramString1, str2))) {
+          continue;
+        }
+        j = 1;
+        continue;
+        localJSONArray2 = ((JSONObject)localObject).optJSONArray("items");
+        if (localJSONArray2 != null)
+        {
+          if (localJSONArray2.length() != 0) {
+            continue;
+          }
+          continue;
+          if (j < localJSONArray2.length())
+          {
+            localObject = (String)localJSONArray2.get(j);
+            if ((!TextUtils.isEmpty((CharSequence)localObject)) && (isMatch(paramString2, (String)localObject)))
+            {
+              paramString1 = new StringBuilder();
+              paramString1.append("match url:");
+              paramString1.append(paramString2);
+              paramString1.append(",item=");
+              paramString1.append((String)localObject);
+              QLog.d("QzoneStringMatcher", 2, paramString1.toString());
+              return true;
+            }
+            j += 1;
+            continue;
+          }
+        }
+      }
       i += 1;
-      break;
-      label303:
-      j = 0;
-      break label102;
-      label309:
-      j += 1;
-      break label102;
-      label318:
-      j += 1;
     }
+    paramString1 = new StringBuilder();
+    paramString1.append("config is not valid json. ");
+    paramString1.append(str1);
+    QLog.e("QzoneStringMatcher", 1, paramString1.toString());
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.QzoneStringMatcher
  * JD-Core Version:    0.7.0.1
  */

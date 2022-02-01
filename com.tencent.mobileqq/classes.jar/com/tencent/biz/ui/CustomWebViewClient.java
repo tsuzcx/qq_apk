@@ -22,8 +22,12 @@ public class CustomWebViewClient
   
   public void onLoadResource(WebView paramWebView, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WEBVIEWCHECK", 2, "CustomWebView loadUrl url:" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("CustomWebView loadUrl url:");
+      localStringBuilder.append(paramString);
+      QLog.d("WEBVIEWCHECK", 2, localStringBuilder.toString());
     }
     super.onLoadResource(paramWebView, paramString);
   }
@@ -31,8 +35,9 @@ public class CustomWebViewClient
   public void onPageFinished(WebView paramWebView, String paramString)
   {
     super.onPageFinished(paramWebView, paramString);
-    if (this.a != null) {
-      this.a.a(paramString, 8589934594L, null);
+    paramWebView = this.a;
+    if (paramWebView != null) {
+      paramWebView.a(paramString, 8589934594L, null);
     }
   }
   
@@ -40,32 +45,46 @@ public class CustomWebViewClient
   {
     JsInjector.getInstance().onPageStarted(paramWebView);
     super.onPageStarted(paramWebView, paramString, paramBitmap);
-    if (this.a != null) {
-      this.a.a(paramString, 8589934593L, null);
+    paramWebView = this.a;
+    if (paramWebView != null) {
+      paramWebView.a(paramString, 8589934593L, null);
     }
   }
   
   public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WEBVIEWCHECK", 2, "CustomWebViewClient onReceivedError errorCode:" + paramInt + ", description:" + paramString1 + ", failingUrl:" + paramString2);
+    if (QLog.isColorLevel())
+    {
+      paramWebView = new StringBuilder();
+      paramWebView.append("CustomWebViewClient onReceivedError errorCode:");
+      paramWebView.append(paramInt);
+      paramWebView.append(", description:");
+      paramWebView.append(paramString1);
+      paramWebView.append(", failingUrl:");
+      paramWebView.append(paramString2);
+      QLog.d("WEBVIEWCHECK", 2, paramWebView.toString());
     }
-    if (this.a != null) {
-      this.a.a(paramString2, 8589934595L, paramInt);
+    paramWebView = this.a;
+    if (paramWebView != null) {
+      paramWebView.a(paramString2, 8589934595L, paramInt);
     }
   }
   
   public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
   {
-    if (this.a != null) {
+    paramWebView = this.a;
+    if (paramWebView != null) {
       try
       {
-        paramWebView = (WebResourceResponse)this.a.a(paramString, 8L);
+        paramWebView = (WebResourceResponse)paramWebView.a(paramString, 8L);
         return paramWebView;
       }
       catch (Exception paramWebView)
       {
-        QLog.e("WEBVIEWCHECK", 1, "shouldInterceptRequest error:" + paramWebView.toString());
+        paramString = new StringBuilder();
+        paramString.append("shouldInterceptRequest error:");
+        paramString.append(paramWebView.toString());
+        QLog.e("WEBVIEWCHECK", 1, paramString.toString());
       }
     }
     return null;
@@ -73,34 +92,19 @@ public class CustomWebViewClient
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((this.a != null) && (this.a.a(paramString))) {
-      bool1 = true;
+    paramWebView = this.a;
+    if ((paramWebView != null) && (paramWebView.a(paramString))) {
+      return true;
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return bool1;
-          bool1 = bool2;
-        } while (paramString == null);
-        if (paramString.startsWith("http")) {
-          break;
-        }
-        bool1 = bool2;
-      } while (!paramString.startsWith("data:"));
-      bool1 = bool2;
-    } while (paramString.contains("/cgi-bin/httpconn?htcmd=0x6ff0080"));
-    CustomWebView.addContextLog(Util.b(paramString, new String[0]));
+    if ((paramString != null) && ((paramString.startsWith("http")) || (paramString.startsWith("data:"))) && (!paramString.contains("/cgi-bin/httpconn?htcmd=0x6ff0080"))) {
+      CustomWebView.addContextLog(Util.b(paramString, new String[0]));
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.ui.CustomWebViewClient
  * JD-Core Version:    0.7.0.1
  */

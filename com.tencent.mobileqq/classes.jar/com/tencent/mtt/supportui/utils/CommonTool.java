@@ -4,31 +4,23 @@ public class CommonTool
 {
   public static boolean hasPositiveItem(float[] paramArrayOfFloat)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    int i;
-    if (paramArrayOfFloat != null) {
-      i = 0;
-    }
-    for (;;)
+    if (paramArrayOfFloat != null)
     {
-      bool1 = bool2;
-      if (i < paramArrayOfFloat.length)
+      int i = 0;
+      while (i < paramArrayOfFloat.length)
       {
         if (paramArrayOfFloat[i] > 0.0F) {
-          bool1 = true;
+          return true;
         }
+        i += 1;
       }
-      else {
-        return bool1;
-      }
-      i += 1;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.utils.CommonTool
  * JD-Core Version:    0.7.0.1
  */

@@ -27,7 +27,7 @@ import java.util.List;
 public class MobileQQCloseServiceReceiver
   extends BroadcastReceiver
 {
-  protected static MobileQQCloseServiceReceiver b = null;
+  protected static MobileQQCloseServiceReceiver b;
   public boolean a = false;
   private long c = 0L;
   
@@ -46,57 +46,68 @@ public class MobileQQCloseServiceReceiver
   
   private String a(ArrayList<String> paramArrayList, String paramString, boolean paramBoolean)
   {
-    Time localTime = new Time();
-    localTime.setToNow();
+    Object localObject = new Time();
+    ((Time)localObject).setToNow();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString);
-    localStringBuilder.append(localTime.year).append(localTime.month + 1).append(localTime.monthDay);
-    localStringBuilder.append(localTime.hour);
-    if (paramBoolean)
-    {
-      localStringBuilder.append(localTime.minute - 1);
-      if (paramArrayList != null) {
-        break label157;
-      }
+    localStringBuilder.append(((Time)localObject).year);
+    localStringBuilder.append(((Time)localObject).month + 1);
+    localStringBuilder.append(((Time)localObject).monthDay);
+    localStringBuilder.append(((Time)localObject).hour);
+    if (paramBoolean) {
+      localStringBuilder.append(((Time)localObject).minute - 1);
+    } else {
+      localStringBuilder.append(((Time)localObject).minute);
     }
-    label157:
-    for (paramArrayList = "null";; paramArrayList = paramArrayList.toString())
-    {
-      localStringBuilder.append(paramArrayList);
-      paramArrayList = "";
-      try
-      {
-        paramString = n.a(localStringBuilder.toString());
-        paramArrayList = paramString;
-        paramString = n.a(paramString + localStringBuilder.toString());
-        return paramString;
-      }
-      catch (Throwable paramString) {}
-      localStringBuilder.append(localTime.minute);
-      break;
+    if (paramArrayList == null) {
+      paramArrayList = "null";
+    } else {
+      paramArrayList = paramArrayList.toString();
     }
+    localStringBuilder.append(paramArrayList);
+    paramArrayList = "";
+    try
+    {
+      paramString = n.a(localStringBuilder.toString());
+      paramArrayList = paramString;
+      localObject = new StringBuilder();
+      paramArrayList = paramString;
+      ((StringBuilder)localObject).append(paramString);
+      paramArrayList = paramString;
+      ((StringBuilder)localObject).append(localStringBuilder.toString());
+      paramArrayList = paramString;
+      paramString = n.a(((StringBuilder)localObject).toString());
+      return paramString;
+    }
+    catch (Throwable paramString) {}
     return paramArrayList;
   }
   
   private void e(Context paramContext)
   {
-    boolean bool1;
-    try
+    for (;;)
     {
-      ab.c("MQQCloseServiceReceiver", "exitProcess thread id:" + Thread.currentThread().getId());
-      if (System.currentTimeMillis() - this.c < 1000L) {
-        Log.i("MQQCloseServiceReceiver", "exitProcess is running!!");
-      }
-      for (;;)
+      try
       {
-        return;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("exitProcess thread id:");
+        localStringBuilder.append(Thread.currentThread().getId());
+        ab.c("MQQCloseServiceReceiver", localStringBuilder.toString());
+        if (System.currentTimeMillis() - this.c < 1000L)
+        {
+          Log.i("MQQCloseServiceReceiver", "exitProcess is running!!");
+          return;
+        }
         this.c = System.currentTimeMillis();
         bool1 = s.b();
         if (!bool1) {
           try
           {
             bool1 = TMAssistantDownloadManager.getInstance(paramContext).getDownloadSDKSettingClient().isAllDownloadFinished();
-            ab.c("MQQCloseServiceReceiver", "receive broadcast isAllDownloadFinished = " + bool1);
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("receive broadcast isAllDownloadFinished = ");
+            localStringBuilder.append(bool1);
+            ab.c("MQQCloseServiceReceiver", localStringBuilder.toString());
             if (!bool1) {
               continue;
             }
@@ -105,20 +116,29 @@ public class MobileQQCloseServiceReceiver
           }
           catch (Exception paramContext)
           {
-            ab.e("MQQCloseServiceReceiver", "do exit error :" + paramContext.getMessage());
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("do exit error :");
+            localStringBuilder.append(paramContext.getMessage());
+            ab.e("MQQCloseServiceReceiver", localStringBuilder.toString());
           }
         } else {
           try
           {
-            bool2 = ApkDownloadManager.getInstance().isAllDownloadFinished().booleanValue();
-            Log.i("MQQCloseServiceReceiver", "receive broadcast isAllDownloadFinished = " + bool2);
-            if ((HalleyAgent.getDownloader().getRunningTasks() != null) && (HalleyAgent.getDownloader().getRunningTasks().size() > 0))
+            boolean bool2 = ApkDownloadManager.getInstance().isAllDownloadFinished().booleanValue();
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("receive broadcast isAllDownloadFinished = ");
+            localStringBuilder.append(bool2);
+            Log.i("MQQCloseServiceReceiver", localStringBuilder.toString());
+            if ((HalleyAgent.getDownloader().getRunningTasks() == null) || (HalleyAgent.getDownloader().getRunningTasks().size() <= 0)) {
+              break label342;
+            }
+            bool1 = true;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("receive broadcast isHalleyDownloadRunning = ");
+            localStringBuilder.append(bool1);
+            Log.i("MQQCloseServiceReceiver", localStringBuilder.toString());
+            if ((bool2) && (!bool1))
             {
-              bool1 = true;
-              Log.i("MQQCloseServiceReceiver", "receive broadcast isHalleyDownloadRunning = " + bool1);
-              if ((!bool2) || (bool1)) {
-                continue;
-              }
               Log.i("MQQCloseServiceReceiver", "killSDKServiceProcess ing");
               d(paramContext);
             }
@@ -128,14 +148,11 @@ public class MobileQQCloseServiceReceiver
             Log.e("MQQCloseServiceReceiver", paramContext.getMessage());
           }
         }
+        return;
       }
-    }
-    finally {}
-    for (;;)
-    {
-      boolean bool2;
-      break;
-      bool1 = false;
+      finally {}
+      label342:
+      boolean bool1 = false;
     }
   }
   
@@ -147,7 +164,10 @@ public class MobileQQCloseServiceReceiver
       localIntentFilter.addAction("com.tencent.process.exit");
       localIntentFilter.addAction("com.tencent.process.tmdownloader.exit");
       localIntentFilter.addAction("mqq.intent.action.ACCOUNT_KICKED");
-      localIntentFilter.addAction("mqq.intent.action.EXIT_" + paramContext.getApplicationContext().getPackageName());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mqq.intent.action.EXIT_");
+      localStringBuilder.append(paramContext.getApplicationContext().getPackageName());
+      localIntentFilter.addAction(localStringBuilder.toString());
       localIntentFilter.addAction("mqq.intent.action.ACCOUNT_CHANGED");
       localIntentFilter.addAction("mqq.intent.action.ACCOUNT_EXPIRED");
       localIntentFilter.addAction("mqq.intent.action.LOGOUT");
@@ -158,9 +178,12 @@ public class MobileQQCloseServiceReceiver
   
   public void b(Context paramContext)
   {
-    if ((paramContext == null) || (b == null)) {}
-    while (!this.a) {
-      return;
+    if (paramContext != null)
+    {
+      if (b == null) {
+        return;
+      }
+      if (!this.a) {}
     }
     try
     {
@@ -196,24 +219,31 @@ public class MobileQQCloseServiceReceiver
   
   public int d(Context paramContext)
   {
-    int j = 0;
     String str = c(paramContext);
     List localList = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
-    if (localList != null) {
-      for (int i = 0;; i = k)
+    int i = 0;
+    int j = 0;
+    if (localList != null)
+    {
+      int k;
+      for (i = 0; j < localList.size(); i = k)
       {
-        k = i;
-        if (j >= localList.size()) {
-          break;
-        }
         Object localObject = (ActivityManager.RunningAppProcessInfo)localList.get(j);
         int m = ((ActivityManager.RunningAppProcessInfo)localObject).pid;
         localObject = ((ActivityManager.RunningAppProcessInfo)localObject).processName;
         k = i;
         if (str.equals(localObject))
         {
-          Log.i("MQQCloseServiceReceiver", "MobileQQCloseServiceReceiver killProcessByName;process name: " + (String)localObject + " pid: " + m);
-          Log.i("MQQCloseServiceReceiver", "MobileQQCloseServiceReceiver killProcessByName;killProcess pid-->" + m);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("MobileQQCloseServiceReceiver killProcessByName;process name: ");
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append(" pid: ");
+          localStringBuilder.append(m);
+          Log.i("MQQCloseServiceReceiver", localStringBuilder.toString());
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("MobileQQCloseServiceReceiver killProcessByName;killProcess pid-->");
+          ((StringBuilder)localObject).append(m);
+          Log.i("MQQCloseServiceReceiver", ((StringBuilder)localObject).toString());
           localObject = paramContext.getApplicationContext();
           k.a().postDelayed(new b(this, (Context)localObject), 3000L);
           k = i + 1;
@@ -221,8 +251,7 @@ public class MobileQQCloseServiceReceiver
         j += 1;
       }
     }
-    int k = 0;
-    return k;
+    return i;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -233,7 +262,7 @@ public class MobileQQCloseServiceReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.downloadclient.MobileQQCloseServiceReceiver
  * JD-Core Version:    0.7.0.1
  */

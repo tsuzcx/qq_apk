@@ -27,12 +27,12 @@ public class LargestLimitedMemoryCache
     super.clear();
   }
   
-  public Reference<Bitmap> createReference(Bitmap paramBitmap)
+  protected Reference<Bitmap> createReference(Bitmap paramBitmap)
   {
     return new WeakReference(paramBitmap);
   }
   
-  public int getSize(Bitmap paramBitmap)
+  protected int getSize(Bitmap paramBitmap)
   {
     return paramBitmap.getRowBytes() * paramBitmap.getHeight();
   }
@@ -56,46 +56,44 @@ public class LargestLimitedMemoryCache
     return super.remove(paramString);
   }
   
-  public Bitmap removeNext()
+  protected Bitmap removeNext()
   {
-    Bitmap localBitmap = null;
     Object localObject1 = this.valueSizes.entrySet();
-    for (;;)
+    synchronized (this.valueSizes)
     {
-      synchronized (this.valueSizes)
+      Iterator localIterator = ((Set)localObject1).iterator();
+      localObject1 = null;
+      Object localObject3 = null;
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = ((Set)localObject1).iterator();
-        localObject1 = null;
-        if (localIterator.hasNext())
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        if (localObject1 == null)
         {
-          Map.Entry localEntry = (Map.Entry)localIterator.next();
-          if (localBitmap == null)
-          {
-            localBitmap = (Bitmap)localEntry.getKey();
-            localObject1 = (Integer)localEntry.getValue();
-          }
-          else
-          {
-            Integer localInteger = (Integer)localEntry.getValue();
-            if (localInteger.intValue() > ((Integer)localObject1).intValue())
-            {
-              localBitmap = (Bitmap)localEntry.getKey();
-              localObject1 = localInteger;
-            }
-          }
+          localObject1 = (Bitmap)localEntry.getKey();
+          localObject3 = (Integer)localEntry.getValue();
         }
         else
         {
-          this.valueSizes.remove(localBitmap);
-          return localBitmap;
+          Integer localInteger = (Integer)localEntry.getValue();
+          if (localInteger.intValue() > ((Integer)localObject3).intValue())
+          {
+            localObject1 = (Bitmap)localEntry.getKey();
+            localObject3 = localInteger;
+          }
         }
       }
+      this.valueSizes.remove(localObject1);
+      return localObject1;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.cache.memory.impl.LargestLimitedMemoryCache
  * JD-Core Version:    0.7.0.1
  */

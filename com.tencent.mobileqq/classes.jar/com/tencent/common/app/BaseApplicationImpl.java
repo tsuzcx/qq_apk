@@ -13,16 +13,15 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.text.format.Time;
 import android.util.Log;
-import com.tencent.beacon.upload.TunnelInfo;
 import com.tencent.common.config.AppSetting;
 import com.tencent.commonsdk.soload.SoLoadCore;
 import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.alpha.DCLBridge;
 import com.tencent.mobileqq.app.FontSettingManager;
 import com.tencent.mobileqq.app.LocaleManager;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -41,6 +40,7 @@ import com.tencent.mobileqq.qroute.route.ILogger;
 import com.tencent.mobileqq.qroute.utils.IProcessCheck;
 import com.tencent.mobileqq.qshadow.core.QShadow;
 import com.tencent.mobileqq.startup.director.StartupDirector;
+import com.tencent.mobileqq.statistics.QQBeaconReport;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.statistics.UEC;
@@ -50,6 +50,8 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.MSFInterfaceAdapter;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.monitor.crash.safemode.SafeModeUtil;
+import com.tencent.qqperf.monitor.crash.tools.ActivityLifeCycleInfoRecordHelper;
 import com.tencent.qqperf.monitor.sp.SPStatInspector;
 import com.tencent.shadow.core.common.LoggerFactory;
 import cooperation.plugin.PluginQRoutePluginFactoryImpl;
@@ -57,7 +59,6 @@ import cooperation.qzone.util.PerfTracer;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
 import mqq.app.AppActivity;
 import mqq.app.AppRuntime;
@@ -70,26 +71,23 @@ public class BaseApplicationImpl
   extends MobileQQ
 {
   public static String ASanEscapedMsg;
-  public static boolean IS_SUPPORT_THEME = false;
+  public static boolean IS_SUPPORT_THEME = true;
   private static final String TAG = "BaseApplicationImpl";
   public static final String[] TOOL_PROCS = { ":tool", ":peak", ":qzone" };
   public static boolean appMainActivityHasLanuch = false;
   public static long appStartTime = 0L;
   public static final String bootBroadcastName = "com.tencent.mobileqq.broadcast.qq";
-  public static boolean isCurrentVersionFirstLaunch;
-  public static boolean isFirstLaunchNew;
-  public static boolean isInActionS;
-  private static volatile AppRuntimeFactory sAppRuntimeFactory;
+  public static boolean isInActionS = true;
+  private static volatile AppRuntimeFactory sAppRuntimeFactory = new AppRuntimeFactoryImpl();
   public static BaseApplicationImpl sApplication;
   public static StartupDirector sDirector;
-  public static String sFoo2Version;
-  public static String sFooVersion;
-  private static boolean sHasStoragePermission;
-  public static boolean sIsBgStartup;
-  public static long sLaunchTime;
+  public static String sFoo2Version = "";
+  public static String sFooVersion = "";
+  public static boolean sIsBgStartup = false;
+  public static long sLaunchTime = 0L;
   public static String sNativeMonitorEscapedMsg;
   public static String sQQAppInterfaceEscapedMsg = "";
-  public static long sShowTime;
+  public static long sShowTime = 0L;
   public static String sSplashActivityEscapedMsg = "";
   public static long sToolShowTime;
   public static MqqHandler sUiHandler;
@@ -103,34 +101,17 @@ public class BaseApplicationImpl
   private String pcactiveRButton = null;
   private String pcactiveUin = null;
   
-  static
-  {
-    sFooVersion = "";
-    sFoo2Version = "";
-    IS_SUPPORT_THEME = true;
-    sLaunchTime = 0L;
-    sShowTime = 0L;
-    sIsBgStartup = false;
-    appStartTime = 0L;
-    isFirstLaunchNew = false;
-    isCurrentVersionFirstLaunch = false;
-    appMainActivityHasLanuch = false;
-    sToolShowTime = 0L;
-    isInActionS = true;
-    sAppRuntimeFactory = new AppRuntimeFactoryImpl();
-  }
-  
   public BaseApplicationImpl()
   {
-    buildNum = "5105";
-    reportVersionName = "8.5.5.5105";
+    buildNum = "5295";
+    reportVersionName = "8.7.0.5295";
   }
   
   private void attachThreadContext()
   {
     com.tencent.mobileqq.app.ThreadSetting.isPublicVersion = true;
     com.tencent.mobileqq.app.ThreadSetting.isGrayVersion = false;
-    com.tencent.mobileqq.app.ThreadSetting.revision = "de12fadd";
+    com.tencent.mobileqq.app.ThreadSetting.revision = "01328a87";
     com.tencent.mobileqq.app.ThreadSetting.sProcessId = sProcessId;
     com.tencent.mobileqq.app.ThreadSetting.PROCESS_QQ = 1;
     com.tencent.mobileqq.app.ThreadSetting.CLR = 2;
@@ -143,42 +124,32 @@ public class BaseApplicationImpl
   
   public static String getLocalVerify(ArrayList<String> paramArrayList, boolean paramBoolean)
   {
-    Time localTime = new Time();
-    localTime.setToNow();
+    Object localObject = new Time();
+    ((Time)localObject).setToNow();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("com.tencent.process.exit");
-    localStringBuilder.append(localTime.year).append(localTime.month + 1).append(localTime.monthDay);
-    localStringBuilder.append(localTime.hour);
+    localStringBuilder.append(((Time)localObject).year);
+    localStringBuilder.append(((Time)localObject).month + 1);
+    localStringBuilder.append(((Time)localObject).monthDay);
+    localStringBuilder.append(((Time)localObject).hour);
     int i;
-    if (paramBoolean)
-    {
-      i = localTime.minute - 1;
-      localStringBuilder.append(i);
-      if (paramArrayList != null) {
-        break label140;
-      }
+    if (paramBoolean) {
+      i = ((Time)localObject).minute - 1;
+    } else {
+      i = ((Time)localObject).minute;
     }
-    label140:
-    for (paramArrayList = "null";; paramArrayList = paramArrayList.toString())
-    {
-      localStringBuilder.append(paramArrayList);
-      paramArrayList = MD5.toMD5(localStringBuilder.toString());
-      return MD5.toMD5(paramArrayList + localStringBuilder.toString());
-      i = localTime.minute;
-      break;
+    localStringBuilder.append(i);
+    if (paramArrayList == null) {
+      paramArrayList = "null";
+    } else {
+      paramArrayList = paramArrayList.toString();
     }
-  }
-  
-  public static String getLogExternalPath(Context paramContext)
-  {
-    if (paramContext == null) {
-      return Environment.getExternalStorageDirectory().getPath();
-    }
-    File localFile = paramContext.getExternalFilesDir(null);
-    if ((localFile != null) && (!isHasStoragePermission(paramContext))) {
-      return localFile.getPath();
-    }
-    return Environment.getExternalStorageDirectory().getPath();
+    localStringBuilder.append(paramArrayList);
+    paramArrayList = MD5.toMD5(localStringBuilder.toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramArrayList);
+    ((StringBuilder)localObject).append(localStringBuilder.toString());
+    return MD5.toMD5(((StringBuilder)localObject).toString());
   }
   
   private void initQLog()
@@ -188,68 +159,49 @@ public class BaseApplicationImpl
     {
       if (sProcessId == 1)
       {
-        QConfLogBean localQConfLogBean = QConfigLocalLoader.a(this);
-        Object localObject = new File(getLogExternalPath(context) + "/tencent/msflogs/" + getPackageName().replace(".", "/") + "/" + "QLogConfig_C");
-        Log.d("init_log", "base=" + localQConfLogBean.toString() + " logConfigPath=" + ((File)localObject).getAbsolutePath());
-        if ((!localQConfLogBean.a()) && (!((File)localObject).exists())) {
-          ((File)localObject).createNewFile();
+        localObject1 = QConfigLocalLoader.a(this);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(getLogExternalPath(context));
+        ((StringBuilder)localObject2).append("/tencent/msflogs/");
+        ((StringBuilder)localObject2).append(getPackageName().replace(".", "/"));
+        ((StringBuilder)localObject2).append("/");
+        ((StringBuilder)localObject2).append("QLogConfig_C");
+        localObject2 = new File(((StringBuilder)localObject2).toString());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("base=");
+        localStringBuilder.append(((QConfLogBean)localObject1).toString());
+        localStringBuilder.append(" logConfigPath=");
+        localStringBuilder.append(((File)localObject2).getAbsolutePath());
+        Log.d("init_log", localStringBuilder.toString());
+        if ((!((QConfLogBean)localObject1).a()) && (!((File)localObject2).exists())) {
+          ((File)localObject2).createNewFile();
+        } else if ((((QConfLogBean)localObject1).a()) && (((File)localObject2).exists())) {
+          ((File)localObject2).delete();
         }
-        for (;;)
-        {
-          QLog.init("com.tencent.mobileqq", BaseApplication.processName, AppSetting.a, 3000L);
-          return;
-          if ((localQConfLogBean.a()) && (((File)localObject).exists())) {
-            ((File)localObject).delete();
-          }
-        }
-        String str;
-        QLog.init("com.tencent.mobileqq", str, (String)localObject, l);
+        QLog.init("com.tencent.mobileqq", BaseApplication.processName, AppSetting.a, 3000L);
+        return;
       }
+      QLog.init("com.tencent.mobileqq", BaseApplication.processName, AppSetting.a, 0L);
+      return;
     }
     catch (Throwable localThrowable)
     {
-      str = BaseApplication.processName;
-      localObject = AppSetting.a;
-      if (sProcessId != 1) {}
+      Object localObject1;
+      Object localObject2;
+      label225:
+      break label225;
     }
-    for (;;)
-    {
-      return;
-      QLog.init("com.tencent.mobileqq", BaseApplication.processName, AppSetting.a, 0L);
-      return;
+    localObject1 = BaseApplication.processName;
+    localObject2 = AppSetting.a;
+    if (sProcessId != 1) {
       l = 0L;
     }
+    QLog.init("com.tencent.mobileqq", (String)localObject1, (String)localObject2, l);
   }
   
   private void initQRoute()
   {
     QRoute.init(new QRouteConfigBuilder(getProcessSuffix(BaseApplication.processName, "com.tencent.mobileqq")).setForceCheck(false).setLogger(this.mQRouteLogger).setProcessCheck(this.mQRouterProcessCheck).setRemoteProxy(this.mQRouteRemoteProxy).setPluginFactory(new PluginQRoutePluginFactoryImpl()).create());
-  }
-  
-  public static boolean isHasStoragePermission(Context paramContext)
-  {
-    boolean bool2 = sHasStoragePermission;
-    boolean bool1 = bool2;
-    if (!bool2)
-    {
-      if (Build.VERSION.SDK_INT < 23) {
-        break label46;
-      }
-      bool1 = bool2;
-      if (paramContext != null)
-      {
-        bool1 = bool2;
-        if (paramContext.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0)
-        {
-          sHasStoragePermission = true;
-          bool1 = sHasStoragePermission;
-        }
-      }
-    }
-    return bool1;
-    label46:
-    sHasStoragePermission = true;
-    return sHasStoragePermission;
   }
   
   public static void setAppRuntimeFactory(AppRuntimeFactory paramAppRuntimeFactory)
@@ -266,38 +218,38 @@ public class BaseApplicationImpl
   
   public static boolean useQIPCStart(String paramString)
   {
-    boolean bool2 = false;
     String[] arrayOfString = TOOL_PROCS;
     int j = arrayOfString.length;
+    boolean bool2 = false;
     int i = 0;
+    boolean bool1;
     for (;;)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (paramString.endsWith(arrayOfString[i])) {
-          bool1 = true;
-        }
+      bool1 = bool2;
+      if (i >= j) {
+        break;
       }
-      else
+      if (paramString.endsWith(arrayOfString[i]))
       {
-        bool2 = bool1;
-        if (!bool1) {
-          bool2 = paramString.endsWith(":smartdevice");
-        }
-        return bool2;
+        bool1 = true;
+        break;
       }
       i += 1;
     }
+    bool2 = bool1;
+    if (!bool1) {
+      bool2 = paramString.endsWith(":smartdevice");
+    }
+    return bool2;
   }
   
   public void addOtherTypeActivity(Activity paramActivity)
   {
     this.otherTypeActivitys.add(new WeakReference(paramActivity));
-    StatisticCollector.getInstance(this).logOnCreate(paramActivity);
+    ActivityLifeCycleInfoRecordHelper.a(paramActivity);
   }
   
-  public void attachBaseContext(Context paramContext)
+  protected void attachBaseContext(Context paramContext)
   {
     super.attachBaseContext(paramContext);
     if (sProcessId == 7) {
@@ -308,31 +260,35 @@ public class BaseApplicationImpl
     QLog.setAppContext(this);
     initQLog();
     initQRoute();
-    if ((!new File(QLog.getLogPath() + "QLogConfig_B").exists()) && (!new File(QLog.getLogPath() + "QLogConfig_C").exists())) {}
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(QLog.getLogPath());
+    localStringBuilder.append("QLogConfig_B");
+    if (!new File(localStringBuilder.toString()).exists())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(QLog.getLogPath());
+      localStringBuilder.append("QLogConfig_C");
+      new File(localStringBuilder.toString()).exists();
+    }
     QLog.setFullEncryptedLogMode(false);
     QLog.setDebugMode(false);
     int j = TOOL_PROCS.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j)
+      if ((processName != null) && (processName.endsWith(TOOL_PROCS[i])))
       {
-        if ((processName != null) && (processName.endsWith(TOOL_PROCS[i]))) {
-          MobileQQ.sIsToolProc = true;
-        }
-      }
-      else
-      {
-        LocaleManager.a(this);
-        MultiLanguageEngine.a().a(paramContext);
-        FontSettingManager.resetFontIfNeeded(this, false, true);
-        SharedPreferencesProxyManager.getInstance().init(paramContext, new BaseApplicationImpl.7(this));
-        if (SPStatInspector.a) {
-          SharedPreferencesProxyManager.setLogCallback(SPStatInspector.a());
-        }
-        return;
+        MobileQQ.sIsToolProc = true;
+        break;
       }
       i += 1;
+    }
+    LocaleManager.a(this);
+    MultiLanguageEngine.a().a(paramContext);
+    FontSettingManager.resetFontIfNeeded(this, false, true);
+    SharedPreferencesProxyManager.getInstance().init(paramContext, new BaseApplicationImpl.7(this));
+    if (SPStatInspector.a) {
+      SharedPreferencesProxyManager.setLogCallback(SPStatInspector.a());
     }
   }
   
@@ -369,11 +325,14 @@ public class BaseApplicationImpl
   
   public Object getAppData(String paramString)
   {
-    if (paramString == null) {}
-    while (!"channel_id".equals(paramString)) {
+    String str = null;
+    if (paramString == null) {
       return null;
     }
-    return AppSetting.c();
+    if ("channel_id".equals(paramString)) {
+      str = AppSetting.c();
+    }
+    return str;
   }
   
   public int getAppId()
@@ -408,15 +367,16 @@ public class BaseApplicationImpl
   @NonNull
   public MSFInterfaceAdapter getMSFInterfaceAdapter()
   {
-    if (this.mMSFInterfaceAdapter == null) {}
-    try
-    {
-      if (this.mMSFInterfaceAdapter == null) {
-        this.mMSFInterfaceAdapter = new MSFInterfaceAdapterImpl();
+    if (this.mMSFInterfaceAdapter == null) {
+      try
+      {
+        if (this.mMSFInterfaceAdapter == null) {
+          this.mMSFInterfaceAdapter = new MSFInterfaceAdapterImpl();
+        }
       }
-      return this.mMSFInterfaceAdapter;
+      finally {}
     }
-    finally {}
+    return this.mMSFInterfaceAdapter;
   }
   
   public Intent getPCActiveNoticeIntent()
@@ -437,34 +397,6 @@ public class BaseApplicationImpl
   public String getPCActiveUin()
   {
     return this.pcactiveUin;
-  }
-  
-  @NonNull
-  public List<TunnelInfo> getRegisterBeaconTunnel()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new TunnelInfo("00000ARN3S3S9UE8"));
-    localArrayList.add(new TunnelInfo("00000GODBG3702Y1"));
-    localArrayList.add(new TunnelInfo("00000U7O8S3BLETM"));
-    localArrayList.add(new TunnelInfo("000004B5DU3Q3LD1"));
-    localArrayList.add(new TunnelInfo("00000TEDPU36RWUZ"));
-    localArrayList.add(new TunnelInfo("000005YECQ3C2LO8"));
-    localArrayList.add(new TunnelInfo("00000VCDPV3YVLO1"));
-    localArrayList.add(new TunnelInfo("00000KCQ7Y3ITP3Z"));
-    localArrayList.add(new TunnelInfo("0P000B1E6X38P6V3"));
-    localArrayList.add(new TunnelInfo("00000R3FEU3ZKLWJ"));
-    localArrayList.add(new TunnelInfo("00000QG6YX3X0LZH"));
-    localArrayList.add(new TunnelInfo("00000BXKOY3QZQ1E"));
-    localArrayList.add(new TunnelInfo("000000EYXY3ATYB3"));
-    localArrayList.add(new TunnelInfo("0AND07OPTZ3OVEUJ"));
-    localArrayList.add(new TunnelInfo("0AND0Y11VZ3PFHQD"));
-    localArrayList.add(new TunnelInfo("0AND0FB8I14UU93I"));
-    localArrayList.add(new TunnelInfo("JS0B558T33E4YJ"));
-    localArrayList.add(new TunnelInfo("00000MEVUX3CBYO1"));
-    localArrayList.add(new TunnelInfo("0AND0LEA234R7SB8"));
-    localArrayList.add(new TunnelInfo("0AND0NYZC34FOQCF"));
-    localArrayList.add(new TunnelInfo("0AND08QT664PZRTU"));
-    return localArrayList;
   }
   
   public AppRuntime getRuntime()
@@ -496,17 +428,20 @@ public class BaseApplicationImpl
   
   public boolean isNeedMSF(String paramString)
   {
-    return (!paramString.endsWith("lola")) && (!paramString.endsWith("TMAssistantDownloadSDKService"));
+    return !paramString.endsWith("lola");
   }
   
   public boolean onActivityCreate(Object paramObject, Intent paramIntent)
   {
-    if ((paramObject instanceof Activity))
+    boolean bool = paramObject instanceof Activity;
+    if (bool)
     {
-      MultiLanguageEngine.a().a((Activity)paramObject);
-      LocaleManager.b((Activity)paramObject);
+      MultiLanguageEngine localMultiLanguageEngine = MultiLanguageEngine.a();
+      Activity localActivity = (Activity)paramObject;
+      localMultiLanguageEngine.a(localActivity);
+      LocaleManager.b(localActivity);
     }
-    if ((Build.VERSION.SDK_INT >= 24) && ((paramObject instanceof Activity))) {
+    if ((Build.VERSION.SDK_INT >= 24) && (bool)) {
       FontSettingManager.resetFontIfNeeded((Activity)paramObject, true, false);
     }
     if (sProcessId == 1) {
@@ -524,60 +459,65 @@ public class BaseApplicationImpl
   
   public void onActivityFocusChanged(AppActivity paramAppActivity, boolean paramBoolean)
   {
-    if (sDirector != null) {
-      sDirector.a(paramAppActivity, paramBoolean);
+    StartupDirector localStartupDirector = sDirector;
+    if (localStartupDirector != null) {
+      localStartupDirector.a(paramAppActivity, paramBoolean);
     }
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder();
+      StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("BaseApplicationImpl onConfigurationChanged called, localeInfo1:");
-      if (paramConfiguration == null) {
-        break label275;
+      if (paramConfiguration != null)
+      {
+        localStringBuilder.append("\n");
+        localStringBuilder.append("newConfig#Locale:");
+        localStringBuilder.append(paramConfiguration.locale.toString());
       }
-      localStringBuilder.append("\n").append("newConfig#Locale:").append(paramConfiguration.locale.toString());
-    }
-    for (;;)
-    {
+      else
+      {
+        localStringBuilder.append("\n");
+        localStringBuilder.append("newConfig is null");
+      }
       if (sApplication != null)
       {
-        localStringBuilder.append("\n").append("sApplication#Locale pre:");
+        localStringBuilder.append("\n");
+        localStringBuilder.append("sApplication#Locale pre:");
         localStringBuilder.append(sApplication.getResources().getConfiguration().locale.toString());
       }
       if (sMobileQQ != null)
       {
-        localStringBuilder.append("\n").append("sMobileQQ#Locale pre:");
+        localStringBuilder.append("\n");
+        localStringBuilder.append("sMobileQQ#Locale pre:");
         localStringBuilder.append(sMobileQQ.getResources().getConfiguration().locale.toString());
       }
       LocaleManager.a(localStringBuilder.toString());
-      super.onConfigurationChanged(paramConfiguration);
-      LocaleManager.a(this, LocaleManager.a());
-      FontSettingManager.initFontSetting(this, true, true);
-      if (QLog.isColorLevel())
+    }
+    super.onConfigurationChanged(paramConfiguration);
+    LocaleManager.a(this, LocaleManager.a());
+    FontSettingManager.initFontSetting(this, true, true);
+    if (QLog.isColorLevel())
+    {
+      paramConfiguration = new StringBuilder();
+      paramConfiguration.append("BaseApplicationImpl onConfigurationChanged called, localeInfo2:");
+      if (sApplication != null)
       {
-        paramConfiguration = new StringBuilder();
-        paramConfiguration.append("BaseApplicationImpl onConfigurationChanged called, localeInfo2:");
-        if (sApplication != null)
-        {
-          paramConfiguration.append("\n").append("sApplication#Locale end:");
-          paramConfiguration.append(sApplication.getResources().getConfiguration().locale.toString());
-        }
-        if (sMobileQQ != null)
-        {
-          paramConfiguration.append("\n").append("sMobileQQ#Locale end:");
-          paramConfiguration.append(sMobileQQ.getResources().getConfiguration().locale.toString());
-        }
-        if (!TextUtils.isEmpty(paramConfiguration.toString())) {
-          LocaleManager.a(paramConfiguration.toString());
-        }
+        paramConfiguration.append("\n");
+        paramConfiguration.append("sApplication#Locale end:");
+        paramConfiguration.append(sApplication.getResources().getConfiguration().locale.toString());
       }
-      return;
-      label275:
-      localStringBuilder.append("\n").append("newConfig is null");
+      if (sMobileQQ != null)
+      {
+        paramConfiguration.append("\n");
+        paramConfiguration.append("sMobileQQ#Locale end:");
+        paramConfiguration.append(sMobileQQ.getResources().getConfiguration().locale.toString());
+      }
+      if (!TextUtils.isEmpty(paramConfiguration.toString())) {
+        LocaleManager.a(paramConfiguration.toString());
+      }
     }
   }
   
@@ -608,6 +548,7 @@ public class BaseApplicationImpl
     ThirdAppReportHelper.sThirdAppReporter = new ThirdAppReportImpl();
     mqq.app.ThirdPushSupportHelper.sThirdPushSupport = new ThirdPushSupportImpl();
     setupMultiLanguage();
+    DCLBridge.a(this);
   }
   
   public Intent registerReceiver(BroadcastReceiver paramBroadcastReceiver, IntentFilter paramIntentFilter)
@@ -629,7 +570,7 @@ public class BaseApplicationImpl
   public void removeOtherTypeActivity(Activity paramActivity)
   {
     this.otherTypeActivitys.remove(new WeakReference(paramActivity));
-    StatisticCollector.getInstance(this).logOnDestroy(paramActivity);
+    ActivityLifeCycleInfoRecordHelper.d(paramActivity);
   }
   
   public void reportPCActive(String paramString, int paramInt)
@@ -644,31 +585,21 @@ public class BaseApplicationImpl
   
   public void sendBroadcast(Intent paramIntent)
   {
-    int j = 0;
-    int i;
-    if (paramIntent == null) {
-      i = j;
-    }
-    for (;;)
+    if (paramIntent != null)
     {
-      if (i == 0) {
-        doSendBroadcast(paramIntent);
-      }
-      return;
       String str = paramIntent.getAction();
-      i = j;
-      if (str != null) {
-        if (!str.startsWith("com.tencent.process."))
-        {
-          i = j;
-          if (!str.equals("com.tencent.qq.syncQQMessage")) {}
-        }
-        else
-        {
-          i = 1;
-          ThreadManager.getSubThreadHandler().post(new BaseApplicationImpl.8(this, paramIntent));
-        }
-      }
+      if ((str != null) && ((str.startsWith("com.tencent.process.")) || (str.equals("com.tencent.qq.syncQQMessage")))) {}
+    }
+    else
+    {
+      i = 0;
+      break label65;
+    }
+    int i = 1;
+    ThreadManager.getSubThreadHandler().post(new BaseApplicationImpl.8(this, paramIntent));
+    label65:
+    if (i == 0) {
+      doSendBroadcast(paramIntent);
     }
   }
   
@@ -691,7 +622,7 @@ public class BaseApplicationImpl
     {
       FileProvider7Helper.intentCompatForN(this, paramIntent);
       ThirdAppReportHelper.reportThirdAppOpen(this, paramIntent, 0);
-      JumpActivity.f(paramIntent);
+      JumpActivity.processIntent(paramIntent);
       try
       {
         IATHandler.a(this, paramIntent, new BaseApplicationImpl.4(this, paramIntent));
@@ -713,7 +644,7 @@ public class BaseApplicationImpl
     {
       FileProvider7Helper.intentCompatForN(this, paramIntent);
       ThirdAppReportHelper.reportThirdAppOpen(this, paramIntent, 0);
-      JumpActivity.f(paramIntent);
+      JumpActivity.processIntent(paramIntent);
       try
       {
         IATHandler.a(this, paramIntent, new BaseApplicationImpl.5(this, paramIntent, paramBundle));
@@ -729,6 +660,8 @@ public class BaseApplicationImpl
     catch (Exception paramIntent) {}
   }
   
+  public void startBeacon() {}
+  
   public ComponentName startService(Intent paramIntent)
   {
     ThirdAppReportHelper.reportThirdAppOpen(this, paramIntent, 1);
@@ -742,7 +675,7 @@ public class BaseApplicationImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.app.BaseApplicationImpl
  * JD-Core Version:    0.7.0.1
  */

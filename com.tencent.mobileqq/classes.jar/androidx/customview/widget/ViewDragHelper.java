@@ -61,103 +61,128 @@ public class ViewDragHelper
   
   private ViewDragHelper(@NonNull Context paramContext, @NonNull ViewGroup paramViewGroup, @NonNull ViewDragHelper.Callback paramCallback)
   {
-    if (paramViewGroup == null) {
-      throw new IllegalArgumentException("Parent view may not be null");
-    }
-    if (paramCallback == null) {
+    if (paramViewGroup != null)
+    {
+      if (paramCallback != null)
+      {
+        this.mParentView = paramViewGroup;
+        this.mCallback = paramCallback;
+        paramViewGroup = ViewConfiguration.get(paramContext);
+        this.mEdgeSize = ((int)(paramContext.getResources().getDisplayMetrics().density * 20.0F + 0.5F));
+        this.mTouchSlop = paramViewGroup.getScaledTouchSlop();
+        this.mMaxVelocity = paramViewGroup.getScaledMaximumFlingVelocity();
+        this.mMinVelocity = paramViewGroup.getScaledMinimumFlingVelocity();
+        this.mScroller = new OverScroller(paramContext, sInterpolator);
+        return;
+      }
       throw new IllegalArgumentException("Callback may not be null");
     }
-    this.mParentView = paramViewGroup;
-    this.mCallback = paramCallback;
-    paramViewGroup = ViewConfiguration.get(paramContext);
-    this.mEdgeSize = ((int)(paramContext.getResources().getDisplayMetrics().density * 20.0F + 0.5F));
-    this.mTouchSlop = paramViewGroup.getScaledTouchSlop();
-    this.mMaxVelocity = paramViewGroup.getScaledMaximumFlingVelocity();
-    this.mMinVelocity = paramViewGroup.getScaledMinimumFlingVelocity();
-    this.mScroller = new OverScroller(paramContext, sInterpolator);
+    throw new IllegalArgumentException("Parent view may not be null");
   }
   
   private boolean checkNewEdgeDrag(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
   {
     paramFloat1 = Math.abs(paramFloat1);
     paramFloat2 = Math.abs(paramFloat2);
-    if (((this.mInitialEdgesTouched[paramInt1] & paramInt2) != paramInt2) || ((this.mTrackingEdges & paramInt2) == 0) || ((this.mEdgeDragsLocked[paramInt1] & paramInt2) == paramInt2) || ((this.mEdgeDragsInProgress[paramInt1] & paramInt2) == paramInt2) || ((paramFloat1 <= this.mTouchSlop) && (paramFloat2 <= this.mTouchSlop))) {}
-    do
+    int i = this.mInitialEdgesTouched[paramInt1];
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((i & paramInt2) == paramInt2)
     {
-      return false;
-      if ((paramFloat1 < paramFloat2 * 0.5F) && (this.mCallback.onEdgeLock(paramInt2)))
+      bool1 = bool2;
+      if ((this.mTrackingEdges & paramInt2) != 0)
       {
-        int[] arrayOfInt = this.mEdgeDragsLocked;
-        arrayOfInt[paramInt1] |= paramInt2;
-        return false;
+        bool1 = bool2;
+        if ((this.mEdgeDragsLocked[paramInt1] & paramInt2) != paramInt2)
+        {
+          bool1 = bool2;
+          if ((this.mEdgeDragsInProgress[paramInt1] & paramInt2) != paramInt2)
+          {
+            i = this.mTouchSlop;
+            if ((paramFloat1 <= i) && (paramFloat2 <= i)) {
+              return false;
+            }
+            if ((paramFloat1 < paramFloat2 * 0.5F) && (this.mCallback.onEdgeLock(paramInt2)))
+            {
+              int[] arrayOfInt = this.mEdgeDragsLocked;
+              arrayOfInt[paramInt1] |= paramInt2;
+              return false;
+            }
+            bool1 = bool2;
+            if ((this.mEdgeDragsInProgress[paramInt1] & paramInt2) == 0)
+            {
+              bool1 = bool2;
+              if (paramFloat1 > this.mTouchSlop) {
+                bool1 = true;
+              }
+            }
+          }
+        }
       }
-    } while (((this.mEdgeDragsInProgress[paramInt1] & paramInt2) != 0) || (paramFloat1 <= this.mTouchSlop));
-    return true;
+    }
+    return bool1;
   }
   
   private boolean checkTouchSlop(View paramView, float paramFloat1, float paramFloat2)
   {
-    boolean bool = true;
+    boolean bool3 = false;
+    boolean bool2 = false;
+    boolean bool1 = false;
     if (paramView == null) {
-      bool = false;
-    }
-    label27:
-    label80:
-    label86:
-    do
-    {
-      int j;
-      do
-      {
-        return bool;
-        int i;
-        if (this.mCallback.getViewHorizontalDragRange(paramView) > 0)
-        {
-          i = 1;
-          if (this.mCallback.getViewVerticalDragRange(paramView) <= 0) {
-            break label80;
-          }
-        }
-        for (j = 1;; j = 0)
-        {
-          if ((i == 0) || (j == 0)) {
-            break label86;
-          }
-          if (paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2 > this.mTouchSlop * this.mTouchSlop) {
-            break;
-          }
-          return false;
-          i = 0;
-          break label27;
-        }
-        if (i == 0) {
-          break;
-        }
-      } while (Math.abs(paramFloat1) > this.mTouchSlop);
       return false;
-      if (j == 0) {
-        break;
+    }
+    int i;
+    if (this.mCallback.getViewHorizontalDragRange(paramView) > 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    int j;
+    if (this.mCallback.getViewVerticalDragRange(paramView) > 0) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    if ((i != 0) && (j != 0))
+    {
+      i = this.mTouchSlop;
+      if (paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2 > i * i) {
+        bool1 = true;
       }
-    } while (Math.abs(paramFloat2) > this.mTouchSlop);
-    return false;
-    return false;
+      return bool1;
+    }
+    if (i != 0)
+    {
+      bool1 = bool3;
+      if (Math.abs(paramFloat1) > this.mTouchSlop) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    bool1 = bool2;
+    if (j != 0)
+    {
+      bool1 = bool2;
+      if (Math.abs(paramFloat2) > this.mTouchSlop) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   private float clampMag(float paramFloat1, float paramFloat2, float paramFloat3)
   {
     float f = Math.abs(paramFloat1);
     if (f < paramFloat2) {
-      paramFloat2 = 0.0F;
+      return 0.0F;
     }
-    do
+    if (f > paramFloat3)
     {
-      return paramFloat2;
-      if (f <= paramFloat3) {
-        break;
+      if (paramFloat1 > 0.0F) {
+        return paramFloat3;
       }
-      paramFloat2 = paramFloat3;
-    } while (paramFloat1 > 0.0F);
-    return -paramFloat3;
+      return -paramFloat3;
+    }
     return paramFloat1;
   }
   
@@ -165,26 +190,25 @@ public class ViewDragHelper
   {
     int i = Math.abs(paramInt1);
     if (i < paramInt2) {
-      paramInt2 = 0;
+      return 0;
     }
-    do
+    if (i > paramInt3)
     {
-      return paramInt2;
-      if (i <= paramInt3) {
-        break;
+      if (paramInt1 > 0) {
+        return paramInt3;
       }
-      paramInt2 = paramInt3;
-    } while (paramInt1 > 0);
-    return -paramInt3;
+      return -paramInt3;
+    }
     return paramInt1;
   }
   
   private void clearMotionHistory()
   {
-    if (this.mInitialMotionX == null) {
+    float[] arrayOfFloat = this.mInitialMotionX;
+    if (arrayOfFloat == null) {
       return;
     }
-    Arrays.fill(this.mInitialMotionX, 0.0F);
+    Arrays.fill(arrayOfFloat, 0.0F);
     Arrays.fill(this.mInitialMotionY, 0.0F);
     Arrays.fill(this.mLastMotionX, 0.0F);
     Arrays.fill(this.mLastMotionY, 0.0F);
@@ -196,17 +220,20 @@ public class ViewDragHelper
   
   private void clearMotionHistory(int paramInt)
   {
-    if ((this.mInitialMotionX == null) || (!isPointerDown(paramInt))) {
-      return;
+    if (this.mInitialMotionX != null)
+    {
+      if (!isPointerDown(paramInt)) {
+        return;
+      }
+      this.mInitialMotionX[paramInt] = 0.0F;
+      this.mInitialMotionY[paramInt] = 0.0F;
+      this.mLastMotionX[paramInt] = 0.0F;
+      this.mLastMotionY[paramInt] = 0.0F;
+      this.mInitialEdgesTouched[paramInt] = 0;
+      this.mEdgeDragsInProgress[paramInt] = 0;
+      this.mEdgeDragsLocked[paramInt] = 0;
+      this.mPointersDown = ((1 << paramInt ^ 0xFFFFFFFF) & this.mPointersDown);
     }
-    this.mInitialMotionX[paramInt] = 0.0F;
-    this.mInitialMotionY[paramInt] = 0.0F;
-    this.mLastMotionX[paramInt] = 0.0F;
-    this.mLastMotionY[paramInt] = 0.0F;
-    this.mInitialEdgesTouched[paramInt] = 0;
-    this.mEdgeDragsInProgress[paramInt] = 0;
-    this.mEdgeDragsLocked[paramInt] = 0;
-    this.mPointersDown &= (1 << paramInt ^ 0xFFFFFFFF);
   }
   
   private int computeAxisDuration(int paramInt1, int paramInt2, int paramInt3)
@@ -216,15 +243,16 @@ public class ViewDragHelper
     }
     int i = this.mParentView.getWidth();
     int j = i / 2;
-    float f3 = Math.min(1.0F, Math.abs(paramInt1) / i);
+    float f2 = Math.min(1.0F, Math.abs(paramInt1) / i);
     float f1 = j;
-    float f2 = j;
-    f3 = distanceInfluenceForSnapDuration(f3);
+    f2 = distanceInfluenceForSnapDuration(f2);
     paramInt2 = Math.abs(paramInt2);
-    if (paramInt2 > 0) {}
-    for (paramInt1 = Math.round(Math.abs((f3 * f2 + f1) / paramInt2) * 1000.0F) * 4;; paramInt1 = (int)((Math.abs(paramInt1) / paramInt3 + 1.0F) * 256.0F)) {
-      return Math.min(paramInt1, 600);
+    if (paramInt2 > 0) {
+      paramInt1 = Math.round(Math.abs((f1 + f2 * f1) / paramInt2) * 1000.0F) * 4;
+    } else {
+      paramInt1 = (int)((Math.abs(paramInt1) / paramInt3 + 1.0F) * 256.0F);
     }
+    return Math.min(paramInt1, 600);
   }
   
   private int computeSettleDuration(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -238,23 +266,32 @@ public class ViewDragHelper
     int n = k + m;
     int i1 = i + j;
     float f1;
+    float f2;
     if (paramInt3 != 0)
     {
-      f1 = k / n;
-      if (paramInt4 == 0) {
-        break label165;
-      }
+      f1 = k;
+      f2 = n;
     }
-    label165:
-    for (float f2 = m / n;; f2 = j / i1)
+    else
     {
-      paramInt1 = computeAxisDuration(paramInt1, paramInt3, this.mCallback.getViewHorizontalDragRange(paramView));
-      paramInt2 = computeAxisDuration(paramInt2, paramInt4, this.mCallback.getViewVerticalDragRange(paramView));
-      float f3 = paramInt1;
-      return (int)(f2 * paramInt2 + f1 * f3);
-      f1 = i / i1;
-      break;
+      f1 = i;
+      f2 = i1;
     }
+    float f3 = f1 / f2;
+    if (paramInt4 != 0)
+    {
+      f1 = m;
+      f2 = n;
+    }
+    else
+    {
+      f1 = j;
+      f2 = i1;
+    }
+    f1 /= f2;
+    paramInt1 = computeAxisDuration(paramInt1, paramInt3, this.mCallback.getViewHorizontalDragRange(paramView));
+    paramInt2 = computeAxisDuration(paramInt2, paramInt4, this.mCallback.getViewVerticalDragRange(paramView));
+    return (int)(paramInt1 * f3 + paramInt2 * f1);
   }
   
   public static ViewDragHelper create(@NonNull ViewGroup paramViewGroup, float paramFloat, @NonNull ViewDragHelper.Callback paramCallback)
@@ -286,50 +323,54 @@ public class ViewDragHelper
   
   private void dragTo(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int i = this.mCapturedView.getLeft();
-    int j = this.mCapturedView.getTop();
+    int j = this.mCapturedView.getLeft();
+    int k = this.mCapturedView.getTop();
+    int i = paramInt1;
     if (paramInt3 != 0)
     {
-      paramInt1 = this.mCallback.clampViewPositionHorizontal(this.mCapturedView, paramInt1, paramInt3);
-      ViewCompat.offsetLeftAndRight(this.mCapturedView, paramInt1 - i);
+      i = this.mCallback.clampViewPositionHorizontal(this.mCapturedView, paramInt1, paramInt3);
+      ViewCompat.offsetLeftAndRight(this.mCapturedView, i - j);
     }
-    for (;;)
+    paramInt1 = paramInt2;
+    if (paramInt4 != 0)
     {
-      if (paramInt4 != 0)
-      {
-        paramInt2 = this.mCallback.clampViewPositionVertical(this.mCapturedView, paramInt2, paramInt4);
-        ViewCompat.offsetTopAndBottom(this.mCapturedView, paramInt2 - j);
-      }
-      for (;;)
-      {
-        if ((paramInt3 != 0) || (paramInt4 != 0)) {
-          this.mCallback.onViewPositionChanged(this.mCapturedView, paramInt1, paramInt2, paramInt1 - i, paramInt2 - j);
-        }
-        return;
-      }
+      paramInt1 = this.mCallback.clampViewPositionVertical(this.mCapturedView, paramInt2, paramInt4);
+      ViewCompat.offsetTopAndBottom(this.mCapturedView, paramInt1 - k);
+    }
+    if ((paramInt3 != 0) || (paramInt4 != 0)) {
+      this.mCallback.onViewPositionChanged(this.mCapturedView, i, paramInt1, i - j, paramInt1 - k);
     }
   }
   
   private void ensureMotionHistorySizeForId(int paramInt)
   {
-    if ((this.mInitialMotionX == null) || (this.mInitialMotionX.length <= paramInt))
+    float[] arrayOfFloat1 = this.mInitialMotionX;
+    if ((arrayOfFloat1 == null) || (arrayOfFloat1.length <= paramInt))
     {
-      float[] arrayOfFloat1 = new float[paramInt + 1];
-      float[] arrayOfFloat2 = new float[paramInt + 1];
-      float[] arrayOfFloat3 = new float[paramInt + 1];
-      float[] arrayOfFloat4 = new float[paramInt + 1];
-      int[] arrayOfInt1 = new int[paramInt + 1];
-      int[] arrayOfInt2 = new int[paramInt + 1];
-      int[] arrayOfInt3 = new int[paramInt + 1];
-      if (this.mInitialMotionX != null)
+      paramInt += 1;
+      arrayOfFloat1 = new float[paramInt];
+      float[] arrayOfFloat2 = new float[paramInt];
+      float[] arrayOfFloat3 = new float[paramInt];
+      float[] arrayOfFloat4 = new float[paramInt];
+      int[] arrayOfInt1 = new int[paramInt];
+      int[] arrayOfInt2 = new int[paramInt];
+      int[] arrayOfInt3 = new int[paramInt];
+      Object localObject = this.mInitialMotionX;
+      if (localObject != null)
       {
-        System.arraycopy(this.mInitialMotionX, 0, arrayOfFloat1, 0, this.mInitialMotionX.length);
-        System.arraycopy(this.mInitialMotionY, 0, arrayOfFloat2, 0, this.mInitialMotionY.length);
-        System.arraycopy(this.mLastMotionX, 0, arrayOfFloat3, 0, this.mLastMotionX.length);
-        System.arraycopy(this.mLastMotionY, 0, arrayOfFloat4, 0, this.mLastMotionY.length);
-        System.arraycopy(this.mInitialEdgesTouched, 0, arrayOfInt1, 0, this.mInitialEdgesTouched.length);
-        System.arraycopy(this.mEdgeDragsInProgress, 0, arrayOfInt2, 0, this.mEdgeDragsInProgress.length);
-        System.arraycopy(this.mEdgeDragsLocked, 0, arrayOfInt3, 0, this.mEdgeDragsLocked.length);
+        System.arraycopy(localObject, 0, arrayOfFloat1, 0, localObject.length);
+        localObject = this.mInitialMotionY;
+        System.arraycopy(localObject, 0, arrayOfFloat2, 0, localObject.length);
+        localObject = this.mLastMotionX;
+        System.arraycopy(localObject, 0, arrayOfFloat3, 0, localObject.length);
+        localObject = this.mLastMotionY;
+        System.arraycopy(localObject, 0, arrayOfFloat4, 0, localObject.length);
+        localObject = this.mInitialEdgesTouched;
+        System.arraycopy(localObject, 0, arrayOfInt1, 0, localObject.length);
+        localObject = this.mEdgeDragsInProgress;
+        System.arraycopy(localObject, 0, arrayOfInt2, 0, localObject.length);
+        localObject = this.mEdgeDragsLocked;
+        System.arraycopy(localObject, 0, arrayOfInt3, 0, localObject.length);
       }
       this.mInitialMotionX = arrayOfFloat1;
       this.mInitialMotionY = arrayOfFloat2;
@@ -361,15 +402,16 @@ public class ViewDragHelper
   
   private int getEdgesTouched(int paramInt1, int paramInt2)
   {
-    int j = 0;
     if (paramInt1 < this.mParentView.getLeft() + this.mEdgeSize) {
       j = 1;
+    } else {
+      j = 0;
     }
     int i = j;
     if (paramInt2 < this.mParentView.getTop() + this.mEdgeSize) {
       i = j | 0x4;
     }
-    j = i;
+    int j = i;
     if (paramInt1 > this.mParentView.getRight() - this.mEdgeSize) {
       j = i | 0x2;
     }
@@ -384,7 +426,13 @@ public class ViewDragHelper
   {
     if (!isPointerDown(paramInt))
     {
-      Log.e("ViewDragHelper", "Ignoring pointerId=" + paramInt + " because ACTION_DOWN was not received " + "for this pointer before ACTION_MOVE. It likely happened because " + " ViewDragHelper did not receive all the events in the event stream.");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Ignoring pointerId=");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" because ACTION_DOWN was not received ");
+      localStringBuilder.append("for this pointer before ACTION_MOVE. It likely happened because ");
+      localStringBuilder.append(" ViewDragHelper did not receive all the events in the event stream.");
+      Log.e("ViewDragHelper", localStringBuilder.toString());
       return false;
     }
     return true;
@@ -399,29 +447,26 @@ public class ViewDragHelper
   private void reportNewEdgeDrags(float paramFloat1, float paramFloat2, int paramInt)
   {
     int j = 1;
-    if (checkNewEdgeDrag(paramFloat1, paramFloat2, paramInt, 1)) {}
-    for (;;)
-    {
-      int i = j;
-      if (checkNewEdgeDrag(paramFloat2, paramFloat1, paramInt, 4)) {
-        i = j | 0x4;
-      }
-      j = i;
-      if (checkNewEdgeDrag(paramFloat1, paramFloat2, paramInt, 2)) {
-        j = i | 0x2;
-      }
-      i = j;
-      if (checkNewEdgeDrag(paramFloat2, paramFloat1, paramInt, 8)) {
-        i = j | 0x8;
-      }
-      if (i != 0)
-      {
-        int[] arrayOfInt = this.mEdgeDragsInProgress;
-        arrayOfInt[paramInt] |= i;
-        this.mCallback.onEdgeDragStarted(i, paramInt);
-      }
-      return;
+    if (!checkNewEdgeDrag(paramFloat1, paramFloat2, paramInt, 1)) {
       j = 0;
+    }
+    int i = j;
+    if (checkNewEdgeDrag(paramFloat2, paramFloat1, paramInt, 4)) {
+      i = j | 0x4;
+    }
+    j = i;
+    if (checkNewEdgeDrag(paramFloat1, paramFloat2, paramInt, 2)) {
+      j = i | 0x2;
+    }
+    i = j;
+    if (checkNewEdgeDrag(paramFloat2, paramFloat1, paramInt, 8)) {
+      i = j | 0x8;
+    }
+    if (i != 0)
+    {
+      int[] arrayOfInt = this.mEdgeDragsInProgress;
+      arrayOfInt[paramInt] |= i;
+      this.mCallback.onEdgeDragStarted(i, paramInt);
     }
   }
   
@@ -442,19 +487,17 @@ public class ViewDragHelper
   {
     int j = paramMotionEvent.getPointerCount();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       int k = paramMotionEvent.getPointerId(i);
-      if (!isValidPointerForActionMove(k)) {}
-      for (;;)
+      if (isValidPointerForActionMove(k))
       {
-        i += 1;
-        break;
         float f1 = paramMotionEvent.getX(i);
         float f2 = paramMotionEvent.getY(i);
         this.mLastMotionX[k] = f1;
         this.mLastMotionY[k] = f2;
       }
+      i += 1;
     }
   }
   
@@ -475,7 +518,9 @@ public class ViewDragHelper
   
   protected boolean canScroll(@NonNull View paramView, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((paramView instanceof ViewGroup))
+    boolean bool2 = paramView instanceof ViewGroup;
+    boolean bool1 = true;
+    if (bool2)
     {
       ViewGroup localViewGroup = (ViewGroup)paramView;
       int j = paramView.getScrollX();
@@ -484,116 +529,131 @@ public class ViewDragHelper
       while (i >= 0)
       {
         View localView = localViewGroup.getChildAt(i);
-        if ((paramInt3 + j >= localView.getLeft()) && (paramInt3 + j < localView.getRight()) && (paramInt4 + k >= localView.getTop()) && (paramInt4 + k < localView.getBottom()) && (canScroll(localView, true, paramInt1, paramInt2, paramInt3 + j - localView.getLeft(), paramInt4 + k - localView.getTop()))) {
-          return true;
+        int m = paramInt3 + j;
+        if ((m >= localView.getLeft()) && (m < localView.getRight()))
+        {
+          int n = paramInt4 + k;
+          if ((n >= localView.getTop()) && (n < localView.getBottom()) && (canScroll(localView, true, paramInt1, paramInt2, m - localView.getLeft(), n - localView.getTop()))) {
+            return true;
+          }
         }
         i -= 1;
       }
     }
-    return (paramBoolean) && ((paramView.canScrollHorizontally(-paramInt1)) || (paramView.canScrollVertically(-paramInt2)));
+    if (paramBoolean)
+    {
+      paramBoolean = bool1;
+      if (paramView.canScrollHorizontally(-paramInt1)) {
+        return paramBoolean;
+      }
+      if (paramView.canScrollVertically(-paramInt2)) {
+        return true;
+      }
+    }
+    paramBoolean = false;
+    return paramBoolean;
   }
   
   public void cancel()
   {
     this.mActivePointerId = -1;
     clearMotionHistory();
-    if (this.mVelocityTracker != null)
+    VelocityTracker localVelocityTracker = this.mVelocityTracker;
+    if (localVelocityTracker != null)
     {
-      this.mVelocityTracker.recycle();
+      localVelocityTracker.recycle();
       this.mVelocityTracker = null;
     }
   }
   
   public void captureChildView(@NonNull View paramView, int paramInt)
   {
-    if (paramView.getParent() != this.mParentView) {
-      throw new IllegalArgumentException("captureChildView: parameter must be a descendant of the ViewDragHelper's tracked parent view (" + this.mParentView + ")");
+    if (paramView.getParent() == this.mParentView)
+    {
+      this.mCapturedView = paramView;
+      this.mActivePointerId = paramInt;
+      this.mCallback.onViewCaptured(paramView, paramInt);
+      setDragState(1);
+      return;
     }
-    this.mCapturedView = paramView;
-    this.mActivePointerId = paramInt;
-    this.mCallback.onViewCaptured(paramView, paramInt);
-    setDragState(1);
+    paramView = new StringBuilder();
+    paramView.append("captureChildView: parameter must be a descendant of the ViewDragHelper's tracked parent view (");
+    paramView.append(this.mParentView);
+    paramView.append(")");
+    throw new IllegalArgumentException(paramView.toString());
   }
   
   public boolean checkTouchSlop(int paramInt)
   {
-    boolean bool2 = false;
     int j = this.mInitialMotionX.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (checkTouchSlop(paramInt, i)) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+      if (checkTouchSlop(paramInt, i)) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   public boolean checkTouchSlop(int paramInt1, int paramInt2)
   {
-    boolean bool = true;
-    if (!isPointerDown(paramInt2)) {
-      bool = false;
-    }
-    label27:
-    float f2;
-    label105:
-    label110:
-    do
-    {
-      float f1;
-      do
-      {
-        return bool;
-        int i;
-        if ((paramInt1 & 0x1) == 1)
-        {
-          i = 1;
-          if ((paramInt1 & 0x2) != 2) {
-            break label105;
-          }
-        }
-        for (paramInt1 = 1;; paramInt1 = 0)
-        {
-          f1 = this.mLastMotionX[paramInt2] - this.mInitialMotionX[paramInt2];
-          f2 = this.mLastMotionY[paramInt2] - this.mInitialMotionY[paramInt2];
-          if ((i == 0) || (paramInt1 == 0)) {
-            break label110;
-          }
-          if (f1 * f1 + f2 * f2 > this.mTouchSlop * this.mTouchSlop) {
-            break;
-          }
-          return false;
-          i = 0;
-          break label27;
-        }
-        if (i == 0) {
-          break;
-        }
-      } while (Math.abs(f1) > this.mTouchSlop);
+    boolean bool4 = isPointerDown(paramInt2);
+    boolean bool3 = false;
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (!bool4) {
       return false;
-      if (paramInt1 == 0) {
-        break;
+    }
+    int i;
+    if ((paramInt1 & 0x1) == 1) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((paramInt1 & 0x2) == 2) {
+      paramInt1 = 1;
+    } else {
+      paramInt1 = 0;
+    }
+    float f1 = this.mLastMotionX[paramInt2] - this.mInitialMotionX[paramInt2];
+    float f2 = this.mLastMotionY[paramInt2] - this.mInitialMotionY[paramInt2];
+    if ((i != 0) && (paramInt1 != 0))
+    {
+      paramInt1 = this.mTouchSlop;
+      if (f1 * f1 + f2 * f2 > paramInt1 * paramInt1) {
+        bool1 = true;
       }
-    } while (Math.abs(f2) > this.mTouchSlop);
-    return false;
-    return false;
+      return bool1;
+    }
+    if (i != 0)
+    {
+      bool1 = bool3;
+      if (Math.abs(f1) > this.mTouchSlop) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    bool1 = bool2;
+    if (paramInt1 != 0)
+    {
+      bool1 = bool2;
+      if (Math.abs(f2) > this.mTouchSlop) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public boolean continueSettling(boolean paramBoolean)
   {
-    boolean bool;
-    if (this.mDragState == 2)
+    int i = this.mDragState;
+    boolean bool2 = false;
+    if (i == 2)
     {
-      bool = this.mScroller.computeScrollOffset();
-      int i = this.mScroller.getCurrX();
+      boolean bool3 = this.mScroller.computeScrollOffset();
+      i = this.mScroller.getCurrX();
       int j = this.mScroller.getCurrY();
       int k = i - this.mCapturedView.getLeft();
       int m = j - this.mCapturedView.getTop();
@@ -606,30 +666,33 @@ public class ViewDragHelper
       if ((k != 0) || (m != 0)) {
         this.mCallback.onViewPositionChanged(this.mCapturedView, i, j, k, m);
       }
-      if ((!bool) || (i != this.mScroller.getFinalX()) || (j != this.mScroller.getFinalY())) {
-        break label188;
-      }
-      this.mScroller.abortAnimation();
-      bool = false;
-    }
-    label178:
-    label188:
-    for (;;)
-    {
-      if (!bool)
+      boolean bool1 = bool3;
+      if (bool3)
       {
-        if (!paramBoolean) {
-          break label178;
+        bool1 = bool3;
+        if (i == this.mScroller.getFinalX())
+        {
+          bool1 = bool3;
+          if (j == this.mScroller.getFinalY())
+          {
+            this.mScroller.abortAnimation();
+            bool1 = false;
+          }
         }
-        this.mParentView.post(this.mSetIdleRunnable);
       }
-      while (this.mDragState == 2)
-      {
-        return true;
-        setDragState(0);
+      if (!bool1) {
+        if (paramBoolean) {
+          this.mParentView.post(this.mSetIdleRunnable);
+        } else {
+          setDragState(0);
+        }
       }
-      return false;
     }
+    paramBoolean = bool2;
+    if (this.mDragState == 2) {
+      paramBoolean = true;
+    }
+    return paramBoolean;
   }
   
   @Nullable
@@ -649,11 +712,13 @@ public class ViewDragHelper
   
   public void flingCapturedView(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (!this.mReleaseInProgress) {
-      throw new IllegalStateException("Cannot flingCapturedView outside of a call to Callback#onViewReleased");
+    if (this.mReleaseInProgress)
+    {
+      this.mScroller.fling(this.mCapturedView.getLeft(), this.mCapturedView.getTop(), (int)this.mVelocityTracker.getXVelocity(this.mActivePointerId), (int)this.mVelocityTracker.getYVelocity(this.mActivePointerId), paramInt1, paramInt3, paramInt2, paramInt4);
+      setDragState(2);
+      return;
     }
-    this.mScroller.fling(this.mCapturedView.getLeft(), this.mCapturedView.getTop(), (int)this.mVelocityTracker.getXVelocity(this.mActivePointerId), (int)this.mVelocityTracker.getYVelocity(this.mActivePointerId), paramInt1, paramInt3, paramInt2, paramInt4);
-    setDragState(2);
+    throw new IllegalStateException("Cannot flingCapturedView outside of a call to Callback#onViewReleased");
   }
   
   public int getActivePointerId()
@@ -696,48 +761,55 @@ public class ViewDragHelper
   
   public boolean isEdgeTouched(int paramInt)
   {
-    boolean bool2 = false;
     int j = this.mInitialEdgesTouched.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (isEdgeTouched(paramInt, i)) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+      if (isEdgeTouched(paramInt, i)) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   public boolean isEdgeTouched(int paramInt1, int paramInt2)
   {
-    return (isPointerDown(paramInt2)) && ((this.mInitialEdgesTouched[paramInt2] & paramInt1) != 0);
+    return (isPointerDown(paramInt2)) && ((paramInt1 & this.mInitialEdgesTouched[paramInt2]) != 0);
   }
   
   public boolean isPointerDown(int paramInt)
   {
-    return (this.mPointersDown & 1 << paramInt) != 0;
+    return (1 << paramInt & this.mPointersDown) != 0;
   }
   
   public boolean isViewUnder(@Nullable View paramView, int paramInt1, int paramInt2)
   {
-    if (paramView == null) {}
-    while ((paramInt1 < paramView.getLeft()) || (paramInt1 >= paramView.getRight()) || (paramInt2 < paramView.getTop()) || (paramInt2 >= paramView.getBottom())) {
+    boolean bool2 = false;
+    if (paramView == null) {
       return false;
     }
-    return true;
+    boolean bool1 = bool2;
+    if (paramInt1 >= paramView.getLeft())
+    {
+      bool1 = bool2;
+      if (paramInt1 < paramView.getRight())
+      {
+        bool1 = bool2;
+        if (paramInt2 >= paramView.getTop())
+        {
+          bool1 = bool2;
+          if (paramInt2 < paramView.getBottom()) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public void processTouchEvent(@NonNull MotionEvent paramMotionEvent)
   {
-    int i = 0;
-    int j = 0;
     int m = paramMotionEvent.getActionMasked();
     int k = paramMotionEvent.getActionIndex();
     if (m == 0) {
@@ -747,132 +819,144 @@ public class ViewDragHelper
       this.mVelocityTracker = VelocityTracker.obtain();
     }
     this.mVelocityTracker.addMovement(paramMotionEvent);
+    int j = 0;
+    int i = 0;
     float f1;
     float f2;
-    switch (m)
+    if (m != 0)
     {
-    case 4: 
-    default: 
-    case 0: 
-    case 5: 
-    case 2: 
-      do
+      if (m != 1)
       {
-        do
+        Object localObject;
+        if (m != 2)
         {
-          do
+          if (m != 3)
           {
-            do
+            if (m != 5)
             {
+              if (m != 6) {
+                return;
+              }
+              j = paramMotionEvent.getPointerId(k);
+              if ((this.mDragState == 1) && (j == this.mActivePointerId))
+              {
+                k = paramMotionEvent.getPointerCount();
+                while (i < k)
+                {
+                  m = paramMotionEvent.getPointerId(i);
+                  if (m != this.mActivePointerId)
+                  {
+                    f1 = paramMotionEvent.getX(i);
+                    f2 = paramMotionEvent.getY(i);
+                    localObject = findTopChildUnder((int)f1, (int)f2);
+                    View localView = this.mCapturedView;
+                    if ((localObject == localView) && (tryCaptureViewForDrag(localView, m)))
+                    {
+                      i = this.mActivePointerId;
+                      break label213;
+                    }
+                  }
+                  i += 1;
+                }
+                i = -1;
+                label213:
+                if (i == -1) {
+                  releaseViewForPointerUp();
+                }
+              }
+              clearMotionHistory(j);
               return;
-              f1 = paramMotionEvent.getX();
-              f2 = paramMotionEvent.getY();
-              i = paramMotionEvent.getPointerId(0);
-              paramMotionEvent = findTopChildUnder((int)f1, (int)f2);
-              saveInitialMotion(f1, f2, i);
-              tryCaptureViewForDrag(paramMotionEvent, i);
-              j = this.mInitialEdgesTouched[i];
-            } while ((this.mTrackingEdges & j) == 0);
-            this.mCallback.onEdgeTouched(j & this.mTrackingEdges, i);
-            return;
+            }
             i = paramMotionEvent.getPointerId(k);
             f1 = paramMotionEvent.getX(k);
             f2 = paramMotionEvent.getY(k);
             saveInitialMotion(f1, f2, i);
-            if (this.mDragState != 0) {
-              break;
+            if (this.mDragState == 0)
+            {
+              tryCaptureViewForDrag(findTopChildUnder((int)f1, (int)f2), i);
+              j = this.mInitialEdgesTouched[i];
+              k = this.mTrackingEdges;
+              if ((j & k) != 0) {
+                this.mCallback.onEdgeTouched(j & k, i);
+              }
             }
-            tryCaptureViewForDrag(findTopChildUnder((int)f1, (int)f2), i);
-            j = this.mInitialEdgesTouched[i];
-          } while ((this.mTrackingEdges & j) == 0);
-          this.mCallback.onEdgeTouched(j & this.mTrackingEdges, i);
-          return;
-        } while (!isCapturedViewUnder((int)f1, (int)f2));
-        tryCaptureViewForDrag(this.mCapturedView, i);
-        return;
-        if (this.mDragState != 1) {
-          break;
-        }
-      } while (!isValidPointerForActionMove(this.mActivePointerId));
-      i = paramMotionEvent.findPointerIndex(this.mActivePointerId);
-      f1 = paramMotionEvent.getX(i);
-      f2 = paramMotionEvent.getY(i);
-      i = (int)(f1 - this.mLastMotionX[this.mActivePointerId]);
-      j = (int)(f2 - this.mLastMotionY[this.mActivePointerId]);
-      dragTo(this.mCapturedView.getLeft() + i, this.mCapturedView.getTop() + j, i, j);
-      saveLastMotion(paramMotionEvent);
-      return;
-      k = paramMotionEvent.getPointerCount();
-      i = j;
-      float f3;
-      float f4;
-      while (i < k)
-      {
-        j = paramMotionEvent.getPointerId(i);
-        if (!isValidPointerForActionMove(j))
-        {
-          i += 1;
+            else if (isCapturedViewUnder((int)f1, (int)f2))
+            {
+              tryCaptureViewForDrag(this.mCapturedView, i);
+            }
+          }
+          else
+          {
+            if (this.mDragState == 1) {
+              dispatchViewReleased(0.0F, 0.0F);
+            }
+            cancel();
+          }
         }
         else
         {
-          f1 = paramMotionEvent.getX(i);
-          f2 = paramMotionEvent.getY(i);
-          f3 = f1 - this.mInitialMotionX[j];
-          f4 = f2 - this.mInitialMotionY[j];
-          reportNewEdgeDrags(f3, f4, j);
-          if (this.mDragState != 1) {
-            break label490;
+          if (this.mDragState == 1)
+          {
+            if (!isValidPointerForActionMove(this.mActivePointerId)) {
+              return;
+            }
+            i = paramMotionEvent.findPointerIndex(this.mActivePointerId);
+            f1 = paramMotionEvent.getX(i);
+            f2 = paramMotionEvent.getY(i);
+            localObject = this.mLastMotionX;
+            j = this.mActivePointerId;
+            i = (int)(f1 - localObject[j]);
+            j = (int)(f2 - this.mLastMotionY[j]);
+            dragTo(this.mCapturedView.getLeft() + i, this.mCapturedView.getTop() + j, i, j);
+            saveLastMotion(paramMotionEvent);
+            return;
           }
+          k = paramMotionEvent.getPointerCount();
+          i = j;
+          while (i < k)
+          {
+            j = paramMotionEvent.getPointerId(i);
+            if (isValidPointerForActionMove(j))
+            {
+              f1 = paramMotionEvent.getX(i);
+              f2 = paramMotionEvent.getY(i);
+              float f3 = f1 - this.mInitialMotionX[j];
+              float f4 = f2 - this.mInitialMotionY[j];
+              reportNewEdgeDrags(f3, f4, j);
+              if (this.mDragState == 1) {
+                break;
+              }
+              localObject = findTopChildUnder((int)f1, (int)f2);
+              if ((checkTouchSlop((View)localObject, f3, f4)) && (tryCaptureViewForDrag((View)localObject, j))) {
+                break;
+              }
+            }
+            i += 1;
+          }
+          saveLastMotion(paramMotionEvent);
         }
       }
-      for (;;)
+      else
       {
-        saveLastMotion(paramMotionEvent);
-        return;
-        View localView = findTopChildUnder((int)f1, (int)f2);
-        if ((!checkTouchSlop(localView, f3, f4)) || (!tryCaptureViewForDrag(localView, j))) {
-          break;
+        if (this.mDragState == 1) {
+          releaseViewForPointerUp();
         }
+        cancel();
       }
-    case 6: 
-      label490:
-      j = paramMotionEvent.getPointerId(k);
-      if ((this.mDragState == 1) && (j == this.mActivePointerId))
-      {
-        k = paramMotionEvent.getPointerCount();
-        if (i >= k) {
-          break label692;
-        }
-        m = paramMotionEvent.getPointerId(i);
-        if (m == this.mActivePointerId) {}
-        do
-        {
-          i += 1;
-          break;
-          f1 = paramMotionEvent.getX(i);
-          f2 = paramMotionEvent.getY(i);
-        } while ((findTopChildUnder((int)f1, (int)f2) != this.mCapturedView) || (!tryCaptureViewForDrag(this.mCapturedView, m)));
-      }
-      break;
     }
-    label692:
-    for (i = this.mActivePointerId;; i = -1)
+    else
     {
-      if (i == -1) {
-        releaseViewForPointerUp();
+      f1 = paramMotionEvent.getX();
+      f2 = paramMotionEvent.getY();
+      i = paramMotionEvent.getPointerId(0);
+      paramMotionEvent = findTopChildUnder((int)f1, (int)f2);
+      saveInitialMotion(f1, f2, i);
+      tryCaptureViewForDrag(paramMotionEvent, i);
+      j = this.mInitialEdgesTouched[i];
+      k = this.mTrackingEdges;
+      if ((j & k) != 0) {
+        this.mCallback.onEdgeTouched(j & k, i);
       }
-      clearMotionHistory(j);
-      return;
-      if (this.mDragState == 1) {
-        releaseViewForPointerUp();
-      }
-      cancel();
-      return;
-      if (this.mDragState == 1) {
-        dispatchViewReleased(0.0F, 0.0F);
-      }
-      cancel();
-      return;
     }
   }
   
@@ -901,31 +985,121 @@ public class ViewDragHelper
   
   public boolean settleCapturedViewAt(int paramInt1, int paramInt2)
   {
-    if (!this.mReleaseInProgress) {
-      throw new IllegalStateException("Cannot settleCapturedViewAt outside of a call to Callback#onViewReleased");
+    if (this.mReleaseInProgress) {
+      return forceSettleCapturedViewAt(paramInt1, paramInt2, (int)this.mVelocityTracker.getXVelocity(this.mActivePointerId), (int)this.mVelocityTracker.getYVelocity(this.mActivePointerId));
     }
-    return forceSettleCapturedViewAt(paramInt1, paramInt2, (int)this.mVelocityTracker.getXVelocity(this.mActivePointerId), (int)this.mVelocityTracker.getYVelocity(this.mActivePointerId));
+    throw new IllegalStateException("Cannot settleCapturedViewAt outside of a call to Callback#onViewReleased");
   }
   
   public boolean shouldInterceptTouchEvent(@NonNull MotionEvent paramMotionEvent)
   {
-    int j = paramMotionEvent.getActionMasked();
-    int i = paramMotionEvent.getActionIndex();
-    if (j == 0) {
+    int i = paramMotionEvent.getActionMasked();
+    int j = paramMotionEvent.getActionIndex();
+    if (i == 0) {
       cancel();
     }
     if (this.mVelocityTracker == null) {
       this.mVelocityTracker = VelocityTracker.obtain();
     }
     this.mVelocityTracker.addMovement(paramMotionEvent);
-    switch (j)
+    float f1;
+    float f2;
+    int k;
+    if (i != 0)
     {
+      if (i != 1) {
+        if (i != 2)
+        {
+          if (i == 3) {
+            break label517;
+          }
+          if (i != 5) {
+            if (i != 6) {
+              break label619;
+            }
+          }
+        }
+      }
+      for (;;)
+      {
+        clearMotionHistory(paramMotionEvent.getPointerId(j));
+        continue;
+        i = paramMotionEvent.getPointerId(j);
+        f1 = paramMotionEvent.getX(j);
+        f2 = paramMotionEvent.getY(j);
+        saveInitialMotion(f1, f2, i);
+        j = this.mDragState;
+        if (j == 0)
+        {
+          j = this.mInitialEdgesTouched[i];
+          k = this.mTrackingEdges;
+          if ((j & k) != 0) {
+            this.mCallback.onEdgeTouched(j & k, i);
+          }
+        }
+        else if (j == 2)
+        {
+          paramMotionEvent = findTopChildUnder((int)f1, (int)f2);
+          if (paramMotionEvent == this.mCapturedView)
+          {
+            tryCaptureViewForDrag(paramMotionEvent, i);
+            continue;
+            if ((this.mInitialMotionX != null) && (this.mInitialMotionY != null))
+            {
+              k = paramMotionEvent.getPointerCount();
+              i = 0;
+              while (i < k)
+              {
+                int m = paramMotionEvent.getPointerId(i);
+                if (isValidPointerForActionMove(m))
+                {
+                  f1 = paramMotionEvent.getX(i);
+                  f2 = paramMotionEvent.getY(i);
+                  float f3 = f1 - this.mInitialMotionX[m];
+                  float f4 = f2 - this.mInitialMotionY[m];
+                  View localView = findTopChildUnder((int)f1, (int)f2);
+                  if ((localView != null) && (checkTouchSlop(localView, f3, f4))) {
+                    j = 1;
+                  } else {
+                    j = 0;
+                  }
+                  if (j != 0)
+                  {
+                    int n = localView.getLeft();
+                    int i1 = (int)f3;
+                    i1 = this.mCallback.clampViewPositionHorizontal(localView, n + i1, i1);
+                    int i2 = localView.getTop();
+                    int i3 = (int)f4;
+                    i3 = this.mCallback.clampViewPositionVertical(localView, i2 + i3, i3);
+                    int i4 = this.mCallback.getViewHorizontalDragRange(localView);
+                    int i5 = this.mCallback.getViewVerticalDragRange(localView);
+                    if (((i4 == 0) || ((i4 > 0) && (i1 == n))) && ((i5 == 0) || ((i5 > 0) && (i3 == i2)))) {
+                      break;
+                    }
+                  }
+                  else
+                  {
+                    reportNewEdgeDrags(f3, f4, m);
+                    if ((this.mDragState == 1) || ((j != 0) && (tryCaptureViewForDrag(localView, m)))) {
+                      break;
+                    }
+                  }
+                }
+                i += 1;
+              }
+              saveLastMotion(paramMotionEvent);
+              continue;
+              label517:
+              cancel();
+            }
+          }
+        }
+      }
     }
-    while (this.mDragState == 1)
+    else
     {
-      return true;
-      float f1 = paramMotionEvent.getX();
-      float f2 = paramMotionEvent.getY();
+      f1 = paramMotionEvent.getX();
+      f2 = paramMotionEvent.getY();
       i = paramMotionEvent.getPointerId(0);
       saveInitialMotion(f1, f2, i);
       paramMotionEvent = findTopChildUnder((int)f1, (int)f2);
@@ -933,96 +1107,17 @@ public class ViewDragHelper
         tryCaptureViewForDrag(paramMotionEvent, i);
       }
       j = this.mInitialEdgesTouched[i];
-      if ((this.mTrackingEdges & j) != 0)
-      {
-        this.mCallback.onEdgeTouched(j & this.mTrackingEdges, i);
-        continue;
-        j = paramMotionEvent.getPointerId(i);
-        f1 = paramMotionEvent.getX(i);
-        f2 = paramMotionEvent.getY(i);
-        saveInitialMotion(f1, f2, j);
-        if (this.mDragState == 0)
-        {
-          i = this.mInitialEdgesTouched[j];
-          if ((this.mTrackingEdges & i) != 0) {
-            this.mCallback.onEdgeTouched(i & this.mTrackingEdges, j);
-          }
-        }
-        else if (this.mDragState == 2)
-        {
-          paramMotionEvent = findTopChildUnder((int)f1, (int)f2);
-          if (paramMotionEvent == this.mCapturedView)
-          {
-            tryCaptureViewForDrag(paramMotionEvent, j);
-            continue;
-            if ((this.mInitialMotionX != null) && (this.mInitialMotionY != null))
-            {
-              int k = paramMotionEvent.getPointerCount();
-              i = 0;
-              int m;
-              label352:
-              float f3;
-              float f4;
-              View localView;
-              while (i < k)
-              {
-                m = paramMotionEvent.getPointerId(i);
-                if (!isValidPointerForActionMove(m))
-                {
-                  i += 1;
-                }
-                else
-                {
-                  f1 = paramMotionEvent.getX(i);
-                  f2 = paramMotionEvent.getY(i);
-                  f3 = f1 - this.mInitialMotionX[m];
-                  f4 = f2 - this.mInitialMotionY[m];
-                  localView = findTopChildUnder((int)f1, (int)f2);
-                  if ((localView == null) || (!checkTouchSlop(localView, f3, f4))) {
-                    break label559;
-                  }
-                  j = 1;
-                  label428:
-                  if (j == 0) {
-                    break label565;
-                  }
-                  int n = localView.getLeft();
-                  int i1 = (int)f3;
-                  i1 = this.mCallback.clampViewPositionHorizontal(localView, i1 + n, (int)f3);
-                  int i2 = localView.getTop();
-                  int i3 = (int)f4;
-                  i3 = this.mCallback.clampViewPositionVertical(localView, i3 + i2, (int)f4);
-                  int i4 = this.mCallback.getViewHorizontalDragRange(localView);
-                  int i5 = this.mCallback.getViewVerticalDragRange(localView);
-                  if (((i4 != 0) && ((i4 <= 0) || (i1 != n))) || ((i5 != 0) && ((i5 <= 0) || (i3 != i2)))) {
-                    break label565;
-                  }
-                }
-              }
-              for (;;)
-              {
-                saveLastMotion(paramMotionEvent);
-                break;
-                label559:
-                j = 0;
-                break label428;
-                label565:
-                reportNewEdgeDrags(f3, f4, m);
-                if (this.mDragState != 1) {
-                  if ((j == 0) || (!tryCaptureViewForDrag(localView, m))) {
-                    break label352;
-                  }
-                }
-              }
-              clearMotionHistory(paramMotionEvent.getPointerId(i));
-              continue;
-              cancel();
-            }
-          }
-        }
+      k = this.mTrackingEdges;
+      if ((j & k) != 0) {
+        this.mCallback.onEdgeTouched(j & k, i);
       }
     }
-    return false;
+    label619:
+    boolean bool = false;
+    if (this.mDragState == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public boolean smoothSlideViewTo(@NonNull View paramView, int paramInt1, int paramInt2)
@@ -1052,7 +1147,7 @@ public class ViewDragHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.customview.widget.ViewDragHelper
  * JD-Core Version:    0.7.0.1
  */

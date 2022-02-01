@@ -18,32 +18,31 @@ public class TroopFileManager$FileManagerStatus
   public int b;
   public boolean b;
   public int c;
-  public int d = 0;
+  public int d;
   
   public TroopFileManager$FileManagerStatus(TroopFileManager paramTroopFileManager, long paramLong)
   {
+    int i = 0;
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = false;
     this.jdField_b_of_type_Int = 0;
+    this.d = 0;
     this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = ByteStringMicro.copyFromUtf8("");
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
     if (paramLong == 0L) {
       this.c = 0;
-    }
-    for (;;)
-    {
-      this.c = i;
-      return;
+    } else {
       i = 3;
     }
+    this.c = i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileManager.FileManagerStatus
  * JD-Core Version:    0.7.0.1
  */

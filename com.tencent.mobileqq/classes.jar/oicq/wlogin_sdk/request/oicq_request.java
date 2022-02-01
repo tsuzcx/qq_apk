@@ -127,12 +127,13 @@ public class oicq_request
   
   private void a(int paramInt1, int paramInt2, long paramLong, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    if (!this.z) {}
-    for (int i1 = 7;; i1 = 135)
-    {
-      a(paramInt1, paramInt2, paramLong, i1, paramInt3, paramInt4, paramInt5, paramInt6);
-      return;
+    int i1;
+    if (!this.z) {
+      i1 = 7;
+    } else {
+      i1 = 135;
     }
+    a(paramInt1, paramInt2, paramLong, i1, paramInt3, paramInt4, paramInt5, paramInt6);
   }
   
   private void a(int paramInt1, int paramInt2, long paramLong, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
@@ -185,35 +186,30 @@ public class oicq_request
     if (localreport_t3._host == null) {
       localreport_t3._host = "";
     }
-    if (this.q == null)
-    {
+    InetSocketAddress localInetSocketAddress = this.q;
+    if (localInetSocketAddress == null) {
       localreport_t3._ip = "";
-      localreport_t3._port = e(paramBoolean1);
-      localreport_t3._conn = paramInt2;
-      localreport_t3._net = t.E;
-      localreport_t3._str = "";
-      localreport_t3._slen = 0;
-      localreport_t3._rlen = 0;
-      if (!paramBoolean1) {
-        break label185;
-      }
-      if (!paramBoolean2) {
-        break label176;
-      }
-      localreport_t3._wap = 2;
+    } else {
+      localreport_t3._ip = localInetSocketAddress.getAddress().getHostAddress();
     }
-    for (;;)
+    localreport_t3._port = e(paramBoolean1);
+    localreport_t3._conn = paramInt2;
+    localreport_t3._net = t.E;
+    localreport_t3._str = "";
+    localreport_t3._slen = 0;
+    localreport_t3._rlen = 0;
+    if (paramBoolean1)
     {
-      t.at.add_t3(localreport_t3);
-      return;
-      localreport_t3._ip = this.q.getAddress().getHostAddress();
-      break;
-      label176:
-      localreport_t3._wap = 1;
-      continue;
-      label185:
+      if (paramBoolean2) {
+        localreport_t3._wap = 2;
+      } else {
+        localreport_t3._wap = 1;
+      }
+    }
+    else {
       localreport_t3._wap = 0;
     }
+    t.at.add_t3(localreport_t3);
   }
   
   public static void a(int paramInt, String paramString)
@@ -250,17 +246,19 @@ public class oicq_request
   
   public int a(String paramString, boolean paramBoolean, WUserSigInfo paramWUserSigInfo)
   {
-    if (this.x.e()) {}
-    for (int i1 = b(paramString, paramBoolean, paramWUserSigInfo);; i1 = e())
-    {
-      if (i1 == -1000)
-      {
-        paramString = new ErrMsg();
-        paramString.setMessage(InternationMsg.a(InternationMsg.MSG_TYPE.MSG_4));
-        a(paramString);
-      }
-      return i1;
+    int i1;
+    if (this.x.e()) {
+      i1 = b(paramString, paramBoolean, paramWUserSigInfo);
+    } else {
+      i1 = e();
     }
+    if (i1 == -1000)
+    {
+      paramString = new ErrMsg();
+      paramString.setMessage(InternationMsg.a(InternationMsg.MSG_TYPE.MSG_4));
+      a(paramString);
+    }
+    return i1;
   }
   
   public int a(tlv_t161 paramtlv_t161)
@@ -278,8 +276,9 @@ public class oicq_request
     }
     if (localtlv_t172.get_tlv(paramtlv_t161, 2, i1) > 0)
     {
-      this.x.m = 1;
-      this.x.s = localtlv_t172.get_data();
+      paramtlv_t161 = this.x;
+      paramtlv_t161.m = 1;
+      paramtlv_t161.s = localtlv_t172.get_data();
       util.LOGI("get rollback sig", "");
     }
     return 0;
@@ -288,83 +287,83 @@ public class oicq_request
   public int a(tlv_t173 paramtlv_t173)
   {
     paramtlv_t173 = paramtlv_t173.get_data();
-    int i3;
-    int i2;
-    int i1;
     if ((paramtlv_t173 != null) && (paramtlv_t173.length > 2))
     {
-      i3 = util.buf_to_int8(paramtlv_t173, 1);
-      i2 = 2;
-      i1 = 0;
-    }
-    for (;;)
-    {
-      if ((i1 >= i3) || (paramtlv_t173.length < i2 + 1)) {}
-      int i4;
-      byte[] arrayOfByte;
-      do
+      int i3 = util.buf_to_int8(paramtlv_t173, 1);
+      int i1 = 0;
+      int i2 = 2;
+      while (i1 < i3)
       {
-        do
-        {
-          do
-          {
-            return 0;
-            i4 = util.buf_to_int8(paramtlv_t173, i2);
-            i5 = i2 + 1;
-          } while (paramtlv_t173.length < i5 + 2);
-          i2 = util.buf_to_int16(paramtlv_t173, i5);
-          i5 += 2;
-        } while (paramtlv_t173.length < i5 + i2);
-        arrayOfByte = new byte[i2];
-        System.arraycopy(paramtlv_t173, i5, arrayOfByte, 0, i2);
-        i2 = i5 + i2;
-      } while (paramtlv_t173.length < i2 + 2);
-      int i5 = util.buf_to_int16(paramtlv_t173, i2);
-      i2 += 2;
-      b(i4, arrayOfByte, i5);
-      i1 += 1;
+        int i4 = paramtlv_t173.length;
+        int i5 = i2 + 1;
+        if (i4 < i5) {
+          return 0;
+        }
+        i4 = util.buf_to_int8(paramtlv_t173, i2);
+        int i6 = paramtlv_t173.length;
+        i2 = i5 + 2;
+        if (i6 < i2) {
+          return 0;
+        }
+        i6 = util.buf_to_int16(paramtlv_t173, i5);
+        int i7 = paramtlv_t173.length;
+        i5 = i2 + i6;
+        if (i7 < i5) {
+          return 0;
+        }
+        byte[] arrayOfByte = new byte[i6];
+        System.arraycopy(paramtlv_t173, i2, arrayOfByte, 0, i6);
+        i6 = paramtlv_t173.length;
+        i2 = i5 + 2;
+        if (i6 < i2) {
+          return 0;
+        }
+        b(i4, arrayOfByte, util.buf_to_int16(paramtlv_t173, i5));
+        i1 += 1;
+      }
     }
+    return 0;
   }
   
   public int a(tlv_t17f paramtlv_t17f)
   {
     paramtlv_t17f = paramtlv_t17f.get_data();
-    int i3;
-    int i2;
-    int i1;
     if ((paramtlv_t17f != null) && (paramtlv_t17f.length > 2))
     {
-      i3 = util.buf_to_int8(paramtlv_t17f, 1);
-      i2 = 2;
-      i1 = 0;
-    }
-    for (;;)
-    {
-      if ((i1 >= i3) || (paramtlv_t17f.length < i2 + 1)) {}
-      int i4;
-      byte[] arrayOfByte;
-      do
+      int i3 = util.buf_to_int8(paramtlv_t17f, 1);
+      int i1 = 0;
+      int i2 = 2;
+      while (i1 < i3)
       {
-        do
-        {
-          do
-          {
-            return 0;
-            i4 = util.buf_to_int8(paramtlv_t17f, i2);
-            i5 = i2 + 1;
-          } while (paramtlv_t17f.length < i5 + 2);
-          i2 = util.buf_to_int16(paramtlv_t17f, i5);
-          i5 += 2;
-        } while (paramtlv_t17f.length < i5 + i2);
-        arrayOfByte = new byte[i2];
-        System.arraycopy(paramtlv_t17f, i5, arrayOfByte, 0, i2);
-        i2 = i5 + i2;
-      } while (paramtlv_t17f.length < i2 + 2);
-      int i5 = util.buf_to_int16(paramtlv_t17f, i2);
-      i2 += 2;
-      a(i4, arrayOfByte, i5);
-      i1 += 1;
+        int i4 = paramtlv_t17f.length;
+        int i5 = i2 + 1;
+        if (i4 < i5) {
+          return 0;
+        }
+        i4 = util.buf_to_int8(paramtlv_t17f, i2);
+        int i6 = paramtlv_t17f.length;
+        i2 = i5 + 2;
+        if (i6 < i2) {
+          return 0;
+        }
+        i6 = util.buf_to_int16(paramtlv_t17f, i5);
+        int i7 = paramtlv_t17f.length;
+        i5 = i2 + i6;
+        if (i7 < i5) {
+          return 0;
+        }
+        byte[] arrayOfByte = new byte[i6];
+        System.arraycopy(paramtlv_t17f, i2, arrayOfByte, 0, i6);
+        i6 = paramtlv_t17f.length;
+        i2 = i5 + 2;
+        if (i6 < i2) {
+          return 0;
+        }
+        a(i4, arrayOfByte, util.buf_to_int16(paramtlv_t17f, i5));
+        i1 += 1;
+      }
     }
+    return 0;
   }
   
   public int a(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, byte[] paramArrayOfByte2)
@@ -374,53 +373,52 @@ public class oicq_request
       return -1002;
     }
     this.g = paramArrayOfByte1.length;
-    if (paramArrayOfByte1.length + this.f + 2 > this.b)
+    paramInt2 = paramArrayOfByte1.length;
+    int i1 = this.f;
+    if (paramInt2 + i1 + 2 > this.b)
     {
-      this.b = (paramArrayOfByte1.length + this.f + 2);
+      this.b = (paramArrayOfByte1.length + i1 + 2);
       paramArrayOfByte2 = new byte[this.b];
       System.arraycopy(this.h, 0, paramArrayOfByte2, 0, this.c);
       this.h = paramArrayOfByte2;
     }
     System.arraycopy(paramArrayOfByte1, 0, this.h, paramInt1, paramArrayOfByte1.length);
-    paramInt1 = this.f;
-    this.c = (paramArrayOfByte1.length + (paramInt1 + 2));
+    this.c = (this.f + 2 + paramArrayOfByte1.length);
     return 0;
   }
   
   public String a(int paramInt, boolean paramBoolean)
   {
-    Object localObject2 = "";
     int i1 = paramInt / 2;
-    if ((H != 0) && (I != null) && (I.length() > 0)) {
-      localObject2 = I;
-    }
-    for (;;)
+    Object localObject1;
+    if (H != 0)
     {
-      J = (String)localObject2;
-      return localObject2;
-      if (i1 < 1)
+      localObject1 = I;
+      if ((localObject1 != null) && (((String)localObject1).length() > 0))
       {
-        Object localObject1;
-        if (paramBoolean) {
-          if (t.E == 1)
+        localObject1 = I;
+        break label359;
+      }
+    }
+    if (i1 < 1)
+    {
+      Object localObject2 = "";
+      if (paramBoolean)
+      {
+        if (t.E == 1)
+        {
+          if (paramInt == 0) {
+            localObject2 = new String(util.get_wap_server_ipv6_host1(t.u));
+          }
+          localObject1 = localObject2;
+          if (TextUtils.isEmpty((CharSequence)localObject2))
           {
-            if (paramInt == 0) {
-              localObject2 = new String(util.get_wap_server_ipv6_host1(t.u));
-            }
-            localObject1 = localObject2;
-            if (TextUtils.isEmpty((CharSequence)localObject2)) {
-              localObject1 = new String(util.get_wap_server_host1(t.u));
-            }
+            localObject2 = new String(util.get_wap_server_host1(t.u));
+            break label285;
           }
         }
-        for (;;)
+        else
         {
-          localObject2 = localObject1;
-          if (((String)localObject1).length() > 0) {
-            break;
-          }
-          localObject2 = c(paramBoolean);
-          break;
           localObject1 = localObject2;
           if (t.E == 2)
           {
@@ -430,46 +428,66 @@ public class oicq_request
             localObject1 = localObject2;
             if (TextUtils.isEmpty((CharSequence)localObject2))
             {
-              localObject1 = new String(util.get_wap_server_host2(t.u));
-              continue;
-              if (t.E == 1)
-              {
-                if (paramInt == 0) {
-                  localObject2 = new String(util.get_server_ipv6_host1(t.u));
-                }
-                localObject1 = localObject2;
-                if (TextUtils.isEmpty((CharSequence)localObject2)) {
-                  localObject1 = new String(util.get_server_host1(t.u));
-                }
-              }
-              else
-              {
-                localObject1 = localObject2;
-                if (t.E == 2)
-                {
-                  if (paramInt == 0) {
-                    localObject2 = new String(util.get_server_ipv6_host2(t.u));
-                  }
-                  localObject1 = localObject2;
-                  if (TextUtils.isEmpty((CharSequence)localObject2)) {
-                    localObject1 = new String(util.get_server_host2(t.u));
-                  }
-                }
-              }
+              localObject2 = new String(util.get_wap_server_host2(t.u));
+              break label285;
             }
           }
         }
       }
-      if (i1 < 2) {
-        localObject2 = c(paramBoolean);
-      } else if (i1 < 3) {
-        localObject2 = d(paramBoolean);
-      } else if (i1 < 4) {
-        localObject2 = b(paramBoolean);
-      } else {
-        localObject2 = a(paramBoolean);
+      else if (t.E == 1)
+      {
+        if (paramInt == 0) {
+          localObject2 = new String(util.get_server_ipv6_host1(t.u));
+        }
+        localObject1 = localObject2;
+        if (TextUtils.isEmpty((CharSequence)localObject2))
+        {
+          localObject2 = new String(util.get_server_host1(t.u));
+          break label285;
+        }
+      }
+      else
+      {
+        localObject1 = localObject2;
+        if (t.E == 2)
+        {
+          if (paramInt == 0) {
+            localObject2 = new String(util.get_server_ipv6_host2(t.u));
+          }
+          localObject1 = localObject2;
+          if (TextUtils.isEmpty((CharSequence)localObject2))
+          {
+            localObject2 = new String(util.get_server_host2(t.u));
+            break label285;
+          }
+        }
+      }
+      localObject2 = localObject1;
+      label285:
+      localObject1 = localObject2;
+      if (((String)localObject2).length() <= 0) {
+        localObject1 = c(paramBoolean);
       }
     }
+    else if (i1 < 2)
+    {
+      localObject1 = c(paramBoolean);
+    }
+    else if (i1 < 3)
+    {
+      localObject1 = d(paramBoolean);
+    }
+    else if (i1 < 4)
+    {
+      localObject1 = b(paramBoolean);
+    }
+    else
+    {
+      localObject1 = a(paramBoolean);
+    }
+    label359:
+    J = (String)localObject1;
+    return localObject1;
   }
   
   public String a(boolean paramBoolean)
@@ -531,30 +549,40 @@ public class oicq_request
   
   void a(int paramInt1, byte[] paramArrayOfByte, int paramInt2)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      return;
-    }
-    if (paramInt1 == 1) {
-      if (t.E == 1) {
-        util.set_server_ipv6_host1(t.u, paramArrayOfByte);
-      }
-    }
-    for (;;)
+    if (paramArrayOfByte != null)
     {
-      util.LOGI("ipv6 net type:" + t.E + " type:" + paramInt1 + " host:" + new String(paramArrayOfByte) + " port:" + paramInt2, "" + this.x.f);
-      return;
-      if (t.E == 2)
+      if (paramArrayOfByte.length <= 0) {
+        return;
+      }
+      if (paramInt1 == 1)
       {
-        util.set_server_ipv6_host2(t.u, paramArrayOfByte);
-        continue;
-        if (paramInt1 == 2) {
-          if (t.E == 1) {
-            util.set_wap_server_ipv6_host1(t.u, paramArrayOfByte);
-          } else if (t.E == 2) {
-            util.set_wap_server_ipv6_host2(t.u, paramArrayOfByte);
-          }
+        if (t.E == 1) {
+          util.set_server_ipv6_host1(t.u, paramArrayOfByte);
+        } else if (t.E == 2) {
+          util.set_server_ipv6_host2(t.u, paramArrayOfByte);
         }
       }
+      else if (paramInt1 == 2) {
+        if (t.E == 1) {
+          util.set_wap_server_ipv6_host1(t.u, paramArrayOfByte);
+        } else if (t.E == 2) {
+          util.set_wap_server_ipv6_host2(t.u, paramArrayOfByte);
+        }
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ipv6 net type:");
+      localStringBuilder.append(t.E);
+      localStringBuilder.append(" type:");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" host:");
+      localStringBuilder.append(new String(paramArrayOfByte));
+      localStringBuilder.append(" port:");
+      localStringBuilder.append(paramInt2);
+      paramArrayOfByte = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(this.x.f);
+      util.LOGI(paramArrayOfByte, localStringBuilder.toString());
     }
   }
   
@@ -575,7 +603,14 @@ public class oicq_request
       a(paramLong, paramArrayOfByte);
       return;
     }
-    util.LOGI("getRequestEncrptedPackage unknown encryption method " + paramEncryptionMethod, "" + paramLong);
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("getRequestEncrptedPackage unknown encryption method ");
+    paramArrayOfByte.append(paramEncryptionMethod);
+    paramArrayOfByte = paramArrayOfByte.toString();
+    paramEncryptionMethod = new StringBuilder();
+    paramEncryptionMethod.append("");
+    paramEncryptionMethod.append(paramLong);
+    util.LOGI(paramArrayOfByte, paramEncryptionMethod.toString());
   }
   
   public void a(Socket paramSocket)
@@ -585,12 +620,14 @@ public class oicq_request
   
   public void a(WloginSigInfo paramWloginSigInfo)
   {
-    if (true == paramWloginSigInfo.isWtSessionTicketExpired()) {}
-    while ((paramWloginSigInfo.wtSessionTicket == null) || (paramWloginSigInfo.wtSessionTicketKey == null)) {
+    if (true == paramWloginSigInfo.isWtSessionTicketExpired()) {
       return;
     }
-    this.A = ((byte[])paramWloginSigInfo.wtSessionTicket.clone());
-    this.B = ((byte[])paramWloginSigInfo.wtSessionTicketKey.clone());
+    if ((paramWloginSigInfo.wtSessionTicket != null) && (paramWloginSigInfo.wtSessionTicketKey != null))
+    {
+      this.A = ((byte[])paramWloginSigInfo.wtSessionTicket.clone());
+      this.B = ((byte[])paramWloginSigInfo.wtSessionTicketKey.clone());
+    }
   }
   
   public void a(tlv_t149 paramtlv_t149)
@@ -623,17 +660,20 @@ public class oicq_request
     }
     catch (CloneNotSupportedException paramErrMsg)
     {
-      localasync_context._last_err_msg = new ErrMsg(0, 0, "", "", "");
+      label46:
+      break label46;
     }
+    localasync_context._last_err_msg = new ErrMsg(0, 0, "", "", "");
   }
   
   public void a(byte[] paramArrayOfByte, int paramInt)
   {
-    if (this.c + paramInt + 1 > this.b)
+    int i1 = this.c;
+    if (paramInt + i1 + 1 > this.b)
     {
-      this.b = (this.c + paramInt + 1 + 128);
+      this.b = (paramInt + i1 + 1 + 128);
       byte[] arrayOfByte = new byte[this.b];
-      System.arraycopy(this.h, 0, arrayOfByte, 0, this.c);
+      System.arraycopy(this.h, 0, arrayOfByte, 0, i1);
       this.h = arrayOfByte;
     }
     System.arraycopy(paramArrayOfByte, 0, this.h, this.c, paramInt);
@@ -644,7 +684,8 @@ public class oicq_request
   {
     StringBuffer localStringBuffer = new StringBuffer("handleDevlockInfo");
     int i1 = paramtlv_t178.get_tlv(paramArrayOfByte, paramInt, this.c - paramInt - 1);
-    localStringBuffer.append(",t178 = ").append(i1);
+    localStringBuffer.append(",t178 = ");
+    localStringBuffer.append(i1);
     if (i1 >= 0)
     {
       paramasync_context._devlock_info.CountryCode = new String(paramtlv_t178.get_country_code());
@@ -655,7 +696,8 @@ public class oicq_request
     }
     paramtlv_t178 = new tlv_t196();
     i1 = paramtlv_t178.get_tlv(paramArrayOfByte, paramInt, this.c - paramInt - 1);
-    localStringBuffer.append(",t196 = ").append(i1);
+    localStringBuffer.append(",t196 = ");
+    localStringBuffer.append(i1);
     if (i1 >= 0)
     {
       paramasync_context._devlock_info.BakCountryCode = paramtlv_t178.getCountryCode();
@@ -664,17 +706,20 @@ public class oicq_request
     }
     paramtlv_t178 = new tlv_t204();
     i1 = paramtlv_t178.get_tlv(paramArrayOfByte, paramInt, this.c - paramInt - 1);
-    localStringBuffer.append(",t204 = ").append(i1);
+    localStringBuffer.append(",t204 = ");
+    localStringBuffer.append(i1);
     if (i1 > 0) {
       paramasync_context._devlock_info.OtherDevLockVerifyUrl = new String(paramtlv_t178.get_data());
     }
     i1 = paramtlv_t179.get_tlv(paramArrayOfByte, paramInt, this.c - paramInt - 1);
-    localStringBuffer.append(",t179 = ").append(i1);
+    localStringBuffer.append(",t179 = ");
+    localStringBuffer.append(i1);
     if (i1 >= 0) {
       paramasync_context._devlock_info.UnionVerifyUrl = new String(paramtlv_t179.get_verify_url());
     }
     paramInt = paramtlv_t17d.get_tlv(paramArrayOfByte, paramInt, this.c - paramInt - 1);
-    localStringBuffer.append(",t17d = ").append(paramInt);
+    localStringBuffer.append(",t17d = ");
+    localStringBuffer.append(paramInt);
     if (paramInt >= 0)
     {
       paramasync_context._devlock_info.MbGuideType = paramtlv_t17d.get_mb_guide_type();
@@ -693,8 +738,13 @@ public class oicq_request
     Object localObject1 = new tlv_t145();
     paramtlv_t169 = paramtlv_t169.get_data();
     int i1 = paramtlv_t169.length;
-    if (((tlv_t106)localObject4).get_tlv(paramtlv_t169, 2, i1) < 0) {}
-    while ((((tlv_t10c)localObject3).get_tlv(paramtlv_t169, 2, i1) < 0) || (((tlv_t16a)localObject2).get_tlv(paramtlv_t169, 2, i1) < 0)) {
+    if (((tlv_t106)localObject4).get_tlv(paramtlv_t169, 2, i1) < 0) {
+      return null;
+    }
+    if (((tlv_t10c)localObject3).get_tlv(paramtlv_t169, 2, i1) < 0) {
+      return null;
+    }
+    if (((tlv_t16a)localObject2).get_tlv(paramtlv_t169, 2, i1) < 0) {
       return null;
     }
     paramtlv_t169 = ((tlv_t106)localObject4).get_buf();
@@ -705,12 +755,11 @@ public class oicq_request
     localObject4[0] = 64;
     util.int16_to_buf((byte[])localObject4, 1, 4);
     System.arraycopy(paramtlv_t169, 0, localObject4, 3, paramtlv_t169.length);
-    i1 = paramtlv_t169.length + 3;
+    i1 = 3 + paramtlv_t169.length;
     System.arraycopy(localObject3, 0, localObject4, i1, localObject3.length);
     i1 += localObject3.length;
     System.arraycopy(localObject2, 0, localObject4, i1, localObject2.length);
-    i1 += localObject2.length;
-    System.arraycopy(localObject1, 0, localObject4, i1, localObject1.length);
+    System.arraycopy(localObject1, 0, localObject4, i1 + localObject2.length, localObject1.length);
     i1 = localObject1.length;
     return localObject4;
   }
@@ -740,32 +789,36 @@ public class oicq_request
     if (oicq_request.EncryptionMethod.EM_ECDH == paramEncryptionMethod) {
       return a(paramArrayOfByte1);
     }
-    util.LOGI("encryptBody unknown encryption method " + paramEncryptionMethod, "");
+    paramArrayOfByte1 = new StringBuilder();
+    paramArrayOfByte1.append("encryptBody unknown encryption method ");
+    paramArrayOfByte1.append(paramEncryptionMethod);
+    util.LOGI(paramArrayOfByte1.toString(), "");
     return null;
   }
   
   byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
-      return new byte[0];
-    }
-    if (this.x.m == 2) {}
-    for (int i1 = 3;; i1 = 2)
+    if ((paramArrayOfByte1 != null) && (paramArrayOfByte2 != null))
     {
+      if (this.x.m == 2) {
+        i1 = 3;
+      } else {
+        i1 = 2;
+      }
       paramArrayOfByte1 = cryptor.encrypt(paramArrayOfByte1, 0, paramArrayOfByte1.length, paramArrayOfByte2);
       byte[] arrayOfByte = new byte[paramArrayOfByte2.length + 2 + 2 + 2 + paramArrayOfByte1.length];
       util.int8_to_buf(arrayOfByte, 0, 1);
       util.int8_to_buf(arrayOfByte, 1, i1);
       System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, 2, paramArrayOfByte2.length);
-      i1 = paramArrayOfByte2.length + 2;
+      int i1 = paramArrayOfByte2.length + 2;
       util.int16_to_buf(arrayOfByte, i1, 258);
       i1 += 2;
       util.int16_to_buf(arrayOfByte, i1, 0);
-      i1 += 2;
-      System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, i1, paramArrayOfByte1.length);
+      System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, i1 + 2, paramArrayOfByte1.length);
       i1 = paramArrayOfByte1.length;
       return arrayOfByte;
     }
+    return new byte[0];
   }
   
   byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
@@ -774,55 +827,62 @@ public class oicq_request
     paramArrayOfByte3 = new byte[paramArrayOfByte2.length + 2 + paramArrayOfByte1.length];
     util.int16_to_buf(paramArrayOfByte3, 0, paramArrayOfByte2.length);
     System.arraycopy(paramArrayOfByte2, 0, paramArrayOfByte3, 2, paramArrayOfByte2.length);
-    int i1 = paramArrayOfByte2.length + 2;
-    System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte3, i1, paramArrayOfByte1.length);
-    i1 = paramArrayOfByte1.length;
+    System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte3, 2 + paramArrayOfByte2.length, paramArrayOfByte1.length);
+    int i1 = paramArrayOfByte1.length;
     return paramArrayOfByte3;
   }
   
   byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, int paramInt)
   {
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null) || (paramArrayOfByte3 == null) || (paramArrayOfByte4 == null)) {
-      return new byte[0];
-    }
-    try
-    {
-      paramArrayOfByte1 = cryptor.encrypt(paramArrayOfByte1, 0, paramArrayOfByte1.length, paramArrayOfByte4);
-      paramArrayOfByte4 = new byte[paramArrayOfByte2.length + 2 + 2 + 2 + 2 + paramArrayOfByte3.length + paramArrayOfByte1.length];
-      util.int8_to_buf(paramArrayOfByte4, 0, 2);
-      util.int8_to_buf(paramArrayOfByte4, 1, 1);
-      System.arraycopy(paramArrayOfByte2, 0, paramArrayOfByte4, 2, paramArrayOfByte2.length);
-      int i1 = paramArrayOfByte2.length + 2;
-      util.int16_to_buf(paramArrayOfByte4, i1, 305);
-      i1 += 2;
-      util.int16_to_buf(paramArrayOfByte4, i1, paramInt);
-      paramInt = i1 + 2;
-      util.int16_to_buf(paramArrayOfByte4, paramInt, paramArrayOfByte3.length);
-      paramInt += 2;
-      System.arraycopy(paramArrayOfByte3, 0, paramArrayOfByte4, paramInt, paramArrayOfByte3.length);
-      paramInt += paramArrayOfByte3.length;
-      System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte4, paramInt, paramArrayOfByte1.length);
-      paramInt = paramArrayOfByte1.length;
-      return paramArrayOfByte4;
-    }
-    catch (Throwable paramArrayOfByte1)
-    {
-      util.printThrowable(paramArrayOfByte1, "ecdh_encrypt_body");
+    if ((paramArrayOfByte1 != null) && (paramArrayOfByte2 != null) && (paramArrayOfByte3 != null) && (paramArrayOfByte4 != null)) {
+      try
+      {
+        paramArrayOfByte1 = cryptor.encrypt(paramArrayOfByte1, 0, paramArrayOfByte1.length, paramArrayOfByte4);
+        paramArrayOfByte4 = new byte[paramArrayOfByte2.length + 2 + 2 + 2 + 2 + paramArrayOfByte3.length + paramArrayOfByte1.length];
+        util.int8_to_buf(paramArrayOfByte4, 0, 2);
+        util.int8_to_buf(paramArrayOfByte4, 1, 1);
+        System.arraycopy(paramArrayOfByte2, 0, paramArrayOfByte4, 2, paramArrayOfByte2.length);
+        int i1 = paramArrayOfByte2.length + 2;
+        util.int16_to_buf(paramArrayOfByte4, i1, 305);
+        i1 += 2;
+        util.int16_to_buf(paramArrayOfByte4, i1, paramInt);
+        paramInt = i1 + 2;
+        util.int16_to_buf(paramArrayOfByte4, paramInt, paramArrayOfByte3.length);
+        paramInt += 2;
+        System.arraycopy(paramArrayOfByte3, 0, paramArrayOfByte4, paramInt, paramArrayOfByte3.length);
+        System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte4, paramInt + paramArrayOfByte3.length, paramArrayOfByte1.length);
+        paramInt = paramArrayOfByte1.length;
+        return paramArrayOfByte4;
+      }
+      catch (Throwable paramArrayOfByte1)
+      {
+        util.printThrowable(paramArrayOfByte1, "ecdh_encrypt_body");
+        return new byte[0];
+      }
     }
     return new byte[0];
   }
   
   public int b()
   {
-    int i2 = -1009;
     int i1 = this.c;
-    if (i1 <= this.f + 2) {
-      return i2;
+    int i2 = this.f;
+    if (i1 <= i2 + 2) {
+      return -1009;
     }
-    this.g = (i1 - this.f - 2);
-    i1 = util.buf_to_int16(this.h, 13);
-    util.LOGI("enrypt method " + this.y + " rsp flag " + i1, "");
-    if ((this.y == oicq_request.EncryptionMethod.EM_ECDH) && (i1 == 0)) {
+    this.g = (i1 - i2 - 2);
+    i2 = util.buf_to_int16(this.h, 13);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("enrypt method ");
+    ((StringBuilder)localObject1).append(this.y);
+    ((StringBuilder)localObject1).append(" rsp flag ");
+    ((StringBuilder)localObject1).append(i2);
+    util.LOGI(((StringBuilder)localObject1).toString(), "");
+    localObject1 = this.y;
+    Object localObject2 = oicq_request.EncryptionMethod.EM_ECDH;
+    i1 = 0;
+    if ((localObject1 == localObject2) && (i2 == 0))
+    {
       if (this.x.m == 0)
       {
         i2 = a(this.h, this.f + 1, this.g, this.x.p);
@@ -839,337 +899,234 @@ public class oicq_request
           }
         }
       }
-    }
-    for (;;)
-    {
-      i2 = i1;
-      if (i1 < 0) {
-        break;
+      else
+      {
+        i2 = a(this.h, this.f + 1, this.g, this.x.c);
+        i1 = i2;
+        if (i2 < 0)
+        {
+          util.LOGI("use kc decrypt_body failed", "");
+          i1 = i2;
+        }
       }
-      return d(this.h, this.f + 1, this.g);
-      i2 = a(this.h, this.f + 1, this.g, this.x.c);
+    }
+    else if ((this.y == oicq_request.EncryptionMethod.EM_ST) && (3 == i2))
+    {
+      i2 = a(this.h, this.f + 1, this.g, this.B);
       i1 = i2;
       if (i2 < 0)
       {
-        util.LOGI("use kc decrypt_body failed", "");
-        i1 = i2;
-        continue;
-        Object localObject;
-        if ((this.y == oicq_request.EncryptionMethod.EM_ST) && (3 == i1))
+        t.at.attr_api(2494911);
+        localObject1 = t.b(this.x.h);
+        if (localObject1 != null)
         {
-          i2 = a(this.h, this.f + 1, this.g, this.B);
-          i1 = i2;
-          if (i2 < 0)
-          {
-            t.at.attr_api(2494911);
-            localObject = t.b(this.x.h);
-            if (localObject != null) {
-              this.x.c(this.x.f, ((async_context)localObject)._sappid);
-            }
-            util.LOGI("use session key decrypt_body failed", "");
-            i1 = -1025;
-          }
+          localObject2 = this.x;
+          ((t)localObject2).c(((t)localObject2).f, ((async_context)localObject1)._sappid);
         }
-        else if ((this.y == oicq_request.EncryptionMethod.EM_ECDH) && (true == this.z) && (4 == i1))
-        {
-          localObject = cryptor.decrypt(this.h, this.f + 1, this.g, this.x.p);
-          if (localObject == null)
-          {
-            util.LOGI("decrypted outer body failed", "" + this.x.f);
-            return -1002;
-          }
-          i1 = util.buf_to_int16((byte[])localObject, 0);
-          if (i1 > localObject.length - 2)
-          {
-            util.LOGI("peer public key len wrong " + i1, "" + this.x.f);
-            return -1009;
-          }
-          byte[] arrayOfByte = new byte[i1];
-          System.arraycopy(localObject, 2, arrayOfByte, 0, i1);
-          arrayOfByte = new EcdhCrypt(this.a).calShareKeyMd5ByPeerPublicKey(arrayOfByte);
-          if ((arrayOfByte == null) || (arrayOfByte.length == 0)) {
-            return -1002;
-          }
-          localObject = cryptor.decrypt((byte[])localObject, i1 + 2, localObject.length - 2 - i1, arrayOfByte);
-          if (localObject == null)
-          {
-            t.at.attr_api(2461266);
-            util.LOGI("use share key md5 decrypt failed", "" + this.x.f);
-            return -1002;
-          }
-          if (this.h.length < this.f + 2 + localObject.length)
-          {
-            this.b = (this.f + 2 + localObject.length);
-            arrayOfByte = new byte[this.b];
-            System.arraycopy(this.h, 0, arrayOfByte, 0, this.f + 1);
-            this.h = arrayOfByte;
-          }
-          System.arraycopy(localObject, 0, this.h, this.f + 1, localObject.length);
-          i1 = this.f;
-          this.c = (localObject.length + (i1 + 2));
-          i1 = 0;
-        }
-        else
-        {
-          util.LOGI("unknown encryption method " + this.y, "");
-          i1 = -1024;
-        }
+        util.LOGI("use session key decrypt_body failed", "");
+        i1 = -1025;
       }
     }
+    else if ((this.y == oicq_request.EncryptionMethod.EM_ECDH) && (true == this.z) && (4 == i2))
+    {
+      localObject1 = cryptor.decrypt(this.h, this.f + 1, this.g, this.x.p);
+      if (localObject1 == null)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("");
+        ((StringBuilder)localObject1).append(this.x.f);
+        util.LOGI("decrypted outer body failed", ((StringBuilder)localObject1).toString());
+        return -1002;
+      }
+      i2 = util.buf_to_int16((byte[])localObject1, 0);
+      if (i2 > localObject1.length - 2)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("peer public key len wrong ");
+        ((StringBuilder)localObject1).append(i2);
+        localObject1 = ((StringBuilder)localObject1).toString();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("");
+        ((StringBuilder)localObject2).append(this.x.f);
+        util.LOGI((String)localObject1, ((StringBuilder)localObject2).toString());
+        return -1009;
+      }
+      localObject2 = new byte[i2];
+      System.arraycopy(localObject1, 2, localObject2, 0, i2);
+      localObject2 = new EcdhCrypt(this.a).calShareKeyMd5ByPeerPublicKey((byte[])localObject2);
+      if (localObject2 != null)
+      {
+        if (localObject2.length == 0) {
+          return -1002;
+        }
+        localObject1 = cryptor.decrypt((byte[])localObject1, i2 + 2, localObject1.length - 2 - i2, (byte[])localObject2);
+        if (localObject1 == null)
+        {
+          t.at.attr_api(2461266);
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("");
+          ((StringBuilder)localObject1).append(this.x.f);
+          util.LOGI("use share key md5 decrypt failed", ((StringBuilder)localObject1).toString());
+          return -1002;
+        }
+        localObject2 = this.h;
+        i2 = localObject2.length;
+        int i3 = this.f;
+        if (i2 < i3 + 2 + localObject1.length)
+        {
+          this.b = (i3 + 2 + localObject1.length);
+          byte[] arrayOfByte = new byte[this.b];
+          System.arraycopy(localObject2, 0, arrayOfByte, 0, i3 + 1);
+          this.h = arrayOfByte;
+        }
+        System.arraycopy(localObject1, 0, this.h, this.f + 1, localObject1.length);
+        this.c = (this.f + 2 + localObject1.length);
+      }
+      else
+      {
+        return -1002;
+      }
+    }
+    else
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("unknown encryption method ");
+      ((StringBuilder)localObject1).append(this.y);
+      util.LOGI(((StringBuilder)localObject1).toString(), "");
+      i1 = -1024;
+    }
+    if (i1 < 0) {
+      return i1;
+    }
+    return d(this.h, this.f + 1, this.g);
   }
   
-  /* Error */
   public int b(String paramString, boolean paramBoolean, WUserSigInfo paramWUserSigInfo)
   {
-    // Byte code:
-    //   0: new 459	java/lang/StringBuilder
-    //   3: dup
-    //   4: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   7: aload_0
-    //   8: invokevirtual 814	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   11: invokevirtual 819	java/lang/Class:getName	()Ljava/lang/String;
-    //   14: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   17: ldc_w 821
-    //   20: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   23: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   26: new 459	java/lang/StringBuilder
-    //   29: dup
-    //   30: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   33: ldc 110
-    //   35: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   38: aload_0
-    //   39: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   42: getfield 480	oicq/wlogin_sdk/request/t:f	J
-    //   45: invokevirtual 483	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   48: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   54: aload_0
-    //   55: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   58: getfield 822	oicq/wlogin_sdk/request/t:l	I
-    //   61: istore 4
-    //   63: aload_0
-    //   64: invokevirtual 824	oicq/wlogin_sdk/request/oicq_request:c	()[B
-    //   67: astore 7
-    //   69: invokestatic 218	java/lang/System:currentTimeMillis	()J
-    //   72: lstore 5
-    //   74: new 459	java/lang/StringBuilder
-    //   77: dup
-    //   78: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   81: ldc_w 826
-    //   84: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   87: aload_1
-    //   88: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   91: ldc_w 828
-    //   94: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   97: aload_0
-    //   98: getfield 160	oicq/wlogin_sdk/request/oicq_request:v	Ljava/lang/String;
-    //   101: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   104: ldc_w 830
-    //   107: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   110: iload 4
-    //   112: invokevirtual 469	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   115: ldc_w 832
-    //   118: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   121: iload_2
-    //   122: invokevirtual 835	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   125: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   128: new 459	java/lang/StringBuilder
-    //   131: dup
-    //   132: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   135: ldc 110
-    //   137: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   140: aload_0
-    //   141: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   144: getfield 480	oicq/wlogin_sdk/request/t:f	J
-    //   147: invokevirtual 483	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   150: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   153: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   156: new 837	oicq/wlogin_sdk/request/WtloginMsfListener
-    //   159: dup
-    //   160: aload_1
-    //   161: aload_0
-    //   162: getfield 160	oicq/wlogin_sdk/request/oicq_request:v	Ljava/lang/String;
-    //   165: aload 7
-    //   167: iload 4
-    //   169: iload_2
-    //   170: aload_3
-    //   171: invokespecial 840	oicq/wlogin_sdk/request/WtloginMsfListener:<init>	(Ljava/lang/String;Ljava/lang/String;[BIZLoicq/wlogin_sdk/request/WUserSigInfo;)V
-    //   174: astore_3
-    //   175: new 842	java/lang/Thread
-    //   178: dup
-    //   179: aload_3
-    //   180: ldc_w 844
-    //   183: invokespecial 847	java/lang/Thread:<init>	(Ljava/lang/Runnable;Ljava/lang/String;)V
-    //   186: astore_1
-    //   187: aload_1
-    //   188: invokevirtual 848	java/lang/Thread:start	()V
-    //   191: aload_1
-    //   192: iload 4
-    //   194: i2l
-    //   195: invokevirtual 852	java/lang/Thread:join	(J)V
-    //   198: aload_3
-    //   199: invokevirtual 855	oicq/wlogin_sdk/request/WtloginMsfListener:getRetData	()[B
-    //   202: astore_1
-    //   203: aload_1
-    //   204: ifnonnull +240 -> 444
-    //   207: new 459	java/lang/StringBuilder
-    //   210: dup
-    //   211: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   214: ldc_w 857
-    //   217: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   220: aload_3
-    //   221: invokevirtual 860	oicq/wlogin_sdk/request/WtloginMsfListener:getRet	()I
-    //   224: invokevirtual 469	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   227: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   230: new 459	java/lang/StringBuilder
-    //   233: dup
-    //   234: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   237: ldc 110
-    //   239: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   242: aload_0
-    //   243: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   246: getfield 480	oicq/wlogin_sdk/request/t:f	J
-    //   249: invokevirtual 483	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   252: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   255: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   258: sipush -1000
-    //   261: istore 4
-    //   263: aload_0
-    //   264: getfield 156	oicq/wlogin_sdk/request/oicq_request:t	I
-    //   267: sipush 2066
-    //   270: if_icmpeq +112 -> 382
-    //   273: new 202	oicq/wlogin_sdk/report/report_t3
-    //   276: dup
-    //   277: invokespecial 203	oicq/wlogin_sdk/report/report_t3:<init>	()V
-    //   280: astore_3
-    //   281: aload_3
-    //   282: aload_0
-    //   283: getfield 156	oicq/wlogin_sdk/request/oicq_request:t	I
-    //   286: putfield 206	oicq/wlogin_sdk/report/report_t3:_cmd	I
-    //   289: aload_3
-    //   290: aload_0
-    //   291: getfield 158	oicq/wlogin_sdk/request/oicq_request:u	I
-    //   294: putfield 209	oicq/wlogin_sdk/report/report_t3:_sub	I
-    //   297: aload_3
-    //   298: iload 4
-    //   300: putfield 212	oicq/wlogin_sdk/report/report_t3:_rst2	I
-    //   303: aload_3
-    //   304: invokestatic 218	java/lang/System:currentTimeMillis	()J
-    //   307: lload 5
-    //   309: lsub
-    //   310: l2i
-    //   311: putfield 221	oicq/wlogin_sdk/report/report_t3:_used	I
-    //   314: aload_3
-    //   315: iconst_0
-    //   316: putfield 224	oicq/wlogin_sdk/report/report_t3:_try	I
-    //   319: aload_3
-    //   320: ldc 110
-    //   322: putfield 227	oicq/wlogin_sdk/report/report_t3:_host	Ljava/lang/String;
-    //   325: aload_3
-    //   326: ldc 110
-    //   328: putfield 230	oicq/wlogin_sdk/report/report_t3:_ip	Ljava/lang/String;
-    //   331: aload_3
-    //   332: iconst_0
-    //   333: putfield 236	oicq/wlogin_sdk/report/report_t3:_port	I
-    //   336: aload_3
-    //   337: iconst_0
-    //   338: putfield 239	oicq/wlogin_sdk/report/report_t3:_conn	I
-    //   341: aload_3
-    //   342: iconst_0
-    //   343: putfield 246	oicq/wlogin_sdk/report/report_t3:_net	I
-    //   346: aload_3
-    //   347: ldc 110
-    //   349: putfield 249	oicq/wlogin_sdk/report/report_t3:_str	Ljava/lang/String;
-    //   352: iload 4
-    //   354: ifne +143 -> 497
-    //   357: aload_3
-    //   358: aload 7
-    //   360: arraylength
-    //   361: putfield 252	oicq/wlogin_sdk/report/report_t3:_slen	I
-    //   364: aload_3
-    //   365: aload_1
-    //   366: arraylength
-    //   367: putfield 255	oicq/wlogin_sdk/report/report_t3:_rlen	I
-    //   370: aload_3
-    //   371: iconst_3
-    //   372: putfield 258	oicq/wlogin_sdk/report/report_t3:_wap	I
-    //   375: getstatic 262	oicq/wlogin_sdk/request/t:at	Loicq/wlogin_sdk/report/Reporter;
-    //   378: aload_3
-    //   379: invokevirtual 268	oicq/wlogin_sdk/report/Reporter:add_t3	(Loicq/wlogin_sdk/report/report_t3;)V
-    //   382: new 459	java/lang/StringBuilder
-    //   385: dup
-    //   386: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   389: aload_0
-    //   390: invokevirtual 814	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   393: invokevirtual 819	java/lang/Class:getName	()Ljava/lang/String;
-    //   396: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   399: ldc_w 862
-    //   402: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   405: iload 4
-    //   407: invokevirtual 469	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   410: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   413: new 459	java/lang/StringBuilder
-    //   416: dup
-    //   417: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   420: ldc 110
-    //   422: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   425: aload_0
-    //   426: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   429: getfield 480	oicq/wlogin_sdk/request/t:f	J
-    //   432: invokevirtual 483	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   435: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   438: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   441: iload 4
-    //   443: ireturn
-    //   444: aload_0
-    //   445: aload_1
-    //   446: aload_1
-    //   447: arraylength
-    //   448: invokevirtual 864	oicq/wlogin_sdk/request/oicq_request:b	([BI)V
-    //   451: iconst_0
-    //   452: istore 4
-    //   454: goto -191 -> 263
-    //   457: astore_3
-    //   458: aconst_null
-    //   459: astore_1
-    //   460: aload_3
-    //   461: new 459	java/lang/StringBuilder
-    //   464: dup
-    //   465: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   468: ldc 110
-    //   470: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   473: aload_0
-    //   474: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   477: getfield 480	oicq/wlogin_sdk/request/t:f	J
-    //   480: invokevirtual 483	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   483: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   486: invokestatic 868	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
-    //   489: sipush -1000
-    //   492: istore 4
-    //   494: goto -231 -> 263
-    //   497: aload_3
-    //   498: iconst_0
-    //   499: putfield 252	oicq/wlogin_sdk/report/report_t3:_slen	I
-    //   502: aload_3
-    //   503: iconst_0
-    //   504: putfield 255	oicq/wlogin_sdk/report/report_t3:_rlen	I
-    //   507: goto -137 -> 370
-    //   510: astore_3
-    //   511: goto -51 -> 460
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	514	0	this	oicq_request
-    //   0	514	1	paramString	String
-    //   0	514	2	paramBoolean	boolean
-    //   0	514	3	paramWUserSigInfo	WUserSigInfo
-    //   61	432	4	i1	int
-    //   72	236	5	l1	long
-    //   67	292	7	arrayOfByte	byte[]
-    // Exception table:
-    //   from	to	target	type
-    //   74	203	457	java/lang/Exception
-    //   207	258	510	java/lang/Exception
-    //   444	451	510	java/lang/Exception
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(getClass().getName());
+    ((StringBuilder)localObject1).append(":snd_rcv_req_msf ...");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("");
+    localStringBuilder1.append(this.x.f);
+    util.LOGI((String)localObject1, localStringBuilder1.toString());
+    int i1 = this.x.l;
+    byte[] arrayOfByte = c();
+    long l1 = System.currentTimeMillis();
+    localStringBuilder1 = null;
+    localObject1 = localStringBuilder1;
+    try
+    {
+      Object localObject2 = new StringBuilder();
+      localObject1 = localStringBuilder1;
+      ((StringBuilder)localObject2).append("WtloginMsfListener uin:");
+      localObject1 = localStringBuilder1;
+      ((StringBuilder)localObject2).append(paramString);
+      localObject1 = localStringBuilder1;
+      ((StringBuilder)localObject2).append(" service_cmd:");
+      localObject1 = localStringBuilder1;
+      ((StringBuilder)localObject2).append(this.v);
+      localObject1 = localStringBuilder1;
+      ((StringBuilder)localObject2).append(" timeout:");
+      localObject1 = localStringBuilder1;
+      ((StringBuilder)localObject2).append(i1);
+      localObject1 = localStringBuilder1;
+      ((StringBuilder)localObject2).append(" flag:");
+      localObject1 = localStringBuilder1;
+      ((StringBuilder)localObject2).append(paramBoolean);
+      localObject1 = localStringBuilder1;
+      localObject2 = ((StringBuilder)localObject2).toString();
+      localObject1 = localStringBuilder1;
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localObject1 = localStringBuilder1;
+      localStringBuilder2.append("");
+      localObject1 = localStringBuilder1;
+      localStringBuilder2.append(this.x.f);
+      localObject1 = localStringBuilder1;
+      util.LOGI((String)localObject2, localStringBuilder2.toString());
+      localObject1 = localStringBuilder1;
+      paramWUserSigInfo = new WtloginMsfListener(paramString, this.v, arrayOfByte, i1, paramBoolean, paramWUserSigInfo);
+      localObject1 = localStringBuilder1;
+      paramString = new Thread(paramWUserSigInfo, "Wtlogin_msf");
+      localObject1 = localStringBuilder1;
+      paramString.start();
+      localObject1 = localStringBuilder1;
+      paramString.join(i1);
+      localObject1 = localStringBuilder1;
+      paramString = paramWUserSigInfo.getRetData();
+      if (paramString == null)
+      {
+        localObject1 = paramString;
+        localStringBuilder1 = new StringBuilder();
+        localObject1 = paramString;
+        localStringBuilder1.append("recv data from server failed, ret=");
+        localObject1 = paramString;
+        localStringBuilder1.append(paramWUserSigInfo.getRet());
+        localObject1 = paramString;
+        paramWUserSigInfo = localStringBuilder1.toString();
+        localObject1 = paramString;
+        localStringBuilder1 = new StringBuilder();
+        localObject1 = paramString;
+        localStringBuilder1.append("");
+        localObject1 = paramString;
+        localStringBuilder1.append(this.x.f);
+        localObject1 = paramString;
+        util.LOGI(paramWUserSigInfo, localStringBuilder1.toString());
+      }
+      else
+      {
+        localObject1 = paramString;
+        b(paramString, paramString.length);
+        i1 = 0;
+      }
+    }
+    catch (Exception paramString)
+    {
+      paramWUserSigInfo = new StringBuilder();
+      paramWUserSigInfo.append("");
+      paramWUserSigInfo.append(this.x.f);
+      util.printException(paramString, paramWUserSigInfo.toString());
+      paramString = (String)localObject1;
+      i1 = -1000;
+    }
+    if (this.t != 2066)
+    {
+      paramWUserSigInfo = new report_t3();
+      paramWUserSigInfo._cmd = this.t;
+      paramWUserSigInfo._sub = this.u;
+      paramWUserSigInfo._rst2 = i1;
+      paramWUserSigInfo._used = ((int)(System.currentTimeMillis() - l1));
+      paramWUserSigInfo._try = 0;
+      paramWUserSigInfo._host = "";
+      paramWUserSigInfo._ip = "";
+      paramWUserSigInfo._port = 0;
+      paramWUserSigInfo._conn = 0;
+      paramWUserSigInfo._net = 0;
+      paramWUserSigInfo._str = "";
+      if (i1 == 0)
+      {
+        paramWUserSigInfo._slen = arrayOfByte.length;
+        paramWUserSigInfo._rlen = paramString.length;
+      }
+      else
+      {
+        paramWUserSigInfo._slen = 0;
+        paramWUserSigInfo._rlen = 0;
+      }
+      paramWUserSigInfo._wap = 3;
+      t.at.add_t3(paramWUserSigInfo);
+    }
+    paramString = new StringBuilder();
+    paramString.append(getClass().getName());
+    paramString.append(":snd_rcv_req_msf ret=");
+    paramString.append(i1);
+    paramString = paramString.toString();
+    paramWUserSigInfo = new StringBuilder();
+    paramWUserSigInfo.append("");
+    paramWUserSigInfo.append(this.x.f);
+    util.LOGI(paramString, paramWUserSigInfo.toString());
+    return i1;
   }
   
   public int b(byte[] paramArrayOfByte)
@@ -1187,30 +1144,40 @@ public class oicq_request
   
   void b(int paramInt1, byte[] paramArrayOfByte, int paramInt2)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      return;
-    }
-    if (paramInt1 == 1) {
-      if (t.E == 1) {
-        util.set_server_host1(t.u, paramArrayOfByte);
-      }
-    }
-    for (;;)
+    if (paramArrayOfByte != null)
     {
-      util.LOGI("net type:" + t.E + " type:" + paramInt1 + " host:" + new String(paramArrayOfByte) + " port:" + paramInt2, "" + this.x.f);
-      return;
-      if (t.E == 2)
+      if (paramArrayOfByte.length <= 0) {
+        return;
+      }
+      if (paramInt1 == 1)
       {
-        util.set_server_host2(t.u, paramArrayOfByte);
-        continue;
-        if (paramInt1 == 2) {
-          if (t.E == 1) {
-            util.set_wap_server_host1(t.u, paramArrayOfByte);
-          } else if (t.E == 2) {
-            util.set_wap_server_host2(t.u, paramArrayOfByte);
-          }
+        if (t.E == 1) {
+          util.set_server_host1(t.u, paramArrayOfByte);
+        } else if (t.E == 2) {
+          util.set_server_host2(t.u, paramArrayOfByte);
         }
       }
+      else if (paramInt1 == 2) {
+        if (t.E == 1) {
+          util.set_wap_server_host1(t.u, paramArrayOfByte);
+        } else if (t.E == 2) {
+          util.set_wap_server_host2(t.u, paramArrayOfByte);
+        }
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("net type:");
+      localStringBuilder.append(t.E);
+      localStringBuilder.append(" type:");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" host:");
+      localStringBuilder.append(new String(paramArrayOfByte));
+      localStringBuilder.append(" port:");
+      localStringBuilder.append(paramInt2);
+      paramArrayOfByte = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(this.x.f);
+      util.LOGI(paramArrayOfByte, localStringBuilder.toString());
     }
   }
   
@@ -1261,12 +1228,12 @@ public class oicq_request
       arrayOfString[0] = "wlogin.qq.com";
       arrayOfString[1] = "wlogin1.qq.com";
     }
-    for (;;)
+    else
     {
-      return arrayOfString[java.lang.Math.abs(new java.util.Random().nextInt() % arrayOfString.length)];
       arrayOfString[0] = "wtlogin.qq.com";
       arrayOfString[1] = "wtlogin1.qq.com";
     }
+    return arrayOfString[java.lang.Math.abs(new java.util.Random().nextInt() % arrayOfString.length)];
   }
   
   public void c(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -1286,118 +1253,118 @@ public class oicq_request
   
   public byte[] c()
   {
-    byte[] arrayOfByte = new byte[this.c];
-    System.arraycopy(this.h, 0, arrayOfByte, 0, this.c);
+    int i1 = this.c;
+    byte[] arrayOfByte = new byte[i1];
+    System.arraycopy(this.h, 0, arrayOfByte, 0, i1);
     return arrayOfByte;
   }
   
   public byte[] c(byte[] paramArrayOfByte)
   {
-    Object localObject;
-    if ((t.C == null) || (t.C.length <= 0))
+    Object localObject1;
+    int i1;
+    if ((t.C != null) && (t.C.length > 0))
     {
-      localObject = cryptor.decrypt(paramArrayOfByte, 0, paramArrayOfByte.length, "%4;7t>;28<fc.5*6".getBytes());
-      if (localObject != null) {
-        break label210;
-      }
-    }
-    label210:
-    for (paramArrayOfByte = (byte[])paramArrayOfByte.clone();; paramArrayOfByte = (byte[])localObject)
-    {
-      if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 16))
+      localObject1 = new byte[16];
+      if (t.C.length > localObject1.length)
       {
-        return (byte[])null;
-        localObject = new byte[16];
-        if (t.C.length > localObject.length) {
-          System.arraycopy(t.C, 0, localObject, 0, localObject.length);
-        }
-        for (;;)
+        System.arraycopy(t.C, 0, localObject1, 0, localObject1.length);
+      }
+      else
+      {
+        System.arraycopy(t.C, 0, localObject1, 0, t.C.length);
+        int i2;
+        for (i1 = t.C.length; i1 < localObject1.length; i1 = i2)
         {
-          arrayOfByte = cryptor.decrypt(paramArrayOfByte, 0, paramArrayOfByte.length, (byte[])localObject);
-          if (arrayOfByte != null)
-          {
-            localObject = arrayOfByte;
-            if (arrayOfByte.length > 0) {
-              break;
-            }
-          }
-          localObject = cryptor.decrypt(paramArrayOfByte, 0, paramArrayOfByte.length, "%4;7t>;28<fc.5*6".getBytes());
-          break;
-          System.arraycopy(t.C, 0, localObject, 0, t.C.length);
-          i1 = t.C.length;
-          while (i1 < localObject.length)
-          {
-            localObject[i1] = ((byte)(i1 + 1));
-            i1 += 1;
-          }
+          i2 = i1 + 1;
+          localObject1[i1] = ((byte)i2);
         }
       }
-      int i1 = paramArrayOfByte.length - 16;
-      localObject = new byte[i1];
-      System.arraycopy(paramArrayOfByte, 0, localObject, 0, i1);
-      byte[] arrayOfByte = new byte[16];
-      System.arraycopy(paramArrayOfByte, i1, arrayOfByte, 0, 16);
-      t.b(this.x.h)._tgtgt_key = arrayOfByte;
-      return localObject;
+      localObject2 = cryptor.decrypt(paramArrayOfByte, 0, paramArrayOfByte.length, (byte[])localObject1);
+      if (localObject2 != null)
+      {
+        localObject1 = localObject2;
+        if (localObject2.length > 0) {}
+      }
+      else
+      {
+        localObject1 = cryptor.decrypt(paramArrayOfByte, 0, paramArrayOfByte.length, "%4;7t>;28<fc.5*6".getBytes());
+      }
     }
+    else
+    {
+      localObject1 = cryptor.decrypt(paramArrayOfByte, 0, paramArrayOfByte.length, "%4;7t>;28<fc.5*6".getBytes());
+    }
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = (byte[])paramArrayOfByte.clone();
+    }
+    if ((localObject2 != null) && (localObject2.length >= 16))
+    {
+      i1 = localObject2.length - 16;
+      paramArrayOfByte = new byte[i1];
+      System.arraycopy(localObject2, 0, paramArrayOfByte, 0, i1);
+      localObject1 = new byte[16];
+      System.arraycopy(localObject2, i1, localObject1, 0, 16);
+      t.b(this.x.h)._tgtgt_key = ((byte[])localObject1);
+      return paramArrayOfByte;
+    }
+    return (byte[])null;
   }
   
   public byte[] c(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
   {
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null) || (paramArrayOfByte3 == null)) {
-      return new byte[16];
+    if ((paramArrayOfByte1 != null) && (paramArrayOfByte2 != null) && (paramArrayOfByte3 != null))
+    {
+      byte[] arrayOfByte = new byte[paramArrayOfByte1.length + paramArrayOfByte2.length + paramArrayOfByte3.length];
+      System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 0, paramArrayOfByte1.length);
+      int i1 = paramArrayOfByte1.length + 0;
+      System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, i1, paramArrayOfByte2.length);
+      System.arraycopy(paramArrayOfByte3, 0, arrayOfByte, i1 + paramArrayOfByte2.length, paramArrayOfByte3.length);
+      i1 = paramArrayOfByte3.length;
+      return MD5.toMD5Byte(arrayOfByte);
     }
-    byte[] arrayOfByte = new byte[paramArrayOfByte1.length + paramArrayOfByte2.length + paramArrayOfByte3.length];
-    System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 0, paramArrayOfByte1.length);
-    int i1 = paramArrayOfByte1.length + 0;
-    System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, i1, paramArrayOfByte2.length);
-    i1 += paramArrayOfByte2.length;
-    System.arraycopy(paramArrayOfByte3, 0, arrayOfByte, i1, paramArrayOfByte3.length);
-    i1 = paramArrayOfByte3.length;
-    return MD5.toMD5Byte(arrayOfByte);
+    return new byte[16];
   }
   
   public int d(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    int i1;
-    if (paramInt2 < 5)
-    {
-      i1 = -1009;
-      return i1;
+    if (paramInt2 < 5) {
+      return -1009;
     }
-    Object localObject8 = new tlv_t104();
+    Object localObject19 = new tlv_t104();
     Object localObject15 = new tlv_t105();
-    Object localObject14 = new tlv_t113();
-    tlv_t119 localtlv_t119 = new tlv_t119();
+    Object localObject24 = new tlv_t113();
+    Object localObject4 = new tlv_t119();
     tlv_t10d localtlv_t10d = new tlv_t10d();
     tlv_t10e localtlv_t10e = new tlv_t10e();
     tlv_t10a localtlv_t10a = new tlv_t10a();
     tlv_t114 localtlv_t114 = new tlv_t114();
-    tlv_t103 localtlv_t103 = new tlv_t103();
-    tlv_t11a localtlv_t11a = new tlv_t11a();
-    tlv_t102 localtlv_t102 = new tlv_t102();
-    tlv_t10b localtlv_t10b = new tlv_t10b();
-    tlv_t11c localtlv_t11c = new tlv_t11c();
+    Object localObject16 = new tlv_t103();
+    Object localObject13 = new tlv_t11a();
+    Object localObject14 = new tlv_t102();
+    Object localObject6 = new tlv_t10b();
+    Object localObject7 = new tlv_t11c();
     tlv_t11d localtlv_t11d = new tlv_t11d();
-    Object localObject5 = new tlv_t120();
-    Object localObject1 = new tlv_t121();
+    Object localObject8 = new tlv_t120();
+    Object localObject9 = new tlv_t121();
     tlv_t130 localtlv_t130 = new tlv_t130();
-    tlv_t108 localtlv_t108 = new tlv_t108();
-    Object localObject10 = new tlv_t106();
+    Object localObject5 = new tlv_t108();
+    Object localObject20 = new tlv_t106();
     tlv_t10c localtlv_t10c = new tlv_t10c();
-    Object localObject3 = new tlv_t125();
+    Object localObject2 = new tlv_t125();
     tlv_t11f localtlv_t11f = new tlv_t11f();
-    Object localObject7 = new tlv_t138();
+    Object localObject18 = new tlv_t138();
     tlv_t132 localtlv_t132 = new tlv_t132();
     tlv_t149 localtlv_t149 = new tlv_t149();
     tlv_t150 localtlv_t150 = new tlv_t150();
-    Object localObject6 = new tlv_t143();
+    tlv_t143 localtlv_t143 = new tlv_t143();
     tlv_t305 localtlv_t305 = new tlv_t305();
     tlv_t164 localtlv_t164 = new tlv_t164();
-    tlv_t165 localtlv_t165 = new tlv_t165();
-    Object localObject12 = new tlv_t167();
-    Object localObject11 = new tlv_t16a();
-    Object localObject13 = new tlv_t169();
+    Object localObject17 = new tlv_t165();
+    Object localObject22 = new tlv_t167();
+    Object localObject21 = new tlv_t16a();
+    Object localObject23 = new tlv_t169();
     tlv_t161 localtlv_t161 = new tlv_t161();
     tlv_t171 localtlv_t171 = new tlv_t171();
     tlv_t localtlv_t = new tlv_t(1298);
@@ -1410,22 +1377,15 @@ public class oicq_request
     tlv_t126 localtlv_t126 = new tlv_t126();
     tlv_t182 localtlv_t182 = new tlv_t182();
     tlv_t183 localtlv_t183 = new tlv_t183();
-    tlv_t186 localtlv_t186 = new tlv_t186();
+    Object localObject12 = new tlv_t186();
     tlv_t402 localtlv_t402 = new tlv_t402();
-    Object localObject9 = new tlv_t403();
-    tlv_t546 localtlv_t546 = new tlv_t546();
-    byte[] arrayOfByte1 = null;
-    byte[] arrayOfByte2 = null;
-    byte[] arrayOfByte3 = null;
-    byte[] arrayOfByte4 = null;
-    byte[] arrayOfByte5 = null;
-    Object localObject2 = null;
-    byte[] arrayOfByte6 = null;
+    Object localObject11 = new tlv_t403();
+    Object localObject10 = new tlv_t546();
     tlv_t136 localtlv_t136 = new tlv_t136();
     tlv_t118 localtlv_t118 = new tlv_t118();
-    async_context localasync_context = t.b(this.x.h);
-    long l4 = localasync_context._sappid;
-    long l5 = localasync_context._appid;
+    Object localObject1 = t.b(this.x.h);
+    long l4 = ((async_context)localObject1)._sappid;
+    long l5 = ((async_context)localObject1)._appid;
     if (this.t == 2064) {
       switch (this.u)
       {
@@ -1439,841 +1399,1156 @@ public class oicq_request
       case 21: 
       default: 
         return -1012;
-      case 9: 
-        paramInt2 = 0;
-      }
-    }
-    label642:
-    label963:
-    label3780:
-    label3909:
-    label4806:
-    label5064:
-    for (;;)
-    {
-      i1 = c(paramArrayOfByte, paramInt1 + 2);
-      int i4 = paramInt1 + 5;
-      this.x.d = null;
-      int i2;
-      label1013:
-      int i5;
-      int i3;
-      switch (i1)
-      {
-      default: 
-        c(paramArrayOfByte, i4, this.c - i4 - 1);
-        paramInt1 = i1;
-      case 0: 
-        do
-        {
-          do
-          {
-            localObject1 = new tlv_t543();
-            i2 = ((tlv_t543)localObject1).get_tlv(paramArrayOfByte, i4, this.c - i4 - 1);
-            localasync_context._t543 = ((tlv_t543)localObject1);
-            util.LOGI("tlv543_ret:" + i2, "");
-            localObject2 = new StringBuilder().append("get_response_body cmd= 0x").append(Integer.toHexString(this.t)).append(" subCmd= 0x").append(Integer.toHexString(this.u)).append(" type:").append(i1).append(" ret:");
-            if (paramInt1 <= 0) {
-              break label7410;
-            }
-            localObject1 = "0x" + Integer.toHexString(paramInt1);
-            util.LOGI(localObject1, "" + this.x.f);
-            if (paramInt1 != 0) {
-              break label7419;
-            }
-            a(null);
-            i1 = paramInt1;
-            if ((i1 != 10) && (i1 != 161) && (i1 != 162) && (i1 != 164) && (i1 != 165) && (i1 != 166) && (i1 != 154))
-            {
-              paramInt1 = i1;
-              if (i1 >= 128)
-              {
-                paramInt1 = i1;
-                if (i1 > 143) {}
-              }
-            }
-            else
-            {
-              paramInt1 = -1000;
-            }
-            i1 = paramInt1;
-            if (paramInt2 == 2) {
-              break;
-            }
-            i1 = paramInt1;
-            if (paramInt2 == 6) {
-              break;
-            }
-            i1 = paramInt1;
-            if (paramInt2 == 7) {
-              break;
-            }
-            a(paramInt2);
-            return paramInt1;
-            paramInt2 = 1;
-            break label642;
-            paramInt2 = 2;
-            break label642;
-            paramInt2 = 3;
-            break label642;
-            paramInt2 = 4;
-            break label642;
-            paramInt2 = 5;
-            break label642;
-            paramInt2 = 6;
-            break label642;
-            paramInt2 = 7;
-            break label642;
-            paramInt2 = 0;
-            break label642;
-            paramInt2 = 0;
-            break label642;
-            paramInt2 = 0;
-            break label642;
-            if (paramInt2 != 1) {
-              break label2604;
-            }
-            if (this.x.b == null) {
-              return -1006;
-            }
-            if (localtlv_t150.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1) >= 0) {
-              this.x.d = localtlv_t150;
-            }
-            if (localtlv_t161.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1) >= 0) {
-              a(localtlv_t161);
-            }
-            i2 = localtlv_t119.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1, this.x.b);
-            paramInt1 = i2;
-          } while (i2 < 0);
-          localObject8 = localtlv_t119.get_data();
-          i2 = 2;
-          i5 = localObject8.length;
-          if (localtlv_t149.get_tlv((byte[])localObject8, 2, i5) > 0) {
-            a(localtlv_t149);
-          }
-          localObject15 = new tlv_t543();
-          paramInt1 = ((tlv_t543)localObject15).get_tlv((byte[])localObject8, 2, i5);
-          localasync_context.tlv543In119 = ((tlv_t543)localObject15);
-          if (localtlv_t130.get_tlv((byte[])localObject8, 2, i5) > 0) {
-            this.x.a(localtlv_t130.get_time(), localtlv_t130.get_ipaddr());
-          }
-          i3 = ((tlv_t113)localObject14).get_tlv((byte[])localObject8, 2, i5);
-          if (i3 >= 0)
-          {
-            this.x.f = ((tlv_t113)localObject14).get_uin();
-            localasync_context._uin = this.x.f;
-            if (!localasync_context.ifQQLoginInQim(t.aA)) {
-              break label3176;
-            }
-          }
-          util.LOGI("quickLoginByGateway retTlv543In119:" + paramInt1 + " ,rett113=" + i3);
-          localObject14 = new tlv_t(1320);
-          if (((tlv_t)localObject14).get_tlv((byte[])localObject8, 2, i5) > 0)
-          {
-            util.LOGI("get tlv528 and put into context from seq " + this.x.h, "" + this.x.f);
-            localasync_context.tlv528 = ((tlv_t)localObject14);
-          }
-          localObject14 = new tlv_t(1328);
-          if (((tlv_t)localObject14).get_tlv((byte[])localObject8, 2, i5) > 0)
-          {
-            util.LOGI("get tlv530 and put into context from seq " + this.x.h, "" + this.x.f);
-            localasync_context.tlv530 = ((tlv_t)localObject14);
-          }
-          localtlv_t10d.get_tlv((byte[])localObject8, 2, i5);
-          localtlv_t10e.get_tlv((byte[])localObject8, 2, i5);
-          localtlv_t10a.get_tlv((byte[])localObject8, 2, i5);
-          localtlv_t114.get_tlv((byte[])localObject8, 2, i5);
-          i3 = localtlv_t11a.get_tlv((byte[])localObject8, 2, i5);
-          paramInt1 = i3;
-        } while (i3 < 0);
-        if (localtlv_t118.get_tlv((byte[])localObject8, 2, i5) < 0) {
-          util.LOGI("t118 get failed", "" + this.x.f);
-        }
-        if (localtlv_t103.get_tlv((byte[])localObject8, 2, i5) >= 0) {
-          localObject2 = localtlv_t103.get_data();
-        }
-        if (localtlv_t108.get_tlv((byte[])localObject8, 2, i5) >= 0) {
-          util.set_ksid(t.u, localtlv_t108.get_data());
-        }
-        if (localtlv_t102.get_tlv((byte[])localObject8, 2, i5) >= 0) {
-          arrayOfByte1 = localtlv_t102.get_data();
-        }
-        if (localtlv_t10b.get_tlv((byte[])localObject8, 2, i5) >= 0) {
-          arrayOfByte2 = localtlv_t10b.get_data();
-        }
-        if (localtlv_t11c.get_tlv((byte[])localObject8, 2, i5) >= 0) {
-          arrayOfByte3 = localtlv_t11c.get_data();
-        }
-        if (((tlv_t120)localObject5).get_tlv((byte[])localObject8, 2, i5) >= 0) {
-          arrayOfByte4 = ((tlv_t120)localObject5).get_data();
-        }
-        if (((tlv_t121)localObject1).get_tlv((byte[])localObject8, 2, i5) >= 0) {
-          arrayOfByte5 = ((tlv_t121)localObject1).get_data();
-        }
-        if (((tlv_t125)localObject3).get_tlv((byte[])localObject8, 2, i5) >= 0)
-        {
-          localObject1 = ((tlv_t125)localObject3).get_openid();
-          arrayOfByte6 = ((tlv_t125)localObject3).get_openkey();
-        }
+      case 18: 
+        paramInt2 = 7;
+        break;
+      case 15: 
+        paramInt2 = 5;
+        break;
+      case 13: 
+        paramInt2 = 4;
+        break;
+      case 10: 
+      case 11: 
+        paramInt2 = 1;
+        break;
+      case 7: 
+        paramInt2 = 6;
+        break;
+      case 4: 
+        paramInt2 = 3;
+        break;
+      case 2: 
+        paramInt2 = 2;
         break;
       }
-      label2768:
-      label5074:
-      label6870:
-      label7511:
-      for (;;)
+    } else {
+      paramInt2 = 0;
+    }
+    int i2 = c(paramArrayOfByte, paramInt1 + 2);
+    paramInt1 += 5;
+    t localt = this.x;
+    localt.d = null;
+    label805:
+    int i1;
+    if (i2 != 0) {
+      if (i2 != 1)
       {
-        if (localtlv_t186.get_tlv((byte[])localObject8, 2, i5) >= 0)
-        {
-          localObject3 = this.x.g;
-          if (!util.check_uin_account((String)localObject3).booleanValue()) {
-            break label3203;
-          }
-          localObject5 = this.x.e(this.x.f);
-          localObject3 = localObject5;
-          if (localObject5 != null)
-          {
-            localObject3 = localObject5;
-            if (((String)localObject5).length() > 0)
-            {
-              this.x.a((String)localObject5, Long.valueOf(this.x.f), localtlv_t186.getPwdflag());
-              localObject3 = localObject5;
-            }
-          }
+        if (i2 == 2) {
+          break label1913;
         }
-        for (;;)
-        {
-          util.LOGI("put t186: name: " + (String)localObject3 + " uin: " + this.x.f + " pwd=" + localtlv_t186.getPwdflag(), "");
-          try
-          {
-            localObject3 = new tlv_t(1335);
-            paramInt1 = ((tlv_t)localObject3).get_tlv((byte[])localObject8, 2, i5);
-            if (paramInt1 >= 0)
-            {
-              localObject3 = ((tlv_t)localObject3).get_data();
-              if ((localObject3 != null) && (localObject3.length > 0))
+        if (i2 != 15) {
+          if (i2 != 16) {
+            if (i2 != 20) {
+              if ((i2 != 41) && (i2 != 116))
               {
-                localObject5 = new byte[localObject3.length - 2];
-                System.arraycopy(localObject3, 2, localObject5, 0, localObject3.length - 2);
-                i3 = ProtocolDet.setLoginExtraData(t.u, (byte[])localObject5);
-                util.LOGI("0x537 resp:" + paramInt1 + ":" + localObject3.length + " setRes:" + i3 + " tuple:" + localObject5.length, "" + this.x.f);
-              }
-            }
-          }
-          catch (Throwable localThrowable)
-          {
-            for (;;)
-            {
-              util.LOGI("tlv537 error " + Log.getStackTraceString(localThrowable), "");
-              continue;
-              this.x.j = new WFastLoginInfo();
-            }
-            paramInt1 = localtlv_t10c.get_tlv((byte[])localObject8, 2, i5);
-            i3 = ((tlv_t106)localObject10).get_tlv((byte[])localObject8, 2, i5);
-            if ((paramInt1 < 0) || (i3 < 0)) {
-              break label3340;
-            }
-            localObject4 = localtlv_t10c.get_data();
-            localObject12[0] = ((byte[])b(((tlv_t106)localObject10).get_data(), (byte[])localObject4).clone());
-            if (((tlv_t16a)localObject11).get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label3362;
-            }
-            localObject12[1] = ((tlv_t16a)localObject11).get_data();
-            localObject5 = new tlv_t(1329);
-            paramInt1 = ((tlv_t)localObject5).get_tlv((byte[])localObject8, 2, i5);
-            util.LOGI("retT531: " + paramInt1 + this.x.f);
-            if (paramInt1 < 0) {
-              break label3780;
-            }
-            localObject11 = new tlv_t106();
-            localtlv_t10c = new tlv_t10c();
-            localObject4 = new tlv_t16a();
-            localObject10 = new tlv_t113();
-            paramInt1 = ((tlv_t)localObject11).get_tlv(((tlv_t)localObject5).get_data(), 2, ((tlv_t)localObject5).get_data_len());
-            i3 = localtlv_t10c.get_tlv(((tlv_t)localObject5).get_data(), 2, ((tlv_t)localObject5).get_data_len());
-            int i6 = ((tlv_t)localObject4).get_tlv(((tlv_t)localObject5).get_data(), 2, ((tlv_t)localObject5).get_data_len());
-            int i7 = ((tlv_t)localObject10).get_tlv(((tlv_t)localObject5).get_data(), 2, ((tlv_t)localObject5).get_data_len());
-            if ((paramInt1 < 0) || (i3 < 0) || (i6 < 0) || (i7 < 0)) {
-              break label3708;
-            }
-            localObject5 = b(((tlv_t)localObject11).get_data(), localtlv_t10c.get_data());
-            localObject4 = ((tlv_t)localObject4).get_data();
-            l1 = util.buf_to_int32(((tlv_t)localObject10).get_data(), 0);
-            localasync_context.tlv113 = ((tlv_t)localObject10);
-            l2 = l1 & 0xFFFFFFFF;
-            for (;;)
-            {
-              if (((tlv_t403)localObject9).get_tlv((byte[])localObject8, 2, i5) >= 0) {
-                localObject12[4] = ((tlv_t403)localObject9).get_data();
-              }
-              if (localasync_context._sec_guid_flag)
-              {
-                localObject12[2] = localasync_context._G;
-                localObject12[3] = localasync_context._dpwd;
-                localObject12[4] = localasync_context._t403.get_data();
-                localasync_context._sec_guid_flag = false;
-              }
-              localObject9 = (byte[][])Array.newInstance(Byte.TYPE, new int[] { 16, 0 });
-              paramInt1 = 0;
-              while (paramInt1 < 16)
-              {
-                localObject9[paramInt1] = new byte[0];
-                paramInt1 += 1;
-              }
-              util.LOGI("Get data from 0x531 failed: " + paramInt1 + ";" + i3 + ";" + i6 + ";" + i7 + ";" + this.x.f);
-              l2 = 0L;
-              localObject4 = null;
-              localObject5 = null;
-            }
-            if (localtlv_t136.get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label3814;
-            }
-            localObject9[0] = localtlv_t136.get_data();
-            if (localtlv_t132.get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label3843;
-            }
-            localObject9[1] = localtlv_t132.get_access_token();
-            localObject1 = localtlv_t132.get_openid();
-            if (((tlv_t143)localObject6).get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label3865;
-            }
-            localObject9[2] = ((tlv_t143)localObject6).get_data();
-            if (localtlv_t305.get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label3887;
-            }
-            localObject9[3] = localtlv_t305.get_data();
-            if (localtlv_t164.get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label3909;
-            }
-            localObject9[4] = localtlv_t164.get_data();
-            if (localtlv_t171.get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label3931;
-            }
-            localObject9[5] = localtlv_t171.get_data();
-            if (localtlv_t.get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label3954;
-            }
-            localObject9[6] = localtlv_t.get_data();
-            if (localtlv_t16d.get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label3977;
-            }
-            localObject9[7] = localtlv_t16d.get_data();
-            localObject6 = new tlv_t199();
-            if (((tlv_t199)localObject6).get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label7519;
-            }
-          }
-          util.LOGI("tgt len:" + util.buf_len(localtlv_t10a.get_data()) + " tgt_key len:" + util.buf_len(localtlv_t10d.get_data()) + " st len:" + util.buf_len(localtlv_t114.get_data()) + " st_key len:" + util.buf_len(localtlv_t10e.get_data()) + " stwx_web len:" + util.buf_len((byte[])localObject2) + " lskey len:" + util.buf_len(arrayOfByte3) + " skey len:" + util.buf_len(arrayOfByte4) + " sig64 len:" + util.buf_len(arrayOfByte5) + " openid len:" + util.buf_len((byte[])localObject1) + " openkey len:" + util.buf_len(arrayOfByte6) + " pwdflag: " + localtlv_t186.get_data_len() + " " + localtlv_t186.getPwdflag(), "" + this.x.f);
-          if (((tlv_t169)localObject13).get_tlv((byte[])localObject8, 2, i5) >= 0)
-          {
-            localObject3 = a((tlv_t169)localObject13);
-            if ((localObject3 == null) || (localObject3.length <= 0)) {
-              break label3264;
-            }
-            this.x.j = new WFastLoginInfo((byte[])localObject3);
-          }
-          localObject13 = (byte[][])Array.newInstance(Byte.TYPE, new int[] { 3, 0 });
-          if (((tlv_t167)localObject12).get_tlv((byte[])localObject8, 2, i5) >= 0)
-          {
-            localObject13[0] = ((tlv_t167)localObject12).get_img_type();
-            localObject13[1] = ((tlv_t167)localObject12).get_img_format();
-            localObject13[2] = ((tlv_t167)localObject12).get_img_url();
-          }
-          localObject12 = (byte[][])Array.newInstance(Byte.TYPE, new int[] { 5, 0 });
-          paramInt1 = 0;
-          while (paramInt1 < 5)
-          {
-            localObject12[paramInt1] = new byte[0];
-            paramInt1 += 1;
-          }
-          if (paramInt2 == 2)
-          {
-            if (localtlv_t183.get_tlv(paramArrayOfByte, i4, this.c - i4) >= 0) {
-              localasync_context._msalt = localtlv_t183.getMsalt();
-            }
-            if (f() == 3)
-            {
-              paramInt1 = ((tlv_t113)localObject14).get_tlv(paramArrayOfByte, i4, this.c - i4 - 1);
-              if (paramInt1 >= 0)
-              {
-                this.x.f = ((tlv_t113)localObject14).get_uin();
-                localasync_context._uin = this.x.f;
-                if (!localasync_context.ifQQLoginInQim(t.aA)) {
-                  break label2768;
-                }
-              }
-              for (;;)
-              {
-                util.LOGI("flowid == 2 t113 = " + paramInt1, String.valueOf(this.x.f));
-                if (((tlv_t104)localObject8).get_tlv(paramArrayOfByte, i4, this.c - i4 - 1) >= 0) {
-                  localasync_context._t104 = ((tlv_t104)localObject8);
-                }
-                paramInt1 = 0;
-                break;
-                this.x.a(this.x.g, Long.valueOf(this.x.f));
-              }
-            }
-            if (localtlv_t150.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1) >= 0) {
-              this.x.d = localtlv_t150;
-            }
-            if (localtlv_t161.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1) >= 0) {
-              a(localtlv_t161);
-            }
-            i2 = localtlv_t119.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1, localasync_context._tgtgt_key);
-            break label1281;
-          }
-          if ((paramInt2 == 3) || (paramInt2 == 7))
-          {
-            if (localtlv_t183.get_tlv(paramArrayOfByte, i4, this.c - i4) >= 0) {
-              localasync_context._msalt = localtlv_t183.getMsalt();
-            }
-            paramInt1 = ((tlv_t113)localObject14).get_tlv(paramArrayOfByte, i4, this.c - i4);
-            if (paramInt1 >= 0)
-            {
-              this.x.f = ((tlv_t113)localObject14).get_uin();
-              this.x.a(this.x.g, Long.valueOf(this.x.f));
-            }
-            util.LOGI("flowid == 3 || flowid == 7 t113 = " + paramInt1, String.valueOf(this.x.f));
-            i2 = ((tlv_t104)localObject8).get_tlv(paramArrayOfByte, i4, this.c - i4);
-            paramInt1 = i2;
-            if (i2 < 0) {
-              break;
-            }
-            localasync_context._t104 = ((tlv_t104)localObject8);
-            paramInt1 = 0;
-            break;
-          }
-          if (22 == this.u)
-          {
-            i2 = ((tlv_t104)localObject8).get_tlv(paramArrayOfByte, i4, this.c - i4);
-            paramInt1 = i2;
-            if (i2 < 0) {
-              break;
-            }
-            localasync_context._t104 = ((tlv_t104)localObject8);
-            paramInt1 = 0;
-            break;
-          }
-          if (localtlv_t150.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1) >= 0) {
-            this.x.d = localtlv_t150;
-          }
-          if (localtlv_t161.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1) >= 0) {
-            a(localtlv_t161);
-          }
-          i2 = localtlv_t119.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1, localasync_context._tgtgt_key);
-          r.K = 0;
-          break label1281;
-          label3176:
-          this.x.a(this.x.g, Long.valueOf(this.x.f));
-          break label1433;
-          this.x.a((String)localObject3, Long.valueOf(this.x.f), localtlv_t186.getPwdflag());
-        }
-        Object localObject4;
-        long l1;
-        long l2;
-        label3708:
-        localObject9[8] = ((tlv_t199)localObject6).getPayToken();
-        label3814:
-        label3954:
-        localObject1 = ((tlv_t199)localObject6).getOpenId();
-        label3931:
-        label7519:
-        for (;;)
-        {
-          localObject6 = new tlv_t200();
-          if (((tlv_t200)localObject6).get_tlv((byte[])localObject8, 2, i5) >= 0)
-          {
-            localObject9[9] = ((tlv_t200)localObject6).getPf();
-            localObject9[10] = ((tlv_t200)localObject6).getPfKey();
-          }
-          localObject6 = new tlv_t(515);
-          if (((tlv_t)localObject6).get_tlv((byte[])localObject8, 2, i5) >= 0)
-          {
-            localObject9[11] = ((tlv_t)localObject6).get_data();
-            util.LOGI("get DA2 in rsp", "");
-            localObject6 = new tlv_t(791);
-            if (((tlv_t)localObject6).get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label4929;
-            }
-            WloginSigInfo._QRPUSHSig = ((tlv_t)localObject6).get_data();
-            localObject6 = new tlv_t(307);
-            if (((tlv_t)localObject6).get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label4938;
-            }
-            localObject9[13] = ((tlv_t)localObject6).get_data();
-            localObject6 = new tlv_t(308);
-            if (((tlv_t)localObject6).get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label4972;
-            }
-            localObject9[14] = ((tlv_t)localObject6).get_data();
-            label4204:
-            if ((t.ac) && ((this.u == 9) || (this.u == 15) || (this.u == 20)))
-            {
-              localObject6 = new tlv_t322();
-              ((tlv_t322)localObject6).get_tlv((byte[])localObject8, 2, i5);
-              localObject6 = ((tlv_t322)localObject6).get_data();
-              if ((localObject6 == null) || (localObject6.length <= 0)) {
-                break label5006;
-              }
-              localObject9[15] = localObject6;
-              localObject6 = util.buf_to_string((byte[])localObject6);
-              util.LOGI("get t322, value=" + (String)localObject6, "" + this.x.f);
-            }
-            util.LOGI("encrypt_a1 len:" + util.buf_len(localObject12[0]) + " no_pic_sig len:" + util.buf_len(localObject12[1]) + " G len:" + util.buf_len(localObject12[2]) + " dpwd len:" + util.buf_len(localObject12[3]) + " randseed len:" + util.buf_len(localObject12[4]) + " vkey len:" + util.buf_len(localObject9[0]) + " openid len:" + util.buf_len((byte[])localObject1) + " access_token len:" + util.buf_len(localObject9[1]) + " d2 len:" + util.buf_len(localObject9[2]) + " d2_key len:" + util.buf_len(localObject9[3]) + " sid len:" + util.buf_len(localObject9[4]) + " aq_sig len:" + util.buf_len(localObject9[5]) + " pskey len:" + util.buf_len(localObject9[6]) + " super_key len:" + util.buf_len(localObject9[7]) + " paytoken len:" + util.buf_len(localObject9[8]) + " pf len:" + util.buf_len(localObject9[9]) + " pfkey len:" + util.buf_len(localObject9[10]) + " da2 len:" + util.buf_len(localObject9[11]) + " wt session ticket:" + util.buf_len(localObject9[13]) + " wt session ticket key:" + util.buf_len(localObject9[14]) + " device_token len:" + util.buf_len(localObject9[15]), "" + this.x.f);
-            if (localtlv_t11f.get_tlv((byte[])localObject8, 2, i5) < 0) {
-              break label7511;
-            }
-          }
-          for (long l3 = localtlv_t11f.get_tk_pri() & 0xFFFFFFFF;; l3 = 4294967295L)
-          {
-            localObject6 = new long[7];
-            paramInt1 = 2;
-            l1 = 2160000L;
-            paramInt1 = ((tlv_t138)localObject7).get_tlv((byte[])localObject8, paramInt1, i5);
-            if (paramInt1 >= 0)
-            {
-              if (((tlv_t138)localObject7).get_a2_chg_time() == 0) {
-                break label7508;
-              }
-              l1 = ((tlv_t138)localObject7).get_a2_chg_time();
-            }
-            for (;;)
-            {
-              if (((tlv_t138)localObject7).get_lskey_chg_time() != 0)
-              {
-                localObject6[0] = ((tlv_t138)localObject7).get_lskey_chg_time();
-                if (((tlv_t138)localObject7).get_skey_chg_time() == 0) {
-                  break label5024;
-                }
-                localObject6[1] = ((tlv_t138)localObject7).get_skey_chg_time();
-                if (((tlv_t138)localObject7).get_vkey_chg_time() == 0) {
-                  break label5034;
-                }
-                localObject6[2] = ((tlv_t138)localObject7).get_vkey_chg_time();
-                label4842:
-                if (((tlv_t138)localObject7).get_a8_chg_time() == 0) {
-                  break label5044;
-                }
-                localObject6[3] = ((tlv_t138)localObject7).get_a8_chg_time();
-                label4860:
-                if (((tlv_t138)localObject7).get_stweb_chg_time() == 0) {
-                  break label5054;
-                }
-                localObject6[4] = ((tlv_t138)localObject7).get_stweb_chg_time();
-                if (((tlv_t138)localObject7).get_d2_chg_time() == 0) {
-                  break label5064;
-                }
-                localObject6[5] = ((tlv_t138)localObject7).get_d2_chg_time();
-              }
-              for (;;)
-              {
-                if (((tlv_t138)localObject7).get_sid_chg_time() == 0) {
-                  break label5074;
-                }
-                localObject6[6] = ((tlv_t138)localObject7).get_sid_chg_time();
-                break label4757;
-                util.LOGI("no DA2 in rsp", "");
-                break;
-                WloginSigInfo._QRPUSHSig = new byte[0];
-                break label4134;
-                util.LOGW("get t133 failed", "" + this.x.f);
-                break label4169;
-                label4972:
-                util.LOGW("get t134 failed", "" + this.x.f);
-                break label4204;
-                localObject6 = "null";
-                break label4289;
-                localObject6[0] = 1641600L;
-                break label4806;
-                localObject6[1] = 86400L;
-                break label4824;
-                localObject6[2] = 1728000L;
-                break label4842;
-                localObject6[3] = 72000L;
-                break label4860;
-                localObject6[4] = 6000L;
-                break label4878;
-                localObject6[5] = 1728000L;
-              }
-              localObject6[6] = 1728000L;
-              break label4757;
-              util.LOGI("sappid:" + l4 + " appid:" + l5 + " app_pri:" + l3 + " login_bitmap:" + localasync_context._login_bitmap + " tk_valid:" + 0L + " a2_valid:" + l1 + " lskey_valid:" + localObject6[0] + " skey_valid:" + localObject6[1] + " vkey_valid:" + localObject6[2] + " a8_valid:" + localObject6[3] + " stweb_valid:" + localObject6[4] + " d2_valid:" + localObject6[5] + " sid_valid:" + localObject6[6], "" + this.x.f);
-              localObject7 = new WloginSimpleInfo();
-              ((WloginSimpleInfo)localObject7).setUin(this.x.f);
-              ((WloginSimpleInfo)localObject7).setFace(localtlv_t11a.get_face());
-              ((WloginSimpleInfo)localObject7).setAge(localtlv_t11a.get_age());
-              ((WloginSimpleInfo)localObject7).setGender(localtlv_t11a.get_gender());
-              ((WloginSimpleInfo)localObject7).setNick(localtlv_t11a.get_nick());
-              ((WloginSimpleInfo)localObject7).setReserveUinInfo((byte[][])localObject13);
-              ((WloginSimpleInfo)localObject7).setMainDisplayName(localtlv_t118.get_data());
-              this.x.aw = localasync_context._main_sigmap;
-              paramInt1 = this.x.a(this.x.f, l4, (byte[][])localObject12, l5, l3, t.f(), t.f() + 0L, t.f() + l1, (WloginSimpleInfo)localObject7, localtlv_t10a.get_data(), localtlv_t10d.get_data(), localtlv_t114.get_data(), localtlv_t10e.get_data(), (byte[])localObject2, arrayOfByte2, arrayOfByte1, arrayOfByte3, arrayOfByte4, arrayOfByte5, (byte[])localObject1, arrayOfByte6, (byte[][])localObject9, (long[])localObject6, localasync_context._login_bitmap);
-              if (paramInt1 != 0)
-              {
-                localObject1 = new ErrMsg();
-                ((ErrMsg)localObject1).setMessage(InternationMsg.a(InternationMsg.MSG_TYPE.MSG_2));
-                a((ErrMsg)localObject1);
-                util.LOGI("put_siginfo fail,ret=" + paramInt1, "" + this.x.f);
-                break;
-              }
-              paramInt1 = i2;
-              if (localObject5 != null)
-              {
-                paramInt1 = i2;
-                if (0L != l2)
+                if (i2 != 160)
                 {
-                  paramInt1 = localObject12.length;
-                  localObject1 = (byte[][])Array.newInstance(Byte.TYPE, new int[] { paramInt1, 0 });
-                  localObject1[0] = localObject5;
-                  localObject1[1] = localObject4;
-                  paramInt1 = localObject9.length;
-                  localObject2 = (byte[][])Array.newInstance(Byte.TYPE, new int[] { paramInt1, 0 });
-                  i3 = this.x.a(l2, 16L, (byte[][])localObject1, 16L, l3, t.f(), t.f() + 0L, t.f() + l1, (WloginSimpleInfo)localObject7, null, null, null, null, null, null, null, null, null, null, null, null, (byte[][])localObject2, (long[])localObject6, localasync_context._login_bitmap);
-                  paramInt1 = i2;
-                  if (i3 != 0)
+                  if (i2 == 176) {
+                    break label1291;
+                  }
+                  if (i2 == 180) {
+                    break label1226;
+                  }
+                  if (i2 == 204) {
+                    break label1057;
+                  }
+                  if (i2 == 208) {
+                    break label910;
+                  }
+                  if (i2 == 232) {
+                    break label805;
+                  }
+                  if (i2 != 239)
                   {
-                    localObject1 = new ErrMsg();
-                    ((ErrMsg)localObject1).setMessage(InternationMsg.a(InternationMsg.MSG_TYPE.MSG_2));
-                    a((ErrMsg)localObject1);
-                    util.LOGI("put_siginfo fail " + i3, "" + l2);
-                    paramInt1 = i3;
-                    break;
+                    c(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
+                    break label2540;
+                  }
+                }
+                break label1324;
+                i1 = ((tlv_t104)localObject19).get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
+                if (i1 >= 0)
+                {
+                  localObject2 = new tlv_t52b();
+                  i1 = ((tlv_t52b)localObject2).get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
+                  if (i1 >= 0)
+                  {
+                    t.am = ((tlv_t104)localObject19).get_data();
+                    ((async_context)localObject1)._smslogin_zone = ((tlv_t52b)localObject2).get_zone();
+                    ((async_context)localObject1)._smslogin_hint_mobile = ((tlv_t52b)localObject2).get_mobile();
+                    label892:
+                    i1 = paramInt1;
                   }
                 }
               }
-              for (;;)
-              {
-                paramInt1 = localtlv_t11d.get_tlv((byte[])localObject8, paramInt1, i5);
-                if (paramInt1 < 0) {
-                  break;
-                }
-                this.x.a(this.x.f, localtlv_t11d.get_appid(), t.f(), t.f() + 0L, localtlv_t11d.get_st(), localtlv_t11d.get_stkey());
-              }
-              paramInt1 = 0;
-              break;
-              util.LOGI("cmd " + Integer.toHexString(this.t) + " subcmd " + Integer.toHexString(this.u) + " result " + i1 + " seq error uin " + this.x.f + " appid " + l4, "");
-              c(paramArrayOfByte, i4, this.c - i4 - 1);
-              paramInt1 = i1;
-              break;
-              util.LOGI("cmd " + Integer.toHexString(this.t) + " subcmd " + Integer.toHexString(this.u) + " result " + i1 + " will clean sig for uin " + this.x.f + " appid " + l4, "");
-              this.x.e(this.x.f, l4);
-              c(paramArrayOfByte, i4, this.c - i4 - 1);
-              paramInt1 = i1;
-              break;
-              i2 = ((tlv_t104)localObject8).get_tlv(paramArrayOfByte, i4, this.c - i4 - 1);
-              paramInt1 = i2;
-              if (i2 < 0) {
-                break;
-              }
-              localasync_context._t104 = ((tlv_t104)localObject8);
-              localObject1 = new tlv_t192();
-              if (((tlv_t192)localObject1).get_tlv(paramArrayOfByte, i4, this.c - i4 - 1) >= 0)
-              {
-                util.LOGI("return 0x192", "");
-                paramInt1 = localtlv_t546.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1);
-                if (paramInt1 >= 0) {
-                  util.LOGI("get tlv546 success len:" + localtlv_t546.get_data_len(), "");
-                }
-                for (localasync_context._t546 = localtlv_t546;; localasync_context._t546 = new tlv_t546())
-                {
-                  b.a(localtlv_t546.get_data());
-                  a(new ErrMsg(0, i1, "", "", ((tlv_t192)localObject1).getUrl()));
-                  paramInt1 = i1;
-                  break;
-                  util.LOGI("get tlv546 fail ret:" + paramInt1, "");
-                }
-              }
-              i2 = ((tlv_t105)localObject15).get_tlv(paramArrayOfByte, i4, this.c - i4 - 1);
-              paramInt1 = i2;
-              if (i2 < 0) {
-                break;
-              }
-              localasync_context._t105 = ((tlv_t105)localObject15);
-              if (localtlv_t165.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1) >= 0)
-              {
-                localasync_context._t165 = localtlv_t165;
-                paramInt1 = localtlv_t546.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1);
-                if (paramInt1 < 0) {
-                  break label6409;
-                }
-                util.LOGI("get tlv546 success len:" + localtlv_t546.get_data_len(), "");
-              }
-              for (localasync_context._t546 = localtlv_t546;; localasync_context._t546 = new tlv_t546())
-              {
-                b.a(localtlv_t546.get_data());
-                a(null);
-                break;
-                localasync_context._t165 = new tlv_t165();
-                break label6320;
-                util.LOGI("get tlv546 fail ret:" + paramInt1, "");
-              }
-              this.x.e(this.x.f, l4);
-              i2 = localtlv_t130.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1);
-              paramInt1 = i2;
-              if (i2 < 0) {
-                break;
-              }
-              this.x.a(localtlv_t130.get_time(), localtlv_t130.get_ipaddr());
-              c(paramArrayOfByte, i4, this.c - i4 - 1);
-              paramInt1 = i1;
-              break;
-              localObject1 = new tlv_t(405);
-              i2 = ((tlv_t)localObject1).get_tlv(paramArrayOfByte, i4, this.c - i4 - 1);
-              paramInt1 = i2;
-              if (i2 < 0) {
-                break;
-              }
-              WloginSigInfo._LHSig = ((tlv_t)localObject1).get_data();
-              c(paramArrayOfByte, i4, this.c - i4 - 1);
-              paramInt1 = i1;
-              break;
-              if (((tlv_t113)localObject14).get_tlv(paramArrayOfByte, i4, this.c - i4 - 1) >= 0)
-              {
-                this.x.f = ((tlv_t113)localObject14).get_uin();
-                this.x.a(this.x.g, Long.valueOf(this.x.f));
-              }
-              i2 = ((tlv_t104)localObject8).get_tlv(paramArrayOfByte, i4, this.c - i4 - 1);
-              paramInt1 = i2;
-              if (i2 < 0) {
-                break;
-              }
-              localasync_context._t104 = ((tlv_t104)localObject8);
-              i2 = localtlv_t174.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1);
-              paramInt1 = i2;
-              if (i2 < 0) {
-                break;
-              }
-              localasync_context._t174 = localtlv_t174;
-              a(paramArrayOfByte, i4, localtlv_t178, localtlv_t179, localtlv_t17d, localasync_context);
-              if (localtlv_t17e.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1) >= 0) {
-                localasync_context._devlock_info.VerifyReason = new String(localtlv_t17e.get_data());
-              }
-              if (localtlv_t402.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1) >= 0)
-              {
-                localasync_context._t402 = localtlv_t402;
-                if (((tlv_t403)localObject9).get_tlv(paramArrayOfByte, i4, this.c - i4 - 1) < 0) {
-                  break label6870;
-                }
-              }
-              for (localasync_context._t403 = ((tlv_t403)localObject9);; localasync_context._t403 = new tlv_t403())
-              {
-                c(paramArrayOfByte, i4, this.c - i4 - 1);
-                paramInt1 = i1;
-                break;
-                localasync_context._t402 = new tlv_t402();
-                break label6806;
-              }
-              c(paramArrayOfByte, i4, this.c - i4 - 1);
-              this.x.a(this.x.g);
-              paramInt1 = i1;
-              break;
-              i2 = localtlv_t161.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1);
-              paramInt1 = i2;
-              if (i2 < 0) {
-                break;
-              }
-              a(localtlv_t161);
-              c(paramArrayOfByte, i4, this.c - i4 - 1);
-              paramInt1 = i1;
-              break;
-              if (((tlv_t113)localObject14).get_tlv(paramArrayOfByte, i4, this.c - i4 - 1) >= 0)
-              {
-                this.x.f = ((tlv_t113)localObject14).get_uin();
-                this.x.a(this.x.g, Long.valueOf(this.x.f));
-              }
-              i2 = ((tlv_t104)localObject8).get_tlv(paramArrayOfByte, i4, this.c - i4 - 1);
-              paramInt1 = i2;
-              if (i2 < 0) {
-                break;
-              }
-              localasync_context._t104 = ((tlv_t104)localObject8);
-              i2 = localtlv_t402.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1);
-              paramInt1 = i2;
-              if (i2 < 0) {
-                break;
-              }
-              localasync_context._t402 = localtlv_t402;
-              i2 = ((tlv_t403)localObject9).get_tlv(paramArrayOfByte, i4, this.c - i4 - 1);
-              paramInt1 = i2;
-              if (i2 < 0) {
-                break;
-              }
-              localasync_context._t403 = ((tlv_t403)localObject9);
-              c(paramArrayOfByte, i4, this.c - i4 - 1);
-              paramInt1 = i1;
-              break;
-              i2 = ((tlv_t104)localObject8).get_tlv(paramArrayOfByte, i4, this.c - i4 - 1);
-              paramInt1 = i2;
-              if (i2 < 0) {
-                break;
-              }
-              localasync_context._t104 = ((tlv_t104)localObject8);
-              i2 = localtlv_t126.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1);
-              paramInt1 = i2;
-              if (i2 < 0) {
-                break;
-              }
-              localasync_context._t126 = localtlv_t126;
-              i2 = localtlv_t182.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1);
-              paramInt1 = i2;
-              if (i2 < 0) {
-                break;
-              }
-              localasync_context._smslogin_msgcnt = localtlv_t182.getMsgCnt();
-              localasync_context._smslogin_timelimit = localtlv_t182.getTimeLimit();
-              i2 = localtlv_t183.get_tlv(paramArrayOfByte, i4, this.c - i4 - 1);
-              paramInt1 = i2;
-              if (i2 < 0) {
-                break;
-              }
-              localasync_context._msalt = localtlv_t183.getMsalt();
-              paramInt1 = 0;
-              break;
-              i2 = ((tlv_t104)localObject8).get_tlv(paramArrayOfByte, i4, this.c - i4 - 1);
-              paramInt1 = i2;
-              if (i2 < 0) {
-                break;
-              }
-              localObject1 = new tlv_t52b();
-              i2 = ((tlv_t52b)localObject1).get_tlv(paramArrayOfByte, i4, this.c - i4 - 1);
-              paramInt1 = i2;
-              if (i2 < 0) {
-                break;
-              }
-              t.am = ((tlv_t104)localObject8).get_data();
-              localasync_context._smslogin_zone = ((tlv_t52b)localObject1).get_zone();
-              localasync_context._smslogin_hint_mobile = ((tlv_t52b)localObject1).get_mobile();
-              paramInt1 = 0;
-              break;
-              label7410:
-              localObject1 = Integer.valueOf(paramInt1);
-              break label963;
-              label7419:
-              new tlv_t508().get_tlv(paramArrayOfByte, i4, this.c - i4 - 1);
-              i1 = paramInt1;
-              if (!tlv_t508.doFetch) {
-                break label1013;
-              }
-              paramArrayOfByte = new ErrMsg();
-              i2 = new h(this.x, this.t, this.u, paramArrayOfByte).b(paramInt1);
-              i1 = paramInt1;
-              if (i2 == -1000) {
-                break label1013;
-              }
-              a(paramArrayOfByte);
-              i1 = i2;
-              break label1013;
             }
           }
         }
-        label4824:
-        localObject1 = null;
       }
-      label4169:
-      label4938:
-      label7508:
-      paramInt2 = 0;
     }
+    for (;;)
+    {
+      i3 = paramInt2;
+      paramInt1 = 0;
+      paramInt2 = i1;
+      i1 = i3;
+      break label8034;
+      label910:
+      i1 = ((tlv_t104)localObject19).get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
+      if (i1 >= 0)
+      {
+        ((async_context)localObject1)._t104 = ((tlv_t104)localObject19);
+        i1 = localtlv_t126.get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
+        if (i1 >= 0)
+        {
+          ((async_context)localObject1)._t126 = localtlv_t126;
+          i1 = localtlv_t182.get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
+          if (i1 >= 0)
+          {
+            ((async_context)localObject1)._smslogin_msgcnt = localtlv_t182.getMsgCnt();
+            ((async_context)localObject1)._smslogin_timelimit = localtlv_t182.getTimeLimit();
+            i1 = localtlv_t183.get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
+            if (i1 >= 0)
+            {
+              ((async_context)localObject1)._msalt = localtlv_t183.getMsalt();
+              break label892;
+              label1057:
+              if (((tlv_t113)localObject24).get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1) >= 0)
+              {
+                this.x.f = ((tlv_t113)localObject24).get_uin();
+                localObject2 = this.x;
+                ((t)localObject2).a(((t)localObject2).g, Long.valueOf(this.x.f));
+              }
+              i1 = ((tlv_t104)localObject19).get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
+              if (i1 >= 0)
+              {
+                do
+                {
+                  ((async_context)localObject1)._t104 = ((tlv_t104)localObject19);
+                  i1 = localtlv_t402.get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
+                } while (i1 < 0);
+                ((async_context)localObject1)._t402 = localtlv_t402;
+                i1 = ((tlv_t403)localObject11).get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
+                if (i1 >= 0)
+                {
+                  ((async_context)localObject1)._t403 = ((tlv_t403)localObject11);
+                  c(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
+                  break;
+                  label1226:
+                  i1 = localtlv_t161.get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
+                  if (i1 >= 0) {
+                    break label1267;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      label1267:
+      do
+      {
+        do
+        {
+          i3 = paramInt1;
+          i4 = paramInt2;
+          paramInt1 = i1;
+          paramInt2 = i3;
+          i1 = i4;
+          break label8034;
+          a(localtlv_t161);
+          c(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
+          break;
+          c(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
+          localObject2 = this.x;
+          ((t)localObject2).a(((t)localObject2).g);
+          break;
+          if (((tlv_t113)localObject24).get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1) >= 0)
+          {
+            this.x.f = ((tlv_t113)localObject24).get_uin();
+            localObject2 = this.x;
+            ((t)localObject2).a(((t)localObject2).g, Long.valueOf(this.x.f));
+          }
+          i1 = ((tlv_t104)localObject19).get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
+        } while (i1 < 0);
+        ((async_context)localObject1)._t104 = ((tlv_t104)localObject19);
+        i1 = localtlv_t174.get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
+      } while (i1 < 0);
+      label1291:
+      label1324:
+      ((async_context)localObject1)._t174 = localtlv_t174;
+      i1 = paramInt1;
+      a(paramArrayOfByte, paramInt1, localtlv_t178, localtlv_t179, localtlv_t17d, (async_context)localObject1);
+      if (localtlv_t17e.get_tlv(paramArrayOfByte, i1, this.c - i1 - 1) >= 0) {
+        ((async_context)localObject1)._devlock_info.VerifyReason = new String(localtlv_t17e.get_data());
+      }
+      localObject2 = localObject1;
+      if (localtlv_t402.get_tlv(paramArrayOfByte, i1, this.c - i1 - 1) >= 0) {
+        ((async_context)localObject2)._t402 = localtlv_t402;
+      } else {
+        ((async_context)localObject2)._t402 = new tlv_t402();
+      }
+      if (((tlv_t403)localObject11).get_tlv(paramArrayOfByte, i1, this.c - i1 - 1) >= 0) {
+        ((async_context)localObject2)._t403 = ((tlv_t403)localObject11);
+      } else {
+        ((async_context)localObject2)._t403 = new tlv_t403();
+      }
+      c(paramArrayOfByte, i1, this.c - i1 - 1);
+      break;
+      i1 = paramInt1;
+      localObject2 = new tlv_t(405);
+      i3 = ((tlv_t)localObject2).get_tlv(paramArrayOfByte, i1, this.c - i1 - 1);
+      if (i3 < 0)
+      {
+        i1 = i3;
+      }
+      else
+      {
+        WloginSigInfo._LHSig = ((tlv_t)localObject2).get_data();
+        c(paramArrayOfByte, i1, this.c - i1 - 1);
+        break;
+        i1 = paramInt1;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("cmd ");
+        ((StringBuilder)localObject2).append(Integer.toHexString(this.t));
+        ((StringBuilder)localObject2).append(" subcmd ");
+        ((StringBuilder)localObject2).append(Integer.toHexString(this.u));
+        ((StringBuilder)localObject2).append(" result ");
+        ((StringBuilder)localObject2).append(i2);
+        ((StringBuilder)localObject2).append(" seq error uin ");
+        ((StringBuilder)localObject2).append(this.x.f);
+        ((StringBuilder)localObject2).append(" appid ");
+        ((StringBuilder)localObject2).append(l4);
+        util.LOGI(((StringBuilder)localObject2).toString(), "");
+        c(paramArrayOfByte, i1, this.c - i1 - 1);
+        break;
+        i1 = paramInt1;
+        localt.e(localt.f, l4);
+        i3 = localtlv_t130.get_tlv(paramArrayOfByte, i1, this.c - i1 - 1);
+        if (i3 < 0)
+        {
+          i1 = i3;
+        }
+        else
+        {
+          this.x.a(localtlv_t130.get_time(), localtlv_t130.get_ipaddr());
+          c(paramArrayOfByte, i1, this.c - i1 - 1);
+          break;
+          i1 = paramInt1;
+          break label2387;
+          label1913:
+          localObject2 = localObject1;
+          i1 = paramInt1;
+          localObject4 = "";
+          i3 = ((tlv_t104)localObject19).get_tlv(paramArrayOfByte, i1, this.c - i1 - 1);
+          if (i3 >= 0) {
+            break label1971;
+          }
+        }
+      }
+      for (i1 = i3;; i1 = i3)
+      {
+        i3 = paramInt1;
+        i4 = paramInt2;
+        paramInt1 = i1;
+        paramInt2 = i3;
+        i1 = i4;
+        break label8034;
+        label1971:
+        ((async_context)localObject2)._t104 = ((tlv_t104)localObject19);
+        localObject5 = new tlv_t192();
+        if (((tlv_t192)localObject5).get_tlv(paramArrayOfByte, i1, this.c - i1 - 1) >= 0)
+        {
+          util.LOGI("return 0x192", (String)localObject4);
+          i1 = ((tlv_t546)localObject10).get_tlv(paramArrayOfByte, i1, this.c - i1 - 1);
+          if (i1 >= 0)
+          {
+            localObject6 = new StringBuilder();
+            ((StringBuilder)localObject6).append("get tlv546 success len:");
+            ((StringBuilder)localObject6).append(((tlv_t546)localObject10).get_data_len());
+            util.LOGI(((StringBuilder)localObject6).toString(), (String)localObject4);
+            ((async_context)localObject2)._t546 = ((tlv_t546)localObject10);
+          }
+          else
+          {
+            localObject6 = new StringBuilder();
+            ((StringBuilder)localObject6).append("get tlv546 fail ret:");
+            ((StringBuilder)localObject6).append(i1);
+            util.LOGI(((StringBuilder)localObject6).toString(), (String)localObject4);
+            ((async_context)localObject2)._t546 = new tlv_t546();
+          }
+          b.a(((tlv_t546)localObject10).get_data());
+          a(new ErrMsg(0, i2, "", "", ((tlv_t192)localObject5).getUrl()));
+          break label2540;
+        }
+        i3 = ((tlv_t105)localObject15).get_tlv(paramArrayOfByte, i1, this.c - i1 - 1);
+        if (i3 >= 0) {
+          break;
+        }
+      }
+      ((async_context)localObject2)._t105 = ((tlv_t105)localObject15);
+      if (((tlv_t165)localObject17).get_tlv(paramArrayOfByte, i1, this.c - i1 - 1) >= 0) {
+        ((async_context)localObject2)._t165 = ((tlv_t165)localObject17);
+      } else {
+        ((async_context)localObject2)._t165 = new tlv_t165();
+      }
+      i1 = ((tlv_t546)localObject10).get_tlv(paramArrayOfByte, i1, this.c - i1 - 1);
+      if (i1 >= 0)
+      {
+        localObject5 = new StringBuilder();
+        ((StringBuilder)localObject5).append("get tlv546 success len:");
+        ((StringBuilder)localObject5).append(((tlv_t546)localObject10).get_data_len());
+        util.LOGI(((StringBuilder)localObject5).toString(), (String)localObject4);
+        ((async_context)localObject2)._t546 = ((tlv_t546)localObject10);
+      }
+      else
+      {
+        localObject5 = new StringBuilder();
+        ((StringBuilder)localObject5).append("get tlv546 fail ret:");
+        ((StringBuilder)localObject5).append(i1);
+        util.LOGI(((StringBuilder)localObject5).toString(), (String)localObject4);
+        ((async_context)localObject2)._t546 = new tlv_t546();
+      }
+      b.a(((tlv_t546)localObject10).get_data());
+      a(null);
+      break;
+      label2387:
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("cmd ");
+      ((StringBuilder)localObject2).append(Integer.toHexString(this.t));
+      ((StringBuilder)localObject2).append(" subcmd ");
+      ((StringBuilder)localObject2).append(Integer.toHexString(this.u));
+      ((StringBuilder)localObject2).append(" result ");
+      ((StringBuilder)localObject2).append(i2);
+      ((StringBuilder)localObject2).append(" will clean sig for uin ");
+      ((StringBuilder)localObject2).append(this.x.f);
+      ((StringBuilder)localObject2).append(" appid ");
+      ((StringBuilder)localObject2).append(l4);
+      util.LOGI(((StringBuilder)localObject2).toString(), "");
+      localObject2 = this.x;
+      ((t)localObject2).e(((t)localObject2).f, l4);
+      c(paramArrayOfByte, i1, this.c - i1 - 1);
+      label2540:
+      i1 = paramInt1;
+      int i4 = paramInt2;
+      i3 = i2;
+      paramInt1 = i2;
+      paramInt2 = i1;
+      i1 = i4;
+      i2 = i3;
+      break label8034;
+      i3 = i2;
+      localObject17 = "";
+      localObject15 = localObject1;
+      if (paramInt2 == 1)
+      {
+        if (localt.b == null) {
+          return -1006;
+        }
+        if (localtlv_t150.get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1) >= 0) {
+          this.x.d = localtlv_t150;
+        }
+        if (localtlv_t161.get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1) >= 0) {
+          a(localtlv_t161);
+        }
+        i1 = ((tlv_t119)localObject4).get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1, this.x.b);
+      }
+      else
+      {
+        localObject10 = localObject4;
+        if (paramInt2 == 2)
+        {
+          if (localtlv_t183.get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1) >= 0) {
+            ((async_context)localObject15)._msalt = localtlv_t183.getMsalt();
+          }
+          if (f() == 3)
+          {
+            i1 = ((tlv_t113)localObject24).get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
+            if (i1 >= 0)
+            {
+              this.x.f = ((tlv_t113)localObject24).get_uin();
+              ((async_context)localObject15)._uin = this.x.f;
+              if (!((async_context)localObject15).ifQQLoginInQim(t.aA))
+              {
+                localObject2 = this.x;
+                ((t)localObject2).a(((t)localObject2).g, Long.valueOf(this.x.f));
+              }
+            }
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("flowid == 2 t113 = ");
+            ((StringBuilder)localObject2).append(i1);
+            util.LOGI(((StringBuilder)localObject2).toString(), String.valueOf(this.x.f));
+            if (((tlv_t104)localObject19).get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1) >= 0) {
+              ((async_context)localObject15)._t104 = ((tlv_t104)localObject19);
+            }
+          }
+          else
+          {
+            if (localtlv_t150.get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1) >= 0) {
+              this.x.d = localtlv_t150;
+            }
+            if (localtlv_t161.get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1) >= 0) {
+              a(localtlv_t161);
+            }
+            i1 = ((tlv_t119)localObject10).get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1, ((async_context)localObject15)._tgtgt_key);
+            label2954:
+            break label3113;
+          }
+        }
+        else
+        {
+          if ((paramInt2 == 3) || (paramInt2 == 7)) {
+            break label7846;
+          }
+          if (22 != this.u) {
+            break label3032;
+          }
+          i1 = ((tlv_t104)localObject19).get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1);
+          if (i1 >= 0) {}
+        }
+      }
+      label3032:
+      do
+      {
+        do
+        {
+          i2 = paramInt2;
+          paramInt2 = paramInt1;
+          paramInt1 = i1;
+          i1 = i2;
+          i2 = i3;
+          break label8034;
+          ((async_context)localObject15)._t104 = ((tlv_t104)localObject19);
+          i1 = paramInt1;
+          break;
+          if (localtlv_t150.get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1) >= 0) {
+            this.x.d = localtlv_t150;
+          }
+          if (localtlv_t161.get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1) >= 0) {
+            a(localtlv_t161);
+          }
+          i1 = ((tlv_t119)localObject10).get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1, ((async_context)localObject15)._tgtgt_key);
+          r.K = 0;
+          break label2954;
+        } while (i1 < 0);
+        localObject19 = ((tlv_t119)localObject4).get_data();
+        i5 = localObject19.length;
+        if (localtlv_t149.get_tlv((byte[])localObject19, 2, i5) > 0) {
+          a(localtlv_t149);
+        }
+        localObject4 = new tlv_t543();
+        i1 = ((tlv_t543)localObject4).get_tlv((byte[])localObject19, 2, i5);
+        ((async_context)localObject15).tlv543In119 = ((tlv_t543)localObject4);
+        if (localtlv_t130.get_tlv((byte[])localObject19, 2, i5) > 0) {
+          this.x.a(localtlv_t130.get_time(), localtlv_t130.get_ipaddr());
+        }
+        i4 = ((tlv_t113)localObject24).get_tlv((byte[])localObject19, 2, i5);
+        if (i4 >= 0)
+        {
+          this.x.f = ((tlv_t113)localObject24).get_uin();
+          ((async_context)localObject15)._uin = this.x.f;
+          if (!((async_context)localObject15).ifQQLoginInQim(t.aA))
+          {
+            localObject4 = this.x;
+            ((t)localObject4).a(((t)localObject4).g, Long.valueOf(this.x.f));
+          }
+        }
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("quickLoginByGateway retTlv543In119:");
+        ((StringBuilder)localObject4).append(i1);
+        ((StringBuilder)localObject4).append(" ,rett113=");
+        ((StringBuilder)localObject4).append(i4);
+        util.LOGI(((StringBuilder)localObject4).toString());
+        localObject4 = new tlv_t(1320);
+        if (((tlv_t)localObject4).get_tlv((byte[])localObject19, 2, i5) > 0)
+        {
+          localObject10 = new StringBuilder();
+          ((StringBuilder)localObject10).append("get tlv528 and put into context from seq ");
+          ((StringBuilder)localObject10).append(this.x.h);
+          localObject10 = ((StringBuilder)localObject10).toString();
+          localObject24 = new StringBuilder();
+          ((StringBuilder)localObject24).append((String)localObject17);
+          ((StringBuilder)localObject24).append(this.x.f);
+          util.LOGI((String)localObject10, ((StringBuilder)localObject24).toString());
+          ((async_context)localObject15).tlv528 = ((tlv_t)localObject4);
+        }
+        localObject4 = new tlv_t(1328);
+        if (((tlv_t)localObject4).get_tlv((byte[])localObject19, 2, i5) > 0)
+        {
+          localObject10 = new StringBuilder();
+          ((StringBuilder)localObject10).append("get tlv530 and put into context from seq ");
+          ((StringBuilder)localObject10).append(this.x.h);
+          localObject10 = ((StringBuilder)localObject10).toString();
+          localObject24 = new StringBuilder();
+          ((StringBuilder)localObject24).append((String)localObject17);
+          ((StringBuilder)localObject24).append(this.x.f);
+          util.LOGI((String)localObject10, ((StringBuilder)localObject24).toString());
+          ((async_context)localObject15).tlv530 = ((tlv_t)localObject4);
+        }
+        localtlv_t10d.get_tlv((byte[])localObject19, 2, i5);
+        localtlv_t10e.get_tlv((byte[])localObject19, 2, i5);
+        localtlv_t10a.get_tlv((byte[])localObject19, 2, i5);
+        localtlv_t114.get_tlv((byte[])localObject19, 2, i5);
+        i1 = ((tlv_t11a)localObject13).get_tlv((byte[])localObject19, 2, i5);
+      } while (i1 < 0);
+      label3113:
+      i1 = paramInt2;
+      if (localtlv_t118.get_tlv((byte[])localObject19, 2, i5) < 0)
+      {
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append((String)localObject17);
+        ((StringBuilder)localObject4).append(this.x.f);
+        util.LOGI("t118 get failed", ((StringBuilder)localObject4).toString());
+      }
+      if (((tlv_t103)localObject16).get_tlv((byte[])localObject19, 2, i5) >= 0) {
+        localObject4 = ((tlv_t103)localObject16).get_data();
+      } else {
+        localObject4 = null;
+      }
+      if (((tlv_t108)localObject5).get_tlv((byte[])localObject19, 2, i5) >= 0) {
+        util.set_ksid(t.u, ((tlv_t108)localObject5).get_data());
+      }
+      if (((tlv_t102)localObject14).get_tlv((byte[])localObject19, 2, i5) >= 0) {
+        localObject5 = ((tlv_t102)localObject14).get_data();
+      } else {
+        localObject5 = null;
+      }
+      if (((tlv_t10b)localObject6).get_tlv((byte[])localObject19, 2, i5) >= 0) {
+        localObject6 = ((tlv_t10b)localObject6).get_data();
+      } else {
+        localObject6 = null;
+      }
+      if (((tlv_t11c)localObject7).get_tlv((byte[])localObject19, 2, i5) >= 0) {
+        localObject7 = ((tlv_t11c)localObject7).get_data();
+      } else {
+        localObject7 = null;
+      }
+      if (((tlv_t120)localObject8).get_tlv((byte[])localObject19, 2, i5) >= 0) {
+        localObject8 = ((tlv_t120)localObject8).get_data();
+      } else {
+        localObject8 = null;
+      }
+      if (((tlv_t121)localObject9).get_tlv((byte[])localObject19, 2, i5) >= 0) {
+        localObject9 = ((tlv_t121)localObject9).get_data();
+      } else {
+        localObject9 = null;
+      }
+      localObject10 = localObject2;
+      if (((tlv_t125)localObject10).get_tlv((byte[])localObject19, 2, i5) >= 0)
+      {
+        localObject2 = ((tlv_t125)localObject10).get_openid();
+        localObject10 = ((tlv_t125)localObject10).get_openkey();
+      }
+      else
+      {
+        localObject2 = null;
+        localObject10 = null;
+      }
+      localObject14 = localObject12;
+      if (((tlv_t186)localObject14).get_tlv((byte[])localObject19, 2, i5) >= 0)
+      {
+        localObject12 = this.x.g;
+        if (util.check_uin_account((String)localObject12).booleanValue())
+        {
+          localObject12 = this.x;
+          localObject12 = ((t)localObject12).e(((t)localObject12).f);
+          if ((localObject12 != null) && (((String)localObject12).length() > 0))
+          {
+            localObject16 = this.x;
+            ((t)localObject16).a((String)localObject12, Long.valueOf(((t)localObject16).f), ((tlv_t186)localObject14).getPwdflag());
+          }
+        }
+        else
+        {
+          localObject16 = this.x;
+          ((t)localObject16).a((String)localObject12, Long.valueOf(((t)localObject16).f), ((tlv_t186)localObject14).getPwdflag());
+        }
+        localObject16 = new StringBuilder();
+        ((StringBuilder)localObject16).append("put t186: name: ");
+        ((StringBuilder)localObject16).append((String)localObject12);
+        ((StringBuilder)localObject16).append(" uin: ");
+        ((StringBuilder)localObject16).append(this.x.f);
+        ((StringBuilder)localObject16).append(" pwd=");
+        ((StringBuilder)localObject16).append(((tlv_t186)localObject14).getPwdflag());
+        util.LOGI(((StringBuilder)localObject16).toString(), (String)localObject17);
+      }
+      localObject12 = localObject2;
+      try
+      {
+        localObject2 = new tlv_t(1335);
+        i4 = ((tlv_t)localObject2).get_tlv((byte[])localObject19, 2, i5);
+        if (i4 >= 0)
+        {
+          localObject2 = ((tlv_t)localObject2).get_data();
+          if ((localObject2 != null) && (localObject2.length > 0))
+          {
+            localObject16 = new byte[localObject2.length - 2];
+            try
+            {
+              i6 = localObject2.length;
+              try
+              {
+                System.arraycopy(localObject2, 2, localObject16, 0, i6 - 2);
+                i6 = ProtocolDet.setLoginExtraData(t.u, (byte[])localObject16);
+                localObject24 = new StringBuilder();
+                ((StringBuilder)localObject24).append("0x537 resp:");
+                ((StringBuilder)localObject24).append(i4);
+                ((StringBuilder)localObject24).append(":");
+                ((StringBuilder)localObject24).append(localObject2.length);
+                ((StringBuilder)localObject24).append(" setRes:");
+                ((StringBuilder)localObject24).append(i6);
+                ((StringBuilder)localObject24).append(" tuple:");
+                ((StringBuilder)localObject24).append(localObject16.length);
+                localObject2 = ((StringBuilder)localObject24).toString();
+                localObject16 = new StringBuilder();
+                ((StringBuilder)localObject16).append((String)localObject17);
+                ((StringBuilder)localObject16).append(this.x.f);
+                util.LOGI((String)localObject2, ((StringBuilder)localObject16).toString());
+              }
+              catch (Throwable localThrowable1) {}
+            }
+            catch (Throwable localThrowable2) {}
+          }
+        }
+        localObject16 = localObject13;
+      }
+      catch (Throwable localThrowable3)
+      {
+        localObject16 = new StringBuilder();
+        ((StringBuilder)localObject16).append("tlv537 error ");
+        ((StringBuilder)localObject16).append(Log.getStackTraceString(localThrowable3));
+        util.LOGI(((StringBuilder)localObject16).toString(), (String)localObject17);
+      }
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("tgt len:");
+      ((StringBuilder)localObject3).append(util.buf_len(localtlv_t10a.get_data()));
+      ((StringBuilder)localObject3).append(" tgt_key len:");
+      ((StringBuilder)localObject3).append(util.buf_len(localtlv_t10d.get_data()));
+      ((StringBuilder)localObject3).append(" st len:");
+      ((StringBuilder)localObject3).append(util.buf_len(localtlv_t114.get_data()));
+      ((StringBuilder)localObject3).append(" st_key len:");
+      ((StringBuilder)localObject3).append(util.buf_len(localtlv_t10e.get_data()));
+      ((StringBuilder)localObject3).append(" stwx_web len:");
+      ((StringBuilder)localObject3).append(util.buf_len((byte[])localObject4));
+      ((StringBuilder)localObject3).append(" lskey len:");
+      ((StringBuilder)localObject3).append(util.buf_len((byte[])localObject7));
+      ((StringBuilder)localObject3).append(" skey len:");
+      ((StringBuilder)localObject3).append(util.buf_len((byte[])localObject8));
+      ((StringBuilder)localObject3).append(" sig64 len:");
+      ((StringBuilder)localObject3).append(util.buf_len((byte[])localObject9));
+      ((StringBuilder)localObject3).append(" openid len:");
+      ((StringBuilder)localObject3).append(util.buf_len((byte[])localObject12));
+      ((StringBuilder)localObject3).append(" openkey len:");
+      ((StringBuilder)localObject3).append(util.buf_len((byte[])localObject10));
+      ((StringBuilder)localObject3).append(" pwdflag: ");
+      ((StringBuilder)localObject3).append(((tlv_t186)localObject14).get_data_len());
+      ((StringBuilder)localObject3).append(" ");
+      ((StringBuilder)localObject3).append(((tlv_t186)localObject14).getPwdflag());
+      localObject3 = ((StringBuilder)localObject3).toString();
+      localObject13 = new StringBuilder();
+      ((StringBuilder)localObject13).append((String)localObject17);
+      ((StringBuilder)localObject13).append(this.x.f);
+      util.LOGI((String)localObject3, ((StringBuilder)localObject13).toString());
+      if (((tlv_t169)localObject23).get_tlv((byte[])localObject19, 2, i5) >= 0)
+      {
+        localObject3 = a((tlv_t169)localObject23);
+        if ((localObject3 != null) && (localObject3.length > 0)) {
+          this.x.j = new WFastLoginInfo((byte[])localObject3);
+        } else {
+          this.x.j = new WFastLoginInfo();
+        }
+      }
+      localObject23 = (byte[][])Array.newInstance(Byte.TYPE, new int[] { 3, 0 });
+      if (((tlv_t167)localObject22).get_tlv((byte[])localObject19, 2, i5) >= 0)
+      {
+        localObject23[0] = ((tlv_t167)localObject22).get_img_type();
+        localObject23[1] = ((tlv_t167)localObject22).get_img_format();
+        localObject23[2] = ((tlv_t167)localObject22).get_img_url();
+      }
+      localObject22 = (byte[][])Array.newInstance(Byte.TYPE, new int[] { 5, 0 });
+      i4 = 0;
+      while (i4 < 5)
+      {
+        localObject22[i4] = new byte[0];
+        i4 += 1;
+      }
+      i4 = localtlv_t10c.get_tlv((byte[])localObject19, 2, i5);
+      int i6 = ((tlv_t106)localObject20).get_tlv((byte[])localObject19, 2, i5);
+      if ((i4 >= 0) && (i6 >= 0))
+      {
+        localObject3 = localtlv_t10c.get_data();
+        localObject22[0] = ((byte[])b(((tlv_t106)localObject20).get_data(), (byte[])localObject3).clone());
+      }
+      if (((tlv_t16a)localObject21).get_tlv((byte[])localObject19, 2, i5) >= 0) {
+        localObject22[1] = ((tlv_t16a)localObject21).get_data();
+      }
+      localObject13 = new tlv_t(1329);
+      i4 = ((tlv_t)localObject13).get_tlv((byte[])localObject19, 2, i5);
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("retT531: ");
+      ((StringBuilder)localObject3).append(i4);
+      ((StringBuilder)localObject3).append(this.x.f);
+      util.LOGI(((StringBuilder)localObject3).toString());
+      if (i4 >= 0)
+      {
+        localObject20 = new tlv_t106();
+        localObject21 = new tlv_t10c();
+        localObject14 = new tlv_t16a();
+        localObject3 = new tlv_t113();
+        i4 = ((tlv_t)localObject20).get_tlv(((tlv_t)localObject13).get_data(), 2, ((tlv_t)localObject13).get_data_len());
+        i6 = ((tlv_t)localObject21).get_tlv(((tlv_t)localObject13).get_data(), 2, ((tlv_t)localObject13).get_data_len());
+        int i7 = ((tlv_t)localObject14).get_tlv(((tlv_t)localObject13).get_data(), 2, ((tlv_t)localObject13).get_data_len());
+        int i8 = ((tlv_t)localObject3).get_tlv(((tlv_t)localObject13).get_data(), 2, ((tlv_t)localObject13).get_data_len());
+        if ((i4 >= 0) && (i6 >= 0) && (i7 >= 0) && (i8 >= 0))
+        {
+          localObject13 = b(((tlv_t)localObject20).get_data(), ((tlv_t)localObject21).get_data());
+          localObject14 = ((tlv_t)localObject14).get_data();
+          l2 = util.buf_to_int32(((tlv_t)localObject3).get_data(), 0) & 0xFFFFFFFF;
+          ((async_context)localObject15).tlv113 = ((tlv_t)localObject3);
+          break label5326;
+        }
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("Get data from 0x531 failed: ");
+        ((StringBuilder)localObject3).append(i4);
+        ((StringBuilder)localObject3).append(";");
+        ((StringBuilder)localObject3).append(i6);
+        ((StringBuilder)localObject3).append(";");
+        ((StringBuilder)localObject3).append(i7);
+        ((StringBuilder)localObject3).append(";");
+        ((StringBuilder)localObject3).append(i8);
+        ((StringBuilder)localObject3).append(";");
+        ((StringBuilder)localObject3).append(this.x.f);
+        util.LOGI(((StringBuilder)localObject3).toString());
+      }
+      localObject13 = null;
+      long l2 = 0L;
+      localObject14 = null;
+      label5326:
+      if (((tlv_t403)localObject11).get_tlv((byte[])localObject19, 2, i5) >= 0) {
+        localObject22[4] = ((tlv_t403)localObject11).get_data();
+      }
+      if (((async_context)localObject15)._sec_guid_flag)
+      {
+        localObject22[2] = ((async_context)localObject15)._G;
+        localObject22[3] = ((async_context)localObject15)._dpwd;
+        localObject22[4] = ((async_context)localObject15)._t403.get_data();
+        ((async_context)localObject15)._sec_guid_flag = false;
+      }
+      localObject20 = (byte[][])Array.newInstance(Byte.TYPE, new int[] { 16, 0 });
+      i4 = 0;
+      while (i4 < 16)
+      {
+        localObject20[i4] = new byte[0];
+        i4 += 1;
+      }
+      if (localtlv_t136.get_tlv((byte[])localObject19, 2, i5) >= 0) {
+        localObject20[0] = localtlv_t136.get_data();
+      }
+      localObject3 = localObject12;
+      if (localtlv_t132.get_tlv((byte[])localObject19, 2, i5) >= 0)
+      {
+        localObject20[1] = localtlv_t132.get_access_token();
+        localObject3 = localtlv_t132.get_openid();
+      }
+      if (localtlv_t143.get_tlv((byte[])localObject19, 2, i5) >= 0) {
+        localObject20[2] = localtlv_t143.get_data();
+      }
+      if (localtlv_t305.get_tlv((byte[])localObject19, 2, i5) >= 0) {
+        localObject20[3] = localtlv_t305.get_data();
+      }
+      if (localtlv_t164.get_tlv((byte[])localObject19, 2, i5) >= 0) {
+        localObject20[4] = localtlv_t164.get_data();
+      }
+      if (localtlv_t171.get_tlv((byte[])localObject19, 2, i5) >= 0) {
+        localObject20[5] = localtlv_t171.get_data();
+      }
+      if (localtlv_t.get_tlv((byte[])localObject19, 2, i5) >= 0) {
+        localObject20[6] = localtlv_t.get_data();
+      }
+      if (localtlv_t16d.get_tlv((byte[])localObject19, 2, i5) >= 0) {
+        localObject20[7] = localtlv_t16d.get_data();
+      }
+      localObject11 = new tlv_t199();
+      if (((tlv_t199)localObject11).get_tlv((byte[])localObject19, 2, i5) >= 0)
+      {
+        localObject20[8] = ((tlv_t199)localObject11).getPayToken();
+        localObject3 = ((tlv_t199)localObject11).getOpenId();
+      }
+      localObject11 = new tlv_t200();
+      if (((tlv_t200)localObject11).get_tlv((byte[])localObject19, 2, i5) >= 0)
+      {
+        localObject20[9] = ((tlv_t200)localObject11).getPf();
+        localObject20[10] = ((tlv_t200)localObject11).getPfKey();
+      }
+      localObject11 = new tlv_t(515);
+      if (((tlv_t)localObject11).get_tlv((byte[])localObject19, 2, i5) >= 0)
+      {
+        localObject20[11] = ((tlv_t)localObject11).get_data();
+        util.LOGI("get DA2 in rsp", (String)localObject17);
+      }
+      else
+      {
+        util.LOGI("no DA2 in rsp", (String)localObject17);
+      }
+      localObject11 = new tlv_t(791);
+      if (((tlv_t)localObject11).get_tlv((byte[])localObject19, 2, i5) >= 0) {
+        WloginSigInfo._QRPUSHSig = ((tlv_t)localObject11).get_data();
+      } else {
+        WloginSigInfo._QRPUSHSig = new byte[0];
+      }
+      localObject11 = new tlv_t(307);
+      if (((tlv_t)localObject11).get_tlv((byte[])localObject19, 2, i5) >= 0)
+      {
+        localObject20[13] = ((tlv_t)localObject11).get_data();
+      }
+      else
+      {
+        localObject11 = new StringBuilder();
+        ((StringBuilder)localObject11).append((String)localObject17);
+        ((StringBuilder)localObject11).append(this.x.f);
+        util.LOGW("get t133 failed", ((StringBuilder)localObject11).toString());
+      }
+      localObject11 = new tlv_t(308);
+      if (((tlv_t)localObject11).get_tlv((byte[])localObject19, 2, i5) >= 0)
+      {
+        localObject20[14] = ((tlv_t)localObject11).get_data();
+      }
+      else
+      {
+        localObject11 = new StringBuilder();
+        ((StringBuilder)localObject11).append((String)localObject17);
+        ((StringBuilder)localObject11).append(this.x.f);
+        util.LOGW("get t134 failed", ((StringBuilder)localObject11).toString());
+      }
+      if (t.ac)
+      {
+        i4 = this.u;
+        if ((i4 == 9) || (i4 == 15) || (i4 == 20))
+        {
+          localObject11 = new tlv_t322();
+          ((tlv_t322)localObject11).get_tlv((byte[])localObject19, 2, i5);
+          localObject11 = ((tlv_t322)localObject11).get_data();
+          if ((localObject11 != null) && (localObject11.length > 0))
+          {
+            localObject20[15] = localObject11;
+            localObject11 = util.buf_to_string((byte[])localObject11);
+          }
+          else
+          {
+            localObject11 = "null";
+          }
+          localObject12 = new StringBuilder();
+          ((StringBuilder)localObject12).append("get t322, value=");
+          ((StringBuilder)localObject12).append((String)localObject11);
+          localObject11 = ((StringBuilder)localObject12).toString();
+          localObject12 = new StringBuilder();
+          ((StringBuilder)localObject12).append((String)localObject17);
+          ((StringBuilder)localObject12).append(this.x.f);
+          util.LOGI((String)localObject11, ((StringBuilder)localObject12).toString());
+        }
+      }
+      localObject11 = new StringBuilder();
+      ((StringBuilder)localObject11).append("encrypt_a1 len:");
+      ((StringBuilder)localObject11).append(util.buf_len(localObject22[0]));
+      ((StringBuilder)localObject11).append(" no_pic_sig len:");
+      ((StringBuilder)localObject11).append(util.buf_len(localObject22[1]));
+      ((StringBuilder)localObject11).append(" G len:");
+      ((StringBuilder)localObject11).append(util.buf_len(localObject22[2]));
+      ((StringBuilder)localObject11).append(" dpwd len:");
+      ((StringBuilder)localObject11).append(util.buf_len(localObject22[3]));
+      ((StringBuilder)localObject11).append(" randseed len:");
+      ((StringBuilder)localObject11).append(util.buf_len(localObject22[4]));
+      ((StringBuilder)localObject11).append(" vkey len:");
+      ((StringBuilder)localObject11).append(util.buf_len(localObject20[0]));
+      ((StringBuilder)localObject11).append(" openid len:");
+      ((StringBuilder)localObject11).append(util.buf_len((byte[])localObject3));
+      ((StringBuilder)localObject11).append(" access_token len:");
+      ((StringBuilder)localObject11).append(util.buf_len(localObject20[1]));
+      ((StringBuilder)localObject11).append(" d2 len:");
+      ((StringBuilder)localObject11).append(util.buf_len(localObject20[2]));
+      ((StringBuilder)localObject11).append(" d2_key len:");
+      ((StringBuilder)localObject11).append(util.buf_len(localObject20[3]));
+      ((StringBuilder)localObject11).append(" sid len:");
+      ((StringBuilder)localObject11).append(util.buf_len(localObject20[4]));
+      ((StringBuilder)localObject11).append(" aq_sig len:");
+      ((StringBuilder)localObject11).append(util.buf_len(localObject20[5]));
+      ((StringBuilder)localObject11).append(" pskey len:");
+      ((StringBuilder)localObject11).append(util.buf_len(localObject20[6]));
+      ((StringBuilder)localObject11).append(" super_key len:");
+      ((StringBuilder)localObject11).append(util.buf_len(localObject20[7]));
+      ((StringBuilder)localObject11).append(" paytoken len:");
+      ((StringBuilder)localObject11).append(util.buf_len(localObject20[8]));
+      ((StringBuilder)localObject11).append(" pf len:");
+      ((StringBuilder)localObject11).append(util.buf_len(localObject20[9]));
+      ((StringBuilder)localObject11).append(" pfkey len:");
+      ((StringBuilder)localObject11).append(util.buf_len(localObject20[10]));
+      ((StringBuilder)localObject11).append(" da2 len:");
+      ((StringBuilder)localObject11).append(util.buf_len(localObject20[11]));
+      ((StringBuilder)localObject11).append(" wt session ticket:");
+      ((StringBuilder)localObject11).append(util.buf_len(localObject20[13]));
+      ((StringBuilder)localObject11).append(" wt session ticket key:");
+      ((StringBuilder)localObject11).append(util.buf_len(localObject20[14]));
+      ((StringBuilder)localObject11).append(" device_token len:");
+      ((StringBuilder)localObject11).append(util.buf_len(localObject20[15]));
+      localObject11 = ((StringBuilder)localObject11).toString();
+      localObject12 = new StringBuilder();
+      ((StringBuilder)localObject12).append((String)localObject17);
+      ((StringBuilder)localObject12).append(this.x.f);
+      util.LOGI((String)localObject11, ((StringBuilder)localObject12).toString());
+      long l3;
+      if (localtlv_t11f.get_tlv((byte[])localObject19, 2, i5) >= 0) {
+        l3 = localtlv_t11f.get_tk_pri() & 0xFFFFFFFF;
+      } else {
+        l3 = 4294967295L;
+      }
+      localObject11 = new long[7];
+      long l1 = 2160000L;
+      i4 = 2;
+      for (;;)
+      {
+        i4 = ((tlv_t138)localObject18).get_tlv((byte[])localObject19, i4, i5);
+        if (i4 < 0) {
+          break;
+        }
+        if (((tlv_t138)localObject18).get_a2_chg_time() != 0) {
+          l1 = ((tlv_t138)localObject18).get_a2_chg_time();
+        }
+        if (((tlv_t138)localObject18).get_lskey_chg_time() != 0) {
+          localObject11[0] = ((tlv_t138)localObject18).get_lskey_chg_time();
+        } else {
+          localObject11[0] = 1641600L;
+        }
+        if (((tlv_t138)localObject18).get_skey_chg_time() != 0) {
+          localObject11[1] = ((tlv_t138)localObject18).get_skey_chg_time();
+        } else {
+          localObject11[1] = 86400L;
+        }
+        if (((tlv_t138)localObject18).get_vkey_chg_time() != 0) {
+          localObject11[2] = ((tlv_t138)localObject18).get_vkey_chg_time();
+        } else {
+          localObject11[2] = 1728000L;
+        }
+        if (((tlv_t138)localObject18).get_a8_chg_time() != 0) {
+          localObject11[3] = ((tlv_t138)localObject18).get_a8_chg_time();
+        } else {
+          localObject11[3] = 72000L;
+        }
+        if (((tlv_t138)localObject18).get_stweb_chg_time() != 0) {
+          localObject11[4] = ((tlv_t138)localObject18).get_stweb_chg_time();
+        } else {
+          localObject11[4] = 6000L;
+        }
+        if (((tlv_t138)localObject18).get_d2_chg_time() != 0) {
+          localObject11[5] = ((tlv_t138)localObject18).get_d2_chg_time();
+        } else {
+          localObject11[5] = 1728000L;
+        }
+        if (((tlv_t138)localObject18).get_sid_chg_time() != 0) {
+          localObject11[6] = ((tlv_t138)localObject18).get_sid_chg_time();
+        } else {
+          localObject11[6] = 1728000L;
+        }
+      }
+      localObject12 = new StringBuilder();
+      ((StringBuilder)localObject12).append("sappid:");
+      ((StringBuilder)localObject12).append(l4);
+      ((StringBuilder)localObject12).append(" appid:");
+      ((StringBuilder)localObject12).append(l5);
+      ((StringBuilder)localObject12).append(" app_pri:");
+      ((StringBuilder)localObject12).append(l3);
+      ((StringBuilder)localObject12).append(" login_bitmap:");
+      ((StringBuilder)localObject12).append(((async_context)localObject15)._login_bitmap);
+      ((StringBuilder)localObject12).append(" tk_valid:");
+      ((StringBuilder)localObject12).append(0L);
+      ((StringBuilder)localObject12).append(" a2_valid:");
+      ((StringBuilder)localObject12).append(l1);
+      ((StringBuilder)localObject12).append(" lskey_valid:");
+      ((StringBuilder)localObject12).append(localObject11[0]);
+      ((StringBuilder)localObject12).append(" skey_valid:");
+      ((StringBuilder)localObject12).append(localObject11[1]);
+      ((StringBuilder)localObject12).append(" vkey_valid:");
+      ((StringBuilder)localObject12).append(localObject11[2]);
+      ((StringBuilder)localObject12).append(" a8_valid:");
+      ((StringBuilder)localObject12).append(localObject11[3]);
+      ((StringBuilder)localObject12).append(" stweb_valid:");
+      ((StringBuilder)localObject12).append(localObject11[4]);
+      ((StringBuilder)localObject12).append(" d2_valid:");
+      ((StringBuilder)localObject12).append(localObject11[5]);
+      ((StringBuilder)localObject12).append(" sid_valid:");
+      ((StringBuilder)localObject12).append(localObject11[6]);
+      localObject12 = ((StringBuilder)localObject12).toString();
+      localObject18 = new StringBuilder();
+      ((StringBuilder)localObject18).append((String)localObject17);
+      ((StringBuilder)localObject18).append(this.x.f);
+      util.LOGI((String)localObject12, ((StringBuilder)localObject18).toString());
+      localObject12 = new WloginSimpleInfo();
+      ((WloginSimpleInfo)localObject12).setUin(this.x.f);
+      ((WloginSimpleInfo)localObject12).setFace(((tlv_t11a)localObject16).get_face());
+      ((WloginSimpleInfo)localObject12).setAge(((tlv_t11a)localObject16).get_age());
+      ((WloginSimpleInfo)localObject12).setGender(((tlv_t11a)localObject16).get_gender());
+      ((WloginSimpleInfo)localObject12).setNick(((tlv_t11a)localObject16).get_nick());
+      ((WloginSimpleInfo)localObject12).setReserveUinInfo((byte[][])localObject23);
+      ((WloginSimpleInfo)localObject12).setMainDisplayName(localtlv_t118.get_data());
+      this.x.aw = ((async_context)localObject15)._main_sigmap;
+      localObject16 = this.x;
+      i4 = ((t)localObject16).a(((t)localObject16).f, l4, (byte[][])localObject22, l5, l3, t.f(), t.f() + 0L, t.f() + l1, (WloginSimpleInfo)localObject12, localtlv_t10a.get_data(), localtlv_t10d.get_data(), localtlv_t114.get_data(), localtlv_t10e.get_data(), (byte[])localObject4, (byte[])localObject6, (byte[])localObject5, (byte[])localObject7, (byte[])localObject8, (byte[])localObject9, (byte[])localObject3, (byte[])localObject10, (byte[][])localObject20, (long[])localObject11, ((async_context)localObject15)._login_bitmap);
+      if (i4 != 0)
+      {
+        localObject3 = new ErrMsg();
+        ((ErrMsg)localObject3).setMessage(InternationMsg.a(InternationMsg.MSG_TYPE.MSG_2));
+        a((ErrMsg)localObject3);
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("put_siginfo fail,ret=");
+        ((StringBuilder)localObject3).append(i4);
+        localObject3 = ((StringBuilder)localObject3).toString();
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append((String)localObject17);
+        ((StringBuilder)localObject4).append(this.x.f);
+        util.LOGI((String)localObject3, ((StringBuilder)localObject4).toString());
+      }
+      for (paramInt2 = i4;; paramInt2 = i4)
+      {
+        i2 = paramInt1;
+        paramInt1 = paramInt2;
+        paramInt2 = i2;
+        i2 = i3;
+        break label8034;
+        if ((localObject13 == null) || (0L == l2)) {
+          break;
+        }
+        localObject3 = (byte[][])Array.newInstance(Byte.TYPE, new int[] { localObject22.length, 0 });
+        localObject3[0] = localObject13;
+        localObject3[1] = localObject14;
+        localObject4 = (byte[][])Array.newInstance(Byte.TYPE, new int[] { localObject20.length, 0 });
+        i4 = this.x.a(l2, 16L, (byte[][])localObject3, 16L, l3, t.f(), t.f() + 0L, t.f() + l1, (WloginSimpleInfo)localObject12, null, null, null, null, null, null, null, null, null, null, null, null, (byte[][])localObject4, (long[])localObject11, ((async_context)localObject15)._login_bitmap);
+        if (i4 == 0) {
+          break;
+        }
+        localObject3 = new ErrMsg();
+        ((ErrMsg)localObject3).setMessage(InternationMsg.a(InternationMsg.MSG_TYPE.MSG_2));
+        a((ErrMsg)localObject3);
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("put_siginfo fail ");
+        ((StringBuilder)localObject3).append(i4);
+        localObject3 = ((StringBuilder)localObject3).toString();
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append((String)localObject17);
+        ((StringBuilder)localObject4).append(l2);
+        util.LOGI((String)localObject3, ((StringBuilder)localObject4).toString());
+      }
+      i1 = 2;
+      for (;;)
+      {
+        i1 = localtlv_t11d.get_tlv((byte[])localObject19, i1, i5);
+        if (i1 < 0) {
+          break;
+        }
+        localObject3 = this.x;
+        ((t)localObject3).a(((t)localObject3).f, localtlv_t11d.get_appid(), t.f(), t.f() + 0L, localtlv_t11d.get_st(), localtlv_t11d.get_stkey());
+      }
+      i1 = paramInt1;
+      continue;
+      label7846:
+      i4 = paramInt2;
+      int i5 = this.c;
+      localObject3 = paramArrayOfByte;
+      i1 = paramInt1;
+      if (localtlv_t183.get_tlv((byte[])localObject3, i1, i5 - paramInt1) >= 0) {
+        ((async_context)localObject15)._msalt = localtlv_t183.getMsalt();
+      }
+      paramInt1 = ((tlv_t113)localObject24).get_tlv((byte[])localObject3, i1, this.c - i1);
+      if (paramInt1 >= 0)
+      {
+        this.x.f = ((tlv_t113)localObject24).get_uin();
+        localObject4 = this.x;
+        ((t)localObject4).a(((t)localObject4).g, Long.valueOf(this.x.f));
+      }
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("flowid == 3 || flowid == 7 t113 = ");
+      ((StringBuilder)localObject4).append(paramInt1);
+      util.LOGI(((StringBuilder)localObject4).toString(), String.valueOf(this.x.f));
+      paramInt1 = ((tlv_t104)localObject19).get_tlv((byte[])localObject3, i1, this.c - i1);
+      if (paramInt1 < 0)
+      {
+        paramInt2 = i1;
+        i1 = i4;
+        i2 = i3;
+        break label8034;
+      }
+      ((async_context)localObject15)._t104 = ((tlv_t104)localObject19);
+    }
+    label8034:
+    Object localObject3 = paramArrayOfByte;
+    paramArrayOfByte = new tlv_t543();
+    int i3 = paramArrayOfByte.get_tlv((byte[])localObject3, paramInt2, this.c - paramInt2 - 1);
+    ((async_context)localObject1)._t543 = paramArrayOfByte;
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("tlv543_ret:");
+    paramArrayOfByte.append(i3);
+    util.LOGI(paramArrayOfByte.toString(), "");
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("get_response_body cmd= 0x");
+    ((StringBuilder)localObject1).append(Integer.toHexString(this.t));
+    ((StringBuilder)localObject1).append(" subCmd= 0x");
+    ((StringBuilder)localObject1).append(Integer.toHexString(this.u));
+    ((StringBuilder)localObject1).append(" type:");
+    ((StringBuilder)localObject1).append(i2);
+    ((StringBuilder)localObject1).append(" ret:");
+    if (paramInt1 > 0)
+    {
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("0x");
+      paramArrayOfByte.append(Integer.toHexString(paramInt1));
+      paramArrayOfByte = paramArrayOfByte.toString();
+    }
+    else
+    {
+      paramArrayOfByte = Integer.valueOf(paramInt1);
+    }
+    ((StringBuilder)localObject1).append(paramArrayOfByte);
+    paramArrayOfByte = ((StringBuilder)localObject1).toString();
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("");
+    ((StringBuilder)localObject1).append(this.x.f);
+    util.LOGI(paramArrayOfByte, ((StringBuilder)localObject1).toString());
+    if (paramInt1 == 0)
+    {
+      a(null);
+      paramInt2 = paramInt1;
+    }
+    else
+    {
+      new tlv_t508().get_tlv((byte[])localObject3, paramInt2, this.c - paramInt2 - 1);
+      paramInt2 = paramInt1;
+      if (tlv_t508.doFetch)
+      {
+        paramArrayOfByte = new ErrMsg();
+        i2 = new h(this.x, this.t, this.u, paramArrayOfByte).b(paramInt1);
+        paramInt2 = paramInt1;
+        if (i2 != -1000)
+        {
+          a(paramArrayOfByte);
+          paramInt2 = i2;
+        }
+      }
+    }
+    if ((paramInt2 != 10) && (paramInt2 != 161) && (paramInt2 != 162) && (paramInt2 != 164) && (paramInt2 != 165) && (paramInt2 != 166) && (paramInt2 != 154))
+    {
+      paramInt1 = paramInt2;
+      if (paramInt2 >= 128)
+      {
+        paramInt1 = paramInt2;
+        if (paramInt2 > 143) {}
+      }
+    }
+    else
+    {
+      paramInt1 = -1000;
+    }
+    if ((i1 != 2) && (i1 != 6) && (i1 != 7)) {
+      a(i1);
+    }
+    return paramInt1;
   }
   
   public String d(boolean paramBoolean)
@@ -2294,1812 +2569,1937 @@ public class oicq_request
   public int e()
   {
     // Byte code:
-    //   0: new 459	java/lang/StringBuilder
+    //   0: new 468	java/lang/StringBuilder
     //   3: dup
-    //   4: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   7: aload_0
-    //   8: invokevirtual 814	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   11: invokevirtual 819	java/lang/Class:getName	()Ljava/lang/String;
-    //   14: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   17: ldc_w 1765
-    //   20: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   23: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   26: new 459	java/lang/StringBuilder
-    //   29: dup
-    //   30: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   33: ldc 110
-    //   35: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   38: aload_0
-    //   39: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   42: getfield 480	oicq/wlogin_sdk/request/t:f	J
-    //   45: invokevirtual 483	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   48: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   54: aload_0
-    //   55: invokevirtual 824	oicq/wlogin_sdk/request/oicq_request:c	()[B
-    //   58: astore 22
-    //   60: iconst_0
-    //   61: istore_3
-    //   62: iconst_0
-    //   63: istore_1
-    //   64: iconst_0
-    //   65: istore_2
-    //   66: aload_0
-    //   67: invokevirtual 1767	oicq/wlogin_sdk/request/oicq_request:d	()Ljava/net/Socket;
-    //   70: astore 15
-    //   72: iconst_0
-    //   73: istore 9
-    //   75: iconst_0
-    //   76: istore 8
-    //   78: iconst_0
-    //   79: istore 4
-    //   81: ldc 110
-    //   83: astore 16
-    //   85: ldc 110
-    //   87: astore 14
-    //   89: lconst_0
-    //   90: lstore 12
-    //   92: iload_2
-    //   93: bipush 10
-    //   95: if_icmpge +3397 -> 3492
-    //   98: iload_2
-    //   99: ifeq +9 -> 108
-    //   102: getstatic 395	oicq/wlogin_sdk/request/t:u	Landroid/content/Context;
-    //   105: invokestatic 1770	oicq/wlogin_sdk/tools/util:chg_retry_type	(Landroid/content/Context;)V
-    //   108: getstatic 395	oicq/wlogin_sdk/request/t:u	Landroid/content/Context;
-    //   111: invokestatic 1774	oicq/wlogin_sdk/tools/util:is_wap_retry	(Landroid/content/Context;)Z
-    //   114: istore 11
-    //   116: aload_0
-    //   117: aconst_null
-    //   118: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   121: iload_2
-    //   122: ifeq +27 -> 149
-    //   125: aload_0
-    //   126: getfield 156	oicq/wlogin_sdk/request/oicq_request:t	I
-    //   129: sipush 2066
-    //   132: if_icmpeq +17 -> 149
-    //   135: aload_0
-    //   136: iload_1
-    //   137: lload 12
-    //   139: iload 4
-    //   141: iload_2
-    //   142: iload 11
-    //   144: iload 8
-    //   146: invokespecial 1776	oicq/wlogin_sdk/request/oicq_request:a	(IJIIZZ)V
-    //   149: invokestatic 218	java/lang/System:currentTimeMillis	()J
-    //   152: lstore 12
-    //   154: iload 11
-    //   156: ifeq +1510 -> 1666
-    //   159: new 459	java/lang/StringBuilder
-    //   162: dup
-    //   163: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   166: ldc_w 1778
-    //   169: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   172: iload_2
-    //   173: invokevirtual 469	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   176: ldc_w 1780
-    //   179: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   182: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   185: new 459	java/lang/StringBuilder
-    //   188: dup
-    //   189: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   192: ldc 110
-    //   194: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   197: aload_0
-    //   198: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   201: getfield 480	oicq/wlogin_sdk/request/t:f	J
-    //   204: invokevirtual 483	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   207: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   210: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   213: aload_0
-    //   214: iload_2
-    //   215: iload 11
-    //   217: invokevirtual 1782	oicq/wlogin_sdk/request/oicq_request:a	(IZ)Ljava/lang/String;
-    //   220: astore 21
-    //   222: iload 8
-    //   224: istore 9
-    //   226: iload 8
-    //   228: istore 10
-    //   230: getstatic 395	oicq/wlogin_sdk/request/t:u	Landroid/content/Context;
-    //   233: invokestatic 1785	oicq/wlogin_sdk/tools/util:is_wap_proxy_retry	(Landroid/content/Context;)Z
-    //   236: istore 8
-    //   238: iload 8
-    //   240: ifeq +3243 -> 3483
-    //   243: iload 8
-    //   245: istore 9
-    //   247: iload 8
-    //   249: istore 10
-    //   251: invokestatic 1788	oicq/wlogin_sdk/tools/util:get_proxy_ip	()Ljava/lang/String;
-    //   254: astore 17
-    //   256: iload 8
-    //   258: istore 9
-    //   260: iload 8
-    //   262: istore 10
-    //   264: invokestatic 1791	oicq/wlogin_sdk/tools/util:get_proxy_port	()I
-    //   267: istore 5
-    //   269: aload 17
-    //   271: ifnull +25 -> 296
-    //   274: iload 8
-    //   276: istore 9
-    //   278: iload 8
-    //   280: istore 10
-    //   282: aload 17
-    //   284: invokevirtual 393	java/lang/String:length	()I
-    //   287: ifle +9 -> 296
-    //   290: iload 5
-    //   292: iconst_m1
-    //   293: if_icmpne +3205 -> 3498
-    //   296: iconst_0
-    //   297: istore 10
-    //   299: iconst_0
-    //   300: istore 8
-    //   302: iconst_0
-    //   303: istore 9
-    //   305: new 459	java/lang/StringBuilder
-    //   308: dup
-    //   309: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   312: ldc_w 1793
-    //   315: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   318: aload 17
-    //   320: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   323: ldc_w 1795
-    //   326: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   329: iload 5
-    //   331: invokevirtual 469	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   334: ldc_w 1797
-    //   337: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   340: iconst_0
-    //   341: invokevirtual 835	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   344: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   347: new 459	java/lang/StringBuilder
-    //   350: dup
-    //   351: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   354: ldc 110
-    //   356: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   359: aload_0
-    //   360: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   363: getfield 480	oicq/wlogin_sdk/request/t:f	J
-    //   366: invokevirtual 483	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   369: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   372: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   375: goto +3123 -> 3498
-    //   378: iload 8
-    //   380: ifeq +495 -> 875
-    //   383: iload 8
-    //   385: istore 9
-    //   387: iload 8
-    //   389: istore 10
-    //   391: new 1799	java/net/URL
-    //   394: dup
-    //   395: new 459	java/lang/StringBuilder
-    //   398: dup
-    //   399: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   402: ldc_w 1801
-    //   405: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   408: aload 17
-    //   410: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   413: ldc_w 1241
-    //   416: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   419: iload 5
-    //   421: invokevirtual 469	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   424: ldc_w 1803
-    //   427: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   430: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   433: invokespecial 1804	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   436: astore 19
-    //   438: iload_1
-    //   439: istore 5
-    //   441: aload 14
-    //   443: astore 17
-    //   445: aload 14
-    //   447: astore 18
-    //   449: new 459	java/lang/StringBuilder
-    //   452: dup
-    //   453: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   456: ldc_w 1806
-    //   459: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   462: iload 8
-    //   464: invokevirtual 835	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   467: ldc_w 1808
-    //   470: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   473: aload 19
-    //   475: invokevirtual 510	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   478: ldc_w 1810
-    //   481: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   484: aload 21
-    //   486: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   489: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   492: new 459	java/lang/StringBuilder
-    //   495: dup
-    //   496: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   499: ldc 110
-    //   501: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   504: aload_0
-    //   505: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   508: getfield 480	oicq/wlogin_sdk/request/t:f	J
-    //   511: invokevirtual 483	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   514: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   517: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   520: iload_1
-    //   521: istore 5
-    //   523: aload 14
-    //   525: astore 17
-    //   527: aload 14
-    //   529: astore 18
-    //   531: aload 19
-    //   533: invokevirtual 1814	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   536: checkcast 1816	java/net/HttpURLConnection
-    //   539: astore 19
-    //   541: iload_1
-    //   542: istore 5
-    //   544: aload 14
-    //   546: astore 17
-    //   548: aload 14
-    //   550: astore 18
-    //   552: aload 19
-    //   554: ldc_w 1818
-    //   557: invokevirtual 1821	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
-    //   560: iload 8
-    //   562: ifeq +24 -> 586
-    //   565: iload_1
-    //   566: istore 5
-    //   568: aload 14
-    //   570: astore 17
-    //   572: aload 14
-    //   574: astore 18
-    //   576: aload 19
-    //   578: ldc_w 1823
-    //   581: aload 21
-    //   583: invokevirtual 1826	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   586: iload_1
-    //   587: istore 5
-    //   589: aload 14
-    //   591: astore 17
-    //   593: aload 14
-    //   595: astore 18
-    //   597: aload 19
-    //   599: ldc_w 1828
-    //   602: ldc_w 1830
-    //   605: invokevirtual 1826	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   608: iload_1
-    //   609: istore 5
-    //   611: aload 14
-    //   613: astore 17
-    //   615: aload 14
-    //   617: astore 18
-    //   619: aload 19
-    //   621: ldc_w 1832
-    //   624: ldc_w 1834
-    //   627: invokevirtual 1826	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   630: iload_1
-    //   631: istore 5
-    //   633: aload 14
-    //   635: astore 17
-    //   637: aload 14
-    //   639: astore 18
-    //   641: aload 19
-    //   643: ldc_w 1836
-    //   646: aload 22
-    //   648: arraylength
-    //   649: invokestatic 1838	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   652: invokevirtual 1826	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   655: iload_1
-    //   656: istore 5
-    //   658: aload 14
-    //   660: astore 17
-    //   662: aload 14
-    //   664: astore 18
-    //   666: aload 19
+    //   4: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   7: astore 15
+    //   9: aload 15
+    //   11: aload_0
+    //   12: invokevirtual 814	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   15: invokevirtual 819	java/lang/Class:getName	()Ljava/lang/String;
+    //   18: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: pop
+    //   22: aload 15
+    //   24: ldc_w 1765
+    //   27: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: pop
+    //   31: aload 15
+    //   33: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   36: astore 15
+    //   38: new 468	java/lang/StringBuilder
+    //   41: dup
+    //   42: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   45: astore 16
+    //   47: aload 16
+    //   49: ldc 110
+    //   51: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: pop
+    //   55: aload 16
+    //   57: aload_0
+    //   58: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   61: getfield 489	oicq/wlogin_sdk/request/t:f	J
+    //   64: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   67: pop
+    //   68: aload 15
+    //   70: aload 16
+    //   72: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   75: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   78: aload_0
+    //   79: invokevirtual 824	oicq/wlogin_sdk/request/oicq_request:c	()[B
+    //   82: astore 21
+    //   84: aload_0
+    //   85: invokevirtual 1767	oicq/wlogin_sdk/request/oicq_request:d	()Ljava/net/Socket;
+    //   88: astore 17
+    //   90: lconst_0
+    //   91: lstore 8
+    //   93: ldc 110
+    //   95: astore 15
+    //   97: aload 15
+    //   99: astore 16
+    //   101: iconst_0
+    //   102: istore 13
+    //   104: iconst_0
+    //   105: istore_2
+    //   106: iconst_0
+    //   107: istore_3
+    //   108: iconst_0
+    //   109: istore 4
+    //   111: iconst_0
+    //   112: istore 12
+    //   114: iconst_0
+    //   115: istore_1
+    //   116: iload_3
+    //   117: bipush 10
+    //   119: if_icmpge +3260 -> 3379
+    //   122: iload_3
+    //   123: ifeq +9 -> 132
+    //   126: getstatic 395	oicq/wlogin_sdk/request/t:u	Landroid/content/Context;
+    //   129: invokestatic 1770	oicq/wlogin_sdk/tools/util:chg_retry_type	(Landroid/content/Context;)V
+    //   132: getstatic 395	oicq/wlogin_sdk/request/t:u	Landroid/content/Context;
+    //   135: invokestatic 1774	oicq/wlogin_sdk/tools/util:is_wap_retry	(Landroid/content/Context;)Z
+    //   138: istore 13
+    //   140: aload_0
+    //   141: aconst_null
+    //   142: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   145: iload_3
+    //   146: ifeq +30 -> 176
+    //   149: aload_0
+    //   150: getfield 156	oicq/wlogin_sdk/request/oicq_request:t	I
+    //   153: sipush 2066
+    //   156: if_icmpeq +20 -> 176
+    //   159: aload_0
+    //   160: iload_2
+    //   161: lload 8
+    //   163: iload 4
+    //   165: iload_3
+    //   166: iload 13
+    //   168: iload 12
+    //   170: invokespecial 1776	oicq/wlogin_sdk/request/oicq_request:a	(IJIIZZ)V
+    //   173: goto +3 -> 176
+    //   176: invokestatic 218	java/lang/System:currentTimeMillis	()J
+    //   179: lstore 8
+    //   181: iload 13
+    //   183: ifeq +1376 -> 1559
+    //   186: new 468	java/lang/StringBuilder
+    //   189: dup
+    //   190: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   193: astore 18
+    //   195: aload 18
+    //   197: ldc_w 1778
+    //   200: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   203: pop
+    //   204: iload_3
+    //   205: istore 6
+    //   207: aload 18
+    //   209: iload 6
+    //   211: invokevirtual 478	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   214: pop
+    //   215: aload 18
+    //   217: ldc_w 1780
+    //   220: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   223: pop
+    //   224: aload 18
+    //   226: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   229: astore 18
+    //   231: new 468	java/lang/StringBuilder
+    //   234: dup
+    //   235: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   238: astore 19
+    //   240: aload 19
+    //   242: ldc 110
+    //   244: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   247: pop
+    //   248: aload 19
+    //   250: aload_0
+    //   251: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   254: getfield 489	oicq/wlogin_sdk/request/t:f	J
+    //   257: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   260: pop
+    //   261: aload 18
+    //   263: aload 19
+    //   265: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   268: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   271: aload_0
+    //   272: iload 6
+    //   274: iload 13
+    //   276: invokevirtual 1782	oicq/wlogin_sdk/request/oicq_request:a	(IZ)Ljava/lang/String;
+    //   279: astore 19
+    //   281: getstatic 395	oicq/wlogin_sdk/request/t:u	Landroid/content/Context;
+    //   284: invokestatic 1785	oicq/wlogin_sdk/tools/util:is_wap_proxy_retry	(Landroid/content/Context;)Z
+    //   287: istore 14
+    //   289: iload 14
+    //   291: ifeq +224 -> 515
+    //   294: invokestatic 1788	oicq/wlogin_sdk/tools/util:get_proxy_ip	()Ljava/lang/String;
+    //   297: astore 18
+    //   299: invokestatic 1791	oicq/wlogin_sdk/tools/util:get_proxy_port	()I
+    //   302: istore 5
+    //   304: aload 18
+    //   306: ifnull +49 -> 355
+    //   309: aload 18
+    //   311: invokevirtual 393	java/lang/String:length	()I
+    //   314: istore 7
+    //   316: iload 7
+    //   318: ifle +37 -> 355
+    //   321: iload 5
+    //   323: iconst_m1
+    //   324: if_icmpne +6 -> 330
+    //   327: goto +28 -> 355
+    //   330: iload 14
+    //   332: istore 12
+    //   334: goto +191 -> 525
+    //   337: astore 18
+    //   339: iload 14
+    //   341: istore 12
+    //   343: goto +1092 -> 1435
+    //   346: astore 18
+    //   348: iload 14
+    //   350: istore 12
+    //   352: goto +1148 -> 1500
+    //   355: new 468	java/lang/StringBuilder
+    //   358: dup
+    //   359: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   362: astore 20
+    //   364: aload 20
+    //   366: ldc_w 1793
+    //   369: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   372: pop
+    //   373: aload 20
+    //   375: aload 18
+    //   377: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   380: pop
+    //   381: aload 20
+    //   383: ldc_w 1795
+    //   386: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   389: pop
+    //   390: aload 20
+    //   392: iload 5
+    //   394: invokevirtual 478	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   397: pop
+    //   398: aload 20
+    //   400: ldc_w 1797
+    //   403: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   406: pop
+    //   407: aload 20
+    //   409: iconst_0
+    //   410: invokevirtual 835	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   413: pop
+    //   414: aload 20
+    //   416: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   419: astore 20
+    //   421: new 468	java/lang/StringBuilder
+    //   424: dup
+    //   425: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   428: astore 22
+    //   430: aload 22
+    //   432: ldc 110
+    //   434: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   437: pop
+    //   438: aload_0
+    //   439: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   442: astore 23
+    //   444: aload 22
+    //   446: aload 23
+    //   448: getfield 489	oicq/wlogin_sdk/request/t:f	J
+    //   451: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   454: pop
+    //   455: aload 20
+    //   457: aload 22
+    //   459: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   462: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   465: iconst_0
+    //   466: istore 12
+    //   468: goto +57 -> 525
+    //   471: astore 18
+    //   473: goto +10 -> 483
+    //   476: astore 18
+    //   478: goto +13 -> 491
+    //   481: astore 18
+    //   483: iconst_0
+    //   484: istore 12
+    //   486: goto +949 -> 1435
+    //   489: astore 18
+    //   491: iconst_0
+    //   492: istore 12
+    //   494: goto +1006 -> 1500
+    //   497: astore 18
+    //   499: iload 14
+    //   501: istore 12
+    //   503: goto +932 -> 1435
+    //   506: astore 18
+    //   508: iload 14
+    //   510: istore 12
+    //   512: goto +988 -> 1500
+    //   515: aconst_null
+    //   516: astore 18
+    //   518: iconst_m1
+    //   519: istore 5
+    //   521: iload 14
+    //   523: istore 12
+    //   525: iload 12
+    //   527: ifeq +82 -> 609
+    //   530: new 468	java/lang/StringBuilder
+    //   533: dup
+    //   534: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   537: astore 20
+    //   539: aload 20
+    //   541: ldc_w 1799
+    //   544: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   547: pop
+    //   548: aload 20
+    //   550: aload 18
+    //   552: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   555: pop
+    //   556: aload 20
+    //   558: ldc_w 1366
+    //   561: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   564: pop
+    //   565: aload 20
+    //   567: iload 5
+    //   569: invokevirtual 478	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   572: pop
+    //   573: aload 20
+    //   575: ldc_w 1801
+    //   578: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   581: pop
+    //   582: new 1803	java/net/URL
+    //   585: dup
+    //   586: aload 20
+    //   588: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   591: invokespecial 1804	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   594: astore 18
+    //   596: goto +222 -> 818
+    //   599: astore 18
+    //   601: goto -98 -> 503
+    //   604: astore 18
+    //   606: goto -94 -> 512
+    //   609: aload_0
+    //   610: aload 19
+    //   612: iconst_0
+    //   613: aload_0
+    //   614: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   617: getfield 822	oicq/wlogin_sdk/request/t:l	I
+    //   620: i2l
+    //   621: invokestatic 1809	oicq/wlogin_sdk/request/a:a	(Ljava/lang/String;IJ)Ljava/net/InetSocketAddress;
+    //   624: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   627: aload_0
+    //   628: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   631: astore 18
+    //   633: aload 18
+    //   635: ifnull +130 -> 765
+    //   638: aload_0
+    //   639: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   642: invokevirtual 236	java/net/InetSocketAddress:getAddress	()Ljava/net/InetAddress;
+    //   645: invokevirtual 242	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   648: astore 18
+    //   650: aload 15
+    //   652: astore 20
+    //   654: aload 20
+    //   656: aload 18
+    //   658: invokevirtual 1813	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   661: istore 14
+    //   663: iload 14
+    //   665: ifne +41 -> 706
     //   668: aload_0
-    //   669: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   672: getfield 822	oicq/wlogin_sdk/request/t:l	I
-    //   675: invokevirtual 1841	java/net/HttpURLConnection:setConnectTimeout	(I)V
-    //   678: iload_1
-    //   679: istore 5
-    //   681: aload 14
-    //   683: astore 17
-    //   685: aload 14
-    //   687: astore 18
-    //   689: aload 19
-    //   691: aload_0
-    //   692: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   695: getfield 822	oicq/wlogin_sdk/request/t:l	I
-    //   698: invokevirtual 1844	java/net/HttpURLConnection:setReadTimeout	(I)V
-    //   701: iload_1
-    //   702: istore 5
-    //   704: aload 14
-    //   706: astore 17
-    //   708: aload 14
-    //   710: astore 18
-    //   712: aload 19
-    //   714: iconst_1
-    //   715: invokevirtual 1848	java/net/HttpURLConnection:setDoOutput	(Z)V
-    //   718: iload_1
-    //   719: istore 5
-    //   721: aload 14
-    //   723: astore 17
-    //   725: aload 14
-    //   727: astore 18
-    //   729: aload 19
-    //   731: iconst_1
-    //   732: invokevirtual 1851	java/net/HttpURLConnection:setDoInput	(Z)V
-    //   735: iload_1
-    //   736: istore 5
-    //   738: aload 14
-    //   740: astore 17
-    //   742: aload 14
-    //   744: astore 18
-    //   746: ldc_w 1853
-    //   749: new 459	java/lang/StringBuilder
-    //   752: dup
-    //   753: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   756: ldc 110
-    //   758: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   761: aload_0
-    //   762: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   765: getfield 480	oicq/wlogin_sdk/request/t:f	J
-    //   768: invokevirtual 483	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   771: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   774: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   777: iload_1
-    //   778: istore 5
-    //   780: aload 14
-    //   782: astore 17
-    //   784: aload 14
-    //   786: astore 18
-    //   788: aload 19
-    //   790: aload_0
-    //   791: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   794: getfield 822	oicq/wlogin_sdk/request/t:l	I
-    //   797: i2l
-    //   798: invokestatic 1858	oicq/wlogin_sdk/request/i:a	(Ljava/net/HttpURLConnection;J)Z
-    //   801: ifne +314 -> 1115
-    //   804: iload_1
-    //   805: istore 5
-    //   807: aload 14
-    //   809: astore 17
-    //   811: aload 14
-    //   813: astore 18
-    //   815: ldc_w 1860
-    //   818: new 459	java/lang/StringBuilder
+    //   669: aconst_null
+    //   670: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   673: aload 18
+    //   675: astore 15
+    //   677: goto +92 -> 769
+    //   680: astore 19
+    //   682: aload 18
+    //   684: astore 15
+    //   686: aload 19
+    //   688: astore 18
+    //   690: goto +67 -> 757
+    //   693: astore 19
+    //   695: aload 18
+    //   697: astore 15
+    //   699: aload 19
+    //   701: astore 18
+    //   703: goto -191 -> 512
+    //   706: new 468	java/lang/StringBuilder
+    //   709: dup
+    //   710: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   713: astore 18
+    //   715: aload 18
+    //   717: ldc_w 1815
+    //   720: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   723: pop
+    //   724: aload 18
+    //   726: aload 20
+    //   728: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   731: pop
+    //   732: new 535	java/lang/Exception
+    //   735: dup
+    //   736: aload 18
+    //   738: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   741: invokespecial 1816	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   744: athrow
+    //   745: astore 18
+    //   747: goto +10 -> 757
+    //   750: astore 18
+    //   752: goto +10 -> 762
+    //   755: astore 18
+    //   757: goto -254 -> 503
+    //   760: astore 18
+    //   762: goto -250 -> 512
+    //   765: aload 19
+    //   767: astore 18
+    //   769: new 468	java/lang/StringBuilder
+    //   772: dup
+    //   773: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   776: astore 20
+    //   778: aload 20
+    //   780: ldc_w 1799
+    //   783: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   786: pop
+    //   787: aload 20
+    //   789: aload 18
+    //   791: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   794: pop
+    //   795: aload 20
+    //   797: ldc_w 1801
+    //   800: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   803: pop
+    //   804: new 1803	java/net/URL
+    //   807: dup
+    //   808: aload 20
+    //   810: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   813: invokespecial 1804	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   816: astore 18
+    //   818: new 468	java/lang/StringBuilder
     //   821: dup
-    //   822: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   825: ldc 110
-    //   827: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   830: aload_0
-    //   831: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   834: getfield 480	oicq/wlogin_sdk/request/t:f	J
-    //   837: invokevirtual 483	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   840: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   843: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   846: iload_1
-    //   847: istore 5
-    //   849: sipush -1026
-    //   852: iload_1
-    //   853: if_icmpeq +8 -> 861
-    //   856: sipush -1000
-    //   859: istore 5
-    //   861: iload_2
-    //   862: iconst_1
-    //   863: iadd
-    //   864: istore_2
-    //   865: iload 5
-    //   867: istore_1
-    //   868: iload 11
-    //   870: istore 9
-    //   872: goto -780 -> 92
-    //   875: iload 8
-    //   877: istore 9
-    //   879: iload 8
-    //   881: istore 10
-    //   883: aload_0
-    //   884: aload 21
-    //   886: iconst_0
-    //   887: aload_0
-    //   888: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   891: getfield 822	oicq/wlogin_sdk/request/t:l	I
-    //   894: i2l
-    //   895: invokestatic 1865	oicq/wlogin_sdk/request/a:a	(Ljava/lang/String;IJ)Ljava/net/InetSocketAddress;
-    //   898: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   901: iload 8
-    //   903: istore 9
-    //   905: iload 8
-    //   907: istore 10
-    //   909: aload_0
-    //   910: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   913: ifnull +2563 -> 3476
-    //   916: iload 8
-    //   918: istore 9
-    //   920: iload 8
-    //   922: istore 10
-    //   924: aload_0
-    //   925: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   928: invokevirtual 274	java/net/InetSocketAddress:getAddress	()Ljava/net/InetAddress;
-    //   931: invokevirtual 280	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
-    //   934: astore 19
-    //   936: iload 8
-    //   938: istore 9
-    //   940: iload 8
-    //   942: istore 10
-    //   944: aload 14
-    //   946: aload 19
-    //   948: invokevirtual 1869	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   951: ifeq +90 -> 1041
-    //   954: iload 8
-    //   956: istore 9
-    //   958: iload 8
-    //   960: istore 10
-    //   962: new 535	java/lang/Exception
-    //   965: dup
-    //   966: new 459	java/lang/StringBuilder
-    //   969: dup
-    //   970: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   973: ldc_w 1871
-    //   976: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   979: aload 14
-    //   981: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   984: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   987: invokespecial 1872	java/lang/Exception:<init>	(Ljava/lang/String;)V
-    //   990: athrow
-    //   991: astore 17
-    //   993: iload 9
-    //   995: istore 8
-    //   997: new 459	java/lang/StringBuilder
-    //   1000: dup
-    //   1001: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   1004: ldc_w 1874
-    //   1007: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1010: aload 17
-    //   1012: invokevirtual 1875	java/net/ConnectException:toString	()Ljava/lang/String;
-    //   1015: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1018: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1021: ldc 110
-    //   1023: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1026: iload_2
-    //   1027: iconst_1
-    //   1028: iadd
-    //   1029: istore_2
-    //   1030: sipush -1026
-    //   1033: istore_1
-    //   1034: iload 11
-    //   1036: istore 9
-    //   1038: goto -946 -> 92
-    //   1041: iload_1
-    //   1042: istore 5
-    //   1044: aload 19
-    //   1046: astore 17
-    //   1048: aload 19
-    //   1050: astore 18
-    //   1052: aload_0
-    //   1053: aconst_null
-    //   1054: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   1057: aload 19
-    //   1059: astore 20
-    //   1061: aload 19
-    //   1063: astore 14
-    //   1065: iload_1
-    //   1066: istore 5
-    //   1068: aload 14
-    //   1070: astore 17
-    //   1072: aload 14
-    //   1074: astore 18
-    //   1076: new 1799	java/net/URL
-    //   1079: dup
-    //   1080: new 459	java/lang/StringBuilder
-    //   1083: dup
-    //   1084: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   1087: ldc_w 1801
-    //   1090: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1093: aload 20
-    //   1095: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1098: ldc_w 1803
-    //   1101: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1104: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1107: invokespecial 1804	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   1110: astore 19
-    //   1112: goto -674 -> 438
-    //   1115: iload_1
-    //   1116: istore 5
-    //   1118: aload 14
-    //   1120: astore 17
-    //   1122: aload 14
-    //   1124: astore 18
-    //   1126: ldc_w 1877
-    //   1129: new 459	java/lang/StringBuilder
-    //   1132: dup
-    //   1133: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   1136: ldc 110
-    //   1138: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1141: aload_0
-    //   1142: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   1145: getfield 480	oicq/wlogin_sdk/request/t:f	J
-    //   1148: invokevirtual 483	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1151: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1154: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1157: iload_1
-    //   1158: istore 5
-    //   1160: aload 14
-    //   1162: astore 17
-    //   1164: aload 14
-    //   1166: astore 18
-    //   1168: aload 19
-    //   1170: invokevirtual 1881	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
-    //   1173: astore 20
-    //   1175: iload_1
-    //   1176: istore 5
-    //   1178: aload 14
-    //   1180: astore 17
-    //   1182: aload 14
-    //   1184: astore 18
-    //   1186: aload 20
-    //   1188: aload 22
-    //   1190: iconst_0
-    //   1191: aload 22
-    //   1193: arraylength
-    //   1194: invokevirtual 1886	java/io/OutputStream:write	([BII)V
-    //   1197: iload_1
-    //   1198: istore 5
-    //   1200: aload 14
-    //   1202: astore 17
-    //   1204: aload 14
-    //   1206: astore 18
-    //   1208: aload 20
-    //   1210: invokevirtual 1889	java/io/OutputStream:flush	()V
-    //   1213: iload_1
-    //   1214: istore 5
-    //   1216: aload 14
-    //   1218: astore 17
-    //   1220: aload 14
-    //   1222: astore 18
-    //   1224: aload 19
-    //   1226: invokevirtual 1892	java/net/HttpURLConnection:getResponseCode	()I
-    //   1229: istore_1
-    //   1230: iload_1
-    //   1231: istore 5
-    //   1233: aload 14
-    //   1235: astore 17
-    //   1237: aload 14
-    //   1239: astore 18
-    //   1241: new 459	java/lang/StringBuilder
-    //   1244: dup
-    //   1245: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   1248: ldc_w 1894
-    //   1251: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1254: iload_1
-    //   1255: invokevirtual 469	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1258: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1261: new 459	java/lang/StringBuilder
-    //   1264: dup
-    //   1265: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   1268: ldc 110
-    //   1270: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1273: aload_0
-    //   1274: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   1277: getfield 480	oicq/wlogin_sdk/request/t:f	J
-    //   1280: invokevirtual 483	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1283: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1286: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1289: sipush 200
-    //   1292: iload_1
-    //   1293: if_icmpeq +54 -> 1347
-    //   1296: iload_1
-    //   1297: istore 5
-    //   1299: aload 14
-    //   1301: astore 17
-    //   1303: aload 14
-    //   1305: astore 18
-    //   1307: new 459	java/lang/StringBuilder
+    //   822: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   825: astore 20
+    //   827: aload 20
+    //   829: ldc_w 1818
+    //   832: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   835: pop
+    //   836: aload 20
+    //   838: iload 12
+    //   840: invokevirtual 835	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   843: pop
+    //   844: aload 20
+    //   846: ldc_w 1820
+    //   849: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   852: pop
+    //   853: aload 20
+    //   855: aload 18
+    //   857: invokevirtual 510	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   860: pop
+    //   861: aload 20
+    //   863: ldc_w 1822
+    //   866: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   869: pop
+    //   870: aload 20
+    //   872: aload 19
+    //   874: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   877: pop
+    //   878: aload 20
+    //   880: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   883: astore 20
+    //   885: new 468	java/lang/StringBuilder
+    //   888: dup
+    //   889: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   892: astore 22
+    //   894: aload 22
+    //   896: ldc 110
+    //   898: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   901: pop
+    //   902: aload 22
+    //   904: aload_0
+    //   905: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   908: getfield 489	oicq/wlogin_sdk/request/t:f	J
+    //   911: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   914: pop
+    //   915: aload 20
+    //   917: aload 22
+    //   919: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   922: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   925: aload 18
+    //   927: invokevirtual 1826	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   930: checkcast 1828	java/net/HttpURLConnection
+    //   933: astore 18
+    //   935: aload 18
+    //   937: ldc_w 1830
+    //   940: invokevirtual 1833	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   943: iload 12
+    //   945: ifeq +26 -> 971
+    //   948: aload 18
+    //   950: ldc_w 1835
+    //   953: aload 19
+    //   955: invokevirtual 1838	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   958: goto +13 -> 971
+    //   961: astore 18
+    //   963: goto -273 -> 690
+    //   966: astore 18
+    //   968: goto -265 -> 703
+    //   971: aload 18
+    //   973: ldc_w 1840
+    //   976: ldc_w 1842
+    //   979: invokevirtual 1838	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   982: aload 18
+    //   984: ldc_w 1844
+    //   987: ldc_w 1846
+    //   990: invokevirtual 1838	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   993: aload 18
+    //   995: ldc_w 1848
+    //   998: aload 21
+    //   1000: arraylength
+    //   1001: invokestatic 1850	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   1004: invokevirtual 1838	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1007: aload 18
+    //   1009: aload_0
+    //   1010: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   1013: getfield 822	oicq/wlogin_sdk/request/t:l	I
+    //   1016: invokevirtual 1853	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   1019: aload 18
+    //   1021: aload_0
+    //   1022: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   1025: getfield 822	oicq/wlogin_sdk/request/t:l	I
+    //   1028: invokevirtual 1856	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   1031: aload 18
+    //   1033: iconst_1
+    //   1034: invokevirtual 1860	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   1037: aload 18
+    //   1039: iconst_1
+    //   1040: invokevirtual 1863	java/net/HttpURLConnection:setDoInput	(Z)V
+    //   1043: new 468	java/lang/StringBuilder
+    //   1046: dup
+    //   1047: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   1050: astore 19
+    //   1052: aload 19
+    //   1054: ldc 110
+    //   1056: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1059: pop
+    //   1060: aload 19
+    //   1062: aload_0
+    //   1063: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   1066: getfield 489	oicq/wlogin_sdk/request/t:f	J
+    //   1069: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1072: pop
+    //   1073: ldc_w 1865
+    //   1076: aload 19
+    //   1078: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1081: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1084: aload 18
+    //   1086: aload_0
+    //   1087: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   1090: getfield 822	oicq/wlogin_sdk/request/t:l	I
+    //   1093: i2l
+    //   1094: invokestatic 1870	oicq/wlogin_sdk/request/i:a	(Ljava/net/HttpURLConnection;J)Z
+    //   1097: ifne +58 -> 1155
+    //   1100: new 468	java/lang/StringBuilder
+    //   1103: dup
+    //   1104: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   1107: astore 18
+    //   1109: aload 18
+    //   1111: ldc 110
+    //   1113: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1116: pop
+    //   1117: aload 18
+    //   1119: aload_0
+    //   1120: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   1123: getfield 489	oicq/wlogin_sdk/request/t:f	J
+    //   1126: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1129: pop
+    //   1130: ldc_w 1872
+    //   1133: aload 18
+    //   1135: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1138: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1141: sipush -1026
+    //   1144: iload_2
+    //   1145: if_icmpeq +2584 -> 3729
+    //   1148: sipush -1000
+    //   1151: istore_3
+    //   1152: goto +2579 -> 3731
+    //   1155: new 468	java/lang/StringBuilder
+    //   1158: dup
+    //   1159: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   1162: astore 19
+    //   1164: aload 19
+    //   1166: ldc 110
+    //   1168: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1171: pop
+    //   1172: aload 19
+    //   1174: aload_0
+    //   1175: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   1178: getfield 489	oicq/wlogin_sdk/request/t:f	J
+    //   1181: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1184: pop
+    //   1185: ldc_w 1874
+    //   1188: aload 19
+    //   1190: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1193: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1196: aload 18
+    //   1198: invokevirtual 1878	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   1201: astore 19
+    //   1203: aload 19
+    //   1205: aload 21
+    //   1207: iconst_0
+    //   1208: aload 21
+    //   1210: arraylength
+    //   1211: invokevirtual 1883	java/io/OutputStream:write	([BII)V
+    //   1214: aload 19
+    //   1216: invokevirtual 1886	java/io/OutputStream:flush	()V
+    //   1219: aload 18
+    //   1221: invokevirtual 1889	java/net/HttpURLConnection:getResponseCode	()I
+    //   1224: istore 5
+    //   1226: new 468	java/lang/StringBuilder
+    //   1229: dup
+    //   1230: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   1233: astore 19
+    //   1235: aload 19
+    //   1237: ldc_w 1891
+    //   1240: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1243: pop
+    //   1244: aload 19
+    //   1246: iload 5
+    //   1248: invokevirtual 478	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1251: pop
+    //   1252: aload 19
+    //   1254: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1257: astore 19
+    //   1259: new 468	java/lang/StringBuilder
+    //   1262: dup
+    //   1263: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   1266: astore 20
+    //   1268: aload 20
+    //   1270: ldc 110
+    //   1272: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1275: pop
+    //   1276: aload 20
+    //   1278: aload_0
+    //   1279: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   1282: getfield 489	oicq/wlogin_sdk/request/t:f	J
+    //   1285: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1288: pop
+    //   1289: aload 19
+    //   1291: aload 20
+    //   1293: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1296: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1299: sipush 200
+    //   1302: iload 5
+    //   1304: if_icmpeq +51 -> 1355
+    //   1307: new 468	java/lang/StringBuilder
     //   1310: dup
-    //   1311: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   1314: ldc_w 1896
-    //   1317: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1320: iload_1
-    //   1321: invokevirtual 469	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1324: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1327: ldc 110
-    //   1329: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1332: sipush -1000
-    //   1335: istore_1
-    //   1336: iload_2
-    //   1337: iconst_1
-    //   1338: iadd
-    //   1339: istore_2
-    //   1340: iload 11
-    //   1342: istore 9
-    //   1344: goto -1252 -> 92
-    //   1347: iload_1
-    //   1348: istore 5
-    //   1350: aload 14
-    //   1352: astore 17
-    //   1354: aload 14
-    //   1356: astore 18
-    //   1358: aload 19
-    //   1360: invokevirtual 1900	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   1363: astore 19
-    //   1365: aload 19
-    //   1367: astore 18
-    //   1369: aload 15
-    //   1371: astore 19
-    //   1373: aload 16
-    //   1375: astore 17
-    //   1377: aload 14
-    //   1379: astore 15
-    //   1381: aload 19
-    //   1383: astore 14
-    //   1385: aload 14
-    //   1387: astore 16
-    //   1389: iload_2
-    //   1390: istore_1
-    //   1391: ldc_w 1902
-    //   1394: new 459	java/lang/StringBuilder
-    //   1397: dup
-    //   1398: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   1401: ldc 110
-    //   1403: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1406: aload_0
-    //   1407: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   1410: getfield 480	oicq/wlogin_sdk/request/t:f	J
-    //   1413: invokevirtual 483	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1416: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1419: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1422: iconst_0
-    //   1423: istore 5
-    //   1425: iconst_0
-    //   1426: istore 6
-    //   1428: aload 14
-    //   1430: astore 16
-    //   1432: iload_2
-    //   1433: istore_1
-    //   1434: iload 6
-    //   1436: aload_0
-    //   1437: getfield 128	oicq/wlogin_sdk/request/oicq_request:f	I
-    //   1440: iconst_1
-    //   1441: iadd
-    //   1442: if_icmpge +36 -> 1478
-    //   1445: aload 14
-    //   1447: astore 16
-    //   1449: iload_2
-    //   1450: istore_1
-    //   1451: aload 18
-    //   1453: aload_0
-    //   1454: getfield 154	oicq/wlogin_sdk/request/oicq_request:s	[B
-    //   1457: iload 6
-    //   1459: aload_0
-    //   1460: getfield 128	oicq/wlogin_sdk/request/oicq_request:f	I
-    //   1463: iconst_1
-    //   1464: iadd
-    //   1465: iload 6
-    //   1467: isub
-    //   1468: invokevirtual 1907	java/io/InputStream:read	([BII)I
-    //   1471: istore 5
-    //   1473: iload 5
-    //   1475: ifge +1091 -> 2566
-    //   1478: iload 5
-    //   1480: ifge +1096 -> 2576
-    //   1483: aload 14
-    //   1485: astore 16
-    //   1487: iload_2
-    //   1488: istore_1
-    //   1489: new 459	java/lang/StringBuilder
-    //   1492: dup
-    //   1493: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   1496: ldc_w 1909
-    //   1499: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1502: iload 5
-    //   1504: invokevirtual 469	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1507: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1510: ldc 110
-    //   1512: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1515: sipush -1000
-    //   1518: istore 5
-    //   1520: iload_2
-    //   1521: iconst_1
-    //   1522: iadd
-    //   1523: istore_2
-    //   1524: aload 14
-    //   1526: astore 16
-    //   1528: iload 11
-    //   1530: ifne +42 -> 1572
-    //   1533: aload 14
-    //   1535: astore 16
-    //   1537: iload_2
-    //   1538: istore_1
-    //   1539: aload 14
-    //   1541: invokevirtual 1914	java/net/Socket:close	()V
-    //   1544: aload 14
-    //   1546: astore 16
+    //   1311: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   1314: astore 18
+    //   1316: aload 18
+    //   1318: ldc_w 1893
+    //   1321: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1324: pop
+    //   1325: aload 18
+    //   1327: iload 5
+    //   1329: invokevirtual 478	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1332: pop
+    //   1333: aload 18
+    //   1335: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1338: ldc 110
+    //   1340: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1343: iload 6
+    //   1345: iconst_1
+    //   1346: iadd
+    //   1347: istore_2
+    //   1348: sipush -1000
+    //   1351: istore_3
+    //   1352: goto +196 -> 1548
+    //   1355: aload 18
+    //   1357: invokevirtual 1897	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   1360: astore 18
+    //   1362: aload 17
+    //   1364: astore 19
+    //   1366: aload 18
+    //   1368: astore 17
+    //   1370: aload 15
+    //   1372: astore 18
+    //   1374: aload 19
+    //   1376: astore 15
+    //   1378: aload 16
+    //   1380: astore 19
+    //   1382: goto +1179 -> 2561
+    //   1385: astore 18
+    //   1387: iload 5
+    //   1389: istore_2
+    //   1390: goto +45 -> 1435
+    //   1393: astore 18
+    //   1395: goto +10 -> 1405
+    //   1398: astore 18
+    //   1400: goto +10 -> 1410
+    //   1403: astore 18
+    //   1405: goto +30 -> 1435
+    //   1408: astore 18
+    //   1410: goto +90 -> 1500
+    //   1413: astore 18
+    //   1415: goto +10 -> 1425
+    //   1418: astore 18
+    //   1420: goto +10 -> 1430
+    //   1423: astore 18
+    //   1425: goto +10 -> 1435
+    //   1428: astore 18
+    //   1430: goto +70 -> 1500
+    //   1433: astore 18
+    //   1435: new 468	java/lang/StringBuilder
+    //   1438: dup
+    //   1439: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   1442: astore 19
+    //   1444: aload 19
+    //   1446: ldc_w 1899
+    //   1449: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1452: pop
+    //   1453: aload 19
+    //   1455: aload 18
+    //   1457: invokevirtual 1900	java/lang/Exception:toString	()Ljava/lang/String;
+    //   1460: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1463: pop
+    //   1464: aload 19
+    //   1466: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1469: ldc 110
+    //   1471: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1474: sipush -1026
+    //   1477: iload_2
+    //   1478: if_icmpeq +10 -> 1488
+    //   1481: sipush -1000
+    //   1484: istore_3
+    //   1485: goto +5 -> 1490
+    //   1488: iload_2
+    //   1489: istore_3
+    //   1490: iload 6
+    //   1492: iconst_1
+    //   1493: iadd
+    //   1494: istore_2
+    //   1495: goto +53 -> 1548
+    //   1498: astore 18
+    //   1500: new 468	java/lang/StringBuilder
+    //   1503: dup
+    //   1504: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   1507: astore 19
+    //   1509: aload 19
+    //   1511: ldc_w 1902
+    //   1514: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1517: pop
+    //   1518: aload 19
+    //   1520: aload 18
+    //   1522: invokevirtual 1903	java/net/ConnectException:toString	()Ljava/lang/String;
+    //   1525: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1528: pop
+    //   1529: aload 19
+    //   1531: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1534: ldc 110
+    //   1536: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1539: iload 6
+    //   1541: iconst_1
+    //   1542: iadd
+    //   1543: istore_2
+    //   1544: sipush -1026
+    //   1547: istore_3
     //   1548: iload_2
-    //   1549: istore_1
-    //   1550: aload_0
-    //   1551: aconst_null
-    //   1552: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   1555: aconst_null
-    //   1556: astore 16
-    //   1558: aconst_null
-    //   1559: astore 14
-    //   1561: iload_2
-    //   1562: istore_1
-    //   1563: aload_0
-    //   1564: aconst_null
-    //   1565: invokevirtual 1916	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
-    //   1568: aload 14
-    //   1570: astore 16
-    //   1572: aload 15
-    //   1574: astore 14
-    //   1576: aload 16
-    //   1578: astore 15
-    //   1580: iload 5
-    //   1582: istore_1
-    //   1583: iload 11
-    //   1585: istore 9
-    //   1587: aload 17
-    //   1589: astore 16
-    //   1591: goto -1499 -> 92
-    //   1594: astore 18
-    //   1596: iload 10
-    //   1598: istore 8
-    //   1600: aload 14
-    //   1602: astore 17
-    //   1604: iload_1
-    //   1605: istore 5
-    //   1607: new 459	java/lang/StringBuilder
-    //   1610: dup
-    //   1611: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   1614: ldc_w 1918
-    //   1617: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1620: aload 18
-    //   1622: invokevirtual 1919	java/lang/Exception:toString	()Ljava/lang/String;
-    //   1625: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1628: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1631: ldc 110
-    //   1633: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1636: iload 5
-    //   1638: istore_1
-    //   1639: sipush -1026
-    //   1642: iload 5
-    //   1644: if_icmpeq +7 -> 1651
-    //   1647: sipush -1000
-    //   1650: istore_1
-    //   1651: iload_2
-    //   1652: iconst_1
-    //   1653: iadd
-    //   1654: istore_2
-    //   1655: aload 17
-    //   1657: astore 14
-    //   1659: iload 11
-    //   1661: istore 9
-    //   1663: goto -1571 -> 92
-    //   1666: new 459	java/lang/StringBuilder
-    //   1669: dup
-    //   1670: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   1673: ldc_w 1921
-    //   1676: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1679: iload_2
-    //   1680: invokevirtual 469	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1683: ldc_w 1780
-    //   1686: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1689: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1692: new 459	java/lang/StringBuilder
-    //   1695: dup
-    //   1696: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   1699: ldc 110
-    //   1701: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1704: aload_0
-    //   1705: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   1708: getfield 480	oicq/wlogin_sdk/request/t:f	J
-    //   1711: invokevirtual 483	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1714: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1717: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1720: aload 15
-    //   1722: ifnonnull +1751 -> 3473
-    //   1725: ldc 110
-    //   1727: astore 17
-    //   1729: iconst_1
-    //   1730: istore 4
-    //   1732: iconst_1
-    //   1733: istore 5
-    //   1735: aload_0
-    //   1736: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   1739: ifnonnull +98 -> 1837
-    //   1742: aload_0
-    //   1743: iload_2
-    //   1744: iload 11
-    //   1746: invokevirtual 1782	oicq/wlogin_sdk/request/oicq_request:a	(IZ)Ljava/lang/String;
-    //   1749: astore 17
-    //   1751: new 459	java/lang/StringBuilder
-    //   1754: dup
-    //   1755: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   1758: ldc_w 1923
-    //   1761: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1764: aload 17
-    //   1766: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1769: ldc_w 1925
-    //   1772: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1775: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1778: new 459	java/lang/StringBuilder
-    //   1781: dup
-    //   1782: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   1785: ldc 110
-    //   1787: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1790: aload_0
-    //   1791: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   1794: getfield 480	oicq/wlogin_sdk/request/t:f	J
-    //   1797: invokevirtual 483	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1800: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1803: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1806: aload_0
-    //   1807: aload_0
-    //   1808: iload 11
-    //   1810: invokevirtual 233	oicq/wlogin_sdk/request/oicq_request:e	(Z)I
-    //   1813: putfield 152	oicq/wlogin_sdk/request/oicq_request:r	I
-    //   1816: aload_0
-    //   1817: aload 17
-    //   1819: aload_0
-    //   1820: getfield 152	oicq/wlogin_sdk/request/oicq_request:r	I
-    //   1823: aload_0
-    //   1824: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   1827: getfield 822	oicq/wlogin_sdk/request/t:l	I
-    //   1830: i2l
-    //   1831: invokestatic 1865	oicq/wlogin_sdk/request/a:a	(Ljava/lang/String;IJ)Ljava/net/InetSocketAddress;
-    //   1834: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   1837: aload_0
-    //   1838: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   1841: ifnull +86 -> 1927
-    //   1844: aload_0
-    //   1845: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   1848: invokevirtual 274	java/net/InetSocketAddress:getAddress	()Ljava/net/InetAddress;
-    //   1851: ifnonnull +76 -> 1927
-    //   1854: aload_0
-    //   1855: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   1858: invokevirtual 274	java/net/InetSocketAddress:getAddress	()Ljava/net/InetAddress;
-    //   1861: ifnonnull +34 -> 1895
-    //   1864: ldc_w 1927
-    //   1867: new 459	java/lang/StringBuilder
-    //   1870: dup
-    //   1871: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   1874: ldc 110
-    //   1876: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1879: aload_0
-    //   1880: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   1883: getfield 480	oicq/wlogin_sdk/request/t:f	J
-    //   1886: invokevirtual 483	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1889: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1892: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1895: sipush -1007
-    //   1898: istore_1
-    //   1899: iload_2
-    //   1900: iconst_1
-    //   1901: iadd
-    //   1902: istore_2
-    //   1903: aload_0
-    //   1904: aconst_null
-    //   1905: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   1908: aconst_null
-    //   1909: astore 15
-    //   1911: aload_0
-    //   1912: aconst_null
-    //   1913: invokevirtual 1916	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
-    //   1916: iload 5
-    //   1918: istore 4
-    //   1920: iload 11
-    //   1922: istore 9
-    //   1924: goto -1832 -> 92
-    //   1927: aload_0
-    //   1928: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   1931: ifnonnull +168 -> 2099
-    //   1934: aload_0
-    //   1935: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   1938: ifnonnull +94 -> 2032
-    //   1941: new 459	java/lang/StringBuilder
-    //   1944: dup
-    //   1945: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   1948: ldc_w 1923
-    //   1951: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1954: aload 17
-    //   1956: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1959: ldc_w 1929
-    //   1962: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1965: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1968: new 459	java/lang/StringBuilder
-    //   1971: dup
-    //   1972: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   1975: ldc 110
-    //   1977: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1980: aload_0
-    //   1981: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   1984: getfield 480	oicq/wlogin_sdk/request/t:f	J
-    //   1987: invokevirtual 483	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1990: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1993: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1996: sipush -1007
-    //   1999: istore 4
-    //   2001: iload_2
-    //   2002: iconst_1
-    //   2003: iadd
-    //   2004: istore_2
-    //   2005: aload_0
-    //   2006: aconst_null
-    //   2007: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   2010: aconst_null
-    //   2011: astore 15
-    //   2013: aload_0
-    //   2014: aconst_null
-    //   2015: invokevirtual 1916	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
-    //   2018: iload 4
-    //   2020: istore_1
-    //   2021: iload 5
-    //   2023: istore 4
-    //   2025: iload 11
-    //   2027: istore 9
-    //   2029: goto -1937 -> 92
-    //   2032: new 459	java/lang/StringBuilder
-    //   2035: dup
-    //   2036: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   2039: ldc_w 1931
-    //   2042: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2045: aload 16
-    //   2047: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2050: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2053: new 459	java/lang/StringBuilder
-    //   2056: dup
-    //   2057: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   2060: ldc 110
-    //   2062: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2065: aload_0
-    //   2066: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   2069: getfield 480	oicq/wlogin_sdk/request/t:f	J
-    //   2072: invokevirtual 483	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2075: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2078: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2081: iload_1
-    //   2082: istore 4
-    //   2084: sipush -1026
-    //   2087: iload_1
-    //   2088: if_icmpeq -87 -> 2001
-    //   2091: sipush -1000
-    //   2094: istore 4
-    //   2096: goto -95 -> 2001
-    //   2099: aload_0
-    //   2100: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   2103: invokevirtual 274	java/net/InetSocketAddress:getAddress	()Ljava/net/InetAddress;
-    //   2106: invokevirtual 280	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
-    //   2109: astore 16
-    //   2111: new 459	java/lang/StringBuilder
-    //   2114: dup
-    //   2115: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   2118: ldc_w 1923
-    //   2121: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2124: aload 17
-    //   2126: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2129: ldc_w 1933
-    //   2132: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2135: aload_0
-    //   2136: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   2139: invokevirtual 1934	java/net/InetSocketAddress:toString	()Ljava/lang/String;
-    //   2142: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2145: ldc_w 1936
-    //   2148: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2151: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2154: new 459	java/lang/StringBuilder
-    //   2157: dup
-    //   2158: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   2161: ldc 110
-    //   2163: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2166: aload_0
-    //   2167: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   2170: getfield 480	oicq/wlogin_sdk/request/t:f	J
-    //   2173: invokevirtual 483	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2176: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2179: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2182: aload 15
-    //   2184: ifnonnull +1286 -> 3470
-    //   2187: new 459	java/lang/StringBuilder
-    //   2190: dup
-    //   2191: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   2194: ldc_w 1938
-    //   2197: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2200: aload_0
-    //   2201: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   2204: invokevirtual 510	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   2207: ldc_w 1925
-    //   2210: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2213: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2216: new 459	java/lang/StringBuilder
-    //   2219: dup
-    //   2220: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   2223: ldc 110
-    //   2225: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2228: aload_0
-    //   2229: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   2232: getfield 480	oicq/wlogin_sdk/request/t:f	J
-    //   2235: invokevirtual 483	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2238: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2241: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2244: new 1911	java/net/Socket
-    //   2247: dup
-    //   2248: invokespecial 1939	java/net/Socket:<init>	()V
-    //   2251: astore 15
-    //   2253: aload_0
-    //   2254: aload 15
-    //   2256: invokevirtual 1916	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
-    //   2259: aload 15
-    //   2261: aload_0
-    //   2262: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   2265: aload_0
-    //   2266: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   2269: getfield 822	oicq/wlogin_sdk/request/t:l	I
-    //   2272: invokevirtual 1943	java/net/Socket:connect	(Ljava/net/SocketAddress;I)V
-    //   2275: aload 15
-    //   2277: aload_0
-    //   2278: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   2281: getfield 822	oicq/wlogin_sdk/request/t:l	I
-    //   2284: invokevirtual 1946	java/net/Socket:setSoTimeout	(I)V
-    //   2287: aload 15
-    //   2289: aload_0
-    //   2290: getfield 154	oicq/wlogin_sdk/request/oicq_request:s	[B
-    //   2293: arraylength
-    //   2294: invokevirtual 1949	java/net/Socket:setReceiveBufferSize	(I)V
-    //   2297: new 459	java/lang/StringBuilder
-    //   2300: dup
-    //   2301: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   2304: ldc_w 1938
-    //   2307: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2310: aload_0
-    //   2311: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   2314: invokevirtual 510	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   2317: ldc_w 1951
-    //   2320: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2323: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2326: new 459	java/lang/StringBuilder
-    //   2329: dup
-    //   2330: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   2333: ldc 110
-    //   2335: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2338: aload_0
-    //   2339: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   2342: getfield 480	oicq/wlogin_sdk/request/t:f	J
-    //   2345: invokevirtual 483	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2348: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2351: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2354: ldc_w 1953
-    //   2357: new 459	java/lang/StringBuilder
-    //   2360: dup
-    //   2361: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   2364: ldc 110
-    //   2366: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2369: aload_0
-    //   2370: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   2373: getfield 480	oicq/wlogin_sdk/request/t:f	J
-    //   2376: invokevirtual 483	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2379: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2382: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2385: aload 15
-    //   2387: invokevirtual 1954	java/net/Socket:getOutputStream	()Ljava/io/OutputStream;
-    //   2390: astore 17
-    //   2392: aload 17
-    //   2394: aload 22
-    //   2396: iconst_0
-    //   2397: aload 22
-    //   2399: arraylength
-    //   2400: invokevirtual 1886	java/io/OutputStream:write	([BII)V
-    //   2403: aload 17
-    //   2405: invokevirtual 1889	java/io/OutputStream:flush	()V
-    //   2408: aload 15
-    //   2410: invokevirtual 1955	java/net/Socket:getInputStream	()Ljava/io/InputStream;
-    //   2413: astore 18
-    //   2415: aload 14
-    //   2417: astore 17
-    //   2419: aload 15
-    //   2421: astore 14
-    //   2423: aload 17
-    //   2425: astore 15
-    //   2427: aload 16
-    //   2429: astore 17
-    //   2431: goto -1046 -> 1385
-    //   2434: astore 15
-    //   2436: new 459	java/lang/StringBuilder
-    //   2439: dup
-    //   2440: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   2443: ldc_w 1957
-    //   2446: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2449: aload 15
-    //   2451: invokevirtual 1875	java/net/ConnectException:toString	()Ljava/lang/String;
-    //   2454: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2457: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2460: ldc 110
-    //   2462: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2465: sipush -1026
-    //   2468: istore_1
-    //   2469: iload_2
-    //   2470: iconst_1
-    //   2471: iadd
-    //   2472: istore_2
-    //   2473: aload_0
-    //   2474: aconst_null
-    //   2475: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   2478: aconst_null
-    //   2479: astore 15
-    //   2481: aload_0
-    //   2482: aconst_null
-    //   2483: invokevirtual 1916	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
-    //   2486: iload 11
-    //   2488: istore 9
-    //   2490: goto -2398 -> 92
-    //   2493: astore 15
-    //   2495: new 459	java/lang/StringBuilder
-    //   2498: dup
-    //   2499: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   2502: ldc_w 1959
-    //   2505: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2508: aload 15
-    //   2510: invokestatic 1349	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   2513: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2516: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2519: ldc 110
-    //   2521: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2524: iload_1
-    //   2525: istore 5
-    //   2527: sipush -1026
-    //   2530: iload_1
-    //   2531: if_icmpeq +8 -> 2539
-    //   2534: sipush -1000
-    //   2537: istore 5
-    //   2539: iload_2
-    //   2540: iconst_1
-    //   2541: iadd
-    //   2542: istore_2
-    //   2543: aload_0
-    //   2544: aconst_null
-    //   2545: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   2548: aconst_null
-    //   2549: astore 15
-    //   2551: aload_0
-    //   2552: aconst_null
-    //   2553: invokevirtual 1916	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
-    //   2556: iload 5
-    //   2558: istore_1
-    //   2559: iload 11
-    //   2561: istore 9
-    //   2563: goto -2471 -> 92
-    //   2566: iload 6
-    //   2568: iload 5
-    //   2570: iadd
-    //   2571: istore 6
-    //   2573: goto -1145 -> 1428
-    //   2576: aload 14
-    //   2578: astore 16
-    //   2580: iload_2
-    //   2581: istore_1
-    //   2582: aload_0
-    //   2583: aload_0
-    //   2584: getfield 154	oicq/wlogin_sdk/request/oicq_request:s	[B
-    //   2587: invokevirtual 1961	oicq/wlogin_sdk/request/oicq_request:b	([B)I
-    //   2590: istore 6
-    //   2592: iload 6
-    //   2594: istore_1
-    //   2595: aload 14
-    //   2597: astore 16
-    //   2599: iload_2
-    //   2600: istore_3
-    //   2601: iload_1
-    //   2602: aload_0
-    //   2603: getfield 128	oicq/wlogin_sdk/request/oicq_request:f	I
-    //   2606: iconst_1
-    //   2607: iadd
-    //   2608: if_icmpgt +107 -> 2715
-    //   2611: aload 14
-    //   2613: astore 16
-    //   2615: iload_2
-    //   2616: istore_3
-    //   2617: new 459	java/lang/StringBuilder
-    //   2620: dup
-    //   2621: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   2624: ldc_w 1963
-    //   2627: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2630: iload_1
-    //   2631: invokevirtual 469	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2634: ldc_w 1965
-    //   2637: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2640: aload_0
-    //   2641: getfield 128	oicq/wlogin_sdk/request/oicq_request:f	I
-    //   2644: invokevirtual 469	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2647: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2650: ldc 110
-    //   2652: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2655: sipush -1000
-    //   2658: istore 5
-    //   2660: iload_2
-    //   2661: iconst_1
-    //   2662: iadd
-    //   2663: istore_2
-    //   2664: aload 14
-    //   2666: astore 16
-    //   2668: iload 11
-    //   2670: ifne +840 -> 3510
-    //   2673: aload 14
-    //   2675: astore 16
-    //   2677: iload_2
-    //   2678: istore_3
-    //   2679: aload 14
-    //   2681: invokevirtual 1914	java/net/Socket:close	()V
-    //   2684: aload 14
-    //   2686: astore 16
-    //   2688: iload_2
-    //   2689: istore_3
-    //   2690: aload_0
-    //   2691: aconst_null
-    //   2692: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   2695: aconst_null
-    //   2696: astore 14
-    //   2698: aconst_null
-    //   2699: astore 16
-    //   2701: iload_2
-    //   2702: istore_3
-    //   2703: aload_0
-    //   2704: aconst_null
-    //   2705: invokevirtual 1916	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
-    //   2708: aload 14
-    //   2710: astore 16
-    //   2712: goto +798 -> 3510
-    //   2715: aload 14
-    //   2717: astore 16
-    //   2719: iload_2
-    //   2720: istore_3
-    //   2721: iload_1
-    //   2722: aload_0
-    //   2723: getfield 154	oicq/wlogin_sdk/request/oicq_request:s	[B
-    //   2726: arraylength
-    //   2727: if_icmplt +108 -> 2835
-    //   2730: aload 14
-    //   2732: astore 16
-    //   2734: iload_2
-    //   2735: istore_3
-    //   2736: new 459	java/lang/StringBuilder
-    //   2739: dup
-    //   2740: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   2743: ldc_w 1963
-    //   2746: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2749: iload_1
-    //   2750: invokevirtual 469	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2753: ldc_w 1967
-    //   2756: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2759: aload_0
-    //   2760: getfield 154	oicq/wlogin_sdk/request/oicq_request:s	[B
-    //   2763: arraylength
-    //   2764: invokevirtual 469	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2767: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2770: ldc 110
-    //   2772: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2775: sipush -1000
-    //   2778: istore 5
-    //   2780: iload_2
-    //   2781: iconst_1
-    //   2782: iadd
-    //   2783: istore_2
-    //   2784: aload 14
-    //   2786: astore 16
-    //   2788: iload 11
-    //   2790: ifne +744 -> 3534
-    //   2793: aload 14
-    //   2795: astore 16
-    //   2797: iload_2
-    //   2798: istore_3
-    //   2799: aload 14
-    //   2801: invokevirtual 1914	java/net/Socket:close	()V
-    //   2804: aload 14
-    //   2806: astore 16
-    //   2808: iload_2
-    //   2809: istore_3
-    //   2810: aload_0
-    //   2811: aconst_null
-    //   2812: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   2815: aconst_null
-    //   2816: astore 14
-    //   2818: aconst_null
-    //   2819: astore 16
-    //   2821: iload_2
-    //   2822: istore_3
-    //   2823: aload_0
-    //   2824: aconst_null
-    //   2825: invokevirtual 1916	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
-    //   2828: aload 14
-    //   2830: astore 16
-    //   2832: goto +702 -> 3534
-    //   2835: aload 14
-    //   2837: astore 16
-    //   2839: iload_2
-    //   2840: istore_3
-    //   2841: aload_0
-    //   2842: getfield 128	oicq/wlogin_sdk/request/oicq_request:f	I
-    //   2845: iconst_1
-    //   2846: iadd
-    //   2847: istore 7
-    //   2849: iload_1
-    //   2850: iload 7
-    //   2852: isub
-    //   2853: istore 6
-    //   2855: iload 6
-    //   2857: ifle +30 -> 2887
-    //   2860: aload 14
-    //   2862: astore 16
-    //   2864: iload_2
-    //   2865: istore_3
-    //   2866: aload 18
-    //   2868: aload_0
-    //   2869: getfield 154	oicq/wlogin_sdk/request/oicq_request:s	[B
-    //   2872: iload 7
-    //   2874: iload 6
-    //   2876: invokevirtual 1907	java/io/InputStream:read	([BII)I
-    //   2879: istore 5
-    //   2881: iload 5
-    //   2883: iconst_m1
-    //   2884: if_icmpne +122 -> 3006
-    //   2887: iload 5
-    //   2889: iconst_m1
-    //   2890: if_icmpne +133 -> 3023
-    //   2893: aload 14
-    //   2895: astore 16
-    //   2897: iload_2
-    //   2898: istore_3
-    //   2899: new 459	java/lang/StringBuilder
-    //   2902: dup
-    //   2903: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   2906: ldc_w 1969
-    //   2909: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2912: iload 5
-    //   2914: invokevirtual 469	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2917: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2920: ldc 110
-    //   2922: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2925: sipush -1000
-    //   2928: istore 5
-    //   2930: iload_2
-    //   2931: iconst_1
-    //   2932: iadd
-    //   2933: istore_2
-    //   2934: aload 14
-    //   2936: astore 16
-    //   2938: iload 11
-    //   2940: ifne +42 -> 2982
-    //   2943: aload 14
-    //   2945: astore 16
-    //   2947: iload_2
-    //   2948: istore_3
-    //   2949: aload 14
-    //   2951: invokevirtual 1914	java/net/Socket:close	()V
-    //   2954: aload 14
-    //   2956: astore 16
-    //   2958: iload_2
-    //   2959: istore_3
-    //   2960: aload_0
-    //   2961: aconst_null
-    //   2962: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   2965: aconst_null
-    //   2966: astore 16
-    //   2968: aconst_null
-    //   2969: astore 14
-    //   2971: iload_2
-    //   2972: istore_3
-    //   2973: aload_0
-    //   2974: aconst_null
-    //   2975: invokevirtual 1916	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
-    //   2978: aload 14
-    //   2980: astore 16
-    //   2982: aload 15
-    //   2984: astore 14
-    //   2986: iload_1
-    //   2987: istore_3
-    //   2988: aload 16
-    //   2990: astore 15
-    //   2992: iload 5
-    //   2994: istore_1
-    //   2995: iload 11
-    //   2997: istore 9
-    //   2999: aload 17
-    //   3001: astore 16
-    //   3003: goto -2911 -> 92
-    //   3006: iload 7
-    //   3008: iload 5
-    //   3010: iadd
-    //   3011: istore 7
-    //   3013: iload 6
-    //   3015: iload 5
-    //   3017: isub
-    //   3018: istore 6
-    //   3020: goto -165 -> 2855
-    //   3023: iload 5
-    //   3025: istore_3
-    //   3026: iload_1
-    //   3027: istore 5
-    //   3029: iload 11
-    //   3031: istore 9
-    //   3033: iload_3
-    //   3034: istore_1
-    //   3035: iload_2
-    //   3036: bipush 6
-    //   3038: if_icmplt +371 -> 3409
-    //   3041: iload_1
-    //   3042: istore_3
-    //   3043: sipush -1026
-    //   3046: iload_1
-    //   3047: if_icmpeq +7 -> 3054
-    //   3050: sipush -1000
-    //   3053: istore_3
-    //   3054: iload_3
-    //   3055: ifne +13 -> 3068
-    //   3058: aload_0
-    //   3059: aload_0
-    //   3060: getfield 154	oicq/wlogin_sdk/request/oicq_request:s	[B
-    //   3063: iload 5
-    //   3065: invokevirtual 864	oicq/wlogin_sdk/request/oicq_request:b	([BI)V
-    //   3068: iload_3
-    //   3069: ifne +171 -> 3240
-    //   3072: aload_0
-    //   3073: getfield 156	oicq/wlogin_sdk/request/oicq_request:t	I
-    //   3076: sipush 2066
-    //   3079: if_icmpeq +161 -> 3240
-    //   3082: new 202	oicq/wlogin_sdk/report/report_t3
-    //   3085: dup
-    //   3086: invokespecial 203	oicq/wlogin_sdk/report/report_t3:<init>	()V
-    //   3089: astore 14
-    //   3091: aload 14
-    //   3093: aload_0
-    //   3094: getfield 156	oicq/wlogin_sdk/request/oicq_request:t	I
-    //   3097: putfield 206	oicq/wlogin_sdk/report/report_t3:_cmd	I
-    //   3100: aload 14
-    //   3102: aload_0
-    //   3103: getfield 158	oicq/wlogin_sdk/request/oicq_request:u	I
-    //   3106: putfield 209	oicq/wlogin_sdk/report/report_t3:_sub	I
-    //   3109: aload 14
-    //   3111: iload_3
-    //   3112: putfield 212	oicq/wlogin_sdk/report/report_t3:_rst2	I
-    //   3115: aload 14
-    //   3117: invokestatic 218	java/lang/System:currentTimeMillis	()J
-    //   3120: lload 12
-    //   3122: lsub
-    //   3123: l2i
-    //   3124: putfield 221	oicq/wlogin_sdk/report/report_t3:_used	I
-    //   3127: aload 14
-    //   3129: iload_2
-    //   3130: putfield 224	oicq/wlogin_sdk/report/report_t3:_try	I
-    //   3133: aload 14
-    //   3135: getstatic 114	oicq/wlogin_sdk/request/oicq_request:J	Ljava/lang/String;
-    //   3138: putfield 227	oicq/wlogin_sdk/report/report_t3:_host	Ljava/lang/String;
-    //   3141: aload 14
-    //   3143: getfield 227	oicq/wlogin_sdk/report/report_t3:_host	Ljava/lang/String;
-    //   3146: ifnonnull +10 -> 3156
-    //   3149: aload 14
-    //   3151: ldc 110
-    //   3153: putfield 227	oicq/wlogin_sdk/report/report_t3:_host	Ljava/lang/String;
-    //   3156: aload_0
-    //   3157: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   3160: ifnonnull +254 -> 3414
-    //   3163: aload 14
-    //   3165: ldc 110
-    //   3167: putfield 230	oicq/wlogin_sdk/report/report_t3:_ip	Ljava/lang/String;
-    //   3170: aload 14
-    //   3172: aload_0
-    //   3173: getfield 152	oicq/wlogin_sdk/request/oicq_request:r	I
-    //   3176: putfield 236	oicq/wlogin_sdk/report/report_t3:_port	I
-    //   3179: aload 14
-    //   3181: iload 4
-    //   3183: putfield 239	oicq/wlogin_sdk/report/report_t3:_conn	I
-    //   3186: aload 14
-    //   3188: getstatic 243	oicq/wlogin_sdk/request/t:E	I
-    //   3191: putfield 246	oicq/wlogin_sdk/report/report_t3:_net	I
-    //   3194: aload 14
-    //   3196: ldc 110
-    //   3198: putfield 249	oicq/wlogin_sdk/report/report_t3:_str	Ljava/lang/String;
-    //   3201: aload 14
-    //   3203: aload 22
-    //   3205: arraylength
-    //   3206: putfield 252	oicq/wlogin_sdk/report/report_t3:_slen	I
-    //   3209: aload 14
-    //   3211: iload 5
-    //   3213: putfield 255	oicq/wlogin_sdk/report/report_t3:_rlen	I
-    //   3216: iload 9
-    //   3218: ifeq +223 -> 3441
-    //   3221: iload 8
-    //   3223: ifeq +209 -> 3432
-    //   3226: aload 14
-    //   3228: iconst_2
-    //   3229: putfield 258	oicq/wlogin_sdk/report/report_t3:_wap	I
-    //   3232: getstatic 262	oicq/wlogin_sdk/request/t:at	Loicq/wlogin_sdk/report/Reporter;
-    //   3235: aload 14
-    //   3237: invokevirtual 268	oicq/wlogin_sdk/report/Reporter:add_t3	(Loicq/wlogin_sdk/report/report_t3;)V
-    //   3240: new 459	java/lang/StringBuilder
-    //   3243: dup
-    //   3244: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   3247: aload_0
-    //   3248: invokevirtual 814	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   3251: invokevirtual 819	java/lang/Class:getName	()Ljava/lang/String;
-    //   3254: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3257: ldc_w 1971
-    //   3260: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3263: iload_3
-    //   3264: invokevirtual 469	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   3267: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3270: new 459	java/lang/StringBuilder
-    //   3273: dup
-    //   3274: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   3277: ldc 110
-    //   3279: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3282: aload_0
-    //   3283: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   3286: getfield 480	oicq/wlogin_sdk/request/t:f	J
-    //   3289: invokevirtual 483	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   3292: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3295: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   3298: iload_3
-    //   3299: ireturn
-    //   3300: astore 14
-    //   3302: iload_3
-    //   3303: istore_2
-    //   3304: iload_1
-    //   3305: istore_3
-    //   3306: iload_2
-    //   3307: istore_1
-    //   3308: new 459	java/lang/StringBuilder
-    //   3311: dup
-    //   3312: invokespecial 460	java/lang/StringBuilder:<init>	()V
-    //   3315: ldc_w 1973
-    //   3318: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3321: aload 14
-    //   3323: invokestatic 1349	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   3326: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3329: invokevirtual 478	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3332: ldc 110
-    //   3334: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   3337: sipush -1000
-    //   3340: istore 5
-    //   3342: iload_3
-    //   3343: iconst_1
-    //   3344: iadd
-    //   3345: istore_2
-    //   3346: aload 16
-    //   3348: astore 14
-    //   3350: iload 11
-    //   3352: ifne +29 -> 3381
-    //   3355: aload 16
-    //   3357: invokevirtual 1976	java/net/Socket:isConnected	()Z
-    //   3360: ifeq +8 -> 3368
-    //   3363: aload 16
-    //   3365: invokevirtual 1914	java/net/Socket:close	()V
-    //   3368: aload_0
-    //   3369: aconst_null
-    //   3370: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   1549: istore 5
+    //   1551: iload_3
+    //   1552: istore_2
+    //   1553: iload 5
+    //   1555: istore_3
+    //   1556: goto -1440 -> 116
+    //   1559: lload 8
+    //   1561: lstore 10
+    //   1563: iload_3
+    //   1564: istore 5
+    //   1566: new 468	java/lang/StringBuilder
+    //   1569: dup
+    //   1570: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   1573: astore 18
+    //   1575: aload 18
+    //   1577: ldc_w 1905
+    //   1580: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1583: pop
+    //   1584: aload 18
+    //   1586: iload 5
+    //   1588: invokevirtual 478	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1591: pop
+    //   1592: aload 18
+    //   1594: ldc_w 1780
+    //   1597: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1600: pop
+    //   1601: aload 18
+    //   1603: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1606: astore 18
+    //   1608: new 468	java/lang/StringBuilder
+    //   1611: dup
+    //   1612: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   1615: astore 19
+    //   1617: aload 19
+    //   1619: ldc 110
+    //   1621: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1624: pop
+    //   1625: aload 19
+    //   1627: aload_0
+    //   1628: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   1631: getfield 489	oicq/wlogin_sdk/request/t:f	J
+    //   1634: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1637: pop
+    //   1638: aload 18
+    //   1640: aload 19
+    //   1642: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1645: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1648: aload 17
+    //   1650: ifnonnull +587 -> 2237
+    //   1653: aload_0
+    //   1654: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   1657: ifnonnull +129 -> 1786
+    //   1660: aload_0
+    //   1661: iload 5
+    //   1663: iload 13
+    //   1665: invokevirtual 1782	oicq/wlogin_sdk/request/oicq_request:a	(IZ)Ljava/lang/String;
+    //   1668: astore 18
+    //   1670: new 468	java/lang/StringBuilder
+    //   1673: dup
+    //   1674: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   1677: astore 19
+    //   1679: aload 19
+    //   1681: ldc_w 1907
+    //   1684: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1687: pop
+    //   1688: aload 19
+    //   1690: aload 18
+    //   1692: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1695: pop
+    //   1696: aload 19
+    //   1698: ldc_w 1909
+    //   1701: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1704: pop
+    //   1705: aload 19
+    //   1707: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1710: astore 19
+    //   1712: new 468	java/lang/StringBuilder
+    //   1715: dup
+    //   1716: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   1719: astore 20
+    //   1721: aload 20
+    //   1723: ldc 110
+    //   1725: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1728: pop
+    //   1729: aload 20
+    //   1731: aload_0
+    //   1732: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   1735: getfield 489	oicq/wlogin_sdk/request/t:f	J
+    //   1738: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1741: pop
+    //   1742: aload 19
+    //   1744: aload 20
+    //   1746: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1749: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1752: aload_0
+    //   1753: aload_0
+    //   1754: iload 13
+    //   1756: invokevirtual 245	oicq/wlogin_sdk/request/oicq_request:e	(Z)I
+    //   1759: putfield 152	oicq/wlogin_sdk/request/oicq_request:r	I
+    //   1762: aload_0
+    //   1763: aload 18
+    //   1765: aload_0
+    //   1766: getfield 152	oicq/wlogin_sdk/request/oicq_request:r	I
+    //   1769: aload_0
+    //   1770: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   1773: getfield 822	oicq/wlogin_sdk/request/t:l	I
+    //   1776: i2l
+    //   1777: invokestatic 1809	oicq/wlogin_sdk/request/a:a	(Ljava/lang/String;IJ)Ljava/net/InetSocketAddress;
+    //   1780: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   1783: goto +7 -> 1790
+    //   1786: ldc 110
+    //   1788: astore 18
+    //   1790: iload 13
+    //   1792: istore 14
+    //   1794: aload_0
+    //   1795: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   1798: astore 19
+    //   1800: aload 19
+    //   1802: ifnull +98 -> 1900
+    //   1805: aload 19
+    //   1807: invokevirtual 236	java/net/InetSocketAddress:getAddress	()Ljava/net/InetAddress;
+    //   1810: ifnonnull +90 -> 1900
+    //   1813: aload_0
+    //   1814: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   1817: invokevirtual 236	java/net/InetSocketAddress:getAddress	()Ljava/net/InetAddress;
+    //   1820: ifnonnull +44 -> 1864
+    //   1823: new 468	java/lang/StringBuilder
+    //   1826: dup
+    //   1827: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   1830: astore 17
+    //   1832: aload 17
+    //   1834: ldc 110
+    //   1836: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1839: pop
+    //   1840: aload 17
+    //   1842: aload_0
+    //   1843: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   1846: getfield 489	oicq/wlogin_sdk/request/t:f	J
+    //   1849: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1852: pop
+    //   1853: ldc_w 1911
+    //   1856: aload 17
+    //   1858: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1861: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1864: iload 5
+    //   1866: iconst_1
+    //   1867: iadd
+    //   1868: istore_3
+    //   1869: aload_0
+    //   1870: aconst_null
+    //   1871: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   1874: aload_0
+    //   1875: aconst_null
+    //   1876: invokevirtual 1913	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   1879: iload 14
+    //   1881: istore 13
+    //   1883: lload 10
+    //   1885: lstore 8
+    //   1887: sipush -1007
+    //   1890: istore_2
+    //   1891: iconst_1
+    //   1892: istore 4
+    //   1894: aconst_null
+    //   1895: astore 17
+    //   1897: goto -1781 -> 116
+    //   1900: aload_0
+    //   1901: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   1904: astore 19
+    //   1906: aload 19
+    //   1908: ifnonnull +209 -> 2117
+    //   1911: aload 19
+    //   1913: ifnonnull +92 -> 2005
+    //   1916: new 468	java/lang/StringBuilder
+    //   1919: dup
+    //   1920: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   1923: astore 17
+    //   1925: aload 17
+    //   1927: ldc_w 1907
+    //   1930: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1933: pop
+    //   1934: aload 17
+    //   1936: aload 18
+    //   1938: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1941: pop
+    //   1942: aload 17
+    //   1944: ldc_w 1915
+    //   1947: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1950: pop
+    //   1951: aload 17
+    //   1953: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1956: astore 17
+    //   1958: new 468	java/lang/StringBuilder
+    //   1961: dup
+    //   1962: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   1965: astore 18
+    //   1967: aload 18
+    //   1969: ldc 110
+    //   1971: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1974: pop
+    //   1975: aload 18
+    //   1977: aload_0
+    //   1978: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   1981: getfield 489	oicq/wlogin_sdk/request/t:f	J
+    //   1984: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1987: pop
+    //   1988: aload 17
+    //   1990: aload 18
+    //   1992: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1995: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1998: sipush -1007
+    //   2001: istore_2
+    //   2002: goto +90 -> 2092
+    //   2005: new 468	java/lang/StringBuilder
+    //   2008: dup
+    //   2009: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   2012: astore 17
+    //   2014: aload 17
+    //   2016: ldc_w 1917
+    //   2019: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2022: pop
+    //   2023: aload 17
+    //   2025: aload 16
+    //   2027: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2030: pop
+    //   2031: aload 17
+    //   2033: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2036: astore 17
+    //   2038: new 468	java/lang/StringBuilder
+    //   2041: dup
+    //   2042: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   2045: astore 18
+    //   2047: aload 18
+    //   2049: ldc 110
+    //   2051: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2054: pop
+    //   2055: aload 18
+    //   2057: aload_0
+    //   2058: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   2061: getfield 489	oicq/wlogin_sdk/request/t:f	J
+    //   2064: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2067: pop
+    //   2068: aload 17
+    //   2070: aload 18
+    //   2072: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2075: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2078: sipush -1026
+    //   2081: iload_2
+    //   2082: if_icmpeq +10 -> 2092
+    //   2085: sipush -1000
+    //   2088: istore_2
+    //   2089: goto +3 -> 2092
+    //   2092: iload 5
+    //   2094: iconst_1
+    //   2095: iadd
+    //   2096: istore_3
+    //   2097: aload_0
+    //   2098: aconst_null
+    //   2099: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   2102: aload_0
+    //   2103: aconst_null
+    //   2104: invokevirtual 1913	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   2107: iload 14
+    //   2109: istore 13
+    //   2111: iconst_1
+    //   2112: istore 4
+    //   2114: goto +1192 -> 3306
+    //   2117: aload 19
+    //   2119: invokevirtual 236	java/net/InetSocketAddress:getAddress	()Ljava/net/InetAddress;
+    //   2122: invokevirtual 242	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   2125: astore 16
+    //   2127: new 468	java/lang/StringBuilder
+    //   2130: dup
+    //   2131: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   2134: astore 19
+    //   2136: aload 19
+    //   2138: ldc_w 1907
+    //   2141: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2144: pop
+    //   2145: aload 19
+    //   2147: aload 18
+    //   2149: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2152: pop
+    //   2153: aload 19
+    //   2155: ldc_w 1919
+    //   2158: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2161: pop
+    //   2162: aload 19
+    //   2164: aload_0
+    //   2165: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   2168: invokevirtual 1920	java/net/InetSocketAddress:toString	()Ljava/lang/String;
+    //   2171: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2174: pop
+    //   2175: aload 19
+    //   2177: ldc_w 1922
+    //   2180: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2183: pop
+    //   2184: aload 19
+    //   2186: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2189: astore 18
+    //   2191: new 468	java/lang/StringBuilder
+    //   2194: dup
+    //   2195: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   2198: astore 19
+    //   2200: aload 19
+    //   2202: ldc 110
+    //   2204: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2207: pop
+    //   2208: aload 19
+    //   2210: aload_0
+    //   2211: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   2214: getfield 489	oicq/wlogin_sdk/request/t:f	J
+    //   2217: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2220: pop
+    //   2221: aload 18
+    //   2223: aload 19
+    //   2225: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2228: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2231: iconst_1
+    //   2232: istore 4
+    //   2234: goto +3 -> 2237
+    //   2237: iload 13
+    //   2239: istore 14
+    //   2241: aload 17
+    //   2243: ifnonnull +1496 -> 3739
+    //   2246: new 468	java/lang/StringBuilder
+    //   2249: dup
+    //   2250: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   2253: astore 17
+    //   2255: aload 17
+    //   2257: ldc_w 1924
+    //   2260: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2263: pop
+    //   2264: aload 17
+    //   2266: aload_0
+    //   2267: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   2270: invokevirtual 510	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   2273: pop
+    //   2274: aload 17
+    //   2276: ldc_w 1909
+    //   2279: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2282: pop
+    //   2283: aload 17
+    //   2285: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2288: astore 17
+    //   2290: new 468	java/lang/StringBuilder
+    //   2293: dup
+    //   2294: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   2297: astore 18
+    //   2299: aload 18
+    //   2301: ldc 110
+    //   2303: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2306: pop
+    //   2307: aload 18
+    //   2309: aload_0
+    //   2310: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   2313: getfield 489	oicq/wlogin_sdk/request/t:f	J
+    //   2316: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2319: pop
+    //   2320: aload 17
+    //   2322: aload 18
+    //   2324: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2327: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2330: new 1926	java/net/Socket
+    //   2333: dup
+    //   2334: invokespecial 1927	java/net/Socket:<init>	()V
+    //   2337: astore 17
+    //   2339: aload_0
+    //   2340: aload 17
+    //   2342: invokevirtual 1913	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   2345: aload 17
+    //   2347: aload_0
+    //   2348: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   2351: aload_0
+    //   2352: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   2355: getfield 822	oicq/wlogin_sdk/request/t:l	I
+    //   2358: invokevirtual 1931	java/net/Socket:connect	(Ljava/net/SocketAddress;I)V
+    //   2361: aload 17
+    //   2363: aload_0
+    //   2364: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   2367: getfield 822	oicq/wlogin_sdk/request/t:l	I
+    //   2370: invokevirtual 1934	java/net/Socket:setSoTimeout	(I)V
+    //   2373: aload 17
+    //   2375: aload_0
+    //   2376: getfield 154	oicq/wlogin_sdk/request/oicq_request:s	[B
+    //   2379: arraylength
+    //   2380: invokevirtual 1937	java/net/Socket:setReceiveBufferSize	(I)V
+    //   2383: new 468	java/lang/StringBuilder
+    //   2386: dup
+    //   2387: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   2390: astore 18
+    //   2392: aload 18
+    //   2394: ldc_w 1924
+    //   2397: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2400: pop
+    //   2401: aload 18
+    //   2403: aload_0
+    //   2404: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   2407: invokevirtual 510	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   2410: pop
+    //   2411: aload 18
+    //   2413: ldc_w 1939
+    //   2416: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2419: pop
+    //   2420: aload 18
+    //   2422: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2425: astore 18
+    //   2427: new 468	java/lang/StringBuilder
+    //   2430: dup
+    //   2431: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   2434: astore 19
+    //   2436: aload 19
+    //   2438: ldc 110
+    //   2440: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2443: pop
+    //   2444: aload 19
+    //   2446: aload_0
+    //   2447: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   2450: getfield 489	oicq/wlogin_sdk/request/t:f	J
+    //   2453: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2456: pop
+    //   2457: aload 18
+    //   2459: aload 19
+    //   2461: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2464: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2467: goto +3 -> 2470
+    //   2470: new 468	java/lang/StringBuilder
+    //   2473: dup
+    //   2474: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   2477: astore 18
+    //   2479: aload 18
+    //   2481: ldc 110
+    //   2483: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2486: pop
+    //   2487: aload 18
+    //   2489: aload_0
+    //   2490: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   2493: getfield 489	oicq/wlogin_sdk/request/t:f	J
+    //   2496: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2499: pop
+    //   2500: ldc_w 1941
+    //   2503: aload 18
+    //   2505: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2508: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2511: aload 17
+    //   2513: invokevirtual 1942	java/net/Socket:getOutputStream	()Ljava/io/OutputStream;
+    //   2516: astore 18
+    //   2518: aload 18
+    //   2520: aload 21
+    //   2522: iconst_0
+    //   2523: aload 21
+    //   2525: arraylength
+    //   2526: invokevirtual 1883	java/io/OutputStream:write	([BII)V
+    //   2529: aload 18
+    //   2531: invokevirtual 1886	java/io/OutputStream:flush	()V
+    //   2534: aload 17
+    //   2536: invokevirtual 1943	java/net/Socket:getInputStream	()Ljava/io/InputStream;
+    //   2539: astore 18
+    //   2541: aload 16
+    //   2543: astore 19
+    //   2545: aload 18
+    //   2547: astore 16
+    //   2549: aload 15
+    //   2551: astore 18
+    //   2553: aload 17
+    //   2555: astore 15
+    //   2557: aload 16
+    //   2559: astore 17
+    //   2561: new 468	java/lang/StringBuilder
+    //   2564: dup
+    //   2565: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   2568: astore 16
+    //   2570: aload 16
+    //   2572: ldc 110
+    //   2574: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2577: pop
+    //   2578: aload 16
+    //   2580: aload_0
+    //   2581: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   2584: getfield 489	oicq/wlogin_sdk/request/t:f	J
+    //   2587: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2590: pop
+    //   2591: ldc_w 1945
+    //   2594: aload 16
+    //   2596: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2599: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2602: iconst_0
+    //   2603: istore_2
+    //   2604: iconst_0
+    //   2605: istore 5
+    //   2607: iload_2
+    //   2608: aload_0
+    //   2609: getfield 128	oicq/wlogin_sdk/request/oicq_request:f	I
+    //   2612: iconst_1
+    //   2613: iadd
+    //   2614: if_icmpge +31 -> 2645
+    //   2617: aload 17
+    //   2619: aload_0
+    //   2620: getfield 154	oicq/wlogin_sdk/request/oicq_request:s	[B
+    //   2623: iload_2
+    //   2624: aload_0
+    //   2625: getfield 128	oicq/wlogin_sdk/request/oicq_request:f	I
+    //   2628: iconst_1
+    //   2629: iadd
+    //   2630: iload_2
+    //   2631: isub
+    //   2632: invokevirtual 1950	java/io/InputStream:read	([BII)I
+    //   2635: istore 5
+    //   2637: iload 5
+    //   2639: ifge +1103 -> 3742
+    //   2642: goto +3 -> 2645
+    //   2645: iload 5
+    //   2647: ifge +107 -> 2754
+    //   2650: new 468	java/lang/StringBuilder
+    //   2653: dup
+    //   2654: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   2657: astore 16
+    //   2659: aload 16
+    //   2661: ldc_w 1952
+    //   2664: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2667: pop
+    //   2668: aload 16
+    //   2670: iload 5
+    //   2672: invokevirtual 478	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2675: pop
+    //   2676: aload 16
+    //   2678: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2681: ldc 110
+    //   2683: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2686: iload_3
+    //   2687: iconst_1
+    //   2688: iadd
+    //   2689: istore_2
+    //   2690: iload_2
+    //   2691: istore_3
+    //   2692: aload 15
+    //   2694: astore 16
+    //   2696: iload_1
+    //   2697: istore 5
+    //   2699: iload 13
+    //   2701: ifne +43 -> 2744
+    //   2704: aload 15
+    //   2706: invokevirtual 1955	java/net/Socket:close	()V
+    //   2709: aload_0
+    //   2710: aconst_null
+    //   2711: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   2714: aload_0
+    //   2715: aconst_null
+    //   2716: invokevirtual 1913	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   2719: aconst_null
+    //   2720: astore 17
+    //   2722: iload_2
+    //   2723: istore_3
+    //   2724: goto +493 -> 3217
+    //   2727: astore 16
+    //   2729: aconst_null
+    //   2730: astore 15
+    //   2732: iload_2
+    //   2733: istore_3
+    //   2734: goto +400 -> 3134
+    //   2737: astore 16
+    //   2739: iload_2
+    //   2740: istore_3
+    //   2741: goto +393 -> 3134
+    //   2744: aload 16
+    //   2746: astore 17
+    //   2748: iload 5
+    //   2750: istore_1
+    //   2751: goto +466 -> 3217
+    //   2754: aload_0
+    //   2755: aload_0
+    //   2756: getfield 154	oicq/wlogin_sdk/request/oicq_request:s	[B
+    //   2759: invokevirtual 1957	oicq/wlogin_sdk/request/oicq_request:b	([B)I
+    //   2762: istore_2
+    //   2763: iload_2
+    //   2764: aload_0
+    //   2765: getfield 128	oicq/wlogin_sdk/request/oicq_request:f	I
+    //   2768: iconst_1
+    //   2769: iadd
+    //   2770: if_icmpgt +130 -> 2900
+    //   2773: new 468	java/lang/StringBuilder
+    //   2776: dup
+    //   2777: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   2780: astore 16
+    //   2782: aload 16
+    //   2784: ldc_w 1959
+    //   2787: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2790: pop
+    //   2791: aload 16
+    //   2793: iload_2
+    //   2794: invokevirtual 478	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2797: pop
+    //   2798: aload 16
+    //   2800: ldc_w 1961
+    //   2803: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2806: pop
+    //   2807: aload 16
+    //   2809: aload_0
+    //   2810: getfield 128	oicq/wlogin_sdk/request/oicq_request:f	I
+    //   2813: invokevirtual 478	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2816: pop
+    //   2817: aload 16
+    //   2819: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2822: ldc 110
+    //   2824: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2827: iload_3
+    //   2828: iconst_1
+    //   2829: iadd
+    //   2830: istore_3
+    //   2831: iload_3
+    //   2832: istore_1
+    //   2833: iload 13
+    //   2835: ifne +54 -> 2889
+    //   2838: iload_3
+    //   2839: istore_1
+    //   2840: aload 15
+    //   2842: invokevirtual 1955	java/net/Socket:close	()V
+    //   2845: iload_3
+    //   2846: istore_1
+    //   2847: aload_0
+    //   2848: aconst_null
+    //   2849: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   2852: iload_3
+    //   2853: istore_1
+    //   2854: aload_0
+    //   2855: aconst_null
+    //   2856: invokevirtual 1913	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   2859: aconst_null
+    //   2860: astore 17
+    //   2862: iload_3
+    //   2863: istore_1
+    //   2864: goto +29 -> 2893
+    //   2867: astore 16
+    //   2869: iload_2
+    //   2870: istore_3
+    //   2871: iload_1
+    //   2872: istore_2
+    //   2873: iload_3
+    //   2874: istore_1
+    //   2875: goto -146 -> 2729
+    //   2878: astore 16
+    //   2880: iload_2
+    //   2881: istore_3
+    //   2882: iload_1
+    //   2883: istore_2
+    //   2884: iload_3
+    //   2885: istore_1
+    //   2886: goto -147 -> 2739
+    //   2889: aload 15
+    //   2891: astore 17
+    //   2893: iload_1
+    //   2894: istore_3
+    //   2895: iload_2
+    //   2896: istore_1
+    //   2897: goto +320 -> 3217
+    //   2900: iload_2
+    //   2901: aload_0
+    //   2902: getfield 154	oicq/wlogin_sdk/request/oicq_request:s	[B
+    //   2905: arraylength
+    //   2906: if_icmplt +93 -> 2999
+    //   2909: new 468	java/lang/StringBuilder
+    //   2912: dup
+    //   2913: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   2916: astore 16
+    //   2918: aload 16
+    //   2920: ldc_w 1959
+    //   2923: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2926: pop
+    //   2927: aload 16
+    //   2929: iload_2
+    //   2930: invokevirtual 478	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2933: pop
+    //   2934: aload 16
+    //   2936: ldc_w 1963
+    //   2939: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2942: pop
+    //   2943: aload 16
+    //   2945: aload_0
+    //   2946: getfield 154	oicq/wlogin_sdk/request/oicq_request:s	[B
+    //   2949: arraylength
+    //   2950: invokevirtual 478	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2953: pop
+    //   2954: aload 16
+    //   2956: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2959: ldc 110
+    //   2961: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2964: iload_3
+    //   2965: iconst_1
+    //   2966: iadd
+    //   2967: istore_3
+    //   2968: iload_3
+    //   2969: istore_1
+    //   2970: iload 13
+    //   2972: ifne -83 -> 2889
+    //   2975: iload_3
+    //   2976: istore_1
+    //   2977: aload 15
+    //   2979: invokevirtual 1955	java/net/Socket:close	()V
+    //   2982: iload_3
+    //   2983: istore_1
+    //   2984: aload_0
+    //   2985: aconst_null
+    //   2986: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   2989: iload_3
+    //   2990: istore_1
+    //   2991: aload_0
+    //   2992: aconst_null
+    //   2993: invokevirtual 1913	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   2996: goto -137 -> 2859
+    //   2999: aload_0
+    //   3000: getfield 128	oicq/wlogin_sdk/request/oicq_request:f	I
+    //   3003: iconst_1
+    //   3004: iadd
+    //   3005: istore 6
+    //   3007: iload_2
+    //   3008: iload 6
+    //   3010: isub
+    //   3011: istore_1
+    //   3012: iload_1
+    //   3013: ifle +752 -> 3765
+    //   3016: aload 17
+    //   3018: aload_0
+    //   3019: getfield 154	oicq/wlogin_sdk/request/oicq_request:s	[B
+    //   3022: iload 6
+    //   3024: iload_1
+    //   3025: invokevirtual 1950	java/io/InputStream:read	([BII)I
+    //   3028: istore 5
+    //   3030: iload 5
+    //   3032: iconst_m1
+    //   3033: if_icmpne +717 -> 3750
+    //   3036: goto +3 -> 3039
+    //   3039: iload 5
+    //   3041: iconst_m1
+    //   3042: if_icmpne +74 -> 3116
+    //   3045: new 468	java/lang/StringBuilder
+    //   3048: dup
+    //   3049: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   3052: astore 16
+    //   3054: aload 16
+    //   3056: ldc_w 1965
+    //   3059: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3062: pop
+    //   3063: aload 16
+    //   3065: iload 5
+    //   3067: invokevirtual 478	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   3070: pop
+    //   3071: aload 16
+    //   3073: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3076: ldc 110
+    //   3078: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   3081: iload_3
+    //   3082: iconst_1
+    //   3083: iadd
+    //   3084: istore_3
+    //   3085: iload_3
+    //   3086: istore_1
+    //   3087: iload 13
+    //   3089: ifne -200 -> 2889
+    //   3092: iload_3
+    //   3093: istore_1
+    //   3094: aload 15
+    //   3096: invokevirtual 1955	java/net/Socket:close	()V
+    //   3099: iload_3
+    //   3100: istore_1
+    //   3101: aload_0
+    //   3102: aconst_null
+    //   3103: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   3106: iload_3
+    //   3107: istore_1
+    //   3108: aload_0
+    //   3109: aconst_null
+    //   3110: invokevirtual 1913	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   3113: goto -254 -> 2859
+    //   3116: iload 5
+    //   3118: istore_1
+    //   3119: iload_2
+    //   3120: istore 5
+    //   3122: goto +262 -> 3384
+    //   3125: astore 16
+    //   3127: iload_2
+    //   3128: istore_1
+    //   3129: goto +5 -> 3134
+    //   3132: astore 16
+    //   3134: new 468	java/lang/StringBuilder
+    //   3137: dup
+    //   3138: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   3141: astore 17
+    //   3143: aload 17
+    //   3145: ldc_w 1967
+    //   3148: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3151: pop
+    //   3152: aload 17
+    //   3154: aload 16
+    //   3156: invokestatic 1378	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   3159: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3162: pop
+    //   3163: aload 17
+    //   3165: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3168: ldc 110
+    //   3170: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   3173: iload_3
+    //   3174: iconst_1
+    //   3175: iadd
+    //   3176: istore_2
+    //   3177: iload_2
+    //   3178: istore_3
+    //   3179: aload 15
+    //   3181: astore 16
+    //   3183: iload_1
+    //   3184: istore 5
+    //   3186: iload 13
+    //   3188: ifne -444 -> 2744
+    //   3191: aload 15
+    //   3193: invokevirtual 1970	java/net/Socket:isConnected	()Z
+    //   3196: ifeq +8 -> 3204
+    //   3199: aload 15
+    //   3201: invokevirtual 1955	java/net/Socket:close	()V
+    //   3204: aload_0
+    //   3205: aconst_null
+    //   3206: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   3209: aload_0
+    //   3210: aconst_null
+    //   3211: invokevirtual 1913	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   3214: goto -495 -> 2719
+    //   3217: aload 19
+    //   3219: astore 16
+    //   3221: sipush -1000
+    //   3224: istore_2
+    //   3225: aload 18
+    //   3227: astore 15
+    //   3229: goto -3113 -> 116
+    //   3232: astore 17
+    //   3234: new 468	java/lang/StringBuilder
+    //   3237: dup
+    //   3238: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   3241: astore 18
+    //   3243: aload 18
+    //   3245: ldc_w 1972
+    //   3248: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3251: pop
+    //   3252: aload 18
+    //   3254: aload 17
+    //   3256: invokestatic 1378	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   3259: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3262: pop
+    //   3263: aload 18
+    //   3265: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3268: ldc 110
+    //   3270: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   3273: sipush -1026
+    //   3276: iload_2
+    //   3277: if_icmpeq +10 -> 3287
+    //   3280: sipush -1000
+    //   3283: istore_2
+    //   3284: goto +3 -> 3287
+    //   3287: iload 5
+    //   3289: iconst_1
+    //   3290: iadd
+    //   3291: istore_3
+    //   3292: aload_0
+    //   3293: aconst_null
+    //   3294: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   3297: aload_0
+    //   3298: aconst_null
+    //   3299: invokevirtual 1913	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   3302: iload 14
+    //   3304: istore 13
+    //   3306: goto +67 -> 3373
+    //   3309: astore 17
+    //   3311: new 468	java/lang/StringBuilder
+    //   3314: dup
+    //   3315: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   3318: astore 18
+    //   3320: aload 18
+    //   3322: ldc_w 1974
+    //   3325: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3328: pop
+    //   3329: aload 18
+    //   3331: aload 17
+    //   3333: invokevirtual 1903	java/net/ConnectException:toString	()Ljava/lang/String;
+    //   3336: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3339: pop
+    //   3340: aload 18
+    //   3342: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3345: ldc 110
+    //   3347: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   3350: iload 5
+    //   3352: iconst_1
+    //   3353: iadd
+    //   3354: istore_3
+    //   3355: aload_0
+    //   3356: aconst_null
+    //   3357: putfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   3360: aload_0
+    //   3361: aconst_null
+    //   3362: invokevirtual 1913	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   3365: iload 14
+    //   3367: istore 13
+    //   3369: sipush -1026
+    //   3372: istore_2
     //   3373: aconst_null
-    //   3374: astore 14
-    //   3376: aload_0
-    //   3377: aconst_null
-    //   3378: invokevirtual 1916	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
-    //   3381: iload_1
-    //   3382: istore_3
-    //   3383: aload 14
-    //   3385: astore 16
-    //   3387: iload 5
-    //   3389: istore_1
-    //   3390: iload 11
-    //   3392: istore 9
-    //   3394: aload 15
-    //   3396: astore 14
-    //   3398: aload 16
-    //   3400: astore 15
-    //   3402: aload 17
-    //   3404: astore 16
-    //   3406: goto -3314 -> 92
-    //   3409: iconst_0
-    //   3410: istore_3
-    //   3411: goto -357 -> 3054
-    //   3414: aload 14
-    //   3416: aload_0
-    //   3417: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   3420: invokevirtual 274	java/net/InetSocketAddress:getAddress	()Ljava/net/InetAddress;
-    //   3423: invokevirtual 280	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
-    //   3426: putfield 230	oicq/wlogin_sdk/report/report_t3:_ip	Ljava/lang/String;
-    //   3429: goto -259 -> 3170
-    //   3432: aload 14
-    //   3434: iconst_1
-    //   3435: putfield 258	oicq/wlogin_sdk/report/report_t3:_wap	I
-    //   3438: goto -206 -> 3232
-    //   3441: aload 14
-    //   3443: iconst_0
-    //   3444: putfield 258	oicq/wlogin_sdk/report/report_t3:_wap	I
-    //   3447: goto -215 -> 3232
-    //   3450: astore 14
-    //   3452: goto -84 -> 3368
-    //   3455: astore 14
-    //   3457: goto -149 -> 3308
-    //   3460: astore 18
-    //   3462: goto -1625 -> 1837
-    //   3465: astore 18
-    //   3467: goto -1860 -> 1607
-    //   3470: goto -1116 -> 2354
-    //   3473: goto -1291 -> 2182
-    //   3476: aload 21
-    //   3478: astore 20
-    //   3480: goto -2415 -> 1065
-    //   3483: aconst_null
-    //   3484: astore 17
-    //   3486: iconst_m1
-    //   3487: istore 5
-    //   3489: goto -3111 -> 378
-    //   3492: iload_3
-    //   3493: istore 5
-    //   3495: goto -460 -> 3035
-    //   3498: goto -3120 -> 378
-    //   3501: astore 17
-    //   3503: aload 18
-    //   3505: astore 14
-    //   3507: goto -2510 -> 997
-    //   3510: aload 15
-    //   3512: astore 14
-    //   3514: iload_1
-    //   3515: istore_3
+    //   3374: astore 17
+    //   3376: goto -3260 -> 116
+    //   3379: iload_1
+    //   3380: istore 5
+    //   3382: iload_2
+    //   3383: istore_1
+    //   3384: iload_3
+    //   3385: bipush 6
+    //   3387: if_icmplt +19 -> 3406
+    //   3390: iload_1
+    //   3391: istore_2
+    //   3392: sipush -1026
+    //   3395: iload_1
+    //   3396: if_icmpeq +12 -> 3408
+    //   3399: sipush -1000
+    //   3402: istore_2
+    //   3403: goto +5 -> 3408
+    //   3406: iconst_0
+    //   3407: istore_2
+    //   3408: iload_2
+    //   3409: ifne +13 -> 3422
+    //   3412: aload_0
+    //   3413: aload_0
+    //   3414: getfield 154	oicq/wlogin_sdk/request/oicq_request:s	[B
+    //   3417: iload 5
+    //   3419: invokevirtual 862	oicq/wlogin_sdk/request/oicq_request:b	([BI)V
+    //   3422: iload_2
+    //   3423: ifne +209 -> 3632
+    //   3426: aload_0
+    //   3427: getfield 156	oicq/wlogin_sdk/request/oicq_request:t	I
+    //   3430: sipush 2066
+    //   3433: if_icmpeq +199 -> 3632
+    //   3436: new 202	oicq/wlogin_sdk/report/report_t3
+    //   3439: dup
+    //   3440: invokespecial 203	oicq/wlogin_sdk/report/report_t3:<init>	()V
+    //   3443: astore 15
+    //   3445: aload 15
+    //   3447: aload_0
+    //   3448: getfield 156	oicq/wlogin_sdk/request/oicq_request:t	I
+    //   3451: putfield 206	oicq/wlogin_sdk/report/report_t3:_cmd	I
+    //   3454: aload 15
+    //   3456: aload_0
+    //   3457: getfield 158	oicq/wlogin_sdk/request/oicq_request:u	I
+    //   3460: putfield 209	oicq/wlogin_sdk/report/report_t3:_sub	I
+    //   3463: aload 15
+    //   3465: iload_2
+    //   3466: putfield 212	oicq/wlogin_sdk/report/report_t3:_rst2	I
+    //   3469: aload 15
+    //   3471: invokestatic 218	java/lang/System:currentTimeMillis	()J
+    //   3474: lload 8
+    //   3476: lsub
+    //   3477: l2i
+    //   3478: putfield 221	oicq/wlogin_sdk/report/report_t3:_used	I
+    //   3481: aload 15
+    //   3483: iload_3
+    //   3484: putfield 224	oicq/wlogin_sdk/report/report_t3:_try	I
+    //   3487: aload 15
+    //   3489: getstatic 114	oicq/wlogin_sdk/request/oicq_request:J	Ljava/lang/String;
+    //   3492: putfield 227	oicq/wlogin_sdk/report/report_t3:_host	Ljava/lang/String;
+    //   3495: aload 15
+    //   3497: getfield 227	oicq/wlogin_sdk/report/report_t3:_host	Ljava/lang/String;
+    //   3500: ifnonnull +10 -> 3510
+    //   3503: aload 15
+    //   3505: ldc 110
+    //   3507: putfield 227	oicq/wlogin_sdk/report/report_t3:_host	Ljava/lang/String;
+    //   3510: aload_0
+    //   3511: getfield 150	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   3514: astore 16
     //   3516: aload 16
-    //   3518: astore 15
-    //   3520: iload 5
-    //   3522: istore_1
-    //   3523: iload 11
-    //   3525: istore 9
-    //   3527: aload 17
-    //   3529: astore 16
-    //   3531: goto -3439 -> 92
-    //   3534: aload 15
-    //   3536: astore 14
-    //   3538: iload_1
-    //   3539: istore_3
-    //   3540: aload 16
-    //   3542: astore 15
-    //   3544: iload 5
-    //   3546: istore_1
-    //   3547: iload 11
-    //   3549: istore 9
-    //   3551: aload 17
-    //   3553: astore 16
-    //   3555: goto -3463 -> 92
+    //   3518: ifnonnull +13 -> 3531
+    //   3521: aload 15
+    //   3523: ldc 110
+    //   3525: putfield 230	oicq/wlogin_sdk/report/report_t3:_ip	Ljava/lang/String;
+    //   3528: goto +16 -> 3544
+    //   3531: aload 15
+    //   3533: aload 16
+    //   3535: invokevirtual 236	java/net/InetSocketAddress:getAddress	()Ljava/net/InetAddress;
+    //   3538: invokevirtual 242	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   3541: putfield 230	oicq/wlogin_sdk/report/report_t3:_ip	Ljava/lang/String;
+    //   3544: aload 15
+    //   3546: aload_0
+    //   3547: getfield 152	oicq/wlogin_sdk/request/oicq_request:r	I
+    //   3550: putfield 248	oicq/wlogin_sdk/report/report_t3:_port	I
+    //   3553: aload 15
+    //   3555: iload 4
+    //   3557: putfield 251	oicq/wlogin_sdk/report/report_t3:_conn	I
+    //   3560: aload 15
+    //   3562: getstatic 255	oicq/wlogin_sdk/request/t:E	I
+    //   3565: putfield 258	oicq/wlogin_sdk/report/report_t3:_net	I
+    //   3568: aload 15
+    //   3570: ldc 110
+    //   3572: putfield 261	oicq/wlogin_sdk/report/report_t3:_str	Ljava/lang/String;
+    //   3575: aload 15
+    //   3577: aload 21
+    //   3579: arraylength
+    //   3580: putfield 264	oicq/wlogin_sdk/report/report_t3:_slen	I
+    //   3583: aload 15
+    //   3585: iload 5
+    //   3587: putfield 267	oicq/wlogin_sdk/report/report_t3:_rlen	I
+    //   3590: iload 13
+    //   3592: ifeq +26 -> 3618
+    //   3595: iload 12
+    //   3597: ifeq +12 -> 3609
+    //   3600: aload 15
+    //   3602: iconst_2
+    //   3603: putfield 270	oicq/wlogin_sdk/report/report_t3:_wap	I
+    //   3606: goto +18 -> 3624
+    //   3609: aload 15
+    //   3611: iconst_1
+    //   3612: putfield 270	oicq/wlogin_sdk/report/report_t3:_wap	I
+    //   3615: goto +9 -> 3624
+    //   3618: aload 15
+    //   3620: iconst_0
+    //   3621: putfield 270	oicq/wlogin_sdk/report/report_t3:_wap	I
+    //   3624: getstatic 274	oicq/wlogin_sdk/request/t:at	Loicq/wlogin_sdk/report/Reporter;
+    //   3627: aload 15
+    //   3629: invokevirtual 280	oicq/wlogin_sdk/report/Reporter:add_t3	(Loicq/wlogin_sdk/report/report_t3;)V
+    //   3632: new 468	java/lang/StringBuilder
+    //   3635: dup
+    //   3636: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   3639: astore 15
+    //   3641: aload 15
+    //   3643: aload_0
+    //   3644: invokevirtual 814	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   3647: invokevirtual 819	java/lang/Class:getName	()Ljava/lang/String;
+    //   3650: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3653: pop
+    //   3654: aload 15
+    //   3656: ldc_w 1976
+    //   3659: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3662: pop
+    //   3663: aload 15
+    //   3665: iload_2
+    //   3666: invokevirtual 478	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   3669: pop
+    //   3670: aload 15
+    //   3672: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3675: astore 15
+    //   3677: new 468	java/lang/StringBuilder
+    //   3680: dup
+    //   3681: invokespecial 469	java/lang/StringBuilder:<init>	()V
+    //   3684: astore 16
+    //   3686: aload 16
+    //   3688: ldc 110
+    //   3690: invokevirtual 475	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3693: pop
+    //   3694: aload 16
+    //   3696: aload_0
+    //   3697: getfield 291	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   3700: getfield 489	oicq/wlogin_sdk/request/t:f	J
+    //   3703: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   3706: pop
+    //   3707: aload 15
+    //   3709: aload 16
+    //   3711: invokevirtual 487	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3714: invokestatic 368	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   3717: iload_2
+    //   3718: ireturn
+    //   3719: astore 19
+    //   3721: goto -1931 -> 1790
+    //   3724: astore 15
+    //   3726: goto -522 -> 3204
+    //   3729: iload_2
+    //   3730: istore_3
+    //   3731: iload 6
+    //   3733: iconst_1
+    //   3734: iadd
+    //   3735: istore_2
+    //   3736: goto -2241 -> 1495
+    //   3739: goto -1269 -> 2470
+    //   3742: iload_2
+    //   3743: iload 5
+    //   3745: iadd
+    //   3746: istore_2
+    //   3747: goto -1140 -> 2607
+    //   3750: iload 6
+    //   3752: iload 5
+    //   3754: iadd
+    //   3755: istore 6
+    //   3757: iload_1
+    //   3758: iload 5
+    //   3760: isub
+    //   3761: istore_1
+    //   3762: goto -750 -> 3012
+    //   3765: goto -726 -> 3039
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	3558	0	this	oicq_request
-    //   63	3484	1	i1	int
-    //   65	3281	2	i2	int
-    //   61	3479	3	i3	int
-    //   79	3103	4	i4	int
-    //   267	3278	5	i5	int
-    //   1426	1593	6	i6	int
-    //   2847	165	7	i7	int
-    //   76	3146	8	bool1	boolean
-    //   73	3477	9	bool2	boolean
-    //   228	1369	10	bool3	boolean
-    //   114	3434	11	bool4	boolean
-    //   90	3031	12	l1	long
-    //   87	3149	14	localObject1	Object
-    //   3300	22	14	localThrowable1	Throwable
-    //   3348	94	14	localObject2	Object
-    //   3450	1	14	localException1	Exception
-    //   3455	1	14	localThrowable2	Throwable
-    //   3505	32	14	localObject3	Object
-    //   70	2356	15	localObject4	Object
-    //   2434	16	15	localConnectException1	java.net.ConnectException
-    //   2479	1	15	localObject5	Object
-    //   2493	16	15	localThrowable3	Throwable
-    //   2549	994	15	localObject6	Object
-    //   83	3471	16	localObject7	Object
-    //   254	556	17	localObject8	Object
-    //   991	20	17	localConnectException2	java.net.ConnectException
-    //   1046	2439	17	localObject9	Object
-    //   3501	51	17	localConnectException3	java.net.ConnectException
-    //   447	1005	18	localObject10	Object
-    //   1594	27	18	localException2	Exception
-    //   2413	454	18	localInputStream	java.io.InputStream
-    //   3460	1	18	localException3	Exception
-    //   3465	39	18	localException4	Exception
-    //   436	946	19	localObject11	Object
-    //   1059	2420	20	localObject12	Object
-    //   220	3257	21	str	String
-    //   58	3146	22	arrayOfByte	byte[]
+    //   0	3768	0	this	oicq_request
+    //   115	3647	1	i1	int
+    //   105	3642	2	i2	int
+    //   107	3624	3	i3	int
+    //   109	3447	4	i4	int
+    //   302	3459	5	i5	int
+    //   205	3551	6	i6	int
+    //   314	3	7	i7	int
+    //   91	3384	8	l1	long
+    //   1561	323	10	l2	long
+    //   112	3484	12	bool1	boolean
+    //   102	3489	13	bool2	boolean
+    //   287	3079	14	bool3	boolean
+    //   7	3701	15	localObject1	Object
+    //   3724	1	15	localException1	Exception
+    //   45	2650	16	localObject2	Object
+    //   2727	1	16	localThrowable1	Throwable
+    //   2737	8	16	localThrowable2	Throwable
+    //   2780	38	16	localStringBuilder1	StringBuilder
+    //   2867	1	16	localThrowable3	Throwable
+    //   2878	1	16	localThrowable4	Throwable
+    //   2916	156	16	localStringBuilder2	StringBuilder
+    //   3125	1	16	localThrowable5	Throwable
+    //   3132	23	16	localThrowable6	Throwable
+    //   3181	529	16	localObject3	Object
+    //   88	3076	17	localObject4	Object
+    //   3232	23	17	localThrowable7	Throwable
+    //   3309	23	17	localConnectException1	java.net.ConnectException
+    //   3374	1	17	localObject5	Object
+    //   193	117	18	localObject6	Object
+    //   337	1	18	localException2	Exception
+    //   346	30	18	localConnectException2	java.net.ConnectException
+    //   471	1	18	localException3	Exception
+    //   476	1	18	localConnectException3	java.net.ConnectException
+    //   481	1	18	localException4	Exception
+    //   489	1	18	localConnectException4	java.net.ConnectException
+    //   497	1	18	localException5	Exception
+    //   506	1	18	localConnectException5	java.net.ConnectException
+    //   516	79	18	localObject7	Object
+    //   599	1	18	localException6	Exception
+    //   604	1	18	localConnectException6	java.net.ConnectException
+    //   631	106	18	localObject8	Object
+    //   745	1	18	localException7	Exception
+    //   750	1	18	localConnectException7	java.net.ConnectException
+    //   755	1	18	localException8	Exception
+    //   760	1	18	localConnectException8	java.net.ConnectException
+    //   767	182	18	localObject9	Object
+    //   961	1	18	localException9	Exception
+    //   966	119	18	localConnectException9	java.net.ConnectException
+    //   1107	266	18	localObject10	Object
+    //   1385	1	18	localException10	Exception
+    //   1393	1	18	localException11	Exception
+    //   1398	1	18	localConnectException10	java.net.ConnectException
+    //   1403	1	18	localException12	Exception
+    //   1408	1	18	localConnectException11	java.net.ConnectException
+    //   1413	1	18	localException13	Exception
+    //   1418	1	18	localConnectException12	java.net.ConnectException
+    //   1423	1	18	localException14	Exception
+    //   1428	1	18	localConnectException13	java.net.ConnectException
+    //   1433	23	18	localException15	Exception
+    //   1498	23	18	localConnectException14	java.net.ConnectException
+    //   1573	1768	18	localObject11	Object
+    //   238	373	19	localObject12	Object
+    //   680	7	19	localException16	Exception
+    //   693	261	19	localConnectException15	java.net.ConnectException
+    //   1050	2168	19	localObject13	Object
+    //   3719	1	19	localException17	Exception
+    //   362	1383	20	localObject14	Object
+    //   82	3496	21	arrayOfByte	byte[]
+    //   428	490	22	localStringBuilder3	StringBuilder
+    //   442	5	23	localt	t
     // Exception table:
     //   from	to	target	type
-    //   230	238	991	java/net/ConnectException
-    //   251	256	991	java/net/ConnectException
-    //   264	269	991	java/net/ConnectException
-    //   282	290	991	java/net/ConnectException
-    //   305	375	991	java/net/ConnectException
-    //   391	438	991	java/net/ConnectException
-    //   883	901	991	java/net/ConnectException
-    //   909	916	991	java/net/ConnectException
-    //   924	936	991	java/net/ConnectException
-    //   944	954	991	java/net/ConnectException
-    //   962	991	991	java/net/ConnectException
-    //   230	238	1594	java/lang/Exception
-    //   251	256	1594	java/lang/Exception
-    //   264	269	1594	java/lang/Exception
-    //   282	290	1594	java/lang/Exception
-    //   305	375	1594	java/lang/Exception
-    //   391	438	1594	java/lang/Exception
-    //   883	901	1594	java/lang/Exception
-    //   909	916	1594	java/lang/Exception
-    //   924	936	1594	java/lang/Exception
-    //   944	954	1594	java/lang/Exception
-    //   962	991	1594	java/lang/Exception
-    //   2187	2354	2434	java/net/ConnectException
-    //   2354	2415	2434	java/net/ConnectException
-    //   2187	2354	2493	java/lang/Throwable
-    //   2354	2415	2493	java/lang/Throwable
-    //   1391	1422	3300	java/lang/Throwable
-    //   1434	1445	3300	java/lang/Throwable
-    //   1451	1473	3300	java/lang/Throwable
-    //   1489	1515	3300	java/lang/Throwable
-    //   1539	1544	3300	java/lang/Throwable
-    //   1550	1555	3300	java/lang/Throwable
-    //   1563	1568	3300	java/lang/Throwable
-    //   2582	2592	3300	java/lang/Throwable
-    //   3355	3368	3450	java/lang/Exception
-    //   2601	2611	3455	java/lang/Throwable
-    //   2617	2655	3455	java/lang/Throwable
-    //   2679	2684	3455	java/lang/Throwable
-    //   2690	2695	3455	java/lang/Throwable
-    //   2703	2708	3455	java/lang/Throwable
-    //   2721	2730	3455	java/lang/Throwable
-    //   2736	2775	3455	java/lang/Throwable
-    //   2799	2804	3455	java/lang/Throwable
-    //   2810	2815	3455	java/lang/Throwable
-    //   2823	2828	3455	java/lang/Throwable
-    //   2841	2849	3455	java/lang/Throwable
-    //   2866	2881	3455	java/lang/Throwable
-    //   2899	2925	3455	java/lang/Throwable
-    //   2949	2954	3455	java/lang/Throwable
-    //   2960	2965	3455	java/lang/Throwable
-    //   2973	2978	3455	java/lang/Throwable
-    //   1806	1837	3460	java/lang/Exception
-    //   449	520	3465	java/lang/Exception
-    //   531	541	3465	java/lang/Exception
-    //   552	560	3465	java/lang/Exception
-    //   576	586	3465	java/lang/Exception
-    //   597	608	3465	java/lang/Exception
-    //   619	630	3465	java/lang/Exception
-    //   641	655	3465	java/lang/Exception
-    //   666	678	3465	java/lang/Exception
-    //   689	701	3465	java/lang/Exception
-    //   712	718	3465	java/lang/Exception
-    //   729	735	3465	java/lang/Exception
-    //   746	777	3465	java/lang/Exception
-    //   788	804	3465	java/lang/Exception
-    //   815	846	3465	java/lang/Exception
-    //   1052	1057	3465	java/lang/Exception
-    //   1076	1112	3465	java/lang/Exception
-    //   1126	1157	3465	java/lang/Exception
-    //   1168	1175	3465	java/lang/Exception
-    //   1186	1197	3465	java/lang/Exception
-    //   1208	1213	3465	java/lang/Exception
-    //   1224	1230	3465	java/lang/Exception
-    //   1241	1289	3465	java/lang/Exception
-    //   1307	1332	3465	java/lang/Exception
-    //   1358	1365	3465	java/lang/Exception
-    //   449	520	3501	java/net/ConnectException
-    //   531	541	3501	java/net/ConnectException
-    //   552	560	3501	java/net/ConnectException
-    //   576	586	3501	java/net/ConnectException
-    //   597	608	3501	java/net/ConnectException
-    //   619	630	3501	java/net/ConnectException
-    //   641	655	3501	java/net/ConnectException
-    //   666	678	3501	java/net/ConnectException
-    //   689	701	3501	java/net/ConnectException
-    //   712	718	3501	java/net/ConnectException
-    //   729	735	3501	java/net/ConnectException
-    //   746	777	3501	java/net/ConnectException
-    //   788	804	3501	java/net/ConnectException
-    //   815	846	3501	java/net/ConnectException
-    //   1052	1057	3501	java/net/ConnectException
-    //   1076	1112	3501	java/net/ConnectException
-    //   1126	1157	3501	java/net/ConnectException
-    //   1168	1175	3501	java/net/ConnectException
-    //   1186	1197	3501	java/net/ConnectException
-    //   1208	1213	3501	java/net/ConnectException
-    //   1224	1230	3501	java/net/ConnectException
-    //   1241	1289	3501	java/net/ConnectException
-    //   1307	1332	3501	java/net/ConnectException
-    //   1358	1365	3501	java/net/ConnectException
+    //   309	316	337	java/lang/Exception
+    //   309	316	346	java/net/ConnectException
+    //   444	465	471	java/lang/Exception
+    //   444	465	476	java/net/ConnectException
+    //   355	444	481	java/lang/Exception
+    //   355	444	489	java/net/ConnectException
+    //   294	304	497	java/lang/Exception
+    //   294	304	506	java/net/ConnectException
+    //   530	596	599	java/lang/Exception
+    //   530	596	604	java/net/ConnectException
+    //   668	673	680	java/lang/Exception
+    //   668	673	693	java/net/ConnectException
+    //   654	663	745	java/lang/Exception
+    //   706	745	745	java/lang/Exception
+    //   654	663	750	java/net/ConnectException
+    //   706	745	750	java/net/ConnectException
+    //   638	650	755	java/lang/Exception
+    //   638	650	760	java/net/ConnectException
+    //   948	958	961	java/lang/Exception
+    //   948	958	966	java/net/ConnectException
+    //   1226	1299	1385	java/lang/Exception
+    //   1307	1343	1385	java/lang/Exception
+    //   1355	1362	1385	java/lang/Exception
+    //   1031	1141	1393	java/lang/Exception
+    //   1155	1226	1393	java/lang/Exception
+    //   1031	1141	1398	java/net/ConnectException
+    //   1155	1226	1398	java/net/ConnectException
+    //   1226	1299	1398	java/net/ConnectException
+    //   1307	1343	1398	java/net/ConnectException
+    //   1355	1362	1398	java/net/ConnectException
+    //   818	943	1403	java/lang/Exception
+    //   971	1031	1403	java/lang/Exception
+    //   818	943	1408	java/net/ConnectException
+    //   971	1031	1408	java/net/ConnectException
+    //   769	818	1413	java/lang/Exception
+    //   769	818	1418	java/net/ConnectException
+    //   609	633	1423	java/lang/Exception
+    //   609	633	1428	java/net/ConnectException
+    //   281	289	1433	java/lang/Exception
+    //   281	289	1498	java/net/ConnectException
+    //   2714	2719	2727	java/lang/Throwable
+    //   2704	2714	2737	java/lang/Throwable
+    //   2854	2859	2867	java/lang/Throwable
+    //   2991	2996	2867	java/lang/Throwable
+    //   3108	3113	2867	java/lang/Throwable
+    //   2840	2845	2878	java/lang/Throwable
+    //   2847	2852	2878	java/lang/Throwable
+    //   2977	2982	2878	java/lang/Throwable
+    //   2984	2989	2878	java/lang/Throwable
+    //   3094	3099	2878	java/lang/Throwable
+    //   3101	3106	2878	java/lang/Throwable
+    //   2763	2827	3125	java/lang/Throwable
+    //   2900	2964	3125	java/lang/Throwable
+    //   2999	3007	3125	java/lang/Throwable
+    //   3016	3030	3125	java/lang/Throwable
+    //   3045	3081	3125	java/lang/Throwable
+    //   2561	2602	3132	java/lang/Throwable
+    //   2607	2637	3132	java/lang/Throwable
+    //   2650	2686	3132	java/lang/Throwable
+    //   2754	2763	3132	java/lang/Throwable
+    //   2246	2467	3232	java/lang/Throwable
+    //   2470	2541	3232	java/lang/Throwable
+    //   2246	2467	3309	java/net/ConnectException
+    //   2470	2541	3309	java/net/ConnectException
+    //   1752	1783	3719	java/lang/Exception
+    //   3191	3204	3724	java/lang/Exception
   }
   
   public int e(boolean paramBoolean)
@@ -4120,7 +4520,7 @@ public class oicq_request
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.request.oicq_request
  * JD-Core Version:    0.7.0.1
  */

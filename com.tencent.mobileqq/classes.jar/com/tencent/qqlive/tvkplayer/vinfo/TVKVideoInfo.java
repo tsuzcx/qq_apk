@@ -194,27 +194,32 @@ public class TVKVideoInfo
   
   public String getFirstCdnHlsPlayUrl()
   {
-    Object localObject = null;
-    String str;
+    Object localObject;
     if (this.urlList.size() > 0)
     {
-      localObject = (TVKVideoInfo.ReferUrl)this.urlList.get(0);
-      str = ((TVKVideoInfo.ReferUrl)localObject).getUrl();
-      if (((TVKVideoInfo.ReferUrl)localObject).getHlsNode() != null) {
-        localObject = str + ((TVKVideoInfo.ReferUrl)localObject).getHlsNode().getPt();
+      TVKVideoInfo.ReferUrl localReferUrl = (TVKVideoInfo.ReferUrl)this.urlList.get(0);
+      String str = localReferUrl.getUrl();
+      localObject = str;
+      if (localReferUrl.getHlsNode() != null)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append(localReferUrl.getHlsNode().getPt());
+        return ((StringBuilder)localObject).toString();
       }
     }
     else
     {
-      return localObject;
+      localObject = null;
     }
-    return str;
+    return localObject;
   }
   
   public int getFirstCdnId()
   {
+    int j = this.urlList.size();
     int i = 0;
-    if (this.urlList.size() > 0) {
+    if (j > 0) {
       i = ((TVKVideoInfo.ReferUrl)getUrlList().get(0)).getVt();
     }
     return i;
@@ -222,11 +227,10 @@ public class TVKVideoInfo
   
   public String getFirstCdnServer()
   {
-    String str = null;
     if (this.urlList.size() > 0) {
-      str = ((TVKVideoInfo.ReferUrl)getUrlList().get(0)).getUrl();
+      return ((TVKVideoInfo.ReferUrl)getUrlList().get(0)).getUrl();
     }
-    return str;
+    return null;
   }
   
   public int getFp2p()
@@ -389,12 +393,16 @@ public class TVKVideoInfo
   
   public String getVideoUrlWithoutVkey(String paramString)
   {
-    if ((this.urlList == null) || (this.urlList.size() == 0))
+    paramString = this.urlList;
+    if ((paramString != null) && (paramString.size() != 0))
     {
-      Log.e("TVKVideoInfo", "vinfo is not valiad!!");
-      return null;
+      paramString = new StringBuilder();
+      paramString.append(((TVKVideoInfo.ReferUrl)this.urlList.get(0)).getUrl());
+      paramString.append(this.fileName);
+      return paramString.toString();
     }
-    return ((TVKVideoInfo.ReferUrl)this.urlList.get(0)).getUrl() + this.fileName;
+    Log.e("TVKVideoInfo", "vinfo is not valiad!!");
+    return null;
   }
   
   public int getWidth()
@@ -734,7 +742,7 @@ public class TVKVideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.TVKVideoInfo
  * JD-Core Version:    0.7.0.1
  */

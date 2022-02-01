@@ -14,49 +14,54 @@ class QQSpecialCareSettingActivity$2
   
   public void handleMessage(Message paramMessage)
   {
+    QQSpecialCareSettingActivity localQQSpecialCareSettingActivity;
     switch (paramMessage.what)
     {
     default: 
-    case 8193: 
-    case 8194: 
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if (QQSpecialCareSettingActivity.a(this.a) == null)
-            {
-              QQSpecialCareSettingActivity.a(this.a, new QQProgressDialog(this.a, this.a.getTitleBarHeight()));
-              if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String))) {
-                QQSpecialCareSettingActivity.a(this.a).a((String)paramMessage.obj);
-              }
-            }
-          } while ((this.a.isFinishing()) || (QQSpecialCareSettingActivity.a(this.a).isShowing()));
-          try
-          {
-            QQSpecialCareSettingActivity.a(this.a).show();
-            return;
-          }
-          catch (Exception paramMessage) {}
-        } while (!QLog.isColorLevel());
-        QLog.e("QQSpecialCareSettingActivity", 2, "QQProgressDialog show exception.", paramMessage);
-        return;
-      } while ((QQSpecialCareSettingActivity.a(this.a) == null) || (!QQSpecialCareSettingActivity.a(this.a).isShowing()));
-      QQSpecialCareSettingActivity.a(this.a).dismiss();
-      QQSpecialCareSettingActivity.a(this.a, null);
+    case 8195: 
+      if (QQSpecialCareSettingActivity.a(this.a) != null) {
+        QQSpecialCareSettingActivity.a(this.a).cancel();
+      }
+      localQQSpecialCareSettingActivity = this.a;
+      QQSpecialCareSettingActivity.a(localQQSpecialCareSettingActivity, QQToast.a(localQQSpecialCareSettingActivity, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight()));
       return;
+    case 8194: 
+      if ((QQSpecialCareSettingActivity.a(this.a) != null) && (QQSpecialCareSettingActivity.a(this.a).isShowing()))
+      {
+        QQSpecialCareSettingActivity.a(this.a).dismiss();
+        QQSpecialCareSettingActivity.a(this.a, null);
+        return;
+      }
+      break;
+    case 8193: 
+      if (QQSpecialCareSettingActivity.a(this.a) == null)
+      {
+        localQQSpecialCareSettingActivity = this.a;
+        QQSpecialCareSettingActivity.a(localQQSpecialCareSettingActivity, new QQProgressDialog(localQQSpecialCareSettingActivity, localQQSpecialCareSettingActivity.getTitleBarHeight()));
+        if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String))) {
+          QQSpecialCareSettingActivity.a(this.a).a((String)paramMessage.obj);
+        }
+      }
+      if ((!this.a.isFinishing()) && (!QQSpecialCareSettingActivity.a(this.a).isShowing())) {
+        try
+        {
+          QQSpecialCareSettingActivity.a(this.a).show();
+          return;
+        }
+        catch (Exception paramMessage)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("QQSpecialCareSettingActivity", 2, "QQProgressDialog show exception.", paramMessage);
+          }
+        }
+      }
+      break;
     }
-    if (QQSpecialCareSettingActivity.a(this.a) != null) {
-      QQSpecialCareSettingActivity.a(this.a).cancel();
-    }
-    QQSpecialCareSettingActivity.a(this.a, QQToast.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity.2
  * JD-Core Version:    0.7.0.1
  */

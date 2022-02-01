@@ -13,15 +13,19 @@ class VideoCombineHelper$CombineTask$2
   
   public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.trace_video_combine", 2, "combineVideos total = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("combineVideos total = ");
+      localStringBuilder.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      QLog.d(".troop.trace_video_combine", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), paramBoolean, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.VideoCombineHelper.CombineTask.2
  * JD-Core Version:    0.7.0.1
  */

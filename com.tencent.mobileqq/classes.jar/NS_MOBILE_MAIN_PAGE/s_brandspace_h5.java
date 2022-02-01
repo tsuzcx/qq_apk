@@ -30,17 +30,19 @@ public final class s_brandspace_h5
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.frdfans_num, 0);
-    if (this.frdfans_nick != null) {
-      paramJceOutputStream.write(this.frdfans_nick, 1);
+    String str = this.frdfans_nick;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 2);
+    str = this.url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_brandspace_h5
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.apollo.player;
 import kotlin.Metadata;
 import kotlin.NoWhenBranchMatchedException;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/player/CMSActionStatus;", "", "(Ljava/lang/String;I)V", "isEndState", "", "toReportErrorCode", "", "UNKNOWN", "START", "COMPLETE", "INTERRUPT", "ERROR_ACTION_RES_MISS", "ERROR_ACTION_PANEL_RES_MISS", "ERROR_SCRIPT_MISS", "ERROR_SURFACE_NOT_READY", "ERROR_BUILD_ACTION_JS", "ERROR_TIME_OUT", "ERROR_APNG_ENCODE_FAIL", "ERROR_APNG_RECORD_FRAME_EXCEED", "ERROR_APNG_RECORD_FRAME_OOM", "ERROR_ACTION_JSON_OUT_DATE", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/player/CMSActionStatus;", "", "(Ljava/lang/String;I)V", "isEndState", "", "toReportErrorCode", "", "UNKNOWN", "START", "COMPLETE", "INTERRUPT", "ERROR_ACTION_RES_MISS", "ERROR_ACTION_PANEL_RES_MISS", "ERROR_SCRIPT_MISS", "ERROR_SURFACE_NOT_READY", "ERROR_BUILD_ACTION_JS", "ERROR_TIME_OUT", "ERROR_APNG_ENCODE_FAIL", "ERROR_APNG_RECORD_FRAME_EXCEED", "ERROR_APNG_RECORD_FRAME_OOM", "ERROR_ACTION_JSON_OUT_DATE", "cmshow_api_release"}, k=1, mv={1, 1, 16})
 public enum CMSActionStatus
 {
   static
@@ -43,12 +43,7 @@ public enum CMSActionStatus
   
   public final boolean isEndState()
   {
-    switch (CMSActionStatus.WhenMappings.b[ordinal()])
-    {
-    default: 
-      return true;
-    }
-    return false;
+    return CMSActionStatus.WhenMappings.b[ordinal()] != 1;
   }
   
   public final int toReportErrorCode()
@@ -57,37 +52,35 @@ public enum CMSActionStatus
     {
     default: 
       throw new NoWhenBranchMatchedException();
-    case 1: 
-    case 2: 
-    case 3: 
-      return 0;
-    case 4: 
-      return -13400;
-    case 5: 
-      return -13401;
-    case 6: 
-      return -13402;
-    case 7: 
-      return -13403;
-    case 8: 
-      return -13404;
-    case 9: 
-      return -13405;
-    case 10: 
-      return -13406;
-    case 11: 
-      return -13407;
-    case 12: 
-      return -13408;
+    case 14: 
+      return -13410;
     case 13: 
       return -13409;
+    case 12: 
+      return -13408;
+    case 11: 
+      return -13407;
+    case 10: 
+      return -13406;
+    case 9: 
+      return -13405;
+    case 8: 
+      return -13404;
+    case 7: 
+      return -13403;
+    case 6: 
+      return -13402;
+    case 5: 
+      return -13401;
+    case 4: 
+      return -13400;
     }
-    return -13410;
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.player.CMSActionStatus
  * JD-Core Version:    0.7.0.1
  */

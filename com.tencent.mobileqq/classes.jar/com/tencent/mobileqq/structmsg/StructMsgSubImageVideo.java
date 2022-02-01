@@ -32,48 +32,62 @@ public class StructMsgSubImageVideo
   StructMsgSubImageVideo(StructMsgNode paramStructMsgNode)
   {
     super(paramStructMsgNode);
-    if (paramStructMsgNode.a == null) {}
-    for (;;)
-    {
+    if (paramStructMsgNode.a == null) {
       return;
-      Iterator localIterator = paramStructMsgNode.a.iterator();
-      while (localIterator.hasNext())
+    }
+    Iterator localIterator = paramStructMsgNode.a.iterator();
+    while (localIterator.hasNext())
+    {
+      paramStructMsgNode = (StructMsgNode)localIterator.next();
+      Object localObject;
+      if ((paramStructMsgNode != null) && ("item".equals(paramStructMsgNode.b)))
       {
-        paramStructMsgNode = (StructMsgNode)localIterator.next();
-        Object localObject;
-        if ((paramStructMsgNode == null) || (!"item".equals(paramStructMsgNode.b)))
-        {
-          localObject = new StringBuilder().append("StructMsgSubImageVideo: null or wrong node ");
-          if (paramStructMsgNode == null) {}
-          for (paramStructMsgNode = "null";; paramStructMsgNode = paramStructMsgNode.b)
-          {
-            Log.i("StructMsgSubImageVideo", paramStructMsgNode);
-            break;
-          }
-        }
-        if ((paramStructMsgNode.a == null) || (paramStructMsgNode.a.isEmpty()))
-        {
-          Log.i("StructMsgSubImageVideo", "StructMsgSubImageVideo: no child in node");
-        }
-        else
+        if ((paramStructMsgNode.a != null) && (!paramStructMsgNode.a.isEmpty()))
         {
           localObject = paramStructMsgNode.a("apptype");
           if (!"10".equals(localObject))
           {
-            Log.i("StructMsgSubImageVideo", "StructMsgSubImageVideo: wrong app type " + (String)localObject);
+            paramStructMsgNode = new StringBuilder();
+            paramStructMsgNode.append("StructMsgSubImageVideo: wrong app type ");
+            paramStructMsgNode.append((String)localObject);
+            Log.i("StructMsgSubImageVideo", paramStructMsgNode.toString());
           }
           else
           {
             localObject = paramStructMsgNode.a("type");
-            if ("0".equals(localObject)) {
+            if ("0".equals(localObject))
+            {
               this.videoItem = StructMsgSubImageVideo.VideoItem.access$000(paramStructMsgNode);
-            } else if ("1".equals(localObject)) {
+            }
+            else if ("1".equals(localObject))
+            {
               this.imageItem = StructMsgSubImageVideo.ImageItem.access$100(paramStructMsgNode);
-            } else {
-              Log.i("StructMsgSubImageVideo", "StructMsgSubImageVideo: wrong type " + (String)localObject);
+            }
+            else
+            {
+              paramStructMsgNode = new StringBuilder();
+              paramStructMsgNode.append("StructMsgSubImageVideo: wrong type ");
+              paramStructMsgNode.append((String)localObject);
+              Log.i("StructMsgSubImageVideo", paramStructMsgNode.toString());
             }
           }
         }
+        else
+        {
+          Log.i("StructMsgSubImageVideo", "StructMsgSubImageVideo: no child in node");
+        }
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("StructMsgSubImageVideo: null or wrong node ");
+        if (paramStructMsgNode == null) {
+          paramStructMsgNode = "null";
+        } else {
+          paramStructMsgNode = paramStructMsgNode.b;
+        }
+        ((StringBuilder)localObject).append(paramStructMsgNode);
+        Log.i("StructMsgSubImageVideo", ((StringBuilder)localObject).toString());
       }
     }
   }
@@ -114,7 +128,7 @@ public class StructMsgSubImageVideo
   
   public String getSourceName()
   {
-    return HardCodeUtil.a(2131714494);
+    return HardCodeUtil.a(2131714415);
   }
   
   public View getSourceView(Context paramContext, View paramView)
@@ -135,7 +149,10 @@ public class StructMsgSubImageVideo
   public void readExternal(ObjectInput paramObjectInput)
   {
     int i = paramObjectInput.readInt();
-    Log.i("StructMsgSubImageVideo", "readExternal: " + i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("readExternal: ");
+    localStringBuilder.append(i);
+    Log.i("StructMsgSubImageVideo", localStringBuilder.toString());
     this.mMsgBrief = paramObjectInput.readUTF();
     this.mFlag = paramObjectInput.readInt();
     i = paramObjectInput.readInt();
@@ -185,33 +202,32 @@ public class StructMsgSubImageVideo
   
   public void writeExternal(ObjectOutput paramObjectOutput)
   {
-    int i = 1;
     paramObjectOutput.writeInt(this.mMsgServiceID);
+    int i = 1;
     paramObjectOutput.writeInt(1);
     paramObjectOutput.writeUTF(this.mMsgBrief);
     paramObjectOutput.writeInt(this.mFlag);
-    if (this.videoItem != null) {}
-    for (;;)
-    {
-      int j = i;
-      if (this.imageItem != null) {
-        j = i | 0x10;
-      }
-      paramObjectOutput.writeInt(j);
-      if (this.videoItem != null) {
-        this.videoItem.writeExternal(paramObjectOutput);
-      }
-      if (this.imageItem != null) {
-        this.imageItem.writeExternal(paramObjectOutput);
-      }
-      return;
+    if (this.videoItem == null) {
       i = 0;
+    }
+    int j = i;
+    if (this.imageItem != null) {
+      j = i | 0x10;
+    }
+    paramObjectOutput.writeInt(j);
+    Object localObject = this.videoItem;
+    if (localObject != null) {
+      ((StructMsgSubImageVideo.VideoItem)localObject).writeExternal(paramObjectOutput);
+    }
+    localObject = this.imageItem;
+    if (localObject != null) {
+      ((StructMsgSubImageVideo.ImageItem)localObject).writeExternal(paramObjectOutput);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgSubImageVideo
  * JD-Core Version:    0.7.0.1
  */

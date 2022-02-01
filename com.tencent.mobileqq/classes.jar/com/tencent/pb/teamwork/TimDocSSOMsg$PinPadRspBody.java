@@ -21,14 +21,15 @@ public final class TimDocSSOMsg$PinPadRspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50 }, new String[] { "uint32_retcode", "bytes_pad_url", "uint64_last_pinned_time", "uint32_list_type", "uint32_domainid", "bytes_localpadid" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2 }, PinPadRspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50 }, new String[] { "uint32_retcode", "bytes_pad_url", "uint64_last_pinned_time", "uint32_list_type", "uint32_domainid", "bytes_localpadid" }, new Object[] { localInteger, localByteStringMicro1, Long.valueOf(0L), localInteger, localInteger, localByteStringMicro2 }, PinPadRspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.teamwork.TimDocSSOMsg.PinPadRspBody
  * JD-Core Version:    0.7.0.1
  */

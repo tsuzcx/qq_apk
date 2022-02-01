@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.richmediabrowser.view;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
-import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.media.AudioManager;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.util.Pair;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -26,118 +25,137 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
-import com.tencent.mobileqq.activity.photo.VideoPlayMedioInfo;
-import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.comment.danmaku.CommentDanmakuManager;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.qqvideoplatform.api.QQVideoViewFactory;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.qqvideoplatform.VideoPlatformUtils;
 import com.tencent.mobileqq.qqvideoplatform.api.SceneID;
-import com.tencent.mobileqq.qqvideoplatform.api.VideoPlatformUtils;
-import com.tencent.mobileqq.richmedia.dc.DCAIOPreviewProgressive;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData;
 import com.tencent.mobileqq.richmediabrowser.BrowserDanmakuUtils;
+import com.tencent.mobileqq.richmediabrowser.IProvider;
 import com.tencent.mobileqq.richmediabrowser.ImmersionHelper;
 import com.tencent.mobileqq.richmediabrowser.ParamsManager;
-import com.tencent.mobileqq.richmediabrowser.PeakProcessProvider;
+import com.tencent.mobileqq.richmediabrowser.api.IBrowserDepend;
+import com.tencent.mobileqq.richmediabrowser.api.IFileDepend;
+import com.tencent.mobileqq.richmediabrowser.api.IVideoDepend;
 import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
 import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoModel;
+import com.tencent.mobileqq.richmediabrowser.model.VideoPlayMedioInfo;
+import com.tencent.mobileqq.richmediabrowser.presenter.AIOBrowserPresenter;
 import com.tencent.mobileqq.richmediabrowser.presenter.AIOFileVideoPresenter;
+import com.tencent.mobileqq.richmediabrowser.qqfloatingscreen.TVKVideoController;
 import com.tencent.mobileqq.richmediabrowser.utils.LongVideoUrlCacheManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.splashad.SplashADUtil;
-import com.tencent.mobileqq.startup.step.CheckPermission;
+import com.tencent.mobileqq.richmediabrowser.utils.RichMediaBrowserUtils;
+import com.tencent.mobileqq.service.message.remote.MessageRecordInfo;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.transfile.dns.BaseInnerDns;
-import com.tencent.mobileqq.transfile.dns.InnerDns;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
 import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.FileSizeFormat;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.utils.RichMediaShareActionSheetUtil;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.videoplatform.api.VideoPlayParam;
+import com.tencent.mobileqq.videoplatform.api.VideoPlayerCallback;
 import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
-import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.TVKVideoController;
 import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.richmediabrowser.core.RichMediaBrowserManager;
+import com.tencent.richmediabrowser.api.BrowserParamsBuilder;
+import com.tencent.richmediabrowser.api.event.IVideoViewClickEvent;
+import com.tencent.richmediabrowser.core.IBaseViewBuilder;
 import com.tencent.richmediabrowser.log.BrowserLogHelper;
 import com.tencent.richmediabrowser.log.IBrowserLog;
 import com.tencent.richmediabrowser.model.RichMediaBaseData;
 import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
 import com.tencent.richmediabrowser.presenter.BrowserBasePresenter;
-import com.tencent.richmediabrowser.presenter.IProvider;
+import com.tencent.richmediabrowser.utils.BrowserUtils;
 import com.tencent.richmediabrowser.view.GalleryUrlImageView;
+import com.tencent.richmediabrowser.view.video.VideoView;
+import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.util.LiuHaiUtils;
-import com.tencent.util.VersionUtils;
+import com.tencent.util.PermissionUtil;
 import java.io.File;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.os.MqqHandler;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class AIOFileVideoView
   extends AIOBrowserBaseView
-  implements View.OnClickListener, SeekBar.OnSeekBarChangeListener
+  implements View.OnClickListener, VideoPlayerCallback, IVideoViewClickEvent
 {
-  public int a;
   private long jdField_a_of_type_Long = -1L;
   private View jdField_a_of_type_AndroidViewView;
   public ImageView a;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   public SeekBar a;
   public TextView a;
+  private IProvider jdField_a_of_type_ComTencentMobileqqRichmediabrowserIProvider;
   public AIOFileVideoPresenter a;
-  public BaseVideoView a;
-  private TVKVideoController jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenVideoviewTVKVideoController;
-  public GalleryUrlImageView a;
+  private TVKVideoController jdField_a_of_type_ComTencentMobileqqRichmediabrowserQqfloatingscreenTVKVideoController;
+  private VideoPlayParam jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam;
+  public VideoView a;
   public String a;
   protected ArrayList<ShareActionSheetBuilder.ActionSheetItem> a;
-  private boolean jdField_a_of_type_Boolean = false;
-  public ImageView b;
   public RelativeLayout b;
-  public SeekBar b;
-  public TextView b;
   private String jdField_b_of_type_JavaLangString = "";
   ArrayList<ShareActionSheetBuilder.ActionSheetItem> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  public RelativeLayout c;
-  public TextView c;
-  ArrayList<ShareActionSheetBuilder.ActionSheetItem> jdField_c_of_type_JavaUtilArrayList = new ArrayList();
+  public int c;
+  ArrayList<ShareActionSheetBuilder.ActionSheetItem> c;
   public ImageButton d;
-  public RelativeLayout d;
-  public TextView d;
   public ImageButton e;
   
-  public AIOFileVideoView(Activity paramActivity, AIOFileVideoPresenter paramAIOFileVideoPresenter)
+  public AIOFileVideoView(Context paramContext, AIOFileVideoPresenter paramAIOFileVideoPresenter)
   {
-    super(paramActivity, paramAIOFileVideoPresenter);
+    super(paramContext, paramAIOFileVideoPresenter);
+    this.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter = paramAIOFileVideoPresenter;
   }
   
   private int a(int paramInt)
   {
-    if (paramInt == 0) {
-      return 1;
+    int i = 6;
+    if (paramInt != 2) {
+      if (paramInt != 6) {
+        if (paramInt != 27) {
+          if (paramInt != 39) {
+            if (paramInt != 64) {
+              if (paramInt != 132) {
+                if ((paramInt == 72) || (paramInt == 73)) {}
+              }
+            }
+          }
+        }
+      }
     }
-    if (paramInt == 1) {
+    switch (paramInt)
+    {
+    default: 
+      break;
+    case 56: 
+      return 9;
+    case 55: 
+      return 8;
+      return -1;
+      return 13;
+      return 11;
       return 2;
-    }
-    if (paramInt == 3000) {
+      return 5;
       return 3;
+      i = 1;
     }
-    return 9;
+    return i;
   }
   
   private Bitmap a(Drawable paramDrawable)
@@ -149,6 +167,7 @@ public class AIOFileVideoView
       }
       return null;
     }
+    Object localObject;
     if ((paramDrawable instanceof BitmapDrawable))
     {
       localObject = (BitmapDrawable)paramDrawable;
@@ -156,93 +175,101 @@ public class AIOFileVideoView
         return ((BitmapDrawable)localObject).getBitmap();
       }
     }
-    if ((paramDrawable.getIntrinsicWidth() <= 0) || (paramDrawable.getIntrinsicHeight() <= 0)) {}
-    for (Object localObject = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);; localObject = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888))
-    {
-      Canvas localCanvas = new Canvas((Bitmap)localObject);
-      paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
-      paramDrawable.draw(localCanvas);
-      return localObject;
+    if ((paramDrawable.getIntrinsicWidth() > 0) && (paramDrawable.getIntrinsicHeight() > 0)) {
+      localObject = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+    } else {
+      localObject = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
     }
+    Canvas localCanvas = new Canvas((Bitmap)localObject);
+    paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
+    paramDrawable.draw(localCanvas);
+    return localObject;
   }
   
   private VideoPlayParam a(VideoPlayMedioInfo paramVideoPlayMedioInfo)
   {
     VideoPlayParam localVideoPlayParam = new VideoPlayParam();
-    boolean bool;
-    if (!paramVideoPlayMedioInfo.jdField_a_of_type_Boolean)
+    localVideoPlayParam.mIsLocal = (paramVideoPlayMedioInfo.jdField_a_of_type_Boolean ^ true);
+    if (!localVideoPlayParam.mIsLocal)
     {
-      bool = true;
-      localVideoPlayParam.mIsLocal = bool;
-      if (localVideoPlayParam.mIsLocal) {
-        break label127;
+      if (paramVideoPlayMedioInfo.jdField_a_of_type_AndroidOsBundle != null)
+      {
+        localVideoPlayParam.mSavePath = paramVideoPlayMedioInfo.jdField_a_of_type_AndroidOsBundle.getString("savepath");
+        localVideoPlayParam.mFileID = paramVideoPlayMedioInfo.jdField_a_of_type_AndroidOsBundle.getString("fileid");
       }
-      localVideoPlayParam.mSavePath = paramVideoPlayMedioInfo.jdField_a_of_type_AndroidOsBundle.getString("savepath");
-      localVideoPlayParam.mFileID = paramVideoPlayMedioInfo.jdField_a_of_type_AndroidOsBundle.getString("fileid");
+      else
+      {
+        QLog.e("AIOFileVideoView<FileAssistant>XOXO", 1, "bundle is null!!!");
+      }
       localVideoPlayParam.mUrls = paramVideoPlayMedioInfo.jdField_a_of_type_ArrayOfJavaLangString;
       localVideoPlayParam.mCookies = paramVideoPlayMedioInfo.jdField_a_of_type_JavaUtilArrayList;
       localVideoPlayParam.mVideoFormat = 104;
-      b(1);
+      d(1);
     }
-    for (;;)
+    else
     {
-      localVideoPlayParam.mIsMute = paramVideoPlayMedioInfo.jdField_e_of_type_Boolean;
-      localVideoPlayParam.mSceneId = 109;
-      localVideoPlayParam.mSceneName = SceneID.a(109);
-      localVideoPlayParam.mIsLoop = false;
-      localVideoPlayParam.mNeedPlayProgress = true;
-      a(localVideoPlayParam);
-      return localVideoPlayParam;
-      bool = false;
-      break;
-      label127:
       localVideoPlayParam.mVideoPath = paramVideoPlayMedioInfo.jdField_a_of_type_JavaLangString;
-      b(5);
+      d(3);
     }
+    localVideoPlayParam.mIsMute = paramVideoPlayMedioInfo.jdField_e_of_type_Boolean;
+    localVideoPlayParam.mSceneId = 109;
+    localVideoPlayParam.mSceneName = SceneID.a(109);
+    localVideoPlayParam.mIsLoop = false;
+    localVideoPlayParam.mNeedPlayProgress = true;
+    return localVideoPlayParam;
   }
   
   private String a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    case 7: 
-    default: 
-      return "undefine";
-    case 0: 
-      return "Nomal";
-    case 3: 
-      return "Buffering";
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 4)
+            {
+              if (paramInt != 6)
+              {
+                if (paramInt != 7) {
+                  return "undefine";
+                }
+                return "Saving";
+              }
+              return "Error";
+            }
+            return "Pause";
+          }
+          return "Playing";
+        }
+        return "Buffering";
+      }
       return "Downloading";
-    case 8: 
-      return "Error";
-    case 4: 
-      return "Get URL";
-    case 6: 
-      return "Pause";
-    case 5: 
-      return "Playing";
     }
-    return "Saving";
+    return "Nomal";
   }
   
   private void a(int paramInt1, int paramInt2, VideoPlayParam paramVideoPlayParam)
   {
-    String str1 = null;
     AIOFileVideoData localAIOFileVideoData = a();
+    boolean bool2 = false;
+    Object localObject1;
+    Object localObject2;
     if (paramInt1 == 2)
     {
-      VideoPlayMedioInfo localVideoPlayMedioInfo = new AIOFileVideoModel().a(localAIOFileVideoData, localAIOFileVideoData.i);
-      if ((localVideoPlayMedioInfo != null) && (localVideoPlayMedioInfo.jdField_a_of_type_ArrayOfJavaLangString != null) && (!StringUtil.a(localVideoPlayMedioInfo.jdField_b_of_type_JavaLangString)))
+      localObject1 = new AIOFileVideoModel().a(localAIOFileVideoData, localAIOFileVideoData.i);
+      if ((localObject1 != null) && (((VideoPlayMedioInfo)localObject1).jdField_a_of_type_ArrayOfJavaLangString != null) && (!StringUtil.a(((VideoPlayMedioInfo)localObject1).jdField_b_of_type_JavaLangString)))
       {
-        String[] arrayOfString = localVideoPlayMedioInfo.jdField_a_of_type_ArrayOfJavaLangString;
-        int j = arrayOfString.length;
+        localObject2 = ((VideoPlayMedioInfo)localObject1).jdField_a_of_type_ArrayOfJavaLangString;
+        int j = localObject2.length;
         int i = 0;
         while (i < j)
         {
-          String str2 = arrayOfString[i];
-          if (!StringUtil.a(str2)) {
-            InnerDns.getInstance().reportBadIp(localVideoPlayMedioInfo.jdField_b_of_type_JavaLangString, InnerDns.getHostFromUrl(str2), 1005);
+          String str = localObject2[i];
+          if (!StringUtil.a(str)) {
+            BaseInnerDns.getInstance().reportBadIp(((VideoPlayMedioInfo)localObject1).jdField_b_of_type_JavaLangString, BaseInnerDns.getHostFromUrl(str), ((IVideoDepend)QRoute.api(IVideoDepend.class)).getVideoIpType());
           }
           i += 1;
         }
@@ -250,321 +277,204 @@ public class AIOFileVideoView
       }
     }
     if (paramInt1 == 1) {
-      str1 = this.mContext.getString(2131719374);
+      localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131718273);
+    } else {
+      localObject1 = null;
     }
-    if (localAIOFileVideoData != null) {
-      if (str1 == null) {
-        break label276;
-      }
-    }
-    for (;;)
+    if (localAIOFileVideoData != null)
     {
-      localAIOFileVideoData.jdField_f_of_type_JavaLangString = str1;
-      localAIOFileVideoData.jdField_g_of_type_Int += 1;
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOFileVideoView<FileAssistant>XOXO", 2, "handlePlayError, videoData.mPlayErrTimes = " + localAIOFileVideoData.jdField_g_of_type_Int);
-      if ((!VideoPlatformUtils.a(paramInt2, paramVideoPlayParam)) || (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView == null) || (localAIOFileVideoData == null) || (localAIOFileVideoData.jdField_g_of_type_Int >= 2)) {
-        break;
+      if (localObject1 == null) {
+        localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131718267);
       }
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOFileVideoView<FileAssistant>XOXO", 2, "handlePlayError, auto replay video.");
-      ThreadManager.getUIHandler().post(new AIOFileVideoView.4(this, localAIOFileVideoData));
-      return;
-      label276:
-      str1 = this.mContext.getString(2131719377);
+      localAIOFileVideoData.jdField_f_of_type_JavaLangString = ((String)localObject1);
+      localAIOFileVideoData.jdField_g_of_type_Int += 1;
+      localObject1 = BrowserLogHelper.getInstance().getGalleryLog();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("handlePlayError, videoData.mPlayErrTimes = ");
+      ((StringBuilder)localObject2).append(localAIOFileVideoData.jdField_g_of_type_Int);
+      ((IBrowserLog)localObject1).d("AIOFileVideoView<FileAssistant>XOXO", 2, ((StringBuilder)localObject2).toString());
     }
-    ThreadManager.getUIHandler().post(new AIOFileVideoView.5(this));
+    boolean bool1 = bool2;
+    if (paramVideoPlayParam != null)
+    {
+      bool1 = bool2;
+      if (paramVideoPlayParam.mVideoPath != null)
+      {
+        bool1 = bool2;
+        if (paramVideoPlayParam.mVideoPath.startsWith(AppConstants.SDCARD_FILE_SAVE_PATH)) {
+          bool1 = VideoPlatformUtils.a(paramInt2, paramVideoPlayParam);
+        }
+      }
+    }
+    if ((bool1) && (this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView != null) && (localAIOFileVideoData != null) && (localAIOFileVideoData.jdField_g_of_type_Int < 2))
+    {
+      BrowserLogHelper.getInstance().getGalleryLog().d("AIOFileVideoView<FileAssistant>XOXO", 2, "handlePlayError, auto replay video.");
+      ThreadManager.getUIHandler().post(new AIOFileVideoView.2(this, localAIOFileVideoData));
+      return;
+    }
+    ThreadManager.getUIHandler().post(new AIOFileVideoView.3(this));
   }
   
   private void a(int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOFileVideoView<FileAssistant>XOXO", 2, "tryPlayVideo, position = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("tryPlayVideo, position = ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("AIOFileVideoView<FileAssistant>XOXO", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.getItem(paramInt);
-    AIOFileVideoModel localAIOFileVideoModel;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getItem(paramInt);
     if ((localObject != null) && (((RichMediaBrowserInfo)localObject).baseData != null) && (((RichMediaBrowserInfo)localObject).baseData.getType() == 103))
     {
       localObject = (AIOFileVideoData)((RichMediaBrowserInfo)localObject).baseData;
       if (QLog.isColorLevel()) {
         QLog.d("AIOFileVideoView<FileAssistant>XOXO", 2, String.format("tryPlayVideo, position:%d , msgId:%s request:%b ", new Object[] { Integer.valueOf(paramInt), Long.valueOf(((AIOFileVideoData)localObject).jdField_a_of_type_Long), Boolean.valueOf(((AIOFileVideoData)localObject).jdField_d_of_type_Boolean) }));
       }
-      ((AIOFileVideoData)localObject).h = paramBoolean;
-      localAIOFileVideoModel = new AIOFileVideoModel();
+      ((AIOFileVideoData)localObject).jdField_h_of_type_Boolean = paramBoolean;
+      AIOFileVideoModel localAIOFileVideoModel = new AIOFileVideoModel();
       if ((!localAIOFileVideoModel.a((AIOFileVideoData)localObject)) && (!((AIOFileVideoData)localObject).jdField_d_of_type_Boolean))
       {
-        localAIOFileVideoModel.a((AIOFileVideoData)localObject, (PeakProcessProvider)RichMediaBrowserManager.getInstance().getProvider());
+        localAIOFileVideoModel.a((AIOFileVideoData)localObject, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserIProvider);
         this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a((AIOFileVideoData)localObject);
-        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(((AIOFileVideoData)localObject).jdField_a_of_type_Long, ((AIOFileVideoData)localObject).jdField_a_of_type_Int, 4);
-        updateUI();
+        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(((AIOFileVideoData)localObject).jdField_a_of_type_Long, ((AIOFileVideoData)localObject).jdField_a_of_type_Int, 1);
+        a();
+        return;
       }
+      a(localAIOFileVideoModel.a((AIOFileVideoData)localObject, ((AIOFileVideoData)localObject).i));
+      if ((((AIOFileVideoData)localObject).jdField_f_of_type_Boolean) && (((AIOFileVideoData)localObject).jdField_d_of_type_JavaLangString != null)) {
+        d(3);
+      }
+      a();
     }
-    else
-    {
-      return;
-    }
-    a(localAIOFileVideoModel.a((AIOFileVideoData)localObject, ((AIOFileVideoData)localObject).i));
-    if ((((AIOFileVideoData)localObject).jdField_f_of_type_Boolean) && (((AIOFileVideoData)localObject).jdField_d_of_type_JavaLangString != null)) {
-      b(5);
-    }
-    updateUI();
   }
   
-  /* Error */
   private void a(Bitmap paramBitmap)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aconst_null
-    //   4: astore 5
-    //   6: aload_1
-    //   7: ifnonnull +19 -> 26
-    //   10: invokestatic 69	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   13: ifeq +12 -> 25
-    //   16: ldc 71
-    //   18: iconst_2
-    //   19: ldc_w 434
-    //   22: invokestatic 77	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   25: return
-    //   26: invokestatic 440	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   29: invokevirtual 444	com/tencent/common/app/BaseApplicationImpl:getFilesDir	()Ljava/io/File;
-    //   32: invokevirtual 449	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   35: astore_3
-    //   36: new 446	java/io/File
-    //   39: dup
-    //   40: new 290	java/lang/StringBuilder
-    //   43: dup
-    //   44: invokespecial 291	java/lang/StringBuilder:<init>	()V
-    //   47: aload_3
-    //   48: invokevirtual 297	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   51: getstatic 452	java/io/File:separator	Ljava/lang/String;
-    //   54: invokevirtual 297	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   57: ldc_w 454
-    //   60: invokevirtual 297	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   63: invokevirtual 304	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   66: invokespecial 457	java/io/File:<init>	(Ljava/lang/String;)V
-    //   69: astore_3
-    //   70: aload_3
-    //   71: invokevirtual 460	java/io/File:exists	()Z
-    //   74: ifne +8 -> 82
-    //   77: aload_3
-    //   78: invokevirtual 463	java/io/File:createNewFile	()Z
-    //   81: pop
-    //   82: aload_0
-    //   83: aload_3
-    //   84: invokevirtual 449	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   87: putfield 45	com/tencent/mobileqq/richmediabrowser/view/AIOFileVideoView:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   90: invokestatic 69	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   93: ifeq +32 -> 125
-    //   96: ldc 71
-    //   98: iconst_2
-    //   99: new 290	java/lang/StringBuilder
-    //   102: dup
-    //   103: invokespecial 291	java/lang/StringBuilder:<init>	()V
-    //   106: ldc_w 465
-    //   109: invokevirtual 297	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   112: aload_0
-    //   113: getfield 45	com/tencent/mobileqq/richmediabrowser/view/AIOFileVideoView:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   116: invokevirtual 297	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   119: invokevirtual 304	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   122: invokestatic 77	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   125: aload_1
-    //   126: aload_0
-    //   127: getfield 45	com/tencent/mobileqq/richmediabrowser/view/AIOFileVideoView:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   130: invokestatic 470	com/tencent/mobileqq/filemanager/util/FileUtil:a	(Landroid/graphics/Bitmap;Ljava/lang/String;)Z
-    //   133: pop
-    //   134: new 47	java/util/ArrayList
-    //   137: dup
-    //   138: invokespecial 50	java/util/ArrayList:<init>	()V
-    //   141: astore 6
-    //   143: new 472	android/util/SparseArray
-    //   146: dup
-    //   147: iconst_2
-    //   148: invokespecial 474	android/util/SparseArray:<init>	(I)V
-    //   151: astore 7
-    //   153: aload_1
-    //   154: iconst_1
-    //   155: iconst_3
-    //   156: aload 7
-    //   158: invokestatic 479	com/tencent/biz/qrcode/activity/ScannerUtils:a	(Landroid/graphics/Bitmap;ZILandroid/util/SparseArray;)I
-    //   161: istore_2
-    //   162: iload_2
-    //   163: invokestatic 482	com/tencent/biz/qrcode/activity/ScannerUtils:a	(I)Z
-    //   166: ifeq +98 -> 264
-    //   169: invokestatic 69	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   172: ifeq +12 -> 184
-    //   175: ldc 71
-    //   177: iconst_2
-    //   178: ldc_w 484
-    //   181: invokestatic 77	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   184: aload 7
-    //   186: iconst_1
-    //   187: invokevirtual 488	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   190: astore_1
-    //   191: aload_1
-    //   192: instanceof 490
-    //   195: ifeq +242 -> 437
-    //   198: aload_1
-    //   199: checkcast 490	android/util/Pair
-    //   202: astore_3
-    //   203: new 492	org/json/JSONObject
-    //   206: dup
-    //   207: invokespecial 493	org/json/JSONObject:<init>	()V
-    //   210: astore_1
-    //   211: aload_1
-    //   212: ldc_w 495
-    //   215: aload_3
-    //   216: getfield 499	android/util/Pair:second	Ljava/lang/Object;
-    //   219: invokestatic 502	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   222: invokevirtual 505	java/lang/String:trim	()Ljava/lang/String;
-    //   225: invokevirtual 509	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   228: pop
-    //   229: aload_1
-    //   230: ldc_w 511
-    //   233: aload_3
-    //   234: getfield 514	android/util/Pair:first	Ljava/lang/Object;
-    //   237: invokestatic 502	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   240: invokevirtual 505	java/lang/String:trim	()Ljava/lang/String;
-    //   243: invokevirtual 509	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   246: pop
-    //   247: aload_1
-    //   248: ifnonnull +136 -> 384
-    //   251: ldc 43
-    //   253: astore_1
-    //   254: bipush 126
-    //   256: aload 6
-    //   258: aload_1
-    //   259: iconst_0
-    //   260: invokestatic 519	com/tencent/mobileqq/utils/RichMediaShareActionSheetUtil:a	(ILjava/util/ArrayList;Ljava/lang/String;I)Lcom/tencent/mobileqq/utils/ShareActionSheetBuilder$ActionSheetItem;
-    //   263: pop
-    //   264: iload_2
-    //   265: invokestatic 521	com/tencent/biz/qrcode/activity/ScannerUtils:b	(I)Z
-    //   268: ifeq +74 -> 342
-    //   271: invokestatic 69	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   274: ifeq +12 -> 286
-    //   277: ldc 71
-    //   279: iconst_2
-    //   280: ldc_w 523
-    //   283: invokestatic 77	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   286: aload 7
-    //   288: iconst_2
-    //   289: invokevirtual 488	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   292: astore_3
-    //   293: aload 5
-    //   295: astore_1
-    //   296: aload_3
-    //   297: instanceof 386
-    //   300: ifeq +25 -> 325
-    //   303: aload_3
-    //   304: checkcast 386	java/lang/String
-    //   307: astore_3
-    //   308: new 492	org/json/JSONObject
-    //   311: dup
-    //   312: invokespecial 493	org/json/JSONObject:<init>	()V
-    //   315: astore_1
-    //   316: aload_1
-    //   317: ldc_w 525
-    //   320: aload_3
-    //   321: invokevirtual 509	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   324: pop
-    //   325: aload_1
-    //   326: ifnonnull +77 -> 403
-    //   329: ldc 43
-    //   331: astore_1
-    //   332: bipush 127
-    //   334: aload 6
-    //   336: aload_1
-    //   337: iconst_0
-    //   338: invokestatic 519	com/tencent/mobileqq/utils/RichMediaShareActionSheetUtil:a	(ILjava/util/ArrayList;Ljava/lang/String;I)Lcom/tencent/mobileqq/utils/ShareActionSheetBuilder$ActionSheetItem;
-    //   341: pop
-    //   342: aload 6
-    //   344: invokevirtual 528	java/util/ArrayList:isEmpty	()Z
-    //   347: ifeq +64 -> 411
-    //   350: invokestatic 69	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   353: ifeq -328 -> 25
-    //   356: ldc 71
-    //   358: iconst_2
-    //   359: ldc_w 530
-    //   362: invokestatic 77	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   365: return
-    //   366: astore_3
-    //   367: aload_3
-    //   368: invokevirtual 533	java/io/IOException:printStackTrace	()V
-    //   371: goto -237 -> 134
-    //   374: astore_3
-    //   375: aconst_null
-    //   376: astore_1
-    //   377: aload_3
-    //   378: invokevirtual 534	org/json/JSONException:printStackTrace	()V
-    //   381: goto -134 -> 247
-    //   384: aload_1
-    //   385: invokevirtual 535	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   388: astore_1
-    //   389: goto -135 -> 254
-    //   392: astore_3
-    //   393: aload 4
-    //   395: astore_1
-    //   396: aload_3
-    //   397: invokevirtual 534	org/json/JSONException:printStackTrace	()V
-    //   400: goto -75 -> 325
-    //   403: aload_1
-    //   404: invokevirtual 535	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   407: astore_1
-    //   408: goto -76 -> 332
-    //   411: invokestatic 323	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
-    //   414: new 537	com/tencent/mobileqq/richmediabrowser/view/AIOFileVideoView$6
-    //   417: dup
-    //   418: aload_0
-    //   419: aload 6
-    //   421: invokespecial 540	com/tencent/mobileqq/richmediabrowser/view/AIOFileVideoView$6:<init>	(Lcom/tencent/mobileqq/richmediabrowser/view/AIOFileVideoView;Ljava/util/ArrayList;)V
-    //   424: invokevirtual 334	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
-    //   427: pop
-    //   428: return
-    //   429: astore_3
-    //   430: goto -34 -> 396
-    //   433: astore_3
-    //   434: goto -57 -> 377
-    //   437: aconst_null
-    //   438: astore_1
-    //   439: goto -192 -> 247
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	442	0	this	AIOFileVideoView
-    //   0	442	1	paramBitmap	Bitmap
-    //   161	104	2	i	int
-    //   35	286	3	localObject1	Object
-    //   366	2	3	localIOException	java.io.IOException
-    //   374	4	3	localJSONException1	org.json.JSONException
-    //   392	5	3	localJSONException2	org.json.JSONException
-    //   429	1	3	localJSONException3	org.json.JSONException
-    //   433	1	3	localJSONException4	org.json.JSONException
-    //   1	393	4	localObject2	Object
-    //   4	290	5	localObject3	Object
-    //   141	279	6	localArrayList	ArrayList
-    //   151	136	7	localSparseArray	android.util.SparseArray
-    // Exception table:
-    //   from	to	target	type
-    //   26	82	366	java/io/IOException
-    //   82	125	366	java/io/IOException
-    //   125	134	366	java/io/IOException
-    //   203	211	374	org/json/JSONException
-    //   303	316	392	org/json/JSONException
-    //   316	325	429	org/json/JSONException
-    //   211	247	433	org/json/JSONException
+    if (paramBitmap == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("AIOFileVideoView<FileAssistant>XOXO", 2, "onVideoFrameCallBack, videoFrame null");
+      }
+      return;
+    }
+    try
+    {
+      Object localObject1 = BaseApplication.getContext().getFilesDir().getAbsolutePath();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(File.separator);
+      ((StringBuilder)localObject2).append("tmpaiovideoframe.jpg");
+      localObject1 = new File(((StringBuilder)localObject2).toString());
+      if (!((File)localObject1).exists()) {
+        ((File)localObject1).createNewFile();
+      }
+      this.jdField_b_of_type_JavaLangString = ((File)localObject1).getAbsolutePath();
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("onVideoFrameCallBack, write tmp file:");
+        ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+        QLog.i("AIOFileVideoView<FileAssistant>XOXO", 2, ((StringBuilder)localObject1).toString());
+      }
+      RichMediaBrowserUtils.a(paramBitmap, this.jdField_b_of_type_JavaLangString);
+    }
+    catch (IOException localIOException)
+    {
+      localIOException.printStackTrace();
+    }
+    ArrayList localArrayList = new ArrayList();
+    Pair localPair2 = ((IFileDepend)QRoute.api(IFileDepend.class)).getDetectCode(paramBitmap);
+    paramBitmap = localPair2.first;
+    Object localObject2 = "";
+    Object localObject4 = null;
+    Object localObject3 = null;
+    if (paramBitmap != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("AIOFileVideoView<FileAssistant>XOXO", 2, "onVideoFrameCallBack, detected QRCode, build item");
+      }
+      if ((localPair2.first instanceof Pair))
+      {
+        Pair localPair1 = (Pair)localPair2.first;
+        try
+        {
+          paramBitmap = new JSONObject();
+          try
+          {
+            paramBitmap.put("scannerType", String.valueOf(localPair1.second).trim());
+            paramBitmap.put("scannerResult", String.valueOf(localPair1.first).trim());
+          }
+          catch (JSONException localJSONException1) {}
+          localJSONException2.printStackTrace();
+        }
+        catch (JSONException localJSONException2)
+        {
+          paramBitmap = null;
+        }
+      }
+      else
+      {
+        paramBitmap = null;
+      }
+      if (paramBitmap == null) {
+        paramBitmap = "";
+      } else {
+        paramBitmap = paramBitmap.toString();
+      }
+      RichMediaBrowserUtils.a(126, localArrayList, paramBitmap, 0);
+    }
+    if (localPair2.second != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("AIOFileVideoView<FileAssistant>XOXO", 2, "onVideoFrameCallBack, detected MiniCode, build item");
+      }
+      paramBitmap = localObject4;
+      if ((localPair2.second instanceof String)) {
+        try
+        {
+          String str = (String)localPair2.second;
+          paramBitmap = new JSONObject();
+          try
+          {
+            paramBitmap.put("strMini", str);
+          }
+          catch (JSONException localJSONException3) {}
+          localJSONException4.printStackTrace();
+        }
+        catch (JSONException localJSONException4)
+        {
+          paramBitmap = localObject3;
+        }
+      }
+      if (paramBitmap == null) {
+        paramBitmap = (Bitmap)localObject2;
+      } else {
+        paramBitmap = paramBitmap.toString();
+      }
+      RichMediaBrowserUtils.a(127, localArrayList, paramBitmap, 0);
+    }
+    if (localArrayList.isEmpty())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("AIOFileVideoView<FileAssistant>XOXO", 2, "onVideoFrameCallBack, detected nothing");
+      }
+    }
+    else {
+      ThreadManager.getUIHandler().post(new AIOFileVideoView.4(this, localArrayList));
+    }
   }
   
   private void a(VideoPlayMedioInfo paramVideoPlayMedioInfo)
   {
-    paramVideoPlayMedioInfo = a(paramVideoPlayMedioInfo);
-    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView != null)
+    this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam = a(paramVideoPlayMedioInfo);
+    this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.setVideoPlayCallback(this);
+    if (this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.setVideoParam(paramVideoPlayMedioInfo);
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.play();
+      this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.setVideoPlayCallback(this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam);
+      this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView.setVideoParam(this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam);
+      this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView.play();
     }
-  }
-  
-  private void a(VideoPlayParam paramVideoPlayParam)
-  {
-    paramVideoPlayParam.mCallback = new AIOFileVideoView.3(this, paramVideoPlayParam);
   }
   
   private boolean a(AIOFileVideoData paramAIOFileVideoData, boolean paramBoolean)
@@ -582,24 +492,77 @@ public class AIOFileVideoView
     }
     if (paramBoolean)
     {
-      RichMediaBrowserInfo localRichMediaBrowserInfo = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.getSelectedItem();
-      if ((localRichMediaBrowserInfo == null) || (!(localRichMediaBrowserInfo.baseData instanceof AIOFileVideoData))) {
-        break label74;
+      RichMediaBrowserInfo localRichMediaBrowserInfo = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getSelectedItem();
+      if ((localRichMediaBrowserInfo != null) && ((localRichMediaBrowserInfo.baseData instanceof AIOFileVideoData)))
+      {
+        if (!FileUtils.fileExistsAndNotEmpty(((AIOFileVideoData)localRichMediaBrowserInfo.baseData).jdField_c_of_type_JavaLangString)) {
+          return false;
+        }
+        this.e.setVisibility(0);
+        return true;
       }
-      if (!FileUtils.b(((AIOFileVideoData)localRichMediaBrowserInfo.baseData).jdField_c_of_type_JavaLangString)) {
-        return false;
-      }
-      this.e.setVisibility(0);
     }
-    label74:
-    for (paramBoolean = true;; paramBoolean = false)
+    else
     {
-      return paramBoolean;
       this.e.setVisibility(4);
     }
+    return false;
   }
   
-  private void b(int paramInt)
+  private int b(int paramInt)
+  {
+    if (paramInt == 0) {
+      return 1;
+    }
+    if (paramInt == 1) {
+      return 2;
+    }
+    if (paramInt == 3000) {
+      return 3;
+    }
+    return 9;
+  }
+  
+  private void b(AIOFileVideoData paramAIOFileVideoData)
+  {
+    if ((!PermissionUtil.a(this.jdField_a_of_type_AndroidContentContext)) && ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)))
+    {
+      PermissionUtil.a((Activity)this.jdField_a_of_type_AndroidContentContext, null);
+      return;
+    }
+    if (new AIOFileVideoModel().a(paramAIOFileVideoData))
+    {
+      ((IFileDepend)QRoute.api(IFileDepend.class)).saveToAlbum(this.jdField_a_of_type_AndroidContentContext, paramAIOFileVideoData.jdField_c_of_type_JavaLangString);
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    IProvider localIProvider = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserIProvider;
+    if (localIProvider != null) {
+      localIProvider.a(paramAIOFileVideoData.jdField_a_of_type_Long, 13, localBundle);
+    }
+    paramAIOFileVideoData.j = true;
+    a(paramAIOFileVideoData.jdField_a_of_type_Long, paramAIOFileVideoData.jdField_a_of_type_Int);
+    a();
+  }
+  
+  private void b(AIOFileVideoData paramAIOFileVideoData, int paramInt)
+  {
+    String str;
+    if (MessageRecordInfo.a(paramAIOFileVideoData.jdField_f_of_type_Int)) {
+      str = ParamsManager.a().d();
+    } else {
+      str = ParamsManager.a().c();
+    }
+    ((IVideoDepend)QRoute.api(IVideoDepend.class)).onQRDecodeSucceed(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramAIOFileVideoData.jdField_e_of_type_Int, true, str, null, null, paramAIOFileVideoData.jdField_h_of_type_JavaLangString, paramInt, ParamsManager.a().d(), ParamsManager.a().c());
+  }
+  
+  private boolean c()
+  {
+    IProvider localIProvider = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserIProvider;
+    return (localIProvider != null) && (localIProvider.a());
+  }
+  
+  private void d(int paramInt)
   {
     AIOFileVideoData localAIOFileVideoData = a();
     if (localAIOFileVideoData != null) {
@@ -607,249 +570,562 @@ public class AIOFileVideoView
     }
   }
   
-  private void b(AIOFileVideoData paramAIOFileVideoData)
-  {
-    if (!CheckPermission.isHasStoragePermission(this.mContext))
-    {
-      CheckPermission.requestStorePermission(this.mContext, null);
-      return;
-    }
-    if (new AIOFileVideoModel().a(paramAIOFileVideoData))
-    {
-      FileManagerUtil.a(this.mContext, paramAIOFileVideoData.jdField_c_of_type_JavaLangString);
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    if (RichMediaBrowserManager.getInstance().getProvider() != null) {
-      RichMediaBrowserManager.getInstance().getProvider().onFileVideoStatusChange(paramAIOFileVideoData.jdField_a_of_type_Long, 13, localBundle);
-    }
-    paramAIOFileVideoData.j = true;
-    a(paramAIOFileVideoData.jdField_a_of_type_Long, paramAIOFileVideoData.jdField_a_of_type_Int);
-    updateUI();
-  }
-  
-  private boolean c()
-  {
-    return (RichMediaBrowserManager.getInstance().getProvider() != null) && (RichMediaBrowserManager.getInstance().getProvider().isPingBinder());
-  }
-  
   private void i(boolean paramBoolean)
   {
-    View localView;
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (localView != null)
     {
-      localView = this.jdField_a_of_type_AndroidViewView;
-      if (!paramBoolean) {
-        break label24;
+      int i;
+      if (paramBoolean) {
+        i = 0;
+      } else {
+        i = 8;
       }
-    }
-    label24:
-    for (int i = 0;; i = 8)
-    {
       localView.setVisibility(i);
-      return;
     }
   }
   
-  private void j()
+  private void q()
   {
-    if ((VersionUtils.b()) && (this.mContext != null))
-    {
-      Activity localActivity1 = this.mContext;
-      Activity localActivity2 = this.mContext;
-      ((AudioManager)localActivity1.getSystemService("audio")).abandonAudioFocus(null);
+    Object localObject = this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView;
+    if (localObject != null) {
+      ((VideoView)localObject).pauseVideo();
     }
-  }
-  
-  private void k()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.pause();
-    }
-    j();
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.getCurrentPosition())) {
+    localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter;
+    if (((AIOFileVideoPresenter)localObject).a(((AIOFileVideoPresenter)localObject).jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getCurrentPosition())) {
       this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(true);
     }
   }
   
-  private void l()
+  private void r()
   {
     AIOFileVideoData localAIOFileVideoData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a();
-    if ((localAIOFileVideoData == null) || (!FileUtils.b(localAIOFileVideoData.jdField_c_of_type_JavaLangString))) {}
-    do
+    if (localAIOFileVideoData != null)
     {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenVideoviewTVKVideoController != null) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenVideoviewTVKVideoController.b();
+      if (!FileUtils.fileExistsAndNotEmpty(localAIOFileVideoData.jdField_c_of_type_JavaLangString)) {
+        return;
       }
-      long l = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.getCurPlayingPos();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenVideoviewTVKVideoController = new TVKVideoController(this.mContext);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenVideoviewTVKVideoController.a(localAIOFileVideoData.jdField_c_of_type_JavaLangString, localAIOFileVideoData.jdField_a_of_type_Long, l);
-      if (FileUtils.b(localAIOFileVideoData.jdField_b_of_type_JavaLangString)) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenVideoviewTVKVideoController.a(localAIOFileVideoData.jdField_b_of_type_JavaLangString, localAIOFileVideoData.jdField_c_of_type_Int, localAIOFileVideoData.jdField_d_of_type_Int);
+      TVKVideoController localTVKVideoController = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserQqfloatingscreenTVKVideoController;
+      if (localTVKVideoController != null) {
+        localTVKVideoController.b();
       }
-    } while (!this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenVideoviewTVKVideoController.a(localAIOFileVideoData.jdField_b_of_type_Int, localAIOFileVideoData.jdField_c_of_type_Int, localAIOFileVideoData.jdField_d_of_type_Int));
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.back();
+      long l = this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView.getCurPlayingPos();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserQqfloatingscreenTVKVideoController = new TVKVideoController(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserQqfloatingscreenTVKVideoController.a(localAIOFileVideoData.jdField_c_of_type_JavaLangString, localAIOFileVideoData.jdField_a_of_type_Long, l);
+      if (FileUtils.fileExistsAndNotEmpty(localAIOFileVideoData.jdField_b_of_type_JavaLangString)) {
+        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserQqfloatingscreenTVKVideoController.a(localAIOFileVideoData.jdField_b_of_type_JavaLangString, localAIOFileVideoData.jdField_c_of_type_Int, localAIOFileVideoData.jdField_d_of_type_Int);
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserQqfloatingscreenTVKVideoController.a(localAIOFileVideoData.jdField_b_of_type_Int, localAIOFileVideoData.jdField_c_of_type_Int, localAIOFileVideoData.jdField_d_of_type_Int)) {
+        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.d();
+      }
+    }
+  }
+  
+  public long a()
+  {
+    VideoView localVideoView = this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView;
+    if ((localVideoView != null) && (localVideoView.mVideoView != null)) {
+      return this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView.getCurPlayingPos();
+    }
+    return 0L;
+  }
+  
+  public View a(View paramView, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562764, null));
+    j();
+    if (this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.videoControlContainer != null) {
+      this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.videoControlContainer.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    }
+    return this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mBrowserItemView;
   }
   
   public AIOFileVideoData a()
   {
-    RichMediaBrowserInfo localRichMediaBrowserInfo = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.getSelectedItem();
-    if ((localRichMediaBrowserInfo != null) && (localRichMediaBrowserInfo.baseData != null) && (localRichMediaBrowserInfo.baseData.getType() == 103)) {
-      return (AIOFileVideoData)localRichMediaBrowserInfo.baseData;
+    return this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a();
+  }
+  
+  public void a()
+  {
+    super.a();
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a();
+    if ((localObject1 != null) && (this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView != null))
+    {
+      c(b());
+      d(a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getSelectedItem()));
+      Object localObject2 = BrowserLogHelper.getInstance().getGalleryLog();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateUI id = ");
+      localStringBuilder.append(((AIOFileVideoData)localObject1).id);
+      localStringBuilder.append(", status = ");
+      localStringBuilder.append(((AIOFileVideoData)localObject1).a());
+      ((IBrowserLog)localObject2).d("AIOFileVideoView<FileAssistant>XOXO", 4, localStringBuilder.toString());
+      int j = ((AIOFileVideoData)localObject1).status;
+      int i = 8;
+      if (j != 0)
+      {
+        float f;
+        if (j != 1)
+        {
+          if (j != 2)
+          {
+            if (j != 3)
+            {
+              if (j != 4)
+              {
+                if (j != 6)
+                {
+                  if (j != 7)
+                  {
+                    localObject2 = BrowserLogHelper.getInstance().getGalleryLog();
+                    localStringBuilder = new StringBuilder();
+                    localStringBuilder.append("updateUI status is error, status = ");
+                    localStringBuilder.append(((AIOFileVideoData)localObject1).status);
+                    ((IBrowserLog)localObject2).d("AIOFileVideoView<FileAssistant>XOXO", 4, localStringBuilder.toString());
+                    return;
+                  }
+                  this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.onLoadFinish(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getSelectedIndex(), true);
+                  f = (float)((AIOFileVideoData)localObject1).jdField_g_of_type_Long / (float)((AIOFileVideoData)localObject1).jdField_c_of_type_Long * 100.0F;
+                  localObject1 = new DecimalFormat("0.00").format(f);
+                  localObject2 = this.jdField_a_of_type_AndroidWidgetTextView;
+                  localStringBuilder = new StringBuilder();
+                  localStringBuilder.append(this.jdField_a_of_type_AndroidContentContext.getString(2131718262));
+                  localStringBuilder.append((String)localObject1);
+                  localStringBuilder.append("%");
+                  ((TextView)localObject2).setText(localStringBuilder.toString());
+                  this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+                  this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress((int)f * 100);
+                  this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.bufferPanel.setVisibility(8);
+                  this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.showPlayPanel(false);
+                  g(true);
+                  d(false);
+                  this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mErrLayout.setVisibility(8);
+                  this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mCenterPlayBtn.setVisibility(8);
+                  a(false);
+                  return;
+                }
+                this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.onLoadFinish(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getSelectedIndex(), true);
+                this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.showPlayPanel(false);
+                if (((AIOFileVideoData)localObject1).jdField_f_of_type_Boolean)
+                {
+                  g(false);
+                }
+                else
+                {
+                  localObject2 = new StringBuilder();
+                  ((StringBuilder)localObject2).append(this.jdField_a_of_type_AndroidContentContext.getString(2131718238));
+                  ((StringBuilder)localObject2).append("(");
+                  ((StringBuilder)localObject2).append(FileSizeFormat.a(((AIOFileVideoData)localObject1).jdField_g_of_type_Long));
+                  ((StringBuilder)localObject2).append("/");
+                  ((StringBuilder)localObject2).append(FileSizeFormat.a(((AIOFileVideoData)localObject1).jdField_c_of_type_Long));
+                  ((StringBuilder)localObject2).append(")");
+                  localObject2 = ((StringBuilder)localObject2).toString();
+                  this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
+                  this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+                  f = (float)((AIOFileVideoData)localObject1).jdField_g_of_type_Long / (float)((AIOFileVideoData)localObject1).jdField_c_of_type_Long;
+                  this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress((int)(f * 100.0F) * 100);
+                  g(true);
+                }
+                this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.bufferPanel.setVisibility(8);
+                this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mErrLayout.setVisibility(0);
+                this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mCenterPlayBtn.setVisibility(8);
+                this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.playButton.setImageResource(2130846308);
+                a(false);
+                return;
+              }
+              this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.onLoadFinish(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getSelectedIndex(), true);
+              this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.showPlayPanel(false);
+              g(false);
+              this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.bufferPanel.setVisibility(8);
+              this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mErrLayout.setVisibility(8);
+              this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mCenterPlayBtn.setVisibility(0);
+              this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.playButton.setImageResource(2130846308);
+              a(true);
+              this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+              return;
+            }
+            this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.onLoadFinish(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getSelectedIndex(), true);
+            this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.showPlayPanel(true);
+            g(false);
+            this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.bufferPanel.setVisibility(8);
+            this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mErrLayout.setVisibility(8);
+            this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mCenterPlayBtn.setVisibility(8);
+            this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.playButton.setImageResource(2130846309);
+            a(true);
+            this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.coverView.setVisibility(8);
+            this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+            if (this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView != null)
+            {
+              long l = this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView.getVideoDurationMs();
+              localObject1 = BrowserLogHelper.getInstance().getGalleryLog();
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("videoDuration = ");
+              ((StringBuilder)localObject2).append(l);
+              ((IBrowserLog)localObject1).d("AIOFileVideoView<FileAssistant>XOXO", 4, ((StringBuilder)localObject2).toString());
+              this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.totalTime.setText(BrowserUtils.a(l));
+              this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.progressTime.setText(BrowserUtils.a(0L));
+            }
+          }
+          else
+          {
+            if (this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView.isPlaying()) {
+              this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.bufferPanel.setVisibility(0);
+            } else {
+              this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.bufferPanel.setVisibility(8);
+            }
+            this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+            this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.onLoadFinish(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getSelectedIndex(), true);
+            if (((AIOFileVideoData)localObject1).jdField_f_of_type_Boolean)
+            {
+              this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.showPlayPanel(true);
+              g(false);
+            }
+            else
+            {
+              g(true);
+              this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.showPlayPanel(false);
+              d(false);
+            }
+            this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mCenterPlayBtn.setVisibility(8);
+            this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mErrLayout.setVisibility(8);
+            a(true);
+          }
+        }
+        else
+        {
+          this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.onLoadFinish(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getSelectedIndex(), true);
+          this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.showPlayPanel(false);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(this.jdField_a_of_type_AndroidContentContext.getString(2131718238));
+          ((StringBuilder)localObject2).append("(");
+          ((StringBuilder)localObject2).append(FileSizeFormat.a(((AIOFileVideoData)localObject1).jdField_g_of_type_Long));
+          ((StringBuilder)localObject2).append("/");
+          ((StringBuilder)localObject2).append(FileSizeFormat.a(((AIOFileVideoData)localObject1).jdField_c_of_type_Long));
+          ((StringBuilder)localObject2).append(")");
+          localObject2 = ((StringBuilder)localObject2).toString();
+          this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
+          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+          f = (float)((AIOFileVideoData)localObject1).jdField_g_of_type_Long / (float)((AIOFileVideoData)localObject1).jdField_c_of_type_Long;
+          this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress((int)(f * 100.0F) * 100);
+          g(true);
+          d(false);
+          this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.bufferPanel.setVisibility(8);
+          this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mErrLayout.setVisibility(8);
+          this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mCenterPlayBtn.setVisibility(8);
+          a(false);
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.onLoadFinish(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getSelectedIndex(), true);
+        this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.showPlayPanel(false);
+        g(false);
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.bufferPanel.setVisibility(8);
+        this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mErrLayout.setVisibility(8);
+        localObject2 = this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mCenterPlayBtn;
+        if (!((AIOFileVideoData)localObject1).jdField_h_of_type_Boolean) {
+          i = 0;
+        }
+        ((ImageView)localObject2).setVisibility(i);
+        this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.playButton.setImageResource(2130846308);
+        this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.progressTime.setText(BrowserUtils.a(0L));
+        this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.playBar.setProgress(0);
+        if (((AIOFileVideoData)localObject1).jdField_f_of_type_Boolean) {
+          a(true);
+        } else {
+          a(false);
+        }
+        this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.coverView.setVisibility(0);
+      }
     }
-    return null;
   }
   
   public void a(int paramInt)
   {
     super.a(paramInt);
-    AIOFileVideoData localAIOFileVideoData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a();
-    if (localAIOFileVideoData != null) {
-      a(localAIOFileVideoData, paramInt);
+    RichMediaBrowserInfo localRichMediaBrowserInfo = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getItem(paramInt);
+    if (localRichMediaBrowserInfo != null)
+    {
+      if (localRichMediaBrowserInfo.baseData == null) {
+        return;
+      }
+      if (localRichMediaBrowserInfo.baseData.getType() == 103)
+      {
+        Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a();
+        if ((localObject1 != null) && (((RichMediaBrowserInfo)localObject1).baseData != null) && (((RichMediaBrowserInfo)localObject1).baseData.getType() == 103) && (((AIOBrowserBaseData)((RichMediaBrowserInfo)localObject1).baseData).jdField_a_of_type_Long == ((AIOBrowserBaseData)localRichMediaBrowserInfo.baseData).jdField_a_of_type_Long) && (!((RichMediaBrowserInfo)localObject1).isReport))
+        {
+          ReportController.b(null, "dc00898", "", "", "0X8009EF3", "0X8009EF3", 1, 0, "", "", "", "");
+          ((RichMediaBrowserInfo)localObject1).isReport = true;
+        }
+        else
+        {
+          ReportController.b(null, "dc00898", "", "", "0X8009EF3", "0X8009EF3", 2, 0, "", "", "", "");
+        }
+        AIOFileVideoData localAIOFileVideoData = (AIOFileVideoData)localRichMediaBrowserInfo.baseData;
+        AIOFileVideoModel localAIOFileVideoModel = new AIOFileVideoModel();
+        localObject1 = (Drawable)this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.mActiveDrawable.get(Integer.valueOf(paramInt));
+        if (!localAIOFileVideoModel.b(localAIOFileVideoData)) {
+          if ((localObject1 != null) && (((URLDrawable)localObject1).getStatus() == 1))
+          {
+            this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.onLoadFinish(paramInt, true);
+          }
+          else if (!TextUtils.isEmpty(localAIOFileVideoData.jdField_b_of_type_JavaLangString))
+          {
+            Object localObject2 = new File(localAIOFileVideoData.jdField_b_of_type_JavaLangString);
+            if (((File)localObject2).exists())
+            {
+              localObject1 = URLDrawable.URLDrawableOptions.obtain();
+              ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = this.jdField_a_of_type_Int;
+              ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = this.jdField_b_of_type_Int;
+              ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = URLDrawableHelperConstants.a;
+              ((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage = true;
+              ((URLDrawable.URLDrawableOptions)localObject1).mUseExifOrientation = false;
+              localObject1 = URLDrawable.getDrawable((File)localObject2, (URLDrawable.URLDrawableOptions)localObject1);
+              localObject2 = (URLDrawable)localObject1;
+              ((URLDrawable)localObject2).setTag(Integer.valueOf(1));
+              this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.mActiveDrawable.put(Integer.valueOf(paramInt), localObject2);
+            }
+          }
+          else
+          {
+            localObject1 = BaseApplication.getContext().getResources().getDrawable(2130849901);
+          }
+        }
+        this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.coverView.setImageDrawable((Drawable)localObject1);
+        if (localAIOFileVideoModel.b(localAIOFileVideoData)) {
+          this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.coverView.setImageDrawable(null);
+        }
+        if (localRichMediaBrowserInfo.isEnterImage) {
+          localAIOFileVideoData.jdField_g_of_type_Boolean = true;
+        }
+        localObject1 = new AIOFileVideoView.GalleryFileVideoViewHolder(this);
+        ((AIOFileVideoView.GalleryFileVideoViewHolder)localObject1).a = this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView;
+        this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mBrowserItemView.setTag(localObject1);
+      }
     }
   }
   
-  public void a(int paramInt1, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt2, Bundle paramBundle)
+  public void a(int paramInt, View paramView)
   {
-    BrowserLogHelper.getInstance().getGalleryLog().d("AIOFileVideoView<FileAssistant>XOXO", 4, "setVideoDrawableWithUrls position = " + paramInt1);
-    RichMediaBrowserInfo localRichMediaBrowserInfo = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.getItem(paramInt1);
-    if ((localRichMediaBrowserInfo == null) || (localRichMediaBrowserInfo.baseData == null)) {}
-    boolean bool;
-    for (;;)
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.mActiveDrawable != null) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.mActiveDrawable.remove(Integer.valueOf(paramInt));
+    }
+  }
+  
+  public void a(int paramInt1, String paramString1, String[] paramArrayOfString, String paramString2, MessageRecord paramMessageRecord, int paramInt2, Bundle paramBundle)
+  {
+    paramString2 = BrowserLogHelper.getInstance().getGalleryLog();
+    paramMessageRecord = new StringBuilder();
+    paramMessageRecord.append("setVideoDrawableWithUrls position = ");
+    paramMessageRecord.append(paramInt1);
+    paramString2.d("AIOFileVideoView<FileAssistant>XOXO", 4, paramMessageRecord.toString());
+    RichMediaBrowserInfo localRichMediaBrowserInfo = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getItem(paramInt1);
+    if (localRichMediaBrowserInfo != null)
     {
-      return;
+      if (localRichMediaBrowserInfo.baseData == null) {
+        return;
+      }
       if (localRichMediaBrowserInfo.baseData.getType() == 103)
       {
         paramString2 = (AIOFileVideoData)localRichMediaBrowserInfo.baseData;
         paramString2.jdField_a_of_type_AndroidOsBundle = paramBundle;
-        paramMessageForShortVideo = new AIOFileVideoModel();
+        paramMessageRecord = new AIOFileVideoModel();
         if (paramString2.jdField_d_of_type_Boolean)
         {
-          BrowserLogHelper.getInstance().getGalleryLog().d("AIOFileVideoView<FileAssistant>XOXO", 4, "fileVideo is playing:" + paramString2.id);
+          paramString1 = BrowserLogHelper.getInstance().getGalleryLog();
+          paramArrayOfString = new StringBuilder();
+          paramArrayOfString.append("fileVideo is playing:");
+          paramArrayOfString.append(paramString2.id);
+          paramString1.d("AIOFileVideoView<FileAssistant>XOXO", 4, paramArrayOfString.toString());
           return;
         }
         paramString2.jdField_c_of_type_JavaLangString = paramString1;
         paramString2.jdField_d_of_type_Boolean = true;
-        if ("I:E".equals(paramString1)) {
-          try
-          {
-            paramString2.jdField_f_of_type_Long = Long.parseLong(paramArrayOfString[0]);
-            paramString1 = paramArrayOfString[1];
-            ((AIOFileVideoData)localRichMediaBrowserInfo.baseData).jdField_f_of_type_JavaLangString = paramString1;
-            this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(paramString2.jdField_a_of_type_Long, paramString2.jdField_a_of_type_Int, 8);
-            if (paramString2.jdField_f_of_type_Long == -134L)
-            {
-              paramString1 = this.mContext.getString(2131719385);
-              bool = true;
-              if (bool)
-              {
-                paramString1 = DialogUtil.a(this.mContext, 230, "", paramString1, null, HardCodeUtil.a(2131700148), new AIOFileVideoView.2(this), null);
-                if (paramString1.isShowing()) {
-                  continue;
-                }
-                paramString1.show();
-                return;
-              }
-            }
-          }
-          catch (NumberFormatException paramString1)
-          {
-            paramString2.jdField_f_of_type_Long = -1L;
-            paramString2.jdField_e_of_type_JavaLangString = paramArrayOfString[1];
-          }
-        }
+        if (!"I:E".equals(paramString1)) {}
       }
     }
-    for (;;)
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(paramString2.jdField_a_of_type_Long, paramString2.jdField_a_of_type_Int, 0);
-      paramString1 = paramMessageForShortVideo.a(paramString2, paramString2.i);
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOFileVideoView<FileAssistant>XOXO", 4, "setVideoDrawableWithUrls autoPlay id = " + paramString2.id);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(paramString2.jdField_a_of_type_Long, paramString2.jdField_a_of_type_Int, 5);
-      a(paramString1);
+      paramString2.jdField_f_of_type_Long = Long.parseLong(paramArrayOfString[0]);
+      paramString1 = paramArrayOfString[1];
+      ((AIOFileVideoData)localRichMediaBrowserInfo.baseData).jdField_f_of_type_JavaLangString = paramString1;
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(paramString2.jdField_a_of_type_Long, paramString2.jdField_a_of_type_Int, 6);
+      boolean bool;
+      if (((IFileDepend)QRoute.api(IFileDepend.class)).isVideoFileError(paramString2.jdField_f_of_type_Long))
+      {
+        paramString1 = this.jdField_a_of_type_AndroidContentContext.getString(2131718274);
+        bool = true;
+      }
+      else
+      {
+        bool = a(paramString2, false);
+      }
+      if (!bool) {
+        break label344;
+      }
+      paramString1 = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, "", paramString1, null, this.jdField_a_of_type_AndroidContentContext.getString(2131718246), new AIOFileVideoView.1(this), null);
+      if (!paramString1.isShowing()) {
+        paramString1.show();
+      }
       return;
-      bool = a(paramString2, false);
-      break;
-      paramString2.jdField_d_of_type_JavaLangString = paramArrayOfString[0];
-      paramString2.jdField_a_of_type_JavaUtilArrayList = paramBundle.getStringArrayList("cookies");
     }
+    catch (NumberFormatException paramString1)
+    {
+      label336:
+      break label336;
+    }
+    paramString2.jdField_f_of_type_Long = -1L;
+    label344:
+    paramString2.jdField_e_of_type_JavaLangString = paramArrayOfString[1];
+    break label376;
+    paramString2.jdField_d_of_type_JavaLangString = paramArrayOfString[0];
+    paramString2.jdField_a_of_type_JavaUtilArrayList = paramBundle.getStringArrayList("cookies");
+    label376:
+    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(paramString2.jdField_a_of_type_Long, paramString2.jdField_a_of_type_Int, 0);
+    paramString1 = paramMessageRecord.a(paramString2, paramString2.i);
+    paramArrayOfString = BrowserLogHelper.getInstance().getGalleryLog();
+    paramMessageRecord = new StringBuilder();
+    paramMessageRecord.append("setVideoDrawableWithUrls autoPlay id = ");
+    paramMessageRecord.append(paramString2.id);
+    paramArrayOfString.d("AIOFileVideoView<FileAssistant>XOXO", 4, paramMessageRecord.toString());
+    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(paramString2.jdField_a_of_type_Long, paramString2.jdField_a_of_type_Int, 3);
+    a(paramString1);
   }
   
   public void a(long paramLong)
   {
     super.a(paramLong);
-    RichMediaBrowserInfo localRichMediaBrowserInfo = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.getSelectedItem();
-    if ((localRichMediaBrowserInfo == null) || (localRichMediaBrowserInfo.baseData == null) || (localRichMediaBrowserInfo.baseData.getType() != 103)) {
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOFileVideoView<FileAssistant>XOXO", 4, "onRevokeMsg exp!");
-    }
-    while ((this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView == null) || (!this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.isPlaying())) {
+    RichMediaBrowserInfo localRichMediaBrowserInfo = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getSelectedItem();
+    if ((localRichMediaBrowserInfo != null) && (localRichMediaBrowserInfo.baseData != null) && (localRichMediaBrowserInfo.baseData.getType() == 103))
+    {
+      if ((this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView != null) && (this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView.isPlaying())) {
+        this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView.pause();
+      }
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.pause();
+    BrowserLogHelper.getInstance().getGalleryLog().d("AIOFileVideoView<FileAssistant>XOXO", 4, "onRevokeMsg exp!");
   }
   
   public void a(long paramLong, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(paramLong, paramInt, 2);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(paramLong, paramInt, 7);
   }
   
-  public void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3, Bundle paramBundle)
+  public void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageRecord paramMessageRecord, int paramInt3, Bundle paramBundle)
   {
     this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(paramLong, paramInt1, paramInt2, paramString1);
-    a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.getSelectedIndex(), paramString1, paramArrayOfString, paramString2, paramMessageForShortVideo, paramInt3, paramBundle);
+    a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getSelectedIndex(), paramString1, paramArrayOfString, paramString2, paramMessageRecord, paramInt3, paramBundle);
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    super.a(paramIntent);
+    this.jdField_c_of_type_Int = (ViewUtils.a() / 2);
+    if ((this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter != null) && ((this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.getParamsBuilder().a() instanceof IProvider))) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserIProvider = ((IProvider)this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.getParamsBuilder().a());
+    }
+  }
+  
+  public void a(SeekBar paramSeekBar)
+  {
+    BrowserLogHelper.getInstance().getGalleryLog().d("AIOFileVideoView<FileAssistant>XOXO", 4, "onStopTrackingTouch");
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a() != null)
+    {
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter;
+      if ((((AIOFileVideoPresenter)localObject).a(((AIOFileVideoPresenter)localObject).jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getCurrentPosition())) && (paramSeekBar != null))
+      {
+        BrowserLogHelper.getInstance().getGalleryLog().d("AIOFileVideoView<FileAssistant>XOXO", 4, "seek danmaku");
+        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a().a(paramSeekBar.getProgress());
+        localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a();
+        if (localObject != null) {
+          this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a().a(BrowserDanmakuUtils.a(((AIOFileVideoData)localObject).jdField_d_of_type_Long, paramSeekBar.getProgress(), this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(), this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap));
+        }
+      }
+    }
+  }
+  
+  public void a(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.l();
+    }
   }
   
   public void a(AIOFileVideoData paramAIOFileVideoData)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setItemClickListenerV2(new AIOFileVideoView.8(this, paramAIOFileVideoData));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setItemClickListenerV2(new AIOFileVideoView.6(this, paramAIOFileVideoData));
   }
   
   public void a(AIOFileVideoData paramAIOFileVideoData, int paramInt)
   {
-    if ((this.mContext != null) && (this.mContext.getIntent() != null)) {
-      this.mContext.getIntent().putExtra("big_brother_source_key", "biz_src_jc_file");
+    if (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent() != null)) {
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().putExtra("big_brother_source_key", "biz_src_jc_file");
     }
     this.jdField_b_of_type_JavaUtilArrayList.clear();
     this.jdField_c_of_type_JavaUtilArrayList.clear();
-    RichMediaShareActionSheetUtil.a(2, this.jdField_b_of_type_JavaUtilArrayList);
-    RichMediaShareActionSheetUtil.a(27, this.jdField_b_of_type_JavaUtilArrayList);
-    RichMediaShareActionSheetUtil.a(39, this.jdField_c_of_type_JavaUtilArrayList);
-    RichMediaShareActionSheetUtil.a(6, this.jdField_c_of_type_JavaUtilArrayList);
+    RichMediaBrowserUtils.a(2, this.jdField_b_of_type_JavaUtilArrayList);
+    RichMediaBrowserUtils.a(27, this.jdField_b_of_type_JavaUtilArrayList);
+    if ((paramAIOFileVideoData.isLocal) || (paramAIOFileVideoData.jdField_f_of_type_Boolean)) {
+      RichMediaBrowserUtils.a(64, this.jdField_b_of_type_JavaUtilArrayList);
+    }
+    RichMediaBrowserUtils.a(39, this.jdField_c_of_type_JavaUtilArrayList);
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserIProvider.a(paramAIOFileVideoData.jdField_a_of_type_Long)) {
+      RichMediaBrowserUtils.a(6, this.jdField_c_of_type_JavaUtilArrayList);
+    }
     if ((ParamsManager.a().g()) && (!TextUtils.isEmpty(ParamsManager.a().c()))) {
-      RichMediaShareActionSheetUtil.a(54, this.jdField_c_of_type_JavaUtilArrayList);
+      RichMediaBrowserUtils.a(54, this.jdField_c_of_type_JavaUtilArrayList);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.isPlaying())
+    if (this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView.isPlaying())
     {
-      long l = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.getCurPlayingPos();
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.captureCurFrame(l, 0, 0);
+      long l = this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView.getCurPlayingPos();
+      this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView.captureCurFrame(l, 0, 0);
     }
-    for (;;)
+    else if (this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.playBar.getProgress() > 0)
     {
-      this.jdField_a_of_type_JavaUtilArrayList = this.jdField_c_of_type_JavaUtilArrayList;
-      this.jdField_a_of_type_JavaLangString = null;
-      a(paramAIOFileVideoData);
-      paramAIOFileVideoData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(paramAIOFileVideoData, this.mContext);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("showActionSheet, captureCurFrame, from:");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(", pos:");
+        localStringBuilder.append(this.jdField_a_of_type_Long);
+        QLog.i("AIOFileVideoView<FileAssistant>XOXO", 2, localStringBuilder.toString());
+      }
+      this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView.captureCurFrame(this.jdField_a_of_type_Long, 0, 0);
+    }
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("AIOFileVideoView<FileAssistant>XOXO", 2, "showActionSheet, video is not playing, recognize thumbnail");
+      }
+      ThreadManager.getSubThreadHandler().post(new AIOFileVideoView.5(this));
+    }
+    if (((paramAIOFileVideoData.isLocal) || (paramAIOFileVideoData.jdField_f_of_type_Boolean)) && (QbSdk.isInDefaultBrowser(this.jdField_a_of_type_AndroidContentContext, paramAIOFileVideoData.jdField_c_of_type_JavaLangString))) {
+      RichMediaBrowserUtils.a(132, this.jdField_c_of_type_JavaUtilArrayList);
+    }
+    this.jdField_a_of_type_JavaUtilArrayList = this.jdField_c_of_type_JavaUtilArrayList;
+    this.jdField_a_of_type_JavaLangString = null;
+    a(paramAIOFileVideoData);
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      paramAIOFileVideoData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(paramAIOFileVideoData, (Activity)this.jdField_a_of_type_AndroidContentContext);
       if (paramAIOFileVideoData != null) {
         this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setIntentForStartForwardRecentActivity(paramAIOFileVideoData);
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setActionSheetItems(this.jdField_b_of_type_JavaUtilArrayList, this.jdField_c_of_type_JavaUtilArrayList);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.show();
-      return;
-      if (this.jdField_a_of_type_AndroidWidgetSeekBar.getProgress() > 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("AIOFileVideoView<FileAssistant>XOXO", 2, "showActionSheet, captureCurFrame, from:" + paramInt + ", pos:" + this.jdField_a_of_type_Long);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.captureCurFrame(this.jdField_a_of_type_Long, 0, 0);
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("AIOFileVideoView<FileAssistant>XOXO", 2, "showActionSheet, video is not playing, recognize thumbnail");
-        }
-        ThreadManager.getSubThreadHandler().post(new AIOFileVideoView.7(this));
-      }
+    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setActionSheetItems(this.jdField_b_of_type_JavaUtilArrayList, this.jdField_c_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.show();
+  }
+  
+  public void a(IBaseViewBuilder paramIBaseViewBuilder)
+  {
+    super.a(paramIBaseViewBuilder);
+    if ((paramIBaseViewBuilder instanceof VideoView))
+    {
+      this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView = ((VideoView)paramIBaseViewBuilder);
+      this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.setPlayPanelDecorator(true);
+      this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.setVideoViewClickEvent(this);
     }
   }
   
@@ -858,139 +1134,125 @@ public class AIOFileVideoView
     return super.a(paramRichMediaBrowserInfo);
   }
   
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserIProvider = null;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter;
+    if (localObject != null) {
+      ((AIOFileVideoPresenter)localObject).c(a());
+    }
+    super.b();
+    localObject = this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView;
+    if (localObject != null) {
+      ((VideoView)localObject).onDestroy();
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    super.b(paramInt);
+    a(paramInt);
+    Object localObject1 = BrowserLogHelper.getInstance().getGalleryLog();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("onItemSelected position = ");
+    ((StringBuilder)localObject2).append(paramInt);
+    ((IBrowserLog)localObject1).d("AIOFileVideoView<FileAssistant>XOXO", 4, ((StringBuilder)localObject2).toString());
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getItem(paramInt);
+    if (localObject1 != null)
+    {
+      if (((RichMediaBrowserInfo)localObject1).baseData == null) {
+        return;
+      }
+      if (((RichMediaBrowserInfo)localObject1).baseData.getType() == 103)
+      {
+        localObject2 = (AIOFileVideoData)((RichMediaBrowserInfo)localObject1).baseData;
+        AIOFileVideoModel localAIOFileVideoModel = new AIOFileVideoModel();
+        if ((((AIOFileVideoData)localObject2).jdField_h_of_type_Boolean) && (localAIOFileVideoModel.a((AIOFileVideoData)localObject2)))
+        {
+          a(paramInt, true);
+          return;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(((AIOFileVideoData)localObject2).jdField_a_of_type_Long, ((AIOFileVideoData)localObject2).jdField_a_of_type_Int, 0);
+        if (((RichMediaBrowserInfo)localObject1).isEnterImage) {
+          ((AIOFileVideoData)localObject2).jdField_g_of_type_Boolean = true;
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserIProvider != null)
+        {
+          if (((AIOFileVideoData)localObject2).jdField_h_of_type_Boolean)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(((AIOFileVideoData)localObject2).jdField_a_of_type_Long, ((AIOFileVideoData)localObject2).jdField_a_of_type_Int, 1);
+            localAIOFileVideoModel.a((AIOFileVideoData)localObject2, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserIProvider);
+          }
+          if (!FileUtils.fileExistsAndNotEmpty(((AIOFileVideoData)localObject2).jdField_c_of_type_JavaLangString))
+          {
+            localObject1 = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter;
+            if (((AIOFileVideoPresenter)localObject1).a(((AIOFileVideoPresenter)localObject1).jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getCurrentPosition())) {
+              this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(false);
+            }
+          }
+          a();
+          BrowserLogHelper.getInstance().getGalleryLog().d("AIOFileVideoView<FileAssistant>XOXO", 4, "FileVideo_AP onItemSelected needUrl return");
+          return;
+        }
+        if ((this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.b(paramInt)) && (((RichMediaBrowserInfo)localObject1).isEnterImage)) {
+          a(localAIOFileVideoModel.a((AIOFileVideoData)localObject2, ((AIOFileVideoData)localObject2).i));
+        }
+        if (!FileUtils.fileExistsAndNotEmpty(((AIOFileVideoData)localObject2).jdField_c_of_type_JavaLangString))
+        {
+          localObject1 = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter;
+          if (((AIOFileVideoPresenter)localObject1).a(((AIOFileVideoPresenter)localObject1).jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getCurrentPosition())) {
+            this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(false);
+          }
+        }
+        this.jdField_a_of_type_JavaUtilArrayList = null;
+        this.jdField_a_of_type_JavaLangString = null;
+        a();
+      }
+    }
+  }
+  
   public boolean b()
   {
     if (super.b())
     {
       AIOFileVideoData localAIOFileVideoData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a();
-      if ((localAIOFileVideoData != null) && (!ParamsManager.a().c()) && (FileUtil.b(localAIOFileVideoData.jdField_c_of_type_JavaLangString))) {
+      if ((localAIOFileVideoData != null) && (!ParamsManager.a().d()) && (FileUtils.fileExistsAndNotEmpty(localAIOFileVideoData.jdField_c_of_type_JavaLangString))) {
         return true;
       }
     }
     return false;
   }
   
-  public void bindView(int paramInt)
+  public void c(int paramInt)
   {
-    super.bindView(paramInt);
-    RichMediaBrowserInfo localRichMediaBrowserInfo = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.getItem(paramInt);
-    if ((localRichMediaBrowserInfo == null) || (localRichMediaBrowserInfo.baseData == null)) {
-      return;
+    super.c(paramInt);
+    AIOFileVideoData localAIOFileVideoData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a();
+    if (localAIOFileVideoData != null) {
+      a(localAIOFileVideoData, paramInt);
     }
-    Object localObject;
-    AIOFileVideoData localAIOFileVideoData;
-    AIOFileVideoModel localAIOFileVideoModel;
-    if (localRichMediaBrowserInfo.baseData.getType() == 103)
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a();
-      if ((localObject == null) || (((RichMediaBrowserInfo)localObject).baseData == null) || (((RichMediaBrowserInfo)localObject).baseData.getType() != 103) || (((AIOBrowserBaseData)((RichMediaBrowserInfo)localObject).baseData).jdField_a_of_type_Long != ((AIOBrowserBaseData)localRichMediaBrowserInfo.baseData).jdField_a_of_type_Long) || (((RichMediaBrowserInfo)localObject).isReport)) {
-        break label316;
-      }
-      ReportController.b(null, "dc00898", "", "", "0X8009EF3", "0X8009EF3", 1, 0, "", "", "", "");
-      ((RichMediaBrowserInfo)localObject).isReport = true;
-      localAIOFileVideoData = (AIOFileVideoData)localRichMediaBrowserInfo.baseData;
-      localAIOFileVideoModel = new AIOFileVideoModel();
-      localObject = (Drawable)this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.mActiveDrawable.get(Integer.valueOf(paramInt));
-      if (!localAIOFileVideoModel.b(localAIOFileVideoData)) {
-        break label346;
-      }
-    }
-    for (;;)
-    {
-      this.mBrowserItemView.setTag(2131296433, Boolean.valueOf(true));
-      this.mBrowserItemView.setId(2131374643);
-      this.mBrowserItemView.setOnClickListener(this);
-      this.mBrowserItemView.setOnLongClickListener(this);
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewGalleryUrlImageView.setOnClickListener(this);
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewGalleryUrlImageView.setOnLongClickListener(this);
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewGalleryUrlImageView.setImageDrawable((Drawable)localObject);
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewGalleryUrlImageView.setContentDescription(this.mContext.getString(2131691674));
-      if (localAIOFileVideoModel.b(localAIOFileVideoData)) {
-        this.jdField_a_of_type_ComTencentRichmediabrowserViewGalleryUrlImageView.setImageDrawable(null);
-      }
-      if (localRichMediaBrowserInfo.isEnterImage) {
-        localAIOFileVideoData.jdField_g_of_type_Boolean = true;
-      }
-      localObject = new AIOFileVideoView.GalleryFileVideoViewHolder(this);
-      ((AIOFileVideoView.GalleryFileVideoViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView;
-      this.mBrowserItemView.setTag(localObject);
-      return;
-      label316:
-      ReportController.b(null, "dc00898", "", "", "0X8009EF3", "0X8009EF3", 2, 0, "", "", "", "");
-      break;
-      label346:
-      if ((localObject == null) || (((URLDrawable)localObject).getStatus() != 1)) {
-        break label373;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.onLoadFinish(paramInt, true);
-    }
-    label373:
-    if (!TextUtils.isEmpty(localAIOFileVideoData.jdField_b_of_type_JavaLangString))
-    {
-      File localFile = new File(localAIOFileVideoData.jdField_b_of_type_JavaLangString);
-      if (!localFile.exists()) {
-        break label499;
-      }
-      localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = this.mScreenWidthPx;
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.mScreenHeightPx;
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-      ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
-      ((URLDrawable.URLDrawableOptions)localObject).mUseExifOrientation = false;
-      localObject = URLDrawable.getDrawable(localFile, (URLDrawable.URLDrawableOptions)localObject);
-      ((URLDrawable)localObject).setTag(Integer.valueOf(1));
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.mActiveDrawable.put(Integer.valueOf(paramInt), (URLDrawable)localObject);
-    }
-    label499:
-    for (;;)
-    {
-      break;
-      localObject = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838183);
-      break;
-    }
-  }
-  
-  public void buildComplete()
-  {
-    super.buildComplete();
-  }
-  
-  public void buildParams(Intent paramIntent)
-  {
-    super.buildParams(paramIntent);
-    this.jdField_a_of_type_Int = (SplashADUtil.a(this.mContext) / 2);
-  }
-  
-  public void buildView(ViewGroup paramViewGroup)
-  {
-    super.buildView(paramViewGroup);
-    onCreate(paramViewGroup);
-  }
-  
-  public void e()
-  {
-    i(true);
   }
   
   public void e(boolean paramBoolean)
   {
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("doEnterImmersion, isClick = ").append(paramBoolean).append(" ,  isShowingDanmaku =");
-      if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a() == null) {
-        break label93;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doEnterImmersion, isClick = ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" ,  isShowingDanmaku =");
+      boolean bool;
+      if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a() != null) {
+        bool = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a().b();
+      } else {
+        bool = false;
       }
+      localStringBuilder.append(bool);
+      QLog.d("AIOFileVideoView<FileAssistant>XOXO", 2, localStringBuilder.toString());
     }
-    label93:
-    for (boolean bool = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a().b();; bool = false)
+    super.e(paramBoolean);
+    if (paramBoolean)
     {
-      QLog.d("AIOFileVideoView<FileAssistant>XOXO", 2, bool);
-      super.e(paramBoolean);
-      if (!paramBoolean) {
-        break;
-      }
-      showContentView(false);
+      f(false);
       b(false);
       this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.b(false);
       return;
@@ -998,127 +1260,87 @@ public class AIOFileVideoView
     if ((this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a() != null) && (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a().b()))
     {
       this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a().jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.d();
       this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.e();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.f();
       i(false);
       return;
     }
-    showContentView(false);
+    f(false);
     b(false);
   }
   
-  public void f(boolean paramBoolean)
+  public void g()
   {
-    RelativeLayout localRelativeLayout;
-    if (this.jdField_c_of_type_AndroidWidgetRelativeLayout != null)
-    {
-      localRelativeLayout = this.jdField_c_of_type_AndroidWidgetRelativeLayout;
-      if (!paramBoolean) {
-        break label32;
-      }
-    }
-    label32:
-    for (int i = 0;; i = 8)
-    {
-      localRelativeLayout.setVisibility(i);
-      h(b());
-      return;
-    }
+    i(true);
   }
   
   public void g(boolean paramBoolean)
   {
-    RelativeLayout localRelativeLayout;
+    RelativeLayout localRelativeLayout = this.jdField_b_of_type_AndroidWidgetRelativeLayout;
+    if (localRelativeLayout != null)
+    {
+      int i;
+      if (paramBoolean) {
+        i = 0;
+      } else {
+        i = 8;
+      }
+      localRelativeLayout.setVisibility(i);
+    }
+    h(b());
+  }
+  
+  public void h(boolean paramBoolean)
+  {
     if (this.jdField_b_of_type_AndroidWidgetRelativeLayout != null)
     {
-      localRelativeLayout = this.jdField_b_of_type_AndroidWidgetRelativeLayout;
-      if (!paramBoolean) {
-        break label24;
+      DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics();
+      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      localLayoutParams.addRule(12, -1);
+      if (paramBoolean)
+      {
+        localLayoutParams.rightMargin = ((int)TypedValue.applyDimension(1, 49.0F, localDisplayMetrics));
+        return;
       }
-    }
-    label24:
-    for (int i = 0;; i = 8)
-    {
-      localRelativeLayout.setVisibility(i);
-      return;
+      localLayoutParams.rightMargin = ((int)TypedValue.applyDimension(1, 10.0F, localDisplayMetrics));
     }
   }
   
-  public View getView(View paramView, ViewGroup paramViewGroup)
+  public void j()
   {
-    if (((paramView instanceof RelativeLayout)) && ((paramView.getTag() instanceof AIOFileVideoView.GalleryFileVideoViewHolder)))
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
     {
-      this.mBrowserItemView = ((RelativeLayout)paramView);
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView = ((AIOFileVideoView.GalleryFileVideoViewHolder)paramView.getTag()).jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView;
-    }
-    for (;;)
-    {
-      return this.mBrowserItemView;
-      this.mBrowserItemView = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131558644, paramViewGroup, false));
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewGalleryUrlImageView = ((GalleryUrlImageView)this.mBrowserItemView.findViewById(2131373468));
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView = ((BaseVideoView)QQVideoViewFactory.b(this.mContext, 0L, null, this.jdField_a_of_type_ComTencentRichmediabrowserViewGalleryUrlImageView));
-      paramView = new RelativeLayout.LayoutParams(-1, -1);
-      paramView.addRule(13);
-      if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView != null) {
-        ((RelativeLayout)this.mBrowserItemView.findViewById(2131381298)).addView(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView, paramView);
-      }
-      h();
-    }
-  }
-  
-  public void h()
-  {
-    if (this.mBrowserItemView != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.mBrowserItemView.findViewById(2131381302));
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewGalleryUrlImageView = ((GalleryUrlImageView)this.mBrowserItemView.findViewById(2131373468));
-      Object localObject = (RelativeLayout)this.mBrowserItemView.findViewById(2131372607);
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((RelativeLayout)localObject).findViewById(2131372351));
-      this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131377688));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131372608));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131373552));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131379724));
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(10000);
-      this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(this);
-      this.e = ((ImageButton)this.mBrowserItemView.findViewById(2131374675));
-      this.e.setContentDescription(HardCodeUtil.a(2131700111));
+      localObject = (RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372191);
+      this.e = ((ImageButton)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131374213));
+      this.e.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131718239));
       this.e.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((RelativeLayout)localObject).findViewById(2131380972));
-      this.jdField_b_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131380974));
-      this.jdField_b_of_type_AndroidWidgetSeekBar.setMax(10000);
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131380973));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131364816));
-      this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.initContentView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((RelativeLayout)localObject).findViewById(2131380237));
+      this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131380239));
+      this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(10000);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131380238));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131364704));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.mBrowserItemView.findViewById(2131364213));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.mBrowserItemView.findViewById(2131376473));
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetImageButton = ((ImageButton)this.mBrowserItemView.findViewById(2131374674));
+      this.jdField_c_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131374212));
       if (this.jdField_c_of_type_AndroidWidgetImageButton != null) {
         this.jdField_c_of_type_AndroidWidgetImageButton.setOnClickListener(this);
       }
-      this.jdField_b_of_type_AndroidWidgetImageButton = ((ImageButton)this.mBrowserItemView.findViewById(2131374676));
+      this.jdField_b_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131374214));
       if (this.jdField_b_of_type_AndroidWidgetImageButton != null) {
         this.jdField_b_of_type_AndroidWidgetImageButton.setOnClickListener(this);
       }
-      this.jdField_d_of_type_AndroidWidgetImageButton = ((ImageButton)this.mBrowserItemView.findViewById(2131374682));
-      this.jdField_d_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidViewView = this.mBrowserItemView.findViewById(2131381529);
-      this.mBrowserItemView.findViewById(2131373467).setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.mBrowserItemView.findViewById(2131374677));
+      this.d = ((ImageButton)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131374220));
+      this.d.setOnClickListener(this);
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131380764);
+      this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131374215));
       this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.mBrowserItemView.findViewById(2131373467));
-      this.jdField_c_of_type_AndroidWidgetImageView.bringToFront();
-      this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.mBrowserItemView.findViewById(2131373469));
       if (LiuHaiUtils.b())
       {
         localObject = (RelativeLayout.LayoutParams)this.e.getLayoutParams();
         ((RelativeLayout.LayoutParams)localObject).addRule(10, -1);
         ((RelativeLayout.LayoutParams)localObject).topMargin = LiuHaiUtils.jdField_a_of_type_Int;
-        localObject = (RelativeLayout.LayoutParams)this.jdField_d_of_type_AndroidWidgetImageButton.getLayoutParams();
+        localObject = (RelativeLayout.LayoutParams)this.d.getLayoutParams();
         ((RelativeLayout.LayoutParams)localObject).addRule(10, -1);
         ((RelativeLayout.LayoutParams)localObject).topMargin = LiuHaiUtils.jdField_a_of_type_Int;
         localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageButton.getLayoutParams();
@@ -1126,290 +1348,231 @@ public class AIOFileVideoView
         ((RelativeLayout.LayoutParams)localObject).topMargin = LiuHaiUtils.jdField_a_of_type_Int;
       }
     }
-    if (!this.isInExitAnim) {
-      showContentView(true);
+    Object localObject = this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView;
+    if ((localObject != null) && (!((VideoView)localObject).isInExitAnim)) {
+      f(true);
     }
   }
   
-  public void h(boolean paramBoolean)
+  public void k()
   {
-    DisplayMetrics localDisplayMetrics;
-    RelativeLayout.LayoutParams localLayoutParams;
-    if (this.jdField_c_of_type_AndroidWidgetRelativeLayout != null)
+    BrowserLogHelper.getInstance().getGalleryLog().d("AIOFileVideoView<FileAssistant>XOXO", 4, "onResume");
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter;
+    if ((((AIOFileVideoPresenter)localObject).b(((AIOFileVideoPresenter)localObject).jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getCurrentPosition())) && (this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView != null))
     {
-      localDisplayMetrics = this.mContext.getResources().getDisplayMetrics();
-      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-      localLayoutParams.addRule(12, -1);
-      if (paramBoolean) {
-        localLayoutParams.rightMargin = ((int)TypedValue.applyDimension(1, 49.0F, localDisplayMetrics));
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a();
+      if ((localObject != null) && (((AIOFileVideoData)localObject).status == 4)) {
+        this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView.resume();
       }
+    }
+  }
+  
+  public void l()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.c(a());
+  }
+  
+  public void m()
+  {
+    a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getCurrentPosition(), true);
+  }
+  
+  public void n()
+  {
+    AIOFileVideoData localAIOFileVideoData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a();
+    if ((this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView != null) && (this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView.isPlaying()))
+    {
+      QLog.i("AIOFileVideoView<FileAssistant>XOXO", 1, "video playing, try PAUSE!");
+      q();
     }
     else
     {
+      QLog.i("AIOFileVideoView<FileAssistant>XOXO", 1, "video pause, try PLAY!");
+      new AIOFileVideoModel().a(localAIOFileVideoData, this.jdField_a_of_type_AndroidContentContext, this);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter != null) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.k();
+    }
+    h();
+  }
+  
+  public void o()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.b())
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a().jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a().f();
+        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a().jdField_a_of_type_Boolean = false;
+        f();
+        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a().a();
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a().f();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a().b();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a().jdField_a_of_type_Boolean = true;
+      e(true);
       return;
     }
-    localLayoutParams.rightMargin = ((int)TypedValue.applyDimension(1, 10.0F, localDisplayMetrics));
+    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.d();
   }
   
-  public void i()
+  public void onCapFrame(long paramLong, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.getCurrentPosition(), true);
-  }
-  
-  public boolean isNeedDisallowInterceptEvent(MotionEvent paramMotionEvent)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetSeekBar.getVisibility() == 0)
+    if (QLog.isColorLevel())
     {
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOFileVideoView<FileAssistant>XOXO", 4, "playBar is visible");
-      int[] arrayOfInt = new int[2];
-      this.jdField_a_of_type_AndroidWidgetSeekBar.getLocationInWindow(arrayOfInt);
-      int i = arrayOfInt[0];
-      int j = arrayOfInt[1];
-      if (new Rect(i, j, this.jdField_a_of_type_AndroidWidgetSeekBar.getWidth() + i, this.jdField_a_of_type_AndroidWidgetSeekBar.getHeight() + j).contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY()))
-      {
-        BrowserLogHelper.getInstance().getGalleryLog().d("AIOFileVideoView<FileAssistant>XOXO", 4, "playBar deal event");
-        g();
-        return true;
-      }
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOFileVideoView<FileAssistant>XOXO", 4, "recyclerView deal event");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCapFrame, id:");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(", isSuccess:");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(", w:");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(", h:");
+      localStringBuilder.append(paramInt2);
+      QLog.i("AIOFileVideoView<FileAssistant>XOXO", 2, localStringBuilder.toString());
     }
-    return super.isNeedDisallowInterceptEvent(paramMotionEvent);
+    a(paramBitmap);
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    Object localObject;
+    if (i == 2131364704)
     {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a();
+      if (localObject != null)
+      {
+        ((AIOFileVideoData)localObject).jdField_e_of_type_Boolean = true;
+        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(((AIOFileVideoData)localObject).jdField_a_of_type_Long, ((AIOFileVideoData)localObject).jdField_a_of_type_Int, 0);
+        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.b((AIOFileVideoData)localObject);
+        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.d();
+      }
     }
-    for (;;)
+    else if (i == 2131374213)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      AIOFileVideoData localAIOFileVideoData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a();
-      if ((this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView != null) && (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.isPlaying()))
-      {
-        QLog.i("AIOFileVideoView<FileAssistant>XOXO", 1, "video playing, try PAUSE!");
-        k();
+      r();
+      if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter != null) {
+        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.m();
       }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.i();
-        f();
-        break;
-        QLog.i("AIOFileVideoView<FileAssistant>XOXO", 1, "video pause, try PLAY!");
-        new AIOFileVideoModel().a(localAIOFileVideoData, this.mContext, this);
+    }
+    else if (i == 2131374215)
+    {
+      e();
+    }
+    else if (i == 2131374214)
+    {
+      d();
+    }
+    else if (i == 2131374212)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOFileVideoView<FileAssistant>XOXO", 2, "onClick qq_gallery_danmaku_view ");
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.b())
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a();
+      if ((localObject != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)))
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a().jdField_a_of_type_Boolean)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a().f();
-          this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a().jdField_a_of_type_Boolean = false;
-          d();
-          this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a().a();
-        }
-        else
-        {
-          this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a().f();
-          this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a().b();
-          this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a().jdField_a_of_type_Boolean = true;
-          e(true);
-        }
+        long l = this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView.getCurPlayingPos();
+        ((IBrowserDepend)QRoute.api(IBrowserDepend.class)).openMiniAioForDanmaku((Activity)this.jdField_a_of_type_AndroidContentContext, ParamsManager.a().a(), ParamsManager.a().a(), false, ((AIOFileVideoData)localObject).jdField_d_of_type_Long, l);
       }
-      else
-      {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.back();
-        continue;
-        localAIOFileVideoData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a();
-        if (localAIOFileVideoData == null)
-        {
-          BrowserLogHelper.getInstance().getGalleryLog().e("AIOFileVideoView<FileAssistant>XOXO", 1, "presenter get data is null");
-        }
-        else
-        {
-          AIOFileVideoModel localAIOFileVideoModel = new AIOFileVideoModel();
-          BrowserLogHelper.getInstance().getGalleryLog().d("AIOFileVideoView<FileAssistant>XOXO", 4, "onItemClick id = " + localAIOFileVideoData.id);
-          if (localAIOFileVideoModel.a(localAIOFileVideoData)) {
-            this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(localAIOFileVideoData.jdField_a_of_type_Long, localAIOFileVideoData.jdField_a_of_type_Int, 5);
-          }
-          for (;;)
-          {
-            a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.getCurrentPosition(), false);
-            g();
-            updateUI();
-            break;
-            this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(localAIOFileVideoData.jdField_a_of_type_Long, localAIOFileVideoData.jdField_a_of_type_Int, 1);
-          }
-          localAIOFileVideoData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a();
-          if (localAIOFileVideoData != null)
-          {
-            localAIOFileVideoData.jdField_e_of_type_Boolean = true;
-            this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(localAIOFileVideoData.jdField_a_of_type_Long, localAIOFileVideoData.jdField_a_of_type_Int, 0);
-            this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.b(localAIOFileVideoData);
-            this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.back();
-            continue;
-            l();
-            this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.k();
-            continue;
-            c();
-            continue;
-            b();
-            continue;
-            if (QLog.isColorLevel()) {
-              QLog.d("AIOFileVideoView<FileAssistant>XOXO", 2, "onClick qq_gallery_danmaku_view ");
-            }
-            localAIOFileVideoData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a();
-            if (localAIOFileVideoData != null)
-            {
-              long l = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.getCurPlayingPos();
-              MiniChatActivity.a(this.mContext, ParamsManager.a().a(), ParamsManager.a().a(), false, 26, localAIOFileVideoData.jdField_d_of_type_Long, l);
-            }
-            this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.l();
-            continue;
-            if (this.basePresenter != null) {
-              this.basePresenter.back();
-            }
-          }
-        }
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.i();
+    }
+    else if (i == 2131374220)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter;
+      if (localObject != null) {
+        ((AIOFileVideoPresenter)localObject).d();
       }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void onDownloadComplete(long paramLong)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("@@@@@@@@@@@ videoView Download Success:");
+    ((StringBuilder)localObject).append(paramLong);
+    QLog.i("AIOFileVideoView<FileAssistant>XOXO", 1, ((StringBuilder)localObject).toString());
+    localObject = a();
+    if (!((AIOFileVideoData)localObject).jdField_f_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.d((AIOFileVideoData)localObject);
     }
   }
   
-  public void onCreate(ViewGroup paramViewGroup)
-  {
-    super.onCreate(paramViewGroup);
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.releasePlayer(false);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.c(a());
-    }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.getSelectedItem();
-  }
-  
-  public void onDestroyView(int paramInt, View paramView)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.mActiveDrawable != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.mActiveDrawable.remove(Integer.valueOf(paramInt));
-    }
-  }
+  public void onDownloadProgress(long paramLong1, long paramLong2) {}
   
   public void onEnterAnimationEnd()
   {
     super.onEnterAnimationEnd();
-    showContentView(true);
-    updateUI();
+    f(true);
+    a();
   }
   
   public void onEnterAnimationStart()
   {
-    showContentView(false);
+    f(false);
   }
   
   public void onExitAnimationStart() {}
   
-  public void onItemSelected(int paramInt)
+  public void onFirstFrameRendered(long paramLong)
   {
-    super.onItemSelected(paramInt);
-    bindView(paramInt);
-    BrowserLogHelper.getInstance().getGalleryLog().d("AIOFileVideoView<FileAssistant>XOXO", 4, "onItemSelected position = " + paramInt);
-    RichMediaBrowserInfo localRichMediaBrowserInfo = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.getItem(paramInt);
-    if ((localRichMediaBrowserInfo == null) || (localRichMediaBrowserInfo.baseData == null)) {}
-    while (localRichMediaBrowserInfo.baseData.getType() != 103) {
-      return;
-    }
-    AIOFileVideoData localAIOFileVideoData = (AIOFileVideoData)localRichMediaBrowserInfo.baseData;
-    AIOFileVideoModel localAIOFileVideoModel = new AIOFileVideoModel();
-    if ((localAIOFileVideoData.h) && (localAIOFileVideoModel.a(localAIOFileVideoData)))
+    if (QLog.isColorLevel())
     {
-      a(paramInt, true);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(localAIOFileVideoData.jdField_a_of_type_Long, localAIOFileVideoData.jdField_a_of_type_Int, 0);
-    if (localRichMediaBrowserInfo.isEnterImage) {
-      localAIOFileVideoData.jdField_g_of_type_Boolean = true;
-    }
-    if (RichMediaBrowserManager.getInstance().getProvider() != null)
-    {
-      if (localAIOFileVideoData.h)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(localAIOFileVideoData.jdField_a_of_type_Long, localAIOFileVideoData.jdField_a_of_type_Int, 1);
-        localAIOFileVideoModel.a(localAIOFileVideoData, (PeakProcessProvider)RichMediaBrowserManager.getInstance().getProvider());
-      }
-      if ((!FileUtils.b(localAIOFileVideoData.jdField_c_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.getCurrentPosition()))) {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(false);
-      }
-      updateUI();
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOFileVideoView<FileAssistant>XOXO", 4, "FileVideo_AP onItemSelected needUrl return");
-      return;
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.b(paramInt)) && (localRichMediaBrowserInfo.isEnterImage)) {
-      a(localAIOFileVideoModel.a(localAIOFileVideoData, localAIOFileVideoData.i));
-    }
-    if ((!FileUtils.b(localAIOFileVideoData.jdField_c_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.getCurrentPosition()))) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(false);
-    }
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_a_of_type_JavaLangString = null;
-    updateUI();
-  }
-  
-  public void onPause()
-  {
-    k();
-  }
-  
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView != null)
-      {
-        paramInt = (int)(paramInt / 10000.0F * (float)this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.getVideoDurationMs());
-        this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.seekTo(paramInt);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(ShortVideoUtils.stringForTime(paramInt));
-      }
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.j();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onFirstFrameRendered, id:");
+      localStringBuilder.append(paramLong);
+      QLog.d("AIOFileVideoView<FileAssistant>XOXO", 2, localStringBuilder.toString());
     }
   }
   
-  public void onResume()
+  public void onLoopBack(long paramLong1, long paramLong2) {}
+  
+  public void onPlayError(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    BrowserLogHelper.getInstance().getGalleryLog().d("AIOFileVideoView<FileAssistant>XOXO", 4, "onResume");
-    if ((this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.b(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.getCurrentPosition())) && (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView != null))
+    IBrowserLog localIBrowserLog = BrowserLogHelper.getInstance().getGalleryLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onPlayError, id = ");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(" ,module = ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" , errorType = ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", errCode = ");
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append(" , exInfo = ");
+    localStringBuilder.append(paramString);
+    localIBrowserLog.e("AIOFileVideoView<FileAssistant>XOXO", 1, localStringBuilder.toString());
+    a(paramInt1, paramInt3, this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam);
+  }
+  
+  public void onPlayProgress(long paramLong1, long paramLong2)
+  {
+    this.jdField_a_of_type_Long = paramLong2;
+    VideoView localVideoView = this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView;
+    if (localVideoView != null)
     {
-      AIOFileVideoData localAIOFileVideoData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a();
-      if ((localAIOFileVideoData != null) && (localAIOFileVideoData.status == 6)) {
-        this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.resume();
-      }
+      double d1 = paramLong2;
+      double d2 = localVideoView.mVideoView.getVideoDurationMs();
+      Double.isNaN(d1);
+      Double.isNaN(d2);
+      int i = (int)(d1 / d2 * 10000.0D);
+      this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.progressTime.setText(BrowserUtils.a(paramLong2));
+      this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.playBar.setProgress(i);
     }
   }
   
   public void onScrollEnd()
   {
-    super.onScrollEnd();
-    AIOFileVideoData localAIOFileVideoData;
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.getCurrentPosition()))
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter;
+    if (((AIOFileVideoPresenter)localObject).a(((AIOFileVideoPresenter)localObject).jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getCurrentPosition()))
     {
-      localAIOFileVideoData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a();
-      if (localAIOFileVideoData == null) {
-        break label79;
-      }
-    }
-    label79:
-    for (boolean bool = FileUtils.b(localAIOFileVideoData.jdField_c_of_type_JavaLangString);; bool = false)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView != null) && (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.isPlaying()) && (bool))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a();
-        return;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a();
+      if (localObject != null) {
+        FileUtils.fileExistsAndNotEmpty(((AIOFileVideoData)localObject).jdField_c_of_type_JavaLangString);
       }
       this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(false);
-      return;
     }
   }
   
@@ -1418,247 +1581,128 @@ public class AIOFileVideoView
     if (QLog.isColorLevel()) {
       QLog.d("AIOFileVideoView<FileAssistant>XOXO", 2, "onScrollHalfScreenWidth");
     }
-    super.onScrollHalfScreenWidth();
-    if ((this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView != null) && (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.mIsPlayVideo))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.pause();
+    if ((this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView != null) && (this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView.mIsPlayVideo)) {
       this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.c(a());
     }
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
-  
-  public void onStop()
+  public void onStateChange(long paramLong, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView != null)
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.releasePlayer(true);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.c(a());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onStateChange , state = ");
+      ((StringBuilder)localObject).append(a(paramInt));
+      ((StringBuilder)localObject).append(", msgUniseq=");
+      ((StringBuilder)localObject).append(paramLong);
+      QLog.d("AIOFileVideoView<FileAssistant>XOXO", 2, ((StringBuilder)localObject).toString());
     }
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    BrowserLogHelper.getInstance().getGalleryLog().d("AIOFileVideoView<FileAssistant>XOXO", 4, "onStopTrackingTouch");
-    if ((this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a() != null) && (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.getCurrentPosition())) && (paramSeekBar != null))
+    if (paramInt != 4)
     {
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOFileVideoView<FileAssistant>XOXO", 4, "seek danmaku");
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a().a(paramSeekBar.getProgress());
-      AIOFileVideoData localAIOFileVideoData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a();
-      if (localAIOFileVideoData != null) {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a().a(BrowserDanmakuUtils.a(localAIOFileVideoData.jdField_d_of_type_Long, paramSeekBar.getProgress(), this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(), this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a));
-      }
-    }
-    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
-  }
-  
-  public void updateUI()
-  {
-    int i = 8;
-    super.updateUI();
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a();
-    if (localObject1 != null)
-    {
-      c(b());
-      d(a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.getSelectedItem()));
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOFileVideoView<FileAssistant>XOXO", 4, "updateUI id = " + ((AIOFileVideoData)localObject1).id + ", status = " + ((AIOFileVideoData)localObject1).a());
-    }
-    float f;
-    switch (((AIOFileVideoData)localObject1).status)
-    {
-    case 7: 
-    default: 
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOFileVideoView<FileAssistant>XOXO", 4, "updateUI status is error, status = " + ((AIOFileVideoData)localObject1).status);
-    case 1: 
-    case 2: 
-    case 4: 
-    case 3: 
-    case 5: 
-      do
+      if (paramInt != 5)
       {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.onLoadFinish(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.getSelectedIndex(), true);
-        g(false);
-        localObject2 = this.mContext.getString(2131692750) + "(" + FileUtil.a(((AIOFileVideoData)localObject1).jdField_g_of_type_Long) + "/" + FileUtil.a(((AIOFileVideoData)localObject1).jdField_c_of_type_Long) + ")";
-        this.jdField_d_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
-        f = (float)((AIOFileVideoData)localObject1).jdField_g_of_type_Long / (float)((AIOFileVideoData)localObject1).jdField_c_of_type_Long;
-        this.jdField_b_of_type_AndroidWidgetSeekBar.setProgress((int)(f * 100.0F) * 100);
-        f(true);
-        d(false);
-        this.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-        this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-        a(false);
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.onLoadFinish(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.getSelectedIndex(), true);
-        f = (float)((AIOFileVideoData)localObject1).jdField_g_of_type_Long / (float)((AIOFileVideoData)localObject1).jdField_c_of_type_Long * 100.0F;
-        localObject1 = new DecimalFormat("0.00").format(f);
-        this.jdField_d_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131700117) + (String)localObject1 + "%");
-        this.jdField_b_of_type_AndroidWidgetSeekBar.setProgress((int)f * 100);
-        this.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-        g(false);
-        f(true);
-        d(false);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-        this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-        a(false);
-        return;
-        localObject1 = this.mContext.getString(2131692750) + "(0/" + FileUtil.a(((AIOFileVideoData)localObject1).jdField_c_of_type_Long) + ")";
-        this.jdField_d_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-        this.jdField_b_of_type_AndroidWidgetSeekBar.setProgress(0);
-        f(true);
-        this.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-        g(false);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-        this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-        d(false);
-        a(false);
-        return;
-        if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.isPlaying())
+        if (paramInt != 6)
         {
-          this.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-          this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.onLoadFinish(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.getSelectedIndex(), true);
-          if (!((AIOFileVideoData)localObject1).jdField_f_of_type_Boolean) {
-            break label709;
+          if (paramInt != 8)
+          {
+            if (paramInt != 9) {
+              return;
+            }
+            localObject = this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView;
+            if (localObject != null) {
+              ((VideoView)localObject).abandonAudioFocus();
+            }
           }
-          g(true);
-          f(false);
+          else
+          {
+            localObject = this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView;
+            if (localObject != null)
+            {
+              ((VideoView)localObject).progressTime.setText(BrowserUtils.a(this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView.getVideoDurationMs()));
+              this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.playBar.setProgress(100);
+            }
+            localObject = a();
+            if (localObject != null) {
+              ((AIOFileVideoData)localObject).jdField_f_of_type_Boolean = true;
+            }
+            d(0);
+            a();
+          }
         }
-        for (;;)
+        else
         {
-          this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-          a(true);
-          return;
-          this.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-          break;
-          f(true);
-          g(false);
-          d(false);
+          d(4);
+          a();
         }
-        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.onLoadFinish(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.getSelectedIndex(), true);
-        g(true);
-        f(false);
-        this.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-        this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130846433);
-        a(true);
-        this.jdField_a_of_type_ComTencentRichmediabrowserViewGalleryUrlImageView.setVisibility(8);
-      } while (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView == null);
-      long l = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.getVideoDurationMs();
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOFileVideoView<FileAssistant>XOXO", 4, "videoDuration = " + l);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(ShortVideoUtils.stringForTime(l));
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(ShortVideoUtils.stringForTime(0L));
-      return;
-    case 6: 
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.onLoadFinish(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.getSelectedIndex(), true);
-      g(false);
-      f(false);
-      this.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130846432);
-      a(true);
-      return;
-    case 8: 
-      label709:
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.onLoadFinish(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.getSelectedIndex(), true);
-      g(false);
-      if (((AIOFileVideoData)localObject1).jdField_f_of_type_Boolean) {
-        f(false);
       }
-      for (;;)
+      else
       {
-        this.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130846432);
-        a(false);
+        d(2);
+        a();
+      }
+    }
+    else
+    {
+      localObject = a();
+      if (localObject == null)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onStateChange , state = ");
+        ((StringBuilder)localObject).append(a(paramInt));
+        ((StringBuilder)localObject).append(", msgUniseq=");
+        ((StringBuilder)localObject).append(paramLong);
+        ((StringBuilder)localObject).append(" get videoData is null!");
+        QLog.w("AIOFileVideoView<FileAssistant>XOXO", 1, ((StringBuilder)localObject).toString());
         return;
-        localObject2 = this.mContext.getString(2131692750) + "(" + FileUtil.a(((AIOFileVideoData)localObject1).jdField_g_of_type_Long) + "/" + FileUtil.a(((AIOFileVideoData)localObject1).jdField_c_of_type_Long) + ")";
-        this.jdField_d_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
-        f = (float)((AIOFileVideoData)localObject1).jdField_g_of_type_Long / (float)((AIOFileVideoData)localObject1).jdField_c_of_type_Long;
-        this.jdField_b_of_type_AndroidWidgetSeekBar.setProgress((int)(f * 100.0F) * 100);
-        f(true);
       }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.onLoadFinish(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.getSelectedIndex(), true);
-    g(false);
-    f(false);
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    Object localObject2 = this.jdField_c_of_type_AndroidWidgetImageView;
-    if (((AIOFileVideoData)localObject1).h)
-    {
-      ((ImageView)localObject2).setVisibility(i);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130846432);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(ShortVideoUtils.stringForTime(0L));
-      this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(0);
-      if (!((AIOFileVideoData)localObject1).jdField_f_of_type_Boolean) {
-        break label1252;
+      if (((AIOFileVideoData)localObject).jdField_f_of_type_Boolean) {
+        d(3);
+      } else {
+        d(1);
       }
-      a(true);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewGalleryUrlImageView.setVisibility(0);
-      return;
-      i = 0;
-      break;
-      label1252:
-      a(false);
+      a();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.b(((AIOFileVideoData)localObject).jdField_a_of_type_Long);
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(((AIOFileVideoData)localObject).jdField_a_of_type_Long);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter;
+      if (((AIOFileVideoPresenter)localObject).a(((AIOFileVideoPresenter)localObject).jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getCurrentPosition()))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a();
+        localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getSelectedItem();
+        if ((localObject != null) && ((((RichMediaBrowserInfo)localObject).baseData instanceof AIOBrowserBaseData)) && (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a() != null) && (this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView != null)) {
+          this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a().a(BrowserDanmakuUtils.a(((AIOBrowserBaseData)((RichMediaBrowserInfo)localObject).baseData).jdField_d_of_type_Long, this.jdField_a_of_type_ComTencentRichmediabrowserViewVideoVideoView.mVideoView.getCurPlayingPos(), this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(), this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap));
+        }
+      }
     }
   }
   
-  public void updateView(int paramInt, String paramString1, String paramString2, View paramView, boolean paramBoolean)
+  public void p()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.getItem(paramInt);
-    if ((localObject1 == null) || (((RichMediaBrowserInfo)localObject1).baseData == null) || (paramView == null)) {
+    AIOFileVideoData localAIOFileVideoData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a();
+    if (localAIOFileVideoData == null)
+    {
+      BrowserLogHelper.getInstance().getGalleryLog().e("AIOFileVideoView<FileAssistant>XOXO", 1, "presenter get data is null");
       return;
     }
-    BaseVideoView localBaseVideoView;
-    if ((paramView.getTag() instanceof AIOFileVideoView.GalleryFileVideoViewHolder))
-    {
-      localBaseVideoView = ((AIOFileVideoView.GalleryFileVideoViewHolder)paramView.getTag()).jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView;
-      if (((RichMediaBrowserInfo)localObject1).baseData.getType() == 103)
-      {
-        Object localObject2 = (AIOFileVideoData)((RichMediaBrowserInfo)localObject1).baseData;
-        AIOFileVideoModel localAIOFileVideoModel = new AIOFileVideoModel();
-        localObject1 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject1).mUseExifOrientation = false;
-        ((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage = true;
-        localObject2 = localAIOFileVideoModel.a((AIOFileVideoData)localObject2);
-        if (localObject2 == null) {
-          break label196;
-        }
-        localObject1 = URLDrawable.getDrawable((File)localObject2, (URLDrawable.URLDrawableOptions)localObject1);
-        if (((URLDrawable)localObject1).getStatus() != 1) {
-          break label172;
-        }
-        localBaseVideoView.setCoverDrawable((Drawable)localObject1);
-        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.onLoadFinish(paramInt, true);
-        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a().c();
-      }
+    AIOFileVideoModel localAIOFileVideoModel = new AIOFileVideoModel();
+    IBrowserLog localIBrowserLog = BrowserLogHelper.getInstance().getGalleryLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onItemClick id = ");
+    localStringBuilder.append(localAIOFileVideoData.id);
+    localIBrowserLog.d("AIOFileVideoView<FileAssistant>XOXO", 4, localStringBuilder.toString());
+    if (localAIOFileVideoModel.a(localAIOFileVideoData)) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(localAIOFileVideoData.jdField_a_of_type_Long, localAIOFileVideoData.jdField_a_of_type_Int, 3);
+    } else {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.a(localAIOFileVideoData.jdField_a_of_type_Long, localAIOFileVideoData.jdField_a_of_type_Int, 1);
     }
-    for (;;)
-    {
-      super.updateView(paramInt, paramString1, paramString2, paramView, paramBoolean);
-      return;
-      label172:
-      ((URLDrawable)localObject1).setTag(Integer.valueOf(1));
-      ((URLDrawable)localObject1).startDownload();
-      localBaseVideoView.setCoverDrawable((Drawable)localObject1);
-      break;
-      label196:
-      localBaseVideoView.setCoverDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130838183));
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.onLoadFinish(paramInt, true);
-    }
+    a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFileVideoPresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getCurrentPosition(), false);
+    i();
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOFileVideoView
  * JD-Core Version:    0.7.0.1
  */

@@ -60,111 +60,136 @@ class ViewPropertyAnimatorPreHC
   
   private void animatePropertyBy(int paramInt, float paramFloat1, float paramFloat2)
   {
-    Iterator localIterator;
-    Object localObject;
     if (this.mAnimatorMap.size() > 0)
     {
-      localIterator = this.mAnimatorMap.keySet().iterator();
-      if (localIterator.hasNext()) {
-        break label107;
-      }
       localObject = null;
-    }
-    for (;;)
-    {
+      Iterator localIterator = this.mAnimatorMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Animator localAnimator = (Animator)localIterator.next();
+        ViewPropertyAnimatorPreHC.PropertyBundle localPropertyBundle = (ViewPropertyAnimatorPreHC.PropertyBundle)this.mAnimatorMap.get(localAnimator);
+        if ((localPropertyBundle.cancel(paramInt)) && (localPropertyBundle.mPropertyMask == 0)) {
+          localObject = localAnimator;
+        }
+      }
       if (localObject != null) {
         ((Animator)localObject).cancel();
       }
-      localObject = new ViewPropertyAnimatorPreHC.NameValuesHolder(paramInt, paramFloat1, paramFloat2);
-      this.mPendingAnimations.add(localObject);
-      localObject = (View)this.mView.get();
-      if (localObject != null)
-      {
-        ((View)localObject).removeCallbacks(this.mAnimationStarter);
-        ((View)localObject).post(this.mAnimationStarter);
-      }
-      return;
-      label107:
-      localObject = (Animator)localIterator.next();
-      ViewPropertyAnimatorPreHC.PropertyBundle localPropertyBundle = (ViewPropertyAnimatorPreHC.PropertyBundle)this.mAnimatorMap.get(localObject);
-      if ((!localPropertyBundle.cancel(paramInt)) || (localPropertyBundle.mPropertyMask != 0)) {
-        break;
-      }
+    }
+    Object localObject = new ViewPropertyAnimatorPreHC.NameValuesHolder(paramInt, paramFloat1, paramFloat2);
+    this.mPendingAnimations.add(localObject);
+    localObject = (View)this.mView.get();
+    if (localObject != null)
+    {
+      ((View)localObject).removeCallbacks(this.mAnimationStarter);
+      ((View)localObject).post(this.mAnimationStarter);
     }
   }
   
   private float getValue(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return 0.0F;
-    case 1: 
-      return this.mProxy.getTranslationX();
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 4)
+        {
+          if (paramInt != 8)
+          {
+            if (paramInt != 16)
+            {
+              if (paramInt != 32)
+              {
+                if (paramInt != 64)
+                {
+                  if (paramInt != 128)
+                  {
+                    if (paramInt != 256)
+                    {
+                      if (paramInt != 512) {
+                        return 0.0F;
+                      }
+                      return this.mProxy.getAlpha();
+                    }
+                    return this.mProxy.getY();
+                  }
+                  return this.mProxy.getX();
+                }
+                return this.mProxy.getRotationY();
+              }
+              return this.mProxy.getRotationX();
+            }
+            return this.mProxy.getRotation();
+          }
+          return this.mProxy.getScaleY();
+        }
+        return this.mProxy.getScaleX();
+      }
       return this.mProxy.getTranslationY();
-    case 16: 
-      return this.mProxy.getRotation();
-    case 32: 
-      return this.mProxy.getRotationX();
-    case 64: 
-      return this.mProxy.getRotationY();
-    case 4: 
-      return this.mProxy.getScaleX();
-    case 8: 
-      return this.mProxy.getScaleY();
-    case 128: 
-      return this.mProxy.getX();
-    case 256: 
-      return this.mProxy.getY();
     }
-    return this.mProxy.getAlpha();
+    return this.mProxy.getTranslationX();
   }
   
   private void setValue(int paramInt, float paramFloat)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      this.mProxy.setTranslationX(paramFloat);
-      return;
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 4)
+        {
+          if (paramInt != 8)
+          {
+            if (paramInt != 16)
+            {
+              if (paramInt != 32)
+              {
+                if (paramInt != 64)
+                {
+                  if (paramInt != 128)
+                  {
+                    if (paramInt != 256)
+                    {
+                      if (paramInt != 512) {
+                        return;
+                      }
+                      this.mProxy.setAlpha(paramFloat);
+                      return;
+                    }
+                    this.mProxy.setY(paramFloat);
+                    return;
+                  }
+                  this.mProxy.setX(paramFloat);
+                  return;
+                }
+                this.mProxy.setRotationY(paramFloat);
+                return;
+              }
+              this.mProxy.setRotationX(paramFloat);
+              return;
+            }
+            this.mProxy.setRotation(paramFloat);
+            return;
+          }
+          this.mProxy.setScaleY(paramFloat);
+          return;
+        }
+        this.mProxy.setScaleX(paramFloat);
+        return;
+      }
       this.mProxy.setTranslationY(paramFloat);
       return;
-    case 16: 
-      this.mProxy.setRotation(paramFloat);
-      return;
-    case 32: 
-      this.mProxy.setRotationX(paramFloat);
-      return;
-    case 64: 
-      this.mProxy.setRotationY(paramFloat);
-      return;
-    case 4: 
-      this.mProxy.setScaleX(paramFloat);
-      return;
-    case 8: 
-      this.mProxy.setScaleY(paramFloat);
-      return;
-    case 128: 
-      this.mProxy.setX(paramFloat);
-      return;
-    case 256: 
-      this.mProxy.setY(paramFloat);
-      return;
     }
-    this.mProxy.setAlpha(paramFloat);
+    this.mProxy.setTranslationX(paramFloat);
   }
   
   private void startAnimation()
   {
+    int i = 0;
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F });
     ArrayList localArrayList = (ArrayList)this.mPendingAnimations.clone();
     this.mPendingAnimations.clear();
     int k = localArrayList.size();
-    int i = 0;
     int j = 0;
     for (;;)
     {
@@ -204,22 +229,17 @@ class ViewPropertyAnimatorPreHC
   
   public void cancel()
   {
-    Object localObject;
-    if (this.mAnimatorMap.size() > 0) {
-      localObject = ((HashMap)this.mAnimatorMap.clone()).keySet().iterator();
-    }
-    for (;;)
+    if (this.mAnimatorMap.size() > 0)
     {
-      if (!((Iterator)localObject).hasNext())
-      {
-        this.mPendingAnimations.clear();
-        localObject = (View)this.mView.get();
-        if (localObject != null) {
-          ((View)localObject).removeCallbacks(this.mAnimationStarter);
-        }
-        return;
+      localObject = ((HashMap)this.mAnimatorMap.clone()).keySet().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((Animator)((Iterator)localObject).next()).cancel();
       }
-      ((Animator)((Iterator)localObject).next()).cancel();
+    }
+    this.mPendingAnimations.clear();
+    Object localObject = (View)this.mView.get();
+    if (localObject != null) {
+      ((View)localObject).removeCallbacks(this.mAnimationStarter);
     }
   }
   
@@ -301,12 +321,15 @@ class ViewPropertyAnimatorPreHC
   
   public ViewPropertyAnimator setDuration(long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("Animators cannot have negative duration: " + paramLong);
+    if (paramLong >= 0L)
+    {
+      this.mDurationSet = true;
+      this.mDuration = paramLong;
+      return this;
     }
-    this.mDurationSet = true;
-    this.mDuration = paramLong;
-    return this;
+    StringBuilder localStringBuilder = new StringBuilder("Animators cannot have negative duration: ");
+    localStringBuilder.append(paramLong);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public ViewPropertyAnimator setInterpolator(Interpolator paramInterpolator)
@@ -324,12 +347,15 @@ class ViewPropertyAnimatorPreHC
   
   public ViewPropertyAnimator setStartDelay(long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("Animators cannot have negative duration: " + paramLong);
+    if (paramLong >= 0L)
+    {
+      this.mStartDelaySet = true;
+      this.mStartDelay = paramLong;
+      return this;
     }
-    this.mStartDelaySet = true;
-    this.mStartDelay = paramLong;
-    return this;
+    StringBuilder localStringBuilder = new StringBuilder("Animators cannot have negative duration: ");
+    localStringBuilder.append(paramLong);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public void start()
@@ -387,7 +413,7 @@ class ViewPropertyAnimatorPreHC
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nineoldandroids.view.ViewPropertyAnimatorPreHC
  * JD-Core Version:    0.7.0.1
  */

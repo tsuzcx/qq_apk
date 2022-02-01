@@ -18,10 +18,12 @@ final class BlockingOperatorLatest$LatestObserverIterator<T>
   
   public boolean hasNext()
   {
-    if ((this.iNotif != null) && (this.iNotif.isOnError())) {
+    Notification localNotification = this.iNotif;
+    if ((localNotification != null) && (localNotification.isOnError())) {
       throw Exceptions.propagate(this.iNotif.getThrowable());
     }
-    if (((this.iNotif == null) || (!this.iNotif.isOnCompleted())) && (this.iNotif == null)) {
+    localNotification = this.iNotif;
+    if (((localNotification == null) || (!localNotification.isOnCompleted())) && (this.iNotif == null)) {
       try
       {
         this.notify.acquire();
@@ -38,7 +40,7 @@ final class BlockingOperatorLatest$LatestObserverIterator<T>
         throw Exceptions.propagate(localInterruptedException);
       }
     }
-    return !this.iNotif.isOnCompleted();
+    return this.iNotif.isOnCompleted() ^ true;
   }
   
   public T next()
@@ -58,13 +60,14 @@ final class BlockingOperatorLatest$LatestObserverIterator<T>
   
   public void onNext(Notification<? extends T> paramNotification)
   {
-    if (this.value.getAndSet(paramNotification) == null) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        this.notify.release();
-      }
-      return;
+    int i;
+    if (this.value.getAndSet(paramNotification) == null) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      this.notify.release();
     }
   }
   
@@ -75,7 +78,7 @@ final class BlockingOperatorLatest$LatestObserverIterator<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.BlockingOperatorLatest.LatestObserverIterator
  * JD-Core Version:    0.7.0.1
  */

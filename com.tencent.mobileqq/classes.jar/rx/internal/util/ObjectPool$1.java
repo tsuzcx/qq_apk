@@ -10,10 +10,11 @@ class ObjectPool$1
   
   public void call()
   {
+    int k = this.this$0.pool.size();
+    int m = this.this$0.minSize;
     int j = 0;
     int i = 0;
-    int k = this.this$0.pool.size();
-    if (k < this.this$0.minSize)
+    if (k < m)
     {
       j = this.this$0.maxSize;
       while (i < j - k)
@@ -24,7 +25,7 @@ class ObjectPool$1
     }
     if (k > this.this$0.maxSize)
     {
-      int m = this.this$0.maxSize;
+      m = this.this$0.maxSize;
       i = j;
       while (i < k - m)
       {
@@ -36,7 +37,7 @@ class ObjectPool$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.util.ObjectPool.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,6 +10,8 @@ import java.util.EmptyStackException;
 public class PatchedButton
   extends Button
 {
+  private static final String TAG = "PatchedTextView";
+  
   public PatchedButton(Context paramContext)
   {
     super(paramContext, null);
@@ -25,7 +27,7 @@ public class PatchedButton
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     try
     {
@@ -49,16 +51,19 @@ public class PatchedButton
       super.setBackgroundResource(paramInt);
       return;
     }
-    catch (NullPointerException localNullPointerException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("PatchedTextView", 2, localNullPointerException.toString());
-      return;
-    }
     catch (EmptyStackException localEmptyStackException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("PatchedTextView", 2, localEmptyStackException.toString());
+      if (QLog.isColorLevel())
+      {
+        QLog.d("PatchedTextView", 2, localEmptyStackException.toString());
+        return;
+      }
+    }
+    catch (NullPointerException localNullPointerException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PatchedTextView", 2, localNullPointerException.toString());
+      }
     }
   }
   
@@ -97,7 +102,7 @@ public class PatchedButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.PatchedButton
  * JD-Core Version:    0.7.0.1
  */

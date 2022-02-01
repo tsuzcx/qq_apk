@@ -94,11 +94,12 @@
                 }
             },
             {
-                "view_type":"UIButton",
-                "view_id":"id_collect",
+                "view_type":"UIImageView",
+                "view_id":"id_operation_coin",
                 "right_of_view":"id_separate_line1",
                 "default_visible":"YES",
-                "event_type":"cmd_collect_click",
+                "margin_left": "40",
+                "event_type":"cmd_coin_click",
                 "align_parent_center_vertical":"YES",
                 "align_parent_center_horizontal":"YES",
                 "height":{
@@ -107,33 +108,19 @@
                 },
                 "width":{
                     "type":"relative",
-                    "value":"125"
+                    "value":"46"
                 },
                 "attributes":{
-                    "setImages:colors:direction:forStates:":[
-                        ["$collect_normalstate_image","NativeArticleCollectionEnable"],
-                        ["#000000","#000000"],
-                        ["0","0"],
-                        ["0","1"]
-                    ],
-                    "setDTElementID:withParams:": [
-                        "collect_button",
-                        {
-                            "rowkey": "$dt_rowkey",
-                            "content_type": "5",
-                            "dt_pgid": "1",
-                            "actionid": "click_collect",
-                            "click_type": "single"
-                        }
-                    ]
+                    "loadImageWithPath:": "$coin_img_status"
                 }
             },
             {
                 "view_type":"UIView",
                 "view_id":"id_separate_line2",
-                "right_of_view":"id_collect",
+                "right_of_view":"id_operation_coin",
                 "align_parent_center_vertical":"YES",
                 "default_visible":"YES",
+                "margin_left": "40",
                 "height":{
                     "type":"relative",
                     "value":"23"
@@ -144,35 +131,6 @@
                 },
                 "attributes":{
                     "setBackgroundColorString:":"#1f000000"
-                }
-            },
-            {
-                "view_type":"UIButton",
-                "view_id":"id_biu",
-                "right_of_view":"id_separate_line2",
-                "event_type":"cmd_biu_click",
-                "default_visible":"YES",
-                "align_parent_center_vertical":"YES",
-                "height":{
-                    "type":"relative",
-                    "value":"46"
-                },
-                "width":{
-                    "type":"relative",
-                    "value":"125"
-                },
-                "attributes":{
-                    "setImage:": "NativeArticleBiu",
-                    "setDTElementID:withParams:": [
-                        "biu_button",
-                        {
-                            "rowkey": "$dt_rowkey",
-                            "content_type": "5",
-                            "dt_pgid": "1",
-                            "actionid": "click_biu",
-                            "click_type": "single"
-                        }
-                    ]
                 }
             },
             {

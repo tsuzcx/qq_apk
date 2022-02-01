@@ -22,13 +22,14 @@ public final class qqstory_struct$FeedFollowDav
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48, 58 }, new String[] { "from_uid_num", "from_uid_list", "to_uid", "feed_id", "video_isend", "video_next", "video_list" }, new Object[] { Integer.valueOf(0), null, null, localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), null }, FeedFollowDav.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48, 58 }, new String[] { "from_uid_num", "from_uid_list", "to_uid", "feed_id", "video_isend", "video_next", "video_list" }, new Object[] { localInteger, null, null, localByteStringMicro, localInteger, localInteger, null }, FeedFollowDav.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedFollowDav
  * JD-Core Version:    0.7.0.1
  */

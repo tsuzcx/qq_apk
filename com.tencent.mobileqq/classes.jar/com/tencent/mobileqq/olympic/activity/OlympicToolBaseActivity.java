@@ -1,191 +1,35 @@
 package com.tencent.mobileqq.olympic.activity;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler.Callback;
-import android.text.TextUtils;
 import android.view.MotionEvent;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ar.ARScanAR;
-import com.tencent.mobileqq.nearby.NearbyFakeActivity;
-import com.tencent.mobileqq.nearby.NearbyReceiver;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.ocr.data.OcrConfig;
 import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
-import com.tencent.mobileqq.olympic.ScannerResultReceiver;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.util.WeakReferenceHandler;
 import mqq.app.AppRuntime;
 
 public class OlympicToolBaseActivity
   extends AbsBaseWebViewActivity
 {
-  public static boolean b = true;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new OlympicToolBaseActivity.6(this);
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new OlympicToolBaseActivity.5(this);
-  public ImageView a;
-  public TextView a;
   public AppInterface a;
   public QQAppInterface a;
-  public ARScanAR a;
-  public OcrConfig a;
   public OlympicToolAppInterface a;
-  public ScannerResultReceiver a;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
-  public boolean a;
-  Drawable b;
-  public ImageView b;
-  public TextView b;
-  Drawable jdField_c_of_type_AndroidGraphicsDrawableDrawable;
-  public ImageView c;
-  public TextView c;
-  private boolean jdField_c_of_type_Boolean;
-  Drawable jdField_d_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_d_of_type_Boolean;
-  
-  public OlympicToolBaseActivity()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  private void g()
-  {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.d = NearbyFakeActivity.a();
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(0);
-    if (this.d)
-    {
-      e();
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    h();
-    j();
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(0, 5000L);
-  }
-  
-  private void h()
-  {
-    if (this.c) {}
-    do
-    {
-      return;
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131707815));
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(false);
-        }
-        this.c = true;
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-        return;
-      }
-      catch (Exception localException) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("ScanBaseActivity", 2, "");
-  }
-  
-  private void i()
-  {
-    try
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ScanBaseActivity", 2, "hide init check progress:" + localException.getMessage());
-      }
-      localException.printStackTrace();
-    }
-  }
-  
-  private void j()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanBaseActivity", 2, "sendBroadcastToToolProc");
-    }
-    Intent localIntent = new Intent(this, NearbyReceiver.class);
-    localIntent.putExtra("resultreceiver_nearbyfakeactivity", this.jdField_a_of_type_ComTencentMobileqqOlympicScannerResultReceiver);
-    localIntent.setExtrasClassLoader(getClassLoader());
-    try
-    {
-      sendBroadcast(localIntent);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ScanBaseActivity", 2, new Object[] { "sendBroadcastToToolProc, exception=", localThrowable.getMessage(), localThrowable });
-    }
-  }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Int != 2) {
-      d();
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Int != 1) {
-      f();
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Int != 0) {
-      g();
-    }
-  }
-  
-  public void d()
-  {
-    Intent localIntent = new Intent(this, ScannerActivity.class);
-    localIntent.addFlags(67108864);
-    if (this.jdField_a_of_type_Int == 0)
+    AppRuntime localAppRuntime = getAppRuntime();
+    if ((localAppRuntime instanceof QQAppInterface))
     {
-      localIntent.putExtra("from", ScanTorchActivity.class.getSimpleName());
-      localIntent.putExtra("forbidGuideBubble", true);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqArARScanAR != null) {
-        localIntent.putExtra("key_ar_config", this.jdField_a_of_type_ComTencentMobileqqArARScanAR);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig != null) {
-        localIntent.putExtra("key_ocr_config", this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig);
-      }
-      startActivity(localIntent);
-      overridePendingTransition(0, 0);
-      finish();
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)localAppRuntime);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
       return;
-      if (this.jdField_a_of_type_Int == 1) {
-        localIntent.putExtra("from", ScanOcrActivity.class.getSimpleName());
-      }
+    }
+    if ((localAppRuntime instanceof OlympicToolAppInterface))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface = ((OlympicToolAppInterface)localAppRuntime);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface;
     }
   }
   
@@ -198,80 +42,27 @@ public class OlympicToolBaseActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(this.jdField_a_of_type_AndroidOsHandler$Callback);
-    this.jdField_a_of_type_ComTencentMobileqqOlympicScannerResultReceiver = new ScannerResultReceiver(null);
+    a();
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    }
   }
   
-  public void doOnPause()
+  protected void doOnPause()
   {
     super.doOnPause();
-    if (this.jdField_a_of_type_ComTencentMobileqqOlympicScannerResultReceiver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqOlympicScannerResultReceiver.a(null);
-    }
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
-    if (this.jdField_a_of_type_ComTencentMobileqqOlympicScannerResultReceiver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqOlympicScannerResultReceiver.a(this);
-    }
   }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(0);
-    i();
-    Intent localIntent = new Intent(this, ScanTorchActivity.class);
-    localIntent.addFlags(67108864);
-    localIntent.addFlags(268435456);
-    localIntent.addFlags(65536);
-    localIntent.putExtra("click_time", this.jdField_a_of_type_Long);
-    localIntent.putExtra("first_click", b);
-    localIntent.putExtra("proc_exist", this.d);
-    localIntent.putExtra("software", getSharedPreferences("immerse_ar", 0).getBoolean("software", false));
-    b = false;
-    localIntent.putExtra("log_on", ScanTorchActivity.d);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqArARScanAR.e)) {
-      localIntent.putExtra("icon_text", "QQ-AR");
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqArARScanAR.c)) {
-        localIntent.putExtra("icon_url", this.jdField_a_of_type_ComTencentMobileqqArARScanAR.c);
-      }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqArARScanAR.f)) {
-        localIntent.putExtra("scan_ar_default_tips", this.jdField_a_of_type_ComTencentMobileqqArARScanAR.f);
-      }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqArARScanAR.g)) {
-        localIntent.putExtra("scan_ar_default_tips2", this.jdField_a_of_type_ComTencentMobileqqArARScanAR.g);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig != null) {
-        localIntent.putExtra("key_ocr_config", this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig);
-      }
-      localIntent.putExtra("key_ar_config", this.jdField_a_of_type_ComTencentMobileqqArARScanAR);
-      startActivityForResult(localIntent, 10);
-      overridePendingTransition(0, 0);
-      finish();
-      return;
-      localIntent.putExtra("icon_text", this.jdField_a_of_type_ComTencentMobileqqArARScanAR.e);
-    }
-  }
-  
-  public void f() {}
   
   public String getModuleId()
   {
@@ -281,31 +72,22 @@ public class OlympicToolBaseActivity
     return super.getModuleId();
   }
   
+  protected void onAccountChanged()
+  {
+    super.onAccountChanged();
+    a();
+  }
+  
   @Override
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
-  
-  public void updateAppRuntime()
-  {
-    AppRuntime localAppRuntime = getAppRuntime();
-    if ((localAppRuntime instanceof QQAppInterface))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)localAppRuntime);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    }
-    while (!(localAppRuntime instanceof OlympicToolAppInterface)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface = ((OlympicToolAppInterface)localAppRuntime);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity
  * JD-Core Version:    0.7.0.1
  */

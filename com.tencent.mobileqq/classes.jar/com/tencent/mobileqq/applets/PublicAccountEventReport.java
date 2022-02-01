@@ -3,28 +3,32 @@ package com.tencent.mobileqq.applets;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.util.api.IPAReportUtil;
+import com.tencent.common.app.AppInterface;
 import com.tencent.imcore.message.Message;
-import com.tencent.mobileqq.activity.aio.item.PAWeatherItemBuilder;
 import com.tencent.mobileqq.activity.recent.RecentAdapter;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.activity.recent.data.RecentItemPublicAccountChatMsgData;
 import com.tencent.mobileqq.activity.recent.data.RecentItemServiceAccountFolderData;
-import com.tencent.mobileqq.activity.weather.WeatherDCReportHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.mini.api.IMiniAppService;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vashealth.VSHealthReportUtil;
-import com.tencent.mobileqq.vashealth.VSHealthUtil;
+import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
+import com.tencent.mobileqq.vas.qvip.util.QQVipHelper;
+import com.tencent.mobileqq.vas.qvip.util.ReportAmsAdvHelper;
+import com.tencent.mobileqq.vashealth.api.IQQHealthApi;
+import com.tencent.mobileqq.vashealth.api.IQQHealthService;
+import com.tencent.mobileqq.weather.api.IWeatherCommApi;
+import com.tencent.mobileqq.weather.api.IWeatherReportApi;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qzonehub.api.IQzoneRuntimeService;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.HeaderViewListAdapter;
-import cooperation.qzone.contentbox.QZoneMsgManager;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
@@ -51,24 +55,28 @@ public class PublicAccountEventReport
     }
     catch (JSONException localJSONException)
     {
-      QLog.e("PublicAccountEventReport", 1, "parse input=" + paramString, localJSONException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parse input=");
+      localStringBuilder.append(paramString);
+      QLog.e("PublicAccountEventReport", 1, localStringBuilder.toString(), localJSONException);
     }
     return null;
   }
   
   public static String a(String paramString)
   {
-    String str = "";
     if (!TextUtils.isEmpty(paramString)) {}
     try
     {
-      str = b(new JSONObject(paramString).optString("oac_triggle")).getString("ad_id");
-      return str;
+      paramString = b(new JSONObject(paramString).optString("oac_triggle")).getString("ad_id");
+      return paramString;
     }
     catch (Exception paramString)
     {
-      QLog.e("PublicAccountEventReport", 2, "parseException error ");
+      label31:
+      break label31;
     }
+    QLog.e("PublicAccountEventReport", 2, "parseException error ");
     return "";
   }
   
@@ -98,24 +106,32 @@ public class PublicAccountEventReport
   
   public static void a(int paramInt1, ChatMessage paramChatMessage, int paramInt2)
   {
-    if (paramChatMessage == null) {}
-    String str2;
-    String str1;
-    do
-    {
+    if (paramChatMessage == null) {
       return;
-      if (paramInt1 == 117) {
-        a(paramChatMessage.frienduin, paramChatMessage.uniseq);
+    }
+    if (paramInt1 == 117)
+    {
+      a(paramChatMessage.frienduin, paramChatMessage.uniseq);
+      if ((paramChatMessage instanceof MessageForArkApp)) {
+        a(QQVipHelper.a(), 103, paramChatMessage);
       }
-      str2 = "";
-      str1 = "";
-      if (paramChatMessage.mExJsonObject != null)
-      {
-        str1 = paramChatMessage.mExJsonObject.optString("report_key_bytes_oac_msg_extend");
-        str2 = a(str1);
-      }
-    } while (TextUtils.isEmpty(str2));
-    a(paramInt1, paramInt2, str2, str1);
+    }
+    Object localObject = paramChatMessage.mExJsonObject;
+    String str = "";
+    if (localObject != null)
+    {
+      paramChatMessage = paramChatMessage.mExJsonObject.optString("report_key_bytes_oac_msg_extend");
+      localObject = a(paramChatMessage);
+    }
+    else
+    {
+      localObject = "";
+      paramChatMessage = str;
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return;
+    }
+    a(paramInt1, paramInt2, (String)localObject, paramChatMessage);
   }
   
   public static void a(int paramInt1, String paramString1, String paramString2, int paramInt2)
@@ -123,142 +139,47 @@ public class PublicAccountEventReport
     a(205, paramInt1, paramString1, paramString2, paramInt2);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, MessageRecord paramMessageRecord)
+  public static void a(AppInterface paramAppInterface, int paramInt, MessageRecord paramMessageRecord)
   {
-    if (paramMessageRecord != null)
+    if ((paramMessageRecord instanceof MessageForArkApp))
     {
-      String str = "";
-      if (paramMessageRecord.mExJsonObject != null) {
-        str = paramMessageRecord.mExJsonObject.optString("report_key_bytes_oac_msg_extend");
-      }
-      a(paramQQAppInterface, paramMessageRecord.frienduin, paramInt1, paramInt2, paramMessageRecord.msgUid, str);
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, RecentBaseData paramRecentBaseData)
-  {
-    int i = 0;
-    if ((paramQQAppInterface == null) || (paramRecentBaseData == null)) {
-      return;
-    }
-    int j = paramRecentBaseData.mUnreadNum;
-    String str1 = "";
-    Object localObject = "";
-    if ((paramRecentBaseData instanceof RecentItemPublicAccountChatMsgData))
-    {
-      localObject = ((RecentItemPublicAccountChatMsgData)paramRecentBaseData).a();
-      if (localObject != null)
-      {
-        str1 = ((Message)localObject).msgseq + "";
-        if (localObject == null) {
-          break label377;
-        }
-        localObject = ((Message)localObject).msgBackupMsgRandom + "";
-      }
-    }
-    else
-    {
-      label100:
-      localObject = a(j + "", str1, (String)localObject);
-    }
-    label229:
-    int k;
-    switch (paramRecentBaseData.getRecentUserType())
-    {
-    default: 
-      return;
-    case 1008: 
-    case 3001: 
-    case 7120: 
-    case 7200: 
-    case 7210: 
-    case 7220: 
-    case 7230: 
-      str1 = "";
-      String str2;
-      if ((paramRecentBaseData instanceof RecentItemPublicAccountChatMsgData))
-      {
-        str1 = ((RecentItemPublicAccountChatMsgData)paramRecentBaseData).mReportKeyBytesOacMsgxtend;
-        str2 = paramRecentBaseData.getRecentUserUin();
-        k = paramRecentBaseData.getUnreadNum();
-        j = paramRecentBaseData.mUnreadFlag;
-        if (!PAWeatherItemBuilder.a(str2)) {
-          break label403;
-        }
-        WeatherDCReportHelper.a().b(paramQQAppInterface);
-        label261:
-        if (QLog.isColorLevel()) {
-          QLog.d("PublicAccountEventReport", 2, new Object[] { "Report from reportItemClickEventOnConversation, UIN=", str2, " unReadFlag=", Integer.valueOf(j), " unreadSum=", Integer.valueOf(k), " message=", paramRecentBaseData.mLastMsg.toString() });
-        }
-        if (k != 0) {
-          break label421;
-        }
-        i = 0;
-      }
-      for (;;)
-      {
-        ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.6(str2, str1, i, k, (String)localObject, paramRecentBaseData, paramQQAppInterface, paramRecentBaseData.mLastMsg.toString()));
+      if (paramAppInterface == null) {
         return;
-        str1 = "";
+      }
+      paramAppInterface = (MessageForArkApp)paramMessageRecord;
+      if (paramAppInterface.ark_app_message == null) {
+        return;
+      }
+      paramMessageRecord = new QQVipMsgInfo();
+      QQVipMsgInfo.parseArkAdvInfo(paramAppInterface, paramMessageRecord);
+      if (!paramMessageRecord.mIsAmsAdv) {
+        return;
+      }
+      switch (paramInt)
+      {
+      default: 
+        paramAppInterface = "";
         break;
-        label377:
-        localObject = "";
-        break label100;
-        if (!(paramRecentBaseData instanceof RecentItemServiceAccountFolderData)) {
-          break label229;
-        }
-        str1 = ((RecentItemServiceAccountFolderData)paramRecentBaseData).mReportKeyBytesOacMsgxtend;
-        break label229;
-        label403:
-        if (!VSHealthUtil.b(str2)) {
-          break label261;
-        }
-        VSHealthReportUtil.a(paramQQAppInterface, "qqsport_click_messagetab", null);
-        break label261;
-        label421:
-        i = j;
-        if (j != 2) {
-          i = 1;
-        }
+      case 103: 
+        paramAppInterface = paramMessageRecord.mAmsMessageExposeUrl;
+        break;
+      case 102: 
+        paramAppInterface = paramMessageRecord.mAmsRPClickUrl;
+        break;
+      case 101: 
+        paramAppInterface = paramMessageRecord.mAmsRPExposeUrl;
       }
-    }
-    str1 = paramRecentBaseData.getRecentUserUin();
-    paramQQAppInterface = "";
-    if ((paramRecentBaseData instanceof RecentItemPublicAccountChatMsgData)) {
-      paramQQAppInterface = ((RecentItemPublicAccountChatMsgData)paramRecentBaseData).mReportKeyBytesOacMsgxtend;
-    }
-    boolean bool;
-    if ((paramRecentBaseData.mUnreadFlag != 0) || (paramRecentBaseData.mUnreadNum > 0))
-    {
-      bool = true;
-      b(str1, 102, paramQQAppInterface, bool, (String)localObject, paramRecentBaseData.mPosition + "");
-      k = paramRecentBaseData.getUnreadNum();
-      j = paramRecentBaseData.mUnreadFlag;
-      if (k != 0) {
-        break label567;
-      }
-    }
-    for (;;)
-    {
-      ((IMiniAppService)QRoute.api(IMiniAppService.class)).reportByQQ("message", "message_list", "click", String.valueOf(i), String.valueOf(k), "", "");
-      return;
-      bool = false;
-      break;
-      label567:
-      if (j != 2) {
-        i = 1;
-      } else {
-        i = j;
-      }
+      ReportAmsAdvHelper.a(paramInt, paramAppInterface);
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  public static void a(AppInterface paramAppInterface, MessageRecord paramMessageRecord)
   {
-    if ((paramQQAppInterface == null) || (paramMessageRecord == null)) {}
-    do
+    if (paramAppInterface != null)
     {
-      return;
+      if (paramMessageRecord == null) {
+        return;
+      }
       if ("1".equals(paramMessageRecord.getExtInfoFromExtStr("is_AdArrive_Msg")))
       {
         String str1 = paramMessageRecord.getExtInfoFromExtStr("gdt_msgImp");
@@ -266,173 +187,309 @@ public class PublicAccountEventReport
         String str3 = paramMessageRecord.getExtInfoFromExtStr("gdt_view_id");
         ArrayList localArrayList = new ArrayList();
         localArrayList.add(str2);
-        ((IPAReportUtil)QRoute.api(IPAReportUtil.class)).reportAdMsgArriveReceipt(paramQQAppInterface, "", "", paramMessageRecord.senderuin, str1, str3, localArrayList);
+        ((IPAReportUtil)QRoute.api(IPAReportUtil.class)).reportAdMsgArriveReceipt(paramAppInterface, "", "", paramMessageRecord.senderuin, str1, str3, localArrayList);
+      }
+      else if ("2290230341".equals(paramMessageRecord.frienduin))
+      {
+        ReportController.b(paramAppInterface, "CliOper", "", "", "0X80090E1", "0X80090E1", 0, 0, "", "", "", "");
+        ((IQzoneRuntimeService)paramAppInterface.getRuntimeService(IQzoneRuntimeService.class, "")).preloadContentBox();
+      }
+      a(paramAppInterface, 101, paramMessageRecord);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord != null)
+    {
+      String str;
+      if (paramMessageRecord.mExJsonObject != null) {
+        str = paramMessageRecord.mExJsonObject.optString("report_key_bytes_oac_msg_extend");
+      } else {
+        str = "";
+      }
+      a(paramQQAppInterface, paramMessageRecord.frienduin, paramInt1, paramInt2, paramMessageRecord.msgUid, str);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, RecentBaseData paramRecentBaseData)
+  {
+    if (paramQQAppInterface != null)
+    {
+      if (paramRecentBaseData == null) {
         return;
       }
-    } while (!"2290230341".equals(paramMessageRecord.frienduin));
-    ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80090E1", "0X80090E1", 0, 0, "", "", "", "");
-    ((QZoneMsgManager)paramQQAppInterface.getManager(QQManagerFactory.QZONE_MSG_MANAGER)).preLoadQZoneMsg();
+      int i = paramRecentBaseData.mUnreadNum;
+      boolean bool = paramRecentBaseData instanceof RecentItemPublicAccountChatMsgData;
+      Object localObject3 = "";
+      Object localObject1;
+      if (bool)
+      {
+        localObject2 = ((RecentItemPublicAccountChatMsgData)paramRecentBaseData).a();
+        if (localObject2 != null)
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(((Message)localObject2).msgseq);
+          ((StringBuilder)localObject1).append("");
+          localObject1 = ((StringBuilder)localObject1).toString();
+        }
+        else
+        {
+          localObject1 = "";
+        }
+        if (localObject2 != null)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(((Message)localObject2).msgBackupMsgRandom);
+          localStringBuilder.append("");
+          localObject2 = localStringBuilder.toString();
+        }
+        else
+        {
+          localObject2 = "";
+        }
+      }
+      else
+      {
+        localObject2 = "";
+        localObject1 = localObject2;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(i);
+      localStringBuilder.append("");
+      Object localObject2 = a(localStringBuilder.toString(), (String)localObject1, (String)localObject2);
+      i = paramRecentBaseData.getRecentUserType();
+      if (i != 1008) {
+        if (i != 1038)
+        {
+          if ((i == 3001) || (i == 7120) || (i == 7200) || (i == 7210) || (i == 7220) || (i == 7230)) {}
+        }
+        else
+        {
+          localObject1 = paramRecentBaseData.getRecentUserUin();
+          if (bool) {
+            paramQQAppInterface = ((RecentItemPublicAccountChatMsgData)paramRecentBaseData).mReportKeyBytesOacMsgxtend;
+          } else {
+            paramQQAppInterface = "";
+          }
+          if ((paramRecentBaseData.mUnreadFlag == 0) && (paramRecentBaseData.mUnreadNum <= 0)) {
+            bool = false;
+          } else {
+            bool = true;
+          }
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append(paramRecentBaseData.mPosition);
+          ((StringBuilder)localObject3).append("");
+          b((String)localObject1, 102, paramQQAppInterface, bool, (String)localObject2, ((StringBuilder)localObject3).toString());
+          int k = paramRecentBaseData.getUnreadNum();
+          j = paramRecentBaseData.mUnreadFlag;
+          if (k == 0)
+          {
+            i = 0;
+          }
+          else
+          {
+            i = j;
+            if (j != 2) {
+              i = 1;
+            }
+          }
+          ((IMiniAppService)QRoute.api(IMiniAppService.class)).reportByQQ("message", "message_list", "click", String.valueOf(i), String.valueOf(k), "", "");
+          return;
+        }
+      }
+      if (bool)
+      {
+        localObject1 = ((RecentItemPublicAccountChatMsgData)paramRecentBaseData).mReportKeyBytesOacMsgxtend;
+      }
+      else
+      {
+        localObject1 = localObject3;
+        if ((paramRecentBaseData instanceof RecentItemServiceAccountFolderData)) {
+          localObject1 = ((RecentItemServiceAccountFolderData)paramRecentBaseData).mReportKeyBytesOacMsgxtend;
+        }
+      }
+      localObject3 = paramRecentBaseData.getRecentUserUin();
+      int j = paramRecentBaseData.getUnreadNum();
+      i = paramRecentBaseData.mUnreadFlag;
+      if (((IWeatherCommApi)QRoute.api(IWeatherCommApi.class)).isWeatherPA((String)localObject3)) {
+        ((IWeatherReportApi)QRoute.api(IWeatherReportApi.class)).reportWeatherMessageClick(paramQQAppInterface);
+      } else if (((IQQHealthApi)QRoute.api(IQQHealthApi.class)).isHealthUin((String)localObject3)) {
+        ((IQQHealthService)paramQQAppInterface.getRuntimeService(IQQHealthService.class)).reportToBeaconIfNeed("qqsport_click_messagetab", null);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PublicAccountEventReport", 2, new Object[] { "Report from reportItemClickEventOnConversation, UIN=", localObject3, " unReadFlag=", Integer.valueOf(i), " unreadSum=", Integer.valueOf(j), " message=", paramRecentBaseData.mLastMsg.toString() });
+      }
+      if (j == 0) {
+        i = 0;
+      } else if (i != 2) {
+        i = 1;
+      }
+      ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.6((String)localObject3, (String)localObject1, i, j, (String)localObject2, paramRecentBaseData, paramQQAppInterface, paramRecentBaseData.mLastMsg.toString()));
+    }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, AbsListView paramAbsListView, int paramInt)
   {
-    if ((paramQQAppInterface == null) || (paramAbsListView == null) || (paramAbsListView.getChildCount() == 0) || (paramAbsListView.getAdapter() == null)) {}
-    Object localObject;
-    do
+    if ((paramQQAppInterface != null) && (paramAbsListView != null) && (paramAbsListView.getChildCount() != 0))
     {
-      do
-      {
+      if (paramAbsListView.getAdapter() == null) {
         return;
-        switch (paramInt)
-        {
-        case 1: 
-        default: 
-          return;
-        }
-      } while (!(paramAbsListView.getAdapter() instanceof HeaderViewListAdapter));
-      localObject = (HeaderViewListAdapter)paramAbsListView.getAdapter();
-    } while (!(((HeaderViewListAdapter)localObject).getWrappedAdapter() instanceof RecentAdapter));
-    b.clear();
-    RecentAdapter localRecentAdapter = (RecentAdapter)((HeaderViewListAdapter)localObject).getWrappedAdapter();
-    int i = paramAbsListView.getFirstVisiblePosition();
-    paramInt = i;
-    if (i > 0) {
-      paramInt = i - 1;
-    }
-    int k = paramAbsListView.getLastVisiblePosition();
-    i = paramInt;
-    int m;
-    label220:
-    label250:
-    boolean bool;
-    if (i < k - 1)
-    {
-      paramAbsListView = localRecentAdapter.getItem(i);
-      RecentBaseData localRecentBaseData;
-      String str1;
-      String str2;
-      if ((paramAbsListView instanceof RecentBaseData))
-      {
-        localRecentBaseData = (RecentBaseData)paramAbsListView;
-        paramInt = localRecentBaseData.getRecentUserType();
-        str1 = localRecentBaseData.getRecentUserUin();
-        m = localRecentBaseData.mUnreadNum;
-        paramAbsListView = "";
-        localObject = "";
-        if ((localRecentBaseData instanceof RecentItemPublicAccountChatMsgData))
-        {
-          localObject = ((RecentItemPublicAccountChatMsgData)localRecentBaseData).a();
-          if (localObject == null) {
-            break label354;
-          }
-          paramAbsListView = ((Message)localObject).msgseq + "";
-          if (localObject == null) {
-            break label360;
-          }
-          localObject = ((Message)localObject).msgBackupMsgRandom + "";
-        }
-        str2 = a(m + "", paramAbsListView, (String)localObject);
-        if (!a.containsKey(str1))
-        {
-          if (!PAWeatherItemBuilder.a(str1)) {
-            break label367;
-          }
-          ThreadManager.excute(new PublicAccountEventReport.1(paramQQAppInterface), 16, null, true);
-        }
-        label312:
-        if ((paramInt >= 1000) && (paramInt != 5000) && (paramInt != 7000) && (paramInt != 9000) && (paramInt != 9002)) {
-          break label412;
-        }
       }
-      label354:
-      label360:
-      label367:
-      do
+      if (paramInt != 0) {
+        return;
+      }
+      if ((paramAbsListView.getAdapter() instanceof HeaderViewListAdapter))
       {
-        for (;;)
+        Object localObject1 = (HeaderViewListAdapter)paramAbsListView.getAdapter();
+        if ((((HeaderViewListAdapter)localObject1).getWrappedAdapter() instanceof RecentAdapter))
         {
-          i += 1;
-          break;
-          paramAbsListView = "";
-          break label220;
-          localObject = "";
-          break label250;
-          if ((localRecentBaseData instanceof RecentItemServiceAccountFolderData))
-          {
-            ThreadManager.excute(new PublicAccountEventReport.2(paramQQAppInterface), 16, null, true);
-            break label312;
+          b.clear();
+          RecentAdapter localRecentAdapter = (RecentAdapter)((HeaderViewListAdapter)localObject1).getWrappedAdapter();
+          int i = paramAbsListView.getFirstVisiblePosition();
+          paramInt = i;
+          if (i > 0) {
+            paramInt = i - 1;
           }
-          if (!VSHealthUtil.b(str1)) {
-            break label312;
-          }
-          VSHealthReportUtil.a(paramQQAppInterface, "qqsport_exposure_messagetab", null);
-          break label312;
-          switch (paramInt)
+          int k = paramAbsListView.getLastVisiblePosition();
+          i = paramInt;
+          while (i < k - 1)
           {
-          default: 
-            if (QLog.isColorLevel()) {
-              QLog.d("PublicAccountEventReport", 2, new Object[] { "uin=", str1, " uinTYPE=", Integer.valueOf(paramInt) });
+            paramAbsListView = localRecentAdapter.getItem(i);
+            if ((paramAbsListView instanceof RecentBaseData))
+            {
+              RecentBaseData localRecentBaseData = (RecentBaseData)paramAbsListView;
+              int j = localRecentBaseData.getRecentUserType();
+              String str = localRecentBaseData.getRecentUserUin();
+              int m = localRecentBaseData.mUnreadNum;
+              boolean bool = localRecentBaseData instanceof RecentItemPublicAccountChatMsgData;
+              if (bool)
+              {
+                localObject1 = ((RecentItemPublicAccountChatMsgData)localRecentBaseData).a();
+                if (localObject1 != null)
+                {
+                  paramAbsListView = new StringBuilder();
+                  paramAbsListView.append(((Message)localObject1).msgseq);
+                  paramAbsListView.append("");
+                  paramAbsListView = paramAbsListView.toString();
+                }
+                else
+                {
+                  paramAbsListView = "";
+                }
+                if (localObject1 != null)
+                {
+                  localObject2 = new StringBuilder();
+                  ((StringBuilder)localObject2).append(((Message)localObject1).msgBackupMsgRandom);
+                  ((StringBuilder)localObject2).append("");
+                  localObject1 = ((StringBuilder)localObject2).toString();
+                }
+                else
+                {
+                  localObject1 = "";
+                }
+              }
+              else
+              {
+                localObject1 = "";
+                paramAbsListView = (AbsListView)localObject1;
+              }
+              Object localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append(m);
+              ((StringBuilder)localObject2).append("");
+              localObject2 = a(((StringBuilder)localObject2).toString(), paramAbsListView, (String)localObject1);
+              if (!a.containsKey(str))
+              {
+                paramAbsListView = (IWeatherCommApi)QRoute.api(IWeatherCommApi.class);
+                if (paramAbsListView.isWeatherPA(str)) {
+                  ThreadManager.excute(new PublicAccountEventReport.1(paramQQAppInterface), 16, null, true);
+                } else if ((localRecentBaseData instanceof RecentItemServiceAccountFolderData)) {
+                  ThreadManager.excute(new PublicAccountEventReport.2(paramAbsListView, paramQQAppInterface), 16, null, true);
+                } else if (((IQQHealthApi)QRoute.api(IQQHealthApi.class)).isHealthUin(str)) {
+                  ((IQQHealthService)paramQQAppInterface.getRuntimeService(IQQHealthService.class)).reportToBeaconIfNeed("qqsport_exposure_messagetab", null);
+                }
+              }
+              if ((j >= 1000) && (j != 5000) && (j != 7000) && (j != 9000) && (j != 9002))
+              {
+                paramInt = 0;
+                if (j != 1008) {
+                  if (j != 1038)
+                  {
+                    if ((j != 3001) && (j != 7120) && (j != 7200) && (j != 7210) && (j != 7220) && (j != 7230))
+                    {
+                      if (!QLog.isColorLevel()) {
+                        break label946;
+                      }
+                      QLog.d("PublicAccountEventReport", 2, new Object[] { "uin=", str, " uinTYPE=", Integer.valueOf(j) });
+                      break label946;
+                    }
+                  }
+                  else
+                  {
+                    if (bool) {
+                      paramAbsListView = ((RecentItemPublicAccountChatMsgData)localRecentBaseData).mReportKeyBytesOacMsgxtend;
+                    } else {
+                      paramAbsListView = "";
+                    }
+                    if ((localRecentBaseData.mUnreadFlag == 0) && (localRecentBaseData.mUnreadNum <= 0)) {
+                      bool = false;
+                    } else {
+                      bool = true;
+                    }
+                    localObject1 = new StringBuilder();
+                    ((StringBuilder)localObject1).append(localRecentBaseData.mPosition);
+                    ((StringBuilder)localObject1).append("");
+                    b(str, 101, paramAbsListView, bool, (String)localObject2, ((StringBuilder)localObject1).toString());
+                    j = localRecentBaseData.mUnreadFlag;
+                    if (localRecentBaseData.mUnreadNum == 0)
+                    {
+                      paramInt = 0;
+                    }
+                    else
+                    {
+                      paramInt = j;
+                      if (j != 2) {
+                        paramInt = 1;
+                      }
+                    }
+                    ((IMiniAppService)QRoute.api(IMiniAppService.class)).reportByQQ("message", "message_list", "expo", String.valueOf(paramInt), String.valueOf(m), "", "");
+                    break label946;
+                  }
+                }
+                if (bool) {
+                  paramAbsListView = ((RecentItemPublicAccountChatMsgData)localRecentBaseData).mReportKeyBytesOacMsgxtend;
+                } else {
+                  paramAbsListView = "";
+                }
+                b.put(str, Integer.valueOf(j));
+                if (!a.containsKey(str))
+                {
+                  if (QLog.isColorLevel()) {
+                    QLog.d("PublicAccountEventReport", 2, new Object[] { "Report from TAB, UIN=", str, " unReadFlag=", Integer.valueOf(localRecentBaseData.mUnreadFlag), " unreadSum=", Integer.valueOf(localRecentBaseData.mUnreadNum), " message=", localRecentBaseData.mLastMsg });
+                  }
+                  j = localRecentBaseData.mUnreadFlag;
+                  if (localRecentBaseData.mUnreadNum != 0) {
+                    if (j != 2) {
+                      paramInt = 1;
+                    } else {
+                      paramInt = j;
+                    }
+                  }
+                  if (localRecentBaseData.mLastMsg != null) {
+                    localObject1 = localRecentBaseData.mLastMsg.toString();
+                  } else {
+                    localObject1 = "";
+                  }
+                  ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.3(str, paramAbsListView, paramInt, m, (String)localObject2, localRecentBaseData, paramQQAppInterface, (String)localObject1));
+                }
+              }
             }
-            break;
+            label946:
+            i += 1;
           }
+          a.clear();
+          a.putAll(b);
         }
-        paramAbsListView = "";
-        if ((localRecentBaseData instanceof RecentItemPublicAccountChatMsgData)) {
-          paramAbsListView = ((RecentItemPublicAccountChatMsgData)localRecentBaseData).mReportKeyBytesOacMsgxtend;
-        }
-        b.put(str1, Integer.valueOf(paramInt));
-      } while (a.containsKey(str1));
-      label412:
-      if (QLog.isColorLevel()) {
-        QLog.d("PublicAccountEventReport", 2, new Object[] { "Report from TAB, UIN=", str1, " unReadFlag=", Integer.valueOf(localRecentBaseData.mUnreadFlag), " unreadSum=", Integer.valueOf(localRecentBaseData.mUnreadNum), " message=", localRecentBaseData.mLastMsg });
-      }
-      int j = localRecentBaseData.mUnreadFlag;
-      if (localRecentBaseData.mUnreadNum == 0) {
-        paramInt = 0;
-      }
-      for (;;)
-      {
-        localObject = "";
-        if (localRecentBaseData.mLastMsg != null) {
-          localObject = localRecentBaseData.mLastMsg.toString();
-        }
-        ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.3(str1, paramAbsListView, paramInt, m, str2, localRecentBaseData, paramQQAppInterface, (String)localObject));
-        break;
-        paramInt = j;
-        if (j != 2) {
-          paramInt = 1;
-        }
-      }
-      paramAbsListView = "";
-      if ((localRecentBaseData instanceof RecentItemPublicAccountChatMsgData)) {
-        paramAbsListView = ((RecentItemPublicAccountChatMsgData)localRecentBaseData).mReportKeyBytesOacMsgxtend;
-      }
-      if ((localRecentBaseData.mUnreadFlag != 0) || (localRecentBaseData.mUnreadNum > 0))
-      {
-        bool = true;
-        label770:
-        b(str1, 101, paramAbsListView, bool, str2, localRecentBaseData.mPosition + "");
-        paramInt = localRecentBaseData.mUnreadFlag;
-        if (localRecentBaseData.mUnreadNum != 0) {
-          break label866;
-        }
-        paramInt = 0;
-      }
-    }
-    for (;;)
-    {
-      ((IMiniAppService)QRoute.api(IMiniAppService.class)).reportByQQ("message", "message_list", "expo", String.valueOf(paramInt), String.valueOf(m), "", "");
-      break;
-      bool = false;
-      break label770;
-      label866:
-      if (paramInt != 2)
-      {
-        paramInt = 1;
-        continue;
-        a.clear();
-        a.putAll(b);
-        return;
       }
     }
   }
@@ -468,23 +525,10 @@ public class PublicAccountEventReport
     }
     if (paramInt2 == 0) {
       paramInt1 = 0;
+    } else if (paramInt1 != 2) {
+      paramInt1 = 1;
     }
-    for (;;)
-    {
-      ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.5(paramString1, paramString3, paramInt1, paramInt2, paramString4, paramString5, paramQQAppInterface, paramString2));
-      return;
-      if (paramInt1 != 2) {
-        paramInt1 = 1;
-      }
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountEventReport", 2, new Object[] { "report  Click On HealthBusinessPluginFollow , UIN=", paramString });
-    }
-    ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.11(paramString));
+    ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.5(paramString1, paramString3, paramInt1, paramInt2, paramString4, paramString5, paramQQAppInterface, paramString2));
   }
   
   public static void a(String paramString, long paramLong)
@@ -494,27 +538,25 @@ public class PublicAccountEventReport
   
   private static Bundle b(String paramString)
   {
-    int i = 0;
     Bundle localBundle = new Bundle();
     paramString = paramString.split("&");
-    for (;;)
+    if (paramString != null)
     {
-      if ((paramString != null) && (i < paramString.length))
+      int i = 0;
+      while (i < paramString.length)
       {
         String[] arrayOfString = paramString[i].split("=");
-        if ((arrayOfString != null) && (arrayOfString.length == 2)) {}
-        try
-        {
-          localBundle.putString(arrayOfString[0], URLDecoder.decode(arrayOfString[1], "UTF-8"));
-          i += 1;
-        }
-        catch (UnsupportedEncodingException localUnsupportedEncodingException)
-        {
-          for (;;)
+        if ((arrayOfString != null) && (arrayOfString.length == 2)) {
+          try
+          {
+            localBundle.putString(arrayOfString[0], URLDecoder.decode(arrayOfString[1], "UTF-8"));
+          }
+          catch (UnsupportedEncodingException localUnsupportedEncodingException)
           {
             localUnsupportedEncodingException.printStackTrace();
           }
         }
+        i += 1;
       }
     }
     return localBundle;
@@ -527,15 +569,10 @@ public class PublicAccountEventReport
     }
     if (paramInt2 == 0) {
       paramInt1 = 0;
+    } else if (paramInt1 != 2) {
+      paramInt1 = 1;
     }
-    for (;;)
-    {
-      ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.7(paramString1, paramString3, paramInt1, paramInt2, paramString4, paramString5, paramQQAppInterface, paramString2));
-      return;
-      if (paramInt1 != 2) {
-        paramInt1 = 1;
-      }
-    }
+    ThreadManagerV2.executeOnSubThread(new PublicAccountEventReport.7(paramString1, paramString3, paramInt1, paramInt2, paramString4, paramString5, paramQQAppInterface, paramString2));
   }
   
   private static void b(String paramString1, int paramInt, String paramString2, boolean paramBoolean, String paramString3, String paramString4)
@@ -548,7 +585,7 @@ public class PublicAccountEventReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.applets.PublicAccountEventReport
  * JD-Core Version:    0.7.0.1
  */

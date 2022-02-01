@@ -1,11 +1,8 @@
 package com.tencent.mobileqq.qqaudio.audioplayer;
 
-import android.annotation.TargetApi;
 import android.app.Application;
-import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.media.AudioManager;
-import android.os.Build.VERSION;
 import android.os.Handler;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -15,20 +12,14 @@ import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Timer;
 
 public abstract class AudioPlayerBase
   implements IAudioFilePlayerListener, Runnable
 {
-  public static int a;
-  public static final List<Integer> a;
-  public static int b;
-  public static boolean b;
-  public static volatile boolean c;
-  public static boolean d;
+  public static int a = -999;
+  public static boolean a = false;
   protected float a;
   protected long a;
   protected Application a;
@@ -39,48 +30,24 @@ public abstract class AudioPlayerBase
   protected IAudioFilePlayer a;
   protected String a;
   protected Timer a;
+  protected volatile int b;
+  protected boolean b;
   protected volatile int c;
-  protected volatile int d;
-  public int e;
-  protected boolean e;
-  protected boolean f = true;
-  protected boolean g = false;
-  
-  static
-  {
-    jdField_a_of_type_Int = -999;
-    jdField_b_of_type_Boolean = true;
-    jdField_b_of_type_Int = -1;
-    jdField_a_of_type_JavaUtilList = Arrays.asList(new Integer[] { Integer.valueOf(1796) });
-    jdField_c_of_type_Boolean = false;
-    jdField_d_of_type_Boolean = false;
-  }
+  protected boolean c;
+  public int d;
+  protected boolean d;
   
   public AudioPlayerBase(Context paramContext, AudioPlayerBase.AudioPlayerListener paramAudioPlayerListener)
   {
     this.jdField_a_of_type_Float = SonicHelper.jdField_a_of_type_Float;
     this.jdField_a_of_type_Long = -1L;
-    this.jdField_c_of_type_Int = jdField_a_of_type_Int;
+    this.jdField_b_of_type_Int = jdField_a_of_type_Int;
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_d_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidOsHandler = new AudioPlayerBase.1(this);
     this.jdField_a_of_type_AndroidAppApplication = ((Application)paramContext.getApplicationContext());
     this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)this.jdField_a_of_type_AndroidAppApplication.getSystemService("audio"));
     this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerBase$AudioPlayerListener = paramAudioPlayerListener;
-  }
-  
-  @TargetApi(14)
-  public static boolean a(AudioManager paramAudioManager)
-  {
-    if (!jdField_b_of_type_Boolean) {}
-    BluetoothAdapter localBluetoothAdapter;
-    do
-    {
-      do
-      {
-        return false;
-      } while (Build.VERSION.SDK_INT < 14);
-      localBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-    } while ((localBluetoothAdapter == null) || (!localBluetoothAdapter.isEnabled()) || (localBluetoothAdapter.getProfileConnectionState(1) != 2) || (localBluetoothAdapter.getProfileConnectionState(2) == 2) || (jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(jdField_b_of_type_Int))) || (jdField_c_of_type_Boolean) || (paramAudioManager.isBluetoothScoOn()) || (!paramAudioManager.isBluetoothScoAvailableOffCall()));
-    return true;
   }
   
   public static void b(float paramFloat)
@@ -88,20 +55,24 @@ public abstract class AudioPlayerBase
     HashMap localHashMap = new HashMap();
     if ((paramFloat >= 0.0F) && (paramFloat < 24.0F)) {
       localHashMap.put("errorCode", String.valueOf(0));
+    } else if ((paramFloat >= 24.0F) && (paramFloat < 168.0F)) {
+      localHashMap.put("errorCode", String.valueOf(1));
+    } else if ((paramFloat >= 168.0F) && (paramFloat < 360.0F)) {
+      localHashMap.put("errorCode", String.valueOf(2));
+    } else if (paramFloat > 360.0F) {
+      localHashMap.put("errorCode", String.valueOf(3));
     }
-    for (;;)
-    {
-      localHashMap.put("hour", String.valueOf(paramFloat));
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "pttPlayFileNotFind", true, 0L, 0L, localHashMap, "");
-      return;
-      if ((paramFloat >= 24.0F) && (paramFloat < 168.0F)) {
-        localHashMap.put("errorCode", String.valueOf(1));
-      } else if ((paramFloat >= 168.0F) && (paramFloat < 360.0F)) {
-        localHashMap.put("errorCode", String.valueOf(2));
-      } else if (paramFloat > 360.0F) {
-        localHashMap.put("errorCode", String.valueOf(3));
-      }
+    localHashMap.put("hour", String.valueOf(paramFloat));
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "pttPlayFileNotFind", true, 0L, 0L, localHashMap, "");
+  }
+  
+  public int a()
+  {
+    IAudioFilePlayer localIAudioFilePlayer = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer;
+    if (localIAudioFilePlayer == null) {
+      return 0;
     }
+    return localIAudioFilePlayer.b();
   }
   
   public AudioManager a()
@@ -111,11 +82,6 @@ public abstract class AudioPlayerBase
   
   protected abstract AudioPlayerHelper.AudioPlayerParameter a();
   
-  public IAudioFilePlayer a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer;
-  }
-  
   public String a()
   {
     return this.jdField_a_of_type_JavaLangString;
@@ -123,54 +89,33 @@ public abstract class AudioPlayerBase
   
   public void a()
   {
-    d();
-    if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerBase$AudioPlayerListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerBase$AudioPlayerListener.a(this);
+    c();
+    AudioPlayerBase.AudioPlayerListener localAudioPlayerListener = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerBase$AudioPlayerListener;
+    if (localAudioPlayerListener != null) {
+      localAudioPlayerListener.a(this);
     }
   }
   
   public void a(float paramFloat)
   {
     this.jdField_a_of_type_Float = paramFloat;
-    if (QLog.isColorLevel()) {
-      QLog.i("AudioPlayer", 2, "setPlaySpeed: " + paramFloat);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setPlaySpeed: ");
+      localStringBuilder.append(paramFloat);
+      QLog.i("AudioPlayer", 2, localStringBuilder.toString());
     }
   }
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioPlayer", 2, "replay ", new Exception());
-    }
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      a(this.jdField_a_of_type_JavaLangString, paramInt);
-    }
+    this.jdField_d_of_type_Int = paramInt;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    int i = 0;
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("issilk", String.valueOf(paramInt2));
-    localHashMap.put("isSuccess", String.valueOf(paramInt1));
-    localHashMap.put("errorCode", String.valueOf(paramInt3));
-    localHashMap.put("errormsg", paramString);
-    localHashMap.put("busiType", this.jdField_e_of_type_Int + "");
-    localHashMap.put("filePath", this.jdField_a_of_type_JavaLangString);
-    paramString = new StringBuilder();
-    if (this.f) {}
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      localHashMap.put("isfromLocal", paramInt1 + "");
-      paramString = new StringBuilder();
-      paramInt1 = i;
-      if (this.g) {
-        paramInt1 = 1;
-      }
-      localHashMap.put("isfromBlueTooth", paramInt1 + "");
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "pttplaysuc", true, 0L, 0L, localHashMap, "");
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void a(long paramLong)
@@ -180,17 +125,21 @@ public abstract class AudioPlayerBase
   
   public void a(IAudioFilePlayer paramIAudioFilePlayer, int paramInt1, int paramInt2, String paramString)
   {
-    d();
-    QLog.e("AudioPlayer", 2, "onError: " + paramInt1);
-    if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerBase$AudioPlayerListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerBase$AudioPlayerListener.a(this, -2);
+    c();
+    paramIAudioFilePlayer = new StringBuilder();
+    paramIAudioFilePlayer.append("onError: ");
+    paramIAudioFilePlayer.append(paramInt1);
+    QLog.e("AudioPlayer", 2, paramIAudioFilePlayer.toString());
+    paramIAudioFilePlayer = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerBase$AudioPlayerListener;
+    if (paramIAudioFilePlayer != null) {
+      paramIAudioFilePlayer.a(this, -2);
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer instanceof SilkPlayer)) {}
-    for (paramInt2 = 1;; paramInt2 = 0)
-    {
-      a(0, paramInt2, paramInt1, paramString);
-      return;
+    if ((this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer instanceof SilkPlayer)) {
+      paramInt2 = 1;
+    } else {
+      paramInt2 = 0;
     }
+    a(0, paramInt2, paramInt1, paramString);
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
@@ -201,22 +150,22 @@ public abstract class AudioPlayerBase
       if (paramBoolean1) {
         i = 0;
       }
-      AudioPlayer.jdField_b_of_type_Int = i;
-      AudioPlayer.jdField_c_of_type_Boolean = false;
-      return;
+      AudioDeviceHelper.jdField_a_of_type_Int = i;
     }
-    if (paramBoolean1) {}
-    for (;;)
+    else
     {
-      AudioPlayer.jdField_b_of_type_Int = i;
-      break;
-      i = 0;
+      if (!paramBoolean1) {
+        i = 0;
+      }
+      AudioDeviceHelper.jdField_a_of_type_Int = i;
     }
+    AudioDeviceHelper.jdField_b_of_type_Boolean = false;
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer != null) && (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer.a());
+    IAudioFilePlayer localIAudioFilePlayer = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer;
+    return (localIAudioFilePlayer != null) && (localIAudioFilePlayer.a());
   }
   
   public boolean a(String paramString)
@@ -228,28 +177,53 @@ public abstract class AudioPlayerBase
   
   public int b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer == null) {
+    IAudioFilePlayer localIAudioFilePlayer = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer;
+    if (localIAudioFilePlayer == null) {
       return 0;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer.b();
+    return localIAudioFilePlayer.a();
   }
+  
+  public abstract void b();
   
   public void b(int paramInt)
   {
-    this.jdField_e_of_type_Int = paramInt;
+    AudioPlayerBase.AudioPlayerListener localAudioPlayerListener = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerBase$AudioPlayerListener;
+    if (localAudioPlayerListener != null) {
+      try
+      {
+        localAudioPlayerListener.d(this, b());
+        return;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("startProgressTimer e= ");
+          localStringBuilder.append(localException);
+          QLog.e("AudioPlayer", 2, localStringBuilder.toString());
+        }
+      }
+    }
   }
   
   protected boolean b()
   {
-    if (!FileUtils.b(this.jdField_a_of_type_JavaLangString))
+    if (!FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AudioPlayer", 2, "file not found, " + this.jdField_a_of_type_JavaLangString);
-      }
-      d();
-      if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerBase$AudioPlayerListener != null)
+      if (QLog.isColorLevel())
       {
-        this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerBase$AudioPlayerListener.a(this, -1);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("file not found, ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+        QLog.d("AudioPlayer", 2, ((StringBuilder)localObject).toString());
+      }
+      c();
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerBase$AudioPlayerListener;
+      if (localObject != null)
+      {
+        ((AudioPlayerBase.AudioPlayerListener)localObject).a(this, -1);
         a(0, 1, 1, "ERROR_FILE_NOT_FOUND");
         if (this.jdField_a_of_type_Long > 0L) {
           b((float)(NetConnInfoCenter.getServerTime() - this.jdField_a_of_type_Long) / 3600.0F);
@@ -268,102 +242,12 @@ public abstract class AudioPlayerBase
     return a(paramString, paramInt);
   }
   
-  public int c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer.a();
-  }
-  
   public void c()
-  {
-    i = 1;
-    this.jdField_e_of_type_Boolean = this.jdField_a_of_type_AndroidMediaAudioManager.isSpeakerphoneOn();
-    this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter = a();
-    this.jdField_a_of_type_AndroidMediaAudioManager.setMode(this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidMediaAudioManager.setSpeakerphoneOn(this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter.jdField_a_of_type_Boolean);
-    if (this.jdField_c_of_type_Int != jdField_a_of_type_Int) {
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter.jdField_b_of_type_Int = this.jdField_c_of_type_Int;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerBase$AudioPlayerListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerBase$AudioPlayerListener.b(this, this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter.jdField_b_of_type_Int);
-    }
-    QQAudioUtils.a(this.jdField_a_of_type_AndroidAppApplication, true);
-    if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer.a(this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter.jdField_b_of_type_Int);
-    }
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer.g();
-      i = this.jdField_a_of_type_AndroidMediaAudioManager.getStreamVolume(this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter.jdField_b_of_type_Int);
-      int j = this.jdField_a_of_type_AndroidMediaAudioManager.getStreamMaxVolume(this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter.jdField_b_of_type_Int);
-      if (QLog.isColorLevel()) {
-        QLog.d("AudioPlayer", 2, "currentVolume=" + i + " maxVolume=" + j);
-      }
-      if (i / j >= 0.18F) {
-        break label327;
-      }
-      this.jdField_d_of_type_Int = 0;
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, 200L);
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-        QLog.e("AudioPlayer", 2, "mPlayer.prepare error", localThrowable);
-        if ((this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer instanceof SilkPlayer)) {}
-        for (;;)
-        {
-          a(0, i, 3, localThrowable.toString());
-          return;
-          i = 0;
-        }
-        this.jdField_d_of_type_Int = 1;
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
-        continue;
-        i = 0;
-      }
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerBase$AudioPlayerListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerBase$AudioPlayerListener.c(this, this.jdField_d_of_type_Int);
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer instanceof SilkPlayer))
-    {
-      i = 1;
-      a(1, i, 0, "");
-      i();
-      return;
-    }
-  }
-  
-  public void c(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerBase$AudioPlayerListener != null) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerBase$AudioPlayerListener.d(this, c());
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("AudioPlayer", 2, "startProgressTimer e= " + localException);
-    }
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.f = paramBoolean;
-  }
-  
-  public void d()
   {
     try
     {
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
-      j();
+      e();
       if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer != null)
       {
         if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer.a()) {
@@ -375,7 +259,7 @@ public abstract class AudioPlayerBase
         this.jdField_a_of_type_Long = -1L;
         this.jdField_a_of_type_JavaLangString = null;
         this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer = null;
-        this.jdField_c_of_type_Int = jdField_a_of_type_Int;
+        this.jdField_b_of_type_Int = jdField_a_of_type_Int;
         ThreadManager.post(this, 8, null, false);
       }
       return;
@@ -383,49 +267,125 @@ public abstract class AudioPlayerBase
     finally {}
   }
   
-  public void d(int paramInt)
+  public void c(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_b_of_type_Int = paramInt;
   }
   
-  public void d(boolean paramBoolean)
+  public void c(boolean paramBoolean)
   {
-    this.f = paramBoolean;
+    this.jdField_c_of_type_Boolean = paramBoolean;
   }
   
-  public abstract void e();
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void h()
-  {
-    l();
-  }
-  
-  protected void i()
+  protected void d()
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer instanceof AmrPlayer))
     {
-      j();
+      e();
       this.jdField_a_of_type_JavaUtilTimer = new Timer();
       this.jdField_a_of_type_JavaUtilTimer.schedule(new AudioPlayerBase.2(this), 0L, 100L);
     }
   }
   
-  protected void j()
+  public void d(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilTimer != null) {
-      this.jdField_a_of_type_JavaUtilTimer.cancel();
+    if (QLog.isColorLevel()) {
+      QLog.d("AudioPlayer", 2, "replay ", new Exception());
+    }
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (str != null) {
+      a(str, paramInt);
     }
   }
   
-  protected void k()
+  public void d(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer != null)
+    this.jdField_d_of_type_Boolean = paramBoolean;
+  }
+  
+  protected void e()
+  {
+    Timer localTimer = this.jdField_a_of_type_JavaUtilTimer;
+    if (localTimer != null) {
+      localTimer.cancel();
+    }
+  }
+  
+  public void f()
+  {
+    this.jdField_b_of_type_Boolean = this.jdField_a_of_type_AndroidMediaAudioManager.isSpeakerphoneOn();
+    this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter = a();
+    this.jdField_a_of_type_AndroidMediaAudioManager.setMode(this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidMediaAudioManager.setSpeakerphoneOn(this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter.jdField_a_of_type_Boolean);
+    if (this.jdField_b_of_type_Int != jdField_a_of_type_Int) {
+      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+    }
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerBase$AudioPlayerListener;
+    if (localObject1 != null) {
+      ((AudioPlayerBase.AudioPlayerListener)localObject1).b(this, this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter.jdField_b_of_type_Int);
+    }
+    localObject1 = this.jdField_a_of_type_AndroidAppApplication;
+    int i = 1;
+    QQAudioUtils.a((Context)localObject1, true);
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer;
+    if (localObject1 != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer.a()) {
+      ((IAudioFilePlayer)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter.jdField_b_of_type_Int);
+      try
+      {
+        this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer.g();
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+        QLog.e("AudioPlayer", 2, "mPlayer.prepare error", localThrowable);
+        if (!(this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer instanceof SilkPlayer)) {
+          i = 0;
+        }
+        a(0, i, 3, localThrowable.toString());
+        return;
+      }
+    }
+    i = this.jdField_a_of_type_AndroidMediaAudioManager.getStreamVolume(this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter.jdField_b_of_type_Int);
+    int j = this.jdField_a_of_type_AndroidMediaAudioManager.getStreamMaxVolume(this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter.jdField_b_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("currentVolume=");
+      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append(" maxVolume=");
+      ((StringBuilder)localObject2).append(j);
+      QLog.d("AudioPlayer", 2, ((StringBuilder)localObject2).toString());
+    }
+    if (i / j < 0.18F)
+    {
+      this.jdField_c_of_type_Int = 0;
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, 200L);
+    }
+    else
+    {
+      this.jdField_c_of_type_Int = 1;
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
+    }
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerBase$AudioPlayerListener;
+    if (localObject2 != null) {
+      ((AudioPlayerBase.AudioPlayerListener)localObject2).c(this, this.jdField_c_of_type_Int);
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer instanceof SilkPlayer)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    a(1, i, 0, "");
+    d();
+  }
+  
+  protected void g()
+  {
+    IAudioFilePlayer localIAudioFilePlayer = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer;
+    if (localIAudioFilePlayer != null)
+    {
+      if (localIAudioFilePlayer.a()) {
         this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer.c();
       }
       this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer.d();
@@ -434,14 +394,23 @@ public abstract class AudioPlayerBase
     }
   }
   
-  public void l()
+  public void h() {}
+  
+  public void i() {}
+  
+  public void j()
   {
-    if ((jdField_d_of_type_Boolean) && (this.jdField_a_of_type_AndroidMediaAudioManager.isBluetoothScoOn()))
+    if ((jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidMediaAudioManager.isBluetoothScoOn()))
     {
       this.jdField_a_of_type_AndroidMediaAudioManager.setBluetoothScoOn(false);
       this.jdField_a_of_type_AndroidMediaAudioManager.stopBluetoothSco();
-      jdField_d_of_type_Boolean = false;
+      jdField_a_of_type_Boolean = false;
     }
+  }
+  
+  public void k()
+  {
+    j();
   }
   
   public void run()
@@ -449,20 +418,21 @@ public abstract class AudioPlayerBase
     try
     {
       this.jdField_a_of_type_AndroidMediaAudioManager.setMode(0);
-      this.jdField_a_of_type_AndroidMediaAudioManager.setSpeakerphoneOn(this.jdField_e_of_type_Boolean);
+      this.jdField_a_of_type_AndroidMediaAudioManager.setSpeakerphoneOn(this.jdField_b_of_type_Boolean);
       QQAudioUtils.a(this.jdField_a_of_type_AndroidAppApplication, false);
       return;
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("AudioPlayer", 2, localException, new Object[0]);
+      if (QLog.isColorLevel()) {
+        QLog.e("AudioPlayer", 2, localException, new Object[0]);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.audioplayer.AudioPlayerBase
  * JD-Core Version:    0.7.0.1
  */

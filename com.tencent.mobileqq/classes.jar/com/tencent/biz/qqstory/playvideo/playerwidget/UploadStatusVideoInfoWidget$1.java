@@ -11,12 +11,17 @@ class UploadStatusVideoInfoWidget$1
   
   public void a(String paramString, int paramInt)
   {
-    UploadStatusVideoInfoWidget.a(this.a).setText(HardCodeUtil.a(2131715771) + paramInt + "%");
+    paramString = UploadStatusVideoInfoWidget.a(this.a);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(HardCodeUtil.a(2131715695));
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("%");
+    paramString.setText(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.UploadStatusVideoInfoWidget.1
  * JD-Core Version:    0.7.0.1
  */

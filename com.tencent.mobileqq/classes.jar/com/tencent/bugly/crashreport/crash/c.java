@@ -20,14 +20,14 @@ public final class c
   public static int e = 20480;
   public static int f = 20480;
   public static long g = 604800000L;
-  public static String h = null;
+  public static String h;
   public static boolean i = false;
-  public static String j = null;
+  public static String j;
   public static int k = 5000;
   public static boolean l = true;
   public static boolean m = false;
-  public static String n = null;
-  public static String o = null;
+  public static String n;
+  public static String o;
   private static c r;
   public final b p;
   private final Context q;
@@ -246,7 +246,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.bugly.crashreport.crash.c
  * JD-Core Version:    0.7.0.1
  */

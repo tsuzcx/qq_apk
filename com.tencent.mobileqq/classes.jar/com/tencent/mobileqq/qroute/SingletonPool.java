@@ -22,13 +22,18 @@ class SingletonPool
     {
       String str = ((QPlugin)localObject).name();
       localObject = str;
-      if (QRoute.mConfig.isForceCheck())
-      {
-        localObject = str;
-        if (TextUtils.isEmpty(str))
+      if (QRoute.mConfig.isForceCheck()) {
+        if (!TextUtils.isEmpty(str))
+        {
+          localObject = str;
+        }
+        else
         {
           localObject = new StringBuilder(50);
-          ((StringBuilder)localObject).append("QRouteApi: ").append(paramClass.getSimpleName()).append(" 接口声明的QRoute不能为空，必须声明为对应的模块id ").append("  \n");
+          ((StringBuilder)localObject).append("QRouteApi: ");
+          ((StringBuilder)localObject).append(paramClass.getSimpleName());
+          ((StringBuilder)localObject).append(" 接口声明的QRoute不能为空，必须声明为对应的模块id ");
+          ((StringBuilder)localObject).append("  \n");
           throw new IllegalStateException(((StringBuilder)localObject).toString());
         }
       }
@@ -43,96 +48,123 @@ class SingletonPool
   @NonNull
   static <T> T get(Class<T> paramClass, String paramString, boolean paramBoolean)
   {
-    if ((paramClass == null) || (paramString == null) || (paramString.length() == 0)) {
-      throw new IllegalStateException("args null! ");
-    }
-    Object localObject;
-    try
-    {
-      localObject = getInstance(paramClass, paramString, paramBoolean);
-      if (localObject == null) {
-        throw new IllegalStateException("getInstance null! @" + paramString);
+    if ((paramClass != null) && (paramString != null) && (paramString.length() != 0)) {
+      try
+      {
+        localObject = getInstance(paramClass, paramString, paramBoolean);
+        if (localObject != null) {
+          return localObject;
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getInstance null! @");
+        ((StringBuilder)localObject).append(paramString);
+        throw new IllegalStateException(((StringBuilder)localObject).toString());
+      }
+      catch (Exception paramString)
+      {
+        APICycleInitCheckUtil.removeOnException();
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("build API fatal:");
+        ((StringBuilder)localObject).append(paramClass.getSimpleName());
+        ((StringBuilder)localObject).append(" ");
+        ((StringBuilder)localObject).append(paramString.toString());
+        paramClass = ((StringBuilder)localObject).toString();
+        QRoute.logger.warning("SingletonPool", paramClass, paramString);
+        throw new IllegalStateException(paramClass, paramString);
       }
     }
-    catch (Exception paramString)
-    {
-      APICycleInitCheckUtil.removeOnException();
-      paramClass = "build API fatal:" + paramClass.getSimpleName() + " " + paramString.toString();
-      QRoute.logger.warning("SingletonPool", paramClass, paramString);
-      throw new IllegalStateException(paramClass, paramString);
-    }
-    return localObject;
+    throw new IllegalStateException("args null! ");
   }
   
   @Nullable
   private static Object getInstance(Class<?> paramClass, String paramString, boolean paramBoolean)
   {
-    Object localObject2 = SINGLETON_POOL.get(paramClass);
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
-    {
+    Object localObject1 = SINGLETON_POOL.get(paramClass);
+    if (localObject1 == null) {
       synchronized (SINGLETON_POOL)
       {
-        localObject2 = SINGLETON_POOL.get(paramClass);
+        Object localObject2 = SINGLETON_POOL.get(paramClass);
         localObject1 = localObject2;
-        if (localObject2 != null) {
-          break label125;
+        if (localObject2 == null) {
+          if (APICycleInitCheckUtil.checkAndSet(paramString))
+          {
+            localObject1 = loadImplClass(paramClass, paramString, paramBoolean).newInstance();
+            if (localObject1 != null) {
+              SINGLETON_POOL.put(paramClass, localObject1);
+            }
+            APICycleInitCheckUtil.checkAndRemove(paramString);
+          }
+          else
+          {
+            APICycleInitCheckUtil.removeOnException();
+            paramClass = new StringBuilder();
+            paramClass.append("find cycle init from:");
+            paramClass.append(paramString);
+            paramClass = paramClass.toString();
+            QRoute.logger.warning("SingletonPool", paramClass);
+            throw new IllegalStateException(paramClass);
+          }
         }
-        if (!APICycleInitCheckUtil.checkAndSet(paramString))
-        {
-          APICycleInitCheckUtil.removeOnException();
-          paramClass = "find cycle init from:" + paramString;
-          QRoute.logger.warning("SingletonPool", paramClass);
-          throw new IllegalStateException(paramClass);
-        }
+        return localObject1;
       }
-      localObject1 = loadImplClass(paramClass, paramString, paramBoolean).newInstance();
-      if (localObject1 != null) {
-        SINGLETON_POOL.put(paramClass, localObject1);
-      }
-      APICycleInitCheckUtil.checkAndRemove(paramString);
     }
-    label125:
     return localObject1;
   }
   
   private static Class loadClassFromPlugin(Class paramClass, String paramString)
   {
     IQRoutePlugin localIQRoutePlugin = fetchPluginFromApiClass(paramClass);
-    if (localIQRoutePlugin == null)
+    if (localIQRoutePlugin != null)
     {
-      paramString = new StringBuilder(50);
-      paramString.append("QRouteApi: ").append(paramClass.getSimpleName()).append(" your api class need @QPlugin(name='{pluginId}') ").append(localIQRoutePlugin.pluginId());
-      throw new QRoutePluginException(paramString.toString());
-    }
-    if (!localIQRoutePlugin.exist())
-    {
-      QRoute.logger.warning("QRoute", " plugin no exist: " + localIQRoutePlugin.pluginId());
-      paramString = new StringBuilder(50);
-      paramString.append("QRouteApi: ").append(paramClass.getSimpleName()).append(" plugin no exist: ").append(localIQRoutePlugin.pluginId()).append(" you may create plugin \n");
-      throw new QRoutePluginException(paramString.toString());
-    }
-    if (!localIQRoutePlugin.isInstalled())
-    {
-      paramString = new StringBuilder(50);
-      paramString.append("QRouteApi: ").append(paramClass.getSimpleName()).append(" plugin not installed ").append(localIQRoutePlugin).append(" you may call QRoute.plugin(plugin).install() first before you call QRoute.apiFromPlugin) \n");
-      throw new QRoutePluginException(paramString.toString());
-    }
-    try
-    {
-      paramClass = localIQRoutePlugin.loadPluginClass(paramString);
-      if (paramClass == null)
+      if (localIQRoutePlugin.exist())
       {
-        paramClass = new StringBuilder(50);
-        paramClass.append("QRouteApi: ").append(paramString).append(" ClassNotFound in plugin=").append(localIQRoutePlugin).append(" \n");
-        throw new QRoutePluginException(paramClass.toString());
+        if (localIQRoutePlugin.isInstalled()) {
+          try
+          {
+            paramClass = localIQRoutePlugin.loadPluginClass(paramString);
+            if (paramClass != null) {
+              return paramClass;
+            }
+            paramClass = new StringBuilder(50);
+            paramClass.append("QRouteApi: ");
+            paramClass.append(paramString);
+            paramClass.append(" ClassNotFound in plugin=");
+            paramClass.append(localIQRoutePlugin);
+            paramClass.append(" \n");
+            throw new QRoutePluginException(paramClass.toString());
+          }
+          catch (Exception paramClass)
+          {
+            throw new QRoutePluginException(paramClass);
+          }
+        }
+        paramString = new StringBuilder(50);
+        paramString.append("QRouteApi: ");
+        paramString.append(paramClass.getSimpleName());
+        paramString.append(" plugin not installed ");
+        paramString.append(localIQRoutePlugin);
+        paramString.append(" you may call QRoute.plugin(plugin).install() first before you call QRoute.apiFromPlugin) \n");
+        throw new QRoutePluginException(paramString.toString());
       }
+      paramString = QRoute.logger;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" plugin no exist: ");
+      localStringBuilder.append(localIQRoutePlugin.pluginId());
+      paramString.warning("QRoute", localStringBuilder.toString());
+      paramString = new StringBuilder(50);
+      paramString.append("QRouteApi: ");
+      paramString.append(paramClass.getSimpleName());
+      paramString.append(" plugin no exist: ");
+      paramString.append(localIQRoutePlugin.pluginId());
+      paramString.append(" you may create plugin \n");
+      throw new QRoutePluginException(paramString.toString());
     }
-    catch (Exception paramClass)
-    {
-      throw new QRoutePluginException(paramClass);
-    }
-    return paramClass;
+    paramString = new StringBuilder(50);
+    paramString.append("QRouteApi: ");
+    paramString.append(paramClass.getSimpleName());
+    paramString.append(" your api class need @QPlugin(name='{pluginId}') ");
+    paramString.append(localIQRoutePlugin.pluginId());
+    throw new QRoutePluginException(paramString.toString());
   }
   
   static Class loadImplClass(Class paramClass, String paramString, boolean paramBoolean)
@@ -145,7 +177,7 @@ class SingletonPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qroute.SingletonPool
  * JD-Core Version:    0.7.0.1
  */

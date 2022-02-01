@@ -2,8 +2,8 @@ package com.tencent.util;
 
 import com.tencent.mobileqq.activity.aio.QcircleRedDotEntity;
 import com.tencent.mobileqq.activity.aio.QzoneRedDotEntity;
-import com.tencent.mobileqq.apollo.api.model.ApolloBaseInfo;
-import com.tencent.mobileqq.apollo.api.model.ApolloPandora;
+import com.tencent.mobileqq.apollo.model.ApolloBaseInfo;
+import com.tencent.mobileqq.apollo.model.ApolloPandora;
 import com.tencent.mobileqq.app.qqdaily.FrontBackData;
 import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
 import com.tencent.mobileqq.colornote.data.ColorNote;
@@ -68,11 +68,12 @@ import com.tencent.mobileqq.persistence.bridge.upgrade.entity.DBUpgradeEntity242
 import com.tencent.mobileqq.persistence.bridge.upgrade.entity.DBUpgradeEntity282;
 import com.tencent.mobileqq.persistence.bridge.upgrade.entity.DBUpgradeEntity29;
 import com.tencent.mobileqq.persistence.bridge.upgrade.entity.DBUpgradeEntity300;
-import com.tencent.mobileqq.persistence.bridge.upgrade.entity.DBUpgradeEntity307;
 import com.tencent.mobileqq.persistence.bridge.upgrade.entity.DBUpgradeEntity309;
 import com.tencent.mobileqq.persistence.bridge.upgrade.entity.DBUpgradeEntity327;
 import com.tencent.mobileqq.persistence.bridge.upgrade.entity.DBUpgradeEntity34;
 import com.tencent.mobileqq.persistence.bridge.upgrade.entity.DBUpgradeEntity35;
+import com.tencent.mobileqq.persistence.bridge.upgrade.entity.DBUpgradeEntity350;
+import com.tencent.mobileqq.persistence.bridge.upgrade.entity.DBUpgradeEntity351;
 import com.tencent.mobileqq.persistence.bridge.upgrade.entity.DBUpgradeEntity36;
 import com.tencent.mobileqq.persistence.bridge.upgrade.entity.DBUpgradeEntity41;
 import com.tencent.mobileqq.persistence.bridge.upgrade.entity.DBUpgradeEntity48;
@@ -113,10 +114,10 @@ import com.tencent.mobileqq.persistence.bridge.verify.interceptor.TroopBarDataIn
 import com.tencent.mobileqq.persistence.bridge.verify.interceptor.TroopFileTransferItemInterceptor;
 import com.tencent.mobileqq.persistence.bridge.verify.interceptor.TroopInfoInterceptor;
 import com.tencent.mobileqq.persistence.bridge.verify.interceptor.UinToTinyIdInterceptor;
-import com.tencent.mobileqq.persistence.bridge.verify.interceptor.VideoRedBagDataInterceptor;
 import com.tencent.mobileqq.qroute.annotation.ConfigInject;
 import com.tencent.mobileqq.tofumsg.TofuItem;
-import com.tencent.mobileqq.troop.api.essence.data.TroopEssenceMsgItem;
+import com.tencent.mobileqq.tofumsg.TofuLimitMsg;
+import com.tencent.mobileqq.troop.essence.data.TroopEssenceMsgItem;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -128,7 +129,7 @@ public class DBBuildUtil
   private static final String TAG = "DBInjectUtil";
   @ConfigInject(configPath="Mqq/resources/Inject_MqqCustomizedConfig.yml", version=1)
   public static ArrayList<Class<? extends Interceptor<Void>>> sDBCorruptionInterceptorList;
-  @ConfigInject(configPath="Mqq/resources/Inject_MqqCustomizedConfig.yml", version=1)
+  @ConfigInject(configPath="Mqq/resources/Inject_MqqCustomizedConfig.yml", version=2)
   public static ArrayList<Class<? extends Entity>> sDBCreateTableList;
   @ConfigInject(configPath="Mqq/resources/Inject_MqqCustomizedConfig.yml", version=1)
   public static ArrayList<Class<? extends IEntityManagerFactoryBuilderService>> sDBService = new ArrayList();
@@ -181,6 +182,7 @@ public class DBBuildUtil
     sDBCreateTableList.add(TroopEssenceMsgItem.class);
     sDBCreateTableList.add(QcircleRedDotEntity.class);
     sDBCreateTableList.add(QzoneRedDotEntity.class);
+    sDBCreateTableList.add(TofuLimitMsg.class);
     sVerifyTableList = new ArrayList();
     sVerifyTableList.add(MessageRecord.class);
     sVerifyTableList.add(RecentUser.class);
@@ -217,7 +219,6 @@ public class DBBuildUtil
     sTableColumnCheckInterceptorList.add(CardProfileInterceptor.class);
     sTableColumnCheckInterceptorList.add(TroopAIOAppInfoInterceptor.class);
     sTableColumnCheckInterceptorList.add(TroopInfoInterceptor.class);
-    sTableColumnCheckInterceptorList.add(VideoRedBagDataInterceptor.class);
     sTableColumnCheckInterceptorList.add(SystemOrNoEntityInterceptor.class);
     sTableColumnCheckInterceptorList.add(ForceIgnoreInterceptor.class);
     sTableColumnCheckInterceptorList.add(ConfessConvInfoInterceptor.class);
@@ -255,9 +256,10 @@ public class DBBuildUtil
     sDBUpgradeEntityList.add(DBUpgradeEntity242.class);
     sDBUpgradeEntityList.add(DBUpgradeEntity282.class);
     sDBUpgradeEntityList.add(DBUpgradeEntity300.class);
-    sDBUpgradeEntityList.add(DBUpgradeEntity307.class);
     sDBUpgradeEntityList.add(DBUpgradeEntity309.class);
     sDBUpgradeEntityList.add(DBUpgradeEntity327.class);
+    sDBUpgradeEntityList.add(DBUpgradeEntity350.class);
+    sDBUpgradeEntityList.add(DBUpgradeEntity351.class);
   }
   
   private static List<Interceptor<Void>> createDBCorruptionInterceptorList()
@@ -354,7 +356,7 @@ public class DBBuildUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.DBBuildUtil
  * JD-Core Version:    0.7.0.1
  */

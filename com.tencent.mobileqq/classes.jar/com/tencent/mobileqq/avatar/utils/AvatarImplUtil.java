@@ -46,28 +46,30 @@ public class AvatarImplUtil
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("AvatarUtil", 2, "failed getLong, uin = " + paramString);
-      }
+      label14:
+      StringBuilder localStringBuilder;
+      break label14;
+    }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed getLong, uin = ");
+      localStringBuilder.append(paramString);
+      QLog.e("AvatarUtil", 2, localStringBuilder.toString());
     }
     return 0L;
   }
   
   public static String a(int paramInt)
   {
-    if ((paramInt == 4) || (paramInt == 8)) {
-      return "";
-    }
-    String str2 = b(paramInt);
-    paramInt = NetworkUtil.a(BaseApplication.getContext());
-    String str1;
-    if (paramInt == 1) {
-      str1 = "WIFI";
-    }
-    for (;;)
+    if ((paramInt != 4) && (paramInt != 8))
     {
-      return str2 + str1;
-      if (paramInt == 2) {
+      String str2 = b(paramInt);
+      paramInt = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
+      String str1;
+      if (paramInt == 1) {
+        str1 = "WIFI";
+      } else if (paramInt == 2) {
         str1 = "2G";
       } else if (paramInt == 3) {
         str1 = "3G";
@@ -76,7 +78,12 @@ public class AvatarImplUtil
       } else {
         str1 = "Unknown";
       }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str2);
+      localStringBuilder.append(str1);
+      return localStringBuilder.toString();
     }
+    return "";
   }
   
   public static String a(long paramLong)
@@ -91,49 +98,44 @@ public class AvatarImplUtil
   
   public static String a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return paramString;
-      i = paramString.lastIndexOf('_');
-    } while (i <= 0);
-    return paramString.substring(i + 1);
+    }
+    int i = paramString.lastIndexOf('_');
+    String str = paramString;
+    if (i > 0) {
+      str = paramString.substring(i + 1);
+    }
+    return str;
   }
   
   public static <T> List<List<T>> a(List<T> paramList, int paramInt)
   {
-    if ((paramList == null) || (paramInt < 1)) {
-      return null;
-    }
-    int m = paramList.size();
-    int i;
-    ArrayList localArrayList;
-    int j;
-    if (m % paramInt == 0)
+    if ((paramList != null) && (paramInt >= 1))
     {
-      i = m / paramInt;
-      localArrayList = new ArrayList();
-      j = 0;
-      label42:
-      if (j >= i) {
-        break label104;
+      int m = paramList.size();
+      int i;
+      if (m % paramInt == 0) {
+        i = m / paramInt;
+      } else {
+        i = 1 + m / paramInt;
       }
-      if (j != i - 1) {
-        break label94;
+      ArrayList localArrayList = new ArrayList();
+      int j = 0;
+      while (j < i)
+      {
+        int k;
+        if (j == i - 1) {
+          k = m;
+        } else {
+          k = (j + 1) * paramInt;
+        }
+        localArrayList.add(paramList.subList(j * paramInt, k));
+        j += 1;
       }
+      return localArrayList;
     }
-    label94:
-    for (int k = m;; k = (j + 1) * paramInt)
-    {
-      localArrayList.add(paramList.subList(j * paramInt, k));
-      j += 1;
-      break label42;
-      i = m / paramInt + 1;
-      break;
-    }
-    label104:
-    return localArrayList;
+    return null;
   }
   
   public static void a(Context paramContext, boolean paramBoolean)
@@ -148,23 +150,31 @@ public class AvatarImplUtil
   
   public static String b(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return "actGetUserHead";
-    case 4: 
-    case 8: 
-      return "actGetGroupHead";
-    case 16: 
-    case 32: 
-      return "actGetNearbyHead";
+    String str2 = "actGetUserHead";
+    String str1 = str2;
+    if (paramInt != 1) {
+      if ((paramInt != 4) && (paramInt != 8))
+      {
+        str1 = str2;
+        if (paramInt != 11)
+        {
+          if ((paramInt != 16) && (paramInt != 32)) {
+            return "actGetUserHead";
+          }
+          return "actGetNearbyHead";
+        }
+      }
+      else
+      {
+        str1 = "actGetGroupHead";
+      }
     }
-    return "actGetUserHead";
+    return str1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.utils.AvatarImplUtil
  * JD-Core Version:    0.7.0.1
  */

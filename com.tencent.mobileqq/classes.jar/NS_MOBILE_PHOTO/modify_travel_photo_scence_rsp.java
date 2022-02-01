@@ -19,11 +19,13 @@ public final class modify_travel_photo_scence_rsp
   
   static
   {
-    cache_time_range.put(Long.valueOf(0L), Long.valueOf(0L));
+    Object localObject = Long.valueOf(0L);
+    cache_time_range.put(localObject, localObject);
     cache_poi_result = new HashMap();
-    cache_poi_result.put("", Integer.valueOf(0));
+    localObject = Integer.valueOf(0);
+    cache_poi_result.put("", localObject);
     cache_photo_result = new HashMap();
-    cache_photo_result.put("", Integer.valueOf(0));
+    cache_photo_result.put("", localObject);
   }
   
   public modify_travel_photo_scence_rsp() {}
@@ -47,20 +49,23 @@ public final class modify_travel_photo_scence_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.poiid, 0);
-    if (this.time_range != null) {
-      paramJceOutputStream.write(this.time_range, 1);
+    Map localMap = this.time_range;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 1);
     }
-    if (this.poi_result != null) {
-      paramJceOutputStream.write(this.poi_result, 2);
+    localMap = this.poi_result;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 2);
     }
-    if (this.photo_result != null) {
-      paramJceOutputStream.write(this.photo_result, 3);
+    localMap = this.photo_result;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.modify_travel_photo_scence_rsp
  * JD-Core Version:    0.7.0.1
  */

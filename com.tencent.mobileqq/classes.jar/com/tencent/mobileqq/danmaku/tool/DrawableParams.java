@@ -9,12 +9,24 @@ public class DrawableParams
   
   public String toString()
   {
-    return "DrawableParams{mUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mDefaultUrl='" + this.b + '\'' + ", mShape=" + this.jdField_a_of_type_Int + ", mCornerRadius=" + this.jdField_a_of_type_Float + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DrawableParams{mUrl='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mDefaultUrl='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mShape=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", mCornerRadius=");
+    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.tool.DrawableParams
  * JD-Core Version:    0.7.0.1
  */

@@ -25,8 +25,8 @@ public class EventModule
   public static final String VIOLA_KEY_EVENT = "event";
   public static final String VIOLA_KEY_UNIQUE = "unique";
   public static final String VIOLA_PERMISSION_EVENT_NOTIFY = "com.tencent.viola.permission.event.notify";
-  private static BroadcastReceiver mBroadcastReceiver = null;
-  private static HashSet<WeakReference<EventModule>> mRegisteredModuleObservers = null;
+  private static BroadcastReceiver mBroadcastReceiver;
+  private static HashSet<WeakReference<EventModule>> mRegisteredModuleObservers;
   private static boolean sGlobalReceiverRegistered = false;
   private HashMap<String, String> mEvents;
   private boolean mIsReceiverRegistered = false;
@@ -69,32 +69,48 @@ public class EventModule
     if (!TextUtils.isEmpty(this.mUniqueMark)) {
       return this.mUniqueMark;
     }
-    Context localContext = getViolaInstance().getContext();
-    if (localContext != null) {}
-    for (this.mUniqueMark = (String.valueOf(System.currentTimeMillis()) + String.valueOf(localContext.hashCode()));; this.mUniqueMark = (String.valueOf(System.currentTimeMillis()) + String.valueOf((int)(Math.random() * 1000000.0D)))) {
-      return this.mUniqueMark;
+    Object localObject = getViolaInstance().getContext();
+    if (localObject != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(String.valueOf(System.currentTimeMillis()));
+      localStringBuilder.append(String.valueOf(localObject.hashCode()));
+      this.mUniqueMark = localStringBuilder.toString();
     }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(String.valueOf(System.currentTimeMillis()));
+      ((StringBuilder)localObject).append(String.valueOf((int)(Math.random() * 1000000.0D)));
+      this.mUniqueMark = ((StringBuilder)localObject).toString();
+    }
+    return this.mUniqueMark;
   }
   
   private void handleEvent(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (this.mEvents == null)) {}
-    do
+    if (!TextUtils.isEmpty(paramString1))
     {
-      return;
-      paramString1 = (String)this.mEvents.get(paramString1);
-    } while (TextUtils.isEmpty(paramString1));
-    callJs(paramString1, paramString2);
+      HashMap localHashMap = this.mEvents;
+      if (localHashMap == null) {
+        return;
+      }
+      paramString1 = (String)localHashMap.get(paramString1);
+      if (!TextUtils.isEmpty(paramString1)) {
+        callJs(paramString1, paramString2);
+      }
+    }
   }
   
   private void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent == null) {}
-    do
-    {
+    if (paramIntent == null) {
       return;
-      paramContext = paramIntent.getStringExtra("unique");
-    } while (getUniqueMark().equals(paramContext));
+    }
+    paramContext = paramIntent.getStringExtra("unique");
+    if (getUniqueMark().equals(paramContext)) {
+      return;
+    }
     handleEvent(paramIntent.getStringExtra("event"), paramIntent.getStringExtra("data"));
   }
   
@@ -113,7 +129,6 @@ public class EventModule
   @JSMethod
   public void dispatchEvent(String paramString, JSONObject paramJSONObject)
   {
-    String str;
     for (;;)
     {
       try
@@ -125,32 +140,37 @@ public class EventModule
         }
         if (paramJSONObject != null)
         {
-          str = paramJSONObject.toString();
-          if ((TextUtils.isEmpty(str)) || (str.length() < 460800L)) {
-            break;
+          localObject = paramJSONObject.toString();
+          if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).length() >= 460800L))
+          {
+            ViolaLogUtils.e(TAG, "dispatchEvent error: data is over size");
+            return;
           }
-          ViolaLogUtils.e(TAG, "dispatchEvent error: data is over size");
+          Intent localIntent = new Intent("com.tencent.viola.action.VIOLA_ACTION_EVENT_DISPATCH");
+          localIntent.putExtra("event", paramString);
+          if (paramJSONObject != null) {
+            localIntent.putExtra("data", paramJSONObject.toString());
+          }
+          localIntent.putExtra("unique", getUniqueMark());
+          paramJSONObject = getViolaInstance().getContext();
+          if (paramJSONObject != null) {
+            paramJSONObject.sendBroadcast(localIntent);
+          }
+          handleEvent(paramString, (String)localObject);
           return;
         }
       }
       catch (Throwable paramString)
       {
-        ViolaLogUtils.e(TAG, "dispatchEvent error: " + paramString.getMessage());
+        paramJSONObject = TAG;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("dispatchEvent error: ");
+        ((StringBuilder)localObject).append(paramString.getMessage());
+        ViolaLogUtils.e(paramJSONObject, ((StringBuilder)localObject).toString());
         return;
       }
-      str = "";
+      Object localObject = "";
     }
-    Intent localIntent = new Intent("com.tencent.viola.action.VIOLA_ACTION_EVENT_DISPATCH");
-    localIntent.putExtra("event", paramString);
-    if (paramJSONObject != null) {
-      localIntent.putExtra("data", paramJSONObject.toString());
-    }
-    localIntent.putExtra("unique", getUniqueMark());
-    paramJSONObject = getViolaInstance().getContext();
-    if (paramJSONObject != null) {
-      paramJSONObject.sendBroadcast(localIntent);
-    }
-    handleEvent(paramString, str);
   }
   
   public void onActivityDestroy()
@@ -173,18 +193,20 @@ public class EventModule
   @JSMethod
   public void removeEventListener(String paramString1, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString1)) {
+    if (TextUtils.isEmpty(paramString1))
+    {
       ViolaLogUtils.e(TAG, "removeEventListener error: event name is empty");
-    }
-    while (this.mEvents == null) {
       return;
     }
-    this.mEvents.remove(paramString1);
+    paramString2 = this.mEvents;
+    if (paramString2 != null) {
+      paramString2.remove(paramString1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.module.EventModule
  * JD-Core Version:    0.7.0.1
  */

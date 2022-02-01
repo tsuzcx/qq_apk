@@ -16,12 +16,15 @@ public class PostFeedCommentRequest
   {
     super("PostFeedCommentV2", 10003);
     this.a = new stPostFeedCommentV2Req(paramstSimpleMetaFeed.id, paramstSimpleMetaComment, new ArrayList(), 0);
-    WSLog.c("WsCommentBusiness", "stPostFeedCommentV2Req:" + this.a.toString());
+    paramstSimpleMetaFeed = new StringBuilder();
+    paramstSimpleMetaFeed.append("stPostFeedCommentV2Req:");
+    paramstSimpleMetaFeed.append(this.a.toString());
+    WSLog.c("WsCommentBusiness", paramstSimpleMetaFeed.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.request.PostFeedCommentRequest
  * JD-Core Version:    0.7.0.1
  */

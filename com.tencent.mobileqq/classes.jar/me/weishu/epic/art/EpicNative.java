@@ -16,7 +16,7 @@ public final class EpicNative
   public static final int CLEAN_DURATION_DANGEROUS = 30000;
   public static final int CLEAN_DURATION_VERY_DANGEROUS = 1000;
   private static final String TAG = "EpicNative";
-  private static volatile long sLastClean;
+  private static volatile long sLastClean = 0L;
   private static Object sLock;
   private static AtomicInteger sRefCounts;
   private static volatile boolean useUnsafe = false;
@@ -29,22 +29,23 @@ public final class EpicNative
       {
         System.loadLibrary("qqjhook");
         if ((DeviceCheck.isYunOS()) || (!isGetObjectAvailable())) {
-          continue;
+          break label89;
         }
         bool = false;
         useUnsafe = bool;
-        Log.i("EpicNative", "use unsafe ? " + useUnsafe);
+        StringBuilder localStringBuilder = new StringBuilder("use unsafe ? ");
+        localStringBuilder.append(useUnsafe);
+        Log.i("EpicNative", localStringBuilder.toString());
       }
       catch (Throwable localThrowable)
       {
-        boolean bool;
         Log.e("EpicNative", "init EpicNative error", localThrowable);
-        continue;
       }
       sLock = new Object();
       sRefCounts = new AtomicInteger(0);
       return;
-      bool = true;
+      label89:
+      boolean bool = true;
     }
   }
   
@@ -54,27 +55,29 @@ public final class EpicNative
   
   private static void cleanRefIfNeed()
   {
-    int i = 300000;
-    int j = sRefCounts.incrementAndGet();
-    if (j > 10000) {
+    int i = sRefCounts.incrementAndGet();
+    if (i > 10000) {
       i = 30000;
+    } else if (i > 25000) {
+      i = 1000;
+    } else {
+      i = 300000;
     }
-    for (;;)
+    if (SystemClock.uptimeMillis() - sLastClean > i)
     {
-      if (SystemClock.uptimeMillis() - sLastClean > i)
-      {
-        Log.d("harlan", "begin cleanRef size " + sRefCounts.get());
-        System.gc();
-        long l = SystemClock.uptimeMillis();
-        i = cleanRefs(sLock);
-        sLastClean = SystemClock.uptimeMillis();
-        Log.d("harlan", "end cleanRef size " + i + " cost " + (sLastClean - l));
-        sRefCounts.set(i);
-      }
-      return;
-      if (j > 25000) {
-        i = 1000;
-      }
+      StringBuilder localStringBuilder = new StringBuilder("begin cleanRef size ");
+      localStringBuilder.append(sRefCounts.get());
+      Log.d("harlan", localStringBuilder.toString());
+      System.gc();
+      long l = SystemClock.uptimeMillis();
+      i = cleanRefs(sLock);
+      sLastClean = SystemClock.uptimeMillis();
+      localStringBuilder = new StringBuilder("end cleanRef size ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" cost ");
+      localStringBuilder.append(sLastClean - l);
+      Log.d("harlan", localStringBuilder.toString());
+      sRefCounts.set(i);
     }
   }
   
@@ -89,7 +92,13 @@ public final class EpicNative
   
   public static void copy(long paramLong1, long paramLong2, int paramInt)
   {
-    Logger.d("EpicNative", "Copy " + paramInt + " bytes form " + Debug.addrHex(paramLong1) + " to " + Debug.addrHex(paramLong2));
+    StringBuilder localStringBuilder = new StringBuilder("Copy ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" bytes form ");
+    localStringBuilder.append(Debug.addrHex(paramLong1));
+    localStringBuilder.append(" to ");
+    localStringBuilder.append(Debug.addrHex(paramLong2));
+    Logger.d("EpicNative", localStringBuilder.toString());
     memcpy(paramLong1, paramLong2, paramInt);
   }
   
@@ -97,10 +106,14 @@ public final class EpicNative
   
   public static byte[] get(long paramLong, int paramInt)
   {
-    Logger.d("EpicNative", "Reading " + paramInt + " bytes from: " + Debug.addrHex(paramLong));
-    byte[] arrayOfByte = memget(paramLong, paramInt);
-    Logger.d("EpicNative", Debug.hexdump(arrayOfByte, paramLong));
-    return arrayOfByte;
+    Object localObject = new StringBuilder("Reading ");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(" bytes from: ");
+    ((StringBuilder)localObject).append(Debug.addrHex(paramLong));
+    Logger.d("EpicNative", ((StringBuilder)localObject).toString());
+    localObject = memget(paramLong, paramInt);
+    Logger.d("EpicNative", Debug.hexdump((byte[])localObject, paramLong));
+    return localObject;
   }
   
   public static native long getMethodAddress(Member paramMember);
@@ -128,7 +141,11 @@ public final class EpicNative
   public static long map(int paramInt)
   {
     long l = mmap(paramInt);
-    Logger.i("EpicNative", "Mapped memory of size " + paramInt + " at " + Debug.addrHex(l));
+    StringBuilder localStringBuilder = new StringBuilder("Mapped memory of size ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" at ");
+    localStringBuilder.append(Debug.addrHex(l));
+    Logger.i("EpicNative", localStringBuilder.toString());
     return l;
   }
   
@@ -159,19 +176,25 @@ public final class EpicNative
   
   public static boolean unmap(long paramLong, int paramInt)
   {
-    Logger.d("EpicNative", "Removing mapped memory of size " + paramInt + " at " + Debug.addrHex(paramLong));
+    StringBuilder localStringBuilder = new StringBuilder("Removing mapped memory of size ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" at ");
+    localStringBuilder.append(Debug.addrHex(paramLong));
+    Logger.d("EpicNative", localStringBuilder.toString());
     return munmap(paramLong, paramInt);
   }
   
   public static boolean unprotect(long paramLong1, long paramLong2)
   {
-    Logger.d("EpicNative", "Disabling mprotect from " + Debug.addrHex(paramLong1));
+    StringBuilder localStringBuilder = new StringBuilder("Disabling mprotect from ");
+    localStringBuilder.append(Debug.addrHex(paramLong1));
+    Logger.d("EpicNative", localStringBuilder.toString());
     return munprotect(paramLong1, paramLong2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     me.weishu.epic.art.EpicNative
  * JD-Core Version:    0.7.0.1
  */

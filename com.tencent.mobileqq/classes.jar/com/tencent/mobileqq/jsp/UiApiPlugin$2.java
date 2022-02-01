@@ -11,28 +11,39 @@ class UiApiPlugin$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0) {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString + "({button: 1})");
-      }
-    }
-    while (paramInt != 1)
+    StringBuilder localStringBuilder;
+    if (paramInt == 0)
     {
-      return;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      {
+        paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append("({button: 1})");
+        paramDialogInterface.callJs(localStringBuilder.toString());
+        return;
+      }
       this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs4OpenApiIfNeeded("showDialog", 0, "({button: 1})");
       return;
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (paramInt == 1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString + "({button: 0})");
-      return;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      {
+        paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append("({button: 0})");
+        paramDialogInterface.callJs(localStringBuilder.toString());
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs4OpenApiIfNeeded("showDialog", 0, "({button: 0})");
     }
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs4OpenApiIfNeeded("showDialog", 0, "({button: 0})");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.2
  * JD-Core Version:    0.7.0.1
  */

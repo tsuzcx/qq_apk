@@ -24,7 +24,7 @@ public class GroupHolderContainer
   
   protected View a(ViewGroup paramViewGroup)
   {
-    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561951, paramViewGroup, false);
+    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561798, paramViewGroup, false);
   }
   
   public void a(int paramInt, IDataProvider.GroupInfo paramGroupInfo, @NonNull ArrayList<StoryPlayerVideoData> paramArrayList)
@@ -85,7 +85,7 @@ public class GroupHolderContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.GroupHolderContainer
  * JD-Core Version:    0.7.0.1
  */

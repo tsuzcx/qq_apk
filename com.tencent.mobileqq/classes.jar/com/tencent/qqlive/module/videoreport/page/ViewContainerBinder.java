@@ -26,7 +26,7 @@ public class ViewContainerBinder
   
   private static int secondaryHash(int paramInt)
   {
-    paramInt = (paramInt << 15 ^ 0xFFFFCD7D) + paramInt;
+    paramInt += (paramInt << 15 ^ 0xFFFFCD7D);
     paramInt ^= paramInt >>> 10;
     paramInt += (paramInt << 3);
     paramInt ^= paramInt >>> 6;
@@ -50,51 +50,53 @@ public class ViewContainerBinder
     try
     {
       Object localObject = (WeakReference)this.mBound.get(paramView);
-      if (localObject == null)
-      {
-        paramView = null;
+      if (localObject == null) {
+        return null;
       }
-      else
-      {
-        localObject = ((WeakReference)localObject).get();
-        paramView = (View)localObject;
-      }
+      localObject = ((WeakReference)localObject).get();
+      return localObject;
     }
     catch (ArrayIndexOutOfBoundsException localArrayIndexOutOfBoundsException)
     {
       int i = secondaryHash(paramView.hashCode());
-      throw new ArrayIndexOutOfBoundsException("hash = " + i + ", masked = " + (0x7FFFFFFF & i) + ", " + localArrayIndexOutOfBoundsException.getMessage());
+      paramView = new StringBuilder();
+      paramView.append("hash = ");
+      paramView.append(i);
+      paramView.append(", masked = ");
+      paramView.append(0x7FFFFFFF & i);
+      paramView.append(", ");
+      paramView.append(localArrayIndexOutOfBoundsException.getMessage());
+      throw new ArrayIndexOutOfBoundsException(paramView.toString());
     }
-    return paramView;
   }
   
   public void onActivityResume(Activity paramActivity)
   {
     Object localObject = paramActivity.getWindow();
-    if (localObject == null) {}
-    do
-    {
+    if (localObject == null) {
       return;
-      localObject = ((Window)localObject).getDecorView();
-    } while (localObject == null);
-    bind((View)localObject, paramActivity);
+    }
+    localObject = ((Window)localObject).getDecorView();
+    if (localObject != null) {
+      bind((View)localObject, paramActivity);
+    }
   }
   
   public void onDialogShow(Activity paramActivity, Dialog paramDialog)
   {
     paramActivity = paramDialog.getWindow();
-    if (paramActivity == null) {}
-    do
-    {
+    if (paramActivity == null) {
       return;
-      paramActivity = paramActivity.getDecorView();
-    } while (paramActivity == null);
-    bind(paramActivity, paramDialog);
+    }
+    paramActivity = paramActivity.getDecorView();
+    if (paramActivity != null) {
+      bind(paramActivity, paramDialog);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.page.ViewContainerBinder
  * JD-Core Version:    0.7.0.1
  */

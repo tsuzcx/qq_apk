@@ -2,12 +2,14 @@
 <LinearLayout android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="58.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
-            <TextView android:textSize="16.0dip" android:textColor="@color/bp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:text="@string/ptj" />
-            <TextView android:textSize="12.0dip" android:textColor="#ff777777" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ptg" />
+        <include android:orientation="vertical" android:id="@id/noq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="4.0dip" android:layout_marginBottom="4.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" layout="@layout/cnn" />
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_toRightOf="@id/noq" android:layout_centerVertical="true">
+            <TextView android:textSize="16.0dip" android:textColor="@color/bp" android:id="@id/oc7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:text="@string/ptj" />
+            <TextView android:textSize="12.0dip" android:textColor="#ff777777" android:id="@id/o_v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ptg" />
         </LinearLayout>
         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
             <TextView android:gravity="center" android:id="@id/gf0" android:layout_width="54.0dip" android:layout_height="30.0dip" android:layout_marginLeft="6.0dip" android:text="@string/pti" style="@style/e0" />
+            <TextView android:gravity="center" android:id="@id/nv4" android:background="@drawable/e78" android:visibility="gone" android:layout_width="78.5dip" android:layout_height="29.0dip" android:layout_marginLeft="6.0dip" android:text="@string/y56" style="@style/e0" />
             <View android:layout_gravity="center_vertical" android:background="#ffcdcdcd" android:layout_width="1.0px" android:layout_height="fill_parent" android:layout_marginLeft="16.0dip" android:layout_marginRight="2.0dip" />
             <TextView android:textColor="@color/aeq" android:gravity="center" android:id="@id/gf1" android:background="@color/al3" android:layout_width="54.0dip" android:layout_height="30.0dip" android:text="@string/ptl" />
         </LinearLayout>

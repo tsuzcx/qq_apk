@@ -5,7 +5,7 @@
     <TextView android:id="@id/title" style="@style/k6" />
     <ImageView android:id="@id/yw" style="@style/jp" />
     <LinearLayout android:id="@id/b03" style="@style/jv" />
-    <LinearLayout android:id="@id/mqj" android:visibility="gone" style="@style/zr" />
+    <LinearLayout android:id="@id/mr4" android:visibility="gone" style="@style/a6o" />
     <LinearLayout android:id="@id/jfi" android:visibility="gone" style="@style/js">
         <View style="@style/k4" />
         <TextView android:id="@id/info" style="@style/jx" />

@@ -56,10 +56,11 @@ public class EmotionData
   
   public static void a(List<EmotionData> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    for (;;)
+    if (paramList != null)
     {
-      return;
+      if (paramList.size() == 0) {
+        return;
+      }
       int i = paramList.size() - 1;
       while (i >= 0)
       {
@@ -89,7 +90,7 @@ public class EmotionData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.chatroom.EmotionData
  * JD-Core Version:    0.7.0.1
  */

@@ -24,8 +24,14 @@ class FocusLiveStreamDataImpl$1
     FocusLiveStreamDataImpl.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataImpl, false);
     FocusLiveStreamDataImpl.b(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataImpl, true);
     this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataImpl.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocousinterfaceFocusLiveStreamListener);
-    if (QLog.isColorLevel()) {
-      QLog.d("FocusLiveStreamDataImpl", 2, "Focus cmd:28679 sub cmd:2 errCode:" + paramInt + " msg:" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Focus cmd:28679 sub cmd:2 errCode:");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" msg:");
+      localStringBuilder.append(paramString);
+      QLog.d("FocusLiveStreamDataImpl", 2, localStringBuilder.toString());
     }
   }
   
@@ -35,11 +41,19 @@ class FocusLiveStreamDataImpl$1
     {
       FocusLiveStreamDataImpl.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataImpl, false);
       FocusLiveStreamDataImpl.b(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataImpl, false);
-      Object localObject1 = new NowQQLiveFocusProto.GetAnchorOnline1Rsp();
+      localObject1 = new NowQQLiveFocusProto.GetAnchorOnline1Rsp();
       ((NowQQLiveFocusProto.GetAnchorOnline1Rsp)localObject1).mergeFrom(paramArrayOfByte);
       Object localObject2 = ((NowQQLiveFocusProto.GetAnchorOnline1Rsp)localObject1).anchor_info.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("FocusLiveStreamDataImpl", 2, "Focus cmd:28679 sub cmd:2 anchorInfoList:" + ((List)localObject2).size() + " rsp code:" + ((NowQQLiveFocusProto.GetAnchorOnline1Rsp)localObject1).ret_info.err_code + " msg:" + ((NowQQLiveFocusProto.GetAnchorOnline1Rsp)localObject1).ret_info.err_msg);
+      if (QLog.isColorLevel())
+      {
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("Focus cmd:28679 sub cmd:2 anchorInfoList:");
+        paramArrayOfByte.append(((List)localObject2).size());
+        paramArrayOfByte.append(" rsp code:");
+        paramArrayOfByte.append(((NowQQLiveFocusProto.GetAnchorOnline1Rsp)localObject1).ret_info.err_code);
+        paramArrayOfByte.append(" msg:");
+        paramArrayOfByte.append(((NowQQLiveFocusProto.GetAnchorOnline1Rsp)localObject1).ret_info.err_msg);
+        QLog.d("FocusLiveStreamDataImpl", 2, paramArrayOfByte.toString());
       }
       paramArrayOfByte = new ArrayList();
       localObject1 = ((List)localObject2).iterator();
@@ -59,27 +73,42 @@ class FocusLiveStreamDataImpl$1
         localNowQQLiveAnchorInfo.a(((NowQQLiveFocusProto.AnchorInfo)localObject2).type.get());
         localNowQQLiveAnchorInfo.a(((NowQQLiveFocusProto.AnchorInfo)localObject2).cover_url.get());
         paramArrayOfByte.add(localNowQQLiveAnchorInfo);
-        if (QLog.isColorLevel()) {
-          QLog.d("FocusLiveStreamDataImpl", 2, "Focus cmd:28679 sub cmd:2 nick_name:" + localNowQQLiveAnchorInfo.b() + " jump_url:" + localNowQQLiveAnchorInfo.a() + " anchor_logo_url: " + localNowQQLiveAnchorInfo.c() + " anchorInfo.jump_url.get():" + ((NowQQLiveFocusProto.AnchorInfo)localObject2).jump_url.get());
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Focus cmd:28679 sub cmd:2 nick_name:");
+          localStringBuilder.append(localNowQQLiveAnchorInfo.b());
+          localStringBuilder.append(" jump_url:");
+          localStringBuilder.append(localNowQQLiveAnchorInfo.a());
+          localStringBuilder.append(" anchor_logo_url: ");
+          localStringBuilder.append(localNowQQLiveAnchorInfo.c());
+          localStringBuilder.append(" anchorInfo.jump_url.get():");
+          localStringBuilder.append(((NowQQLiveFocusProto.AnchorInfo)localObject2).jump_url.get());
+          QLog.d("FocusLiveStreamDataImpl", 2, localStringBuilder.toString());
         }
       }
       this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocousinterfaceFocusLiveStreamListener.a(paramArrayOfByte);
+      return;
     }
     catch (Exception paramArrayOfByte)
     {
+      Object localObject1;
       FocusLiveStreamDataImpl.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataImpl, false);
       FocusLiveStreamDataImpl.b(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataImpl, true);
       this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataImpl.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocousinterfaceFocusLiveStreamListener);
-      if (QLog.isColorLevel()) {
-        QLog.d("FocusLiveStreamDataImpl", 2, "Focus cmd:28679 sub cmd:2 Exception:" + paramArrayOfByte.getMessage());
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("Focus cmd:28679 sub cmd:2 Exception:");
+        ((StringBuilder)localObject1).append(paramArrayOfByte.getMessage());
+        QLog.d("FocusLiveStreamDataImpl", 2, ((StringBuilder)localObject1).toString());
       }
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.focusanchor.focusdata.FocusLiveStreamDataImpl.1
  * JD-Core Version:    0.7.0.1
  */

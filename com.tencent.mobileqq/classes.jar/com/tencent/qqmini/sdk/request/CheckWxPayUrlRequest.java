@@ -43,24 +43,22 @@ public class CheckWxPayUrlRequest
     try
     {
       localStWxpayCheckMWebURLRsp.mergeFrom(paramArrayOfByte);
-      if (localStWxpayCheckMWebURLRsp != null)
-      {
-        paramJSONObject.put("key_url_valid", localStWxpayCheckMWebURLRsp.is_valid);
-        return paramJSONObject;
-      }
+      paramJSONObject.put("key_url_valid", localStWxpayCheckMWebURLRsp.is_valid);
+      return paramJSONObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      QMLog.d("CheckWxPayUrlRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("onResponse fail.");
+      paramJSONObject.append(paramArrayOfByte);
+      QMLog.d("CheckWxPayUrlRequest", paramJSONObject.toString());
     }
-    QMLog.d("CheckWxPayUrlRequest", "onResponse fail.rsp = null");
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.CheckWxPayUrlRequest
  * JD-Core Version:    0.7.0.1
  */

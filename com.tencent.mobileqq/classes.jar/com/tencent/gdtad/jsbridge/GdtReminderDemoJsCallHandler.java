@@ -7,19 +7,23 @@ final class GdtReminderDemoJsCallHandler
 {
   public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
   {
-    if (paramGdtAdWebPlugin != null) {}
-    for (paramString = paramGdtAdWebPlugin.a(); (paramGdtAdWebPlugin == null) || (paramString == null); paramString = null)
+    if (paramGdtAdWebPlugin != null) {
+      paramString = paramGdtAdWebPlugin.a();
+    } else {
+      paramString = null;
+    }
+    if ((paramGdtAdWebPlugin != null) && (paramString != null))
     {
-      GdtLog.d("GdtReminderDemoJsCallHandler", "handleJsCallRequest error");
+      GdtQQReminderDemoFragment.a(paramString);
       return true;
     }
-    GdtQQReminderDemoFragment.a(paramString);
+    GdtLog.d("GdtReminderDemoJsCallHandler", "handleJsCallRequest error");
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtReminderDemoJsCallHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -15,15 +15,17 @@ class AntiphingToast$1
   
   public void handleMessage(Message paramMessage)
   {
-    if (paramMessage.what == 1) {
-      this.a.a(0.0F, 0 - AntiphingToast.a(this.a).getHeight(), true);
+    if (paramMessage.what == 1)
+    {
+      AntiphingToast localAntiphingToast = this.a;
+      localAntiphingToast.a(0.0F, 0 - AntiphingToast.a(localAntiphingToast).getHeight(), true);
     }
     super.handleMessage(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AntiphingToast.1
  * JD-Core Version:    0.7.0.1
  */

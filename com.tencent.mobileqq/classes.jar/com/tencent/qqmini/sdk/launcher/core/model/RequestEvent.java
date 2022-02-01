@@ -25,8 +25,9 @@ public class RequestEvent
   
   public void evaluateCallbackJs(String paramString)
   {
-    if (this.jsService != null) {
-      this.jsService.evaluateCallbackJs(this.callbackId, paramString);
+    IJsService localIJsService = this.jsService;
+    if (localIJsService != null) {
+      localIJsService.evaluateCallbackJs(this.callbackId, paramString);
     }
   }
   
@@ -61,7 +62,7 @@ public class RequestEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.model.RequestEvent
  * JD-Core Version:    0.7.0.1
  */

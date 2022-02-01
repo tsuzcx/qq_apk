@@ -8,24 +8,24 @@ class WSBaseHomeFragment$1
 {
   WSBaseHomeFragment$1(WSBaseHomeFragment paramWSBaseHomeFragment) {}
   
-  public void a()
+  public void endOfRefresh()
   {
-    this.a.a();
+    this.a.b();
   }
   
-  public void a(XRecyclerView paramXRecyclerView, int paramInt)
+  public void startLoadMore(XRecyclerView paramXRecyclerView, int paramInt)
   {
     this.a.a(paramXRecyclerView, paramInt);
   }
   
-  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
+  public void startTopRefresh(XRecyclerView paramXRecyclerView, boolean paramBoolean)
   {
     this.a.a(paramXRecyclerView, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSBaseHomeFragment.1
  * JD-Core Version:    0.7.0.1
  */

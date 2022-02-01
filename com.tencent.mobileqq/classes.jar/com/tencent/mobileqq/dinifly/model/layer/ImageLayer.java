@@ -45,34 +45,37 @@ public class ImageLayer
     super.addValueCallback(paramT, paramLottieValueCallback);
     if (paramT == LottieProperty.COLOR_FILTER)
     {
-      if (paramLottieValueCallback == null) {
+      if (paramLottieValueCallback == null)
+      {
         this.colorFilterAnimation = null;
+        return;
       }
+      this.colorFilterAnimation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
     }
-    else {
-      return;
-    }
-    this.colorFilterAnimation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
   }
   
   public void drawLayer(@NonNull Canvas paramCanvas, Matrix paramMatrix, int paramInt)
   {
     Bitmap localBitmap = getBitmap();
-    if ((localBitmap == null) || (localBitmap.isRecycled())) {
-      return;
+    if (localBitmap != null)
+    {
+      if (localBitmap.isRecycled()) {
+        return;
+      }
+      float f = Utils.dpScale();
+      this.paint.setAlpha(paramInt);
+      BaseKeyframeAnimation localBaseKeyframeAnimation = this.colorFilterAnimation;
+      if (localBaseKeyframeAnimation != null) {
+        this.paint.setColorFilter((ColorFilter)localBaseKeyframeAnimation.getValue());
+      }
+      paramCanvas.save();
+      paramCanvas.concat(paramMatrix);
+      this.src.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
+      this.dst.set(0, 0, (int)(localBitmap.getWidth() * f), (int)(localBitmap.getHeight() * f));
+      paramCanvas.drawBitmap(localBitmap, this.src, this.dst, this.paint);
+      paramCanvas.restore();
+      this.viewMatirx = this.transform.getMatrix();
     }
-    float f = Utils.dpScale();
-    this.paint.setAlpha(paramInt);
-    if (this.colorFilterAnimation != null) {
-      this.paint.setColorFilter((ColorFilter)this.colorFilterAnimation.getValue());
-    }
-    paramCanvas.save();
-    paramCanvas.concat(paramMatrix);
-    this.src.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
-    this.dst.set(0, 0, (int)(localBitmap.getWidth() * f), (int)(f * localBitmap.getHeight()));
-    paramCanvas.drawBitmap(localBitmap, this.src, this.dst, this.paint);
-    paramCanvas.restore();
-    this.viewMatirx = this.transform.getMatrix();
   }
   
   public void getBounds(RectF paramRectF, Matrix paramMatrix, boolean paramBoolean)
@@ -93,7 +96,7 @@ public class ImageLayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.layer.ImageLayer
  * JD-Core Version:    0.7.0.1
  */

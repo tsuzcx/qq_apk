@@ -16,7 +16,7 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.avgame.util.AVGameUtils;
+import com.tencent.avgame.util.AVGameUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class TalkingEffectLayout
@@ -59,54 +59,57 @@ public class TalkingEffectLayout
       setLayerType(1, null);
     }
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    Bitmap localBitmap = AVGameUtils.a("avgame_pk_player_talking_inner.png");
-    if (localBitmap != null)
-    {
+    Bitmap localBitmap = AVGameUtil.a("avgame_pk_player_talking_inner.png");
+    if (localBitmap != null) {
       this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
-      this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-      localBitmap = AVGameUtils.a("avgame_pk_player_talking_outer.png");
-      if (localBitmap == null) {
-        break label156;
-      }
+    } else {
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130838699));
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
+    localBitmap = AVGameUtil.a("avgame_pk_player_talking_outer.png");
+    if (localBitmap != null) {
       this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+    } else {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130838700));
     }
-    for (;;)
-    {
-      addView(this.jdField_a_of_type_AndroidWidgetImageView, new RelativeLayout.LayoutParams(-1, -1));
-      addView(this.jdField_b_of_type_AndroidWidgetImageView, new RelativeLayout.LayoutParams(-1, -1));
-      return;
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130838939));
-      break;
-      label156:
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130838940));
-    }
+    addView(this.jdField_a_of_type_AndroidWidgetImageView, new RelativeLayout.LayoutParams(-1, -1));
+    addView(this.jdField_b_of_type_AndroidWidgetImageView, new RelativeLayout.LayoutParams(-1, -1));
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null)
+    Object localObject = this.jdField_a_of_type_AndroidAnimationAnimatorSet;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
+      ((AnimatorSet)localObject).cancel();
       this.jdField_a_of_type_AndroidAnimationAnimatorSet.removeAllListeners();
     }
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidWidgetImageView, "alpha", new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F });
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "alpha", new float[] { 0.0F, 0.35F, 0.35F, 0.35F, 0.0F });
-    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(this, "clipPadding", new float[] { this.jdField_a_of_type_Int * 0.0666667F, this.jdField_a_of_type_Int * 0.01111111F, 0.03333334F * this.jdField_a_of_type_Int, this.jdField_a_of_type_Int * 0.01111111F, this.jdField_a_of_type_Int * 0.0666667F });
+    localObject = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidWidgetImageView, "alpha", new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F });
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "alpha", new float[] { 0.0F, 0.35F, 0.35F, 0.35F, 0.0F });
+    int i = this.jdField_a_of_type_Int;
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this, "clipPadding", new float[] { i * 0.0666667F, i * 0.01111111F, i * 0.03333334F, i * 0.01111111F, i * 0.0666667F });
+    ((ObjectAnimator)localObject).setDuration(1000L);
     localObjectAnimator1.setDuration(1000L);
     localObjectAnimator2.setDuration(1000L);
-    localObjectAnimator3.setDuration(1000L);
     this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2, localObjectAnimator3 });
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localObject, localObjectAnimator1, localObjectAnimator2 });
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new TalkingEffectLayout.1(this));
   }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TalkingEffectLayout", 2, "playAnimation animatorSet = " + this.jdField_a_of_type_AndroidAnimationAnimatorSet);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("playAnimation animatorSet = ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidAnimationAnimatorSet);
+      QLog.d("TalkingEffectLayout", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet == null) {}
-    while (this.jdField_a_of_type_AndroidAnimationAnimatorSet.isRunning()) {
+    Object localObject = this.jdField_a_of_type_AndroidAnimationAnimatorSet;
+    if (localObject == null) {
+      return;
+    }
+    if (((AnimatorSet)localObject).isRunning()) {
       return;
     }
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
@@ -114,10 +117,11 @@ public class TalkingEffectLayout
   
   public void b()
   {
-    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet == null) {
+    AnimatorSet localAnimatorSet = this.jdField_a_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
+    localAnimatorSet.cancel();
   }
   
   public void dispatchDraw(Canvas paramCanvas)
@@ -125,19 +129,22 @@ public class TalkingEffectLayout
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
     float f1 = this.jdField_b_of_type_Float;
     float f2 = this.jdField_a_of_type_Int;
-    float f3 = this.jdField_b_of_type_Float;
-    float f4 = this.jdField_b_of_type_Int;
-    float f5 = this.jdField_b_of_type_Float;
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(f1, f1, f2 - f3, f4 - f5);
-    this.jdField_a_of_type_Float = (0.1333333F * this.jdField_a_of_type_Int + (0.08888889F * this.jdField_a_of_type_Int - this.jdField_b_of_type_Float));
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, Path.Direction.CW);
+    float f3 = this.jdField_b_of_type_Int;
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(f1, f1, f2 - f1, f3 - f1);
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Float = (i * 0.1333333F + (i * 0.08888889F - this.jdField_b_of_type_Float));
+    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    f1 = this.jdField_a_of_type_Float;
+    localPath.addRoundRect(localRectF, f1, f1, Path.Direction.CW);
     paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
     super.dispatchDraw(paramCanvas);
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int != paramInt1))
+    paramInt3 = this.jdField_a_of_type_Int;
+    if ((paramInt3 == 0) || (paramInt3 != paramInt1))
     {
       this.jdField_a_of_type_Int = paramInt1;
       this.jdField_b_of_type_Int = paramInt2;
@@ -158,7 +165,7 @@ public class TalkingEffectLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.seat.TalkingEffectLayout
  * JD-Core Version:    0.7.0.1
  */

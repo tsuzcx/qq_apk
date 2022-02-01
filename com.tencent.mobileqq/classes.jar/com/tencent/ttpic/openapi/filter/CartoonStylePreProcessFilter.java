@@ -64,470 +64,428 @@ public class CartoonStylePreProcessFilter
   
   private void getCartoonFacePoints2(List<PointF> paramList, int paramInt1, int paramInt2, float paramFloat)
   {
-    float f3 = 0.0039063F * paramInt1;
+    float f5 = paramInt1;
+    float f3 = 0.0039063F * f5;
     this.thickness = 2.0F;
     this.thickness *= f3;
-    int i;
-    if (this.face == 0)
-    {
-      i = 1;
-      while (i < 17)
-      {
-        drawLineToListFromP1AndP2((PointF)paramList.get(i), (PointF)paramList.get(i + 1));
-        i += 1;
-      }
-    }
-    if (this.face == 1)
-    {
-      i = 0;
-      while (i < 18)
-      {
-        drawLineToListFromP1AndP2((PointF)paramList.get(i), (PointF)paramList.get(i + 1));
-        i += 1;
-      }
-    }
+    paramInt1 = this.face;
     Object localObject;
+    if (paramInt1 == 0)
+    {
+      paramInt1 = 1;
+      while (paramInt1 < 17)
+      {
+        localObject = (PointF)paramList.get(paramInt1);
+        paramInt1 += 1;
+        drawLineToListFromP1AndP2((PointF)localObject, (PointF)paramList.get(paramInt1));
+      }
+    }
+    if (paramInt1 == 1)
+    {
+      paramInt1 = 0;
+      while (paramInt1 < 18)
+      {
+        localObject = (PointF)paramList.get(paramInt1);
+        paramInt1 += 1;
+        drawLineToListFromP1AndP2((PointF)localObject, (PointF)paramList.get(paramInt1));
+      }
+    }
     if (this.eyebrow == 0)
     {
       localObject = new PointF[3];
-      i = 20;
-      while (i < 23)
+      paramInt1 = 20;
+      while (paramInt1 < 23)
       {
-        localObject[(i - 20)] = getMiddleByP1AndP2((PointF)paramList.get(i), (PointF)paramList.get(46 - i));
-        i += 1;
+        localObject[(paramInt1 - 20)] = getMiddleByP1AndP2((PointF)paramList.get(paramInt1), (PointF)paramList.get(46 - paramInt1));
+        paramInt1 += 1;
       }
       drawLineToListFromP1AndP2(localObject[0], localObject[1]);
       drawLineToListFromP1AndP2(localObject[1], localObject[2]);
       drawLineToListFromP1AndP2(localObject[2], (PointF)paramList.get(23));
-      i = 28;
-      while (i < 31)
+      paramInt1 = 28;
+      while (paramInt1 < 31)
       {
-        localObject[(i - 28)] = getMiddleByP1AndP2((PointF)paramList.get(i), (PointF)paramList.get(62 - i));
-        i += 1;
+        localObject[(paramInt1 - 28)] = getMiddleByP1AndP2((PointF)paramList.get(paramInt1), (PointF)paramList.get(62 - paramInt1));
+        paramInt1 += 1;
       }
       drawLineToListFromP1AndP2(localObject[0], localObject[1]);
       drawLineToListFromP1AndP2(localObject[1], localObject[2]);
       drawLineToListFromP1AndP2(localObject[2], (PointF)paramList.get(31));
     }
-    float f1;
-    if (this.lastFaceYaw * paramFloat <= 0.0F) {
-      if (Math.abs(paramFloat - this.lastFaceYaw) > 2.2F) {
-        f1 = paramFloat;
+    float f1 = this.lastFaceYaw;
+    if ((f1 * paramFloat <= 0.0F) && (Math.abs(paramFloat - f1) <= 2.2F)) {
+      f1 = this.lastFaceYaw;
+    } else {
+      f1 = paramFloat;
+    }
+    paramInt1 = this.nose;
+    if (paramInt1 == 1)
+    {
+      if (f1 > 0.0F) {
+        drawLineToListFromP1AndP2((PointF)paramList.get(62), (PointF)paramList.get(63));
+      } else {
+        drawLineToListFromP1AndP2((PointF)paramList.get(55), (PointF)paramList.get(56));
       }
     }
-    for (;;)
-    {
-      label418:
-      PointF localPointF;
-      float f2;
-      if (this.nose == 1) {
-        if (f1 > 0.0F)
-        {
-          drawLineToListFromP1AndP2((PointF)paramList.get(62), (PointF)paramList.get(63));
-          if (this.nostril == 1)
-          {
-            if (f1 <= 0.0F) {
-              break label1153;
-            }
-            new PointF();
-            localObject = new PointF();
-            localPointF = getMiddleByP1AndP2((PointF)paramList.get(59), (PointF)paramList.get(60));
-            f2 = ((PointF)paramList.get(62)).x;
-            ((PointF)localObject).x = (((PointF)paramList.get(60)).x * 0.7F + (1.0F - 0.7F) * f2);
-            f2 = ((PointF)paramList.get(62)).y;
-            ((PointF)localObject).y = (((PointF)paramList.get(60)).y * 0.7F + (1.0F - 0.7F) * f2);
-            drawLineToListFromP1AndP2((PointF)localObject, localPointF);
-            f2 = ((PointF)paramList.get(59)).x;
-            localPointF.x = (((PointF)paramList.get(58)).x * 0.7F + (1.0F - 0.7F) * f2);
-            f2 = ((PointF)paramList.get(59)).y;
-            localPointF.y = (((PointF)paramList.get(58)).y * 0.7F + (1.0F - 0.7F) * f2);
-            f2 = ((PointF)paramList.get(57)).x;
-            ((PointF)localObject).x = (((PointF)paramList.get(58)).x * 0.7F + (1.0F - 0.7F) * f2);
-            f2 = ((PointF)paramList.get(57)).y;
-            ((PointF)localObject).y = (((PointF)paramList.get(58)).y * 0.7F + (1.0F - 0.7F) * f2);
-            drawLineToListFromP1AndP2((PointF)localObject, localPointF);
-          }
-        }
-      }
-      for (;;)
+    else if (paramInt1 == 0) {
+      drawLineToListFromP1AndP2(getMiddleByP1AndP2((PointF)paramList.get(56), (PointF)paramList.get(62)), (PointF)paramList.get(64));
+    }
+    PointF localPointF;
+    if (this.nostril == 1) {
+      if (f1 > 0.0F)
       {
-        this.lastFaceYaw = f1;
-        if (this.mouth == -1) {
-          break label1493;
-        }
-        localObject = (PointF)paramList.get(65);
-        localPointF = (PointF)paramList.get(66);
-        if (this.mouth == 0)
-        {
-          localObject = getMiddleByP1AndP2((PointF)paramList.get(65), (PointF)paramList.get(82));
-          localPointF = getMiddleByP1AndP2((PointF)paramList.get(66), (PointF)paramList.get(80));
-        }
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.add(localObject);
-        localArrayList.add(paramList.get(82));
-        localArrayList.add(paramList.get(81));
-        localArrayList.add(paramList.get(80));
-        localArrayList.add(localPointF);
-        localArrayList.add(paramList.get(72));
-        localArrayList.add(paramList.get(73));
-        localArrayList.add(paramList.get(74));
-        localArrayList.add(localObject);
-        i = 0;
-        while (i < localArrayList.size() - 1)
-        {
-          drawLineToListFromP1AndP2((PointF)localArrayList.get(i), (PointF)localArrayList.get(i + 1));
-          i += 1;
-        }
-        f1 = this.lastFaceYaw;
-        break;
-        drawLineToListFromP1AndP2((PointF)paramList.get(55), (PointF)paramList.get(56));
-        break label418;
-        if (this.nose != 0) {
-          break label418;
-        }
-        drawLineToListFromP1AndP2(getMiddleByP1AndP2((PointF)paramList.get(56), (PointF)paramList.get(62)), (PointF)paramList.get(64));
-        break label418;
-        label1153:
+        new PointF();
+        localObject = new PointF();
+        localPointF = getMiddleByP1AndP2((PointF)paramList.get(59), (PointF)paramList.get(60));
+        ((PointF)localObject).x = (((PointF)paramList.get(62)).x * 0.3F + ((PointF)paramList.get(60)).x * 0.7F);
+        ((PointF)localObject).y = (((PointF)paramList.get(62)).y * 0.3F + ((PointF)paramList.get(60)).y * 0.7F);
+        drawLineToListFromP1AndP2((PointF)localObject, localPointF);
+        localPointF.x = (((PointF)paramList.get(59)).x * 0.3F + ((PointF)paramList.get(58)).x * 0.7F);
+        localPointF.y = (((PointF)paramList.get(59)).y * 0.3F + ((PointF)paramList.get(58)).y * 0.7F);
+        ((PointF)localObject).x = (((PointF)paramList.get(57)).x * 0.3F + ((PointF)paramList.get(58)).x * 0.7F);
+        ((PointF)localObject).y = (0.3F * ((PointF)paramList.get(57)).y + ((PointF)paramList.get(58)).y * 0.7F);
+        drawLineToListFromP1AndP2((PointF)localObject, localPointF);
+      }
+      else
+      {
         new PointF();
         localObject = new PointF();
         localPointF = getMiddleByP1AndP2((PointF)paramList.get(59), (PointF)paramList.get(58));
-        f2 = ((PointF)paramList.get(56)).x;
-        ((PointF)localObject).x = (((PointF)paramList.get(58)).x * 0.7F + (1.0F - 0.7F) * f2);
-        f2 = ((PointF)paramList.get(56)).y;
-        ((PointF)localObject).y = (((PointF)paramList.get(58)).y * 0.7F + (1.0F - 0.7F) * f2);
+        ((PointF)localObject).x = (((PointF)paramList.get(56)).x * 0.3F + ((PointF)paramList.get(58)).x * 0.7F);
+        ((PointF)localObject).y = (((PointF)paramList.get(56)).y * 0.3F + ((PointF)paramList.get(58)).y * 0.7F);
         drawLineToListFromP1AndP2((PointF)localObject, localPointF);
-        f2 = ((PointF)paramList.get(59)).x;
-        localPointF.x = (((PointF)paramList.get(60)).x * 0.7F + (1.0F - 0.7F) * f2);
-        f2 = ((PointF)paramList.get(59)).y;
-        localPointF.y = (((PointF)paramList.get(60)).y * 0.7F + (1.0F - 0.7F) * f2);
-        f2 = ((PointF)paramList.get(61)).x;
-        ((PointF)localObject).x = (((PointF)paramList.get(60)).x * 0.7F + (1.0F - 0.7F) * f2);
-        f2 = ((PointF)paramList.get(61)).y;
-        ((PointF)localObject).y = (((PointF)paramList.get(60)).y * 0.7F + (1.0F - 0.7F) * f2);
+        localPointF.x = (((PointF)paramList.get(59)).x * 0.3F + ((PointF)paramList.get(60)).x * 0.7F);
+        localPointF.y = (((PointF)paramList.get(59)).y * 0.3F + ((PointF)paramList.get(60)).y * 0.7F);
+        ((PointF)localObject).x = (((PointF)paramList.get(61)).x * 0.3F + ((PointF)paramList.get(60)).x * 0.7F);
+        ((PointF)localObject).y = (0.3F * ((PointF)paramList.get(61)).y + ((PointF)paramList.get(60)).y * 0.7F);
         drawLineToListFromP1AndP2((PointF)localObject, localPointF);
       }
-      label1493:
-      int j;
-      label1531:
-      float f5;
-      float f6;
-      if ((this.eye == 1) || (this.eye == 2))
+    }
+    this.lastFaceYaw = f1;
+    if (this.mouth != -1)
+    {
+      localObject = (PointF)paramList.get(65);
+      localPointF = (PointF)paramList.get(66);
+      if (this.mouth == 0)
       {
-        i = 1;
-        if ((this.eyeBorder != 1) && (this.eye != 2)) {
-          break label2224;
-        }
-        j = 1;
-        if ((i == 0) && (j == 0)) {
-          break label3299;
-        }
-        f1 = ((PointF)paramList.get(51)).y;
-        f1 = (((PointF)paramList.get(47)).y + f1) / 2.0F;
-        f2 = ((PointF)paramList.get(41)).y;
-        f5 = (f1 - (((PointF)paramList.get(37)).y + f2) / 2.0F) / (((PointF)paramList.get(54)).x - ((PointF)paramList.get(44)).x);
-        localObject = (PointF)paramList.get(41);
-        localPointF = (PointF)paramList.get(37);
-        f6 = 3.0F * f3;
-        f2 = 7.0F * f3;
-        f3 = 12.0F * f3;
-        f1 = Math.max(f6, (float)DistanceFromPoint2fToPoint2f((PointF)localObject, localPointF));
-        if (f1 > f6) {
-          break label2230;
-        }
+        localObject = getMiddleByP1AndP2((PointF)paramList.get(65), (PointF)paramList.get(82));
+        localPointF = getMiddleByP1AndP2((PointF)paramList.get(66), (PointF)paramList.get(80));
+      }
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(localObject);
+      localArrayList.add(paramList.get(82));
+      localArrayList.add(paramList.get(81));
+      localArrayList.add(paramList.get(80));
+      localArrayList.add(localPointF);
+      localArrayList.add(paramList.get(72));
+      localArrayList.add(paramList.get(73));
+      localArrayList.add(paramList.get(74));
+      localArrayList.add(localObject);
+      paramInt1 = 0;
+      while (paramInt1 < localArrayList.size() - 1)
+      {
+        localObject = (PointF)localArrayList.get(paramInt1);
+        paramInt1 += 1;
+        drawLineToListFromP1AndP2((PointF)localObject, (PointF)localArrayList.get(paramInt1));
+      }
+    }
+    paramInt1 = this.eye;
+    if ((paramInt1 != 1) && (paramInt1 != 2)) {
+      paramInt1 = 0;
+    } else {
+      paramInt1 = 1;
+    }
+    int i;
+    if ((this.eyeBorder != 1) && (this.eye != 2)) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    if ((paramInt1 == 0) && (i == 0))
+    {
+      if (this.eye == 0)
+      {
+        this.pointsVertexFloats.add(Float.valueOf(((PointF)paramList.get(43)).x * 2.0F / f5 - 1.0F));
+        localObject = this.pointsVertexFloats;
+        paramFloat = ((PointF)paramList.get(43)).y;
+        f1 = paramInt2;
+        ((List)localObject).add(Float.valueOf(paramFloat * 2.0F / f1 - 1.0F));
+        this.pointsSizeFloats.add(Float.valueOf((float)DistanceFromPoint2fToPoint2f((PointF)paramList.get(37), (PointF)paramList.get(41)) * 0.75F));
+        this.pointsVertexFloats.add(Float.valueOf(((PointF)paramList.get(53)).x * 2.0F / f5 - 1.0F));
+        this.pointsVertexFloats.add(Float.valueOf(((PointF)paramList.get(53)).y * 2.0F / f1 - 1.0F));
+        this.pointsSizeFloats.add(Float.valueOf((float)DistanceFromPoint2fToPoint2f((PointF)paramList.get(47), (PointF)paramList.get(51)) * 0.75F));
+      }
+    }
+    else
+    {
+      float f6 = ((((PointF)paramList.get(51)).y + ((PointF)paramList.get(47)).y) / 2.0F - (((PointF)paramList.get(41)).y + ((PointF)paramList.get(37)).y) / 2.0F) / (((PointF)paramList.get(54)).x - ((PointF)paramList.get(44)).x);
+      localObject = (PointF)paramList.get(41);
+      localPointF = (PointF)paramList.get(37);
+      float f7 = 3.0F * f3;
+      float f2 = 7.0F * f3;
+      f3 *= 12.0F;
+      float f4 = Math.max(f7, (float)DistanceFromPoint2fToPoint2f((PointF)localObject, localPointF));
+      if (f4 <= f7)
+      {
         f1 = 0.0F;
       }
-      label2307:
-      label3848:
-      for (;;)
+      else if (f4 > f3)
       {
-        label1722:
-        int k = (int)(f1 * 0.0F);
-        float f4 = Math.max(f6, (float)DistanceFromPoint2fToPoint2f((PointF)paramList.get(51), (PointF)paramList.get(47)));
-        label1774:
-        int m;
-        if (f4 <= f6)
-        {
-          f2 = 0.0F;
-          if ((f2 == 0.0F) || (f1 == 0.0F)) {
-            break label2290;
-          }
-          f4 = (f1 + f2) / 2.0F;
-          f3 = (f1 + f2) / 2.0F;
-          label1806:
-          f6 = (int)(f2 * 0.0F);
-          localObject = this.eyeNeedDrawBk;
-          if (f1 <= 0.0F) {
-            break label2301;
-          }
-          m = 1;
-          label1830:
-          localObject[0] = m;
-          localObject = this.eyeNeedDrawBk;
-          if (f2 <= 0.0F) {
-            break label2307;
-          }
-          m = 1;
-          label1852:
-          localObject[1] = m;
-          paramFloat = -paramFloat;
-          if (f1 <= 0.0F) {
-            break label2785;
-          }
-          if (this.eyelash == 1)
-          {
-            new PointF();
-            localObject = new PointF();
-            if ((Math.abs(paramFloat) >= 10.0F) && (paramFloat <= 10.0F)) {
-              break label2313;
-            }
-            localPointF = getMiddleByP1AndP2((PointF)paramList.get(42), (PointF)paramList.get(35));
-            ((PointF)localObject).x = (((PointF)paramList.get(19)).x * 0.2F + (1.0F - 0.2F) * localPointF.x);
-            ((PointF)localObject).y = (((PointF)paramList.get(19)).y * 0.2F + (1.0F - 0.2F) * localPointF.y);
-            drawLineToListFromP1AndP2(localPointF, (PointF)localObject);
-          }
-        }
-        for (;;)
-        {
-          if (i != 0)
-          {
-            localObject = getMiddleByP1AndP2((PointF)paramList.get(37), (PointF)paramList.get(41));
-            ((PointF)localObject).x = ((PointF)paramList.get(44)).x;
-            localObject = new PointF(((PointF)localObject).x - this.eye_center_shift_l, ((PointF)localObject).y - this.eye_center_shift_l * f5);
-            this.pointsVertexFloats.add(Float.valueOf(2.0F * ((PointF)localObject).x / paramInt1 - 1.0F));
-            this.pointsVertexFloats.add(Float.valueOf(((PointF)localObject).y * 2.0F / paramInt2 - 1.0F));
-            this.pointsSizeFloats.add(Float.valueOf(f3));
-          }
-          if (j == 0) {
-            break label2429;
-          }
-          k = 35;
-          while (k < 42)
-          {
-            drawLineToListFromP1AndP2((PointF)paramList.get(k), (PointF)paramList.get(k + 1));
-            k += 1;
-          }
-          i = 0;
-          break;
-          label2224:
-          j = 0;
-          break label1531;
-          label2230:
-          if (f1 > f3)
-          {
-            f1 = f2;
-            break label1722;
-          }
-          if (f1 > f6) {
-            break label3848;
-          }
+        f1 = f2;
+      }
+      else
+      {
+        f1 = f4;
+        if (f4 <= f7) {
           f1 = f3;
-          break label1722;
-          if (f4 > f3) {
-            break label1774;
-          }
-          f2 = f4;
-          if (f4 > f6) {
-            break label1774;
-          }
-          f2 = f3;
-          break label1774;
-          label2290:
-          f3 = f1;
-          f4 = f2;
-          break label1806;
-          label2301:
-          m = 0;
-          break label1830;
-          m = 0;
-          break label1852;
-          label2313:
-          localPointF = (PointF)paramList.get(40);
-          ((PointF)localObject).x = (((PointF)paramList.get(23)).x * 0.2F + (1.0F - 0.2F) * localPointF.x);
-          ((PointF)localObject).y = (((PointF)paramList.get(23)).y * 0.2F + (1.0F - 0.2F) * localPointF.y);
-          drawLineToListFromP1AndP2(localPointF, (PointF)localObject);
         }
-        drawLineToListFromP1AndP2((PointF)paramList.get(42), (PointF)paramList.get(35));
-        label2429:
-        if (f2 > 0.0F)
+      }
+      f4 = Math.max(f7, (float)DistanceFromPoint2fToPoint2f((PointF)paramList.get(51), (PointF)paramList.get(47)));
+      if (f4 <= f7) {
+        f2 = 0.0F;
+      } else if (f4 <= f3) {
+        if (f4 <= f7) {
+          f2 = f3;
+        } else {
+          f2 = f4;
+        }
+      }
+      if ((f2 != 0.0F) && (f1 != 0.0F))
+      {
+        f3 = (f1 + f2) / 2.0F;
+        f4 = f3;
+      }
+      else
+      {
+        f3 = f1;
+        f4 = f2;
+      }
+      localObject = this.eyeNeedDrawBk;
+      int k;
+      if (f1 > 0.0F) {
+        k = 1;
+      } else {
+        k = 0;
+      }
+      localObject[0] = k;
+      localObject = this.eyeNeedDrawBk;
+      if (f2 > 0.0F) {
+        k = 1;
+      } else {
+        k = 0;
+      }
+      localObject[1] = k;
+      paramFloat = -paramFloat;
+      int j;
+      if (f1 > 0.0F)
+      {
+        if (this.eyelash == 1)
         {
-          if (this.eyelash == 1)
+          new PointF();
+          localObject = new PointF();
+          if ((Math.abs(paramFloat) >= 10.0F) && (paramFloat <= 10.0F))
           {
-            new PointF();
-            localObject = new PointF();
-            if ((Math.abs(paramFloat) >= 10.0F) && (paramFloat >= -10.0F)) {
-              break label2908;
-            }
-            localPointF = getMiddleByP1AndP2((PointF)paramList.get(52), (PointF)paramList.get(45));
-            ((PointF)localObject).x = (((PointF)paramList.get(27)).x * 0.2F + (1.0F - 0.2F) * localPointF.x);
-            ((PointF)localObject).y = (((PointF)paramList.get(27)).y * 0.2F + (1.0F - 0.2F) * localPointF.y);
+            localPointF = (PointF)paramList.get(40);
+            ((PointF)localObject).x = (((PointF)paramList.get(23)).x * 0.2F + localPointF.x * 0.8F);
+            ((PointF)localObject).y = (((PointF)paramList.get(23)).y * 0.2F + 0.8F * localPointF.y);
             drawLineToListFromP1AndP2(localPointF, (PointF)localObject);
           }
-          for (;;)
+          else
           {
-            if (i != 0)
-            {
-              localObject = getMiddleByP1AndP2((PointF)paramList.get(51), (PointF)paramList.get(47));
-              ((PointF)localObject).x = ((PointF)paramList.get(54)).x;
-              localObject = new PointF(((PointF)localObject).x + this.eye_center_shift_r, ((PointF)localObject).y + this.eye_center_shift_r * f5);
-              this.pointsVertexFloats.add(Float.valueOf(2.0F * ((PointF)localObject).x / paramInt1 - 1.0F));
-              this.pointsVertexFloats.add(Float.valueOf(((PointF)localObject).y * 2.0F / paramInt2 - 1.0F));
-              this.pointsSizeFloats.add(Float.valueOf(f4));
-            }
-            if (j == 0) {
-              break label3024;
-            }
-            i = 45;
-            while (i < 52)
-            {
-              drawLineToListFromP1AndP2((PointF)paramList.get(i), (PointF)paramList.get(i + 1));
-              i += 1;
-            }
-            if (this.eyeCloseLine == 0) {
-              break;
-            }
-            localObject = new PointF[3];
-            k = 36;
-            while (k < 39)
-            {
-              localObject[(k - 36)] = getMiddleByP1AndP2((PointF)paramList.get(k), (PointF)paramList.get(78 - k));
-              k += 1;
-            }
-            drawLineToListFromP1AndP2((PointF)paramList.get(35), localObject[0]);
-            k = 0;
-            while (k < 2)
-            {
-              drawLineToListFromP1AndP2(localObject[k], localObject[(k + 1)]);
-              k += 1;
-            }
-            break;
-            localPointF = (PointF)paramList.get(50);
-            ((PointF)localObject).x = (((PointF)paramList.get(31)).x * 0.2F + (1.0F - 0.2F) * localPointF.x);
-            ((PointF)localObject).y = (((PointF)paramList.get(31)).y * 0.2F + (1.0F - 0.2F) * localPointF.y);
+            localPointF = getMiddleByP1AndP2((PointF)paramList.get(42), (PointF)paramList.get(35));
+            ((PointF)localObject).x = (((PointF)paramList.get(19)).x * 0.2F + localPointF.x * 0.8F);
+            ((PointF)localObject).y = (((PointF)paramList.get(19)).y * 0.2F + 0.8F * localPointF.y);
             drawLineToListFromP1AndP2(localPointF, (PointF)localObject);
+          }
+        }
+        if (paramInt1 != 0)
+        {
+          localObject = getMiddleByP1AndP2((PointF)paramList.get(37), (PointF)paramList.get(41));
+          ((PointF)localObject).x = ((PointF)paramList.get(44)).x;
+          localObject = new PointF(((PointF)localObject).x - this.eye_center_shift_l, ((PointF)localObject).y - this.eye_center_shift_l * f6);
+          this.pointsVertexFloats.add(Float.valueOf(((PointF)localObject).x * 2.0F / f5 - 1.0F));
+          this.pointsVertexFloats.add(Float.valueOf(((PointF)localObject).y * 2.0F / paramInt2 - 1.0F));
+          this.pointsSizeFloats.add(Float.valueOf(f3));
+        }
+        if (i != 0)
+        {
+          j = 35;
+          while (j < 42)
+          {
+            localObject = (PointF)paramList.get(j);
+            j += 1;
+            drawLineToListFromP1AndP2((PointF)localObject, (PointF)paramList.get(j));
+          }
+          drawLineToListFromP1AndP2((PointF)paramList.get(42), (PointF)paramList.get(35));
+        }
+      }
+      else if (this.eyeCloseLine != 0)
+      {
+        localObject = new PointF[3];
+        j = 36;
+        while (j < 39)
+        {
+          localObject[(j - 36)] = getMiddleByP1AndP2((PointF)paramList.get(j), (PointF)paramList.get(78 - j));
+          j += 1;
+        }
+        drawLineToListFromP1AndP2((PointF)paramList.get(35), localObject[0]);
+        j = 0;
+        while (j < 2)
+        {
+          localPointF = localObject[j];
+          j += 1;
+          drawLineToListFromP1AndP2(localPointF, localObject[j]);
+        }
+      }
+      if (f2 > 0.0F)
+      {
+        if (this.eyelash == 1)
+        {
+          new PointF();
+          localObject = new PointF();
+          if ((Math.abs(paramFloat) >= 10.0F) && (paramFloat >= -10.0F))
+          {
+            localPointF = (PointF)paramList.get(50);
+            ((PointF)localObject).x = (((PointF)paramList.get(31)).x * 0.2F + localPointF.x * 0.8F);
+            ((PointF)localObject).y = (0.2F * ((PointF)paramList.get(31)).y + 0.8F * localPointF.y);
+            drawLineToListFromP1AndP2(localPointF, (PointF)localObject);
+          }
+          else
+          {
+            localPointF = getMiddleByP1AndP2((PointF)paramList.get(52), (PointF)paramList.get(45));
+            ((PointF)localObject).x = (((PointF)paramList.get(27)).x * 0.2F + localPointF.x * 0.8F);
+            ((PointF)localObject).y = (0.2F * ((PointF)paramList.get(27)).y + 0.8F * localPointF.y);
+            drawLineToListFromP1AndP2(localPointF, (PointF)localObject);
+          }
+        }
+        if (paramInt1 != 0)
+        {
+          localObject = getMiddleByP1AndP2((PointF)paramList.get(51), (PointF)paramList.get(47));
+          ((PointF)localObject).x = ((PointF)paramList.get(54)).x;
+          localObject = new PointF(((PointF)localObject).x + this.eye_center_shift_r, ((PointF)localObject).y + this.eye_center_shift_r * f6);
+          this.pointsVertexFloats.add(Float.valueOf(((PointF)localObject).x * 2.0F / f5 - 1.0F));
+          this.pointsVertexFloats.add(Float.valueOf(((PointF)localObject).y * 2.0F / paramInt2 - 1.0F));
+          this.pointsSizeFloats.add(Float.valueOf(f4));
+        }
+        if (i != 0)
+        {
+          paramInt1 = 45;
+          while (paramInt1 < 52)
+          {
+            localObject = (PointF)paramList.get(paramInt1);
+            paramInt1 += 1;
+            drawLineToListFromP1AndP2((PointF)localObject, (PointF)paramList.get(paramInt1));
           }
           drawLineToListFromP1AndP2((PointF)paramList.get(52), (PointF)paramList.get(45));
         }
-        label2785:
-        while (this.needFillMouth)
-        {
-          localObject = new int[8];
-          tmp3039_3037 = localObject;
-          tmp3039_3037[0] = 65;
-          tmp3044_3039 = tmp3039_3037;
-          tmp3044_3039[1] = 74;
-          tmp3049_3044 = tmp3044_3039;
-          tmp3049_3044[2] = 82;
-          tmp3054_3049 = tmp3049_3044;
-          tmp3054_3049[3] = 73;
-          tmp3059_3054 = tmp3054_3049;
-          tmp3059_3054[4] = 81;
-          tmp3064_3059 = tmp3059_3054;
-          tmp3064_3059[5] = 72;
-          tmp3069_3064 = tmp3064_3059;
-          tmp3069_3064[6] = 80;
-          tmp3075_3069 = tmp3069_3064;
-          tmp3075_3069[7] = 66;
-          tmp3075_3069;
-          i = 0;
-          while (i < localObject.length)
-          {
-            this.triangleVertexFloats.add(Float.valueOf(((PointF)paramList.get(localObject[i])).x * 2.0F / paramInt1 - 1.0F));
-            this.triangleVertexFloats.add(Float.valueOf(((PointF)paramList.get(localObject[i])).y * 2.0F / paramInt2 - 1.0F));
-            i += 1;
-          }
-          if (this.eyeCloseLine != 0)
-          {
-            localObject = new PointF[3];
-            i = 46;
-            while (i < 49)
-            {
-              localObject[(i - 46)] = getMiddleByP1AndP2((PointF)paramList.get(i), (PointF)paramList.get(98 - i));
-              i += 1;
-            }
-            drawLineToListFromP1AndP2((PointF)paramList.get(45), localObject[0]);
-            i = 0;
-            while (i < 2)
-            {
-              drawLineToListFromP1AndP2(localObject[i], localObject[(i + 1)]);
-              i += 1;
-            }
-            continue;
-            label3299:
-            if (this.eye == 0)
-            {
-              this.pointsVertexFloats.add(Float.valueOf(((PointF)paramList.get(43)).x * 2.0F / paramInt1 - 1.0F));
-              this.pointsVertexFloats.add(Float.valueOf(((PointF)paramList.get(43)).y * 2.0F / paramInt2 - 1.0F));
-              this.pointsSizeFloats.add(Float.valueOf((float)DistanceFromPoint2fToPoint2f((PointF)paramList.get(37), (PointF)paramList.get(41)) * 0.75F));
-              this.pointsVertexFloats.add(Float.valueOf(((PointF)paramList.get(53)).x * 2.0F / paramInt1 - 1.0F));
-              this.pointsVertexFloats.add(Float.valueOf(((PointF)paramList.get(53)).y * 2.0F / paramInt2 - 1.0F));
-              this.pointsSizeFloats.add(Float.valueOf((float)DistanceFromPoint2fToPoint2f((PointF)paramList.get(47), (PointF)paramList.get(51)) * 0.75F));
-            }
-          }
-        }
-        label2908:
-        if (this.eye == 2)
-        {
-          if (this.eyeNeedDrawBk[0] != 0)
-          {
-            localObject = new int[8];
-            tmp3556_3554 = localObject;
-            tmp3556_3554[0] = 39;
-            tmp3561_3556 = tmp3556_3554;
-            tmp3561_3556[1] = 40;
-            tmp3566_3561 = tmp3561_3556;
-            tmp3566_3561[2] = 38;
-            tmp3571_3566 = tmp3566_3561;
-            tmp3571_3566[3] = 41;
-            tmp3576_3571 = tmp3571_3566;
-            tmp3576_3571[4] = 37;
-            tmp3581_3576 = tmp3576_3571;
-            tmp3581_3576[5] = 42;
-            tmp3586_3581 = tmp3581_3576;
-            tmp3586_3581[6] = 36;
-            tmp3592_3586 = tmp3586_3581;
-            tmp3592_3586[7] = 35;
-            tmp3592_3586;
-            i = 0;
-            while (i < localObject.length)
-            {
-              this.triangleVertexLeftEyeFloats.add(Float.valueOf(((PointF)paramList.get(localObject[i])).x * 2.0F / paramInt1 - 1.0F));
-              this.triangleVertexLeftEyeFloats.add(Float.valueOf(((PointF)paramList.get(localObject[i])).y * 2.0F / paramInt2 - 1.0F));
-              i += 1;
-            }
-          }
-          if (this.eyeNeedDrawBk[1] != 0)
-          {
-            localObject = new int[8];
-            tmp3710_3708 = localObject;
-            tmp3710_3708[0] = 49;
-            tmp3715_3710 = tmp3710_3708;
-            tmp3715_3710[1] = 50;
-            tmp3720_3715 = tmp3715_3710;
-            tmp3720_3715[2] = 48;
-            tmp3725_3720 = tmp3720_3715;
-            tmp3725_3720[3] = 51;
-            tmp3730_3725 = tmp3725_3720;
-            tmp3730_3725[4] = 47;
-            tmp3735_3730 = tmp3730_3725;
-            tmp3735_3730[5] = 52;
-            tmp3740_3735 = tmp3735_3730;
-            tmp3740_3735[6] = 46;
-            tmp3746_3740 = tmp3740_3735;
-            tmp3746_3740[7] = 45;
-            tmp3746_3740;
-            i = 0;
-            while (i < localObject.length)
-            {
-              this.triangleVertexRightEyeFloats.add(Float.valueOf(((PointF)paramList.get(localObject[i])).x * 2.0F / paramInt1 - 1.0F));
-              this.triangleVertexRightEyeFloats.add(Float.valueOf(((PointF)paramList.get(localObject[i])).y * 2.0F / paramInt2 - 1.0F));
-              i += 1;
-            }
-          }
-        }
-        label3024:
-        return;
       }
-      f1 = paramFloat;
+      else if (this.eyeCloseLine != 0)
+      {
+        localObject = new PointF[3];
+        paramInt1 = 46;
+        while (paramInt1 < 49)
+        {
+          localObject[(paramInt1 - 46)] = getMiddleByP1AndP2((PointF)paramList.get(paramInt1), (PointF)paramList.get(98 - paramInt1));
+          paramInt1 += 1;
+        }
+        drawLineToListFromP1AndP2((PointF)paramList.get(45), localObject[0]);
+        paramInt1 = 0;
+        while (paramInt1 < 2)
+        {
+          localPointF = localObject[paramInt1];
+          paramInt1 += 1;
+          drawLineToListFromP1AndP2(localPointF, localObject[paramInt1]);
+        }
+      }
+    }
+    if (this.needFillMouth)
+    {
+      localObject = new int[8];
+      Object tmp3277_3275 = localObject;
+      tmp3277_3275[0] = 65;
+      Object tmp3282_3277 = tmp3277_3275;
+      tmp3282_3277[1] = 74;
+      Object tmp3287_3282 = tmp3282_3277;
+      tmp3287_3282[2] = 82;
+      Object tmp3292_3287 = tmp3287_3282;
+      tmp3292_3287[3] = 73;
+      Object tmp3297_3292 = tmp3292_3287;
+      tmp3297_3292[4] = 81;
+      Object tmp3302_3297 = tmp3297_3292;
+      tmp3302_3297[5] = 72;
+      Object tmp3307_3302 = tmp3302_3297;
+      tmp3307_3302[6] = 80;
+      Object tmp3313_3307 = tmp3307_3302;
+      tmp3313_3307[7] = 66;
+      tmp3313_3307;
+      paramInt1 = 0;
+      while (paramInt1 < localObject.length)
+      {
+        this.triangleVertexFloats.add(Float.valueOf(((PointF)paramList.get(localObject[paramInt1])).x * 2.0F / f5 - 1.0F));
+        this.triangleVertexFloats.add(Float.valueOf(((PointF)paramList.get(localObject[paramInt1])).y * 2.0F / paramInt2 - 1.0F));
+        paramInt1 += 1;
+      }
+    }
+    if (this.eye == 2)
+    {
+      localObject = this.eyeNeedDrawBk;
+      i = 0;
+      if (localObject[0] != 0)
+      {
+        localObject = new int[8];
+        Object tmp3440_3438 = localObject;
+        tmp3440_3438[0] = 39;
+        Object tmp3445_3440 = tmp3440_3438;
+        tmp3445_3440[1] = 40;
+        Object tmp3450_3445 = tmp3445_3440;
+        tmp3450_3445[2] = 38;
+        Object tmp3455_3450 = tmp3450_3445;
+        tmp3455_3450[3] = 41;
+        Object tmp3460_3455 = tmp3455_3450;
+        tmp3460_3455[4] = 37;
+        Object tmp3465_3460 = tmp3460_3455;
+        tmp3465_3460[5] = 42;
+        Object tmp3470_3465 = tmp3465_3460;
+        tmp3470_3465[6] = 36;
+        Object tmp3476_3470 = tmp3470_3465;
+        tmp3476_3470[7] = 35;
+        tmp3476_3470;
+        paramInt1 = 0;
+        while (paramInt1 < localObject.length)
+        {
+          this.triangleVertexLeftEyeFloats.add(Float.valueOf(((PointF)paramList.get(localObject[paramInt1])).x * 2.0F / f5 - 1.0F));
+          this.triangleVertexLeftEyeFloats.add(Float.valueOf(((PointF)paramList.get(localObject[paramInt1])).y * 2.0F / paramInt2 - 1.0F));
+          paramInt1 += 1;
+        }
+      }
+      if (this.eyeNeedDrawBk[1] != 0)
+      {
+        localObject = new int[8];
+        Object tmp3588_3586 = localObject;
+        tmp3588_3586[0] = 49;
+        Object tmp3593_3588 = tmp3588_3586;
+        tmp3593_3588[1] = 50;
+        Object tmp3598_3593 = tmp3593_3588;
+        tmp3598_3593[2] = 48;
+        Object tmp3603_3598 = tmp3598_3593;
+        tmp3603_3598[3] = 51;
+        Object tmp3608_3603 = tmp3603_3598;
+        tmp3608_3603[4] = 47;
+        Object tmp3613_3608 = tmp3608_3603;
+        tmp3613_3608[5] = 52;
+        Object tmp3618_3613 = tmp3613_3608;
+        tmp3618_3613[6] = 46;
+        Object tmp3624_3618 = tmp3618_3613;
+        tmp3624_3618[7] = 45;
+        tmp3624_3618;
+        paramInt1 = i;
+        while (paramInt1 < localObject.length)
+        {
+          this.triangleVertexRightEyeFloats.add(Float.valueOf(((PointF)paramList.get(localObject[paramInt1])).x * 2.0F / f5 - 1.0F));
+          this.triangleVertexRightEyeFloats.add(Float.valueOf(((PointF)paramList.get(localObject[paramInt1])).y * 2.0F / paramInt2 - 1.0F));
+          paramInt1 += 1;
+        }
+      }
     }
   }
   
@@ -562,87 +520,94 @@ public class CartoonStylePreProcessFilter
     float[] arrayOfFloat = new float[this.lineVertexFloats.size()];
     Object localObject1 = this.lineVertexFloats.iterator();
     int i = 0;
+    boolean bool;
     float f;
-    if (((Iterator)localObject1).hasNext())
+    for (;;)
     {
-      localObject2 = (Float)((Iterator)localObject1).next();
-      if (localObject2 != null) {}
-      for (f = ((Float)localObject2).floatValue();; f = 0.0F)
-      {
-        arrayOfFloat[i] = f;
-        i += 1;
+      bool = ((Iterator)localObject1).hasNext();
+      f = 0.0F;
+      if (!bool) {
         break;
       }
+      localObject2 = (Float)((Iterator)localObject1).next();
+      if (localObject2 != null) {
+        f = ((Float)localObject2).floatValue();
+      }
+      arrayOfFloat[i] = f;
+      i += 1;
     }
     localObject1 = new float[this.pointsVertexFloats.size()];
     Object localObject2 = this.pointsVertexFloats.iterator();
     i = 0;
-    if (((Iterator)localObject2).hasNext())
+    while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (Float)((Iterator)localObject2).next();
-      if (localObject3 != null) {}
-      for (f = ((Float)localObject3).floatValue();; f = 0.0F)
-      {
-        localObject1[i] = f;
-        i += 1;
-        break;
+      if (localObject3 != null) {
+        f = ((Float)localObject3).floatValue();
+      } else {
+        f = 0.0F;
       }
+      localObject1[i] = f;
+      i += 1;
     }
     localObject2 = new float[this.pointsSizeFloats.size()];
     Object localObject3 = this.pointsSizeFloats.iterator();
     i = 0;
-    if (((Iterator)localObject3).hasNext())
+    for (;;)
     {
-      localObject4 = (Float)((Iterator)localObject3).next();
-      if (localObject4 != null) {}
-      for (f = ((Float)localObject4).floatValue();; f = 1.0F)
-      {
-        localObject2[i] = f;
-        i += 1;
+      bool = ((Iterator)localObject3).hasNext();
+      f = 1.0F;
+      if (!bool) {
         break;
       }
+      localObject4 = (Float)((Iterator)localObject3).next();
+      if (localObject4 != null) {
+        f = ((Float)localObject4).floatValue();
+      }
+      localObject2[i] = f;
+      i += 1;
     }
     localObject3 = new float[this.triangleVertexFloats.size()];
     Object localObject4 = this.triangleVertexFloats.iterator();
     i = 0;
-    if (((Iterator)localObject4).hasNext())
+    while (((Iterator)localObject4).hasNext())
     {
       localObject5 = (Float)((Iterator)localObject4).next();
-      if (localObject5 != null) {}
-      for (f = ((Float)localObject5).floatValue();; f = 1.0F)
-      {
-        localObject3[i] = f;
-        i += 1;
-        break;
+      if (localObject5 != null) {
+        f = ((Float)localObject5).floatValue();
+      } else {
+        f = 1.0F;
       }
+      localObject3[i] = f;
+      i += 1;
     }
     localObject4 = new float[this.triangleVertexLeftEyeFloats.size()];
     Object localObject5 = this.triangleVertexLeftEyeFloats.iterator();
     i = 0;
-    if (((Iterator)localObject5).hasNext())
+    while (((Iterator)localObject5).hasNext())
     {
       localObject6 = (Float)((Iterator)localObject5).next();
-      if (localObject6 != null) {}
-      for (f = ((Float)localObject6).floatValue();; f = 1.0F)
-      {
-        localObject4[i] = f;
-        i += 1;
-        break;
+      if (localObject6 != null) {
+        f = ((Float)localObject6).floatValue();
+      } else {
+        f = 1.0F;
       }
+      localObject4[i] = f;
+      i += 1;
     }
     localObject5 = new float[this.triangleVertexRightEyeFloats.size()];
     Object localObject6 = this.triangleVertexRightEyeFloats.iterator();
     i = 0;
-    if (((Iterator)localObject6).hasNext())
+    while (((Iterator)localObject6).hasNext())
     {
       Float localFloat = (Float)((Iterator)localObject6).next();
-      if (localFloat != null) {}
-      for (f = localFloat.floatValue();; f = 1.0F)
-      {
-        localObject5[i] = f;
-        i += 1;
-        break;
+      if (localFloat != null) {
+        f = localFloat.floatValue();
+      } else {
+        f = 1.0F;
       }
+      localObject5[i] = f;
+      i += 1;
     }
     if (!this.mNoPoints)
     {
@@ -678,7 +643,8 @@ public class CartoonStylePreProcessFilter
       {
         addParam(new UniformParam.IntParam("drawOrigin", 0));
         addParam(new UniformParam.IntParam("drawMode", 3));
-        addParam(new UniformParam.Float4fParam("drawColor", this.mouthFillColorRGBA[0], this.mouthFillColorRGBA[1], this.mouthFillColorRGBA[2], this.mouthFillColorRGBA[3]));
+        localObject4 = this.mouthFillColorRGBA;
+        addParam(new UniformParam.Float4fParam("drawColor", localObject4[0], localObject4[1], localObject4[2], localObject4[3]));
         setDrawMode(AEOpenRenderConfig.DRAW_MODE.TRIANGLE_STRIP);
         setCoordNum(localObject3.length / 2);
         setPositions((float[])localObject3);
@@ -745,7 +711,7 @@ public class CartoonStylePreProcessFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.CartoonStylePreProcessFilter
  * JD-Core Version:    0.7.0.1
  */

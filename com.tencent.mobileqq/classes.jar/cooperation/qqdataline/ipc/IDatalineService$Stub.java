@@ -37,31 +37,24 @@ public abstract class IDatalineService$Stub
   {
     String str1 = null;
     Object localObject = null;
-    switch (paramInt1)
+    if (paramInt1 != 1)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qqdataline.ipc.IDatalineService");
-      return true;
-    case 1: 
+      if (paramInt1 != 2)
+      {
+        if (paramInt1 != 1598968902) {
+          return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+        }
+        paramParcel2.writeString("cooperation.qqdataline.ipc.IDatalineService");
+        return true;
+      }
       paramParcel1.enforceInterface("cooperation.qqdataline.ipc.IDatalineService");
       str1 = paramParcel1.readString();
       if (paramParcel1.readInt() != 0) {
         localObject = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
       }
-      paramParcel1 = a(str1, (Bundle)localObject);
+      a(str1, (Bundle)localObject);
       paramParcel2.writeNoException();
-      if (paramParcel1 != null)
-      {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-      }
-      for (;;)
-      {
-        return true;
-        paramParcel2.writeInt(0);
-      }
+      return true;
     }
     paramParcel1.enforceInterface("cooperation.qqdataline.ipc.IDatalineService");
     String str2 = paramParcel1.readString();
@@ -69,14 +62,21 @@ public abstract class IDatalineService$Stub
     if (paramParcel1.readInt() != 0) {
       localObject = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
     }
-    a(str2, (Bundle)localObject);
+    paramParcel1 = a(str2, (Bundle)localObject);
     paramParcel2.writeNoException();
+    if (paramParcel1 != null)
+    {
+      paramParcel2.writeInt(1);
+      paramParcel1.writeToParcel(paramParcel2, 1);
+      return true;
+    }
+    paramParcel2.writeInt(0);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqdataline.ipc.IDatalineService.Stub
  * JD-Core Version:    0.7.0.1
  */

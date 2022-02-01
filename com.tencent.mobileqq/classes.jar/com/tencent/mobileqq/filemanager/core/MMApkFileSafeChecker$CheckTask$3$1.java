@@ -12,13 +12,17 @@ class MMApkFileSafeChecker$CheckTask$3$1
     if (this.a.a.jdField_a_of_type_Boolean) {
       return;
     }
-    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] <" + this.a.a.jdField_a_of_type_Int + "> check timeout!");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[MMApkCheck] <");
+    localStringBuilder.append(this.a.a.jdField_a_of_type_Int);
+    localStringBuilder.append("> check timeout!");
+    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, localStringBuilder.toString());
     this.a.a.a(1, 0, "", "", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.MMApkFileSafeChecker.CheckTask.3.1
  * JD-Core Version:    0.7.0.1
  */

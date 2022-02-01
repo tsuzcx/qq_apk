@@ -11,22 +11,21 @@ public final class h
   public final void a(g[] paramArrayOfg)
   {
     this.a.clear();
-    if (paramArrayOfg == null) {}
-    for (;;)
-    {
+    if (paramArrayOfg == null) {
       return;
-      int i = 0;
-      while (i < paramArrayOfg.length)
-      {
-        this.a.add(paramArrayOfg[i]);
-        i += 1;
-      }
+    }
+    int i = 0;
+    while (i < paramArrayOfg.length)
+    {
+      this.a.add(paramArrayOfg[i]);
+      i += 1;
     }
   }
   
   public final g[] a()
   {
-    return (g[])this.a.toArray(new g[this.a.size()]);
+    List localList = this.a;
+    return (g[])localList.toArray(new g[localList.size()]);
   }
   
   public final Object clone()
@@ -38,7 +37,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.a.h
  * JD-Core Version:    0.7.0.1
  */

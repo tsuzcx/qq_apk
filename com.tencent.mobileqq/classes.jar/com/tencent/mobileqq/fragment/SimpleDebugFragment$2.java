@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.fragment;
 
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.RadioGroup;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.widget.navbar.OnItemSelectListener;
 
 class SimpleDebugFragment$2
@@ -12,20 +12,16 @@ class SimpleDebugFragment$2
   
   public void onItemSelect(View paramView, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 1) {
       return;
     }
-    switch (this.jdField_a_of_type_AndroidWidgetRadioGroup.getCheckedRadioButtonId())
-    {
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFragmentSimpleDebugFragment.getActivity().finish();
+    if (this.jdField_a_of_type_AndroidWidgetRadioGroup.getCheckedRadioButtonId() != 2131367785) {}
+    this.jdField_a_of_type_ComTencentMobileqqFragmentSimpleDebugFragment.getBaseActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.SimpleDebugFragment.2
  * JD-Core Version:    0.7.0.1
  */

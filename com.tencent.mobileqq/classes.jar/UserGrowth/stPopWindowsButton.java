@@ -29,25 +29,36 @@ public final class stPopWindowsButton
   
   public String toString()
   {
-    return "stPopWindowsButton{\n   title=" + this.title + "\n   jumpurl=" + this.jumpurl + "\n   iconUrl='" + this.iconUrl + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("stPopWindowsButton{\n   title=");
+    localStringBuilder.append(this.title);
+    localStringBuilder.append("\n   jumpurl=");
+    localStringBuilder.append(this.jumpurl);
+    localStringBuilder.append("\n   iconUrl='");
+    localStringBuilder.append(this.iconUrl);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 0);
+    String str = this.title;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.jumpurl != null) {
-      paramJceOutputStream.write(this.jumpurl, 1);
+    str = this.jumpurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.iconUrl != null) {
-      paramJceOutputStream.write(this.iconUrl, 2);
+    str = this.iconUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stPopWindowsButton
  * JD-Core Version:    0.7.0.1
  */

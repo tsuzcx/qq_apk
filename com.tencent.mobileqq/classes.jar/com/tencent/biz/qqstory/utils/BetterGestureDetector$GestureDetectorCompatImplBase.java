@@ -39,51 +39,55 @@ class BetterGestureDetector$GestureDetectorCompatImplBase
   
   public BetterGestureDetector$GestureDetectorCompatImplBase(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
   {
-    if (paramHandler != null) {}
-    for (this.jdField_a_of_type_AndroidOsHandler = new BetterGestureDetector.GestureDetectorCompatImplBase.GestureHandler(this, paramHandler);; this.jdField_a_of_type_AndroidOsHandler = new BetterGestureDetector.GestureDetectorCompatImplBase.GestureHandler(this))
-    {
-      this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener = paramOnGestureListener;
-      if ((paramOnGestureListener instanceof GestureDetector.OnDoubleTapListener)) {
-        a((GestureDetector.OnDoubleTapListener)paramOnGestureListener);
-      }
-      a(paramContext);
-      return;
+    if (paramHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler = new BetterGestureDetector.GestureDetectorCompatImplBase.GestureHandler(this, paramHandler);
+    } else {
+      this.jdField_a_of_type_AndroidOsHandler = new BetterGestureDetector.GestureDetectorCompatImplBase.GestureHandler(this);
     }
+    this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener = paramOnGestureListener;
+    if ((paramOnGestureListener instanceof GestureDetector.OnDoubleTapListener)) {
+      a((GestureDetector.OnDoubleTapListener)paramOnGestureListener);
+    }
+    a(paramContext);
   }
   
   private void a(Context paramContext)
   {
-    if (paramContext == null) {
-      throw new IllegalArgumentException("Context must not be null");
-    }
-    if (this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener == null) {
+    if (paramContext != null)
+    {
+      if (this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener != null)
+      {
+        this.jdField_g_of_type_Boolean = true;
+        paramContext = ViewConfiguration.get(paramContext);
+        int i = paramContext.getScaledTouchSlop();
+        int j = paramContext.getScaledDoubleTapSlop();
+        this.jdField_c_of_type_Int = paramContext.getScaledMinimumFlingVelocity();
+        this.jdField_d_of_type_Int = paramContext.getScaledMaximumFlingVelocity();
+        this.jdField_a_of_type_Int = (i * i);
+        this.jdField_b_of_type_Int = (j * j);
+        return;
+      }
       throw new IllegalArgumentException("OnGestureListener must not be null");
     }
-    this.jdField_g_of_type_Boolean = true;
-    paramContext = ViewConfiguration.get(paramContext);
-    int i = paramContext.getScaledTouchSlop();
-    int j = paramContext.getScaledDoubleTapSlop();
-    this.jdField_c_of_type_Int = paramContext.getScaledMinimumFlingVelocity();
-    this.jdField_d_of_type_Int = paramContext.getScaledMaximumFlingVelocity();
-    this.jdField_a_of_type_Int = (i * i);
-    this.jdField_b_of_type_Int = (j * j);
+    throw new IllegalArgumentException("Context must not be null");
   }
   
   private boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, MotionEvent paramMotionEvent3)
   {
-    if (!this.jdField_e_of_type_Boolean) {}
-    int i;
-    int j;
-    do
-    {
-      do
-      {
-        return false;
-      } while (paramMotionEvent3.getEventTime() - paramMotionEvent2.getEventTime() > jdField_g_of_type_Int);
-      i = (int)paramMotionEvent1.getX() - (int)paramMotionEvent3.getX();
-      j = (int)paramMotionEvent1.getY() - (int)paramMotionEvent3.getY();
-    } while (i * i + j * j >= this.jdField_b_of_type_Int);
-    return true;
+    boolean bool2 = this.jdField_e_of_type_Boolean;
+    boolean bool1 = false;
+    if (!bool2) {
+      return false;
+    }
+    if (paramMotionEvent3.getEventTime() - paramMotionEvent2.getEventTime() > jdField_g_of_type_Int) {
+      return false;
+    }
+    int i = (int)paramMotionEvent1.getX() - (int)paramMotionEvent3.getX();
+    int j = (int)paramMotionEvent1.getY() - (int)paramMotionEvent3.getY();
+    if (i * i + j * j < this.jdField_b_of_type_Int) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   private void b()
@@ -132,243 +136,267 @@ class BetterGestureDetector$GestureDetectorCompatImplBase
   
   public boolean a(MotionEvent paramMotionEvent)
   {
-    int i1 = paramMotionEvent.getAction();
+    int i = paramMotionEvent.getAction();
     if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
       this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
     }
     this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-    int i;
-    int k;
-    label53:
-    int n;
-    int m;
-    float f1;
-    float f2;
-    if ((i1 & 0xFF) == 6)
-    {
+    int n = i & 0xFF;
+    boolean bool3 = false;
+    if (n == 6) {
       i = 1;
-      if (i == 0) {
-        break label95;
-      }
-      k = paramMotionEvent.getActionIndex();
-      n = paramMotionEvent.getPointerCount();
-      m = 0;
-      f1 = 0.0F;
-      f2 = 0.0F;
-      label66:
-      if (m >= n) {
-        break label122;
-      }
-      if (k != m) {
-        break label101;
-      }
-    }
-    for (;;)
-    {
-      m += 1;
-      break label66;
+    } else {
       i = 0;
-      break;
-      label95:
-      k = -1;
-      break label53;
-      label101:
-      f2 += paramMotionEvent.getX(m);
-      f1 += paramMotionEvent.getY(m);
     }
-    label122:
-    if (i != 0)
-    {
-      i = n - 1;
-      f2 /= i;
-      f1 /= i;
-    }
-    float f3;
-    boolean bool2;
-    float f4;
     int j;
-    switch (i1 & 0xFF)
-    {
-    case 4: 
-    default: 
-    case 5: 
-    case 6: 
-    case 0: 
-    case 2: 
-      do
-      {
-        do
-        {
-          return false;
-          i = n;
-          break;
-          this.jdField_a_of_type_Float = f2;
-          this.jdField_c_of_type_Float = f2;
-          this.jdField_b_of_type_Float = f1;
-          this.jdField_d_of_type_Float = f1;
-          c();
-          return false;
-          this.jdField_a_of_type_Float = f2;
-          this.jdField_c_of_type_Float = f2;
-          this.jdField_b_of_type_Float = f1;
-          this.jdField_d_of_type_Float = f1;
-          this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000, this.jdField_d_of_type_Int);
-          k = paramMotionEvent.getActionIndex();
-          i = paramMotionEvent.getPointerId(k);
-          f1 = this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity(i);
-          f2 = this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity(i);
-          i = 0;
-        } while (i >= n);
-        if (i == k) {}
-        do
-        {
-          i += 1;
-          break;
-          m = paramMotionEvent.getPointerId(i);
-          f3 = this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity(m);
-        } while (this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity(m) * f2 + f3 * f1 >= 0.0F);
-        this.jdField_a_of_type_AndroidViewVelocityTracker.clear();
-        return false;
-        if (this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener != null)
-        {
-          bool2 = this.jdField_a_of_type_AndroidOsHandler.hasMessages(3);
-          if (bool2) {
-            this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-          }
-          if ((this.jdField_a_of_type_AndroidViewMotionEvent != null) && (this.jdField_b_of_type_AndroidViewMotionEvent != null) && (bool2) && (a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent, paramMotionEvent))) {
-            this.jdField_f_of_type_Boolean = true;
-          }
-        }
-        for (boolean bool1 = this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onDoubleTap(this.jdField_a_of_type_AndroidViewMotionEvent) | false | this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onDoubleTapEvent(paramMotionEvent);; bool1 = false)
-        {
-          this.jdField_a_of_type_Float = f2;
-          this.jdField_c_of_type_Float = f2;
-          this.jdField_b_of_type_Float = f1;
-          this.jdField_d_of_type_Float = f1;
-          if (this.jdField_a_of_type_AndroidViewMotionEvent != null) {
-            this.jdField_a_of_type_AndroidViewMotionEvent.recycle();
-          }
-          this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-          this.jdField_d_of_type_Boolean = true;
-          this.jdField_e_of_type_Boolean = true;
-          this.jdField_a_of_type_Boolean = true;
-          this.jdField_c_of_type_Boolean = false;
-          this.jdField_b_of_type_Boolean = false;
-          if (this.jdField_g_of_type_Boolean)
-          {
-            this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-            this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageAtTime(2, this.jdField_a_of_type_AndroidViewMotionEvent.getDownTime() + jdField_f_of_type_Int + jdField_e_of_type_Int);
-          }
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageAtTime(1, this.jdField_a_of_type_AndroidViewMotionEvent.getDownTime() + jdField_f_of_type_Int);
-          return bool1 | this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onDown(paramMotionEvent);
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, jdField_g_of_type_Int);
-        }
-      } while ((this.jdField_c_of_type_Boolean) && (!this.h));
-      f3 = this.jdField_a_of_type_Float - f2;
-      f4 = this.jdField_b_of_type_Float - f1;
-      if (this.jdField_f_of_type_Boolean) {
-        return false | this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onDoubleTapEvent(paramMotionEvent);
-      }
-      if (this.jdField_d_of_type_Boolean)
-      {
-        j = (int)(f2 - this.jdField_c_of_type_Float);
-        k = (int)(f1 - this.jdField_d_of_type_Float);
-        j = j * j + k * k;
-        if (j <= this.jdField_a_of_type_Int) {
-          break label1143;
-        }
-        bool2 = this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onScroll(this.jdField_a_of_type_AndroidViewMotionEvent, paramMotionEvent, f3, f4);
-        this.jdField_a_of_type_Float = f2;
-        this.jdField_b_of_type_Float = f1;
-        this.jdField_d_of_type_Boolean = false;
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-      }
-      break;
+    if (i != 0) {
+      j = paramMotionEvent.getActionIndex();
+    } else {
+      j = -1;
     }
-    for (;;)
+    int m = paramMotionEvent.getPointerCount();
+    int k = 0;
+    float f2 = 0.0F;
+    float f1 = 0.0F;
+    while (k < m)
     {
-      if (j > this.jdField_a_of_type_Int) {
-        this.jdField_e_of_type_Boolean = false;
-      }
-      return bool2;
-      if ((Math.abs(f3) < 1.0F) && (Math.abs(f4) < 1.0F)) {
-        break;
-      }
-      bool2 = this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onScroll(this.jdField_a_of_type_AndroidViewMotionEvent, paramMotionEvent, f3, f4);
-      this.jdField_a_of_type_Float = f2;
-      this.jdField_b_of_type_Float = f1;
-      return bool2;
-      this.jdField_a_of_type_Boolean = false;
-      MotionEvent localMotionEvent = MotionEvent.obtain(paramMotionEvent);
-      if (this.jdField_f_of_type_Boolean) {
-        bool2 = this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onDoubleTapEvent(paramMotionEvent) | false;
-      }
-      for (;;)
+      if (j != k)
       {
-        if (this.jdField_b_of_type_AndroidViewMotionEvent != null) {
-          this.jdField_b_of_type_AndroidViewMotionEvent.recycle();
+        f2 += paramMotionEvent.getX(k);
+        f1 += paramMotionEvent.getY(k);
+      }
+      k += 1;
+    }
+    if (i != 0) {
+      i = m - 1;
+    } else {
+      i = m;
+    }
+    float f3 = i;
+    f2 /= f3;
+    f1 /= f3;
+    boolean bool2;
+    MotionEvent localMotionEvent;
+    Object localObject;
+    if (n != 0)
+    {
+      if (n != 1)
+      {
+        if (n != 2)
+        {
+          if (n != 3)
+          {
+            if (n != 5)
+            {
+              if (n != 6) {
+                return false;
+              }
+              this.jdField_a_of_type_Float = f2;
+              this.jdField_c_of_type_Float = f2;
+              this.jdField_b_of_type_Float = f1;
+              this.jdField_d_of_type_Float = f1;
+              this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000, this.jdField_d_of_type_Int);
+              j = paramMotionEvent.getActionIndex();
+              i = paramMotionEvent.getPointerId(j);
+              f1 = this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity(i);
+              f2 = this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity(i);
+              i = 0;
+              for (;;)
+              {
+                bool2 = bool3;
+                if (i >= m) {
+                  break;
+                }
+                if (i != j)
+                {
+                  k = paramMotionEvent.getPointerId(i);
+                  if (this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity(k) * f1 + this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity(k) * f2 < 0.0F)
+                  {
+                    this.jdField_a_of_type_AndroidViewVelocityTracker.clear();
+                    return false;
+                  }
+                }
+                i += 1;
+              }
+            }
+            this.jdField_a_of_type_Float = f2;
+            this.jdField_c_of_type_Float = f2;
+            this.jdField_b_of_type_Float = f1;
+            this.jdField_d_of_type_Float = f1;
+            c();
+            return false;
+          }
+          b();
+          return false;
+        }
+        if ((this.jdField_c_of_type_Boolean) && (!this.h)) {
+          return false;
+        }
+        f3 = this.jdField_a_of_type_Float - f2;
+        float f4 = this.jdField_b_of_type_Float - f1;
+        if (this.jdField_f_of_type_Boolean) {
+          return false | this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onDoubleTapEvent(paramMotionEvent);
+        }
+        if (this.jdField_d_of_type_Boolean)
+        {
+          i = (int)(f2 - this.jdField_c_of_type_Float);
+          j = (int)(f1 - this.jdField_d_of_type_Float);
+          i = i * i + j * j;
+          if (i > this.jdField_a_of_type_Int)
+          {
+            bool2 = this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onScroll(this.jdField_a_of_type_AndroidViewMotionEvent, paramMotionEvent, f3, f4);
+            this.jdField_a_of_type_Float = f2;
+            this.jdField_b_of_type_Float = f1;
+            this.jdField_d_of_type_Boolean = false;
+            this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+            this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+            this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+          }
+          else
+          {
+            bool2 = false;
+          }
+          bool3 = bool2;
+          if (i > this.jdField_a_of_type_Int)
+          {
+            this.jdField_e_of_type_Boolean = false;
+            bool3 = bool2;
+          }
+        }
+        else
+        {
+          if (Math.abs(f3) < 1.0F)
+          {
+            bool2 = bool3;
+            if (Math.abs(f4) < 1.0F) {
+              break label1164;
+            }
+          }
+          bool2 = this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onScroll(this.jdField_a_of_type_AndroidViewMotionEvent, paramMotionEvent, f3, f4);
+          this.jdField_a_of_type_Float = f2;
+          this.jdField_b_of_type_Float = f1;
+          return bool2;
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_Boolean = false;
+        localMotionEvent = MotionEvent.obtain(paramMotionEvent);
+        if (this.jdField_f_of_type_Boolean)
+        {
+          bool2 = this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onDoubleTapEvent(paramMotionEvent) | false;
+        }
+        else
+        {
+          if (this.jdField_c_of_type_Boolean)
+          {
+            this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+            this.jdField_c_of_type_Boolean = false;
+          }
+          else
+          {
+            if (this.jdField_d_of_type_Boolean)
+            {
+              bool2 = this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onSingleTapUp(paramMotionEvent);
+              if (this.jdField_b_of_type_Boolean)
+              {
+                localObject = this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener;
+                if (localObject != null) {
+                  ((GestureDetector.OnDoubleTapListener)localObject).onSingleTapConfirmed(paramMotionEvent);
+                }
+              }
+              break label827;
+            }
+            localObject = this.jdField_a_of_type_AndroidViewVelocityTracker;
+            i = paramMotionEvent.getPointerId(0);
+            ((VelocityTracker)localObject).computeCurrentVelocity(1000, this.jdField_d_of_type_Int);
+            f1 = ((VelocityTracker)localObject).getYVelocity(i);
+            f2 = ((VelocityTracker)localObject).getXVelocity(i);
+            if ((Math.abs(f1) > this.jdField_c_of_type_Int) || (Math.abs(f2) > this.jdField_c_of_type_Int)) {
+              break label809;
+            }
+          }
+          bool2 = false;
+          break label827;
+          label809:
+          bool2 = this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onFling(this.jdField_a_of_type_AndroidViewMotionEvent, paramMotionEvent, f2, f1);
+        }
+        label827:
+        paramMotionEvent = this.jdField_b_of_type_AndroidViewMotionEvent;
+        if (paramMotionEvent != null) {
+          paramMotionEvent.recycle();
         }
         this.jdField_b_of_type_AndroidViewMotionEvent = localMotionEvent;
-        if (this.jdField_a_of_type_AndroidViewVelocityTracker != null)
+        paramMotionEvent = this.jdField_a_of_type_AndroidViewVelocityTracker;
+        if (paramMotionEvent != null)
         {
-          this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
+          paramMotionEvent.recycle();
           this.jdField_a_of_type_AndroidViewVelocityTracker = null;
         }
         this.jdField_f_of_type_Boolean = false;
         this.jdField_b_of_type_Boolean = false;
         this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
         this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-        return bool2;
-        if (this.jdField_c_of_type_Boolean)
-        {
-          this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-          this.jdField_c_of_type_Boolean = false;
-          bool2 = false;
-        }
-        else if (this.jdField_d_of_type_Boolean)
-        {
-          boolean bool3 = this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onSingleTapUp(paramMotionEvent);
-          bool2 = bool3;
-          if (this.jdField_b_of_type_Boolean)
-          {
-            bool2 = bool3;
-            if (this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener != null)
-            {
-              this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onSingleTapConfirmed(paramMotionEvent);
-              bool2 = bool3;
-            }
-          }
-        }
-        else
-        {
-          VelocityTracker localVelocityTracker = this.jdField_a_of_type_AndroidViewVelocityTracker;
-          j = paramMotionEvent.getPointerId(0);
-          localVelocityTracker.computeCurrentVelocity(1000, this.jdField_d_of_type_Int);
-          f1 = localVelocityTracker.getYVelocity(j);
-          f2 = localVelocityTracker.getXVelocity(j);
-          if ((Math.abs(f1) > this.jdField_c_of_type_Int) || (Math.abs(f2) > this.jdField_c_of_type_Int))
-          {
-            bool2 = this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onFling(this.jdField_a_of_type_AndroidViewMotionEvent, paramMotionEvent, f2, f1);
-            continue;
-            b();
-            return false;
-          }
-          else
-          {
-            bool2 = false;
-          }
-        }
+        bool3 = bool2;
       }
-      label1143:
-      bool2 = false;
+      return bool3;
     }
+    else
+    {
+      boolean bool1;
+      if (this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener != null)
+      {
+        bool2 = this.jdField_a_of_type_AndroidOsHandler.hasMessages(3);
+        if (bool2) {
+          this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+        }
+        localMotionEvent = this.jdField_a_of_type_AndroidViewMotionEvent;
+        if (localMotionEvent != null)
+        {
+          localObject = this.jdField_b_of_type_AndroidViewMotionEvent;
+          if ((localObject != null) && (bool2) && (a(localMotionEvent, (MotionEvent)localObject, paramMotionEvent)))
+          {
+            this.jdField_f_of_type_Boolean = true;
+            bool1 = this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onDoubleTap(this.jdField_a_of_type_AndroidViewMotionEvent) | false | this.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onDoubleTapEvent(paramMotionEvent);
+            break label1018;
+          }
+        }
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, jdField_g_of_type_Int);
+      }
+      else
+      {
+        bool1 = false;
+      }
+      label1018:
+      this.jdField_a_of_type_Float = f2;
+      this.jdField_c_of_type_Float = f2;
+      this.jdField_b_of_type_Float = f1;
+      this.jdField_d_of_type_Float = f1;
+      localMotionEvent = this.jdField_a_of_type_AndroidViewMotionEvent;
+      if (localMotionEvent != null) {
+        localMotionEvent.recycle();
+      }
+      this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+      this.jdField_d_of_type_Boolean = true;
+      this.jdField_e_of_type_Boolean = true;
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_c_of_type_Boolean = false;
+      this.jdField_b_of_type_Boolean = false;
+      if (this.jdField_g_of_type_Boolean)
+      {
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageAtTime(2, this.jdField_a_of_type_AndroidViewMotionEvent.getDownTime() + jdField_f_of_type_Int + jdField_e_of_type_Int);
+      }
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageAtTime(1, this.jdField_a_of_type_AndroidViewMotionEvent.getDownTime() + jdField_f_of_type_Int);
+      bool2 = bool1 | this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onDown(paramMotionEvent);
+    }
+    label1164:
+    return bool2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.BetterGestureDetector.GestureDetectorCompatImplBase
  * JD-Core Version:    0.7.0.1
  */

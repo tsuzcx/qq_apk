@@ -19,36 +19,63 @@ class NearbyGiftPanelDialog$1
   
   public void a(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(NearbyGiftPanelDialog.a(), 2, "onError() time =  " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ", errorCode = " + paramInt + ", errorMsg = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      String str = NearbyGiftPanelDialog.a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onError() time =  ");
+      localStringBuilder.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      localStringBuilder.append(", errorCode = ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", errorMsg = ");
+      localStringBuilder.append(paramString);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
   }
   
   public void a(String paramString, int paramInt)
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftManager.a(NearbyGiftPanelDialog.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog));
-    if (QLog.isColorLevel()) {
-      QLog.d(NearbyGiftPanelDialog.a(), 2, "onGetExtraData() time =  " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ", configURL = " + paramString + ", version:" + paramInt + ", oldVersion:" + i);
+    int i = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog.jdField_a_of_type_Int);
+    Object localObject1;
+    Object localObject2;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = NearbyGiftPanelDialog.a();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onGetExtraData() time =  ");
+      ((StringBuilder)localObject2).append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject2).append(", configURL = ");
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(", version:");
+      ((StringBuilder)localObject2).append(paramInt);
+      ((StringBuilder)localObject2).append(", oldVersion:");
+      ((StringBuilder)localObject2).append(i);
+      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
-    if ((paramInt <= i) && (TroopGiftAioPanelData.a(NearbyGiftPanelDialog.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog), NearbyGiftPanelDialog.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog)) != null)) {}
-    while (TextUtils.isEmpty(paramString)) {
+    if ((paramInt <= i) && (TroopGiftAioPanelData.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog.jdField_a_of_type_Int) != null)) {
       return;
     }
-    Object localObject = new File(AppConstants.SDCARD_FILE_SAVE_TROOPTMP_PATH);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
+    if (!TextUtils.isEmpty(paramString))
+    {
+      localObject1 = new File(AppConstants.SDCARD_FILE_SAVE_TROOPTMP_PATH);
+      if (!((File)localObject1).exists()) {
+        ((File)localObject1).mkdirs();
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(AppConstants.SDCARD_FILE_SAVE_TROOPTMP_PATH);
+      ((StringBuilder)localObject1).append("troopGiftConfig.tmp");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      paramString = new DownloadTask(paramString, new File((String)localObject1));
+      paramString.b = 3;
+      localObject2 = new Bundle();
+      ((Bundle)localObject2).putString("filePath", (String)localObject1);
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a().startDownload(paramString, new NearbyGiftPanelDialog.1.1(this, paramInt), (Bundle)localObject2);
     }
-    localObject = AppConstants.SDCARD_FILE_SAVE_TROOPTMP_PATH + "troopGiftConfig.tmp";
-    paramString = new DownloadTask(paramString, new File((String)localObject));
-    paramString.b = 3;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("filePath", (String)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a().a(paramString, new NearbyGiftPanelDialog.1.1(this, paramInt), localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gift.NearbyGiftPanelDialog.1
  * JD-Core Version:    0.7.0.1
  */

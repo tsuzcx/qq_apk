@@ -13,12 +13,20 @@ public class AVNotifyCenter$VideoRoomInfo_tips
   
   public String toString()
   {
-    return "relationId[" + this.jdField_a_of_type_Long + "], isOffLine[" + this.jdField_a_of_type_Boolean + "], avType[" + this.jdField_a_of_type_Int + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("relationId[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("], isOffLine[");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("], avType[");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.gaudio.AVNotifyCenter.VideoRoomInfo_tips
  * JD-Core Version:    0.7.0.1
  */

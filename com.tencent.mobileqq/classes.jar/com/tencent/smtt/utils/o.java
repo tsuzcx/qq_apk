@@ -26,8 +26,8 @@ public class o
         if (paramb1.containsKey(localObject1))
         {
           localObject1 = (o.a)paramb1.get(localObject1);
-          if ((((o.a)localObject2).a() != ((o.a)localObject1).a()) || (((o.a)localObject2).b() != ((o.a)localObject1).b())) {
-            return false;
+          if ((((o.a)localObject2).a() == ((o.a)localObject1).a()) && (((o.a)localObject2).b() == ((o.a)localObject1).b())) {
+            break;
           }
         }
         else
@@ -47,11 +47,17 @@ public class o
   
   public boolean a()
   {
-    if ((this.b == null) || (this.a == null)) {}
-    while ((this.b.a().size() != this.a.a().size()) || (!a(this.a, this.b))) {
-      return false;
+    o.b localb = this.b;
+    if (localb != null)
+    {
+      if (this.a == null) {
+        return false;
+      }
+      if ((localb.a().size() == this.a.a().size()) && (a(this.a, this.b))) {
+        return true;
+      }
     }
-    return true;
+    return false;
   }
   
   public void b(File paramFile)
@@ -61,7 +67,7 @@ public class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.utils.o
  * JD-Core Version:    0.7.0.1
  */

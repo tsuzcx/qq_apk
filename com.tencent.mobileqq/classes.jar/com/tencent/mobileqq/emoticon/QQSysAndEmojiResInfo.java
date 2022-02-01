@@ -42,23 +42,30 @@ public abstract class QQSysAndEmojiResInfo
     try
     {
       long l = System.currentTimeMillis();
-      paramString = new File(paramString + "face_config.json");
-      if (paramString.exists()) {
-        paramString = FileUtils.a(paramString);
-      }
-      while ((paramString != null) && (paramString.length() > 0))
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("face_config.json");
+      paramString = new File(localStringBuilder.toString());
+      boolean bool = paramString.exists();
+      if (bool)
       {
-        mFaceJsonObject = new JSONObject(paramString);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("QQSysAndEmojiBaseInfo", 2, new Object[] { "getFaceConfigJson len:", Integer.valueOf(mFaceJsonObject.length()), " ,costTime = [", Long.valueOf(System.currentTimeMillis() - l), "]， content:", paramString });
-        return;
-        paramString = FileUtils.d("face_config.json");
+        paramString = FileUtils.readFileContent(paramString);
+      }
+      else
+      {
+        paramString = FileUtils.readStringFromAsset("face_config.json");
         QLog.d("QQSysAndEmojiBaseInfo", 1, "getFaceConfigJson not exist!");
         ThreadManager.getSubThreadHandler().post(new QQSysAndEmojiResInfo.1());
       }
-      return;
+      if ((paramString != null) && (paramString.length() > 0))
+      {
+        mFaceJsonObject = new JSONObject(paramString);
+        if (QLog.isColorLevel())
+        {
+          QLog.d("QQSysAndEmojiBaseInfo", 2, new Object[] { "getFaceConfigJson len:", Integer.valueOf(mFaceJsonObject.length()), " ,costTime = [", Long.valueOf(System.currentTimeMillis() - l), "]， content:", paramString });
+          return;
+        }
+      }
     }
     catch (Exception paramString)
     {
@@ -76,10 +83,11 @@ public abstract class QQSysAndEmojiResInfo
   
   public boolean checkEmoticonShouldHide(int paramInt)
   {
-    if (this.mConfigItemMap == null) {
+    HashMap localHashMap = this.mConfigItemMap;
+    if (localHashMap == null) {
       return false;
     }
-    if (this.mConfigItemMap.containsKey(Integer.valueOf(paramInt))) {
+    if (localHashMap.containsKey(Integer.valueOf(paramInt))) {
       return isEmoticonHide((QQSysAndEmojiResInfo.QQEmoConfigItem)this.mConfigItemMap.get(Integer.valueOf(paramInt)));
     }
     return true;
@@ -87,11 +95,11 @@ public abstract class QQSysAndEmojiResInfo
   
   public int getConfigEmoCount()
   {
-    int i = 0;
-    if (this.mConfigItemMap != null) {
-      i = this.mConfigItemMap.size();
+    HashMap localHashMap = this.mConfigItemMap;
+    if (localHashMap != null) {
+      return localHashMap.size();
     }
-    return i;
+    return 0;
   }
   
   public abstract String getDescription(int paramInt);
@@ -100,7 +108,8 @@ public abstract class QQSysAndEmojiResInfo
   
   public String getEMCode(String paramString)
   {
-    if ((this.mDesToEMCodeMap != null) && (this.mDesToEMCodeMap.containsKey(paramString))) {
+    HashMap localHashMap = this.mDesToEMCodeMap;
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString))) {
       return (String)this.mDesToEMCodeMap.get(paramString);
     }
     return null;
@@ -116,7 +125,8 @@ public abstract class QQSysAndEmojiResInfo
   
   public int getLocalId(int paramInt)
   {
-    if ((this.mServerToLocalMap != null) && (this.mServerToLocalMap.containsKey(Integer.valueOf(paramInt)))) {
+    HashMap localHashMap = this.mServerToLocalMap;
+    if ((localHashMap != null) && (localHashMap.containsKey(Integer.valueOf(paramInt)))) {
       return ((Integer)this.mServerToLocalMap.get(Integer.valueOf(paramInt))).intValue();
     }
     return -1;
@@ -124,7 +134,8 @@ public abstract class QQSysAndEmojiResInfo
   
   public int getLocalIdFromEMCode(String paramString)
   {
-    if ((this.mEMCodeToLocalMap != null) && (this.mEMCodeToLocalMap.containsKey(paramString))) {
+    HashMap localHashMap = this.mEMCodeToLocalMap;
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString))) {
       return ((Integer)this.mEMCodeToLocalMap.get(paramString)).intValue();
     }
     return -1;
@@ -134,13 +145,13 @@ public abstract class QQSysAndEmojiResInfo
   
   public ArrayList<Integer> getOrderList()
   {
-    ArrayList localArrayList = null;
     if (this.mOrderList != null)
     {
-      localArrayList = new ArrayList();
+      ArrayList localArrayList = new ArrayList();
       localArrayList.addAll(this.mOrderList);
+      return localArrayList;
     }
-    return localArrayList;
+    return null;
   }
   
   public abstract int getServerId(int paramInt);
@@ -148,32 +159,38 @@ public abstract class QQSysAndEmojiResInfo
   protected Drawable getUrlDrawable(URL paramURL, Drawable paramDrawable, boolean paramBoolean, String paramString)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    if (paramDrawable == null) {
-      if (this.mDefault != null) {}
-    }
-    for (;;)
+    if (paramDrawable == null)
     {
-      try
-      {
-        this.mDefault = BaseApplication.getContext().getResources().getDrawable(2130838129);
-        localURLDrawableOptions.mLoadingDrawable = this.mDefault;
-        localURLDrawableOptions.mFailedDrawable = this.mDefault;
-        localURLDrawableOptions.mPlayGifImage = paramBoolean;
-        paramURL = realGetURLDrawable(paramURL, localURLDrawableOptions);
-        if ((paramURL != null) && (!TextUtils.isEmpty(paramString))) {
-          paramURL.addHeader("emoId", paramString);
+      if (this.mDefault == null) {
+        try
+        {
+          this.mDefault = BaseApplication.getContext().getResources().getDrawable(2130837978);
         }
-        return paramURL;
+        catch (Exception paramDrawable)
+        {
+          this.mDefault = new ColorDrawable();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getDrawable exception e: = ");
+          localStringBuilder.append(paramDrawable.getMessage());
+          QLog.e("QQSysAndEmojiBaseInfo", 1, localStringBuilder.toString());
+        }
       }
-      catch (Exception paramDrawable)
-      {
-        this.mDefault = new ColorDrawable();
-        QLog.e("QQSysAndEmojiBaseInfo", 1, "getDrawable exception e: = " + paramDrawable.getMessage());
-        continue;
-      }
+      paramDrawable = this.mDefault;
       localURLDrawableOptions.mLoadingDrawable = paramDrawable;
       localURLDrawableOptions.mFailedDrawable = paramDrawable;
     }
+    else
+    {
+      localURLDrawableOptions.mLoadingDrawable = paramDrawable;
+      localURLDrawableOptions.mFailedDrawable = paramDrawable;
+    }
+    localURLDrawableOptions.mUseApngImage = paramBoolean;
+    localURLDrawableOptions.mPlayGifImage = paramBoolean;
+    paramURL = realGetURLDrawable(paramURL, localURLDrawableOptions);
+    if ((paramURL != null) && (!TextUtils.isEmpty(paramString))) {
+      paramURL.addHeader("emoId", paramString);
+    }
+    return paramURL;
   }
   
   public boolean isEmoticonHide(QQSysAndEmojiResInfo.QQEmoConfigItem paramQQEmoConfigItem)
@@ -197,28 +214,28 @@ public abstract class QQSysAndEmojiResInfo
     if ((paramDrawable instanceof URLDrawable))
     {
       paramDrawable = (URLDrawable)paramDrawable;
-      if ((paramDrawable.getStatus() == 1) || (paramDrawable.getStatus() == 0)) {
-        break label71;
+      if ((paramDrawable.getStatus() != 1) && (paramDrawable.getStatus() != 0))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQSysAndEmojiBaseInfo", 2, new Object[] { "reloadDrawable restartDownload:", Integer.valueOf(paramInt) });
+        }
+        paramDrawable.addHeader("emoId", Integer.toString(paramInt));
+        paramDrawable.restartDownload();
+        return;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("QQSysAndEmojiBaseInfo", 2, new Object[] { "reloadDrawable restartDownload:", Integer.valueOf(paramInt) });
+        QLog.d("QQSysAndEmojiBaseInfo", 2, new Object[] { "reloadDrawable do nothing:", Integer.valueOf(paramInt) });
       }
-      paramDrawable.addHeader("emoId", Integer.toString(paramInt));
-      paramDrawable.restartDownload();
     }
-    label71:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("QQSysAndEmojiBaseInfo", 2, new Object[] { "reloadDrawable do nothing:", Integer.valueOf(paramInt) });
   }
   
   public abstract void reportEmoClick(int paramInt1, int paramInt2);
   
   public void resDownloadFinish()
   {
-    if (this.mResReloader != null) {
-      this.mResReloader.nofityReloadList();
+    QQSysAndEmojiResReloader localQQSysAndEmojiResReloader = this.mResReloader;
+    if (localQQSysAndEmojiResReloader != null) {
+      localQQSysAndEmojiResReloader.nofityReloadList();
     }
   }
   
@@ -226,7 +243,7 @@ public abstract class QQSysAndEmojiResInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo
  * JD-Core Version:    0.7.0.1
  */

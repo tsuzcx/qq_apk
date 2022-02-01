@@ -17,18 +17,22 @@ class PipeLinearLayout$1$2
       int i = 0;
       while ((i < this.jdField_a_of_type_JavaUtilArrayList.size()) && (i < PipeLinearLayout.a(this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0).length))
       {
-        ImageView localImageView = (ImageView)this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0.findViewById(PipeLinearLayout.a(this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0)[i]);
-        localImageView.setImageBitmap(PipeLinearLayout.a(this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0, ((Long)PipeLinearLayout.a(this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0).get(i)).longValue()));
-        localImageView.setVisibility(0);
+        localObject = (ImageView)this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0.findViewById(PipeLinearLayout.a(this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0)[i]);
+        ((ImageView)localObject).setImageBitmap(PipeLinearLayout.a(this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0, ((Long)PipeLinearLayout.a(this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0).get(i)).longValue()));
+        ((ImageView)localObject).setVisibility(0);
         i += 1;
       }
-      ((TextView)this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0.findViewById(2131371123)).setText(PipeLinearLayout.b(this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0).size() + HardCodeUtil.a(2131708164));
+      Object localObject = (TextView)this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0.findViewById(2131370747);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(PipeLinearLayout.b(this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0).size());
+      localStringBuilder.append(HardCodeUtil.a(2131708182));
+      ((TextView)localObject).setText(localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.PipeLinearLayout.1.2
  * JD-Core Version:    0.7.0.1
  */

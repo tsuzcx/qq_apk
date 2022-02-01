@@ -15,7 +15,7 @@ class QCallDetailActivity$2
 {
   QCallDetailActivity$2(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
     if ((paramBoolean) && (TextUtils.equals(paramString, QCallDetailActivity.a(this.a))))
     {
@@ -24,44 +24,42 @@ class QCallDetailActivity$2
     }
   }
   
-  public void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    Object localObject;
     if ((paramBoolean) && (QCallDetailActivity.a(this.a) == 3000))
     {
-      localObject = (DiscussionManager)this.a.app.getManager(QQManagerFactory.DISCUSSION_MANAGER);
-      if (localObject != null) {
-        break label53;
+      Object localObject = (DiscussionManager)this.a.app.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+      if (localObject == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("QCallDetailActivity", 2, " === onUpdateFriendInfo dm is null  ====");
+        }
+        return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("QCallDetailActivity", 2, " === onUpdateFriendInfo dm is null  ====");
+      DiscussionInfo localDiscussionInfo = ((DiscussionManager)localObject).a(QCallDetailActivity.a(this.a));
+      if (localDiscussionInfo == null)
+      {
+        QLog.i("QCallDetailActivity", 1, " ===onUpdateFriendInfo info is null ====");
+        return;
+      }
+      if (TextUtils.isEmpty(paramString))
+      {
+        QLog.i("QCallDetailActivity", 1, " === onUpdateFriendInfo uin is null ====");
+        return;
+      }
+      if (!localDiscussionInfo.hasRenamed())
+      {
+        localObject = ((DiscussionManager)localObject).a(QCallDetailActivity.a(this.a));
+        if ((localObject != null) && (((Map)localObject).size() > 0) && (((Map)localObject).containsKey(paramString)))
+        {
+          paramString = this.a;
+          paramString.a(QCallDetailActivity.a(paramString));
+        }
       }
     }
-    label53:
-    do
-    {
-      DiscussionInfo localDiscussionInfo;
-      do
-      {
-        return;
-        localDiscussionInfo = ((DiscussionManager)localObject).a(QCallDetailActivity.a(this.a));
-        if (localDiscussionInfo == null)
-        {
-          QLog.i("QCallDetailActivity", 1, " ===onUpdateFriendInfo info is null ====");
-          return;
-        }
-        if (TextUtils.isEmpty(paramString))
-        {
-          QLog.i("QCallDetailActivity", 1, " === onUpdateFriendInfo uin is null ====");
-          return;
-        }
-      } while (localDiscussionInfo.hasRenamed());
-      localObject = ((DiscussionManager)localObject).a(QCallDetailActivity.a(this.a));
-    } while ((localObject == null) || (((Map)localObject).size() <= 0) || (!((Map)localObject).containsKey(paramString)));
-    this.a.a(QCallDetailActivity.a(this.a));
   }
   
-  public void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
+  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
   {
     QCallDetailActivity.a(this.a);
     this.a.runOnUiThread(new QCallDetailActivity.2.2(this));
@@ -69,7 +67,7 @@ class QCallDetailActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallDetailActivity.2
  * JD-Core Version:    0.7.0.1
  */

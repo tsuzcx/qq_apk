@@ -31,7 +31,7 @@ public class GetRegisterLiangHaoList
   private WeakReference<GetRegisterLiangHaoList.RequestCallBack> jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(null);
   private String b;
   private String c = "android";
-  private String d = "8.5.5";
+  private String d = "8.7.0";
   private final String e = "d4e1f57bb381ec80e480aa10c65d05d1";
   private final String f = "https://proxy.vip.qq.com/cgi-bin/srfentry.fcgi";
   
@@ -56,31 +56,37 @@ public class GetRegisterLiangHaoList
       if (i == 200)
       {
         localObject = ((Response)localObject).body().string();
-        if (QLog.isDevelopLevel()) {
-          QLog.d("GetRegisterLiangHaoList", 4, "json " + (String)localObject);
+        if (QLog.isDevelopLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("json ");
+          localStringBuilder.append((String)localObject);
+          QLog.d("GetRegisterLiangHaoList", 4, localStringBuilder.toString());
         }
         localObject = new JSONObject((String)localObject).optJSONObject("12162");
-        if (localObject != null)
-        {
-          localObject = ((JSONObject)localObject).optJSONObject("data");
-          if (localObject != null)
-          {
-            localObject = ((JSONObject)localObject).optJSONObject("rsp");
-            if (localObject != null) {
-              return new LiangHaoRsp((JSONObject)localObject);
-            }
-          }
+        if (localObject == null) {
+          return null;
         }
+        localObject = ((JSONObject)localObject).optJSONObject("data");
+        if (localObject == null) {
+          return null;
+        }
+        localObject = ((JSONObject)localObject).optJSONObject("rsp");
+        if (localObject == null) {
+          return null;
+        }
+        return new LiangHaoRsp((JSONObject)localObject);
       }
-      else
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("GetRegisterLiangHaoList", 2, "sendRequest errorCode" + i);
-        }
-        localObject = new LiangHaoRsp();
-        ((LiangHaoRsp)localObject).jdField_a_of_type_Int = i;
-        return localObject;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("sendRequest errorCode");
+        ((StringBuilder)localObject).append(i);
+        QLog.e("GetRegisterLiangHaoList", 2, ((StringBuilder)localObject).toString());
       }
+      localObject = new LiangHaoRsp();
+      ((LiangHaoRsp)localObject).jdField_a_of_type_Int = i;
+      return localObject;
     }
     catch (Throwable localThrowable)
     {
@@ -93,7 +99,12 @@ public class GetRegisterLiangHaoList
   
   private String a()
   {
-    return "https://proxy.vip.qq.com/cgi-bin/srfentry.fcgi?ts=" + System.currentTimeMillis() + "&data=" + a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("https://proxy.vip.qq.com/cgi-bin/srfentry.fcgi?ts=");
+    localStringBuilder.append(System.currentTimeMillis());
+    localStringBuilder.append("&data=");
+    localStringBuilder.append(a());
+    return localStringBuilder.toString();
   }
   
   private OkHttpClient a()
@@ -106,22 +117,27 @@ public class GetRegisterLiangHaoList
     try
     {
       JSONObject localJSONObject1 = new JSONObject();
+      localObject = new JSONObject();
       JSONObject localJSONObject2 = new JSONObject();
-      JSONObject localJSONObject3 = new JSONObject();
-      localJSONObject3.put("imei", b());
-      localJSONObject3.put("page", String.valueOf(this.jdField_a_of_type_Int));
-      localJSONObject3.put("phone", this.b);
-      localJSONObject3.put("plat", this.c);
-      localJSONObject3.put("version", this.d);
-      localJSONObject3.put("sign", c());
-      localJSONObject2.put("req", localJSONObject3);
-      localJSONObject1.put("12162", localJSONObject2);
+      localJSONObject2.put("imei", b());
+      localJSONObject2.put("page", String.valueOf(this.jdField_a_of_type_Int));
+      localJSONObject2.put("phone", this.b);
+      localJSONObject2.put("plat", this.c);
+      localJSONObject2.put("version", this.d);
+      localJSONObject2.put("sign", c());
+      ((JSONObject)localObject).put("req", localJSONObject2);
+      localJSONObject1.put("12162", localObject);
       return localJSONObject1;
     }
     catch (JSONException localJSONException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("GetRegisterLiangHaoList", 2, "buildRequestJson " + localJSONException);
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("buildRequestJson ");
+        ((StringBuilder)localObject).append(localJSONException);
+        QLog.e("GetRegisterLiangHaoList", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -129,63 +145,70 @@ public class GetRegisterLiangHaoList
   
   private void a(LiangHaoRsp paramLiangHaoRsp)
   {
-    if ((paramLiangHaoRsp != null) && (QLog.isColorLevel())) {
-      QLog.i("GetRegisterLiangHaoList", 2, "onResponse " + paramLiangHaoRsp);
+    if ((paramLiangHaoRsp != null) && (QLog.isColorLevel()))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onResponse ");
+      ((StringBuilder)localObject).append(paramLiangHaoRsp);
+      QLog.i("GetRegisterLiangHaoList", 2, ((StringBuilder)localObject).toString());
     }
     long l1 = SystemClock.elapsedRealtime();
     long l2 = this.jdField_a_of_type_Long;
     int i;
-    Object localObject;
-    StatisticCollector localStatisticCollector;
-    if (paramLiangHaoRsp != null)
-    {
+    if (paramLiangHaoRsp != null) {
       i = paramLiangHaoRsp.jdField_a_of_type_Int;
-      localObject = new HashMap();
-      ((HashMap)localObject).put("param_FailCode", String.valueOf(i));
-      localStatisticCollector = StatisticCollector.getInstance(BaseApplication.getContext());
-      if (i != 0) {
-        break label138;
-      }
-    }
-    label138:
-    for (boolean bool = true;; bool = false)
-    {
-      localStatisticCollector.collectPerformance(null, "reg_lh_get_list", bool, l1 - l2, 0L, (HashMap)localObject, "", true);
-      localObject = (GetRegisterLiangHaoList.RequestCallBack)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localObject != null) {
-        break label144;
-      }
-      return;
+    } else {
       i = -30009;
-      break;
     }
-    label144:
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("param_FailCode", String.valueOf(i));
+    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(BaseApplication.getContext());
+    boolean bool;
+    if (i == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localStatisticCollector.collectPerformance(null, "reg_lh_get_list", bool, l1 - l2, 0L, (HashMap)localObject, "", true);
+    localObject = (GetRegisterLiangHaoList.RequestCallBack)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject == null) {
+      return;
+    }
     ThreadManagerV2.getUIHandlerV2().post(new GetRegisterLiangHaoList.2(this, paramLiangHaoRsp, (GetRegisterLiangHaoList.RequestCallBack)localObject));
   }
   
   private String b()
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {}
-    try
-    {
-      this.jdField_a_of_type_JavaLangString = QQDeviceInfo.getIMEI("ecd027");
-      return this.jdField_a_of_type_JavaLangString;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("GetRegisterLiangHaoList", 2, "get imei error" + localThrowable.toString());
+        this.jdField_a_of_type_JavaLangString = QQDeviceInfo.getIMEI("ecd027");
+      }
+      catch (Throwable localThrowable)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("get imei error");
+          localStringBuilder.append(localThrowable.toString());
+          QLog.e("GetRegisterLiangHaoList", 2, localStringBuilder.toString());
         }
         this.jdField_a_of_type_JavaLangString = "000000000000001";
       }
     }
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   private String c()
   {
-    return MD5.toMD5(this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Int + this.b + this.c + this.d + "d4e1f57bb381ec80e480aa10c65d05d1").toUpperCase();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("d4e1f57bb381ec80e480aa10c65d05d1");
+    return MD5.toMD5(localStringBuilder.toString()).toUpperCase();
   }
   
   public void a()
@@ -195,7 +218,7 @@ public class GetRegisterLiangHaoList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.net.GetRegisterLiangHaoList
  * JD-Core Version:    0.7.0.1
  */

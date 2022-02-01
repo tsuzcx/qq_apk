@@ -14,10 +14,19 @@ public class MsgProcessPttImport
   extends MsgProcessImport
 {
   public static String b = VFSSourcePathConfig.c;
-  private static final String c = RmVFSUtils.getVFSPath(MsgBackupConstant.jdField_a_of_type_JavaLangString + "ptt" + File.separator);
+  private static final String c;
   private String d = (String)this.jdField_a_of_type_JavaUtilMap.get("md5");
   private String e = (String)this.jdField_a_of_type_JavaUtilMap.get("uuid");
   private String f = (String)this.jdField_a_of_type_JavaUtilMap.get("selfuin");
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(MsgBackupConstant.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("ptt");
+    localStringBuilder.append(File.separator);
+    c = RmVFSUtils.getVFSPath(localStringBuilder.toString());
+  }
   
   public MsgProcessPttImport(MsgBackupResEntity paramMsgBackupResEntity)
   {
@@ -31,14 +40,27 @@ public class MsgProcessPttImport
     if (this.f == null) {
       this.f = "";
     }
-    if ((TextUtils.isEmpty(this.d)) || (TextUtils.isEmpty(this.e)) || (TextUtils.isEmpty(this.f))) {
-      a("md5:" + this.d + " mUUID:" + this.e + " mSelfuin:" + this.f);
+    if ((TextUtils.isEmpty(this.d)) || (TextUtils.isEmpty(this.e)) || (TextUtils.isEmpty(this.f)))
+    {
+      paramMsgBackupResEntity = new StringBuilder();
+      paramMsgBackupResEntity.append("md5:");
+      paramMsgBackupResEntity.append(this.d);
+      paramMsgBackupResEntity.append(" mUUID:");
+      paramMsgBackupResEntity.append(this.e);
+      paramMsgBackupResEntity.append(" mSelfuin:");
+      paramMsgBackupResEntity.append(this.f);
+      a(paramMsgBackupResEntity.toString());
     }
   }
   
   public static String a(String paramString1, String paramString2)
   {
-    return RmVFSUtils.getVFSPath(b + paramString2 + File.separator + paramString1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(b);
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString1);
+    return RmVFSUtils.getVFSPath(localStringBuilder.toString());
   }
   
   public ResDownloadObject a()
@@ -46,22 +68,31 @@ public class MsgProcessPttImport
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity;
     String str = a();
     boolean bool = a(str);
-    if (QLog.isColorLevel()) {
-      a("getResDownloadObject,entity:" + ((MsgBackupResEntity)localObject).toLogString() + " tempPath:" + str + " exist:" + bool);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getResDownloadObject,entity:");
+      localStringBuilder.append(((MsgBackupResEntity)localObject).toLogString());
+      localStringBuilder.append(" tempPath:");
+      localStringBuilder.append(str);
+      localStringBuilder.append(" exist:");
+      localStringBuilder.append(bool);
+      a(localStringBuilder.toString());
     }
     localObject = new ResDownloadObject();
-    if (!bool) {}
-    for (bool = true;; bool = false)
-    {
-      ((ResDownloadObject)localObject).jdField_a_of_type_Boolean = bool;
-      ((ResDownloadObject)localObject).jdField_a_of_type_JavaLangString = str;
-      return localObject;
-    }
+    ((ResDownloadObject)localObject).jdField_a_of_type_Boolean = (bool ^ true);
+    ((ResDownloadObject)localObject).jdField_a_of_type_JavaLangString = str;
+    return localObject;
   }
   
   public String a()
   {
-    return c + this.d + this.e + this.f;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c);
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(this.f);
+    return localStringBuilder.toString();
   }
   
   public String b()
@@ -71,7 +102,7 @@ public class MsgProcessPttImport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.msgprocess.MsgProcessPttImport
  * JD-Core Version:    0.7.0.1
  */

@@ -13,11 +13,16 @@ class MiniAppVideoController$4
   
   public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if ((!paramBoolean) || (MiniAppVideoController.access$200(this.this$0) == null)) {
-      return;
+    if (paramBoolean)
+    {
+      if (MiniAppVideoController.access$200(this.this$0) == null) {
+        return;
+      }
+      long l1 = MiniAppVideoController.access$200(this.this$0).getDuration();
+      long l2 = paramInt;
+      this.position = (l1 * l2 / paramSeekBar.getMax());
+      MiniAppVideoController.access$300(this.this$0).onProgressChanged(MiniAppVideoController.access$1300(l2));
     }
-    this.position = (MiniAppVideoController.access$200(this.this$0).getDuration() * paramInt / paramSeekBar.getMax());
-    MiniAppVideoController.access$300(this.this$0).onProgressChanged(MiniAppVideoController.access$1300(paramInt));
   }
   
   public void onStartTrackingTouch(SeekBar paramSeekBar)
@@ -37,7 +42,7 @@ class MiniAppVideoController$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.media.MiniAppVideoController.4
  * JD-Core Version:    0.7.0.1
  */

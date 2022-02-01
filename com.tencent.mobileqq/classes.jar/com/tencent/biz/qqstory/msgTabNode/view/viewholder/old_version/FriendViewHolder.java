@@ -21,25 +21,33 @@ public class FriendViewHolder
   {
     super.a(paramMsgTabNodeInfo);
     this.itemView.setTag(paramMsgTabNodeInfo.a);
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject1 instanceof QQAppInterface))
     {
-      localObject = (QQAppInterface)localObject;
-      String str1 = String.valueOf(paramMsgTabNodeInfo.b);
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDrawable = FaceDrawable.getFaceDrawable((AppInterface)localObject, 1, str1);
+      Object localObject2 = (QQAppInterface)localObject1;
+      String str = String.valueOf(paramMsgTabNodeInfo.b);
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDrawable = FaceDrawable.getFaceDrawable((AppInterface)localObject2, 1, str);
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDrawable);
-      String str2 = ContactUtils.m((QQAppInterface)localObject, str1);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(str2);
-      ThreadManager.post(new FriendViewHolder.1(this, (QQAppInterface)localObject, str1), 8, null, true);
-      if (QLog.isColorLevel()) {
-        QLog.e("zivonchen", 2, "FriendViewHolder userItem = " + paramMsgTabNodeInfo.b + ", name = " + str2 + ", faceDrawable = " + this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDrawable);
+      localObject1 = ContactUtils.f((AppInterface)localObject2, str);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
+      ThreadManager.post(new FriendViewHolder.1(this, (QQAppInterface)localObject2, str), 8, null, true);
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("FriendViewHolder userItem = ");
+        ((StringBuilder)localObject2).append(paramMsgTabNodeInfo.b);
+        ((StringBuilder)localObject2).append(", name = ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(", faceDrawable = ");
+        ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDrawable);
+        QLog.e("zivonchen", 2, ((StringBuilder)localObject2).toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.viewholder.old_version.FriendViewHolder
  * JD-Core Version:    0.7.0.1
  */

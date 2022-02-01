@@ -13,7 +13,12 @@ public class V8JsContext
   {
     this.v8JsRuntime = paramV8JsRuntime;
     this.contextId = paramInt;
-    this.sTAG = ("V8JsCt-" + paramV8JsRuntime.getId() + "-" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("V8JsCt-");
+    localStringBuilder.append(paramV8JsRuntime.getId());
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramInt);
+    this.sTAG = localStringBuilder.toString();
   }
   
   private JsRuntimeThread getJsRunner()
@@ -164,12 +169,18 @@ public class V8JsContext
   
   public String toString()
   {
-    return "V8JsContext(" + this.v8JsRuntime.getId() + "," + this.contextId + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("V8JsContext(");
+    localStringBuilder.append(this.v8JsRuntime.getId());
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.contextId);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.v8rt.engine.V8JsContext
  * JD-Core Version:    0.7.0.1
  */

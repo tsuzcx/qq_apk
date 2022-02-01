@@ -10,7 +10,7 @@ import feedcloud.FeedCloudMeta.StShare;
 public final class QQCircleBase$UserCircleInfo
   extends MessageMicro<UserCircleInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 50, 58, 66 }, new String[] { "id", "name", "circleType", "circleTab", "logo", "shareInfo", "tagId", "circleJumpUrl" }, new Object[] { "", "", Integer.valueOf(0), Integer.valueOf(0), "", null, "", "" }, UserCircleInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField circleJumpUrl = PBField.initString("");
   public final PBInt32Field circleTab = PBField.initInt32(0);
   public final PBInt32Field circleType = PBField.initInt32(0);
@@ -19,10 +19,16 @@ public final class QQCircleBase$UserCircleInfo
   public final PBStringField name = PBField.initString("");
   public FeedCloudMeta.StShare shareInfo = new FeedCloudMeta.StShare();
   public final PBStringField tagId = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 50, 58, 66 }, new String[] { "id", "name", "circleType", "circleTab", "logo", "shareInfo", "tagId", "circleJumpUrl" }, new Object[] { "", "", localInteger, localInteger, "", null, "", "" }, UserCircleInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qqcircle.QQCircleBase.UserCircleInfo
  * JD-Core Version:    0.7.0.1
  */

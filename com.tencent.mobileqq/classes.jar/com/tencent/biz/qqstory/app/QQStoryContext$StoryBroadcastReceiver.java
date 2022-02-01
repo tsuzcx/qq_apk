@@ -18,8 +18,16 @@ import mqq.app.MobileQQ;
 public class QQStoryContext$StoryBroadcastReceiver
   extends BroadcastReceiver
 {
-  private static final String jdField_a_of_type_JavaLangString = "StoryBroadcastReceiver_" + MobileQQ.processName;
+  private static final String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean = false;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("StoryBroadcastReceiver_");
+    localStringBuilder.append(MobileQQ.processName);
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+  }
   
   public void a(Context paramContext)
   {
@@ -47,32 +55,33 @@ public class QQStoryContext$StoryBroadcastReceiver
   {
     SLog.a(jdField_a_of_type_JavaLangString, "onReceive, [context, intent=%s]", paramIntent);
     paramIntent = paramIntent.getAction();
-    if ("action_fire_create_story".equals(paramIntent)) {
+    if ("action_fire_create_story".equals(paramIntent))
+    {
       if (TextUtils.equals(paramContext.getPackageName(), MobileQQ.processName)) {
         Bosses.get().postJob(new QQStoryContext.StoryBroadcastReceiver.1(this, jdField_a_of_type_JavaLangString));
       }
     }
-    do
+    else
     {
-      return;
       if ("action_fire_get_config".equals(paramIntent))
       {
         long l = ((StoryConfigManager)SuperManager.a(10)).b();
         if (Math.abs(System.currentTimeMillis() - l) > 3600000L)
         {
           SLog.b(jdField_a_of_type_JavaLangString, "fireGetStoryConfig update story config from server.");
-          ((QQStoryHandler)QQStoryContext.a().getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).d();
+          ((QQStoryHandler)QQStoryContext.a().getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).a();
           return;
         }
         SLog.b(jdField_a_of_type_JavaLangString, "fireGetStoryConfig do not need update story config from server.");
         return;
       }
-    } while (!"action_fire_create_video_story".equals(paramIntent));
+      "action_fire_create_video_story".equals(paramIntent);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.app.QQStoryContext.StoryBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

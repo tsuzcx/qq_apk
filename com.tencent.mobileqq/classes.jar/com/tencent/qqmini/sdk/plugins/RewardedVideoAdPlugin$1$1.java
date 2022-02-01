@@ -3,103 +3,130 @@ package com.tencent.qqmini.sdk.plugins;
 import com.tencent.qqmini.sdk.action.AudioFocusEvent;
 import com.tencent.qqmini.sdk.core.AdFrequencyLimit;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.core.utils.WnsConfig;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.AbsRewardVideoAdView;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.ExpParam;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.IRewardVideoAdListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
-import com.tencent.qqmini.sdk.launcher.core.utils.AppBrandTask;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import java.util.List;
 
 class RewardedVideoAdPlugin$1$1
   implements AdProxy.IRewardVideoAdListener
 {
-  RewardedVideoAdPlugin$1$1(RewardedVideoAdPlugin.1 param1) {}
+  RewardedVideoAdPlugin$1$1(RewardedVideoAdPlugin.1 param1, AdProxy.AbsRewardVideoAdView paramAbsRewardVideoAdView) {}
   
   public void onADClick()
   {
-    QMLog.i("RewardedVideoAdPlugin", "onADClick, time = " + System.currentTimeMillis());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onADClick, time = ");
+    localStringBuilder.append(System.currentTimeMillis());
+    QMLog.i("RewardedVideoAdPlugin", localStringBuilder.toString());
   }
   
   public void onADClose(String paramString)
   {
-    QMLog.i("RewardedVideoAdPlugin", "onADClose,  time = " + System.currentTimeMillis());
-    RewardedVideoAdPlugin.access$700(this.this$1.this$0, this.this$1.val$req, paramString);
+    RewardedVideoAdPlugin.access$102(this.this$1.this$0, null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onADClose,  time = ");
+    localStringBuilder.append(System.currentTimeMillis());
+    QMLog.i("RewardedVideoAdPlugin", localStringBuilder.toString());
+    RewardedVideoAdPlugin.access$800(this.this$1.this$0, this.this$1.val$req, paramString);
     ThreadManager.executeOnComputationThreadPool(new RewardedVideoAdPlugin.1.1.1(this, paramString));
-    if (RewardedVideoAdPlugin.access$900(this.this$1.this$0) != null) {
-      RewardedVideoAdPlugin.access$1000(this.this$1.this$0).performAction(AudioFocusEvent.obtain(1));
+    if (RewardedVideoAdPlugin.access$1000(this.this$1.this$0) != null) {
+      RewardedVideoAdPlugin.access$1100(this.this$1.this$0).performAction(AudioFocusEvent.obtain(1));
     }
     AdFrequencyLimit.setRewardVideoAdShowing(false);
-    RewardedVideoAdPlugin.access$1102(this.this$1.this$0, true);
+    RewardedVideoAdPlugin.access$1202(this.this$1.this$0, true);
   }
   
   public void onADExpose()
   {
-    QMLog.i("RewardedVideoAdPlugin", "onADExpose, time = " + System.currentTimeMillis());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onADExpose, time = ");
+    localStringBuilder.append(System.currentTimeMillis());
+    QMLog.i("RewardedVideoAdPlugin", localStringBuilder.toString());
   }
   
-  public void onADLoad()
+  public void onADLoad(List<AdProxy.ExpParam> paramList)
   {
-    QMLog.i("RewardedVideoAdPlugin", "onADLoad, time = " + System.currentTimeMillis());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onADLoad, time = ");
+    localStringBuilder.append(System.currentTimeMillis());
+    localStringBuilder.append(" showAdAfterLoad:");
+    localStringBuilder.append(this.this$1.val$showAdAfterLoad);
+    QMLog.i("RealTimeRewardedVideoAdPlugin", localStringBuilder.toString());
     RewardedVideoAdPlugin.access$200(this.this$1.this$0, this.this$1.val$req, true, this.this$1.val$compId);
     RewardedVideoAdPlugin.access$300(this.this$1.this$0, this.this$1.val$req, true, this.this$1.val$compId);
     this.this$1.val$req.ok();
     RewardedVideoAdPlugin.access$002(this.this$1.this$0, false);
+    RewardedVideoAdPlugin.access$400(this.this$1.this$0, this.this$1.val$context, this.this$1.val$req, this.this$1.val$compId, this.this$1.val$showAdAfterLoad, paramList);
   }
   
   public void onADShow()
   {
-    if (RewardedVideoAdPlugin.access$400(this.this$1.this$0) != null) {
-      RewardedVideoAdPlugin.access$500(this.this$1.this$0).performAction(AudioFocusEvent.obtain(2));
+    if (RewardedVideoAdPlugin.access$500(this.this$1.this$0) != null) {
+      RewardedVideoAdPlugin.access$600(this.this$1.this$0).performAction(AudioFocusEvent.obtain(2));
     }
-    QMLog.i("RewardedVideoAdPlugin", "onADShow, time = " + System.currentTimeMillis());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onADShow, time = ");
+    localStringBuilder.append(System.currentTimeMillis());
+    QMLog.i("RewardedVideoAdPlugin", localStringBuilder.toString());
   }
   
   public void onError(int paramInt, String paramString)
   {
-    QMLog.i("RewardedVideoAdPlugin", "onError, time = " + System.currentTimeMillis() + ", errCode = " + paramInt + ", errMsg = " + paramString);
-    RewardedVideoAdPlugin.access$1200(this.this$1.this$0, this.this$1.val$req, paramInt, this.this$1.val$compId);
-    RewardedVideoAdPlugin.access$002(this.this$1.this$0, false);
-    RewardedVideoAdPlugin.access$102(this.this$1.this$0, null);
-    RewardedVideoAdPlugin.access$1102(this.this$1.this$0, true);
-    paramString = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-    if ((paramString != null) && (paramString.isGooglePlayVersion())) {
-      if (WnsConfig.getConfig("qqminiapp", "mini_app_google_play_ad_switch", 0) != 1) {
-        break label182;
-      }
-    }
-    label182:
-    for (paramInt = 1;; paramInt = 0)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onError, time = ");
+    localStringBuilder.append(System.currentTimeMillis());
+    localStringBuilder.append(", errCode = ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", errMsg = ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" showAdAfterLoad：");
+    localStringBuilder.append(this.this$1.val$showAdAfterLoad);
+    QMLog.i("RewardedVideoAdPlugin", localStringBuilder.toString());
+    if (this.this$1.val$showAdAfterLoad)
     {
-      if ((paramInt == 0) && (!RewardedVideoAdPlugin.access$1300(this.this$1.this$0)))
-      {
-        AppBrandTask.runTaskOnUiThread(new RewardedVideoAdPlugin.1.1.2(this));
-        RewardedVideoAdPlugin.access$1302(this.this$1.this$0, true);
-      }
+      QMLog.i("RealTimeRewardedVideoAdPlugin", "showAdAfterLoad 实时load的广告拉取失败了 展示之前的广告");
+      RewardedVideoAdPlugin.access$1300(this.this$1.this$0, this.val$lastRewardedVideoAd, this.this$1.val$context, this.this$1.val$req, this.this$1.val$compId);
       return;
     }
+    RewardedVideoAdPlugin.access$1400(this.this$1.this$0, this.this$1.val$req, paramInt, this.this$1.val$compId);
+    RewardedVideoAdPlugin.access$002(this.this$1.this$0, false);
+    RewardedVideoAdPlugin.access$102(this.this$1.this$0, null);
+    RewardedVideoAdPlugin.access$1202(this.this$1.this$0, true);
+    RewardedVideoAdPlugin.access$1500(this.this$1.this$0);
   }
   
   public void onReward()
   {
-    QMLog.i("RewardedVideoAdPlugin", "onReward, time = " + System.currentTimeMillis());
-    RewardedVideoAdPlugin.access$602(this.this$1.this$0, true);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReward, time = ");
+    localStringBuilder.append(System.currentTimeMillis());
+    QMLog.i("RewardedVideoAdPlugin", localStringBuilder.toString());
+    RewardedVideoAdPlugin.access$702(this.this$1.this$0, true);
   }
   
   public void onVideoCached()
   {
-    QMLog.i("RewardedVideoAdPlugin", "onVideoCached, time = " + System.currentTimeMillis());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onVideoCached, time = ");
+    localStringBuilder.append(System.currentTimeMillis());
+    QMLog.i("RewardedVideoAdPlugin", localStringBuilder.toString());
   }
   
   public void onVideoComplete()
   {
-    QMLog.i("RewardedVideoAdPlugin", "onVideoComplete, time = " + System.currentTimeMillis());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onVideoComplete, time = ");
+    localStringBuilder.append(System.currentTimeMillis());
+    QMLog.i("RewardedVideoAdPlugin", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.RewardedVideoAdPlugin.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ class LoginAccountFragment$3
 {
   LoginAccountFragment$3(LoginAccountFragment paramLoginAccountFragment) {}
   
-  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2, String paramString4)
+  protected void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2, String paramString4)
   {
     QLog.d("LoginAccountFragment", 1, new Object[] { "onLoginFailed ret=", Integer.valueOf(paramInt1), " errorMsg", paramString2 });
     QuickLoginReporter.c(paramInt1, paramString2);
@@ -27,51 +27,53 @@ class LoginAccountFragment$3
     }
     LoginAccountFragment.a(this.a);
     LoginUtils.b(LoginAccountFragment.a(this.a));
-    if ((paramString2 == null) || (paramString2.equals("")))
+    if ((paramString2 != null) && (!paramString2.equals("")))
     {
-      QQToast.a(LoginAccountFragment.a(this.a), 2131694457, 0).a();
+      paramString1 = new LoginErrorInfo(paramString1, paramString2, paramString3, paramInt1, paramArrayOfByte1, paramInt2, paramArrayOfByte2, paramString4, LoginAccountFragment.a(this.a).getMaskUin(), LoginAccountFragment.a(this.a).getText().toString(), true);
+      LoginAccountFragment.a(this.a).a(LoginAccountFragment.a(this.a), LoginAccountFragment.a(this.a), paramString1);
+      LoginAccountFragment.b(this.a, paramString2);
       return;
     }
-    paramString1 = new LoginErrorInfo(paramString1, paramString2, paramString3, paramInt1, paramArrayOfByte1, paramInt2, paramArrayOfByte2, paramString4, LoginAccountFragment.a(this.a).getMaskUin(), LoginAccountFragment.a(this.a).getText().toString(), true);
-    LoginAccountFragment.a(this.a).a(LoginAccountFragment.a(this.a), LoginAccountFragment.a(this.a), paramString1);
-    LoginAccountFragment.b(this.a, paramString2);
+    QQToast.a(LoginAccountFragment.a(this.a), 2131694422, 0).a();
   }
   
   public void onLoginSuccess(String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
     QLog.d("LoginAccountFragment", 1, "onLoginSuccess");
     QuickLoginReporter.c(0, "SUCCESS");
-    if (LoginAccountFragment.a(this.a)) {}
-    do
-    {
+    if (LoginAccountFragment.a(this.a)) {
       return;
-      LoginAccountFragment.a(this.a, paramArrayOfByte);
-      LoginAccountFragment.a(this.a);
-      GatewayUtil.a(LoginAccountFragment.a(this.a), LoginAccountFragment.a(this.a));
-      LoginAccountFragment.a(this.a, paramString1);
-      paramString2 = this.a.getActivity();
-    } while ((LoginAccountFragment.a(this.a) != 2) || (paramString2 == null));
-    paramArrayOfByte = new Intent();
-    paramArrayOfByte.putExtra("last_account", paramString1);
-    paramString2.setResult(-1, paramArrayOfByte);
-    paramString2.finish();
+    }
+    LoginAccountFragment.a(this.a, paramArrayOfByte);
+    LoginAccountFragment.a(this.a);
+    GatewayUtil.a(LoginAccountFragment.a(this.a), LoginAccountFragment.a(this.a));
+    LoginAccountFragment.a(this.a, paramString1);
+    paramString2 = this.a.getQBaseActivity();
+    if ((LoginAccountFragment.a(this.a) == 2) && (paramString2 != null))
+    {
+      paramArrayOfByte = new Intent();
+      paramArrayOfByte.putExtra("last_account", paramString1);
+      paramString2.setResult(-1, paramArrayOfByte);
+      paramString2.finish();
+    }
   }
   
-  public void onLoginTimeout(String paramString)
+  protected void onLoginTimeout(String paramString)
   {
     QLog.d("LoginAccountFragment", 1, new Object[] { "onLoginTimeout, ", paramString });
     QuickLoginReporter.c(1002, "login timeout");
     if (LoginAccountFragment.a(this.a)) {
       return;
     }
-    QQToast.a(LoginAccountFragment.a(this.a), 2131694457, 0).a();
+    QQToast.a(LoginAccountFragment.a(this.a), 2131694422, 0).a();
     LoginAccountFragment.a(this.a);
-    LoginAccountFragment.b(this.a, this.a.getString(2131694457));
+    paramString = this.a;
+    LoginAccountFragment.b(paramString, paramString.getString(2131694422));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.LoginAccountFragment.3
  * JD-Core Version:    0.7.0.1
  */

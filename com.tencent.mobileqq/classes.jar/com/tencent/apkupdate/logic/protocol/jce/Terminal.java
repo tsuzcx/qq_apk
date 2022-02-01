@@ -24,26 +24,31 @@ public final class Terminal
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.imei != null) {
-      paramJceOutputStream.write(this.imei, 0);
+    String str = this.imei;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.macAdress != null) {
-      paramJceOutputStream.write(this.macAdress, 1);
+    str = this.macAdress;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.androidId != null) {
-      paramJceOutputStream.write(this.androidId, 2);
+    str = this.androidId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.androidIdSdCard != null) {
-      paramJceOutputStream.write(this.androidIdSdCard, 3);
+    str = this.androidIdSdCard;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.imsi != null) {
-      paramJceOutputStream.write(this.imsi, 4);
+    str = this.imsi;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.apkupdate.logic.protocol.jce.Terminal
  * JD-Core Version:    0.7.0.1
  */

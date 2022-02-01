@@ -9,14 +9,17 @@ final class MiniProgramLpReportDC04239$9
   
   public void run()
   {
-    if ((this.val$miniAppConfig != null) && (this.val$miniAppConfig.config != null)) {
-      MiniProgramLpReportDC04239.access$000(this.val$miniAppConfig, MiniProgramLpReportDC04239.getAppType(this.val$miniAppConfig), null, "inner-app", "from_api", this.val$eventName);
+    MiniAppConfig localMiniAppConfig = this.val$miniAppConfig;
+    if ((localMiniAppConfig != null) && (localMiniAppConfig.config != null))
+    {
+      localMiniAppConfig = this.val$miniAppConfig;
+      MiniProgramLpReportDC04239.access$000(localMiniAppConfig, MiniProgramLpReportDC04239.getAppType(localMiniAppConfig), null, "inner-app", "from_api", this.val$eventName);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239.9
  * JD-Core Version:    0.7.0.1
  */

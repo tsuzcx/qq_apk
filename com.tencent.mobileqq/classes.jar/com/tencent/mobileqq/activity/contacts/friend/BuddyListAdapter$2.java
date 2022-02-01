@@ -18,13 +18,12 @@ class BuddyListAdapter$2
   
   public void OnClick(View paramView, int paramInt)
   {
-    if (!NetworkUtil.g(this.jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListAdapter.a)) {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListAdapter.a, 1, 2131692257, 0).a();
-    }
-    for (;;)
+    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListAdapter.a))
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
-      return;
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListAdapter.a, 1, 2131692183, 0).a();
+    }
+    else
+    {
       paramView = (FriendListHandler)BuddyListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListAdapter).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
       if (this.jdField_a_of_type_Boolean)
       {
@@ -37,11 +36,12 @@ class BuddyListAdapter$2
         ReportController.b(BuddyListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListAdapter), "dc00898", "", "", "0X800808A", "0X800808A", 0, 0, "", "", "", "");
       }
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.friend.BuddyListAdapter.2
  * JD-Core Version:    0.7.0.1
  */

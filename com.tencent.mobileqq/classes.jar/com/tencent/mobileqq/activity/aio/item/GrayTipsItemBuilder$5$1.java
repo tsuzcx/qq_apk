@@ -2,10 +2,10 @@ package com.tencent.mobileqq.activity.aio.item;
 
 import android.view.View;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BizTroopHandler;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.api.handler.ITroopMngHandler;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
@@ -17,17 +17,14 @@ class GrayTipsItemBuilder$5$1
   public void OnClick(View paramView, int paramInt)
   {
     this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    switch (paramInt)
-    {
-    }
-    do
-    {
+    if (paramInt != 0) {
       return;
-    } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder$5.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder$5.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000) {}
     try
     {
       long l = Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder$5.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue();
-      paramView = (BizTroopHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder$5.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.BIZ_TROOP_HANDLER);
+      paramView = (ITroopMngHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder$5.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MNG_HANDLER);
       if (paramView != null) {
         paramView.a(l);
       }
@@ -39,7 +36,7 @@ class GrayTipsItemBuilder$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.5.1
  * JD-Core Version:    0.7.0.1
  */

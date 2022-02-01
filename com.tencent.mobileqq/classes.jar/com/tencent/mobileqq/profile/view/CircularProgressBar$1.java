@@ -13,7 +13,8 @@ class CircularProgressBar$1
     this.a.invalidate();
     if (CircularProgressBar.a(this.a))
     {
-      CircularProgressBar.a(this.a, CircularProgressBar.a(this.a) + CircularProgressBar.b(this.a));
+      paramMessage = this.a;
+      CircularProgressBar.a(paramMessage, CircularProgressBar.a(paramMessage) + CircularProgressBar.b(this.a));
       if (CircularProgressBar.a(this.a) > 360) {
         CircularProgressBar.a(this.a, 0);
       }
@@ -23,7 +24,7 @@ class CircularProgressBar$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.CircularProgressBar.1
  * JD-Core Version:    0.7.0.1
  */

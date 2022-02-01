@@ -12,8 +12,16 @@ class MinFileUtils
   static void a(File paramFile)
   {
     File localFile = paramFile.getParentFile();
-    if ((!localFile.isDirectory()) && (!localFile.mkdirs())) {
-      throw new IOException("创建父目录失败,文件目录:" + paramFile.getAbsolutePath() + " parent dir exists=" + localFile.exists());
+    if (!localFile.isDirectory())
+    {
+      if (localFile.mkdirs()) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder("创建父目录失败,文件目录:");
+      localStringBuilder.append(paramFile.getAbsolutePath());
+      localStringBuilder.append(" parent dir exists=");
+      localStringBuilder.append(localFile.exists());
+      throw new IOException(localStringBuilder.toString());
     }
   }
   
@@ -40,66 +48,92 @@ class MinFileUtils
   
   static void c(File paramFile)
   {
-    if (!paramFile.exists()) {
-      throw new IllegalArgumentException(paramFile + " does not exist");
+    if (paramFile.exists())
+    {
+      if (paramFile.isDirectory())
+      {
+        File[] arrayOfFile = paramFile.listFiles();
+        if (arrayOfFile != null)
+        {
+          paramFile = null;
+          int j = arrayOfFile.length;
+          int i = 0;
+          while (i < j)
+          {
+            File localFile2 = arrayOfFile[i];
+            try
+            {
+              File localFile1;
+              if (localFile2.isDirectory())
+              {
+                localFile1 = paramFile;
+                if (localFile2.exists())
+                {
+                  c(localFile2);
+                  if (localFile2.delete())
+                  {
+                    localFile1 = paramFile;
+                  }
+                  else
+                  {
+                    paramFile = new StringBuilder("Unable to delete directory ");
+                    paramFile.append(localFile2);
+                    paramFile.append(".");
+                    throw new IOException(paramFile.toString());
+                  }
+                }
+              }
+              else
+              {
+                boolean bool = localFile2.exists();
+                localFile1 = paramFile;
+                if (!localFile2.delete())
+                {
+                  if (!bool)
+                  {
+                    paramFile = new StringBuilder("File does not exist: ");
+                    paramFile.append(localFile2);
+                    throw new FileNotFoundException(paramFile.toString());
+                  }
+                  paramFile = new StringBuilder("Unable to delete file: ");
+                  paramFile.append(localFile2);
+                  throw new IOException(paramFile.toString());
+                }
+              }
+            }
+            catch (IOException localIOException)
+            {
+              i += 1;
+              paramFile = localIOException;
+            }
+          }
+          if (paramFile == null) {
+            return;
+          }
+          throw paramFile;
+        }
+        localStringBuilder = new StringBuilder("Failed to list contents of ");
+        localStringBuilder.append(paramFile);
+        throw new IOException(localStringBuilder.toString());
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramFile);
+      localStringBuilder.append(" is not a directory");
+      throw new IllegalArgumentException(localStringBuilder.toString());
     }
-    if (!paramFile.isDirectory()) {
-      throw new IllegalArgumentException(paramFile + " is not a directory");
-    }
-    File[] arrayOfFile = paramFile.listFiles();
-    if (arrayOfFile == null) {
-      throw new IOException("Failed to list contents of " + paramFile);
-    }
-    int j = arrayOfFile.length;
-    paramFile = null;
-    int i = 0;
-    label267:
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramFile);
+    localStringBuilder.append(" does not exist");
+    paramFile = new IllegalArgumentException(localStringBuilder.toString());
     for (;;)
     {
-      File localFile2;
-      if (i < j) {
-        localFile2 = arrayOfFile[i];
-      }
-      try
-      {
-        if (localFile2.isDirectory())
-        {
-          localFile1 = paramFile;
-          if (!localFile2.exists()) {
-            break label267;
-          }
-          c(localFile2);
-          localFile1 = paramFile;
-          if (localFile2.delete()) {
-            break label267;
-          }
-          throw new IOException("Unable to delete directory " + localFile2 + ".");
-        }
-        boolean bool = localFile2.exists();
-        File localFile1 = paramFile;
-        if (localFile2.delete()) {
-          break label267;
-        }
-        if (!bool) {
-          throw new FileNotFoundException("File does not exist: " + localFile2);
-        }
-        throw new IOException("Unable to delete file: " + localFile2);
-      }
-      catch (IOException localIOException)
-      {
-        i += 1;
-        paramFile = localIOException;
-      }
-      if (paramFile != null) {
-        throw paramFile;
-      }
-      return;
+      throw paramFile;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hydevteam.pluginframework.pluginmanager.MinFileUtils
  * JD-Core Version:    0.7.0.1
  */

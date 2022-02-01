@@ -28,14 +28,33 @@ public final class VideoCaptureView$CaptureVideoInfo
     return this.jdField_a_of_type_JavaLangString;
   }
   
+  public final void a(int paramInt)
+  {
+    if (paramInt <= 0) {
+      paramInt = 0;
+    }
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
   public final int b()
   {
     return this.b;
   }
+  
+  public final void b(int paramInt)
+  {
+    if (paramInt > this.jdField_a_of_type_Int)
+    {
+      this.b = paramInt;
+      return;
+    }
+    a(0);
+    this.b = 2147483647;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videocapture.VideoCaptureView.CaptureVideoInfo
  * JD-Core Version:    0.7.0.1
  */

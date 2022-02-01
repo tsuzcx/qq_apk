@@ -44,11 +44,19 @@ public class ReportTaskImpl
   
   public void send()
   {
-    String str = this.mActType + "#" + this.mPage + "#" + this.mModule;
-    if ((TextUtils.isEmpty(this.mActType)) || (TextUtils.isEmpty(this.mPage)) || (TextUtils.isEmpty(this.mModule)) || (TextUtils.isEmpty((CharSequence)this.map.get("page_desc"))) || (TextUtils.isEmpty((CharSequence)this.map.get("page_module_desc"))) || (TextUtils.isEmpty((CharSequence)this.map.get("act_type_desc")))) {
-      throw new NullPointerException("缺少上报基础字段，请检查 page,module,actType以及他们的描述");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.mActType);
+    ((StringBuilder)localObject).append("#");
+    ((StringBuilder)localObject).append(this.mPage);
+    ((StringBuilder)localObject).append("#");
+    ((StringBuilder)localObject).append(this.mModule);
+    localObject = ((StringBuilder)localObject).toString();
+    if ((!TextUtils.isEmpty(this.mActType)) && (!TextUtils.isEmpty(this.mPage)) && (!TextUtils.isEmpty(this.mModule)) && (!TextUtils.isEmpty((CharSequence)this.map.get("page_desc"))) && (!TextUtils.isEmpty((CharSequence)this.map.get("page_module_desc"))) && (!TextUtils.isEmpty((CharSequence)this.map.get("act_type_desc"))))
+    {
+      this.mDataReportInterface.reportEvent((String)localObject, this.map, this.realTimeEvent);
+      return;
     }
-    this.mDataReportInterface.reportEvent(str, this.map, this.realTimeEvent);
+    throw new NullPointerException("缺少上报基础字段，请检查 page,module,actType以及他们的描述");
   }
   
   public ReportTask setActType(String paramString)
@@ -109,7 +117,7 @@ public class ReportTaskImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.datareport.ReportTaskImpl
  * JD-Core Version:    0.7.0.1
  */

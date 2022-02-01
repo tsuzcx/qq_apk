@@ -14,29 +14,41 @@ class CdnPmUpdater$1
     try
     {
       boolean bool = CdnPmUpdater.a(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.i("shadow::CdnPmUpdater", 2, "isNeedDownload:" + bool);
-      }
-      if (!bool)
+      Object localObject1;
+      if (QLog.isColorLevel())
       {
-        localFile = this.a.getLatest();
-        return localFile;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("isNeedDownload:");
+        ((StringBuilder)localObject1).append(bool);
+        QLog.i("shadow::CdnPmUpdater", 2, ((StringBuilder)localObject1).toString());
       }
-      File localFile = this.a.a();
-      if (CdnPmUpdater.a(this.a) != null) {
-        CdnPmUpdater.a(this.a).a();
+      if (!bool) {
+        localObject1 = this.a.getLatest();
       }
-      return localFile;
+      for (;;)
+      {
+        CdnPmUpdater.a(this.a, false);
+        return localObject1;
+        File localFile = this.a.a();
+        localObject1 = localFile;
+        if (CdnPmUpdater.a(this.a) != null)
+        {
+          CdnPmUpdater.a(this.a).a();
+          localObject1 = localFile;
+        }
+      }
+      throw localObject2;
     }
     finally
     {
       CdnPmUpdater.a(this.a, false);
     }
+    for (;;) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.CdnPmUpdater.1
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,7 @@ public class GuessAutoLineTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (super.getLineCount() <= 1)
@@ -35,7 +35,7 @@ public class GuessAutoLineTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.stage.guesstext.GuessAutoLineTextView
  * JD-Core Version:    0.7.0.1
  */

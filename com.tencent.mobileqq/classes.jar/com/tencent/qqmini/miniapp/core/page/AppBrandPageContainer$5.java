@@ -12,25 +12,23 @@ class AppBrandPageContainer$5
   
   public Boolean perform(BaseRuntime paramBaseRuntime)
   {
-    if ((paramBaseRuntime instanceof BaseAppBrandRuntime))
-    {
+    if ((paramBaseRuntime instanceof BaseAppBrandRuntime)) {
       paramBaseRuntime = (BaseAppBrandRuntime)paramBaseRuntime;
-      if ((paramBaseRuntime == null) || (paramBaseRuntime.getAppStateManager() == null) || (!paramBaseRuntime.getAppStateManager().isFromPrelaunch)) {
-        break label45;
-      }
-    }
-    label45:
-    for (boolean bool = true;; bool = false)
-    {
-      return Boolean.valueOf(bool);
+    } else {
       paramBaseRuntime = null;
-      break;
     }
+    boolean bool;
+    if ((paramBaseRuntime != null) && (paramBaseRuntime.getAppStateManager() != null) && (paramBaseRuntime.getAppStateManager().isFromPrelaunch)) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    return Boolean.valueOf(bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.AppBrandPageContainer.5
  * JD-Core Version:    0.7.0.1
  */

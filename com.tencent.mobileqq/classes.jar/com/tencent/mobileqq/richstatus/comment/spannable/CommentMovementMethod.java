@@ -40,6 +40,7 @@ public class CommentMovementMethod
   public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
     int i = paramMotionEvent.getAction();
+    Object localObject;
     if (i == 0)
     {
       i = (int)paramMotionEvent.getX();
@@ -48,8 +49,8 @@ public class CommentMovementMethod
       int m = paramTextView.getTotalPaddingTop();
       int n = paramTextView.getScrollX();
       int i1 = paramTextView.getScrollY();
-      Layout localLayout = paramTextView.getLayout();
-      i = localLayout.getOffsetForHorizontal(localLayout.getLineForVertical(j - m + i1), i - k + n);
+      localObject = paramTextView.getLayout();
+      i = ((Layout)localObject).getOffsetForHorizontal(((Layout)localObject).getLineForVertical(j - m + i1), i - k + n);
       this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan = ((ClickableSpan[])paramSpannable.getSpans(i, i, ClickableSpan.class));
       if (this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan.length > 0)
       {
@@ -58,38 +59,40 @@ public class CommentMovementMethod
         this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan = new BackgroundColorSpan(this.b);
         paramSpannable.setSpan(this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan, paramSpannable.getSpanStart(this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan[0]), paramSpannable.getSpanEnd(this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan[0]), 33);
       }
+      else
+      {
+        a(true);
+        paramTextView.setBackgroundColor(this.jdField_a_of_type_Int);
+      }
     }
-    for (;;)
+    else if (i == 1)
     {
-      return Touch.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
-      a(true);
-      paramTextView.setBackgroundColor(this.jdField_a_of_type_Int);
-      continue;
-      if (i == 1)
+      localObject = this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan;
+      if (localObject.length > 0)
       {
-        if (this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan.length > 0)
-        {
-          this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan[0].onClick(paramTextView);
-          if (this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan != null) {
-            paramSpannable.removeSpan(this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan);
-          }
+        localObject[0].onClick(paramTextView);
+        localObject = this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan;
+        if (localObject != null) {
+          paramSpannable.removeSpan(localObject);
         }
-        Selection.removeSelection(paramSpannable);
-        paramTextView.setBackgroundResource(2131167305);
       }
-      else if (i != 2)
-      {
-        if (this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan != null) {
-          paramSpannable.removeSpan(this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan);
-        }
-        paramTextView.setBackgroundResource(2131167305);
-      }
+      Selection.removeSelection(paramSpannable);
+      paramTextView.setBackgroundResource(2131167333);
     }
+    else if (i != 2)
+    {
+      localObject = this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan;
+      if (localObject != null) {
+        paramSpannable.removeSpan(localObject);
+      }
+      paramTextView.setBackgroundResource(2131167333);
+    }
+    return Touch.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.comment.spannable.CommentMovementMethod
  * JD-Core Version:    0.7.0.1
  */

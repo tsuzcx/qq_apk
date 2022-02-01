@@ -1,5 +1,6 @@
 package com.tencent.biz.pubaccount.weishi_new.comment;
 
+import android.content.Context;
 import android.text.Editable;
 import android.text.SpannableStringBuilder;
 import android.text.TextWatcher;
@@ -23,45 +24,55 @@ class WsCommentInputPopupWindow$7
       return;
     }
     WsCommentInputPopupWindow.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentInputPopupWindow).removeTextChangedListener(this);
+    Object localObject;
+    StringBuilder localStringBuilder;
     if (paramEditable.length() > WsCommentInputPopupWindow.b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentInputPopupWindow))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentInputPopupWindow.getContext(), HardCodeUtil.a(2131702235) + WsCommentInputPopupWindow.b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentInputPopupWindow) + HardCodeUtil.a(2131702236), 0).a();
-      paramEditable.delete(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.b);
-      WsCommentInputPopupWindow.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentInputPopupWindow).addTextChangedListener(this);
-      return;
+      localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentInputPopupWindow.getContext();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(HardCodeUtil.a(2131702369));
+      localStringBuilder.append(WsCommentInputPopupWindow.b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentInputPopupWindow));
+      localStringBuilder.append(HardCodeUtil.a(2131702370));
+      QQToast.a((Context)localObject, localStringBuilder.toString(), 0).a();
+      i = this.jdField_a_of_type_Int;
+      paramEditable.delete(i, this.b + i);
     }
-    Object localObject1 = paramEditable.toString().substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.b);
-    int i = ((String)localObject1).indexOf('/');
-    if ((i >= 0) && (i < ((String)localObject1).length() - 1))
+    else
     {
-      localObject1 = new SpannableStringBuilder(paramEditable.toString());
-      EmoWindow.a(WsCommentInputPopupWindow.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentInputPopupWindow).getContext(), (SpannableStringBuilder)localObject1);
-    }
-    for (;;)
-    {
-      for (;;)
+      localStringBuilder = null;
+      localObject = paramEditable.toString();
+      i = this.jdField_a_of_type_Int;
+      String str = ((String)localObject).substring(i, this.b + i);
+      i = str.indexOf('/');
+      localObject = localStringBuilder;
+      if (i >= 0)
       {
-        if (localObject1 != null) {
-          i = WsCommentInputPopupWindow.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentInputPopupWindow).getSelectionEnd();
-        }
-        try
+        localObject = localStringBuilder;
+        if (i < str.length() - 1)
         {
-          WsCommentInputPopupWindow.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentInputPopupWindow).setText((CharSequence)localObject1);
-          WsCommentInputPopupWindow.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentInputPopupWindow).setSelection(i);
-          this.b = 0;
-          this.jdField_a_of_type_Int = 0;
-        }
-        catch (ArrayIndexOutOfBoundsException localArrayIndexOutOfBoundsException)
-        {
-          for (;;)
-          {
-            WsCommentInputPopupWindow.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentInputPopupWindow).setText(paramEditable.toString());
-            i = paramEditable.toString().length();
-          }
+          localObject = new SpannableStringBuilder(paramEditable.toString());
+          EmoWindow.a(WsCommentInputPopupWindow.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentInputPopupWindow).getContext(), (SpannableStringBuilder)localObject);
         }
       }
-      Object localObject2 = null;
+      if (localObject != null) {
+        i = WsCommentInputPopupWindow.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentInputPopupWindow).getSelectionEnd();
+      }
     }
+    try
+    {
+      WsCommentInputPopupWindow.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentInputPopupWindow).setText((CharSequence)localObject);
+    }
+    catch (ArrayIndexOutOfBoundsException localArrayIndexOutOfBoundsException)
+    {
+      label240:
+      break label240;
+    }
+    WsCommentInputPopupWindow.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentInputPopupWindow).setText(paramEditable.toString());
+    int i = paramEditable.toString().length();
+    WsCommentInputPopupWindow.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentInputPopupWindow).setSelection(i);
+    this.b = 0;
+    this.jdField_a_of_type_Int = 0;
+    WsCommentInputPopupWindow.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentInputPopupWindow).addTextChangedListener(this);
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -77,7 +88,7 @@ class WsCommentInputPopupWindow$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentInputPopupWindow.7
  * JD-Core Version:    0.7.0.1
  */

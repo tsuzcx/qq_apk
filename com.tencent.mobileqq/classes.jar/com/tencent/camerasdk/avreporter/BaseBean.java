@@ -6,28 +6,37 @@ import java.util.HashMap;
 public class BaseBean
 {
   @ReportField
-  public Long avg_cost_time = Long.valueOf(0L);
+  public Long avg_cost_time;
   @ReportField
-  public int avg_memory_usage = 0;
+  public int avg_memory_usage;
   @ReportField
-  public Long duration = Long.valueOf(0L);
+  public Long duration;
   @ReportField
   public String event;
   @ReportField
-  public int failure_count = 0;
+  public int failure_count;
   @ReportField
-  public int max_memory_usage = 0;
+  public int max_memory_usage;
   @ReportField
   public String service;
   @ReportField
-  public int success_count = 0;
+  public int success_count;
   @ReportField
-  public Long timestamp = Long.valueOf(0L);
+  public Long timestamp;
   @ReportField
-  public String version = "0.0.0";
+  public String version;
   
   public BaseBean(String paramString1, String paramString2, String paramString3)
   {
+    Long localLong = Long.valueOf(0L);
+    this.timestamp = localLong;
+    this.duration = localLong;
+    this.success_count = 0;
+    this.failure_count = 0;
+    this.avg_cost_time = localLong;
+    this.avg_memory_usage = 0;
+    this.max_memory_usage = 0;
+    this.version = "0.0.0";
     this.service = paramString1;
     this.event = paramString2;
     this.version = paramString3;
@@ -39,78 +48,59 @@ public class BaseBean
     Object localObject1 = getClass().getSuperclass().getDeclaredFields();
     int j = localObject1.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j)
-      {
-        Object localObject2 = localObject1[i];
-        if (localObject2.isAnnotationPresent(ReportField.class)) {}
+      Object localObject2 = localObject1[i];
+      if (localObject2.isAnnotationPresent(ReportField.class)) {
         try
         {
           localHashMap.put(localObject2.getName(), localObject2.get(this));
-          i += 1;
         }
         catch (IllegalAccessException localIllegalAccessException2)
         {
-          for (;;)
-          {
-            localIllegalAccessException2.printStackTrace();
-          }
+          localIllegalAccessException2.printStackTrace();
         }
       }
+      i += 1;
     }
     Field[] arrayOfField = getClass().getDeclaredFields();
-    int k = arrayOfField.length;
+    j = arrayOfField.length;
     i = 0;
-    if (i < k)
+    while (i < j)
     {
       Field localField = arrayOfField[i];
-      if ((paramBoolean.booleanValue()) && (!localField.isAnnotationPresent(ReportField.class))) {}
-      for (;;)
+      if ((!paramBoolean.booleanValue()) || (localField.isAnnotationPresent(ReportField.class)))
       {
-        i += 1;
-        break;
         localObject1 = (ReportKey)localField.getAnnotation(ReportKey.class);
-        if (localObject1 == null)
-        {
+        if (localObject1 == null) {
           localObject1 = localField.getName();
-          label158:
-          if (localField.isAccessible()) {
-            break label217;
-          }
-          j = 1;
-          if (j != 0) {
-            localField.setAccessible(true);
-          }
+        } else {
+          localObject1 = ((ReportKey)localObject1).name();
+        }
+        boolean bool = localField.isAccessible() ^ true;
+        if (bool) {
+          localField.setAccessible(true);
         }
         try
         {
           localHashMap.put(localObject1, localField.get(this));
-          if (j != 0)
-          {
-            localField.setAccessible(false);
-            continue;
-            localObject1 = ((ReportKey)localObject1).name();
-            break label158;
-            label217:
-            j = 0;
-          }
         }
         catch (IllegalAccessException localIllegalAccessException1)
         {
-          for (;;)
-          {
-            localIllegalAccessException1.printStackTrace();
-          }
+          localIllegalAccessException1.printStackTrace();
+        }
+        if (bool) {
+          localField.setAccessible(false);
         }
       }
+      i += 1;
     }
     return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.camerasdk.avreporter.BaseBean
  * JD-Core Version:    0.7.0.1
  */

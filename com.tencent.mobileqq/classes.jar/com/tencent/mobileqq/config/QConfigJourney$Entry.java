@@ -14,18 +14,36 @@ final class QConfigJourney$Entry
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.jdField_a_of_type_Long = paramLong;
     this.b = paramString2;
-    this.c = (this.jdField_a_of_type_Int + "-" + this.jdField_a_of_type_JavaLangString + "-" + this.jdField_a_of_type_Long);
+    paramString1 = new StringBuilder();
+    paramString1.append(this.jdField_a_of_type_Int);
+    paramString1.append("-");
+    paramString1.append(this.jdField_a_of_type_JavaLangString);
+    paramString1.append("-");
+    paramString1.append(this.jdField_a_of_type_Long);
+    this.c = paramString1.toString();
   }
   
   public boolean equals(Object paramObject)
   {
-    if (!(paramObject instanceof Entry)) {}
-    do
-    {
+    boolean bool1 = paramObject instanceof Entry;
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
-      paramObject = (Entry)paramObject;
-    } while ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long));
-    return true;
+    }
+    paramObject = (Entry)paramObject;
+    bool1 = bool2;
+    if (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString))
+      {
+        bool1 = bool2;
+        if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public int hashCode()
@@ -35,12 +53,24 @@ final class QConfigJourney$Entry
   
   public String toString()
   {
-    return "Entry{type=" + this.jdField_a_of_type_Int + ", key='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin=" + this.jdField_a_of_type_Long + ", path='" + this.b + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Entry{type=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", key='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", uin=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", path='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.QConfigJourney.Entry
  * JD-Core Version:    0.7.0.1
  */

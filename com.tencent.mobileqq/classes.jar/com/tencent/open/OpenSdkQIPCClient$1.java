@@ -1,6 +1,6 @@
 package com.tencent.open;
 
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.open.agent.util.SSOLog;
 import eipc.EIPCConnection;
 import eipc.EIPClientConnectListener;
 
@@ -9,17 +9,17 @@ final class OpenSdkQIPCClient$1
 {
   public void connectFailed()
   {
-    QLog.d("Q.quicklogin.OpenSdkQIPCClient", 1, "connectFailed");
+    SSOLog.a("OpenSdkQIPCClient", new Object[] { "connectFailed" });
   }
   
   public void connectSuccess(EIPCConnection paramEIPCConnection)
   {
-    QLog.d("Q.quicklogin.OpenSdkQIPCClient", 1, "connectSuccess");
+    SSOLog.a("OpenSdkQIPCClient", new Object[] { "connectSuccess" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.OpenSdkQIPCClient.1
  * JD-Core Version:    0.7.0.1
  */

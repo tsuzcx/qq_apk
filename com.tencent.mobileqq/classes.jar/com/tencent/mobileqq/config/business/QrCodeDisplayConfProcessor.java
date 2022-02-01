@@ -34,22 +34,30 @@ public class QrCodeDisplayConfProcessor
   @Nullable
   public QrCodeConfBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length == 0))
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length != 0))
     {
-      QLog.d("QrCodeDisplay.ConfProcessor", 1, "QrCodeDisplayConfProcessor onParsed, confFiles is null empty");
-      return null;
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("QrCodeDisplayConfProcessor onParsed, content:");
+        localStringBuilder.append(paramArrayOfQConfItem);
+        QLog.d("QrCodeDisplay.ConfProcessor", 2, localStringBuilder.toString());
+      }
+      return QrCodeConfBean.a(paramArrayOfQConfItem);
     }
-    paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("QrCodeDisplay.ConfProcessor", 2, "QrCodeDisplayConfProcessor onParsed, content:" + paramArrayOfQConfItem);
-    }
-    return QrCodeConfBean.a(paramArrayOfQConfItem);
+    QLog.d("QrCodeDisplay.ConfProcessor", 1, "QrCodeDisplayConfProcessor onParsed, confFiles is null empty");
+    return null;
   }
   
   public void a(QrCodeConfBean paramQrCodeConfBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QrCodeDisplay.ConfProcessor", 2, "onUpdate " + paramQrCodeConfBean.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      localStringBuilder.append(paramQrCodeConfBean.toString());
+      QLog.d("QrCodeDisplay.ConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -90,7 +98,7 @@ public class QrCodeDisplayConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QrCodeDisplayConfProcessor
  * JD-Core Version:    0.7.0.1
  */

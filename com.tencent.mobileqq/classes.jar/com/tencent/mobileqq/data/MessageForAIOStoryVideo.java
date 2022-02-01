@@ -30,30 +30,39 @@ public class MessageForAIOStoryVideo
   {
     try
     {
-      if (!TextUtils.isEmpty(this.msg))
-      {
-        byte[] arrayOfByte = Base64.decode(this.msg, 0);
-        if (this.mStStoryFeed != null)
-        {
-          this.mStStoryFeed.mergeFrom(arrayOfByte);
-          if (this.mStStoryFeed.coverImage != null) {
-            this.cover = this.mStStoryFeed.coverImage.url.get();
-          }
-          this.createtime = this.mStStoryFeed.createTime.get();
-        }
+      if (TextUtils.isEmpty(this.msg)) {
+        break label117;
       }
+      localObject = Base64.decode(this.msg, 0);
+      if (this.mStStoryFeed == null) {
+        break label117;
+      }
+      this.mStStoryFeed.mergeFrom((byte[])localObject);
+      if (this.mStStoryFeed.coverImage != null) {
+        this.cover = this.mStStoryFeed.coverImage.url.get();
+      }
+      this.createtime = this.mStStoryFeed.createTime.get();
       return;
     }
     catch (Exception localException)
     {
-      while (!QLog.isDevelopLevel()) {}
-      QLog.i("MessageForAIOStoryVideo", 4, "doParseForMessageForAIOStoryVideo:" + this.msg);
+      Object localObject;
+      label77:
+      label117:
+      break label77;
+    }
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("doParseForMessageForAIOStoryVideo:");
+      ((StringBuilder)localObject).append(this.msg);
+      QLog.i("MessageForAIOStoryVideo", 4, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForAIOStoryVideo
  * JD-Core Version:    0.7.0.1
  */

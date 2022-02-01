@@ -10,18 +10,19 @@ class StoryQIMBadgeView$1$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_FriendlistGetOnlineInfoResp.eIconType == 11) {}
-    for (boolean bool = true;; bool = false)
-    {
-      StoryQIMBadgeView.a().put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(bool));
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryQIMBadgeView$1.a.a(bool);
-      return;
+    boolean bool;
+    if (this.jdField_a_of_type_FriendlistGetOnlineInfoResp.eIconType == 11) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    StoryQIMBadgeView.a().put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(bool));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryQIMBadgeView$1.a.a(bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView.1.1
  * JD-Core Version:    0.7.0.1
  */

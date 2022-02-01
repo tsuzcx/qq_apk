@@ -25,24 +25,33 @@ public class OpenJsBridge$OpenJsBridgeListener
   public void a(String paramString, Object paramObject)
   {
     WebView localWebView = (WebView)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-    if ((localWebView == null) || (paramObject == null)) {
-      return;
-    }
-    String str = "'undefined'";
-    if ((paramObject instanceof String))
+    if (localWebView != null)
     {
-      paramObject = ((String)paramObject).replace("\\", "\\\\").replace("'", "\\'");
-      str = "'" + paramObject + "'";
-    }
-    for (;;)
-    {
-      new Handler(Looper.getMainLooper()).post(new OpenJsBridge.OpenJsBridgeListener.1(this, paramString, str, localWebView));
-      return;
-      if (((paramObject instanceof Number)) || ((paramObject instanceof Long)) || ((paramObject instanceof Integer)) || ((paramObject instanceof Double)) || ((paramObject instanceof Float))) {
-        str = paramObject.toString();
-      } else if ((paramObject instanceof Boolean)) {
-        str = paramObject.toString();
+      if (paramObject == null) {
+        return;
       }
+      if ((paramObject instanceof String))
+      {
+        paramObject = ((String)paramObject).replace("\\", "\\\\").replace("'", "\\'");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("'");
+        localStringBuilder.append(paramObject);
+        localStringBuilder.append("'");
+        paramObject = localStringBuilder.toString();
+      }
+      else if ((!(paramObject instanceof Number)) && (!(paramObject instanceof Long)) && (!(paramObject instanceof Integer)) && (!(paramObject instanceof Double)) && (!(paramObject instanceof Float)))
+      {
+        if ((paramObject instanceof Boolean)) {
+          paramObject = paramObject.toString();
+        } else {
+          paramObject = "'undefined'";
+        }
+      }
+      else
+      {
+        paramObject = paramObject.toString();
+      }
+      new Handler(Looper.getMainLooper()).post(new OpenJsBridge.OpenJsBridgeListener.1(this, paramString, paramObject, localWebView));
     }
   }
   
@@ -60,7 +69,7 @@ public class OpenJsBridge$OpenJsBridgeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcommon.js.OpenJsBridge.OpenJsBridgeListener
  * JD-Core Version:    0.7.0.1
  */

@@ -18,12 +18,20 @@ public final class TogetherBusinessServlet$RspOpenStart
   
   public String toString()
   {
-    return "RspOpenStart=" + super.toString() + " jumpType=" + this.jumpType + " jumpUrl=" + this.jumpUrl + " resultInfo=" + this.resultInfo;
+    StringBuilder localStringBuilder = new StringBuilder("RspOpenStart=");
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" jumpType=");
+    localStringBuilder.append(this.jumpType);
+    localStringBuilder.append(" jumpUrl=");
+    localStringBuilder.append(this.jumpUrl);
+    localStringBuilder.append(" resultInfo=");
+    localStringBuilder.append(this.resultInfo);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.TogetherBusinessServlet.RspOpenStart
  * JD-Core Version:    0.7.0.1
  */

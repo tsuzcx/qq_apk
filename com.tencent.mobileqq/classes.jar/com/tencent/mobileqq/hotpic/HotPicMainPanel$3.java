@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.hotpic;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.view.View;
 import android.widget.PopupWindow;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class HotPicMainPanel$3
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   HotPicMainPanel$3(HotPicMainPanel paramHotPicMainPanel) {}
   
@@ -26,7 +26,7 @@ class HotPicMainPanel$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicMainPanel.3
  * JD-Core Version:    0.7.0.1
  */

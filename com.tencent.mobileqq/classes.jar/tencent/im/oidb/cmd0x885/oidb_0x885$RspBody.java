@@ -27,15 +27,17 @@ public final class oidb_0x885$RspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 50, 58, 66, 72, 80, 88 }, new String[] { "int32_ret", "uint64_uin", "rpt_msg_pos_ad_info", "bytes_msg", "uint64_time", "rpt_msg_neg_feedback", "bytes_cookie", "bytes_ad_user_info", "uint64_ad_channel_id", "int_req_type", "uint64_seq" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), null, localByteStringMicro1, Long.valueOf(0L), null, localByteStringMicro2, localByteStringMicro3, Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L) }, RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 50, 58, 66, 72, 80, 88 }, new String[] { "int32_ret", "uint64_uin", "rpt_msg_pos_ad_info", "bytes_msg", "uint64_time", "rpt_msg_neg_feedback", "bytes_cookie", "bytes_ad_user_info", "uint64_ad_channel_id", "int_req_type", "uint64_seq" }, new Object[] { localInteger, localLong, null, localByteStringMicro1, localLong, null, localByteStringMicro2, localByteStringMicro3, localLong, localInteger, localLong }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x885.oidb_0x885.RspBody
  * JD-Core Version:    0.7.0.1
  */

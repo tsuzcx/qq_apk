@@ -13,26 +13,35 @@ class LottieLoader$2
   
   public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LottieLoader", 2, "diy data download fail url = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      paramDownloadResult = new StringBuilder();
+      paramDownloadResult.append("diy data download fail url = ");
+      paramDownloadResult.append(paramString);
+      QLog.i("LottieLoader", 2, paramDownloadResult.toString());
     }
-    this.this$0.mState = 2;
-    this.this$0.onDownloadFinish(false, paramString, this.val$filePath, this.val$folder);
+    paramDownloadResult = this.this$0;
+    paramDownloadResult.mState = 2;
+    paramDownloadResult.onDownloadFinish(false, paramString, this.val$filePath, this.val$folder);
   }
   
   public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
   
   public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LottieLoader", 2, "diy data download success url = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      paramDownloadResult = new StringBuilder();
+      paramDownloadResult.append("diy data download success url = ");
+      paramDownloadResult.append(paramString);
+      QLog.i("LottieLoader", 2, paramDownloadResult.toString());
     }
     this.this$0.onDownloadFinish(true, paramString, this.val$filePath, this.val$folder);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.widget.lottie.LottieLoader.2
  * JD-Core Version:    0.7.0.1
  */

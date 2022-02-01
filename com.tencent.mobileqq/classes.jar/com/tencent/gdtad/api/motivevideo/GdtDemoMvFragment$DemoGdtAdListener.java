@@ -35,7 +35,10 @@ class GdtDemoMvFragment$DemoGdtAdListener
   
   public void a(com.tencent.gdtad.api.GdtAd paramGdtAd, GdtAdError paramGdtAdError)
   {
-    QLog.e("GdtDemoMvFragment", 1, "onAdFailedToLoad " + paramGdtAdError.a());
+    paramGdtAd = new StringBuilder();
+    paramGdtAd.append("onAdFailedToLoad ");
+    paramGdtAd.append(paramGdtAdError.a());
+    QLog.e("GdtDemoMvFragment", 1, paramGdtAd.toString());
   }
   
   public void b(com.tencent.gdtad.api.GdtAd paramGdtAd)
@@ -55,7 +58,7 @@ class GdtDemoMvFragment$DemoGdtAdListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.api.motivevideo.GdtDemoMvFragment.DemoGdtAdListener
  * JD-Core Version:    0.7.0.1
  */

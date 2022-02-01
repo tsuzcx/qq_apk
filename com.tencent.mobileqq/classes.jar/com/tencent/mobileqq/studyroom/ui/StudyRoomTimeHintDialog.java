@@ -6,11 +6,10 @@ import android.os.Bundle;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.studyroom.utils.StudyRoomReporter;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.mobileqq.studyroom.api.impl.StudyRoomReporterImpl;
 
 public class StudyRoomTimeHintDialog
-  extends ReportDialog
+  extends Dialog
 {
   private int jdField_a_of_type_Int;
   private String jdField_a_of_type_JavaLangString;
@@ -22,12 +21,12 @@ public class StudyRoomTimeHintDialog
     super.onCreate(paramBundle);
     getWindow().setBackgroundDrawable(new ColorDrawable(0));
     setCanceledOnTouchOutside(false);
-    setContentView(2131559165);
-    ((ImageView)findViewById(2131370833)).setImageResource(this.jdField_a_of_type_Int);
-    ((TextView)findViewById(2131379432)).setText(this.jdField_a_of_type_JavaLangString);
-    ((TextView)findViewById(2131378646)).setText(this.b);
-    ((TextView)findViewById(2131365294)).setText(this.c);
-    ((TextView)findViewById(2131365207)).setOnClickListener(new StudyRoomTimeHintDialog.1(this));
+    setContentView(2131559059);
+    ((ImageView)findViewById(2131370464)).setImageResource(this.jdField_a_of_type_Int);
+    ((TextView)findViewById(2131378784)).setText(this.jdField_a_of_type_JavaLangString);
+    ((TextView)findViewById(2131378039)).setText(this.b);
+    ((TextView)findViewById(2131365169)).setText(this.c);
+    ((TextView)findViewById(2131365086)).setOnClickListener(new StudyRoomTimeHintDialog.1(this));
   }
   
   public void show()
@@ -37,12 +36,12 @@ public class StudyRoomTimeHintDialog
     localBundle.putString("action", "exposure");
     localBundle.putString("page", "unopen_page");
     localBundle.putString("module", "all_modules");
-    StudyRoomReporter.a(localBundle);
+    StudyRoomReporterImpl.report(localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.ui.StudyRoomTimeHintDialog
  * JD-Core Version:    0.7.0.1
  */

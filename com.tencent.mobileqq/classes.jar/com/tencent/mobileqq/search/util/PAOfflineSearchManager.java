@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class PAOfflineSearchManager
 {
-  static PAOfflineSearchManager jdField_a_of_type_ComTencentMobileqqSearchUtilPAOfflineSearchManager = null;
+  static PAOfflineSearchManager jdField_a_of_type_ComTencentMobileqqSearchUtilPAOfflineSearchManager;
   String jdField_a_of_type_JavaLangString = "0";
   ArrayList<Entity> jdField_a_of_type_JavaUtilArrayList = null;
   HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
@@ -52,7 +52,7 @@ public class PAOfflineSearchManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.util.PAOfflineSearchManager
  * JD-Core Version:    0.7.0.1
  */

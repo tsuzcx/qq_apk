@@ -4,104 +4,91 @@ public class ImageUtil
 {
   public static void a(int[] paramArrayOfInt, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
+    int i8 = paramInt1 * paramInt2;
     int m = 0;
     int i = 0;
-    int i7 = paramInt1 * paramInt2;
     int j = 0;
-    int i4 = 0;
-    int n;
-    int k;
-    int i5;
-    int i1;
-    if (i4 < paramInt2)
+    int n = 0;
+    while (m < paramInt2)
     {
-      n = (i4 >> 1) * paramInt1 / 2 + i7;
-      k = i7 * 5 / 4 + (i4 >> 1) * paramInt1 / 2;
-      i5 = 0;
-      if (i5 < paramInt1)
+      int k = (m >> 1) * paramInt1 / 2;
+      int i6 = i8 + k;
+      k = i8 * 5 / 4 + k;
+      int i1 = j;
+      j = i;
+      int i2 = 0;
+      i = i1;
+      i1 = i2;
+      while (i1 < paramInt1)
       {
-        i1 = (paramArrayOfByte[j] & 0xFF) - 16;
-        if (i1 >= 0) {
-          break label361;
+        i2 = (paramArrayOfByte[n] & 0xFF) - 16;
+        int i7 = i2;
+        if (i2 < 0) {
+          i7 = 0;
         }
-        i1 = 0;
-      }
-    }
-    label194:
-    label202:
-    label361:
-    for (;;)
-    {
-      int i2;
-      if ((i5 & 0x1) == 0)
-      {
-        i = paramArrayOfByte[n];
-        i2 = paramArrayOfByte[k];
-        m = n + 1;
-        n = (i2 & 0xFF) - 128;
-        i = (i & 0xFF) - 128;
-        k += 1;
-      }
-      for (;;)
-      {
-        i1 *= 1192;
-        i2 = i1 + n * 1634;
-        int i3 = i1 - n * 833 - i * 400;
-        int i6 = i1 + i * 2066;
-        if (i2 < 0)
+        int i5 = j;
+        int i4 = i;
+        int i3 = i6;
+        i2 = k;
+        if ((i1 & 0x1) == 0)
         {
-          i1 = 0;
-          if (i3 >= 0) {
-            break label296;
-          }
-          i2 = 0;
-          if (i6 >= 0) {
-            break label314;
-          }
-          i3 = 0;
+          j = paramArrayOfByte[i6];
+          i = paramArrayOfByte[k];
+          i3 = i6 + 1;
+          i5 = (j & 0xFF) - 128;
+          i4 = (i & 0xFF) - 128;
+          i2 = k + 1;
         }
-        for (;;)
+        i = i7 * 1192;
+        j = i4 * 1634 + i;
+        i7 = i - i4 * 833 - i5 * 400;
+        k = i + i5 * 2066;
+        i6 = 262143;
+        if (j < 0)
         {
-          paramArrayOfInt[j] = (i3 >> 10 & 0xFF | i2 >> 2 & 0xFF00 | i1 << 6 & 0xFF0000 | 0xFF000000);
-          i1 = j + 1;
-          j = n;
-          i5 += 1;
-          n = m;
-          m = i;
+          i = 0;
+        }
+        else
+        {
           i = j;
-          j = i1;
-          break;
-          i1 = i2;
-          if (i2 <= 262143) {
-            break label194;
-          }
-          i1 = 262143;
-          break label194;
-          i2 = i3;
-          if (i3 <= 262143) {
-            break label202;
-          }
-          i2 = 262143;
-          break label202;
-          i3 = i6;
-          if (i6 > 262143) {
-            i3 = 262143;
+          if (j > 262143) {
+            i = 262143;
           }
         }
-        i4 += 1;
-        break;
-        return;
-        i2 = m;
-        m = n;
-        n = i;
-        i = i2;
+        if (i7 < 0)
+        {
+          j = 0;
+        }
+        else
+        {
+          j = i7;
+          if (i7 > 262143) {
+            j = 262143;
+          }
+        }
+        if (k < 0) {
+          k = 0;
+        } else if (k > 262143) {
+          k = i6;
+        }
+        paramArrayOfInt[n] = (0xFF000000 | i << 6 & 0xFF0000 | j >> 2 & 0xFF00 | k >> 10 & 0xFF);
+        i1 += 1;
+        n += 1;
+        j = i5;
+        i = i4;
+        i6 = i3;
+        k = i2;
       }
+      m += 1;
+      k = i;
+      i = j;
+      j = k;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.ImageUtil
  * JD-Core Version:    0.7.0.1
  */

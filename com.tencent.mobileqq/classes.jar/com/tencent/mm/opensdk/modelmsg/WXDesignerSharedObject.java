@@ -26,12 +26,11 @@ public class WXDesignerSharedObject
   
   public boolean checkArgs()
   {
-    if ((this.designerUIN == 0) || (TextUtils.isEmpty(this.thumburl)) || (TextUtils.isEmpty(this.url)))
-    {
-      Log.e("MicroMsg.SDK.WXEmojiSharedObject", "checkArgs fail, packageid or thumburl is invalid");
-      return false;
+    if ((this.designerUIN != 0) && (!TextUtils.isEmpty(this.thumburl)) && (!TextUtils.isEmpty(this.url))) {
+      return true;
     }
-    return true;
+    Log.e("MicroMsg.SDK.WXEmojiSharedObject", "checkArgs fail, packageid or thumburl is invalid");
+    return false;
   }
   
   public void serialize(Bundle paramBundle)
@@ -59,7 +58,7 @@ public class WXDesignerSharedObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXDesignerSharedObject
  * JD-Core Version:    0.7.0.1
  */

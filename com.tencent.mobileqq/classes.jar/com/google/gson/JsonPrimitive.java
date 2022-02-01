@@ -38,12 +38,24 @@ public final class JsonPrimitive
   
   private static boolean isIntegral(JsonPrimitive paramJsonPrimitive)
   {
-    if ((paramJsonPrimitive.value instanceof Number))
+    paramJsonPrimitive = paramJsonPrimitive.value;
+    boolean bool3 = paramJsonPrimitive instanceof Number;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bool3)
     {
-      paramJsonPrimitive = (Number)paramJsonPrimitive.value;
-      return ((paramJsonPrimitive instanceof BigInteger)) || ((paramJsonPrimitive instanceof Long)) || ((paramJsonPrimitive instanceof Integer)) || ((paramJsonPrimitive instanceof Short)) || ((paramJsonPrimitive instanceof Byte));
+      paramJsonPrimitive = (Number)paramJsonPrimitive;
+      if ((!(paramJsonPrimitive instanceof BigInteger)) && (!(paramJsonPrimitive instanceof Long)) && (!(paramJsonPrimitive instanceof Integer)) && (!(paramJsonPrimitive instanceof Short)))
+      {
+        bool1 = bool2;
+        if (!(paramJsonPrimitive instanceof Byte)) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
     }
-    return false;
+    return bool1;
   }
   
   private static boolean isPrimitiveOrString(Object paramObject)
@@ -55,17 +67,13 @@ public final class JsonPrimitive
     Class[] arrayOfClass = PRIMITIVE_TYPES;
     int j = arrayOfClass.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i >= j) {
-        break label45;
-      }
       if (arrayOfClass[i].isAssignableFrom(paramObject)) {
-        break;
+        return true;
       }
       i += 1;
     }
-    label45:
     return false;
   }
   
@@ -76,64 +84,56 @@ public final class JsonPrimitive
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
-    if (this == paramObject) {}
-    do
-    {
-      do
-      {
-        return true;
-        if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-          return false;
-        }
-        paramObject = (JsonPrimitive)paramObject;
-        if (this.value != null) {
-          break;
-        }
-      } while (paramObject.value == null);
-      return false;
-      if ((!isIntegral(this)) || (!isIntegral(paramObject))) {
-        break;
-      }
-    } while (getAsNumber().longValue() == paramObject.getAsNumber().longValue());
-    return false;
-    if (((this.value instanceof Number)) && ((paramObject.value instanceof Number)))
-    {
-      double d1 = getAsNumber().doubleValue();
-      double d2 = paramObject.getAsNumber().doubleValue();
-      boolean bool1;
-      if (d1 != d2)
-      {
-        bool1 = bool2;
-        if (Double.isNaN(d1))
-        {
-          bool1 = bool2;
-          if (!Double.isNaN(d2)) {}
-        }
-      }
-      else
-      {
-        bool1 = true;
-      }
-      return bool1;
+    boolean bool = true;
+    if (this == paramObject) {
+      return true;
     }
-    return this.value.equals(paramObject.value);
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
+        return false;
+      }
+      paramObject = (JsonPrimitive)paramObject;
+      if (this.value == null) {
+        return paramObject.value == null;
+      }
+      if ((isIntegral(this)) && (isIntegral(paramObject))) {
+        return getAsNumber().longValue() == paramObject.getAsNumber().longValue();
+      }
+      if (((this.value instanceof Number)) && ((paramObject.value instanceof Number)))
+      {
+        double d1 = getAsNumber().doubleValue();
+        double d2 = paramObject.getAsNumber().doubleValue();
+        if (d1 != d2)
+        {
+          if ((Double.isNaN(d1)) && (Double.isNaN(d2))) {
+            return true;
+          }
+          bool = false;
+        }
+        return bool;
+      }
+      return this.value.equals(paramObject.value);
+    }
+    return false;
   }
   
   public BigDecimal getAsBigDecimal()
   {
-    if ((this.value instanceof BigDecimal)) {
-      return (BigDecimal)this.value;
+    Object localObject = this.value;
+    if ((localObject instanceof BigDecimal)) {
+      return (BigDecimal)localObject;
     }
-    return new BigDecimal(this.value.toString());
+    return new BigDecimal(localObject.toString());
   }
   
   public BigInteger getAsBigInteger()
   {
-    if ((this.value instanceof BigInteger)) {
-      return (BigInteger)this.value;
+    Object localObject = this.value;
+    if ((localObject instanceof BigInteger)) {
+      return (BigInteger)localObject;
     }
-    return new BigInteger(this.value.toString());
+    return new BigInteger(localObject.toString());
   }
   
   public boolean getAsBoolean()
@@ -196,10 +196,11 @@ public final class JsonPrimitive
   
   public Number getAsNumber()
   {
-    if ((this.value instanceof String)) {
-      return new LazilyParsedNumber((String)this.value);
+    Object localObject = this.value;
+    if ((localObject instanceof String)) {
+      return new LazilyParsedNumber((String)localObject);
     }
-    return (Number)this.value;
+    return (Number)localObject;
   }
   
   public short getAsShort()
@@ -226,18 +227,17 @@ public final class JsonPrimitive
     if (this.value == null) {
       return 31;
     }
-    long l;
-    if (isIntegral(this))
+    if (isIntegral(this)) {}
+    Object localObject;
+    for (long l = getAsNumber().longValue();; l = Double.doubleToLongBits(getAsNumber().doubleValue()))
     {
-      l = getAsNumber().longValue();
-      return (int)(l ^ l >>> 32);
+      return (int)(l >>> 32 ^ l);
+      localObject = this.value;
+      if (!(localObject instanceof Number)) {
+        break;
+      }
     }
-    if ((this.value instanceof Number))
-    {
-      l = Double.doubleToLongBits(getAsNumber().doubleValue());
-      return (int)(l ^ l >>> 32);
-    }
-    return this.value.hashCode();
+    return localObject.hashCode();
   }
   
   public boolean isBoolean()
@@ -262,18 +262,19 @@ public final class JsonPrimitive
       this.value = String.valueOf(((Character)paramObject).charValue());
       return;
     }
-    if (((paramObject instanceof Number)) || (isPrimitiveOrString(paramObject))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      .Gson.Preconditions.checkArgument(bool);
-      this.value = paramObject;
-      return;
+    boolean bool;
+    if ((!(paramObject instanceof Number)) && (!isPrimitiveOrString(paramObject))) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    .Gson.Preconditions.checkArgument(bool);
+    this.value = paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.JsonPrimitive
  * JD-Core Version:    0.7.0.1
  */

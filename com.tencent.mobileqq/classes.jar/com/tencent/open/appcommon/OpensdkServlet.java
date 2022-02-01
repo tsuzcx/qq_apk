@@ -15,276 +15,334 @@ public class OpensdkServlet
   public void onReceive(Intent paramIntent, com.tencent.qphone.base.remote.FromServiceMsg paramFromServiceMsg)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore 5
-    //   3: aload_2
-    //   4: ifnonnull +4 -> 8
-    //   7: return
-    //   8: new 37	android/os/Bundle
-    //   11: dup
-    //   12: invokespecial 38	android/os/Bundle:<init>	()V
-    //   15: astore 7
-    //   17: aload_2
-    //   18: invokevirtual 44	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
-    //   21: astore 10
-    //   23: aload 10
-    //   25: ifnull +408 -> 433
-    //   28: aload 10
-    //   30: arraylength
-    //   31: iconst_4
-    //   32: if_icmple +401 -> 433
-    //   35: new 46	java/io/ByteArrayInputStream
-    //   38: dup
-    //   39: aload 10
-    //   41: invokespecial 49	java/io/ByteArrayInputStream:<init>	([B)V
-    //   44: astore 8
-    //   46: new 51	java/io/DataInputStream
-    //   49: dup
-    //   50: aload 8
-    //   52: invokespecial 54	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
-    //   55: astore 9
-    //   57: aload 9
-    //   59: invokevirtual 58	java/io/DataInputStream:readInt	()I
-    //   62: iconst_4
-    //   63: isub
-    //   64: istore_3
-    //   65: iload_3
-    //   66: newarray byte
-    //   68: astore 11
+    //   0: aload_2
+    //   1: ifnonnull +4 -> 5
+    //   4: return
+    //   5: new 37	android/os/Bundle
+    //   8: dup
+    //   9: invokespecial 38	android/os/Bundle:<init>	()V
+    //   12: astore 6
+    //   14: aload_2
+    //   15: invokevirtual 44	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
+    //   18: astore 9
+    //   20: aload 9
+    //   22: ifnull +123 -> 145
+    //   25: aload 9
+    //   27: arraylength
+    //   28: iconst_4
+    //   29: if_icmple +116 -> 145
+    //   32: new 46	java/io/ByteArrayInputStream
+    //   35: dup
+    //   36: aload 9
+    //   38: invokespecial 49	java/io/ByteArrayInputStream:<init>	([B)V
+    //   41: astore 7
+    //   43: new 51	java/io/DataInputStream
+    //   46: dup
+    //   47: aload 7
+    //   49: invokespecial 54	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   52: astore 8
+    //   54: aload 8
+    //   56: invokevirtual 58	java/io/DataInputStream:readInt	()I
+    //   59: iconst_4
+    //   60: isub
+    //   61: istore_3
+    //   62: iload_3
+    //   63: newarray byte
+    //   65: astore 10
+    //   67: aload 9
+    //   69: iconst_4
     //   70: aload 10
-    //   72: iconst_4
-    //   73: aload 11
-    //   75: iconst_0
-    //   76: iload_3
-    //   77: invokestatic 64	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   80: aload 7
-    //   82: ldc 66
-    //   84: aload 11
-    //   86: invokevirtual 70	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
-    //   89: aload 7
-    //   91: ldc 72
-    //   93: aload_2
-    //   94: invokevirtual 75	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
-    //   97: invokevirtual 79	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   100: aload 7
-    //   102: ldc 81
-    //   104: aload_2
-    //   105: invokevirtual 85	com/tencent/qphone/base/remote/FromServiceMsg:getUin	()Ljava/lang/String;
-    //   108: invokevirtual 89	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   111: aload 8
-    //   113: invokevirtual 92	java/io/ByteArrayInputStream:close	()V
-    //   116: aload 9
-    //   118: invokevirtual 93	java/io/DataInputStream:close	()V
-    //   121: aload_2
-    //   122: invokevirtual 96	com/tencent/qphone/base/remote/FromServiceMsg:getServiceCmd	()Ljava/lang/String;
-    //   125: astore 8
-    //   127: getstatic 22	com/tencent/open/appcommon/OpensdkServlet:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   130: astore 9
-    //   132: aload 9
-    //   134: arraylength
-    //   135: istore 6
-    //   137: iconst_0
-    //   138: istore_3
-    //   139: iload 5
-    //   141: istore 4
-    //   143: iload_3
-    //   144: iload 6
-    //   146: if_icmpge +18 -> 164
-    //   149: aload 9
-    //   151: iload_3
-    //   152: aaload
-    //   153: aload 8
-    //   155: invokevirtual 100	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   158: ifeq +306 -> 464
-    //   161: iconst_1
-    //   162: istore 4
-    //   164: iload 4
-    //   166: ifeq +316 -> 482
-    //   169: aload_1
-    //   170: ldc 102
-    //   172: invokevirtual 107	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   175: invokevirtual 113	android/content/Intent:getParcelableExtra	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   178: checkcast 102	com/tencent/qphone/base/remote/ToServiceMsg
-    //   181: astore 8
-    //   183: new 115	java/lang/StringBuilder
-    //   186: dup
-    //   187: invokespecial 116	java/lang/StringBuilder:<init>	()V
-    //   190: aload_2
-    //   191: invokevirtual 85	com/tencent/qphone/base/remote/FromServiceMsg:getUin	()Ljava/lang/String;
-    //   194: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   197: ldc 122
-    //   199: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   202: aload_2
-    //   203: invokevirtual 96	com/tencent/qphone/base/remote/FromServiceMsg:getServiceCmd	()Ljava/lang/String;
-    //   206: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   209: ldc 122
-    //   211: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   72: iconst_0
+    //   73: iload_3
+    //   74: invokestatic 64	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   77: aload 6
+    //   79: ldc 66
+    //   81: aload 10
+    //   83: invokevirtual 70	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
+    //   86: aload 6
+    //   88: ldc 72
+    //   90: aload_2
+    //   91: invokevirtual 75	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
+    //   94: invokevirtual 79	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   97: aload 6
+    //   99: ldc 81
+    //   101: aload_2
+    //   102: invokevirtual 85	com/tencent/qphone/base/remote/FromServiceMsg:getUin	()Ljava/lang/String;
+    //   105: invokevirtual 89	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   108: aload 7
+    //   110: invokevirtual 92	java/io/ByteArrayInputStream:close	()V
+    //   113: aload 8
+    //   115: invokevirtual 93	java/io/DataInputStream:close	()V
+    //   118: goto +55 -> 173
+    //   121: goto +52 -> 173
+    //   124: astore_1
+    //   125: aload 7
+    //   127: invokevirtual 92	java/io/ByteArrayInputStream:close	()V
+    //   130: aload 8
+    //   132: invokevirtual 93	java/io/DataInputStream:close	()V
+    //   135: aload_1
+    //   136: athrow
+    //   137: aload 7
+    //   139: invokevirtual 92	java/io/ByteArrayInputStream:close	()V
+    //   142: goto -29 -> 113
+    //   145: sipush 1002
+    //   148: aload_2
+    //   149: invokevirtual 75	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
+    //   152: if_icmpne +21 -> 173
+    //   155: ldc 95
+    //   157: iconst_1
+    //   158: ldc 97
+    //   160: invokestatic 103	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   163: aload 6
+    //   165: ldc 72
+    //   167: sipush 1002
+    //   170: invokevirtual 79	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   173: aload_2
+    //   174: invokevirtual 107	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
+    //   177: ifne +17 -> 194
+    //   180: aload 6
+    //   182: ldc 109
+    //   184: aload_2
+    //   185: invokevirtual 112	com/tencent/qphone/base/remote/FromServiceMsg:getBusinessFailMsg	()Ljava/lang/String;
+    //   188: invokevirtual 89	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   191: goto +12 -> 203
+    //   194: aload 6
+    //   196: ldc 109
+    //   198: ldc 114
+    //   200: invokevirtual 89	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   203: aload_2
+    //   204: invokevirtual 117	com/tencent/qphone/base/remote/FromServiceMsg:getServiceCmd	()Ljava/lang/String;
+    //   207: astore 7
+    //   209: getstatic 22	com/tencent/open/appcommon/OpensdkServlet:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   212: astore 8
     //   214: aload 8
-    //   216: ldc 124
-    //   218: invokevirtual 128	com/tencent/qphone/base/remote/ToServiceMsg:getAttribute	(Ljava/lang/String;)Ljava/lang/Object;
-    //   221: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   224: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   227: astore 8
-    //   229: aload_0
-    //   230: getfield 31	com/tencent/open/appcommon/OpensdkServlet:jdField_a_of_type_JavaUtilHashSet	Ljava/util/HashSet;
-    //   233: aload 8
-    //   235: invokevirtual 137	java/util/HashSet:contains	(Ljava/lang/Object;)Z
-    //   238: ifeq +44 -> 282
-    //   241: aload_0
-    //   242: getfield 31	com/tencent/open/appcommon/OpensdkServlet:jdField_a_of_type_JavaUtilHashSet	Ljava/util/HashSet;
-    //   245: aload 8
-    //   247: invokevirtual 140	java/util/HashSet:remove	(Ljava/lang/Object;)Z
-    //   250: pop
-    //   251: aload_2
-    //   252: ldc 142
-    //   254: invokevirtual 143	com/tencent/qphone/base/remote/FromServiceMsg:getAttribute	(Ljava/lang/String;)Ljava/lang/Object;
-    //   257: ifnonnull +214 -> 471
-    //   260: aload 7
-    //   262: ldc 145
-    //   264: iconst_0
-    //   265: invokevirtual 149	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   268: aload_0
-    //   269: aload_1
-    //   270: iconst_0
-    //   271: aload_2
-    //   272: invokevirtual 153	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
-    //   275: aload 7
-    //   277: ldc 155
-    //   279: invokevirtual 159	com/tencent/open/appcommon/OpensdkServlet:notifyObserver	(Landroid/content/Intent;IZLandroid/os/Bundle;Ljava/lang/Class;)V
-    //   282: invokestatic 164	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   285: ifeq -278 -> 7
-    //   288: ldc 166
-    //   290: iconst_2
-    //   291: new 115	java/lang/StringBuilder
-    //   294: dup
-    //   295: invokespecial 116	java/lang/StringBuilder:<init>	()V
-    //   298: ldc 168
-    //   300: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   303: aload 8
-    //   305: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   308: ldc 170
-    //   310: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   313: aload_2
-    //   314: invokevirtual 173	com/tencent/qphone/base/remote/FromServiceMsg:getAppId	()I
-    //   317: invokevirtual 176	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   320: ldc 178
-    //   322: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   325: aload_2
-    //   326: invokevirtual 181	com/tencent/qphone/base/remote/FromServiceMsg:getAppSeq	()I
-    //   329: invokevirtual 176	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   332: ldc 183
-    //   334: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   337: aload_2
-    //   338: invokevirtual 75	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
-    //   341: invokevirtual 176	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   344: ldc 185
-    //   346: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   349: aload_2
-    //   350: invokevirtual 96	com/tencent/qphone/base/remote/FromServiceMsg:getServiceCmd	()Ljava/lang/String;
-    //   353: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   356: ldc 187
-    //   358: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   361: aload_2
-    //   362: invokevirtual 85	com/tencent/qphone/base/remote/FromServiceMsg:getUin	()Ljava/lang/String;
-    //   365: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   368: ldc 189
-    //   370: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   373: aload_2
-    //   374: ldc 142
-    //   376: invokevirtual 143	com/tencent/qphone/base/remote/FromServiceMsg:getAttribute	(Ljava/lang/String;)Ljava/lang/Object;
-    //   379: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   382: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   385: invokestatic 193	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   388: return
-    //   389: astore_1
-    //   390: ldc 166
-    //   392: iconst_1
-    //   393: ldc 195
-    //   395: aload_1
-    //   396: invokestatic 199	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   399: return
-    //   400: astore 10
-    //   402: aload 8
-    //   404: invokevirtual 92	java/io/ByteArrayInputStream:close	()V
-    //   407: aload 9
-    //   409: invokevirtual 93	java/io/DataInputStream:close	()V
-    //   412: goto -291 -> 121
-    //   415: astore 8
-    //   417: goto -296 -> 121
-    //   420: astore_1
-    //   421: aload 8
-    //   423: invokevirtual 92	java/io/ByteArrayInputStream:close	()V
-    //   426: aload 9
-    //   428: invokevirtual 93	java/io/DataInputStream:close	()V
-    //   431: aload_1
-    //   432: athrow
-    //   433: sipush 1002
-    //   436: aload_2
-    //   437: invokevirtual 75	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
-    //   440: if_icmpne -319 -> 121
-    //   443: ldc 166
-    //   445: iconst_1
-    //   446: ldc 201
-    //   448: invokestatic 204	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   451: aload 7
-    //   453: ldc 72
-    //   455: sipush 1002
-    //   458: invokevirtual 79	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   461: goto -340 -> 121
-    //   464: iload_3
-    //   465: iconst_1
-    //   466: iadd
-    //   467: istore_3
-    //   468: goto -329 -> 139
-    //   471: aload 7
-    //   473: ldc 145
-    //   475: iconst_1
-    //   476: invokevirtual 149	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   479: goto -211 -> 268
-    //   482: aload_0
-    //   483: aload_1
-    //   484: iconst_0
-    //   485: aload_2
-    //   486: invokevirtual 153	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
-    //   489: aload 7
-    //   491: ldc 155
-    //   493: invokevirtual 159	com/tencent/open/appcommon/OpensdkServlet:notifyObserver	(Landroid/content/Intent;IZLandroid/os/Bundle;Ljava/lang/Class;)V
-    //   496: return
-    //   497: astore_2
-    //   498: goto -67 -> 431
-    //   501: astore 8
-    //   503: goto -382 -> 121
+    //   216: arraylength
+    //   217: istore 4
+    //   219: iconst_0
+    //   220: istore_3
+    //   221: iload_3
+    //   222: iload 4
+    //   224: if_icmpge +359 -> 583
+    //   227: aload 8
+    //   229: iload_3
+    //   230: aaload
+    //   231: aload 7
+    //   233: invokevirtual 121	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   236: ifeq +340 -> 576
+    //   239: iconst_1
+    //   240: istore_3
+    //   241: goto +3 -> 244
+    //   244: iload_3
+    //   245: ifeq +291 -> 536
+    //   248: aload_1
+    //   249: ldc 123
+    //   251: invokevirtual 128	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   254: invokevirtual 134	android/content/Intent:getParcelableExtra	(Ljava/lang/String;)Landroid/os/Parcelable;
+    //   257: checkcast 123	com/tencent/qphone/base/remote/ToServiceMsg
+    //   260: astore 7
+    //   262: new 136	java/lang/StringBuilder
+    //   265: dup
+    //   266: invokespecial 137	java/lang/StringBuilder:<init>	()V
+    //   269: astore 8
+    //   271: aload 8
+    //   273: aload_2
+    //   274: invokevirtual 85	com/tencent/qphone/base/remote/FromServiceMsg:getUin	()Ljava/lang/String;
+    //   277: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   280: pop
+    //   281: aload 8
+    //   283: ldc 143
+    //   285: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   288: pop
+    //   289: aload 8
+    //   291: aload_2
+    //   292: invokevirtual 117	com/tencent/qphone/base/remote/FromServiceMsg:getServiceCmd	()Ljava/lang/String;
+    //   295: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   298: pop
+    //   299: aload 8
+    //   301: ldc 143
+    //   303: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   306: pop
+    //   307: aload 8
+    //   309: aload 7
+    //   311: ldc 145
+    //   313: invokevirtual 149	com/tencent/qphone/base/remote/ToServiceMsg:getAttribute	(Ljava/lang/String;)Ljava/lang/Object;
+    //   316: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   319: pop
+    //   320: aload 8
+    //   322: invokevirtual 155	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   325: astore 7
+    //   327: aload_0
+    //   328: getfield 31	com/tencent/open/appcommon/OpensdkServlet:jdField_a_of_type_JavaUtilHashSet	Ljava/util/HashSet;
+    //   331: aload 7
+    //   333: invokevirtual 158	java/util/HashSet:contains	(Ljava/lang/Object;)Z
+    //   336: istore 5
+    //   338: iload 5
+    //   340: ifeq +59 -> 399
+    //   343: aload_0
+    //   344: getfield 31	com/tencent/open/appcommon/OpensdkServlet:jdField_a_of_type_JavaUtilHashSet	Ljava/util/HashSet;
+    //   347: aload 7
+    //   349: invokevirtual 161	java/util/HashSet:remove	(Ljava/lang/Object;)Z
+    //   352: pop
+    //   353: aload_2
+    //   354: ldc 163
+    //   356: invokevirtual 164	com/tencent/qphone/base/remote/FromServiceMsg:getAttribute	(Ljava/lang/String;)Ljava/lang/Object;
+    //   359: astore 8
+    //   361: aload 8
+    //   363: ifnonnull +14 -> 377
+    //   366: aload 6
+    //   368: ldc 166
+    //   370: iconst_0
+    //   371: invokevirtual 170	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   374: goto +11 -> 385
+    //   377: aload 6
+    //   379: ldc 166
+    //   381: iconst_1
+    //   382: invokevirtual 170	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   385: aload_0
+    //   386: aload_1
+    //   387: iconst_0
+    //   388: aload_2
+    //   389: invokevirtual 107	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
+    //   392: aload 6
+    //   394: ldc 172
+    //   396: invokevirtual 176	com/tencent/open/appcommon/OpensdkServlet:notifyObserver	(Landroid/content/Intent;IZLandroid/os/Bundle;Ljava/lang/Class;)V
+    //   399: invokestatic 179	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   402: ifeq +159 -> 561
+    //   405: new 136	java/lang/StringBuilder
+    //   408: dup
+    //   409: invokespecial 137	java/lang/StringBuilder:<init>	()V
+    //   412: astore_1
+    //   413: aload_1
+    //   414: ldc 181
+    //   416: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   419: pop
+    //   420: aload_1
+    //   421: aload 7
+    //   423: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   426: pop
+    //   427: aload_1
+    //   428: ldc 183
+    //   430: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   433: pop
+    //   434: aload_1
+    //   435: aload_2
+    //   436: invokevirtual 186	com/tencent/qphone/base/remote/FromServiceMsg:getAppId	()I
+    //   439: invokevirtual 189	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   442: pop
+    //   443: aload_1
+    //   444: ldc 191
+    //   446: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   449: pop
+    //   450: aload_1
+    //   451: aload_2
+    //   452: invokevirtual 194	com/tencent/qphone/base/remote/FromServiceMsg:getAppSeq	()I
+    //   455: invokevirtual 189	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   458: pop
+    //   459: aload_1
+    //   460: ldc 196
+    //   462: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   465: pop
+    //   466: aload_1
+    //   467: aload_2
+    //   468: invokevirtual 75	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
+    //   471: invokevirtual 189	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   474: pop
+    //   475: aload_1
+    //   476: ldc 198
+    //   478: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   481: pop
+    //   482: aload_1
+    //   483: aload_2
+    //   484: invokevirtual 117	com/tencent/qphone/base/remote/FromServiceMsg:getServiceCmd	()Ljava/lang/String;
+    //   487: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   490: pop
+    //   491: aload_1
+    //   492: ldc 200
+    //   494: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   497: pop
+    //   498: aload_1
+    //   499: aload_2
+    //   500: invokevirtual 85	com/tencent/qphone/base/remote/FromServiceMsg:getUin	()Ljava/lang/String;
+    //   503: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   506: pop
+    //   507: aload_1
+    //   508: ldc 202
+    //   510: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   513: pop
+    //   514: aload_1
+    //   515: aload_2
+    //   516: ldc 163
+    //   518: invokevirtual 164	com/tencent/qphone/base/remote/FromServiceMsg:getAttribute	(Ljava/lang/String;)Ljava/lang/Object;
+    //   521: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   524: pop
+    //   525: ldc 95
+    //   527: iconst_2
+    //   528: aload_1
+    //   529: invokevirtual 155	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   532: invokestatic 205	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   535: return
+    //   536: aload_0
+    //   537: aload_1
+    //   538: iconst_0
+    //   539: aload_2
+    //   540: invokevirtual 107	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
+    //   543: aload 6
+    //   545: ldc 172
+    //   547: invokevirtual 176	com/tencent/open/appcommon/OpensdkServlet:notifyObserver	(Landroid/content/Intent;IZLandroid/os/Bundle;Ljava/lang/Class;)V
+    //   550: return
+    //   551: astore_1
+    //   552: ldc 95
+    //   554: iconst_1
+    //   555: ldc 207
+    //   557: aload_1
+    //   558: invokestatic 211	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   561: return
+    //   562: astore 9
+    //   564: goto -427 -> 137
+    //   567: astore 7
+    //   569: goto -448 -> 121
+    //   572: astore_2
+    //   573: goto -438 -> 135
+    //   576: iload_3
+    //   577: iconst_1
+    //   578: iadd
+    //   579: istore_3
+    //   580: goto -359 -> 221
+    //   583: iconst_0
+    //   584: istore_3
+    //   585: goto -341 -> 244
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	506	0	this	OpensdkServlet
-    //   0	506	1	paramIntent	Intent
-    //   0	506	2	paramFromServiceMsg	com.tencent.qphone.base.remote.FromServiceMsg
-    //   64	404	3	i	int
-    //   141	24	4	j	int
-    //   1	139	5	k	int
-    //   135	12	6	m	int
-    //   15	475	7	localBundle	android.os.Bundle
-    //   44	359	8	localObject1	java.lang.Object
-    //   415	7	8	localException1	java.lang.Exception
-    //   501	1	8	localException2	java.lang.Exception
-    //   55	372	9	localObject2	java.lang.Object
-    //   21	50	10	arrayOfByte1	byte[]
-    //   400	1	10	localException3	java.lang.Exception
-    //   68	17	11	arrayOfByte2	byte[]
+    //   0	588	0	this	OpensdkServlet
+    //   0	588	1	paramIntent	Intent
+    //   0	588	2	paramFromServiceMsg	com.tencent.qphone.base.remote.FromServiceMsg
+    //   61	524	3	i	int
+    //   217	8	4	j	int
+    //   336	3	5	bool	boolean
+    //   12	532	6	localBundle	android.os.Bundle
+    //   41	381	7	localObject1	java.lang.Object
+    //   567	1	7	localException1	java.lang.Exception
+    //   52	310	8	localObject2	java.lang.Object
+    //   18	50	9	arrayOfByte1	byte[]
+    //   562	1	9	localException2	java.lang.Exception
+    //   65	17	10	arrayOfByte2	byte[]
     // Exception table:
     //   from	to	target	type
-    //   121	137	389	java/lang/Exception
-    //   149	161	389	java/lang/Exception
-    //   169	268	389	java/lang/Exception
-    //   268	282	389	java/lang/Exception
-    //   282	388	389	java/lang/Exception
-    //   471	479	389	java/lang/Exception
-    //   482	496	389	java/lang/Exception
-    //   57	111	400	java/lang/Exception
-    //   402	412	415	java/lang/Exception
-    //   57	111	420	finally
-    //   421	431	497	java/lang/Exception
-    //   111	121	501	java/lang/Exception
+    //   54	108	124	finally
+    //   203	219	551	java/lang/Exception
+    //   227	239	551	java/lang/Exception
+    //   248	338	551	java/lang/Exception
+    //   343	361	551	java/lang/Exception
+    //   366	374	551	java/lang/Exception
+    //   377	385	551	java/lang/Exception
+    //   385	399	551	java/lang/Exception
+    //   399	535	551	java/lang/Exception
+    //   536	550	551	java/lang/Exception
+    //   54	108	562	java/lang/Exception
+    //   108	113	567	java/lang/Exception
+    //   113	118	567	java/lang/Exception
+    //   137	142	567	java/lang/Exception
+    //   125	135	572	java/lang/Exception
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket) {}
@@ -293,216 +351,234 @@ public class OpensdkServlet
   public void service(Intent paramIntent)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
-    //   2: aload_0
-    //   3: aload_1
-    //   4: invokespecial 210	mqq/app/MSFServlet:service	(Landroid/content/Intent;)V
-    //   7: aload_1
-    //   8: ldc 212
-    //   10: invokevirtual 216	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   13: astore 8
-    //   15: aload_1
-    //   16: ldc 218
-    //   18: invokevirtual 216	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   21: astore 9
-    //   23: new 102	com/tencent/qphone/base/remote/ToServiceMsg
-    //   26: dup
-    //   27: aconst_null
-    //   28: aload 9
-    //   30: aload 8
-    //   32: invokespecial 221	com/tencent/qphone/base/remote/ToServiceMsg:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   35: astore 7
-    //   37: aload_1
-    //   38: ldc 66
-    //   40: invokevirtual 225	android/content/Intent:getByteArrayExtra	(Ljava/lang/String;)[B
-    //   43: astore 12
-    //   45: new 227	java/io/ByteArrayOutputStream
-    //   48: dup
-    //   49: aload 12
-    //   51: arraylength
-    //   52: iconst_4
-    //   53: iadd
-    //   54: invokespecial 230	java/io/ByteArrayOutputStream:<init>	(I)V
-    //   57: astore 10
-    //   59: new 232	java/io/DataOutputStream
-    //   62: dup
-    //   63: aload 10
-    //   65: invokespecial 235	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   68: astore 11
-    //   70: aload 11
-    //   72: aload 12
-    //   74: arraylength
-    //   75: iconst_4
-    //   76: iadd
-    //   77: invokevirtual 238	java/io/DataOutputStream:writeInt	(I)V
-    //   80: aload 11
-    //   82: aload 12
-    //   84: invokevirtual 241	java/io/DataOutputStream:write	([B)V
-    //   87: aload 7
-    //   89: aload 10
-    //   91: invokevirtual 244	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   94: invokevirtual 247	com/tencent/qphone/base/remote/ToServiceMsg:putWupBuffer	([B)V
-    //   97: aload 10
-    //   99: invokevirtual 248	java/io/ByteArrayOutputStream:close	()V
-    //   102: aload 11
-    //   104: invokevirtual 249	java/io/DataOutputStream:close	()V
-    //   107: aload 7
-    //   109: aload_1
-    //   110: ldc 251
-    //   112: ldc2_w 252
-    //   115: invokevirtual 257	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
-    //   118: invokevirtual 261	com/tencent/qphone/base/remote/ToServiceMsg:setTimeout	(J)V
-    //   121: aload 7
-    //   123: ldc_w 263
-    //   126: ldc_w 265
-    //   129: invokevirtual 269	com/tencent/qphone/base/remote/ToServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   132: pop
-    //   133: aload_1
-    //   134: ldc_w 271
-    //   137: iconst_m1
-    //   138: invokevirtual 275	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   141: istore_3
-    //   142: aload_1
-    //   143: ldc_w 277
-    //   146: iconst_0
-    //   147: invokevirtual 281	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
-    //   150: ifeq +9 -> 159
-    //   153: aload 7
-    //   155: iconst_1
-    //   156: invokevirtual 285	com/tencent/qphone/base/remote/ToServiceMsg:setIsSupportRetry	(Z)V
-    //   159: getstatic 22	com/tencent/open/appcommon/OpensdkServlet:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   162: astore 10
-    //   164: aload 10
-    //   166: arraylength
-    //   167: istore 4
-    //   169: iload_2
-    //   170: iload 4
-    //   172: if_icmpge +127 -> 299
-    //   175: aload 10
-    //   177: iload_2
-    //   178: aaload
-    //   179: aload 8
-    //   181: invokevirtual 100	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   184: ifeq +173 -> 357
-    //   187: iload_3
-    //   188: iconst_m1
-    //   189: if_icmpeq +163 -> 352
-    //   192: iload_3
-    //   193: istore_2
-    //   194: aload 7
-    //   196: iconst_1
+    //   0: aload_0
+    //   1: aload_1
+    //   2: invokespecial 217	mqq/app/MSFServlet:service	(Landroid/content/Intent;)V
+    //   5: aload_1
+    //   6: ldc 219
+    //   8: invokevirtual 223	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   11: astore 8
+    //   13: aload_1
+    //   14: ldc 225
+    //   16: invokevirtual 223	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   19: astore 9
+    //   21: new 123	com/tencent/qphone/base/remote/ToServiceMsg
+    //   24: dup
+    //   25: aconst_null
+    //   26: aload 9
+    //   28: aload 8
+    //   30: invokespecial 228	com/tencent/qphone/base/remote/ToServiceMsg:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   33: astore 7
+    //   35: aload_1
+    //   36: ldc 66
+    //   38: invokevirtual 232	android/content/Intent:getByteArrayExtra	(Ljava/lang/String;)[B
+    //   41: astore 12
+    //   43: new 234	java/io/ByteArrayOutputStream
+    //   46: dup
+    //   47: aload 12
+    //   49: arraylength
+    //   50: iconst_4
+    //   51: iadd
+    //   52: invokespecial 237	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   55: astore 10
+    //   57: new 239	java/io/DataOutputStream
+    //   60: dup
+    //   61: aload 10
+    //   63: invokespecial 242	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   66: astore 11
+    //   68: aload 11
+    //   70: aload 12
+    //   72: arraylength
+    //   73: iconst_4
+    //   74: iadd
+    //   75: invokevirtual 245	java/io/DataOutputStream:writeInt	(I)V
+    //   78: aload 11
+    //   80: aload 12
+    //   82: invokevirtual 248	java/io/DataOutputStream:write	([B)V
+    //   85: aload 7
+    //   87: aload 10
+    //   89: invokevirtual 251	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   92: invokevirtual 254	com/tencent/qphone/base/remote/ToServiceMsg:putWupBuffer	([B)V
+    //   95: aload 10
+    //   97: invokevirtual 255	java/io/ByteArrayOutputStream:close	()V
+    //   100: aload 11
+    //   102: invokevirtual 256	java/io/DataOutputStream:close	()V
+    //   105: goto +27 -> 132
+    //   108: goto +24 -> 132
+    //   111: astore_1
+    //   112: aload 10
+    //   114: invokevirtual 255	java/io/ByteArrayOutputStream:close	()V
+    //   117: aload 11
+    //   119: invokevirtual 256	java/io/DataOutputStream:close	()V
+    //   122: aload_1
+    //   123: athrow
+    //   124: aload 10
+    //   126: invokevirtual 255	java/io/ByteArrayOutputStream:close	()V
+    //   129: goto -29 -> 100
+    //   132: aload 7
+    //   134: aload_1
+    //   135: ldc_w 258
+    //   138: ldc2_w 259
+    //   141: invokevirtual 264	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
+    //   144: invokevirtual 268	com/tencent/qphone/base/remote/ToServiceMsg:setTimeout	(J)V
+    //   147: aload 7
+    //   149: ldc_w 270
+    //   152: ldc_w 272
+    //   155: invokevirtual 276	com/tencent/qphone/base/remote/ToServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   158: pop
+    //   159: aload_1
+    //   160: ldc_w 278
+    //   163: iconst_m1
+    //   164: invokevirtual 282	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   167: istore_3
+    //   168: iconst_0
+    //   169: istore_2
+    //   170: aload_1
+    //   171: ldc_w 284
+    //   174: iconst_0
+    //   175: invokevirtual 288	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
+    //   178: ifeq +9 -> 187
+    //   181: aload 7
+    //   183: iconst_1
+    //   184: invokevirtual 292	com/tencent/qphone/base/remote/ToServiceMsg:setIsSupportRetry	(Z)V
+    //   187: getstatic 22	com/tencent/open/appcommon/OpensdkServlet:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   190: astore 10
+    //   192: aload 10
+    //   194: arraylength
+    //   195: istore 4
     //   197: iload_2
-    //   198: invokevirtual 289	com/tencent/qphone/base/remote/ToServiceMsg:setQuickSend	(ZI)V
-    //   201: invokestatic 293	java/lang/System:currentTimeMillis	()J
-    //   204: lstore 5
-    //   206: aload 7
-    //   208: ldc 124
-    //   210: lload 5
-    //   212: invokestatic 299	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   215: invokevirtual 269	com/tencent/qphone/base/remote/ToServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   218: pop
-    //   219: new 115	java/lang/StringBuilder
-    //   222: dup
-    //   223: invokespecial 116	java/lang/StringBuilder:<init>	()V
-    //   226: aload 9
-    //   228: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   231: ldc 122
-    //   233: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   236: aload 8
-    //   238: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   241: ldc 122
-    //   243: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   246: lload 5
-    //   248: invokevirtual 302	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   251: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   254: astore 8
-    //   256: invokestatic 164	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   259: ifeq +30 -> 289
-    //   262: ldc 166
-    //   264: iconst_2
-    //   265: new 115	java/lang/StringBuilder
-    //   268: dup
-    //   269: invokespecial 116	java/lang/StringBuilder:<init>	()V
-    //   272: ldc_w 304
-    //   275: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   278: aload 8
-    //   280: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   283: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   286: invokestatic 204	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   289: aload_0
-    //   290: getfield 31	com/tencent/open/appcommon/OpensdkServlet:jdField_a_of_type_JavaUtilHashSet	Ljava/util/HashSet;
-    //   293: aload 8
-    //   295: invokevirtual 307	java/util/HashSet:add	(Ljava/lang/Object;)Z
-    //   298: pop
-    //   299: aload_1
-    //   300: ldc 102
-    //   302: invokevirtual 107	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   305: aload 7
-    //   307: invokevirtual 311	android/content/Intent:putExtra	(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
-    //   310: pop
-    //   311: aload_0
-    //   312: aload_1
-    //   313: aload 7
-    //   315: invokevirtual 315	com/tencent/open/appcommon/OpensdkServlet:sendToMSF	(Landroid/content/Intent;Lcom/tencent/qphone/base/remote/ToServiceMsg;)V
-    //   318: return
-    //   319: astore 12
-    //   321: aload 10
-    //   323: invokevirtual 248	java/io/ByteArrayOutputStream:close	()V
-    //   326: aload 11
-    //   328: invokevirtual 249	java/io/DataOutputStream:close	()V
-    //   331: goto -224 -> 107
-    //   334: astore 10
-    //   336: goto -229 -> 107
-    //   339: astore_1
-    //   340: aload 10
-    //   342: invokevirtual 248	java/io/ByteArrayOutputStream:close	()V
-    //   345: aload 11
-    //   347: invokevirtual 249	java/io/DataOutputStream:close	()V
-    //   350: aload_1
-    //   351: athrow
-    //   352: iconst_1
-    //   353: istore_2
-    //   354: goto -160 -> 194
-    //   357: iload_2
-    //   358: iconst_1
-    //   359: iadd
-    //   360: istore_2
-    //   361: goto -192 -> 169
-    //   364: astore 7
-    //   366: goto -16 -> 350
-    //   369: astore 10
-    //   371: goto -264 -> 107
+    //   198: iload 4
+    //   200: if_icmpge +171 -> 371
+    //   203: aload 10
+    //   205: iload_2
+    //   206: aaload
+    //   207: aload 8
+    //   209: invokevirtual 121	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   212: ifeq +152 -> 364
+    //   215: iload_3
+    //   216: iconst_m1
+    //   217: if_icmpeq +8 -> 225
+    //   220: iload_3
+    //   221: istore_2
+    //   222: goto +5 -> 227
+    //   225: iconst_1
+    //   226: istore_2
+    //   227: aload 7
+    //   229: iconst_1
+    //   230: iload_2
+    //   231: invokevirtual 296	com/tencent/qphone/base/remote/ToServiceMsg:setQuickSend	(ZI)V
+    //   234: invokestatic 300	java/lang/System:currentTimeMillis	()J
+    //   237: lstore 5
+    //   239: aload 7
+    //   241: ldc 145
+    //   243: lload 5
+    //   245: invokestatic 306	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   248: invokevirtual 276	com/tencent/qphone/base/remote/ToServiceMsg:addAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   251: pop
+    //   252: new 136	java/lang/StringBuilder
+    //   255: dup
+    //   256: invokespecial 137	java/lang/StringBuilder:<init>	()V
+    //   259: astore 10
+    //   261: aload 10
+    //   263: aload 9
+    //   265: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   268: pop
+    //   269: aload 10
+    //   271: ldc 143
+    //   273: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   276: pop
+    //   277: aload 10
+    //   279: aload 8
+    //   281: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   284: pop
+    //   285: aload 10
+    //   287: ldc 143
+    //   289: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   292: pop
+    //   293: aload 10
+    //   295: lload 5
+    //   297: invokevirtual 309	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   300: pop
+    //   301: aload 10
+    //   303: invokevirtual 155	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   306: astore 8
+    //   308: invokestatic 179	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   311: ifeq +40 -> 351
+    //   314: new 136	java/lang/StringBuilder
+    //   317: dup
+    //   318: invokespecial 137	java/lang/StringBuilder:<init>	()V
+    //   321: astore 9
+    //   323: aload 9
+    //   325: ldc_w 311
+    //   328: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   331: pop
+    //   332: aload 9
+    //   334: aload 8
+    //   336: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   339: pop
+    //   340: ldc 95
+    //   342: iconst_2
+    //   343: aload 9
+    //   345: invokevirtual 155	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   348: invokestatic 103	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   351: aload_0
+    //   352: getfield 31	com/tencent/open/appcommon/OpensdkServlet:jdField_a_of_type_JavaUtilHashSet	Ljava/util/HashSet;
+    //   355: aload 8
+    //   357: invokevirtual 314	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   360: pop
+    //   361: goto +10 -> 371
+    //   364: iload_2
+    //   365: iconst_1
+    //   366: iadd
+    //   367: istore_2
+    //   368: goto -171 -> 197
+    //   371: aload_1
+    //   372: ldc 123
+    //   374: invokevirtual 128	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   377: aload 7
+    //   379: invokevirtual 318	android/content/Intent:putExtra	(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
+    //   382: pop
+    //   383: aload_0
+    //   384: aload_1
+    //   385: aload 7
+    //   387: invokevirtual 322	com/tencent/open/appcommon/OpensdkServlet:sendToMSF	(Landroid/content/Intent;Lcom/tencent/qphone/base/remote/ToServiceMsg;)V
+    //   390: return
+    //   391: astore 12
+    //   393: goto -269 -> 124
+    //   396: astore 10
+    //   398: goto -290 -> 108
+    //   401: astore 7
+    //   403: goto -281 -> 122
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	374	0	this	OpensdkServlet
-    //   0	374	1	paramIntent	Intent
-    //   1	360	2	i	int
-    //   141	52	3	j	int
-    //   167	6	4	k	int
-    //   204	43	5	l	long
-    //   35	279	7	localToServiceMsg	com.tencent.qphone.base.remote.ToServiceMsg
-    //   364	1	7	localException1	java.lang.Exception
-    //   13	281	8	str1	String
-    //   21	206	9	str2	String
-    //   57	265	10	localObject	java.lang.Object
-    //   334	7	10	localException2	java.lang.Exception
-    //   369	1	10	localException3	java.lang.Exception
-    //   68	278	11	localDataOutputStream	java.io.DataOutputStream
-    //   43	40	12	arrayOfByte	byte[]
-    //   319	1	12	localException4	java.lang.Exception
+    //   0	406	0	this	OpensdkServlet
+    //   0	406	1	paramIntent	Intent
+    //   169	199	2	i	int
+    //   167	54	3	j	int
+    //   195	6	4	k	int
+    //   237	59	5	l	long
+    //   33	353	7	localToServiceMsg	com.tencent.qphone.base.remote.ToServiceMsg
+    //   401	1	7	localException1	java.lang.Exception
+    //   11	345	8	str	String
+    //   19	325	9	localObject1	java.lang.Object
+    //   55	247	10	localObject2	java.lang.Object
+    //   396	1	10	localException2	java.lang.Exception
+    //   66	52	11	localDataOutputStream	java.io.DataOutputStream
+    //   41	40	12	arrayOfByte	byte[]
+    //   391	1	12	localException3	java.lang.Exception
     // Exception table:
     //   from	to	target	type
-    //   70	97	319	java/lang/Exception
-    //   321	331	334	java/lang/Exception
-    //   70	97	339	finally
-    //   340	350	364	java/lang/Exception
-    //   97	107	369	java/lang/Exception
+    //   68	95	111	finally
+    //   68	95	391	java/lang/Exception
+    //   95	100	396	java/lang/Exception
+    //   100	105	396	java/lang/Exception
+    //   124	129	396	java/lang/Exception
+    //   112	122	401	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcommon.OpensdkServlet
  * JD-Core Version:    0.7.0.1
  */

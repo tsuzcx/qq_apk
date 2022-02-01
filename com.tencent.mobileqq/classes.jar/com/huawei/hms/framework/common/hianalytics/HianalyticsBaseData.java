@@ -10,9 +10,8 @@ import org.json.JSONObject;
 
 public abstract class HianalyticsBaseData
 {
-  private static final String SDK_NAME = "sdk_name";
+  protected static final String SDK_NAME = "sdk_name";
   private static final String SDK_TYPE = "sdk_type";
-  private static final String SDK_VERSION = "sdk_version";
   private static final String TAG = "HianalyticsBaseData";
   private LinkedHashMap<String, String> data = new LinkedHashMap();
   
@@ -20,7 +19,6 @@ public abstract class HianalyticsBaseData
   {
     this.data.put("sdk_type", "UxPP");
     this.data.put("sdk_name", "Restclient");
-    this.data.put("sdk_version", "4.0.2.300");
   }
   
   public LinkedHashMap<String, String> get()
@@ -32,32 +30,44 @@ public abstract class HianalyticsBaseData
   {
     if (paramString == null)
     {
-      Logger.v("HianalyticsBaseData", "key = " + paramString + " : value = " + paramLong);
+      paramString = new StringBuilder();
+      paramString.append("key = null : value = ");
+      paramString.append(paramLong);
+      Logger.v("HianalyticsBaseData", paramString.toString());
       return this;
     }
-    this.data.put(paramString, "" + paramLong);
+    LinkedHashMap localLinkedHashMap = this.data;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramLong);
+    localLinkedHashMap.put(paramString, localStringBuilder.toString());
     return this;
   }
   
   public HianalyticsBaseData put(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString2 == null))
+    if ((paramString1 != null) && (paramString2 != null))
     {
-      Logger.v("HianalyticsBaseData", "key = " + paramString1 + " : value = " + paramString2);
+      this.data.put(paramString1, paramString2);
       return this;
     }
-    this.data.put(paramString1, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key = ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" : value = ");
+    localStringBuilder.append(paramString2);
+    Logger.v("HianalyticsBaseData", localStringBuilder.toString());
     return this;
   }
   
   public HianalyticsBaseData put(LinkedHashMap<String, String> paramLinkedHashMap)
   {
-    if ((paramLinkedHashMap == null) || (paramLinkedHashMap.isEmpty()))
+    if ((paramLinkedHashMap != null) && (!paramLinkedHashMap.isEmpty()))
     {
-      Logger.v("HianalyticsBaseData", "data is null");
+      this.data.putAll(paramLinkedHashMap);
       return this;
     }
-    this.data.putAll(paramLinkedHashMap);
+    Logger.v("HianalyticsBaseData", "data is null");
     return this;
   }
   
@@ -83,7 +93,7 @@ public abstract class HianalyticsBaseData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.framework.common.hianalytics.HianalyticsBaseData
  * JD-Core Version:    0.7.0.1
  */

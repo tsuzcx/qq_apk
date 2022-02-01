@@ -22,39 +22,19 @@ public class ThreadPoolExecutorMonitor
   private static String b(Runnable paramRunnable)
   {
     if ((paramRunnable instanceof FutureTask)) {}
-    for (;;)
+    try
     {
-      try
+      int i = Build.VERSION.SDK_INT;
+      if (i >= 17)
       {
-        if (Build.VERSION.SDK_INT < 17) {
-          continue;
-        }
         localObject1 = FutureTask.class.getDeclaredField("callable");
         ((Field)localObject1).setAccessible(true);
         localObject2 = (Callable)((Field)localObject1).get(paramRunnable);
-        if (localObject2 == null) {
-          break label174;
-        }
-        Class localClass = Class.forName("java.util.concurrent.Executors$RunnableAdapter");
-        localObject1 = localObject2;
-        if (localClass.isInstance(localObject2))
-        {
-          localObject1 = localClass.getDeclaredField("task");
-          ((Field)localObject1).setAccessible(true);
-          localObject1 = (Runnable)((Field)localObject1).get(localObject2);
-        }
       }
-      catch (Exception localException)
+      else
       {
-        Object localObject1;
-        localRunnable = null;
-        continue;
-      }
-      if (localObject1 == null)
-      {
-        return paramRunnable.getClass().getName();
         if (Build.VERSION.SDK_INT < 15) {
-          break label179;
+          break label185;
         }
         localObject1 = FutureTask.class.getDeclaredField("sync");
         ((Field)localObject1).setAccessible(true);
@@ -62,24 +42,41 @@ public class ThreadPoolExecutorMonitor
         localObject2 = Class.forName("java.util.concurrent.FutureTask$Sync").getDeclaredField("callable");
         ((Field)localObject2).setAccessible(true);
         localObject2 = (Callable)((Field)localObject2).get(localObject1);
-        continue;
-        if ((paramRunnable instanceof Job))
-        {
-          localRunnable = ((Job)paramRunnable).mJob;
-          continue;
-        }
       }
-      else
-      {
-        paramRunnable = localRunnable;
-        continue;
-      }
-      label174:
-      Runnable localRunnable = null;
-      continue;
-      label179:
-      Object localObject2 = null;
     }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Object localObject1;
+        Class localClass;
+        continue;
+        Object localObject2 = null;
+      }
+    }
+    if (localObject2 != null)
+    {
+      localClass = Class.forName("java.util.concurrent.Executors$RunnableAdapter");
+      localObject1 = localObject2;
+      if (!localClass.isInstance(localObject2)) {
+        break label164;
+      }
+      localObject1 = localClass.getDeclaredField("task");
+      ((Field)localObject1).setAccessible(true);
+      localObject1 = (Runnable)((Field)localObject1).get(localObject2);
+      break label164;
+      if ((paramRunnable instanceof Job))
+      {
+        localObject1 = ((Job)paramRunnable).mJob;
+        break label164;
+      }
+    }
+    localObject1 = null;
+    label164:
+    if (localObject1 != null) {
+      paramRunnable = (Runnable)localObject1;
+    }
+    return paramRunnable.getClass().getName();
   }
   
   private static void b(Class paramClass)
@@ -95,10 +92,18 @@ public class ThreadPoolExecutorMonitor
     {
       paramRunnable = new StringBuilder();
       paramRunnable.append("ThreadPoolExecutor Log : ");
-      paramRunnable.append("runnable class = ").append(paramThreadPoolExecutorMonitorResult.jdField_a_of_type_JavaLangString).append(" ; ");
-      paramRunnable.append("thread name = ").append(paramThreadPoolExecutorMonitorResult.jdField_b_of_type_JavaLangString).append(" ; ");
-      paramRunnable.append("wait time = ").append(paramThreadPoolExecutorMonitorResult.jdField_b_of_type_Long - paramThreadPoolExecutorMonitorResult.jdField_a_of_type_Long).append(" ; ");
-      paramRunnable.append("run() cost time = ").append(paramThreadPoolExecutorMonitorResult.c - paramThreadPoolExecutorMonitorResult.jdField_b_of_type_Long).append(" ; ");
+      paramRunnable.append("runnable class = ");
+      paramRunnable.append(paramThreadPoolExecutorMonitorResult.jdField_a_of_type_JavaLangString);
+      paramRunnable.append(" ; ");
+      paramRunnable.append("thread name = ");
+      paramRunnable.append(paramThreadPoolExecutorMonitorResult.jdField_b_of_type_JavaLangString);
+      paramRunnable.append(" ; ");
+      paramRunnable.append("wait time = ");
+      paramRunnable.append(paramThreadPoolExecutorMonitorResult.jdField_b_of_type_Long - paramThreadPoolExecutorMonitorResult.jdField_a_of_type_Long);
+      paramRunnable.append(" ; ");
+      paramRunnable.append("run() cost time = ");
+      paramRunnable.append(paramThreadPoolExecutorMonitorResult.c - paramThreadPoolExecutorMonitorResult.jdField_b_of_type_Long);
+      paramRunnable.append(" ; ");
       QLog.d("ThreadPoolExecutorMonitor", 2, paramRunnable.toString());
     }
   }
@@ -135,7 +140,7 @@ public class ThreadPoolExecutorMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.javahook.ThreadPoolExecutorMonitor
  * JD-Core Version:    0.7.0.1
  */

@@ -23,12 +23,20 @@ public class AudioTransClientInfoHandlerExtend$InfoInterfaceData
   
   public String toString()
   {
-    return "mChannelType[" + this.jdField_a_of_type_Int + "], mSessionId[" + this.jdField_a_of_type_Long + "], mTransType[" + this.b + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mChannelType[");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("], mSessionId[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("], mTransType[");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.handler.AudioTransClientInfoHandlerExtend.InfoInterfaceData
  * JD-Core Version:    0.7.0.1
  */

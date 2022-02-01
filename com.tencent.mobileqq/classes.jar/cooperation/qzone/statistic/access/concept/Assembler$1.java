@@ -18,7 +18,10 @@ final class Assembler$1
       while (j < k)
       {
         Key localKey = arrayOfKey[j];
-        localStringBuilder.append(localKey).append("→").append(localStatistic.getValue(localKey)).append(",");
+        localStringBuilder.append(localKey);
+        localStringBuilder.append("→");
+        localStringBuilder.append(localStatistic.getValue(localKey));
+        localStringBuilder.append(",");
         j += 1;
       }
       localStringBuilder.append("\n");
@@ -29,7 +32,7 @@ final class Assembler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.statistic.access.concept.Assembler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -38,57 +38,67 @@ public class Oidb0xea3Sender
   
   private void a(oidb_0xea3.RspBody paramRspBody)
   {
-    QLog.i("Oidb0xea3Sender", 2, "handleTroopImportantMsg_suc troopUin:" + this.jdField_a_of_type_Long);
-    TroopShortcutBarHandler localTroopShortcutBarHandler = (TroopShortcutBarHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_SHORTCUTBAR_HANDLE);
-    if (localTroopShortcutBarHandler == null) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handleTroopImportantMsg_suc troopUin:");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    QLog.i("Oidb0xea3Sender", 2, ((StringBuilder)localObject).toString());
+    localObject = (TroopShortcutBarHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_SHORTCUTBAR_HANDLE);
+    if (localObject == null) {
       return;
     }
     if (paramRspBody.back_group_msg.has()) {
       this.jdField_a_of_type_JavaUtilList.addAll(paramRspBody.back_group_msg.get());
     }
-    localTroopShortcutBarHandler.notifyUI(4, true, new Object[] { Long.valueOf(this.jdField_a_of_type_Long), this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList });
+    ((TroopShortcutBarHandler)localObject).notifyUI(4, true, new Object[] { Long.valueOf(this.jdField_a_of_type_Long), this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList });
     b();
   }
   
   private void b()
   {
-    Object localObject2;
     if (QLog.isColorLevel())
     {
-      localObject1 = new ArrayList();
-      if (this.jdField_a_of_type_JavaUtilList != null)
+      Object localObject1 = new ArrayList();
+      Object localObject2 = this.jdField_a_of_type_JavaUtilList;
+      if (localObject2 != null)
       {
-        localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
+        localObject2 = ((List)localObject2).iterator();
         while (((Iterator)localObject2).hasNext()) {
           ((ArrayList)localObject1).add(Long.valueOf(((oidb_0xea3.BackMsg)((Iterator)localObject2).next()).addition_seq.get()));
         }
       }
-      localObject2 = new StringBuilder().append("msgSeqs:").append(((ArrayList)localObject1).toString()).append(" mRspUnchangeSeqs:");
-      if (this.jdField_b_of_type_JavaUtilList != null) {
-        break label116;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("msgSeqs:");
+      ((StringBuilder)localObject2).append(((ArrayList)localObject1).toString());
+      ((StringBuilder)localObject2).append(" mRspUnchangeSeqs:");
+      localObject1 = this.jdField_b_of_type_JavaUtilList;
+      if (localObject1 == null) {
+        localObject1 = "[]";
+      } else {
+        localObject1 = localObject1.toString();
       }
-    }
-    label116:
-    for (Object localObject1 = "[]";; localObject1 = this.jdField_b_of_type_JavaUtilList.toString())
-    {
-      QLog.i("Oidb0xea3Sender", 2, (String)localObject1);
-      return;
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.i("Oidb0xea3Sender", 2, ((StringBuilder)localObject2).toString());
     }
   }
   
   private void b(oidb_0xea3.RspBody paramRspBody)
   {
-    QLog.i("Oidb0xea3Sender", 2, "handleTroopImportantMsg_tryNex troopUin:" + this.jdField_a_of_type_Long + ",retryCount" + this.jdField_a_of_type_Int);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handleTroopImportantMsg_tryNex troopUin:");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(",retryCount");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    QLog.i("Oidb0xea3Sender", 2, ((StringBuilder)localObject).toString());
     if (paramRspBody.back_group_msg.has())
     {
       paramRspBody = paramRspBody.back_group_msg.get().iterator();
       while (paramRspBody.hasNext())
       {
-        oidb_0xea3.BackMsg localBackMsg = (oidb_0xea3.BackMsg)paramRspBody.next();
-        if ((localBackMsg.msg.has()) && (localBackMsg.addition_seq.has()))
+        localObject = (oidb_0xea3.BackMsg)paramRspBody.next();
+        if ((((oidb_0xea3.BackMsg)localObject).msg.has()) && (((oidb_0xea3.BackMsg)localObject).addition_seq.has()))
         {
-          this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(localBackMsg.addition_seq.get()));
-          this.jdField_a_of_type_JavaUtilList.add(localBackMsg);
+          this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(((oidb_0xea3.BackMsg)localObject).addition_seq.get()));
+          this.jdField_a_of_type_JavaUtilList.add(localObject);
         }
       }
     }
@@ -101,8 +111,15 @@ public class Oidb0xea3Sender
     if (localTroopShortcutBarHandler == null) {
       return;
     }
-    QLog.i("Oidb0xea3Sender", 2, "getTroopImportantMsgInternal troopUin:" + this.jdField_a_of_type_Long + ",msgSeqs: " + this.jdField_a_of_type_JavaUtilArrayList.toString() + ",retryCount" + this.jdField_a_of_type_Int);
-    Object localObject = new oidb_0xea3.ReqBody();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getTroopImportantMsgInternal troopUin:");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(",msgSeqs: ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilArrayList.toString());
+    ((StringBuilder)localObject).append(",retryCount");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    QLog.i("Oidb0xea3Sender", 2, ((StringBuilder)localObject).toString());
+    localObject = new oidb_0xea3.ReqBody();
     ((oidb_0xea3.ReqBody)localObject).group_code.set(this.jdField_a_of_type_Long);
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
@@ -133,48 +150,47 @@ public class Oidb0xea3Sender
     }
     oidb_0xea3.RspBody localRspBody = new oidb_0xea3.RspBody();
     int i = TroopShortcutBarHandler.parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
-    boolean bool;
     if (i == 0)
     {
       if ((this.jdField_b_of_type_JavaUtilList == null) && (localRspBody.return_unchange_seq.has())) {
         this.jdField_b_of_type_JavaUtilList = localRspBody.return_unchange_seq.get();
       }
       a(localRspBody);
-      bool = true;
+      return true;
     }
-    for (;;)
+    if ((i >= 1900) && (i <= 2900))
     {
-      return bool;
-      if ((i >= 1900) && (i <= 2900))
-      {
-        QLog.e("Oidb0xea3Sender", 2, "handleTroopImportantMsg troopUin:" + this.jdField_a_of_type_Long + ",result: " + i);
-        if ((this.jdField_b_of_type_JavaUtilList == null) && (localRspBody.return_unchange_seq.has())) {
-          this.jdField_b_of_type_JavaUtilList = localRspBody.return_unchange_seq.get();
-        }
-        this.jdField_a_of_type_Int += 1;
-        if (this.jdField_a_of_type_Int >= 3)
-        {
-          a(localRspBody);
-          bool = true;
-        }
-        else
-        {
-          b(localRspBody);
-          bool = false;
-        }
+      paramFromServiceMsg = new StringBuilder();
+      paramFromServiceMsg.append("handleTroopImportantMsg troopUin:");
+      paramFromServiceMsg.append(this.jdField_a_of_type_Long);
+      paramFromServiceMsg.append(",result: ");
+      paramFromServiceMsg.append(i);
+      QLog.e("Oidb0xea3Sender", 2, paramFromServiceMsg.toString());
+      if ((this.jdField_b_of_type_JavaUtilList == null) && (localRspBody.return_unchange_seq.has())) {
+        this.jdField_b_of_type_JavaUtilList = localRspBody.return_unchange_seq.get();
       }
-      else
+      this.jdField_a_of_type_Int += 1;
+      if (this.jdField_a_of_type_Int >= 3)
       {
-        QLog.e("Oidb0xea3Sender", 2, "handleTroopImportantMsg troopUin:" + this.jdField_a_of_type_Long + ",result: " + i);
         a(localRspBody);
-        bool = true;
+        return true;
       }
+      b(localRspBody);
+      return false;
     }
+    paramFromServiceMsg = new StringBuilder();
+    paramFromServiceMsg.append("handleTroopImportantMsg troopUin:");
+    paramFromServiceMsg.append(this.jdField_a_of_type_Long);
+    paramFromServiceMsg.append(",result: ");
+    paramFromServiceMsg.append(i);
+    QLog.e("Oidb0xea3Sender", 2, paramFromServiceMsg.toString());
+    a(localRspBody);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.Oidb0xea3Sender
  * JD-Core Version:    0.7.0.1
  */

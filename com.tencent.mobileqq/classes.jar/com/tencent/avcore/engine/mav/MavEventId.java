@@ -5,6 +5,7 @@ public abstract interface MavEventId
   public static final int EM_SDK_EVENT_ID_ALL_CAN_GO_ON_STAGE = 103;
   public static final int EM_SDK_EVENT_ID_ALL_MEM_UPDATE = 44;
   public static final int EM_SDK_EVENT_ID_ALL_ONLINE_NOTICE = 16;
+  public static final int EM_SDK_EVENT_ID_AUDIO_ENGINE_READY = 179;
   public static final int EM_SDK_EVENT_ID_AUDIO_PLAYBACK_FAILURE = 175;
   public static final int EM_SDK_EVENT_ID_AUDIO_RECORD_FAILURE = 174;
   public static final int EM_SDK_EVENT_ID_AUTHORITY_CHANGED = 173;
@@ -55,6 +56,7 @@ public abstract interface MavEventId
   public static final int EM_SDK_EVENT_ID_MICONBYADMINFAIL_NOTIFY = 158;
   public static final int EM_SDK_EVENT_ID_NEW_GET_IN = 70;
   public static final int EM_SDK_EVENT_ID_NEW_SPEAKING = 42;
+  public static final int EM_SDK_EVENT_ID_NOTIFY_AI_DENOISE_TIPS = 180;
   public static final int EM_SDK_EVENT_ID_OFFLINE_RECV_INVITE = 5;
   public static final int EM_SDK_EVENT_ID_OLD_STOP_SPEAKING = 43;
   public static final int EM_SDK_EVENT_ID_ONLINE_NOTICE = 13;
@@ -69,9 +71,6 @@ public abstract interface MavEventId
   public static final int EM_SDK_EVENT_ID_PPT_UPLOAD_STATE = 110;
   public static final int EM_SDK_EVENT_ID_PROTOCOL_ERR = 7;
   public static final int EM_SDK_EVENT_ID_PSTN_BILL = 19;
-  public static final int EM_SDK_EVENT_ID_QUIT_FAIL = 37;
-  public static final int EM_SDK_EVENT_ID_QUIT_SUC = 36;
-  public static final int EM_SDK_EVENT_ID_QUIT_TIMEOUT = 38;
   public static final int EM_SDK_EVENT_ID_RECV_INVITE = 6;
   public static final int EM_SDK_EVENT_ID_RECV_INVITE_SWITCH_FROM_P2PAV = 25;
   public static final int EM_SDK_EVENT_ID_RECV_INVITE_SWITCH_FROM_P2PSHARE = 26;
@@ -107,7 +106,7 @@ public abstract interface MavEventId
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avcore.engine.mav.MavEventId
  * JD-Core Version:    0.7.0.1
  */

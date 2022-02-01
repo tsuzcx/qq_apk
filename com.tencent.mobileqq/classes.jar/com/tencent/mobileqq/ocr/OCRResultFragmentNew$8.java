@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.ocr;
 
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.textpreview.MenuUtil;
-import com.tencent.mobileqq.widget.ParticipleBottomMenuView.OnMenuClickListener;
+import com.tencent.mobileqq.qqfavor.api.IFavoriteOCR;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.textpreview.BaseMenuUtil;
+import com.tencent.mobileqq.widget.participle.ParticipleBottomMenuView.OnMenuClickListener;
 
 class OCRResultFragmentNew$8
   implements ParticipleBottomMenuView.OnMenuClickListener
@@ -16,7 +17,7 @@ class OCRResultFragmentNew$8
   
   public void a(String paramString)
   {
-    MenuUtil.copy(paramString, "OCR_Participle_copy");
+    BaseMenuUtil.copy(paramString, "OCR_Participle_copy");
   }
   
   public void b(String paramString)
@@ -26,7 +27,7 @@ class OCRResultFragmentNew$8
   
   public void c(String paramString)
   {
-    MenuUtil.a(OCRResultFragmentNew.a(this.a), OCRResultFragmentNew.a(this.a).app, paramString);
+    ((IFavoriteOCR)QRoute.api(IFavoriteOCR.class)).favorite(OCRResultFragmentNew.a(this.a), paramString);
   }
   
   public void d(String paramString)
@@ -36,7 +37,7 @@ class OCRResultFragmentNew$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRResultFragmentNew.8
  * JD-Core Version:    0.7.0.1
  */

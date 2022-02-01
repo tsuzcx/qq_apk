@@ -121,11 +121,13 @@ public abstract interface ITPPlayerBase
   
   public abstract void switchDefinition(String paramString, @TPCommonEnum.TPSwitchDefMode int paramInt, long paramLong);
   
+  public abstract void switchDefinition(String paramString, Map<String, String> paramMap, @TPCommonEnum.TPSwitchDefMode int paramInt, long paramLong);
+  
   public abstract void updateLoggerContext(TPLoggerContext paramTPLoggerContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.ITPPlayerBase
  * JD-Core Version:    0.7.0.1
  */

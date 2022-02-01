@@ -24,75 +24,108 @@ public class FetchInfoReq
   
   public boolean a()
   {
-    if ((this.jdField_a_of_type_Int < 1) || (this.jdField_a_of_type_Int > 4)) {}
-    while ((this.jdField_a_of_type_JavaLangString == null) || ("".equals(this.jdField_a_of_type_JavaLangString.trim())) || ((this.jdField_a_of_type_Int == 3) && ((this.b == null) || ("".equals(this.b))) && ((this.jdField_a_of_type_JavaLangObject == null) || ("".equals(this.jdField_a_of_type_JavaLangObject))))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject instanceof FetchInfoReq))
+    int i = this.jdField_a_of_type_Int;
+    if (i >= 1)
     {
-      paramObject = (FetchInfoReq)paramObject;
-      if ((paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (Utils.a(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && ((3 != this.jdField_a_of_type_Int) || ((Utils.a(this.b, paramObject.b)) && (Utils.a(this.jdField_a_of_type_JavaLangObject, paramObject.jdField_a_of_type_JavaLangObject)) && (Utils.a(this.jdField_a_of_type_AndroidOsBundle, paramObject.jdField_a_of_type_AndroidOsBundle))))) {
+      if (i > 4) {
+        return false;
+      }
+      Object localObject = this.jdField_a_of_type_JavaLangString;
+      if (localObject != null)
+      {
+        if ("".equals(((String)localObject).trim())) {
+          return false;
+        }
+        if (this.jdField_a_of_type_Int == 3)
+        {
+          localObject = this.b;
+          if ((localObject == null) || ("".equals(localObject)))
+          {
+            localObject = this.jdField_a_of_type_JavaLangObject;
+            if ((localObject == null) || ("".equals(localObject))) {
+              return false;
+            }
+          }
+        }
         return true;
       }
     }
     return false;
   }
   
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = paramObject instanceof FetchInfoReq;
+    boolean bool1 = true;
+    if (bool2)
+    {
+      paramObject = (FetchInfoReq)paramObject;
+      if ((paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (Utils.a(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)))
+      {
+        if (3 != this.jdField_a_of_type_Int) {
+          return bool1;
+        }
+        if ((Utils.a(this.b, paramObject.b)) && (Utils.a(this.jdField_a_of_type_JavaLangObject, paramObject.jdField_a_of_type_JavaLangObject)) && (Utils.a(this.jdField_a_of_type_AndroidOsBundle, paramObject.jdField_a_of_type_AndroidOsBundle))) {
+          return true;
+        }
+      }
+    }
+    bool1 = false;
+    return bool1;
+  }
+  
   public int hashCode()
   {
-    int m = 0;
     int n = this.jdField_a_of_type_Int;
+    Object localObject = this.jdField_a_of_type_JavaLangString;
+    int m = 0;
     int i;
-    int j;
-    label27:
-    int k;
-    if (this.jdField_a_of_type_JavaLangString == null)
-    {
+    if (localObject == null) {
       i = 0;
-      if (this.b != null) {
-        break label66;
-      }
+    } else {
+      i = ((String)localObject).hashCode();
+    }
+    localObject = this.b;
+    int j;
+    if (localObject == null) {
       j = 0;
-      if (this.jdField_a_of_type_JavaLangObject != null) {
-        break label77;
-      }
+    } else {
+      j = ((String)localObject).hashCode();
+    }
+    localObject = this.jdField_a_of_type_JavaLangObject;
+    int k;
+    if (localObject == null) {
       k = 0;
-      label36:
-      if (this.jdField_a_of_type_AndroidOsBundle != null) {
-        break label88;
-      }
+    } else {
+      k = localObject.hashCode();
     }
-    for (;;)
-    {
-      return k + (n + i + j) + m;
-      i = this.jdField_a_of_type_JavaLangString.hashCode();
-      break;
-      label66:
-      j = this.b.hashCode();
-      break label27;
-      label77:
-      k = this.jdField_a_of_type_JavaLangObject.hashCode();
-      break label36;
-      label88:
-      m = this.jdField_a_of_type_AndroidOsBundle.hashCode();
+    localObject = this.jdField_a_of_type_AndroidOsBundle;
+    if (localObject != null) {
+      m = localObject.hashCode();
     }
+    return n + i + j + k + m;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[iType = ").append(this.jdField_a_of_type_Int).append(", strKey = ").append(this.jdField_a_of_type_JavaLangString).append(", strSubKey = ").append(this.b).append(", obj = ").append(this.jdField_a_of_type_JavaLangObject).append(", extraUpdateTargetParams = ").append(this.jdField_a_of_type_AndroidOsBundle).append(']');
+    localStringBuilder.append("[iType = ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", strKey = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", strSubKey = ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", obj = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangObject);
+    localStringBuilder.append(", extraUpdateTargetParams = ");
+    localStringBuilder.append(this.jdField_a_of_type_AndroidOsBundle);
+    localStringBuilder.append(']');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.FetchInfoReq
  * JD-Core Version:    0.7.0.1
  */

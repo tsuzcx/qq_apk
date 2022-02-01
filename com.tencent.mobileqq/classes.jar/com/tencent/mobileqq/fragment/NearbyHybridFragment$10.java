@@ -17,7 +17,15 @@ class NearbyHybridFragment$10
   
   public void a(String paramString, long paramLong, Bundle paramBundle)
   {
-    QLog.i("nearby.NearbyHybridFragment", 2, "onDownloadSucess() called with: filePath = [" + paramString + "], fileSize = [" + paramLong + "], extData = [" + paramBundle + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDownloadSucess() called with: filePath = [");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("], fileSize = [");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("], extData = [");
+    localStringBuilder.append(paramBundle);
+    localStringBuilder.append("]");
+    QLog.i("nearby.NearbyHybridFragment", 2, localStringBuilder.toString());
     paramBundle = BaseApplicationImpl.getContext().getSharedPreferences("now_down_apk", 4);
     paramBundle.edit().putInt("state", 1);
     paramBundle.edit().putString("filePath", paramString);
@@ -25,7 +33,13 @@ class NearbyHybridFragment$10
   
   public void b(int paramInt, Bundle paramBundle)
   {
-    QLog.i("nearby.NearbyHybridFragment", 2, "onDownloadProgress() called with: progress = [" + paramInt + "], extData = [" + paramBundle + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDownloadProgress() called with: progress = [");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("], extData = [");
+    localStringBuilder.append(paramBundle);
+    localStringBuilder.append("]");
+    QLog.i("nearby.NearbyHybridFragment", 2, localStringBuilder.toString());
   }
   
   public void c(int paramInt, Bundle paramBundle) {}
@@ -34,7 +48,7 @@ class NearbyHybridFragment$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyHybridFragment.10
  * JD-Core Version:    0.7.0.1
  */

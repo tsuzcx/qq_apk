@@ -12,14 +12,7 @@ import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.RspBody;
 public abstract class TroopFileCreateFolderObserver
   extends ProtoUtils.TroopProtocolObserver
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    b(paramInt, paramArrayOfByte, paramBundle);
-  }
-  
-  protected abstract void a(boolean paramBoolean, int paramInt, TroopFileInfo paramTroopFileInfo);
-  
-  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     if (paramInt != 0)
     {
@@ -31,29 +24,37 @@ public abstract class TroopFileCreateFolderObserver
     {
       paramBundle.mergeFrom(paramArrayOfByte);
       paramArrayOfByte = (oidb_0x6d7.CreateFolderRspBody)paramBundle.create_folder_rsp.get();
-      if (!paramArrayOfByte.int32_ret_code.has()) {
-        break label104;
-      }
-      if (paramArrayOfByte.int32_ret_code.get() == 0)
+      if (paramArrayOfByte.int32_ret_code.has())
       {
-        a(true, 0, new TroopFileInfo((group_file_common.FolderInfo)paramArrayOfByte.folder_info.get()));
+        if (paramArrayOfByte.int32_ret_code.get() == 0)
+        {
+          a(true, 0, new TroopFileInfo((group_file_common.FolderInfo)paramArrayOfByte.folder_info.get()));
+          return;
+        }
+        a(false, paramArrayOfByte.int32_ret_code.get(), null);
         return;
       }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
       a(false, -1, null);
       return;
     }
-    a(false, paramArrayOfByte.int32_ret_code.get(), null);
-    return;
-    label104:
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      label103:
+      break label103;
+    }
     a(false, -1, null);
+  }
+  
+  protected abstract void a(boolean paramBoolean, int paramInt, TroopFileInfo paramTroopFileInfo);
+  
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    a(paramInt, paramArrayOfByte, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.file.protocol.TroopFileCreateFolderObserver
  * JD-Core Version:    0.7.0.1
  */

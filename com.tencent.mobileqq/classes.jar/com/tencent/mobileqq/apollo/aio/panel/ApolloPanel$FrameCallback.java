@@ -1,0 +1,41 @@
+package com.tencent.mobileqq.apollo.aio.panel;
+
+import com.tencent.mobileqq.apollo.aio.panel.viewbinder.ApolloViewBinder;
+import com.tencent.mobileqq.apollo.model.ApolloActionData;
+import com.tencent.mobileqq.apollo.player.GetFrameCallback;
+import com.tencent.mobileqq.apollo.player.action.CMSAction;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
+import org.jetbrains.annotations.Nullable;
+
+public class ApolloPanel$FrameCallback
+  implements GetFrameCallback
+{
+  private ApolloActionData jdField_a_of_type_ComTencentMobileqqApolloModelApolloActionData;
+  private List<ApolloViewBinder> jdField_a_of_type_JavaUtilList;
+  
+  public ApolloPanel$FrameCallback(List<ApolloViewBinder> paramList, ApolloActionData paramApolloActionData)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_ComTencentMobileqqApolloModelApolloActionData = paramApolloActionData;
+  }
+  
+  public void a(boolean paramBoolean, @Nullable String paramString, @Nullable CMSAction paramCMSAction)
+  {
+    paramString = new StringBuilder();
+    paramString.append("ApolloPanel handleCMSPlayerGetFrame success : ");
+    paramString.append(paramBoolean);
+    paramString.append(" actionId: ");
+    paramString.append(this.jdField_a_of_type_ComTencentMobileqqApolloModelApolloActionData.actionId);
+    QLog.d("[cmshow]ApolloPanel", 1, paramString.toString());
+    ThreadManager.getUIHandler().post(new ApolloPanel.FrameCallback.1(this));
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+ * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.ApolloPanel.FrameCallback
+ * JD-Core Version:    0.7.0.1
+ */

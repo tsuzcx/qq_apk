@@ -16,69 +16,63 @@ class MsgBoxListActivity$9
   
   protected void a(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle)
   {
-    if (!paramBoolean1) {
+    if (!paramBoolean1)
+    {
       if (QLog.isColorLevel()) {
         QLog.i("MsgBoxListActivity", 2, "onGetInteractLastFeed = false");
       }
-    }
-    for (;;)
-    {
       return;
-      if (paramBoolean2) {
-        this.a.app.getInterFollowMgr().addMessage(paramString, 0, paramInt, paramLong, 1);
-      }
-      while (!this.a.isFinishing())
+    }
+    if (paramBoolean2)
+    {
+      this.a.app.getInterFollowMgr().addMessage(paramString, 0, paramInt, paramLong, 1);
+    }
+    else if (this.a.app.getInterFollowMgr().isInMsgBoxRecentList(AppConstants.MSG_BOX_INTERACT_UIN, this.a.mBoxMsgType))
+    {
+      paramInt = this.a.app.getConversationFacade().a(AppConstants.MSG_BOX_INTERACT_UIN, this.a.mBoxMsgType);
+      this.a.app.getMessageFacade().a(this.a.mBoxUIN, this.a.mBoxMsgType, AppConstants.MSG_BOX_INTERACT_UIN, this.a.app.getCurrentAccountUin());
+      if (paramInt > 0)
       {
-        this.a.a();
-        return;
-        if (this.a.app.getInterFollowMgr().isInMsgBoxRecentList(AppConstants.MSG_BOX_INTERACT_UIN, this.a.jdField_a_of_type_Int))
-        {
-          paramInt = this.a.app.getConversationFacade().a(AppConstants.MSG_BOX_INTERACT_UIN, this.a.jdField_a_of_type_Int);
-          this.a.app.getMessageFacade().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, AppConstants.MSG_BOX_INTERACT_UIN, this.a.app.getCurrentAccountUin());
-          if (paramInt > 0)
-          {
-            RecentUtil.b(this.a.app, AppConstants.MSG_BOX_INTERACT_UIN, this.a.jdField_a_of_type_Int);
-            this.a.app.getMessageFacade().a(AppConstants.MSG_BOX_INTERACT_UIN, this.a.jdField_a_of_type_Int, true, true);
-          }
-        }
+        RecentUtil.b(this.a.app, AppConstants.MSG_BOX_INTERACT_UIN, this.a.mBoxMsgType);
+        this.a.app.getMessageFacade().a(AppConstants.MSG_BOX_INTERACT_UIN, this.a.mBoxMsgType, true, true);
       }
+    }
+    if (!this.a.isFinishing()) {
+      this.a.refreshListGlobal();
     }
   }
   
   protected void b(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle)
   {
-    if (!paramBoolean1) {
+    if (!paramBoolean1)
+    {
       if (QLog.isColorLevel()) {
         QLog.i("MsgBoxListActivity", 2, "onGetInteractLastFeed = false");
       }
-    }
-    for (;;)
-    {
       return;
-      if (paramBoolean2) {
-        this.a.app.getInterFollowMgr().addMessage(paramString, 0, paramInt, paramLong, 2);
-      }
-      while (!this.a.isFinishing())
+    }
+    if (paramBoolean2)
+    {
+      this.a.app.getInterFollowMgr().addMessage(paramString, 0, paramInt, paramLong, 2);
+    }
+    else if (this.a.app.getInterFollowMgr().isInMsgBoxRecentList(AppConstants.MSG_BOX_FOLLOW_UIN, this.a.mBoxMsgType))
+    {
+      paramInt = this.a.app.getConversationFacade().a(AppConstants.MSG_BOX_FOLLOW_UIN, this.a.mBoxMsgType);
+      this.a.app.getMessageFacade().a(this.a.mBoxUIN, this.a.mBoxMsgType, AppConstants.MSG_BOX_FOLLOW_UIN, this.a.app.getCurrentAccountUin());
+      if (paramInt > 0)
       {
-        this.a.a();
-        return;
-        if (this.a.app.getInterFollowMgr().isInMsgBoxRecentList(AppConstants.MSG_BOX_FOLLOW_UIN, this.a.jdField_a_of_type_Int))
-        {
-          paramInt = this.a.app.getConversationFacade().a(AppConstants.MSG_BOX_FOLLOW_UIN, this.a.jdField_a_of_type_Int);
-          this.a.app.getMessageFacade().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, AppConstants.MSG_BOX_FOLLOW_UIN, this.a.app.getCurrentAccountUin());
-          if (paramInt > 0)
-          {
-            RecentUtil.b(this.a.app, AppConstants.MSG_BOX_FOLLOW_UIN, this.a.jdField_a_of_type_Int);
-            this.a.app.getMessageFacade().a(AppConstants.MSG_BOX_FOLLOW_UIN, this.a.jdField_a_of_type_Int, true, true);
-          }
-        }
+        RecentUtil.b(this.a.app, AppConstants.MSG_BOX_FOLLOW_UIN, this.a.mBoxMsgType);
+        this.a.app.getMessageFacade().a(AppConstants.MSG_BOX_FOLLOW_UIN, this.a.mBoxMsgType, true, true);
       }
+    }
+    if (!this.a.isFinishing()) {
+      this.a.refreshListGlobal();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dating.MsgBoxListActivity.9
  * JD-Core Version:    0.7.0.1
  */

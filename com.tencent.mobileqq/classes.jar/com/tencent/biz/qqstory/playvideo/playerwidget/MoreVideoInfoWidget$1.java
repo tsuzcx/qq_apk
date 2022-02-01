@@ -15,38 +15,28 @@ class MoreVideoInfoWidget$1
   
   public boolean onLongClick(View paramView)
   {
-    int i = 0;
     paramView = (StoryConfigManager)SuperManager.a(10);
-    boolean bool;
-    if (!((Boolean)paramView.b("player_show_debug_panel", Boolean.valueOf(false))).booleanValue())
+    int i = 0;
+    boolean bool = ((Boolean)paramView.b("player_show_debug_panel", Boolean.valueOf(false))).booleanValue() ^ true;
+    paramView.b("player_show_debug_panel", Boolean.valueOf(bool));
+    paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
+    if (paramView != null)
     {
-      bool = true;
-      paramView.b("player_show_debug_panel", Boolean.valueOf(bool));
-      paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
+      paramView = (VideoViewVideoHolder)paramView.a(VideoViewVideoHolder.class);
       if (paramView != null)
       {
-        paramView = (VideoViewVideoHolder)paramView.a(VideoViewVideoHolder.class);
-        if (paramView != null) {
-          if (!bool) {
-            break label90;
-          }
+        if (!bool) {
+          i = 8;
         }
+        paramView.a(i);
       }
     }
-    for (;;)
-    {
-      paramView.a(i);
-      return true;
-      bool = false;
-      break;
-      label90:
-      i = 8;
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.MoreVideoInfoWidget.1
  * JD-Core Version:    0.7.0.1
  */

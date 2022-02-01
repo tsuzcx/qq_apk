@@ -38,8 +38,10 @@ public final class RIJBlackWhiteModeHelper
     Intrinsics.checkParameterIsNotNull(paramCanvas, "canvas");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "drawCanvas");
     jdField_a_of_type_Boolean = b();
-    int i = 0;
-    if ((!paramBoolean) || (jdField_a_of_type_Boolean)) {
+    int i;
+    if ((paramBoolean) && (!jdField_a_of_type_Boolean)) {
+      i = 0;
+    } else {
       i = 1;
     }
     if (i != 0)
@@ -59,12 +61,17 @@ public final class RIJBlackWhiteModeHelper
   
   public final boolean b()
   {
-    return Aladdin.get(320).getIntegerFromString("is_black_white_mode", 0) == 1;
+    AladdinConfig localAladdinConfig = Aladdin.get(320);
+    boolean bool = false;
+    if (localAladdinConfig.getIntegerFromString("is_black_white_mode", 0) == 1) {
+      bool = true;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.RIJBlackWhiteModeHelper
  * JD-Core Version:    0.7.0.1
  */

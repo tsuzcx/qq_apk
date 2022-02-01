@@ -29,8 +29,9 @@ public abstract class BaseFloatViewBuilder
   
   public Bitmap a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator != null) {
-      a(this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator.a());
+    HeartAnimator localHeartAnimator = this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator;
+    if (localHeartAnimator != null) {
+      a(localHeartAnimator.a());
     }
     return null;
   }
@@ -47,7 +48,7 @@ public abstract class BaseFloatViewBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.ui.BaseFloatViewBuilder
  * JD-Core Version:    0.7.0.1
  */

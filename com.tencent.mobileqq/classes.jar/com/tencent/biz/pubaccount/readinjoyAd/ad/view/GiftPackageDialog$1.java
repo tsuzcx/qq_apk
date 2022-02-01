@@ -38,7 +38,7 @@ class GiftPackageDialog$1
       if (GiftPackageDialog.b(this.a).size() <= 0)
       {
         paramGiftServiceBean = new GiftServiceBean();
-        paramGiftServiceBean.t = HardCodeUtil.a(2131705291);
+        paramGiftServiceBean.t = HardCodeUtil.a(2131705365);
         paramGiftServiceBean.v = "0";
         GiftPackageDialog.b(this.a).add(paramGiftServiceBean);
       }
@@ -48,7 +48,7 @@ class GiftPackageDialog$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.GiftPackageDialog.1
  * JD-Core Version:    0.7.0.1
  */

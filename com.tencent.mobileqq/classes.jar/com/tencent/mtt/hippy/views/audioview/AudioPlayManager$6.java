@@ -11,28 +11,25 @@ final class AudioPlayManager$6
   
   public void onAudioFocusChange(int paramInt)
   {
-    if (paramInt == AudioPlayManager.access$700()) {
-      AudioPlayManager.access$900().abandonAudioFocus((AudioManager.OnAudioFocusChangeListener)AudioPlayManager.access$800());
-    }
-    for (;;)
+    if (paramInt == -2) {}
+    while ((paramInt != 1) && (paramInt == -1))
     {
-      if (this.val$reference != null)
-      {
-        AudioPlayManager.OnAudioStateChange localOnAudioStateChange = (AudioPlayManager.OnAudioStateChange)this.val$reference.get();
-        if (localOnAudioStateChange != null) {
-          localOnAudioStateChange.onChange(paramInt);
-        }
-      }
-      return;
-      if ((paramInt != 1) && (paramInt == -1)) {
-        AudioPlayManager.access$900().abandonAudioFocus((AudioManager.OnAudioFocusChangeListener)AudioPlayManager.access$800());
+      AudioPlayManager.access$800().abandonAudioFocus((AudioManager.OnAudioFocusChangeListener)AudioPlayManager.access$700());
+      break;
+    }
+    Object localObject = this.val$reference;
+    if (localObject != null)
+    {
+      localObject = (AudioPlayManager.OnAudioStateChange)((WeakReference)localObject).get();
+      if (localObject != null) {
+        ((AudioPlayManager.OnAudioStateChange)localObject).onChange(paramInt);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.audioview.AudioPlayManager.6
  * JD-Core Version:    0.7.0.1
  */

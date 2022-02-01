@@ -22,14 +22,15 @@ public final class GetProgramRsp
   
   public static GetProgramRsp[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new GetProgramRsp[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new GetProgramRsp[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static GetProgramRsp parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -52,20 +53,22 @@ public final class GetProgramRsp
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    int k = this.ret;
     int i = j;
-    if (this.ret != 0) {
-      i = j + CodedOutputByteBufferNano.computeInt32Size(1, this.ret);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeInt32Size(1, k);
     }
     j = i;
     if (!this.msg.equals("")) {
       j = i + CodedOutputByteBufferNano.computeStringSize(2, this.msg);
     }
+    ProgramInfo localProgramInfo = this.info;
     i = j;
-    if (this.info != null) {
-      i = j + CodedOutputByteBufferNano.computeMessageSize(3, this.info);
+    if (localProgramInfo != null) {
+      i = j + CodedOutputByteBufferNano.computeMessageSize(3, localProgramInfo);
     }
     j = i;
     if (!this.programId.equals("")) {
@@ -79,41 +82,56 @@ public final class GetProgramRsp
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.ret = paramCodedInputByteBufferNano.readInt32();
-        break;
-      case 18: 
-        this.msg = paramCodedInputByteBufferNano.readString();
-        break;
-      case 26: 
-        if (this.info == null) {
-          this.info = new ProgramInfo();
-        }
-        paramCodedInputByteBufferNano.readMessage(this.info);
+      if (i == 0) {
         break;
       }
-      this.programId = paramCodedInputByteBufferNano.readString();
+      if (i != 8)
+      {
+        if (i != 18)
+        {
+          if (i != 26)
+          {
+            if (i != 34)
+            {
+              if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+                return this;
+              }
+            }
+            else {
+              this.programId = paramCodedInputByteBufferNano.readString();
+            }
+          }
+          else
+          {
+            if (this.info == null) {
+              this.info = new ProgramInfo();
+            }
+            paramCodedInputByteBufferNano.readMessage(this.info);
+          }
+        }
+        else {
+          this.msg = paramCodedInputByteBufferNano.readString();
+        }
+      }
+      else {
+        this.ret = paramCodedInputByteBufferNano.readInt32();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.ret != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(1, this.ret);
+    int i = this.ret;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(1, i);
     }
     if (!this.msg.equals("")) {
       paramCodedOutputByteBufferNano.writeString(2, this.msg);
     }
-    if (this.info != null) {
-      paramCodedOutputByteBufferNano.writeMessage(3, this.info);
+    ProgramInfo localProgramInfo = this.info;
+    if (localProgramInfo != null) {
+      paramCodedOutputByteBufferNano.writeMessage(3, localProgramInfo);
     }
     if (!this.programId.equals("")) {
       paramCodedOutputByteBufferNano.writeString(4, this.programId);
@@ -123,7 +141,7 @@ public final class GetProgramRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.iliveRoomPlay.nano.GetProgramRsp
  * JD-Core Version:    0.7.0.1
  */

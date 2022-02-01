@@ -20,50 +20,56 @@ class QQReminderDataServiceImpl$10
   
   public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    do
+    try
     {
-      Object localObject;
-      try
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("ReminderDataManagerNew", 2, "getReminderListByday onProcessReminderList isSucc : " + paramBoolean);
-        }
-        if (!paramBoolean) {
-          continue;
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getReminderListByday onProcessReminderList isSucc : ");
+        ((StringBuilder)localObject).append(paramBoolean);
+        QLog.i("ReminderDataManagerNew", 2, ((StringBuilder)localObject).toString());
+      }
+      if (paramBoolean)
+      {
         QQReminderDataServiceImpl.access$800(this.jdField_a_of_type_ComTencentMobileqqReminderApiImplQQReminderDataServiceImpl).edit().putString("sp_key_new_fetch_reminder_list_time", this.jdField_a_of_type_JavaLangString).apply();
         paramBundle = (AcsPullMsgRsp)paramBundle.getSerializable("rsp");
-        if (paramBundle == null) {
-          continue;
+        if (paramBundle != null)
+        {
+          localObject = paramBundle.msgs;
+          QQReminderDataServiceImpl.access$1200(this.jdField_a_of_type_ComTencentMobileqqReminderApiImplQQReminderDataServiceImpl, (List)localObject);
+          if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
+          {
+            this.jdField_a_of_type_ComTencentMobileqqReminderApiImplQQReminderDataServiceImpl.saveReminderMsgList((List)localObject);
+            paramBundle = new ArrayList();
+            localObject = ((ArrayList)localObject).iterator();
+            while (((Iterator)localObject).hasNext()) {
+              paramBundle.add(((AcsMsg)((Iterator)localObject).next()).msg_id);
+            }
+            localObject = (IQQReminderService)QQReminderDataServiceImpl.access$200(this.jdField_a_of_type_ComTencentMobileqqReminderApiImplQQReminderDataServiceImpl).getRuntimeService(IQQReminderService.class, "");
+            if (localObject != null) {
+              ((IQQReminderService)localObject).sendAckMsgs(paramBundle, new QQReminderDataServiceImpl.10.1(this));
+            }
+          }
         }
-        localObject = paramBundle.msgs;
-        QQReminderDataServiceImpl.access$1200(this.jdField_a_of_type_ComTencentMobileqqReminderApiImplQQReminderDataServiceImpl, (List)localObject);
-        if ((localObject == null) || (((ArrayList)localObject).isEmpty())) {
-          continue;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqReminderApiImplQQReminderDataServiceImpl.saveReminderMsgList((List)localObject);
-        paramBundle = new ArrayList();
-        localObject = ((ArrayList)localObject).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          paramBundle.add(((AcsMsg)((Iterator)localObject).next()).msg_id);
-        }
-        localObject = (IQQReminderService)QQReminderDataServiceImpl.access$200(this.jdField_a_of_type_ComTencentMobileqqReminderApiImplQQReminderDataServiceImpl).getRuntimeService(IQQReminderService.class, "");
       }
-      catch (Throwable paramBundle)
+      if (this.jdField_a_of_type_ComTencentMobileqqReminderApiImplQQReminderDataServiceImpl$AfterPull != null)
       {
-        QLog.e("ReminderDataManagerNew", 1, "checkTodayReminder throw an exception: " + paramBundle);
+        this.jdField_a_of_type_ComTencentMobileqqReminderApiImplQQReminderDataServiceImpl$AfterPull.a();
         return;
       }
-      if (localObject != null) {
-        ((IQQReminderService)localObject).sendAckMsgs(paramBundle, new QQReminderDataServiceImpl.10.1(this));
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqReminderApiImplQQReminderDataServiceImpl$AfterPull == null);
-    this.jdField_a_of_type_ComTencentMobileqqReminderApiImplQQReminderDataServiceImpl$AfterPull.a();
+    }
+    catch (Throwable paramBundle)
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("checkTodayReminder throw an exception: ");
+      ((StringBuilder)localObject).append(paramBundle);
+      QLog.e("ReminderDataManagerNew", 1, ((StringBuilder)localObject).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.reminder.api.impl.QQReminderDataServiceImpl.10
  * JD-Core Version:    0.7.0.1
  */

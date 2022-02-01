@@ -88,23 +88,25 @@ public class AppBrandUI
   
   public boolean a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppBrandUI", 4, "moveTaskToBack nonRoot=" + paramBoolean1 + ",bAnim=" + paramBoolean2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("moveTaskToBack nonRoot=");
+      localStringBuilder.append(paramBoolean1);
+      localStringBuilder.append(",bAnim=");
+      localStringBuilder.append(paramBoolean2);
+      QLog.d("AppBrandUI", 4, localStringBuilder.toString());
     }
     if (b())
     {
       c();
-      paramBoolean1 = true;
+      return true;
     }
-    boolean bool;
-    do
-    {
-      return paramBoolean1;
-      bool = super.moveTaskToBack(paramBoolean1);
-      paramBoolean1 = bool;
-    } while (!paramBoolean2);
-    com.tencent.mobileqq.microapp.a.c.b(this);
-    return bool;
+    paramBoolean1 = super.moveTaskToBack(paramBoolean1);
+    if (paramBoolean2) {
+      com.tencent.mobileqq.microapp.a.c.b(this);
+    }
+    return paramBoolean1;
   }
   
   @Override
@@ -116,22 +118,27 @@ public class AppBrandUI
     return bool;
   }
   
-  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("AppBrandUI", 1, "doOnActivityResult requestCode=" + paramInt1 + ",resultCode=" + paramInt2);
+    boolean bool2 = QLog.isColorLevel();
+    boolean bool1 = true;
+    if (bool2)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doOnActivityResult requestCode=");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(",resultCode=");
+      localStringBuilder.append(paramInt2);
+      QLog.d("AppBrandUI", 1, localStringBuilder.toString());
     }
     if (paramInt1 == 1)
     {
-      if (paramInt2 != -1) {}
-      for (;;)
-      {
-        this.e = bool;
-        this.f = false;
-        return;
-        bool = false;
+      if (paramInt2 == -1) {
+        bool1 = false;
       }
+      this.e = bool1;
+      this.f = false;
+      return;
     }
     MiniAppController.getInstance().notifyResultListener(paramInt1, paramInt2, paramIntent);
   }
@@ -139,22 +146,31 @@ public class AppBrandUI
   public void doOnBackPressed()
   {
     int i = this.a.c();
-    if (QLog.isColorLevel()) {
-      QLog.d("AppBrandUI", 4, "onBackPressed appBrandRuntimeSize=" + i);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onBackPressed appBrandRuntimeSize=");
+      ((StringBuilder)localObject).append(i);
+      QLog.d("AppBrandUI", 4, ((StringBuilder)localObject).toString());
     }
     if (i > 0)
     {
-      com.tencent.mobileqq.microapp.appbrand.a locala = this.a.a();
-      if (locala.g.handleBackPressed()) {
+      localObject = this.a.a();
+      if (((com.tencent.mobileqq.microapp.appbrand.a)localObject).g.handleBackPressed()) {
         return;
       }
-      i = locala.g.getPageCount();
-      if (QLog.isColorLevel()) {
-        QLog.d("AppBrandUI", 4, "onBackPressed pageCount=" + i);
+      i = ((com.tencent.mobileqq.microapp.appbrand.a)localObject).g.getPageCount();
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onBackPressed pageCount=");
+        localStringBuilder.append(i);
+        QLog.d("AppBrandUI", 4, localStringBuilder.toString());
       }
       if (i > 1)
       {
-        locala.g.navigateBack(1, true);
+        ((com.tencent.mobileqq.microapp.appbrand.a)localObject).g.navigateBack(1, true);
         return;
       }
       a(true, true);
@@ -163,7 +179,7 @@ public class AppBrandUI
     finish();
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
@@ -184,171 +200,189 @@ public class AppBrandUI
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
     if (QLog.isColorLevel()) {
       QLog.d("AppBrandUI", 4, "onDestroy");
     }
-    if (this.a != null) {
-      this.a.d();
+    Object localObject = this.a;
+    if (localObject != null) {
+      ((j)localObject).d();
     }
     com.tencent.mobileqq.microapp.app.b.a().deleteObserver(this.b);
     this.b = null;
-    if (this.g != null) {
-      this.g.b(this.h);
+    localObject = this.g;
+    if (localObject != null) {
+      ((SoftKeyboardStateHelper)localObject).b(this.h);
     }
   }
   
-  public void doOnNewIntent(Intent paramIntent)
+  protected void doOnNewIntent(Intent paramIntent)
   {
-    int j = 0;
     super.doOnNewIntent(paramIntent);
     if (QLog.isColorLevel()) {
       QLog.d("AppBrandUI", 4, "onNewIntent");
     }
+    int j = 0;
     int i = j;
-    if (paramIntent != null) {}
-    try
-    {
-      boolean bool = paramIntent.getBooleanExtra("key_appbrand_bring_ui_to_front", false);
-      i = j;
-      if (bool) {
-        i = 1;
+    if (paramIntent != null) {
+      try
+      {
+        boolean bool = paramIntent.getBooleanExtra("key_appbrand_bring_ui_to_front", false);
+        i = j;
+        if (bool) {
+          i = 1;
+        }
       }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      catch (Throwable localThrowable)
       {
         localThrowable.printStackTrace();
         i = j;
       }
-      this.c = paramIntent;
     }
     if (i != 0)
     {
-      if ((this.a == null) || (this.a.c() == 0)) {
+      paramIntent = this.a;
+      if ((paramIntent == null) || (paramIntent.c() == 0)) {
         finish();
       }
       return;
     }
+    this.c = paramIntent;
   }
   
-  public void doOnPause()
+  protected void doOnPause()
   {
     super.doOnPause();
     if (QLog.isColorLevel()) {
       QLog.d("AppBrandUI", 4, "onPause");
     }
-    if (this.f) {}
-    com.tencent.mobileqq.microapp.appbrand.a locala;
-    do
-    {
+    if (this.f) {
       return;
-      locala = this.a.a();
-    } while (locala == null);
-    locala.c();
+    }
+    com.tencent.mobileqq.microapp.appbrand.a locala = this.a.a();
+    if (locala != null) {
+      locala.c();
+    }
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
-    Object localObject1 = null;
     super.doOnResume();
-    if (QLog.isColorLevel()) {
-      QLog.d("AppBrandUI", 4, "onResume isLoadFail=" + this.e);
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onResume isLoadFail=");
+      ((StringBuilder)localObject1).append(this.e);
+      QLog.d("AppBrandUI", 4, ((StringBuilder)localObject1).toString());
     }
+    MiniAppConfig localMiniAppConfig;
     try
     {
-      MiniAppConfig localMiniAppConfig = (MiniAppConfig)this.c.getSerializableExtra("CONFIG");
-      localObject1 = localMiniAppConfig;
+      localObject1 = (MiniAppConfig)this.c.getSerializableExtra("CONFIG");
     }
     catch (Throwable localThrowable1)
     {
-      Object localObject2;
-      com.tencent.mobileqq.microapp.appbrand.a locala;
-      do
-      {
-        for (;;)
-        {
-          localThrowable1.printStackTrace();
-        }
-        b(localObject1);
-        a(localObject1);
-        if (QLog.isColorLevel()) {
-          QLog.d("AppBrandUI", 4, "onResume miniConfig.launchParam.tempState=" + localObject1.launchParam.tempState + "---" + DeviceInfoUtil.a());
-        }
-        localObject2 = localObject1.config.mini_appid;
-        locala = this.a.a((String)localObject2, localObject1.getRuntimeType());
-        if (localObject1.launchParam.tempState == 0) {
-          break;
-        }
-      } while (locala == null);
-      locala.a(localObject1);
-      return;
-      localObject1.launchParam.tempState = 1;
-      try
-      {
-        ResultReceiver localResultReceiver = (ResultReceiver)this.c.getParcelableExtra("receiver");
-        if (localResultReceiver != null) {
-          localResultReceiver.send(0, null);
-        }
-      }
-      catch (Throwable localThrowable2)
-      {
-        for (;;)
-        {
-          localThrowable2.printStackTrace();
-        }
-        this.e = true;
-        this.f = true;
-        if (!QLog.isColorLevel()) {
-          break label419;
-        }
-        QLog.d("AppBrandUI", 4, "onResume startActivityForResult isLoadFail=" + this.e + ",appid =" + (String)localObject2 + ",entryPath=" + localObject1.launchParam.entryPath);
-        localObject2 = new Intent();
-        ((Intent)localObject2).putExtra("public_fragment_window_feature", 1);
-        ((Intent)localObject2).putExtra("CONFIG", localObject1);
-        com.tencent.mobileqq.microapp.a.c.a(this);
-        return;
-      }
-      if (!QLog.isColorLevel()) {
-        break label287;
-      }
-      QLog.d("AppBrandUI", 4, "onResume appid=" + (String)localObject2 + ",app_name=" + localObject1.config.app_name + ",entryPath=" + localObject1.launchParam.entryPath + ",appBrandRunTime=" + locala);
-      if (locala != null) {
-        break label450;
-      }
-      if (!QLog.isColorLevel()) {
-        break label326;
-      }
-      QLog.d("AppBrandUI", 4, "onResume appBrandRunTime not found! isLoadFail=" + this.e);
-      if (!this.e) {
-        break label348;
-      }
-      a();
-      return;
-      if (!QLog.isColorLevel()) {
-        break label482;
-      }
-      QLog.d("AppBrandUI", 4, "onResume bringToFront appBrandRunTime=" + locala);
-      this.a.a(locala);
-      if (TextUtils.isEmpty(localObject1.launchParam.entryPath)) {
-        break label514;
-      }
-      locala.a(localObject1.launchParam.entryPath);
-      locala.a(localObject1);
+      localThrowable1.printStackTrace();
+      localMiniAppConfig = null;
     }
-    if (localObject1 == null)
+    if (localMiniAppConfig == null)
     {
       a(true, false);
       return;
     }
-    label287:
-    label326:
-    label348:
-    label482:
-    return;
+    b(localMiniAppConfig);
+    a(localMiniAppConfig);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onResume miniConfig.launchParam.tempState=");
+      ((StringBuilder)localObject2).append(localMiniAppConfig.launchParam.tempState);
+      ((StringBuilder)localObject2).append("---");
+      ((StringBuilder)localObject2).append(DeviceInfoUtil.a());
+      QLog.d("AppBrandUI", 4, ((StringBuilder)localObject2).toString());
+    }
+    Object localObject2 = localMiniAppConfig.config.mini_appid;
+    Object localObject3 = this.a.a((String)localObject2, localMiniAppConfig.getRuntimeType());
+    if (localMiniAppConfig.launchParam.tempState != 0)
+    {
+      if (localObject3 != null) {
+        ((com.tencent.mobileqq.microapp.appbrand.a)localObject3).a(localMiniAppConfig);
+      }
+      return;
+    }
+    localMiniAppConfig.launchParam.tempState = 1;
+    try
+    {
+      ResultReceiver localResultReceiver = (ResultReceiver)this.c.getParcelableExtra("receiver");
+      if (localResultReceiver != null) {
+        localResultReceiver.send(0, null);
+      }
+    }
+    catch (Throwable localThrowable2)
+    {
+      localThrowable2.printStackTrace();
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onResume appid=");
+      localStringBuilder.append((String)localObject2);
+      localStringBuilder.append(",app_name=");
+      localStringBuilder.append(localMiniAppConfig.config.app_name);
+      localStringBuilder.append(",entryPath=");
+      localStringBuilder.append(localMiniAppConfig.launchParam.entryPath);
+      localStringBuilder.append(",appBrandRunTime=");
+      localStringBuilder.append(localObject3);
+      QLog.d("AppBrandUI", 4, localStringBuilder.toString());
+    }
+    if (localObject3 == null)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("onResume appBrandRunTime not found! isLoadFail=");
+        ((StringBuilder)localObject3).append(this.e);
+        QLog.d("AppBrandUI", 4, ((StringBuilder)localObject3).toString());
+      }
+      if (this.e)
+      {
+        a();
+        return;
+      }
+      this.e = true;
+      this.f = true;
+      if (QLog.isColorLevel())
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("onResume startActivityForResult isLoadFail=");
+        ((StringBuilder)localObject3).append(this.e);
+        ((StringBuilder)localObject3).append(",appid =");
+        ((StringBuilder)localObject3).append((String)localObject2);
+        ((StringBuilder)localObject3).append(",entryPath=");
+        ((StringBuilder)localObject3).append(localMiniAppConfig.launchParam.entryPath);
+        QLog.d("AppBrandUI", 4, ((StringBuilder)localObject3).toString());
+      }
+      localObject2 = new Intent();
+      ((Intent)localObject2).putExtra("public_fragment_window_feature", 1);
+      ((Intent)localObject2).putExtra("CONFIG", localMiniAppConfig);
+      com.tencent.mobileqq.microapp.a.c.a(this);
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onResume bringToFront appBrandRunTime=");
+      ((StringBuilder)localObject2).append(localObject3);
+      QLog.d("AppBrandUI", 4, ((StringBuilder)localObject2).toString());
+    }
+    this.a.a((com.tencent.mobileqq.microapp.appbrand.a)localObject3);
+    if (!TextUtils.isEmpty(localMiniAppConfig.launchParam.entryPath)) {
+      ((com.tencent.mobileqq.microapp.appbrand.a)localObject3).a(localMiniAppConfig.launchParam.entryPath);
+    }
+    ((com.tencent.mobileqq.microapp.appbrand.a)localObject3).a(localMiniAppConfig);
   }
   
   public void finish()
@@ -361,18 +395,16 @@ public class AppBrandUI
     }
     if (Build.VERSION.SDK_INT >= 21) {
       super.finishAndRemoveTask();
-    }
-    for (;;)
-    {
-      com.tencent.mobileqq.microapp.a.c.b(this);
-      return;
+    } else {
       super.finish();
     }
+    com.tencent.mobileqq.microapp.a.c.b(this);
   }
   
-  public boolean isWrapContent()
+  protected boolean isWrapContent()
   {
-    return (this.a != null) && (this.a.a() != null) && (this.a.a().g != null) && (this.a.a().g.pageLinkedList != null) && (this.a.a().g.pageLinkedList.peek() != null) && (((AbsAppBrandPage)this.a.a().g.pageLinkedList.peek()).isHomePage());
+    j localj = this.a;
+    return (localj != null) && (localj.a() != null) && (this.a.a().g != null) && (this.a.a().g.pageLinkedList != null) && (this.a.a().g.pageLinkedList.peek() != null) && (((AbsAppBrandPage)this.a.a().g.pageLinkedList.peek()).isHomePage());
   }
   
   public boolean moveTaskToBack(boolean paramBoolean)
@@ -390,14 +422,14 @@ public class AppBrandUI
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void requestWindowFeature(Intent paramIntent)
+  protected void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.ui.AppBrandUI
  * JD-Core Version:    0.7.0.1
  */

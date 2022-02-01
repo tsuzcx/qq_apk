@@ -42,44 +42,51 @@ class TimeSelectView$InnerAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    Object localObject1 = paramView;
     if (paramView == null)
     {
-      paramView = new WheelTextView(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView.getContext());
-      paramView.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
+      localObject1 = new WheelTextView(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView.getContext());
+      ((View)localObject1).setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
+      ((View)localObject1).setFocusable(true);
+      ((View)localObject1).setFocusableInTouchMode(true);
     }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TimeSelectView", 2, "getView column:" + this.b + ", position: " + paramInt);
-      }
-      String str = TimeSelectView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView).a(this.b, paramInt);
-      Object localObject = paramView.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject).height = DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView.getContext(), 35.0F);
-      if (QLog.isColorLevel()) {
-        QLog.d("TimeSelectView", 2, "view height 33dp -> " + ((ViewGroup.LayoutParams)localObject).height + "px");
-      }
-      paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localObject = (WheelTextView)paramView;
-      ((WheelTextView)localObject).setTextSize(20.0F);
-      ((WheelTextView)localObject).setTextColor(TimeSelectView.jdField_a_of_type_Int);
-      if (TimeSelectView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView)[0].getId() == paramViewGroup.getId()) {
-        ((WheelTextView)localObject).setGravity(8388613);
-      }
-      for (;;)
-      {
-        ((WheelTextView)localObject).setText(str);
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        ((WheelTextView)localObject).setGravity(8388611);
-      }
+      paramView = new StringBuilder();
+      paramView.append("getView column:");
+      paramView.append(this.b);
+      paramView.append(", position: ");
+      paramView.append(paramInt);
+      QLog.d("TimeSelectView", 2, paramView.toString());
     }
+    paramView = TimeSelectView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView).a(this.b, paramInt);
+    Object localObject2 = ((View)localObject1).getLayoutParams();
+    ((ViewGroup.LayoutParams)localObject2).height = DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView.getContext(), 35.0F);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("view height 33dp -> ");
+      localStringBuilder.append(((ViewGroup.LayoutParams)localObject2).height);
+      localStringBuilder.append("px");
+      QLog.d("TimeSelectView", 2, localStringBuilder.toString());
+    }
+    ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    localObject2 = (WheelTextView)localObject1;
+    ((WheelTextView)localObject2).setTextSize(20.0F);
+    ((WheelTextView)localObject2).setTextColor(TimeSelectView.jdField_a_of_type_Int);
+    if (TimeSelectView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView)[0].getId() == paramViewGroup.getId()) {
+      ((WheelTextView)localObject2).setGravity(8388613);
+    } else {
+      ((WheelTextView)localObject2).setGravity(8388611);
+    }
+    ((WheelTextView)localObject2).setText(paramView);
+    EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.widget.TimeSelectView.InnerAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -51,10 +51,13 @@ public final class SinglePeriodTimeline
   public Timeline.Period getPeriod(int paramInt, Timeline.Period paramPeriod, boolean paramBoolean)
   {
     Assertions.checkIndex(paramInt, 0, 1);
-    if (paramBoolean) {}
-    for (Object localObject = ID;; localObject = null) {
-      return paramPeriod.set(localObject, localObject, 0, this.periodDurationUs, -this.windowPositionInPeriodUs);
+    Object localObject;
+    if (paramBoolean) {
+      localObject = ID;
+    } else {
+      localObject = null;
     }
+    return paramPeriod.set(localObject, localObject, 0, this.periodDurationUs, -this.windowPositionInPeriodUs);
   }
   
   public int getPeriodCount()
@@ -66,37 +69,30 @@ public final class SinglePeriodTimeline
   {
     Assertions.checkIndex(paramInt, 0, 1);
     Object localObject;
-    long l2;
-    long l1;
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       localObject = ID;
-      l2 = this.windowDefaultStartPositionUs;
-      l1 = l2;
-      if (this.isDynamic)
-      {
-        l1 = l2;
-        if (paramLong != 0L)
-        {
-          if (this.windowDurationUs != -9223372036854775807L) {
-            break label101;
-          }
-          l1 = -9223372036854775807L;
-        }
-      }
-    }
-    for (;;)
-    {
-      return paramWindow.set(localObject, this.presentationStartTimeMs, this.windowStartTimeMs, this.isSeekable, this.isDynamic, l1, this.windowDurationUs, 0, 0, this.windowPositionInPeriodUs);
+    } else {
       localObject = null;
-      break;
-      label101:
-      paramLong = l2 + paramLong;
-      l1 = paramLong;
-      if (paramLong > this.windowDurationUs) {
-        l1 = -9223372036854775807L;
+    }
+    long l2 = this.windowDefaultStartPositionUs;
+    long l1 = l2;
+    if (this.isDynamic)
+    {
+      l1 = l2;
+      if (paramLong != 0L)
+      {
+        long l3 = this.windowDurationUs;
+        if (l3 == -9223372036854775807L) {}
+        do
+        {
+          l1 = -9223372036854775807L;
+          break;
+          paramLong = l2 + paramLong;
+          l1 = paramLong;
+        } while (paramLong > l3);
       }
     }
+    return paramWindow.set(localObject, this.presentationStartTimeMs, this.windowStartTimeMs, this.isSeekable, this.isDynamic, l1, this.windowDurationUs, 0, 0, this.windowPositionInPeriodUs);
   }
   
   public int getWindowCount()
@@ -106,7 +102,7 @@ public final class SinglePeriodTimeline
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.SinglePeriodTimeline
  * JD-Core Version:    0.7.0.1
  */

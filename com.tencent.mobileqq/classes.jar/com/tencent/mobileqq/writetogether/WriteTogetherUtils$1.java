@@ -12,15 +12,16 @@ final class WriteTogetherUtils$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a != null) {
-      this.a.a(paramInt);
+    paramDialogInterface = this.a;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.a(paramInt);
     }
     WriteTogetherUtils.a().edit().putBoolean(WTConstants.b, false).apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.WriteTogetherUtils.1
  * JD-Core Version:    0.7.0.1
  */

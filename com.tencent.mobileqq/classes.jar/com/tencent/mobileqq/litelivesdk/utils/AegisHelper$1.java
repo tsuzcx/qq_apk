@@ -10,14 +10,21 @@ final class AegisHelper$1
 {
   public void onResponse(int paramInt, JSONObject paramJSONObject)
   {
-    if (paramJSONObject != null) {
-      LogFactory.a().c("AegisHelper", "errCode = " + paramInt + "result = " + paramJSONObject.toString());
+    if (paramJSONObject != null)
+    {
+      LogInterface localLogInterface = LogFactory.a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("errCode = ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("result = ");
+      localStringBuilder.append(paramJSONObject.toString());
+      localLogInterface.c("AegisHelper", localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.utils.AegisHelper.1
  * JD-Core Version:    0.7.0.1
  */

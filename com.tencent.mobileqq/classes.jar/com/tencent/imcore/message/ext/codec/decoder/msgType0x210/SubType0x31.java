@@ -2,19 +2,21 @@ package com.tencent.imcore.message.ext.codec.decoder.msgType0x210;
 
 import IMMsgBodyPack.MsgType0x210;
 import OnlinePushPack.MsgInfo;
+import com.tencent.common.app.AppInterface;
 import com.tencent.imcore.message.ConversationFacade;
 import com.tencent.imcore.message.OnLinePushMessageProcessor;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.pb.PBFixed32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
+import com.tencent.mobileqq.subaccount.api.ISubAccountControlService;
+import com.tencent.mobileqq.subaccount.api.ISubAccountControllUtil;
+import com.tencent.mobileqq.subaccount.api.ISubAccountService;
 import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -25,69 +27,77 @@ import java.util.Iterator;
 import tencent.im.s2c.msgtype0x210.submsgtype0x31.submsgtype0x31.MsgBody;
 
 public class SubType0x31
-  implements Msg0X210SubTypeDecoder
+  implements Msg0X210SubTypeDecoder<OnLinePushMessageProcessor>
 {
   public static void a(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, int paramInt, SubAccountBackProtocData paramSubAccountBackProtocData, long paramLong)
   {
-    Object localObject1 = (SubAccountControll)paramOnLinePushMessageProcessor.a().getManager(QQManagerFactory.SUB_ACCOUNT_CONTROLL);
+    Object localObject1 = (QQAppInterface)paramOnLinePushMessageProcessor.a();
+    Object localObject2 = (ISubAccountControlService)((QQAppInterface)localObject1).getRuntimeService(ISubAccountControlService.class, null);
     if (paramInt == 1)
     {
-      SubAccountControll.a(paramOnLinePushMessageProcessor.a(), (byte)0, paramSubAccountBackProtocData.c);
-      SubAccountControll.a(paramOnLinePushMessageProcessor.a(), paramSubAccountBackProtocData.c);
+      ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).setBindUinStatus((AppInterface)localObject1, (byte)0, paramSubAccountBackProtocData.c);
+      ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).clearAllData((AppInterface)localObject1, paramSubAccountBackProtocData.c);
       paramSubAccountBackProtocData.a = 1;
-      ((SubAccountControll)localObject1).a(paramSubAccountBackProtocData.c, 1);
+      ((ISubAccountControlService)localObject2).addHintPair(paramSubAccountBackProtocData.c, 1);
       paramOnLinePushMessageProcessor.a(8004, true, paramSubAccountBackProtocData);
-    }
-    while (paramInt != 0) {
       return;
     }
-    localObject1 = String.valueOf(paramLong);
-    SubAccountManager localSubAccountManager = (SubAccountManager)paramOnLinePushMessageProcessor.a().getManager(QQManagerFactory.SUB_ACCOUNT_MANAGER);
-    paramSubAccountBackProtocData.a((String)localObject1);
-    localSubAccountManager.a(paramSubAccountBackProtocData);
-    Object localObject2 = paramSubAccountBackProtocData.a();
-    if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0))
+    if (paramInt == 0)
     {
-      localObject2 = ((ArrayList)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
+      localObject2 = String.valueOf(paramLong);
+      ISubAccountService localISubAccountService = (ISubAccountService)((QQAppInterface)localObject1).getRuntimeService(ISubAccountService.class, null);
+      paramSubAccountBackProtocData.a((String)localObject2);
+      localISubAccountService.updateSubAccountInfo(paramSubAccountBackProtocData);
+      Object localObject3 = paramSubAccountBackProtocData.a();
+      if ((localObject3 != null) && (((ArrayList)localObject3).size() > 0))
       {
-        String str = (String)((Iterator)localObject2).next();
-        if (QLog.isColorLevel()) {
-          QLog.d("SUB_ACCOUNT", 2, "decodeC2CMsgPush() hint is new,msg num=1, subUin=" + str);
-        }
-        paramInt = 1 - paramOnLinePushMessageProcessor.a().getConversationFacade().a(str, 7000);
-        if (paramInt != 0) {
-          paramOnLinePushMessageProcessor.a().getConversationFacade().d(str, 7000, paramInt);
+        localObject3 = ((ArrayList)localObject3).iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          String str = (String)((Iterator)localObject3).next();
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("decodeC2CMsgPush() hint is new,msg num=1, subUin=");
+            localStringBuilder.append(str);
+            QLog.d("SUB_ACCOUNT", 2, localStringBuilder.toString());
+          }
+          paramInt = 1 - ((QQAppInterface)localObject1).getConversationFacade().a(str, 7000);
+          if (paramInt != 0) {
+            ((QQAppInterface)localObject1).getConversationFacade().d(str, 7000, paramInt);
+          }
         }
       }
-    }
-    boolean bool = false;
-    localObject2 = SubAccountControll.a(paramOnLinePushMessageProcessor.a(), (String)localObject1);
-    if (localObject2 != null) {
-      bool = ((Boolean)((Pair)localObject2).second).booleanValue();
-    }
-    if (bool)
-    {
-      localSubAccountManager.a((String)localObject1, 1);
-      paramOnLinePushMessageProcessor.a().getSubAccountKey(paramOnLinePushMessageProcessor.a().getAccount(), String.valueOf(paramLong), new SubType0x31.1(paramOnLinePushMessageProcessor, localSubAccountManager));
-    }
-    for (;;)
-    {
-      paramSubAccountBackProtocData.a = 0;
-      paramOnLinePushMessageProcessor.a(8004, true, paramSubAccountBackProtocData);
-      return;
-      if (localSubAccountManager.a(String.valueOf(paramLong), 2))
+      localObject3 = ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).checkSubAccountLoginStatus((AppInterface)localObject1, (String)localObject2);
+      boolean bool;
+      if (localObject3 != null) {
+        bool = ((Boolean)((Pair)localObject3).second).booleanValue();
+      } else {
+        bool = false;
+      }
+      if (bool)
       {
-        paramInt = 1 - paramOnLinePushMessageProcessor.a().getConversationFacade().a((String)localObject1, 7000);
+        localISubAccountService.setStatus((String)localObject2, 1);
+        ((QQAppInterface)localObject1).getSubAccountKey(((QQAppInterface)localObject1).getAccount(), String.valueOf(paramLong), new SubType0x31.1((QQAppInterface)localObject1, localISubAccountService));
+      }
+      else if (localISubAccountService.setStatus(String.valueOf(paramLong), 2))
+      {
+        paramInt = 1 - ((QQAppInterface)localObject1).getConversationFacade().a((String)localObject2, 7000);
         if (paramInt != 0)
         {
-          paramOnLinePushMessageProcessor.a().getConversationFacade().d((String)localObject1, 7000, paramInt);
-          paramOnLinePushMessageProcessor.a().getMessageFacade().a(new String[] { AppConstants.SUBACCOUNT_ASSISTANT_UIN, localObject1 });
+          ((QQAppInterface)localObject1).getConversationFacade().d((String)localObject2, 7000, paramInt);
+          ((QQAppInterface)localObject1).getMessageFacade().a(new String[] { AppConstants.SUBACCOUNT_ASSISTANT_UIN, localObject2 });
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("SUB_ACCOUNT", 2, "decodeC2CMsgPush() hint need to verify,msg num=1, subUin=" + (String)localObject1);
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("decodeC2CMsgPush() hint need to verify,msg num=1, subUin=");
+          ((StringBuilder)localObject1).append((String)localObject2);
+          QLog.d("SUB_ACCOUNT", 2, ((StringBuilder)localObject1).toString());
         }
       }
+      paramSubAccountBackProtocData.a = 0;
+      paramOnLinePushMessageProcessor.a(8004, true, paramSubAccountBackProtocData);
     }
   }
   
@@ -97,63 +107,60 @@ public class SubType0x31
     try
     {
       paramArrayOfByte = (submsgtype0x31.MsgBody)((submsgtype0x31.MsgBody)localObject).mergeFrom(paramArrayOfByte);
-      if (paramArrayOfByte == null)
-      {
-        paramArrayOfByte = new HashMap();
-        paramArrayOfByte.put("param_FailCode", "12017");
-        paramArrayOfByte.put("fail_step", "msgbyod_null");
-        paramArrayOfByte.put("fail_location", "MessageHandler");
-        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramOnLinePushMessageProcessor.a().getCurrentAccountUin(), "actSBPushNotifaction", false, 0L, 0L, paramArrayOfByte, "");
-        return;
-      }
     }
     catch (Exception paramArrayOfByte)
     {
-      int i;
-      long l1;
-      long l2;
-      do
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("Q.msg.BaseMessageProcessor", 2, "<---decodeC2CMsgPkg_SecretfileReport parse failed.", paramArrayOfByte);
-          }
-          paramArrayOfByte = null;
-        }
-        if ((!paramArrayOfByte.uint32_flag.has()) || (!paramArrayOfByte.uint64_bind_uin.has()) || (!paramArrayOfByte.uint64_uin.has()))
-        {
-          paramArrayOfByte = new HashMap();
-          paramArrayOfByte.put("param_FailCode", "12017");
-          paramArrayOfByte.put("fail_step", "uinflag_null");
-          paramArrayOfByte.put("fail_location", "MessageHandler");
-          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramOnLinePushMessageProcessor.a().getCurrentAccountUin(), "actSBPushNotifaction", false, 0L, 0L, paramArrayOfByte, "");
-          return;
-        }
-        i = paramArrayOfByte.uint32_flag.get();
-        l1 = paramArrayOfByte.uint32_time.get();
-        l1 = paramArrayOfByte.uint64_uin.get();
-        l2 = paramArrayOfByte.uint64_bind_uin.get();
-        if ((l1 <= 0L) || (l2 <= 0L))
-        {
-          paramArrayOfByte = new HashMap();
-          paramArrayOfByte.put("param_FailCode", "12017");
-          paramArrayOfByte.put("fail_step", "uin_error");
-          paramArrayOfByte.put("fail_location", "MessageHandler");
-          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramOnLinePushMessageProcessor.a().getCurrentAccountUin(), "actSBPushNotifaction", false, 0L, 0L, paramArrayOfByte, "");
-          return;
-        }
-      } while (!String.valueOf(paramLong).equalsIgnoreCase(paramOnLinePushMessageProcessor.a().getAccount()));
-      paramArrayOfByte = new SubAccountBackProtocData();
-      paramArrayOfByte.c = String.valueOf(l1);
-      paramArrayOfByte.b = String.valueOf(l2);
-      localObject = new HashMap();
-      ((HashMap)localObject).put("param_FailCode", "12018");
-      ((HashMap)localObject).put("fail_step", "success_" + i);
-      ((HashMap)localObject).put("fail_location", "MessageHandler");
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramOnLinePushMessageProcessor.a().getCurrentAccountUin(), "actSBPushNotifaction", true, 0L, 0L, (HashMap)localObject, "");
-      a(paramOnLinePushMessageProcessor, i, paramArrayOfByte, l1);
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.msg.BaseMessageProcessor", 2, "<---decodeC2CMsgPkg_SecretfileReport parse failed.", paramArrayOfByte);
+      }
+      paramArrayOfByte = null;
     }
+    if (paramArrayOfByte == null)
+    {
+      paramArrayOfByte = new HashMap();
+      paramArrayOfByte.put("param_FailCode", "12017");
+      paramArrayOfByte.put("fail_step", "msgbyod_null");
+      paramArrayOfByte.put("fail_location", "MessageHandler");
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramOnLinePushMessageProcessor.a().getCurrentAccountUin(), "actSBPushNotifaction", false, 0L, 0L, paramArrayOfByte, "");
+      return;
+    }
+    if ((paramArrayOfByte.uint32_flag.has()) && (paramArrayOfByte.uint64_bind_uin.has()) && (paramArrayOfByte.uint64_uin.has()))
+    {
+      int i = paramArrayOfByte.uint32_flag.get();
+      paramArrayOfByte.uint32_time.get();
+      long l1 = paramArrayOfByte.uint64_uin.get();
+      long l2 = paramArrayOfByte.uint64_bind_uin.get();
+      if ((l1 > 0L) && (l2 > 0L))
+      {
+        if (!String.valueOf(paramLong).equalsIgnoreCase(paramOnLinePushMessageProcessor.a().getAccount())) {
+          return;
+        }
+        paramArrayOfByte = new SubAccountBackProtocData();
+        paramArrayOfByte.c = String.valueOf(l1);
+        paramArrayOfByte.b = String.valueOf(l2);
+        localObject = new HashMap();
+        ((HashMap)localObject).put("param_FailCode", "12018");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("success_");
+        localStringBuilder.append(i);
+        ((HashMap)localObject).put("fail_step", localStringBuilder.toString());
+        ((HashMap)localObject).put("fail_location", "MessageHandler");
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramOnLinePushMessageProcessor.a().getCurrentAccountUin(), "actSBPushNotifaction", true, 0L, 0L, (HashMap)localObject, "");
+        a(paramOnLinePushMessageProcessor, i, paramArrayOfByte, l1);
+        return;
+      }
+      paramArrayOfByte = new HashMap();
+      paramArrayOfByte.put("param_FailCode", "12017");
+      paramArrayOfByte.put("fail_step", "uin_error");
+      paramArrayOfByte.put("fail_location", "MessageHandler");
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramOnLinePushMessageProcessor.a().getCurrentAccountUin(), "actSBPushNotifaction", false, 0L, 0L, paramArrayOfByte, "");
+      return;
+    }
+    paramArrayOfByte = new HashMap();
+    paramArrayOfByte.put("param_FailCode", "12017");
+    paramArrayOfByte.put("fail_step", "uinflag_null");
+    paramArrayOfByte.put("fail_location", "MessageHandler");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramOnLinePushMessageProcessor.a().getCurrentAccountUin(), "actSBPushNotifaction", false, 0L, 0L, paramArrayOfByte, "");
   }
   
   public MessageRecord a(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
@@ -164,7 +171,7 @@ public class SubType0x31
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x31
  * JD-Core Version:    0.7.0.1
  */

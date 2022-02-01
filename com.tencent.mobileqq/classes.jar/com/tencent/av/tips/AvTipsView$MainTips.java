@@ -18,10 +18,10 @@ class AvTipsView$MainTips
   AvTipsView$MainTips(LinearLayout paramLinearLayout)
   {
     this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLinearLayout.findViewById(2131374068));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131374065));
-    this.jdField_a_of_type_AndroidViewView = paramLinearLayout.findViewById(2131374069);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramLinearLayout.findViewById(2131374071));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLinearLayout.findViewById(2131373623));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131373620));
+    this.jdField_a_of_type_AndroidViewView = paramLinearLayout.findViewById(2131373624);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramLinearLayout.findViewById(2131373626));
   }
   
   Resources a()
@@ -31,23 +31,27 @@ class AvTipsView$MainTips
   
   void a()
   {
-    if (!a()) {}
-    do
-    {
+    if (!a()) {
       return;
-      if (this.jdField_a_of_type_AndroidWidgetImageView != null)
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(null);
-      }
-      if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-      }
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      }
-    } while (this.jdField_a_of_type_AndroidWidgetProgressBar == null);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+    }
+    Object localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+    if (localObject != null)
+    {
+      ((ImageView)localObject).setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(null);
+    }
+    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localObject != null) {
+      ((TextView)localObject).setVisibility(4);
+    }
+    localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject != null) {
+      ((View)localObject).setVisibility(8);
+    }
+    localObject = this.jdField_a_of_type_AndroidWidgetProgressBar;
+    if (localObject != null) {
+      ((ProgressBar)localObject).setVisibility(8);
+    }
   }
   
   boolean a()
@@ -58,26 +62,43 @@ class AvTipsView$MainTips
   boolean a(AvTipsView.TipsInfo paramTipsInfo)
   {
     a();
-    if ((paramTipsInfo.b) && (paramTipsInfo.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.jdField_a_of_type_AndroidWidgetImageView != null))
+    Object localObject;
+    if ((paramTipsInfo.b) && (paramTipsInfo.jdField_a_of_type_AndroidGraphicsBitmap != null))
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramTipsInfo.jdField_a_of_type_AndroidGraphicsBitmap);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+      if (localObject != null)
+      {
+        ((ImageView)localObject).setImageBitmap(paramTipsInfo.jdField_a_of_type_AndroidGraphicsBitmap);
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      }
     }
-    if ((paramTipsInfo.c) && (this.jdField_a_of_type_AndroidWidgetProgressBar != null)) {
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    if (paramTipsInfo.c)
+    {
+      localObject = this.jdField_a_of_type_AndroidWidgetProgressBar;
+      if (localObject != null) {
+        ((ProgressBar)localObject).setVisibility(0);
+      }
     }
-    if ((paramTipsInfo.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewView != null)) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (paramTipsInfo.jdField_a_of_type_Boolean)
+    {
+      localObject = this.jdField_a_of_type_AndroidViewView;
+      if (localObject != null) {
+        ((View)localObject).setVisibility(0);
+      }
     }
-    if ((paramTipsInfo.jdField_a_of_type_AndroidTextSpannableString != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null)) {
-      AvTipsView.a(this.jdField_a_of_type_AndroidWidgetTextView, paramTipsInfo);
+    if (paramTipsInfo.jdField_a_of_type_AndroidTextSpannableString != null)
+    {
+      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+      if (localObject != null) {
+        AvTipsView.a((TextView)localObject, paramTipsInfo);
+      }
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.tips.AvTipsView.MainTips
  * JD-Core Version:    0.7.0.1
  */

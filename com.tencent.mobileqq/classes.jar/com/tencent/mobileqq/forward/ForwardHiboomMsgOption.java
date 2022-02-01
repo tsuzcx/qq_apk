@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.hiboom.HiBoomManager;
+import com.tencent.mobileqq.hiboom.HiBoomConstants;
 import com.tencent.mobileqq.hiboom.HiBoomTextView;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import java.util.Set;
@@ -21,9 +21,9 @@ public class ForwardHiboomMsgOption
   {
     int i = this.jdField_a_of_type_AndroidOsBundle.getInt("key_hiboom_id");
     HiBoomTextView localHiBoomTextView = new HiBoomTextView(this.jdField_a_of_type_AndroidAppActivity);
-    localHiBoomTextView.setHiBoom(i, 0, HiBoomManager.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader);
+    localHiBoomTextView.setHiBoom(i, 0, HiBoomConstants.b);
     localHiBoomTextView.setText(this.jdField_a_of_type_JavaLangString);
-    localHiBoomTextView.setMaxSize(HiBoomManager.jdField_a_of_type_Int);
+    localHiBoomTextView.setMaxSize(HiBoomConstants.a);
     localHiBoomTextView.setLayoutParams(new RelativeLayout.LayoutParams(500, 500));
     return localHiBoomTextView;
   }
@@ -64,7 +64,7 @@ public class ForwardHiboomMsgOption
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardHiboomMsgOption
  * JD-Core Version:    0.7.0.1
  */

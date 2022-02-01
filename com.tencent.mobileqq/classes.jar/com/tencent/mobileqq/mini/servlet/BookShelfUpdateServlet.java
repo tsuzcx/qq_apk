@@ -31,31 +31,26 @@ public class BookShelfUpdateServlet
     paramArrayOfByte = BookShelfUpdateRequest.onResponse(paramArrayOfByte);
     if (paramArrayOfByte != null) {
       paramArrayOfByte = (MiniBookShelf.Information)paramArrayOfByte.updateInfo.get();
+    } else {
+      paramArrayOfByte = null;
     }
-    for (;;)
+    if (paramArrayOfByte != null)
     {
-      if (paramArrayOfByte != null)
+      JSONObject localJSONObject = new JSONObject();
+      try
       {
-        JSONObject localJSONObject = new JSONObject();
-        try
-        {
-          localJSONObject.putOpt("contendId", paramArrayOfByte.contentId.get());
-          localJSONObject.putOpt("status", Integer.valueOf(paramArrayOfByte.status.get()));
-          localJSONObject.putOpt("msg", paramArrayOfByte.msg.get());
-          localJSONObject.putOpt("exist", Integer.valueOf(paramArrayOfByte.existStatus.get()));
-          paramBundle.putString("key_result_data", localJSONObject.toString());
-          notifyObserver(paramIntent, 1082, true, paramBundle, MiniAppObserver.class);
-          return;
-          paramArrayOfByte = null;
-        }
-        catch (Throwable paramArrayOfByte)
-        {
-          for (;;)
-          {
-            QLog.i("BookShelfUpdateServlet", 1, "", paramArrayOfByte);
-          }
-        }
+        localJSONObject.putOpt("contendId", paramArrayOfByte.contentId.get());
+        localJSONObject.putOpt("status", Integer.valueOf(paramArrayOfByte.status.get()));
+        localJSONObject.putOpt("msg", paramArrayOfByte.msg.get());
+        localJSONObject.putOpt("exist", Integer.valueOf(paramArrayOfByte.existStatus.get()));
       }
+      catch (Throwable paramArrayOfByte)
+      {
+        QLog.i("BookShelfUpdateServlet", 1, "", paramArrayOfByte);
+      }
+      paramBundle.putString("key_result_data", localJSONObject.toString());
+      notifyObserver(paramIntent, 1082, true, paramBundle, MiniAppObserver.class);
+      return;
     }
     notifyObserver(paramIntent, 1082, false, paramBundle, MiniAppObserver.class);
   }
@@ -79,7 +74,7 @@ public class BookShelfUpdateServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.BookShelfUpdateServlet
  * JD-Core Version:    0.7.0.1
  */

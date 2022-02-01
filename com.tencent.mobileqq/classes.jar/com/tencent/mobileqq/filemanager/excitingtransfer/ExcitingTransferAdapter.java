@@ -1,15 +1,17 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer;
 
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.business.qfile.IExcitingC2CDownloadConfig;
-import com.tencent.mobileqq.config.business.qfile.IExcitingC2CUploadConfig;
-import com.tencent.mobileqq.config.business.qfile.IExcitingGroupDownloadConfig;
-import com.tencent.mobileqq.config.business.qfile.IExcitingGroupUploadConfig;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.config.business.qfile.IQFileExcitingC2CDownloadConfigBean;
+import com.tencent.mobileqq.config.business.qfile.IQFileExcitingC2CUploadConfigBean;
+import com.tencent.mobileqq.config.business.qfile.IQFileExcitingGroupDownloadConfigBean;
+import com.tencent.mobileqq.config.business.qfile.IQFileExcitingGroupUploadConfigBean;
 import com.tencent.mobileqq.filemanager.api.IQFileConfigManager;
 import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadConfig;
 import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
 import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadChnConfigInfo;
+import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.highway.config.ConfigManager;
 import com.tencent.mobileqq.highway.utils.EndPoint;
 import com.tencent.mobileqq.transfile.IPAddressUtil;
@@ -17,28 +19,15 @@ import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.AppRuntime;
 
 public class ExcitingTransferAdapter
 {
-  private static ExcitingTransferAdapter jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingTransferAdapter;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  
-  public static ExcitingTransferAdapter a()
-  {
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingTransferAdapter == null) {
-        jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingTransferAdapter = new ExcitingTransferAdapter();
-      }
-      ExcitingTransferAdapter localExcitingTransferAdapter = jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingTransferAdapter;
-      return localExcitingTransferAdapter;
-    }
-    finally {}
-  }
+  private AppRuntime a;
   
   public long a()
   {
-    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQFileConfigManager.class, "");
+    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
     if (localIQFileConfigManager.getExcitingC2CUploadConfig() != null) {
       return localIQFileConfigManager.getExcitingC2CUploadConfig().a();
     }
@@ -47,7 +36,7 @@ public class ExcitingTransferAdapter
   
   public ExcitingTransferDownloadConfig a()
   {
-    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQFileConfigManager.class, "");
+    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
     if (localIQFileConfigManager.getExcitingC2CDownloadConfig() != null) {
       return localIQFileConfigManager.getExcitingC2CDownloadConfig().a();
     }
@@ -56,7 +45,7 @@ public class ExcitingTransferAdapter
   
   public ExcitingTransferUploadChnConfigInfo a()
   {
-    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQFileConfigManager.class, "");
+    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
     if (localIQFileConfigManager.getExcitingC2CUploadConfig() != null) {
       return localIQFileConfigManager.getExcitingC2CUploadConfig().a();
     }
@@ -66,62 +55,75 @@ public class ExcitingTransferAdapter
   public List<ExcitingTransferHostInfo> a(boolean paramBoolean)
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject1 = ConfigManager.getInstance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine());
+    Object localObject1 = ((AppInterface)this.a).getHwEngine();
+    localObject1 = ConfigManager.getInstance(this.a.getApp().getBaseContext(), (HwEngine)localObject1);
     if (localObject1 != null)
     {
-      Object localObject2 = ((ConfigManager)localObject1).getIpList(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext(), paramBoolean);
+      Object localObject2 = ((ConfigManager)localObject1).getIpList(this.a.getApp().getBaseContext(), paramBoolean);
+      Object localObject3;
       if ((localObject2 != null) && (((List)localObject2).size() > 0))
       {
         localObject2 = ((List)localObject2).iterator();
         while (((Iterator)localObject2).hasNext())
         {
-          EndPoint localEndPoint = (EndPoint)((Iterator)localObject2).next();
-          if ((localEndPoint != null) && (!TextUtils.isEmpty(localEndPoint.host))) {
-            if (paramBoolean) {
-              localArrayList.add(new ExcitingTransferHostInfo("[" + localEndPoint.host + "]", localEndPoint.port));
-            } else {
-              localArrayList.add(new ExcitingTransferHostInfo(localEndPoint.host, localEndPoint.port));
+          localObject3 = (EndPoint)((Iterator)localObject2).next();
+          if ((localObject3 != null) && (!TextUtils.isEmpty(((EndPoint)localObject3).host))) {
+            if (paramBoolean)
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("[");
+              localStringBuilder.append(((EndPoint)localObject3).host);
+              localStringBuilder.append("]");
+              localArrayList.add(new ExcitingTransferHostInfo(localStringBuilder.toString(), ((EndPoint)localObject3).port));
+            }
+            else
+            {
+              localArrayList.add(new ExcitingTransferHostInfo(((EndPoint)localObject3).host, ((EndPoint)localObject3).port));
             }
           }
         }
       }
       if (localArrayList.size() == 0)
       {
-        localObject1 = ((ConfigManager)localObject1).getNextSrvAddr(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramBoolean);
+        localObject2 = this.a.getApp().getBaseContext();
+        localObject3 = this.a;
+        localObject1 = ((ConfigManager)localObject1).getNextSrvAddr((Context)localObject2, (AppRuntime)localObject3, ((AppRuntime)localObject3).getCurrentAccountUin(), paramBoolean);
         if ((localObject1 != null) && (!TextUtils.isEmpty(((EndPoint)localObject1).host)))
         {
-          if (!paramBoolean) {
-            break label328;
+          if (paramBoolean)
+          {
+            if (IPAddressUtil.isIPv6LiteralAddress(((EndPoint)localObject1).host))
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("[");
+              ((StringBuilder)localObject2).append(((EndPoint)localObject1).host);
+              ((StringBuilder)localObject2).append("]");
+              localArrayList.add(new ExcitingTransferHostInfo(((StringBuilder)localObject2).toString(), ((EndPoint)localObject1).port));
+              return localArrayList;
+            }
+            localArrayList.add(new ExcitingTransferHostInfo(((EndPoint)localObject1).host, ((EndPoint)localObject1).port));
+            return localArrayList;
           }
-          if (!IPAddressUtil.isIPv6LiteralAddress(((EndPoint)localObject1).host)) {
-            break label304;
-          }
-          localArrayList.add(new ExcitingTransferHostInfo("[" + ((EndPoint)localObject1).host + "]", ((EndPoint)localObject1).port));
+          localArrayList.add(new ExcitingTransferHostInfo(((EndPoint)localObject1).host, ((EndPoint)localObject1).port));
         }
       }
     }
-    return localArrayList;
-    label304:
-    localArrayList.add(new ExcitingTransferHostInfo(((EndPoint)localObject1).host, ((EndPoint)localObject1).port));
-    return localArrayList;
-    label328:
-    localArrayList.add(new ExcitingTransferHostInfo(((EndPoint)localObject1).host, ((EndPoint)localObject1).port));
     return localArrayList;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.a = null;
   }
   
-  public void a(QQAppInterface paramQQAppInterface)
+  public void a(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramAppRuntime;
   }
   
   public boolean a()
   {
-    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQFileConfigManager.class, "");
+    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
     if (localIQFileConfigManager.getExcitingC2CUploadConfig() != null) {
       return localIQFileConfigManager.getExcitingC2CUploadConfig().a();
     }
@@ -130,7 +132,7 @@ public class ExcitingTransferAdapter
   
   public long b()
   {
-    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQFileConfigManager.class, "");
+    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
     if (localIQFileConfigManager.getExcitingC2CDownloadConfig() != null) {
       return localIQFileConfigManager.getExcitingC2CDownloadConfig().a();
     }
@@ -139,7 +141,7 @@ public class ExcitingTransferAdapter
   
   public ExcitingTransferDownloadConfig b()
   {
-    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQFileConfigManager.class, "");
+    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
     if (localIQFileConfigManager.getExcitingGroupDownloadConfig() != null) {
       return localIQFileConfigManager.getExcitingGroupDownloadConfig().a();
     }
@@ -148,7 +150,7 @@ public class ExcitingTransferAdapter
   
   public ExcitingTransferUploadChnConfigInfo b()
   {
-    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQFileConfigManager.class, "");
+    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
     if (localIQFileConfigManager.getExcitingGroupUploadConfig() != null) {
       return localIQFileConfigManager.getExcitingGroupUploadConfig().a();
     }
@@ -157,7 +159,7 @@ public class ExcitingTransferAdapter
   
   public boolean b()
   {
-    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQFileConfigManager.class, "");
+    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
     if (localIQFileConfigManager.getExcitingC2CDownloadConfig() != null) {
       return localIQFileConfigManager.getExcitingC2CDownloadConfig().a();
     }
@@ -166,7 +168,7 @@ public class ExcitingTransferAdapter
   
   public long c()
   {
-    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQFileConfigManager.class, "");
+    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
     if (localIQFileConfigManager.getExcitingGroupUploadConfig() != null) {
       return localIQFileConfigManager.getExcitingGroupUploadConfig().a();
     }
@@ -175,7 +177,7 @@ public class ExcitingTransferAdapter
   
   public boolean c()
   {
-    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQFileConfigManager.class, "");
+    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
     if (localIQFileConfigManager.getExcitingGroupUploadConfig() != null) {
       return localIQFileConfigManager.getExcitingGroupUploadConfig().a();
     }
@@ -184,7 +186,7 @@ public class ExcitingTransferAdapter
   
   public long d()
   {
-    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQFileConfigManager.class, "");
+    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
     if (localIQFileConfigManager.getExcitingGroupDownloadConfig() != null) {
       return localIQFileConfigManager.getExcitingGroupDownloadConfig().a();
     }
@@ -193,7 +195,7 @@ public class ExcitingTransferAdapter
   
   public boolean d()
   {
-    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQFileConfigManager.class, "");
+    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
     if (localIQFileConfigManager.getExcitingGroupDownloadConfig() != null) {
       return localIQFileConfigManager.getExcitingGroupDownloadConfig().a();
     }
@@ -202,10 +204,11 @@ public class ExcitingTransferAdapter
   
   public long e()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+    AppRuntime localAppRuntime = this.a;
+    if (localAppRuntime == null) {
       return 0L;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin();
+    return localAppRuntime.getLongAccountUin();
   }
   
   @Deprecated
@@ -216,7 +219,7 @@ public class ExcitingTransferAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.ExcitingTransferAdapter
  * JD-Core Version:    0.7.0.1
  */

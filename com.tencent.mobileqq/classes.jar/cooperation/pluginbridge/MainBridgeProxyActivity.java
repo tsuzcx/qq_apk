@@ -18,10 +18,14 @@ public class MainBridgeProxyActivity
     return bool;
   }
   
-  public Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
+  protected Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("MainBridgeProxyActivity", 2, "getProxyActivity:" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getProxyActivity:");
+      localStringBuilder.append(paramString);
+      QLog.w("MainBridgeProxyActivity", 2, localStringBuilder.toString());
     }
     return super.getProxyActivity(paramString);
   }
@@ -35,7 +39,7 @@ public class MainBridgeProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.pluginbridge.MainBridgeProxyActivity
  * JD-Core Version:    0.7.0.1
  */

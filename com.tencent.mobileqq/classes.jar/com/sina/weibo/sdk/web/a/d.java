@@ -49,25 +49,20 @@ public final class d
         paramWebResourceRequest = paramWebResourceRequest.getString("msg");
         if (TextUtils.isEmpty(paramWebView)) {
           l("code is null!!!");
-        }
-      }
-      for (;;)
-      {
-        if (this.aF != null) {
-          this.aF.t();
-        }
-        return true;
-        if ("0".equals(paramWebView))
-        {
+        } else if ("0".equals(paramWebView)) {
           j(paramWebResourceRequest);
-        }
-        else
-        {
+        } else {
           k(paramWebResourceRequest);
-          continue;
-          k("bundle is null!!!");
         }
       }
+      else
+      {
+        k("bundle is null!!!");
+      }
+      if (this.aF != null) {
+        this.aF.t();
+      }
+      return true;
     }
     return false;
   }
@@ -83,18 +78,18 @@ public final class d
         paramString = paramString.getString("msg");
         if ("0".equals(paramWebView)) {
           j(paramString);
+        } else {
+          k(paramString);
         }
       }
-      for (;;)
+      else
       {
-        if (this.aF != null) {
-          this.aF.t();
-        }
-        return true;
-        k(paramString);
-        continue;
         k("bundle is null!!!");
       }
+      if (this.aF != null) {
+        this.aF.t();
+      }
+      return true;
     }
     return false;
   }

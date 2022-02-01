@@ -43,20 +43,21 @@ public class LiteCopyPromptHelper
   
   private View a(String paramString)
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559705, this.jdField_a_of_type_AndroidViewViewGroup, false);
-    ((TextView)localView.findViewById(2131373587)).setText(new QQText(paramString, 3, 16));
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559581, this.jdField_a_of_type_AndroidViewViewGroup, false);
+    ((TextView)localView.findViewById(2131373167)).setText(new QQText(paramString, 3, 16));
     paramString = new RelativeLayout.LayoutParams(-2, -2);
     paramString.addRule(9);
-    paramString.addRule(2, 2131369142);
-    paramString.leftMargin = AIOUtils.a(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364598)).addView(localView, paramString);
+    paramString.addRule(2, 2131368875);
+    paramString.leftMargin = AIOUtils.b(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364485)).addView(localView, paramString);
     return localView;
   }
   
   private void a(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new LiteCopyPromptHelper.3(this, paramString));
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (localView != null) {
+      localView.setOnClickListener(new LiteCopyPromptHelper.3(this, paramString));
     }
   }
   
@@ -75,9 +76,10 @@ public class LiteCopyPromptHelper
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)
+    XEditTextEx localXEditTextEx = this.jdField_a_of_type_ComTencentWidgetXEditTextEx;
+    if (localXEditTextEx != null)
     {
-      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.a(this);
+      localXEditTextEx.a(this);
       this.jdField_a_of_type_ComTencentWidgetXEditTextEx.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     }
   }
@@ -86,12 +88,14 @@ public class LiteCopyPromptHelper
   {
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     this.jdField_a_of_type_JavaLangRunnable.run();
-    if (this.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) {
-      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.removeTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
+    Object localObject = this.jdField_a_of_type_ComTencentWidgetXEditTextEx;
+    if (localObject != null) {
+      ((XEditTextEx)localObject).removeTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     }
-    if (this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver != null)
+    localObject = this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver.a();
+      ((SoftKeyboardObserver)localObject).a();
       this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver = null;
     }
   }
@@ -116,7 +120,7 @@ public class LiteCopyPromptHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.copyprompt.LiteCopyPromptHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -31,7 +31,7 @@ public class LameMp3Recorder
   public static final int MSG_RECORD_START = 1;
   public static final int MSG_RECORD_STOP = 5;
   public static final int MSG_RECORD_UPDATE = 4;
-  public static final String TAG = LameMp3Recorder.class.getName();
+  public static final String TAG = "com.tencent.qqmini.miniapp.audiorecorder.LameMp3Recorder";
   private final AudioManager mAudioManger;
   private LameMp3Recorder.AudioRecordListener mAudioRecordListener;
   private int mCallbackFrameSize = 50;
@@ -53,8 +53,9 @@ public class LameMp3Recorder
   
   private void callOnRecordStop()
   {
-    if (this.mAudioRecordListener != null) {
-      this.mAudioRecordListener.onRecordStop(getRecordFilPath(), getRecordDuration(), getRecordFileSize());
+    LameMp3Recorder.AudioRecordListener localAudioRecordListener = this.mAudioRecordListener;
+    if (localAudioRecordListener != null) {
+      localAudioRecordListener.onRecordStop(getRecordFilPath(), getRecordDuration(), getRecordFileSize());
     }
     if (this.mMainHandler.hasMessages(4)) {
       this.mMainHandler.removeMessages(4);
@@ -79,28 +80,23 @@ public class LameMp3Recorder
   
   private static void onMsgRecordFrame(Message paramMessage, LameMp3Recorder paramLameMp3Recorder)
   {
-    boolean bool = true;
-    byte[] arrayOfByte;
     if (paramLameMp3Recorder.mAudioRecordListener != null)
     {
-      arrayOfByte = (byte[])paramMessage.obj;
-      if (paramMessage.arg1 != 1) {
-        break label40;
+      byte[] arrayOfByte = (byte[])paramMessage.obj;
+      int i = paramMessage.arg1;
+      boolean bool = true;
+      if (i != 1) {
+        bool = false;
       }
-    }
-    for (;;)
-    {
       paramLameMp3Recorder.mAudioRecordListener.onRecordFrame(arrayOfByte, bool);
-      return;
-      label40:
-      bool = false;
     }
   }
   
   private static void onMsgRecordResume(LameMp3Recorder paramLameMp3Recorder)
   {
-    if (paramLameMp3Recorder.mAudioRecordListener != null) {
-      paramLameMp3Recorder.mAudioRecordListener.onRecordResume();
+    LameMp3Recorder.AudioRecordListener localAudioRecordListener = paramLameMp3Recorder.mAudioRecordListener;
+    if (localAudioRecordListener != null) {
+      localAudioRecordListener.onRecordResume();
     }
     if (!paramLameMp3Recorder.mMainHandler.hasMessages(4)) {
       paramLameMp3Recorder.mMainHandler.sendEmptyMessage(4);
@@ -134,11 +130,12 @@ public class LameMp3Recorder
   
   public long getRecordDuration()
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.mStartTime;
+    long l = System.currentTimeMillis() - this.mStartTime;
     Iterator localIterator = this.mPauseTimeList.iterator();
-    for (l1 -= l2; localIterator.hasNext(); l1 -= ((Integer)localIterator.next()).intValue()) {}
-    return l1;
+    while (localIterator.hasNext()) {
+      l -= ((Integer)localIterator.next()).intValue();
+    }
+    return l;
   }
   
   public String getRecordFilPath()
@@ -181,8 +178,9 @@ public class LameMp3Recorder
   
   public void onDestory()
   {
-    if (this.mEncodeThread != null) {
-      this.mEncodeThread.onDestory();
+    LameMp3EncodeThread localLameMp3EncodeThread = this.mEncodeThread;
+    if (localLameMp3EncodeThread != null) {
+      localLameMp3EncodeThread.onDestory();
     }
   }
   
@@ -362,7 +360,7 @@ public class LameMp3Recorder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.audiorecorder.LameMp3Recorder
  * JD-Core Version:    0.7.0.1
  */

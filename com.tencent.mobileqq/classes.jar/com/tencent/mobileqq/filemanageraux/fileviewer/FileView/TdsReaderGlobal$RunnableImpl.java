@@ -12,50 +12,55 @@ final class TdsReaderGlobal$RunnableImpl
   
   private TdsReaderGlobal$RunnableImpl(TdsReaderGlobal paramTdsReaderGlobal, int paramInt, Object... paramVarArgs)
   {
-    if (paramTdsReaderGlobal == null) {}
-    for (paramTdsReaderGlobal = null;; paramTdsReaderGlobal = new WeakReference(paramTdsReaderGlobal))
-    {
-      this.jdField_a_of_type_JavaLangRefWeakReference = paramTdsReaderGlobal;
-      this.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_ArrayOfJavaLangObject = paramVarArgs;
-      return;
+    if (paramTdsReaderGlobal == null) {
+      paramTdsReaderGlobal = null;
+    } else {
+      paramTdsReaderGlobal = new WeakReference(paramTdsReaderGlobal);
     }
+    this.jdField_a_of_type_JavaLangRefWeakReference = paramTdsReaderGlobal;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ArrayOfJavaLangObject = paramVarArgs;
   }
   
   public void run()
   {
-    TdsReaderGlobal localTdsReaderGlobal;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null)
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject == null) {
+      localObject = null;
+    } else {
+      localObject = (TdsReaderGlobal)((WeakReference)localObject).get();
+    }
+    int i = this.jdField_a_of_type_Int;
+    if (i != 1)
     {
-      localTdsReaderGlobal = null;
-      switch (this.jdField_a_of_type_Int)
+      if (i != 2)
       {
+        if (i != 3)
+        {
+          if (i != 4) {
+            return;
+          }
+          if (localObject != null) {
+            TdsReaderGlobal.c((TdsReaderGlobal)localObject, this.jdField_a_of_type_ArrayOfJavaLangObject);
+          }
+        }
+        else if (localObject != null)
+        {
+          TdsReaderGlobal.b((TdsReaderGlobal)localObject, this.jdField_a_of_type_ArrayOfJavaLangObject);
+        }
+      }
+      else if (localObject != null) {
+        TdsReaderGlobal.a((TdsReaderGlobal)localObject, this.jdField_a_of_type_ArrayOfJavaLangObject);
       }
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          localTdsReaderGlobal = (TdsReaderGlobal)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-          break;
-          TdsReaderConfigProcessor.a();
-          return;
-        } while (localTdsReaderGlobal == null);
-        TdsReaderGlobal.a(localTdsReaderGlobal, this.jdField_a_of_type_ArrayOfJavaLangObject);
-        return;
-      } while (localTdsReaderGlobal == null);
-      TdsReaderGlobal.b(localTdsReaderGlobal, this.jdField_a_of_type_ArrayOfJavaLangObject);
-      return;
-    } while (localTdsReaderGlobal == null);
-    TdsReaderGlobal.c(localTdsReaderGlobal, this.jdField_a_of_type_ArrayOfJavaLangObject);
+    else {
+      TdsReaderConfigProcessor.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsReaderGlobal.RunnableImpl
  * JD-Core Version:    0.7.0.1
  */

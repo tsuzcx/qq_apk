@@ -25,12 +25,33 @@ public class EncodeConfig
   
   public String toString()
   {
-    return "EncodeConfig{sharedContext=" + this.jdField_a_of_type_AndroidOpenglEGLContext + ", outputFilePath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", width='" + this.jdField_a_of_type_Int + '\'' + ", height='" + this.b + '\'' + ", bitRate='" + this.e + '\'' + ", frameRate='" + this.f + '\'' + ", iFrameInterval='" + this.g + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EncodeConfig{sharedContext=");
+    localStringBuilder.append(this.jdField_a_of_type_AndroidOpenglEGLContext);
+    localStringBuilder.append(", outputFilePath='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", width='");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", height='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", bitRate='");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", frameRate='");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", iFrameInterval='");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.mediacodec.encoder.EncodeConfig
  * JD-Core Version:    0.7.0.1
  */

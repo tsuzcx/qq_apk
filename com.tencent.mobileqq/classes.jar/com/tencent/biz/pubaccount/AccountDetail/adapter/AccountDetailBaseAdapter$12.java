@@ -1,4 +1,4 @@
-package com.tencent.biz.pubaccount.AccountDetail.adapter;
+package com.tencent.biz.pubaccount.accountdetail.adapter;
 
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
@@ -10,7 +10,8 @@ class AccountDetailBaseAdapter$12
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    AccountDetailBaseAdapter.a(this.a, this.a.a.c, this.a.a.d, 100L, 240L);
+    paramAnimation = this.a;
+    AccountDetailBaseAdapter.a(paramAnimation, paramAnimation.a.c, this.a.a.d, 100L, 240L);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -19,7 +20,7 @@ class AccountDetailBaseAdapter$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter.12
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.adapter.AccountDetailBaseAdapter.12
  * JD-Core Version:    0.7.0.1
  */

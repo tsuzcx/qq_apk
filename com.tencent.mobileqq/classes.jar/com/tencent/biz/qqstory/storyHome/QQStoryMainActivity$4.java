@@ -14,43 +14,47 @@ class QQStoryMainActivity$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    }
-    do
-    {
-      do
-      {
+      if (paramInt != 1) {
         return;
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.qqstory.home.QQStoryMainActivity", 2, "qbShowShareResultDialog back");
-        }
-        Util.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity, 0, "", "");
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity.finish();
-        try
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "-->qbShowShareResultDialog--stay");
+      }
+    }
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqstory.home.QQStoryMainActivity", 2, "qbShowShareResultDialog back");
+      }
+      Util.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity, 0, "", "");
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity.finish();
+      try
+      {
+        paramDialogInterface = (PendingIntent)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("activity_finish_run_pendingIntent");
+        if ((paramDialogInterface != null) && ((paramDialogInterface instanceof PendingIntent)))
         {
-          paramDialogInterface = (PendingIntent)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("activity_finish_run_pendingIntent");
-          if ((paramDialogInterface != null) && ((paramDialogInterface instanceof PendingIntent)))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "-->finish--send callback using PendingIntent");
-            }
-            paramDialogInterface.send();
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "-->finish--send callback using PendingIntent");
           }
-          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity.moveTaskToBack(true);
-          return;
+          paramDialogInterface.send();
         }
-        catch (Throwable paramDialogInterface) {}
-      } while (!QLog.isColorLevel());
-      QLog.e("Q.qqstory.home.QQStoryMainActivity", 2, "qbShowShareResultDialog ", paramDialogInterface);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "-->qbShowShareResultDialog--stay");
+        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity.moveTaskToBack(true);
+        return;
+      }
+      catch (Throwable paramDialogInterface)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.qqstory.home.QQStoryMainActivity", 2, "qbShowShareResultDialog ", paramDialogInterface);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.QQStoryMainActivity.4
  * JD-Core Version:    0.7.0.1
  */

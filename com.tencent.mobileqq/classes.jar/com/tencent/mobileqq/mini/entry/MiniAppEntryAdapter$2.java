@@ -14,26 +14,31 @@ class MiniAppEntryAdapter$2
   public boolean onLongClick(View paramView)
   {
     Object localObject = paramView.getTag();
-    if (!(localObject instanceof Integer)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("MiniAppEntryAdapter", 2, "onLongClick. obj = " + localObject);
-      }
-    }
-    do
+    if (!(localObject instanceof Integer))
     {
+      if (QLog.isColorLevel())
+      {
+        paramView = new StringBuilder();
+        paramView.append("onLongClick. obj = ");
+        paramView.append(localObject);
+        QLog.i("MiniAppEntryAdapter", 2, paramView.toString());
+      }
       return true;
-      i = ((Integer)localObject).intValue();
-    } while ((i != 1) && (i != 2));
-    localObject = (MiniAppEntryAdapter.MicroAppViewHolder)((RecyclerView)paramView.getParent()).getChildViewHolder(paramView);
-    MiniAppInfo localMiniAppInfo = ((MiniAppEntryAdapter.MicroAppViewHolder)localObject).miniAppInfo;
-    int i = ((MiniAppEntryAdapter.MicroAppViewHolder)localObject).getLayoutPosition();
-    this.this$0.handleLongClick(paramView, localMiniAppInfo, i);
+    }
+    int i = ((Integer)localObject).intValue();
+    if ((i == 1) || (i == 2))
+    {
+      localObject = (MiniAppEntryAdapter.MicroAppViewHolder)((RecyclerView)paramView.getParent()).getChildViewHolder(paramView);
+      MiniAppInfo localMiniAppInfo = ((MiniAppEntryAdapter.MicroAppViewHolder)localObject).miniAppInfo;
+      i = ((MiniAppEntryAdapter.MicroAppViewHolder)localObject).getLayoutPosition();
+      this.this$0.handleLongClick(paramView, localMiniAppInfo, i);
+    }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppEntryAdapter.2
  * JD-Core Version:    0.7.0.1
  */

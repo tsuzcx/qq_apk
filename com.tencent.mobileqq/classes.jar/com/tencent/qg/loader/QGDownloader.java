@@ -67,23 +67,27 @@ public abstract class QGDownloader
   protected void b(String paramString, boolean paramBoolean)
   {
     paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if ((paramString != null) && (!paramString.isEmpty())) {
-      paramString = (QGDownloader.QGDownloadCallback)paramString.get(0);
-    }
-    for (long l = System.currentTimeMillis() - paramString.a;; l = 0L)
+    long l;
+    if ((paramString != null) && (!paramString.isEmpty()))
     {
-      if (paramBoolean) {}
-      for (paramString = "1";; paramString = "0")
-      {
-        StoryReportor.b("video_game_tech", "qg_so_download", 0, 0, new String[] { String.valueOf(l), paramString });
-        return;
-      }
+      paramString = (QGDownloader.QGDownloadCallback)paramString.get(0);
+      l = System.currentTimeMillis() - paramString.a;
     }
+    else
+    {
+      l = 0L;
+    }
+    if (paramBoolean) {
+      paramString = "1";
+    } else {
+      paramString = "0";
+    }
+    StoryReportor.b("video_game_tech", "qg_so_download", 0, 0, new String[] { String.valueOf(l), paramString });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qg.loader.QGDownloader
  * JD-Core Version:    0.7.0.1
  */

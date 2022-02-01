@@ -1,17 +1,7 @@
 package com.tencent.mobileqq.nearby.interestTag;
 
-import android.content.Intent;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.util.InputMethodUtil;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 class ChooseInterestTagActivity$10
   implements View.OnClickListener
@@ -20,84 +10,12 @@ class ChooseInterestTagActivity$10
   
   public void onClick(View paramView)
   {
-    if (paramView == ChooseInterestTagActivity.b(this.a)) {
-      if (TextUtils.isEmpty(ChooseInterestTagActivity.a(this.a)))
-      {
-        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.b(this.a), 30, 0, 0);
-        ChooseInterestTagActivity.a(this.a, true, true);
-      }
-    }
-    label394:
-    do
-    {
-      for (;;)
-      {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.c(this.a), 30, 0, 0);
-        break;
-        Object localObject2;
-        if (paramView == this.a.leftView)
-        {
-          InputMethodUtil.b(ChooseInterestTagActivity.a(this.a));
-          if (ChooseInterestTagActivity.a(this.a))
-          {
-            this.a.finish();
-          }
-          else
-          {
-            localObject2 = this.a.getIntent();
-            localObject1 = localObject2;
-            if (localObject2 == null) {
-              localObject1 = new Intent();
-            }
-            Collections.reverse(ChooseInterestTagActivity.a(this.a));
-            ((Intent)localObject1).putParcelableArrayListExtra("choosed_interest_tags", ChooseInterestTagActivity.a(this.a));
-            ((Intent)localObject1).putExtra("interest_tag_type", ChooseInterestTagActivity.a(this.a));
-            this.a.setResult(-1, (Intent)localObject1);
-            this.a.finish();
-          }
-        }
-        else
-        {
-          if (paramView != this.a.rightViewText) {
-            break label394;
-          }
-          InputMethodUtil.b(ChooseInterestTagActivity.a(this.a));
-          if (ChooseInterestTagActivity.a(this.a)) {
-            if (ChooseInterestTagActivity.a(this.a).isEmpty())
-            {
-              ChooseInterestTagActivity.a(this.a, HardCodeUtil.a(2131701877));
-            }
-            else
-            {
-              ChooseInterestTagActivity.a(this.a, 0, HardCodeUtil.a(2131701871), 0);
-              Collections.reverse(ChooseInterestTagActivity.a(this.a));
-              localObject1 = new InterestTag(ChooseInterestTagActivity.a(this.a));
-              ((InterestTag)localObject1).a.addAll(ChooseInterestTagActivity.a(this.a));
-              localObject2 = new ArrayList(1);
-              ((List)localObject2).add(localObject1);
-              ChooseInterestTagActivity.a(this.a).a((List)localObject2, 0, 1);
-            }
-          }
-        }
-      }
-    } while (paramView != ChooseInterestTagActivity.a(this.a));
-    ChooseInterestTagActivity.a(this.a).setText(HardCodeUtil.a(2131701894));
-    Object localObject1 = ChooseInterestTagActivity.a(this.a);
-    int j = ChooseInterestTagActivity.a(this.a);
-    int k = ChooseInterestTagActivity.b(this.a);
-    if (ChooseInterestTagActivity.a(this.a)) {}
-    for (int i = 1;; i = 0)
-    {
-      ((NearbyCardHandler)localObject1).a("", j, k, 30, 0, i);
-      break;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.10
  * JD-Core Version:    0.7.0.1
  */

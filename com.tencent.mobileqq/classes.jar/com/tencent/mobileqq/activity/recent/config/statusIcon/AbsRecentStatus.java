@@ -12,20 +12,26 @@ public abstract class AbsRecentStatus
   
   public int a(IRecentBaseDataProcessor paramIRecentBaseDataProcessor)
   {
-    if (a() == paramIRecentBaseDataProcessor.a()) {
-      throw new RuntimeException("Duplication Priority! " + getClass().getName() + " ," + paramIRecentBaseDataProcessor.getClass().getName());
+    if (a() != paramIRecentBaseDataProcessor.a())
+    {
+      if (a() > paramIRecentBaseDataProcessor.a()) {
+        return 1;
+      }
+      return -1;
     }
-    if (a() > paramIRecentBaseDataProcessor.a()) {
-      return 1;
-    }
-    return -1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Duplication Priority! ");
+    localStringBuilder.append(getClass().getName());
+    localStringBuilder.append(" ,");
+    localStringBuilder.append(paramIRecentBaseDataProcessor.getClass().getName());
+    throw new RuntimeException(localStringBuilder.toString());
   }
   
   public abstract boolean a(RecentBaseData paramRecentBaseData, BaseQQAppInterface paramBaseQQAppInterface);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.statusIcon.AbsRecentStatus
  * JD-Core Version:    0.7.0.1
  */

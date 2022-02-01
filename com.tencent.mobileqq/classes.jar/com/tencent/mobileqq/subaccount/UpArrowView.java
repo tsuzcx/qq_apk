@@ -39,32 +39,30 @@ public class UpArrowView
     this.jdField_a_of_type_Int = Color.argb(255, 255, 255, 255);
     this.b = Color.argb(255, 241, 242, 249);
     setDuplicateParentStateEnabled(true);
-    int i = getResources().getColor(2131167093);
+    int i = getResources().getColor(2131167116);
     if (this.jdField_a_of_type_Int != i) {
       this.jdField_a_of_type_Int = i;
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if ((isSelected()) || (isPressed())) {
+    if ((!isSelected()) && (!isPressed())) {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
+    } else {
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.b);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      int i = getWidth();
-      int j = getHeight();
-      Path localPath = new Path();
-      localPath.moveTo(0.0F, j);
-      localPath.lineTo(i / 2, 0.0F);
-      localPath.lineTo(i, j);
-      localPath.close();
-      paramCanvas.drawPath(localPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-    }
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    int i = getWidth();
+    int j = getHeight();
+    Path localPath = new Path();
+    float f = j;
+    localPath.moveTo(0.0F, f);
+    localPath.lineTo(i / 2, 0.0F);
+    localPath.lineTo(i, f);
+    localPath.close();
+    paramCanvas.drawPath(localPath, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
   public void setPressed(boolean paramBoolean)
@@ -90,7 +88,7 @@ public class UpArrowView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.UpArrowView
  * JD-Core Version:    0.7.0.1
  */

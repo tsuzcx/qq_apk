@@ -15,22 +15,24 @@ class QzoneHuangzuanVipIconShow$2
     if (this.mCount <= 0)
     {
       QzoneHuangzuanVipIconShow.access$100(this.jdField_a_of_type_CooperationVipVipcomponentUiQzoneHuangzuanVipIconShow, this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable, this.c, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.d, this.jdField_b_of_type_Boolean, this.e);
-      if (this.jdField_a_of_type_CooperationVipVipcomponentUtilVipResourcesListener != null) {
-        this.jdField_a_of_type_CooperationVipVipcomponentUtilVipResourcesListener.onLoaded(this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable);
+      paramString1 = this.jdField_a_of_type_CooperationVipVipcomponentUtilVipResourcesListener;
+      if (paramString1 != null) {
+        paramString1.onLoaded(this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable);
       }
     }
   }
   
   public void onFailed(String paramString1, int paramInt, String paramString2)
   {
-    if (this.jdField_a_of_type_CooperationVipVipcomponentUtilVipResourcesListener != null) {
-      this.jdField_a_of_type_CooperationVipVipcomponentUtilVipResourcesListener.onFailed();
+    paramString1 = this.jdField_a_of_type_CooperationVipVipcomponentUtilVipResourcesListener;
+    if (paramString1 != null) {
+      paramString1.onFailed();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow.2
  * JD-Core Version:    0.7.0.1
  */

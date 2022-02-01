@@ -22,40 +22,52 @@ public class CaptureStateCallBack
   
   private void a(CaptureResult paramCaptureResult)
   {
-    switch (this.jdField_a_of_type_Int)
+    int i = this.jdField_a_of_type_Int;
+    if (i != 0)
     {
-    }
-    do
-    {
-      do
+      if (i != 1) {
+        return;
+      }
+      Object localObject = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AF_STATE);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[Camera2]process afState:");
+      localStringBuilder.append(localObject);
+      Camera2Utils.a(1, localStringBuilder.toString());
+      if (localObject == null)
       {
-        Integer localInteger;
-        do
-        {
-          do
-          {
-            return;
-            localInteger = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AF_STATE);
-            Camera2Utils.a(1, "[Camera2]process afState:" + localInteger);
-            if (localInteger != null) {
-              break;
-            }
-          } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
-          this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
-          return;
-        } while ((4 != localInteger.intValue()) && (5 != localInteger.intValue()) && (localInteger.intValue() != 0) && (1 != localInteger.intValue()) && (2 != localInteger.intValue()));
-        paramCaptureResult = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AE_STATE);
-        if ((paramCaptureResult != null) && (paramCaptureResult.intValue() != 2)) {
-          break;
+        paramCaptureResult = this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control;
+        if (paramCaptureResult != null) {
+          paramCaptureResult.d();
         }
-        this.jdField_a_of_type_Int = 4;
-        Camera2Utils.a(1, "[Camera2]process aeState:" + paramCaptureResult);
-      } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
-      return;
-      Camera2Utils.a(1, "[Camera2]process preCapture aeState:" + paramCaptureResult);
-    } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
+      }
+      else if ((4 == ((Integer)localObject).intValue()) || (5 == ((Integer)localObject).intValue()) || (((Integer)localObject).intValue() == 0) || (1 == ((Integer)localObject).intValue()) || (2 == ((Integer)localObject).intValue()))
+      {
+        paramCaptureResult = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AE_STATE);
+        if ((paramCaptureResult != null) && (paramCaptureResult.intValue() != 2))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("[Camera2]process preCapture aeState:");
+          ((StringBuilder)localObject).append(paramCaptureResult);
+          Camera2Utils.a(1, ((StringBuilder)localObject).toString());
+          paramCaptureResult = this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control;
+          if (paramCaptureResult != null) {
+            paramCaptureResult.d();
+          }
+        }
+        else
+        {
+          this.jdField_a_of_type_Int = 4;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("[Camera2]process aeState:");
+          ((StringBuilder)localObject).append(paramCaptureResult);
+          Camera2Utils.a(1, ((StringBuilder)localObject).toString());
+          paramCaptureResult = this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control;
+          if (paramCaptureResult != null) {
+            paramCaptureResult.d();
+          }
+        }
+      }
+    }
   }
   
   public void a(int paramInt)
@@ -75,7 +87,7 @@ public class CaptureStateCallBack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.camera2.CaptureStateCallBack
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ public class IlivePluginManager
   public static final String KEY_ILIVE_PLUGIN_TOKEN = "key_ilive_plugin_token";
   public static final String KEY_LIVE_PLUGIN_TOKEN_VALID_TIME = "key_ilive_plugin_token_valid_time";
   private static final String TAG = "IliveAuthPluginManager";
-  private static IlivePluginManager sInstance = null;
+  private static IlivePluginManager sInstance;
   public static boolean sIsFastStart = false;
   private IlivePluginCallback mPluginCallback;
   private String mTempToken;
@@ -22,29 +22,37 @@ public class IlivePluginManager
   private long getAuthExpirationDate()
   {
     long l = QzoneConfig.getInstance().getConfig("qqLive", "pluginTokenAuthTime", 2073600L);
-    QLog.i("IliveAuthPluginManager", 1, "getAuthExpirationDate time = " + l);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getAuthExpirationDate time = ");
+    localStringBuilder.append(l);
+    QLog.i("IliveAuthPluginManager", 1, localStringBuilder.toString());
     return l;
   }
   
   public static IlivePluginManager getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new IlivePluginManager();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new IlivePluginManager();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   private boolean isPluginIliveTokenExpireOut()
   {
     long l1 = getPluginTokenValidTime(0L);
     long l2 = System.currentTimeMillis() / 1000L;
-    QLog.i("IliveAuthPluginManager", 1, "isPluginIliveTokenExpireOut , consume s = " + (l2 - l1));
-    if (l2 - l1 > getAuthExpirationDate())
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isPluginIliveTokenExpireOut , consume s = ");
+    l1 = l2 - l1;
+    localStringBuilder.append(l1);
+    QLog.i("IliveAuthPluginManager", 1, localStringBuilder.toString());
+    if (l1 > getAuthExpirationDate())
     {
       QLog.e("IliveAuthPluginManager", 1, "isPluginIliveTokenExpireOut = true , reAuth");
       return true;
@@ -92,8 +100,12 @@ public class IlivePluginManager
   
   public void savePluginToken(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("IliveAuthPluginManager", 2, "savePluginToken openId = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("savePluginToken openId = ");
+      localStringBuilder.append(paramString);
+      QLog.i("IliveAuthPluginManager", 2, localStringBuilder.toString());
     }
     this.mTempToken = paramString;
     LocalMultiProcConfig.putString4Uin("key_ilive_plugin_token", ThreeDes.a(paramString, IliveAuthManager.getStringUin()), IliveAuthManager.getLongUin());
@@ -101,8 +113,12 @@ public class IlivePluginManager
   
   public void savePluginTokenValidTime(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("IliveAuthPluginManager", 2, "savePluginTokenValidTime expireTime = " + paramLong / 1000L);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("savePluginTokenValidTime expireTime = ");
+      localStringBuilder.append(paramLong / 1000L);
+      QLog.i("IliveAuthPluginManager", 2, localStringBuilder.toString());
     }
     LocalMultiProcConfig.putLong4Uin("key_ilive_plugin_token_valid_time", paramLong / 1000L, IliveAuthManager.getLongUin());
   }
@@ -114,7 +130,7 @@ public class IlivePluginManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.plugin.IlivePluginManager
  * JD-Core Version:    0.7.0.1
  */

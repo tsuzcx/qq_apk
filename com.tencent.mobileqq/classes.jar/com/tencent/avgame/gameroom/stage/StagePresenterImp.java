@@ -12,7 +12,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.av.audioprocess.AudioProcess;
-import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.av.audioprocess.api.IAudioProcessApi;
 import com.tencent.avgame.business.handler.HandlerFactory;
 import com.tencent.avgame.business.handler.UserInfoHandler;
 import com.tencent.avgame.gamelogic.GameEngine;
@@ -25,20 +25,21 @@ import com.tencent.avgame.gamelogic.data.GameItem;
 import com.tencent.avgame.gamelogic.data.Player;
 import com.tencent.avgame.gamelogic.data.RoomInfo;
 import com.tencent.avgame.gamelogic.data.TopicBase;
-import com.tencent.avgame.gamelogic.gameres.AvGameMusicPlayer;
-import com.tencent.avgame.gamelogic.gameres.AvGameResDownloadManager;
-import com.tencent.avgame.gamelogic.gameres.AvGameSysMusicPlayer;
+import com.tencent.avgame.gamelogic.gameres.AvGameResDownloadUtil;
 import com.tencent.avgame.gameroom.IGameRoomPresenter;
-import com.tencent.avgame.gameroom.festivalreport.CJSurvivalFestivalReporter;
-import com.tencent.avgame.gameroom.festivalstage.FestvialStageView;
 import com.tencent.avgame.gameroom.festivalstage.questionoption.IQuestionOptionPresenter;
 import com.tencent.avgame.gameroom.festivalstage.questionoption.QuestionOptionsPresenterImpl;
 import com.tencent.avgame.gameroom.overlay.IOverlayPresenter;
 import com.tencent.avgame.gameroom.seat.ISeatPresenter;
+import com.tencent.avgame.gameroom.stage.festivalstage.FestvialStageView;
 import com.tencent.avgame.gameroom.stage.guesspicture.GuessPictureStagePresenter;
+import com.tencent.avgame.qav.audio.AvGameMusicPlayer;
+import com.tencent.avgame.qav.audio.AvGameSysMusicPlayer;
+import com.tencent.avgame.report.CJSurvivalReporterUtil;
+import com.tencent.avgame.util.ContactUtils;
+import com.tencent.common.app.business.BaseAVGameAppInterface;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class StagePresenterImp
@@ -68,44 +69,55 @@ public class StagePresenterImp
   
   private void a(int paramInt)
   {
-    if (paramInt == 1) {
-      if (this.jdField_b_of_type_ComTencentAvgameGameroomStageIGameStagePresenter != null) {
-        this.jdField_b_of_type_ComTencentAvgameGameroomStageIGameStagePresenter.a(false);
+    Object localObject;
+    if (paramInt == 1)
+    {
+      localObject = this.jdField_b_of_type_ComTencentAvgameGameroomStageIGameStagePresenter;
+      if (localObject != null) {
+        ((IGameStagePresenter)localObject).a(false);
       }
     }
-    for (;;)
+    else if (paramInt == 2)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("StagePresenterImp", 2, "hideLastGameStagePresenter gameType = " + paramInt);
+      localObject = this.d;
+      if (localObject != null) {
+        ((IGameStagePresenter)localObject).a(false);
       }
-      return;
-      if (paramInt == 2)
-      {
-        if (this.d != null) {
-          this.d.a(false);
-        }
+    }
+    else if (paramInt == 3)
+    {
+      localObject = this.c;
+      if (localObject != null) {
+        ((IGameStagePresenter)localObject).a(false);
       }
-      else if (paramInt == 3)
-      {
-        if (this.c != null) {
-          this.c.a(false);
-        }
+    }
+    else if (paramInt == 4)
+    {
+      localObject = this.f;
+      if (localObject != null) {
+        ((IGameStagePresenter)localObject).a(false);
       }
-      else if (paramInt == 4)
-      {
-        if (this.f != null) {
-          this.f.a(false);
-        }
+    }
+    else if (paramInt == 5)
+    {
+      localObject = this.e;
+      if (localObject != null) {
+        ((IGameStagePresenter)localObject).a(false);
       }
-      else if ((paramInt == 5) && (this.e != null)) {
-        this.e.a(false);
-      }
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("hideLastGameStagePresenter gameType = ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("StagePresenterImp", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   private boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData != null) && (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a() == 10);
+    EngineData localEngineData = this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData;
+    return (localEngineData != null) && (localEngineData.a() == 10);
   }
   
   private boolean a(int paramInt1, int paramInt2)
@@ -115,63 +127,77 @@ public class StagePresenterImp
   
   private boolean b(EngineData paramEngineData)
   {
-    return (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData != null) && (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a() == 4) && (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a().a(paramEngineData.a()));
+    EngineData localEngineData = this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData;
+    return (localEngineData != null) && (localEngineData.a() == 4) && (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a().a(paramEngineData.a()));
   }
   
   private boolean c(EngineData paramEngineData)
   {
-    return (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData != null) && (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a() == 3) && (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a().a(paramEngineData.a()));
+    EngineData localEngineData = this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData;
+    return (localEngineData != null) && (localEngineData.a() == 3) && (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a().a(paramEngineData.a()));
   }
   
   private boolean d(EngineData paramEngineData)
   {
-    return (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData != null) && (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a() == 2) && (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a().a(paramEngineData.a()));
+    EngineData localEngineData = this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData;
+    return (localEngineData != null) && (localEngineData.a() == 2) && (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a().a(paramEngineData.a()));
   }
   
   private void e(EngineData paramEngineData)
   {
     if (paramEngineData.c() == 1) {
       this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter = this.jdField_b_of_type_ComTencentAvgameGameroomStageIGameStagePresenter;
+    } else if (paramEngineData.c() == 2) {
+      this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter = this.d;
+    } else if (paramEngineData.c() == 3) {
+      this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter = this.c;
+    } else if (paramEngineData.c() == 4) {
+      this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter = this.f;
+    } else if (paramEngineData.c() == 5) {
+      this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter = this.e;
     }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("StagePresenterImp", 2, "updateCurGameStagePresenter curGameStagePresenter = " + this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter);
-      }
-      return;
-      if (paramEngineData.c() == 2) {
-        this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter = this.d;
-      } else if (paramEngineData.c() == 3) {
-        this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter = this.c;
-      } else if (paramEngineData.c() == 4) {
-        this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter = this.f;
-      } else if (paramEngineData.c() == 5) {
-        this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter = this.e;
-      }
+      paramEngineData = new StringBuilder();
+      paramEngineData.append("updateCurGameStagePresenter curGameStagePresenter = ");
+      paramEngineData.append(this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter);
+      QLog.d("StagePresenterImp", 2, paramEngineData.toString());
     }
   }
   
   private boolean e(EngineData paramEngineData)
   {
-    return (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData != null) && (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a().owner != paramEngineData.a().owner) && (GameEngine.a().a());
+    EngineData localEngineData = this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData;
+    return (localEngineData != null) && (localEngineData.a().owner != paramEngineData.a().owner) && (GameEngine.a().a());
   }
   
   private void f(EngineData paramEngineData)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StagePresenterImp", 2, "handleGameStart buff = " + paramEngineData.a().a()[0] + paramEngineData.a().a()[1] + paramEngineData.a().a()[2]);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleGameStart buff = ");
+      ((StringBuilder)localObject).append(paramEngineData.a().a()[0]);
+      ((StringBuilder)localObject).append(paramEngineData.a().a()[1]);
+      ((StringBuilder)localObject).append(paramEngineData.a().a()[2]);
+      QLog.d("StagePresenterImp", 2, ((StringBuilder)localObject).toString());
     }
     b();
     g(paramEngineData);
     if ((this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter.a()) && (g(paramEngineData)))
     {
       l = Long.parseLong(GameEngine.a().a().getAccount());
-      RectF localRectF = this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a(l);
-      this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().b(localRectF);
+      localObject = this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a(l);
+      this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().b((RectF)localObject);
     }
     long l = paramEngineData.a().jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo.d * 1000 - paramEngineData.a().d();
-    if (QLog.isColorLevel()) {
-      QLog.d("StagePresenterImp", 2, "handleGameStart delayMs = " + l);
+    if (QLog.isColorLevel())
+    {
+      paramEngineData = new StringBuilder();
+      paramEngineData.append("handleGameStart delayMs = ");
+      paramEngineData.append(l);
+      QLog.d("StagePresenterImp", 2, paramEngineData.toString());
     }
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, l);
@@ -179,15 +205,20 @@ public class StagePresenterImp
   
   private boolean f(EngineData paramEngineData)
   {
-    return (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData != null) && (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a() == 1) && (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a().jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin.equals(paramEngineData.a().jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin));
+    EngineData localEngineData = this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData;
+    return (localEngineData != null) && (localEngineData.a() == 1) && (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a().jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin.equals(paramEngineData.a().jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin));
   }
   
   private void g(EngineData paramEngineData)
   {
     this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a();
     boolean bool = g(paramEngineData);
-    if (QLog.isColorLevel()) {
-      QLog.d("StagePresenterImp", 2, "updateUIForGamePrepare isPlayerSelf = " + bool);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateUIForGamePrepare isPlayerSelf = ");
+      localStringBuilder.append(bool);
+      QLog.d("StagePresenterImp", 2, localStringBuilder.toString());
     }
     a(this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter.a(bool), paramEngineData.a().jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo.d * 1000, paramEngineData.a().d());
     this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter.a(paramEngineData);
@@ -202,13 +233,26 @@ public class StagePresenterImp
   private void h(EngineData paramEngineData)
   {
     boolean bool = g(paramEngineData);
-    if (QLog.isColorLevel()) {
-      QLog.d("StagePresenterImp", 2, "updateStageUIForRealStart isPlayerSelf = " + bool);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateStageUIForRealStart isPlayerSelf = ");
+      localStringBuilder.append(bool);
+      QLog.d("StagePresenterImp", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageIStageView.d();
+    this.jdField_a_of_type_ComTencentAvgameGameroomStageIStageView.c();
     this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter.b(paramEngineData);
     GameEngine.a().j(paramEngineData);
-    CJSurvivalFestivalReporter.a(4, 0, true);
+    if (paramEngineData.g())
+    {
+      int i;
+      if (paramEngineData.h()) {
+        i = 1;
+      } else {
+        i = 2;
+      }
+      ReportController.b(null, "dc00898", "", "", "survival_subject", "survival_subject", i, 0, String.valueOf(paramEngineData.a().jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo.jdField_a_of_type_Int), String.valueOf(paramEngineData.p()), CJSurvivalReporterUtil.a().a(paramEngineData), String.valueOf(paramEngineData.k()));
+    }
     a(this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter.a(this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a(), bool, GameEngine.a().a().a().opened_match));
     if ((this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter.a()) && (!bool))
     {
@@ -220,18 +264,35 @@ public class StagePresenterImp
   
   private void i(EngineData paramEngineData)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StagePresenterImp", 2, "handleSwitchTopic ,topic = " + paramEngineData.a().c() + " buff = " + paramEngineData.a().a()[0] + paramEngineData.a().a()[1] + paramEngineData.a().a()[2]);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleSwitchTopic ,topic = ");
+      localStringBuilder.append(paramEngineData.a().c());
+      localStringBuilder.append(" buff = ");
+      localStringBuilder.append(paramEngineData.a().a()[0]);
+      localStringBuilder.append(paramEngineData.a().a()[1]);
+      localStringBuilder.append(paramEngineData.a().a()[2]);
+      QLog.d("StagePresenterImp", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageIStageView.d();
+    this.jdField_a_of_type_ComTencentAvgameGameroomStageIStageView.c();
     this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter.c(paramEngineData);
     GameEngine.a().j(paramEngineData);
-    CJSurvivalFestivalReporter.a(4, 0, true);
+    if (paramEngineData.g())
+    {
+      int i;
+      if (paramEngineData.h()) {
+        i = 1;
+      } else {
+        i = 2;
+      }
+      ReportController.b(null, "dc00898", "", "", "survival_subject", "survival_subject", i, 0, String.valueOf(paramEngineData.a().jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo.jdField_a_of_type_Int), String.valueOf(paramEngineData.p()), CJSurvivalReporterUtil.a().a(paramEngineData), String.valueOf(paramEngineData.k()));
+    }
     if (paramEngineData.d(GameEngine.a().a().getAccount())) {
       this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().b(this.jdField_a_of_type_ComTencentAvgameGameroomStageIStageView.a());
     }
     if (Build.VERSION.SDK_INT >= 16) {
-      AudioProcess.a().a(paramEngineData.a().b());
+      AudioProcess.a().updateRecogTxt(paramEngineData.a().b());
     }
   }
   
@@ -243,10 +304,10 @@ public class StagePresenterImp
   public Drawable a()
   {
     GameItem localGameItem = GameEngine.a().a().a();
-    if ((localGameItem == null) || (TextUtils.isEmpty(localGameItem.i))) {
-      return AvGameResDownloadManager.a("avgame_questions_bg_110_height@2x.png");
+    if ((localGameItem != null) && (!TextUtils.isEmpty(localGameItem.i))) {
+      return URLDrawable.getDrawable(localGameItem.i);
     }
-    return URLDrawable.getDrawable(localGameItem.i);
+    return AvGameResDownloadUtil.a("avgame_questions_bg_110_height@2x.png");
   }
   
   public IGameRoomPresenter a()
@@ -266,7 +327,8 @@ public class StagePresenterImp
   
   public void a(EngineData paramEngineData)
   {
-    if (((this.jdField_a_of_type_ComTencentAvgameGameroomStageIStageView instanceof FestvialStageView)) && (!((FestvialStageView)this.jdField_a_of_type_ComTencentAvgameGameroomStageIStageView).a())) {
+    Object localObject = this.jdField_a_of_type_ComTencentAvgameGameroomStageIStageView;
+    if (((localObject instanceof FestvialStageView)) && (!((FestvialStageView)localObject).a())) {
       return;
     }
     this.jdField_a_of_type_ComTencentAvgameGameroomStageIStageView.a(paramEngineData);
@@ -274,12 +336,23 @@ public class StagePresenterImp
     e(paramEngineData);
     int i = paramEngineData.c();
     int j = paramEngineData.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("StagePresenterImp", 2, "refresh gameType = " + i + ",gameStatus = " + j);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("refresh gameType = ");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(",gameStatus = ");
+      ((StringBuilder)localObject).append(j);
+      QLog.d("StagePresenterImp", 2, ((StringBuilder)localObject).toString());
     }
     if (this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter == null)
     {
-      QLog.d("StagePresenterImp", 1, "refresh return for null presenter,gameType = " + i + ",gameStatus = " + j);
+      paramEngineData = new StringBuilder();
+      paramEngineData.append("refresh return for null presenter,gameType = ");
+      paramEngineData.append(i);
+      paramEngineData.append(",gameStatus = ");
+      paramEngineData.append(j);
+      QLog.d("StagePresenterImp", 1, paramEngineData.toString());
       return;
     }
     if (!a(i, j))
@@ -288,75 +361,87 @@ public class StagePresenterImp
       this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData = paramEngineData.a();
       return;
     }
-    if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int != i)) {
-      a(this.jdField_a_of_type_Int);
+    int k = this.jdField_a_of_type_Int;
+    if ((k != 0) && (k != i)) {
+      a(k);
     }
     a(true);
     this.jdField_a_of_type_Int = i;
-    switch (j)
+    if (j != 1)
     {
-    }
-    for (;;)
-    {
-      if (a(paramEngineData))
+      if (j != 2)
       {
-        i = QuestionOptionsPresenterImpl.a();
-        i(paramEngineData);
-        this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter.a(i, paramEngineData.a().jdField_a_of_type_ComTencentAvgameGamelogicDataAnswerInfo);
-      }
-      this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData = paramEngineData.a();
-      return;
-      if (!f(paramEngineData))
-      {
-        f(paramEngineData);
-        if (paramEngineData.p() == 0)
+        if (j != 3)
         {
-          CJSurvivalFestivalReporter.a(3, 2, true);
-          continue;
-          if (d(paramEngineData))
+          if (j != 4)
           {
-            if ((e(paramEngineData)) && ((this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter instanceof GuessPictureStagePresenter))) {
-              this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter.a(GameEngine.a().a(), true);
+            if ((j == 10) && (!a())) {
+              c(paramEngineData);
             }
           }
-          else
+          else if ((!b(paramEngineData)) || (!GameEngine.a().h())) {
+            d(paramEngineData);
+          }
+        }
+        else if ((c(paramEngineData)) && (GameEngine.a().h()))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("StagePresenterImp", 2, "isSameAnswerRight and break.");
+          }
+        }
+        else
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("StagePresenterImp", 2, "refresh handleAnswerRight.");
+          }
+          localObject = paramEngineData.a().jdField_a_of_type_ComTencentAvgameGamelogicITopic;
+          if ((paramEngineData.a().jdField_a_of_type_Int == 0) && (localObject != null) && ((localObject instanceof TopicBase)))
           {
-            i(paramEngineData);
-            continue;
-            if ((c(paramEngineData)) && (GameEngine.a().h()))
+            localObject = (TopicBase)localObject;
+            if (((TopicBase)localObject).e != 0)
             {
-              if (QLog.isColorLevel()) {
-                QLog.d("StagePresenterImp", 2, "isSameAnswerRight and break.");
-              }
+              a(paramEngineData, ((TopicBase)localObject).e, paramEngineData.a().b);
+              break label587;
             }
-            else
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("StagePresenterImp", 2, "refresh handleAnswerRight.");
-              }
-              ITopic localITopic = paramEngineData.a().jdField_a_of_type_ComTencentAvgameGamelogicITopic;
-              if ((paramEngineData.a().jdField_a_of_type_Int == 0) && (localITopic != null) && ((localITopic instanceof TopicBase)) && (((TopicBase)localITopic).e != 0))
-              {
-                a(paramEngineData, ((TopicBase)localITopic).e, paramEngineData.a().b);
-              }
-              else
-              {
-                a(paramEngineData, paramEngineData.a().jdField_a_of_type_Int, paramEngineData.a().b);
-                continue;
-                if ((!b(paramEngineData)) || (!GameEngine.a().h()))
-                {
-                  d(paramEngineData);
-                  continue;
-                  if (!a()) {
-                    c(paramEngineData);
-                  }
-                }
-              }
-            }
+          }
+          a(paramEngineData, paramEngineData.a().jdField_a_of_type_Int, paramEngineData.a().b);
+        }
+      }
+      else if (d(paramEngineData))
+      {
+        if (e(paramEngineData))
+        {
+          localObject = this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter;
+          if ((localObject instanceof GuessPictureStagePresenter)) {
+            ((IGameStagePresenter)localObject).a(GameEngine.a().a(), true);
           }
         }
       }
+      else {
+        i(paramEngineData);
+      }
     }
+    else if (!f(paramEngineData))
+    {
+      f(paramEngineData);
+      if ((paramEngineData.p() == 0) && (paramEngineData.g()))
+      {
+        if (paramEngineData.h()) {
+          i = 1;
+        } else {
+          i = 2;
+        }
+        ReportController.b(null, "dc00898", "", "", "survival_countdown", "survival_countdown", i, 0, String.valueOf(paramEngineData.j()), "", String.valueOf(paramEngineData.l()), String.valueOf(paramEngineData.k()));
+      }
+    }
+    label587:
+    if (a(paramEngineData))
+    {
+      i = QuestionOptionsPresenterImpl.a();
+      i(paramEngineData);
+      this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter.a(i, paramEngineData.a().jdField_a_of_type_ComTencentAvgameGamelogicDataAnswerInfo);
+    }
+    this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData = paramEngineData.a();
   }
   
   public void a(EngineData paramEngineData, int paramInt1, int paramInt2)
@@ -365,51 +450,65 @@ public class StagePresenterImp
       return;
     }
     boolean bool = GameEngine.a().a().getAccount().equals(paramEngineData.a().d.uin);
+    Object localObject;
     if ((paramEngineData.f()) && (!paramEngineData.h()))
     {
       if (!bool)
       {
-        if (this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter != null) {
-          this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter.a(paramEngineData);
+        localObject = this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter;
+        if (localObject != null) {
+          ((IQuestionOptionPresenter)localObject).a(paramEngineData);
         }
         a(false, true);
       }
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter.d(paramEngineData);
-      return;
     }
-    int i = paramEngineData.a().a(paramEngineData.a().d.uin);
-    if (QLog.isColorLevel()) {
-      QLog.d("StagePresenterImp", 2, "handleAnswerRight scoreThisTime = " + paramInt1 + ", actorScoreThisTime = " + paramInt2 + ", combo = " + paramEngineData.a().jdField_a_of_type_Long);
-    }
-    String str2 = paramEngineData.a().b();
-    Object localObject = (UserInfoHandler)GameEngine.a().a().getBusinessHandler(HandlerFactory.b);
-    Bitmap localBitmap = ((UserInfoHandler)localObject).a(String.valueOf(paramEngineData.a().d.uin), (byte)1);
-    String str3 = paramEngineData.a().getNick(paramEngineData.a().d.uin);
-    long l = paramEngineData.a().jdField_a_of_type_Long;
-    if ((paramEngineData.c() == 1) && (paramEngineData.b() != null)) {}
-    for (localObject = ((UserInfoHandler)localObject).a(paramEngineData.b().uin, (byte)1);; localObject = null)
+    else
     {
+      int i = paramEngineData.a().a(paramEngineData.a().d.uin);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("handleAnswerRight scoreThisTime = ");
+        ((StringBuilder)localObject).append(paramInt1);
+        ((StringBuilder)localObject).append(", actorScoreThisTime = ");
+        ((StringBuilder)localObject).append(paramInt2);
+        ((StringBuilder)localObject).append(", combo = ");
+        ((StringBuilder)localObject).append(paramEngineData.a().jdField_a_of_type_Long);
+        QLog.d("StagePresenterImp", 2, ((StringBuilder)localObject).toString());
+      }
+      String str2 = paramEngineData.a().b();
+      localObject = (UserInfoHandler)GameEngine.a().a().getBusinessHandler(HandlerFactory.b);
+      Bitmap localBitmap = ((UserInfoHandler)localObject).a(String.valueOf(paramEngineData.a().d.uin), (byte)1);
+      String str3 = paramEngineData.a().getNick(paramEngineData.a().d.uin);
+      long l = paramEngineData.a().jdField_a_of_type_Long;
+      if ((paramEngineData.c() == 1) && (paramEngineData.b() != null)) {
+        localObject = ((UserInfoHandler)localObject).a(paramEngineData.b().uin, (byte)1);
+      } else {
+        localObject = null;
+      }
       if (!bool) {
         ReportController.b(null, "dc00898", "", "", "0X800B04C", "0X800B04C", paramEngineData.d(), 0, "", "", "", "");
       }
       int j = paramEngineData.d();
-      if (bool) {}
-      for (String str1 = "1";; str1 = "2")
-      {
-        ReportController.b(null, "dc00898", "", "", "0X800B04E", "0X800B04E", j, 0, str1, "", String.valueOf(l), "");
-        if (QLog.isColorLevel()) {
-          QLog.d("StagePresenterImp", 1, new Object[] { "[handleAnswerRight] survival: ", Boolean.valueOf(paramEngineData.f()), ", avRoom: ", Boolean.valueOf(paramEngineData.h()) });
-        }
-        this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a(str2, localBitmap, str3, paramInt1, i, l, (Bitmap)localObject, paramInt2, bool);
-        AvGameMusicPlayer.a().a(paramEngineData.a(), "succeed");
-        localObject = this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a();
-        this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a((View)localObject, this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a(), true);
-        d();
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, paramEngineData.a().jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo.f * 1000);
-        break;
+      String str1;
+      if (bool) {
+        str1 = "1";
+      } else {
+        str1 = "2";
       }
+      ReportController.b(null, "dc00898", "", "", "0X800B04E", "0X800B04E", j, 0, str1, "", String.valueOf(l), "");
+      if (QLog.isColorLevel()) {
+        QLog.d("StagePresenterImp", 1, new Object[] { "[handleAnswerRight] survival: ", Boolean.valueOf(paramEngineData.f()), ", avRoom: ", Boolean.valueOf(paramEngineData.h()) });
+      }
+      this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a(str2, localBitmap, str3, paramInt1, i, l, (Bitmap)localObject, paramInt2, bool);
+      AvGameMusicPlayer.a().a(paramEngineData.a(), "succeed");
+      localObject = this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a();
+      this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a((View)localObject, this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a(), true);
+      d();
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, paramEngineData.a().jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo.f * 1000);
     }
+    this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter.d(paramEngineData);
   }
   
   public void a(IGameRoomPresenter paramIGameRoomPresenter)
@@ -435,21 +534,24 @@ public class StagePresenterImp
   public void a(String paramString, int paramInt)
   {
     String str = GameEngine.a().a().getAccount();
-    if (QLog.isColorLevel()) {
-      QLog.d("StagePresenterImp", 2, "showTopicSwitchedTip switcherUin = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showTopicSwitchedTip switcherUin = ");
+      localStringBuilder.append(paramString);
+      QLog.d("StagePresenterImp", 2, localStringBuilder.toString());
     }
     if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals(str)))
     {
-      if (paramInt != 1) {
-        break label75;
+      if (paramInt == 1)
+      {
+        this.jdField_a_of_type_ComTencentAvgameGameroomStageIStageView.b("avgame_tips_switch_topic@2x.png");
+        return;
       }
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageIStageView.b("avgame_tips_switch_topic@2x.png");
+      if (paramInt == 2) {
+        this.jdField_a_of_type_ComTencentAvgameGameroomStageIStageView.b("avgame_tips_host_switch_topic@2x.png");
+      }
     }
-    label75:
-    while (paramInt != 2) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageIStageView.b("avgame_tips_host_switch_topic@2x.png");
   }
   
   public void a(String paramString, EngineData paramEngineData)
@@ -466,11 +568,18 @@ public class StagePresenterImp
   
   public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StagePresenterImp", 2, "onShowGameContent " + paramBoolean + ",curGameStagePresenter = " + this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onShowGameContent ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(",curGameStagePresenter = ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter);
+      QLog.d("StagePresenterImp", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter != null) {
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter.a(paramBoolean);
+    Object localObject = this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter;
+    if (localObject != null) {
+      ((IGameStagePresenter)localObject).a(paramBoolean);
     }
   }
   
@@ -481,21 +590,27 @@ public class StagePresenterImp
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StagePresenterImp", 2, "displayAnswerResult isSelf:" + paramBoolean1 + " isRight:" + paramBoolean2);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("displayAnswerResult isSelf:");
+      ((StringBuilder)localObject).append(paramBoolean1);
+      ((StringBuilder)localObject).append(" isRight:");
+      ((StringBuilder)localObject).append(paramBoolean2);
+      QLog.d("StagePresenterImp", 2, ((StringBuilder)localObject).toString());
     }
     this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().b(paramBoolean1, paramBoolean2);
     if (!paramBoolean1) {
       return;
     }
-    EngineData localEngineData = GameEngine.a().a();
+    Object localObject = GameEngine.a().a();
     if (paramBoolean2)
     {
-      this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a(localEngineData);
-      AvGameSysMusicPlayer.a().a(localEngineData.a(), "succeed");
+      this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a((EngineData)localObject);
+      AvGameSysMusicPlayer.a().a(((EngineData)localObject).a(), "succeed");
       return;
     }
-    AvGameSysMusicPlayer.a().a(localEngineData.a(), "failed");
+    AvGameSysMusicPlayer.a().a(((EngineData)localObject).a(), "failed");
   }
   
   public boolean a(EngineData paramEngineData)
@@ -506,10 +621,10 @@ public class StagePresenterImp
   public Drawable b()
   {
     GameItem localGameItem = GameEngine.a().a().a();
-    if ((localGameItem == null) || (TextUtils.isEmpty(localGameItem.j))) {
-      return AvGameResDownloadManager.a("avgame_questions_bg_130_height@2x.png");
+    if ((localGameItem != null) && (!TextUtils.isEmpty(localGameItem.j))) {
+      return URLDrawable.getDrawable(localGameItem.j);
     }
-    return URLDrawable.getDrawable(localGameItem.j);
+    return AvGameResDownloadUtil.a("avgame_questions_bg_130_height@2x.png");
   }
   
   public void b()
@@ -517,14 +632,16 @@ public class StagePresenterImp
     if (QLog.isColorLevel()) {
       QLog.d("StagePresenterImp", 2, "resetGameContent ");
     }
-    if (this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter != null) {
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter.a(null);
+    IGameStagePresenter localIGameStagePresenter = this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter;
+    if (localIGameStagePresenter != null) {
+      localIGameStagePresenter.a(null);
     }
   }
   
   public void b(EngineData paramEngineData)
   {
-    if (((this.jdField_a_of_type_ComTencentAvgameGameroomStageIStageView instanceof FestvialStageView)) && (!((FestvialStageView)this.jdField_a_of_type_ComTencentAvgameGameroomStageIStageView).a())) {
+    IStageView localIStageView = this.jdField_a_of_type_ComTencentAvgameGameroomStageIStageView;
+    if (((localIStageView instanceof FestvialStageView)) && (!((FestvialStageView)localIStageView).a())) {
       return;
     }
     this.jdField_a_of_type_ComTencentAvgameGameroomStageIStageView.b(paramEngineData);
@@ -544,18 +661,16 @@ public class StagePresenterImp
   {
     if (paramEngineData.d())
     {
-      if (!g(paramEngineData)) {
-        break label74;
+      if (g(paramEngineData))
+      {
+        a(this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().getResources().getString(2131690267));
       }
-      a(this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().getResources().getString(2131690344));
-    }
-    for (;;)
-    {
+      else
+      {
+        paramString = paramEngineData.a().jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.nick;
+        a(String.format(this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().getResources().getString(2131690268), new Object[] { ContactUtils.a(paramString, 8.0F) }));
+      }
       ReportController.b(null, "dc00898", "", "", "0X800B04B", "0X800B04B", paramEngineData.d(), 0, "", "", "", "");
-      return;
-      label74:
-      paramString = paramEngineData.a().jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.nick;
-      a(String.format(this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().getResources().getString(2131690345), new Object[] { ContactUtils.a(paramString, 8.0F) }));
     }
   }
   
@@ -587,17 +702,14 @@ public class StagePresenterImp
     }
     if ((paramEngineData.f()) && (!paramEngineData.h())) {
       AvGameSysMusicPlayer.a().a(paramEngineData.a(), "over");
-    }
-    for (;;)
-    {
-      if (paramEngineData.d(GameEngine.a().a().getAccount())) {
-        this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().b();
-      }
-      this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().e();
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter.f(paramEngineData);
-      return;
+    } else {
       AvGameMusicPlayer.a().a(paramEngineData.a(), "over");
     }
+    if (paramEngineData.d(GameEngine.a().a().getAccount())) {
+      this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().b();
+    }
+    this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().e();
+    this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter.f(paramEngineData);
   }
   
   public void c(IGameStagePresenter paramIGameStagePresenter)
@@ -608,79 +720,75 @@ public class StagePresenterImp
   public void d()
   {
     if (GameEngine.a().a().c() == 2) {
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageIStageView.c();
+      this.jdField_a_of_type_ComTencentAvgameGameroomStageIStageView.b();
     }
   }
   
   public void d(EngineData paramEngineData)
   {
-    if ((!paramEngineData.f()) || (paramEngineData.h()))
+    boolean bool3 = paramEngineData.f();
+    boolean bool2 = false;
+    boolean bool1 = true;
+    Object localObject;
+    if ((bool3) && (!paramEngineData.h()))
     {
-      Object localObject = paramEngineData.a().b();
-      if (QLog.isColorLevel()) {
-        QLog.d("StagePresenterImp", 2, "onAnswerTimeoutPush answer = " + (String)localObject);
+      if (paramEngineData.a > 0)
+      {
+        if ((paramEngineData.a & 0x1) > 0) {
+          bool1 = true;
+        } else {
+          bool1 = false;
+        }
+        if ((0x2 & paramEngineData.a) > 0) {
+          bool2 = true;
+        }
+        localObject = this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter;
+        if (localObject != null) {
+          ((IQuestionOptionPresenter)localObject).a(bool1, bool2);
+        }
+      }
+      else if (paramEngineData.a().jdField_a_of_type_ComTencentAvgameGamelogicDataAnswerInfo != null)
+      {
+        if (paramEngineData.a().jdField_a_of_type_ComTencentAvgameGamelogicDataAnswerInfo.answer_result != 1) {
+          bool1 = false;
+        }
+        localObject = this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter;
+        if (localObject != null) {
+          ((IQuestionOptionPresenter)localObject).a(paramEngineData);
+        }
+        a(false, bool1);
+      }
+    }
+    else
+    {
+      localObject = paramEngineData.a().b();
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onAnswerTimeoutPush answer = ");
+        localStringBuilder.append((String)localObject);
+        QLog.d("StagePresenterImp", 2, localStringBuilder.toString());
       }
       ReportController.b(null, "dc00898", "", "", "0X800B04F", "0X800B04F", paramEngineData.d(), 0, "", "", "", "");
       this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a((String)localObject);
       if (QLog.isColorLevel()) {
         QLog.d("StagePresenterImp", 1, new Object[] { "[handleAnswerTimeout] survival: ", Boolean.valueOf(paramEngineData.f()), ", avRoom: ", Boolean.valueOf(paramEngineData.h()) });
       }
-      if ((paramEngineData.f()) && (!paramEngineData.h()))
-      {
+      if ((paramEngineData.f()) && (!paramEngineData.h())) {
         AvGameSysMusicPlayer.a().a(paramEngineData.a(), "failed");
-        if ((!paramEngineData.g()) || (paramEngineData.h()))
-        {
-          localObject = this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a();
-          this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a((View)localObject, this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a(), false);
-        }
-        d();
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, paramEngineData.a().jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo.f * 1000);
-      }
-    }
-    label333:
-    label370:
-    label373:
-    label375:
-    do
-    {
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter.e(paramEngineData);
-        return;
+      } else {
         AvGameMusicPlayer.a().a(paramEngineData.a(), "failed");
-        break;
-        if (paramEngineData.a <= 0) {
-          break label375;
-        }
-        if ((paramEngineData.a & 0x1) > 0)
-        {
-          bool1 = true;
-          if ((paramEngineData.a & 0x2) <= 0) {
-            break label370;
-          }
-        }
-        for (boolean bool2 = true;; bool2 = false)
-        {
-          if (this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter == null) {
-            break label373;
-          }
-          this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter.a(bool1, bool2);
-          break;
-          bool1 = false;
-          break label333;
-        }
       }
-    } while (paramEngineData.a().jdField_a_of_type_ComTencentAvgameGamelogicDataAnswerInfo == null);
-    if (paramEngineData.a().jdField_a_of_type_ComTencentAvgameGamelogicDataAnswerInfo.answer_result == 1) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if (this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter != null) {
-        this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionIQuestionOptionPresenter.a(paramEngineData);
+      if ((!paramEngineData.g()) || (paramEngineData.h()))
+      {
+        localObject = this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a();
+        this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a((View)localObject, this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a(), false);
       }
-      a(false, bool1);
-      break;
+      d();
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, paramEngineData.a().jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo.f * 1000);
     }
+    this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter.e(paramEngineData);
   }
   
   public void d(IGameStagePresenter paramIGameStagePresenter)
@@ -693,7 +801,7 @@ public class StagePresenterImp
     if (GameEngine.a().f()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageIStageView.b();
+    this.jdField_a_of_type_ComTencentAvgameGameroomStageIStageView.a();
   }
   
   public void e(IGameStagePresenter paramIGameStagePresenter)
@@ -703,7 +811,7 @@ public class StagePresenterImp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.stage.StagePresenterImp
  * JD-Core Version:    0.7.0.1
  */

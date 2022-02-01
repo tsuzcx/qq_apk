@@ -16,26 +16,32 @@ public class AText
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof AText)) {
-        return false;
-      }
-      paramObject = (AText)paramObject;
-    } while ((Utils.a(this.a, paramObject.a)) && (Utils.a(this.b, paramObject.b)));
-    return false;
+    }
+    if (!(paramObject instanceof AText)) {
+      return false;
+    }
+    paramObject = (AText)paramObject;
+    return (Utils.a(this.a, paramObject.a)) && (Utils.a(this.b, paramObject.b));
   }
   
   public String toString()
   {
-    return "AText{text='" + this.a + '\'' + ", attribs='" + this.b + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AText{text='");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", attribs='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.AText
  * JD-Core Version:    0.7.0.1
  */

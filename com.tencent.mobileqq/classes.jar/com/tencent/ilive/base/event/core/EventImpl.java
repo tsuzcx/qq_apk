@@ -28,26 +28,34 @@ public class EventImpl
   
   public void post(Object paramObject)
   {
-    if (paramObject == null) {
-      throw new RuntimeException("post obj is null!");
+    if (paramObject != null)
+    {
+      post(getQByHashcode(paramObject.getClass().hashCode()), paramObject);
+      return;
     }
-    post(getQByHashcode(paramObject.getClass().hashCode()), paramObject);
+    throw new RuntimeException("post obj is null!");
   }
   
   public void post(Object paramObject, Handler paramHandler)
   {
-    if (paramObject == null) {
-      throw new RuntimeException("post obj is null!");
-    }
-    Object localObject = getQByHashcode(paramObject.getClass().hashCode());
-    if ((paramHandler != null) && (localObject != null)) {
-      localObject = ((ConcurrentLinkedQueue)localObject).iterator();
-    }
-    while (((Iterator)localObject).hasNext())
+    if (paramObject != null)
     {
-      paramHandler.post(new EventImpl.1(this, (Observer)((Iterator)localObject).next(), paramObject));
-      continue;
-      post((ConcurrentLinkedQueue)localObject, paramObject);
+      Object localObject = getQByHashcode(paramObject.getClass().hashCode());
+      if ((paramHandler != null) && (localObject != null)) {
+        localObject = ((ConcurrentLinkedQueue)localObject).iterator();
+      }
+      while (((Iterator)localObject).hasNext())
+      {
+        paramHandler.post(new EventImpl.1(this, (Observer)((Iterator)localObject).next(), paramObject));
+        continue;
+        post((ConcurrentLinkedQueue)localObject, paramObject);
+      }
+      return;
+    }
+    paramObject = new RuntimeException("post obj is null!");
+    for (;;)
+    {
+      throw paramObject;
     }
   }
   
@@ -66,22 +74,24 @@ public class EventImpl
   
   public void register(Observer paramObserver)
   {
-    if (paramObserver == null) {
-      throw new RuntimeException("register event null!");
-    }
-    Object localObject = paramObserver.getClass().getGenericInterfaces();
-    if ((localObject[0] instanceof ParameterizedType))
+    if (paramObserver != null)
     {
-      int i = ((ParameterizedType)localObject[0]).getActualTypeArguments()[0].hashCode();
-      ConcurrentLinkedQueue localConcurrentLinkedQueue = getQByHashcode(i);
-      localObject = localConcurrentLinkedQueue;
-      if (localConcurrentLinkedQueue == null)
+      Object localObject = paramObserver.getClass().getGenericInterfaces();
+      if ((localObject[0] instanceof ParameterizedType))
       {
-        localObject = new ConcurrentLinkedQueue();
-        this.observers.put(Integer.valueOf(i), localObject);
+        int i = ((ParameterizedType)localObject[0]).getActualTypeArguments()[0].hashCode();
+        ConcurrentLinkedQueue localConcurrentLinkedQueue = getQByHashcode(i);
+        localObject = localConcurrentLinkedQueue;
+        if (localConcurrentLinkedQueue == null)
+        {
+          localObject = new ConcurrentLinkedQueue();
+          this.observers.put(Integer.valueOf(i), localObject);
+        }
+        ((ConcurrentLinkedQueue)localObject).add(paramObserver);
       }
-      ((ConcurrentLinkedQueue)localObject).add(paramObserver);
+      return;
     }
+    throw new RuntimeException("register event null!");
   }
   
   public void setHandler(Handler paramHandler)
@@ -91,31 +101,38 @@ public class EventImpl
   
   public void syncPost(Object paramObject)
   {
-    if (paramObject == null) {
-      throw new RuntimeException("syncPost obj is null!");
-    }
-    Object localObject = getQByHashcode(paramObject.getClass().hashCode());
-    if ((localObject != null) && (this.handler != null))
+    if (paramObject != null)
     {
-      localObject = ((ConcurrentLinkedQueue)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((Observer)((Iterator)localObject).next()).onChanged(paramObject);
+      Object localObject = getQByHashcode(paramObject.getClass().hashCode());
+      if ((localObject != null) && (this.handler != null))
+      {
+        localObject = ((ConcurrentLinkedQueue)localObject).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          ((Observer)((Iterator)localObject).next()).onChanged(paramObject);
+        }
       }
+      return;
+    }
+    paramObject = new RuntimeException("syncPost obj is null!");
+    for (;;)
+    {
+      throw paramObject;
     }
   }
   
   public void unregister(Observer paramObserver)
   {
-    if (paramObserver == null) {
-      throw new RuntimeException("remove event null!");
-    }
-    Object localObject = paramObserver.getClass().getGenericInterfaces();
+    Object localObject;
     int i;
-    if ((localObject[0] instanceof ParameterizedType))
+    if (paramObserver != null)
     {
-      i = ((ParameterizedType)localObject[0]).getActualTypeArguments()[0].hashCode();
-      localObject = getQByHashcode(i);
-      if (localObject == null) {}
+      localObject = paramObserver.getClass().getGenericInterfaces();
+      if ((localObject[0] instanceof ParameterizedType))
+      {
+        i = ((ParameterizedType)localObject[0]).getActualTypeArguments()[0].hashCode();
+        localObject = getQByHashcode(i);
+        if (localObject == null) {}
+      }
     }
     try
     {
@@ -126,11 +143,12 @@ public class EventImpl
       return;
     }
     catch (Exception paramObserver) {}
+    throw new RuntimeException("remove event null!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.base.event.core.EventImpl
  * JD-Core Version:    0.7.0.1
  */

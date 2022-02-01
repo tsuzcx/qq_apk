@@ -14,33 +14,39 @@ class ViewCompatUtils$ViewCompatBaseImpl
   private boolean hasBooleanFlag(ViewGroup paramViewGroup, Integer paramInteger)
   {
     Integer localInteger = (Integer)ReflectUtils.getField(ViewGroup.class, "mGroupFlags", paramViewGroup);
-    StringBuilder localStringBuilder;
     if (VideoReportInner.getInstance().isDebugMode())
     {
-      localStringBuilder = new StringBuilder().append("hasBooleanFlag: groupFlags = ");
-      if (localInteger != null) {
-        break label86;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("hasBooleanFlag: groupFlags = ");
+      String str = "null";
+      if (localInteger == null) {
+        paramViewGroup = "null";
+      } else {
+        paramViewGroup = localInteger.toString();
       }
-      paramViewGroup = "null";
-      localStringBuilder = localStringBuilder.append(paramViewGroup).append(", flag = ");
-      if (paramInteger != null) {
-        break label94;
+      localStringBuilder.append(paramViewGroup);
+      localStringBuilder.append(", flag = ");
+      if (paramInteger == null) {
+        paramViewGroup = str;
+      } else {
+        paramViewGroup = paramInteger.toString();
       }
+      localStringBuilder.append(paramViewGroup);
+      Log.d("ViewCompatBaseImpl", localStringBuilder.toString());
     }
-    label86:
-    label94:
-    for (paramViewGroup = "null";; paramViewGroup = paramInteger.toString())
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localInteger != null)
     {
-      Log.d("ViewCompatBaseImpl", paramViewGroup);
-      if ((localInteger != null) && (paramInteger != null)) {
-        break label102;
+      if (paramInteger == null) {
+        return false;
       }
-      return false;
-      paramViewGroup = localInteger.toString();
-      break;
+      bool1 = bool2;
+      if ((localInteger.intValue() & paramInteger.intValue()) == paramInteger.intValue()) {
+        bool1 = true;
+      }
     }
-    label102:
-    return (localInteger.intValue() & paramInteger.intValue()) == paramInteger.intValue();
+    return bool1;
   }
   
   public boolean getClipChildren(ViewGroup paramViewGroup)
@@ -60,7 +66,7 @@ class ViewCompatUtils$ViewCompatBaseImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.utils.ViewCompatUtils.ViewCompatBaseImpl
  * JD-Core Version:    0.7.0.1
  */

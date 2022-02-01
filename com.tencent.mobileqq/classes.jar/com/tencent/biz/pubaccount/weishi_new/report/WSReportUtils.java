@@ -34,7 +34,7 @@ public class WSReportUtils
     }
     paramString = str;
     if (TextUtils.isEmpty(str)) {
-      paramString = WSExpABTestManager.a().c();
+      paramString = WSExpABTestManager.a().d();
     }
     return paramString;
   }
@@ -56,7 +56,7 @@ public class WSReportUtils
   
   public static boolean a(String paramString)
   {
-    return (TextUtils.equals(paramString, "fullscreen_videoplay")) || (TextUtils.equals(paramString, "second_fullscreen_videoplay")) || (TextUtils.equals(paramString, "feeds_fullscreen"));
+    return (TextUtils.equals(paramString, "fullscreen_videoplay")) || (TextUtils.equals(paramString, "collection_videoplay")) || (TextUtils.equals(paramString, "feeds_fullscreen"));
   }
   
   public static String b()
@@ -92,7 +92,7 @@ public class WSReportUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSReportUtils
  * JD-Core Version:    0.7.0.1
  */

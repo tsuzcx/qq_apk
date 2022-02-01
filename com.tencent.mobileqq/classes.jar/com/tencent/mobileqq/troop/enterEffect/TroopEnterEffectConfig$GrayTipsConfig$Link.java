@@ -1,14 +1,14 @@
-package com.tencent.mobileqq.troop.enterEffect;
+package com.tencent.mobileqq.troop.entereffect;
 
 public class TroopEnterEffectConfig$GrayTipsConfig$Link
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int b;
+  public int a;
+  public String a;
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectConfig.GrayTipsConfig.Link
  * JD-Core Version:    0.7.0.1
  */

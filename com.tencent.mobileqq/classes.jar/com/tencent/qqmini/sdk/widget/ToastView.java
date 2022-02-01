@@ -57,37 +57,48 @@ public class ToastView
   private void create(int paramInt, String paramString, boolean paramBoolean)
   {
     int i;
-    label23:
-    TextView localTextView;
-    ImageView localImageView;
-    if (isToastModeLoading(paramInt, paramString))
-    {
+    if (isToastModeLoading(paramInt, paramString)) {
       i = R.layout.mini_sdk_loading_toast;
-      if (!isToastModeLoading(paramInt, paramString)) {
-        break label250;
-      }
-      this.toastLayout = this.mInflater.inflate(i, null);
-      this.toastLayout.setClickable(paramBoolean);
-      localTextView = (TextView)this.toastLayout.findViewById(R.id.toast_msg);
-      localImageView = (ImageView)this.toastLayout.findViewById(R.id.toast_icon);
-      if (paramInt == 1)
-      {
-        this.objectAnimator = ObjectAnimator.ofFloat(localImageView, "rotation", new float[] { 0.0F, 360.0F });
-        this.objectAnimator.setInterpolator(new LinearInterpolator());
-        this.objectAnimator.setDuration(2000L);
-        this.objectAnimator.setRepeatMode(1);
-        this.objectAnimator.setRepeatCount(-1);
-      }
-      if (this.icon == null) {
-        break label255;
-      }
+    } else {
+      i = R.layout.mini_sdk_toast_main_layout;
+    }
+    if (!isToastModeLoading(paramInt, paramString)) {
+      paramBoolean = false;
+    }
+    this.toastLayout = this.mInflater.inflate(i, null);
+    this.toastLayout.setClickable(paramBoolean);
+    TextView localTextView = (TextView)this.toastLayout.findViewById(R.id.toast_msg);
+    ImageView localImageView = (ImageView)this.toastLayout.findViewById(R.id.toast_icon);
+    if (paramInt == 1)
+    {
+      this.objectAnimator = ObjectAnimator.ofFloat(localImageView, "rotation", new float[] { 0.0F, 360.0F });
+      this.objectAnimator.setInterpolator(new LinearInterpolator());
+      this.objectAnimator.setDuration(2000L);
+      this.objectAnimator.setRepeatMode(1);
+      this.objectAnimator.setRepeatCount(-1);
+    }
+    if (this.icon != null)
+    {
       localImageView.setVisibility(0);
       localImageView.setImageDrawable(this.icon);
       localTextView.setMaxLines(1);
-      label172:
-      if (!TextUtils.isEmpty(this.message)) {
-        break label303;
+    }
+    else
+    {
+      localImageView.setVisibility(8);
+      localTextView.setGravity(17);
+      if (isToastModeLoading(paramInt, paramString))
+      {
+        localTextView.setMaxLines(1);
       }
+      else
+      {
+        localTextView.setEms(18);
+        localTextView.setMaxLines(2);
+      }
+    }
+    if (TextUtils.isEmpty(this.message))
+    {
       localTextView.setVisibility(8);
       paramString = localImageView.getLayoutParams();
       if (paramString != null)
@@ -98,33 +109,15 @@ public class ToastView
         localImageView.setLayoutParams(paramString);
       }
     }
-    for (;;)
+    else
     {
-      this.toastLayout.setX(0.0F);
-      this.toastLayout.setY(getStatusBarHeight());
-      return;
-      i = R.layout.mini_sdk_toast_main_layout;
-      break;
-      label250:
-      paramBoolean = false;
-      break label23;
-      label255:
-      localImageView.setVisibility(8);
-      localTextView.setGravity(17);
-      if (isToastModeLoading(paramInt, paramString))
-      {
-        localTextView.setMaxLines(1);
-        break label172;
-      }
-      localTextView.setEms(18);
-      localTextView.setMaxLines(2);
-      break label172;
-      label303:
       if (!isToastModeLoading(paramInt, paramString)) {
         localTextView.setTextColor(getTextColorType(paramString));
       }
       localTextView.setText(this.message);
     }
+    this.toastLayout.setX(0.0F);
+    this.toastLayout.setY(getStatusBarHeight());
   }
   
   public static int getIconRes(String paramString)
@@ -143,13 +136,10 @@ public class ToastView
   
   private static int getTextColorType(String paramString)
   {
-    int i = -16777216;
     if ("warn".equals(paramString)) {
-      i = -16578533;
+      return -16578533;
     }
-    while (!"success".equals(paramString)) {
-      return i;
-    }
+    if ("success".equals(paramString)) {}
     return -16777216;
   }
   
@@ -160,7 +150,15 @@ public class ToastView
   
   private boolean isToastModeLoading(int paramInt, String paramString)
   {
-    return (paramInt == 1) || ((paramInt == 0) && ("loading".equals(paramString)));
+    boolean bool = true;
+    if (paramInt != 1)
+    {
+      if ((paramInt == 0) && ("loading".equals(paramString))) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   private void setDuration(int paramInt)
@@ -187,16 +185,28 @@ public class ToastView
   
   private void show()
   {
-    QMLog.d("ToastView", "show mParentView=" + this.mParentView + ",toastLayout=" + this.toastLayout);
-    if ((this.mParentView != null) && (this.toastLayout != null))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("show mParentView=");
+    ((StringBuilder)localObject).append(this.mParentView);
+    ((StringBuilder)localObject).append(",toastLayout=");
+    ((StringBuilder)localObject).append(this.toastLayout);
+    QMLog.d("ToastView", ((StringBuilder)localObject).toString());
+    localObject = this.mParentView;
+    if (localObject != null)
     {
-      this.mParentView.addView(this.toastLayout, new ViewGroup.LayoutParams(-1, -1));
-      if (this.mDuration > -1) {
-        this.handler.postDelayed(this.hideJob, this.mDuration);
+      View localView = this.toastLayout;
+      if (localView != null)
+      {
+        ((ViewGroup)localObject).addView(localView, new ViewGroup.LayoutParams(-1, -1));
+        int i = this.mDuration;
+        if (i > -1) {
+          this.handler.postDelayed(this.hideJob, i);
+        }
       }
     }
-    if (this.objectAnimator != null) {
-      this.objectAnimator.start();
+    localObject = this.objectAnimator;
+    if (localObject != null) {
+      ((ObjectAnimator)localObject).start();
     }
   }
   
@@ -212,8 +222,15 @@ public class ToastView
       int i = Resources.getSystem().getDimensionPixelSize(Resources.getSystem().getIdentifier("status_bar_height", "dimen", "android"));
       return i;
     }
-    catch (Exception localException) {}
-    return (int)(this.mResources.getDisplayMetrics().density * 25.0F + 0.5D);
+    catch (Exception localException)
+    {
+      label24:
+      double d;
+      break label24;
+    }
+    d = this.mResources.getDisplayMetrics().density * 25.0F;
+    Double.isNaN(d);
+    return (int)(d + 0.5D);
   }
   
   public int getTitleBarHeight()
@@ -223,20 +240,38 @@ public class ToastView
       int i = Resources.getSystem().getDimensionPixelSize(Resources.getSystem().getIdentifier("navigation_bar_height", "dimen", "android"));
       return i;
     }
-    catch (Exception localException) {}
-    return (int)(this.mResources.getDisplayMetrics().density * 44.0F + 0.5D);
+    catch (Exception localException)
+    {
+      label24:
+      double d;
+      break label24;
+    }
+    d = this.mResources.getDisplayMetrics().density * 44.0F;
+    Double.isNaN(d);
+    return (int)(d + 0.5D);
   }
   
   public void hide()
   {
     this.handler.removeCallbacks(this.hideJob);
-    QMLog.d("ToastView", "hide mParentView=" + this.mParentView + ",toastLayout=" + this.toastLayout);
-    if ((this.mParentView != null) && (this.toastLayout != null)) {
-      this.mParentView.removeView(this.toastLayout);
-    }
-    if (this.objectAnimator != null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("hide mParentView=");
+    ((StringBuilder)localObject).append(this.mParentView);
+    ((StringBuilder)localObject).append(",toastLayout=");
+    ((StringBuilder)localObject).append(this.toastLayout);
+    QMLog.d("ToastView", ((StringBuilder)localObject).toString());
+    localObject = this.mParentView;
+    if (localObject != null)
     {
-      this.objectAnimator.cancel();
+      View localView = this.toastLayout;
+      if (localView != null) {
+        ((ViewGroup)localObject).removeView(localView);
+      }
+    }
+    localObject = this.objectAnimator;
+    if (localObject != null)
+    {
+      ((ObjectAnimator)localObject).cancel();
       this.objectAnimator = null;
     }
     this.icon = null;
@@ -244,29 +279,41 @@ public class ToastView
   
   public void show(int paramInt1, String paramString1, String paramString2, CharSequence paramCharSequence, int paramInt2, boolean paramBoolean)
   {
-    QMLog.d("ToastView", "show iconType=" + paramString1 + ",localIconPath=" + paramString2 + ",msg=" + paramCharSequence + ",duration=" + paramInt2 + ",mask=" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("show iconType=");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(",localIconPath=");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(",msg=");
+    localStringBuilder.append(paramCharSequence);
+    localStringBuilder.append(",duration=");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(",mask=");
+    localStringBuilder.append(paramBoolean);
+    QMLog.d("ToastView", localStringBuilder.toString());
     hide();
     if (!TextUtils.isEmpty(paramString2)) {
       setToastIcon(new BitmapDrawable(paramString2));
-    }
-    for (;;)
-    {
-      setToastMsg(paramCharSequence);
-      setDuration(paramInt2);
-      create(paramInt1, paramString1, paramBoolean);
-      show();
-      return;
+    } else {
       setToastIcon(getIconRes(paramString1));
     }
+    setToastMsg(paramCharSequence);
+    setDuration(paramInt2);
+    create(paramInt1, paramString1, paramBoolean);
+    show();
   }
   
   public boolean shown()
   {
-    if (this.toastLayout == null) {}
-    while (this.toastLayout.getParent() == null) {
+    View localView = this.toastLayout;
+    boolean bool = false;
+    if (localView == null) {
       return false;
     }
-    return true;
+    if (localView.getParent() != null) {
+      bool = true;
+    }
+    return bool;
   }
   
   public void updateMsg(String paramString)
@@ -287,7 +334,7 @@ public class ToastView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.ToastView
  * JD-Core Version:    0.7.0.1
  */

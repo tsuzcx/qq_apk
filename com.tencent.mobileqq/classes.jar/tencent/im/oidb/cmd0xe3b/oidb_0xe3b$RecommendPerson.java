@@ -22,14 +22,15 @@ public final class oidb_0xe3b$RecommendPerson
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48 }, new String[] { "uint64_uin", "bytes_reason", "rpt_msg_label", "bytes_title", "uint32_age", "uint32_gender" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, null, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0) }, RecommendPerson.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48 }, new String[] { "uint64_uin", "bytes_reason", "rpt_msg_label", "bytes_title", "uint32_age", "uint32_gender" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, null, localByteStringMicro2, localInteger, localInteger }, RecommendPerson.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xe3b.oidb_0xe3b.RecommendPerson
  * JD-Core Version:    0.7.0.1
  */

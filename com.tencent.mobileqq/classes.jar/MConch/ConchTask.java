@@ -33,20 +33,23 @@ public final class ConchTask
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.taskId != 0L) {
-      paramJceOutputStream.write(this.taskId, 0);
+    long l = this.taskId;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 0);
     }
-    if (this.taskSeqno != 0L) {
-      paramJceOutputStream.write(this.taskSeqno, 1);
+    l = this.taskSeqno;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 1);
     }
-    if (this.conchList != null) {
-      paramJceOutputStream.write(this.conchList, 2);
+    ArrayList localArrayList = this.conchList;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MConch.ConchTask
  * JD-Core Version:    0.7.0.1
  */

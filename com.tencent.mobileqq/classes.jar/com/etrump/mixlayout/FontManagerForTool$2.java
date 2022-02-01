@@ -11,30 +11,27 @@ class FontManagerForTool$2
   
   public void onCallback(EIPCResult paramEIPCResult)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    switch (paramEIPCResult.data.getInt("font_type"))
+    int i = paramEIPCResult.data.getInt("font_type");
+    boolean bool = false;
+    if (i != 1)
     {
-    default: 
-      bool1 = bool2;
-    }
-    for (;;)
-    {
-      if (bool1)
-      {
-        FontManagerForTool.b(this.a);
-        this.a.notifyObservers(Integer.valueOf(1));
+      if (i == 4) {
+        bool = FontManagerForTool.b(this.a, false);
       }
-      return;
-      bool1 = FontManagerForTool.a(this.a, false);
-      continue;
-      bool1 = FontManagerForTool.b(this.a, false);
+    }
+    else {
+      bool = FontManagerForTool.a(this.a, false);
+    }
+    if (bool)
+    {
+      FontManagerForTool.b(this.a);
+      this.a.notifyObservers(Integer.valueOf(1));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.FontManagerForTool.2
  * JD-Core Version:    0.7.0.1
  */

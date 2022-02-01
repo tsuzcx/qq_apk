@@ -10,12 +10,12 @@ class AssetExportThread$2
   @RequiresApi(api=18)
   public void run()
   {
-    AssetExportThread.access$1200(this.this$0);
+    AssetExportThread.access$1300(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tav.core.AssetExportThread.2
  * JD-Core Version:    0.7.0.1
  */

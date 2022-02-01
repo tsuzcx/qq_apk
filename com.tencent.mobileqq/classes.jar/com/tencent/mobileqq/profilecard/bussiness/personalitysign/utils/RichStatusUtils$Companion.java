@@ -15,39 +15,40 @@ public final class RichStatusUtils$Companion
   public final RichStatus getRichStatus(@NotNull Card paramCard)
   {
     Intrinsics.checkParameterIsNotNull(paramCard, "card");
-    Object localObject = (RichStatus)null;
-    int i;
+    RichStatus localRichStatus = (RichStatus)null;
     if (paramCard.vRichSign != null)
     {
       localObject = paramCard.vRichSign;
       Intrinsics.checkExpressionValueIsNotNull(localObject, "card.vRichSign");
-      if (localObject.length != 0) {
-        break label84;
+      int i;
+      if (localObject.length == 0) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      i = 1;
+      if (i == 0)
+      {
+        localObject = RichStatus.parseStatus(paramCard.vRichSign);
+        ((RichStatus)localObject).time = paramCard.lSignModifyTime;
+        return localObject;
+      }
     }
-    while (i != 0) {
-      if ((paramCard.lSignModifyTime <= 0L) && (!TextUtils.isEmpty((CharSequence)paramCard.strSign)))
+    Object localObject = localRichStatus;
+    if (paramCard.lSignModifyTime <= 0L)
+    {
+      localObject = localRichStatus;
+      if (!TextUtils.isEmpty((CharSequence)paramCard.strSign))
       {
         localObject = new RichStatus(paramCard.strSign);
         ((RichStatus)localObject).time = paramCard.lSignModifyTime;
-        return localObject;
-        label84:
-        i = 0;
-      }
-      else
-      {
-        return (RichStatus)null;
       }
     }
-    localObject = RichStatus.parseStatus(paramCard.vRichSign);
-    ((RichStatus)localObject).time = paramCard.lSignModifyTime;
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.personalitysign.utils.RichStatusUtils.Companion
  * JD-Core Version:    0.7.0.1
  */

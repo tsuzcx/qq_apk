@@ -18,22 +18,21 @@ public class ListenTogetherStatus
   
   public boolean a(BaseQQAppInterface paramBaseQQAppInterface, RecentBaseData paramRecentBaseData)
   {
-    if (!(paramBaseQQAppInterface instanceof QQAppInterface)) {}
-    Object localObject;
-    do
-    {
+    if (!(paramBaseQQAppInterface instanceof QQAppInterface)) {
       return false;
-      localObject = (QQAppInterface)paramBaseQQAppInterface;
-      paramBaseQQAppInterface = paramRecentBaseData.getRecentUserUin();
-      paramRecentBaseData.mStatus = 0;
-      localObject = (ListenTogetherManager)((QQAppInterface)localObject).getManager(QQManagerFactory.LISTEN_TOGETHER_MANAGER);
-      if (((paramRecentBaseData.getRecentUserType() == 3000) || (paramRecentBaseData.getRecentUserType() == 1)) && (((ListenTogetherManager)localObject).a(1, paramBaseQQAppInterface)))
-      {
-        paramRecentBaseData.mStatus = 6;
-        return false;
-      }
-    } while ((paramRecentBaseData.getRecentUserType() != 0) || (!((ListenTogetherManager)localObject).a(2, paramBaseQQAppInterface)));
-    paramRecentBaseData.mStatus = 6;
+    }
+    Object localObject = (QQAppInterface)paramBaseQQAppInterface;
+    paramBaseQQAppInterface = paramRecentBaseData.getRecentUserUin();
+    paramRecentBaseData.mStatus = 0;
+    localObject = (ListenTogetherManager)((QQAppInterface)localObject).getManager(QQManagerFactory.LISTEN_TOGETHER_MANAGER);
+    if (((paramRecentBaseData.getRecentUserType() == 3000) || (paramRecentBaseData.getRecentUserType() == 1)) && (((ListenTogetherManager)localObject).a(1, paramBaseQQAppInterface)))
+    {
+      paramRecentBaseData.mStatus = 6;
+      return false;
+    }
+    if ((paramRecentBaseData.getRecentUserType() == 0) && (((ListenTogetherManager)localObject).a(2, paramBaseQQAppInterface))) {
+      paramRecentBaseData.mStatus = 6;
+    }
     return false;
   }
   
@@ -44,7 +43,7 @@ public class ListenTogetherStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.statusIcon.ListenTogetherStatus
  * JD-Core Version:    0.7.0.1
  */

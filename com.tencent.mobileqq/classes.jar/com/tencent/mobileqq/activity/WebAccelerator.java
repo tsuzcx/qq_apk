@@ -6,12 +6,10 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import com.jakewharton.disklrucache.DiskLruCache;
 import com.jakewharton.disklrucache.DiskLruCache.Editor;
-import com.jakewharton.disklrucache.DiskLruCache.Snapshot;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -28,21 +26,20 @@ import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
 import com.tencent.mobileqq.statistics.PushReportController;
 import com.tencent.mobileqq.statistics.PushReportController.PushReportItem;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.structmsg.CGILoader;
 import com.tencent.mobileqq.structmsg.StructMsgFactory;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.transfile.SosoSrvAddrProvider;
+import com.tencent.mobileqq.troop.soso.SosoSrvAddrProvider;
 import com.tencent.mobileqq.utils.Patterns;
-import com.tencent.mobileqq.webview.util.WebViewConstant;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.webview.swift.utils.BaseOpenWebMonitor;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.utils.Md5Utils;
 import com.tencent.util.URLUtil;
 import common.config.service.QzoneConfig;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.InetAddress;
 import java.net.URL;
@@ -87,58 +84,67 @@ public class WebAccelerator
     if (!jdField_a_of_type_Boolean) {
       return;
     }
-    SosoSrvAddrProvider.getInstance().init();
+    SosoSrvAddrProvider.a().b();
     String str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.aio_gifplay.name());
-    if (QLog.isColorLevel()) {
-      QLog.d("WebAccelerator", 2, "DPC:" + str);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("DPC:");
+      ((StringBuilder)localObject).append(str);
+      QLog.d("WebAccelerator", 2, ((StringBuilder)localObject).toString());
     }
-    String[] arrayOfString;
     if (!TextUtils.isEmpty(str))
     {
-      arrayOfString = str.split("\\|");
-      if (arrayOfString.length <= 5) {}
+      localObject = str.split("\\|");
+      if (localObject.length <= 5) {}
     }
-    for (;;)
+    try
     {
-      try
-      {
-        this.d = Integer.parseInt(arrayOfString[4]);
-        this.jdField_a_of_type_Long = (Integer.parseInt(arrayOfString[5]) * 1000 * 60 * 60);
-        if (arrayOfString.length > 6) {
-          this.jdField_c_of_type_Int = Integer.parseInt(arrayOfString[6]);
-        }
-        if (this.jdField_c_of_type_Int > 30) {
-          this.jdField_c_of_type_Int = 10;
-        }
-        i = 1;
-        if ((i == 0) && (QLog.isColorLevel())) {
-          QLog.d("WebAccelerator", 2, "DPC not catch success[" + str + "]");
-        }
-        this.jdField_a_of_type_JavaUtilSet = new HashSet();
-        this.jdField_a_of_type_JavaUtilMap = new HashMap();
-        try
-        {
-          this.jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache = DiskLruCache.open(((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getApp().getCacheDir(), 1, 1, 1048576L);
-          return;
-        }
-        catch (Exception localException1)
-        {
-          this.jdField_c_of_type_Boolean = false;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("WebAccelerator", 2, "WebAccelerator init fail");
-        return;
+      this.d = Integer.parseInt(localObject[4]);
+      this.jdField_a_of_type_Long = (Integer.parseInt(localObject[5]) * 1000 * 60 * 60);
+      if (localObject.length > 6) {
+        this.jdField_c_of_type_Int = Integer.parseInt(localObject[6]);
       }
-      catch (Exception localException2)
-      {
-        this.jdField_c_of_type_Boolean = false;
-        if (QLog.isColorLevel()) {
-          QLog.d("WebAccelerator", 2, "WebAccelerator init fail");
-        }
+      if (this.jdField_c_of_type_Int > 30) {
+        this.jdField_c_of_type_Int = 10;
       }
-      int i = 0;
+      i = 1;
+    }
+    catch (Exception localException2)
+    {
+      int i;
+      label214:
+      break label214;
+    }
+    this.jdField_c_of_type_Boolean = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("WebAccelerator", 2, "WebAccelerator init fail");
+    }
+    i = 0;
+    if ((i == 0) && (QLog.isColorLevel()))
+    {
+      localObject = AIOUtils.a();
+      ((StringBuilder)localObject).append("DPC not catch success[");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("]");
+      QLog.d("WebAccelerator", 2, ((StringBuilder)localObject).toString());
+    }
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    try
+    {
+      this.jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache = DiskLruCache.open(((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getApp().getCacheDir(), 1, 1, 1048576L);
+      return;
+    }
+    catch (Exception localException1)
+    {
+      label330:
+      break label330;
+    }
+    this.jdField_c_of_type_Boolean = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("WebAccelerator", 2, "WebAccelerator init fail");
     }
   }
   
@@ -178,9 +184,25 @@ public class WebAccelerator
     localIntent.addCategory("android.intent.category.DEFAULT");
     localIntent.addFlags(268435456);
     localIntent.setPackage("com.tencent.mobileqq");
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mqqzone://arouse/qqexplaunchlive").append("?ec_title=" + paramString1).append("&ec_room_init_type=" + paramInt1).append("&ec_room_from_type=" + paramInt2).append("&ec_room_owner_id = " + paramString2);
-    localIntent.setData(Uri.parse(localStringBuilder.toString()));
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("mqqzone://arouse/qqexplaunchlive");
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("?ec_title=");
+    localStringBuilder2.append(paramString1);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    paramString1 = new StringBuilder();
+    paramString1.append("&ec_room_init_type=");
+    paramString1.append(paramInt1);
+    localStringBuilder1.append(paramString1.toString());
+    paramString1 = new StringBuilder();
+    paramString1.append("&ec_room_from_type=");
+    paramString1.append(paramInt2);
+    localStringBuilder1.append(paramString1.toString());
+    paramString1 = new StringBuilder();
+    paramString1.append("&ec_room_owner_id = ");
+    paramString1.append(paramString2);
+    localStringBuilder1.append(paramString1.toString());
+    localIntent.setData(Uri.parse(localStringBuilder1.toString()));
     paramContext.startActivity(localIntent);
   }
   
@@ -190,18 +212,39 @@ public class WebAccelerator
     localIntent.addCategory("android.intent.category.DEFAULT");
     localIntent.addFlags(268435456);
     localIntent.setPackage("com.tencent.mobileqq");
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mqqzone://arouse/qqexplivevideo").append("?ec_title=" + paramString3).append("&ec_room_id=" + paramString1).append("&ec_content=" + paramString4).append("&ec_room_init_type=3").append("&ec_room_from_type=" + paramInt).append("&ec_room_owner_id=" + paramString2);
-    localIntent.setData(Uri.parse(localStringBuilder.toString()));
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("mqqzone://arouse/qqexplivevideo");
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("?ec_title=");
+    localStringBuilder2.append(paramString3);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    paramString3 = new StringBuilder();
+    paramString3.append("&ec_room_id=");
+    paramString3.append(paramString1);
+    localStringBuilder1.append(paramString3.toString());
+    paramString1 = new StringBuilder();
+    paramString1.append("&ec_content=");
+    paramString1.append(paramString4);
+    localStringBuilder1.append(paramString1.toString());
+    localStringBuilder1.append("&ec_room_init_type=3");
+    paramString1 = new StringBuilder();
+    paramString1.append("&ec_room_from_type=");
+    paramString1.append(paramInt);
+    localStringBuilder1.append(paramString1.toString());
+    paramString1 = new StringBuilder();
+    paramString1.append("&ec_room_owner_id=");
+    paramString1.append(paramString2);
+    localStringBuilder1.append(paramString1.toString());
+    localIntent.setData(Uri.parse(localStringBuilder1.toString()));
     paramContext.startActivity(localIntent);
   }
   
   private final boolean a()
   {
-    boolean bool = false;
     try
     {
       Object localObject1 = a();
+      boolean bool = false;
       int j = ((SharedPreferences)localObject1).getInt("bankSize", 0);
       int i = j;
       if (j < this.jdField_b_of_type_Int)
@@ -212,8 +255,14 @@ public class WebAccelerator
         ((SharedPreferences.Editor)localObject1).commit();
         bool = true;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("WebAccelerator", 2, "shouldUseAccelerator:" + bool + "   " + i);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = AIOUtils.a();
+        ((StringBuilder)localObject1).append("shouldUseAccelerator:");
+        ((StringBuilder)localObject1).append(bool);
+        ((StringBuilder)localObject1).append("   ");
+        ((StringBuilder)localObject1).append(i);
+        QLog.d("WebAccelerator", 2, ((StringBuilder)localObject1).toString());
       }
       return bool;
     }
@@ -227,19 +276,25 @@ public class WebAccelerator
   
   public static boolean a(Context paramContext)
   {
+    boolean bool = false;
     if (paramContext == null) {
       return false;
     }
     paramContext = (WVSecurityConfBean)QConfigManager.a().a(158);
-    if (paramContext != null) {}
-    for (int i = paramContext.jdField_a_of_type_Int;; i = 0)
-    {
-      QLog.d("WebAccelerator", 1, "hasUrlSsoCheckSwitchOn isSSOCheckValidate = " + i);
-      if (i != 1) {
-        break;
-      }
-      return true;
+    int i;
+    if (paramContext != null) {
+      i = paramContext.jdField_a_of_type_Int;
+    } else {
+      i = 0;
     }
+    paramContext = new StringBuilder();
+    paramContext.append("hasUrlSsoCheckSwitchOn isSSOCheckValidate = ");
+    paramContext.append(i);
+    QLog.d("WebAccelerator", 1, paramContext.toString());
+    if (i == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean a(Context paramContext, String paramString, Intent paramIntent)
@@ -248,88 +303,77 @@ public class WebAccelerator
     Intent localIntent = new Intent("android.intent.action.VIEW");
     localIntent.addCategory("android.intent.category.DEFAULT");
     localIntent.setPackage("com.tencent.mobileqq");
-    StringBuilder localStringBuilder = new StringBuilder();
-    if ((paramString != null) && (paramString.contains(str1))) {
-      try
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    if ((paramString != null) && (paramString.contains(str1))) {}
+    try
+    {
+      Object localObject = Uri.parse(paramString);
+      paramString = ((Uri)localObject).getQueryParameter("hostuin");
+      str1 = ((Uri)localObject).getQueryParameter("roomid");
+      String str2 = ((Uri)localObject).getQueryParameter("feedid");
+      localObject = ((Uri)localObject).getQueryParameter("roomstatus");
+      if (!c(str1))
       {
-        Object localObject = Uri.parse(paramString);
-        paramString = ((Uri)localObject).getQueryParameter("hostuin");
-        str1 = ((Uri)localObject).getQueryParameter("roomid");
-        String str2 = ((Uri)localObject).getQueryParameter("feedid");
-        localObject = ((Uri)localObject).getQueryParameter("roomstatus");
-        if (!d(str1))
-        {
-          QLog.d("WebAccelerator", 2, "room_id not number!");
-          return false;
-        }
-        localStringBuilder.append("mqqzone://arouse/qqexplivevideo").append("?ec_room_id=" + str1).append("&ec_room_owner_id=" + paramString).append("&ec_room_from_type2").append("&ec_room_init_type=3");
-        localIntent.setData(Uri.parse(localStringBuilder.toString()));
-        paramContext.startActivity(localIntent);
-        paramContext = new PushReportController.PushReportItem();
-        paramContext.d = "kuolie_party";
-        paramContext.e = "party_clk";
-        paramContext.h = str2;
-        paramContext.i = str1;
-        paramContext.j = paramIntent.getStringExtra("title");
-        paramContext.l = ((String)localObject);
-        paramContext.m = paramString;
-        paramContext.n = paramIntent.getStringExtra("friendUin");
-        paramContext.o = "4";
-        PushReportController.a(null, paramContext);
-        return true;
+        QLog.d("WebAccelerator", 2, "room_id not number!");
+        return false;
       }
-      catch (Exception paramContext)
-      {
-        QLog.d("WebAccelerator", 1, "getQzoneVideoIntent parse url error!");
-      }
+      localStringBuilder1.append("mqqzone://arouse/qqexplivevideo");
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("?ec_room_id=");
+      localStringBuilder2.append(str1);
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("&ec_room_owner_id=");
+      localStringBuilder2.append(paramString);
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder1.append("&ec_room_from_type2");
+      localStringBuilder1.append("&ec_room_init_type=3");
+      localIntent.setData(Uri.parse(localStringBuilder1.toString()));
+      paramContext.startActivity(localIntent);
+      paramContext = new PushReportController.PushReportItem();
+      paramContext.d = "kuolie_party";
+      paramContext.e = "party_clk";
+      paramContext.h = str2;
+      paramContext.i = str1;
+      paramContext.j = paramIntent.getStringExtra("title");
+      paramContext.l = ((String)localObject);
+      paramContext.m = paramString;
+      paramContext.n = paramIntent.getStringExtra("friendUin");
+      paramContext.o = "4";
+      PushReportController.a(null, paramContext);
+      return true;
     }
+    catch (Exception paramContext)
+    {
+      label327:
+      break label327;
+    }
+    QLog.d("WebAccelerator", 1, "getQzoneVideoIntent parse url error!");
     return false;
   }
   
   public static boolean a(ChatMessage paramChatMessage)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
     if (!paramChatMessage.isSend())
     {
-      if (!(paramChatMessage instanceof MessageForStructing)) {
-        break label54;
+      if ((paramChatMessage instanceof MessageForStructing))
+      {
+        AbsStructMsg localAbsStructMsg2 = ((MessageForStructing)paramChatMessage).structingMsg;
+        AbsStructMsg localAbsStructMsg1 = localAbsStructMsg2;
+        if (localAbsStructMsg2 == null) {
+          localAbsStructMsg1 = StructMsgFactory.a(paramChatMessage.msgData);
+        }
+        return a(localAbsStructMsg1);
       }
-      AbsStructMsg localAbsStructMsg2 = ((MessageForStructing)paramChatMessage).structingMsg;
-      AbsStructMsg localAbsStructMsg1 = localAbsStructMsg2;
-      if (localAbsStructMsg2 == null) {
-        localAbsStructMsg1 = StructMsgFactory.a(paramChatMessage.msgData);
-      }
-      if (!a(localAbsStructMsg1)) {
-        break label106;
-      }
-      bool1 = true;
-    }
-    for (;;)
-    {
-      return bool1;
-      label54:
-      bool1 = bool2;
       if ((paramChatMessage instanceof MessageForText))
       {
         paramChatMessage = (MessageForText)paramChatMessage;
-        bool1 = bool2;
-        if (paramChatMessage.msg != null)
-        {
-          bool1 = bool2;
-          if (!paramChatMessage.msg.equals(""))
-          {
-            bool1 = bool2;
-            if (c(paramChatMessage.msg) != null)
-            {
-              return true;
-              label106:
-              bool1 = false;
-            }
-          }
+        if ((paramChatMessage.msg != null) && (!paramChatMessage.msg.equals("")) && (c(paramChatMessage.msg) != null)) {
+          return true;
         }
       }
     }
+    return false;
   }
   
   public static final boolean a(AbsStructMsg paramAbsStructMsg)
@@ -339,14 +383,16 @@ public class WebAccelerator
   
   public static String c(@NonNull String paramString)
   {
-    if (!paramString.contains("http")) {}
-    Matcher localMatcher;
-    do
-    {
+    boolean bool = paramString.contains("http");
+    String str = null;
+    if (!bool) {
       return null;
-      localMatcher = jdField_a_of_type_JavaUtilRegexPattern.matcher(paramString);
-    } while (!localMatcher.find());
-    return paramString.substring(localMatcher.start(), localMatcher.end());
+    }
+    Matcher localMatcher = jdField_a_of_type_JavaUtilRegexPattern.matcher(paramString);
+    if (localMatcher.find()) {
+      str = paramString.substring(localMatcher.start(), localMatcher.end());
+    }
+    return str;
   }
   
   private static boolean c(Context paramContext, String paramString, Intent paramIntent)
@@ -357,494 +403,419 @@ public class WebAccelerator
     }
     Object localObject2 = QzoneConfig.getInstance().getConfig("QZVideo", "qzonelivevideo_livehost", "h5.qzone.qq.com/live/video/qzone/");
     int i = QzoneConfig.getInstance().getConfig("QZVideo", "module_jump_native", 1);
-    Object localObject3 = QzoneConfig.getInstance().getConfig("Plato", "PlatoShareUrlPrefix", "plato.tswjs.org/share");
+    localObject1 = QzoneConfig.getInstance().getConfig("Plato", "PlatoShareUrlPrefix", "plato.tswjs.org/share");
     int j = QzoneConfig.getInstance().getConfig("Plato", "qzoneplato_jump_native", 1);
-    localObject1 = new Intent("android.intent.action.VIEW");
-    ((Intent)localObject1).addCategory("android.intent.category.DEFAULT");
-    ((Intent)localObject1).setPackage("com.tencent.mobileqq");
+    Intent localIntent = new Intent("android.intent.action.VIEW");
+    localIntent.addCategory("android.intent.category.DEFAULT");
+    localIntent.setPackage("com.tencent.mobileqq");
     StringBuilder localStringBuilder = new StringBuilder();
-    if ((paramString != null) && (paramString.contains((CharSequence)localObject2)))
+    if ((paramString != null) && (paramString.contains((CharSequence)localObject2))) {}
+    try
     {
-      try
-      {
-        localObject3 = Uri.parse(paramString);
-        String str = ((Uri)localObject3).getQueryParameter("stayin");
-        if ((i != 1) || ((str != null) && (TextUtils.equals(str, "1"))))
-        {
-          QLog.d("WebAccelerator", 1, "is_native not available, jump to H5, " + paramString);
-          paramString = new Intent(paramContext, QQBrowserActivity.class);
-          paramString.putExtra("url", ((Uri)localObject3).toString());
-          paramString.setData((Uri)localObject3);
-          paramContext.startActivity(paramString);
-          return true;
-        }
-        localObject3 = paramIntent.getStringExtra("self_uin");
-        i = paramString.lastIndexOf((String)localObject2);
-        localObject2 = paramString.substring(localObject2.length() + i, paramString.length()).split("/")[0];
-        if ((localObject3 == null) || (localObject2 == null) || (TextUtils.isEmpty((CharSequence)localObject3)) || (TextUtils.isEmpty((CharSequence)localObject2))) {
-          break label735;
-        }
-        if (!d((String)localObject2))
-        {
-          QLog.d("WebAccelerator", 2, "room_id not number!");
-          return false;
-        }
-        localObject2 = localStringBuilder.append("mqqzone://arouse/livevideo").append("?room=" + (String)localObject2).append("&uin=" + (String)localObject3).append("&video_play_source=12").append("&backup=" + URLEncoder.encode(paramString));
-        localObject3 = new StringBuilder().append("&isEcLive=");
-        if (paramIntent.getBooleanExtra("isEcLive", false)) {}
-        for (paramString = "1";; paramString = "0")
-        {
-          ((StringBuilder)localObject2).append(paramString);
-          ((Intent)localObject1).setData(Uri.parse(localStringBuilder.toString()));
-          paramContext.startActivity((Intent)localObject1);
-          return true;
-        }
-        if (TextUtils.isEmpty(paramString)) {
-          break label733;
-        }
+      localObject3 = Uri.parse(paramString);
+      Object localObject4 = ((Uri)localObject3).getQueryParameter("stayin");
+      if (i != 1) {
+        break label492;
       }
-      catch (Exception paramContext)
-      {
-        QLog.d("WebAccelerator", 1, "getQzoneVideoIntent parse url error!");
+      localObject1 = "1";
+      if ((localObject4 != null) && (TextUtils.equals((CharSequence)localObject4, "1"))) {
+        break label492;
+      }
+      localObject3 = paramIntent.getStringExtra("self_uin");
+      localObject2 = paramString.substring(paramString.lastIndexOf(localObject2) + localObject2.length(), paramString.length()).split("/")[0];
+      if ((localObject3 == null) || (localObject2 == null) || (TextUtils.isEmpty((CharSequence)localObject3))) {
+        break label490;
+      }
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
         return false;
       }
+      if (!c((String)localObject2))
+      {
+        QLog.d("WebAccelerator", 2, "room_id not number!");
+        return false;
+      }
+      localStringBuilder.append("mqqzone://arouse/livevideo");
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("?room=");
+      ((StringBuilder)localObject4).append((String)localObject2);
+      localStringBuilder.append(((StringBuilder)localObject4).toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("&uin=");
+      ((StringBuilder)localObject2).append((String)localObject3);
+      localStringBuilder.append(((StringBuilder)localObject2).toString());
+      localStringBuilder.append("&video_play_source=12");
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("&backup=");
+      ((StringBuilder)localObject2).append(URLEncoder.encode(paramString));
+      localStringBuilder.append(((StringBuilder)localObject2).toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("&isEcLive=");
+      if (!paramIntent.getBooleanExtra("isEcLive", false)) {
+        break label823;
+      }
+      paramString = (String)localObject1;
     }
-    else if (paramString.contains((CharSequence)localObject3))
+    catch (Exception paramContext)
     {
+      for (;;)
+      {
+        Object localObject3;
+        continue;
+        paramString = "0";
+      }
+    }
+    ((StringBuilder)localObject2).append(paramString);
+    localStringBuilder.append(((StringBuilder)localObject2).toString());
+    localIntent.setData(Uri.parse(localStringBuilder.toString()));
+    paramContext.startActivity(localIntent);
+    return true;
+    label490:
+    return false;
+    label492:
+    paramIntent = new StringBuilder();
+    paramIntent.append("is_native not available, jump to H5, ");
+    paramIntent.append(paramString);
+    QLog.d("WebAccelerator", 1, paramIntent.toString());
+    paramString = new Intent(paramContext, QQBrowserActivity.class);
+    paramString.putExtra("url", ((Uri)localObject3).toString());
+    paramString.setData((Uri)localObject3);
+    paramContext.startActivity(paramString);
+    return true;
+    QLog.d("WebAccelerator", 1, "getQzoneVideoIntent parse url error!");
+    return false;
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.contains((CharSequence)localObject1))) {
       if (j != 1) {
         return false;
       }
-      try
-      {
-        paramIntent = URLUtil.b(paramString.substring(paramString.lastIndexOf((String)localObject3) + ((String)localObject3).length() + 1));
-        localStringBuilder.append("mqqzone://arouse/plato").append("?id=" + URLEncoder.encode((String)paramIntent.get("id")));
-        if (!TextUtils.isEmpty((CharSequence)paramIntent.get("data"))) {
-          localStringBuilder.append("&data=" + URLEncoder.encode((String)paramIntent.get("data")));
-        }
-        localStringBuilder.append("&url=" + URLEncoder.encode(paramString));
-        ((Intent)localObject1).setData(Uri.parse(localStringBuilder.toString()));
-        paramContext.startActivity((Intent)localObject1);
-        return true;
-      }
-      catch (Exception paramContext)
-      {
-        QLog.d("WebAccelerator", 1, "arouse plato  parse url error!");
-        return false;
-      }
     }
-    label733:
-    return false;
-    label735:
-    return false;
-  }
-  
-  public static final boolean c(String paramString)
-  {
-    return (paramString.startsWith("https://url.cn/")) || (paramString.startsWith("http%3A%2F%2Furl.cn%2F"));
-  }
-  
-  private final String d(String paramString)
-  {
-    String str2 = "";
-    String str1 = str2;
     try
     {
-      HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(paramString).openConnection();
-      str1 = str2;
-      localHttpURLConnection.setInstanceFollowRedirects(false);
-      str1 = str2;
-      localHttpURLConnection.connect();
-      str1 = str2;
-      paramString = localHttpURLConnection.getHeaderField("Location");
-      str1 = paramString;
-      QLog.d("WebAccelerator", 2, "code:" + localHttpURLConnection.getResponseCode());
-    }
-    catch (Exception localException)
-    {
-      do
+      paramIntent = URLUtil.b(paramString.substring(paramString.lastIndexOf((String)localObject1) + ((String)localObject1).length() + 1));
+      localStringBuilder.append("mqqzone://arouse/plato");
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("?id=");
+      ((StringBuilder)localObject1).append(URLEncoder.encode((String)paramIntent.get("id")));
+      localStringBuilder.append(((StringBuilder)localObject1).toString());
+      if (!TextUtils.isEmpty((CharSequence)paramIntent.get("data")))
       {
-        paramString = str1;
-      } while (!QLog.isColorLevel());
-      QLog.e("WebAccelerator", 2, "doRedirect", localException);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("&data=");
+        ((StringBuilder)localObject1).append(URLEncoder.encode((String)paramIntent.get("data")));
+        localStringBuilder.append(((StringBuilder)localObject1).toString());
+      }
+      paramIntent = new StringBuilder();
+      paramIntent.append("&url=");
+      paramIntent.append(URLEncoder.encode(paramString));
+      localStringBuilder.append(paramIntent.toString());
+      localIntent.setData(Uri.parse(localStringBuilder.toString()));
+      paramContext.startActivity(localIntent);
+      return true;
     }
-    return paramString;
-    return str1;
+    catch (Exception paramContext)
+    {
+      label804:
+      break label804;
+    }
+    QLog.d("WebAccelerator", 1, "arouse plato  parse url error!");
+    return false;
   }
   
-  public static boolean d(String paramString)
+  public static boolean c(String paramString)
   {
     return Pattern.compile("[0-9]*").matcher(paramString).matches();
   }
   
-  /* Error */
+  private final String d(String paramString)
+  {
+    Object localObject2 = "";
+    Object localObject1 = localObject2;
+    try
+    {
+      HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(paramString).openConnection();
+      localObject1 = localObject2;
+      localHttpURLConnection.setInstanceFollowRedirects(false);
+      localObject1 = localObject2;
+      localHttpURLConnection.connect();
+      localObject1 = localObject2;
+      paramString = localHttpURLConnection.getHeaderField("Location");
+      localObject1 = paramString;
+      localObject2 = new StringBuilder();
+      localObject1 = paramString;
+      ((StringBuilder)localObject2).append("code:");
+      localObject1 = paramString;
+      ((StringBuilder)localObject2).append(localHttpURLConnection.getResponseCode());
+      localObject1 = paramString;
+      QLog.d("WebAccelerator", 2, ((StringBuilder)localObject2).toString());
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("WebAccelerator", 2, "doRedirect", paramString);
+      }
+    }
+    return localObject1;
+  }
+  
   public final SharedPreferences a()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: invokestatic 663	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   5: ldc 109
-    //   7: iconst_0
-    //   8: invokevirtual 667	com/tencent/common/app/BaseApplicationImpl:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   11: astore 5
-    //   13: aload 5
-    //   15: ldc_w 669
-    //   18: lconst_0
-    //   19: invokeinterface 673 4 0
-    //   24: lstore_3
-    //   25: lload_3
-    //   26: lconst_0
-    //   27: lcmp
-    //   28: ifne +39 -> 67
-    //   31: aload 5
-    //   33: invokeinterface 315 1 0
-    //   38: astore 6
-    //   40: aload 6
-    //   42: ldc_w 669
-    //   45: invokestatic 679	java/lang/System:currentTimeMillis	()J
-    //   48: invokeinterface 683 4 0
-    //   53: pop
-    //   54: aload 6
-    //   56: invokeinterface 324 1 0
-    //   61: pop
-    //   62: aload_0
-    //   63: monitorexit
-    //   64: aload 5
-    //   66: areturn
-    //   67: invokestatic 679	java/lang/System:currentTimeMillis	()J
-    //   70: lload_3
-    //   71: lsub
-    //   72: ldc2_w 60
-    //   75: lcmp
-    //   76: ifle -14 -> 62
-    //   79: invokestatic 107	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   82: ifeq +12 -> 94
-    //   85: ldc 109
-    //   87: iconst_2
-    //   88: ldc_w 685
-    //   91: invokestatic 124	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   94: aload 5
-    //   96: invokeinterface 315 1 0
-    //   101: astore 6
-    //   103: aload 6
-    //   105: ldc_w 669
-    //   108: invokestatic 679	java/lang/System:currentTimeMillis	()J
-    //   111: invokeinterface 683 4 0
-    //   116: pop
-    //   117: aload 6
-    //   119: ldc_w 305
-    //   122: iconst_0
-    //   123: invokeinterface 321 3 0
-    //   128: pop
-    //   129: aload 6
-    //   131: ldc_w 687
-    //   134: iconst_0
-    //   135: invokeinterface 321 3 0
-    //   140: pop
-    //   141: aload_0
-    //   142: getfield 69	com/tencent/mobileqq/activity/WebAccelerator:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   145: invokeinterface 690 1 0
-    //   150: aload 5
-    //   152: ldc_w 692
-    //   155: iconst_0
-    //   156: invokeinterface 311 3 0
-    //   161: istore_1
-    //   162: aload 6
-    //   164: ldc_w 692
-    //   167: iconst_0
-    //   168: invokeinterface 321 3 0
-    //   173: pop
-    //   174: aload 5
-    //   176: ldc_w 694
-    //   179: iconst_0
-    //   180: invokeinterface 311 3 0
-    //   185: istore_2
-    //   186: aload 6
-    //   188: ldc_w 694
-    //   191: iconst_0
-    //   192: invokeinterface 321 3 0
-    //   197: pop
-    //   198: iload_1
-    //   199: ifgt +7 -> 206
-    //   202: iload_2
-    //   203: ifle +93 -> 296
-    //   206: new 158	java/util/HashMap
-    //   209: dup
-    //   210: iconst_4
-    //   211: invokespecial 697	java/util/HashMap:<init>	(I)V
-    //   214: astore 7
-    //   216: aload 7
-    //   218: ldc_w 699
-    //   221: new 111	java/lang/StringBuilder
-    //   224: dup
-    //   225: invokespecial 112	java/lang/StringBuilder:<init>	()V
-    //   228: iload_1
-    //   229: invokevirtual 275	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   232: ldc_w 465
-    //   235: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   238: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   241: invokevirtual 703	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   244: pop
-    //   245: aload 7
-    //   247: ldc_w 705
-    //   250: new 111	java/lang/StringBuilder
-    //   253: dup
-    //   254: invokespecial 112	java/lang/StringBuilder:<init>	()V
-    //   257: iload_2
-    //   258: invokevirtual 275	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   261: ldc_w 465
-    //   264: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   267: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   270: invokevirtual 703	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   273: pop
-    //   274: invokestatic 711	com/tencent/mobileqq/mqsafeedit/BaseApplication:getContext	()Landroid/content/Context;
-    //   277: invokestatic 716	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
-    //   280: aconst_null
-    //   281: ldc_w 718
-    //   284: iconst_0
-    //   285: lconst_0
-    //   286: lconst_0
-    //   287: aload 7
-    //   289: ldc_w 465
-    //   292: iconst_0
-    //   293: invokevirtual 722	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
-    //   296: aload 5
-    //   298: ldc_w 724
-    //   301: iconst_0
-    //   302: invokeinterface 311 3 0
-    //   307: istore_1
-    //   308: aload 6
-    //   310: ldc_w 724
-    //   313: iconst_0
-    //   314: invokeinterface 321 3 0
-    //   319: pop
-    //   320: aload 5
-    //   322: ldc_w 726
-    //   325: iconst_0
-    //   326: invokeinterface 311 3 0
-    //   331: istore_2
-    //   332: aload 6
-    //   334: ldc_w 726
-    //   337: iconst_0
-    //   338: invokeinterface 321 3 0
-    //   343: pop
-    //   344: iload_1
-    //   345: ifgt +7 -> 352
-    //   348: iload_2
-    //   349: ifle +93 -> 442
-    //   352: new 158	java/util/HashMap
-    //   355: dup
-    //   356: iconst_4
-    //   357: invokespecial 697	java/util/HashMap:<init>	(I)V
-    //   360: astore 7
-    //   362: aload 7
-    //   364: ldc_w 699
-    //   367: new 111	java/lang/StringBuilder
-    //   370: dup
-    //   371: invokespecial 112	java/lang/StringBuilder:<init>	()V
-    //   374: iload_1
-    //   375: invokevirtual 275	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   378: ldc_w 465
-    //   381: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   384: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   387: invokevirtual 703	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   390: pop
-    //   391: aload 7
-    //   393: ldc_w 705
-    //   396: new 111	java/lang/StringBuilder
-    //   399: dup
-    //   400: invokespecial 112	java/lang/StringBuilder:<init>	()V
-    //   403: iload_2
-    //   404: invokevirtual 275	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   407: ldc_w 465
-    //   410: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   413: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   416: invokevirtual 703	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   419: pop
-    //   420: invokestatic 711	com/tencent/mobileqq/mqsafeedit/BaseApplication:getContext	()Landroid/content/Context;
-    //   423: invokestatic 716	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
-    //   426: aconst_null
-    //   427: ldc_w 728
-    //   430: iconst_0
-    //   431: lconst_0
-    //   432: lconst_0
-    //   433: aload 7
-    //   435: ldc_w 465
-    //   438: iconst_0
-    //   439: invokevirtual 722	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
-    //   442: aload 6
-    //   444: invokeinterface 324 1 0
-    //   449: pop
-    //   450: goto -388 -> 62
-    //   453: astore 5
-    //   455: aload_0
-    //   456: monitorexit
-    //   457: aload 5
-    //   459: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	460	0	this	WebAccelerator
-    //   161	214	1	i	int
-    //   185	219	2	j	int
-    //   24	47	3	l	long
-    //   11	310	5	localSharedPreferences	SharedPreferences
-    //   453	5	5	localObject	Object
-    //   38	405	6	localEditor	SharedPreferences.Editor
-    //   214	220	7	localHashMap	HashMap
-    // Exception table:
-    //   from	to	target	type
-    //   2	25	453	finally
-    //   31	62	453	finally
-    //   67	94	453	finally
-    //   94	198	453	finally
-    //   206	296	453	finally
-    //   296	344	453	finally
-    //   352	442	453	finally
-    //   442	450	453	finally
+    try
+    {
+      SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("WebAccelerator", 0);
+      long l = localSharedPreferences.getLong("updateTime", 0L);
+      SharedPreferences.Editor localEditor;
+      if (l == 0L)
+      {
+        localEditor = localSharedPreferences.edit();
+        localEditor.putLong("updateTime", System.currentTimeMillis());
+        localEditor.commit();
+      }
+      else if (System.currentTimeMillis() - l > 86400000L)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("WebAccelerator", 2, "get circle,clean data and report");
+        }
+        localEditor = localSharedPreferences.edit();
+        localEditor.putLong("updateTime", System.currentTimeMillis());
+        localEditor.putInt("bankSize", 0);
+        localEditor.putInt("bank_download_key", 0);
+        this.jdField_a_of_type_JavaUtilMap.clear();
+        int i = localSharedPreferences.getInt("load_shortLink", 0);
+        localEditor.putInt("load_shortLink", 0);
+        int j = localSharedPreferences.getInt("hit_shortLink", 0);
+        localEditor.putInt("hit_shortLink", 0);
+        HashMap localHashMap;
+        StringBuilder localStringBuilder;
+        if ((i > 0) || (j > 0))
+        {
+          localHashMap = new HashMap(4);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(i);
+          localStringBuilder.append("");
+          localHashMap.put("load_time", localStringBuilder.toString());
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(j);
+          localStringBuilder.append("");
+          localHashMap.put("hit_time", localStringBuilder.toString());
+          StatisticCollector.getInstance(com.tencent.mobileqq.mqsafeedit.BaseApplication.getContext()).collectPerformance(null, "AIOWebShortLink", false, 0L, 0L, localHashMap, "", false);
+        }
+        i = localSharedPreferences.getInt("load_safeCheck", 0);
+        localEditor.putInt("load_safeCheck", 0);
+        j = localSharedPreferences.getInt("hit_safeCheck", 0);
+        localEditor.putInt("hit_safeCheck", 0);
+        if ((i > 0) || (j > 0))
+        {
+          localHashMap = new HashMap(4);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(i);
+          localStringBuilder.append("");
+          localHashMap.put("load_time", localStringBuilder.toString());
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(j);
+          localStringBuilder.append("");
+          localHashMap.put("hit_time", localStringBuilder.toString());
+          StatisticCollector.getInstance(com.tencent.mobileqq.mqsafeedit.BaseApplication.getContext()).collectPerformance(null, "AIOWebSafeCheck", false, 0L, 0L, localHashMap, "", false);
+        }
+        localEditor.commit();
+      }
+      return localSharedPreferences;
+    }
+    finally {}
   }
   
   /* Error */
   public final String a(String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: aconst_null
-    //   3: astore 5
-    //   5: aconst_null
-    //   6: astore 6
-    //   8: aconst_null
-    //   9: astore 4
-    //   11: aload_1
-    //   12: ifnull +13 -> 25
-    //   15: aload_1
-    //   16: ldc_w 465
-    //   19: invokevirtual 469	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   22: ifeq +7 -> 29
-    //   25: aload_1
-    //   26: astore_2
-    //   27: aload_2
-    //   28: areturn
-    //   29: aload 4
-    //   31: astore_2
-    //   32: aload_0
-    //   33: getfield 65	com/tencent/mobileqq/activity/WebAccelerator:jdField_c_of_type_Boolean	Z
-    //   36: ifeq -9 -> 27
-    //   39: aload 4
-    //   41: astore_2
-    //   42: getstatic 41	com/tencent/mobileqq/activity/WebAccelerator:jdField_a_of_type_Boolean	Z
-    //   45: ifeq -18 -> 27
-    //   48: aload_1
-    //   49: invokestatic 735	com/tencent/smtt/utils/Md5Utils:getMD5	(Ljava/lang/String;)Ljava/lang/String;
-    //   52: astore_2
-    //   53: aload_0
-    //   54: getfield 67	com/tencent/mobileqq/activity/WebAccelerator:jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache	Lcom/jakewharton/disklrucache/DiskLruCache;
-    //   57: aload_2
-    //   58: invokevirtual 738	com/jakewharton/disklrucache/DiskLruCache:get	(Ljava/lang/String;)Lcom/jakewharton/disklrucache/DiskLruCache$Snapshot;
-    //   61: astore 4
-    //   63: aload 4
-    //   65: ifnull +17 -> 82
-    //   68: aload 4
-    //   70: astore_2
-    //   71: aload 6
-    //   73: astore 5
-    //   75: aload 4
-    //   77: iconst_0
-    //   78: invokevirtual 743	com/jakewharton/disklrucache/DiskLruCache$Snapshot:getString	(I)Ljava/lang/String;
-    //   81: astore_3
-    //   82: aload 4
-    //   84: astore_2
-    //   85: aload_3
-    //   86: astore 5
-    //   88: invokestatic 107	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   91: ifeq +41 -> 132
-    //   94: aload 4
-    //   96: astore_2
-    //   97: aload_3
-    //   98: astore 5
-    //   100: ldc 109
-    //   102: iconst_2
-    //   103: invokestatic 149	com/tencent/mobileqq/activity/aio/AIOUtils:a	()Ljava/lang/StringBuilder;
-    //   106: ldc_w 745
-    //   109: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   112: aload_1
-    //   113: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   116: ldc_w 331
-    //   119: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   122: aload_3
-    //   123: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   126: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   129: invokestatic 124	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   0: aload_1
+    //   1: ifnull +281 -> 282
+    //   4: aload_1
+    //   5: ldc_w 464
+    //   8: invokevirtual 468	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   11: ifeq +5 -> 16
+    //   14: aload_1
+    //   15: areturn
+    //   16: aload_0
+    //   17: getfield 65	com/tencent/mobileqq/activity/WebAccelerator:jdField_c_of_type_Boolean	Z
+    //   20: istore_2
+    //   21: aconst_null
+    //   22: astore 6
+    //   24: aconst_null
+    //   25: astore_3
+    //   26: aconst_null
+    //   27: astore 5
+    //   29: iload_2
+    //   30: ifeq +250 -> 280
+    //   33: getstatic 41	com/tencent/mobileqq/activity/WebAccelerator:jdField_a_of_type_Boolean	Z
+    //   36: ifne +5 -> 41
+    //   39: aconst_null
+    //   40: areturn
+    //   41: aload_1
+    //   42: invokestatic 730	com/tencent/smtt/utils/Md5Utils:getMD5	(Ljava/lang/String;)Ljava/lang/String;
+    //   45: astore 4
+    //   47: aload_0
+    //   48: getfield 67	com/tencent/mobileqq/activity/WebAccelerator:jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache	Lcom/jakewharton/disklrucache/DiskLruCache;
+    //   51: aload 4
+    //   53: invokevirtual 733	com/jakewharton/disklrucache/DiskLruCache:get	(Ljava/lang/String;)Lcom/jakewharton/disklrucache/DiskLruCache$Snapshot;
+    //   56: astore 4
+    //   58: aload 5
+    //   60: astore_3
+    //   61: aload 4
+    //   63: ifnull +14 -> 77
+    //   66: aload 4
+    //   68: astore 5
+    //   70: aload 4
+    //   72: iconst_0
+    //   73: invokevirtual 738	com/jakewharton/disklrucache/DiskLruCache$Snapshot:getString	(I)Ljava/lang/String;
+    //   76: astore_3
+    //   77: aload_3
+    //   78: astore 6
+    //   80: aload 4
+    //   82: astore 5
+    //   84: invokestatic 105	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   87: ifeq +93 -> 180
+    //   90: aload_3
+    //   91: astore 6
+    //   93: aload 4
+    //   95: astore 5
+    //   97: invokestatic 149	com/tencent/mobileqq/activity/aio/AIOUtils:a	()Ljava/lang/StringBuilder;
+    //   100: astore 7
+    //   102: aload_3
+    //   103: astore 6
+    //   105: aload 4
+    //   107: astore 5
+    //   109: aload 7
+    //   111: ldc_w 740
+    //   114: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   117: pop
+    //   118: aload_3
+    //   119: astore 6
+    //   121: aload 4
+    //   123: astore 5
+    //   125: aload 7
+    //   127: aload_1
+    //   128: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   131: pop
     //   132: aload_3
-    //   133: astore_2
-    //   134: aload 4
-    //   136: ifnull -109 -> 27
-    //   139: aload 4
-    //   141: invokevirtual 748	com/jakewharton/disklrucache/DiskLruCache$Snapshot:close	()V
-    //   144: aload_3
-    //   145: areturn
-    //   146: astore_3
-    //   147: aconst_null
-    //   148: astore 4
-    //   150: aload 5
-    //   152: astore_1
-    //   153: aload 4
-    //   155: astore_2
-    //   156: invokestatic 107	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   159: ifeq +16 -> 175
-    //   162: aload 4
-    //   164: astore_2
-    //   165: ldc 109
-    //   167: iconst_2
-    //   168: ldc_w 750
-    //   171: aload_3
-    //   172: invokestatic 652	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   175: aload_1
-    //   176: astore_2
-    //   177: aload 4
-    //   179: ifnull -152 -> 27
-    //   182: aload 4
-    //   184: invokevirtual 748	com/jakewharton/disklrucache/DiskLruCache$Snapshot:close	()V
-    //   187: aload_1
-    //   188: areturn
+    //   133: astore 6
+    //   135: aload 4
+    //   137: astore 5
+    //   139: aload 7
+    //   141: ldc_w 329
+    //   144: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   147: pop
+    //   148: aload_3
+    //   149: astore 6
+    //   151: aload 4
+    //   153: astore 5
+    //   155: aload 7
+    //   157: aload_3
+    //   158: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   161: pop
+    //   162: aload_3
+    //   163: astore 6
+    //   165: aload 4
+    //   167: astore 5
+    //   169: ldc 116
+    //   171: iconst_2
+    //   172: aload 7
+    //   174: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   177: invokestatic 122	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   180: aload_3
+    //   181: astore 5
+    //   183: aload 4
+    //   185: ifnull +79 -> 264
+    //   188: aload_3
     //   189: astore_1
-    //   190: aconst_null
-    //   191: astore_2
-    //   192: aload_2
-    //   193: ifnull +7 -> 200
-    //   196: aload_2
-    //   197: invokevirtual 748	com/jakewharton/disklrucache/DiskLruCache$Snapshot:close	()V
-    //   200: aload_1
-    //   201: athrow
-    //   202: astore_1
-    //   203: goto -11 -> 192
-    //   206: astore_3
+    //   190: aload 4
+    //   192: astore_3
+    //   193: aload_3
+    //   194: invokevirtual 743	com/jakewharton/disklrucache/DiskLruCache$Snapshot:close	()V
+    //   197: aload_1
+    //   198: areturn
+    //   199: astore 5
+    //   201: aload 4
+    //   203: astore_3
+    //   204: aload 6
+    //   206: astore_1
     //   207: aload 5
-    //   209: astore_1
-    //   210: goto -57 -> 153
+    //   209: astore 4
+    //   211: goto +20 -> 231
+    //   214: astore_1
+    //   215: aconst_null
+    //   216: astore 5
+    //   218: goto +50 -> 268
+    //   221: astore 4
+    //   223: aconst_null
+    //   224: astore 5
+    //   226: aload_3
+    //   227: astore_1
+    //   228: aload 5
+    //   230: astore_3
+    //   231: aload_3
+    //   232: astore 5
+    //   234: invokestatic 105	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   237: ifeq +17 -> 254
+    //   240: aload_3
+    //   241: astore 5
+    //   243: ldc 116
+    //   245: iconst_2
+    //   246: ldc_w 745
+    //   249: aload 4
+    //   251: invokestatic 652	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   254: aload_1
+    //   255: astore 5
+    //   257: aload_3
+    //   258: ifnull +6 -> 264
+    //   261: goto -68 -> 193
+    //   264: aload 5
+    //   266: areturn
+    //   267: astore_1
+    //   268: aload 5
+    //   270: ifnull +8 -> 278
+    //   273: aload 5
+    //   275: invokevirtual 743	com/jakewharton/disklrucache/DiskLruCache$Snapshot:close	()V
+    //   278: aload_1
+    //   279: athrow
+    //   280: aconst_null
+    //   281: areturn
+    //   282: aload_1
+    //   283: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	213	0	this	WebAccelerator
-    //   0	213	1	paramString	String
-    //   26	171	2	localObject1	Object
-    //   1	144	3	str	String
-    //   146	26	3	localIOException1	IOException
-    //   206	1	3	localIOException2	IOException
-    //   9	174	4	localSnapshot	DiskLruCache.Snapshot
-    //   3	205	5	localObject2	Object
-    //   6	66	6	localObject3	Object
+    //   0	284	0	this	WebAccelerator
+    //   0	284	1	paramString	String
+    //   20	10	2	bool	boolean
+    //   25	233	3	localObject1	Object
+    //   45	165	4	localObject2	Object
+    //   221	29	4	localIOException1	IOException
+    //   27	155	5	localObject3	Object
+    //   199	9	5	localIOException2	IOException
+    //   216	58	5	localObject4	Object
+    //   22	183	6	localObject5	Object
+    //   100	73	7	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   53	63	146	java/io/IOException
-    //   53	63	189	finally
-    //   75	82	202	finally
-    //   88	94	202	finally
-    //   100	132	202	finally
-    //   156	162	202	finally
-    //   165	175	202	finally
-    //   75	82	206	java/io/IOException
-    //   88	94	206	java/io/IOException
-    //   100	132	206	java/io/IOException
+    //   70	77	199	java/io/IOException
+    //   84	90	199	java/io/IOException
+    //   97	102	199	java/io/IOException
+    //   109	118	199	java/io/IOException
+    //   125	132	199	java/io/IOException
+    //   139	148	199	java/io/IOException
+    //   155	162	199	java/io/IOException
+    //   169	180	199	java/io/IOException
+    //   47	58	214	finally
+    //   47	58	221	java/io/IOException
+    //   70	77	267	finally
+    //   84	90	267	finally
+    //   97	102	267	finally
+    //   109	118	267	finally
+    //   125	132	267	finally
+    //   139	148	267	finally
+    //   155	162	267	finally
+    //   169	180	267	finally
+    //   234	240	267	finally
+    //   243	254	267	finally
   }
   
   public final void a(String paramString)
@@ -863,497 +834,889 @@ public class WebAccelerator
   
   public final void a(String arg1, int paramInt, String paramString2, String paramString3)
   {
-    int i = 2;
-    if ((TextUtils.isEmpty(???)) || (!jdField_a_of_type_Boolean)) {}
-    String str;
-    do
+    if (!TextUtils.isEmpty(???))
     {
-      return;
-      str = ???.trim();
+      if (!jdField_a_of_type_Boolean) {
+        return;
+      }
+      String str = ???.trim();
       synchronized (this.jdField_a_of_type_ArrayOfByte)
       {
         if (this.jdField_a_of_type_JavaUtilSet.contains(str)) {
           return;
         }
+        this.jdField_a_of_type_JavaUtilSet.add(str);
+        int j = HttpUtil.getNetWorkType();
+        int i = 4;
+        if (j != 1)
+        {
+          if (j != 2)
+          {
+            if (j != 3)
+            {
+              if (j != 4)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("WebAccelerator", 2, "unknown network type , not use accelerator");
+                }
+                return;
+              }
+              i = 8;
+            }
+          }
+          else {
+            i = 2;
+          }
+        }
+        else {
+          i = 1;
+        }
+        if ((a(i)) && (a()))
+        {
+          if (a(16)) {
+            ??? = b(str);
+          } else {
+            ??? = str;
+          }
+          if (a(32)) {
+            a(???, paramInt, paramString2, paramString3);
+          }
+          if (a(64)) {
+            b(???);
+          }
+        }
+        synchronized (this.jdField_a_of_type_ArrayOfByte)
+        {
+          this.jdField_a_of_type_JavaUtilSet.remove(str);
+          return;
+        }
       }
-      this.jdField_a_of_type_JavaUtilSet.add(str);
-      switch (HttpUtil.getNetWorkType())
-      {
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("WebAccelerator", 2, "unknown network type , not use accelerator");
-    return;
-    i = 4;
-    if ((a(i)) && (a())) {
-      if (!a(16)) {
-        break label225;
-      }
-    }
-    label225:
-    for (??? = b(str);; ??? = str)
-    {
-      if (a(32)) {
-        a(???, paramInt, paramString2, paramString3);
-      }
-      if (a(64)) {
-        b(???);
-      }
-      synchronized (this.jdField_a_of_type_ArrayOfByte)
-      {
-        this.jdField_a_of_type_JavaUtilSet.remove(str);
-        return;
-      }
-      i = 8;
-      break;
-      i = 1;
-      break;
     }
   }
   
+  /* Error */
   public final boolean a(String paramString)
   {
-    boolean bool4 = false;
-    boolean bool5 = false;
-    boolean bool1 = false;
-    boolean bool2 = bool1;
-    if (paramString != null)
-    {
-      if (!paramString.equals("")) {
-        break label28;
-      }
-      bool2 = bool1;
-    }
-    for (;;)
-    {
-      return bool2;
-      label28:
-      bool2 = bool1;
-      if (!this.jdField_c_of_type_Boolean) {
-        continue;
-      }
-      bool2 = bool1;
-      if (!jdField_a_of_type_Boolean) {
-        continue;
-      }
-      Object localObject3 = null;
-      Object localObject1 = null;
-      String str = Md5Utils.getMD5(paramString);
-      boolean bool3 = bool5;
-      try
-      {
-        DiskLruCache.Snapshot localSnapshot = this.jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache.get(str);
-        bool1 = bool4;
-        if (localSnapshot != null)
-        {
-          bool3 = bool5;
-          localObject1 = localSnapshot;
-          localObject3 = localSnapshot;
-        }
-        try
-        {
-          l = Long.parseLong(localSnapshot.getString(0));
-          bool3 = bool5;
-          localObject1 = localSnapshot;
-          localObject3 = localSnapshot;
-          if (SystemClock.uptimeMillis() - l < this.jdField_a_of_type_Long)
-          {
-            bool1 = true;
-            bool3 = bool1;
-            localObject1 = localSnapshot;
-            localObject3 = localSnapshot;
-            if (QLog.isColorLevel())
-            {
-              bool3 = bool1;
-              localObject1 = localSnapshot;
-              localObject3 = localSnapshot;
-              QLog.d("WebAccelerator", 2, "isSafeCheck:" + paramString + "   " + bool1);
-            }
-            bool2 = bool1;
-            return bool1;
-          }
-        }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          for (;;)
-          {
-            long l = 0L;
-            continue;
-            bool3 = bool5;
-            localObject2 = localSnapshot;
-            localObject3 = localSnapshot;
-            this.jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache.remove(str);
-            bool1 = bool4;
-          }
-        }
-      }
-      catch (IOException paramString)
-      {
-        Object localObject2;
-        localObject3 = localObject2;
-        if (QLog.isColorLevel())
-        {
-          localObject3 = localObject2;
-          QLog.e("WebAccelerator", 2, "isSafeCheck fail", paramString);
-        }
-        bool2 = bool3;
-        return bool3;
-      }
-      finally
-      {
-        if (localObject3 != null) {
-          localObject3.close();
-        }
-      }
-    }
+    // Byte code:
+    //   0: iconst_0
+    //   1: istore 5
+    //   3: iconst_0
+    //   4: istore 4
+    //   6: aload_1
+    //   7: ifnull +346 -> 353
+    //   10: aload_1
+    //   11: ldc_w 464
+    //   14: invokevirtual 468	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   17: ifeq +5 -> 22
+    //   20: iconst_0
+    //   21: ireturn
+    //   22: aload_0
+    //   23: getfield 65	com/tencent/mobileqq/activity/WebAccelerator:jdField_c_of_type_Boolean	Z
+    //   26: ifeq +327 -> 353
+    //   29: getstatic 41	com/tencent/mobileqq/activity/WebAccelerator:jdField_a_of_type_Boolean	Z
+    //   32: ifne +5 -> 37
+    //   35: iconst_0
+    //   36: ireturn
+    //   37: aconst_null
+    //   38: astore 8
+    //   40: aconst_null
+    //   41: astore 9
+    //   43: aload_1
+    //   44: invokestatic 730	com/tencent/smtt/utils/Md5Utils:getMD5	(Ljava/lang/String;)Ljava/lang/String;
+    //   47: astore 11
+    //   49: iload 5
+    //   51: istore_3
+    //   52: aload_0
+    //   53: getfield 67	com/tencent/mobileqq/activity/WebAccelerator:jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache	Lcom/jakewharton/disklrucache/DiskLruCache;
+    //   56: aload 11
+    //   58: invokevirtual 733	com/jakewharton/disklrucache/DiskLruCache:get	(Ljava/lang/String;)Lcom/jakewharton/disklrucache/DiskLruCache$Snapshot;
+    //   61: astore 10
+    //   63: iload 4
+    //   65: istore_2
+    //   66: aload 10
+    //   68: ifnull +85 -> 153
+    //   71: aload 10
+    //   73: astore 9
+    //   75: iload 5
+    //   77: istore_3
+    //   78: aload 10
+    //   80: astore 8
+    //   82: aload 10
+    //   84: iconst_0
+    //   85: invokevirtual 738	com/jakewharton/disklrucache/DiskLruCache$Snapshot:getString	(I)Ljava/lang/String;
+    //   88: invokestatic 785	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   91: lstore 6
+    //   93: goto +6 -> 99
+    //   96: lconst_0
+    //   97: lstore 6
+    //   99: aload 10
+    //   101: astore 9
+    //   103: iload 5
+    //   105: istore_3
+    //   106: aload 10
+    //   108: astore 8
+    //   110: invokestatic 790	android/os/SystemClock:uptimeMillis	()J
+    //   113: lload 6
+    //   115: lsub
+    //   116: aload_0
+    //   117: getfield 63	com/tencent/mobileqq/activity/WebAccelerator:jdField_a_of_type_Long	J
+    //   120: lcmp
+    //   121: ifge +8 -> 129
+    //   124: iconst_1
+    //   125: istore_2
+    //   126: goto +27 -> 153
+    //   129: aload 10
+    //   131: astore 9
+    //   133: iload 5
+    //   135: istore_3
+    //   136: aload 10
+    //   138: astore 8
+    //   140: aload_0
+    //   141: getfield 67	com/tencent/mobileqq/activity/WebAccelerator:jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache	Lcom/jakewharton/disklrucache/DiskLruCache;
+    //   144: aload 11
+    //   146: invokevirtual 792	com/jakewharton/disklrucache/DiskLruCache:remove	(Ljava/lang/String;)Z
+    //   149: pop
+    //   150: iload 4
+    //   152: istore_2
+    //   153: aload 10
+    //   155: astore 9
+    //   157: iload_2
+    //   158: istore_3
+    //   159: aload 10
+    //   161: astore 8
+    //   163: invokestatic 105	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   166: ifeq +111 -> 277
+    //   169: aload 10
+    //   171: astore 9
+    //   173: iload_2
+    //   174: istore_3
+    //   175: aload 10
+    //   177: astore 8
+    //   179: invokestatic 149	com/tencent/mobileqq/activity/aio/AIOUtils:a	()Ljava/lang/StringBuilder;
+    //   182: astore 11
+    //   184: aload 10
+    //   186: astore 9
+    //   188: iload_2
+    //   189: istore_3
+    //   190: aload 10
+    //   192: astore 8
+    //   194: aload 11
+    //   196: ldc_w 794
+    //   199: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   202: pop
+    //   203: aload 10
+    //   205: astore 9
+    //   207: iload_2
+    //   208: istore_3
+    //   209: aload 10
+    //   211: astore 8
+    //   213: aload 11
+    //   215: aload_1
+    //   216: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   219: pop
+    //   220: aload 10
+    //   222: astore 9
+    //   224: iload_2
+    //   225: istore_3
+    //   226: aload 10
+    //   228: astore 8
+    //   230: aload 11
+    //   232: ldc_w 329
+    //   235: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   238: pop
+    //   239: aload 10
+    //   241: astore 9
+    //   243: iload_2
+    //   244: istore_3
+    //   245: aload 10
+    //   247: astore 8
+    //   249: aload 11
+    //   251: iload_2
+    //   252: invokevirtual 327	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   255: pop
+    //   256: aload 10
+    //   258: astore 9
+    //   260: iload_2
+    //   261: istore_3
+    //   262: aload 10
+    //   264: astore 8
+    //   266: ldc 116
+    //   268: iconst_2
+    //   269: aload 11
+    //   271: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   274: invokestatic 122	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   277: iload_2
+    //   278: istore 4
+    //   280: aload 10
+    //   282: ifnull +56 -> 338
+    //   285: aload 10
+    //   287: astore 8
+    //   289: aload 8
+    //   291: invokevirtual 743	com/jakewharton/disklrucache/DiskLruCache$Snapshot:close	()V
+    //   294: iload_2
+    //   295: ireturn
+    //   296: astore_1
+    //   297: goto +44 -> 341
+    //   300: astore_1
+    //   301: aload 8
+    //   303: astore 9
+    //   305: invokestatic 105	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   308: ifeq +17 -> 325
+    //   311: aload 8
+    //   313: astore 9
+    //   315: ldc 116
+    //   317: iconst_2
+    //   318: ldc_w 796
+    //   321: aload_1
+    //   322: invokestatic 652	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   325: iload_3
+    //   326: istore 4
+    //   328: aload 8
+    //   330: ifnull +8 -> 338
+    //   333: iload_3
+    //   334: istore_2
+    //   335: goto -46 -> 289
+    //   338: iload 4
+    //   340: ireturn
+    //   341: aload 9
+    //   343: ifnull +8 -> 351
+    //   346: aload 9
+    //   348: invokevirtual 743	com/jakewharton/disklrucache/DiskLruCache$Snapshot:close	()V
+    //   351: aload_1
+    //   352: athrow
+    //   353: iconst_0
+    //   354: ireturn
+    //   355: astore 8
+    //   357: goto -261 -> 96
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	360	0	this	WebAccelerator
+    //   0	360	1	paramString	String
+    //   65	270	2	bool1	boolean
+    //   51	283	3	bool2	boolean
+    //   4	335	4	bool3	boolean
+    //   1	133	5	bool4	boolean
+    //   91	23	6	l	long
+    //   38	291	8	localObject1	Object
+    //   355	1	8	localNumberFormatException	java.lang.NumberFormatException
+    //   41	306	9	localObject2	Object
+    //   61	225	10	localSnapshot	com.jakewharton.disklrucache.DiskLruCache.Snapshot
+    //   47	223	11	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   52	63	296	finally
+    //   82	93	296	finally
+    //   110	124	296	finally
+    //   140	150	296	finally
+    //   163	169	296	finally
+    //   179	184	296	finally
+    //   194	203	296	finally
+    //   213	220	296	finally
+    //   230	239	296	finally
+    //   249	256	296	finally
+    //   266	277	296	finally
+    //   305	311	296	finally
+    //   315	325	296	finally
+    //   52	63	300	java/io/IOException
+    //   82	93	300	java/io/IOException
+    //   110	124	300	java/io/IOException
+    //   140	150	300	java/io/IOException
+    //   163	169	300	java/io/IOException
+    //   179	184	300	java/io/IOException
+    //   194	203	300	java/io/IOException
+    //   213	220	300	java/io/IOException
+    //   230	239	300	java/io/IOException
+    //   249	256	300	java/io/IOException
+    //   266	277	300	java/io/IOException
+    //   82	93	355	java/lang/NumberFormatException
   }
   
+  /* Error */
   public final boolean a(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    boolean bool4 = false;
-    boolean bool3 = false;
-    boolean bool2 = bool3;
-    if (paramString1 != null)
-    {
-      if (!paramString1.equals("")) {
-        break label31;
-      }
-      bool2 = bool3;
-    }
-    label31:
-    do
-    {
-      return bool2;
-      if ((this.jdField_c_of_type_Boolean) && (jdField_a_of_type_Boolean) && (!paramString1.contains(URLEncoder.encode("/cgi-bin/httpconn?htcmd=0x6ff0080"))) && (!paramString1.contains("/cgi-bin/httpconn?htcmd=0x6ff0080")) && (!a(paramString1))) {
-        break;
-      }
-      bool2 = bool3;
-    } while (!QLog.isColorLevel());
-    QLog.d("WebAccelerator", 2, "no need doSafeCheck");
-    return false;
-    for (;;)
-    {
-      Object localObject2;
-      try
-      {
-        i = (int)SystemClock.uptimeMillis() % 2;
-        localObject1 = WebViewConstant.b;
-        if (i > -1)
-        {
-          localObject2 = localObject1[i];
-          String str = SosoSrvAddrProvider.getInstance().getSrvAddr(0, false, false);
-          localObject1 = localObject2;
-          if (str != null)
-          {
-            localObject1 = localObject2;
-            if (str.length() > 0) {
-              localObject1 = ((String)localObject2).replaceFirst("http://[^/\\s]*/", str);
-            }
-          }
-          localObject2 = AIOUtils.a();
-          ((StringBuilder)localObject2).append((String)localObject1);
-          ((StringBuilder)localObject2).append("&u=");
-          ((StringBuilder)localObject2).append(URLEncoder.encode(paramString1, "UTF-8"));
-          ((StringBuilder)localObject2).append("&wap=3");
-          switch (paramInt)
-          {
-          case 0: 
-            ((StringBuilder)localObject2).append("&qq-pf-to=mqq.temporaryc2c");
-            if (!TextUtils.isEmpty(paramString2)) {
-              ((StringBuilder)localObject2).append("&uin=").append(paramString2);
-            }
-            if (!TextUtils.isEmpty(paramString3)) {
-              ((StringBuilder)localObject2).append("&originuin=").append(paramString3);
-            }
-            localObject1 = ((StringBuilder)localObject2).toString();
-            paramString2 = d((String)localObject1);
-            paramString3 = a();
-            paramInt = paramString3.getInt("load_safeCheck", 0);
-            paramString3.edit().putInt("load_safeCheck", paramInt + 1).commit();
-            if ((TextUtils.isEmpty(paramString2)) || (!paramString2.equals(paramString1))) {
-              break label696;
-            }
-            paramString2 = null;
-            paramString3 = null;
-            localObject2 = Md5Utils.getMD5(paramString1);
-            paramString1 = paramString3;
-          }
-        }
-      }
-      catch (UnsupportedEncodingException paramString1)
-      {
-        int i;
-        Object localObject1;
-        bool2 = bool3;
-      }
-      try
-      {
-        paramString3 = this.jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache.edit((String)localObject2);
-        if (paramString3 == null) {
-          break label556;
-        }
-        paramString1 = paramString3;
-        paramString2 = paramString3;
-        paramString3.set(0, SystemClock.uptimeMillis() + "");
-        paramString1 = paramString3;
-        paramString2 = paramString3;
-        paramString3.commit();
-        bool1 = true;
-      }
-      catch (IOException paramString2)
-      {
-        if (!QLog.isColorLevel()) {
-          break label611;
-        }
-        QLog.d("WebAccelerator", 2, "doSafeCheck", paramString2);
-        bool1 = bool4;
-        if (paramString1 == null) {
-          continue;
-        }
-        try
-        {
-          paramString1.abort();
-          bool1 = bool4;
-        }
-        catch (IOException paramString1)
-        {
-          bool1 = bool4;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("WebAccelerator", 2, "doSafeCheck", paramString1);
-        bool1 = bool4;
-        continue;
-      }
-      catch (Exception paramString1)
-      {
-        bool2 = bool3;
-      }
-      bool2 = bool1;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("WebAccelerator", 2, "doSafeCheck:" + (String)localObject1 + "   " + bool1);
-      return bool1;
-      i = 0;
-      continue;
-      ((StringBuilder)localObject2).append("&qq-pf-to=mqq.c2c");
-      continue;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("WebAccelerator", 2, "buildUrl fail", paramString1);
-      return false;
-      ((StringBuilder)localObject2).append("&qq-pf-to=mqq.group");
-      continue;
-      ((StringBuilder)localObject2).append("&qq-pf-to=mqq.discussion");
-      continue;
-      label556:
-      boolean bool1 = bool4;
-      paramString1 = paramString3;
-      paramString2 = paramString3;
-      if (QLog.isColorLevel())
-      {
-        paramString1 = paramString3;
-        paramString2 = paramString3;
-        QLog.e("WebAccelerator", 2, "fail to open cache.editor");
-        bool1 = bool4;
-        continue;
-        label611:
-        if (paramString2 == null) {
-          break;
-        }
-        try
-        {
-          paramString2.abort();
-          return false;
-        }
-        catch (IOException paramString1)
-        {
-          bool2 = bool3;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("WebAccelerator", 2, "doSafeCheck", paramString1);
-        return false;
-        label696:
-        bool1 = bool4;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("WebAccelerator", 2, "doRedirect get fail url");
-          bool1 = bool4;
-        }
-      }
-    }
+    // Byte code:
+    //   0: iconst_0
+    //   1: istore 7
+    //   3: aload_1
+    //   4: ifnull +709 -> 713
+    //   7: aload_1
+    //   8: ldc_w 464
+    //   11: invokevirtual 468	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   14: ifeq +5 -> 19
+    //   17: iconst_0
+    //   18: ireturn
+    //   19: aload_0
+    //   20: getfield 65	com/tencent/mobileqq/activity/WebAccelerator:jdField_c_of_type_Boolean	Z
+    //   23: ifeq +675 -> 698
+    //   26: getstatic 41	com/tencent/mobileqq/activity/WebAccelerator:jdField_a_of_type_Boolean	Z
+    //   29: ifeq +669 -> 698
+    //   32: aload_1
+    //   33: ldc_w 800
+    //   36: invokestatic 566	java/net/URLEncoder:encode	(Ljava/lang/String;)Ljava/lang/String;
+    //   39: invokevirtual 364	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   42: ifne +656 -> 698
+    //   45: aload_1
+    //   46: ldc_w 800
+    //   49: invokevirtual 364	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   52: ifne +646 -> 698
+    //   55: aload_0
+    //   56: aload_1
+    //   57: invokevirtual 802	com/tencent/mobileqq/activity/WebAccelerator:a	(Ljava/lang/String;)Z
+    //   60: ifeq +6 -> 66
+    //   63: goto +635 -> 698
+    //   66: invokestatic 790	android/os/SystemClock:uptimeMillis	()J
+    //   69: l2i
+    //   70: iconst_2
+    //   71: irem
+    //   72: istore 5
+    //   74: getstatic 807	com/tencent/mobileqq/webview/util/WebViewConstant:c	[Ljava/lang/String;
+    //   77: astore 8
+    //   79: iload 5
+    //   81: iconst_m1
+    //   82: if_icmple +637 -> 719
+    //   85: goto +3 -> 88
+    //   88: aload 8
+    //   90: iload 5
+    //   92: aaload
+    //   93: astore 9
+    //   95: invokestatic 76	com/tencent/mobileqq/troop/soso/SosoSrvAddrProvider:a	()Lcom/tencent/mobileqq/troop/soso/SosoSrvAddrProvider;
+    //   98: iconst_0
+    //   99: iconst_0
+    //   100: iconst_0
+    //   101: invokevirtual 810	com/tencent/mobileqq/troop/soso/SosoSrvAddrProvider:a	(IZZ)Ljava/lang/String;
+    //   104: astore 10
+    //   106: aload 9
+    //   108: astore 8
+    //   110: aload 10
+    //   112: ifnull +27 -> 139
+    //   115: aload 9
+    //   117: astore 8
+    //   119: aload 10
+    //   121: invokevirtual 549	java/lang/String:length	()I
+    //   124: ifle +15 -> 139
+    //   127: aload 9
+    //   129: ldc_w 812
+    //   132: aload 10
+    //   134: invokevirtual 816	java/lang/String:replaceFirst	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   137: astore 8
+    //   139: invokestatic 149	com/tencent/mobileqq/activity/aio/AIOUtils:a	()Ljava/lang/StringBuilder;
+    //   142: astore 9
+    //   144: aload 9
+    //   146: aload 8
+    //   148: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   151: pop
+    //   152: aload 9
+    //   154: ldc_w 818
+    //   157: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   160: pop
+    //   161: aload 9
+    //   163: aload_1
+    //   164: ldc_w 820
+    //   167: invokestatic 822	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   170: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   173: pop
+    //   174: aload 9
+    //   176: ldc_w 824
+    //   179: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   182: pop
+    //   183: iload_2
+    //   184: ifeq +51 -> 235
+    //   187: iload_2
+    //   188: iconst_1
+    //   189: if_icmpeq +34 -> 223
+    //   192: iload_2
+    //   193: sipush 3000
+    //   196: if_icmpeq +15 -> 211
+    //   199: aload 9
+    //   201: ldc_w 826
+    //   204: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   207: pop
+    //   208: goto +36 -> 244
+    //   211: aload 9
+    //   213: ldc_w 828
+    //   216: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   219: pop
+    //   220: goto +24 -> 244
+    //   223: aload 9
+    //   225: ldc_w 830
+    //   228: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   231: pop
+    //   232: goto +12 -> 244
+    //   235: aload 9
+    //   237: ldc_w 832
+    //   240: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   243: pop
+    //   244: aload_3
+    //   245: invokestatic 128	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   248: ifne +19 -> 267
+    //   251: aload 9
+    //   253: ldc_w 557
+    //   256: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   259: pop
+    //   260: aload 9
+    //   262: aload_3
+    //   263: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   266: pop
+    //   267: aload 4
+    //   269: invokestatic 128	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   272: ifne +20 -> 292
+    //   275: aload 9
+    //   277: ldc_w 834
+    //   280: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   283: pop
+    //   284: aload 9
+    //   286: aload 4
+    //   288: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   291: pop
+    //   292: aload 9
+    //   294: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   297: astore 8
+    //   299: aload_0
+    //   300: aload 8
+    //   302: invokespecial 836	com/tencent/mobileqq/activity/WebAccelerator:d	(Ljava/lang/String;)Ljava/lang/String;
+    //   305: astore_3
+    //   306: aload_0
+    //   307: invokevirtual 301	com/tencent/mobileqq/activity/WebAccelerator:a	()Landroid/content/SharedPreferences;
+    //   310: astore 4
+    //   312: aload 4
+    //   314: ldc_w 719
+    //   317: iconst_0
+    //   318: invokeinterface 309 3 0
+    //   323: istore_2
+    //   324: aload 4
+    //   326: invokeinterface 313 1 0
+    //   331: ldc_w 719
+    //   334: iload_2
+    //   335: iconst_1
+    //   336: iadd
+    //   337: invokeinterface 319 3 0
+    //   342: invokeinterface 322 1 0
+    //   347: pop
+    //   348: aload_3
+    //   349: invokestatic 128	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   352: ifne +251 -> 603
+    //   355: aload_3
+    //   356: aload_1
+    //   357: invokevirtual 468	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   360: ifeq +243 -> 603
+    //   363: aconst_null
+    //   364: astore_3
+    //   365: aconst_null
+    //   366: astore 4
+    //   368: aload_1
+    //   369: invokestatic 730	com/tencent/smtt/utils/Md5Utils:getMD5	(Ljava/lang/String;)Ljava/lang/String;
+    //   372: astore 9
+    //   374: aload 4
+    //   376: astore_1
+    //   377: aload_0
+    //   378: getfield 67	com/tencent/mobileqq/activity/WebAccelerator:jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache	Lcom/jakewharton/disklrucache/DiskLruCache;
+    //   381: aload 9
+    //   383: invokevirtual 839	com/jakewharton/disklrucache/DiskLruCache:edit	(Ljava/lang/String;)Lcom/jakewharton/disklrucache/DiskLruCache$Editor;
+    //   386: astore 4
+    //   388: aload 4
+    //   390: ifnull +82 -> 472
+    //   393: aload 4
+    //   395: astore_1
+    //   396: aload 4
+    //   398: astore_3
+    //   399: new 107	java/lang/StringBuilder
+    //   402: dup
+    //   403: invokespecial 108	java/lang/StringBuilder:<init>	()V
+    //   406: astore 9
+    //   408: aload 4
+    //   410: astore_1
+    //   411: aload 4
+    //   413: astore_3
+    //   414: aload 9
+    //   416: invokestatic 790	android/os/SystemClock:uptimeMillis	()J
+    //   419: invokevirtual 842	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   422: pop
+    //   423: aload 4
+    //   425: astore_1
+    //   426: aload 4
+    //   428: astore_3
+    //   429: aload 9
+    //   431: ldc_w 464
+    //   434: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   437: pop
+    //   438: aload 4
+    //   440: astore_1
+    //   441: aload 4
+    //   443: astore_3
+    //   444: aload 4
+    //   446: iconst_0
+    //   447: aload 9
+    //   449: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   452: invokevirtual 848	com/jakewharton/disklrucache/DiskLruCache$Editor:set	(ILjava/lang/String;)V
+    //   455: aload 4
+    //   457: astore_1
+    //   458: aload 4
+    //   460: astore_3
+    //   461: aload 4
+    //   463: invokevirtual 850	com/jakewharton/disklrucache/DiskLruCache$Editor:commit	()V
+    //   466: iconst_1
+    //   467: istore 6
+    //   469: goto +157 -> 626
+    //   472: aload 4
+    //   474: astore_1
+    //   475: iload 7
+    //   477: istore 6
+    //   479: aload 4
+    //   481: astore_3
+    //   482: invokestatic 105	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   485: ifeq +141 -> 626
+    //   488: aload 4
+    //   490: astore_1
+    //   491: aload 4
+    //   493: astore_3
+    //   494: ldc 116
+    //   496: iconst_2
+    //   497: ldc_w 852
+    //   500: invokestatic 854	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   503: iload 7
+    //   505: istore 6
+    //   507: goto +119 -> 626
+    //   510: aload_3
+    //   511: ifnull +26 -> 537
+    //   514: aload_3
+    //   515: invokevirtual 857	com/jakewharton/disklrucache/DiskLruCache$Editor:abort	()V
+    //   518: iconst_0
+    //   519: ireturn
+    //   520: astore_1
+    //   521: invokestatic 105	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   524: ifeq +13 -> 537
+    //   527: ldc 116
+    //   529: iconst_2
+    //   530: ldc_w 859
+    //   533: aload_1
+    //   534: invokestatic 652	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   537: iconst_0
+    //   538: ireturn
+    //   539: astore_3
+    //   540: invokestatic 105	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   543: ifeq +13 -> 556
+    //   546: ldc 116
+    //   548: iconst_2
+    //   549: ldc_w 859
+    //   552: aload_3
+    //   553: invokestatic 861	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   556: iload 7
+    //   558: istore 6
+    //   560: aload_1
+    //   561: ifnull +65 -> 626
+    //   564: aload_1
+    //   565: invokevirtual 857	com/jakewharton/disklrucache/DiskLruCache$Editor:abort	()V
+    //   568: iload 7
+    //   570: istore 6
+    //   572: goto +54 -> 626
+    //   575: astore_1
+    //   576: iload 7
+    //   578: istore 6
+    //   580: invokestatic 105	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   583: ifeq +43 -> 626
+    //   586: ldc 116
+    //   588: iconst_2
+    //   589: ldc_w 859
+    //   592: aload_1
+    //   593: invokestatic 652	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   596: iload 7
+    //   598: istore 6
+    //   600: goto +26 -> 626
+    //   603: iload 7
+    //   605: istore 6
+    //   607: invokestatic 105	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   610: ifeq +16 -> 626
+    //   613: ldc 116
+    //   615: iconst_2
+    //   616: ldc_w 863
+    //   619: invokestatic 122	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   622: iload 7
+    //   624: istore 6
+    //   626: invokestatic 105	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   629: ifeq +47 -> 676
+    //   632: invokestatic 149	com/tencent/mobileqq/activity/aio/AIOUtils:a	()Ljava/lang/StringBuilder;
+    //   635: astore_1
+    //   636: aload_1
+    //   637: ldc_w 865
+    //   640: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   643: pop
+    //   644: aload_1
+    //   645: aload 8
+    //   647: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   650: pop
+    //   651: aload_1
+    //   652: ldc_w 329
+    //   655: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   658: pop
+    //   659: aload_1
+    //   660: iload 6
+    //   662: invokevirtual 327	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   665: pop
+    //   666: ldc 116
+    //   668: iconst_2
+    //   669: aload_1
+    //   670: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   673: invokestatic 122	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   676: iload 6
+    //   678: ireturn
+    //   679: astore_1
+    //   680: invokestatic 105	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   683: ifeq +13 -> 696
+    //   686: ldc 116
+    //   688: iconst_2
+    //   689: ldc_w 867
+    //   692: aload_1
+    //   693: invokestatic 652	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   696: iconst_0
+    //   697: ireturn
+    //   698: invokestatic 105	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   701: ifeq +12 -> 713
+    //   704: ldc 116
+    //   706: iconst_2
+    //   707: ldc_w 869
+    //   710: invokestatic 122	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   713: iconst_0
+    //   714: ireturn
+    //   715: astore_1
+    //   716: goto -206 -> 510
+    //   719: iconst_0
+    //   720: istore 5
+    //   722: goto -634 -> 88
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	725	0	this	WebAccelerator
+    //   0	725	1	paramString1	String
+    //   0	725	2	paramInt	int
+    //   0	725	3	paramString2	String
+    //   0	725	4	paramString3	String
+    //   72	649	5	i	int
+    //   467	210	6	bool1	boolean
+    //   1	622	7	bool2	boolean
+    //   77	569	8	localObject1	Object
+    //   93	355	9	localObject2	Object
+    //   104	29	10	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   514	518	520	java/io/IOException
+    //   377	388	539	java/io/IOException
+    //   399	408	539	java/io/IOException
+    //   414	423	539	java/io/IOException
+    //   429	438	539	java/io/IOException
+    //   444	455	539	java/io/IOException
+    //   461	466	539	java/io/IOException
+    //   482	488	539	java/io/IOException
+    //   494	503	539	java/io/IOException
+    //   564	568	575	java/io/IOException
+    //   66	79	679	java/io/UnsupportedEncodingException
+    //   95	106	679	java/io/UnsupportedEncodingException
+    //   119	139	679	java/io/UnsupportedEncodingException
+    //   139	183	679	java/io/UnsupportedEncodingException
+    //   199	208	679	java/io/UnsupportedEncodingException
+    //   211	220	679	java/io/UnsupportedEncodingException
+    //   223	232	679	java/io/UnsupportedEncodingException
+    //   235	244	679	java/io/UnsupportedEncodingException
+    //   244	267	679	java/io/UnsupportedEncodingException
+    //   267	292	679	java/io/UnsupportedEncodingException
+    //   292	299	679	java/io/UnsupportedEncodingException
+    //   377	388	715	java/lang/Exception
+    //   399	408	715	java/lang/Exception
+    //   414	423	715	java/lang/Exception
+    //   429	438	715	java/lang/Exception
+    //   444	455	715	java/lang/Exception
+    //   461	466	715	java/lang/Exception
+    //   482	488	715	java/lang/Exception
+    //   494	503	715	java/lang/Exception
   }
   
   public final String b(String paramString)
   {
-    if ((paramString == null) || (paramString.equals(""))) {}
-    Object localObject2;
-    do
+    Object localObject1;
+    DiskLruCache.Editor localEditor2;
+    DiskLruCache.Editor localEditor1;
+    if (paramString != null)
     {
-      DiskLruCache.Editor localEditor1;
-      for (;;)
-      {
+      if (paramString.equals("")) {
         return paramString;
-        if ((this.jdField_c_of_type_Boolean) && (jdField_a_of_type_Boolean) && (c(paramString)))
+      }
+      if ((this.jdField_c_of_type_Boolean) && (jdField_a_of_type_Boolean) && (BaseOpenWebMonitor.a(paramString)))
+      {
+        localObject1 = a(paramString);
+        localObject2 = localObject1;
+        if (localObject1 == null)
         {
-          Object localObject1 = a(paramString);
-          localObject2 = localObject1;
-          if (localObject1 != null) {
-            break label372;
-          }
-          String str1 = d(paramString);
-          if ((str1 != null) && (!str1.equals("")))
+          str1 = d(paramString);
+          if (str1 != null)
           {
+            if (str1.equals("")) {
+              return paramString;
+            }
             localObject1 = a();
             int i = ((SharedPreferences)localObject1).getInt("load_shortLink", 0);
             ((SharedPreferences)localObject1).edit().putInt("load_shortLink", i + 1).commit();
-            DiskLruCache.Editor localEditor2 = null;
+            localEditor2 = null;
             localObject2 = null;
             localObject1 = localObject2;
             localEditor1 = localEditor2;
-            try
-            {
-              String str2 = Md5Utils.getMD5(paramString);
-              localObject1 = localObject2;
-              localEditor1 = localEditor2;
-              localEditor2 = this.jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache.edit(str2);
-              if (localEditor2 != null)
-              {
-                localObject1 = localEditor2;
-                localEditor1 = localEditor2;
-                localEditor2.set(0, str1);
-                localObject1 = localEditor2;
-                localEditor1 = localEditor2;
-                localEditor2.commit();
-              }
-              for (;;)
-              {
-                localObject1 = localEditor2;
-                localEditor1 = localEditor2;
-                localObject2 = str1;
-                if (!QLog.isColorLevel()) {
-                  break;
-                }
-                localObject1 = localEditor2;
-                localEditor1 = localEditor2;
-                QLog.d("WebAccelerator", 2, "doShortLink:" + paramString + "   " + str1);
-                localObject2 = str1;
-                break;
-                localObject1 = localEditor2;
-                localEditor1 = localEditor2;
-                if (QLog.isColorLevel())
-                {
-                  localObject1 = localEditor2;
-                  localEditor1 = localEditor2;
-                  QLog.d("WebAccelerator", 2, "fail to open cache.Editor");
-                }
-              }
-              if (localEditor1 == null) {}
-            }
-            catch (IOException paramString)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.e("WebAccelerator", 2, "doShortLink", paramString);
-              }
-              localObject2 = str1;
-              if (localObject1 == null) {
-                break label372;
-              }
-              try
-              {
-                ((DiskLruCache.Editor)localObject1).abort();
-                localObject2 = str1;
-              }
-              catch (IOException paramString)
-              {
-                localObject2 = str1;
-                if (!QLog.isColorLevel()) {
-                  break label372;
-                }
-              }
-              QLog.e("WebAccelerator", 2, "doShortLink.editor.abort", paramString);
-              localObject2 = str1;
-            }
-            catch (Exception localException) {}
           }
         }
       }
+    }
+    try
+    {
+      String str2 = Md5Utils.getMD5(paramString);
+      localObject1 = localObject2;
+      localEditor1 = localEditor2;
+      localEditor2 = this.jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache.edit(str2);
+      if (localEditor2 != null)
+      {
+        localObject1 = localEditor2;
+        localEditor1 = localEditor2;
+        localEditor2.set(0, str1);
+        localObject1 = localEditor2;
+        localEditor1 = localEditor2;
+        localEditor2.commit();
+      }
+      else
+      {
+        localObject1 = localEditor2;
+        localEditor1 = localEditor2;
+        if (QLog.isColorLevel())
+        {
+          localObject1 = localEditor2;
+          localEditor1 = localEditor2;
+          QLog.d("WebAccelerator", 2, "fail to open cache.Editor");
+        }
+      }
+      localObject1 = localEditor2;
+      localObject2 = str1;
+      localEditor1 = localEditor2;
+      if (!QLog.isColorLevel()) {
+        break label414;
+      }
+      localObject1 = localEditor2;
+      localEditor1 = localEditor2;
+      localObject2 = AIOUtils.a();
+      localObject1 = localEditor2;
+      localEditor1 = localEditor2;
+      ((StringBuilder)localObject2).append("doShortLink:");
+      localObject1 = localEditor2;
+      localEditor1 = localEditor2;
+      ((StringBuilder)localObject2).append(paramString);
+      localObject1 = localEditor2;
+      localEditor1 = localEditor2;
+      ((StringBuilder)localObject2).append("   ");
+      localObject1 = localEditor2;
+      localEditor1 = localEditor2;
+      ((StringBuilder)localObject2).append(str1);
+      localObject1 = localEditor2;
+      localEditor1 = localEditor2;
+      QLog.d("WebAccelerator", 2, ((StringBuilder)localObject2).toString());
+      return str1;
+    }
+    catch (IOException paramString)
+    {
+      if (!QLog.isColorLevel()) {
+        break label373;
+      }
+      QLog.e("WebAccelerator", 2, "doShortLink", paramString);
+      localObject2 = str1;
+      if (localIOException == null) {
+        break label414;
+      }
+      try
+      {
+        localIOException.abort();
+        return str1;
+      }
+      catch (IOException paramString)
+      {
+        localObject2 = str1;
+        if (!QLog.isColorLevel()) {
+          break label414;
+        }
+      }
+      QLog.e("WebAccelerator", 2, "doShortLink.editor.abort", paramString);
+      return str1;
+      return paramString;
+      return localObject2;
+      return paramString;
+    }
+    catch (Exception localException)
+    {
+      label325:
+      break label325;
+    }
+    if (localEditor1 != null) {
       try
       {
         localEditor1.abort();
         return paramString;
       }
-      catch (IOException localIOException) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("WebAccelerator", 2, "doShortLink.editor.abort", localIOException);
+      catch (IOException localIOException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("WebAccelerator", 2, "doShortLink.editor.abort", localIOException);
+        }
+      }
+    }
     return paramString;
-    label372:
-    return localObject2;
   }
   
   public final boolean b(String paramString)
   {
-    bool3 = false;
-    bool1 = false;
-    boolean bool2 = bool1;
+    boolean bool2 = false;
+    boolean bool3 = false;
     if (paramString != null)
     {
-      if (!paramString.equals("")) {
-        break label25;
+      if (paramString.equals("")) {
+        return false;
       }
-      bool2 = bool1;
-    }
-    label25:
-    do
-    {
-      do
-      {
-        return bool2;
-        bool2 = bool1;
-      } while (!jdField_a_of_type_Boolean);
+      if (!jdField_a_of_type_Boolean) {
+        return false;
+      }
       String str = CGILoader.a(paramString);
+      boolean bool1;
       try
       {
         InetAddress.getByName(str);
         bool1 = true;
       }
-      catch (UnknownHostException localUnknownHostException)
-      {
-        for (;;)
-        {
-          bool1 = bool3;
-          if (QLog.isColorLevel())
-          {
-            QLog.e("WebAccelerator", 2, "doDNS", localUnknownHostException);
-            bool1 = bool3;
-          }
-        }
-      }
       catch (SecurityException localSecurityException)
       {
-        for (;;)
+        bool1 = bool3;
+        if (QLog.isColorLevel())
         {
+          QLog.e("WebAccelerator", 2, "doDNS", localSecurityException);
           bool1 = bool3;
-          if (QLog.isColorLevel())
-          {
-            QLog.e("WebAccelerator", 2, "doDNS", localSecurityException);
-            bool1 = bool3;
-          }
+        }
+      }
+      catch (UnknownHostException localUnknownHostException)
+      {
+        bool1 = bool3;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("WebAccelerator", 2, "doDNS", localUnknownHostException);
+          bool1 = bool3;
         }
       }
       bool2 = bool1;
-    } while (!QLog.isColorLevel());
-    QLog.d("WebAccelerator", 2, "doDNS:" + paramString + "   " + bool1);
-    return bool1;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = AIOUtils.a();
+        localStringBuilder.append("doDNS:");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("   ");
+        localStringBuilder.append(bool1);
+        QLog.d("WebAccelerator", 2, localStringBuilder.toString());
+        bool2 = bool1;
+      }
+    }
+    return bool2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.WebAccelerator
  * JD-Core Version:    0.7.0.1
  */

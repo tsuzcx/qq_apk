@@ -26,18 +26,22 @@ public class QuadBezierAnimation
   
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    float f1 = this.e;
-    float f2 = this.a;
-    float f3 = this.d;
-    float f4 = this.f;
-    float f5 = this.b;
-    float f6 = this.c;
-    paramTransformation.getMatrix().preTranslate((1.0F - paramFloat) * (1.0F - paramFloat) * f1 + 2.0F * paramFloat * (1.0F - paramFloat) * f2 + paramFloat * paramFloat * f3, (1.0F - paramFloat) * (1.0F - paramFloat) * f4 + 2.0F * paramFloat * (1.0F - paramFloat) * f5 + paramFloat * paramFloat * f6);
+    float f3 = 1.0F - paramFloat;
+    float f1 = f3 * f3;
+    float f2 = this.e;
+    f3 = 2.0F * paramFloat * f3;
+    float f4 = this.a;
+    paramFloat *= paramFloat;
+    float f5 = this.d;
+    float f6 = this.f;
+    float f7 = this.b;
+    float f8 = this.c;
+    paramTransformation.getMatrix().preTranslate(f2 * f1 + f4 * f3 + f5 * paramFloat, f1 * f6 + f3 * f7 + paramFloat * f8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.openbox.QuadBezierAnimation
  * JD-Core Version:    0.7.0.1
  */

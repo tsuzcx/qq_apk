@@ -14,9 +14,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.EmotionUtils;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.emoticonview.api.IEmosmService;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.net.MalformedURLException;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 
 public class PreviewThumbAdapter
   extends BaseAdapter
-  implements AdapterView.OnItemClickListener
+  implements AdapterView.OnItemClickListener, IPreviewThumbAdapter
 {
   private static final String TAG = "PreviewThumbAdapter";
   private ColorDrawable colorDrawable;
@@ -33,16 +34,16 @@ public class PreviewThumbAdapter
   private Context mContext;
   private Drawable mDefaultPhotoDrawable;
   private ArrayList<String> mSelectedPaths = new ArrayList();
-  private PreviewThumbAdapter.IThumbItemClickListener thumbItemClickListener;
+  private IPreviewThumbAdapter.IThumbItemClickListener thumbItemClickListener;
   private int thumbWidth;
   
-  public PreviewThumbAdapter(Context paramContext, PreviewThumbAdapter.IThumbItemClickListener paramIThumbItemClickListener)
+  public PreviewThumbAdapter(Context paramContext, IPreviewThumbAdapter.IThumbItemClickListener paramIThumbItemClickListener)
   {
     this.mContext = paramContext;
     this.thumbItemClickListener = paramIThumbItemClickListener;
     this.colorDrawable = new ColorDrawable(570425344);
-    this.mDefaultPhotoDrawable = this.mContext.getResources().getDrawable(2130848203);
-    this.thumbWidth = AIOUtils.a(50.0F, this.mContext.getResources());
+    this.mDefaultPhotoDrawable = this.mContext.getResources().getDrawable(2130848074);
+    this.thumbWidth = EmotionUtils.a(50.0F, this.mContext.getResources());
   }
   
   public static URL generateAlbumThumbPreviewURL(String paramString1, String paramString2)
@@ -71,8 +72,9 @@ public class PreviewThumbAdapter
   
   public int getCount()
   {
-    if (this.mSelectedPaths != null) {
-      return this.mSelectedPaths.size();
+    ArrayList localArrayList = this.mSelectedPaths;
+    if (localArrayList != null) {
+      return localArrayList.size();
     }
     return 0;
   }
@@ -89,7 +91,8 @@ public class PreviewThumbAdapter
   
   public String getItem(int paramInt)
   {
-    if ((this.mSelectedPaths != null) && (paramInt < this.mSelectedPaths.size())) {
+    ArrayList localArrayList = this.mSelectedPaths;
+    if ((localArrayList != null) && (paramInt < localArrayList.size())) {
       return (String)this.mSelectedPaths.get(paramInt);
     }
     return null;
@@ -105,60 +108,58 @@ public class PreviewThumbAdapter
     LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
     localLocalMediaInfo.mMediaType = 0;
     localLocalMediaInfo.path = paramString;
-    localLocalMediaInfo.thumbWidth = this.thumbWidth;
-    localLocalMediaInfo.thumbHeight = this.thumbWidth;
+    int i = this.thumbWidth;
+    localLocalMediaInfo.thumbWidth = i;
+    localLocalMediaInfo.thumbHeight = i;
     return localLocalMediaInfo;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     View localView;
+    Object localObject1;
     if (paramView == null)
     {
       paramView = new PreviewThumbAdapter.Holder(this);
-      localView = LayoutInflater.from(this.mContext).inflate(2131559695, paramViewGroup, false);
-      paramView.mImageView = ((URLImageView)localView.findViewById(2131379314));
-      paramView.mSelectView = ((ImageView)localView.findViewById(2131379311));
+      localView = LayoutInflater.from(this.mContext).inflate(2131561608, paramViewGroup, false);
+      paramView.mImageView = ((URLImageView)localView.findViewById(2131378666));
+      paramView.mSelectView = ((ImageView)localView.findViewById(2131378661));
       localView.setTag(paramView);
     }
-    Object localObject2;
-    Object localObject1;
-    for (;;)
+    else
     {
-      localObject2 = getItem(paramInt);
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        break;
-      }
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
       localObject1 = (PreviewThumbAdapter.Holder)paramView.getTag();
       localView = paramView;
       paramView = (View)localObject1;
     }
-    if (((String)localObject2).equals(this.currentPath)) {
-      paramView.mSelectView.setVisibility(0);
-    }
-    for (;;)
+    Object localObject2 = getItem(paramInt);
+    if (!TextUtils.isEmpty((CharSequence)localObject2))
     {
+      if (((String)localObject2).equals(this.currentPath)) {
+        paramView.mSelectView.setVisibility(0);
+      } else {
+        paramView.mSelectView.setVisibility(8);
+      }
       localObject1 = getMediaInfoTemp((String)localObject2);
       localObject2 = generateAlbumThumbPreviewURL((String)localObject2, "DEFAULT");
       URLDrawable localURLDrawable = paramView.mDrawable;
       if ((localObject2 != null) && ((localURLDrawable == null) || (!localURLDrawable.getURL().toString().equals(((URL)localObject2).toString()))))
       {
-        localObject2 = URLDrawableHelper.getDrawable((URL)localObject2, this.colorDrawable, this.mDefaultPhotoDrawable);
+        localObject2 = ((IEmosmService)QRoute.api(IEmosmService.class)).getDrawable((URL)localObject2, this.colorDrawable, this.mDefaultPhotoDrawable);
         ((URLDrawable)localObject2).setTag(localObject1);
         paramView.mImageView.setImageDrawable((Drawable)localObject2);
         paramView.mDrawable = ((URLDrawable)localObject2);
       }
-      break;
-      paramView.mSelectView.setVisibility(8);
     }
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.thumbItemClickListener != null) {
-      this.thumbItemClickListener.onThumbClick(paramInt);
+    IPreviewThumbAdapter.IThumbItemClickListener localIThumbItemClickListener = this.thumbItemClickListener;
+    if (localIThumbItemClickListener != null) {
+      localIThumbItemClickListener.onThumbClick(paramInt);
     }
     EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
@@ -176,7 +177,7 @@ public class PreviewThumbAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.PreviewThumbAdapter
  * JD-Core Version:    0.7.0.1
  */

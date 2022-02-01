@@ -10,19 +10,20 @@ public class QAVAuthBuffer
   
   public static QAVAuthBuffer a()
   {
-    if (jdField_a_of_type_ComTencentAvSigQAVAuthBuffer == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentAvSigQAVAuthBuffer == null)
+    if (jdField_a_of_type_ComTencentAvSigQAVAuthBuffer == null) {
+      try
       {
-        a();
-        if (jdField_a_of_type_Boolean) {
-          jdField_a_of_type_ComTencentAvSigQAVAuthBuffer = new QAVAuthBuffer();
+        if (jdField_a_of_type_ComTencentAvSigQAVAuthBuffer == null)
+        {
+          a();
+          if (jdField_a_of_type_Boolean) {
+            jdField_a_of_type_ComTencentAvSigQAVAuthBuffer = new QAVAuthBuffer();
+          }
         }
       }
-      return jdField_a_of_type_ComTencentAvSigQAVAuthBuffer;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentAvSigQAVAuthBuffer;
   }
   
   @SuppressLint({"UnsafeDynamicallyLoadedCode"})
@@ -33,16 +34,21 @@ public class QAVAuthBuffer
       {
         if (SoUtil.customLibPath != null)
         {
-          System.load(SoUtil.customLibPath + "/libstlport_shared.so");
-          System.load(SoUtil.customLibPath + "/libqav_authbuff.so");
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(SoUtil.customLibPath);
+          localStringBuilder.append("/libstlport_shared.so");
+          System.load(localStringBuilder.toString());
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(SoUtil.customLibPath);
+          localStringBuilder.append("/libqav_authbuff.so");
+          System.load(localStringBuilder.toString());
         }
-        for (;;)
+        else
         {
-          jdField_a_of_type_Boolean = true;
-          return;
           System.loadLibrary("stlport_shared");
           System.loadLibrary("qav_authbuff");
         }
+        jdField_a_of_type_Boolean = true;
         return;
       }
       catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
@@ -57,7 +63,7 @@ public class QAVAuthBuffer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.sig.QAVAuthBuffer
  * JD-Core Version:    0.7.0.1
  */

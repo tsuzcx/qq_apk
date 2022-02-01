@@ -18,12 +18,13 @@ public class RenderWorkerFactory
     if (paramString1.endsWith(".pag")) {
       return new PagRenderWorker(paramSurfaceTextureEntry, paramString1, paramContext, paramInt2, paramInt1, paramInt3, paramSize, paramEventChannel, paramString2);
     }
-    Object localObject = "";
     int i = paramString1.lastIndexOf('.');
     if (i >= 0) {
       localObject = paramString1.substring(i + 1);
+    } else {
+      localObject = "";
     }
-    localObject = (IRenderWorkerFactory)sRenderWorkerFactory.get(localObject);
+    Object localObject = (IRenderWorkerFactory)sRenderWorkerFactory.get(localObject);
     if (localObject == null) {
       return null;
     }
@@ -62,7 +63,7 @@ public class RenderWorkerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.peterlmeng.animate_image.renderer.RenderWorkerFactory
  * JD-Core Version:    0.7.0.1
  */

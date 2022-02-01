@@ -63,22 +63,23 @@ public class ExtfDownloadFileInfo
       QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "mFileSize is 0");
       return false;
     }
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if ((localList != null) && (localList.size() != 0))
     {
-      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "hostList is null");
-      return false;
+      if (TextUtils.isEmpty(this.b))
+      {
+        QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "serverPath is null");
+        return false;
+      }
+      if (TextUtils.isEmpty(this.c))
+      {
+        QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "strCookie is null");
+        return false;
+      }
+      return true;
     }
-    if (TextUtils.isEmpty(this.b))
-    {
-      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "serverPath is null");
-      return false;
-    }
-    if (TextUtils.isEmpty(this.c))
-    {
-      QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "strCookie is null");
-      return false;
-    }
-    return true;
+    QLog.e("ExcitingTransfer.ExtfDownloadFileInfo<FileAssistant>", 1, "hostList is null");
+    return false;
   }
   
   public byte[] a()
@@ -123,7 +124,7 @@ public class ExtfDownloadFileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.download.downloader.ExtfDownloadFileInfo
  * JD-Core Version:    0.7.0.1
  */

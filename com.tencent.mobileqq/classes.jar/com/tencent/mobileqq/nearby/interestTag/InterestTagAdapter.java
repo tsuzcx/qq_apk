@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
 public class InterestTagAdapter
@@ -25,10 +24,11 @@ public class InterestTagAdapter
   
   public InterestTagInfo a(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= paramInt)) {
-      return null;
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if ((localList != null) && (localList.size() > paramInt)) {
+      return (InterestTagInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    return (InterestTagInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return null;
   }
   
   public void a(List<InterestTagInfo> paramList, boolean paramBoolean)
@@ -41,10 +41,11 @@ public class InterestTagAdapter
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList == null) {
       return 0;
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return localList.size();
   }
   
   public long getItemId(int paramInt)
@@ -54,25 +55,23 @@ public class InterestTagAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    InterestTagItemView localInterestTagItemView;
     if (paramView == null)
     {
-      localInterestTagItemView = new InterestTagItemView(this.jdField_a_of_type_AndroidContentContext);
-      localInterestTagItemView.a(this.jdField_a_of_type_Int);
-      localInterestTagItemView.setCallback(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagInterestTagItemView$IInterestTagItemViewCallback);
+      paramView = new InterestTagItemView(this.jdField_a_of_type_AndroidContentContext);
+      paramView.a(this.jdField_a_of_type_Int);
+      paramView.setCallback(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagInterestTagItemView$IInterestTagItemViewCallback);
     }
-    for (;;)
+    else
     {
-      localInterestTagItemView.a(a(paramInt));
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localInterestTagItemView;
-      localInterestTagItemView = (InterestTagItemView)paramView;
+      paramView = (InterestTagItemView)paramView;
     }
+    paramView.a(a(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.InterestTagAdapter
  * JD-Core Version:    0.7.0.1
  */

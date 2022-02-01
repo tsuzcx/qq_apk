@@ -27,10 +27,10 @@ class DefaultSmsImpl$OpenDevLockObserver
   
   public boolean a(QBaseActivity paramQBaseActivity, ICommonSmsView paramICommonSmsView)
   {
-    if ((paramQBaseActivity == null) || (paramICommonSmsView == null)) {
-      return true;
+    if ((paramQBaseActivity != null) && (paramICommonSmsView != null)) {
+      return paramQBaseActivity.isFinishing();
     }
-    return paramQBaseActivity.isFinishing();
+    return true;
   }
   
   public void onAskDevLockSms(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
@@ -45,8 +45,14 @@ class DefaultSmsImpl$OpenDevLockObserver
     localICommonSmsView.dismissDialog();
     if ((paramInt == 0) && (paramDevlockInfo != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DefaultSmsImpl", 2, "OnAskDevLockSms DevlockInfo.TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount);
+      if (QLog.isColorLevel())
+      {
+        paramWUserSigInfo = new StringBuilder();
+        paramWUserSigInfo.append("OnAskDevLockSms DevlockInfo.TimeLimit:");
+        paramWUserSigInfo.append(paramDevlockInfo.TimeLimit);
+        paramWUserSigInfo.append(" AvailableMsgCount:");
+        paramWUserSigInfo.append(paramDevlockInfo.AvailableMsgCount);
+        QLog.d("DefaultSmsImpl", 2, paramWUserSigInfo.toString());
       }
       if (paramDevlockInfo.TimeLimit <= 0) {
         paramDevlockInfo.TimeLimit = 60;
@@ -54,23 +60,37 @@ class DefaultSmsImpl$OpenDevLockObserver
       localICommonSmsView.startTimer(paramDevlockInfo.TimeLimit);
       return;
     }
-    QLog.d("DefaultSmsImpl", 1, "OnAskDevLockSms ret = " + paramInt);
-    if (paramErrMsg != null) {
-      QLog.d("DefaultSmsImpl", 1, "OnAskDevLockSms  errMsg:" + paramErrMsg.getMessage());
+    paramDevlockInfo = new StringBuilder();
+    paramDevlockInfo.append("OnAskDevLockSms ret = ");
+    paramDevlockInfo.append(paramInt);
+    QLog.d("DefaultSmsImpl", 1, paramDevlockInfo.toString());
+    if (paramErrMsg != null)
+    {
+      paramDevlockInfo = new StringBuilder();
+      paramDevlockInfo.append("OnAskDevLockSms  errMsg:");
+      paramDevlockInfo.append(paramErrMsg.getMessage());
+      QLog.d("DefaultSmsImpl", 1, paramDevlockInfo.toString());
     }
     if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
     {
       QQToast.a(paramWUserSigInfo, 1, paramErrMsg.getMessage(), 0).a();
       return;
     }
-    QQToast.a(paramWUserSigInfo, 1, paramWUserSigInfo.getString(2131716956), 0).a();
+    QQToast.a(paramWUserSigInfo, 1, paramWUserSigInfo.getString(2131716609), 0).a();
   }
   
   public void onCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    QLog.d("DefaultSmsImpl", 1, "OnCheckDevLockSms ret = " + paramInt);
-    if (paramErrMsg != null) {
-      QLog.d("DefaultSmsImpl", 1, "OnCheckDevLockSms  errMsg:" + paramErrMsg.getMessage());
+    paramWUserSigInfo = new StringBuilder();
+    paramWUserSigInfo.append("OnCheckDevLockSms ret = ");
+    paramWUserSigInfo.append(paramInt);
+    QLog.d("DefaultSmsImpl", 1, paramWUserSigInfo.toString());
+    if (paramErrMsg != null)
+    {
+      paramWUserSigInfo = new StringBuilder();
+      paramWUserSigInfo.append("OnCheckDevLockSms  errMsg:");
+      paramWUserSigInfo.append(paramErrMsg.getMessage());
+      QLog.d("DefaultSmsImpl", 1, paramWUserSigInfo.toString());
     }
     paramWUserSigInfo = (QBaseActivity)this.a.get();
     Object localObject = (ICommonSmsView)this.b.get();
@@ -98,12 +118,12 @@ class DefaultSmsImpl$OpenDevLockObserver
       QQToast.a(paramWUserSigInfo, 1, paramErrMsg.getMessage(), 0).a();
       return;
     }
-    QQToast.a(paramWUserSigInfo, 1, paramWUserSigInfo.getString(2131716956), 0).a();
+    QQToast.a(paramWUserSigInfo, 1, paramWUserSigInfo.getString(2131716609), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.DefaultSmsImpl.OpenDevLockObserver
  * JD-Core Version:    0.7.0.1
  */

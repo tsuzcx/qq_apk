@@ -11,7 +11,7 @@ import com.tencent.mobileqq.service.message.MessageProtoCodec;
 import com.tencent.qphone.base.util.QLog;
 
 public class SubType0xdc
-  implements Msg0X210SubTypeDecoder
+  implements Msg0X210SubTypeDecoder<OnLinePushMessageProcessor>
 {
   private static void a(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
@@ -25,18 +25,19 @@ public class SubType0xdc
     if (localIApolloManagerService != null) {
       localIApolloManagerService.decodeApolloBubblePushData(paramMsgType0x210.vProtobuf);
     }
-    MessageProtoCodec.a(paramMessageHandler, paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType);
+    MessageProtoCodec.a(paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType, paramMessageHandler.a());
   }
   
   public MessageRecord a(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    a(paramOnLinePushMessageProcessor.a(), paramOnLinePushMessageProcessor.a().getMsgHandler(), paramMsgInfo, paramMsgType0x210);
+    paramOnLinePushMessageProcessor = (QQAppInterface)paramOnLinePushMessageProcessor.a();
+    a(paramOnLinePushMessageProcessor, paramOnLinePushMessageProcessor.getMsgHandler(), paramMsgInfo, paramMsgType0x210);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0xdc
  * JD-Core Version:    0.7.0.1
  */

@@ -75,91 +75,73 @@ public class PluginJumpManager
   
   public boolean checkQVerAndModel(PluginJumpManager.UrlMappingInfo paramUrlMappingInfo)
   {
-    boolean bool2 = true;
     int i;
-    boolean bool1;
-    int j;
     try
     {
       i = this.mContext.getPackageManager().getPackageInfo(this.mContext.getPackageName(), 0).versionCode;
-      if (TextUtils.isEmpty(paramUrlMappingInfo.e)) {
-        if (TextUtils.isEmpty(paramUrlMappingInfo.d))
-        {
-          bool1 = bool2;
-          bool2 = bool1;
-          if (!TextUtils.isEmpty(paramUrlMappingInfo.f))
-          {
-            Object localObject = Build.BRAND;
-            String str2 = Build.MODEL;
-            String str1 = Build.VERSION.RELEASE;
-            paramUrlMappingInfo = paramUrlMappingInfo.f.split(",");
-            localObject = new StringBuffer((String)localObject);
-            ((StringBuffer)localObject).append(" ").append(str2);
-            str2 = ((StringBuffer)localObject).toString().toLowerCase();
-            str1 = (" " + str1).toLowerCase();
-            j = paramUrlMappingInfo.length;
-            i = 0;
-            label147:
-            bool2 = bool1;
-            if (i < j)
-            {
-              localObject = paramUrlMappingInfo[i].toLowerCase();
-              if ((!((String)localObject).contains(str2)) || (!str1.startsWith((String)localObject))) {
-                break label281;
-              }
-              bool2 = false;
-            }
-          }
-          return bool2;
-        }
-      }
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
     {
-      for (;;)
-      {
-        localNameNotFoundException.printStackTrace();
-        i = 0;
-      }
+      localNameNotFoundException.printStackTrace();
+      i = 0;
     }
-    for (;;)
+    boolean bool2 = TextUtils.isEmpty(paramUrlMappingInfo.e);
+    boolean bool1 = true;
+    if ((!bool2) || (!TextUtils.isEmpty(paramUrlMappingInfo.d))) {}
+    try
     {
-      try
-      {
-        j = Integer.valueOf(paramUrlMappingInfo.d).intValue();
-        if (i < j) {
-          break label294;
-        }
-        bool1 = true;
+      j = Integer.valueOf(paramUrlMappingInfo.d).intValue();
+      if (i < j) {
+        break label131;
       }
-      catch (Exception localException)
-      {
-        bool1 = false;
-        continue;
-      }
-      String[] arrayOfString = paramUrlMappingInfo.e.split(",");
-      int k = arrayOfString.length;
-      j = 0;
-      for (;;)
-      {
-        if (j < k)
-        {
-          bool1 = bool2;
-          if (String.valueOf(i).equals(arrayOfString[j])) {
-            break;
-          }
-          j += 1;
-          continue;
-          label281:
-          i += 1;
-          break label147;
-        }
-      }
-      bool1 = false;
-      break;
-      label294:
-      bool1 = false;
     }
+    catch (Exception localException)
+    {
+      int j;
+      Object localObject1;
+      int k;
+      Object localObject2;
+      String str;
+      break label131;
+    }
+    localObject1 = paramUrlMappingInfo.e.split(",");
+    k = localObject1.length;
+    j = 0;
+    while (j < k)
+    {
+      if (String.valueOf(i).equals(localObject1[j])) {
+        break label134;
+      }
+      j += 1;
+    }
+    label131:
+    bool1 = false;
+    label134:
+    if (!TextUtils.isEmpty(paramUrlMappingInfo.f))
+    {
+      localObject2 = Build.BRAND;
+      str = Build.MODEL;
+      localObject1 = Build.VERSION.RELEASE;
+      paramUrlMappingInfo = paramUrlMappingInfo.f.split(",");
+      localObject2 = new StringBuffer((String)localObject2);
+      ((StringBuffer)localObject2).append(" ");
+      ((StringBuffer)localObject2).append(str);
+      str = ((StringBuffer)localObject2).toString().toLowerCase();
+      ((StringBuffer)localObject2).append(" ");
+      ((StringBuffer)localObject2).append((String)localObject1);
+      localObject1 = ((StringBuffer)localObject2).toString().toLowerCase();
+      j = paramUrlMappingInfo.length;
+      i = 0;
+      while (i < j)
+      {
+        localObject2 = paramUrlMappingInfo[i].toLowerCase();
+        if ((((String)localObject2).contains(str)) && (((String)localObject1).startsWith((String)localObject2))) {
+          return false;
+        }
+        i += 1;
+      }
+    }
+    return bool1;
   }
   
   public void launchPlugin(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, long paramLong, String paramString6, boolean paramBoolean)
@@ -173,107 +155,108 @@ public class PluginJumpManager
     try
     {
       i = Integer.valueOf(this.mPref.getString("version", "0")).intValue();
-      if (i <= this.mConfigVersion) {
-        return;
-      }
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      for (;;)
+      int i;
+      label25:
+      Object localObject2;
+      Object localObject1;
+      break label25;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PluginJumpManager", 2, "version parse error!");
+    }
+    i = 0;
+    if (i <= this.mConfigVersion) {
+      return;
+    }
+    this.mConfigVersion = i;
+    localObject2 = this.mPref.getString("bidinfo", "");
+    localObject1 = this.mPref.getString("urlmaping", "");
+    try
+    {
+      localObject2 = new JSONArray((String)localObject2);
+      int k = ((JSONArray)localObject2).length();
+      i = 0;
+      Object localObject3;
+      while (i < k)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("PluginJumpManager", 2, "version parse error!");
-        }
-        int i = 0;
-        continue;
-        this.mConfigVersion = i;
-        Object localObject2 = this.mPref.getString("bidinfo", "");
-        Object localObject1 = this.mPref.getString("urlmaping", "");
-        try
-        {
-          localObject2 = new JSONArray((String)localObject2);
-          int k = ((JSONArray)localObject2).length();
-          i = 0;
-          Object localObject3;
-          while (i < k)
-          {
-            localObject3 = new PluginJumpManager.BidInfo(this);
-            JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(i);
-            ((PluginJumpManager.BidInfo)localObject3).jdField_a_of_type_JavaLangString = localJSONObject.optString("bid");
-            ((PluginJumpManager.BidInfo)localObject3).b = localJSONObject.optString("pluginid");
-            ((PluginJumpManager.BidInfo)localObject3).c = localJSONObject.optString("pluginname");
-            this.mBidInfos.put(((PluginJumpManager.BidInfo)localObject3).jdField_a_of_type_JavaLangString, localObject3);
-            i += 1;
-          }
-          localObject1 = new JSONArray((String)localObject1);
-          k = ((JSONArray)localObject1).length();
-          i = j;
-          while (i < k)
-          {
-            localObject2 = new PluginJumpManager.UrlMappingInfo(this);
-            localObject3 = ((JSONArray)localObject1).getJSONObject(i);
-            ((PluginJumpManager.UrlMappingInfo)localObject2).jdField_a_of_type_JavaLangString = ((JSONObject)localObject3).optString("url");
-            ((PluginJumpManager.UrlMappingInfo)localObject2).b = ((JSONObject)localObject3).optString("activity");
-            ((PluginJumpManager.UrlMappingInfo)localObject2).c = ((JSONObject)localObject3).optString("bid");
-            ((PluginJumpManager.UrlMappingInfo)localObject2).f = ((JSONObject)localObject3).optString("a_black_ver");
-            ((PluginJumpManager.UrlMappingInfo)localObject2).d = ((JSONObject)localObject3).optString("q_min_ver");
-            ((PluginJumpManager.UrlMappingInfo)localObject2).e = ((JSONObject)localObject3).optString("q_white_ver");
-            ((PluginJumpManager.UrlMappingInfo)localObject2).jdField_a_of_type_Boolean = ((JSONObject)localObject3).optBoolean("useiphonetitlebar");
-            ((PluginJumpManager.UrlMappingInfo)localObject2).g = ((JSONObject)localObject3).optString("extra");
-            this.mUrlmappingInfos.put(((PluginJumpManager.UrlMappingInfo)localObject2).jdField_a_of_type_JavaLangString, localObject2);
-            i += 1;
-          }
-          if (!QLog.isColorLevel()) {}
-        }
-        catch (JSONException localJSONException)
-        {
-          localJSONException.printStackTrace();
-        }
+        localObject3 = new PluginJumpManager.BidInfo(this);
+        JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(i);
+        ((PluginJumpManager.BidInfo)localObject3).jdField_a_of_type_JavaLangString = localJSONObject.optString("bid");
+        ((PluginJumpManager.BidInfo)localObject3).b = localJSONObject.optString("pluginid");
+        ((PluginJumpManager.BidInfo)localObject3).c = localJSONObject.optString("pluginname");
+        this.mBidInfos.put(((PluginJumpManager.BidInfo)localObject3).jdField_a_of_type_JavaLangString, localObject3);
+        i += 1;
       }
-      QLog.d("PluginJumpManager", 2, "config parse error!");
+      localObject1 = new JSONArray((String)localObject1);
+      k = ((JSONArray)localObject1).length();
+      i = j;
+      while (i < k)
+      {
+        localObject2 = new PluginJumpManager.UrlMappingInfo(this);
+        localObject3 = ((JSONArray)localObject1).getJSONObject(i);
+        ((PluginJumpManager.UrlMappingInfo)localObject2).jdField_a_of_type_JavaLangString = ((JSONObject)localObject3).optString("url");
+        ((PluginJumpManager.UrlMappingInfo)localObject2).b = ((JSONObject)localObject3).optString("activity");
+        ((PluginJumpManager.UrlMappingInfo)localObject2).c = ((JSONObject)localObject3).optString("bid");
+        ((PluginJumpManager.UrlMappingInfo)localObject2).f = ((JSONObject)localObject3).optString("a_black_ver");
+        ((PluginJumpManager.UrlMappingInfo)localObject2).d = ((JSONObject)localObject3).optString("q_min_ver");
+        ((PluginJumpManager.UrlMappingInfo)localObject2).e = ((JSONObject)localObject3).optString("q_white_ver");
+        ((PluginJumpManager.UrlMappingInfo)localObject2).jdField_a_of_type_Boolean = ((JSONObject)localObject3).optBoolean("useiphonetitlebar");
+        ((PluginJumpManager.UrlMappingInfo)localObject2).g = ((JSONObject)localObject3).optString("extra");
+        this.mUrlmappingInfos.put(((PluginJumpManager.UrlMappingInfo)localObject2).jdField_a_of_type_JavaLangString, localObject2);
+        i += 1;
+      }
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d("PluginJumpManager", 2, "config parse error!");
+      }
     }
   }
   
   public void loadConfigFromFile()
   {
-    Object localObject1 = new File(OfflineEnvHelper.a("1007") + "1007" + "/urlplugin.cfg");
-    InputStream localInputStream;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(OfflineEnvHelper.a("1007"));
+    ((StringBuilder)localObject1).append("1007");
+    ((StringBuilder)localObject1).append("/urlplugin.cfg");
+    localObject1 = new File(((StringBuilder)localObject1).toString());
     if (((File)localObject1).exists())
     {
+      InputStream localInputStream;
       try
       {
         localObject1 = new FileInputStream((File)localObject1);
-        if (localObject1 != null) {
-          break label103;
-        }
-        return;
       }
       catch (IOException localIOException)
       {
-        for (;;)
-        {
-          report("BizTechReport", "native_plugin", "read_config", 1, null, null, null, null);
-          localIOException.printStackTrace();
-          localInputStream = null;
-        }
+        report("BizTechReport", "native_plugin", "read_config", 1, null, null, null, null);
+        localIOException.printStackTrace();
+        localInputStream = null;
       }
-    }
-    else
-    {
-      report("BizTechReport", "native_plugin", "read_config", 2, null, null, null, null);
-      return;
-    }
-    label103:
-    Object localObject2 = Util.a(localInputStream);
-    try
-    {
-      localObject2 = new JSONObject((String)localObject2);
-      SharedPreferences.Editor localEditor = this.mPref.edit();
-      localEditor.putString("config_file_version", HtmlOffline.a("1007"));
-      localEditor.putString("version", ((JSONObject)localObject2).optString("version"));
-      localEditor.putString("bidinfo", ((JSONObject)localObject2).optString("bidinfo"));
-      localEditor.putString("urlmaping", ((JSONObject)localObject2).optString("urlmaping")).commit();
-      report("BizTechReport", "native_plugin", "read_config", 0, null, null, null, null);
+      if (localInputStream == null) {
+        return;
+      }
+      Object localObject2 = Util.a(localInputStream);
+      try
+      {
+        localObject2 = new JSONObject((String)localObject2);
+        SharedPreferences.Editor localEditor = this.mPref.edit();
+        localEditor.putString("config_file_version", HtmlOffline.a("1007"));
+        localEditor.putString("version", ((JSONObject)localObject2).optString("version"));
+        localEditor.putString("bidinfo", ((JSONObject)localObject2).optString("bidinfo"));
+        localEditor.putString("urlmaping", ((JSONObject)localObject2).optString("urlmaping")).commit();
+        report("BizTechReport", "native_plugin", "read_config", 0, null, null, null, null);
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+      }
       try
       {
         localInputStream.close();
@@ -285,13 +268,7 @@ public class PluginJumpManager
         return;
       }
     }
-    catch (Exception localException2)
-    {
-      for (;;)
-      {
-        localException2.printStackTrace();
-      }
-    }
+    report("BizTechReport", "native_plugin", "read_config", 2, null, null, null, null);
   }
   
   public final void openLinkInNewWebView(Activity paramActivity, String paramString1, String paramString2)
@@ -300,80 +277,86 @@ public class PluginJumpManager
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
       localBundle = paramActivity.getIntent().getExtras();
-      if (localBundle != null) {
-        break label130;
+      if (localBundle == null)
+      {
+        localBundle = new Bundle();
       }
-      localBundle = new Bundle();
+      else
+      {
+        localBundle.remove("title");
+        localBundle.remove("leftViewText");
+        localBundle.remove("post_data");
+      }
     }
     try
     {
-      for (;;)
-      {
-        i = Integer.valueOf(paramString2).intValue();
-        switch (i)
-        {
-        default: 
-          if (!(paramActivity instanceof mqq.app.BaseActivity)) {
-            break label268;
-          }
-          paramString2 = new Intent(paramActivity, paramActivity.getClass());
-          paramString2.putExtras(localBundle);
-          paramString2.putExtra("url", paramString1);
-          paramString2.setFlags(0);
-          paramActivity.startActivityForResult(paramString2, 100);
-          return;
-          label130:
-          localBundle.remove("title");
-          localBundle.remove("leftViewText");
-          localBundle.remove("post_data");
-        }
-      }
+      i = Integer.valueOf(paramString2).intValue();
     }
     catch (Exception paramString2)
     {
-      for (;;)
+      int i;
+      label76:
+      break label76;
+    }
+    i = 0;
+    if (i != 0)
+    {
+      if (i != 1)
       {
-        int i = 0;
-        continue;
-        localBundle.putBoolean("hide_more_button", false);
-        localBundle.putBoolean("hide_operation_bar", true);
-        continue;
+        if (i != 2)
+        {
+          if (i == 3)
+          {
+            localBundle.putBoolean("hide_more_button", true);
+            localBundle.putBoolean("hide_operation_bar", false);
+            localBundle.putString("webStyle", "");
+          }
+        }
+        else
+        {
+          localBundle.putBoolean("hide_more_button", false);
+          localBundle.putBoolean("hide_operation_bar", false);
+          localBundle.putString("webStyle", "");
+        }
+      }
+      else
+      {
         localBundle.putBoolean("hide_more_button", true);
         localBundle.putBoolean("hide_operation_bar", true);
-        continue;
-        localBundle.putBoolean("hide_more_button", false);
-        localBundle.putBoolean("hide_operation_bar", false);
-        localBundle.putString("webStyle", "");
-        continue;
-        localBundle.putBoolean("hide_more_button", true);
-        localBundle.putBoolean("hide_operation_bar", false);
-        localBundle.putString("webStyle", "");
-        continue;
-        label268:
-        paramString2 = new Intent(paramActivity, QQBrowserActivity.class);
       }
     }
+    else
+    {
+      localBundle.putBoolean("hide_more_button", false);
+      localBundle.putBoolean("hide_operation_bar", true);
+    }
+    if ((paramActivity instanceof mqq.app.BaseActivity)) {
+      paramString2 = new Intent(paramActivity, paramActivity.getClass());
+    } else {
+      paramString2 = new Intent(paramActivity, QQBrowserActivity.class);
+    }
+    paramString2.putExtras(localBundle);
+    paramString2.putExtra("url", paramString1);
+    paramString2.setFlags(0);
+    paramActivity.startActivityForResult(paramString2, 100);
   }
   
   public boolean openView(Activity paramActivity, String paramString1, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString1)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString1)) {
       return false;
-      AppRuntime localAppRuntime = null;
-      if ((paramActivity instanceof mqq.app.BaseActivity)) {
-        localAppRuntime = ((mqq.app.BaseActivity)paramActivity).getAppRuntime();
-      }
-      while (localAppRuntime != null)
-      {
-        String str = localAppRuntime.getAccount();
-        return openView(paramActivity, paramString1, paramString2, str, ((TicketManager)localAppRuntime.getManager(2)).getSkey(str), false);
-        if ((paramActivity instanceof com.tencent.mobileqq.app.BaseActivity)) {
-          localAppRuntime = ((com.tencent.mobileqq.app.BaseActivity)paramActivity).getAppRuntime();
-        }
-      }
     }
+    AppRuntime localAppRuntime = null;
+    if ((paramActivity instanceof mqq.app.BaseActivity)) {
+      localAppRuntime = ((mqq.app.BaseActivity)paramActivity).getAppRuntime();
+    } else if ((paramActivity instanceof com.tencent.mobileqq.app.BaseActivity)) {
+      localAppRuntime = ((com.tencent.mobileqq.app.BaseActivity)paramActivity).getAppRuntime();
+    }
+    if (localAppRuntime == null) {
+      return false;
+    }
+    String str = localAppRuntime.getAccount();
+    return openView(paramActivity, paramString1, paramString2, str, ((TicketManager)localAppRuntime.getManager(2)).getSkey(str), false);
   }
   
   public boolean openView(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
@@ -386,62 +369,70 @@ public class PluginJumpManager
       return false;
     }
     int i = paramString1.indexOf("?");
-    if (i > 0) {}
-    for (Object localObject1 = paramString1.substring(0, i); !this.mUrlmappingInfos.containsKey(localObject1); localObject1 = paramString1) {
+    if (i > 0) {
+      localObject1 = paramString1.substring(0, i);
+    } else {
+      localObject1 = paramString1;
+    }
+    if (!this.mUrlmappingInfos.containsKey(localObject1)) {
       return false;
     }
-    localObject1 = (PluginJumpManager.UrlMappingInfo)this.mUrlmappingInfos.get(localObject1);
+    Object localObject1 = (PluginJumpManager.UrlMappingInfo)this.mUrlmappingInfos.get(localObject1);
     Object localObject2 = ((PluginJumpManager.UrlMappingInfo)localObject1).c;
-    if ((TextUtils.isEmpty((CharSequence)localObject2)) || (!this.mBidInfos.containsKey(localObject2))) {
-      return false;
-    }
-    if (!checkQVerAndModel((PluginJumpManager.UrlMappingInfo)localObject1)) {
-      return false;
-    }
-    if (!TextUtils.isEmpty(((PluginJumpManager.UrlMappingInfo)localObject1).g))
+    if (!TextUtils.isEmpty((CharSequence)localObject2))
     {
-      String[] arrayOfString;
-      int j;
-      if (((PluginJumpManager.UrlMappingInfo)localObject1).g.contains(","))
-      {
-        arrayOfString = ((PluginJumpManager.UrlMappingInfo)localObject1).g.split(",");
-        int k = arrayOfString.length;
-        j = 0;
-        i = 0;
-        while (i < k)
-        {
-          if (paramString1.contains(arrayOfString[i])) {
-            j = 1;
-          }
-          i += 1;
-        }
-        if (j == 0) {
-          return false;
-        }
+      if (!this.mBidInfos.containsKey(localObject2)) {
+        return false;
       }
-      else
+      if (!checkQVerAndModel((PluginJumpManager.UrlMappingInfo)localObject1)) {
+        return false;
+      }
+      if (!TextUtils.isEmpty(((PluginJumpManager.UrlMappingInfo)localObject1).g))
       {
-        if (((PluginJumpManager.UrlMappingInfo)localObject1).g.contains(";"))
+        String[] arrayOfString;
+        int j;
+        if (((PluginJumpManager.UrlMappingInfo)localObject1).g.contains(","))
         {
-          arrayOfString = ((PluginJumpManager.UrlMappingInfo)localObject1).g.split(";");
+          arrayOfString = ((PluginJumpManager.UrlMappingInfo)localObject1).g.split(",");
+          int k = arrayOfString.length;
           i = 0;
-          j = arrayOfString.length;
-          while (i < j)
+          j = 0;
+          while (i < k)
           {
-            if (!paramString1.contains(arrayOfString[i])) {
-              return false;
+            if (paramString1.contains(arrayOfString[i])) {
+              j = 1;
             }
             i += 1;
           }
+          if (j == 0) {
+            return false;
+          }
         }
-        if (!paramString1.contains(((PluginJumpManager.UrlMappingInfo)localObject1).g)) {
-          return false;
+        else
+        {
+          if (((PluginJumpManager.UrlMappingInfo)localObject1).g.contains(";"))
+          {
+            arrayOfString = ((PluginJumpManager.UrlMappingInfo)localObject1).g.split(";");
+            j = arrayOfString.length;
+            i = 0;
+            while (i < j)
+            {
+              if (!paramString1.contains(arrayOfString[i])) {
+                return false;
+              }
+              i += 1;
+            }
+          }
+          if (!paramString1.contains(((PluginJumpManager.UrlMappingInfo)localObject1).g)) {
+            return false;
+          }
         }
       }
+      localObject2 = (PluginJumpManager.BidInfo)this.mBidInfos.get(localObject2);
+      PluginManagerHelper.getPluginInterface(paramActivity.getApplicationContext(), new PluginJumpManager.2(this, (PluginJumpManager.BidInfo)localObject2, paramActivity, paramString3, paramString1, paramString4, l, (PluginJumpManager.UrlMappingInfo)localObject1, paramString2));
+      return true;
     }
-    localObject2 = (PluginJumpManager.BidInfo)this.mBidInfos.get(localObject2);
-    PluginManagerHelper.getPluginInterface(paramActivity.getApplicationContext(), new PluginJumpManager.2(this, (PluginJumpManager.BidInfo)localObject2, paramActivity, paramString3, paramString1, paramString4, l, (PluginJumpManager.UrlMappingInfo)localObject1, paramString2));
-    return true;
+    return false;
   }
   
   public void updateConfig(AppRuntime paramAppRuntime)
@@ -450,18 +441,19 @@ public class PluginJumpManager
       return;
     }
     HtmlOffline.a();
-    if (paramAppRuntime.getLongAccountUin() % 10L == 6L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      HtmlOffline.jdField_a_of_type_Boolean = bool;
-      HtmlOffline.b("1007", paramAppRuntime, true, new PluginJumpManager.1(this));
-      return;
+    boolean bool;
+    if (paramAppRuntime.getLongAccountUin() % 10L == 6L) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    HtmlOffline.jdField_a_of_type_Boolean = bool;
+    HtmlOffline.b("1007", paramAppRuntime, true, new PluginJumpManager.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troopplugin.PluginJumpManager
  * JD-Core Version:    0.7.0.1
  */

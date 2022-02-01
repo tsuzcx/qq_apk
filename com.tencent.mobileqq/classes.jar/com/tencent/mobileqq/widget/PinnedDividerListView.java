@@ -65,171 +65,172 @@ public class PinnedDividerListView
     this.jdField_a_of_type_JavaUtilLinkedList.add(paramView);
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0)) {
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if ((localView != null) && (localView.getVisibility() == 0)) {
       drawChild(paramCanvas, this.jdField_a_of_type_AndroidViewView, getDrawingTime());
     }
   }
   
   @SuppressLint({"WrongCall"})
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    int i;
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
       i = getFirstVisiblePosition() - this.jdField_a_of_type_JavaUtilLinkedList.size();
-      if ((i < 0) || (this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter.a(this.jdField_a_of_type_AndroidViewView, i))) {
-        break label161;
+      if ((i >= 0) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter.a(this.jdField_a_of_type_AndroidViewView, i)))
+      {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        localObject = this.jdField_a_of_type_AndroidViewView;
+        ((View)localObject).layout(0, -this.b, ((View)localObject).getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight() - this.b);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter.a(this.jdField_a_of_type_AndroidViewView, i);
       }
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_AndroidViewView.layout(0, -this.b, this.jdField_a_of_type_AndroidViewView.getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight() - this.b);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter.a(this.jdField_a_of_type_AndroidViewView, i);
+      else
+      {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      }
     }
+    int k = getChildCount();
+    int i = this.jdField_a_of_type_JavaUtilLinkedList.size();
     for (;;)
     {
-      int j = getChildCount();
-      i = this.jdField_a_of_type_JavaUtilLinkedList.size() + 1;
-      while (i < j)
-      {
-        View localView = getChildAt(i);
-        if (localView.getVisibility() != 0) {
-          localView.setVisibility(0);
-        }
-        i += 1;
+      int j = i + 1;
+      if (j >= k) {
+        break;
       }
-      label161:
-      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      localObject = getChildAt(j);
+      i = j;
+      if (((View)localObject).getVisibility() != 0)
+      {
+        ((View)localObject).setVisibility(0);
+        i = j;
+      }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$OnLayoutListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$OnLayoutListener.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$OnLayoutListener;
+    if (localObject != null) {
+      ((PinnedDividerListView.OnLayoutListener)localObject).a(this, paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      measureChild(this.jdField_a_of_type_AndroidViewView, paramInt1, paramInt2);
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (localView != null) {
+      measureChild(localView, paramInt1, paramInt2);
     }
   }
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
     int i = paramInt1;
-    int j;
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      if ((paramInt1 < this.jdField_a_of_type_JavaUtilLinkedList.size()) || (this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter.a(this.jdField_a_of_type_AndroidViewView, paramInt1 - this.jdField_a_of_type_JavaUtilLinkedList.size()))) {
-        break label359;
-      }
-      i = paramInt1 - this.jdField_a_of_type_JavaUtilLinkedList.size();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter.a(this.jdField_a_of_type_AndroidViewView, i);
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter.a(i))
+      int j;
+      if ((paramInt1 >= this.jdField_a_of_type_JavaUtilLinkedList.size()) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter.a(this.jdField_a_of_type_AndroidViewView, paramInt1 - this.jdField_a_of_type_JavaUtilLinkedList.size())))
       {
-        this.jdField_a_of_type_Int = 0;
-        paramInt1 = 1;
-        j = getChildCount();
-        if (paramInt1 != 0)
-        {
-          localView = getChildAt(0);
-          if ((localView != null) && (localView.getVisibility() != 4)) {
-            localView.setVisibility(4);
-          }
-        }
-        if (paramInt1 == 0) {
-          break label235;
-        }
-        paramInt1 = 1;
-      }
-      for (;;)
-      {
-        if (paramInt1 >= j) {
-          break label240;
-        }
-        localView = getChildAt(paramInt1);
-        if (localView.getVisibility() != 0) {
-          localView.setVisibility(0);
-        }
-        paramInt1 += 1;
-        continue;
-        localView = getChildAt(0);
-        if ((localView != null) && (localView.getBottom() > this.jdField_a_of_type_AndroidViewView.getMeasuredHeight()))
+        j = paramInt1 - this.jdField_a_of_type_JavaUtilLinkedList.size();
+        this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter.a(this.jdField_a_of_type_AndroidViewView, j);
+        if (this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter.a(j))
         {
           this.jdField_a_of_type_Int = 0;
-          paramInt1 = 0;
-          break;
+          paramInt1 = 1;
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter.a(i + 1))
+        else
         {
-          this.jdField_a_of_type_Int = 1;
+          localObject = getChildAt(0);
+          if ((localObject != null) && (((View)localObject).getBottom() > this.jdField_a_of_type_AndroidViewView.getMeasuredHeight())) {
+            this.jdField_a_of_type_Int = 0;
+          } else if (this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter.a(j + 1)) {
+            this.jdField_a_of_type_Int = 1;
+          } else {
+            this.jdField_a_of_type_Int = 0;
+          }
           paramInt1 = 0;
-          break;
         }
-        this.jdField_a_of_type_Int = 0;
-        paramInt1 = 0;
-        break;
-        label235:
-        paramInt1 = 0;
-      }
-      label240:
-      if (this.jdField_a_of_type_Int != 1) {
-        break label351;
-      }
-      View localView = getChildAt(1);
-      j = this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
-      if (localView == null) {
-        break label346;
-      }
-      paramInt1 = localView.getTop();
-      this.b = (j - paramInt1);
-      label283:
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_AndroidViewView.layout(0, -this.b, this.jdField_a_of_type_AndroidViewView.getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight() - this.b);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener != null) {
-        this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener.onScroll(paramAbsListView, i, paramInt2, paramInt3);
-      }
-      return;
-      label346:
-      paramInt1 = 0;
-      break;
-      label351:
-      this.b = 0;
-      break label283;
-      label359:
-      this.jdField_a_of_type_Int = -1;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      j = this.jdField_a_of_type_JavaUtilLinkedList.size();
-      i = paramInt1;
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter.getCount() > 0)
-      {
+        int k = getChildCount();
         i = paramInt1;
-        if (this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter.a(0))
+        if (paramInt1 != 0)
         {
+          localObject = getChildAt(0);
           i = paramInt1;
-          if (j >= paramInt1)
+          if (localObject != null)
           {
             i = paramInt1;
-            if (j < paramInt1 + paramInt2)
+            if (((View)localObject).getVisibility() != 4)
             {
-              getChildAt(j - paramInt1).setVisibility(0);
+              ((View)localObject).setVisibility(4);
               i = paramInt1;
+            }
+          }
+        }
+        while (i < k)
+        {
+          localObject = getChildAt(i);
+          if (((View)localObject).getVisibility() != 0) {
+            ((View)localObject).setVisibility(0);
+          }
+          i += 1;
+        }
+        if (this.jdField_a_of_type_Int == 1)
+        {
+          localObject = getChildAt(1);
+          i = this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
+          if (localObject != null) {
+            paramInt1 = ((View)localObject).getTop();
+          } else {
+            paramInt1 = 0;
+          }
+          this.b = (i - paramInt1);
+        }
+        else
+        {
+          this.b = 0;
+        }
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        localObject = this.jdField_a_of_type_AndroidViewView;
+        ((View)localObject).layout(0, -this.b, ((View)localObject).getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight() - this.b);
+        i = j;
+      }
+      else
+      {
+        this.jdField_a_of_type_Int = -1;
+        this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+        j = this.jdField_a_of_type_JavaUtilLinkedList.size();
+        i = paramInt1;
+        if (this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter.getCount() > 0)
+        {
+          i = paramInt1;
+          if (this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView$DividerAdapter.a(0))
+          {
+            i = paramInt1;
+            if (j >= paramInt1)
+            {
+              i = paramInt1;
+              if (j < paramInt1 + paramInt2)
+              {
+                getChildAt(j - paramInt1).setVisibility(0);
+                i = paramInt1;
+              }
             }
           }
         }
       }
     }
+    Object localObject = this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
+    if (localObject != null) {
+      ((AbsListView.OnScrollListener)localObject).onScroll(paramAbsListView, i, paramInt2, paramInt3);
+    }
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener != null) {
-      this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener.onScrollStateChanged(paramAbsListView, paramInt);
+    AbsListView.OnScrollListener localOnScrollListener = this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
+    if (localOnScrollListener != null) {
+      localOnScrollListener.onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
   
@@ -272,7 +273,7 @@ public class PinnedDividerListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PinnedDividerListView
  * JD-Core Version:    0.7.0.1
  */

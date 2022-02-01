@@ -74,41 +74,68 @@ public class TVKVideoInfoDnsQuery
   
   public void run()
   {
-    for (;;)
+    try
     {
-      long l1;
-      int i;
-      try
+      l1 = System.currentTimeMillis();
+      localObject1 = System.out;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("dns:");
+      ((StringBuilder)localObject2).append(this.hostName);
+      ((StringBuilder)localObject2).append(" begin");
+      ((PrintStream)localObject1).println(((StringBuilder)localObject2).toString());
+      localObject1 = InetAddress.getAllByName(this.hostName);
+      i = 0;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        l1 = System.currentTimeMillis();
-        System.out.println("dns:" + this.hostName + " begin");
-        InetAddress[] arrayOfInetAddress = InetAddress.getAllByName(this.hostName);
-        i = 0;
-        if (i < arrayOfInetAddress.length)
-        {
-          System.out.println("dns:" + this.hostName + " result:" + arrayOfInetAddress[i].getHostAddress() + " byte[] length:" + arrayOfInetAddress[i].getAddress().length);
-          if (arrayOfInetAddress[i].getAddress().length == 16) {
-            addIPv6(arrayOfInetAddress[i].getHostAddress());
-          } else {
-            addIPv4(arrayOfInetAddress[i].getHostAddress());
-          }
-        }
+        long l1;
+        Object localObject1;
+        Object localObject2;
+        int i;
+        StringBuilder localStringBuilder;
+        long l2;
+        continue;
+        i += 1;
       }
-      catch (Exception localException)
-      {
-        System.out.println("Could not find getvinfo host");
-        return;
+    }
+    if (i < localObject1.length)
+    {
+      localObject2 = System.out;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("dns:");
+      localStringBuilder.append(this.hostName);
+      localStringBuilder.append(" result:");
+      localStringBuilder.append(localObject1[i].getHostAddress());
+      localStringBuilder.append(" byte[] length:");
+      localStringBuilder.append(localObject1[i].getAddress().length);
+      ((PrintStream)localObject2).println(localStringBuilder.toString());
+      if (localObject1[i].getAddress().length == 16) {
+        addIPv6(localObject1[i].getHostAddress());
+      } else {
+        addIPv4(localObject1[i].getHostAddress());
       }
-      long l2 = System.currentTimeMillis();
-      System.out.println("dns:" + this.hostName + " elaspe:" + (l2 - l1));
+    }
+    else
+    {
+      l2 = System.currentTimeMillis();
+      localObject1 = System.out;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("dns:");
+      ((StringBuilder)localObject2).append(this.hostName);
+      ((StringBuilder)localObject2).append(" elaspe:");
+      ((StringBuilder)localObject2).append(l2 - l1);
+      ((PrintStream)localObject1).println(((StringBuilder)localObject2).toString());
       return;
-      i += 1;
+      System.out.println("Could not find getvinfo host");
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.vod.TVKVideoInfoDnsQuery
  * JD-Core Version:    0.7.0.1
  */

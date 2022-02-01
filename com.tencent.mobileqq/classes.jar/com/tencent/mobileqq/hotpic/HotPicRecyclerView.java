@@ -35,18 +35,21 @@ public class HotPicRecyclerView
   
   public static void a(String paramString)
   {
-    String str = "LogAutoScrollInfo ";
-    if (paramString != null) {
-      str = "LogAutoScrollInfo " + paramString;
+    Object localObject = "LogAutoScrollInfo ";
+    if (paramString != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("LogAutoScrollInfo ");
+      ((StringBuilder)localObject).append(paramString);
+      localObject = ((StringBuilder)localObject).toString();
     }
     if (QLog.isColorLevel()) {
-      QLog.i("HotPicRecyclerView", 2, str);
+      QLog.i("HotPicRecyclerView", 2, (String)localObject);
     }
   }
   
   public int a()
   {
-    float f2 = 0.0F;
     Object localObject = new int[1];
     ((StaggeredGridLayoutManager)getLayoutManager()).findFirstCompletelyVisibleItemPositions((int[])localObject);
     int i = localObject[0];
@@ -54,149 +57,172 @@ public class HotPicRecyclerView
       return i;
     }
     ((StaggeredGridLayoutManager)getLayoutManager()).findFirstVisibleItemPositions((int[])localObject);
-    int j = localObject[0];
+    i = localObject[0];
     localObject = new int[1];
     ((StaggeredGridLayoutManager)getLayoutManager()).findLastVisibleItemPositions((int[])localObject);
-    i = localObject[0];
-    if (j == i) {
-      return j;
+    int j = localObject[0];
+    if (i == j) {
+      return i;
     }
-    localObject = findViewHolderForPosition(j);
-    RecyclerView.ViewHolder localViewHolder = findViewHolderForPosition(i);
-    if (localObject != null) {}
-    for (float f1 = ((RecyclerView.ViewHolder)localObject).itemView.getBottom() / ((RecyclerView.ViewHolder)localObject).itemView.getHeight();; f1 = 0.0F)
-    {
-      if (localViewHolder != null) {
-        f2 = (getHeight() - localViewHolder.itemView.getTop()) / localViewHolder.itemView.getHeight();
-      }
-      if (f1 < f2) {
-        break;
-      }
-      return j;
+    localObject = findViewHolderForPosition(i);
+    RecyclerView.ViewHolder localViewHolder = findViewHolderForPosition(j);
+    float f2 = 0.0F;
+    float f1;
+    if (localObject != null) {
+      f1 = ((RecyclerView.ViewHolder)localObject).itemView.getBottom() / ((RecyclerView.ViewHolder)localObject).itemView.getHeight();
+    } else {
+      f1 = 0.0F;
     }
+    if (localViewHolder != null) {
+      f2 = (getHeight() - localViewHolder.itemView.getTop()) / localViewHolder.itemView.getHeight();
+    }
+    if (f1 >= f2) {
+      return i;
+    }
+    return j;
   }
   
   void a()
   {
-    Object localObject = new int[1];
-    ((StaggeredGridLayoutManager)getLayoutManager()).findLastVisibleItemPositions((int[])localObject);
-    int i = localObject[0];
-    ((StaggeredGridLayoutManager)getLayoutManager()).findLastCompletelyVisibleItemPositions((int[])localObject);
-    int j = localObject[0];
-    localObject = " nEndIndex = " + i;
-    localObject = (String)localObject + " nCompletelyEndIndex = " + j;
-    int[] arrayOfInt = new int[1];
-    ((StaggeredGridLayoutManager)getLayoutManager()).findFirstVisibleItemPositions(arrayOfInt);
-    i = arrayOfInt[0];
-    ((StaggeredGridLayoutManager)getLayoutManager()).findFirstCompletelyVisibleItemPositions(arrayOfInt);
-    j = arrayOfInt[0];
-    localObject = (String)localObject + " nStartIndex = " + i;
-    localObject = (String)localObject + " nCompletelyStartIndex = " + j;
+    Object localObject1 = new int[1];
+    ((StaggeredGridLayoutManager)getLayoutManager()).findLastVisibleItemPositions((int[])localObject1);
+    int i = localObject1[0];
+    ((StaggeredGridLayoutManager)getLayoutManager()).findLastCompletelyVisibleItemPositions((int[])localObject1);
+    int j = localObject1[0];
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(" nEndIndex = ");
+    ((StringBuilder)localObject1).append(i);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(" nCompletelyEndIndex = ");
+    ((StringBuilder)localObject2).append(j);
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new int[1];
+    ((StaggeredGridLayoutManager)getLayoutManager()).findFirstVisibleItemPositions((int[])localObject2);
+    i = localObject2[0];
+    ((StaggeredGridLayoutManager)getLayoutManager()).findFirstCompletelyVisibleItemPositions((int[])localObject2);
+    j = localObject2[0];
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(" nStartIndex = ");
+    ((StringBuilder)localObject2).append(i);
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(" nCompletelyStartIndex = ");
+    ((StringBuilder)localObject2).append(j);
+    localObject1 = ((StringBuilder)localObject2).toString();
     if (QLog.isColorLevel()) {
-      QLog.i("HotPicRecyclerView", 2, (String)localObject);
+      QLog.i("HotPicRecyclerView", 2, (String)localObject1);
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    a("ScrollItem Start nScollFromIndex is " + paramInt1 + " nScrollToIndex is " + paramInt2);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ScrollItem Start nScollFromIndex is ");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(" nScrollToIndex is ");
+    ((StringBuilder)localObject).append(paramInt2);
+    a(((StringBuilder)localObject).toString());
     a();
-    Object localObject = new int[1];
+    localObject = new int[1];
     ((StaggeredGridLayoutManager)getLayoutManager()).findLastCompletelyVisibleItemPositions((int[])localObject);
     int i = localObject[0];
     int[] arrayOfInt = new int[1];
     ((StaggeredGridLayoutManager)getLayoutManager()).findFirstCompletelyVisibleItemPositions(arrayOfInt);
     int j = arrayOfInt[0];
-    if ((i == -1) && (j == -1)) {
-      paramInt1 = 0;
-    }
-    for (;;)
+    if ((i == -1) && (j == -1)) {}
+    do
     {
-      localObject = findViewHolderForPosition(paramInt2);
-      if (localObject != null)
+      paramInt1 = 0;
+      break;
+      if ((paramInt1 < j) || ((paramInt1 > i) && (i >= 0))) {
+        break label265;
+      }
+      localObject = findViewHolderForPosition(paramInt1);
+    } while (localObject == null);
+    paramInt1 = ((RecyclerView.ViewHolder)localObject).itemView.getTop();
+    localObject = findViewHolderForPosition(paramInt2);
+    if (localObject != null)
+    {
+      paramInt2 = ((RecyclerView.ViewHolder)localObject).itemView.getTop();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("StartY = ");
+      ((StringBuilder)localObject).append(paramInt1);
+      a(((StringBuilder)localObject).toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("EndY = ");
+      ((StringBuilder)localObject).append(paramInt2);
+      a(((StringBuilder)localObject).toString());
+      paramInt2 -= paramInt1;
+      paramInt1 = paramInt2;
+      if (paramInt2 == 0) {
+        paramInt1 = paramInt2 + 1;
+      }
+      smoothScrollBy(0, paramInt1);
+      return;
+    }
+    smoothScrollToPosition(paramInt2);
+    return;
+    label265:
+    if (paramInt2 < j)
+    {
+      smoothScrollToPosition(paramInt2);
+      return;
+    }
+    if ((paramInt2 > i) && (i >= 0))
+    {
+      ((StaggeredGridLayoutManager)getLayoutManager()).findLastVisibleItemPositions((int[])localObject);
+      paramInt1 = localObject[0];
+      if (paramInt2 == paramInt1)
       {
-        paramInt2 = ((RecyclerView.ViewHolder)localObject).itemView.getTop();
-        a("StartY = " + paramInt1);
-        a("EndY = " + paramInt2);
-        paramInt2 -= paramInt1;
-        paramInt1 = paramInt2;
-        if (paramInt2 == 0) {
-          paramInt1 = paramInt2 + 1;
-        }
-        smoothScrollBy(0, paramInt1);
-        return;
-        if ((paramInt1 < j) || ((paramInt1 > i) && (i >= 0)))
+        localObject = findViewHolderForPosition(paramInt1);
+        if (localObject != null)
         {
-          if (paramInt2 < j)
-          {
-            smoothScrollToPosition(paramInt2);
-            return;
+          paramInt2 = ((RecyclerView.ViewHolder)localObject).itemView.getTop();
+          paramInt1 = paramInt2;
+          if (paramInt2 == 0) {
+            paramInt1 = paramInt2 + 1;
           }
-          if ((paramInt2 > i) && (i >= 0))
-          {
-            ((StaggeredGridLayoutManager)getLayoutManager()).findLastVisibleItemPositions((int[])localObject);
-            paramInt1 = localObject[0];
-            if (paramInt2 == paramInt1)
-            {
-              localObject = findViewHolderForPosition(paramInt1);
-              if (localObject != null)
-              {
-                paramInt2 = ((RecyclerView.ViewHolder)localObject).itemView.getTop();
-                paramInt1 = paramInt2;
-                if (paramInt2 == 0) {
-                  paramInt1 = paramInt2 + 1;
-                }
-                smoothScrollBy(0, paramInt1);
-                return;
-              }
-              smoothScrollToPosition(paramInt2);
-              return;
-            }
-            if (paramInt2 == paramInt1 + 1)
-            {
-              localObject = findViewHolderForPosition(paramInt1);
-              if (localObject != null)
-              {
-                paramInt2 = ((RecyclerView.ViewHolder)localObject).itemView.getBottom();
-                paramInt1 = paramInt2;
-                if (paramInt2 == 0) {
-                  paramInt1 = paramInt2 + 1;
-                }
-                smoothScrollBy(0, paramInt1);
-                return;
-              }
-              smoothScrollToPosition(paramInt2);
-              return;
-            }
-            smoothScrollToPosition(paramInt2);
-            return;
-          }
-          localObject = findViewHolderForPosition(paramInt2);
-          if (localObject != null)
-          {
-            paramInt2 = ((RecyclerView.ViewHolder)localObject).itemView.getTop();
-            paramInt1 = paramInt2;
-            if (paramInt2 == 0) {
-              paramInt1 = paramInt2 + 1;
-            }
-            smoothScrollBy(0, paramInt1);
-            return;
-          }
-          smoothScrollToPosition(paramInt2);
+          smoothScrollBy(0, paramInt1);
           return;
         }
-        localObject = findViewHolderForPosition(paramInt1);
-        if (localObject != null) {
-          paramInt1 = ((RecyclerView.ViewHolder)localObject).itemView.getTop();
-        }
-      }
-      else
-      {
         smoothScrollToPosition(paramInt2);
         return;
       }
-      paramInt1 = 0;
+      if (paramInt2 == paramInt1 + 1)
+      {
+        localObject = findViewHolderForPosition(paramInt1);
+        if (localObject != null)
+        {
+          paramInt2 = ((RecyclerView.ViewHolder)localObject).itemView.getBottom();
+          paramInt1 = paramInt2;
+          if (paramInt2 == 0) {
+            paramInt1 = paramInt2 + 1;
+          }
+          smoothScrollBy(0, paramInt1);
+          return;
+        }
+        smoothScrollToPosition(paramInt2);
+        return;
+      }
+      smoothScrollToPosition(paramInt2);
+      return;
     }
+    localObject = findViewHolderForPosition(paramInt2);
+    if (localObject != null)
+    {
+      paramInt2 = ((RecyclerView.ViewHolder)localObject).itemView.getTop();
+      paramInt1 = paramInt2;
+      if (paramInt2 == 0) {
+        paramInt1 = paramInt2 + 1;
+      }
+      smoothScrollBy(0, paramInt1);
+      return;
+    }
+    smoothScrollToPosition(paramInt2);
   }
   
   public void a(boolean paramBoolean)
@@ -209,9 +235,12 @@ public class HotPicRecyclerView
   
   public boolean a(int paramInt)
   {
-    a("CheckItemIsNeedToScroll Start nCheckIndex is " + paramInt);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("CheckItemIsNeedToScroll Start nCheckIndex is ");
+    ((StringBuilder)localObject).append(paramInt);
+    a(((StringBuilder)localObject).toString());
     a();
-    Object localObject = new int[1];
+    localObject = new int[1];
     ((StaggeredGridLayoutManager)getLayoutManager()).findLastCompletelyVisibleItemPositions((int[])localObject);
     int i = localObject[0];
     localObject = new int[1];
@@ -223,41 +252,38 @@ public class HotPicRecyclerView
       if (localObject == null) {
         return false;
       }
-      if (((RecyclerView.ViewHolder)localObject).itemView == null) {
-        break label145;
+      if (((RecyclerView.ViewHolder)localObject).itemView != null) {
+        paramInt = ((RecyclerView.ViewHolder)localObject).itemView.getTop();
+      } else {
+        paramInt = 0;
       }
+      return paramInt != 0;
     }
-    label145:
-    for (paramInt = ((RecyclerView.ViewHolder)localObject).itemView.getTop();; paramInt = 0)
-    {
-      if (paramInt != 0) {}
-      for (boolean bool = true;; bool = false) {
-        return bool;
-      }
-      if ((paramInt >= j) && ((paramInt <= i) || (i < 0))) {
-        break;
-      }
-      return true;
+    if (paramInt >= j) {
+      return (paramInt > i) && (i >= 0);
     }
+    return true;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$ScrollStatusChengedListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$ScrollStatusChengedListener.g();
+    HotPicRecyclerView.ScrollStatusChengedListener localScrollStatusChengedListener = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$ScrollStatusChengedListener;
+    if (localScrollStatusChengedListener != null) {
+      localScrollStatusChengedListener.g();
     }
     this.c = false;
   }
   
   public void c()
   {
-    if (this.c) {}
-    do
-    {
+    if (this.c) {
       return;
-      this.c = true;
-    } while (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$ScrollStatusChengedListener == null);
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$ScrollStatusChengedListener.f();
+    }
+    this.c = true;
+    HotPicRecyclerView.ScrollStatusChengedListener localScrollStatusChengedListener = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$ScrollStatusChengedListener;
+    if (localScrollStatusChengedListener != null) {
+      localScrollStatusChengedListener.f();
+    }
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -270,7 +296,7 @@ public class HotPicRecyclerView
     return super.onKeyDown(paramInt, paramKeyEvent);
   }
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
   }
@@ -281,8 +307,12 @@ public class HotPicRecyclerView
     if (paramMotionEvent.getAction() == 1)
     {
       ((StaggeredGridLayoutManager)getLayoutManager()).findFirstCompletelyVisibleItemPositions(this.jdField_a_of_type_ArrayOfInt);
-      if ((this.jdField_a_of_type_ArrayOfInt[0] == 0) && (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$PullAndFastScrollListener != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$PullAndFastScrollListener.d();
+      if (this.jdField_a_of_type_ArrayOfInt[0] == 0)
+      {
+        HotPicRecyclerView.PullAndFastScrollListener localPullAndFastScrollListener = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$PullAndFastScrollListener;
+        if (localPullAndFastScrollListener != null) {
+          localPullAndFastScrollListener.d();
+        }
       }
     }
     try
@@ -301,7 +331,7 @@ public class HotPicRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicRecyclerView
  * JD-Core Version:    0.7.0.1
  */

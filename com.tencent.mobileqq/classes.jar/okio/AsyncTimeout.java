@@ -21,8 +21,8 @@ public class AsyncTimeout
   @Nullable
   static AsyncTimeout awaitTimeout()
   {
-    Object localObject2 = null;
     Object localObject1 = head.next;
+    Object localObject2 = null;
     if (localObject1 == null)
     {
       l1 = System.nanoTime();
@@ -49,55 +49,25 @@ public class AsyncTimeout
     return localObject1;
   }
   
-  /* Error */
   private static boolean cancelScheduledTimeout(AsyncTimeout paramAsyncTimeout)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 49	okio/AsyncTimeout:head	Lokio/AsyncTimeout;
-    //   6: astore_2
-    //   7: aload_2
-    //   8: ifnull +39 -> 47
-    //   11: aload_2
-    //   12: getfield 51	okio/AsyncTimeout:next	Lokio/AsyncTimeout;
-    //   15: aload_0
-    //   16: if_acmpne +23 -> 39
-    //   19: aload_2
-    //   20: aload_0
-    //   21: getfield 51	okio/AsyncTimeout:next	Lokio/AsyncTimeout;
-    //   24: putfield 51	okio/AsyncTimeout:next	Lokio/AsyncTimeout;
-    //   27: aload_0
-    //   28: aconst_null
-    //   29: putfield 51	okio/AsyncTimeout:next	Lokio/AsyncTimeout;
-    //   32: iconst_0
-    //   33: istore_1
-    //   34: ldc 2
-    //   36: monitorexit
-    //   37: iload_1
-    //   38: ireturn
-    //   39: aload_2
-    //   40: getfield 51	okio/AsyncTimeout:next	Lokio/AsyncTimeout;
-    //   43: astore_2
-    //   44: goto -37 -> 7
-    //   47: iconst_1
-    //   48: istore_1
-    //   49: goto -15 -> 34
-    //   52: astore_0
-    //   53: ldc 2
-    //   55: monitorexit
-    //   56: aload_0
-    //   57: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	58	0	paramAsyncTimeout	AsyncTimeout
-    //   33	16	1	bool	boolean
-    //   6	38	2	localAsyncTimeout	AsyncTimeout
-    // Exception table:
-    //   from	to	target	type
-    //   3	7	52	finally
-    //   11	32	52	finally
-    //   39	44	52	finally
+    try
+    {
+      for (AsyncTimeout localAsyncTimeout = head; localAsyncTimeout != null; localAsyncTimeout = localAsyncTimeout.next) {
+        if (localAsyncTimeout.next == paramAsyncTimeout)
+        {
+          localAsyncTimeout.next = paramAsyncTimeout.next;
+          paramAsyncTimeout.next = null;
+          return false;
+        }
+      }
+      return true;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramAsyncTimeout;
+    }
   }
   
   private long remainingNanos(long paramLong)
@@ -107,62 +77,61 @@ public class AsyncTimeout
   
   private static void scheduleTimeout(AsyncTimeout paramAsyncTimeout, long paramLong, boolean paramBoolean)
   {
+    try
+    {
+      if (head == null)
+      {
+        head = new AsyncTimeout();
+        new AsyncTimeout.Watchdog().start();
+      }
+      long l = System.nanoTime();
+      if ((paramLong != 0L) && (paramBoolean))
+      {
+        paramAsyncTimeout.timeoutAt = (Math.min(paramLong, paramAsyncTimeout.deadlineNanoTime() - l) + l);
+      }
+      else if (paramLong != 0L)
+      {
+        paramAsyncTimeout.timeoutAt = (paramLong + l);
+      }
+      else
+      {
+        if (!paramBoolean) {
+          break label174;
+        }
+        paramAsyncTimeout.timeoutAt = paramAsyncTimeout.deadlineNanoTime();
+      }
+      paramLong = paramAsyncTimeout.remainingNanos(l);
+      for (AsyncTimeout localAsyncTimeout = head; (localAsyncTimeout.next != null) && (paramLong >= localAsyncTimeout.next.remainingNanos(l)); localAsyncTimeout = localAsyncTimeout.next) {}
+      paramAsyncTimeout.next = localAsyncTimeout.next;
+      localAsyncTimeout.next = paramAsyncTimeout;
+      if (localAsyncTimeout == head) {
+        AsyncTimeout.class.notify();
+      }
+      return;
+      label174:
+      throw new AssertionError();
+    }
+    finally {}
     for (;;)
     {
-      try
-      {
-        if (head == null)
-        {
-          head = new AsyncTimeout();
-          new AsyncTimeout.Watchdog().start();
-        }
-        long l = System.nanoTime();
-        if ((paramLong != 0L) && (paramBoolean))
-        {
-          paramAsyncTimeout.timeoutAt = (Math.min(paramLong, paramAsyncTimeout.deadlineNanoTime() - l) + l);
-          paramLong = paramAsyncTimeout.remainingNanos(l);
-          localAsyncTimeout = head;
-          if ((localAsyncTimeout.next != null) && (paramLong >= localAsyncTimeout.next.remainingNanos(l))) {
-            break label175;
-          }
-          paramAsyncTimeout.next = localAsyncTimeout.next;
-          localAsyncTimeout.next = paramAsyncTimeout;
-          if (localAsyncTimeout == head) {
-            AsyncTimeout.class.notify();
-          }
-          return;
-        }
-        if (paramLong != 0L)
-        {
-          paramAsyncTimeout.timeoutAt = (l + paramLong);
-          continue;
-        }
-        if (!paramBoolean) {
-          break label167;
-        }
-      }
-      finally {}
-      paramAsyncTimeout.timeoutAt = paramAsyncTimeout.deadlineNanoTime();
-      continue;
-      label167:
-      throw new AssertionError();
-      label175:
-      AsyncTimeout localAsyncTimeout = localAsyncTimeout.next;
+      throw paramAsyncTimeout;
     }
   }
   
   public final void enter()
   {
-    if (this.inQueue) {
-      throw new IllegalStateException("Unbalanced enter/exit");
-    }
-    long l = timeoutNanos();
-    boolean bool = hasDeadline();
-    if ((l == 0L) && (!bool)) {
+    if (!this.inQueue)
+    {
+      long l = timeoutNanos();
+      boolean bool = hasDeadline();
+      if ((l == 0L) && (!bool)) {
+        return;
+      }
+      this.inQueue = true;
+      scheduleTimeout(this, l, bool);
       return;
     }
-    this.inQueue = true;
-    scheduleTimeout(this, l, bool);
+    throw new IllegalStateException("Unbalanced enter/exit");
   }
   
   final IOException exit(IOException paramIOException)
@@ -175,7 +144,11 @@ public class AsyncTimeout
   
   final void exit(boolean paramBoolean)
   {
-    if ((exit()) && (paramBoolean)) {
+    if (exit())
+    {
+      if (!paramBoolean) {
+        return;
+      }
       throw newTimeoutException(null);
     }
   }
@@ -212,7 +185,7 @@ public class AsyncTimeout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okio.AsyncTimeout
  * JD-Core Version:    0.7.0.1
  */

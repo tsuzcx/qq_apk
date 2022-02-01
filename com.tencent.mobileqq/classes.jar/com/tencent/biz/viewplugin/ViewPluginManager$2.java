@@ -19,55 +19,72 @@ class ViewPluginManager$2
   
   public void loaded(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ViewPluginManager", 2, "transToLocalUrl loadMode:" + paramInt + ", time:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("transToLocalUrl loadMode:");
+      ((StringBuilder)localObject1).append(paramInt);
+      ((StringBuilder)localObject1).append(", time:");
+      ((StringBuilder)localObject1).append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      QLog.i("ViewPluginManager", 2, ((StringBuilder)localObject1).toString());
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("ViewPluginManager", 4, "transToLocalUrl transUrl:" + paramString);
+    if (QLog.isDevelopLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("transToLocalUrl transUrl:");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.i("ViewPluginManager", 4, ((StringBuilder)localObject1).toString());
     }
-    this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.d = HtmlOffline.a(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_JavaLangString);
-    String str = OfflineEnvHelper.a(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_JavaLangString + "/" + this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.b;
+    Object localObject1 = this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager;
+    ((ViewPluginManager)localObject1).d = HtmlOffline.a(((ViewPluginManager)localObject1).jdField_a_of_type_JavaLangString);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(OfflineEnvHelper.a(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_JavaLangString));
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append("/");
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.b);
+    localObject1 = ((StringBuilder)localObject1).toString();
     try
     {
-      Object localObject = new File(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.c);
-      if (!this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_AndroidContentSharedPreferences.getString(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.a(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_JavaLangString), "-1").equals(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.d))
-      {
-        if (!((File)localObject).exists()) {
-          break label379;
+      Object localObject2 = new File(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.c);
+      if (!this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_AndroidContentSharedPreferences.getString(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.a(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_JavaLangString), "-1").equals(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.d)) {
+        if (((File)localObject2).exists())
+        {
+          FileUtils.deleteDirectory(((File)localObject2).getAbsolutePath());
+          this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.a(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_JavaLangString), HtmlOffline.a(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_JavaLangString)).commit();
+          ((File)localObject2).mkdirs();
         }
-        FileUtils.a(((File)localObject).getAbsolutePath());
-        this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.a(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_JavaLangString), HtmlOffline.a(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_JavaLangString)).commit();
-        ((File)localObject).mkdirs();
+        else
+        {
+          ((File)localObject2).mkdirs();
+        }
       }
-      for (;;)
+      if (!((File)localObject2).exists()) {
+        ((File)localObject2).mkdirs();
+      }
+      localObject2 = PluginUtils.getPluginLibPath(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.b).getCanonicalPath();
+      this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_JavaLangClassLoader = new DexClassLoader((String)localObject1, this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.c, (String)localObject2, this.jdField_a_of_type_AndroidContentContext.getClassLoader());
+      this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_ComTencentBizViewpluginViewPluginContext = new ViewPluginContext(this.jdField_a_of_type_AndroidContentContext, 0, (String)localObject1, null, null, this.jdField_a_of_type_Boolean);
+      if (this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncCallBack != null)
       {
-        if (!((File)localObject).exists()) {
-          ((File)localObject).mkdirs();
-        }
-        localObject = PluginUtils.getPluginLibPath(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.b).getCanonicalPath();
-        this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_JavaLangClassLoader = new DexClassLoader(str, this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.c, (String)localObject, this.jdField_a_of_type_AndroidContentContext.getClassLoader());
-        this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_ComTencentBizViewpluginViewPluginContext = new ViewPluginContext(this.jdField_a_of_type_AndroidContentContext, 0, str, null, null, this.jdField_a_of_type_Boolean);
-        if (this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncCallBack == null) {
-          break;
-        }
         this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncCallBack.loaded(paramInt, paramString);
         return;
-        label379:
-        ((File)localObject).mkdirs();
       }
-      return;
     }
     catch (Exception paramString)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ViewPluginManager", 2, "create classloader failed:" + paramString.toString());
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("create classloader failed:");
+        ((StringBuilder)localObject1).append(paramString.toString());
+        QLog.d("ViewPluginManager", 2, ((StringBuilder)localObject1).toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.viewplugin.ViewPluginManager.2
  * JD-Core Version:    0.7.0.1
  */

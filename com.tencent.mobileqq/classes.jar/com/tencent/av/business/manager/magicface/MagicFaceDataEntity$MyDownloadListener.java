@@ -13,7 +13,12 @@ class MagicFaceDataEntity$MyDownloadListener
   
   public void a(long paramLong, PendantItem paramPendantItem, boolean paramBoolean)
   {
-    AVLog.printColorLog("MagicFaceDataEntity", "onDownloadFinish: " + paramPendantItem.toString() + "|" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDownloadFinish: ");
+    localStringBuilder.append(paramPendantItem.toString());
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramBoolean);
+    AVLog.printColorLog("MagicFaceDataEntity", localStringBuilder.toString());
     if (paramBoolean) {
       MagicFaceDataEntity.a(this.a, paramLong, paramPendantItem);
     }
@@ -23,7 +28,7 @@ class MagicFaceDataEntity$MyDownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.magicface.MagicFaceDataEntity.MyDownloadListener
  * JD-Core Version:    0.7.0.1
  */

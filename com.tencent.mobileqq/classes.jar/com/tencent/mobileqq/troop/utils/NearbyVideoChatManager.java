@@ -33,8 +33,8 @@ public class NearbyVideoChatManager
   public String d = "dialog_show_num";
   String e;
   String f;
-  public String g = HardCodeUtil.a(2131707409);
-  public String h = HardCodeUtil.a(2131707403);
+  public String g = HardCodeUtil.a(2131707434);
+  public String h = HardCodeUtil.a(2131707428);
   String i = "";
   String j;
   String k;
@@ -45,31 +45,45 @@ public class NearbyVideoChatManager
     this.jdField_b_of_type_JavaLangString = "dialog_config";
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
     paramAppInterface = paramAppInterface.getCurrentAccountUin();
-    this.jdField_a_of_type_JavaLangString += paramAppInterface;
-    this.c += paramAppInterface;
-    this.jdField_b_of_type_JavaLangString += paramAppInterface;
-    this.d += paramAppInterface;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(paramAppInterface);
+    this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.c);
+    ((StringBuilder)localObject).append(paramAppInterface);
+    this.c = ((StringBuilder)localObject).toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(paramAppInterface);
+    this.jdField_b_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.d);
+    ((StringBuilder)localObject).append(paramAppInterface);
+    this.d = ((StringBuilder)localObject).toString();
     paramAppInterface = BaseApplicationImpl.getContext().getSharedPreferences("nearby_videochat", 0);
     this.i = paramAppInterface.getString("config", "");
     if (!TextUtils.isEmpty(this.i)) {
       a(this.i);
     }
     this.jdField_a_of_type_Boolean = paramAppInterface.getBoolean("enter_guide", true);
-    String str = paramAppInterface.getString(this.jdField_a_of_type_JavaLangString, "");
-    if (!TextUtils.isEmpty(str))
+    localObject = paramAppInterface.getString(this.jdField_a_of_type_JavaLangString, "");
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      a(str, true);
-      if ((this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$BannerConfig != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$BannerConfig.jdField_a_of_type_JavaLangString)))
+      a((String)localObject, true);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$BannerConfig;
+      if ((localObject != null) && (!TextUtils.isEmpty(((NearbyVideoChatManager.BannerConfig)localObject).jdField_a_of_type_JavaLangString)))
       {
         this.jdField_b_of_type_Int = a(paramAppInterface.getString(this.c, ""), this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$BannerConfig.jdField_a_of_type_JavaLangString);
         this.k = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$BannerConfig.jdField_a_of_type_JavaLangString;
       }
     }
-    str = paramAppInterface.getString(this.jdField_b_of_type_JavaLangString, "");
-    if (!TextUtils.isEmpty(str))
+    localObject = paramAppInterface.getString(this.jdField_b_of_type_JavaLangString, "");
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      b(str, true);
-      if ((this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$DialogConfig != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$DialogConfig.jdField_a_of_type_JavaLangString)))
+      b((String)localObject, true);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$DialogConfig;
+      if ((localObject != null) && (!TextUtils.isEmpty(((NearbyVideoChatManager.DialogConfig)localObject).jdField_a_of_type_JavaLangString)))
       {
         this.jdField_a_of_type_Int = a(paramAppInterface.getString(this.d, ""), this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$DialogConfig.jdField_a_of_type_JavaLangString);
         this.j = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$DialogConfig.jdField_a_of_type_JavaLangString;
@@ -182,8 +196,13 @@ public class NearbyVideoChatManager
     }
     catch (JSONException paramString2)
     {
-      QLog.e("Q.nearby.video_chat", 2, "getNumFromJson json:" + paramString1);
+      label24:
+      break label24;
     }
+    paramString2 = new StringBuilder();
+    paramString2.append("getNumFromJson json:");
+    paramString2.append(paramString1);
+    QLog.e("Q.nearby.video_chat", 2, paramString2.toString());
     return 0;
   }
   
@@ -197,27 +216,28 @@ public class NearbyVideoChatManager
     try
     {
       this.jdField_a_of_type_JavaUtilList.clear();
-      if (TextUtils.isEmpty(paramString))
+      boolean bool = TextUtils.isEmpty(paramString);
+      if (bool)
       {
         this.e = null;
         this.f = null;
-        BaseApplicationImpl.getContext().getSharedPreferences("nearby_videochat", 4).edit().putString("config", paramString).commit();
-        return;
       }
-      this.i = paramString;
-      Object localObject = new JSONObject(paramString);
-      this.g = ((JSONObject)localObject).optString("detail_default");
-      this.h = ((JSONObject)localObject).optString("detail_num");
-      this.e = ((JSONObject)localObject).optString("guide");
-      this.f = ((JSONObject)localObject).optString("title");
-      SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("nearby_videochat", 4);
-      localSharedPreferences.edit().putString("detail_default", this.g).commit();
-      localSharedPreferences.edit().putString("detail_num", this.h).commit();
-      if (TextUtils.isEmpty(this.f)) {
-        localSharedPreferences.edit().putString("title", HardCodeUtil.a(2131707408)).commit();
-      }
-      for (;;)
+      else
       {
+        this.i = paramString;
+        Object localObject = new JSONObject(paramString);
+        this.g = ((JSONObject)localObject).optString("detail_default");
+        this.h = ((JSONObject)localObject).optString("detail_num");
+        this.e = ((JSONObject)localObject).optString("guide");
+        this.f = ((JSONObject)localObject).optString("title");
+        SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("nearby_videochat", 4);
+        localSharedPreferences.edit().putString("detail_default", this.g).commit();
+        localSharedPreferences.edit().putString("detail_num", this.h).commit();
+        if (TextUtils.isEmpty(this.f)) {
+          localSharedPreferences.edit().putString("title", HardCodeUtil.a(2131707433)).commit();
+        } else {
+          localSharedPreferences.edit().putString("title", this.f).commit();
+        }
         localObject = ((JSONObject)localObject).optJSONArray("tips");
         int m = 0;
         while (m < ((JSONArray)localObject).length())
@@ -225,9 +245,8 @@ public class NearbyVideoChatManager
           this.jdField_a_of_type_JavaUtilList.add(((JSONArray)localObject).optString(m));
           m += 1;
         }
-        break;
-        localSharedPreferences.edit().putString("title", this.f).commit();
       }
+      BaseApplicationImpl.getContext().getSharedPreferences("nearby_videochat", 4).edit().putString("config", paramString).commit();
       return;
     }
     catch (JSONException paramString)
@@ -257,7 +276,7 @@ public class NearbyVideoChatManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.NearbyVideoChatManager
  * JD-Core Version:    0.7.0.1
  */

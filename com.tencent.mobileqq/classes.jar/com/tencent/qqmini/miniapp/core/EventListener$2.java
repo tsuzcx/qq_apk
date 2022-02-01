@@ -14,47 +14,56 @@ class EventListener$2
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    boolean bool = false;
-    QMLog.d("EventListener", "getAppInfoById onCmdListener() called with: isSuc = [" + paramBoolean + "], ret = [" + paramJSONObject + "]");
-    if ((paramJSONObject != null) && (paramBoolean)) {}
-    for (paramJSONObject = (MiniAppInfo)paramJSONObject.opt("mini_app_info_data");; paramJSONObject = null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getAppInfoById onCmdListener() called with: isSuc = [");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append("], ret = [");
+    ((StringBuilder)localObject).append(paramJSONObject);
+    ((StringBuilder)localObject).append("]");
+    QMLog.d("EventListener", ((StringBuilder)localObject).toString());
+    if ((paramJSONObject != null) && (paramBoolean)) {
+      paramJSONObject = (MiniAppInfo)paramJSONObject.opt("mini_app_info_data");
+    } else {
+      paramJSONObject = null;
+    }
+    if (paramJSONObject != null)
     {
-      if (paramJSONObject != null) {
-        paramBoolean = AppBrandUtil.needUpdate(this.val$oldMiniAppInfo, paramJSONObject);
+      paramBoolean = AppBrandUtil.needUpdate(this.val$oldMiniAppInfo, paramJSONObject);
+    }
+    else
+    {
+      QMLog.e("EventListener", "onCmdListener newMiniAppInfo = null");
+      paramBoolean = false;
+    }
+    try
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("checkUpdate  needUpdate=");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QMLog.i("EventListener", ((StringBuilder)localObject).toString());
+      localObject = new JSONObject();
+      if (paramBoolean) {
+        ((JSONObject)localObject).put("state", "updating");
+      } else {
+        ((JSONObject)localObject).put("state", "noUpdate");
       }
-      for (;;)
-      {
-        try
-        {
-          QMLog.i("EventListener", "checkUpdate  needUpdate=" + paramBoolean);
-          localJSONObject = new JSONObject();
-          if (!paramBoolean) {
-            continue;
-          }
-          localJSONObject.put("state", "updating");
-          this.this$0.mRuntime.appBrandService.evaluateSubscribeJS("onUpdateStatusChange", localJSONObject.toString(), 0);
-        }
-        catch (Exception localException)
-        {
-          JSONObject localJSONObject;
-          QMLog.e("EventListener", "updateJSONObject error." + localException);
-          continue;
-        }
-        if (paramBoolean) {
-          EventListener.access$100(this.this$0, paramJSONObject);
-        }
-        return;
-        QMLog.e("EventListener", "onCmdListener newMiniAppInfo = null");
-        paramBoolean = bool;
-        continue;
-        localJSONObject.put("state", "noUpdate");
-      }
+      this.this$0.mRuntime.appBrandService.evaluateSubscribeJS("onUpdateStatusChange", ((JSONObject)localObject).toString(), 0);
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateJSONObject error.");
+      localStringBuilder.append(localException);
+      QMLog.e("EventListener", localStringBuilder.toString());
+    }
+    if (paramBoolean) {
+      EventListener.access$100(this.this$0, paramJSONObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.EventListener.2
  * JD-Core Version:    0.7.0.1
  */

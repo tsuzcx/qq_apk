@@ -20,34 +20,35 @@ public class PaParticleView
   
   private void a(PaWeatherPaticle paramPaWeatherPaticle)
   {
-    if (this.e == 0) {
-      if ((paramPaWeatherPaticle.jdField_a_of_type_Float > this.b) || (paramPaWeatherPaticle.b > this.c)) {
+    if (this.e == 0)
+    {
+      if ((paramPaWeatherPaticle.jdField_a_of_type_Float > this.b) || (paramPaWeatherPaticle.b > this.c))
+      {
         paramPaWeatherPaticle.b = 0.0F;
+        paramPaWeatherPaticle.jdField_a_of_type_Float = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.b);
       }
     }
-    for (paramPaWeatherPaticle.jdField_a_of_type_Float = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.b);; paramPaWeatherPaticle.jdField_a_of_type_Float = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.b))
+    else if ((paramPaWeatherPaticle.jdField_a_of_type_Float > this.b) || (paramPaWeatherPaticle.b < this.e))
     {
-      do
-      {
-        paramPaWeatherPaticle.jdField_a_of_type_Float += paramPaWeatherPaticle.d;
-        paramPaWeatherPaticle.b += paramPaWeatherPaticle.c;
-        return;
-      } while ((paramPaWeatherPaticle.jdField_a_of_type_Float <= this.b) && (paramPaWeatherPaticle.b >= this.e));
       paramPaWeatherPaticle.b = this.c;
+      paramPaWeatherPaticle.jdField_a_of_type_Float = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.b);
     }
+    paramPaWeatherPaticle.jdField_a_of_type_Float += paramPaWeatherPaticle.d;
+    paramPaWeatherPaticle.b += paramPaWeatherPaticle.c;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() >= this.jdField_a_of_type_Int))
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    if ((localObject != null) && (((ArrayList)localObject).size() >= this.jdField_a_of_type_Int))
     {
       int i = 0;
       while (i < this.jdField_a_of_type_Int)
       {
-        PaWeatherPaticle localPaWeatherPaticle = (PaWeatherPaticle)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        a(localPaWeatherPaticle);
-        paramCanvas.drawBitmap(localPaWeatherPaticle.jdField_a_of_type_AndroidGraphicsBitmap, localPaWeatherPaticle.jdField_a_of_type_Float, localPaWeatherPaticle.b, this.jdField_a_of_type_AndroidGraphicsPaint);
+        localObject = (PaWeatherPaticle)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        a((PaWeatherPaticle)localObject);
+        paramCanvas.drawBitmap(((PaWeatherPaticle)localObject).jdField_a_of_type_AndroidGraphicsBitmap, ((PaWeatherPaticle)localObject).jdField_a_of_type_Float, ((PaWeatherPaticle)localObject).b, this.jdField_a_of_type_AndroidGraphicsPaint);
         i += 1;
       }
     }
@@ -56,7 +57,7 @@ public class PaParticleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PaParticleView
  * JD-Core Version:    0.7.0.1
  */

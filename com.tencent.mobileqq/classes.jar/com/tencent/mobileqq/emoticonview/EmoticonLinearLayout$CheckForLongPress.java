@@ -17,37 +17,40 @@ class EmoticonLinearLayout$CheckForLongPress
   
   public void run()
   {
-    EmoticonInfo localEmoticonInfo;
     if ((this.this$0.getParent() != null) && (this.mOriginalWindowAttachCount == EmoticonLinearLayout.access$000(this.this$0)) && (this.this$0.mPointView != null))
     {
-      localEmoticonInfo = (EmoticonInfo)this.this$0.mPointView.getTag();
+      EmoticonInfo localEmoticonInfo = (EmoticonInfo)this.this$0.mPointView.getTag();
       if (localEmoticonInfo != null)
       {
-        if ((this.this$0.callback != null) && (this.this$0.callback.onLongClick(localEmoticonInfo))) {
-          break label172;
+        if ((this.this$0.callback != null) && (this.this$0.callback.onLongClick(localEmoticonInfo)))
+        {
+          this.this$0.mPointView = null;
+          return;
         }
-        this.this$0.mHasPerformedLongPress = true;
-        this.this$0.getParent().requestDisallowInterceptTouchEvent(true);
+        EmoticonLinearLayout localEmoticonLinearLayout = this.this$0;
+        localEmoticonLinearLayout.mHasPerformedLongPress = true;
+        localEmoticonLinearLayout.getParent().requestDisallowInterceptTouchEvent(true);
         this.this$0.sendAccessibilityEvent(2);
-        if (!"delete".equals(localEmoticonInfo.action)) {
-          break label132;
+        if ("delete".equals(localEmoticonInfo.action))
+        {
+          this.this$0.mDelete.run();
+          return;
         }
-        this.this$0.mDelete.run();
+        if (!"setting".equals(localEmoticonInfo.action))
+        {
+          if ("add".equals(localEmoticonInfo.action)) {
+            return;
+          }
+          localEmoticonLinearLayout = this.this$0;
+          localEmoticonLinearLayout.showPopupEmo(localEmoticonLinearLayout.mPointView, localEmoticonInfo);
+        }
       }
     }
-    label132:
-    while (("setting".equals(localEmoticonInfo.action)) || ("add".equals(localEmoticonInfo.action))) {
-      return;
-    }
-    this.this$0.showPopupEmo(this.this$0.mPointView, localEmoticonInfo);
-    return;
-    label172:
-    this.this$0.mPointView = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonLinearLayout.CheckForLongPress
  * JD-Core Version:    0.7.0.1
  */

@@ -35,8 +35,9 @@ public abstract class HorizontalRVBlock
   {
     b().clear();
     b().addAll(paramArrayList);
-    if (this.a != null) {
-      this.a.setData(paramArrayList);
+    HorizontalRvInnerView localHorizontalRvInnerView = this.a;
+    if (localHorizontalRvInnerView != null) {
+      localHorizontalRvInnerView.setData(paramArrayList);
     }
   }
   
@@ -49,10 +50,16 @@ public abstract class HorizontalRVBlock
   
   public int getItemCount()
   {
-    if ((!c()) || (b().size() > 0)) {
-      return 1;
+    boolean bool = c();
+    int i = 1;
+    if (bool)
+    {
+      if (b().size() > 0) {
+        return 1;
+      }
+      i = 0;
     }
-    return 0;
+    return i;
   }
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
@@ -75,7 +82,7 @@ public abstract class HorizontalRVBlock
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.part.extendsblock.HorizontalRVBlock
  * JD-Core Version:    0.7.0.1
  */

@@ -19,14 +19,18 @@ public class BannerIconCollection
   {
     jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     jdField_a_of_type_JavaUtilArrayList.add(BannerTempInjectImpl.class);
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130838471, 2130838461, 2130838463, 2130838472, 2130838637, 2130841482, 2130838473, 2130838460, 2130838465, 2130838462, 2130838459, 2130838466, 2130838467, 2130838469, 2130838470, 2130846399 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2130838318, 2130838308, 2130838310, 2130838319, 2130838479, 2130841363, 2130838320, 2130838307, 2130838312, 2130838309, 2130838306, 2130838313, 2130838314, 2130838316, 2130838317, 2130846271 };
     jdField_a_of_type_JavaUtilMap = new HashMap();
-    jdField_a_of_type_JavaUtilMap.put("m.ke.qq.com", Integer.valueOf(7));
-    jdField_a_of_type_JavaUtilMap.put("ke.qq.com", Integer.valueOf(7));
+    Map localMap = jdField_a_of_type_JavaUtilMap;
+    Integer localInteger = Integer.valueOf(7);
+    localMap.put("m.ke.qq.com", localInteger);
+    jdField_a_of_type_JavaUtilMap.put("ke.qq.com", localInteger);
     jdField_a_of_type_JavaUtilMap.put("fudao.qq.com", Integer.valueOf(9));
     jdField_a_of_type_JavaUtilMap.put("buluo.qq.com", Integer.valueOf(10));
-    jdField_a_of_type_JavaUtilMap.put("m.gamecenter.qq.com", Integer.valueOf(2));
-    jdField_a_of_type_JavaUtilMap.put("imgcache.qq.com", Integer.valueOf(2));
+    localMap = jdField_a_of_type_JavaUtilMap;
+    localInteger = Integer.valueOf(2);
+    localMap.put("m.gamecenter.qq.com", localInteger);
+    jdField_a_of_type_JavaUtilMap.put("imgcache.qq.com", localInteger);
   }
   
   @IdRes
@@ -40,49 +44,46 @@ public class BannerIconCollection
     Integer localInteger2 = (Integer)jdField_a_of_type_JavaUtilMap.get(paramString);
     Integer localInteger1 = localInteger2;
     if (localInteger2 == null) {
-      if (!a().a(paramString)) {
-        break label42;
+      if (a().a(paramString)) {
+        localInteger1 = Integer.valueOf(8);
+      } else {
+        localInteger1 = Integer.valueOf(6);
       }
     }
-    label42:
-    for (localInteger1 = Integer.valueOf(8);; localInteger1 = Integer.valueOf(6)) {
-      return localInteger1.intValue();
-    }
+    return localInteger1.intValue();
   }
   
   static IBannerTempInject a()
   {
-    if ((!jdField_a_of_type_JavaUtilArrayList.isEmpty()) && (jdField_a_of_type_JavaUtilArrayList.get(0) != null)) {}
-    for (;;)
-    {
+    Object localObject1;
+    if ((!jdField_a_of_type_JavaUtilArrayList.isEmpty()) && (jdField_a_of_type_JavaUtilArrayList.get(0) != null)) {
       try
       {
         IBannerTempInject localIBannerTempInject = (IBannerTempInject)((Class)jdField_a_of_type_JavaUtilArrayList.get(0)).newInstance();
-        Object localObject3 = localIBannerTempInject;
-        if (localIBannerTempInject == null)
-        {
-          QLog.d(BannerIconCollection.class.getSimpleName(), 2, "getBannerTempInject: return null");
-          localObject3 = new BannerIconCollection.1();
-        }
-        return localObject3;
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        localIllegalAccessException.printStackTrace();
-        Object localObject1 = null;
-        continue;
       }
       catch (InstantiationException localInstantiationException)
       {
         localInstantiationException.printStackTrace();
       }
-      Object localObject2 = null;
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        localIllegalAccessException.printStackTrace();
+      }
+    } else {
+      localObject1 = null;
     }
+    Object localObject2 = localObject1;
+    if (localObject1 == null)
+    {
+      QLog.d(BannerIconCollection.class.getSimpleName(), 2, "getBannerTempInject: return null");
+      localObject2 = new BannerIconCollection.1();
+    }
+    return localObject2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.banner.BannerIconCollection
  * JD-Core Version:    0.7.0.1
  */

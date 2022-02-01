@@ -36,44 +36,43 @@ public class TroopConfessMsg
   
   public void convertFrom(hummer_commelem.MsgElemInfo_servtype21 paramMsgElemInfo_servtype21)
   {
-    long l2 = 0L;
-    int j = 0;
     if (paramMsgElemInfo_servtype21.group_confess_msg.has())
     {
       paramMsgElemInfo_servtype21 = (hummer_commelem.MsgElemInfo_servtype21.GroupConfessMsg)paramMsgElemInfo_servtype21.group_confess_msg.get();
-      long l1;
-      if (paramMsgElemInfo_servtype21.uint64_confess_time.has())
-      {
+      boolean bool = paramMsgElemInfo_servtype21.uint64_confess_time.has();
+      long l2 = 0L;
+      if (bool) {
         l1 = paramMsgElemInfo_servtype21.uint64_confess_time.get();
-        this.confessTime = l1;
-        l1 = l2;
-        if (paramMsgElemInfo_servtype21.uint64_confessor_uin.has()) {
-          l1 = paramMsgElemInfo_servtype21.uint64_confessor_uin.get();
-        }
-        this.confessorUin = l1;
-        if (!paramMsgElemInfo_servtype21.uint32_confessor_sex.has()) {
-          break label243;
-        }
-        i = paramMsgElemInfo_servtype21.uint32_confessor_sex.get();
-        label98:
-        this.confessorSex = ((byte)i);
-        if (!paramMsgElemInfo_servtype21.uint32_sysmsg_flag.has()) {
-          break label248;
-        }
+      } else {
+        l1 = 0L;
       }
-      label243:
-      label248:
-      for (int i = paramMsgElemInfo_servtype21.uint32_sysmsg_flag.get();; i = 0)
+      this.confessTime = l1;
+      long l1 = l2;
+      if (paramMsgElemInfo_servtype21.uint64_confessor_uin.has()) {
+        l1 = paramMsgElemInfo_servtype21.uint64_confessor_uin.get();
+      }
+      this.confessorUin = l1;
+      bool = paramMsgElemInfo_servtype21.uint32_confessor_sex.has();
+      int j = 0;
+      if (bool) {
+        i = paramMsgElemInfo_servtype21.uint32_confessor_sex.get();
+      } else {
+        i = 0;
+      }
+      this.confessorSex = ((byte)i);
+      if (paramMsgElemInfo_servtype21.uint32_sysmsg_flag.has()) {
+        i = paramMsgElemInfo_servtype21.uint32_sysmsg_flag.get();
+      } else {
+        i = 0;
+      }
+      this.sysMsgFlag = ((byte)i);
+      int i = j;
+      if (paramMsgElemInfo_servtype21.uint32_total_topic_count.has()) {
+        i = paramMsgElemInfo_servtype21.uint32_total_topic_count.get();
+      }
+      this.totalCount = i;
+      if ((paramMsgElemInfo_servtype21.confess_items.has()) && (paramMsgElemInfo_servtype21.confess_items.size() > 0))
       {
-        this.sysMsgFlag = ((byte)i);
-        i = j;
-        if (paramMsgElemInfo_servtype21.uint32_total_topic_count.has()) {
-          i = paramMsgElemInfo_servtype21.uint32_total_topic_count.get();
-        }
-        this.totalCount = i;
-        if ((!paramMsgElemInfo_servtype21.confess_items.has()) || (paramMsgElemInfo_servtype21.confess_items.size() <= 0)) {
-          return;
-        }
         paramMsgElemInfo_servtype21 = paramMsgElemInfo_servtype21.confess_items.get().iterator();
         while (paramMsgElemInfo_servtype21.hasNext())
         {
@@ -82,10 +81,6 @@ public class TroopConfessMsg
           localTroopConfessMsgItem.convertFrom(localGroupConfessItem);
           this.items.add(localTroopConfessMsgItem);
         }
-        l1 = 0L;
-        break;
-        i = 0;
-        break label98;
       }
     }
   }
@@ -113,23 +108,14 @@ public class TroopConfessMsg
   public String getConfessToNick()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    TroopConfessMsgItem localTroopConfessMsgItem;
     if (this.items.size() > 0)
     {
-      localTroopConfessMsgItem = (TroopConfessMsgItem)this.items.get(0);
-      if (localTroopConfessMsgItem.nickType != 0) {
-        break label74;
+      TroopConfessMsgItem localTroopConfessMsgItem = (TroopConfessMsgItem)this.items.get(0);
+      if (localTroopConfessMsgItem.nickType == 0)
+      {
+        localStringBuilder.append(localTroopConfessMsgItem.confessToNick);
       }
-      localStringBuilder.append(localTroopConfessMsgItem.confessToNick);
-    }
-    for (;;)
-    {
-      if (localStringBuilder.length() == 0) {
-        localStringBuilder.append(Long.toString(localTroopConfessMsgItem.confessToUin));
-      }
-      return localStringBuilder.toString();
-      label74:
-      if (localTroopConfessMsgItem.nickType == 1)
+      else if (localTroopConfessMsgItem.nickType == 1)
       {
         Object localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
         if (!Long.toString(localTroopConfessMsgItem.confessToUin).equals(((QQAppInterface)localObject).getCurrentAccountUin()))
@@ -146,31 +132,31 @@ public class TroopConfessMsg
           localStringBuilder.append(((QQAppInterface)localObject).getCurrentNickname());
         }
       }
+      if (localStringBuilder.length() == 0) {
+        localStringBuilder.append(Long.toString(localTroopConfessMsgItem.confessToUin));
+      }
     }
+    return localStringBuilder.toString();
   }
   
   public long getConfessToUin()
   {
-    long l2 = 0L;
-    long l1 = l2;
-    if (this.items != null)
-    {
-      l1 = l2;
-      if (this.items.size() > 0) {
-        l1 = ((TroopConfessMsgItem)this.items.get(0)).confessToUin;
-      }
+    List localList = this.items;
+    if ((localList != null) && (localList.size() > 0)) {
+      return ((TroopConfessMsgItem)this.items.get(0)).confessToUin;
     }
-    return l1;
+    return 0L;
   }
   
   public int getConfessTopicId()
   {
+    List localList = this.items;
     int j = 0;
     int i = j;
-    if (this.items != null)
+    if (localList != null)
     {
       i = j;
-      if (this.items.size() > 0) {
+      if (localList.size() > 0) {
         i = ((TroopConfessMsgItem)this.items.get(0)).topicId;
       }
     }
@@ -184,7 +170,8 @@ public class TroopConfessMsg
     {
       TroopConfessMsgItem localTroopConfessMsgItem = (TroopConfessMsgItem)this.items.get(0);
       localStringBuilder.append(getConfessToNick());
-      localStringBuilder.append("，").append(localTroopConfessMsgItem.topic);
+      localStringBuilder.append("，");
+      localStringBuilder.append(localTroopConfessMsgItem.topic);
     }
     return localStringBuilder.toString();
   }
@@ -220,15 +207,31 @@ public class TroopConfessMsg
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(1024);
-    localStringBuilder.append("confessorUin").append("=").append(this.confessorUin);
-    localStringBuilder.append(",").append("confessTime").append("=").append(this.confessTime);
-    localStringBuilder.append(",").append("confessorSex").append("=").append(this.confessorSex);
-    localStringBuilder.append(",").append("sysMsgFlag").append("=").append(this.sysMsgFlag);
-    localStringBuilder.append(",").append("totalCount").append("=").append(this.totalCount);
+    localStringBuilder.append("confessorUin");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.confessorUin);
+    localStringBuilder.append(",");
+    localStringBuilder.append("confessTime");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.confessTime);
+    localStringBuilder.append(",");
+    localStringBuilder.append("confessorSex");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.confessorSex);
+    localStringBuilder.append(",");
+    localStringBuilder.append("sysMsgFlag");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.sysMsgFlag);
+    localStringBuilder.append(",");
+    localStringBuilder.append("totalCount");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.totalCount);
     localStringBuilder.append("[");
     Iterator localIterator = this.items.iterator();
-    while (localIterator.hasNext()) {
-      localStringBuilder.append(((TroopConfessMsgItem)localIterator.next()).toString()).append("\n");
+    while (localIterator.hasNext())
+    {
+      localStringBuilder.append(((TroopConfessMsgItem)localIterator.next()).toString());
+      localStringBuilder.append("\n");
     }
     localStringBuilder.append("]");
     return localStringBuilder.toString();
@@ -247,7 +250,7 @@ public class TroopConfessMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.confess.data.TroopConfessMsg
  * JD-Core Version:    0.7.0.1
  */

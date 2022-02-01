@@ -24,15 +24,17 @@ public final class QQCirclePrivateMsgAIO$PrivateMsgCommRespBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 48, 58, 64 }, new String[] { "sint32_result", "bytes_err_msg", "uint64_from_uin", "uint64_to_uin", "bytes_token", "uint32_freq_check", "bytes_trans_info", "uint32_need_callback_after_send" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0) }, PrivateMsgCommRespBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 48, 58, 64 }, new String[] { "sint32_result", "bytes_err_msg", "uint64_from_uin", "uint64_to_uin", "bytes_token", "uint32_freq_check", "bytes_trans_info", "uint32_need_callback_after_send" }, new Object[] { localInteger, localByteStringMicro1, localLong, localLong, localByteStringMicro2, localInteger, localByteStringMicro3, localInteger }, PrivateMsgCommRespBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qqcircle.QQCirclePrivateMsgAIO.PrivateMsgCommRespBody
  * JD-Core Version:    0.7.0.1
  */

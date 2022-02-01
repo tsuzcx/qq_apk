@@ -18,35 +18,45 @@ import java.util.List;
 public class FrameBmpCache
 {
   public int a;
-  private long jdField_a_of_type_Long = 1000 / this.jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
   Resources jdField_a_of_type_AndroidContentResResources;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   public MQLruCache<String, Object> a;
   volatile FrameBmpCache.CancelAbleRunnable jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable;
   private FrameBmpCache.EndListener jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$EndListener;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  LinkedList<FrameBmpCache.CancelAbleRunnable> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  Object jdField_a_of_type_JavaLangObject;
+  LinkedList<FrameBmpCache.CancelAbleRunnable> jdField_a_of_type_JavaUtilLinkedList;
   public List<String> a;
   public boolean a;
   public int b;
   private long b;
   public boolean b;
-  private int jdField_c_of_type_Int = -1;
-  private volatile boolean jdField_c_of_type_Boolean = false;
-  private int jdField_d_of_type_Int = 0;
-  private volatile boolean jdField_d_of_type_Boolean = false;
+  private int jdField_c_of_type_Int;
+  private volatile boolean jdField_c_of_type_Boolean;
+  private int jdField_d_of_type_Int;
+  private volatile boolean jdField_d_of_type_Boolean;
   private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean = false;
+  private boolean jdField_e_of_type_Boolean;
   private int jdField_f_of_type_Int;
-  private boolean jdField_f_of_type_Boolean = true;
+  private boolean jdField_f_of_type_Boolean;
   
   public FrameBmpCache(Resources paramResources)
   {
     this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache = GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache;
     this.jdField_a_of_type_Int = 10;
-    this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Int / 2.0F));
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Long = (1000 / i);
+    this.jdField_b_of_type_Int = ((int)(i / 2.0F));
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_e_of_type_Boolean = false;
+    this.jdField_f_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidContentResResources = paramResources;
   }
   
@@ -62,15 +72,16 @@ public class FrameBmpCache
     }
     try
     {
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inPreferredConfig = Bitmap.Config.RGB_565;
-      if ((!this.jdField_f_of_type_Boolean) || (this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().density < 2.0F)) {}
-      for (localOptions.inSampleSize = 2;; localOptions.inSampleSize = 1)
-      {
-        localOptions.inJustDecodeBounds = false;
-        return BitmapFactory.decodeFile(paramString, localOptions);
+      localObject = new BitmapFactory.Options();
+      ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.RGB_565;
+      if ((this.jdField_f_of_type_Boolean) && (this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().density >= 2.0F)) {
+        ((BitmapFactory.Options)localObject).inSampleSize = 1;
+      } else {
+        ((BitmapFactory.Options)localObject).inSampleSize = 2;
       }
-      return null;
+      ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
+      paramString = BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject);
+      return paramString;
     }
     catch (OutOfMemoryError paramString)
     {
@@ -79,58 +90,59 @@ public class FrameBmpCache
         QLog.e("FrameBmpCache", 2, "decodeBitmap oom", paramString);
         return null;
       }
-      QLog.e("FrameBmpCache", 2, "ecodeBitmap oom " + paramString.getMessage());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("ecodeBitmap oom ");
+      ((StringBuilder)localObject).append(paramString.getMessage());
+      QLog.e("FrameBmpCache", 2, ((StringBuilder)localObject).toString());
     }
+    return null;
   }
   
   private void b(int paramInt)
   {
-    for (;;)
+    int i;
+    int j;
+    Object localObject3;
+    label228:
+    label235:
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      int i;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      LinkedList localLinkedList = new LinkedList();
+      i = paramInt;
+      j = 0;
+      if ((i < paramInt + 3) && ((i < this.jdField_a_of_type_JavaUtilList.size()) || (this.jdField_e_of_type_Boolean)))
       {
-        LinkedList localLinkedList = new LinkedList();
-        i = paramInt;
-        if ((i >= paramInt + 3) || ((i >= this.jdField_a_of_type_JavaUtilList.size()) && (!this.jdField_e_of_type_Boolean)))
-        {
-          if (localLinkedList.size() > 0)
-          {
-            this.jdField_a_of_type_JavaUtilLinkedList.addAll(0, localLinkedList);
-            if (this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable == null) {
-              d();
-            }
-          }
-          return;
-        }
         Object localObject1 = (String)this.jdField_a_of_type_JavaUtilList.get(a(i));
-        if (this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(localObject1) == null) {
-          break label224;
-        }
-        break label217;
-        if (j >= this.jdField_a_of_type_JavaUtilLinkedList.size()) {
-          break label211;
-        }
-        if (a(((FrameBmpCache.CancelAbleRunnable)this.jdField_a_of_type_JavaUtilLinkedList.get(j)).jdField_a_of_type_Int) == a(i))
+        if (this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(localObject1) != null)
         {
-          localObject1 = (FrameBmpCache.CancelAbleRunnable)this.jdField_a_of_type_JavaUtilLinkedList.remove(j);
-          Object localObject4 = localObject1;
-          if (localObject1 == null) {
-            localObject4 = new FrameBmpCache.CancelAbleRunnable(this, i);
+          break label235;
+          localObject1 = localObject3;
+          if (j < this.jdField_a_of_type_JavaUtilLinkedList.size())
+          {
+            if (a(((FrameBmpCache.CancelAbleRunnable)this.jdField_a_of_type_JavaUtilLinkedList.get(j)).jdField_a_of_type_Int) != a(i)) {
+              break label228;
+            }
+            localObject1 = (FrameBmpCache.CancelAbleRunnable)this.jdField_a_of_type_JavaUtilLinkedList.remove(j);
           }
-          localLinkedList.add(localObject4);
+          localObject3 = localObject1;
+          if (localObject1 == null) {
+            localObject3 = new FrameBmpCache.CancelAbleRunnable(this, i);
+          }
+          localLinkedList.add(localObject3);
+          break label235;
         }
       }
-      j += 1;
-      continue;
-      label211:
-      Object localObject3 = null;
-      continue;
-      label217:
-      i += 1;
-      continue;
-      label224:
-      int j = 0;
+      else
+      {
+        if (localLinkedList.size() > 0)
+        {
+          this.jdField_a_of_type_JavaUtilLinkedList.addAll(0, localLinkedList);
+          if (this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable == null) {
+            d();
+          }
+        }
+        return;
+      }
     }
   }
   
@@ -139,8 +151,12 @@ public class FrameBmpCache
     this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable = ((FrameBmpCache.CancelAbleRunnable)this.jdField_a_of_type_JavaUtilLinkedList.poll());
     if (this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FrameBmpCache", 2, "keepRunning " + this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("keepRunning ");
+        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable);
+        QLog.i("FrameBmpCache", 2, localStringBuilder.toString());
       }
       ThreadManager.postImmediately(this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable, null, true);
     }
@@ -148,19 +164,17 @@ public class FrameBmpCache
   
   private void e()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (;;)
-    {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
       return;
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(this.jdField_a_of_type_JavaUtilList.get(i));
-        if ((localBitmap != null) && (localBitmap != this.jdField_a_of_type_AndroidGraphicsBitmap)) {
-          this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.remove(this.jdField_a_of_type_JavaUtilList.get(i));
-        }
-        i += 1;
+    }
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(this.jdField_a_of_type_JavaUtilList.get(i));
+      if ((localBitmap != null) && (localBitmap != this.jdField_a_of_type_AndroidGraphicsBitmap)) {
+        this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.remove(this.jdField_a_of_type_JavaUtilList.get(i));
       }
+      i += 1;
     }
   }
   
@@ -186,8 +200,9 @@ public class FrameBmpCache
   
   public Bitmap a()
   {
+    boolean bool = this.jdField_c_of_type_Boolean;
     Object localObject = null;
-    if (this.jdField_c_of_type_Boolean)
+    if (bool)
     {
       if (QLog.isColorLevel()) {
         QLog.i("FrameBmpCache", 2, "getCurrentBitmap, isStop");
@@ -195,37 +210,40 @@ public class FrameBmpCache
       if (this.jdField_d_of_type_Boolean) {
         localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
       }
-    }
-    int i;
-    int j;
-    do
-    {
       return localObject;
-      i = (int)(System.currentTimeMillis() - this.jdField_b_of_type_Long);
-      j = this.jdField_c_of_type_Int;
-      this.jdField_c_of_type_Int = ((int)(i / this.jdField_a_of_type_Long));
-      if (this.jdField_c_of_type_Int != j) {
-        b(j + 1);
-      }
-      if (this.jdField_c_of_type_Int < j) {
-        this.jdField_c_of_type_Int = j;
-      }
-      if ((this.jdField_c_of_type_Int < this.jdField_a_of_type_JavaUtilList.size()) || (this.jdField_e_of_type_Boolean)) {
-        break;
-      }
+    }
+    int j = (int)(System.currentTimeMillis() - this.jdField_b_of_type_Long);
+    int i = this.jdField_c_of_type_Int;
+    this.jdField_c_of_type_Int = ((int)(j / this.jdField_a_of_type_Long));
+    if (this.jdField_c_of_type_Int != i) {
+      b(i + 1);
+    }
+    if (this.jdField_c_of_type_Int < i) {
+      this.jdField_c_of_type_Int = i;
+    }
+    if ((this.jdField_c_of_type_Int >= this.jdField_a_of_type_JavaUtilList.size()) && (!this.jdField_e_of_type_Boolean))
+    {
       this.jdField_c_of_type_Int = (this.jdField_a_of_type_JavaUtilList.size() - 1);
       this.jdField_b_of_type_Boolean = true;
-      if (this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$EndListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$EndListener.a(null);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$EndListener;
+      if (localObject != null) {
+        ((FrameBmpCache.EndListener)localObject).a(null);
       }
-    } while (!this.jdField_d_of_type_Boolean);
-    return (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(this.jdField_a_of_type_JavaUtilList.get(a(this.jdField_c_of_type_Int)));
+      if (this.jdField_d_of_type_Boolean) {
+        return (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(this.jdField_a_of_type_JavaUtilList.get(a(this.jdField_c_of_type_Int)));
+      }
+      return null;
+    }
     Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(this.jdField_a_of_type_JavaUtilList.get(a(this.jdField_c_of_type_Int)));
     localObject = localBitmap;
     if (localBitmap == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FrameBmpCache", 2, "getCurrentBitmap, cant find bitmap in cache, index=" + this.jdField_c_of_type_Int);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getCurrentBitmap, cant find bitmap in cache, index=");
+        ((StringBuilder)localObject).append(this.jdField_c_of_type_Int);
+        QLog.i("FrameBmpCache", 2, ((StringBuilder)localObject).toString());
       }
       localBitmap = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(this.jdField_a_of_type_JavaUtilList.get(a(this.jdField_d_of_type_Int)));
       localObject = localBitmap;
@@ -235,7 +253,8 @@ public class FrameBmpCache
         localObject = localBitmap;
       }
     }
-    if ((this.jdField_c_of_type_Int != j) && (this.jdField_c_of_type_Int - j != 1)) {
+    j = this.jdField_c_of_type_Int;
+    if ((j != i) && (j - i != 1)) {
       this.jdField_e_of_type_Int += 1;
     }
     if (localObject != null) {
@@ -255,17 +274,18 @@ public class FrameBmpCache
   
   public Bitmap a(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size()))
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if ((localObject != null) && (paramInt >= 0) && (paramInt < ((List)localObject).size()))
     {
       String str = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      Bitmap localBitmap2 = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(str);
-      Bitmap localBitmap1 = localBitmap2;
-      if (localBitmap2 == null)
+      Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(str);
+      localObject = localBitmap;
+      if (localBitmap == null)
       {
-        localBitmap1 = a(str);
-        this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put(str, localBitmap1);
+        localObject = a(str);
+        this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put(str, localObject);
       }
-      return localBitmap1;
+      return localObject;
     }
     return null;
   }
@@ -291,13 +311,18 @@ public class FrameBmpCache
       return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public void a(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = (1000 / this.jdField_a_of_type_Int);
-    this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Int / 2.0F));
+    paramInt = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Long = (1000 / paramInt);
+    this.jdField_b_of_type_Int = ((int)(paramInt / 2.0F));
   }
   
   public void a(FrameBmpCache.EndListener paramEndListener)
@@ -313,7 +338,10 @@ public class FrameBmpCache
     if (MemoryManager.a() <= 37748736L) {
       this.jdField_f_of_type_Boolean = false;
     }
-    QLog.d("FrameBmpCache", 1, "mUseHighQuality=" + this.jdField_f_of_type_Boolean);
+    paramList = new StringBuilder();
+    paramList.append("mUseHighQuality=");
+    paramList.append(this.jdField_f_of_type_Boolean);
+    QLog.d("FrameBmpCache", 1, paramList.toString());
   }
   
   public void a(boolean paramBoolean)
@@ -353,7 +381,7 @@ public class FrameBmpCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.FrameBmpCache
  * JD-Core Version:    0.7.0.1
  */

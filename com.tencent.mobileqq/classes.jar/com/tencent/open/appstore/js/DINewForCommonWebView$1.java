@@ -17,60 +17,69 @@ class DINewForCommonWebView$1
   
   public void a(int paramInt, String paramString)
   {
-    LogUtility.e("DINewForCommonWebView", "[innerQuery] [onException] errorCode=" + paramInt + ", errorMsg=" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[innerQuery] [onException] errorCode=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", errorMsg=");
+    localStringBuilder.append(paramString);
+    LogUtility.e("DINewForCommonWebView", localStringBuilder.toString());
   }
   
   public void a(List<DownloadInfo> paramList)
   {
-    LogUtility.c("DINewForCommonWebView", "[innerQuery] onResult = " + paramList.size());
-    JSONArray localJSONArray = new JSONArray();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[innerQuery] onResult = ");
+    ((StringBuilder)localObject).append(paramList.size());
+    LogUtility.c("DINewForCommonWebView", ((StringBuilder)localObject).toString());
+    localObject = new JSONArray();
     int j = paramList.size();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j)
+      JSONObject localJSONObject = new JSONObject();
+      DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
+      try
       {
-        JSONObject localJSONObject = new JSONObject();
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
-        try
-        {
-          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
-          localJSONObject.put("packagename", localDownloadInfo.e);
-          localJSONObject.put("versioncode", localDownloadInfo.b);
-          localJSONObject.put("url", localDownloadInfo.d);
-          localJSONObject.put("pro", localDownloadInfo.f);
-          localJSONObject.put("state", localDownloadInfo.a());
-          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
-          localJSONObject.put("download_from", localDownloadInfo.h);
-          localJSONObject.put("writecodestate", localDownloadInfo.j);
-          if (TextUtils.isEmpty(localDownloadInfo.l)) {
-            localJSONObject.put("final_file_exits", "false");
-          }
-          for (;;)
-          {
-            localJSONArray.put(localJSONObject);
-            i += 1;
-            break;
-            localJSONObject.put("final_file_exits", new File(localDownloadInfo.l).exists());
-          }
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
+        localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
+        localJSONObject.put("packagename", localDownloadInfo.e);
+        localJSONObject.put("versioncode", localDownloadInfo.b);
+        localJSONObject.put("url", localDownloadInfo.d);
+        localJSONObject.put("pro", localDownloadInfo.f);
+        localJSONObject.put("state", localDownloadInfo.a());
+        localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
+        localJSONObject.put("download_from", localDownloadInfo.h);
+        localJSONObject.put("writecodestate", localDownloadInfo.j);
+        boolean bool = TextUtils.isEmpty(localDownloadInfo.l);
+        if (bool) {
+          localJSONObject.put("final_file_exits", "false");
+        } else {
+          localJSONObject.put("final_file_exits", new File(localDownloadInfo.l).exists());
         }
       }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
+      ((JSONArray)localObject).put(localJSONObject);
+      i += 1;
     }
-    paramList = "javascript:" + this.jdField_a_of_type_JavaLangString + "(" + localJSONArray.toString() + ")";
-    LogUtility.c("DINewForCommonWebView", "[innerQuery] querySucess : " + paramList);
+    paramList = new StringBuilder();
+    paramList.append("javascript:");
+    paramList.append(this.jdField_a_of_type_JavaLangString);
+    paramList.append("(");
+    paramList.append(((JSONArray)localObject).toString());
+    paramList.append(")");
+    paramList = paramList.toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[innerQuery] querySucess : ");
+    ((StringBuilder)localObject).append(paramList);
+    LogUtility.c("DINewForCommonWebView", ((StringBuilder)localObject).toString());
     DINewForCommonWebView.a(this.jdField_a_of_type_ComTencentOpenAppstoreJsDINewForCommonWebView, paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appstore.js.DINewForCommonWebView.1
  * JD-Core Version:    0.7.0.1
  */

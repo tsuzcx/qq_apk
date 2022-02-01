@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.GestureDetector;
 import android.view.View;
 import android.view.ViewStub;
+import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.util.AdExposureChecker;
 import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
 import com.tencent.biz.pubaccount.weishi_new.baseui.AbsWsUIGroup;
@@ -35,11 +36,6 @@ public class GdtAdWSVerticalVideoItemView
   private AbsWsUIGroup<WSVerticalItemData> b;
   private AbsWsUIGroup<WSVerticalItemData> c;
   
-  static
-  {
-    jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = null;
-  }
-  
   public GdtAdWSVerticalVideoItemView(Context paramContext, WSVerticalVideoHolder paramWSVerticalVideoHolder)
   {
     super(paramContext, paramWSVerticalVideoHolder);
@@ -52,14 +48,14 @@ public class GdtAdWSVerticalVideoItemView
     if (!a()) {
       return;
     }
-    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131381553);
+    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131380789);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup = new GdtAdWSVerticalItemTopController(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup.a(localViewStub);
   }
   
   private void f()
   {
-    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131381541);
+    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131380776);
     this.b = new GdtAdWSVerticalItemBottomController(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder);
     this.b.a(localViewStub);
   }
@@ -69,7 +65,7 @@ public class GdtAdWSVerticalVideoItemView
     if (!a()) {
       return;
     }
-    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131381556);
+    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131380792);
     this.c = new GdtAdWSVerticalItemWidgetAreaController(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder);
     this.c.a(localViewStub);
   }
@@ -95,21 +91,26 @@ public class GdtAdWSVerticalVideoItemView
   
   private void j()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData == null) || (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData.a() == null) || (this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder == null) || (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder.a == null) || (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData.a() == null)) {
-      return;
+    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData;
+    if ((localObject != null) && (((WSVerticalItemData)localObject).a() != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder.a != null))
+    {
+      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData.a() == null) {
+        return;
+      }
+      localObject = new GdtAd(GdtAdUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData.a()));
+      if (this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback == null) {
+        this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback = new GdtAdWSVerticalVideoItemView.4(this);
+      }
+      AdExposureChecker.onClick(this.jdField_a_of_type_AndroidViewView.getContext(), (Ad)localObject, new WeakReference(this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback));
+      GdtAdUtil.a(this.jdField_a_of_type_AndroidViewView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData.a(), jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder.a, false);
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData.a().isGdtAdclicked = true;
     }
-    GdtAd localGdtAd = new GdtAd(GdtAdUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData.a()));
-    if (this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback == null) {
-      this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback = new GdtAdWSVerticalVideoItemView.4(this);
-    }
-    AdExposureChecker.onClick(this.jdField_a_of_type_AndroidViewView.getContext(), localGdtAd, new WeakReference(this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback));
-    GdtAdUtil.a(this.jdField_a_of_type_AndroidViewView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData.a(), jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder.a, false);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData.a().isGdtAdclicked = true;
   }
   
   public stSimpleMetaFeed a()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData.a() instanceof stSimpleMetaFeed))) {
+    WSVerticalItemData localWSVerticalItemData = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData;
+    if ((localWSVerticalItemData != null) && ((localWSVerticalItemData.a() instanceof stSimpleMetaFeed))) {
       return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData.a();
     }
     return null;
@@ -118,14 +119,17 @@ public class GdtAdWSVerticalVideoItemView
   public void a()
   {
     super.a();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup.d();
+    AbsWsUIGroup localAbsWsUIGroup = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup;
+    if (localAbsWsUIGroup != null) {
+      localAbsWsUIGroup.d();
     }
-    if (this.b != null) {
-      this.b.d();
+    localAbsWsUIGroup = this.b;
+    if (localAbsWsUIGroup != null) {
+      localAbsWsUIGroup.d();
     }
-    if (this.c != null) {
-      this.c.d();
+    localAbsWsUIGroup = this.c;
+    if (localAbsWsUIGroup != null) {
+      localAbsWsUIGroup.d();
     }
   }
   
@@ -133,14 +137,17 @@ public class GdtAdWSVerticalVideoItemView
   {
     super.a(paramInt);
     this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup.b(paramInt);
+    AbsWsUIGroup localAbsWsUIGroup = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup;
+    if (localAbsWsUIGroup != null) {
+      localAbsWsUIGroup.b(paramInt);
     }
-    if (this.b != null) {
-      this.b.b(paramInt);
+    localAbsWsUIGroup = this.b;
+    if (localAbsWsUIGroup != null) {
+      localAbsWsUIGroup.b(paramInt);
     }
-    if (this.c != null) {
-      this.c.b(paramInt);
+    localAbsWsUIGroup = this.c;
+    if (localAbsWsUIGroup != null) {
+      localAbsWsUIGroup.b(paramInt);
     }
   }
   
@@ -148,14 +155,17 @@ public class GdtAdWSVerticalVideoItemView
   {
     super.a(paramWSVerticalItemData);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData = paramWSVerticalItemData;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup.a(paramWSVerticalItemData);
+    AbsWsUIGroup localAbsWsUIGroup = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup;
+    if (localAbsWsUIGroup != null) {
+      localAbsWsUIGroup.a(paramWSVerticalItemData);
     }
-    if (this.b != null) {
-      this.b.a(paramWSVerticalItemData);
+    localAbsWsUIGroup = this.b;
+    if (localAbsWsUIGroup != null) {
+      localAbsWsUIGroup.a(paramWSVerticalItemData);
     }
-    if (this.c != null) {
-      this.c.a(paramWSVerticalItemData);
+    localAbsWsUIGroup = this.c;
+    if (localAbsWsUIGroup != null) {
+      localAbsWsUIGroup.a(paramWSVerticalItemData);
     }
   }
   
@@ -166,11 +176,11 @@ public class GdtAdWSVerticalVideoItemView
   
   public void b()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData.a() instanceof stSimpleMetaFeed)))
-    {
-      stSimpleMetaFeed localstSimpleMetaFeed = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData.a();
-      WSLikeAnimationManger.a().a(localstSimpleMetaFeed.id);
-    }
+    super.b();
+    e();
+    g();
+    f();
+    h();
   }
   
   public void b(int paramInt)
@@ -179,6 +189,16 @@ public class GdtAdWSVerticalVideoItemView
   }
   
   public void c()
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData;
+    if ((localObject != null) && ((((WSVerticalItemData)localObject).a() instanceof stSimpleMetaFeed)))
+    {
+      localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData.a();
+      WSLikeAnimationManger.a().a(((stSimpleMetaFeed)localObject).id);
+    }
+  }
+  
+  public void d()
   {
     WSShareParam localWSShareParam = new WSShareParam();
     localWSShareParam.jdField_a_of_type_UserGrowthStSimpleMetaFeed = a();
@@ -191,20 +211,11 @@ public class GdtAdWSVerticalVideoItemView
     WeishiShareUtil.a(this.jdField_a_of_type_AndroidContentContext, localWSShareParam);
   }
   
-  public void c(int paramInt) {}
-  
-  public void d()
-  {
-    super.d();
-    e();
-    g();
-    f();
-    h();
-  }
+  public void d(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.gdt.GdtAdWSVerticalVideoItemView
  * JD-Core Version:    0.7.0.1
  */

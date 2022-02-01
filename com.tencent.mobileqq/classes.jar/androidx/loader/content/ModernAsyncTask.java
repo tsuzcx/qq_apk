@@ -77,14 +77,15 @@ abstract class ModernAsyncTask<Params, Progress, Result>
   {
     if (this.mStatus != ModernAsyncTask.Status.PENDING)
     {
-      switch (ModernAsyncTask.4.$SwitchMap$androidx$loader$content$ModernAsyncTask$Status[this.mStatus.ordinal()])
+      int i = ModernAsyncTask.4.$SwitchMap$androidx$loader$content$ModernAsyncTask$Status[this.mStatus.ordinal()];
+      if (i != 1)
       {
-      default: 
-        throw new IllegalStateException("We should never reach this state");
-      case 1: 
-        throw new IllegalStateException("Cannot execute task: the task is already running.");
+        if (i != 2) {
+          throw new IllegalStateException("We should never reach this state");
+        }
+        throw new IllegalStateException("Cannot execute task: the task has already been executed (a task can be executed only once)");
       }
-      throw new IllegalStateException("Cannot execute task: the task has already been executed (a task can be executed only once)");
+      throw new IllegalStateException("Cannot execute task: the task is already running.");
     }
     this.mStatus = ModernAsyncTask.Status.RUNNING;
     onPreExecute();
@@ -97,13 +98,10 @@ abstract class ModernAsyncTask<Params, Progress, Result>
   {
     if (isCancelled()) {
       onCancelled(paramResult);
-    }
-    for (;;)
-    {
-      this.mStatus = ModernAsyncTask.Status.FINISHED;
-      return;
+    } else {
       onPostExecute(paramResult);
     }
+    this.mStatus = ModernAsyncTask.Status.FINISHED;
   }
   
   public final Result get()
@@ -161,7 +159,7 @@ abstract class ModernAsyncTask<Params, Progress, Result>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.loader.content.ModernAsyncTask
  * JD-Core Version:    0.7.0.1
  */

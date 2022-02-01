@@ -17,7 +17,7 @@ class NewStyleCountryActivity$CountryAdapter
   
   public int a()
   {
-    return 2131562941;
+    return 2131562756;
   }
   
   public void a(View paramView, int paramInt)
@@ -48,41 +48,35 @@ class NewStyleCountryActivity$CountryAdapter
   
   public int getItemViewType(int paramInt)
   {
-    if (((PhoneCodeUtils.CountryCode)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean) {
-      return 0;
-    }
-    return 1;
+    return ((PhoneCodeUtils.CountryCode)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean ^ true;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     PhoneCodeUtils.CountryCode localCountryCode = (PhoneCodeUtils.CountryCode)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    View localView;
     if (getItemViewType(paramInt) == 0)
     {
-      if (paramView != null) {
-        break label129;
+      localView = paramView;
+      if (paramView == null) {
+        localView = this.a.getLayoutInflater().inflate(a(), paramViewGroup, false);
       }
-      paramView = this.a.getLayoutInflater().inflate(a(), paramViewGroup, false);
+      ((TextView)localView).setText(localCountryCode.jdField_a_of_type_JavaLangString);
     }
-    label129:
-    for (;;)
+    else
     {
-      ((TextView)paramView).setText(localCountryCode.jdField_a_of_type_JavaLangString);
-      for (;;)
+      localView = paramView;
+      if (paramView == null)
       {
-        paramView.setVisibility(0);
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        View localView = paramView;
-        if (paramView == null)
-        {
-          localView = NewStyleCountryActivity.a(this.a, paramViewGroup, this.a.getLayoutInflater(), false);
-          localView.setOnClickListener(this.a);
-        }
-        this.a.a(localView, localCountryCode);
-        paramView = localView;
+        paramView = this.a;
+        localView = NewStyleCountryActivity.a(paramView, paramViewGroup, paramView.getLayoutInflater(), false);
+        localView.setOnClickListener(this.a);
       }
+      this.a.a(localView, localCountryCode);
     }
+    localView.setVisibility(0);
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
   
   public int getViewTypeCount()
@@ -92,7 +86,7 @@ class NewStyleCountryActivity$CountryAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.NewStyleCountryActivity.CountryAdapter
  * JD-Core Version:    0.7.0.1
  */

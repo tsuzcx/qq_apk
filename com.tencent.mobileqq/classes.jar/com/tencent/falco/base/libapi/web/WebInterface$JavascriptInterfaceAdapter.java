@@ -12,7 +12,7 @@ public abstract interface WebInterface$JavascriptInterfaceAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.libapi.web.WebInterface.JavascriptInterfaceAdapter
  * JD-Core Version:    0.7.0.1
  */

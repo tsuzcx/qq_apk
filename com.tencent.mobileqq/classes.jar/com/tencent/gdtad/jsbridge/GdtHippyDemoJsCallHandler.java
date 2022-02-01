@@ -7,19 +7,23 @@ public class GdtHippyDemoJsCallHandler
 {
   public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
   {
-    if (paramGdtAdWebPlugin != null) {}
-    for (paramString = paramGdtAdWebPlugin.a(); (paramGdtAdWebPlugin == null) || (paramString == null); paramString = null)
-    {
-      GdtLog.d("GdtHippyDemoJsCallHandler", "handleJsCallRequest error");
-      return false;
+    if (paramGdtAdWebPlugin != null) {
+      paramString = paramGdtAdWebPlugin.a();
+    } else {
+      paramString = null;
     }
-    GdtQQHippyDemoFragment.a(paramString);
-    return true;
+    if ((paramGdtAdWebPlugin != null) && (paramString != null))
+    {
+      GdtQQHippyDemoFragment.a(paramString);
+      return true;
+    }
+    GdtLog.d("GdtHippyDemoJsCallHandler", "handleJsCallRequest error");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtHippyDemoJsCallHandler
  * JD-Core Version:    0.7.0.1
  */

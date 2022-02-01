@@ -49,19 +49,19 @@ class MiniAppDesktopAdapter$PopularityListModuleViewHolder
   public MiniAppDesktopAdapter$PopularityListModuleViewHolder(View paramView)
   {
     super(paramView);
-    this.rootView = paramView.findViewById(2131371557);
-    this.titleIconImg = ((ImageView)paramView.findViewById(2131371565));
-    this.titleTv = ((TextView)paramView.findViewById(2131371564));
-    this.moreAppImg = ((ImageView)paramView.findViewById(2131371556));
-    this.firstAppIconImg = ((ImageView)paramView.findViewById(2131371553));
-    this.secondAppIconImg = ((ImageView)paramView.findViewById(2131371558));
-    this.thirdAppIconImg = ((ImageView)paramView.findViewById(2131371561));
-    this.firstAppTitleTv = ((TextView)paramView.findViewById(2131371555));
-    this.secondAppTitleTv = ((TextView)paramView.findViewById(2131371560));
-    this.thirdAppTitleTv = ((TextView)paramView.findViewById(2131371563));
-    this.firstAppOpenImg = ((ImageView)paramView.findViewById(2131371554));
-    this.secondAppOpenImg = ((ImageView)paramView.findViewById(2131371559));
-    this.thirdAppOpenImg = ((ImageView)paramView.findViewById(2131371562));
+    this.rootView = paramView.findViewById(2131371177);
+    this.titleIconImg = ((ImageView)paramView.findViewById(2131371185));
+    this.titleTv = ((TextView)paramView.findViewById(2131371184));
+    this.moreAppImg = ((ImageView)paramView.findViewById(2131371176));
+    this.firstAppIconImg = ((ImageView)paramView.findViewById(2131371173));
+    this.secondAppIconImg = ((ImageView)paramView.findViewById(2131371178));
+    this.thirdAppIconImg = ((ImageView)paramView.findViewById(2131371181));
+    this.firstAppTitleTv = ((TextView)paramView.findViewById(2131371175));
+    this.secondAppTitleTv = ((TextView)paramView.findViewById(2131371180));
+    this.thirdAppTitleTv = ((TextView)paramView.findViewById(2131371183));
+    this.firstAppOpenImg = ((ImageView)paramView.findViewById(2131371174));
+    this.secondAppOpenImg = ((ImageView)paramView.findViewById(2131371179));
+    this.thirdAppOpenImg = ((ImageView)paramView.findViewById(2131371182));
     this.firstAppIconImg.setOnClickListener(this);
     this.secondAppIconImg.setOnClickListener(this);
     this.thirdAppIconImg.setOnClickListener(this);
@@ -73,83 +73,116 @@ class MiniAppDesktopAdapter$PopularityListModuleViewHolder
   
   public void onClick(View paramView)
   {
+    Object localObject;
     switch (paramView.getId())
     {
-    }
-    do
-    {
-      for (;;)
+    case 2131371175: 
+    case 2131371177: 
+    case 2131371180: 
+    default: 
+    case 2131371181: 
+    case 2131371182: 
+      try
       {
-        return;
-        Activity localActivity;
-        try
+        if (this.popularModuleInfo.popularAppList.size() > 2)
         {
-          if (this.popularModuleInfo.popularAppList.size() > 2)
-          {
-            paramView = (MiniAppInfo)this.popularModuleInfo.popularAppList.get(0);
-            localActivity = (Activity)this.activityWeakRef.get();
-            if ((localActivity == null) || (paramView == null)) {
-              continue;
-            }
-            MiniAppDesktopAdapter.startMiniApp(localActivity, paramView, 3010);
-            return;
+          paramView = (MiniAppInfo)this.popularModuleInfo.popularAppList.get(2);
+          localObject = (Activity)this.activityWeakRef.get();
+          if (localObject != null) {
+            MiniAppDesktopAdapter.startMiniApp((Activity)localObject, paramView, 3010);
           }
         }
-        catch (Exception paramView)
+        else
         {
-          QLog.e("MiniAppDesktopAdapter", 1, "PopularityListModuleViewHolder, exception:" + Log.getStackTraceString(paramView));
-          return;
-        }
-        QLog.e("MiniAppDesktopAdapter", 1, "PopularityListModuleViewHolder, size : " + this.popularModuleInfo.popularAppList.size());
-        return;
-        try
-        {
-          if (this.popularModuleInfo.popularAppList.size() > 2)
-          {
-            paramView = (MiniAppInfo)this.popularModuleInfo.popularAppList.get(1);
-            localActivity = (Activity)this.activityWeakRef.get();
-            if (localActivity == null) {
-              continue;
-            }
-            MiniAppDesktopAdapter.startMiniApp(localActivity, paramView, 3010);
-            return;
-          }
-        }
-        catch (Exception paramView)
-        {
-          QLog.e("MiniAppDesktopAdapter", 1, "PopularityListModuleViewHolder, exception:" + Log.getStackTraceString(paramView));
-          return;
-        }
-        QLog.e("MiniAppDesktopAdapter", 1, "PopularityListModuleViewHolder, size : " + this.popularModuleInfo.popularAppList.size());
-        return;
-        try
-        {
-          if (this.popularModuleInfo.popularAppList.size() > 2)
-          {
-            paramView = (MiniAppInfo)this.popularModuleInfo.popularAppList.get(2);
-            localActivity = (Activity)this.activityWeakRef.get();
-            if (localActivity == null) {
-              continue;
-            }
-            MiniAppDesktopAdapter.startMiniApp(localActivity, paramView, 3010);
-          }
-        }
-        catch (Exception paramView)
-        {
-          QLog.e("MiniAppDesktopAdapter", 1, "PopularityListModuleViewHolder, exception:" + Log.getStackTraceString(paramView));
+          paramView = new StringBuilder();
+          paramView.append("PopularityListModuleViewHolder, size : ");
+          paramView.append(this.popularModuleInfo.popularAppList.size());
+          QLog.e("MiniAppDesktopAdapter", 1, paramView.toString());
           return;
         }
       }
-      QLog.e("MiniAppDesktopAdapter", 1, "PopularityListModuleViewHolder, size : " + this.popularModuleInfo.popularAppList.size());
-      return;
+      catch (Exception paramView)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("PopularityListModuleViewHolder, exception:");
+        ((StringBuilder)localObject).append(Log.getStackTraceString(paramView));
+        QLog.e("MiniAppDesktopAdapter", 1, ((StringBuilder)localObject).toString());
+        return;
+      }
+    case 2131371178: 
+    case 2131371179: 
+      try
+      {
+        if (this.popularModuleInfo.popularAppList.size() > 2)
+        {
+          paramView = (MiniAppInfo)this.popularModuleInfo.popularAppList.get(1);
+          localObject = (Activity)this.activityWeakRef.get();
+          if (localObject != null) {
+            MiniAppDesktopAdapter.startMiniApp((Activity)localObject, paramView, 3010);
+          }
+        }
+        else
+        {
+          paramView = new StringBuilder();
+          paramView.append("PopularityListModuleViewHolder, size : ");
+          paramView.append(this.popularModuleInfo.popularAppList.size());
+          QLog.e("MiniAppDesktopAdapter", 1, paramView.toString());
+          return;
+        }
+      }
+      catch (Exception paramView)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("PopularityListModuleViewHolder, exception:");
+        ((StringBuilder)localObject).append(Log.getStackTraceString(paramView));
+        QLog.e("MiniAppDesktopAdapter", 1, ((StringBuilder)localObject).toString());
+        return;
+      }
+    case 2131371176: 
       paramView = (Activity)this.activityWeakRef.get();
-    } while ((paramView == null) || (this.moreAppInfo == null));
-    MiniAppDesktopAdapter.startMiniApp(paramView, this.moreAppInfo, 3010);
+      if (paramView != null)
+      {
+        localObject = this.moreAppInfo;
+        if (localObject != null)
+        {
+          MiniAppDesktopAdapter.startMiniApp(paramView, (MiniAppInfo)localObject, 3010);
+          return;
+        }
+      }
+      break;
+    case 2131371173: 
+    case 2131371174: 
+      try
+      {
+        if (this.popularModuleInfo.popularAppList.size() > 2)
+        {
+          paramView = (MiniAppInfo)this.popularModuleInfo.popularAppList.get(0);
+          localObject = (Activity)this.activityWeakRef.get();
+          if ((localObject != null) && (paramView != null)) {
+            MiniAppDesktopAdapter.startMiniApp((Activity)localObject, paramView, 3010);
+          }
+        }
+        else
+        {
+          paramView = new StringBuilder();
+          paramView.append("PopularityListModuleViewHolder, size : ");
+          paramView.append(this.popularModuleInfo.popularAppList.size());
+          QLog.e("MiniAppDesktopAdapter", 1, paramView.toString());
+          return;
+        }
+      }
+      catch (Exception paramView)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("PopularityListModuleViewHolder, exception:");
+        ((StringBuilder)localObject).append(Log.getStackTraceString(paramView));
+        QLog.e("MiniAppDesktopAdapter", 1, ((StringBuilder)localObject).toString());
+      }
+    }
   }
   
   public void update(DesktopPopularModuleInfo paramDesktopPopularModuleInfo, Activity paramActivity)
   {
-    int i = 0;
     this.activityWeakRef = new WeakReference(paramActivity);
     List localList = paramDesktopPopularModuleInfo.popularAppList;
     if (!TextUtils.isEmpty(paramDesktopPopularModuleInfo.titleIconUrl)) {
@@ -159,29 +192,29 @@ class MiniAppDesktopAdapter$PopularityListModuleViewHolder
       this.titleTv.setText(paramDesktopPopularModuleInfo.title);
     }
     paramActivity = URLDrawable.URLDrawableOptions.obtain();
-    Object localObject = this.itemView.getContext().getResources().getDrawable(2130848766);
+    Object localObject = this.itemView.getContext().getResources().getDrawable(2130848646);
     paramActivity.mFailedDrawable = ((Drawable)localObject);
     paramActivity.mLoadingDrawable = ((Drawable)localObject);
+    int i = 0;
     paramActivity.mPlayGifImage = false;
     this.rootView.setBackgroundDrawable(MiniAppUtils.getDrawable(paramDesktopPopularModuleInfo.backgroundUrl, paramActivity));
     this.moreAppInfo = paramDesktopPopularModuleInfo.moreAppInfo;
     this.popularModuleInfo = paramDesktopPopularModuleInfo;
     if ((localList != null) && (localList.size() > 2))
     {
-      this.firstAppIconImg.setImageDrawable(MiniAppUtils.getIcon(this.firstAppIconImg.getContext(), ((MiniAppInfo)localList.get(0)).iconUrl, true));
+      paramActivity = this.firstAppIconImg;
+      paramActivity.setImageDrawable(MiniAppUtils.getIcon(paramActivity.getContext(), ((MiniAppInfo)localList.get(0)).iconUrl, true));
       this.firstAppTitleTv.setText(((MiniAppInfo)localList.get(0)).name);
       this.secondAppIconImg.setImageDrawable(MiniAppUtils.getIcon(this.firstAppIconImg.getContext(), ((MiniAppInfo)localList.get(1)).iconUrl, true));
       this.secondAppTitleTv.setText(((MiniAppInfo)localList.get(1)).name);
       this.thirdAppIconImg.setImageDrawable(MiniAppUtils.getIcon(this.firstAppIconImg.getContext(), ((MiniAppInfo)localList.get(2)).iconUrl, true));
       this.thirdAppTitleTv.setText(((MiniAppInfo)localList.get(2)).name);
       paramActivity = MiniAppUtils.getAppInterface();
-      if (paramActivity == null) {
-        break label490;
+      if (paramActivity != null) {
+        paramActivity = (MiniAppExposureManager)paramActivity.getManager(QQManagerFactory.MINI_APP_EXPOSURE_MANAGER);
+      } else {
+        paramActivity = null;
       }
-    }
-    label490:
-    for (paramActivity = (MiniAppExposureManager)paramActivity.getManager(QQManagerFactory.MINI_APP_EXPOSURE_MANAGER);; paramActivity = null)
-    {
       if (paramActivity != null)
       {
         while ((i < localList.size()) && (i < 3))
@@ -190,19 +223,22 @@ class MiniAppDesktopAdapter$PopularityListModuleViewHolder
           ((MiniAppConfig)localObject).launchParam.scene = 3010;
           MiniAppExposureManager.MiniAppModuleExposureData localMiniAppModuleExposureData = new MiniAppExposureManager.MiniAppModuleExposureData((MiniAppConfig)localObject, "page_view", "expo");
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(((MiniAppConfig)localObject).config.appId).append("_").append(((MiniAppConfig)localObject).config.verType).append("_").append(paramDesktopPopularModuleInfo.getModuleType());
+          localStringBuilder.append(((MiniAppConfig)localObject).config.appId);
+          localStringBuilder.append("_");
+          localStringBuilder.append(((MiniAppConfig)localObject).config.verType);
+          localStringBuilder.append("_");
+          localStringBuilder.append(paramDesktopPopularModuleInfo.getModuleType());
           paramActivity.putReportDataToMap(localStringBuilder.toString(), localMiniAppModuleExposureData);
           i += 1;
         }
         paramActivity.putReportDataToMap("ranking", new MiniAppExposureManager.CardModuleExposureData("desktop", "ranking", "expo", null));
       }
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.PopularityListModuleViewHolder
  * JD-Core Version:    0.7.0.1
  */

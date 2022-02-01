@@ -13,7 +13,7 @@ import java.util.List;
 public class cq
   extends dk
 {
-  private static final String o = cu.a() + co.b(cq.class.getName(), "SHA-256").substring(0, 8);
+  private static final String o;
   private BroadcastReceiver A = new cq.1(this);
   public long a = 102400L;
   public long b = 3600000L;
@@ -39,6 +39,14 @@ public class cq
   private volatile List<ScanResult> y;
   private volatile Location z;
   
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(cu.a());
+    localStringBuilder.append(co.b(cq.class.getName(), "SHA-256").substring(0, 8));
+    o = localStringBuilder.toString();
+  }
+  
   private cq(Context paramContext, File paramFile)
   {
     this.p = paramContext;
@@ -48,7 +56,7 @@ public class cq
   
   public cq(Context paramContext, String paramString)
   {
-    this(paramContext, new File(paramString + "/f_c"));
+    this(paramContext, new File(localStringBuilder.toString()));
   }
   
   public static long a(long paramLong1, long paramLong2, long paramLong3)
@@ -62,45 +70,43 @@ public class cq
     this.y = null;
     this.z = null;
     this.w = 0L;
+    Object localObject = this.q;
     boolean bool;
-    if ((this.q != null) && ((this.q.exists()) || (this.q.mkdirs()))) {
+    if ((localObject != null) && ((((File)localObject).exists()) || (this.q.mkdirs()))) {
       bool = true;
+    } else {
+      bool = false;
     }
-    for (;;)
+    this.r = bool;
+    localObject = new StringBuilder("startup! prepared:");
+    ((StringBuilder)localObject).append(this.r);
+    co.a(((StringBuilder)localObject).toString());
+    if (this.r)
     {
-      this.r = bool;
-      co.a("startup! prepared:" + this.r);
-      if (this.r)
-      {
-        this.s = new cq.a(this, paramLooper);
-        this.w = (System.currentTimeMillis() - 40000L);
-        co.a(this.s, 107, 300000L);
-      }
+      this.s = new cq.a(this, paramLooper);
+      this.w = (System.currentTimeMillis() - 40000L);
+      co.a(this.s, 107, 300000L);
       try
       {
-        IntentFilter localIntentFilter = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
-        this.p.registerReceiver(this.A, localIntentFilter);
-        if ((this.r) && (this.i))
-        {
-          this.k = new cs(this.q);
-          this.k.a(paramLooper);
-        }
-        if (this.j)
-        {
-          this.l = new cr(this.q);
-          this.l.a(paramLooper);
-        }
-        return 0;
-        bool = false;
+        localObject = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
+        this.p.registerReceiver(this.A, (IntentFilter)localObject);
       }
       catch (Throwable localThrowable)
       {
-        for (;;)
-        {
-          co.a("listenNetworkState: failed", localThrowable);
-        }
+        co.a("listenNetworkState: failed", localThrowable);
       }
     }
+    if ((this.r) && (this.i))
+    {
+      this.k = new cs(this.q);
+      this.k.a(paramLooper);
+    }
+    if (this.j)
+    {
+      this.l = new cr(this.q);
+      this.l.a(paramLooper);
+    }
+    return 0;
   }
   
   public final void a()
@@ -109,14 +115,16 @@ public class cq
     {
       this.p.unregisterReceiver(this.A);
       label11:
-      if (this.k != null)
+      Object localObject = this.k;
+      if (localObject != null)
       {
-        this.k.d();
+        ((cs)localObject).d();
         this.k = null;
       }
-      if (this.l != null)
+      localObject = this.l;
+      if (localObject != null)
       {
-        this.l.d();
+        ((cr)localObject).d();
         this.l = null;
       }
       if (this.r)
@@ -139,41 +147,30 @@ public class cq
   
   public final void a(Location paramLocation, List<ScanResult> paramList, List<cp> paramList1)
   {
-    for (;;)
+    try
     {
-      try
+      long l1 = System.currentTimeMillis();
+      if ((paramLocation != null) && (l1 - paramLocation.getTime() <= 10000L))
       {
-        long l1 = System.currentTimeMillis();
-        if (paramLocation != null)
-        {
-          long l2 = paramLocation.getTime();
-          if (l1 - l2 <= 10000L) {}
-        }
-        else
-        {
-          return;
-        }
         this.z = paramLocation;
         this.y = paramList;
         this.x = paramList1;
-        if (!this.r) {
-          continue;
-        }
-        if (paramList == null)
-        {
-          if (co.a(paramList1)) {
-            continue;
+        if (this.r) {
+          if (paramList == null)
+          {
+            if (!co.a(paramList1)) {
+              co.a(this.s, 102, 0L);
+            }
           }
-          co.a(this.s, 102, 0L);
-          continue;
+          else if (!co.a(paramList)) {
+            co.a(this.s, 101, 0L);
+          }
         }
-        if (co.a(paramList)) {
-          continue;
-        }
+        return;
       }
-      finally {}
-      co.a(this.s, 101, 0L);
+      return;
     }
+    finally {}
   }
   
   public final String b()
@@ -183,7 +180,7 @@ public class cq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.cq
  * JD-Core Version:    0.7.0.1
  */

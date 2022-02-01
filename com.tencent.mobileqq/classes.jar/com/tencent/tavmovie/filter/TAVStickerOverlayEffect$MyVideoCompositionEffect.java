@@ -41,45 +41,55 @@ class TAVStickerOverlayEffect$MyVideoCompositionEffect
   
   private CIImage applyEffectHard(@NonNull TAVStickerRenderContext paramTAVStickerRenderContext, CIImage paramCIImage, CMTime paramCMTime, CIContext paramCIContext)
   {
-    if ((this.this$0.stickers == null) || (this.this$0.stickers.isEmpty())) {
-      return paramCIImage;
-    }
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.this$0.stickers.iterator();
-    TAVSticker localTAVSticker;
-    while (localIterator.hasNext())
+    if (this.this$0.stickers != null)
     {
-      localTAVSticker = (TAVSticker)localIterator.next();
-      if (localTAVSticker.getTimeRange().containsTime(paramCMTime)) {
-        localArrayList.add(localTAVSticker);
+      if (this.this$0.stickers.isEmpty()) {
+        return paramCIImage;
       }
-    }
-    if (localArrayList.isEmpty())
-    {
-      Log.d("TAVStickerOverlayEffect", "applyEffectHard: renderStickers.isEmpty()");
-      releaseCloneRenderContext();
-    }
-    if ((this.this$0.realTimeReleaseEachSticker) && (this.cloneStickerContext != null) && (localArrayList.size() < this.cloneStickerContext.getStickerCount()))
-    {
-      Log.d("TAVStickerOverlayEffect", "applyEffectHard: renderStickers.size() = " + localArrayList.size() + ", cloneStickerContext.getStickerCount() = " + this.cloneStickerContext.getStickerCount());
-      releaseCloneRenderContext();
-    }
-    localIterator = localArrayList.iterator();
-    do
-    {
-      if (!localIterator.hasNext()) {
-        break;
+      ArrayList localArrayList = new ArrayList();
+      Object localObject = this.this$0.stickers.iterator();
+      TAVSticker localTAVSticker;
+      while (((Iterator)localObject).hasNext())
+      {
+        localTAVSticker = (TAVSticker)((Iterator)localObject).next();
+        if (localTAVSticker.getTimeRange().containsTime(paramCMTime)) {
+          localArrayList.add(localTAVSticker);
+        }
       }
-      localTAVSticker = (TAVSticker)localIterator.next();
-    } while ((this.cloneStickerContext == null) || (this.cloneStickerContext.containSticker(localTAVSticker)));
-    for (int i = 1;; i = 0)
-    {
+      if (localArrayList.isEmpty())
+      {
+        Log.d("TAVStickerOverlayEffect", "applyEffectHard: renderStickers.isEmpty()");
+        releaseCloneRenderContext();
+      }
+      if ((this.this$0.realTimeReleaseEachSticker) && (this.cloneStickerContext != null) && (localArrayList.size() < this.cloneStickerContext.getStickerCount()))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("applyEffectHard: renderStickers.size() = ");
+        ((StringBuilder)localObject).append(localArrayList.size());
+        ((StringBuilder)localObject).append(", cloneStickerContext.getStickerCount() = ");
+        ((StringBuilder)localObject).append(this.cloneStickerContext.getStickerCount());
+        Log.d("TAVStickerOverlayEffect", ((StringBuilder)localObject).toString());
+        releaseCloneRenderContext();
+      }
+      int j = 0;
+      localObject = localArrayList.iterator();
+      TAVStickerRenderContext localTAVStickerRenderContext;
+      do
+      {
+        i = j;
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+        localTAVSticker = (TAVSticker)((Iterator)localObject).next();
+        localTAVStickerRenderContext = this.cloneStickerContext;
+      } while ((localTAVStickerRenderContext == null) || (localTAVStickerRenderContext.containSticker(localTAVSticker)));
+      int i = 1;
       if ((i != 0) && (this.this$0.realTimeReleaseEachSticker)) {
         releaseCloneRenderContext();
       }
       renderByCloneContext(paramTAVStickerRenderContext, localArrayList, paramCIImage, paramCMTime, paramCIContext);
-      return paramCIImage;
     }
+    return paramCIImage;
   }
   
   private boolean noStickerRender(CMTime paramCMTime, List<TAVSticker> paramList)
@@ -98,9 +108,10 @@ class TAVStickerOverlayEffect$MyVideoCompositionEffect
   
   private void releaseCloneRenderContext()
   {
-    if (this.cloneStickerContext != null)
+    TAVStickerRenderContext localTAVStickerRenderContext = this.cloneStickerContext;
+    if (localTAVStickerRenderContext != null)
     {
-      this.cloneStickerContext.release();
+      localTAVStickerRenderContext.release();
       this.cloneStickerContext.removeAllStickers();
       this.cloneStickerContext = null;
     }
@@ -108,16 +119,17 @@ class TAVStickerOverlayEffect$MyVideoCompositionEffect
   
   private void renderByCloneContext(@NonNull TAVStickerRenderContext paramTAVStickerRenderContext, List<TAVSticker> paramList, CIImage paramCIImage, CMTime paramCMTime, CIContext paramCIContext)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {}
-    do
+    if (paramList != null)
     {
-      do
-      {
+      if (paramList.isEmpty()) {
         return;
-        if (this.cloneStickerContext == null) {
-          this.cloneStickerContext = paramTAVStickerRenderContext.copy();
-        }
-      } while (this.cloneStickerContext == null);
+      }
+      if (this.cloneStickerContext == null) {
+        this.cloneStickerContext = paramTAVStickerRenderContext.copy();
+      }
+      if (this.cloneStickerContext == null) {
+        return;
+      }
       paramTAVStickerRenderContext = paramList.iterator();
       while (paramTAVStickerRenderContext.hasNext())
       {
@@ -129,43 +141,50 @@ class TAVStickerOverlayEffect$MyVideoCompositionEffect
       this.cloneStickerContext.setRenderSize(paramCIImage.getSize());
       paramTAVStickerRenderContext = this.cloneStickerContext.renderSticker(paramCMTime.getTimeUs() / 1000L, null, paramCIContext.getRenderContext().eglContext());
       paramCIContext.getRenderContext().makeCurrent();
-    } while (paramTAVStickerRenderContext == null);
-    if (paramTAVStickerRenderContext.isNewFrame()) {
-      this.cloneStickerContext.getStickerTexture().awaitNewImage(1000L);
+      if (paramTAVStickerRenderContext != null)
+      {
+        if (paramTAVStickerRenderContext.isNewFrame()) {
+          this.cloneStickerContext.getStickerTexture().awaitNewImage(1000L);
+        }
+        new CIImage(paramTAVStickerRenderContext.getTextureInfo()).imageByCompositingOverImage(paramCIImage);
+      }
     }
-    new CIImage(paramTAVStickerRenderContext.getTextureInfo()).imageByCompositingOverImage(paramCIImage);
   }
   
   public CIImage apply(TAVVideoEffect paramTAVVideoEffect, CIImage paramCIImage, RenderInfo paramRenderInfo)
   {
     paramTAVVideoEffect = paramRenderInfo.getCiContext();
-    if (this.stickerContext == null) {}
-    CMSampleBuffer localCMSampleBuffer;
-    do
-    {
+    if (this.stickerContext == null) {
       return paramCIImage;
-      this.currentTime = paramRenderInfo.getTime();
-      if (this.this$0.realTimeReleaseStickerContext) {
-        return applyEffectHard(this.stickerContext, paramCIImage, paramRenderInfo.getTime(), paramTAVVideoEffect);
-      }
-      this.stickerContext.setRenderSize(paramCIImage.getSize());
-      localCMSampleBuffer = this.stickerContext.renderSticker(paramRenderInfo.getTime().getTimeUs() / 1000L, null, paramTAVVideoEffect.getRenderContext().eglContext());
-      paramTAVVideoEffect.getRenderContext().makeCurrent();
-    } while ((noStickerRender(paramRenderInfo.getTime(), this.stickerContext.getStickers())) || (localCMSampleBuffer == null));
-    if (localCMSampleBuffer.isNewFrame()) {
-      this.stickerContext.getStickerTexture().awaitNewImage(1000L);
     }
-    paramTAVVideoEffect = localCMSampleBuffer.getTextureInfo();
-    paramTAVVideoEffect.setMixAlpha(false);
-    new CIImage(paramTAVVideoEffect).imageByCompositingOverImage(paramCIImage);
+    this.currentTime = paramRenderInfo.getTime();
+    if (this.this$0.realTimeReleaseStickerContext) {
+      return applyEffectHard(this.stickerContext, paramCIImage, paramRenderInfo.getTime(), paramTAVVideoEffect);
+    }
+    this.stickerContext.setRenderSize(paramCIImage.getSize());
+    CMSampleBuffer localCMSampleBuffer = this.stickerContext.renderSticker(paramRenderInfo.getTime().getTimeUs() / 1000L, null, paramTAVVideoEffect.getRenderContext().eglContext());
+    paramTAVVideoEffect.getRenderContext().makeCurrent();
+    if (noStickerRender(paramRenderInfo.getTime(), this.stickerContext.getStickers())) {
+      return paramCIImage;
+    }
+    if (localCMSampleBuffer != null)
+    {
+      if (localCMSampleBuffer.isNewFrame()) {
+        this.stickerContext.getStickerTexture().awaitNewImage(1000L);
+      }
+      paramTAVVideoEffect = localCMSampleBuffer.getTextureInfo();
+      paramTAVVideoEffect.setMixAlpha(false);
+      new CIImage(paramTAVVideoEffect).imageByCompositingOverImage(paramCIImage);
+    }
     return paramCIImage;
   }
   
   public String getReportKey()
   {
     ArrayList localArrayList = new ArrayList();
-    if (this.stickerContext != null) {
-      synchronized (this.stickerContext.getStickers())
+    ??? = this.stickerContext;
+    if (??? != null) {
+      synchronized (((TAVStickerRenderContext)???).getStickers())
       {
         Iterator localIterator = this.stickerContext.getStickers().iterator();
         while (localIterator.hasNext())
@@ -177,8 +196,14 @@ class TAVStickerOverlayEffect$MyVideoCompositionEffect
         }
       }
     }
-    if (!localCollection.isEmpty()) {
-      return this.this$0.reportKey + ":[" + MemoryReportHelper.appendKeys(localCollection) + "]";
+    if (!localCollection.isEmpty())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append(this.this$0.reportKey);
+      ((StringBuilder)???).append(":[");
+      ((StringBuilder)???).append(MemoryReportHelper.appendKeys(localCollection));
+      ((StringBuilder)???).append("]");
+      return ((StringBuilder)???).toString();
     }
     return null;
   }
@@ -186,16 +211,21 @@ class TAVStickerOverlayEffect$MyVideoCompositionEffect
   public void release()
   {
     releaseCloneRenderContext();
-    if ((this.stickerContext != null) && (this.this$0.stickerContext != this.stickerContext))
+    if (this.stickerContext != null)
     {
-      this.stickerContext.release();
-      this.stickerContext = null;
+      TAVStickerRenderContext localTAVStickerRenderContext1 = this.this$0.stickerContext;
+      TAVStickerRenderContext localTAVStickerRenderContext2 = this.stickerContext;
+      if (localTAVStickerRenderContext1 != localTAVStickerRenderContext2)
+      {
+        localTAVStickerRenderContext2.release();
+        this.stickerContext = null;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavmovie.filter.TAVStickerOverlayEffect.MyVideoCompositionEffect
  * JD-Core Version:    0.7.0.1
  */

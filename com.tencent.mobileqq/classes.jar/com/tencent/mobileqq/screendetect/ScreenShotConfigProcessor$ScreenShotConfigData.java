@@ -9,25 +9,28 @@ public class ScreenShotConfigProcessor$ScreenShotConfigData
   
   public static ScreenShotConfigData a(String paramString)
   {
-    boolean bool = true;
     if (paramString == null) {
       return null;
     }
-    try
+    for (;;)
     {
-      ScreenShotConfigData localScreenShotConfigData = new ScreenShotConfigData();
-      if (new JSONObject(paramString).optInt("enable", 1) == 1) {}
-      for (;;)
+      try
       {
-        localScreenShotConfigData.a = bool;
-        return localScreenShotConfigData;
-        bool = false;
+        ScreenShotConfigData localScreenShotConfigData = new ScreenShotConfigData();
+        paramString = new JSONObject(paramString);
+        bool = true;
+        if (paramString.optInt("enable", 1) == 1)
+        {
+          localScreenShotConfigData.a = bool;
+          return localScreenShotConfigData;
+        }
       }
-      return null;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("ScreenShotConfigProcessor", 2, "ScreenShotConfigData parse error", paramString);
+      catch (Exception paramString)
+      {
+        QLog.e("ScreenShotConfigProcessor", 2, "ScreenShotConfigData parse error", paramString);
+        return null;
+      }
+      boolean bool = false;
     }
   }
   
@@ -38,12 +41,16 @@ public class ScreenShotConfigProcessor$ScreenShotConfigData
   
   public String toString()
   {
-    return "ScreenShotConfigData [mSwitchEnable = " + this.a + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ScreenShotConfigData [mSwitchEnable = ");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.screendetect.ScreenShotConfigProcessor.ScreenShotConfigData
  * JD-Core Version:    0.7.0.1
  */

@@ -84,43 +84,53 @@ public class QQImgHazeRmoveFilter
   
   private void init()
   {
-    boolean bool2 = true;
-    if (this.mClip8RenderFBO != null) {
-      this.mClip8RenderFBO.destroy();
+    Object localObject = this.mClip8RenderFBO;
+    if (localObject != null) {
+      ((RenderBuffer)localObject).destroy();
     }
-    if (this.mSrcRenderFBO != null) {
-      this.mSrcRenderFBO.destroy();
+    localObject = this.mSrcRenderFBO;
+    if (localObject != null) {
+      ((RenderBuffer)localObject).destroy();
     }
-    if (this.mOutputRenderFBO != null) {
-      this.mOutputRenderFBO.destroy();
+    localObject = this.mOutputRenderFBO;
+    if (localObject != null) {
+      ((RenderBuffer)localObject).destroy();
     }
-    if (this.mCopyRenderFBO != null) {
-      this.mCopyRenderFBO.destroy();
+    localObject = this.mCopyRenderFBO;
+    if (localObject != null) {
+      ((RenderBuffer)localObject).destroy();
     }
-    if (this.mTranmissionRenderFBO != null) {
-      this.mTranmissionRenderFBO.destroy();
+    localObject = this.mTranmissionRenderFBO;
+    if (localObject != null) {
+      ((RenderBuffer)localObject).destroy();
     }
-    if (this.mCopyTextureRender != null) {
-      this.mCopyTextureRender.release();
+    localObject = this.mCopyTextureRender;
+    if (localObject != null) {
+      ((TextureRender)localObject).release();
     }
-    if (this.gpuImgFilterRecoverFilter != null) {
-      this.gpuImgFilterRecoverFilter.destroy();
+    localObject = this.gpuImgFilterRecoverFilter;
+    if (localObject != null) {
+      ((GPUImgFilterRecoverFilter)localObject).destroy();
     }
     this.gpuImgFilterRecoverFilter = new GPUImgFilterRecoverFilter();
-    if (this.imgFilterPixelsFilter != null) {
-      this.imgFilterPixelsFilter.destroy();
+    localObject = this.imgFilterPixelsFilter;
+    if (localObject != null) {
+      ((GPUAvgPixelsFilter)localObject).destroy();
     }
     this.imgFilterPixelsFilter = new GPUAvgPixelsFilter();
-    if (this.gpuGuideFilterComputeFilter != null) {
-      this.gpuGuideFilterComputeFilter.destroy();
+    localObject = this.gpuGuideFilterComputeFilter;
+    if (localObject != null) {
+      ((GPUGuideFilterComputeFilter)localObject).destroy();
     }
     this.gpuGuideFilterComputeFilter = new GPUGuideFilterComputeFilter();
-    if (this.gpuGuideFilterRecoverFilter != null) {
-      this.gpuGuideFilterRecoverFilter.destroy();
+    localObject = this.gpuGuideFilterRecoverFilter;
+    if (localObject != null) {
+      ((GPUGuideFilterRecoverFilter)localObject).destroy();
     }
     this.gpuGuideFilterRecoverFilter = new GPUGuideFilterRecoverFilter();
-    if (this.minMaxPixelsFilter != null) {
-      this.minMaxPixelsFilter.destroy();
+    localObject = this.minMaxPixelsFilter;
+    if (localObject != null) {
+      ((GPUMinMaxPixelsFilter)localObject).destroy();
     }
     this.minMaxPixelsFilter = new GPUMinMaxPixelsFilter();
     this.SRC_WIDTH = getQQFilterRenderManager().getFilterWidth();
@@ -129,59 +139,54 @@ public class QQImgHazeRmoveFilter
     this.CLIP_HEIGHT = getAlignment16(getQQFilterRenderManager().getFilterHeight() / 10);
     int i = this.CLIP_WIDTH;
     int j = this.CLIP_HEIGHT;
-    if (Build.VERSION.SDK_INT >= 21)
-    {
+    int k = Build.VERSION.SDK_INT;
+    boolean bool2 = true;
+    boolean bool1;
+    if (k >= 21) {
       bool1 = true;
-      this.mClip8RenderFBO = new RenderBuffer(i, j, 33984, bool1);
-      i = this.SRC_WIDTH;
-      j = this.SRC_HEIGHT;
-      if (Build.VERSION.SDK_INT < 21) {
-        break label507;
-      }
-      bool1 = true;
-      label326:
-      this.mSrcRenderFBO = new RenderBuffer(i, j, 33984, bool1);
-      i = this.SRC_WIDTH;
-      j = this.SRC_HEIGHT;
-      if (Build.VERSION.SDK_INT < 21) {
-        break label512;
-      }
-      bool1 = true;
-      label362:
-      this.mOutputRenderFBO = new RenderBuffer(i, j, 33984, bool1);
-      i = this.SRC_WIDTH;
-      j = this.SRC_HEIGHT;
-      if (Build.VERSION.SDK_INT < 21) {
-        break label517;
-      }
-      bool1 = true;
-      label398:
-      this.mCopyRenderFBO = new RenderBuffer(i, j, 33984, bool1);
-      i = this.CLIP_WIDTH;
-      j = this.CLIP_HEIGHT;
-      if (Build.VERSION.SDK_INT < 21) {
-        break label522;
-      }
+    } else {
+      bool1 = false;
     }
-    label512:
-    label517:
-    label522:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.mTranmissionRenderFBO = new RenderBuffer(i, j, 33984, bool1);
-      this.mCopyTextureRender = new TextureRender();
-      SLog.d("QQImgHazeRmoveFilter", "init CLIP_HEIGHT=" + this.CLIP_HEIGHT + " CLIP_WIDTH=" + this.CLIP_WIDTH);
-      return;
+    this.mClip8RenderFBO = new RenderBuffer(i, j, 33984, bool1);
+    i = this.SRC_WIDTH;
+    j = this.SRC_HEIGHT;
+    if (Build.VERSION.SDK_INT >= 21) {
+      bool1 = true;
+    } else {
       bool1 = false;
-      break;
-      label507:
-      bool1 = false;
-      break label326;
-      bool1 = false;
-      break label362;
-      bool1 = false;
-      break label398;
     }
+    this.mSrcRenderFBO = new RenderBuffer(i, j, 33984, bool1);
+    i = this.SRC_WIDTH;
+    j = this.SRC_HEIGHT;
+    if (Build.VERSION.SDK_INT >= 21) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    this.mOutputRenderFBO = new RenderBuffer(i, j, 33984, bool1);
+    i = this.SRC_WIDTH;
+    j = this.SRC_HEIGHT;
+    if (Build.VERSION.SDK_INT >= 21) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    this.mCopyRenderFBO = new RenderBuffer(i, j, 33984, bool1);
+    i = this.CLIP_WIDTH;
+    j = this.CLIP_HEIGHT;
+    if (Build.VERSION.SDK_INT >= 21) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    this.mTranmissionRenderFBO = new RenderBuffer(i, j, 33984, bool1);
+    this.mCopyTextureRender = new TextureRender();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("init CLIP_HEIGHT=");
+    ((StringBuilder)localObject).append(this.CLIP_HEIGHT);
+    ((StringBuilder)localObject).append(" CLIP_WIDTH=");
+    ((StringBuilder)localObject).append(this.CLIP_WIDTH);
+    SLog.d("QQImgHazeRmoveFilter", ((StringBuilder)localObject).toString());
   }
   
   private int[] maxFilter(int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3)
@@ -192,6 +197,7 @@ public class QQImgHazeRmoveFilter
     int i = 0;
     int k;
     int j;
+    int m;
     while (i < paramInt2)
     {
       k = i * paramInt1;
@@ -199,8 +205,10 @@ public class QQImgHazeRmoveFilter
       j = 0;
       while (j < paramInt3)
       {
-        arrayOfInt1[(j + k)] = paramArrayOfInt[(j + k)];
-        arrayOfInt1[(paramInt1 - j - 1 + k)] = paramArrayOfInt[(paramInt1 - j - 1 + k)];
+        m = j + k;
+        arrayOfInt1[m] = paramArrayOfInt[m];
+        m = paramInt1 - j - 1 + k;
+        arrayOfInt1[m] = paramArrayOfInt[m];
         j += 1;
       }
       i += 1;
@@ -212,14 +220,13 @@ public class QQImgHazeRmoveFilter
       j = 1;
       k = 0;
       int n;
-      int m;
       while (j < i3)
       {
-        n = j * paramInt1;
+        n = j * paramInt1 + i1;
         m = i;
-        if (i <= arrayOfInt1[(i1 + n)])
+        if (i <= arrayOfInt1[n])
         {
-          m = arrayOfInt1[(i1 + n)];
+          m = arrayOfInt1[n];
           k = j;
         }
         j += 1;
@@ -227,46 +234,53 @@ public class QQImgHazeRmoveFilter
       }
       arrayOfInt2[paramInt3] = i;
       int i2 = paramInt3 + 1;
-      while (i2 < paramInt2 - paramInt3) {
-        if (k >= i2 - paramInt3)
+      for (;;)
+      {
+        j = paramInt2 - paramInt3;
+        if (i2 >= j) {
+          break;
+        }
+        j = i2 - paramInt3;
+        if (k >= j)
         {
-          m = (i2 + paramInt3) * paramInt1;
-          j = i;
-          if (i <= arrayOfInt1[(i1 + m)])
-          {
-            j = arrayOfInt1[(i1 + m)];
-            k = i2 + paramInt3;
+          n = i2 + paramInt3;
+          j = n * paramInt1 + i1;
+          m = i;
+          if (i > arrayOfInt1[j]) {
+            break label365;
           }
-          arrayOfInt2[i2] = j;
-          i2 += 1;
-          i = j;
+          m = arrayOfInt1[j];
         }
         else
         {
-          n = i2 - paramInt3;
-          m = arrayOfInt1[((i2 - paramInt3) * paramInt1 + i1)];
-          i = i2 - paramInt3 + 1;
-          for (;;)
+          m = arrayOfInt1[(j * paramInt1 + i1)];
+          i = j + 1;
+          k = j;
+          for (j = m;; j = m)
           {
-            j = m;
-            k = n;
+            m = j;
+            n = k;
             if (i >= i3 + i2 - paramInt3) {
               break;
             }
-            k = i * paramInt1;
-            j = m;
-            if (m <= arrayOfInt1[(i1 + k)])
+            n = i * paramInt1 + i1;
+            m = j;
+            if (j <= arrayOfInt1[n])
             {
-              j = arrayOfInt1[(i1 + k)];
-              n = i;
+              m = arrayOfInt1[n];
+              k = i;
             }
             i += 1;
-            m = j;
           }
         }
+        k = n;
+        label365:
+        arrayOfInt2[i2] = m;
+        i2 += 1;
+        i = m;
       }
       i = paramInt3;
-      while (i < paramInt2 - paramInt3)
+      while (i < j)
       {
         arrayOfInt1[(i * paramInt1 + i1)] = arrayOfInt2[i];
         i += 1;
@@ -284,6 +298,7 @@ public class QQImgHazeRmoveFilter
     int i = 0;
     int k;
     int j;
+    int m;
     while (i < paramInt2)
     {
       k = i * paramInt1;
@@ -291,8 +306,10 @@ public class QQImgHazeRmoveFilter
       j = 0;
       while (j < paramInt3)
       {
-        arrayOfInt1[(j + k)] = paramArrayOfInt[(j + k)];
-        arrayOfInt1[(paramInt1 - j - 1 + k)] = paramArrayOfInt[(paramInt1 - j - 1 + k)];
+        m = j + k;
+        arrayOfInt1[m] = paramArrayOfInt[m];
+        m = paramInt1 - j - 1 + k;
+        arrayOfInt1[m] = paramArrayOfInt[m];
         j += 1;
       }
       i += 1;
@@ -304,14 +321,13 @@ public class QQImgHazeRmoveFilter
       j = 1;
       k = 0;
       int n;
-      int m;
       while (j < i3)
       {
-        n = j * paramInt1;
+        n = j * paramInt1 + i1;
         m = i;
-        if (i >= arrayOfInt1[(i1 + n)])
+        if (i >= arrayOfInt1[n])
         {
-          m = arrayOfInt1[(i1 + n)];
+          m = arrayOfInt1[n];
           k = j;
         }
         j += 1;
@@ -319,46 +335,53 @@ public class QQImgHazeRmoveFilter
       }
       arrayOfInt2[paramInt3] = i;
       int i2 = paramInt3 + 1;
-      while (i2 < paramInt2 - paramInt3) {
-        if (k >= i2 - paramInt3)
+      for (;;)
+      {
+        j = paramInt2 - paramInt3;
+        if (i2 >= j) {
+          break;
+        }
+        j = i2 - paramInt3;
+        if (k >= j)
         {
-          m = (i2 + paramInt3) * paramInt1;
-          j = i;
-          if (i >= arrayOfInt1[(i1 + m)])
-          {
-            j = arrayOfInt1[(i1 + m)];
-            k = i2 + paramInt3;
+          n = i2 + paramInt3;
+          j = n * paramInt1 + i1;
+          m = i;
+          if (i < arrayOfInt1[j]) {
+            break label365;
           }
-          arrayOfInt2[i2] = j;
-          i2 += 1;
-          i = j;
+          m = arrayOfInt1[j];
         }
         else
         {
-          n = i2 - paramInt3;
-          m = arrayOfInt1[((i2 - paramInt3) * paramInt1 + i1)];
-          i = i2 - paramInt3 + 1;
-          for (;;)
+          m = arrayOfInt1[(j * paramInt1 + i1)];
+          i = j + 1;
+          k = j;
+          for (j = m;; j = m)
           {
-            j = m;
-            k = n;
+            m = j;
+            n = k;
             if (i >= i3 + i2 - paramInt3) {
               break;
             }
-            k = i * paramInt1;
-            j = m;
-            if (m >= arrayOfInt1[(i1 + k)])
+            n = i * paramInt1 + i1;
+            m = j;
+            if (j >= arrayOfInt1[n])
             {
-              j = arrayOfInt1[(i1 + k)];
-              n = i;
+              m = arrayOfInt1[n];
+              k = i;
             }
             i += 1;
-            m = j;
           }
         }
+        k = n;
+        label365:
+        arrayOfInt2[i2] = m;
+        i2 += 1;
+        i = m;
       }
       i = paramInt3;
-      while (i < paramInt2 - paramInt3)
+      while (i < j)
       {
         arrayOfInt1[(i * paramInt1 + i1)] = arrayOfInt2[i];
         i += 1;
@@ -370,8 +393,8 @@ public class QQImgHazeRmoveFilter
   
   private void produceDarkImgAndLightImg(byte[] paramArrayOfByte, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    int j = 0;
     int i = 3;
+    int j = 0;
     while (i < paramArrayOfByte.length)
     {
       int n = paramArrayOfByte[(i - 3)] & 0xFF;
@@ -406,7 +429,11 @@ public class QQImgHazeRmoveFilter
       if (i == 0) {
         break;
       }
-      SLog.e("QQImgHazeRmoveFilter", new RuntimeException(paramString + ": glError " + i));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": glError ");
+      localStringBuilder.append(i);
+      SLog.e("QQImgHazeRmoveFilter", new RuntimeException(localStringBuilder.toString()));
     }
   }
   
@@ -421,27 +448,26 @@ public class QQImgHazeRmoveFilter
   
   float getAtmosphericLight(int[] paramArrayOfInt, long[] paramArrayOfLong, int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = paramInt1 * paramInt2 / 1000;
-    paramInt3 = i;
-    if (i <= 0) {
-      paramInt3 = paramInt1 * paramInt2 / 100;
+    paramInt3 = paramInt1 * paramInt2;
+    paramInt2 = paramInt3 / 1000;
+    paramInt1 = paramInt2;
+    if (paramInt2 <= 0) {
+      paramInt1 = paramInt3 / 100;
     }
-    paramInt2 = 0;
+    paramInt3 = 0;
     float f1 = 0.0F;
-    paramInt1 = 12;
-    for (;;)
+    paramInt2 = 12;
+    while ((paramInt2 >= 0) && (paramInt3 <= paramInt1))
     {
-      if ((paramInt1 < 0) || (paramInt2 > paramInt3)) {
-        return f1 / paramInt2;
-      }
-      paramInt2 += paramArrayOfInt[paramInt1];
+      paramInt3 += paramArrayOfInt[paramInt2];
       float f2 = f1;
-      if (paramArrayOfInt[paramInt1] > 0) {
-        f2 = f1 + (float)paramArrayOfLong[paramInt1] * 1.0F;
+      if (paramArrayOfInt[paramInt2] > 0) {
+        f2 = f1 + (float)paramArrayOfLong[paramInt2] * 1.0F;
       }
-      paramInt1 -= 1;
+      paramInt2 -= 1;
       f1 = f2;
     }
+    return f1 / paramInt3;
   }
   
   public int getGray(int paramInt1, int paramInt2, int paramInt3)
@@ -451,28 +477,33 @@ public class QQImgHazeRmoveFilter
   
   public int getMax(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramInt2 > paramInt1) {}
-    while (paramInt3 > paramInt2)
-    {
-      return paramInt3;
-      paramInt2 = paramInt1;
+    int i = paramInt1;
+    if (paramInt2 > paramInt1) {
+      i = paramInt2;
     }
-    return paramInt2;
+    paramInt1 = i;
+    if (paramInt3 > i) {
+      paramInt1 = paramInt3;
+    }
+    return paramInt1;
   }
   
   void getMax(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = 0;
     int n = paramInt1 * paramInt2;
-    int i1 = (paramInt3 << 1) + 1;
+    int i1 = paramInt3 << 1;
+    int i2 = i1 + 1;
     int j = paramArrayOfInt1[(n + 0)];
+    int i = 0;
     paramInt1 = 1;
-    while (paramInt1 < i1)
+    int m;
+    while (paramInt1 < i2)
     {
+      m = paramInt1 + n;
       k = j;
-      if (j <= paramArrayOfInt1[(paramInt1 + n)])
+      if (j <= paramArrayOfInt1[m])
       {
-        k = paramArrayOfInt1[(paramInt1 + n)];
+        k = paramArrayOfInt1[m];
         i = paramInt1;
       }
       paramInt1 += 1;
@@ -480,70 +511,76 @@ public class QQImgHazeRmoveFilter
     }
     paramArrayOfInt2[(paramInt3 + n)] = paramArrayOfInt1[(i + n)];
     int k = paramInt3 + 1;
-    if (k < paramInt2 - paramInt3) {
-      if (i >= k - paramInt3)
+    while (k < paramInt2 - paramInt3)
+    {
+      j = k - paramInt3;
+      if (i >= j)
       {
-        paramInt1 = (paramInt3 << 1) + k - paramInt3;
-        j = i;
-        if (paramArrayOfInt1[(i + n)] > paramArrayOfInt1[(paramInt1 + n)]) {
-          break label247;
+        j = i1 + k - paramInt3;
+        paramInt1 = i;
+        if (paramArrayOfInt1[(i + n)] > paramArrayOfInt1[(j + n)]) {
+          break label229;
         }
       }
-    }
-    for (;;)
-    {
+      else
+      {
+        m = paramArrayOfInt1[(j + n)];
+        paramInt1 = j + 1;
+        i = j;
+        for (;;)
+        {
+          j = i;
+          if (paramInt1 >= i2 + k - paramInt3) {
+            break;
+          }
+          int i3 = paramInt1 + n;
+          j = m;
+          if (m <= paramArrayOfInt1[i3])
+          {
+            j = paramArrayOfInt1[i3];
+            i = paramInt1;
+          }
+          paramInt1 += 1;
+          m = j;
+        }
+      }
+      paramInt1 = j;
+      label229:
       paramArrayOfInt2[(k + n)] = paramArrayOfInt1[(paramInt1 + n)];
       k += 1;
       i = paramInt1;
-      break;
-      i = k - paramInt3;
-      int m = paramArrayOfInt1[(k - paramInt3 + n)];
-      paramInt1 = k - paramInt3 + 1;
-      for (;;)
-      {
-        j = i;
-        if (paramInt1 >= i1 + k - paramInt3) {
-          break;
-        }
-        j = m;
-        if (m <= paramArrayOfInt1[(paramInt1 + n)])
-        {
-          j = paramArrayOfInt1[(paramInt1 + n)];
-          i = paramInt1;
-        }
-        paramInt1 += 1;
-        m = j;
-      }
-      return;
-      label247:
-      paramInt1 = j;
     }
   }
   
   public int getMin(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramInt2 < paramInt1) {}
-    while (paramInt3 < paramInt2)
-    {
-      return paramInt3;
-      paramInt2 = paramInt1;
+    int i = paramInt1;
+    if (paramInt2 < paramInt1) {
+      i = paramInt2;
     }
-    return paramInt2;
+    paramInt1 = i;
+    if (paramInt3 < i) {
+      paramInt1 = paramInt3;
+    }
+    return paramInt1;
   }
   
   void getMin(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = 0;
     int n = paramInt1 * paramInt2;
-    int i1 = (paramInt3 << 1) + 1;
+    int i1 = paramInt3 << 1;
+    int i2 = i1 + 1;
     int j = paramArrayOfInt1[(n + 0)];
+    int i = 0;
     paramInt1 = 1;
-    while (paramInt1 < i1)
+    int m;
+    while (paramInt1 < i2)
     {
+      m = paramInt1 + n;
       k = j;
-      if (j >= paramArrayOfInt1[(paramInt1 + n)])
+      if (j >= paramArrayOfInt1[m])
       {
-        k = paramArrayOfInt1[(paramInt1 + n)];
+        k = paramArrayOfInt1[m];
         i = paramInt1;
       }
       paramInt1 += 1;
@@ -551,164 +588,160 @@ public class QQImgHazeRmoveFilter
     }
     paramArrayOfInt2[(paramInt3 + n)] = paramArrayOfInt1[(i + n)];
     int k = paramInt3 + 1;
-    if (k < paramInt2 - paramInt3) {
-      if (i >= k - paramInt3)
+    while (k < paramInt2 - paramInt3)
+    {
+      j = k - paramInt3;
+      if (i >= j)
       {
-        paramInt1 = (paramInt3 << 1) + k - paramInt3;
-        j = i;
-        if (paramArrayOfInt1[(i + n)] < paramArrayOfInt1[(paramInt1 + n)]) {
-          break label247;
+        j = i1 + k - paramInt3;
+        paramInt1 = i;
+        if (paramArrayOfInt1[(i + n)] < paramArrayOfInt1[(j + n)]) {
+          break label229;
         }
       }
-    }
-    for (;;)
-    {
+      else
+      {
+        m = paramArrayOfInt1[(j + n)];
+        paramInt1 = j + 1;
+        i = j;
+        for (;;)
+        {
+          j = i;
+          if (paramInt1 >= i2 + k - paramInt3) {
+            break;
+          }
+          int i3 = paramInt1 + n;
+          j = m;
+          if (m >= paramArrayOfInt1[i3])
+          {
+            j = paramArrayOfInt1[i3];
+            i = paramInt1;
+          }
+          paramInt1 += 1;
+          m = j;
+        }
+      }
+      paramInt1 = j;
+      label229:
       paramArrayOfInt2[(k + n)] = paramArrayOfInt1[(paramInt1 + n)];
       k += 1;
       i = paramInt1;
-      break;
-      i = k - paramInt3;
-      int m = paramArrayOfInt1[(k - paramInt3 + n)];
-      paramInt1 = k - paramInt3 + 1;
-      for (;;)
-      {
-        j = i;
-        if (paramInt1 >= i1 + k - paramInt3) {
-          break;
-        }
-        j = m;
-        if (m >= paramArrayOfInt1[(paramInt1 + n)])
-        {
-          j = paramArrayOfInt1[(paramInt1 + n)];
-          i = paramInt1;
-        }
-        paramInt1 += 1;
-        m = j;
-      }
-      return;
-      label247:
-      paramInt1 = j;
     }
   }
   
   public void guidedFilter(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int paramInt1, float paramFloat, int paramInt2, int paramInt3, float[] paramArrayOfFloat3, float[] paramArrayOfFloat4, float[] paramArrayOfFloat5, float[] paramArrayOfFloat6)
   {
     int i = paramInt1 * 2 + 1;
-    int i1 = i * i;
-    int j = 0;
+    int i2 = i * i;
+    i = 0;
+    int j;
     int k;
-    float f1;
     int m;
+    float f2;
+    int i1;
+    float f1;
     int n;
-    while (j < paramInt3)
+    while (i < paramInt3)
     {
-      k = 0;
-      while (k < paramInt2)
+      j = 0;
+      while (j < paramInt2)
       {
-        i = 0;
-        float f2 = 0.0F;
-        f1 = 0.0F;
-        m = j - paramInt1;
-        while (m <= j + paramInt1)
-        {
-          n = k - paramInt1;
-          if (n <= k + paramInt1)
-          {
-            if ((m < 0) || (m >= paramInt3)) {
-              i += 1;
-            }
-            for (;;)
-            {
-              n += 1;
-              break;
-              if ((n < 0) || (n >= paramInt2))
-              {
-                i += 1;
-              }
-              else
-              {
-                f2 += paramArrayOfFloat2[(m * paramInt2 + n)];
-                f1 += paramArrayOfFloat1[(m * paramInt2 + n)];
-              }
-            }
-          }
-          m += 1;
-        }
-        float f3 = f2 / (i1 - i);
-        float f4 = f1 / (i1 - i);
-        i = 0;
+        k = i - paramInt1;
+        m = k;
         f2 = 0.0F;
+        i1 = 0;
         f1 = 0.0F;
-        m = j - paramInt1;
-        while (m <= j + paramInt1)
+        int i3;
+        for (;;)
         {
-          n = k - paramInt1;
-          if (n <= k + paramInt1)
+          i3 = i + paramInt1;
+          if (m > i3) {
+            break;
+          }
+          n = j - paramInt1;
+          while (n <= j + paramInt1)
           {
-            if ((m < 0) || (m >= paramInt3)) {
-              i += 1;
-            }
-            for (;;)
+            if ((m >= 0) && (m < paramInt3) && (n >= 0) && (n < paramInt2))
             {
-              n += 1;
-              break;
-              if ((n < 0) || (n >= paramInt2))
-              {
-                i += 1;
-              }
-              else
-              {
-                f2 += paramArrayOfFloat1[(m * paramInt2 + n)] * paramArrayOfFloat2[(m * paramInt2 + n)];
-                f1 += (paramArrayOfFloat2[(m * paramInt2 + n)] - f3) * (paramArrayOfFloat2[(m * paramInt2 + n)] - f3);
-              }
+              i3 = m * paramInt2 + n;
+              f2 += paramArrayOfFloat2[i3];
+              f1 += paramArrayOfFloat1[i3];
             }
+            else
+            {
+              i1 += 1;
+            }
+            n += 1;
           }
           m += 1;
         }
-        paramArrayOfFloat3[(j * paramInt2 + k)] = ((f2 / (i1 - i) - f3 * f4) / (f1 / (i1 - i) + paramFloat));
-        paramArrayOfFloat4[(j * paramInt2 + k)] = (f4 - paramArrayOfFloat3[(j * paramInt2 + k)] * f3);
-        k += 1;
+        float f4 = i2 - i1;
+        float f3 = f2 / f4;
+        f4 = f1 / f4;
+        f1 = 0.0F;
+        n = 0;
+        f2 = 0.0F;
+        while (k <= i3)
+        {
+          m = j - paramInt1;
+          while (m <= j + paramInt1)
+          {
+            if ((k >= 0) && (k < paramInt3) && (m >= 0) && (m < paramInt2))
+            {
+              i1 = k * paramInt2 + m;
+              f1 += paramArrayOfFloat1[i1] * paramArrayOfFloat2[i1];
+              f2 += (paramArrayOfFloat2[i1] - f3) * (paramArrayOfFloat2[i1] - f3);
+            }
+            else
+            {
+              n += 1;
+            }
+            m += 1;
+          }
+          k += 1;
+        }
+        k = i * paramInt2 + j;
+        float f5 = i2 - n;
+        paramArrayOfFloat3[k] = ((f1 / f5 - f3 * f4) / (f2 / f5 + paramFloat));
+        paramArrayOfFloat4[k] = (f4 - paramArrayOfFloat3[k] * f3);
+        j += 1;
       }
-      j += 1;
+      i += 1;
     }
-    j = 0;
-    while (j < paramInt3)
+    i = 0;
+    while (i < paramInt3)
     {
-      k = 0;
-      while (k < paramInt2)
+      j = 0;
+      while (j < paramInt2)
       {
-        i = 0;
-        f1 = 0.0F;
+        k = i - paramInt1;
         paramFloat = 0.0F;
-        m = j - paramInt1;
-        while (m <= j + paramInt1)
+        n = 0;
+        f1 = 0.0F;
+        while (k <= i + paramInt1)
         {
-          n = k - paramInt1;
-          if (n <= k + paramInt1)
+          m = j - paramInt1;
+          while (m <= j + paramInt1)
           {
-            if ((m < 0) || (m >= paramInt3)) {
-              i += 1;
+            if ((k >= 0) && (k < paramInt3) && (m >= 0) && (m < paramInt2))
+            {
+              i1 = k * paramInt2 + m;
+              paramFloat += paramArrayOfFloat3[i1];
+              f1 += paramArrayOfFloat4[i1];
             }
-            for (;;)
+            else
             {
               n += 1;
-              break;
-              if ((n < 0) || (n >= paramInt2))
-              {
-                i += 1;
-              }
-              else
-              {
-                f1 += paramArrayOfFloat3[(m * paramInt2 + n)];
-                paramFloat += paramArrayOfFloat4[(m * paramInt2 + n)];
-              }
             }
+            m += 1;
           }
-          m += 1;
+          k += 1;
         }
-        paramArrayOfFloat5[(j * paramInt2 + k)] = (f1 / (i1 - i));
-        paramArrayOfFloat6[(j * paramInt2 + k)] = (paramFloat / (i1 - i));
-        f1 = paramArrayOfFloat5[(j * paramInt2 + k)] * paramArrayOfFloat2[(j * paramInt2 + k)] + paramArrayOfFloat6[(j * paramInt2 + k)];
+        k = i * paramInt2 + j;
+        f2 = i2 - n;
+        paramArrayOfFloat5[k] = (paramFloat / f2);
+        paramArrayOfFloat6[k] = (f1 / f2);
+        f1 = paramArrayOfFloat5[k] * paramArrayOfFloat2[k] + paramArrayOfFloat6[k];
         paramFloat = f1;
         if (f1 > 1.0F) {
           paramFloat = 1.0F;
@@ -717,10 +750,10 @@ public class QQImgHazeRmoveFilter
         if (paramFloat < 0.0F) {
           f1 = 0.0F;
         }
-        paramArrayOfFloat1[(j * paramInt2 + k)] = f1;
-        k += 1;
+        paramArrayOfFloat1[k] = f1;
+        j += 1;
       }
-      j += 1;
+      i += 1;
     }
   }
   
@@ -737,40 +770,43 @@ public class QQImgHazeRmoveFilter
       this.mOutputTextureID = this.mInputTextureID;
       return;
     }
-    if ((this.mClip8RenderFBO == null) || (this.mCopyTextureRender == null))
+    if ((this.mClip8RenderFBO != null) && (this.mCopyTextureRender != null))
     {
-      init();
-      this.mOutputTextureID = this.mInputTextureID;
+      int[] arrayOfInt1 = new int[5];
+      GLES20.glGenBuffers(5, arrayOfInt1, 0);
+      checkGlError("glGenBuffers");
+      int j = clipTexture(this.mInputTextureID);
+      Object localObject = this.imgFilterPixelsFilter.glDisPatchGPUAvgPixelsFilterCompute(j, this.CLIP_WIDTH, this.CLIP_HEIGHT, arrayOfInt1, this.mWindow);
+      float[] arrayOfFloat = new float[this.CLIP_HEIGHT * this.CLIP_WIDTH];
+      int[] arrayOfInt2 = new int[13];
+      long[] arrayOfLong = new long[13];
+      int i = 0;
+      while (i < localObject.length)
+      {
+        k = localObject[i];
+        int m = k / 20;
+        arrayOfInt2[m] += 1;
+        arrayOfLong[m] += k;
+        arrayOfFloat[i] = (k / 255.0F);
+        i += 1;
+      }
+      float f = getAtmosphericLight(arrayOfInt2, arrayOfLong, this.CLIP_WIDTH, this.CLIP_HEIGHT, this.mWindow);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getAtmosphericLight=");
+      ((StringBuilder)localObject).append(f);
+      SLog.d("QQImgHazeRmoveFilter", ((StringBuilder)localObject).toString());
+      i = copyTransmissionTexture();
+      getTransmissionDark(j, i, arrayOfInt1, this.CLIP_WIDTH, this.CLIP_HEIGHT, arrayOfFloat, f, this.mWindow);
+      i = scaleTexture(i);
+      j = copyInputTexture(this.mInputTextureID);
+      int k = copyoutputTexture(this.mInputTextureID);
+      i = this.gpuImgFilterRecoverFilter.glDisPatchImgFilterCompute(arrayOfInt1, j, k, i, f, this.SRC_WIDTH, this.SRC_HEIGHT, null);
+      GLES20.glDeleteBuffers(5, arrayOfInt1, 0);
+      this.mOutputTextureID = i;
       return;
     }
-    int[] arrayOfInt1 = new int[5];
-    GLES20.glGenBuffers(5, arrayOfInt1, 0);
-    checkGlError("glGenBuffers");
-    int j = clipTexture(this.mInputTextureID);
-    int[] arrayOfInt2 = this.imgFilterPixelsFilter.glDisPatchGPUAvgPixelsFilterCompute(j, this.CLIP_WIDTH, this.CLIP_HEIGHT, arrayOfInt1, this.mWindow);
-    float[] arrayOfFloat = new float[this.CLIP_HEIGHT * this.CLIP_WIDTH];
-    int[] arrayOfInt3 = new int[13];
-    long[] arrayOfLong = new long[13];
-    int i = 0;
-    while (i < arrayOfInt2.length)
-    {
-      k = arrayOfInt2[i];
-      int m = k / 20;
-      arrayOfInt3[m] += 1;
-      arrayOfLong[m] += k;
-      arrayOfFloat[i] = (k / 255.0F);
-      i += 1;
-    }
-    float f = getAtmosphericLight(arrayOfInt3, arrayOfLong, this.CLIP_WIDTH, this.CLIP_HEIGHT, this.mWindow);
-    SLog.d("QQImgHazeRmoveFilter", "getAtmosphericLight=" + f);
-    i = copyTransmissionTexture();
-    getTransmissionDark(j, i, arrayOfInt1, this.CLIP_WIDTH, this.CLIP_HEIGHT, arrayOfFloat, f, this.mWindow);
-    i = scaleTexture(i);
-    j = copyInputTexture(this.mInputTextureID);
-    int k = copyoutputTexture(this.mInputTextureID);
-    i = this.gpuImgFilterRecoverFilter.glDisPatchImgFilterCompute(arrayOfInt1, j, k, i, f, this.SRC_WIDTH, this.SRC_HEIGHT, null);
-    GLES20.glDeleteBuffers(5, arrayOfInt1, 0);
-    this.mOutputTextureID = i;
+    init();
+    this.mOutputTextureID = this.mInputTextureID;
   }
   
   public void onSurfaceChange(int paramInt1, int paramInt2)
@@ -795,7 +831,7 @@ public class QQImgHazeRmoveFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQImgHazeRmoveFilter
  * JD-Core Version:    0.7.0.1
  */

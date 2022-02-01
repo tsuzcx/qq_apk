@@ -9,14 +9,14 @@ class BaseMsgBoxActivity$1$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity$1.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity$1.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity$1.a.jdField_a_of_type_Int);
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity$1.a.mRecentAdapter != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity$1.a.mRecentAdapter.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity$1.a.mBoxMsgType);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dating.BaseMsgBoxActivity.1.1
  * JD-Core Version:    0.7.0.1
  */

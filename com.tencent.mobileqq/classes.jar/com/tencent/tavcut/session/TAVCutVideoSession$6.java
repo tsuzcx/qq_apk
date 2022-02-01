@@ -7,13 +7,14 @@ class TAVCutVideoSession$6
   
   public void run()
   {
-    this.this$0.setEffectStrength(this.this$0.getMediaModel(), TAVCutVideoSession.access$200(this.this$0), this.val$effectStrength);
+    TAVCutVideoSession localTAVCutVideoSession = this.this$0;
+    localTAVCutVideoSession.setEffectStrength(localTAVCutVideoSession.getMediaModel(), TAVCutVideoSession.access$200(this.this$0), this.val$effectStrength);
     this.this$0.refresh();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutVideoSession.6
  * JD-Core Version:    0.7.0.1
  */

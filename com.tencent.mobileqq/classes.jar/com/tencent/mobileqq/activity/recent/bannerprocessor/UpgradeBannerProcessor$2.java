@@ -18,19 +18,16 @@ class UpgradeBannerProcessor$2
   {
     if (UpgradeController.a().a() == 4) {
       ReportController.b(UpgradeBannerProcessor.e(this.a).getAppRuntime(), "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, UpgradeConstants.b(), UpgradeController.b(), UpgradeController.a(), "0");
-    }
-    for (;;)
-    {
-      BannerManager.a().a(15, 0, null);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    } else {
       ReportController.b(UpgradeBannerProcessor.f(this.a).getAppRuntime(), "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, UpgradeConstants.b(), UpgradeController.b(), UpgradeController.a(), "0");
     }
+    BannerManager.a().a(UpgradeBannerProcessor.a, 0, null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.UpgradeBannerProcessor.2
  * JD-Core Version:    0.7.0.1
  */

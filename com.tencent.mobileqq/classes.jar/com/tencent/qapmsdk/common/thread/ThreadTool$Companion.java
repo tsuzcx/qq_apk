@@ -16,53 +16,46 @@ public final class ThreadTool$Companion
   @JvmStatic
   public final long getNativeThreadAddress(@NotNull Thread paramThread)
   {
-    Object localObject2 = null;
-    Object localObject1 = null;
     Intrinsics.checkParameterIsNotNull(paramThread, "thread");
     try
     {
-      if (!SystemProduct.Companion.isDalvikVm()) {
-        break label80;
+      Object localObject;
+      if (SystemProduct.Companion.isDalvikVm())
+      {
+        paramThread = Reflect.Companion.getThreadPrivateField(paramThread, "vmThread");
+        if (paramThread != null)
+        {
+          localObject = Reflect.Companion.getInstancePrivateField(paramThread, "vmData");
+          paramThread = localObject;
+          if (!(localObject instanceof Long)) {
+            paramThread = null;
+          }
+          paramThread = (Long)paramThread;
+          if (paramThread != null) {
+            return ((Number)paramThread).longValue();
+          }
+          paramThread = (Void)null;
+        }
       }
-      paramThread = Reflect.Companion.getThreadPrivateField(paramThread, "vmThread");
-      if (paramThread == null) {
-        break label140;
+      else
+      {
+        localObject = Reflect.Companion.getThreadPrivateField(paramThread, "nativePeer");
+        paramThread = localObject;
+        if (!(localObject instanceof Long)) {
+          paramThread = null;
+        }
+        paramThread = (Long)paramThread;
+        if (paramThread != null)
+        {
+          long l = ((Number)paramThread).longValue();
+          return l;
+        }
       }
-      paramThread = Reflect.Companion.getInstancePrivateField(paramThread, "vmData");
-      if ((paramThread instanceof Long)) {
-        break label137;
-      }
-      paramThread = localObject1;
     }
     catch (Throwable paramThread)
     {
-      for (;;)
-      {
-        long l;
-        Logger.INSTANCE.exception("QAPM_common_ThreadTool", "getNativeThreadAddress", paramThread);
-        break;
-      }
+      Logger.INSTANCE.exception("QAPM_common_ThreadTool", "getNativeThreadAddress", paramThread);
     }
-    paramThread = (Long)paramThread;
-    if (paramThread != null) {
-      return ((Number)paramThread).longValue();
-    }
-    paramThread = (Void)null;
-    break label140;
-    label80:
-    paramThread = Reflect.Companion.getThreadPrivateField(paramThread, "nativePeer");
-    if (!(paramThread instanceof Long))
-    {
-      paramThread = localObject2;
-      paramThread = (Long)paramThread;
-      if (paramThread == null) {
-        break label140;
-      }
-      l = ((Number)paramThread).longValue();
-      return l;
-    }
-    label137:
-    label140:
     return -1L;
   }
   
@@ -85,7 +78,7 @@ public final class ThreadTool$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.common.thread.ThreadTool.Companion
  * JD-Core Version:    0.7.0.1
  */

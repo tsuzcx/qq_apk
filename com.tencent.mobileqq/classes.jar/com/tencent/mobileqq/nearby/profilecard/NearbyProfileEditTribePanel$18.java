@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.picbrowser.PicInfo;
 
 class NearbyProfileEditTribePanel$18
   implements View.OnLongClickListener
@@ -38,7 +38,7 @@ class NearbyProfileEditTribePanel$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel.18
  * JD-Core Version:    0.7.0.1
  */

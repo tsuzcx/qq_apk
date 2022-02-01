@@ -2,15 +2,12 @@ package com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.mgr;
 
 import android.app.Activity;
 import android.webkit.ValueCallback;
-import com.tencent.biz.pubaccount.readinjoy.config.handlers.DailyModeConfigHandler;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.api.SuperMaskStep;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.step.AladdinCheckStep;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.step.ShowIntervalCheckStep;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.step.SuperMaskStepUtil;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdLog;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoySuperMaskAdUtil;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.view.KandianAdPandentMask;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.kandian.repo.daily.api.IDailyModeConfigHandler;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.widget.ListView;
 import java.lang.ref.SoftReference;
 import kotlin.Metadata;
@@ -19,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/mgr/SuperMaskUIMgr;", "", "()V", "ERROR", "", "FINISH", "NONE", "PAUSE", "PREPARE", "SHOW", "activity", "Ljava/lang/ref/SoftReference;", "Landroid/app/Activity;", "getActivity", "()Ljava/lang/ref/SoftReference;", "setActivity", "(Ljava/lang/ref/SoftReference;)V", "channelID", "getChannelID", "()I", "setChannelID", "(I)V", "hasVolume", "", "getHasVolume", "()Z", "setHasVolume", "(Z)V", "isShowing", "setShowing", "listView", "Lcom/tencent/widget/ListView;", "getListView", "setListView", "showStatus", "getShowStatus", "setShowStatus", "superMaskUI", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/view/KandianAdPandentMask;", "checkChannelID", "checkResValid", "", "callback", "Landroid/webkit/ValueCallback;", "close", "onPause", "onResume", "resetUIMgr", "shouldShowSuperMask", "showSuperMask", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/mgr/SuperMaskUIMgr;", "", "()V", "activity", "Ljava/lang/ref/SoftReference;", "Landroid/app/Activity;", "getActivity", "()Ljava/lang/ref/SoftReference;", "setActivity", "(Ljava/lang/ref/SoftReference;)V", "channelID", "", "getChannelID", "()I", "setChannelID", "(I)V", "hasVolume", "", "getHasVolume", "()Z", "setHasVolume", "(Z)V", "isShowing", "setShowing", "listView", "Lcom/tencent/widget/ListView;", "getListView", "setListView", "showStatus", "getShowStatus", "setShowStatus", "superMaskUI", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/view/KandianAdPandentMask;", "checkChannelID", "checkResValid", "", "callback", "Landroid/webkit/ValueCallback;", "close", "onPause", "onResume", "resetUIMgr", "shouldShowSuperMask", "showSuperMask", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class SuperMaskUIMgr
 {
   private static int jdField_a_of_type_Int;
@@ -48,38 +45,29 @@ public final class SuperMaskUIMgr
     c = new SoftReference(new KandianAdPandentMask());
     ReadInJoyAdLog.a("ReadInJoySuperMaskAd", "UI showSuperMask");
     Object localObject1 = c;
-    Object localObject2;
-    if (localObject1 != null)
-    {
+    if (localObject1 != null) {
       localObject1 = (KandianAdPandentMask)((SoftReference)localObject1).get();
-      localObject2 = jdField_a_of_type_JavaLangRefSoftReference;
-      if (localObject2 == null) {
-        break label101;
-      }
-      localObject2 = (Activity)((SoftReference)localObject2).get();
-      label56:
-      localObject3 = jdField_b_of_type_JavaLangRefSoftReference;
-      if (localObject3 == null) {
-        break label106;
-      }
+    } else {
+      localObject1 = null;
     }
-    JSONObject localJSONObject;
-    label101:
-    label106:
-    for (Object localObject3 = (ListView)((SoftReference)localObject3).get();; localObject3 = null)
+    Object localObject2 = jdField_a_of_type_JavaLangRefSoftReference;
+    if (localObject2 != null) {
+      localObject2 = (Activity)((SoftReference)localObject2).get();
+    } else {
+      localObject2 = null;
+    }
+    Object localObject3 = jdField_b_of_type_JavaLangRefSoftReference;
+    if (localObject3 != null) {
+      localObject3 = (ListView)((SoftReference)localObject3).get();
+    } else {
+      localObject3 = null;
+    }
+    JSONObject localJSONObject = SuperMaskDataMgr.a.a();
+    if (localObject1 == null)
     {
-      localJSONObject = SuperMaskDataMgr.a.a();
-      if (localObject1 != null) {
-        break label111;
-      }
       SuperMaskReportMgr.a(SuperMaskReportMgr.a, "uiIsNull", null, 2, null);
       return;
-      localObject1 = null;
-      break;
-      localObject2 = null;
-      break label56;
     }
-    label111:
     if (localObject2 == null)
     {
       SuperMaskReportMgr.a(SuperMaskReportMgr.a, "actIsNull", null, 2, null);
@@ -131,7 +119,7 @@ public final class SuperMaskUIMgr
   
   public final void b()
   {
-    if (!c())
+    if (!b())
     {
       ReadInJoyAdLog.a("ReadInJoySuperMaskAd", "UI onResume  : checkChannelID fail");
       d();
@@ -155,30 +143,22 @@ public final class SuperMaskUIMgr
   
   public final boolean b()
   {
-    AladdinCheckStep localAladdinCheckStep = new AladdinCheckStep();
-    if (SuperMaskConfigMgr.a.a() == 1) {
-      return SuperMaskStepUtil.a.a("[SHOW]", new SuperMaskStep[] { (SuperMaskStep)localAladdinCheckStep });
-    }
-    ShowIntervalCheckStep localShowIntervalCheckStep = new ShowIntervalCheckStep(jdField_b_of_type_Int);
-    return SuperMaskStepUtil.a.a("[SHOW]", new SuperMaskStep[] { (SuperMaskStep)localAladdinCheckStep, (SuperMaskStep)localShowIntervalCheckStep });
+    return (jdField_b_of_type_Int == 0) || (((IDailyModeConfigHandler)QRoute.api(IDailyModeConfigHandler.class)).isDaily(jdField_b_of_type_Int));
   }
   
   public final void c()
   {
     if ((jdField_b_of_type_Boolean) && (!ReadInJoySuperMaskAdUtil.jdField_a_of_type_Boolean))
     {
-      String str = "enterBackgroundNoExpose";
+      String str;
       if (SuperMaskReportMgr.a.a()) {
         str = "enterBackground";
+      } else {
+        str = "enterBackgroundNoExpose";
       }
       SuperMaskReportMgr.a(SuperMaskReportMgr.a, str, null, 2, null);
     }
     d();
-  }
-  
-  public final boolean c()
-  {
-    return (jdField_b_of_type_Int == 0) || (DailyModeConfigHandler.c(jdField_b_of_type_Int));
   }
   
   public final void d()
@@ -210,13 +190,14 @@ public final class SuperMaskUIMgr
   {
     ReadInJoyAdLog.a("ReadInJoySuperMaskAd", "setSuperMaskChannelId -1 : resetUIMgr");
     jdField_b_of_type_Int = -1;
-    jdField_a_of_type_JavaLangRefSoftReference = (SoftReference)null;
-    c = (SoftReference)null;
+    SoftReference localSoftReference = (SoftReference)null;
+    jdField_a_of_type_JavaLangRefSoftReference = localSoftReference;
+    c = localSoftReference;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.mgr.SuperMaskUIMgr
  * JD-Core Version:    0.7.0.1
  */

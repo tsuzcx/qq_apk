@@ -10,14 +10,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.biz.common.util.NetworkUtil;
 import com.tencent.biz.pubaccount.weishi_new.data.WSUserBusiness;
+import com.tencent.biz.pubaccount.weishi_new.image.WSPicLoader;
 import com.tencent.biz.pubaccount.weishi_new.report.WSFollowBeaconReport;
 import com.tencent.biz.pubaccount.weishi_new.report.WSReportEvent.ActionId;
 import com.tencent.biz.pubaccount.weishi_new.util.WSFeedUtils;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
-import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
 import com.tencent.biz.pubaccount.weishi_new.view.WSRoundedImageView;
 import com.tencent.open.base.ToastUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.pull2refresh.BaseViewHolder;
 
 public class WSRecommendFollowHolder
@@ -44,7 +43,7 @@ public class WSRecommendFollowHolder
   
   public WSRecommendFollowHolder(ViewGroup paramViewGroup, WSRecommendFollowListener paramWSRecommendFollowListener)
   {
-    super(paramViewGroup, 2131560528);
+    super(paramViewGroup, 2131560415);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSRecommendFollowListener = paramWSRecommendFollowListener;
     d();
     c();
@@ -59,16 +58,12 @@ public class WSRecommendFollowHolder
   {
     if (paramInt == 1) {
       WSFollowBeaconReport.a("nickname", this.jdField_a_of_type_Int + 1, this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, WSReportEvent.ActionId.a);
+    } else if (paramInt == 2) {
+      WSFollowBeaconReport.a("profile", this.jdField_a_of_type_Int + 1, this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, WSReportEvent.ActionId.a);
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSRecommendFollowListener != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSRecommendFollowListener.b(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson);
-      }
-      return;
-      if (paramInt == 2) {
-        WSFollowBeaconReport.a("profile", this.jdField_a_of_type_Int + 1, this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, WSReportEvent.ActionId.a);
-      }
+    WSRecommendFollowListener localWSRecommendFollowListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSRecommendFollowListener;
+    if (localWSRecommendFollowListener != null) {
+      localWSRecommendFollowListener.b(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson);
     }
   }
   
@@ -115,26 +110,26 @@ public class WSRecommendFollowHolder
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131369411));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131369402));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView = ((WSRoundedImageView)a(2131369401));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131369404));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131369405));
-    this.c = ((TextView)a(2131369403));
-    this.d = ((TextView)a(2131369406));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131369407));
-    this.e = ((TextView)a(2131369410));
-    this.f = ((TextView)a(2131369408));
-    this.g = ((TextView)a(2131369409));
-    this.h = ((TextView)a(2131369326));
-    this.i = ((TextView)a(2131369325));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)getView(2131369139));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)getView(2131369130));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView = ((WSRoundedImageView)getView(2131369129));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)getView(2131369132));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)getView(2131369133));
+    this.c = ((TextView)getView(2131369131));
+    this.d = ((TextView)getView(2131369134));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)getView(2131369135));
+    this.e = ((TextView)getView(2131369138));
+    this.f = ((TextView)getView(2131369136));
+    this.g = ((TextView)getView(2131369137));
+    this.h = ((TextView)getView(2131369058));
+    this.i = ((TextView)getView(2131369057));
   }
   
   private void e()
   {
-    if (!NetworkUtil.a(a()))
+    if (!NetworkUtil.a(getContext()))
     {
-      ToastUtil.a().a(2131720723);
+      ToastUtil.a().a(2131720447);
       return;
     }
     if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataWSUserBusiness == null) {
@@ -142,7 +137,7 @@ public class WSRecommendFollowHolder
     }
     if (WSFeedUtils.a(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.followStatus))
     {
-      WSFeedUtils.a(a(), new WSRecommendFollowHolder.1(this), null);
+      WSFeedUtils.a(getContext(), new WSRecommendFollowHolder.1(this), null);
       return;
     }
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataWSUserBusiness.a(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, 1);
@@ -154,10 +149,15 @@ public class WSRecommendFollowHolder
   
   private void f()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSRecommendFollowListener != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaPerson != null))
+    WSRecommendFollowListener localWSRecommendFollowListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSRecommendFollowListener;
+    if (localWSRecommendFollowListener != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendfollowWSRecommendFollowListener.a(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson);
-      WSFollowBeaconReport.a("close", this.jdField_a_of_type_Int + 1, this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, WSReportEvent.ActionId.a);
+      stSimpleMetaPerson localstSimpleMetaPerson = this.jdField_a_of_type_UserGrowthStSimpleMetaPerson;
+      if (localstSimpleMetaPerson != null)
+      {
+        localWSRecommendFollowListener.a(localstSimpleMetaPerson);
+        WSFollowBeaconReport.a("close", this.jdField_a_of_type_Int + 1, this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, WSReportEvent.ActionId.a);
+      }
     }
   }
   
@@ -168,10 +168,11 @@ public class WSRecommendFollowHolder
   
   public void a()
   {
-    if (this.jdField_a_of_type_UserGrowthStSimpleMetaPerson == null) {
+    stSimpleMetaPerson localstSimpleMetaPerson = this.jdField_a_of_type_UserGrowthStSimpleMetaPerson;
+    if (localstSimpleMetaPerson == null) {
       return;
     }
-    if (WSFeedUtils.a(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.followStatus))
+    if (WSFeedUtils.a(localstSimpleMetaPerson.followStatus))
     {
       this.h.setVisibility(8);
       this.i.setVisibility(0);
@@ -183,65 +184,71 @@ public class WSRecommendFollowHolder
   
   public void a(stSimpleMetaPerson paramstSimpleMetaPerson, int paramInt)
   {
-    super.a(paramstSimpleMetaPerson);
+    super.bindData(paramstSimpleMetaPerson);
     this.jdField_a_of_type_UserGrowthStSimpleMetaPerson = paramstSimpleMetaPerson;
     if (paramstSimpleMetaPerson == null) {
       return;
     }
     this.jdField_a_of_type_Int = paramInt;
-    WeishiUtils.a(a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView, paramstSimpleMetaPerson.avatar);
+    WSPicLoader.a(getContext(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView, paramstSimpleMetaPerson.avatar);
     boolean bool = WSFeedUtils.b(paramstSimpleMetaPerson.relation_type);
     TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (bool) {}
-    for (paramInt = 0;; paramInt = 8)
-    {
-      localTextView.setVisibility(paramInt);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      WSFeedUtils.a(this.jdField_b_of_type_AndroidWidgetTextView, paramstSimpleMetaPerson.medal, bool);
-      this.d.setText(WSFeedUtils.a(paramstSimpleMetaPerson.nick));
-      a(this.e, this.f, paramstSimpleMetaPerson.nueric);
-      this.g.setText(paramstSimpleMetaPerson.recommendReason);
-      a();
-      return;
+    if (bool) {
+      paramInt = 0;
+    } else {
+      paramInt = 8;
     }
+    localTextView.setVisibility(paramInt);
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    WSFeedUtils.a(this.jdField_b_of_type_AndroidWidgetTextView, paramstSimpleMetaPerson.medal, bool);
+    this.d.setText(WSFeedUtils.a(paramstSimpleMetaPerson.nick));
+    a(this.e, this.f, paramstSimpleMetaPerson.nueric);
+    this.g.setText(paramstSimpleMetaPerson.recommendReason);
+    a();
   }
   
   public void b()
   {
     WSLog.b("WSRecommendFollowHolder", "[reportExposure]");
-    if (this.jdField_a_of_type_UserGrowthStSimpleMetaPerson == null)
+    stSimpleMetaPerson localstSimpleMetaPerson = this.jdField_a_of_type_UserGrowthStSimpleMetaPerson;
+    if (localstSimpleMetaPerson == null)
     {
       WSLog.d("WSRecommendFollowHolder", "[reportExposure] mCurrentPerson is null");
       return;
     }
-    a(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson);
+    a(localstSimpleMetaPerson);
   }
   
   public void onClick(View paramView)
   {
-    WSLog.b("WSRecommendFollowHolder", "[onClick] view: " + paramView);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[onClick] view: ");
+    localStringBuilder.append(paramView);
+    WSLog.b("WSRecommendFollowHolder", localStringBuilder.toString());
     switch (paramView.getId())
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+    default: 
       return;
-      f();
-      continue;
-      e();
-      continue;
-      a(1);
-      continue;
+    case 2131369135: 
+    case 2131369137: 
       a(0);
-      continue;
+      return;
+    case 2131369134: 
+      a(1);
+      return;
+    case 2131369131: 
+      f();
+      return;
+    case 2131369130: 
       a(2);
+      return;
     }
+    e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommendfollow.WSRecommendFollowHolder
  * JD-Core Version:    0.7.0.1
  */

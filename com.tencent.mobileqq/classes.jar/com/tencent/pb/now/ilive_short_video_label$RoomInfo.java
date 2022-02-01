@@ -37,13 +37,14 @@ public final class ilive_short_video_label$RoomInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 56, 64, 74, 82, 88, 98, 106, 112, 122, 130, 136, 146, 400, 408 }, new String[] { "room_id", "subroom_id", "anchor_uin", "vid", "room_name", "title_info", "total_people", "total_money", "room_cover_url_90", "video_cover_url", "video_end_time", "room_cover_url_640", "nick_name", "video_start_time", "anchor_logo_80", "anchor_logo_640", "total_record_people", "city", "video_end_action_svr_is_seted", "get_from_room_info_svr_is_seted" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), "", "", null, Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), "", "", Integer.valueOf(0), "", "", Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, RoomInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 56, 64, 74, 82, 88, 98, 106, 112, 122, 130, 136, 146, 400, 408 }, new String[] { "room_id", "subroom_id", "anchor_uin", "vid", "room_name", "title_info", "total_people", "total_money", "room_cover_url_90", "video_cover_url", "video_end_time", "room_cover_url_640", "nick_name", "video_start_time", "anchor_logo_80", "anchor_logo_640", "total_record_people", "city", "video_end_action_svr_is_seted", "get_from_room_info_svr_is_seted" }, new Object[] { localInteger, localInteger, Long.valueOf(0L), "", "", null, localInteger, localInteger, "", "", localInteger, "", "", localInteger, "", "", localInteger, localByteStringMicro, localInteger, localInteger }, RoomInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.now.ilive_short_video_label.RoomInfo
  * JD-Core Version:    0.7.0.1
  */

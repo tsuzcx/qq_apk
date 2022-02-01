@@ -14,7 +14,7 @@ class UnreadTask$1
   
   public void run()
   {
-    Object localObject = this.this$0.a.a;
+    Object localObject = this.this$0.a.a();
     this.this$0.a((QQAppInterface)localObject);
     localObject = this.this$0.a.a().a().b().iterator();
     while (((Iterator)localObject).hasNext()) {
@@ -24,7 +24,7 @@ class UnreadTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.UnreadTask.1
  * JD-Core Version:    0.7.0.1
  */

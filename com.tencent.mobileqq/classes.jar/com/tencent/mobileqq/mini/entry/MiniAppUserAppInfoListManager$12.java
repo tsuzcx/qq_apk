@@ -13,34 +13,39 @@ class MiniAppUserAppInfoListManager$12
   
   public void run()
   {
-    if (this.val$appInfo == null) {
-      QLog.e("MiniAppUserAppInfoListManager", 1, "insertRecommendMiniAppToDB, appInfo is null.");
-    }
-    Object localObject;
-    RecommendMiniAppEntity localRecommendMiniAppEntity;
-    do
+    if (this.val$appInfo == null)
     {
+      QLog.e("MiniAppUserAppInfoListManager", 1, "insertRecommendMiniAppToDB, appInfo is null.");
       return;
-      localObject = MiniAppUtils.getAppInterface();
-      if (localObject == null)
+    }
+    Object localObject = MiniAppUtils.getAppInterface();
+    if (localObject == null)
+    {
+      QLog.e("MiniAppUserAppInfoListManager", 1, "insertRecommendMiniAppToDB, app is null.");
+      return;
+    }
+    RecommendMiniAppEntity localRecommendMiniAppEntity = new RecommendMiniAppEntity(this.val$appInfo.appId, this.val$appInfo.name, this.val$appInfo.recommend);
+    localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
+    if (localObject != null)
+    {
+      if (MiniAppUserAppInfoListManager.access$1100(this.this$0, (EntityManager)localObject, localRecommendMiniAppEntity))
       {
-        QLog.e("MiniAppUserAppInfoListManager", 1, "insertRecommendMiniAppToDB, app is null.");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("insertRecommendMiniAppToDB, success to delete recommend appInfo: ");
+        ((StringBuilder)localObject).append(localRecommendMiniAppEntity);
+        QLog.d("MiniAppUserAppInfoListManager", 1, ((StringBuilder)localObject).toString());
         return;
       }
-      localRecommendMiniAppEntity = new RecommendMiniAppEntity(this.val$appInfo.appId, this.val$appInfo.name, this.val$appInfo.recommend);
-      localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
-    } while (localObject == null);
-    if (MiniAppUserAppInfoListManager.access$1100(this.this$0, (EntityManager)localObject, localRecommendMiniAppEntity))
-    {
-      QLog.d("MiniAppUserAppInfoListManager", 1, "insertRecommendMiniAppToDB, success to delete recommend appInfo: " + localRecommendMiniAppEntity);
-      return;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("insertRecommendMiniAppToDB, failed to delete recommend appInfo: ");
+      ((StringBuilder)localObject).append(localRecommendMiniAppEntity);
+      QLog.e("MiniAppUserAppInfoListManager", 1, ((StringBuilder)localObject).toString());
     }
-    QLog.e("MiniAppUserAppInfoListManager", 1, "insertRecommendMiniAppToDB, failed to delete recommend appInfo: " + localRecommendMiniAppEntity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUserAppInfoListManager.12
  * JD-Core Version:    0.7.0.1
  */

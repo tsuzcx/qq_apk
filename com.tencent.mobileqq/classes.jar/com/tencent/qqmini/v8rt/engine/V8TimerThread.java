@@ -17,10 +17,11 @@ public class V8TimerThread
   
   public void run()
   {
-    if (this.mListener == null) {
+    V8TimerThread.IListener localIListener = this.mListener;
+    if (localIListener == null) {
       return;
     }
-    this.mListener.onPrepare();
+    localIListener.onPrepare();
     try
     {
       boolean bool;
@@ -31,10 +32,10 @@ public class V8TimerThread
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Logger.e("V8Timer", "run error " + localException.getMessage());
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("run error ");
+      localStringBuilder.append(localException.getMessage());
+      Logger.e("V8Timer", localStringBuilder.toString());
     }
     Logger.e("V8Timer", "run exit");
     this.mListener.onExit();
@@ -42,7 +43,7 @@ public class V8TimerThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.v8rt.engine.V8TimerThread
  * JD-Core Version:    0.7.0.1
  */

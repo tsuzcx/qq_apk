@@ -2,9 +2,7 @@ package com.tencent.qqmini.sdk.request;
 
 import NS_MINI_INTERFACE.INTERFACE.StBatchGetContactReq;
 import NS_MINI_INTERFACE.INTERFACE.StGetRobotUinRsp;
-import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.utils.GdtJsonPbUtil;
 import java.util.List;
 import org.json.JSONObject;
@@ -37,25 +35,18 @@ public class BatchGetContactRequest
   
   public JSONObject getResponse(byte[] paramArrayOfByte, JSONObject paramJSONObject)
   {
-    paramJSONObject = null;
-    Object localObject = new INTERFACE.StGetRobotUinRsp();
-    ((INTERFACE.StGetRobotUinRsp)localObject).mergeFrom(paramArrayOfByte);
-    if (localObject != null)
-    {
-      localObject = GdtJsonPbUtil.pbToJson((PBField)localObject);
-      paramArrayOfByte = paramJSONObject;
-      if ((localObject instanceof JSONObject)) {
-        paramArrayOfByte = (JSONObject)JSONObject.class.cast(localObject);
-      }
-      return paramArrayOfByte;
+    paramJSONObject = new INTERFACE.StGetRobotUinRsp();
+    paramJSONObject.mergeFrom(paramArrayOfByte);
+    paramArrayOfByte = GdtJsonPbUtil.pbToJson(paramJSONObject);
+    if ((paramArrayOfByte instanceof JSONObject)) {
+      return (JSONObject)JSONObject.class.cast(paramArrayOfByte);
     }
-    QMLog.d("VerifyPluginRequest", "onResponse fail.rsp = null");
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.BatchGetContactRequest
  * JD-Core Version:    0.7.0.1
  */

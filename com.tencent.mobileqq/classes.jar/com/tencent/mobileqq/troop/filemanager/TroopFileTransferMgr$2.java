@@ -1,34 +1,43 @@
 package com.tencent.mobileqq.troop.filemanager;
 
-import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.FileDownloadMgrObserver;
-import com.tencent.mobileqq.troop.utils.TroopFileError;
-import java.util.Set;
+import com.tencent.mm.vfs.VFSFile;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import java.util.UUID;
 
 class TroopFileTransferMgr$2
-  extends TroopFileDownloadMgr.FileDownloadMgrObserver
+  implements Runnable
 {
-  TroopFileTransferMgr$2(TroopFileTransferMgr paramTroopFileTransferMgr) {}
+  TroopFileTransferMgr$2(TroopFileTransferMgr paramTroopFileTransferMgr, TroopFileTransferManager.Item paramItem, UUID paramUUID) {}
   
-  public void a(Set<Long> paramSet)
+  public void run()
   {
-    this.a.b = 1;
-    if ((paramSet != null) && (paramSet.contains(Long.valueOf(TroopFileTransferMgr.c(this.a))))) {
-      this.a.b = 2;
-    }
-    TroopFileTransferUtil.Log.c("TroopFileTransferMgr", TroopFileTransferUtil.Log.a, "onW2MPausedDownload mW2MPausedUploadState:" + this.a.a + " mW2MPausedDownloadState:" + this.a.b);
-    if (this.a.a > 0)
+    switch (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Status)
     {
-      if ((this.a.b == 2) || (this.a.a == 2)) {
-        TroopFileError.a(TroopFileTransferMgr.b(this.a), TroopFileTransferMgr.d(this.a), 107);
+    default: 
+      return;
+    case 11: 
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile != null) {
+        new VFSFile(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile).delete();
       }
-      this.a.a = 0;
-      this.a.b = 0;
+      break;
+    case 9: 
+    case 10: 
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.TmpFile != null) {
+        new VFSFile(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.TmpFile).delete();
+      }
+      break;
     }
+    this.this$0.a(this.jdField_a_of_type_JavaUtilUUID, true);
+    TroopFileTransferManager.Item localItem = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item;
+    localItem.StatusUpdateTimeMs = 0L;
+    localItem.ErrorCode = 0;
+    localItem.LocalFile = null;
+    this.this$0.a(localItem, 7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.TroopFileTransferMgr.2
  * JD-Core Version:    0.7.0.1
  */

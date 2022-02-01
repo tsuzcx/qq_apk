@@ -16,33 +16,49 @@ public class BaseQEffectLoad
   public static QEffectData analyzeGLSLData(QEffectData paramQEffectData, String paramString1, String paramString2)
   {
     paramQEffectData.src = paramString2;
-    paramQEffectData.vertex = QEffectUtils.loadShaderFile(paramString1 + "/" + paramQEffectData.vertex);
-    paramQEffectData.fragment = QEffectUtils.loadShaderFile(paramString1 + "/" + paramQEffectData.fragment);
+    paramString2 = new StringBuilder();
+    paramString2.append(paramString1);
+    paramString2.append("/");
+    paramString2.append(paramQEffectData.vertex);
+    paramQEffectData.vertex = QEffectUtils.loadShaderFile(paramString2.toString());
+    paramString2 = new StringBuilder();
+    paramString2.append(paramString1);
+    paramString2.append("/");
+    paramString2.append(paramQEffectData.fragment);
+    paramQEffectData.fragment = QEffectUtils.loadShaderFile(paramString2.toString());
     return paramQEffectData;
   }
   
   public static QEffectData analyzeLottieData(QEffectData paramQEffectData, String paramString)
   {
     paramQEffectData.src = paramString;
-    paramString = new File(new File(paramString).getParentFile().getAbsolutePath() + File.separator + "images/");
-    if (paramString.exists()) {
-      paramQEffectData.images = (paramString.getAbsolutePath() + "/");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(new File(paramString).getParentFile().getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("images/");
+    paramString = new File(localStringBuilder.toString());
+    if (paramString.exists())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString.getAbsolutePath());
+      localStringBuilder.append("/");
+      paramQEffectData.images = localStringBuilder.toString();
     }
     return paramQEffectData;
   }
   
   public void load(Context paramContext, IQEffect paramIQEffect, QEffectData paramQEffectData)
   {
-    switch (paramQEffectData.resType)
+    int i = paramQEffectData.resType;
+    if (i != 1)
     {
-    case 2: 
-    default: 
-      return;
-    case 1: 
-      loadFromFile(paramContext, paramIQEffect, paramQEffectData.src);
+      if (i != 3) {
+        return;
+      }
+      loadFromResource(paramContext, paramIQEffect, paramQEffectData.resId);
       return;
     }
-    loadFromResource(paramContext, paramIQEffect, paramQEffectData.resId);
+    loadFromFile(paramContext, paramIQEffect, paramQEffectData.src);
   }
   
   public void loadFromAsset(Context paramContext, IQEffect paramIQEffect, String paramString) {}
@@ -69,7 +85,7 @@ public class BaseQEffectLoad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qq.effect.BaseQEffectLoad
  * JD-Core Version:    0.7.0.1
  */

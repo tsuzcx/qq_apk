@@ -42,54 +42,62 @@ public class MessageForPoke
   
   protected void doParse()
   {
-    if (this.msgData != null) {}
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(new String(this.msgData));
-      this.interactType = localJSONObject.getInt("interactType");
-      this.isPlayed = localJSONObject.getBoolean("isPlayed");
-      this.msg = localJSONObject.getString("msg");
-      this.doubleHitState = localJSONObject.getInt("doubltHit");
-      this.subId = localJSONObject.getInt("subId");
-      this.name = localJSONObject.getString("name");
-      this.minVersion = localJSONObject.getString("minVersion");
-      this.strength = localJSONObject.getInt("strength");
-      this.flag = localJSONObject.optInt("flag", 0);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
+    if (this.msgData != null) {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(new String(this.msgData));
+        this.interactType = localJSONObject.getInt("interactType");
+        this.isPlayed = localJSONObject.getBoolean("isPlayed");
+        this.msg = localJSONObject.getString("msg");
+        this.doubleHitState = localJSONObject.getInt("doubltHit");
+        this.subId = localJSONObject.getInt("subId");
+        this.name = localJSONObject.getString("name");
+        this.minVersion = localJSONObject.getString("minVersion");
+        this.strength = localJSONObject.getInt("strength");
+        this.flag = localJSONObject.optInt("flag", 0);
+        return;
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
     }
   }
   
   public void initMsg()
   {
-    switch (this.interactType)
+    int i = this.interactType;
+    if (i != 126)
     {
-    default: 
-      this.msg = HardCodeUtil.a(2131706633);
-      return;
-    case 1: 
-      this.msg = HardCodeUtil.a(2131706628);
-      return;
-    case 2: 
-      this.msg = HardCodeUtil.a(2131706607);
-      return;
-    case 3: 
-      this.msg = HardCodeUtil.a(2131706608);
-      return;
-    case 4: 
-      this.msg = HardCodeUtil.a(2131706595);
-      return;
-    case 5: 
-      this.msg = "[666]";
-      return;
-    case 6: 
-      this.msg = HardCodeUtil.a(2131706610);
+      switch (i)
+      {
+      default: 
+        this.msg = HardCodeUtil.a(2131706655);
+        return;
+      case 6: 
+        this.msg = HardCodeUtil.a(2131706632);
+        return;
+      case 5: 
+        this.msg = "[666]";
+        return;
+      case 4: 
+        this.msg = HardCodeUtil.a(2131706617);
+        return;
+      case 3: 
+        this.msg = HardCodeUtil.a(2131706630);
+        return;
+      case 2: 
+        this.msg = HardCodeUtil.a(2131706629);
+        return;
+      }
+      this.msg = HardCodeUtil.a(2131706650);
       return;
     }
-    this.msg = ("[" + this.name + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append("]");
+    this.msg = localStringBuilder.toString();
   }
   
   public boolean isSupportReply()
@@ -102,12 +110,12 @@ public class MessageForPoke
     return false;
   }
   
-  public void postRead()
+  protected void postRead()
   {
     parse();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     try
     {
@@ -142,7 +150,7 @@ public class MessageForPoke
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForPoke
  * JD-Core Version:    0.7.0.1
  */

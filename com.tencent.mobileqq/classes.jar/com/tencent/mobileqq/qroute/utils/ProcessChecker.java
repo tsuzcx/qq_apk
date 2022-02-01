@@ -8,89 +8,59 @@ public class ProcessChecker
 {
   public static boolean check(Class<?> paramClass, String paramString, boolean paramBoolean)
   {
-    boolean bool2 = false;
     if (!paramBoolean) {
       return true;
     }
     Object localObject2 = null;
+    Object localObject1;
     if (paramClass.isAnnotationPresent(QAPI.class))
     {
       paramClass = paramClass.getAnnotation(QAPI.class);
-      if (!(paramClass instanceof QAPI)) {
-        break label225;
+      localObject1 = localObject2;
+      if ((paramClass instanceof QAPI)) {
+        localObject1 = ((QAPI)paramClass).process();
       }
     }
-    label60:
-    label82:
-    label220:
-    label225:
-    for (paramClass = ((QAPI)paramClass).process();; paramClass = null)
+    else
     {
-      Object localObject1 = paramClass;
-      int i;
-      if (localObject1 != null)
+      localObject1 = localObject2;
+      if (paramClass.isAnnotationPresent(Service.class))
       {
-        int j = localObject1.length;
-        i = 0;
-        if (i >= j) {
-          break label220;
+        paramClass = paramClass.getAnnotation(Service.class);
+        localObject1 = localObject2;
+        if ((paramClass instanceof Service)) {
+          localObject1 = ((Service)paramClass).process();
         }
+      }
+    }
+    if (localObject1 != null)
+    {
+      int j = localObject1.length;
+      int i = 0;
+      while (i < j)
+      {
         paramClass = localObject1[i];
         if ("multi".equals(paramClass)) {
-          paramBoolean = false;
-        }
-      }
-      for (;;)
-      {
-        boolean bool1 = paramBoolean;
-        for (;;)
-        {
-          return bool1;
-          localObject1 = localObject2;
-          if (!paramClass.isAnnotationPresent(Service.class)) {
-            break;
-          }
-          paramClass = paramClass.getAnnotation(Service.class);
-          localObject1 = localObject2;
-          if (!(paramClass instanceof Service)) {
-            break;
-          }
-          localObject1 = ((Service)paramClass).process();
           break;
-          if ("all".equals(paramClass))
-          {
-            paramBoolean = true;
-            break label82;
-          }
-          if (("".equals(paramClass)) && (TextUtils.isEmpty(paramString)))
-          {
-            paramBoolean = true;
-            break label82;
-          }
-          if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(paramClass)))
-          {
-            paramBoolean = true;
-            break label82;
-          }
-          i += 1;
-          break label60;
-          bool1 = bool2;
-          if (!paramBoolean)
-          {
-            bool1 = bool2;
-            if (TextUtils.isEmpty(paramString)) {
-              bool1 = true;
-            }
-          }
         }
-        paramBoolean = false;
+        if ("all".equals(paramClass)) {
+          return true;
+        }
+        if (("".equals(paramClass)) && (TextUtils.isEmpty(paramString))) {
+          return true;
+        }
+        if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(paramClass))) {
+          return true;
+        }
+        i += 1;
       }
     }
+    return (!paramBoolean) && (TextUtils.isEmpty(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qroute.utils.ProcessChecker
  * JD-Core Version:    0.7.0.1
  */

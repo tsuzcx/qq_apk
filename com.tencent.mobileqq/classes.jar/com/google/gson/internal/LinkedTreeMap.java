@@ -11,7 +11,7 @@ public final class LinkedTreeMap<K, V>
   extends AbstractMap<K, V>
   implements Serializable
 {
-  private static final Comparator<Comparable> NATURAL_ORDER;
+  private static final Comparator<Comparable> NATURAL_ORDER = new LinkedTreeMap.1();
   Comparator<? super K> comparator;
   private LinkedTreeMap<K, V>.EntrySet entrySet;
   final LinkedTreeMap.Node<K, V> header = new LinkedTreeMap.Node();
@@ -20,17 +20,6 @@ public final class LinkedTreeMap<K, V>
   LinkedTreeMap.Node<K, V> root;
   int size = 0;
   
-  static
-  {
-    if (!LinkedTreeMap.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      NATURAL_ORDER = new LinkedTreeMap.1();
-      return;
-    }
-  }
-  
   public LinkedTreeMap()
   {
     this(NATURAL_ORDER);
@@ -38,13 +27,10 @@ public final class LinkedTreeMap<K, V>
   
   public LinkedTreeMap(Comparator<? super K> paramComparator)
   {
-    if (paramComparator != null) {}
-    for (;;)
-    {
-      this.comparator = paramComparator;
-      return;
+    if (paramComparator == null) {
       paramComparator = NATURAL_ORDER;
     }
+    this.comparator = paramComparator;
   }
   
   private boolean equal(Object paramObject1, Object paramObject2)
@@ -54,126 +40,90 @@ public final class LinkedTreeMap<K, V>
   
   private void rebalance(LinkedTreeMap.Node<K, V> paramNode, boolean paramBoolean)
   {
-    LinkedTreeMap.Node localNode1;
-    LinkedTreeMap.Node localNode2;
-    int i;
-    int j;
-    label39:
-    int k;
-    LinkedTreeMap.Node localNode3;
-    if (paramNode != null)
+    while (paramNode != null)
     {
-      localNode1 = paramNode.left;
-      localNode2 = paramNode.right;
-      if (localNode1 == null) {
-        break label117;
-      }
-      i = localNode1.height;
-      if (localNode2 == null) {
-        break label122;
-      }
-      j = localNode2.height;
-      k = i - j;
-      if (k != -2) {
-        break label172;
-      }
-      localNode1 = localNode2.left;
-      localNode3 = localNode2.right;
-      if (localNode3 == null) {
-        break label128;
-      }
-      i = localNode3.height;
-      label77:
-      if (localNode1 == null) {
-        break label133;
-      }
-      j = localNode1.height;
-      label89:
-      i = j - i;
-      if ((i != -1) && ((i != 0) || (paramBoolean))) {
-        break label139;
-      }
-      rotateLeft(paramNode);
-    }
-    for (;;)
-    {
-      if (!paramBoolean) {
-        break label242;
-      }
-      label116:
-      return;
-      label117:
-      i = 0;
-      break;
-      label122:
-      j = 0;
-      break label39;
-      label128:
-      i = 0;
-      break label77;
-      label133:
-      j = 0;
-      break label89;
-      label139:
-      assert (i == 1);
-      rotateRight(localNode2);
-      rotateLeft(paramNode);
-    }
-    label172:
-    if (k == 2)
-    {
-      localNode2 = localNode1.left;
-      localNode3 = localNode1.right;
-      if (localNode3 != null)
-      {
-        i = localNode3.height;
-        label203:
-        if (localNode2 == null) {
-          break label255;
-        }
-        j = localNode2.height;
-        label215:
-        i = j - i;
-        if ((i != 1) && ((i != 0) || (paramBoolean))) {
-          break label261;
-        }
-        rotateRight(paramNode);
-        label238:
-        if (paramBoolean) {
-          break label292;
-        }
-      }
-    }
-    label242:
-    label255:
-    do
-    {
-      do
-      {
-        paramNode = paramNode.parent;
-        break;
+      LinkedTreeMap.Node localNode1 = paramNode.left;
+      LinkedTreeMap.Node localNode2 = paramNode.right;
+      int m = 0;
+      int k = 0;
+      int i;
+      if (localNode1 != null) {
+        i = localNode1.height;
+      } else {
         i = 0;
-        break label203;
+      }
+      int j;
+      if (localNode2 != null) {
+        j = localNode2.height;
+      } else {
         j = 0;
-        break label215;
-        assert (i == -1);
-        rotateLeft(localNode1);
-        rotateRight(paramNode);
-        break label238;
-        break label116;
-        if (k != 0) {
-          break label311;
+      }
+      int n = i - j;
+      LinkedTreeMap.Node localNode3;
+      if (n == -2)
+      {
+        localNode1 = localNode2.left;
+        localNode3 = localNode2.right;
+        if (localNode3 != null) {
+          i = localNode3.height;
+        } else {
+          i = 0;
         }
+        j = k;
+        if (localNode1 != null) {
+          j = localNode1.height;
+        }
+        i = j - i;
+        if ((i != -1) && ((i != 0) || (paramBoolean)))
+        {
+          rotateRight(localNode2);
+          rotateLeft(paramNode);
+        }
+        else
+        {
+          rotateLeft(paramNode);
+        }
+        if (!paramBoolean) {}
+      }
+      else if (n == 2)
+      {
+        localNode2 = localNode1.left;
+        localNode3 = localNode1.right;
+        if (localNode3 != null) {
+          i = localNode3.height;
+        } else {
+          i = 0;
+        }
+        j = m;
+        if (localNode2 != null) {
+          j = localNode2.height;
+        }
+        i = j - i;
+        if ((i != 1) && ((i != 0) || (paramBoolean)))
+        {
+          rotateLeft(localNode1);
+          rotateRight(paramNode);
+        }
+        else
+        {
+          rotateRight(paramNode);
+        }
+        if (!paramBoolean) {}
+      }
+      else if (n == 0)
+      {
         paramNode.height = (i + 1);
-      } while (!paramBoolean);
-      return;
-      assert ((k == -1) || (k == 1));
-      paramNode.height = (Math.max(i, j) + 1);
-    } while (paramBoolean);
-    label261:
-    label292:
-    label311:
-    return;
+        if (!paramBoolean) {}
+      }
+      else
+      {
+        paramNode.height = (Math.max(i, j) + 1);
+        if (!paramBoolean) {
+          return;
+        }
+      }
+      paramNode = paramNode.parent;
+    }
   }
   
   private void replaceInParent(LinkedTreeMap.Node<K, V> paramNode1, LinkedTreeMap.Node<K, V> paramNode2)
@@ -190,7 +140,6 @@ public final class LinkedTreeMap<K, V>
         localNode.left = paramNode2;
         return;
       }
-      assert (localNode.right == paramNode1);
       localNode.right = paramNode2;
       return;
     }
@@ -199,7 +148,6 @@ public final class LinkedTreeMap<K, V>
   
   private void rotateLeft(LinkedTreeMap.Node<K, V> paramNode)
   {
-    int k = 0;
     LinkedTreeMap.Node localNode1 = paramNode.left;
     LinkedTreeMap.Node localNode2 = paramNode.right;
     LinkedTreeMap.Node localNode3 = localNode2.left;
@@ -211,33 +159,28 @@ public final class LinkedTreeMap<K, V>
     replaceInParent(paramNode, localNode2);
     localNode2.left = paramNode;
     paramNode.parent = localNode2;
-    int i;
-    if (localNode1 != null)
-    {
+    int k = 0;
+    if (localNode1 != null) {
       i = localNode1.height;
-      if (localNode3 == null) {
-        break label135;
-      }
-    }
-    label135:
-    for (int j = localNode3.height;; j = 0)
-    {
-      paramNode.height = (Math.max(i, j) + 1);
-      j = paramNode.height;
-      i = k;
-      if (localNode4 != null) {
-        i = localNode4.height;
-      }
-      localNode2.height = (Math.max(j, i) + 1);
-      return;
+    } else {
       i = 0;
-      break;
     }
+    if (localNode3 != null) {
+      j = localNode3.height;
+    } else {
+      j = 0;
+    }
+    paramNode.height = (Math.max(i, j) + 1);
+    int j = paramNode.height;
+    int i = k;
+    if (localNode4 != null) {
+      i = localNode4.height;
+    }
+    localNode2.height = (Math.max(j, i) + 1);
   }
   
   private void rotateRight(LinkedTreeMap.Node<K, V> paramNode)
   {
-    int k = 0;
     LinkedTreeMap.Node localNode1 = paramNode.left;
     LinkedTreeMap.Node localNode2 = paramNode.right;
     LinkedTreeMap.Node localNode3 = localNode1.left;
@@ -249,28 +192,24 @@ public final class LinkedTreeMap<K, V>
     replaceInParent(paramNode, localNode1);
     localNode1.right = paramNode;
     paramNode.parent = localNode1;
-    int i;
-    if (localNode2 != null)
-    {
+    int k = 0;
+    if (localNode2 != null) {
       i = localNode2.height;
-      if (localNode4 == null) {
-        break label135;
-      }
-    }
-    label135:
-    for (int j = localNode4.height;; j = 0)
-    {
-      paramNode.height = (Math.max(i, j) + 1);
-      j = paramNode.height;
-      i = k;
-      if (localNode3 != null) {
-        i = localNode3.height;
-      }
-      localNode1.height = (Math.max(j, i) + 1);
-      return;
+    } else {
       i = 0;
-      break;
     }
+    if (localNode4 != null) {
+      j = localNode4.height;
+    } else {
+      j = 0;
+    }
+    paramNode.height = (Math.max(i, j) + 1);
+    int j = paramNode.height;
+    int i = k;
+    if (localNode3 != null) {
+      i = localNode3.height;
+    }
+    localNode1.height = (Math.max(j, i) + 1);
   }
   
   private Object writeReplace()
@@ -306,86 +245,79 @@ public final class LinkedTreeMap<K, V>
   
   LinkedTreeMap.Node<K, V> find(K paramK, boolean paramBoolean)
   {
-    Object localObject3 = null;
     Comparator localComparator = this.comparator;
-    Object localObject1 = this.root;
-    int i;
-    Object localObject2;
-    if (localObject1 != null)
+    Object localObject = this.root;
+    if (localObject != null)
     {
       Comparable localComparable;
-      if (localComparator == NATURAL_ORDER)
-      {
+      if (localComparator == NATURAL_ORDER) {
         localComparable = (Comparable)paramK;
-        if (localComparable == null) {
-          break label69;
-        }
-      }
-      label60:
-      label69:
-      for (i = localComparable.compareTo(((LinkedTreeMap.Node)localObject1).key);; i = localComparator.compare(paramK, ((LinkedTreeMap.Node)localObject1).key))
-      {
-        if (i != 0) {
-          break label86;
-        }
-        localObject2 = localObject1;
-        return localObject2;
+      } else {
         localComparable = null;
-        break;
-      }
-      label86:
-      if (i < 0)
-      {
-        localObject2 = ((LinkedTreeMap.Node)localObject1).left;
-        label97:
-        if (localObject2 != null) {
-          break label179;
-        }
-      }
-    }
-    for (;;)
-    {
-      localObject2 = localObject3;
-      if (!paramBoolean) {
-        break label60;
-      }
-      localObject2 = this.header;
-      if (localObject1 == null)
-      {
-        if ((localComparator == NATURAL_ORDER) && (!(paramK instanceof Comparable)))
-        {
-          throw new ClassCastException(paramK.getClass().getName() + " is not Comparable");
-          localObject2 = ((LinkedTreeMap.Node)localObject1).right;
-          break label97;
-          label179:
-          localObject1 = localObject2;
-          break;
-        }
-        paramK = new LinkedTreeMap.Node((LinkedTreeMap.Node)localObject1, paramK, (LinkedTreeMap.Node)localObject2, ((LinkedTreeMap.Node)localObject2).prev);
-        this.root = paramK;
-        this.size += 1;
-        this.modCount += 1;
-        return paramK;
-      }
-      paramK = new LinkedTreeMap.Node((LinkedTreeMap.Node)localObject1, paramK, (LinkedTreeMap.Node)localObject2, ((LinkedTreeMap.Node)localObject2).prev);
-      if (i < 0) {
-        ((LinkedTreeMap.Node)localObject1).left = paramK;
       }
       for (;;)
       {
-        rebalance((LinkedTreeMap.Node)localObject1, true);
-        break;
-        ((LinkedTreeMap.Node)localObject1).right = paramK;
+        if (localComparable != null) {
+          i = localComparable.compareTo(((LinkedTreeMap.Node)localObject).key);
+        } else {
+          i = localComparator.compare(paramK, ((LinkedTreeMap.Node)localObject).key);
+        }
+        if (i == 0) {
+          return localObject;
+        }
+        if (i < 0) {
+          localNode = ((LinkedTreeMap.Node)localObject).left;
+        } else {
+          localNode = ((LinkedTreeMap.Node)localObject).right;
+        }
+        if (localNode == null) {
+          break;
+        }
+        localObject = localNode;
       }
-      i = 0;
     }
+    int i = 0;
+    if (!paramBoolean) {
+      return null;
+    }
+    LinkedTreeMap.Node localNode = this.header;
+    if (localObject == null)
+    {
+      if ((localComparator == NATURAL_ORDER) && (!(paramK instanceof Comparable)))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramK.getClass().getName());
+        ((StringBuilder)localObject).append(" is not Comparable");
+        throw new ClassCastException(((StringBuilder)localObject).toString());
+      }
+      paramK = new LinkedTreeMap.Node((LinkedTreeMap.Node)localObject, paramK, localNode, localNode.prev);
+      this.root = paramK;
+    }
+    else
+    {
+      paramK = new LinkedTreeMap.Node((LinkedTreeMap.Node)localObject, paramK, localNode, localNode.prev);
+      if (i < 0) {
+        ((LinkedTreeMap.Node)localObject).left = paramK;
+      } else {
+        ((LinkedTreeMap.Node)localObject).right = paramK;
+      }
+      rebalance((LinkedTreeMap.Node)localObject, true);
+    }
+    this.size += 1;
+    this.modCount += 1;
+    return paramK;
   }
   
   LinkedTreeMap.Node<K, V> findByEntry(Map.Entry<?, ?> paramEntry)
   {
     LinkedTreeMap.Node localNode = findByObject(paramEntry.getKey());
-    if ((localNode != null) && (equal(localNode.value, paramEntry.getValue()))) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if ((localNode != null) && (equal(localNode.value, paramEntry.getValue()))) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return localNode;
     }
     return null;
@@ -426,13 +358,14 @@ public final class LinkedTreeMap<K, V>
   
   public V put(K paramK, V paramV)
   {
-    if (paramK == null) {
-      throw new NullPointerException("key == null");
+    if (paramK != null)
+    {
+      paramK = find(paramK, true);
+      Object localObject = paramK.value;
+      paramK.value = paramV;
+      return localObject;
     }
-    paramK = find(paramK, true);
-    Object localObject = paramK.value;
-    paramK.value = paramV;
-    return localObject;
+    throw new NullPointerException("key == null");
   }
   
   public V remove(Object paramObject)
@@ -446,7 +379,6 @@ public final class LinkedTreeMap<K, V>
   
   void removeInternal(LinkedTreeMap.Node<K, V> paramNode, boolean paramBoolean)
   {
-    int j = 0;
     if (paramBoolean)
     {
       paramNode.prev.next = paramNode.next;
@@ -455,24 +387,28 @@ public final class LinkedTreeMap<K, V>
     LinkedTreeMap.Node localNode1 = paramNode.left;
     LinkedTreeMap.Node localNode2 = paramNode.right;
     LinkedTreeMap.Node localNode3 = paramNode.parent;
-    int i;
-    if ((localNode1 != null) && (localNode2 != null)) {
-      if (localNode1.height > localNode2.height)
-      {
+    int j = 0;
+    if ((localNode1 != null) && (localNode2 != null))
+    {
+      if (localNode1.height > localNode2.height) {
         localNode1 = localNode1.last();
-        removeInternal(localNode1, false);
-        localNode2 = paramNode.left;
-        if (localNode2 == null) {
-          break label262;
-        }
+      } else {
+        localNode1 = localNode2.first();
+      }
+      removeInternal(localNode1, false);
+      localNode2 = paramNode.left;
+      int i;
+      if (localNode2 != null)
+      {
         i = localNode2.height;
         localNode1.left = localNode2;
         localNode2.parent = localNode1;
         paramNode.left = null;
       }
-    }
-    for (;;)
-    {
+      else
+      {
+        i = 0;
+      }
       localNode2 = paramNode.right;
       if (localNode2 != null)
       {
@@ -484,32 +420,24 @@ public final class LinkedTreeMap<K, V>
       localNode1.height = (Math.max(i, j) + 1);
       replaceInParent(paramNode, localNode1);
       return;
-      localNode1 = localNode2.first();
-      break;
-      if (localNode1 != null)
-      {
-        replaceInParent(paramNode, localNode1);
-        paramNode.left = null;
-      }
-      for (;;)
-      {
-        rebalance(localNode3, false);
-        this.size -= 1;
-        this.modCount += 1;
-        return;
-        if (localNode2 != null)
-        {
-          replaceInParent(paramNode, localNode2);
-          paramNode.right = null;
-        }
-        else
-        {
-          replaceInParent(paramNode, null);
-        }
-      }
-      label262:
-      i = 0;
     }
+    if (localNode1 != null)
+    {
+      replaceInParent(paramNode, localNode1);
+      paramNode.left = null;
+    }
+    else if (localNode2 != null)
+    {
+      replaceInParent(paramNode, localNode2);
+      paramNode.right = null;
+    }
+    else
+    {
+      replaceInParent(paramNode, null);
+    }
+    rebalance(localNode3, false);
+    this.size -= 1;
+    this.modCount += 1;
   }
   
   LinkedTreeMap.Node<K, V> removeInternalByKey(Object paramObject)
@@ -528,7 +456,7 @@ public final class LinkedTreeMap<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal.LinkedTreeMap
  * JD-Core Version:    0.7.0.1
  */

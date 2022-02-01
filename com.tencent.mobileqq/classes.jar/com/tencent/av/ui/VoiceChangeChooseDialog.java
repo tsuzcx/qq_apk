@@ -43,9 +43,11 @@ public class VoiceChangeChooseDialog
   
   private void c()
   {
-    int i = 2130842482;
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().aC) {
-      i = 2130842483;
+    int i;
+    if (this.jdField_a_of_type_ComTencentAvVideoController.a().ar) {
+      i = 2130842382;
+    } else {
+      i = 2130842381;
     }
     this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawablesWithIntrinsicBounds(i, 0, 0, 0);
   }
@@ -54,32 +56,34 @@ public class VoiceChangeChooseDialog
   {
     if (this.jdField_a_of_type_ComTencentAvUiVoiceChangeAdapter.getCount() == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131695964);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131695979);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().U == 0)
+    if (this.jdField_a_of_type_ComTencentAvVideoController.a().ad == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131695963);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131695978);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131695962);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131695977);
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentAvVideoController == null)
+    VideoController localVideoController = this.jdField_a_of_type_ComTencentAvVideoController;
+    if (localVideoController == null)
     {
       AVLog.printErrorLog("VoiceChangeChooseDialog", "updateDialogStyle mVideoController is null!!");
       return;
     }
     boolean bool;
-    if ((this.jdField_a_of_type_ComTencentAvVideoController.a().d == 2) || (this.jdField_a_of_type_ComTencentAvVideoController.a().d == 4))
-    {
+    if ((localVideoController.a().d != 2) && (this.jdField_a_of_type_ComTencentAvVideoController.a().d != 4)) {
+      bool = false;
+    } else {
       bool = true;
-      this.jdField_b_of_type_Boolean = bool;
-      if (!this.jdField_b_of_type_Boolean) {
-        break label118;
-      }
+    }
+    this.jdField_b_of_type_Boolean = bool;
+    if (this.jdField_b_of_type_Boolean)
+    {
       this.jdField_a_of_type_ComTencentAvUiVoiceChangeAdapter.a(-1);
       this.jdField_b_of_type_AndroidViewView.setBackgroundColor(16777216);
       this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-534962398);
@@ -87,13 +91,8 @@ public class VoiceChangeChooseDialog
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
       this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-1);
     }
-    for (;;)
+    else
     {
-      c();
-      return;
-      bool = false;
-      break;
-      label118:
       this.jdField_a_of_type_ComTencentAvUiVoiceChangeAdapter.a(-16777216);
       this.jdField_b_of_type_AndroidViewView.setBackgroundColor(-2147483648);
       this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-1);
@@ -101,14 +100,16 @@ public class VoiceChangeChooseDialog
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-8947849);
       this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-16777216);
     }
+    c();
   }
   
   public void dismiss()
   {
     super.dismiss();
-    if (this.jdField_a_of_type_AndroidContentContext != null)
+    Context localContext = this.jdField_a_of_type_AndroidContentContext;
+    if (localContext != null)
     {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      localContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
       this.jdField_a_of_type_AndroidContentContext = null;
     }
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
@@ -118,91 +119,77 @@ public class VoiceChangeChooseDialog
   
   public void onClick(View paramView)
   {
-    boolean bool = true;
+    int i = paramView.getId();
     Object localObject;
-    switch (paramView.getId())
+    if (i != 2131364449)
     {
-    default: 
-      if (!this.jdField_c_of_type_Boolean)
+      if ((i != 2131370631) && (!this.jdField_c_of_type_Boolean))
       {
         this.jdField_c_of_type_Boolean = true;
-        localObject = AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130772152);
+        localObject = AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130772180);
         ((Animation)localObject).setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
         this.jdField_a_of_type_AndroidViewView.startAnimation((Animation)localObject);
       }
-      break;
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localObject = this.jdField_a_of_type_ComTencentAvVideoController.a();
-      if (!this.jdField_a_of_type_ComTencentAvVideoController.a().aC)
+      this.jdField_a_of_type_ComTencentAvVideoController.a().ar ^= true;
+      if (this.jdField_a_of_type_ComTencentAvVideoController.a().ad != 0)
       {
-        label99:
-        ((SessionInfo)localObject).aC = bool;
-        if (this.jdField_a_of_type_ComTencentAvVideoController.a().U != 0)
+        localObject = this.jdField_a_of_type_ComTencentAvVideoController;
+        ((VideoController)localObject).c(((VideoController)localObject).a().ar);
+        if (this.jdField_a_of_type_ComTencentAvVideoController.a().ar)
         {
-          this.jdField_a_of_type_ComTencentAvVideoController.c(this.jdField_a_of_type_ComTencentAvVideoController.a().aC);
-          if (!this.jdField_a_of_type_ComTencentAvVideoController.a().aC) {
-            break label205;
-          }
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131695962);
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131695977);
+        }
+        else
+        {
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131695976);
+          this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+          this.jdField_a_of_type_Int = 0;
         }
       }
-      for (;;)
+      c();
+      if (!this.jdField_a_of_type_ComTencentAvVideoController.a().ar)
       {
-        c();
-        if (this.jdField_a_of_type_ComTencentAvVideoController.a().aC) {
-          break label233;
-        }
         TipsUtil.a((VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 1017);
         VoiceChangeDataReport.a("0X8007EF4", "");
-        break;
-        bool = false;
-        break label99;
-        label205:
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131695961);
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-        this.jdField_a_of_type_Int = 0;
       }
-      label233:
-      VoiceChangeDataReport.a("0X8007EF3", "");
+      else
+      {
+        VoiceChangeDataReport.a("0X8007EF3", "");
+      }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void show()
   {
-    int j = 1;
-    int k = 0;
     super.show();
+    int j = 0;
     this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewView.startAnimation(AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130772153));
-    int i = k;
+    this.jdField_a_of_type_AndroidViewView.startAnimation(AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130772181));
+    int i = j;
     if (this.jdField_a_of_type_ComTencentAvUiVoiceChangeAdapter.getCount() == 0)
     {
       this.jdField_a_of_type_ComTencentAvUiVoiceChangeAdapter.a(VoiceChangeData.a().a());
-      i = k;
+      i = j;
       if (this.jdField_a_of_type_ComTencentAvUiVoiceChangeAdapter.getCount() != 0) {
         i = 1;
       }
     }
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().U == 0) {
-      i = j;
+    if (this.jdField_a_of_type_ComTencentAvVideoController.a().ad == 0) {
+      i = 1;
     }
-    for (;;)
-    {
-      if (i != 0) {
-        this.jdField_a_of_type_ComTencentAvUiVoiceChangeAdapter.notifyDataSetChanged();
-      }
-      a();
-      return;
+    if (i != 0) {
+      this.jdField_a_of_type_ComTencentAvUiVoiceChangeAdapter.notifyDataSetChanged();
     }
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VoiceChangeChooseDialog
  * JD-Core Version:    0.7.0.1
  */

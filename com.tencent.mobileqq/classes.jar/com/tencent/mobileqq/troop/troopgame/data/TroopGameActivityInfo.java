@@ -16,12 +16,23 @@ public class TroopGameActivityInfo
   @NonNull
   public String toString()
   {
-    return "activityValue = " + this.activityValue + ", rankNum = " + this.rankNum + ", rankText = " + this.rankText + ", rankEntrance = " + this.rankEntrance + ", iconUrl = " + this.iconUrl;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("activityValue = ");
+    localStringBuilder.append(this.activityValue);
+    localStringBuilder.append(", rankNum = ");
+    localStringBuilder.append(this.rankNum);
+    localStringBuilder.append(", rankText = ");
+    localStringBuilder.append(this.rankText);
+    localStringBuilder.append(", rankEntrance = ");
+    localStringBuilder.append(this.rankEntrance);
+    localStringBuilder.append(", iconUrl = ");
+    localStringBuilder.append(this.iconUrl);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopgame.data.TroopGameActivityInfo
  * JD-Core Version:    0.7.0.1
  */

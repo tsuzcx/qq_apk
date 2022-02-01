@@ -17,18 +17,20 @@ class AgeSelectionActivity$2
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.b = paramInt1;
-    this.a.c = paramInt2;
-    this.a.d = paramInt3;
+    AgeSelectionActivity localAgeSelectionActivity = this.a;
+    localAgeSelectionActivity.b = paramInt1;
+    localAgeSelectionActivity.c = paramInt2;
+    localAgeSelectionActivity.d = paramInt3;
     if (QLog.isColorLevel()) {
       QLog.d("AgeSelectionActivity", 2, String.format("onBirthdayChange newBirthdayYear:%s,newBirthdayMonth:%s,newBirthdayDay:%s", new Object[] { Integer.valueOf(this.a.b), Integer.valueOf(this.a.c), Integer.valueOf(this.a.d) }));
     }
-    AgeSelectionActivity.a(this.a, this.a.b, this.a.c, this.a.d);
+    localAgeSelectionActivity = this.a;
+    AgeSelectionActivity.a(localAgeSelectionActivity, localAgeSelectionActivity.b, this.a.c, this.a.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AgeSelectionActivity.2
  * JD-Core Version:    0.7.0.1
  */

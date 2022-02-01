@@ -9,45 +9,46 @@ class ArkTextureViewImpl$2
   
   public void run()
   {
-    ArkTextureViewImpl.ENV.logD(ArkTextureViewImpl.TAG, String.format("createContext.2.this.%h.size.(%d, %d)", new Object[] { this.this$0, Integer.valueOf(this.val$width), Integer.valueOf(this.val$height) }));
+    Logger.logD(ArkTextureViewImpl.TAG, String.format("createContext.2.this.%h.size.(%d, %d)", new Object[] { this.this$0, Integer.valueOf(this.val$width), Integer.valueOf(this.val$height) }));
     this.val$viewModel.mTimeRecord.beginOfCreateContext = System.currentTimeMillis();
     if (this.val$viewContext.surfaceTexture == null)
     {
-      ArkTextureViewImpl.ENV.logE(ArkTextureViewImpl.TAG, String.format("createContext.surface.null: %h", new Object[] { this.this$0 }));
+      Logger.logE(ArkTextureViewImpl.TAG, String.format("createContext.surface.null: %h", new Object[] { this.this$0 }));
       return;
     }
+    EGLContextHolder localEGLContextHolder;
     if ((this.val$viewContext.contextHolder != null) && (this.val$viewContext.contextHolder.mSurfaceTexture == this.val$surface))
     {
-      ArkTextureViewImpl.ENV.logI(ArkTextureViewImpl.TAG, String.format("createContext.sizeChanged: %h", new Object[] { this.this$0 }));
+      Logger.logI(ArkTextureViewImpl.TAG, String.format("createContext.sizeChanged: %h", new Object[] { this.this$0 }));
       this.val$viewContext.contextHolder.sizeChanged(this.val$width, this.val$height);
     }
-    for (;;)
+    else
     {
-      this.val$viewModel.mTimeRecord.endOfCreateContext = System.currentTimeMillis();
-      this.val$viewModel.createDrawTarget(null);
-      return;
       if (this.val$viewContext.contextHolder != null)
       {
-        ArkTextureViewImpl.ENV.logD(ArkTextureViewImpl.TAG, String.format("createContext.surface.rebind: %h, model:%h, context:%h", new Object[] { this.this$0, this.val$viewContext.viewModel, this.val$viewContext.contextHolder }));
+        Logger.logD(ArkTextureViewImpl.TAG, String.format("createContext.surface.rebind: %h, model:%h, context:%h", new Object[] { this.this$0, this.val$viewContext.viewModel, this.val$viewContext.contextHolder }));
         this.val$viewContext.contextHolder.release();
         this.val$viewContext.contextHolder = null;
       }
-      EGLContextHolder localEGLContextHolder = this.val$viewModel.getContext();
+      localEGLContextHolder = this.val$viewModel.getContext();
       if (localEGLContextHolder == null)
       {
-        ArkTextureViewImpl.ENV.logE(ArkTextureViewImpl.TAG, String.format("createContext.offscreenContext.null: %h, model:%h", new Object[] { this.this$0, this.val$viewContext.viewModel }));
+        Logger.logE(ArkTextureViewImpl.TAG, String.format("createContext.offscreenContext.null: %h, model:%h", new Object[] { this.this$0, this.val$viewContext.viewModel }));
         return;
       }
-      synchronized (ArkTextureViewImpl.access$100(this.this$0))
+    }
+    synchronized (ArkTextureViewImpl.access$100(this.this$0))
+    {
+      if (!ArkTextureViewImpl.access$200(this.this$0))
       {
-        if (!ArkTextureViewImpl.access$200(this.this$0))
-        {
-          ArkTextureViewImpl.ENV.logE(ArkTextureViewImpl.TAG, String.format("createContext.Surface is unavailable", new Object[0]));
-          return;
-        }
+        Logger.logE(ArkTextureViewImpl.TAG, String.format("createContext.Surface is unavailable", new Object[0]));
+        return;
       }
       this.val$viewContext.contextHolder = new EGLContextHolder();
-      this.val$viewContext.contextHolder.create(localObject2.mContext, this.val$viewContext.surfaceTexture, this.val$width, this.val$height);
+      this.val$viewContext.contextHolder.create(localEGLContextHolder.mContext, this.val$viewContext.surfaceTexture, this.val$width, this.val$height);
+      this.val$viewModel.mTimeRecord.endOfCreateContext = System.currentTimeMillis();
+      this.val$viewModel.createDrawTarget(null);
+      return;
     }
   }
 }

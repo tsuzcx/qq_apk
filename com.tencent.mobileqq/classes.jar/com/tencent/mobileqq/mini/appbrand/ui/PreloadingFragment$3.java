@@ -21,25 +21,30 @@ class PreloadingFragment$3
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    long l;
     Object localObject1;
     if (paramBoolean)
     {
-      l = paramJSONObject.optLong("retCode");
+      long l = paramJSONObject.optLong("retCode");
       localObject1 = paramJSONObject.optString("errMsg");
-      QLog.i("PreloadingFragment", 1, "getAppInfoById, retCode = " + l + ",errMsg = " + (String)localObject1);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getAppInfoById, retCode = ");
+      ((StringBuilder)localObject2).append(l);
+      ((StringBuilder)localObject2).append(",errMsg = ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.i("PreloadingFragment", 1, ((StringBuilder)localObject2).toString());
       if (l == -1003L)
       {
         QLog.e("PreloadingFragment", 1, "getAppInfoById error https decode buffer, clear token");
         MiniAppSecurityUtil.doClearAfterLoginSuccess(true);
       }
-      Object localObject2 = (MiniAppInfo)paramJSONObject.opt("mini_app_info_data");
+      localObject2 = (MiniAppInfo)paramJSONObject.opt("mini_app_info_data");
       if (localObject2 != null)
       {
         paramJSONObject = new MiniAppConfig((MiniAppInfo)localObject2);
-        if (this.val$param != null)
+        LaunchParam localLaunchParam = this.val$param;
+        if (localLaunchParam != null)
         {
-          paramJSONObject.launchParam = this.val$param;
+          paramJSONObject.launchParam = localLaunchParam;
           paramJSONObject.launchParam.miniAppId = ((MiniAppInfo)localObject2).appId;
           if (!TextUtils.isEmpty(this.val$param.extendData)) {
             paramJSONObject.config.extendData = this.val$param.extendData;
@@ -58,37 +63,38 @@ class PreloadingFragment$3
         }
         MiniReportManager.reportEventType(paramJSONObject, 1028, "main_loading", MiniReportManager.getAppType(paramJSONObject));
       }
-    }
-    for (;;)
-    {
-      PreloadingFragment.access$400(this.this$0);
-      return;
-      ThreadManager.getUIHandler().post(new PreloadingFragment.3.1(this, (String)localObject1, l));
-      if (PreloadingFragment.access$300(this.this$0) != null)
+      else
       {
-        paramJSONObject = new Bundle();
-        paramJSONObject.putLong("retCode", l);
-        paramJSONObject.putString("errMsg", (String)localObject1);
-        PreloadingFragment.access$300(this.this$0).send(1, paramJSONObject);
-        continue;
-        ThreadManager.getUIHandler().post(new PreloadingFragment.3.2(this, paramJSONObject));
+        ThreadManager.getUIHandler().post(new PreloadingFragment.3.1(this, (String)localObject1, l));
         if (PreloadingFragment.access$300(this.this$0) != null)
         {
-          localObject1 = new Bundle();
-          if (paramJSONObject != null)
-          {
-            ((Bundle)localObject1).putLong("retCode", paramJSONObject.optLong("retCode"));
-            ((Bundle)localObject1).putString("errMsg", paramJSONObject.optString("errMsg"));
-          }
-          PreloadingFragment.access$300(this.this$0).send(1, (Bundle)localObject1);
+          paramJSONObject = new Bundle();
+          paramJSONObject.putLong("retCode", l);
+          paramJSONObject.putString("errMsg", (String)localObject1);
+          PreloadingFragment.access$300(this.this$0).send(1, paramJSONObject);
         }
       }
     }
+    else
+    {
+      ThreadManager.getUIHandler().post(new PreloadingFragment.3.2(this, paramJSONObject));
+      if (PreloadingFragment.access$300(this.this$0) != null)
+      {
+        localObject1 = new Bundle();
+        if (paramJSONObject != null)
+        {
+          ((Bundle)localObject1).putLong("retCode", paramJSONObject.optLong("retCode"));
+          ((Bundle)localObject1).putString("errMsg", paramJSONObject.optString("errMsg"));
+        }
+        PreloadingFragment.access$300(this.this$0).send(1, (Bundle)localObject1);
+      }
+    }
+    PreloadingFragment.access$400(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.PreloadingFragment.3
  * JD-Core Version:    0.7.0.1
  */

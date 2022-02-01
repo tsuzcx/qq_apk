@@ -12,30 +12,36 @@ class Leba$6
   
   public boolean handleMessage(Message paramMessage)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LebaFrame", 4, "callback handleMessage,what = " + paramMessage.what);
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("callback handleMessage,what = ");
+      localStringBuilder.append(paramMessage.what);
+      QLog.d("LebaFrame", 4, localStringBuilder.toString());
     }
     if ((this.a.a != null) && ("0".equals(this.a.a.getAccount()))) {
       return false;
     }
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 11340002)
     {
+      if (i == 11340005) {
+        Leba.a(this.a);
+      }
     }
-    for (;;)
+    else
     {
-      return true;
       if (QLog.isColorLevel()) {
         QLog.d("LebaFrame", 2, "handler refresh leba config");
       }
-      this.a.g();
-      continue;
-      Leba.a(this.a);
+      this.a.j();
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.Leba.6
  * JD-Core Version:    0.7.0.1
  */

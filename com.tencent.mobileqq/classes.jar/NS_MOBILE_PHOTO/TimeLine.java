@@ -64,14 +64,15 @@ public final class TimeLine
     paramJceOutputStream.write(this.show_month, 5);
     paramJceOutputStream.write(this.show_week, 6);
     paramJceOutputStream.write(this.show_day, 7);
-    if (this.festivals != null) {
-      paramJceOutputStream.write(this.festivals, 8);
+    Map localMap = this.festivals;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.TimeLine
  * JD-Core Version:    0.7.0.1
  */

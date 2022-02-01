@@ -29,8 +29,9 @@ public final class AddFrdSrcInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strSrcName != null) {
-      paramJceOutputStream.write(this.strSrcName, 0);
+    String str = this.strSrcName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.uSrcId, 1);
     paramJceOutputStream.write(this.uSubSrcId, 2);

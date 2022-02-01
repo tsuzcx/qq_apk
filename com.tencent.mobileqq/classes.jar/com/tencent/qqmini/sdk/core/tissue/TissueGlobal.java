@@ -13,18 +13,21 @@ public class TissueGlobal
   
   public static boolean checkEngineAvailable(String paramString1, String[] paramArrayOfString, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString1)) {}
-    Object localObject;
-    do
+    if (TextUtils.isEmpty(paramString1)) {
+      return false;
+    }
+    Object localObject = new File(paramString1);
+    if (((File)localObject).exists())
     {
-      do
-      {
+      if (!((File)localObject).isDirectory()) {
         return false;
-        localObject = new File(paramString1);
-      } while ((!((File)localObject).exists()) || (!((File)localObject).isDirectory()));
+      }
       localObject = EngineVersion.fromFolderName(((File)localObject).getName());
-    } while ((localObject == null) || (EngineVersion.compareVersion(((EngineVersion)localObject).mMinor, paramString2) < 0));
-    return checkFileExists(paramString1, paramArrayOfString);
+      if ((localObject != null) && (EngineVersion.compareVersion(((EngineVersion)localObject).mMinor, paramString2) >= 0)) {
+        return checkFileExists(paramString1, paramArrayOfString);
+      }
+    }
+    return false;
   }
   
   private static boolean checkFileExists(String paramString, String[] paramArrayOfString)
@@ -34,8 +37,13 @@ public class TissueGlobal
     while (i < j)
     {
       File localFile = new File(paramString, paramArrayOfString[i]);
-      if (!localFile.exists()) {}
-      while ((!localFile.isFile()) || (!localFile.canRead())) {
+      if (!localFile.exists()) {
+        return false;
+      }
+      if (!localFile.isFile()) {
+        return false;
+      }
+      if (!localFile.canRead()) {
         return false;
       }
       i += 1;
@@ -51,7 +59,7 @@ public class TissueGlobal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.tissue.TissueGlobal
  * JD-Core Version:    0.7.0.1
  */

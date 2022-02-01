@@ -17,35 +17,37 @@ class MediaJsPlugin$2
   
   public void run()
   {
-    CoverView localCoverView = CoverViewAction.obtain(MediaJsPlugin.access$300(this.this$0)).get(this.val$videoPlayerId);
-    Object localObject = localCoverView;
-    if (localCoverView == null)
+    Object localObject2 = CoverViewAction.obtain(MediaJsPlugin.access$300(this.this$0)).get(this.val$videoPlayerId);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      localObject = MediaJsPlugin.access$400(this.this$0).getAttachedActivity();
-      if (localObject == null)
+      localObject1 = MediaJsPlugin.access$400(this.this$0).getAttachedActivity();
+      if (localObject1 == null)
       {
         this.val$req.fail();
         return;
       }
-      localObject = new CoverVideoView((Activity)localObject);
-      ((CoverVideoView)localObject).setData(this.val$jsonObject.optString("data"));
-      ((CoverVideoView)localObject).setPageWebView(this.val$req.jsService);
-      ((CoverVideoView)localObject).setPageWebViewId(PageAction.obtain(MediaJsPlugin.access$500(this.this$0)).getPageId());
-      ((CoverVideoView)localObject).setVideoPlayerId(this.val$videoPlayerId);
-      CoverViewAction.obtain(MediaJsPlugin.access$600(this.this$0)).add(0, this.val$videoPlayerId, (CoverView)localObject);
-      ((ObserverManager)MediaJsPlugin.access$700(this.this$0).getManager(ObserverManager.class)).addObserver(((CoverVideoView)localObject).getVideoPlayerStatusObserver());
+      localObject1 = new CoverVideoView((Activity)localObject1);
+      localObject2 = (CoverVideoView)localObject1;
+      ((CoverVideoView)localObject2).setData(this.val$jsonObject.optString("data"));
+      ((CoverVideoView)localObject2).setPageWebView(this.val$req.jsService);
+      ((CoverVideoView)localObject2).setPageWebViewId(PageAction.obtain(MediaJsPlugin.access$500(this.this$0)).getPageId());
+      ((CoverVideoView)localObject2).setVideoPlayerId(this.val$videoPlayerId);
+      CoverViewAction.obtain(MediaJsPlugin.access$600(this.this$0)).add(0, this.val$videoPlayerId, (CoverView)localObject1);
+      ((ObserverManager)MediaJsPlugin.access$700(this.this$0).getManager(ObserverManager.class)).addObserver(((CoverVideoView)localObject2).getVideoPlayerStatusObserver());
     }
-    if ((localObject instanceof CoverVideoView))
+    if ((localObject1 instanceof CoverVideoView))
     {
-      ((CoverVideoView)localObject).setMiniAppContext(MediaJsPlugin.access$800(this.this$0));
-      ((CoverVideoView)localObject).initVideoPlayerSettings(this.val$jsonObject);
+      localObject1 = (CoverVideoView)localObject1;
+      ((CoverVideoView)localObject1).setMiniAppContext(MediaJsPlugin.access$800(this.this$0));
+      ((CoverVideoView)localObject1).initVideoPlayerSettings(this.val$jsonObject);
     }
     this.val$req.ok(this.val$result);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.MediaJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

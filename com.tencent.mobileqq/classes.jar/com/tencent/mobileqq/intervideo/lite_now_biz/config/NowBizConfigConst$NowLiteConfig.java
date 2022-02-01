@@ -7,27 +7,24 @@ public class NowBizConfigConst$NowLiteConfig
   
   static
   {
-    if (NowBizConfigConst.a())
-    {
+    int i;
+    if (NowBizConfigConst.a()) {
       i = 1400015341;
-      a = i;
-      if (!NowBizConfigConst.a()) {
-        break label34;
-      }
-    }
-    label34:
-    for (int i = 7747;; i = 3256)
-    {
-      b = i;
-      return;
+    } else {
       i = 1400005918;
-      break;
     }
+    a = i;
+    if (NowBizConfigConst.a()) {
+      i = 7747;
+    } else {
+      i = 3256;
+    }
+    b = i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.config.NowBizConfigConst.NowLiteConfig
  * JD-Core Version:    0.7.0.1
  */

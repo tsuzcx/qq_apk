@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.pic;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.pic.api.IPicHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.net.URL;
 
 public class PicDownloadInfo
@@ -36,42 +37,88 @@ public class PicDownloadInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("\nPicDownloadInfo");
-    localStringBuilder.append("\n |-").append("md5:").append(this.f);
-    localStringBuilder.append("\n |-").append("uuid:").append(this.jdField_g_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("groupFileID:").append(this.jdField_b_of_type_Long);
-    localStringBuilder.append("\n |-").append("uinType:").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append("\n |-").append("subMsgId:").append(this.jdField_g_of_type_Int);
-    localStringBuilder.append("\n |-").append("subVersion:").append(this.jdField_d_of_type_Int);
-    localStringBuilder.append("\n |-").append("protocol:").append(this.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("fileSizeFlag:").append(this.jdField_e_of_type_Int);
-    localStringBuilder.append("\n |-").append("thumbMsgUrl:").append(this.h);
-    localStringBuilder.append("\n |-").append("bigthumbMsgUrl:").append(this.k);
-    localStringBuilder.append("\n |-").append("bigMsgUrl:").append(this.i);
-    localStringBuilder.append("\n |-").append("rawMsgUrl:").append(this.j);
-    localStringBuilder.append("\n |-").append("isMixed:").append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append("\n |-").append("shareAppID:").append(this.jdField_e_of_type_Long);
-    localStringBuilder.append("\n |-").append("action:").append(this.l);
-    localStringBuilder.append("\n |-").append("actMsgContentValue:").append(this.jdField_c_of_type_Boolean);
-    localStringBuilder.append("\n |-").append("picExtraFlag:").append(this.jdField_c_of_type_Int);
-    localStringBuilder.append("\n |-").append("picExtraObject:").append(this.jdField_a_of_type_JavaLangObject);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("md5:");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("uuid:");
+    localStringBuilder.append(this.jdField_g_of_type_JavaLangString);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("groupFileID:");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("uinType:");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("subMsgId:");
+    localStringBuilder.append(this.jdField_g_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("subVersion:");
+    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("protocol:");
+    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("fileSizeFlag:");
+    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("thumbMsgUrl:");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("bigthumbMsgUrl:");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("bigMsgUrl:");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("rawMsgUrl:");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("isMixed:");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("shareAppID:");
+    localStringBuilder.append(this.jdField_e_of_type_Long);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("action:");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("actMsgContentValue:");
+    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("picExtraFlag:");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("picExtraObject:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangObject);
     return localStringBuilder.toString();
   }
   
   public boolean a()
   {
+    StringBuilder localStringBuilder;
     if (TextUtils.isEmpty(this.jdField_g_of_type_JavaLangString))
     {
-      a("PicDownloadInfo.check", "uuid invaid:" + this.jdField_g_of_type_JavaLangString);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("uuid invaid:");
+      localStringBuilder.append(this.jdField_g_of_type_JavaLangString);
+      a("PicDownloadInfo.check", localStringBuilder.toString());
       return false;
     }
     if (this.jdField_b_of_type_JavaLangString == null)
     {
-      a("checkPicInfo", "selfUin invalid,selfUin:" + this.jdField_b_of_type_JavaLangString);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("selfUin invalid,selfUin:");
+      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+      a("checkPicInfo", localStringBuilder.toString());
       return false;
     }
     if ((this.jdField_b_of_type_Boolean) && (this.jdField_e_of_type_Long == 0L))
     {
-      a("PicDownloadInfo.check", "groupFileID invaid:" + this.jdField_e_of_type_Long);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("groupFileID invaid:");
+      localStringBuilder.append(this.jdField_e_of_type_Long);
+      a("PicDownloadInfo.check", localStringBuilder.toString());
       return false;
     }
     return super.a();
@@ -79,37 +126,44 @@ public class PicDownloadInfo
   
   String b()
   {
+    boolean bool = "chatthumb".equals(this.jdField_e_of_type_JavaLangString);
     int n = 65537;
-    if ("chatthumb".equals(this.jdField_e_of_type_JavaLangString)) {}
-    while (this.jdField_a_of_type_Boolean)
-    {
-      localObject = new PicUploadInfo();
-      ((PicUploadInfo)localObject).jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-      ((PicUploadInfo)localObject).jdField_d_of_type_Int = this.jdField_d_of_type_Int;
-      ((PicUploadInfo)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      ((PicUploadInfo)localObject).f = this.f;
-      localObject = URLDrawableHelper.getURL((PicUploadInfo)localObject, n, null);
-      if (localObject == null) {
-        break label129;
-      }
-      return ((URL)localObject).toString();
+    if (!bool) {
       if ("chatimg".equals(this.jdField_e_of_type_JavaLangString)) {
         n = 1;
       } else if ("chatraw".equals(this.jdField_e_of_type_JavaLangString)) {
         n = 131075;
       }
     }
-    Object localObject = URLDrawableHelper.getURL(this, n, null);
-    if (localObject != null) {
-      return ((URL)localObject).toString();
+    Object localObject;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localObject = new PicUploadInfo();
+      ((PicUploadInfo)localObject).jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+      ((PicUploadInfo)localObject).jdField_d_of_type_Int = this.jdField_d_of_type_Int;
+      ((PicUploadInfo)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      ((PicUploadInfo)localObject).f = this.f;
+      localObject = ((IPicHelper)QRoute.api(IPicHelper.class)).getURL((PicUploadInfo)localObject, n, null);
+      if (localObject != null) {
+        return ((URL)localObject).toString();
+      }
     }
-    label129:
+    else
+    {
+      localObject = ((IPicHelper)QRoute.api(IPicHelper.class)).getURL(this, n, null);
+      if (localObject != null) {
+        return ((URL)localObject).toString();
+      }
+    }
     return null;
   }
   
   public String d()
   {
-    return c() + "_dp";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c());
+    localStringBuilder.append("_dp");
+    return localStringBuilder.toString();
   }
   
   public String toString()
@@ -122,7 +176,7 @@ public class PicDownloadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicDownloadInfo
  * JD-Core Version:    0.7.0.1
  */

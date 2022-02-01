@@ -21,18 +21,18 @@ public class ShareAioResultDialog
   
   public ShareAioResultDialog(Context paramContext)
   {
-    super(paramContext, 2131755842);
-    super.setContentView(2131560576);
-    super.getWindow().setWindowAnimations(2131755132);
+    super(paramContext, 2131756189);
+    super.setContentView(2131560465);
+    super.getWindow().setWindowAnimations(2131755294);
     a();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365796));
-    this.b = ((TextView)super.findViewById(2131365802));
-    this.c = ((TextView)super.findViewById(2131379441));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131379442));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365633));
+    this.b = ((TextView)super.findViewById(2131365639));
+    this.c = ((TextView)super.findViewById(2131378793));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131378794));
     this.jdField_a_of_type_AndroidWidgetImageView.setColorFilter(-7745469, PorterDuff.Mode.MULTIPLY);
   }
   
@@ -41,15 +41,16 @@ public class ShareAioResultDialog
     if (ChatActivityConstants.a)
     {
       Resources localResources = getContext().getResources();
-      this.b.setContentDescription(localResources.getString(2131690777, new Object[] { localResources.getString(2131719149) }));
+      this.b.setContentDescription(localResources.getString(2131690705, new Object[] { localResources.getString(2131718867) }));
     }
     this.b.setOnClickListener(new ShareAioResultDialog.2(this, paramOnClickListener));
   }
   
   public void a(String paramString)
   {
-    if (this.c != null) {
-      this.c.setText(paramString);
+    TextView localTextView = this.c;
+    if (localTextView != null) {
+      localTextView.setText(paramString);
     }
   }
   
@@ -64,7 +65,7 @@ public class ShareAioResultDialog
       if (paramString == null) {
         str = "";
       }
-      localTextView.setContentDescription(localResources.getString(2131690777, new Object[] { str }));
+      localTextView.setContentDescription(localResources.getString(2131690705, new Object[] { str }));
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new ShareAioResultDialog.1(this, paramOnClickListener));
   }
@@ -91,7 +92,7 @@ public class ShareAioResultDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.widgets.ShareAioResultDialog
  * JD-Core Version:    0.7.0.1
  */

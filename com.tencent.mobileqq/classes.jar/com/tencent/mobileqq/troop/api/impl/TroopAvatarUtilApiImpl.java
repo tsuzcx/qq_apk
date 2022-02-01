@@ -9,31 +9,49 @@ public class TroopAvatarUtilApiImpl
 {
   public String getArtWork(String paramString)
   {
-    if (isAvatarUrl(paramString)) {
-      return paramString + 0;
+    if (isAvatarUrl(paramString))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(0);
+      return localStringBuilder.toString();
     }
     return null;
   }
   
   public String getAvatarAddress(String paramString1, String paramString2, int paramInt)
   {
-    if (TextUtils.isEmpty(paramString2)) {
-      QLog.d("TroopAvatarUtilApiImpl", 1, "getAvatarAddress troopUin is empty");
-    }
-    do
+    boolean bool = TextUtils.isEmpty(paramString2);
+    String str = "https://p.qlogo.cn/gh/dir/file/";
+    if (bool)
     {
+      QLog.d("TroopAvatarUtilApiImpl", 1, "getAvatarAddress troopUin is empty");
       return "https://p.qlogo.cn/gh/dir/file/";
-      if (1 == paramInt) {
-        return "https://p.qlogo.cn/gh/dir/file/".replace("dir", paramString2).replace("file", paramString2 + "_" + paramString1);
-      }
-    } while (paramInt != 0);
-    return "https://p.qlogo.cn/gh/dir/file/".replace("dir", paramString2).replace("file", paramString2);
+    }
+    if (1 == paramInt)
+    {
+      str = "https://p.qlogo.cn/gh/dir/file/".replace("dir", paramString2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramString1);
+      return str.replace("file", localStringBuilder.toString());
+    }
+    paramString1 = str;
+    if (paramInt == 0) {
+      paramString1 = "https://p.qlogo.cn/gh/dir/file/".replace("dir", paramString2).replace("file", paramString2);
+    }
+    return paramString1;
   }
   
   public String getThumbPhoto(String paramString)
   {
-    if (isAvatarUrl(paramString)) {
-      return paramString + 140;
+    if (isAvatarUrl(paramString))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(140);
+      return localStringBuilder.toString();
     }
     return null;
   }
@@ -51,27 +69,29 @@ public class TroopAvatarUtilApiImpl
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    if (((paramString.length() > 1) && (paramString.startsWith("+"))) || (paramString.startsWith("-"))) {}
-    for (int i = 1;; i = 0)
-    {
-      int j = paramString.length();
-      int k;
-      do
-      {
-        k = j - 1;
-        if (k < i) {
-          break;
-        }
-        j = k;
-      } while (Character.isDigit(paramString.charAt(k)));
-      return false;
-      return true;
+    int i;
+    if (((paramString.length() > 1) && (paramString.startsWith("+"))) || (paramString.startsWith("-"))) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    int j = paramString.length();
+    int k;
+    do
+    {
+      k = j - 1;
+      if (k < i) {
+        break;
+      }
+      j = k;
+    } while (Character.isDigit(paramString.charAt(k)));
+    return false;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.impl.TroopAvatarUtilApiImpl
  * JD-Core Version:    0.7.0.1
  */

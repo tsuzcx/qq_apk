@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -115,60 +116,76 @@ public final class UniSetReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.stLogin, 0);
-    if (this.stUniBusinessItem != null) {
-      paramJceOutputStream.write(this.stUniBusinessItem, 1);
+    Object localObject = this.stUniBusinessItem;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.stHamletItem != null) {
-      paramJceOutputStream.write(this.stHamletItem, 2);
+    localObject = this.stHamletItem;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.stBubble != null) {
-      paramJceOutputStream.write(this.stBubble, 3);
+    localObject = this.stBubble;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.stRedpacket != null) {
-      paramJceOutputStream.write(this.stRedpacket, 4);
+    localObject = this.stRedpacket;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.stFuncall != null) {
-      paramJceOutputStream.write(this.stFuncall, 5);
+    localObject = this.stFuncall;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.stMessageShow != null) {
-      paramJceOutputStream.write(this.stMessageShow, 6);
+    localObject = this.stMessageShow;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
-    if (this.stHamletItemList != null) {
-      paramJceOutputStream.write(this.stHamletItemList, 7);
+    localObject = this.stHamletItemList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 7);
     }
     paramJceOutputStream.write(this.clearflag, 8);
-    if (this.stGroupEffect != null) {
-      paramJceOutputStream.write(this.stGroupEffect, 9);
+    localObject = this.stGroupEffect;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
-    if (this.ext_map != null) {
-      paramJceOutputStream.write(this.ext_map, 10);
+    localObject = this.ext_map;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 10);
     }
-    if (this.stSummaryCard != null) {
-      paramJceOutputStream.write(this.stSummaryCard, 11);
+    localObject = this.stSummaryCard;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 11);
     }
-    if (this.stSignature != null) {
-      paramJceOutputStream.write(this.stSignature, 12);
+    localObject = this.stSignature;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 12);
     }
-    if (this.stNamePlate != null) {
-      paramJceOutputStream.write(this.stNamePlate, 13);
+    localObject = this.stNamePlate;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 13);
     }
-    if (this.stExtendFriend != null) {
-      paramJceOutputStream.write(this.stExtendFriend, 14);
+    localObject = this.stExtendFriend;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 14);
     }
-    if (this.stFont != null) {
-      paramJceOutputStream.write(this.stFont, 15);
+    localObject = this.stFont;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 15);
     }
-    if (this.stConcise != null) {
-      paramJceOutputStream.write(this.stConcise, 16);
+    localObject = this.stConcise;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 16);
     }
-    if (this.stNudge != null) {
-      paramJceOutputStream.write(this.stNudge, 17);
+    localObject = this.stNudge;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 17);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.UniSetReq
  * JD-Core Version:    0.7.0.1
  */

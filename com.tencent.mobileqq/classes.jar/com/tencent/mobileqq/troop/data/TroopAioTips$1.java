@@ -11,15 +11,14 @@ class TroopAioTips$1
   
   public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ScrollTest", 4, "velocityY = " + paramFloat2);
-    }
-    if (paramFloat2 < -10.0F) {}
-    for (;;)
+    if (QLog.isDevelopLevel())
     {
-      return false;
-      if (paramFloat2 <= 10.0F) {}
+      paramMotionEvent1 = new StringBuilder();
+      paramMotionEvent1.append("velocityY = ");
+      paramMotionEvent1.append(paramFloat2);
+      QLog.d("ScrollTest", 4, paramMotionEvent1.toString());
     }
+    return false;
   }
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
@@ -29,7 +28,7 @@ class TroopAioTips$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioTips.1
  * JD-Core Version:    0.7.0.1
  */

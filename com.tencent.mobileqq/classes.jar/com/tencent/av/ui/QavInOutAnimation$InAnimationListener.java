@@ -16,15 +16,21 @@ class QavInOutAnimation$InAnimationListener
     }
     try
     {
-      if (this.a.a != null) {
+      if (this.a.a != null)
+      {
         this.a.a.b();
+        return;
       }
-      return;
     }
     catch (Exception paramAnimation)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QavInOutAnimation", 2, "QavInAnimationListener onAnimationEnd Exception :" + paramAnimation);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("QavInAnimationListener onAnimationEnd Exception :");
+        localStringBuilder.append(paramAnimation);
+        QLog.e("QavInOutAnimation", 2, localStringBuilder.toString());
+      }
     }
   }
   
@@ -37,21 +43,27 @@ class QavInOutAnimation$InAnimationListener
     }
     try
     {
-      if (this.a.a != null) {
+      if (this.a.a != null)
+      {
         this.a.a.a();
+        return;
       }
-      return;
     }
     catch (Exception paramAnimation)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QavInOutAnimation", 2, "QavInAnimationListener onAnimationStart Exception :" + paramAnimation);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("QavInAnimationListener onAnimationStart Exception :");
+        localStringBuilder.append(paramAnimation);
+        QLog.e("QavInOutAnimation", 2, localStringBuilder.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.QavInOutAnimation.InAnimationListener
  * JD-Core Version:    0.7.0.1
  */

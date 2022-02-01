@@ -55,16 +55,14 @@ public class SystemBarCompact
       ensureTintManager();
       this.mTintManager.setStatusBarTintEnabled(this.mDrawStatus);
     }
-    if (this.mStatusBarDarwable != null) {
-      setStatusBarDrawable(this.mStatusBarDarwable);
-    }
-    for (;;)
-    {
-      this.isStatusBarVisible = true;
-      this.mInited = true;
-      return;
+    Drawable localDrawable = this.mStatusBarDarwable;
+    if (localDrawable != null) {
+      setStatusBarDrawable(localDrawable);
+    } else {
       setStatusBarColor(this.mPendingStatusBarColor);
     }
+    this.isStatusBarVisible = true;
+    this.mInited = true;
   }
   
   @TargetApi(19)
@@ -103,16 +101,21 @@ public class SystemBarCompact
   
   public void setStatusBarVisible(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("status", 2, "setStatusBarVisible=" + paramInt1);
-    }
-    if (paramInt1 == 0) {}
-    for (this.isStatusBarVisible = true;; this.isStatusBarVisible = false)
+    if (QLog.isColorLevel())
     {
-      if (this.mTintManager != null) {
-        this.mTintManager.setStatusBarVisible(paramInt1, paramInt2);
-      }
-      return;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setStatusBarVisible=");
+      ((StringBuilder)localObject).append(paramInt1);
+      QLog.d("status", 2, ((StringBuilder)localObject).toString());
+    }
+    if (paramInt1 == 0) {
+      this.isStatusBarVisible = true;
+    } else {
+      this.isStatusBarVisible = false;
+    }
+    Object localObject = this.mTintManager;
+    if (localObject != null) {
+      ((SystemBarTintManager)localObject).setStatusBarVisible(paramInt1, paramInt2);
     }
   }
   
@@ -128,18 +131,23 @@ public class SystemBarCompact
   
   public void setgetStatusBarVisible(boolean paramBoolean, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("status", 2, "setgetStatusBarVisible=" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setgetStatusBarVisible=");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.i("status", 2, ((StringBuilder)localObject).toString());
     }
     this.isStatusBarVisible = paramBoolean;
-    if (this.mTintManager != null) {
-      this.mTintManager.setStatusBarVisible(paramBoolean, paramInt);
+    Object localObject = this.mTintManager;
+    if (localObject != null) {
+      ((SystemBarTintManager)localObject).setStatusBarVisible(paramBoolean, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.immersive.SystemBarCompact
  * JD-Core Version:    0.7.0.1
  */

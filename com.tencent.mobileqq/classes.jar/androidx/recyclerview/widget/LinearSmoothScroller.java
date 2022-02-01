@@ -34,10 +34,9 @@ public class LinearSmoothScroller
   
   private int clampApplyScroll(int paramInt1, int paramInt2)
   {
-    int i = paramInt1 - paramInt2;
-    paramInt2 = i;
-    if (paramInt1 * i <= 0) {
-      paramInt2 = 0;
+    paramInt2 = paramInt1 - paramInt2;
+    if (paramInt1 * paramInt2 <= 0) {
+      return 0;
     }
     return paramInt2;
   }
@@ -54,46 +53,48 @@ public class LinearSmoothScroller
   
   public int calculateDtToFit(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    switch (paramInt5)
+    if (paramInt5 != -1)
     {
-    default: 
-      throw new IllegalArgumentException("snap preference should be one of the constants defined in SmoothScroller, starting with SNAP_");
-    case -1: 
-      paramInt1 = paramInt3 - paramInt1;
-    }
-    do
-    {
-      do
+      if (paramInt5 != 0)
       {
+        if (paramInt5 == 1) {
+          return paramInt4 - paramInt2;
+        }
+        throw new IllegalArgumentException("snap preference should be one of the constants defined in SmoothScroller, starting with SNAP_");
+      }
+      paramInt1 = paramInt3 - paramInt1;
+      if (paramInt1 > 0) {
         return paramInt1;
-        return paramInt4 - paramInt2;
-        paramInt3 -= paramInt1;
-        paramInt1 = paramInt3;
-      } while (paramInt3 > 0);
-      paramInt2 = paramInt4 - paramInt2;
-      paramInt1 = paramInt2;
-    } while (paramInt2 < 0);
-    return 0;
+      }
+      paramInt1 = paramInt4 - paramInt2;
+      if (paramInt1 < 0) {
+        return paramInt1;
+      }
+      return 0;
+    }
+    return paramInt3 - paramInt1;
   }
   
   public int calculateDxToMakeVisible(View paramView, int paramInt)
   {
     RecyclerView.LayoutManager localLayoutManager = getLayoutManager();
-    if ((localLayoutManager == null) || (!localLayoutManager.canScrollHorizontally())) {
-      return 0;
+    if ((localLayoutManager != null) && (localLayoutManager.canScrollHorizontally()))
+    {
+      RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
+      return calculateDtToFit(localLayoutManager.getDecoratedLeft(paramView) - localLayoutParams.leftMargin, localLayoutManager.getDecoratedRight(paramView) + localLayoutParams.rightMargin, localLayoutManager.getPaddingLeft(), localLayoutManager.getWidth() - localLayoutManager.getPaddingRight(), paramInt);
     }
-    RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    return calculateDtToFit(localLayoutManager.getDecoratedLeft(paramView) - localLayoutParams.leftMargin, localLayoutManager.getDecoratedRight(paramView) + localLayoutParams.rightMargin, localLayoutManager.getPaddingLeft(), localLayoutManager.getWidth() - localLayoutManager.getPaddingRight(), paramInt);
+    return 0;
   }
   
   public int calculateDyToMakeVisible(View paramView, int paramInt)
   {
     RecyclerView.LayoutManager localLayoutManager = getLayoutManager();
-    if ((localLayoutManager == null) || (!localLayoutManager.canScrollVertically())) {
-      return 0;
+    if ((localLayoutManager != null) && (localLayoutManager.canScrollVertically()))
+    {
+      RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
+      return calculateDtToFit(localLayoutManager.getDecoratedTop(paramView) - localLayoutParams.topMargin, localLayoutManager.getDecoratedBottom(paramView) + localLayoutParams.bottomMargin, localLayoutManager.getPaddingTop(), localLayoutManager.getHeight() - localLayoutManager.getPaddingBottom(), paramInt);
     }
-    RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    return calculateDtToFit(localLayoutManager.getDecoratedTop(paramView) - localLayoutParams.topMargin, localLayoutManager.getDecoratedBottom(paramView) + localLayoutParams.bottomMargin, localLayoutManager.getPaddingTop(), localLayoutManager.getHeight() - localLayoutManager.getPaddingBottom(), paramInt);
+    return 0;
   }
   
   protected float calculateSpeedPerPixel(DisplayMetrics paramDisplayMetrics)
@@ -103,7 +104,9 @@ public class LinearSmoothScroller
   
   protected int calculateTimeForDeceleration(int paramInt)
   {
-    return (int)Math.ceil(calculateTimeForScrolling(paramInt) / 0.3356D);
+    double d = calculateTimeForScrolling(paramInt);
+    Double.isNaN(d);
+    return (int)Math.ceil(d / 0.3356D);
   }
   
   protected int calculateTimeForScrolling(int paramInt)
@@ -113,38 +116,42 @@ public class LinearSmoothScroller
   
   protected int getHorizontalSnapPreference()
   {
-    if ((this.mTargetVector == null) || (this.mTargetVector.x == 0.0F)) {
-      return 0;
+    PointF localPointF = this.mTargetVector;
+    if ((localPointF != null) && (localPointF.x != 0.0F))
+    {
+      if (this.mTargetVector.x > 0.0F) {
+        return 1;
+      }
+      return -1;
     }
-    if (this.mTargetVector.x > 0.0F) {
-      return 1;
-    }
-    return -1;
+    return 0;
   }
   
   protected int getVerticalSnapPreference()
   {
-    if ((this.mTargetVector == null) || (this.mTargetVector.y == 0.0F)) {
-      return 0;
+    PointF localPointF = this.mTargetVector;
+    if ((localPointF != null) && (localPointF.y != 0.0F))
+    {
+      if (this.mTargetVector.y > 0.0F) {
+        return 1;
+      }
+      return -1;
     }
-    if (this.mTargetVector.y > 0.0F) {
-      return 1;
-    }
-    return -1;
+    return 0;
   }
   
   protected void onSeekTargetStep(int paramInt1, int paramInt2, RecyclerView.State paramState, RecyclerView.SmoothScroller.Action paramAction)
   {
-    if (getChildCount() == 0) {
-      stop();
-    }
-    do
+    if (getChildCount() == 0)
     {
+      stop();
       return;
-      this.mInterimTargetDx = clampApplyScroll(this.mInterimTargetDx, paramInt1);
-      this.mInterimTargetDy = clampApplyScroll(this.mInterimTargetDy, paramInt2);
-    } while ((this.mInterimTargetDx != 0) || (this.mInterimTargetDy != 0));
-    updateActionForInterimTarget(paramAction);
+    }
+    this.mInterimTargetDx = clampApplyScroll(this.mInterimTargetDx, paramInt1);
+    this.mInterimTargetDy = clampApplyScroll(this.mInterimTargetDy, paramInt2);
+    if ((this.mInterimTargetDx == 0) && (this.mInterimTargetDy == 0)) {
+      updateActionForInterimTarget(paramAction);
+    }
   }
   
   protected void onStart() {}
@@ -169,23 +176,23 @@ public class LinearSmoothScroller
   protected void updateActionForInterimTarget(RecyclerView.SmoothScroller.Action paramAction)
   {
     PointF localPointF = computeScrollVectorForPosition(getTargetPosition());
-    if ((localPointF == null) || ((localPointF.x == 0.0F) && (localPointF.y == 0.0F)))
+    if ((localPointF != null) && ((localPointF.x != 0.0F) || (localPointF.y != 0.0F)))
     {
-      paramAction.jumpTo(getTargetPosition());
-      stop();
+      normalize(localPointF);
+      this.mTargetVector = localPointF;
+      this.mInterimTargetDx = ((int)(localPointF.x * 10000.0F));
+      this.mInterimTargetDy = ((int)(localPointF.y * 10000.0F));
+      int i = calculateTimeForScrolling(10000);
+      paramAction.update((int)(this.mInterimTargetDx * 1.2F), (int)(this.mInterimTargetDy * 1.2F), (int)(i * 1.2F), this.mLinearInterpolator);
       return;
     }
-    normalize(localPointF);
-    this.mTargetVector = localPointF;
-    this.mInterimTargetDx = ((int)(localPointF.x * 10000.0F));
-    this.mInterimTargetDy = ((int)(localPointF.y * 10000.0F));
-    int i = calculateTimeForScrolling(10000);
-    paramAction.update((int)(this.mInterimTargetDx * 1.2F), (int)(this.mInterimTargetDy * 1.2F), (int)(i * 1.2F), this.mLinearInterpolator);
+    paramAction.jumpTo(getTargetPosition());
+    stop();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.LinearSmoothScroller
  * JD-Core Version:    0.7.0.1
  */

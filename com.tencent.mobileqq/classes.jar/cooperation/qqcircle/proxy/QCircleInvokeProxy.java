@@ -21,7 +21,12 @@ public class QCircleInvokeProxy
     boolean bool1 = bool2;
     if (!bool2)
     {
-      QLog.d("QCircleInvokeProxy", 1, "checkStubState fail,stub has not bind.action:" + paramInt1 + ",method:" + paramInt2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkStubState fail,stub has not bind.action:");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(",method:");
+      localStringBuilder.append(paramInt2);
+      QLog.d("QCircleInvokeProxy", 1, localStringBuilder.toString());
       bool1 = getInstance().mHasStubBind;
     }
     return bool1;
@@ -56,7 +61,7 @@ public class QCircleInvokeProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.proxy.QCircleInvokeProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,7 @@
 package cooperation.qqcircle.report;
 
-import com.tencent.mobileqq.qcircle.api.impl.QCircleServiceImpl;
-import com.tencent.mobileqq.qcircle.tempapi.api.IQZoneService;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import cooperation.qqcircle.utils.QCircleHostStubUtil;
+import cooperation.qzone.QUA;
 
 public class QCirclePluginQualityReporter$ReportData
 {
@@ -11,13 +9,14 @@ public class QCirclePluginQualityReporter$ReportData
   private String event_id = "";
   private String ext1 = "";
   private String ext2 = "";
+  private String flutterVersion;
   private String netWorkTyp = QCircleReportHelper.getNetworkType();
   private String pluginType = "";
   private long pluginVersion;
-  private String qua = QCircleServiceImpl.getQZoneService().getQUA3();
+  private String qua = QUA.getQUA3();
   private long retCode;
   private String timeCost = "";
-  private String uin = String.valueOf(MobileQQ.sMobileQQ.waitAppRuntime(null).getLongAccountUin());
+  private String uin = QCircleHostStubUtil.getCurrentAccount();
   
   public String getClient_time()
   {
@@ -98,6 +97,12 @@ public class QCirclePluginQualityReporter$ReportData
     return this;
   }
   
+  public ReportData setFlutterPluginVersion(String paramString)
+  {
+    this.flutterVersion = paramString;
+    return this;
+  }
+  
   public ReportData setNetWorkTyp(String paramString)
   {
     this.netWorkTyp = paramString;
@@ -142,7 +147,7 @@ public class QCirclePluginQualityReporter$ReportData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.report.QCirclePluginQualityReporter.ReportData
  * JD-Core Version:    0.7.0.1
  */

@@ -13,6 +13,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
+import org.jetbrains.annotations.NotNull;
 
 final class QueueDownloader
   implements INetInfoHandler, DownloaderInterface
@@ -52,158 +53,86 @@ final class QueueDownloader
       }
       return null;
     }
-  }
-  
-  public int a(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QueueDownloader", 2, "cancelTask stopAll=" + paramBoolean + ",key=" + paramString);
-    }
-    Object localObject;
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
-    {
-      if (this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) {
-        break label115;
-      }
-      if (!paramBoolean) {
-        break label119;
-      }
-      paramString = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
-      if (paramString.hasNext())
-      {
-        localObject = (DownloadTask)paramString.next();
-        ((DownloadTask)localObject).a(true);
-        ((DownloadTask)localObject).j();
-      }
-    }
-    this.jdField_a_of_type_JavaUtilLinkedList.clear();
     for (;;)
     {
-      label115:
-      return 0;
-      label119:
-      if ((paramString == null) || (TextUtils.isEmpty(paramString))) {
-        break;
-      }
-      localObject = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
-      ArrayList localArrayList = new ArrayList();
-      while (((Iterator)localObject).hasNext())
-      {
-        DownloadTask localDownloadTask = (DownloadTask)((Iterator)localObject).next();
-        if (paramString.equals(localDownloadTask.jdField_a_of_type_JavaLangString))
-        {
-          if (!localDownloadTask.a())
-          {
-            ((Iterator)localObject).remove();
-            localArrayList.add(localDownloadTask);
-          }
-          else
-          {
-            localDownloadTask.a(true);
-            localDownloadTask.j();
-          }
-        }
-        else if ((localDownloadTask.b()) && (!localDownloadTask.a()))
-        {
-          ((Iterator)localObject).remove();
-          localArrayList.add(localDownloadTask);
-        }
-      }
-      if (localArrayList.size() > 0) {
-        this.jdField_a_of_type_JavaUtilLinkedList.removeAll(localArrayList);
-      }
+      throw localObject;
     }
-    return -1;
   }
   
-  public DownloadTask a(String paramString)
+  private void b(@NotNull DownloadTask paramDownloadTask)
   {
-    LinkedList localLinkedList = this.jdField_a_of_type_JavaUtilLinkedList;
-    if (paramString != null) {}
+    ThreadManager.postDownLoadTask(new QueueDownloader.1(this, paramDownloadTask), 2, null, false);
+  }
+  
+  void a()
+  {
     try
     {
-      if (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
       {
         Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
         while (localIterator.hasNext())
         {
           DownloadTask localDownloadTask = (DownloadTask)localIterator.next();
-          if (paramString.equals(localDownloadTask.jdField_a_of_type_JavaLangString))
+          long l = localDownloadTask.d;
+          boolean bool2 = false;
+          boolean bool1 = bool2;
+          if (l > 0L)
           {
-            if (QLog.isColorLevel()) {
-              QLog.d("QueueDownloader", 2, "getTask | " + paramString + " task find =" + localDownloadTask);
+            l = System.currentTimeMillis() / 1000L;
+            bool1 = bool2;
+            if (!localDownloadTask.a())
+            {
+              bool1 = bool2;
+              if (l > localDownloadTask.c + localDownloadTask.d) {
+                bool1 = true;
+              }
             }
-            return localDownloadTask;
           }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QueueDownloader", 2, "getTask | " + paramString + " task not find");
-      }
-      return null;
-    }
-    finally {}
-  }
-  
-  void a()
-  {
-    for (;;)
-    {
-      try
-      {
-        synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
-        {
-          Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
-          if (!localIterator.hasNext()) {
-            break label185;
-          }
-          DownloadTask localDownloadTask2 = (DownloadTask)localIterator.next();
-          if (localDownloadTask2.d <= 0L) {
-            break label316;
-          }
-          long l = System.currentTimeMillis() / 1000L;
-          if ((!localDownloadTask2.a()) && (l > localDownloadTask2.c + localDownloadTask2.d))
+          if ((localDownloadTask.b()) || (bool1))
           {
-            bool = true;
-            if ((!localDownloadTask2.b()) && (!bool)) {
-              continue;
-            }
             localIterator.remove();
-            if (!QLog.isColorLevel()) {
-              continue;
+            if (QLog.isColorLevel())
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("remove task[");
+              localStringBuilder.append(localDownloadTask.jdField_a_of_type_JavaLangString);
+              localStringBuilder.append("], isCancal=");
+              localStringBuilder.append(localDownloadTask.b());
+              localStringBuilder.append(", timeOut=");
+              localStringBuilder.append(bool1);
+              QLog.d("QueueDownloader", 2, localStringBuilder.toString());
             }
-            QLog.d("QueueDownloader", 2, "remove task[" + localDownloadTask2.jdField_a_of_type_JavaLangString + "], isCancal=" + localDownloadTask2.b() + ", timeOut=" + bool);
           }
         }
-        bool = false;
-      }
-      finally {}
-      continue;
-      label185:
-      if (QLog.isColorLevel()) {
-        QLog.d("QueueDownloader", 2, "doTask | downloadLimitCount=" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ",maxDownloadCount=" + 3 + ",downloadQueue size=" + this.jdField_a_of_type_JavaUtilLinkedList.size());
-      }
-      for (;;)
-      {
-        DownloadTask localDownloadTask1;
-        if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() <= 3)
+        if (QLog.isColorLevel())
         {
-          localDownloadTask1 = a();
-          if (localDownloadTask1 != null) {
-            break label288;
-          }
-          if (QLog.isColorLevel()) {
+          ??? = new StringBuilder();
+          ((StringBuilder)???).append("doTask | downloadLimitCount=");
+          ((StringBuilder)???).append(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+          ((StringBuilder)???).append(",maxDownloadCount=");
+          ((StringBuilder)???).append(3);
+          ((StringBuilder)???).append(",downloadQueue size=");
+          ((StringBuilder)???).append(this.jdField_a_of_type_JavaUtilLinkedList.size());
+          QLog.d("QueueDownloader", 2, ((StringBuilder)???).toString());
+        }
+        while (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() <= 3)
+        {
+          ??? = a();
+          if (??? == null)
+          {
             QLog.d("QueueDownloader", 2, "doTask | run() null");
+            return;
           }
+          b((DownloadTask)???);
+          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
         }
         return;
-        label288:
-        ThreadManager.postDownLoadTask(new QueueDownloader.1(this, localDownloadTask1), 2, null, false);
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
       }
-      label316:
-      boolean bool = false;
+      throw localObject2;
     }
+    finally {}
+    for (;;) {}
   }
   
   public void a(DownloadTask paramDownloadTask)
@@ -214,8 +143,12 @@ final class QueueDownloader
     {
       if ((!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) && (this.jdField_a_of_type_JavaUtilLinkedList.contains(paramDownloadTask)))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("QueueDownloader", 2, "removeTask | task=" + paramDownloadTask);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("removeTask | task=");
+          localStringBuilder.append(paramDownloadTask);
+          QLog.d("QueueDownloader", 2, localStringBuilder.toString());
         }
         paramDownloadTask.j();
         this.jdField_a_of_type_JavaUtilLinkedList.remove(paramDownloadTask);
@@ -225,66 +158,126 @@ final class QueueDownloader
     finally {}
   }
   
-  public void a(DownloadTask paramDownloadTask, DownloadListener arg2, Bundle paramBundle)
+  public int cancelTask(boolean paramBoolean, String paramString)
   {
-    if ((!DownloaderFactory.a(paramDownloadTask)) || (a(paramDownloadTask.jdField_a_of_type_JavaLangString) == paramDownloadTask)) {}
-    DownloadTask localDownloadTask;
-    do
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("cancelTask stopAll=");
+    ((StringBuilder)???).append(paramBoolean);
+    ((StringBuilder)???).append(",key=");
+    ((StringBuilder)???).append(paramString);
+    QLog.d("QueueDownloader", 2, ((StringBuilder)???).toString());
+    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
     {
-      return;
-      localDownloadTask = a(paramDownloadTask.jdField_a_of_type_JavaLangString);
-      if (localDownloadTask == null) {
-        break;
+      if (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+      {
+        Object localObject2;
+        if (paramBoolean)
+        {
+          paramString = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+          while (paramString.hasNext())
+          {
+            localObject2 = (DownloadTask)paramString.next();
+            ((DownloadTask)localObject2).a(true);
+            ((DownloadTask)localObject2).j();
+          }
+          this.jdField_a_of_type_JavaUtilLinkedList.clear();
+        }
+        else if ((paramString != null) && (!TextUtils.isEmpty(paramString)))
+        {
+          localObject2 = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+          ArrayList localArrayList = new ArrayList();
+          while (((Iterator)localObject2).hasNext())
+          {
+            DownloadTask localDownloadTask = (DownloadTask)((Iterator)localObject2).next();
+            if (paramString.equals(localDownloadTask.jdField_a_of_type_JavaLangString))
+            {
+              if (!localDownloadTask.a())
+              {
+                ((Iterator)localObject2).remove();
+                localArrayList.add(localDownloadTask);
+              }
+              else
+              {
+                localDownloadTask.a(true);
+                localDownloadTask.j();
+              }
+            }
+            else if ((localDownloadTask.b()) && (!localDownloadTask.a()))
+            {
+              ((Iterator)localObject2).remove();
+              localArrayList.add(localDownloadTask);
+            }
+          }
+          if (localArrayList.size() > 0) {
+            this.jdField_a_of_type_JavaUtilLinkedList.removeAll(localArrayList);
+          }
+        }
+        else
+        {
+          return -1;
+        }
       }
-    } while ((localDownloadTask == null) || (!localDownloadTask.s));
-    paramDownloadTask.a(???);
-    paramDownloadTask.a(paramBundle);
-    ??? = BaseApplicationImpl.getApplication().getRuntime();
-    if ((??? != null) && (paramDownloadTask.jdField_a_of_type_ComTencentMobileqqVipDownloadTask$ReportInfo.a < 0L)) {
-      paramDownloadTask.jdField_a_of_type_ComTencentMobileqqVipDownloadTask$ReportInfo.a = ???.getLongAccountUin();
-    }
-    localDownloadTask.a(paramDownloadTask);
-    return;
-    paramDownloadTask.a(???);
-    paramDownloadTask.a(paramBundle);
-    ??? = BaseApplicationImpl.getApplication().getRuntime();
-    if ((??? != null) && (paramDownloadTask.jdField_a_of_type_ComTencentMobileqqVipDownloadTask$ReportInfo.a < 0L)) {
-      paramDownloadTask.jdField_a_of_type_ComTencentMobileqqVipDownloadTask$ReportInfo.a = ???.getLongAccountUin();
+      return 0;
     }
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
-      {
-        paramBundle = a(paramDownloadTask.jdField_a_of_type_JavaLangString);
-        if (paramBundle == null)
-        {
-          paramDownloadTask.c = ((int)(System.currentTimeMillis() / 1000L));
-          if (paramDownloadTask.b)
-          {
-            this.jdField_a_of_type_JavaUtilLinkedList.addFirst(paramDownloadTask);
-            if (QLog.isColorLevel()) {
-              QLog.d("QueueDownloader", 2, "startDownload | task=" + paramDownloadTask.jdField_a_of_type_JavaLangString);
-            }
-            a();
-            return;
-          }
-          this.jdField_a_of_type_JavaUtilLinkedList.addLast(paramDownloadTask);
-        }
-      }
-      if ((paramDownloadTask.b) && (!paramBundle.a()) && (this.jdField_a_of_type_JavaUtilLinkedList.remove(paramBundle))) {
-        this.jdField_a_of_type_JavaUtilLinkedList.addFirst(paramBundle);
-      }
+      throw paramString;
     }
   }
   
-  public void b()
+  public DownloadTask getTask(String paramString)
   {
-    a(true, null);
+    Object localObject1 = this.jdField_a_of_type_JavaUtilLinkedList;
+    if (paramString != null) {}
+    try
+    {
+      if (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+      {
+        Object localObject2 = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          DownloadTask localDownloadTask = (DownloadTask)((Iterator)localObject2).next();
+          if (paramString.equals(localDownloadTask.jdField_a_of_type_JavaLangString))
+          {
+            if (QLog.isColorLevel())
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("getTask | ");
+              ((StringBuilder)localObject2).append(paramString);
+              ((StringBuilder)localObject2).append(" task find =");
+              ((StringBuilder)localObject2).append(localDownloadTask);
+              QLog.d("QueueDownloader", 2, ((StringBuilder)localObject2).toString());
+            }
+            return localDownloadTask;
+          }
+        }
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getTask | ");
+        ((StringBuilder)localObject1).append(paramString);
+        ((StringBuilder)localObject1).append(" task not find");
+        QLog.d("QueueDownloader", 2, ((StringBuilder)localObject1).toString());
+      }
+      return null;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
+  }
+  
+  public void onDestroy()
+  {
+    cancelTask(true, null);
   }
   
   public void onNetMobile2None()
   {
-    if ((this.jdField_a_of_type_JavaUtilLinkedList != null) && (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0))
+    ??? = this.jdField_a_of_type_JavaUtilLinkedList;
+    if ((??? != null) && (???.size() > 0))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QueueDownloader", 2, "queueDownload network-onNetMobile2None");
@@ -299,6 +292,7 @@ final class QueueDownloader
             localDownloadTask.i();
           }
         }
+        return;
       }
     }
   }
@@ -326,7 +320,8 @@ final class QueueDownloader
   
   public void onNetWifi2Mobile(String arg1)
   {
-    if ((this.jdField_a_of_type_JavaUtilLinkedList != null) && (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)) {
+    ??? = this.jdField_a_of_type_JavaUtilLinkedList;
+    if ((??? != null) && (???.size() > 0)) {
       synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
       {
         Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
@@ -337,13 +332,15 @@ final class QueueDownloader
             localDownloadTask.g();
           }
         }
+        return;
       }
     }
   }
   
   public void onNetWifi2None()
   {
-    if ((this.jdField_a_of_type_JavaUtilLinkedList != null) && (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0))
+    ??? = this.jdField_a_of_type_JavaUtilLinkedList;
+    if ((??? != null) && (???.size() > 0))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QueueDownloader", 2, "queueDownload network-onNetWifi2None");
@@ -358,6 +355,61 @@ final class QueueDownloader
             localDownloadTask.h();
           }
         }
+        return;
+      }
+    }
+  }
+  
+  public void startDownload(DownloadTask paramDownloadTask, DownloadListener arg2, Bundle paramBundle)
+  {
+    if (DownloaderFactory.a(paramDownloadTask))
+    {
+      if (getTask(paramDownloadTask.jdField_a_of_type_JavaLangString) == paramDownloadTask) {
+        return;
+      }
+      DownloadTask localDownloadTask = getTask(paramDownloadTask.jdField_a_of_type_JavaLangString);
+      if (localDownloadTask != null)
+      {
+        if (localDownloadTask.s)
+        {
+          paramDownloadTask.a(???);
+          paramDownloadTask.a(paramBundle);
+          ??? = BaseApplicationImpl.getApplication().getRuntime();
+          if ((??? != null) && (paramDownloadTask.jdField_a_of_type_ComTencentMobileqqVipDownloadTask$ReportInfo.a < 0L)) {
+            paramDownloadTask.jdField_a_of_type_ComTencentMobileqqVipDownloadTask$ReportInfo.a = ???.getLongAccountUin();
+          }
+          localDownloadTask.a(paramDownloadTask);
+        }
+        return;
+      }
+      paramDownloadTask.a(???);
+      paramDownloadTask.a(paramBundle);
+      ??? = BaseApplicationImpl.getApplication().getRuntime();
+      if ((??? != null) && (paramDownloadTask.jdField_a_of_type_ComTencentMobileqqVipDownloadTask$ReportInfo.a < 0L)) {
+        paramDownloadTask.jdField_a_of_type_ComTencentMobileqqVipDownloadTask$ReportInfo.a = ???.getLongAccountUin();
+      }
+      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+      {
+        paramBundle = getTask(paramDownloadTask.jdField_a_of_type_JavaLangString);
+        if (paramBundle == null)
+        {
+          paramDownloadTask.c = ((int)(System.currentTimeMillis() / 1000L));
+          if (paramDownloadTask.b) {
+            this.jdField_a_of_type_JavaUtilLinkedList.addFirst(paramDownloadTask);
+          } else {
+            this.jdField_a_of_type_JavaUtilLinkedList.addLast(paramDownloadTask);
+          }
+        }
+        else if ((paramDownloadTask.b) && (!paramBundle.a()) && (this.jdField_a_of_type_JavaUtilLinkedList.remove(paramBundle)))
+        {
+          this.jdField_a_of_type_JavaUtilLinkedList.addFirst(paramBundle);
+        }
+        ??? = new StringBuilder();
+        ???.append("startDownload | task=");
+        ???.append(paramDownloadTask.jdField_a_of_type_JavaLangString);
+        QLog.d("QueueDownloader", 2, ???.toString());
+        a();
+        return;
       }
     }
   }
@@ -365,27 +417,36 @@ final class QueueDownloader
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    if ((this.jdField_a_of_type_JavaUtilLinkedList != null) && (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)) {
+    ??? = this.jdField_a_of_type_JavaUtilLinkedList;
+    if ((??? != null) && (((LinkedList)???).size() > 0)) {
       synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
       {
         Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
-        if (localIterator.hasNext())
+        while (localIterator.hasNext())
         {
           DownloadTask localDownloadTask = (DownloadTask)localIterator.next();
-          localStringBuilder.append("key=").append(localDownloadTask.jdField_a_of_type_JavaLangString);
-          if ((localDownloadTask.jdField_a_of_type_JavaUtilList != null) && (localDownloadTask.jdField_a_of_type_JavaUtilList.size() > 0)) {
-            localStringBuilder.append(",size=").append(localDownloadTask.jdField_a_of_type_JavaUtilList.size()).append(",url=").append((String)localDownloadTask.jdField_a_of_type_JavaUtilList.get(0));
+          localStringBuilder.append("key=");
+          localStringBuilder.append(localDownloadTask.jdField_a_of_type_JavaLangString);
+          if ((localDownloadTask.jdField_a_of_type_JavaUtilList != null) && (localDownloadTask.jdField_a_of_type_JavaUtilList.size() > 0))
+          {
+            localStringBuilder.append(",size=");
+            localStringBuilder.append(localDownloadTask.jdField_a_of_type_JavaUtilList.size());
+            localStringBuilder.append(",url=");
+            localStringBuilder.append((String)localDownloadTask.jdField_a_of_type_JavaUtilList.get(0));
           }
           localStringBuilder.append(";");
         }
       }
     }
-    return "QueueDownloader task url:" + localObject.toString();
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("QueueDownloader task url:");
+    ((StringBuilder)???).append(localObject1.toString());
+    return ((StringBuilder)???).toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.QueueDownloader
  * JD-Core Version:    0.7.0.1
  */

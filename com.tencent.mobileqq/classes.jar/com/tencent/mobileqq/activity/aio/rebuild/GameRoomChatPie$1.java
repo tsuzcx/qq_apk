@@ -5,7 +5,8 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
+import com.tencent.mobileqq.nearby.gameroom.IGameRoomAVControllerDelegate;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.werewolves.WerewolvesPluginInterface;
 import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
 
@@ -17,36 +18,35 @@ class GameRoomChatPie$1
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     int i = paramMotionEvent.getAction();
-    paramView = this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a();
-    if (i == 0) {
+    paramView = this.a.a.a();
+    if (i == 0)
+    {
       if ((paramView != null) && (paramView.d()))
       {
-        this.a.l.setText(HardCodeUtil.a(2131705117));
-        this.a.l.setPressed(true);
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomAVController.b();
+        this.a.h.setText(HardCodeUtil.a(2131705194));
+        this.a.h.setPressed(true);
+        ((IGameRoomAVControllerDelegate)QRoute.api(IGameRoomAVControllerDelegate.class)).startSpeak();
         paramView.a(true);
+        return true;
       }
+      this.a.m(false);
+      return true;
     }
-    do
-    {
-      return true;
-      this.a.t(false);
-      return true;
-      if ((i != 3) && (i != 1)) {
-        break;
-      }
-      this.a.l.setText(HardCodeUtil.a(2131705113));
-      this.a.l.setPressed(false);
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomAVController.c();
-    } while (paramView == null);
-    paramView.a(false);
+    if ((i != 3) && (i != 1)) {
+      return false;
+    }
+    this.a.h.setText(HardCodeUtil.a(2131705190));
+    this.a.h.setPressed(false);
+    ((IGameRoomAVControllerDelegate)QRoute.api(IGameRoomAVControllerDelegate.class)).stopSpeak();
+    if (paramView != null) {
+      paramView.a(false);
+    }
     return true;
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie.1
  * JD-Core Version:    0.7.0.1
  */

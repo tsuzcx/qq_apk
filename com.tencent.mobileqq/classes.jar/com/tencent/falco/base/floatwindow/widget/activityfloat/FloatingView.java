@@ -23,8 +23,9 @@ public final class FloatingView
   
   public void _$_clearFindViewByIdCache()
   {
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
+    HashMap localHashMap = this._$_findViewCache;
+    if (localHashMap != null) {
+      localHashMap.clear();
     }
   }
   
@@ -66,7 +67,7 @@ public final class FloatingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.floatwindow.widget.activityfloat.FloatingView
  * JD-Core Version:    0.7.0.1
  */

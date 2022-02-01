@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class cmd0x346$ReqBody
   extends MessageMicro<ReqBody>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 50, 58, 66, 74, 82, 90, 98, 106, 114, 122, 130, 138, 146, 154, 162, 170, 808, 816, 1600, 720002, 720010, 720018, 799994 }, new String[] { "uint32_cmd", "uint32_seq", "msg_recv_list_query_req", "msg_send_list_query_req", "msg_renew_file_req", "msg_recall_file_req", "msg_apply_upload_req", "msg_apply_upload_hit_req", "msg_apply_forward_file_req", "msg_upload_succ_req", "msg_delete_file_req", "msg_download_succ_req", "msg_apply_download_abs_req", "msg_apply_download_req", "msg_apply_list_download_req", "msg_file_query_req", "msg_apply_copy_from_req", "msg_apply_upload_req_v2", "msg_apply_upload_req_v3", "msg_apply_upload_hit_req_v2", "msg_apply_upload_hit_req_v3", "uint32_business_id", "uint32_client_type", "uint32_flag_support_mediaplatform", "msg_apply_copy_to_req", "msg_apply_clean_traffic_req", "msg_apply_get_traffic_req", "msg_extension_req" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, null, null, null }, ReqBody.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public cmd0x346.ApplyCleanTrafficReq msg_apply_clean_traffic_req = new cmd0x346.ApplyCleanTrafficReq();
   public cmd0x346.ApplyCopyFromReq msg_apply_copy_from_req = new cmd0x346.ApplyCopyFromReq();
   public cmd0x346.ApplyCopyToReq msg_apply_copy_to_req = new cmd0x346.ApplyCopyToReq();
@@ -37,10 +37,16 @@ public final class cmd0x346$ReqBody
   public final PBUInt32Field uint32_cmd = PBField.initUInt32(0);
   public final PBUInt32Field uint32_flag_support_mediaplatform = PBField.initUInt32(0);
   public final PBUInt32Field uint32_seq = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 50, 58, 66, 74, 82, 90, 98, 106, 114, 122, 130, 138, 146, 154, 162, 170, 808, 816, 1600, 720002, 720010, 720018, 799994 }, new String[] { "uint32_cmd", "uint32_seq", "msg_recv_list_query_req", "msg_send_list_query_req", "msg_renew_file_req", "msg_recall_file_req", "msg_apply_upload_req", "msg_apply_upload_hit_req", "msg_apply_forward_file_req", "msg_upload_succ_req", "msg_delete_file_req", "msg_download_succ_req", "msg_apply_download_abs_req", "msg_apply_download_req", "msg_apply_list_download_req", "msg_file_query_req", "msg_apply_copy_from_req", "msg_apply_upload_req_v2", "msg_apply_upload_req_v3", "msg_apply_upload_hit_req_v2", "msg_apply_upload_hit_req_v3", "uint32_business_id", "uint32_client_type", "uint32_flag_support_mediaplatform", "msg_apply_copy_to_req", "msg_apply_clean_traffic_req", "msg_apply_get_traffic_req", "msg_extension_req" }, new Object[] { localInteger, localInteger, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, localInteger, localInteger, localInteger, null, null, null, null }, ReqBody.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x346.cmd0x346.ReqBody
  * JD-Core Version:    0.7.0.1
  */

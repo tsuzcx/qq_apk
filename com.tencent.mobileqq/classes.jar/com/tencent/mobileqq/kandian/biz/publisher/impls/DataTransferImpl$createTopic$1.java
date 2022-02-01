@@ -14,28 +14,24 @@ public final class DataTransferImpl$createTopic$1
   
   public void a(int paramInt1, @NotNull String paramString, int paramInt2, long paramLong)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramString, "errorMsg");
-    if ((paramInt1 == 0) && (paramLong != 0L))
-    {
+    int i = 0;
+    if ((paramInt1 == 0) && (paramLong != 0L)) {
       paramInt1 = 1;
-      if (paramInt1 == 0) {
-        break label59;
-      }
-    }
-    label59:
-    for (paramInt1 = i;; paramInt1 = -1)
-    {
-      this.a.invoke(Integer.valueOf(paramInt1), paramString, String.valueOf(paramInt2), Long.valueOf(paramLong));
-      return;
+    } else {
       paramInt1 = 0;
-      break;
     }
+    if (paramInt1 != 0) {
+      paramInt1 = i;
+    } else {
+      paramInt1 = -1;
+    }
+    this.a.invoke(Integer.valueOf(paramInt1), paramString, String.valueOf(paramInt2), Long.valueOf(paramLong));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.DataTransferImpl.createTopic.1
  * JD-Core Version:    0.7.0.1
  */

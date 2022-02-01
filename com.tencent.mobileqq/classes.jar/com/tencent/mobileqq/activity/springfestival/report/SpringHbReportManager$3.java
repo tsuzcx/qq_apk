@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.activity.springfestival.report;
 
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qwallet.IQWalletApi;
 import com.tencent.qphone.base.util.QLog;
 import java.util.LinkedList;
 
@@ -13,7 +14,7 @@ class SpringHbReportManager$3
   {
     synchronized ()
     {
-      QWalletTools.a(this.a, SpringHbReportManager.a(this.this$0));
+      ((IQWalletApi)QRoute.api(IQWalletApi.class)).saveObject(this.a, SpringHbReportManager.a(this.this$0));
       if (QLog.isColorLevel()) {
         QLog.d("shua2021report_SpringHbReportManager", 2, "[saveReportFile] done");
       }
@@ -23,7 +24,7 @@ class SpringHbReportManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.report.SpringHbReportManager.3
  * JD-Core Version:    0.7.0.1
  */

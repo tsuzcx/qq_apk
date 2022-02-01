@@ -1,5 +1,7 @@
 package com.tencent.gdtad.api.interstitial;
 
+import android.text.TextUtils;
+import com.tencent.ad.tangram.analysis.AdUin;
 import com.tencent.ad.tangram.thread.AdThreadManager;
 import com.tencent.ark.open.ArkAppMgr;
 import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
@@ -25,9 +27,11 @@ final class GdtArkPreDownloadTask
   
   private String a()
   {
-    String str = null;
+    String str;
     if (a()) {
-      str = ArkAppMgr.getInstance().getAppPathByNameFromLocal(this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtArkApp.a, "", null, false);
+      str = ArkAppMgr.getInstance().getAppPathFromLocal(this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtArkApp.a);
+    } else {
+      str = null;
     }
     GdtLog.b("GdtArkPreDownloadTask", String.format("getPath %s", new Object[] { str }));
     return str;
@@ -50,36 +54,29 @@ final class GdtArkPreDownloadTask
   
   private boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtArkApp != null) && (this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtArkApp.a());
+    GdtArkApp localGdtArkApp = this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtArkApp;
+    return (localGdtArkApp != null) && (localGdtArkApp.a()) && (!TextUtils.isEmpty(AdUin.INSTANCE.getUIN()));
   }
   
   private static boolean a(int paramInt1, int paramInt2)
   {
     if (paramInt1 == 0)
     {
-      if ((paramInt2 != 1) && (paramInt2 != 1)) {}
-    }
-    else {
-      do
-      {
+      if ((paramInt2 == 1) || (paramInt2 == 1)) {
         return true;
-        if (paramInt1 != 1) {
-          break;
-        }
-      } while ((paramInt2 == 2) || (paramInt2 == 3));
-    }
-    do
-    {
-      do
-      {
-        GdtLog.d("GdtArkPreDownloadTask", String.format("checkStatus result:false oldStatus:%d newStatus:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-        return false;
-      } while (paramInt1 != 2);
-      if (paramInt2 == 3) {
-        break;
       }
-    } while (paramInt2 != 4);
-    return true;
+    }
+    else if (paramInt1 == 1)
+    {
+      if ((paramInt2 == 2) || (paramInt2 == 3)) {
+        return true;
+      }
+    }
+    else if ((paramInt1 == 2) && ((paramInt2 == 3) || (paramInt2 == 4))) {
+      return true;
+    }
+    GdtLog.d("GdtArkPreDownloadTask", String.format("checkStatus result:false oldStatus:%d newStatus:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+    return false;
   }
   
   private void b()
@@ -87,79 +84,27 @@ final class GdtArkPreDownloadTask
     AdThreadManager.INSTANCE.post(new GdtArkPreDownloadTask.2(this), 0);
   }
   
-  /* Error */
   private void b(int paramInt)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 23	com/tencent/gdtad/api/interstitial/GdtArkPreDownloadTask:jdField_a_of_type_Int	I
-    //   4: istore_2
-    //   5: iload_2
-    //   6: iload_1
-    //   7: if_icmpeq +30 -> 37
-    //   10: aload_0
-    //   11: monitorenter
-    //   12: iload_2
-    //   13: iload_1
-    //   14: if_icmpeq +21 -> 35
-    //   17: iload_2
-    //   18: iload_1
-    //   19: invokestatic 143	com/tencent/gdtad/api/interstitial/GdtArkPreDownloadTask:a	(II)Z
-    //   22: ifeq +54 -> 76
-    //   25: aload_0
-    //   26: iload_1
-    //   27: putfield 23	com/tencent/gdtad/api/interstitial/GdtArkPreDownloadTask:jdField_a_of_type_Int	I
-    //   30: aload_0
-    //   31: iload_1
-    //   32: invokespecial 145	com/tencent/gdtad/api/interstitial/GdtArkPreDownloadTask:a	(I)V
-    //   35: aload_0
-    //   36: monitorexit
-    //   37: ldc 68
-    //   39: ldc 147
-    //   41: iconst_3
-    //   42: anewarray 4	java/lang/Object
-    //   45: dup
-    //   46: iconst_0
-    //   47: iload_2
-    //   48: invokestatic 133	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   51: aastore
-    //   52: dup
-    //   53: iconst_1
-    //   54: iload_1
-    //   55: invokestatic 133	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   58: aastore
-    //   59: dup
-    //   60: iconst_2
-    //   61: aload_0
-    //   62: getfield 23	com/tencent/gdtad/api/interstitial/GdtArkPreDownloadTask:jdField_a_of_type_Int	I
-    //   65: invokestatic 133	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   68: aastore
-    //   69: invokestatic 76	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   72: invokestatic 82	com/tencent/gdtad/log/GdtLog:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   75: return
-    //   76: aload_0
-    //   77: iconst_1
-    //   78: ldc 148
-    //   80: lconst_0
-    //   81: invokespecial 123	com/tencent/gdtad/api/interstitial/GdtArkPreDownloadTask:a	(IIJ)V
-    //   84: goto -49 -> 35
-    //   87: astore_3
-    //   88: aload_0
-    //   89: monitorexit
-    //   90: aload_3
-    //   91: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	92	0	this	GdtArkPreDownloadTask
-    //   0	92	1	paramInt	int
-    //   4	44	2	i	int
-    //   87	4	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   17	35	87	finally
-    //   35	37	87	finally
-    //   76	84	87	finally
-    //   88	90	87	finally
+    int i = this.jdField_a_of_type_Int;
+    if (i != paramInt)
+    {
+      if (i != paramInt) {}
+      try
+      {
+        if (a(i, paramInt))
+        {
+          this.jdField_a_of_type_Int = paramInt;
+          a(paramInt);
+        }
+        else
+        {
+          a(1, -2147483648, 0L);
+        }
+      }
+      finally {}
+    }
+    GdtLog.b("GdtArkPreDownloadTask", String.format("setStatus oldStatus:%d newStatus:%d result:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_Int) }));
   }
   
   private void c()
@@ -174,7 +119,7 @@ final class GdtArkPreDownloadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtArkPreDownloadTask
  * JD-Core Version:    0.7.0.1
  */

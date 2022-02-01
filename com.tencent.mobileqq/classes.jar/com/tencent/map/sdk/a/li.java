@@ -17,29 +17,29 @@ public final class li
     if (this.b == null) {
       this.b = new lj(this.a);
     }
-    pn localpn;
-    lj locallj;
     if (!this.a.h())
     {
-      localpn = this.a;
-      locallj = this.b;
-      if (locallj == null) {}
+      pn localpn = this.a;
+      lj locallj = this.b;
+      if (locallj != null) {
+        synchronized (localpn.a)
+        {
+          localpn.j = locallj;
+        }
+      }
     }
-    synchronized (localpn.a)
-    {
-      localpn.j = locallj;
-      int i = this.b.a(paramBubbleOptions, paramkg);
-      this.a.s();
-      return i;
-    }
+    int i = this.b.a(paramBubbleOptions, paramkg);
+    this.a.s();
+    return i;
   }
   
   public final void a()
   {
-    if (this.b == null) {
+    ??? = this.b;
+    if (??? == null) {
       return;
     }
-    this.b.c();
+    ((lj)???).c();
     pn localpn = this.a;
     synchronized (localpn.a)
     {
@@ -56,45 +56,57 @@ public final class li
   
   public final boolean a(int paramInt)
   {
-    if (paramInt < 0) {}
-    while (this.b == null) {
+    if (paramInt < 0) {
       return true;
     }
-    boolean bool = this.b.c(paramInt);
+    lj locallj = this.b;
+    if (locallj == null) {
+      return true;
+    }
+    boolean bool = locallj.c(paramInt);
     this.a.s();
     return bool;
   }
   
   public final boolean a(int paramInt, BubbleOptions paramBubbleOptions)
   {
-    if ((paramInt < 0) || (paramBubbleOptions == null)) {}
-    while (this.b == null) {
-      return false;
+    if (paramInt >= 0)
+    {
+      if (paramBubbleOptions == null) {
+        return false;
+      }
+      lj locallj = this.b;
+      if (locallj == null) {
+        return false;
+      }
+      boolean bool = locallj.a(paramInt, paramBubbleOptions);
+      this.a.s();
+      return bool;
     }
-    boolean bool = this.b.a(paramInt, paramBubbleOptions);
-    this.a.s();
-    return bool;
+    return false;
   }
   
   public final List<Integer> b()
   {
-    if (this.b == null) {
+    lj locallj = this.b;
+    if (locallj == null) {
       return null;
     }
-    return this.b.d();
+    return locallj.d();
   }
   
   public final boolean b(int paramInt)
   {
-    if (this.b == null) {
+    lj locallj = this.b;
+    if (locallj == null) {
       return false;
     }
-    return this.b.b(paramInt);
+    return locallj.b(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.li
  * JD-Core Version:    0.7.0.1
  */

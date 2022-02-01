@@ -10,12 +10,20 @@ public class ChatHistorySearchData
   
   public String toString()
   {
-    return "ChatHistorySearchData{mSearchData1=" + this.mSearchData1 + ", mSearchData2=" + this.mSearchData2 + ", offset=" + this.offset + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ChatHistorySearchData{mSearchData1=");
+    localStringBuilder.append(this.mSearchData1);
+    localStringBuilder.append(", mSearchData2=");
+    localStringBuilder.append(this.mSearchData2);
+    localStringBuilder.append(", offset=");
+    localStringBuilder.append(this.offset);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.ChatHistorySearchData
  * JD-Core Version:    0.7.0.1
  */

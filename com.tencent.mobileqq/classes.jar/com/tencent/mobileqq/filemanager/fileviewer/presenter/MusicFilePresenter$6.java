@@ -10,26 +10,28 @@ class MusicFilePresenter$6
   
   public void a(int paramInt)
   {
-    switch (paramInt)
+    if ((paramInt != -2) && (paramInt != -1))
     {
-    }
-    do
-    {
-      do
-      {
+      if (paramInt != 1) {
         return;
-        QLog.i("FileBrowserPresenter<FileAssistant>", 1, "onFocusChange: MEDIAFOCUS_GAIN");
-      } while (MusicFilePresenter.a(this.a));
-      MusicFilePresenter.b(this.a);
-      return;
+      }
+      QLog.i("FileBrowserPresenter<FileAssistant>", 1, "onFocusChange: MEDIAFOCUS_GAIN");
+      if (!MusicFilePresenter.a(this.a)) {
+        MusicFilePresenter.b(this.a);
+      }
+    }
+    else
+    {
       QLog.i("FileBrowserPresenter<FileAssistant>", 1, "onFocusChange: MEDIAFOCUS_LOSS");
-    } while (!MusicFilePresenter.a(this.a));
-    MusicFilePresenter.a(this.a);
+      if (MusicFilePresenter.a(this.a)) {
+        MusicFilePresenter.a(this.a);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter.6
  * JD-Core Version:    0.7.0.1
  */

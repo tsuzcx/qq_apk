@@ -29,9 +29,7 @@ public final class LyricPlayStrategy
   public final float calculateProgress(long paramLong1, long paramLong2, @NotNull LyricPlayStrategy.LyricAnimation paramLyricAnimation)
   {
     Intrinsics.checkParameterIsNotNull(paramLyricAnimation, "animation");
-    switch (paramLyricAnimation.getType())
-    {
-    default: 
+    if (paramLyricAnimation.getType() != 0) {
       return getMLoopStrategy().calculateProgress(paramLong1, paramLong2, paramLyricAnimation);
     }
     return getMSpeedStrategy().calculateProgress(paramLong1, paramLong2, paramLyricAnimation);
@@ -39,7 +37,7 @@ public final class LyricPlayStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.music.LyricPlayStrategy
  * JD-Core Version:    0.7.0.1
  */

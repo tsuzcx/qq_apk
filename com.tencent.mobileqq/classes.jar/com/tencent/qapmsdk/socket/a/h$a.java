@@ -15,29 +15,25 @@ class h$a
     {
       i = paramString.indexOf("?");
       if (i != -1) {
-        paramString = paramString.substring("/cgi-bin/".length(), i);
+        return paramString.substring(9, i);
       }
+      return paramString.substring(9);
     }
-    for (;;)
+    String str = paramString;
+    if (paramString.startsWith("/"))
     {
-      return paramString;
-      paramString = paramString.substring("/cgi-bin/".length());
-      continue;
-      if (paramString.startsWith("/"))
-      {
-        i = paramString.indexOf("?");
-        if (i != -1) {
-          paramString = paramString.substring(1, i);
-        } else {
-          paramString = paramString.substring(1);
-        }
+      i = paramString.indexOf("?");
+      if (i != -1) {
+        return paramString.substring(1, i);
       }
+      str = paramString.substring(1);
     }
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.a.h.a
  * JD-Core Version:    0.7.0.1
  */

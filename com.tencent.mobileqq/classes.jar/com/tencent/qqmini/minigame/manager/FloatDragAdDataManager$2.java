@@ -13,20 +13,26 @@ final class FloatDragAdDataManager$2
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    Object localObject = null;
-    if (paramBoolean) {}
-    for (paramJSONObject = FloatDragAdDataManager.access$100(this.val$appId, this.val$scene, paramJSONObject); paramJSONObject != null; paramJSONObject = localObject)
+    if (paramBoolean)
+    {
+      paramJSONObject = FloatDragAdDataManager.access$100(this.val$appId, this.val$scene, paramJSONObject);
+    }
+    else
+    {
+      QMLog.e("FloatDragAdDataManager", "TianShuResponse response fail");
+      paramJSONObject = null;
+    }
+    if (paramJSONObject != null)
     {
       OperateFloatDragAd.obtain(this.val$iMiniAppContext).show(paramJSONObject);
       return;
-      QMLog.e("FloatDragAdDataManager", "TianShuResponse response fail");
     }
     OperateFloatDragAd.obtain(this.val$iMiniAppContext).remove();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.manager.FloatDragAdDataManager.2
  * JD-Core Version:    0.7.0.1
  */

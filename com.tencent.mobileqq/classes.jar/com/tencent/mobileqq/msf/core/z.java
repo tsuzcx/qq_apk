@@ -26,90 +26,114 @@ final class z
   
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    if ((paramSensorEvent == null) || (paramSensorEvent.values == null) || (paramSensorEvent.values.length <= 0) || (paramSensorEvent.values[0] == 0.0F) || (paramSensorEvent.values[0] > u.T)) {}
-    do
+    if ((paramSensorEvent != null) && (paramSensorEvent.values != null) && (paramSensorEvent.values.length > 0) && (paramSensorEvent.values[0] != 0.0F))
     {
-      do
+      if (paramSensorEvent.values[0] > u.T) {
+        return;
+      }
+      if (!u.Z.get())
       {
-        do
+        u.I = (int)paramSensorEvent.values[0];
+        return;
+      }
+      int i;
+      if (paramSensorEvent.values[0] < u.X)
+      {
+        u.R += 1;
+        if (u.R > 2)
         {
-          return;
-          if (!u.Z.get())
+          if ((u.ad != null) && (u.ad.has("shut_down")) && (u.ad.optLong("shut_down") == u.g()) && (paramSensorEvent.values[0] < u.U))
           {
-            u.I = (int)paramSensorEvent.values[0];
-            return;
+            u.ad.remove("shut_down");
+            u.X = (int)paramSensorEvent.values[0];
+            u.W = 1;
+            QLog.i("health_manager", 1, "reset from shut down");
           }
-          if (paramSensorEvent.values[0] >= u.X) {
-            break;
+          else
+          {
+            u.Y = u.X - u.W + u.Y;
+            u.X = (int)paramSensorEvent.values[0];
+            if (u.X < 1000) {
+              i = 1;
+            } else {
+              i = u.X - 3;
+            }
+            u.W = i;
           }
-          u.R += 1;
-        } while (u.R <= 2);
-        if ((u.ad != null) && (u.ad.has("shut_down")) && (u.ad.optLong("shut_down") == u.f()) && (paramSensorEvent.values[0] < u.U))
-        {
-          u.ad.remove("shut_down");
-          u.X = (int)paramSensorEvent.values[0];
-          u.W = 1;
-          QLog.i("health_manager", 1, "reset from shut down");
           u.H = (int)paramSensorEvent.values[0];
           u.ab = NetConnInfoCenter.getServerTimeMillis();
-          QLog.i("health_manager", 1, "step counter exception reset: init = " + u.W + ",total = " + u.X + ",offset = " + u.Y);
+          paramSensorEvent = new StringBuilder();
+          paramSensorEvent.append("step counter exception reset: init = ");
+          paramSensorEvent.append(u.W);
+          paramSensorEvent.append(",total = ");
+          paramSensorEvent.append(u.X);
+          paramSensorEvent.append(",offset = ");
+          paramSensorEvent.append(u.Y);
+          QLog.i("health_manager", 1, paramSensorEvent.toString());
           u.a(false, null, null);
           u.R = 0;
           u.J = System.currentTimeMillis();
-          return;
         }
-        u.Y = u.X - u.W + u.Y;
-        u.X = (int)paramSensorEvent.values[0];
-        if (u.X < 1000) {}
-        for (i = 1;; i = u.X - 3)
-        {
-          u.W = i;
-          break;
-        }
-        u.R = 0;
-        if ((u.H == 0) || (paramSensorEvent.values[0] - u.H <= u.U)) {
-          break;
-        }
-        u.S += 1;
-      } while (u.S <= 4);
-      if (u.X - u.W > 0) {}
-      for (int i = u.X - u.W;; i = 0)
+        return;
+      }
+      u.R = 0;
+      if ((u.H != 0) && (paramSensorEvent.values[0] - u.H > u.U))
       {
-        u.Y = i + u.Y;
-        u.W = (int)paramSensorEvent.values[0] - 5;
-        u.X = (int)paramSensorEvent.values[0];
-        u.H = (int)paramSensorEvent.values[0];
-        u.ab = NetConnInfoCenter.getServerTimeMillis();
-        u.ae.set(true);
-        QLog.i("health_manager", 1, "Jump CallBack reset init = " + u.W + ",total = " + u.X + ",offset = " + u.Y);
-        u.a(false, null, null);
-        u.S = 0;
-        u.J = System.currentTimeMillis();
+        u.S += 1;
+        if (u.S > 4)
+        {
+          if (u.X - u.W > 0) {
+            i = u.X - u.W;
+          } else {
+            i = 0;
+          }
+          u.Y = i + u.Y;
+          u.W = (int)paramSensorEvent.values[0] - 5;
+          u.X = (int)paramSensorEvent.values[0];
+          u.H = (int)paramSensorEvent.values[0];
+          u.ab = NetConnInfoCenter.getServerTimeMillis();
+          u.ae.set(true);
+          paramSensorEvent = new StringBuilder();
+          paramSensorEvent.append("Jump CallBack reset init = ");
+          paramSensorEvent.append(u.W);
+          paramSensorEvent.append(",total = ");
+          paramSensorEvent.append(u.X);
+          paramSensorEvent.append(",offset = ");
+          paramSensorEvent.append(u.Y);
+          QLog.i("health_manager", 1, paramSensorEvent.toString());
+          u.a(false, null, null);
+          u.S = 0;
+          u.J = System.currentTimeMillis();
+        }
         return;
       }
       u.S = 0;
       if ((paramSensorEvent.values[0] - u.H > u.U) && (u.H == 0) && (u.W != 0))
       {
         QLog.i("health_manager", 1, "msf step counter restart!");
-        if (u.X == 0) {}
-        for (i = u.W;; i = u.X)
-        {
-          u.H = i;
-          u.ab = NetConnInfoCenter.getServerTimeMillis();
-          return;
+        if (u.X == 0) {
+          i = u.W;
+        } else {
+          i = u.X;
         }
+        u.H = i;
+        u.ab = NetConnInfoCenter.getServerTimeMillis();
+        return;
       }
       u.H = (int)paramSensorEvent.values[0];
       u.ab = NetConnInfoCenter.getServerTimeMillis();
-    } while (System.currentTimeMillis() - u.J < 1200000L);
-    u.J = System.currentTimeMillis();
-    u.X = u.H;
-    u.a(true, null, null);
+      if (System.currentTimeMillis() - u.J < 1200000L) {
+        return;
+      }
+      u.J = System.currentTimeMillis();
+      u.X = u.H;
+      u.a(true, null, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.z
  * JD-Core Version:    0.7.0.1
  */

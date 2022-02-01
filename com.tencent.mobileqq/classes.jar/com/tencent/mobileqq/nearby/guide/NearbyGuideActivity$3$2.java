@@ -9,12 +9,12 @@ class NearbyGuideActivity$3$2
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity$3.a.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity$3.a.handleImportQzonePhotoList(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.guide.NearbyGuideActivity.3.2
  * JD-Core Version:    0.7.0.1
  */

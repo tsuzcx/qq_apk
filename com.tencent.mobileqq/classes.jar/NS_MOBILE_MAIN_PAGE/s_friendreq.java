@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -67,23 +68,27 @@ public final class s_friendreq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.allnum, 0);
-    if (this.datalist != null) {
-      paramJceOutputStream.write(this.datalist, 1);
+    Object localObject = this.datalist;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.msglist != null) {
-      paramJceOutputStream.write(this.msglist, 2);
+    localObject = this.msglist;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
-    if (this.datalistnew != null) {
-      paramJceOutputStream.write(this.datalistnew, 3);
+    localObject = this.datalistnew;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
-    if (this.datalistold != null) {
-      paramJceOutputStream.write(this.datalistold, 4);
+    localObject = this.datalistold;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_friendreq
  * JD-Core Version:    0.7.0.1
  */

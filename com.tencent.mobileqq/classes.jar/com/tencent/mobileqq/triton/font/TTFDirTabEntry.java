@@ -38,7 +38,11 @@ public class TTFDirTabEntry
       String str = new String(this.tag, "ISO-8859-1");
       return str;
     }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException) {}
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    {
+      label16:
+      break label16;
+    }
     return toString();
   }
   
@@ -56,12 +60,27 @@ public class TTFDirTabEntry
   
   public String toString()
   {
-    return "Read dir tab [" + this.tag[0] + " " + this.tag[1] + " " + this.tag[2] + " " + this.tag[3] + "] offset: " + this.offset + " bytesToUpload: " + this.length + " name: " + this.tag;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Read dir tab [");
+    localStringBuilder.append(this.tag[0]);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.tag[1]);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.tag[2]);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.tag[3]);
+    localStringBuilder.append("] offset: ");
+    localStringBuilder.append(this.offset);
+    localStringBuilder.append(" bytesToUpload: ");
+    localStringBuilder.append(this.length);
+    localStringBuilder.append(" name: ");
+    localStringBuilder.append(this.tag);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.font.TTFDirTabEntry
  * JD-Core Version:    0.7.0.1
  */

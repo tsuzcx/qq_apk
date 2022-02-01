@@ -32,8 +32,13 @@ public class PicShareToWX$ShareUpCallBack
   
   public void b(UpCallBack.SendResult paramSendResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicShareToWX", 1, "onSend, result.result = " + paramSendResult.a);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onSend, result.result = ");
+      ((StringBuilder)localObject).append(paramSendResult.a);
+      QLog.d("PicShareToWX", 1, ((StringBuilder)localObject).toString());
     }
     if (PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX) != null) {
       ThreadManager.getUIHandler().removeCallbacks(PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX));
@@ -47,32 +52,30 @@ public class PicShareToWX$ShareUpCallBack
         PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX).callbackResult(PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX), EIPCResult.createResult(-102, null));
       }
       if (PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX) != null) {
-        QQToast.a(PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX), 2131719292, 0).a();
+        QQToast.a(PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX), 2131719010, 0).a();
       }
       PicShareToWX.a(PicShareToWX.b(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX), false);
       PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX, false, paramSendResult.a, 0);
     }
-    for (;;)
+    else if (PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX) != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX.a();
-      if ((paramSendResult.a == 0) && (!PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX)))
-      {
-        paramSendResult = paramSendResult.e;
-        Object localObject = new BitmapFactory.Options();
-        ImageUtil.a((BitmapFactory.Options)localObject, this.jdField_a_of_type_JavaLangString, 400);
-        localObject = SafeBitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString, (BitmapFactory.Options)localObject);
-        this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX.a(paramSendResult, (Bitmap)localObject, PicShareToWX.b(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX));
-      }
-      return;
-      if (PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX) != null) {
-        PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX).callbackResult(PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX), EIPCResult.createSuccessResult(null));
-      }
+      PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX).callbackResult(PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX), EIPCResult.createSuccessResult(null));
+    }
+    this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX.a();
+    if ((paramSendResult.a == 0) && (!PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX)))
+    {
+      paramSendResult = paramSendResult.e;
+      localObject = new BitmapFactory.Options();
+      ImageUtil.a((BitmapFactory.Options)localObject, this.jdField_a_of_type_JavaLangString, 400);
+      localObject = SafeBitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString, (BitmapFactory.Options)localObject);
+      PicShareToWX localPicShareToWX = this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX;
+      localPicShareToWX.a(paramSendResult, (Bitmap)localObject, PicShareToWX.b(localPicShareToWX));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicShareToWX.ShareUpCallBack
  * JD-Core Version:    0.7.0.1
  */

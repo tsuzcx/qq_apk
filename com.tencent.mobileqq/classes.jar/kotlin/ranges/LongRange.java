@@ -25,7 +25,19 @@ public final class LongRange
   
   public boolean equals(@Nullable Object paramObject)
   {
-    return ((paramObject instanceof LongRange)) && (((isEmpty()) && (((LongRange)paramObject).isEmpty())) || ((getFirst() == ((LongRange)paramObject).getFirst()) && (getLast() == ((LongRange)paramObject).getLast())));
+    if ((paramObject instanceof LongRange)) {
+      if ((!isEmpty()) || (!((LongRange)paramObject).isEmpty()))
+      {
+        long l = getFirst();
+        paramObject = (LongRange)paramObject;
+        if ((l != paramObject.getFirst()) || (getLast() != paramObject.getLast())) {}
+      }
+      else
+      {
+        return true;
+      }
+    }
+    return false;
   }
   
   @NotNull
@@ -56,12 +68,16 @@ public final class LongRange
   @NotNull
   public String toString()
   {
-    return getFirst() + ".." + getLast();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getFirst());
+    localStringBuilder.append("..");
+    localStringBuilder.append(getLast());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.ranges.LongRange
  * JD-Core Version:    0.7.0.1
  */

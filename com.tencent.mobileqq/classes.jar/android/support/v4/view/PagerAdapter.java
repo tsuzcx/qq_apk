@@ -91,7 +91,7 @@ public abstract class PagerAdapter
     setPrimaryItem(paramViewGroup, paramInt, paramObject);
   }
   
-  public void setViewPagerObserver(DataSetObserver paramDataSetObserver)
+  void setViewPagerObserver(DataSetObserver paramDataSetObserver)
   {
     try
     {

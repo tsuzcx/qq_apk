@@ -17,29 +17,16 @@ public final class LongProgressionIterator
   {
     this.step = paramLong3;
     this.finalElement = paramLong2;
-    if (this.step > 0L) {
-      if (paramLong1 <= paramLong2)
-      {
-        this.hasNext = bool;
-        if (!this.hasNext) {
-          break label70;
-        }
-      }
+    paramLong3 = this.step;
+    boolean bool = true;
+    if (paramLong3 > 0L ? paramLong1 > paramLong2 : paramLong1 < paramLong2) {
+      bool = false;
     }
-    for (;;)
-    {
-      this.next = paramLong1;
-      return;
-      bool = false;
-      break;
-      if (paramLong1 >= paramLong2) {
-        break;
-      }
-      bool = false;
-      break;
-      label70:
+    this.hasNext = bool;
+    if (!this.hasNext) {
       paramLong1 = this.finalElement;
     }
+    this.next = paramLong1;
   }
   
   public final long getStep()
@@ -57,19 +44,20 @@ public final class LongProgressionIterator
     long l = this.next;
     if (l == this.finalElement)
     {
-      if (!this.hasNext) {
-        throw ((Throwable)new NoSuchElementException());
+      if (this.hasNext)
+      {
+        this.hasNext = false;
+        return l;
       }
-      this.hasNext = false;
-      return l;
+      throw ((Throwable)new NoSuchElementException());
     }
-    this.next += this.step;
+    this.next = (this.step + l);
     return l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.ranges.LongProgressionIterator
  * JD-Core Version:    0.7.0.1
  */

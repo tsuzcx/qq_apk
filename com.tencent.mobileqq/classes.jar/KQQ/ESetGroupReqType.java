@@ -17,43 +17,33 @@ public final class ESetGroupReqType
   public static final int _eMngerRefuseJoinGroupReq = 5;
   public static final int _eResignGroupReq = 2;
   public static final int _eSearchGroupReq = 0;
-  private static ESetGroupReqType[] a;
-  public static final ESetGroupReqType eCreateGroupReq;
+  private static ESetGroupReqType[] a = new ESetGroupReqType[12];
+  public static final ESetGroupReqType eCreateGroupReq = new ESetGroupReqType(10, 10, "eCreateGroupReq");
   public static final ESetGroupReqType eDeleteGroupReq;
   public static final ESetGroupReqType eFireGroupReq;
   public static final ESetGroupReqType eInviteGroupReq;
   public static final ESetGroupReqType eJoinGroupReq;
   public static final ESetGroupReqType eMemberAgreeJoinGroupReq;
-  public static final ESetGroupReqType eMemberInviteGroupReq;
+  public static final ESetGroupReqType eMemberInviteGroupReq = new ESetGroupReqType(11, 11, "eMemberInviteGroupReq");
   public static final ESetGroupReqType eMemberRefuseJoinGroupReq;
   public static final ESetGroupReqType eMngerAgreeJoinGroupReq;
   public static final ESetGroupReqType eMngerRefuseJoinGroupReq;
   public static final ESetGroupReqType eResignGroupReq;
-  public static final ESetGroupReqType eSearchGroupReq;
+  public static final ESetGroupReqType eSearchGroupReq = new ESetGroupReqType(0, 0, "eSearchGroupReq");
   private String __T = new String();
   private int __value;
   
   static
   {
-    if (!ESetGroupReqType.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      a = new ESetGroupReqType[12];
-      eSearchGroupReq = new ESetGroupReqType(0, 0, "eSearchGroupReq");
-      eJoinGroupReq = new ESetGroupReqType(1, 1, "eJoinGroupReq");
-      eResignGroupReq = new ESetGroupReqType(2, 2, "eResignGroupReq");
-      eFireGroupReq = new ESetGroupReqType(3, 3, "eFireGroupReq");
-      eMngerAgreeJoinGroupReq = new ESetGroupReqType(4, 4, "eMngerAgreeJoinGroupReq");
-      eMngerRefuseJoinGroupReq = new ESetGroupReqType(5, 5, "eMngerRefuseJoinGroupReq");
-      eMemberAgreeJoinGroupReq = new ESetGroupReqType(6, 6, "eMemberAgreeJoinGroupReq");
-      eMemberRefuseJoinGroupReq = new ESetGroupReqType(7, 7, "eMemberRefuseJoinGroupReq");
-      eInviteGroupReq = new ESetGroupReqType(8, 8, "eInviteGroupReq");
-      eDeleteGroupReq = new ESetGroupReqType(9, 9, "eDeleteGroupReq");
-      eCreateGroupReq = new ESetGroupReqType(10, 10, "eCreateGroupReq");
-      eMemberInviteGroupReq = new ESetGroupReqType(11, 11, "eMemberInviteGroupReq");
-      return;
-    }
+    eJoinGroupReq = new ESetGroupReqType(1, 1, "eJoinGroupReq");
+    eResignGroupReq = new ESetGroupReqType(2, 2, "eResignGroupReq");
+    eFireGroupReq = new ESetGroupReqType(3, 3, "eFireGroupReq");
+    eMngerAgreeJoinGroupReq = new ESetGroupReqType(4, 4, "eMngerAgreeJoinGroupReq");
+    eMngerRefuseJoinGroupReq = new ESetGroupReqType(5, 5, "eMngerRefuseJoinGroupReq");
+    eMemberAgreeJoinGroupReq = new ESetGroupReqType(6, 6, "eMemberAgreeJoinGroupReq");
+    eMemberRefuseJoinGroupReq = new ESetGroupReqType(7, 7, "eMemberRefuseJoinGroupReq");
+    eInviteGroupReq = new ESetGroupReqType(8, 8, "eInviteGroupReq");
+    eDeleteGroupReq = new ESetGroupReqType(9, 9, "eDeleteGroupReq");
   }
   
   private ESetGroupReqType(int paramInt1, int paramInt2, String paramString)
@@ -66,15 +56,16 @@ public final class ESetGroupReqType
   public static ESetGroupReqType convert(int paramInt)
   {
     int i = 0;
-    while (i < a.length)
+    for (;;)
     {
-      if (a[i].value() == paramInt) {
+      ESetGroupReqType[] arrayOfESetGroupReqType = a;
+      if (i >= arrayOfESetGroupReqType.length) {
+        break;
+      }
+      if (arrayOfESetGroupReqType[i].value() == paramInt) {
         return a[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -82,15 +73,16 @@ public final class ESetGroupReqType
   public static ESetGroupReqType convert(String paramString)
   {
     int i = 0;
-    while (i < a.length)
+    for (;;)
     {
-      if (a[i].toString().equals(paramString)) {
+      ESetGroupReqType[] arrayOfESetGroupReqType = a;
+      if (i >= arrayOfESetGroupReqType.length) {
+        break;
+      }
+      if (arrayOfESetGroupReqType[i].toString().equals(paramString)) {
         return a[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }

@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.excitingtransfer.ExcitingTransferAdapter;
+import com.tencent.mobileqq.filemanager.api.IExcitingTransferAdapter;
 import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
 import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadConfig;
 import com.tencent.mobileqq.troop.filemanager.download.ITroopFileDownloader;
@@ -47,7 +47,7 @@ public class ExtfGroupFileDownloader
   
   protected ExcitingTransferDownloadConfig a()
   {
-    return ExcitingTransferAdapter.a().b();
+    return ((IExcitingTransferAdapter)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IExcitingTransferAdapter.class, "")).getGroupDownloadConfig();
   }
   
   protected String a()
@@ -71,16 +71,18 @@ public class ExtfGroupFileDownloader
   protected void a(long paramLong1, long paramLong2, long paramLong3)
   {
     super.a(paramLong1, paramLong2, paramLong3);
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink.a(paramLong2, this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDownloadDownloaderExtfDownloadFileInfo.a());
+    ITroopFileDownloaderSink localITroopFileDownloaderSink = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink;
+    if (localITroopFileDownloaderSink != null) {
+      localITroopFileDownloaderSink.a(paramLong2, this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDownloadDownloaderExtfDownloadFileInfo.a());
     }
   }
   
   protected void a(ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
   {
     super.a(paramExcitingTransferDownloadCompletedInfo);
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink.a(paramExcitingTransferDownloadCompletedInfo.mstrFileSavePath);
+    ITroopFileDownloaderSink localITroopFileDownloaderSink = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink;
+    if (localITroopFileDownloaderSink != null) {
+      localITroopFileDownloaderSink.a(paramExcitingTransferDownloadCompletedInfo.mstrFileSavePath);
     }
   }
   
@@ -128,7 +130,11 @@ public class ExtfGroupFileDownloader
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    QLog.i("ExcitingTransfer.GroupDownloader<FileAssistant>", 1, "Id[" + this.d + "] cancelTask");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Id[");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("] cancelTask");
+    QLog.i("ExcitingTransfer.GroupDownloader<FileAssistant>", 1, localStringBuilder.toString());
     a();
   }
   
@@ -152,7 +158,7 @@ public class ExtfGroupFileDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.download.downloader.ExtfGroupFileDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -14,9 +14,7 @@ public final class PreviewCaptureManager$handler$1
   {
     Intrinsics.checkParameterIsNotNull(paramMessage, "msg");
     super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1000) {
       return;
     }
     PreviewCaptureManager.a(this.a);
@@ -24,7 +22,7 @@ public final class PreviewCaptureManager$handler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videocapture.PreviewCaptureManager.handler.1
  * JD-Core Version:    0.7.0.1
  */

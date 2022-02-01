@@ -16,8 +16,9 @@ class DatalineRemoteManager$7
   
   public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.jdField_a_of_type_CooperationQqdatalineIpcIDatalineService = IDatalineService.Stub.a(paramIBinder);
+    paramComponentName = this.a;
+    paramComponentName.jdField_a_of_type_Boolean = false;
+    paramComponentName.jdField_a_of_type_CooperationQqdatalineIpcIDatalineService = IDatalineService.Stub.a(paramIBinder);
     if (QLog.isColorLevel()) {
       QLog.d("DatalineRemoteManager", 2, "mDatalineService connected");
     }
@@ -29,8 +30,9 @@ class DatalineRemoteManager$7
   public void onServiceDisconnected(ComponentName paramComponentName)
   {
     this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().unbindService(DatalineRemoteManager.a(this.a));
-    this.a.jdField_a_of_type_CooperationQqdatalineIpcIDatalineService = null;
-    this.a.jdField_a_of_type_Boolean = false;
+    paramComponentName = this.a;
+    paramComponentName.jdField_a_of_type_CooperationQqdatalineIpcIDatalineService = null;
+    paramComponentName.jdField_a_of_type_Boolean = false;
     if (QLog.isColorLevel()) {
       QLog.d("DatalineRemoteManager", 2, "mDatalineService disconnected");
     }
@@ -38,7 +40,7 @@ class DatalineRemoteManager$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqdataline.ipc.DatalineRemoteManager.7
  * JD-Core Version:    0.7.0.1
  */

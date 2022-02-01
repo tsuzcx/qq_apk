@@ -19,13 +19,14 @@ public class StructMsgItemVoteCover
   public void a(XmlSerializer paramXmlSerializer)
   {
     paramXmlSerializer.startTag(null, "vote");
-    if (this.ac == null) {}
-    for (String str = "";; str = this.ac)
-    {
-      paramXmlSerializer.attribute(null, "cover", str);
-      paramXmlSerializer.endTag(null, "vote");
-      return;
+    String str;
+    if (this.ac == null) {
+      str = "";
+    } else {
+      str = this.ac;
     }
+    paramXmlSerializer.attribute(null, "cover", str);
+    paramXmlSerializer.endTag(null, "vote");
   }
   
   public boolean a(StructMsgNode paramStructMsgNode)
@@ -34,18 +35,16 @@ public class StructMsgItemVoteCover
       return true;
     }
     paramStructMsgNode = paramStructMsgNode.a("cover");
-    if (paramStructMsgNode != null) {}
-    for (;;)
-    {
-      this.ac = paramStructMsgNode;
-      return true;
+    if (paramStructMsgNode == null) {
       paramStructMsgNode = "";
     }
+    this.ac = paramStructMsgNode;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemVoteCover
  * JD-Core Version:    0.7.0.1
  */

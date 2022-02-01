@@ -1,173 +1,102 @@
 package com.tencent.tgpa.vendorpd.gradish;
 
 import android.content.Context;
-import android.util.Log;
-import com.tencent.tgpa.vendorpd.a.a;
+import com.tencent.tgpa.vendorpd.GamePredownloader.LibLoader;
+import com.tencent.tgpa.vendorpd.b.a;
+import com.tencent.tgpa.vendorpd.b.f;
 
 public class GradishWrapper
 {
-  private static final String TAG = "TGPA";
-  private static String uniqueID;
-  private static String uniqueIDL2;
-  
-  static
-  {
-    try
-    {
-      System.loadLibrary("gradishwrapper");
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      Log.e("TGPA", "load gradish wrapper lib failed!!!");
-    }
-  }
+  private static boolean sIsSupportGradishWrapper = false;
+  private static String xid;
   
   private static synchronized native String dbg();
   
-  public static String getCommonUniqueID()
+  public static String getAESIVParameter()
   {
-    if (uniqueID == null) {
-      produceIDL1(a.a());
+    if (tryLoadLibrary()) {
+      return getIVParameter();
     }
-    return uniqueID;
+    return null;
   }
   
-  public static String getCommonUniqueID2WithoutFlag()
+  public static String getAESKey()
   {
-    if (!isGradishEnable()) {
-      return "-13";
+    if (tryLoadLibrary()) {
+      return getKey();
     }
-    String str = getCommonUniqueIDL2();
-    if (str == null) {
-      return "-11";
-    }
-    if (str.length() != 66) {
-      return "-12";
-    }
-    return str.substring(2);
+    return null;
   }
   
-  public static String getCommonUniqueIDL2()
-  {
-    if (uniqueIDL2 == null) {
-      produceIDL2(a.a());
-    }
-    return uniqueIDL2;
-  }
+  private static synchronized native String getIVParameter();
   
-  public static String getCommonUniqueIDWithoutFlag()
-  {
-    if (!isGradishEnable()) {
-      return "-13";
-    }
-    String str = getCommonUniqueID();
-    if (str == null) {
-      return "-11";
-    }
-    if (str.length() != 66) {
-      return "-12";
-    }
-    return str.substring(2);
-  }
+  private static synchronized native String getKey();
   
-  public static String getDebugID()
+  private static String getL2ID()
   {
-    if (isGradishDebugIDEnable()) {
-      try
-      {
-        String str = dbg();
-        return str;
+    if (tryLoadLibrary())
+    {
+      if (a.a() == null) {
+        return "-10";
       }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-      {
-        localUnsatisfiedLinkError.printStackTrace();
+      String str = zkf(a.a());
+      if (str == null) {
+        return "-11";
       }
-    }
-    return "-13";
-  }
-  
-  public static String getFlag1()
-  {
-    String str = getCommonUniqueID();
-    if ((str != null) && (str.length() == 66)) {
-      return str.substring(0, 1);
-    }
-    return "-1";
-  }
-  
-  public static String getFlag2()
-  {
-    String str = getCommonUniqueID();
-    if ((str != null) && (str.length() == 66)) {
-      return str.substring(1, 2);
-    }
-    return "-1";
-  }
-  
-  public static String getFlagL2()
-  {
-    String str = getCommonUniqueIDL2();
-    if ((str != null) && (str.length() == 66)) {
-      return str.substring(0, 2);
-    }
-    return "-1";
-  }
-  
-  public static String getOAID(int paramInt)
-  {
-    if (isGradishEnable()) {
-      try
-      {
-        String str = goa(a.a(), paramInt);
-        return str;
+      if (str.length() != 66) {
+        return "-12";
       }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-      {
-        localUnsatisfiedLinkError.printStackTrace();
-      }
+      xid = str.substring(2);
+      return xid;
     }
-    return "-13";
+    return "-9";
+  }
+  
+  public static String getLibraryName()
+  {
+    return "gradishwrapper";
+  }
+  
+  public static String getOAID(Context paramContext, int paramInt)
+  {
+    return goa(paramContext, paramInt);
+  }
+  
+  public static String getXID()
+  {
+    String str = xid;
+    if (str != null) {
+      return str;
+    }
+    return getL2ID();
   }
   
   private static synchronized native String goa(Context paramContext, int paramInt);
   
-  public static boolean isGradishDebugIDEnable()
+  public static void tryLoadLibrary(GamePredownloader.LibLoader paramLibLoader)
   {
-    return true;
-  }
-  
-  public static boolean isGradishEnable()
-  {
-    return true;
-  }
-  
-  private static void produceIDL1(Context paramContext)
-  {
-    if (uniqueID == null) {}
-    try
+    if ((paramLibLoader != null) && (paramLibLoader.loadLibrary(getLibraryName())))
     {
-      uniqueID = yje(paramContext);
+      sIsSupportGradishWrapper = true;
+      f.a("load tgpa gradishwrapper lib success by loader.");
       return;
     }
-    catch (UnsatisfiedLinkError paramContext)
-    {
-      paramContext.printStackTrace();
-    }
+    tryLoadLibrary();
   }
   
-  private static void produceIDL2(Context paramContext)
+  private static boolean tryLoadLibrary()
   {
-    if (uniqueIDL2 == null) {}
-    try
-    {
-      uniqueIDL2 = zkf(paramContext);
-      return;
+    if (sIsSupportGradishWrapper) {
+      return true;
     }
-    catch (UnsatisfiedLinkError paramContext)
+    if (LibraryLoaderHelper.loadLibrary(a.a(), getLibraryName()))
     {
-      paramContext.printStackTrace();
+      sIsSupportGradishWrapper = true;
+      f.a("load tgpa gradishwrapper lib success by default.");
+      return true;
     }
+    f.d("load tgpa gradishwrapper lib failed by default!!!");
+    return false;
   }
   
   private static synchronized native String yje(Context paramContext);
@@ -176,7 +105,7 @@ public class GradishWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tgpa.vendorpd.gradish.GradishWrapper
  * JD-Core Version:    0.7.0.1
  */

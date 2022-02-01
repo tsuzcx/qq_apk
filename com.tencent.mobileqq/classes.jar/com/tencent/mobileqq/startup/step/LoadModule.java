@@ -24,17 +24,10 @@ public class LoadModule
   extends Step
 {
   private static ExceptionTrackerProxy.Proxy jdField_a_of_type_ComTencentMobileqqImcoreProxyBasicExceptionTrackerProxy$Proxy = new LoadModule.4();
-  private static OGEntityDaoManagerProxy.Proxy jdField_a_of_type_ComTencentMobileqqImcoreProxyDbOGEntityDaoManagerProxy$Proxy;
+  private static OGEntityDaoManagerProxy.Proxy jdField_a_of_type_ComTencentMobileqqImcoreProxyDbOGEntityDaoManagerProxy$Proxy = new LoadModule.2();
   private static TableBuilderProxy.Proxy jdField_a_of_type_ComTencentMobileqqImcoreProxyDbTableBuilderProxy$Proxy = new LoadModule.5();
-  private static MsgProxyUtilsProxy.Proxy jdField_a_of_type_ComTencentMobileqqImcoreProxyMsgMsgProxyUtilsProxy$Proxy;
-  public static volatile boolean a;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_ComTencentMobileqqImcoreProxyDbOGEntityDaoManagerProxy$Proxy = new LoadModule.2();
-    jdField_a_of_type_ComTencentMobileqqImcoreProxyMsgMsgProxyUtilsProxy$Proxy = new LoadModule.3();
-  }
+  private static MsgProxyUtilsProxy.Proxy jdField_a_of_type_ComTencentMobileqqImcoreProxyMsgMsgProxyUtilsProxy$Proxy = new LoadModule.3();
+  public static volatile boolean a = false;
   
   private static void a()
   {
@@ -53,13 +46,13 @@ public class LoadModule
   
   private static void b()
   {
-    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.drawable.a = 2130849953;
-    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.drawable.b = 2130849954;
-    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.color.a = 2131167145;
-    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.color.b = 2131167117;
-    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.string.a = 2131720064;
-    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.string.b = 2131720054;
-    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.string.c = 2131720050;
+    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.drawable.a = 2130849851;
+    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.drawable.b = 2130849852;
+    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.color.a = 2131167170;
+    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.color.b = 2131167142;
+    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.string.a = 2131719796;
+    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.string.b = 2131719786;
+    com.tencent.mobileqq.imcore.proxy.IMCoreResourceRoute.Resource.string.c = 2131719782;
   }
   
   private static void c()
@@ -70,38 +63,31 @@ public class LoadModule
   
   protected boolean doStep()
   {
-    if (QLog.isColorLevel())
-    {
+    if (QLog.isColorLevel()) {
       if (jdField_a_of_type_Boolean) {
         QLog.d("LoadModule", 2, new Object[] { "IMCoreModule Init Start, process=", MobileQQ.processName, " repeat! InitInfo=", new RuntimeException("") });
+      } else {
+        QLog.d("LoadModule", 2, new Object[] { "IMCoreModule Init Start, process=", MobileQQ.processName, " InitInfo=", Boolean.valueOf(jdField_a_of_type_Boolean) });
       }
     }
-    else {
-      if (!jdField_a_of_type_Boolean) {
-        break label96;
-      }
-    }
-    label96:
-    long l;
-    do
-    {
+    if (jdField_a_of_type_Boolean) {
       return true;
-      QLog.d("LoadModule", 2, new Object[] { "IMCoreModule Init Start, process=", MobileQQ.processName, " InitInfo=", Boolean.valueOf(jdField_a_of_type_Boolean) });
-      break;
-      jdField_a_of_type_Boolean = true;
-      l = SystemClock.uptimeMillis();
-      a();
-      b();
-      c();
-      ThreadManager.getSubThreadHandler().post(new LoadModule.1(this));
-    } while (!QLog.isColorLevel());
-    QLog.d("LoadModule", 2, new Object[] { "IMCoreModule Init Finish, cost=", Long.valueOf(SystemClock.uptimeMillis() - l) });
+    }
+    jdField_a_of_type_Boolean = true;
+    long l = SystemClock.uptimeMillis();
+    a();
+    b();
+    c();
+    ThreadManager.getSubThreadHandler().post(new LoadModule.1(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("LoadModule", 2, new Object[] { "IMCoreModule Init Finish, cost=", Long.valueOf(SystemClock.uptimeMillis() - l) });
+    }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.LoadModule
  * JD-Core Version:    0.7.0.1
  */

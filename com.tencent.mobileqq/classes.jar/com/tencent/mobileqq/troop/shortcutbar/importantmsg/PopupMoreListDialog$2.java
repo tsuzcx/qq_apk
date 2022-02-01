@@ -15,35 +15,40 @@ class PopupMoreListDialog$2
   
   public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    int i = 0;
     super.onScrollStateChanged(paramRecyclerView, paramInt);
     if (PopupMoreListDialog.a(this.a) == null) {
-      break label18;
-    }
-    for (;;)
-    {
-      label18:
       return;
-      if ((paramInt == 0) || (paramInt == 1))
+    }
+    if ((paramInt == 0) || (paramInt == 1))
+    {
+      paramRecyclerView = PopupMoreListDialog.a(this.a).getLayoutManager();
+      if ((paramRecyclerView instanceof LinearLayoutManager))
       {
-        paramRecyclerView = PopupMoreListDialog.a(this.a).getLayoutManager();
-        if (!(paramRecyclerView instanceof LinearLayoutManager)) {
-          break;
-        }
         paramRecyclerView = (LinearLayoutManager)paramRecyclerView;
-        int k = paramRecyclerView.findFirstVisibleItemPosition();
-        paramInt = paramRecyclerView.findLastVisibleItemPosition();
-        if (paramInt == 0) {
+        int m = paramRecyclerView.findFirstVisibleItemPosition();
+        int k = paramRecyclerView.findLastVisibleItemPosition();
+        int j = 0;
+        int i = j;
+        paramInt = k;
+        if (k == 0) {
           if (PopupMoreListDialog.a(this.a) != null)
           {
-            int j = PopupMoreListDialog.a(this.a).size();
-            paramInt = j;
-            if (j > 6) {
+            k = PopupMoreListDialog.a(this.a).size();
+            i = j;
+            paramInt = k;
+            if (k > 6)
+            {
               paramInt = 6;
+              i = j;
             }
           }
+          else
+          {
+            paramInt = 0;
+            i = j;
+          }
         }
-        while (i < paramInt - k)
+        while (i < paramInt - m)
         {
           if (PopupMoreListDialog.a(this.a).getChildAt(i) != null)
           {
@@ -55,8 +60,6 @@ class PopupMoreListDialog$2
             }
           }
           i += 1;
-          continue;
-          paramInt = 0;
         }
       }
     }
@@ -69,7 +72,7 @@ class PopupMoreListDialog$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.PopupMoreListDialog.2
  * JD-Core Version:    0.7.0.1
  */

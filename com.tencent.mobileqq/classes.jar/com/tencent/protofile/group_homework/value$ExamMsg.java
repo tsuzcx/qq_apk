@@ -23,14 +23,15 @@ public final class value$ExamMsg
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 50, 58, 66 }, new String[] { "sp_id", "sp_hw_id", "material_id", "difficulty", "key_point", "question_list", "difficulty_desc", "grade" }, new Object[] { Integer.valueOf(0), "", "", Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, "", "" }, ExamMsg.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 50, 58, 66 }, new String[] { "sp_id", "sp_hw_id", "material_id", "difficulty", "key_point", "question_list", "difficulty_desc", "grade" }, new Object[] { localInteger, "", "", localInteger, localByteStringMicro1, localByteStringMicro2, "", "" }, ExamMsg.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protofile.group_homework.value.ExamMsg
  * JD-Core Version:    0.7.0.1
  */

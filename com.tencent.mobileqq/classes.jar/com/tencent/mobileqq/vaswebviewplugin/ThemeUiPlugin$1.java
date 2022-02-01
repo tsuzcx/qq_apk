@@ -3,7 +3,7 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 
 final class ThemeUiPlugin$1
@@ -21,15 +21,21 @@ final class ThemeUiPlugin$1
     if (QLog.isColorLevel()) {
       QLog.d("ThemeUiPlugin", 2, "begin to report theme info");
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ThemeUiPlugin", 2, "initDownloadedThemeNumForReport is:" + ThemeUiPlugin.initDownloadedThemeNumForReport + ",initCurrThemeNameForReport is:" + ThemeUiPlugin.initCurrThemeNameForReport);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initDownloadedThemeNumForReport is:");
+      localStringBuilder.append(ThemeUiPlugin.initDownloadedThemeNumForReport);
+      localStringBuilder.append(",initCurrThemeNameForReport is:");
+      localStringBuilder.append(ThemeUiPlugin.initCurrThemeNameForReport);
+      QLog.d("ThemeUiPlugin", 2, localStringBuilder.toString());
     }
     ThemeUiPlugin.reportHandler.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ThemeUiPlugin.1
  * JD-Core Version:    0.7.0.1
  */

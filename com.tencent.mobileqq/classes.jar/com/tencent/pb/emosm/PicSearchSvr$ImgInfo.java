@@ -34,6 +34,7 @@ public final class PicSearchSvr$ImgInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -44,12 +45,12 @@ public final class PicSearchSvr$ImgInfo
     ByteStringMicro localByteStringMicro8 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro9 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro10 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 48, 58, 64, 72, 82, 88, 98, 104, 114, 122, 130, 138, 144, 154 }, new String[] { "bytes_resource_id", "bytes_img_md5", "uint32_img_width", "uint32_img_height", "bytes_img_down_url", "uint64_img_size", "bytes_thumb_img_md5", "uint32_thumb_img_width", "uint32_thumb_img_height", "bytes_thumb_down_url", "uint64_thumb_size", "bytes_img_other", "uint32_src_type", "bytes_src_desc", "bytes_web_url", "bytes_icon_url", "bytes_pack_name", "uint32_pack_id", "msg_emotion_info" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3, Long.valueOf(0L), localByteStringMicro4, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro5, Long.valueOf(0L), localByteStringMicro6, Integer.valueOf(0), localByteStringMicro7, localByteStringMicro8, localByteStringMicro9, localByteStringMicro10, Integer.valueOf(0), null }, ImgInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 48, 58, 64, 72, 82, 88, 98, 104, 114, 122, 130, 138, 144, 154 }, new String[] { "bytes_resource_id", "bytes_img_md5", "uint32_img_width", "uint32_img_height", "bytes_img_down_url", "uint64_img_size", "bytes_thumb_img_md5", "uint32_thumb_img_width", "uint32_thumb_img_height", "bytes_thumb_down_url", "uint64_thumb_size", "bytes_img_other", "uint32_src_type", "bytes_src_desc", "bytes_web_url", "bytes_icon_url", "bytes_pack_name", "uint32_pack_id", "msg_emotion_info" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localInteger, localInteger, localByteStringMicro3, Long.valueOf(0L), localByteStringMicro4, localInteger, localInteger, localByteStringMicro5, Long.valueOf(0L), localByteStringMicro6, localInteger, localByteStringMicro7, localByteStringMicro8, localByteStringMicro9, localByteStringMicro10, localInteger, null }, ImgInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.emosm.PicSearchSvr.ImgInfo
  * JD-Core Version:    0.7.0.1
  */

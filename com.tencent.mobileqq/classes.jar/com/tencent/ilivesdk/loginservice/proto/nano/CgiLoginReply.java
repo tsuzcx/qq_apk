@@ -31,63 +31,77 @@ public final class CgiLoginReply
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
+      if (i == 0) {
+        break;
+      }
+      if (i != 8)
       {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
+        if (i != 18)
+        {
+          if (i != 26)
+          {
+            if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+              return this;
+            }
+          }
+          else
+          {
+            if (this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoCgiResult == null) {
+              this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoCgiResult = new CgiResult();
+            }
+            paramCodedInputByteBufferNano.readMessage(this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoCgiResult);
+          }
         }
-      case 0: 
-        return this;
-      case 8: 
+        else {
+          this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+        }
+      }
+      else {
         this.jdField_a_of_type_Int = paramCodedInputByteBufferNano.readInt32();
-        break;
-      case 18: 
-        this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
-        break;
       }
-      if (this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoCgiResult == null) {
-        this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoCgiResult = new CgiResult();
-      }
-      paramCodedInputByteBufferNano.readMessage(this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoCgiResult);
     }
+    return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    int k = this.jdField_a_of_type_Int;
     int i = j;
-    if (this.jdField_a_of_type_Int != 0) {
-      i = j + CodedOutputByteBufferNano.computeInt32Size(1, this.jdField_a_of_type_Int);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeInt32Size(1, k);
     }
     j = i;
     if (!this.jdField_a_of_type_JavaLangString.equals("")) {
       j = i + CodedOutputByteBufferNano.computeStringSize(2, this.jdField_a_of_type_JavaLangString);
     }
+    CgiResult localCgiResult = this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoCgiResult;
     i = j;
-    if (this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoCgiResult != null) {
-      i = j + CodedOutputByteBufferNano.computeMessageSize(3, this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoCgiResult);
+    if (localCgiResult != null) {
+      i = j + CodedOutputByteBufferNano.computeMessageSize(3, localCgiResult);
     }
     return i;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.jdField_a_of_type_Int != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(1, this.jdField_a_of_type_Int);
+    int i = this.jdField_a_of_type_Int;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(1, i);
     }
     if (!this.jdField_a_of_type_JavaLangString.equals("")) {
       paramCodedOutputByteBufferNano.writeString(2, this.jdField_a_of_type_JavaLangString);
     }
-    if (this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoCgiResult != null) {
-      paramCodedOutputByteBufferNano.writeMessage(3, this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoCgiResult);
+    CgiResult localCgiResult = this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoCgiResult;
+    if (localCgiResult != null) {
+      paramCodedOutputByteBufferNano.writeMessage(3, localCgiResult);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.loginservice.proto.nano.CgiLoginReply
  * JD-Core Version:    0.7.0.1
  */

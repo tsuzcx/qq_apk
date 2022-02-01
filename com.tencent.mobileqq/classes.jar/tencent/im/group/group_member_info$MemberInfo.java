@@ -62,6 +62,9 @@ public final class group_member_info$MemberInfo
   
   static
   {
+    Boolean localBoolean = Boolean.valueOf(false);
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -74,12 +77,12 @@ public final class group_member_info$MemberInfo
     ByteStringMicro localByteStringMicro10 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro11 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro12 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42, 48, 56, 66, 72, 82, 90, 96, 106, 112, 120, 130, 138, 146, 154, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 250, 256, 266, 274, 282, 290, 296, 306, 312, 322, 330, 336 }, new String[] { "uint64_uin", "uint32_result", "str_errmsg", "bool_is_friend", "str_remark", "bool_is_concerned", "uint32_credit", "str_card", "uint32_sex", "str_location", "str_nick", "uint32_age", "str_lev", "uint64_join", "uint64_last_speak", "rpt_msg_custom_enties", "rpt_msg_gbar_concerned", "str_gbar_title", "str_gbar_url", "uint32_gbar_cnt", "bool_is_allow_mod_card", "bool_is_vip", "bool_is_year_vip", "bool_is_super_vip", "bool_is_super_qq", "uint32_vip_lev", "uint32_role", "bool_location_shared", "uint64_distance", "uint32_concern_type", "bytes_special_title", "uint32_special_title_expire_time", "msg_flower_entry", "msg_team_entry", "bytes_phone_num", "bytes_job", "medal_id", "qqstory_infocard", "uint32_level", "msg_game_info", "bytes_group_honor", "uint32_group_honor_bit" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro1, Boolean.valueOf(false), localByteStringMicro2, Boolean.valueOf(false), Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0), localByteStringMicro4, localByteStringMicro5, Integer.valueOf(0), localByteStringMicro6, Long.valueOf(0L), Long.valueOf(0L), null, null, localByteStringMicro7, localByteStringMicro8, Integer.valueOf(0), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro9, Integer.valueOf(0), null, null, localByteStringMicro10, localByteStringMicro11, Integer.valueOf(0), null, Integer.valueOf(0), null, localByteStringMicro12, Integer.valueOf(0) }, MemberInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42, 48, 56, 66, 72, 82, 90, 96, 106, 112, 120, 130, 138, 146, 154, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 250, 256, 266, 274, 282, 290, 296, 306, 312, 322, 330, 336 }, new String[] { "uint64_uin", "uint32_result", "str_errmsg", "bool_is_friend", "str_remark", "bool_is_concerned", "uint32_credit", "str_card", "uint32_sex", "str_location", "str_nick", "uint32_age", "str_lev", "uint64_join", "uint64_last_speak", "rpt_msg_custom_enties", "rpt_msg_gbar_concerned", "str_gbar_title", "str_gbar_url", "uint32_gbar_cnt", "bool_is_allow_mod_card", "bool_is_vip", "bool_is_year_vip", "bool_is_super_vip", "bool_is_super_qq", "uint32_vip_lev", "uint32_role", "bool_location_shared", "uint64_distance", "uint32_concern_type", "bytes_special_title", "uint32_special_title_expire_time", "msg_flower_entry", "msg_team_entry", "bytes_phone_num", "bytes_job", "medal_id", "qqstory_infocard", "uint32_level", "msg_game_info", "bytes_group_honor", "uint32_group_honor_bit" }, new Object[] { localLong, localInteger, localByteStringMicro1, localBoolean, localByteStringMicro2, localBoolean, localInteger, localByteStringMicro3, localInteger, localByteStringMicro4, localByteStringMicro5, localInteger, localByteStringMicro6, localLong, localLong, null, null, localByteStringMicro7, localByteStringMicro8, localInteger, localBoolean, localBoolean, localBoolean, localBoolean, localBoolean, localInteger, localInteger, localBoolean, localLong, localInteger, localByteStringMicro9, localInteger, null, null, localByteStringMicro10, localByteStringMicro11, localInteger, null, localInteger, null, localByteStringMicro12, localInteger }, MemberInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.group.group_member_info.MemberInfo
  * JD-Core Version:    0.7.0.1
  */

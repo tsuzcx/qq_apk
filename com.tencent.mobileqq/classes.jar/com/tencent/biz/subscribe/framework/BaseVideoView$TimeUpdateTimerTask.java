@@ -15,18 +15,19 @@ class BaseVideoView$TimeUpdateTimerTask
   
   public void run()
   {
-    if (this.a != null)
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      BaseVideoView localBaseVideoView = (BaseVideoView)this.a.get();
-      if (localBaseVideoView != null) {
-        localBaseVideoView.k();
+      localObject = (BaseVideoView)((WeakReference)localObject).get();
+      if (localObject != null) {
+        ((BaseVideoView)localObject).k();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.framework.BaseVideoView.TimeUpdateTimerTask
  * JD-Core Version:    0.7.0.1
  */

@@ -12,14 +12,20 @@ class OnlineFileSessionWorker$1
   
   public void run()
   {
-    QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] state:" + OnlineFileSessionWorker.a(this.this$0).a() + " WaitSenderReplayOnRecvTimer time out!!!!!!!");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OLfilesession[");
+    localStringBuilder.append(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    localStringBuilder.append("] state:");
+    localStringBuilder.append(OnlineFileSessionWorker.a(this.this$0).a());
+    localStringBuilder.append(" WaitSenderReplayOnRecvTimer time out!!!!!!!");
+    QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, localStringBuilder.toString());
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(true, 42, new Object[] { Long.valueOf(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) });
     this.this$0.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker.1
  * JD-Core Version:    0.7.0.1
  */

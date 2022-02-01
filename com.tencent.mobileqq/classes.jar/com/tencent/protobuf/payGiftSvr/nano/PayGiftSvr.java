@@ -3,6 +3,7 @@ package com.tencent.protobuf.payGiftSvr.nano;
 public abstract interface PayGiftSvr
 {
   public static final int ADOLESCENT_MODE = 21;
+  public static final int CONSUME_LIMIT = 22;
   public static final int DENOUNCE_BLACK = 19;
   public static final int DIRTY_WORD = 3;
   public static final int GIFT_VOERGAME = 8;
@@ -24,7 +25,7 @@ public abstract interface PayGiftSvr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.payGiftSvr.nano.PayGiftSvr
  * JD-Core Version:    0.7.0.1
  */

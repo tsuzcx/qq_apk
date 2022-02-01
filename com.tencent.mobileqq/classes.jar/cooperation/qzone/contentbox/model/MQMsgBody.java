@@ -23,55 +23,53 @@ public class MQMsgBody
   
   private static JSONArray convertAvatarToJsonArray(ArrayList<String> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return null;
+    if ((paramArrayList != null) && (paramArrayList.size() != 0))
+    {
+      JSONArray localJSONArray = new JSONArray();
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext()) {
+        localJSONArray.put((String)paramArrayList.next());
+      }
+      return localJSONArray;
     }
-    JSONArray localJSONArray = new JSONArray();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext()) {
-      localJSONArray.put((String)paramArrayList.next());
-    }
-    return localJSONArray;
+    return null;
   }
   
   private static JSONArray convertPhotoCellToJsonArray(ArrayList<MQPhotoCell> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return null;
+    if ((paramArrayList != null) && (paramArrayList.size() != 0))
+    {
+      JSONArray localJSONArray = new JSONArray();
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext()) {
+        localJSONArray.put(((MQPhotoCell)paramArrayList.next()).convertToJson());
+      }
+      return localJSONArray;
     }
-    JSONArray localJSONArray = new JSONArray();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext()) {
-      localJSONArray.put(((MQPhotoCell)paramArrayList.next()).convertToJson());
-    }
-    return localJSONArray;
+    return null;
   }
   
   private static ArrayList<String> parseAvatarArrayList(JSONArray paramJSONArray)
   {
-    if ((paramJSONArray == null) || (paramJSONArray.length() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    for (;;)
+    if ((paramJSONArray != null) && (paramJSONArray.length() != 0))
     {
-      if (i < paramJSONArray.length()) {
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      while (i < paramJSONArray.length())
+      {
         try
         {
           localArrayList.add(paramJSONArray.getString(i));
-          i += 1;
         }
         catch (Exception localException)
         {
-          for (;;)
-          {
-            QZLog.e("QZoneMsgManager.MQMsgBody", "parseArrayList error", localException);
-          }
+          QZLog.e("QZoneMsgManager.MQMsgBody", "parseArrayList error", localException);
         }
+        i += 1;
       }
+      return localArrayList;
     }
-    return localArrayList;
+    return null;
   }
   
   public static MQMsgBody parseFromJson(JSONObject paramJSONObject)
@@ -100,29 +98,25 @@ public class MQMsgBody
   
   private static ArrayList<MQPhotoCell> parsePhotoCellArrayList(JSONArray paramJSONArray)
   {
-    if ((paramJSONArray == null) || (paramJSONArray.length() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    for (;;)
+    if ((paramJSONArray != null) && (paramJSONArray.length() != 0))
     {
-      if (i < paramJSONArray.length()) {
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      while (i < paramJSONArray.length())
+      {
         try
         {
           localArrayList.add(MQPhotoCell.parseFromJson(paramJSONArray.getJSONObject(i)));
-          i += 1;
         }
         catch (Exception localException)
         {
-          for (;;)
-          {
-            QZLog.e("QZoneMsgManager.MQMsgBody", "parseArrayList error", localException);
-          }
+          QZLog.e("QZoneMsgManager.MQMsgBody", "parseArrayList error", localException);
         }
+        i += 1;
       }
+      return localArrayList;
     }
-    return localArrayList;
+    return null;
   }
   
   public static MQMsgBody readFrom(MsgBody paramMsgBody)
@@ -143,17 +137,21 @@ public class MQMsgBody
     ArrayList localArrayList = new ArrayList();
     if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
+      Iterator localIterator = paramArrayList.iterator();
+      for (;;)
       {
-        PhotoCell localPhotoCell = (PhotoCell)paramArrayList.next();
-        if (localPhotoCell != null) {
-          localArrayList.add(MQPhotoCell.readFrom(localPhotoCell));
+        paramArrayList = localArrayList;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        paramArrayList = (PhotoCell)localIterator.next();
+        if (paramArrayList != null) {
+          localArrayList.add(MQPhotoCell.readFrom(paramArrayList));
         }
       }
-      return localArrayList;
     }
-    return null;
+    paramArrayList = null;
+    return paramArrayList;
   }
   
   public JSONObject convertToJson()
@@ -179,7 +177,7 @@ public class MQMsgBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.MQMsgBody
  * JD-Core Version:    0.7.0.1
  */

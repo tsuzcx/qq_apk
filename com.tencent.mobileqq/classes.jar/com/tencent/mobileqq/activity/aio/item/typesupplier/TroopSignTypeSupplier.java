@@ -9,7 +9,7 @@ import com.tencent.mobileqq.data.MessageForTroopSign;
 public class TroopSignTypeSupplier
   implements MessageTypeSupplier
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public int get(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
     if (TextUtils.isEmpty(((MessageForTroopSign)paramChatMessage).dynamicSource)) {
       return 71;
@@ -19,7 +19,7 @@ public class TroopSignTypeSupplier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.typesupplier.TroopSignTypeSupplier
  * JD-Core Version:    0.7.0.1
  */

@@ -9,19 +9,21 @@ public class GlobalSearchConfBean
   
   public static GlobalSearchConfBean a(String paramString)
   {
-    if (paramString == null) {}
-    do
-    {
+    if (paramString == null) {
       return null;
-      try
-      {
-        GlobalSearchConfBean localGlobalSearchConfBean = new GlobalSearchConfBean();
-        localGlobalSearchConfBean.a = new JSONObject(paramString).optBoolean("needSeparatePersonWithGroup", false);
-        return localGlobalSearchConfBean;
+    }
+    try
+    {
+      GlobalSearchConfBean localGlobalSearchConfBean = new GlobalSearchConfBean();
+      localGlobalSearchConfBean.a = new JSONObject(paramString).optBoolean("needSeparatePersonWithGroup", false);
+      return localGlobalSearchConfBean;
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("GlobalSearchConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("GlobalSearchConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    }
     return null;
   }
   
@@ -32,12 +34,15 @@ public class GlobalSearchConfBean
   
   public String toString()
   {
-    return "needSeparate:" + this.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("needSeparate:");
+    localStringBuilder.append(this.a);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.GlobalSearchConfBean
  * JD-Core Version:    0.7.0.1
  */

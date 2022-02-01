@@ -18,36 +18,41 @@ final class MapCollections$MapIterator
   
   public final boolean equals(Object paramObject)
   {
-    boolean bool = true;
-    if (!this.c) {
-      throw new IllegalStateException("This container does not support retaining Map.Entry objects");
-    }
-    if (!(paramObject instanceof Map.Entry)) {
-      return false;
-    }
-    paramObject = (Map.Entry)paramObject;
-    if ((ContainerHelpers.equal(paramObject.getKey(), this.d.colGetEntry(this.b, 0))) && (ContainerHelpers.equal(paramObject.getValue(), this.d.colGetEntry(this.b, 1)))) {}
-    for (;;)
+    if (this.c)
     {
-      return bool;
-      bool = false;
+      boolean bool1 = paramObject instanceof Map.Entry;
+      boolean bool2 = false;
+      if (!bool1) {
+        return false;
+      }
+      paramObject = (Map.Entry)paramObject;
+      bool1 = bool2;
+      if (ContainerHelpers.equal(paramObject.getKey(), this.d.colGetEntry(this.b, 0)))
+      {
+        bool1 = bool2;
+        if (ContainerHelpers.equal(paramObject.getValue(), this.d.colGetEntry(this.b, 1))) {
+          bool1 = true;
+        }
+      }
+      return bool1;
     }
+    throw new IllegalStateException("This container does not support retaining Map.Entry objects");
   }
   
   public K getKey()
   {
-    if (!this.c) {
-      throw new IllegalStateException("This container does not support retaining Map.Entry objects");
+    if (this.c) {
+      return this.d.colGetEntry(this.b, 0);
     }
-    return this.d.colGetEntry(this.b, 0);
+    throw new IllegalStateException("This container does not support retaining Map.Entry objects");
   }
   
   public V getValue()
   {
-    if (!this.c) {
-      throw new IllegalStateException("This container does not support retaining Map.Entry objects");
+    if (this.c) {
+      return this.d.colGetEntry(this.b, 1);
     }
-    return this.d.colGetEntry(this.b, 1);
+    throw new IllegalStateException("This container does not support retaining Map.Entry objects");
   }
   
   public boolean hasNext()
@@ -57,28 +62,24 @@ final class MapCollections$MapIterator
   
   public final int hashCode()
   {
-    int j = 0;
-    if (!this.c) {
-      throw new IllegalStateException("This container does not support retaining Map.Entry objects");
-    }
-    Object localObject1 = this.d.colGetEntry(this.b, 0);
-    Object localObject2 = this.d.colGetEntry(this.b, 1);
-    int i;
-    if (localObject1 == null)
+    if (this.c)
     {
-      i = 0;
-      if (localObject2 != null) {
-        break label69;
+      Object localObject1 = this.d;
+      int i = this.b;
+      int j = 0;
+      localObject1 = ((MapCollections)localObject1).colGetEntry(i, 0);
+      Object localObject2 = this.d.colGetEntry(this.b, 1);
+      if (localObject1 == null) {
+        i = 0;
+      } else {
+        i = localObject1.hashCode();
       }
+      if (localObject2 != null) {
+        j = localObject2.hashCode();
+      }
+      return i ^ j;
     }
-    for (;;)
-    {
-      return j ^ i;
-      i = localObject1.hashCode();
-      break;
-      label69:
-      j = localObject2.hashCode();
-    }
+    throw new IllegalStateException("This container does not support retaining Map.Entry objects");
   }
   
   public Map.Entry<K, V> next()
@@ -90,31 +91,37 @@ final class MapCollections$MapIterator
   
   public void remove()
   {
-    if (!this.c) {
-      throw new IllegalStateException();
+    if (this.c)
+    {
+      this.d.colRemoveAt(this.b);
+      this.b -= 1;
+      this.a -= 1;
+      this.c = false;
+      return;
     }
-    this.d.colRemoveAt(this.b);
-    this.b -= 1;
-    this.a -= 1;
-    this.c = false;
+    throw new IllegalStateException();
   }
   
   public V setValue(V paramV)
   {
-    if (!this.c) {
-      throw new IllegalStateException("This container does not support retaining Map.Entry objects");
+    if (this.c) {
+      return this.d.colSetValue(this.b, paramV);
     }
-    return this.d.colSetValue(this.b, paramV);
+    throw new IllegalStateException("This container does not support retaining Map.Entry objects");
   }
   
   public final String toString()
   {
-    return getKey() + "=" + getValue();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getKey());
+    localStringBuilder.append("=");
+    localStringBuilder.append(getValue());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.utils.struct.MapCollections.MapIterator
  * JD-Core Version:    0.7.0.1
  */

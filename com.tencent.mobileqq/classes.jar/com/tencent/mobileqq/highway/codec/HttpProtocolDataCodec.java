@@ -18,11 +18,19 @@ public class HttpProtocolDataCodec
   
   private byte[] createHttpReqData(EndPoint paramEndPoint, byte[] paramArrayOfByte)
   {
-    paramEndPoint = ("POST /cgi-bin/httpconn?htcmd=0x6ff0082 HTTP/1.1\r\nConnection: Keep-Alive\r\nHost: " + paramEndPoint.host + ":" + paramEndPoint.port + "\r\nAccept: */*\r\nUser-Agent: javaMsfClient\r\nContent-Type: application/x-www-form-urlencoded\r\nContent-Length: " + paramArrayOfByte.length + "\r\n\r\n").getBytes();
-    byte[] arrayOfByte = new byte[paramEndPoint.length + paramArrayOfByte.length];
-    System.arraycopy(paramEndPoint, 0, arrayOfByte, 0, paramEndPoint.length);
-    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, paramEndPoint.length, paramArrayOfByte.length);
-    return arrayOfByte;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("POST /cgi-bin/httpconn?htcmd=0x6ff0082 HTTP/1.1\r\nConnection: Keep-Alive\r\nHost: ");
+    ((StringBuilder)localObject).append(paramEndPoint.host);
+    ((StringBuilder)localObject).append(":");
+    ((StringBuilder)localObject).append(paramEndPoint.port);
+    ((StringBuilder)localObject).append("\r\nAccept: */*\r\nUser-Agent: javaMsfClient\r\nContent-Type: application/x-www-form-urlencoded\r\nContent-Length: ");
+    ((StringBuilder)localObject).append(paramArrayOfByte.length);
+    ((StringBuilder)localObject).append("\r\n\r\n");
+    paramEndPoint = ((StringBuilder)localObject).toString().getBytes();
+    localObject = new byte[paramEndPoint.length + paramArrayOfByte.length];
+    System.arraycopy(paramEndPoint, 0, localObject, 0, paramEndPoint.length);
+    System.arraycopy(paramArrayOfByte, 0, localObject, paramEndPoint.length, paramArrayOfByte.length);
+    return localObject;
   }
   
   public byte[] encodeC2SData(EndPoint paramEndPoint, HwRequest paramHwRequest, byte[] paramArrayOfByte)
@@ -32,49 +40,34 @@ public class HttpProtocolDataCodec
   
   public void onRecvData(MsfSocketInputBuffer paramMsfSocketInputBuffer)
   {
-    MsfHttpResp localMsfHttpResp = new MsfHttpRespParse(paramMsfSocketInputBuffer).parse();
-    label49:
-    int i;
-    if (MsfHttpRespParse.canResponseHaveBody(localMsfHttpResp))
+    do
     {
-      if (localMsfHttpResp.getContentLen() != -1) {
-        localMsfHttpResp.setContent(new ContentLengthInputStream(paramMsfSocketInputBuffer, localMsfHttpResp.getContentLen()));
-      }
-    }
-    else
-    {
-      i = localMsfHttpResp.getStatusLine().getStatusCode();
-      if (i >= 200) {
-        break label126;
-      }
-      if (i == 100) {}
-    }
-    while (!paramMsfSocketInputBuffer.hasBufferedData())
-    {
-      return;
-      if (localMsfHttpResp.getTransferEncoding().equalsIgnoreCase("chunked"))
-      {
-        localMsfHttpResp.setContent(new ChunkedInputStream(paramMsfSocketInputBuffer));
-        break label49;
-      }
-      localMsfHttpResp.setContent(new IdentityInputStream(paramMsfSocketInputBuffer));
-      break label49;
-      label126:
-      byte[] arrayOfByte2 = new byte[20480];
-      byte[] arrayOfByte1 = null;
-      i = 0;
-      for (;;)
-      {
-        int j = localMsfHttpResp.getContent().read(arrayOfByte2);
-        if (j <= 0) {
-          break;
+      MsfHttpResp localMsfHttpResp = new MsfHttpRespParse(paramMsfSocketInputBuffer).parse();
+      if (MsfHttpRespParse.canResponseHaveBody(localMsfHttpResp)) {
+        if (localMsfHttpResp.getContentLen() != -1) {
+          localMsfHttpResp.setContent(new ContentLengthInputStream(paramMsfSocketInputBuffer, localMsfHttpResp.getContentLen()));
+        } else if (localMsfHttpResp.getTransferEncoding().equalsIgnoreCase("chunked")) {
+          localMsfHttpResp.setContent(new ChunkedInputStream(paramMsfSocketInputBuffer));
+        } else {
+          localMsfHttpResp.setContent(new IdentityInputStream(paramMsfSocketInputBuffer));
         }
-        i += j;
-        arrayOfByte1 = new byte[j];
-        System.arraycopy(arrayOfByte2, 0, arrayOfByte1, 0, arrayOfByte1.length);
       }
-      decodeS2CData(arrayOfByte1);
-    }
+      if (localMsfHttpResp.getStatusLine().getStatusCode() >= 200)
+      {
+        byte[] arrayOfByte2 = new byte[20480];
+        byte[] arrayOfByte1 = null;
+        for (;;)
+        {
+          int i = localMsfHttpResp.getContent().read(arrayOfByte2);
+          if (i <= 0) {
+            break;
+          }
+          arrayOfByte1 = new byte[i];
+          System.arraycopy(arrayOfByte2, 0, arrayOfByte1, 0, arrayOfByte1.length);
+        }
+        decodeS2CData(arrayOfByte1);
+      }
+    } while (paramMsfSocketInputBuffer.hasBufferedData());
   }
   
   public void setProtocolCodecListener(IProtocolCodecListener paramIProtocolCodecListener)
@@ -84,7 +77,7 @@ public class HttpProtocolDataCodec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.codec.HttpProtocolDataCodec
  * JD-Core Version:    0.7.0.1
  */

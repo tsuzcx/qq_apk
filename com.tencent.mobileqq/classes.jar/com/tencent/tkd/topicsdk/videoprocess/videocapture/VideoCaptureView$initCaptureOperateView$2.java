@@ -16,7 +16,7 @@ public final class VideoCaptureView$initCaptureOperateView$2
 {
   public void a()
   {
-    DispatchManager.a.a((IEvent)new UserActionEvent(ReportEventKey.EVENT_DRAG, ReportEventPage.PAGE_SELECT_VIDEO_COVER, ReportEventElement.WIDGET_SELECT_COVER_FRAME, null, null, 24, null));
+    DispatchManager.a.a((IEvent)new UserActionEvent(null, ReportEventKey.EVENT_DRAG, ReportEventPage.PAGE_SELECT_VIDEO_COVER, ReportEventElement.WIDGET_SELECT_COVER_FRAME, null, null, null, 113, null));
   }
   
   public void b()
@@ -31,7 +31,7 @@ public final class VideoCaptureView$initCaptureOperateView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videocapture.VideoCaptureView.initCaptureOperateView.2
  * JD-Core Version:    0.7.0.1
  */

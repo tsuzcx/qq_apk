@@ -1,23 +1,23 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class QQStoryTakeVideoCloseAnimationActivity$1
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   QQStoryTakeVideoCloseAnimationActivity$1(QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity) {}
   
   public void onAnimationCancel(Animator paramAnimator)
   {
     this.a.finish();
-    this.a.overridePendingTransition(0, 2130772045);
+    this.a.overridePendingTransition(0, 2130772067);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
     this.a.finish();
-    this.a.overridePendingTransition(0, 2130772045);
+    this.a.overridePendingTransition(0, 2130772067);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -26,7 +26,7 @@ class QQStoryTakeVideoCloseAnimationActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity.1
  * JD-Core Version:    0.7.0.1
  */

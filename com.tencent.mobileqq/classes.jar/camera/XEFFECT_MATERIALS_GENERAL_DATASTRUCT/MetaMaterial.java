@@ -58,34 +58,41 @@ public final class MetaMaterial
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.id != null) {
-      paramJceOutputStream.write(this.id, 0);
+    Object localObject = this.id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.sdkInfo != null) {
-      paramJceOutputStream.write(this.sdkInfo, 1);
+    localObject = this.sdkInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.thumbUrl != null) {
-      paramJceOutputStream.write(this.thumbUrl, 2);
+    localObject = this.thumbUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.thumbWidth, 3);
     paramJceOutputStream.write(this.thumbHeight, 4);
-    if (this.packageUrl != null) {
-      paramJceOutputStream.write(this.packageUrl, 5);
+    localObject = this.packageUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.additionalFields != null) {
-      paramJceOutputStream.write(this.additionalFields, 6);
+    localObject = this.additionalFields;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 6);
     }
-    if (this.packageMd5 != null) {
-      paramJceOutputStream.write(this.packageMd5, 7);
+    localObject = this.packageMd5;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.additionalPackage != null) {
-      paramJceOutputStream.write(this.additionalPackage, 8);
+    localObject = this.additionalPackage;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial
  * JD-Core Version:    0.7.0.1
  */

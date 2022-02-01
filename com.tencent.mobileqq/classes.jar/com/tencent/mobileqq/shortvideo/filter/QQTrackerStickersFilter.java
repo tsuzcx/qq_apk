@@ -38,18 +38,22 @@ public class QQTrackerStickersFilter
   public void InitTrackerStickers(ArrayList<TrackerStickerParam> paramArrayList)
   {
     this.listStickers = paramArrayList;
-    if ((this.listStickers != null) && (this.listStickers.size() > 0))
+    paramArrayList = this.listStickers;
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
       this.textureId = new int[this.listStickers.size()];
       this.mvpMatrix = new float[this.listStickers.size()][];
       this.bwork = true;
     }
-    while (this.mbReversed)
+    else
+    {
+      this.bwork = false;
+      SLog.i(TAG, "TrackerStickerParam is null or zero");
+    }
+    if (this.mbReversed)
     {
       this.textureMatrix = null;
       return;
-      this.bwork = false;
-      SLog.i(TAG, "TrackerStickerParam is null or zero");
     }
     this.textureMatrix = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F };
   }
@@ -68,34 +72,41 @@ public class QQTrackerStickersFilter
   public float[] caculateMatrix(TrackerStickerParam paramTrackerStickerParam, TrackerStickerParam.MotionInfo paramMotionInfo)
   {
     float f1 = this.mSurfaceWidth / this.mSurfaceHeight;
-    GlMatricUtil localGlMatricUtil = new GlMatricUtil();
-    localGlMatricUtil.ortho(-1.0F * f1, 1.0F * f1, -1.0F, 1.0F, 3.0F, 20.0F);
-    localGlMatricUtil.setCamera(0.0F, 0.0F, 10.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
+    Object localObject = new GlMatricUtil();
+    ((GlMatricUtil)localObject).ortho(f1 * -1.0F, f1 * 1.0F, -1.0F, 1.0F, 3.0F, 20.0F);
+    ((GlMatricUtil)localObject).setCamera(0.0F, 0.0F, 10.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
     float f2 = paramMotionInfo.x * 2.0F / paramTrackerStickerParam.layerWidth;
     float f3 = paramMotionInfo.y * 2.0F / paramTrackerStickerParam.layerHeight;
     if (this.mbReversed) {
-      localGlMatricUtil.translate((f2 - 1.0F) * f1, f3 - 1.0F, 0.0F);
+      ((GlMatricUtil)localObject).translate((f2 - 1.0F) * f1, f3 - 1.0F, 0.0F);
+    } else {
+      ((GlMatricUtil)localObject).translate((f2 - 1.0F) * f1, 1.0F - f3, 0.0F);
     }
-    for (;;)
+    float f4 = this.mSurfaceWidth / paramTrackerStickerParam.layerWidth;
+    f2 = this.mSurfaceHeight / paramTrackerStickerParam.layerHeight;
+    float f5 = paramTrackerStickerParam.width / this.mSurfaceWidth;
+    f3 = paramTrackerStickerParam.height / this.mSurfaceHeight;
+    f1 = paramTrackerStickerParam.scale * f4 * f5 * f1;
+    f2 = paramTrackerStickerParam.scale * f2 * f3;
+    ((GlMatricUtil)localObject).rotate(paramTrackerStickerParam.rotate, 0.0F, 0.0F, 1.0F);
+    ((GlMatricUtil)localObject).scale(f1, f2, 1.0F);
+    paramTrackerStickerParam = new StringBuilder();
+    paramTrackerStickerParam.append("finalScaleX : ");
+    paramTrackerStickerParam.append(f1);
+    paramTrackerStickerParam.append(" finalScaleY:");
+    paramTrackerStickerParam.append(f2);
+    SLog.d("trackerMatrix ", paramTrackerStickerParam.toString());
+    paramMotionInfo = ((GlMatricUtil)localObject).getFinalMatrix();
+    int i = 0;
+    paramTrackerStickerParam = "mvp: ";
+    while (i < 16)
     {
-      float f4 = this.mSurfaceWidth / paramTrackerStickerParam.layerWidth;
-      f2 = this.mSurfaceHeight / paramTrackerStickerParam.layerHeight;
-      float f5 = paramTrackerStickerParam.width / this.mSurfaceWidth;
-      f3 = paramTrackerStickerParam.height / this.mSurfaceHeight;
-      f1 = f4 * paramTrackerStickerParam.scale * f5 * f1;
-      f2 = f2 * paramTrackerStickerParam.scale * f3;
-      localGlMatricUtil.rotate(paramTrackerStickerParam.rotate, 0.0F, 0.0F, 1.0F);
-      localGlMatricUtil.scale(f1, f2, 1.0F);
-      SLog.d("trackerMatrix ", "finalScaleX : " + f1 + " finalScaleY:" + f2);
-      paramMotionInfo = localGlMatricUtil.getFinalMatrix();
-      paramTrackerStickerParam = "mvp: ";
-      int i = 0;
-      while (i < 16)
-      {
-        paramTrackerStickerParam = paramTrackerStickerParam + " " + paramMotionInfo[i];
-        i += 1;
-      }
-      localGlMatricUtil.translate((f2 - 1.0F) * f1, 1.0F - f3, 0.0F);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramTrackerStickerParam);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(paramMotionInfo[i]);
+      paramTrackerStickerParam = ((StringBuilder)localObject).toString();
+      i += 1;
     }
     SLog.d("trackerMatrix ", paramTrackerStickerParam);
     return paramMotionInfo;
@@ -121,64 +132,78 @@ public class QQTrackerStickersFilter
   {
     long l2;
     long l3;
-    long l4;
+    long l1;
     if (this.bwork)
     {
       l2 = getQQFilterRenderManager().getBusinessOperation().getOrgTimeStamp();
       l3 = getQQFilterRenderManager().getBusinessOperation().getPresentTimeStamp();
       l1 = getQQFilterRenderManager().getBusinessOperation().getVideoStartTime();
-      l4 = l2 / 1000000L;
-      if (l4 <= l1) {
-        break label353;
+      long l4 = l2 / 1000000L;
+      if (l4 > l1) {
+        l1 = l4 - l1;
+      } else {
+        l1 = 0L;
       }
     }
-    label318:
-    label346:
-    label353:
-    for (long l1 = l4 - l1;; l1 = 0L) {
+    try
+    {
+      this.mRenderFBO.setTexId(this.mInputTextureID);
+      this.mRenderFBO.bind();
+      i = 0;
+    }
+    catch (Throwable localThrowable)
+    {
       for (;;)
       {
         int i;
-        try
+        TrackerStickerParam localTrackerStickerParam;
+        TrackerStickerParam.MotionInfo localMotionInfo;
+        float f1;
+        float f2;
+        float f3;
+        float f4;
+        int j;
+        continue;
+        i += 1;
+      }
+    }
+    if (i < this.listStickers.size())
+    {
+      localTrackerStickerParam = (TrackerStickerParam)this.listStickers.get(i);
+      if (localTrackerStickerParam.isShow((int)l1)) {
+        if ((localTrackerStickerParam.mapMotionTrack != null) && (localTrackerStickerParam.mapMotionTrack.size() != 0))
         {
-          this.mRenderFBO.setTexId(this.mInputTextureID);
-          this.mRenderFBO.bind();
-          i = 0;
-          if (i >= this.listStickers.size()) {
-            break label318;
-          }
-          TrackerStickerParam localTrackerStickerParam = (TrackerStickerParam)this.listStickers.get(i);
-          if (!localTrackerStickerParam.isShow((int)l1)) {
-            break label346;
-          }
-          if ((localTrackerStickerParam.mapMotionTrack == null) || (localTrackerStickerParam.mapMotionTrack.size() == 0))
+          localMotionInfo = getTrackerPoint(l2, localTrackerStickerParam);
+          if (!localMotionInfo.isLost)
           {
-            localMotionInfo = new TrackerStickerParam.MotionInfo(false, l3, localTrackerStickerParam.centerP.x + localTrackerStickerParam.translateXValue, localTrackerStickerParam.centerP.y + localTrackerStickerParam.translateYValue, 1.0F, 0.0F);
             this.mvpMatrix[i] = caculateMatrix(localTrackerStickerParam, localMotionInfo);
             GLES20.glViewport(0, 0, this.mSurfaceWidth, this.mSurfaceHeight);
             this.mMultiStickerFilter.drawTexture(this.textureId[i], this.textureMatrix, this.mvpMatrix[i]);
           }
         }
-        catch (Throwable localThrowable)
+        else
         {
-          this.mOutputTextureID = this.mInputTextureID;
-          return;
-        }
-        TrackerStickerParam.MotionInfo localMotionInfo = getTrackerPoint(l2, localThrowable);
-        if (!localMotionInfo.isLost)
-        {
-          this.mvpMatrix[i] = caculateMatrix(localThrowable, localMotionInfo);
+          f1 = localTrackerStickerParam.centerP.x;
+          f2 = localTrackerStickerParam.translateXValue;
+          f3 = localTrackerStickerParam.centerP.y;
+          f4 = localTrackerStickerParam.translateYValue;
+          j = i;
+          localMotionInfo = new TrackerStickerParam.MotionInfo(false, l3, f1 + f2, f3 + f4, 1.0F, 0.0F);
+          this.mvpMatrix[j] = caculateMatrix(localTrackerStickerParam, localMotionInfo);
           GLES20.glViewport(0, 0, this.mSurfaceWidth, this.mSurfaceHeight);
-          this.mMultiStickerFilter.drawTexture(this.textureId[i], this.textureMatrix, this.mvpMatrix[i]);
-          break label346;
-          this.mRenderFBO.unbind();
-          this.mOutputTextureID = this.mRenderFBO.getTexId();
-          return;
-          this.mOutputTextureID = this.mInputTextureID;
-          return;
+          this.mMultiStickerFilter.drawTexture(this.textureId[j], this.textureMatrix, this.mvpMatrix[j]);
         }
-        i += 1;
       }
+    }
+    else
+    {
+      this.mRenderFBO.unbind();
+      this.mOutputTextureID = this.mRenderFBO.getTexId();
+      return;
+      this.mOutputTextureID = this.mInputTextureID;
+      return;
+      this.mOutputTextureID = this.mInputTextureID;
+      return;
     }
   }
   
@@ -225,7 +250,10 @@ public class QQTrackerStickersFilter
       i = GLES20.glGetError();
       if (i != 0)
       {
-        localObject = "previousUnknownError: glError 0x" + Integer.toHexString(i);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("previousUnknownError: glError 0x");
+        ((StringBuilder)localObject).append(Integer.toHexString(i));
+        localObject = ((StringBuilder)localObject).toString();
         SLog.e(TAG, (String)localObject);
       }
       this.mRenderFBO = new RenderBuffer(this.mSurfaceWidth, this.mSurfaceHeight, 33984);
@@ -233,8 +261,10 @@ public class QQTrackerStickersFilter
     }
     catch (Throwable localThrowable)
     {
-      this.mRenderFBO = null;
+      label192:
+      break label192;
     }
+    this.mRenderFBO = null;
   }
   
   public void onSurfaceDestroy()
@@ -245,7 +275,7 @@ public class QQTrackerStickersFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQTrackerStickersFilter
  * JD-Core Version:    0.7.0.1
  */

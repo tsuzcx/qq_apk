@@ -25,17 +25,19 @@ class FastScroller$AnimatorListener
     }
     if (((Float)this.this$0.mShowHideAnimator.getAnimatedValue()).floatValue() == 0.0F)
     {
-      this.this$0.mAnimationState = 0;
-      this.this$0.setState(0);
+      paramAnimator = this.this$0;
+      paramAnimator.mAnimationState = 0;
+      paramAnimator.setState(0);
       return;
     }
-    this.this$0.mAnimationState = 2;
-    this.this$0.requestRedraw();
+    paramAnimator = this.this$0;
+    paramAnimator.mAnimationState = 2;
+    paramAnimator.requestRedraw();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.FastScroller.AnimatorListener
  * JD-Core Version:    0.7.0.1
  */

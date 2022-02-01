@@ -117,7 +117,7 @@ public class MaxHistory
   
   boolean isNewTest(Description paramDescription)
   {
-    return !this.fDurations.containsKey(paramDescription.toString());
+    return this.fDurations.containsKey(paramDescription.toString()) ^ true;
   }
   
   public RunListener listener()
@@ -142,7 +142,7 @@ public class MaxHistory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.experimental.max.MaxHistory
  * JD-Core Version:    0.7.0.1
  */

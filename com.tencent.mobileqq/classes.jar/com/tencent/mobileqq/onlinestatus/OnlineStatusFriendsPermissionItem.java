@@ -25,19 +25,23 @@ public class OnlineStatusFriendsPermissionItem
   @NonNull
   public String toString()
   {
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    StringBuilder localStringBuilder2 = localStringBuilder1.append(" allHasPermission=").append(this.allHasPermission).append(" permissionUins");
-    if (this.permissionUins == null) {}
-    for (Object localObject = "";; localObject = Integer.valueOf(this.permissionUins.size()))
-    {
-      localStringBuilder2.append(localObject);
-      return localStringBuilder1.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" allHasPermission=");
+    localStringBuilder.append(this.allHasPermission);
+    localStringBuilder.append(" permissionUins");
+    Object localObject = this.permissionUins;
+    if (localObject == null) {
+      localObject = "";
+    } else {
+      localObject = Integer.valueOf(((List)localObject).size());
     }
+    localStringBuilder.append(localObject);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnlineStatusFriendsPermissionItem
  * JD-Core Version:    0.7.0.1
  */

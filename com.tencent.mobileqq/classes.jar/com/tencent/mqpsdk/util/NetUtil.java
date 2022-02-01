@@ -18,76 +18,80 @@ public class NetUtil
   
   public static int a(Context paramContext)
   {
-    int i = 0;
-    switch (AppNetConnInfo.getConnInfo())
+    int j = AppNetConnInfo.getConnInfo();
+    int i = 1;
+    if (j != 0)
     {
+      if (j == 1) {}
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("NetUtil", 2, "getNetType " + i);
-      }
-      return i;
-      switch (AppNetConnInfo.getMobileInfo())
+      do
       {
-      default: 
-        break;
-      case 1: 
-        i = 2;
-        break;
-      case 2: 
-        i = 3;
-        break;
-      case 3: 
-        i = 4;
-        continue;
-        i = 1;
-      }
+        i = 0;
+        break label54;
+        i = AppNetConnInfo.getMobileInfo();
+        if (i == 1) {
+          break label52;
+        }
+        if (i == 2) {
+          break;
+        }
+      } while (i != 3);
+      i = 4;
+      break label54;
+      i = 3;
+      break label54;
+      label52:
+      i = 2;
     }
+    label54:
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("getNetType ");
+      paramContext.append(i);
+      QLog.i("NetUtil", 2, paramContext.toString());
+    }
+    return i;
   }
   
   public static String a(Context paramContext)
   {
-    String str1 = "nomatch";
-    String str2 = AppNetConnInfo.getCurrentAPN();
-    paramContext = str1;
-    if (!TextUtils.isEmpty(str2))
+    paramContext = AppNetConnInfo.getCurrentAPN();
+    if (!TextUtils.isEmpty(paramContext))
     {
-      if (!str2.startsWith(a)) {
-        break label32;
+      if (paramContext.startsWith(a)) {
+        return a;
       }
-      paramContext = a;
-    }
-    label32:
-    do
-    {
-      return paramContext;
-      if (str2.startsWith(b)) {
+      if (paramContext.startsWith(b)) {
         return b;
       }
-      if (str2.startsWith(c)) {
+      if (paramContext.startsWith(c)) {
         return c;
       }
-      if (str2.startsWith(d)) {
+      if (paramContext.startsWith(d)) {
         return d;
       }
-      if (str2.startsWith(e)) {
+      if (paramContext.startsWith(e)) {
         return e;
       }
-      if (str2.startsWith(f)) {
+      if (paramContext.startsWith(f)) {
         return f;
       }
-      if (str2.startsWith(g)) {
+      if (paramContext.startsWith(g)) {
         return g;
       }
-      paramContext = str1;
-    } while (!str2.startsWith(h));
-    return h;
+      if (paramContext.startsWith(h)) {
+        return h;
+      }
+    }
+    return "nomatch";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mqpsdk.util.NetUtil
  * JD-Core Version:    0.7.0.1
  */

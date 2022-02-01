@@ -15,45 +15,56 @@ class QFlutterFaceLoader$1
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramIntent == null) || (!"com.tencent.qqhead.getheadresp".equals(paramIntent.getAction()))) {}
-    do
+    if (paramIntent != null)
     {
-      int j;
-      ArrayList localArrayList;
-      do
-      {
+      if (!"com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())) {
         return;
-        j = paramIntent.getIntExtra("faceType", -1);
-        paramContext = paramIntent.getStringArrayListExtra("uinList");
-        localArrayList = paramIntent.getStringArrayListExtra("headPathList");
-        if (QLog.isColorLevel()) {
-          QLog.d("QFlutter.qqface", 2, "onReceive, faceType: " + j + ", uinList: " + paramContext + ", pathList: " + localArrayList);
-        }
-      } while ((paramContext == null) || (paramContext.isEmpty()) || (localArrayList == null) || (localArrayList.isEmpty()) || (paramContext.size() != localArrayList.size()));
-      paramIntent = new ArrayList();
-      int i = 0;
-      while (i < paramContext.size())
-      {
-        String str1 = (String)localArrayList.get(i);
-        String str2 = (String)paramContext.get(i);
-        DecodeRequest localDecodeRequest = new DecodeRequest(j, str2, 3);
-        if (QFlutterFaceLoader.a(this.a, localDecodeRequest))
-        {
-          QFlutterFaceLoader.a(this.a, j, str2);
-          paramIntent.add(localDecodeRequest);
-          QFlutterFaceLoader.a(this.a).put(localDecodeRequest.c, str1);
-        }
-        i += 1;
       }
-    } while (paramIntent.isEmpty());
-    paramContext = QFlutterFaceLoader.a(this.a).obtainMessage(0);
-    paramContext.obj = paramIntent;
-    QFlutterFaceLoader.a(this.a).sendMessage(paramContext);
+      int j = paramIntent.getIntExtra("faceType", -1);
+      paramContext = paramIntent.getStringArrayListExtra("uinList");
+      paramIntent = paramIntent.getStringArrayListExtra("headPathList");
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onReceive, faceType: ");
+        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(", uinList: ");
+        ((StringBuilder)localObject).append(paramContext);
+        ((StringBuilder)localObject).append(", pathList: ");
+        ((StringBuilder)localObject).append(paramIntent);
+        QLog.d("QFlutter.qqface", 2, ((StringBuilder)localObject).toString());
+      }
+      if ((paramContext != null) && (!paramContext.isEmpty()) && (paramIntent != null) && (!paramIntent.isEmpty()) && (paramContext.size() == paramIntent.size()))
+      {
+        localObject = new ArrayList();
+        int i = 0;
+        while (i < paramContext.size())
+        {
+          String str1 = (String)paramIntent.get(i);
+          String str2 = (String)paramContext.get(i);
+          DecodeRequest localDecodeRequest = new DecodeRequest(j, str2, 3);
+          if (QFlutterFaceLoader.a(this.a, localDecodeRequest))
+          {
+            QFlutterFaceLoader.a(this.a, j, str2);
+            ((ArrayList)localObject).add(localDecodeRequest);
+            QFlutterFaceLoader.a(this.a).put(localDecodeRequest.c, str1);
+          }
+          i += 1;
+        }
+        if (!((ArrayList)localObject).isEmpty())
+        {
+          paramContext = QFlutterFaceLoader.a(this.a).obtainMessage(0);
+          paramContext.obj = localObject;
+          QFlutterFaceLoader.a(this.a).sendMessage(paramContext);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.qqface.QFlutterFaceLoader.1
  * JD-Core Version:    0.7.0.1
  */

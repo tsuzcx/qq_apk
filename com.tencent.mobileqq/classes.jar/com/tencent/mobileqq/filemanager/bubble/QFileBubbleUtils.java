@@ -14,64 +14,52 @@ public final class QFileBubbleUtils
   public static final boolean a(@NotNull FileManagerEntity paramFileManagerEntity)
   {
     Intrinsics.checkParameterIsNotNull(paramFileManagerEntity, "$this$checkSupportBubbleMenu");
-    int i;
-    switch (paramFileManagerEntity.getCloudType())
-    {
-    default: 
+    int i = paramFileManagerEntity.getCloudType();
+    if ((i != 0) && (i != 11)) {
       i = 1;
-      switch (paramFileManagerEntity.status)
-      {
-      }
-      break;
-    }
-    for (int j = 1;; j = 0)
-    {
-      if ((i == 0) || (j == 0)) {
-        break label87;
-      }
-      return true;
+    } else {
       i = 0;
-      break;
-      i = 0;
-      break;
     }
-    label87:
-    return false;
+    int j;
+    if (paramFileManagerEntity.status != 16) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    return (i != 0) && (j != 0);
   }
   
   public static final boolean a(@NotNull FileManagerEntity paramFileManagerEntity, @NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramFileManagerEntity, "$this$checkSupportBubbleMenuWithSendPc");
     Intrinsics.checkParameterIsNotNull(paramString, "contactUin");
-    boolean bool = a(paramFileManagerEntity);
-    int i;
-    switch (paramFileManagerEntity.status)
-    {
-    case 1: 
-    default: 
+    boolean bool3 = a(paramFileManagerEntity);
+    int i = paramFileManagerEntity.status;
+    boolean bool2 = false;
+    if ((i != 0) && (i != 2)) {
       i = 1;
-      if (QFileAssistantUtils.a(paramString)) {
-        break;
-      }
+    } else {
+      i = 0;
     }
-    for (int j = 1;; j = 0)
+    boolean bool4 = QFileAssistantUtils.a(paramString);
+    boolean bool1 = bool2;
+    if (bool3)
     {
-      if ((!bool) || (i == 0) || (j == 0)) {
-        break label89;
+      bool1 = bool2;
+      if (i != 0)
+      {
+        bool1 = bool2;
+        if ((bool4 ^ true)) {
+          bool1 = true;
+        }
       }
-      return true;
-      i = 0;
-      break;
-      i = 0;
-      break;
     }
-    label89:
-    return false;
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.bubble.QFileBubbleUtils
  * JD-Core Version:    0.7.0.1
  */

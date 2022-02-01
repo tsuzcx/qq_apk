@@ -25,8 +25,6 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
@@ -34,13 +32,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
 import mqq.app.NewIntent;
 import mqq.manager.Manager;
-import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
 import protocol.KQQConfig.GetResourceReqInfo;
 
 public class StatusManager
@@ -99,44 +92,49 @@ public class StatusManager
   
   public static StatusManager a(QQAppInterface paramQQAppInterface)
   {
-    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (localObject != paramQQAppInterface) {
-      return (StatusManager)((QQAppInterface)localObject).getManager(QQManagerFactory.STATUS_MANAGER);
+    Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (localObject1 != paramQQAppInterface) {
+      return (StatusManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.STATUS_MANAGER);
     }
-    if (jdField_a_of_type_JavaLangRefWeakReference != null) {}
-    for (localObject = (StatusManager)jdField_a_of_type_JavaLangRefWeakReference.get();; localObject = null)
+    if (jdField_a_of_type_JavaLangRefWeakReference != null) {
+      localObject1 = (StatusManager)jdField_a_of_type_JavaLangRefWeakReference.get();
+    } else {
+      localObject1 = null;
+    }
+    if (localObject1 == null)
     {
-      if (localObject == null)
-      {
-        paramQQAppInterface = new StatusManager(paramQQAppInterface);
-        jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-        return paramQQAppInterface;
-      }
-      ((StatusManager)localObject).jdField_a_of_type_JavaUtilHashSet.clear();
-      ((StatusManager)localObject).jdField_b_of_type_Long = 0L;
-      ((StatusManager)localObject).jdField_a_of_type_Long = 0L;
-      ((StatusManager)localObject).jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = null;
-      if (((StatusManager)localObject).jdField_a_of_type_ComTencentMobileqqAppConfigObserver != null)
-      {
-        ((StatusManager)localObject).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(((StatusManager)localObject).jdField_a_of_type_ComTencentMobileqqAppConfigObserver);
-        ((StatusManager)localObject).jdField_a_of_type_ComTencentMobileqqAppConfigObserver = null;
-      }
-      if (((StatusManager)localObject).jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver != null)
-      {
-        ((StatusManager)localObject).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(((StatusManager)localObject).jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver);
-        ((StatusManager)localObject).jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver = null;
-      }
-      if (((StatusManager)localObject).jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder != null) {
-        ((StatusManager)localObject).jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder.a();
-      }
-      if (((StatusManager)localObject).jdField_a_of_type_ComTencentMobileqqAppSignatureObserver != null)
-      {
-        ((StatusManager)localObject).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(((StatusManager)localObject).jdField_a_of_type_ComTencentMobileqqAppSignatureObserver);
-        ((StatusManager)localObject).jdField_a_of_type_ComTencentMobileqqAppSignatureObserver = null;
-      }
-      ((StatusManager)localObject).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-      return localObject;
+      paramQQAppInterface = new StatusManager(paramQQAppInterface);
+      jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+      return paramQQAppInterface;
     }
+    ((StatusManager)localObject1).jdField_a_of_type_JavaUtilHashSet.clear();
+    ((StatusManager)localObject1).jdField_b_of_type_Long = 0L;
+    ((StatusManager)localObject1).jdField_a_of_type_Long = 0L;
+    ((StatusManager)localObject1).jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = null;
+    Object localObject2 = ((StatusManager)localObject1).jdField_a_of_type_ComTencentMobileqqAppConfigObserver;
+    if (localObject2 != null)
+    {
+      ((StatusManager)localObject1).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver((com.tencent.mobileqq.app.BusinessObserver)localObject2);
+      ((StatusManager)localObject1).jdField_a_of_type_ComTencentMobileqqAppConfigObserver = null;
+    }
+    localObject2 = ((StatusManager)localObject1).jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver;
+    if (localObject2 != null)
+    {
+      ((StatusManager)localObject1).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver((mqq.observer.BusinessObserver)localObject2);
+      ((StatusManager)localObject1).jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver = null;
+    }
+    localObject2 = ((StatusManager)localObject1).jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder;
+    if (localObject2 != null) {
+      ((BitmapDecoder)localObject2).a();
+    }
+    localObject2 = ((StatusManager)localObject1).jdField_a_of_type_ComTencentMobileqqAppSignatureObserver;
+    if (localObject2 != null)
+    {
+      ((StatusManager)localObject1).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver((com.tencent.mobileqq.app.BusinessObserver)localObject2);
+      ((StatusManager)localObject1).jdField_a_of_type_ComTencentMobileqqAppSignatureObserver = null;
+    }
+    ((StatusManager)localObject1).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    return localObject1;
   }
   
   private void a()
@@ -147,213 +145,318 @@ public class StatusManager
   
   private boolean a(SparseArray<ActionInfo> paramSparseArray1, SparseArray<ActionInfo> paramSparseArray2)
   {
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("removeOldIcons(");
+      ((StringBuilder)localObject1).append(paramSparseArray1);
+      ((StringBuilder)localObject1).append(", ");
+      ((StringBuilder)localObject1).append(paramSparseArray2);
+      ((StringBuilder)localObject1).append(")");
+      QLog.d("Q.richstatus.xml", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject1 = BitmapDecoder.a();
+    int j = 0;
     int i = 0;
-    boolean bool2 = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "removeOldIcons(" + paramSparseArray1 + ", " + paramSparseArray2 + ")");
-    }
-    File localFile = BitmapDecoder.a();
-    boolean bool1;
-    if (localFile == null)
+    if (localObject1 == null)
     {
-      bool1 = bool2;
-      if (QLog.isColorLevel())
-      {
+      if (QLog.isColorLevel()) {
         QLog.d("Q.richstatus.xml", 2, "removeOldIcons: dir is null");
-        bool1 = bool2;
       }
+      return false;
     }
-    do
+    if (!((File)localObject1).exists())
     {
-      do
-      {
-        do
-        {
-          return bool1;
-          if (!localFile.exists())
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.richstatus.xml", 2, "removeOldIcons: dir does not exist!");
-            }
-            return true;
-          }
-          if (localFile.canWrite()) {
-            break;
-          }
-          bool1 = bool2;
-        } while (!QLog.isColorLevel());
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.richstatus.xml", 2, "removeOldIcons: dir does not exist!");
+      }
+      return true;
+    }
+    if (!((File)localObject1).canWrite())
+    {
+      if (QLog.isColorLevel()) {
         QLog.d("Q.richstatus.xml", 2, "removeOldIcons: dir can not write!");
-        return false;
-        if (paramSparseArray1 != null) {
-          break;
-        }
-        paramSparseArray1 = localFile.listFiles();
-        j = paramSparseArray1.length;
-        if (i < j)
-        {
-          paramSparseArray2 = paramSparseArray1[i];
-          if (paramSparseArray2 == null) {}
-          for (;;)
-          {
-            i += 1;
-            break;
-            if ((!paramSparseArray2.exists()) || (paramSparseArray2.delete()) || (paramSparseArray2.delete()) || (!paramSparseArray2.delete())) {}
-          }
-        }
-        bool2 = localFile.canWrite();
-        bool1 = bool2;
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.richstatus.xml", 2, "removeOldIcons return with " + bool2);
-      return bool2;
-      ArrayList localArrayList = new ArrayList();
-      int j = paramSparseArray2.size();
-      i = 0;
+      }
+      return false;
+    }
+    if (paramSparseArray1 == null)
+    {
+      paramSparseArray1 = ((File)localObject1).listFiles();
+      j = paramSparseArray1.length;
       while (i < j)
       {
-        ActionInfo localActionInfo1 = (ActionInfo)paramSparseArray2.valueAt(i);
-        ActionInfo localActionInfo2 = (ActionInfo)paramSparseArray1.get(localActionInfo1.jdField_a_of_type_Int);
-        if ((localActionInfo2 != null) && (localActionInfo2.jdField_a_of_type_JavaLangString != null) && (!localActionInfo2.jdField_a_of_type_JavaLangString.equalsIgnoreCase(localActionInfo1.jdField_a_of_type_JavaLangString))) {
-          localArrayList.add(localActionInfo2.jdField_a_of_type_Int + "_s_" + 201);
-        }
-        if ((localActionInfo2 != null) && (localActionInfo2.b != null) && (!localActionInfo2.b.equalsIgnoreCase(localActionInfo1.b))) {
-          localArrayList.add(localActionInfo2.jdField_a_of_type_Int + "_s_" + 200);
+        paramSparseArray2 = paramSparseArray1[i];
+        if ((paramSparseArray2 != null) && (paramSparseArray2.exists()) && (!paramSparseArray2.delete()) && (!paramSparseArray2.delete())) {
+          paramSparseArray2.delete();
         }
         i += 1;
       }
-      paramSparseArray1 = localArrayList.iterator();
-      while (paramSparseArray1.hasNext())
+      bool = ((File)localObject1).canWrite();
+      if (QLog.isColorLevel())
       {
-        paramSparseArray2 = new File(localFile, (String)paramSparseArray1.next());
-        if ((!paramSparseArray2.exists()) || (paramSparseArray2.delete()) || (paramSparseArray2.delete()) || (!paramSparseArray2.delete())) {}
+        paramSparseArray1 = new StringBuilder();
+        paramSparseArray1.append("removeOldIcons return with ");
+        paramSparseArray1.append(bool);
+        QLog.d("Q.richstatus.xml", 2, paramSparseArray1.toString());
       }
-      bool2 = localFile.canWrite();
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.richstatus.xml", 2, "removeOldIcons return with " + bool2);
-    return bool2;
+      return bool;
+    }
+    ArrayList localArrayList = new ArrayList();
+    int k = paramSparseArray2.size();
+    i = j;
+    while (i < k)
+    {
+      Object localObject2 = (ActionInfo)paramSparseArray2.valueAt(i);
+      ActionInfo localActionInfo = (ActionInfo)paramSparseArray1.get(((ActionInfo)localObject2).jdField_a_of_type_Int);
+      if ((localActionInfo != null) && (localActionInfo.jdField_a_of_type_JavaLangString != null) && (!localActionInfo.jdField_a_of_type_JavaLangString.equalsIgnoreCase(((ActionInfo)localObject2).jdField_a_of_type_JavaLangString)))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localActionInfo.jdField_a_of_type_Int);
+        localStringBuilder.append("_s_");
+        localStringBuilder.append(201);
+        localArrayList.add(localStringBuilder.toString());
+      }
+      if ((localActionInfo != null) && (localActionInfo.b != null) && (!localActionInfo.b.equalsIgnoreCase(((ActionInfo)localObject2).b)))
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(localActionInfo.jdField_a_of_type_Int);
+        ((StringBuilder)localObject2).append("_s_");
+        ((StringBuilder)localObject2).append(200);
+        localArrayList.add(((StringBuilder)localObject2).toString());
+      }
+      i += 1;
+    }
+    paramSparseArray1 = localArrayList.iterator();
+    while (paramSparseArray1.hasNext())
+    {
+      paramSparseArray2 = new File((File)localObject1, (String)paramSparseArray1.next());
+      if ((paramSparseArray2.exists()) && (!paramSparseArray2.delete()) && (!paramSparseArray2.delete())) {
+        paramSparseArray2.delete();
+      }
+    }
+    boolean bool = ((File)localObject1).canWrite();
+    if (QLog.isColorLevel())
+    {
+      paramSparseArray1 = new StringBuilder();
+      paramSparseArray1.append("removeOldIcons return with ");
+      paramSparseArray1.append(bool);
+      QLog.d("Q.richstatus.xml", 2, paramSparseArray1.toString());
+    }
+    return bool;
   }
   
-  private Object[] a(InputStream paramInputStream)
+  /* Error */
+  private Object[] a(java.io.InputStream paramInputStream)
   {
-    int j = -1;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "parseXmlFile(" + paramInputStream + ")");
-    }
-    Object[] arrayOfObject = new Object[2];
-    if (paramInputStream == null) {
-      return arrayOfObject;
-    }
-    Object localObject2 = new StatusXmlHandler();
-    for (;;)
-    {
-      try
-      {
-        SAXParserFactory.newInstance().newSAXParser().parse(paramInputStream, (DefaultHandler)localObject2);
-        SparseArray localSparseArray = ((StatusXmlHandler)localObject2).a();
-        localObject2 = ((StatusXmlHandler)localObject2).a();
-        if (localSparseArray.size() > 1) {
-          arrayOfObject[0] = localSparseArray;
-        }
-        if (((ArrayList)localObject2).size() > 0) {
-          arrayOfObject[1] = localObject2;
-        }
-      }
-      catch (ParserConfigurationException localParserConfigurationException)
-      {
-        localParserConfigurationException.printStackTrace();
-        try
-        {
-          paramInputStream.close();
-        }
-        catch (IOException paramInputStream)
-        {
-          paramInputStream.printStackTrace();
-        }
-        continue;
-      }
-      catch (SAXException localSAXException)
-      {
-        localSAXException.printStackTrace();
-        try
-        {
-          paramInputStream.close();
-        }
-        catch (IOException paramInputStream)
-        {
-          paramInputStream.printStackTrace();
-        }
-        continue;
-      }
-      catch (IOException localIOException)
-      {
-        localIOException.printStackTrace();
-        try
-        {
-          paramInputStream.close();
-        }
-        catch (IOException paramInputStream)
-        {
-          paramInputStream.printStackTrace();
-        }
-        continue;
-      }
-      finally
-      {
-        try
-        {
-          paramInputStream.close();
-          throw localObject1;
-        }
-        catch (IOException paramInputStream)
-        {
-          paramInputStream.printStackTrace();
-          continue;
-        }
-        int i = -1;
-        continue;
-      }
-      try
-      {
-        paramInputStream.close();
-        if (QLog.isColorLevel())
-        {
-          paramInputStream = new StringBuilder().append("parseXmlFile return, action num: ");
-          if (arrayOfObject[0] != null)
-          {
-            i = ((SparseArray)arrayOfObject[0]).size();
-            paramInputStream = paramInputStream.append(i).append(" tag num: ");
-            i = j;
-            if (arrayOfObject[1] != null) {
-              i = ((ArrayList)arrayOfObject[1]).size();
-            }
-            QLog.d("Q.richstatus.xml", 2, i);
-          }
-        }
-        else
-        {
-          return arrayOfObject;
-        }
-      }
-      catch (IOException paramInputStream)
-      {
-        paramInputStream.printStackTrace();
-      }
-    }
+    // Byte code:
+    //   0: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +47 -> 50
+    //   6: new 224	java/lang/StringBuilder
+    //   9: dup
+    //   10: invokespecial 225	java/lang/StringBuilder:<init>	()V
+    //   13: astore 4
+    //   15: aload 4
+    //   17: ldc_w 340
+    //   20: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: pop
+    //   24: aload 4
+    //   26: aload_1
+    //   27: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   30: pop
+    //   31: aload 4
+    //   33: ldc 238
+    //   35: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: pop
+    //   39: ldc 90
+    //   41: iconst_2
+    //   42: aload 4
+    //   44: invokevirtual 242	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   47: invokestatic 95	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   50: iconst_2
+    //   51: anewarray 4	java/lang/Object
+    //   54: astore 4
+    //   56: aload_1
+    //   57: ifnonnull +6 -> 63
+    //   60: aload 4
+    //   62: areturn
+    //   63: new 342	com/tencent/mobileqq/richstatus/StatusXmlHandler
+    //   66: dup
+    //   67: invokespecial 343	com/tencent/mobileqq/richstatus/StatusXmlHandler:<init>	()V
+    //   70: astore 6
+    //   72: invokestatic 349	javax/xml/parsers/SAXParserFactory:newInstance	()Ljavax/xml/parsers/SAXParserFactory;
+    //   75: invokevirtual 353	javax/xml/parsers/SAXParserFactory:newSAXParser	()Ljavax/xml/parsers/SAXParser;
+    //   78: aload_1
+    //   79: aload 6
+    //   81: invokevirtual 359	javax/xml/parsers/SAXParser:parse	(Ljava/io/InputStream;Lorg/xml/sax/helpers/DefaultHandler;)V
+    //   84: aload 6
+    //   86: invokevirtual 362	com/tencent/mobileqq/richstatus/StatusXmlHandler:a	()Landroid/util/SparseArray;
+    //   89: astore 5
+    //   91: aload 6
+    //   93: invokevirtual 365	com/tencent/mobileqq/richstatus/StatusXmlHandler:a	()Ljava/util/ArrayList;
+    //   96: astore 6
+    //   98: aload 5
+    //   100: invokevirtual 274	android/util/SparseArray:size	()I
+    //   103: iconst_1
+    //   104: if_icmple +9 -> 113
+    //   107: aload 4
+    //   109: iconst_0
+    //   110: aload 5
+    //   112: aastore
+    //   113: aload 6
+    //   115: invokevirtual 366	java/util/ArrayList:size	()I
+    //   118: ifle +9 -> 127
+    //   121: aload 4
+    //   123: iconst_1
+    //   124: aload 6
+    //   126: aastore
+    //   127: aload_1
+    //   128: invokevirtual 371	java/io/InputStream:close	()V
+    //   131: goto +55 -> 186
+    //   134: astore 4
+    //   136: goto +154 -> 290
+    //   139: astore 5
+    //   141: aload 5
+    //   143: invokevirtual 374	java/io/IOException:printStackTrace	()V
+    //   146: aload_1
+    //   147: invokevirtual 371	java/io/InputStream:close	()V
+    //   150: goto +36 -> 186
+    //   153: astore 5
+    //   155: aload 5
+    //   157: invokevirtual 375	org/xml/sax/SAXException:printStackTrace	()V
+    //   160: aload_1
+    //   161: invokevirtual 371	java/io/InputStream:close	()V
+    //   164: goto +22 -> 186
+    //   167: astore 5
+    //   169: aload 5
+    //   171: invokevirtual 376	javax/xml/parsers/ParserConfigurationException:printStackTrace	()V
+    //   174: aload_1
+    //   175: invokevirtual 371	java/io/InputStream:close	()V
+    //   178: goto +8 -> 186
+    //   181: astore_1
+    //   182: aload_1
+    //   183: invokevirtual 374	java/io/IOException:printStackTrace	()V
+    //   186: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   189: ifeq +98 -> 287
+    //   192: new 224	java/lang/StringBuilder
+    //   195: dup
+    //   196: invokespecial 225	java/lang/StringBuilder:<init>	()V
+    //   199: astore_1
+    //   200: aload_1
+    //   201: ldc_w 378
+    //   204: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   207: pop
+    //   208: aload 4
+    //   210: iconst_0
+    //   211: aaload
+    //   212: astore 5
+    //   214: iconst_m1
+    //   215: istore_3
+    //   216: aload 5
+    //   218: ifnull +17 -> 235
+    //   221: aload 4
+    //   223: iconst_0
+    //   224: aaload
+    //   225: checkcast 53	android/util/SparseArray
+    //   228: invokevirtual 274	android/util/SparseArray:size	()I
+    //   231: istore_2
+    //   232: goto +5 -> 237
+    //   235: iconst_m1
+    //   236: istore_2
+    //   237: aload_1
+    //   238: iload_2
+    //   239: invokevirtual 296	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   242: pop
+    //   243: aload_1
+    //   244: ldc_w 380
+    //   247: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   250: pop
+    //   251: iload_3
+    //   252: istore_2
+    //   253: aload 4
+    //   255: iconst_1
+    //   256: aaload
+    //   257: ifnull +14 -> 271
+    //   260: aload 4
+    //   262: iconst_1
+    //   263: aaload
+    //   264: checkcast 58	java/util/ArrayList
+    //   267: invokevirtual 366	java/util/ArrayList:size	()I
+    //   270: istore_2
+    //   271: aload_1
+    //   272: iload_2
+    //   273: invokevirtual 296	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   276: pop
+    //   277: ldc 90
+    //   279: iconst_2
+    //   280: aload_1
+    //   281: invokevirtual 242	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   284: invokestatic 95	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   287: aload 4
+    //   289: areturn
+    //   290: aload_1
+    //   291: invokevirtual 371	java/io/InputStream:close	()V
+    //   294: goto +8 -> 302
+    //   297: astore_1
+    //   298: aload_1
+    //   299: invokevirtual 374	java/io/IOException:printStackTrace	()V
+    //   302: aload 4
+    //   304: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	305	0	this	StatusManager
+    //   0	305	1	paramInputStream	java.io.InputStream
+    //   231	42	2	i	int
+    //   215	37	3	j	int
+    //   13	109	4	localObject1	Object
+    //   134	169	4	arrayOfObject	Object[]
+    //   89	22	5	localSparseArray	SparseArray
+    //   139	3	5	localIOException	java.io.IOException
+    //   153	3	5	localSAXException	org.xml.sax.SAXException
+    //   167	3	5	localParserConfigurationException	javax.xml.parsers.ParserConfigurationException
+    //   212	5	5	localObject2	Object
+    //   70	55	6	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   72	107	134	finally
+    //   113	121	134	finally
+    //   141	146	134	finally
+    //   155	160	134	finally
+    //   169	174	134	finally
+    //   72	107	139	java/io/IOException
+    //   113	121	139	java/io/IOException
+    //   72	107	153	org/xml/sax/SAXException
+    //   113	121	153	org/xml/sax/SAXException
+    //   72	107	167	javax/xml/parsers/ParserConfigurationException
+    //   113	121	167	javax/xml/parsers/ParserConfigurationException
+    //   127	131	181	java/io/IOException
+    //   146	150	181	java/io/IOException
+    //   160	164	181	java/io/IOException
+    //   174	178	181	java/io/IOException
+    //   290	294	297	java/io/IOException
   }
   
   private int b()
   {
     long l = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "updateActions_Remote:" + l + ", " + this.jdField_b_of_type_Long + ", " + "rich_status_android");
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateActions_Remote:");
+      ((StringBuilder)localObject).append(l);
+      ((StringBuilder)localObject).append(", ");
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_Long);
+      ((StringBuilder)localObject).append(", ");
+      ((StringBuilder)localObject).append("rich_status_android");
+      QLog.d("Q.richstatus.xml", 2, ((StringBuilder)localObject).toString());
     }
     if (Math.abs(l - this.jdField_b_of_type_Long) > 240000L)
     {
-      ConfigHandler localConfigHandler = (ConfigHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER);
+      localObject = (ConfigHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER);
       if (this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver == null) {
         a();
       }
-      localConfigHandler.a(null, new GetResourceReqInfo[] { localConfigHandler.d() });
+      ((ConfigHandler)localObject).a(null, new GetResourceReqInfo[] { ((ConfigHandler)localObject).d() });
       this.jdField_b_of_type_Long = l;
     }
     return 100;
@@ -361,30 +464,31 @@ public class StatusManager
   
   private int b(boolean paramBoolean)
   {
-    int i = 101;
     if (this.jdField_a_of_type_AndroidUtilSparseArray.size() == 0) {
-      i = 102;
+      return 102;
     }
-    long l;
-    do
+    long l = System.currentTimeMillis();
+    if (Math.abs(this.jdField_c_of_type_Long - l) > 43200000L)
     {
-      return i;
-      l = System.currentTimeMillis();
-      if (Math.abs(this.jdField_c_of_type_Long - l) <= 43200000L) {
-        break;
+      if (!paramBoolean) {
+        return 101;
       }
-    } while (!paramBoolean);
-    if (Math.abs(this.jdField_d_of_type_Long - l) > 300000L)
-    {
-      this.jdField_d_of_type_Long = l;
-      return 101;
+      if (Math.abs(this.jdField_d_of_type_Long - l) > 300000L)
+      {
+        this.jdField_d_of_type_Long = l;
+        return 101;
+      }
     }
     return 100;
   }
   
   private SharedPreferences b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("rich_status" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
+    BaseApplication localBaseApplication = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("rich_status");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    return localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0);
   }
   
   private void b()
@@ -429,55 +533,62 @@ public class StatusManager
   
   public int a(RichStatus paramRichStatus, int paramInt)
   {
-    if (paramRichStatus == null) {}
-    for (;;)
-    {
+    if (paramRichStatus == null) {
       return 100;
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.richstatus.set", 2, String.format("changeStatus %d,%d [%s]", new Object[] { Integer.valueOf(paramRichStatus.actionId), Integer.valueOf(paramInt), paramRichStatus.toSpannableString(null) }));
-      }
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = paramRichStatus;
-      if (paramRichStatus.isEmpty()) {
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-        {
-          paramRichStatus = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), StatusServlet.class);
-          paramRichStatus.putExtra("k_cmd", 8);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(paramRichStatus);
-        }
-      }
-      while (this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver == null)
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.richstatus.set", 2, String.format("changeStatus %d,%d [%s]", new Object[] { Integer.valueOf(paramRichStatus.actionId), Integer.valueOf(paramInt), paramRichStatus.toSpannableString(null) }));
+    }
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = paramRichStatus;
+    if (paramRichStatus.isEmpty())
+    {
+      paramRichStatus = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      if (paramRichStatus != null)
       {
-        b();
-        return 100;
-        byte[] arrayOfByte = paramRichStatus.encode();
-        NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), StatusServlet.class);
-        localNewIntent.putExtra("k_cmd", 9);
-        localNewIntent.putExtra("k_tpl_id", paramRichStatus.tplId);
-        localNewIntent.putExtra("k_font_id", paramRichStatus.fontId);
-        localNewIntent.putExtra("k_sign_len", arrayOfByte.length);
-        localNewIntent.putExtra("k_sign_data", arrayOfByte);
-        localNewIntent.putExtra("k_source", paramInt);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
+        paramRichStatus = new NewIntent(paramRichStatus.getApp(), StatusServlet.class);
+        paramRichStatus.putExtra("k_cmd", 8);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(paramRichStatus);
       }
     }
+    else
+    {
+      byte[] arrayOfByte = paramRichStatus.encode();
+      NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), StatusServlet.class);
+      localNewIntent.putExtra("k_cmd", 9);
+      localNewIntent.putExtra("k_tpl_id", paramRichStatus.tplId);
+      localNewIntent.putExtra("k_font_id", paramRichStatus.fontId);
+      localNewIntent.putExtra("k_sign_len", arrayOfByte.length);
+      localNewIntent.putExtra("k_sign_data", arrayOfByte);
+      localNewIntent.putExtra("k_source", paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver == null) {
+      b();
+    }
+    return 100;
   }
   
   public int a(ArrayList<StateTag> paramArrayList)
   {
-    if (paramArrayList == null) {
-      throw new InvalidParameterException("array list is null");
+    if (paramArrayList != null)
+    {
+      paramArrayList.clear();
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+        paramArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+      }
+      return b(false);
     }
-    paramArrayList.clear();
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-      paramArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    }
-    return b(false);
+    throw new InvalidParameterException("array list is null");
   }
   
   public int a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.shuo", 2, "setSyncShuoShuo " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setSyncShuoShuo ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("Q.richstatus.shuo", 2, localStringBuilder.toString());
     }
     if (this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver == null) {
       b();
@@ -493,99 +604,103 @@ public class StatusManager
   
   public Bitmap a(int paramInt1, int paramInt2)
   {
-    localObject7 = null;
     if (this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder == null) {
       this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder = new BitmapDecoder("StatusIcon_", this);
     }
-    localObject3 = (ActionInfo)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
-    Object localObject5 = paramInt1 + "_s_" + paramInt2;
-    Object localObject6 = this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder;
-    Object localObject1;
-    if (localObject3 != null) {
-      if (paramInt2 == 201)
-      {
-        localObject1 = ((ActionInfo)localObject3).jdField_a_of_type_JavaLangString;
-        localObject6 = ((BitmapDecoder)localObject6).a((String)localObject5, null, (String)localObject1);
-        if ((localObject3 == null) && (c()) && (localObject6 == null)) {
-          this.jdField_a_of_type_JavaUtilHashSet.add(localObject5);
-        }
-        if (paramInt2 != 201) {
-          break label257;
-        }
+    Object localObject2 = (ActionInfo)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramInt1);
+    ((StringBuilder)localObject1).append("_s_");
+    ((StringBuilder)localObject1).append(paramInt2);
+    Object localObject3 = ((StringBuilder)localObject1).toString();
+    Object localObject5 = this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder;
+    Object localObject4 = null;
+    if (localObject2 != null)
+    {
+      if (paramInt2 == 201) {
+        localObject1 = ((ActionInfo)localObject2).jdField_a_of_type_JavaLangString;
+      } else {
+        localObject1 = ((ActionInfo)localObject2).b;
       }
     }
+    else {
+      localObject1 = null;
+    }
+    localObject5 = ((BitmapDecoder)localObject5).a((String)localObject3, null, (String)localObject1);
+    if ((localObject2 == null) && (c()) && (localObject5 == null)) {
+      this.jdField_a_of_type_JavaUtilHashSet.add(localObject3);
+    }
+    if (paramInt2 == 201) {}
     try
     {
       if (GlobalImageCache.a != null)
       {
-        localObject5 = (Bitmap)GlobalImageCache.a.get("StatusIcon_RichStatusDefaultBig");
-        localObject1 = localObject5;
-        localObject3 = localObject7;
-        if (localObject5 == null) {
-          localObject1 = localObject5;
+        localObject3 = (Bitmap)GlobalImageCache.a.get("StatusIcon_RichStatusDefaultBig");
+        localObject2 = localObject4;
+        localObject1 = localObject3;
+        if (localObject3 != null) {
+          break label370;
         }
+        localObject1 = localObject3;
       }
     }
     catch (OutOfMemoryError localOutOfMemoryError1)
     {
-      for (;;)
-      {
-        label209:
-        localObject2 = null;
-        label257:
-        localObject3 = localObject7;
-      }
+      label234:
+      break label364;
     }
     try
     {
-      localObject5 = BitmapManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources(), 2130849982);
-      localObject1 = localObject5;
-      GlobalImageCache.a.put("StatusIcon_RichStatusDefaultSmall", localObject5, (byte)0);
-      localObject3 = localObject7;
-      localObject1 = localObject5;
+      localObject3 = BitmapManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources(), 2130849880);
+      localObject1 = localObject3;
+      GlobalImageCache.a.put("StatusIcon_RichStatusDefaultSmall", localObject3, (byte)0);
+      localObject2 = localObject4;
+      localObject1 = localObject3;
     }
     catch (OutOfMemoryError localOutOfMemoryError2)
     {
-      Object localObject4 = localObject7;
-      break label209;
-      localObject2 = null;
-      break label209;
-      localObject2 = null;
-      localObject4 = localObject7;
-      break label209;
+      break label234;
     }
-    if (localObject6 != null) {
-      localObject1 = localObject6;
-    }
-    while (paramInt2 == 201)
+    localObject2 = localObject4;
+    break label370;
+    localObject1 = BitmapManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources(), 2130849880);
+    localObject2 = localObject4;
+    break label370;
+    if (paramInt2 == 200)
     {
-      return localObject1;
-      localObject1 = ((ActionInfo)localObject3).b;
-      break;
-      localObject1 = null;
-      break;
-      localObject1 = BitmapManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources(), 2130849982);
-      localObject3 = localObject7;
-      break label209;
-      if (paramInt2 != 200) {
-        break label382;
-      }
       if (GlobalImageCache.a != null)
       {
-        localObject3 = (Bitmap)GlobalImageCache.a.get("StatusIcon_RichStatusDefaultSmall");
-        if (localObject3 != null) {
-          break label377;
+        localObject2 = (Bitmap)GlobalImageCache.a.get("StatusIcon_RichStatusDefaultSmall");
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          localObject1 = BitmapManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources(), 2130849881);
+          GlobalImageCache.a.put("StatusIcon_RichStatusDefaultSmall", localObject1, (byte)0);
         }
-        localObject3 = BitmapManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources(), 2130849983);
-        GlobalImageCache.a.put("StatusIcon_RichStatusDefaultSmall", localObject3, (byte)0);
-        localObject1 = null;
-        break label209;
+        localObject3 = null;
+        localObject2 = localObject1;
+        localObject1 = localObject3;
       }
-      localObject3 = BitmapManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources(), 2130849983);
-      localObject1 = null;
-      break label209;
+      else
+      {
+        localObject2 = BitmapManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources(), 2130849881);
+        localObject1 = null;
+      }
     }
-    return localObject3;
+    else
+    {
+      label364:
+      localObject1 = null;
+      localObject2 = localObject4;
+    }
+    label370:
+    if (localObject5 != null) {
+      return localObject5;
+    }
+    if (paramInt2 == 201) {
+      return localObject1;
+    }
+    return localObject2;
   }
   
   public ActionInfo a(int paramInt)
@@ -608,40 +723,44 @@ public class StatusManager
     if (localObject != null)
     {
       paramString = ((FriendsManager)localObject).a(paramString, paramBoolean);
-      if (paramString == null) {}
-    }
-    for (paramString = ExtensionRichStatus.a(paramString);; paramString = null)
-    {
-      localObject = paramString;
-      if (paramString == null) {
-        localObject = new RichStatus(null);
+      if (paramString != null)
+      {
+        paramString = ExtensionRichStatus.a(paramString);
+        break label39;
       }
-      return localObject;
     }
+    paramString = null;
+    label39:
+    localObject = paramString;
+    if (paramString == null) {
+      localObject = new RichStatus(null);
+    }
+    return localObject;
   }
   
   public RichStatus a(boolean paramBoolean)
   {
-    Object localObject2;
-    if (this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus != null)
-    {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus;
-      return localObject2;
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus;
+    if (localObject1 != null) {
+      return localObject1;
     }
-    Object localObject1 = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    localObject1 = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
     if (localObject1 != null)
     {
       localObject1 = ((FriendsManager)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramBoolean);
-      if (localObject1 == null) {}
-    }
-    for (localObject1 = ExtensionRichStatus.a((ExtensionInfo)localObject1);; localObject1 = null)
-    {
-      localObject2 = localObject1;
-      if (localObject1 != null) {
-        break;
+      if (localObject1 != null)
+      {
+        localObject1 = ExtensionRichStatus.a((ExtensionInfo)localObject1);
+        break label56;
       }
-      return new RichStatus(null);
     }
+    localObject1 = null;
+    label56:
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = new RichStatus(null);
+    }
+    return localObject2;
   }
   
   public String a(String paramString1, int paramInt1, int paramInt2, String paramString2)
@@ -652,11 +771,13 @@ public class StatusManager
   protected ArrayList<UserProfile> a(ArrayList<UserProfile> paramArrayList)
   {
     HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
-    int j = paramArrayList.size();
+    int k = paramArrayList.size();
+    int j = -1;
+    int i;
     Object localObject;
-    if ((localHashMap != null) && (localHashMap.size() > 0) && (j > 0))
+    if ((localHashMap != null) && (localHashMap.size() > 0) && (k > 0))
     {
-      i = j - 1;
+      i = k - 1;
       while (i > -1)
       {
         localObject = (UserProfile)paramArrayList.get(i);
@@ -673,17 +794,20 @@ public class StatusManager
     }
     if (QLog.isColorLevel())
     {
-      localObject = new StringBuilder().append("filterFriends ").append(j).append(" - ");
-      if (localHashMap == null) {
-        break label186;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("filterFriends ");
+      ((StringBuilder)localObject).append(k);
+      ((StringBuilder)localObject).append(" - ");
+      i = j;
+      if (localHashMap != null) {
+        i = localHashMap.size();
       }
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("=");
+      ((StringBuilder)localObject).append(paramArrayList.size());
+      QLog.d("Q.richstatus.mate", 2, ((StringBuilder)localObject).toString());
     }
-    label186:
-    for (int i = localHashMap.size();; i = -1)
-    {
-      QLog.d("Q.richstatus.mate", 2, i + "=" + paramArrayList.size());
-      return paramArrayList;
-    }
+    return paramArrayList;
   }
   
   protected ArrayList<UserProfile> a(ArrayList<UserProfile> paramArrayList1, ArrayList<UserProfile> paramArrayList2, int paramInt)
@@ -713,45 +837,48 @@ public class StatusManager
     Object localObject2 = Long.valueOf(0L);
     try
     {
-      long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      localObject1 = Long.valueOf(l);
+      localObject1 = Long.valueOf(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
     }
     catch (Exception localException)
     {
-      for (;;)
+      localObject1 = localObject2;
+      if (QLog.isColorLevel())
       {
+        QLog.w("Q.richstatus.xml", 2, localException.toString());
         localObject1 = localObject2;
-        if (QLog.isColorLevel())
-        {
-          QLog.w("Q.richstatus.xml", 2, localException.toString());
-          localObject1 = localObject2;
-          continue;
-          localException.bAge = ((UserProfile)localObject2).bAge;
-          localException.bSex = ((UserProfile)localObject2).bSex;
-          localException.strDesc = ((UserProfile)localObject2).strDesc;
-        }
       }
-      this.jdField_a_of_type_JavaUtilHashMap = localHashMap;
-      if (!QLog.isColorLevel()) {
-        break label385;
-      }
-      QLog.d("Q.richstatus.mate", 2, "mergeFriendsStrangers " + paramArrayList1.size() + " " + paramArrayList2.size() + " " + paramInt + "=" + localArrayList.size());
     }
     localHashMap.put(localObject1, new UserProfile());
     localObject1 = paramArrayList2.iterator();
-    for (;;)
+    while (((Iterator)localObject1).hasNext())
     {
-      if (!((Iterator)localObject1).hasNext()) {
-        break label306;
-      }
       localObject2 = (UserProfile)((Iterator)localObject1).next();
       UserProfile localUserProfile = (UserProfile)localHashMap.get(Long.valueOf(((UserProfile)localObject2).lEctID));
-      if (localUserProfile != null) {
-        break;
+      if (localUserProfile == null)
+      {
+        localArrayList.add(localObject2);
       }
-      localArrayList.add(localObject2);
+      else
+      {
+        localUserProfile.bAge = ((UserProfile)localObject2).bAge;
+        localUserProfile.bSex = ((UserProfile)localObject2).bSex;
+        localUserProfile.strDesc = ((UserProfile)localObject2).strDesc;
+      }
     }
-    label306:
+    this.jdField_a_of_type_JavaUtilHashMap = localHashMap;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("mergeFriendsStrangers ");
+      ((StringBuilder)localObject1).append(paramArrayList1.size());
+      ((StringBuilder)localObject1).append(" ");
+      ((StringBuilder)localObject1).append(paramArrayList2.size());
+      ((StringBuilder)localObject1).append(" ");
+      ((StringBuilder)localObject1).append(paramInt);
+      ((StringBuilder)localObject1).append("=");
+      ((StringBuilder)localObject1).append(localArrayList.size());
+      QLog.d("Q.richstatus.mate", 2, ((StringBuilder)localObject1).toString());
+    }
     return localArrayList;
   }
   
@@ -765,92 +892,78 @@ public class StatusManager
   
   public void a(Object paramObject)
   {
-    if (paramObject == null) {}
-    for (;;)
-    {
+    if (paramObject == null) {
       return;
-      for (;;)
-      {
-        try
+    }
+    try
+    {
+      if ((paramObject instanceof IIconListener)) {
+        if (this.jdField_a_of_type_JavaUtilLinkedList == null)
         {
-          if ((paramObject instanceof IIconListener))
-          {
-            if (this.jdField_a_of_type_JavaUtilLinkedList == null)
-            {
-              this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-              this.jdField_a_of_type_JavaUtilLinkedList.add((IIconListener)paramObject);
-            }
-          }
-          else
-          {
-            if ((paramObject instanceof IActionListener))
-            {
-              if (this.jdField_b_of_type_JavaUtilLinkedList != null) {
-                break label228;
-              }
-              this.jdField_b_of_type_JavaUtilLinkedList = new LinkedList();
-              this.jdField_b_of_type_JavaUtilLinkedList.add((IActionListener)paramObject);
-            }
-            if ((paramObject instanceof IImageListener))
-            {
-              if (this.jdField_c_of_type_JavaUtilLinkedList != null) {
-                break label254;
-              }
-              this.jdField_c_of_type_JavaUtilLinkedList = new LinkedList();
-              this.jdField_c_of_type_JavaUtilLinkedList.add((IImageListener)paramObject);
-            }
-            if ((paramObject instanceof IStatusListener))
-            {
-              if (this.jdField_d_of_type_JavaUtilLinkedList != null) {
-                break label280;
-              }
-              this.jdField_d_of_type_JavaUtilLinkedList = new LinkedList();
-              this.jdField_d_of_type_JavaUtilLinkedList.add((IStatusListener)paramObject);
-            }
-            if (!(paramObject instanceof ISameStatusListener)) {
-              break;
-            }
-            if (this.e != null) {
-              break label306;
-            }
-            this.e = new LinkedList();
-            this.e.add((ISameStatusListener)paramObject);
-            break;
-          }
+          this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+          this.jdField_a_of_type_JavaUtilLinkedList.add((IIconListener)paramObject);
         }
-        finally {}
-        label280:
-        if (!this.jdField_a_of_type_JavaUtilLinkedList.contains(paramObject))
+        else if (!this.jdField_a_of_type_JavaUtilLinkedList.contains(paramObject))
         {
           this.jdField_a_of_type_JavaUtilLinkedList.add((IIconListener)paramObject);
-          continue;
-          label228:
-          if (!this.jdField_b_of_type_JavaUtilLinkedList.contains(paramObject))
-          {
-            this.jdField_b_of_type_JavaUtilLinkedList.add((IActionListener)paramObject);
-            continue;
-            label254:
-            if (!this.jdField_c_of_type_JavaUtilLinkedList.contains(paramObject))
-            {
-              this.jdField_c_of_type_JavaUtilLinkedList.add((IImageListener)paramObject);
-              continue;
-              if (!this.jdField_d_of_type_JavaUtilLinkedList.contains(paramObject)) {
-                this.jdField_d_of_type_JavaUtilLinkedList.add((IStatusListener)paramObject);
-              }
-            }
-          }
         }
       }
-      label306:
-      if (!this.e.contains(paramObject)) {
-        this.e.add((ISameStatusListener)paramObject);
+      if ((paramObject instanceof IActionListener)) {
+        if (this.jdField_b_of_type_JavaUtilLinkedList == null)
+        {
+          this.jdField_b_of_type_JavaUtilLinkedList = new LinkedList();
+          this.jdField_b_of_type_JavaUtilLinkedList.add((IActionListener)paramObject);
+        }
+        else if (!this.jdField_b_of_type_JavaUtilLinkedList.contains(paramObject))
+        {
+          this.jdField_b_of_type_JavaUtilLinkedList.add((IActionListener)paramObject);
+        }
       }
+      if ((paramObject instanceof IImageListener)) {
+        if (this.jdField_c_of_type_JavaUtilLinkedList == null)
+        {
+          this.jdField_c_of_type_JavaUtilLinkedList = new LinkedList();
+          this.jdField_c_of_type_JavaUtilLinkedList.add((IImageListener)paramObject);
+        }
+        else if (!this.jdField_c_of_type_JavaUtilLinkedList.contains(paramObject))
+        {
+          this.jdField_c_of_type_JavaUtilLinkedList.add((IImageListener)paramObject);
+        }
+      }
+      if ((paramObject instanceof IStatusListener)) {
+        if (this.jdField_d_of_type_JavaUtilLinkedList == null)
+        {
+          this.jdField_d_of_type_JavaUtilLinkedList = new LinkedList();
+          this.jdField_d_of_type_JavaUtilLinkedList.add((IStatusListener)paramObject);
+        }
+        else if (!this.jdField_d_of_type_JavaUtilLinkedList.contains(paramObject))
+        {
+          this.jdField_d_of_type_JavaUtilLinkedList.add((IStatusListener)paramObject);
+        }
+      }
+      if ((paramObject instanceof ISameStatusListener)) {
+        if (this.e == null)
+        {
+          this.e = new LinkedList();
+          this.e.add((ISameStatusListener)paramObject);
+        }
+        else if (!this.e.contains(paramObject))
+        {
+          this.e.add((ISameStatusListener)paramObject);
+        }
+      }
+      return;
     }
+    finally {}
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putString(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "sp_hot_status", paramString).commit();
+    SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    localStringBuilder.append("sp_hot_status");
+    localEditor.putString(localStringBuilder.toString(), paramString).commit();
   }
   
   public void a(String paramString1, String paramString2, Bitmap paramBitmap, int paramInt)
@@ -885,60 +998,54 @@ public class StatusManager
   
   protected void a(boolean paramBoolean)
   {
-    if (((this.jdField_a_of_type_JavaUtilLinkedList == null) || (this.jdField_a_of_type_JavaUtilLinkedList.size() == 0)) && ((this.jdField_c_of_type_JavaUtilLinkedList == null) || (this.jdField_c_of_type_JavaUtilLinkedList.size() == 0)))
+    Object localObject1 = this.jdField_a_of_type_JavaUtilLinkedList;
+    if ((localObject1 == null) || (((LinkedList)localObject1).size() == 0))
     {
-      this.jdField_a_of_type_JavaUtilHashSet.clear();
-      return;
+      localObject1 = this.jdField_c_of_type_JavaUtilLinkedList;
+      if ((localObject1 == null) || (((LinkedList)localObject1).size() == 0)) {}
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
-    label50:
-    String str;
-    Object localObject1;
-    Object localObject2;
-    for (;;)
+    else
     {
-      if (localIterator.hasNext())
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
+      while (localIterator.hasNext())
       {
-        str = (String)localIterator.next();
+        String str = (String)localIterator.next();
         localObject1 = str.split("_");
-        localObject2 = (ActionInfo)this.jdField_a_of_type_AndroidUtilSparseArray.get(Integer.parseInt(localObject1[0]));
-        if (localObject2 != null) {
-          if (localObject1.length == 3) {
+        Object localObject2 = (ActionInfo)this.jdField_a_of_type_AndroidUtilSparseArray.get(Integer.parseInt(localObject1[0]));
+        if (localObject2 != null)
+        {
+          if (localObject1.length == 3)
+          {
             if (Integer.parseInt(localObject1[2]) == 201) {
               localObject1 = ((ActionInfo)localObject2).jdField_a_of_type_JavaLangString;
+            } else {
+              localObject1 = ((ActionInfo)localObject2).b;
             }
+          }
+          else if ((localObject1.length == 2) && (!TextUtils.isEmpty(((ActionInfo)localObject2).g))) {
+            localObject1 = ((ActionInfo)localObject2).g.replace("$U", localObject1[1]);
+          } else {
+            localObject1 = null;
+          }
+          if (localObject1 != null)
+          {
+            localObject2 = this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder.a(str, null, (String)localObject1);
+            if (localObject2 != null) {
+              a(str, (String)localObject1, (Bitmap)localObject2, 1);
+            }
+          }
+          else
+          {
+            localIterator.remove();
           }
         }
       }
-    }
-    for (;;)
-    {
-      if (localObject1 != null)
-      {
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder.a(str, null, (String)localObject1);
-        if (localObject2 == null) {
-          break label50;
-        }
-        a(str, (String)localObject1, (Bitmap)localObject2, 1);
-        break label50;
-        localObject1 = ((ActionInfo)localObject2).b;
-        continue;
-        if ((localObject1.length != 2) || (TextUtils.isEmpty(((ActionInfo)localObject2).g))) {
-          break label226;
-        }
-        localObject1 = ((ActionInfo)localObject2).g.replace("$U", localObject1[1]);
-        continue;
+      if (paramBoolean) {
+        this.jdField_a_of_type_JavaUtilHashSet.clear();
       }
-      localIterator.remove();
-      break label50;
-      if (!paramBoolean) {
-        break;
-      }
-      this.jdField_a_of_type_JavaUtilHashSet.clear();
       return;
-      label226:
-      localObject1 = null;
     }
+    this.jdField_a_of_type_JavaUtilHashSet.clear();
   }
   
   public boolean a()
@@ -953,102 +1060,153 @@ public class StatusManager
     if (l2 < 104L) {
       l1 = 104L;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "StatusManager.isNewVersion(): localVersion " + l1 + " serverVersion " + paramLong + ", builtInVersion " + 104L);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("StatusManager.isNewVersion(): localVersion ");
+      localStringBuilder.append(l1);
+      localStringBuilder.append(" serverVersion ");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(", builtInVersion ");
+      localStringBuilder.append(104L);
+      QLog.d("Q.richstatus.xml", 2, localStringBuilder.toString());
     }
     return paramLong > l1;
   }
   
   public boolean a(File paramFile, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "saveActions(" + paramFile + ", " + paramLong + ")");
-    }
-    for (;;)
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      try
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("saveActions(");
+      ((StringBuilder)localObject1).append(paramFile);
+      ((StringBuilder)localObject1).append(", ");
+      ((StringBuilder)localObject1).append(paramLong);
+      ((StringBuilder)localObject1).append(")");
+      QLog.d("Q.richstatus.xml", 2, ((StringBuilder)localObject1).toString());
+    }
+    boolean bool2 = false;
+    try
+    {
+      localObject1 = a(new FileInputStream(paramFile));
+      ??? = (SparseArray)localObject1[0];
+      ArrayList localArrayList = (ArrayList)localObject1[1];
+      boolean bool1 = bool2;
+      if (??? != null)
       {
-        Object localObject1 = a(new FileInputStream(paramFile));
-        ??? = (SparseArray)localObject1[0];
-        ArrayList localArrayList = (ArrayList)localObject1[1];
-        if ((??? != null) && (((SparseArray)???).size() > 0) && (localArrayList != null) && (localArrayList.size() > 0))
+        bool1 = bool2;
+        if (((SparseArray)???).size() > 0)
         {
-          localObject1 = this.jdField_a_of_type_AndroidUtilSparseArray;
-          synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+          bool1 = bool2;
+          if (localArrayList != null)
           {
-            AsyncTask localAsyncTask = this.jdField_a_of_type_AndroidOsAsyncTask;
-            if (localAsyncTask != null) {
-              localAsyncTask.cancel(true);
+            bool1 = bool2;
+            if (localArrayList.size() > 0)
+            {
+              localObject1 = this.jdField_a_of_type_AndroidUtilSparseArray;
+              synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+              {
+                AsyncTask localAsyncTask = this.jdField_a_of_type_AndroidOsAsyncTask;
+                if (localAsyncTask != null) {
+                  localAsyncTask.cancel(true);
+                }
+                this.jdField_a_of_type_AndroidUtilSparseArray = ((SparseArray)???);
+                if ((localArrayList != null) && (localArrayList.size() > 0)) {
+                  synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+                  {
+                    this.jdField_a_of_type_JavaUtilArrayList.clear();
+                    this.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
+                  }
+                }
+                this.jdField_c_of_type_Long = System.currentTimeMillis();
+                ??? = new File(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getFilesDir(), "rich_status.xml");
+                if ((!paramFile.renameTo((File)???)) && (!paramFile.renameTo((File)???)) && (!paramFile.renameTo((File)???)))
+                {
+                  if (QLog.isColorLevel()) {
+                    QLog.d("Q.richstatus.xml", 2, "saveActions rename failed!");
+                  }
+                }
+                else
+                {
+                  paramFile = a().edit();
+                  paramFile.putLong("k_version", paramLong).putLong("k_update_time", this.jdField_c_of_type_Long).commit();
+                  if (a((SparseArray)localObject1, this.jdField_a_of_type_AndroidUtilSparseArray)) {
+                    paramFile.putLong("k_icon", paramLong).commit();
+                  }
+                }
+                bool1 = true;
+              }
             }
-            this.jdField_a_of_type_AndroidUtilSparseArray = ((SparseArray)???);
-            if ((localArrayList == null) || (localArrayList.size() <= 0)) {}
           }
         }
-        boolean bool;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
       }
-      catch (FileNotFoundException paramFile)
+      return bool1;
+    }
+    catch (FileNotFoundException paramFile)
+    {
+      paramFile.printStackTrace();
+      bool1 = bool2;
+      if (QLog.isColorLevel())
       {
-        synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.clear();
-          this.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
-          this.jdField_c_of_type_Long = System.currentTimeMillis();
-          ??? = new File(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getFilesDir(), "rich_status.xml");
-          if ((paramFile.renameTo((File)???)) || (paramFile.renameTo((File)???)) || (paramFile.renameTo((File)???)))
-          {
-            paramFile = a().edit();
-            paramFile.putLong("k_version", paramLong).putLong("k_update_time", this.jdField_c_of_type_Long).commit();
-            if (a((SparseArray)localObject1, this.jdField_a_of_type_AndroidUtilSparseArray)) {
-              paramFile.putLong("k_icon", paramLong).commit();
-            }
-            bool = true;
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.richstatus.xml", 2, "saveActions return with " + bool);
-            }
-            return bool;
-            paramFile = finally;
-            throw paramFile;
-            paramFile = paramFile;
-            paramFile.printStackTrace();
-            bool = false;
-          }
-        }
+        paramFile = new StringBuilder();
+        paramFile.append("saveActions return with ");
+        paramFile.append(bool1);
+        QLog.d("Q.richstatus.xml", 2, paramFile.toString());
       }
-      QLog.d("Q.richstatus.xml", 2, "saveActions rename failed!");
     }
   }
   
   public void b(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    if (paramObject == null) {
       return;
-      if (((paramObject instanceof IIconListener)) && (this.jdField_a_of_type_JavaUtilLinkedList != null)) {
-        this.jdField_a_of_type_JavaUtilLinkedList.remove(paramObject);
+    }
+    LinkedList localLinkedList;
+    if ((paramObject instanceof IIconListener))
+    {
+      localLinkedList = this.jdField_a_of_type_JavaUtilLinkedList;
+      if (localLinkedList != null) {
+        localLinkedList.remove(paramObject);
       }
-      if (((paramObject instanceof IActionListener)) && (this.jdField_b_of_type_JavaUtilLinkedList != null)) {
-        this.jdField_b_of_type_JavaUtilLinkedList.remove(paramObject);
+    }
+    if ((paramObject instanceof IActionListener))
+    {
+      localLinkedList = this.jdField_b_of_type_JavaUtilLinkedList;
+      if (localLinkedList != null) {
+        localLinkedList.remove(paramObject);
       }
-      if (((paramObject instanceof IImageListener)) && (this.jdField_c_of_type_JavaUtilLinkedList != null)) {
-        this.jdField_c_of_type_JavaUtilLinkedList.remove(paramObject);
+    }
+    if ((paramObject instanceof IImageListener))
+    {
+      localLinkedList = this.jdField_c_of_type_JavaUtilLinkedList;
+      if (localLinkedList != null) {
+        localLinkedList.remove(paramObject);
       }
-      if (((paramObject instanceof IStatusListener)) && (this.jdField_d_of_type_JavaUtilLinkedList != null)) {
-        this.jdField_d_of_type_JavaUtilLinkedList.remove(paramObject);
+    }
+    if ((paramObject instanceof IStatusListener))
+    {
+      localLinkedList = this.jdField_d_of_type_JavaUtilLinkedList;
+      if (localLinkedList != null) {
+        localLinkedList.remove(paramObject);
       }
-    } while ((!(paramObject instanceof ISameStatusListener)) || (this.e == null));
-    this.e.remove(paramObject);
+    }
+    if ((paramObject instanceof ISameStatusListener))
+    {
+      localLinkedList = this.e;
+      if (localLinkedList != null) {
+        localLinkedList.remove(paramObject);
+      }
+    }
   }
   
   public boolean b()
   {
-    SharedPreferences localSharedPreferences = b();
-    boolean bool = localSharedPreferences.getBoolean("k_sync_ss", false);
+    Object localObject = b();
+    boolean bool = ((SharedPreferences)localObject).getBoolean("k_sync_ss", false);
     long l = System.currentTimeMillis();
-    if ((Math.abs(l - this.jdField_a_of_type_Long) > 180000L) && (Math.abs(l - localSharedPreferences.getLong("k_ss_time", 0L)) > 60000L))
+    if ((Math.abs(l - this.jdField_a_of_type_Long) > 180000L) && (Math.abs(l - ((SharedPreferences)localObject).getLong("k_ss_time", 0L)) > 60000L))
     {
       if (this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver == null) {
         b();
@@ -1056,8 +1214,12 @@ public class StatusManager
       this.jdField_a_of_type_Long = l;
       StatusServlet.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.shuo", 2, "getSyncShuoShuo " + bool);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getSyncShuoShuo ");
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("Q.richstatus.shuo", 2, ((StringBuilder)localObject).toString());
     }
     return bool;
   }
@@ -1066,7 +1228,7 @@ public class StatusManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.StatusManager
  * JD-Core Version:    0.7.0.1
  */

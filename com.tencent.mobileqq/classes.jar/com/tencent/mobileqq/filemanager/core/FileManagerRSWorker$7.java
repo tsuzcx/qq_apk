@@ -16,7 +16,8 @@ class FileManagerRSWorker$7
     {
       if (this.this$0.f != null)
       {
-        this.this$0.a(this.this$0.f, 0L);
+        FileManagerRSWorker localFileManagerRSWorker = this.this$0;
+        localFileManagerRSWorker.a(localFileManagerRSWorker.f, 0L);
         return;
       }
       this.this$0.b();
@@ -24,7 +25,7 @@ class FileManagerRSWorker$7
     }
     if (this.this$0.f.equalsIgnoreCase(""))
     {
-      this.this$0.f();
+      this.this$0.a();
       return;
     }
     try
@@ -32,23 +33,27 @@ class FileManagerRSWorker$7
       if (this.this$0.jdField_a_of_type_JavaIoOutputStream != null) {
         this.this$0.jdField_a_of_type_JavaIoOutputStream.flush();
       }
-      this.this$0.jdField_a_of_type_Long = FileManagerUtil.a(this.this$0.d);
-      QLog.i("FileManagerRSWorker<FileAssistant>", 1, "nSessionId[" + this.this$0.c + "]retry request Httpmsg,rd[" + String.valueOf(this.this$0.jdField_a_of_type_Long) + "]");
-      FileManagerRSWorker.a(this.this$0, this.this$0.jdField_a_of_type_Long, this.this$0.i);
-      return;
     }
     catch (IOException localIOException)
     {
-      for (;;)
-      {
-        QLog.e("FileManagerRSWorker<FileAssistant>", 1, localIOException.getMessage());
-      }
+      QLog.e("FileManagerRSWorker<FileAssistant>", 1, localIOException.getMessage());
     }
+    Object localObject = this.this$0;
+    ((FileManagerRSWorker)localObject).jdField_a_of_type_Long = FileManagerUtil.a(((FileManagerRSWorker)localObject).d);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("nSessionId[");
+    ((StringBuilder)localObject).append(this.this$0.c);
+    ((StringBuilder)localObject).append("]retry request Httpmsg,rd[");
+    ((StringBuilder)localObject).append(String.valueOf(this.this$0.jdField_a_of_type_Long));
+    ((StringBuilder)localObject).append("]");
+    QLog.i("FileManagerRSWorker<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+    localObject = this.this$0;
+    FileManagerRSWorker.a((FileManagerRSWorker)localObject, ((FileManagerRSWorker)localObject).jdField_a_of_type_Long, this.this$0.i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileManagerRSWorker.7
  * JD-Core Version:    0.7.0.1
  */

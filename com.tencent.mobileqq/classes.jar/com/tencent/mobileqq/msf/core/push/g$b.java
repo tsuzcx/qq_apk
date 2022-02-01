@@ -9,28 +9,29 @@ class g$b
   
   public void run()
   {
-    synchronized (this.a.y)
+    try
     {
-      try
+      synchronized (this.a.z)
       {
-        this.a.y.wait();
-        this.a.f();
+        this.a.z.wait();
       }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("MSF.C.PushManager", 2, localInterruptedException.toString(), localInterruptedException);
-          }
-        }
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("MSF.C.PushManager", 2, localInterruptedException.toString(), localInterruptedException);
       }
+      this.a.f();
+    }
+    for (;;)
+    {
+      throw localInterruptedException;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.push.g.b
  * JD-Core Version:    0.7.0.1
  */

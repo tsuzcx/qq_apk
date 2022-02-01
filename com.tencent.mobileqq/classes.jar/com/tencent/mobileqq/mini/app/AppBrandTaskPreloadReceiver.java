@@ -21,8 +21,9 @@ public class AppBrandTaskPreloadReceiver
   
   public IFakeReceiver getFakeBrandUI()
   {
-    if (this.mFakeReceiver != null) {
-      return this.mFakeReceiver;
+    IFakeReceiver localIFakeReceiver = this.mFakeReceiver;
+    if (localIFakeReceiver != null) {
+      return localIFakeReceiver;
     }
     this.mFakeReceiver = new FakeSdkReceiver();
     return this.mFakeReceiver;
@@ -31,7 +32,10 @@ public class AppBrandTaskPreloadReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     String str = paramIntent.getAction();
-    QLog.i("minisdk-start", 1, "AppBrandTaskPreloadReceiver onReceive action: " + str);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AppBrandTaskPreloadReceiver onReceive action: ");
+    localStringBuilder.append(str);
+    QLog.i("minisdk-start", 1, localStringBuilder.toString());
     getFakeBrandUI().onReceive(paramContext, paramIntent);
     if (((this instanceof AppBrandTaskPreloadReceiver3)) || ((this instanceof AppBrandTaskPreloadReceiver4)) || ((this instanceof AppBrandTaskPreloadReceiver5))) {
       paramContext.getSharedPreferences("sdk_conf", 4).edit().putInt("usersdk", 0).apply();
@@ -40,7 +44,7 @@ public class AppBrandTaskPreloadReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.app.AppBrandTaskPreloadReceiver
  * JD-Core Version:    0.7.0.1
  */

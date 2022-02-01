@@ -140,10 +140,10 @@ public class QAPMFragmentSession
   
   private static i getFragmentTrace(String paramString)
   {
-    if ((!b.g) || (TextUtils.isEmpty(paramString))) {
-      return null;
+    if ((b.g) && (!TextUtils.isEmpty(paramString))) {
+      return (i)fragmentTraces.get(paramString);
     }
-    return (i)fragmentTraces.get(paramString);
+    return null;
   }
   
   public static QAPMFragmentSession getInstance()
@@ -176,7 +176,7 @@ public class QAPMFragmentSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.QAPMFragmentSession
  * JD-Core Version:    0.7.0.1
  */

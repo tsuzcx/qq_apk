@@ -14,14 +14,13 @@ class DefaultCustomHostProxyService$1
   {
     if (paramLoginRequestCallback != null)
     {
-      if (LoginManager.a.a() != null) {
+      if (LoginManager.a.a() != null)
+      {
         paramLoginRequestCallback.onGetSuccess(LoginManager.a.a());
+        return;
       }
+      paramLoginRequestCallback.onGetFail();
     }
-    else {
-      return;
-    }
-    paramLoginRequestCallback.onGetFail();
   }
   
   public void onLoginInvalid()
@@ -38,7 +37,7 @@ class DefaultCustomHostProxyService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.hostproxy.DefaultCustomHostProxyService.1
  * JD-Core Version:    0.7.0.1
  */

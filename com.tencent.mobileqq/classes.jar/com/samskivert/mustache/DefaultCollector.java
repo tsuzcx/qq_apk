@@ -79,39 +79,33 @@ public class DefaultCollector
   
   protected Field getField(Class<?> paramClass, String paramString)
   {
-    Object localObject2 = null;
     if (!this._allowAccessCoercion) {}
-    for (;;)
+    try
     {
-      Field localField;
-      Class localClass;
-      Object localObject1;
-      try
-      {
-        localField = paramClass.getField(paramString);
-        return localField;
+      paramClass = paramClass.getField(paramString);
+      return paramClass;
+    }
+    catch (Exception paramClass)
+    {
+      Object localObject;
+      label35:
+      return null;
+    }
+    try
+    {
+      localObject = paramClass.getDeclaredField(paramString);
+      if (!((Field)localObject).isAccessible()) {
+        ((Field)localObject).setAccessible(true);
       }
-      catch (Exception paramClass) {}
-      try
-      {
-        localField = paramClass.getDeclaredField(paramString);
-        if (!localField.isAccessible()) {
-          localField.setAccessible(true);
-        }
-        return localField;
-      }
-      catch (Exception localException)
-      {
-        localClass = paramClass.getSuperclass();
-        localObject1 = localObject2;
-      }
-      if (localClass != Object.class)
-      {
-        localObject1 = localObject2;
-        if (localClass != null) {
-          return getField(paramClass.getSuperclass(), paramString);
-        }
-      }
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      break label35;
+    }
+    localObject = paramClass.getSuperclass();
+    if ((localObject != Object.class) && (localObject != null)) {
+      return getField(paramClass.getSuperclass(), paramString);
     }
     return null;
   }
@@ -152,46 +146,68 @@ public class DefaultCollector
       paramClass = paramClass.getMethod(paramString, new Class[0]);
       return paramClass;
     }
-    catch (Exception paramClass) {}
+    catch (Exception paramClass)
+    {
+      label50:
+      break label50;
+    }
     return null;
   }
   
   protected Method getMethodOn(Class<?> paramClass, String paramString)
   {
+    label31:
+    label189:
     try
     {
-      Method localMethod1 = paramClass.getDeclaredMethod(paramString, new Class[0]);
-      if (!localMethod1.getReturnType().equals(Void.TYPE))
+      localObject = paramClass.getDeclaredMethod(paramString, new Class[0]);
+      if (!((Method)localObject).getReturnType().equals(Void.TYPE))
       {
-        localMethod1 = makeAccessible(localMethod1);
-        return localMethod1;
+        localObject = makeAccessible((Method)localObject);
+        return localObject;
       }
     }
     catch (Exception localException1)
     {
-      paramString = Character.toUpperCase(paramString.charAt(0)) + paramString.substring(1);
-      try
+      Object localObject;
+      label122:
+      break label31;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(Character.toUpperCase(paramString.charAt(0)));
+    ((StringBuilder)localObject).append(paramString.substring(1));
+    paramString = ((StringBuilder)localObject).toString();
+    try
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("get");
+      ((StringBuilder)localObject).append(paramString);
+      localObject = paramClass.getDeclaredMethod(((StringBuilder)localObject).toString(), new Class[0]);
+      if (!((Method)localObject).getReturnType().equals(Void.TYPE))
       {
-        Method localMethod2 = paramClass.getDeclaredMethod("get" + paramString, new Class[0]);
-        if (!localMethod2.getReturnType().equals(Void.TYPE))
-        {
-          localMethod2 = makeAccessible(localMethod2);
-          return localMethod2;
-        }
+        localObject = makeAccessible((Method)localObject);
+        return localObject;
       }
-      catch (Exception localException2)
+    }
+    catch (Exception localException2)
+    {
+      break label122;
+    }
+    try
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("is");
+      ((StringBuilder)localObject).append(paramString);
+      paramClass = paramClass.getDeclaredMethod(((StringBuilder)localObject).toString(), new Class[0]);
+      if ((paramClass.getReturnType().equals(Boolean.TYPE)) || (paramClass.getReturnType().equals(Boolean.class)))
       {
-        try
-        {
-          paramClass = paramClass.getDeclaredMethod("is" + paramString, new Class[0]);
-          if ((paramClass.getReturnType().equals(Boolean.TYPE)) || (paramClass.getReturnType().equals(Boolean.class)))
-          {
-            paramClass = makeAccessible(paramClass);
-            return paramClass;
-          }
-        }
-        catch (Exception paramClass) {}
+        paramClass = makeAccessible(paramClass);
+        return paramClass;
       }
+    }
+    catch (Exception paramClass)
+    {
+      break label189;
     }
     return null;
   }

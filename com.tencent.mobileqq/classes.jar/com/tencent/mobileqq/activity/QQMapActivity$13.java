@@ -13,20 +13,28 @@ class QQMapActivity$13
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramIntent.getAction().equals("android.intent.action.SCREEN_OFF")) && (!this.a.p) && (!this.a.q) && (GesturePWDUtils.getGesturePWDState(this.a, this.a.k) == 2) && (GesturePWDUtils.getGesturePWDMode(this.a, this.a.k) == 21))
+    if ((paramIntent.getAction().equals("android.intent.action.SCREEN_OFF")) && (!this.a.hasLocked) && (!this.a.hasStoped))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("qqbaseactivity", 2, "qqmapactivity.start lock. receive lock.");
+      paramContext = this.a;
+      if (GesturePWDUtils.getGesturePWDState(paramContext, paramContext.uin) == 2)
+      {
+        paramContext = this.a;
+        if (GesturePWDUtils.getGesturePWDMode(paramContext, paramContext.uin) == 21)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("qqbaseactivity", 2, "qqmapactivity.start lock. receive lock.");
+          }
+          paramContext = new Intent(this.a, GesturePWDUnlockActivity.class);
+          QQMapActivity.access$101(this.a, paramContext);
+          this.a.hasStoped = true;
+        }
       }
-      paramContext = new Intent(this.a, GesturePWDUnlockActivity.class);
-      QQMapActivity.a(this.a, paramContext);
-      this.a.q = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQMapActivity.13
  * JD-Core Version:    0.7.0.1
  */

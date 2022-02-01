@@ -53,70 +53,77 @@ public class ImageShakeAnimView
   
   private void a(Integer paramInteger)
   {
-    try
+    for (;;)
     {
-      if (paramInteger.intValue() == 2130845532) {}
-      for (paramInteger = "hb_luckybag_name_path";; paramInteger = "hb_luckybag_ing_name_path")
+      try
       {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = PortalManager.a(paramInteger, true);
+        if (paramInteger.intValue() == 2130845405)
+        {
+          paramInteger = "hb_luckybag_name_path";
+          this.jdField_a_of_type_AndroidGraphicsBitmap = PortalManager.a(paramInteger, true);
+          return;
+        }
+      }
+      catch (OutOfMemoryError paramInteger)
+      {
+        paramInteger.printStackTrace();
         return;
       }
-      return;
-    }
-    catch (OutOfMemoryError paramInteger)
-    {
-      paramInteger.printStackTrace();
+      paramInteger = "hb_luckybag_ing_name_path";
     }
   }
   
   public void a()
   {
     float f;
-    ValueAnimation localValueAnimation;
-    if (this.jdField_a_of_type_Boolean)
-    {
+    if (this.jdField_a_of_type_Boolean) {
       f = 720.0F;
-      localValueAnimation = new ValueAnimation(Float.valueOf(0.0F), Float.valueOf(f), new ImageShakeAnimView.1(this));
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation != null) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.cancel();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation = localValueAnimation;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label88;
-      }
-    }
-    label88:
-    for (long l = 720L;; l = 500L)
-    {
-      localValueAnimation.setDuration(l);
-      localValueAnimation.start();
-      invalidate();
-      return;
+    } else {
       f = 500.0F;
-      break;
     }
+    ValueAnimation localValueAnimation1 = new ValueAnimation(Float.valueOf(0.0F), Float.valueOf(f), new ImageShakeAnimView.1(this));
+    ValueAnimation localValueAnimation2 = this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation;
+    if (localValueAnimation2 != null) {
+      localValueAnimation2.cancel();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation = localValueAnimation1;
+    long l;
+    if (this.jdField_a_of_type_Boolean) {
+      l = 720L;
+    } else {
+      l = 500L;
+    }
+    localValueAnimation1.setDuration(l);
+    localValueAnimation1.start();
+    invalidate();
   }
   
   public boolean a(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {}
-    do
-    {
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    boolean bool = false;
+    if (localObject == null) {
       return false;
-      if (this.jdField_a_of_type_Int == 0)
-      {
-        this.jdField_a_of_type_Int = getWidth();
-        this.jdField_b_of_type_Int = getHeight();
-      }
-      paramCanvas.save();
-      paramCanvas.translate(this.c, this.d);
-      paramCanvas.scale(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_a_of_type_Int / 2, 0.0F);
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int * this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, null);
-      paramCanvas.restore();
-    } while (this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation == null);
-    return this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation);
+    }
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      this.jdField_a_of_type_Int = getWidth();
+      this.jdField_b_of_type_Int = getHeight();
+    }
+    paramCanvas.save();
+    paramCanvas.translate(this.c, this.d);
+    paramCanvas.scale(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_a_of_type_Int / 2, 0.0F);
+    localObject = this.jdField_a_of_type_AndroidGraphicsRect;
+    int i = this.jdField_a_of_type_Int;
+    ((Rect)localObject).set(0, 0, i, this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * i / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, null);
+    paramCanvas.restore();
+    paramCanvas = this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation;
+    if (paramCanvas != null) {
+      bool = paramCanvas.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation);
+    }
+    return bool;
   }
   
   public void onDraw(Canvas paramCanvas)
@@ -127,7 +134,7 @@ public class ImageShakeAnimView
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     if (!this.jdField_a_of_type_Boolean)
@@ -139,7 +146,7 @@ public class ImageShakeAnimView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ImageShakeAnimView
  * JD-Core Version:    0.7.0.1
  */

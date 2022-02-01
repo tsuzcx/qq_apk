@@ -1,53 +1,41 @@
 package com.tencent.richmediabrowser.model.pic;
 
-import android.graphics.drawable.Drawable;
-import com.tencent.richmediabrowser.model.BrowserBaseModel;
-import com.tencent.richmediabrowser.presenter.BasePresenter;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.richmediabrowser.core.IBaseModelBuilder;
+import com.tencent.richmediabrowser.core.IBasePresenterBuilder;
 import com.tencent.richmediabrowser.presenter.pic.PicturePresenter;
 import java.io.File;
 
 public class PictureModel
-  extends BrowserBaseModel
+  implements IBaseModelBuilder
 {
   private PicturePresenter picturePresenter;
   
-  public PictureModel(BasePresenter paramBasePresenter)
+  public PictureModel(IBasePresenterBuilder paramIBasePresenterBuilder)
   {
-    if ((paramBasePresenter instanceof PicturePresenter)) {
-      this.picturePresenter = ((PicturePresenter)paramBasePresenter);
+    if ((paramIBasePresenterBuilder instanceof PicturePresenter)) {
+      this.picturePresenter = ((PicturePresenter)paramIBasePresenterBuilder);
     }
   }
   
-  public Drawable getAnimationDrawable(PictureData paramPictureData)
-  {
-    return null;
-  }
+  public void buildComplete() {}
   
-  public File getCacheFile(PictureData paramPictureData, int paramInt)
-  {
-    return null;
-  }
+  public void buildModel() {}
   
-  public int getCacheFileType(PictureData paramPictureData, String paramString)
-  {
-    return 0;
-  }
+  public void buildParams(Intent paramIntent) {}
   
-  public String getURL(PictureData paramPictureData, int paramInt)
+  public boolean isPictureExisit(PictureData paramPictureData)
   {
-    return null;
-  }
-  
-  public boolean hasFile(PictureData paramPictureData, int paramInt)
-  {
+    if ((paramPictureData != null) && (!TextUtils.isEmpty(paramPictureData.filePath))) {
+      return new File(paramPictureData.filePath).exists();
+    }
     return false;
   }
-  
-  public void imageDownloaded(PictureData paramPictureData, int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmediabrowser.model.pic.PictureModel
  * JD-Core Version:    0.7.0.1
  */

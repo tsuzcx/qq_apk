@@ -3,12 +3,12 @@ package com.tencent.qidian;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import com.tencent.biz.bmqq.app.BmqqBusinessHandler;
 import com.tencent.biz.bmqq.util.BmqqSegmentUtil;
 import com.tencent.biz.eqq.CrmUtils;
 import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.ChatFragment;
@@ -28,7 +28,6 @@ import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.profilecard.processor.TempGetProfileDetailProcessor;
 import com.tencent.mobileqq.profilecard.utils.ProfileServiceUtils;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -96,58 +95,111 @@ public class QidianManager
     this.h = new HashMap();
     if (UiThreadUtil.a()) {
       ThreadManager.getSubThreadHandler().post(new QidianManager.1(this));
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-      return;
+    } else {
       a();
     }
+    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
   }
   
   public static String a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    String str = ContactUtils.m(paramQQAppInterface, paramString);
-    if ((TextUtils.isEmpty(str)) || (str.equals(paramString)))
+    String str2 = ContactUtils.f(paramQQAppInterface, paramString);
+    String str1;
+    if (!TextUtils.isEmpty(str2))
+    {
+      str1 = str2;
+      if (!str2.equals(paramString)) {}
+    }
+    else
     {
       paramQQAppInterface = ((QidianManager)paramQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).a(String.valueOf(paramString));
+      str1 = str2;
       if (paramQQAppInterface != null) {
-        return paramQQAppInterface.nickname;
+        str1 = paramQQAppInterface.nickname;
       }
     }
-    return str;
+    return str1;
   }
   
+  /* Error */
   private void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QidianManager", 4, "initial ...");
-    }
-    localEntityManager = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager();
-    try
-    {
-      a(localEntityManager);
-      b(localEntityManager);
-      d(localEntityManager);
-      e(localEntityManager);
-      c(localEntityManager);
-      f(localEntityManager);
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("QidianManager", 2, "QidianManager get data from db error: " + localException.getMessage());
-        }
-        localEntityManager.close();
-      }
-    }
-    finally
-    {
-      localEntityManager.close();
-    }
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    // Byte code:
+    //   0: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +11 -> 14
+    //   6: ldc 147
+    //   8: iconst_4
+    //   9: ldc 149
+    //   11: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   14: aload_0
+    //   15: getfield 63	com/tencent/qidian/QidianManager:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
+    //   18: invokevirtual 158	com/tencent/common/app/AppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
+    //   21: invokevirtual 164	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   24: astore_1
+    //   25: aload_0
+    //   26: aload_1
+    //   27: invokespecial 167	com/tencent/qidian/QidianManager:a	(Lcom/tencent/mobileqq/persistence/EntityManager;)V
+    //   30: aload_0
+    //   31: aload_1
+    //   32: invokespecial 169	com/tencent/qidian/QidianManager:b	(Lcom/tencent/mobileqq/persistence/EntityManager;)V
+    //   35: aload_0
+    //   36: aload_1
+    //   37: invokespecial 171	com/tencent/qidian/QidianManager:d	(Lcom/tencent/mobileqq/persistence/EntityManager;)V
+    //   40: aload_0
+    //   41: aload_1
+    //   42: invokespecial 173	com/tencent/qidian/QidianManager:e	(Lcom/tencent/mobileqq/persistence/EntityManager;)V
+    //   45: aload_0
+    //   46: aload_1
+    //   47: invokespecial 175	com/tencent/qidian/QidianManager:c	(Lcom/tencent/mobileqq/persistence/EntityManager;)V
+    //   50: aload_0
+    //   51: aload_1
+    //   52: invokespecial 177	com/tencent/qidian/QidianManager:f	(Lcom/tencent/mobileqq/persistence/EntityManager;)V
+    //   55: goto +48 -> 103
+    //   58: astore_2
+    //   59: goto +56 -> 115
+    //   62: astore_2
+    //   63: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   66: ifeq +37 -> 103
+    //   69: new 179	java/lang/StringBuilder
+    //   72: dup
+    //   73: invokespecial 180	java/lang/StringBuilder:<init>	()V
+    //   76: astore_3
+    //   77: aload_3
+    //   78: ldc 182
+    //   80: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   83: pop
+    //   84: aload_3
+    //   85: aload_2
+    //   86: invokevirtual 190	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   89: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   92: pop
+    //   93: ldc 147
+    //   95: iconst_2
+    //   96: aload_3
+    //   97: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   100: invokestatic 195	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   103: aload_1
+    //   104: invokevirtual 200	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   107: getstatic 39	com/tencent/qidian/QidianManager:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   110: iconst_1
+    //   111: invokevirtual 203	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   114: return
+    //   115: aload_1
+    //   116: invokevirtual 200	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   119: aload_2
+    //   120: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	121	0	this	QidianManager
+    //   24	92	1	localEntityManager	EntityManager
+    //   58	1	2	localObject	Object
+    //   62	58	2	localException	Exception
+    //   76	21	3	localStringBuilder	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   25	55	58	finally
+    //   63	103	58	finally
+    //   25	55	62	java/lang/Exception
   }
   
   /* Error */
@@ -157,180 +209,204 @@ public class QidianManager
     //   0: aconst_null
     //   1: astore 10
     //   3: aload 5
-    //   5: ifnonnull +195 -> 200
+    //   5: ifnonnull +9 -> 14
     //   8: aconst_null
     //   9: astore 5
-    //   11: aload_2
-    //   12: ifnonnull +205 -> 217
-    //   15: ldc 208
-    //   17: astore 9
-    //   19: aload_3
-    //   20: ifnonnull +213 -> 233
-    //   23: ldc 208
-    //   25: astore_2
-    //   26: aload 4
-    //   28: ifnonnull +220 -> 248
-    //   31: ldc 208
-    //   33: astore_3
-    //   34: new 187	java/lang/StringBuilder
-    //   37: dup
-    //   38: invokespecial 188	java/lang/StringBuilder:<init>	()V
-    //   41: astore 10
-    //   43: iload_1
-    //   44: bipush 6
-    //   46: if_icmpne +237 -> 283
-    //   49: ldc 210
-    //   51: astore 4
-    //   53: aload 10
-    //   55: aload 4
-    //   57: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   60: pop
-    //   61: aload 10
-    //   63: ldc 212
-    //   65: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   68: pop
-    //   69: aload 10
-    //   71: ldc 214
-    //   73: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   76: aload 5
-    //   78: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   81: pop
-    //   82: aload 10
-    //   84: ldc 216
-    //   86: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   89: aload 9
-    //   91: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   94: pop
-    //   95: aload 10
-    //   97: ldc 218
-    //   99: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   102: aload_2
-    //   103: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   106: pop
-    //   107: aload 10
-    //   109: ldc 220
-    //   111: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   114: aload_3
-    //   115: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   118: pop
-    //   119: aload 10
-    //   121: ldc 222
-    //   123: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   126: astore_3
-    //   127: iload 8
-    //   129: ifeq +162 -> 291
-    //   132: ldc 224
+    //   11: goto +16 -> 27
+    //   14: aload 5
+    //   16: ldc 208
+    //   18: invokevirtual 212	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   21: iconst_2
+    //   22: invokestatic 218	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
+    //   25: astore 5
+    //   27: aload_2
+    //   28: ifnonnull +9 -> 37
+    //   31: ldc 220
+    //   33: astore_2
+    //   34: goto +14 -> 48
+    //   37: aload_2
+    //   38: ldc 208
+    //   40: invokevirtual 212	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   43: iconst_2
+    //   44: invokestatic 218	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
+    //   47: astore_2
+    //   48: aload_3
+    //   49: ifnonnull +10 -> 59
+    //   52: ldc 220
+    //   54: astore 9
+    //   56: goto +15 -> 71
+    //   59: aload_3
+    //   60: ldc 208
+    //   62: invokevirtual 212	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   65: iconst_2
+    //   66: invokestatic 218	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
+    //   69: astore 9
+    //   71: aload 4
+    //   73: ifnonnull +9 -> 82
+    //   76: ldc 220
+    //   78: astore_3
+    //   79: goto +72 -> 151
+    //   82: aload 4
+    //   84: ldc 208
+    //   86: invokevirtual 212	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   89: iconst_2
+    //   90: invokestatic 218	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
+    //   93: astore_3
+    //   94: goto +57 -> 151
+    //   97: astore 4
+    //   99: aload_2
+    //   100: astore_3
+    //   101: aload 9
+    //   103: astore_2
+    //   104: goto +34 -> 138
+    //   107: astore 4
+    //   109: aconst_null
+    //   110: astore 9
+    //   112: aload_2
+    //   113: astore_3
+    //   114: aload 9
+    //   116: astore_2
+    //   117: goto +21 -> 138
+    //   120: astore 4
+    //   122: aconst_null
+    //   123: astore_3
+    //   124: aload_3
+    //   125: astore_2
+    //   126: goto +12 -> 138
+    //   129: astore 4
+    //   131: aconst_null
+    //   132: astore_3
+    //   133: aload_3
     //   134: astore_2
-    //   135: aload_3
-    //   136: aload_2
-    //   137: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   140: pop
-    //   141: aload 10
-    //   143: ldc 226
-    //   145: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   148: iload 7
-    //   150: invokevirtual 229	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   153: pop
-    //   154: aload 10
-    //   156: ldc 231
-    //   158: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   161: aload 6
-    //   163: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   166: pop
-    //   167: new 233	android/content/Intent
-    //   170: dup
-    //   171: ldc 235
-    //   173: aload 10
-    //   175: invokevirtual 201	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   178: invokestatic 241	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   181: invokespecial 244	android/content/Intent:<init>	(Ljava/lang/String;Landroid/net/Uri;)V
-    //   184: astore_2
-    //   185: aload_2
-    //   186: ldc 246
-    //   188: ldc 248
-    //   190: invokevirtual 252	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   193: pop
-    //   194: aload_0
-    //   195: aload_2
-    //   196: invokevirtual 258	android/app/Activity:startActivity	(Landroid/content/Intent;)V
-    //   199: return
-    //   200: aload 5
-    //   202: ldc_w 260
-    //   205: invokevirtual 264	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   208: iconst_2
-    //   209: invokestatic 270	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
-    //   212: astore 5
-    //   214: goto -203 -> 11
-    //   217: aload_2
-    //   218: ldc_w 260
-    //   221: invokevirtual 264	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   224: iconst_2
-    //   225: invokestatic 270	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
-    //   228: astore 9
-    //   230: goto -211 -> 19
-    //   233: aload_3
-    //   234: ldc_w 260
-    //   237: invokevirtual 264	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   240: iconst_2
-    //   241: invokestatic 270	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
-    //   244: astore_2
-    //   245: goto -219 -> 26
-    //   248: aload 4
-    //   250: ldc_w 260
-    //   253: invokevirtual 264	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   256: iconst_2
-    //   257: invokestatic 270	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
-    //   260: astore_3
-    //   261: goto -227 -> 34
-    //   264: astore_3
-    //   265: aconst_null
-    //   266: astore 9
-    //   268: aconst_null
-    //   269: astore 5
-    //   271: aconst_null
-    //   272: astore_2
-    //   273: aload_3
-    //   274: invokevirtual 273	java/io/UnsupportedEncodingException:printStackTrace	()V
+    //   135: aload_2
+    //   136: astore 5
+    //   138: aload 4
+    //   140: invokevirtual 223	java/io/UnsupportedEncodingException:printStackTrace	()V
+    //   143: aload_2
+    //   144: astore 9
+    //   146: aload_3
+    //   147: astore_2
+    //   148: aload 10
+    //   150: astore_3
+    //   151: new 179	java/lang/StringBuilder
+    //   154: dup
+    //   155: invokespecial 180	java/lang/StringBuilder:<init>	()V
+    //   158: astore 10
+    //   160: iload_1
+    //   161: bipush 6
+    //   163: if_icmpne +10 -> 173
+    //   166: ldc 225
+    //   168: astore 4
+    //   170: goto +7 -> 177
+    //   173: ldc 227
+    //   175: astore 4
+    //   177: aload 10
+    //   179: aload 4
+    //   181: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   184: pop
+    //   185: aload 10
+    //   187: ldc 229
+    //   189: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   192: pop
+    //   193: aload 10
+    //   195: ldc 231
+    //   197: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   200: pop
+    //   201: aload 10
+    //   203: aload 5
+    //   205: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   208: pop
+    //   209: aload 10
+    //   211: ldc 233
+    //   213: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   216: pop
+    //   217: aload 10
+    //   219: aload_2
+    //   220: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   223: pop
+    //   224: aload 10
+    //   226: ldc 235
+    //   228: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   231: pop
+    //   232: aload 10
+    //   234: aload 9
+    //   236: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   239: pop
+    //   240: aload 10
+    //   242: ldc 237
+    //   244: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   247: pop
+    //   248: aload 10
+    //   250: aload_3
+    //   251: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   254: pop
+    //   255: aload 10
+    //   257: ldc 239
+    //   259: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   262: pop
+    //   263: iload 8
+    //   265: ifeq +9 -> 274
+    //   268: ldc 241
+    //   270: astore_2
+    //   271: goto +6 -> 277
+    //   274: ldc 243
+    //   276: astore_2
     //   277: aload 10
-    //   279: astore_3
-    //   280: goto -246 -> 34
-    //   283: ldc_w 275
-    //   286: astore 4
-    //   288: goto -235 -> 53
-    //   291: ldc_w 277
-    //   294: astore_2
-    //   295: goto -160 -> 135
-    //   298: astore_3
-    //   299: aconst_null
-    //   300: astore 9
-    //   302: aconst_null
-    //   303: astore_2
-    //   304: goto -31 -> 273
-    //   307: astore_3
-    //   308: aconst_null
-    //   309: astore_2
-    //   310: goto -37 -> 273
-    //   313: astore_3
-    //   314: goto -41 -> 273
+    //   279: aload_2
+    //   280: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   283: pop
+    //   284: aload 10
+    //   286: ldc 245
+    //   288: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   291: pop
+    //   292: aload 10
+    //   294: iload 7
+    //   296: invokevirtual 248	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   299: pop
+    //   300: aload 10
+    //   302: ldc 250
+    //   304: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   307: pop
+    //   308: aload 10
+    //   310: aload 6
+    //   312: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   315: pop
+    //   316: new 252	android/content/Intent
+    //   319: dup
+    //   320: ldc 254
+    //   322: aload 10
+    //   324: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   327: invokestatic 260	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   330: invokespecial 263	android/content/Intent:<init>	(Ljava/lang/String;Landroid/net/Uri;)V
+    //   333: astore_2
+    //   334: aload_2
+    //   335: ldc_w 265
+    //   338: ldc_w 267
+    //   341: invokevirtual 271	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   344: pop
+    //   345: aload_0
+    //   346: aload_2
+    //   347: invokevirtual 277	android/app/Activity:startActivity	(Landroid/content/Intent;)V
+    //   350: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	317	0	paramActivity	android.app.Activity
-    //   0	317	1	paramInt1	int
-    //   0	317	2	paramString1	String
-    //   0	317	3	paramString2	String
-    //   0	317	4	paramString3	String
-    //   0	317	5	paramString4	String
-    //   0	317	6	paramString5	String
-    //   0	317	7	paramInt2	int
-    //   0	317	8	paramBoolean	boolean
-    //   17	284	9	str	String
-    //   1	277	10	localStringBuilder	java.lang.StringBuilder
+    //   0	351	0	paramActivity	android.app.Activity
+    //   0	351	1	paramInt1	int
+    //   0	351	2	paramString1	String
+    //   0	351	3	paramString2	String
+    //   0	351	4	paramString3	String
+    //   0	351	5	paramString4	String
+    //   0	351	6	paramString5	String
+    //   0	351	7	paramInt2	int
+    //   0	351	8	paramBoolean	boolean
+    //   54	181	9	str	String
+    //   1	322	10	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   200	214	264	java/io/UnsupportedEncodingException
-    //   217	230	298	java/io/UnsupportedEncodingException
-    //   233	245	307	java/io/UnsupportedEncodingException
-    //   248	261	313	java/io/UnsupportedEncodingException
+    //   82	94	97	java/io/UnsupportedEncodingException
+    //   59	71	107	java/io/UnsupportedEncodingException
+    //   37	48	120	java/io/UnsupportedEncodingException
+    //   14	27	129	java/io/UnsupportedEncodingException
   }
   
   public static void a(Context paramContext, ArrayList<ShareActionSheetBuilder.ActionSheetItem> paramArrayList)
@@ -343,73 +419,70 @@ public class QidianManager
   
   public static void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
-    for (;;)
+    try
     {
-      try
+      Long.parseLong(paramString);
+      if (!BmqqSegmentUtil.a(paramString)) {
+        return;
+      }
+      QidianManager localQidianManager = (QidianManager)paramQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER);
+      boolean bool1 = b(paramInt);
+      boolean bool2 = a(paramInt);
+      boolean bool3 = c(paramInt);
+      if ((!bool1) && (!bool2) && (!bool3))
       {
-        Long.parseLong(paramString);
-        if (!BmqqSegmentUtil.a(paramString)) {
-          return;
-        }
-        QidianManager localQidianManager = (QidianManager)paramQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER);
-        boolean bool1 = b(paramInt);
-        boolean bool2 = a(paramInt);
-        boolean bool3 = c(paramInt);
-        if ((!bool1) && (!bool2) && (!bool3))
+        if (QLog.isColorLevel())
         {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("QidianManager", 2, "updateQidianAccountType ignore uin: " + paramString + " | cSpecialFlag: " + paramInt);
-          return;
+          paramQQAppInterface = new StringBuilder();
+          paramQQAppInterface.append("updateQidianAccountType ignore uin: ");
+          paramQQAppInterface.append(paramString);
+          paramQQAppInterface.append(" | cSpecialFlag: ");
+          paramQQAppInterface.append(paramInt);
+          QLog.d("QidianManager", 2, paramQQAppInterface.toString());
         }
-        if (localQidianManager.g(paramString))
+        return;
+      }
+      if (localQidianManager.g(paramString))
+      {
+        if (QLog.isColorLevel())
         {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("QidianManager", 2, "updateQidianAccountType requested uin: " + paramString + " | cSpecialFlag: " + paramInt);
-          return;
+          paramQQAppInterface = new StringBuilder();
+          paramQQAppInterface.append("updateQidianAccountType requested uin: ");
+          paramQQAppInterface.append(paramString);
+          paramQQAppInterface.append(" | cSpecialFlag: ");
+          paramQQAppInterface.append(paramInt);
+          QLog.d("QidianManager", 2, paramQQAppInterface.toString());
         }
-        if (bool1)
+        return;
+      }
+      BmqqAccountType localBmqqAccountType;
+      if (bool1) {
+        localBmqqAccountType = new BmqqAccountType(paramString, 6);
+      } else if (bool2) {
+        localBmqqAccountType = new BmqqAccountType(paramString, 1);
+      } else if (bool3) {
+        localBmqqAccountType = new BmqqAccountType(paramString, 3);
+      } else {
+        localBmqqAccountType = null;
+      }
+      localQidianManager.a(localBmqqAccountType);
+      if (bool1)
+      {
+        QidianExternalInfo localQidianExternalInfo = localQidianManager.a(paramString);
+        paramString = localQidianManager.a(paramString);
+        if ((localQidianExternalInfo == null) || (paramString == null))
         {
-          localBmqqAccountType = new BmqqAccountType(paramString, 6);
-          localQidianManager.a(localBmqqAccountType);
-          if (!bool1) {
-            continue;
-          }
-          QidianExternalInfo localQidianExternalInfo = localQidianManager.a(paramString);
-          paramString = localQidianManager.a(paramString);
-          if ((localQidianExternalInfo != null) && (paramString != null)) {
-            continue;
-          }
-          if (UiThreadUtil.a()) {
-            ThreadManager.post(new QidianManager.10(localQidianManager, paramQQAppInterface, localBmqqAccountType), 5, null, true);
-          }
-        }
-        else
-        {
-          if (bool2)
+          if (UiThreadUtil.a())
           {
-            localBmqqAccountType = new BmqqAccountType(paramString, 1);
-            continue;
+            ThreadManager.post(new QidianManager.10(localQidianManager, paramQQAppInterface, localBmqqAccountType), 5, null, true);
+            return;
           }
-          if (!bool3) {
-            break label283;
-          }
-          localBmqqAccountType = new BmqqAccountType(paramString, 3);
-          continue;
+          localQidianManager.b(paramQQAppInterface.getApp().getBaseContext(), localBmqqAccountType);
         }
-        localQidianManager.b(paramQQAppInterface.getApp().getBaseContext(), localBmqqAccountType);
-        return;
       }
-      catch (Exception paramQQAppInterface)
-      {
-        return;
-      }
-      label283:
-      BmqqAccountType localBmqqAccountType = null;
+      return;
     }
+    catch (Exception paramQQAppInterface) {}
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Friends paramFriends)
@@ -440,19 +513,16 @@ public class QidianManager
   
   public static void a(QQAppInterface paramQQAppInterface, Friends[] paramArrayOfFriends)
   {
-    QidianManager localQidianManager;
     if (paramArrayOfFriends != null)
     {
-      localQidianManager = (QidianManager)paramQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER);
-      if (UiThreadUtil.a()) {
+      QidianManager localQidianManager = (QidianManager)paramQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER);
+      if (UiThreadUtil.a())
+      {
         ThreadManager.postImmediately(new QidianManager.9(localQidianManager, paramQQAppInterface, paramArrayOfFriends), null, false);
+        return;
       }
+      localQidianManager.b(paramQQAppInterface, paramArrayOfFriends);
     }
-    else
-    {
-      return;
-    }
-    localQidianManager.b(paramQQAppInterface, paramArrayOfFriends);
   }
   
   private void a(EntityManager paramEntityManager)
@@ -464,120 +534,158 @@ public class QidianManager
       while (paramEntityManager.hasNext())
       {
         QidianExternalInfo localQidianExternalInfo = (QidianExternalInfo)paramEntityManager.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("QidianManager", 4, "loadExternalInfo query from db: " + localQidianExternalInfo);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("loadExternalInfo query from db: ");
+          ((StringBuilder)localObject).append(localQidianExternalInfo);
+          QLog.d("QidianManager", 4, ((StringBuilder)localObject).toString());
         }
-        String str = localQidianExternalInfo.uin;
-        this.b.put(str, localQidianExternalInfo);
+        Object localObject = localQidianExternalInfo.uin;
+        this.b.put(localObject, localQidianExternalInfo);
       }
     }
   }
   
+  /* Error */
   private void a(QidianPAForWpa paramQidianPAForWpa, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QidianManager", 2, "updateQidianPAForWpa");
-    }
-    paramString1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager();
-    if (paramString1 != null) {
-      if (paramQidianPAForWpa == null) {}
-    }
-    while (!QLog.isColorLevel()) {
-      for (;;)
-      {
-        try
-        {
-          paramString1.persistOrReplace(paramQidianPAForWpa);
-          if (QLog.isColorLevel()) {
-            QLog.d("QidianManager", 2, "updateQidianPAForWpa success");
-          }
-          return;
-        }
-        catch (Exception paramQidianPAForWpa)
-        {
-          paramQidianPAForWpa.printStackTrace();
-          return;
-        }
-        finally
-        {
-          paramString1.close();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QidianManager", 2, "updateQidianPAForWpa uiInfo is null");
-        }
-      }
-    }
-    QLog.d("QidianManager", 2, "updateQidianPAForWpa em is null");
+    // Byte code:
+    //   0: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +12 -> 15
+    //   6: ldc 147
+    //   8: iconst_2
+    //   9: ldc_w 447
+    //   12: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   15: aload_0
+    //   16: getfield 63	com/tencent/qidian/QidianManager:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
+    //   19: invokevirtual 158	com/tencent/common/app/AppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
+    //   22: invokevirtual 164	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   25: astore_2
+    //   26: aload_2
+    //   27: ifnull +68 -> 95
+    //   30: aload_1
+    //   31: ifnull +11 -> 42
+    //   34: aload_2
+    //   35: aload_1
+    //   36: invokevirtual 451	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   39: goto +18 -> 57
+    //   42: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   45: ifeq +12 -> 57
+    //   48: ldc 147
+    //   50: iconst_2
+    //   51: ldc_w 453
+    //   54: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   57: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   60: ifeq +24 -> 84
+    //   63: ldc 147
+    //   65: iconst_2
+    //   66: ldc_w 455
+    //   69: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   72: goto +12 -> 84
+    //   75: astore_1
+    //   76: goto +13 -> 89
+    //   79: astore_1
+    //   80: aload_1
+    //   81: invokevirtual 456	java/lang/Exception:printStackTrace	()V
+    //   84: aload_2
+    //   85: invokevirtual 200	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   88: return
+    //   89: aload_2
+    //   90: invokevirtual 200	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   93: aload_1
+    //   94: athrow
+    //   95: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   98: ifeq +12 -> 110
+    //   101: ldc 147
+    //   103: iconst_2
+    //   104: ldc_w 458
+    //   107: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   110: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	111	0	this	QidianManager
+    //   0	111	1	paramQidianPAForWpa	QidianPAForWpa
+    //   0	111	2	paramString1	String
+    //   0	111	3	paramString2	String
+    // Exception table:
+    //   from	to	target	type
+    //   34	39	75	finally
+    //   42	57	75	finally
+    //   57	72	75	finally
+    //   80	84	75	finally
+    //   34	39	79	java/lang/Exception
+    //   42	57	79	java/lang/Exception
+    //   57	72	79	java/lang/Exception
   }
   
   private void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
     if ((!TextUtils.isEmpty(paramString1)) && (paramString1.contains("isNeedReply=")) && (paramString1.contains("QidianKfUin=")))
     {
-      bool1 = false;
-      bool2 = false;
-      str3 = "";
-      str2 = "";
-      str1 = "";
-      localMatcher = Pattern.compile("((?:isNeedReply|isNeedLbs|QidianKfUin|isExt|FromStaff|cqq))=([^\\?&=]+)").matcher(paramString1);
-      while (localMatcher.find()) {
-        if ("isNeedReply".equals(localMatcher.group(1))) {
-          bool2 = "true".equals(localMatcher.group(2));
-        } else if ("isNeedLbs".equals(localMatcher.group(1))) {
-          bool1 = "true".equals(localMatcher.group(2));
-        } else if ("QidianKfUin".equals(localMatcher.group(1))) {
-          str3 = localMatcher.group(2);
-        } else if ("isExt".equals(localMatcher.group(1)))
-        {
-          if (paramInt2 == 2) {
-            try
-            {
-              bool3 = Boolean.parseBoolean(localMatcher.group(2));
-              if (bool3)
-              {
-                paramInt2 = 0;
-                continue;
-              }
-              paramInt2 = 1;
-            }
-            catch (Exception localException)
-            {
-              paramInt2 = 0;
-            }
-          }
-        }
-        else if ("FromStaff".equals(localMatcher.group(1))) {
-          str2 = localMatcher.group(2);
-        } else if ("cqq".equals(localMatcher.group(1))) {
-          str1 = localMatcher.group(2);
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QidianManager", 2, "isNeedLbs: " + bool1 + " | isNeedReply: " + bool2 + " | masterUin: " + str3 + " | srcType: " + paramInt2);
-      }
-      if (bool2)
+      Object localObject = Pattern.compile("((?:isNeedReply|isNeedLbs|QidianKfUin|isExt|FromStaff|cqq))=([^\\?&=]+)").matcher(paramString1);
+      String str3 = "";
+      String str1 = str3;
+      String str2 = str1;
+      boolean bool2 = false;
+      boolean bool1 = false;
+      while (((Matcher)localObject).find())
       {
-        if (!bool1) {
-          break label375;
+        if ("isNeedReply".equals(((Matcher)localObject).group(1))) {
+          bool1 = "true".equals(((Matcher)localObject).group(2));
+        } else if ("isNeedLbs".equals(((Matcher)localObject).group(1))) {
+          bool2 = "true".equals(((Matcher)localObject).group(2));
+        } else if ("QidianKfUin".equals(((Matcher)localObject).group(1))) {
+          str3 = ((Matcher)localObject).group(2);
+        } else if (("isExt".equals(((Matcher)localObject).group(1))) && (paramInt2 != 2)) {}
+        try
+        {
+          boolean bool3 = Boolean.parseBoolean(((Matcher)localObject).group(2));
+          paramInt2 = bool3 ^ true;
         }
-        ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(new QidianManager.5(this, 1, true, true, 0L, true, false, "QidianManager", paramString1, paramInt1, str3, paramInt2, str2, str1, paramString2));
+        catch (Exception localException)
+        {
+          label192:
+          break label192;
+        }
+        paramInt2 = 0;
+        continue;
+        if ("FromStaff".equals(((Matcher)localObject).group(1))) {
+          str1 = ((Matcher)localObject).group(2);
+        } else if ("cqq".equals(((Matcher)localObject).group(1))) {
+          str2 = ((Matcher)localObject).group(2);
+        }
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("isNeedLbs: ");
+        ((StringBuilder)localObject).append(bool2);
+        ((StringBuilder)localObject).append(" | isNeedReply: ");
+        ((StringBuilder)localObject).append(bool1);
+        ((StringBuilder)localObject).append(" | masterUin: ");
+        ((StringBuilder)localObject).append(str3);
+        ((StringBuilder)localObject).append(" | srcType: ");
+        ((StringBuilder)localObject).append(paramInt2);
+        QLog.d("QidianManager", 2, ((StringBuilder)localObject).toString());
+      }
+      if (bool1)
+      {
+        if (bool2)
+        {
+          ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(new QidianManager.5(this, 1, true, true, 0L, true, false, "QidianManager", paramString1, paramInt1, str3, paramInt2, str1, str2, paramString2));
+          return;
+        }
+        a(paramString1, paramInt1, bool2, 0.0D, 0.0D, str3, paramInt2, str1, str2, paramString2);
       }
     }
-    label375:
-    while (!QLog.isColorLevel())
+    else if (QLog.isColorLevel())
     {
-      boolean bool1;
-      boolean bool2;
-      String str3;
-      String str2;
-      String str1;
-      Matcher localMatcher;
-      boolean bool3;
-      return;
-      a(paramString1, paramInt1, bool1, 0.0D, 0.0D, str3, paramInt2, str2, str1, paramString2);
-      return;
+      paramString2 = new StringBuilder();
+      paramString2.append("key is null or don't contain isNeedReply : ");
+      paramString2.append(paramString1);
+      QLog.d("QidianManager", 2, paramString2.toString());
     }
-    QLog.d("QidianManager", 2, "key is null or don't contain isNeedReply : " + paramString1);
   }
   
   public static boolean a(int paramInt)
@@ -585,24 +693,44 @@ public class QidianManager
     return (paramInt & 0x4) != 0;
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, Friends paramFriends, int paramInt)
+  public static boolean a(AppInterface paramAppInterface, Friends paramFriends, int paramInt)
   {
+    paramAppInterface = (QidianManager)paramAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER);
     boolean bool2 = true;
-    paramQQAppInterface = (QidianManager)paramQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER);
     boolean bool1 = bool2;
     if (paramFriends != null)
     {
       bool1 = bool2;
-      if (b(paramFriends.cSpecialFlag)) {
-        if ((paramInt != 1) && (paramInt != 2) && (paramInt != 13) && (paramInt != 10001) && (paramInt != 7)) {
-          break label67;
+      if (b(paramFriends.cSpecialFlag))
+      {
+        bool1 = bool2;
+        if (paramInt != 1)
+        {
+          bool1 = bool2;
+          if (paramInt != 2)
+          {
+            bool1 = bool2;
+            if (paramInt != 13)
+            {
+              bool1 = bool2;
+              if (paramInt != 10001)
+              {
+                if (paramInt == 7) {
+                  return true;
+                }
+                bool1 = false;
+              }
+            }
+          }
         }
       }
     }
-    label67:
-    for (bool1 = true;; bool1 = false) {
-      return bool1;
-    }
+    return bool1;
+  }
+  
+  public static boolean a(BaseQQAppInterface paramBaseQQAppInterface, String paramString)
+  {
+    return ((QidianManager)paramBaseQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).f(paramString);
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
@@ -621,6 +749,8 @@ public class QidianManager
   private boolean a(String paramString, int paramInt)
   {
     Object localObject = (FriendsManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
     if (localObject != null)
     {
       localObject = ((FriendsManager)localObject).b(paramString);
@@ -629,56 +759,63 @@ public class QidianManager
         QLog.i("QidianManager", 1, "isSpecialAccountInFriend meet error!!");
         return false;
       }
-      if ((localObject != null) && ((((Friends)localObject).cSpecialFlag & paramInt) != 0)) {
-        QLog.i("QidianManager", 1, MsfSdkUtils.getShortUin(paramString) + " isSpecialAccountInFriend isSpecialAccount is true, friendInfo.cSpecialFlag: " + ((Friends)localObject).cSpecialFlag + " | flag: " + paramInt);
+      bool1 = bool2;
+      if (localObject != null)
+      {
+        bool1 = bool2;
+        if ((((Friends)localObject).cSpecialFlag & paramInt) != 0)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(MsfSdkUtils.getShortUin(paramString));
+          localStringBuilder.append(" isSpecialAccountInFriend isSpecialAccount is true, friendInfo.cSpecialFlag: ");
+          localStringBuilder.append(((Friends)localObject).cSpecialFlag);
+          localStringBuilder.append(" | flag: ");
+          localStringBuilder.append(paramInt);
+          QLog.i("QidianManager", 1, localStringBuilder.toString());
+          bool1 = true;
+        }
       }
     }
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    return bool1;
   }
   
   private boolean a(String paramString, QQAppInterface paramQQAppInterface)
   {
-    if (TextUtils.isEmpty(paramQQAppInterface.getAccount())) {
+    if (TextUtils.isEmpty(paramQQAppInterface.getAccount()))
+    {
       if (QLog.isColorLevel()) {
         QLog.i("QidianManager", 2, "app.getAccount() is null");
       }
-    }
-    do
-    {
       return false;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("initParm uin = ");
+      paramQQAppInterface.append(paramString);
+      QLog.i("QidianManager", 2, paramQQAppInterface.toString());
+    }
+    if (TextUtils.isEmpty(paramString))
+    {
       if (QLog.isColorLevel()) {
-        QLog.i("QidianManager", 2, "initParm uin = " + paramString);
+        QLog.i("QidianManager", 2, "mAllinone is null");
       }
-      if (!TextUtils.isEmpty(paramString)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("QidianManager", 2, "mAllinone is null");
-    return false;
+      return false;
+    }
     return true;
   }
   
   public static boolean a(String paramString1, String paramString2, String paramString3)
   {
+    String str = paramString1;
     if (TextUtils.isEmpty(paramString1)) {
-      if (!TextUtils.isEmpty(paramString2)) {
-        break label50;
-      }
+      str = paramString2;
     }
-    for (;;)
-    {
-      if ((!TextUtils.isEmpty(paramString3)) && (paramString3.contains("isNeedReply=")) && (paramString3.contains("QidianKfUin=")))
-      {
-        return true;
-        paramString2 = paramString1;
-        break;
-      }
-      return false;
-      label50:
-      paramString3 = paramString2;
+    paramString1 = str;
+    if (TextUtils.isEmpty(str)) {
+      paramString1 = paramString3;
     }
+    return (!TextUtils.isEmpty(paramString1)) && (paramString1.contains("isNeedReply=")) && (paramString1.contains("QidianKfUin="));
   }
   
   public static String b(QQAppInterface paramQQAppInterface, String paramString)
@@ -700,210 +837,148 @@ public class QidianManager
     return "";
   }
   
-  /* Error */
   private void b(QQAppInterface paramQQAppInterface, Friends[] paramArrayOfFriends)
   {
-    // Byte code:
-    //   0: aload_2
-    //   1: arraylength
-    //   2: istore 4
-    //   4: iconst_0
-    //   5: istore_3
-    //   6: iload_3
-    //   7: iload 4
-    //   9: if_icmpge +275 -> 284
-    //   12: aload_2
-    //   13: iload_3
-    //   14: aaload
-    //   15: astore 9
-    //   17: aload 9
-    //   19: getfield 383	com/tencent/mobileqq/data/Friends:uin	Ljava/lang/String;
-    //   22: astore 10
-    //   24: aload 9
-    //   26: getfield 380	com/tencent/mobileqq/data/Friends:cSpecialFlag	B
-    //   29: istore 5
-    //   31: aload 10
-    //   33: invokestatic 319	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   36: pop2
-    //   37: aload 10
-    //   39: invokestatic 324	com/tencent/biz/bmqq/util/BmqqSegmentUtil:a	(Ljava/lang/String;)Z
-    //   42: ifne +4 -> 46
-    //   45: return
-    //   46: iload 5
-    //   48: invokestatic 327	com/tencent/qidian/QidianManager:b	(I)Z
-    //   51: istore 6
-    //   53: iload 5
-    //   55: invokestatic 329	com/tencent/qidian/QidianManager:a	(I)Z
-    //   58: istore 7
-    //   60: iload 5
-    //   62: invokestatic 331	com/tencent/qidian/QidianManager:c	(I)Z
-    //   65: istore 8
-    //   67: iload 6
-    //   69: ifne +60 -> 129
-    //   72: iload 7
-    //   74: ifne +55 -> 129
-    //   77: iload 8
-    //   79: ifne +50 -> 129
-    //   82: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   85: ifeq +200 -> 285
-    //   88: ldc 147
-    //   90: iconst_2
-    //   91: new 187	java/lang/StringBuilder
-    //   94: dup
-    //   95: invokespecial 188	java/lang/StringBuilder:<init>	()V
-    //   98: ldc_w 333
-    //   101: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   104: aload 10
-    //   106: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   109: ldc_w 335
-    //   112: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   115: iload 5
-    //   117: invokevirtual 229	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   120: invokevirtual 201	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   123: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   126: goto +159 -> 285
-    //   129: aconst_null
-    //   130: astore 9
-    //   132: iload 6
-    //   134: ifeq +109 -> 243
-    //   137: new 341	com/tencent/qidian/data/BmqqAccountType
-    //   140: dup
-    //   141: aload 10
-    //   143: bipush 6
-    //   145: invokespecial 344	com/tencent/qidian/data/BmqqAccountType:<init>	(Ljava/lang/String;I)V
-    //   148: astore 9
-    //   150: aload 9
-    //   152: ifnull +133 -> 285
-    //   155: aload_0
-    //   156: aload 10
-    //   158: invokevirtual 606	com/tencent/qidian/QidianManager:a	(Ljava/lang/String;)I
-    //   161: aload 9
-    //   163: invokevirtual 610	com/tencent/qidian/data/BmqqAccountType:getAccountType	()I
-    //   166: if_icmpeq +119 -> 285
-    //   169: aload_0
-    //   170: getfield 45	com/tencent/qidian/QidianManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   173: aload 10
-    //   175: aload 9
-    //   177: invokevirtual 610	com/tencent/qidian/data/BmqqAccountType:getAccountType	()I
-    //   180: invokestatic 615	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   183: invokeinterface 392 3 0
-    //   188: pop
-    //   189: iload 6
-    //   191: ifeq +94 -> 285
-    //   194: aload_0
-    //   195: aload 10
-    //   197: invokevirtual 132	com/tencent/qidian/QidianManager:a	(Ljava/lang/String;)Lcom/tencent/qidian/data/QidianExternalInfo;
-    //   200: astore 11
-    //   202: aload_0
-    //   203: aload 10
-    //   205: invokevirtual 350	com/tencent/qidian/QidianManager:a	(Ljava/lang/String;)Lcom/tencent/qidian/data/QidianProfileUiInfo;
-    //   208: astore 10
-    //   210: aload 11
-    //   212: ifnull +8 -> 220
-    //   215: aload 10
-    //   217: ifnonnull +68 -> 285
-    //   220: aload_0
-    //   221: aload_1
-    //   222: invokevirtual 362	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   225: invokevirtual 368	com/tencent/qphone/base/util/BaseApplication:getBaseContext	()Landroid/content/Context;
-    //   228: aload 9
-    //   230: invokevirtual 371	com/tencent/qidian/QidianManager:b	(Landroid/content/Context;Lcom/tencent/qidian/data/BmqqAccountType;)Z
-    //   233: pop
-    //   234: goto +51 -> 285
-    //   237: astore_1
-    //   238: aload_1
-    //   239: invokevirtual 456	java/lang/Exception:printStackTrace	()V
-    //   242: return
-    //   243: iload 7
-    //   245: ifeq +18 -> 263
-    //   248: new 341	com/tencent/qidian/data/BmqqAccountType
-    //   251: dup
-    //   252: aload 10
-    //   254: iconst_1
-    //   255: invokespecial 344	com/tencent/qidian/data/BmqqAccountType:<init>	(Ljava/lang/String;I)V
-    //   258: astore 9
-    //   260: goto -110 -> 150
-    //   263: iload 8
-    //   265: ifeq -115 -> 150
-    //   268: new 341	com/tencent/qidian/data/BmqqAccountType
-    //   271: dup
-    //   272: aload 10
-    //   274: iconst_3
-    //   275: invokespecial 344	com/tencent/qidian/data/BmqqAccountType:<init>	(Ljava/lang/String;I)V
-    //   278: astore 9
-    //   280: goto -130 -> 150
-    //   283: astore_1
-    //   284: return
-    //   285: iload_3
-    //   286: iconst_1
-    //   287: iadd
-    //   288: istore_3
-    //   289: goto -283 -> 6
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	292	0	this	QidianManager
-    //   0	292	1	paramQQAppInterface	QQAppInterface
-    //   0	292	2	paramArrayOfFriends	Friends[]
-    //   5	284	3	j	int
-    //   2	8	4	k	int
-    //   29	87	5	m	int
-    //   51	139	6	bool1	boolean
-    //   58	186	7	bool2	boolean
-    //   65	199	8	bool3	boolean
-    //   15	264	9	localObject1	Object
-    //   22	251	10	localObject2	Object
-    //   200	11	11	localQidianExternalInfo	QidianExternalInfo
-    // Exception table:
-    //   from	to	target	type
-    //   0	4	237	java/lang/Exception
-    //   17	31	237	java/lang/Exception
-    //   37	45	237	java/lang/Exception
-    //   46	67	237	java/lang/Exception
-    //   82	126	237	java/lang/Exception
-    //   137	150	237	java/lang/Exception
-    //   155	189	237	java/lang/Exception
-    //   194	210	237	java/lang/Exception
-    //   220	234	237	java/lang/Exception
-    //   248	260	237	java/lang/Exception
-    //   268	280	237	java/lang/Exception
-    //   31	37	283	java/lang/Exception
+    try
+    {
+      k = paramArrayOfFriends.length;
+      j = 0;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      try
+      {
+        int k;
+        int j;
+        Object localObject1;
+        Object localObject2;
+        int m;
+        Long.parseLong((String)localObject2);
+        if (!BmqqSegmentUtil.a((String)localObject2)) {
+          return;
+        }
+        boolean bool1 = b(m);
+        boolean bool2 = a(m);
+        boolean bool3 = c(m);
+        if ((!bool1) && (!bool2) && (!bool3))
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("updateQidianAccountType ignore uin: ");
+            ((StringBuilder)localObject1).append((String)localObject2);
+            ((StringBuilder)localObject1).append(" | cSpecialFlag: ");
+            ((StringBuilder)localObject1).append(m);
+            QLog.d("QidianManager", 2, ((StringBuilder)localObject1).toString());
+          }
+        }
+        else
+        {
+          localObject1 = null;
+          if (bool1) {
+            localObject1 = new BmqqAccountType((String)localObject2, 6);
+          } else if (bool2) {
+            localObject1 = new BmqqAccountType((String)localObject2, 1);
+          } else if (bool3) {
+            localObject1 = new BmqqAccountType((String)localObject2, 3);
+          }
+          if ((localObject1 != null) && (a((String)localObject2) != ((BmqqAccountType)localObject1).getAccountType()))
+          {
+            this.jdField_a_of_type_JavaUtilMap.put(localObject2, Integer.valueOf(((BmqqAccountType)localObject1).getAccountType()));
+            if (bool1)
+            {
+              QidianExternalInfo localQidianExternalInfo = a((String)localObject2);
+              localObject2 = a((String)localObject2);
+              if ((localQidianExternalInfo == null) || (localObject2 == null)) {
+                b(paramQQAppInterface.getApp().getBaseContext(), (BmqqAccountType)localObject1);
+              }
+            }
+          }
+        }
+        j += 1;
+      }
+      catch (Exception paramQQAppInterface) {}
+      paramQQAppInterface = paramQQAppInterface;
+      paramQQAppInterface.printStackTrace();
+    }
+    if (j < k)
+    {
+      localObject1 = paramArrayOfFriends[j];
+      localObject2 = ((Friends)localObject1).uin;
+      m = ((Friends)localObject1).cSpecialFlag;
+    }
+    return;
   }
   
+  /* Error */
   private void b(BmqqUserSimpleInfo paramBmqqUserSimpleInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QidianManager", 2, "updateBmqqExtInfo");
-    }
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager();
-    if (localEntityManager != null) {
-      if (paramBmqqUserSimpleInfo == null) {}
-    }
-    while (!QLog.isColorLevel()) {
-      for (;;)
-      {
-        try
-        {
-          localEntityManager.persistOrReplace(paramBmqqUserSimpleInfo);
-          if (QLog.isColorLevel()) {
-            QLog.d("QidianManager", 2, "updateBmqqExtInfo success");
-          }
-          return;
-        }
-        catch (Exception paramBmqqUserSimpleInfo)
-        {
-          paramBmqqUserSimpleInfo.printStackTrace();
-          return;
-        }
-        finally
-        {
-          localEntityManager.close();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QidianManager", 2, "updateBmqqExtInfo uiInfo is null");
-        }
-      }
-    }
-    QLog.d("QidianManager", 2, "updateBmqqExtInfo em is null");
+    // Byte code:
+    //   0: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +12 -> 15
+    //   6: ldc 147
+    //   8: iconst_2
+    //   9: ldc_w 621
+    //   12: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   15: aload_0
+    //   16: getfield 63	com/tencent/qidian/QidianManager:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
+    //   19: invokevirtual 158	com/tencent/common/app/AppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
+    //   22: invokevirtual 164	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   25: astore_2
+    //   26: aload_2
+    //   27: ifnull +68 -> 95
+    //   30: aload_1
+    //   31: ifnull +11 -> 42
+    //   34: aload_2
+    //   35: aload_1
+    //   36: invokevirtual 451	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   39: goto +18 -> 57
+    //   42: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   45: ifeq +12 -> 57
+    //   48: ldc 147
+    //   50: iconst_2
+    //   51: ldc_w 623
+    //   54: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   57: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   60: ifeq +24 -> 84
+    //   63: ldc 147
+    //   65: iconst_2
+    //   66: ldc_w 625
+    //   69: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   72: goto +12 -> 84
+    //   75: astore_1
+    //   76: goto +13 -> 89
+    //   79: astore_1
+    //   80: aload_1
+    //   81: invokevirtual 456	java/lang/Exception:printStackTrace	()V
+    //   84: aload_2
+    //   85: invokevirtual 200	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   88: return
+    //   89: aload_2
+    //   90: invokevirtual 200	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   93: aload_1
+    //   94: athrow
+    //   95: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   98: ifeq +12 -> 110
+    //   101: ldc 147
+    //   103: iconst_2
+    //   104: ldc_w 627
+    //   107: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   110: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	111	0	this	QidianManager
+    //   0	111	1	paramBmqqUserSimpleInfo	BmqqUserSimpleInfo
+    //   25	65	2	localEntityManager	EntityManager
+    // Exception table:
+    //   from	to	target	type
+    //   34	39	75	finally
+    //   42	57	75	finally
+    //   57	72	75	finally
+    //   80	84	75	finally
+    //   34	39	79	java/lang/Exception
+    //   42	57	79	java/lang/Exception
+    //   57	72	79	java/lang/Exception
   }
   
   private void b(EntityManager paramEntityManager)
@@ -915,131 +990,230 @@ public class QidianManager
       while (paramEntityManager.hasNext())
       {
         QidianInternalInfo localQidianInternalInfo = (QidianInternalInfo)paramEntityManager.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("QidianManager", 4, "loadInternalInfo query from db: " + localQidianInternalInfo);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("loadInternalInfo query from db: ");
+          ((StringBuilder)localObject).append(localQidianInternalInfo);
+          QLog.d("QidianManager", 4, ((StringBuilder)localObject).toString());
         }
-        String str = localQidianInternalInfo.uin;
-        this.c.put(str, localQidianInternalInfo);
+        Object localObject = localQidianInternalInfo.uin;
+        this.c.put(localObject, localQidianInternalInfo);
       }
     }
   }
   
+  /* Error */
   private void b(QidianExternalInfo paramQidianExternalInfo, QidianInternalInfo paramQidianInternalInfo, QidianCorpInfo paramQidianCorpInfo, QidianProfileUiInfo paramQidianProfileUiInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QidianManager", 2, "saveQidianExtInfoInSubThread");
-    }
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager();
-    if (localEntityManager != null) {
-      if (paramQidianExternalInfo == null) {}
-    }
-    label62:
-    label124:
-    while (!QLog.isColorLevel())
-    {
-      try
-      {
-        localEntityManager.persistOrReplace(paramQidianExternalInfo);
-        if (paramQidianInternalInfo == null) {
-          break label124;
-        }
-        localEntityManager.persistOrReplace(paramQidianInternalInfo);
-      }
-      catch (Exception paramQidianExternalInfo)
-      {
-        for (;;)
-        {
-          paramQidianExternalInfo.printStackTrace();
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.d("QidianManager", 2, "saveQidianIntInfoInSubThread internalInfo is null");
-          }
-        }
-      }
-      finally
-      {
-        localEntityManager.close();
-      }
-      if (paramQidianCorpInfo != null)
-      {
-        localEntityManager.persistOrReplace(paramQidianCorpInfo);
-        if (paramQidianProfileUiInfo == null) {
-          break label168;
-        }
-        localEntityManager.persistOrReplace(paramQidianProfileUiInfo);
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QidianManager", 2, "saveQidianExtInfoInSubThread success");
-        }
-        localEntityManager.close();
-        return;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("QidianManager", 2, "saveQidianExtInfoInSubThread externalInfo is null");
-        break;
-        if (!QLog.isColorLevel()) {
-          break label62;
-        }
-        QLog.d("QidianManager", 2, "saveQidianExtInfoInSubThread corpInfo is null");
-        break label62;
-        if (QLog.isColorLevel()) {
-          QLog.d("QidianManager", 2, "saveQidianExtInfoInSubThread uiInfo is null");
-        }
-      }
-    }
-    label168:
-    QLog.d("QidianManager", 2, "saveQidianExtInfoInSubThread em is null");
+    // Byte code:
+    //   0: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +12 -> 15
+    //   6: ldc 147
+    //   8: iconst_2
+    //   9: ldc_w 634
+    //   12: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   15: aload_0
+    //   16: getfield 63	com/tencent/qidian/QidianManager:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
+    //   19: invokevirtual 158	com/tencent/common/app/AppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
+    //   22: invokevirtual 164	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   25: astore 5
+    //   27: aload 5
+    //   29: ifnull +157 -> 186
+    //   32: aload_1
+    //   33: ifnull +12 -> 45
+    //   36: aload 5
+    //   38: aload_1
+    //   39: invokevirtual 451	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   42: goto +18 -> 60
+    //   45: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   48: ifeq +12 -> 60
+    //   51: ldc 147
+    //   53: iconst_2
+    //   54: ldc_w 636
+    //   57: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   60: aload_2
+    //   61: ifnull +12 -> 73
+    //   64: aload 5
+    //   66: aload_2
+    //   67: invokevirtual 451	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   70: goto +18 -> 88
+    //   73: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   76: ifeq +12 -> 88
+    //   79: ldc 147
+    //   81: iconst_2
+    //   82: ldc_w 638
+    //   85: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   88: aload_3
+    //   89: ifnull +12 -> 101
+    //   92: aload 5
+    //   94: aload_3
+    //   95: invokevirtual 451	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   98: goto +18 -> 116
+    //   101: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   104: ifeq +12 -> 116
+    //   107: ldc 147
+    //   109: iconst_2
+    //   110: ldc_w 640
+    //   113: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   116: aload 4
+    //   118: ifnull +13 -> 131
+    //   121: aload 5
+    //   123: aload 4
+    //   125: invokevirtual 451	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   128: goto +18 -> 146
+    //   131: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   134: ifeq +12 -> 146
+    //   137: ldc 147
+    //   139: iconst_2
+    //   140: ldc_w 642
+    //   143: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   146: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   149: ifeq +24 -> 173
+    //   152: ldc 147
+    //   154: iconst_2
+    //   155: ldc_w 644
+    //   158: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   161: goto +12 -> 173
+    //   164: astore_1
+    //   165: goto +14 -> 179
+    //   168: astore_1
+    //   169: aload_1
+    //   170: invokevirtual 456	java/lang/Exception:printStackTrace	()V
+    //   173: aload 5
+    //   175: invokevirtual 200	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   178: return
+    //   179: aload 5
+    //   181: invokevirtual 200	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   184: aload_1
+    //   185: athrow
+    //   186: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   189: ifeq +12 -> 201
+    //   192: ldc 147
+    //   194: iconst_2
+    //   195: ldc_w 646
+    //   198: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   201: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	202	0	this	QidianManager
+    //   0	202	1	paramQidianExternalInfo	QidianExternalInfo
+    //   0	202	2	paramQidianInternalInfo	QidianInternalInfo
+    //   0	202	3	paramQidianCorpInfo	QidianCorpInfo
+    //   0	202	4	paramQidianProfileUiInfo	QidianProfileUiInfo
+    //   25	155	5	localEntityManager	EntityManager
+    // Exception table:
+    //   from	to	target	type
+    //   36	42	164	finally
+    //   45	60	164	finally
+    //   64	70	164	finally
+    //   73	88	164	finally
+    //   92	98	164	finally
+    //   101	116	164	finally
+    //   121	128	164	finally
+    //   131	146	164	finally
+    //   146	161	164	finally
+    //   169	173	164	finally
+    //   36	42	168	java/lang/Exception
+    //   45	60	168	java/lang/Exception
+    //   64	70	168	java/lang/Exception
+    //   73	88	168	java/lang/Exception
+    //   92	98	168	java/lang/Exception
+    //   101	116	168	java/lang/Exception
+    //   121	128	168	java/lang/Exception
+    //   131	146	168	java/lang/Exception
+    //   146	161	168	java/lang/Exception
   }
   
+  /* Error */
   private void b(QidianExternalInfo paramQidianExternalInfo, QidianProfileUiInfo paramQidianProfileUiInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QidianManager", 2, "saveQidianMasterInfoInSubThread");
-    }
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager();
-    if (localEntityManager != null) {
-      if (paramQidianExternalInfo == null) {}
-    }
-    while (!QLog.isColorLevel()) {
-      for (;;)
-      {
-        try
-        {
-          paramQidianExternalInfo.setStatus(1000);
-          localEntityManager.persistOrReplace(paramQidianExternalInfo);
-          if (paramQidianProfileUiInfo == null) {
-            continue;
-          }
-          localEntityManager.persistOrReplace(paramQidianProfileUiInfo);
-        }
-        catch (Exception paramQidianExternalInfo)
-        {
-          paramQidianExternalInfo.printStackTrace();
-          return;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("QidianManager", 2, "saveQidianMasterInfoInSubThread uiInfo is null");
-          continue;
-        }
-        finally
-        {
-          localEntityManager.close();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QidianManager", 2, "saveQidianMasterInfoInSubThread success");
-        }
-        localEntityManager.close();
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("QidianManager", 2, "saveQidianMasterInfoInSubThread externalInfo is null");
-        }
-      }
-    }
-    QLog.d("QidianManager", 2, "saveQidianMasterInfoInSubThread em is null");
+    // Byte code:
+    //   0: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +12 -> 15
+    //   6: ldc 147
+    //   8: iconst_2
+    //   9: ldc_w 648
+    //   12: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   15: aload_0
+    //   16: getfield 63	com/tencent/qidian/QidianManager:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
+    //   19: invokevirtual 158	com/tencent/common/app/AppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
+    //   22: invokevirtual 164	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   25: astore_3
+    //   26: aload_3
+    //   27: ifnull +102 -> 129
+    //   30: aload_1
+    //   31: ifnull +18 -> 49
+    //   34: aload_1
+    //   35: sipush 1000
+    //   38: invokevirtual 652	com/tencent/qidian/data/QidianExternalInfo:setStatus	(I)V
+    //   41: aload_3
+    //   42: aload_1
+    //   43: invokevirtual 451	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   46: goto +18 -> 64
+    //   49: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   52: ifeq +12 -> 64
+    //   55: ldc 147
+    //   57: iconst_2
+    //   58: ldc_w 654
+    //   61: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   64: aload_2
+    //   65: ifnull +11 -> 76
+    //   68: aload_3
+    //   69: aload_2
+    //   70: invokevirtual 451	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   73: goto +18 -> 91
+    //   76: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   79: ifeq +12 -> 91
+    //   82: ldc 147
+    //   84: iconst_2
+    //   85: ldc_w 656
+    //   88: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   91: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   94: ifeq +24 -> 118
+    //   97: ldc 147
+    //   99: iconst_2
+    //   100: ldc_w 658
+    //   103: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   106: goto +12 -> 118
+    //   109: astore_1
+    //   110: goto +13 -> 123
+    //   113: astore_1
+    //   114: aload_1
+    //   115: invokevirtual 456	java/lang/Exception:printStackTrace	()V
+    //   118: aload_3
+    //   119: invokevirtual 200	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   122: return
+    //   123: aload_3
+    //   124: invokevirtual 200	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   127: aload_1
+    //   128: athrow
+    //   129: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   132: ifeq +12 -> 144
+    //   135: ldc 147
+    //   137: iconst_2
+    //   138: ldc_w 660
+    //   141: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   144: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	145	0	this	QidianManager
+    //   0	145	1	paramQidianExternalInfo	QidianExternalInfo
+    //   0	145	2	paramQidianProfileUiInfo	QidianProfileUiInfo
+    //   25	99	3	localEntityManager	EntityManager
+    // Exception table:
+    //   from	to	target	type
+    //   34	46	109	finally
+    //   49	64	109	finally
+    //   68	73	109	finally
+    //   76	91	109	finally
+    //   91	106	109	finally
+    //   114	118	109	finally
+    //   34	46	113	java/lang/Exception
+    //   49	64	113	java/lang/Exception
+    //   68	73	113	java/lang/Exception
+    //   76	91	113	java/lang/Exception
+    //   91	106	113	java/lang/Exception
   }
   
   public static boolean b(int paramInt)
@@ -1049,39 +1223,36 @@ public class QidianManager
   
   public static boolean b(QQAppInterface paramQQAppInterface, String paramString)
   {
-    return ((QidianManager)paramQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).f(paramString);
+    paramQQAppInterface = (QidianManager)paramQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER);
+    return (paramQQAppInterface.a(paramString)) || (paramQQAppInterface.f(paramString));
   }
   
   private String c(String paramString)
   {
-    String str = "";
     if (a(paramString))
     {
-      QidianExternalInfo localQidianExternalInfo = (QidianExternalInfo)this.b.get(paramString);
-      if ((localQidianExternalInfo != null) && (!TextUtils.isEmpty(localQidianExternalInfo.masterUin)))
+      Object localObject = (QidianExternalInfo)this.b.get(paramString);
+      if ((localObject != null) && (!TextUtils.isEmpty(((QidianExternalInfo)localObject).masterUin)))
       {
-        paramString = (QidianCorpInfo)this.d.get(localQidianExternalInfo.masterUin);
-        if (paramString == null) {
-          break label122;
+        paramString = (QidianCorpInfo)this.d.get(((QidianExternalInfo)localObject).masterUin);
+        if (paramString != null) {
+          return paramString.corpName;
         }
       }
-    }
-    label122:
-    for (paramString = paramString.corpName;; paramString = "")
-    {
-      str = paramString;
-      do
+      else if (QLog.isColorLevel())
       {
-        do
-        {
-          return str;
-        } while (!QLog.isColorLevel());
-        QLog.d("QidianManager", 4, "QidianExternalInfo is null or masterUin is empty for uin: " + paramString);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("QidianExternalInfo is null or masterUin is empty for uin: ");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("QidianManager", 4, ((StringBuilder)localObject).toString());
         return "";
-      } while (!QLog.isColorLevel());
-      QLog.d("QidianManager", 4, "uin is no qidian account");
-      return "";
+      }
     }
+    else if (QLog.isColorLevel())
+    {
+      QLog.d("QidianManager", 4, "uin is no qidian account");
+    }
+    return "";
   }
   
   private void c(EntityManager paramEntityManager)
@@ -1093,11 +1264,15 @@ public class QidianManager
       while (paramEntityManager.hasNext())
       {
         BmqqUserSimpleInfo localBmqqUserSimpleInfo = (BmqqUserSimpleInfo)paramEntityManager.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("QidianManager", 4, "loadBmqqExtInfo query from db: " + localBmqqUserSimpleInfo);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("loadBmqqExtInfo query from db: ");
+          ((StringBuilder)localObject).append(localBmqqUserSimpleInfo);
+          QLog.d("QidianManager", 4, ((StringBuilder)localObject).toString());
         }
-        String str = localBmqqUserSimpleInfo.mBmqqUin;
-        this.f.put(str, localBmqqUserSimpleInfo);
+        Object localObject = localBmqqUserSimpleInfo.mBmqqUin;
+        this.f.put(localObject, localBmqqUserSimpleInfo);
       }
     }
   }
@@ -1105,12 +1280,6 @@ public class QidianManager
   public static boolean c(int paramInt)
   {
     return (paramInt & 0x1) != 0;
-  }
-  
-  public static boolean c(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    paramQQAppInterface = (QidianManager)paramQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER);
-    return (paramQQAppInterface.a(paramString)) || (paramQQAppInterface.f(paramString));
   }
   
   private void d(EntityManager paramEntityManager)
@@ -1122,11 +1291,15 @@ public class QidianManager
       while (paramEntityManager.hasNext())
       {
         QidianCorpInfo localQidianCorpInfo = (QidianCorpInfo)paramEntityManager.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("QidianManager", 4, "loadCorpInfo query from db: " + localQidianCorpInfo);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("loadCorpInfo query from db: ");
+          ((StringBuilder)localObject).append(localQidianCorpInfo);
+          QLog.d("QidianManager", 4, ((StringBuilder)localObject).toString());
         }
-        String str = localQidianCorpInfo.corpUin;
-        this.d.put(str, localQidianCorpInfo);
+        Object localObject = localQidianCorpInfo.corpUin;
+        this.d.put(localObject, localQidianCorpInfo);
       }
     }
   }
@@ -1140,8 +1313,12 @@ public class QidianManager
       while (paramEntityManager.hasNext())
       {
         QidianProfileUiInfo localQidianProfileUiInfo = (QidianProfileUiInfo)paramEntityManager.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("QidianManager", 4, "loadQidianProfileUiInfo query from db: " + localQidianProfileUiInfo);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("loadQidianProfileUiInfo query from db: ");
+          localStringBuilder.append(localQidianProfileUiInfo);
+          QLog.d("QidianManager", 4, localStringBuilder.toString());
         }
         this.e.put(localQidianProfileUiInfo.uin, localQidianProfileUiInfo);
       }
@@ -1169,20 +1346,18 @@ public class QidianManager
   
   public int a(String paramString, QQAppInterface paramQQAppInterface)
   {
-    int j = 1;
     if (!a(paramString, paramQQAppInterface)) {
-      j = 5;
+      return 5;
     }
-    do
-    {
-      return j;
-      if (f(paramString)) {
-        return 6;
-      }
-      if (CrmUtils.b(paramQQAppInterface, paramString, 0)) {
-        return 3;
-      }
-    } while (a(paramString));
+    if (f(paramString)) {
+      return 6;
+    }
+    if (CrmUtils.a(paramQQAppInterface, paramString, 0)) {
+      return 3;
+    }
+    if (a(paramString)) {
+      return 1;
+    }
     if (a(paramString, true)) {
       return 0;
     }
@@ -1191,47 +1366,43 @@ public class QidianManager
   
   public QidianCorpInfo a(String paramString)
   {
-    QidianCorpInfo localQidianCorpInfo = null;
     if (this.d.containsKey(paramString)) {
-      localQidianCorpInfo = (QidianCorpInfo)this.d.get(paramString);
+      return (QidianCorpInfo)this.d.get(paramString);
     }
-    return localQidianCorpInfo;
+    return null;
   }
   
   public QidianExternalInfo a(String paramString)
   {
-    QidianExternalInfo localQidianExternalInfo = null;
     if (this.b.containsKey(paramString)) {
-      localQidianExternalInfo = (QidianExternalInfo)this.b.get(paramString);
+      return (QidianExternalInfo)this.b.get(paramString);
     }
-    return localQidianExternalInfo;
+    return null;
   }
   
   public QidianInternalInfo a(String paramString)
   {
-    QidianInternalInfo localQidianInternalInfo = null;
     if (this.c.containsKey(paramString)) {
-      localQidianInternalInfo = (QidianInternalInfo)this.c.get(paramString);
+      return (QidianInternalInfo)this.c.get(paramString);
     }
-    return localQidianInternalInfo;
+    return null;
   }
   
   public QidianProfileUiInfo a(String paramString)
   {
-    QidianProfileUiInfo localQidianProfileUiInfo = null;
     if (this.e.containsKey(paramString)) {
-      localQidianProfileUiInfo = (QidianProfileUiInfo)this.e.get(paramString);
+      return (QidianProfileUiInfo)this.e.get(paramString);
     }
-    return localQidianProfileUiInfo;
+    return null;
   }
   
   public String a(Context paramContext, String paramString)
   {
     paramString = c(paramString);
     if (!TextUtils.isEmpty(paramString)) {
-      return String.format(paramContext.getString(2131698550), new Object[] { paramString });
+      return String.format(paramContext.getString(2131698616), new Object[] { paramString });
     }
-    return paramContext.getString(2131698549);
+    return paramContext.getString(2131698615);
   }
   
   public String a(String paramString)
@@ -1248,48 +1419,51 @@ public class QidianManager
   
   public void a(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    Object localObject1;
-    Object localObject2;
-    FragmentActivity localFragmentActivity;
-    do
-    {
-      do
-      {
-        return;
-        localObject1 = String.valueOf(paramLong);
-        localObject2 = StructMsgFactory.a(paramString.getBytes(), 0);
-      } while ((localObject2 == null) || ((!(BaseActivity.sTopActivity instanceof SplashActivity)) && (!(BaseActivity.sTopActivity instanceof ChatActivity))));
-      localFragmentActivity = (FragmentActivity)BaseActivity.sTopActivity;
-    } while ((localFragmentActivity.getChatFragment() == null) || (!localFragmentActivity.getChatFragment().a.a.jdField_a_of_type_JavaLangString.equals(localObject1)));
-    paramString = (MessageForStructing)MessageRecordFactory.a(-2011);
-    paramString.msgtype = -2011;
-    paramString.istroop = localFragmentActivity.getChatFragment().a.a.jdField_a_of_type_Int;
-    paramString.issend = 0;
-    paramString.isread = true;
-    paramString.selfuin = paramQQAppInterface.getCurrentAccountUin();
-    paramString.mIsParsed = true;
-    paramString.frienduin = ((String)localObject1);
-    paramString.senderuin = ((String)localObject1);
-    paramString.structingMsg = ((AbsStructMsg)localObject2);
-    paramString.msgData = ((AbsStructMsg)localObject2).getBytes();
-    paramString.saveExtInfoToExtStr("is_eman_sc_message", "1");
-    if (this.i.get(localObject1) == null)
-    {
-      localObject2 = new ArrayList();
-      ((List)localObject2).add(paramString);
-      this.i.put(localObject1, localObject2);
-    }
-    for (;;)
-    {
-      localObject1 = new ArrayList();
-      if (MessageHandlerUtils.a(paramQQAppInterface, paramString, false)) {
-        break;
-      }
-      ((ArrayList)localObject1).add(paramString);
-      paramQQAppInterface.getMessageFacade().b((List)localObject1, String.valueOf(paramQQAppInterface.getCurrentAccountUin()));
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      ((List)this.i.get(localObject1)).add(paramString);
+    }
+    Object localObject1 = String.valueOf(paramLong);
+    Object localObject2 = StructMsgFactory.a(paramString.getBytes(), 0);
+    if (localObject2 == null) {
+      return;
+    }
+    if (((BaseActivity.sTopActivity instanceof SplashActivity)) || ((BaseActivity.sTopActivity instanceof ChatActivity)))
+    {
+      BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+      if (localBaseActivity.getChatFragment() == null) {
+        return;
+      }
+      if (!localBaseActivity.getChatFragment().a.a.jdField_a_of_type_JavaLangString.equals(localObject1)) {
+        return;
+      }
+      paramString = (MessageForStructing)MessageRecordFactory.a(-2011);
+      paramString.msgtype = -2011;
+      paramString.istroop = localBaseActivity.getChatFragment().a.a.jdField_a_of_type_Int;
+      paramString.issend = 0;
+      paramString.isread = true;
+      paramString.selfuin = paramQQAppInterface.getCurrentAccountUin();
+      paramString.mIsParsed = true;
+      paramString.frienduin = ((String)localObject1);
+      paramString.senderuin = ((String)localObject1);
+      paramString.structingMsg = ((AbsStructMsg)localObject2);
+      paramString.msgData = ((AbsStructMsg)localObject2).getBytes();
+      paramString.saveExtInfoToExtStr("is_eman_sc_message", "1");
+      if (this.i.get(localObject1) == null)
+      {
+        localObject2 = new ArrayList();
+        ((List)localObject2).add(paramString);
+        this.i.put(localObject1, localObject2);
+      }
+      else
+      {
+        ((List)this.i.get(localObject1)).add(paramString);
+      }
+      localObject1 = new ArrayList();
+      if (!MessageHandlerUtils.a(paramQQAppInterface, paramString, false))
+      {
+        ((ArrayList)localObject1).add(paramString);
+        paramQQAppInterface.getMessageFacade().b((List)localObject1, String.valueOf(paramQQAppInterface.getCurrentAccountUin()));
+      }
     }
   }
   
@@ -1353,34 +1527,30 @@ public class QidianManager
   
   public void a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    Object localObject1;
-    Object localObject2;
-    do
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    Object localObject1 = paramString.split("\\?");
+    if (localObject1.length != 2) {
+      return;
+    }
+    Object localObject2 = localObject1[1].split("&");
+    localObject1 = new HashMap();
+    int k = localObject2.length;
+    int j = 0;
+    while (j < k)
     {
-      do
-      {
-        return;
-        localObject1 = paramString.split("\\?");
-      } while (localObject1.length != 2);
-      localObject2 = localObject1[1].split("&");
-      localObject1 = new HashMap();
-      int k = localObject2.length;
-      int j = 0;
-      if (j < k)
-      {
-        String[] arrayOfString = localObject2[j].split("=");
-        if (arrayOfString.length != 2) {}
-        for (;;)
-        {
-          j += 1;
-          break;
-          ((HashMap)localObject1).put(arrayOfString[0], arrayOfString[1]);
-        }
+      String[] arrayOfString = localObject2[j].split("=");
+      if (arrayOfString.length == 2) {
+        ((HashMap)localObject1).put(arrayOfString[0], arrayOfString[1]);
       }
-      localObject2 = (String)((HashMap)localObject1).get("aioType");
-      localObject1 = (String)((HashMap)localObject1).get("uin");
-    } while ((TextUtils.isEmpty((CharSequence)localObject2)) && (TextUtils.isEmpty((CharSequence)localObject1)));
+      j += 1;
+    }
+    localObject2 = (String)((HashMap)localObject1).get("aioType");
+    localObject1 = (String)((HashMap)localObject1).get("uin");
+    if ((TextUtils.isEmpty((CharSequence)localObject2)) && (TextUtils.isEmpty((CharSequence)localObject1))) {
+      return;
+    }
     a(paramString, (String)localObject2, (String)localObject1);
   }
   
@@ -1407,15 +1577,17 @@ public class QidianManager
   
   public void a(String paramString1, String paramString2)
   {
-    if (this.g.containsKey(paramString1)) {}
-    for (QidianPAForWpa localQidianPAForWpa = (QidianPAForWpa)this.g.get(paramString1);; localQidianPAForWpa = new QidianPAForWpa())
+    QidianPAForWpa localQidianPAForWpa;
+    if (this.g.containsKey(paramString1)) {
+      localQidianPAForWpa = (QidianPAForWpa)this.g.get(paramString1);
+    } else {
+      localQidianPAForWpa = new QidianPAForWpa();
+    }
+    localQidianPAForWpa.puin = paramString1;
+    localQidianPAForWpa.kfuin = paramString2;
+    this.g.put(paramString1, localQidianPAForWpa);
+    if (UiThreadUtil.a())
     {
-      localQidianPAForWpa.puin = paramString1;
-      localQidianPAForWpa.kfuin = paramString2;
-      this.g.put(paramString1, localQidianPAForWpa);
-      if (!UiThreadUtil.a()) {
-        break;
-      }
       ThreadManager.post(new QidianManager.6(this, localQidianPAForWpa, paramString1, paramString2), 5, null, true);
       return;
     }
@@ -1424,43 +1596,36 @@ public class QidianManager
   
   public void a(String paramString1, String paramString2, String paramString3)
   {
+    boolean bool = paramString2.equals("1");
     String str = "";
-    if (paramString2.equals("1")) {
+    if (bool)
+    {
       paramString2 = str;
     }
-    for (;;)
+    else if (paramString2.equals("2"))
     {
-      ((QidianHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER)).a(paramString1, paramString2, paramString3);
-      return;
-      if (paramString2.equals("2"))
-      {
-        paramString2 = paramString3;
-        paramString3 = "";
-      }
-      else
-      {
-        paramString3 = "";
-        paramString2 = str;
-      }
+      paramString2 = paramString3;
+      paramString3 = "";
     }
+    else
+    {
+      paramString3 = "";
+      paramString2 = str;
+    }
+    ((QidianHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER)).a(paramString1, paramString2, paramString3);
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5)
   {
+    paramString1 = paramString2;
     if (TextUtils.isEmpty(paramString2)) {
-      if (!TextUtils.isEmpty(paramString3)) {
-        break label31;
-      }
+      paramString1 = paramString3;
     }
-    for (;;)
-    {
-      a(paramString4, 1, paramInt, paramString5);
-      return;
-      paramString3 = paramString2;
-      break;
-      label31:
-      paramString4 = paramString3;
+    paramString2 = paramString1;
+    if (TextUtils.isEmpty(paramString1)) {
+      paramString2 = paramString4;
     }
+    a(paramString2, 1, paramInt, paramString5);
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -1484,30 +1649,29 @@ public class QidianManager
   
   public boolean a(Context paramContext, BmqqAccountType paramBmqqAccountType)
   {
-    if (paramBmqqAccountType == null) {}
-    for (;;)
-    {
+    if (paramBmqqAccountType == null) {
       return false;
-      paramContext = paramBmqqAccountType.getUin();
-      try
-      {
-        long l = Long.parseLong(paramContext);
-        if (BmqqSegmentUtil.a(paramContext))
-        {
-          switch (paramBmqqAccountType.getAccountType())
-          {
-          default: 
-            return false;
-          case 1: 
-            ((QidianHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER)).b(l);
-            return true;
-          }
-          ((QidianHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER)).d(l);
-          return true;
-        }
-      }
-      catch (Exception paramContext) {}
     }
+    paramContext = paramBmqqAccountType.getUin();
+    try
+    {
+      long l = Long.parseLong(paramContext);
+      if (!BmqqSegmentUtil.a(paramContext)) {
+        return false;
+      }
+      int j = paramBmqqAccountType.getAccountType();
+      if (j != 1)
+      {
+        if (j != 6) {
+          return false;
+        }
+        ((QidianHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER)).d(l);
+        return true;
+      }
+      ((QidianHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER)).b(l);
+      return true;
+    }
+    catch (Exception paramContext) {}
     return false;
   }
   
@@ -1518,29 +1682,28 @@ public class QidianManager
   
   public boolean a(String paramString, boolean paramBoolean)
   {
-    boolean bool = true;
     try
     {
       Long.parseLong(paramString);
-      if (!BmqqSegmentUtil.a(paramString)) {}
-      while ((BmqqSegmentUtil.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (!BmqqSegmentUtil.a(null, paramString))) {
+      if (!BmqqSegmentUtil.a(paramString)) {
         return false;
       }
-      if (this.f.containsKey(paramString)) {}
-      for (;;)
-      {
-        return bool;
-        if (!a(paramString, 1))
-        {
-          if (!paramBoolean) {
-            a(paramString, false);
-          }
-          bool = false;
-        }
+      if ((BmqqSegmentUtil.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (!BmqqSegmentUtil.a(null, paramString))) {
+        return false;
+      }
+      if (this.f.containsKey(paramString)) {
+        return true;
+      }
+      if (a(paramString, 1)) {
+        return true;
+      }
+      if (!paramBoolean) {
+        a(paramString, false);
       }
       return false;
     }
     catch (Exception paramString) {}
+    return false;
   }
   
   public String b(String paramString)
@@ -1562,273 +1725,256 @@ public class QidianManager
   
   public boolean b(Context paramContext, BmqqAccountType paramBmqqAccountType)
   {
-    if (paramBmqqAccountType == null) {}
-    for (;;)
-    {
+    if (paramBmqqAccountType == null) {
       return false;
-      paramContext = paramBmqqAccountType.getUin();
-      try
-      {
-        long l = Long.parseLong(paramContext);
-        if (BmqqSegmentUtil.a(paramContext))
+    }
+    paramContext = paramBmqqAccountType.getUin();
+    try
+    {
+      long l = Long.parseLong(paramContext);
+      if (!BmqqSegmentUtil.a(paramContext)) {
+        return false;
+      }
+      int j = paramBmqqAccountType.getAccountType();
+      if (j != 0) {
+        if (j != 1)
         {
-          switch (paramBmqqAccountType.getAccountType())
+          if (j != 2)
           {
-          case 3: 
-          case 4: 
-          case 5: 
-          default: 
-            return false;
-          case 0: 
-          case 2: 
-            ((BmqqBusinessHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(BusinessHandlerFactory.BMQQ_BUSINESS_HANDLER)).a(paramContext);
-            return true;
-          case 1: 
-            ((QidianHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER)).a(l);
+            if (j != 6) {
+              return false;
+            }
+            ((QidianHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER)).c(l);
             return true;
           }
-          ((QidianHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER)).c(l);
+        }
+        else
+        {
+          ((QidianHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER)).a(l);
           return true;
         }
       }
-      catch (Exception paramContext) {}
+      ((BmqqBusinessHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(BusinessHandlerFactory.BMQQ_BUSINESS_HANDLER)).a(paramContext);
+      return true;
     }
+    catch (Exception paramContext) {}
     return false;
   }
   
   public boolean b(String paramString)
   {
+    boolean bool3 = this.b.containsKey(paramString);
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.b.containsKey(paramString))
+    if (bool3)
     {
       paramString = (QidianExternalInfo)this.b.get(paramString);
       bool1 = bool2;
-      if (paramString != null) {
-        if (paramString.isShowCall != 1) {
-          break label49;
+      if (paramString != null)
+      {
+        bool1 = bool2;
+        if (paramString.isShowCall == 1) {
+          bool1 = true;
         }
       }
     }
-    label49:
-    for (bool1 = true;; bool1 = false) {
-      return bool1;
-    }
+    return bool1;
   }
   
   public boolean b(String paramString, boolean paramBoolean)
   {
-    boolean bool2;
+    boolean bool2 = false;
+    try
+    {
+      Long.parseLong(paramString);
+      if (!BmqqSegmentUtil.a(paramString)) {
+        return false;
+      }
+      if ((BmqqSegmentUtil.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (!BmqqSegmentUtil.a(null, paramString))) {
+        return false;
+      }
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
+      {
+        bool1 = bool2;
+        if (((Integer)this.jdField_a_of_type_JavaUtilMap.get(paramString)).intValue() != 1) {
+          break label105;
+        }
+      }
+      else
+      {
+        if (!a(paramString, 4)) {
+          break label89;
+        }
+      }
+      boolean bool1 = true;
+      break label105;
+      label89:
+      bool1 = bool2;
+      if (!paramBoolean)
+      {
+        a(paramString, false);
+        bool1 = bool2;
+      }
+      label105:
+      if ((bool1) && (this.b.get(paramString) == null) && (!paramBoolean))
+      {
+        if (UiThreadUtil.a())
+        {
+          ThreadManager.post(new QidianManager.4(this, paramString), 5, null, true);
+          return bool1;
+        }
+        b(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getBaseContext(), new BmqqAccountType(paramString, 1));
+      }
+      return bool1;
+    }
+    catch (Exception paramString) {}
+    return false;
+  }
+  
+  public boolean c(String paramString)
+  {
+    boolean bool3 = this.b.containsKey(paramString);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bool3)
+    {
+      paramString = (QidianExternalInfo)this.b.get(paramString);
+      bool1 = bool2;
+      if (paramString != null)
+      {
+        bool1 = bool2;
+        if (paramString.isShowVideoCall == 1) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public boolean c(String paramString, boolean paramBoolean)
+  {
     try
     {
       Long.parseLong(paramString);
       if (!BmqqSegmentUtil.a(paramString))
       {
-        bool2 = false;
-        return bool2;
-      }
-    }
-    catch (Exception paramString)
-    {
-      return false;
-    }
-    if ((BmqqSegmentUtil.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (!BmqqSegmentUtil.a(null, paramString))) {
-      return false;
-    }
-    boolean bool1;
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
-    {
-      if (((Integer)this.jdField_a_of_type_JavaUtilMap.get(paramString)).intValue() != 1) {
-        break label152;
-      }
-      bool1 = true;
-    }
-    for (;;)
-    {
-      bool2 = bool1;
-      if (!bool1) {
-        break;
-      }
-      bool2 = bool1;
-      if (this.b.get(paramString) != null) {
-        break;
-      }
-      bool2 = bool1;
-      if (paramBoolean) {
-        break;
-      }
-      if (!UiThreadUtil.a()) {
-        break label157;
-      }
-      ThreadManager.post(new QidianManager.4(this, paramString), 5, null, true);
-      return bool1;
-      if (a(paramString, 4))
-      {
-        bool1 = true;
-      }
-      else
-      {
-        if (!paramBoolean) {
-          a(paramString, false);
+        if (QLog.isColorLevel()) {
+          QLog.d("QidianManager", 2, "isQidianMaster uin is not in bmqqsegment");
         }
-        label152:
-        bool1 = false;
+        return false;
       }
-    }
-    label157:
-    b(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getBaseContext(), new BmqqAccountType(paramString, 1));
-    return bool1;
-  }
-  
-  public boolean c(String paramString)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.b.containsKey(paramString))
-    {
-      paramString = (QidianExternalInfo)this.b.get(paramString);
-      bool1 = bool2;
-      if (paramString != null) {
-        if (paramString.isShowVideoCall != 1) {
-          break label49;
-        }
-      }
-    }
-    label49:
-    for (bool1 = true;; bool1 = false) {
-      return bool1;
-    }
-  }
-  
-  public boolean c(String paramString, boolean paramBoolean)
-  {
-    boolean bool1 = false;
-    label393:
-    for (;;)
-    {
-      try
+      if ((BmqqSegmentUtil.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (BmqqSegmentUtil.a(null, paramString)))
       {
-        Long.parseLong(paramString);
-        if (!BmqqSegmentUtil.a(paramString))
+        if (QLog.isColorLevel()) {
+          QLog.d("QidianManager", 2, "isQidianMaster is bmqquin");
+        }
+        return false;
+      }
+      boolean bool1 = a(paramString, 16);
+      Object localObject;
+      boolean bool2;
+      if (!bool1)
+      {
+        if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
         {
-          paramBoolean = bool1;
-          if (QLog.isColorLevel())
+          if (((Integer)this.jdField_a_of_type_JavaUtilMap.get(paramString)).intValue() == 6)
           {
-            QLog.d("QidianManager", 2, "isQidianMaster uin is not in bmqqsegment");
-            paramBoolean = bool1;
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(MsfSdkUtils.getShortUin(paramString));
+            ((StringBuilder)localObject).append(" isQidianMaster is qidianmain");
+            QLog.i("QidianManager", 1, ((StringBuilder)localObject).toString());
+            bool1 = true;
           }
-          return paramBoolean;
-        }
-        if ((BmqqSegmentUtil.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (BmqqSegmentUtil.a(null, paramString)))
-        {
-          paramBoolean = bool1;
-          if (QLog.isColorLevel())
+          bool2 = bool1;
+          if (!paramBoolean)
           {
-            QLog.d("QidianManager", 2, "isQidianMaster is bmqquin");
-            return false;
+            if (QLog.isColorLevel()) {
+              QLog.d("QidianManager", 2, "isQidianMaster not only in cache 0");
+            }
+            b(paramString);
+            bool2 = bool1;
           }
         }
         else
         {
-          bool1 = a(paramString, 16);
-          boolean bool2;
-          if (!bool1)
+          bool2 = bool1;
+          if (!paramBoolean)
           {
-            if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
-            {
-              if (((Integer)this.jdField_a_of_type_JavaUtilMap.get(paramString)).intValue() != 6) {
-                break label393;
-              }
-              QLog.i("QidianManager", 1, MsfSdkUtils.getShortUin(paramString) + " isQidianMaster is qidianmain");
-              bool2 = true;
-              bool1 = bool2;
-              if (!paramBoolean)
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("QidianManager", 2, "isQidianMaster not only in cache 0");
-                }
-                b(paramString);
-                bool1 = bool2;
-              }
-              if ((bool1) && (!paramBoolean))
-              {
-                QidianExternalInfo localQidianExternalInfo = a(String.valueOf(paramString));
-                QidianProfileUiInfo localQidianProfileUiInfo = a(String.valueOf(paramString));
-                if ((localQidianExternalInfo == null) || (localQidianProfileUiInfo == null))
-                {
-                  if (!UiThreadUtil.a()) {
-                    continue;
-                  }
-                  ThreadManager.post(new QidianManager.7(this, paramString), 5, null, true);
-                }
-              }
-              paramBoolean = bool1;
-              if (!bool1) {
-                continue;
-              }
-              QLog.i("QidianManager", 1, MsfSdkUtils.getShortUin(paramString) + " isQidianMaster is true finally");
-              return bool1;
-            }
-            if (!paramBoolean)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("QidianManager", 2, "isQidianMaster not only in cache 1");
-              }
-              b(paramString);
-              continue;
-            }
-          }
-          else if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
-          {
-            a(new BmqqAccountType(paramString, 6));
             if (QLog.isColorLevel()) {
-              QLog.d("QidianManager", 2, "isQidianMaster update account type");
+              QLog.d("QidianManager", 2, "isQidianMaster not only in cache 1");
             }
-          }
-          continue;
-          b(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getBaseContext(), new BmqqAccountType(paramString, 6));
-          if (QLog.isColorLevel())
-          {
-            QLog.d("QidianManager", 2, "isQidianMaster get user detail");
-            continue;
+            b(paramString);
             bool2 = bool1;
           }
         }
       }
-      catch (Exception paramString)
+      else
       {
-        return false;
+        bool2 = bool1;
+        if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
+        {
+          a(new BmqqAccountType(paramString, 6));
+          bool2 = bool1;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("QidianManager", 2, "isQidianMaster update account type");
+            bool2 = bool1;
+          }
+        }
       }
+      if ((bool2) && (!paramBoolean))
+      {
+        localObject = a(String.valueOf(paramString));
+        QidianProfileUiInfo localQidianProfileUiInfo = a(String.valueOf(paramString));
+        if ((localObject == null) || (localQidianProfileUiInfo == null)) {
+          if (UiThreadUtil.a())
+          {
+            ThreadManager.post(new QidianManager.7(this, paramString), 5, null, true);
+          }
+          else
+          {
+            b(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getBaseContext(), new BmqqAccountType(paramString, 6));
+            if (QLog.isColorLevel()) {
+              QLog.d("QidianManager", 2, "isQidianMaster get user detail");
+            }
+          }
+        }
+      }
+      if (bool2)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(MsfSdkUtils.getShortUin(paramString));
+        ((StringBuilder)localObject).append(" isQidianMaster is true finally");
+        QLog.i("QidianManager", 1, ((StringBuilder)localObject).toString());
+      }
+      return bool2;
     }
+    catch (Exception paramString) {}
+    return false;
   }
   
   public boolean d(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(a(paramString)))
-    {
-      bool1 = bool2;
-      if (b(paramString)) {
-        bool1 = true;
-      }
-    }
-    return bool1;
+    return (!TextUtils.isEmpty(a(paramString))) && (b(paramString));
   }
   
   public boolean e(String paramString)
   {
+    boolean bool2 = false;
     try
     {
       Long.parseLong(paramString);
-      if ((this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) && (((Integer)this.jdField_a_of_type_JavaUtilMap.get(paramString)).intValue() == 3)) {
-        return true;
+      boolean bool1 = bool2;
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
+      {
+        bool1 = bool2;
+        if (((Integer)this.jdField_a_of_type_JavaUtilMap.get(paramString)).intValue() == 3) {
+          bool1 = true;
+        }
       }
+      return bool1;
     }
-    catch (Exception paramString)
-    {
-      return false;
-    }
+    catch (Exception paramString) {}
     return false;
   }
   
@@ -1847,42 +1993,52 @@ public class QidianManager
     if (QLog.isColorLevel()) {
       QLog.d("QidianManager", 4, "onDestroyd ...");
     }
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      this.jdField_a_of_type_JavaUtilMap.clear();
+    Object localObject = this.jdField_a_of_type_JavaUtilMap;
+    if (localObject != null) {
+      ((Map)localObject).clear();
     }
-    if (this.b != null) {
-      this.b.clear();
+    localObject = this.b;
+    if (localObject != null) {
+      ((Map)localObject).clear();
     }
-    if (this.c != null) {
-      this.c.clear();
+    localObject = this.c;
+    if (localObject != null) {
+      ((Map)localObject).clear();
     }
-    if (this.d != null) {
-      this.d.clear();
+    localObject = this.d;
+    if (localObject != null) {
+      ((Map)localObject).clear();
     }
-    if (this.e != null) {
-      this.e.clear();
+    localObject = this.e;
+    if (localObject != null) {
+      ((Map)localObject).clear();
     }
-    if (this.f != null) {
-      this.f.clear();
+    localObject = this.f;
+    if (localObject != null) {
+      ((Map)localObject).clear();
     }
-    if (this.g != null) {
-      this.g.clear();
+    localObject = this.g;
+    if (localObject != null) {
+      ((Map)localObject).clear();
     }
-    if (this.h != null) {
-      this.h.clear();
+    localObject = this.h;
+    if (localObject != null) {
+      ((Map)localObject).clear();
     }
-    if (this.i != null) {
-      this.i.clear();
+    localObject = this.i;
+    if (localObject != null) {
+      ((Map)localObject).clear();
     }
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      this.jdField_a_of_type_JavaUtilList.clear();
+    localObject = this.jdField_a_of_type_JavaUtilList;
+    if (localObject != null) {
+      ((List)localObject).clear();
     }
     jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.QidianManager
  * JD-Core Version:    0.7.0.1
  */

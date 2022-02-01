@@ -32,18 +32,18 @@ public final class TraceStatistics
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof TraceStatistics))
       {
         paramObject = (TraceStatistics)paramObject;
-        if (!Intrinsics.areEqual(this.records, paramObject.records)) {}
+        if (Intrinsics.areEqual(this.records, paramObject.records)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @NotNull
@@ -64,12 +64,16 @@ public final class TraceStatistics
   @NotNull
   public String toString()
   {
-    return "TraceStatistics(records=" + this.records + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TraceStatistics(records=");
+    localStringBuilder.append(this.records);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.statistic.TraceStatistics
  * JD-Core Version:    0.7.0.1
  */

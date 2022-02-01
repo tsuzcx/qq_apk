@@ -28,15 +28,18 @@ class SingleThreadExecutor
       {
         this.jdField_a_of_type_Boolean = true;
         super.execute(localTask);
-        return;
       }
-      this.jdField_a_of_type_JavaUtilQueue.offer(localTask);
+      else
+      {
+        this.jdField_a_of_type_JavaUtilQueue.offer(localTask);
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.SingleThreadExecutor
  * JD-Core Version:    0.7.0.1
  */

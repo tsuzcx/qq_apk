@@ -26,11 +26,19 @@ public class GetTroopStoryListHandler
     localGetTroopStoryListRequest.d = 20;
     localGetTroopStoryListRequest.c = paramInt2;
     localGetTroopStoryListRequest.f = paramInt1;
-    paramInt1 = ((Integer)this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("TROOP_STORY_TIMEZONE" + String.valueOf(paramLong), Integer.valueOf(-1))).intValue();
+    StoryConfigManager localStoryConfigManager = this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TROOP_STORY_TIMEZONE");
+    localStringBuilder.append(String.valueOf(paramLong));
+    paramInt1 = ((Integer)localStoryConfigManager.b(localStringBuilder.toString(), Integer.valueOf(-1))).intValue();
     paramInt2 = UIUtils.a();
     if (paramInt1 != paramInt2)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("TROOP_STORY_TIMEZONE" + String.valueOf(paramLong), Integer.valueOf(paramInt2));
+      localStoryConfigManager = this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("TROOP_STORY_TIMEZONE");
+      localStringBuilder.append(String.valueOf(paramLong));
+      localStoryConfigManager.b(localStringBuilder.toString(), Integer.valueOf(paramInt2));
       localGetTroopStoryListRequest.f = 0;
     }
     localGetTroopStoryListRequest.e = paramInt2;
@@ -40,57 +48,75 @@ public class GetTroopStoryListHandler
   public void a(long paramLong, int paramInt)
   {
     int i = paramInt;
-    if (paramInt == -1) {
-      i = ((Integer)this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("TROOP_STORY_COOKIE" + String.valueOf(paramLong), Integer.valueOf(0))).intValue();
+    if (paramInt == -1)
+    {
+      StoryConfigManager localStoryConfigManager = this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("TROOP_STORY_COOKIE");
+      localStringBuilder.append(String.valueOf(paramLong));
+      i = ((Integer)localStoryConfigManager.b(localStringBuilder.toString(), Integer.valueOf(0))).intValue();
     }
     a(paramLong, 0, i);
   }
   
   public void a(@NonNull GetTroopStoryListRequest paramGetTroopStoryListRequest, @Nullable GetTroopStoryListResponse paramGetTroopStoryListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    boolean bool2 = true;
     GetTroopStoryListHandler.GetTroopStoryListEvent localGetTroopStoryListEvent = new GetTroopStoryListHandler.GetTroopStoryListEvent(this.jdField_a_of_type_JavaLangString, paramErrorMessage);
-    if (paramGetTroopStoryListRequest.c == 0) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      localGetTroopStoryListEvent.c = bool1;
-      if ((paramGetTroopStoryListResponse != null) && (!paramErrorMessage.isFail())) {
-        break;
-      }
-      StoryDispatcher.a().dispatch(localGetTroopStoryListEvent);
-      return;
+    int i = paramGetTroopStoryListRequest.c;
+    boolean bool2 = true;
+    boolean bool1;
+    if (i == 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
-    localGetTroopStoryListEvent.b = false;
-    localGetTroopStoryListEvent.jdField_a_of_type_Boolean = paramGetTroopStoryListResponse.jdField_a_of_type_Boolean;
-    if (paramGetTroopStoryListResponse.c != paramGetTroopStoryListRequest.f)
+    localGetTroopStoryListEvent.c = bool1;
+    if ((paramGetTroopStoryListResponse != null) && (!paramErrorMessage.isFail()))
     {
-      bool1 = bool2;
+      localGetTroopStoryListEvent.b = false;
+      localGetTroopStoryListEvent.jdField_a_of_type_Boolean = paramGetTroopStoryListResponse.jdField_a_of_type_Boolean;
+      if (paramGetTroopStoryListResponse.c != paramGetTroopStoryListRequest.f) {
+        bool1 = bool2;
+      } else {
+        bool1 = false;
+      }
       localGetTroopStoryListEvent.e = bool1;
       localGetTroopStoryListEvent.jdField_a_of_type_JavaUtilList = paramGetTroopStoryListResponse.jdField_a_of_type_JavaUtilArrayList;
-      if (!localGetTroopStoryListEvent.jdField_a_of_type_JavaLangString.equals("REQUEST_CONTEXT_SAVE_COOKIE")) {
-        break label271;
+      if (localGetTroopStoryListEvent.jdField_a_of_type_JavaLangString.equals("REQUEST_CONTEXT_SAVE_COOKIE"))
+      {
+        paramErrorMessage = this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("TROOP_STORY_COOKIE");
+        localStringBuilder.append(String.valueOf(paramGetTroopStoryListRequest.b));
+        paramErrorMessage.b(localStringBuilder.toString(), Integer.valueOf(paramGetTroopStoryListResponse.b));
+        paramErrorMessage = this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("TROOP_STORY_PAGE_IS_END");
+        localStringBuilder.append(String.valueOf(paramGetTroopStoryListRequest.b));
+        paramErrorMessage.b(localStringBuilder.toString(), Boolean.valueOf(paramGetTroopStoryListResponse.jdField_a_of_type_Boolean));
+        if (localGetTroopStoryListEvent.e)
+        {
+          paramErrorMessage = this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("TROOP_STORY_SEQ710");
+          localStringBuilder.append(String.valueOf(paramGetTroopStoryListRequest.b));
+          paramErrorMessage.b(localStringBuilder.toString(), Integer.valueOf(paramGetTroopStoryListResponse.c));
+        }
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("TROOP_STORY_COOKIE" + String.valueOf(paramGetTroopStoryListRequest.b), Integer.valueOf(paramGetTroopStoryListResponse.b));
-      this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("TROOP_STORY_PAGE_IS_END" + String.valueOf(paramGetTroopStoryListRequest.b), Boolean.valueOf(paramGetTroopStoryListResponse.jdField_a_of_type_Boolean));
-      if (localGetTroopStoryListEvent.e) {
-        this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("TROOP_STORY_SEQ710" + String.valueOf(paramGetTroopStoryListRequest.b), Integer.valueOf(paramGetTroopStoryListResponse.c));
+      else
+      {
+        localGetTroopStoryListEvent.jdField_a_of_type_Int = paramGetTroopStoryListResponse.b;
       }
-    }
-    for (;;)
-    {
       SLog.a("Q.qqstory.troopmemories:GetTroopStoryListHandler", "onCmdRespond：", paramGetTroopStoryListResponse);
       StoryDispatcher.a().dispatch(localGetTroopStoryListEvent);
       return;
-      bool1 = false;
-      break;
-      label271:
-      localGetTroopStoryListEvent.jdField_a_of_type_Int = paramGetTroopStoryListResponse.b;
     }
+    StoryDispatcher.a().dispatch(localGetTroopStoryListEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetTroopStoryListHandler
  * JD-Core Version:    0.7.0.1
  */

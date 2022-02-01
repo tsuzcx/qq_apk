@@ -12,28 +12,38 @@ class SearchResultActivity$1
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    }
-    for (;;)
-    {
-      return true;
-      SearchResultActivity.a(this.a);
-      continue;
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4)
+          {
+            if (i != 5) {
+              return true;
+            }
+            this.a.a.springBackOverScrollHeaderView();
+            return true;
+          }
+          this.a.a.springBackOverScrollHeaderView();
+          return true;
+        }
+        this.a.a.springBackOverScrollHeaderView();
+        QQToast.a(this.a, 2131694424, 0).b(this.a.getTitleBarHeight());
+        return true;
+      }
       SearchResultActivity.b(this.a);
-      continue;
-      this.a.a.springBackOverScrollHeaderView();
-      QQToast.a(this.a, 2131694459, 0).b(this.a.getTitleBarHeight());
-      continue;
-      this.a.a.springBackOverScrollHeaderView();
-      continue;
-      this.a.a.springBackOverScrollHeaderView();
+      return true;
     }
+    SearchResultActivity.a(this.a);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.SearchResultActivity.1
  * JD-Core Version:    0.7.0.1
  */

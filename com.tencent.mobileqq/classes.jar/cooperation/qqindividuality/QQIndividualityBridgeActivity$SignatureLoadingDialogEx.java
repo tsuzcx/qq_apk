@@ -14,18 +14,19 @@ class QQIndividualityBridgeActivity$SignatureLoadingDialogEx
   
   public void onBackPressed()
   {
-    if (this.a.a) {
+    if (this.a.a)
+    {
       super.onBackPressed();
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("IphoneTitleBarActivity", 2, "tool process has started, cancel by the tool");
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "tool process has started, cancel by the tool");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqindividuality.QQIndividualityBridgeActivity.SignatureLoadingDialogEx
  * JD-Core Version:    0.7.0.1
  */

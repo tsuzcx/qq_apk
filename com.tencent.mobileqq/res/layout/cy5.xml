@@ -1,3 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.pubaccount.readinjoy.widgets.RoundBackgroundTextView android:textSize="14.0dip" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/jsg" android:paddingLeft="12.0dip" android:paddingTop="10.0dip" android:paddingRight="12.0dip" android:paddingBottom="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TOAST" app:roundBackgroundColor="@color/bz" app:roundBackgroundRadius="3.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />
+<RelativeLayout android:id="@id/ojs" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/di_" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ImageView android:id="@id/dij" android:clickable="false" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/fyw" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/close" />
+    <TextView android:textSize="12.0sp" android:id="@id/k5t" android:paddingLeft="6.0dip" android:paddingTop="1.0dip" android:paddingRight="6.0dip" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip" android:layout_toLeftOf="@id/dij" android:layout_centerVertical="true" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="69.0dip" android:layout_toLeftOf="@id/k5t" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+        <TextView android:textSize="14.0sp" android:ellipsize="end" android:id="@id/k9g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <TextView android:textSize="14.0sp" android:ellipsize="end" android:id="@id/kai" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+    </LinearLayout>
+</RelativeLayout>

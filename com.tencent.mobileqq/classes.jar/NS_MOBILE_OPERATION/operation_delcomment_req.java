@@ -71,23 +71,27 @@ public final class operation_delcomment_req
     paramJceOutputStream.write(this.strCommentID, 4);
     paramJceOutputStream.write(this.iDelSource, 5);
     paramJceOutputStream.write(this.mapBusiParam, 6);
-    if (this.strSrcUinOpenid != null) {
-      paramJceOutputStream.write(this.strSrcUinOpenid, 7);
+    Object localObject = this.strSrcUinOpenid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.strCommentUinOpenid != null) {
-      paramJceOutputStream.write(this.strCommentUinOpenid, 8);
+    localObject = this.strCommentUinOpenid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.ciphertext != null) {
-      paramJceOutputStream.write(this.ciphertext, 9);
+    localObject = this.ciphertext;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.bypass_param != null) {
-      paramJceOutputStream.write(this.bypass_param, 10);
+    localObject = this.bypass_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 10);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_delcomment_req
  * JD-Core Version:    0.7.0.1
  */

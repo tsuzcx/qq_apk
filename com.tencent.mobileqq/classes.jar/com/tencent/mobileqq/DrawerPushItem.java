@@ -53,60 +53,83 @@ public class DrawerPushItem
   
   public boolean isValid()
   {
-    boolean bool2 = false;
     long l = System.currentTimeMillis() / 1000L;
-    boolean bool1 = bool2;
-    if (this.start_ts < l)
-    {
-      bool1 = bool2;
-      if (this.end_ts > l)
-      {
-        bool1 = bool2;
-        if (this.show_sum < this.show_counts) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
+    return (this.start_ts < l) && (this.end_ts > l) && (this.show_sum < this.show_counts);
   }
   
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("DrawerPushItem{");
-    localStringBuffer.append("msg_id='").append(this.msg_id).append('\'');
-    localStringBuffer.append(", priority=").append(this.priority);
-    localStringBuffer.append(", sub_priority=").append(this.sub_priority);
-    localStringBuffer.append(", start_ts=").append(this.start_ts);
-    localStringBuffer.append(", end_ts=").append(this.end_ts);
-    localStringBuffer.append(", send_time=").append(this.send_time);
-    localStringBuffer.append(", action_id=").append(this.action_id);
-    localStringBuffer.append(", content='").append(this.content).append('\'');
-    localStringBuffer.append(", scheme='").append(this.scheme).append('\'');
-    localStringBuffer.append(", ext_url='").append(this.ext_url).append('\'');
-    localStringBuffer.append(", color=").append(this.color);
-    localStringBuffer.append(", show_counts=").append(this.show_counts);
-    localStringBuffer.append(", show_sum=").append(this.show_sum);
-    localStringBuffer.append(", life_Time=").append(this.life_Time);
-    localStringBuffer.append(", is_reddot=").append(this.is_reddot);
-    localStringBuffer.append(", bubble_res_id=").append(this.bubble_res_id);
-    localStringBuffer.append(", icon_url='").append(this.icon_url).append('\'');
-    localStringBuffer.append(", msg_type=").append(this.msg_type);
-    localStringBuffer.append(", act_id='").append(this.act_id).append('\'');
-    localStringBuffer.append(", tips_str='").append(this.tips_str).append('\'');
-    localStringBuffer.append(", target_model=").append(this.target_model);
-    localStringBuffer.append(", fromTianshu=").append(this.fromTianshu);
-    localStringBuffer.append(", tianshuAdId=").append(this.tianshuAdId);
-    localStringBuffer.append(", tianshuTraceInfo='").append(this.tianshuTraceInfo).append('\'');
-    localStringBuffer.append(", reddotPath='").append(this.reddotPath).append('\'');
-    localStringBuffer.append(", reddotGameId=").append(this.reddotGameId);
-    localStringBuffer.append(", reddotRedId=").append(this.reddotRedId);
+    localStringBuffer.append("msg_id='");
+    localStringBuffer.append(this.msg_id);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", priority=");
+    localStringBuffer.append(this.priority);
+    localStringBuffer.append(", sub_priority=");
+    localStringBuffer.append(this.sub_priority);
+    localStringBuffer.append(", start_ts=");
+    localStringBuffer.append(this.start_ts);
+    localStringBuffer.append(", end_ts=");
+    localStringBuffer.append(this.end_ts);
+    localStringBuffer.append(", send_time=");
+    localStringBuffer.append(this.send_time);
+    localStringBuffer.append(", action_id=");
+    localStringBuffer.append(this.action_id);
+    localStringBuffer.append(", content='");
+    localStringBuffer.append(this.content);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", scheme='");
+    localStringBuffer.append(this.scheme);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", ext_url='");
+    localStringBuffer.append(this.ext_url);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", color=");
+    localStringBuffer.append(this.color);
+    localStringBuffer.append(", show_counts=");
+    localStringBuffer.append(this.show_counts);
+    localStringBuffer.append(", show_sum=");
+    localStringBuffer.append(this.show_sum);
+    localStringBuffer.append(", life_Time=");
+    localStringBuffer.append(this.life_Time);
+    localStringBuffer.append(", is_reddot=");
+    localStringBuffer.append(this.is_reddot);
+    localStringBuffer.append(", bubble_res_id=");
+    localStringBuffer.append(this.bubble_res_id);
+    localStringBuffer.append(", icon_url='");
+    localStringBuffer.append(this.icon_url);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", msg_type=");
+    localStringBuffer.append(this.msg_type);
+    localStringBuffer.append(", act_id='");
+    localStringBuffer.append(this.act_id);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", tips_str='");
+    localStringBuffer.append(this.tips_str);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", target_model=");
+    localStringBuffer.append(this.target_model);
+    localStringBuffer.append(", fromTianshu=");
+    localStringBuffer.append(this.fromTianshu);
+    localStringBuffer.append(", tianshuAdId=");
+    localStringBuffer.append(this.tianshuAdId);
+    localStringBuffer.append(", tianshuTraceInfo='");
+    localStringBuffer.append(this.tianshuTraceInfo);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", reddotPath='");
+    localStringBuffer.append(this.reddotPath);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", reddotGameId=");
+    localStringBuffer.append(this.reddotGameId);
+    localStringBuffer.append(", reddotRedId=");
+    localStringBuffer.append(this.reddotRedId);
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.DrawerPushItem
  * JD-Core Version:    0.7.0.1
  */

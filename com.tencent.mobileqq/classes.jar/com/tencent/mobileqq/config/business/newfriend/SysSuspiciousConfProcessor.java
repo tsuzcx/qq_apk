@@ -37,8 +37,12 @@ public class SysSuspiciousConfProcessor
     }
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchBusinessConfProcessor", 2, "onParsed " + paramArrayOfQConfItem.length);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem.length);
+        QLog.d("SearchBusinessConfProcessor", 2, localStringBuilder.toString());
       }
       return SysSuspiciousConfBean.a(paramArrayOfQConfItem[0]);
     }
@@ -47,19 +51,17 @@ public class SysSuspiciousConfProcessor
   
   public void a(SysSuspiciousConfBean paramSysSuspiciousConfBean)
   {
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramSysSuspiciousConfBean == null) {
-        break label43;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      if (paramSysSuspiciousConfBean != null) {
+        paramSysSuspiciousConfBean = paramSysSuspiciousConfBean.toString();
+      } else {
+        paramSysSuspiciousConfBean = " empty";
       }
-    }
-    label43:
-    for (paramSysSuspiciousConfBean = paramSysSuspiciousConfBean.toString();; paramSysSuspiciousConfBean = " empty")
-    {
-      QLog.d("SearchBusinessConfProcessor", 2, paramSysSuspiciousConfBean);
-      return;
+      localStringBuilder.append(paramSysSuspiciousConfBean);
+      QLog.d("SearchBusinessConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -85,8 +87,12 @@ public class SysSuspiciousConfProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("SearchBusinessConfProcessor", 2, "onReqFailed " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqFailed ");
+      localStringBuilder.append(paramInt);
+      QLog.e("SearchBusinessConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -97,7 +103,7 @@ public class SysSuspiciousConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.newfriend.SysSuspiciousConfProcessor
  * JD-Core Version:    0.7.0.1
  */

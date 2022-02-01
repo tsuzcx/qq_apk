@@ -3,7 +3,7 @@ package com.tencent.mobileqq.doutu;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituPicAdapter;
+import com.tencent.mobileqq.doutu.api.IDoutuEmotionAdapter;
 import com.tencent.widget.HorizontalListView;
 
 public class DoutuEmotionHorizonListView
@@ -23,30 +23,19 @@ public class DoutuEmotionHorizonListView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.a != null) {
-      this.a.a(paramMotionEvent.getAction());
+    DoutuEmotionHorizonListView.HorizonListViewTouchListener localHorizonListViewTouchListener = this.a;
+    if (localHorizonListViewTouchListener != null) {
+      localHorizonListViewTouchListener.a(paramMotionEvent.getAction());
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
+  protected void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramInt1 > 0)
-    {
-      if (!(getAdapter() instanceof DoutuEmotionAdapter)) {
-        break label34;
-      }
-      ((DoutuEmotionAdapter)getAdapter()).b();
+    if ((paramInt1 > 0) && ((getAdapter() instanceof IDoutuEmotionAdapter))) {
+      ((IDoutuEmotionAdapter)getAdapter()).b();
     }
-    for (;;)
-    {
-      super.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
-      return;
-      label34:
-      if ((getAdapter() instanceof ZhituPicAdapter)) {
-        ((ZhituPicAdapter)getAdapter()).b();
-      }
-    }
+    super.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
   }
   
   public void setTouchListener(DoutuEmotionHorizonListView.HorizonListViewTouchListener paramHorizonListViewTouchListener)
@@ -56,7 +45,7 @@ public class DoutuEmotionHorizonListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.DoutuEmotionHorizonListView
  * JD-Core Version:    0.7.0.1
  */

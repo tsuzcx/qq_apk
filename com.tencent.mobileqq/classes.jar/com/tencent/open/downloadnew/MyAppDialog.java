@@ -33,7 +33,7 @@ public class MyAppDialog
     paramActivity = new ColorDrawable();
     paramActivity.setAlpha(0);
     getWindow().setBackgroundDrawable(paramActivity);
-    setContentView(2131559778);
+    setContentView(2131559655);
   }
   
   public Activity a()
@@ -145,18 +145,18 @@ public class MyAppDialog
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365811));
-    this.b = ((TextView)findViewById(2131365807));
-    this.c = ((TextView)findViewById(2131365796));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365648));
+    this.b = ((TextView)findViewById(2131365644));
+    this.c = ((TextView)findViewById(2131365633));
     this.c.getPaint().setFakeBoldText(true);
-    this.d = ((TextView)findViewById(2131365802));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131373545));
-    this.e = ((TextView)findViewById(2131373571));
+    this.d = ((TextView)findViewById(2131365639));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131373123));
+    this.e = ((TextView)findViewById(2131373151));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppDialog
  * JD-Core Version:    0.7.0.1
  */

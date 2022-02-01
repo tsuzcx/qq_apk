@@ -27,37 +27,45 @@ final class BottomSelectorLayout$addMediaPanel$5
   public final void invoke(@NotNull Media paramMedia)
   {
     Intrinsics.checkParameterIsNotNull(paramMedia, "it");
+    Object[] arrayOfObject;
+    long l1;
+    long l2;
     if (this.$panelType == PanelType.PHOTO)
     {
       paramMedia = StringCompanionObject.INSTANCE;
       paramMedia = this.this$0.getContext();
       Intrinsics.checkExpressionValueIsNotNull(paramMedia, "context");
-      paramMedia = paramMedia.getResources().getString(R.string.J);
+      paramMedia = paramMedia.getResources().getString(R.string.E);
       Intrinsics.checkExpressionValueIsNotNull(paramMedia, "context.resources.getStr…photo_reach_max_size_tip)");
       arrayOfObject = new Object[1];
-      arrayOfObject[0] = Long.valueOf(this.$maxMediaSize / 1024 / 1024);
+      l1 = this.$maxMediaSize;
+      l2 = 1024;
+      arrayOfObject[0] = Long.valueOf(l1 / l2 / l2);
+      paramMedia = String.format(paramMedia, Arrays.copyOf(arrayOfObject, arrayOfObject.length));
+      Intrinsics.checkExpressionValueIsNotNull(paramMedia, "java.lang.String.format(format, *args)");
+      TopicSDKHelperKt.a(paramMedia, false, null, 6, null);
+      return;
+    }
+    if (this.$panelType == PanelType.VIDEO)
+    {
+      paramMedia = StringCompanionObject.INSTANCE;
+      paramMedia = this.this$0.getContext();
+      Intrinsics.checkExpressionValueIsNotNull(paramMedia, "context");
+      paramMedia = paramMedia.getResources().getString(R.string.am);
+      Intrinsics.checkExpressionValueIsNotNull(paramMedia, "context.resources.getStr…g.video_limit_size_toast)");
+      arrayOfObject = new Object[1];
+      l1 = this.$maxMediaSize;
+      l2 = 1024;
+      arrayOfObject[0] = Long.valueOf(l1 / l2 / l2);
       paramMedia = String.format(paramMedia, Arrays.copyOf(arrayOfObject, arrayOfObject.length));
       Intrinsics.checkExpressionValueIsNotNull(paramMedia, "java.lang.String.format(format, *args)");
       TopicSDKHelperKt.a(paramMedia, false, null, 6, null);
     }
-    while (this.$panelType != PanelType.VIDEO) {
-      return;
-    }
-    paramMedia = StringCompanionObject.INSTANCE;
-    paramMedia = this.this$0.getContext();
-    Intrinsics.checkExpressionValueIsNotNull(paramMedia, "context");
-    paramMedia = paramMedia.getResources().getString(R.string.aw);
-    Intrinsics.checkExpressionValueIsNotNull(paramMedia, "context.resources.getStr…g.video_limit_size_toast)");
-    Object[] arrayOfObject = new Object[1];
-    arrayOfObject[0] = Long.valueOf(this.$maxMediaSize / 1024 / 1024);
-    paramMedia = String.format(paramMedia, Arrays.copyOf(arrayOfObject, arrayOfObject.length));
-    Intrinsics.checkExpressionValueIsNotNull(paramMedia, "java.lang.String.format(format, *args)");
-    TopicSDKHelperKt.a(paramMedia, false, null, 6, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.BottomSelectorLayout.addMediaPanel.5
  * JD-Core Version:    0.7.0.1
  */

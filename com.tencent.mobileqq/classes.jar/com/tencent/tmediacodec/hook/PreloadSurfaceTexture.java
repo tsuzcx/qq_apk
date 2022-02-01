@@ -17,8 +17,9 @@ public final class PreloadSurfaceTexture
   public void release()
   {
     super.release();
-    if (this.actionCallback != null) {
-      this.actionCallback.onReleased();
+    PreloadSurfaceTexture.ActionCallback localActionCallback = this.actionCallback;
+    if (localActionCallback != null) {
+      localActionCallback.onReleased();
     }
   }
   
@@ -29,7 +30,7 @@ public final class PreloadSurfaceTexture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmediacodec.hook.PreloadSurfaceTexture
  * JD-Core Version:    0.7.0.1
  */

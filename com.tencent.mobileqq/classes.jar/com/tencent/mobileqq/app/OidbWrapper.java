@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.app;
 
+import android.os.Bundle;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
@@ -51,21 +52,21 @@ public abstract class OidbWrapper
       if ((paramBoolean) && (!bool)) {
         return true;
       }
-      if (bool) {
-        break label101;
+      if (!bool)
+      {
+        paramClass = String.format("%s: NA", new Object[] { paramField.getName() });
+        paramStringBuilder.append(paramString);
+        paramStringBuilder.append(paramClass);
+        return false;
       }
-      paramClass = String.format("%s: NA", new Object[] { paramField.getName() });
       paramStringBuilder.append(paramString);
-      paramStringBuilder.append(paramClass);
-    }
-    for (;;)
-    {
-      return false;
-      label101:
-      paramStringBuilder.append(paramString).append(paramField.getName()).append(": {\n");
+      paramStringBuilder.append(paramField.getName());
+      paramStringBuilder.append(": {\n");
       paramStringBuilder.append(proto2String(paramClass, paramInt + 1, paramBoolean));
-      paramStringBuilder.append(paramString).append("}");
+      paramStringBuilder.append(paramString);
+      paramStringBuilder.append("}");
     }
+    return false;
   }
   
   private static boolean dealPBBoolField(Class<?> paramClass, MessageMicro paramMessageMicro, boolean paramBoolean, StringBuilder paramStringBuilder, String paramString, Field paramField, AtomicBoolean paramAtomicBoolean)
@@ -83,13 +84,13 @@ public abstract class OidbWrapper
       boolean bool1 = paramClass.has();
       boolean bool2 = paramClass.get();
       paramMessageMicro = paramField.getName();
-      if (bool1) {}
-      for (paramClass = Boolean.valueOf(bool2);; paramClass = "NA")
-      {
-        paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
-        if ((!paramBoolean) || (bool1)) {
-          break;
-        }
+      if (bool1) {
+        paramClass = Boolean.valueOf(bool2);
+      } else {
+        paramClass = "NA";
+      }
+      paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
+      if ((paramBoolean) && (!bool1)) {
         return true;
       }
       paramStringBuilder.append(paramString);
@@ -112,13 +113,13 @@ public abstract class OidbWrapper
       }
       boolean bool = paramClass.has();
       paramMessageMicro = paramField.getName();
-      if (bool) {}
-      for (paramClass = "<…bytes…>";; paramClass = "NA")
-      {
-        paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
-        if ((!paramBoolean) || (bool)) {
-          break;
-        }
+      if (bool) {
+        paramClass = "<…bytes…>";
+      } else {
+        paramClass = "NA";
+      }
+      paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
+      if ((paramBoolean) && (!bool)) {
         return true;
       }
       paramStringBuilder.append(paramString);
@@ -142,13 +143,13 @@ public abstract class OidbWrapper
       boolean bool = paramClass.has();
       double d = paramClass.get();
       paramMessageMicro = paramField.getName();
-      if (bool) {}
-      for (paramClass = Double.valueOf(d);; paramClass = "NA")
-      {
-        paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
-        if ((!paramBoolean) || (bool)) {
-          break;
-        }
+      if (bool) {
+        paramClass = Double.valueOf(d);
+      } else {
+        paramClass = "NA";
+      }
+      paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
+      if ((paramBoolean) && (!bool)) {
         return true;
       }
       paramStringBuilder.append(paramString);
@@ -172,13 +173,13 @@ public abstract class OidbWrapper
       boolean bool = paramClass.has();
       int i = paramClass.get();
       paramMessageMicro = paramField.getName();
-      if (bool) {}
-      for (paramClass = Integer.valueOf(i);; paramClass = "NA")
-      {
-        paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
-        if ((!paramBoolean) || (bool)) {
-          break;
-        }
+      if (bool) {
+        paramClass = Integer.valueOf(i);
+      } else {
+        paramClass = "NA";
+      }
+      paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
+      if ((paramBoolean) && (!bool)) {
         return true;
       }
       paramStringBuilder.append(paramString);
@@ -199,13 +200,13 @@ public abstract class OidbWrapper
       boolean bool = paramClass.has();
       int i = paramClass.get();
       paramMessageMicro = paramField.getName();
-      if (bool) {}
-      for (paramClass = Integer.valueOf(i);; paramClass = "NA")
-      {
-        paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
-        if ((!paramBoolean) || (bool)) {
-          break;
-        }
+      if (bool) {
+        paramClass = Integer.valueOf(i);
+      } else {
+        paramClass = "NA";
+      }
+      paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
+      if ((paramBoolean) && (!bool)) {
         return true;
       }
       paramStringBuilder.append(paramString);
@@ -229,13 +230,13 @@ public abstract class OidbWrapper
       boolean bool = paramClass.has();
       long l = paramClass.get();
       paramMessageMicro = paramField.getName();
-      if (bool) {}
-      for (paramClass = Long.valueOf(l);; paramClass = "NA")
-      {
-        paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
-        if ((!paramBoolean) || (bool)) {
-          break;
-        }
+      if (bool) {
+        paramClass = Long.valueOf(l);
+      } else {
+        paramClass = "NA";
+      }
+      paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
+      if ((paramBoolean) && (!bool)) {
         return true;
       }
       paramStringBuilder.append(paramString);
@@ -259,13 +260,13 @@ public abstract class OidbWrapper
       boolean bool = paramClass.has();
       float f = paramClass.get();
       paramMessageMicro = paramField.getName();
-      if (bool) {}
-      for (paramClass = Float.valueOf(f);; paramClass = "NA")
-      {
-        paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
-        if ((!paramBoolean) || (bool)) {
-          break;
-        }
+      if (bool) {
+        paramClass = Float.valueOf(f);
+      } else {
+        paramClass = "NA";
+      }
+      paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
+      if ((paramBoolean) && (!bool)) {
         return true;
       }
       paramStringBuilder.append(paramString);
@@ -289,13 +290,13 @@ public abstract class OidbWrapper
       boolean bool = paramClass.has();
       int i = paramClass.get();
       paramMessageMicro = paramField.getName();
-      if (bool) {}
-      for (paramClass = Integer.valueOf(i);; paramClass = "NA")
-      {
-        paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
-        if ((!paramBoolean) || (bool)) {
-          break;
-        }
+      if (bool) {
+        paramClass = Integer.valueOf(i);
+      } else {
+        paramClass = "NA";
+      }
+      paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
+      if ((paramBoolean) && (!bool)) {
         return true;
       }
       paramStringBuilder.append(paramString);
@@ -319,13 +320,13 @@ public abstract class OidbWrapper
       boolean bool = paramClass.has();
       long l = paramClass.get();
       paramMessageMicro = paramField.getName();
-      if (bool) {}
-      for (paramClass = Long.valueOf(l);; paramClass = "NA")
-      {
-        paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
-        if ((!paramBoolean) || (bool)) {
-          break;
-        }
+      if (bool) {
+        paramClass = Long.valueOf(l);
+      } else {
+        paramClass = "NA";
+      }
+      paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
+      if ((paramBoolean) && (!bool)) {
         return true;
       }
       paramStringBuilder.append(paramString);
@@ -351,30 +352,31 @@ public abstract class OidbWrapper
       if ((paramBoolean) && ((!bool) || (paramClass.isEmpty()))) {
         return true;
       }
-      if (bool) {
-        break label110;
+      if (!bool)
+      {
+        paramClass = String.format("%s: [NA]", new Object[] { paramField.getName() });
+        paramStringBuilder.append(paramString);
+        paramStringBuilder.append(paramClass);
+        return false;
       }
-      paramClass = String.format("%s: [NA]", new Object[] { paramField.getName() });
       paramStringBuilder.append(paramString);
-      paramStringBuilder.append(paramClass);
-    }
-    for (;;)
-    {
-      return false;
-      label110:
-      paramStringBuilder.append(paramString).append(String.format("%s: [\n", new Object[] { paramField.getName() }));
+      paramStringBuilder.append(String.format("%s: [\n", new Object[] { paramField.getName() }));
       paramMessageMicro = paramClass.iterator();
       while (paramMessageMicro.hasNext())
       {
         paramField = paramMessageMicro.next();
-        paramStringBuilder.append(paramString).append("    ").append(paramField);
+        paramStringBuilder.append(paramString);
+        paramStringBuilder.append("    ");
+        paramStringBuilder.append(paramField);
         if (paramField != paramClass.get(paramClass.size() - 1)) {
           paramStringBuilder.append(",");
         }
         paramStringBuilder.append("\n");
       }
-      paramStringBuilder.append(paramString).append("]");
+      paramStringBuilder.append(paramString);
+      paramStringBuilder.append("]");
     }
+    return false;
   }
   
   private static boolean dealPBRepeatMessageField(Class<?> paramClass, MessageMicro paramMessageMicro, boolean paramBoolean, StringBuilder paramStringBuilder, String paramString, Field paramField, int paramInt, AtomicBoolean paramAtomicBoolean)
@@ -394,32 +396,35 @@ public abstract class OidbWrapper
       if ((paramBoolean) && ((!bool) || (paramClass.isEmpty()))) {
         return true;
       }
-      if (bool) {
-        break label110;
+      if (!bool)
+      {
+        paramClass = String.format("%s: [NA]", new Object[] { paramField.getName() });
+        paramStringBuilder.append(paramString);
+        paramStringBuilder.append(paramClass);
+        return false;
       }
-      paramClass = String.format("%s: [NA]", new Object[] { paramField.getName() });
       paramStringBuilder.append(paramString);
-      paramStringBuilder.append(paramClass);
-    }
-    for (;;)
-    {
-      return false;
-      label110:
-      paramStringBuilder.append(paramString).append(String.format("%s: [\n", new Object[] { paramField.getName() }));
+      paramStringBuilder.append(String.format("%s: [\n", new Object[] { paramField.getName() }));
       paramMessageMicro = paramClass.iterator();
       while (paramMessageMicro.hasNext())
       {
         paramField = (MessageMicro)paramMessageMicro.next();
-        paramStringBuilder.append(paramString).append("    ").append("{\n");
+        paramStringBuilder.append(paramString);
+        paramStringBuilder.append("    ");
+        paramStringBuilder.append("{\n");
         paramStringBuilder.append(proto2String(paramField, paramInt + 2, paramBoolean));
-        paramStringBuilder.append(paramString).append("    ").append("}");
+        paramStringBuilder.append(paramString);
+        paramStringBuilder.append("    ");
+        paramStringBuilder.append("}");
         if (paramField != paramClass.get(paramClass.size() - 1)) {
           paramStringBuilder.append(",");
         }
         paramStringBuilder.append("\n");
       }
-      paramStringBuilder.append(paramString).append("]");
+      paramStringBuilder.append(paramString);
+      paramStringBuilder.append("]");
     }
+    return false;
   }
   
   private static boolean dealPBSFixed32Field(Class<?> paramClass, MessageMicro paramMessageMicro, boolean paramBoolean, StringBuilder paramStringBuilder, String paramString, Field paramField, AtomicBoolean paramAtomicBoolean)
@@ -437,13 +442,13 @@ public abstract class OidbWrapper
       boolean bool = paramClass.has();
       int i = paramClass.get();
       paramMessageMicro = paramField.getName();
-      if (bool) {}
-      for (paramClass = Integer.valueOf(i);; paramClass = "NA")
-      {
-        paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
-        if ((!paramBoolean) || (bool)) {
-          break;
-        }
+      if (bool) {
+        paramClass = Integer.valueOf(i);
+      } else {
+        paramClass = "NA";
+      }
+      paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
+      if ((paramBoolean) && (!bool)) {
         return true;
       }
       paramStringBuilder.append(paramString);
@@ -467,13 +472,13 @@ public abstract class OidbWrapper
       boolean bool = paramClass.has();
       long l = paramClass.get();
       paramMessageMicro = paramField.getName();
-      if (bool) {}
-      for (paramClass = Long.valueOf(l);; paramClass = "NA")
-      {
-        paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
-        if ((!paramBoolean) || (bool)) {
-          break;
-        }
+      if (bool) {
+        paramClass = Long.valueOf(l);
+      } else {
+        paramClass = "NA";
+      }
+      paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
+      if ((paramBoolean) && (!bool)) {
         return true;
       }
       paramStringBuilder.append(paramString);
@@ -497,13 +502,13 @@ public abstract class OidbWrapper
       boolean bool = paramClass.has();
       int i = paramClass.get();
       paramMessageMicro = paramField.getName();
-      if (bool) {}
-      for (paramClass = Integer.valueOf(i);; paramClass = "NA")
-      {
-        paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
-        if ((!paramBoolean) || (bool)) {
-          break;
-        }
+      if (bool) {
+        paramClass = Integer.valueOf(i);
+      } else {
+        paramClass = "NA";
+      }
+      paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
+      if ((paramBoolean) && (!bool)) {
         return true;
       }
       paramStringBuilder.append(paramString);
@@ -527,13 +532,13 @@ public abstract class OidbWrapper
       boolean bool = paramClass.has();
       long l = paramClass.get();
       paramMessageMicro = paramField.getName();
-      if (bool) {}
-      for (paramClass = Long.valueOf(l);; paramClass = "NA")
-      {
-        paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
-        if ((!paramBoolean) || (bool)) {
-          break;
-        }
+      if (bool) {
+        paramClass = Long.valueOf(l);
+      } else {
+        paramClass = "NA";
+      }
+      paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
+      if ((paramBoolean) && (!bool)) {
         return true;
       }
       paramStringBuilder.append(paramString);
@@ -557,15 +562,12 @@ public abstract class OidbWrapper
       boolean bool = paramClass.has();
       paramClass = paramClass.get();
       paramMessageMicro = paramField.getName();
-      if (bool) {}
-      for (;;)
-      {
-        paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
-        if ((!paramBoolean) || (bool)) {
-          break;
-        }
-        return true;
+      if (!bool) {
         paramClass = "NA";
+      }
+      paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
+      if ((paramBoolean) && (!bool)) {
+        return true;
       }
       paramStringBuilder.append(paramString);
       paramStringBuilder.append(paramClass);
@@ -588,13 +590,13 @@ public abstract class OidbWrapper
       boolean bool = paramClass.has();
       int i = paramClass.get();
       paramMessageMicro = paramField.getName();
-      if (bool) {}
-      for (paramClass = Integer.valueOf(i);; paramClass = "NA")
-      {
-        paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
-        if ((!paramBoolean) || (bool)) {
-          break;
-        }
+      if (bool) {
+        paramClass = Integer.valueOf(i);
+      } else {
+        paramClass = "NA";
+      }
+      paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
+      if ((paramBoolean) && (!bool)) {
         return true;
       }
       paramStringBuilder.append(paramString);
@@ -618,13 +620,13 @@ public abstract class OidbWrapper
       boolean bool = paramClass.has();
       long l = paramClass.get();
       paramMessageMicro = paramField.getName();
-      if (bool) {}
-      for (paramClass = Long.valueOf(l);; paramClass = "NA")
-      {
-        paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
-        if ((!paramBoolean) || (bool)) {
-          break;
-        }
+      if (bool) {
+        paramClass = Long.valueOf(l);
+      } else {
+        paramClass = "NA";
+      }
+      paramClass = String.format("%s: %s", new Object[] { paramMessageMicro, paramClass });
+      if ((paramBoolean) && (!bool)) {
         return true;
       }
       paramStringBuilder.append(paramString);
@@ -638,169 +640,101 @@ public abstract class OidbWrapper
     return parseOIDBPkg(paramFromServiceMsg, paramObject, new oidb_sso.OIDBSSOPkg(), paramMessageMicro);
   }
   
-  /* Error */
   public static int parseOIDBPkg(FromServiceMsg paramFromServiceMsg, Object paramObject, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg, MessageMicro paramMessageMicro)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 269	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
-    //   4: istore 4
-    //   6: invokestatic 274	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   9: ifeq +304 -> 313
-    //   12: new 58	java/lang/StringBuilder
-    //   15: dup
-    //   16: invokespecial 275	java/lang/StringBuilder:<init>	()V
-    //   19: astore 6
-    //   21: iload 4
-    //   23: sipush 1000
-    //   26: if_icmpne +253 -> 279
-    //   29: aload_1
-    //   30: ifnull +209 -> 239
-    //   33: aload_2
-    //   34: aload_1
-    //   35: checkcast 277	[B
-    //   38: checkcast 277	[B
-    //   41: invokevirtual 281	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   44: checkcast 258	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   47: astore_1
-    //   48: aload_1
-    //   49: ifnull +66 -> 115
-    //   52: aload_1
-    //   53: getfield 285	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   56: invokevirtual 249	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   59: istore 5
-    //   61: iload 5
-    //   63: istore 4
-    //   65: iload 5
-    //   67: ifeq +48 -> 115
-    //   70: aload_1
-    //   71: getfield 289	tencent/im/oidb/oidb_sso$OIDBSSOPkg:str_error_msg	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   74: invokevirtual 244	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   77: astore_2
-    //   78: aload_0
-    //   79: getfield 293	com/tencent/qphone/base/remote/FromServiceMsg:extraData	Landroid/os/Bundle;
-    //   82: ldc_w 294
-    //   85: aload_2
-    //   86: invokevirtual 300	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   89: iload 5
-    //   91: istore 4
-    //   93: aload 6
-    //   95: ifnull +20 -> 115
-    //   98: aload 6
-    //   100: ldc_w 302
-    //   103: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   106: aload_2
-    //   107: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   110: pop
-    //   111: iload 5
-    //   113: istore 4
-    //   115: iload 4
-    //   117: istore 5
-    //   119: aload_1
-    //   120: ifnull +186 -> 306
-    //   123: iload 4
-    //   125: istore 5
-    //   127: aload_1
-    //   128: getfield 306	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   131: invokevirtual 93	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   134: ifeq +172 -> 306
-    //   137: iload 4
-    //   139: istore 5
-    //   141: aload_1
-    //   142: getfield 306	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   145: invokevirtual 309	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   148: ifnull +158 -> 306
-    //   151: iload 4
-    //   153: istore 5
-    //   155: aload_3
-    //   156: ifnull +150 -> 306
-    //   159: aload_3
-    //   160: aload_1
-    //   161: getfield 306	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   164: invokevirtual 309	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   167: invokevirtual 315	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   170: invokevirtual 316	com/tencent/mobileqq/pb/MessageMicro:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   173: pop
-    //   174: aload 6
-    //   176: ifnull +29 -> 205
-    //   179: aload 6
-    //   181: invokevirtual 319	java/lang/StringBuilder:length	()I
-    //   184: ifle +21 -> 205
-    //   187: invokestatic 274	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   190: ifeq +15 -> 205
-    //   193: ldc_w 321
-    //   196: iconst_4
-    //   197: aload 6
-    //   199: invokevirtual 324	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   202: invokestatic 328	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   205: iload 4
-    //   207: ireturn
-    //   208: astore_1
-    //   209: aload 6
-    //   211: ifnull +19 -> 230
-    //   214: aload 6
-    //   216: ldc_w 330
-    //   219: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   222: aload_1
-    //   223: invokevirtual 331	java/lang/Exception:toString	()Ljava/lang/String;
-    //   226: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   229: pop
-    //   230: aload_1
-    //   231: invokevirtual 334	java/lang/Exception:printStackTrace	()V
-    //   234: aload_2
-    //   235: astore_1
-    //   236: goto -188 -> 48
-    //   239: aload_2
-    //   240: astore_1
-    //   241: aload 6
-    //   243: ifnull -195 -> 48
-    //   246: aload 6
-    //   248: ldc_w 336
-    //   251: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   254: pop
-    //   255: aload_2
-    //   256: astore_1
-    //   257: goto -209 -> 48
-    //   260: astore_0
-    //   261: aload 6
-    //   263: ifnull +13 -> 276
-    //   266: aload 6
-    //   268: aload_0
-    //   269: invokevirtual 331	java/lang/Exception:toString	()Ljava/lang/String;
-    //   272: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   275: pop
-    //   276: goto -102 -> 174
-    //   279: iload 4
-    //   281: istore 5
-    //   283: aload 6
-    //   285: ifnull +21 -> 306
-    //   288: aload 6
-    //   290: ldc_w 338
-    //   293: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   296: iload 4
-    //   298: invokevirtual 341	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   301: pop
-    //   302: iload 4
-    //   304: istore 5
-    //   306: iload 5
-    //   308: istore 4
-    //   310: goto -136 -> 174
-    //   313: aconst_null
-    //   314: astore 6
-    //   316: goto -295 -> 21
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	319	0	paramFromServiceMsg	FromServiceMsg
-    //   0	319	1	paramObject	Object
-    //   0	319	2	paramOIDBSSOPkg	oidb_sso.OIDBSSOPkg
-    //   0	319	3	paramMessageMicro	MessageMicro
-    //   4	305	4	i	int
-    //   59	248	5	j	int
-    //   19	296	6	localStringBuilder	StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   33	48	208	java/lang/Exception
-    //   159	174	260	java/lang/Exception
+    int i = paramFromServiceMsg.getResultCode();
+    StringBuilder localStringBuilder;
+    if (QLog.isDevelopLevel()) {
+      localStringBuilder = new StringBuilder();
+    } else {
+      localStringBuilder = null;
+    }
+    label103:
+    int j;
+    if (i == 1000)
+    {
+      if (paramObject != null) {
+        try
+        {
+          paramObject = (oidb_sso.OIDBSSOPkg)paramOIDBSSOPkg.mergeFrom((byte[])paramObject);
+        }
+        catch (Exception paramObject)
+        {
+          if (localStringBuilder != null)
+          {
+            localStringBuilder.append("parseOIDBPkg, oidb_sso, parseFrom byte ");
+            localStringBuilder.append(paramObject.toString());
+          }
+          paramObject.printStackTrace();
+          break label103;
+        }
+      } else if (localStringBuilder != null) {
+        localStringBuilder.append("parseOIDBPkg, data is null");
+      }
+      paramObject = paramOIDBSSOPkg;
+      if (paramObject != null)
+      {
+        j = paramObject.uint32_result.get();
+        i = j;
+        if (j != 0)
+        {
+          paramOIDBSSOPkg = paramObject.str_error_msg.get();
+          paramFromServiceMsg.extraData.putString("str_error_msg", paramOIDBSSOPkg);
+          i = j;
+          if (localStringBuilder != null)
+          {
+            localStringBuilder.append("parseOIDBPkg, errMsg: ");
+            localStringBuilder.append(paramOIDBSSOPkg);
+            i = j;
+          }
+        }
+      }
+      j = i;
+      if (paramObject != null)
+      {
+        j = i;
+        if (paramObject.bytes_bodybuffer.has())
+        {
+          j = i;
+          if (paramObject.bytes_bodybuffer.get() != null)
+          {
+            j = i;
+            if (paramMessageMicro != null)
+            {
+              try
+              {
+                paramMessageMicro.mergeFrom(paramObject.bytes_bodybuffer.get().toByteArray());
+                j = i;
+              }
+              catch (Exception paramFromServiceMsg)
+              {
+                j = i;
+                if (localStringBuilder == null) {
+                  break label298;
+                }
+              }
+              localStringBuilder.append(paramFromServiceMsg.toString());
+              j = i;
+            }
+          }
+        }
+      }
+    }
+    else
+    {
+      j = i;
+      if (localStringBuilder != null)
+      {
+        localStringBuilder.append("parseOIDBPkg, sso result: ");
+        localStringBuilder.append(i);
+        j = i;
+      }
+    }
+    label298:
+    if ((localStringBuilder != null) && (localStringBuilder.length() > 0) && (QLog.isDevelopLevel())) {
+      QLog.i("BaseBusinessHandler", 4, localStringBuilder.toString());
+    }
+    return j;
   }
   
   public static String proto2String(MessageMicro paramMessageMicro)
@@ -813,99 +747,68 @@ public abstract class OidbWrapper
     StringBuilder localStringBuilder = new StringBuilder();
     String str = "";
     int i = paramInt;
+    Object localObject1;
     while (i > 0)
     {
-      str = str + "    ";
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(str);
+      ((StringBuilder)localObject1).append("    ");
+      str = ((StringBuilder)localObject1).toString();
       i -= 1;
     }
-    Field[] arrayOfField;
     int j;
     Field localField;
     if (paramMessageMicro != null)
     {
       try
       {
-        arrayOfField = paramMessageMicro.getClass().getFields();
-        j = arrayOfField.length;
+        localObject1 = paramMessageMicro.getClass().getFields();
+        j = localObject1.length;
         i = 0;
       }
       catch (Throwable paramMessageMicro)
       {
-        Class localClass;
+        Object localObject2;
         AtomicBoolean localAtomicBoolean;
-        boolean bool1;
-        boolean bool2;
-        boolean bool3;
-        boolean bool4;
-        boolean bool5;
-        boolean bool6;
-        boolean bool7;
-        boolean bool8;
-        boolean bool9;
-        boolean bool10;
-        boolean bool11;
-        boolean bool12;
-        boolean bool13;
-        boolean bool14;
-        boolean bool15;
-        boolean bool16;
-        boolean bool17;
-        boolean bool18;
-        localStringBuilder.append("***ERROR***").append("\n").append(paramMessageMicro);
+        localStringBuilder.append("***ERROR***");
+        localStringBuilder.append("\n");
+        localStringBuilder.append(paramMessageMicro);
       }
       localField.setAccessible(true);
-      localClass = localField.getType();
+      localObject2 = localField.getType();
       localAtomicBoolean = new AtomicBoolean(false);
-      bool1 = dealPBBoolField(localClass, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean);
-      bool2 = dealPBBytesField(localClass, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean);
-      bool3 = dealPBDoubleField(localClass, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean);
-      bool4 = dealPBEnumField(localClass, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean);
-      bool5 = dealPBFixed32Field(localClass, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean);
-      bool6 = dealPBFixed64Field(localClass, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean);
-      bool7 = dealPBFloatField(localClass, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean);
-      bool8 = dealPBInt32Field(localClass, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean);
-      bool9 = dealPBInt64Field(localClass, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean);
-      bool10 = dealPBSFixed32Field(localClass, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean);
-      bool11 = dealPBSFixed64Field(localClass, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean);
-      bool12 = dealPBSInt32Field(localClass, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean);
-      bool13 = dealPBSInt64Field(localClass, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean);
-      bool14 = dealPBStringField(localClass, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean);
-      bool15 = dealPBUInt32Field(localClass, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean);
-      bool16 = dealPBUInt64Field(localClass, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean);
-      bool17 = dealPBRepeatField(localClass, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean);
-      bool18 = dealPBRepeatMessageField(localClass, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, paramInt, localAtomicBoolean);
-      if ((dealMessageMicro(localClass, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, paramInt, localAtomicBoolean) | bool17 | false | bool1 | bool2 | bool3 | bool4 | bool5 | bool6 | bool7 | bool8 | bool9 | bool10 | bool11 | bool12 | bool13 | bool14 | bool15 | bool16 | bool18)) {
-        break label617;
+      if (!(dealPBBoolField((Class)localObject2, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean) | false | dealPBBytesField((Class)localObject2, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean) | dealPBDoubleField((Class)localObject2, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean) | dealPBEnumField((Class)localObject2, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean) | dealPBFixed32Field((Class)localObject2, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean) | dealPBFixed64Field((Class)localObject2, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean) | dealPBFloatField((Class)localObject2, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean) | dealPBInt32Field((Class)localObject2, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean) | dealPBInt64Field((Class)localObject2, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean) | dealPBSFixed32Field((Class)localObject2, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean) | dealPBSFixed64Field((Class)localObject2, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean) | dealPBSInt32Field((Class)localObject2, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean) | dealPBSInt64Field((Class)localObject2, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean) | dealPBStringField((Class)localObject2, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean) | dealPBUInt32Field((Class)localObject2, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean) | dealPBUInt64Field((Class)localObject2, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean) | dealPBRepeatField((Class)localObject2, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, localAtomicBoolean) | dealPBRepeatMessageField((Class)localObject2, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, paramInt, localAtomicBoolean) | dealMessageMicro((Class)localObject2, paramMessageMicro, paramBoolean, localStringBuilder, str, localField, paramInt, localAtomicBoolean))) {
+        if (!localAtomicBoolean.get())
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("unknown type {");
+            ((StringBuilder)localObject2).append(localField.getName());
+            ((StringBuilder)localObject2).append("|");
+            ((StringBuilder)localObject2).append(localField.getType());
+            ((StringBuilder)localObject2).append("}");
+            QLog.d("OidbWrapper", 2, ((StringBuilder)localObject2).toString());
+          }
+        }
+        else
+        {
+          if (localField != localObject1[(localObject1.length - 1)]) {
+            localStringBuilder.append(",");
+          }
+          localStringBuilder.append("\n");
+        }
       }
-      if (localAtomicBoolean.get()) {
-        break label568;
-      }
-      if (!QLog.isColorLevel()) {
-        break label617;
-      }
-      QLog.d("OidbWrapper", 2, "unknown type {" + localField.getName() + "|" + localField.getType() + "}");
-      break label617;
     }
-    label568:
-    label617:
-    label622:
     for (;;)
     {
-      return localStringBuilder.toString();
-      if (localField != arrayOfField[(arrayOfField.length - 1)]) {
-        localStringBuilder.append(",");
+      i += 1;
+      while (i >= j) {
+        return localStringBuilder.toString();
       }
-      localStringBuilder.append("\n");
-      for (;;)
-      {
-        if (i >= j) {
-          break label622;
-        }
-        localField = arrayOfField[i];
-        if (localField != null) {
-          break;
-        }
-        i += 1;
+      localField = localObject1[i];
+      if (localField != null) {
+        break;
       }
     }
   }
@@ -946,7 +849,7 @@ public abstract class OidbWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.OidbWrapper
  * JD-Core Version:    0.7.0.1
  */

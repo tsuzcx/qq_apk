@@ -5,20 +5,22 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
 import com.tencent.biz.pubaccount.util.api.IPublicAccountConfigUtil;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
+import com.tencent.mobileqq.search.base.activity.BaseSearchActivity;
+import com.tencent.mobileqq.search.base.fragment.BaseSearchFragment;
 import com.tencent.mobileqq.search.fragment.PublicAcntSearchFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class PublicAcntSearchActivity
   extends BaseSearchActivity
 {
-  static int d = -1;
+  static int a = -1;
   
   public static void a(Context paramContext, String paramString, int paramInt)
   {
-    d = paramInt;
+    a = paramInt;
     Intent localIntent = new Intent(paramContext, PublicAcntSearchActivity.class);
     localIntent.putExtra("keyword", paramString);
     paramContext.startActivity(localIntent);
@@ -26,15 +28,19 @@ public class PublicAcntSearchActivity
   
   protected BaseSearchFragment a()
   {
-    return PublicAcntSearchFragment.a(d);
+    return PublicAcntSearchFragment.a(a);
   }
   
   protected String a()
   {
-    if (d == 12) {
-      return HardCodeUtil.a(2131708726) + ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getSubscriptName(this.app, getApplicationContext());
+    if (a == 12)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(HardCodeUtil.a(2131708732));
+      localStringBuilder.append(((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getSubscriptName((AppInterface)getAppRuntime(), getApplicationContext()));
+      return localStringBuilder.toString();
     }
-    return HardCodeUtil.a(2131708784);
+    return HardCodeUtil.a(2131708790);
   }
   
   @Override
@@ -55,7 +61,7 @@ public class PublicAcntSearchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.PublicAcntSearchActivity
  * JD-Core Version:    0.7.0.1
  */

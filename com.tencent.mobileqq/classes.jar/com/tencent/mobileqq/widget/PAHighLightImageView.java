@@ -45,7 +45,7 @@ public class PAHighLightImageView
     ViewGroup localViewGroup = (ViewGroup)getParent();
     if (localViewGroup != null)
     {
-      View localView = localViewGroup.findViewById(2131373655);
+      View localView = localViewGroup.findViewById(2131373228);
       if (localView != null) {
         localViewGroup.removeView(localView);
       }
@@ -55,14 +55,14 @@ public class PAHighLightImageView
   public void a(Context paramContext, boolean paramBoolean)
   {
     ViewGroup localViewGroup = (ViewGroup)getParent();
-    if ((localViewGroup != null) && (localViewGroup.findViewById(2131373655) == null))
+    if ((localViewGroup != null) && (localViewGroup.findViewById(2131373228) == null))
     {
       View localView = new View(paramContext);
-      localView.setId(2131373655);
+      localView.setId(2131373228);
       GradientDrawable localGradientDrawable = new GradientDrawable();
       localGradientDrawable.setColor(Color.argb(77, 0, 0, 0));
       if (paramBoolean) {
-        localGradientDrawable.setCornerRadius(AIOUtils.a(5.0F, paramContext.getResources()));
+        localGradientDrawable.setCornerRadius(AIOUtils.b(5.0F, paramContext.getResources()));
       }
       localView.setBackgroundDrawable(localGradientDrawable);
       localViewGroup.addView(localView, new ViewGroup.LayoutParams(getLayoutParams()));
@@ -78,7 +78,7 @@ public class PAHighLightImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PAHighLightImageView
  * JD-Core Version:    0.7.0.1
  */

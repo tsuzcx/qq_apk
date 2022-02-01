@@ -55,22 +55,22 @@ public class MiniAppReportManager2$AppLaunchState
   
   public String hasPkgAndX5()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("SDK_");
-    if (hasX5)
-    {
-      str = "hasX5";
-      localStringBuilder = localStringBuilder.append(str);
-      if (!this.hasPkg) {
-        break label53;
-      }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SDK_");
+    boolean bool = hasX5;
+    String str2 = "";
+    if (bool) {
+      str1 = "hasX5";
+    } else {
+      str1 = "";
     }
-    label53:
-    for (String str = "_hasPkg";; str = "")
-    {
-      return str;
-      str = "";
-      break;
+    localStringBuilder.append(str1);
+    String str1 = str2;
+    if (this.hasPkg) {
+      str1 = "_hasPkg";
     }
+    localStringBuilder.append(str1);
+    return localStringBuilder.toString();
   }
   
   public void reset()
@@ -111,20 +111,27 @@ public class MiniAppReportManager2$AppLaunchState
       localObject = ((JSONObject)localObject).toString();
       return localObject;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label202:
+      break label202;
+    }
     return null;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("launchId: ").append(this.launchId).append(", appId: ").append(0);
+    localStringBuilder.append("launchId: ");
+    localStringBuilder.append(this.launchId);
+    localStringBuilder.append(", appId: ");
+    localStringBuilder.append(0);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniAppReportManager2.AppLaunchState
  * JD-Core Version:    0.7.0.1
  */

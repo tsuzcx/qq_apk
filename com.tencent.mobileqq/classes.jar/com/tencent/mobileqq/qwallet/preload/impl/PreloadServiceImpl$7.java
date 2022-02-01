@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.qwallet.preload.impl;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.qwallet.impl.QWalletTools;
 import com.tencent.mobileqq.qwallet.preload.IPreloadService.DownloadCallback;
 import com.tencent.mobileqq.qwallet.preload.ResourceInfo;
 import com.tencent.mobileqq.vip.DownloadListener;
@@ -17,44 +17,45 @@ class PreloadServiceImpl$7
   
   public void onDoneFile(DownloadTask paramDownloadTask)
   {
-    int i = -5;
     super.onDoneFile(paramDownloadTask);
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadService", 2, "downloadModule|done" + paramDownloadTask.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("downloadModule|done");
+      ((StringBuilder)localObject).append(paramDownloadTask.jdField_a_of_type_JavaLangString);
+      QLog.d("PreloadService", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = paramDownloadTask.a();
     PreloadModuleImpl localPreloadModuleImpl = (PreloadModuleImpl)((Bundle)localObject).getSerializable("module");
     localObject = (PreloadResourceImpl)((Bundle)localObject).getSerializable("resource");
     if (QWalletTools.c(localPreloadModuleImpl.mid, this.jdField_a_of_type_JavaLangString))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadService", 2, "downloadModule|done code" + paramDownloadTask.jdField_a_of_type_Int);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("downloadModule|done code");
+        localStringBuilder.append(paramDownloadTask.jdField_a_of_type_Int);
+        QLog.d("PreloadService", 2, localStringBuilder.toString());
       }
-      if (paramDownloadTask.jdField_a_of_type_Int != 0) {
-        break label168;
+      int j = paramDownloadTask.jdField_a_of_type_Int;
+      int i = -5;
+      if (j == 0) {
+        i = 0;
+      } else if (paramDownloadTask.jdField_a_of_type_Int != -5) {
+        i = -6;
       }
-      i = 0;
-      if (localObject != null) {
-        break label183;
+      if (localObject == null) {
+        localObject = null;
+      } else {
+        localObject = ((PreloadResourceImpl)localObject).getResInfo(localPreloadModuleImpl);
       }
-    }
-    label168:
-    label183:
-    for (localObject = null;; localObject = ((PreloadResourceImpl)localObject).getResInfo(localPreloadModuleImpl))
-    {
       this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$DownloadCallback.onDownloadResFinished(localPreloadModuleImpl.mid, i, ((File)paramDownloadTask.jdField_a_of_type_JavaUtilMap.get(paramDownloadTask.jdField_a_of_type_JavaLangString)).getAbsolutePath(), (ResourceInfo)localObject);
-      return;
-      if (paramDownloadTask.jdField_a_of_type_Int == -5) {
-        break;
-      }
-      i = -6;
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadServiceImpl.7
  * JD-Core Version:    0.7.0.1
  */

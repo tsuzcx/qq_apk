@@ -61,81 +61,80 @@ public class a
             }
           }
         }
-        paramResponse = "";
         if (paramh.k() != null) {
-          paramResponse = paramh.k();
+          paramh = paramh.k();
+        } else {
+          paramh = "";
         }
-        com.tencent.qapmsdk.impl.d.a.a(locala, localTreeMap, paramResponse);
+        com.tencent.qapmsdk.impl.d.a.a(locala, localTreeMap, paramh);
+        return;
       }
+      com.tencent.qapmsdk.impl.d.a.a(locala);
     }
-    else {
-      return;
-    }
-    com.tencent.qapmsdk.impl.d.a.a(locala);
   }
   
   public void a(h paramh, IOException paramIOException)
   {
-    com.tencent.qapmsdk.impl.a.a.a locala;
     if (b())
     {
       Logger.INSTANCE.d(new String[] { "QAPM_Impl_HttpDataCollect", "okhttp3.0 ->httpError" });
       i.a(paramh, paramIOException);
       if (!paramh.f())
       {
-        locala = paramh.j();
-        if (locala != null) {
-          break label49;
+        paramIOException = paramh.j();
+        if (paramIOException == null) {
+          return;
         }
+        paramIOException.a(com.tencent.qapmsdk.impl.b.b.d);
+        if (paramh.h())
+        {
+          if (paramh.k() != null) {
+            paramh = paramh.k();
+          } else {
+            paramh = "";
+          }
+          Logger localLogger = Logger.INSTANCE;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("okhttp3.0 ->error message:");
+          localStringBuilder.append(paramh);
+          localLogger.d(new String[] { "QAPM_Impl_HttpDataCollect", localStringBuilder.toString() });
+          com.tencent.qapmsdk.impl.d.a.a(paramIOException, paramh);
+          return;
+        }
+        com.tencent.qapmsdk.impl.d.a.a(paramIOException);
       }
     }
-    return;
-    label49:
-    locala.a(com.tencent.qapmsdk.impl.b.b.d);
-    if (paramh.h())
-    {
-      paramIOException = "";
-      if (paramh.k() != null) {
-        paramIOException = paramh.k();
-      }
-      Logger.INSTANCE.d(new String[] { "QAPM_Impl_HttpDataCollect", "okhttp3.0 ->error message:" + paramIOException });
-      com.tencent.qapmsdk.impl.d.a.a(locala, paramIOException);
-      return;
-    }
-    com.tencent.qapmsdk.impl.d.a.a(locala);
   }
   
   public void a(Request paramRequest, h paramh)
   {
-    Object localObject2;
-    Object localObject1;
     if (b())
     {
-      localObject2 = paramRequest.url().toString();
-      localObject1 = null;
-      if ((localObject2 == null) || (!((String)localObject2).contains("?"))) {
-        break label131;
+      String str2 = paramRequest.url().toString();
+      Object localObject2 = null;
+      String str1 = str2;
+      Object localObject1 = localObject2;
+      if (str2 != null)
+      {
+        str1 = str2;
+        localObject1 = localObject2;
+        if (str2.contains("?"))
+        {
+          int i = str2.indexOf("?");
+          str1 = str2.substring(0, i);
+          localObject1 = str2.substring(i + 1);
+        }
       }
-      int i = ((String)localObject2).indexOf("?");
-      localObject1 = ((String)localObject2).substring(0, i);
-      String str = ((String)localObject2).substring(i + 1);
-      localObject2 = localObject1;
-      localObject1 = str;
-    }
-    label131:
-    for (;;)
-    {
-      paramh.f((String)localObject2);
+      paramh.f(str1);
       paramh.b((String)localObject1);
       paramh.a((String)localObject1);
       paramh.e(paramRequest.method());
       i.a(paramh, paramRequest.method());
       paramh.c(NetworkWatcher.INSTANCE.activeNetworkCarrier());
       paramh.a(com.tencent.qapmsdk.impl.b.b.d);
-      if (localObject2 != null) {
+      if (str1 != null) {
         a(paramh, paramRequest);
       }
-      return;
     }
   }
   
@@ -143,21 +142,21 @@ public class a
   {
     if (b())
     {
-      if (paramResponse == null) {
+      if (paramResponse == null)
+      {
         Logger.INSTANCE.e(new String[] { "QAPM_Impl_HttpDataCollect", "okhttp3.0 ->CallBack.onResponse(response) response is null " });
+        return;
       }
-    }
-    else {
-      return;
-    }
-    int i = paramResponse.code();
-    ResponseBody localResponseBody = paramResponse.body();
-    if (localResponseBody == null) {}
-    for (long l = 0L;; l = localResponseBody.contentLength())
-    {
+      int i = paramResponse.code();
+      ResponseBody localResponseBody = paramResponse.body();
+      long l;
+      if (localResponseBody == null) {
+        l = 0L;
+      } else {
+        l = localResponseBody.contentLength();
+      }
       a(paramh, "", (int)l, i);
       a(paramh, paramResponse);
-      return;
     }
   }
   
@@ -173,7 +172,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -8,11 +8,11 @@ public class MpfileTaskInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<MpfileTaskInfo> CREATOR = new MpfileTaskInfo.1();
-  public static int a;
-  public static int b;
-  public static int c;
-  public static int d;
-  public static int e;
+  public static int a = 0;
+  public static int b = 1;
+  public static int c = 2;
+  public static int d = 3;
+  public static int e = 4;
   public long a;
   public String a;
   public long b;
@@ -30,15 +30,6 @@ public class MpfileTaskInfo
   public long g;
   public String g;
   public String h;
-  
-  static
-  {
-    jdField_a_of_type_Int = 0;
-    jdField_b_of_type_Int = 1;
-    jdField_c_of_type_Int = 2;
-    jdField_d_of_type_Int = 3;
-    jdField_e_of_type_Int = 4;
-  }
   
   public MpfileTaskInfo()
   {
@@ -75,7 +66,7 @@ public class MpfileTaskInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.mpfile.MpfileTaskInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -68,28 +68,28 @@ public class GetSubscribeFeedListRequest
   
   public GetSubscribeFeedListRequest(CertifiedAccountMeta.StFeed paramStFeed, int paramInt, COMM.StCommonExt paramStCommonExt, String paramString)
   {
-    if (paramStFeed == null) {
-      QLog.w("VSBaseRequest", 1, "stfeed is null");
-    }
-    do
+    if (paramStFeed == null)
     {
+      QLog.w("VSBaseRequest", 1, "stfeed is null");
       return;
-      this.req = new CertifiedAccountRead.StGetFeedListReq();
-      this.req.from.set(0);
-      this.req.feed.set(paramStFeed);
-      this.req.source.set(paramInt);
-      if (paramStCommonExt != null) {
-        this.req.extInfo.set(paramStCommonExt.get());
-      }
-      paramStFeed = SubscribeAdDeviceInfoHelper.a().a();
-      if (paramStFeed != null)
-      {
-        paramStCommonExt = new vac_adv_get.VacFeedsAdvMetaReq();
-        paramStCommonExt.device_info.set(paramStFeed);
-        this.req.adres.set(ByteStringMicro.copyFrom(paramStCommonExt.toByteArray()));
-      }
-    } while (paramString == null);
-    this.req.adAttchInfo.set(paramString);
+    }
+    this.req = new CertifiedAccountRead.StGetFeedListReq();
+    this.req.from.set(0);
+    this.req.feed.set(paramStFeed);
+    this.req.source.set(paramInt);
+    if (paramStCommonExt != null) {
+      this.req.extInfo.set(paramStCommonExt.get());
+    }
+    paramStFeed = SubscribeAdDeviceInfoHelper.a().a();
+    if (paramStFeed != null)
+    {
+      paramStCommonExt = new vac_adv_get.VacFeedsAdvMetaReq();
+      paramStCommonExt.device_info.set(paramStFeed);
+      this.req.adres.set(ByteStringMicro.copyFrom(paramStCommonExt.toByteArray()));
+    }
+    if (paramString != null) {
+      this.req.adAttchInfo.set(paramString);
+    }
   }
   
   public GetSubscribeFeedListRequest(CertifiedAccountMeta.StFeed paramStFeed, String paramString)
@@ -117,14 +117,14 @@ public class GetSubscribeFeedListRequest
     return "CertifiedAccountSvc.certified_account_read.GetFeedList";
   }
   
-  public byte[] getRequestByteData()
+  protected byte[] getRequestByteData()
   {
     return this.req.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.network.GetSubscribeFeedListRequest
  * JD-Core Version:    0.7.0.1
  */

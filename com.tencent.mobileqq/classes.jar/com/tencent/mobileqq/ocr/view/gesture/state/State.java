@@ -25,13 +25,16 @@ public class State
   private void a(boolean paramBoolean1, boolean paramBoolean2)
   {
     this.jdField_a_of_type_AndroidGraphicsMatrix.getValues(this.jdField_a_of_type_ArrayOfFloat);
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_ArrayOfFloat[2];
-    this.b = this.jdField_a_of_type_ArrayOfFloat[5];
+    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+    this.jdField_a_of_type_Float = arrayOfFloat[2];
+    this.b = arrayOfFloat[5];
     if (paramBoolean1) {
-      this.c = ((float)Math.hypot(this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[4]));
+      this.c = ((float)Math.hypot(arrayOfFloat[1], arrayOfFloat[4]));
     }
-    if (paramBoolean2) {
-      this.d = ((float)Math.toDegrees(Math.atan2(this.jdField_a_of_type_ArrayOfFloat[3], this.jdField_a_of_type_ArrayOfFloat[4])));
+    if (paramBoolean2)
+    {
+      arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+      this.d = ((float)Math.toDegrees(Math.atan2(arrayOfFloat[3], arrayOfFloat[4])));
     }
   }
   
@@ -124,7 +127,9 @@ public class State
   
   public void b(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(paramFloat1 / this.c, paramFloat1 / this.c, paramFloat2, paramFloat3);
+    Matrix localMatrix = this.jdField_a_of_type_AndroidGraphicsMatrix;
+    float f = this.c;
+    localMatrix.postScale(paramFloat1 / f, paramFloat1 / f, paramFloat2, paramFloat3);
     a(true, false);
   }
   
@@ -152,58 +157,69 @@ public class State
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (State)paramObject;
-    } while ((a(paramObject.jdField_a_of_type_Float, this.jdField_a_of_type_Float)) && (a(paramObject.b, this.b)) && (a(paramObject.c, this.c)) && (a(paramObject.d, this.d)));
+      return (a(paramObject.jdField_a_of_type_Float, this.jdField_a_of_type_Float)) && (a(paramObject.b, this.b)) && (a(paramObject.c, this.c)) && (a(paramObject.d, this.d));
+    }
     return false;
   }
   
   public int hashCode()
   {
+    float f = this.jdField_a_of_type_Float;
     int m = 0;
     int i;
-    int j;
-    if (this.jdField_a_of_type_Float != 0.0F)
-    {
-      i = Float.floatToIntBits(this.jdField_a_of_type_Float);
-      if (this.b == 0.0F) {
-        break label95;
-      }
-      j = Float.floatToIntBits(this.b);
-      label37:
-      if (this.c == 0.0F) {
-        break label100;
-      }
-    }
-    label95:
-    label100:
-    for (int k = Float.floatToIntBits(this.c);; k = 0)
-    {
-      if (this.d != 0.0F) {
-        m = Float.floatToIntBits(this.d);
-      }
-      return (k + (j + i * 31) * 31) * 31 + m;
+    if (f != 0.0F) {
+      i = Float.floatToIntBits(f);
+    } else {
       i = 0;
-      break;
-      j = 0;
-      break label37;
     }
+    f = this.b;
+    int j;
+    if (f != 0.0F) {
+      j = Float.floatToIntBits(f);
+    } else {
+      j = 0;
+    }
+    f = this.c;
+    int k;
+    if (f != 0.0F) {
+      k = Float.floatToIntBits(f);
+    } else {
+      k = 0;
+    }
+    f = this.d;
+    if (f != 0.0F) {
+      m = Float.floatToIntBits(f);
+    }
+    return ((i * 31 + j) * 31 + k) * 31 + m;
   }
   
   public String toString()
   {
-    return "{x=" + this.jdField_a_of_type_Float + ",y=" + this.b + ",zoom=" + this.c + ",rotation=" + this.d + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{x=");
+    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(",y=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",zoom=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(",rotation=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.gesture.state.State
  * JD-Core Version:    0.7.0.1
  */

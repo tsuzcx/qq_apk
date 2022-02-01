@@ -27,13 +27,12 @@ class ArkViewImplement$ArkInputConnection
     if (paramInt2 == 0) {
       for (;;)
       {
-        int j = paramInt1 - 1;
-        i = j;
+        i = paramInt1 - 1;
         if (paramInt1 <= 0) {
           break;
         }
         this.mHolder.deleteInputText();
-        paramInt1 = j;
+        paramInt1 = i;
       }
     }
     return super.deleteSurroundingText(i, paramInt2);
@@ -41,20 +40,14 @@ class ArkViewImplement$ArkInputConnection
   
   public boolean sendKeyEvent(KeyEvent paramKeyEvent)
   {
-    int i;
     if (paramKeyEvent.getAction() == 0)
     {
-      i = paramKeyEvent.getKeyCode();
-      if (i != 67) {
-        break label31;
+      int i = paramKeyEvent.getKeyCode();
+      if (i == 67)
+      {
+        this.mHolder.deleteInputText();
       }
-      this.mHolder.deleteInputText();
-    }
-    for (;;)
-    {
-      return super.sendKeyEvent(paramKeyEvent);
-      label31:
-      if (i == 66)
+      else if (i == 66)
       {
         this.mHolder.setInputText("\n");
       }
@@ -64,6 +57,7 @@ class ArkViewImplement$ArkInputConnection
         this.mHolder.setInputText(Character.toString(c));
       }
     }
+    return super.sendKeyEvent(paramKeyEvent);
   }
 }
 

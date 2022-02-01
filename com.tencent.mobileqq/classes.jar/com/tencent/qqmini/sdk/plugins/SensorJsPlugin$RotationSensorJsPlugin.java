@@ -22,34 +22,32 @@ class SensorJsPlugin$RotationSensorJsPlugin
   
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    if (SensorJsPlugin.access$200(this.this$0)) {}
-    for (;;)
-    {
+    if (SensorJsPlugin.access$200(this.this$0)) {
       return;
-      if (paramSensorEvent.sensor.getType() == 3) {
-        try
+    }
+    if (paramSensorEvent.sensor.getType() == 3) {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("alpha", paramSensorEvent.values[0]);
+        localJSONObject.put("beta", paramSensorEvent.values[1]);
+        localJSONObject.put("gamma", paramSensorEvent.values[2]);
+        if (this.mJsService != null)
         {
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("alpha", paramSensorEvent.values[0]);
-          localJSONObject.put("beta", paramSensorEvent.values[1]);
-          localJSONObject.put("gamma", paramSensorEvent.values[2]);
-          if (this.mJsService != null)
-          {
-            this.mJsService.evaluateSubscribeJS("onDeviceMotionChange", localJSONObject.toString(), 0);
-            return;
-          }
+          this.mJsService.evaluateSubscribeJS("onDeviceMotionChange", localJSONObject.toString(), 0);
+          return;
         }
-        catch (JSONException paramSensorEvent)
-        {
-          paramSensorEvent.printStackTrace();
-        }
+      }
+      catch (JSONException paramSensorEvent)
+      {
+        paramSensorEvent.printStackTrace();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.SensorJsPlugin.RotationSensorJsPlugin
  * JD-Core Version:    0.7.0.1
  */

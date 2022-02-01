@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="@dimen/bf4" android:paddingBottom="@dimen/bf4" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/a0s" android:layout_width="@dimen/bf3" android:layout_height="@dimen/bf3" android:layout_marginLeft="16.0dip" android:src="@drawable/com" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <RelativeLayout android:id="@id/ap" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_weight="1.0">
+        <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:id="@id/a0t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:layout_alignParentStart="true" />
+        <ImageView android:id="@id/im7" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="18.0dip" android:src="@drawable/qq_account_select_icon" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="@string/f9t" android:layout_below="@id/a0t" />
+    </RelativeLayout>
+</LinearLayout>

@@ -27,15 +27,16 @@ public final class oidb_0x6d8$GetFilePreviewRspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 50, 58, 66, 74, 82, 88 }, new String[] { "int32_ret_code", "str_ret_msg", "str_client_wording", "int32_server_ip", "int32_server_port", "str_download_dns", "bytes_download_url", "str_cookie_val", "bytes_reserved_field", "str_download_dns_https", "uint32_preview_port_https" }, new Object[] { Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), "", localByteStringMicro1, "", localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0) }, GetFilePreviewRspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 50, 58, 66, 74, 82, 88 }, new String[] { "int32_ret_code", "str_ret_msg", "str_client_wording", "int32_server_ip", "int32_server_port", "str_download_dns", "bytes_download_url", "str_cookie_val", "bytes_reserved_field", "str_download_dns_https", "uint32_preview_port_https" }, new Object[] { localInteger, "", "", localInteger, localInteger, "", localByteStringMicro1, "", localByteStringMicro2, localByteStringMicro3, localInteger }, GetFilePreviewRspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFilePreviewRspBody
  * JD-Core Version:    0.7.0.1
  */

@@ -83,38 +83,38 @@ public class AsyncListDiffer<T>
   {
     int i = this.mMaxScheduledGeneration + 1;
     this.mMaxScheduledGeneration = i;
-    if (paramList == this.mList)
+    List localList1 = this.mList;
+    if (paramList == localList1)
     {
       if (paramRunnable != null) {
         paramRunnable.run();
       }
       return;
     }
-    List localList = this.mReadOnlyList;
+    List localList2 = this.mReadOnlyList;
     if (paramList == null)
     {
-      i = this.mList.size();
+      i = localList1.size();
       this.mList = null;
       this.mReadOnlyList = Collections.emptyList();
       this.mUpdateCallback.onRemoved(0, i);
-      onCurrentListChanged(localList, paramRunnable);
+      onCurrentListChanged(localList2, paramRunnable);
       return;
     }
-    if (this.mList == null)
+    if (localList1 == null)
     {
       this.mList = paramList;
       this.mReadOnlyList = Collections.unmodifiableList(paramList);
       this.mUpdateCallback.onInserted(0, paramList.size());
-      onCurrentListChanged(localList, paramRunnable);
+      onCurrentListChanged(localList2, paramRunnable);
       return;
     }
-    localList = this.mList;
-    this.mConfig.getBackgroundThreadExecutor().execute(new AsyncListDiffer.1(this, localList, paramList, i, paramRunnable));
+    this.mConfig.getBackgroundThreadExecutor().execute(new AsyncListDiffer.1(this, localList1, paramList, i, paramRunnable));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.AsyncListDiffer
  * JD-Core Version:    0.7.0.1
  */

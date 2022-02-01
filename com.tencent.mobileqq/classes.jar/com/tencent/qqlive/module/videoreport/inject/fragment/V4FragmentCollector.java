@@ -23,8 +23,12 @@ public class V4FragmentCollector
   
   public static void onDestroyView(Fragment paramFragment)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("V4FragmentCollector", "onDestroyView: fragment = " + paramFragment.getClass().getName());
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDestroyView: fragment = ");
+      localStringBuilder.append(paramFragment.getClass().getName());
+      Log.i("V4FragmentCollector", localStringBuilder.toString());
     }
     if ((paramFragment instanceof DialogFragment)) {
       return;
@@ -34,8 +38,14 @@ public class V4FragmentCollector
   
   public static void onHiddenChanged(Fragment paramFragment, boolean paramBoolean)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("V4FragmentCollector", "onHiddenChanged: fragment = " + paramFragment.getClass().getName() + ", hidden = " + paramBoolean);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onHiddenChanged: fragment = ");
+      localStringBuilder.append(paramFragment.getClass().getName());
+      localStringBuilder.append(", hidden = ");
+      localStringBuilder.append(paramBoolean);
+      Log.i("V4FragmentCollector", localStringBuilder.toString());
     }
     if ((paramFragment instanceof DialogFragment)) {
       return;
@@ -50,8 +60,12 @@ public class V4FragmentCollector
   
   public static void onPause(Fragment paramFragment)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("V4FragmentCollector", "onPause: fragment = " + paramFragment.getClass().getName());
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPause: fragment = ");
+      localStringBuilder.append(paramFragment.getClass().getName());
+      Log.i("V4FragmentCollector", localStringBuilder.toString());
     }
     if ((paramFragment instanceof DialogFragment)) {
       return;
@@ -61,8 +75,12 @@ public class V4FragmentCollector
   
   public static void onResume(Fragment paramFragment)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("V4FragmentCollector", "onResume: fragment = " + paramFragment.getClass().getName());
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onResume: fragment = ");
+      localStringBuilder.append(paramFragment.getClass().getName());
+      Log.i("V4FragmentCollector", localStringBuilder.toString());
     }
     if ((paramFragment instanceof DialogFragment)) {
       return;
@@ -75,16 +93,28 @@ public class V4FragmentCollector
     if (!VideoReportInner.getInstance().isDataCollectEnable()) {
       return;
     }
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("V4FragmentCollector", "onFragmentViewCreated: fragment = " + paramFragment.getClass().getName() + ", view = " + UIUtils.getViewInfo(paramView));
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onFragmentViewCreated: fragment = ");
+      localStringBuilder.append(paramFragment.getClass().getName());
+      localStringBuilder.append(", view = ");
+      localStringBuilder.append(UIUtils.getViewInfo(paramView));
+      Log.i("V4FragmentCollector", localStringBuilder.toString());
     }
     ViewContainerBinder.getInstance().bind(paramView, paramFragment);
   }
   
   public static void setUserVisibleHint(Fragment paramFragment, boolean paramBoolean)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("V4FragmentCollector", "setUserVisibleHint: fragment = " + paramFragment.getClass().getName() + ", isVisible = " + paramBoolean);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setUserVisibleHint: fragment = ");
+      localStringBuilder.append(paramFragment.getClass().getName());
+      localStringBuilder.append(", isVisible = ");
+      localStringBuilder.append(paramBoolean);
+      Log.i("V4FragmentCollector", localStringBuilder.toString());
     }
     if ((paramFragment instanceof DialogFragment)) {
       return;
@@ -99,7 +129,7 @@ public class V4FragmentCollector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector
  * JD-Core Version:    0.7.0.1
  */

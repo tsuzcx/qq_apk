@@ -42,15 +42,31 @@ public class g
   private String a(String paramString, int paramInt)
   {
     Object localObject = new Random(System.currentTimeMillis());
-    localObject = "r=" + paramInt + "_" + String.valueOf(((Random)localObject).nextInt(100000));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("r=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("_");
+    localStringBuilder.append(String.valueOf(((Random)localObject).nextInt(100000)));
+    localObject = localStringBuilder.toString();
     if (paramString.contains("?"))
     {
-      if (paramString.endsWith("?")) {
-        return paramString + (String)localObject;
+      if (paramString.endsWith("?"))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append((String)localObject);
+        return localStringBuilder.toString();
       }
-      return (String)localObject + "&" + (String)localObject;
+      paramString = new StringBuilder();
+      paramString.append((String)localObject);
+      paramString.append("&");
+      paramString.append((String)localObject);
+      return paramString.toString();
     }
-    return "?" + (String)localObject;
+    paramString = new StringBuilder();
+    paramString.append("?");
+    paramString.append((String)localObject);
+    return paramString.toString();
   }
   
   public void a(int paramInt)
@@ -88,7 +104,8 @@ public class g
         this.g = l.a(BaseApplication.getContext(), paramString2, 0);
       }
       paramString2 = Thread.currentThread().getName();
-      if ((MsfCore.sCore != null) && (MsfCore.sCore.mMsfMonitorCallback != null) && (!TextUtils.isEmpty(paramString2)) && (paramString2.contains("LightSender"))) {
+      MsfCore localMsfCore = MsfCore.sCore;
+      if ((localMsfCore != null) && (MsfCore.sCore.mMsfMonitorCallback != null) && (!TextUtils.isEmpty(paramString2)) && (paramString2.contains("LightSender"))) {
         MsfCore.sCore.mMsfMonitorCallback.handleEnd(3);
       }
       paramString1.connect(this.j, this.l);
@@ -109,9 +126,15 @@ public class g
       paramString1.printStackTrace();
       paramString1 = e.a(paramString1.toString().toLowerCase());
       paramString2 = new StringBuilder(paramf.m);
-      paramString2.append("|").append(paramString1);
+      paramString2.append("|");
+      paramString2.append(paramString1);
       paramf.m = paramString2.toString();
-      QLog.d("LightTcpEngine", 1, "connect fail costtime:" + (SystemClock.elapsedRealtime() - 0L) + " reason:" + paramString1);
+      paramString2 = new StringBuilder();
+      paramString2.append("connect fail costtime:");
+      paramString2.append(SystemClock.elapsedRealtime() - 0L);
+      paramString2.append(" reason:");
+      paramString2.append(paramString1);
+      QLog.d("LightTcpEngine", 1, paramString2.toString());
     }
     return false;
   }
@@ -120,174 +143,207 @@ public class g
   {
     int i2 = paramToServiceMsg.getRequestSsoSeq();
     long l1 = SystemClock.elapsedRealtime();
-    paramToServiceMsg = "http://" + this.b + ":" + this.c;
-    this.k = (paramToServiceMsg + a(paramToServiceMsg, i2));
+    paramToServiceMsg = new StringBuilder();
+    paramToServiceMsg.append("http://");
+    paramToServiceMsg.append(this.b);
+    paramToServiceMsg.append(":");
+    paramToServiceMsg.append(this.c);
+    paramToServiceMsg = paramToServiceMsg.toString();
+    paramf = new StringBuilder();
+    paramf.append(paramToServiceMsg);
+    paramf.append(a(paramToServiceMsg, i2));
+    this.k = paramf.toString();
     this.k = MsfSdkUtils.insertMtype(paramString, this.k);
-    QLog.d("LightTcpEngine", 1, "try connect " + this.k + " timeout:" + this.l + " ssoseq:" + i2 + " sendByXG:" + this.g);
-    paramToServiceMsg = "/" + this.k.substring(this.k.indexOf("?"));
+    paramToServiceMsg = new StringBuilder();
+    paramToServiceMsg.append("try connect ");
+    paramToServiceMsg.append(this.k);
+    paramToServiceMsg.append(" timeout:");
+    paramToServiceMsg.append(this.l);
+    paramToServiceMsg.append(" ssoseq:");
+    paramToServiceMsg.append(i2);
+    paramToServiceMsg.append(" sendByXG:");
+    paramToServiceMsg.append(this.g);
+    QLog.d("LightTcpEngine", 1, paramToServiceMsg.toString());
+    paramToServiceMsg = new StringBuilder();
+    paramToServiceMsg.append("/");
+    paramString = this.k;
+    paramToServiceMsg.append(paramString.substring(paramString.indexOf("?")));
+    paramToServiceMsg = paramToServiceMsg.toString();
     paramString = new StringBuffer();
-    paramString.append("POST ").append(paramToServiceMsg).append(" HTTP/1.1\r\n");
+    paramString.append("POST ");
+    paramString.append(paramToServiceMsg);
+    paramString.append(" HTTP/1.1\r\n");
     paramString.append("User-Agent: aqq\r\n");
     paramString.append("content-type: oct\r\n");
     paramString.append("Connection: Keep-Alive\r\n");
     paramString.append("Accept-Encoding: \r\n");
-    paramString.append("Host: ").append(this.b).append("\r\n");
-    paramString.append("Content-Length: ").append(paramArrayOfByte.length).append("\r\n\r\n");
-    int n = 0;
+    paramString.append("Host: ");
+    paramString.append(this.b);
+    paramString.append("\r\n");
+    paramString.append("Content-Length: ");
+    paramString.append(paramArrayOfByte.length);
+    paramString.append("\r\n\r\n");
     paramToServiceMsg = paramString.toString().getBytes();
-    for (;;)
+    try
     {
-      try
+      this.d.write(paramToServiceMsg, 0, paramToServiceMsg.length);
+      this.d.write(paramArrayOfByte, 0, paramArrayOfByte.length);
+      this.d.flush();
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("httpSend sendByXG:");
+      paramToServiceMsg.append(this.g);
+      paramToServiceMsg.append(" ssoseq:");
+      paramToServiceMsg.append(i2);
+      paramToServiceMsg.append(" len:");
+      paramToServiceMsg.append(paramArrayOfByte.length);
+      QLog.d("LightTcpEngine", 1, paramToServiceMsg.toString());
+      int n = 0;
+      int i1;
+      for (;;)
       {
-        this.d.write(paramToServiceMsg, 0, paramToServiceMsg.length);
-        this.d.write(paramArrayOfByte, 0, paramArrayOfByte.length);
-        this.d.flush();
-        QLog.d("LightTcpEngine", 1, "httpSend sendByXG:" + this.g + " ssoseq:" + i2 + " len:" + paramArrayOfByte.length);
         paramToServiceMsg = this.f.readLine();
         if (paramToServiceMsg == null) {
-          continue;
+          break;
         }
-        if (!paramToServiceMsg.startsWith("Content-Length")) {
-          continue;
-        }
-        paramArrayOfByte = paramToServiceMsg.split(":");
-        i1 = n;
-        if (paramArrayOfByte != null)
+        if (paramToServiceMsg.startsWith("Content-Length"))
         {
+          paramArrayOfByte = paramToServiceMsg.split(":");
           i1 = n;
-          if (paramArrayOfByte.length == 2) {
-            i1 = Integer.parseInt(paramArrayOfByte[1].trim());
+          if (paramArrayOfByte != null)
+          {
+            i1 = n;
+            if (paramArrayOfByte.length == 2) {
+              i1 = Integer.parseInt(paramArrayOfByte[1].trim());
+            }
           }
         }
-      }
-      catch (IOException paramToServiceMsg)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
+        else
+        {
+          i1 = n;
+          if (TextUtils.isEmpty(paramToServiceMsg)) {
+            break;
+          }
         }
-        QLog.d("LightTcpEngine", 2, paramToServiceMsg.getMessage(), paramToServiceMsg);
-        c();
-        d();
-        paramToServiceMsg.printStackTrace();
-        return null;
-        i1 = n;
-        if (!TextUtils.isEmpty(paramToServiceMsg)) {
-          continue;
-        }
-        if (n > 0) {
-          continue;
-        }
-        throw new IOException("Content-Length: " + n + " exception");
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        paramToServiceMsg.printStackTrace();
-        continue;
-        paramToServiceMsg = new byte[Math.min(n, 512)];
-        paramArrayOfByte = new ByteArrayBuffer(n);
-        paramString = Thread.currentThread().getName();
-        int i1 = n;
-        if (i1 <= 0) {
-          continue;
-        }
-        if ((MsfCore.sCore == null) || (MsfCore.sCore.mMsfMonitorCallback == null) || (TextUtils.isEmpty(paramString)) || (!paramString.contains("LightSender"))) {
-          continue;
-        }
-        MsfCore.sCore.mMsfMonitorCallback.handleEnd(3);
-        int i3 = this.e.read(paramToServiceMsg, 0, Math.min(i1, paramToServiceMsg.length));
-        if ((MsfCore.sCore == null) || (MsfCore.sCore.mMsfMonitorCallback == null) || (TextUtils.isEmpty(paramString)) || (!paramString.contains("LightSender"))) {
-          continue;
-        }
-        MsfCore.sCore.mMsfMonitorCallback.handleStart(3);
-        if (i3 <= 0) {
-          continue;
-        }
-        i1 -= i3;
-        paramArrayOfByte.append(paramToServiceMsg, 0, i3);
-        continue;
-        long l2 = SystemClock.elapsedRealtime();
-        QLog.d("LightTcpEngine", 1, "httpRecv ssoseq:" + i2 + " len:" + n + " costtime:" + (l2 - l1));
-        paramToServiceMsg = paramArrayOfByte.toByteArray();
-      }
-      n = i1;
-      if (QLog.isDevelopLevel())
-      {
-        QLog.d("LightTcpEngine", 2, paramToServiceMsg);
         n = i1;
+        if (QLog.isDevelopLevel())
+        {
+          QLog.d("LightTcpEngine", 2, paramToServiceMsg);
+          n = i1;
+        }
       }
+      if (n > 0)
+      {
+        paramArrayOfByte = new byte[Math.min(n, 512)];
+        paramToServiceMsg = new ByteArrayBuffer(n);
+        paramString = Thread.currentThread().getName();
+        i1 = n;
+        while (i1 > 0)
+        {
+          paramf = MsfCore.sCore;
+          if ((paramf != null) && (MsfCore.sCore.mMsfMonitorCallback != null) && (!TextUtils.isEmpty(paramString)) && (paramString.contains("LightSender"))) {
+            MsfCore.sCore.mMsfMonitorCallback.handleEnd(3);
+          }
+          int i3 = this.e.read(paramArrayOfByte, 0, Math.min(i1, paramArrayOfByte.length));
+          if ((MsfCore.sCore != null) && (MsfCore.sCore.mMsfMonitorCallback != null) && (!TextUtils.isEmpty(paramString)) && (paramString.contains("LightSender"))) {
+            MsfCore.sCore.mMsfMonitorCallback.handleStart(3);
+          }
+          if (i3 <= 0) {
+            break;
+          }
+          i1 -= i3;
+          paramToServiceMsg.append(paramArrayOfByte, 0, i3);
+        }
+        long l2 = SystemClock.elapsedRealtime();
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("httpRecv ssoseq:");
+        paramArrayOfByte.append(i2);
+        paramArrayOfByte.append(" len:");
+        paramArrayOfByte.append(n);
+        paramArrayOfByte.append(" costtime:");
+        paramArrayOfByte.append(l2 - l1);
+        QLog.d("LightTcpEngine", 1, paramArrayOfByte.toString());
+        return paramToServiceMsg.toByteArray();
+      }
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("Content-Length: ");
+      paramToServiceMsg.append(n);
+      paramToServiceMsg.append(" exception");
+      throw new IOException(paramToServiceMsg.toString());
     }
-    return paramToServiceMsg;
+    catch (Exception paramToServiceMsg)
+    {
+      paramToServiceMsg.printStackTrace();
+    }
+    catch (IOException paramToServiceMsg)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LightTcpEngine", 2, paramToServiceMsg.getMessage(), paramToServiceMsg);
+      }
+      c();
+      d();
+      paramToServiceMsg.printStackTrace();
+    }
+    return null;
   }
   
   public boolean b()
   {
-    return (this.i != null) && (this.i.isConnected()) && (!this.i.isClosed());
+    Socket localSocket = this.i;
+    return (localSocket != null) && (localSocket.isConnected()) && (!this.i.isClosed());
   }
   
-  /* Error */
   public void c()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 222	com/tencent/mobileqq/msf/core/net/g:i	Ljava/net/Socket;
-    //   4: ifnull +15 -> 19
-    //   7: aload_0
-    //   8: getfield 222	com/tencent/mobileqq/msf/core/net/g:i	Ljava/net/Socket;
-    //   11: invokevirtual 427	java/net/Socket:close	()V
-    //   14: aload_0
-    //   15: aconst_null
-    //   16: putfield 222	com/tencent/mobileqq/msf/core/net/g:i	Ljava/net/Socket;
-    //   19: aload_0
-    //   20: getfield 202	com/tencent/mobileqq/msf/core/net/g:d	Ljava/io/OutputStream;
-    //   23: ifnull +15 -> 38
-    //   26: aload_0
-    //   27: getfield 202	com/tencent/mobileqq/msf/core/net/g:d	Ljava/io/OutputStream;
-    //   30: invokevirtual 428	java/io/OutputStream:close	()V
-    //   33: aload_0
-    //   34: aconst_null
-    //   35: putfield 202	com/tencent/mobileqq/msf/core/net/g:d	Ljava/io/OutputStream;
-    //   38: aload_0
-    //   39: getfield 220	com/tencent/mobileqq/msf/core/net/g:f	Ljava/io/BufferedReader;
-    //   42: ifnull +15 -> 57
-    //   45: aload_0
-    //   46: getfield 220	com/tencent/mobileqq/msf/core/net/g:f	Ljava/io/BufferedReader;
-    //   49: invokevirtual 429	java/io/BufferedReader:close	()V
-    //   52: aload_0
-    //   53: aconst_null
-    //   54: putfield 220	com/tencent/mobileqq/msf/core/net/g:f	Ljava/io/BufferedReader;
-    //   57: aload_0
-    //   58: getfield 208	com/tencent/mobileqq/msf/core/net/g:e	Ljava/io/InputStream;
-    //   61: ifnull +15 -> 76
-    //   64: aload_0
-    //   65: getfield 208	com/tencent/mobileqq/msf/core/net/g:e	Ljava/io/InputStream;
-    //   68: invokevirtual 430	java/io/InputStream:close	()V
-    //   71: aload_0
-    //   72: aconst_null
-    //   73: putfield 208	com/tencent/mobileqq/msf/core/net/g:e	Ljava/io/InputStream;
-    //   76: return
-    //   77: astore_1
-    //   78: aload_1
-    //   79: invokevirtual 393	java/lang/Exception:printStackTrace	()V
-    //   82: goto -63 -> 19
-    //   85: astore_1
-    //   86: return
-    //   87: astore_1
-    //   88: goto -31 -> 57
-    //   91: astore_1
-    //   92: goto -54 -> 38
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	95	0	this	g
-    //   77	2	1	localException1	Exception
-    //   85	1	1	localException2	Exception
-    //   87	1	1	localException3	Exception
-    //   91	1	1	localException4	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   0	19	77	java/lang/Exception
-    //   57	76	85	java/lang/Exception
-    //   38	57	87	java/lang/Exception
-    //   19	38	91	java/lang/Exception
+    try
+    {
+      if (this.i != null)
+      {
+        this.i.close();
+        this.i = null;
+      }
+    }
+    catch (Exception localException1)
+    {
+      localException1.printStackTrace();
+    }
+    try
+    {
+      if (this.d != null)
+      {
+        this.d.close();
+        this.d = null;
+      }
+    }
+    catch (Exception localException2)
+    {
+      try
+      {
+        for (;;)
+        {
+          if (this.f != null)
+          {
+            this.f.close();
+            this.f = null;
+          }
+          try
+          {
+            label65:
+            if (this.e != null)
+            {
+              this.e.close();
+              this.e = null;
+            }
+            return;
+          }
+          catch (Exception localException4) {}
+          localException2 = localException2;
+        }
+      }
+      catch (Exception localException3)
+      {
+        break label65;
+      }
+    }
   }
   
   public void d()
@@ -309,7 +365,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.g
  * JD-Core Version:    0.7.0.1
  */

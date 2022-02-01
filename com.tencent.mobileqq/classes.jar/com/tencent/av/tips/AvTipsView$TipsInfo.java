@@ -7,12 +7,11 @@ import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.widget.TextView;
-import com.tencent.av.redpacket.RedPacketLinkMovementMethod;
+import com.tencent.av.VideoUtils;
 import com.tencent.av.tips.data.AvTipsItemBase;
 import com.tencent.av.tips.data.HypeLinkAvTipsItem;
 import com.tencent.av.tips.data.NormalAvTipsItem;
 import com.tencent.av.tips.data.WaitingAvTipsItem;
-import com.tencent.av.ui.redbag.RedBagUtil;
 
 class AvTipsView$TipsInfo
 {
@@ -36,69 +35,83 @@ class AvTipsView$TipsInfo
     localTipsInfo.jdField_b_of_type_Int = paramBaseTips.jdField_a_of_type_Int;
     localTipsInfo.jdField_c_of_type_Int = paramBaseTips.jdField_b_of_type_Int;
     localTipsInfo.d = paramBaseTips.jdField_c_of_type_Int;
-    switch (paramAvTipsItemBase.a())
+    int i = paramAvTipsItemBase.a();
+    if (i != 1)
     {
-    }
-    do
-    {
-      return localTipsInfo;
-      paramAvTipsItemBase = (NormalAvTipsItem)paramAvTipsItemBase;
-      if ((paramAvTipsItemBase.a() instanceof BitmapDrawable)) {
-        localTipsInfo.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)paramAvTipsItemBase.a()).getBitmap();
-      }
-      for (;;)
+      if (i != 2)
       {
-        switch (paramAvTipsItemBase.k())
+        if (i != 3) {
+          return localTipsInfo;
+        }
+        paramResources = (HypeLinkAvTipsItem)paramAvTipsItemBase;
+        if (paramResources.h() != -1) {
+          localTipsInfo.jdField_a_of_type_Int = paramResources.h();
+        }
+        if (paramResources.j() != -1) {
+          localTipsInfo.jdField_c_of_type_Int = paramResources.j();
+        }
+        if (paramResources.i() != -1) {
+          localTipsInfo.d = paramResources.i();
+        }
+        if (localTipsInfo.jdField_a_of_type_AndroidTextSpannableString != null)
         {
-        default: 
-          return localTipsInfo;
-        case 1: 
-          localTipsInfo.jdField_a_of_type_Boolean = true;
-          return localTipsInfo;
-          paramBaseTips = paramAvTipsItemBase.b();
-          if (!TextUtils.isEmpty(paramBaseTips)) {
-            localTipsInfo.jdField_a_of_type_AndroidGraphicsBitmap = RedBagUtil.a(paramResources, paramBaseTips);
+          int j = paramResources.f();
+          if (paramResources.g() == -1) {
+            i = paramAvTipsItemBase.a().length();
+          } else {
+            i = paramResources.g();
           }
-          break;
+          i += j;
+          localTipsInfo.jdField_a_of_type_AndroidTextSpannableString.setSpan(new AvTipsView.TipsInfo.1(paramResources), j, i, 33);
+          paramResources = new ForegroundColorSpan(localTipsInfo.jdField_c_of_type_Int);
+          localTipsInfo.jdField_a_of_type_AndroidTextSpannableString.setSpan(paramResources, j, i, 17);
+          return localTipsInfo;
         }
       }
-      localTipsInfo.jdField_b_of_type_Boolean = true;
-      return localTipsInfo;
-      localTipsInfo.jdField_c_of_type_Boolean = ((WaitingAvTipsItem)paramAvTipsItemBase).b();
-      return localTipsInfo;
-      paramResources = (HypeLinkAvTipsItem)paramAvTipsItemBase;
-      if (paramResources.h() != -1) {
-        localTipsInfo.jdField_a_of_type_Int = paramResources.h();
+      else
+      {
+        localTipsInfo.jdField_c_of_type_Boolean = ((WaitingAvTipsItem)paramAvTipsItemBase).b();
+        return localTipsInfo;
       }
-      if (paramResources.j() != -1) {
-        localTipsInfo.jdField_c_of_type_Int = paramResources.j();
-      }
-      if (paramResources.i() != -1) {
-        localTipsInfo.d = paramResources.i();
-      }
-    } while (localTipsInfo.jdField_a_of_type_AndroidTextSpannableString == null);
-    int j = paramResources.f();
-    if (paramResources.g() == -1) {}
-    for (int i = paramAvTipsItemBase.a().length() + j;; i = paramResources.g() + j)
-    {
-      localTipsInfo.jdField_a_of_type_AndroidTextSpannableString.setSpan(new AvTipsView.TipsInfo.1(paramResources), j, i, 33);
-      paramResources = new ForegroundColorSpan(localTipsInfo.jdField_c_of_type_Int);
-      localTipsInfo.jdField_a_of_type_AndroidTextSpannableString.setSpan(paramResources, j, i, 17);
-      return localTipsInfo;
     }
+    else
+    {
+      paramAvTipsItemBase = (NormalAvTipsItem)paramAvTipsItemBase;
+      if ((paramAvTipsItemBase.a() instanceof BitmapDrawable))
+      {
+        localTipsInfo.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)paramAvTipsItemBase.a()).getBitmap();
+      }
+      else
+      {
+        paramBaseTips = paramAvTipsItemBase.b();
+        if (!TextUtils.isEmpty(paramBaseTips)) {
+          localTipsInfo.jdField_a_of_type_AndroidGraphicsBitmap = VideoUtils.a(paramResources, paramBaseTips);
+        }
+      }
+      i = paramAvTipsItemBase.k();
+      if (i != 1)
+      {
+        if (i != 2) {
+          return localTipsInfo;
+        }
+        localTipsInfo.jdField_b_of_type_Boolean = true;
+        return localTipsInfo;
+      }
+      localTipsInfo.jdField_a_of_type_Boolean = true;
+    }
+    return localTipsInfo;
   }
   
   static void a(TextView paramTextView, int paramInt1, int paramInt2)
   {
-    paramTextView.setTag(2131378905, Integer.valueOf(paramInt2));
-    paramTextView.setTag(2131378906, Integer.valueOf(paramInt1));
-    paramTextView.setMovementMethod((RedPacketLinkMovementMethod)RedPacketLinkMovementMethod.a());
+    paramTextView.setTag(2131378294, Integer.valueOf(paramInt2));
+    paramTextView.setTag(2131378295, Integer.valueOf(paramInt1));
     paramTextView.setHighlightColor(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.tips.AvTipsView.TipsInfo
  * JD-Core Version:    0.7.0.1
  */

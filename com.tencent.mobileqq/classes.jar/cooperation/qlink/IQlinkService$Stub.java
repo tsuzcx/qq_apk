@@ -34,27 +34,28 @@ public abstract class IQlinkService$Stub
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 1)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
+      if (paramInt1 != 1598968902) {
+        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+      }
       paramParcel2.writeString("cooperation.qlink.IQlinkService");
       return true;
     }
     paramParcel1.enforceInterface("cooperation.qlink.IQlinkService");
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (SendMsg)SendMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      a(paramParcel1);
-      paramParcel2.writeNoException();
-      return true;
+    if (paramParcel1.readInt() != 0) {
+      paramParcel1 = (SendMsg)SendMsg.CREATOR.createFromParcel(paramParcel1);
+    } else {
+      paramParcel1 = null;
     }
+    a(paramParcel1);
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qlink.IQlinkService.Stub
  * JD-Core Version:    0.7.0.1
  */

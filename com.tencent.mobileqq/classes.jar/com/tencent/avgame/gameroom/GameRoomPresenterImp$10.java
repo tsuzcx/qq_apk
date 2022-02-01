@@ -1,6 +1,6 @@
 package com.tencent.avgame.gameroom;
 
-import com.tencent.avgame.util.AVGamePerfReporter;
+import com.tencent.avgame.report.AVGamePerfReporter;
 
 class GameRoomPresenterImp$10
   implements Runnable
@@ -14,7 +14,7 @@ class GameRoomPresenterImp$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.GameRoomPresenterImp.10
  * JD-Core Version:    0.7.0.1
  */

@@ -60,19 +60,21 @@ public class DeviceMsgThumbDownloader
   public static String processPath(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
-      paramString = null;
+      return null;
     }
-    String str;
-    do
+    String str = paramString;
+    if (paramString.startsWith("file://")) {
+      str = paramString.substring(7);
+    }
+    paramString = str;
+    if (!str.startsWith(File.separator))
     {
-      return paramString;
-      str = paramString;
-      if (paramString.startsWith("file://")) {
-        str = paramString.substring("file://".length());
-      }
-      paramString = str;
-    } while (str.startsWith(File.separator));
-    return File.separator + str;
+      paramString = new StringBuilder();
+      paramString.append(File.separator);
+      paramString.append(str);
+      paramString = paramString.toString();
+    }
+    return paramString;
   }
   
   @SuppressLint({"NewApi"})
@@ -87,21 +89,23 @@ public class DeviceMsgThumbDownloader
   public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
     paramFile = parseUrl(paramDownloadParams.url);
-    if (paramFile == null) {}
-    do
-    {
+    if (paramFile == null) {
       return null;
-      if (FileUtils.b(paramFile.path)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("DeviceMsgThumbDownloader", 2, "decodeFile file not exits. just return");
-    return null;
-    paramURLDrawableHandler = BaseApplicationImpl.getContext();
-    if (FileManagerUtil.a(paramFile.path) == 2) {}
-    for (paramFile = new DeviceMsgThumbDownloader.DeviceVideoBitmapDecoder(this);; paramFile = new DeviceMsgThumbDownloader.DeviceImgBitmapDecoder(this)) {
-      return AlbumThumbManager.getInstance(paramURLDrawableHandler).getThumb(paramDownloadParams.url, paramFile);
     }
+    if (!FileUtils.fileExistsAndNotEmpty(paramFile.path))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("DeviceMsgThumbDownloader", 2, "decodeFile file not exits. just return");
+      }
+      return null;
+    }
+    paramURLDrawableHandler = BaseApplicationImpl.getContext();
+    if (FileManagerUtil.a(paramFile.path) == 2) {
+      paramFile = new DeviceMsgThumbDownloader.DeviceVideoBitmapDecoder(this);
+    } else {
+      paramFile = new DeviceMsgThumbDownloader.DeviceImgBitmapDecoder(this);
+    }
+    return AlbumThumbManager.getInstance(paramURLDrawableHandler).getThumb(paramDownloadParams.url, paramFile);
   }
   
   public File downloadImage(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
@@ -120,65 +124,67 @@ public class DeviceMsgThumbDownloader
       localLocalMediaInfo.thumbHeight = Integer.parseInt(paramURL[2]);
       return localLocalMediaInfo;
     }
-    catch (Exception paramURL) {}
+    catch (Exception paramURL)
+    {
+      label47:
+      break label47;
+    }
     return null;
   }
   
   public Cursor queryVideoCursor(String paramString)
   {
-    paramString = "_data='" + processPath(paramString) + "' COLLATE NOCASE";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("_data='");
+    localStringBuilder.append(processPath(paramString));
+    localStringBuilder.append("' COLLATE NOCASE");
+    paramString = localStringBuilder.toString();
     return BaseApplicationImpl.getContext().getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, PROJECTION_VIDEO, paramString, null, null);
   }
   
   public Bitmap queryVideoThumbnail(String paramString)
   {
+    int i = Build.VERSION.SDK_INT;
     Object localObject = null;
-    Cursor localCursor = null;
-    if (Build.VERSION.SDK_INT < 5)
-    {
-      localObject = localCursor;
-      label17:
-      return localObject;
+    if (i < 5) {
+      return null;
     }
     try
     {
       localCursor = queryVideoCursor(paramString);
-      paramString = (String)localObject;
-      if (localCursor != null) {
-        paramString = (String)localObject;
+      paramString = localObject;
+      if (localCursor != null)
+      {
+        paramString = localObject;
+        try
+        {
+          if (localCursor.getCount() > 0)
+          {
+            long l = localCursor.getLong(localCursor.getColumnIndexOrThrow("_id"));
+            paramString = localObject;
+            if (localCursor.moveToFirst()) {
+              paramString = MediaStore.Video.Thumbnails.getThumbnail(BaseApplicationImpl.getContext().getContentResolver(), l, 1, null);
+            }
+          }
+        }
+        finally
+        {
+          break label110;
+        }
       }
+      if (localCursor != null) {
+        localCursor.close();
+      }
+      return paramString;
     }
     finally
     {
-      try
-      {
-        if (localCursor.getCount() > 0)
-        {
-          long l = localCursor.getLong(localCursor.getColumnIndexOrThrow("_id"));
-          paramString = (String)localObject;
-          if (localCursor.moveToFirst()) {
-            paramString = MediaStore.Video.Thumbnails.getThumbnail(BaseApplicationImpl.getContext().getContentResolver(), l, 1, null);
-          }
-        }
-        localObject = paramString;
-        if (localCursor == null) {
-          break label17;
-        }
+      Cursor localCursor = null;
+      label110:
+      if (localCursor != null) {
         localCursor.close();
-        return paramString;
       }
-      finally
-      {
-        break label112;
-      }
-      paramString = finally;
-      localCursor = null;
     }
-    label112:
-    if (localCursor != null) {
-      localCursor.close();
-    }
-    throw paramString;
   }
   
   public boolean useDiskCache()
@@ -188,7 +194,7 @@ public class DeviceMsgThumbDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.DeviceMsgThumbDownloader
  * JD-Core Version:    0.7.0.1
  */

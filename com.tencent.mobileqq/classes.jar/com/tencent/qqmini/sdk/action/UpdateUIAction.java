@@ -42,31 +42,39 @@ public class UpdateUIAction
   
   public Boolean perform(BaseRuntime paramBaseRuntime)
   {
-    paramBaseRuntime = paramBaseRuntime.getPage();
-    if (paramBaseRuntime == null)
+    Object localObject = paramBaseRuntime.getPage();
+    paramBaseRuntime = Boolean.valueOf(false);
+    if (localObject == null)
     {
-      QMLog.e("UpdateUIEvent", "Failed to perform " + this + ". page is null");
-      return Boolean.valueOf(false);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Failed to perform ");
+      ((StringBuilder)localObject).append(this);
+      ((StringBuilder)localObject).append(". page is null");
+      QMLog.e("UpdateUIEvent", ((StringBuilder)localObject).toString());
+      return paramBaseRuntime;
     }
-    switch (this.what)
+    int i = this.what;
+    if (i != 1)
     {
-    default: 
-      return Boolean.valueOf(false);
-    case 2: 
-      return Boolean.valueOf(paramBaseRuntime.toggleDebugPanel());
-    case 1: 
-      return Boolean.valueOf(paramBaseRuntime.toggleMonitorPanel());
+      if (i != 2)
+      {
+        if (i != 3) {
+          return paramBaseRuntime;
+        }
+        paramBaseRuntime = ((IPage)localObject).getCapsuleButton();
+        if (paramBaseRuntime != null) {
+          paramBaseRuntime.updateRedDotVisible();
+        }
+        return Boolean.valueOf(true);
+      }
+      return Boolean.valueOf(((IPage)localObject).toggleDebugPanel());
     }
-    paramBaseRuntime = paramBaseRuntime.getCapsuleButton();
-    if (paramBaseRuntime != null) {
-      paramBaseRuntime.updateRedDotVisible();
-    }
-    return Boolean.valueOf(true);
+    return Boolean.valueOf(((IPage)localObject).toggleMonitorPanel());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.action.UpdateUIAction
  * JD-Core Version:    0.7.0.1
  */

@@ -35,14 +35,18 @@ public class RoundRectURLImageView
     return this.jdField_a_of_type_Boolean;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
+    int i;
     if (a())
     {
       if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
         this.jdField_a_of_type_AndroidGraphicsPath = new Path();
       }
-      int i = paramCanvas.save();
+      i = paramCanvas.save();
+    }
+    try
+    {
       try
       {
         Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
@@ -51,18 +55,23 @@ public class RoundRectURLImageView
         localPath.addRoundRect(localRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
         paramCanvas.clipPath(localPath);
         super.onDraw(paramCanvas);
-        return;
-      }
-      catch (UnsupportedOperationException localUnsupportedOperationException)
-      {
-        super.onDraw(paramCanvas);
-        return;
       }
       finally
       {
-        paramCanvas.restoreToCount(i);
+        break label102;
       }
     }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      label91:
+      break label91;
+    }
+    super.onDraw(paramCanvas);
+    paramCanvas.restoreToCount(i);
+    return;
+    label102:
+    paramCanvas.restoreToCount(i);
+    throw localObject;
     super.onDraw(paramCanvas);
   }
   
@@ -84,17 +93,18 @@ public class RoundRectURLImageView
   public void setRadius(float[] paramArrayOfFloat)
   {
     this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat;
-    if (paramArrayOfFloat != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      setNeedRadius(bool);
-      return;
+    boolean bool;
+    if (paramArrayOfFloat != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    setNeedRadius(bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.RoundRectURLImageView
  * JD-Core Version:    0.7.0.1
  */

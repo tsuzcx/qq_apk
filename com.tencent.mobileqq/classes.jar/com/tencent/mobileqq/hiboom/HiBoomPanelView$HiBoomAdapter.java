@@ -57,64 +57,53 @@ public class HiBoomPanelView$HiBoomAdapter
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    HiBoomPanelView.HiBoomViewHolder localHiBoomViewHolder;
     if ((paramViewHolder instanceof HiBoomPanelView.HiBoomViewHolder))
     {
-      localHiBoomViewHolder = (HiBoomPanelView.HiBoomViewHolder)paramViewHolder;
+      HiBoomPanelView.HiBoomViewHolder localHiBoomViewHolder = (HiBoomPanelView.HiBoomViewHolder)paramViewHolder;
       localHiBoomViewHolder.jdField_a_of_type_Int = paramInt;
-      if (localHiBoomViewHolder.jdField_a_of_type_Boolean) {
-        break label41;
+      if (localHiBoomViewHolder.jdField_a_of_type_Boolean)
+      {
+        int i = a(paramInt);
+        ViewGroup.LayoutParams localLayoutParams = localHiBoomViewHolder.itemView.getLayoutParams();
+        localLayoutParams.height = HiBoomPanelView.jdField_a_of_type_Int;
+        localLayoutParams.width = HiBoomPanelView.b;
+        localHiBoomViewHolder.itemView.setPadding(0, 0, HiBoomPanelView.c, HiBoomPanelView.c);
+        localLayoutParams = localHiBoomViewHolder.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.getLayoutParams();
+        localLayoutParams.width = (HiBoomPanelView.b - HiBoomPanelView.c - HiBoomPanelView.d * 2);
+        localLayoutParams.height = localLayoutParams.width;
+        this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.a(localHiBoomViewHolder, i);
       }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-      return;
-      label41:
-      int i = a(paramInt);
-      ViewGroup.LayoutParams localLayoutParams = localHiBoomViewHolder.itemView.getLayoutParams();
-      localLayoutParams.height = HiBoomPanelView.jdField_a_of_type_Int;
-      localLayoutParams.width = HiBoomPanelView.b;
-      localHiBoomViewHolder.itemView.setPadding(0, 0, HiBoomPanelView.c, HiBoomPanelView.c);
-      localLayoutParams = localHiBoomViewHolder.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.getLayoutParams();
-      localLayoutParams.width = (HiBoomPanelView.b - HiBoomPanelView.c - HiBoomPanelView.d * 2);
-      localLayoutParams.height = localLayoutParams.width;
-      this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.a(localHiBoomViewHolder, i);
-    }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
     Object localObject = null;
-    boolean bool = true;
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 1) {
       return null;
     }
+    boolean bool = false;
     try
     {
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.getContext()).inflate(2131563213, paramViewGroup, false);
-      localObject = paramViewGroup;
-      if (paramViewGroup == null) {
-        localObject = new View(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.getContext());
-      }
-      return new HiBoomPanelView.HiBoomViewHolder(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView, (View)localObject, bool);
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.getContext()).inflate(2131563037, paramViewGroup, false);
+      bool = true;
     }
     catch (Exception paramViewGroup)
     {
-      for (;;)
-      {
-        QLog.e("HiBoomFont.HiBoomPanelView", 1, "inflate hiboom item error: ", paramViewGroup);
-        bool = false;
-        paramViewGroup = (ViewGroup)localObject;
-      }
+      QLog.e("HiBoomFont.HiBoomPanelView", 1, "inflate hiboom item error: ", paramViewGroup);
+      paramViewGroup = (ViewGroup)localObject;
     }
+    localObject = paramViewGroup;
+    if (paramViewGroup == null) {
+      localObject = new View(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.getContext());
+    }
+    return new HiBoomPanelView.HiBoomViewHolder(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView, (View)localObject, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.HiBoomPanelView.HiBoomAdapter
  * JD-Core Version:    0.7.0.1
  */

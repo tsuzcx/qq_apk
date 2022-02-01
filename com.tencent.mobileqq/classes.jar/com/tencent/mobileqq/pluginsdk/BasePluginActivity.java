@@ -58,7 +58,7 @@ public class BasePluginActivity
   implements IPluginActivity, PluginInterfaceHelper.OnPluginInterfaceLoadedListener, SkinnableActivityProcesser.Callback
 {
   public static int i_support_immersive = -1;
-  private static Boolean sIsLiquid = null;
+  private static Boolean sIsLiquid;
   private static boolean sSkilEngineInit = false;
   private Dialog jumpDialog;
   private Activity mActivity = null;
@@ -71,7 +71,7 @@ public class BasePluginActivity
   private BasePluginActivity.ImmersiveConfig mImmerConfit = new BasePluginActivity.ImmersiveConfig(this);
   protected boolean mIsRunInPlugin = false;
   protected boolean mIsTab = false;
-  public Activity mOutActivity = null;
+  protected Activity mOutActivity = null;
   protected PackageInfo mPackageInfo;
   private SparseArray<List> mPermissionCallerMap = new SparseArray();
   protected String mPluginID;
@@ -82,26 +82,26 @@ public class BasePluginActivity
   
   public static final Bitmap getDrawableBitmap(Drawable paramDrawable)
   {
-    if (paramDrawable == null) {}
-    do
-    {
+    if (paramDrawable == null) {
       return null;
-      if ((paramDrawable instanceof BitmapDrawable)) {
-        return ((BitmapDrawable)paramDrawable).getBitmap();
-      }
-    } while (!(paramDrawable instanceof SkinnableBitmapDrawable));
-    return ((SkinnableBitmapDrawable)paramDrawable).getBitmap();
+    }
+    if ((paramDrawable instanceof BitmapDrawable)) {
+      return ((BitmapDrawable)paramDrawable).getBitmap();
+    }
+    if ((paramDrawable instanceof SkinnableBitmapDrawable)) {
+      return ((SkinnableBitmapDrawable)paramDrawable).getBitmap();
+    }
+    return null;
   }
   
   public static boolean reflectHasAndIsNull(Object paramObject, String paramString, Class paramClass)
   {
-    boolean bool2 = true;
-    boolean bool3 = false;
-    boolean bool1 = bool3;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
     Class localClass;
     if (paramObject != null)
     {
-      bool1 = bool3;
+      bool1 = bool2;
       if (paramString != null)
       {
         localClass = paramClass;
@@ -112,56 +112,57 @@ public class BasePluginActivity
     {
       localClass = paramObject.getClass();
       paramString = localClass.getDeclaredField(paramString);
-      bool1 = bool3;
+      bool1 = bool2;
       if (paramString != null)
       {
+        bool1 = true;
         paramString.setAccessible(true);
         paramObject = paramString.get(paramObject);
         if (paramObject != null) {
-          break label67;
+          bool1 = false;
         }
       }
-      label67:
-      for (bool1 = bool2;; bool1 = false) {
-        return bool1;
-      }
-      return false;
+      return bool1;
     }
     catch (Exception paramObject) {}
+    return false;
   }
   
   private void setNightMaskVisible(boolean paramBoolean)
   {
+    Object localObject = this.mViewShadow;
     int i = 0;
-    if (this.mViewShadow != null)
+    if (localObject != null)
     {
-      localObject = this.mViewShadow;
-      if (paramBoolean) {
-        ((View)localObject).setVisibility(i);
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
+      if (!paramBoolean) {
         i = 8;
-        break;
-      } while (paramBoolean != true);
+      }
+      ((View)localObject).setVisibility(i);
+      return;
+    }
+    if (paramBoolean == true)
+    {
       localObject = new ImageView(this);
       ((ImageView)localObject).setImageDrawable(new ColorDrawable(Color.parseColor("#77000000")));
       ((ImageView)localObject).setPadding(0, this.mConfig.titleHeight, 0, 0);
       ((ImageView)localObject).setScaleType(ImageView.ScaleType.FIT_XY);
       ((ImageView)localObject).setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
       this.mViewShadow = ((View)localObject);
-    } while (this.mViewShadow == null);
-    Object localObject = getWindow().getDecorView();
-    if ((localObject instanceof ViewGroup))
-    {
-      ((ViewGroup)localObject).addView(this.mViewShadow, this.mViewShadow.getLayoutParams());
-      return;
+      if (this.mViewShadow != null)
+      {
+        localObject = getWindow().getDecorView();
+        if ((localObject instanceof ViewGroup))
+        {
+          localObject = (ViewGroup)localObject;
+          localView = this.mViewShadow;
+          ((ViewGroup)localObject).addView(localView, localView.getLayoutParams());
+          return;
+        }
+        localObject = getWindow();
+        View localView = this.mViewShadow;
+        ((Window)localObject).addContentView(localView, localView.getLayoutParams());
+      }
     }
-    getWindow().addContentView(this.mViewShadow, this.mViewShadow.getLayoutParams());
   }
   
   public static void setProperty(Object paramObject1, Class paramClass, String paramString, Object paramObject2)
@@ -178,7 +179,11 @@ public class BasePluginActivity
       boolean bool = dispatchTouchEvent(paramMotionEvent);
       return bool;
     }
-    catch (Exception paramMotionEvent) {}
+    catch (Exception paramMotionEvent)
+    {
+      label8:
+      break label8;
+    }
     return true;
   }
   
@@ -199,16 +204,25 @@ public class BasePluginActivity
   
   public Resources IGetResource()
   {
-    if (this.mContext != null) {
-      return this.mContext.getResources();
+    Context localContext = this.mContext;
+    if (localContext != null) {
+      return localContext.getResources();
     }
     return this.mActivity.getResources();
   }
   
   public void IInit(String paramString1, String paramString2, Activity paramActivity, ClassLoader paramClassLoader, PackageInfo paramPackageInfo, boolean paramBoolean, int paramInt)
   {
-    if (DebugHelper.sDebug) {
-      DebugHelper.log("plugin_tag", "BasePluginActivity.Init:" + paramString1 + ", " + paramBoolean + ", " + this.mPluginResourcesType);
+    if (DebugHelper.sDebug)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("BasePluginActivity.Init:");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(this.mPluginResourcesType);
+      DebugHelper.log("plugin_tag", localStringBuilder.toString());
     }
     this.mIsRunInPlugin = true;
     this.mDexClassLoader = paramClassLoader;
@@ -222,19 +236,24 @@ public class BasePluginActivity
     }
     attachBaseContext(this.mContext);
     this.mUseSkinEngine = paramBoolean;
-    if ((sSkilEngineInit) || (!paramBoolean) || ((this.mPluginResourcesType != 1) && (this.mPluginResourcesType != 2))) {
-      try
-      {
-        SkinEngineInitBridge.init(this);
-        sSkilEngineInit = true;
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        SkinEngine.getInstances().unInit();
-        return;
-      }
+    if ((!sSkilEngineInit) && (paramBoolean))
+    {
+      paramInt = this.mPluginResourcesType;
+      if ((paramInt == 1) || (paramInt == 2)) {}
     }
+    try
+    {
+      SkinEngineInitBridge.init(this);
+      sSkilEngineInit = true;
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      label203:
+      break label203;
+    }
+    SkinEngine.getInstances().unInit();
+    return;
     SkinEngineInitBridge.initSkin(this);
   }
   
@@ -408,90 +427,168 @@ public class BasePluginActivity
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    Object localObject = EventCollector.getInstance();
     boolean bool = true;
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    ((EventCollector)localObject).onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     if (reflectHasAndIsNull(this, "mWindow", Activity.class))
     {
       if (paramMotionEvent.getAction() == 0) {
         onUserInteraction();
       }
-      Window localWindow = getWindow();
-      if ((localWindow == null) || (!localWindow.superDispatchTouchEvent(paramMotionEvent))) {}
+      localObject = getWindow();
+      if ((localObject == null) || (!((Window)localObject).superDispatchTouchEvent(paramMotionEvent))) {
+        bool = onTouchEvent(paramMotionEvent);
+      }
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
-      return bool;
-      bool = onTouchEvent(paramMotionEvent);
-      continue;
       bool = super.dispatchTouchEvent(paramMotionEvent);
     }
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
   }
   
   public View findViewById(int paramInt)
   {
-    if ((this.mIsRunInPlugin) && (this.mContentView != null))
+    if (this.mIsRunInPlugin)
     {
-      View localView2 = this.mContentView.findViewById(paramInt);
-      View localView1 = localView2;
-      if (localView2 == null) {}
-      try
+      View localView1 = this.mContentView;
+      if (localView1 != null)
       {
-        localView1 = super.findViewById(paramInt);
+        localView1 = localView1.findViewById(paramInt);
+        if (localView1 == null) {
+          try
+          {
+            View localView2 = super.findViewById(paramInt);
+            return localView2;
+          }
+          catch (Exception localException)
+          {
+            DebugHelper.debug("plugin_tag", "findViewById", localException);
+          }
+        }
         return localView1;
-      }
-      catch (Exception localException)
-      {
-        DebugHelper.debug("plugin_tag", "findViewById", localException);
-        return localView2;
       }
     }
     return super.findViewById(paramInt);
   }
   
+  /* Error */
   public void finish()
   {
-    int j;
-    int i;
-    if (this.mIsRunInPlugin)
-    {
-      j = 0;
-      i = j;
-    }
-    for (;;)
-    {
-      try
-      {
-        Object localObject1 = Activity.class.getDeclaredField("mResultCode");
-        i = j;
-        ((Field)localObject1).setAccessible(true);
-        i = j;
-        j = ((Integer)((Field)localObject1).get(this)).intValue();
-        i = j;
-        localObject1 = Activity.class.getDeclaredField("mResultData");
-        i = j;
-        ((Field)localObject1).setAccessible(true);
-        i = j;
-        localObject1 = (Intent)((Field)localObject1).get(this);
-        i = j;
-        this.mOutActivity.setResult(i, (Intent)localObject1);
-        this.mOutActivity.finish();
-        this.mFinished = true;
-        return;
-      }
-      catch (Exception localException)
-      {
-        if (!DebugHelper.sDebug) {
-          break label127;
-        }
-        DebugHelper.log("plugin_tag", "BasePluginActivity.finish", localException);
-      }
-      finally {}
-      super.finish();
-      return;
-      label127:
-      Object localObject3 = null;
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 59	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mIsRunInPlugin	Z
+    //   4: ifeq +135 -> 139
+    //   7: iconst_0
+    //   8: istore_2
+    //   9: aconst_null
+    //   10: astore 4
+    //   12: aload_0
+    //   13: monitorenter
+    //   14: iload_2
+    //   15: istore_1
+    //   16: ldc 237
+    //   18: ldc_w 479
+    //   21: invokevirtual 121	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   24: astore_3
+    //   25: iload_2
+    //   26: istore_1
+    //   27: aload_3
+    //   28: iconst_1
+    //   29: invokevirtual 127	java/lang/reflect/Field:setAccessible	(Z)V
+    //   32: iload_2
+    //   33: istore_1
+    //   34: aload_3
+    //   35: aload_0
+    //   36: invokevirtual 131	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   39: checkcast 481	java/lang/Integer
+    //   42: invokevirtual 484	java/lang/Integer:intValue	()I
+    //   45: istore_2
+    //   46: iload_2
+    //   47: istore_1
+    //   48: ldc 237
+    //   50: ldc_w 486
+    //   53: invokevirtual 121	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   56: astore_3
+    //   57: iload_2
+    //   58: istore_1
+    //   59: aload_3
+    //   60: iconst_1
+    //   61: invokevirtual 127	java/lang/reflect/Field:setAccessible	(Z)V
+    //   64: iload_2
+    //   65: istore_1
+    //   66: aload_3
+    //   67: aload_0
+    //   68: invokevirtual 131	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   71: checkcast 488	android/content/Intent
+    //   74: astore_3
+    //   75: goto +36 -> 111
+    //   78: astore_3
+    //   79: goto +56 -> 135
+    //   82: astore 5
+    //   84: iload_1
+    //   85: istore_2
+    //   86: aload 4
+    //   88: astore_3
+    //   89: getstatic 245	com/tencent/mobileqq/pluginsdk/DebugHelper:sDebug	Z
+    //   92: ifeq +19 -> 111
+    //   95: ldc_w 266
+    //   98: ldc_w 490
+    //   101: aload 5
+    //   103: invokestatic 492	com/tencent/mobileqq/pluginsdk/DebugHelper:log	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   106: aload 4
+    //   108: astore_3
+    //   109: iload_1
+    //   110: istore_2
+    //   111: aload_0
+    //   112: monitorexit
+    //   113: aload_0
+    //   114: getfield 61	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mOutActivity	Landroid/app/Activity;
+    //   117: iload_2
+    //   118: aload_3
+    //   119: invokevirtual 496	android/app/Activity:setResult	(ILandroid/content/Intent;)V
+    //   122: aload_0
+    //   123: getfield 61	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mOutActivity	Landroid/app/Activity;
+    //   126: invokevirtual 497	android/app/Activity:finish	()V
+    //   129: aload_0
+    //   130: iconst_1
+    //   131: putfield 67	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mFinished	Z
+    //   134: return
+    //   135: aload_0
+    //   136: monitorexit
+    //   137: aload_3
+    //   138: athrow
+    //   139: aload_0
+    //   140: invokespecial 498	mqq/app/BaseActivity:finish	()V
+    //   143: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	144	0	this	BasePluginActivity
+    //   15	95	1	i	int
+    //   8	110	2	j	int
+    //   24	51	3	localObject1	Object
+    //   78	1	3	localObject2	Object
+    //   88	50	3	localObject3	Object
+    //   10	97	4	localObject4	Object
+    //   82	20	5	localException	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   16	25	78	finally
+    //   27	32	78	finally
+    //   34	46	78	finally
+    //   48	57	78	finally
+    //   59	64	78	finally
+    //   66	75	78	finally
+    //   89	106	78	finally
+    //   111	113	78	finally
+    //   135	137	78	finally
+    //   16	25	82	java/lang/Exception
+    //   27	32	82	java/lang/Exception
+    //   34	46	82	java/lang/Exception
+    //   48	57	82	java/lang/Exception
+    //   59	64	82	java/lang/Exception
+    //   66	75	82	java/lang/Exception
   }
   
   public Context getApplicationContext()
@@ -533,13 +630,14 @@ public class BasePluginActivity
   
   public LayoutInflater getLayoutInflater()
   {
-    if (this.mContext != null) {
-      return LayoutInflater.from(this.mContext);
+    Context localContext = this.mContext;
+    if (localContext != null) {
+      return LayoutInflater.from(localContext);
     }
     return LayoutInflater.from(this.mActivity);
   }
   
-  public String getModuleId()
+  protected String getModuleId()
   {
     return this.mPluginID;
   }
@@ -575,15 +673,16 @@ public class BasePluginActivity
   
   public Object getSystemService(String paramString)
   {
-    if (("window".equals(paramString)) || ("search".equals(paramString)))
+    if ((!"window".equals(paramString)) && (!"search".equals(paramString)))
     {
-      if (this.mIsRunInPlugin) {
-        return this.mOutActivity.getSystemService(paramString);
+      Context localContext = this.mContext;
+      if (localContext != null) {
+        return localContext.getSystemService(paramString);
       }
       return super.getSystemService(paramString);
     }
-    if (this.mContext != null) {
-      return this.mContext.getSystemService(paramString);
+    if (this.mIsRunInPlugin) {
+      return this.mOutActivity.getSystemService(paramString);
     }
     return super.getSystemService(paramString);
   }
@@ -615,18 +714,18 @@ public class BasePluginActivity
       }
       boolean bool1 = this.mContext.getSharedPreferences("BootOptimize", 0).getBoolean("KEY_DISABLE_NAVIGATION_BAR", false);
       boolean bool2 = IPluginAdapterProxy.getProxy().isNightMode();
-      if ((bool1) || (!bool2))
+      if ((!bool1) && (bool2))
       {
-        QLog.d("plugin_tag", 1, new Object[] { "[NavigationBar] disableNavigationBar=", Boolean.valueOf(bool1), " isNightMode=", Boolean.valueOf(bool2) });
+        setNavigationBarColor(-16777216);
         return;
       }
+      QLog.d("plugin_tag", 1, new Object[] { "[NavigationBar] disableNavigationBar=", Boolean.valueOf(bool1), " isNightMode=", Boolean.valueOf(bool2) });
+      return;
     }
     catch (Throwable localThrowable)
     {
       QLog.d("plugin_tag", 1, "[NavigationBar] initNavigationBarColor=", localThrowable);
-      return;
     }
-    setNavigationBarColor(-16777216);
   }
   
   public boolean isFinishing()
@@ -639,88 +738,74 @@ public class BasePluginActivity
   
   boolean isSamePackage(Intent paramIntent)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.mIsRunInPlugin)
+    boolean bool2 = this.mIsRunInPlugin;
+    boolean bool1 = true;
+    if ((bool2) && (paramIntent != null))
     {
-      bool1 = bool2;
-      if (paramIntent != null)
-      {
-        if (!paramIntent.hasExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY")) {
-          break label38;
+      if (paramIntent.hasExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY")) {
+        return paramIntent.getBooleanExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
+      }
+      ComponentName localComponentName = paramIntent.getComponent();
+      if (localComponentName != null) {
+        if (this.mOutActivity.getPackageName().equals(localComponentName.getPackageName()))
+        {
+          paramIntent = this.mActivity.getPackageManager().queryIntentActivities(paramIntent, 65536);
+          if (paramIntent == null) {
+            return bool1;
+          }
+          if (paramIntent.size() == 0) {
+            return true;
+          }
         }
-        bool1 = paramIntent.getBooleanExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
+        else if (getPackageName().equals(localComponentName.getPackageName()))
+        {
+          return true;
+        }
       }
     }
-    label38:
-    ComponentName localComponentName;
-    label101:
-    do
-    {
-      do
-      {
-        do
-        {
-          return bool1;
-          localComponentName = paramIntent.getComponent();
-          bool1 = bool2;
-        } while (localComponentName == null);
-        if (!this.mOutActivity.getPackageName().equals(localComponentName.getPackageName())) {
-          break label101;
-        }
-        paramIntent = this.mActivity.getPackageManager().queryIntentActivities(paramIntent, 65536);
-        if (paramIntent == null) {
-          break;
-        }
-        bool1 = bool2;
-      } while (paramIntent.size() != 0);
-      return true;
-      bool1 = bool2;
-    } while (!getPackageName().equals(localComponentName.getPackageName()));
-    return true;
+    bool1 = false;
+    return bool1;
   }
   
   boolean isSamePackage2(Intent paramIntent)
   {
+    boolean bool3 = this.mIsRunInPlugin;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.mIsRunInPlugin)
+    if (bool3)
     {
       bool1 = bool2;
       if (paramIntent != null)
       {
-        if (!paramIntent.hasExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY")) {
-          break label38;
+        if (paramIntent.hasExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY")) {
+          return paramIntent.getBooleanExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
         }
-        bool1 = paramIntent.getBooleanExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
-      }
-    }
-    label38:
-    do
-    {
-      do
-      {
-        return bool1;
         paramIntent = paramIntent.getComponent();
         bool1 = bool2;
-      } while (paramIntent == null);
-      if (this.mOutActivity.getPackageName().equals(paramIntent.getPackageName()))
-      {
-        paramIntent = paramIntent.getClassName();
-        try
+        if (paramIntent != null)
         {
-          bool1 = BasePluginActivity.class.isAssignableFrom(Class.forName(paramIntent, false, this.mContext.getClassLoader()));
-          return bool1;
-        }
-        catch (ClassNotFoundException paramIntent)
-        {
-          DebugHelper.log("plugin_tag", "isSamePackage2", paramIntent);
-          return false;
+          if (this.mOutActivity.getPackageName().equals(paramIntent.getPackageName()))
+          {
+            paramIntent = paramIntent.getClassName();
+            try
+            {
+              bool1 = BasePluginActivity.class.isAssignableFrom(Class.forName(paramIntent, false, this.mContext.getClassLoader()));
+              return bool1;
+            }
+            catch (ClassNotFoundException paramIntent)
+            {
+              DebugHelper.log("plugin_tag", "isSamePackage2", paramIntent);
+              return false;
+            }
+          }
+          bool1 = bool2;
+          if (getPackageName().equals(paramIntent.getPackageName())) {
+            bool1 = true;
+          }
         }
       }
-      bool1 = bool2;
-    } while (!getPackageName().equals(paramIntent.getPackageName()));
-    return true;
+    }
+    return bool1;
   }
   
   public boolean isShadow()
@@ -768,119 +853,73 @@ public class BasePluginActivity
     }
   }
   
-  /* Error */
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 63	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mIsRunInPlugin	Z
-    //   4: ifeq +116 -> 120
-    //   7: aload_0
-    //   8: aload_0
-    //   9: getfield 65	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mOutActivity	Landroid/app/Activity;
-    //   12: putfield 69	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mActivity	Landroid/app/Activity;
-    //   15: aload_0
-    //   16: getfield 69	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mActivity	Landroid/app/Activity;
-    //   19: invokevirtual 564	android/app/Activity:getWindow	()Landroid/view/Window;
-    //   22: astore_2
-    //   23: getstatic 443	android/os/Build$VERSION:SDK_INT	I
-    //   26: bipush 26
-    //   28: if_icmplt +13 -> 41
-    //   31: aload_0
-    //   32: ldc 241
-    //   34: ldc_w 457
-    //   37: aload_2
-    //   38: invokestatic 700	com/tencent/mobileqq/pluginsdk/BasePluginActivity:setProperty	(Ljava/lang/Object;Ljava/lang/Class;Ljava/lang/String;Ljava/lang/Object;)V
-    //   41: aload_0
-    //   42: aload_0
-    //   43: getfield 86	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mConfig	Lcom/tencent/mobileqq/pluginsdk/BasePluginActivity$PluginConfig;
-    //   46: invokevirtual 702	com/tencent/mobileqq/pluginsdk/BasePluginActivity:onConfig	(Lcom/tencent/mobileqq/pluginsdk/BasePluginActivity$PluginConfig;)V
-    //   49: aload_0
-    //   50: getfield 704	com/tencent/mobileqq/pluginsdk/BasePluginActivity:processer	Lcom/tencent/theme/SkinnableActivityProcesser;
-    //   53: ifnonnull +16 -> 69
-    //   56: aload_0
-    //   57: new 706	com/tencent/theme/SkinnableActivityProcesser
-    //   60: dup
-    //   61: aload_0
-    //   62: aload_0
-    //   63: invokespecial 709	com/tencent/theme/SkinnableActivityProcesser:<init>	(Landroid/app/Activity;Lcom/tencent/theme/SkinnableActivityProcesser$Callback;)V
-    //   66: putfield 704	com/tencent/mobileqq/pluginsdk/BasePluginActivity:processer	Lcom/tencent/theme/SkinnableActivityProcesser;
-    //   69: aload_0
-    //   70: invokestatic 715	com/tencent/mobileqq/pluginsdk/PluginStatic:add	(Lcom/tencent/mobileqq/pluginsdk/IPluginActivity;)V
-    //   73: aload_0
-    //   74: aload_1
-    //   75: invokespecial 716	mqq/app/BaseActivity:onCreate	(Landroid/os/Bundle;)V
-    //   78: aload_0
-    //   79: invokevirtual 720	com/tencent/mobileqq/pluginsdk/BasePluginActivity:getIntent	()Landroid/content/Intent;
-    //   82: ldc_w 722
-    //   85: iconst_0
-    //   86: invokevirtual 640	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
-    //   89: ifeq +12 -> 101
-    //   92: aload_0
-    //   93: aload_0
-    //   94: getfield 65	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mOutActivity	Landroid/app/Activity;
-    //   97: aload_0
-    //   98: invokevirtual 726	com/tencent/mobileqq/pluginsdk/BasePluginActivity:readyPluginInterface	(Landroid/content/Context;Lcom/tencent/mobileqq/pluginsdk/PluginInterfaceHelper$OnPluginInterfaceLoadedListener;)V
-    //   101: aload_0
-    //   102: invokevirtual 728	com/tencent/mobileqq/pluginsdk/BasePluginActivity:initNavigationBarColor	()V
-    //   105: return
-    //   106: astore_2
-    //   107: ldc 251
-    //   109: iconst_1
-    //   110: ldc_w 730
-    //   113: aload_2
-    //   114: invokestatic 622	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   117: goto -76 -> 41
-    //   120: aload_0
-    //   121: aload_1
-    //   122: invokespecial 716	mqq/app/BaseActivity:onCreate	(Landroid/os/Bundle;)V
-    //   125: aload_0
-    //   126: aload_0
-    //   127: putfield 69	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mActivity	Landroid/app/Activity;
-    //   130: goto -29 -> 101
-    //   133: astore_2
-    //   134: goto -65 -> 69
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	137	0	this	BasePluginActivity
-    //   0	137	1	paramBundle	Bundle
-    //   22	16	2	localWindow	Window
-    //   106	8	2	localException1	Exception
-    //   133	1	2	localException2	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   31	41	106	java/lang/Exception
-    //   56	69	133	java/lang/Exception
+    if (this.mIsRunInPlugin)
+    {
+      this.mActivity = this.mOutActivity;
+      Window localWindow = this.mActivity.getWindow();
+      if (Build.VERSION.SDK_INT >= 26) {
+        try
+        {
+          setProperty(this, Activity.class, "mWindow", localWindow);
+        }
+        catch (Exception localException1)
+        {
+          QLog.d("plugin_tag", 1, "setPluginWindow", localException1);
+        }
+      }
+      onConfig(this.mConfig);
+      if (this.processer != null) {}
+    }
+    try
+    {
+      this.processer = new SkinnableActivityProcesser(this, this);
+    }
+    catch (Exception localException2)
+    {
+      label87:
+      break label87;
+    }
+    PluginStatic.add(this);
+    super.onCreate(paramBundle);
+    if (getIntent().getBooleanExtra("params_remote_connect_at_launch", false))
+    {
+      readyPluginInterface(this.mOutActivity, this);
+      break label132;
+      super.onCreate(paramBundle);
+      this.mActivity = this;
+    }
+    label132:
+    initNavigationBarColor();
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     try
     {
       if ((this.jumpDialog != null) && (this.jumpDialog.isShowing())) {
         this.jumpDialog.dismiss();
       }
-      if (this.mIsRunInPlugin)
-      {
-        if (this.processer != null)
-        {
-          this.processer.destory();
-          this.processer = null;
-        }
-        this.mDexClassLoader = null;
-        PluginStatic.remove(this);
-        super.onDestroy();
-        return;
-      }
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        QLog.e("BasePluginActivity", 1, localThrowable, new Object[0]);
-      }
-      super.onDestroy();
+      QLog.e("BasePluginActivity", 1, localThrowable, new Object[0]);
     }
+    if (this.mIsRunInPlugin)
+    {
+      SkinnableActivityProcesser localSkinnableActivityProcesser = this.processer;
+      if (localSkinnableActivityProcesser != null)
+      {
+        localSkinnableActivityProcesser.destory();
+        this.processer = null;
+      }
+      this.mDexClassLoader = null;
+      PluginStatic.remove(this);
+      super.onDestroy();
+      return;
+    }
+    super.onDestroy();
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
@@ -907,7 +946,7 @@ public class BasePluginActivity
     return super.onKeyUp(paramInt, paramKeyEvent);
   }
   
-  public void onPause()
+  protected void onPause()
   {
     if (this.mIsRunInPlugin)
     {
@@ -931,46 +970,45 @@ public class BasePluginActivity
   public void onRequestPermissionsResult(int paramInt, @NonNull String[] paramArrayOfString, @NonNull int[] paramArrayOfInt)
   {
     super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
-    if (paramArrayOfInt.length == 0) {}
-    List localList;
-    do
-    {
+    if (paramArrayOfInt.length == 0) {
       return;
-      localList = (List)this.mPermissionCallerMap.get(paramInt);
-      if ((localList != null) && (localList.size() > 0))
+    }
+    List localList = (List)this.mPermissionCallerMap.get(paramInt);
+    if ((localList != null) && (localList.size() > 0))
+    {
+      Iterator localIterator = localList.iterator();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = localList.iterator();
-        while (localIterator.hasNext())
-        {
-          Object localObject = localIterator.next();
-          if (localObject != null) {
-            if ((localObject instanceof QQPermissionCallback))
+        Object localObject = localIterator.next();
+        if (localObject != null) {
+          if ((localObject instanceof QQPermissionCallback))
+          {
+            localObject = (QQPermissionCallback)localObject;
+            ArrayList localArrayList = new ArrayList();
+            int i = 0;
+            while (i < paramArrayOfInt.length)
             {
-              localObject = (QQPermissionCallback)localObject;
-              ArrayList localArrayList = new ArrayList();
-              int i = 0;
-              while (i < paramArrayOfInt.length)
-              {
-                if (paramArrayOfInt[i] != 0) {
-                  localArrayList.add(paramArrayOfString[i]);
-                }
-                i += 1;
+              if (paramArrayOfInt[i] != 0) {
+                localArrayList.add(paramArrayOfString[i]);
               }
-              if (localArrayList.size() > 0) {
-                ((QQPermissionCallback)localObject).deny(paramInt, paramArrayOfString, paramArrayOfInt);
-              } else {
-                ((QQPermissionCallback)localObject).grant(paramInt, paramArrayOfString, paramArrayOfInt);
-              }
+              i += 1;
             }
-            else
-            {
-              QQPermissionHelper.requestResult(localObject, paramInt, paramArrayOfString, paramArrayOfInt);
+            if (localArrayList.size() > 0) {
+              ((QQPermissionCallback)localObject).deny(paramInt, paramArrayOfString, paramArrayOfInt);
+            } else {
+              ((QQPermissionCallback)localObject).grant(paramInt, paramArrayOfString, paramArrayOfInt);
             }
+          }
+          else
+          {
+            QQPermissionHelper.requestResult(localObject, paramInt, paramArrayOfString, paramArrayOfInt);
           }
         }
       }
-    } while (localList == null);
-    this.mPermissionCallerMap.remove(paramInt);
+    }
+    if (localList != null) {
+      this.mPermissionCallerMap.remove(paramInt);
+    }
   }
   
   protected void onRestart()
@@ -983,7 +1021,7 @@ public class BasePluginActivity
     super.onRestart();
   }
   
-  public void onResume()
+  protected void onResume()
   {
     if (this.mIsRunInPlugin)
     {
@@ -999,7 +1037,7 @@ public class BasePluginActivity
     super.onResume();
   }
   
-  public void onStart()
+  protected void onStart()
   {
     if (this.mIsRunInPlugin)
     {
@@ -1009,7 +1047,7 @@ public class BasePluginActivity
     super.onStart();
   }
   
-  public void onStop()
+  protected void onStop()
   {
     if (this.mIsRunInPlugin)
     {
@@ -1063,9 +1101,9 @@ public class BasePluginActivity
   @TargetApi(24)
   public void requestPermissions(Object paramObject, int paramInt, String... paramVarArgs)
   {
-    int k = 0;
     ArrayList localArrayList = new ArrayList();
     int j = paramVarArgs.length;
+    int k = 0;
     int i = 0;
     Object localObject;
     while (i < j)
@@ -1076,7 +1114,7 @@ public class BasePluginActivity
       }
       i += 1;
     }
-    if ((localArrayList != null) && (localArrayList.size() > 0))
+    if (localArrayList.size() > 0)
     {
       localObject = (List)this.mPermissionCallerMap.get(paramInt);
       paramVarArgs = (String[])localObject;
@@ -1085,44 +1123,48 @@ public class BasePluginActivity
       }
       int m = paramVarArgs.size();
       i = 0;
-      j = k;
-      if (i < m)
+      for (;;)
       {
+        j = k;
+        if (i >= m) {
+          break;
+        }
         localObject = paramVarArgs.get(i);
-        if ((localObject != null) && (localObject == paramObject)) {
-          j = 1;
-        }
-      }
-      else
-      {
-        if (j == 0)
+        if ((localObject != null) && (localObject == paramObject))
         {
-          paramVarArgs.add(paramObject);
-          this.mPermissionCallerMap.put(paramInt, paramVarArgs);
+          j = 1;
+          break;
         }
-        if ((!isShadow()) || (this.mOutActivity == null)) {
-          break label232;
-        }
-        this.mOutActivity.requestPermissions((String[])localArrayList.toArray(new String[localArrayList.size()]), paramInt);
+        i += 1;
       }
-    }
-    label232:
-    do
-    {
-      return;
-      i += 1;
-      break;
+      if (j == 0)
+      {
+        paramVarArgs.add(paramObject);
+        this.mPermissionCallerMap.put(paramInt, paramVarArgs);
+      }
+      if (isShadow())
+      {
+        paramObject = this.mOutActivity;
+        if (paramObject != null)
+        {
+          paramObject.requestPermissions((String[])localArrayList.toArray(new String[localArrayList.size()]), paramInt);
+          return;
+        }
+      }
       requestPermissions((String[])localArrayList.toArray(new String[localArrayList.size()]), paramInt);
       return;
-      if (!(paramObject instanceof QQPermissionCallback)) {
-        break label292;
-      }
+    }
+    if ((paramObject instanceof QQPermissionCallback))
+    {
       paramObject = (QQPermissionCallback)paramObject;
-    } while (getApplicationInfo().targetSdkVersion >= 23);
-    paramObject.grant(paramInt, paramVarArgs, null);
-    return;
-    label292:
-    QQPermissionHelper.doExecuteSuccess(paramObject, paramInt);
+      if (getApplicationInfo().targetSdkVersion < 23) {
+        paramObject.grant(paramInt, paramVarArgs, null);
+      }
+    }
+    else
+    {
+      QQPermissionHelper.doExecuteSuccess(paramObject, paramInt);
+    }
   }
   
   public void setContentView(int paramInt)
@@ -1133,9 +1175,11 @@ public class BasePluginActivity
       if (!this.mIsTab) {
         this.mActivity.setContentView(this.mContentView);
       }
-      return;
     }
-    super.setContentView(paramInt);
+    else
+    {
+      super.setContentView(paramInt);
+    }
   }
   
   public void setContentView(View paramView)
@@ -1146,9 +1190,11 @@ public class BasePluginActivity
       if (!this.mIsTab) {
         this.mActivity.setContentView(this.mContentView);
       }
-      return;
     }
-    super.setContentView(paramView);
+    else
+    {
+      super.setContentView(paramView);
+    }
   }
   
   public void setImmersiveConfig(BasePluginActivity.ImmersiveConfig paramImmersiveConfig)
@@ -1163,18 +1209,21 @@ public class BasePluginActivity
   
   public void setNavigationBarColor(@ColorInt int paramInt)
   {
-    if ((Build.VERSION.SDK_INT < 21) || (getWindow() == null)) {
-      return;
-    }
-    try
+    if (Build.VERSION.SDK_INT >= 21)
     {
-      getWindow().addFlags(-2147483648);
-      getWindow().setNavigationBarColor(paramInt);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("plugin_tag", 1, "[NavigationBar] setNavigationBarColor Exception:", localException);
+      if (getWindow() == null) {
+        return;
+      }
+      try
+      {
+        getWindow().addFlags(-2147483648);
+        getWindow().setNavigationBarColor(paramInt);
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("plugin_tag", 1, "[NavigationBar] setNavigationBarColor Exception:", localException);
+      }
     }
   }
   
@@ -1193,9 +1242,10 @@ public class BasePluginActivity
         if ((this.mContext != null) && (this.mContext.getTheme() != null)) {
           this.mContext.getTheme().setTo(this.mOutActivity.getTheme());
         }
-        if (getTheme() != null) {
-          getTheme().setTo(this.mOutActivity.getTheme());
+        if (getTheme() == null) {
+          return;
         }
+        getTheme().setTo(this.mOutActivity.getTheme());
         return;
       }
       catch (Exception localException)
@@ -1204,7 +1254,10 @@ public class BasePluginActivity
         return;
       }
     }
-    super.setTheme(paramInt);
+    else
+    {
+      super.setTheme(paramInt);
+    }
   }
   
   public void setTitle(int paramInt)
@@ -1236,8 +1289,10 @@ public class BasePluginActivity
     }
     catch (NullPointerException localNullPointerException)
     {
-      startActivityForResult(paramIntent, -1);
+      label6:
+      break label6;
     }
+    startActivityForResult(paramIntent, -1);
   }
   
   public void startActivity(Intent paramIntent, Bundle paramBundle)
@@ -1249,59 +1304,60 @@ public class BasePluginActivity
     }
     catch (NullPointerException localNullPointerException)
     {
-      startActivityForResult(paramIntent, -1, paramBundle);
+      label7:
+      break label7;
     }
+    startActivityForResult(paramIntent, -1, paramBundle);
   }
   
   public void startActivityForResult(Intent paramIntent, int paramInt)
   {
-    boolean bool2 = false;
     if (this.mIsRunInPlugin)
     {
-      boolean bool1;
-      if (paramIntent.hasExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY"))
+      boolean bool1 = paramIntent.hasExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY");
+      boolean bool2 = false;
+      if (bool1)
       {
         bool1 = paramIntent.getBooleanExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
-        if (bool1) {
-          break label150;
-        }
       }
-      for (;;)
+      else
       {
-        if (!(this.mActivity instanceof PluginProxyActivity)) {
-          break label162;
-        }
-        ((PluginProxyActivity)this.mActivity).startActivityForResult(paramIntent, paramInt);
-        return;
-        Object localObject = paramIntent.getComponent();
+        localObject = paramIntent.getComponent();
         bool1 = bool2;
-        if (localObject == null) {
-          break;
-        }
-        if (this.mOutActivity.getPackageName().equals(((ComponentName)localObject).getPackageName()))
+        if (localObject != null)
         {
-          localObject = this.mActivity.getPackageManager().queryIntentActivities(paramIntent, 65536);
-          if (localObject != null)
+          if (this.mOutActivity.getPackageName().equals(((ComponentName)localObject).getPackageName()))
+          {
+            localObject = this.mActivity.getPackageManager().queryIntentActivities(paramIntent, 65536);
+            if (localObject != null)
+            {
+              bool1 = bool2;
+              if (((List)localObject).size() != 0) {
+                break label123;
+              }
+            }
+          }
+          else
           {
             bool1 = bool2;
-            if (((List)localObject).size() != 0) {
-              break;
+            if (!getPackageName().equals(((ComponentName)localObject).getPackageName())) {
+              break label123;
             }
           }
           bool1 = true;
-          break;
         }
-        bool1 = bool2;
-        if (!getPackageName().equals(((ComponentName)localObject).getPackageName())) {
-          break;
-        }
-        bool1 = true;
-        break;
-        label150:
+      }
+      label123:
+      if (bool1) {
         paramIntent.putExtra("pluginsdk_IsPluginActivity", true);
       }
-      label162:
-      this.mActivity.startActivityForResult(paramIntent, paramInt);
+      Object localObject = this.mActivity;
+      if ((localObject instanceof PluginProxyActivity))
+      {
+        ((PluginProxyActivity)localObject).startActivityForResult(paramIntent, paramInt);
+        return;
+      }
+      ((Activity)localObject).startActivityForResult(paramIntent, paramInt);
       return;
     }
     super.startActivityForResult(paramIntent, paramInt);
@@ -1309,7 +1365,7 @@ public class BasePluginActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.BasePluginActivity
  * JD-Core Version:    0.7.0.1
  */

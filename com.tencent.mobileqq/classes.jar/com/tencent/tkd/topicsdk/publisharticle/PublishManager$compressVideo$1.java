@@ -20,7 +20,10 @@ final class PublishManager$compressVideo$1
   public final void a(boolean paramBoolean)
   {
     this.jdField_a_of_type_ComTencentTkdTopicsdkBeanVideoInfo.setNeedCompress(paramBoolean);
-    TLog.a("PublishManager", "compressVideo, needCompress=" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("compressVideo, needCompress=");
+    localStringBuilder.append(paramBoolean);
+    TLog.a("PublishManager", localStringBuilder.toString());
     if (paramBoolean)
     {
       this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIVideoCompressor.a(this.jdField_a_of_type_ComTencentTkdTopicsdkBeanVideoInfo.getFilePath(), (IVideoCompressor.VideoCompressListener)new PublishManager.compressVideo.1.1(this));
@@ -31,7 +34,7 @@ final class PublishManager$compressVideo$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.publisharticle.PublishManager.compressVideo.1
  * JD-Core Version:    0.7.0.1
  */

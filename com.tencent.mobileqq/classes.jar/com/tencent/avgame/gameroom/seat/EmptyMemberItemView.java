@@ -32,13 +32,13 @@ public class EmptyMemberItemView
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131366357);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131366243);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.width = GameRoomViewLayoutParamsDef.u;
-    localLayoutParams.height = GameRoomViewLayoutParamsDef.u;
+    localLayoutParams.width = GameRoomViewLayoutParamsDef.F;
+    localLayoutParams.height = GameRoomViewLayoutParamsDef.F;
     this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getContext().getResources().getColor(2131165345));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371079));
+    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getContext().getResources().getColor(2131165311));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370713));
   }
   
   public void a(boolean paramBoolean)
@@ -53,7 +53,7 @@ public class EmptyMemberItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.seat.EmptyMemberItemView
  * JD-Core Version:    0.7.0.1
  */

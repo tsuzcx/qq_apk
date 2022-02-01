@@ -37,73 +37,78 @@ public class MessageResultAdapter
     MessageItem localMessageItem = (MessageItem)getItem(paramInt);
     View localView;
     BaseMessageResultAdapter.MessageHolder localMessageHolder;
-    MessageRecord localMessageRecord;
     if (paramView == null)
     {
-      localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559463, null);
+      localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559337, null);
       localMessageHolder = new BaseMessageResultAdapter.MessageHolder();
-      localMessageHolder.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView = ((ColorNickTextView)localView.findViewById(2131379092));
-      localMessageHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379094));
-      localMessageHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368603));
-      localMessageHolder.b = ((TextView)localView.findViewById(2131370043));
+      localMessageHolder.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView = ((ColorNickTextView)localView.findViewById(2131378461));
+      localMessageHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378463));
+      localMessageHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368343));
+      localMessageHolder.b = ((TextView)localView.findViewById(2131369727));
       localView.setTag(localMessageHolder);
-      localMessageRecord = localMessageItem.a;
-      paramView = ColorNickManager.a(localMessageRecord.msg, localMessageRecord, 32, 3);
-      localMessageHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
-      localObject = localMessageRecord.senderuin;
-      paramView = (View)localObject;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1)
-      {
-        paramView = (View)localObject;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000) {
-          if (!localMessageRecord.isSend()) {
-            break label308;
-          }
+    }
+    else
+    {
+      localMessageHolder = (BaseMessageResultAdapter.MessageHolder)paramView.getTag();
+      localView = paramView;
+    }
+    MessageRecord localMessageRecord = localMessageItem.a;
+    paramView = ColorNickManager.a(localMessageRecord.msg, localMessageRecord, 32, 3);
+    localMessageHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
+    Object localObject1 = localMessageRecord.senderuin;
+    paramView = (View)localObject1;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1)
+    {
+      paramView = (View)localObject1;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000) {
+        if (localMessageRecord.isSend()) {
+          paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+        } else {
+          paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
         }
       }
     }
-    label308:
-    for (paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();; paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)
+    Object localObject2;
+    if (AnonymousChatHelper.a(localMessageRecord))
     {
-      if (!AnonymousChatHelper.a(localMessageRecord)) {
-        break label319;
-      }
       paramView = AnonymousChatHelper.a(localMessageRecord);
-      localMessageHolder.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131697219) + paramView.jdField_b_of_type_JavaLangString);
+      localObject1 = localMessageHolder.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131697238));
+      ((StringBuilder)localObject2).append(paramView.jdField_b_of_type_JavaLangString);
+      ((ColorNickTextView)localObject1).setText(((StringBuilder)localObject2).toString());
       localMessageHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(URLDrawable.getDrawable(AnonymousChatHelper.a(paramView.jdField_b_of_type_Int)));
-      localMessageHolder.b.setText(localMessageItem.a(localMessageRecord.time));
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localMessageHolder = (BaseMessageResultAdapter.MessageHolder)paramView.getTag();
-      localView = paramView;
-      break;
     }
-    label319:
-    Object localObject = TroopBusinessUtil.a(localMessageRecord);
-    if (localObject != null)
+    else
     {
-      paramView = ((TroopBusinessUtil.TroopBusinessMessage)localObject).c;
-      Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840452);
-      localObject = URLDrawable.getDrawable(((TroopBusinessUtil.TroopBusinessMessage)localObject).jdField_a_of_type_JavaLangString, localDrawable, localDrawable);
-      ((URLDrawable)localObject).setTag(URLDrawableDecodeHandler.b(100, 100, 6));
-      ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.a);
-      localMessageHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject);
-    }
-    for (;;)
-    {
+      localObject1 = TroopBusinessUtil.a(localMessageRecord);
+      if (localObject1 != null)
+      {
+        paramView = ((TroopBusinessUtil.TroopBusinessMessage)localObject1).c;
+        localObject2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840321);
+        localObject1 = URLDrawable.getDrawable(((TroopBusinessUtil.TroopBusinessMessage)localObject1).jdField_a_of_type_JavaLangString, (Drawable)localObject2, (Drawable)localObject2);
+        ((URLDrawable)localObject1).setTag(URLDrawableDecodeHandler.b(100, 100, 6));
+        ((URLDrawable)localObject1).setDecodeHandler(URLDrawableDecodeHandler.a);
+        localMessageHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject1);
+      }
+      else
+      {
+        localObject1 = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localMessageRecord.isSend(), localMessageRecord.senderuin);
+        localMessageHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, paramView));
+        paramView = (View)localObject1;
+      }
       paramView = new ColorNickText(paramView, 32).a();
       localMessageHolder.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText(paramView);
       ColorNickManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageHolder.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView, paramView);
-      break;
-      localObject = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localMessageRecord.isSend(), localMessageRecord.senderuin);
-      localMessageHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, paramView));
-      paramView = (View)localObject;
     }
+    localMessageHolder.b.setText(localMessageItem.a(localMessageRecord.time));
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.MessageResultAdapter
  * JD-Core Version:    0.7.0.1
  */

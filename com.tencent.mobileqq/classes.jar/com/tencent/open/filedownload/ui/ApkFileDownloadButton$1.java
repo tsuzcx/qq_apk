@@ -17,7 +17,12 @@ class ApkFileDownloadButton$1
   
   public void installSucceed(String paramString1, String paramString2)
   {
-    LogUtility.b("ApkFileDownloadButton_", "[installSucceed] packageName=" + paramString2 + ",mApkInfo=" + this.a.a);
+    paramString1 = new StringBuilder();
+    paramString1.append("[installSucceed] packageName=");
+    paramString1.append(paramString2);
+    paramString1.append(",mApkInfo=");
+    paramString1.append(this.a.a);
+    LogUtility.b("ApkFileDownloadButton_", paramString1.toString());
     if ((this.a.a != null) && (TextUtils.equals(paramString2, this.a.a.f))) {
       ThreadManager.excute(new ApkFileDownloadButton.1.8(this, paramString2), 16, null, true);
     }
@@ -25,9 +30,13 @@ class ApkFileDownloadButton$1
   
   public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
-    if (this.a.a(paramDownloadInfo, this.a.a))
+    Object localObject = this.a;
+    if (((ApkFileDownloadButton)localObject).a(paramDownloadInfo, ((ApkFileDownloadButton)localObject).a))
     {
-      LogUtility.b("ApkFileDownloadButton_", "onDownloadCancel info.progress=" + paramDownloadInfo.f);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDownloadCancel info.progress=");
+      ((StringBuilder)localObject).append(paramDownloadInfo.f);
+      LogUtility.b("ApkFileDownloadButton_", ((StringBuilder)localObject).toString());
       this.a.a.b = 1;
       this.a.a.jdField_a_of_type_Int = paramDownloadInfo.f;
       if (this.a.a.jdField_a_of_type_Long == 0L) {
@@ -39,28 +48,34 @@ class ApkFileDownloadButton$1
   
   public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
   {
-    if (this.a.a(paramDownloadInfo, this.a.a))
+    paramString = this.a;
+    if (paramString.a(paramDownloadInfo, paramString.a))
     {
-      LogUtility.b("ApkFileDownloadButton_", "onDownloadError errorCode=" + paramInt1);
+      paramString = new StringBuilder();
+      paramString.append("onDownloadError errorCode=");
+      paramString.append(paramInt1);
+      LogUtility.b("ApkFileDownloadButton_", paramString.toString());
       if ((paramInt1 == 6) && (ApkFileDownloadButton.a(this.a) > 0))
       {
         ApkFileDownloadButton.a(this.a, paramDownloadInfo);
-        ApkFileDownloadButton.a(this.a, ApkFileDownloadButton.a(this.a) - 1);
+        paramDownloadInfo = this.a;
+        ApkFileDownloadButton.a(paramDownloadInfo, ApkFileDownloadButton.a(paramDownloadInfo) - 1);
+        return;
       }
+      this.a.a.b = 30;
+      ThreadManager.getUIHandler().post(new ApkFileDownloadButton.1.7(this));
     }
-    else
-    {
-      return;
-    }
-    this.a.a.b = 30;
-    ThreadManager.getUIHandler().post(new ApkFileDownloadButton.1.7(this));
   }
   
   public void onDownloadFinish(DownloadInfo paramDownloadInfo)
   {
-    if (this.a.a(paramDownloadInfo, this.a.a))
+    Object localObject = this.a;
+    if (((ApkFileDownloadButton)localObject).a(paramDownloadInfo, ((ApkFileDownloadButton)localObject).a))
     {
-      LogUtility.b("ApkFileDownloadButton_", "onDownloadFinish info.progress=" + paramDownloadInfo.f);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDownloadFinish info.progress=");
+      ((StringBuilder)localObject).append(paramDownloadInfo.f);
+      LogUtility.b("ApkFileDownloadButton_", ((StringBuilder)localObject).toString());
       this.a.a.b = 4;
       this.a.a.jdField_a_of_type_Int = paramDownloadInfo.f;
       if (this.a.a.jdField_a_of_type_Long == 0L) {
@@ -73,9 +88,13 @@ class ApkFileDownloadButton$1
   
   public void onDownloadPause(DownloadInfo paramDownloadInfo)
   {
-    if (this.a.a(paramDownloadInfo, this.a.a))
+    Object localObject = this.a;
+    if (((ApkFileDownloadButton)localObject).a(paramDownloadInfo, ((ApkFileDownloadButton)localObject).a))
     {
-      LogUtility.b("ApkFileDownloadButton_", "onDownloadPause info.progress=" + paramDownloadInfo.f);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDownloadPause info.progress=");
+      ((StringBuilder)localObject).append(paramDownloadInfo.f);
+      LogUtility.b("ApkFileDownloadButton_", ((StringBuilder)localObject).toString());
       this.a.a.b = 3;
       this.a.a.jdField_a_of_type_Int = paramDownloadInfo.f;
       if (this.a.a.jdField_a_of_type_Long == 0L) {
@@ -87,31 +106,40 @@ class ApkFileDownloadButton$1
   
   public void onDownloadUpdate(List<DownloadInfo> paramList)
   {
-    if (paramList == null) {}
-    DownloadInfo localDownloadInfo;
-    do
-    {
+    if (paramList == null) {
       return;
-      while (!paramList.hasNext()) {
-        paramList = paramList.iterator();
-      }
-      localDownloadInfo = (DownloadInfo)paramList.next();
-    } while (!this.a.a(localDownloadInfo, this.a.a));
-    ApkFileDownloadButton.a(this.a, 1);
-    LogUtility.b("ApkFileDownloadButton_", "onDownloadUpdate info.progress=" + localDownloadInfo.f);
-    this.a.a.b = 2;
-    this.a.a.jdField_a_of_type_Int = localDownloadInfo.f;
-    if (this.a.a.jdField_a_of_type_Long == 0L) {
-      this.a.a.jdField_a_of_type_Long = localDownloadInfo.c;
     }
-    ThreadManager.getUIHandler().post(new ApkFileDownloadButton.1.6(this));
+    Object localObject = paramList.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      paramList = (DownloadInfo)((Iterator)localObject).next();
+      ApkFileDownloadButton localApkFileDownloadButton = this.a;
+      if (localApkFileDownloadButton.a(paramList, localApkFileDownloadButton.a))
+      {
+        ApkFileDownloadButton.a(this.a, 1);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onDownloadUpdate info.progress=");
+        ((StringBuilder)localObject).append(paramList.f);
+        LogUtility.b("ApkFileDownloadButton_", ((StringBuilder)localObject).toString());
+        this.a.a.b = 2;
+        this.a.a.jdField_a_of_type_Int = paramList.f;
+        if (this.a.a.jdField_a_of_type_Long == 0L) {
+          this.a.a.jdField_a_of_type_Long = paramList.c;
+        }
+        ThreadManager.getUIHandler().post(new ApkFileDownloadButton.1.6(this));
+      }
+    }
   }
   
   public void onDownloadWait(DownloadInfo paramDownloadInfo)
   {
-    if (this.a.a(paramDownloadInfo, this.a.a))
+    Object localObject = this.a;
+    if (((ApkFileDownloadButton)localObject).a(paramDownloadInfo, ((ApkFileDownloadButton)localObject).a))
     {
-      LogUtility.b("ApkFileDownloadButton_", "onDownloadWait info.progress=" + paramDownloadInfo.f);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDownloadWait info.progress=");
+      ((StringBuilder)localObject).append(paramDownloadInfo.f);
+      LogUtility.b("ApkFileDownloadButton_", ((StringBuilder)localObject).toString());
       this.a.a.b = 20;
       if (this.a.a.jdField_a_of_type_Long == 0L) {
         this.a.a.jdField_a_of_type_Long = paramDownloadInfo.c;
@@ -126,7 +154,7 @@ class ApkFileDownloadButton$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.filedownload.ui.ApkFileDownloadButton.1
  * JD-Core Version:    0.7.0.1
  */

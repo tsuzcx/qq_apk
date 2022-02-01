@@ -43,32 +43,46 @@ public class FtnDownloader
     this.jdField_a_of_type_Boolean = true;
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null)
     {
-      TroopFileTransferUtil.Log.c("FtnDownloader", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] cancel ftn download");
+      int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append("] cancel ftn download");
+      TroopFileTransferUtil.Log.c("FtnDownloader", i, ((StringBuilder)localObject).toString());
       localObject = (IHttpEngineService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IHttpEngineService.class, "all");
-      if (localObject == null) {
+      if (localObject == null)
+      {
         this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg = null;
+        return;
       }
-    }
-    else
-    {
-      return;
-    }
-    Object localObject = ((IHttpEngineService)localObject).getCommunicator();
-    if (localObject == null)
-    {
+      localObject = ((IHttpEngineService)localObject).getCommunicator();
+      if (localObject == null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg = null;
+        return;
+      }
+      ((HttpCommunicator)localObject).cancelMsg(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg);
       this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg = null;
-      return;
     }
-    ((HttpCommunicator)localObject).cancelMsg(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg = null;
   }
   
   protected void a(int paramInt, String paramString1, String paramString2, HttpMsg paramHttpMsg)
   {
-    TroopFileTransferUtil.Log.a("FtnDownloader", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] ftn download err. errCode:" + paramInt + " errMsg:" + paramString1 + " rspHeader:" + paramString2);
+    int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append("] ftn download err. errCode:");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(" errMsg:");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(" rspHeader:");
+    ((StringBuilder)localObject).append(paramString2);
+    TroopFileTransferUtil.Log.a("FtnDownloader", i, ((StringBuilder)localObject).toString());
     this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadFtnDownloader$IHttpDownloadSink != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadFtnDownloader$IHttpDownloadSink.a(paramInt, paramString1, paramString2, paramHttpMsg);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadFtnDownloader$IHttpDownloadSink;
+    if (localObject != null) {
+      ((FtnDownloader.IHttpDownloadSink)localObject).a(paramInt, paramString1, paramString2, paramHttpMsg);
     }
   }
   
@@ -79,22 +93,35 @@ public class FtnDownloader
   
   public boolean a(String paramString, long paramLong)
   {
-    TroopFileTransferUtil.Log.c("FtnDownloader", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] ftn download url:" + paramString + " pos:" + paramLong);
+    int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append("] ftn download url:");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(" pos:");
+    ((StringBuilder)localObject).append(paramLong);
+    TroopFileTransferUtil.Log.c("FtnDownloader", i, ((StringBuilder)localObject).toString());
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
     this.jdField_a_of_type_Boolean = false;
-    String str2 = "bytes=" + paramLong + "-";
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("bytes=");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append("-");
+    String str = ((StringBuilder)localObject).toString();
     HttpMsg localHttpMsg = new HttpMsg(paramString, null, this, true);
     localHttpMsg.setInstanceFollowRedirects(false);
-    String str1 = "gprs";
-    if (NetworkUtil.b(BaseApplication.getContext()) == 1) {
-      str1 = "wifi";
+    if (NetworkUtil.getNetworkType(BaseApplication.getContext()) == 1) {
+      localObject = "wifi";
+    } else {
+      localObject = "gprs";
     }
-    localHttpMsg.setRequestProperty("Net-type", str1);
+    localHttpMsg.setRequestProperty("Net-type", (String)localObject);
     localHttpMsg.setRequestProperty("cache-control", "no-cache");
     if (paramLong != 0L) {
-      localHttpMsg.setRequestProperty("Range", str2);
+      localHttpMsg.setRequestProperty("Range", str);
     }
     localHttpMsg.setPriority(5);
     localHttpMsg.setDataSlice(true);
@@ -102,14 +129,16 @@ public class FtnDownloader
     localHttpMsg.busiType = this.jdField_a_of_type_Int;
     localHttpMsg.msgId = String.valueOf(this.jdField_a_of_type_Long);
     localHttpMsg.setRequestProperty("Accept-Encoding", "identity");
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadFtnDownloader$IHttpDownloadSink != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadFtnDownloader$IHttpDownloadSink.b(localHttpMsg);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadFtnDownloader$IHttpDownloadSink;
+    if (localObject != null) {
+      ((FtnDownloader.IHttpDownloadSink)localObject).b(localHttpMsg);
     }
-    str1 = "";
     if (paramString != null) {
-      str1 = paramString.toLowerCase();
+      localObject = paramString.toLowerCase();
+    } else {
+      localObject = "";
     }
-    if ((this.jdField_b_of_type_Boolean) && (str1.startsWith("https")))
+    if ((this.jdField_b_of_type_Boolean) && (((String)localObject).startsWith("https")))
     {
       localHttpMsg.mIsHttps = true;
       localHttpMsg.mIsHostIP = HttpUrlProcessor.a(paramString);
@@ -130,41 +159,71 @@ public class FtnDownloader
   
   public void decode(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    long l;
-    do
-    {
-      do
-      {
-        return;
-        if (paramHttpMsg1 == this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg) {
-          break;
-        }
-        if ((paramHttpMsg1 != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null))
-        {
-          TroopFileTransferUtil.Log.a("FtnDownloader", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "],Req Serial[" + String.valueOf(paramHttpMsg1.getSerial()) + "], curRequest Serial[" + String.valueOf(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.getSerial()) + "]");
-          return;
-        }
-        if (paramHttpMsg1 != null)
-        {
-          TroopFileTransferUtil.Log.a("FtnDownloader", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "],Req Serial[" + String.valueOf(paramHttpMsg1.getSerial()) + "]");
-          return;
-        }
-      } while (this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg == null);
-      TroopFileTransferUtil.Log.a("FtnDownloader", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "],curRequest Serial[" + String.valueOf(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.getSerial()) + "]");
+    if (this.jdField_a_of_type_Boolean) {
       return;
-      if ((paramHttpMsg2.getResponseCode() != 206) && (paramHttpMsg2.getResponseCode() != 200)) {
-        break;
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg;
+    int i;
+    if (paramHttpMsg1 != localObject)
+    {
+      if ((paramHttpMsg1 != null) && (localObject != null))
+      {
+        i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+        paramHttpMsg2 = new StringBuilder();
+        paramHttpMsg2.append("[");
+        paramHttpMsg2.append(this.jdField_a_of_type_Long);
+        paramHttpMsg2.append("],Req Serial[");
+        paramHttpMsg2.append(String.valueOf(paramHttpMsg1.getSerial()));
+        paramHttpMsg2.append("], curRequest Serial[");
+        paramHttpMsg2.append(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.getSerial()));
+        paramHttpMsg2.append("]");
+        TroopFileTransferUtil.Log.a("FtnDownloader", i, paramHttpMsg2.toString());
+        return;
       }
-      paramHttpMsg1 = paramHttpMsg2.getRecvData();
-      l = paramHttpMsg2.getTotalLen();
-      if (this.jdField_b_of_type_Long == 0L) {
-        this.jdField_b_of_type_Long = l;
+      if (paramHttpMsg1 != null)
+      {
+        i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+        paramHttpMsg2 = new StringBuilder();
+        paramHttpMsg2.append("[");
+        paramHttpMsg2.append(this.jdField_a_of_type_Long);
+        paramHttpMsg2.append("],Req Serial[");
+        paramHttpMsg2.append(String.valueOf(paramHttpMsg1.getSerial()));
+        paramHttpMsg2.append("]");
+        TroopFileTransferUtil.Log.a("FtnDownloader", i, paramHttpMsg2.toString());
+        return;
       }
-    } while (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadFtnDownloader$IHttpDownloadSink == null);
-    this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadFtnDownloader$IHttpDownloadSink.a(paramHttpMsg1, l, paramHttpMsg2.rawReqHeader);
-    return;
-    TroopFileTransferUtil.Log.a("FtnDownloader", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] ftn download decode resp code no 200|206");
+      if (this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null)
+      {
+        i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+        paramHttpMsg1 = new StringBuilder();
+        paramHttpMsg1.append("[");
+        paramHttpMsg1.append(this.jdField_a_of_type_Long);
+        paramHttpMsg1.append("],curRequest Serial[");
+        paramHttpMsg1.append(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.getSerial()));
+        paramHttpMsg1.append("]");
+        TroopFileTransferUtil.Log.a("FtnDownloader", i, paramHttpMsg1.toString());
+      }
+      return;
+    }
+    if ((paramHttpMsg2.getResponseCode() != 206) && (paramHttpMsg2.getResponseCode() != 200))
+    {
+      i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      paramHttpMsg1 = new StringBuilder();
+      paramHttpMsg1.append("[");
+      paramHttpMsg1.append(this.jdField_a_of_type_Long);
+      paramHttpMsg1.append("] ftn download decode resp code no 200|206");
+      TroopFileTransferUtil.Log.a("FtnDownloader", i, paramHttpMsg1.toString());
+      return;
+    }
+    paramHttpMsg1 = paramHttpMsg2.getRecvData();
+    long l = paramHttpMsg2.getTotalLen();
+    if (this.jdField_b_of_type_Long == 0L) {
+      this.jdField_b_of_type_Long = l;
+    }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadFtnDownloader$IHttpDownloadSink;
+    if (localObject != null) {
+      ((FtnDownloader.IHttpDownloadSink)localObject).a(paramHttpMsg1, l, paramHttpMsg2.rawReqHeader);
+    }
   }
   
   public void handleError(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
@@ -182,37 +241,53 @@ public class FtnDownloader
   
   public void handleRedirect(String paramString)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
-    {
+    if (this.jdField_a_of_type_Boolean) {
       return;
-      TroopFileTransferUtil.Log.a("FtnDownloader", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] ftn download Redirect. " + paramString);
-    } while (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadFtnDownloader$IHttpDownloadSink == null);
-    this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadFtnDownloader$IHttpDownloadSink.a(paramString);
+    }
+    int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append("] ftn download Redirect. ");
+    ((StringBuilder)localObject).append(paramString);
+    TroopFileTransferUtil.Log.a("FtnDownloader", i, ((StringBuilder)localObject).toString());
+    localObject = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadFtnDownloader$IHttpDownloadSink;
+    if (localObject != null) {
+      ((FtnDownloader.IHttpDownloadSink)localObject).b(paramString);
+    }
   }
   
   public boolean statusChanged(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2, int paramInt)
   {
-    if (5 == paramInt) {
-      if (!this.jdField_a_of_type_Boolean) {}
-    }
-    while ((3 != paramInt) || (this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadFtnDownloader$IHttpDownloadSink == null))
+    if (5 == paramInt)
     {
-      do
-      {
+      if (this.jdField_a_of_type_Boolean) {
         return true;
-        this.jdField_a_of_type_Boolean = true;
-      } while (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadFtnDownloader$IHttpDownloadSink == null);
-      this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadFtnDownloader$IHttpDownloadSink.a();
-      return true;
+      }
+      this.jdField_a_of_type_Boolean = true;
+      paramHttpMsg1 = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadFtnDownloader$IHttpDownloadSink;
+      if (paramHttpMsg1 != null)
+      {
+        paramHttpMsg1.a();
+        return true;
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadFtnDownloader$IHttpDownloadSink.a(paramHttpMsg2);
+    else if (3 == paramInt)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        return true;
+      }
+      paramHttpMsg1 = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadFtnDownloader$IHttpDownloadSink;
+      if (paramHttpMsg1 != null) {
+        paramHttpMsg1.a(paramHttpMsg2);
+      }
+    }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.download.FtnDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ public class BulkSendMsgAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130843926;
+    return 2130843846;
   }
   
   public int getAppID()
@@ -28,21 +28,21 @@ public class BulkSendMsgAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131697259);
+    return BaseApplicationImpl.getContext().getString(2131697278);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("extra.GROUP_UIN", paramSessionInfo.a);
-    localBundle.putString("selfSet_leftViewText", HardCodeUtil.a(2131715575));
+    localBundle.putString("selfSet_leftViewText", HardCodeUtil.a(2131715497));
     BulkSendMessageFragment.a(paramBaseChatPie.a(), localBundle);
     paramPlusPanelViewModel.a(paramBaseChatPie.a, getAppID(), paramSessionInfo.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.BulkSendMsgAppInfo
  * JD-Core Version:    0.7.0.1
  */

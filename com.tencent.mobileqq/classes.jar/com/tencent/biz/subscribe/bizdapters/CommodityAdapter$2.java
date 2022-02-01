@@ -11,13 +11,15 @@ class CommodityAdapter$2
   
   public void run()
   {
-    this.this$0.a((ArrayList)CommodityAdapter.a(this.this$0).goods.get());
-    this.this$0.a(CommodityAdapter.a(this.this$0));
+    CommodityAdapter localCommodityAdapter = this.this$0;
+    localCommodityAdapter.a((ArrayList)CommodityAdapter.a(localCommodityAdapter).goods.get());
+    localCommodityAdapter = this.this$0;
+    localCommodityAdapter.a(CommodityAdapter.a(localCommodityAdapter));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.bizdapters.CommodityAdapter.2
  * JD-Core Version:    0.7.0.1
  */

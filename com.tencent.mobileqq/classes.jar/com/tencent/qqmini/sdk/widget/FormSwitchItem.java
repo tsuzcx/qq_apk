@@ -131,30 +131,27 @@ public class FormSwitchItem
   
   public boolean isChecked()
   {
-    if (this.mSwitch != null) {
-      return this.mSwitch.isChecked();
+    Switch localSwitch = this.mSwitch;
+    if (localSwitch != null) {
+      return localSwitch.isChecked();
     }
     return false;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    if ((this.mBgType == 1) || (this.mBgType == 2))
+    int i = this.mBgType;
+    if ((i == 1) || (i == 2))
     {
-      if (!isDefTheme()) {
-        break label73;
+      if (isDefTheme()) {
+        this.mPaint.setColor(COLOR_DEFAULT_BG_DIVIDER);
+      } else {
+        this.mPaint.setColor(0);
       }
-      this.mPaint.setColor(COLOR_DEFAULT_BG_DIVIDER);
-    }
-    for (;;)
-    {
-      int i = getMeasuredWidth();
+      i = getMeasuredWidth();
       int j = getMeasuredHeight();
       this.mRect.set(PADDING_DEFAULT_BG_DIVIDER, j - HEIGHT_DEFAULT_BG_DIVIDER, i, j);
       paramCanvas.drawRect(this.mRect, this.mPaint);
-      return;
-      label73:
-      this.mPaint.setColor(0);
     }
   }
   
@@ -162,7 +159,8 @@ public class FormSwitchItem
   public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
     super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
-    if ((this.mSwitch != null) && (this.mSwitch.getVisibility() != 8))
+    Switch localSwitch = this.mSwitch;
+    if ((localSwitch != null) && (localSwitch.getVisibility() != 8))
     {
       paramAccessibilityNodeInfo.setCheckable(true);
       paramAccessibilityNodeInfo.setChecked(this.mSwitch.isChecked());
@@ -199,9 +197,10 @@ public class FormSwitchItem
   
   public void setChecked(boolean paramBoolean)
   {
-    if (this.mSwitch != null)
+    Switch localSwitch = this.mSwitch;
+    if (localSwitch != null)
     {
-      this.mSwitch.setChecked(paramBoolean);
+      localSwitch.setChecked(paramBoolean);
       sendAccessibilityEvent(1);
     }
   }
@@ -209,46 +208,47 @@ public class FormSwitchItem
   public void setEnabled(boolean paramBoolean)
   {
     super.setEnabled(false);
-    if (this.mTextView != null) {
-      this.mTextView.setEnabled(paramBoolean);
+    Object localObject = this.mTextView;
+    if (localObject != null) {
+      ((TextView)localObject).setEnabled(paramBoolean);
     }
-    if (this.mSwitch != null) {
-      this.mSwitch.setEnabled(paramBoolean);
+    localObject = this.mSwitch;
+    if (localObject != null) {
+      ((Switch)localObject).setEnabled(paramBoolean);
     }
   }
   
   public void setLeftIcon(Drawable paramDrawable)
   {
-    if (this.mTextView != null)
+    TextView localTextView = this.mTextView;
+    if (localTextView != null)
     {
       this.mLeftIcon = paramDrawable;
-      if (paramDrawable == null) {
-        this.mTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+      if (paramDrawable == null)
+      {
+        localTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+        return;
       }
-    }
-    else
-    {
-      return;
-    }
-    if (paramDrawable.getIntrinsicHeight() > this.mItemHeight)
-    {
-      paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), this.mItemHeight);
-      this.mTextView.setCompoundDrawables(paramDrawable, null, null, null);
-    }
-    for (;;)
-    {
+      if (paramDrawable.getIntrinsicHeight() > this.mItemHeight)
+      {
+        paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), this.mItemHeight);
+        this.mTextView.setCompoundDrawables(paramDrawable, null, null, null);
+      }
+      else
+      {
+        this.mTextView.setCompoundDrawablesWithIntrinsicBounds(paramDrawable, null, null, null);
+      }
       this.mTextView.setCompoundDrawablePadding(this.mPadding);
-      return;
-      this.mTextView.setCompoundDrawablesWithIntrinsicBounds(paramDrawable, null, null, null);
     }
   }
   
   public void setLeftIcon(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    if ((paramDrawable == null) || (this.mTextView == null) || (paramInt1 < 0) || (paramInt2 < 0)) {}
-    do
+    if ((paramDrawable != null) && (this.mTextView != null) && (paramInt1 >= 0))
     {
-      return;
+      if (paramInt2 < 0) {
+        return;
+      }
       if ((paramInt1 > 0) && (paramInt2 > 0))
       {
         this.mLeftIcon = paramDrawable;
@@ -259,49 +259,51 @@ public class FormSwitchItem
         this.mTextView.setCompoundDrawablePadding(this.mPadding);
         return;
       }
-    } while ((paramInt1 != 0) && (paramInt2 != 0));
-    setRightIcon(paramDrawable);
+      if ((paramInt1 == 0) || (paramInt2 == 0)) {
+        setRightIcon(paramDrawable);
+      }
+    }
   }
   
   public void setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener paramOnCheckedChangeListener)
   {
-    if (this.mSwitch != null) {
-      this.mSwitch.setOnCheckedChangeListener(paramOnCheckedChangeListener);
+    Switch localSwitch = this.mSwitch;
+    if (localSwitch != null) {
+      localSwitch.setOnCheckedChangeListener(paramOnCheckedChangeListener);
     }
   }
   
   public void setRightIcon(Drawable paramDrawable)
   {
-    if (this.mTextView != null)
+    TextView localTextView = this.mTextView;
+    if (localTextView != null)
     {
       this.mRightIcon = paramDrawable;
-      if (paramDrawable == null) {
-        this.mTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+      if (paramDrawable == null)
+      {
+        localTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+        return;
       }
-    }
-    else
-    {
-      return;
-    }
-    if (paramDrawable.getIntrinsicHeight() > this.mItemHeight)
-    {
-      paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), this.mItemHeight);
-      this.mTextView.setCompoundDrawables(null, null, paramDrawable, null);
-    }
-    for (;;)
-    {
+      if (paramDrawable.getIntrinsicHeight() > this.mItemHeight)
+      {
+        paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), this.mItemHeight);
+        this.mTextView.setCompoundDrawables(null, null, paramDrawable, null);
+      }
+      else
+      {
+        this.mTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, paramDrawable, null);
+      }
       this.mTextView.setCompoundDrawablePadding(this.mPadding);
-      return;
-      this.mTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, paramDrawable, null);
     }
   }
   
   public void setRightIcon(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    if ((paramDrawable == null) || (this.mTextView == null) || (paramInt1 < 0) || (paramInt2 < 0)) {}
-    do
+    if ((paramDrawable != null) && (this.mTextView != null) && (paramInt1 >= 0))
     {
-      return;
+      if (paramInt2 < 0) {
+        return;
+      }
       if ((paramInt1 > 0) && (paramInt2 > 0))
       {
         this.mRightIcon = paramDrawable;
@@ -312,8 +314,10 @@ public class FormSwitchItem
         this.mTextView.setCompoundDrawablePadding(this.mPadding);
         return;
       }
-    } while ((paramInt1 != 0) && (paramInt2 != 0));
-    setRightIcon(paramDrawable);
+      if ((paramInt1 == 0) || (paramInt2 == 0)) {
+        setRightIcon(paramDrawable);
+      }
+    }
   }
   
   public void setText(CharSequence paramCharSequence)
@@ -325,17 +329,15 @@ public class FormSwitchItem
         this.mText = paramCharSequence;
         this.mTextView.setText(this.mText);
         this.mTextView.setTextColor(getResources().getColorStateList(R.color.mini_sdk_skin_black));
+        return;
       }
+      this.mTextView.setVisibility(8);
     }
-    else {
-      return;
-    }
-    this.mTextView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.FormSwitchItem
  * JD-Core Version:    0.7.0.1
  */

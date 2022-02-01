@@ -77,29 +77,34 @@ public final class CustomAlbumItem
     paramJceOutputStream.write(this.iSmallFontSize, 4);
     paramJceOutputStream.write(this.iTextColor, 5);
     paramJceOutputStream.write(this.iTextColorClick, 6);
-    if (this.stBgImage != null) {
-      paramJceOutputStream.write(this.stBgImage, 7);
+    MaterialFile localMaterialFile = this.stBgImage;
+    if (localMaterialFile != null) {
+      paramJceOutputStream.write(localMaterialFile, 7);
     }
-    if (this.stBgImageClick != null) {
-      paramJceOutputStream.write(this.stBgImageClick, 8);
+    localMaterialFile = this.stBgImageClick;
+    if (localMaterialFile != null) {
+      paramJceOutputStream.write(localMaterialFile, 8);
     }
     paramJceOutputStream.write(this.iMarginTop, 9);
-    if (this.stLeftImage != null) {
-      paramJceOutputStream.write(this.stLeftImage, 10);
+    localMaterialFile = this.stLeftImage;
+    if (localMaterialFile != null) {
+      paramJceOutputStream.write(localMaterialFile, 10);
     }
-    if (this.stRightImage != null) {
-      paramJceOutputStream.write(this.stRightImage, 11);
+    localMaterialFile = this.stRightImage;
+    if (localMaterialFile != null) {
+      paramJceOutputStream.write(localMaterialFile, 11);
     }
     paramJceOutputStream.write(this.iDiameter, 12);
     paramJceOutputStream.write(this.iContentWidth, 13);
-    if (this.stH5BgImage != null) {
-      paramJceOutputStream.write(this.stH5BgImage, 14);
+    localMaterialFile = this.stH5BgImage;
+    if (localMaterialFile != null) {
+      paramJceOutputStream.write(localMaterialFile, 14);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.CustomAlbumItem
  * JD-Core Version:    0.7.0.1
  */

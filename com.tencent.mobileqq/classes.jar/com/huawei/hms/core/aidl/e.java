@@ -24,30 +24,33 @@ public class e
   private Object a(Field paramField, Bundle paramBundle)
   {
     String str = paramField.getName();
-    Object localObject = paramBundle.get(str);
-    paramBundle = localObject;
-    if ((localObject instanceof Bundle)) {
-      try
-      {
-        paramBundle = (Bundle)localObject;
-        int i = paramBundle.getInt("_val_type_", -1);
-        if (i == 1) {
-          return a(paramField.getGenericType(), paramBundle);
-        }
-        paramBundle = localObject;
-        if (i == 0)
-        {
-          paramField = (IMessageEntity)paramField.getType().newInstance();
-          paramField = a((Bundle)localObject, paramField);
-          return paramField;
-        }
+    paramBundle = paramBundle.get(str);
+    if ((paramBundle instanceof Bundle)) {}
+    try
+    {
+      Bundle localBundle = (Bundle)paramBundle;
+      int i = localBundle.getInt("_val_type_", -1);
+      if (i == 1) {
+        return a(paramField.getGenericType(), localBundle);
       }
-      catch (Exception paramField)
-      {
-        Log.e("MessageCodec", "decode, read value of the field exception, field name: " + str);
-        paramBundle = null;
+      if (i != 0) {
+        break label112;
       }
+      paramField = (IMessageEntity)paramField.getType().newInstance();
+      paramField = a((Bundle)paramBundle, paramField);
+      return paramField;
     }
+    catch (Exception paramField)
+    {
+      label78:
+      break label78;
+    }
+    paramField = new StringBuilder();
+    paramField.append("decode, read value of the field exception, field name: ");
+    paramField.append(str);
+    Log.e("MessageCodec", paramField.toString());
+    return null;
+    label112:
     return paramBundle;
   }
   
@@ -73,77 +76,68 @@ public class e
   
   private boolean b(String paramString, Object paramObject, Bundle paramBundle)
   {
-    if ((paramObject instanceof String)) {
+    if ((paramObject instanceof String))
+    {
       paramBundle.putString(paramString, (String)paramObject);
     }
-    for (;;)
+    else if ((paramObject instanceof Integer))
     {
-      return true;
-      if ((paramObject instanceof Integer))
-      {
-        paramBundle.putInt(paramString, ((Integer)paramObject).intValue());
-      }
-      else if ((paramObject instanceof Short))
-      {
-        paramBundle.putShort(paramString, ((Short)paramObject).shortValue());
-      }
-      else if ((paramObject instanceof Long))
-      {
-        paramBundle.putLong(paramString, ((Long)paramObject).longValue());
-      }
-      else if ((paramObject instanceof Float))
-      {
-        paramBundle.putFloat(paramString, ((Float)paramObject).floatValue());
-      }
-      else if ((paramObject instanceof Double))
-      {
-        paramBundle.putDouble(paramString, ((Double)paramObject).doubleValue());
-      }
-      else
-      {
-        if (!(paramObject instanceof Boolean)) {
-          break;
-        }
-        paramBundle.putBoolean(paramString, ((Boolean)paramObject).booleanValue());
-      }
+      paramBundle.putInt(paramString, ((Integer)paramObject).intValue());
     }
+    else if ((paramObject instanceof Short))
+    {
+      paramBundle.putShort(paramString, ((Short)paramObject).shortValue());
+    }
+    else if ((paramObject instanceof Long))
+    {
+      paramBundle.putLong(paramString, ((Long)paramObject).longValue());
+    }
+    else if ((paramObject instanceof Float))
+    {
+      paramBundle.putFloat(paramString, ((Float)paramObject).floatValue());
+    }
+    else if ((paramObject instanceof Double))
+    {
+      paramBundle.putDouble(paramString, ((Double)paramObject).doubleValue());
+    }
+    else
+    {
+      if (!(paramObject instanceof Boolean)) {
+        break label150;
+      }
+      paramBundle.putBoolean(paramString, ((Boolean)paramObject).booleanValue());
+    }
+    return true;
+    label150:
     return false;
   }
   
   public Bundle a(IMessageEntity paramIMessageEntity, Bundle paramBundle)
   {
-    Class localClass = paramIMessageEntity.getClass();
-    for (;;)
+    for (Class localClass = paramIMessageEntity.getClass(); localClass != null; localClass = localClass.getSuperclass())
     {
-      if (localClass != null)
+      Field[] arrayOfField = localClass.getDeclaredFields();
+      int j = arrayOfField.length;
+      int i = 0;
+      while (i < j)
       {
-        Field[] arrayOfField = localClass.getDeclaredFields();
-        int j = arrayOfField.length;
-        int i = 0;
-        Field localField;
-        if (i < j)
-        {
-          localField = arrayOfField[i];
-          if (!localField.isAnnotationPresent(Packed.class)) {}
-        }
+        Field localField = arrayOfField[i];
+        if (localField.isAnnotationPresent(Packed.class)) {}
         try
         {
           b(paramIMessageEntity, localField, paramBundle);
-          i += 1;
         }
-        catch (IllegalAccessException localIllegalAccessException)
+        catch (IllegalAccessException|IllegalArgumentException localIllegalAccessException)
         {
-          for (;;)
-          {
-            Log.e("MessageCodec", "encode, get value of the field exception, field name: " + localField.getName());
-          }
-          localClass = localClass.getSuperclass();
+          label58:
+          StringBuilder localStringBuilder;
+          break label58;
         }
-        catch (IllegalArgumentException localIllegalArgumentException)
-        {
-          label64:
-          break label64;
-        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("encode, get value of the field exception, field name: ");
+        localStringBuilder.append(localField.getName());
+        Log.e("MessageCodec", localStringBuilder.toString());
+        i += 1;
       }
     }
     return paramBundle;
@@ -155,76 +149,73 @@ public class e
       return paramIMessageEntity;
     }
     paramBundle.setClassLoader(getClass().getClassLoader());
-    Class localClass = paramIMessageEntity.getClass();
-    while (localClass != null)
+    for (Class localClass = paramIMessageEntity.getClass(); localClass != null; localClass = localClass.getSuperclass())
     {
       Field[] arrayOfField = localClass.getDeclaredFields();
       int j = arrayOfField.length;
       int i = 0;
-      Field localField;
-      if (i < j)
+      while (i < j)
       {
-        localField = arrayOfField[i];
-        if (!localField.isAnnotationPresent(Packed.class)) {}
-      }
-      try
-      {
-        a(paramIMessageEntity, localField, paramBundle);
+        Field localField = arrayOfField[i];
+        if (localField.isAnnotationPresent(Packed.class)) {}
+        try
+        {
+          a(paramIMessageEntity, localField, paramBundle);
+        }
+        catch (IllegalAccessException|IllegalArgumentException localIllegalAccessException)
+        {
+          label75:
+          StringBuilder localStringBuilder;
+          break label75;
+        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("decode, set value of the field exception, field name:");
+        localStringBuilder.append(localField.getName());
+        Log.e("MessageCodec", localStringBuilder.toString());
         i += 1;
       }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        for (;;)
-        {
-          Log.e("MessageCodec", "decode, set value of the field exception, field name:" + localField.getName());
-        }
-        localClass = localClass.getSuperclass();
-      }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        label81:
-        break label81;
-      }
     }
+    return paramIMessageEntity;
   }
   
   protected List<Object> a(Type paramType, Bundle paramBundle)
   {
     ArrayList localArrayList = new ArrayList();
-    paramBundle = paramBundle.getBundle("_next_item_");
-    if (paramBundle != null)
+    for (paramBundle = paramBundle.getBundle("_next_item_"); paramBundle != null; paramBundle = paramBundle.getBundle("_next_item_"))
     {
       Object localObject = paramBundle.get("_value_");
-      if ((localObject.getClass().isPrimitive()) || ((localObject instanceof String)) || ((localObject instanceof Serializable))) {
-        localArrayList.add(localObject);
-      }
-      for (;;)
+      if ((!localObject.getClass().isPrimitive()) && (!(localObject instanceof String)) && (!(localObject instanceof Serializable)))
       {
-        paramBundle = paramBundle.getBundle("_next_item_");
-        break;
         if ((localObject instanceof Bundle))
         {
           localObject = (Bundle)localObject;
           int i = ((Bundle)localObject).getInt("_val_type_", -1);
-          if (i == 1) {
+          if (i != 1)
+          {
+            if (i == 0) {
+              localArrayList.add(a((Bundle)localObject, (IMessageEntity)((Class)((java.lang.reflect.ParameterizedType)paramType).getActualTypeArguments()[0]).newInstance()));
+            } else {
+              throw new InstantiationException("Unknown type can not be supported");
+            }
+          }
+          else {
             throw new InstantiationException("Nested List can not be supported");
           }
-          if (i != 0) {
-            break label155;
-          }
-          localArrayList.add(a((Bundle)localObject, (IMessageEntity)((Class)((java.lang.reflect.ParameterizedType)paramType).getActualTypeArguments()[0]).newInstance()));
         }
       }
-      label155:
-      throw new InstantiationException("Unknown type can not be supported");
+      else {
+        localArrayList.add(localObject);
+      }
     }
     return localArrayList;
   }
   
   protected void a(String paramString, Object paramObject, Bundle paramBundle)
   {
-    if (paramObject == null) {}
-    while (b(paramString, paramObject, paramBundle)) {
+    if (paramObject == null) {
+      return;
+    }
+    if (b(paramString, paramObject, paramBundle)) {
       return;
     }
     if ((paramObject instanceof CharSequence))
@@ -259,15 +250,18 @@ public class e
       paramBundle.putBundle(paramString, paramObject);
       return;
     }
-    Log.e("MessageCodec", "cannot support type, " + paramString);
+    paramObject = new StringBuilder();
+    paramObject.append("cannot support type, ");
+    paramObject.append(paramString);
+    Log.e("MessageCodec", paramObject.toString());
   }
   
   protected void a(String paramString, List paramList, Bundle paramBundle)
   {
-    Object localObject1 = null;
     Iterator localIterator = paramList.iterator();
     Object localObject2;
-    for (paramList = (List)localObject1; localIterator.hasNext(); paramList = a("_value_", (Bundle)localObject1, localObject2))
+    Object localObject1;
+    for (paramList = null; localIterator.hasNext(); paramList = a("_value_", (Bundle)localObject1, localObject2))
     {
       localObject2 = localIterator.next();
       localObject1 = paramList;
@@ -282,7 +276,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.core.aidl.e
  * JD-Core Version:    0.7.0.1
  */

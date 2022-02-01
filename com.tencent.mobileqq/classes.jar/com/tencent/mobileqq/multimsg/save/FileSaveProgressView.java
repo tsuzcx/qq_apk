@@ -7,7 +7,7 @@ import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import com.tencent.TMG.utils.QLog;
+import com.tencent.qphone.base.util.QLog;
 
 public class FileSaveProgressView
   extends TextView
@@ -41,51 +41,59 @@ public class FileSaveProgressView
     this.jdField_a_of_type_JavaLangStringBuffer = new StringBuffer(this.jdField_a_of_type_JavaLangString);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     int j = getWidth();
     int k = getHeight();
     int i = paramCanvas.getSaveCount();
     paramCanvas.save();
-    if (this.b > 0) {}
-    for (float f = this.b;; f = 2.5F)
-    {
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(f, f, j - f, k - f);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.d);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
-      j = this.jdField_a_of_type_Int * 360 / 100;
-      paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, 270.0F, j, false, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.restoreToCount(i);
-      super.onDraw(paramCanvas);
-      return;
+    int m = this.b;
+    float f;
+    if (m > 0) {
+      f = m;
+    } else {
+      f = 2.5F;
     }
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(f, f, j - f, k - f);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.d);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
+    j = this.jdField_a_of_type_Int * 360 / 100;
+    paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, 270.0F, j, false, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.restoreToCount(i);
+    super.onDraw(paramCanvas);
   }
   
   public void setProgress(int paramInt)
   {
-    if (paramInt < 0) {
-      this.jdField_a_of_type_Int = 0;
-    }
-    do
+    if (paramInt < 0)
     {
+      this.jdField_a_of_type_Int = 0;
       return;
-      if (paramInt > 100)
-      {
-        this.jdField_a_of_type_Int = 100;
-        return;
+    }
+    if (paramInt > 100)
+    {
+      this.jdField_a_of_type_Int = 100;
+      return;
+    }
+    if (paramInt < this.jdField_a_of_type_Int)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("FileSaveProgressView", 2, "progress < currentProgress, so return;");
       }
-      if (paramInt >= this.jdField_a_of_type_Int) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("FileSaveProgressView", 0, "progress < currentProgress, so return;");
-    return;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangStringBuffer.delete(0, this.jdField_a_of_type_JavaLangStringBuffer.length());
-    this.jdField_a_of_type_JavaLangString = (paramInt + "%");
-    setText(this.jdField_a_of_type_JavaLangString);
-    invalidate();
+    }
+    else
+    {
+      this.jdField_a_of_type_Int = paramInt;
+      StringBuffer localStringBuffer = this.jdField_a_of_type_JavaLangStringBuffer;
+      localStringBuffer.delete(0, localStringBuffer.length());
+      localStringBuffer = this.jdField_a_of_type_JavaLangStringBuffer;
+      localStringBuffer.append(paramInt);
+      localStringBuffer.append("%");
+      this.jdField_a_of_type_JavaLangString = localStringBuffer.toString();
+      setText(this.jdField_a_of_type_JavaLangString);
+      invalidate();
+    }
   }
   
   public void setRingColor(int paramInt)
@@ -105,7 +113,7 @@ public class FileSaveProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.save.FileSaveProgressView
  * JD-Core Version:    0.7.0.1
  */

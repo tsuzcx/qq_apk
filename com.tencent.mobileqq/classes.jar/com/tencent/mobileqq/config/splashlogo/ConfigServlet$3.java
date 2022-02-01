@@ -10,93 +10,103 @@ class ConfigServlet$3
 {
   public void run()
   {
-    k = 0;
-    int i;
-    boolean bool1;
-    if (!this.jdField_a_of_type_JavaIoFile.exists())
+    boolean bool1 = this.jdField_a_of_type_JavaIoFile.exists();
+    int k = 0;
+    if (!bool1)
     {
-      i = 0;
-      if (QLog.isColorLevel()) {
-        QLog.d("SPLASH_ConfigServlet", 2, "begin download url is " + this.jdField_a_of_type_JavaLangString + " file is " + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " md5 " + this.b);
-      }
-      bool1 = HttpDownloadUtil.download(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile);
-      if (bool1) {
-        if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
-      }
-    }
-    for (;;)
-    {
-      for (;;)
+      int i = 0;
+      label194:
+      label219:
+      int j;
+      do
       {
-        try
+        if (QLog.isColorLevel())
         {
-          boolean bool2 = MD5.getFileMD5(this.jdField_a_of_type_JavaIoFile).equalsIgnoreCase(this.b);
-          k = bool1;
-          if (bool2) {}
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("begin download url is ");
+          localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(" file is ");
+          localStringBuilder.append(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+          localStringBuilder.append(" md5 ");
+          localStringBuilder.append(this.b);
+          QLog.d("SPLASH_ConfigServlet", 2, localStringBuilder.toString());
         }
-        catch (Throwable localThrowable1)
+        bool1 = HttpDownloadUtil.download(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile);
+        if (bool1)
         {
-          int j;
-          k = bool1;
-        }
-        try
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("SPLASH_ConfigServlet", 2, "down load success but check md5 failed");
+          if (this.jdField_a_of_type_JavaIoFile.exists())
+          {
+            try
+            {
+              boolean bool2 = MD5.getFileMD5(this.jdField_a_of_type_JavaIoFile).equalsIgnoreCase(this.b);
+              k = bool1;
+              if (bool2) {
+                break label219;
+              }
+              try
+              {
+                if (!QLog.isColorLevel()) {
+                  break label194;
+                }
+                QLog.d("SPLASH_ConfigServlet", 2, "down load success but check md5 failed");
+              }
+              catch (Throwable localThrowable1)
+              {
+                k = 0;
+              }
+              localThrowable2.printStackTrace();
+            }
+            catch (Throwable localThrowable2)
+            {
+              k = bool1;
+            }
+            break label219;
           }
           k = 0;
-          j = i + 1;
-          if (k != 0) {
-            break label290;
-          }
-          i = j;
-          if (j < 2) {
-            break;
-          }
         }
-        catch (Throwable localThrowable2)
+        else
         {
-          for (;;)
+          k = bool1;
+          if (QLog.isColorLevel())
           {
-            k = 0;
+            QLog.d("SPLASH_ConfigServlet", 2, "down load pic failed try again");
+            k = bool1;
           }
         }
-      }
-      if ((k == 0) && (this.jdField_a_of_type_JavaIoFile != null) && (this.jdField_a_of_type_JavaIoFile.exists())) {
-        this.jdField_a_of_type_JavaIoFile.delete();
-      }
-      return;
-      localThrowable1.printStackTrace();
-      continue;
-      k = 0;
-      continue;
-      k = bool1;
-      if (QLog.isColorLevel())
+        j = i + 1;
+        if (k != 0) {
+          break;
+        }
+        i = j;
+      } while (j < 2);
+    }
+    else
+    {
+      try
       {
-        QLog.d("SPLASH_ConfigServlet", 2, "down load pic failed try again");
+        bool1 = MD5.getFileMD5(this.jdField_a_of_type_JavaIoFile).equalsIgnoreCase(this.b);
         k = bool1;
-        continue;
-        try
-        {
-          bool1 = MD5.getFileMD5(this.jdField_a_of_type_JavaIoFile).equalsIgnoreCase(this.b);
-          if (bool1) {
-            k = 1;
-          }
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("SPLASH_ConfigServlet", 2, "splash has a file don't need download but check md5 get a exception");
         }
-        catch (Exception localException)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("SPLASH_ConfigServlet", 2, "splash has a file don't need download but check md5 get a exception");
-          }
-          localException.printStackTrace();
-        }
+        localException.printStackTrace();
+      }
+    }
+    if (k == 0)
+    {
+      File localFile = this.jdField_a_of_type_JavaIoFile;
+      if ((localFile != null) && (localFile.exists())) {
+        this.jdField_a_of_type_JavaIoFile.delete();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.splashlogo.ConfigServlet.3
  * JD-Core Version:    0.7.0.1
  */

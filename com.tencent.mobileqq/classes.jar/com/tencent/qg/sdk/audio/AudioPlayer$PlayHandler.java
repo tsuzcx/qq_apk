@@ -14,26 +14,31 @@ public class AudioPlayer$PlayHandler
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      this.this$0.handlePlay();
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4) {
+            return;
+          }
+          this.this$0.handleSeekTo(((Integer)paramMessage.obj).intValue());
+          return;
+        }
+        this.this$0.handlePause();
+        return;
+      }
       this.this$0.handleStop();
       return;
-    case 3: 
-      this.this$0.handlePause();
-      return;
     }
-    this.this$0.handleSeekTo(((Integer)paramMessage.obj).intValue());
+    this.this$0.handlePlay();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qg.sdk.audio.AudioPlayer.PlayHandler
  * JD-Core Version:    0.7.0.1
  */

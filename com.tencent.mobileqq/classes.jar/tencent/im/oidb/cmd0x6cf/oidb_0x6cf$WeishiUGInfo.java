@@ -26,6 +26,7 @@ public final class oidb_0x6cf$WeishiUGInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -34,12 +35,12 @@ public final class oidb_0x6cf$WeishiUGInfo
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro8 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 64, 74, 80, 90 }, new String[] { "bytes_report_base_url", "bytes_exposure_report_tail", "bytes_click_report_tail", "bytes_click_schema_report_tail", "bytes_click_h5_report_tail", "rpt_bytes_report_base_url", "msg_url_jump_info", "uint32_auto_play", "bytes_back_off_group", "uint32_use_ug", "bytes_ug_interface_data" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, null, Integer.valueOf(0), localByteStringMicro7, Integer.valueOf(0), localByteStringMicro8 }, WeishiUGInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 64, 74, 80, 90 }, new String[] { "bytes_report_base_url", "bytes_exposure_report_tail", "bytes_click_report_tail", "bytes_click_schema_report_tail", "bytes_click_h5_report_tail", "rpt_bytes_report_base_url", "msg_url_jump_info", "uint32_auto_play", "bytes_back_off_group", "uint32_use_ug", "bytes_ug_interface_data" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, null, localInteger, localByteStringMicro7, localInteger, localByteStringMicro8 }, WeishiUGInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6cf.oidb_0x6cf.WeishiUGInfo
  * JD-Core Version:    0.7.0.1
  */

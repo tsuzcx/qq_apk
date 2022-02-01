@@ -10,15 +10,20 @@ class MagicfaceViewController$3
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicfaceViewController", 2, "func run, magicValue:" + this.this$0.a.magicValue);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("func run, magicValue:");
+      ((StringBuilder)localObject).append(this.this$0.a.magicValue);
+      QLog.d("MagicfaceViewController", 2, ((StringBuilder)localObject).toString());
     }
-    this.this$0.a(this.this$0.a, 1, null);
+    Object localObject = this.this$0;
+    ((MagicfaceViewController)localObject).a(((MagicfaceViewController)localObject).a, 1, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.view.MagicfaceViewController.3
  * JD-Core Version:    0.7.0.1
  */

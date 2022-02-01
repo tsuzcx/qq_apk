@@ -11,15 +11,15 @@ class PermissionSettingFragment$3$1
   {
     if (this.val$finalErrCode == -101510007L)
     {
-      QQToast.a(this.this$1.this$0.getActivity(), this.this$1.this$0.getString(2131694176), 0).a();
+      QQToast.a(this.this$1.this$0.getBaseActivity(), this.this$1.this$0.getString(2131694135), 0).a();
       return;
     }
-    QQToast.a(this.this$1.this$0.getActivity(), this.this$1.this$0.getString(2131694194), 0).a();
+    QQToast.a(this.this$1.this$0.getBaseActivity(), this.this$1.this$0.getString(2131694158), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.PermissionSettingFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

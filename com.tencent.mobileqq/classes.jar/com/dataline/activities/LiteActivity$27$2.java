@@ -21,18 +21,14 @@ class LiteActivity$27$2
     }
     DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.app.getMessageFacade().a(this.jdField_a_of_type_Int).a(this.jdField_a_of_type_Long);
     DataLineMsgSet localDataLineMsgSet = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.app.getDataLineMsgProxy(this.jdField_a_of_type_Int).a(this.jdField_a_of_type_Long);
-    if ((localDataLineMsgSet != null) && (!localDataLineMsgSet.isSingle())) {
+    if ((localDataLineMsgSet != null) && (!localDataLineMsgSet.isSingle()))
+    {
       if (!this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.jdField_a_of_type_ComTencentWidgetXListView)) {
         this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.notifyDataSetChanged();
       }
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.app.getMessageFacade().a(this.jdField_a_of_type_Int).e();
-      if (QLog.isColorLevel()) {
-        QLog.d(LiteActivity.jdField_a_of_type_JavaLangString, 2, "LiteActivity.onRecvFile, msgId[" + this.jdField_a_of_type_Long + "], sPath = " + this.jdField_a_of_type_JavaLangString + "], set[" + localDataLineMsgSet + "], msgItem[" + localDataLineMsgRecord);
-      }
-      return;
       this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.notifyDataSetChanged();
       if ((localDataLineMsgRecord != null) && (!localDataLineMsgRecord.bIsResendOrRecvFile))
       {
@@ -40,11 +36,26 @@ class LiteActivity$27$2
         LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.jdField_a_of_type_ComTencentWidgetXListView);
       }
     }
+    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$27.a.app.getMessageFacade().a(this.jdField_a_of_type_Int).e();
+    if (QLog.isColorLevel())
+    {
+      String str = LiteActivity.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("LiteActivity.onRecvFile, msgId[");
+      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append("], sPath = ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append("], set[");
+      localStringBuilder.append(localDataLineMsgSet);
+      localStringBuilder.append("], msgItem[");
+      localStringBuilder.append(localDataLineMsgRecord);
+      QLog.d(str, 2, localStringBuilder.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.LiteActivity.27.2
  * JD-Core Version:    0.7.0.1
  */

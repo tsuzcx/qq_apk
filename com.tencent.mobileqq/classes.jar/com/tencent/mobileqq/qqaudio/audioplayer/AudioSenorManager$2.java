@@ -1,0 +1,21 @@
+package com.tencent.mobileqq.qqaudio.audioplayer;
+
+import android.hardware.SensorManager;
+
+class AudioSenorManager$2
+  implements Runnable
+{
+  AudioSenorManager$2(AudioSenorManager paramAudioSenorManager) {}
+  
+  public void run()
+  {
+    AudioSenorManager.a(this.this$0).unregisterListener(AudioSenorManager.a(this.this$0));
+    AudioSenorManager.a(this.this$0).unregisterListener(AudioSenorManager.a(this.this$0));
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.qqaudio.audioplayer.AudioSenorManager.2
+ * JD-Core Version:    0.7.0.1
+ */

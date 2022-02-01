@@ -6,7 +6,8 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import com.tencent.mobileqq.data.LikeRankingInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.nearby.redtouch.Util;
+import com.tencent.mobileqq.nearby.redtouch.IUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -49,10 +50,11 @@ public class LikeRankingListManager
   
   public List<LikeRankingInfo> a()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList == null) {
       return null;
     }
-    return new ArrayList(this.jdField_a_of_type_JavaUtilList);
+    return new ArrayList(localList);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
@@ -62,14 +64,15 @@ public class LikeRankingListManager
       if (QLog.isColorLevel()) {
         QLog.i("LikeRankingListManager", 2, String.format("updateMyRank todayVoteCount:%d rank:%d total:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) }));
       }
-      this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.totalLikeCount = paramInt3;
-      this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.likeCountOfToday = paramInt1;
-      this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.rankingNum = paramInt2;
-      SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
-      localEditor.putInt("like_ranking_list_total_like_count", paramInt3);
-      localEditor.putInt("like_ranking_list_today_like_count", paramInt1);
-      localEditor.putInt("like_ranking_list_ranking_num", paramInt2);
-      localEditor.commit();
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo;
+      ((LikeRankingInfo)localObject).totalLikeCount = paramInt3;
+      ((LikeRankingInfo)localObject).likeCountOfToday = paramInt1;
+      ((LikeRankingInfo)localObject).rankingNum = paramInt2;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
+      ((SharedPreferences.Editor)localObject).putInt("like_ranking_list_total_like_count", paramInt3);
+      ((SharedPreferences.Editor)localObject).putInt("like_ranking_list_today_like_count", paramInt1);
+      ((SharedPreferences.Editor)localObject).putInt("like_ranking_list_ranking_num", paramInt2);
+      ((SharedPreferences.Editor)localObject).commit();
     }
   }
   
@@ -94,7 +97,11 @@ public class LikeRankingListManager
       return;
     }
     this.b = paramBoolean;
-    PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).edit().putBoolean("notify_on_like_ranking_list" + this.jdField_a_of_type_JavaLangString, this.b).commit();
+    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("notify_on_like_ranking_list");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localEditor.putBoolean(localStringBuilder.toString(), this.b).commit();
   }
   
   public boolean a()
@@ -108,65 +115,79 @@ public class LikeRankingListManager
       return;
     }
     this.c = paramBoolean;
-    PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).edit().putBoolean("partake__like_ranking_list" + this.jdField_a_of_type_JavaLangString, this.c).commit();
-    Util.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBoolean);
+    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("partake__like_ranking_list");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localEditor.putBoolean(localStringBuilder.toString(), this.c).commit();
+    ((IUtil)QRoute.api(IUtil.class)).onLikeRankListConfigChanged(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBoolean);
   }
   
   public boolean b()
   {
-    boolean bool = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).getBoolean("notify_on_like_ranking_list" + this.jdField_a_of_type_JavaLangString, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("LikeRankingListManager", 2, "getNotificationSwitch=" + bool);
+    Object localObject = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("notify_on_like_ranking_list");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    boolean bool = ((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), true);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getNotificationSwitch=");
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("LikeRankingListManager", 2, ((StringBuilder)localObject).toString());
     }
     return bool;
   }
   
   public boolean c()
   {
-    this.c = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).getBoolean("partake__like_ranking_list" + this.jdField_a_of_type_JavaLangString, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("LikeRankingListManager", 2, "getPartakeRankingEnabled=" + this.c);
+    Object localObject = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("partake__like_ranking_list");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    this.c = ((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), true);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getPartakeRankingEnabled=");
+      ((StringBuilder)localObject).append(this.c);
+      QLog.d("LikeRankingListManager", 2, ((StringBuilder)localObject).toString());
     }
     return this.c;
   }
   
   public boolean d()
   {
-    boolean bool2 = false;
     long l = NetConnInfoCenter.getServerTimeMillis();
     Calendar localCalendar1 = Calendar.getInstance();
     localCalendar1.setTimeInMillis(l);
     int i = localCalendar1.get(11);
-    boolean bool1 = bool2;
-    if (i >= 22)
+    boolean bool = true;
+    if ((i >= 22) && (i < 24))
     {
-      bool1 = bool2;
-      if (i < 24)
-      {
-        if (this.jdField_a_of_type_Long < 0L) {
-          this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong("like_ranking_list_animation_time", 0L);
-        }
-        Calendar localCalendar2 = Calendar.getInstance();
-        localCalendar2.setTimeInMillis(this.jdField_a_of_type_Long);
-        if (localCalendar2.get(1) == localCalendar1.get(1))
-        {
-          bool1 = bool2;
-          if (localCalendar2.get(6) == localCalendar1.get(6)) {}
-        }
-        else
-        {
-          bool1 = true;
-        }
+      if (this.jdField_a_of_type_Long < 0L) {
+        this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong("like_ranking_list_animation_time", 0L);
+      }
+      Calendar localCalendar2 = Calendar.getInstance();
+      localCalendar2.setTimeInMillis(this.jdField_a_of_type_Long);
+      if (localCalendar2.get(1) != localCalendar1.get(1)) {
+        break label117;
+      }
+      if (localCalendar2.get(6) != localCalendar1.get(6)) {
+        return true;
       }
     }
-    return bool1;
+    bool = false;
+    label117:
+    return bool;
   }
   
   public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.LikeRankingListManager
  * JD-Core Version:    0.7.0.1
  */
